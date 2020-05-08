@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容�
 description: 瞭解如何快速建立 Kubernetes 叢集、使用 Azure CLI 在 Azure Kubernetes Service （AKS）的 Windows Server 容器中部署應用程式。
 services: container-service
 ms.topic: article
-ms.date: 04/14/2020
-ms.openlocfilehash: 8b4d7fff6bb03e31976c28ba67c1db0e68d7cc8f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/06/2020
+ms.openlocfilehash: 28925961ea3b99f939ac650d54b5dcece2551f59
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854415"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926607"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容器
 
@@ -22,18 +22,6 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
-### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
-
-若要使用 Windows Server 容器，您需要*aks-preview* CLI 擴充功能版本0.4.12 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ### <a name="limitations"></a>限制
 
@@ -92,9 +80,6 @@ az aks create \
     --enable-addons monitoring \
     --kubernetes-version 1.16.7 \
     --generate-ssh-keys \
-    --enable-vmss \
-    --vm-set-type VirtualMachineScaleSets \
-    --load-balancer-sku standard \
     --network-plugin azure
 ```
 

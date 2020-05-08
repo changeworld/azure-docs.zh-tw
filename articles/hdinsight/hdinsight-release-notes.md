@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/08/2020
+ms.openlocfilehash: 458925dd9f7f7386a9159256fdb024d027f7016c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232814"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929310"
 ---
 # <a name="release-notes"></a>版本資訊
 
 本文提供有關**最新** Azure HDInsight 版本更新的資訊。 如需有關較早版本的詳細資訊，請參閱 [HDInsight 版本資訊封存](hdinsight-release-notes-archive.md)。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>總結
 
 Azure HDInsight 是 Azure 上的開放原始碼分析企業客戶中最受歡迎的其中一項服務。
 
@@ -48,17 +48,20 @@ HDInsight 中的所有受控磁碟都會使用 Azure 儲存體服務加密 (SSE)
 ## <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。 
 
-### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>適用于 HDInsight 的取代 Spark 2.1 和 2.2 3.6 Spark 叢集
-從 1 2020 年7月開始，客戶將無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 來建立新的 Spark 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮在6月 30 2020 的 HDInight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
+### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 中的取代 Spark 2.1 和 2.2 3.6 Spark 叢集
+從 1 2020 年7月開始，客戶將無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 來建立新的 Spark 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮在6月 30 2020 于 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
 
-### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>適用于 HDInsight 4.0 Spark 叢集的取代 Spark 2。3
-從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮在6月 30 2020 的 HDInight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
+### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark 叢集中的取代 Spark 2。3
+從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮移至6月 30 2020 的 HDInsight 4.0 上的 Spark 2.4，以避免潛在的系統/支援中斷。
 
-### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>適用于 HDInsight 4.0 Kafka 叢集的取代 Kafka 1。1
-從 1 2020 年7月開始，客戶將無法使用 Kafka 1.1 on HDInsight 4.0 來建立新的 Kafka 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮在 HDInight 4.0 的2.1 年 6 30 2020 月前移至 Kafka，以避免潛在的系統/支援中斷。
+### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka 叢集中的取代 Kafka 1。1
+從 1 2020 年7月開始，客戶將無法使用 Kafka 1.1 on HDInsight 4.0 來建立新的 Kafka 叢集。 現有的叢集將會以不受 Microsoft 支援的方式執行。 請考慮移至6月 30 2020 的 HDInsight 4.0 上的 Kafka 2.1，以避免潛在的系統/支援中斷。
 
-### <a name="hbase-20-to-21"></a>HBase 2.0 至2。1
-在即將推出的 HDInsight 4.0 版本中，HBase 版本將會從2.0 版升級到2.1。
+### <a name="hbase-20-to-216"></a>HBase 2.0 至2.1。6
+在即將推出的 HDInsight 4.0 版本中，HBase 版本將從2.0 版升級至2.1。6
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 至2.4。4
+在即將推出的 HDInsight 4.0 版本中，Spark 版本將從版本2.4.0 升級至2.4。4
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>前端節點必須至少有4核心 VM 
 前端節點必須至少有4核心 VM，才能確保 HDInsight 叢集的高可用性和可靠性。 自 6 2020 年4月起，客戶只能選擇4核心或以上的 VM 作為新 HDInsight 叢集的前端節點。 現有的叢集將會繼續如預期般執行。 

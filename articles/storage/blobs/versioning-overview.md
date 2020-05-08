@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 64e0de153aa33bac17c2bed75b211ddca1bbd28c
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: HT
+ms.openlocfilehash: 77af321b74a47306a7202c1fddf6e81edc0ee02a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884393"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926063"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定（預覽）
 
@@ -227,6 +227,9 @@ Blob 版本設定適用于下列類型的儲存體帳戶：
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
+    
+# Refresh the Azure Storage provider namespace
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -251,9 +254,6 @@ az feature register --namespace Microsoft.Storage \
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -315,6 +315,6 @@ Blob 版本（例如 blob 快照集）的計費方式與使用中資料的費率
 
 ## <a name="see-also"></a>另請參閱
 
-- [啟用 blob 版本設定](versioning-enable.md)
+- [啟用 Blob 版本設定](versioning-enable.md)
 - [建立 blob 的快照集](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Azure 儲存體 Blob 的虛刪除](storage-blob-soft-delete.md)

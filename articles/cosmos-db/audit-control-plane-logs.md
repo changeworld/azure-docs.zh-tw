@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: d380e4c025b35f0000e13c62422d54dc10079524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192862"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735346"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何 audit Azure Cosmos DB 控制平面作業
 
@@ -27,7 +27,9 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您對 Azure Cosmos
 
 ## <a name="disable-key-based-metadata-write-access"></a>停用以金鑰為基礎的中繼資料寫入存取
 
-在 Azure Cosmos DB 中，您必須先停用帳戶的以金鑰為基礎的中繼資料寫入存取權，才能在中審核控制平面作業。 停用金鑰型中繼資料寫入權限時，會防止透過帳戶金鑰連接到 Azure Cosmos 帳戶的用戶端存取帳戶。 您可以藉由將`disableKeyBasedMetadataWriteAccess`屬性設定為 true 來停用寫入存取。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制（RBAC）角色和認證的使用者發生。 若要深入瞭解如何設定此屬性，請參閱[防止來自 sdk 的變更](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 停用寫入權限之後，以 SDK 為基礎的輸送量變更，索引將會繼續作用。
+在 Azure Cosmos DB 中，您必須先停用帳戶的以金鑰為基礎的中繼資料寫入存取權，才能在中審核控制平面作業。 停用金鑰型中繼資料寫入權限時，會防止透過帳戶金鑰連接到 Azure Cosmos 帳戶的用戶端存取帳戶。 您可以藉由將`disableKeyBasedMetadataWriteAccess`屬性設定為 true 來停用寫入存取。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制（RBAC）角色和認證的使用者發生。 若要深入瞭解如何設定此屬性，請參閱[防止來自 sdk 的變更](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 
+
+`disableKeyBasedMetadataWriteAccess`開啟之後，如果以 SDK 為基礎的用戶端執行建立或更新作業，*則會傳回 Azure Cosmos DB 端點，而不允許資源 ' ContainerNameorDatabaseName ' 上的作業 ' POST '* 錯誤。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure Powershell 來執行建立/更新作業。 若要切換回，請使用 Azure CLI （如[防止 COSMOS SDK 中的變更](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文所述），將 disableKeyBasedMetadataWriteAccess 設定為**false** 。 請務必將的值變更`disableKeyBasedMetadataWriteAccess`為 false，而不是 true。
 
 關閉中繼資料寫入權限時，請考慮下列幾點：
 
@@ -65,7 +67,7 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您對 Azure Cosmos
    | where TimeGenerated >= ago(1h)
    ```
 
-當 VNET 新增至 Azure Cosmos 帳戶時，下列螢幕擷取畫面會捕捉記錄：
+當 Azure Cosmos 帳戶的一致性層級變更時，下列螢幕擷取畫面會捕捉記錄：
 
 ![新增 VNet 時的控制平面記錄](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
@@ -149,8 +151,25 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您對 Azure Cosmos
 
 * CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
 * CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+* SqlContainersUpdateStart, SqlContainersUpdateComplete
 
 *ResourceDetails*屬性包含整個資源主體做為要求裝載，且包含所有要求更新的屬性。
+
+## <a name="diagnostic-log-queries-for-control-plane-operations"></a>控制平面作業的診斷記錄查詢
+
+以下是取得控制平面作業診斷記錄的一些範例：
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdateStart"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+```
 
 ## <a name="next-steps"></a>後續步驟
 

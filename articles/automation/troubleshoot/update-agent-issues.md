@@ -9,25 +9,28 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900296"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927882"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>針對 Windows update 代理程式問題進行疑難排解
 
-在更新管理中，您的電腦未顯示為 [就緒] （狀況良好）的原因可能有很多。 在更新管理中，您可以檢查混合式 Runbook 背景工作角色代理程式的健康情況，以判斷根本問題。 本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 Azure 機器執行 azure 機器的疑難排解員。
+在更新管理中，您的電腦未顯示為 [就緒] （狀況良好）的原因可能有很多。 您可以檢查 Windows 混合式 Runbook 背景工作角色代理程式的健全狀況，以判斷根本問題。 以下是電腦的三種就緒狀態：
 
-以下是電腦的三種就緒狀態：
-
-* 就緒：混合式 Runbook 背景工作角色已部署，且上次出現時間不到1小時前。
-* 已中斷連線：混合式 Runbook 背景工作角色已部署，且上次在1小時前出現。
+* 就緒：混合式 Runbook 背景工作角色已部署，且上次出現時間不到一小時前。
+* 已中斷連線：混合式 Runbook 背景工作角色已部署，且上次在一小時前出現。
 * 未設定：找不到混合式 Runbook 背景工作角色，或尚未完成上架。
 
 > [!NOTE]
 > Azure 入口網站顯示的內容與電腦目前的狀態之間可能會有些許延遲。
+
+本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 Azure 機器執行 azure 機器的疑難排解員。 疑難排解員現在包含 Windows Server Update Services （WSUS）和自動下載和 install 金鑰的檢查。
+
+> [!NOTE]
+> 疑難排解員腳本目前不會透過 proxy 伺服器來路由傳送流量（如果已設定的話）。
 
 ## <a name="start-the-troubleshooter"></a>啟動疑難排解員
 
@@ -52,7 +55,7 @@ ms.locfileid: "82900296"
 
 作業系統檢查會確認「混合式 Runbook 背景工作角色」是否正在執行下列其中一個作業系統：
 
-|作業系統  |備忘錄  |
+|作業系統  |注意  |
 |---------|---------|
 |Windows Server 2012 和更新版本 |需要 .NET Framework 4.6 或更新版本。 （[下載 .NET Framework](/dotnet/framework/install/guide-for-developers)）。<br/> 需要 Windows PowerShell 5.1。  （[下載 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）        |
 

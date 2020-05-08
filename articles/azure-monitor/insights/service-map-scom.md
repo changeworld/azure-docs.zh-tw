@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663448"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928001"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>整合 System Center Operations Manager 與適用於 VM 的 Azure 監視器對應功能
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663448"
 >[!NOTE]
 >如果您已部署服務對應，您可以在適用於 VM 的 Azure 監視器中查看對應，其中包含可監視 VM 健全狀況和效能的其他功能。 適用於 VM 的 Azure 監視器的對應功能主要是用來取代獨立的服務對應解決方案。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](vminsights-overview.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * System Center Operations Manager 管理群組（2012 R2 或更新版本）。
 * 設定為支援適用於 VM 的 Azure 監視器的 Log Analytics 工作區。
@@ -108,8 +108,8 @@ ms.locfileid: "77663448"
 
 您可以透過 [服務對應概觀]**** 窗格 ([系統管理]**** 窗格 > [Operations Management Suite]**** > [服務對應]****) 編輯或刪除已設定的工作區。
 
->[!NOTE]
->[Operations Management Suite 為包含 Log Analytics 的一系列服務](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)，現在已納入 [Azure 監視器](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)。
+> [!NOTE]
+> [Operations Management Suite 為包含 Log Analytics 的一系列服務](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，現在已納入 [Azure 監視器](../overview.md)。
 
 在此目前的版本中，您只能設定一個 Log Analytics 工作區。
 

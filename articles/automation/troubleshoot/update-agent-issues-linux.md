@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836626"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927967"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>針對 Linux 更新代理程式問題進行疑難排解
 
-在 Azure 自動化更新管理解決方案中，您的電腦不會顯示為 [就緒] （狀況良好）的原因有很多。 在更新管理中，您可以檢查混合式 Runbook 背景工作角色代理程式的健康情況，以判斷根本問題。 本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 azure 機器執行 Azure 機器的疑難排解員。 
+在更新管理中，您的電腦未顯示為 [就緒] （狀況良好）的原因可能有很多。 您可以檢查 Linux 混合式 Runbook 背景工作角色代理程式的健康情況，以判斷根本問題。 以下是電腦的三種就緒狀態：
 
-一部電腦可以處於下列三種就緒狀態：
-
-* **就緒**：混合式 Runbook 背景工作角色已部署，且上次出現時間不到一小時前。
-* 已**中斷**連線：混合式 Runbook 背景工作角色已部署，且上次在一小時前出現。
-* **未設定**：找不到混合式 Runbook 背景工作角色，或尚未完成上架。
+* 就緒：混合式 Runbook 背景工作角色已部署，且上次出現時間不到一小時前。
+* 已中斷連線：混合式 Runbook 背景工作角色已部署，且上次在一小時前出現。
+* 未設定：找不到混合式 Runbook 背景工作角色，或尚未完成上架。
 
 > [!NOTE]
 > Azure 入口網站顯示的內容與電腦目前的狀態之間可能會有些許延遲。
 
+本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 azure 機器執行 Azure 機器的疑難排解員。 
+
+> [!NOTE]
+> 疑難排解員腳本目前不會透過 proxy 伺服器來路由傳送流量（如果已設定的話）。
+
 ## <a name="start-the-troubleshooter"></a>啟動疑難排解員
 
-針對 Azure 機器，請在入口網站中，選取 [**更新代理程式就緒**] 欄底下的 [**疑難排解**] 連結，以開啟 [**疑難排解更新代理程式**] 頁面。 針對非 Azure 機器，此連結會將您帶到這篇文章。 若要對非 Azure 機器進行疑難排解，請參閱「離線疑難排解」一節中的指示。
+針對 Azure 機器，請在入口網站中，選取 [**更新代理程式就緒**] 欄底下的 [**疑難排解**] 連結，以開啟 [疑難排解更新代理程式] 頁面。 針對非 Azure 機器，此連結會將您帶到這篇文章。 若要對非 Azure 機器進行疑難排解，請參閱「離線疑難排解」一節中的指示。
 
 ![VM 清單頁面](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > VM 必須處於執行中狀態，才能進行檢查。 如果 VM 未執行，則會顯示 [**啟動] vm** 。
 
-在 [對**更新代理程式進行疑難排解**] 頁面上，選取 [**執行檢查**] 以啟動疑難排解員。 疑難排解員會使用 [[執行] 命令](../../virtual-machines/linux/run-command.md)來執行電腦上的腳本，以驗證相依性。 疑難排解員完成後，會傳回檢查結果。
+在 [對更新代理程式進行疑難排解] 頁面上，選取 [**執行檢查**] 以啟動疑難排解員。 疑難排解員會使用 [[執行] 命令](../../virtual-machines/linux/run-command.md)來執行電腦上的腳本，以驗證相依性。 疑難排解員完成後，會傳回檢查結果。
 
 ![疑難排解頁面](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -52,7 +55,7 @@ ms.locfileid: "82836626"
 
 作業系統檢查會確認「混合式 Runbook 背景工作角色」是否正在執行下列其中一個作業系統。
 
-|作業系統  |備忘錄  |
+|作業系統  |注意  |
 |---------|---------|
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理程式必須能夠存取更新存放庫。 以分類為基礎的修補需要 ' yum ' 才能傳回安全性資料，而 CentOS 並沒有現成的。         |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理程式必須能夠存取更新存放庫。        |
@@ -84,6 +87,9 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 ### <a name="hybrid-runbook-worker-status"></a>混合式 Runbook 背景工作狀態
 
 此檢查確保混合式 Runbook 背景工作正在機器上執行。 如果混合式 Runbook 背景工作運作正常，則應會出現下列程序。 若要深入瞭解，請參閱[針對適用于 Linux 的 Log Analytics 代理程式進行疑難排解](hybrid-runbook-worker.md#oms-agent-not-running)。
+
+> [!NOTE]
+> 如果混合式 Runbook 背景工作角色不在執行中，且作業端點失敗，則更新可能會失敗。 更新管理從 operations 端點下載混合式背景工作角色套件。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

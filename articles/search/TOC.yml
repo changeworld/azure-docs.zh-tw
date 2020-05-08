@@ -60,6 +60,8 @@
           href: search-semi-structured-data.md
         - name: 為多個 Azure 資料來源編製索引
           href: tutorial-multiple-data-sources.md
+    - name: 為任何資料編制索引
+      href: tutorial-optimize-indexing-push-api.md
     - name: 使用 AI 建立內容
       items:
         - name: 'C#'
@@ -82,6 +84,9 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 範例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 全文檢索搜尋
