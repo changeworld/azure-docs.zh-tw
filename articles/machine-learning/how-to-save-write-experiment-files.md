@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79078416"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872059"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>儲存和寫入 Azure Machine Learning 實驗檔案的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 實驗&nbsp;描述|儲存體限制解決方案
 ---|---
 不到2000的檔案 & 無法使用資料存放區| 覆寫快照集大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 這可能需要幾分鐘的時間，視檔案的數量和大小而定。
-必須使用特定的腳本目錄| 建立一個`.amlignore`檔案，以從不屬於原始程式碼的實驗快照集排除檔案。 將檔案名新增至`.amlignore`檔案，並將它放在與訓練腳本相同的目錄中。 `.amlignore`檔案會使用與檔案相同的[語法和模式](https://git-scm.com/docs/gitignore) `.gitignore` 。
+必須使用特定的腳本目錄| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 管線|針對每個步驟使用不同的子目錄
 Jupyter Notebook| `.amlignore`建立檔案或將您的筆記本移至新的空白子目錄，然後再次執行您的程式碼。
 

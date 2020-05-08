@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801717"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925944"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'> </a></span><span class="has-padding-small">使用虛擬代理程式執行<b>自動化診斷</b>，開始快速解決您的問題。</span><div align="right"> <sub>Privacy Statement</sub>隱私權聲明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
@@ -132,11 +132,15 @@ ms.locfileid: "82801717"
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：無法針對 VM 擴展集所參考的負載平衡器所使用的負載平衡規則，修改後端埠。
 **解決**方式若要變更埠，您可以藉由更新 VM 擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>徵兆：從負載平衡器的後端集區移除 Vm 之後，小型流量仍會經過負載平衡器。 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>原因：從後端集區移除的 Vm 應該不會再接收流量。 少量的網路流量可能與 Azure 中的儲存體、DNS 和其他功能相關。 
+若要確認，您可以進行網路追蹤。 您的 blob 儲存體帳戶所使用的 FQDN 會列在每個儲存體帳戶的屬性內。  從您的 Azure 訂用帳戶內的虛擬機器，您可以執行 nslookup 來判斷指派給該儲存體帳戶的 Azure IP。
+
 ## <a name="additional-network-captures"></a>其他網路擷取
 如果您決定開啟支援案例，請收集下列資訊以便更快解決問題。 選擇單一的後端 VM 來執行下列測試︰
 - 從 VNet 內的其中一個後端 VM 使用 Psping 測試探查連接埠回應 (範例︰psping 10.0.0.4:3389) 並記錄結果。 
 - 如果這些 ping 測試沒有收到任何回應，請在執行 PsPing 時對後端 VM 和 VNet 測試 VM 同時執行 Netsh trace，然後停止 Netsh trace。 
-  
+ 
 ## <a name="next-steps"></a>後續步驟
 
 如果上述步驟無法解決問題，請開啟 [支援票證](https://azure.microsoft.com/support/options/)。

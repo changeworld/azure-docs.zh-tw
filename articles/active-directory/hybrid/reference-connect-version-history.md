@@ -12,12 +12,12 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112196"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981981"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -47,6 +47,17 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >如果您已啟用同步 Azure AD Connect，您很快就會開始收到健康情況通知，在您執行其中一個較舊版本時警告您即將進行的棄用功能。
 >
 >請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入瞭解如何將 Azure AD Connect 升級至最新版本。
+
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>發行狀態
+05/07/2020：已發行以供下載
+
+### <a name="fixed-issues"></a>已修正的問題
+- 已修正未選取的網域從 wizard UI 中不正確地選取的問題。
+- 已修正 ADSyncConfig PowerShell 模組中的問題，其中在所有 ADSync * 許可權 Cmdlet 中使用的叫用 DSACLS 命令會導致下列其中一個錯誤：
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -105,6 +116,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 - 已修正建立 Azure Active Directory 同步處理帳戶的問題，在此情況下，啟用目錄擴充功能或 PHS 可能會失敗，因為在嘗試使用之前，帳戶尚未傳播到所有服務複本。 
 - 已修正未正確處理代理字元的同步錯誤壓縮公用程式中的 bug。 
 - 已修正自動升級中的錯誤，這會將伺服器保留在排程器暫停狀態。 
+- 已修正 [網域/OU 篩選] 頁面中的錯誤，這會移除網域的執行設定檔，而不需進行任何變更。
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>發行狀態
@@ -554,18 +566,18 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 *   將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。 關於 SELF，我們需要將預設權限維持不變。
 *   指派這些特定權限：
 
-類型     | Name                          | 存取權               | 套用至
+類型     | 名稱                          | 存取               | 套用至
 ---------|-------------------------------|----------------------|--------------|
-Allow    | 系統                        | 完全控制         | 此物件  |
-Allow    | Enterprise Admins             | 完全控制         | 此物件  |
-Allow    | Domain Admins                 | 完全控制         | 此物件  |
-Allow    | Administrators                | 完全控制         | 此物件  |
-Allow    | 企業網域控制站 | 清單內容        | 此物件  |
-Allow    | 企業網域控制站 | 讀取所有屬性  | 此物件  |
-Allow    | 企業網域控制站 | 讀取權限     | 此物件  |
-Allow    | 驗證的使用者           | 清單內容        | 此物件  |
-Allow    | 驗證的使用者           | 讀取所有屬性  | 此物件  |
-Allow    | 驗證的使用者           | 讀取權限     | 此物件  |
+允許    | 系統                        | 完全控制         | 此物件  |
+允許    | Enterprise Admins             | 完全控制         | 此物件  |
+允許    | Domain Admins                 | 完全控制         | 此物件  |
+允許    | Administrators                | 完全控制         | 此物件  |
+允許    | 企業網域控制站 | 清單內容        | 此物件  |
+允許    | 企業網域控制站 | 讀取所有屬性  | 此物件  |
+允許    | 企業網域控制站 | 讀取權限     | 此物件  |
+允許    | 驗證的使用者           | 清單內容        | 此物件  |
+允許    | 驗證的使用者           | 讀取所有屬性  | 此物件  |
+允許    | 驗證的使用者           | 讀取權限     | 此物件  |
 
 若要加強 AD DS 帳戶的設定，您可以執行[這個 PowerShell 指令碼](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)。 PowerShell 指令碼會將上述權限指派給 AD DS 帳戶。
 
@@ -897,7 +909,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertVersion|CertSignatureAlgorithmOid|選取|
     |CertKeyAlgorithmParams|CertHashString|Where|
     |||含有|
 

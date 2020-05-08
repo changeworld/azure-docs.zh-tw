@@ -3,15 +3,15 @@ title: 使用 Azure 映射產生器從現有的映射版本建立新的映射版
 description: 使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: 766e7d5c4151000a582bcf07d80b89af3b7d8a65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee3e2a224789c899dcfabdbee56b949ea86f0a08
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869530"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872268"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>預覽：使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本
 
@@ -40,16 +40,18 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
+az provider show -n Microsoft.Storage | grep registrationState
 ```
 
 如果沒有顯示 [已註冊]，請執行下列動作：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
+az provider register -n Microsoft.Storage
 ```
 
 
@@ -93,16 +95,15 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-
-如果您已經有自己的共用映射資源庫，且未遵循先前的範例，您將需要指派映射產生器的許可權來存取資源群組，以便它可以存取圖庫。
-
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並設定資源群組的許可權
+如同您在前一個範例中設定使用者身分識別，您只需要取得其資源識別碼，然後再將其附加至範本。
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+#get identity used previously
+imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
+
+如果您已經有自己的共用映射資源庫，且未遵循先前的範例，您將需要指派映射產生器的許可權來存取資源群組，以便它可以存取圖庫。 請參閱[建立映射和散發至共用映射庫](image-builder-gallery.md)範例中的步驟。
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 範例
@@ -121,6 +122,7 @@ sed -i -e "s%<sigDefImgVersionId>%$sigDefImgVersionId%g" helloImageTemplateforSI
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromWinSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIGfromWinSIG.json
 ```
 
 ## <a name="create-the-image"></a>建立映像

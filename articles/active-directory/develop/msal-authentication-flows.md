@@ -13,12 +13,12 @@ ms.date: 01/30/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050518"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883238"
 ---
 # <a name="authentication-flows"></a>驗證流程
 
@@ -232,4 +232,4 @@ MSAL 支援[OAuth 2 資源擁有者密碼認證授](v2-oauth-ropc.md)與，讓�
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C 細節
 
-如需使用 MSAL.NET 和 Azure AD B2C 的詳細資訊，請參閱搭配[Azure AD B2C 使用 ROPC （MSAL.NET）](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)。
+如需在 MSAL.NET 和 Azure AD B2C 中使用 ROPC 的詳細資訊，請參閱搭配[使用 ROPC 與 Azure AD B2C](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)。

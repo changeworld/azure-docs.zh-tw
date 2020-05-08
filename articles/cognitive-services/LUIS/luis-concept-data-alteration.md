@@ -2,13 +2,13 @@
 title: 資料改變-LUIS
 description: 了解如何在於 Language Understanding (LUIS) 中進行預測之前變更資料
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292070"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872242"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
 LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預先建立之[datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
@@ -75,42 +75,27 @@ LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽�
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>變更預先建置 datetimeV2 實體的時區
 當 LUIS 應用程式使用預先建立的[datetimeV2](luis-reference-prebuilt-datetimev2.md)實體時，可以在預測回應中傳回 datetime 值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
 
-### <a name="endpoint-querystring-parameter"></a>端點查詢字串參數
-更正時區的方式是使用 `timezoneOffset` 參數將使用者時區新增至[端點](https://go.microsoft.com/fwlink/?linkid=2092356)。 `timezoneOffset` 的值應該是用以變更時間的正數或負數 (以分鐘為單位)。
+### <a name="v3-prediction-api-to-alter-timezone"></a>變更時區的 V3 預測 API
 
-|Param|值|
-|--|--|
-|`timezoneOffset`|正數或負數 (以分鐘為單位)|
+在 V3 中， `datetimeReference`會決定時區時差。 深入瞭解[V3 預測](luis-migration-api-v3.md#v3-post-body)。
 
-### <a name="daylight-savings-example"></a>日光節約範例
-如果您需要讓傳回的預先建置 datetimeV2 針對日光節約時間進行調整，則應該針對[端點](https://go.microsoft.com/fwlink/?linkid=2092356)查詢，使用 `timezoneOffset` 查詢字串參數搭配以分鐘為單位的 +/- 值。
+### <a name="v2-prediction-api-to-alter-timezone"></a>變更時區的 V2 預測 API
+使用以 API 版本為基礎的`timezoneOffset`參數，將使用者的時區新增至端點，即可更正時區。 參數的值應該是正數或負數（以分鐘為單位），以改變時間。
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2 預測端點要求](#tab/V2)
+#### <a name="v2-prediction-daylight-savings-example"></a>V2 預測日光節約範例
+如果您需要針對日光節約時間來調整傳回的預先建立 datetimeV2，您應該在[端點](https://go.microsoft.com/fwlink/?linkid=2092356)查詢的幾分鐘內，使用 querystring 參數搭配 +/-值。
 
 增加 60 分鐘：
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 減去 60 分鐘：
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3 預測端點要求](#tab/V3)
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 預測 c # 程式碼判斷參數的正確值
 
-增加 60 分鐘：
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-減去 60 分鐘：
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-深入了解 [V3 預測端點](luis-migration-api-v3.md)。
-
-* * *
-
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# 程式碼可判斷 timezoneOffset 的正確值
-下列 C# 程式碼使用 [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) 類別的 [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) 方法，根據系統時間判斷正確的 `timezoneOffset`：
+下列 c # 程式碼會使用[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo)類別的[timezoneinfo.findsystemtimezonebyid](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples)方法，根據系統時間判斷正確的位移值：
 
 ```csharp
 // Get CST zone id
@@ -122,8 +107,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>後續步驟

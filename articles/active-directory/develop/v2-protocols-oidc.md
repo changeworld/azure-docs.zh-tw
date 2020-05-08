@@ -1,5 +1,6 @@
 ---
-title: OpenID Connect 通訊協定-Microsoft 身分識別平臺 |Azure
+title: Microsoft 身分識別平臺和 OpenID Connect 通訊協定 |Azure
+titleSuffix: Microsoft identity platform
 description: 使用 OpenID Connect 驗證通訊協定的 Microsoft 身分識別平臺執行來建立 web 應用程式。
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688221"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926488"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 身分識別平臺和 OpenID Connect 通訊協定
 
-OpenID Connect 在 OAuth 2.0 上建置的驗證通訊協定，可用來讓使用者安全地登入 Web 應用程式。 當您使用 Microsoft 身分識別平臺端點的 OpenID Connect 執行時，您可以將登入和 API 存取新增至您的 web 應用程式。 本文說明如何不受語言限制地執行此工作，並說明如何在不使用任何 Microsoft 開放原始碼程式庫的情況下，傳送和接收 HTTP 訊息。
+OpenID Connect （OIDC）是以 OAuth 2.0 為基礎的驗證通訊協定，可用來將使用者安全地登入 web 應用程式。 當您使用 Microsoft 身分識別平臺端點的 OpenID Connect 執行時，您可以將登入和 API 存取新增至您的 web 應用程式。 本文說明如何不受語言限制地執行此工作，並說明如何在不使用任何 Microsoft 開放原始碼程式庫的情況下，傳送和接收 HTTP 訊息。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 將 OAuth 2.0「授權」** 通訊協定延伸來當作「驗證」** 通訊協定使用，以便讓您能夠使用 OAuth 來執行單一登入。 OpenID Connect 引進了「識別碼權杖」** 的概念，這是一種安全性權杖，可讓用戶端確認使用者的身分識別。 識別碼權杖也會取得使用者的相關基本設定檔資訊。 由於 OpenID Connect 延伸了 OAuth 2.0，因此應用程式可以安全地取得「存取權杖」**，而這些權杖可用來存取受[授權伺服器](active-directory-v2-protocols.md#the-basics)保護的資源。 Microsoft 身分識別平臺端點也允許向 Azure AD 註冊的協力廠商應用程式，針對受保護的資源（例如 web Api）發出存取權杖。 如需有關如何設定應用程式以發出存取權杖的詳細資訊，請參閱[如何使用 Microsoft 身分識別平臺端點註冊應用](quickstart-register-app.md)程式。 如果您要建置裝載於伺服器上且透過瀏覽器存取的 [Web 應用程式](v2-app-types.md#web-apps)，建議您使用 OpenID Connect。
 
