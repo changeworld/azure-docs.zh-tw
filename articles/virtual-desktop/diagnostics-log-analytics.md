@@ -5,131 +5,243 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127957"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888803"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>針對診斷功能使用 Log Analytics
 
-Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面來識別問題。 每當指派 Windows 虛擬桌面角色的人員使用服務時，此功能就會記錄診斷資訊。 每個記錄檔都包含有關活動涉及哪些 Windows 虛擬桌面角色、在會話期間出現的任何錯誤訊息、租使用者資訊，以及使用者資訊。 診斷功能會建立使用者和系統管理動作的活動記錄。 每個活動記錄都落在三個主要類別之下： 
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-- 摘要訂閱活動：當使用者嘗試透過 Microsoft 遠端桌面應用程式連接到其摘要時。
-- 連線活動：當使用者嘗試透過 Microsoft 遠端桌面應用程式連線到桌面或 RemoteApp 時。
-- 管理活動：當管理員在系統上執行管理作業時，例如建立主機集區、將使用者指派給應用程式群組，以及建立角色指派。
+Windows 虛擬桌面使用[Azure 監視器](../azure-monitor/overview.md)來監視和警示，就像許多其他 Azure 服務一樣。 這可讓系統管理員透過單一介面來識別問題。 服務會為使用者和系統管理動作建立活動記錄。 每個活動記錄都落在下列類別之下：  
+
+- 管理活動：
+    - 追蹤是否嘗試使用 Api 或 PowerShell 來變更 Windows 虛擬桌面物件是成功的。 例如，有人可以使用 PowerShell 成功建立主機集區嗎？
+- 摘要 
+    - 使用者是否可以成功訂閱工作區？ 
+    - 使用者是否會看到所有在遠端桌面用戶端發佈的資源？
+- 連線: 
+    - 當使用者起始並完成服務的連接時。 
+- 主機註冊： 
+    - 工作階段主機是否已在連線時成功向服務註冊？
+- Errors： 
+    - 使用者是否遇到特定活動的任何問題？ 只要資訊與活動聯結，這項功能就可以產生一個追蹤活動資料的資料表。
+- 把  
+    - 已達到活動存留期的特定步驟。 例如，在會話期間，使用者已負載平衡至特定主機，然後使用者在連線期間登入，依此類推。
 
 因為診斷角色服務本身是 Windows 虛擬桌面的一部分，所以不會在診斷結果中顯示 Windows 虛擬桌面的連接。 當使用者遇到網路連線問題時，會發生 Windows 虛擬桌面連接問題。
 
-## <a name="why-you-should-use-log-analytics"></a>為何應該使用 Log Analytics
+Azure 監視器可讓您分析 Windows 虛擬桌面的資料，並查看虛擬機器（VM）效能計數器，全部都在相同的工具中。 本文將告訴您如何為您的 Windows 虛擬桌面環境啟用診斷功能。 
 
-我們建議您在 Azure 用戶端中使用 Log Analytics 來分析診斷資料，而不會超過單一使用者的疑難排解。 您可以將 VM 效能計數器提取到 Log Analytics 中，有一個工具可以收集部署的資訊。
+>[!NOTE] 
+>若要瞭解如何在 Azure 中監視您的 Vm，請參閱[使用 Azure 監視器監視 azure 虛擬機器](../azure-monitor/insights/monitor-vm-azure.md)。 此外，請務必[參閱效能計數器閾值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)，以進一步瞭解您在工作階段主機上的使用者體驗。
 
 ## <a name="before-you-get-started"></a>開始之前
 
-您必須先[建立工作區](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)，才可以使用 Log Analytics 搭配診斷功能。
+您必須先建立工作區，才可以使用 Log Analytics。 若要這麼做，請遵循下列兩篇文章中的指示進行：
 
-建立工作區之後，請依照[將 Windows 電腦連線至 Azure 監視器](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)中的指示取得下列資訊： 
+- 如果您偏好使用 Azure 入口網站，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
+- 如果您偏好 PowerShell，請參閱[使用 Powershell 建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace-posh.md)。
+
+建立工作區之後，請依照[將 Windows 電腦連線至 Azure 監視器](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)中的指示取得下列資訊：
 
 - 工作區識別碼
 - 工作區的主要金鑰
 
 您稍後會在安裝過程中需要此資訊。
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>將診斷資料推送至您的工作區 
+請務必審查 Azure 監視器的版權管理，以針對監視和維護您的 Windows 虛擬桌面環境的人員啟用資料存取。 如需詳細資訊，請參閱以[Azure 監視器開始使用角色、許可權和安全性](../azure-monitor/platform/roles-permissions-security.md)。 
 
-您可以將診斷資料從您的 Windows 虛擬桌面租使用者推送至您工作區的 Log Analytics。 您可以在第一次建立租使用者時立即設定此功能，方法是將工作區連結至您的租使用者，或者您可以稍後使用現有的租使用者進行設定。
+## <a name="push-diagnostics-data-to-your-workspace"></a>將診斷資料推送至您的工作區
 
-若要在設定新租使用者時，將租使用者連結至 Log Analytics 工作區，請執行下列 Cmdlet，以 TenantCreator 使用者帳戶登入 Windows 虛擬桌面： 
+您可以將診斷資料從您的 Windows 虛擬桌面物件推送至工作區的 Log Analytics。 當您第一次建立物件時，可以立即設定這項功能。
 
-```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
-```
+若要設定新物件的 Log Analytics：
 
-如果您要連結現有的租使用者，而不是新的租使用者，請改為執行此 Cmdlet： 
+1. 登入 Azure 入口網站並移至**Windows 虛擬桌面**。 
 
-```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
-```
+2. 流覽至您想要為其捕獲記錄和事件的物件（例如主機集區、應用程式群組或工作區）。 
 
-針對您想要連結到 Log Analytics 的每個租使用者，您必須執行這些 Cmdlet。 
+3. 選取畫面左側功能表中的 [**診斷設定**]。 
+
+4. 在畫面右側出現的功能表中，選取 [**新增診斷設定**]。 
+   
+    [診斷設定] 頁面中顯示的選項會根據您要編輯的物件種類而有所不同。
+
+    例如，當您啟用應用程式群組的診斷功能時，您會看到設定檢查點、錯誤和管理的選項。 針對工作區，這些類別會設定摘要來追蹤使用者訂閱應用程式清單的時間。 若要深入瞭解診斷設定，請參閱[建立診斷設定以收集 Azure 中的資源記錄和計量](../azure-monitor/platform/diagnostic-settings.md)。 
+
+     >[!IMPORTANT] 
+     >請記得針對您想要監視的每個 Azure Resource Manager 物件啟用診斷。 啟用診斷之後，資料將可供活動使用。 第一次設定之後，可能需要幾個小時的時間。  
+
+5. 輸入設定的名稱，然後選取 [**傳送至 Log Analytics**]。 您使用的名稱不應該有空格，且應符合[Azure 命名慣例](../azure-resource-manager/management/resource-name-rules.md)。 在記錄中，您可以選取您想要新增到 Log Analytics 的所有選項，例如檢查點、錯誤、管理等。
+
+6. 選取 [儲存]  。
 
 >[!NOTE]
->如果您不想要在建立租使用者時連結 Log Analytics 工作區，請改`New-RdsTenant`為執行 Cmdlet。 
+>Log Analytics 可讓您選擇將資料串流至[事件中樞](../event-hubs/event-hubs-about.md)，或將它封存在儲存體帳戶中。 若要深入瞭解這項功能，請參閱將[azure 監視資料串流至事件中樞](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)，並[將 azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)。 
+
+## <a name="how-to-access-log-analytics"></a>如何存取 Log Analytics
+
+您可以在 Azure 入口網站或 Azure 監視器上存取 Log Analytics 工作區。
+
+### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>存取 Log Analytics 工作區上的 Log Analytics
+
+1. 登入 Azure 入口網站。
+
+2. 搜尋**Log Analytics 工作區**。 
+
+3. 在 [服務] 下，選取 [ **Log Analytics 工作區**]。 
+   
+4. 從清單中，選取您為 Windows 虛擬桌面物件設定的工作區。
+
+5. 在您的工作區中，選取 [**記錄**]。 您可以使用**搜尋**功能來篩選您的功能表清單。 
+
+### <a name="access-log-analytics-on-azure-monitor"></a>存取 Azure 監視器上的 Log Analytics
+
+1. 登入 Azure 入口網站
+
+2. 搜尋並選取 [**監視**]。 
+
+3. 選取 [**記錄**]。
+
+4. 依照 [記錄] 頁面中的指示來設定查詢的範圍。  
+
+5. 您已準備好查詢診斷。 所有診斷資料表都有 "WVD" 前置詞。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>傳送診斷事件的步調
 
-完成時，會將診斷事件傳送至 Log Analytics。  
+完成時，會將診斷事件傳送至 Log Analytics。
+
+Log Analytics 只會報告下列連接活動的中繼狀態：
+
+- Started
+- 連線
+- Completed
 
 ## <a name="example-queries"></a>查詢範例
 
-下列查詢範例會顯示診斷功能如何為系統中最常用的活動產生報告：
+下列查詢範例顯示診斷功能如何為系統中最常用的活動產生報告。
 
-第一個範例會顯示使用者使用支援的遠端桌面用戶端所起始的連線活動：
+若要取得使用者所建立的連線清單，請執行此 Cmdlet：
 
-```powershell
-WVDActivityV1_CL 
-
-| where Type_s == "Connection" 
-
+```kusto
+WVDConnections 
+| project-away TenantId,SourceSystem 
+| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
 | join kind=leftouter ( 
-
-    WVDErrorV1_CL 
-
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g   
-
-| join  kind=leftouter (  
-
-    WVDCheckpointV1_CL 
-
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g  
-
-|project-away ActivityId_g, ActivityId_g1 
+    WVDErrors 
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId 
+    ) on CorrelationId     
+| join kind=leftouter ( 
+   WVDCheckpoints 
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId 
+   | mv-apply Checkpoints on 
+    ( 
+        order by todatetime(Checkpoints['Time']) asc 
+        | summarize Checkpoints=makelist(Checkpoints) 
+    ) 
+   ) on CorrelationId 
+| project-away CorrelationId1, CorrelationId2 
+| order by  TimeGenerated desc 
 ```
 
-下一個範例查詢會顯示租使用者上系統管理員的管理活動：
+若要查看使用者的摘要活動：
 
-```powershell
-WVDActivityV1_CL 
+```kusto
+WVDFeeds  
+| project-away TenantId,SourceSystem  
+| join kind=leftouter (  
+    WVDErrors  
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
+    ) on CorrelationId      
+| join kind=leftouter (  
+   WVDCheckpoints  
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
+   | mv-apply Checkpoints on  
+    (  
+        order by todatetime(Checkpoints['Time']) asc  
+        | summarize Checkpoints=makelist(Checkpoints)  
+    )  
+   ) on CorrelationId  
+| project-away CorrelationId1, CorrelationId2  
+| order by  TimeGenerated desc 
+```
 
-| where Type_s == "Management" 
+若要尋找單一使用者的所有連接： 
 
-| join kind=leftouter ( 
-
-    WVDErrorV1_CL 
-
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g   
-
-| join  kind=leftouter (  
-
-    WVDCheckpointV1_CL 
-
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g  
-
-|project-away ActivityId_g, ActivityId_g1 
+```kusto
+|where UserName == "userupn" 
+|take 100 
+|sort by TimeGenerated asc, CorrelationId 
 ```
  
-## <a name="stop-sending-data-to-log-analytics"></a>停止將資料傳送至 Log Analytics 
 
-若要停止將資料從現有的租使用者傳送到 Log Analytics，請執行下列 Cmdlet 並設定空字串：
+若要尋找使用者每天連線的次數：
 
-```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+```kusto
+WVDConnections 
+|where UserName == "userupn" 
+|take 100 
+|sort by TimeGenerated asc, CorrelationId 
+|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d) 
+```
+ 
+
+若要依使用者尋找會話持續時間：
+
+```kusto
+let Events = WVDConnections | where UserName == "userupn" ; 
+Events 
+| where State == "Connected" 
+| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated 
+| join (Events 
+| where State == "Completed" 
+| project EndTime=TimeGenerated, CorrelationId) 
+on CorrelationId 
+| project Duration = EndTime - StartTime, ResourceAlias 
+| sort by Duration asc 
 ```
 
-您必須針對您想要停止傳送資料的每個租使用者執行此 Cmdlet。 
+若要尋找特定使用者的錯誤：
+
+```kusto
+WVDErrors
+| where UserName == "userupn" 
+|take 100
+```
+
+若要找出是否發生特定的錯誤：
+
+```kusto
+WVDErrors 
+| where CodeSymbolic =="ErrorSymbolicCode" 
+| summarize count(UserName) by CodeSymbolic 
+```
+
+若要尋找所有使用者的錯誤發生：
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+>[!NOTE]
+>最重要的疑難排解資料表是 WVDErrors。 使用此查詢來瞭解當使用者訂閱應用程式或桌上型電腦清單時，使用者活動（例如連線或摘要）所發生的問題。 資料表會顯示管理錯誤以及主機註冊問題。
+>
+>在公開預覽期間，如果您需要協助解決問題，請確定您在說明要求中提供錯誤的 CorrelationID。 此外，請確定您的服務錯誤值一律會顯示 ServiceError = "false"。 「False」值表示問題可以由您端上的系統管理工作解決。 如果 ServiceError = "true"，您必須將問題呈報給 Microsoft。
 
 ## <a name="next-steps"></a>後續步驟 
 

@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509511"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872412"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -95,6 +95,14 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 使用上傳的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用**裝置識別碼**作為分葉`CNAME`憑證中的值。 您的裝置程式碼需要應用程式的**識別碼範圍**值、**裝置識別碼**和對應的裝置憑證。
 
+#### <a name="sample-device-code"></a>範例裝置程式碼
+
+下列來自[Azure IoT NODE.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的範例示範 node.js 裝置用戶端如何使用 x.509 分葉憑證和 DPS 向 IoT Central 應用程式註冊：
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+如需對等的 C 範例，請參閱[Azure IoT C 布建裝置用戶端 SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)中的[prov_dev_client_sample。](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)
+
 ### <a name="for-testing-purposes-only"></a>僅供測試之用
 
 僅供測試之用，您可以使用下列公用程式來產生根、中繼和裝置憑證：
@@ -106,11 +114,6 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
   - 將憑證儲存為 .cer 檔案，以上傳至您的 IoT Central 應用程式。
   - 使用來自 IoT Central 應用程式的驗證碼來產生驗證憑證。
   - 使用您的裝置識別碼作為工具的參數，為您的裝置建立分葉憑證。
-
-### <a name="further-reference"></a>進一步的參考
-
-- [于 raspberrypi 的範例執行](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [C 中的範例裝置用戶端](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>連接而不註冊裝置
 

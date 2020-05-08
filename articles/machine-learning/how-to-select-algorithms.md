@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 03/05/2020
-ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/07/2020
+ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78328658"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891354"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何選取 Azure Machine Learning 的演算法
 
@@ -40,7 +40,35 @@ Machine Learning 設計工具提供完整的演算法組合，例如[多元決�
 
 除了 Azure Machine Learning 演算法功能提要中的指引，請記住為解決方案選擇機器學習演算法時的其他需求。 以下是要考慮的其他因素，例如精確度、定型時間、線性、參數數目和功能數目。
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>資料科學案例的其他需求
+## <a name="comparison-of-machine-learning-algorithms"></a>機器學習演算法的比較
+
+有些學習演算法會對資料結構或想要的結果做出特定假設。 如果可以找到符合需求的假設，您就能獲得更實用的結果、更精確的預測或更快的定型時間。
+
+下表摘要列出分類、回歸和叢集系列中一些最重要的演算法特性：
+
+| **演算法** | **精確** | **定型時間** | **線性** | **參數** | **注意事項** |
+| --- |:---:|:---:|:---:|:---:| --- |
+| **分類系列** | | | | | |
+| [雙類別羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |好  |快速 |是 |4 | |
+| [雙類別決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |5 |顯示較慢的計分時間。 建議不要使用一個 vs-All 多元，因為在累積樹狀結構預測中，因踏板鎖定而造成的評分時間較慢 |
+| [二元推進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 |高記憶體使用量 |
+| [雙類別類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
+| [雙類別平均認知](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |好 |中度 |是 |4 | |
+| [雙類別支援向量機器](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |5 |適用於大型特徵集 |
+| [多元羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
+| [多元決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |5 |顯示較慢的計分時間 |
+| [多元促進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 | 通常會以較少涵蓋範圍的一些小風險來改善精確度 |
+| [多元類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
+| [一對一與所有多元](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |請參閱選取的兩個類別方法的屬性 |
+| **回歸系列** | | | | | |
+| [線性回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
+| [決策樹系回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|非常好 |中度 |否 |5 | |
+| [促進式決策樹回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 |高記憶體使用量 |
+| [類神經網路回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
+| **群集系列** | | | | | |
+| [K-表示群集](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |是 |8 |叢集演算法 |
+
+## <a name="requirements-for-a-data-science-scenario"></a>資料科學案例的需求
 
 一旦知道您想要如何處理資料之後，您必須決定解決方案的其他需求。 
 
@@ -117,7 +145,6 @@ Machine Learning 設計工具提供完整的演算法組合，例如[多元決�
 特徵選取指的是將統計測試套用至輸入的程式（指定的輸出）。 目標是要判斷哪些資料行比較適合輸出的預測。 Machine Learning 設計工具中的以[篩選為基礎的特徵選取模組](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri)，可提供多個特徵選取演算法供您選擇。 此模組包含相互關聯方法，例如皮耳森相互關聯和卡方的值。
 
 您也可以使用[排列功能重要性模組](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri)來計算資料集的一組功能重要性分數。 接著，您可以利用這些分數來協助您判斷要在模型中使用的最佳功能。
-
 
 ## <a name="next-steps"></a>後續步驟
 

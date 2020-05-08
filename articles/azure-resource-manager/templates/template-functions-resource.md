@@ -3,12 +3,12 @@ title: 範本函式-資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231300"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891012"
 ---
 # <a name="resource-functions-for-arm-templates"></a>適用于 ARM 範本的資源函式
 
@@ -116,7 +116,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager （ARM
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字串 |資源的唯一識別碼。 |
 | apiVersion |是 |字串 |資源執行階段狀態的 API 版本。 一般而言，格式為 **yyyy-mm-dd**。 |
-| functionValues |否 |物件 | 具有函式值的物件。 只針對以下函式提供此物件：可支援在儲存體帳戶上接收具有參數值的物件，例如 **listAccountSas**。 本文會顯示傳遞函式值的範例。 |
+| functionValues |否 |物件 (object) | 具有函式值的物件。 只針對以下函式提供此物件：可支援在儲存體帳戶上接收具有參數值的物件，例如 **listAccountSas**。 本文會顯示傳遞函式值的範例。 |
 
 ### <a name="valid-uses"></a>有效用法
 
@@ -168,9 +168,9 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager （ARM
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | EventGrid/網域 | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
 | Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
 | Kusto/叢集/資料庫 | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
 | LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
@@ -888,10 +888,10 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| sameRGOutput | 字串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | 字串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | 字串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | 字串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>訂用帳戶
 

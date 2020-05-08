@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128076"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612889"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>適用於 Windows 虛擬桌面使用者的自訂摘要
 
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 您可以自訂摘要，讓 RemoteApp 和遠端桌面資源以可辨識的方式顯示給使用者。
 
-首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
+## <a name="prerequisites"></a>Prerequisites
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+本文假設您已下載並安裝 Windows 虛擬桌面 PowerShell 模組。 如果您尚未這麼做，請依照[設定 PowerShell 模組](powershell-module.md)中的指示進行。
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>自訂 RemoteApp 的顯示名稱
 
@@ -32,16 +36,55 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 若要取得應用程式群組的已發佈 Remoteapp 清單，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](media/get-rdsremoteapp.png)
 
-若要為 RemoteApp 指派易記名稱，請執行下列 PowerShell Cmdlet：
+若要為 RemoteApp 指派易記名稱，請使用必要的參數執行下列 Cmdlet：
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](media/set-rdsremoteapp.png)
+
+例如，假設您使用下列範例 Cmdlet 取出了目前的應用程式：
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+輸出看起來會像這樣：
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+若要更新易記名稱，請執行此 Cmdlet：
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+若要確認您已成功更新好記名稱，請執行此 Cmdlet：
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+Cmdlet 應該會提供下列輸出：
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>自訂遠端桌面的顯示名稱
 
@@ -50,20 +93,39 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 若要取出遠端桌面資源，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](media/get-rdsremotedesktop.png)
 
 若要為遠端桌面資源指派易記名稱，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>在 Azure 入口網站中自訂顯示名稱
+
+您可以使用 Azure 入口網站設定易記名稱，以變更已發佈之遠端桌面的顯示名稱。 
+
+1. 在 <https://portal.azure.com> 登入 Azure 入口網站。 
+
+2. 搜尋**Windows 虛擬桌面**。
+
+3. 在 [服務] 下，選取 [ **Windows 虛擬桌面**]。 
+
+4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側的 [**應用程式群組**]，然後選取您要編輯之應用程式群組的名稱。 
+
+5. 選取畫面左側功能表中的 [**應用程式**]。
+
+6. 選取您要更新的應用程式，然後輸入新的**顯示名稱**。 
+
+7. 選取 [儲存]  。 您編輯的應用程式現在應該會顯示已更新的名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您已自訂使用者的摘要，您可以登入 Windows 虛擬桌面的用戶端來進行測試。若要這麼做，請繼續進行連線至 Windows 虛擬桌面的作法：
     
- * [從 Windows 10 或 Windows 7 連線](connect-windows-7-and-10.md)
- * [從網頁瀏覽器連線](connect-web.md) 
+ * [與 Windows 10 或 Windows 7 連接](connect-windows-7-and-10.md)
+ * [與 Web 用戶端連線](connect-web.md) 
+ * [與 Android 用戶端連線](connect-android.md)
+ * [與 iOS 用戶端連線](connect-ios.md)
+ * [與 macOS 用戶端連線](connect-macos.md)

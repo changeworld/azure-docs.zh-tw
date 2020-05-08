@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858360"
+ms.locfileid: "82871592"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
@@ -31,6 +31,7 @@ ms.locfileid: "82858360"
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * 腳本只支援內部 Load Balancer 升級，而不需要任何輸出連接。 如果您的部分 Vm 需要[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，請參閱此[頁面](upgrade-InternalBasic-To-PublicStandard.md)以取得相關指示。 
+* 基本 Load Balancer 必須位於與後端 Vm 和 Nic 相同的資源群組中。
 * 如果在不同的區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新的區域中建立新的 VM。
 * 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。 請確定它們不是空的。
 
@@ -47,7 +48,7 @@ ms.locfileid: "82858360"
 
 ## <a name="download-the-script"></a>下載腳本
 
-從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)下載遷移腳本。
+從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)下載遷移腳本。
 ## <a name="use-the-script"></a>使用腳本
 
 有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：

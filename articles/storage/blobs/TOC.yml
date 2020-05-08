@@ -90,7 +90,7 @@
             - name: 1 - 讓您的應用程式保持高可用性
               href: storage-create-geo-redundant-storage.md
             - name: 2 - 從主要區域模擬資料讀取失敗
-              href: storage-simulate-failure-ragrs-account-app.md
+              href: simulate-primary-region-failure.md
         - name: 使用 Azure Key Vault 加密及解密 Blob
           href: storage-encrypt-decrypt-blobs-key-vault.md
     - name: 範例
@@ -107,6 +107,9 @@
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: 儲存體帳戶
@@ -146,13 +149,17 @@
             - name: 使用 Azure 私人端點
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 資料備援
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 資料保護
           items:
-            - name: 資料備援
-              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 災害復原和容錯移轉
-              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 設計可用性高的應用程式
-              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 版本控制
+              href: versioning-overview.md
+            - name: 虛刪除
+              href: soft-delete-overview.md
+            - name: 快照集
+              href: snapshots-overview.md
+            - name: 變更摘要
+              href: storage-blob-change-feed.md
         - name: 存取和效能層級
           items:
             - name: 存取層級
@@ -163,6 +170,8 @@
               href: storage-blob-performance-tiers.md
             - name: 管理 Azure Blob 儲存體生命週期
               href: storage-lifecycle-management-concepts.md
+        - name: 災害復原和容錯移轉
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 效能、調整和成本最佳化
           items:
             - name: 效能和延展性檢查清單
@@ -247,8 +256,6 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 事件處理
           href: storage-blob-event-overview.md
-        - name: 變更摘要
-          href: storage-blob-change-feed.md
         - name: 分頁 Blob 功能
           href: storage-blob-pageblob-overview.md
         - name: 靜態網站
@@ -282,8 +289,6 @@
               href: storage-blob-properties-metadata.md
             - name: 複製 Blob (.NET)
               href: storage-blob-copy.md
-            - name: 建立和管理 Blob 快照集 (.NET)
-              href: storage-blob-snapshots.md
         - name: 保護 Blob 資料
           items:
             - name: 授與 Blob 資料的存取權
@@ -370,16 +375,28 @@
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 設定和管理不變性原則
               href: storage-blob-immutability-policies-manage.md
-        - name: 變更資料複寫的方式
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 災害復原
+        - name: 管理資料備援
+          items:
+            - name: 變更資料複寫的方式
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 設計可用性高的應用程式
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 保護您的資料
+          items:
+            - name: 啟用 Blob 版本設定
+              href: versioning-enable.md
+            - name: 啟用虛刪除
+              href: soft-delete-enable.md
+            - name: 建立快照集 (.NET)
+              href: snapshots-manage-dotnet.md
+            - name: 處理變更摘要記錄
+              href: storage-blob-change-feed-how-to.md
+        - name: 管理災害復原
           items:
             - name: 檢查上次同步時間屬性
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 初始化帳戶容錯移轉
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 復原已刪除的 Blob
-              href: storage-blob-soft-delete.md
         - name: 使用儲存體模擬器
           items:
             - name: 使用 Azurite open-source 模擬器
@@ -398,8 +415,6 @@
           href: storage-blob-event-quickstart.md
         - name: 利用 Blob 索引
           href: storage-blob-index-how-to.md
-        - name: 處理變更摘要記錄
-          href: storage-blob-change-feed-how-to.md
         - name: 傳送資料
           items:
             - name: AzCopy
@@ -639,6 +654,11 @@
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
         - name: 使用事件方格將資料插入 Databricks 差異資料表
           href: data-lake-storage-events.md
+    - name: 範例
+      items:
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: 處理巨量資料

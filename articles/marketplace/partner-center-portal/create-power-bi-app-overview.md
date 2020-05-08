@@ -1,5 +1,5 @@
 ---
-title: Power BI 應用程式建立總覽-Azure Marketplace
+title: Power BI 應用程式建立總覽-Microsoft AppSource
 description: 本文說明將 Power BI 應用程式發佈至 Microsoft AppSource 的高階步驟。 同時也提供您 Power BI 應用程式必須符合才能發佈到商業 marketplace 的技術和商務需求。
 author: anbene
 ms.author: mingshen
@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732668"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837833"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
-
-> [!IMPORTANT]
-> 我們正在將您 Power BI 應用程式供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請依照 Cloud Partner 入口網站的[Power BI 應用程式供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer)專案中的指示來管理您的優惠。
 
 本文說明如何將 Power BI 應用程式發佈到 Microsoft [AppSource](https://appsource.microsoft.com/)。 Power BI 應用程式會封裝可自訂的內容，包括資料集、報表和儀表板。 然後，您可以使用應用程式搭配其他 Power BI 平臺使用 AppSource、執行開發人員所允許的調整和自訂，並將它連接到您自己的資料。
 
@@ -30,7 +27,7 @@ ms.locfileid: "81732668"
 - 從這些市場獲得高品質的潛在客戶。
 - 由 Microsoft 現場和電話銷售團隊推廣您的服務。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 :::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="發佈 Power BI 應用程式的步驟總覽" border="false":::
 
@@ -39,7 +36,7 @@ ms.locfileid: "81732668"
 1. 在 Power BI 中建立應用程式。 您會收到「套件安裝」連結，這是供應專案的主要技術資產。 在合作夥伴中心建立供應專案之前，請先將測試套件傳送至生產階段前。 如需詳細資訊，請參閱[什麼是 Power BI 應用程式？](https://docs.microsoft.com/power-bi/service-template-apps-overview)。
 2. 新增行銷材料，例如官方名稱、描述和標誌。
 3. 包含供應專案的法律和支援檔，例如使用規定、隱私權原則、支援原則和使用者協助。
-4. 建立供應專案：使用合作夥伴中心來編輯詳細資料，包括供應專案描述、行銷材料、法律資訊、支援資訊和資產規格。
+4. 建立供應專案–使用合作夥伴中心來編輯詳細資料，包括供應專案描述、行銷材料、法律資訊、支援資訊和資產規格。
 5. 提交以供發佈。
 6. 監視合作夥伴中心內的程式，其中 AppSource 上架小組會測試、驗證及認證您的應用程式。
 7. 經過認證之後，請在其測試環境中檢查應用程式，並加以發行。 這會在 AppSource （其「上線」）上列出。
@@ -79,6 +76,6 @@ ms.locfileid: "81732668"
 - 提供符合準則的內容，以在 AppSource 上列出您的供應專案。 如需詳細資訊，請參閱[讓應用程式在 AppSource 上列出？做法如下](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)：
 - 同意並遵循[Microsoft 隱私權聲明](https://privacy.microsoft.com/privacystatement)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-step"></a>後續步驟
 
 - [在合作夥伴中心建立 Power BI 應用程式供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

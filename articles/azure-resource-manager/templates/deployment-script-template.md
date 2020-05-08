@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610797"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872329"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
@@ -304,8 +304,8 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 執行腳本和疑難排解時，需要儲存體帳戶和容器實例。 您可以選擇指定現有的儲存體帳戶，否則腳本服務會自動建立儲存體帳戶和容器實例。 使用現有儲存體帳戶的需求：
 
-- 支援的儲存體帳戶種類包括：一般用途 v2 帳戶、一般用途 v1 帳戶和 fileStorage 帳戶。 如需詳細資訊，請參閱[儲存體帳戶的類型](../../storage/common/storage-account-overview.md)。
-- 必須關閉儲存體帳戶防火牆規則。 請參閱[設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md)
+- 支援的儲存體帳戶種類包括：一般用途 v2、一般用途 v1 和 FileStorage 帳戶。 只有 FileStorage 支援 premium SKU。 如需詳細資訊，請參閱[儲存體帳戶的類型](../../storage/common/storage-account-overview.md)。
+- 目前不支援儲存體帳戶防火牆規則。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md)。
 - 部署腳本的使用者指派受控識別必須具有管理儲存體帳戶的許可權，其中包括讀取、建立、刪除檔案共用。
 
 若要指定現有的儲存體帳戶，請將下列 json 新增至的屬性`Microsoft.Resources/deploymentScripts`元素：
@@ -316,6 +316,16 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
   "storageAccountKey": "myKey"
 },
 ```
+
+- **storageAccountName**：指定儲存體帳戶的名稱。
+- **storageAccountKey "**：指定其中一個儲存體帳戶金鑰。 您可以使用[`listKeys()`](./template-functions-resource.md#listkeys)函數來取出金鑰。 例如：
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
 
 如需完整`Microsoft.Resources/deploymentScripts`的定義範例，請參閱[範例範本](#sample-templates)。
 
@@ -336,7 +346,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 - **retentionInterval**：指定將保留腳本資源的時間間隔，之後將會過期和刪除。
 
 > [!NOTE]
-> 不建議將部署腳本資源用於其他用途。
+> 不建議針對其他目的使用由腳本服務產生的儲存體帳戶和容器實例。 視腳本生命週期而定，可能會移除這兩個資源。
 
 ## <a name="run-script-more-than-once"></a>執行腳本超過一次
 

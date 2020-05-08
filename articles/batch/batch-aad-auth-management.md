@@ -3,12 +3,13 @@ title: 使用 Azure Active Directory 驗證 Batch 管理解決方案
 description: 探索使用 Azure Active Directory 從使用 Batch Management .NET 程式庫的應用程式進行驗證。
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114780"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608450"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch Management 解決方案
 
@@ -28,7 +29,7 @@ Azure [Active Directory Authentication Library][aad_adal] (ADAL) 為 Azure AD �
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-完成註冊程序後，您會看到應用程式識別碼以及針對應用程式列出的物件 (服務主體) 識別碼。  
+完成註冊程序後，您會看到應用程式識別碼以及針對應用程式列出的物件 (服務主體) 識別碼。
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Azure [Active Directory Authentication Library][aad_adal] (ADAL) 為 Azure AD �
     ![搜尋您的應用程式名稱](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. 顯示 [設定]**** 刀鋒視窗。 在 [API 存取]**** 區段中，選取 [必要權限]****。
-4. 按一下 [新增]**** 以新增必要權限。 
+4. 按一下 [新增]**** 以新增必要權限。
 5. 在步驟 1 中，輸入 **Windows Azure 服務管理 API**，從結果清單選取該 API，然後按一下 [選取]**** 按鈕。
 6. 在步驟 2 中，選取**存取 Azure 傳統部署模型做為組織使用者**旁的核取方塊，然後按一下 [選取]**** 按鈕。
 7. 按一下 **[完成]** 按鈕。
@@ -70,11 +71,11 @@ AccountManagement 範例應用程式會定義這些端點的常數。 將這些�
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>參考您的應用程式識別碼 
+## <a name="reference-your-application-id"></a>參考您的應用程式識別碼
 
 用戶端應用程式使用應用程式識別碼 (也稱為用戶端識別碼) 在執行階段存取 Azure AD。 在 Azure 入口網站中註冊您的應用程式後，更新程式碼以使用 Azure AD 針對已註冊應用程式所提供的應用程式識別碼。 在 AccountManagement 範例應用程式中，從 Azure 入口網站將應用程式識別碼複製到適當的常數︰
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>取得 Azure AD 驗證權杖
 
-在 Azure AD 租用戶中註冊 AccountManagement 範例，並使用您的值更新範例原始程式碼之後，範例就準備好使用 Azure AD 進行驗證。 當您執行範例時，ADAL 會嘗試取得驗證權杖。 在此步驟中，它會提示您輸入您的 Microsoft 認證︰ 
+在 Azure AD 租用戶中註冊 AccountManagement 範例，並使用您的值更新範例原始程式碼之後，範例就準備好使用 Azure AD 進行驗證。 當您執行範例時，ADAL 會嘗試取得驗證權杖。 在此步驟中，它會提示您輸入您的 Microsoft 認證︰
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-您提供認證之後，範例應用程式可以繼續發出已驗證要求給 Batch 管理服務。 
+您提供認證之後，範例應用程式可以繼續發出已驗證要求給 Batch 管理服務。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -117,7 +118,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 若要深入了解 Azure AD，請參閱 [Azure Active Directory 文件](https://docs.microsoft.com/azure/active-directory/)。 [Azure 程式碼範例](https://azure.microsoft.com/resources/samples/?service=active-directory)程式庫中有深入的範例示範如何使用 ADAL。
 
-若要使用 Azure AD 驗證 Batch 服務應用程式，請參閱[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)。 
+若要使用 Azure AD 驗證 Batch 服務應用程式，請參閱[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)。
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什麼是 Azure Active Directory？"

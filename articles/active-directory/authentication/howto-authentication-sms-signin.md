@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517ff16cd1cbf9bfe31404d3b1b3993a02d6dae9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770558"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871564"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory （預覽）設定和啟用以 SMS 為基礎之驗證的使用者
 
@@ -38,9 +38,9 @@ ms.locfileid: "81770558"
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租使用者。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 您需要 Azure AD 租使用者中的*全域系統管理員*許可權，才能啟用以 SMS 為基礎的驗證。
-* 在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
+* 在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 每個啟用的使用者都必須具有下列其中一項 Azure AD、Office 365 或 Microsoft 365 授權：
     * [Azure AD Premium P1 或 P2][azuread-licensing]
-    * [Microsoft 365 （M365） F1 或 F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 （M365） F1 或 f3][m365-firstline-workers-licensing]或[Office 365 f1][o365-f1]或[F3][o365-f3]
     * [Enterprise Mobility + Security （EMS） e3 或 e5][ems-licensing]或[Microsoft 365 （M365） e3 或 e5][m365-licensing]
 
 ## <a name="limitations"></a>限制
@@ -164,3 +164,5 @@ ms.locfileid: "81770558"
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
 [ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
+[o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
+[o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab

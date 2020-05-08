@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037635"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872615"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什麼是 Azure Machine Learning 設計工具 (預覽)？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +82,7 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫
 
 ![模組屬性](./media/concept-designer/properties.png)
 
-如需流覽可用機器學習服務演算法程式庫的協助，請參閱[演算法 & 模組參考總覽](algorithm-module-reference/module-reference.md)
+如需流覽可用機器學習服務演算法程式庫的協助，請參閱[演算法 & 模組參考總覽](algorithm-module-reference/module-reference.md)。 如需選擇演算法的協助，請參閱[Azure Machine Learning 演算法](algorithm-cheat-sheet.md)功能提要。
 
 ## <a name="compute-resources"></a><a name="compute"></a>計算資源
 
@@ -91,9 +91,10 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫
 | 計算目標 | 訓練 | 部署 |
 | ---- |:----:|:----:|
 | Azure Machine Learning Compute | ✓ | |
+| Azure Machine Learning 計算執行個體 | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-計算目標會附加至您的[Azure Machine Learning 工作區](concept-workspace.md)。 您可以在[Azure Machine Learning Studio （傳統）](https://ml.azure.com)中管理工作區中的計算目標。
+計算目標會附加至您的[Azure Machine Learning 工作區](concept-workspace.md)。 您會在[Azure Machine Learning studio](https://ml.azure.com)的工作區中管理計算目標。
 
 ## <a name="deploy"></a>部署
 
@@ -103,7 +104,7 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連接互動式畫
 
 若要瞭解如何部署您的模型，請參閱[教學課程：使用設計工具部署機器學習服務模型](tutorial-designer-automobile-price-deploy.md)。
 
-## <a name="publish"></a>發行
+## <a name="publish"></a>發佈
 
 您也可以將管線發佈至**管線端點**。 與即時端點類似，管線端點可讓您使用 REST 呼叫從外部應用程式提交新的管線執行。 不過，您無法使用管線端點即時傳送或接收資料。
 

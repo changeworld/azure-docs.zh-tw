@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082589"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901290"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 虛擬機器的 Azure 磁碟加密常見問題
 
@@ -21,7 +21,7 @@ ms.locfileid: "82082589"
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Windows Vm 的 Azure 磁碟加密是什麼？
 
-適用于 Windows Vm 的 Azure 磁碟加密會使用 Windows 的 Bitlocker 功能來提供作業系統磁片和資料磁片的完整磁片加密。 此外，當[VolumeType 參數為 All](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk)時，它會提供暫時資源磁片的加密。  從 VM 加密到儲存後端的內容流程。 因此，會使用客戶管理的金鑰提供端對端加密。
+適用于 Windows Vm 的 Azure 磁碟加密會使用 Windows 的 BitLocker 功能來提供作業系統磁片和資料磁片的完整磁片加密。 此外，當[VolumeType 參數為 All](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk)時，它會提供暫存磁片的加密。  從 VM 加密到儲存後端的內容流程。 因此，會使用客戶管理的金鑰提供端對端加密。
  
 請參閱[支援的 vm 和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)。
  
@@ -61,7 +61,7 @@ Azure 磁碟加密 GA 支援 Azure Resource Manager 範本、Azure PowerShell �
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure 磁碟加密與使用客戶管理的金鑰的儲存體伺服器端加密有何不同，以及何時應該使用每個解決方案？
 
-Azure 磁碟加密使用客戶管理的金鑰，提供 OS 磁片、資料磁片和暫時資源磁片的端對端加密。
+Azure 磁碟加密使用客戶管理的金鑰，為 OS 磁片、資料磁片和暫存磁片提供端對端加密。
 
 - 如果您的需求包括加密上述所有和端對端加密，請使用 Azure 磁碟加密。 
 - 如果您的需求包括僅使用客戶管理的金鑰來加密待用資料，則使用[伺服器端加密搭配客戶管理的金鑰](disk-encryption.md)。 您無法使用客戶管理的金鑰，以 Azure 磁碟加密和儲存體伺服器端加密來加密磁片。
@@ -100,7 +100,7 @@ Azure 磁碟加密有其先決條件。 請參閱[建立和設定 Azure 磁碟�
 Azure 磁碟加密有其先決條件。 請參閱[具有 Azure AD](disk-encryption-windows-aad.md)內容的 Azure 磁碟加密，以建立 Azure Active Directory 應用程式、建立新的金鑰保存庫，或設定現有的金鑰保存庫以進行磁片加密存取，以啟用加密並保護秘密和金鑰。 如需金鑰加密金鑰支援案例的詳細資訊，請參閱[建立和設定具有 Azure AD 之 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍支援使用 Azure AD 應用程式 (舊版) 來進行 Azure 磁碟加密？
-是。 仍支援使用 Azure AD 應用程式來進行磁碟加密。 不過，在加密新的 VM 時，建議您使用新的方法，而不要使用 Azure AD 應用程式來加密。 
+可以。 仍支援使用 Azure AD 應用程式來進行磁碟加密。 不過，在加密新的 VM 時，建議您使用新的方法，而不要使用 Azure AD 應用程式來加密。 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>是否可以將使用 Azure AD 應用程式加密的 VM，遷移至未使用 Azure AD 應用程式的加密？
   目前沒有直接的移轉途徑，可將使用 Azure AD 應用程式加密的機器移轉至未使用 Azure AD 應用程式的加密。 此外，也沒有直接的途徑可從未使用 Azure AD 應用程式的加密移轉至使用 AD 應用程式的加密。 
@@ -129,9 +129,6 @@ Azure 磁碟加密會根據 Windows 版本，在 BitLocker 中選取加密方法
 \*Windows 2012 及更新版本中不支援具有擴散器的 AES 256 位。
 
 若要判斷 Windows OS 版本，請在您的虛擬機器中執行 ' winver ' 工具。
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll，並指定所有的磁碟區類型，是否會因此從已加密的資料磁碟機上清除資料？
-否，不會從已使用「Azure 磁碟加密」進行加密的資料磁碟機中清除資料。 就像 EncryptFormatAll 不會重新加密 OS 磁碟機一樣，它也不會重新加密已加密的資料磁碟機。 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>我可以備份和還原已加密的 VM 嗎？ 
 

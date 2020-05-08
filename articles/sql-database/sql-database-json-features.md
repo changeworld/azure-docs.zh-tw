@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 968da0154f5a2587531e7594956a069f11c110d2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687747"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890966"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的 JSON 功能
 Azure SQL Database 可讓您剖析及查詢以「JavaScript 物件標記法」 [(JSON)](https://www.json.org/) 格式表示的資料，然後將您的關聯式資料匯出成 JSON 文字。 Azure SQL 資料庫中可用的 JSON 案例如下：
@@ -192,5 +192,5 @@ END
 * [MSDN 文件](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9 影片](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-若要了解將 JSON 整合到您應用程式中的各種案例，請參閱這段 [Channel 9 影片](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的示範，或從 [JSON 部落格文章](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中尋找符合您使用案例的情況。
+若要了解將 JSON 整合到您應用程式中的各種案例，請參閱這段 [Channel 9 影片](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的示範，或從 [JSON 部落格文章](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)中尋找符合您使用案例的情況。
 

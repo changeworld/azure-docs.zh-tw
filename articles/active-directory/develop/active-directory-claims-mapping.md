@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263188"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871215"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>操作說明：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -44,7 +44,7 @@ ms.locfileid: "79263188"
 
 有些宣告集界定了自己在權杖中的使用方式和使用時機。
 
-| 宣告集 | 說明 |
+| 宣告集 | 描述 |
 |---|---|
 | 核心宣告集 | 無論原則為何，都存在於每個權杖中。 這些宣告也都將被視為受限制的宣告，無法予以修改。 |
 | 基本宣告集 | 包含會根據預設向權杖發出的宣告 (除了核心宣告集以外)。 您可以使用宣告對應原則，省略或修改基本宣告。 |
@@ -142,7 +142,7 @@ ms.locfileid: "79263188"
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| password |
+| 密碼 |
 | platf |
 | polids |
 | pop_jwk |
@@ -321,7 +321,7 @@ ms.locfileid: "79263188"
 | User | othermail | 其他郵件 |
 | User | country | Country |
 | User | city | City |
-| User | State | State |
+| User | State | 狀況 |
 | User | jobtitle | 職稱 |
 | User | employeeid | 員工識別碼 |
 | User | facsimiletelephonenumber | 傳真電話號碼 |
@@ -358,7 +358,7 @@ ms.locfileid: "79263188"
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：轉換方法和預期的輸入和輸出
 
-|TransformationMethod|預期的輸入|預期的輸出|說明|
+|TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
 |Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
@@ -410,7 +410,7 @@ ms.locfileid: "79263188"
 
 | TransformationMethod | 限制 |
 | ----- | ----- |
-| ExtractMailPrefix | None |
+| ExtractMailPrefix | 無 |
 | Join | 所聯結的尾碼必須是資源租用戶的已驗證網域。 |
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
@@ -435,7 +435,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您不熟悉 Azure AD，建議您先[瞭解如何取得 Azure AD 租](quickstart-create-new-tenant.md)使用者，再繼續進行這些範例。
 
@@ -484,7 +484,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
    1. 若要建立原則，請執行下列命令：  
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令：
@@ -524,6 +524,6 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 若要瞭解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對企業應用程式自訂 saml 權杖中發出的宣告](active-directory-saml-claims-customization.md)

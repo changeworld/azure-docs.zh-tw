@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 列出 Azure RBAC 中的角色定義 |Microsoft Docs
-description: 瞭解如何使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API，列出 Azure RBAC 中的內建和自訂角色。
+title: 列出 Azure 角色定義-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來列出 Azure 內建和自訂角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062991"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891263"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>列出 Azure RBAC 中的角色定義
+# <a name="list-azure-role-definitions"></a>列出 Azure 角色定義
 
-角色定義是可以執行的許可權集合，例如讀取、寫入和刪除。 一般會直接稱之為角色。 [Azure 角色型存取控制（RBAC）](overview.md)具有超過120的內[建角色](built-in-roles.md)，您也可以建立自己的自訂角色。 本文說明如何列出可用來授與 Azure 資源存取權的內建和自訂角色。
+角色定義是可以執行的許可權集合，例如讀取、寫入和刪除。 一般會直接稱之為角色。 [Azure 角色型存取控制（AZURE RBAC）](overview.md)擁有超過120的內[建角色](built-in-roles.md)，您也可以建立自己的自訂角色。 本文說明如何列出可用來授與 Azure 資源存取權的內建和自訂角色。
 
 若要查看 Azure Active Directory 的系統管理員角色清單，請參閱[Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
@@ -344,6 +344,55 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     > | `$filter=atScopeAndBelow()` | 列出指定範圍和任何指派的角色定義。 |
     > | `$filter=type+eq+'{type}'` | 列出指定類型的角色定義。 角色類型可以是`CustomRole`或。 `BuiltInRole` |
 
+下列要求會列出訂用帳戶範圍中的自訂角色定義：
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+以下顯示輸出的範例：
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>列出角色定義
 
 若要列出特定角色的詳細資料，請使用[角色定義-get](/rest/api/authorization/roledefinitions/get)或[Role 定義-依識別碼取得](/rest/api/authorization/roledefinitions/getbyid)REST API。
@@ -372,9 +421,45 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
      
 1. 將 *{roleDefinitionId}* 取代為角色定義識別碼。
 
+下列要求會列出「[讀取](built-in-roles.md#reader)者」角色定義：
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+以下顯示輸出的範例：
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-- [適用於 Azure 資源的內建角色](built-in-roles.md)
-- [適用於 Azure 資源的自訂角色](custom-roles.md)
-- [使用 Azure RBAC 和 Azure 入口網站列出角色指派](role-assignments-list-portal.md)
-- [使用 Azure RBAC 和 Azure 入口網站新增或移除角色指派](role-assignments-portal.md)
+- [Azure 內建角色](built-in-roles.md)
+- [Azure 自訂角色](custom-roles.md)
+- [使用 Azure 入口網站列出 Azure 角色指派](role-assignments-list-portal.md)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)

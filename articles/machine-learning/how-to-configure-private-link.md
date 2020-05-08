@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411190"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891359"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
@@ -118,7 +118,7 @@ az group deployment create \
 
 若要保護您的工作區所使用的 Azure Key Vault，您可以將它放在虛擬網路內，或為其啟用私用連結。
 
-如需將金鑰保存庫放在虛擬網路中的詳細資訊，請參閱搭配[使用金鑰保存庫實例與您的工作區](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
+如需將金鑰保存庫放在虛擬網路中的詳細資訊，請參閱搭配[使用金鑰保存庫實例與您的工作區](how-to-enable-virtual-network.md#key-vault-instance)。
 
 如需啟用金鑰保存庫私人連結的詳細資訊，請參閱[整合 Key Vault 與 Azure 私人連結](/azure/key-vault/private-link-service)。
 
@@ -131,7 +131,7 @@ az group deployment create \
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-如需在虛擬網路內保護 Azure Container Registry 的詳細資訊，請參閱[使用 Azure Container Registry](how-to-enable-virtual-network.md#use-azure-container-registry)。
+如需在虛擬網路內保護 Azure Container Registry 的詳細資訊，請參閱[使用 Azure Container Registry](how-to-enable-virtual-network.md#azure-container-registry)。
 
 > [!IMPORTANT]
 > 如果您使用 Azure Machine Learning 工作區的私人連結，並將工作區的 Azure Container Registry 放在虛擬網路中，您也必須套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區透過私用連結與 ACR 進行通訊。

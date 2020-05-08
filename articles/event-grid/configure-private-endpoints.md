@@ -7,20 +7,17 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101003"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890818"
 ---
-# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>設定 Azure 事件方格主題或網域的私人端點（預覽）
+# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的私人端點
 您可以使用[私用端點](../private-link/private-endpoint-overview.md)，透過[私人連結](../private-link/private-link-overview.md)，直接從虛擬網路將事件輸入到主題和網域，而不需要經過公用網際網路。 私人端點會針對您的主題或網域使用來自 VNet 位址空間的 IP 位址。 如需詳細概念資訊，請參閱[網路安全性](network-security.md)。
 
 本文說明如何設定主題或網域的私用端點。
-
-> [!IMPORTANT]
-> 私人端點功能僅適用于進階層中的主題和網域。 若要從基本層升級至高階層，請參閱[更新定價層](update-tier.md)一文。 
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站 
 本節說明如何使用 Azure 入口網站來建立主題或網域的私用端點。
@@ -157,7 +154,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
@@ -205,7 +202,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 - 資源群組
 - 虛擬網路
 - 虛擬網路中的子網
-- Azure 事件方格主題（premium 層）
+- Azure 事件方格主題
 - 主題的私用端點
 
 > [!NOTE]
@@ -254,8 +251,7 @@ az network vnet subnet update \
 az eventgrid topic create \
     --resource-group $resourceGroupName \
     --name $topicName \
-    --location $location \
-    --sku "Premium" 
+    --location $location
 
 # verify that the topic was created.
 az eventgrid topic show \
@@ -369,7 +365,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 
 ```azurepowershell-interactive
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="premium"}; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
+$body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `

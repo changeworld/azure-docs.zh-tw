@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114156"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872152"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>變更 Azure Cosmos DB 的 MongoDB API 中的資料流程
 
@@ -45,7 +45,7 @@ ms.locfileid: "81114156"
 
 下列範例顯示如何取得集合中所有專案的變更資料流程。 這個範例會建立一個資料指標，以便在插入、更新或取代專案時加以監看。 若`$match`要取得`$project`變更資料流程， `fullDocument`必須要有階段、階段和選項。 目前不支援使用變更資料流程來監看刪除作業。 因應措施是，您可以在要刪除的專案上新增軟標記。 例如，您可以在名為「已刪除」的專案中新增屬性。 當您想要刪除專案時，可以將「已刪除」設定為`true` ，並在專案上設定 TTL。 因為將「已刪除」 `true`更新為更新，所以這項變更將會顯示在變更資料流程中。
 
-### <a name="javascript"></a>JavaScript：
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 var cursor = db.coll.watch(
@@ -61,8 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-
-### <a name="c"></a>C#：
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()

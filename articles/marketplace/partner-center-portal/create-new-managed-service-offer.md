@@ -1,5 +1,5 @@
 ---
-title: 在商業 Marketplace 中建立新的受控服務供應專案
+title: 在 Microsoft 商業 marketplace 中建立受控服務供應專案
 description: 如何使用合作夥伴中心的商業 Marketplace 入口網站，為 Azure Marketplace 中的清單建立新的受控服務供應專案。
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147916"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871916"
 ---
-# <a name="create-a-new-managed-service-offer"></a>建立新的受控服務供應專案
+# <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
-> [!IMPORTANT]
-> 我們正將受控服務供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請遵循將[受控服務供應專案發佈至 Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md)中的指示，在 Cloud Partner 入口網站中管理您的供應專案。
+受控服務提供啟用[Azure 燈塔](../../lighthouse/overview.md)案例的協助。 當客戶接受受控服務供應專案時，他們就可以將資源上線，以進行[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
 
-受控服務提供啟用[Azure 燈塔](../../lighthouse/overview.md)案例的協助。 當客戶接受受控服務供應專案時，他們就可以將資源上線，以進行[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
-
-若要開始建立受控服務供應專案，請確定您先[建立合作夥伴中心帳戶](./create-account.md)，並開啟 [[商業 Marketplace] 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，並選取 [**總覽**] 頁面。 您必須擁有[銀級或金級雲端平臺專長認證等級](https://partner.microsoft.com/membership/cloud-platform-competency)，或必須是[AZURE 專家的 MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
-
-![合作夥伴中心的商業 Marketplace 儀表板](./media/new-offer-overview.png)
-
->[!Note]
-> 發行供應專案之後，在 [合作夥伴中心] 中對供應專案所做的編輯，只會在系統中更新，並在重新發佈之後儲存。 進行變更之後，請確定您提交發行集的供應專案。
+您必須擁有[銀級或金級雲端平臺專長認證等級](https://partner.microsoft.com/membership/cloud-platform-competency)，或必須是[AZURE 專家的 MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-選取 [ **+ 新增供應**專案] 按鈕，然後選取 [**受管理的服務**] 功能表項目。 [**新增供應**專案] 對話方塊隨即出現。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左側導覽功能表中，選取 [**商用 Marketplace** > **總覽**]。
+3. 在 [總覽] 頁面上，選取 [ **+ 新增供應** > 專案] [**受控服務**]。
 
-### <a name="offer-id-and-alias"></a>供應專案識別碼和別名
+    ![說明左側導覽功能表。](./media/new-offer-managed-service.png)
 
-- **供應專案 ID**：您帳戶中每個供應專案的唯一識別碼。 在 marketplace 供應專案的 URL 位址中，客戶會看到此識別碼。 此識別碼只能包含小寫英數位元（包括連字號和底線，但不能有空白字元）、限制為50個字元，而且在您選取 [**建立**] 之後就無法變更。  例如，如果您在這裡輸入 [*測試-供應專案-1* ]，則供應`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`專案 URL 會是。
+>[!NOTE]
+>發行供應專案之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應專案後出現在店面中。 請務必在進行變更之後，一律重新發佈。
 
-- **供應專案別名**：用來參照合作夥伴中心內供應專案的名稱。 此名稱不會在 marketplace 中使用，而且與供應專案名稱和其他將向客戶顯示的值不同。 在您選取 [**建立**] 之後，就無法變更這個值。
+## <a name="new-offer"></a>新增供應項目
 
-輸入**供應專案識別碼**和供應專案**別名**之後，請選取 [**建立**]。 接著，您就能夠處理供應專案的所有不同部分。
+輸入**供應專案識別碼**。 這是您帳戶中每個供應專案的唯一識別碼。
+
+* Marketplace 供應專案和 Azure Resource Manager 範本的網址中，客戶可以看到此識別碼（如果適用的話）。
+* 請一律使用小寫字母和數字。 它可以包含連字號和底線，但不能有空格，而且限制為50個字元。 例如，如果您輸入 [**測試-供應專案-1**]，則供應專案 web `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`位址會是。
+* 選取 [**建立**] 之後，即無法變更供應專案識別碼。
+
+輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。
+
+* 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
+* 選取 [**建立**] 之後，就無法變更第一個供應專案別名。
+
+選取 [**建立**] 以產生供應專案並繼續。
 
 ## <a name="offer-setup"></a>供應專案設定
-
-[**供應專案設定**] 頁面會要求您提供下列資訊。 完成這些欄位之後，請務必選取 [**儲存**]。
 
 ## <a name="connect-lead-management"></a>連接潛在客戶管理
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-請注意，根據[受控服務認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，必須要有**潛在客戶目的地**。 這會在每次客戶部署您的供應專案時，于您的 CRM 系統中建立一筆記錄。
+根據[受管理的服務認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，必須要有**潛在客戶目的地**。 這會在每次客戶部署您的供應專案時，于您的 CRM 系統中建立一筆記錄。
 
 如需詳細資訊，請參閱[潛在客戶管理總覽](./commercial-marketplace-get-customer-leads.md)。
 
-請記得先**儲存**頁面，再繼續進行下一節。
+選取 [**儲存草稿**] 再繼續。
 
 ## <a name="properties"></a>屬性
 
-[**屬性**] 頁面可讓您定義用來在 marketplace 上分組供應專案的類別，以及支援供應專案的法律合約。 完成此頁面後，選取 [**儲存**]。
+此頁面可讓您定義用來在 marketplace 上分組供應專案的類別，以及支援供應專案的法律合約。
 
 ### <a name="category"></a>類別
 
@@ -67,14 +71,16 @@ ms.locfileid: "82147916"
 
 在 [**條款及條件**] 欄位中提供您自己的法律條款與條件。 您也可以提供 URL，以便找到您的條款及條件。 客戶必須接受這些條款，才能試用您的供應專案。
 
+選取 [**儲存草稿**] 再繼續。
+
 ## <a name="offer-listing"></a>供應專案清單
 
-[**供應專案清單**] 頁面可讓您定義供應專案的 marketplace 詳細資料（供應專案名稱、描述、影像等）。
+此頁面可讓您定義供應專案的 marketplace 詳細資料（例如供應專案名稱、描述和映射）。
 
 > [!NOTE]
-> 供應專案清單內容（例如描述、檔、螢幕擷取畫面、使用規定等）不一定要使用英文，只要供應專案的描述開頭為片語，「此應用程式僅適用于 [非英文語言]。」 您也可以提供*有用的連結 URL*來提供內容，而不是供應專案清單內容所使用的語言。
+> 供應專案清單內容（例如描述、檔、螢幕擷取畫面和使用規定）不需要英文，只要供應專案的描述開頭為片語，「此應用程式僅適用于 [非英文語言]。」 您也可以提供*有用的連結 URL*來提供內容，而不是供應專案清單內容所使用的語言。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名稱
 
 您在此處輸入的名稱會向客戶顯示，做為供應專案清單的標題。 當您建立供應專案時，此欄位會預先填入您在**供應專案別名**中輸入的文字，但您可以變更此值。 此名稱可能是商標（您可以包含商標或著作權符號）。 名稱不能超過50個字元，而且不能包含任何 emoji。
 
@@ -100,23 +106,13 @@ ms.locfileid: "82147916"
 - 請勿依賴特色與功能來銷售您的產品。 反之，要鎖定在您所提供的價值。  
 - 請盡可能使用業界特定詞彙或凸顯優點的字眼。
 
-若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來格式化您的描述。
+若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來套用格式設定。
 
-![使用 rich 文字編輯器](./media/text-editor2.png)
+![使用 rich 文字編輯器](./media/rich-text-editor.png)
 
-使用下列指示來使用 rich 文字編輯器：
-
-- 若要變更內容的格式，請反白顯示您想要格式化的文字，然後選取文字樣式，如下所示：
-
-     ![使用 rich 文字編輯器來變更文字格式](./media/text-editor3.png)
-
-- 若要將專案符號或編號清單新增至文字，請使用下列選項：
-
-     ![使用 rich 文字編輯器加入清單](./media/text-editor4.png)
-
-- 若要新增或移除文字的縮排，請使用下列選項：
-
-     ![使用 rich 文字編輯器縮排](./media/text-editor5.png)
+| <center>變更文字格式 | <center>新增專案符號或編號 | <center>新增或移除文字縮排 |
+| --- | --- | --- |
+| <center>![使用 rich 文字編輯器來變更文字格式](./media/text-editor3.png) |  <center>![使用 rich 文字編輯器加入清單](./media/text-editor4.png) |  <center>![使用 rich 文字編輯器縮排](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>隱私權原則連結
 
@@ -138,12 +134,19 @@ ms.locfileid: "82147916"
 
 在本節中，您可以提供向客戶顯示供應專案時所要使用的標誌和影像。 所有影像都必須是 .png 格式。
 
->[!Note]
+>[!NOTE]
 >如果您在上傳檔案時發生問題，請確定您的區域網路不會https://upload.xboxlive.com封鎖合作夥伴中心所使用的服務。
 
 #### <a name="marketplace-logos"></a>Marketplace 標誌
 
-需要四個標誌大小： **Small （40x40）**、 **Medium （90x90）**、**大型（115x115）** 和**Wide （255x115）**。 您的標誌應遵循這些指導方針：
+提供四個圖元大小的供應專案標誌：
+
+- **小型**（40 x 40）
+- **中**（90 x 90）
+- **大型**（115 x 115）
+- **寬**（255 x 115）
+
+您的標誌應遵循這些指導方針：
 
 - Azure 設計具有簡單的調色盤。 限制標誌上的主要和次要色彩數目。
 - 入口網站的佈景主題色彩是白色與黑色。 請勿使用這些色彩作為標誌的背景色彩。 請使用可讓標誌在入口網站突顯出來的色彩。 建議您使用簡單的主要色彩。
@@ -164,6 +167,8 @@ ms.locfileid: "82147916"
 
 - [Marketplace 供應專案清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+選取 [**儲存草稿**] 再繼續。
+
 ## <a name="preview"></a>預覽
 
 將您的供應專案即時發佈到更廣泛的 marketplace 供應專案之前，您必須先將其提供給有限的預覽物件。 這可讓您先確認您的供應專案會出現在 Azure Marketplace 中，才能讓客戶使用。 Microsoft 支援服務和工程小組也可以在此預覽期間查看您的供應專案。
@@ -171,6 +176,8 @@ ms.locfileid: "82147916"
 您可以在 [**預覽物件**] 區段中輸入 Azure 訂用帳戶識別碼，以定義預覽物件。 您可以手動輸入最多10個訂用帳戶識別碼，或上傳包含最多100個訂用帳戶識別碼的 .csv 檔案。
 
 與這些訂用帳戶相關聯的任何客戶，都能在上線之前，在 Azure Marketplace 中看到供應專案。 請務必在此包含您自己的訂用帳戶，以便預覽您的供應專案。
+
+選取 [**儲存草稿**] 再繼續。
 
 ## <a name="plan-overview"></a>計畫總覽
 
@@ -237,18 +244,20 @@ ms.locfileid: "82147916"
 
 完成計畫的所有章節之後，您可以選取 [ **+ 建立新方案**]，視需要建立額外的計畫。 完成時，選取 [儲存]****。
 
-## <a name="publish"></a>發行
+選取 [**儲存草稿**] 再繼續。
+
+## <a name="publish"></a>發佈
 
 ### <a name="submit-offer-to-preview"></a>提交供應專案以供預覽
 
-當您完成供應專案的所有必要區段之後，請選取入口網站右上角的 [**發佈**]。 系統會將您重新導向至 [**審核及發佈**] 頁面。
+當您完成供應專案的所有必要區段之後，請選取入口網站右上角的 [**審查併發布**]。
 
 如果這是您第一次發佈此供應專案，您可以：
 
 - 請參閱供應專案每個區段的完成狀態。
-  - *未啟動*-表示區段尚未觸及，需要完成。
-  - *不完整*-表示區段具有必須修正的錯誤，或需要提供更多資訊的詳細資訊。 回到一節，並加以更新。
-  - *Complete* -表示區段已完成，所有必要的資料都已提供，而且沒有任何錯誤。 供應專案的所有區段都必須處於「完整」狀態，您才能提交供應專案。
+  - **未啟動**-區段尚未觸及，需要完成。
+  - **不完整**-區段包含需要修正的錯誤，或需要提供更多資訊的詳細資訊。 回到一節，並加以更新。
+  - **Complete** -區段完成，已提供所有必要的資料，而且沒有任何錯誤。 供應專案的所有區段都必須處於「完整」狀態，您才能提交供應專案。
 - 在 [**認證的注意事項**] 區段中，提供測試指示給認證小組，確保您的應用程式已正確測試，以及有助於瞭解應用程式的任何補充注意事項。
 - 選取 [**提交**] 以提交供應專案進行發佈。 當供應專案的預覽版本可供您審查和核准時，我們會傳送電子郵件給您。 返回 [合作夥伴中心]，並選取供應專案的 [**上線**]，將您的供應專案發佈至公用（或私用供應專案給私人物件）。
 

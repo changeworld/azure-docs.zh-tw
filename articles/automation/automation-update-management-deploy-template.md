@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165785"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872198"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本將更新管理解決方案上架
 
@@ -26,6 +26,9 @@ ms.locfileid: "82165785"
 此範本不會將一或多個 Azure 或非 Azure Vm 的上架自動化。
 
 如果您已在訂用帳戶的支援區域中部署 Log Analytics 工作區和自動化帳戶，則不會連結。 工作區尚未部署更新管理解決方案。 使用此範本會成功建立連結並部署更新管理解決方案。 
+
+>[!NOTE]
+>**Nxautomation**使用者上架做為 Linux 更新管理的一部分，只會執行已簽署的 runbook。
 
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。

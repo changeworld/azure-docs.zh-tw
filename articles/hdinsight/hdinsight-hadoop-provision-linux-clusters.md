@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/10/2020
-ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232831"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889265"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集
 
@@ -25,6 +25,8 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 
 > [!IMPORTANT]  
 > HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費是以每分鐘按比例計算，因此不再使用時，請一律刪除您的叢集。 了解如何[刪除叢集。](hdinsight-delete-cluster.md)
+
+如果您同時使用多個叢集，您會想要建立虛擬網路，如果您使用的是 Spark 叢集，也會想要使用 Hive 倉儲連接器。 如需詳細資訊，請參閱[規劃 Azure HDInsight 的虛擬網路](./hdinsight-plan-virtual-network-deployment.md)和[使用 Hive 倉儲連接器整合 Apache Spark 和 Apache Hive](interactive-query/apache-hive-warehouse-connector.md)。
 
 ## <a name="cluster-setup-methods"></a>叢集設定方法
 

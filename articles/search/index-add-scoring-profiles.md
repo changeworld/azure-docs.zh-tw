@@ -3,34 +3,29 @@ title: 使用評分設定檔來提升搜尋排名
 titleSuffix: Azure Cognitive Search
 description: 藉由新增評分設定檔，來提升 Azure 認知搜尋結果的搜尋排名分數。
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231096"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890168"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>將評分設定檔新增至 Azure 認知搜尋服務索引
 
 *計分*會針對排名排序結果集中的每個專案計算搜尋分數。 搜尋結果集中的每個項目會被指派一個搜尋分數，然後從最高排名到最低。
 
  Azure 認知搜尋會使用預設計分來計算初始分數，但您可以透過*評分設定檔*自訂計算。 評分設定檔可讓您更佳地控制搜尋結果中的項目排名。 舉例來說，您可能想根據營收潛力提升某些項目、亦或是提升新項目或庫存過久的項目。  
+
+ 下列影片區段會快速轉寄至評分設定檔在 Azure 認知搜尋中的使用方式。
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>計分設定檔定義
 
  評分設定檔是索引定義的一部分，由加權欄位、函數和參數組成。  
 
@@ -284,7 +279,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  如需更多範例，請參閱 [XML 結構描述：資料類型 (W3.org 網站)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 + [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
 + [建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   

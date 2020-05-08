@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282438"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872430"
 ---
 # <a name="what-is-azure-importexport-service"></a>什麼是 Azure 匯入/匯出服務？
 
@@ -41,7 +41,7 @@ Azure 匯入/匯出服務可用來將硬碟運送到 Azure 資料中心，安全
 * **WAImportExport 工具**：此為執行下列項目的命令列工具：
   * 將運送的磁碟機準備好進行匯入。
   * 協助將資料複製到磁碟機。
-  * 使用 AES 128 位 BitLocker 將磁片磁碟機上的資料加密。 您可以使用外部金鑰保護裝置來保護您的 BitLocker 金鑰。
+  * 使用 AES 256 位 BitLocker 將磁片磁碟機上的資料加密。 您可以使用外部金鑰保護裝置來保護您的 BitLocker 金鑰。
   * 產生匯入建立期間所使用的磁碟機日誌檔案。
   * 協助識別匯出作業所需的磁碟機數目。
 
@@ -131,7 +131,7 @@ Azure 匯入/匯出服務支援與所有 Azure 儲存體帳戶相互複製資料
 
 ## <a name="security-considerations"></a>安全性考量
 
-磁片磁碟機上的資料會使用 AES 128 位 BitLocker 磁碟機加密進行加密。 此加密會在資料傳輸時保護資料。
+磁片磁碟機上的資料會使用 AES 256 位 BitLocker 磁碟機加密進行加密。 此加密會在資料傳輸時保護資料。
 
 針對匯入作業，會使用兩種方式來加密磁碟機。  
 

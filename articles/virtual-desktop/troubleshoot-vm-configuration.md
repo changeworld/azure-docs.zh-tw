@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/03/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cada61f8fa1dfd163062ce22527f41e65291b3f8
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127598"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607243"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>設定工作階段主機虛擬機器
+
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
 
@@ -25,7 +31,7 @@ ms.locfileid: "79127598"
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>Vm 未加入網域
 
-如果您在將 Vm 加入網域時遇到問題，請遵循這些指示。
+如果您在將虛擬機器（Vm）加入網域時遇到問題，請遵循這些指示。
 
 - 使用將[Windows Server 虛擬機器加入受控網域](../active-directory-domain-services/join-windows-vm.md)或使用加入[網域範本](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)中的程式，手動加入 VM。
 - 嘗試從 VM 上的命令列 ping 功能變數名稱。
@@ -77,7 +83,7 @@ ms.locfileid: "79127598"
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>未安裝 Windows 虛擬桌面代理程式和 Windows 虛擬桌面開機載入器
 
-布建 Vm 的建議方式是使用 Azure Resource Manager**建立和布建 Windows 虛擬桌面主機集**區範本。 此範本會自動安裝 Windows 虛擬桌面代理程式和 Windows 虛擬桌面 Agent 開機載入器。
+布建 Vm 的建議方式是使用 Azure 入口網站建立範本。 此範本會自動安裝 Windows 虛擬桌面代理程式和 Windows 虛擬桌面 Agent 開機載入器。
 
 請遵循這些指示來確認已安裝元件，並檢查是否有錯誤訊息。
 
@@ -96,8 +102,8 @@ ms.locfileid: "79127598"
 **修正2：** 確認下列清單中的專案。
 
 - 請確定帳戶沒有 MFA。
-- 請確認租使用者名稱正確，且租使用者存在於 Windows 虛擬桌面中。
-- 確認帳戶至少具有 RDS 參與者許可權。
+- 確認主機集區的名稱正確，且主機集區存在於 Windows 虛擬桌面中。
+- 確認帳戶至少具有 Azure 訂用帳戶或資源群組的參與者許可權。
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>錯誤：驗證失敗，C:\Windows\Temp\ScriptLog.log 發生錯誤
 
@@ -106,16 +112,16 @@ ms.locfileid: "79127598"
 **修正：** 確認下列清單中的專案。
 
 - 手動向 Windows 虛擬桌面服務註冊 Vm。
-- 確認用來連線到 Windows 虛擬桌面的帳戶在租使用者上具有建立主機集區的許可權。
+- 確認用來連線到 Windows 虛擬桌面的帳戶具有 Azure 訂用帳戶或資源群組的許可權，可建立主機集區。
 - 確認帳戶沒有 MFA。
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows 虛擬桌面代理程式未向 Windows 虛擬桌面服務註冊
 
 第一次在工作階段主機 Vm 上安裝 Windows 虛擬桌面代理程式（手動或透過 Azure Resource Manager 範本和 PowerShell DSC）時，它會提供註冊權杖。 下一節涵蓋適用于 Windows 虛擬桌面代理程式和權杖的疑難排解問題。
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>錯誤： RdsSessionHost Cmdlet 中的狀態會顯示為 [無法使用] 狀態
+### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>錯誤： AzWvdSessionHost Cmdlet 中的狀態會顯示為 [無法使用] 狀態
 
-![RdsSessionHost Cmdlet 會將狀態顯示為 [無法使用]。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![AzWvdSessionHost Cmdlet 會將狀態顯示為 [無法使用]。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因：** 代理程式無法將自己更新為新的版本。
 
@@ -128,17 +134,17 @@ ms.locfileid: "79127598"
 5. 完成安裝精靈。
 6. 開啟 [工作管理員]，然後啟動 RDAgentBootLoader 服務。
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>錯誤： Windows 虛擬桌面 Agent 登錄專案 IsRegistered 顯示0的值
+## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>錯誤： Windows 虛擬桌面 Agent 登錄專案 IsRegistered 顯示0的值
 
 **原因：** 註冊權杖已過期，或已產生，其到期值為999999。
 
 **修正：** 請遵循這些指示來修正代理程式登錄錯誤。
 
-1. 如果已經有註冊權杖，請移除 RDSRegistrationInfo。
-2. 使用 Rds-NewRegistrationInfo 產生新的 token。
-3. 確認-ExpriationHours 參數設定為72（最大值為99999）。
+1. 如果已經有註冊權杖，請移除 AzWvdRegistrationInfo。 
+2. 執行**AzWvdRegistrationInfo** Cmdlet 來產生新的權杖。 
+3. 確認 *-ExpriationTime*參數設定為3天。
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>錯誤： Windows 虛擬桌面代理程式在執行 RdsSessionHost 時未回報心跳
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>錯誤： Windows 虛擬桌面代理程式在執行 AzWvdSessionHost 時未回報心跳
 
 **原因1：** RDAgentBootLoader 服務已停止。
 
@@ -180,7 +186,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 在工作階段主機集區 Vm 上安裝或啟用並存堆疊的主要方式有三種：
 
-- 使用 Azure Resource Manager**建立和布建新 Windows 虛擬桌面主機集**區範本
+- 使用 Azure 入口網站建立範本
 - 藉由在主要映射上包含及啟用
 - 在每部 VM 上手動安裝或啟用（或使用延伸模組/PowerShell）
 
@@ -209,13 +215,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 **修正：** 請遵循這些指示，在工作階段主機 VM 上安裝並存堆疊。
 
 1. 使用遠端桌面通訊協定（RDP）以本機系統管理員身分直接進入工作階段主機 VM。
-2. 下載並匯入[Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)以用於您的 powershell 會話（如果您尚未這麼做），然後執行此 Cmdlet 來登入您的帳戶：
-
-    ```powershell
-    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-    ```
-
-3. 透過使用[PowerShell 建立主機集](create-host-pools-powershell.md)區，安裝並存堆疊。
+2. 透過使用[PowerShell 建立主機集](create-host-pools-powershell.md)區，安裝並存堆疊。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>如何修正 Windows 虛擬桌面並存堆疊而無法故障
 
@@ -339,7 +339,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 ## <a name="next-steps"></a>後續步驟
 
 - 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
-- 若要針對在 Windows 虛擬桌面環境中建立租使用者和主機集區的問題進行疑難排解，請參閱[建立租使用者和主機集](troubleshoot-set-up-issues.md)區。
+- 若要針對在 Windows 虛擬桌面環境中建立主機集區的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
 - 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
 - 若要針對 Windows 虛擬桌面用戶端連接的問題進行疑難排解，請參閱[Windows 虛擬桌面服務連接](troubleshoot-service-connection.md)。
 - 若要疑難排解遠端桌面用戶端的問題，請參閱針對[遠端桌面用戶端進行疑難排解](troubleshoot-client.md)

@@ -1,32 +1,21 @@
 ---
 title: 在 Azure Migrate 中新增遷移工具
 description: 瞭解如何在 Azure Migrate 中新增遷移工具。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185969"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901455"
 ---
 # <a name="add-migration-tools"></a>新增移轉工具
 
 本文說明如何在[Azure Migrate](migrate-overview.md)中新增遷移工具。
 
-Azure Migrate 提供一種工具中樞，可供評估和遷移至 Azure。 其中包括原生工具、其他 Azure 服務所提供的工具，以及協力廠商獨立軟體廠商（ISV）產品。
-
-如果您想要新增遷移工具，但尚未設定 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。
-
-
-
-## <a name="selecting-an-isv-tool"></a>選取 ISV 工具
-
-如果您選擇[isv 工具](migrate-services-overview.md#isv-integration)來進行遷移，則可以從取得授權開始，或根據 ISV 原則註冊免費試用版。 每個工具中都會有連線至 Azure Migrate 的選項。 部署工具，並遵循工具指示和檔，將工具工作區與 Azure Migrate 連線。 
+- 如果您想要新增遷移工具，但尚未設定 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。
+- 如果您已新增 ISV 工具來進行遷移，請[遵循下列步驟](prepare-isv-movere.md)來準備使用此工具。
 
 ## <a name="select-a-migration-scenario"></a>選取遷移案例
 
