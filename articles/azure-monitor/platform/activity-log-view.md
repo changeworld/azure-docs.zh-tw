@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397313"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559969"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和取出 Azure 活動記錄事件
 
@@ -71,7 +71,7 @@ ms.locfileid: "80397313"
 使用[AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet 從 PowerShell 取出活動記錄。 以下是一些常見的範例。
 
 > [!NOTE]
-> `Get-AzLog` 只提供 15 天的歷程記錄。 使用 **-MaxEvents**參數來查詢超過15天的最後 N 個事件。 若要存取15天之前的事件，請使用 REST API 或 SDK。 如果您未包含 **StartTime**，則預設值是 **EndTime** 減去一小時。 如果您未包含 **EndTime**，則預設值是目前的時間。 所有時間都是採用 UTC 格式。
+> `Get-AzLog` 只提供 15 天的歷程記錄。 使用 **-MaxRecord**參數來查詢超過15天的最後 N 個事件。 若要存取15天之前的事件，請使用 REST API 或 SDK。 如果您未包含 **StartTime**，則預設值是 **EndTime** 減去一小時。 如果您未包含 **EndTime**，則預設值是目前的時間。 所有時間都是採用 UTC 格式。
 
 
 取得在特定日期時間之後建立的記錄檔專案：
@@ -107,7 +107,7 @@ Get-AzLog -Caller 'myname@company.com'
 取得最後1000個事件：
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 

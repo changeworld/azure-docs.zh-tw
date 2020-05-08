@@ -1,29 +1,29 @@
 ---
-title: 建立 Azure VM 技術資產
-description: 本文說明在 Azure Marketplace 上設定容器供應專案的步驟和需求。
+title: Azure 容器供應專案的技術概念-Microsoft 商業 marketplace
+description: 協助您在 Azure Marketplace 上設定容器供應專案的技術資源和指導方針。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730630"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791879"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>建立 Azure VM 技術資產
+# <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應專案
 
 > [!IMPORTANT]
 > 我們正在將您的 Azure 容器供應專案管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請遵循[準備您的容器技術資產](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)以進行 Cloud Partner 入口網站管理您的供應專案中的指示。
 
-本文說明在 Azure Marketplace 上設定容器供應專案的步驟和需求。
+本文提供技術資源和建議，協助您在 Azure Marketplace 上建立容器供應專案。
 
 ## <a name="before-you-begin"></a>開始之前
 
-如需快速入門、教學課程和範例，請參閱[Azure 容器實例](https://docs.microsoft.com/azure/container-instances)。
+如需快速入門、教學課程和範例，請參閱[Azure 容器實例檔](https://docs.microsoft.com/azure/container-instances)。
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
 
@@ -61,6 +61,6 @@ ms.locfileid: "81730630"
 - [教學課程：建立容器映射以部署至 Azure 容器實例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [教學課程：使用 Azure Container Registry 工作在雲端中建立及部署容器映射](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立您的容器供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)專案。

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2096b7899039e7a9d3455bc0c6fb3ec84ebd1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfcb00f56a3cc6f71729fbeaf317ce9447e120ed
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025325"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582601"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 指派具有資源範圍的自訂角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "74025325"
 
 ## <a name="required-permissions"></a>所需的權限
 
-使用全域系統管理員帳戶連接到您的 Azure AD 租使用者，以指派或移除角色。
+使用全域管理員帳戶連接到您的 Azure AD 組織，以指派或移除角色。
 
 ## <a name="prepare-powershell"></a>準備 PowerShell
 

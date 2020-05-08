@@ -2,28 +2,24 @@
 title: Azure AD Connect 布建代理程式：版本發行歷程記錄 |Microsoft Docs
 description: 本文列出 Azure AD Connect 布建代理程式的所有版本，並說明新功能和已修正的問題
 services: active-directory
-documentationcenter: ''
 author: cmmdesai
-manager: daveba
-editor: ''
-ms.assetid: ''
+manager: CelesteDG
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/26/2020
 ms.subservice: app-provisioning
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 559bca4f5020cebe06be7f24f7af5ec2e94bec0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: 9a756d276b194aa8d1acb0297a7b4909a8082a84
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183239"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593240"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect 布建代理程式：版本發行歷程記錄
+
 本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 小組會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
 Microsoft 提供最新代理程式版本的直接支援，還有一個版本。

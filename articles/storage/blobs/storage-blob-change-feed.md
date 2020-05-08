@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536882"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883326"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援（預覽）
 
@@ -42,7 +42,7 @@ ms.locfileid: "79536882"
 
 ## <a name="enable-and-disable-the-change-feed"></a>啟用和停用變更摘要
 
-您必須啟用儲存體帳戶上的變更摘要，才能開始捕獲和記錄變更。 停用變更摘要以停止捕獲變更。 您可以使用入口網站或 Powershell 上 Azure Resource Manager 範本來啟用及停用變更。
+您必須啟用儲存體帳戶上的變更摘要，才能開始捕獲和記錄變更。 停用變更摘要以停止捕獲變更。 您可以使用入口網站或 PowerShell 上 Azure Resource Manager 範本來啟用及停用變更。
 
 當您啟用變更摘要時，請記住以下幾點。
 
@@ -61,15 +61,15 @@ ms.locfileid: "79536882"
 
 使用 Azure 入口網站，在您的儲存體帳戶上啟用變更摘要：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶。
 
 2. 流覽至 [ **Blob 服務**] 底下的 [**資料保護**] 選項。
 
-3. 按一下 [ **Blob 變更**摘要] 底下的 [**已啟用**]
+3. 按一下 [ **Blob 變更**摘要] 底下的 [**已啟用**]。
 
-4. 選擇 [**儲存**] 按鈕以確認您的資料保護設定
+4. 選擇 [**儲存**] 按鈕以確認您的**資料保護**設定。
 
-![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
+    ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,7 +81,7 @@ ms.locfileid: "79536882"
    Install-Module PowerShellGet –Repository PSGallery –Force
    ```
 
-2. 關閉，然後重新開啟 Powershell 主控台。
+2. 關閉，然後重新開啟 PowerShell 主控台。
 
 3. 安裝**Az** preview 模組。
 

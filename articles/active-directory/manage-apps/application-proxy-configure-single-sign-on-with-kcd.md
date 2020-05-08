@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253451"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583132"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
 
@@ -100,11 +100,13 @@ ms.locfileid: "79253451"
 
 ## <a name="sso-for-non-windows-apps"></a>非 Windows 應用程式的 SSO
 
-Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端驗證使用者開始。 一旦要求到達內部部署，Azure AD 應用程式 Proxy 連接器會利用與本機 Active Directory 互動，代表使用者發出 Kerberos 票證。 此程序稱為「Kerberos 限制委派 (KCD)」。 在下一個階段中，要求會傳送至具有此 Kerberos 票證的後端應用程式。 
+Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端驗證使用者開始。 一旦要求到達內部部署，Azure AD 應用程式 Proxy 連接器會利用與本機 Active Directory 互動，代表使用者發出 Kerberos 票證。 此程序稱為「Kerberos 限制委派 (KCD)」。 
 
-有許多定義如何傳送這類要求的通訊協定。 預期大部分的非 Windows 伺服器都會與 SPNEGO 進行交涉。 Azure AD 應用程式 Proxy 支援此通訊協定，但預設為停用。 您可將伺服器設定為 SPNEGO 或標準 KCD ，但無法同時設定為兩者。
+在下一個階段中，要求會傳送至具有此 Kerberos 票證的後端應用程式。 
 
-如果您為 SPNEGO 設定連接器電腦，請確定該連接器群組中的所有其他連接器也都已採用 SPNEGO 進行設定。 預定採用標準 KCD 的應用程式則應透過其他並非針對 SPNEGO 進行設定的連接器路由傳送。
+有數個機制會定義如何在這類要求中傳送 Kerberos 票證。 大部分的非 Windows 伺服器預期會以 SPNEGO token 的形式接收它。 Azure AD 應用程式 Proxy 支援這項機制，但預設為停用。 連接器可以設定為 SPNEGO 或標準 Kerberos 權杖，但不能兩者都設定。
+
+如果您為 SPNEGO 設定連接器電腦，請確定該連接器群組中的所有其他連接器也都已採用 SPNEGO 進行設定。 需要標準 Kerberos 權杖的應用程式應該透過未設定為 SPNEGO 的其他連接器來路由傳送。
  
 
 若要啟用 SPNEGO：

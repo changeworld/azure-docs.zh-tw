@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/14/2020
+ms.date: 04/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81308963"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581702"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護已連線的機器代理程式
 
@@ -261,3 +261,49 @@ Azcmagent 工具（Azcmagent）是用來在安裝期間設定 Azure Arc for serv
 1. 移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)來開啟適用於伺服器的 Azure Arc (預覽)。
 
 2. 依序選取清單中的機器、省略號 (**...**) 和 [刪除]****。
+
+## <a name="update-or-remove-proxy-settings"></a>更新或移除 proxy 設定
+
+若要將代理程式設定為透過 proxy 伺服器與服務通訊，或在部署後移除此設定，或使用下列其中一種方法來完成這項工作。
+
+### <a name="windows"></a>Windows
+
+若要設定 Proxy 伺服器環境變數，請執行下列命令：
+
+```powershell
+# If a proxy server is needed, execute these commands with the proxy URL and port.
+[Environment]::SetEnvironmentVariable("https_proxy","http://{proxy-url}:{proxy-port}","Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+Restart-Service -Name himds
+```
+
+若要設定代理程式以停止透過 proxy 伺服器進行通訊，請執行下列命令來移除 proxy 伺服器環境變數，然後重新開機 agent 服務：
+
+```powershell
+[Environment]::SetEnvironmentVariable("https_proxy",$null,"Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable removed.
+Restart-Service -Name himds
+```
+
+### <a name="linux"></a>Linux
+
+若要設定 proxy 伺服器，請從您下載代理程式安裝套件的目錄執行下列命令：
+
+```bash
+# Reconfigure the connected machine agent and set the proxy server.
+bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+```
+
+若要設定代理程式以停止透過 proxy 伺服器進行通訊，請執行下列命令來移除 proxy 設定：
+
+```bash
+sudo azcmagent_proxy remove
+```
+
+## <a name="next-steps"></a>後續步驟
+
+- 瞭解如何使用[Azure 原則](../../governance/policy/overview.md)來管理您的機器，例如 VM[來賓](../../governance/policy/concepts/guest-configuration.md)設定、確認機器回報至預期的 Log Analytics 工作區、使用[vm 的 Azure 監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)來啟用監視等功能。
+
+- 深入瞭解[Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 當您想要主動監視機器上執行的作業系統和工作負載、使用自動化 runbook 或功能（例如更新管理）進行管理，或使用其他 Azure 服務（例如[Azure 資訊安全中心](../../security-center/security-center-intro.md)）時，需要適用于 Windows 和 Linux 的 Log Analytics 代理程式。

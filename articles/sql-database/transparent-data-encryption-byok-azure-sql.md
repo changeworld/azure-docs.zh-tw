@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: d72a1057c359127eb70f0a82fbf2637409535dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131172"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792032"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明資料加密與客戶管理的金鑰
 
@@ -93,7 +93,7 @@ Azure SQL[透明資料加密（TDE）](https://docs.microsoft.com/sql/relational
 
 ### <a name="recommendations-when-configuring-akv"></a>設定 AKV 時的建議
 
-- 當伺服器存取金鑰保存庫中的 TDE 保護裝置時，在單一訂用帳戶中，最多可將500一般用途或200個業務關鍵資料庫與金鑰保存庫建立關聯，以確保高可用性。 這些數位是以[金鑰保存庫服務限制](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)中的經驗為基礎。 這裡的目的是要避免伺服器容錯移轉後的問題，因為它會對保存庫觸發多個金鑰作業，因為該伺服器上有資料庫。
+- 當伺服器存取金鑰保存庫中的 TDE 保護裝置時，在單一訂用帳戶中，最多可將500一般用途或200個業務關鍵資料庫與金鑰保存庫建立關聯，以確保高可用性。 這些數位是以[金鑰保存庫服務限制](https://docs.microsoft.com/azure/key-vault/general/service-limits)中的經驗為基礎。 這裡的目的是要避免伺服器容錯移轉後的問題，因為它會對保存庫觸發多個金鑰作業，因為該伺服器上有資料庫。
 
 - 在金鑰保存庫上設定資源鎖定，以控制可以刪除此重要資源的人員，並防止意外或未經授權的刪除作業。 深入瞭解[資源鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 

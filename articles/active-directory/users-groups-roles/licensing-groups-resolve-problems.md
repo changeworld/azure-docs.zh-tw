@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025704"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582688"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>識別及解決 Azure Active Directory 中群組的授權指派問題
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 ## <a name="duplicate-proxy-addresses"></a>重複的 Proxy 位址
 
-如果您使用 Exchange Online，則租用戶中有些使用者可能錯誤地設定相同的 Proxy 位址值。 當以群組為基礎的授權嘗試指派授權給這類使用者時，將會失敗，並顯示 [Proxy 位址已在使用中]。
+如果您使用 Exchange Online，則組織中的某些使用者可能會不正確地使用相同的 proxy 位址值進行設定。 當以群組為基礎的授權嘗試指派授權給這類使用者時，將會失敗，並顯示 [Proxy 位址已在使用中]。
 
 > [!TIP]
 > 若要查看是否有重複的 Proxy 位址，請針對 Exchange Online 執行下列 PowerShell Cmdlet：

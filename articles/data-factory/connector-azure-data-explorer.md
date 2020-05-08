@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410770"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560156"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure 資料總管之間複製資料
 
@@ -196,7 +196,7 @@ Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟�
 |:--- |:--- |:--- |
 | type | 複製活動接收器的**類型**屬性必須設定為： **AzureDataExplorerSink**。 | 是 |
 | ingestionMappingName | Kusto 資料表上預先建立的[對應](/azure/kusto/management/mappings#csv-mapping)名稱。 若要將資料行從來源對應到 Azure 資料總管（適用于[所有支援的來源存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)，包括 CSV/JSON/Avro 格式），您可以使用複製活動資料[行對應](copy-activity-schema-and-type-mapping.md)（以名稱隱含或明確設定）和/或 Azure 資料總管對應。 | 否 |
-| additionalProperties | 屬性包，可以用來指定 Azure 資料總管接收尚未設定的任何內嵌屬性。 具體來說，它可以用來指定內嵌標記。 若要深入瞭解，請[流覽 Azure 資料探索資料](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)內嵌檔。 | 否 |
+| additionalProperties | 屬性包，可以用來指定 Azure 資料總管接收尚未設定的任何內嵌屬性。 具體來說，它可以用來指定內嵌標記。 若要深入瞭解，請[流覽 Azure 資料探索資料](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)內嵌檔。 | 否 |
 
 **範例：**
 

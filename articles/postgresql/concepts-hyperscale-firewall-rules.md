@@ -4,14 +4,15 @@ description: 本文說明適用於 PostgreSQL 的 Azure 資料庫超大規模資
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975562"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580920"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則-超大規模資料庫（Citus）
 適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆會防止對您的超大規模資料庫（Citus）協調員節點的所有存取，直到您指定哪些電腦擁有許可權為止。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。

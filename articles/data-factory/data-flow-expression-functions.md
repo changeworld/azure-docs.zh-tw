@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: d0669a89527cabd23b81a0948e8cf9962dcd1e9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232048"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580687"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>對應資料流程中的資料轉換運算式
 
@@ -26,10 +26,10 @@ ms.locfileid: "82232048"
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-數位的絕對值。
+數位的絕對值。  
 * ``abs(-20) -> 20``  
 * ``abs(10) -> 10``  
-___
+___   
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 計算反余弦值* ``acos(1) -> 0.0``  
@@ -116,7 +116,7 @@ ___
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-取得資料流程的所有輸出資料行。 您可以傳遞選擇性的資料流程名稱作為第二個引數。
+取得資料流程的所有輸出資料行。 您可以傳遞選擇性的資料流程名稱作為第二個引數。  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
 ___
@@ -156,8 +156,8 @@ ___
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-在此作業開始執行時取得目前的日期。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 本機時區會當做預設值使用。如需可用的格式，請參閱 JAVA 的 SimpleDateFormat。 ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-* ``currentDate() == toDate('2250-12-31') -> false`` * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
+在此作業開始執行時取得目前的日期。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 本機時區會當做預設值使用。如需可用的格式，請參閱 JAVA 的 SimpleDateFormat。 ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``  
+* ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
 ___
 ### <code>currentTimestamp</code>
@@ -278,9 +278,11 @@ ___
 ___
 ### <code>iifNull</code>
 <code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
-檢查值是否不是 Null，並傳回其他傳回替代的。 它會測試所有輸入，直到找到第一個非 null 值為止* ``iifNull(10, 20) -> 10``  
+檢查第一個參數是否為 null。 如果不是 null，則會傳回第一個參數。 如果是 null，則會傳回第二個參數。 如果指定了三個參數，則行為會與 iif （isNull （value1），value2，value3）相同，如果第一個值不是 null，則會傳回第三個參數。  
+* ``iifNull(10, 20) -> 10``  
 * ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('bojjus', 'bo', 'dumbo') -> 'dumbo'``  
+* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
+* ``iifNull(null, 'data', 'factory') -> 'data'``  
 ___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -373,7 +375,7 @@ ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
 模式是一種符合字面的字串。 例外狀況有下列特殊符號： _ 符合輸入中的任何一個字元（類似于）。 posix 規則運算式中的 .)。% 會比對出輸入中的零或多個字元 (類似於 posix 規則運算式中的 .*)。
-逸出字元為 ''。 如果特殊符號或另一個逸出字元前面有逸出字元，就會逐字比對下列字元。 逸出任何其他字元的動作是無效的。
+逸出字元為 ''。 如果特殊符號或另一個逸出字元前面有逸出字元，就會逐字比對下列字元。 逸出任何其他字元的動作是無效的。  
 * ``like('icecream', 'ice%') -> true``  
 ___
 ### <code>locate</code>
@@ -504,7 +506,7 @@ ___
 ___
 ### <code>pMod</code>
 <code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-數字配對的正模數。
+數字配對的正模數。  
 * ``pmod(-20, 8) -> 4``  
 ___
 ### <code>partitionId</code>
@@ -944,7 +946,7 @@ ___
 ##視窗函式：下列函數僅適用于視窗轉換___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-CumeDist 函式會計算某個值與分割區中所有值的相對位置。 依照分割區的排序，將目前資料列 (含此列) 之前的列數，除以視窗分割區中的總列數，即為結果。 順序中的任何系結值都會評估為相同的位置。
+CumeDist 函式會計算某個值與分割區中所有值的相對位置。 依照分割區的排序，將目前資料列 (含此列) 之前的列數，除以視窗分割區中的總列數，即為結果。 順序中的任何系結值都會評估為相同的位置。  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
@@ -963,7 +965,7 @@ ___
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile 函式會將每個視窗分割區中的資料列分成從 1 到 `n` 的 `n` 個貯體。 貯體值的最大差異為 1。 如果分割區中的資料列數目無法平均分成貯體數，其餘值將會逐一均分給各個貯體，從第一個貯體開始。 NTile 函數適用于計算 tertiles、分量、十分位數和其他常見的摘要統計資料。 函式會在初始化期間計算兩個變數：一般值區的大小會新增一個額外的資料列。 這兩個變數都是以目前分割區的大小為基礎。 在計算過程中，此函式會追蹤目前的資料列數目、目前的貯體數目，和貯體將有所變更的資料列號碼 (bucketThreshold)。 當目前的資料列數目達到貯體閾值時，貯體值將會加一，而閾值會依貯體大小增加 (如果目前的貯體已填補，則額外再加一)。
+NTile 函式會將每個視窗分割區中的資料列分成從 1 到 `n` 的 `n` 個貯體。 貯體值的最大差異為 1。 如果分割區中的資料列數目無法平均分成貯體數，其餘值將會逐一均分給各個貯體，從第一個貯體開始。 NTile 函數適用于計算 tertiles、分量、十分位數和其他常見的摘要統計資料。 函式會在初始化期間計算兩個變數：一般值區的大小會新增一個額外的資料列。 這兩個變數都是以目前分割區的大小為基礎。 在計算過程中，此函式會追蹤目前的資料列數目、目前的貯體數目，和貯體將有所變更的資料列號碼 (bucketThreshold)。 當目前的資料列數目達到貯體閾值時，貯體值將會加一，而閾值會依貯體大小增加 (如果目前的貯體已填補，則額外再加一)。  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

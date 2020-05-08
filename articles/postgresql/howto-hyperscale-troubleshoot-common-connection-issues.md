@@ -5,14 +5,15 @@ keywords: postgresql 連線, 連接字串, 連線問題, 暫時性錯誤, 連線
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abcc979bb36fe0acb663a511875a1e186c2c0739
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74977500"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583960"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>對適用於 PostgreSQL 的 Azure 資料庫的連線問題進行疑難排解-超大規模資料庫（Citus）
 

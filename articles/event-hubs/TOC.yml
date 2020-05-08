@@ -250,7 +250,7 @@
         - name: 用戶端程式庫
           items:
             - name: azure-eventhub 第 5 版
-              href: /python/api/overview/azure/eventhub/client
+              href: /python/api/azure-eventhub/?view=azure-python
             - name: azure-eventhub 第 1 版
               href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: 管理程式庫

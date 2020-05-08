@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 1560a67d73b712ba1f295992fce4f7f1a2ae75bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100697"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792134"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射資源庫
 
@@ -25,26 +25,11 @@ ms.locfileid: "82100697"
 
 共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
 
-| 資源 | 描述|
-|----------|------------|
-| **受控映射** | 可以單獨使用或用來在映射庫中建立**映射版本**的基本映射。 系統會從[一般化](shared-image-galleries.md#generalized-and-specialized-images)vm 建立受控映射。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **快照式** | 可以用來建立**映射版本**的 VHD 複本。 您可以從[特製](shared-image-galleries.md#generalized-and-specialized-images)化 VM （尚未一般化的虛擬機器）取得快照集，然後單獨使用或搭配資料磁片的快照集，以建立特製化的映射版本。
-| **映射庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 映射會定義于資源庫中，並包含影像的相關資訊，以及在您的組織內使用它的需求。 您可以包含類似映射是一般化或特製化、作業系統、最小和最大記憶體需求，以及版本資訊等資訊。 這是映像類型的定義。 |
-| **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 
-
-> [!IMPORTANT]
-> 特製化映射目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知的預覽限制**只能使用入口網站或 API，從特製化映射建立 Vm。 不是預覽版的 CLI 或 PowerShell 支援。
-
-## <a name="before-you-begin"></a>開始之前
-
-若要完成本文中的範例，您必須擁有一般化 VM 的現有受控映射，或特製化 VM 的快照集。 您可以遵循[教學課程：使用 Azure PowerShell 建立 AZURE VM 的自訂映射](tutorial-custom-images.md)來建立受控映射，或建立特製化 VM 的[快照](snapshot-copy-managed-disk.md)集。 對於受控映射和快照集，資料磁片大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
@@ -80,8 +65,8 @@ ms.locfileid: "82100697"
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
 - [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [在共用映像庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共用映像庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 如需共用映像資源庫的詳細資訊，請參閱[概觀](shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](troubleshooting-shared-images.md)。

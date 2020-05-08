@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 436428c8f4a30706ab16ddace2d491287e620646
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244637"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559832"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>設定 Azure VPN 閘道的主動-主動 S2S VPN 連線
 
@@ -36,9 +36,7 @@ ms.locfileid: "79244637"
 您可以將這些結合起來，建立更複雜、高可用性網路拓撲以符合您的需求。
 
 > [!IMPORTANT]
-> 主動-主動模式僅使用下列 SKU： 
->   * VpnGw1、VpnGw2、VpnGw3
->   * HighPerformance (對於舊版 SKU)
+> 「主動-主動」模式適用于「基本」以外的所有 Sku。
 
 ## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 建立並設定主動-主動 VPN 閘道
 以下步驟會將您的 Azure VPN 閘道設定為主動-主動模式。 主動-主動和作用中-待命閘道之間的重要差異：
@@ -82,7 +80,7 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. 連接到您的訂用帳戶，並建立新的資源群組
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.連接至您的訂用帳戶並建立新的資源群組
 請確定您切換為 PowerShell 模式以使用資源管理員 Cmdlet。 如需詳細資訊，請參閱 [搭配使用 Windows PowerShell 與 Resource Manager](../powershell-azure-resource-manager.md)。
 
 開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：

@@ -3,14 +3,14 @@ title: 範本部署假設（預覽）
 description: 在部署 Azure Resource Manager 範本之前，請先判斷您的資源會發生哪些變更。
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509579"
+ms.locfileid: "82581195"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 範本部署假設作業（預覽）
 
@@ -106,7 +106,7 @@ Resource changes: 1 to modify.
 * `New-AzResourceGroupDeployment -Whatif`針對資源群組部署
 * `New-AzSubscriptionDeployment -Whatif`和`New-AzDeployment -Whatif`適用于訂用帳戶層級部署
 
-或者，您可以使用`-Confirm`切換參數來預覽變更，並提示您繼續進行部署。
+您可以使用`-Confirm`切換參數來預覽變更，並提示您繼續進行部署。
 
 * `New-AzResourceGroupDeployment -Confirm`針對資源群組部署
 * `New-AzSubscriptionDeployment -Confirm`和`New-AzDeployment -Confirm`適用于訂用帳戶層級部署
@@ -123,10 +123,10 @@ Resource changes: 1 to modify.
 * `az deployment group what-if`針對資源群組部署
 * `az deployment sub what-if`針對訂用帳戶層級部署
 
-或者，您可以使用`--confirm-with-what-if`參數來預覽變更，並提示您繼續進行部署。
+您可以使用`--confirm-with-what-if`參數（或其簡短形式`-c`）來預覽變更，並提示您繼續進行部署。
 
-* `az deployment group create --confirm-with-what-if`針對資源群組部署
-* `az deployment sub create --confirm-with-what-if`針對訂用帳戶層級部署
+* `az deployment group create --confirm-with-what-if`或`-c`用於資源群組部署
+* `az deployment sub create --confirm-with-what-if`或`-c`適用于訂用帳戶層級部署
 
 上述命令會傳回您可以手動檢查的文字摘要。 若要取得可透過程式設計方式檢查是否有變更的 JSON 物件，請使用：
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 「假設」作業支援使用[部署模式](deployment-modes.md)。 當設定為完成模式時，不在範本中的資源會被刪除。 下列範例會部署未在完整模式中[定義任何資源的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
-若要在部署範本之前預覽變更，請`-Confirm`使用 switch 參數搭配部署命令。 如果變更如您所預期，請確認您想要部署完成。
+若要在部署範本之前預覽變更，請搭配使用 confirm 參數和 deployment 命令。 如果變更如預期般，請確認您想要部署完成。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
