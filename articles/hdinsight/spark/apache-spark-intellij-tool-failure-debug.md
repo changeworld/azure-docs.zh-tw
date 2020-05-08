@@ -9,24 +9,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494600"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857426"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ （預覽）進行 spark 作業調試失敗
 
-本文提供如何在[Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable)中使用 HDInsight 工具來執行**Spark 失敗的調試**程式的逐步指引。
+本文提供如何在[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij)中使用 HDInsight 工具來執行**Spark 失敗的調試**程式的逐步指引。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教學課程使用 Java 8.0.202 版。
   
 * IntelliJ IDEA。 本文使用[INTELLIJ 觀念 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
   
-* Azure Toolkit for IntelliJ。 請參閱[安裝 Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)。
+* Azure Toolkit for IntelliJ。 請參閱[安裝 Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。
 
 * 連接到您的 HDInsight 叢集。 請參閱[連接到您的 HDInsight](apache-spark-intellij-tool-plugin.md)叢集。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209140"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858297"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中樞 - 異地災害復原 
 
@@ -58,9 +58,9 @@ Azure 事件中樞的地理災害復原功能就是一個災害復原解決方�
 | 主要命名空間 | 次要命名空間 | 支援 | 
 | ----------------- | -------------------- | ---------- |
 | 標準 | 標準 | 是 | 
-| Standard | 專用 | 是 | 
+| 標準 | 專用 | 是 | 
 | 專用 | 專用 | 是 | 
-| 專用 | Standard | 否 | 
+| 專用 | 標準 | 否 | 
 
 > [!NOTE]
 > 您無法配對位於相同專用叢集中的命名空間。 您可以配對位於不同叢集中的命名空間。 
@@ -138,7 +138,7 @@ Azure 事件中樞的地理災害復原功能就是一個災害復原解決方�
 ## <a name="next-steps"></a>後續步驟
 
 * [GitHub 上的範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)會逐步解說簡單工作流程，以建立地理配對並在災害復原情況下起始容錯移轉。
-* [REST API 參考](/rest/api/eventhub/disasterrecoveryconfigs)描述用來執行地理災害復原設定的 API。
+* [REST API 參考](/rest/api/eventhub/)描述用來執行地理災害復原設定的 API。
 
 如需事件中樞的詳細資訊，請造訪下列連結：
 
