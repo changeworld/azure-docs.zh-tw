@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cfa89a7921751541d1044d697237946cd63cbfd8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245390"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732048"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 .NET Framework 應用程式
 
@@ -49,11 +49,11 @@ ms.locfileid: "80245390"
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽]  索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。 如果您找不到它們，請選取 [包括發行前版本]  核取方塊。
+1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽]  索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。
 
     ```
-    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
-    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 or later
+    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 or later
     System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 

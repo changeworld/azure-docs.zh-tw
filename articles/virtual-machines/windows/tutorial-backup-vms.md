@@ -1,25 +1,20 @@
 ---
 title: 教學課程 - 在 Azure 入口網站中備份 Windows 虛擬機器
 description: 在本教學課程中，您會學習如何使用 Azure 入口網站，以 Azure 備份保護 Windows 虛擬機器。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456102"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100425"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教學課程：在 Azure 中備份和還原 Windows 虛擬機器的檔案
 
@@ -76,15 +71,15 @@ Azure 備份服務開始備份作業時，會觸發備份擴充功能以建立�
 1. 在左邊的功能表上，選取 [虛擬機器]  ，然後從清單中選取虛擬機器。
 1. 在 VM 刀鋒視窗的 [作業]  區段中，按一下 [備份]  。 [備份]  刀鋒視窗隨即開啟。 
 1. 在刀鋒視窗頂端的功能表中，選取 [檔案復原]  。 [檔案復原]  刀鋒視窗隨即開啟。
-1. 在 [步驟 1：選取復原點]  中，從下拉式清單選取復原點。
-1. 在**步驟 2：下載指令碼以瀏覽及復原檔案**中，按一下 [下載可執行檔]  按鈕。 複製檔案的密碼，並將它儲存在安全的位置。
+1. 在 [步驟 1︰選取復原點]  中，從下拉式清單選取復原點。
+1. 在 [步驟 2：下載指令碼以瀏覽及復原檔案]  中，按一下 [下載執行檔]  按鈕。 複製檔案的密碼，並將它儲存在安全的位置。
 1. 在您的本機電腦上，開啟 [檔案總管]  並瀏覽至 **Downloads** 資料夾，複製下載的 .exe 檔案。 檔案名稱前面會加上您的 VM 名稱。 
 1. 在您的 VM 上 (使用 RDP 連線)，將 .exe 檔案貼到 VM 桌面上。 
 1. 瀏覽至 VM 桌面，按兩下 .exe 檔案。 命令提示字元將會啟動。 程式會將復原點掛接為您可以存取的檔案共用。 當共用建立完成時，輸入 **q** 關閉命令提示字元。
 1. 在您的 VM 上，開啟[檔案總管]  並瀏覽至此檔案共用所使用的磁碟機代號。
 1. 瀏覽到 \inetpub\wwwroot，複製檔案共用中的 **iisstart.png**，並將它貼到 \inetpub\wwwroot。 例如，複製 F:\inetpub\wwwroot\iisstart.png，並將其貼到 c:\inetpub\wwwroot 以復原檔案。
 1. 在您的本機電腦上開啟瀏覽器索引標籤，您已連線到顯示 IIS 預設網頁之 VM 的 IP 位址。 按 CTRL + F5 重新整理瀏覽器頁面。 您現在應該會看到已還原的影像。
-1. 在您的本機電腦上，回到 Azure 入口網站的瀏覽器索引標籤，並在 [步驟 3︰在復原後取消掛接磁碟]  中按一下 [取消掛接磁碟]  按鈕。 如果您忘記執行此步驟，與此掛接點的連線會在 12 小時後自動關閉。 在這 12 小時後，您必須下載新的指令碼來建立新的掛接點。
+1. 在您的本機電腦上，回到 Azure 入口網站的瀏覽器索引標籤，並在 [步驟 3︰在復原後取消掛接磁碟]  按一下 [取消掛接磁碟]  按鈕。 如果您忘記執行此步驟，與此掛接點的連線會在 12 小時後自動關閉。 在這 12 小時後，您必須下載新的指令碼來建立新的掛接點。
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure SQL Database 受控執行個體代理程式執行 SSIS 套件
-description: 瞭解如何使用 Azure SQL Database 受控執行個體代理程式來執行 SSIS 封裝。
+title: 使用 Azure SQL Database 受控執行個體代理程式排程 SSIS 套件執行
+description: 瞭解如何使用 Azure SQL Database 受控執行個體 Agent 來排程 SSIS 套件執行。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,19 +9,22 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144810"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628481"
 ---
-# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>使用 Azure SQL Database 受控執行個體代理程式執行 SSIS 套件
+# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>使用 Azure SQL Database 受控執行個體代理程式排程 SSIS 套件執行
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文說明如何使用 Azure SQL Database 受控執行個體 Agent 來執行 SQL Server Integration Services （SSIS）封裝。 當您使用內部部署環境中的 SQL Server Agent 來排定 SSIS 封裝時，此功能提供的行為類似。
 
 有了這項功能，您就可以在 Azure SQL Database 受控實例或檔案系統（例如 Azure 檔案儲存體）中，執行儲存在 SSISDB 中的 SSIS 封裝。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用這項功能，請[下載](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)並安裝最新版本的 SQL SERVER MANAGEMENT STUDIO （SSMS），也就是18.5 版。
 
 您也需要在 Azure Data Factory 中布[建 AZURE SSIS 整合運行](tutorial-create-azure-ssis-runtime-portal.md)時間。 它會使用 Azure SQL Database 受控實例作為端點伺服器。 
@@ -78,7 +81,7 @@ ms.locfileid: "82144810"
 
         ![檔案來源類型的選項](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
       
-        封裝路徑為** \\ <storage account name>. file.core.windows.net\<檔案共用名稱\<>封裝名稱>. .dtsx**。
+        封裝路徑為**`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`**。
       
         在 [**套件檔案存取認證**] 底下，輸入 azure 檔案帳戶名稱和帳戶金鑰以存取 azure 檔案。 網域已設定為**Azure**。
 
@@ -89,11 +92,14 @@ ms.locfileid: "82144810"
         輸入對應的 [網域]、[使用者名稱] 和 [密碼]，以存取網路共用封裝檔案。
    1. 如果您的套件檔案是使用密碼進行加密，請選取 [**加密密碼**] 並輸入密碼。
 1. 如果您需要設定檔來執行 SSIS**套件，請在 [設定**] 索引標籤上，輸入設定檔路徑。
+   如果您將設定儲存在 Azure 檔案儲存體中，其設定路徑會**`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`** 是。
 1. 在 [**執行選項**] 索引標籤上，您可以選擇是否要使用**Windows 驗證**或**32 位運行**時間來執行 SSIS 封裝。
-1. 在 [**記錄**] 索引標籤上，您可以選擇記錄路徑和對應的記錄存取認證來儲存記錄檔。 根據預設，記錄路徑與封裝資料夾路徑相同，而且記錄存取認證與封裝存取認證相同。
+1. 在 [**記錄**] 索引標籤上，您可以選擇記錄路徑和對應的記錄存取認證來儲存記錄檔。 
+   根據預設，記錄路徑與封裝資料夾路徑相同，而且記錄存取認證與封裝存取認證相同。
+   如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑**`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** 將會是。
 1. 在 [**設定值**] 索引標籤上，您可以輸入屬性路徑和值來覆寫封裝屬性。
  
-   例如，若要覆寫使用者變數的值，請以下列格式輸入其路徑： **\Package.Variables [user：<variable name>：]。值**。
+   例如，若要覆寫使用者變數的值，請以下列格式輸入其路徑： **`\Package.Variables[User::<variable name>].Value`**。
 1. 選取 **[確定]** 以儲存代理程式作業設定。
 1. 啟動 agent 作業以執行 SSIS 封裝。
 

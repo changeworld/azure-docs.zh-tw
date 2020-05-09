@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 12/02/2019
 ms.openlocfilehash: a210d2d11c9d9fccd000a6dffbf1f8730bda0c8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74765784"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 建立 MySQL 伺服器並設定防火牆規則
@@ -33,7 +33,7 @@ ms.locfileid: "74765784"
 ## <a name="script-explanation"></a>指令碼說明
 此指令碼會使用下表中簡述的命令：
 
-| **命令** | **注意** |
+| **命令** | **注意事項** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | 建立主控資料庫的 MySQL 伺服器。 |

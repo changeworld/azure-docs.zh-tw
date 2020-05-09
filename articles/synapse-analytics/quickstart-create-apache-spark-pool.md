@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1457549fef3a78356c8b1af6be620fdf30ddab46
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2501f66c42360d3ec1626f5f4ee42e0212f1967b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420622"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792236"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview"></a>快速入門：建立新的 Apache Spark 集區 (預覽)
 
@@ -25,16 +25,16 @@ Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、塑造�
 > [!IMPORTANT]
 > 無論使用與否，Spark 執行個體都是按分鐘計費。 當您使用完 Spark 執行個體之後，請務必將其關閉，或設定短暫的逾時時間。 如需詳細資訊，請參閱本文的**清除資源**一節。
 
-如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https:/azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- Azure 訂用帳戶 - [建立免費帳戶](https:/azure.microsoft.com/free/)
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Synapse Analytics 工作區](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https:/portal.azure.com/)
+登入 [Azure 入口網站](https://portal.azure.com/)
 
 ## <a name="create-new-apache-spark-pool"></a>建立新的 Apache Spark 集區
 
@@ -92,5 +92,5 @@ Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、塑造�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[快速入門：使用 Web 工具在 Synapse Studio 中建立 Apache Spark 集區](spark/apache-spark-notebook-create-spark-use-sql.md)。
+- 請參閱[快速入門：建立 Apache Spark 筆記本](quickstart-apache-spark-notebook.md)。
 - 請參閱[快速入門：使用 Azure 入口網站來建立 Synapse SQL 集區](quickstart-create-sql-pool.md)。

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77191288"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82148004"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入門：使用 Azure Logic Apps 建立第一個工作流程 - Azure 入口網站
 
@@ -20,9 +20,10 @@ ms.locfileid: "77191288"
 
 ![高階範例邏輯應用程式工作流程](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-對於此案例，您需要一個電子郵件帳戶，而該電子郵件帳戶來自 Azure Logic Apps 所支援的服務，例如 Office 365 Outlook、Outlook.com 或 Gmail。 對於其他支援的電子郵件服務，[檢閱此處的連接器清單](https://docs.microsoft.com/connectors/)。 在此範例中，邏輯應用程式使用 Office 365 Outlook。 如果您使用不同的電子郵件服務，整體的一般步驟會相同，但您的使用者介面可能會稍有不同。
+對於此案例，您需要 Azure 訂用帳戶或[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)、來自 Azure Logic Apps 所支援服務的電子郵件帳戶，例如 Office 365 Outlook、Outlook.com 或 Gmail。 對於其他支援的電子郵件服務，[檢閱此處的連接器清單](https://docs.microsoft.com/connectors/)。 在此範例中，邏輯應用程式使用 Office 365 Outlook 帳戶。 如果您使用不同的電子郵件服務，整體的一般步驟會相同，但您的使用者介面可能會稍有不同。
 
-此外，如果您沒有 Azure 訂用帳戶，請先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+> [!IMPORTANT]
+> 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 

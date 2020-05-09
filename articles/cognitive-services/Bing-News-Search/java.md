@@ -12,10 +12,10 @@ ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383607"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入門：使用 Java 和 Bing 新聞搜尋 REST API 來執行新聞搜尋
