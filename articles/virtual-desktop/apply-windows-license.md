@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254231"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612447"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>將 Windows 授權套用至工作階段主機虛擬機器
 
@@ -23,7 +23,7 @@ Windows 虛擬桌面授權可讓您將授權套用至任何在主機集區中註
 
 有幾種方式可以使用 Windows 虛擬桌面授權：
 - 您可以使用[Azure Marketplace](./create-host-pools-azure-marketplace.md)供應專案來建立主機集區及其工作階段主機虛擬機器。 以這種方式建立的虛擬機器會自動套用授權。
-- 您可以使用[GitHub Azure Resource Manager 範本](./create-host-pools-arm-template.md)來建立主機集區及其工作階段主機虛擬機器。 以這種方式建立的虛擬機器會自動套用授權。
+- 您可以使用[GitHub Azure Resource Manager 範本](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)來建立主機集區及其工作階段主機虛擬機器。 以這種方式建立的虛擬機器會自動套用授權。
 - 您可以將授權套用至現有的工作階段主機虛擬機器。 若要這麼做，請先依照[使用 PowerShell 建立主機集](./create-host-pools-powershell.md)區中的指示建立主機集區和相關聯的 vm，然後回到本文以瞭解如何套用授權。
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>將 Windows 授權套用至工作階段主機 VM

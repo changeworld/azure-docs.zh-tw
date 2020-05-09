@@ -10,12 +10,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891354"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927576"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何選取 Azure Machine Learning 的演算法
 
@@ -148,6 +148,6 @@ Machine Learning 設計工具提供完整的演算法組合，例如[多元決�
 
 ## <a name="next-steps"></a>後續步驟
 
- - [深入瞭解 Azure Machine Learning 設計工具](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [深入瞭解 Azure Machine Learning 設計工具](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - 如需 Azure Machine Learning 設計工具中可用的所有機器學習演算法的說明，請參閱[Machine Learning 設計工具演算法和模組參考](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
- - 若要探索深度學習、機器學習服務和 AI 之間的關聯性，請參閱[深度學習與 Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - 若要探索深度學習、機器學習服務和 AI 之間的關聯性，請參閱[深度學習與 Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

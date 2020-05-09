@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678056"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925402"
 ---
 ## <a name="register-an-azure-ad-app"></a>註冊 Azure AD 應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "81678056"
 
 ### <a name="configuring-optional-claims"></a>設定選擇性宣告
 
-如果您想要從 Azure AD `family_name`取得`given_name`和宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](/active-directory/develop/active-directory-optional-claims.md)。
+如果您想要從 Azure AD `family_name`取得`given_name`和宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](/azure/active-directory/develop/active-directory-optional-claims)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]  。
 1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
@@ -45,4 +45,4 @@ ms.locfileid: "81678056"
 1. 選取 [**新增選擇性**宣告]。
 1. 針對 [**權杖類型**]，選取 [ **ID**]。
 1. 選取要加入的選擇性宣告， `family_name`以及`given_name`。
-1. 按一下 [加入]  。
+1. 按一下 [新增]  。

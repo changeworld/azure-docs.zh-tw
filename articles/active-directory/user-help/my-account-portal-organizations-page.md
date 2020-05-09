@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79136f86c647c0453d600fe2601be56571ee6fed
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062467"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625879"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>從 [組織] 頁面管理已連線的組織
 
@@ -34,7 +34,7 @@ ms.locfileid: "77062467"
 
 ## <a name="view-your-organizations"></a>檢閱您的組織
 
-1. 登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myprofile.microsoft.com/)頁面。
+1. 登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myaccount.microsoft.com/)頁面。
 
 2. 從左側瀏覽窗格選取 [組織]****，或從 [組織]**** 區塊選取 [管理組織]**** 連結。
 

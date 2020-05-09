@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127455"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612634"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
+
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用本文來解決 Windows 虛擬桌面用戶端連線的問題。
 
@@ -30,7 +36,7 @@ ms.locfileid: "79127455"
 使用下列命令列，確認已將報告問題的使用者指派給應用程式群組：
 
 ```PowerShell
-Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
+Get-AzRoleAssignment -SignInName <userupn>
 ```
 
 確認使用者以正確的認證登入。
@@ -44,19 +50,21 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 若要檢查主機狀態，請執行此 Cmdlet：
 
 ```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
+Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
 ```
 
 如果主機狀態為`NoHeartBeat`，表示 VM 沒有回應，且代理程式無法與 Windows 虛擬桌面服務通訊。
 
 ```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
+Name            : 0301HP/win10pd-0.contoso.com 
+LastHeartBeat   : 4/8/2020 1:48:35 AM 
+AllowNewSession : True 
+Status          : Available 
+
+Name            : 0301HP/win10pd-1.contoso.com 
+LastHeartBeat   : 4/8/2020 1:45:44 AM 
+AllowNewSession : True 
+Status          : NoHeartBeat
 ```
 
 您可以執行幾項工作來修正 NoHeartBeat 狀態。
@@ -65,21 +73,10 @@ WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat
 
 如果您的 FSLogix 不是最新狀態，特別是當它的2.9.7205.27375 版本為 frxdrvvt 時，可能會造成鎖死。 請務必將[FSLogix 更新為最新版本](https://go.microsoft.com/fwlink/?linkid=2084562)。
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>停用 BgTaskRegistrationMaintenanceTask
-
-如果更新 FSLogix 無效，問題可能是 BiSrv 元件在每週的維護工作期間耗盡系統資源。 使用下列兩種方法的其中一個來停用 BgTaskRegistrationMaintenanceTask，以暫時停用維護工作：
-
-- 移至 [開始] 功能表，然後搜尋 [**工作排程器**]。 流覽至**工作排程器 Library** > **Microsoft** > **Windows** > **BrokerInfrastructure**。 尋找名為**BgTaskRegistrationMaintenanceTask**的工作。 當您找到它時，請在該檔案上按一下滑鼠右鍵，然後從下拉式功能表中選取 [**停**用]。
-- 以系統管理員身分開啟命令列功能表，然後執行下列命令：
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
-
 ## <a name="next-steps"></a>後續步驟
 
 - 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
-- 若要針對在 Windows 虛擬桌面環境中建立租使用者和主機集區的問題進行疑難排解，請參閱[建立租使用者和主機集](troubleshoot-set-up-issues.md)區。
+- 若要針對在 Windows 虛擬桌面環境中建立 Windows 虛擬桌面環境和主機集區的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
 - 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
 - 若要針對搭配 Windows 虛擬桌面使用 PowerShell 時的問題進行疑難排解，請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 90dc5a067c05cadb3d5e102435b2e3d3de803e28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 651027ffd63a376ff0b8595636ece4c8f39c86e8
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335023"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82615980"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "80335023"
 | 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 總計核心 |每個區域 20<sup>1</sup>個。 請聯絡支援以增加限制。 |
 | Azure 點 VM 每個[訂](../articles/billing-buy-sign-up-azure-subscription.md)用帳戶的核心總數 |每個區域 20<sup>1</sup>個。 請聯絡支援以增加限制。 |
 | 每個系列的 VM，例如 Dv2 和 F，每個[訂](../articles/billing-buy-sign-up-azure-subscription.md)用帳戶的核心 |每個區域 20<sup>1</sup>個。 請聯絡支援以增加限制。 |
-| 每個訂用帳戶的[可用性設定組](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |2000每個區域。 |
+| 每個訂用帳戶的[可用性設定組](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |2500每個區域。 |
 | 每一可用性設定組的虛擬機器 | 200 |
 | 每一訂用帳戶的憑證 |無限制<sup>2</sup> |
 

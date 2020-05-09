@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509817"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980893"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
@@ -137,9 +137,6 @@ ms.locfileid: "82509817"
 若要變更圖表線條的色彩，請在圖例中按一下對應于圖表的彩色橫條。 [色彩選擇器] 對話方塊隨即開啟。 使用色彩選擇器來設定線條的色彩。
 
 設定圖表色彩之後，當您將圖表釘選到儀表板時，它們會維持如此。 下一節將說明如何釘選圖表。
-
-> [!NOTE]
-> 由於發行和發行排程的條件約束，在開始 Azure 入口網站[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)時，變更圖表線條的色彩會暫時需要傳遞特殊參數 **？ colorpicker = true** 。 即將移除這項限制。 
 
 ![計量影像](./media/metrics-charts/018.png)
 
