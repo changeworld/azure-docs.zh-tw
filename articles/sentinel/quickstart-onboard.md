@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: bcb6cd7393419fb8fc75decb00a8f4165d15668c
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.date: 04/27/2020
+ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025266"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184328"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
@@ -55,7 +55,7 @@ ms.locfileid: "82025266"
 
    >[!NOTE] 
    > - Azure 資訊安全中心所建立的預設工作區不會出現在清單中；您無法在其上安裝 Azure Sentinel。
-   > - Azure Sentinel 可以在任何 [Log Analytics 的 GA 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作區上執行，中國、德國和 Azure Government 區域除外。 Azure Sentinel 所產生的資料 (例如事件、書籤和警示規則，其中可能包含來自這些工作區的一些客戶資料) 會儲存在西歐 (適用於位於歐洲的工作區) 或美國東部 (適用於所有美國的工作區，以及歐洲以外的任何其他區域)。
+   > - Azure Sentinel 可以在任何 [Log Analytics 的 GA 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作區上執行，中國和德國 (主權) 區域除外。 Azure Sentinel 所產生的資料 (例如事件、書籤和警示規則，其中可能包含來自這些工作區的一些客戶資料) 會儲存在歐洲 (適用於位於歐洲的工作區)、澳洲 (適用於位於澳洲的工作區) 或美國東部 (適用於位於任何其他區域的工作區)。
 
 1. 選取 [新增 Azure Sentinel]  。
   

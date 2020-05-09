@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 00cde5255f9c9a2baa7c7042ae2a8f73448da0ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679982"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855334"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前置腳本和後置腳本
 
@@ -21,7 +21,7 @@ ms.locfileid: "81679982"
 
 ## <a name="pre-script-and-post-script-requirements"></a>前置腳本和後置腳本需求
 
-若要使用 runbook 做為前置腳本或後置腳本，您必須將它匯入到您的自動化帳戶並[發佈 runbook](manage-runbooks.md#publishing-a-runbook)。
+若要使用 runbook 做為前置腳本或後置腳本，您必須將它匯入到您的自動化帳戶並[發佈 runbook](manage-runbooks.md#publish-a-runbook)。
 
 ## <a name="pre-script-and-post-script-parameters"></a>前置腳本和後置腳本參數
 
