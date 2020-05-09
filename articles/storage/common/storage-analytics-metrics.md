@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268401"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692723"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 儲存體分析計量（傳統）
 
@@ -23,7 +23,7 @@ ms.locfileid: "79268401"
 
 > [!NOTE]
 > 儲存體分析計量適用于 Blob、佇列、資料表和檔案服務。
-> 儲存體分析計量現在是傳統計量。 Microsoft 建議[在 Azure 監視器中使用儲存體計量](storage-metrics-in-azure-monitor.md)，而不是儲存體分析計量。
+> 儲存體分析計量現在是傳統計量。 Microsoft 建議[在 Azure 監視器中使用儲存體計量](monitor-storage.md)，而不是儲存體分析計量。
 
 ## <a name="transaction-metrics"></a>交易度量  
  系統會以每小時或每分鐘的時間間隔，為每個儲存體服務和要求的 API 作業記錄完善的資料集，其中包括輸入流量/輸出流量、可用性、錯誤，以及已分類的要求百分比。 您可以在 [儲存體分析度量資料表結構描述](/rest/api/storageservices/storage-analytics-metrics-table-schema) 主題中查看完整的交易詳細資料清單。  
@@ -145,7 +145,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ||||  
 |-|-|-|  
-|**計量**|**資料表名稱**|**附註**|  
+|**計量**|**資料表名稱**|**注意事項**|  
 |每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日前的版本中，這些資料表也稱為：<br /><br /> $MetricsTransactionsBlob <br /><br /> $MetricsTransactionsTable<br /><br />  $MetricsTransactionsQueue<br /><br /> 從2015-04-05 版開始，檔案服務的計量可供使用。|  
 |每分鐘度量|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以程式設計方式啟用。<br /><br /> 從2015-04-05 版開始，檔案服務的計量可供使用。|  
 |Capacity|$MetricsCapacityBlob|僅限 Blob 服務。|  
@@ -154,7 +154,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**戳**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
+|**PartitionKey**|**RowKey**|**時間戳記**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

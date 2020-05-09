@@ -52,6 +52,8 @@
       href: language-support.md
     - name: 文字位移
       href: concepts/text-offsets.md
+    - name: 資料限制
+      href: concepts/data-limits.md
 - name: 操作指南
   items:
     - name: 呼叫文字分析 API
@@ -116,13 +118,13 @@
       href: text-analytics-resource-external-community.md
     - name: 常見問題集
       href: text-analytics-resource-faq.md
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 試試看！
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

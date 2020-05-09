@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547789"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891651"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>採用 Azure Resource Manager 範本的預期狀態設定延伸模組
 
@@ -185,8 +185,8 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 | settings.configuration.function |字串 |指定 DSC 組態的名稱。 所命名的設定必須包含在 **settings.onfiguration.script** 所定義的指令碼中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
 | settings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性並未加密。 |
 | settings.configurationData.url |字串 |指定 URL，從中下載您的組態資料 (.psd1) 檔案以做為 DSC 組態的輸入。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationDataUrlSasToken** 屬性設定為您 SAS 權杖的值。 |
-| settings.privacy.dataCollection |字串 |啟用或停用遙測收集。 這個屬性唯一可能的值為 [**啟用**]、[**停**用]、[ **'**] 或 [ **$null**]。 將此屬性保持空白或 null 即可啟用遙測。 預設值為 **' '**。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。 |
-| settings.advancedOptions.downloadMappings |集合 |定義要從中下載 WMF 的替代位置。 如需詳細資訊，請參閱 [Azure DSC 延伸模組 2.8 及如何將延伸模組相依性的下載對應至您自己的位置](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)(英文\)。 |
+| settings.privacy.dataCollection |字串 |啟用或停用遙測收集。 這個屬性唯一可能的值為 [**啟用**]、[**停**用]、[ **'**] 或 [ **$null**]。 將此屬性保持空白或 null 即可啟用遙測。 預設值為 **' '**。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/) \(英文\)。 |
+| settings.advancedOptions.downloadMappings |集合 |定義要從中下載 WMF 的替代位置。 如需詳細資訊，請參閱 [Azure DSC 延伸模組 2.8 及如何將延伸模組相依性的下載對應至您自己的位置](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/)(英文\)。 |
 | protectedSettings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性已加密。 |
 | protectedSettings.configurationUrlSasToken |字串 |指定用來存取 **settings.onfiguration.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
 | protectedSettings.configurationDataUrlSasToken |字串 |指定用來存取 **settings.onfigurationData.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |

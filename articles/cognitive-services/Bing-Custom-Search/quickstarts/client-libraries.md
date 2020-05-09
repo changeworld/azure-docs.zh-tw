@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270950"
 ---
 # <a name="quickstart-use-the-bing-custom-search-client-library"></a>快速入門：使用 Bing 自訂搜尋用戶端程式庫

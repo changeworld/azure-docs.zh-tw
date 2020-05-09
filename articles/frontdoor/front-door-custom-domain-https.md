@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878029"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160080"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
 本教學課程會示範如何為與前端主機區段下 Front Door 建立關聯的自訂網域啟用 HTTPS 通訊協定。 在您的自訂網域上使用 HTTPS 通訊協定 (例如 https:\//www.contoso.com)，確保在網際網路上傳送機密資料時能經由 TLS/SSL 加密安全地傳遞。 當網頁瀏覽器透過 HTTPS 連線到網站時，它會驗證網站安全性憑證，並確認憑證是由合法的憑證授權單位所核發。 此程序可提供安全性，並讓 Web 應用程式免於遭受攻擊。
 
-根據預設，Azure Front Door 支援 Front Door 預設主機名稱上的 HTTPS。 舉例來說，當您建立 Front Door 時 (例如 https:\//contoso.azurefd.net)，便會針對向 https://contoso.azurefd.net 發出的要求自動啟用 HTTPS。 但是，當您的自訂網域 'www.contoso.com' 上架後，您便需要另外為此前端主機啟用 HTTPS。   
+根據預設，Azure Front Door 支援 Front Door 預設主機名稱上的 HTTPS。 舉例來說，當您建立 Front Door 時 (例如 `https://contoso.azurefd.net`)，便會針對向 `https://contoso.azurefd.net` 發出的要求自動啟用 HTTPS。 但是，當您的自訂網域 'www.contoso.com' 上架後，您便需要另外為此前端主機啟用 HTTPS。   
 
 自訂 HTTPS 功能的一些重要特色如下：
 

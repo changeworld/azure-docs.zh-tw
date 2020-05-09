@@ -1,20 +1,20 @@
 ---
-title: 如何從啟動/停止 Vm 解決方案查詢記錄
-description: 本文說明如何從 Azure 監視器查詢啟動/停止 Vm 解決方案所產生的記錄資料。
+title: 如何在離峰時間從啟動/停止 Vm 查詢記錄
+description: 本文說明如何查詢從 Azure 監視器在離峰期間啟動/停止 Vm 解決方案所產生的記錄資料。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604734"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864227"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>如何從啟動/停止 Vm 解決方案查詢記錄
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>如何在離峰時間從啟動/停止 Vm 查詢記錄
 
-Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作區：作業記錄和作業串流。 這項資料可用於 Azure 監視器中的[查詢](../azure-monitor/log-query/log-query-overview.md)。
+Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作區：作業記錄和作業串流。 本文會回顧 Azure 監視器中可供[查詢](../azure-monitor/log-query/log-query-overview.md)的資料。
 
 ## <a name="job-logs"></a>作業記錄
 

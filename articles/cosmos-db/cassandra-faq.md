@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192828"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608246"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>有關 Azure Cosmos DB 的 Cassandra API 常見問題
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有關 Azure Cosmos DB 中的 Cassandra API 常見問題
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 與 Cassandra API 之間的一些主要差異為何？
+本文說明 Azure Cosmos DB 中 Apache Cassandra 和 Cassandra API 之間的功能差異。 它也會提供有關 Azure Cosmos DB 中 Cassandra API 問題的解答。
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 與 Cassandra API 之間的主要差異
 
 - Apache Cassandra 建議在分割區索引鍵的大小上使用 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允許每個分割區最多 20 GB。
 - Apache Cassandra 可讓您停用持久認可。 您可以略過寫入認可記錄檔，並直接移至 memtables。 如果節點在 memtables 排清到磁片上的 SSTables 之前停止運作，這可能會導致資料遺失。 Azure Cosmos DB 一律會執行長期認可，以協助防止資料遺失。
@@ -107,7 +109,7 @@ Keyspace 數目沒有實體限制，因為它們是中繼資料容器。 如果�
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>從一般資料表開始之後，我可以導入大量資料嗎？
 
-是。 假設有一致的分散式分割區，儲存容量會自動受到管理，並隨著您推送更多資料而增加。 因此，您可以放心地匯入您所需的資料，而不需要管理和布建節點等等。 但是，如果您預期會有許多立即的資料成長，請直接布建[預期的輸送量](set-throughput.md)，而不是從較低的速度開始，然後立即增加。
+可以。 假設有一致的分散式分割區，儲存容量會自動受到管理，並隨著您推送更多資料而增加。 因此，您可以放心地匯入您所需的資料，而不需要管理和布建節點等等。 但是，如果您預期會有許多立即的資料成長，請直接布建[預期的輸送量](set-throughput.md)，而不是從較低的速度開始，然後立即增加。
 
 ### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>我可以使用 YAML 檔案設定來設定 API 行為嗎？
 
@@ -167,7 +169,7 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 若要確保
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Cassandra API 預設會為實體的所有屬性編制索引嗎？
 
-不可以。 Cassandra API 支援[次要索引](cassandra-secondary-index.md)，其運作方式類似于 Apache Cassandra。 根據預設，API 不會為每個屬性編制索引。  
+不需要。 Cassandra API 支援[次要索引](cassandra-secondary-index.md)，其運作方式類似于 Apache Cassandra。 根據預設，API 不會為每個屬性編制索引。  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>我可以在本機搭配使用新的 Cassandra API SDK 與模擬器嗎？

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414160"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891759"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用複製活動來保留中繼資料和 Acl
 
@@ -32,6 +32,8 @@ ms.locfileid: "81414160"
 
 - **所有客戶指定的中繼資料** 
 - 和下列**五個數據存放區內建系統屬性**： `contentType`、 `contentLanguage` （Amazon S3 除外）、 `contentEncoding`、 `contentDisposition`、。 `cacheControl`
+
+**處理中繼資料的差異：** Amazon S3 和 Azure 儲存體允許客戶所指定中繼資料的索引鍵中有不同的字元集。 當您選擇使用複製活動來保留中繼資料時，ADF 會自動以 ' _ ' 取代不正確字元。
 
 當您從 Amazon S3/Azure Data Lake Storage Gen2/Azure blob 依來源將檔案複製到具有二進位格式的 Azure Data Lake Storage Gen2/azure blob 時，您可以在 [活動撰寫] 的 [**複製活動** > **設定**] 索引標籤或資料複製工具中的 [**設定**] 頁面上找到 [**保留**] 選項。
 

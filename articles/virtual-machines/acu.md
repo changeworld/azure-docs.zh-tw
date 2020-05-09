@@ -13,16 +13,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535692"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629094"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 計算單位 (ACU)
 
-「Azure 計算單位」(ACU) 的概念可提供一種比較各個 Azure SKU 之計算 (CPU) 效能的方法。 這將可協助您輕鬆識別哪個 SKU 最可能符合您的效能需求。 ACU 目前是以「小型 (Standard_A1)」VM 為標準 (數值為 100)，而所有其他 SKU 則大致上代表該 SKU 在執行標準基準測試上可以快多少。
+「Azure 計算單位」(ACU) 的概念可提供一種比較各個 Azure SKU 之計算 (CPU) 效能的方法。 這將可協助您輕鬆識別哪個 SKU 最可能符合您的效能需求。 ACU 目前是在小型（Standard_A1） VM 上標準化為100，而所有其他 Sku 則代表該 SKU 可執行標準基準的速度快得多
+
+*ACU 使用「Intel® 渦輪」技術來提高 CPU 頻率及提升效能。  效能提升的程度會依據 VM 大小、工作負載及在相同主機上執行的其他工作負載而有所不同。
+
+**ACU 使用 AMD® Boost 技術來提高 CPU 頻率及提升效能。  效能提升的程度會依據 VM 大小、工作負載及在相同主機上執行的其他工作負載而有所不同。
+
+***超執行緒且能夠執行巢狀虛擬化
 
 > [!IMPORTANT]
 > ACU 只是一個指導方針。 您工作負載的結果可能會有所不同。
@@ -55,10 +61,6 @@ ms.locfileid: "79535692"
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160-180 | 2:1\*\*\* |
-
-*ACU 使用「Intel® 渦輪」技術來提高 CPU 頻率及提升效能。  效能提升的程度會依據 VM 大小、工作負載及在相同主機上執行的其他工作負載而有所不同。
-**ACU 使用 AMD® Boost 技術來提高 CPU 頻率及提升效能。  效能提升的程度會依據 VM 大小、工作負載及在相同主機上執行的其他工作負載而有所不同。
-***超執行緒且能夠執行巢狀虛擬化
 
 以下是有關不同大小的詳細資訊連結：
 

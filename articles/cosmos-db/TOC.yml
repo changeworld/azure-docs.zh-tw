@@ -972,10 +972,14 @@
               href: sql-api-query-metrics.md
             - name: .NET SDK 的效能秘訣
               href: performance-tips.md
-            - name: Java SDK 的效能秘訣
-              href: performance-tips-java.md
-            - name: Async Java SDK 的效能秘訣
-              href: performance-tips-async-java.md
+            - name: Java SDK v4 的效能秘訣
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: 舊版 Java SDK 的效能秘訣
+              items:
+                - name: 非同步 Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: 同步處理 Java SDK v2
+                  href: performance-tips-java.md
             - name: 效能測試 - 範例應用程式
               href: performance-testing.md
         - name: 符合成本效益的讀取和寫入
@@ -984,8 +988,12 @@
       items:
         - name: 針對查詢效能進行疑難排解
           href: troubleshoot-query-performance.md
-        - name: 針對 Java 非同步 SDK 進行疑難排解
-          href: troubleshoot-java-async-sdk.md
+        - name: 針對 Java SDK v4 進行疑難排解
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: 針對舊版 Java SDK 進行疑難排解
+          items:
+            - name: 非同步 Java SDK v2
+              href: troubleshoot-java-async-sdk.md
         - name: 針對 .NET SDK 進行疑難排解
           href: troubleshoot-dot-net-sdk.md
     - name: 變更摘要

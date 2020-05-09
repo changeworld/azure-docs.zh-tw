@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133165"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839091"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 資源提供者作業
 
@@ -52,7 +52,7 @@ Azure 服務： [Azure Active Directory Domain Services](../active-directory-dom
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
-Microsoft Monitoring Insights
+Azure Active Directory
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 動作類型 | 作業 | 描述 |
@@ -67,6 +67,23 @@ Microsoft Monitoring Insights
 > | 動作 | aadiam/Metricdefinitions.listasync/read | 讀取租使用者層級的度量定義 |
 > |  | **規範** |  |
 > | 動作 | aadiam/計量/讀取 | 讀取租使用者層級計量 |
+> |  | **privateLinkForAzureAD** |  |
+> | 動作 | aadiam/privateLinkForAzureAD/read | 讀取私人連結原則定義 |
+> | 動作 | aadiam/privateLinkForAzureAD/write | 建立和更新私人連結原則定義 |
+> | 動作 | aadiam/privateLinkForAzureAD/delete | 刪除私人連結原則定義 |
+> |  | **privateLinkForAzureAD/privateEndpointConnectionProxies** |  |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/read | 讀取私人連結 proxy |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/write | 建立和更新私人連結 proxy |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/delete | 刪除私人連結 proxy |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/validate/action | 驗證私人連結 proxy |
+> |  | **privateLinkForAzureAD/privateEndpointConnections** |  |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnections/read | 閱讀 PrivateEndpointConnections |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnections/write | 建立和更新 PrivateEndpointConnections |
+> | 動作 | aadiam/privateLinkForAzureAD/privateEndpointConnections/delete | 刪除 PrivateEndpointConnections |
+> |  | **privateLinkForAzureAD/privateLinkResources** |  |
+> | 動作 | aadiam/privateLinkForAzureAD/privateLinkResources/read | 閱讀 PrivateLinkResources |
+> | 動作 | aadiam/privateLinkForAzureAD/privateLinkResources/write | 建立和更新 PrivateLinkResources |
+> | 動作 | aadiam/privateLinkForAzureAD/privateLinkResources/delete | 刪除 PrivateLinkResources |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -173,6 +190,11 @@ Azure 服務： [Azure Active Directory](../active-directory/index.yml)
 > | 動作 | Microsoft.ADHybridHealthService/services/exportstatus/read | 取得指定服務的匯出狀態。 |
 > |  | **服務/feedbacktype/意見反應** |  |
 > | 動作 | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | 取得指定服務和伺服器的警示意見反應。 |
+> |  | **服務/ipAddressAggregates** |  |
+> | 動作 | ADHybridHealthService/services/ipAddressAggregates/read | 讀取嘗試存取服務的錯誤 Ip。 |
+> |  | **服務/ipAddressAggregateSettings** |  |
+> | 動作 | ADHybridHealthService/services/ipAddressAggregateSettings/read | 讀取錯誤 Ip 的警示閾值。 |
+> | 動作 | ADHybridHealthService/services/ipAddressAggregateSettings/write | 寫入錯誤 Ip 的警示閾值。 |
 > |  | **服務/metricmetadata** |  |
 > | 動作 | Microsoft.ADHybridHealthService/services/metricmetadata/read | 取得指定服務的支援計量清單。<br>例如，ADFS 服務的外部網路帳戶鎖定、失敗要求總數、未處理的權杖要求數 (Proxy)、每秒權杖要求數等等。<br>ADDomainService 的每秒 NTLM 驗證數、每秒 LDAP 成功繫結數、LDAP 繫結時間、LDAP 作用中執行緒、每秒 Kerberos 驗證數、ATQ 執行緒總數等。<br>ADSync 服務的執行設定檔延遲、所建立的 TCP 連線數、Insights 代理程式私用位元組數、將統計資料匯出至 Azure AD。 |
 > |  | **服務/計量/群組** |  |
@@ -648,10 +670,6 @@ Azure 服務：核心
 > | 動作 | AppConfiguration/configurationStores/provider/Microsoft Insights/diagnosticSettings/write | 適用于 Microsoft 應用程式組態的寫入/覆寫診斷設定。 |
 > |  | **configurationStores/providers/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | AppConfiguration/configurationStores/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得 Microsoft 應用程式組態的所有度量定義。 |
-> |  | **configurationStores/syncTasks** |  |
-> | 動作 | AppConfiguration/configurationStores/syncTasks/read | 取得指定設定存放區同步工作的屬性，或列出指定之設定存放區下的所有設定存放區同步處理工作。 |
-> | 動作 | AppConfiguration/configurationStores/syncTasks/write | 使用指定的參數建立或更新設定存放區同步工作。 |
-> | 動作 | AppConfiguration/configurationStores/syncTasks/delete | 刪除設定存放區同步工作。 |
 > |  | **位置/operationsStatus** |  |
 > | 動作 | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > |  | **業務** |  |
@@ -1073,6 +1091,8 @@ Azure 服務：[成本管理 + 帳單](../cost-management-billing/index.yml)
 > | 動作 | Microsoft 帳單/發票/下載/動作 | 使用來自清單的下載連結來下載發票 |
 > | 動作 | Microsoft 帳單/發票/下載/動作 | 使用來自清單的下載連結來下載發票 |
 > | 動作 | Microsoft.Billing/invoices/read |  |
+> |  | **業務** |  |
+> | 動作 | Microsoft 帳單/作業/讀取 |  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -1782,6 +1802,17 @@ Azure 服務：[認知服務](../cognitive-services/index.yml)
 > | 動作 | Microsoft.CognitiveServices/accounts/delete | 刪除 API 帳戶 |
 > | 動作 | Microsoft.CognitiveServices/accounts/listKeys/action | 列出金鑰 |
 > | 動作 | Microsoft.CognitiveServices/accounts/regenerateKey/action | 重新產生金鑰 |
+> |  | **帳戶/privateEndpointConnectionProxies** |  |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnectionProxies/read | 讀取私人端點連接。 |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnectionProxies/write | 寫入私用端點連接。 |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnectionProxies/delete | 刪除私人端點連接。 |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnectionProxies/validate/action | 驗證私用端點連接。 |
+> |  | **帳戶/privateEndpointConnections** |  |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnections/read | 讀取私人端點連接。 |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnections/write | 寫入私用端點連接。 |
+> | 動作 | CognitiveServices/accounts/privateEndpointConnections/delete | 刪除私人端點連接。 |
+> |  | **帳戶/privateLinkResources** |  |
+> | 動作 | CognitiveServices/accounts/privateLinkResources/read | 讀取帳戶的私人連結資源。 |
 > |  | **帳戶/sku** |  |
 > | 動作 | Microsoft.CognitiveServices/accounts/skus/read | 讀取現有資源的可用 SKU。 |
 > |  | **帳戶/使用方式** |  |
@@ -2147,6 +2178,18 @@ Azure 服務：[虛擬機器](../virtual-machines/index.yml)、[虛擬機器擴�
 > | 動作 | Microsoft.Compute/availabilitySets/delete | 刪除可用性設定組 |
 > |  | **availabilitySets/的 vmsizes** |  |
 > | 動作 | Microsoft.Compute/availabilitySets/vmSizes/read | 列出在可用性設定組中建立或更新虛擬機器時可以使用的大小 |
+> |  | **diskAccesses** |  |
+> | 動作 | Microsoft。計算/diskAccesses/讀取 | 取得 DiskAccess 資源的屬性 |
+> | 動作 | Microsoft。計算/diskAccesses/寫入 | 建立新的 DiskAccess 資源，或更新現有資源 |
+> | 動作 | Microsoft。計算/diskAccesses/刪除 | 刪除 DiskAccess 資源 |
+> | 動作 | Microsoft。 Compute/diskAccesses/privateEndpointConnectionsApproval/action | 核准私人端點連接 |
+> |  | **diskAccesses/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft。 Compute/diskAccesses/privateEndpointConnectionProxies/read | 取得私人端點連接 proxy 的屬性 |
+> | 動作 | DiskAccesses/privateEndpointConnectionProxies/write | 建立新的私人端點連接 Proxy |
+> | 動作 | DiskAccesses/privateEndpointConnectionProxies/delete | 刪除私人端點連接 Proxy |
+> | 動作 | Microsoft。 Compute/diskAccesses/privateEndpointConnectionProxies/validate/action | 驗證私用端點連接 Proxy 物件 |
+> |  | **diskAccesses/privateEndpointConnections** |  |
+> | 動作 | DiskAccesses/privateEndpointConnections/delete | 刪除私人端點連接 |
 > |  | **diskEncryptionSets** |  |
 > | 動作 | Microsoft。計算/diskEncryptionSets/讀取 | 取得磁片加密集的屬性 |
 > | 動作 | Microsoft。計算/diskEncryptionSets/寫入 | 建立新的磁片加密集或更新現有的 |
@@ -2342,6 +2385,10 @@ Azure 服務：[虛擬機器](../virtual-machines/index.yml)、[虛擬機器擴�
 > | 動作 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/redeploy/action | 重新部署虛擬機器擴展集中的虛擬機器執行個體 |
 > | 動作 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/performMaintenance/action | 在虛擬機器擴展集的虛擬機器執行個體上執行規劃的維護 |
 > | 動作 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommand/action | 在虛擬機器擴展集中的虛擬機器執行個體上執行預先定義的指令碼。 |
+> |  | **virtualMachineScaleSets/virtualMachines/extensions** |  |
+> | 動作 | Microsoft。 Compute/virtualMachineScaleSets/virtualMachines/extensions/read | 取得虛擬機器擴展集中虛擬機器的擴充功能屬性 |
+> | 動作 | Microsoft。 Compute/virtualMachineScaleSets/virtualMachines/extensions/write | 為虛擬機器擴展集中的虛擬機器建立新的擴充功能，或更新現有的延伸模組 |
+> | 動作 | Microsoft。 Compute/virtualMachineScaleSets/virtualMachines/extensions/delete | 刪除虛擬機器擴展集中虛擬機器的擴充功能 |
 > |  | **virtualMachineScaleSets/virtualMachines/instanceView** |  |
 > | 動作 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/instanceView/read | 擷取 VM 擴展集內的虛擬機器執行個體檢視。 |
 > |  | **virtualMachineScaleSets/virtualMachines/networkInterfaces** |  |
@@ -2352,10 +2399,6 @@ Azure 服務：[虛擬機器](../virtual-machines/index.yml)、[虛擬機器擴�
 > | 動作 | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/publicIPAddresses/read | 取得使用虛擬機器擴展集建立的公用 IP 位址屬性。 虛擬機器擴展集最多可以在每個 ipconfiguration (私人 IP) 建立一個公用 IP |
 > |  | **virtualMachineScaleSets/的 vmsizes** |  |
 > | 動作 | Microsoft。 Compute/virtualMachineScaleSets/的 vmsizes/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> |  | **virtualMachineScaleSetVirtualMachines/extensions** |  |
-> | 動作 | Microsoft。計算/virtualMachineScaleSetVirtualMachines/延伸模組/讀取 | 取得虛擬機器擴展集中虛擬機器的擴充功能屬性 |
-> | 動作 | Microsoft。 Compute/virtualMachineScaleSetVirtualMachines/extensions/write | 為虛擬機器擴展集中的虛擬機器建立新的擴充功能，或更新現有的延伸模組 |
-> | 動作 | Microsoft。 Compute/virtualMachineScaleSetVirtualMachines/extensions/delete | 刪除虛擬機器擴展集中虛擬機器的擴充功能 |
 > |  | **virtualMachines** |  |
 > | DataAction | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | DataAction | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
@@ -2439,8 +2482,6 @@ Azure 服務：[容器實例](../container-instances/index.yml)
 > | 動作 | Microsoft.containerinstance/containerGroups/容器/buildlogs/read | 取得特定容器的組建記錄檔。 |
 > |  | **containerGroups/容器/記錄** |  |
 > | 動作 | Microsoft.ContainerInstance/containerGroups/containers/logs/read | 取得特定容器的記錄。 |
-> |  | **containerGroups/operationResults** |  |
-> | 動作 | Microsoft.containerinstance/containerGroups/operationResults/read | 取得非同步作業結果 |
 > |  | **containerGroups/providers/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/read | 取得容器群組的診斷設定。 |
 > | 動作 | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新容器群組的診斷設定。 |
@@ -2452,6 +2493,8 @@ Azure 服務：[容器實例](../container-instances/index.yml)
 > | 動作 | Microsoft.ContainerInstance/locations/cachedImages/read | 取得區域中訂用帳戶的快取映像。 |
 > |  | **位置/功能** |  |
 > | 動作 | Microsoft.ContainerInstance/locations/capabilities/read | 取得區域的功能。 |
+> |  | **位置/operationResults** |  |
+> | 動作 | Microsoft.containerinstance/位置/operationResults/讀取 | 取得非同步作業結果 |
 > |  | **位置/作業** |  |
 > | 動作 | Microsoft.containerinstance/位置/作業/讀取 | 列出 Azure 容器實例服務的作業。 |
 > |  | **位置/使用方式** |  |
@@ -2734,7 +2777,7 @@ Azure 服務： [Azure 資料箱](../databox-family/index.md)
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
-Azure 服務： [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+Azure 服務： [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 動作類型 | 作業 | 描述 |
@@ -2852,7 +2895,7 @@ Azure 服務： [Azure Databricks](../azure-databricks/index.yml)
 > | 動作 | Databricks/位置/operationstatuses/讀取 | 讀取資源的作業狀態。 |
 > |  | **業務** |  |
 > | 動作 | Databricks/作業/讀取 | 取得作業的清單。 |
-> |  | **workspaces** |  |
+> |  | **環境** |  |
 > | 動作 | Microsoft.Databricks/workspaces/read | 擷取 Databricks 工作區的清單。 |
 > | 動作 | Microsoft.Databricks/workspaces/write | 建立 Databricks 工作區。 |
 > | 動作 | Microsoft.Databricks/workspaces/delete | 移除 Databricks 工作區。 |
@@ -3698,7 +3741,7 @@ Azure 服務： [IoT 中樞](../iot-hub/index.yml)、 [IoT 中樞裝置佈建服
 > |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
 > | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/operationResults/Read | 取得私用端點連接 proxy 上非同步作業的結果 |
 > |  | **iotHubs/privateEndpointConnections** |  |
-> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Read | 取得指定之私用端點連接的屬性 |
+> | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Read | 取得指定的 iot 中樞的所有私人端點連線 |
 > | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Delete | 刪除現有的私用端點連接 |
 > | 動作 | Microsoft. Devices/iotHubs/privateEndpointConnections/Write | 建立或更新私用端點連接 |
 > |  | **iotHubs/privateEndpointConnections/operationResults** |  |
@@ -3948,6 +3991,7 @@ Azure 服務： [Azure Cosmos DB](../cosmos-db/index.yml)
 > | 動作 | Microsoft.DocumentDB/databaseAccounts/onlineRegion/action | 讓資料庫帳戶的某個區域上線。 |
 > | 動作 | Microsoft.DocumentDB/databaseAccounts/delete | 刪除資料庫帳戶。 |
 > | 動作 | Microsoft DocumentDB/databaseAccounts/getBackupPolicy/action | 取得資料庫帳戶的備份原則 |
+> | 動作 | Microsoft DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action | 管理資料庫帳戶的私人端點連接 |
 > | 動作 | Microsoft.DocumentDB/databaseAccounts/restore/action | 提交還原要求 |
 > | 動作 | Microsoft.DocumentDB/databaseAccounts/backup/action | 提交要求以設定備份 |
 > |  | **databaseAccounts/api/資料庫** |  |
@@ -4284,7 +4328,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > |  | **網域/privateLinkResources** |  |
 > | 動作 | EventGrid/網域/privateLinkResources/read | 取得或列出網域的 PrivateLinkResources |
 > |  | **網域/提供者/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/網域/提供者/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
+> | 動作 | EventGrid/網域/提供者/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
 > |  | **網域/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | 取得網域的可用計量 |
 > |  | **domains/topics** |  |
@@ -4352,7 +4396,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/read | 取得系統主題的診斷設定 |
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新系統主題的診斷設定 |
 > |  | **systemTopics/providers/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
 > |  | **systemTopics/providers/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得系統主題的可用計量 |
 > |  | **一些** |  |
@@ -4376,7 +4420,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 取得主題的診斷設定 |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新主題的診斷設定 |
 > |  | **主題/提供者/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/主題/提供者/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
+> | 動作 | EventGrid/主題/提供者/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
 > |  | **主題/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/metricDefinitions/read | 取得主題的可用計量 |
 > |  | **topictypes** |  |
@@ -5593,7 +5637,7 @@ Azure 服務： [Machine Learning Studio](../machine-learning/studio/index.yml)
 > | 動作 | Microsoft.MachineLearning/webServices/delete | 刪除任何 Machine Learning Web 服務 |
 > |  | **webServices/listkeys** |  |
 > | 動作 | Microsoft.MachineLearning/webServices/listkeys/read | 取得 Machine Learning Web 服務的金鑰 |
-> |  | **環境** |  |
+> |  | **工作區** |  |
 > | 動作 | Microsoft.MachineLearning/Workspaces/read | 讀取任何 Machine Learning 工作區 |
 > | 動作 | Microsoft.MachineLearning/Workspaces/write | 建立或更新任何 Machine Learning 工作區 |
 > | 動作 | Microsoft.MachineLearning/Workspaces/delete | 刪除任何 Machine Learning 工作區 |
@@ -5620,7 +5664,7 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | 動作 | Microsoft.MachineLearningServices/locations/vmsizes/read | 取得支援的 VM 大小 |
 > |  | **位置/workspaceOperationsStatus** |  |
 > | 動作 | Microsoft.MachineLearningServices/locations/workspaceOperationsStatus/read | 取得特定工作區作業的狀態 |
-> |  | **workspaces** |  |
+> |  | **環境** |  |
 > | 動作 | Microsoft.MachineLearningServices/workspaces/read | 取得機器學習服務工作區 |
 > | 動作 | Microsoft.MachineLearningServices/workspaces/write | 建立或更新機器學習服務工作區 |
 > | 動作 | Microsoft.MachineLearningServices/workspaces/delete | 刪除機器學習服務工作區 |
@@ -5715,6 +5759,16 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > |  | **工作區/模組** |  |
 > | 動作 | Microsoft.machinelearningservices/工作區/模組/讀取 | 取得 Machine Learning Services 工作區中的模組 |
 > | 動作 | Microsoft.machinelearningservices/工作區/模組/寫入 | 在 Machine Learning Services 工作區中建立或更新模組 |
+> |  | **工作區/筆記本/範例** |  |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/範例/讀取 | 取得範例筆記本 |
+> |  | **工作區/筆記本/儲存體** |  |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/儲存體/讀取 | 取得工作區的筆記本檔案 |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/儲存體/寫入 | 將檔案寫入工作區儲存體 |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/儲存體/刪除 | 從工作區儲存體中刪除檔案 |
+> |  | **工作區/筆記本/vm** |  |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/vm/讀取 | 取得特定工作區的筆記本 Vm |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/vm/寫入 | 變更筆記本 VM 的狀態 |
+> | 動作 | Microsoft.machinelearningservices/工作區/筆記本/vm/刪除 | 刪除筆記本 VM |
 > |  | **工作區/pipelinedrafts** |  |
 > | 動作 | Microsoft.machinelearningservices/workspace/pipelinedrafts/read | 取得 Machine Learning Services 工作區中的管線草稿 |
 > | 動作 | Microsoft.machinelearningservices/workspace/pipelinedrafts/write | 在 Machine Learning Services 工作區中建立或更新管線草稿 |
@@ -5905,11 +5959,16 @@ Azure 服務：[媒體服務](../media-services/index.yml)
 > | 動作 | Microsoft.Media/register/action | 為媒體服務資源提供者註冊訂用帳戶，並讓您能夠建立媒體服務帳戶 |
 > | 動作 | Microsoft.Media/unregister/action | 為媒體服務資源提供者取消註冊訂用帳戶 |
 > | 動作 | Microsoft.Media/checknameavailability/action | 檢查媒體服務帳戶名稱是否可供使用 |
+> |  | **堆放** |  |
+> | 動作 | Microsoft.Media/locations/checkNameAvailability/action | 檢查媒體服務帳戶名稱是否可供使用 |
 > |  | **mediaservices** |  |
 > | 動作 | Microsoft.Media/mediaservices/read | 讀取任何媒體服務帳戶 |
 > | 動作 | Microsoft.Media/mediaservices/write | 建立或更新任何媒體服務帳戶 |
 > | 動作 | Microsoft.Media/mediaservices/delete | 刪除任何媒體服務帳戶 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/regenerateKey/action | 重新產生媒體服務 ACS 金鑰 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/listKeys/action | 列出媒體服務帳戶的 ACS 金鑰 |
 > | 動作 | Microsoft.Media/mediaservices/syncStorageKeys/action | 同步處理已連結之 Azure 儲存體帳戶的儲存體金鑰 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/listEdgePolicies/action | 列出 edge 裝置的原則。 |
 > |  | **windowsazure.mediaservices.extensions/accountfilters** |  |
 > | 動作 | Microsoft.Media/mediaservices/accountfilters/read | 讀取任何帳戶篩選條件 |
 > | 動作 | Microsoft.Media/mediaservices/accountfilters/write | 建立或更新任何帳戶篩選條件 |
@@ -5936,6 +5995,17 @@ Azure 服務：[媒體服務](../media-services/index.yml)
 > | 動作 | Microsoft.Media/mediaservices/eventGridFilters/delete | 刪除任何事件方格篩選 |
 > |  | **mediaservices/liveEventOperations** |  |
 > | 動作 | Microsoft.Media/mediaservices/liveEventOperations/read | 讀取任何即時事件作業 |
+> |  | **windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnectionProxies/read | 讀取任何即時事件私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnectionProxies/write | 建立即時事件私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnectionProxies/delete | 刪除即時事件私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnectionProxies/validate/action | 驗證即時事件私人端點連接 Proxy |
+> |  | **windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnections** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnections/read | 讀取任何即時事件私人端點連接 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnections/write | 建立即時事件私人端點連線 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/liveEventPrivateEndpointConnections/delete | 刪除即時事件私人端點連接 |
+> |  | **windowsazure.mediaservices.extensions/liveEventPrivateLinkResources** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/liveEventPrivateLinkResources/read | 讀取任何即時事件私人連結資源 |
 > |  | **mediaservices/liveEvents** |  |
 > | 動作 | Microsoft.Media/mediaservices/liveEvents/read | 讀取任何即時事件 |
 > | 動作 | Microsoft.Media/mediaservices/liveEvents/write | 建立或更新任何即時事件 |
@@ -5949,6 +6019,23 @@ Azure 服務：[媒體服務](../media-services/index.yml)
 > | 動作 | Microsoft.Media/mediaservices/liveEvents/liveOutputs/delete | 刪除任何即時輸出 |
 > |  | **mediaservices/liveOutputOperations** |  |
 > | 動作 | Microsoft.Media/mediaservices/liveOutputOperations/read | 讀取任何即時輸出作業 |
+> |  | **windowsazure.mediaservices.extensions/mediaGraphs** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/mediaGraphs/read | 讀取任何 Media Graph |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/mediaGraphs/write | 建立或更新任何 Media Graph |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/mediaGraphs/delete | 刪除任何媒體圖形 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/mediaGraphs/start/action | 啟動任何 Media Graph 作業 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/mediaGraphs/stop/action | 停止任何 Media Graph 作業 |
+> |  | **windowsazure.mediaservices.extensions/privateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/privateEndpointConnectionProxies/read | 讀取任何私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/privateEndpointConnectionProxies/write | 建立私用端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/privateEndpointConnectionProxies/delete | 刪除私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/privateEndpointConnectionProxies/validate/action | 驗證私用端點連接 Proxy |
+> |  | **windowsazure.mediaservices.extensions/privateEndpointConnections** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/privateEndpointConnections/read | 讀取任何私人端點連接 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/privateEndpointConnections/write | 建立私人端點連接 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/privateEndpointConnections/delete | 刪除私人端點連接 |
+> |  | **windowsazure.mediaservices.extensions/privateLinkResources** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/privateLinkResources/read | 讀取任何私人連結資源 |
 > |  | **mediaservices/streamingEndpointOperations** |  |
 > | 動作 | Microsoft.Media/mediaservices/streamingEndpointOperations/read | 讀取任何串流端點作業 |
 > |  | **mediaservices/streamingEndpoints** |  |
@@ -5958,6 +6045,17 @@ Azure 服務：[媒體服務](../media-services/index.yml)
 > | 動作 | Microsoft.Media/mediaservices/streamingEndpoints/start/action | 啟動任何串流端點作業 |
 > | 動作 | Microsoft.Media/mediaservices/streamingEndpoints/stop/action | 停止任何串流端點作業 |
 > | 動作 | Microsoft.Media/mediaservices/streamingEndpoints/scale/action | 調整任何串流端點作業 |
+> |  | **windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnectionProxies** |  |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnectionProxies/read | 讀取任何串流端點私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnectionProxies/write | 建立串流端點私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnectionProxies/delete | 刪除串流端點私人端點連接 Proxy |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnectionProxies/validate/action | 驗證串流端點私人端點連接 Proxy |
+> |  | **windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnections** |  |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnections/read | 讀取任何串流端點私人端點連線 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnections/write | 建立串流端點私人端點連線 |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamingEndpointPrivateEndpointConnections/delete | 刪除串流端點私人端點連線 |
+> |  | **windowsazure.mediaservices.extensions/Streamingendpoint/streamngEndpointPrivateLinkResources** |  |
+> | 動作 | Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint/streamngEndpointPrivateLinkResources/read | 讀取任何串流端點私人連結資源 |
 > |  | **mediaservices/streamingLocators** |  |
 > | 動作 | Microsoft.Media/mediaservices/streamingLocators/read | 讀取任何串流定位器 |
 > | 動作 | Microsoft.Media/mediaservices/streamingLocators/write | 建立或更新任何串流定位器 |
@@ -5968,6 +6066,10 @@ Azure 服務：[媒體服務](../media-services/index.yml)
 > | 動作 | Microsoft.Media/mediaservices/streamingPolicies/read | 讀取任何串流原則 |
 > | 動作 | Microsoft.Media/mediaservices/streamingPolicies/write | 建立或更新任何串流原則 |
 > | 動作 | Microsoft.Media/mediaservices/streamingPolicies/delete | 刪除任何串流原則 |
+> |  | **windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionOperations** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionOperations/read | 讀取任何串流私人端點連接作業 |
+> |  | **windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionProxyOperations** |  |
+> | 動作 | Microsoft. Media/windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionProxyOperations/read | 讀取任何串流私用端點連接 Proxy 操作 |
 > |  | **mediaservices/transforms** |  |
 > | 動作 | Microsoft.Media/mediaservices/transforms/read | 讀取任何轉換 |
 > | 動作 | Microsoft.Media/mediaservices/transforms/write | 建立或更新任何轉換 |
@@ -6156,6 +6258,7 @@ Azure 服務： [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/還原/動作 | 將磁片區還原到特定快照集 |
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/BreakReplication/action | 中斷磁片區複寫關係 |
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/ReplicationStatus/action | 讀取磁片區複寫的狀態。 |
+> | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/ReInitializeReplication/action |  |
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/AuthorizeReplication/action | 授權來源磁片區複寫 |
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/ResyncReplication/action | 重新同步處理目的地磁片區上的複寫 |
 > | 動作 | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/DeleteReplication/action | 刪除目的地磁片區上的複寫 |
@@ -6214,6 +6317,13 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/applicationGateways/stop/action | 停止應用程式閘道 |
 > |  | **applicationGateways/Loadbalancer.backendaddresspools** |  |
 > | 動作 | Microsoft.Network/applicationGateways/backendAddressPools/join/action | 加入應用程式閘道後端位址集區。 未打斷。 |
+> |  | **applicationGateways/privateEndpointConnections** |  |
+> | 動作 | Microsoft. Network/applicationGateways/privateEndpointConnections/read | 取得應用程式閘道 PrivateEndpoint 連接 |
+> | 動作 | ApplicationGateways/privateEndpointConnections/write | 更新 PrivateEndpoint 連接應用程式閘道 |
+> | 動作 | Microsoft. Network/applicationGateways/privateEndpointConnections/delete | 刪除應用程式閘道 PrivateEndpoint 連接 |
+> |  | **applicationGateways/privateLinkResources** |  |
+> | 動作 | Microsoft. Network/applicationGateways/privateLinkResources/read | 取得 ApplicationGateway PrivateLink 資源 |
+> | 動作 | Microsoft. Network/applicationGateways/privateLinkResources/resolvePrivateLinkServiceId/action | 取得應用程式閘道私人連結資源的私人連結識別碼 |
 > |  | **ApplicationGatewayWebApplicationFirewallPolicies** |  |
 > | 動作 | Microsoft 網路/ApplicationGatewayWebApplicationFirewallPolicies/讀取 | 取得應用程式閘道 WAF 原則 |
 > | 動作 | Microsoft 網路/ApplicationGatewayWebApplicationFirewallPolicies/寫入 | 建立應用程式閘道 WAF 原則，或更新應用程式閘道 WAF 原則 |
@@ -6244,6 +6354,7 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft. Network/bastionHosts/getShareableLinks/action | 為防禦子網中指定的 Vm 傳回可共用的 url，前提是其 url 已建立 |
 > | 動作 | Microsoft. Network/bastionHosts/createShareableLinks/action | 為防禦下的 Vm 建立可共用的 url，並傳回 url |
 > | 動作 | Microsoft. Network/bastionHosts/deleteShareableLinks/action | 在防禦下刪除所提供 Vm 的可共用 url |
+> | 動作 | Microsoft. Network/bastionHosts/deleteShareableLinksByToken/action | 刪除防禦下所提供權杖的可共用 url |
 > |  | **bgpServiceCommunities** |  |
 > | 動作 | Microsoft.Network/bgpServiceCommunities/read | 取得 BGP 服務社群 |
 > |  | **介面** |  |
@@ -6415,6 +6526,10 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/frontDoors/routingRules/read | 取得路由規則 |
 > | 動作 | Microsoft.Network/frontDoors/routingRules/write | 建立或更新路由規則 |
 > | 動作 | Microsoft.Network/frontDoors/routingRules/delete | 刪除路由規則 |
+> |  | **frontDoors/rulesEngines** |  |
+> | 動作 | Microsoft. Network/frontDoors/rulesEngines/read | 取得規則引擎 |
+> | 動作 | FrontDoors/rulesEngines/write | 建立或更新規則引擎 |
+> | 動作 | Microsoft. Network/frontDoors/rulesEngines/delete | 刪除規則引擎 |
 > |  | **frontDoorWebApplicationFirewallManagedRuleSets** |  |
 > | 動作 | Microsoft 網路/frontDoorWebApplicationFirewallManagedRuleSets/讀取 | 取得 Web 應用程式防火牆受控規則集 |
 > |  | **frontDoorWebApplicationFirewallPolicies** |  |
@@ -6470,7 +6585,6 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft.Network/localnetworkgateways/delete | 刪除 LocalNetworkGateway |
 > |  | **堆放** |  |
 > | 動作 | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | 檢查加速網路支援 |
-> | 動作 | Microsoft. Network/位置/batchNotifyPrivateEndpointsForResourceMove/action | 以批次方式通知私人端點，以進行資源移動。 |
 > | 動作 | Microsoft. Network/位置/checkPrivateLinkServiceVisibility/action | 檢查私人連結服務可見度 |
 > | 動作 | Microsoft.Network/locations/bareMetalTenants/action | 配置或驗證裸機租用戶 |
 > |  | **位置/autoApprovedPrivateLinkServices** |  |
@@ -6665,10 +6779,12 @@ Azure 服務：[虛擬網路](../virtual-network/index.yml)、 [Load Balancer](.
 > | 動作 | Microsoft 網路/privateEndpointRedirectMaps/讀取 | 取得私用端點 RedirectMap |
 > | 動作 | Microsoft 網路/privateEndpointRedirectMaps/寫入 | 建立私用端點 RedirectMap 或更新現有的私用端點 RedirectMap |
 > |  | **privateEndpoints** |  |
-> | 動作 | Microsoft. Network/privateEndpoints/pushPropertiesToResource/action | 從 NRP 用戶端推送私用端點屬性更新的操作 |
 > | 動作 | Microsoft 網路/privateEndpoints/讀取 | 取得私用端點資源。 |
 > | 動作 | Microsoft 網路/privateEndpoints/寫入 | 建立新的私用端點，或更新現有的私用端點。 |
 > | 動作 | Microsoft 網路/privateEndpoints/刪除 | 刪除私用端點資源。 |
+> |  | **privateEndpoints/privateDnsZoneGroups** |  |
+> | 動作 | Microsoft. Network/privateEndpoints/privateDnsZoneGroups/read | 取得私人 DNS 區域群組 |
+> | 動作 | PrivateEndpoints/privateDnsZoneGroups/write | 放置私人 DNS 區域群組 |
 > |  | **privateLinkServices** |  |
 > | 動作 | Microsoft.Network/privateLinkServices/read | 取得私人連結服務資源。 |
 > | 動作 | Microsoft.Network/privateLinkServices/write | 建立新的私人連結服務或更新現有的私人連結服務。 |
@@ -7204,7 +7320,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | 動作 | microsoft.operationalinsights/位置/operationStatuses/讀取 | 取得 Log Analytics Azure 非同步作業狀態。 |
 > |  | **業務** |  |
 > | 動作 | microsoft.operationalinsights/operations/read | 列出所有可用的 OperationalInsights Rest API 作業。 |
-> |  | **workspaces** |  |
+> |  | **環境** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/write | 建立新的工作區，或藉由提供來自現有工作區的客戶識別碼來連結至現有工作區。 |
 > | 動作 | Microsoft.OperationalInsights/workspaces/read | 取得現有工作區 |
 > | 動作 | Microsoft.OperationalInsights/workspaces/delete | 刪除工作區。 如果工作區在建立時連結到現有工作區，則系統不會刪除其所連結的工作區。 |
@@ -7379,6 +7495,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > |  | **工作區/查詢/AzureDevOpsAuditing** |  |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AzureDevOpsAuditing/讀取 | 讀取來自 AzureDevOpsAuditing 資料表的資料 |
 > |  | **工作區/查詢/AzureDiagnostics** |  |
+> | 動作 | Microsoft.operationalinsights/工作區/查詢/AzureDiagnostics/讀取 | 讀取來自 AzureDiagnostics 資料表的資料 |
 > | 動作 | Microsoft.operationalinsights/工作區/查詢/AzureDiagnostics/讀取 | 讀取來自 AzureDiagnostics 資料表的資料 |
 > |  | **工作區/查詢/AzureMetrics** |  |
 > | 動作 | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | 從 AzureMetrics 資料表讀取資料 |
@@ -8529,14 +8646,34 @@ Azure 服務：[資訊安全中心](../security-center/index.yml)
 > |  | **評估** |  |
 > | 動作 | Microsoft. 安全性/評量/讀取 | 取得訂用帳戶的安全性評量 |
 > | 動作 | Microsoft. 安全性/評量/寫入 | 在您的訂用帳戶上建立或更新安全性評量 |
+> |  | **自動化** |  |
+> | 動作 | Microsoft. Security/自動化/read | 取得範圍的自動化 |
+> | 動作 | Microsoft. Security/自動化/write | 建立或更新範圍的自動化 |
+> | 動作 | Microsoft. Security/自動化/delete | 刪除範圍的自動化 |
+> | 動作 | Microsoft. Security/自動化/validate/action | 驗證範圍的 automation 模型 |
 > |  | **autoProvisioningSettings** |  |
 > | 動作 | Microsoft. Security/autoProvisioningSettings/read | 取得訂用帳戶的安全性自動布建設定 |
 > | 動作 | Microsoft. Security/autoProvisioningSettings/write | 建立或更新訂用帳戶的安全性自動布建設定 |
 > |  | **complianceResults** |  |
 > | 動作 | Microsoft.Security/complianceResults/read | 取得資源的合規性結果 |
+> |  | **deviceSecurityGroups** |  |
+> | 動作 | Microsoft. Security/deviceSecurityGroups/write | 建立或更新 IoT 裝置安全性群組 |
+> | 動作 | Microsoft. Security/deviceSecurityGroups/delete | 刪除 IoT 裝置安全性群組 |
+> | 動作 | Microsoft. Security/deviceSecurityGroups/read | 取得 IoT 裝置安全性群組 |
 > |  | **informationProtectionPolicies** |  |
 > | 動作 | Microsoft.Security/informationProtectionPolicies/read | 取得資源的資訊保護原則 |
 > | 動作 | Microsoft.Security/informationProtectionPolicies/write | 更新資源的資訊保護原則 |
+> |  | **iotSecuritySolutions** |  |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/write | 建立或更新 IoT 安全性解決方案 |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/delete | 刪除 IoT 安全性解決方案 |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/read | 取得 IoT 安全性解決方案 |
+> |  | **iotSecuritySolutions/analyticsModels** |  |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/analyticsModels/read | 取得 IoT 安全性分析模型 |
+> |  | **iotSecuritySolutions/analyticsModels/aggregatedAlerts** |  |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/read | 取得 IoT 匯總警示 |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/關閉/動作 | 關閉 IoT 匯總警示 |
+> |  | **iotSecuritySolutions/analyticsModels/aggregatedRecommendations** |  |
+> | 動作 | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedRecommendations/read | 取得 IoT 匯總建議 |
 > |  | **堆放** |  |
 > | 動作 | Microsoft.Security/locations/read | 取得安全性資料位置 |
 > |  | **位置/警示** |  |
@@ -8657,6 +8794,14 @@ Azure 服務： [Azure Sentinel](../sentinel/index.yml)
 > |  | **設定** |  |
 > | 動作 | SecurityInsights/設定/讀取 | 取得設定 |
 > | 動作 | SecurityInsights/settings/write | 更新設定 |
+> |  | **threatintelligence** |  |
+> | 動作 | SecurityInsights/threatintelligence/read | 取得威脅情報 |
+> | 動作 | SecurityInsights/threatintelligence/write | 更新威脅情報 |
+> | 動作 | SecurityInsights/threatintelligence/delete | 刪除威脅情報 |
+> | 動作 | SecurityInsights/threatintelligence/查詢/動作 | 查詢威脅情報 |
+> | 動作 | SecurityInsights/threatintelligence/計量/動作 | 收集威脅情報計量 |
+> | 動作 | SecurityInsights/threatintelligence/bulkDelete/action | 大量刪除威脅情報 |
+> | 動作 | SecurityInsights/threatintelligence/bulkTag/action | 大量標記威脅情報 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -8872,6 +9017,11 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | 動作 | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連接 |
 > |  | **SignalR/privateLinkResources** |  |
 > | 動作 | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR 的私人連結資源 |
+> |  | **SignalR/serverConnection** |  |
+> | DataAction | Microsoft.signalrservice/SignalR/serverConnection/write | 啟動伺服器連接。 |
+> |  | **SignalR/服務** |  |
+> | DataAction | Microsoft.signalrservice/SignalR/service/accessKey/action | 取得用於簽署 ClientTokens 的暫時 AccessKey。 |
+> | DataAction | Microsoft.signalrservice/SignalR/service/clientToken/action | 取得啟動用戶端連接的 ClientToken。 |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
@@ -9003,12 +9153,22 @@ Azure 服務： [Azure SQL Database](../sql-database/index.yml)、 [SQL 資料�
 > | 動作 | Microsoft .Sql/位置/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/讀取 | 取得受管理資料庫長期保留原則作業的狀態 |
 > |  | **位置/managedInstanceLongTermRetentionPolicyOperationResults** |  |
 > | 動作 | Microsoft .Sql/位置/managedInstanceLongTermRetentionPolicyOperationResults/讀取 | 取得受管理資料庫長期保留原則作業的狀態 |
+> |  | **位置/managedInstancePrivateEndpointConnectionAzureAsyncOperation** |  |
+> | 動作 | Microsoft .Sql/位置/managedInstancePrivateEndpointConnectionAzureAsyncOperation/讀取 | 取得私用端點連接作業的結果 |
+> |  | **位置/managedInstancePrivateEndpointConnectionOperationResults** |  |
+> | 動作 | Microsoft .Sql/位置/managedInstancePrivateEndpointConnectionOperationResults/讀取 | 取得私用端點連接作業的結果 |
+> |  | **位置/managedInstancePrivateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | 動作 | Microsoft .Sql/位置/managedInstancePrivateEndpointConnectionProxyAzureAsyncOperation/讀取 | 取得私用端點連接 proxy 作業的結果 |
+> |  | **位置/managedInstancePrivateEndpointConnectionProxyOperationResults** |  |
+> | 動作 | Microsoft .Sql/位置/managedInstancePrivateEndpointConnectionProxyOperationResults/讀取 | 取得私用端點連接 proxy 作業的結果 |
 > |  | **位置/managedShortTermRetentionPolicyOperationResults** |  |
 > | 動作 | Microsoft .Sql/位置/managedShortTermRetentionPolicyOperationResults/讀取 | 取得短期保留原則操作的狀態 |
 > |  | **位置/managedTransparentDataEncryptionAzureAsyncOperation** |  |
 > | 動作 | Microsoft.Sql/locations/managedTransparentDataEncryptionAzureAsyncOperation/read | 取得有關受控資料庫之透明資料加密的進行中作業 |
 > |  | **位置/managedTransparentDataEncryptionOperationResults** |  |
 > | 動作 | Microsoft.Sql/locations/managedTransparentDataEncryptionOperationResults/read | 取得有關受控資料庫之透明資料加密的進行中作業 |
+> |  | **位置/operationsHealth** |  |
+> | 動作 | Microsoft .Sql/位置/operationsHealth/讀取 | 取得位置中服務作業的健全狀況狀態 |
 > |  | **位置/privateEndpointConnectionAzureAsyncOperation** |  |
 > | 動作 | Microsoft .Sql/位置/privateEndpointConnectionAzureAsyncOperation/讀取 | 取得私用端點連接作業的結果 |
 > |  | **位置/privateEndpointConnectionOperationResults** |  |
@@ -9077,6 +9237,10 @@ Azure 服務： [Azure SQL Database](../sql-database/index.yml)、 [SQL 資料�
 > | 動作 | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
 > |  | **managedInstances/資料庫/提供者/Microsoft Insights/logDefinitions** |  |
 > | 動作 | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/logDefinitions/read | 取得受控執行個體資料庫的可用記錄 |
+> |  | **managedInstances/資料庫/查詢** |  |
+> | 動作 | Microsoft .Sql/managedInstances/資料庫/查詢/讀取 | 依查詢識別碼取得查詢文字 |
+> |  | **managedInstances/資料庫/查詢/統計資料** |  |
+> | 動作 | Microsoft .Sql/managedInstances/資料庫/查詢/統計資料/讀取 | 依查詢識別碼取得查詢執行統計資料 |
 > |  | **managedInstances/資料庫/recommendedSensitivityLabels** |  |
 > | 動作 | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | 列出指定資料庫的敏感度標籤 |
 > | 動作 | Microsoft .Sql/managedInstances/資料庫/recommendedSensitivityLabels/write | 批次更新建議的敏感度標籤 |
@@ -9133,6 +9297,17 @@ Azure 服務： [Azure SQL Database](../sql-database/index.yml)、 [SQL 資料�
 > |  | **managedInstances/作業** |  |
 > | 動作 | Microsoft .Sql/managedInstances/作業/讀取 | 取得受控實例作業 |
 > | 動作 | Microsoft .Sql/managedInstances/作業/取消/動作 | 取消尚未完成的 Azure SQL 受控執行個體暫止非同步作業。 |
+> |  | **managedInstances/privateEndpointConnectionProxies** |  |
+> | 動作 | ManagedInstances/privateEndpointConnectionProxies/read | 傳回私用端點連接 proxy 的清單，或取得指定之私用端點連接 proxy 的屬性。 |
+> | 動作 | ManagedInstances/privateEndpointConnectionProxies/write | 使用指定的參數建立私用端點連接 proxy，或更新指定之私用端點連接 proxy 的屬性或標記。 |
+> | 動作 | Microsoft Sql/managedInstances/privateEndpointConnectionProxies/delete | 刪除現有的私用端點連接 proxy |
+> | 動作 | Microsoft .Sql/managedInstances/privateEndpointConnectionProxies/validate/action | 驗證從 NRP 端的私用端點連接建立呼叫 |
+> |  | **managedInstances/privateEndpointConnections** |  |
+> | 動作 | ManagedInstances/privateEndpointConnections/read | 傳回私用端點連接的清單，或取得指定之私用端點連接的屬性。 |
+> | 動作 | Microsoft Sql/managedInstances/privateEndpointConnections/delete | 刪除現有的私用端點連接 |
+> | 動作 | ManagedInstances/privateEndpointConnections/write | 核准或拒絕現有的私用端點連接 |
+> |  | **managedInstances/privateLinkResources** |  |
+> | 動作 | ManagedInstances/privateLinkResources/read | 取得對應 sql server 的私用連結資源 |
 > |  | **managedInstances/providers/Microsoft Insights/diagnosticSettings** |  |
 > | 動作 | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/diagnosticSettings/read | 取得資源的診斷設定 |
 > | 動作 | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
@@ -9150,6 +9325,8 @@ Azure 服務： [Azure SQL Database](../sql-database/index.yml)、 [SQL 資料�
 > |  | **managedInstances/securityAlertPolicies** |  |
 > | 動作 | Microsoft.Sql/managedInstances/securityAlertPolicies/write | 變更指定受控伺服器的受控伺服器威脅偵測原則 |
 > | 動作 | Microsoft.Sql/managedInstances/securityAlertPolicies/read | 抓取為給定伺服器設定的受管理伺服器威脅偵測原則清單 |
+> |  | **managedInstances/topqueries** |  |
+> | 動作 | ManagedInstances/topqueries/read | 取得受控實例的熱門資源取用查詢 |
 > |  | **managedInstances/vulnerabilityAssessments** |  |
 > | 動作 | Microsoft.Sql/managedInstances/vulnerabilityAssessments/write | 變更指定受控執行個體的弱點評量 |
 > | 動作 | Microsoft.Sql/managedInstances/vulnerabilityAssessments/delete | 移除指定受控執行個體的弱點評量 |
@@ -9648,6 +9825,7 @@ Azure 服務：[儲存體](../storage/index.yml)
 > | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnectionProxies/delete | 刪除私人端點連接 proxy |
 > | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnectionProxies/write | 放置私人端點連接 proxy |
 > |  | **storageAccounts/privateEndpointConnections** |  |
+> | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnections/read | 列出私人端點連接 |
 > | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnections/delete | 刪除私人端點連接 |
 > | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnections/read | 取得私人端點連接 |
 > | 動作 | Microsoft. Storage/storageAccounts/privateEndpointConnections/write | Put 私用端點連接 |
@@ -10162,7 +10340,7 @@ Azure 服務： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > |  | **帳戶/專案** |  |
 > | 動作 | Microsoft.VisualStudio/Account/Project/Read | 讀取帳戶/專案 |
 > | 動作 | Microsoft.VisualStudio/Account/Project/Write | 讀取帳戶/專案 |
-> |  | **分機** |  |
+> |  | **延伸** |  |
 > | 動作 | Microsoft.VisualStudio/Extension/Write | 設定擴充功能 |
 > | 動作 | Microsoft.VisualStudio/Extension/Delete | 刪除擴充功能 |
 > | 動作 | Microsoft.VisualStudio/Extension/Read | 讀取擴充功能 |
