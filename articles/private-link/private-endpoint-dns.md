@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209021"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928588"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -36,57 +36,58 @@ Azure 服務會在公用 DNS 上建立正式名稱 DNS 記錄（CNAME），以�
 
 針對 Azure 服務，請使用下表中所述的建議區功能變數名稱稱：
 
-|私人連結資源類型   |子資源  |區功能變數名稱稱  |
-|---------|---------|---------|
-|SQL DB （Microsoft .Sql/伺服器）    |  Sql Server （sqlServer）        |   privatelink.database.windows.net       |
-|Azure Synapse 分析（Microsoft .Sql/伺服器）    |  Sql Server （sqlServer）        | privatelink.database.windows.net |
-|儲存體帳戶（Microsoft 儲存體/storageAccounts）    |  Blob （blob、blob_secondary）        |    privatelink.blob.core.windows.net      |
-|儲存體帳戶（Microsoft 儲存體/storageAccounts）    |    資料表（資料表、table_secondary）      |   privatelink.table.core.windows.net       |
-|儲存體帳戶（Microsoft 儲存體/storageAccounts）    |    佇列（佇列、queue_secondary）     |   privatelink.queue.core.windows.net       |
-|儲存體帳戶（Microsoft 儲存體/storageAccounts）   |    File （file，file_secondary）      |    privatelink.file.core.windows.net      |
-|儲存體帳戶（Microsoft 儲存體/storageAccounts）     |  Web （web、web_secondary）        |    privatelink.web.core.windows.net      |
-|Data Lake 檔案系統 Gen2 （Microsoft. Storage/storageAccounts）  |  Data Lake 檔案系統 Gen2 （dfs，dfs_secondary）        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Table|privatelink.table.cosmos.azure.com|
-|適用於 PostgreSQL 的 Azure 資料庫-單一伺服器（DBforPostgreSQL/servers）|postgresqlServer|privatelink.postgres.database.azure.com|
-|適用於 MySQL 的 Azure 資料庫（Microsoft.dbformysql/servers）|mysqlServer|privatelink.mysql.database.azure.com|
-|適用於 MariaDB 的 Azure 資料庫（DBforMariaDB/servers）|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault （KeyVault/保存庫）|保存庫|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service Kubernetes API （Microsoft.containerservice/managedClusters）    | managedCluster | {guid}. privatelink。{region}. azmk8s. io|
-|Azure 搜尋服務（Microsoft 搜尋/searchServices）|searchService|privatelink.search.windows.net|   
-|Azure Container Registry （ContainerRegistry/登錄） | 登錄 | privatelink.azurecr.io |
-|Azure 應用程式組態（Appconfiguration/configurationStores）| configurationStore | privatelink.azconfig.io|
-|Azure 備份（Azurerm.recoveryservices/保存庫）| 保存庫 |privatelink.{region}. windowsazure.storage .com|
-|Azure 事件中樞（Microsoft EventHub/命名空間）| namespace |privatelink.servicebus.windows.net|
-|Azure 服務匯流排（Microsoft. 匯流排/命名空間） | namespace |privatelink.servicebus.windows.net|
-|Azure 轉送（Microsoft 轉送/命名空間） | namespace |privatelink.servicebus.windows.net|
-|Azure 事件方格（Microsoft EventGrid/主題）     | 主題 | 本文.{region}. privatelink. eventgrid. azure .net|
-|Azure 事件方格（EventGrid/網域） | 網域 | domain.{region}. privatelink. eventgrid. azure .net |
-|Azure WebApps （Microsoft Web/sites）    | site | privatelink.azurewebsites.net |
-|Azure Machine Learning （Microsoft.machinelearningservices/工作區）    | 工作區 | privatelink.api.azureml.ms |
+| 私人連結資源類型/Subresource |私人 DNS 區功能變數名稱稱 | 公用 DNS 區功能變數名稱稱 |
+|---|---|---|---|
+| SQL DB （Microsoft .Sql/伺服器）/Sql Server | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse 分析（Microsoft .Sql/伺服器）/Sql Server  | privatelink.database.windows.net | database.windows.net |
+| 儲存體帳戶（Microsoft 儲存體/storageAccounts）/Blob （blob、blob_secondary） | privatelink.blob.core.windows.net | blob.core.windows.net |
+| 儲存體帳戶（Microsoft 儲存體/storageAccounts）/資料表（資料表、table_secondary） | privatelink.table.core.windows.net | table.core.windows.net |
+| 儲存體帳戶（Microsoft 儲存體/storageAccounts）/佇列（佇列、queue_secondary） | privatelink.queue.core.windows.net | queue.core.windows.net |
+| 儲存體帳戶（Microsoft Storage/storageAccounts）/File （file，file_secondary） | privatelink.file.core.windows.net | file.core.windows.net |
+| 儲存體帳戶（Microsoft Storage/storageAccounts）/Web （web、web_secondary） | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake 檔案系統 Gen2 （Microsoft. Storage/storageAccounts）/Data Lake 檔案系統 Gen2 （dfs，dfs_secondary） | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/資料表 | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器（DBforPostgreSQL/servers）/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| 適用於 MySQL 的 Azure 資料庫（Microsoft.dbformysql/servers）/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| 適用於 MariaDB 的 Azure 資料庫（DBforMariaDB/servers）/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault （KeyVault/保存庫）/保存庫 | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes Service Kubernetes API （Microsoft.containerservice/managedClusters）/managedCluster | privatelink.{region}. azmk8s. io | {region}. azmk8s. io |
+| Azure 搜尋服務（Microsoft 搜尋/searchServices）/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure Container Registry （ContainerRegistry/Registry）/登錄 | privatelink.azurecr.io | azurecr.io |
+| Azure 應用程式組態（AppConfiguration/configurationStores）/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure 備份（Azurerm.recoveryservices/保存庫）/保存庫 | privatelink.{region}. windowsazure.storage .com | {region}. windowsazure.storage .com |
+| Azure 事件中樞（Microsoft EventHub/命名空間）/命名空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 服務匯流排（Microsoft 的等和命名空間）/命名空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 轉送（Microsoft 轉送/命名空間）/命名空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 事件方格（Microsoft EventGrid/主題）/主題 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure 事件方格（EventGrid/網域）/網域 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure WebApps （Microsoft Web/sites）/網站 | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Machine Learning （Microsoft.machinelearningservices/工作區）/工作區 | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>DNS 設定案例
 
-服務的 FQDN 會解析公用 ip 位址，您必須變更 DNS 設定，以解析私人端點的私人 IP 位址。
+服務的 FQDN 會自動解析為公用 IP 位址，因此若要解析為私人端點的私人 IP 位址，您必須據以變更您的 DNS 設定。
 
 DNS 是一項重要的元件，可讓應用程式正確地以私用端點 IP 位址的方式解析，藉此順利運作。
 
 根據您的喜好設定，下列案例適用于整合 DNS 解析：
 
-- [不含自訂 DNS 伺服器的虛擬網路工作負載](#virtual-network-workloads-without-custom-dns-server)
+- [沒有自訂 DNS 伺服器的虛擬網路工作負載](#virtual-network-workloads-without-custom-dns-server)
+- [使用 DNS 轉寄站的內部部署工作負載](#on-premises-workloads-using-a-dns-forwarder)
 
-
-## <a name="virtual-network-workloads-without-custom-dns-server"></a>不含自訂 DNS 伺服器的虛擬網路工作負載
+## <a name="virtual-network-workloads-without-custom-dns-server"></a>沒有自訂 DNS 伺服器的虛擬網路工作負載
 
 此設定適用于不含自訂 DNS 伺服器的虛擬網路工作負載。 在此案例中，用戶端會查詢私人端點 IP 位址至 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)。 Azure DNS 將負責私人 DNS 區域的 DNS 解析。
 
 
- > [!NOTE]
+> [!NOTE]
 > 此案例使用 Azure SQL database 建議的私人 DNS 區域。 針對其他服務，您可以使用下列參考[Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定來調整模型。
 
 若要正確設定，您需要下列資源：
@@ -99,16 +100,60 @@ DNS 是一項重要的元件，可讓應用程式正確地以私用端點 IP 位
 
 下圖說明使用私人 DNS 區域之虛擬網路工作負載的 DNS 解析順序
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="單一虛擬網路和 azure 提供的 dns":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="單一虛擬網路和 Azure 提供的 DNS":::
 
 此模型可以延伸至與相同私人端點相關聯的多個對等互連虛擬網路。 這可以藉由[將新的虛擬網路連結新增](../dns/private-dns-virtual-network-links.md)至所有對等互連虛擬網路的私人 DNS 區域來完成。
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  此設定需要單一私人 DNS 區域，為不同的虛擬網路建立多個具有相同名稱的區域，需要手動操作以合併 DNS 記錄
 
 在此案例中，有一個[中樞 & 輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)網路拓朴，其中包含共用一般私人端點的輪輻網路，而所有輪輻虛擬網路都連結到相同的私人 dns 區域。 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 azure 提供 dns 的中樞和輪輻":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供 DNS 的中樞和輪輻":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 轉寄站的內部部署工作負載
+ 
+若要讓內部部署工作負載能夠將私人端點的 FQDN 解析為私人 IP 位址，您必須使用 DNS 轉寄站來解決部署在 Azure 中的 Azure 服務[公用 DNS 區域](#azure-services-dns-zone-configuration)。
+
+
+下列案例適用于在 Azure 中具有 DNS 轉寄站的內部部署網路，其接著負責透過伺服器層級轉寄站，將所有 DNS 查詢解析為 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
+
+> [!NOTE]
+> 此案例使用 Azure SQL database 建議的私人 DNS 區域。針對其他服務，您可以使用下列參考 [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定來調整模型。
+
+若要正確設定，您需要下列資源：
+
+- 內部部署網路
+-  [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- 部署在 Azure 中的 DNS 轉寄站 
+- 具有 [類型 A 記錄](../dns/dns-zones-records.md#record-types)的私人 DNS 區域 [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)  
+- 私人端點資訊（FQDN 記錄名稱和私人 IP 位址）
+
+下圖說明來自內部部署網路的 DNS 解析順序，其使用在 Azure 中部署的 DNS 轉寄站，其中的解析是由連結至虛擬網路的私人 DNS 區域所進行。
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="使用 Azure DNS 的內部部署":::
+
+此設定可針對已有 DNS 解決方案的內部部署網路進行擴充。 
+內部部署 DNS 解決方案需要設定為透過參考 Azure 中所部署 DNS 轉寄站的 [條件](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)式轉寄站，將 dns 流量轉送至 Azure DNS。
+
+> [!NOTE]
+> 此案例使用 Azure SQL database 建議的私人 DNS 區域。針對其他服務，您可以使用下列參考 [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定來調整模型。
+
+若要正確設定，您需要下列資源：
+
+
+- 具有自訂 DNS 解決方案的內部部署網路 
+-  [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- 部署在 Azure 中的 DNS 轉寄站
+- 具有 [類型 A 記錄](../dns/dns-zones-records.md#record-types)的私人 DNS 區域 [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)   
+- 私人端點資訊（FQDN 記錄名稱和私人 IP 位址）
+
+下圖說明來自內部部署網路的 DNS 解析順序，其會有條件地將 DNS 流量轉送至 Azure，其中的解決方式是由連結至虛擬網路的私人 DNS 區域來進行
+
+> [!IMPORTANT]
+> 條件式轉送必須對 [公用 DNS 區域](#azure-services-dns-zone-configuration) （例如： `database.windows.net` ）進行，而不是 **privatelink**。 database.windows.net
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="內部部署轉送至 Azure DNS":::
 
 
 ## <a name="next-steps"></a>後續步驟

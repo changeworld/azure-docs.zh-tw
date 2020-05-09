@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: e85e41796d0fc4fb9ac72b4032de3143b26d890f
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207219"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871063"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式總覽
 Azure Log Analytics 代理程式是針對任何雲端、內部部署機器及[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)監視的虛擬機器，開發的完整管理。 Windows 和 Linux 代理程式會將從不同來源收集的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、 [Azure 資訊安全中心](/azure/security-center/)和[Azure 自動化](../../automation/automation-intro.md)。
@@ -44,7 +44,7 @@ Log Analytics 代理程式沒有成本，但您可能會產生資料內嵌的費
 | [Windows 事件記錄檔](data-sources-windows-events.md) | 傳送至 Windows 事件記錄系統的資訊。 |
 | [syslog](data-sources-syslog.md)                     | 傳送至 Linux 事件記錄系統的資訊。 |
 | [效能](data-sources-performance-counters.md)  | 數值，測量作業系統和工作負載不同層面的效能。 |
-| [IIS 記錄檔](data-sources-iis-logs.md)                 | 在客體作業系統上執行之 IIS 網站的使用方式資訊。 |
+| [IIS 記錄](data-sources-iis-logs.md)                 | 在客體作業系統上執行之 IIS 網站的使用方式資訊。 |
 | [自訂的記錄](data-sources-custom-logs.md)           | Windows 和 Linux 電腦上的文字檔中的事件。 |
 
 ## <a name="data-destinations"></a>資料目的地
@@ -147,7 +147,7 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows 的 SHA-2 程式碼簽署支援需求
-Windows 代理程式將在2020年5月18日開始以獨佔方式使用 SHA-1 登入。 這項變更會影響客戶在舊版 OS 上使用 Log Analytics 代理程式做為任何 Azure 服務（Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP）的一部分。 除非您是在舊版的作業系統版本（Windows 7、Windows Server 2008 R2 和 Windows Server 2008）上執行代理程式，否則變更不需要任何客戶動作。 在舊版作業系統上執行的客戶，必須在2020年5月18日前于其電腦上採取下列動作，否則其代理程式將會停止將資料傳送至其 Log Analytics 工作區：
+Windows 代理程式將在2020年8月17日開始以獨佔方式使用 SHA-1 簽署。 這項變更會影響客戶在舊版 OS 上使用 Log Analytics 代理程式做為任何 Azure 服務（Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP）的一部分。 除非您是在舊版的作業系統版本（Windows 7、Windows Server 2008 R2 和 Windows Server 2008）上執行代理程式，否則變更不需要任何客戶動作。 在2020年8月17日之前，在舊版作業系統上執行的客戶必須在其電腦上採取下列動作，否則其代理程式將會停止將資料傳送到其 Log Analytics 工作區：
 
 1. 安裝適用于您作業系統的最新 Service Pack。 必要的 Service Pack 版本如下：
     - Windows 7 SP1
@@ -195,11 +195,11 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 proxy 伺
 |--------|-------------|
 |通訊協定 | https |
 |user | 用於驗證 Proxy 的選擇性使用者名稱 |
-|password | 用於驗證 Proxy 的選擇性密碼 |
+|密碼 | 用於驗證 Proxy 的選擇性密碼 |
 |proxyhost | Proxy 伺服器/Log Analytics 閘道的位址或 FQDN |
 |連接埠 | Proxy 伺服器/Log Analytics 閘道的選擇性連接埠號碼 |
 
-例如：`https://user01:password@proxy01.contoso.com:30443`
+例如： `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > 如果您在密碼中使用特殊字元\@（例如 ""），則會收到 proxy 連接錯誤，因為值剖析錯誤。  若要暫時解決此問題，請使用 [URLDecode](https://www.urldecoder.org/) 之類的工具將 URL 中的密碼編碼。  

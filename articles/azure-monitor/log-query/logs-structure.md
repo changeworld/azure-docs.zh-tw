@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662071"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738077"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure 監視器記錄的結構
 使用[記錄查詢](log-query-overview.md)快速取得資料見解的能力，是 Azure 監視器的強大功能。 若要建立有效率且有用的查詢，您應該瞭解一些基本概念，例如您想要的資料位於何處，以及其結構化方式。 本文提供您開始使用所需的基本概念。
@@ -54,16 +54,17 @@ union withsource = table *
 
 | Table | 描述 | 
 |:---|:---|
-| availabilityResults | 可用性測試中的摘要資料。 |
-| browserTimings      | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。 |
-| customEvents        | 您的應用程式所建立的自訂事件。 |
-| customMetrics       | 您的應用程式所建立的自訂計量。 |
-| 相依性        | 從應用程式呼叫外部元件。 |
-| 例外狀況          | 應用程式執行時間擲回的例外狀況。 |
-| pageViews           | 具有瀏覽器資訊的每個網站視圖的相關資料。 |
-| performanceCounters | 支援應用程式之計算資源的效能測量。 |
-| requests            | 每個應用程式要求的詳細資料。  |
-| traces              | 分散式追蹤的結果。 |
+| availabilityResults   | 可用性測試中的摘要資料。
+| browserTimings      |     用戶端效能的相關資料，例如處理傳入資料所花費的時間。
+| customEvents        | 您的應用程式所建立的自訂事件。
+| customMetrics       | 您的應用程式所建立的自訂計量。
+| 相依性        | 從應用程式呼叫至透過 TrackDependency （）記錄的其他元件（包括外部元件），例如呼叫 REST API、資料庫或檔案系統。 
+| 例外狀況            | 應用程式執行時間擲回的例外狀況，會同時捕捉伺服器端和用戶端（瀏覽器）例外狀況。
+| pageViews           | 具有瀏覽器資訊的每個網站視圖的相關資料。
+| performanceCounters   | 支援應用程式之計算資源的效能測量，例如 Windows 效能計數器。
+| requests            | 您的應用程式所收到的要求。 例如，針對 web 應用程式接收的每個 HTTP 要求，會記錄個別的要求記錄。 
+| traces                | 透過 TrackTrace （）記錄的應用程式程式碼/記錄架構所發出的詳細記錄（追蹤）。
+
 
 針對應用程式，您可以在 Log Analytics 的 [**架構**] 索引標籤中，查看每個資料表的架構。
 

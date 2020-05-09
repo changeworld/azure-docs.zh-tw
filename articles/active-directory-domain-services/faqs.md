@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655356"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926964"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 
 此頁面會回答有關 Azure Active Directory Domain Services 的常見問題。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 * [我可以針對單一 Azure AD 目錄建立多個受控網域嗎？](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [我可以在傳統虛擬網路中啟用 Azure AD Domain Services 嗎？](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)
@@ -91,6 +91,7 @@ ms.locfileid: "80655356"
 * [是否可以在受控網域中修改或新增 DNS 記錄？](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [受控網域上的密碼存留期原則為何？](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Azure Active Directory Domain Services 是否提供 AD 帳戶鎖定保護？](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [我可以在 Azure AD Domain Services 中設定分散式檔案系統（DFS）和複寫嗎？](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>我可以使用遠端桌面連線到我的受控網域的網域控制站嗎？
 否。 您沒有許可權可以使用遠端桌面連線到受控網域的網域控制站。 *AAD DC 系統管理員*群組的成員可以使用 ad 系統管理工具（例如 Active Directory 系統管理中心（ADAC）或 AD PowerShell）來管理受控網域。 這些工具會使用已加入受控網域之 Windows Server 上的*遠端伺服器管理工具*功能來安裝。 如需詳細資訊，請參閱[建立管理 VM 以設定和管理 Azure AD Domain Services 受控網域](tutorial-create-management-vm.md)。
@@ -119,6 +120,9 @@ Azure AD Domain Services 受控網域上的預設密碼存留期為 90 天。 �
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure Active Directory Domain Services 是否提供 AD 帳戶鎖定保護？
 是。 2 分鐘內在受控網域中輸入不正確的密碼五次，即會導致使用者帳戶鎖定 30 分鐘。 30 分鐘後，使用者帳戶會自動解除鎖定。 受控網域上的密碼嘗試無效不會鎖定 Azure AD 中的使用者帳戶。 Azure AD Domain Services 受控網域內的使用者帳戶才會遭到鎖定。 如需詳細資訊，請參閱[受控網域上的密碼和帳戶鎖定原則](password-policy.md)。
 
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>我可以在 Azure AD Domain Services 中設定分散式檔案系統和複寫嗎？
+否。 使用 Azure AD Domain Services 時，無法使用分散式檔案系統（DFS）和複寫。
+
 ## <a name="billing-and-availability"></a>計費與可用性
 
 * [Azure AD 網域服務是付費服務嗎？](#is-azure-ad-domain-services-a-paid-service)
@@ -129,7 +133,7 @@ Azure AD Domain Services 受控網域上的預設密碼存留期為 90 天。 �
 * [哪些 Azure 區域提供此服務？](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 網域服務是付費服務嗎？
-是。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
+是。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>是否可以免費試用服務？
 Azure 免費試用版包含 Azure AD Domain Services。 您可以註冊以 [免費試用 Azure 一個月](https://azure.microsoft.com/pricing/free-trial/)。

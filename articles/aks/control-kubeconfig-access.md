@@ -3,13 +3,13 @@ title: 限制 Azure Kubernetes Service (AKS) 中的 kubeconfig 存取權
 description: 了解如何控制叢集管理員和叢集使用者對 Kubernetes 組態檔 (kubeconfig) 的存取
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259548"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890886"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 角色型存取控制來定義 Azure Kubernetes Service (AKS) 中的 Kubernetes 組態檔存取權
 
@@ -40,7 +40,8 @@ ms.locfileid: "79259548"
 
 這些 RBAC 角色可以套用至 Azure Active Directory （AD）使用者或群組。
 
-> !下在使用 Azure AD 的叢集上，具有*clusterUser*角色的使用者會有空白的*kubeconfig*檔案，以提示登入。 登入之後，使用者可以根據其 Azure AD 使用者或群組設定來取得存取權。 具有*clusterAdmin*角色的使用者具有系統管理員存取權。
+> [!NOTE]
+> 在使用 Azure AD 的叢集上，具有*clusterUser*角色的使用者會有空白的*kubeconfig*檔案，以提示登入。 登入之後，使用者可以根據其 Azure AD 使用者或群組設定來取得存取權。 具有*clusterAdmin*角色的使用者具有系統管理員存取權。
 >
 > 不使用 Azure AD 的叢集只會使用*clusterAdmin*角色。
 

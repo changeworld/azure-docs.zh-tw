@@ -1,7 +1,6 @@
 ---
-title: 什麼是 ML 管線
-titleSuffix: Azure Machine Learning
-description: 在本文中，您將瞭解機器學習（ML）管線的優點，您可以使用適用于 Python 的 Azure Machine Learning SDK 來建立。 資料科學家會使用機器學習管線來建立、優化和管理其機器學習服務工作流程。
+title: 什麼是 Azure Machine Learning 管線
+description: 瞭解機器學習（ML）管線如何協助您建立、優化及管理機器學習工作流程。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +8,16 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878573"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983443"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
-Azure Machine Learning 管線可讓您在機器學習專案中建立工作流程。 這些工作流程有數個優點： 
+在本文中，您可以瞭解 Azure Machine Learning 管線如何協助您建立、優化及管理機器學習工作流程。 這些工作流程有數個優點： 
 
 + 簡單
 + 速度
@@ -40,12 +39,11 @@ Azure Machine Learning 管線可讓您在機器學習專案中建立工作流程
 
 Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線和它們的用途：
 
-| 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
+| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | 模型協調流程（機器學習服務） | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發，快取，程式碼優先，重複使用 | 
 | 資料協調流程（資料準備） | 資料工程師 | [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | 資料 > 資料 | 強型別移動。 以資料為中心的活動。 |
 | 程式碼 & 應用程式協調流程（CI/CD） | 應用程式開發人員/Ops | [Azure DevOps 管線](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + 模型-> 應用程式/服務 | 最開放且彈性的活動支援、核准佇列、具有管制的階段 | 
-
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管線有哪些功能？
 

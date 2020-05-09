@@ -1,29 +1,30 @@
 ---
-title: Microsoft 身分識別平臺存取權杖參考 |Azure
+title: Microsoft 身分識別平臺存取權杖 |Azure
+titleSuffix: Microsoft identity platform
 description: 瞭解 Azure AD v1.0 和 Microsoft 身分識別平臺（v2.0）端點所發出的存取權杖。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ed583abc8f60f3d367bf75254807e3f28cd0f1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedaf5214305003bf302c7c74466adb84c42b2f4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309717"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926794"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平臺存取權杖
 
-存取權杖可讓用戶端安全地呼叫受 Azure 保護的 API。 Microsoft 身分識別平臺存取權杖是由 Azure 所簽署的[jwt](https://tools.ietf.org/html/rfc7519)、Base64 編碼的 JSON 物件。 用戶端應將存取權杖視為不透明字串，因為權杖的內容僅會用於存取資源。 若要用於驗證及偵錯，開發人員可以使用 [jwt.ms](https://jwt.ms) 等網站來解碼 JWT。 您的用戶端可以使用各種通訊協定，從 v1.0 端點或 v2.0 端點取得存取權杖。
+存取權杖可讓用戶端安全地呼叫受保護的 Api。 Microsoft 身分識別平臺存取權杖是由 Microsoft 身分識別平臺所簽署的[jwt](https://tools.ietf.org/html/rfc7519)、Base64 編碼的 JSON 物件。 用戶端應將存取權杖視為不透明字串，因為權杖的內容僅會用於存取資源。 基於驗證和偵錯工具的目的，開發人員可以使用[jwt.ms](https://jwt.ms)之類的網站來解碼 JWT （JSON Web token）。 您的用戶端可以使用各種通訊協定，從 v1.0 端點或 v2.0 端點取得存取權杖。
 
-當您的用戶端要求存取權杖時，Azure AD 也會傳回一些關於應用程式耗用量存取權杖的中繼資料。 此資訊包括存取權杖的到期時間以及其有效範圍。 此資料可讓應用程式執行存取權杖的智慧型快取，而不需剖析存取權杖本身。
+當您的用戶端要求存取權杖時，Microsoft 身分識別平臺也會傳回一些關於應用程式耗用量存取權杖的中繼資料。 此資訊包括存取權杖的到期時間以及其有效範圍。 此資料可讓應用程式執行存取權杖的智慧型快取，而不需剖析存取權杖本身。
 
 如果您的應用程式是用戶端可以要求存取的資源 (Web API)，存取權杖會提供可用於驗證和授權的資訊，例如使用者、用戶端、簽發者和權限等等。
 
@@ -55,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 ## <a name="claims-in-access-tokens"></a>存取權杖中的宣告
 
-JWT 分成三個部分：
+Jwt （JSON Web 權杖）分成三個部分：
 
 * **標頭** - 提供如何[驗證權杖](#validating-tokens)的相關資訊，包括權杖類型和簽署方式的相關資訊。
 * **承載** - 對於所有嘗試呼叫您服務的使用者或應用程式，其相關重要資料都包含在此。

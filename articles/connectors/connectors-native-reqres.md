@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 05/04/2020
 tags: connectors
-ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656308"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900940"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>接收和回應 Azure Logic Apps 中的輸入 HTTPS 要求
 
@@ -22,10 +22,13 @@ ms.locfileid: "80656308"
 * 在發生外部 webhook 事件時觸發工作流程。
 * 接收並回應來自另一個邏輯應用程式的 HTTPS 呼叫。
 
+要求觸發程式支援[Azure Active Directory 開放式驗證](../active-directory/develop/about-microsoft-identity-platform.md)（Azure AD OAuth）來授權邏輯應用程式的撥入電話。 如需啟用此驗證的詳細資訊，請參閱[Azure Logic Apps-啟用 Azure AD OAuth 驗證中的安全存取和資料](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
+
 > [!NOTE]
-> 要求觸發程式*僅*支援連入呼叫的傳輸層安全性（TLS）1.2。 撥出電話會繼續支援 TLS 1.0、1.1 和1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。
+> 要求觸發程式*僅*支援連入呼叫的傳輸層安全性（TLS）1.2。 撥出電話支援 TLS 1.0、1.1 和1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。
 >
-> 如果您看到 TLS 交握錯誤，請確定您使用的是 TLS 1.2。 對於傳入的呼叫，以下是支援的加密套件：
+> 如果您收到 TLS 交握錯誤，請確定您使用的是 TLS 1.2。 
+> 對於傳入的呼叫，以下是支援的加密套件：
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -46,7 +49,7 @@ ms.locfileid: "80656308"
 
 ## <a name="add-request-trigger"></a>新增要求觸發程式
 
-此內建觸發程式會建立可*只*接收傳入 HTTPs 要求的手動呼叫 HTTPs 端點。 當此事件發生時，觸發程式會引發並執行邏輯應用程式。 如需有關觸發程式的基礎 JSON 定義和如何呼叫此觸發程式的詳細資訊，請參閱[要求觸發程式類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)，以及[在 AZURE LOGIC APPS 中使用 HTTP 端點呼叫、觸發或將工作流程嵌套](../logic-apps/logic-apps-http-endpoint.md)。
+此內建觸發程式會建立可*只*接收傳入 HTTPs 要求的手動呼叫 HTTPs 端點。 當此事件發生時，觸發程式會引發並執行邏輯應用程式。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
@@ -177,13 +180,17 @@ ms.locfileid: "80656308"
 
    您的邏輯應用程式只會將傳入要求保持開啟一分鐘。 假設您的邏輯應用程式工作流程包含回應動作，如果邏輯應用程式在這段時間過後不會傳迴響應，則邏輯應用`504 GATEWAY TIMEOUT`程式會將傳回給呼叫者。 否則，如果邏輯應用程式未包含回應動作，則邏輯應用程式會立即將`202 ACCEPTED`回應傳回給呼叫者。
 
-1. 完成後，儲存邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。 
+1. 完成後，儲存邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
 
    此步驟會產生 URL，以用來傳送觸發邏輯應用程式的要求。 若要複製此 URL，請選取 URL 旁邊的複製圖示。
 
    ![用於觸發邏輯應用程式的 URL](./media/connectors-native-reqres/generated-url.png)
 
-1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。 例如，您可以使用[Postman](https://www.getpostman.com/)之類的工具。
+1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。
+
+   例如，您可以使用[Postman](https://www.getpostman.com/)之類的工具來傳送 HTTP POST。 如果您[啟用 Azure Active Directory 開啟驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)（Azure AD OAuth）以授權對要求觸發程式的撥入電話，請使用共用存取簽章[（SAS） URL](../logic-apps/logic-apps-securing-a-logic-app.md#sas)或使用驗證權杖來呼叫觸發程式，但無法同時使用這兩者。 驗證權杖必須在 authorization 標`Bearer`頭中指定類型。 如需詳細資訊，請參閱[在 Azure Logic Apps 中保護存取權和資料-存取以要求為基礎的觸發程式](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers)。
+
+如需有關觸發程式的基礎 JSON 定義和如何呼叫此觸發程式的詳細資訊，請參閱下列主題：[要求觸發程式類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)，以及[在 AZURE LOGIC APPS 中使用 HTTP 端點呼叫、觸發或對應工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
 ### <a name="trigger-outputs"></a>觸發程序輸出
 
