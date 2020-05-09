@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944146"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610236"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>在 Azure App Service 中使用流量管理員整合來設定自訂功能變數名稱
 
@@ -66,12 +66,18 @@ ms.locfileid: "78944146"
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-雖然每個網域提供者的細節不同，但您會*從*自訂功能變數名稱（例如**contoso.com**）對應*到*與您的應用程式整合的流量管理員功能變數名稱（**contoso.trafficmanager.net**）。
+雖然每個網域提供者的細節不同，但您會*從*[非根自訂功能變數名稱](#what-about-root-domains)（例如**www.contoso.com**）對應*到*與您的應用程式整合的流量管理員功能變數名稱（**contoso.trafficmanager.net**）。 
 
 > [!NOTE]
 > 如果記錄已在使用中，而您需要事先將您的應用程式繫結到該記錄，您可以建立其他的 CNAME 記錄。 例如，若要事先將**www\.contoso.com**系結至您的應用程式，請建立從**awverify**到**contoso.trafficmanager.net**的 CNAME 記錄。 然後您可以將「www\.contoso.com」新增至您的應用程式，而不需要變更「WWW」 CNAME 記錄。 如需詳細資訊，請參閱將[ACTIVE DNS 名稱遷移至 Azure App Service](manage-custom-dns-migrate-domain.md)。
 
 在網域提供者處完成 DNS 記錄的新增或修改後，請儲存變更。
+
+### <a name="what-about-root-domains"></a>根域呢？
+
+由於流量管理員只支援與 CNAME 記錄的自訂網域對應，而且 DNS 標準不支援對應根域的 CNAME 記錄（例如**contoso.com**），因此流量管理員不支援對應至根域。 若要解決此問題，請在應用層級使用 URL 重新導向。 例如，在 ASP.NET Core 中，您可以使用[URL 重寫](/aspnet/core/fundamentals/url-rewriting)。 然後，使用流量管理員來對子域進行負載平衡（**www.contoso.com**）。
+
+在高可用性案例中，您可以建立多個*記錄*，從根域指向每個應用程式複本的 IP 位址，而不流量管理員來執行容錯 DNS 安裝程式。 然後，將[相同的根域對應至所有應用程式複本](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 由於相同的功能變數名稱無法對應至相同區域中的兩個不同應用程式，因此只有當您的應用程式複本位於不同的區域時，此設定才會運作。
 
 ## <a name="enable-custom-domain"></a>啟用自訂網域
 在您的功能變數名稱的記錄傳播完成之後，請使用瀏覽器來確認您的自訂功能變數名稱會解析為您的 App Service 應用程式。

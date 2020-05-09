@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681863"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792610"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -98,6 +98,10 @@ ms.locfileid: "81681863"
 
 ### <a name="common-client-side-issues"></a>常見的用戶端問題
 
+**此模型超過所選 VM 的限制，尤其是多邊形的最大數目：**
+
+請參閱特定的[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+
 **此模型不在視圖的「截錐圖：**
 
 在許多情況下，此模型會正確顯示，但位於相機的截錐外部。 其中一個常見的原因是已使用最大的離維軸來匯出模型，因此它會由相機的最遠裁剪平面來裁剪。 它有助於以程式設計方式查詢模型的周框方塊，並使用 Unity 作為線條方塊來視覺化方塊，或將其值列印到偵錯工具記錄檔。
@@ -139,8 +143,20 @@ ms.locfileid: "81681863"
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>使用遠端呈現 API 的 Unity 程式碼不會編譯
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>針對 Unity 編輯器進行編譯時使用 Debug
+
 將 Unity 方案的*組建類型*切換為**Debug**。 在 Unity 編輯器中測試 ARR 時，定義`UNITY_EDITOR`只能在 ' Debug ' 組建中使用。 請注意，這與用於已[部署應用程式](../quickstarts/deploy-to-hololens.md)的組建類型無關，您應該在其中偏好「發行」組建。
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>編譯 HoloLens 2 的 Unity 範例時編譯失敗
+
+我們在嘗試編譯適用于 HoloLens 2 的 Unity 範例（快速入門、ShowCaseApp、...）時，看到了偽失敗。 Visual Studio 抱怨有關無法複製某些檔案（雖然檔案存在）。 如果您遇到這個問題：
+* 從專案中移除所有暫存 Unity 檔案，然後再試一次。
+* 請確定專案位於磁片上具有合理短路徑的目錄中，因為複製步驟有時似乎會遇到長檔名的問題。
+* 如果沒有説明，可能是 MS 意義會干擾複製步驟。 若要設定例外狀況，請從命令列執行此登錄命令（需要系統管理員許可權）：
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>不穩定的全息影像
 
 如果呈現的物件似乎與 head 移動一起移動，您可能會遇到*延遲階段 Reprojection* （LSR）的問題。 如需有關如何處理這類情況的指引，請參閱[晚期階段 Reprojection](../overview/features/late-stage-reprojection.md)一節。

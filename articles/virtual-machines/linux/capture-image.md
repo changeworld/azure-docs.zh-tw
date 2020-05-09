@@ -1,21 +1,25 @@
 ---
-title: 使用 Azure CLI 來捕捉 Linux VM 的映射
-description: 使用 Azure CLI 擷取要用於大量部署的 Azure VM 映像。
+title: 使用 Azure CLI 來捕捉 Linux VM 的受控映射
+description: 使用 Azure CLI，來捕獲 Azure VM 的受控映射，以用於大量部署。
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250396"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792678"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的映像
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的受控映射
 
-若要建立虛擬機器 (VM) 的多個複本以在 Azure 中使用，請擷取 VM 或 OS VHD 的映像。 若要建立用於部署的映像，您必須移除個人帳戶資訊。 在下列步驟中，您將取消佈建現有的 VM、將它解除配置，然後建立映像。 您可以使用此映像，在您訂用帳戶的任何資源群組中建立 VM。
+若要建立虛擬機器（VM）的多個複本以在 Azure 中用於開發和測試，請捕獲 VM 或 OS VHD 的受控映射。 若要建立、大規模儲存和共用映射，請參閱[共用映射資源庫](../shared-images-cli.md)。
+
+若要建立受控映射，您必須移除個人帳戶資訊。 在下列步驟中，您將取消佈建現有的 VM、將它解除配置，然後建立映像。 您可以使用此映像，在您訂用帳戶的任何資源群組中建立 VM。
 
 若要建立一份現有 Linux VM 的副本以進行備份或偵錯，或是從內部部署 VM 上傳特定的 Linux VHD，請參閱[從自訂的磁碟映像上傳及建立 Linux VM](upload-vhd.md)。  
 
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>後續步驟
-您可以從來源 VM 映像建立多個 VM。 若要變更您的映像： 
-
-- 從映像建立 VM。
-- 進行任何更新或組態變更。
-- 再次遵循相關步驟，以取消佈建、解除配置、一般化及建立映像。
-- 在日後的部署中使用這個新映像。 您可以刪除原始的映像。
-
-如需使用 CLI 管理 VM 的詳細資訊，請參閱 [Azure CLI](/cli/azure)。
+若要建立、大規模儲存和共用映射，請參閱[共用映射資源庫](shared-images.md)。

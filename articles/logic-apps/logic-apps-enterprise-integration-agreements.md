@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790734"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612328"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理交易夥伴協定
 
@@ -68,6 +68,14 @@ ms.locfileid: "74790734"
    | **接收設定** | 不定 | 不定 | 這些屬性會指定主機夥伴如何從合約中的來賓夥伴接收所有傳入訊息。 如需詳細資訊，請參閱個別的合約類型： <p>- [AS2 訊息設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 訊息設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 訊息設定](logic-apps-enterprise-integration-x12.md) |
    | **傳送設定** | 不定 | 不定 | 這些屬性會指定主機夥伴如何將所有外寄訊息傳送給合約中的來賓夥伴。 如需詳細資訊，請參閱個別的合約類型： <p>- [AS2 訊息設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 訊息設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 訊息設定](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > 合約的解決方式取決於符合夥伴和傳入訊息中定義的這些專案：
+   >
+   > * 寄件者的辨識符號和識別碼
+   > * 接收者的辨識符號和識別碼
+   >
+   > 如果您的合作夥伴變更這些值，請確定您也更新了合約。
 
 1. 當您完成合約的建立時，請在 [**新增**] 頁面上選擇 [**確定]**，然後返回您的整合帳戶。
 

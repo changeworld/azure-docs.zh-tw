@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service 中使用系統節點集區（AKS）
 description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立和管理系統節點集區
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259063"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790553"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service 中的系統節點集區（AKS）
 
@@ -29,6 +29,8 @@ ms.locfileid: "81259063"
 * 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
 * AKS 叢集必須以虛擬機器擴展集作為 VM 類型來建立。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間。 對於 Windows 節點集區，長度必須介於1到6個字元之間。
+* 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。
+* 節點集區的模式是必要屬性，而且必須在使用 ARM 範本或直接 API 呼叫時明確設定。
 
 ## <a name="system-and-user-node-pools"></a>系統和使用者節點集區
 
@@ -175,4 +177,4 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node
