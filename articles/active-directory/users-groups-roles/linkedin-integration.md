@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755111"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582638"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中整合 LinkedIn 帳戶連接
 
@@ -30,8 +30,8 @@ ms.locfileid: "80755111"
 > 例外狀況：
 >
 > * 此設定不適用於使用 Microsoft Cloud for US Government、Microsoft Cloud Germany 或中國 21Vianet 管理之 Azure 和 Office 365 的客戶。
-> * 對於佈建於德國的租用戶，此設定預設為關閉。 請注意，此設定不適用於使用 Microsoft Cloud Germany 的客戶。
-> * 對於佈建於法國的租用戶，此設定預設為關閉。
+> * 針對在德國布建的 Azure AD 組織，預設會關閉此設定。 請注意，此設定不適用於使用 Microsoft Cloud Germany 的客戶。
+> * 針對在法國布建的組織，預設會關閉此設定。
 >
 > 當您的組織啟用 LinkedIn 帳戶連線之後，帳戶連線會在使用者同意應用程式代表他們存取公司資料時生效。 如需使用者同意設定的相關資訊，請參閱[如何移除使用者對應用程式的存取權](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
 
@@ -94,10 +94,10 @@ ms.locfileid: "80755111"
 1. 使用下列設定建立群組原則物件：**使用者** > 設定**系統管理範本** > **Microsoft Office 2016** > **其他** > **在 Office 應用程式中顯示 LinkedIn 功能**。
 1. 選取 [啟用]**** 或 [停用]****。
   
-   State | 效果
+   狀況 | 效果
    ------ | ------
-   **已啟用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
-   **已停用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已停用，而且終端使用者無法變更此設定。 組織中的使用者無法在其 Office 2016 應用程式中使用 LinkedIn 功能。
+   **Enabled** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
+   **停用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已停用，而且終端使用者無法變更此設定。 組織中的使用者無法在其 Office 2016 應用程式中使用 LinkedIn 功能。
 
 這個群組原則只會影響本機電腦的 Office 2016 應用程式。 如果使用者在其 Office 2016 應用程式中停用 LinkedIn，他們仍然可以在 Office 365 中看到 LinkedIn 功能。
 

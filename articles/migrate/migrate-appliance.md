@@ -2,13 +2,13 @@
 title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備的總覽。
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106341"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780329"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -18,7 +18,7 @@ ms.locfileid: "82106341"
 
 在下列案例中會使用 Azure Migrate 設備。
 
-**案例** | **工具** | **用途** 
+**案例** | **工具** | **用於** 
 --- | --- | ---
 **VMware VM 評估** | Azure Migrate：伺服器評估 | 探索 VMware Vm<br/><br/> 探索機器應用程式和相依性<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
 **VMware VM 無代理程式遷移** | Azure Migrate：伺服器遷移 | 探索 VMware Vm <br/><br/> 使用無代理程式遷移來複寫 VMware Vm。
@@ -42,12 +42,13 @@ ms.locfileid: "82106341"
 
 **需求** | **VMware** 
 --- | ---
+**權限** | 若要在本機或遠端存取應用裝置 web 應用程式，您必須是網域系統管理員，或設備電腦上的本機系統管理員。
 **設備元件** | 設備具有下列元件：<br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。<br/>- **DRA 代理程式**：協調 VM 複寫，並協調複寫機器與 Azure 之間的通訊。 只有在使用無代理程式遷移將 VMware Vm 複寫至 Azure 時才使用。<br/>- **閘道**：將複寫的資料傳送至 Azure。 只有在使用無代理程式遷移將 VMware Vm 複寫至 Azure 時才使用。
 **支援的部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝腳本，將部署為 VMware VM 或實體機器。
 **專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以在 vCenter Server 上探索最多10000個 VMware Vm。<br/> 設備可以連接到單一 vCenter Server。
 **OVA 範本** | 從入口網站或下載https://aka.ms/migrate/appliance/vmware。<br/><br/> 下載大小為 11.2 GB。<br/><br/> 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
-**PowerShell 腳本** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**PowerShell 指令碼** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
 **軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
 **VMware 需求** | 如果您將設備部署為 VMware VM，則必須將它部署在執行5.5 版或更新版本的 ESXi 主機上。<br/><br/> vCenter Server 執行5.5、6.0、6.5 或6.7。
 **VDDK （無代理程式遷移）** | 如果您將設備部署為 VMware VM，而且您正在執行無代理程式遷移，則必須在應用裝置 VM 上安裝 VMware vSphere VDDK。
@@ -61,12 +62,13 @@ ms.locfileid: "82106341"
 
 **需求** | **Hyper-V** 
 --- | ---
+**權限** | 若要在本機或遠端存取應用裝置 web 應用程式，您必須是網域系統管理員，或設備電腦上的本機系統管理員。
 **設備元件** | 設備具有下列元件：<br/><br/>- **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。
 **支援的部署** | 使用 VHD 範本部署為 Hyper-v VM。<br/><br/> 使用 PowerShell 安裝腳本部署為 Hyper-v VM 或實體機器。
 **專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以探索最多5000部 Hyper-v Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
 **VHD 範本** | 包含 VHD 的 ZIP 檔案夾。 從入口網站或下載https://aka.ms/migrate/appliance/hyperv。<br/><br/> 下載大小為 10 GB。<br/><br/> 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
-**PowerShell 腳本** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**PowerShell 指令碼** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
 **軟體/硬體***   |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，而且必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您以 Hyper-v VM 的身分執行設備，則在 Hyper-v 主機上需要足夠的資源來配置 16 GB RAM、8個 vcpu，大約 80 GB 的儲存空間，以及適用于設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
 **Hyper-v 需求** | 如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-v VM 5.0 版。<br/><br/> Hyper-v 主機必須執行 Windows Server 2012 R2 或更新版本。 
 **雜湊值-VHD** | [確認](tutorial-assess-hyper-v.md#verify-security)VHD 範本的雜湊值。
@@ -77,12 +79,13 @@ ms.locfileid: "82106341"
 
 **需求** | **實體** 
 --- | ---
+**權限** | 若要在本機或遠端存取應用裝置 web 應用程式，您必須是網域系統管理員，或設備電腦上的本機系統管理員。
 **設備元件** | 設備具有下列元件： <br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。
 **支援的部署** | 使用 PowerShell 安裝腳本，部署為專用的實體機器或 VM。 您可以從入口網站下載此腳本。
 **專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以探索最多250部實體伺服器。
-**PowerShell 腳本** | 從入口網站下載 ZIP 檔案夾中的腳本（AzureMigrateInstaller）。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
-**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，而且必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
+**PowerShell 指令碼** | 從入口網站下載 ZIP 檔案夾中的腳本（AzureMigrateInstaller）。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，而且必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。<br/> 不支援在具有 Windows Server 2019 的電腦上執行設備。
 **雜湊值** | [確認](deploy-appliance-script.md#verify-file-security)PowerShell 腳本雜湊值。
 
 ## <a name="url-access"></a>URL 存取
@@ -90,7 +93,8 @@ ms.locfileid: "82106341"
 Azure Migrate 設備需要網際網路的連線能力。
 
 - 當您部署設備時，Azure Migrate 會對所需的 Url 進行連線檢查。
-- 如果您使用以 URL 為基礎的 proxy 來連線到網際網路，您必須允許存取這些 Url，並確定 proxy 會解析在查閱 Url 時所收到的任何 CNAME 記錄。
+- 您需要允許存取清單中的所有 Url。 如果您只是進行評估，可以略過標示為 [僅限 VMware 無代理程式遷移] 所需的 Url。
+-  如果您使用以 URL 為基礎的 proxy 來連線到網際網路，請確定 proxy 會解析查詢 Url 時所收到的任何 CNAME 記錄。
 
 ### <a name="public-cloud-urls"></a>公用雲端 Url
 
@@ -100,7 +104,7 @@ Azure Migrate 設備需要網際網路的連線能力。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登入您的 Azure 訂用帳戶。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Azure Active Directory （AD）應用程式，以與 Azure Migrate 通訊。
 management.azure.com | 建立設備 Azure AD 應用程式，以與 Azure Migrate 服務進行通訊。
-dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
+*.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
 *.vault.azure.net | 管理 Azure Key Vault 中的秘密。
 aka.ms/* | 允許存取稱為的連結。 用於 Azure Migrate 設備更新。
 download.microsoft.com/download | 允許從 Microsoft 下載下載。
@@ -176,7 +180,7 @@ IPv6 位址 | vm.Guest.Net
 讀取輸送量（每秒 MB） | net.received.average
 寫入輸送量（每秒 MB） | net.transmitted.average
 **清查路徑詳細資料** | 
-Name | container.GetType().Name
+名稱 | container.GetType().Name
 子物件的類型 | container.ChildType
 參考詳細資料 | container.MoRef
 父系詳細資料 | Container.Parent
@@ -218,7 +222,7 @@ NIC 寫入輸送量（每秒 MB） | net.transmitted.average  |VM 大小的計�
 遠端 IP 位址 | netstat
 TCP 連接狀態 | netstat
 處理序識別碼 | netstat
-否。 作用中連接的 | netstat
+不需要。 作用中連接的 | netstat
 
 #### <a name="process-data"></a>處理資料
 以下是設備從啟用了無代理程式相依性分析的每個 VM 收集的處理資料。 此資料會傳送至 Azure。
@@ -240,7 +244,7 @@ TCP 連接狀態 | netstat
 遠端連接埠 | netstat 
 遠端 IP 位址 | netstat 
 TCP 連接狀態 | netstat 
-否。 作用中連接的 | netstat
+不需要。 作用中連接的 | netstat
 處理序識別碼  | netstat 
 程序名稱 | ps
 進程引數 | ps
@@ -257,7 +261,7 @@ Azure Migrate 設備所探索到的中繼資料，可協助您找出機器和應
 
 以下是設備收集並傳送至 Azure 的 Hyper-v VM 中繼資料完整清單。
 
-**DATA* | **WMI 類別** | **WMI 類別屬性**
+**DATA** | **WMI 類別** | **WMI 類別屬性**
 --- | --- | ---
 **機器詳細資料** | 
 BIOS _ Msvm_BIOSElement 的序號 | BIOSSerialNumber
@@ -298,6 +302,84 @@ Hyper-V 虛擬網路介面卡 | 傳送的位元組數/秒 | VM 大小的計算
 - CPU 使用率是所有連接至 VM 的虛擬處理器的所有使用量總和。
 - 記憶體使用率為（目前的壓力 * 來賓可見的實體記憶體）/100。
 - 磁片和網路使用值是從列出的 Hyper-v 效能計數器收集而來。
+
+
+## <a name="collected-data---physical"></a>收集的資料-實體
+
+設備會收集中繼資料、效能資料和相依性分析資料（如果使用無代理程式相依性[分析](concepts-dependency-visualization.md)）。
+
+### <a name="windows-metadata"></a>Windows 中繼資料
+
+Azure Migrate 設備所探索到的中繼資料，可協助您找出機器和應用程式是否已準備好遷移至 Azure、適當調整機器和應用程式的大小、規劃成本，以及分析應用程式相依性。 Microsoft 不會在任何授權合規性審查中使用此資料。
+
+以下是設備收集並傳送至 Azure 的 Windows server 中繼資料完整清單。
+
+**DATA** | **WMI 類別** | **WMI 類別屬性**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Domain、Name、PartOfDomain
+處理器核心計數 | Win32_PRocessor | NumberOfCores
+配置的記憶體 | Win32_ComputerSystem | TotalPhysicalMemory
+BIOS 序號 | Win32_ComputerSystemProduct | IdentifyingNumber
+BIOS GUID | Win32_ComputerSystemProduct | UUID
+開機類型 | Win32_DiskPartition | 檢查類型 = **GPT： System**是否有 EFI/BIOS 的磁碟分割
+作業系統名稱 | Win32_OperatingSystem | Caption
+OS 版本 |Win32_OperatingSystem | 版本
+作業系統架構 | Win32_OperatingSystem | OSArchitecture
+硬碟計數 | Win32_DiskDrive | Model、Size、DeviceID、媒體型、名稱
+磁碟大小 | Win32_DiskDrive | 大小
+NIC 清單 | Win32_NetworkAdapterConfiguration | 描述，索引
+NIC IP 位址 | Win32_NetworkAdapterConfiguration | IPAddress
+NIC MAC 位址 | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux 中繼資料
+
+以下是設備收集並傳送至 Azure 的 Linux 伺服器中繼資料完整清單。
+
+**DATA** | **廠商** 
+--- | --- 
+FQDN | 貓/proc/sys/kernel/hostname，hostname-f
+處理器核心計數 |  /proc/cpuinfo \| awk '/^ processor/{print $3} ' \| wc-l
+配置的記憶體 | 貓/proc/meminfo \| grep MemTotal \| awk ' {printf "%. 0f"，$ 2/1024} '
+BIOS 序號 | lshw \| grep "序列：" \| head-n1 \| awk ' {print $2} ' <br/> /usr/sbin/dmidecode-t 1 \| Grep ' 序列 ' \| awk ' {$1 = ""; $2 = ""; print} '
+BIOS GUID | 貓/sys/class/dmi/id/product_uuid
+開機類型 | [-d/sys/firmware/efi]  && echo efi \| \| echo BIOS
+OS 名稱/版本 | 我們會針對 OS 版本和名稱存取這些檔案：<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+作業系統架構 | Uname-m
+硬碟計數 | fdisk-l \| Egrep ' Disk. * bytes ' \| awk ' {print $2} ' \|剪下-f1-d '： '
+開機磁片 | df/boot \| sed-n 2p \| awk ' {print $1} '
+磁碟大小 | fdisk-l \| Egrep ' Disk. * bytes ' \| egrep $disk： \| awk ' {print $5} '
+NIC 清單 | \| ip-HTTPs ' {print $2} '
+NIC IP 位址 | ip 位址顯示 $nic \| grep inet \| awk ' {print $2} ' \|剪下-f1-d "/" 
+NIC MAC 位址 | ip 位址顯示 $nic \| grep 乙太幣\| awk ' {print $2} '
+
+### <a name="windows-performance-data"></a>Windows 效能資料
+
+以下是設備收集並傳送至 Azure 的 Windows server 效能資料。
+
+**Data** | **WMI 類別** | **WMI 類別屬性**
+--- | --- | ---
+CPU 使用量 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+記憶體使用量 | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
+NIC 計數 | Win32_PerfFormattedData_Tcpip_NetworkInterface | 取得網路裝置計數。
+每個 NIC 收到的資料 | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+每個 NIC 傳輸的資料 | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+硬碟計數 | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | 磁片計數
+磁片詳細資料 | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+
+### <a name="linux-performance-data"></a>Linux 效能資料
+
+以下是設備收集並傳送至 Azure 的 Linux 伺服器效能資料。
+
+**Data** | **Linux** 
+--- | --- 
+CPU 使用量 | 貓/proc/stat/| grep ' cpu '/proc/stat
+記憶體使用量 | free \| grep 記憶體\| awk ' {print $ 3/$ 2 * 100.0} '
+NIC 計數 | lshw 類別網路\| grep eth [0-60] \| wc-l
+每個 NIC 收到的資料 | cat/sys/class/net/eth $ nic/statistics/rx_bytes
+每個 NIC 傳輸的資料 | cat/sys/class/net/eth $ nic/statistics/tx_bytes
+硬碟計數 | fdisk-l \| Egrep ' Disk. * bytes ' \| awk ' {print $2} ' \|剪下-f1-d '： '
+磁片詳細資料 | 貓/proc/diskstats
+
 
 ## <a name="appliance-upgrades"></a>設備升級
 
