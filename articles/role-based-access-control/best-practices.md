@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726770"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735329"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 的最佳做法
 
@@ -26,13 +26,13 @@ ms.locfileid: "81726770"
 
 ## <a name="only-grant-the-access-users-need"></a>僅授與使用者所需的存取權
 
-您可以使用 Azure RBAC 來區隔小組內的職責，僅授與使用者執行其工作所需的存取權數量。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
+Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
 
-在規劃存取控制策略時，最佳做法是授與使用者完成其工作的最低權限。 下圖顯示使用 RBAC 的建議模式。
+在規劃存取控制策略時，最佳做法是授與使用者完成其工作的最低權限。 下圖顯示使用 Azure RBAC 的建議模式。
 
-![RBAC 和最低權限](./media/best-practices/rbac-least-privilege.png)
+![Azure RBAC 和最低許可權](./media/best-practices/rbac-least-privilege.png)
 
-如需有關如何新增角色指派的詳細資訊，請參閱[新增或移除角色指派](role-assignments-portal.md)。
+如需有關如何新增角色指派的詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制訂用帳戶擁有者的數目
 

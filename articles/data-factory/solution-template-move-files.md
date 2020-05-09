@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414754"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628158"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure Data Factory 移動檔案
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文說明一個解決方案範本，您可以用來在檔案型存放區之間將檔案從一個資料夾移到另一個。 使用此範本的其中一個常見案例：檔案會持續卸載至來源存放區的登陸資料夾。 藉由建立排程觸發程式，ADF 管線可以定期將這些檔案從來源移至目的地存放區。  ADF 管線達到「移動檔案」的方式是從登陸資料夾取得檔案、將每個檔案複製到目的地存放區上的另一個資料夾，然後從來源存放區的登陸資料夾中刪除相同的檔案。
 
