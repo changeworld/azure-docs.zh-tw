@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255232"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688033"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權
 
@@ -115,7 +115,7 @@ SAS 權杖是您在用戶端上產生的字串，例如，使用其中一個 Azu
 - **瞭解您的帳戶會因為任何使用量而計費，包括透過 SAS。** 如果您提供 blob 的寫入權限，使用者可以選擇上傳 200 GB 的 blob。 若您也同時提供使用者讀取存取權，則他們可能會選擇下載 10 次，而您便會產生 2TB 的出口成本。 再次強調，提供有限的權限有助於減少惡意使用者採取的潛在動作。 使用短期 SAS 以降低此威脅 (但請注意結束時間的時鐘誤差)。
 - **驗證使用 SAS 所寫入的資料。**  當用戶端應用程式將資料寫入您的儲存體帳戶時，請留意該資料可能會造成問題。 如果您的應用程式要求在開始使用資料之前先驗證或授權資料，則您應在寫入資料之後但應用程式尚未開始使用資料之前執行此驗證。 此做法也可防止正確取得 SAS 的使用者或是利用洩漏 SAS 的使用者，損毀資料或將惡意資料寫入您的帳戶。
 - **知道不使用 SAS 的時機。** 有時候，與您儲存體帳戶的特定作業相關聯的風險，會超過使用 SAS 的優點。 針對此類作業，請建立一個中介層服務，在執行商務規則驗證、驗證及稽核之後才寫入您的儲存體帳戶。 另外，有時候以其他方式管理存取權可能比較簡單。 例如，如果您想要讓容器中的所有 Blob 都可供公開讀取，則您可以將此容器設定為 [公用]，而不是將 SAS 提供給每個用戶端進行存取。
-- **使用 Azure 監視器和 Azure 儲存體記錄來監視您的應用程式。** 您可以使用 Azure 監視器和儲存體分析記錄，觀察因 SAS 提供者服務中斷或意外移除預存存取原則，而導致授權失敗的任何尖峰。 如需詳細資訊，請參閱 Azure 監視器和[Azure 儲存體分析記錄](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)[中的 Azure 儲存體計量](storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- **使用 Azure 監視器和 Azure 儲存體記錄來監視您的應用程式。** 您可以使用 Azure 監視器和儲存體分析記錄，觀察因 SAS 提供者服務中斷或意外移除預存存取原則，而導致授權失敗的任何尖峰。 如需詳細資訊，請參閱 Azure 監視器和[Azure 儲存體分析記錄](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)[中的 Azure 儲存體計量](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="get-started-with-sas"></a>開始使用 SAS
 

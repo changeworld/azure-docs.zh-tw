@@ -3,12 +3,12 @@ title: Azure Application Insights 中的資源、角色及存取控制 | Microso
 description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473127"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628224"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
 
@@ -40,11 +40,6 @@ ms.locfileid: "79473127"
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制資源群組中的存取
 
 請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們會附加到與您 Application Insights 資源相同的[資源群組](#resource-group)。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
-
-為了控制這些資源的存取，因此建議您：
-
-* 在 **資源群組或訂用帳戶** 層級控制存取。
-* 指派 **Application Insights 元件參與者** 角色給使用者。 這可讓他們編輯 Web 測試、警示和 Application Insights 資源，而不用提供群組中任何其他服務的存取權。
 
 ## <a name="to-provide-access-to-another-user"></a>若要提供存取權給其他使用者
 

@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: cdc739c7464b3deb87faaaabfd8d657ae8c28678
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6dc2eeb572eeed17281677945c93067bbadee94
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617757"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628566"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視和取消定型執行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "81617757"
 * 建立子執行。
 * 標記和尋找執行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您將需要下列專案：
 
@@ -103,7 +103,7 @@ notebook_run.log(name="message", value="Hello from run!")
     >
     > 如果您有以程式設計方式建立回合設定物件的 Python 腳本，您可以使用[RunConfig （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)將它儲存為 RunConfig 檔案。
     >
-    > 如需更多範例 runconfig 檔案[https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)，請參閱。
+    > 如需更多範例 runconfig 檔案[https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)，請參閱。
 
     如需詳細資訊，請參閱[az ml 執行提交-腳本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 

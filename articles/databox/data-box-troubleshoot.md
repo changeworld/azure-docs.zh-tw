@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560060"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628890"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>針對與 Azure 資料箱和 Azure Data Box Heavy 相關的問題進行疑難排解
 
@@ -23,7 +23,7 @@ ms.locfileid: "77560060"
 
 資料箱和 Data Box Heavy 中的錯誤摘要如下：
 
-| 錯誤類別 *        | 說明        | 建議的動作    |
+| 錯誤類別 *        | 描述        | 建議的動作    |
 |----------------------------------------------|---------|--------------------------------------|
 | 容器或共用名稱 | 容器或共用名稱不會遵循 Azure 命名規則。  |下載錯誤清單。 <br> 重新命名容器或共用。 [深入了解](#container-or-share-name-errors)。  |
 | 容器或共用大小限制 | 容器或共用中的資料總計超過 Azure 限制。   |下載錯誤清單。 <br> 減少容器或共用中的整體資料。 [深入了解](#container-or-share-size-limit-errors)。|
@@ -92,6 +92,17 @@ ms.locfileid: "77560060"
     - 無效名稱的範例`my-folder_1`：、 `my`、 `--myfolder`、、 `myfolder--``myfolder!`
 
     如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**錯誤描述**：目錄或容器名稱包含不合法的字元。
+
+**建議的解決方案**：您所複製的目錄或容器名稱包含不支援的字元。
+
+- 在本機 web UI 的 [連線並複製] 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。 
+- 重新命名目錄或容器，以確保它們符合 Azure 命名慣例。
+
+如需詳細資訊，請參閱 [目錄](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
 
 ## <a name="container-or-share-size-limit-errors"></a>容器或共用大小限制錯誤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 6d0d05f13f592fc981d3df52d107b385bdbbb21e
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515283"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629264"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自訂計量集合
 
@@ -188,9 +188,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 根據預設，計量瀏覽器體驗內的多維度度量不會在 Application Insights 資源中開啟。 若要開啟此行為，請選取 [[啟用自訂計量維度的警示](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)]，以移至 [使用量和估計成本] 索引標籤。
 
-### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>當有三個以上的維度時，如何使用 metricIdentifier
+### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>當有三個以上的維度時，如何使用 MetricIdentifier
 
-目前支援10個維度，但大於三個維度需要使用者`metricIdentifier`：
+目前支援10個維度，但大於三個維度需要使用`MetricIdentifier`：
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier

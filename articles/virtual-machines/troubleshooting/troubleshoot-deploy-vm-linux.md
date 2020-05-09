@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921431"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628294"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解
 
@@ -56,13 +56,13 @@ ms.locfileid: "77921431"
 
 ## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>我的 Linux N 系列 VM 遺失驅動程式
 
-Linux 型 VM 的驅動程式位於[這裡](../linux/n-series-driver-setup.md)。 
+安裝 Linux 型 Vm 驅動程式的指示位於[這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)。
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 內找不到 GPU 執行個體
 
-若要利用 Azure N 系列 VM (執行 Windows Server 2016 或 Windows Server 2012 R2) 的 GPU 功能，您必須在部署之後於每個 VM 上安裝 NVIDIA 圖形驅動程式。 您可以取得 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 的驅動程式設定資訊。
+若要利用 Azure N 系列 Vm 的 GPU 功能，您必須在部署之後于每個 VM 上安裝圖形驅動程式。 您可以[在這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)取得驅動程式設定資訊。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>我的區域是否有提供 N 系列 VM？
+## <a name="are-n-series-vms-available-in-my-region"></a>我的區域中是否有 N 系列 Vm 可用？
 
 您可以從[依區域提供的產品表](https://azure.microsoft.com/regions/services)查看是否有提供該產品，以及從[這裡](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)查看定價。
 
@@ -84,7 +84,7 @@ Linux 型 VM 的驅動程式位於[這裡](../linux/n-series-driver-setup.md)。
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>我是否可以將現有的傳統 VM 新增到可用性設定組？
 
-是。 您可以將現有的傳統 VM 新增到新的或現有的「可用性設定組」。 如需詳細資訊，請參閱[將現有的虛擬機器新增至可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
+可以。 您可以將現有的傳統 VM 新增到新的或現有的「可用性設定組」。 如需詳細資訊，請參閱[將現有的虛擬機器新增至可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 

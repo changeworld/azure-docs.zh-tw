@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: cd09bb7bde759c543b066070c5d2450404949610
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380642"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627104"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>保留折扣的套用方式
 
@@ -61,7 +61,7 @@ ms.locfileid: "81380642"
 - [軟體方案](understand-suse-reservation-charges.md)
 - [Storage](understand-storage-charges.md)
 - [SQL Database](understand-reservation-charges.md)
-- [SQL 資料倉儲](reservation-discount-azure-sql-dw.md)
+- [Azure Synapse Analytics](reservation-discount-azure-sql-dw.md)
 - [虛擬機器](../manage/understand-vm-reservation-charges.md)
 
 

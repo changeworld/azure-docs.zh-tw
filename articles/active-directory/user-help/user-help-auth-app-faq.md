@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756848"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627767"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>關於 Microsoft Authenticator 應用程式的常見問題（Faq）
 
@@ -27,8 +27,9 @@ Microsoft Authenticator 應用程式取代了 Azure Authenticator 應用程式�
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-| 問題 | 解決方法 |
-| -------- | -------- |
+| 問題 | Answer |
+| -------- | ------ |
+| 註冊裝置是否同意將裝置的存取權授與公司或服務？ | 註冊裝置可讓您的裝置存取貴組織的服務，而不允許您的組織存取您的裝置。 |
 | 我可以將我的 OTP 代碼的螢幕擷取畫面帶到 Android Microsoft Authenticator 嗎？ | 從 Microsoft Authenticator Android release 6.2003.1704 中，根據預設，當驗證器有螢幕擷取畫面時，會隱藏所有的 OTP 代碼，以更有效地保護我們的使用者。 如果使用者想要在螢幕擷取畫面中看到其 OTP 代碼，或允許其他應用程式抓取驗證器的畫面，則可以在其驗證器應用程式中啟用「螢幕擷取畫面」設定，然後重新開機應用程式。 |
 | Authenticator 會為我儲存何種資料，而我該如何刪除它？ | Microsoft Authenticator 應用程式會收集三種類型的資訊：<ul><li>您新增帳戶時提供的帳戶資訊。 這項資料可以藉由移除帳戶來移除。</li><li>診斷記錄資料只會保留在應用程式中，直到您選取 [**傳送記錄**] 應用程式的 [說明 **] 功能表，** 將記錄檔傳送給 Microsoft。 這些記錄檔包含個人資料，例如您的電子郵件地址（例如alain@contoso.com）、伺服器或 IP 位址，以及裝置資料（例如裝置名稱和作業系統版本），其中的個人資料僅限於協助疑難排解應用程式問題所需的資訊。 您可以隨時在應用程式中檢視這些記錄檔，以查看所收集的資訊。 如果您傳送記錄檔，驗證應用程式的工程師就可以使用此資訊來對客戶回報問題進行疑難排解。</li><li>非個人標識的使用方式資料，例如「已啟動新增帳戶流程/已成功新增帳戶」或「已核准通知」。 這項資料是我們的工程決策中不可或缺的一部分，可協助我們判斷哪些功能對您而言很重要，以及要透過應用程式更新形式來改善的地方。 身為應用程式使用者，您可以在第一次啟動應用程式時查看此資料收集的通知，並告知其可以在應用程式的 [**設定**] 頁面上關閉。 您可以隨時啟用或停用此設定。</li></ul> |
 | 應用程式中的程式碼有什麼作用？ | 當您開啟 Microsoft Authenticator 應用程式時，您會看到新增的帳戶做為磚。<li>在 iOS 裝置上，您的公司或學校帳戶和個人 Microsoft 帳戶將會在帳戶的全螢幕視圖中看到六個或八位數的數位（藉由在帳戶磚上點擊存取）。<br><br>![應用程式中的 [帳戶] 畫面](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>針對 iOS 裝置上的其他帳戶和 Android 裝置上的所有帳戶，您會在應用程式的 [帳戶] 頁面中看到六位數或八位數位。 您將使用這些驗證碼來驗證您就是您所說的人員。 使用您的使用者名稱和密碼登入之後，您將輸入與該帳戶相關聯的驗證碼。 例如，如果您 Katy 登入您的 Contoso 帳戶，而且您使用 iOS 裝置，您可以按一下 [帳戶] 磚，然後使用驗證碼來驗證您的身分識別。 如果您要 Katy 登入您的 Outlook 帳戶，請遵循相同的步驟。<br><br>![在應用程式中點擊帳戶磚之後](./media/user-help-auth-app-faq/katy-signin.png)<br><br>在您按下 [Contoso 帳戶] 磚之後，Katy 會在全螢幕視圖中看到驗證碼，並輸入895823以完成登入。<br><br>![應用程式中的驗證碼畫面](./media/user-help-auth-app-faq/verification-code.png) |

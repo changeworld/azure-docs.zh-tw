@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68fe7da136d744e1efa76a89061afe6995a75051
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133266"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628737"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
@@ -51,9 +51,18 @@ ms.locfileid: "82133266"
 
 使用事件中樞的最佳作法是使用多個取用者群組來進行作業擴充性。 在特定輸入的串流分析作業中，其讀取器數量會影響單一取用者群組中的讀取器數量。 接收器精確數量會以相應放大拓撲邏輯的內部實作詳細資料為基礎，並且不會對外公開。 讀取器數量會在作業開始時或作業升級期間變更。
 
-當接收器數目超過上限時顯示的錯誤訊息為：
+當接收器數目超過最大值時，會顯示下列錯誤訊息。 錯誤訊息包含在取用者群組下對事件中樞進行的現有連線清單。 此標記`AzureStreamAnalytics`表示連線來自 Azure 串流服務。
 
-`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+```
+The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
+
+The following information may be helpful in identifying the connected receivers: Exceeded the maximum number of allowed receivers per partition in a consumer group which is 5. List of connected receivers – 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
+```
 
 > [!NOTE]
 > 如果在作業升級期間變更讀取器數量，暫時性警告會寫入稽核記錄中。 串流分析作業會從這些暫時性問題中自動復原。
