@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605488"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838581"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中可用的 Red Hat Enterprise Linux （RHEL）映射
 Azure 針對不同的使用案例提供各種 RHEL 映射。
@@ -27,6 +27,9 @@ Azure 針對不同的使用案例提供各種 RHEL 映射。
 
 ## <a name="list-of-rhel-images"></a>RHEL 映射清單
 這是 Azure 中可用的 RHEL 映射清單。 除非另有說明，否則所有映射都會分割並附加至一般 RHEL 存放庫（不是 EUS，而非 E4S）。 以下是目前可供一般使用的映射：
+
+> [!NOTE]
+> 不會再以 LVM 分割的映射來產生原始影像。 LVM 與較舊的原始（非 LVM）資料分割配置相比，提供了數個優點，包括大幅彈性的資料分割調整大小選項。
 
 產品| SKU | 資料分割 | 佈建 | 備忘錄
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | RAW    | Linux 代理程式 |
 |             | 7.6      | RAW    | Linux 代理程式 | 預設會附加至 EUS 存放庫，從5月2019。
 |             | 76-gen2  | RAW    | Linux 代理程式 | 預設會附加至 EUS 存放庫。
 |             | 7.7      | LVM    | Linux 代理程式 | 預設會附加至 EUS 存放庫。
+|             | 77-gen2  | LVM    | Linux 代理程式 | 預設會附加至 EUS 存放庫。
+|             | 7.8      | LVM    | Linux 代理程式 | 已附加至一般存放庫（RHEL 7.8 無法使用 EUS）
+|             | 78-gen2  | LVM    | Linux 代理程式 | 已附加至一般存放庫（RHEL 7.8 無法使用 EUS）
 |             | 8-LVM    | LVM    | Linux 代理程式 | RHEL 8.x 系列映射。 已附加至一般存放庫。
 |             | 8-lvm-gen2| LVM    | Linux 代理程式 | Hyper-v 第2代-RHEL 8.x 系列映射。 已附加至一般存放庫。
 |             | 8        | LVM    | Linux 代理程式 | RHEL 8.0 映射

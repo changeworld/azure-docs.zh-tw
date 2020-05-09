@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189376"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863428"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -69,13 +69,13 @@ HDInsight 輸出流量相依性幾乎會與 Fqdn 完全定義。 其後面沒有
 
     **FQDN 標記區段**
 
-    | 名稱 | 來源地址 | FQDN 標籤 | 注意 |
+    | 名稱 | 來源地址 | FQDN 標籤 | 備忘錄 |
     | --- | --- | --- | --- |
     | Rule_1 | * | Windowsupdate.log 和 HDInsight | HDI 服務的必要 |
 
     **目標 Fqdn 區段**
 
-    | 名稱 | 來源位址 | `Protocol:Port` | 目標 FQDN | 注意 |
+    | 名稱 | 來源位址 | `Protocol:Port` | 目標 FQDN | 備忘錄 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | HTTPs：443 | login.windows.net | 允許 Windows 登入活動 |
     | Rule_3 | * | HTTPs：443 | login.microsoftonline.com | 允許 Windows 登入活動 |
@@ -103,7 +103,7 @@ HDInsight 輸出流量相依性幾乎會與 Fqdn 完全定義。 其後面沒有
 
     **IP 位址區段**
 
-    | 名稱 | 通訊協定 | 來源位址 | 目的地位址 | 目的地連接埠 | 注意 |
+    | 名稱 | 通訊協定 | 來源位址 | 目的地位址 | 目的地連接埠 | 備忘錄 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | 時間服務 |
     | Rule_2 | 任意 | * | DC_IP_Address_1，DC_IP_Address_2 | * | 如果您使用企業安全性套件（ESP），請在 [IP 位址] 區段中新增網路規則，以允許 ESP 叢集與 AAD DS 通訊。 您可以在入口網站的 [AAD-DS] 區段中找到網域控制站的 IP 位址 |
@@ -112,7 +112,7 @@ HDInsight 輸出流量相依性幾乎會與 Fqdn 完全定義。 其後面沒有
 
     **服務標記區段**
 
-    | 名稱 | 通訊協定 | 來源位址 | 服務標籤 | 目的地埠 | 注意 |
+    | 名稱 | 通訊協定 | 來源位址 | 服務標籤 | 目的地埠 | 備忘錄 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的 [服務標籤] 區段中設定網路規則，可讓您記錄和審計 SQL 流量。 除非您已在 HDInsight 子網上設定 SQL Server 的服務端點，否則會略過防火牆。 |
 
@@ -188,61 +188,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 若要使用公用端點（`https://CLUSTERNAME.azurehdinsight.net`）或 ssh 端點（`CLUSTERNAME-ssh.azurehdinsight.net`），請確定路由表中有正確的路由和 NSG 規則，以避免[此處](../firewall/integrate-lb.md)說明的非對稱式路由問題。 具體而言，在此情況下，您必須允許輸入 NSG 規則中的用戶端 IP 位址，並將下一個躍點設為`internet`，將它新增至使用者定義的路由表。 如果路由未正確設定，您會看到逾時錯誤。
 
-## <a name="configure-another-network-virtual-appliance"></a>設定另一個網路虛擬裝置
-
-> [!Important]
-> 只有當您想要設定 Azure 防火牆以外的網路虛擬裝置（NVA）時，**才**需要下列資訊。
-
-先前的指示可協助您設定 Azure 防火牆，以限制來自 HDInsight 叢集的輸出流量。 Azure 防火牆會自動設定為允許許多常見重要案例的流量。 使用另一個網路虛擬裝置時，您必須設定一些額外的功能。 當您設定網路虛擬裝置時，請記住下列因素：
-
-* 應使用服務端點來設定支援的服務端點服務。
-* IP 位址相依性適用于非 HTTP/S 流量（TCP 和 UDP 流量）。
-* FQDN HTTP/HTTPS 端點可以放在您的 NVA 裝置中。
-* 萬用字元 HTTP/HTTPS 端點是相依性，可能會根據數個限定詞而有所不同。
-* 將您建立的路由表指派給您的 HDInsight 子網。
-
-### <a name="service-endpoint-capable-dependencies"></a>支援服務端點的相依性
-
-| **端點** |
-|---|
-| Azure SQL |
-| Azure 儲存體 |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>IP 位址相依性
-
-| **端點** | **詳細資料** |
-|---|---|
-| \*:123 | NTP 時鐘檢查。 在連接埠 123 上的多個端點檢查流量 |
-| [這裡](hdinsight-management-ip-addresses.md)發佈的 ip | 這些 Ip 是 HDInsight 服務 |
-| ESP 叢集的 AAD-DS 私人 Ip |
-| \*：16800（適用于 KMS Windows 啟用） |
-| \*適用于 Log Analytics 的12000 |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 相依性
-
-> [!Important]
-> 下列清單只提供幾個最重要的 Fqdn。 在[此檔案中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)設定 NVA 時，您可以取得額外的 fqdn （大多是 Azure 儲存體和 Azure 服務匯流排）。
-
-| **端點**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 虛擬網路架構](hdinsight-virtual-network-architecture.md)
+* [設定網路虛擬裝置](./network-virtual-appliance.md)

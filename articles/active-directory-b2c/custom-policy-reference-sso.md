@@ -8,27 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229675"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926114"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話](session-overview.md)管理可讓系統管理員在使用者已通過驗證後，控制與使用者的互動。 例如，系統管理員可以控制是否顯示選取的身分識別提供者，或是否需要再次輸入帳戶詳細資料。 本文說明如何設定 Azure AD B2C 的 SSO 設定。
-
-SSO 工作階段管理使用相同的語意，作為自訂原則中的其他任何技術設定檔。 執行協調流程步驟時，會查詢與步驟建立關聯的技術設定檔是否有 `UseTechnicalProfileForSessionManagement` 參考。 如果有的話，接著會檢查參考的 SSO 工作階段提供者，以查看使用者是否為工作階段參與者。 如果是這樣，則會使用 SSO 工作階段提供者來重新填入工作階段。 同樣地，執行協調流程步驟完成時，如果已指定 SSO 工作階段提供者，則會使用提供者來將資訊儲存在工作階段中。
+[單一登入（SSO）會話](session-overview.md)管理會使用與自訂原則中任何其他技術設定檔相同的語義。 執行協調流程步驟時，會查詢與步驟建立關聯的技術設定檔是否有 `UseTechnicalProfileForSessionManagement` 參考。 如果有的話，接著會檢查參考的 SSO 工作階段提供者，以查看使用者是否為工作階段參與者。 如果是這樣，則會使用 SSO 工作階段提供者來重新填入工作階段。 同樣地，執行協調流程步驟完成時，如果已指定 SSO 工作階段提供者，則會使用提供者來將資訊儲存在工作階段中。
 
 Azure AD B2C 已定義許多可使用的 SSO 工作階段提供者：
 
-|會話提供者  |影響範圍  |
+|會話提供者  |範圍  |
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  無       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 內部會話管理員。      |       
@@ -174,3 +172,4 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解[Azure AD B2C 的會話](session-overview.md)。
+- 瞭解如何[在自訂原則中設定會話行為](session-behavior-custom-policy.md)。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246119"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594877"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -452,7 +452,7 @@ ms.locfileid: "79246119"
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> 必要條件
 開始之前，請確定符合下列各節所述的必要條件。 此外，請務必檢查[資源][sap-ha-guide-2]一節中列出的所有資源。
 
-在本文中，我們針對[三層式 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure Resource Manager 範本。 如需範本的實用概觀，請參閱 [SAP Azure Resource Manager 範本](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
+在本文中，我們針對[三層式 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/) 使用 Azure Resource Manager 範本。 如需範本的實用概觀，請參閱 [SAP Azure Resource Manager 範本](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>人員
 這些文章涵蓋 Azure 中的 SAP 部署：
@@ -677,8 +677,8 @@ Azure Resource Manager 中的三層式範本也支援高可用性案例，例如
 
 以下是可取得我們在本文中說明之範例案例的 Azure Resource Manager 範本︰
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
+* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
 
 若要準備架構範本 1 的基礎結構：
 
@@ -768,8 +768,8 @@ _**圖 11：** 設定 SAP 高可用性 Azure Resource Manager 參數_
 
 您可以在這裡取得此部署案例的 Azure Resource Manager 範本：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
+* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>準備架構範本 3 的基礎結構
@@ -1016,7 +1016,7 @@ _**圖 15：** Azure 內部負載平衡器的預設 ASCS/SCS 負載平衡規_
 1. 在 [Azure 入口網站中，選取** < *SID*>-lb-ascs 負載平衡器** > **負載平衡規則**。
 2. 針對屬於 SAP ASCS 或 SCS 執行個體的所有負載平衡規則，變更下列值：
 
-   * Name
+   * 名稱
    * 連接埠
    * 後端連接埠
 
@@ -1042,7 +1042,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 若要在 SAP ASCS/SCS 執行個體的兩個叢集節點上新增登錄項目，首先，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上新增這些 Windows 登錄項目︰
 
-| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveTime` |
 | 變數類型 |REG_DWORD (十進位) |
@@ -1053,7 +1053,7 @@ _**表 3：** 變更第一個 TCP/IP 參數_
 
 然後，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上都新增下列 Windows 登錄項目：
 
-| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveInterval` |
 | 變數類型 |REG_DWORD (十進位) |

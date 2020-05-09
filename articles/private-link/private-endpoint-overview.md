@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: a4117acb2fada5c4422e177e9e6b84d7a0a51b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129326"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744398"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私用端點？
 
@@ -35,7 +35,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 以下是私人端點的一些重要詳細資料： 
 - 私人端點可讓相同 VNet、區域內對等互連 Vnet、全域對等互連 Vnet 和內部部署之間的取用者，使用[VPN](https://azure.microsoft.com/services/vpn-gateway/)或[Express Route](https://azure.microsoft.com/services/expressroute/) ，以及由私用連結提供技術支援的服務之間進行連線。
  
-- 建立私用端點時，也會針對資源的生命週期建立網路介面。 介面會從對應至私人連結服務的子網指派私人 IP 位址。
+- 建立私用端點時，也會建立資源生命週期的唯讀網路介面。 介面會從對應至私人連結資源的子網指派私人 IP 位址。
  
 - 私人端點必須部署在與虛擬網路相同的區域中。 
  
@@ -67,9 +67,9 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | 登錄 |
 |**Azure 應用程式組態** | Appconfiguration/configurationStores    | configurationStore |
 |**Azure 備份** | Microsoft.RecoveryServices/vaults    | 保存庫 |
-|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | namespace |
-|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | namespace |
-|**Azure 轉送** | Microsoft.Relay/namespaces | namespace |
+|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | 命名空間 |
+|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | 命名空間 |
+|**Azure 轉送** | Microsoft.Relay/namespaces | 命名空間 |
 |**事件格線** | Microsoft.EventGrid/topics    | 主題 |
 |**事件格線** | EventGrid/網域    | 網域 |
 |**Azure WebApps** | Microsoft.Web/sites    | site |

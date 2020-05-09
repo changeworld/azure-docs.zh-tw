@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270888"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607379"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "81270888"
 
 本指南將說明如何設定 Azure NetApp Files 帳戶，並在 Windows 虛擬桌面中建立 FSLogix 設定檔容器。
 
-本文假設您已設定[主機](create-host-pools-azure-marketplace.md)集區，並將其分組為 Windows 虛擬桌面環境中的一或多個租使用者。 若要瞭解如何設定租使用者，請參閱[在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者和[我們的技術社區 blog 文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
+本文假設您已設定[主機](create-host-pools-azure-marketplace.md)集區，並將其分組為 Windows 虛擬桌面環境中的一或多個租使用者。 若要瞭解如何設定租使用者，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者和[我們的技術社區 blog 文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
 
 本指南中的指示專為 Windows 虛擬桌面使用者而提供。 如果您要尋找如何設定 Azure NetApp Files 並在 Windows 虛擬桌面之外建立 FSLogix 設定檔容器的一般指引，請參閱[設定 Azure Netapp files 和建立 NFS 磁片區快速入門](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "81270888"
 >[!NOTE]
 >如果您要尋找 Azure 上不同 FSLogix 設定檔容器儲存體選項的比較資料，請參閱[FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先執行下列動作，才能建立主機集區的 FSLogix 設定檔容器：
 
@@ -210,7 +210,7 @@ ms.locfileid: "81270888"
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>請確定使用者可以存取 Azure NetApp File share
 
-1. 開啟網際網路瀏覽器並移至<https://rdweb.wvd.microsoft.com/webclient/index.html>。
+1. 開啟網際網路瀏覽器並移至<https://rdweb.wvd.microsoft.com/arm/webclient>。
 
 2. 使用指派給遠端桌面群組之使用者的認證登入。
 

@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C （MSAL.NET） |Azure
+title: Azure AD B2C 和 MSAL.NET
 titleSuffix: Microsoft identity platform
-description: 瞭解使用 Azure AD B2C 搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時的特定考慮。
+description: 使用 Azure AD B2C 搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時的考慮。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -9,39 +9,39 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/29/2019
+ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533950"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883221"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 以社交身分識別登入使用者
 
 您可以使用 MSAL.NET，透過[Azure Active Directory B2C （Azure AD B2C）](https://aka.ms/aadb2c)，透過社交身分識別登入使用者。 Azure AD B2C 是根據原則的概念來建立的。 在 MSAL.NET 中，指定原則會轉譯為提供授權單位。
 
-- 當您具現化公用用戶端應用程式時，您必須指定 [授權單位] 中的原則。
-- 當您想要套用原則時，您需要呼叫包含`AcquireTokenInteractive` `authority`參數的覆寫。
+- 當您具現化公用用戶端應用程式時，您必須將原則指定為授權單位的一部分。
+- 當您想要套用原則時，請呼叫`AcquireTokenInteractive`可接受`authority`參數的覆寫。
 
-此頁面適用于 MSAL 3.x。 如果您對 MSAL 2.x 有興趣，請參閱 MSAL 2.x[中的 Azure AD B2C 詳細資訊](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)。
+本文適用于 MSAL.NET 3.x。 針對 MSAL.NET 2.x，請參閱 GitHub 上 MSAL.NET Wiki 中 MSAL 2.x 的[Azure AD B2C 詳細資訊](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)。
 
-## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C 租使用者和原則的授權單位
+## <a name="authority-for-an-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C 租使用者和原則的授權單位
 
-使用的授權單位是`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` ：
+Azure AD B2C 的授權格式為：`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
 
-- `azureADB2CHostname`這是 Azure AD B2C 租使用者加上主機的名稱（例如`{your-tenant-name}.b2clogin.com`），
-- `tenant`這是 Azure AD B2C 租使用者的完整名稱（例如`{your-tenant-name}.onmicrosoft.com`），或租使用者的 GUID。
-- `policyName`要套用的原則或使用者流程的名稱（例如，「b2c_1_susi」用於註冊/登入）。
+- `azureADB2CHostname`-Azure AD B2C 租使用者的名稱加上主機。 例如， *contosob2c.b2clogin.com*。
+- `tenant`-Azure AD B2C 租使用者的功能變數名稱或目錄（租使用者）識別碼。 例如，分別是*contosob2c.onmicrosoft.com*或 GUID。
+- `policyName`-要套用的使用者流程或自訂原則的名稱。 例如， *b2c_1_susi*之類的註冊/登入原則。
 
-如需 Azure AD B2C 授權單位的詳細資訊，請參閱此[檔](/azure/active-directory-b2c/b2clogin)。
+如需 Azure AD B2C 授權單位的詳細資訊，請參閱[將重新導向 Url 設定為 b2clogin.com](../../active-directory-b2c/b2clogin.md)。
 
 ## <a name="instantiating-the-application"></a>將應用程式具現化
 
-建立應用程式時，您必須提供授權單位。
+當您建立應用程式`WithB2CAuthority()`物件時，藉由呼叫來提供授權單位：
 
 ```csharp
 // Azure AD B2C Coordinates
@@ -64,74 +64,80 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 
 ## <a name="acquire-a-token-to-apply-a-policy"></a>取得權杖以套用原則
 
-若要取得公用用戶端應用程式中受 Azure AD B2C 保護之 API 的權杖，您必須使用具有授權的覆寫：
+若要在公用用戶端應用程式中取得受 Azure AD B2C 保護之 API 的權杖，您必須使用具有授權的覆寫：
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
-                                            .WithAccount(GetAccountByPolicy(accounts, policy))
-                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                            .ExecuteAsync();
+AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
+                                           .WithAccount(GetAccountByPolicy(accounts, policy))
+                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
+                                           .ExecuteAsync();
 ```
 
-成為：
+在上述程式碼片段中：
 
-- `policy`這是先前的其中一個字串（例如`PolicySignUpSignIn`）。
-- `ParentActivityOrWindow`適用于 Android （活動），而適用于支援父系 UI 的其他平臺（例如 Windows 中的 windows 和 iOS 中的 UIViewController）則為選擇性。 如需詳細資訊，請參閱[UI 對話方塊](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)。
+- `policy`這是一個字串，其中包含您 Azure AD B2C 的使用者流程名稱或自訂原則（ `PolicySignUpSignIn`例如）。
+- `ParentActivityOrWindow`是 Android （活動）的必要項，而且對於支援上層 UI （例如 Microsoft Windows 上的 windows 和 iOS 中的 UIViewController）的其他平臺而言是選擇性的。 如需 UI 對話方塊的詳細資訊，請參閱 MSAL Wiki 上的[WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) 。
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)`是一種方法，可尋找給定原則的帳戶。 例如：
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
   {
-   foreach (var account in accounts)
-   {
-    string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-    if (userIdentifier.EndsWith(policy.ToLower()))
-     return account;
-   }
-   return null;
+      foreach (var account in accounts)
+      {
+          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
+          if (userIdentifier.EndsWith(policy.ToLower()))
+              return account;
+      }
+      return null;
   }
   ```
 
-目前藉由呼叫`AcquireTokenInteractive`來套用原則或使用者流程（例如，讓使用者編輯其設定檔或重設其密碼）。 在這兩個原則的案例中，您不會使用傳回的權杖/驗證結果。
+目前藉由呼叫`AcquireTokenInteractive`來套用使用者流程或自訂原則（例如，讓使用者編輯其設定檔或重設其密碼）。 針對這兩個原則，您不會使用傳回的權杖/驗證結果。
 
-## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile 和 ResetPassword 原則的特殊案例
+## <a name="profile-edit-policies"></a>設定檔編輯原則
 
-當您想要提供經驗，讓使用者使用社交身分識別登入，然後編輯其設定檔時，您會想要套用 Azure AD B2C 編輯設定檔原則。 執行這項操作的方法是呼叫`AcquireTokenInteractive`具有該原則的特定授權單位，並將提示設定為`Prompt.NoPrompt` ，以防止顯示帳戶選取對話方塊（因為使用者已經登入，而且有作用中的 cookie 會話）。
+若要讓您的使用者使用社交身分識別登入，然後編輯其設定檔，請套用 Azure AD B2C 編輯設定檔原則。
+
+若要這麼做`AcquireTokenInteractive` ，請呼叫具有該原則的授權單位。 因為使用者已經登入，而且有作用中的 cookie 會話，所以`Prompt.NoPrompt`請使用防止顯示帳戶選取對話方塊。
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
- IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
- try
- {
-  var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                               .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
-                               .WithPrompt(Prompt.NoPrompt),
-                               .WithB2CAuthority(App.AuthorityEditProfile)
-                               .ExecuteAsync();
-  DisplayBasicTokenInfo(authResult);
- }
- catch
- {
-  . . .
- }
+    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    try
+    {
+        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
+                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+                            .WithPrompt(Prompt.NoPrompt),
+                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .ExecuteAsync();
+        DisplayBasicTokenInfo(authResult);
+    }
+    catch
+    {
+    }
 }
 ```
-## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>具有 Azure AD B2C 的資源擁有者密碼認證（ROPC）
-如需 ROPC 流程的詳細資訊，請參閱此[檔](v2-oauth-ropc.md)。
 
-**不建議使用**此流程，因為詢問使用者密碼的應用程式並不安全。 如需此問題的詳細資訊，請參閱[這篇文章](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
+## <a name="resource-owner-password-credentials-ropc"></a>資源擁有者密碼認證（ROPC）
 
-藉由使用使用者名稱/密碼，您會產生許多事項：
-- 新式身分識別的核心原則：密碼會取得 fished、重新執行。 因為我們有可攔截的共用密碼概念。 這與無密碼不相容。
+如需 ROPC 流程的詳細資訊，請參閱[使用資源擁有者密碼認證授與登入](v2-oauth-ropc.md)。
+
+**不建議**使用 ROPC 流程，因為在您的應用程式中要求使用者提供其密碼並不安全。 如需有關此問題的詳細資訊，請參閱[密碼成長問題的解決方案為何？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
+
+藉由在 ROPC 流程中使用使用者名稱/密碼，您會犧牲幾件事：
+
+- 新式身分識別的核心原則：可以 fished 或重新執行密碼，因為共用密碼可以被攔截。 根據定義，ROPC 與無密碼流程不相容。
 - 需要執行 MFA 的使用者將無法登入（因為沒有互動）。
-- 使用者將無法執行單一登入。
+- 使用者將無法使用單一登入（SSO）。
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定 ROPC 流程
-在您的 Azure AD B2C 租使用者中，建立新的使用者流程，然後選取 [**使用 ROPC 登入**]。 這會為您的租使用者啟用 ROPC 原則。 如需詳細資訊，請參閱[設定資源擁有者密碼認證流程](/azure/active-directory-b2c/configure-ropc)。
 
-`IPublicClientApplication`包含方法：
+在您的 Azure AD B2C 租使用者中，建立新的使用者流程，然後選取 [**使用 ROPC 登入**] 來啟用使用者流程的 ROPC。 如需詳細資訊，請參閱[設定資源擁有者密碼認證流程](/azure/active-directory-b2c/configure-ropc)。
+
+`IPublicClientApplication`包含`AcquireTokenByUsernamePassword`方法：
+
 ```csharp
 AcquireTokenByUsernamePassword(
             IEnumerable<string> scopes,
@@ -139,44 +145,50 @@ AcquireTokenByUsernamePassword(
             SecureString password)
 ```
 
-這個方法會使用做為參數：
-- 要為其要求存取權杖的*範圍*。
+這個`AcquireTokenByUsernamePassword`方法會採用下列參數：
+
+- 要為其取得存取權杖的*範圍*。
 - 使用者*名稱*。
 - 使用者的 SecureString*密碼*。
 
-請記得使用包含 ROPC 原則的授權單位。
-
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC 流程的限制
- - ROPC 流程**僅適用于本機帳戶**（您可以使用電子郵件或使用者名稱向 Azure AD B2C 註冊）。 如果與 Azure AD B2C （Facebook、Google 等）支援的任何身分識別提供者同盟，此流程就無法運作。
 
-## <a name="google-auth-and-embedded-webview"></a>Google Auth 和 Embedded Web 視圖
+ROPC 流程**僅適用于本機帳戶**，您的使用者已使用電子郵件地址或使用者名稱向 Azure AD B2C 註冊。 當同盟到 Azure AD B2C （Facebook、Google 等）支援的外部身分識別提供者時，此流程無法正常執行。
 
-如果您是使用 Google 做為身分識別提供者的 Azure AD B2C 開發人員，我們會建議您使用系統瀏覽器，因為 Google 不允許[來自內嵌網站的驗證](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 目前， `login.microsoftonline.com`是 Google 的受信任授權單位。 使用此授權單位將可使用內嵌的 web 工作。 不過， `b2clogin.com`使用不是 Google 的信任授權單位，因此使用者將無法進行驗證。
+## <a name="google-auth-and-embedded-webview"></a>Google auth 和 embedded web 視圖
 
-如果發生變更，我們將會提供此[問題](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)的更新。
+如果您使用 Google 做為身分識別提供者，建議您使用系統瀏覽器，因為 Google 不允許[來自 embedded 網站的驗證](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 目前， `login.microsoftonline.com`是 Google 的受信任授權單位，並可與內嵌的 web 操作人員搭配使用。 不過， `b2clogin.com`不是 Google 的信任授權單位，因此使用者將無法進行驗證。
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>在 MSAL.Net 中使用 Azure AD B2C 進行快取
+如果發生變更，我們將提供此[問題](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)的更新。
+
+## <a name="token-caching-in-msalnet"></a>MSAL.NET 中的權杖快取
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C 的已知問題
 
-MSAL.Net 支援[權杖](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)快取。 權杖快取金鑰是以身分識別提供者傳回的宣告為基礎。 目前 MSAL.Net 需要兩個宣告來建立權杖快取金鑰：
-- `tid`這是 Azure AD 的租使用者識別碼，而
+MSAL.NET 支援[權杖](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)快取。 權杖快取金鑰是以身分識別提供者（IdP）傳回的宣告為基礎。
+
+目前，MSAL.NET 需要兩個宣告來建立權杖快取金鑰：
+
+- `tid`（Azure AD 的租使用者識別碼）
 - `preferred_username`
 
-許多 Azure AD B2C 案例中都缺少這兩個宣告。
+這兩個宣告在 Azure AD B2C 案例中可能會遺失，因為並非所有的社交識別提供者（Facebook、Google 和其他人）都會在其傳回 Azure AD B2C 的權杖中傳回它們。
 
-客戶的影響是，當嘗試顯示 [使用者名稱] 欄位時，您會收到「遺漏權杖回應」作為值嗎？ 若是如此，這是因為因為社交帳戶和外部身分識別提供者（Idp）的限制，Azure AD B2C 不會在 preferred_username 的 IdToken 中傳回值。 Azure AD 會傳回 preferred_username 的值，因為它知道使用者是誰，但對於 Azure AD B2C，因為使用者可以使用本機帳戶、Facebook、Google、GitHub 等進行登入。 preferred_username 使用的 Azure AD B2C 沒有一致的值。 若要解除封鎖 MSAL 與 ADAL 的快取相容性，我們決定在處理 Azure AD B2C 帳戶時，于結束時使用「權杖回應中遺漏」，而當 IdToken 不傳回任何 preferred_username。 MSAL 必須傳回 preferred_username 的值，以維持跨程式庫的快取相容性。
+這類案例的徵兆是`Missing from the token response`當您存取 Azure AD B2C 所簽發的權杖`preferred_username`中的宣告值時，MSAL.NET 會傳回。 MSAL 會使用`Missing from the token response`的值`preferred_username`來維護程式庫之間的快取交互相容性。
 
 ### <a name="workarounds"></a>因應措施
 
-#### <a name="mitigation-for-the-missing-tenant-id"></a>降低遺失的租使用者識別碼
+#### <a name="mitigation-for-missing-tenant-id"></a>降低遺失的租使用者識別碼
 
-建議的解決方法是使用[依原則](#acquire-a-token-to-apply-a-policy)的快取
+建議的解決方法是使用稍早所述[原則的](#acquire-a-token-to-apply-a-policy)快取。
 
-或者，如果您使用`tid` [B2C 自訂原則](https://aka.ms/ief)，則可以使用宣告，因為它提供了將額外的宣告傳回給應用程式的功能。 若要深入瞭解[宣告轉換](/azure/active-directory-b2c/claims-transformation-technical-profile)
+或者，如果您在 Azure AD B2C `tid`中使用[自訂原則](../../active-directory-b2c/custom-policy-get-started.md)，則可以使用宣告。 自訂原則可以使用[宣告轉換](/azure/active-directory-b2c/claims-transformation-technical-profile)，將額外的宣告傳回給您的應用程式。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>「權杖回應遺失」的緩和措施
-其中一個選項是使用 "name" 宣告做為慣用的使用者名稱。 此程式會在 [傳回宣告] 欄中提及于此[B2C](../../active-directory-b2c/user-flow-overview.md)檔 > 中，選擇成功編輯設定檔後，您要在授權權杖中傳回給應用程式的宣告。 例如，選取 [顯示名稱]、[郵遞區號]。
+
+其中一個選項是使用`name`宣告，而不`preferred_username`是。 若要在`name` Azure AD B2C 所簽發的識別碼權杖中包含宣告，請在設定使用者流程時選取 [**顯示名稱**]。
+
+如需指定使用者流程所傳回之宣告的詳細資訊，請參閱[教學課程：在 Azure AD B2C 中建立使用者流程](../../active-directory-b2c/tutorial-create-user-flows.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -184,4 +196,4 @@ MSAL.Net 支援[權杖](/dotnet/api/microsoft.identity.client.tokencache?view=az
 
 | 範例 | 平台 | 描述|
 |------ | -------- | -----------|
-|[active directory-b2c-xamarin-原生](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 簡單的 Xamarin Forms 應用程式展示如何使用 MSAL.NET 透過 Azure AD B2C 來驗證使用者，並使用產生的權杖來存取 Web API。|
+|[active directory-b2c-xamarin-原生](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | Xamarin Forms 應用程式，它會使用 MSAL.NET 透過 Azure AD B2C 來驗證使用者，然後存取具有所傳回權杖的 Web API。|

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: e85e41796d0fc4fb9ac72b4032de3143b26d890f
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871063"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982202"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式總覽
 Azure Log Analytics 代理程式是針對任何雲端、內部部署機器及[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)監視的虛擬機器，開發的完整管理。 Windows 和 Linux 代理程式會將從不同來源收集的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、 [Azure 資訊安全中心](/azure/security-center/)和[Azure 自動化](../../automation/automation-intro.md)。
@@ -174,7 +174,6 @@ Windows 代理程式將在2020年8月17日開始以獨佔方式使用 SHA-1 簽�
 |*.oms.opinsights.azure.com |連接埠 443 |輸入和輸出|是 |  
 |*.blob.core.windows.net |連接埠 443 |輸入和輸出|是 |
 |*.azure-automation.net |連接埠 443 |輸入和輸出|是 |
-|*.azure.com |連接埠 443|輸入和輸出|是 |
 
 如需 Azure Government 所需的防火牆資訊，請參閱[Azure Government 管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
 

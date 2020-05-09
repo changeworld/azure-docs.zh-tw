@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262148"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734734"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 入口網站新增自訂網域名稱
 
@@ -37,7 +37,7 @@ ms.locfileid: "79262148"
 >[!IMPORTANT]
 >建立租用戶的人員會自動成為該租用戶的全域管理員。 全域管理員可以將其他系統管理員新增至租用戶。
 
-如需訂用帳戶角色的詳細資訊，請參閱[AZURE RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)。
+如需訂用帳戶角色的詳細資訊，請參閱[Azure 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
 
 >[!TIP]
 > 如果您計畫將內部部署 Windows Server AD 與 Azure AD 建立同盟，則需要選取 [我打算在執行 Azure AD Connect 工具來同步處理您的目錄時，**將此網域設定為使用我的本機 Active Directory 進行單一登入**]。

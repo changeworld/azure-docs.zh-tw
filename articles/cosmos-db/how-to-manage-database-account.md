@@ -4,14 +4,14 @@ description: 瞭解如何使用 Azure 入口網站、PowerShell、CLI 和 Azure 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247380"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745035"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
 
@@ -29,11 +29,11 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 建立 Azure Cosmos DB 帳戶](manage-with-powershell.md#create-account)
+請參閱[使用 PowerShell 建立 Azure Cosmos DB 帳戶](manage-with-powershell.md#create-account)
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager 範本
 
-此 Azure Resource Manager 範本會建立一個 Azure Cosmos 帳戶，適用于設定了兩個區域的 SQL API，以及用來選取一致性層級、自動容錯移轉和多宿主的選項。 若要部署此範本，請在讀我檔案頁面的[建立 Azure Cosmos 帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)中，按一下 [部署至 Azure]
+請參閱[使用 Azure Resource Manager 範本建立 Azure Cosmos DB 帳戶](manage-sql-with-resource-manager.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>在資料庫帳戶中新增/移除區域
 
@@ -61,7 +61,7 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 新增或移除區域](manage-with-powershell.md#update-account)
+請參閱[使用 PowerShell 新增或移除區域](manage-with-powershell.md#update-account)
 
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>設定多重寫入區域
 
@@ -77,7 +77,7 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 啟用多重寫入區域](manage-with-powershell.md#multi-master)
+請參閱[使用 PowerShell 啟用多重寫入區域](manage-with-powershell.md#multi-master)
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager 範本
 
@@ -163,7 +163,7 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
+請參閱[使用 PowerShell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的容錯移轉屬性
 
@@ -194,7 +194,7 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 ### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 設定容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
+請參閱[使用 PowerShell 設定容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
 
 ## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>在 Azure Cosmos 帳戶上執行手動容錯移轉
 
@@ -226,7 +226,7 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 ### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
+請參閱[使用 PowerShell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>後續步驟
 

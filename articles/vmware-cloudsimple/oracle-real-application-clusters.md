@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868066"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793035"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>優化您的 CloudSimple 私人雲端以安裝 Oracle RAC
 
@@ -244,7 +244,7 @@ Oracle 使用共用磁片來儲存資料、記錄和重做記錄檔。  您可�
 VM 對主機親和性規則可確保 VM 會在所需的主機上執行。  您可以在 vCenter 上定義規則，以確保 Oracle VM 在具有適當資源的主機上執行，並符合任何特定的授權需求。
 
 1. 在 CloudSimple 入口網站中，呈報 cloudowner 使用者的[許可權](escalate-private-cloud-privileges.md)。
-2. [登入私人雲端的 vSphere 用戶端](https://docs.azure.cloudsimple.com/vsphere-access)。
+2. 登入私人雲端的 vSphere 用戶端。
 3. 在 vSphere 用戶端中，選取部署 Oracle Vm 的叢集，然後按一下 [**設定**]。
 4. 在 [設定] 底下，選取 [ **VM/主機群組**]。
 5. 按一下 **+** 。

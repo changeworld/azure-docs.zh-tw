@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418791"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870046"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>建立輪轉視窗觸發程序相依性
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418791"
 本文提供在輪轉視窗觸發程序上建立相依性的步驟。 如需輪轉視窗觸發程序的一般資訊，請參閱[如何建立輪轉視窗觸發程序](how-to-create-tumbling-window-trigger.md)。
 
 若要建置相依性鏈結，並確保系統只會在成功執行 Data Factory 中的另一個觸發程序之後才執行某個觸發程序，請使用此進階功能來建立輪轉視窗相依性。
+
+如需如何使用輪轉視窗觸發程式在您的 Azure Data Factory 中建立相依管線的示範，請觀看下列影片：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>在 Data Factory UI 中建立相依性
 
@@ -75,18 +79,21 @@ ms.locfileid: "81418791"
 
 下表提供定義輪轉視窗相依性所需之屬性的清單。
 
-| **屬性名稱** | **說明**  | **類型** | **必要** |
+| **屬性名稱** | **說明**  | **型別** | **必要** |
 |---|---|---|---|
 | type  | 所有現有的輪轉視窗觸發程序都會顯示在此下拉式清單中。 選擇要採取相依性的觸發程序。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
 | Offset | 相依性觸發程序的偏移。 請提供時間範圍格式的值，並允許負與正位移。 如果觸發程式是以其本身為依據，而且在其他所有情況下是選擇性的，則這個屬性是必要的。 自我相依性應一律為負值偏移。 如果未指定任何值，視窗會與觸發程式本身相同。 | Timespan<br/>(hh:mm:ss) | 自我相依性：是<br/>其他：否 |
-| size | 相依性輪轉視窗的大小。 提供正的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
+| 大小 | 相依性輪轉視窗的大小。 提供正的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
-> 輪轉視窗觸發程式可能會相依于最多兩個其他觸發程式。
+> 輪轉視窗觸發程式可能會相依于最多五個其他觸發程式。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>輪轉視窗自我相依性屬性
 
-在觸發程式不應該繼續到下一個視窗，直到上一個視窗成功完成為止，請建立自我相依性。 自我相依性觸發程式會依賴先前的 hr 內的成功執行，將具有下列屬性：
+在觸發程式不應繼續到下一個視窗，直到上一個視窗成功完成為止，請建立自我相依性。 依賴先前一小時內的成功執行的自我相依性觸發程式，將會有下列程式碼中所示的屬性。
+
+> [!NOTE]
+> 如果您的觸發管線依賴先前觸發的 windows 中的管線輸出，我們建議您只使用輪轉視窗觸發程式自我相依性。 若要限制平行觸發程式的執行，請設定上限觸發程式並行。
 
 ```json
 {
@@ -147,10 +154,6 @@ ms.locfileid: "81418791"
 作業輸出資料流中沒有間隔的每日作業：
 
 ![自我相依性範例](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "自我相依性範例")
-
-如需如何使用輪轉視窗觸發程式在您的 Azure Data Factory 中建立相依管線的示範，請觀看下列影片：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>監視相依性
 

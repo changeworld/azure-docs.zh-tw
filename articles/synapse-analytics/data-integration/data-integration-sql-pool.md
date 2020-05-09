@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430561"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982695"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>將資料內嵌到 SQL 集區
 
 在本文中，您將瞭解如何使用 Azure Synapse 分析，將資料從 Azure Data Lake Gen 2 儲存體帳戶內嵌到 SQL 集區。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂**用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立[免費的 azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**：使用 Azure Data Lake Storage Gen 2 做為*源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以取得建立步驟。
@@ -39,7 +39,7 @@ ms.locfileid: "81430561"
 
 ## <a name="create-pipeline"></a>建立管線
 
-管線包含執行一組活動的邏輯流程。 在本節中，您將建立一個管線，其中包含複製活動，可將 ADLS gen 2 中的資料內嵌至 SQL 集區。
+管線包含執行一組活動的邏輯流程。 在本節中，您將建立一個管線，其中包含複製活動，可將 ADLS Gen2 的資料內嵌至 SQL 集區。
 
 1. 移至 [**協調**] 索引標籤。按一下 [管線] 標題旁邊的加號圖示，然後選取 [**管線**]。
 1. 在 [活動] 窗格中的 [**移動和轉換**] 底下，將 [**複製資料**] 拖曳至管線畫布。

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188390"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891307"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -42,10 +42,10 @@ ms.locfileid: "82188390"
 
 Azure Machine Learning 針對 web 服務支援兩種形式的驗證：金鑰和權杖。 每個 web 服務一次只能啟用一種形式的驗證。
 
-|驗證方法|說明|Azure Container Instances|AKS|
+|驗證方法|描述|Azure Container Instances|AKS|
 |---|---|---|---|
-|Key|金鑰是靜態的，不需要重新整理。 可以手動重新產生金鑰。|預設為停用| 預設已啟用|
-|Token|權杖會在指定的時間週期後過期，而且需要重新整理。| 無法使用| 預設為停用 |
+|機碼|金鑰是靜態的，不需要重新整理。 可以手動重新產生金鑰。|預設為停用| 預設已啟用|
+|權杖|權杖會在指定的時間週期後過期，而且需要重新整理。| 無法使用| 預設為停用 |
 
 如需程式碼範例，請參閱[web 服務驗證一節](how-to-setup-authentication.md#web-service-authentication)。
 
@@ -105,29 +105,9 @@ Azure Machine Learning 會針對每個工作區區域，在`aml-`您`Microsoft-A
 
 Azure Machine Learning 依賴其他 Azure 服務來計算資源。 計算資源 (計算目標) 用於定型和部署模型。 您可以在虛擬網路中建立這些計算目標。 例如，您可以使用 Azure 資料科學虛擬機器來定型模型，然後將模型部署至 AKS。  
 
-如需詳細資訊，請參閱[如何在虛擬網路中執行實驗和推斷](how-to-enable-virtual-network.md)。
+如需詳細資訊，請參閱[如何在隔離的虛擬網路中安全地執行實驗和推斷](how-to-enable-virtual-network.md)。
 
 您也可以為您的工作區啟用 Azure 私人連結。 私人連結可讓您限制從 Azure 虛擬網路到您工作區的通訊。 如需詳細資訊，請參閱[如何設定私用連結](how-to-configure-private-link.md)。
-
-> [!TIP]
-> 您可以將虛擬網路和私人連結結合在一起，以保護您的工作區與其他 Azure 資源之間的通訊。 不過，有些組合需要 Enterprise edition 工作區。 使用下表來瞭解需要 Enterprise edition 的案例：
->
-> | 狀況 | Enterprise</br>edition | 基本</br>edition |
-> | ----- |:-----:|:-----:| 
-> | 沒有虛擬網路或私人連結 | ✔ | ✔ |
-> | 沒有私用連結的工作區。 虛擬網路中的其他資源（Azure Container Registry 除外） | ✔ | ✔ |
-> | 沒有私用連結的工作區。 具有私用連結的其他資源 | ✔ | |
-> | 具有私用連結的工作區。 虛擬網路中的其他資源（Azure Container Registry 除外） | ✔ | ✔ |
-> | 工作區和任何其他具有私用連結的資源 | ✔ | |
-> | 具有私用連結的工作區。 沒有私人連結或虛擬網路的其他資源 | ✔ | ✔ |
-> | 虛擬網路中的 Azure Container Registry | ✔ | |
-> | 工作區的客戶管理金鑰 | ✔ | |
-> 
-
-> [!WARNING]
-> 啟用私用連結的工作區中不支援 Azure Machine Learning 計算實例預覽。
-> 
-> Azure Machine Learning 不支援使用已啟用私用連結的 Azure Kubernetes Service。 相反地，您可以使用虛擬網路中的 Azure Kubernetes Service。 如需詳細資訊，請參閱[在 azure 虛擬網路中保護 AZURE ML 實驗和推斷作業](how-to-enable-virtual-network.md)。
 
 ## <a name="data-encryption"></a>資料加密
 
@@ -265,7 +245,7 @@ SSH 密碼和計算目標（例如 Azure HDInsight 和 Vm）的金鑰會儲存�
 
 Microsoft 可能會收集非使用者識別資訊，例如資源名稱（如資料集名稱或機器學習實驗名稱），或作業環境變數以供診斷之用。 所有這類資料都是使用 microsoft 所擁有的訂用帳戶儲存在儲存體中，並遵循[microsoft 的標準隱私權原則和資料處理標準](https://privacy.microsoft.com/privacystatement)來儲存。
 
-Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，在命名[runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)時，請避免包含敏感性資訊，例如使用者名稱或密碼專案名稱。 這項資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
+Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，當命名[run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)時，請避免包含敏感性資訊，例如使用者名稱或密碼專案名稱。 這項資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
 
 您可以在布建工作區時，將`hbi_workspace`參數設定為， `TRUE`以退出宣告所收集的診斷資料。 使用 AzureML Python SDK、CLI、REST Api 或 Azure Resource Manager 範本時，支援此功能。
 

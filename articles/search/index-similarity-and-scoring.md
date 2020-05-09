@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254118"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890135"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性和計分
 
@@ -59,18 +59,11 @@ Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相�
 
 目前，您可以指定想要使用的相似性排序演算法。 如需詳細資訊，請參閱[排名演算法](index-ranking-similarity.md)。
 
-## <a name="watch-this-video"></a>觀看這部影片
+下列影片區段會快速轉寄至 Azure 認知搜尋中使用的排名演算法說明。 您可以觀看完整的影片，以取得更多背景資訊。
 
-在這段16分鐘的影片中，軟體工程師 Raouf Merouche 將說明編制索引、查詢，以及如何建立評分設定檔的程式。 當您的檔已編制索引並抓取時，它可讓您瞭解幕後發生的狀況。
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2-3 分鐘涵蓋索引編制：文字處理和詞彙分析。
-+ 3-4 分鐘涵蓋索引：反向索引。
-+ 4-6 分鐘涵蓋查詢：抓取和排名。
-+ 7-16 分鐘涵蓋評分設定檔。
-
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [計分設定檔](index-add-scoring-profiles.md) [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
  [搜尋檔 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   
