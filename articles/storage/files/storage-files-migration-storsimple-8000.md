@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755038"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858723"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -23,7 +23,7 @@ StorSimple 8000 系列將于12月 2022[日結束](https://support.microsoft.com/
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 
 > [!IMPORTANT]
-> Microsoft 致力於協助客戶進行遷移。 適用AzureFilesMigration@microsoft于自訂遷移計畫的電子郵件 .com，以及在遷移期間的協助。
+> Microsoft 致力於協助客戶進行遷移。 適用AzureFiles@microsoft.com于自訂遷移計畫的電子郵件，以及在遷移期間的協助。
 
 Azure 檔案同步是以兩個主要元件為基礎的 Microsoft 雲端服務：
 
@@ -32,7 +32,7 @@ Azure 檔案同步是以兩個主要元件為基礎的 Microsoft 雲端服務：
 
 本文著重于遷移步驟。 如果您想要深入瞭解 Azure 檔案同步，建議您先閱讀下列文章：
 
-* [Azure 檔案同步-總覽](https://aka.ms/AFS "總覽")
+* [Azure 檔案同步-總覽](https://aka.ms/AFS "概觀")
 * [Azure 檔案同步-部署指南](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>移轉目標
@@ -252,7 +252,7 @@ Azure 檔案同步可用來將檔案從掛接的 iSCSI StorSimple 磁片區移�
 > [!IMPORTANT]
 > 若要這麼做，必須先在伺服器上設定登錄機碼，然後才能設定 Azure 檔案同步。
 
-1. 在 VM 的系統磁片磁碟機上建立新的目錄。 Azure 檔案同步資訊必須保存在該處，而不是在掛接的磁片區複製上。 例如：`"C:\syncmetadata"`
+1. 在 VM 的系統磁片磁碟機上建立新的目錄。 Azure 檔案同步資訊必須保存在該處，而不是在掛接的磁片區複製上。 例如： `"C:\syncmetadata"`
 2. 開啟 regedit，並找出下列登錄區：`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. 建立 String 類型的新索引鍵，名為： ***MetadataRootPath***
 4. 設定您在系統磁碟區上建立之目錄的完整路徑，例如：`C:\syncmetadata"`
