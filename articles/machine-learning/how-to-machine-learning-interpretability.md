@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631405"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982882"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning 中的模型 interpretability
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ Interpretability 類別可透過多個 SDK 套件取得：（瞭解如何[安裝
 
 |Interpretability 技術|描述|類型|
 |--|--|--------------------|
-|1. SHAP Tree 說明| [SHAP](https://github.com/slundberg/shap)的樹狀說明，著重于多項式時間快速 SHAP 價值估計演算法，適用于**樹狀結構和整體的**樹系。|模型特定|
-|2. SHAP Deep 說明| 根據[SHAP](https://github.com/slundberg/shap)的說明，深度說明」是一種高速的近似值演算法，可在深度學習模型中，以[SHAP NIPS](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)檔中所述的 DeepLIFT 連接為基礎來 SHAP 值。 支援使用 TensorFlow 後端的**TensorFlow**模型和**Keras**模型（也有 PyTorch 的初步支援）」。|模型特定|
-|3. SHAP 線性說明| [SHAP](https://github.com/slundberg/shap)的線性說明會計算**線性模型**的 SHAP 值，並選擇性地會計入功能間的相互關聯。|模型特定|
-|4. SHAP 核心說明| [SHAP](https://github.com/slundberg/shap)的核心說明會使用特殊加權的區域線性回歸來估計**任何模型**的 SHAP 值。|與模型無關|
-|5. 模擬說明（全域代理）| 模擬說明是以定型[全域代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來模擬黑箱模型的概念為基礎。 全域代理模型是一種內部可解譯模型，經過訓練以盡可能精確地大致估計**任何黑色方塊模型**的預測。 資料科學家可以解讀代理模型，以繪製有關黑色箱模型的結論。 您可以使用下列其中一個可解譯模型做為您的代理模型： LightGBM （LGBMExplainableModel）、線性回歸（LinearExplainableModel）、隨機梯度下降 explainable 模型（SGDExplainableModel）和決策樹（DecisionTreeExplainableModel）。|與模型無關|
-|6. 排列功能重要性說明（PFI）| 排列功能重要性是一種技術，用來說明[Breiman 的隨機](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)樹系紙張所能啟發的分類和回歸模型（請參閱第10節）。 概括而言，它的運作方式是針對整個資料集，一次隨機亂數據一項功能，並計算感利率的效能計量有多大的變化。 變更愈大，該特性愈重要。 PFI 可以說明**任何基礎模型**的整體行為，但不會說明個別的預測。 |與模型無關|
+|SHAP 樹狀說明| [SHAP](https://github.com/slundberg/shap)的樹狀說明，著重于多項式時間快速 SHAP 價值估計演算法，適用于**樹狀結構和整體的**樹系。|模型特定|
+|SHAP 深層說明| 根據 SHAP 的說明，深度說明」是一種高速的近似值演算法，可在深度學習模型中，以[SHAP NIPS](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)檔中所述的 DeepLIFT 連接為基礎來 SHAP 值。 支援使用 TensorFlow 後端的**TensorFlow**模型和**Keras**模型（也有 PyTorch 的初步支援）」。|模型特定|
+|SHAP 線性說明| SHAP 的線性說明會計算**線性模型**的 SHAP 值，並選擇性地會計入功能間的相互關聯。|模型特定|
+|SHAP 核心說明| SHAP 的核心說明會使用特殊加權的區域線性回歸來估計**任何模型**的 SHAP 值。|與模型無關|
+|模擬說明（全域代理）| 模擬說明是以定型[全域代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來模擬黑箱模型的概念為基礎。 全域代理模型是一種內部可解譯模型，經過訓練以盡可能精確地大致估計**任何黑色方塊模型**的預測。 資料科學家可以解讀代理模型，以繪製有關黑色箱模型的結論。 您可以使用下列其中一個可解譯模型做為您的代理模型： LightGBM （LGBMExplainableModel）、線性回歸（LinearExplainableModel）、隨機梯度下降 explainable 模型（SGDExplainableModel）和決策樹（DecisionTreeExplainableModel）。|與模型無關|
+|排列功能重要性說明（PFI）| 排列功能重要性是一種技術，用來說明[Breiman 的隨機](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)樹系紙張所能啟發的分類和回歸模型（請參閱第10節）。 概括而言，它的運作方式是針對整個資料集，一次隨機亂數據一項功能，並計算感利率的效能計量有多大的變化。 變更愈大，該特性愈重要。 PFI 可以說明**任何基礎模型**的整體行為，但不會說明個別的預測。 |與模型無關|
 
 
 
 
-除了上述的 interpretability 技術之外，我們還支援另一個以[SHAP 為基礎的說明](https://github.com/slundberg/shap)，稱為`TabularExplainer`。 視模型而定， `TabularExplainer`會使用其中一個支援的 SHAP explainers：
+除了上述的 interpretability 技術之外，我們還支援另一個以 SHAP 為基礎`TabularExplainer`的說明，稱為。 視模型而定， `TabularExplainer`會使用其中一個支援的 SHAP explainers：
 
 * 所有以樹狀結構為基礎的模型 TreeExplainer
 * DNN 模型的 DeepExplainer
@@ -120,4 +120,6 @@ SDK `azureml.interpret`的封裝支援使用下列資料集格式定型的模型
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[如何](how-to-machine-learning-interpretability-aml.md)在本機和 Azure Machine Learning 遠端計算資源上啟用模型定型的 interpretability。 如需其他案例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
+- 請參閱[如何](how-to-machine-learning-interpretability-aml.md)在本機和 Azure Machine Learning 遠端計算資源上啟用模型定型的 interpretability。 
+- 如需其他案例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。 
+- 如果您對 interpretability 文字案例感興趣，請參閱 NLP 的 interpretability 技術的[解讀文字](https://github.com/interpretml/interpret-text)（一個相關的開放原始碼存放庫來[解讀](https://github.com/interpretml/interpret-community/)）。 `azureml.interpret`套件目前不支援這些技術，但您可以開始使用[文字分類的範例筆記本](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)。

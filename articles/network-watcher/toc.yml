@@ -173,7 +173,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/virtual-network
     - name: Node.js
-      href: /javascript/api/azure-arm-network
+      href: /javascript/api/@azure/arm-network
     - name: REST
       href: /rest/api/network-watcher/
 - name: 資源
@@ -184,11 +184,11 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=network-watcher'
     - name: SLA
       href: 'https://azure.microsoft.com/support/legal/sla/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/network-watcher'

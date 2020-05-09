@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204214"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929276"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
@@ -40,7 +40,7 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 > 
 > 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 您可以在[建立虛擬機器時](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)取得在 Azure 入口網站上布建資料科學虛擬機器的指示。
@@ -68,7 +68,7 @@ Jupyter Notebook 提供以瀏覽器為基礎的 IDE，以進行資料探索和�
 
 若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以從現有```jupyter notebook```的筆記本所在的目錄或您想要建立新筆記本的位置執行命令。  
 
-開始 Jupyter 之後，您應該會看到一個目錄，其中包含一些已預先封裝到 DSVM 中的範例筆記本。 現在您可以：
+在您開始 Jupyter 之後，請流覽`/notebooks`至目錄，以取得預先封裝到 DSVM 中的範例筆記本。 現在您可以：
 
 * 選取筆記本以查看程式碼。
 * 選取 Shift + Enter 來執行每個儲存格。
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>建立和讓 R 模型
-您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 以下為其步驟：
+您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 步驟如下：
 
 1. 建立設定 json 檔案，以提供您的工作區識別碼和驗證權杖。 
 2. 撰寫模型之 predict 函數的包裝函式。
@@ -265,7 +265,7 @@ DSVM 會在命令列上與用戶端工具一起載入，並在 GUI 上用來存�
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型。 本節說明如何將資料移至 Blob 儲存體，並存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
@@ -367,7 +367,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料庫存放庫，而且與 Hadoop 分散式檔案系統（HDFS）相容。 它可以與 Hadoop、Spark 及 Azure Data Lake Analytics 搭配運作。 在本節中，您將瞭解如何使用 Azure Data Lake Analytics 將資料移至 Azure Data Lake Storage 並執行分析。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 在[Azure 入口網站](https://portal.azure.com)中建立 Azure Data Lake Analytics 實例。
 
@@ -452,7 +452,7 @@ USING Outputters.Csv();
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 叢集
 Azure HDInsight 是雲端中的受控 Apache Hadoop、Spark、HBase 和風暴服務。 您可以從資料科學虛擬機器輕鬆地使用 Azure HDInsight 叢集。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。 此儲存體帳戶用來儲存 HDInsight 叢集的資料。
 
@@ -883,6 +883,6 @@ in
 
 - [文字檔分類](https://github.com/anargyri/lstm_han)：本逐步解說示範如何建立和定型兩個類神經網路架構：階層式注意網路和長短期記憶體（LSTM）網路。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 Keras 是三個最受歡迎的深度學習架構的前端： Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>總結
 本文說明您可以在 Microsoft 資料科學虛擬機器上執行的一些事項。 您還可以做更多工作，讓 DSVM 成為有效的分析環境。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 11942a08d46f4b46dc5478fca4b64796b9ce0a7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176119"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801311"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -213,7 +213,7 @@ Set-AzStorageSyncServerEndpoint `
 > [!Note]  
 > 如果 [已註冊的伺服器] 分頁上的 [伺服器狀態] 顯示為 [離線]，請執行[伺服器端點的健全狀況狀態為 [無活動] 或 [擱置]，而且 [已註冊的伺服器] 分頁上的伺服器狀態為 [顯示為離線]](#server-endpoint-noactivity)一節。
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>同步
 <a id="afs-change-detection"></a>**如果我直接在我的 Azure 檔案共用中透過 SMB 建立檔案，或在入口網站中建立檔案，檔案同步處理到同步群組中的伺服器需要多久的時間？**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -226,7 +226,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure 入口網站的螢幕擷取畫面](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[Server](#tab/server)
+# <a name="server"></a>[伺服器](#tab/server)
 移至伺服器的遙測記錄 (位於事件檢視器的 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 上)。 事件 9102 對應於已完成的同步工作階段；如需最新同步狀態，請尋找識別碼為 9102 的最新事件。 SyncDirection 會指出此工作階段是否已上傳或下載。 HResult 為 0，表示同步工作階段成功。 非零的 HResult 表示在同步期間發生錯誤；請查看下方的常見錯誤清單。 如果 PerItemErrorCount 大於 0，表示某些檔案或資料夾未正確同步。 HResult 為 0，但 PerItemErrorCount 大於 0，是有可能的。
 
 以下是成功上傳的範例。 為了方便說明，以下僅列出每個 9102 事件所包含的部分值。 
@@ -261,7 +261,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 # <a name="portal"></a>[入口網站](#tab/portal1)
 在您的同步群組中，移至有問題的伺服器端點，並查看 [同步活動] 區段以確認目前的同步工作階段中已上傳或下載的檔案計數。 請注意，此狀態大約會延遲 5 分鐘才顯示，因此如果同步工作階段較小而可在這段期間內完成，就可能不會報告在入口網站中。 
 
-# <a name="server"></a>[Server](#tab/server)
+# <a name="server"></a>[伺服器](#tab/server)
 在伺服器的遙測記錄中查看最新的 9302 事件 (在 [事件檢視器] 中，移至 Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry)。 此事件表示目前同步工作階段的狀態。 TotalItemCount 代表要同步的檔案數目、AppliedItemCount 是目前已同步的檔案數目，而 PerItemErrorCount 則是無法同步的檔案數目 (請參閱下方的處置方式)。
 
 ```
@@ -283,7 +283,7 @@ PerItemErrorCount: 1006.
 - [同步活動] 欄位中僅顯示少許或沒有待同步的檔案。
 - 上傳和下載的 [檔案無法同步] 欄位皆為 0。
 
-# <a name="server"></a>[Server](#tab/server)
+# <a name="server"></a>[伺服器](#tab/server)
 查看已完成的同步工作階段，這在每個伺服器的遙測事件記錄中會以 9102 事件標示 (在 [事件檢視器] 中，移至 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`)。 
 
 1. 在任何給定的伺服器上，您都會想要確定最新的上傳和下載工作階段已順利完成。 若要這樣做，請確認上傳和下載的 HResult 和 PerItemErrorCount 皆為 0 (SyncDirection 欄位會指出給定的工作階段是上傳還是下載工作階段)。 請注意，若未看到最近完成的同步工作階段，有可能是同步工作階段正在進行中，這是您剛剛新增或修改大量資料之後的正常情況。
@@ -807,12 +807,9 @@ PerItemErrorCount: 1006.
 | **錯誤字串** | ECS_E_INVALID_AAD_TENANT |
 | **需要補救** | 是 |
 
-之所以發生此錯誤，是因為 Azure 檔案同步目前不支援將訂用帳戶移至不同的 Azure Active Directory 租用戶。
+請確定您有最新的 Azure 檔案同步代理程式。 從代理程式 V10，Azure 檔案同步支援將訂用帳戶移至不同的 Azure Active Directory 租使用者。
  
-若要解決此問題，請執行下列其中一個選項：
-
-- **選項1（建議）**：將訂用帳戶移回原始的 Azure Active Directory 租使用者
-- **選項 2**：刪除並重新建立目前的同步處理群組。 如果已在伺服器端點上啟用雲端階層處理，請刪除同步群組，然後執行＜[雲端階層處理]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)＞區段中所述的步驟，以在重新建立同步群組之前移除孤立的階層式檔案。 
+當您擁有最新的代理程式版本之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式（請參閱[確定 Azure 檔案同步具有儲存體帳戶的存取](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)權）。
 
 <a id="-2134364010"></a>**因為防火牆與虛擬網路例外狀況未設定，所以同步失敗**  
 
@@ -998,7 +995,7 @@ if ($fileShare -eq $null) {
 
     如果 [ **microsoft.storagesync** ] 或 [混合式檔案**同步服務**] 未出現在清單中，請執行下列步驟：
 
-    - 按一下 **[新增]** 。
+    - 按一下 [新增]  。
     - 在 [角色]**** 欄位中，選取 [讀取者及資料存取]****。
     - 在 [**選取**] 欄位中，輸入**microsoft.storagesync**，選取角色，然後按一下 [**儲存**]。
 
@@ -1248,7 +1245,25 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 3. 確認 Azure 檔案同步篩選器驅動程式 (StorageSync.sys 與 StorageSyncGuard.sys) 正在執行：
     - 在提高權限的命令提示字元，執行 `fltmc`。 確認已列出 StorageSync.sys 和 StorageSyncGuard.sys 檔案系統篩選器驅動程式。
 
-如果問題沒有解決，執行 AFSDiag 工具：
+如果問題未解決，請執行 AFSDiag 工具，並將其 .zip 檔案輸出傳送給指派給您案例的支援工程師，以供進一步診斷。
+
+針對代理程式版本 v11 和更新版本：
+
+1. 開啟提升權限的 PowerShell 視窗，然後執行下列命令 (每個命令後要按 Enter 鍵)：
+
+    > [!NOTE]
+    >AFSDiag 會先建立輸出目錄和其中的 temp 資料夾，再收集記錄檔，並在執行後刪除暫存資料夾。 指定不包含資料的輸出位置。
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. 重現問題。 完成時，輸入 **D**。
+3. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。 
+
+針對代理程式版本 v10 和更早版本：
 1. 建立將用來儲存 AFSDiag 輸出的目錄 (例如 C:\Output)。
     > [!NOTE]
     >AFSDiag 會先刪除輸出目錄中的所有內容，然後再收集記錄檔。 指定不包含資料的輸出位置。
@@ -1265,7 +1280,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 5. 重現問題。 完成時，輸入 **D**。
 6. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)
 - [Azure 檔案服務常見問題集](storage-files-faq.md)
 - [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)

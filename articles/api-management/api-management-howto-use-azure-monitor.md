@@ -2,23 +2,20 @@
 title: 在 Azure API 管理中監視發佈的原則 | Microsoft Docs
 description: 依照此教學課程的步驟，了解如何在 Azure API 管理中監視您的 API。
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79221925"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128850"
 ---
 # <a name="monitor-published-apis"></a>監視發佈的 API
 
@@ -28,7 +25,7 @@ ms.locfileid: "79221925"
 
 > [!div class="checklist"]
 > * 檢視活動記錄
-> * 檢視診斷記錄
+> * 檢視資源記錄
 > * 檢視 API 的計量 
 > * 在 API 收到未經授權的呼叫時，設定警示規則
 
@@ -39,8 +36,8 @@ ms.locfileid: "79221925"
 ## <a name="prerequisites"></a>Prerequisites
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
-+ 同時也請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
++ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
++ 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -120,20 +117,20 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 3. 選取所需的篩選範圍，然後按一下 [套用]  。
 
-## <a name="diagnostic-logs"></a>診斷記錄
+## <a name="resource-logs"></a>資源記錄
 
-診斷記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 診斷記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 診斷記錄能讓您了解資源執行的作業。
+資源記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 資源記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 資源記錄能讓您了解資源執行的作業。
 
-若要設定診斷記錄：
+若要設定資源記錄：
 
 1. 選取您的 APIM 服務執行個體。
 2. 按一下 [診斷設定]  。
 
-    ![診斷記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![資源記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 按一下 [開啟診斷]  。 您可以將診斷記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
+3. 按一下 [開啟診斷]  。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
 
-API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
+APIM 目前提供關於個別 API 要求的資源記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
 
 ```json
 {  
@@ -190,7 +187,7 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 | callerIpAddress | 字串 | 立即閘道呼叫端的 IP 位址 (可以是中繼項目) |
 | correlationId | 字串 | API 管理所指派的唯一 http 要求識別碼 |
 | location | 字串 | 處理要求的閘道所在的 Azure 區域名稱 |
-| httpStatusCodeCategory | 字串 | http 回應狀態碼的類別：成功 (301 或更小或 304 或 307)、未經授權 (401、403、429)、錯誤 (400，介於 500 與 600 之間)、其他 |
+| httpStatusCodeCategory | 字串 | HTTP 回應狀態碼的類別：成功 (301 或更小或 304 或 307)、未經授權 (401、403、429)、錯誤 (400，介於 500 與 600 之間)、其他 |
 | resourceId | 字串 | API 管理資源的識別碼 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
 | properties | 物件 (object) | 目前要求的屬性 |
 | method | 字串 | 連入要求的 HTTP 方法 |
@@ -227,7 +224,7 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 
 > [!div class="checklist"]
 > * 檢視活動記錄
-> * 檢視診斷記錄
+> * 檢視資源記錄
 > * 檢視 API 的計量
 > * 在 API 收到未經授權的呼叫時，設定警示規則
 

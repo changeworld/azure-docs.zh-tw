@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271653"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128880"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -230,7 +230,7 @@ Analysis Services 為建立工具的開發人員建立了活躍的社群。 請�
 
 ## <a name="monitoring-and-diagnostics"></a>監視和診斷
 
-Azure Analysis Services 會與 Azure 計量整合，以提供大量的資源特有計量，協助您監視伺服器的效能和健康情況。 若要深入了解，請參閱[監視伺服器計量](analysis-services-monitor.md)。 使用 [Azure 資源診斷記錄](../azure-monitor/platform/platform-logs-overview.md)來記錄計量。 監視記錄並將記錄傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將記錄匯出至 [Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/) (這是一項 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 服務)。 若要深入了解，請參閱[設定診斷記錄](analysis-services-logging.md)。
+Azure Analysis Services 會與 Azure 監視器計量整合，以提供大量的資源特有計量，協助您監視伺服器的效能和健康情況。 若要深入了解，請參閱[監視伺服器計量](analysis-services-monitor.md)。 透過[資源平台記錄](../azure-monitor/platform/platform-logs-overview.md)來記錄計量。 監視記錄並將記錄傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將記錄匯出至 [Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/) (這是一項 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 服務)。 若要深入了解，請參閱[設定診斷記錄](analysis-services-logging.md)。
 
 Azure Analysis Services 也支援使用[動態管理檢視 (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services)。 根據 SQL 語法，DMV 介面結構描述資料列會傳回有關伺服器執行個體的中繼資料和監視資訊。
 

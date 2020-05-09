@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74767920"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器：使用 Go 語言連線並查詢資料

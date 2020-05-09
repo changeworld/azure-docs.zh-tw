@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300150"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857056"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>適用于 Azure 事件方格資源的網路安全性
 本文說明如何搭配 Azure 事件方格使用下列安全性功能： 
@@ -61,7 +61,7 @@ Azure 事件方格支援以 IP 為基礎的存取控制，以發佈至主題和�
 | 名稱                                          | 類型      | 值                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<azure 流量管理員設定檔\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure 流量管理員設定檔\>
 
 您可以透過使用[IP 防火牆](#ip-firewall)的公用端點，拒絕或控制 VNet 外部的用戶端存取。 
 
@@ -92,10 +92,9 @@ Azure 事件方格支援以 IP 為基礎的存取控制，以發佈至主題和�
 若要成功發行，應**核准**私人端點線上狀態。 如果連接遭到拒絕，則無法使用 Azure 入口網站核准。 唯一的可能性是刪除連線並改為建立新的連接。
 
 ## <a name="pricing-and-quotas"></a>定價和配額
-**私人端點**僅適用于高階層主題和網域。 事件方格允許每個主題或網域建立最多64個私人端點連線。 若要從基本層升級至高階層，請參閱[更新定價層](update-tier.md)一文。
+**私人端點**適用于事件方格的基本層和進階層。 事件方格允許每個主題或網域建立最多64個私人端點連線。 
 
 「 **IP 防火牆**」功能適用于事件方格的「基本」和「高階」層級。 我們最多允許為每個主題或網域建立16個 IP 防火牆規則。
-
 
 ## <a name="next-steps"></a>後續步驟
 您可以設定事件方格資源的 IP 防火牆，以限制只能從一組選取的 IP 位址或 IP 位址範圍存取公用網際網路。 如需逐步指示，請參閱[設定 IP 防火牆](configure-firewall.md)。

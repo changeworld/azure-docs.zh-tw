@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460709"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891237"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 認知搜尋中的文字處理分析器
 
 「分析器」** 是[全文搜尋引擎](search-lucene-query-architecture.md)的元件，負責查詢字串和已編製索引文件中的文字處理。 視案例而定，不同的分析器會以不同的方式處理文字。 語言分析器會使用語言規則來處理文字，以便改善搜尋品質，而其他分析器則會執行更基本的工作，例如將字元轉換為小寫。 
+
+下列影片區段會快速地向前轉至解說文字處理在 Azure 認知搜尋中的運作方式。
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 語言分析器是最常使用的，而且預設語言分析器會指派給 Azure 認知搜尋索引中的每個可搜尋欄位。 在文字分析期間的典型語言轉換如下：
 
@@ -347,7 +352,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 + [設定自訂分析器](index-add-custom-analyzers.md)以進行最少的處理，或是在個別欄位上進行特殊的處理。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [搜尋檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
