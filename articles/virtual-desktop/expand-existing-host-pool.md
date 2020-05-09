@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607193"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929208"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
@@ -58,7 +58,7 @@ ms.locfileid: "82607193"
 
 7. 選取您想要在其下建立 Vm 的資源群組，然後選取 [區域]。 您可以選擇目前使用的區域或新的區域。
    
-8. 輸入您想要**的 Vm 數目**的新工作階段主機總數。 例如，如果您要將主機集區從五個工作階段主機擴充到八個，請輸入**8**。 
+8. 將您想要新增至主機集區的工作階段主機數目輸入**vm**數目。 例如，如果您要將主機集區擴充為五部主機，請輸入**5**。
    
     >[!NOTE]
     >您無法編輯 Vm 的大小或映射，因為請務必確保主機集區中的所有 Vm 都具有相同的大小。

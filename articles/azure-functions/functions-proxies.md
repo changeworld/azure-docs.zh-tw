@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74849185"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562061"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions Proxy
 
@@ -30,7 +30,7 @@ ms.locfileid: "74849185"
 3. 為您的 Proxy 提供名稱。
 4. 指定 [路由範本]**** 和 [HTTP 方法]****，以設定此函式應用程式上公開的端點。 這些參數的行為會根據 [HTTP 觸發程序]的規則。
 5. 將**後端 URL** 設定為其他端點。 此端點可能是另一個函式應用程式中的函式，也可能是任何其他 API。 值不需要是靜態，且可以參考[應用程式設定]和[來自原始用戶端要求的參數]。
-6. 按一下頁面底部的 [新增]  。
+6. 按一下 [建立]  。
 
 您的 Proxy 現在會存在做為函式應用程式上的新端點。 從用戶端的觀點而言，它相當於 Azure Functions 中的 HttpTrigger。 您可以藉由複製 Proxy URL 並使用最愛的 HTTP 用戶端來測試它，以嘗試您的新 Proxy。
 
@@ -108,7 +108,7 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 
 將 `"debug":false` 新增至您 `proxies.json` 中的任何特定 Proxy 以完全停用追蹤。
 
-## <a name="advanced-configuration"></a>進階組態
+## <a name="advanced-configuration"></a>進階設定
 
 您設定的 Proxy 會儲存在 proxies.json** 檔案中 (位於函式應用程式目錄的根目錄中)。 當您使用Functions 支援的任何[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)時，您可以手動編輯此檔案，並部署為應用程式的一部分。 
 
@@ -185,7 +185,7 @@ requestOverrides 物件定義呼叫後端資源時針對要求所做的變更。
 
 * **backend.request.method**：用來呼叫後端的 HTTP 方法。
 * **backend.request.querystring.\<ParameterName\>**：呼叫後端時可以設定的查詢字串參數。 以您要設定之參數的名稱取代* \<ParameterName\> * 。 請注意，如果提供空字串，參數仍會包含在後端要求中。
-* **backend.request.headers.\<HeaderName\>**：呼叫後端時可以設定的標頭。 以您要設定之標頭的名稱取代* \<HeaderName\> * 。 如果您提供空字串，則後端要求不會包含該標頭。
+* **backend.request.headers.\<HeaderName\>**：呼叫後端時可以設定的標頭。 以您要設定之標頭的名稱取代* \<HeaderName\> * 。 請注意，如果提供空字串，參數仍會包含在後端要求中。
 
 值可以參考應用程式設定和來自原始用戶端要求的參數。
 

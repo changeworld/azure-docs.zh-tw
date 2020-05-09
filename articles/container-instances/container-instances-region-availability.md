@@ -2,14 +2,14 @@
 title: 依區域的資源可用性
 description: Azure 容器執行個體服務的計算和記憶體資源在不同 Azure 區域中的可用性。
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399408"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583889"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 

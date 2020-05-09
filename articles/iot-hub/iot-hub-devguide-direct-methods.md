@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730393"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583675"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -83,11 +83,19 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 #### <a name="example"></a>範例
 
-請參閱以下使用 `curl` 的簡易範例。 
+這個範例可讓您安全地起始要求，以在向 Azure IoT 中樞註冊的 IoT 裝置上叫用直接方法。
+
+若要開始，請使用[適用于 Azure CLI 的 Microsoft Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能來建立 SharedAccessSignature。 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+接下來，將 Authorization 標頭取代為您新產生的 SharedAccessSignature， `iothubName`然後`deviceId`修改`methodName` 、 `payload`和參數，以符合下列範例`curl`命令中的實作為。  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,6 +108,14 @@ curl -X POST \
 }'
 ```
 
+執行修改過的命令，以叫用指定的直接方法。 成功的要求會傳回 HTTP 200 狀態碼。
+
+> [!NOTE]
+> 上述範例示範如何在裝置上叫用直接方法。  如果您想要在 IoT Edge 模組中叫用直接方法，您必須修改 url 要求，如下所示：
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>回應
 
 後端應用程式會接收由下列項目組成的回應：

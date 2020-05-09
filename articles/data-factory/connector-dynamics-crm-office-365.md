@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 11/20/2019
-ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417351"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891534"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Dynamics 365 (Common Data Service) 複製資料以及複製資料至 Dynamics 365
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -61,6 +61,10 @@ ms.locfileid: "81417351"
 >[!TIP]
 >若要從 **Dynamics 365 Finance and Operations** 複製資料，您可以使用 [Dynamics AX 連接器](connector-dynamics-ax.md)。
 
+## <a name="prerequisites"></a>Prerequisites
+
+若要將此連接器與 AAD 服務主體驗證搭配使用，您必須在 Common Data Service 或 Dynamics 中設定伺服器對伺服器（S2S）驗證。 如需詳細步驟，請參閱[這篇文章](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)。
+
 ## <a name="get-started"></a>開始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -83,7 +87,7 @@ ms.locfileid: "81417351"
 | servicePrincipalCredentialType | 指定要用於服務主體驗證的認證類型。 允許的值為： **ServicePrincipalKey**或**ServicePrincipalCert**。 | 使用`AADServicePrincipal`驗證時為是 |
 | servicePrincipalCredential | 指定服務主體認證。 <br>使用`ServicePrincipalKey`做為認證類型時`servicePrincipalCredential` ，可以是字串（ADF 會在連結的服務部署時加密），或 AKV 中的秘密參考。 <br>使用`ServicePrincipalCert`做為認證時`servicePrincipalCredential` ，應該是 AKV 中憑證的參考。 | 使用`AADServicePrincipal`驗證時為是 | 
 | username | 指定要連線到 Dynamics 的使用者名稱。 | 使用`Office365`驗證時為是 |
-| password | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 使用`Office365`驗證時為是 |
+| 密碼 | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 使用`Office365`驗證時為是 |
 | connectVia | 要用來連接到資料存放區的[整合運行](concepts-integration-runtime.md)時間。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 如果來源連結服務沒有整合執行階段，則對於來源而言為「否」；對於接收而言為「是」 |
 
 >[!NOTE]
@@ -179,7 +183,7 @@ ms.locfileid: "81417351"
 | organizationName | Dynamics 執行個體的組織名稱。 | 是 |
 | authenticationType | 連線到 Dynamics 伺服器時所使用的驗證類型。 如果是搭配 IFD 的 Dynamics 內部部署版，請指定 **"Ifd"**。 | 是 |
 | username | 指定要連線到 Dynamics 的使用者名稱。 | 是 |
-| password | 指定您為 username 指定之使用者帳戶的密碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault；然後在執行複製資料時，讓複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
+| 密碼 | 指定您為 username 指定之使用者帳戶的密碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault；然後在執行複製資料時，讓複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
 | connectVia | 要用來連接到資料存放區的[整合運行](concepts-integration-runtime.md)時間。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 否 (來源)；是 (接收) |
 
 **範例：使用 IFD 驗證之搭配 IFD 的 Dynamics 內部部署版**
@@ -374,21 +378,21 @@ Dynamics 365 線上版限制[每個組織只能有 2 個並行批次呼叫](http
 | Dynamics 資料類型 | Data Factory 過渡期資料類型 | 支援作為來源 | 支援作為接收 |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
-| AttributeTypeCode.Boolean | 布林值 | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | 字串 | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (具有相關聯的單一目標) |
-| AttributeType.ManagedProperty | 布林值 | ✓ | |
-| AttributeType.Memo | 字串 | ✓ | ✓ |
+| AttributeType.ManagedProperty | Boolean | ✓ | |
+| AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | 字串 | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

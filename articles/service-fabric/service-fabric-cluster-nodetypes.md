@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199711"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787128"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
 
@@ -26,7 +26,7 @@ Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能�
 
 如上圖所示，擴展集執行個體是由執行個體 0 開始編號，然後再逐個增加 1。 編號會反映在節點名稱中。 例如，BackEnd_0 節點是 BackEnd 擴展集的執行個體 0。 這個特定的擴展集有五個執行個體，名稱分別是 BackEnd_0、BackEnd_1、BackEnd_2、BackEnd_3、BackEnd_4。
 
-當您相應增加擴展集，系統就會建立一個新的執行個體。 新擴展集執行個體的名稱通常是擴展集名稱 + 下一個執行個體編號。 在我們的範例中是 BackEnd_5。
+當您相應放大擴展集時，會建立新的實例。 新擴展集執行個體的名稱通常是擴展集名稱 + 下一個執行個體編號。 在我們的範例中是 BackEnd_5。
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>將擴展集負載平衡器對應至節點類型和擴展集
 
@@ -72,9 +72,9 @@ Service Fabric 虛擬機器擴充功能可用來啟動 Service Fabric 至 Azure 
 
 以下是屬性描述：
 
-| **Name** | **允許的值** | **指引或簡短描述** |
+| **名稱** | **允許的值** | **指引或簡短描述** |
 | --- | --- | --- | --- |
-| 名稱 | 字串 | 延伸模組的唯一名稱 |
+| NAME | 字串 | 延伸模組的唯一名稱 |
 | type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別要啟動的 OS Service Fabric |
 | autoUpgradeMinorVersion | true 或 false | 啟用自動升級 SF 執行時間次要版本 |
 | publisher | ServiceFabric | Service Fabric 擴充功能發行者的名稱 |

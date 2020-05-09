@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80992210"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793120"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
@@ -281,19 +281,19 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+不需要。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>套用 ACL 的最佳方式為何？
 
-一律使用 Azure AD 安全性群組作為 ACL 中指派的主體。 避免直接指派個別使用者或服務主體。 使用此結構，可讓您直接新增和移除使用者或服務主體，而不需要將 ACL 重新套用至整個目錄結構。 相對地，您只需要從適當的 Azure AD 安全性群組中加以新增或移除即可。 請記住，ACL 是不可繼承的，因此若要重新套用 ACL，必須更新每個檔案和子目錄的 ACL。 
+一律使用 Azure AD 安全性群組作為 ACL 中指派的主體。 避免直接指派個別使用者或服務主體。 使用此結構，可讓您直接新增和移除使用者或服務主體，而不需要將 ACL 重新套用至整個目錄結構。 相反地，您只需要從適當的 Azure AD 安全性群組中新增或移除它們。 請記住，ACL 是不可繼承的，因此若要重新套用 ACL，必須更新每個檔案和子目錄的 ACL。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>若要以遞迴方式刪除目錄及其內容，需要哪些權限？
 
 - 呼叫端具有「超級使用者」許可權，
 
-或者
+Or
 
 - 父目錄必須具有 [寫入 + 執行] 權限。
 - 要刪除的目錄及其中的每個目錄，都需要 [讀取 + 寫入 + 執行] 權限。
@@ -348,6 +348,6 @@ ACL 則不會繼承。 但預設 ACL 可以用來為父目錄下建立的子目�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen2 概觀](../blobs/data-lake-storage-introduction.md)

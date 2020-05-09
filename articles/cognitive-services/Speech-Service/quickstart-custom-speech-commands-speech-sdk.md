@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156772"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872506"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽）
 
@@ -24,19 +24,20 @@ ms.locfileid: "76156772"
 在本文中，您將會：
 
 - 發行自訂命令應用程式，並取得應用程式識別碼（App ID）
-- 使用語音 SDK 建立用戶端應用程式，以讓您與您的自訂命令應用程式交談
+- 使用語音 SDK 建立通用 Windows 平臺（UWP）用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 必須要有自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，您可以在先前的快速入門中執行此動作：
-
-- [快速入門：建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-new.md)
-- [快速入門：使用參數來建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [快速入門：建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-new.md)
+> * [快速入門：使用參數來建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
 
 您也需要：
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
+> * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>選擇性：快速入門
 
@@ -44,12 +45,13 @@ ms.locfileid: "76156772"
 
 ## <a name="step-1-publish-custom-commands-application"></a>步驟1：發行自訂命令應用程式
 
-1. 開啟您[先前建立的自訂命令應用程式](./quickstart-custom-speech-commands-create-new.md)，然後選取 [**發佈**]
+1. 開啟您[先前建立的自訂命令應用程式（預覽）](./quickstart-custom-speech-commands-create-new.md) ，然後選取 [**發佈**]
 
    > [!div class="mx-imgBorder"]
    > ![發佈應用程式](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 複製發佈通知中的 [應用程式識別碼] 以供稍後使用
+1. 複製語音資源金鑰以供稍後使用
 
 ## <a name="step-2-create-a-visual-studio-project"></a>步驟2：建立 Visual Studio 專案
 
@@ -129,7 +131,7 @@ ms.locfileid: "76156772"
 
 1. 在**Solution Explorer** `MainPage.xaml.cs` [方案總管] 中，開啟程式碼後置原始程式`MainPage.xaml`檔（在下分組）
 
-1. 將檔案的內容取代為下列程式碼：
+1. 將檔案的內容取代為下列程式碼： 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ ms.locfileid: "76156772"
        }
    }
    ```
+    > [!NOTE]
+    > 如果您看到錯誤：「類型 ' 物件 ' 定義在未參考的元件中」
+    > 1. 以滑鼠右鍵用戶端您的解決方案。
+    > 1. 選擇 [**管理解決方案的 NuGet 套件**]，選取 [**更新**] 
+    > 1. 如果您在更新清單中看到**NETCore microsoft.netcore.universalwindowsplatform** ，請將**NETCore**更新為最新版本
 
 1. 將下列程式碼新增至的方法主體`InitializeDialogServiceConnector`
 
@@ -419,3 +426,6 @@ ms.locfileid: "76156772"
 > [!div class="nextstepaction"]
 > [如何：使用語音 SDK 完成用戶端上的命令（預覽）](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [如何：將驗證新增至自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>範例原始程式碼
+查看 GitHub 上的用戶端範例代碼[-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

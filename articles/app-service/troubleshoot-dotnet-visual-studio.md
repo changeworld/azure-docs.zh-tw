@@ -6,15 +6,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891062"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926845"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
@@ -634,7 +634,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 * [遠端偵錯 Azure App Service 的簡介第 3 部分 - 多重執行個體環境和 GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs 偵錯 (影片)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-如果您的應用程式使用 Azure Web API 或行動服務後端，而您需要加以偵錯，請參閱[在 Visual Studio 中對 .NET 後端進行偵錯](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)。
+如果您的應用程式使用 Azure Web API 或行動服務後端，而您需要加以偵錯，請參閱[在 Visual Studio 中對 .NET 後端進行偵錯](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio)。
 
 ### <a name="tracing-in-aspnet-applications"></a>在 ASP.NET 應用程式中追蹤
 網際網路上找不到關於 ASP.NET 追蹤功能詳盡且具時效性的說明。 您所能做的，就是從專為 Web Form 所撰寫的一些舊有簡介資料下手，因為 MVC 是最近才問世的技術，並以著重在特定議題的較新的部落格文章來做為補充。 以下資源是您開始了解這項技術的一些好去處：
@@ -647,7 +647,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
   內含有關追蹤接聽程式的資訊，但是沒有提到 [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener)。
 * [逐步解說︰整合 ASP.NET 追蹤與 System.Diagnostics 追蹤](/previous-versions/b0ectfxd(v=vs.140))<br/>
   本文同樣為舊有的資料，但是內含簡介文章沒有提到的一些額外資訊。
-* [追蹤 ASP.NET MVC Razor 檢視](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [追蹤 ASP.NET MVC Razor 檢視](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   除了追蹤 Razor 檢視之外，該文同時說明了如何建立錯誤篩選條件以便記錄 MVC 應用程式所出現的所有未處理的例外。 如需如何記錄 Web Form 應用程式中所有未處理的例外項目的詳細資訊，請參閱 MSDN 上 [完整的錯誤處理常式範例](/previous-versions/bb397417(v=vs.140)) (英文) 的 Global.asax 範例。 無論是 MVC 還是 Web Form，如果您想要記錄特定例外，但是讓預設的架構處理功能生效，則您可以如以下範例所示捕捉並重新擲回這些例外：
 
     ```csharp

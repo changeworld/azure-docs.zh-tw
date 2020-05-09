@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430323"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583765"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 建立私人端點
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>從 VM 私下存取 SQL Database 伺服器
 
 1. 在 myVm  的遠端桌面中，開啟 PowerShell。
-2. 輸入 `nslookup myserver.database.windows.net`。 
+2. 輸入 `nslookup myserver.database.windows.net`。 請記得將`myserver`取代為您的 SQL server 名稱。
 
     您將收到如下訊息：
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. 安裝 SQL Server Management Studio
-4. 在 [連線到伺服器] 中，輸入或選取這項資訊：設定值伺服器類型選取 [資料庫引擎]。
-      伺服器名稱選取 [myserver.database.windows.net Username] 輸入建立期間提供的使用者名稱。
-      密碼輸入在建立期間所提供的密碼。
-      記住密碼選取 [是]。
+    
+3. 安裝 SQL Server Management Studio。
+4. 在 [連線至伺服器]  中，輸入或選取這項資訊：
+
+    | 設定 | 值 |
+    | --- | --- |
+    | 伺服器類型 | Database Engine |
+    | 伺服器名稱 | myserver.database.windows.net |
+    | 使用者名稱 | 輸入建立期間提供的使用者名稱 |
+    | 密碼 | 輸入在建立期間提供的密碼 |
+    | 記住密碼 | 是 |
+    
 5. 選取 [連接]  。
-6. 流覽左側功能表中的 [資料庫]。 
-7. 也從 mydatabase 建立或查詢資訊
+6. 流覽左側功能表中的 [**資料庫**]。 
+7. (選擇性) 從 mydatabase 建立或查詢資訊。
 8. 關閉對*myVM*的遠端桌面連線。 
 
 ## <a name="clean-up-resources"></a>清除資源 

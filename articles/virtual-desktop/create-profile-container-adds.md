@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81265768"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607277"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>建立具有 Azure 檔案儲存體的 FSLogix 設定檔容器
 
 本文將說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services （AD DS）來建立 FSLogix 設定檔容器。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已設定 Azure AD DS 實例。 如果您還沒有帳戶，請遵循[建立基本受控網域](../active-directory-domain-services/tutorial-create-instance.md)中的指示，然後回到這裡。
 
@@ -97,7 +97,7 @@ ms.locfileid: "81265768"
 
 6. 當您已登入 VM 時，請以系統管理員身分執行命令提示字元。
 
-7. 執行下列命令：
+7. 執行以下命令：
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -219,7 +219,7 @@ ms.locfileid: "81265768"
 
 若要驗證您的設定檔：
 
-1. 開啟瀏覽器並移至[Windows 虛擬桌面 web 用戶端](https://rdweb.wvd.microsoft.com/webclient/index.html)。
+1. 開啟瀏覽器並移至[Windows 虛擬桌面 web 用戶端](https://rdweb.wvd.microsoft.com/arm/webclient)。
 
 2. 使用指派給遠端桌面群組的使用者帳戶登入。
 

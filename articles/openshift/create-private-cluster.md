@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: a0f726d32f2f63cf85101254fded005fc0b5a1db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233545"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857386"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>建立 Azure Red Hat OpenShift 4 私人叢集
 
@@ -65,15 +65,21 @@ aro                                1.0.0
 ...
 ```
 
-### <a name="obtain-a-red-hat-pull-secret-optional"></a>取得 Red Hat pull 密碼（選擇性）
+### <a name="get-a-red-hat-pull-secret-optional"></a>取得 Red Hat pull 密碼（選擇性）
 
 Red Hat 提取密碼可讓您的叢集存取 Red Hat 容器登錄，以及其他內容。 此步驟為選用步驟，但建議執行。
 
-流覽至，然後按一下 [ https://cloud.redhat.com/openshift/install/azure/aro-provisioned *下載提取密碼*]，以取得您的提取密碼。
+1. **[移至您的 Red Hat OpenShift cluster manager 入口網站](https://cloud.redhat.com/openshift/install/azure/aro-provisioned)並登入。**
 
-您必須登入 Red Hat 帳戶，或使用您的公司電子郵件建立新的 Red Hat 帳戶，並接受條款及條件。
+   您必須登入 Red Hat 帳戶，或使用您的公司電子郵件建立新的 Red Hat 帳戶，並接受條款及條件。
+
+2. **按一下 [下載提取密碼]。**
 
 將儲存`pull-secret.txt`的檔案保留在安全的地方-在每個建立叢集時都會用到它。
+
+執行`az aro create`命令時，您可以使用參數來參考您的`--pull-secret @pull-secret.txt`提取密碼。 從`az aro create`您儲存`pull-secret.txt`盤案的目錄執行。 否則，請`@pull-secret.txt`將`@<path-to-my-pull-secret-file`取代為。
+
+如果您要複製您的提取密碼，或在其他腳本中參考它，您的提取密碼應格式化為有效的 JSON 字串。
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>建立包含兩個空白子網的虛擬網路
 
@@ -177,7 +183,10 @@ Red Hat 提取密碼可讓您的叢集存取 Red Hat 容器登錄，以及其他
 
 ## <a name="create-the-cluster"></a>建立叢集
 
-執行下列命令來建立叢集。 請注意`apiserver-visibility`和`ingress-visibility`參數。 （選擇性）您可以傳遞提取密碼，讓您的叢集能夠存取 Red Hat 容器登錄，以及其他內容。 流覽至[Red Hat OpenShift 叢集管理員](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)，然後按一下 [複製提取密碼]，以存取您的提取密碼。
+執行下列命令來建立叢集。 （選擇性）您可以[傳遞 Red hat 提取密碼](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 red hat 容器登錄，以及其他內容。
+
+>[!NOTE]
+> 如果您要複製/貼上命令，並使用其中一個選擇性參數，請務必刪除初始主題標籤和結尾的註解文字。 也請在命令的上一行關閉引數，並在結尾加上反斜線。
 
 ```azurecli-interactive
 az aro create \
@@ -185,15 +194,12 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet \
-  --apiserver-visibility Private \
-  --ingress-visibility Private
-  # --domain aro.example.com # [OPTIONAL] custom domain
-  # --pull-secret 'Pull secret from https://cloud.redhat.com/openshift/install/azure/installer-provisioned/' # [OPTIONAL]
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
->[!NOTE]
-> 建立叢集通常需要大約35分鐘的時間。
+執行`az aro create`命令之後，通常需要大約35分鐘的時間來建立叢集。
 
 >[!IMPORTANT]
 > 如果您選擇指定自訂網域（例如**foo.example.com**），OpenShift 主控台將會出現在之類的 URL `https://console-openshift-console.apps.foo.example.com`，而不是內建的網域。 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`

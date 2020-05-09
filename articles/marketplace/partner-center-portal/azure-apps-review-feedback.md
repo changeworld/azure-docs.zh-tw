@@ -1,20 +1,20 @@
 ---
-title: 在商業 Marketplace 中處理 Azure 應用程式供應專案的審查意見反應
-description: 如何使用 Microsoft 合作夥伴中心上的商用 Marketplace 入口網站，在 Azure Marketplace、AppSource 或透過雲端解決方案提供者（CSP）計畫中，處理 Azure 應用程式的審查意見反應供應專案。
+title: 在 Microsoft 商業 marketplace 中處理 Azure 應用程式供應專案的審查意見反應
+description: 如何使用 Microsoft 合作夥伴中心上的商用 Marketplace 入口網站，處理 Azure 應用程式的審查意見反應，以在 Azure Marketplace、AppSource 或透過雲端解決方案提供者（CSP）方案中進行列出或銷售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279788"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744877"
 ---
-# <a name="handling-review-feedback"></a>處理檢閱意見反應
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>在 Azure Marketplace 發佈之前，請先處理 Azure 應用程式供應專案的審查意見反應
 
 本文說明如何存取 Microsoft Azure Marketplace 檢閱小組所使用的 Azure DevOps 環境。 如果在 **Microsoft 檢閱**步驟中，您的 Azure 應用程式供應項目中發現了嚴重問題，則可以登入此系統以檢視這些問題的的詳細資訊 (檢閱意見反應)。 修正所有問題之後，您必須重新提交供應項目，才能繼續將它發佈到 Azure Marketplace。 下圖說明此意見反應程序如何與發佈程序相關。
 
