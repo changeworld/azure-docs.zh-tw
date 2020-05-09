@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 081/24/2020
+ms.date: 01/24/2020
 ms.author: ryanwi
 ms.custom: include file
-ms.openlocfilehash: 3f4c413178206dcd9e6aca38ffd5c6490e12bd65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e5371a4d2b160b5de8b69b0d25ef0f49f80927b
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77163872"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784073"
 ---
 > [!IMPORTANT]
 > [Microsoft 身分識別平臺（v2.0）](/azure/active-directory/develop/v2-overview)是 Azure Active Directory （Azure AD）開發人員平臺（1.0 版）的演進。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別，並取得權杖以呼叫 Microsoft Graph 等 Microsoft API，或開發人員所建置的 API。

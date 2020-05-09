@@ -3,13 +3,12 @@ title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729798"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733442"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -71,7 +70,7 @@ ms.locfileid: "81729798"
 
     * 例如，若要變更初始取樣百分比，您可以建立的應用程式設定： `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage`和的值。 `100`
 
-    * 如需支援的調適型取樣遙測處理器設定清單，您可以查閱程式[代碼](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相關聯的檔](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
+    * 如需支援的調適型取樣遙測處理器設定清單，您可以查閱程式[代碼](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相關聯的檔](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -399,7 +398,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支援 PHP 和 WordPress
 
-不支援 PHP 和 WordPress 網站。 目前沒有任何正式支援的 SDK/代理程式可供伺服器端監視這些工作負載。 不過，若要手動檢測 PHP 或 WordPress 網站上的用戶端交易，您可以將用戶端 javascript 新增至您的網頁，方法是使用[JAVASCRIPT SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)來完成。 
+不支援 PHP 和 WordPress 網站。 目前沒有任何正式支援的 SDK/代理程式可供伺服器端監視這些工作負載。 不過，若要手動檢測 PHP 或 WordPress 網站上的用戶端交易，您可以將用戶端 javascript 新增至您的網頁，方法是使用[JAVASCRIPT SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)來完成。
+
+### <a name="connection-string-and-instrumentation-key"></a>連接字串和檢測金鑰
+
+使用無程式碼監視時，只需要連接字串。 不過，我們仍建議您在執行手動檢測時，設定檢測金鑰以保留與舊版 SDK 的回溯相容性。
 
 ## <a name="next-steps"></a>後續步驟
 * [在即時應用程式上執行分析工具](../app/profiler.md)。

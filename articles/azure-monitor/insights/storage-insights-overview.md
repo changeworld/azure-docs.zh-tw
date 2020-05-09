@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662514"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691120"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>使用適用于儲存體的 Azure 監視器監視儲存體服務（預覽）
 
@@ -67,7 +67,7 @@ ms.locfileid: "77662514"
 在 [資料行**可用性**]、[ **E2E 延遲**]、[**伺服器延遲**] 和 [**交易錯誤類型/錯誤**] 中選取值，會將您導向至符合針對該儲存體帳戶選取之資料行的特定儲存體度量類型的報表。 如需每個類別之活頁簿的詳細資訊，請參閱下面的[詳細儲存活頁簿](#detailed-storage-workbooks)一節。 
 
 >[!NOTE]
->如需報告中可顯示哪些錯誤的詳細資訊，請參閱[回應類型架構](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions)和尋找回應類型，例如**ServerOtherError**、 **ClientOtherError**、 **ClientThrottlingError**。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三個，所有其他錯誤都會在 [**其他**] 類別下呈現。
+>如需報告中可顯示哪些錯誤的詳細資訊，請參閱[回應類型架構](../../storage/common/monitor-storage-reference.md#metrics-dimensions)和尋找回應類型，例如**ServerOtherError**、 **ClientOtherError**、 **ClientThrottlingError**。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三個，所有其他錯誤都會在 [**其他**] 類別下呈現。
 
 預設**可用性**閾值為：
 

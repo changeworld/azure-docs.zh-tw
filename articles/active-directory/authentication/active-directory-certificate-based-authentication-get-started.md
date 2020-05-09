@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654345"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610644"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
 
@@ -45,7 +46,7 @@ ms.locfileid: "80654345"
 - 用於戶端驗證的用戶端憑證必須已經發給您的用戶端。
 
 >[!IMPORTANT]
->Azure Active Directory 成功下載和快取的 CRL 大小上限為20MB，而下載 CRL 所需的時間不能超過10秒。  如果 Azure Active Directory 無法下載 CRL，使用對應 CA 所發行之憑證的憑證型驗證將會失敗。 確保 CRL 檔案在大小限制範圍內的最佳做法，是將憑證存留期保持在合理的限制範圍內，並清除過期的憑證。 
+>Azure Active Directory 成功下載和快取的 CRL 大小上限為20MB，而下載 CRL 所需的時間不能超過10秒。  如果 Azure Active Directory 無法下載 CRL，使用對應 CA 所發行之憑證的憑證型驗證將會失敗。 確保 CRL 檔案在大小限制範圍內的最佳做法，是將憑證存留期保持在合理的限制範圍內，並清除過期的憑證。
 
 ## <a name="step-1-select-your-device-platform"></a>步驟 1︰選取裝置平台
 

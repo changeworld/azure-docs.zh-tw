@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617339"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787357"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -51,15 +51,15 @@ ms.locfileid: "81617339"
 
 若要了解「混合式 Runbook 背景工作角色」的其他網路需求，請參閱[設定網路](automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="server-onboarding-for-management-with-automation-dsc"></a>使用 Automation DSC 進行管理的伺服器上架
+### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>使用狀態設定（DSC）進行管理的伺服器上架
 
-如需將伺服器上線以使用 DSC 進行管理的相關資訊，請參閱將[機器上架以供 AZURE 自動化 dsc 管理](automation-dsc-onboarding.md)。
+如需將伺服器上線以使用狀態設定（DSC）進行管理的相關資訊，請參閱將[機器上架以供狀態設定（dsc）管理](automation-dsc-onboarding.md)。
 
-啟用[更新管理解決方案](../operations-management-suite/oms-solution-update-management.md)會自動將任何連線到您 Log Analytics 工作區的 Windows 電腦設定為混合式 Runbook 背景工作角色，以支援解決方案中包含的 runbook。 不過，此工作者不會向您的自動化帳戶中已定義的任何混合式 Runbook 背景工作角色群組註冊。
+啟用[更新管理](automation-update-management.md)會自動將任何連線到您 Log Analytics 工作區的 Windows 電腦設定為混合式 Runbook 背景工作角色，以支援 Runbook 更新。 不過，此工作者不會向您的自動化帳戶中已定義的任何混合式 Runbook 背景工作角色群組註冊。
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>將電腦新增至混合式 Runbook 背景工作角色群組
 
-您可以將背景工作電腦新增至自動化帳戶中的「混合式 Runbook 背景工作角色」群組。 請注意，只要您針對解決方案和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶，就必須支援自動化 runbook。 此功能已新增至 Hybrid Runbook Worker 7.2.12024.0 版。
+您可以將背景工作電腦新增至自動化帳戶中的「混合式 Runbook 背景工作角色」群組。 請注意，您必須支援自動化 runbook，前提是 Azure 自動化功能和混合式 Runbook 背景工作角色群組成員資格都使用相同的帳戶。 此功能已新增至 Hybrid Runbook Worker 7.2.12024.0 版。
 
 ## <a name="automated-deployment"></a>自動化部署
 
@@ -73,15 +73,15 @@ ms.locfileid: "81617339"
 | --------- | ------ | ----------- |
 | `AAResourceGroupName` | 強制性 | 與您的自動化帳戶相關聯的資源群組名稱。 |
 | `AutomationAccountName` | 強制性 | 自動化帳戶的名稱。
-| `Credential` | 選擇性 | 登入 Azure 環境時所要使用的認證。 |
+| `Credential` | 選用 | 登入 Azure 環境時所要使用的認證。 |
 | `HybridGroupName` | 強制性 | 您針對支援此案例的 Runbook，指定作為目標的「混合式 Runbook 背景工作角色」群組名稱。 |
-| `OMSResourceGroupName` | 選擇性 | Log Analytics 工作區的資源群組名稱。 如果未指定此資源群組，則`AAResourceGroupName`會使用的值。 |
+| `OMSResourceGroupName` | 選用 | Log Analytics 工作區的資源群組名稱。 如果未指定此資源群組，則`AAResourceGroupName`會使用的值。 |
 | `SubscriptionID` | 強制性 | 與您的自動化帳戶相關聯之 Azure 訂用帳戶的識別碼。 |
-| `TenantID` | 選擇性 | 與您的自動化帳戶相關聯的租使用者組織識別碼。 |
-| `WorkspaceName` | 選擇性 | Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。 |
+| `TenantID` | 選用 | 與您的自動化帳戶相關聯的租使用者組織識別碼。 |
+| `WorkspaceName` | 選用 | Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。 |
 
 > [!NOTE]
-> 啟用解決方案時，Azure 自動化只支援特定區域來連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
+> 啟用功能時，Azure 自動化只支援特定區域來連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>步驟 2-開啟 Windows PowerShell 命令列 shell
 
@@ -115,9 +115,9 @@ ms.locfileid: "81617339"
 
 如果您還沒有 Log Analytics 工作區，請在建立工作區之前，先參閱[Azure 監視器記錄設計指引](../azure-monitor/platform/design-logs-deployment.md)。
 
-### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>步驟 2-將自動化解決方案新增至 Log Analytics 工作區
+### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>步驟 2-將 Azure 自動化功能新增至 Log Analytics 工作區
 
-自動化解決方案會為 Azure 自動化新增功能，包括混合式 Runbook 背景工作角色的支援。 當您將解決方案新增至 Log Analytics 工作區時，它會自動將您所安裝的背景工作元件，推送至代理程式電腦，如下一個步驟所述。
+自動化功能會為 Azure 自動化新增功能，包括混合式 Runbook 背景工作角色的支援。 當您將解決方案新增至 Log Analytics 工作區時，它會自動將您所安裝的背景工作元件，推送至代理程式電腦，如下一個步驟所述。
 
 若要將自動化解決方案新增至您的工作區，請執行下列 PowerShell Cmdlet。
 
@@ -177,13 +177,38 @@ Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
 Runbook 可以使用 Azure 自動化環境中安裝的模組中定義的任何活動和 Cmdlet。 因為這些模組不會自動部署到內部部署電腦，所以您必須手動安裝它們。 例外狀況是 Azure 模組。 此模組預設會安裝，並可讓您存取所有 Azure 服務和活動的 Cmdlet，以進行 Azure 自動化。
 
-由於「混合式 Runbook 背景工作角色」功能的主要目的是要管理本機資源，因此您很有可能需要安裝支援這些資源的模組`PowerShellGet` ，特別是模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
+因為混合式 Runbook 背景工作角色的主要目的是要管理本機資源，您很可能需要安裝支援這些資源的模組，特別是`PowerShellGet`模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
 
 已安裝的模組必須位於`PSModulePath`環境變數所參考的位置，才能讓混合式背景工作角色自動將其匯入。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>從內部部署 Windows 電腦中移除混合式 Runbook 背景工作角色
+
+1. 在 Azure 入口網站中，前往您的自動化帳戶。
+2. 在 [帳戶設定]**** 下，選取 [金鑰]**** 並記下 [URL]**** 和 [主要存取金鑰]**** 的值。
+
+3. 在系統管理員模式中開啟 PowerShell 會話，並使用您的 URL 和主要存取金鑰值來執行下列命令。 請使用`Verbose`參數來取得移除程式的詳細記錄。 若要從混合式背景工作角色群組中移除過時的機器，請使用選擇性的 `machineName` 參數。
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+## <a name="remove-a-hybrid-worker-group"></a>移除混合式背景工作角色群組
+
+若要移除混合式 Runbook 背景工作角色群組，您必須先從屬於該群組成員的每一部電腦中移除混合式 Runbook 背景工作角色。 然後使用下列步驟來移除群組：
+
+1. 在 Azure 入口網站中，開啟自動化帳戶。
+2. 選取 [程式**自動化**] 下的 [混合式背景**工作角色群組**] 選取您要刪除的群組。 該群組的屬性頁面隨即出現。
+
+   ![屬性頁面](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+
+3. 在所選群組的屬性頁面上，選取 [刪除]****。 這會顯示訊息要求您確認此動作。 如果您確定要繼續，請選取 [是]****。
+
+   ![確認訊息](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+
+   此程序可能需要數秒鐘的時間完成。 您可以在功能表的 [通知]**** 底下追蹤其進度。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何設定您的 Runbook，將您在內部部署資料中心或其他雲端環境中的程序自動化，請參閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)。
-* 如需移除混合式 Runbook 背景工作角色的指示，請參閱[移除 Azure 自動化混合式 runbook 背景工作角色](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)。
 * 若要瞭解如何針對混合式 Runbook 背景工作角色進行疑難排解，請參閱[疑難排解 Windows 混合式 runbook 背景工作角色](troubleshoot/hybrid-runbook-worker.md#windows)。
-* 如需針對更新管理問題進行疑難排解的其他步驟，請參閱[更新管理：疑難排解](troubleshoot/update-management.md)。
+

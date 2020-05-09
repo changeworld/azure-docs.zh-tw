@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721331"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891693"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>建置和最佳化資料表，以便快速地將資料平行匯入至 Azure VM 上的 SQL Server
 
@@ -99,7 +99,7 @@ ms.locfileid: "76721331"
 * [修改資料庫](https://msdn.microsoft.com/library/bb522682.aspx)，將交易記錄配置變更為 BULK_LOGGED，以便將記錄額外負荷降到最低，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將大型資料大量匯入 SQL Server 資料庫的秘訣，請參閱[在1小時內載入 1 TB](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
+* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將大型資料大量匯入 SQL Server 資料庫的秘訣，請參閱[在1小時內載入 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下列 PowerShell 指令碼是使用 BCP 平行載入資料的範例。
 

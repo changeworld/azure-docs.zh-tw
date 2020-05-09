@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 786efcb712557da4363384c9d05c33f4f16d6731
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 237ba5ba390b4065a67f29611fbd43375c239578
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76122811"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188844"
 ---
 [參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [範例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
@@ -37,7 +37,7 @@ ms.locfileid: "76122811"
 
 [!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
 
-[!INCLUDE [!Change model frequency](change-model-frequency.md)]
+[!INCLUDE [Change model frequency](change-model-frequency.md)]
 
 ## <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 959e473cb52e23c9d04586f0b24da34537f4e660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115596"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594724"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -110,13 +110,13 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 | 
+| 名稱 | 值 / 範例 | 資料類型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | publisher | Microsoft.Compute.Extensions | 字串 |
 | type | CustomScript | 字串 |
 | typeHandlerVersion | 2.1 | int |
-| fileUris (例如) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (例如) | python MyPythonScript.py \<my-param1> | 字串 |
 | 指令碼 (script) | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字串 |
 | skipDos2Unix (範例) | false | boolean |

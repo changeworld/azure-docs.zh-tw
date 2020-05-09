@@ -2,7 +2,7 @@
 title: Microsoft 身分識別平臺上的 OAuth 2.0 用戶端認證流程 |Azure
 description: 使用 OAuth 2.0 驗證通訊協定的 Microsoft 身分識別平臺執行來建立 web 應用程式。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 36a5fdf990432e3a41cf8fc578fa20b4910250b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868446"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689792"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程
 
@@ -105,7 +105,7 @@ Pro 提示：嘗試在瀏覽器中貼上下列要求。
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 參數 | 狀況 | 說明 |
+| 參數 | 狀況 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 這可以採用 GUID 或易記名稱格式。 如果您不知道使用者屬於哪個租用戶，而想要讓他們以任何租用戶登入，請使用 `common`。 |
 | `client_id` | 必要 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
@@ -168,7 +168,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| 參數 | 狀況 | 說明 |
+| 參數 | 狀況 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 應用程式預期要對其執行作業的目錄租用戶 (以 GUID 或網域名稱格式)。 |
 | `client_id` | 必要 | 指派給應用程式的應用程式識別碼。 您可以在用來註冊應用程式的入口網站中找到這項資訊。 |
@@ -190,7 +190,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 參數 | 狀況 | 說明 |
+| 參數 | 狀況 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 應用程式預期要對其執行作業的目錄租用戶 (以 GUID 或網域名稱格式)。 |
 | `client_id` | 必要 |指派給應用程式的應用程式 (用戶端) 識別碼。 |

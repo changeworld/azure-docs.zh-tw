@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure CLI 新增或移除角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure CLI，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+title: 使用 Azure CLI 新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure CLI 和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245664"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735771"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 新增或移除角色指派
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 Azure CLI 指派角色。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -52,7 +52,7 @@ az ad user show --id "{email}" --query objectId --output tsv
 az ad group show --group "{name}" --query objectId --output tsv
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>應用程式
 
 若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[az AD sp list](/cli/azure/ad/sp#az-ad-sp-list)。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
 
@@ -62,7 +62,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>新增角色指派
 
-在 RBAC 中，若要授與存取權，您可以新增角色指派。
+在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。
 
 ### <a name="user-at-a-resource-group-scope"></a>資源群組範圍中的使用者
 
@@ -97,7 +97,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@patlong contoso.com*使用者。 若要取得唯一角色識別碼，您可以使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)或參閱[Azure 資源的內建角色](built-in-roles.md)。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@patlong contoso.com*使用者。 若要取得唯一角色識別碼，您可以使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)或參閱[Azure 內建角色](built-in-roles.md)。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -187,7 +187,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>移除角色指派
 
-在 RBAC 中，若要移除存取權，您可以使用 [az 角色指派刪除](/cli/azure/role/assignment#az-role-assignment-delete)來移除角色指派:
+在 Azure RBAC 中，若要移除存取權，您可以使用[az role 指派 delete](/cli/azure/role/assignment#az-role-assignment-delete)來移除角色指派：
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
@@ -213,5 +213,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure CLI 列出角色指派](role-assignments-list-cli.md)
+- [使用 Azure CLI 列出 Azure 角色指派](role-assignments-list-cli.md)
 - [使用 Azure CLI 管理 Azure 資源和資源群組](../azure-resource-manager/cli-azure-resource-manager.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804362"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778969"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API
 
@@ -27,13 +27,13 @@ ms.locfileid: "80804362"
 > [!NOTE]
 > 這項功能適用于 API 管理的**開發人員**、**標準****和高階**層次。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 若要依照本文中的步驟進行，您必須有：
 * API 管理執行個體
 * 正在使用 API 管理執行個體發佈的 API
 * Azure AD 租用戶
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 以下為步驟概述：
 
@@ -79,7 +79,7 @@ ms.locfileid: "80804362"
     - 在 [**名稱**] 區段中，輸入將對應用程式使用者顯示且有意義的應用程式名稱，例如*用戶端應用*程式。 
     - 在 [**支援的帳戶類型**] 區段中，選取 [**任何組織目錄中的帳戶（任何 Azure AD 目錄-** 多租使用者）]。 
 
-1. 在 [重新**導向 URI** ] 區段`Web`中，選取並`https://contoso5.portal.azure-api.net/signin`輸入 URL。
+1. 在 [重新**導向 URI** ] 區段`Web`中，選取並將 [URL] 欄位保留空白。
 
 1. 選取 [註冊]  以建立應用程式。 
 
@@ -149,9 +149,9 @@ ms.locfileid: "80804362"
 
 1. 選取 [建立]  。
 
-1. 返回您的用戶端應用程式，然後選取 [**驗證**]。
+1. 回到 Azure Active Directory 中的用戶端應用程式註冊，然後選取 [**驗證**]。
 
-1. 在 [重新**導向 uri**] 底下，選取 [ **Web**] 類型，在 [重新**導向 URI**] 底下貼上**redirect_url** ，然後按一下 [儲存]。
+1. 在 [**平臺**設定] 下，按一下 [**新增平臺**]，並選取 [ **Web**] 類型，在 [重新**導向 URI**] 底下貼上**redirect_url** ，然後按一下 [**設定**] 按鈕以儲存。
 
 現在您已經設定 OAuth 2.0 授權伺服器，開發人員主控台可以從 Azure AD 取得存取權杖。 
 

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108404"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202769"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>匯入 Logic App 作為 API
 
@@ -40,7 +40,7 @@ ms.locfileid: "74108404"
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
-1. 選取 [API 管理]  下方的 [API]  。
+1. 在 Azure 入口網站中，瀏覽至您的 APIM 服務，然後從功能表中選取 [API]  。
 2. 從 [加入新的 API]  清單選取 [Logic App]  。
 
     ![邏輯應用程式](./media/import-logic-app-as-api/logic-app-api.png)
@@ -57,7 +57,8 @@ ms.locfileid: "74108404"
     - **入門**
     - **無限制**
 
-7. 選取 [建立]  。
+7. 輸入其他 API 設定。 您可以在建立期間設定這些值，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
+8. 選取 [建立]  。
 
 ## <a name="test-the-api-in-the-azure-portal"></a>在 Azure 入口網站中測試 API
 

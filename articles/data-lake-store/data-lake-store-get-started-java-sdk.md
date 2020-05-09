@@ -1,23 +1,17 @@
 ---
-title: Java SDK：Azure Data Lake Storage Gen1 的檔案系統作業 | Microsoft Docs
-description: 使用 Azure Data Lake Storage Gen1 的 Java SDK 在 Data Lake Storage Gen1 上執行檔案系統作業，例如建立資料夾等。
-services: data-lake-store
-documentationcenter: ''
+title: JAVA SDK-Data Lake Storage Gen1 上的檔案系統作業-Azure
+description: 使用適用于 Azure Data Lake Storage Gen1 的 JAVA SDK，在 Data Lake Storage Gen1 上執行檔案系統作業，例如建立資料夾，以及上傳和下載資料檔案。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60877459"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691783"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 在 Azure Data Lake Storage Gen1 上進行檔案系統作業
 > [!div class="op_single_selector"]
@@ -32,7 +26,7 @@ ms.locfileid: "60877459"
 
 您可以在 [Azure Data Lake Storage Gen1 Java API 文件](https://azure.github.io/azure-data-lake-store-java/javadoc/)取用適用於 Data Lake Storage Gen1 的 Java SDK API 文件。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * Java Development Kit (JDK 7 或更新版本，使用 Java 1.7 版或更新版本)
 * Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。
 * [Maven](https://maven.apache.org/install.html)。 本教學課程使用 Maven 來處理組建和專案相依性。 雖有可能不使用 Maven 或 Gradle 等組建系統進行建置，但這些系統讓相依性管理變得輕鬆許多。
@@ -58,7 +52,7 @@ ms.locfileid: "60877459"
           </dependency>
         </dependencies>
    
-    第一個相依性是使用來自 maven 存放庫的 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二個相依性是指定要用於此應用程式的記錄架構 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 會使用 [slf4j](https://www.slf4j.org/) 記錄外觀，讓您從數個常用的記錄架構中進行選擇，例如 log4j、Java 記錄、logback 等，或是不予記錄。 在此範例中，我們停用記錄，因此會使用 **slf4j-nop** 繫結。 若要在應用程式中使用其他記錄選項，請參閱[這裡](https://www.slf4j.org/manual.html#projectDep)。
+    第一個相依性是使用來自 maven 存放庫的 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二個相依性是指定要用於此應用程式的記錄架構 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 會使用[SLF4J](https://www.slf4j.org/)記錄外觀，可讓您從數個熱門的記錄架構中進行選擇，例如 Log4j、JAVA 記錄、Logback 等，或不記錄。 在此範例中，我們停用記錄，因此會使用 **slf4j-nop** 繫結。 若要在應用程式中使用其他記錄選項，請參閱[這裡](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 在應用程式中新增下列 import 陳述式。
 

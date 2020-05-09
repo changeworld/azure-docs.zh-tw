@@ -7,18 +7,18 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230843"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609039"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中備份和還原伺服器
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 MySQL 的 Azure 資料庫伺服器
 
 適用於 MySQL 的 Azure 資料庫伺服器會定期備份，以啟用還原功能。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 
@@ -77,7 +77,7 @@ Cmdlet 的 PointInTimeRestore 參數集需要下列參數： **PointInTimeRestor
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| Name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| 名稱 | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | RestorePointInTime | 2020-03-13T13：59：00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如**2020-03-13T05：59： 00-08： 00**。 您也可以使用 UTC 祖魯文格式，例如**2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用還原時間點模式。 |
 
@@ -119,7 +119,7 @@ Cmdlet 的 Dr 參數集需要下列參數： **GeoRestore** `Restore-AzMySqlServ
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
-|Name | mydemoserver-georestored | 新伺服器的名稱。 |
+|名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
 |Location | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用異地模式來進行還原。 |
 
@@ -131,6 +131,5 @@ Cmdlet 的 Dr 參數集需要下列參數： **GeoRestore** `Restore-AzMySqlServ
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解服務的[備份](concepts-backup.md)
-- 瞭解[複本](concepts-read-replicas.md)
-- 深入瞭解[商務持續性](concepts-business-continuity.md)選項
+> [!div class="nextstepaction"]
+> [使用 PowerShell 自訂適用於 MySQL 的 Azure 資料庫伺服器參數](howto-configure-server-parameters-using-powershell.md)

@@ -4,12 +4,12 @@ description: 如何從 Azure 中的備份來還原 Windows Server 系統狀態�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602461"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610780"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
@@ -124,7 +124,7 @@ ms.locfileid: "77602461"
 
 2. 在重新啟動後，開啟 Windows Server Backup 嵌入式管理單元。 如果您不知道快照安裝的位置，請在電腦或伺服器上搜尋 **Windows Server Backup**。
 
-    傳統型應用程式就會出現在搜尋結果中。
+    傳統型應用程式就會出現在搜尋結果中。 如果未出現，或您在開啟應用程式時遇到錯誤，您必須在**伺服器管理員**的 [**新增功能]** 中，安裝可用的**Windows Server Backup 功能**和其下的相依元件。
 
 3. 在嵌入式管理單元中，選取 [本機備份]****。
 
