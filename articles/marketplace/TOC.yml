@@ -199,19 +199,7 @@
             - name: 更新現有供應項目
               href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
         - name: 諮詢服務
-          href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
-          items:
-            - name: Prerequisites
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
-            - name: 建立諮詢服務供應項目
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
-            - name: 發佈諮詢服務供應項目
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
+          href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: 容器供應項目
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:

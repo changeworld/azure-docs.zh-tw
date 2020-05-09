@@ -654,11 +654,6 @@
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
         - name: 使用事件方格將資料插入 Databricks 差異資料表
           href: data-lake-storage-events.md
-    - name: 範例
-      items:
-        - name: Azure 原則內建
-          displayName: 'samples, policies, definitions'
-          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: 處理巨量資料

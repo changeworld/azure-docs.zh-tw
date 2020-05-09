@@ -14,8 +14,13 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: 在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
           href: tutorial-python-windows-virtual-machine.md
-    - name: 在 .NET 中透過 Azure Web 應用程式使用 Azure Key Vault
+    - name: 使用受控識別和 .NET 將 Key Vault 連線至 Web 應用程式
       href: tutorial-net-create-vault-azure-web-app.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 基本概念
@@ -96,6 +101,10 @@
           href: soft-delete-powershell.md
     - name: 移動金鑰保存庫
       items:
+        - name: 將金鑰保存庫移至另一個資源群組
+          href: keyvault-moveresourcegroup.md
+        - name: 將金鑰保存庫移至另一個訂用帳戶
+          href: keyvault-move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
           href: keyvault-moveregion.md
     - name: 疑難排解
