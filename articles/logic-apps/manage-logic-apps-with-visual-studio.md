@@ -3,16 +3,16 @@ title: 使用 Visual Studio 搭配 Cloud Explorer 來編輯和管理邏輯應用
 description: 編輯、更新、管理、新增至原始檔控制，以及使用 Visual Studio 搭配 Cloud Explorer 部署邏輯應用程式
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803185"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598431"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理邏輯應用程式
 
@@ -259,7 +259,11 @@ ms.locfileid: "80803185"
 ![從 Azure 入口網站刪除邏輯應用程式](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> 當您刪除邏輯應用程式後，就不會具現化新的執行。 所有進行中和擱置的執行都會取消。 如果您有數千個執行，加以取消可能需要很長的時間。 
+> 當您刪除邏輯應用程式後，就不會具現化新的執行。 所有進行中和擱置的執行都會取消。 如果您有數千個執行，加以取消可能需要很長的時間。
+
+> [!NOTE]
+> 如果您刪除並重新建立子邏輯應用程式，您必須重新儲存父系邏輯應用程式。 重新建立的子應用程式將會有不同的中繼資料。
+> 如果您不在重新建立父邏輯應用程式之後重新儲存其子系，您對子邏輯應用程式的呼叫將會失敗，並出現「未經授權」錯誤。 這種行為適用于父子式邏輯應用程式，例如，使用整合帳戶中的成品或呼叫 Azure 函式的專案。
 
 ## <a name="troubleshooting"></a>疑難排解
 

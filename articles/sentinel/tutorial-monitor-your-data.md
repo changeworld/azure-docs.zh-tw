@@ -1,6 +1,6 @@
 ---
-title: 使用以 Azure Sentinel 中 Azure 監視器活頁簿為基礎的儀表板，將您的資料視覺化 |Microsoft Docs
-description: 使用此教學課程，以瞭解如何使用以 Azure Sentinel 中的活頁簿為基礎的儀表板來視覺化您的資料。
+title: 使用 Azure Sentinel 中的 Azure 監視器活頁簿將資料視覺化 |Microsoft Docs
+description: 使用此教學課程來瞭解如何使用 Azure Sentinel 中的活頁簿，將您的資料視覺化。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/01/2020
+ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585215"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739155"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教學課程：將您的資料視覺化並加以監視
 
 
 
-將 [資料來源](quickstart-onboard.md) 連接到 Azure Sentinel 之後，您可以使用 Azure 監視器活頁簿的 Azure Sentinel 採用來視覺化和監視資料，這可提供建立自訂儀表板的豐富功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但您還是可以查看如何[使用 Azure 監視器活頁簿建立互動式報表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
+將[資料來源](quickstart-onboard.md) 連接到 Azure Sentinel 之後，您就可以使用 Azure 監視器活頁簿的 Azure Sentinel 採用來視覺化和監視資料，這在建立自訂儀表板時提供了豐富的功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但您還是可以查看如何[使用 Azure 監視器活頁簿建立互動式報表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
 
 
 本教學課程可協助您在 Azure Sentinel 中將資料視覺化。
@@ -33,12 +33,12 @@ ms.locfileid: "77585215"
 > * 使用內建活頁簿
 > * 建立新活頁簿
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 在 Azure Sentinel 工作區的資源群組上，您至少必須擁有活頁簿讀取者或活頁簿參與者許可權。
 
 > [!NOTE]
-> 您可以在 Azure Sentinel 中看到的活頁簿會儲存在 Azure Sentinel 工作區資源群組中，並由其建立所在的工作區加以標記。
+> 您可以在 Azure Sentinel 中看到的活頁簿會儲存在 Azure Sentinel 工作區的資源群組內，並由其建立所在的工作區加以標記。
 
 ## <a name="use-built-in-workbooks"></a>使用內建活頁簿
 

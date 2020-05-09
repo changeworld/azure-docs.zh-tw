@@ -5,14 +5,14 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1a507c54c6a6555fc945dd35ee6e54d37d49bfd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521054"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857579"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的診斷設定來監視 Azure Cosmos DB 資料
 
@@ -73,6 +73,40 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>針對診斷查詢的問題進行疑難排解
 
+1. 如何查詢執行時間超過3毫秒的作業：
+
+   ```Kusto
+   AzureDiagnostics 
+   | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+   | summarize count() by clientIpAddress_s, TimeGenerated
+   ```
+
+1. 如何查詢正在執行作業的使用者代理程式：
+
+   ```Kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+   | summarize count() by OperationName, userAgent_s
+   ```
+
+1. 如何查詢長時間執行的作業：
+
+   ```Kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+   | project TimeGenerated , duration_s 
+   | summarize count() by bin(TimeGenerated, 5s)
+   | render timechart
+   ```
+    
+1. 如何取得分割區索引鍵統計資料，以評估資料庫帳戶的前3個磁碟分割的扭曲：
+
+   ```Kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   ```
+
 1. 如何取得昂貴查詢的要求費用？
 
    ```Kusto
@@ -96,6 +130,22 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
    | where TimeGenerated >= ago(2h) 
    | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
+
+1. 如何取得所有耗用超過 100 RU/s 的查詢，並與**DataPlaneRequests**和**QueryRunTimeStatistics**中的資料聯結。
+
+   ```Kusto
+   AzureDiagnostics
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
+   | project activityId_g, requestCharge_s
+   | join kind= inner (
+           AzureDiagnostics
+           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
+           | project activityId_g, querytext_s
+   ) on $left.activityId_g == $right.activityId_g
+   | order by requestCharge_s desc
+   | limit 100
+   ```
+
 1. 如何取得不同作業的散發？
 
    ```Kusto
@@ -151,11 +201,36 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
 
 1. 如何取得分割區索引鍵統計資料，以評估資料庫帳戶的前三個磁碟分割之間的扭曲？
 
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
-    ```
+   ```Kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
+   ```
+
+1. 如何取得作業、要求費用或回應長度的 P99 或 P50 複寫延遲？
+
+   ```Kusto
+   AzureDiagnostics
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+   | where TimeGenerated >= ago(2d)
+   | summarize
+   percentile(todouble(responseLength_s), 50), percentile(todouble(responseLength_s), 99), max(responseLength_s),
+   percentile(todouble(requestCharge_s), 50), percentile(todouble(requestCharge_s), 99), max(requestCharge_s),
+   percentile(todouble(duration_s), 50), percentile(todouble(duration_s), 99), max(duration_s),
+   count()
+   by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
+   ```
+ 
+1. 如何取得 Controlplane 記錄？
+ 
+   請記得依照[停用金鑰型中繼資料寫入存取](audit-control-plane-logs.md#disable-key-based-metadata-write-access)articleand 中所述的方式來開啟旗標，並透過 AZURE POWERSHELL、CLI 或 ARM 來執行作業。
+ 
+   ```Kusto  
+   AzureDiagnostics 
+   | where Category =="ControlPlaneRequests"
+   | summarize by OperationName 
+   ```
+
 
 ## <a name="next-steps"></a>後續步驟
 

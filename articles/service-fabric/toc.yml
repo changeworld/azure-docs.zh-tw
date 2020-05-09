@@ -655,7 +655,7 @@
             - name: 調整
               items:
                 - name: 手動擴增
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: 以程式設計方式擴增
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: 擴大主要節點類型

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274758"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739359"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 和 Linux 效能資料來源
 Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可收集效能計數器，以頻繁間隔進行接近即時 (NRT) 的分析，並彙總較長期分析和報告所需的效能資料。
@@ -131,13 +131,13 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | 處理器 | % Privileged Time |
 | 處理器 | % Processor Time |
 | 處理器 | % User Time |
-| System (系統) | Free Physical Memory |
-| System (系統) | Free Space in Paging Files |
-| System (系統) | Free Virtual Memory |
-| System (系統) | 處理序 |
-| System (系統) | Size Stored In Paging Files |
-| System (系統) | Uptime |
-| System (系統) | 使用者 |
+| 系統 | Free Physical Memory |
+| 系統 | Free Space in Paging Files |
+| 系統 | Free Virtual Memory |
+| 系統 | 處理序 |
+| 系統 | Size Stored In Paging Files |
+| 系統 | Uptime |
+| 系統 | 使用者 |
 
 
 以下是效能計量的預設組態。
@@ -174,8 +174,8 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
       interval 30s
     </source>
 
-## <a name="data-collection"></a>資料集合
-只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不彙總，在訂用帳戶所指定的期間，所有記錄查詢檢視中都會提供未經處理資料。
+## <a name="data-collection"></a>資料收集
+只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不會匯總，而且原始資料會在 log analytics 工作區所指定的持續期間內，于所有記錄查詢檢視中提供。
 
 ## <a name="performance-record-properties"></a>效能記錄屬性
 效能記錄都具有 **Perf** 類型以及下表中的屬性。

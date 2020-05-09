@@ -68,6 +68,9 @@
       href: sample-scripts-azure-cli.md
     - name: Java 連線集區
       href: sample-scripts-java-connection-pooling.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB 和伺服器

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164027"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594333"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -27,6 +27,8 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 
 ACU：150-175
 
+高載：支援
+
 進階儲存體：支援
 
 進階儲存體快取：不支援
@@ -35,14 +37,14 @@ ACU：150-175
 
 記憶體保留更新：不支援
 
-| Size | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> （讀取 IOPS/MBps） | 最大未快取的資料磁片輸送量（IOPs/MBps）<sup>4</sup> | 資料磁碟數上限 | 最大 NIC/預期的網路頻寬 (Mbps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5 m/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x x 1.92 TB  | 2.2 m/14000   | 48000/960  | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9 m/16000   | 64000/1280 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 m/20000 | 80000/1400 | 32 | 8/16000 + |
+| 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> （讀取 IOPS/MBps） | 未快取的資料磁片輸送量（IOPs/MBps）<sup>4</sup> | 最大高載未快取資料磁片輸送量（IOPs/MBps）<sup>5</sup>| 資料磁碟數上限 | 最大 NIC/預期的網路頻寬 (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x x 1.92 TB  | 2.2 m/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
 
 <sup>1</sup> Lsv2 系列 VM 具有一個適用於 OS 分頁檔使用的標準 SCSI 型暫存資源磁碟 (在 Windows 上為 D:，在 Linux 上為 /dev/sdb)。 此磁碟針對每 8 個 vCPU 提供 80 GiB 的儲存體、4,000 IOPS 及 80 MBps 傳輸率 (例如 Standard_L80s_v2 提供 40,000 IOPS 和 800 MBPS 的 800 GiB)。 這可確保 NVMe 磁碟機可完全專供應用程式使用。 此磁碟為暫時磁碟，所有資料在停止/解除配置時都會遺失。
 
@@ -52,7 +54,9 @@ ACU：150-175
 
 <sup>4</sup> Lsv2 系列 VM 並未針對資料磁碟提供主機快取，因為這對 Lsv2 工作負載沒有幫助。  不過，Lsv2 VM 可通融 Azure 的「暫時性 VM」OS 磁碟選項 (最多 30 GiB)。
 
-<sup>5</sup>個超過64個 vcpu 的 vm 需要下列其中一種支援的客體作業系統：
+<sup>5</sup> Lsv2 系列 vm 一次最[多可以有30分鐘的磁片](linux/disk-bursting.md)效能。 
+
+<sup>6</sup>個 vcpu 超過64的 vm 需要下列其中一種支援的客體作業系統：
 
 - Windows Server 2016 或更新版本
 - Ubuntu 16.04 LTS 或更新版本，並搭配 Azure 微調核心（4.15 核心或更新版本）

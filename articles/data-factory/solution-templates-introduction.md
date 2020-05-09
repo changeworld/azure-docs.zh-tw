@@ -11,15 +11,16 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414741"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628941"
 ---
 # <a name="templates"></a>範本
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 範本為預先定義的 Azure Data Factory 管線，可讓您迅速開始使用 Data Factory。 範本很適合在您不熟悉 Data Factory 且想要快速開始使用的情況下使用。 這些範本會減少建置資料整合專案的開發時間，並進一步改善開發人員生產力。
 

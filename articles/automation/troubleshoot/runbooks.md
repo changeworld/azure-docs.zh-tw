@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08325c8163073c083e927f84fecbde9a9d104572
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652785"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855101"
 ---
 # <a name="troubleshoot-runbook-errors"></a>針對 runbook 錯誤進行疑難排解
 
@@ -49,7 +49,7 @@ ms.locfileid: "82652785"
     * 如果您嘗試使用過期的 webhook 來啟動 runbook，請[更新 webhook](../automation-webhooks.md#renew-a-webhook) 。
     * [檢查作業狀態](../automation-runbook-execution.md#job-statuses)以判斷目前的 runbook 狀態和問題的一些可能原因。
     * [將額外的輸出新增](../automation-runbook-output-and-messages.md#message-streams)至 runbook，以識別 runbook 暫止之前會發生什麼事。
-    * 處理您的作業所擲回的[任何例外](../automation-runbook-execution.md#handling-exceptions)狀況。
+    * 處理您的作業所擲回的[任何例外](../automation-runbook-execution.md#exceptions)狀況。
 
 1. 如果混合式 Runbook 背景工作角色上的 runbook 作業或環境沒有回應，請執行此步驟。
 
@@ -234,7 +234,7 @@ Runbook 在執行時未使用正確的內容。
 
 ### <a name="resolution"></a>解決方案
 
-當 runbook 叫用多個 runbook 時，可能會遺失訂用帳戶內容。 若要確保訂用帳戶內容會傳遞至 runbook，請讓用戶端 runbook 將內容傳遞給`Start-AzureRmAutomationRunbook` `AzureRmContext`參數中的 Cmdlet。 使用`Disable-AzureRmContextAutosave` Cmdlet 並將`Scope`參數設定為`Process` ，以確保指定的認證僅用於目前的 runbook。 如需詳細資訊，請參閱使用[多個訂用](../automation-runbook-execution.md#working-with-multiple-subscriptions)帳戶。
+當 runbook 叫用多個 runbook 時，可能會遺失訂用帳戶內容。 若要確保訂用帳戶內容會傳遞至 runbook，請讓用戶端 runbook 將內容傳遞給`Start-AzureRmAutomationRunbook` `AzureRmContext`參數中的 Cmdlet。 使用`Disable-AzureRmContextAutosave` Cmdlet 並將`Scope`參數設定為`Process` ，以確保指定的認證僅用於目前的 runbook。 如需詳細資訊，請參閱[訂用帳戶](../automation-runbook-execution.md#subscriptions)。
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -634,7 +634,7 @@ At line:16 char:1
 
 ### <a name="resolution"></a>解決方案
 
-如需使用 Azure 沙箱的詳細資訊，請參閱[Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md#where-to-run-your-runbooks)。
+如需使用 Azure 沙箱的詳細資訊，請參閱[Runbook 執行環境](../automation-runbook-execution.md#runbook-execution-environment)。
 
 ## <a name="scenario-invalid-forbidden-status-code-when-using-key-vault-inside-a-runbook"></a>案例：在 runbook 中使用 Key Vault 時，禁止的狀態碼無效
 
