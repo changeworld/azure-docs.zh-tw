@@ -1,14 +1,14 @@
 ---
 title: 支援的 Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Resource Manager 資源類型清單。
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.topic: reference
-ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141887"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594248"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -62,6 +62,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - appconfiguration/configurationstores
 - appplatform/春季
 - microsoft. 封存/集合
+- microsoft 證明/attestationproviders
 - microsoft. automation/automationaccounts
 - microsoft automation/automationaccounts/設定
 - microsoft automation/automationaccounts/runbook
@@ -75,6 +76,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - azuredata/sqlinstances
 - azuredata/sqlserverregistrations
 - azurestack/註冊
+- azurestackhci/叢集
 - baremetal/consoleconnections
 - baremetal/crayservers
 - baremetal/monitoringservers
@@ -146,6 +148,7 @@ Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-mana
 - databricks/工作區
 - microsoft.datacatalog/目錄
 - microsoft.datacatalog/datacatalogs
+- datadog/監視器
 - datafactory/microsoft.azure.management.datafactories
 - datafactory/factory
 - datalakeanalytics/accounts

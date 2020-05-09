@@ -3,7 +3,7 @@ title: 使用資源擁有者密碼認證授與登入 |Azure
 titleSuffix: Microsoft identity platform
 description: 使用資源擁有者密碼認證（ROPC）授與支援無瀏覽器的驗證流程。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26b3cb343aba2d45d5a14944a7f8856715bca100
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868659"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690091"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 身分識別平臺和 OAuth 2.0 資源擁有者密碼認證
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| 參數 | 狀況 | 說明 |
+| 參數 | 狀況 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您想要將使用者登入的目標目錄租用戶。 這可以採用 GUID 或易記名稱格式。 此參數無法設為 `common` 或 `consumers`，但可設定為 `organizations`。 |
 | `client_id` | 必要 | 指派給您應用程式的[Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的應用程式（用戶端）識別碼。 |
@@ -92,7 +92,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 參數 | [格式] | 描述 |
 | --------- | ------ | ----------- |
-| `token_type` | 字串 | 一律設定為 `Bearer`。 |
+| `token_type` | String | 一律設定為 `Bearer`。 |
 | `scope` | 空格分隔的字串 | 如果傳回存取權杖，此參數會列出存取權杖適用的範圍。 |
 | `expires_in`| int | 所含存取權杖的有效時間 (以秒為單位)。 |
 | `access_token`| 不透明字串 | 已針對要求的[範圍](v2-permissions-and-consent.md)發出。 |

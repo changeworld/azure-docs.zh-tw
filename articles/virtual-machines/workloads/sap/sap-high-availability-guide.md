@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65037ec0cc8b10b176622a7047beb7d912c7f701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617554"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594826"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器高可用性
 
@@ -397,9 +397,9 @@ Azure Resource Manager 中的三層式範本也支援高可用性案例，例如
 
 以下是可取得我們在本文中說明之範例案例的 Azure Resource Manager 範本︰
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image) \(英文\)  
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
 * [使用受控磁碟的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
 * [使用受控磁碟的自訂映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md) \(英文\)
 
 若要準備架構範本 1 的基礎結構：
@@ -490,9 +490,9 @@ _**圖 11：** 設定 SAP 高可用性 Azure Resource Manager 參數_
 
 您可以在這裡取得此部署案例的 Azure Resource Manager 範本：
 
-* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged) \(英文\)  
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
 * [使用受控磁碟的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
 * [使用受控磁碟的自訂映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md) \(英文\)
 
 
@@ -740,7 +740,7 @@ _**圖 15：** Azure 內部負載平衡器的預設 ASCS/SCS 負載平衡規_
 1. 在 [Azure 入口網站中，選取** < *SID*>-lb-ascs 負載平衡器** > **負載平衡規則**。
 2. 針對屬於 SAP ASCS 或 SCS 執行個體的所有負載平衡規則，變更下列值：
 
-   * Name
+   * 名稱
    * 連接埠
    * 後端連接埠
 
@@ -766,7 +766,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 若要在 SAP ASCS/SCS 執行個體的兩個叢集節點上新增登錄項目，首先，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上新增這些 Windows 登錄項目︰
 
-| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveTime` |
 | 變數類型 |REG_DWORD (十進位) |
@@ -777,7 +777,7 @@ _**表 3：** 變更第一個 TCP/IP 參數_
 
 然後，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上都新增下列 Windows 登錄項目：
 
-| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveInterval` |
 | 變數類型 |REG_DWORD (十進位) |

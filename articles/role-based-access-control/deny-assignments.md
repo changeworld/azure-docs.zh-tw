@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 資源的拒絕指派
-description: 了解 Azure 資源之角色型存取控制 (RBAC) 中的拒絕指派。
+title: 瞭解 Azure 拒絕指派-Azure RBAC
+description: 瞭解 Azure 角色型存取控制（Azure RBAC）中的 Azure 拒絕指派。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372475"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733766"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 資源的拒絕指派
+# <a name="understand-azure-deny-assignments"></a>瞭解 Azure 拒絕指派
 
 與角色指派相同，「拒絕指派」** 也會基於拒絕存取權的目的來附加一組在特定範圍內拒絕使用者、群組或服務主體的動作。 拒絕指派會封鎖使用者執行指定的 Azure 資源動作，即使角色指派授予他們存取權也一樣。
 
@@ -57,18 +57,18 @@ ms.locfileid: "80372475"
 > | 屬性 | 必要 | 類型 | 描述 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒絕指派的顯示名稱。 名稱在指定範圍內必須是唯一的。 |
-> | `Description` | 否 | 字串 | 拒絕指派的描述。 |
+> | `Description` | 否 | String | 拒絕指派的描述。 |
 > | `Permissions.Actions` | 至少一個 Actions 或一個 DataActions | String[] | 一個字串陣列，指定拒絕指派要封鎖存取權的管理作業。 |
 > | `Permissions.NotActions` | 否 | String[] | 一個字串陣列，指定要從拒絕指派排除的管理作業。 |
 > | `Permissions.DataActions` | 至少一個 Actions 或一個 DataActions | String[] | 一個字串陣列，指定拒絕指派要封鎖存取權的資料作業。 |
 > | `Permissions.NotDataActions` | 否 | String[] | 一個字串陣列，指定要從拒絕指派排除的資料作業。 |
-> | `Scope` | 否 | 字串 | 一個字串， 指定拒絕指派要套用的範圍。 |
-> | `DoNotApplyToChildScopes` | 否 | 布林值 | 指定拒絕指派是否要套用到子範圍。 預設值為 false。 |
+> | `Scope` | 否 | String | 一個字串， 指定拒絕指派要套用的範圍。 |
+> | `DoNotApplyToChildScopes` | 否 | Boolean | 指定拒絕指派是否要套用到子範圍。 預設值為 false。 |
 > | `Principals[i].Id` | 是 | String[] | 要套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 設定為空 GUID `00000000-0000-0000-0000-000000000000` 以代表所有主體。 |
 > | `Principals[i].Type` | 否 | String[] | 由主體 [i]. Id 所代表的物件類型陣列。設定為`SystemDefined`以代表所有主體。 |
 > | `ExcludePrincipals[i].Id` | 否 | String[] | 不套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 |
 > | `ExcludePrincipals[i].Type` | 否 | String[] | 由 ExcludePrincipals[i].Id 代表的物件類型陣列。 |
-> | `IsSystemProtected` | 否 | 布林值 | 指定此拒絕指派是否由 Azure 建立且無法編輯或刪除。 目前，所有拒絕指派都受系統保護。 |
+> | `IsSystemProtected` | 否 | Boolean | 指定此拒絕指派是否由 Azure 建立且無法編輯或刪除。 目前，所有拒絕指派都受系統保護。 |
 
 ## <a name="the-all-principals-principal"></a>所有主體主體
 
@@ -90,4 +90,4 @@ Principals              : {
 ## <a name="next-steps"></a>後續步驟
 
 * [教學課程：使用 Azure 藍圖資源鎖定保護新資源](../governance/blueprints/tutorials/protect-new-resources.md)
-* [使用 Azure 入口網站列出 Azure 資源的拒絕指派](deny-assignments-portal.md)
+* [使用 Azure 入口網站列出 Azure 拒絕指派](deny-assignments-portal.md)

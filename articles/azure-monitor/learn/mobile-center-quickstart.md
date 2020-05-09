@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77660286"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731946"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "77660286"
 
 ## <a name="onboard-to-app-center"></a>登入 App Center
 
-您必須先將應用程式上架至 [App Center](https://docs.microsoft.com/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。 (這不適用於 [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS)，或將遙測直接傳送至 Application Insights 的 [React Native 外掛程式](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native))。
+您必須先將應用程式上架至 [App Center](https://docs.microsoft.com/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。 (這不適用於 [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS)，或將遙測直接傳送至 Application Insights 的 [React Native 外掛程式](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native))。
 
 若要將應用程式上架，請針對應用程式支援的每個平台，遵循 App Center 快速入門來操作。 針對每個平台建立個別的 App Center 執行個體：
 
