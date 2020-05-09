@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780505"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629196"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何將 SQLite 資料庫移轉至 Azure SQL Database 無伺服器
-對於許多人而言，SQLite 會提供其資料庫和 SQL 程式設計的第一次體驗。 它包含在許多作業系統中，而熱門應用程式會使 SQLite 成為世界上最廣泛部署和使用的資料庫引擎。 而且，由於這可能是許多人使用的第一個資料庫引擎，因此通常會成為專案或應用程式的中心部分。 在專案或應用程式成長到超過初始 SQLite 執行的情況下，開發人員可能需要將其資料移轉至可靠且集中式的資料存放區。
+對於許多人而言，SQLite 會提供其資料庫和 SQL 程式設計的第一次體驗。 它包含在許多作業系統中，而熱門的應用程式會使 SQLite 成為世界上最廣泛部署和使用的資料庫引擎之一。 而且，由於這可能是許多人使用的第一個資料庫引擎，因此通常會成為專案或應用程式的中心部分。 在專案或應用程式成長到超過初始 SQLite 執行的情況下，開發人員可能需要將其資料移轉至可靠且集中式的資料存放區。
 
 Azure SQL Database 無伺服器是單一資料庫的計算層，可根據工作負載需求自動調整計算，並以每秒使用的計算量來計費。 無伺服器計算層級也會在活動傳回時，自動在非使用中期間暫停資料庫，並自動繼續執行資料庫。
 

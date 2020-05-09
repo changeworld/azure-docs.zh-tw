@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406033"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855787"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自動化中編輯文字式 Runbook
 
@@ -22,7 +22,7 @@ Azure 自動化中的文字式編輯器可以用來編輯 [PowerShell Runbook](a
 
 此文字式編輯器具有將 Cmdlet、資產、子 Runbook 程式碼插入 Runbook 的功能。 您不需要自行輸入程式碼，而是可以從可用資源的清單中選取，而編輯器會將適當的程式碼插入 runbook。
 
-Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發佈」。 您編輯 Runbook 的「草稿」版本然後發佈，讓它可以執行。 無法編輯「已發佈」版本。 如需詳細資訊，請參閱[發佈 runbook](manage-runbooks.md#publishing-a-runbook)。
+Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發佈」。 您編輯 Runbook 的「草稿」版本然後發佈，讓它可以執行。 無法編輯「已發佈」版本。 如需詳細資訊，請參閱[發佈 runbook](manage-runbooks.md#publish-a-runbook)。
 
 本文提供執行與此編輯器不同的功能的詳細步驟。 這些不適用於[圖形化 runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用這些 runbook，請參閱[Azure 自動化中的圖形化編寫](automation-graphical-authoring-intro.md)。
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 變更 runbook 的內容
 
-下列範例命令顯示如何以指令碼檔案內容取代現有 Runbook 的內容。 這個範例程序與[使用 Windows PowerShell 從指令碼檔案匯入 Runbook](manage-runbooks.md#importing-a-runbook) 的相同。
+下列範例命令顯示如何以指令碼檔案內容取代現有 Runbook 的內容。 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

@@ -4,14 +4,14 @@ description: 本文說明如何使用 Azure 自動化，針對 Azure Analysis Se
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871312"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926556"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
@@ -60,7 +60,7 @@ ms.locfileid: "82871312"
 
     ![建立認證](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 輸入認證的詳細資料。  針對 [**使用者名稱**]，輸入**spn ClientId**，針對 [**密碼**] 輸入**spn 密碼**。
+2. 輸入認證的詳細資料。 在 [**使用者名稱**] 中，輸入服務主體應用程式識別碼（appid），然後在 [**密碼**] 中輸入服務主體密碼。
 
     ![建立認證](./media/analysis-services-refresh-azure-automation/7.png)
 

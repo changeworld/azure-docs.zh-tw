@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e7a2611312ffc33703dd5cc9d0a2d7142ddb0532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368944"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627682"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格輸出系結
 
-使用事件方格輸出系結，將事件寫入至自訂主題。 您必須擁有[自訂主題的有效存取金鑰](../event-grid/security-authentication.md#custom-topic-publishing)。
+使用事件方格輸出系結，將事件寫入至自訂主題。 您必須擁有[自訂主題的有效存取金鑰](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-event-grid.md)。
 
@@ -224,7 +224,7 @@ JAVA 無法使用事件方格輸出系結。
 > [!IMPORTANT]
 > 請確定您將`TopicEndpointUri` configuration 屬性的值設定為應用程式設定的名稱，其中包含自訂主題的 URI。 請勿直接在這個屬性中指定自訂主題的 URI。
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用狀況
 
 # <a name="c"></a>[C#](#tab/csharp)
 

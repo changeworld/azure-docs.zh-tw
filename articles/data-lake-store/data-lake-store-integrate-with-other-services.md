@@ -1,23 +1,17 @@
 ---
-title: 將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 如何與其他 Azure 服務整合
-documentationcenter: ''
-services: data-lake-store
+title: 將 Data Lake Storage Gen1 與其他 Azure 服務整合
+description: 瞭解您可以如何將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535590"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690536"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合
 Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟用更廣泛的案例。 下列文章列出 Data Lake Storage Gen1 可以整合的服務。
@@ -65,7 +59,7 @@ Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料�
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>搭配 Azure 事件中樞使用 Data Lake Storage Gen1
 您可以使用 Azure Data Lake Storage Gen1 來封存及擷取 Azure 事件中樞所收到的資料。 如需詳細資訊，請參閱[搭配 Azure 事件中樞使用 Data Lake Storage Gen1](data-lake-store-archive-eventhub-capture.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [使用入口網站開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [使用 PowerShell 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
