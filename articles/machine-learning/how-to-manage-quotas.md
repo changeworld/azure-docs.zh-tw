@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 03/05/2020
-ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.custom: contperfq4
+ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756597"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891523"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>管理及要求 Azure 資源的配額
+# <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理 & 增加資源的配額
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文提供針對您的訂用帳戶預先設定 Azure 資源限制的詳細資料。 另外也包含如何要求每種資源類型的配額增強功能的指示。 設置這些限制可防止因詐欺而導致的預算超支，並遵循 Azure 的容量條件約束。
+本文為[Azure Machine Learning](overview-what-is-azure-ml.md)使用者提供您訂用帳戶的 Azure 資源預先設定限制的詳細資料。 另外也包含如何要求每種資源類型的配額增強功能的指示。 設置這些限制可防止因詐欺而導致的預算超支，並遵循 Azure 的容量條件約束。
 
-與其他 Azure 服務一樣，與 Azure Machine Learning 相關聯的特定資源有一些限制。 這些限制的範圍是從工作區數目的上限，到用於模型定型或推斷/評分的實際基礎計算限制。 
+與其他 Azure 服務一樣，與 Azure Machine Learning 相關聯的特定資源有一些限制。 這些限制的範圍是從[工作區](concept-workspace.md)數目的上限，到用於模型定型或推斷/評分的實際基礎計算限制。 
 
 當您為生產工作負載設計和調整 Azure Machine Learning 資源時，請考慮這些限制。 例如，如果您的叢集未達到目標節點數目，則您可能已達到訂用帳戶的 Azure Machine Learning 計算核心限制。 如果您想要將限制或配額提升到預設限制以上，您可以免費提出線上客戶支援要求。 由於 Azure 容量有其條件約束，您無法將限制提升至高於下表所示的「上限」值。 如果沒有上限欄，資源即沒有可調整的限制。
 
@@ -48,10 +49,10 @@ ms.locfileid: "80756597"
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-如需配額限制的詳細資訊與最新清單，請查看[這裡](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)的全 Azure 配額文章。
+如需更詳細且最新的配額限制清單，請參閱[全 Azure 配額文章](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-就 Azure Machine Learning Compute 而言，對於訂用帳戶中的每個區域允許的核心數目與特有計算資源數目，均有預設的配額限制。 此配額與上述 VM 核心配額不同，而且這兩個資源類型之間不會共用核心限制，因為 AmlCompute 是一種受控服務，可將資源部署在託管代理的模型中。
+針對[Azure Machine Learning 計算](concept-compute-target.md#azure-machine-learning-compute-managed)，訂用帳戶中每個區域所允許的核心數目和唯一計算資源數目都有預設的配額限制。 此配額與上述 VM 核心配額不同，而且這兩個資源類型之間不會共用核心限制，因為 AmlCompute 是一種受控服務，可將資源部署在託管代理的模型中。
 
 可用的資源：
 + 根據您的訂用帳戶供應專案類型，針對 EA 和 CSP 供應專案類型具有較高的預設值，每個區域的專用核心預設限制為 24-300。  您可以增加每個訂用帳戶的專用核心數目，而且每個 VM 系列各有不同。 某些特製化的 VM 系列（例如 NCv2、NCv3 或 ND 系列）開頭為零核心的預設值。 藉由引發配額要求來討論增加選項，以聯繫 Azure 支援。
@@ -76,7 +77,7 @@ ms.locfileid: "80756597"
 當有容量限制時，可能會佔用低優先順序節點上的<sup>2</sup>個工作。 我們建議您在作業中執行檢查點。
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning 管線
-針對 Azure Machine Learning 管線，管線中的步驟數目以及訂用帳戶中每個區域的排程型執行數目會有配額限制。
+針對[Azure Machine Learning 管線](concept-ml-pipelines.md)，管線中的步驟數目以及訂用帳戶中每個區域的排程型執行數目會有配額限制。
 - 管線中允許的最大步驟數目是30000
 - 針對每個訂用帳戶每個訂閱的已發佈管線，以排程為基礎的執行總和和 blob 提取的最大數目為100000
 
@@ -97,7 +98,7 @@ ms.locfileid: "80756597"
 
 ## <a name="workspace-level-quota"></a>工作區層級配額
 
-為了更有效地管理各種工作區之間 Amlcompute 的資源配置，我們引進了一項功能，可讓您散發訂用帳戶層級配額（依 VM 系列），並在工作區層級進行設定。 預設行為是所有工作區的配額與任何 VM 系列的訂用帳戶層級配額相同。 不過，隨著工作區數目的增加，和不同優先順序的工作負載會開始共用相同的資源，使用者想要能夠更清楚地共用容量並避免資源爭用問題。 Azure Machine Learning 可讓使用者在每個工作區上設定特定 VM 系列的最大配額，以提供其受控計算供應專案的解決方案。 這類似于在工作區之間散發您的容量，而使用者也可以選擇過度配置來驅動最大使用率。 
+為了更有效地管理各種[工作區](concept-workspace.md)之間 Azure Machine Learning 計算目標（Amlcompute）的資源配置，我們引進了一項功能，可讓您散發訂用帳戶層級配額（依 VM 系列），並在工作區層級進行設定。 預設行為是所有工作區的配額與任何 VM 系列的訂用帳戶層級配額相同。 不過，隨著工作區數目的增加，和不同優先順序的工作負載會開始共用相同的資源，使用者想要能夠更清楚地共用容量並避免資源爭用問題。 Azure Machine Learning 可讓使用者在每個工作區上設定特定 VM 系列的最大配額，以提供其受控計算供應專案的解決方案。 這類似于在工作區之間散發您的容量，而使用者也可以選擇過度配置來驅動最大使用率。 
 
 若要在工作區層級設定配額，請移至訂用帳戶中的任何工作區，然後按一下左窗格中的 [**使用方式 + 配額**]。 然後選取 [**設定配額**] 索引標籤來查看配額、展開任何 vm 系列，然後在該 VM 系列底下列出的任何工作區上設定配額限制。 請記住，您不能設定負值或高於訂用帳戶層級配額的值。 此外，如您所觀察，預設會將整個訂用帳戶配額指派給所有工作區，以允許完整使用配置的配額。
 
@@ -105,7 +106,7 @@ ms.locfileid: "80756597"
 
 
 > [!NOTE]
-> 這只是 Enterprise edition 的功能。 如果您的訂用帳戶中有基本和企業版的工作區，您可以使用此功能，只在您的企業工作區上設定配額。 您的基本工作區會繼續擁有訂用帳戶層級配額，這是預設行為。
+> 這只是 Enterprise edition 的功能。 如果您的訂用帳戶中有[基本和企業版](overview-what-is-azure-ml.md#sku)的工作區，您可以使用此功能，只在您的企業工作區上設定配額。 您的基本工作區會繼續擁有訂用帳戶層級配額，這是預設行為。
 >
 > 您需要訂用帳戶層級許可權，才能在工作區層級設定配額。 這會強制執行，讓個別的工作區擁有者不會編輯或增加其配額，也不會開始超越另一個工作區的資源。 因此，訂用帳戶管理員最適合跨工作區配置和散發這些配額。
 
@@ -136,9 +137,17 @@ ms.locfileid: "80756597"
 
 如果您想要將限制或配額提升到預設限制以上，請免費[開啟線上客戶支援要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)。
 
-您無法將限制提升到高於下表中所示的上限值。 如果沒有上限，資源即沒有可調整的限制。 [這篇](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)文章涵蓋配額增加程序的詳細資料。
+您無法將限制提升到高於下表中所示的上限值。 如果沒有上限，資源即沒有可調整的限制。 如需[如何增加配額的逐步指示，請參閱](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
 
 要求增加配額時，您必須選取您要求提升配額的服務，這可以是 Machine Learning 服務配額、容器執行個體或儲存體的配額。 除了 Azure Machine Learning 計算以外，您也可以按一下 [**要求配額**] 按鈕，並遵循上述步驟來查看配額。
 
 > [!NOTE]
 > [免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)無法增加限制或配額。 如果您有[免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)，則可以升級到[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)訂用帳戶。 如需詳細資訊，請參閱[將 Azure 免費試用升級至隨用隨付](../billing/billing-upgrade-azure-subscription.md)和[免費試用訂用帳戶常見問題集](https://azure.microsoft.com/free/free-account-faq)。
+
+## <a name="next-steps"></a>後續步驟
+
+請透過下列文章來深入了解：
+
++ [規劃 & 管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)
+
++ [如何增加您的配額](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

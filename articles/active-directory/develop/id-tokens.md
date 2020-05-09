@@ -1,5 +1,6 @@
 ---
-title: Microsoft 身分識別平臺識別碼權杖參考
+title: Microsoft 身分識別平臺識別碼權杖 |Azure
+titleSuffix: Microsoft identity platform
 description: 瞭解如何使用 Azure AD v1.0 和 Microsoft 身分識別平臺（v2.0）端點所發出的 id_tokens。
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690173"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926709"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
-`id_tokens` 會在 [OpenID Connect](v2-protocols-oidc.md) 流程中傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
+`id_tokens`會當做[OpenID connect](v2-protocols-oidc.md) （OIDC）流程的一部分，傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
@@ -30,7 +31,7 @@ ms.locfileid: "82690173"
 
 ## <a name="claims-in-an-id_token"></a>id_token 中的宣告
 
-Microsoft 身分識別的 `id_tokens` 為 [JWT](https://tools.ietf.org/html/rfc7519)，這表示它們是由標頭、承載和簽章所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除了特別註明，否則此處所列的所有宣告都會出現在 v1.0 和 v2.0 權杖中。
+`id_tokens`Microsoft 身分識別的[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 權杖），表示它們是由標頭、承載和簽章部分所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除非另有說明，此處所列的所有 JWT 宣告都會同時出現在 v1.0 和 v2.0 權杖中。
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 |宣告 | [格式] | 描述 |
 |-----|--------|-------------|
-|`typ` | 字串 - 一律為 "JWT" | 表示權杖是 JWT。|
+|`typ` | 字串 - 一律為 "JWT" | 指出權杖是 JWT 權杖。|
 |`alg` | String | 指出用來簽署權杖的演算法。 範例："RS256" |
 |`kid` | String | 用來簽署此權杖的公開金鑰指紋。 v1.0 和 v2.0 `id_tokens` 中都會發出此宣告。 |
 |`x5t` | String | 與 `kid` 相同 (用法和值)。 不過，這是為了達到相容性，只在 v1.0 `id_tokens` 中發出的舊版宣告。 |
 
 ### <a name="payload-claims"></a>承載宣告
 
-此清單會顯示預設為最 id_tokens 的宣告（除非另有注明）。  不過，您的應用程式可以使用[選擇性宣告](active-directory-optional-claims.md)來要求 id_token 中的其他宣告。  這些可以從`groups`宣告的範圍，到使用者名稱的相關資訊。
+此清單會顯示預設為最 id_tokens 的 JWT 宣告（除非另有注明）。  不過，您的應用程式可以使用[選擇性宣告](active-directory-optional-claims.md)來要求 id_token 中的其他 JWT 宣告。  這些可以從`groups`宣告的範圍，到使用者名稱的相關資訊。
 
 |宣告 | [格式] | 描述 |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`uti` | 不透明字串 | Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`ver` | 字串，1.0 或 2.0 | 表示 id_token 的版本。 |
 
-
 > [!NOTE]
-> V1 和 v2 id_token 與上述範例中所見的資訊數量有所差異。 版本基本上會指定發出它的 Azure AD 平臺端點。 [Azure AD 的 Oauth 實行](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)已演變到數年。 目前，我們有兩個不同的 oAuth 端點可用於 AzureAD 應用程式。 您可以使用任何分類為 v2 的新端點，或稱為 v1 的舊端點。 這兩者的 Oauth 端點都不同。 V2 端點較新，我們正嘗試遷移 v1 端點的所有功能，並建議新的開發人員使用 V2 端點。 
+> V1 和 v2 id_token 與上述範例中所見的資訊數量有所差異。 版本基本上會指定發出它的 Azure AD 平臺端點。 [Azure AD 的 Oauth 實行](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)已演變到數年。 目前，我們有兩個不同的 oAuth 端點可用於 AzureAD 應用程式。 您可以使用任何分類為 v2 的新端點，或稱為 v1 的舊端點。 這兩者的 Oauth 端點都不同。 V2 端點較新，我們正嘗試遷移 v1 端點的所有功能，並建議新的開發人員使用 V2 端點。
+>
 > - V1： Azure Active Directory 端點：`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2： Microsoft 身分識別平臺端點：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>驗證 id_token
 
-`id_token`驗證與[驗證存取權杖](access-tokens.md#validating-tokens)的第一個步驟類似-您的用戶端應該驗證正確的簽發者是否已送回權杖，而且它尚未遭到篡改。 因為 `id_tokens` 一律是 JWT，所以有許多程式庫可用來驗證這些權杖 - 我們建議您使用其中一個程式庫，而不需自己執行此作業。
+`id_token`驗證與[驗證存取權杖](access-tokens.md#validating-tokens)的第一個步驟類似-您的用戶端應該驗證正確的簽發者是否已送回權杖，而且它尚未遭到篡改。 因為`id_tokens`一律是 JWT 權杖，所以有許多程式庫都是用來驗證這些權杖，我們建議您使用其中一個，而不是自行執行。
 
-若要手動驗證權杖，請參閱[驗證存取權杖](access-tokens.md#validating-tokens)中的步驟詳細資料。 驗證權杖的簽章之後，應在 id_token 中驗證下列宣告 (也可由您的權杖驗證程式庫執行)：
+若要手動驗證權杖，請參閱[驗證存取權杖](access-tokens.md#validating-tokens)中的步驟詳細資料。 驗證權杖上的簽章之後，應在 id_token 中驗證下列 JWT 宣告（也可以透過您的權杖驗證程式庫來完成）：
 
-* 時間戳記：`iat``nbf` 和 `exp` 時間戳記應該全部落在目前時間的前後 (視情況而定)。 
+* 時間戳記：`iat``nbf` 和 `exp` 時間戳記應該全部落在目前時間的前後 (視情況而定)。
 * 對象：`aud` 宣告應符合您應用程式的應用程式識別碼。
 * Nonce：承載中的 `nonce` 宣告必須符合在初始要求期間傳入 /authorize 端點的 nonce 參數。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解[存取權杖](access-tokens.md)
-* 使用[選擇性宣告](active-directory-optional-claims.md)，在您的 id_token 中自訂宣告。
+* 使用[選擇性宣告](active-directory-optional-claims.md)，在您的 id_token 中自訂 JWT 宣告。

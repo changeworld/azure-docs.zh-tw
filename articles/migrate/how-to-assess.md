@@ -1,31 +1,21 @@
 ---
 title: 在 Azure Migrate 中新增評估工具
 description: 瞭解如何在 Azure Migrate 中新增評定工具。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185917"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901040"
 ---
 # <a name="add-assessment-tools"></a>新增評量工具
 
-本文說明如何在[Azure Migrate](migrate-overview.md)中新增評定工具。
+本文說明如何在[Azure Migrate](migrate-overview.md)中新增評定工具。 
 
-Azure Migrate 提供一種工具中樞，可供評估和遷移至 Azure。 其中包含 Azure Migrate 工具，以及其他工具和獨立軟體廠商（ISV）產品。
-
-如果您想要新增評估工具，但還沒有 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。
-
-## <a name="select-a-tool"></a>選取工具
-
-如果您選擇非 Azure Migrate 的評估工具，請先取得授權或註冊免費試用（根據工具原則）。 工具可以選擇連接到 Azure Migrate。 遵循指示和檔，將工具連接至 Azure Migrate。 [深入瞭解](migrate-services-overview.md)工具。
-
+- 如果您想要新增評估工具，但還沒有 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。-
+- 如果您已新增 ISV 工具或 Movere 以進行評估，請[遵循下列步驟](prepare-isv-movere.md)來準備使用此工具。
 
 ## <a name="select-an-assessment-scenario"></a>選取評估案例
 
