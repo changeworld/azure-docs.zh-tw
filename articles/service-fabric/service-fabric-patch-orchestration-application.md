@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366324"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608910"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>修補 Service Fabric 叢集中的 Windows 作業系統
 
@@ -63,7 +63,7 @@ POA 是由下列子元件所組成：
 > [!NOTE]
 > POA 會使用 Service Fabric 修復管理員服務來停用或啟用節點，並執行健康情況檢查。 POA 所建立的修復工作會追蹤每個節點的 Windows Update 進度。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!NOTE]
 > 所需的最小 .NET Framework 版本為4.6。
@@ -161,12 +161,12 @@ POA 需要在叢集上啟用修復管理員服務。
 |TaskApprovalPolicy   |例舉 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 會指出協調器服務在 Service Fabric 叢集節點中用來安裝 Windows 更新的原則。<br><br>允許的值包括： <br>*NodeWise*： Windows 更新會一次安裝一個節點。 <br> *UpgradeDomainWise*： Windows 更新會一次安裝一個更新網域。 （最多，屬於更新網域的所有節點都可以進行 Windows update）。<br><br> 若要協助決定哪一個原則最適合您的叢集，請參閱[常見問題](#frequently-asked-questions)一節。
 |LogsDiskQuotaInMB   |long  <br> （預設值： *1024*）               | 修補程式協調流程應用程式記錄檔的大小上限（以 MB 為單位），可以在本機節點上保存。
 | WUQuery               | 字串<br>（預設值： *IsInstalled = 0*）                | 用以取得 Windows 更新的查詢。 如需詳細資訊，請參閱 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | *布林值* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
+| InstallWindowsOSOnlyUpdates | *Boolean* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
 | WUOperationTimeOutInMinutes | Int <br>（預設值： *90*）                   | 指定任何 Windows Update 作業的逾時 (搜尋或下載或安裝)。 如果作業未在指定的逾時內完成，它就會中止。       |
 | WURescheduleCount     | Int <br> （預設值： *5*）                  | 如果作業持續失敗，服務會將 Windows update 重新排程的次數上限。          |
 | WURescheduleTimeInMinutes | Int <br>（預設值： *30*） | 如果失敗持續發生，服務重新排定 Windows 更新的間隔。 |
-| WUFrequency           | 以逗號分隔的字串（預設值：*每週、星期三、7:00:00*）     | 安裝 Windows 更新的頻率。 格式與可能的值如下： <br>&nbsp;&nbsp;-每月： DD，HH： MM： SS （例如，*每月，5，12：22： 32*）<br>欄位 DD （日）允許的值為1到28和 "last" 的數位。 <br> &nbsp;&nbsp;-每週、日、HH： MM： SS （例如，*每週、星期二、12:22:32*）  <br> &nbsp;&nbsp;-每天，HH： MM： SS （例如，*每日，12:22:32*）  <br> &nbsp;&nbsp;-  [*無*] 表示不應執行 Windows 更新。  <br><br> 時間為 UTC。|
-| AcceptWindowsUpdateEula | 布林值 <br>（預設值： *true*） | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
+| WUFrequency           | 以逗號分隔的字串（預設值：*每週、星期三、7:00:00*）     | 安裝 Windows 更新的頻率。 格式與可能的值如下： <br>-每月，DD，HH： MM： SS （範例：*每月，5，12:22:32*）。 [欄位_DD_ （日）] 允許的值為1到28和_最後一個_的數位。 <br>-每週、日、HH： MM： SS （範例：*每週、星期二、12:22:32*）  <br>-每天，HH： MM： SS （範例：*每天，12:22:32*）  <br>-Week，Day，HH： MM： SS （範例： *2，星期五，21:00:00*表示每月第2周星期五的 UTC 9:00 PM） <br>- [*無*] 表示不應執行 Windows 更新。  <br><br> 時間為 UTC。|
+| AcceptWindowsUpdateEula | Boolean <br>（預設值： *true*） | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
 
 > [!TIP]
 > 如果您想要讓 Windows update 立即發生， `WUFrequency`請設定 [相對於應用程式部署時間]。 例如，假設您的測試叢集有五個節點，計劃於大約下午 5:00 UTC 部署應用程式。 如果您假設應用程式升級或部署最多需要30分鐘的時間，請將 Wufrequency 設定設定為*每日，17:30:00*。

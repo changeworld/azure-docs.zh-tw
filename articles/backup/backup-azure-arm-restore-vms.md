@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182883"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597768"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -43,7 +43,7 @@ Azure 備份提供數種方法來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受控 Vm 時，不支援使用網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 若要還原 VM （建立新的 VM），請確定您具有還原 VM 作業的正確角色型存取控制（RBAC）[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
 
@@ -180,7 +180,7 @@ Azure 備份提供數種方法來還原 VM。
 
 有幾個可能需要還原 VM 的常見案例。
 
-**案例** | **指導**
+**案例** | **指引**
 --- | ---
 **使用 Hybrid Use Benefit 還原 VM** | 如果 Windows VM 使用 [Hybrid Use Benefit (HUB) 授權](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，請使用提供的範本 (將**授權類型**設定為 **Windows_Server**) 或 PowerShell 來還原磁碟並建立新 VM。  此設定也可以在建立 VM 之後套用。
 **在 Azure 資料中心發生災害時還原 VM** | 如果保存庫使用 GRS 和主要資料中心來因應 VM 的停機狀況，則 Azure 備份可支援將備份的 VM 還原至配對的資料中心。 您可以在配對的資料中心內選取儲存體帳戶，然後依正常程序進行還原。 Azure 備份會使用配對區域中的計算服務來建立還原的 VM。 [深入了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)資料中心復原。
@@ -190,7 +190,7 @@ Azure 備份提供數種方法來還原 VM。
 **裸機還原** | Azure VM 與內部部署 Hypervisor 的主要差異是，Azure 沒有提供 VM 主控台。 在某些情況下，您必須使用主控台，例如使用裸機復原 (BMR) 類型的備份進行復原。 不過，從保存庫來還原 VM 可完整取代 BMR。
 **還原具有特殊網路組態的 VM** | 特殊網路組態包含使用內部或外部負載平衡、使用多個 NIC 或多個保留 IP 位址的 VM。 您可以使用[還原磁碟選項](#restore-disks)來還原這些 VM。 此選項會將 Vhd 複製到指定的儲存體帳戶，然後您可以根據您的設定，建立具有[內部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)負載平衡器、[多個 NIC](../virtual-machines/windows/multiple-nics.md)或[多個保留 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
 **NIC/子網上的網路安全性群組（NSG）** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
-**區域釘選的 Vm** | Azure 備份支援備份和還原已分區的固定 Vm。 [深入了解](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**區域釘選的 Vm** | 如果您備份的 Azure VM 已釘選到區域（使用 Azure 備份），則您可以在固定所在的相同區域中進行還原。 [深入了解](https://docs.microsoft.com/azure/availability-zones/az-overview)
 
 ## <a name="track-the-restore-operation"></a>追蹤還原作業
 

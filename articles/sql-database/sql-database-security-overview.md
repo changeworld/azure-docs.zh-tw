@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7feb6282f3a3551e08d1bb8db2cf6ad2fcd754a8
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461390"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626151"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database 安全性功能的概觀
 
@@ -30,7 +30,7 @@ Microsoft Azure SQL Database 為雲端和企業應用程式提供關聯式資料
 
 ### <a name="ip-firewall-rules"></a>IP 防火牆規則
 
-IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取權。 如需詳細資訊，請參閱 [Azure SQL Database 和 SQL 資料倉儲防火牆規則概觀](sql-database-firewall-configure.md)。
+IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取權。 如需詳細資訊，請參閱[Azure SQL Database 和 Azure Synapse 分析防火牆規則的總覽](sql-database-firewall-configure.md)。
 
 ### <a name="virtual-network-firewall-rules"></a>虛擬網路防火牆規則
 
@@ -56,7 +56,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 - **Azure Active Directory 驗證**：
 
-    Azure Active Directory 驗證是使用 Azure Active Directory （Azure AD）中的身分識別連接到[Azure SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 Azure AD 驗證可讓系統管理員在一個中央位置，集中管理資料庫使用者的身分識別和權限以及其他 Microsoft 服務。 這包括密碼儲存體的最小化，並啟用集中式密碼輪替原則。
+    Azure Active Directory 驗證是使用 Azure Active Directory （Azure AD）中的身分識別連接到[Azure SQL Database](sql-database-technical-overview.md)和[Azure Synapse 分析](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 Azure AD 驗證可讓系統管理員在一個中央位置，集中管理資料庫使用者的身分識別和權限以及其他 Microsoft 服務。 這包括密碼儲存體的最小化，並啟用集中式密碼輪替原則。
 
      必須建立稱為 **Active Directory 系統管理員**的伺服器管理員，才能使用 Azure AD 驗證搭配 SQL Database。 如需詳細資訊，請參閱[使用 Azure Active Directory 驗證連線到 SQL Database](sql-database-aad-authentication.md)。 Azure AD 驗證支援受控和同盟帳戶。 同盟帳戶支援與 Azure AD 同盟的客戶網域的 Windows 使用者和群組。
 
@@ -97,7 +97,7 @@ SQL Database 稽核會將資料庫事件記錄到客戶自有 Azure 儲存體帳
 
 SQL Database 可藉由使用[傳輸層安全性](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)將移動中的資料加密來保護客戶資料。
 
-Sql Server 會針對所有連線強制執行加密（SSL/TLS）。 這可確保所有資料都會在用戶端與伺服器之間「傳輸中」加密，而不論連接字串中的 [**加密**] 或 [ **TrustServerCertificate** ] 設定。
+Sql Server 會針對所有連線強制執行加密（TLS）。 這可確保所有資料都會在用戶端與伺服器之間「傳輸中」加密，而不論連接字串中的 [**加密**] 或 [ **TrustServerCertificate** ] 設定。
 
 最佳做法是，建議您在應用程式的連接字串中指定加密連接，而_**不**_ 信任伺服器憑證。 這會強制您的應用程式驗證伺服器憑證，進而防止您的應用程式容易遭受中間類型攻擊。
 
@@ -146,7 +146,7 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 如需詳細資訊，請參閱[開始使用資料探索與分類](sql-database-data-discovery-and-classification.md)。
 
-### <a name="compliance"></a>合規性
+### <a name="compliance"></a>法規遵循
 
 除了上述可協助您的應用程式符合各種安全性需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在此找到最新的 SQL Database 合規性認證清單。
 

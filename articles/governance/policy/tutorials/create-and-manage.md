@@ -3,12 +3,12 @@ title: 教學課程：建立原則來強制執行合規性
 description: 在本教學課程中，您會使用原則來強制執行標準、控制成本、維護安全性，以及強加全企業的設計原則。
 ms.date: 03/24/2020
 ms.topic: tutorial
-ms.openlocfilehash: 15a6c3df26938332d42ecbcfff43f958577062c4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239944"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190821"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教學課程：建立和管理原則來強制執行相容性
 
@@ -94,7 +94,7 @@ ms.locfileid: "80239944"
      > 如果您計劃要將此原則定義套用至多個訂用帳戶，則作為位置的管理群組必須包含您要對其指派原則的訂用帳戶。 計畫定義也是如此。
 
    - 原則定義的名稱 - _*需要小於 G 系列的 VM SKU 
-   - 原則定義的用途描述 – 此原則定義會強制讓此範圍中建立的所有 VM，具有比 G 系列小的 SKU，以降低成本。 
+   - 原則定義目的的描述 – 此原則定義會強制讓此範圍中建立的所有 VM，具有比 G 系列小的 SKU，以降低成本。 
    - 從現有選項 (例如_計算_) 進行選擇，或為此原則定義建立新類別。
    - 複製下列 JSON 程式碼，然後針對您的需求進行更新：
       - 原則參數。

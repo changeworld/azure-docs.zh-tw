@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418349"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562197"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory 中的管道執行和觸發程序
 
@@ -283,11 +283,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | JSON 屬性 | 類型 | 必要 | 預設值 | 有效值 | 範例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **時間** | 字串 | 是 | None | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **定期** | 物件 | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **時間** | 字串 | 是 | 無 | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **定期** | 物件 (object) | 是 | 無 | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | 否 | 1 | 1 到 1000 | `"interval":10` |
-| **endTime** | 字串 | 是 | None | 代表未來時間的日期時間值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **任務** | 物件 | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | 字串 | 是 | 無 | 代表未來時間的日期時間值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **任務** | 物件 (object) | 否 | 無 | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 屬性
 下表說明 **startTime** 屬性如何控制觸發程序執行：
@@ -326,6 +326,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 輪轉視窗觸發程序是可從指定的開始時間定期引發，同時還能保留狀態的一種觸發程序。 輪轉視窗是一系列大小固定、非重疊的連續時間間隔。
 
 如需輪轉視窗觸發程式的詳細資訊，如需範例，請參閱[建立輪轉視窗觸發](how-to-create-tumbling-window-trigger.md)程式。
+
+> [!NOTE]
+> 輪轉視窗觸發程式執行會*等待觸發的管線執行*完成。 其執行狀態會反映已觸發之管線執行的狀態。 例如，如果已取消觸發的管線執行，則會將對應的輪轉視窗觸發程式執行標示為已取消。 這與「排程」觸發程式的「引發和忘」行為不同，只要管線執行開始就會標示為「成功」。
 
 ## <a name="event-based-trigger"></a>事件型觸發程序
 
