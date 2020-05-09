@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 616910eda33b3ddc49fa6233ccb3989c5e4214e2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026905"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582838"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>快速入門：設定 Office 365 群組 Azure Active Directory 中的到期日
 
@@ -73,7 +73,7 @@ ms.locfileid: "74026905"
 
 ### <a name="to-remove-the-expiration-policy"></a>移除到期原則
 
-1. 確實使用具備租用戶全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
+1. 確實使用具備 Azure AD 組織全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [Azure Active Directory]   > [群組]   > [到期]  。
 3. 將 [啟用這些 Office 365 群組的到期日]  設定為 [無]  。
 

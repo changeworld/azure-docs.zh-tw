@@ -1,6 +1,6 @@
 ---
 title: 疑難排解 Azure 自動化管理解決方案上架的問題
-description: 瞭解如何針對解決方案上架錯誤進行疑難排解。
+description: 瞭解如何針對 Azure 自動化解決方案上架錯誤進行疑難排解。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679224"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836524"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>疑難排解解決方案上架
 
-將更新管理解決方案上架或變更追蹤和清查解決方案時，可能會收到錯誤。 本文說明可能會發生的各種錯誤，以及解決問題的方式。
+當您將 Azure 自動化更新管理解決方案或變更追蹤和清查解決方案上架時，可能會收到錯誤訊息。 本文說明可能會發生的各種錯誤，以及解決問題的方式。
 
 ## <a name="known-issues"></a>已知問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "81679224"
 
 #### <a name="issue"></a>問題
 
-節點會註冊為 Azure 自動化，然後作業系統電腦名稱稱就會變更。 節點中的報表會繼續以原始名稱出現。
+系統會向 Azure 自動化註冊節點，然後再變更作業系統電腦名稱稱。 節點中的報表會繼續以原始名稱出現。
 
 #### <a name="cause"></a>原因
 
@@ -33,13 +33,13 @@ ms.locfileid: "81679224"
 
 #### <a name="resolution"></a>解決方案
 
-從 Azure 自動化狀態設定取消註冊節點，然後再次登錄。 在該時間之前發行至服務的報表將無法再使用。
+從 Azure 自動化狀態設定取消註冊節點，然後重新註冊。 在該時間之前發行至服務的報表將無法再使用。
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>案例：不支援透過 HTTPs proxy 重新簽署憑證
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>案例：不支援透過 HTTPS proxy 重新簽署憑證
 
 #### <a name="issue"></a>問題
 
-透過會終止 HTTPS 流量的 proxy 解決方案進行連線，然後使用新的憑證重新加密流量時，服務不會允許連線。
+當您透過會終止 HTTPS 流量的 proxy 解決方案進行連線，然後使用新的憑證重新加密流量時，服務不會允許連線。
 
 #### <a name="cause"></a>原因
 
@@ -51,7 +51,7 @@ Azure 自動化不支援重新簽署用來加密流量的憑證。
 
 ## <a name="general-errors"></a>一般錯誤
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>案例：上架失敗並出現訊息-無法啟用解決方案
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>案例：上架失敗並出現「無法啟用解決方案」訊息
 
 #### <a name="issue"></a>問題
 
@@ -71,9 +71,9 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解決方案
 
-請確定您有正確的[許可權，才能將電腦上架](../automation-role-based-access-control.md#onboarding-permissions)，然後再次嘗試讓解決方案上線。 如果您收到錯誤`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，請確定您有`Microsoft.OperationalInsights/workspaces/read`權能夠找出 VM 是否已上架至工作區。
+請確定您擁有讓[機器上線所需](../automation-role-based-access-control.md#onboarding-permissions)的正確許可權，然後再次嘗試將解決方案上架。 如果您收到錯誤訊息`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，請確定您有`Microsoft.OperationalInsights/workspaces/read`權能夠找出 VM 是否已上架至工作區。
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>案例：上架失敗並出現下列訊息：無法設定自動化帳戶以進行診斷記錄
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>案例：上架失敗並出現「無法設定自動化帳戶以進行診斷記錄」訊息
 
 #### <a name="issue"></a>問題
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-如果定價層不符合訂用帳戶的計費模型，可能會導致此錯誤。 請參閱[Azure 監視器中的監視使用量和估計成本](https://aka.ms/PricingTierWarning)。
+如果定價層不符合訂用帳戶的計費模型，可能會導致此錯誤。 如需詳細資訊，請參閱[Azure 監視器中的監視使用量和估計成本](https://aka.ms/PricingTierWarning)。
 
 #### <a name="resolution"></a>解決方案
 
@@ -95,7 +95,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="issue"></a>問題
 
-這個錯誤碼表示用來作為方案目標的已儲存搜尋電腦群組查詢格式不正確。 
+這個錯誤碼表示用來作為方案目標的已儲存搜尋電腦群組查詢，格式不正確。 
 
 #### <a name="cause"></a>原因
 
@@ -103,7 +103,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="resolution"></a>解決方案
 
-您可以刪除方案的查詢，然後再次將解決方案上架，這會重新建立查詢。 查詢可以在您的工作區中的 [**已儲存的搜尋**] 下找到。 查詢的名稱是**MicrosoftDefaultComputerGroup**，而查詢的類別是相關聯解決方案的名稱。 如果啟用多個解決方案， **MicrosoftDefaultComputerGroup**查詢會在 [**已儲存的搜尋**] 下顯示多次。
+您可以刪除方案的查詢，然後重新上架方案，這會重新建立查詢。 您可以在工作區的 [**已儲存的搜尋**] 下找到此查詢。 查詢的名稱是**MicrosoftDefaultComputerGroup**，而查詢的類別是相關聯解決方案的名稱。 如果啟用多個解決方案， **MicrosoftDefaultComputerGroup**查詢會在 [**已儲存的搜尋**] 下顯示多次。
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>案例：PolicyViolation
 
@@ -117,20 +117,20 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="resolution"></a>解決方案
 
-為了成功部署解決方案，您必須考慮改變指定的原則。 因為有許多不同類型的原則可以定義，所以所需的變更取決於違反的原則。 例如，如果在資源群組上定義原則，但拒絕變更某些包含資源內容的許可權，您可以選擇下列其中一個修正：
+若要成功部署解決方案，您必須考慮改變指定的原則。 因為有許多不同類型的原則可以定義，所以所需的變更取決於違反的原則。 例如，如果在資源群組上定義原則，但拒絕變更某些包含資源內容的許可權，您可以選擇下列其中一個修正：
 
 * 完全移除原則。
 * 嘗試將解決方案上架到不同的資源群組。
-* 將原則的目標重新設定為特定資源，例如自動化帳戶。
+* 將原則的目標重定為特定資源，例如自動化帳戶。
 * 修改原則已設定為拒絕的資源集合。
 
-檢查 Azure 入口網站右上角的通知，或流覽至包含您自動化帳戶的資源群組，然後選取 [**設定**] 底下的 [**部署**] 以查看失敗的部署。 若要深入瞭解 Azure 原則，請參閱[Azure 原則的總覽](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+檢查 Azure 入口網站右上角的通知，或移至包含您自動化帳戶的資源群組，然後選取 [**設定**] 底下的 [**部署**] 以查看失敗的部署。 若要深入瞭解 Azure 原則，請參閱[Azure 原則的總覽](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>案例：嘗試取消連結工作區的錯誤
 
 #### <a name="issue"></a>問題
 
-當您嘗試取消連結工作區時，收到下列錯誤：
+當您嘗試取消連結工作區時，收到下列錯誤訊息：
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -142,16 +142,16 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 ### <a name="resolution"></a>解決方案
 
-如果您使用下列解決方案，請從您的工作區移除：
+如果您要使用下列解決方案，請從工作區中移除：
 
 * 更新管理
 * 變更追蹤與詳細目錄
 * 於下班時間開始/停止 VM
 
-移除解決方案後，您就可以取消連結您的工作區。 請務必從您的工作區和您的自動化帳戶清除這些解決方案中的任何現有成品 
+移除解決方案之後，您可以取消連結您的工作區。 請務必從您的工作區和您的自動化帳戶清除這些解決方案中的任何現有成品：
 
-* 針對更新管理，請從您的自動化帳戶移除更新部署（排程）。
-* 若要在離峰時間啟動/停止 vm，請在 [**設定** > ] [**鎖定**] 底下的自動化帳戶中移除解決方案元件的任何鎖定。 請參閱[移除在離峰期間啟動/停止 vm 解決方案](../automation-solution-vm-management.md#remove-the-solution)。
+* 針對更新管理，請從您的自動化帳戶移除**更新部署（排程）** 。
+* 若要在離峰時間啟動/停止 vm，請在 [**設定** > ] [**鎖定**] 底下的自動化帳戶中移除解決方案元件的任何鎖定。 如需詳細資訊，請參閱[在離峰期間移除啟動/停止 vm 解決方案](../automation-solution-vm-management.md#remove-the-solution)。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>適用于 Windows 擴充功能失敗的 Log Analytics
 
@@ -187,11 +187,11 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 #### <a name="resolution"></a>解決方案
 
-確定您已開啟適當的連接埠和位址進行通訊。 如需連接埠和位址清單，請參閱[規劃您的網路](../automation-hybrid-runbook-worker.md#network-planning)。
+確定您已開啟適當的連接埠和位址進行通訊。 如需埠和位址的清單，請參閱[規劃您的網路](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>案例：安裝因暫時性環境問題而失敗
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>案例：安裝因暫時性環境問題而失敗
 
-因為有其他安裝或動作封鎖安裝，所以在部署期間安裝適用于 Windows 的 Log Analytics 擴充功能失敗
+因為有其他安裝或動作封鎖安裝，所以在部署期間安裝適用于 Windows 的 Log Analytics 擴充功能失敗。
 
 #### <a name="issue"></a>問題
 
@@ -242,8 +242,8 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到上述問題或無法解決問題，請嘗試下列其中一個通道以取得其他支援：
+如果您在這裡沒有看到您的問題，或無法解決您的問題，請嘗試下列其中一個通道以取得其他支援：
 
 * 透過[Azure 論壇](https://azure.microsoft.com/support/forums/)取得 azure 專家的解答。
-* 與[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帳戶交流，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援和專家。
+* 與[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帳戶聯繫，以改善客戶體驗。 Azure 支援將 Azure 社區連接到解答、支援及專家。
 * 提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。

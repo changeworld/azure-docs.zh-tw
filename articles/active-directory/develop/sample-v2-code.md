@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 713fa09319f1b95fe2bcc0d15c973a2096a250ec
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535973"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801142"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平臺程式碼範例（v2.0 端點）
 
@@ -42,9 +42,11 @@ ms.locfileid: "81535973"
 | 平台 | 描述 | 連結 |
 | -------- | --------------------- | -------- |
 | ![此圖顯示 javascript 標誌](media/sample-v2-code/logo_js.png) [javascript （msal .js）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 呼叫 Microsoft Graph |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) (英文) |
+| ![此圖顯示 javascript 標誌](media/sample-v2-code/logo_js.png) [javascript （msal .js）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 使用驗證碼流程呼叫 Microsoft Graph，w/PKCE |[javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![此圖顯示 javascript 標誌](media/sample-v2-code/logo_js.png) [javascript （msal .js）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 呼叫 B2C |[b2c-javascript-msal-active-directory-javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![此圖顯示 javascript 標誌](media/sample-v2-code/logo_js.png) [javascript （msal .js）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 呼叫自己的 Web API |[javascript-active-directory-javascript-singlepageapp-dotnet-webapi-v2-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
+| ![此圖顯示角度標誌](media/sample-v2-code/logo_angular.png) [JavaScript （MSAL 角度）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| 呼叫自己的 Web API | [ms-身分識別-javascript-角-spa-aspnetcore-webapi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![此圖顯示角度標誌](media/sample-v2-code/logo_angular.png) [JavaScript （MSAL 角度）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| 呼叫 Microsoft Graph  | [active directory-javascript-active-directory-javascript-singlepageapp-dotnet-webapi-v2-角度](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![此圖顯示回應標誌](media/sample-v2-code/logo_react.png) [JavaScript （msal）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| 呼叫自己的 Web API，再呼叫 Microsoft Graph  | [ms-identity-javascript-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![此圖顯示角度標誌](media/sample-v2-code/logo_angular.png) [JavaScript （MSAL 角度）](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | 呼叫 B2C |[active directory-b2c-javascript-角-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 
 ## <a name="web-applications"></a>Web 應用程式
@@ -53,7 +55,7 @@ ms.locfileid: "81535973"
 
 | 平台 | 僅登入使用者 | 登入使用者與呼叫 Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2。2 | [ASP.NET Core WebApp 登入使用者教學課程](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core web 應用程式](https://aka.ms/aspnetcore-webapp-call-msgraph)中的相同範例會呼叫 Microsoft Graph 階段 |
+| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp 登入使用者教學課程](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core web 應用程式](https://aka.ms/aspnetcore-webapp-call-msgraph)中的相同範例會呼叫 Microsoft Graph 階段 |
 | ![此圖顯示 ASP.NET 標誌](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入門](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2) (英文)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) (英文) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![此圖顯示 JAVA 標誌](media/sample-v2-code/logo_java.png)  |                   | [ms-身分識別-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
@@ -63,7 +65,7 @@ ms.locfileid: "81535973"
 
 下列範例顯示存取 Microsoft Graph API 的公用用戶端應用程式（桌面或行動應用程式），或您自己 Web API 的使用者名稱。 所有這些用戶端應用程式都使用 Microsoft 驗證程式庫（MSAL）。
 
-| 用戶端應用程式 | 平台 | 流程/授與 | 呼叫 Microsoft Graph | 呼叫 ASP.NET Core 2.0 Web API |
+| 用戶端應用程式 | 平台 | 流程/授與 | 呼叫 Microsoft Graph | 呼叫 ASP.NET Core Web API |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
 | 桌上型 (WPF)      | ![此圖顯示 .NET/c # 標誌](media/sample-v2-code/logo_NET.png) | [互動式](msal-authentication-flows.md#interactive)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) (英文) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) (英文) |
 | 桌上型 (主控台)   | ![此圖顯示 .NET/c # （桌面）標誌](media/sample-v2-code/logo_NET.png) | [整合式 Windows 驗證](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
@@ -105,7 +107,7 @@ ms.locfileid: "81535973"
 
 | 平台 | 範例 |
 | -------- | ------------------- |
-| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2。2 | Dotnet 的 ASP.NET Core Web API （服務） [-原生-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | Dotnet 的 ASP.NET Core Web API （服務） [-原生-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![此圖顯示 ASP.NET 標誌](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [Ms-identity-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof)的 Web API （服務） |
 | ![此圖顯示 JAVA 標誌](media/sample-v2-code/logo_java.png) | Ms-身分識別的 Web API （服務）- [java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi) |
 | ![此圖顯示 node.js 標誌](media/sample-v2-code/logo_nodejs.png) | Active directory 的 Web API （服務） [-javascript-nodejs-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) |
@@ -117,7 +119,7 @@ ms.locfileid: "81535973"
 
 | 平台 | 範例 |
 | -------- | ------------------- |
-| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2。2 | ASP.NET Core Web API （服務） dotnet 的 Azure 函[式-原生-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core Web API （服務） dotnet 的 Azure 函[式-原生-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![此圖顯示 node.js 標誌](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS 和 passport 的 Web API （服務） [-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)的 Web API （服務） |
 | ![此圖顯示 node.js 標誌](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS 和 passport 的 Web API （服務） [-使用代表的 azure ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |

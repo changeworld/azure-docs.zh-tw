@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 82397e49e473b8660dfada54a0e05cafe0da4120
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 65cc378ab5b6fd7d2ed724f56a68bdf989ced48c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76770674"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611716"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure Cosmos DB 資料表 API 和 Azure 表格儲存體進行開發
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 資料表 API 和 Azure 表格儲存體共用同一個資料表�
 * [Node.js SDK](table-sdk-nodejs.md)：此 Azure 儲存體 SDK 能夠使用資料表 API 連線至 Azure Cosmos DB 帳戶。
 
 
-如需使用資料表 API 的其他資訊，請參閱[常見問題集：使用資料表 API 開發](faq.md#table)一文。
+如需使用資料表 API 的其他資訊，請參閱[常見問題集：使用資料表 API 開發](table-api-faq.md)一文。
 
 ## <a name="developing-with-azure-table-storage"></a>使用 Azure 表格儲存體進行開發
 

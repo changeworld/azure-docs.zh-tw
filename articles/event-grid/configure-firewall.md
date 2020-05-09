@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0db6c2c346a6eb6ef016340fcfc2974c85958e6c
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100986"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858105"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
 根據預設，只要要求隨附有效的驗證和授權，就可以從網際網路存取主題和網域。 使用 IP 防火牆，您可以將它進一步限制為[CIDR （無類別網域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 ipv4 位址或 ipv4 位址範圍。 源自任何其他 IP 位址的發行者將會遭到拒絕，並會收到403（禁止）回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱[事件方格的網路安全性](network-security.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "82100986"
 本節說明如何使用 Azure CLI 命令來建立具有輸入 IP 規則的主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立**網域**的輸入 IP 規則。 
 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
@@ -166,7 +166,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>使用 PowerShell
 本節說明如何使用 Azure PowerShell 命令來建立具有輸入 IP 防火牆規則的 Azure 事件方格主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立**網域**的輸入 IP 規則。 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 依照[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)中的指示，以建立 Azure Active Directory 應用程式，並記下下列值：
 
 - 目錄 (租用戶) 識別碼
@@ -258,7 +258,7 @@ Invoke-RestMethod -Method 'Get' `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 
-# prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
+# prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature is available in both basic and premium tiers.
 $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules

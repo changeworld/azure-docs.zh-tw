@@ -1,10 +1,10 @@
 ---
 title: 網路存取控制
-description: 概述 Azure SQL Database 和資料倉儲來管理存取權，以及設定單一或集區資料庫的網路存取控制。
+description: 概述 Azure SQL Database 和 Azure Synapse 分析的網路存取控制來管理存取權，以及設定單一或集區資料庫。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414404"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629570"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database 和資料倉儲網路存取控制
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database 和 Azure Synapse 分析網路存取控制
 
 > [!NOTE]
-> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
+> 本文適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse 分析資料庫。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 分析時，會使用 SQL Database。
 
 > [!IMPORTANT]
 > 本文「不」** 適用於 **Azure SQL Database 受控執行個體**。 如需網路設定的詳細資訊，請參閱[連接到受控執行個體](sql-database-managed-instance-connect-app.md)。
@@ -56,7 +56,7 @@ ms.locfileid: "81414404"
 
 當 azure SQL Server**上**的設定為時，允許從 Azure 界限內的所有資源進行通訊，這不一定屬於您的訂用帳戶。
 
-在許多情況下，[**開啟**] 設定比大多數客戶所需的更寬鬆。 他們可能會想要將此設定設為 [**關閉**]，並將其取代為更嚴格的 IP 防火牆規則或虛擬網路防火牆規則。 這麼做會影響在 Azure 中不屬於 VNet 的 Vm 上執行的下列功能，因此會透過 Azure IP 位址連接到 Sql Database。
+在許多情況下，[**開啟**] 設定比大多數客戶所需的更寬鬆。 他們可能會想要將此設定設為 [**關閉**]，並將其取代為更嚴格的 IP 防火牆規則或虛擬網路防火牆規則。 這麼做會影響在 Azure 中不屬於 VNet 的 Vm 上執行的下列功能，因此會透過 Azure IP 位址連接到 SQL Database。
 
 ### <a name="import-export-service"></a>匯入匯出服務
 [**允許存取 Azure 服務**] 設為 [**關閉**] 時，[匯入匯出服務] 無法運作。 不過，您可以[從 AZURE VM 手動執行 sqlpackage，或](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)使用 DACFx API 直接在程式碼中執行匯出，以解決此問題。
@@ -65,7 +65,7 @@ ms.locfileid: "81414404"
 若要使用資料同步功能搭配 **[允許存取 Azure 服務**] 設定為 [**關閉**]，您必須建立個別的防火牆規則專案，以便從裝載**中樞**資料庫之區域的**Sql 服務**標籤[新增 IP 位址](sql-database-server-level-firewall-rule.md)。
 將這些伺服器層級防火牆規則新增至裝載**中樞**和**成員**資料庫的邏輯伺服器（可能位於不同的區域）
 
-使用下列 PowerShell 腳本來產生對應至「美國西部」區域之 Sql 服務標籤的 IP 位址
+使用下列 PowerShell 腳本來產生對應至「美國西部」區域之 SQL 服務標籤的 IP 位址
 ```powershell
 PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
@@ -81,7 +81,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> AzNetworkServiceTag 會傳回 Sql 服務標記的全域範圍，但不包括指定 Location 參數。 請務必將它篩選為裝載您的同步處理群組所使用之中樞資料庫的區域
+> AzNetworkServiceTag 會傳回 SQL 服務標記的全域範圍，但不包括指定 Location 參數。 請務必將它篩選為裝載您的同步處理群組所使用之中樞資料庫的區域
 
 請注意，PowerShell 腳本的輸出是無類別網域間路由（CIDR）標記法，而且必須使用 Get-IPrangeStartEnd 將這項轉換成開始和結束 IP 位址的格式，如下所示[。](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9)
 ```powershell

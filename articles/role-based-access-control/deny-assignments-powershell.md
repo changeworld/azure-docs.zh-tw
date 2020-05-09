@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 列出 Azure 資源的拒絕指派
-description: 瞭解如何使用 Azure PowerShell，來列出已拒絕存取特定範圍的特定 Azure 資源動作的使用者、群組、服務主體和受控識別。
+title: 使用 Azure PowerShell 列出 Azure 拒絕指派-Azure RBAC
+description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制（Azure RBAC），列出已被拒絕存取特定範圍的特定 Azure 資源動作的使用者、群組、服務主體和受控識別。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,25 +13,25 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd852d19b284f97995855fe06c97ea0ea69be293
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137387"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733957"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 資源的拒絕指派
+# <a name="list-azure-deny-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 拒絕指派
 
-[拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 Azure PowerShell 列出拒絕指派。
+[Azure 拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 Azure PowerShell 列出拒絕指派。
 
 > [!NOTE]
-> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[拒絕指派](deny-assignments.md)。
+> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要取得拒絕指派的相關資訊，您必須具有：
 
-- `Microsoft.Authorization/denyAssignments/read`許可權，包含在[Azure 資源的大部分內建角色](built-in-roles.md)中
+- `Microsoft.Authorization/denyAssignments/read`許可權，包含在大多數的[Azure 內建角色](built-in-roles.md)中
 - Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
 
 ## <a name="list-deny-assignments"></a>列出拒絕指派
@@ -125,6 +125,6 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 
 ## <a name="next-steps"></a>後續步驟
 
-- [了解 Azure 資源的拒絕指派](deny-assignments.md)
-- [使用 Azure 入口網站列出 Azure 資源的拒絕指派](deny-assignments-portal.md)
-- [使用 REST API 列出 Azure 資源的拒絕指派](deny-assignments-rest.md)
+- [瞭解 Azure 拒絕指派](deny-assignments.md)
+- [使用 Azure 入口網站列出 Azure 拒絕指派](deny-assignments-portal.md)
+- [使用 REST API 列出 Azure 拒絕指派](deny-assignments-rest.md)

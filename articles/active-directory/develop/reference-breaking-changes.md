@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535956"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871533"
 ---
 # <a name="whats-new-for-authentication"></a>驗證有什麼新功能？
 
@@ -37,13 +37,31 @@ ms.locfileid: "81535956"
 
 未排定在這個時候推出任何變更。  如需或即將進入生產階段的變更，請參閱下方。
 
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Government 端點正在變更
+
+**生效日期**：5月5日（完成2020年6月） 
+
+**受影響的端點**：全部
+
+**受影響的通訊協定**：所有流程
+
+自2018年6月1日起，Azure Government 的官方 Azure Active Directory （AAD） `https://login-us.microsoftonline.com`授權`https://login.microsoftonline.us`單位已從變更為。 這種變更也適用于 Microsoft 365 GCC High 和 DoD，其 Azure Government AAD 也是服務。 如果您在美國政府租使用者內擁有應用程式，您必須更新應用程式，以便在`.us`端點上將使用者登入。  
+
+自5月5日起，Azure AD 將開始強制執行端點變更，封鎖政府使用者使用公用端點（`microsoftonline.com`）登入在美國政府租使用者中託管的應用程式。  受影響的應用程式會開始`AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`看到錯誤。 此錯誤表示應用程式嘗試在公用雲端端點上登入美國政府使用者。 如果您的應用程式位於公用雲端租使用者中，並打算支援美國政府使用者，您將需要[更新您的應用程式，以明確地支援這些](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)專案。 這可能需要在美國政府雲端中建立新的應用程式註冊。 
+
+根據美國政府雲端使用者登入應用程式的頻率，使用逐步推出來強制執行這項變更。不常看到強制執行，而美國政府使用者經常使用的應用程式，將會先套用強制執行。 我們預計在2020年6月，所有應用程式都必須完成強制。 
+
+如需詳細資訊，請參閱[此遷移的 Azure Government blog 文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
+
 ## <a name="march-2020"></a>2020 年 3 月
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>使用者密碼將限制為256個字元。
 
 **生效日期**：2020年3月13日
 
-**受影響的端點**：v1.0 和 v2.0
+**受影響的端點**：全部
 
 **受影響的通訊協定**：所有使用者流程。
 

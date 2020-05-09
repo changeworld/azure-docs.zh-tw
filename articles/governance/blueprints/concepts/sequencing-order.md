@@ -1,14 +1,14 @@
 ---
 title: 了解部署順序
 description: 瞭解藍圖指派期間部署藍圖構件的預設順序，以及如何自訂部署順序。
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677570"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864516"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 藍圖中的部署順序
 
@@ -47,8 +47,7 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 排序可透過在 JSON 中定義 `dependsOn` 屬性來完成。 藍圖定義、資源群組和成品物件都支援此屬性。 `dependsOn` 為成品名稱字串陣列，代表在其建立前必須建立的特定成品。
 
 > [!NOTE]
-> 建立藍圖物件時，每個成品資源都會從檔案名（如果使用[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)）取得其名稱，如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate)，則從 URL 端點取得。
-> 成品中的_資源_群組參考必須符合藍圖定義中定義的專案。
+> 建立藍圖物件時，每個成品資源都會從檔案名（如果使用[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)）取得其名稱，如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate)，則從 URL 端點取得。 成品中的_資源_群組參考必須符合藍圖定義中定義的專案。
 
 ### <a name="example---ordered-resource-group"></a>範例-已排序的資源群組
 
@@ -137,7 +136,8 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 
 在建立過程期間，會使用拓撲排序來建立藍圖成品的相依性關係圖。 此檢查可確保支援資源群組與成品之間的每個相依性層級。
 
-如果成品相依性宣告為不會改變預設順序，則不會進行任何變更。 有個範例是相依於訂用帳戶層級原則的資源群組。 另一個範例則是相依於資源群組 ’standard-rg’ 子角色指派的資源群組 ’standard-rg’ 子原則指派。 在這兩個案例中，`dependsOn` 皆不會改變預設排序順序，因此不會產生任何變更。
+如果成品相依性宣告為不會改變預設順序，則不會進行任何變更。
+有個範例是相依於訂用帳戶層級原則的資源群組。 另一個範例則是相依於資源群組 ’standard-rg’ 子角色指派的資源群組 ’standard-rg’ 子原則指派。 在這兩個案例中，`dependsOn` 皆不會改變預設排序順序，因此不會產生任何變更。
 
 ## <a name="next-steps"></a>後續步驟
 

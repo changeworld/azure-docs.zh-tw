@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255612"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792151"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -281,11 +281,11 @@ Azure NetApp volume 的輸送量是磁片區大小和服務層級的功能，如
 - Ultra 儲存層-128 MiB/秒  
 
 > [!IMPORTANT]
-> 與您在單一 NFS 磁片區上部署的容量（輸送量）不同之處在于，在虛擬機器中，取用者會以 1.2-1.4 GB/秒的頻寬來高原。 這必須與及供應專案的基礎結構和 NFS 周圍相關的 Linux 會話限制有關。 [適用于 Azure NetApp Files 的效能基準測試結果](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks)一文中所述的效能和輸送量數位是針對具有多個用戶端 vm 的一個共用 NFS 磁片區進行執行，因此有多個會話。 這種情況與我們在 SAP 中測量的案例不同。 我們會在其中測量單一 VM 與 NFS 磁片區的輸送量。 裝載于及上。
+> 與您在單一 NFS 磁片區上部署的容量（輸送量）不同之處在于，在虛擬機器中，取用者會以 1.2-1.4 GB/秒的頻寬來高原。 這必須與及供應專案的基礎結構和 NFS 周圍相關的 Linux 會話限制有關。 [適用于 Azure NetApp Files 的效能基準測試結果](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux)一文中所述的效能和輸送量數位是針對具有多個用戶端 vm 的一個共用 NFS 磁片區進行執行，因此有多個會話。 這種情況與我們在 SAP 中測量的案例不同。 我們會在其中測量單一 VM 與 NFS 磁片區的輸送量。 裝載于及上。
 
 為了符合資料和記錄的 SAP 最低輸送量需求，以及根據的指導方針`/hana/shared`，建議的大小如下所示：
 
-| 磁碟區 | Size<br /> 進階儲存體層 | Size<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
+| 磁碟區 | 大小<br /> 進階儲存體層 | 大小<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
 | --- | --- | --- |
 | /hana/log | 4 TiB | 2 TiB | 4.1 版 |
 | /hana/data | 6.3 TiB | 3.2 TiB | 4.1 版 |
@@ -304,6 +304,6 @@ Azure NetApp volume 的輸送量是磁片區大小和服務層級的功能，如
 
 
 ## <a name="next-steps"></a>後續步驟
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [適用于 Azure 虛擬機器的 SAP Hana 高可用性指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)。

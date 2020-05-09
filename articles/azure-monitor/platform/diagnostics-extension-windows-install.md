@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd18fd484ac456f0c38cd6d9b73a2395a08ad5d0
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672254"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883102"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能（WAD）
 Azure 診斷擴充功能是 Azure 監視器中的代理程式，會收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能，以及如何將資料儲存在和 Azure 儲存體帳戶中的描述的詳細資訊。
@@ -124,28 +124,28 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
     "PublicConfig": {
         "WadCfg": {
             "DiagnosticMonitorConfiguration": {
-                "overallQuotaInMB": 10000
-            },
-            "DiagnosticInfrastructureLogs": {
-                "scheduledTransferLogLevelFilter": "Error"
-            },
-            "PerformanceCounters": {
-                "scheduledTransferPeriod": "PT1M",
-                "PerformanceCounterConfiguration": [
-                    {
-                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                        "sampleRate": "PT3M",
-                        "unit": "percent"
-                    }
-                ]
-            },
-            "WindowsEventLog": {
-                "scheduledTransferPeriod": "PT1M",
-                    "DataSource": [
-                    {
-                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
-                    }
-                ]
+                "overallQuotaInMB": 10000,
+                "DiagnosticInfrastructureLogs": {
+                    "scheduledTransferLogLevelFilter": "Error"
+                },
+                "PerformanceCounters": {
+                    "scheduledTransferPeriod": "PT1M",
+                    "PerformanceCounterConfiguration": [
+                        {
+                            "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                            "sampleRate": "PT3M",
+                            "unit": "percent"
+                        }
+                    ]
+                },
+                "WindowsEventLog": {
+                    "scheduledTransferPeriod": "PT1M",
+                        "DataSource": [
+                        {
+                            "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                        }
+                    ]
+                }
             }
         },
         "StorageAccount": "mystorageaccount",

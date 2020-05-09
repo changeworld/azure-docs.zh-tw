@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991134"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853952"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。  (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -43,7 +43,7 @@ ms.locfileid: "80991134"
 > 1. 選取 [新增註冊]  。
 > 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
 >      - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `ASPNET-Quickstart`。
->      - 在 [重新導向 URL]  中新增 `http://localhost:44368/`，然後按一下 [註冊]  。
+>      - 在 [重新導向 URL]  中新增 `https://localhost:44368/`，然後按一下 [註冊]  。
 >      - 從左側流覽窗格的 [管理] 區段下，選取 [驗證] 
 >          - 在 [隱含授與]  子區段底下，選取 [識別碼權杖]  。
 >          - 然後選取 [儲存]  。

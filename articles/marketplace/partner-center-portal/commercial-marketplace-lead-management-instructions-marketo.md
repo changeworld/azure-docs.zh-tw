@@ -1,22 +1,22 @@
 ---
-title: 在 Marketo 中設定潛在客戶管理 |Azure Marketplace
-description: 為 Azure Marketplace 客戶設定適用于 Marketo 的潛在客戶管理。
+title: Marketo 中的潛在客戶管理-Microsoft 商業 marketplace
+description: 瞭解如何使用 Marketo CRM 系統來管理來自 Microsoft AppSource 和 Azure Marketplace 的潛在客戶。
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133644"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789873"
 ---
-# <a name="configure-lead-management-in-marketo"></a>在 Marketo 中設定潛在客戶管理
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>使用 Marketo 管理商業 marketplace 潛在客戶
 
-本文說明如何設定您的 Marketo CRM 系統，以處理來自您的商業 marketplace 供應專案的銷售潛在客戶。
+本文說明如何設定您的 Marketo CRM 系統，以在 Microsoft AppSource 和 Azure Marketplace 中處理您供應專案的銷售潛在客戶。
 
 ## <a name="set-up-your-marketo-crm-system"></a>設定您的 Marketo CRM 系統
 
@@ -67,9 +67,11 @@ ms.locfileid: "82133644"
 
 當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟。 
 
-1. 移至供應專案的**供應專案設定**頁面。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
 
-1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。 
+1. 選取您的供應專案，然後移至 [**供應專案設定**] 索引標籤。
+
+1. 在 [**潛在客戶管理**] 區段下，選取 **[連線]**。 
 
     ![潛在客戶管理區段 [連線] 按鈕](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ ms.locfileid: "82133644"
 
 1. 選取 [確定]  。
 
-   若要確定您已成功連線到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
+   若要確定您已成功連線到潛在客戶目的地，請選取 [**驗證**]。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
 
    ![[連接詳細資料] 快顯視窗](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

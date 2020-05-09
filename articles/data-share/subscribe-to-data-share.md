@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4dff48f909cd3febbbb7e92dcf96070020b8f57c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77083099"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82145141"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -72,9 +72,11 @@ ms.locfileid: "77083099"
 
 ## <a name="open-invitation"></a>開啟邀請
 
-1. 檢查收件匣中是否有來自資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為**來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 記下共用名稱，以確保您可以在有多個邀請的情況下接受正確的共用。 
+1. 您可以從電子郵件或直接從 Azure 入口網站開啟邀請。 
 
-1. 選取 [檢視邀請]  以查看您在 Azure 中的邀請。 這會帶您前往 [已接收的共用] 檢視。
+   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為**來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
+
+   若要直接從 Azure 入口網站開啟邀請，請在 Azure 入口網站中搜尋 **Data Share 邀請**。 這會帶您前往 Data Share 邀請的清單。
 
    ![邀請](./media/invitations.png "邀請清單") 
 

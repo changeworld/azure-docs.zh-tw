@@ -1,17 +1,17 @@
 ---
-title: .NET SDK： Azure Data Lake Storage Gen1 上的檔案系統作業
+title: .NET SDK-Data Lake Storage Gen1 上的檔案系統作業-Azure
 description: 在 Data Lake Storage Gen1 上使用 Azure Data Lake Storage Gen1 .NET SDK 進行檔案系統作業，例如建立資料夾等。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638896"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690955"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK 在 Data Lake Storage Gen1 上進行檔案系統作業
 
@@ -198,7 +198,7 @@ client.DeleteRecursive("/Test");
 * [GitHub 上的基本範例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [GitHub 上的 Advanced 範例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [使用.NET SDK 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK 參考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
