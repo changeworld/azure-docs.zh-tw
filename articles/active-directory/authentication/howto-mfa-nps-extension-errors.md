@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653720"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611376"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息
 
@@ -66,9 +67,9 @@ ms.locfileid: "80653720"
 
 有時候，由於您使用者的驗證要求失敗，他們可能會收到來自 Multi-Factor Authentication 的訊息。 這不是產品組態中發生錯誤，而是說明為何驗證要求遭拒的內部警告。
 
-| 錯誤碼 | 錯誤訊息 | 建議的步驟 | 
+| 錯誤碼 | 錯誤訊息 | 建議的步驟 |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 輸入的代碼錯誤\OATH 代碼錯誤 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 | 
+| **OathCodeIncorrect** | 輸入的代碼錯誤\OATH 代碼錯誤 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 已達重試代碼次數的上限 | 使用者的驗證嘗試失敗太多次。 視您的設定而定，使用者現在可能需要透過系統管理員來解除封鎖。  |
 | **SMSAuthFailedWrongCodeEntered** | 輸入的代碼錯誤/文字訊息 OTP 不正確 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 |
 

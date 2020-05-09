@@ -27,10 +27,13 @@
   items:
     - name: Azure Cache for Redis 範例
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 安全性
@@ -63,7 +66,7 @@
           href: cache-migrate-to-redis.md
     - name: 自動化
       items:
-        - name: 使用 Azure Powershell 進行部署和管理
+        - name: 使用 Azure PowerShell 進行部署和管理
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: 使用 Azure CLI 進行部署和管理
           href: cli-samples.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis 用戶端
       href: 'https://redis.io/clients'
     - name: Redis 命令
@@ -145,7 +148,7 @@
       href: /learn/browse/?products=azure-redis-cache
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis 常見問題集
       href: cache-faq.md

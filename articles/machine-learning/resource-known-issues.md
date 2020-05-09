@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231963"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889386"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
 
@@ -39,7 +39,7 @@ ms.locfileid: "82231963"
 深入了解使用 Azure Machine Learning 時可能會遇到的[資源配額](how-to-manage-quotas.md)。
 
 ## <a name="installation-and-import"></a>安裝和匯入
-
+                           
 * **Pip 安裝：不保證相依性會與單行安裝一致**： 
 
    這是已知的 pip 限制，因為當您將安裝為單一行時，它沒有正常運作的相依性解析程式。 第一個唯一的相依性是它所查看的唯一相依性。 
@@ -56,7 +56,29 @@ ms.locfileid: "82231963"
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **說明安裝 azureml-定型-automl-用戶端時，未 guarateed 要安裝的套件：** 
+   
+   執行已啟用模型說明的遠端 automl 回合時，您會看到一則錯誤訊息，指出「請安裝 azureml-說明模型套件以進行模型說明」。 這是已知的問題，若要因應措施，請遵循下列其中一個步驟：
+  
+  1. 在本機安裝 azureml-說明模型。
+   ```
+      pip install azureml-explain-model
+   ```
+  2. 藉由在 automl 設定中傳遞 model_explainability = False，完全停用可解釋性功能。
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Panda 錯誤：通常會在 AutoML 實驗期間看到：**
    
    使用 pip 手動設定 environmnet 時，您會注意到屬性錯誤（特別是來自 pandas），因為安裝的套件版本不受支援。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
@@ -123,7 +145,7 @@ ms.locfileid: "82231963"
 
 * **Azure 入口網站**：如果您直接從 SDK 或入口網站的共用連結查看您的工作區，您將無法在此延伸模組中使用訂用帳戶資訊來查看一般的 **[總覽**] 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，請直接移至[Azure Machine Learning studio](https://ml.azure.com)並搜尋工作區名稱。
 
-## <a name="set-up-your-environment"></a>設定環境
+## <a name="set-up-your-environment"></a>設定您的環境
 
 * **建立 AmlCompute 時遇到問題**：在 GA 版本之前，從 Azure 入口網站建立其 Azure Machine Learning 工作區的使用者很罕見，可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區來立即解除封鎖。
 

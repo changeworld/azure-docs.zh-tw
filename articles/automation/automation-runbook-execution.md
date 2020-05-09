@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871685"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927916"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -46,7 +46,7 @@ Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 
 下表列出一些 runbook 執行工作，其中列出每個的建議執行環境。
 
-|Task|建議|備忘錄|
+|工作|建議|注意|
 |---|---|---|
 |與 Azure 資源整合|Azure 沙箱|在 Azure 中託管，驗證會比較簡單。 如果您在 Azure VM 上使用混合式 Runbook 背景工作角色，您可以[使用 Runbook 驗證搭配受控](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)識別。|
 |取得最佳效能來管理 Azure 資源|Azure 沙箱|腳本會在相同的環境中執行，但延遲較少。|
@@ -86,7 +86,7 @@ Azure 自動化利用[Azure 監視器](https://docs.microsoft.com/azure/azure-mo
 
 ### <a name="log-analytics-agent-for-windows"></a>適用於 Windows 的 Log Analytics 代理程式
 
-適用于[windows 的 Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor)適用于管理 windows vm 和實體電腦的 Azure 監視器。 這些機器可以在 Azure 中或非 Azure 環境中執行，例如本機資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。 
+適用于[windows 的 Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)適用于管理 windows vm 和實體電腦的 Azure 監視器。 這些機器可以在 Azure 中或非 Azure 環境中執行，例如本機資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。 
 
 >[!NOTE]
 >適用于 Windows 的 Log Analytics 代理程式先前稱為 Microsoft Monitoring Agent （MMA）。
@@ -109,7 +109,7 @@ Log Analytics 代理程式和**nxautomation**帳戶可用的記錄如下：
 
 Runbook 需要透過認證向 Azure 進行驗證的許可權。 請參閱[管理 Azure 自動化執行身分帳戶](manage-runas-account.md)。 
 
-## <a name="modules"></a>單元
+## <a name="modules"></a>模組
 
 Azure 自動化支援數個預設模組，包括一些 AzureRM 模組（AzureRM），以及包含數個內部 Cmdlet 的模組。 也支援可安裝的模組，包括 Az 模組（Az. Automation），目前正用於 AzureRM 模組的喜好設定。 如需 runbook 和 DSC 設定可用模組的詳細資訊，請參閱[管理 Azure 自動化中的模組](shared-resources/modules.md)。
 
