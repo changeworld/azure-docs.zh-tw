@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659487"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731698"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>將 Log Analytics 工作區移至不同的訂用帳戶或資源群組
 
@@ -29,16 +29,17 @@ ms.locfileid: "77659487"
 ```
 
 ## <a name="workspace-move-considerations"></a>工作區移動考慮
-已安裝在工作區中的受控解決方案將會隨著 Log Analytics 工作區移動作業一起移動。 連線的代理程式會保持連線，並在移動之後繼續將資料傳送至工作區。 由於移動作業需要從工作區連結至任何自動化帳戶，因此必須移除依賴該連結的解決方案。
+已安裝在工作區中的受控解決方案將會隨著 Log Analytics 工作區移動作業一起移動。 連線的代理程式會保持連線，並在移動之後繼續將資料傳送至工作區。 因為移動作業需要工作區中沒有連結的服務，所以必須移除依賴該連結的解決方案，以允許工作區移動。
 
 在您可以取消連結自動化帳戶之前，必須先移除的解決方案：
 
 - 更新管理
 - 變更追蹤
 - 於下班時間開始/停止 VM
+- Azure 資訊安全中心
 
 
-### <a name="delete-in-azure-portal"></a>在 Azure 入口網站中刪除
+### <a name="delete-solutions-in-azure-portal"></a>刪除 Azure 入口網站中的解決方案
 請使用下列程式，使用 Azure 入口網站移除解決方案：
 
 1. 針對已安裝任何解決方案的資源群組開啟功能表。
@@ -57,8 +58,8 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-### <a name="remove-alert-rules"></a>移除警示規則
-對於**啟動/停止 vm**解決方案，您也必須移除解決方案所建立的警示規則。 請在 Azure 入口網站中使用下列程式來移除這些規則。
+### <a name="remove-alert-rules-for-startstop-vms-solution"></a>移除啟動/停止 Vm 解決方案的警示規則
+若要移除**啟動/停止 vm**解決方案，您也必須移除解決方案所建立的警示規則。 請在 Azure 入口網站中使用下列程式來移除這些規則。
 
 1. 開啟 [**監視**] 功能表，然後選取 [**警示**]。
 2. 按一下 [**管理警示規則**]。
@@ -98,8 +99,6 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ``` PowerShell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
-
-
 
 > [!IMPORTANT]
 > 移動作業之後，應該重新設定已移除的解決方案和自動化帳戶連結，讓工作區回到先前的狀態。

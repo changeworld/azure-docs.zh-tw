@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294107"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983324"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -26,7 +26,7 @@ ms.locfileid: "80294107"
 
 下表摘要說明 Azure VM 的災害復原所使用的元件。
 
-**元件** | **Requirements**
+**元件** | **需求**
 --- | ---
 **來源區域中的 VM** | [支援的來源區域](azure-to-azure-support-matrix.md#region-support)中的一或多個 Azure VM。<br/><br/> VM 可執行任何[支援的作業系統](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **來源 VM 儲存體** | Azure VM 可以是受控的，或具有分散於不同儲存體帳戶間的非受控磁碟。<br/><br/>[深入了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支援的 Azure 儲存體。
@@ -55,15 +55,14 @@ ms.locfileid: "80294107"
 您可以依照下列方式管理目標資源：
 
 - 您可以在啟用複寫時修改目標設定。
-- 您可以在複寫已正常運作後修改目標設定。 例外狀況是可用性類型 (單一執行個體、設定組或區域)。 若要變更此設定，您必須停用複寫、修改設定，然後再重新啟用。
-
+- 您可以在複寫已正常運作後修改目標設定。 請注意，目的地區域 VM 的預設 SKU 與來源 VM （或與來源 VM SKU 相比的下一個最佳可用 SKU）的 SKU 相同。 類似于其他資源，例如目標資源群組、目標名稱等等，在複寫進行後也可以更新目的地區域 VM SKU。 無法更新的資源是可用性類型（單一實例、設定或區域）。 若要變更此設定，您必須停用複寫、修改設定，然後再重新啟用。 
 
 
 ## <a name="replication-policy"></a>複寫原則 
 
 當您啟用 Azure VM 複寫時，Site Recovery 依預設會以下表中摘要說明的預設設定建立新的複寫原則。
 
-**原則設定** | **詳細資料** | **預設值**
+**原則設定** | **詳細資料** | **預設**
 --- | --- | ---
 **復原點保留期** | 指定 Site Recovery 會保留復原點多久 | 24 小時
 **應用程式一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每四個小時

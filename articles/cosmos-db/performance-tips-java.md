@@ -1,28 +1,35 @@
 ---
-title: 適用於 Java 的 Azure Cosmos DB 效能提示
-description: 瞭解改善 Azure Cosmos 資料庫效能的用戶端設定選項
-author: SnehaGunda
+title: Azure Cosmos DB 同步處理 JAVA SDK v2 的效能秘訣
+description: 瞭解用戶端設定選項，以改善同步處理 JAVA SDK v2 的 Azure Cosmos 資料庫效能
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548786"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982508"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB 和 Java 的效能祕訣
+# <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB 同步處理 JAVA SDK v2 的效能秘訣
 
 > [!div class="op_single_selector"]
-> * [非同步 Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [JAVA SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [非同步 Java SDK v2](performance-tips-async-java.md)
+> * [同步處理 Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得延遲與輸送量保證的情況下順暢地調整。 使用 Azure Cosmos DB 時，您不須進行主要的架構變更，或是撰寫複雜的程式碼來調整您的資料庫。 相應增加和減少就像進行單一 API 呼叫一樣簡單。 若要深入了解，請參閱[如何佈建容器輸送量](how-to-provision-container-throughput.md)或[如何佈建資料庫輸送量](how-to-provision-database-throughput.md)。 不過，由於 Azure Cosmos DB 是透過網路呼叫存取，所以您可以在使用 [SQL Java SDK](documentdb-sdk-java.md) 時進行用戶端最佳化以達到最高效能。
+> [!IMPORTANT]  
+> 這*不*是最新的 JAVA SDK for Azure Cosmos DB！ 請考慮為您的專案使用 Azure Cosmos DB JAVA SDK v4。 若要升級，請遵循[遷移至 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[Reactor vs RxJAVA](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的指示。 
+> 
+> 這些效能秘訣僅適用于 Azure Cosmos DB 同步 JAVA SDK v2。 如需詳細資訊，請參閱 Azure Cosmos DB 同步 JAVA SDK v2[版本](sql-api-sdk-java.md)資訊和[Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)。
+>
+
+Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得延遲與輸送量保證的情況下順暢地調整。 使用 Azure Cosmos DB 時，您不須進行主要的架構變更，或是撰寫複雜的程式碼來調整您的資料庫。 相應增加和減少就像進行單一 API 呼叫一樣簡單。 若要深入了解，請參閱[如何佈建容器輸送量](how-to-provision-container-throughput.md)或[如何佈建資料庫輸送量](how-to-provision-database-throughput.md)。 不過，因為 Azure Cosmos DB 是透過網路呼叫存取，所以您可以進行用戶端優化，以在使用[Azure Cosmos DB 同步 JAVA SDK v2](documentdb-sdk-java.md)時達到尖峰效能。
 
 如果您詢問「如何改善我的資料庫效能？ 」，請考慮下列選項：
 
@@ -38,9 +45,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
       預設會設定所有 SDK 平台都支援的閘道模式。  如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道會是最佳的選擇，因為它會使用標準 HTTPS 連接埠與單一端點。 不過，對於效能的影響是每次讀取或寫入 Azure Cosmos DB 資料時，閘道模式都會涉及額外的網路躍點。 因此，DirectHttps 模式因為網路躍點較少，所以可提供較佳的效能。 
 
-      Java SDK 使用 HTTPS 作為傳輸通訊協定。 HTTPS 會使用 TLS 進行初始驗證和加密流量。 當使用 Java SDK 時，只需要開啟 HTTPS 連接埠 443。 
+      Azure Cosmos DB Sync JAVA SDK v2 會使用 HTTPS 做為傳輸通訊協定。 HTTPS 會使用 TLS 進行初始驗證和加密流量。 使用 Azure Cosmos DB 同步處理 JAVA SDK v2 時，只需要開啟 HTTPS 埠443。 
 
       ConnectionMode 設定於使用 ConnectionPolicy 參數建構 DocumentClient 執行個體期間。 
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-connectionpolicy"></a>同步 JAVA SDK V2 （Maven .com. azure：： azure-documentdb）
 
       ```Java
       public ConnectionPolicy getConnectionPolicy() {
@@ -74,11 +83,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
    <a id="max-connection"></a>
 3. **使用閘道模式時增加每部主機的 MaxPoolSize**
 
-    使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 發出，並受制於每個主機名稱或 IP 位址的預設連線限制。 您可能必須將 MaxPoolSize 設定成較高的值 (200-1000)，以便讓用戶端程式庫能夠利用多個同時對 Azure Cosmos DB 進行的連線。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的預設值為 100。 使用 [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可變更此值。
+    使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 發出，並受制於每個主機名稱或 IP 位址的預設連線限制。 您可能必須將 MaxPoolSize 設定成較高的值 (200-1000)，以便讓用戶端程式庫能夠利用多個同時對 Azure Cosmos DB 進行的連線。 在 Azure Cosmos DB 同步處理 JAVA SDK v2 中， [ConnectionPolicy. getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize)的預設值是100。 使用 [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可變更此值。
 
 4. **微調分割之集合的平行查詢**
 
-    Azure Cosmos DB SQL Java SDK 1.9.0 版和更新版本支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
+    Azure Cosmos DB Sync JAVA SDK version 1.9.0 和更新版本支援平行查詢，可讓您以平行方式查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
     (a) ***微調 setMaxDegreeOfParallelism\:*** 平行查詢的運作方式是以平行方式查詢多個分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，如果所有其他系統條件都維持不變，請使用[setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism)來設定能夠達到最高效能查詢的最大機會的資料分割數目。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。 
 
@@ -90,7 +99,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 5. **依 getRetryAfterInMilliseconds 間隔實作輪詢**
 
-    在進行效能測試期間，您應該增加負載，直到系統對小部分要求進行節流處理為止。 如果進行節流處理，用戶端應用程式應該在節流時降速，且持續時間達伺服器指定的重試間隔。 採用降速可確保您在重試之間花費最少的等待時間。 [Java SDK](documentdb-sdk-java.md) 1.8.0 版和更新版本包含重試原則支援。 如需詳細資訊，請參閱 [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds) \(英文\)。
+    在進行效能測試期間，您應該增加負載，直到系統對小部分要求進行節流處理為止。 如果進行節流處理，用戶端應用程式應該在節流時降速，且持續時間達伺服器指定的重試間隔。 採用降速可確保您在重試之間花費最少的等待時間。 重試原則支援包含在1.8.0 和更新版本的[Azure Cosmos DB Sync JAVA SDK](documentdb-sdk-java.md)中。 如需詳細資訊，請參閱 [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds) \(英文\)。
 
 6. **相應放大用戶端工作負載**
 
@@ -113,7 +122,10 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
  
 1. **從索引中排除未使用的路徑以加快寫入速度**
 
-    Azure Cosmos DB 的編制索引原則可讓您利用索引路徑（[setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths)和[setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)），指定要在索引編制中包含或排除的檔路徑。 在事先知道查詢模式的案例中，使用檢索路徑可改善寫入效能並降低索引儲存空間，因為檢索成本與檢索的唯一路徑數目直接相互關聯。  例如，以下程式碼示範如何將文件的整個區段 (也稱為 樹狀子目錄) 自索引編製作業中排除 (透過使用 "*" 萬用字元)。
+    Azure Cosmos DB 的編制索引原則可讓您利用索引路徑（[setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths)和[setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)），指定要在索引編制中包含或排除的檔路徑。 在事先知道查詢模式的案例中，使用檢索路徑可改善寫入效能並降低索引儲存空間，因為檢索成本與檢索的唯一路徑數目直接相互關聯。  例如，下列程式碼會示範如何使用 "*" 萬用字元，將檔的整個區段（子樹）從編制索引中排除。
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-indexing"></a>同步 JAVA SDK V2 （Maven .com. azure：： azure-documentdb）
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -139,6 +151,9 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     查詢的複雜性會影響針對作業所耗用的要求單位數量。 述詞數目、述詞性質、UDF 數目，以及來源資料集的大小，全都會影響查詢作業的成本。
 
     若要測量任何作業（建立、更新或刪除）的額外負荷，請檢查[x 毫秒要求-費用](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)標頭（或[ResourceResponse\<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse)或[\<FeedResponse T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse)中的對等 RequestCharge 屬性，以測量這些作業所耗用的要求單位數目。
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>同步 JAVA SDK V2 （Maven .com. azure：： azure-documentdb）
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801683"
+ms.locfileid: "82838479"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database 版本資訊
 
@@ -78,7 +78,7 @@ ms.locfileid: "82801683"
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
-|[代理程式在修改、停用或啟用現有作業時變得沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|5月2020|自動緩和| |
+|[代理程式在修改、停用或啟用現有作業時變得沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|自動緩和| |
 |[資源群組的許可權未套用至受控執行個體](#permissions-on-resource-group-not-applied-to-managed-instance)|2020年2月|有因應措施| |
 |[透過入口網站針對容錯移轉群組進行手動容錯移轉的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施| |
 |[SQL 代理程式角色需要非系統管理員（sysadmin）登入的明確執行許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施| |
@@ -93,12 +93,12 @@ ms.locfileid: "82801683"
 |[@querysp_send_db_mail 中不支援參數](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|無因應措施| |
 |[必須在異地容錯移轉之後重新設定異動複寫](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|無因應措施| |
 |[還原作業期間會使用暫存資料庫](#temporary-database-is-used-during-restore-operation)||有因應措施| |
-|[已重新建立 TEMPDB 結構和內容](#tempdb-structure-and-content-is-re-created)||無因應措施| |
-|[小型資料庫檔案造成儲存空間超出限制](#exceeding-storage-space-with-small-database-files)||有因應措施| |
-|[顯示的 GUID 值，而不是資料庫名稱](#guid-values-shown-instead-of-database-names)||有因應措施| |
+|[已重新建立 TEMPDB 結構和內容](#tempdb-structure-and-content-is-re-created)| |無因應措施| |
+|[小型資料庫檔案造成儲存空間超出限制](#exceeding-storage-space-with-small-database-files)| |有因應措施| |
+|[顯示的 GUID 值，而不是資料庫名稱](#guid-values-shown-instead-of-database-names) ||有因應措施| |
 |[錯誤記錄檔不會保存](#error-logs-arent-persisted)||無因應措施| |
-|[不支援相同實例內兩個資料庫的交易範圍](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||有因應措施|Mar 2020|
-|[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||有因應措施| |
+|[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |有因應措施| |
+|[不支援相同實例內兩個資料庫的交易範圍](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |已解決|Mar 2020|
 |從 Azure Blob 儲存體還原資料庫之後，未使用 DBCC CHECKDB 確認資料庫一致性。| |已解決|2019年11月|
 |如果源資料庫包含記憶體內部 OLTP 物件，則從業務關鍵層到一般用途層的時間點資料庫還原將不會成功。| |已解決|2019年10月|
 |使用安全連線的外部（非 Azure）郵件伺服器 Database Mail 功能| |已解決|2019年10月|

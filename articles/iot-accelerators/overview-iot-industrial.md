@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c5d70e5a8784e88d3f2906d500768735dced1ee0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73828135"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82189917"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什麼是產業 IoT (IIoT)
 
@@ -23,12 +23,12 @@ IIoT 是指產業物聯網。 IIoT 可透過在製造業中應用 IoT 來提升�
 
 利用連線的工廠解決方案加速器，加強您的作業產能與獲利率。 在雲端連線及監視您的產業設備與裝置 (包含已經在製造商工廠運作的機器)。 分析您的 IoT 資料取得見解，來協助您增加整個製造商工廠的效能。
 
-透過 OPC 對應項減少存取廠房機器的耗時程序，並將您的時間投注在建置 IIoT 解決方案上。 簡化憑證管理以及與 OPC 保存庫的產業資產整合，並確信資產連線受到保護。 這些微服務可在 [Azure 產業 IoT 元件](https://github.com/Azure/azure-iiot-opc-ua)之上提供 REST 型 API。 服務 API 可讓您控制 Edge 模組的功能。 
+透過 OPC 對應項減少存取廠房機器的耗時程序，並將您的時間投注在建置 IIoT 解決方案上。 簡化憑證管理以及與 OPC 保存庫的產業資產整合，並確信資產連線受到保護。 這些微服務可在 [Azure 產業 IoT 元件](https://github.com/Azure/Industrial-IoT)之上提供 REST 型 API。 服務 API 可讓您控制 Edge 模組的功能。 
 
 ![產業 IoT 概觀](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> 如需 Azure 產業 IoT 服務的詳細資訊，請參閱 GitHub [存放庫](https://github.com/Azure/azure-iiot-services)。
+> 如需 Azure 產業 IoT 服務的詳細資訊，請參閱 GitHub [存放庫](https://github.com/Azure/Industrial-IoT)和[文件](https://azure.github.io/Industrial-IoT/)。
 如果您不熟悉 Azure IoT Edge 模組的運作方式，請先閱讀下列文章：
 - [關於 Azure IoT Edge](../iot-edge/about-iot-edge.md)
 - [Azure IoT Edge 模組](../iot-edge/iot-edge-modules.md)

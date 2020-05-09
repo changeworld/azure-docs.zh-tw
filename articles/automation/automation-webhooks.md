@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367018"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582444"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 Webhook 啟動 Azure 自動化 Runbook
 
@@ -88,7 +88,7 @@ Webhook 的安全性依賴其 URL 的隱私權，其中包含允許叫用 webhoo
 
 另一個策略是讓 runbook 在收到 webhook 要求時，執行部分外部條件的驗證。 例如，當 GitHub 存放庫有新的認可時，請考慮由 GitHub 呼叫的 runbook。 Runbook 可能會連線到 GitHub，以驗證是否已發生新的認可，然後再繼續。
 
-## <a name="creating-a-webhook"></a>建立 Webhook
+## <a name="create-a-webhook"></a>建立 Webhook
 
 使用下列程序在 Azure 入口網站中建立連結至 Runbook 的全新 Webhook。
 
@@ -106,7 +106,7 @@ Webhook 的安全性依賴其 URL 的隱私權，其中包含允許叫用 webhoo
 1. 按一下 [參數] **** 來提供 Runbook 的參數值。 如果 runbook 有強制參數，除非您提供值，否則無法建立 webhook。
 1. 按一下 [ **建立** ] 來建立 Webhook。
 
-## <a name="using-a-webhook"></a>使用 Webhook
+## <a name="use-a-webhook"></a>使用 webhook
 
 若要在建立 webhook 之後使用它，您的用戶端必須使用 webhook `POST`的 URL 發出 HTTP 要求。 語法為：
 
@@ -131,7 +131,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 用戶端無法從 Webhook 判斷 Runbook 的工作何時完成或完成狀態。 它可以使用工作識別碼搭配另一個機制（例如[Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob)或[Azure 自動化 API](/rest/api/automation/job)）來找出此資訊。
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>更新 webhook
+## <a name="renew-a-webhook"></a>更新 Webhook
 
 建立 webhook 時，它的有效時間週期為10年，之後就會自動到期。 一旦 webhook 過期，您就無法重新啟用它。 您只能移除後再重新建立。 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>測試範例
+## <a name="test-the-sample"></a>測試範例
 
 下列範例使用 Windows PowerShell 搭配 Webhook 來啟動 Runbook。 任何可提出 HTTP 要求的語言都可以使用 webhook。 這裡使用 Windows PowerShell 做為範例。
 

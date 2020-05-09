@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854642"
+ms.locfileid: "82864397"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -44,6 +44,8 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **原因 3︰[無法擷取快照集狀態或無法取得快照集](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **原因4：[未設定 VM 代理程式設定選項（適用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+**原因5：[應用程式控制解決方案正在封鎖 IaaSBcdrExtension .exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM 處於失敗的布建狀態
 
@@ -202,6 +204,14 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔案選項**延伸。 [啟用**] 應設定為 [ **y** ] 和 [布建] **。代理程式**應設定為 [**自動**]，備份才能正常執行。
 如需 VM 代理程式設定檔案選項的完整清單，請參閱<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制解決方案正在封鎖 IaaSBcdrExtension .exe
+
+如果您執行的是[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension**執行檔。
+
+#### <a name="solution"></a>解決方法
+
+從 AppLocker `/var/lib` （或其他應用程式控制軟體）中排除路徑或**IaaSBcdrExtension**可執行檔。
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>無法擷取快照集狀態或無法取得快照集
 
