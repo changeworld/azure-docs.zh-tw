@@ -3,20 +3,20 @@ title: 使用 HTTPS 接收和回應呼叫
 description: 使用 Azure Logic Apps 處理來自外部服務的輸入 HTTPS 要求
 services: logic-apps
 ms.suite: integration
-ms.reviewers: klam, logicappspm
+ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: c6d8dc087e6306173fc4d55368cd3c4c624d5302
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900940"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978564"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>接收和回應 Azure Logic Apps 中的輸入 HTTPS 要求
 
-透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的要求觸發程式或回應動作，您可以建立自動化的工作和工作流程，以接收和回應連入的 HTTPS 要求。 例如，您可以有邏輯應用程式：
+透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的要求觸發程式和回應動作，您可以建立自動化的工作和工作流程，以接收和回應連入的 HTTPS 要求。 例如，您可以有邏輯應用程式：
 
 * 接收和回應內部部署資料庫中資料的 HTTPS 要求。
 * 在發生外部 webhook 事件時觸發工作流程。
@@ -49,11 +49,11 @@ ms.locfileid: "82900940"
 
 ## <a name="add-request-trigger"></a>新增要求觸發程式
 
-此內建觸發程式會建立可*只*接收傳入 HTTPs 要求的手動呼叫 HTTPs 端點。 當此事件發生時，觸發程式會引發並執行邏輯應用程式。
+此內建觸發程式會建立可*只*接收傳入 HTTPs 要求的手動呼叫 HTTPs 端點。 當此事件發生時，觸發程式會引發並執行邏輯應用程式。 如需有關觸發程式的基礎 JSON 定義和如何呼叫此觸發程式的詳細資訊，請參閱[要求觸發程式類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 AZURE LOGIC APPS 中使用 HTTPS 端點來呼叫、觸發或對應工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
-1. 邏輯應用程式設計工具開啟之後，在搜尋方塊中，輸入「HTTP 要求」作為篩選準則。 從 [觸發程式] 清單中，選取 [**收到 HTTP 要求時**] 觸發程式，這是邏輯應用程式工作流程中的第一個步驟。
+1. 邏輯應用程式設計工具開啟後，在 [搜尋] `http request`方塊中輸入做為您的篩選準則。 從 [觸發程式] 清單中，選取 [**收到 HTTP 要求時**] 觸發程式，這是邏輯應用程式工作流程中的第一個步驟。
 
    ![選取要求觸發程式](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -254,7 +254,7 @@ ms.locfileid: "82900940"
    | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **狀態碼** | `statusCode` | 是 | 要在回應中傳回的狀態碼 |
-   | **headers** | `headers` | 否 | JSON 物件，描述要包含在回應中的一個或多個標頭 |
+   | **標題** | `headers` | 否 | JSON 物件，描述要包含在回應中的一個或多個標頭 |
    | **人體** | `body` | 否 | 回應本文 |
    |||||
 

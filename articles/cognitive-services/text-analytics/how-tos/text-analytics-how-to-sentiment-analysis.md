@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 99a62daf6dced88efd9bda591a0ca44a8b259a75
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203452"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195633"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -58,7 +58,9 @@ ms.locfileid: "79203452"
 
 ### <a name="sentiment-labeling"></a>情感標籤
 
-情感分析 V3 會傳回句子和文件層級的分數和標籤。 分數和標籤為 `positive`、`negative` 和 `neutral`。 在文件層級也可傳回不含分數的 `mixed` 情感標籤。 文件情感的判定方式如下：
+情感分析 v3 會在句子及文件層級上傳回情感標籤 (`positive`、`negative` 及 `neutral`)，以及信賴分數。 文件層級上也可傳回 `mixed` 情感標籤 (不是分數)。 
+
+文件情感的判定方式如下：
 
 | 句子情感                                                                            | 傳回的文件標籤 |
 |-----------------------------------------------------------------------------------------------|-------------------------|
