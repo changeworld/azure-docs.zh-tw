@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面租使用者主機集區建立-Azure
-description: 如何在 Windows 虛擬桌面租使用者環境的安裝期間疑難排解和解決租使用者和主機集區的問題。
+title: Windows 虛擬桌面環境主機集區建立-Azure
+description: 如何在 Windows 虛擬桌面環境安裝期間疑難排解和解決租使用者和主機集區的問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371591"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612530"
 ---
-# <a name="tenant-and-host-pool-creation"></a>建立租用戶和主機集區
+# <a name="host-pool-creation"></a>建立主機集區
+
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 
@@ -25,92 +31,27 @@ ms.locfileid: "79371591"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>取得 Windows 10 企業版多會話映射
 
-若要使用 Windows 10 企業版的多會話映射，請移至 Azure Marketplace，選取 [**開始** > 使用] [**Microsoft Windows 10** > 和[Windows 10 企業版虛擬桌面版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)]。
+若要使用 Windows 10 企業版多會話映射，請移至 > Azure Marketplace，選取 **[開始使用**] [**Microsoft Windows 10** > 和 [ [Windows 10 企業版多會話，版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)]。
 
-![選取 Windows 10 企業版虛擬桌面（版本1809）的螢幕擷取畫面。](media/AzureMarketPlace.png)
+## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>使用 Azure 入口網站建立主機集區的問題
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>正在建立 Windows 虛擬桌面租使用者
+### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>錯誤：存取服務時，出現「建立免費帳戶」
 
-本節涵蓋建立 Windows 虛擬桌面租使用者時可能發生的問題。
+![顯示「建立免費帳戶」訊息之 Azure 入口網站的影像](media/create-new-account.png)
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>錯誤：使用者未獲授權查詢管理服務
+**原因**：您用來登入 Azure 的帳戶中沒有使用中的訂閱，或帳戶沒有許可權可查看訂用帳戶。 
 
-![PowerShell 視窗的螢幕擷取畫面，其中的使用者未獲授權查詢管理服務。](media/UserNotAuthorizedNewTenant.png)
+**修正**.. 登入訂用帳戶，您將會在其中部署工作階段主機虛擬機器（vm），並使用至少具有參與者層級存取權的帳戶。
 
-原始錯誤的範例：
+### <a name="error-exceeding-quota-limit"></a>錯誤：「超過配額限制」
 
-```Error
-   New-RdsTenant : User isn't authorized to query the management service.
-   ActivityId: ad604c3a-85c6-4b41-9b81-5138162e5559
-   Powershell commands to diagnose the failure:
-   Get-RdsDiagnosticActivities -ActivityId ad604c3a-85c6-4b41-9b81-5138162e5559
-   At line:1 char:1
-   + New-RdsTenant -Name "testDesktopTenant" -AadTenantId "01234567-89ab-c ...
-   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       + CategoryInfo          : FromStdErr: (Microsoft.RDInf...nt.NewRdsTenant:NewRdsTenant) [New-RdsTenant], RdsPowerSh
-      ellException
-       + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
-```
+如果您的作業超過配額限制，您可以執行下列其中一項操作： 
 
-**原因：** 已登入的使用者未獲指派其 Azure Active Directory 中的 TenantCreator 角色。
+- 使用相同的參數，但 Vm 和 VM 核心較少，建立新的主機集區。
 
-**修正：** 依照[將 TenantCreator 應用程式角色指派給 Azure Active Directory 租使用者中的使用者](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的指示進行。 依照指示進行之後，您將會有已指派給 TenantCreator 角色的使用者。
+- 開啟您在瀏覽器的 [statusMessage] 欄位中看到的連結以提交要求，為指定的 VM SKU 增加 Azure 訂用帳戶的配額。
 
-![已指派 TenantCreator 角色的螢幕擷取畫面。](media/TenantCreatorRoleAssigned.png)
-
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>建立 Windows 虛擬桌面工作階段主機 Vm
-
-您可以透過數種方式建立工作階段主機 Vm，但 Windows 虛擬桌面小組僅支援與[Azure Marketplace](https://azuremarketplace.microsoft.com/)供應專案相關的 VM 布建問題。 如需詳細資訊，請參閱[使用 Windows 虛擬桌面布建主機集區 Azure Marketplace 供應](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)專案的問題。
-
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>使用 Windows 虛擬桌面的問題–布建主機集區 Azure Marketplace 供應專案
-
-[Windows 虛擬桌面-布建主機集區] 範本可從 Azure Marketplace 取得。
-
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>錯誤：使用 GitHub 的連結時，出現「建立免費帳戶」的訊息
-
-![建立免費帳戶的螢幕擷取畫面。](media/be615904ace9832754f0669de28abd94.png)
-
-**原因1：** 用來登入 Azure 的帳戶中沒有使用中的訂閱，或使用的帳戶沒有許可權可查看訂閱。
-
-**修正1：** 使用具有參與者存取權的帳戶（至少）登入工作階段主機 Vm 即將部署的訂用帳戶。
-
-**原因2：** 使用的訂用帳戶是 Microsoft Cloud 服務提供者（CSP）租使用者的一部分。
-
-**修正2：** 移至 GitHub 位置以**建立和布建新的 Windows 虛擬桌面主機集**區，並遵循下列指示：
-
-1. 以滑鼠右鍵按一下 [**部署至 Azure** ]，然後選取 [**複製連結位址**]。
-2. 開啟 [**記事本**] 並貼上連結。
-3. 在 # 字元之前，插入 CSP 終端客戶租使用者名稱。
-4. 在瀏覽器中開啟新的連結，Azure 入口網站將會載入範本。
-
-    ```Example
-    Example: https://portal.azure.com/<CSP end customer tenant name>
-    #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
-    2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
-    ```
-
-### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>錯誤：您收到「範本部署無效」錯誤
-
-![[範本部署 ...] 的螢幕擷取畫面無效」錯誤](media/troubleshooting-marketplace-validation-error-generic.png)
-
-採取特定動作之前，您必須先檢查活動記錄檔，以查看失敗的部署驗證的詳細錯誤。
-
-若要在活動記錄中查看錯誤：
-
-1. 結束目前的 Azure Marketplace 部署供應專案。
-2. 在頂端的搜尋列中，搜尋並選取 [**活動記錄**]。
-3. 尋找名為 [**驗證部署**] 且狀態為 [**失敗**] 的活動，然後選取該活動。
-   ![個別「驗證部署」活動的螢幕擷取畫面 * * 失敗 * * 狀態](media/troubleshooting-marketplace-validation-error-activity-summary.png)
-
-4. 選取 [JSON]，然後向下滾動到畫面底部，直到您看到 [statusMessage] 欄位為止。
-   ![失敗活動的螢幕擷取畫面，其中包含 JSON 文字之 statusMessage 屬性周圍的紅色方塊。](media/troubleshooting-marketplace-validation-error-json-boxed.png)
-
-如果您的工作範本超過配額限制，您可以執行下列其中一項動作來修正此問題：
-
- - 使用您第一次使用的參數執行 Azure Marketplace，但這次使用較少的 Vm 和 VM 核心。
- - 開啟您在瀏覽器的 [ **statusMessage** ] 欄位中看到的連結以提交要求，為指定的 VM SKU 增加 Azure 訂用帳戶的配額。
-
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager 範本和 PowerShell Desired State Configuration （DSC）錯誤
+## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager 範本錯誤
 
 請遵循這些指示，針對 Azure Resource Manager 範本和 PowerShell DSC 的不成功部署進行疑難排解。
 
@@ -121,7 +62,7 @@ ms.locfileid: "79371591"
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 ....\<主機名稱>/joindomain
 
-![您的部署失敗螢幕擷取畫面。](media/e72df4d5c05d390620e07f0d7328d50f.png)
+![您的部署失敗螢幕擷取畫面。](media/failure-joindomain.png)
 
 原始錯誤的範例：
 
@@ -145,7 +86,7 @@ ms.locfileid: "79371591"
 
 若要修正此問題，請執行下列動作：
 
-1. 開啟 Azure 入口網站，然後移至 [**虛擬網路**] 索引標籤。
+1. 開啟 Azure 入口網站並移至 [**虛擬網路**] 索引標籤。
 2. 尋找您的 VNET，然後選取 [ **DNS 伺服器**]。
 3. [DNS 伺服器] 功能表應該會出現在畫面的右側。 在該功能表上，選取 [**自訂**]。
 4. 請確定列在 [自訂] 底下的 DNS 伺服器符合您的網域控制站或 Active Directory 網域。 如果您沒有看到您的 DNS 伺服器，您可以在 [**新增 dns 伺服器**] 欄位中輸入其值來新增它。
@@ -162,7 +103,7 @@ ms.locfileid: "79371591"
 
 ### <a name="error-vmextensionprovisioningerror"></a>錯誤： VMExtensionProvisioningError
 
-![因為終端機布建狀態失敗，所以部署的螢幕擷取畫面失敗。](media/7aaf15615309c18a984673be73ac969a.png)
+![因為終端機布建狀態失敗，所以部署的螢幕擷取畫面失敗。](media/failure-vmextensionprovisioning.png)
 
 **原因1：** Windows 虛擬桌面環境發生暫時性錯誤。
 
@@ -172,17 +113,15 @@ ms.locfileid: "79371591"
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>錯誤：不允許指定的系統管理員使用者名稱
 
-![部署的螢幕擷取畫面失敗，其中不允許系統管理員指定。](media/f2b3d3700e9517463ef88fa41875bac9.png)
+![部署的螢幕擷取畫面失敗，其中不允許系統管理員指定。](media/failure-username.png)
 
 原始錯誤的範例：
 
 ```Error
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostDesktop/providers/Microsoft.
-  Resources/deployments/vmCreation-linkedTemplate/operations/EXAMPLE", "operationId": "EXAMPLE", "properties": { "provisioningOperation":
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
- "The Admin Username specified is not allowed.", "target": "adminUsername" } }, "targetResource": { "id": "/subscriptions/EXAMPLE
- /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
+ { …{ "provisioningOperation": 
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
 **原因：** 提供的密碼包含禁止的子字串（管理員、系統管理員、根）。
@@ -191,24 +130,17 @@ ms.locfileid: "79371591"
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>錯誤： VM 在處理延伸模組時回報失敗
 
-![在您的部署中，以終端機布建狀態完成的資源作業的螢幕擷取畫面失敗。](media/49c4a1836a55d91cd65125cf227f411f.png)
+![在您的部署中，以終端機布建狀態完成的資源作業的螢幕擷取畫面失敗。](media/failure-processing.png)
 
 原始錯誤的範例：
 
 ```Error
-{ "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
- { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
- "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
- "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+{ … "code": "ResourceDeploymentFailure", "message":
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
- Compute/virtualMachines/desktop-1/extensions/dscextension",
- "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
 **原因：** PowerShell DSC 擴充功能無法取得 VM 上的系統管理員存取權。
@@ -217,7 +149,7 @@ ms.locfileid: "79371591"
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤
 
-![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](media/64870370bcbe1286906f34cf0a8646ab.png)
+![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](media/failure-dsc.png)
 
 原始錯誤的範例：
 
@@ -319,58 +251,6 @@ the VM.\\\"
 **原因：** 此錯誤是因為靜態路由、防火牆規則或 NSG 封鎖下載與 Azure Resource Manager 範本系結的 zip 檔案。
 
 **修正：** 移除封鎖靜態路由、防火牆規則或 NSG。 （選擇性）在文字編輯器中開啟 Azure Resource Manager 範本 json 檔案，接受 zip 檔案的連結，並將資源下載到允許的位置。
-
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>錯誤：使用者未獲授權查詢管理服務
-
-原始錯誤的範例：
-
-```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
-Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
- functionality with error message: User is not authorized to query the management service.
-\nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
-The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
-```
-
-**原因：** 指定的 Windows 虛擬桌面租使用者管理員不具有有效的角色指派。
-
-**修正：** 建立 Windows 虛擬桌面租使用者的使用者必須登入 Windows 虛擬桌面 PowerShell，並將角色指派指派給嘗試的使用者。 如果您正在執行 GitHub Azure Resource Manager 範本參數，請使用 PowerShell 命令來遵循下列指示：
-
-```PowerShell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
-```
-
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure 多重要素驗證（MFA）
-
-![因缺少多重要素驗證（MFA）而導致部署失敗的螢幕擷取畫面](media/MFARequiredError.png)
-
-原始錯誤的範例：
-
-```Error
-"message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
-```
-
-**原因：** 指定的 Windows 虛擬桌面租使用者管理員需要 Azure 多重要素驗證（MFA）才能登入。
-
-**修正：** 遵循[教學課程：使用 PowerShell 建立服務主體和角色指派](create-service-principal-role-powershell.md)中的步驟，為您的 Windows 虛擬桌面租使用者建立服務主體並為其指派角色。 確認您可以使用服務主體登入 Windows 虛擬桌面之後，請根據您所使用的方法，重新執行 Azure Marketplace 供應專案或 GitHub Azure Resource Manager 範本。 請依照下列指示，為您的方法輸入正確的參數。
-
-如果您正在執行 Azure Marketplace 供應專案，請提供下列參數的值，以適當地驗證 Windows 虛擬桌面：
-
-- Windows 虛擬桌面租使用者 RDS 擁有者：服務主體
-- 應用程式識別碼：您所建立之新服務主體的應用程式識別碼
-- 密碼/確認密碼：您為服務主體產生的密碼秘密
-- Azure AD 租使用者識別碼：您所建立之服務主體的 Azure AD 租使用者識別碼
-
-如果您正在執行 GitHub Azure Resource Manager 範本，請提供下列參數的值，以適當地驗證 Windows 虛擬桌面：
-
-- 租使用者系統管理使用者主體名稱（UPN）或應用程式識別碼：您所建立之新服務主體的應用程式識別碼
-- 租使用者系統管理員密碼：您為服務主體產生的密碼秘密
-- IsServicePrincipal： **true**
-- AadTenantId：您所建立之服務主體的 Azure AD 租使用者識別碼
 
 ## <a name="next-steps"></a>後續步驟
 

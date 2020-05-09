@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455082"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627580"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL Server Agent 作業遷移至 ADF
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 將內部[部署 SQL Server Integration Services （SSIS）工作負載遷移至 ADF 中的 ssis](scenario-ssis-migration-overview.md)時，在 ssis 封裝遷移之後，您可以透過 SQL SERVER MANAGEMENT STUDIO （SSMS） **SSIS 作業遷移嚮導**，將作業步驟類型為 SQL Server Integration Services 套件的 SQL Server Agent 作業進行批次遷移至 Azure Data Factory （ADF）管線/活動/排程觸發程式。
 
@@ -37,7 +39,7 @@ ms.locfileid: "81455082"
 
 - 在本機輸出檔案夾中產生 Azure Resource Manager （ARM）範本，並直接或稍後手動部署至 data factory。 如需 ADF Resource Manager 範本的詳細資訊，請參閱[DataFactory 資源類型](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文所述的功能需要18.5 或更高版本的 SQL Server Management Studio。 若要取得最新版的 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064048"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625947"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>從 [變更密碼] 頁面變更您的公司或學校帳戶密碼
 
@@ -27,7 +27,7 @@ ms.locfileid: "77064048"
 
 ## <a name="update-a-password-from-the-change-password-page"></a>從 [變更密碼] 頁面更新密碼
 
-1. 使用現有的密碼登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myprofile.microsoft.com/)頁面。
+1. 使用現有的密碼登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myaccount.microsoft.com/)頁面。
 
 2. 從左側流覽窗格中選取 [**密碼**]，或從 [**密碼**] 區塊選取 [**變更密碼**] 連結。
 
