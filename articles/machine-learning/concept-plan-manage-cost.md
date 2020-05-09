@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/08/2020
+ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856990"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891209"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -63,7 +63,7 @@ ms.locfileid: "82856990"
 
 您不會看到 Machine Learning 的個別服務區域。  相反地，您會看到已新增至 Machine Learning 工作區的各種資源。
 
-## <a name="use-amlcompute"></a>使用 AmlCompute
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>使用 Azure Machine Learning 計算叢集（AmlCompute）
 
 有了不斷變化的資料，您需要快速且有效率的模型定型和重新訓練，才能維護正確的模型。 不過，持續訓練會有成本，特別是針對 Gpu 的深度學習模型。 
 
@@ -138,5 +138,7 @@ Azure Machine Learning 計算原本就支援保留實例。 因此，如果您�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解如何使用[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)來管理成本。
-* 深入瞭解[Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)。
+深入了解：
+* [管理及增加資源配額](how-to-manage-quotas.md)
+* [使用[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)來管理成本。
+* [Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)。

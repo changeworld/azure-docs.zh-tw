@@ -5,17 +5,17 @@ description: 了解如何在儲存體帳戶的主要端點無法使用時起始�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8de5290c41e6213e61b7b5b09cffba1f4638df30
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 2d07195e28c964a540eafdfba94a958e6c9f6981
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857034"
+ms.locfileid: "82871349"
 ---
 # <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
 
@@ -28,7 +28,7 @@ ms.locfileid: "82857034"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您的儲存體帳戶已設定為進行異地複寫。 您的儲存體帳戶可以使用下列任何一個冗余選項：
 

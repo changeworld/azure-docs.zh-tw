@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509124"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779292"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理變更追蹤和清查
 
 當您新增要追蹤的新檔案或登錄機碼時，Azure 自動化將它啟用[變更追蹤和清查](change-tracking.md)功能。 本文包含使用這項功能的程式。
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>啟用完整的變更追蹤和清查解決方案
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>啟用完整的變更追蹤和清查功能
 
-如果您已啟用[Azure 資訊安全中心檔案完整性監視（FIM）](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，您可以使用完整的變更追蹤和清查解決方案，如下所述。 此處理程式不會移除您的設定。
+如果您已啟用[Azure 資訊安全中心檔案完整性監視（FIM）](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，您可以使用完整的變更追蹤和清查功能，如下所述。 此處理程式不會移除您的設定。
 
 > [!NOTE]
-> 啟用完整的變更追蹤和清查解決方案可能會導致額外的費用。 請參閱[自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
+> 啟用完整的變更追蹤和清查功能可能會導致額外的費用。 請參閱[自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
 
 1. 流覽至工作區，然後在[已安裝的監視解決方案清單](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中尋找，以移除監視解決方案。
 2. 按一下解決方案的名稱以開啟其 [摘要] 頁面，然後按一下 [**刪除**]，如[移除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
-3. 若要重新啟用解決方案，請流覽至自動化帳戶，然後選取 [設定**管理**] 底下的 [**變更追蹤**]。
+3. 若要重新啟用變更追蹤和清查，請流覽至自動化帳戶，然後選取 [設定**管理**] 底下的 [**變更追蹤**]。
 4. 選擇 Log Analytics 工作區和自動化帳戶，確認您的工作區設定，然後按一下 [**啟用**]。
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>將機器上架到變更追蹤和清查
