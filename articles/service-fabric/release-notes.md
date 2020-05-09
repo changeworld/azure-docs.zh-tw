@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729588"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891717"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -30,14 +30,14 @@ ms.locfileid: "81729588"
 您將能夠透過[Azure 入口網站](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal)或[Azure Resource Manager 部署](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)來更新至7.1。
 
 啟用自動升級的 Service Fabric 叢集將會在我們繼續標準首度發行程式後，開始自動收到7.1 更新。 我們會在標準首度發行開始于[Service Fabric Tech 社區網站](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)之前提供另一個公告。
-我們也已發行從6.5 開始[到7.1 為止](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions)的主要發行更新結束支援日期。 
+我們也已針對從 6.5[到7.1 日](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions)起的主要版本，將更新發佈至終止支援日期。 
 
 ## <a name="what-is-new-in-service-fabric-71"></a>Service Fabric 7.1 的新功能為何？
 我們很高興宣佈下一版的 Service Fabric。 此版本已載入主要功能和改進。 部分主要功能會反白顯示如下：
 ## <a name="key-announcements"></a>金鑰公告
 - **General Availability** [ **Service Fabric 應用程式的 Service Fabric 受控**識別正式運作](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
-- [**支援 Ubuntu 1804**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**預覽： VMSS 暫時 os 磁片支援**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：暫時 os 磁片是在本機虛擬機器上建立的儲存體，並不會儲存至遠端 Azure 儲存體。 針對所有 Service Fabric 節點類型（主要和次要），建議使用它們，因為相較于傳統的持續性 OS 磁片，暫時的 OS 磁片：
+- [**支援 Ubuntu 18.04**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**預覽：虛擬機器擴展集暫時 os 磁片支援**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：暫時 os 磁片是在本機虛擬機器上建立的儲存體，並不會儲存至遠端 Azure 儲存體。 針對所有 Service Fabric 節點類型（主要和次要），建議使用它們，因為相較于傳統的持續性 OS 磁片，暫時的 OS 磁片：
       -  減少 OS 磁片的讀取/寫入延遲
       -  啟用更快速的重設/重新映射節點管理作業
       -  降低整體成本（磁片是免費的，不會產生額外的儲存體成本）
@@ -54,14 +54,14 @@ ms.locfileid: "81729588"
 - **[自動 Subcluster 偵測和平衡](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**：當具有不同放置條件約束的服務具有一般[負載](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)計量時，就會發生 Subclustering。 如果不同組節點上的負載明顯不同，則 Service Fabric 叢集 Resource Manager 認為叢集不平衡，即使因為放置條件約束而有最佳平衡，也是如此。 因此，它會嘗試重新平衡叢集，這可能會造成不必要的服務移動（因為無法大幅改善「不平衡」）。 從這個版本開始，叢集 Resource Manager 現在會嘗試自動偵測這類設定，並瞭解何時可以透過移動來修正不平衡的情況，而改為在不進行大幅改善的情況下，只留下一些問題。  
 - [**次要複本的不同移動成本**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)：我們引進了新的移動成本價值 VeryHigh，在某些情況下提供額外的彈性，以定義次要複本是否應該使用個別的移動成本。
 - 已啟用容器化應用程式的[**活動探查**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage )機制。 活動探查有助於宣告容器化應用程式的活動，而當它們無法及時回應時，就會導致重新開機。
-- [**針對服務執行直到完成/一次**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
+- [**針對服務執行至完成/一次**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
 
 ### <a name="image-store-improvements"></a>映射存放區改進
  - Service Fabric 7.1 預設會使用**自訂傳輸來保護節點之間的檔案傳輸**。 SMB 檔案共用上的相依性已從版本7.1 移除。 受保護的 SMB 檔案共用仍存在於包含映射存放區服務複本的節點上，以供客戶退出宣告預設值，並將其升級並降級為舊版本。
        
  ### <a name="reliable-collections-improvements"></a>可靠的集合改進
 
-- [**在記憶體中，使用可靠的集合來支援具狀態服務**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)： Volatile 可靠的集合可讓資料保存到磁片中，以因應大規模的中斷，可以用於複寫快取之類的工作負載，例如，偶爾會有資料遺失的情況。根據[Volatile 可靠集合的限制和限制](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)，針對不需要持續性的工作負載，我們建議您這樣做，這適用于處理極少發生仲裁遺失情況的服務。
+- [**在記憶體中，使用可靠的集合支援具狀態服務**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)： Volatile 可靠的集合可讓資料保存到磁片中，以因應大規模的中斷，可用於複寫快取之類的工作負載，例如，有時可能會容忍資料遺失。 根據[Volatile 可靠集合的限制和限制](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)，針對不需要持續性的工作負載，我們建議您這樣做，這適用于處理極少發生仲裁遺失情況的服務。
 - [**預覽： Service Fabric Backup explorer**](https://github.com/microsoft/service-fabric-backup-explorer)：為了簡化 Service Fabric 具狀態應用程式的可靠集合備份管理，Service Fabric Backup explorer 可讓使用者
     - 審核和審核可靠集合的內容，
     - 將目前的狀態更新為一致的視圖
@@ -89,9 +89,9 @@ Azure Service Fabric 7.0 現已推出！ 您將能夠透過 Azure 入口網站�
   
 - [**使用者服務的資源限制**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services)：使用者可以設定節點上使用者服務的資源限制，以避免 Service Fabric 系統服務的資源耗盡之類的案例。 
   
-- 複本類型的[**服務移動成本非常高**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)。 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有極高移動成本的複本。 如需有關何時使用「非常高」的移動成本是合理的，還有其他考慮，請參閱檔以取得詳細資訊。
+- 複本類型的[**服務移動成本非常高**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)。 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有極高移動成本的複本。 如需有關「非常高」移動成本是否合理，以及其他考慮的詳細資訊，請參閱連結的檔。
   
--  **其他叢集安全性檢查**：在此版本中，我們引進了可設定的種子節點仲裁安全檢查。 這可讓您自訂在叢集生命週期和管理案例中，必須提供多少種子節點。 會封鎖在設定的值下方採用叢集的作業。 今天，預設值一律是種子節點的仲裁，例如，如果您有7種子節點，則預設會封鎖您低於5個種子節點的作業。 有了這項變更，您可以將最小的安全值設為6，一次只允許一個種子節點關閉。
+-  **額外的叢集安全性檢查**：在此版本中，我們引進了可設定的種子節點仲裁安全檢查。 這可讓您自訂在叢集生命週期和管理案例中，必須提供多少種子節點。 會封鎖在設定的值下方採用叢集的作業。 今天，預設值一律是種子節點的仲裁，例如，如果您有7種子節點，則預設會封鎖您低於5個種子節點的作業。 有了這項變更，您可以將最小的安全值設為6，一次只允許一個種子節點關閉。
    
 - 已新增[**在 Service Fabric Explorer 中管理備份和還原服務**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)的支援。 這可以直接從 SFX 內進行下列活動：探索備份和還原服務、建立備份原則、啟用自動備份、進行臨機操作備份、觸發還原作業，以及流覽現有的備份。
 

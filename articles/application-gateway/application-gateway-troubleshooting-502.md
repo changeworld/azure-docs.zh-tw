@@ -7,15 +7,15 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74130481"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801734"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>疑難排解應用程式閘道中閘道不正確的錯誤
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'> </a></span><span class="has-padding-small">使用虛擬代理程式執行<b>自動化診斷</b>，開始快速解決您的問題。</span><div align="right"> <sub>Privacy Statement</sub>隱私權聲明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
 瞭解如何疑難排解使用 Azure 應用程式閘道時所收到的錯誤閘道（502）錯誤。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -111,7 +111,7 @@ DhcpOptions            : {
 | 名稱 |探查的名稱。 此名稱用來在後端 HTTP 設定中指出探查。 |
 | 通訊協定 |用來傳送探查的通訊協定。 探查會使用後端 HTTP 設定中定義的通訊協定 |
 | 主機 |用來傳送探查的主機名稱。 僅適用于在應用程式閘道上設定多網站時。 這與 VM 主機名稱不同。 |
-| Path |探查的相對路徑。 有效路徑的開頭為 '/'。 探查會傳送到 \<通訊協定\>://\<主機\>:\<連接埠\>\<路徑\> |
+| 路徑 |探查的相對路徑。 有效路徑的開頭為 '/'。 探查會傳送到 \<通訊協定\>://\<主機\>:\<連接埠\>\<路徑\> |
 | 間隔 |探查間隔 (秒)。 這是兩個連續探查之間的時間間隔。 |
 | 逾時 |探查逾時 (秒)。 如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。 |
 | 狀況不良臨界值 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |

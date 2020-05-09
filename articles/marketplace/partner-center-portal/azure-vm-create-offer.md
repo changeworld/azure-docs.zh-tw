@@ -1,25 +1,25 @@
 ---
-title: 建立 Azure 虛擬機器供應專案-Azure Marketplace
-description: 瞭解如何在商業 marketplace 中建立虛擬機器供應專案。
+title: 在 Azure Marketplace 中建立 Azure 虛擬機器供應專案
+description: 瞭解如何在 Azure Marketplace 中使用所需的 SKU 建立虛擬機器供應專案。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869067"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745013"
 ---
-# <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器供應專案
+# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 虛擬機器供應專案
 
 > [!IMPORTANT]
 > 我們正在將您 Azure VM 供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請繼續遵循在 Cloud Partner 入口網站中[建立虛擬機器供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)專案中的指示來管理供應專案。
 
-本文說明如何建立 Azure 虛擬機器供應專案，並將其發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它會處理以 Windows 和 Linux 為基礎的虛擬機器，其中包含作業系統、虛擬硬碟（VHD）和最多16個數據磁片。
+本文說明如何建立 Azure 虛擬機器供應專案，並將其發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它會處理以 Windows 和 Linux 為基礎的虛擬機器，其中包含作業系統、虛擬硬碟（VHD）和最多16個數據磁片。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
 
 ## <a name="introduction"></a>簡介
 
@@ -58,17 +58,18 @@ ms.locfileid: "81869067"
 - 如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
 - [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、 [Azure 儲存體](https://azure.microsoft.com/services/?filter=storage#storage)和[azure 網路](https://azure.microsoft.com/services/?filter=networking#networking)的使用知識
 
-## <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器供應專案
+## <a name="create-a-new-offer"></a>建立新的供應項目
 
-在建立 Azure 虛擬機器供應專案之前，您必須在合作夥伴中心擁有商用 marketplace 帳戶。 如果您尚未建立，請參閱[在合作夥伴中心建立商業 marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左側導覽功能表中，選取 [**商用 Marketplace** > **總覽**]。
+3. 在 [總覽] 頁面上，選取 [ **+ 新增供應** > 專案] [**Azure 虛擬機器**]。
 
-1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)，然後從頂端功能表中選取 [**儀表板**]。
-2. 在左側流覽列中，依序選取 [**商業 Marketplace**] 和 **[總覽**]。
-3. 在 [**總覽**] 頁面上，依序選取 [ **+ 新增供應**專案] 和 [ **Azure 虛擬機器**]。 [**新增供應**專案] 對話方塊隨即出現。
+    ![說明左側導覽功能表。](./media/new-offer-azure-vm.png)
 
-    ![說明合作夥伴中心的 [總覽] 頁面，其中已選取 [新增供應專案] 按鈕和 [Azure 虛擬機器供應專案]。](media/avm-create7.png)
+> [!NOTE]
+> 發行供應專案之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應專案後出現在店面中。 請務必在進行變更之後，一律重新發佈。
 
-## <a name="offer-id-and-alias"></a>供應專案識別碼和別名
+## <a name="new-offer"></a>新增供應項目
 
 輸入**供應專案識別碼**。 這是您帳戶中每個供應專案的唯一識別碼。
 
@@ -76,7 +77,9 @@ ms.locfileid: "81869067"
 - 請一律使用小寫字母和數字。 它可以包含連字號和底線，但不能有空格，而且限制為50個字元。 例如，如果您在這裡輸入 [**測試-供應專案-1** ]，則供應專案`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`web 位址會是。
 - 選取 [**建立**] 之後，即無法變更供應專案識別碼。
 
-輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
+輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。
+
+- 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
 
 選取 [**建立**] 以產生供應專案並繼續。
 
@@ -84,15 +87,15 @@ ms.locfileid: "81869067"
 
 ### <a name="test-drive"></a>試用產品
 
-設定示範（試用產品），讓客戶在購買之前先試用您的供應專案。 若要建立示範環境，讓客戶可以在一段固定時間內試用您的供應專案，請參閱在[商業 marketplace 中測試您的供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)專案。
+試用產品是向潛在客戶展示供應專案的絕佳方式，方法是讓他們選擇「在購買前試用」，進而提升轉換並產生高度合格的潛在客戶。 [深入瞭解試用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)產品。
 
-若要啟用試用產品，請選取 [**啟用試用**產品] 核取方塊。 若要從您的供應專案中移除試用產品，請清除此核取方塊。
+若要啟用一段固定時間的試用產品，請選取 [**啟用試用**產品] 核取方塊。 若要從您的供應專案中移除試用產品，請清除此核取方塊。
 
 其他試用產品資源：
 
 - [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [試用產品總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （請確定您的快顯封鎖程式已關閉）。
+- [試用產品總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （請確定您的快顯封鎖程式已關閉）
 
 ### <a name="lead-management"></a>潛在客戶管理
 
@@ -174,7 +177,7 @@ ms.locfileid: "81869067"
 
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>名稱
 
 您在此處輸入的名稱會向客戶顯示，做為供應專案清單的標題。 當您建立供應專案時，此欄位會預先填入您在 [**供應專案別名**] 方塊中輸入的文字。 您可以稍後變更此名稱。
 
@@ -213,9 +216,13 @@ ms.locfileid: "81869067"
 - 請勿依賴特性和功能來銷售您的供應專案。 相反地，請專注于您的供應專案提供的值。
 - 使用產業特定或以優點為基礎的單字。
 
-若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來格式化您的描述。 Rtf 編輯器可讓您新增數位、專案符號、粗體、斜體和縮排，讓您的描述更容易閱讀。
+若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來套用格式設定。
 
-![說明合作夥伴中心的 [總覽] 頁面，其中已選取 [新增供應專案] 按鈕和諮詢服務供應專案。](media/power-bi-rich-text-editor.png)
+![使用 rich 文字編輯器](./media/rich-text-editor.png)
+
+| <center>變更文字格式 | <center>新增專案符號或編號 | <center>新增或移除文字縮排 |
+| --- | --- | --- |
+| <center>![使用 rich 文字編輯器來變更文字格式](./media/text-editor3.png) |  <center>![使用 rich 文字編輯器加入清單](./media/text-editor4.png) |  <center>![使用 rich 文字編輯器縮排](./media/text-editor5.png) |
 
 #### <a name="privacy-policy-link"></a>隱私權原則連結
 
@@ -239,7 +246,7 @@ ms.locfileid: "81869067"
 
 提供連絡人資訊，讓 Microsoft 合作夥伴在您的客戶開啟支援票證時使用。 這不會列在 marketplace 中。
 
-- Name
+- 名稱
 - 電子郵件
 - 電話
 
@@ -247,7 +254,7 @@ ms.locfileid: "81869067"
 
 提供您的供應專案問題時，Microsoft 所要使用的連絡人資訊，包括認證的問題。 這不會列在 marketplace 中。
 
-- Name
+- 名稱
 - 電子郵件
 - 電話
 
@@ -256,7 +263,7 @@ ms.locfileid: "81869067"
 提供要與您的供應專案搭配使用的標誌和影像。 所有影像都必須是 PNG 格式。 模糊影像會導致您的提交遭到拒絕。
 
 >[!Note]
->如果您在上傳檔案時發生問題，請確定您的區域網路不會https://upload.xboxlive.com封鎖合作夥伴中心所使用的服務。
+>如果您在上傳檔案時發生問題，請確定您的區域網路不https://upload.xboxlive.com會封鎖合作夥伴中心所使用的服務。
 
 #### <a name="marketplace-logos"></a>Marketplace 標誌
 
@@ -271,11 +278,11 @@ ms.locfileid: "81869067"
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
-新增最多五個螢幕擷取畫面，以顯示供應專案的運作方式。 每個螢幕擷取畫面的大小都必須是 1280 x 720 圖元，而且採用 PNG 格式。 您也必須新增標題以描述螢幕擷取畫面。
+新增最多五個螢幕擷取畫面，以顯示供應專案的運作方式。 每個螢幕擷取畫面的大小都必須是 1280 x 720 圖元，而且採用 PNG 格式。 每個螢幕擷取畫面都必須包含標題。
 
 #### <a name="videos"></a>影片
 
-新增最多五個示範您供應專案的影片。 這些應該裝載于外部影片服務。 以 1280 x 720 圖元的大小，輸入每個影片的名稱、網址和影片的縮圖 PNG 影像。
+新增最多五個示範您供應專案的影片。 這些應該裝載于外部影片服務。 輸入每部影片的名稱、網址，以及影片 1280 x 720 圖元的縮圖 PNG 影像。
 
 如需其他 marketplace 清單資源，請參閱[marketplace 供應專案清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
 
@@ -307,7 +314,7 @@ ms.locfileid: "81869067"
 - 授權模型
 - 物件（公用或私用）
 - 目前的發行狀態
-- 可用動作
+- 可執行的動作
 
 計畫總覽中的可用動作會根據方案的目前狀態而有所不同。 其中包括：
 
@@ -331,7 +338,7 @@ ms.locfileid: "81869067"
 
 設定方案類型的高階設定、是否重複使用來自另一個方案的技術設定，以及應提供方案的 Azure 區域。 您在此處選取的專案會決定要在相同方案的其他索引標籤上顯示哪些欄位。
 
-#### <a name="reuse-technical-configuration"></a>重複使用技術設定
+#### <a name="re-use-technical-configuration"></a>重複使用技術設定
 
 如果您有多個相同類型的方案，而且它們之間的封裝相同，則可以選取**此計畫重複使用另一個方案的技術**設定。 此選項可讓您為此供應專案選取另一個相同類型的方案，並重複使用其技術設定。
 
@@ -342,7 +349,7 @@ ms.locfileid: "81869067"
 
 您的方案必須至少在一個 Azure 區域中提供。
 
-選取 [ **Azure 全域**] 選項，讓您的方案可供所有具有商業 marketplace 整合之公用 Azure 區域中的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+選取 [ **Azure 全域**] 選項，讓您的方案可供所有具有商業 marketplace 整合之 Azure 全球區域中的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
 選取 [ **Azure Government** ] 選項，讓您的方案可在[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)區域中使用。 此區域為美國聯邦、州、地方或部落的實體，以及符合資格服務的合作夥伴提供受控存取權。 身為發行者的您，會負責任何合規性控制、安全性措施和最佳作法。 Azure Government 會使用實際隔離的資料中心和網路（僅限美國地區）。
 
@@ -353,7 +360,7 @@ ms.locfileid: "81869067"
 
 #### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在您選取 [ **Azure 區域**] 底下的 [ **Azure Government**時，才會顯示此選項。
+只有當您選取 [ **Azure Government**] 時，才會顯示此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 若要讓您知道這些程式的認證，您可以提供最多100個描述的連結。 這些可以是直接連結到您在程式上的清單，或連結至您自己網站上的合規性描述。 只有 Azure Government 客戶可以看到這些連結。
 
@@ -488,9 +495,9 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 其他試用產品資源：
 
-- 技術最佳做法
-- 行銷最佳做法
-- 試用產品總覽（PDF; 請確定您的快顯封鎖程式已關閉）。
+- [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF; 請確定您的快顯封鎖程式已關閉）
 
 選取 [**儲存草稿**] 再繼續。
 

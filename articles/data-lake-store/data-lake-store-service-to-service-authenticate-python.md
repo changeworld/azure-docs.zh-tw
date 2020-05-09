@@ -1,22 +1,18 @@
 ---
-title: 服務對服務驗證︰使用 Python 透過 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行驗證 | Microsoft Docs
+title: Python-服務對服務驗證-Data Lake Storage Gen1
 description: 了解如何使用 Python 透過 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成服務對服務驗證
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 449159f6857cb2120f4570a8c20cd82fd11016a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260289"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688116"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]
@@ -24,13 +20,13 @@ ms.locfileid: "79260289"
 > * [使用 .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [使用 Python](data-lake-store-service-to-service-authenticate-python.md)
 > * [使用 REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 在本文中，您會了解如何使用 Python 向 Azure Data Lake Storage Gen1 進行服務對服務驗證。 如須使用 Python 向 Data Lake Storage Gen1 進行使用者驗證，請參閱[使用 Python 向 Data Lake Storage Gen1 進行使用者驗證](data-lake-store-end-user-authenticate-python.md)。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Python**。 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
 
@@ -92,7 +88,7 @@ pip install azure-datalake-store
     RESOURCE = 'https://management.core.windows.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     mgmt_token = context.acquire_token_with_client_credentials(RESOURCE, client_id, client_secret)
     armCreds = AADTokenCredentials(mgmt_token, client_id, resource=RESOURCE)
@@ -105,7 +101,7 @@ pip install azure-datalake-store
     RESOURCE = 'https://datalake.azure.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     adlCreds = lib.auth(tenant_id = tenant,
                     client_secret = client_secret,
                     client_id = client_id,
@@ -132,5 +128,3 @@ Use this snippet to authenticate with Azure AD for account management operations
 
 * [使用 Python 對 Data Lake Storage Gen1 進行帳戶管理作業](data-lake-store-get-started-python.md)
 * [使用 Python 對 Data Lake Storage Gen1 進行資料作業](data-lake-store-data-operations-python.md)
-
-

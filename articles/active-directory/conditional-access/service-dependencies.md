@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778476"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981768"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取中的服務相依性為何？ 
 
 透過條件式存取原則，您可以指定對網站和服務的存取需求。 例如，您的存取需求可能包括需要多重要素驗證（MFA）或[受管理的裝置](require-managed-devices.md)。 
 
 當您直接存取網站或服務時，相關原則的影響通常很容易評估。 例如，如果您的原則需要設定 SharePoint Online 的多重要素驗證（MFA），則每次登入 SharePoint web 入口網站時，都會強制執行 MFA。 不過，因為有與其他雲端應用程式有相依性的雲端應用程式，所以不一定能夠直接進行評估原則的影響。 例如，Microsoft 小組可以提供 SharePoint Online 中資源的存取權。 因此，當您在我們目前的案例中存取 Microsoft 小組時，您也會受限於 SharePoint MFA 原則。 
+
+> [!TIP]
+> 使用[office 365 （預覽）](concept-conditional-access-cloud-apps.md#office-365-preview)應用程式將以所有 office 應用程式為目標，以避免 office stack 中的服務相依性發生問題。
 
 ## <a name="policy-enforcement"></a>強制執行原則 
 

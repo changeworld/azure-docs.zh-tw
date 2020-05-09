@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731727"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982134"
 ---
 # <a name="programmatically-manage-workbooks"></a>以程式設計方式管理活頁簿
 
@@ -42,7 +42,7 @@ ms.locfileid: "82731727"
 2. 以下是將活頁簿範本部署至 Azure 監視器活頁簿圖庫的範例 Azure Resource Manager 範本。 貼上您所複製的 JSON 來`<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`取代。 您可以在[這裡](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到建立活頁簿範本的參考 Azure Resource Manager 範本。
 
     ```json
-          {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -114,7 +114,7 @@ ms.locfileid: "82731727"
 | 資源群組中的活頁簿                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
 | Azure Active Directory 中的活頁簿            | `microsoft.aadiam/tenant`                          | `workbook`    |
 | 虛擬機器中的 VM 深入解析                | `microsoft.compute/virtualmachines`                | `insights`    |
-| 虛擬機器擴展集中的 VM 深入解析                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| 虛擬機器擴展集中的 VM 深入解析      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>用於部署活頁簿實例 Azure Resource Manager 範本
 

@@ -6,13 +6,13 @@ author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879423"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204316"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像
 
@@ -25,21 +25,24 @@ ms.locfileid: "80879423"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 執行中資料標籤專案的標籤入口網站 URL
 * 組織和專案的 [Microsoft 帳戶](https://account.microsoft.com/account)或 Azure Active Directory 帳戶
+* 參與者層級的存取權，用於存取包含標籤專案的工作區。
 
-> [!NOTE]
-> 專案系統管理員可以在 [專案詳細資料]  頁面的 [詳細資料]  索引標籤上找到標籤入口網站 URL。
+## <a name="sign-in-to-the-workspace"></a>登入工作區
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>登入專案的標籤入口網站
+1. 登入 [Azure Machine Learning Studio](https://ml.azure.com)。
 
-移至專案系統管理員提供的標籤入口網站 URL。 使用系統管理員用來將您新增至小組的電子郵件帳戶進行登入。 對於大部分的使用者而言，這會是您的 Microsoft 帳戶。 如果標籤專案使用 Azure Active Directory，您就會經由此途徑登入。
+1. 選取包含標籤專案的訂用帳戶和工作區。  向您的專案系統管理員取得此資訊。
+
+1. 選取左側的 [資料標記]  以尋找專案。  
+
+1. 選取清單中的專案名稱。
 
 ## <a name="understand-the-labeling-task"></a>了解標籤工作
 
-登入之後，您會看到專案的概觀頁面。
+選取專案之後，在頁面頂端選取 [標籤資料]  。
 
-移至 [檢視詳細指示]  。 這些指示僅適用於您的專案。 這些指示會說明您將看到的資料類型、您應如何做出決策，以及其他相關資訊。 閱讀此資訊後，請返回專案頁面，並選取 [開始加上標籤]  。
+您會看到專屬於您專案的指示。 這些指示會說明您將看到的資料類型、您應如何做出決策，以及其他相關資訊。 閱讀這項資訊之後，在頁面頂端選取 [工作]  。  或在頁面底部選取 [開始標記]  。
 
 ## <a name="common-features-of-the-labeling-task"></a>標籤工作的一般功能
 

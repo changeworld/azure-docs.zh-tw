@@ -2,20 +2,20 @@
 title: Azure Synapse 分析中的 SQL 隨選（預覽）最佳做法
 description: 當您使用隨選 SQL （預覽）時，您應該知道的建議和最佳作法。
 services: synapse-analytics
-author: mlee3gsd
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429066"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692156"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse 分析中的 SQL 隨選（預覽）最佳做法
 
@@ -50,11 +50,73 @@ ms.locfileid: "81429066"
 - 最好是針對單一 OPENROWSET 路徑或外部資料表位置使用大小相同的檔案。
 - 藉由將資料分割儲存至不同的資料夾或檔案名來分割您的資料-請核取 [[使用檔案名和 filepath 函數來鎖定特定](#use-fileinfo-and-filepath-functions-to-target-specific-partitions)的分割區]。
 
+## <a name="push-wildcards-to-lower-levels-in-path"></a>將萬用字元推送至較低的路徑層級
+
+您可以在路徑中使用萬用字元來[查詢多個檔案和資料夾](develop-storage-files-overview.md#query-multiple-files-or-folders)。 SQL 隨選列出儲存體帳戶中的檔案，從第一個 * 使用儲存體 API 開始，並排除不符合指定路徑的檔案。 如果有許多檔案符合指定路徑的最高至第一個萬用字元，減少檔案的初始清單可以改善效能。
+
+## <a name="use-appropriate-data-types"></a>使用適當的資料類型
+
+查詢中使用的資料類型會影響效能。 如果您這樣做，就能獲得更好的效能： 
+
+- 使用最小的資料大小，以容納最大的可能值。
+  - 如果字元值長度上限為30個字元，請使用長度為30的字元資料類型。
+  - 如果所有字元資料行的值都是固定大小，請使用 char 或 Nchar。 否則，請使用 Varchar 或 Nvarchar。
+  - 如果整數資料行的最大值為500，請使用 Smallint，因為它是可容納此值的最小資料類型。 您可以在[這裡](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)找到整數資料類型範圍。
+- 可能的話，請使用 Varchar 和 char，而不是 Nvarchar 和 Nchar。
+- 如果可能的話，請使用以整數為基礎的資料類型。 [排序]、[聯結] 和 [群組依據] 作業在整數上執行的速度比字元資料更快。
+- 如果您使用的是架構推斷，請[檢查推斷的資料類型](#check-inferred-data-types)。
+
+## <a name="check-inferred-data-types"></a>檢查推斷的資料類型
+
+[架構推斷](query-parquet-files.md#automatic-schema-inference)可協助您快速撰寫查詢和流覽資料，而不需要知道檔案架構。 這種緩和的代價是，所推斷的資料型別會比實際的還要大。 當來源檔案中的資訊不足以確保使用適當的資料類型時，就會發生這種情況。 例如，Parquet 檔案不包含最大字元資料行長度的中繼資料，而 SQL 視需要將它推斷為 Varchar （8000）。 
+
+您可以使用[sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15)來檢查查詢所產生的資料類型。
+
+下列範例會示範如何優化推斷的資料類型。 程式是用來顯示推斷的資料類型。 
+```sql  
+EXEC sp_describe_first_result_set N'
+    SELECT
+        vendor_id, pickup_datetime, passenger_count
+    FROM 
+        OPENROWSET(
+            BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*'',
+            FORMAT=''PARQUET''
+        ) AS nyc';
+```
+
+以下為結果集。
+
+|is_hidden|column_ordinal|NAME|system_type_name|max_length|
+|----------------|---------------------|----------|--------------------|-------------------||
+|0|1|vendor_id|Varchar （8000）|8000|
+|0|2|pickup_datetime|datetime2(7)|8|
+|0|3|passenger_count|int|4|
+
+一旦我們知道查詢的推斷資料類型，就可以指定適當的資料類型：
+
+```sql  
+SELECT
+    vendor_id, pickup_datetime, passenger_count
+FROM 
+    OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        FORMAT='PARQUET'
+    ) 
+    WITH (
+        vendor_id varchar(4), -- we used length of 4 instead of inferred 8000
+        pickup_datetime datetime2,
+        passenger_count int
+    ) AS nyc;
+```
+
 ## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>使用 fileinfo 和 filepath 函式以特定的分割區為目標
 
 資料通常會組織成分割區。 您可以指示 SQL 視需要查詢特定的資料夾和檔案。 此函式會減少查詢需要讀取和處理的檔案數目和資料量。 還有一個額外的好處，就是您可以獲得更好的效能。
 
 如需詳細資訊，請參閱[檔案名](develop-storage-files-overview.md#filename-function)和[filepath](develop-storage-files-overview.md#filepath-function)函數和如何[查詢特定](query-specific-files.md)檔案的範例。
+
+> [!TIP]
+> 一律將 filepath 和 fileinfo 函式的結果轉換成適當的資料類型。 如果您使用字元資料類型，請務必使用適當的長度。
 
 如果您儲存的資料未分割，請考慮將它分割，讓您可以使用這些函式來優化以這些檔案為目標的查詢。 從 SQL 隨選[查詢資料分割的 Spark 資料表](develop-storage-files-spark-tables.md)時，查詢只會自動鎖定所需的檔案。
 

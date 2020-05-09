@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457887"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889503"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>為 Azure App Service 設定 Linux Java 應用程式
 
@@ -25,7 +25,7 @@ Linux 上的 Azure App Service 可讓 JAVA 開發人員在完全受控的 Linux 
 
 ## <a name="deploying-your-app"></a>部署應用程式
 
-您可以使用[Maven 外掛程式進行 Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) ，以部署 .jar 和 war 檔案。 [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij)或[Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)也支援使用熱門 ide 進行部署。
+您可以使用[Maven 外掛程式進行 Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) ，以部署 .jar 和 war 檔案。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)或[Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)也支援使用熱門 ide 進行部署。
 
 否則，您的部署方法將取決於您的封存類型：
 
@@ -105,7 +105,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 適用于 Linux 的 Azure App Service 支援透過 Azure 入口網站和 CLI 進行的微調和自訂。 請參閱下列文章，以瞭解非 JAVA 特定的 web 應用程式設定：
 
-- [進行應用程式設定](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)
+- [設定應用程式設定](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)
 - [設定自訂網域](../app-service-web-tutorial-custom-domain.md?toc=/azure/app-service/containers/toc.json)
 - [設定 SSL 系結](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json)
 - [新增 CDN](../../cdn/cdn-add-to-web-app.md?toc=/azure/app-service/containers/toc.json)
@@ -561,21 +561,25 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 8. 更新您`azure-webapp-maven-plugin`應用程式的*pom .xml*檔案中的設定，以參考您的 Redis 帳戶資訊。 此檔案會使用您先前設定的環境變數，將您的帳戶資訊保留在原始程式檔中。
 
-    如有必要，請將 `1.7.0` 變更為最新版的 [Maven 外掛程式 (適用於 Azure App Service)](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)。
+    如有必要，請將 `1.9.1` 變更為最新版的 [Maven 外掛程式 (適用於 Azure App Service)](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)。
 
     ```xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
+        <version>1.9.1</version>
+        <configuration>            
             <!-- Web App information -->
+            <schemaVersion>v2</schemaVersion>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
             <appName>${WEBAPP_NAME}-${REGION}</appName>
-            <region>${REGION}</region>
-            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+            <region>${REGION}</region>            
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 9.0</webContainer>
+            </runtime>
 
             <appSettings>
                 <property>

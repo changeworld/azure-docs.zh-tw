@@ -3,14 +3,14 @@ title: 設定預備環境
 description: 瞭解如何將應用程式部署到非生產位置，以及進行進入生產環境。 增加可靠性並消除部署中的應用程式停機時間。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300838"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597906"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>在 Azure App Service 中設定預備環境
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ ms.locfileid: "78300838"
    
     ![部署位置標題](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    預備位置和任何其他 App Service 應用程式一樣，具有管理頁面。 您可以變更位置的組態。 頁面頂端會顯示位置的名稱，提醒您正在檢視部署位置。
+    預備位置和任何其他 App Service 應用程式一樣，具有管理頁面。 您可以變更位置的組態。 為提醒您正在查看部署位置，應用程式名稱會顯示為** \<應用程式名稱>\</位置名稱>**，而應用程式類型為**App Service （位置）**。 您也可以在資源群組中，以相同的方式來查看此位置的個別應用程式。
 
 6. 在位置的資源頁面上選取應用程式 URL。 部署位置有自己的主機名稱，而且也是即時應用程式。 若要限制對部署位置的公用存取，請參閱[AZURE APP SERVICE IP 限制](app-service-ip-restrictions.md)。
 
-新的部署位置中沒有任何內容，即使您複製其他位置的設定，仍是如此。 例如，您可以[使用 Git 發行到此](app-service-deploy-local-git.md)位置。 您可以從不同的存放庫分支或不同的存放庫部署至位置。 
+新的部署位置中沒有任何內容，即使您複製其他位置的設定，仍是如此。 例如，您可以[使用 Git 發行到此](app-service-deploy-local-git.md)位置。 您可以從不同的存放庫分支或不同的存放庫部署至位置。
 
 <a name="AboutConfiguration"></a>
 
@@ -210,7 +210,7 @@ ms.locfileid: "78300838"
 
 您也可以使用下列其中一個或兩個[應用程式設定](configure-common.md)來自訂暖開機行為：
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`：用來準備您的網站的 ping 路徑。 請指定開頭為斜線的自訂路徑作為值，以新增此應用程式設定。 例如 `/statuscheck`。 預設值是 `/`。 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`：用來準備您的網站的 ping 路徑。 請指定開頭為斜線的自訂路徑作為值，以新增此應用程式設定。 例如 `/statuscheck`。 預設值為 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：準備操作的有效 HTTP 回應碼。 請以 HTTP 代碼的逗號分隔清單方式新增此應用程式設定。 例如`200,202` 。 如果傳回的狀態碼不在清單中，則會停止準備和交換作業。 預設是所有回應碼都有效。
 
 > [!NOTE]
@@ -260,7 +260,7 @@ ms.locfileid: "78300838"
 
 字串 `x-ms-routing-name=self` 會指定生產位置。 在用戶端瀏覽器存取連結之後，它會重新導向至生產位置。 每個後續要求都`x-ms-routing-name=self`具有將會話釘選到生產位置的 cookie。
 
-若要讓使用者加入宣告您的 Beta 應用程式，請將相同的查詢參數設定為非生產位置的名稱。 範例如下：
+若要讓使用者加入宣告您的 Beta 應用程式，請將相同的查詢參數設定為非生產位置的名稱。 以下是範例：
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
@@ -272,7 +272,7 @@ ms.locfileid: "78300838"
 
 ## <a name="delete-a-slot"></a>刪除位置
 
-搜尋並選取您的應用程式。 選取**部署** >   > **位置位置***以刪除>\<* 總覽。 選取命令列上的 [**刪除**]。  
+搜尋並選取您的應用程式。 選取**部署** >   > **位置位置***以刪除>\<* 總覽。 應用程式類型會顯示為**App Service （位置）** ，以提醒您正在查看部署位置。 選取命令列上的 [**刪除**]。  
 
 ![刪除部署位置](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

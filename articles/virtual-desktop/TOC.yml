@@ -122,6 +122,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: 參考
   items:
+    - name: 安全性最佳做法
+      href: security-guide.md
     - name: Linux 支援
       href: linux-overview.md
     - name: 支援的 RDP 檔案設定

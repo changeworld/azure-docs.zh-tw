@@ -4,20 +4,19 @@ description: 本文說明整合雲端 HR 系統（例如 Workday 和 SuccessFact
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
-tags: azuread
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522427"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593296"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 
@@ -80,7 +79,7 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 
 對於將來自雲端 HR 應用程式並布建到 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的任何不正確授權數目，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 - Azure AD 全域管理員存取權來設定 Azure AD Connect 布建代理程式。
 - 雲端 HR 應用程式的測試和實際執行實例。
