@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271091"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735414"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(已淘汰) 使用 Helm 在 Kubernetes 叢集部署容器
 
@@ -28,13 +28,13 @@ Helm 包含兩個元件︰
 
 * Tiller**** 是在 Kubernetes 叢集執行的伺服器，管理 Kubernetes 應用程式的生命週期 
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在 Azure Container Service 中[建立 Kubernetes](container-service-kubernetes-walkthrough.md)叢集
 
 * 在本機[安裝和設定 `kubectl`](../container-service-connect.md)
 
-* 在本機[安裝 Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md)
+* 在本機[安裝 Helm](https://helm.sh/docs/intro/quickstart/)
 
 ## <a name="helm-basics"></a>Helm 基本概念 
 
@@ -149,5 +149,5 @@ sudo mysql –h v1-mariadb
  
 ## <a name="next-steps"></a>後續步驟
 
-* 如需管理 Kubernetes 圖表的詳細資訊，請參閱[Helm 文件](https://github.com/kubernetes/helm/blob/master/docs/index.md)。 
+* 如需管理 Kubernetes 圖表的詳細資訊，請參閱[Helm 文件](https://helm.sh/docs/)。 
 

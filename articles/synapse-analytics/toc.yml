@@ -26,6 +26,10 @@
           href: quickstart-create-apache-spark-pool.md
         - name: 建立 SQL 集區
           href: quickstart-create-sql-pool.md
+    - name: 使用 SQL 集區載入資料
+      items:
+        - name: COPY 陳述式
+          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 使用 SQL 隨選
       href: quickstart-sql-on-demand.md
 - name: 教學課程

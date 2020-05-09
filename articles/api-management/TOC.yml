@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: 安全性
       items:
+        - name: 安全性基準
+          href: security-baseline.md
         - name: 內建安全性控制
           href: api-management-security-controls.md
     - name: 訂用帳戶

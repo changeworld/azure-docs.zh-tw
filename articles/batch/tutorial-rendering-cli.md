@@ -1,20 +1,15 @@
 ---
-title: 轉譯雲端中的場景 - Azure Batch
+title: 轉譯雲端中的場景
 description: 教學課程 - 如何使用 Batch 轉譯服務和 Azure 命令列介面，透過 Arnold 轉譯 Autodesk 3ds Max 場景
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78672985"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117126"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教學課程：使用 Azure Batch 轉譯場景 
 

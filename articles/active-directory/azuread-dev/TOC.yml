@@ -158,7 +158,7 @@
     - name: 使用 Microsoft Graph API
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 適用於開發人員的 AD FS
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
 - name: 參考
   items:
     - name: 驗證程式庫

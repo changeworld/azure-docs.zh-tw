@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137411"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872553"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>變更 Cassandra 的 Azure Cosmos DB API 中的摘要
 
@@ -21,6 +21,8 @@ ms.locfileid: "82137411"
 下列範例顯示如何使用 .NET 取得 Cassandra API Keyspace 資料表中所有資料列的變更摘要。 述詞 COSMOS_CHANGEFEED_START_TIME （）直接用於 CQL 內，以從指定的開始時間（在此案例中為目前的日期時間）查詢變更摘要中的專案。 您可以在[這裡](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)下載適用于 c # 的完整範例，以及[這裡](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)的 JAVA。
 
 在每個反復專案中，會使用分頁狀態，在最後一次讀取變更時繼續查詢。 我們可以看到 Keyspace 中資料表的新變更的連續串流。 我們會看到所插入或更新之資料列的變更。 目前不支援在 Cassandra API 中使用變更摘要來監看刪除作業。
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,6 +72,9 @@ ms.locfileid: "82137411"
     }
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
         Session cassandraSession = utils.getSession();
 
@@ -104,7 +109,11 @@ ms.locfileid: "82137411"
         }
 
 ```
+---
+
 若要依照主要索引鍵來取得單一資料列的變更，您可以在查詢中加入主要索引鍵。 下列範例顯示如何追蹤資料列的變更，其中 "user_id = 1"
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -112,11 +121,15 @@ ms.locfileid: "82137411"
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
     String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
                     + dtf.format(now)+ "'";
     SimpleStatement st=new  SimpleStatement(query);
 ```
+---
 ## <a name="current-limitations"></a>目前的限制
 
 搭配 Cassandra API 使用變更摘要時，適用下列限制：

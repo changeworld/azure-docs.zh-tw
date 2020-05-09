@@ -1,22 +1,22 @@
 ---
-title: 共同銷售州和省代碼 |Azure Marketplace
-description: 在供應專案的共同銷售頁面上提供連絡人資訊時，請使用這些州和省代碼。
+title: Azure Marketplace 中的共同銷售州和省代碼
+description: 在 Azure Marketplace 中提供供應專案的共同銷售頁面上的連絡人資訊時，取得可用的州和省代碼。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619350"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744712"
 ---
-# <a name="co-sell-state-and-province-codes"></a>共同銷售州和省代碼
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace 中的共同銷售州和省代碼
 
-如果適用的話，請在[供應專案的共同銷售頁面上提供連絡人資訊](commercial-marketplace-co-sell.md#contacts)時，使用這些代碼來提供州/省資訊。
+本文列出在供應專案的共同銷售頁面上提供連絡人資訊時的可用州和省代碼。 如果適用的話，請在[供應專案的共同銷售頁面上提供連絡人資訊](commercial-marketplace-co-sell.md#contacts)時，使用這些代碼來提供州/省資訊。
 
 ## <a name="us-states-and-territories"></a>美國州和地區
 
