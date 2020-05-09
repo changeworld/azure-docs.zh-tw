@@ -72,6 +72,9 @@
   items:
     - name: 服務匯流排範例
       href: service-bus-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 進階傳訊

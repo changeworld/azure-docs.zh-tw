@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050890"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926981"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>來賓使用者的直接同盟與 AD FS 和協力廠商提供者（預覽）
 |     |
@@ -50,10 +50,13 @@ ms.locfileid: "80050890"
 
 ### <a name="authentication-url"></a>驗證 URL
 只有驗證 URL 的網域符合目標網域的原則，或驗證 URL 是其中一個允許的識別提供者（此清單可能會變更）時，才允許直接同盟：
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com
@@ -99,7 +102,7 @@ Azure AD B2B 可以設定為與使用 SAML 通訊協定與下列特定需求的�
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |適用對象     |`urn:federation:MicrosoftOnline`         |
-|簽發者     |合作夥伴 IdP 的簽發者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Issuer     |合作夥伴 IdP 的簽發者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 IdP 所簽發的 SAML 2.0 權杖所需的宣告：
@@ -125,7 +128,7 @@ Azure AD B2B 可以設定為與使用 WS-ADDRESSING 通訊協定的身分識別�
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |適用對象     |`urn:federation:MicrosoftOnline`         |
-|簽發者     |合作夥伴 IdP 的簽發者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Issuer     |合作夥伴 IdP 的簽發者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 所簽發的 WS-送出權杖所需的宣告：
 
@@ -166,7 +169,7 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>使用 PowerShell 在 Azure AD 中設定直接同盟
 
 1. 安裝最新版的 Azure AD PowerShell for Graph 模組 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 （如需詳細步驟，新增來賓使用者的快速入門包含[安裝最新的 AzureADPreview 模組](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module)一節）。 
-2. 執行下列命令： 
+2. 執行以下命令： 
    ```powershell
    Connect-AzureAD
    ```
@@ -209,7 +212,7 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
 
 若要使用 PowerShell 移除與身分識別提供者的直接同盟：
 1. 安裝最新版的 Azure AD PowerShell for Graph 模組 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
-2. 執行下列命令： 
+2. 執行以下命令： 
    ```powershell
    Connect-AzureAD
    ```
