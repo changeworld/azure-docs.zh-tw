@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
-ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413435"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890880"
 ---
 # <a name="data-flow-script-dfs"></a>資料流程腳本（DFS）
 
@@ -177,6 +177,21 @@ aggregate(groupBy(movie),
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+您也可以使用下列腳本，使用資料流程中出現的所有資料行來產生資料列雜湊，而不需要為每個資料行命名：
+
+```
+derive(DWhash = sha1(columns()))
+```
+
+### <a name="string_agg-equivalent"></a>String_agg 對等
+此程式碼的作用就像 T-sql 函```string_agg()```式，會將字串值匯總成陣列。 然後，您可以將該陣列轉換成字串，以便搭配 SQL 目的地使用。
+
+```
+source1 aggregate(groupBy(year),
+    string_agg = collect(title)) ~> Aggregate1
+Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ## <a name="next-steps"></a>後續步驟

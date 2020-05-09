@@ -3,16 +3,16 @@ title: Azure 安全性效能評定藍圖範例控制項
 description: Azure 安全性效能評定藍圖範例與 Azure 原則的控制項對應。
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538660"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691295"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Azure 安全性效能評定藍圖範例的控制項對應
 
-下列文章詳述 Azure 藍圖 Azure 安全性效能評定藍圖範例與 Azure 安全性效能評定控制項的對應。 如需關於控制的詳細資訊，請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview)。
+下列文章詳述 Azure 藍圖 Azure 安全性效能評定藍圖範例與 Azure 安全性效能評定控制項的對應。 如需關於控制的詳細資訊，請參閱 [Azure 安全性效能評定](../../../../security/benchmarks/overview.md)。
 
 以下是 **Azure 安全性效能評定**控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 對應的控制項是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\]：稽核 Azure 安全性效能評定建議，以及部署特定的受支援 VM 延伸模組**內建原則方案。
 

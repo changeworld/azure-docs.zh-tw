@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409080"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927389"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>使用更新資源活動更新 ML Studio （傳統） v 模型
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文補充主要 Azure Data Factory - Azure Machine Learning 整合文件︰[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](transform-data-using-machine-learning.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。
+本文補充主要的 Azure Data Factory ML Studio （傳統）整合文章：[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](transform-data-using-machine-learning.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。
 
 ## <a name="overview"></a>概觀
-進行 Azure Machine Learning 模型的實作程序時，需要定型並儲存您的模型。 接著，使用它來建立預測性 Web 服務。 接著才能在網站、儀表板及行動應用程式取用 Web 服務。
+在運用 ML Studio （傳統）模型的過程中，您的模型已定型並儲存。 接著，使用它來建立預測性 Web 服務。 接著才能在網站、儀表板及行動應用程式取用 Web 服務。
 
-您使用 Machine Learning 建立的模型通常不是靜態。 因為當有新資料或 API 取用者有自己的資料時，模型就必須重新定型。 如需如何在 Azure Machine Learning 中重新定型模型的詳細資料，請參閱[重新定型 Machine Learning 模型](../machine-learning/machine-learning-retrain-machine-learning-model.md)。
+您使用 Machine Learning 建立的模型通常不是靜態。 因為當有新資料或 API 取用者有自己的資料時，模型就必須重新定型。 
 
 重新定型可能經常會發生。 使用批次執行活動與更新資源活動，您可以使用 Data Factory 實作 Azure Machine Learning 模型重新定型，並更新預測 Web 服務。
 
@@ -35,9 +35,9 @@ ms.locfileid: "81409080"
 
 ![Web 服務](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning 更新資源活動
+## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio （傳統）更新資源活動
 
-下列 JSON 程式碼片段定義 Azure Machine Learning 批次執行活動。
+下列 JSON 程式碼片段會定義 ML Studio （傳統）批次執行活動。
 
 ```json
 {
@@ -61,7 +61,7 @@ ms.locfileid: "81409080"
 
 | 屬性                      | 描述                              | 必要 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| NAME                          | 管線中的活動名稱     | 是      |
+| name                          | 管線中的活動名稱     | 是      |
 | description                   | 說明活動用途的文字。  | 否       |
 | type                          | 對於 Azure Machine Learning 更新資源活動，活動類型為 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 屬性的 Azure Machine Learning 連結服務。 | 是      |

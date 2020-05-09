@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176595"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792066"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -82,7 +82,7 @@ ms.locfileid: "82176595"
 
 **指引**：網路監看員封包捕獲可讓您建立「捕獲會話」，以追蹤儲存體帳戶與虛擬機器之間的流量。 系統會為擷取工作階段提供篩選器，以確保您只會擷取到您想要的流量。 封包擷取有助於以被動和主動方式診斷網路異常。 其他用途包括收集網路統計資料、取得有關網路入侵的資訊，以及偵錯用戶端與伺服器間的通訊等等。 由於能夠從遠端觸發封包擷取，因此可以減輕在所需的虛擬機器上手動執行封包擷取的工作負擔，進而省下寶貴的時間。 
 
-- [使用入口網站以 Azure 網路監看員管理封包擷取](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [使用入口網站以 Azure 網路監看員管理封包擷取](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -240,7 +240,7 @@ ms.locfileid: "82176595"
 
 - [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
 
 **Azure 資訊安全中心監視**：是
 
@@ -428,7 +428,7 @@ ms.locfileid: "82176595"
 
 建立 Azure Active Directory 使用者帳戶的診斷設定，將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。 若要監視對 Azure 儲存體帳戶的驗證失敗，您可以建立警示，在達到儲存體資源計量的特定閾值時通知您。 此外，請使用 Azure 監視器，以使用匿名驗證條件來對儲存體帳戶的匿名存取發出警示。
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -574,7 +574,7 @@ ms.locfileid: "82176595"
 
 - [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
 
 - [如何設定 Azure 儲存體帳戶的計量警示](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 

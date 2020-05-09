@@ -2,25 +2,20 @@
 title: 使用範圍篩選條件佈建應用程式 | Microsoft Docs
 description: 在支援使用者佈建自動化的應用程式中，了解如何使用範圍篩選條件來防止佈建不符合商務需求的物件。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138530"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593739"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -121,7 +116,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 
 ## <a name="common-scoping-filters"></a>通用範圍篩選器
-| 目標屬性| 運算子 | 值 | 說明|
+| 目標屬性| 運算子 | 值 | 描述|
 |----|----|----|----|
 |userPrincipalName|REGEX MATCH|.\*@domain.com |具有網域@domain.com之 userPrincipal 的所有使用者將會在布建範圍內|
 |userPrincipalName|不符合 REGEX|.\*@domain.com|具有網域@domain.com之 userPrincipal 的所有使用者都將不在布建範圍內|

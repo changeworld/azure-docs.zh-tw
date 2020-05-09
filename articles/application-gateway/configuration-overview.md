@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632182"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856067"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -25,7 +25,7 @@ Azure 應用程式閘道是由數個元件所組成，您可以在不同的案�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虛擬網路和專用子網
 
@@ -101,18 +101,18 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
    您可以建立 UDR，將 0.0.0.0/0 流量直接傳送到網際網路。 
 
-  **案例 3**： UDR for Azure Kubernetes Service kubenet
+  **案例 3**：使用 kubenet Azure Kubernetes Service 的 UDR
 
-  如果您使用具有 Azure Kubernetes Service （AKS）和應用程式閘道輸入控制器（AGIC）的 kubenet，您必須設定路由表，以允許傳送至 pod 的流量路由至正確的節點。 如果您使用 Azure CNI，就不需要這麼做。 
+  如果您使用具有 Azure Kubernetes Service （AKS）和應用程式閘道輸入控制器（AGIC）的 kubenet，您將需要路由表，以允許從應用程式閘道傳送到 pod 的流量路由至正確的節點。 如果您使用 Azure CNI，就不需要這麼做。 
 
-   若要設定路由表以允許 kubenet 運作，請使用下列步驟：
+  若要使用路由表來允許 kubenet 工作，請遵循下列步驟：
 
-  1. 在 Azure 中建立路由表資源。 
-  2. 建立之後，請移至 [**路由**] 頁面。 
-  3. 加入新的路由：
+  1. 移至 AKS 所建立的資源群組（資源群組的名稱應該以 "MC_" 開頭）
+  2. 在該資源群組中尋找 AKS 所建立的路由表。 路由表應該填入下列資訊：
      - 位址首碼應該是您想要在 AKS 中到達的 pod IP 範圍。 
-     - 下一個躍點類型應該是**虛擬裝置**。 
-     - 下一個躍點位址應該是在 [位址首碼] 欄位中定義的 IP 範圍內，主控 pod 之節點的 IP 位址。 
+     - 下一個躍點類型應該是虛擬裝置。 
+     - 下一個躍點位址應該是主控 pod 之節點的 IP 位址。
+  3. 將此路由表與應用程式閘道子網建立關聯。 
     
   **v2 不支援的案例**
 
@@ -283,7 +283,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
 
-此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱：
+此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱
 
  - [重寫 HTTP 標頭總覽](rewrite-http-headers.md)
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
@@ -317,7 +317,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 這項設定與接聽程式中的 HTTPS 結合，[可支援端對端 TLS](ssl-overview.md)。 這可讓您安全地將加密的機密資料傳輸至後端。 後端集區中已啟用端對端 TLS 的每部後端伺服器，都必須使用憑證來設定，以允許安全通訊。
 
-### <a name="port"></a>連接埠
+### <a name="port"></a>Port
 
 此設定會指定後端伺服器用來接聽來自應用程式閘道之流量的埠。 您可以設定範圍從1到65535的埠。
 

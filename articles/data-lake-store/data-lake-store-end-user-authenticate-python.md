@@ -1,22 +1,18 @@
 ---
-title: 使用者驗證︰使用 Python 透過 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行驗證 | Microsoft Docs
+title: 使用者驗證-使用 Data Lake Storage Gen1 的 Python-Azure
 description: 了解如何使用 Python 透過 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成使用者驗證
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265593"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691802"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 向 Azure Data Lake Storage Gen1 進行使用者驗證
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79265593"
 > * [使用 .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [使用 Python](data-lake-store-end-user-authenticate-python.md)
 > * [使用 REST API](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 在本文中，您會了解如何使用 Python SDK 向 Azure Data Lake Storage Gen1 進行使用者驗證。 使用者驗證可以進一步分成兩個類別：
 
@@ -34,7 +30,7 @@ ms.locfileid: "79265593"
 
 本文中討論這兩個選項。 如需使用 Python 向 Data Lake Storage Gen1 進行服務對服務驗證，請參閱[使用 Python 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Python**。 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
 
@@ -98,7 +94,7 @@ pip install azure-datalake-store
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ pip install azure-datalake-store
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>沒有多重要素驗證的使用者驗證
 
 這已被取代。 如需詳細資訊，請參閱[使用 Python SDK 進行 Azure 驗證](/azure/python/python-sdk-azure-authenticate)。
-   
+
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何使用 Python，使用使用者驗證向 Azure Data Lake Storage Gen1 進行驗證。 您現在可以看看下列文章，了解如何配合使用 Python 與 Azure Data Lake Storage Gen1。
 
 * [使用 Python 對 Data Lake Storage Gen1 進行帳戶管理作業](data-lake-store-get-started-python.md)
 * [使用 Python 對 Data Lake Storage Gen1 進行資料作業](data-lake-store-data-operations-python.md)
-

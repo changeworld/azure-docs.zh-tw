@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970057"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891634"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -57,5 +57,5 @@ Cloud Foundry 非常適合敏捷式軟體開發，包括使用持續整合 (CI) 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [從 Azure Marketplace 部署 Pivotal Cloud Foundry](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [從 Azure Marketplace 部署 Pivotal Cloud Foundry](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 - [在 Azure 將應用程式部署至 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)
