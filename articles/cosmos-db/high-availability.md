@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81688066"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609216"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB 的高可用性
 
@@ -99,6 +99,10 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 - 美國西部 2
 
 - 澳大利亞東部
+
+- 日本東部
+
+- 北歐
 
 > [!NOTE]
 > 針對單一區域 Azure Cosmos 帳戶啟用可用性區域，會產生相當於將額外區域新增至您帳戶的費用。 如需定價的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)和[Azure Cosmos DB 文章中的多區域成本](optimize-cost-regions.md)。
