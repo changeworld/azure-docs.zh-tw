@@ -4,26 +4,26 @@ description: Application Insights 所需的伺服器防火牆例外狀況
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/23/2020
-ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 05/01/2020
+ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105840"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652734"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
 
 > [!NOTE]
 > 雖然這些位址是靜態的，但可能隨時需要變更。 除了可用性監視和需要輸入防火牆規則的 Webhook 之外，Application Insights 的所有流量都表示輸出流量。
-> 
-> 
 
 > [!TIP]
-> 將 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom 新增至您慣用的 RSS/ATOM 讀取器，以訂閱此頁面的 RSS 摘要，而在最新變更可用時收取通知。
-> 
-> 
+> 如果您使用 Azure 網路安全性群組，您可以使用 Azure[網路服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+)標籤來管理存取權。 如果您要管理混合式/內部部署資源的存取權，您可以將對等的 IP 位址清單下載為每週更新的[JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案：。 若要涵蓋本文中的所有例外狀況，您必須使用服務標記： ' ActionGroup '、' ApplicationInsightsAvailability '、' AzureMonitor '。
+
+或者，您也可以將此頁面當做 RSS 摘要來訂閱， https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom方法是新增至您最愛的 RSS/ATOM 讀取器，以取得最新變更的通知。
+
 
 ## <a name="outgoing-ports"></a>連出連接埠
 您需要在伺服器防火牆開啟某些連出連接埠，以允許 Application Insights SDK 和/或狀態監視器將資料傳送至入口網站：
@@ -178,6 +178,13 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
+Azure US Government (Not needed if you are an Azure Public cloud customer)
+
+20.140.48.160/27
+20.140.56.160/27
+20.140.64.160/27
+20.140.72.160/27
+52.127.49.96/27
 ```  
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics Api
@@ -220,11 +227,11 @@ East US
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 動態 | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | 動態 | 80,443 |
 
-## <a name="alert-webhooks"></a>警示 Webhook
+## <a name="action-group-webhooks"></a>動作群組 webhook
 
 | 目的 | IP | 連接埠
 | --- | --- | --- |
-| 警示 | 23.96.11.4 | 443 |
+| 警示 | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
 ## <a name="profiler"></a>分析工具
 
