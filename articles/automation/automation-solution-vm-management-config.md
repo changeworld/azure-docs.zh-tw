@@ -1,20 +1,20 @@
 ---
-title: Azure 自動化設定在下班時間啟動/停止 Vm 解決方案
+title: Azure 自動化在離峰期間設定啟動/停止 Vm 解決方案
 description: 本文說明如何在離峰時間解決方案中設定啟動/停止 Vm，以支援不同的使用案例或案例。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9842a736cf922e0490f2b0c8acb1d2e5833f3d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604766"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864261"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>如何設定在下班時間啟動/停止 Vm 解決方案
+# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>如何在離峰時間解決方案中設定啟動/停止 Vm
 
-使用 [**在下班時間啟動/停止 vm** ] 解決方案時，您可以：
+使用在**離峰時間啟動/停止 vm 解決方案時**，您可以：
 
 - [排程要啟動和停止的 vm](#schedule)。
 - [使用 Azure 標記](#tags)（不支援傳統 vm），以遞增順序將 vm 排程為啟動和停止。
@@ -125,7 +125,7 @@ ms.locfileid: "81604766"
 
 ### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>將 autostop 動作的目標設為 Vm 清單
 
-1. 建立新的[排程](shared-resources/schedules.md#creating-a-schedule)並將它連結到**AutoStop_CreateAlert_Parent** runbook，並將以逗號分隔的 VM 名稱清單新增至`VMList`參數。
+1. 建立新的[排程](shared-resources/schedules.md#create-a-schedule)並將它連結到**AutoStop_CreateAlert_Parent** runbook，並將以逗號分隔的 VM 名稱清單新增至`VMList`參數。
 
 2. 或者，如果您想要從自動關機中排除部分 Vm，您可以將以逗號分隔的 VM 名稱清單新增至`External_ExcludeVMNames`變數。
 
@@ -180,7 +180,7 @@ ms.locfileid: "81604766"
 
 4. 選取 [**參數] 和**[回合設定]，並將**動作**欄位設定為 [**停止**]。
 
-5. 選取 [ **確定** ] 以儲存變更。
+5. 按一下 [確定]  以儲存您的變更。
 
 ## <a name="next-steps"></a>後續步驟
 

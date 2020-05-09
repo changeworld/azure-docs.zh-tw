@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272457"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594092"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>在 Linux 上使用 HDInsight 的相關資訊
 
 Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端中執行的 Apache Hadoop。 其操作大多與 Linux 安裝上的任何其他 Hadoop 相同。 本文件會指出其中應注意的特殊不同之處。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文件中的許多步驟都使用下列公用程式，可能需要安裝在您的系統上。
 
@@ -95,21 +95,21 @@ Hadoop 相關檔案可以在叢集節點的 `/usr/hdp`上找到。 此目錄包�
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS、Azure 儲存體和 Data Lake Storage
 
-在大部分的 Hadoop 散發套件中，資料會儲存在叢集機器上的本機儲存體所支援的 HDFS 中。 以雲端為基礎的解決方案，使用本機儲存體的成本可能很高，因為計算資源是以每小時或每分鐘為單位來計費。
+在大部分的 Hadoop 散發套件中，資料會儲存在 HDFS 中。 HDFS 是由叢集中電腦上的本機儲存體所支援。 以雲端為基礎的解決方案，使用本機儲存體的成本可能很高，因為計算資源是以每小時或每分鐘為單位來計費。
 
-使用 HDInsight 時，會使用 Azure Blob 儲存體 (並選擇性地使用 Azure Data Lake Storage) 以可調整的彈性方式將資料檔案儲存在雲端中。 這些服務提供下列優點：
+使用 HDInsight 時，資料檔案會以可調整且彈性的方式儲存在雲端中，使用 Azure Blob 儲存體並選擇性地 Azure Data Lake Storage。 這些服務提供下列優點：
 
 * 長期儲存成本低廉。
 * 可從各種外部服務進行存取，例如網站、檔案上傳/下載公用程式、各種語言的 SDK 和網頁瀏覽器。
-* 大型檔案容量和大型可調整儲存體。
+* 大型檔案容量和大型的可調儲存體。
 
 如需詳細資訊，請參閱[了解 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和[Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)。
 
-使用 Azure 儲存體或 Data Lake Storage 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出`/example/data`資料夾中的檔案，不論檔案是儲存在 Azure 儲存體或 Data Lake Storage：
+使用 Azure 儲存體或 Data Lake Storage 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出`/example/data`資料夾中的檔案，不論其儲存在 Azure 儲存體或 Data Lake Storage：
 
     hdfs dfs -ls /example/data
 
-在 HDInsight 中，資料儲存體資源 (Azure Blob 儲存體和 Azure Data Lake Storage) 會與計算資源分離。 因此，您可以在必要時建立 HDInsight 叢集以執行計算，並在後續完成工作後刪除該叢集，同時將您的資料檔案安全地保存在雲端儲存體中，沒有時間限制。
+在 HDInsight 中，資料儲存體資源 (Azure Blob 儲存體和 Azure Data Lake Storage) 會與計算資源分離。 您可以視需要建立 HDInsight 叢集來執行計算，稍後在工作完成時刪除叢集。 同時，只要您需要，就能安全地將資料檔案保存在雲端存放裝置中。
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI 和配置
 
@@ -210,46 +210,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>調整您的叢集規模
 
-叢集調整功能可讓您動態變更叢集所用的資料節點數目。 正在叢集上執行其他工作或處理序時，您可以執行調整作業。  另請參閱[調整 HDInsight](./hdinsight-scaling-best-practices.md)叢集
-
-不同的叢集類型會受調整影響，如下所示：
-
-* **Hadoop**︰相應減少叢集中的節點數目時，會重新啟動叢集中的部分服務。 調整作業可能會導致執行中或擱置的工作在調整作業完成時失敗。 您可以在作業完成後重新提交這些工作。
-* **HBase**︰區域伺服器會在調整作業完成後的幾分鐘內自動取得平衡。 若要手動平衡區域伺服器，請使用下列步驟：
-
-    1. 使用 SSH 連線到 HDInsight 叢集。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-    2. 使用下列命令來啟動 HBase Shell：
-
-            hbase shell
-
-    3. 載入 HBase Shell 後，使用下列命令來手動平衡區域伺服器︰
-
-            balancer
-
-* **Storm**︰執行調整作業之後，您應該重新平衡任何執行中的 Storm 拓撲。 重新平衡可讓拓撲根據叢集中的新節點數目，重新調整平行處理原則設定。 若要重新平衡執行中的拓撲，請使用下列其中一個選項：
-
-    * **SSH**︰連接到伺服器並使用下列命令來重新平衡拓撲：
-
-            storm rebalance TOPOLOGYNAME
-
-        您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` 會將拓撲重新設定為 5 個背景工作角色處理序、適用於 blue-spout 元件的 3 個執行程式，以及適用於 yellow-bolt 元件的 10 個執行程式。
-
-    * **Storm UI**︰使用下列步驟來重新平衡使用 Storm UI 的拓撲。
-
-        1. 在`https://CLUSTERNAME.azurehdinsight.net/stormui`您的網頁瀏覽器中`CLUSTERNAME`開啟，其中是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
-        2. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 在執行重新平衡作業之前輸入延遲。
-
-* **Kafka**：您應該在調整作業完成後重新平衡磁碟分割複本。 如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Kafka 確保資料的高可用性](./kafka/apache-kafka-high-availability.md)文件。
-
-如需有關調整 HDInsight 叢集的特定資訊，請參閱：
-
-* [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [使用 Azure CLI 管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-command-line.md#scale-clusters)
+叢集調整功能可讓您動態變更叢集所用的資料節點數目。 您可以在叢集上執行其他工作或進程時進行調整作業。  請參閱 [調整 HDInsight 叢集](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>如何安裝 Hue (或其他 Hadoop 元件)？
 
-HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會刪除失敗節點並建立要取代它的節點。 如果您以手動方式在叢集上安裝專案，則在此作業發生時不會保存它們。 請改用 [HDInsight 指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)。 指令碼動作可用來進行下列變更︰
+HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會刪除失敗節點並建立要取代它的節點。 當您以手動方式在叢集上安裝專案時，它們不會在此作業發生時保存。 請改用 [HDInsight 指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)。 指令碼動作可用來進行下列變更︰
 
 * 安裝及設定服務或網站。
 * 安裝及設定需要在叢集中的多個節點上進行組態變更的元件。
@@ -258,7 +223,7 @@ HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會�
 
 ### <a name="jar-files"></a>JAR 檔案
 
-獨立的 jar 檔案中提供了一些 Hadoop 技術，其中包含可用來做為 MapReduce 工作一部分的函式，或者來自 Pig 或 Hive 內部的函式。 它們通常不需要任何設定，而且可在佈建後上傳到叢集並直接使用。 如果您想要確定元件會在重新安裝叢集的映像後保存下來，則可將 jar 檔案儲存於叢集的預設儲存體 (WASB 或 ADL) 中。
+某些 Hadoop 技術提供獨立的 jar 檔案。 這些檔案包含用來做為 MapReduce 工作一部分的函式，或是從 Pig 或 Hive 內部使用的函數。 它們通常不需要任何設定，而且可在佈建後上傳到叢集並直接使用。 如果您想要確保元件不受叢集的重新安裝映射，請將 jar 檔案儲存在叢集預設儲存體中。
 
 例如，如果您想要使用最新版本的 [Apache DataFu](https://datafu.incubator.apache.org/)，則可下載包含專案的 jar，並將它上傳至 HDInsight 叢集。 接著遵循 DataFu 文件中，如何從 Pig 或 Hive 中使用它的指示進行。
 
