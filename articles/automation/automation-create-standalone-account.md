@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f291bdea2df67e07b1aca2dcc6326c3c9864ad2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392296"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995804"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>建立獨立的 Azure 自動化帳戶
 
-本文示範如何在 Azure 入口網站中建立 Azure 自動化帳戶。 您可以使用入口網站自動化帳戶來評估和瞭解自動化，而不需使用額外的管理解決方案或與 Azure 監視器記錄整合。 您可以新增這些管理解決方案，或與 Azure 監視器記錄整合，以便在未來的任何時間點進行 runbook 作業的先進監視。
+本文示範如何在 Azure 入口網站中建立 Azure 自動化帳戶。 您可以使用入口網站自動化帳戶來評估和瞭解自動化，而不需使用額外的管理功能或與 Azure 監視器記錄整合。 您可以新增管理功能或與 Azure 監視器記錄整合，以便在未來的任何時間點進行 runbook 作業的先進監視。
 
 使用自動化帳戶，您可以藉由在 Azure Resource Manager 或傳統部署模型中管理資源來驗證 Runbook。 一個「自動化帳戶」可以管理所指定租用戶之所有區域和訂用帳戶的資源。
 

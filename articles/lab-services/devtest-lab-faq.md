@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270780"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996905"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -209,6 +209,9 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>是否可以在 VM 連接多個磁碟？
 
 是，您可以將多個磁碟連結至 VM。
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs 是否支援 Gen 2 映射？
+否。 DevTest Labs 服務不支援[Gen 2 映射](../virtual-machines/windows/generation-2.md)。 如果第1代和 Gen 2 版本適用于映射，則在建立 VM 時，DevTest Labs 只會顯示映射的 Gen 1 版本。 如果只有 Gen 2 版本可供使用，您將不會看到映射。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果我想要使用 Windows 作業系統映像進行測試，是否應購買 MSDN 訂用帳戶？
 若要在 Azure 中使用 Windows 用戶端 OS 映射（Windows 7 或更新版本）進行開發或測試，請採取下列其中一個步驟：

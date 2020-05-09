@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5030fb50313e1db2173990c55930c22fdf58f559
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734785"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995844"
 ---
 # <a name="azure-custom-roles"></a>Azure 自訂角色
 
@@ -35,7 +35,7 @@ ms.locfileid: "82734785"
 
 ## <a name="custom-role-example"></a>自訂角色範例
 
-以下顯示自訂角色以 JSON 格式顯示時的外觀。 此自訂角色可用於監視和重新啟動虛擬機器。
+下圖顯示使用 JSON 格式的 Azure PowerShell 時，自訂角色的顯示樣子。 此自訂角色可用於監視和重新啟動虛擬機器。
 
 ```json
 {
@@ -67,51 +67,91 @@ ms.locfileid: "82734785"
 }
 ```
 
+下圖顯示使用 Azure CLI 所顯示的相同自訂角色。
+
+```json
+[
+  {
+    "assignableScopes": [
+      "/subscriptions/{subscriptionId1}",
+      "/subscriptions/{subscriptionId2}",
+      "/providers/Microsoft.Management/managementGroups/{groupId1}"
+    ],
+    "description": "Can monitor and restart virtual machines.",
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/88888888-8888-8888-8888-888888888888",
+    "name": "88888888-8888-8888-8888-888888888888",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/*/read",
+          "Microsoft.Network/*/read",
+          "Microsoft.Compute/*/read",
+          "Microsoft.Compute/virtualMachines/start/action",
+          "Microsoft.Compute/virtualMachines/restart/action",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.ResourceHealth/availabilityStatuses/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Insights/diagnosticSettings/*",
+          "Microsoft.Support/*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Virtual Machine Operator",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
 建立自訂角色時，它會以橙色資源圖示顯示在 Azure 入口網站中。
 
 ![自訂角色圖示](./media/custom-roles/roles-custom-role-icon.png)
 
-## <a name="steps-to-create-a-custom-role"></a>建立自訂角色的步驟
-
-1. 決定您要如何建立自訂角色
-
-    您可以使用[Azure 入口網站](custom-roles-portal.md)、 [Azure PowerShell](custom-roles-powershell.md)、 [Azure CLI](custom-roles-cli.md)或[REST API](custom-roles-rest.md)來建立自訂角色。
-
-1. 判斷您所需的權限
-
-    在建立自訂角色時，您必須知道可用來定義權限的資源提供者作業。 若要查看作業清單，請參閱[Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。 您會將作業新增至`Actions` [角色定義](role-definitions.md)的或`NotActions`屬性。 如果您有資料作業，則會將其加入至`DataActions`或`NotDataActions`屬性。
-
-1. 建立自訂角色
-
-    一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 接著，您可以使用 [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) 或 [az role definition create](/cli/azure/role/definition#az-role-definition-create) 命令來建立自訂角色。 若要建立自訂角色，您必須擁有所有 `AssignableScopes` 的 `Microsoft.Authorization/roleDefinitions/write` 權限，例如[擁有者](built-in-roles.md#owner)或[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。
-
-1. 測試自訂角色
-
-    一旦具有自訂角色，您必須測試它來驗證是否如預期般運作。 稍後如需進行調整，您可以更新自訂角色。
-
-如需如何建立自訂角色的逐步教學課程，請參閱[教學課程：使用 Azure PowerShell 建立 azure 自訂角色](tutorial-custom-role-powershell.md)或教學課程[：使用 Azure CLI 建立 azure 自訂角色](tutorial-custom-role-cli.md)。
-
 ## <a name="custom-role-properties"></a>自訂角色屬性
 
-自訂角色具有下列屬性。
+下表描述自訂角色屬性的意義。
 
 | 屬性 | 必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
-| `Name` | 是 | String | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
-| `Id` | 是 | String | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
-| `IsCustom` | 是 | String | 表示這是否為自訂角色。 若為自訂角色，請設定為 `true`。 |
-| `Description` | 是 | String | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
-| `Actions` | 是 | String[] | 字串陣列，指定角色允許執行的管理作業。 如需詳細資訊，請參閱 [Actions](role-definitions.md#actions)。 |
-| `NotActions` | 否 | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
-| `DataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用`DataActions`建立自訂角色，該角色就無法在管理群組範圍中指派。 如需詳細資訊，請參閱[DataActions](role-definitions.md#dataactions)。 |
-| `NotDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱[NotDataActions](role-definitions.md#notdataactions)。 |
-| `AssignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中`AssignableScopes`定義一個管理群組。 將管理群組新增至`AssignableScopes`目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `Name`</br>`roleName` | 是 | String | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
+| `Id`</br>`name` | 是 | String | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
+| `IsCustom`</br>`roleType` | 是 | String | 表示這是否為自訂角色。 針對自`true`定義`CustomRole`角色，將設為或。 針對內`false`建`BuiltInRole`角色，將設為或。 |
+| `Description`</br>`description` | 是 | String | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
+| `Actions`</br>`actions` | 是 | String[] | 字串陣列，指定角色允許執行的管理作業。 如需詳細資訊，請參閱 [Actions](role-definitions.md#actions)。 |
+| `NotActions`</br>`notActions` | 否 | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
+| `DataActions`</br>`dataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用`DataActions`建立自訂角色，該角色就無法在管理群組範圍中指派。 如需詳細資訊，請參閱[DataActions](role-definitions.md#dataactions)。 |
+| `NotDataActions`</br>`notDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱[NotDataActions](role-definitions.md#notdataactions)。 |
+| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中`AssignableScopes`定義一個管理群組。 將管理群組新增至`AssignableScopes`目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+
+## <a name="steps-to-create-a-custom-role"></a>建立自訂角色的步驟
+
+若要建立自訂角色，以下是您應該遵循的基本步驟。
+
+1. 決定您要如何建立自訂角色。
+
+    您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。
+
+1. 決定您需要的許可權。
+
+    當您建立自訂角色時，您必須知道可用來定義許可權的作業。 若要查看作業清單，請參閱[Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。 您會將作業新增至`Actions` [角色定義](role-definitions.md)的或`NotActions`屬性。 如果您有資料作業，則會將其加入至`DataActions`或`NotDataActions`屬性。
+
+1. 建立自訂角色。
+
+    一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 最簡單的方式是使用 Azure 入口網站。 如需如何使用 Azure 入口網站建立自訂角色的步驟，請參閱[使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)。
+
+1. 測試自訂角色。
+
+    一旦具有自訂角色，您必須測試它來驗證是否如預期般運作。 稍後如需進行調整，您可以更新自訂角色。
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>誰可以建立、刪除、更新或檢視自訂角色
 
 就像內建角色一樣，`AssignableScopes` 屬性會指定角色可用於指派的範圍。 自訂角色的 `AssignableScopes` 屬性也會控制誰可以建立、刪除、更新或檢視自訂角色。
 
-| Task | 作業 | 描述 |
+| 工作 | 作業 | 描述 |
 | --- | --- | --- |
 | 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
 | 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
@@ -130,7 +170,150 @@ ms.locfileid: "82734785"
 
 如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
 
+## <a name="input-and-output-formats"></a>輸入和輸出格式
+
+若要使用命令列建立自訂角色，您通常會使用 JSON 來指定您想要用於自訂角色的屬性。 視您使用的工具而定，輸入和輸出格式看起來會稍有不同。 本節列出根據工具的輸入和輸出格式。
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+若要使用 Azure PowerShell 建立自訂角色，您必須提供下列輸入。
+
+```json
+{
+  "Name": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+若要使用 Azure PowerShell 更新自訂角色，您必須提供下列輸入。 請注意， `Id`已新增屬性。 
+
+```json
+{
+  "Name": "",
+  "Id": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+以下顯示當您使用 Azure PowerShell 和[convertto-html-Json](/powershell/module/microsoft.powershell.utility/convertto-json)命令列出自訂角色時的輸出範例。 
+
+```json
+{
+  "Name": "",
+  "Id": "",
+  "IsCustom": true,
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+若要使用 Azure CLI 建立或更新自訂角色，您必須提供下列輸入。 當您使用 Azure PowerShell 建立自訂角色時，此格式會是相同的格式。
+
+```json
+{
+  "Name": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+以下顯示使用 Azure CLI 列出自訂角色時的輸出範例。
+
+```json
+[
+  {
+    "assignableScopes": [],
+    "description": "",
+    "id": "",
+    "name": "",
+    "permissions": [
+      {
+        "actions": [],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+### <a name="rest-api"></a>REST API
+
+若要使用 REST API 建立或更新自訂角色，您必須提供下列輸入。 當您使用 Azure 入口網站建立自訂角色時，此格式會產生相同的格式。
+
+```json
+{
+  "properties": {
+    "roleName": "",
+    "description": "",
+    "assignableScopes": [],
+    "permissions": [
+      {
+        "actions": [],
+        "notActions": [],
+        "dataActions": [],
+        "notDataActions": []
+      }
+    ]
+  }
+}
+```
+
+以下顯示使用 REST API 列出自訂角色時的輸出範例。
+
+```json
+{
+    "properties": {
+        "roleName": "",
+        "type": "CustomRole",
+        "description": "",
+        "assignableScopes": [],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ],
+        "createdOn": "",
+        "updatedOn": "",
+        "createdBy": "",
+        "updatedBy": ""
+    },
+    "id": "",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": ""
+}
+```
+
 ## <a name="next-steps"></a>後續步驟
-- [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)
+
+- [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
+- [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)
 - [瞭解 Azure 角色定義](role-definitions.md)
 - [針對 Azure RBAC 進行疑難排解](troubleshooting.md)

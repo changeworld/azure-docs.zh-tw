@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637476"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996433"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>將 Windows 電腦連線至 Azure 監視器
 
@@ -92,7 +92,7 @@ ms.locfileid: "80637476"
 
 下表特別列出代理程式安裝支援的特定參數，包括使用 Automation DSC 部署時的參數。
 
-|MMA 專屬選項                   |備忘錄         |
+|MMA 專屬選項                   |注意         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 選擇性參數。 安裝代理程式但不包括 .NET 應用程式效能監控。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 將代理程式設定為向工作區報告                |
@@ -176,8 +176,8 @@ Configuration MMAgent
 ```
 
 4. 使用稍早建議的方法，將指令碼中的 `ProductId` 值更新為從最新版代理程式安裝套件擷取的產品代碼。 
-5. [將 MMAgent.ps1 設定指令碼匯入](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)您的自動化帳戶。 
-5. 為設定[指派 Windows 電腦或節點](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration)。 在 15 分鐘內，節點會檢查其設定，然後系統會將代理程式推送至節點。
+5. [將 MMAgent.ps1 設定指令碼匯入](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation)您的自動化帳戶。 
+6. 為設定[指派 Windows 電腦或節點](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration)。 在 15 分鐘內，節點會檢查其設定，然後系統會將代理程式推送至節點。
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>確認代理程式能夠連線到 Log Analytics
 

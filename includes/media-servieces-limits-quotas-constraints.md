@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656182"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997712"
 ---
 > [!NOTE]
 > 對於未修正的資源，請開啟支援票證以要求增加配額。 在嘗試取得更高的限制時，請勿建立額外的 Azure 媒體服務帳戶。
@@ -66,7 +66,7 @@ ms.locfileid: "80656182"
 | --- | --- | 
 | 每個媒體服務帳戶的實況活動<sup>（4）</sup> |5|
 | 每個即時事件的即時輸出 |3 <sup>（5）</sup> |
-| 即時輸出持續時間上限 | 25小時 |
+| 即時輸出持續時間上限 | [DVR 視窗的大小](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup>如需有關即時事件限制的詳細資訊，請參閱[即時事件種類比較和限制](../articles/media-services/latest/live-event-types-comparison.md)。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 126a6f2f26d8eaaf6ea1a85f029e56bc8f4432f3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983307"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996770"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的教室實驗室 
 本文說明如何建立和刪除教室實驗室。 它也示範如何檢視實驗室帳戶中的所有教室實驗室。 
@@ -104,14 +104,15 @@ ms.locfileid: "82983307"
 | 小型 | 2 | 3.5 GB | 此大小最適合用於命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
 | 中 | 4 | 7 GB | 此大小最適合用於關係資料庫、記憶體內部快取和分析 | 
 | 中（嵌套虛擬化） | 4 | 16 GB | 此大小最適合用於關係資料庫、記憶體內部快取及分析。 此大小也支援嵌套虛擬化。 <p>此大小可用於每個學生都需要多個 Vm 的案例。 老師可以使用嵌套虛擬化，在虛擬機器內設定幾個小型的嵌套虛擬機器。 </p> |
-| 小型 GPU （計算） | 6 | 56 GB | 此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習應用程式。 | 
+| 小型 GPU （計算） | 6 | 56 GB | <p>此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習應用程式。</p><p>當您使用 GPU 映射建立實驗室時，Azure 實驗室服務會自動為您安裝並設定必要的 GPU 驅動程式。 </p> | 
 | 小型 GPU （視覺效果） | 6 | 56 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
 | 大型 | 8 | 16 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 |
 | 大型（嵌套虛擬化） | 8 | 32 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 此大小也支援嵌套虛擬化。 |  
 | 中 GPU （視覺效果） | 12 | 112 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
 
 > [!NOTE]
-> 當您使用 GPU 映射建立實驗室時，Azure 實驗室服務會自動為您安裝並設定必要的 GPU 驅動程式。  
+> 建立教室實驗室時，您可能不會在清單中看到這些 VM 大小。 此清單會根據實驗室位置的目前容量填入。 如果實驗室帳戶建立者[允許實驗室建立者挑選實驗室的位置](allow-lab-creator-pick-lab-location.md)，您可以嘗試為實驗室選擇不同的位置，並查看 VM 大小是否可用。 
+
 
 ## <a name="view-all-classroom-labs"></a>檢視所有教室實驗室
 1. 瀏覽至 [Azure 實驗室服務入口網站](https://labs.azure.com)。

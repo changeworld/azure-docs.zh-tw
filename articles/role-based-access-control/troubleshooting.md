@@ -15,12 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735553"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996602"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "82735553"
 
 ## <a name="azure-role-assignments-limit"></a>Azure 角色指派限制
 
-Azure 支援每個訂用帳戶最多 **2000** 個角色指派。 如果您在嘗試指派角色時收到錯誤訊息「無法建立更多角色指派（代碼： RoleAssignmentLimitExceeded）」，請嘗試減少訂用帳戶中的角色指派數目。
+Azure 支援每個訂用帳戶最多 **2000** 個角色指派。 此限制包括訂用帳戶、資源群組和資源範圍的角色指派。 如果您在嘗試指派角色時收到錯誤訊息「無法建立更多角色指派（代碼： RoleAssignmentLimitExceeded）」，請嘗試減少訂用帳戶中的角色指派數目。
 
 > [!NOTE]
 > 每個訂用帳戶的**2000**角色指派限制是固定的，而且無法增加。

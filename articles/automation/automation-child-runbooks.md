@@ -5,19 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21dc14362fed2abf80c2c5ecf57f688541c9c639
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367358"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994800"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自動化中的子 Runbook
 
 建議的作法是 Azure 自動化使用其他 runbook 所呼叫的個別函式來撰寫可重複使用的模組化 runbook。 父 Runbook 通常會呼叫一或多個子 Runbook 來執行必要的功能。 有兩種方式可以呼叫子 runbook，而且您應該瞭解哪些差異，才能判斷哪一個最適合您的案例。
-
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>使用內嵌執行叫用子 Runbook
 

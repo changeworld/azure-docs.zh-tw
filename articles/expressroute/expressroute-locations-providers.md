@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19457dc7324c509f54a58a2cdaa39561bfc71b4d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 9d7476b2bb64c9ed45d543345107008c4cedfb66
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853336"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996637"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -99,7 +99,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **法蘭克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G、100G | 在&T NetBond、CenturyLink Cloud Connect、Colt、DE CIX、Equinix、GEANT、Interxion、Megaport、橙色、Telia 電訊廠商 |
 | **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | n/a | Aryaka networks Networks，英屬電信，CenturyLink Cloud Connect，首席電信，中國電信全球，Equinix，InterCloud，Megaport，NTT 通訊，橙色，PCCW GLOBAL LIMITED 全球有限，Tata 通訊，Telia 電訊，Verizon |
-| **香港 Kong2** | [萬圖元-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n/a | 10G | |
+| **香港 Kong2** | 中國電訊全球，[萬圖元-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n/a | 10G | |
 | **雅加達** | Telkom 印尼 | 4 | n/a | 10G | |
 | **約翰尼斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | BCX，不列顛電信，網際網路解決方案-雲端連線，液體電信，橙色，Teraco |
 | **吉隆坡** | [TIME dotCom Menara 的目標](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | n/a | n/a | TIME dotCom |

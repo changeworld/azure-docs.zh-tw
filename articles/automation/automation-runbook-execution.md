@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927916"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994750"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -68,7 +68,7 @@ Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 
 ## <a name="security"></a>安全性
 
-Azure 自動化使用[Azure 資訊安全中心（ASC）](https://docs.microsoft.com/azure/security-center/security-center-introAzure)來為您的資源提供安全性，並在 Linux 系統中偵測到危害。 無論資源是否在 Azure 中，都能在您的工作負載中提供安全性。 請參閱[Azure 自動化中的驗證簡介](automation-security-overview.md)。
+Azure 自動化使用[Azure 資訊安全中心（ASC）](../security-center/security-center-intro.md)來為您的資源提供安全性，並在 Linux 系統中偵測到危害。 無論資源是否在 Azure 中，都能在您的工作負載中提供安全性。 請參閱[Azure 自動化中的驗證簡介](automation-security-overview.md)。
 
 ASC 會對可在 VM 上執行任何腳本（已簽署或未簽署）的使用者施加條件約束。 如果您是具有 VM 根存取權的使用者，您必須使用數位簽章明確設定電腦，或將它關閉。 否則，您只能在建立自動化帳戶並啟用適當功能之後，執行腳本以套用作業系統更新。
 

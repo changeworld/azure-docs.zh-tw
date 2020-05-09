@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74899786"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995812"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用時間轉移和即時輸出來建立隨選影片播放
 
-在 Azure 媒體服務中，[即時輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](https://docs.microsoft.com/rest/api/media/assets)資源所定義的容器中（容器位於附加至您帳戶的 Azure 儲存體帳戶中）。 即時輸出也可讓您控制傳出即時串流的某些屬性，像是封存記錄中保留的串流數（例如，雲端 DVR 的容量），或檢視器何時可以開始觀看即時串流。 磁片上的封存是「迴圈保存」的「視窗」，只會保存即時輸出的**archiveWindowLength**屬性中所指定的內容量。 超出此時段的內容會自動從儲存體容器中捨棄，且無法復原。 ArchiveWindowLength 值代表 ISO-8601 timespan 期間（例如，PTHH： MM： SS），可指定 DVR 的容量。 此值最少可設定為3分鐘，最大為25小時。
+在 Azure 媒體服務中，[即時輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](https://docs.microsoft.com/rest/api/media/assets)資源所定義的容器中（容器位於附加至您帳戶的 Azure 儲存體帳戶中）。 即時輸出也可讓您控制傳出即時串流的某些屬性，像是封存記錄中保留的串流數（例如，雲端 DVR 的容量），或檢視器何時可以開始觀看即時串流。 磁片上的封存是「迴圈保存」的「視窗」，只會保存即時輸出的**archiveWindowLength**屬性中所指定的內容量。 超出此時段的內容會自動從儲存體容器中捨棄，且無法復原。 ArchiveWindowLength 值代表 ISO-8601 timespan 期間（例如，PTHH： MM： SS），可指定 DVR 的容量。 值最少可設定為一分鐘，最大為25小時。
 
 實況活動與其即時輸出之間的關聯性與傳統電視廣播類似，因為通道（即時事件）代表影片的常數資料流程，而錄製（即時輸出）的範圍是特定的時間區段（例如，從6：1:30 到7的夜晚新聞：00）。 當資料流程流入即時事件之後，您就可以藉由建立資產、即時輸出和串流定位器來開始串流事件。 「即時事件」會封存資料流，並透過[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)將它提供給檢視者。 您可以使用不同的封存長度和設定，在實況活動建立多個實況輸出 (最多三個)。 如需有關即時串流工作流程的詳細資訊，請參閱[一般步驟](live-streaming-overview.md#general-steps)一節。
 
@@ -45,7 +45,7 @@ ms.locfileid: "74899786"
 
 如果您已使用串流定位器來發佈實況輸出的資產，實況活動（最長可達 DVR 視窗長度）將繼續可見，直到串流定位器的到期或刪除為止（以先發生者為准）。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [即時串流概觀](live-streaming-overview.md)
 - [即時串流教學課程](stream-live-tutorial-with-api.md)

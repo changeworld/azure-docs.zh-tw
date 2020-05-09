@@ -11,12 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 433e4160972a06ee3652410e062f6602e9ca6767
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729122"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996911"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
 
@@ -46,7 +46,7 @@ ms.locfileid: "81729122"
 
 * **低資源裝置**。 MQTT 和 HTTPS 程式庫的磁碟使用量比 AMQP 程式庫小。 因此，如果裝置的資源有限 (例如 RAM 小於 1 MB)，這些通訊協定可能會是唯一可用的通訊協定實作。
 
-* **網路周遊**。 標準的 AMQP 通訊協定會使用連接埠 5671，MQTT 則會接聽連接埠 8883。 使用這些連接埠可能會導致對非 HTTPS 通訊協定關閉的網路發生問題。 在此案例中，請使用「透過 Websocket 的 MQTT」、「透過 Websocket 的 AMQP」或 HTTPS。
+* **網路周遊**。 標準的 AMQP 通訊協定會使用連接埠 5671，MQTT 則會接聽連接埠 8883。 使用這些埠可能會導致關閉非 HTTPS 通訊協定的網路發生問題。 在此案例中，請使用「透過 Websocket 的 MQTT」、「透過 Websocket 的 AMQP」或 HTTPS。
 
 * **承載大小**。 MQTT 和 AMQP 是二進位通訊協定，這使得其承載比 HTTPS 更精簡。
 
@@ -57,7 +57,7 @@ ms.locfileid: "81729122"
 
 裝置可以在 Azure 中使用各種通訊協定來與 IoT 中樞通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| 通訊協定 | 連接埠 |
+| 通訊協定 | Port |
 | --- | --- |
 | MQTT |8883 |
 | 透過 WebSocket 的 MQTT |443 |

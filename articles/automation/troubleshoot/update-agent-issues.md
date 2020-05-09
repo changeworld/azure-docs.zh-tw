@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927882"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996446"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>針對 Windows update 代理程式問題進行疑難排解
 
@@ -27,21 +27,21 @@ ms.locfileid: "82927882"
 > [!NOTE]
 > Azure 入口網站顯示的內容與電腦目前的狀態之間可能會有些許延遲。
 
-本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 Azure 機器執行 azure 機器的疑難排解員。 疑難排解員現在包含 Windows Server Update Services （WSUS）和自動下載和 install 金鑰的檢查。
+本文討論如何在[離線案例](#troubleshoot-offline)中，從 Azure 入口網站和非 Azure 機器執行 azure 機器的疑難排解員。 
 
 > [!NOTE]
-> 疑難排解員腳本目前不會透過 proxy 伺服器來路由傳送流量（如果已設定的話）。
+> 疑難排解程式腳本現在包含 Windows Server Update Services （WSUS）和自動下載和 install 金鑰的檢查。 
 
 ## <a name="start-the-troubleshooter"></a>啟動疑難排解員
 
-針對 Azure 機器，您可以在入口網站中，選取 [**更新代理程式準備就緒**] 欄底下的 [**疑難排解**] 連結，以啟動 [**疑難排解更新代理程式**] 頁面。 針對非 Azure 機器，此連結會將您帶到這篇文章。 請參閱[離線指示](#troubleshoot-offline)以對非 Azure 機器進行疑難排解。
+針對 Azure 機器，您可以在入口網站中，選取 [**更新代理程式準備就緒**] 欄底下的 [**疑難排解**] 連結，以啟動 [疑難排解更新代理程式] 頁面。 針對非 Azure 機器，此連結會將您帶到這篇文章。 請參閱[離線指示](#troubleshoot-offline)以對非 Azure 機器進行疑難排解。
 
 ![虛擬機器更新管理清單的螢幕擷取畫面](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > 若要檢查混合式 Runbook 背景工作角色的健全狀況，VM 必須正在執行。 如果 VM 未執行，將會出現 [啟動 VM]**** 按鈕。
 
-在 [對更新代理程式進行疑難排解]**** 頁面上，選取 [執行檢查]**** 以啟動疑難排解員。 疑難排解員會使用[執行命令](../../virtual-machines/windows/run-command.md)在電腦上執行腳本，以確認相依性。 疑難排解員完成後，會傳回檢查結果。
+在 [對更新代理程式進行疑難排解] 頁面上，選取 [執行檢查]**** 以啟動疑難排解員。 疑難排解員會使用[執行命令](../../virtual-machines/windows/run-command.md)在電腦上執行腳本，以確認相依性。 疑難排解員完成後，會傳回檢查結果。
 
 ![[疑難排解更新代理程式] 頁面的螢幕擷取畫面](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "82927882"
 
 ### <a name="operating-system"></a>作業系統
 
-作業系統檢查會確認「混合式 Runbook 背景工作角色」是否正在執行下列其中一個作業系統：
+作業系統檢查會確認「混合式 Runbook 背景工作角色」是否正在執行下表所示的其中一個作業系統。
 
 |作業系統  |注意  |
 |---------|---------|
@@ -61,11 +61,11 @@ ms.locfileid: "82927882"
 
 ### <a name="net-462"></a>.NET 4.6.2
 
-.NET Framework 檢查會確認系統是否已安裝最少的[.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) 。
+.NET Framework 檢查會確認系統已安裝[.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345)或更新版本。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 檢查會確認系統是否具有所需的 Windows Management Framework （WMF）版本： [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
+WMF 檢查會確認系統是否具有所需的 Windows Management Framework （WMF）版本，也就是[Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -77,13 +77,13 @@ WMF 檢查會確認系統是否具有所需的 Windows Management Framework （W
 
 此檢查會判斷代理程式是否能夠正確地與代理程式服務進行通訊。
 
-Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與註冊端點進行通訊。 如需要開啟的位址和埠清單，請參閱混合式背景[工作角色的網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
+Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與註冊端點進行通訊。 如需要開啟的位址和埠清單，請參閱[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="operations-endpoint"></a>作業端點
 
 此檢查會判斷代理程式是否能夠正確地與「作業執行階段資料服務」進行通訊。
 
-Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與「作業執行階段資料服務」進行通訊。 如需要開啟的位址和埠清單，請參閱混合式背景[工作角色的網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
+Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與「作業執行階段資料服務」進行通訊。 如需要開啟的位址和埠清單，請參閱[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ## <a name="vm-service-health-checks"></a>VM 服務健康情況檢查
 
@@ -91,15 +91,18 @@ Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」�
 
 此檢查會判斷電腦上是否正在執行適用于`healthservice`Windows 的 Log Analytics 代理程式（）。 若要深入瞭解如何對服務進行疑難排解，請參閱[適用于 Windows 的 Log Analytics 代理程式未執行](hybrid-runbook-worker.md#mma-not-running)。
 
-若要重新安裝適用于 Windows 的 Log Analytics 代理程式，請參閱[安裝和設定適用于 windows 的 Log analytics 代理程式](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+若要重新安裝適用于 Windows 的 Log Analytics 代理程式，請參閱[安裝 windows 的代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)程式。
 
 ### <a name="monitoring-agent-service-events"></a>監視代理程式服務事件
 
 這項檢查會判斷電腦上的 Azure Operations Manager 記錄檔中是否有任何4502事件出現在過去24小時內。
 
-若要深入了解此事件，請參閱此事件的[疑難排解指南](hybrid-runbook-worker.md#event-4502)。
+若要深入瞭解此事件，請參閱此事件[Operations Manager 記錄檔中的事件 4502](hybrid-runbook-worker.md#event-4502) 。
 
 ## <a name="access-permissions-checks"></a>存取權限檢查
+
+> [!NOTE]
+> 疑難排解員目前不會透過 proxy 伺服器來路由傳送流量（如果已設定的話）。
 
 ### <a name="crypto-folder-access"></a>加密資料夾存取
 

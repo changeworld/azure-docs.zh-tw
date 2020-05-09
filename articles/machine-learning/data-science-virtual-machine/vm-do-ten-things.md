@@ -5,16 +5,16 @@ description: 在 Windows 資料科學虛擬機器上執行資料探索和模型�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.date: 05/08/2020
+ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929276"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994062"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
@@ -30,7 +30,7 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 - 使用 Azure 入口網站或 PowerShell 來管理您的 Azure 資源。
 - 藉由在 DSVM 上建立 Azure 檔案儲存體共用作為可掛接的磁片磁碟機，以擴充您的儲存空間，並在整個小組共用大規模的資料集/程式碼。
 - 使用 GitHub 與您的小組共用程式碼。 使用預先安裝的 Git 用戶端（Git Bash 和 Git GUI）來存取您的存放庫。
-- 存取 Azure 資料和分析服務，例如 Azure Blob 儲存體、Azure Data Lake、Azure HDInsight （Hadoop）、Azure Cosmos DB、Azure SQL 資料倉儲和 Azure SQL Database。
+- 存取 Azure 資料和分析服務，例如 Azure Blob 儲存體、Azure Data Lake、Azure Cosmos DB、Azure SQL 資料倉儲和 Azure SQL Database。
 - 使用預先安裝在 DSVM 上的 Power BI Desktop 實例來建立報表和儀表板，並將其部署在雲端中。
 - 以動態方式調整您的 DSVM，以符合您的專案需求。
 - 在您的虛擬機器上安裝其他工具。   
@@ -127,11 +127,6 @@ pass
 
 IrisPredictor(3,2,3,4)
 ```
-
-> [!NOTE]
-> 目前，只有在 Python 2.7 上才支援 Azure Machine Learning 程式庫。   
-> 
-> 
 
 ### <a name="build-and-operationalize-r-models"></a>建立和讓 R 模型
 您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 步驟如下：
@@ -269,7 +264,7 @@ Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
-   ![Azure 入口網站中的儲存體帳戶建立程式的螢幕擷取畫面](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Azure 入口網站中的儲存體帳戶建立程式的螢幕擷取畫面](./media/vm-do-ten-things/create-azure-blob.png)
 
 * 確認已預先安裝命令列 AzCopy 工具： ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```。 包含 azcopy 的目錄已經在您的 PATH 環境變數上，因此您可以在執行此工具時避免輸入完整的命令路徑。 如需 AzCopy 工具的詳細資訊，請參閱[AzCopy 檔](../../storage/common/storage-use-azcopy.md)。
 * 啟動 Azure 儲存體總管工具。 您可以從[儲存體總管網頁](https://storageexplorer.com/)下載它。 
@@ -371,7 +366,7 @@ Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料�
 
 * 在[Azure 入口網站](https://portal.azure.com)中建立 Azure Data Lake Analytics 實例。
 
-   ![從 Azure 入口網站建立 Data Lake Analytics 實例的螢幕擷取畫面](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+   ![從 Azure 入口網站建立 Data Lake Analytics 實例的螢幕擷取畫面](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
 
 * [Visual Studio 外掛程式的 Azure Data Lake 和串流分析工具](https://www.microsoft.com/download/details.aspx?id=49504)已安裝在虛擬機器的 Visual Studio Community 版本中。 開始 Visual Studio 並登入您的 Azure 訂用帳戶之後，您應該會在 Visual Studio 的左面板中看到您的 Azure 資料分析帳戶和儲存體。
 
@@ -448,361 +443,6 @@ USING Outputters.Csv();
 檔案資訊隨即出現：
 
 ![檔案摘要資訊的螢幕擷取畫面](./media/vm-do-ten-things/USQL_tripdata_summary.png)
-
-### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 叢集
-Azure HDInsight 是雲端中的受控 Apache Hadoop、Spark、HBase 和風暴服務。 您可以從資料科學虛擬機器輕鬆地使用 Azure HDInsight 叢集。
-
-#### <a name="prerequisites"></a>Prerequisites
-
-* 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。 此儲存體帳戶用來儲存 HDInsight 叢集的資料。
-
-   ![從 Azure 入口網站建立儲存體帳戶的螢幕擷取畫面](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
-
-* 從[Azure 入口網站](../team-data-science-process/customize-hadoop-cluster.md)自訂 Azure HDInsight Hadoop 叢集。
-  
-   連結建立時，使用您的 HDInsight 叢集所建立的儲存體帳戶。 此儲存體帳戶用於存取可以在叢集內處理的資料。
-
-   ![用於連結以 HDInsight 叢集建立之儲存體帳戶的選取專案](./media/vm-do-ten-things/Create_HDI_v4.PNG)
-
-* 啟用叢集建立後，對該叢集的前端節點進行遠端桌面存取。 請記住您在這裡指定的遠端存取認證，因為您在後續程式中將會用到它們。
-
-   ![啟用 HDInsight 叢集遠端存取的 [遠端桌面] 按鈕](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
-
-* 建立 Azure Machine Learning 工作區。 您的 Machine Learning 實驗會儲存在此 Machine Learning 工作區中。 在入口網站中選取反白顯示的選項，如下列螢幕擷取畫面所示：
-
-   ![建立 Azure Machine Learning 工作區](./media/vm-do-ten-things/Create_ML_Space.PNG)
-
-* 輸入您工作區的參數。
-
-   ![輸入 Machine Learning 工作區參數](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
-
-* 使用 IPython 筆記本上傳資料。 匯入所需的套件、插入認證、在儲存體帳戶中建立資料庫，然後將資料載入至 HDI 叢集。
-
-```python
-# Import required packages
-import pyodbc
-import time as time
-import json
-import os
-import urllib
-import urllib2
-import warnings
-import re
-import pandas as pd
-import matplotlib.pyplot as plt
-from azure.storage.blob import BlobService
-warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
-
-
-# Create the connection to Hive by using ODBC
-SERVER_NAME = 'xxx.azurehdinsight.net'
-DATABASE_NAME = 'nyctaxidb'
-USERID = 'xxx'
-PASSWORD = 'xxxx'
-DB_DRIVER = 'Microsoft Hive ODBC Driver'
-driver = 'DRIVER={' + DB_DRIVER + '}'
-server = 'Host=' + SERVER_NAME + ';Port=443'
-database = 'Schema=' + DATABASE_NAME
-hiveserv = 'HiveServerType=2'
-auth = 'AuthMech=6'
-uid = 'UID=' + USERID
-pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join(
-    [driver, server, database, hiveserv, auth, uid, pwd])
-connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor = connection.cursor()
-
-
-# Create the Hive database and tables
-queryString = "create database if not exists nyctaxidb;"
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.trip
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    rate_code string,
-                    store_and_fwd_flag string,
-                    pickup_datetime string,
-                    dropoff_datetime string,
-                    passenger_count int,
-                    trip_time_in_secs double,
-                    trip_distance double,
-                    pickup_longitude double,
-                    pickup_latitude double,
-                    dropoff_longitude double,
-                    dropoff_latitude double)  
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.fare
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    pickup_datetime string,
-                    payment_type string,
-                    fare_amount double,
-                    surcharge double,
-                    mta_tax double,
-                    tip_amount double,
-                    tolls_amount double,
-                    total_amount double)
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-
-# Upload data from Blob storage to an HDI cluster
-for i in range(1, 13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-```
-
-或者，您可以遵循[此逐步](../team-data-science-process/hive-walkthrough.md)解說，將 NYC 計程車資料上傳至 HDI 叢集。 主要步驟包括：
-  
-* 使用 AzCopy 從公用 blob 將壓縮的 Csv 下載到您的本機資料夾。
-* 使用 AzCopy，將解壓縮的 Csv 從本機資料夾上傳到 HDI 叢集。
-* 登入 Hadoop 叢集的前端節點，並準備進行探索資料分析。
-
-將資料載入 HDI 叢集之後，您就可以在 Azure 儲存體總管中檢查您的資料。 和 nyctaxidb 資料庫已建立在 HDI 叢集中。
-
-#### <a name="data-exploration-hive-queries-in-python"></a>資料探索：Python 中的 Hive 查詢
-
-因為資料是在 Hadoop 叢集中，所以您可以使用 pyodbc 套件來連線到 Hadoop 叢集，並使用 Hive 來執行探索和特徵設計來查詢資料庫。 您可以在必要條件步驟中，查看您所建立的現有資料表。
-
-```python
-queryString = """
-    show tables in nyctaxidb2;
-    """
-pd.read_sql(queryString, connection)
-```
-
-![檢視現有的表格](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
-
-讓我們看一下每個月的記錄筆數以及車程資料表中已付小費或未付小費的頻率：
-
-```python
-queryString = """
-    select month, count(*) from nyctaxidb.trip group by month;
-    """
-results = pd.read_sql(queryString,connection)
-
-%matplotlib inline
-
-results.columns = ['month', 'trip_count']
-df = results.copy()
-df.index = df['month']
-df['trip_count'].plot(kind='bar')
-```
-
-![每個月的記錄數繪圖](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
-
-```python
-queryString = """
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
-    """
-results = pd.read_sql(queryString, connection)
-
-results.columns = ['tipped', 'trip_count']
-df = results.copy()
-df.index = df['tipped']
-df['trip_count'].plot(kind='bar')
-```
-
-![小費頻率繪圖](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
-
-您也可以計算 pickup 位置和捨棄位置之間的距離，然後將其與旅行距離進行比較。
-
-```python
-queryString = """
-                select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-                    3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-                    *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-                    *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-                    /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-                    +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
-                    pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
-                    from nyctaxidb.trip
-                    where month=1
-                        and pickup_longitude between -90 and -30
-                        and pickup_latitude between 30 and 90
-                        and dropoff_longitude between -90 and -30
-                        and dropoff_latitude between 30 and 90;
-            """
-results = pd.read_sql(queryString, connection)
-results.head(5)
-```
-
-![取貨和捨棄資料表的前幾個資料列](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
-
-```python
-results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance'] <= 100]  # remove outliers
-df = df.loc[df['direct_distance'] <= 100]  # remove outliers
-plt.scatter(df['direct_distance'], df['trip_distance'])
-```
-
-![與旅行距離之間的取貨/休息距離繪圖](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
-
-現在讓我們準備一個 downsampled （1%）的資料集來進行模型化。 您可以在 Machine Learning 讀取器模組中使用此資料。
-
-```python
-queryString = """
-create  table if not exists nyctaxi_downsampled_dataset_testNEW (
-medallion string,
-hack_license string,
-vendor_id string,
-rate_code string,
-store_and_fwd_flag string,
-pickup_datetime string,
-dropoff_datetime string,
-pickup_hour string,
-pickup_week string,
-weekday string,
-passenger_count int,
-trip_time_in_secs double,
-trip_distance double,
-pickup_longitude double,
-pickup_latitude double,
-dropoff_longitude double,
-dropoff_latitude double,
-direct_distance double,
-payment_type string,
-fare_amount double,
-surcharge double,
-mta_tax double,
-tip_amount double,
-tolls_amount double,
-total_amount double,
-tipped string,
-tip_class string
-)
-row format delimited fields terminated by ','
-lines terminated by '\\n'
-stored as textfile;
-"""
-cursor.execute(queryString)
-```
-
-現在，將聯結的內容插入先前的內部資料表。
-
-```python
-queryString = """
-insert overwrite table nyctaxi_downsampled_dataset_testNEW
-select
-t.medallion,
-t.hack_license,
-t.vendor_id,
-t.rate_code,
-t.store_and_fwd_flag,
-t.pickup_datetime,
-t.dropoff_datetime,
-hour(t.pickup_datetime) as pickup_hour,
-weekofyear(t.pickup_datetime) as pickup_week,
-from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-t.passenger_count,
-t.trip_time_in_secs,
-t.trip_distance,
-t.pickup_longitude,
-t.pickup_latitude,
-t.dropoff_longitude,
-t.dropoff_latitude,
-t.direct_distance,
-f.payment_type,
-f.fare_amount,
-f.surcharge,
-f.mta_tax,
-f.tip_amount,
-f.tolls_amount,
-f.total_amount,
-if(tip_amount>0,1,0) as tipped,
-if(tip_amount=0,0,
-if(tip_amount>0 and tip_amount<=5,1,
-if(tip_amount>5 and tip_amount<=10,2,
-if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-from
-(
-select
-medallion,
-hack_license,
-vendor_id,
-rate_code,
-store_and_fwd_flag,
-pickup_datetime,
-dropoff_datetime,
-passenger_count,
-trip_time_in_secs,
-trip_distance,
-pickup_longitude,
-pickup_latitude,
-dropoff_longitude,
-dropoff_latitude,
-3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-+cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
-rand() as sample_key
-
-from trip
-where pickup_latitude between 30 and 90
-    and pickup_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-)t
-join
-(
-select
-medallion,
-hack_license,
-vendor_id,
-pickup_datetime,
-payment_type,
-fare_amount,
-surcharge,
-mta_tax,
-tip_amount,
-tolls_amount,
-total_amount
-from fare
-)f
-on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-where t.sample_key<=0.01
-"""
-cursor.execute(queryString)
-```
-
-一段時間之後，您可以看到資料已載入 Hadoop 叢集：
-
-```python
-queryString = """
-    select * from nyctaxi_downsampled_dataset limit 10;
-    """
-cursor.execute(queryString)
-pd.read_sql(queryString, connection)
-```
-
-![資料表中的頂端資料列](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL 資料倉儲和資料庫
 Azure SQL 資料倉儲是彈性的資料倉儲即服務，具有企業級 SQL Server 體驗。

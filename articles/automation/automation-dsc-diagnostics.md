@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392105"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996058"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>將 Azure 自動化狀態設定報告資料轉送至 Azure 監視器記錄
+# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>將 State Configuration 報告資料轉送至 Azure 監視器記錄
 
 Azure 自動化狀態設定會保留節點狀態資料30天。 如果您想要將此資料保留一段較長的時間，您可以將節點狀態資料傳送至 Log Analytics 工作區。 節點以及節點組態中個別 DSC 資源的合規性狀態會顯示在 Azure 入口網站中或使用 PowerShell 顯示。 
 
@@ -30,8 +30,6 @@ Azure 監視器記錄可為您的自動化狀態設定資料提供更高的操�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 

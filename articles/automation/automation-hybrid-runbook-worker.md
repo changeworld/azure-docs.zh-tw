@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0b36651a40267ec3ea8bfe7285c5f6c5d5c31562
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871651"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994752"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -42,7 +42,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 
 建議的安裝方法是使用 Azure 自動化 runbook，將設定 Windows 電腦的程式完全自動化。 第二種方法是遵循逐步程式來手動安裝和設定角色。 若為 Linux 機器，您可以執行 Python 指令碼，在機器上安裝代理程式。
 
-## <a name="network-configuration"></a><a name="network-planning"></a>網路組態
+## <a name="network-planning"></a><a name="network-planning"></a>網路規劃
 
 若要讓混合式 Runbook 背景工作角色連接到 Azure 自動化並向其註冊，它必須能夠存取本節所述的埠號碼和 Url。 背景工作角色也必須能夠存取 Log Analytics 代理程式連線到 Azure 監視器 Log Analytics 工作區[所需的埠和 url](../azure-monitor/platform/agent-windows.md) 。
 

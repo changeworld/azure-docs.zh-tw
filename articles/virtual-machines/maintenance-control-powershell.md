@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136527"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996484"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>控制維護控制和 Azure PowerShell 的更新
 
@@ -20,11 +20,17 @@ ms.locfileid: "82136527"
  
 ## <a name="enable-the-powershell-module"></a>啟用 PowerShell 模組
 
-請確定`PowerShellGet`是最新的。
+請確定`PowerShellGet`是最新的。    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+安裝`Az.Maintenance` PowerShell 模組。     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 如果您要在本機安裝，請務必以系統管理員身分開啟 PowerShell 提示字元。
 

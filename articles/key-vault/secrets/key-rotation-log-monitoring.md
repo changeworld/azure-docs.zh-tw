@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430249"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995951"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用金鑰輪替和稽核設定 Azure Key Vault
 
@@ -85,23 +85,35 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 > [!NOTE]
 > 應用程式必須建立在與金鑰保存庫相同的 Azure Active Directory 租用戶上。
 
-1. 開啟**Azure Active Directory**。
-2. 選取 [**應用程式註冊**]。 
-3. 選取 [**新增應用程式註冊**]，將應用程式新增至 Azure Active Directory。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取您的帳戶。 將您的入口網站工作階段設定為您想要的 Azure AD 租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。 在 [管理]  底下選取 [應用程式註冊]  。
+1. 選取 [新增註冊]  。
+1. 在 [註冊應用程式]  中，輸入要向使用者顯示且有意義的應用程式名稱。
+1. 指定可以使用應用程式的人員，如下所示：
 
-    ![在 Azure Active Directory 中開啟應用程式](../media/keyvault-keyrotation/azure-ad-application.png)
+    | 支援的帳戶類型 | 描述 |
+    |-------------------------|-------------|
+    | **僅此組織目錄中的帳戶** | 如果您要建置企業營運 (LOB) 應用程式，請選取此選項。 如果您未在目錄中註冊應用程式，則無法使用此選項。<br><br>此選項對應至僅限 Azure AD 的單一租用戶。<br><br>除非您在目錄外註冊應用程式，否則會預設使用此選項。 如果在目錄外註冊應用程式，則會預設使用 Azure AD 多租用戶和個人 Microsoft 帳戶。 |
+    | **任何組織目錄中的帳戶** | 如果您想要鎖定所有商業和教育客戶，請選取此選項。<br><br>此選項對應至僅限 Azure AD 的多租用戶。<br><br>如果您將應用程式註冊為僅限 Azure AD 的單一租用戶，則可透過 [驗證]  頁面，將其更新為 Azure AD 多租用戶以及重新更新為單一租用戶。 |
+    | **任何組織目錄中的帳戶及個人的 Microsoft 帳戶** | 選取此選項以鎖定最廣泛的一組客戶。<br><br>此選項對應至 Azure AD 多租用戶和個人 Microsoft 帳戶。<br><br>如果您將應用程式註冊為 Azure AD 多租用戶和個人 Microsoft 帳戶，則無法在 UI 中變更此設定。 相反地，您必須使用應用程式資訊清單編輯器來變更支援的帳戶類型。 |
 
-4. 在 [**建立**] 底下，將 [應用程式類型] 保留為 [ **Web 應用程式/API** ]，並為應用程式命名。 為您的應用程式提供登**入 URL**。 此 URL 可以是您想要用於此示範的任何專案。
+1. 在 [重新導向 URI (選擇性)]  底下，選取您要建立的應用程式類型：**Web** 或**公用用戶端 (行動和傳統型)** 。 然後輸入應用程式的重新導向 URI 或回覆 URL。
 
-    ![建立應用程式註冊](../media/keyvault-keyrotation/create-app.png)
+    * 若為 Web 應用程式，請提供應用程式的基底 URL。 例如，`https://localhost:31544` 可能是在您的本機電腦上執行之 Web 應用程式的 URL。 使用者會使用此 URL 來登入 Web 用戶端應用程式。
+    * 若為公用用戶端應用程式，請提供 Azure AD 用來傳回權杖回應的 URI。 輸入應用程式特定的值，例如 `myapp://auth`。
 
-5. 將應用程式新增至 Azure Active Directory 之後，[應用程式] 頁面隨即開啟。 選取 [**設定**]，然後選取 [**屬性**]。 複製 [應用程式識別碼]**** 值。 您在後續的步驟中將會用到它。
+1. 完成時，選取 [註冊]  。
 
-接下來，為您的應用程式產生金鑰，使其可以與 Azure Active Directory 互動。 若要建立金鑰，請選取 [**設定**] 底下的 [**金鑰**]。 請記下 Azure Active Directory 應用程式的新產生金鑰。 您在後續的步驟中將需要此資訊。 離開此區段之後，將無法使用金鑰。 
+    ![顯示在 Azure 入口網站註冊新應用程式的畫面](../media/new-app-registration.png)
 
-![Azure Active Directory 應用程式金鑰](../media/keyvault-keyrotation/create-key.png)
+Azure AD 會將唯一的應用程式識別碼或用戶端識別碼指派給您的應用程式。 入口網站會開啟應用程式的 [概觀]  頁面。 請注意**應用程式（用戶端）識別碼**值。
 
-在您建立從應用程式到金鑰保存庫的任何呼叫之前，您必須告訴 key vault 有關您的應用程式及其許可權。 下列命令會使用您的 Azure Active Directory 應用程式中的保存庫名稱和應用程式識別碼，**將存取權**授與您的金鑰保存庫。
+若要在應用程式中新增功能，您可以選取其他組態選項，包括商標、憑證和祕密、API 權限等等。
+
+![新註冊應用程式的 [概觀] 頁面範例](../media//new-app-overview-page-expanded.png)
+
+在您建立從應用程式到金鑰保存庫的任何呼叫之前，您必須告訴 key vault 有關您的應用程式及其許可權。 下列命令會使用您的 Azure Active Directory 應用程式中的保存庫名稱和**應用程式（用戶端）識別碼**，**將存取權**授與您的金鑰保存庫。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get

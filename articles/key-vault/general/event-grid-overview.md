@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431900"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995769"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>使用 Azure 事件方格監視 Key Vault (預覽)
 
@@ -30,8 +30,6 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 
 > [!WARNING]
 > 通知事件只會在新版本的祕密、金鑰和憑證上觸發，而且您必須先訂閱金鑰保存庫上的事件，才能接收這些通知。
-> 
-> 只有在憑證根據您指定的原則自動更新時，才會收到憑證的通知事件。
 
 ## <a name="practices-for-consuming-events"></a>消費事件做法
 
@@ -46,7 +44,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 
 - [Azure Key Vault 概觀](overview.md))
 - [Azure 事件方格概觀](../../event-grid/overview.md)
-- 如何：[將 Key Vault 事件路由傳送至自動化 Runbook (預覽)](event-grid-tutorial.md)。
+- 如何：[將 Key Vault 事件路由至自動化 Runbook （預覽）](event-grid-tutorial.md)。
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)
 - [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
 - [Azure 自動化概觀](../../automation/index.yml)

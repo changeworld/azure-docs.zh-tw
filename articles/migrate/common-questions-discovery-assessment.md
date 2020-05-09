@@ -3,12 +3,12 @@ title: Azure Migrate 中的探索、評估和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 868755bb8926ffe218fdab76714c9970f26bb0a9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 9374330044bcd0c0c5f2be44688c2b35760d4418
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744578"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996746"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "82744578"
 
 ## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>有哪些地理位置支援使用 Azure Migrate 進行探索和評量？
 
-審查適用于[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府](migrate-support-matrix.md#supported-geographies-azure-government)雲端的支援地理位置。
+請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm？
@@ -115,7 +115,7 @@ Log Analytics | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](https
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我要支付相依性視覺效果嗎？
 
-不需要。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+否。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>針對代理程式相依性視覺效果，我要安裝什麼？
 
@@ -141,7 +141,7 @@ Log Analytics | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](https
 
 - 使用[腳本來安裝 Dependency agent](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。
 - 針對 MMA，請[使用命令列或自動化](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)，或使用[腳本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
-- 除了腳本以外，您還可以使用 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)等部署工具來部署代理程式。
+- 除了腳本以外，您還可以使用 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/intigua-for-azure-migration)等部署工具來部署代理程式。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA 支援哪些作業系統？
 

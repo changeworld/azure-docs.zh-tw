@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/07/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854755"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993752"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本
 
@@ -72,9 +72,9 @@ Log Analytics 費用會新增到您的 Azure 帳單中。 您可以在 Azure 入
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>在您的 Azure 帳單上查看 Log Analytics 使用量 
 
-Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞提供了大量有用的功能。 例如，「成本分析」功能可讓您查看 Azure 資源的花費。 依資源類型新增篩選器（microsoft.operationalinsights/工作區適用于 Log Analytics）可讓您追蹤您的支出。
+Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞提供了大量有用的功能。 例如，「成本分析」功能可讓您查看 Azure 資源的花費。 首先，依「資源類型」（適用于 log Analytics 的 microsoft.operationalinsights/工作區和 Log Analytics 叢集的 microsoft.operationalinsights/工作區）新增篩選器，可讓您追蹤 Log Analytics 的支出。 然後針對 [群組依據] 選取 [計量類別目錄] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取其使用量的費用。 若要查看服務名稱的對應，您可以選取 [資料表] 視圖，而不是 [圖表]。 
 
-[從 Azure 入口網站下載您的使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)，即可取得更多使用方式的瞭解。 在下載的試算表中，您可以看到每天每個 Azure 資源（例如 Log Analytics 工作區）的使用量。 在此 Excel 試算表中，您可以從 Log Analytics 工作區的使用量，先篩選「計量類別」資料行，以顯示「深入解析與分析」（由部分舊版定價層使用）和「Log Analytics」，然後在「包含工作區」的「實例識別碼」資料行上新增篩選。 使用量會顯示在 [取用的數量] 資料行中，每個專案的單位會顯示在 [測量單位] 資料行中。  有更多詳細資料可協助您[瞭解您的 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+[從 Azure 入口網站下載您的使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)，即可取得更多使用方式的瞭解。 在下載的試算表中，您可以看到每天每個 Azure 資源（例如 Log Analytics 工作區）的使用量。 在此 Excel 試算表中，您可以藉由在 [計量類別] 資料行上先篩選以顯示「Log Analytics」，找到 Log Analytics 工作區的使用量。深入解析與分析」（由一些舊版定價層使用）和 "Azure 監視器" （由容量保留定價層使用），然後在「實例識別碼」資料行上新增篩選，其為「包含工作區」或「包含叢集」（後者包含 Log Analytics 叢集使用方式）。 使用量會顯示在 [取用的數量] 資料行中，每個專案的單位會顯示在 [測量單位] 資料行中。  有更多詳細資料可協助您[瞭解您的 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 ## <a name="changing-pricing-tier"></a>正在變更定價層
 
@@ -108,7 +108,7 @@ Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-man
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
-下列步驟說明如何設定您工作區中的記錄資料保留時間。 除非所有工作區使用舊版免費定價層，否則資料保留期可以設定為30到730天（2年）。 
+下列步驟說明如何設定您工作區中的記錄資料保留時間。 除非所有工作區使用舊版免費定價層，否則資料保留期可以設定為30到730天（2年）。[深入瞭解](https://azure.microsoft.com/pricing/details/monitor/)較長資料保留的定價。 
 
 ### <a name="default-retention"></a>預設保留期
 
@@ -253,7 +253,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> 請謹慎`union withsource = tt *`使用這些查詢，因為跨資料類型的掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)來執行。 此查詢會取代使用 Usage 資料類型查詢每一電腦資訊的舊方式。  
+> 請謹慎`union *`使用這些查詢，因為跨資料類型的掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)來執行。 如果您不需要每一部**電腦**的結果，請查詢 Usage 資料類型（請參閱下文）。
 
 ## <a name="understanding-ingested-data-volume"></a>瞭解內嵌資料量
 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-`_IsBillable` [屬性](log-standard-properties.md#_isbillable)會指定內嵌資料是否會產生費用。
+`_IsBillable` [屬性](log-standard-properties.md#_isbillable)會指定內嵌資料是否會產生費用。 
 
 若要查看每部電腦內嵌的可計費事件**計數**，請使用 
 
@@ -333,6 +333,10 @@ union withsource = tt *
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
+
+> [!TIP]
+> 請謹慎`union  *`使用這些查詢，因為跨資料類型的掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)來執行。 如果您不需要每一部**電腦**的結果，請查詢 Usage 資料類型。
+
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>依 Azure 資源、資源群組或訂用帳戶的資料量
 
@@ -357,6 +361,9 @@ union withsource = tt *
 ```
 
 將`subscriptionId`變更`resourceGroup`為會顯示 Azure 資源群組的可計費內嵌資料量。 
+
+> [!TIP]
+> 請謹慎`union  *`使用這些查詢，因為跨資料類型的掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)來執行。 如果您不需要每個訂用帳戶、資源群組或資源名稱的結果，請查詢 Usage 資料類型。
 
 > [!WARNING]
 > [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]****，以及其他與擷取相關的欄位 ([TotalBatches]****、[BatchesWithinSla]****、[BatchesOutsideSla]****、[BatchesCapped]****，以及 [AverageProcessingTimeMs]****)。
@@ -454,24 +461,34 @@ union
 
 在該階層中，或**在目前的預付型方案**或**容量保留**層中，有權存取具有舊版「**每節點**」定價層的工作區，通常很難進行評估。  這牽涉到了解每個節點定價層中每個受監視節點的固定成本與其內含的資料配置 500 MB/節點/天的取捨，以及只需支付預付型方案（每 GB）層中內嵌資料的成本。 
 
-為了協助進行這項評估，您可以根據工作區的使用模式，使用下列查詢來提出最佳定價層的建議。  此查詢會查看過去7天內已監視的節點和資料內嵌至工作區，而且每一天會評估哪個定價層已達到最佳狀態。 若要使用查詢，您必須將設定`workspaceHasSecurityCenter`為`true`或`false`，以指定工作區是否使用 Azure 資訊安全中心，然後（選擇性）更新每個節點，以及您的組織所收到的每 GB 價格。 
+為了協助進行這項評估，您可以根據工作區的使用模式，使用下列查詢來提出最佳定價層的建議。  此查詢會查看過去7天內已監視的節點和資料內嵌至工作區，而且每一天會評估哪個定價層已達到最佳狀態。 若要使用查詢，您必須指定
+
+1. 如果工作區是使用 Azure 資訊安全中心，請`workspaceHasSecurityCenter`將`true`設定`false`為或。 
+2. 如果您有特定折扣，請更新價格，並
+3. 指定要查看的天數，並依設定`daysToEvaluate`進行分析。 如果查詢花太長的時間嘗試查看7天的資料，這就很有用。 
+
+以下是定價層建議查詢：
 
 ```kusto
 // Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
-let PerGBPrice = 2.30; // Enter your price per GB 
+let PerNodeOveragePrice = 2.30; // Enter your price per GB for data overage in the Per Node pricing tier
+let PerGBPrice = 2.30; // Enter your price per GB in the Pay-as-you-go pricing tier
+let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the query is taking too long)
 // ---------------------------------------
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
+let EndDate = startofday(now());
 union withsource = tt * 
-| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join kind=leftouter (
     Heartbeat 
-    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where Computer != ""
     | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
     | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
@@ -479,8 +496,7 @@ union withsource = tt *
 ) on day
 | join (
     Usage 
-    | where TimeGenerated > ago(8d)
-    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where IsBillable == true
     | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
     | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
@@ -493,15 +509,18 @@ union withsource = tt *
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
              max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
-| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerNodeOveragePrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
 | project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
-| project day, Recommendation // Comment this line to see details
+//| project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
 
 此查詢不是使用計算方式的確切複寫，但是在大部分情況下都能用來提供定價層建議。  
+
+> [!NOTE]
+> 若要使用來自購買 OMS E1套件、OMS E2 套件或 OMS Add-On for System Center 的權利，請選擇 Log Analytics [每個節點]** 定價層。
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>在資料收集偏高時建立警示
 

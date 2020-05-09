@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392110"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996112"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用自動化狀態設定和 Chocolatey，為虛擬機器提供持續部署
 
@@ -21,9 +21,6 @@ Azure 自動化是 Microsoft Azure 中的受控服務，可讓您使用 runbook�
 本文示範如何設定 Windows 電腦的持續部署（CD）。 您可以輕鬆地擴充技術，以在角色中包含所需的 Windows 電腦（例如網站），並從該處移至其他角色。
 
 ![IaaS VM 的持續部署](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
-
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="at-a-high-level"></a>概括而言
 

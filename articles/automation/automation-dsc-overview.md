@@ -1,6 +1,6 @@
 ---
 title: Azure 自動化狀態設定總覽
-description: Azure 自動化狀態設定（DSC）、其條款和已知問題的總覽
+description: Azure 自動化狀態設定、其條款和已知問題的總覽
 keywords: powershell dsc, 需要的狀態組態, powershell dsc azure
 services: automation
 ms.service: automation
@@ -10,20 +10,34 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406190"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993861"
 ---
-# <a name="state-configuration-overview"></a>State Configuration 概觀
+# <a name="azure-automation-state-configuration-overview"></a>Azure 自動化狀態設定總覽
 
-Azure 自動化狀態設定是一種 Azure 服務，可讓您撰寫、管理和編譯 PowerShell Desired State Configuration （ [DSC）設定](/powershell/scripting/dsc/configurations/configurations)。 服務也會匯入[DSC 資源](/powershell/scripting/dsc/resources/resources)，並將設定指派給所有雲端中的目標節點。
+Azure 自動化狀態設定是一項 Azure 設定管理服務，可讓您針對任何雲端或內部部署資料[中心的節點](/powershell/scripting/dsc/configurations/configurations)，撰寫、管理和編譯 PowerShell DESIRED STATE CONFIGURATION （DSC）設定。 服務也會匯入[DSC 資源](/powershell/scripting/dsc/resources/resources)，並將設定指派給所有雲端中的目標節點。 您可以選取 [設定**管理**] 底下的 **[狀態設定（DSC）** ]，以存取 Azure 入口網站中的 Azure 自動化狀態設定。 
+
+您可以使用 Azure 自動化狀態設定來管理各種不同的機器：
+
+- Azure 虛擬機器
+- Azure 虛擬機器 (傳統)
+- 內部部署或 Azure 以外的雲端中的實體/虛擬 Windows 機器（包括 AWS EC2 實例）
+- 位於內部部署、Azure 或 Azure 以外之雲端中的實體/虛擬 Linux 機器
+
+如果您還沒準備好從雲端管理電腦設定，您可以使用 Azure 自動化狀態設定作為僅限報告的端點。 這項功能可讓您透過 DSC 設定（推送）設定，並在 Azure 自動化中查看報告詳細資料。
+
+> [!NOTE]
+> 如果已安裝的 Azure VM Desired State Configuration 延伸模組版本大於2.70，則以 Azure 自動化狀態設定管理 Azure Vm 時，不需要額外付費。 如需詳細資訊，請參閱[**自動化定價頁面**](https://azure.microsoft.com/pricing/details/automation/)。
 
 ## <a name="why-use-azure-automation-state-configuration"></a>為何使用 Azure Automation State Configuration
 
-Azure Automation State Configuration 提供在 Azure 外部使用 DSC 的數個優點。
+Azure 自動化狀態設定透過在 Azure 外部使用 DSC 來提供數個優點。 這項服務可讓您從集中式安全的位置快速輕鬆地進行跨數千部機器的擴充性。 您可以輕鬆地啟用機器、指派它們宣告式設定，以及查看顯示每台電腦符合您指定之所需狀態的報告。
+
+Azure 自動化狀態設定服務是 DSC Azure 自動化 runbook 與 PowerShell 腳本。 換句話說，「Azure 自動化」會以協助您管理 Powershell 指令碼的相同方式，同樣協助您管理 DSC 組態。 
 
 ### <a name="built-in-pull-server"></a>內建提取伺服器
 
@@ -41,7 +55,7 @@ Azure 自動化狀態設定會將相同的管理層帶入[powershell Desired Sta
 
 ## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>使用 Azure 自動化狀態設定的必要條件
 
-使用 DSC 的 Azure 自動化狀態設定時，請考慮下列需求。
+使用 Azure 自動化狀態設定時，請考慮本節中的需求。
 
 ### <a name="operating-system-requirements"></a>作業系統需求
 
@@ -63,9 +77,9 @@ Azure 自動化狀態設定會將相同的管理層帶入[powershell Desired Sta
 
 ### <a name="dsc-requirements"></a>DSC 需求
 
-針對在 Azure 中執行的所有 Windows 節點，在上架期間會安裝[WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) 。 對於執行 Windows Server 2012 和 Windows 7 的節點，會啟用[WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) 。
+針對在 Azure 中執行的所有 Windows 節點，當機器啟用時，會安裝[WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) 。 對於執行 Windows Server 2012 和 Windows 7 的節點，會啟用[WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) 。
 
-針對在 Azure 中執行的所有 Linux 節點，在上架期間會安裝[POWERSHELL DSC For linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 。
+針對在 Azure 中執行的所有 Linux 節點，當機器啟用時，就會安裝[POWERSHELL DSC For linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 。
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>設定私人網路
 
@@ -80,7 +94,7 @@ Azure 自動化狀態設定會將相同的管理層帶入[powershell Desired Sta
 
 #### <a name="proxy-support"></a>Proxy 支援
 
-DSC 代理程式的 Proxy 支援可在 Windows 1809 版和更新版本中取得。 在用來註冊節點的中繼設定`ProxyURL` [腳本](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)中`ProxyCredential` ，設定和的值，即可啟用此選項。
+DSC 代理程式的 Proxy 支援可在 Windows 1809 版和更新版本中取得。 在用來註冊節點的中繼設定`ProxyURL` [腳本](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)中`ProxyCredential` ，設定和的值，即可啟用此選項。
 
 >[!NOTE]
 >Azure 自動化狀態設定未提供舊版 Windows 的 DSC proxy 支援。
@@ -121,7 +135,7 @@ Azure ExpressRoute 使用者應該注意到，在每個月的第一週，此檔�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要開始在 Azure 自動化狀態設定中使用 DSC，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
-- 若要瞭解如何將節點上架，請參閱將[機器上架以進行管理，方法是 Azure 自動化狀態設定](automation-dsc-onboarding.md)。
+- 若要瞭解如何啟用節點，請參閱[Azure 自動化狀態設定啟用電腦的管理](automation-dsc-onboarding.md)。
 - 若要瞭解如何編譯 DSC 設定，讓您可以將它們指派給目標節點，請參閱[在 Azure 自動化狀態設定中編譯](automation-dsc-compile.md)設定。
 - 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )。

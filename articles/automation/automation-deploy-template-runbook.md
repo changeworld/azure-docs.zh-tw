@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自動化
-ms.openlocfilehash: 2a6652c988eb77a1c5c7dbf800586b1c5fb756c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bf381499ac31fafc8aaeef2b4ee488cfa1aa5c1
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392201"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994691"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自動化 PowerShell Runbook 中部署 Azure Resource Manager 範本
 
@@ -20,9 +20,6 @@ ms.locfileid: "81392201"
 如此一來，您就可以自動化部署 Azure 資源。 您可以在中央、安全的位置 (例如 Azure 儲存體) 中維護您的 Resource Manager 範本。
 
 在此文章中，我們會建立使用儲存在 [Azure 儲存體](../storage/common/storage-introduction.md)中 Resource Manager 範本的 PowerShell Runbook，來部署新的 Azure 儲存體帳戶。
-
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -234,7 +231,7 @@ Runbook 會取得 Resource Manager 範本，並使用它來部署新的 Azure �
 Get-AzStorageAccount
 ```
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>總結
 
 這樣就完成了！ 現在您可以使用 Azure 自動化和 Azure 儲存體搭配 Resource Manager 範本來部署您的所有 Azure 資源。
 

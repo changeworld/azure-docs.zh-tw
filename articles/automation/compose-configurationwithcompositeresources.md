@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682933"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993767"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>使用複合資源在 Azure 自動化狀態設定中撰寫 DSC 設定
 
@@ -34,9 +34,9 @@ Azure 自動化能夠[匯入和編譯複合資源](automation-dsc-compile.md)。
 1. 在**參數**步驟中，會公開每個複合資源的參數，以便提供值。 如果參數具有描述，則會顯示在參數欄位旁邊。 如果參數的`PSCredential`類型是，則下拉式清單會提供目前自動化帳戶中的**認證**物件清單。 也可以使用 [ **+ 新增認證**] 選項。 一旦已提供所有必要參數，按一下 [儲存並編譯]****。
    ![撰寫設定頁面之參數步驟的螢幕擷取畫面](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-新的設定儲存之後，便會提交以進行編譯。 就像任何已匯入的設定，您可以檢視編譯作業狀態。 如需詳細資訊，請參閱[檢視編譯作業](automation-dsc-getting-started.md#viewing-a-compilation-job)。
+新的設定儲存之後，便會提交以進行編譯。 就像任何已匯入的設定，您可以檢視編譯作業狀態。 如需詳細資訊，請參閱[檢視編譯作業](automation-dsc-getting-started.md#view-a-compilation-job)。
 
-成功完成編譯時，新的設定會出現在 [**已編譯**的設定] 索引標籤中。接著，您可以使用將[節點重新指派至不同的節點](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)設定中的步驟，將設定指派給受管理的節點。
+成功完成編譯時，新的設定會出現在 [**已編譯**的設定] 索引標籤中。接著，您可以使用將[節點重新指派至不同的節點](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration)設定中的步驟，將設定指派給受管理的節點。
 
 ## <a name="next-steps"></a>後續步驟
 

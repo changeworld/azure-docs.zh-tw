@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729994"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996942"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>從內建端點讀取裝置對雲端訊息
 
@@ -61,12 +61,12 @@ IoT 中樞會公開您後端服務的 **messages/events** 內建端點，以讀�
 
 您可以用來連線到 IoT 中樞公開之內建事件中樞相容端點的 Sdk 包括：
 
-| Language | SDK | 範例 | 備忘錄 |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) | 使用事件中樞相容資訊 |
- Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) | 使用事件中樞相容資訊 |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [快速入門](quickstart-send-telemetry-node.md) | 使用 IoT 中樞連接字串 |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | 使用 IoT 中樞連接字串 |
+| Language | SDK | 範例 |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [快速入門](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 您可以搭配 IoT 中樞公開之內建事件中樞相容端點使用的產品整合包括：
 

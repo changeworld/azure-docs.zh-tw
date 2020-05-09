@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735533"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996605"
 ---
 # <a name="understand-azure-role-definitions"></a>瞭解 Azure 角色定義
 
@@ -28,7 +28,9 @@ ms.locfileid: "82735533"
 
 ## <a name="role-definition"></a>角色定義
 
-「角色定義」  是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 也可能列出無法執行的作業或與基礎資料相關的作業。 角色定義具有下列屬性：
+「角色定義」  是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 它也可以列出從允許的作業或與基礎資料相關的作業中排除的作業。
+
+以下顯示使用 Azure PowerShell 顯示時，角色定義中的屬性範例：
 
 ```
 Name
@@ -42,17 +44,33 @@ NotDataActions []
 AssignableScopes []
 ```
 
+以下顯示使用 Azure 入口網站、Azure CLI 或 REST API 顯示時，角色定義中的屬性範例：
+
+```
+roleName
+name
+type
+description
+actions []
+notActions []
+dataActions []
+notDataActions []
+assignableScopes []
+```
+
+下表描述角色屬性的意義。
+
 | 屬性 | 描述 |
 | --- | --- |
-| `Name` | 角色的顯示名稱。 |
-| `Id` | 角色的唯一識別碼。 |
-| `IsCustom` | 表示這是否為自訂角色。 若為自訂角色，請設定為 `true`。 |
-| `Description` | 角色的描述。 |
-| `Actions` | 字串陣列，指定角色允許執行的管理作業。 |
-| `NotActions` | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 |
-| `DataActions` | 字串陣列，指定角色允許對物件內資料執行的管理作業。 |
-| `NotDataActions` | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 |
-| `AssignableScopes` | 字串陣列，指定角色可用於指派的範圍。 |
+| `Name`</br>`roleName` | 角色的顯示名稱。 |
+| `Id`</br>`name` | 角色的唯一識別碼。 |
+| `IsCustom`</br>`roleType` | 表示這是否為自訂角色。 針對自`true`定義`CustomRole`角色，將設為或。 針對內`false`建`BuiltInRole`角色，將設為或。 |
+| `Description`</br>`description` | 角色的描述。 |
+| `Actions`</br>`actions` | 字串陣列，指定角色允許執行的管理作業。 |
+| `NotActions`</br>`notActions` | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 |
+| `DataActions`</br>`dataActions` | 字串陣列，指定角色允許對物件內資料執行的管理作業。 |
+| `NotDataActions`</br>`notDataActions` | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 |
+| `AssignableScopes`</br>`assignableScopes` | 字串陣列，指定角色可用於指派的範圍。 |
 
 ### <a name="operations-format"></a>作業格式
 
@@ -72,7 +90,9 @@ AssignableScopes []
 
 ### <a name="role-definition-example"></a>角色定義範例
 
-以下是 JSON 格式的[參與者](built-in-roles.md#contributor)角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
+以下是 Azure PowerShell 和 Azure CLI 中所顯示的「[參與者](built-in-roles.md#contributor)」角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
+
+Azure PowerShell 中顯示的參與者角色：
 
 ```json
 {
@@ -86,13 +106,47 @@ AssignableScopes []
   "NotActions": [
     "Microsoft.Authorization/*/Delete",
     "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Authorization/elevateAccess/Action",
+    "Microsoft.Blueprint/blueprintAssignments/write",
+    "Microsoft.Blueprint/blueprintAssignments/delete"
   ],
   "DataActions": [],
   "NotDataActions": [],
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Azure CLI 中顯示的參與者角色：
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage everything except access to resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "permissions": [
+    {
+      "actions": [
+        "*"
+      ],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -116,6 +170,8 @@ AssignableScopes []
 
 以下是[儲存體 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義，其中包含`Actions`和`DataActions`屬性中的作業。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
 
+如 Azure PowerShell 所示的儲存體 Blob 資料讀取器角色：
+
 ```json
 {
   "Name": "Storage Blob Data Reader",
@@ -123,7 +179,8 @@ AssignableScopes []
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
   "Actions": [
-    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
   ],
   "NotActions": [],
   "DataActions": [
@@ -133,6 +190,35 @@ AssignableScopes []
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+如 Azure CLI 所示的儲存體 Blob 資料讀取器角色：
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage blob containers and data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Blob Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -159,9 +245,11 @@ Alice 的「[擁有](built-in-roles.md#owner)者」角色和 Bob 的「[儲存�
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
 由於 Alice 在訂用帳戶`*`範圍有萬用字元（）動作，因此其許可權會向下繼承，讓他們能夠執行所有管理動作。 Alice 可以讀取、寫入和刪除容器。 不過，Alice 無法在未採取額外步驟的情況下執行資料作業。 例如，根據預設，Alice 無法讀取容器內的 Blob。 若要讀取 Blob，Alice 必須擷取儲存體存取金鑰，並使用它們來存取 Blob。

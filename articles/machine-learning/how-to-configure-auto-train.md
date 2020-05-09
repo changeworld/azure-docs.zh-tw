@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186924"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993703"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 輕鬆地將靜態檔案或 URL 來源中的資料傳輸至您的工作區
 * 在雲端計算資源上執行時，將您的資料提供給訓練腳本
 
-如需使用`Dataset`類別將資料掛接至計算目標的範例，請參閱 [how to](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
+如需使用`Dataset`類別將資料掛接至計算目標的範例，請參閱 [how to](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)。
 
 ## <a name="train-and-validation-data"></a>訓練和驗證資料
 
