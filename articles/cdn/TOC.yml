@@ -8,10 +8,10 @@
       href: cdn-features.md
 - name: 快速入門
   items:
-    - name: 建立設定檔和端點
-      href: cdn-create-new-endpoint.md
     - name: 整合儲存體帳戶
       href: cdn-create-a-storage-account-with-cdn.md
+    - name: 建立設定檔和端點
+      href: cdn-create-new-endpoint.md
     - name: 使用 Azure Resource Manager 範本建立設定檔
       href: create-profile-resource-manager-template.md
 - name: 教學課程
@@ -185,13 +185,13 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=cdn'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-cdn'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

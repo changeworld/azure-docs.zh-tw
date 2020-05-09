@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583216"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996037"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -213,7 +213,7 @@ speechConfig!.setPropertyTo(
 
 使用此表格來判斷每個類神經語音支援哪些說話樣式。
 
-| 語音                   | Style                     | 描述                                                 |
+| 語音                   | 樣式                     | 描述                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast"`        | 表達 narrating 新聞的正式和專業音調 |
 |                         | `style="customerservice"` | 為客戶支援表示易記且有用的語氣  |
@@ -258,8 +258,8 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
-| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值的範例包括`2s`和`500` | 選擇性 |
+| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>不足</li><li>中（預設值）</li><li>強式</li><li>x-強式</li></ul> | 選用 |
+| `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位）。 有效值的範例包括`2s`和`500` | 選用 |
 
 | 程度                      | 描述 |
 |-------------------------------|-------------|
@@ -328,7 +328,7 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定合成`ph`屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母<span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;通用電話集合</li></ul><br>字母僅適用于元素中`phoneme`的。 | 選擇性 |
+| `alphabet` | 指定合成`ph`屬性中字串的發音時，所要使用的語音字母。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母<span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;通用電話集合</li></ul><br>字母僅適用于元素中`phoneme`的。 | 選用 |
 | `ph` | 包含電話的字串，指定`phoneme`元素中單字的發音。 如果指定的字串包含無法辨識的手機，文字轉換語音（TTS）服務會拒絕整個 SSML 檔，而且不會產生任何在檔中指定的語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
@@ -359,7 +359,10 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自訂字典改善發音
 
-有時候，TTS 無法精確地發音單字，例如公司或外部名稱。 開發人員可以使用`phoneme`和`sub`標記定義 SSML 中這些實體的讀取，或使用`lexicon`標記來參考自訂字典檔案，以定義讀取多個實體。
+有時文字轉換語音服務無法精確地發音單字。 例如，公司的名稱或醫療詞彙。 開發人員可以使用`phoneme`和`sub`標記定義在 SSML 中讀取單一實體的方式。 不過，如果您需要定義多個實體的讀取方式，您可以使用`lexicon`標記來建立自訂字典。
+
+> [!NOTE]
+> 自訂字典目前支援 UTF-8 編碼。 
 
 **語法**
 
@@ -375,14 +378,10 @@ speechConfig!.setPropertyTo(
 
 **使用量**
 
-步驟1：定義自訂字典 
-
-您可以依照自訂的詞典專案清單（儲存為 .xml 或另外檔案）來定義實體的讀取。
-
-**範例**
+若要定義多個實體的讀取方式，您可以建立自訂的詞典，它會儲存為 .xml 或. 另外檔案。 以下是範例 .xml 檔案。
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,39 +399,61 @@ speechConfig!.setPropertyTo(
 </lexicon>
 ```
 
-每`lexeme`個元素都是一個字典專案。 `grapheme`包含描述 orthograph 的`lexeme`文字。 讀出形式可以提供為`alias`。 可以在元素中`phoneme`提供電話字串。
+`lexicon`元素至少包含一個`lexeme`元素。 每`lexeme`個元素都包含至少`grapheme`一個專案，以及一個`grapheme`或`alias`多個`phoneme` 、和元素。 `grapheme`元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span></a>的文字。 `alias`元素可用來指示縮略字或縮寫詞彙的發音。 `phoneme`元素會提供描述如何發音的`lexeme`文字。
 
-`lexicon`元素至少包含一個`lexeme`元素。 每`lexeme`個元素都包含至少`grapheme`一個專案，以及一個`grapheme`或`alais`多個`phoneme` 、和元素。 `grapheme`元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span></a>的文字。 `alias`元素可用來指示縮略字或縮寫詞彙的發音。 `phoneme`元素會提供描述如何發音的`lexeme`文字。
+請務必注意，您無法使用自訂字典直接設定單字的發音。 如果您需要設定的發音，請先提供，然後將`alias` `phoneme`與產生關聯`alias`。 例如：
 
-如需自訂字典檔案的詳細資訊，請參閱 W3C 網站上的[發音字典規格（另外）1.0 版](https://www.w3.org/TR/pronunciation-lexicon/)。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-步驟2：上傳在線上步驟1建立的自訂字典檔案，您可以將它儲存在任何位置，我們建議您將它儲存在 Microsoft Azure 中，例如[Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+> [!IMPORTANT]
+> 使用`phoneme` .ipa 時，元素不能包含空白字元。
 
-步驟3：參考 SSML 中的自訂字典檔案
+如需自訂字典檔案的詳細資訊，請參閱[發音字典規格（另外）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/)。
+
+接下來，發佈您的自訂字典檔案。 雖然我們不會限制儲存此檔案的位置，但我們建議使用[Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+
+發行自訂字典之後，您就可以從 SSML 參考它。
+
+> [!NOTE]
+> `lexicon`元素必須在`voice`元素內。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-"您" 將會以「方式」讀取。 "Benigni" 將會使用提供的 .IPA "bɛ今天 ni ː nji" 來閱讀。  
 
-**局限**
+使用此自訂字典時，"您" 將會以「方式」閱讀。 "Benigni" 將會使用提供的 .IPA "bɛ今天 ni ː nji" 讀取。  
+
+**限制**
 - 檔案大小：自訂字典檔案大小上限為 100 KB，如果超過此大小，合成要求將會失敗。
 - 辭典快取重新整理：自訂字典會在第一次載入 TTS 服務時，以 URI 作為金鑰來進行快取。 具有相同 URI 的字典不會在15分鐘內重載，因此自訂的詞典變更必須等候15分鐘才會生效。
 
 **語音服務拼音設定**
 
-在上述範例中，我們使用國際語音字母（也稱為 .IPA 電話集）。 我們建議開發人員使用 .IPA，因為它是國際標準。 考慮到 .ipa 並不容易記住，語音`en-US`服務會為七種語言（、 `fr-FR`、 `de-DE`、 `es-ES` `ja-JP` `zh-CN`、、和`zh-TW`）定義一組語音。
+在上述範例中，我們使用國際語音字母（也稱為 .IPA 電話集）。 我們建議開發人員使用 .IPA，因為它是國際標準。 對於某些 .IPA 字元，它們會在以 Unicode 表示時具有 ' precomposed ' 和「分解」版本。 自訂字典僅支援分解的 unicodes。
+
+考慮到 .ipa 並不容易記住，語音`en-US`服務會為七種語言（、 `fr-FR`、 `de-DE`、 `es-ES` `ja-JP` `zh-CN`、、和`zh-TW`）定義一組語音。
 
 您可以使用`sapi`作為具有自訂字典之`alphabet`屬性的 back，如下所示：
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -468,12 +489,12 @@ Could you help leave a message to Robert Benigni for me?
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選擇性 |
-| `contour` |等高線現在支援類神經和標準語音。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要增加或減少音調的數量，使用相對值或用於音調的列舉值（請參閱`pitch`）。 | 選擇性 |
-| `range` | 值，表示文字的音調範圍。 您可以使用`range`相同的絕對值、相對值或用來描述`pitch`的列舉值來表示。 | 選擇性 |
-| `rate` | 表示文字的說話速率。 您可以表達`rate`如下：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
-| `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選擇性 |
-| `volume` | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>default</li></ul></li></ul> | 選擇性 |
+| `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選用 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要增加或減少音調的數量，使用相對值或用於音調的列舉值（請參閱`pitch`）。 | 選用 |
+| `range` | 值，表示文字的音調範圍。 您可以使用`range`相同的絕對值、相對值或用來描述`pitch`的列舉值來表示。 | 選用 |
+| `rate` | 表示文字的說話速率。 您可以表達`rate`如下：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選用 |
+| `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選用 |
+| `volume` | 表示說話語音的音量層級。 您可以將磁片區表示為：<ul><li>絕對值，以0.0 到100.0 範圍內的數位表示，從*quietest*到*loudest*。 例如，75。 預設值為100.0。</li><li>以數位表示的相對值，其前面加上 "+" 或 "-"，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>很</li><li>x-大聲</li><li>default</li></ul></li></ul> | 選用 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -552,8 +573,8 @@ Could you help leave a message to Robert Benigni for me?
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 表示元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
-| `format` | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選擇性 |
-| `detail` | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對定義的`detail`標準值。 | 選擇性 |
+| `format` | 針對可能有不明確格式的內容類型，提供元素文字精確格式的其他資訊。 SSML 會定義使用它們之內容類型的格式（請參閱下表）。 | 選用 |
+| `detail` | 表示要讀出的詳細資料層級。 例如，此屬性可能會要求語音合成引擎發音標點符號。 沒有針對定義的`detail`標準值。 | 選用 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
@@ -650,9 +671,9 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果您在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受**的值`0` ： `100`包含（含）。 預設值是 `1`。 | 選擇性 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為`0`，這相當於「不淡入」。 **接受**的值`0` ： `10000`包含（含）。  | 選擇性 |
-| `fadeout` | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為`0`，這相當於 [不淡出]。**接受**的值`0` ： `10000`包含（含）。  | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受**的值`0` ： `100`包含（含）。 預設值為 `1`。 | 選用 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為`0`，這相當於「不淡入」。 **接受**的值`0` ： `10000`包含（含）。  | 選用 |
+| `fadeout` | 指定背景音訊的持續時間（以毫秒為單位）。 預設值為`0`，這相當於 [不淡出]。**接受**的值`0` ： `10000`包含（含）。  | 選用 |
 
 **範例**
 
