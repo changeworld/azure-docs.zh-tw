@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189089"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734819"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(已淘汰) Azure Container Service DC/OS 叢集上具備 Vamp 的 Canary 版本微服務
 
@@ -129,11 +129,11 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
 
 簡單來說，[Vamp 藍圖](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)會描述要部署的端點 (閘道)、叢集和服務。 Vamp 會使用叢集，將相同服務的不同變化群組為邏輯群組，以供 Canary 版本或 A/B 進行測試。  
 
-此案例中使用的範例整合型應用程式稱為 [**sava**](https://github.com/magneticio/sava)，為 1.0 版。 整合是封裝在一個 Docker 容器中，位於 magneticio/sava:1.0.0 下的 Docker 中樞。 應用程式通常會在連接埠 8080 上執行，但在此情況下，您需要在連接埠 9050 下將它公開。 使用簡單的藍圖，透過 Vamp 將應用程式進行部署。
+此案例中使用的範例整合型應用程式稱為 [**sava**](https://github.com/magneticio/sava-product)，為 1.0 版。 整合是封裝在一個 Docker 容器中，位於 magneticio/sava:1.0.0 下的 Docker 中樞。 應用程式通常會在連接埠 8080 上執行，但在此情況下，您需要在連接埠 9050 下將它公開。 使用簡單的藍圖，透過 Vamp 將應用程式進行部署。
 
 1. 前往**部署**。
 
-2. 按一下 **[新增]** 。
+2. 按一下 [新增]  。
 
 3. 貼入下列藍圖 YAML。 此藍圖所包含的一個叢集只有一個服務變化，我們將在稍後步驟中進行變更︰
 

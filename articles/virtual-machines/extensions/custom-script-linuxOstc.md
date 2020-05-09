@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535403"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594707"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 
@@ -118,13 +118,13 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | 字串 |
 | type | CustomScriptForLinux | 字串 |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (例如) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (例如) | python MyPythonScript.py \<my-param1\> | 字串 |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (例如) | examplestorageacct | 字串 |

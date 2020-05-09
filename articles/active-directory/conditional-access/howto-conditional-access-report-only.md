@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295121"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690363"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>在僅限報表模式中設定條件式存取原則（預覽）
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在僅限報表模式中設定條件式存取原則
 
 若要在僅限報表模式中設定條件式存取原則：
 
@@ -42,7 +42,7 @@ View report-只會產生 Azure AD 登入記錄檔。
 1. 以「報表讀者」、「安全性讀取者」、「安全性系統管理員」或「全域管理員」身分登入**Azure 入口網站**。
 1. 流覽至**Azure Active Directory** > 登**入**。
 1. 選取登入或新增篩選來縮小結果範圍。
-1. 在 [**詳細資料**] 下拉式清單中，選取 [**僅限報告（預覽）** ] 索引標籤，以查看在登入期間評估的原則。
+1. 在 [**詳細資料**] 下拉式清單中，選取 [**僅限報告**] 索引標籤，以查看在登入期間評估的原則。
 
 > [!NOTE]
 > 下載登入記錄檔時，請選擇 [JSON 格式] 以包含條件式存取報告的結果資料。
@@ -62,7 +62,7 @@ Azure 監視器定價的詳細資訊可在[Azure 監視器定價頁面](https://
 
 1. 以安全性系統管理員或全域管理員身分登入**Azure 入口網站**。
 1. 流覽至**Azure Active Directory** > 活頁**簿**。
-1. 選取 **[條件式存取深入解析（預覽）**]。
+1. 選取 [**條件式存取深入**解析]。
 1. 從 [**條件式存取原則**] 下拉式清單中選取一或多個原則。 預設會選取所有已啟用的原則。
 1. 選取時間範圍（如果時間範圍超過可用的資料集，報表就會顯示所有可用的資料）。 一旦您設定了**條件式存取原則**和**時間範圍**參數，報表就會載入。
    1. （選擇性）搜尋個別**使用者**或**應用程式**，以縮小報告的範圍。

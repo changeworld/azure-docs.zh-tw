@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78247831"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731861"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 範例
 
@@ -34,7 +34,7 @@ Azure Synapse Analytics （SQL 資料倉儲）提供範例 AdventureWorksDW 資�
 
 GitHub 上的這些範例資料庫可用來建立和測試您自己的模型。 
 
-[Adventure Works 範例資料庫](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Adventure Works 範例資料庫](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 [Wide World Importers 範例資料庫](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 

@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686184"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857075"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -25,7 +25,7 @@ ms.locfileid: "81686184"
 
 連結`Microsoft.Azure.Services.AppAuthentication`庫會自動管理驗證，而這可讓您專注于您的解決方案，而不是您的認證。 它支援 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證的本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用時，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD[用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)或[Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -230,7 +230,7 @@ ms.locfileid: "81686184"
 
 支援下列選項：
 
-| 連接字串選項 | 案例 | 評價|
+| 連接字串選項 | 狀況 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`會使用 AzureCli 來取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`會使用 Visual Studio 來取得權杖。 |
@@ -272,7 +272,7 @@ Azureservicetokenprovider 會會在其預設安裝位置尋找 Azure CLI。 如�
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未經授權的存取、拒絕存取、禁止或類似的錯誤
 
-使用的主體無法存取其嘗試存取的資源。 授與您的使用者帳戶或 App Service 的 MSI 「參與者」對資源的存取權。 哪一個取決於您是在本機電腦上執行範例，還是在 Azure 中部署至您的 App Service。 有些資源（例如金鑰保存庫）也有自己的[存取](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies)原則，您可以使用它們來授與存取權給主體，例如使用者、應用程式和群組。
+使用的主體無法存取其嘗試存取的資源。 授與您的使用者帳戶或 App Service 的 MSI 「參與者」對資源的存取權。 哪一個取決於您是在本機電腦上執行範例，還是在 Azure 中部署至您的 App Service。 有些資源（例如金鑰保存庫）也有自己的[存取](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies)原則，您可以使用它們來授與存取權給主體，例如使用者、應用程式和群組。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>部署到 Azure App Service 時常見的問題
 

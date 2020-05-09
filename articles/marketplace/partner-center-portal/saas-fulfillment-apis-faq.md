@@ -1,26 +1,26 @@
 ---
-title: SaaS 履行 Api-常見問題 |Azure Marketplace
-description: Azure Marketplace 中 SaaS 供應專案客戶的探索和購買體驗。
+title: SaaS 履行 API 常見問題-Microsoft 商業 marketplace
+description: 深入瞭解 Microsoft 商業 marketplace 的幾項整合需求，以讓 Azure 客戶訂閱 SaaS 供應專案。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 6d3a84341d5221950da20f39456461dafc5d2e75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275691"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792899"
 ---
-# <a name="saas-fulfillment-apis---faq"></a>SaaS 履行 API - 常見問題集
+# <a name="common-questions-about-saas-fulfillment-apis"></a>有關 SaaS 履行 Api 的常見問題
 
-會列出 Azure Marketplace 的整合需求，可讓 Azure 客戶訂閱 SaaS 供應專案。
+本文說明 Microsoft 商業 marketplace 的幾項整合需求，可讓 Azure 客戶訂閱 SaaS 供應專案。
 
 ## <a name="discovery-experience"></a>探索體驗
 
-供應專案發佈之後，Azure 使用者就可以在 Azure Marketplace 中探索 SaaS 供應專案。 您的客戶將能夠根據產品類型（SaaS）篩選供應專案，並探索他們感興趣的 SaaS 服務。
+一旦 SaaS 供應專案發佈之後，Azure 使用者就可以在 Azure Marketplace 中探索它。 您的客戶可以根據產品類型（SaaS）來篩選供應專案，並探索他們感興趣的 SaaS 服務。
 
 ## <a name="purchase-experience"></a>購買經驗
 
@@ -30,7 +30,7 @@ ms.locfileid: "80275691"
 
 這表示使用者可以查看與 SaaS 服務相關聯的使用規定和隱私權聲明，並同意根據您在 Microsoft 發票上的 SaaS 供應專案發行者所設定的計費條款來支付費用。 使用者可以在 Azure 中使用其現有的付款設定檔來支付 SaaS 服務耗用量。
 
-這很有用，原因很多。 客戶現在可以使用 Microsoft Cloud 平臺做為信任的來源，在單一位置進行探索及訂閱，而不需要審查其打算使用的每個 ISV 軟體。 此外，客戶也可以使用其現有的付款設定檔，而不需要個別明確支付每個 ISV 軟體。
+這項功能有許多方面的好處。 客戶現在可以使用 Microsoft Cloud 平臺做為信任的來源，在單一位置進行探索及訂閱，而不需要審查其打算使用的每個 ISV 軟體。 此外，客戶也可以使用其現有的付款設定檔，而不需要個別明確支付每個 ISV 軟體。
 
 ### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>當供應專案訂閱時，使用者會自動收費嗎？
 
@@ -38,15 +38,15 @@ ms.locfileid: "80275691"
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>當使用者訂閱您的 SaaS 供應專案時，您會如何收到通知？
 
-訂閱供應專案之後，Azure 使用者可以在 Azure 中探索及管理其所有供應專案。 根據預設，新訂閱的 SaaS 供應專案狀態為「布建 **，履行擱置中**」。 在此狀態下，Azure 使用者會收到「**設定帳戶**」動作的提示，以便流覽至 Azure 入口網站中的 SaaS 訂閱管理體驗。
+訂閱供應專案之後，Azure 使用者可以在 Azure 中探索及管理其所有供應專案。 根據預設，新訂閱的 SaaS 供應專案狀態會顯示為 [布建] **、[履行擱置**]。 在此狀態下，系統將會提示 Azure 使用者**設定帳戶**，以便流覽至 Azure 入口網站中的 SaaS 訂閱管理體驗。
 
-當使用者按一下 [**設定帳戶**] 時，系統會將他們重新導向至 SaaS 服務網站。 在發佈供應專案時，發行者會提供流覽的 URL。 此頁面稱為「發行者」登陸頁面。 Azure 使用者應該能夠根據其在 Azure 中的現有 AAD 認證，登入 SaaS 登陸頁面。
+當使用者選取 [**設定帳戶**] 時，系統會將他們重新導向至 SaaS 服務網站。 發行者在發佈供應專案時設定了 URL。 此頁面稱為「發行者」登陸頁面。 Azure 使用者會根據其在 Azure 中的現有 AAD 認證，登入 SaaS 登陸頁面。
 
 將 Azure 使用者重新導向至登陸頁面時，會將權杖加入至查詢 URL。 此權杖的存留期很短，且在24小時的期間內有效。 然後，您可以偵測此權杖是否存在，並呼叫 Microsoft 的 API 以取得與該權杖相關聯的更多內容。
 
 ![客戶訂用帳戶流程](media/saas-metering-service-integration-flow-a.png)
 
-如需 API 合約的詳細資訊，以在 SaaS 供應專案的生命週期中處理交易案例，請參閱[saas 履行 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)檔。
+如需有關在 SaaS 供應專案生命週期中處理交易案例之 API 合約的詳細資訊，請參閱[saas 履行 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>您如何知道使用者在 Azure 中訂閱的 SaaS 供應專案？
 
@@ -56,7 +56,7 @@ ms.locfileid: "80275691"
 
 * Azure 使用者可以直接在 SaaS 體驗中，或透過 Microsoft 平臺，變更與 SaaS 訂用帳戶相關聯的方案。
 
-* 您可以隨時在計費週期中進行轉換。 您必須認可任何轉換，這會在認可之後生效。
+* 您可以隨時在計費週期中進行轉換。 系統會提示您確認任何轉換，這會在確認之後生效。
 
 * 預付型方案（**每月**或**每年**）費率已按比例計算。 任何在轉換時間所發出的超額部分，將會在下一張發票中收取費用。 新的超額部分將會根據新的計畫發出。
 
@@ -85,4 +85,4 @@ Azure 使用者可以直接在 SaaS 體驗中或透過 Microsoft 平臺取消訂
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需詳細資訊，請參閱[Marketplace 計量服務 api](./marketplace-metering-service-apis.md) 。
+[Marketplace 計量服務 API](./marketplace-metering-service-apis.md)

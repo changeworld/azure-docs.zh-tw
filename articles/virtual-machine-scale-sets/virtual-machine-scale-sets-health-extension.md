@@ -5,21 +5,21 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273727"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864363"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
-監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。
+監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。 您也可以使用健康情況延伸模組來監視擴展集中每個實例的應用程式健全狀況，並使用[自動實例修復](virtual-machine-scale-sets-automatic-instance-repairs.md)來執行實例修復。
 
 本文描述如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文假設您已熟悉以下各項：
 -   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
@@ -31,7 +31,7 @@ ms.locfileid: "81273727"
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 此延伸模組最少需要分別具有相關聯連接埠和要求路徑的 "tcp" 或 "http" 要求。
+下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 延伸模組需要至少有一個相關聯埠或要求路徑的 "tcp"、"HTTP" 或 "HTTPs" 要求。
 
 ```json
 {
@@ -55,7 +55,7 @@ ms.locfileid: "81273727"
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型
+| 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | 字串 |
@@ -64,11 +64,11 @@ ms.locfileid: "81273727"
 
 ### <a name="settings"></a>設定
 
-| Name | 值 / 範例 | 資料類型
+| 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ----
-| protocol | `http` 或 `tcp` | 字串 |
-| 連接埠 | 通訊協定是 `http` 時為選擇性項目；通訊協定是 `tcp` 時則為必要項目 | int |
-| requestPath | 通訊協定是 `http` 時為必要項目；通訊協定是 `tcp` 時則不允許使用 | 字串 |
+| protocol | `http`、`https` 或 `tcp` | 字串 |
+| 連接埠 | 當通訊協定為`http`或`https`時為選擇性，當通訊協定為時為必要`tcp` | int |
+| requestPath | 當通訊協定是`http`或`https`時，不允許使用`tcp` | 字串 |
 
 ## <a name="deploy-the-application-health-extension"></a>部署應用程式健康狀態延伸模組
 有多種方法可以將應用程式健康狀態延伸模組部署至您的擴展集，如下面的範例所詳述。

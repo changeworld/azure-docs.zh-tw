@@ -3,17 +3,17 @@ title: 管理 Azure 儲存體生命週期
 description: 了解如何建立生命週期原則規則，以將過時資料從「經常性」層轉換到「非經常性」層和「封存」層。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598301"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692134"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -24,7 +24,7 @@ ms.locfileid: "77598301"
 - 將 Blob 轉換到較少存取的儲存層 (經常性到非經常性、經常性到封存或非經常性到封存)，以最佳化效能和成本
 - 在其生命週期結束時刪除 Blob
 - 定義每天要在儲存體帳戶層級執行一次的規則
-- 將規則套用至容器或 Blob 子集 (使用前置詞作為篩選)
+- 將規則套用至容器或 blob 的子集（使用名稱前置詞或[blob 索引標記](storage-manage-find-blobs.md)做為篩選準則）
 
 假設資料在生命週期的早期階段中經常存取，但只是在兩周後才會取得。 第一個月過後，就已經很少會存取該資料集。 在這種情況下，經常性儲存層最適合早期階段。 非經常性儲存體最適合偶爾存取。 封存儲存體是每個月的資料年齡後的最佳層選項。 藉由根據資料存在時間來調整儲存層，您就可以按照自己的需求設計最便宜的儲存體選項。 若要達成這項轉換，可使用生命週期管理原則規則將過時資料移至較少存取的階層。
 
@@ -128,7 +128,7 @@ ms.locfileid: "77598301"
 
 6. 如需有關此 JSON 範例的詳細資訊，請參閱[原則](#policy)和[規則](#rules)章節。
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 下列 PowerShell 腳本可以用來將原則新增至您的儲存體帳戶。 `$rgname`變數必須使用您的資源組名進行初始化。 `$accountName`變數必須使用您的儲存體帳戶名稱進行初始化。
 
@@ -234,8 +234,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 | 參數名稱 | 參數類型 | 備忘錄 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | 字串 |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
-| `enabled`      | 布林值 | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
+| `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
 | `type`         | 列舉值 | 目前的有效類型為`Lifecycle`。 | True |
 | `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
@@ -292,7 +292,11 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | 篩選名稱 | 篩選類型 | 備忘錄 | 必要 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援`blockBlob`。 | 是 |
-| prefixMatch | 要比對前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比`https://myaccount.blob.core.windows.net/container1/foo/...`對底下的所有 blob，則 prefixMatch 為。 `container1/foo` | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | 否 |
+| prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比`https://myaccount.blob.core.windows.net/container1/foo/...`對底下的所有 blob，則 prefixMatch 為。 `container1/foo` | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | 否 |
+| blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob `Project = Contoso`與`https://myaccount.blob.core.windows.net/`下的進行比對，則`{"name": "Project","op": "==","value": "Contoso"}`blobIndexMatch 為。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | 否 |
+
+> [!NOTE]
+> Blob 索引處於公開預覽狀態，並可在**法國中部**和**法國南部**區域中取得。 若要深入瞭解這項功能以及已知問題和限制，請參閱[使用 Blob 索引在 Azure Blob 儲存體上管理和尋找資料（預覽）](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>規則動作
 
@@ -304,14 +308,14 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 支援目前在經常性儲存層的 Blob         | 不支援 |
 | tierToArchive | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
-| [刪除]        | 支援                                   | 支援     |
+| delete        | 支援                                   | 支援     |
 
 >[!NOTE]
 >如果在同一個 Blob 上定義多個動作，生命週期管理會將最便宜的動作套用至 Blob。 例如，動作 `delete` 比動作 `tierToArchive` 更便宜。 而動作 `tierToArchive` 比動作 `tierToCool` 更便宜。
 
 執行條件是以年齡為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
 
-| 動作執行條件             | 條件值                          | 說明                             |
+| 動作執行條件             | 條件值                          | 描述                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件     |
 | daysAfterCreationGreaterThan     | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件 |
@@ -405,6 +409,42 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>使用 Blob 索引標記來刪除資料
+只有在明確標示為刪除時，某些資料才會過期。 您可以設定生命週期管理原則，使標記為 blob 索引鍵/值屬性的資料過期。 下列範例顯示的原則會刪除標記為的`Project = Contoso`所有區塊 blob。 若要深入瞭解 Blob 索引，請參閱[使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）](storage-manage-find-blobs.md)。
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>刪除舊的快照集
 
 針對在其生命週期內定期修改及存取的資料，通常會使用快照集來追蹤舊版資料。 您可以建立原則，根據快照集存在時間來刪除舊的快照集。 快照集存在時間是透過評估快照集建立時間來判斷。 此原則規則會將快照集建立後超過 90 天 (含) 的容器 `activedata` 內區塊 Blob 快照集刪除。
@@ -448,3 +488,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 了解如何復原意外刪除的資料：
 
 - [Azure 儲存體 Blob 的虛刪除](../blobs/storage-blob-soft-delete.md)
+
+瞭解如何使用 Blob 索引來管理和尋找資料：
+
+- [使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)

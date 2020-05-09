@@ -2,26 +2,21 @@
 title: 找出特定使用者將能夠存取應用程式的時間
 description: 如何查明非常重要的使用者何時能夠存取您已設定的應用程式，以透過 Azure AD 進行使用者佈建
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48370e2806b70d550bce95ceff3857a79561f247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264137"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593908"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>檢查使用者布建的狀態
 
@@ -35,7 +30,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 - 目前正在執行或上次完成的布建週期類型（初始或增量）。
 - 顯示已完成布建週期百分比的**進度**列。 百分比會反映已布建的頁面計數。 請注意，每個頁面都可以包含多個使用者或群組，因此百分比不會直接與所布建的使用者、群組或角色數目相互關聯。
 - 您可以使用 [重新整理 **] 按鈕來**讓視圖保持更新。
-- 連接器資料存放區中的**使用者**和**群組**數目。 一旦將物件新增至布建範圍，此計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會從連接器資料存放區中移除物件。 [重設](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 之後，此計數會 recaculated 第一次同步處理 
+- 連接器資料存放區中的**使用者**和**群組**數目。 一旦將物件新增至布建範圍，此計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會從連接器資料存放區中移除物件。 [重設](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 之後，此計數會重新計算第一次的同步處理 
 - **View Audit Logs**連結，會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態（請參閱下面的「使用布建[記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)」一節）。
 
 布建週期完成之後，[**統計資料]** 區段會顯示已布建到 [日期] 的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**會唯一識別最新的布建週期。 **工作**識別碼是布建工作的唯一識別碼，而且是您租使用者中的應用程式專用。

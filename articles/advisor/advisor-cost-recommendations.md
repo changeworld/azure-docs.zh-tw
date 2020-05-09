@@ -3,12 +3,12 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259691"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788088"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -49,6 +49,9 @@ Azure Advisor 會偵測重複失敗的 Azure Data Factory 管線，並建議您�
 
 ## <a name="utilize-lifecycle-management"></a>利用生命週期管理
 Azure Advisor 將會利用有關 Azure blob 儲存體物件計數、總大小和交易的情報，以偵測是否有一或多個儲存體帳戶最適合用來啟用將生命週期管理分層資料的階層。 它會提示您建立生命週期管理規則，將您的資料自動分層到非經常性或封存，以將您的儲存體成本優化，同時保留 Azure blob 儲存體中的資料以達到應用程式相容性。
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>建立暫時的 OS 磁片建議
+有了[暫時的 Os 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)，客戶可享有下列優點：節省 OS 磁片的儲存成本。 為 OS 磁片取得較低的讀取/寫入延遲。 將 OS （和暫存磁片）重設為其原始狀態，以更快速地進行 VM 重新安裝映射操作。 針對短期的 IaaS Vm 或具有無狀態工作負載的 Vm，使用暫時 OS 磁片是更下班時間的。 Advisor 有資源的建議，可利用暫時的 OS 磁片來獲得好處。 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何存取 Azure Advisor 中的成本建議
 

@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414833"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629077"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>從具有控制資料表的資料庫大量複製
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 若要將資料從 Oracle 伺服器中的資料倉儲、Netezza、Teradata 或 SQL Server 複製到 Azure SQL 資料倉儲，您必須從多個資料表載入大量資料。 通常，資料必須在每個資料表中進行分割，如此一來，您就可以從單一資料表以平行方式載入具有多個執行緒的資料列。 本文說明在這些案例中使用的範本。
 

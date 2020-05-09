@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629264"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927899"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自訂計量集合
 
@@ -20,7 +20,7 @@ ms.locfileid: "82629264"
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric 與 GetMetric
 
-`TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`在效能方面也沒有效率，因為每`TrackMetric(item)`個都經過遙測初始化運算式和處理器的完整 SDK 管線。 不同`TrackMetric()`于`GetMetric()` ，會為您處理本機預先匯總，然後只以一分鐘的固定間隔提交匯總的摘要度量。 因此，如果您需要在第二個或甚至毫秒層級密切監視某個自訂計量，您可以這麼做，同時只會產生每分鐘監視的儲存體和網路流量成本。 這也能大幅降低發生節流的風險，因為需要為匯總計量傳送的遙測專案總數大幅降低。
+`TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`在效能方面也沒有效率，因為每`TrackMetric(item)`個都經過遙測初始化運算式和處理器的完整 SDK 管線。 不同`TrackMetric()`于`GetMetric()` ，會為您處理本機預先匯總，然後只以一分鐘的固定間隔提交匯總的摘要度量。 因此，如果您需要在第二個或甚至毫秒層級密切監視某個自訂計量，您可以這麼做，同時只會產生每分鐘監視的儲存體和網路流量成本。 這也能大幅降低發生節流的風險，因為需要為匯總計量傳送的遙測專案總數大幅降低。
 
 在 Application Insights 中，透過`TrackMetric()`和`GetMetric()`收集的自訂計量不受[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling)的規範。 取樣重要計量可能會導致可能以這些計量為基礎建立警示的案例可能會變得不可靠。 藉由永不取樣您的自訂計量，您通常可以確信當違反警示閾值時，將會引發警示。  但是因為自訂計量並未取樣，所以有一些潛在的顧慮。
 
@@ -186,7 +186,22 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 ![分割支援](./media/get-metric/splitting-support.png)
 
-根據預設，計量瀏覽器體驗內的多維度度量不會在 Application Insights 資源中開啟。 若要開啟此行為，請選取 [[啟用自訂計量維度的警示](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)]，以移至 [使用量和估計成本] 索引標籤。
+根據預設，計量瀏覽器體驗內的多維度度量不會在 Application Insights 資源中開啟。
+
+### <a name="enable-multi-dimensional-metrics"></a>啟用多維度計量
+
+若要啟用 Application Insights 資源的多維度計量，請選取 [**使用量和估計成本** > ] [**自訂計量** > **] [****在自訂度量維度** > 上啟用警示]。 您可以在[這裡](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)找到更多有關此資訊的詳細資料。
+
+當您變更並傳送新的多維度遙測之後，您就能夠套用**分割**。
+
+> [!NOTE]
+> 只有在入口網站中開啟功能之後，新傳送的計量才會儲存維度。
+
+![套用分割](./media/get-metric/apply-splitting.png)
+
+並針對每個_FormFactor_維度來查看您的度量匯總：
+
+![尺寸規格](./media/get-metric/formfactor.png)
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>當有三個以上的維度時，如何使用 MetricIdentifier
 
@@ -199,21 +214,6 @@ MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 ```
-
-### <a name="enable-multi-dimensional-metrics"></a>啟用多維度計量
-
-若要啟用 Application Insights 資源的多維度計量，請選取 [**使用量和估計成本** > ] [**自訂計量** > **] [****在自訂度量維度** > 上啟用警示]。
-
-當您變更並傳送新的多維度遙測之後，您就能夠套用**分割**。
-
-> [!NOTE]
-> 只有在入口網站中開啟功能之後，新傳送的計量才會儲存維度。
-
-![套用分割](./media/get-metric/apply-splitting.png)
-
-並針對每個_FormFactor_維度來查看您的度量匯總：
-
-![尺寸規格](./media/get-metric/formfactor.png)
 
 ## <a name="custom-metric-configuration"></a>自訂度量設定
 
