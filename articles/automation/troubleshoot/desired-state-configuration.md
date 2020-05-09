@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652817"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995295"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>針對 Azure 自動化狀態設定問題進行疑難排解
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>針對 Azure 自動化狀態設定問題進行疑難排解
 
 本文提供有關在 Azure 自動化狀態設定中編譯或部署設定時，所發生之問題的疑難排解資訊。
-
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以遵循[如何在 Azure 自動化中更新 Azure PowerShell 模組](../automation-update-azure-modules.md)中的步驟，將模組更新為最新版本。
 
 ## <a name="diagnose-an-issue"></a>診斷問題
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此問題是因為憑證錯誤或過期所造成。 請參閱[憑證到期和重新註冊](../automation-dsc-onboarding.md#re-registering-a-node)。
+此問題是因為憑證錯誤或過期所造成。 請參閱[重新註冊節點](../automation-dsc-onboarding.md#re-register-a-node)。
 
 此問題也可能是因為 proxy 設定不允許存取 ***. azure-automation.net**所造成。 如需詳細資訊，請參閱[私人網路的](../automation-dsc-overview.md#network-planning)設定。 
 
@@ -239,11 +236,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 請務必針對設定中所述`ConfigurationData`的每`PSDscAllowPlainTextPassword`個節點設定，傳遞適當的以將設為 true。 請參閱[在 Azure 自動化狀態設定中編譯 DSC](../automation-dsc-compile.md)設定。
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>案例：從 DSC 延伸模組上線時，發生「失敗處理延伸模組」錯誤
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>案例：從 DSC 延伸模組啟用電腦時發生「失敗處理延伸模組」錯誤
 
 ### <a name="issue"></a>問題
 
-當您使用 DSC 擴充功能進行上架時，會發生包含錯誤的失敗：
+當您使用 DSC 擴充功能啟用電腦時，會發生失敗，其中包含錯誤：
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 ### <a name="resolution"></a>解決方案
 
 * 請確定您所指派的節點名稱與服務中的名稱完全相符。
-* 您可以選擇不包含節點設定名稱，這會導致節點上架，但不會指派節點設定。
+* 您可以選擇不包含節點設定名稱，這會導致節點無法指派節點設定。
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>案例：使用 PowerShell 註冊節點時發生「發生一或多個錯誤」錯誤
 
@@ -274,10 +271,10 @@ One or more errors occurred.
 
 ### <a name="resolution"></a>解決方案
 
-將跨訂用帳戶節點視為針對個別雲端或內部部署所定義。 使用下列其中一個上架選項來註冊節點：
+將跨訂用帳戶節點視為針對個別雲端或內部部署所定義。 使用下列其中一個選項來註冊節點，以啟用機器：
 
-* Windows：[內部部署的實體/虛擬 Windows 機器，或 Azure/AWS 以外的雲端](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)。
-* Linux：[內部部署或 Azure 以外之雲端中的實體/虛擬 Linux 機器](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)。
+* Windows：[內部部署的實體/虛擬 Windows 機器，或 Azure/AWS 以外的雲端](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines)。
+* Linux：[內部部署或 Azure 以外之雲端中的實體/虛擬 Linux 機器](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)。
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>案例：「布建失敗」錯誤訊息
 

@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385541"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995030"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning 的分散式訓練
 
 在本文中，您將瞭解分散式訓練，以及 Azure Machine Learning 如何為深度學習模型提供支援。 
 
-在分散式訓練中，定型模型的工作負載會分割並在多個迷你處理器（稱為背景工作節點）之間共用。 這些背景工作節點會以平行方式運作，以加速模型定型。 分散式訓練可用於傳統的 ML 模型，但較適合計算和耗費大量時間的工作，例如[深入學習](concept-deep-learning-vs-machine-learning.md)訓練深度類神經網路。
+在分散式訓練中，定型模型的工作負載會分割並在多個迷你處理器（稱為背景工作節點）之間共用。 這些背景工作節點會以平行方式運作，以加速模型定型。 分散式訓練可用於傳統的 ML 模型，但較適合計算和耗費大量時間的工作，例如[深入學習](concept-deep-learning-vs-machine-learning.md)訓練深度類神經網路。 
 
 ## <a name="deep-learning-and-distributed-training"></a>深度學習與分散式訓練 
 
@@ -36,7 +36,9 @@ ms.locfileid: "80385541"
 
 資料平行處理是最簡單的方式，可執行兩種分散式訓練方法，而且對大部分的使用案例都已足夠。
 
-在這種方法中，資料會分割成磁碟分割，其中的磁碟分割數目等於計算叢集中可用節點的總數。 此模型會在每個背景工作角色節點中複製，而每個背景工作角色會在其本身的資料子集上運作。 請記住，每個節點都必須有容量來支援正在定型的模型，這也就是模型必須完全納入每個節點上。
+在這種方法中，資料會分割成磁碟分割，其中的磁碟分割數目等於計算叢集中可用節點的總數。 此模型會在每個背景工作角色節點中複製，而每個背景工作角色會在其本身的資料子集上運作。 請記住，每個節點都必須有容量來支援正在定型的模型，這也就是模型必須完全納入每個節點上。 下圖提供此方法的視覺化示範。
+
+![資料平行處理原則-概念-圖表](./media/concept-distributed-training/distributed-training.svg)
 
 每個節點都會針對其定型範例和標示的輸出，分別計算其預測之間的錯誤。 接著，每個節點都會根據錯誤來更新其模型，而且必須將其所有變更傳達給其他節點，以更新其對應的模型。 這表示背景工作節點必須同步處理批次計算結尾的模型參數或漸層，以確保它們會定型一致的模型。 
 
