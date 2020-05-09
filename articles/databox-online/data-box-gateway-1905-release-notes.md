@@ -8,20 +8,20 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67078608"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561870"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge 和 Azure 資料箱閘道1905版本資訊
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下列版本資訊會針對 Azure Data Box Edge 和 Azure 資料箱閘道的1905版本，識別重大的未解決問題和已解決的問題。
 
-版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Data Box Edge/Data Box Gateway 之前，請仔細檢查版本資訊中包含的資訊。
+版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Data Box Edge/Data Box Gateway 之前，請仔細檢查版本資訊中包含的資訊。 
 
 此版本對應于軟體版本：
 
@@ -33,7 +33,7 @@ ms.locfileid: "67078608"
 
 ## <a name="whats-new"></a>新功能
 
-- 現場可程式化網**關陣列（FPGA）記錄改進**-在此版本中，我們已建立與 FPGA 相關的記錄和警示增強功能。 如果您使用 FPGA 的 Edge 計算功能，這就是 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](data-box-edge-deploy-configure-compute-advanced.md)。
+- 現場可程式化網**關陣列（FPGA）記錄改進**-在此版本中，我們已建立與 FPGA 相關的記錄和警示增強功能。 如果您使用 FPGA 的 Edge 計算功能，這就是 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](azure-stack-edge-deploy-configure-compute-advanced.md)。
 
 ## <a name="known-issues-in-ga-release"></a>GA 版本中的已知問題
 
@@ -43,4 +43,4 @@ ms.locfileid: "67078608"
 ## <a name="next-steps"></a>後續步驟
 
 - [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [準備部署 Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [準備部署 Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

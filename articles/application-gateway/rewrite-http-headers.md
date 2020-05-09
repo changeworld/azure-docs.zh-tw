@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: ced807b25cd1e829988a1e6b7621a5f73e0edfc2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: HT
+ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202425"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562231"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>使用應用程式閘道重寫 HTTP 標頭
 
@@ -157,6 +157,8 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 ## <a name="limitations"></a>限制
 
 - 如果回應有多個相同名稱的標頭，則重寫其中一個標頭的值會導致在回應中卸載其他標頭。 這通常會發生在設定 Cookie 標頭中，因為在回應中可以有一個以上的設定 Cookie 標頭。 其中一種情況是，當您使用 app service 搭配應用程式閘道，並已在應用程式閘道上設定以 cookie 為基礎的會話親和性。 在此情況下，回應會包含兩個設定 Cookie 標頭：一個供 app service 使用，例如： `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`另一個用於應用程式閘道親和性`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`，例如。 重寫此案例中的其中一個設定 Cookie 標頭，可能會導致從回應中移除另一個設定 Cookie 標頭。
+
+- 當應用程式閘道設定為重新導向要求或顯示自訂錯誤頁面時，不支援重寫。
 
 - 目前不支援重寫連接、升級和主機標頭。
 

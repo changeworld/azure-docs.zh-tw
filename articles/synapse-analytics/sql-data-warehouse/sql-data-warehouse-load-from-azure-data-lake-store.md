@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9713d73ee132f743ceea98cbaca6a83f36fd3a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416103"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626712"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>從 Azure Data Lake Storage 載入 SQL 分析的資料
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>建立外部資料來源
 
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果您要使用 AAD 傳遞進行驗證，則不需要 CREDENTIAL 參數。 如果您要使用服務端點的受控識別進行驗證，請遵循此[檔](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-sql-data-warehouse-polybase)來設定外部資料源。
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果您要使用 AAD 傳遞進行驗證，則不需要 CREDENTIAL 參數。 如果您要使用服務端點的受控識別進行驗證，請遵循此[檔](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)來設定外部資料源。
 
 ```sql
 -- C (for Gen1): Create an external data source

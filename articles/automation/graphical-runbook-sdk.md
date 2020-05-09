@@ -5,20 +5,20 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509001"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690745"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自動化圖形化 runbook SDK
 
 [圖形化 runbook](automation-graphical-authoring-intro.md)可協助管理基礎 Windows PowerShell 或 PowerShell 工作流程程式碼的複雜性。 Microsoft Azure Automation 圖形化撰寫 SDK 可讓開發人員建立和編輯圖形化 runbook，以與 Azure 自動化搭配使用。 本文說明從您的程式碼建立圖形化 runbook 的基本步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-將套件`Microsoft.Azure.Management.Automation.GraphicalRunbook.Model`匯入您的專案中。
+將套件`Orchestrator.GraphRunbook.Model.dll`匯入您的專案中。
 
 ## <a name="create-a-runbook-object-instance"></a>建立 Runbook 物件執行個體
 
@@ -91,7 +91,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 
 活動是由`Orchestrator.GraphRunbook.Model`命名空間中的下列類別所執行。
 
-|執行個體  |活動  |
+|類別  |活動  |
 |---------|---------|
 |CommandActivity     | 叫用 PowerShell 命令 (cmdlet、函式等)。        |
 |InvokeRunbookActivity     | 叫用另一個 Runbook 內嵌。        |

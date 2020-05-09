@@ -6,30 +6,28 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256975"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838768"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 串流分析中的查詢平行化作業
 本文會示範如何利用 Azure 串流分析中的平行化作業。 您可以了解如何透過設定輸入資料分割並調整分析查詢定義來調整串流分析工作。
 先決條件是，您必須熟悉[了解及調整串流處理單位](stream-analytics-streaming-unit-consumption.md)中所述的串流處理單位概念。
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>串流分析工作由哪些部分所組成？
-串流分析工作的定義包含輸入、查詢及輸出。 輸入是指作業讀取資料流的來源。 查詢是用來轉換資料輸入資料流，而輸出是作業傳送作業結果的目的地。
+串流分析作業定義至少包含一個資料流程輸入、查詢和輸出。 輸入是指作業讀取資料流的來源。 查詢是用來轉換資料輸入資料流，而輸出是作業傳送作業結果的目的地。
 
-一個工作至少需要一個輸入來源來進行資料串流。 資料流輸入來源可以儲存在 Azure 事件中樞或 Azure Blob 儲存體中。 如需詳細資訊，請參閱 [Azure 串流分析簡介](stream-analytics-introduction.md)和[開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)。
-
-## <a name="partitions-in-sources-and-sinks"></a>來源與接收的資料分割
-調整串流分析作業需要利用輸入或輸出中的分割區。 資料分割可讓您根據分割索引鍵，將資料分成子集。 取用資料的流程 (例如串流分析作業) 可以平行取用和寫入不同的分割區，這樣可以增加輸送量。 
+## <a name="partitions-in-inputs-and-outputs"></a>輸入和輸出中的資料分割
+分割可讓您根據分割區索引[鍵](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions)，將資料分割成子集。 如果您的輸入（例如事件中樞）是依索引鍵進行分割，則強烈建議在將輸入新增至您的串流分析作業時，指定此分割區索引鍵。 調整串流分析作業會利用輸入和輸出中的資料分割。 串流分析作業可以平行取用和寫入不同的分割區，以增加輸送量。 
 
 ### <a name="inputs"></a>輸入
 所有 Azure 串流分析輸入都可以利用資料分割：
--   事件中樞 (需要明確地使用 PARTITION BY 關鍵字設定分割區索引鍵)
--   IoT 中樞 (需要明確地使用 PARTITION BY 關鍵字設定分割區索引鍵)
+-   EventHub （如果使用相容性層級1.1 或更低，則需要以 PARTITION BY 關鍵字明確設定分割區索引鍵）
+-   IoT 中樞（如果使用相容性層級1.1 或更低，則需要使用 PARTITION BY 關鍵字明確設定分割區索引鍵）
 -   Blob 儲存體
 
 ### <a name="outputs"></a>輸出
@@ -54,13 +52,13 @@ Power BI 不支援資料分割。 不過，您仍然可以分割輸入，如[本
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>窘迫平行作業
-「窘迫平行」** 作業是我們在 Azure 串流分析中調整性最高的情節。 它將對於查詢執行個體之輸入的某個資料分割，連接到輸出的某個資料分割。 此平行處理原則具有下列需求︰
+在 Azure 串流分析中，*窘迫平行*作業是最具擴充性的案例。 它將對於查詢執行個體之輸入的某個資料分割，連接到輸出的某個資料分割。 此平行處理原則具有下列需求︰
 
-1. 如果查詢邏輯相依於同一個查詢執行個體所處理的相同索引鍵，則您必須確保事件會傳送至輸入的相同分割區。 對於事件中樞或 IoT 中樞，這表示事件資料必須設定 **PartitionKey** 值。 或者，您可以使用分割的傳送者。 對於 Blob 儲存體，這表示事件會傳送至相同的磁碟分割資料夾。 如果查詢邏輯並不需要同一個查詢執行個體所處理的相同索引鍵，您可以忽略這項需求。 簡單的選取-投影-篩選查詢，即為此邏輯的一個例子。  
+1. 如果查詢邏輯相依於同一個查詢執行個體所處理的相同索引鍵，則您必須確保事件會傳送至輸入的相同分割區。 對於事件中樞或 IoT 中樞，這表示事件資料必須設定 **PartitionKey** 值。 或者，您可以使用分割的傳送者。 對於 Blob 儲存體，這表示事件會傳送至相同的磁碟分割資料夾。 例如，使用 userID 做為分割區索引鍵，將輸入事件中樞分割為每個 userID 的查詢實例會匯總資料。 不過，如果您的查詢邏輯不需要相同的索引鍵來處理相同的查詢實例，您可以忽略這項需求。 簡單的選取-投影-篩選查詢，即為此邏輯的一個例子。  
 
-2. 當資料放在輸入端時，您必須確保查詢已分割。 這需要您在所有步驟中使用**PARTITION BY** 。 您可以使用多個步驟，但全部都必須依相同的索引鍵來分割。 在相容性層級1.0 和1.1 底下，必須將分割區索引鍵設定為**PartitionId** ，作業才能完全平行。 對於相容性層級為1.2 及更高版本的作業，可以在輸入設定中將自訂資料行指定為分割區索引鍵，即使沒有 PARTITION BY 子句，也會自動 paralellized 作業。 事件中樞輸出的屬性「分割區索引鍵資料行」必須設定為使用 "PartitionId"。
+2. 下一個步驟是讓您的查詢進行分割。 對於相容性層級為1.2 或更高（建議）的作業，可以在輸入設定中將自訂資料行指定為分割區索引鍵，並自動 paralellized 作業。 相容性層級為1.0 或1.1 的作業，會要求您在查詢的所有步驟中使用**PARTITION BY PartitionId** 。 您可以使用多個步驟，但全部都必須依相同的索引鍵來分割。 
 
-3. 我們大部分的輸出都可以利用資料分割，不過，如果您使用不支援資料分割的輸出類型，您的作業將無法進行平行處理。 對於事件中樞輸出，請確定資料**分割索引鍵資料行**已設定為與查詢資料分割索引鍵相同。 如需詳細資訊，請參閱[輸出](#outputs)一節。
+3. 串流分析中支援的大部分輸出都可以利用資料分割。 如果您使用不支援資料分割的輸出類型，您的作業將無法*平行窘迫*。 對於事件中樞輸出，請確定資料**分割索引鍵資料行**已設定為查詢中所使用的相同資料分割索引鍵。 如需詳細資訊，請參閱[輸出](#outputs)一節。
 
 4. 輸入分割區的數目必須等於輸出分割區的數目。 Blob 儲存體輸出可支援資料分割，並繼承上游查詢的資料分割配置。 當針對 Blob 儲存體指定資料分割索引鍵時，資料會依每個輸入分割區進行分割，因此結果仍然是完全平行。 以下是允許完全平行作業的分割區值範例：
 
@@ -80,8 +78,14 @@ Power BI 不支援資料分割。 不過，您仍然可以分割輸入，如[本
 查詢：
 
 ```SQL
+    --Using compatibility level 1.2 or above
     SELECT TollBoothId
-    FROM Input1 Partition By PartitionId
+    FROM Input1
+    WHERE TollBoothId > 100
+    
+    --Using compatibility level 1.0 or 1.1
+    SELECT TollBoothId
+    FROM Input1 PARTITION BY PartitionId
     WHERE TollBoothId > 100
 ```
 
@@ -95,6 +99,12 @@ Power BI 不支援資料分割。 不過，您仍然可以分割輸入，如[本
 查詢：
 
 ```SQL
+    --Using compatibility level 1.2 or above
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    
+    --Using compatibility level 1.0 or 1.1
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
@@ -110,7 +120,7 @@ Power BI 不支援資料分割。 不過，您仍然可以分割輸入，如[本
 * 輸入：具有 8 個分割區的事件中樞
 * 輸出：具有 32 個分割區的事件中樞
 
-在此案例中，查詢並不重要。 如果輸入資料分割計數不符合輸出資料分割計數，則拓撲不是窘迫平行。不過，我們仍然可以獲得一定程度的平行化。
+如果輸入資料分割計數不符合輸出資料分割計數，則不論查詢為何，拓撲都不會窘迫平行處理。 不過，我們仍然可以取得一些層級或平行處理。
 
 ### <a name="query-using-non-partitioned-output"></a>使用非資料分割的輸出查詢
 * 輸入：具有 8 個分割區的事件中樞
@@ -121,6 +131,7 @@ Power BI 輸出目前不支援資料分割。 因此，此情節不是窘迫平�
 ### <a name="multi-step-query-with-different-partition-by-values"></a>具有不同 PARTITION BY 值的多重步驟查詢
 * 輸入：具有 8 個分割區的事件中樞
 * 輸出：具有 8 個分割區的事件中樞
+* 相容性層級：1.0 或1。1
 
 查詢：
 
@@ -138,11 +149,10 @@ Power BI 輸出目前不支援資料分割。 因此，此情節不是窘迫平�
 
 如您所見，第二個步驟把[TollBoothId] **** 當做資料分割索引鍵來使用。 此步驟和第一個步驟不同，因此需要變換一下。 
 
-上述範例示範一些符合 (或不符合) 窘迫平行拓撲的串流分析作業。 如果符合，則可能有最大調整幅度。 對於不符合其中一個設定檔的作業，則提供未來更新時的調整指引。 現在，請在下列各節中使用一般指引。
-
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>相容性層級 1.2-具有不同 PARTITION BY 值的多重步驟查詢 
+### <a name="multi-step-query-with-different-partition-by-values"></a>具有不同 PARTITION BY 值的多重步驟查詢
 * 輸入：具有 8 個分割區的事件中樞
 * 輸出：具有8個分割區的事件中樞（「分割區索引鍵資料行」必須設定為使用 "TollBoothId"）
+* 相容性層級-1.2 或更新版本
 
 查詢：
 
@@ -158,7 +168,7 @@ Power BI 輸出目前不支援資料分割。 因此，此情節不是窘迫平�
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-相容性層級1.2 預設會啟用平行查詢執行。 例如，只要將 "TollBoothId" 資料行設定為輸入資料分割索引鍵，上一節的查詢就會進行分割。 不需要 PARTITION BY PartitionId 子句。
+相容性層級1.2 或更新版本預設會啟用平行查詢執行。 例如，只要將 "TollBoothId" 資料行設定為輸入資料分割索引鍵，上一節的查詢就會進行分割。 不需要 PARTITION BY PartitionId 子句。
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>計算工作的最大串流處理單元
 資料流分析工作可使用的串流處理單元總數，取決於為工作定義之查詢中的步驟數目，和每個步驟的資料分割數目。

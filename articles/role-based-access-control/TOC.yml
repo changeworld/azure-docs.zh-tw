@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: 建立自訂角色 - CLI
       href: tutorial-custom-role-cli.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 最佳作法

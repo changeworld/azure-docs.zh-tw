@@ -1,28 +1,35 @@
 ---
-title: 適用於 Async Java 的 Azure Cosmos DB 效能提示
-description: 瞭解改善 Azure Cosmos 資料庫效能的用戶端設定選項
-author: SnehaGunda
+title: Azure Cosmos DB 非同步 JAVA SDK v2 的效能秘訣
+description: 瞭解用戶端設定選項，以改善非同步 JAVA SDK v2 的 Azure Cosmos 資料庫效能
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549195"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982542"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB 和非同步 Java 的效能祕訣
+# <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB 非同步 JAVA SDK v2 的效能秘訣
 
 > [!div class="op_single_selector"]
-> * [非同步 Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [JAVA SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [非同步 Java SDK v2](performance-tips-async-java.md)
+> * [同步處理 Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得延遲與輸送量保證的情況下順暢地調整。 使用 Azure Cosmos DB 時，您不須進行主要的架構變更，或是撰寫複雜的程式碼來調整您的資料庫。 相應增加和減少就像進行單一 API 呼叫或 SDK 方法呼叫一樣簡單。 不過，由於 Azure Cosmos DB 是透過網路呼叫存取，所以您可以在使用 [SQL 非同步 Java SDK](sql-api-sdk-async-java.md) 時，進行用戶端最佳化以達到最高效能。
+> [!IMPORTANT]  
+> 這*不*是最新的 JAVA SDK for Azure Cosmos DB！ 請考慮為您的專案使用 Azure Cosmos DB JAVA SDK v4。 若要升級，請遵循[遷移至 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[Reactor vs RxJAVA](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的指示。 
+> 
+> 本文中的效能秘訣僅適用于 Azure Cosmos DB 非同步 JAVA SDK v2。 如需詳細資訊，請參閱 Azure Cosmos DB 非同步 JAVA SDK v2[版本](sql-api-sdk-async-java.md)資訊、 [Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和 Azure Cosmos DB 非同步 java sdk v2[疑難排解指南](troubleshoot-java-async-sdk.md)。
+>
+
+Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得延遲與輸送量保證的情況下順暢地調整。 使用 Azure Cosmos DB 時，您不須進行主要的架構變更，或是撰寫複雜的程式碼來調整您的資料庫。 相應增加和減少就像進行單一 API 呼叫或 SDK 方法呼叫一樣簡單。 不過，因為 Azure Cosmos DB 是透過網路呼叫存取，所以您可以進行用戶端優化，以在使用[Azure Cosmos DB 非同步 JAVA SDK v2](sql-api-sdk-async-java.md)時達到尖峰效能。
 
 如果您詢問「如何改善我的資料庫效能？ 」，請考慮下列選項：
 
@@ -31,7 +38,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 * **連接模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    用戶端連接到 Azure Cosmos DB 對於效能有重要影響，特別是在用戶端延遲方面。 *ConnectionMode*是可用來設定用戶端*ConnectionPolicy*的金鑰設定。 針對非同步 JAVA SDK，有兩個可用的 Connectionmode：  
+    用戶端連接到 Azure Cosmos DB 對於效能有重要影響，特別是在用戶端延遲方面。 *ConnectionMode*是可用來設定用戶端*ConnectionPolicy*的金鑰設定。 針對 Azure Cosmos DB 非同步 JAVA SDK v2，這兩個可用的 Connectionmode 是：  
       
     * [閘道 (預設)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
     * [直接](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
@@ -39,7 +46,9 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     所有 SDK 平臺都支援閘道模式，而且預設為已設定的選項。 如果您的應用程式在具有嚴格防火牆限制的公司網路中執行，則閘道模式是最佳選擇，因為它會使用標準 HTTPS 埠和單一端點。 不過，對於效能的影響是每次讀取或寫入 Azure Cosmos DB 資料時，閘道模式都會涉及額外的網路躍點。 因此，由於網路躍點較少，直接模式可提供較佳的效能。
 
     *ConnectionMode*是在使用*ConnectionPolicy*參數的*DocumentClient*實例結構期間設定。
-    
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+
     ```java
         public ConnectionPolicy getConnectionPolicy() {
           ConnectionPolicy policy = new ConnectionPolicy();
@@ -61,7 +70,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 ## <a name="sdk-usage"></a>SDK 的使用方式
 * **安裝最新的 SDK**
 
-    Azure Cosmos DB SDK 會持續改善以提供最佳效能。 請參閱 [Azure Cosmos DB SDK](sql-api-sdk-async-java.md) 頁面來判斷最新的 SDK 並檢閱改善項目。
+    Azure Cosmos DB SDK 會持續改善以提供最佳效能。 請參閱 Azure Cosmos DB Async JAVA SDK v2[版本](sql-api-sdk-async-java.md)資訊頁面，以判斷最新的 SDK 並查看改良功能。
 
 * **在應用程式存留期內使用單一 Azure Cosmos DB 用戶端**
 
@@ -71,9 +80,9 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 * **調整 ConnectionPolicy**
 
-    根據預設，使用 Async JAVA SDK 時，直接模式 Cosmos DB 要求會透過 TCP 來進行。 在內部，SDK 會使用特殊的直接模式架構來動態管理網路資源，並獲得最佳效能。
+    根據預設，使用 Azure Cosmos DB Async JAVA SDK v2 時，直接模式 Cosmos DB 要求會透過 TCP 來進行。 在內部，SDK 會使用特殊的直接模式架構來動態管理網路資源，並獲得最佳效能。
 
-    在非同步 JAVA SDK 中，直接模式是使用大部分工作負載改善資料庫效能的最佳選擇。 
+    在 Azure Cosmos DB 非同步 JAVA SDK v2 中，直接模式是使用大部分工作負載改善資料庫效能的最佳選擇。 
 
     * ***直接模式總覽***
 
@@ -106,7 +115,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     * ***Direct 模式的程式設計秘訣***
 
-        如需解決任何非同步 JAVA SDK 問題的基準，請參閱 Azure Cosmos DB[非同步 JAVA Sdk 疑難排解](troubleshoot-java-async-sdk.md)文章。
+        如需解決任何 SDK 問題的基準，請參閱 Azure Cosmos DB 非同步 JAVA SDK v2[疑難排解](troubleshoot-java-async-sdk.md)文章。
 
         使用 Direct 模式時的一些重要的程式設計秘訣：
 
@@ -114,14 +123,14 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
         + **在專用的執行緒上執行需要大量計算的工作負載**-基於類似于上一個秘訣的原因，複雜資料處理之類的作業最好放在個別的執行緒中。 從另一個資料存放區提取資料的要求（例如，如果執行緒同時使用 Azure Cosmos DB 和 Spark 資料存放區）可能會遇到增加的延遲，建議您產生額外的執行緒來等候另一個資料存放區的回應。
 
-            + 非同步 JAVA SDK 中的基礎網路 IO 是由 Netty 管理，請參閱下列[秘訣，以避免封鎖 NETTY IO 執行緒的程式碼模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
+            + Azure Cosmos DB 非同步 JAVA SDK v2 中的基礎網路 IO 是由 Netty 管理，請參閱下列[秘訣，以避免封鎖 NETTY IO 執行緒的程式碼模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
 
         + **資料模型**化-Azure Cosmos DB SLA 會假設檔案大小低於1kb。 優化您的資料模型和程式設計以偏好較小的檔案大小，通常會導致延遲降低。 如果您需要儲存和抓取大於1KB 的檔，建議的方法是連結至 Azure Blob 儲存體中的資料。
 
 
 * **微調分割之集合的平行查詢**
 
-    Azure Cosmos DB SQL Async Java SDK 支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
+    Azure Cosmos DB Async JAVA SDK v2 支援平行查詢，可讓您以平行方式查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
     * ***微調 setMaxDegreeOfParallelism\:***
     
@@ -159,9 +168,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 * **使用適當排程器 (避免竊取事件迴圈 IO Netty 執行緒)**
 
-    非同步 Java SDK 會將 [netty](https://netty.io/) 用於非封鎖 IO。 SDK 會使用固定數目的 IO netty 事件迴圈執行緒 (和您電腦所擁有的 CPU 核心數一樣多) 來執行 IO 作業。 API 所傳回的 Observable 會在其中一個共用的 IO 事件迴圈 netty 執行緒上發出結果。 因此，請切勿封鎖共用的 IO 事件迴圈 netty 執行緒。 若執行 CPU 密集工作或封鎖 IO 事件迴圈 netty 執行緒上的作業，可能會導致鎖死或大幅降低 SDK 輸送量。
+    Azure Cosmos DB 非同步 JAVA SDK v2 會針對非封鎖 IO 使用[netty](https://netty.io/) 。 SDK 會使用固定數目的 IO netty 事件迴圈執行緒 (和您電腦所擁有的 CPU 核心數一樣多) 來執行 IO 作業。 API 所傳回的 Observable 會在其中一個共用的 IO 事件迴圈 netty 執行緒上發出結果。 因此，請切勿封鎖共用的 IO 事件迴圈 netty 執行緒。 若執行 CPU 密集工作或封鎖 IO 事件迴圈 netty 執行緒上的作業，可能會導致鎖死或大幅降低 SDK 輸送量。
 
     例如，下列程式碼會在事件迴圈 IO netty 執行緒上執行 CPU 密集工作：
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-noscheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -178,6 +189,8 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     ```
 
     在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供您自己的排程器，以提供自己的執行緒來執行工作。
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
 
     ```java
     import rx.schedulers;
@@ -198,7 +211,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     根據您的工作類型，您應該將適當的現有 RxJava 排程器用於您的工作。 請在[``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)這裡閱讀。
 
-    如需詳細資訊，請參閱適用于非同步 JAVA SDK 的[GitHub 頁面](https://github.com/Azure/azure-cosmosdb-java)。
+    如需詳細資訊，請參閱[GitHub 頁面](https://github.com/Azure/azure-cosmosdb-java)中的 Azure Cosmos DB 非同步 JAVA SDK v2。
 
 * **停用 netty 的記錄**
 
@@ -258,6 +271,8 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     Azure Cosmos DB 的索引編製原則可讓您利用檢索路徑 (setIncludedPaths 和 setExcludedPaths)，指定要在索引編製中包含或排除的文件路徑。 在事先知道查詢模式的案例中，使用檢索路徑可改善寫入效能並降低索引儲存空間，因為檢索成本與檢索的唯一路徑數目直接相互關聯。 例如，下列程式碼會示範如何使用 "*" 萬用字元，將檔的整個區段（也稱為子樹）從索引編制中排除。
 
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-indexing"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
     numberIndex.set("precision", -1);
@@ -282,6 +297,8 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     查詢的複雜性會影響針對作業所耗用的要求單位數量。 述詞數目、述詞性質、UDF 數目，以及來源資料集的大小，全都會影響查詢作業的成本。
 
     若要測量任何作業 (建立、更新或刪除) 的額外負荷，請檢查 [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 標頭，來測量這些作業所耗用的要求單位數量。 您也可以查看 ResourceResponse\<T> 或 FeedResponse\<T> 中的對等 RequestCharge 屬性。
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
 
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,
