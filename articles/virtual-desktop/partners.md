@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127565"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692217"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -82,6 +82,16 @@ ControlUp 是一個 Windows 虛擬桌面增值的服務提供者，可讓 IT 小
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)。
 - [前往合作夥伴網站](https://www.controlup.com/solutions/ms_wvd/)。
 
+## <a name="dell"></a>Dell
+
+![Dell 標誌](./media/partners/dell.png)
+
+Dell 技術的瘦用戶端已優化，可存取 Microsoft Azure 和 Windows 虛擬桌面服務。 Wyse 瘦用戶端提供高品質的運算經驗，讓您充分利用應用程式和內容不斷增加的能力，能夠滿足共同作業知識工作者的需求。 適用于空間限制的環境，Wyse 瘦用戶端會根據人們使用各種外型規格的方式，以及用於裝載選項的各式各樣選項來進行調整。
+
+Wyse 瘦用戶端的設計，是以有限的受攻擊面、對安全性合規性標準的支援，以及先進的多重要素驗證解決方案為考慮而設計的。 使用 Dell 專有的 Wyse ThinOS 部署高度安全的瘦用戶端，或體驗從強化的 Wyse ThinLinux 到雲端應用程式和虛擬工作區的安全存取權，以及具有 Dell 新增安全性功能的商業證明設計和 Windows 10 IoT 企業版。 使用安全的 HTTPS 型通訊和 active directory 驗證來進行以角色為基礎的系統管理時，Wyse 管理套件可讓 Wyse 端點永遠保持在最新狀態，而適用于 WMS Pro 的行動應用程式讓它能夠隨時查看重要的警示，並以一次點一下的方式傳送即時命令。
+
+- [前往合作夥伴網站](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf)。
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST 標誌](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL 是經過核准且通過驗證的 Microsoft Azure 和 Windows 虛擬桌面�
  
 IGEL OS 支援 Citrix、Microsoft 和 VMware 的所有熱門虛擬應用程式、桌上型電腦和雲端工作區用戶端通訊協定。 其中包含來自85周邊、介面和通訊協定合作夥伴的整合技術，可協助組織快速地將 Windows 虛擬桌面服務納入其獨特的使用者環境中。 IGEL OS 是唯讀且模組化的端點作業系統，可協助保護它免于遭到篡改。 它現在也包含完整的「信任鏈」，它會驗證在端點上執行之所有主要程式的完整性，從端點硬體（某些選取的模型）或 UEFI 程式，一直到 Azure 雲端和 Windows 虛擬桌面服務。 有了 IGEL 作業系統，企業就可以從 Azure 雲端訂閱 Windows 虛擬桌面，並完全安心其使用者端點裝置的完整性、安全性和管理性。
 
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO)。
 - [前往合作夥伴網站](https://www.igel.com/igel-os-universal-desktop-operating-system/)。
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak Software 是一個 Windows 虛擬桌面合作夥伴，可執行應用�
 
 PolicyPak 最常見的使用案例是移除本機系統管理許可權，並克服 UAC 提示、封鎖勒索軟體、管理多個瀏覽器、管理 Internet Explorer 的企業和相容性模式、減少 Gpo 的數目、管理 Windows 10 檔案關聯、管理 windows 10 的 [開始] 功能表和工作列，以及管理 Windows 10 功能和選用功能。  
 
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN)。
 - [前往合作夥伴網站](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)。
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix 是一種 Windows 虛擬桌面值新增的服務提供者，可將使用
 
 列印是幾乎每個辦公室和小型企業環境中的基本工作。 為了充分利用 Windows 虛擬桌面並提供絕佳的使用者體驗，請務必確保您的使用者可以使用最少的工作和最大的可靠性來連線到印表機。 有了 Printix，您可以透過單一登入（SSO）、無訊息設定、定期更新，以及持續監視您的列印環境，來充分利用 Windows 虛擬桌面。
 
-- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [前往合作夥伴網站](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)。
+- [前往合作夥伴網站](https://www.printix.net/printix-for-windows-virtual-desktop)。
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft 是 Windows 虛擬桌面合作夥伴，提供強大且實惠的監視、
  
 RDPSoft 的遠端桌面指揮解決方案增強了 Windows 虛擬桌面系統管理。 高階管理功能藉由提供遠端協助、使用者會話和流程管理，簡化 Windows 虛擬桌面管理工作的委派，以支援服務台人員。 同時，遠端桌面操作套件會收集有關每個使用者的效能和負載、使用者活動和審核、Windows 虛擬桌面連線品質（延遲和頻寬）、授權和安全性到中央 Azure SQL database 實例以供審查的豐富計量。 有了 RDPSoft，豐富的歷程記錄報告和完整的儀表板只需按一下即可。
 
-- [前往合作夥伴網站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [前往合作夥伴網站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)。
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago 在2002中是由 Cologne 中的四位朋友所建立。 現今，sepago �
 
 sepago 的創新和開發實驗室使用海量資料和 AI 技術建立智慧型解決方案。 這些解決方案的重點在於提升企業、使用者體驗，以及 Windows 虛擬桌面等合作夥伴產品的管理中心。
 
-- [前往合作夥伴網站](https://www.sepago.de/wvd-value-add-tools/)
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)。
+- [前往合作夥伴網站](https://www.sepago.de/wvd-value-add-tools/)。
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ uberAgent 公司的龐大限制提供 Windows 虛擬桌面部署的可見度。 
 
 uberAgent 是針對使用者運算而設計的監視和分析產品，不只是收集資料，而是為客戶提供重要的資訊。 uberAgent 有自己的計量，其中涵蓋了使用者經驗、應用程式效能和端點安全性的重要層面，告訴您您需要知道 Windows 虛擬桌面 Vm 的一切，而不會影響系統的使用者密度。 uberAgent 可簡化疑難排解、協助進行調整大小，並提供資訊安全性的重要資訊。
 
-- [前往合作夥伴網站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [前往合作夥伴網站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)。
+
+## <a name="workspace-365"></a>工作區365
+
+![工作區365標誌](./media/partners/workspace-365.png)
+
+工作區365將您所有的資訊（商務資料、檔、通訊和微應用程式）結合在一起，並可讓您在單一工作區中存取任何本機、web 或裝載的應用程式。 它會自動調整您的角色、位置、裝置、瀏覽器等，以提供個人化的工作區。 無論技術在表面上，使用者都能獲得簡化且一致的體驗。 您可以整合目前的解決方案（例如 RDP、Citrix 和繼承應用程式），並將它們移至 Windows 虛擬桌面，同時維持相同的使用者體驗。 此外，您可以在一個檔管理應用程式中整合所有檔案位置，例如 SharePoint、OneDrive、小組和檔案伺服器。
+
+使用工作區365，IT 系統管理員可以根據許可權，讓使用者能夠使用已啟用 Windows 虛擬桌面的應用程式。 然後，系統管理員可以將這些應用程式新增到共用應用程式群組。 當 Windows 虛擬桌面應用程式在工作區365中顯示時，使用者就可以從其工作區中開啟它，而不必重新登入。 
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh)。
+- [前往合作夥伴網站](https://workspace365.net/product-tour/hybrid-workspace-365/)。
 
 ## <a name="workspot"></a>Workspot control
 
@@ -279,4 +303,4 @@ Workspot control 藉由簡化雲端桌面基礎結構的布建程式，來擴充
 ## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Windows 虛擬桌面](overview.md)。
-- [在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者。
+- [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。

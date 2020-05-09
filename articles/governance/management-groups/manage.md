@@ -4,10 +4,10 @@ description: 了解如何檢視、維護、更新及刪除您的管理群組階�
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 05/01/2020
 ms.locfileid: "81381670"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源

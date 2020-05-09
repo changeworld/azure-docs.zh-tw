@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691805"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983902"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 實驗室服務中的教室實驗室-常見問題（FAQ）
 取得一些關於 Azure 實驗室服務中的教室實驗室最常見問題的解答。 
@@ -29,12 +29,12 @@ ms.locfileid: "82691805"
 您為實驗室設定的配額，適用于實驗室的整個持續時間。 而且， [vm 的排程執行時間](how-to-create-schedules.md)不會計入分配給使用者的配額。 該配額用於學生在排程時間以外花費於 VM 上的時間。  如需有關配額的詳細資訊，請參閱[設定使用者配額](how-to-configure-student-usage.md#set-quotas-for-users)。
 
 ### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>如果教授開啟學生 VM，會影響學生配額嗎？ 
-不需要。 不是。 當教授開啟學生 VM 時，不會影響配置給學生的配額。 
+否。 不是。 當教授開啟學生 VM 時，不會影響配置給學生的配額。 
 
 ## <a name="schedules"></a>排程
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>設定排程時，實驗室中的所有 Vm 都會自動啟動嗎？ 
-不需要。 並非所有 Vm。 僅依排程指派給使用者的 Vm。 未指派給使用者的 Vm 不會自動啟動。 這是設計的。 
+否。 並非所有 Vm。 僅依排程指派給使用者的 Vm。 未指派給使用者的 Vm 不會自動啟動。 這是設計的。 
 
 ## <a name="lab-accounts"></a>實驗室帳戶
 
@@ -59,7 +59,7 @@ ms.locfileid: "82691805"
 當系統管理員將您新增為實驗室帳戶的實驗室建立者時，您就會獲得建立實驗室的許可權。 但是，您沒有許可權可編輯實驗室帳戶內的任何設定，包括已啟用的虛擬機器映射清單。 若要啟用其他映射，請洽詢您的實驗室帳戶管理員以執行此動作，或要求系統管理員將您新增為實驗室帳戶的參與者角色。 [參與者] 角色會授與您在實驗室帳戶中編輯虛擬機器映射清單的許可權。
 
 ### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>是否可以將其他磁片連接至虛擬機器？
-不需要。 您無法將額外的磁片連接到教室實驗室中的 VM。 
+否。 您無法將額外的磁片連接到教室實驗室中的 VM。 
 
 ## <a name="users"></a>使用者
 
@@ -67,7 +67,7 @@ ms.locfileid: "82691805"
 您最多可以新增400個使用者到教室實驗室。 
 
 ## <a name="blog-post"></a>Blog 文章
-訂閱[Azure 實驗室服務的 blog](https://azure.microsoft.com/blog/tag/azure-lab-services/)。
+訂閱[Azure 實驗室服務的 blog](https://aka.ms/azlabs-blog)。
 
 ## <a name="update-notifications"></a>更新通知
 訂閱[實驗室服務更新](https://azure.microsoft.com/updates/?product=lab-services)，以隨時掌握實驗室服務的新功能。

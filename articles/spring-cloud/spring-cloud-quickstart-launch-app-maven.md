@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687100"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594061"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入門：使用 Maven 外掛程式啟動 Azure Spring Cloud 應用程式
 
@@ -121,6 +121,6 @@ ms.locfileid: "81687100"
 
 > [!div class="nextstepaction"]
 > [準備您的 Azure Spring Cloud 應用程式以進行部署](spring-cloud-tutorial-prepare-app-deployment.md)
-> [深入了解適用於 Azure 的 Maven 外掛程式](https://github.com/microsoft/azure-maven-plugin)
+> [深入了解適用於 Azure 的 Maven 外掛程式](https://github.com/microsoft/azure-maven-plugins)
 
 GitHub 上可用的其他範例：[Azure Spring Cloud 範例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)。
