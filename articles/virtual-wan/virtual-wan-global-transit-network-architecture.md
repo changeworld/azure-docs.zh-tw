@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786966"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928273"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -114,6 +114,15 @@ ExpressRoute Global 觸及是 ExpressRoute 的附加元件功能。 有了全球
 
 VNet 對 VNet 傳輸可讓 Vnet 彼此連線，以便互相連接跨多個 Vnet 執行的多層式應用程式。 （選擇性）您可以透過 VNet 對等互連彼此連線 Vnet，這可能適用于某些情況，而這些案例不需要透過 VWAN 中樞進行傳輸。
 
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>在 Azure 虛擬 WAN 中強制通道和預設路由
+
+藉由在 VPN、ExpressRoute 或虛擬 WAN 的虛擬網路連線上設定 [啟用預設路由]，即可啟用強制通道。
+
+如果連線上的 [啟用預設旗標] 為 [已啟用]，虛擬中樞會將學習到的預設路由傳播至虛擬網路/站對站 VPN/ExpressRoute 連線。 
+
+當使用者編輯虛擬網路連線、VPN 連線或 ExpressRoute 連線時，此旗標為可見。 根據預設，當網站或 ExpressRoute 線路連線至中樞時，會停用此旗標。 新增虛擬網路連線以將 VNet 連線到虛擬中樞時，依預設會啟用旗標。 預設路由不是源自於虛擬 WAN 中樞；如果虛擬 WAN 中樞由於在中樞內部署防火牆而學習預設路由，或其他連線的網站已啟用強制通道，則會傳播預設路由。
+
 ## <a name="security-and-policy-control"></a><a name="security"></a>安全性與原則控制
 
 Azure 虛擬 WAN 中樞會在混合式網路上互連所有的網路端點，而且可能會看到所有傳輸網路流量。 虛擬 WAN 中樞可以轉換成安全的虛擬中樞，方法是將 Azure 防火牆部署在 VWAN 中樞內，以啟用雲端式安全性、存取和原則控制。 Azure 防火牆管理員可以執行虛擬 WAN 中樞中的 Azure 防火牆協調流程。
@@ -140,6 +149,24 @@ VNet 對網際網路或協力廠商的安全傳輸可讓 Vnet 透過虛擬 WAN �
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>分支對網際網路或協力廠商安全性服務（j）
 分支對網際網路或協力廠商安全傳輸可讓分支透過虛擬 WAN 中樞的 Azure 防火牆連線到網際網路或支援的協力廠商安全性服務。
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>如何? 在安全的虛擬中樞內啟用預設路由（0.0.0.0/0）
+
+部署在虛擬 WAN 中樞（安全虛擬中樞）中的 Azure 防火牆可以設定為網際網路的預設路由器，或所有分支的受信任安全性提供者（透過 VPN 或 Express Route 連線）、輪輻 Vnet 和使用者（透過 P2S VPN 連線）。 這種設定必須使用 Azure 防火牆管理員來完成。  請參閱將流量路由傳送至您的中樞，以設定來自分支的所有流量（包括使用者），以及透過 Azure 防火牆 Vnet 至網際網路。 
+
+這是兩個步驟的設定：
+
+1. 使用安全的虛擬中樞路由設定功能表來設定網際網路流量路由。 設定可透過防火牆將流量傳送至網際網路的 Vnet 和分支。
+
+2. 設定哪些連接（Vnet 和分支）可以透過中樞或受信任的安全性提供者，將流量路由傳送至網際網路（0.0.0.0/0）。 此步驟可確保預設路由會傳播到透過連線連接至虛擬 WAN 中樞的選取分支和 Vnet。 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>在受保護的虛擬中樞強制通道流量至內部部署防火牆
+
+如果已從其中一個分支（VPN 或 ER 網站）透過虛擬中樞學習到的預設路由（透過 BGP），則此預設路由會由從 Azure 防火牆管理員設定的預設路由覆寫。 在此情況下，從 Vnet 輸入中樞的所有流量，以及目的地為網際網路的分支，將會路由傳送至 Azure 防火牆或受信任的安全性提供者。
+
+> [!NOTE]
+> 目前沒有任何選項可針對來自 Vnet、分支或使用者的網際網路系結流量，選取內部部署防火牆或 Azure 防火牆（和信任的安全性提供者）。 從 [Azure 防火牆管理員] 設定學習到的預設路由，一律優先于從其中一個分支學習到的預設路由。
+
 
 ## <a name="next-steps"></a>後續步驟
 

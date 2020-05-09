@@ -1,18 +1,18 @@
 ---
 title: 叢集節點在 Azure HDInsight 中的磁碟空間用盡
 description: 針對 Azure HDInsight 中的 Apache Hadoop 叢集節點磁碟空間問題進行疑難排解。
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894119"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628532"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>案例：叢集節點在 Azure HDInsight 中的磁碟空間用盡
 
@@ -28,7 +28,7 @@ ms.locfileid: "75894119"
 
 Apache Yarn 應用程式快取可能已耗用所有可用的磁碟空間。 您的 Spark 應用程式可能執行效率不高。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 使用 Ambari UI 來判斷哪個節點的磁碟空間即將用盡。
 
@@ -36,7 +36,17 @@ Apache Yarn 應用程式快取可能已耗用所有可用的磁碟空間。 您�
 
 1. 若要減輕此問題，請終止應用程式，這將會釋放該應用程式所使用的磁碟空間。
 
-1. 若要最終解決此問題，請將您的應用程式優化。
+1. 如果此問題經常發生在背景工作節點上，您可以微調叢集上的 YARN 本機快取設定。
+
+    開啟 Ambari UI 流覽至 YARN--> 的 [> Advanced]。  
+    將下列2個屬性新增至自訂 yarn-site.xml 區段，並儲存：
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. 如果上述不會永久修正問題，請將您的應用程式優化。
 
 ## <a name="next-steps"></a>後續步驟
 

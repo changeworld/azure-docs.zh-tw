@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414826"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629041"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure Data Factory 從多個容器複製檔案
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文說明可用來從檔案存放區之間的多個容器複製檔案的解決方案範本。 例如，您可以使用它將您的 data lake 從 AWS S3 遷移至 Azure Data Lake 存放區。 或者，您可以使用範本，將所有專案從一個 Azure Blob 儲存體帳戶複寫到另一個。
 

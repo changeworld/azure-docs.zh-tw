@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60349811"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926471"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自動升級
 此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md#111050) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md#115610) 中更新，且現在支援先前未支援的其他案例。
@@ -37,11 +37,11 @@ ms.locfileid: "60349811"
 
 您可以使用 PowerShell Cmdlet `Get-ADSyncAutoUpgrade`來檢視目前的自動升級狀態。 其狀態如下：
 
-| State | 註解 |
+| 狀況 | 註解 |
 | --- | --- |
 | 啟用 |已啟用自動升級。 |
 | 暫止 |只有系統才能設定。 系統**目前沒有**資格再接收自動升級。 |
-| 停用 |已停用自動升級。 |
+| 已停用 |已停用自動升級。 |
 
 您可以使用 `Set-ADSyncAutoUpgrade` 在 [已啟用]**** 與 [已停用]**** 之間進行變更。 應該只有系統才能設定 [已暫止] **** 狀態。  在1.1.750.0 版之前，Set-adsyncautoupgrade 指令程式會封鎖 Autoupgrade （如果自動升級狀態設定為 [已暫停]）。 這種功能現已變更，因此不會封鎖 AutoUpgrade。
 
@@ -99,7 +99,6 @@ ms.locfileid: "60349811"
 | UpgradeNotSupportedNonLocalDbInstall |您不是使用 SQL Server Express LocalDB 資料庫。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 連接器帳戶](reference-connect-accounts-permissions.md#ad-ds-connector-account)已不再是預設的 MSOL_ 帳戶。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | 若要設定 AAD Connect，請在選取登入方法時，選擇 [不設定]**。 |
-| UpgradeNotSupportedPtaSignInMethod | 您已選取 [傳遞驗證] 作為登入方法。 |
 | UpgradeNotSupportedStagingModeEnabled |伺服器設定為[預備模式](how-to-connect-sync-staging-server.md)。 |
 | UpgradeNotSupportedUserWritebackEnabled |您已啟用 [使用者回寫](how-to-connect-preview.md#user-writeback) 功能。 |
 

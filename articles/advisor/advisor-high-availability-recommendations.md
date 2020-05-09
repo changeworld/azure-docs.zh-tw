@@ -3,12 +3,12 @@ title: 利用 Azure Advisor 改善應用程式的可用性
 description: 使用 Azure 建議程式來改善 Azure 部署的高可用性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443099"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788020"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>利用 Azure Advisor 改善應用程式的可用性
 
@@ -28,6 +28,10 @@ Azure Advisor 可協助您確保和改善業務關鍵應用程式的持續性。
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>使用受控磁碟可改善資料可靠性
 
 可用性設定組的虛擬機器若有磁碟共用儲存體帳戶或儲存體縮放單位，就無法從中斷期間的單一儲存體縮放單位失敗中復原。 Advisor 將識別這些可用性設定組，並建議移轉至 Azure 受控磁碟。 這將確保可用性設定組中不同虛擬機器的磁碟已經過充分隔離，以避免發生單一點失敗。 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point 網路虛擬設備映像版本的已知問題
+
+Advisor 可以識別您的虛擬機器是否可能執行已已知的檢查點映射版本，以在平臺服務操作時遺失網路連線。 Advisor 建議可協助您升級至較新版本的映射，以解決此問題。 這可透過更好的網路連線，確保業務持續性。
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>確保應用程式閘道的容錯
 
@@ -83,7 +87,7 @@ Azure Advisor 將會識別使用舊版 .NET SDK 的 Azure Cosmos DB 帳戶，並
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>從 Maven 將 Azure Cosmos DB Java SDK 升級為最新版本
 
-Azure Advisor 會識別使用舊版 JAVA SDK 的 Azure Cosmos DB 帳戶，並建議您從 Maven 升級至最新版本，以取得最新的修正程式、效能改進和新的功能功能。 [深入瞭解 Cosmos DB JAVA SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 會識別使用舊版 JAVA SDK 的 Azure Cosmos DB 帳戶，並建議您從 Maven 升級至最新版本，以取得最新的修正程式、效能改進和新的功能功能。 [深入瞭解 Cosmos DB JAVA SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>從 Maven 將 Azure Cosmos DB Spark 連接器升級為最新版本
 

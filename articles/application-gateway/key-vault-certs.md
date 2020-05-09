@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617501"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743703"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 憑證的 TLS 終止
 
@@ -50,7 +50,21 @@ Key Vault 整合為 TLS 終止提供兩種模型：
    然後，您可以匯入現有的憑證，或在您的金鑰保存庫中建立一個新的。 透過應用程式閘道執行的應用程式將會使用此憑證。 在此步驟中，您也可以使用儲存為無密碼、以64編碼的 PFX 檔案的金鑰保存庫密碼。 基於金鑰保存庫中的憑證類型物件所提供的自動更新功能，我們建議使用憑證類型。 建立憑證或秘密之後，您必須在金鑰保存庫中定義存取原則，以*允許授與*身分識別存取秘密。
    
    > [!NOTE]
-   > 如果您透過 ARM 範本部署應用程式閘道（使用 Azure CLI 或 PowerShell），或透過從 Azure 入口網站部署的 Azure 應用程式，則**必須無密碼**儲存在金鑰保存庫中的 SSL 憑證作為以 base-64 編碼的 PFX 檔案。 此外，您必須完成使用 Azure Key Vault 中的步驟，[以在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 特別重要的是將設定`enabledForTemplateDeployment`為`true`。
+   > 如果您透過 ARM 範本部署應用程式閘道，不論是使用 Azure CLI 或 PowerShell，或是透過從 Azure 入口網站部署的 Azure 應用程式，SSL 憑證都會以 base64 編碼的 PFX 檔案形式儲存在金鑰保存庫中。 您必須完成使用 Azure Key Vault 中的步驟[，以在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 
+   >
+   > 特別重要的是將設定`enabledForTemplateDeployment`為`true`。 憑證可能是無密碼的，或者它可能有密碼。 在具有密碼的憑證案例中，下列範例會顯示應用程式閘道的 ARM 範本`sslCertificates`設定中， `properties`專案的可能設定。 `appGatewaySSLCertificateData`和的值會`appGatewaySSLCertificatePassword`從金鑰保存庫查閱，如[參考具有動態識別碼的秘密](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)一節中所述。 請遵循中`parameters('secretName')`的反向參考，以查看查閱的發生方式。 如果憑證是無密碼，請省略該`password`專案。
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **設定應用程式閘道**
 
