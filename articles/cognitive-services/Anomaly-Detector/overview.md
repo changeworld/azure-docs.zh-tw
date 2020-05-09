@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053704"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？

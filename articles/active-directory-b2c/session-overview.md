@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230908"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927032"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 會話
 
@@ -99,22 +99,20 @@ Web、行動或單一頁面應用程式可以透過 OAuth 存取、識別碼權�
    - SAML-如果身分識別提供者中繼資料`SingleLogoutService`包含位置。
 1. （選擇性）從其他應用程式登出。 如需詳細資訊，請參閱[單一登出](#single-sign-out)一節。
 
-> [!NOTE]
-> 登出會使用 Azure AD B2C 來清除使用者的單一登入狀態，但它可能不會將使用者登出其社交身分識別提供者會話。 如果使用者在後續登入時選取相同的身分識別提供者，他們可能會重新驗證，而不需要輸入其認證。 如果使用者想要登出應用程式，則不一定表示他們想要登出其 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的會話就會正確結束。
+登出會使用 Azure AD B2C 來清除使用者的單一登入狀態，但它可能不會將使用者登出其社交身分識別提供者會話。 如果使用者在後續登入時選取相同的身分識別提供者，他們可能會重新驗證，而不需要輸入其認證。 如果使用者想要登出應用程式，則不一定表示他們想要登出其 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的會話就會正確結束。
 
-### <a name="single-sign-out"></a>單一登出
+### <a name="single-sign-out"></a>單一登出 
+
+
+> [!NOTE]
+> 這項功能僅限於[自訂原則](custom-policy-overview.md)。
 
 當您將使用者重新導向至 Azure AD B2C 登出端點（適用于 OAuth2 和 SAML 通訊協定）時，Azure AD B2C 會從瀏覽器清除使用者的會話。 不過，使用者可能仍然登入其他使用 Azure AD B2C 進行驗證的應用程式。 若要讓這些應用程式同時登出使用者，Azure AD B2C 將 HTTP GET 要求傳送至使用者目前登`LogoutUrl`入之所有應用程式的註冊。
 
-應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須`LogoutUrl`在應用程式的程式碼中執行。 您可以在 Azure 入口網站中設定 `LogoutUrl`：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
-1. 在頁面右上角按一下您的帳戶，以選擇您的 Active B2C 目錄。
-1. 從左側導覽面板中，選擇 [ **Azure AD B2C**]，選取 [**應用程式註冊**]，然後選取您的應用程式。
-1. 選取 [**設定**]，選取 [**屬性**]，然後尋找 [**登出 URL** ] 文字方塊。 
-
+應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須`LogoutUrl`在應用程式的程式碼中執行。 
 
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何[在使用者流程中設定會話行為](session-behavior.md)。
-- 瞭解如何[在自訂原則中設定會話行為](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso)。
+- 瞭解如何[在自訂原則中設定會話行為](session-behavior-custom-policy.md)。

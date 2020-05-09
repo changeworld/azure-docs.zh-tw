@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3311d1143c0eca0c2b57e89e98dc22ab14fd9308
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290526"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147728"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入門：使用 Azure Logic Apps 建立自動化工作、程序和工作流程 - Visual Studio
 
@@ -56,6 +56,9 @@ ms.locfileid: "79290526"
   設計工具需要網際網路連線才能在 Azure 中建立資源，以及從邏輯應用程式中的連接器讀取屬性和資料。 例如，針對 Dynamics CRM Online 連線，設計工具會檢查 CRM 執行個體的預設和自訂屬性。
 
 * Logic Apps 支援的電子郵件帳戶 (例如 Office 365 Outlook、Outlook.com 或 Gmail)。 對於其他提供者，請檢閱[這裡的連接器清單](https://docs.microsoft.com/connectors/)。 此範例使用 Office 365 Outlook。 如果您使用不同的提供者，則整體步驟相同，但您的 UI 可能稍有不同。
+
+  > [!IMPORTANT]
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 <a name="create-resource-group-project"></a>
 
