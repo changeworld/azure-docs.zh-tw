@@ -2,19 +2,19 @@
 title: ASP.NET Core 應用程式的 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145268"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652779"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
 本文說明如何啟用[ASP.NET Core](https://docs.microsoft.com/aspnet/core)應用程式的 Application Insights。 當您完成本文中的指示時，Application Insights 將會從您的 ASP.NET Core 應用程式收集要求、相依性、例外狀況、效能計數器、心跳和記錄。
 
-我們將在此使用的範例是以為目標`netcoreapp2.2`的[MVC 應用程式](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)。 您可以將這些指示套用至所有 ASP.NET Core 應用程式。
+我們將在此使用的範例是以為目標`netcoreapp3.0`的[MVC 應用程式](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)。 您可以將這些指示套用至所有 ASP.NET Core 應用程式。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -28,9 +28,9 @@ ms.locfileid: "82145268"
 * **IDE**： Visual Studio、VS Code 或命令列。
 
 > [!NOTE]
-> 如果您搭配 Application Insights 使用 ASP.NET Core 3.x，請使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 這是支援 ASP.NET Core 3.x 的唯一版本。
+> ASP.NET Core 3.x 需要[Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)或更新版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此[ASP.NET Core 教學](https://docs.microsoft.com/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
@@ -109,7 +109,9 @@ ms.locfileid: "82145268"
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    通常會`APPINSIGHTS_INSTRUMENTATIONKEY`為部署至 Azure Web Apps 的應用程式指定檢測金鑰。
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`通常用於[Azure Web Apps](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)，但也可以用於支援此 SDK 的所有位置。 （如果您正在進行無程式碼 web 應用程式監視，如果您不使用連接字串，則需要此格式）。
+
+    您現在也可以使用[連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)，代替設定檢測金鑰。
 
     > [!NOTE]
     > 在程式碼中指定的檢測金鑰是透過環境`APPINSIGHTS_INSTRUMENTATIONKEY`變數來進行，這會優先于其他選項。
@@ -209,7 +211,7 @@ public void ConfigureServices(IServiceCollection services)
 |EnableAzureInstanceMetadataTelemetryModule   |  啟用/停用`AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | 啟用/停用 LiveMetrics 功能 | true
 |EnableAdaptiveSampling | 啟用/停用調適型取樣 | true
-|EnableHeartbeat | [啟用/停用心跳] 功能會定期（15分鐘的預設值）傳送名為 ' HeartBeatState ' 的自訂計量，其中包含執行時間的相關資訊，例如 .NET 版本、Azure 環境資訊（如果適用）等等。 | true
+|EnableHeartbeat | [啟用/停用心跳] 功能會定期（15分鐘的預設值）傳送名為 ' HeartbeatState ' 的自訂計量，其中包含執行時間的相關資訊，例如 .NET 版本、Azure 環境資訊（如果適用）等等。 | true
 |AddAutoCollectedMetricExtractor | 啟用/停用 AutoCollectedMetrics 解壓縮程式，這是一種 TelemetryProcessor，會在進行取樣之前，先傳送要求/相依性的預先匯總計量。 | true
 |RequestCollectionOptions.TrackExceptions | 啟用/停用要求收集模組未處理之例外狀況追蹤的報告。 | 在 NETSTANDARD 2.0 中為 false （因為例外狀況是使用 ApplicationInsightsLoggerProvider 來追蹤），否則為 true。
 
@@ -365,7 +367,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights 支援 ASP.NET Core 3.x 嗎？
 
-是。 更新為 ASP.NET Core 2.8.0 或更高版本[的 APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 較舊版本的 SDK 不支援 ASP.NET Core 3.x。
+可以。 更新為 ASP.NET Core 2.8.0 或更高版本[的 APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 。 較舊版本的 SDK 不支援 ASP.NET Core 3.x。
 
 此外，如果您在[這裡](#enable-application-insights-server-side-telemetry-visual-studio)使用 Visual Studio 的指示，請更新至最新版本的 Visual Studio 2019 （16.3.0）以上線。 舊版的 Visual Studio 不支援 ASP.NET Core 3.x 應用程式的自動上架。
 
@@ -418,7 +420,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[狀態監視器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前僅支援 ASP.NET 4.x。
+不需要。 [狀態監視器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[狀態監視器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前僅支援 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights 自動啟用我的 ASP.NET Core 2.0 應用程式嗎？
 
@@ -426,7 +428,7 @@ public class HomeController : Controller
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行應用程式，是否支援所有功能？
 
-是。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
+可以。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
 
 * SDK 會收集 Linux 上的[事件計數器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因為只有 Windows 才支援[效能計數器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。 大部分的計量都相同。
 * 雖然預設`ServerTelemetryChannel`會啟用，但如果應用程式是在 Linux 或 MacOS 中執行，則通道不會自動建立本機儲存體資料夾，以在發生網路問題時暫時保存遙測。 由於這項限制，當發生暫時性網路或伺服器問題時，就會遺失遙測。 若要解決此問題，請設定通道的本機資料夾：

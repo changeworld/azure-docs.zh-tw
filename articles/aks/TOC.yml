@@ -59,6 +59,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升級叢集
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 叢集與工作負載

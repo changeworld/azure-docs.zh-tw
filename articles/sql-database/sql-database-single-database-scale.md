@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 84846e642fa102045b89eb12dbc85b0995867a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: a13b860e01e7ef295df629d79dfa44700b5f0d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061587"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691599"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整單一資料庫資源
 
@@ -48,13 +48,27 @@ ms.locfileid: "80061587"
 
 ## <a name="latency"></a>Latency 
 
-變更服務層級或重新調整單一資料庫或彈性集區之計算大小的預估延遲會參數化，如下所示：
+變更服務層的預估延遲、調整單一資料庫或彈性集區的計算大小、將資料庫移入/移出彈性集區，或在彈性集區之間移動資料庫的參數如下：
 
 |服務層|基本單一資料庫、</br>標準（S0-S1）|基本彈性集區，</br>標準（S2-S12）、 </br>超大規模資料庫 </br>一般用途單一資料庫或彈性集區|Premium 或 Business Critical 單一資料庫或彈性集區|
 |:---|:---|:---|:---|
 |**基本單一資料庫，</br>標準（S0-S1）**|&bull;&nbsp;與使用的空間無關的固定時間延遲</br>&bull;&nbsp;通常不到5分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
 |**基本彈性集區</br>，標準（S2-S12） </br>，超大規模資料庫</br>，一般用途單一資料庫或彈性集區**|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;與使用的空間無關的固定時間延遲</br>&bull;&nbsp;通常不到5分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
 |**Premium 或 Business Critical 單一資料庫或彈性集區**|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
+
+> [!NOTE]
+> 此外，針對標準（S2-S12）和一般用途資料庫，如果資料庫使用 Premium 檔案共用（[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)）儲存體，將資料庫移入/移出彈性集區的延遲，或在彈性集區之間移動時，將會與資料庫大小成正比。
+>
+> 若要判斷資料庫是否使用 PFS 儲存體，請在資料庫的內容中執行下列查詢。 如果 AccountType 資料行中的值是`PremiumFileStorage`，則資料庫會使用 PFS 儲存體。
+ 
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
 
 > [!TIP]
 > 若要監視進行中的作業，請參閱：[使用 SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理](/cli/azure/sql/db/op)作業、[使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和這兩個 PowerShell 命令： [get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。

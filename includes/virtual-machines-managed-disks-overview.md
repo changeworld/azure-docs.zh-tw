@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75913774"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147781"
 ---
 ## <a name="benefits-of-managed-disks"></a>受控磁碟的好處
 
@@ -33,11 +33,11 @@ ms.locfileid: "75913774"
 
 ### <a name="integration-with-availability-zones"></a>整合可用性設定組
 
-受控磁碟支援[可用性區域](../articles/availability-zones/az-overview.md)，這是高可用性供應項目，可保護您的應用程式不受資料中心故障影響。 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，在所有已啟用的地區中都至少要有三個個別的區域。 使用「可用性區域」時，Azure 可提供業界最佳的 99.99% VM 執行時間 SLA。
+受控磁碟支援[可用性區域](../articles/availability-zones/az-overview.md)，這是高可用性供應項目，可保護您的應用程式不受資料中心故障影響。 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。 使用「可用性區域」時，Azure 可提供業界最佳的 99.99% VM 執行時間 SLA。
 
 ### <a name="azure-backup-support"></a>Azure 備份支援
 
-為了防止發生區域災難，可使用 [Azure 備份](../articles/backup/backup-overview.md)透過時間型備份和備份保留原則，來建立備份作業。 如此即可隨心所欲地執行簡易虛擬機器還原。 目前 Azure 備份支援的磁碟大小上限為四個 TiB 磁碟。  Azure 備份支援受控磁碟的備份和還原。 [深入了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 備份支援。
+為了防止發生區域災難，可使用 [Azure 備份](../articles/backup/backup-overview.md)透過時間型備份和備份保留原則，來建立備份作業。 這可讓您隨意執行 VM 或受控磁碟的還原。 目前 Azure 備份支援的磁碟大小上限為 32 TiB。 [深入了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 備份支援。
 
 ### <a name="granular-access-control"></a>細微的存取控制
 

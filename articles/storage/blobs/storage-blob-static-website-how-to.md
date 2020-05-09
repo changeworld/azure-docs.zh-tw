@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247005"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839159"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -42,7 +42,7 @@ ms.locfileid: "80247005"
 
    當使用者嘗試瀏覽至您靜態網站中所沒有的網頁時，就會顯示此預設錯誤頁面。
 
-7. 按一下 **[儲存]** 。 Azure 入口網站現在即會顯示您的靜態網站端點。 
+7. 按一下 [檔案]  。 Azure 入口網站現在即會顯示您的靜態網站端點。 
 
     ![啟用儲存體帳戶的靜態網站代管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -159,8 +159,11 @@ ms.locfileid: "80247005"
 這個範例假設您正在執行來自 Azure Cloud Shell 會話的命令。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> 如果瀏覽器提示使用者下載檔案，而不是轉譯內容，您可以將附加`--content-type 'text/html; charset=utf-8'`至命令。 
 
 * 使用您的儲存體帳戶名稱取代 `<storage-account-name>` 預留位置值。
 
@@ -178,11 +181,13 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> 如果瀏覽器提示使用者下載檔案，而不是轉譯內容，您可以將附加`-Properties @{ ContentType = "text/html; charset=utf-8";}`至命令。
 
 * 將`<path-to-file>`預留位置值取代為您要上傳之檔案的完整路徑（例如： `C:\temp\index.html`）。
 

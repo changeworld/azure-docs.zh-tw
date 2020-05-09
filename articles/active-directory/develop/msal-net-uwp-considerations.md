@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeec28569cf31af4542d6cd7aca1fb27d77b1e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132519"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652684"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>搭配 MSAL.NET 使用通用 Windows 平臺的考慮
 使用通用 Windows 平臺（UWP）搭配 MSAL.NET 的應用程式開發人員應該考慮本文所提供的概念。
