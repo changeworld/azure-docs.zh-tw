@@ -127,7 +127,7 @@
         - name: IoT 解決方案加速器
           href: /azure/iot-accelerators
         - name: IoT 隨插即用
-          href: /azure/iot
+          href: /azure/iot-pnp
         - name: Azure 地圖服務
           href: /azure/azure-maps
         - name: 時間序列深入解析

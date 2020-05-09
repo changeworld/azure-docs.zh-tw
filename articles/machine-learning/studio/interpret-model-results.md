@@ -8,21 +8,18 @@ ms.subservice: studio
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218058"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982015"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中解譯模型結果
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 本主題說明如何在 Azure Machine Learning Studio （傳統）中將預測結果視覺化並加以解讀。 在您訓練好模型並完成其預測 (「模型評分」) 之後，您必須了解和解譯預測結果。
-
-
 
 Azure Machine Learning Studio （傳統）中有四種主要的機器學習模型：
 
@@ -37,11 +34,11 @@ Azure Machine Learning Studio （傳統）中有四種主要的機器學習模�
 * [指派至叢集][assign-to-clusters]模組，用於加入叢集
 * [評分 Matchbox 推薦][score-matchbox-recommender]，用於推薦系統
 
-本文件說明如何針對每個模組解譯預測結果。 如需這些模組的總覽，請參閱[如何選擇參數以優化您在 Azure Machine Learning Studio （傳統）中的演算法](algorithm-parameters-optimize.md)。
+瞭解如何[選擇參數來優化 ML Studio （傳統）中的演算法](algorithm-parameters-optimize.md)。
 
-本主題說明預測解譯，但是未說明模型評估。 如需如何評估模型的詳細資訊，請參閱[如何評估 Azure Machine Learning Studio （傳統）中的模型效能](evaluate-model-performance.md)。
+若要瞭解如何評估您的模型，請參閱[如何評估模型效能](evaluate-model-performance.md)。
 
-如果您是 Azure Machine Learning Studio （傳統）的新手，並且需要建立簡單實驗以開始使用的協助，請參閱[在 Azure Machine Learning Studio （傳統）中建立簡單實驗](create-experiment.md)。
+如果您不熟悉 ML Studio （傳統），請[瞭解如何建立簡單的實驗](create-experiment.md)。
 
 ## <a name="classification"></a>分類
 分類問題方面有兩個子類別：

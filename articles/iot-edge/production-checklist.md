@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204197"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780737"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -107,7 +107,7 @@ IoT Edge 的中樞和代理程式模組會使用本機儲存體來維護狀態�
 
 當**OptimizeForPerformance**設定為**TRUE**時，MQTT 通訊協定標頭會使用 PooledByteBufferAllocator，其具有較佳的效能，但會配置更多記憶體。 配置器無法在32位作業系統或記憶體不足的裝置上順利運作。 此外，針對效能進行優化時，RocksDb 會為其角色配置更多記憶體以作為本機儲存提供者。
 
-如需詳細資訊，請參閱[資源受限裝置的穩定性問題](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
+如需詳細資訊，請參閱[較小裝置上的穩定性問題](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
 
 #### <a name="disable-unused-protocols"></a>停用未使用的通訊協定
 
@@ -200,7 +200,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 ### <a name="review-outboundinbound-configuration"></a>檢閱輸出/輸入設定
 
-Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 在大部分的 IoT Edge 情節下，必要的連線只有三個。 容器引擎必須和容納模組映像的容器登錄連線。 IoT Edge 執行階段需要和 IoT 中樞連線才能擷取裝置組態資訊，以及傳送訊息和遙測。 如果您使用自動佈建，IoT Edge 精靈必須連線至裝置佈建服務。 如需詳細資訊，請參閱[防火牆和連接埠組態規則](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
+Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 在大部分的 IoT Edge 情節下，必要的連線只有三個。 容器引擎必須和容納模組映像的容器登錄連線。 IoT Edge 執行階段需要和 IoT 中樞連線才能擷取裝置組態資訊，以及傳送訊息和遙測。 如果您使用自動佈建，IoT Edge 精靈必須連線至裝置佈建服務。 如需詳細資訊，請參閱[防火牆和連接埠組態規則](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>允許來自 IoT Edge 裝置的連線
 
@@ -216,7 +216,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 此檢查清單是防火牆規則的起始點：
 
-   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用方式 |
+   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用狀況 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器登錄 |
    | global.azure-devices-provisioning.net  | 443 | DPS 存取 (選用) |
@@ -269,7 +269,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 將此資訊新增（或附加）至名`daemon.json`為的檔案，並將它放在您裝置平臺的正確位置。
 
-| 平台 | 位置 |
+| 平台 | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

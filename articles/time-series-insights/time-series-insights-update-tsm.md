@@ -8,25 +8,26 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476649"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580594"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的時間序列模型
 
 本文描述時間序列模型、功能，以及如何開始在 Azure 時間序列深入解析預覽環境中建立及更新您自己的模型。
 
 > [!TIP]
->  * 移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)環境，以取得即時時間序列模型範例。
+>
+> * 移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)環境，以取得即時時間序列模型範例。
 > * 閱讀[Azure 時間序列深入解析 Preview explorer](time-series-insights-update-explorer.md)以瞭解如何流覽您的時間序列模型 UI。
 > * 瞭解如何使用時間序列深入解析 web explorer[來處理時間序列模型](time-series-insights-update-how-to-tsm.md)。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 傳統上，從 IoT 裝置收集的資料缺發關聯的資訊，因此很難快速地尋找及分析感應器。 時間序列模型的主要動機是簡化尋找和分析 IoT 或時間序列資料的程式。 它可讓您鑒藏、維護和擴充時間序列資料，以協助準備取用者準備好用於分析的資料集，達到此目標。
 
@@ -51,9 +52,9 @@ ms.locfileid: "79476649"
 
 [![時間序列模型智慧型 oven 圖表範例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* 時間序列模型在查詢和導覽中扮演重要的角色，因為它可讓您跨時間範圍以及感應器與裝置種類之間繪製比較，藉此就資料。 （**A**） 
+* 時間序列模型在查詢和導覽中扮演重要的角色，因為它可讓您跨時間範圍以及感應器與裝置種類之間繪製比較，藉此就資料。 （**A**）
 * 資料會進一步內容相關，因為時間序列模型中保存的資料會將時間序列查詢計算保留為變數，並在查詢時重複使用它們。
-* 時間序列模型會組織並匯總資料，以改善視覺效果和管理功能。 （**B**） 
+* 時間序列模型會組織並匯總資料，以改善視覺效果和管理功能。 （**B**）
 
 ### <a name="key-capabilities"></a>主要功能
 
@@ -101,7 +102,7 @@ ms.locfileid: "79476649"
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的 UUID。 |
 | typeId | 與實例相關聯之時間序列模型類型的 UUID。 根據預設，所有探索到的新實例都會與預設類型建立關聯。
-| 名稱 | **Name**屬性是選擇性的，而且區分大小寫。 如果 [**名稱**] 無法使用，則預設為 [ **timeSeriesId**]。 如果[提供了名稱](time-series-insights-update-explorer.md#4-time-series-well)， **timeSeriesId**仍然可供使用。 |
+| NAME | **Name**屬性是選擇性的，而且區分大小寫。 如果 [**名稱**] 無法使用，則預設為 [ **timeSeriesId**]。 如果[提供了名稱](time-series-insights-update-explorer.md#4-time-series-well)， **timeSeriesId**仍然可供使用。 |
 | description | 實例的文字描述。 |
 | hierarchyIds | 定義實例所屬的階層。 |
 | Instancefields 定義 | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
@@ -148,7 +149,7 @@ ms.locfileid: "79476649"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 階層的唯一識別碼，例如，當您定義實例時使用。 |
-| 名稱 | 用來提供階層名稱的字串。 |
+| NAME | 用來提供階層名稱的字串。 |
 | source | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下的父子式順序。 父子式屬性會對應「執行個體欄位」。 |
 
 階層會以 JSON 表示為：
@@ -240,7 +241,7 @@ ms.locfileid: "79476649"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 類型的 UUID。 |
-| 名稱 | 用來提供型別名稱的字串。 |
+| NAME | 用來提供型別名稱的字串。 |
 | description | 類型的字串描述。 |
 | variables | 指定與類型相關聯的變數。 |
 
@@ -290,7 +291,7 @@ ms.locfileid: "79476649"
 
 每個變數都可以是下列三*種類型*之一：*數值*、*類別*和*匯總*。
 
-* **數值**類型會使用連續的值。 
+* **數值**類型會使用連續的值。
 * **類別**類型會使用一組已定義的離散值。
 * **匯總**值結合了單一種類的多個變數（全部為數值或所有類別）。
 

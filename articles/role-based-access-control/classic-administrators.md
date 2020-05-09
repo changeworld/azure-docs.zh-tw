@@ -1,5 +1,5 @@
 ---
-title: Azure 傳統訂用帳戶系統管理員 | Microsoft Docs
+title: Azure 傳統訂用帳戶管理員
 description: 說明如何新增或變更 Azure 共同管理員與服務管理員，以及如何檢視帳戶管理員。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243480"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734853"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
-Microsoft 建議您使用角色型存取控制 (RBAC) 管理 Azure 資源存取權。 不過，如果您仍在使用傳統部署模型，則必須使用傳統訂用帳戶管理員角色：服務管理員和共同管理員。 如需詳細資訊，請參閱 [Azure Resource Manager 與傳統部署](../azure-resource-manager/management/deployment-models.md)。
+Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 Azure 資源的存取權。 不過，如果您仍在使用傳統部署模型，則必須使用傳統訂用帳戶管理員角色：服務管理員和共同管理員。 如需詳細資訊，請參閱 [Azure Resource Manager 與傳統部署](../azure-resource-manager/management/deployment-models.md)。
 
 本文說明如何新增或變更共同管理員與服務管理員，以及如何檢視帳戶管理員。
 
@@ -71,9 +71,9 @@ Microsoft 建議您使用角色型存取控制 (RBAC) 管理 Azure 資源存取�
 
 您會預期使用者可以管理所有項目。 此差異的原因在於 Microsoft 帳戶是以來賓使用者而不是成員使用者身分新增至訂用帳戶。 在 Azure AD 中，來賓使用者與成員使用者具有不同的預設權限。 例如，成員使用者能夠在 Azure AD 中讀取其他使用者，來賓使用者不能。 成員使用者能夠在 Azure AD 中註冊新的服務主體，來賓使用者不能。
 
-如果來賓使用者需要能夠執行這些工作，有一個可能的解決方案，就是指派來賓使用者所需的特定 Azure AD 系統管理員角色。 例如，在先前的案例中，您可以指派[目錄讀者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以讀取其他使用者，以及指派[應用程式開發人員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色，以便能夠建立服務主體。 如需有關成員使用者和來賓使用者及其權限的詳細資訊，請參閱 [Azure Active Directory 中的預設使用者權限是什麼？](../active-directory/fundamentals/users-default-permissions.md) 如需授與來賓使用者存取權的詳細資訊，請參閱[使用 RBAC 管理外部來賓使用者對 Azure 資源的存取權](role-assignments-external-users.md)。
+如果來賓使用者需要能夠執行這些工作，可能的解決方法是指派來賓使用者所需的特定 Azure AD 角色。 例如，在先前的案例中，您可以指派[目錄讀者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以讀取其他使用者，以及指派[應用程式開發人員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色，以便能夠建立服務主體。 如需有關成員使用者和來賓使用者及其權限的詳細資訊，請參閱 [Azure Active Directory 中的預設使用者權限是什麼？](../active-directory/fundamentals/users-default-permissions.md) 如需授與來賓使用者存取權的詳細資訊，請參閱[使用 Azure 入口網站為外部來賓使用者新增或移除 Azure 角色指派](role-assignments-external-users.md)。
 
-請注意，[適用於 Azure 資源的內建角色](../role-based-access-control/built-in-roles.md)與 [Azure AD 系統管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 內建的角色不會授與任何 Azure AD 存取權。 如需詳細資訊，請參閱[了解各種不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+請注意， [Azure 內建角色](../role-based-access-control/built-in-roles.md)與[Azure AD 角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 內建的角色不會授與任何 Azure AD 存取權。 如需詳細資訊，請參閱[了解各種不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 如需比較成員使用者和來賓使用者的詳細資訊，請參閱[Azure Active Directory 中的預設使用者權力為何？](../active-directory/fundamentals/users-default-permissions.md)。
 
@@ -150,6 +150,6 @@ Microsoft 建議您使用角色型存取控制 (RBAC) 管理 Azure 資源存取�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](../role-based-access-control/role-assignments-portal.md)
+* [了解不同的角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)
 * [新增或變更 Azure 訂用帳戶管理員](../cost-management-billing/manage/add-change-subscription-administrator.md)

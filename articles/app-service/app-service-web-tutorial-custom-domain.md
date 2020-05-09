@@ -5,14 +5,14 @@ keywords: 應用程式服務, Azure 應用程式服務, 網域對應, 網域名�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811778"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559909"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -93,6 +93,12 @@ ms.locfileid: "80811778"
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>取得網域驗證識別碼
+
+若要將自訂網域新增至您的應用程式，您必須將驗證識別碼新增為包含網域提供者的 TXT 記錄，以驗證網域的擁有權。 在應用程式頁面的左側導覽中，按一下 [開發工具]  底下的 [資源總管]  ，然後按一下 [前往]  。
+
+在應用程式屬性的 JSON 檢視中，搜尋 `customDomainVerificationId`，並將其值複製到雙引號內。 您需要此驗證識別碼來進行下一個步驟。
+
 ## <a name="map-your-domain"></a>對應您的網域
 
 您可以使用 **CNAME 記錄**或 **A 記錄**將自訂 DNS 名稱對應至 App Service。 請依照個別步驟操作：
@@ -114,11 +120,14 @@ ms.locfileid: "80811778"
 
 #### <a name="create-the-cname-record"></a>建立 CNAME 記錄
 
-新增 CNAME 記錄以將子網域對應到應用程式的預設網域名稱 (`<app_name>.azurewebsites.net`，其中 `<app_name>` 是您的應用程式的名稱)。
+將子網域對應到應用程式的預設網域名稱 (`<app_name>.azurewebsites.net`，其中 `<app_name>` 是您的應用程式的名稱)。 若要建立 `www` 子網域的 CNAME 對應，請建立兩個記錄：
 
-對於 `www.contoso.com` 網域範例，新增將名稱 `www` 對應至 `<app_name>.azurewebsites.net` 的 CNAME 記錄。
+| 記錄類型 | Host | 值 | 註解 |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | 對應本身的網域。 |
+| TXT | `asuid.www` | [您稍早所獲得的驗證識別碼](#get-domain-verification-id) | App Service 會存取 `asuid.<subdomain>` TXT 記錄，以驗證自訂網域的擁有權。 |
 
-新增 CNAME 之後，DNS 記錄分頁看起來如下列範例所示：
+新增 CNAME 和 TXT 記錄之後，DNS 記錄分頁看起來如下列範例所示：
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ ms.locfileid: "80811778"
 
 #### <a name="create-the-a-record"></a>建立 A 記錄
 
-若要將 A 記錄對應至應用程式，App Service 需要**兩筆** DNS 記錄︰
+若要將 A 記錄對應至應用程式 (通常是根網域)，請建立兩筆記錄：
 
-- **A** 記錄對應至應用程式的 IP 位址。
-- **TXT** 記錄對應至應用程式的預設網域名稱 `<app_name>.azurewebsites.net`。 App Service 只會在設定時使用此記錄，以確認您擁有自訂網域。 驗證您的自訂網域並且在 App Service 中設定之後，您就可以刪除此 TXT 記錄。
-
-對於 `contoso.com` 網域範例，請根據下表建立 A 和 TXT 記錄 (`@` 通常代表根網域)。
-
-| 記錄類型 | Host | 值 |
+| 記錄類型 | Host | 值 | 註解 |
 | - | - | - |
-| A | `@` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 | 對應本身的網域 (`@` 通常代表根網域)。 |
+| TXT | `asuid` | [您稍早所獲得的驗證識別碼](#get-domain-verification-id) | App Service 會存取 `asuid.<subdomain>` TXT 記錄，以驗證自訂網域的擁有權。 若為根網域，請使用 `asuid`。 |
 
 > [!NOTE]
 > 若要使用 A 記錄而非建議的 [CNAME 記錄](#map-a-cname-record) 來新增子網域 (像是`www.contoso.com`)，您的 A 記錄和 TXT 記錄看起來應該如下表所示：
@@ -201,7 +205,7 @@ ms.locfileid: "80811778"
 > | 記錄類型 | Host | 值 |
 > | - | - | - |
 > | A | `www` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 新增記錄時，DNS 記錄分頁看起來如下列範例所示：

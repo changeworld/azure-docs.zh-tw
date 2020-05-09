@@ -48,7 +48,7 @@
         - name: 疑難排解
           href: data-box-gateway-troubleshoot.md
         - name: 連絡 Microsoft 支援服務
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: 版本資訊
       items:
         - name: 1911 - 目前
@@ -64,59 +64,59 @@
     - name: 概觀
       items:
         - name: 什麼是 Azure Stack Edge？
-          href: data-box-edge-overview.md
+          href: azure-stack-edge-overview.md
     - name: 教學課程
       items:
         - name: 1 - 準備
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2 - 安裝
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: 3 - 連線、設定、啟用
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: 4 - 新增並連線到共用
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A - 設定計算 (簡單)
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B - 設定計算 (進階)
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 檢閱需求
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: 了解限制
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: 安全性概觀
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: 檢閱規格
-          href: data-box-edge-technical-specifications-compliance.md
+          href: azure-stack-edge-technical-specifications-compliance.md
     - name: 如何
       items:
         - name: '開發 C# 模組'
-          href: data-box-edge-create-iot-edge-module.md
+          href: azure-stack-edge-create-iot-edge-module.md
         - name: 管理
           items:
             - name: Edge 計算
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Edge 計算網路
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: 共用
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: 使用者
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: 頻寬排程
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 功能、存取、連線能力
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: 透過 PowerShell
-              href: data-box-edge-connect-powershell-interface.md
+              href: azure-stack-edge-connect-powershell-interface.md
         - name: 疑難排解
-          href: data-box-edge-troubleshoot.md
+          href: azure-stack-edge-troubleshoot.md
         - name: 連絡 Microsoft 支援服務
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
         - name: 監視
-          href: data-box-edge-monitor.md
+          href: azure-stack-edge-monitor.md
         - name: 退回或更換裝置
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-return-device.md
     - name: 版本資訊
       items:
         - name: 1911 - 目前
@@ -133,5 +133,5 @@
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
     - name: Azure Stack Edge/資料箱閘道產品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
-    - name: 定價
+    - name: 價格
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

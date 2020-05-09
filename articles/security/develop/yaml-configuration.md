@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 82802ceae8f9fdd24d1f5642d80d90ebfd8b92a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb18f93be62feb5f9fff02fc020f04899ec40a38
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460663"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594214"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML 設定選項以自訂群組建工作
 
@@ -25,7 +25,7 @@ ms.locfileid: "75460663"
 
 ## <a name="anti-malware-scanner-task"></a>反惡意程式碼掃描程式工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | InputType | 清單 | always | True | 基本 | 基本、自訂 | 
 | ScanType | 清單 | InputType = 基本 | True | CustomScan | CustomScan, FullSystemScan, QuickScan, YourConfiguredScan | 用於反惡意程式碼掃描的掃描類型。
@@ -41,14 +41,14 @@ ms.locfileid: "75460663"
 
 ## <a name="binskim-task"></a>BinSkim 工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | InputType | 清單 | always | True | 基本 | 基本、命令列 | 
 | 引數 | 字串 | InputType = 命令列 | True |  |  | 要執行的標準 Binskim 命令列引數。 輸出路徑將會被移除並被取代。<br>如需此工具的命令列引數的詳細資訊，請在 [引數] 欄位中輸入**help** ，然後執行組建工作。
 | 函式 | 清單 | InputType = 基本 | True | 分析 | 分析、傾印、exportConfig、exportRules | 
 | AnalyzeTarget | filePath | InputType = 基本 && 函數 = 分析 | True | $ （ArtifactStagingDirectory）\*.dll;<br>$ （ArtifactStagingDirectory）\*.exe |  | 檔案、目錄或篩選模式的一或多個規範，可解析為一或多個要分析的二進位檔。 （'; ' 分隔清單）
 | AnalyzeSymPath | 字串 | InputType = 基本 && 函數 = 分析 | False |  |  | 目標的符號檔路徑。
-| AnalyzeConfigPath | 字串 | InputType = 基本 && 函數 = 分析 | False | default |  | 將用來設定分析的原則檔案路徑。 傳遞 ' default ' 的值以使用內建設定。
+| AnalyzeConfigPath | 字串 | InputType = 基本 && 函數 = 分析 | False | 預設 |  | 將用來設定分析的原則檔案路徑。 傳遞 ' default ' 的值以使用內建設定。
 | AnalyzePluginPath | 字串 | InputType = 基本 && 函數 = 分析 | False |  |  | 將針對分析集中的所有目標叫用之外掛程式的路徑。
 | AnalyzeRecurse | boolean | InputType = 基本 && 函數 = 分析 | False | true |  | 在評估檔案規範引數時遞迴至子目錄。
 | AnalyzeVerbose | boolean | InputType = 基本 && 函數 = 分析 | False | false |  | 發出詳細資訊輸出。 產生的完整報告是為了提供合規性案例的適當辨識項而設計的。
@@ -63,12 +63,12 @@ ms.locfileid: "75460663"
 
 ## <a name="credential-scanner-task"></a>認證掃描器工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | OutputFormat | 清單 | always | False | pre | csv、pre、tsv | 認證掃描器結果檔案的輸出格式。
 | Toolversion 設 | 清單 | always | False | 最新 | 1.27.7、最新、LatestPreRelease | 要執行的工具版本。
 | scanFolder | filePath | always | False | $ （SourcesDirectory） |  | 存放庫中要掃描認證的資料夾。
-| searchersFileType | 清單 | always | False | 預設 | Custom、Default、DefaultAndCustom | 用來尋找用於掃描之 searchers 檔案的選項。
+| searchersFileType | 清單 | always | False | 預設值 | Custom、Default、DefaultAndCustom | 用來尋找用於掃描之 searchers 檔案的選項。
 | searchersFile | filePath | searchersFileType = = Custom 或 searchersFileType = = DefaultAndCustom | False |  |  | 要執行之檢查的認證掃描程式 searchers 設定檔案。 藉由提供認證掃描器 searchers 檔的路徑清單（以逗號分隔），可以包含和使用多個值。
 | suppressionsFile | filePath | always | False |  |  | 要用來隱藏輸出記錄檔中問題的認證掃描器禁止檔案。
 | suppressAsError | boolean | always | False | false |  | 隱藏的相符專案會輸出到輸出檔 [-O]-相符專案。[-f]，而不是預設隱藏的輸出檔 [-O]-已隱藏。[-f]。 （預設為 ' False '）
@@ -80,7 +80,7 @@ ms.locfileid: "75460663"
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft 安全性風險偵測工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                           |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                           |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 為 serviceendpointname | connectedService：泛型 | always | True |  |  | 您的 VSTS 專案上預先設定的服務端點（泛型型別）名稱，可儲存 MSRD 實例 URL （您已上架至）和 REST API 存取權杖（從您的 [帳戶設定] 頁面產生並允許完整存取您的帳戶）。
 | AccountId | 字串 | always | True |  |  | 識別帳戶的 GUID。 它可以從帳戶 URL 抓取。
@@ -103,7 +103,7 @@ ms.locfileid: "75460663"
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn 分析器工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                   |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                   |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | userProvideBuildInfo | 清單 | always | True | 自動 | auto、msBuildInfo | 提供 MSBuild 版本、MSBuild 架構和組建命令列以進行 Roslyn 分析的使用者選項。 如果選取了 [**自動**]，此工作將會在相同的管線中，從先前的**MSBuild**、 **VSBuild**和/或 **.net Core** （適用于組建）工作中取出組建資訊。
 | msBuildVersion | 清單 | userProvideBuildInfo = = msBuildInfo | True | 16.0 | 15.0、16。0 | MSBuild 版本。
@@ -117,12 +117,12 @@ ms.locfileid: "75460663"
 
 ## <a name="tslint-task"></a>TSLint 工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RuleLibrary | 清單 | always | True | tslint | custom、microsoft、tslint | 所有結果都包含所選 TSLint 版本隨附的規則（**僅限基底**）。<br/><br/>**僅限基底-** 只有 TSLint 隨附的規則。<br/><br/>**包含 Microsoft 規則-** 下載[tslint-microsoft contrib](https://github.com/Microsoft/tslint-microsoft-contrib)並包含其規則，可在 tslint 執行中使用。 選擇此選項會隱藏`Type Checking`此核取方塊，因為 Microsoft 的規則需要它，而且會自動使用。 它也會 unhides `Microsoft Contribution Version`欄位，允許選取`tslint-microsoft-contrib`來自[npm](https://www.npmjs.com/package/tslint-microsoft-contrib)的版本。<br/><br/>**包含自訂規則-** Unhides `Rules Directory`欄位，它會接受 TSLint 規則目錄的可存取路徑，以供 TSLint 執行中使用。<br/><br/>**注意：** 預設值已變更為 tslint，因為許多使用者在設定 Microsoft 規則集時遇到問題。 如需特定版本設定，請參閱[GitHub 上的 tslint-microsoft contrib](https://github.com/microsoft/tslint-microsoft-contrib)。
 | RulesDirectory | 字串 | RuleLibrary = = custom | True |  |  | 可存取的目錄，其中包含可在 TSLint 執行中使用的其他 TSLint 規則。
 | Ruleset | 清單 | RuleLibrary！ = microsoft | True | tsrecommended | custom、tslatest、tsrecommended | 定義要針對 TypeScript 檔案執行的規則。<br/><br/>** [tslint：最新](https://github.com/palantir/tslint/blob/master/src/configs/latest.ts) - **會`tslint:recommended`延伸並持續更新，以包含每個 TSLint 版本中最新規則的設定。 使用此設定可能會在次要版本之間引進重大變更，因為新的規則會啟用，而導致您的程式碼發生不起毛的失敗。 當 TSLint 達到主要版本的凹凸時`tslint:recommended` ，將會更新為與相同`tslint:latest`。<br/><br/>** [tslint：建議使用](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts) - **一組穩定、有點固定的規則，TSLint 鼓勵一般 TypeScript 程式設計。 此設定會`semver`遵循，因此*不*會在次要或修補程式版本之間有重大變更。
-| RulesetMicrosoft | 清單 | RuleLibrary = = microsoft | True | mssdlrequired | custom、msrecommended、mssdlrecommended、mssdlrequired、tslatest、tsrecommended | 定義要針對 TypeScript 檔案執行的規則。<br/><br/>** [microsoft： sdl-必要](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) - **執行 tslint 所提供的所有可用檢查，以及符合*必要*[安全性開發生命週期（SDL）](https://www.microsoft.com/sdl/)原則的 tslint-microsoft contrib 規則。<br/><br/>** [microsoft： sdl-建議](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) - **執行 tslint 所提供的所有可用檢查，以及符合*必要和建議*[安全性開發週期（SDL）](https://www.microsoft.com/sdl/)原則的 tslint-microsoft contrib 規則。<br/><br/>** [microsoft：建議](https://github.com/Microsoft/tslint-microsoft-contrib/blob/master/recommended_ruleset.js) - **Tslint 的建立者所建議的所有檢查-microsoft contrib 規則。 這包括安全性和非安全性檢查。<br/><br/>** [tslint：最新](https://github.com/palantir/tslint/blob/master/src/configs/latest.ts) - **會`tslint:recommended`延伸並持續更新，以包含每個 TSLint 版本中最新規則的設定。 使用此設定可能會在次要版本之間引進重大變更，因為新的規則會啟用，而導致您的程式碼發生不起毛的失敗。 當 TSLint 達到主要版本的凹凸時`tslint:recommended` ，將會更新為與相同`tslint:latest`。<br/><br/>** [tslint：建議使用](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts) - **一組穩定、有點固定的規則，TSLint 鼓勵一般 TypeScript 程式設計。 此設定會`semver`遵循，因此*不*會在次要或修補程式版本之間有重大變更。
+| RulesetMicrosoft | 清單 | RuleLibrary = = microsoft | True | mssdlrequired | custom、msrecommended、mssdlrecommended、mssdlrequired、tslatest、tsrecommended | 定義要針對 TypeScript 檔案執行的規則。<br/><br/>** [microsoft： sdl-必要](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) - **執行 tslint 所提供的所有可用檢查，以及符合*必要*[安全性開發生命週期（SDL）](https://www.microsoft.com/sdl/)原則的 tslint-microsoft contrib 規則。<br/><br/>** [microsoft： sdl-建議](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) - **執行 tslint 所提供的所有可用檢查，以及符合*必要和建議*[安全性開發週期（SDL）](https://www.microsoft.com/sdl/)原則的 tslint-microsoft contrib 規則。<br/><br/>**microsoft：建議**Tslint 的建立者所建議的所有檢查-microsoft contrib 規則。 這包括安全性和非安全性檢查。<br/><br/>** [tslint：最新](https://github.com/palantir/tslint/blob/master/src/configs/latest.ts) - **會`tslint:recommended`延伸並持續更新，以包含每個 TSLint 版本中最新規則的設定。 使用此設定可能會在次要版本之間引進重大變更，因為新的規則會啟用，而導致您的程式碼發生不起毛的失敗。 當 TSLint 達到主要版本的凹凸時`tslint:recommended` ，將會更新為與相同`tslint:latest`。<br/><br/>** [tslint：建議使用](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts) - **一組穩定、有點固定的規則，TSLint 鼓勵一般 TypeScript 程式設計。 此設定會`semver`遵循，因此*不*會在次要或修補程式版本之間有重大變更。
 | RulesetFile | 字串 | 規則集 = = custom 或 RulesetMicrosoft = = custom | True |  |  | 指定要執行哪些規則的[設定檔](https://palantir.github.io/tslint/usage/cli/)。<br/><br/>設定的路徑將會加入做為[自訂規則](https://palantir.github.io/tslint/develop/custom-rules/)的路徑。
 | FileSelectionType | 清單 | always | True | fileGlob | fileGlob、projectFile | 
 | 檔案 | 字串 | FileSelectionType = = fileGlob | True | **\*。 ts |  | 檔案[glob](https://www.npmjs.com/package/glob) ，可決定要處理的檔案。 路徑相對於`Build.SourcesDirectory`值。<br/><br/>Microsoft 的投稿文件庫需要使用專案檔。 如果您使用 Microsoft 的投稿文件庫搭配`File Glob Pattern`選項，將會為您產生專案檔。
@@ -139,7 +139,7 @@ ms.locfileid: "75460663"
 
 ## <a name="publish-security-analysis-logs-task"></a>發行安全性分析記錄工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ArtifactName | 字串 | always | True | CodeAnalysisLogs |  | 要建立之成品的名稱。
 | ArtifactType | 清單 | always | True | 容器 | 容器、FilePath | 要建立之成品的型別。
@@ -151,11 +151,11 @@ ms.locfileid: "75460663"
 | MSRD | boolean | AllTools = false | True | true |  | 發行 MSRD build 工作所啟動之 MSRD 作業的作業資訊和作業 url。 MSRD 作業長時間執行，並提供個別的報表。
 | RoslynAnalyzers | boolean | AllTools = false | True | false |  | 發行由 Roslyn 分析器組建工作所產生的結果。
 | TSLint | boolean | AllTools = false | True | true |  | 發行 TSLint build 工作所產生的結果。 請注意，報表僅支援 JSON 格式的 TSLint 記錄。 如果您選擇了不同的格式，請據以更新您的 TSLint 組建工作。
-| ToolLogsNotFoundAction | 清單 | always | True | Standard | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
+| ToolLogsNotFoundAction | 清單 | always | True | 標準 | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
 
 ## <a name="security-report-task"></a>安全性報告工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | VstsConsole | boolean | always | False | true |  | 將結果寫入管線主控台。
 | TsvFile | boolean | always | False | true |  | 產生 tsv 檔案（定位字元分隔值），並在每個找到的結果中加上一行，並以 tab 鍵分隔結果的資訊。
@@ -169,12 +169,12 @@ ms.locfileid: "75460663"
 | RoslynAnalyzersBreakOn | 清單 | AllTools = true 或 RoslynAnalyzers = true | True | 錯誤 | Error、WarningAbove | 要報告的結果層級。
 | TSLint | boolean | AllTools = false | True | false |  | TSLint 組建工作所產生的報表結果。 請注意，報表僅支援 JSON 格式的 TSLint 記錄。 如果您選擇了不同的格式，請據以更新您的 TSLint 組建工作。
 | TSLintBreakOn | 清單 | AllTools = true 或 TSLint = true | True | 錯誤 | Error、WarningAbove | 要報告的結果層級。
-| ToolLogsNotFoundAction | 清單 | always | True | Standard | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
+| ToolLogsNotFoundAction | 清單 | always | True | 標準 | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
 | CustomLogsFolder | 字串 | always | False |  |  | 分析工具記錄所在的基底資料夾;個別記錄檔會在此路徑底下的每個工具後面命名的子資料夾中。
 
 ## <a name="post-analysis-task"></a>後續分析工作
 
-| **InputType**      | **類型**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
+| **InputType**      | **型別**     | **可行**            | **必要** | **預設值**             | **選項（適用于挑選清單）**                                   | **說明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AllTools | boolean | always | True | false |  | 如果任何 Microsoft 安全性程式碼分析組建工作發現任何問題，請中斷組建。
 | BinSkim | boolean | AllTools = false | True | false |  | 如果找到任何 BinSkim 問題，請根據您所選取的 [中斷] 選項來中斷組建。
@@ -185,7 +185,7 @@ ms.locfileid: "75460663"
 | TSLint | boolean | AllTools = false | True | false |  | 如果發現任何 TSLint 問題，請中斷組建。 請注意，只有 JSON 格式的 TSLint 記錄支援 post 分析。 如果您選擇了不同的格式，請據以更新您的 TSLint 組建工作。
 | TSLintBreakOn | 清單 | AllTools = true 或 TSLint = true | True | 錯誤 | Error、WarningAbove | 要中斷組建的問題層級。
 | VstsConsole | boolean | always | False | true |  | 將結果寫入管線主控台。
-| ToolLogsNotFoundAction | 清單 | always | True | Standard | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
+| ToolLogsNotFoundAction | 清單 | always | True | 標準 | 錯誤，無，標準，警告 | 找不到所選工具（或所有工具皆已核取）時要採取的動作，表示該工具未執行。<br/><br/>**選項：**<br/>**無：** 只有將 VSTS 變數**system.object**設定為**true**，才能將訊息寫入詳細資訊輸出資料流程。<br/>**標準：** （預設）會寫入標準輸出訊息，找不到工具的任何記錄。<br/>**警告：** 寫入黃色的警告訊息，找不到工具的任何記錄檔，這會在組建摘要頁面上顯示為警告。<br/>**錯誤：** 寫入紅色錯誤訊息，並擲回例外狀況，以中斷組建。 使用此選項可確保個別的工具選項，以確保執行的工具。
 
 ## <a name="next-steps"></a>後續步驟
 
