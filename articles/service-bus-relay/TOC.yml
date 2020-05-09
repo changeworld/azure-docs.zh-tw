@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: 內建安全性控制
           href: service-bus-relay-security-controls.md
+        - name: 網路安全性
+          href: network-security.md
     - name: 混合式連線通訊協定
       href: relay-hybrid-connections-protocol.md
 - name: 作法
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: 節點
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: 安全
+      items:
+        - name: 設定 IP 防火牆 (預覽)
+          href: ip-firewall-virtual-networks.md
+        - name: 設定私人端點 (預覽)
+          href: private-link-service.md
     - name: 管理和監視
       items:
         - name: 透過 Azure 監視器監視 Azure 轉送

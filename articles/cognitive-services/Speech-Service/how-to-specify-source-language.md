@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.openlocfilehash: 07ca4c519a04910e7e126d3481afb17d2b5dc350
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235984"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977680"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定語音轉換文字的來來源語言
 
@@ -142,9 +142,9 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
-## <a name="how-to-specify-source-language-in-javascript"></a>如何在 JAVAscript 中指定來源語言
+## <a name="how-to-specify-source-language-in-javascript"></a>如何在 JavaScript 中指定來源語言
 
 第一個步驟是建立`SpeechConfig`：
 
@@ -163,6 +163,9 @@ speechConfig.speechRecognitionLanguage = "de-DE";
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>如何指定目標中的來源語言-C
 
@@ -186,7 +189,7 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * 如需支援的語言和語音轉換文字的地區設定清單，請參閱[語言支援](language-support.md)。
 

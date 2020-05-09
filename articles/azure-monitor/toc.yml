@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: 活動記錄警示
           href: platform/activity-log-alerts.md
-        - name: 變更分析
-          href: app/change-analysis.md
     - name: 顯現資料
       href: visualizations.md
     - name: 合作夥伴整合
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: 將資料串流至事件中樞
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: 變更分析
+          href: app/change-analysis.md
     - name: 監視 VM 和客體 OS
       items:
         - name: 監視 Azure 虛擬機器
