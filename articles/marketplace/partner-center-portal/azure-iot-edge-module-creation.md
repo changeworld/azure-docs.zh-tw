@@ -1,36 +1,30 @@
 ---
-title: 建立具有合作夥伴中心的 Azure IoT Edge 模組供應專案-Azure Marketplace
-description: 瞭解如何使用合作夥伴中心在 Azure Marketplace 中建立 IoT Edge 模組供應專案
+title: 在 Azure Marketplace 中建立合作夥伴中心的 Azure IoT Edge 模組供應專案
+description: 瞭解如何使用合作夥伴中心在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應專案
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869140"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857663"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應專案
 
-> [!IMPORTANT]
-> 我們正將您 IoT Edge 課程模組的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請依照 Cloud Partner 入口網站的[IoT Edge 課程模組發佈總覽](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)中的指示來管理您的優惠。
-
-本文說明如何建立及發佈適用于 Azure Marketplace 的物聯網（IoT） Edge 模組供應專案。
-
-您必須先在合作夥伴中心擁有商用 marketplace 帳戶，才能建立 IoT Edge 模組供應專案。 如果您尚未建立，請參閱[在合作夥伴中心建立商業 marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+本文說明如何建立及發佈適用于 Azure Marketplace 的物聯網（IoT） Edge 模組供應專案。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-1. 登入合作夥伴中心。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左側導覽功能表中，選取 [**商用 Marketplace** > **總覽**]。
+3. 在 [總覽] 頁面上，選取 [ **+ 新增供應** > 專案]**IoT Edge 模組**]。
 
-    ![說明左側導覽功能表。](./media/cs-menu-overview.png)
-
-3. 選取 [ **+ 新增供應** > 專案**IoT Edge 模組**]。 [**新增供應**專案] 對話方塊隨即出現。
+    ![說明左側導覽功能表。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > 發行供應專案之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應專案後出現在店面中。 請務必在進行變更之後，一律重新發佈。
@@ -41,14 +35,14 @@ ms.locfileid: "81869140"
 
 - Marketplace 供應專案和 Azure Resource Manager 範本的網址中，客戶可以看到此識別碼（如果適用的話）。
 - 請一律使用小寫字母和數字。 它可以包含連字號和底線，但不能有空格，而且限制為50個字元。 例如，如果您輸入 [**測試-供應專案-1**]，則供應專案 web `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`位址會是。
-- 選取 [建立] 之後，即無法變更供應專案識別碼。
+- 選取 [**建立**] 之後，即無法變更供應專案識別碼。
 
-輸入**供應專案別名**。 這是用來在合作夥伴中心參考供應專案的名稱。
+輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。
 
 - 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
 - 選取 [**建立**] 之後就無法變更。
 
-輸入這兩個值之後，請選取 [**建立**]，再繼續進行下一個頁面 [供應專案總覽]。
+選取 [**建立**] 以產生供應專案並繼續。
 
 ## <a name="offer-overview"></a>供應項目概觀
 
@@ -86,10 +80,10 @@ ms.locfileid: "81869140"
 
 - [潛在客戶管理總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [潛在客戶管理總覽](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （請確定您的快顯封鎖程式已關閉）。
 
-選取 [**儲存草稿**]，然後繼續進行下一節的 [屬性]。
+選取 [**儲存草稿**] 再繼續。
 
 ### <a name="properties"></a>屬性
 
@@ -132,7 +126,7 @@ ms.locfileid: "81869140"
 > [!NOTE]
 > 如果供應專案描述的開頭是片語「，此應用程式僅適用于 [非英文語言]，則不一定要有英文版的供應專案詳細資料。 也可以提供有用的連結，以不同于供應專案清單詳細資料所使用的語言來提供內容。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名稱
 
 您在此處輸入的名稱會顯示為供應專案的標題。 當您建立供應專案時，此欄位會預先填入您在 [**供應專案別名**] 方塊中輸入的文字。 您可以稍後變更此名稱。
 

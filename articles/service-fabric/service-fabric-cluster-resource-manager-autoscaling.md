@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984532"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793086"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動調整簡介
 自動調整是 Service Fabric 的一項額外功能，可根據服務所回報的負載，或根據其資源使用情況，來動態調整服務。 自動調整提供絕佳的彈性，並可讓您依需求佈建額外的服務執行個體或分割區。 整個自動調整程序是自動化並在背景執行的，在您於服務上設定原則之後，即無須在服務層級進行手動調整作業。 您可以在建立服務時，或隨時藉由更新服務，來開啟自動調整功能。
@@ -130,7 +130,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 「_最小實例計數_」會定義調整的下限。 如果服務的分割區數目達到此限制，則不論負載情況為何，服務都不會相應縮小規模。
 
 > [!WARNING] 
-> 當 AddRemoveIncrementalNamedPartitionScalingMechanism 搭配具狀態服務使用時，Service Fabric 會在**沒有任何通知或警告**的情況下新增或移除分割區。 觸發縮放機制後，就不會執行資料的重新分割。 在相應增加作業中，新的分割區會是空的，而在相應減少作業中，**分割區會與它所包含的所有資料一起刪除**。
+> 當 AddRemoveIncrementalNamedPartitionScalingMechanism 搭配具狀態服務使用時，Service Fabric 會在**沒有任何通知或警告**的情況下新增或移除分割區。 觸發縮放機制後，就不會執行資料的重新分割。 在相應放大作業的情況下，新的分割區將會是空的，而且在作業進行相應放大時，將會連同**其包含的所有資料一起刪除**。
 
 ## <a name="setting-auto-scaling-policy"></a>設定自動調整原則
 

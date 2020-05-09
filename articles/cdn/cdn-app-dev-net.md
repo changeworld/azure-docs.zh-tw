@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594169"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611461"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
-> 
-> 
+>
+>
 
 您可以使用 [適用於 .NET 的 Azure CDN 程式庫](/dotnet/api/overview/azure/cdn) ，自動建立和管理 CDN 設定檔與端點。  本教學課程會逐步建立簡單的 .NET 主控台應用程式，示範數個可用的作業。  本教學課程的目的不是詳細說明適用於 .NET 的 Azure CDN 程式庫的所有層面。
 
@@ -34,35 +35,35 @@ ms.locfileid: "67594169"
 
 > [!TIP]
 > 您可以在 MSDN 上下載 [本教學課程中完成的專案](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) 。
-> 
-> 
+>
+>
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>建立專案並新增 Nuget 封裝
 現在，我們已為 CDN 設定檔建立資源群組，並為 Azure AD 應用程式授與權限來管理該群組內的 CDN 設定檔和端點，我們可以開始建立應用程式。
 
-從 Visual Studio 2015 中，依序按一下 [檔案]****、[新增]**** 和 [專案...]****，以開啟 [新增專案] 對話方塊。  展開 [Visual C#]****，然後選取左側窗格中的 [Windows]****。  按一下中央窗格的 [主控台應用程式] **** 。  為專案命名，然後按一下 [確定] ****。  
+從 Visual Studio 2015 中，依序按一下 [檔案]****、[新增]**** 和 [專案...]****，以開啟 [新增專案] 對話方塊。  展開 [Visual C#]****，然後選取左側窗格中的 [Windows]****。  按一下中央窗格的 [主控台應用程式] **** 。  為專案命名，然後按一下 [確定] ****。
 
 ![新增專案](./media/cdn-app-dev-net/cdn-new-project.png)
 
 我們的專案將使用 Nuget 封裝內含的一些 Azure 程式庫。  讓我們先將它們新增至專案。
 
 1. 依序按一下 [工具]**** 功能表、[Nuget 封裝管理員]**** 及 [封裝管理員主控台]****。
-   
+
     ![管理 Nuget 封裝](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. 在 [封裝管理員主控台] 中，執行下列命令來安裝 **Active Directory Authentication Library (ADAL)**：
-   
+
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. 執行下列命令來安裝 **Azure CDN 管理程式庫**：
-   
+
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>指示詞、常數、主要方法和協助程式方法
 讓我們開始撰寫程式的基本結構。
 
 1. 回到 [Program.cs] 索引標籤，使用下列內容取代頂端的 `using` 指示詞：
-   
+
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -74,13 +75,13 @@ ms.locfileid: "67594169"
     using Microsoft.Rest;
     ```
 2. 我們必須定義一些我們的方法將用到的常數。  在 `Program` 類別中，但在 `Main` 方法之前，新增下列內容。  請務必視需要使用您自己的值來取代預留位置，包括** &lt;角括弧&gt;**。
-   
+
     ```csharp
     //Tenant app constants
     private const string clientID = "<YOUR CLIENT ID>";
     private const string clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
     private const string authority = "https://login.microsoftonline.com/<YOUR TENANT ID>/<YOUR TENANT DOMAIN NAME>";
-   
+
     //Application constants
     private const string subscriptionId = "<YOUR SUBSCRIPTION ID>";
     private const string profileName = "CdnConsoleApp";
@@ -89,48 +90,48 @@ ms.locfileid: "67594169"
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
 3. 此外，也要在類別層級設定這兩個變數。  稍後將使用這些項目來判斷我們的設定檔和端點是否已經存在。
-   
+
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
 4. 取代 `Main` 方法，如下所示：
-   
+
    ```csharp
    static void Main(string[] args)
    {
        //Get a token
        AuthenticationResult authResult = GetAccessToken();
-   
+
        // Create CDN client
        CdnManagementClient cdn = new CdnManagementClient(new TokenCredentials(authResult.AccessToken))
            { SubscriptionId = subscriptionId };
-   
+
        ListProfilesAndEndpoints(cdn);
-   
+
        // Create CDN Profile
        CreateCdnProfile(cdn);
-   
+
        // Create CDN Endpoint
        CreateCdnEndpoint(cdn);
-   
+
        Console.WriteLine();
-   
+
        // Purge CDN Endpoint
        PromptPurgeCdnEndpoint(cdn);
-   
+
        // Delete CDN Endpoint
        PromptDeleteCdnEndpoint(cdn);
-   
+
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
-   
+
        Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
 5. 在我們的其他方法中有一些會透過「是/否」問題來提示使用者。  新增下列方法，以使其更加容易：
-   
+
     ```csharp
     private static bool PromptUser(string Question)
     {
@@ -161,9 +162,9 @@ ms.locfileid: "67594169"
 ```csharp
 private static AuthenticationResult GetAccessToken()
 {
-    AuthenticationContext authContext = new AuthenticationContext(authority); 
+    AuthenticationContext authContext = new AuthenticationContext(authority);
     ClientCredential credential = new ClientCredential(clientID, clientSecret);
-    AuthenticationResult authResult = 
+    AuthenticationResult authResult =
         authContext.AcquireTokenAsync("https://management.core.windows.net/", credential).Result;
 
     return authResult;
@@ -174,8 +175,8 @@ private static AuthenticationResult GetAccessToken()
 
 > [!IMPORTANT]
 > 如果您選擇使用個別使用者驗證，而不是服務主體，只需使用這個程式碼範例。
-> 
-> 
+>
+>
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -271,8 +272,8 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 上述範例會為端點指派一個名為*Contoso* 的來源且主機名稱為 `www.contoso.com`。  您應該變更此項以指向您自己來源的主機名稱。
-> 
-> 
+>
+>
 
 ## <a name="purge-an-endpoint"></a>清除端點
 假設端點已建立，我們可能想要在程式中執行的一個常見工作是清除此端點中的內容。
@@ -292,8 +293,8 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 在上述範例中，字串 `/*` 代表我想要清除端點路徑根目錄中的所有項目。  這相當於在 Azure 入口網站的 [清除] 對話方塊中勾選 [全部清除]****。 在 `CreateCdnProfile` 方法中，我已經使用程式碼 `Sku = new Sku(SkuName.StandardVerizon)` 來建立設定檔做為**來自 Verizon 的 Azure CDN** 設定檔，因此這將會成功。  不過，**來自 Akamai 的 Azure CDN** 設定檔不支援 [全部清除]****，因此，如果我在本教學課程中使用 Akamai 設定檔，就必須包含要清除的特定路徑。
-> 
-> 
+>
+>
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>刪除 CDN 設定檔和端點
 最後一個方法會刪除我們的端點和設定檔。
@@ -341,4 +342,3 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 若要尋找適用於 .NET 的 Azure CDN 管理程式庫的其他相關文件，請檢視 [MSDN 上的參考](/dotnet/api/overview/azure/cdn)。
 
 使用 [PowerShell](cdn-manage-powershell.md)管理 CDN 資源。
-

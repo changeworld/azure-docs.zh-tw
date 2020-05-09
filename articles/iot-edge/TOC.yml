@@ -206,7 +206,11 @@
         - name: Jenkins 的 IoT Edge 外掛程式
           href: how-to-devops-plugins.md
     - name: 疑難排解
-      href: troubleshoot.md
+      items:
+        - name: 標準的診斷步驟
+          href: troubleshoot.md
+        - name: 常見錯誤解決方案
+          href: troubleshoot-common-errors.md
 - name: 資源
   items:
     - name: 支援和協助選項

@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811738"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592361"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>設定 Azure App Service 的 TLS 相互驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "80811738"
 
 ## <a name="enable-client-certificates"></a>啟用用戶端憑證
 
-若要將您的應用程式設定為需要用戶端憑證，您`clientCertEnabled`必須將應用程式的`true`設定設定為。 若要設定設定，請在[Cloud Shell](https://shell.azure.com)中執行下列命令。
+若要將您的應用程式設定為需要用戶端憑證，您可以從 Azure 入口網站**Configuration** > 選取 [設定]**[一般設定**]，或需要將應用`clientCertEnabled`程式的設定設為`true`，**以切換 [** 需要傳入憑證]。 若要設定設定，請在[Cloud Shell](https://shell.azure.com)中執行下列命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78e01c854201e3c5253cd86aebcd85b62bf5568d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481077"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629295"
 ---
 # <a name="vcore-model-overview"></a>虛擬核心模型概觀
 
@@ -102,7 +102,7 @@ M 系列僅在業務關鍵層中受到支援，不支援區域冗余。
 |Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 處理器<br>-最多可布建24虛擬核心（1 vCore = 1 個實體核心）  |-每個 vCore 7 GB<br>-布建最多 168 GB|
 |Gen5     |**佈建計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-最多可布建80虛擬核心（1 vCore = 1 個超執行緒）<br><br>**無伺服器計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-自動相應增加至16個虛擬核心（1個 vCore = 1 個超執行緒）|**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建最多 408 GB<br><br>**無伺服器計算**<br>-每個 vCore 自動相應增加至 24 GB<br>-自動調整至最多 48 GB 的最大值|
 |Fsv2 系列     |-Intel 更強白金8168（SkyLake）處理器<br>-提供 3.4 GHz 的全部核心 turbo 主頻速度，以及最大的單一核心 turbo 頻率速度（3.7 GHz）。<br>-布建72虛擬核心（1 vCore = 1 個超執行緒）|-每個 vCore 1.9 GB<br>-布建 136 GB|
-|M 系列     |-Intel E7-8890 v3 2.5 GHz 處理器<br>-布建128虛擬核心（1 vCore = 1 個超執行緒）|-每 vCore 29 GB<br>-布建 3.7 TB|
+|M 系列     |-Intel （r） E7-8890 v3 2.5 GHz 和 Intel 強式白金 8280M 2.7 g h z （Cascade Lake）處理器<br>-布建128虛擬核心（1 vCore = 1 個超執行緒）|-每 vCore 29 GB<br>-布建 3.7 TB|
 
 \*在[dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)動態管理檢視中，使用 Intel SP-8160 （Skylake）處理器的第5代資料庫硬體產生會顯示為 Gen6。 無論處理器類型為何（Broadwell 或 Skylake），所有第5代資料庫的資源限制都相同。
 
@@ -199,7 +199,7 @@ M 系列在其他區域中可能也會有有限的可用性。 您可以要求�
 ##### <a name="create-a-support-request-to-enable-m-series"></a>建立支援要求以啟用 M 系列： 
 
 1. 在入口網站中選取 [說明 **+ 支援**]。
-2. 選取 [新增支援要求]****。
+2. 選取 [**新增支援要求**]。
 
 在 [**基本**] 頁面上，提供下列資訊：
 

@@ -7,17 +7,17 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: security-benchmark
+ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587527"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606869"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Azure 安全性基準測試的總覽
 
-Azure 安全性基準測試包含的建議可協助您改善 Azure 上應用程式和資料的安全性。
+Azure 安全性效能評定包含的建議可協助您改善 Azure 上應用程式和資料的安全性。
 
 此基準測試著重于以雲端為中心的控制區域。 這些控制項與知名的安全性基準測試一致，例如 Center for Internet Security （CIS）控制項7.1 版所描述的。
 
@@ -42,11 +42,11 @@ Azure 安全性基準測試包含的建議可協助您改善 Azure 上應用程�
 每個建議都包含下列資訊： 
 
 - **AZURE 識別碼**：對應至建議的 Azure 安全性基準測試識別碼。 
-- **CI 識別碼**：對應到此建議的 cis 基準測試建議。  
+- **CI 識別碼**：對應到此建議的 Cis 基準測試建議。  
 - **責任**：客戶或服務提供者（或兩者）是否負責執行這項建議。 安全性責任會在公用雲端中共用。 某些安全性控制僅適用于雲端服務提供者，因此提供者負責解決這些控制項。 這些是一般觀察-對於某些個別服務，責任會與 Azure 安全性基準測試中列出的不同。 個別服務的基準建議中會描述這些差異。 
 - **詳細資料**：建議的理由，以及如何執行的指引連結。 如果 Azure 資訊安全中心支援建議，也會列出該資訊。
 
-我們歡迎您提供詳細的意見反應，並積極參與 Azure 安全性基準測試的工作。 如果您想要提供基準測試小組直接輸入，請在[https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)填寫表單。
+我們歡迎您提供詳細的意見反應，並積極參與 Azure 安全性基準測試的工作。 如果您想要提供 Azure 安全性基準測試小組直接輸入，請在[https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)填寫表單。
 
 ## <a name="next-steps"></a>後續步驟
 

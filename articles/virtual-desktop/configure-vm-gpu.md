@@ -7,14 +7,20 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767037"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612073"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器（GPU）加速
+
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虛擬桌面支援 GPU 加速轉譯和編碼，以改善應用程式效能和擴充性。 GPU 加速對於需要大量圖形的應用程式特別重要。
 
@@ -26,7 +32,7 @@ Azure 提供一些[GPU 優化的虛擬機器大小](/azure/virtual-machines/wind
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機集區、布建您的虛擬機器，以及設定應用程式群組
 
-使用您所選大小的 VM，建立新的主機集區。 如需指示，請參閱[教學課程：使用 Azure Marketplace 建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
+使用您所選大小的 VM，建立新的主機集區。 如需指示，請參閱[教學課程：使用 Azure 入口網站建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
 
 Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
@@ -39,7 +45,7 @@ Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
 若要在 Windows 虛擬桌面中利用 Azure N 系列 Vm 的 GPU 功能，您必須安裝適當的圖形驅動程式。 遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)上的指示，以手動方式或使用 Azure VM 擴充功能，從適當的圖形廠商安裝驅動程式。
 
-Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 Additionaly，針對具有 NVIDIA Gpu 的 Azure Vm，只有[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)支援 Windows 虛擬桌面。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對具有 NVIDIA Gpu 的 Azure Vm，Windows 虛擬桌面僅支援[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
 
 安裝驅動程式之後，需要重新開機 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 

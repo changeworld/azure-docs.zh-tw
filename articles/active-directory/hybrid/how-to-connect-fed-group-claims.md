@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408397"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854121"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>使用 Azure Active Directory 設定應用程式的群組宣告（公開預覽）
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>使用 Azure Active Directory 設定應用程式的群組宣告
 
 Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊，以便在應用程式中使用。  支援兩種主要模式：
 
-- 依其 Azure Active Directory 物件識別元（OID）屬性所識別的群組（已正式運作）
-- Active Directory （AD）同步處理的群組和使用者的 sAMAccountName 或 GroupSID 屬性所識別的群組（公開預覽）
+- 依其 Azure Active Directory 物件識別元（OID）屬性所識別的群組
+- Active Directory （AD）同步處理的群組和使用者的 sAMAccountName 或 GroupSID 屬性所識別的群組
 
 > [!IMPORTANT]
-> 針對此預覽功能，有一些需要注意的事項：
+> 這項功能有一些值得注意的事項：
 >
 >- 支援使用從內部部署同步處理的 sAMAccountName 和安全識別碼（SID）屬性，其設計目的是要讓現有應用程式從 AD FS 和其他身分識別提供者移動。 Azure AD 中受管理的群組不包含發出這些宣告所需的屬性。
 >- 在較大型組織中，使用者所屬的群組數目可能會超過 Azure Active Directory 將新增至權杖的限制。 150適用于 SAML 權杖的群組，以及200的 JWT。 這可能會導致無法預期的結果。 如果您的使用者有大量的群組成員資格，建議使用選項，將宣告中發出的群組限制為應用程式的相關群組。  

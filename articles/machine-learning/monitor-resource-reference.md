@@ -5,17 +5,17 @@ description: 瞭解為 Azure Machine Learning 收集的資料和資源，並可�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
-ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187591"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856026"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure machine learning 監視資料參考
 
@@ -27,7 +27,7 @@ ms.locfileid: "82187591"
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 資料表
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:---|
 | TimeGenerated | 產生記錄專案的時間 |
 | OperationName | 與記錄事件相關聯的作業名稱 |
@@ -56,7 +56,7 @@ ms.locfileid: "82187591"
 
 ### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 資料表
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | TimeGenerated | 產生記錄專案的時間 |
 | OperationName | 與記錄事件相關聯的作業名稱 |
@@ -99,7 +99,7 @@ ms.locfileid: "82187591"
 
 ### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 資料表
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | TimeGenerated | 產生記錄專案的時間 |
 | OperationName | 與記錄事件相關聯的作業名稱 |
@@ -126,39 +126,39 @@ ms.locfileid: "82187591"
 
 下表列出針對 Azure Machine Learning 所有度量所收集的平臺計量儲存在命名空間**Azure Machine Learning 工作區**中。
 
-**型號**
+**模組**
 
-| 計量 | 單位 | 說明 |
+| 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 模型部署失敗 | Count | 失敗的模型部署數目。 |
-| 模型部署已開始 | Count | 已啟動的模型部署數目。 |
-| 模型部署成功 | Count | 成功的模型部署數目。 |
-| 模型註冊失敗 | Count | 失敗的模型註冊數目。 |
-| 模型註冊成功 | Count | 成功的模型註冊數目。 |
+| 模型部署失敗 | 計數 | 失敗的模型部署數目。 |
+| 模型部署已開始 | 計數 | 已啟動的模型部署數目。 |
+| 模型部署成功 | 計數 | 成功的模型部署數目。 |
+| 模型註冊失敗 | 計數 | 失敗的模型註冊數目。 |
+| 模型註冊成功 | 計數 | 成功的模型註冊數目。 |
 
 **配額**
 
 配額資訊僅適用于 Azure Machine Learning 計算。
 
-| 計量 | 單位 | 說明 |
+| 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 現用核心 | Count | 使用中計算核心的數目。 |
-| 現用節點 | Count | 使用中節點的數目。 |
-| 閒置核心 | Count | 閒置計算核心的數目。 |
-| 閒置節點 | Count | 閒置計算節點的數目。 |
-| 離開核心 | Count | 離開核心的數目。 |
-| 離開節點 | Count | 離開節點的數目。 |
-| 搶先核心 | Count | 已佔用的核心數目。 |
-| 搶先節點 | Count | 已搶先節點的數目。 |
+| 現用核心 | 計數 | 使用中計算核心的數目。 |
+| 現用節點 | 計數 | 使用中節點的數目。 |
+| 閒置核心 | 計數 | 閒置計算核心的數目。 |
+| 閒置節點 | 計數 | 閒置計算節點的數目。 |
+| 離開核心 | 計數 | 離開核心的數目。 |
+| 離開節點 | 計數 | 離開節點的數目。 |
+| 搶先核心 | 計數 | 已佔用的核心數目。 |
+| 搶先節點 | 計數 | 已搶先節點的數目。 |
 | 配額使用量百分比 | 百分比 | 使用的配額百分比。 |
-| 核心總數 | Count | 核心總數。 |
-| 節點總計 | Count | 節點總數。 |
-| 無法使用的核心 | Count | 無法使用的核心數目。 |
-| 無法使用的節點 | Count | 無法使用的節點數目。 |
+| 核心總數 | 計數 | 核心總數。 |
+| 節點總計 | 計數 | 節點總數。 |
+| 無法使用的核心 | 計數 | 無法使用的核心數目。 |
+| 無法使用的節點 | 計數 | 無法使用的節點數目。 |
 
 以下是可以用來篩選配額計量的維度：
 
-| 維度 | 可用的度量 | 說明 |
+| 維度 | 可用的度量 | 描述 |
 | ---- | ---- | ---- |
 | 叢集名稱 | 所有配額標準 | 計算實例的名稱。 |
 | Vm 系列名稱 | 配額使用量百分比 | 叢集所使用的 VM 系列名稱。 |
@@ -166,17 +166,17 @@ ms.locfileid: "82187591"
 
 **Resource**
 
-| 計量 | 單位 | 說明 |
+| 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
 | CpuUtilization | 百分比 | 在執行/作業期間，針對指定節點使用多少 CPU 百分比。 只有在節點上執行工作時，才會發佈此計量。 一個作業可以使用一或多個節點。 此計量會針對每個節點發布。 |
 | GpuUtilization | 百分比 | 在執行/作業期間，指定節點使用了多少 GPU 百分比。 一個節點可以有一或多個 Gpu。 此計量會每個節點每個 GPU 發佈一次。 |
 
 以下是可以用來篩選資源計量的維度：
 
-| 維度 | 說明 |
+| 維度 | 描述 |
 | ----- | ----- |
 | CreatedTime | |
-| deviceId | 裝置的識別碼（GPU）。 僅適用于 GpuUtilization。 |
+| DeviceId | 裝置的識別碼（GPU）。 僅適用于 GpuUtilization。 |
 | NodeId | 工作執行所在之節點的識別碼。 |
 | RunId | 執行/作業的識別碼。 |
 
@@ -184,15 +184,15 @@ ms.locfileid: "82187591"
 
 訓練執行的資訊。
 
-| 計量 | 單位 | 說明 |
+| 計量 | 單位 | 描述 |
 | ----- | ----- | ----- |
-| 已完成的執行 | Count | 已完成的執行數目。 |
-| 失敗的執行 | Count | 失敗的執行數目。 |
-| 開始執行 | Count | 已啟動的執行數目。 |
+| 已完成的執行 | 計數 | 已完成的執行數目。 |
+| 失敗的執行 | 計數 | 失敗的執行數目。 |
+| 開始執行 | 計數 | 已啟動的執行數目。 |
 
 以下是可以用來篩選執行計量的維度：
 
-| 維度 | 說明 |
+| 維度 | 描述 |
 | ---- | ---- |
 | ComputeType | 執行所使用的計算類型。 |
 | PipelineStepType | 執行時所使用的[PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)類型。 |
@@ -201,7 +201,7 @@ ms.locfileid: "82187591"
 
 RunType 維度的有效值如下：
 
-| 值 | 說明 |
+| 值 | 描述 |
 | ----- | ----- |
 | 實驗 | 非管線執行。 |
 | 來擷取 | 管線執行，這是 StepRun 的父系。 |

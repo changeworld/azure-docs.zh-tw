@@ -2,31 +2,27 @@
 title: 瞭解 Azure AD 布建如何運作 |Microsoft Docs
 description: 瞭解 Azure AD 布建的運作方式
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884880"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593721"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
 自動布建指的是在使用者需要存取的雲端應用程式中建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 開始部署之前，您可以先參閱這篇文章，瞭解 Azure AD 布建的運作方式，並取得設定建議。 
 
-Azure AD 布建**服務**會將使用者布建至 SaaS 應用程式和其他系統，方法是連接到系統，以進行應用程式廠商所提供的跨網域身分識別管理（SCIM）2.0 使用者管理 API 端點。 此 SCIM 端點可讓 Azure AD 以程式設計方式建立、更新和移除使用者。 對於選取的應用程式，布建服務也可以建立、更新和移除其他身分識別相關物件，例如群組和角色。 用來在 Azure AD 和應用程式之間布建的通道會使用 HTTPS TLS 加密進行加密。
+Azure AD 布建**服務**會將使用者布建至 SaaS 應用程式和其他系統，方法是連接到系統，以進行應用程式廠商所提供的跨網域身分識別管理（SCIM）2.0 使用者管理 API 端點。 此 SCIM 端點可讓 Azure AD 以程式設計方式建立、更新和移除使用者。 對於選取的應用程式，布建服務也可以建立、更新和移除其他身分識別相關物件，例如群組和角色。 用來在 Azure AD 和應用程式之間布建的通道會使用 HTTPS TLS 1.2 加密進行加密。
 
 
 ![Azure AD 布建](./media/how-provisioning-works/provisioning0.PNG)

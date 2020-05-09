@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533712"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201749"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 
@@ -224,7 +224,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
    1. 選取底部列上的 [匯入設定檔]  ，然後匯入您先前下載的發行設定檔。
 1. 選取 [設定]  。
-1. 在 [連線]  索引標籤上，更新目的地 URL 使其使用 "https"。 例如，使用 [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)。 選取 [下一步]  。
+1. 在 [連線]  索引標籤上，更新目的地 URL 使其使用 "https"。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 選取 [下一步]  。
 1. 在 [設定]  索引標籤上，確定已清除 [啟用組織驗證]  。
 1. 選取 [儲存]  。 選取主畫面上的 [發佈]  。
 
