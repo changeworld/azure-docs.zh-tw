@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79214654"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594231"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4。0
 
@@ -25,106 +25,26 @@ ms.locfileid: "79214654"
 * 跨 HDInsight 版本保留 Hive 安全性原則
 * 從 HDInsight 3.6 到 HDInsight 4.0 的查詢執行和調試
 
-Hive 的其中一個優點是能夠將中繼資料匯出到外部資料庫（稱為 Hive 中繼存放區）。 **Hive 中繼存放區**會負責儲存資料表統計資料，包括資料表儲存位置、資料行名稱和資料表索引資訊。 中繼存放區資料庫架構在 Hive 版本之間有所不同。 若要安全地升級 Hive 中繼存放區，建議的方式是建立複本並升級複本，而不是目前的生產環境。
+Hive 的其中一個優點是能夠將中繼資料匯出到外部資料庫（稱為 Hive 中繼存放區）。 **Hive 中繼存放區**會負責儲存資料表統計資料，包括資料表儲存位置、資料行名稱和資料表索引資訊。 HDInsight 3.6 和 HDInsight 4.0 需要不同的中繼存放區架構，而且無法共用單一中繼存放區。 若要安全地升級 Hive 中繼存放區，建議的方式是在目前的生產環境中升級複本，而不是原始的。 這份檔需要原始和新的叢集，才能存取相同的儲存體帳戶。 因此，它不會涵蓋另一個區域的資料移轉。
 
-## <a name="copy-metastore"></a>複製中繼存放區
+## <a name="migrate-from-external-metastore"></a>從外部中繼存放區遷移
 
-HDInsight 3.6 和 HDInsight 4.0 需要不同的中繼存放區架構，而且無法共用單一中繼存放區。
+### <a name="1-run-major-compaction-on-acid-tables-in-hdinsight-36"></a>1. 在 HDInsight 3.6 中的 ACID 資料表上執行重大壓縮
 
-### <a name="external-metastore"></a>外部中繼存放區
+HDInsight 3.6 和 HDInsight 4.0 ACID 資料表會以不同的方式瞭解 ACID 差異。 遷移前唯一需要的動作是針對3.6 叢集上的每個 ACID 資料表執行「主要」壓縮。 如需有關壓縮的詳細資訊，請參閱[Hive 語言手冊](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)。
 
+### <a name="2-copy-sql-database"></a>2. 複製 SQL database
 建立外部中繼存放區的新複本。 如果您使用的是外部中繼存放區，建立中繼存放區複本的其中一個安全且簡單的方法，就是使用 SQL Database restore 函數來還原具有不同名稱的[資料庫](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore)。  請參閱[在 Azure HDInsight 中使用外部中繼資料存放區](../hdinsight-use-external-metadata-stores.md)，以深入瞭解如何將外部中繼存放區附加至 HDInsight 叢集。
 
-### <a name="internal-metastore"></a>內部中繼存放區
+### <a name="3-upgrade-metastore-schema"></a>3. 升級中繼存放區架構
+中繼存放區**複製**完成後，請在現有 HDInsight 3.6 叢集上的[腳本動作](../hdinsight-hadoop-customize-cluster-linux.md)中執行架構升級腳本，將新的中繼存放區升級至 Hive 3 架構。 （此步驟不需要將新的中繼存放區連接到叢集）。這可讓資料庫附加為 HDInsight 4.0 中繼存放區。
 
-如果您使用內部中繼存放區，您可以使用查詢來匯出 Hive 中繼存放區中的物件定義，並將其匯入至新的資料庫。
-
-此腳本完成後，就會假設舊叢集不再用來存取腳本中所參考的任何資料表或資料庫。
-
-> [!NOTE]
-> 在 ACID 資料表的情況下，將會建立資料表下的新資料複本。
-
-1. 使用[安全殼層（SSH）用戶端](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到 HDInsight 叢集。
-
-1. 輸入下列命令，從開啟的 SSH 會話連接到 HiveServer2 與您的[Beeline 用戶端](../hadoop/apache-hadoop-use-hive-beeline.md)：
-
-    ```hiveql
-    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
-    do
-        echo "Scanning Database: $d"
-        echo "create database if not exists $d; use $d;" >> alltables.hql; 
-        for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"`;
-        do
-            echo "Copying Table: $t"
-            ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`;
-
-            echo "$ddl;" >> alltables.hql;
-            lowerddl=$(echo $ddl | awk '{print tolower($0)}')
-            if [[ $lowerddl == *"'transactional'='true'"* ]]; then
-                if [[ $lowerddl == *"partitioned by"* ]]; then
-                    # partitioned
-                    raw_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "CREATE TABLE .*" | cut -d"(" -f2- | cut -f1 -d")" | sed 's/`//g');
-                    ptn_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "PARTITIONED BY .*" | cut -f1 -d")" | cut -d"(" -f2- | sed 's/`//g');
-                    final_cols=$(echo "(" $raw_cols "," $ptn_cols ")")
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t $final_cols TBLPROPERTIES ('transactional'='false');";
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    parsed_ptn_cols=$(echo $ptn_cols| sed 's/ [a-z]*,/,/g' | sed '$s/\w*$//g');
-                    echo "create table flattened_$t $final_cols;" >> alltables.hql;
-                    echo "load data inpath '$dir' into table flattened_$t;" >> alltables.hql;
-                    echo "insert into $t partition($parsed_ptn_cols) select * from flattened_$t;" >> alltables.hql;
-                    echo "drop table flattened_$t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                else
-                    # not partitioned
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t like $t TBLPROPERTIES ('transactional'='false');";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    echo "load data inpath '$dir' into table $t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                fi
-            fi
-            echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t;" >> alltables.hql;
-        done;
-    done
-    ```
-
-    此命令會產生名為**alltables.sql**的檔案。
-
-1. 結束您的 SSH 工作階段。 然後輸入 scp 命令以在本機下載**alltables.sql** 。
-
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
-    ```
-
-1. 將**alltables.sql**上傳至*新*的 HDInsight 叢集。
-
-    ```bash
-    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
-    ```
-
-1. 然後使用 SSH 連接到*新*的 HDInsight 叢集。 從 SSH 會話執行下列程式碼：
-
-    ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
-    ```
-
-
-## <a name="upgrade-metastore"></a>升級中繼存放區
-
-中繼存放區**複製**完成後，請在現有 HDInsight 3.6 叢集上的[腳本動作](../hdinsight-hadoop-customize-cluster-linux.md)中執行架構升級腳本，將新的中繼存放區升級至 Hive 3 架構。 這可讓資料庫附加為 HDInsight 4.0 中繼存放區。
-
-使用下表中的值。 將`SQLSERVERNAME DATABASENAME USERNAME PASSWORD`取代為**複製**之 Hive 中繼存放區的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
+使用下表中的值。 將`SQLSERVERNAME DATABASENAME USERNAME PASSWORD`取代為 Hive 中繼存放區**複製**的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
 
 |屬性 | 值 |
 |---|---|
 |指令碼類型|- 自訂|
-|Name|Hive 升級|
+|名稱|Hive 升級|
 |Bash 指令碼 URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |節點類型|Head|
 |參數|SQLSERVERNAME DATABASENAME 使用者名稱密碼|
@@ -138,54 +58,124 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的中繼存放區架構，而且無
 select * from dbo.version
 ```
 
-## <a name="migrate-hive-tables-to-hdinsight-40"></a>將 Hive 資料表遷移至 HDInsight 4。0
+### <a name="4-deploy-a-new-hdinsight-40-cluster"></a>4. 部署新的 HDInsight 4.0 叢集
 
-完成先前的步驟之後，將 Hive 中繼存放區遷移至 HDInsight 4.0 之後，您可以從叢集內執行`show tables`或`show databases` ，從 HDInsight 4.0 叢集內看到記錄在中繼存放區中的資料表和資料庫。 如需 HDInsight 4.0 叢集中查詢執行的相關資訊，請參閱[跨 hdinsight 版本查詢執行](#query-execution-across-hdinsight-versions)。
+1. 將升級的中繼存放區指定為新叢集的 Hive 中繼存放區。
 
-不過，在叢集可以存取必要的儲存體帳戶之前，資料表中的實際資料都無法存取。 若要確保您的 HDInsight 4.0 叢集可以存取與舊的 HDInsight 3.6 叢集相同的資料，請完成下列步驟：
+1. 不過，在叢集可以存取必要的儲存體帳戶之前，資料表中的實際資料都無法存取。
+請確定 HDInsight 3.6 叢集中的 Hive 資料表儲存體帳戶已指定為新 HDInsight 4.0 叢集的主要或次要儲存體帳戶。
+如需有關將儲存體帳戶新增至 HDInsight 叢集的詳細資訊，請參閱[將其他儲存體帳戶新增至 hdinsight](../hdinsight-hadoop-add-storage.md)。
 
-1. 判斷資料表或資料庫的 Azure 儲存體帳戶。
+### <a name="5-complete-migration-with-a-post-upgrade-tool-in-hdinsight-40"></a>5. 在 HDInsight 4.0 中使用升級後工具完成遷移
 
-1. 如果您的 HDInsight 4.0 叢集已在執行，請透過 Ambari 將 Azure 儲存體帳戶連結至叢集。 如果您尚未建立 HDInsight 4.0 叢集，請確定 Azure 儲存體帳戶已指定為主要或次要叢集儲存體帳戶。 如需有關將儲存體帳戶新增至 HDInsight 叢集的詳細資訊，請參閱[將其他儲存體帳戶新增至 hdinsight](../hdinsight-hadoop-add-storage.md)。
-
-## <a name="deploy-new-hdinsight-40-and-connect-to-the-new-metastore"></a>部署新的 HDInsight 4.0 並連接到新的中繼存放區
-
-架構升級完成後，部署新的 HDInsight 4.0 叢集並連接升級後的中繼存放區。 如果您已部署4.0，請加以設定，以便從 Ambari 連接到中繼存放區。
-
-## <a name="run-schema-migration-script-from-hdinsight-40"></a>從 HDInsight 4.0 執行架構遷移腳本
-
-HDInsight 3.6 和 HDInsight 4.0 中的資料表會以不同方式處理。 基於這個理由，您不能針對不同版本的叢集共用相同的資料表。 如果您想要與 HDInsight 4.0 同時使用 HDInsight 3.6，您必須針對每個版本各有不同的資料複本。
-
-您的 Hive 工作負載可能包含 ACID 和非 ACID 資料表的混合。 HDInsight 3.6 （Hive 2）上的 Hive 和 HDInsight 4.0 （Hive 3）上的 Hive 之間有一個主要差異，就是資料表的 ACID 合規性。 在 HDInsight 3.6 中，啟用 Hive ACID 合規性需要額外的設定，但在 HDInsight 4.0 資料表中，預設為符合 ACID 規範。 遷移前唯一需要的動作是針對3.6 叢集上的 ACID 資料表執行主要壓縮。 從 Hive 視圖或從 Beeline 執行下列查詢：
-
-```sql
-alter table myacidtable compact 'major';
-```
-
-這是必要的壓縮，因為 HDInsight 3.6 和 HDInsight 4.0 ACID 資料表會以不同的方式瞭解 ACID 差異。 壓縮會強制執行可確保一致性的全新平板電腦。 [Hive 遷移檔](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html)的第4節包含 HDINSIGHT 3.6 ACID 資料表的大量壓縮指引。
-
-完成中繼存放區的遷移和壓縮步驟之後，您就可以遷移實際的倉儲。 完成 Hive 倉儲遷移之後，HDInsight 4.0 倉儲會有下列屬性：
+根據預設，受控資料表在 HDInsight 4.0 上必須符合 ACID 規範。 完成中繼存放區遷移之後，請執行升級後工具，讓先前的非 ACID 受控資料表與 HDInsight 4.0 叢集相容。 此工具會套用下列轉換：
 
 |3.6 |4.0 |
 |---|---|
 |外部資料表|外部資料表|
-|非交易式受控資料表|外部資料表|
-|交易式 managed 資料表|受控資料表|
+|非 ACID 受控資料表|具有屬性 ' external. table. 清除 ' = ' true ' 的外部資料表|
+|ACID 受控資料表|ACID 受控資料表|
 
-在執行遷移之前，您可能需要調整倉儲的屬性。 例如，如果您預期某些資料表會由協力廠商（例如 HDInsight 3.6 叢集）存取，則在完成遷移之後，該資料表必須是外部的。 在 HDInsight 4.0 中，所有受控資料表都是交易式。 因此，HDInsight 4.0 中的受控資料表只能由 HDInsight 4.0 叢集存取。
-
-正確設定資料表屬性後，請使用 SSH 命令介面，從其中一個叢集前端節點執行 Hive 倉儲遷移工具：
+使用 SSH 命令介面，從 HDInsight 4.0 叢集執行 Hive 升級後工具：
 
 1. 使用 SSH 連接到您的叢集前端節點。 如需指示，請參閱[使用 SSH 連接到 HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 1. 執行來以 Hive 使用者身分開啟登入命令介面`sudo su - hive`
-1. 藉由執行`ls /usr/hdp`來判斷資料平臺堆疊版本。 這會顯示您在下一個命令中應該使用的版本字串。
-1. 從 shell 執行下列命令。 將`STACK_VERSION`取代為上一個步驟中的版本字串：
+1. 從 shell 執行下列命令。
 
-```bash
-/usr/hdp/STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
-```
+    ```bash
+    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+    /usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+    ```
 
-在遷移工具完成之後，您的 Hive 倉儲就已準備好可供 HDInsight 4.0。
+在工具完成之後，您的 Hive 倉儲就已準備好可供 HDInsight 4.0。
+
+## <a name="migrate-from-internal-metastore"></a>從內部中繼存放區遷移
+
+如果您的 HDInsight 3.6 叢集使用內部 Hive 中繼存放區，請遵循下列步驟來執行腳本，這會產生 Hive 查詢以從中繼存放區匯出物件定義。
+
+HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
+
+> [!NOTE]
+>
+> * 在 ACID 資料表的情況下，將會建立資料表下的新資料複本。
+>
+> * 此腳本只支援 Hive 資料庫、資料表和資料分割的遷移。 其他中繼資料物件（例如，視圖、Udf 和資料表條件約束）則應該手動複製。
+>
+> * 此腳本完成後，就會假設舊叢集不再用來存取腳本中所參考的任何資料表或資料庫。
+>
+> * 所有受控資料表都會在 HDInsight 4.0 中變成交易式。 或者，將資料匯出至屬性為 ' external. table. 清除 ' = ' true ' 的外部資料表，以將資料表保持為非交易式。 例如，
+>
+>    ```SQL
+>    create table tablename_backup like tablename;
+>    insert overwrite table tablename_backup select * from tablename;
+>    create external table tablename_tmp like tablename;
+>    insert overwrite table tablename_tmp select * from tablename;
+>    alter table tablename_tmp set tblproperties('external.table.purge'='true');
+>    drop table tablename;
+>    alter table tablename_tmp rename to tablename;
+>    ```
+
+1. 使用[安全殼層（SSH）用戶端](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到 HDInsight 3.6 叢集。
+
+1. 從開啟的 SSH 會話，下載下列腳本檔案以產生名為**alltables.sql**的檔案。
+
+    ```bash
+    wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
+    chmod 755 exporthive_hdi_3_6.sh
+    ```
+
+    * 若為一般 HDInsight 叢集（不含 ESP）， `exporthive_hdi_3_6.sh`只需執行即可。
+
+    * 針對具有 ESP 的叢集，請 kinit 並修改 beeline 的引數：執行下列程式，為具有完整 Hive 許可權的 Azure AD 使用者定義使用者和網域。
+
+        ```bash
+        USER="USER"  # replace USER
+        DOMAIN="DOMAIN"  # replace DOMAIN
+        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+        kinit "$USER@$DOMAIN_UPPER"
+        ```
+
+        ```bash
+        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
+        ./exporthive_hdi_3_6.sh "$BEE_CMD"
+        ```
+
+1. 結束您的 SSH 工作階段。 然後輸入 scp 命令以在本機下載**alltables.sql** 。
+
+    ```bash
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
+    ```
+
+1. 將**alltables.sql**上傳至*新*的 HDInsight 叢集。
+
+    ```bash
+    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    ```
+
+1. 然後使用 SSH 連接到*新*的 HDInsight 4.0 叢集。 從 SSH 會話對此叢集執行下列程式碼：
+
+    不含 ESP 的：
+
+    ```bash
+    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -f alltables.hql
+    ```
+
+    含 ESP：
+
+    ```bash
+    USER="USER"  # replace USER
+    DOMAIN="DOMAIN"  # replace DOMAIN
+    DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+    kinit "$USER@$DOMAIN_UPPER"
+    ```
+
+    ```bash
+    hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+    beeline -u "jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http" -n "$USER@$DOMAIN" -f alltables.hql
+    ```
+
+外部中繼存放區遷移的升級後工具不適用於此處，因為 HDInsight 3.6 中的非 ACID 受控資料表會轉換成 HDInsight 4.0 中的 ACID 受控資料表。
 
 > [!Important]  
 > HDInsight 4.0 中的受控資料表（包括從3.6 遷移的資料表）不應由其他服務或應用程式（包括 HDInsight 3.6 叢集）存取。
@@ -227,7 +217,7 @@ alter table myacidtable compact 'major';
 |屬性 | 值 |
 |---|---|
 |指令碼類型|- 自訂|
-|Name|轉移|
+|名稱|轉移|
 |Bash 指令碼 URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |節點類型|Head|
 

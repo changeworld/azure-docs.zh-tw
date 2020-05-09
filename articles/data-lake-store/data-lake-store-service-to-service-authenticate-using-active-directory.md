@@ -1,22 +1,17 @@
 ---
-title: 服務對服務驗證︰Azure Data Lake Storage Gen1 搭配 Azure Active Directory | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成服務對服務驗證
-services: data-lake-store
-documentationcenter: ''
+title: 服務對服務驗證-Data Lake Storage Gen1-Azure
+description: 瞭解如何使用 Azure Active Directory 以 Azure Data Lake Storage Gen1 完成服務對服務驗證。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241365"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688190"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]
@@ -73,7 +68,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
     ![將權限指派至群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "將權限指派至群組")
    
     如需 Data Lake Storage Gen1 中權限及預設/存取 ACL 的詳細資訊，請參閱 [Data Lake Storage Gen1 中的存取控制](data-lake-store-access-control.md)。
-7. 在 [新增自訂存取]**** 刀鋒視窗中，按一下 [確定]****。 具有相關權限的新增群組會列在 [存取]**** 刀鋒視窗中。
+7. 在 [新增自訂存取]**** 刀鋒視窗中，按一下 [確定]****。 新加入的群組（具有相關聯的許可權）會列在 [**存取**] 分頁中。
    
     ![將權限指派至群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "將權限指派至群組")
 

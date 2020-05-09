@@ -1,33 +1,33 @@
 ---
-title: 在合作夥伴中心建立 Azure 容器供應專案-Azure Marketplace
-description: 本文說明如何建立和發佈 Azure Marketplace 的容器供應專案。
+title: 建立 Azure 容器供應專案-Azure Marketplace
+description: 本文說明如何建立容器供應專案，並將其發佈至 Azure Marketplace。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867354"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791930"
 ---
-# <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應項目
+# <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應專案
 
 > [!IMPORTANT]
 > 我們正在將您的 Azure 容器供應專案管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請遵循 Cloud Partner 入口網站[容器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)中的指示來管理您的供應專案。
 
-本文說明如何建立和發佈 Azure Marketplace 的容器供應專案。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+本文說明如何建立和發佈 Azure Marketplace 的容器供應專案。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)，然後從頂端功能表中選取 [**儀表板**]。
-2. 在左側功能表中，依序選取 [**商業 Marketplace**] 和 **[總覽**]。
-3. 在 [**總覽**] 頁面上，依序選取 [ **+ 新增供應**專案] 和 [ **Azure 容器**]。 [**新增供應**專案] 對話方塊隨即出現。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左側導覽功能表中，選取 [**商用 Marketplace** > **總覽**]。
+3. 在 [總覽] 頁面上，選取 [ **+ 新增供應** > 專案] [**Azure 容器**]。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="在合作夥伴中心的 [總覽] 頁面中說明。[新增供應專案] 按鈕和諮詢服務供應專案會反白顯示。":::
+    ![說明左側導覽功能表。](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > 發行供應專案之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應專案後出現在店面中。 請務必在進行變更之後，一律重新發佈。
@@ -36,16 +36,16 @@ ms.locfileid: "81867354"
 
 輸入**供應專案識別碼**。 這是您帳戶中每個供應專案的唯一識別碼。
 
-- 在 marketplace 供應專案和 Azure Resource Manager 範本的網址中，客戶可以看到此識別碼（如果適用的話）。
+- Marketplace 供應專案和 Azure Resource Manager 範本的網址中，客戶可以看到此識別碼（如果適用的話）。
 - 請一律使用小寫字母和數字。 它可以包含連字號和底線，但不能有空格，而且限制為50個字元。 例如，如果您輸入 [**測試-供應專案-1**]，則供應專案 web `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`位址會是。
 - 選取 [**建立**] 之後，即無法變更供應專案識別碼。
 
-**輸入****供應專案別名**。 這是用來在合作夥伴中心參考供應專案的名稱。
+輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。
 
 - 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
 - 選取 [**建立**] 之後就無法變更。
 
-選取 [**建立**]，然後繼續進行。
+選取 [**建立**] 以產生供應專案並繼續。
 
 ## <a name="offer-overview"></a>供應項目概觀
 
@@ -64,7 +64,7 @@ ms.locfileid: "81867354"
 
 ### <a name="connect-lead-management--optional"></a>連接潛在客戶管理–選擇性
 
-當您使用合作夥伴中心將您的供應專案發佈至 marketplace 時，您可以將它連接到您的客戶關係管理（CRM）系統。 這可讓您在有人對您的產品感興趣或使用時，立即收到客戶連絡人資訊。
+將您的供應專案發佈至具有合作夥伴中心的商用 marketplace 時，您可以將其連接到您的客戶關係管理（CRM）系統。 這可讓您在有人對您的產品感興趣或使用時，立即收到客戶連絡人資訊。
 
 1. **選取您想要讓我們傳送潛在客戶的潛在客戶目的地**。 合作夥伴中心支援下列 CRM 系統：
 
@@ -83,10 +83,10 @@ ms.locfileid: "81867354"
 
 - [潛在客戶管理總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [潛在客戶管理總覽](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （請確定您的快顯封鎖程式已關閉）
 
-選取 [**儲存草稿**]，然後繼續進行下一節的 [屬性]。
+選取 [**儲存草稿**] 再繼續。
 
 ### <a name="properties"></a>屬性
 
@@ -129,7 +129,7 @@ ms.locfileid: "81867354"
 > [!NOTE]
 > 若供應專案描述的開頭為「非英文語言」，則不需要使用英文版的供應專案詳細資料。 也可以提供有用的連結，以不同于供應專案清單詳細資料所使用的語言來提供內容。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名稱
 
 您在此處輸入的名稱會顯示為供應專案的標題。 當您建立供應專案時，此欄位會預先填入您在 [**供應專案別名**] 方塊中輸入的文字。 您可以稍後變更此名稱。
 
@@ -434,4 +434,4 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ## <a name="next-step"></a>後續步驟
 
-- [更新商業市集中的現有供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商用 marketplace 中的現有供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

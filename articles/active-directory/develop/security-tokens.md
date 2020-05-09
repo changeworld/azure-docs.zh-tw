@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584281"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926573"
 ---
 # <a name="security-tokens"></a>安全性權杖
 
@@ -29,6 +29,9 @@ ms.locfileid: "82584281"
 存取權杖只會在短時間內有效，因此授權伺服器有時會在發出存取權杖時發出重新整理**權杖**。 然後，用戶端應用程式可以在需要時，為新的存取權杖交換此重新整理權杖。 若要深入瞭解 Microsoft 身分識別平臺如何使用重新整理權杖來撤銷許可權，請參閱[權杖撤銷](access-tokens.md#token-revocation)。
 
 **識別碼權杖**會當做[OpenID connect](v2-protocols-oidc.md)流程的一部分傳送給用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。 若要深入瞭解 Microsoft 身分識別平臺如何發出識別碼權杖，請參閱[識別碼權杖](id-tokens.md)。
+
+> [!NOTE]
+> 本文討論 OAuth2 和 OpenID Connect 通訊協定的安全性權杖。 許多企業應用程式都使用 SAML 來驗證使用者。 如需 SAML 判斷提示的詳細資訊，請參閱[AZURE AD saml 權杖參考](reference-saml-tokens.md)。
 
 ## <a name="validating-security-tokens"></a>驗證安全性權杖
 
@@ -45,7 +48,7 @@ ms.locfileid: "82584281"
 
 Microsoft 身分識別平臺會將安全性權杖實作為包含**宣告**的**JSON Web 權杖（jwt）** 。
 
-宣告[會提供有關](developer-glossary.md#claim)某個實體（例如用戶端應用程式或[資源擁有](developer-glossary.md#resource-owner)者）到另一個實體（例如資源伺服器）的判斷提示。
+宣告[會提供有關](developer-glossary.md#claim)某個實體（例如用戶端應用程式或[資源擁有](developer-glossary.md#resource-owner)者）到另一個實體（例如資源伺服器）的判斷提示。 宣告也可以稱為 JWT 宣告或 JSON Web 權杖宣告。
 
 宣告是轉送權杖主體相關事實的名稱/值配對。 例如，宣告可能包含授權伺服器所驗證之安全性主體的相關事實。 指定權杖中的宣告取決於許多專案，包括權杖類型、用來驗證主體的認證類型、應用程式設定等等。
 
