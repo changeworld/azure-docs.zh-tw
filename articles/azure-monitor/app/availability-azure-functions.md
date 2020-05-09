@@ -2,15 +2,15 @@
 title: 使用 Azure Functions 建立及執行自訂可用性測試
 description: 本檔將說明如何使用 TrackAvailability （）建立 Azure 函式，此函式會根據 TimerTrigger 函式中指定的設定定期執行。 這項測試的結果將會傳送至您的 Application Insights 資源，您可以在其中查詢可用性結果資料併發出警示。 自訂測試可讓您撰寫比使用入口網站 UI、監視 Azure VNET 內的應用程式、變更端點位址，或建立可用性測試（如果您的區域中未提供）時更複雜的可用性測試。
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665794"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791099"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立及執行自訂可用性測試
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 為確保所有專案都正常運作，您可以在 Application Insights 資源的 [可用性] 索引標籤中查看圖形。
 
 > [!NOTE]
-> 如果您在 runAvailabilityTest 中執行自己的商務邏輯，則會看到如下列螢幕擷取畫面所示的成功結果，如果您沒有這樣做，就會看到失敗的結果。
+> 如果您在 runAvailabilityTest 中執行自己的商務邏輯，則會看到如下列螢幕擷取畫面所示的成功結果，如果您沒有這樣做，就會看到失敗的結果。 以`TrackAvailability()`建立的測試會以**自訂**方式出現在測試名稱旁邊。
 
 >[!div class="mx-imgBorder"]
->![成功結果的 [可用性] 索引標籤](media/availability-azure-functions/availtab.png)
-
-當您使用 Azure Functions 設定測試時，您會注意到，不同于在 [可用性] 索引標籤中使用 [**加入測試**]，您的測試名稱將不會出現，而且您將無法與其互動。 結果會視覺化，但您會看到摘要視圖，而不是您透過入口網站建立可用性測試時所取得的相同詳細觀點。
+>![成功結果的 [可用性] 索引標籤](media/availability-azure-functions/availability-custom.png)
 
 若要查看端對端交易詳細資料，請在 [深入探索] 下選取 [**成功**] 或 [**失敗**]，然後選取一個範例。 您也可以選取圖表上的資料點，以取得端對端交易詳細資料。
 

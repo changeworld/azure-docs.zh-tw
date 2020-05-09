@@ -1,18 +1,18 @@
 ---
-title: Marketplace 計量服務 Api |Azure Marketplace
-description: Azure Marketplace 中 SaaS 供應專案的使用事件。
+title: 計量服務 Api-Microsoft 商業 marketplace
+description: 使用事件 API 可讓您在 Microsoft AppSource 和 Azure Marketplace 中發出 SaaS 供應專案的使用事件。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275742"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857862"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace 計量服務 API
 
@@ -194,7 +194,7 @@ Batch 使用量事件 API 可讓您一次發出一個以上已購買實體的使
 
 API 回應中`BatchUsageEvent`所參考之狀態碼的描述：
 
-| 狀態碼  | 描述 |
+| 狀態碼  | Description |
 | ---------- | -------------------- |
 | `Accepted` | 接受的程式碼。 |
 | `Expired` | 過期的使用量。 |
