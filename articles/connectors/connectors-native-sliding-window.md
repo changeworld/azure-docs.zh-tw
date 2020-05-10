@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 03/25/2020
+ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74786906"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004566"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的滑動視窗觸發程式來排程和執行連續資料的工作
 
@@ -19,9 +19,9 @@ ms.locfileid: "74786906"
 
 以下是此觸發程式支援的一些模式：
 
-* 立即執行，並每隔*n*秒、分鐘或小時重複。
+* 立即執行，並每隔*n*秒、分鐘、小時、天、周或月重複一次。
 
-* 從特定的日期和時間開始，然後執行並重複每*n*秒、分鐘或小時。 透過此觸發程式，您可以指定過去的開始時間，這會執行所有過去的週期。
+* 從特定的日期和時間開始，然後執行並重複每*n*秒、分鐘、小時、天、周或月。 透過此觸發程式，您可以指定過去的開始時間，這會執行所有過去的週期。
 
 * 在執行之前，請先延遲特定持續時間的每一個週期。
 
@@ -40,7 +40,7 @@ ms.locfileid: "74786906"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
-1. 邏輯應用程式設計工具出現之後，在搜尋方塊中，輸入「滑動視窗」作為篩選準則。 從觸發程式清單中，選取此觸發程式作為邏輯應用程式工作流程中的第一個步驟：**滑動視窗**
+1. 邏輯應用程式設計工具出現之後，請在 [搜尋] `sliding window`方塊中，輸入作為篩選準則。 從觸發程式清單中，選取**滑動視窗**觸發程式作為邏輯應用程式工作流程中的第一個步驟。
 
    ![選取 [滑動視窗] 觸發程式](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -48,16 +48,15 @@ ms.locfileid: "74786906"
 
    ![設定間隔和頻率](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | 屬性 | 必要 | JSON 名稱 | 類型 | 描述 |
+   | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
    |----------|----------|-----------|------|-------------|
-   | **期間** | 是 | interval | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 小時：1-12,000 個小時 </br>- 分鐘：1-72,000 分鐘 </br>- 秒：1-9,999,999 秒<p>例如，如果間隔為6，而 frequency 為 "Hour"，則週期為每隔6小時。 |
-   | **頻率** | 是 | frequency | String | 週期的時間單位：**秒**、**分鐘**或**小時** |
+   | **期間** | `interval` | 是 | 整數  | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 月：1-16 個月 <br>-周：1-71 周 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
+   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
    ||||||
 
    ![Advanced 迴圈選項](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   如需更多週期選項，請開啟 [**加入新的參數**] 清單。 
-   您選取的任何選項都會出現在選取範圍後的觸發程式上。
+   如需更多週期選項，請開啟 [**加入新的參數**] 清單。 您選取的任何選項都會出現在選取範圍後的觸發程式上。
 
    | 屬性 | 必要 | JSON 名稱 | 類型 | 描述 |
    |----------|----------|-----------|------|-------------|

@@ -8,16 +8,17 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471081"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006140"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>使用 Azure 空間錨點在 Unity 中建立
 
-開發人員可以選擇 Unity 來建立和部署使用 Azure 空間錨點的混合現實應用程式。 支援下列平臺：
+開發人員可以選擇 Unity 來建立和部署使用 Azure 空間錨點的混合現實應用程式。
+支援下列平臺：
 
 **適用于 HoloLens 的 Unity**
 

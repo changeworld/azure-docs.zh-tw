@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791913"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005790"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 認知搜尋索引子的欄位對應和轉換
 
@@ -36,7 +36,7 @@ ms.locfileid: "82791913"
 
 1. `sourceFieldName`，表示資料來源中的欄位。 這是必要屬性。
 2. 選擇性的 `targetFieldName`，表示搜尋索引中的欄位。 如果省略，則會使用資料來源中的相同名稱。
-3. 選擇性的 `mappingFunction`，可以使用數個預先定義的函式之一轉換您的資料。 函式的完整清單 [如下](#mappingFunctions)。
+3. 選擇性的 `mappingFunction`，可以使用數個預先定義的函式之一轉換您的資料。 這可以同時套用在輸入和輸出欄位對應上。 函式的完整清單 [如下](#mappingFunctions)。
 
 欄位對應會加入索引子`fieldMappings`定義的陣列中。
 

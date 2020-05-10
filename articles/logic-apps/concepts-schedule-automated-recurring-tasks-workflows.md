@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234089"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005209"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>使用 Azure Logic Apps 排程和執行週期性自動化工作、流程和工作流程
 
@@ -48,13 +48,13 @@ Logic Apps 可協助您依排程建立和執行自動化週期性工作和進程
 
 ## <a name="schedule-triggers"></a>排程觸發程式
 
-您可以使用 [週期觸發程式] 或 [滑動視窗] 觸發程式來啟動邏輯應用程式工作流程，這不會與任何特定服務或系統相關聯，例如 Office 365 Outlook 或 SQL Server。 這些觸發程式會根據您指定的週期啟動並執行您的工作流程，您可以在其中選取間隔和頻率，例如兩個觸發程式的秒數、分鐘數和時數，或是週期觸發程式的天數、周數或月數。 您也可以設定 [開始日期] 和 [時間] 以及 [時區]。 每次引發觸發程式時，Logic Apps 會為您的邏輯應用程式建立並執行新的工作流程實例。
+您可以使用 [週期觸發程式] 或 [滑動視窗] 觸發程式（未與任何特定服務或系統相關聯）來啟動邏輯應用程式工作流程。 這些觸發程式會根據您指定的週期來啟動並執行您的工作流程，您可以在其中選取間隔和頻率，例如秒數、分鐘、小時、天、周或月。 您也可以設定 [開始日期] 和 [時間] 以及 [時區]。 每次引發觸發程式時，Logic Apps 會為您的邏輯應用程式建立並執行新的工作流程實例。
 
 以下是這些觸發程式之間的差異：
 
 * **週期**：根據您指定的排程，定期執行您的工作流程。 如果遺漏了週期，迴圈觸發程式不會處理遺漏的週期，但會在下一個排定的間隔後重新開機。 您可以指定開始日期和時間，以及時區。 如果您選取 [天]，您可以指定一天中的時數和分鐘數（例如，每日2:30）。 如果您選取 [周]，也可以選取一周中的日子，例如 [星期三] 和 [星期六]。 如需詳細資訊，請參閱[使用週期觸發程式建立、排程和執行循環性工作和工作流程](../connectors/connectors-native-recurrence.md)。
 
-* **滑動視窗**：定期執行工作流程，以處理連續區塊中的資料。 如果遺漏了週期，滑動視窗觸發程式就會回復，並處理錯過的週期。 您可以指定 [開始日期] 和 [時間]、[時區] 和 [持續時間]，以延遲工作流程中的每個週期。 此觸發程式沒有選項可指定天數、周數和月數、一天的小時、每小時的分鐘數，以及一周中的天數。 如需詳細資訊，請參閱[使用滑動視窗觸發程式來建立、排程和執行循環性工作和工作流程](../connectors/connectors-native-sliding-window.md)。
+* **滑動視窗**：定期執行工作流程，以處理連續區塊中的資料。 如果遺漏了週期，滑動視窗觸發程式就會回復，並處理錯過的週期。 您可以指定 [開始日期] 和 [時間]、[時區] 和 [持續時間]，以延遲工作流程中的每個週期。 此觸發程式不支援「高級」排程，例如一天中的特定時數、小時數，以及一周中的星期幾。 如需詳細資訊，請參閱[使用滑動視窗觸發程式來建立、排程和執行循環性工作和工作流程](../connectors/connectors-native-sliding-window.md)。
 
 <a name="schedule-actions"></a>
 

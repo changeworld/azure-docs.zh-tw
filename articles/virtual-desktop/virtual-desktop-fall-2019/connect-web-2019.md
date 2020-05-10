@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 357687a80325554c7dbb28eae6e42d946bb012dc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c264006d51f8f0f9ee2a56e994a0dc52d24bd7a8
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614859"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006027"
 ---
 # <a name="connect-with-the-web-client"></a>與 Web 用戶端連線
 
@@ -29,7 +29,7 @@ Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源�
 
 雖然任何具備 HTML5 功能的瀏覽器應該都可以運作，但我們已正式支援下列作業系統和瀏覽器。
 
-| 瀏覽器           | 支援的 OS                     | 備忘錄               |
+| 瀏覽器           | 支援的 OS                     | 注意               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
@@ -40,6 +40,9 @@ Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源�
 ## <a name="access-remote-resources-feed"></a>存取遠端資源摘要
 
 在瀏覽器中，流覽至[Windows 虛擬桌面 web 用戶端](https://rdweb.wvd.microsoft.com/webclient)，並使用您的使用者帳戶登入。
+
+>[!NOTE]
+>如果您使用的是 Windows 虛擬桌面春季2020版，請使用本文中的 web 用戶端連結來[連線到您](../connect-web.md)的資源。
 
 >[!NOTE]
 >如果您已使用不同于您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，您應該登出或使用私用瀏覽器視窗。

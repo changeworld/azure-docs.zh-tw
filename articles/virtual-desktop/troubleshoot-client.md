@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e42a4d738d375b4bceeb32f6159b4476843cf281
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612651"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005994"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
 
@@ -59,6 +59,12 @@ nslookup rdweb.wvd.microsoft.com
 2. 清除瀏覽器 cookie。 請參閱[如何刪除 Internet Explorer 中的 cookie](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)檔案。
 3. 清除瀏覽器快取。 請參閱[清除瀏覽器的瀏覽器](https://binged.it/2RKyfdU)快取。
 4. 以私用模式開啟瀏覽器。
+
+## <a name="web-client-does-not-show-my-resources"></a>Web 用戶端不會顯示我的資源
+
+首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用 Azure Active Directory 不同于 Winodws 虛擬桌面的帳戶登入，您應該簽署或使用私用瀏覽器視窗。
+
+如果您使用 Windows 虛擬桌面秋季2019版，請使用本文中的 web 用戶端連結來[連線到您](./virtual-desktop-fall-2019/connect-web-2019.md)的資源。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 用戶端停止回應或中斷連線
 

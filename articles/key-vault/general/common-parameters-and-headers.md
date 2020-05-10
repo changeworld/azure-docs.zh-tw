@@ -10,17 +10,18 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430873"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005806"
 ---
 # <a name="common-parameters-and-headers"></a>通用參數和標頭
 
 下列資訊通用於針對相關 Key Vault 資源執行的所有作業：
 
+- HTTP `Host`標頭必須一律存在，而且必須指定保存庫主機名稱。 範例： `Host: contoso.vault.azure.net`. 請注意，大部分的用戶端`Host`技術會填入 URI 中的標頭。 例如， `GET https://contoso.vault.azure.net/secrets/mysecret{...}`會將設定`Host`為。 `contoso.vault.azure.net` 這表示如果您使用像`GET https://10.0.0.23/secrets/mysecret{...}`是的原始 IP 位址來存取 Key Vault，則`Host`標頭的自動值會是錯誤的，而且您必須手動`Host`確保標頭包含保存庫主機名稱。
 - 將 `{api-version}` 取代為 URI 中的 api-version。
 - 將 `{subscription-id}` 取代為 URI 中的訂用帳戶識別碼
 - 將 `{resource-group-name}` 取代為資源群組。 如需詳細資訊，請參閱＜使用資源群組管理 Azure 資源＞。

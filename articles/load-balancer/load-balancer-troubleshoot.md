@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925944"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005781"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'> </a></span><span class="has-padding-small">使用虛擬代理程式執行<b>自動化診斷</b>，開始快速解決您的問題。</span><div align="right"> <sub>Privacy Statement</sub>隱私權聲明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
-本頁面提供基本和標準一般 Azure Load Balancer 問題的疑難排解資訊。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)。
+
+本頁面提供基本和標準一般 Azure Load Balancer 問題的疑難排解資訊。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](load-balancer-standard-diagnostics.md)。
 
 當負載平衡器的連線無法使用時，最常見的徵兆如下︰ 
 

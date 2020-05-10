@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983205"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006075"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區（預覽）
 
@@ -89,7 +89,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 - 開啟 Azure 入口網站
 - 找出 STG1
 - 流覽至 CNT1
-- 請確定 WS1 的 MSI （受控服務識別）已指派給 CNT1 上的**Azure Blob 資料參與者**角色
+- 請確定 WS1 的 MSI （受控服務識別）已指派給 CNT1 上的**儲存體 Blob 資料參與者**角色
   - 如果您沒有看到它已指派，請將它指派給它。
   - MSI 的名稱與工作區相同。 在此情況下，它會&quot;是&quot;WS1。
 

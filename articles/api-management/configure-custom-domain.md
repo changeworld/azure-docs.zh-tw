@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335842"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004736"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
@@ -29,7 +29,7 @@ ms.locfileid: "80335842"
 > [!WARNING]
 > 若客戶想要使用憑證釘選來改善其應用程式的安全性，則必須使用其所管理的自訂功能變數名稱和憑證，而不是預設憑證。 改為釘選預設憑證的客戶會對其無法控制的憑證屬性進行硬相關性，這不是建議的作法。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -71,12 +71,12 @@ ms.locfileid: "80335842"
     > 除了取用層以外，所有`*.contoso.com`層都支援萬用字元功能變數名稱，例如。
 
     > [!TIP]
-    > 我們建議使用 Azure Key Vault 來管理憑證，並將其設定為 autorotate。
+    > 我們建議使用[Azure Key Vault 來管理憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)，並將其設定為 autorenew。
     > 如果您使用 Azure Key Vault 來管理自訂網域的 TLS/SSL 憑證，請確定憑證是以[_憑證_的形式](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)插入 Key Vault，而不是_秘密_。
     >
     > 若要提取 TLS/SSL 憑證，API 管理必須具有包含憑證之 Azure Key Vault 的 [清單] 和 [取得秘密] 許可權。 使用 Azure 入口網站時，所有必要的設定步驟都會自動完成。 使用命令列工具或管理 API 時，必須以手動方式授與這些許可權。 此作業有兩個階段。 首先，使用 API 管理實例上的 [受控識別] 頁面，以確定受控識別已啟用，並記下該頁面上顯示的主體識別碼。 第二，在包含憑證的 Azure Key Vault 上，授與許可權清單並取得此主體識別碼的秘密許可權。
     >
-    > 如果憑證設定為 autorotate，則 API 管理會自動取得最新版本，而不會對服務造成任何停機（如果您的 API 管理層有 SLA-----在所有層級中，而開發人員層除外）。
+    > 如果憑證設定為 autorenew，則 API 管理會自動取得最新版本，而不會對服務造成任何停機（如果您的 API 管理層有 SLA-----在所有層級中，而開發人員層除外）。
 
 1. 按一下 [套用]。
 

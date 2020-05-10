@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995345"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005516"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
 
@@ -210,9 +210,9 @@ ms.locfileid: "82995345"
 
    這個範例會以 URL 中不同位置的範例參數名稱和`postalCode=123456`值來顯示回呼 URL：
 
-   * 第1個位置：`https://prod-07.westus.logic.azure.com:433/workflows/XXXXXXXXXXXXXXXXXXXXXX/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZZZZZZZZZZZZZZZZZZZZZZZZ`
+   * 第1個位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   * 第2個位置：`https://prod-07.westus.logic.azure.com:433/workflows/XXXXXXXXXXXXXXXXXXXXXX/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZZZZZZZZZZZZZZZZZZZZZZZZ`
+   * 第2個位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
 <a name="relative-path"></a>
 

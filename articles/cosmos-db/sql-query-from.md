@@ -4,22 +4,22 @@ description: 瞭解 SQL 語法，以及 Azure Cosmos DB 的 FROM 子句範例。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587680"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005863"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
 除非稍後會`FROM <from_specification>`在查詢中篩選或投射來源，否則 from （）子句是選擇性的。 如`SELECT * FROM Families`列舉整個`Families`容器的查詢。 您也可以使用容器的特殊識別碼根，而不使用容器名稱。
 
-FROM 子句會針對每個查詢強制執行下列規則：
+`FROM`子句會針對每個查詢強制執行下列規則：
 
-* 您可以為容器設定別名，例如 `SELECT f.id FROM Families AS f` 或只是 `SELECT f.id FROM Families f`。 以下`f`是的別名`Families`。 AS 是選擇性關鍵字，用來為識別碼做為[別名](sql-query-aliasing.md)。  
+* 您可以為容器設定別名，例如 `SELECT f.id FROM Families AS f` 或只是 `SELECT f.id FROM Families f`。 以下`f`是的別名`Families`。 AS 是選擇性關鍵字，用來為識別碼做為[別名](sql-query-working-with-json.md#aliasing)。  
 
 * 別名之後，就無法系結原始來源名稱。 例如，在`SELECT Families.id FROM Families f`語法上無效，因為識別碼`Families`已為別名，而且無法再解析。  
 
@@ -30,15 +30,15 @@ FROM 子句會針對每個查詢強制執行下列規則：
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -51,9 +51,9 @@ FROM <from_specification>
   
   指定包含或不包含別名的資料來源。 若未指定別名，則會使用下列規則從 `<container_expression>` 加以推斷：  
   
-  -  如果運算式為 container_name，則會使用 container_name 作為別名。  
+-  如果運算式為 container_name，則會使用 container_name 作為別名。  
   
-  -  如果運算式為 `<container_expression>`，則會使用 property_name、 then property_name 作為別名。 如果運算式為 container_name，則會使用 container_name 作為別名。  
+-  如果運算式為 `<container_expression>`，則會使用 property_name、 then property_name 作為別名。 如果運算式為 container_name，則會使用 container_name 作為別名。  
   
 - AS `input_alias`  
   
@@ -99,9 +99,9 @@ FROM <from_specification>
   
 容器運算式可以是容器範圍或文件範圍的運算式：  
   
--   若容器運算式的基礎來源為 ROOT 或 `container_name`，則運算式為容器範圍的運算式。 這類運算式代表一組直接從容器中擷取的文件，並不會相依於其他容器運算式的處理。  
+- 若容器運算式的基礎來源為 ROOT 或 `container_name`，則運算式為容器範圍的運算式。 這類運算式代表一組直接從容器中擷取的文件，並不會相依於其他容器運算式的處理。  
   
--   若容器運算式的基礎來源為之前在查詢中導入的 `input_alias`，則運算式為文件範圍的運算式。 這類運算式代表一組文件，這組文件是透過評估屬於與別名容器相關聯之集的每個文件範圍的容器運算式而取得。  結果集會是透過評估基礎集中每個文件的容器運算式所獲得的聯集。 
+- 若容器運算式的基礎來源為之前在查詢中導入的 `input_alias`，則運算式為文件範圍的運算式。 這類運算式代表一組文件，這組文件是透過評估屬於與別名容器相關聯之集的每個文件範圍的容器運算式而取得。 結果集會是透過評估基礎集中每個文件的容器運算式所獲得的聯集。
 
 ## <a name="examples"></a>範例
 

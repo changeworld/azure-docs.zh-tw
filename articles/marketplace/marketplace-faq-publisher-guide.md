@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 38d1a15f471d353595f57b86df5137257eaf63a5
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857619"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005164"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有關 Microsoft 商業 marketplace 的常見問題
 
@@ -300,7 +300,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>退貨和退款是否支援商業 marketplace？
 
-若要接收退款，客戶可以在指定的時間範圍內取消訂用帳戶。 使用解決方案後根據使用量計費的供應專案不適合退款。
+若要接收退款，客戶可以在指定的時間範圍內取消訂用帳戶。 針對每月訂閱，這是24小時，而對於年度訂閱，這是14天。 根據使用解決方案後的耗用量計費的供應專案，不適合退款。
 
 ## <a name="resources"></a>資源
 

@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74280972"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005497"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何將 AI 擴充的欄位對應至可搜尋的索引
 
 在本文中，您可以了解如何將擴充的輸入欄位對應至可搜尋索引中的輸出欄位。 一旦具備[定義的技能集](cognitive-search-defining-skillset.md)，即必須將直接提供值之任何技能的輸出欄位，對應至搜尋索引中的指定欄位。 
 
 將內容從擴充的檔移至索引時，需要輸出欄位對應。  擴充的檔其實是一種資訊的樹狀結構，即使索引中有複雜類型的支援，有時您可能會想要將資訊從擴充的樹狀結構轉換成更簡單的類型（例如，字串陣列）。 輸出欄位對應可讓您透過簡維資訊來執行資料圖形轉換。
+
+> [!NOTE]
+> 我們最近啟用了輸出欄位對應的對應函數功能。 如需對應函數的詳細資訊，請參閱[欄位對應函數](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 若要對應欄位，請將 `outputFieldMappings` 新增至您的索引子定義，如下所示：
@@ -50,7 +53,10 @@ Content-Type: application/json
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

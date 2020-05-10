@@ -3,15 +3,15 @@ title: 為 Azure Logic Apps 建立 & REST Api 的 web Api
 description: 建立 Web API 和 REST API 來呼叫您的 API、服務或系統以在 Azure Logic Apps 中進行系統整合
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270533"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005257"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 
@@ -136,11 +136,13 @@ ms.locfileid: "79270533"
 
 ![Webhook 動作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> 目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 動作](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱[工作流程動作與觸發程序](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
+目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 動作](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱[工作流程動作與觸發程序](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+以下是一些其他秘訣和注意事項：
+
+* 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
+
+* 如果您同時擁有邏輯應用程式和已訂閱的服務，則在呼叫回呼 URL `unsubscribe`之後，就不需要呼叫端點。 否則，Logic Apps 執行時間必須呼叫`unsubscribe`端點，以表示不需要更多的呼叫，也不允許伺服器端的資源清除。
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 
 ![Webhook 觸發程序](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> 目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 觸發程序](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱 [HTTPWebhook 觸發程序](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
->
-> 若要避免多次處理相同的資料，您的觸發程序應該將已讀取並傳遞至邏輯應用程式的資料清除。
+目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 觸發程序](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱 [HTTPWebhook 觸發程序](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+以下是一些其他秘訣和注意事項：
+
+* 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
+
+* 若要避免多次處理相同的資料，您的觸發程序應該將已讀取並傳遞至邏輯應用程式的資料清除。
+
+* 如果您同時擁有邏輯應用程式和已訂閱的服務，則在呼叫回呼 URL `unsubscribe`之後，就不需要呼叫端點。 否則，Logic Apps 執行時間必須呼叫`unsubscribe`端點，以表示不需要更多的呼叫，也不允許伺服器端的資源清除。
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>針對從邏輯應用程式對 Api 的呼叫提升安全性
 

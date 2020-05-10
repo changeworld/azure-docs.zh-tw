@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995704"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005938"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -23,7 +23,7 @@ ms.locfileid: "82995704"
 
 本文將說明如何建立連結到您 Azure 訂用帳戶和 Azure 媒體服務帳戶的影片索引器帳戶。 本主題提供使用自動 (預設) 流程連線到 Azure 的步驟。 也會示範如何手動連線到 Azure (進階)。
 
-如果您要從*試用版*移至*付費*影片索引子帳戶，您可以選擇將所有影片和模型自訂複製到新的帳戶，如[從試用帳戶匯入您的內容](#import-your-content-from-the-trial-account)中所述。
+如果您要從*試用版*移至*付費*影片索引子帳戶，您可以選擇將所有影片和模型自訂複製到新的帳戶，如[從試用帳戶匯入您的內容](#import-your-content-from-the-trial-account)一節中所述。
 
 ## <a name="prerequisites"></a>Prerequisites
 

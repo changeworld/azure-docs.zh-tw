@@ -7,16 +7,27 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267283"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006157"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
 參考資料（也稱為查閱資料表）是一種有限的資料集，其本質上是靜態或緩慢變更，用來執行查閱或擴充您的資料流程。 比方說，在 IoT 案例中，您可以在參考資料中儲存有關感應器 (不常變更) 的中繼資料，並將其與即時 IoT 資料流聯結。 Azure 串流分析會將參考資料載入記憶體，以達到低延遲的串流處理。 若要在您的 Azure 串流分析作業中使用參考資料，您通常會在查詢中使用[參考資料聯結](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)。 
+
+## <a name="example"></a>範例  
+ 如果已向通行費管理公司註冊商用車輛，這些車輛不需停車檢查，即可通過收費亭。 我們將使用商用車輛註冊查閱資料表來識別所有註冊過期的商用車輛。  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 串流分析支援 Azure Blob 儲存體和 Azure SQL Database 作為參考資料的儲存層。 您還可以從 Azure Data Factory 將參考資料轉換和/或複製到 Blob 儲存體中，以使用[任意數目的雲端和內部部署資料存放區](../data-factory/copy-activity-overview.md)。
 
@@ -34,7 +45,7 @@ ms.locfileid: "79267283"
 |儲存體帳戶   | 您 blob 所在的儲存體帳戶名稱。 如果它與您的串流分析工作位於相同的訂用帳戶，您就可以從下拉式清單中選取它。   |
 |儲存體帳戶金鑰   | 與儲存體帳戶相關聯的密碼金鑰。 如果儲存體帳戶與您的「串流分析」工作位於相同的訂用帳戶，就會自動填入此資訊。   |
 |儲存體容器   | 容器提供邏輯分組給儲存在 Microsoft Azure Blob 服務中的 blob。 當您將 blob 上傳至 Blob 服務時，您必須指定該 blob 的容器。   |
-|路徑格式   | 用來在指定容器中找出 blob 的路徑。 在該路徑內，您也可以指定下列 2 個變數的一個或多個執行個體：<BR>{date}、{time}<BR>範例 1：products/{date}/{time}/product-list.csv<BR>範例 2：products/{date}/product-list.csv<BR>範例 3︰product-list.csv<BR><br> 如果指定路徑中不存在 Blob，則 Stream Analytics 作業將無限期地等待 Blob 變為可用。   |
+|路徑格式   | 這是必要的屬性，用來在指定的容器中尋找您的 blob。 在該路徑內，您也可以指定下列 2 個變數的一個或多個執行個體：<BR>{date}、{time}<BR>範例 1：products/{date}/{time}/product-list.csv<BR>範例 2：products/{date}/product-list.csv<BR>範例 3︰product-list.csv<BR><br> 如果指定路徑中不存在 Blob，則 Stream Analytics 作業將無限期地等待 Blob 變為可用。   |
 |日期格式 [選用]   | 如果您已在指定的路徑模式內使用 {date}，則您可以從支援格式的下拉式清單中選取組織 Blob 所使用的日期格式。<BR>範例︰YYYY/MM/DD、MM/DD/YYYY 等。   |
 |時間格式 [選用]   | 如果您已在指定的路徑模式內使用 {time}，則您可以從支援格式的下拉式清單中選取組織 Blob 所使用的時間格式。<BR>範例︰HH、HH/mm 或 HH-mm。  |
 |事件序列化格式   | 為了確定您的查詢運作如預期，串流分析需要知道您的內送資料流使用哪一種序列化格式。 參考資料的支援格式為 CSV 和 JSON。  |
@@ -110,7 +121,24 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 
 作業的串流單位數量若增加超過 6，並不會增加可支援的參考資料大小上限。
 
-支援壓縮無法用於參考資料。 
+支援壓縮無法用於參考資料。
+
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>在作業中聯結多個參考資料集
+您只能在查詢的單一步驟中聯結一個資料流程輸入與一個參考資料輸入。 不過，您可以將查詢分解成多個步驟，來聯結多個參考資料集。 範例如下所示。
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
