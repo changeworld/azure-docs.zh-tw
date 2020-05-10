@@ -5,27 +5,24 @@ author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/08/2020
 ms.author: mingshen
-ms.openlocfilehash: af272968ec81671e38db0a6cc52b4baf51c94a80
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789635"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996368"
 ---
 # <a name="consulting-service-prerequisites"></a>諮詢服務必要條件
 
-> [!IMPORTANT]
-> 我們正在將您諮詢服務供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請依照[Azure 和 Dynamics 365 諮詢服務供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)專案中的指示進行 Cloud Partner 入口網站，以管理您的供應專案。
-
-如需諮詢服務供應專案的相關資訊，包括此供應專案類型的需求，請參閱[Azure Marketplace 和 AppSource 的諮詢服務](https://docs.microsoft.com/azure/marketplace/consulting-services)。 下表顯示特定諮詢服務類型的其他需求。
+如需諮詢服務供應專案的相關資訊，包括此供應專案類型的需求，請參閱[諮詢服務以取得 Microsoft AppSource 和 Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services)。 下表顯示特定諮詢服務類型的其他需求。
 
 | 諮詢服務主題 | 要在合作夥伴中心選取的主要產品 | 需求 |
 |---------|---------|---------|
 | Azure 產品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | 供應專案必須至少列出下列其中一個完整的能力： <ul><li>應用程式開發</li><li>應用程式整合</li><li>應用程式生命週期管理</li><li>雲端平台</li><li>資料分析</li><li>資料中心</li><li>資料平台</li><li>DevOps|
-| Dynamics 365 Sales<br/> Dynamics 365 行銷<br/> Dynamics 365 客戶服務<br/> Dynamics 365 Field 服務<br/> Dynamics 365 人力資源 | 客戶參與應用程式 | 必須是[Business Applications 雲端](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金級或銀級認證，才能使用客戶參與選項，或針對與服務相關的主要產品具有共同銷售供應專案。 |
-| Dynamics 365 財務<br/> Dynamics 365 供應鏈管理<br/>Dynamics 365 Commerce<br/> Dynamics 365 人力資源<br/>Dynamics 365 專案服務自動化 | 財務和營運應用程式 | 必須是[Business Applications 雲端](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金級或銀級認證，才能進行整合作業選項，或針對與服務相關的主要產品具有共同銷售供應專案。 |
+| Dynamics 365 Sales<br>Dynamics 365 行銷<br>Dynamics 365 客戶服務<br>Dynamics 365 Field 服務<br>Dynamics 365 人力資源 | 客戶參與應用程式 | 必須是[Business Applications 雲端](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金級或銀級認證，才能使用客戶參與選項，或針對與服務相關的主要產品具有共同銷售供應專案。 |
+| Dynamics 365 財務<br>Dynamics 365 供應鏈管理<br>Dynamics 365 Commerce<br>Dynamics 365 人力資源<br>Dynamics 365 專案服務自動化 | 財務和營運應用程式 | 必須是[Business Applications 雲端](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金級或銀級認證，才能進行整合作業選項，或針對與服務相關的主要產品具有共同銷售供應專案。 |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | 必須至少有一次成功的[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) ，且至少有五個量值和五個區段，或具有與服務相關之主要產品的共同銷售供應專案。 |
 | Dynamics 365 Business Central | Dynamics 365 Business Central | 必須是[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證中的黃金或銀級，而且至少有三個客戶，或已在 Microsoft AppSource 中發佈 Business Central 應用程式，或具有與服務相關之主要產品的共同銷售供應專案。 |
 | Power BI | Power BI | 必須列在[Power BI 合作夥伴展示](https://powerbi.microsoft.com/partner-showcase/)中，或具有與服務相關之主要產品的共同銷售供應專案。|

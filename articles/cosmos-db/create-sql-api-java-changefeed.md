@@ -1,27 +1,29 @@
 ---
-title: 教學課程 - 具有變更摘要的端對端非同步 Java SQL API 應用程式範例
-description: 本教學課程會逐步解說可將文件插入 Azure Cosmos DB 容器的簡單 Java SQL API 應用程式，同時使用變更摘要來維護容器的具體化檢視。
+title: 使用變更摘要建立端對端 Azure Cosmos DB JAVA SDK v4 應用程式範例
+description: 本操作指南會逐步引導您完成簡單的 JAVA SQL API 應用程式，它會將檔插入 Azure Cosmos DB 容器中，同時使用變更摘要來維護容器的具體化視圖。
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: tutorial
-ms.date: 04/01/2020
+ms.topic: conceptual
+ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
-ms.translationtype: HT
+ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80587215"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996516"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>教學課程 - 具有變更摘要的端對端非同步 Java SQL API 應用程式範例
+# <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何建立 JAVA 應用程式，以使用 Azure Cosmos DB SQL API 和變更摘要處理器
 
-本教學課程指南會逐步解說可將文件插入 Azure Cosmos DB 容器的簡單 Java SQL API 應用程式，同時使用變更摘要來維護容器的具體化檢視。
+> [!IMPORTANT]  
+> 如需有關 Azure Cosmos DB JAVA SDK v4 的詳細資訊，請參閱 Azure Cosmos DB JAVA SDK v4 版本資訊、 [Maven 存放庫](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、AZURE COSMOS DB java sdk v4[效能秘訣](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB JAVA sdk v4[疑難排解指南](troubleshoot-java-sdk-v4-sql.md)。
+>
+
+本操作指南會逐步引導您使用 Azure Cosmos DB SQL API 將檔插入 Azure Cosmos DB 容器中的簡單 JAVA 應用程式，同時使用變更摘要和變更摘要處理器來維護容器的具體化視圖。 JAVA 應用程式會使用 Azure Cosmos DB JAVA SDK v4 與 Azure Cosmos DB SQL API 進行通訊。
 
 ## <a name="prerequisites"></a>Prerequisites
-
-* 個人電腦
 
 * Azure Cosmos DB 帳戶的 URI 和金鑰
 
@@ -45,8 +47,6 @@ Azure Cosmos DB 變更摘要會提供事件驅動介面，以觸發動作來回�
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> 您可選擇使用 Java SDK 4.0 或 Java SDK 3.7.0 來完成本快速入門。 **如果您想要使用 Java SDK 3.7.0，請在終端機中鍵入 ```git checkout SDK3.7.0```** 。 否則，停留在 ```master``` 分支，其預設為 Java SDK 4.0。
-
 開啟存放庫目錄中的終端機。 藉由執行來建置應用程式
 
 ```bash
@@ -55,7 +55,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>逐步介紹
 
-1. 第一次檢查時，您應該會有 Azure Cosmos DB 帳戶。 在您的瀏覽器中開啟 **Azure 入口網站**，移至您的 Azure Cosmos DB 帳戶，然後在左窗格中巡覽至 [資料總管]  。
+1. 第一次檢查時，您應該會有 Azure Cosmos DB 帳戶。 在瀏覽器中開啟**Azure 入口網站**，移至您的 Azure Cosmos DB 帳戶，然後在左窗格中，流覽至 [**資料總管**]。
 
     ![Azure Cosmos DB 帳戶](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
@@ -71,7 +71,7 @@ mvn clean package
     Press enter to create the grocery store inventory system...
     ```
 
-    然後在瀏覽器中返回 Azure 入口網站資料總管。 您會看到已新增三個空白容器的資料庫 **GroceryStoreDatabase**： 
+    然後回到瀏覽器中的 [Azure 入口網站資料總管。 您會看到已新增三個空白容器的資料庫 **GroceryStoreDatabase**： 
 
     * **InventoryContainer** - 我們的範例雜貨店的清查記錄，其依據項目 ```id``` (這是 UUID) 分割。
     * **InventoryContainer-pktype** - 清查記錄的具體化檢視，已針對項目 ```type``` 的查詢最佳化
@@ -89,8 +89,8 @@ mvn clean package
 
     按 Enter 鍵。 現在，下列程式碼區塊會執行並初始化另一個執行緒上的變更摘要處理器： 
 
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）非同步 API
 
-    **Java SDK 4.0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -103,28 +103,16 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-    **Java SDK 3.7.0**
-    ```java
-    changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
-    changeFeedProcessorInstance.start()
-        .subscribeOn(Schedulers.elastic())
-        .doOnSuccess(aVoid -> {
-            isProcessorRunning.set(true);
-        })
-        .subscribe();
-
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
-    ```
-
     ```"SampleHost_1"``` 是變更摘要處理器背景工作角色的名稱。 ```changeFeedProcessorInstance.start()``` 實際上會啟動變更摘要處理器。
 
-    在瀏覽器中返回 Azure 入口網站資料總管。 在 **InventoryContainer-leases** 容器底下，按一下 **items** 以查看其內容。 您會看到變更摘要處理器已填入租用容器，也就是處理器已在 **InventoryContainer** 的某些分割區上將租用指派給 ```SampleHost_1``` 背景工作角色。
+    返回瀏覽器中的 [Azure 入口網站] 資料總管。 在 **InventoryContainer-leases** 容器底下，按一下 **items** 以查看其內容。 您會看到變更摘要處理器已填入租用容器，也就是處理器已在 **InventoryContainer** 的某些分割區上將租用指派給 ```SampleHost_1``` 背景工作角色。
 
     ![租用](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
 1. 在終端機中再次按 Enter 鍵。 這會觸發 10 份要插入 **InventoryContainer** 中的文件。 每次文件插入都會以 JSON 形式出現在變更摘要中。下列回呼程式碼會藉由將 JSON 文件鏡射到具體化建立中來處理這些事件：
 
-    **Java SDK 4.0**
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）非同步 API
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -150,33 +138,7 @@ mvn clean package
     }
     ```
 
-    **Java SDK 3.7.0**
-    ```java
-    public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
-        ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
-        cfOptions.feedPollDelay(Duration.ofMillis(100));
-        cfOptions.startFromBeginning(true);
-        return ChangeFeedProcessor.Builder()
-            .options(cfOptions)
-            .hostName(hostName)
-            .feedContainer(feedContainer)
-            .leaseContainer(leaseContainer)
-            .handleChanges((List<CosmosItemProperties> docs) -> {
-                for (CosmosItemProperties document : docs) {
-                        //Duplicate each document update from the feed container into the materialized view container
-                        updateInventoryTypeMaterializedView(document);
-                }
-
-            })
-            .build();
-    }
-
-    private static void updateInventoryTypeMaterializedView(CosmosItemProperties document) {
-        typeContainer.upsertItem(document).subscribe();
-    }    
-    ```
-
-1. 允許程式碼執行 5-10 秒。 然後返回 Azure 入口網站資料總管，並巡覽至 **InventoryContainer > items**。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
+1. 允許程式碼執行 5-10 秒。 然後返回 [Azure 入口網站] 資料總管，然後流覽至**InventoryContainer > 專案**]。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
 
     ![摘要容器](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
@@ -184,41 +146,14 @@ mvn clean package
 
     ![具體化檢視](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. 我們只要使用單一 ```upsertItem()``` 呼叫，就會同時從 **InventoryContainer** 和 **InventoryContainer-pktype** 中刪除文件。 首先，請查看 Azure 入口網站資料總管。 我們會刪除 ```/type == "plums"```的文件；其在底下以紅色圍住
+1. 我們只要使用單一 ```upsertItem()``` 呼叫，就會同時從 **InventoryContainer** 和 **InventoryContainer-pktype** 中刪除文件。 首先，請參閱 Azure 入口網站資料總管。 我們會刪除 ```/type == "plums"```的文件；其在底下以紅色圍住
 
     ![具體化檢視](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
     再次按 Enter 鍵，以呼叫範例程式碼中的 ```deleteDocument()``` 函式。 如下所示，此函式會使用 ```/ttl == 5``` 來 upsert 新版的文件，以將文件存留時間 (TTL) 設定為 5 秒。 
     
-    **Java SDK 4.0**
-    ```java
-    public static void deleteDocument() {
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）非同步 API
 
-        String jsonString =    "{\"id\" : \"" + idToDelete + "\""
-                + ","
-                + "\"brand\" : \"Jerry's\""
-                + ","
-                + "\"type\" : \"plums\""
-                + ","
-                + "\"quantity\" : \"50\""
-                + ","
-                + "\"ttl\" : 5"
-                + "}";
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode document = null;
-
-        try {
-            document = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
-    }    
-    ```
-
-    **Java SDK 3.7.0**
     ```java
     public static void deleteDocument() {
 

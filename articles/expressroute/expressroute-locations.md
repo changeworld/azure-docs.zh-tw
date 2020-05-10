@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63226089a0a87660f0796cdfef2b729070ca01e3
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: d7af6bd0f36f5a1fc11acbd7906088d7d5c17d32
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837850"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996791"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -92,7 +92,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支援 |支援 |阿姆斯特丹2、芝加哥、法蘭克福、香港特別行政區、內華達州、倫敦2、紐約、巴黎、San Antonio、矽谷、東京、多倫多、華盛頓特區、華盛頓特區 |
 | **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |支援 |支援 |香港特別行政區，臺北 |
 | **中國 Mobile 國際** |支援 |支援 | 新加坡 |
-| **China Telecom Global** |支援 |支援 |香港 |
+| **China Telecom Global** |支援 |支援 |香港特別行政區，香港 Kong2 |
 | **中國 Unicom Global** |支援 |支援 | 新加坡 2 |
 | **[Chunghwa 電信](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |支援 |支援 |台北 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支援 |支援 |芝加哥、達拉斯、蒙特利爾、多倫多、范和華盛頓特區 |

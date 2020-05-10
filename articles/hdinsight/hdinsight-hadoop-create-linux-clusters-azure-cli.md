@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77199036"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994189"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 建立 HDInsight 叢集
 
@@ -49,7 +49,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
     |`--workernode-count`| 叢集中的背景工作節點數目。 本文使用變數`clusterSizeInNodes`做為傳遞至`--workernode-count`的值。 |
     |`--version`| HDInsight 叢集版本。 本文使用變數`clusterVersion`做為傳遞至`--version`的值。 另請參閱：[支援的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
     |`--type`| HDInsight 叢集類型，例如： hadoop、interactivehive、hbase、kafka、風暴、spark、rserver、mlservices。  本文使用變數`clusterType`做為傳遞至`--type`的值。 另請參閱：叢集[類型和](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)設定。|
-    |`--component-version`|各種 Hadoop 元件的版本，以「元件 = 版本」格式的空格分隔版本。 本文使用變數`componentVersion`做為傳遞至`--component-version`的值。 另請參閱： [Hadoop 元件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
+    |`--component-version`|各種 Hadoop 元件的版本，以「元件 = 版本」格式的空格分隔版本。 本文使用變數`componentVersion`做為傳遞至`--component-version`的值。 另請參閱： [Hadoop 元件](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。|
 
     以`RESOURCEGROUPNAME`所`LOCATION`需`CLUSTERNAME`的`STORAGEACCOUNTNAME`值取代`PASSWORD` 、、、和。 視需要變更其他變數的值。 然後輸入 CLI 命令。
 

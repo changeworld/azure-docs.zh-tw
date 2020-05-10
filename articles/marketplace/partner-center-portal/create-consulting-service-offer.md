@@ -6,18 +6,15 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/08/2020
+ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791896"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994357"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
-
-> [!IMPORTANT]
-> 我們正在將您諮詢服務供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請依照[Azure 和 Dynamics 365 諮詢服務供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)專案中的指示進行 Cloud Partner 入口網站，以管理您的供應專案。
 
 本文說明如何將諮詢服務供應專案發佈至[Microsoft AppSource](https://appsource.microsoft.com/)或[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 根據 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/)和 Power 平臺，列出諮詢服務供應專案。 根據 Azure Marketplace 上的 Microsoft Azure 列出諮詢服務供應專案。 開始之前，請先[在合作夥伴中心建立商業 marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
 
@@ -99,10 +96,10 @@ ms.locfileid: "82791896"
     - **概念證明**：可以判斷解決方案是否符合客戶需求的有限範圍實作。
     - **研討會**：在客戶的內部部署上進行互動式的互動。 它可以包含以客戶的資料或環境為基礎的訓練、簡報、評量或示範。
 
-1. 如果您選取了**Azure**的主要產品，請選取最多三個**解決方案區域**。 這讓 Azure Marketplace 的客戶更容易找到您的供應專案。 如果您未選擇 [Azure]，請略過此步驟。
-2. 如果您選取了 Azure_以外_的主要產品，請選取最多三個**適用的產品**。 這讓 AppSource 中的客戶更容易找到您的供應專案。 如需詳細資訊，請參閱[Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
-3. 最多可選取您供應專案適用的六個**產業**。 這可讓客戶更輕鬆地找到您的供應專案。
-4. 最多可新增**三項**您的公司所獲的專長認證，以顯示在您的諮詢服務供應專案清單中。 除了 Azure 專家 Msp 和 Azure 網路 Msp 以外，至少需要一個專長認證。
+3. 如果您選取了**Azure**的主要產品，請選取最多三個**解決方案區域**。 這讓 Azure Marketplace 的客戶更容易找到您的供應專案。 如果您未選擇 [Azure]，請略過此步驟。
+4. 如果您選取了 Azure_以外_的主要產品，請選取最多三個**適用的產品**。 這讓 AppSource 中的客戶更容易找到您的供應專案。 如需詳細資訊，請參閱[Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
+5. 最多可選取您供應專案適用的六個**產業**。 這可讓客戶更輕鬆地找到您的供應專案。
+6. 最多可新增**三項**您的公司所獲的專長認證，以顯示在您的諮詢服務供應專案清單中。 除了 Azure 專家 Msp 和 Azure 網路 Msp 以外，至少需要一個專長認證。
 
 選取 [**儲存草稿**] 再繼續。
 

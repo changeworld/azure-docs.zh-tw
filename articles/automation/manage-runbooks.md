@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 687579825c652888112ff8ddff7401b3305e3a8e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cd89314b0d847909bf4196361e471b71ebb9b6e9
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871192"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995483"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -228,7 +228,7 @@ Start-AzAutomationRunbook `
 若要使用自訂腳本：
 
 1. 建立自動化帳戶並取得[參與者角色](automation-role-based-access-control.md)。
-2. 將[帳戶連結至 Azure 工作區](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection.md)。
+2. 將[帳戶連結至 Azure 工作區](../security-center/security-center-enable-data-collection.md)。
 3. 啟用[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)、[更新管理](automation-update-management.md)或其他自動化功能。 
 4. 如果在 Linux 機器上，您需要高許可權。 登入以關閉[簽章檢查](automation-linux-hrw-install.md#turn-off-signature-validation)。
 

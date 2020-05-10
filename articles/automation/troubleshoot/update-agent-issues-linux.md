@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927967"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997019"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>針對 Linux 更新代理程式問題進行疑難排解
 
@@ -82,14 +82,14 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-此檢查會確認適用于 Linux 的 Log Analytics 代理程式是否具有混合式 Runbook 背景工作角色套件。 更新管理需要有此封裝才能運作。
+此檢查會確認適用于 Linux 的 Log Analytics 代理程式是否具有混合式 Runbook 背景工作角色套件。 更新管理需要有此封裝才能運作。 若要深入瞭解，請參閱[適用于 Linux 的 Log Analytics 代理程式未執行](hybrid-runbook-worker.md#oms-agent-not-running)。
+
+更新管理從 operations 端點下載混合式 Runbook 背景工作角色套件。 因此，如果混合式 Runbook 背景工作角色不在執行中，且[作業端點](#operations-endpoint)失敗，則更新可能會失敗。
 
 ### <a name="hybrid-runbook-worker-status"></a>混合式 Runbook 背景工作狀態
 
-此檢查確保混合式 Runbook 背景工作正在機器上執行。 如果混合式 Runbook 背景工作運作正常，則應會出現下列程序。 若要深入瞭解，請參閱[針對適用于 Linux 的 Log Analytics 代理程式進行疑難排解](hybrid-runbook-worker.md#oms-agent-not-running)。
+此檢查確保混合式 Runbook 背景工作正在機器上執行。 如果混合式 Runbook 背景工作角色正常執行，則應該會出現下列範例中的程式。
 
-> [!NOTE]
-> 如果混合式 Runbook 背景工作角色不在執行中，且作業端點失敗，則更新可能會失敗。 更新管理從 operations 端點下載混合式背景工作角色套件。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 這項檢查會判斷混合式 Runbook 背景工作角色是否可以與 Log Analytics 工作區中的 Azure 自動化正確地通訊。
 
-Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與註冊端點進行通訊。 如需要開啟的位址和埠清單，請參閱混合式背景[工作角色的網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
+Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與註冊端點進行通訊。 如需要開啟的位址和埠清單，請參閱[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="operations-endpoint"></a>作業端點
 
-此檢查會判斷代理程式是否能夠正確地與「作業執行階段資料服務」進行通訊。
+此檢查會判斷 Log Analytics 代理程式是否能夠正確地與作業執行時間資料服務通訊。
 
-Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與「作業執行階段資料服務」進行通訊。 如需要開啟的位址和埠清單，請參閱混合式背景[工作角色的網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
+Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」代理程式與「作業執行階段資料服務」進行通訊。 如需要開啟的位址和埠清單，請參閱[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics 端點 1
 

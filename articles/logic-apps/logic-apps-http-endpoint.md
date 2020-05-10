@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983703"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995345"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
 
@@ -140,17 +140,19 @@ ms.locfileid: "82983703"
 
    ![觸發程式預期的選取要求方法](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>接受端點 URL 中的參數
+<a name="endpoint-url-parameters"></a>
 
-當您想要端點 URL 透過端點的 URL 接受參數值時，您有下列選項：
+## <a name="pass-parameters-through-endpoint-url"></a>透過端點 URL 傳遞參數
+
+當您想要透過端點的 URL 接受參數值時，您有下列選項：
 
 * [透過 GET 參數](#get-parameters)或 URL 參數接受值。
 
-  將要求傳送至端點的 URL 時，這些值會當做名稱/值組傳遞。 針對此選項，您必須在要求觸發程式中使用 GET 方法。 在後續動作中，您可以使用運算式中的`triggerOutputs()`函數，將參數值當做觸發程式輸出來取得。
+  這些值會以名稱/值組的形式傳遞至端點的 URL。 針對此選項，您必須在要求觸發程式中使用 GET 方法。 在後續動作中，您可以使用運算式中的`triggerOutputs()`函數，將參數值當做觸發程式輸出來取得。
 
 * 透過要求觸發程式中參數的[相對路徑來接受值](#relative-path)。
 
-  將要求傳送至端點的 URL 時，會傳遞這些值。 您也必須明確地選取觸發程式預期[的方法](#select-method)。 在後續動作中，您可以直接參考這些輸出，取得參數值作為觸發程式輸出。
+  這些值會透過端點 URL 中的相對路徑來傳遞。 您也必須明確地選取觸發程式預期[的方法](#select-method)。 在後續動作中，您可以直接參考這些輸出，取得參數值作為觸發程式輸出。
 
 <a name="get-parameters"></a>
 

@@ -4,14 +4,14 @@ description: 在 Application Insights 中管理遙測量和監視成本。
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 11/27/2019
+ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405380"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995545"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -62,7 +62,7 @@ E. 設定每日資料量上限。
 
 若要更深入調查 Application Insights 的使用量，請開啟 [計量]**** 頁面，新增名為「資料點量」的計量，然後選取 [套用分割]** 選項，以根據「遙測項目類型」拆分資料。
 
-Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure 入口網站的 [帳務]**** 區段中，或在 [Azure 計費入口網站](https://account.windowsazure.com/Subscriptions)中，查看您的 Azure 帳單詳細資料。
+Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure 入口網站的 [**成本管理 + 帳單**] 區段中，或在[azure 計費入口網站](https://account.windowsazure.com/Subscriptions)中，查看 azure 帳單的詳細資料。  [請參閱下方](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)的詳細資訊，以瞭解如何針對 Application Insights 使用此內容。 
 
 ![在左側功能表中，選取 [帳務]](./media/pricing/02-billing.png)
 
@@ -129,7 +129,7 @@ dependencies
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>在您的 Azure 帳單上查看 Application Insights 使用量
 
-Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞提供了大量有用的功能。 例如，「成本分析」功能可讓您查看 Azure 資源的花費。 依資源類型新增篩選器（至 Application Insights 的 microsoft insights/元件）可讓您追蹤費用。
+Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞提供了大量有用的功能。 例如，「成本分析」功能可讓您查看 Azure 資源的花費。 依資源類型新增篩選器（至 Application Insights 的 microsoft insights/元件）可讓您追蹤費用。 然後針對 [群組依據] 選取 [計量類別目錄] 或 [計量]。  對於目前定價方案 Application Insights 資源，大部分的使用量會顯示為計量類別的 Log Analytics，因為所有 Azure 監視器元件都有單一記錄後端。 
 
 [從 Azure 入口網站下載您的使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)，即可取得更多使用方式的瞭解。
 在下載的試算表中，您可以看到每天每個 Azure 資源的使用量。 在此 Excel 試算表中，您可以藉由先篩選「計量類別」資料行來顯示「Application Insights」和「Log Analytics」，然後在「包含 microsoft Insights/元件」的「實例識別碼」資料行上新增篩選，來找到您 Application Insights 資源的使用量。  大部分的 Application Insights 使用量都會以 Log Analytics 計量類別的計量報告，因為所有 Azure 監視器元件都有單一記錄後端。  只有舊版定價層和多重步驟 web 測試的 Application Insights 資源，會以 Application Insights 的計量類別來報告。  使用量會顯示在 [取用的數量] 資料行中，每個專案的單位會顯示在 [測量單位] 資料行中。  有更多詳細資料可協助您[瞭解您的 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。
@@ -212,7 +212,7 @@ Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-man
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
-Application Insights 資源的預設保留期為90天。 可以為每個 Application Insights 資源選取不同的保留週期。 一組完整的可用保留週期為30、60、90、120、180、270、365、550或730天。
+Application Insights 資源的預設保留期為90天。 可以為每個 Application Insights 資源選取不同的保留週期。 一組完整的可用保留週期為30、60、90、120、180、270、365、550或730天。 [深入瞭解](https://azure.microsoft.com/pricing/details/monitor/)較長資料保留的定價。 
 
 若要變更保留期，請在 Application Insights 資源中，移至 [**使用量和估計成本**] 頁面，然後選取 [**資料保留**] 選項：
 
@@ -272,7 +272,7 @@ Application Insights 資源的預設保留期為90天。 可以為每個 Applica
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>如何判斷相異節點計數的範例
 
-| 案例                               | 每日節點總數 |
+| 狀況                               | 每日節點總數 |
 |:---------------------------------------|:----------------:|
 | 1 個應用程式使用 3 個 Azure App Service 執行個體和 1 個虛擬伺服器 | 4 |
 | 3個在2部 Vm 上執行的應用程式;這些應用程式的 Application Insights 資源位於相同的訂用帳戶中，且位於每個節點層 | 2 | 

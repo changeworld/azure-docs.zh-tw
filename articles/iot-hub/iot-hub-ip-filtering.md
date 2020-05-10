@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
-ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68414361"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995514"
 ---
 # <a name="use-ip-filters"></a>使用 IP 篩選器
 
@@ -66,7 +66,7 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 > 拒絕 IP 位址可防止其他 Azure 服務 (例如 Azure 串流分析、Azure 虛擬機器，或入口網站中的裝置總管) 與 IoT 中樞互動。
 
 > [!WARNING]
-> 如果您使用 Azure 串流分析 (ASA) 從啟用 IP 篩選的 IoT 中樞讀取訊息，請在 ASA 連接字串中使用 IoT 中樞之與事件中樞相容的名稱和端點。
+> 如果您使用 Azure 串流分析（ASA）從啟用 IP 篩選的 IoT 中樞讀取訊息，請使用 IoT 中樞的事件中樞相容名稱和端點，以手動方式在 ASA 中新增[事件中樞串流輸入](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs)。
 
 ## <a name="delete-an-ip-filter-rule"></a>刪除 IP 篩選器規則
 

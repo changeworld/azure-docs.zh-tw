@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 89360f062f0198a6b0c857395b4956caa1109e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097152"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995704"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
 建立影片索引子帳戶時，您可以選擇免費試用帳戶（您可取得特定的免費編制索引分鐘數）或付費選項（您不會受限於配額）。 使用免費試用版，影片索引子最多可為網站使用者提供600分鐘的免費編制索引，以及最多2400分鐘的 API 使用者免費編制索引。 使用付費選項時，您會建立連接到您的 Azure 訂用帳戶的影片索引子帳戶，以及 Azure 媒體服務帳戶。 您需支付已編制索引的分鐘數，以及媒體帳戶相關費用。
 
 本文將說明如何建立連結到您 Azure 訂用帳戶和 Azure 媒體服務帳戶的影片索引器帳戶。 本主題提供使用自動 (預設) 流程連線到 Azure 的步驟。 也會示範如何手動連線到 Azure (進階)。
+
+如果您要從*試用版*移至*付費*影片索引子帳戶，您可以選擇將所有影片和模型自訂複製到新的帳戶，如[從試用帳戶匯入您的內容](#import-your-content-from-the-trial-account)中所述。
 
 ## <a name="prerequisites"></a>Prerequisites
 

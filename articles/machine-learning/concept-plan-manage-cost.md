@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891209"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996330"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -49,7 +49,7 @@ ms.locfileid: "82891209"
 
 當您將新資源新增至工作區時，請返回此計算機並在此新增相同的資源，以更新您的成本預估值。
 
-雖然 Enterprise edition 處於預覽階段，但沒有任何 ML 費用。 當 Enterprise edition 正式推出時，將會有機器學習服務的額外費用（用於定型和推斷）。  如需詳細資訊，請[Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
+雖然 Enterprise edition 處於預覽階段，但沒有任何 ML 費用。 當 Enterprise edition 正式推出時，將會有額外費用（用於定型和推斷）。  如需詳細資訊，請參閱[Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 ## <a name="get-cost-alerts"></a>取得成本警示
 
@@ -59,7 +59,7 @@ ms.locfileid: "82891209"
 
 當您將資源與 Azure Machine Learning 搭配使用時，會產生成本。 Azure 資源使用量單位成本會因時間間隔（秒、分鐘、小時、天）或要求單位使用量而異。 一旦開始使用 Azure Machine Learning，就會產生成本。 在 Azure 入口網站的 [[成本分析](../cost-management/quick-acm-cost-analysis.md)] 窗格中，查看這些成本。
 
-在圖表和資料表中，以不同的時間間隔來查看成本。 部分範例包括日期、目前、上個月和年。 也會針對預算和預測成本來查看成本。 隨著時間切換到較長的視圖，可協助您找出支出趨勢，並查看超支可能發生的位置。 如果您已建立預算，請參閱其超過的位置。  
+您可以在圖表和資料表中，以不同的時間間隔來查看成本。 您也可以根據預算和預測成本來查看成本。 隨著時間切換到較長的 views 有助於識別支出趨勢，並查看超支可能發生的位置。 如果您已建立預算，請參閱其超過的位置。  
 
 您不會看到 Machine Learning 的個別服務區域。  相反地，您會看到已新增至 Machine Learning 工作區的各種資源。
 
@@ -67,18 +67,22 @@ ms.locfileid: "82891209"
 
 有了不斷變化的資料，您需要快速且有效率的模型定型和重新訓練，才能維護正確的模型。 不過，持續訓練會有成本，特別是針對 Gpu 的深度學習模型。 
 
-Azure Machine Learning 使用者可以使用受控 Azure Machine Learning 計算叢集，也稱為 AmlCompute。 AmlCompute 支援各種 GPU 和 CPU 選項。 AmlCompute 是由 Azure Machine Learning 來代表您的訂用帳戶進行內部裝載，但在 Azure IaaS 雲端規模上提供相同的企業級安全性、合規性和治理。
+Azure Machine Learning 使用者可以使用受控 Azure Machine Learning 計算叢集，也稱為 AmlCompute。 AmlCompute 支援各種 GPU 和 CPU 選項。 AmlCompute 是由 Azure Machine Learning，代表您的訂用帳戶裝載于內部。 它在 Azure IaaS 雲端規模上提供相同的企業級安全性、合規性和治理。
 
 因為這些計算集區位於 Azure 的 IaaS 基礎結構內，所以您可以使用與基礎結構其餘部分相同的安全性和合規性需求來部署、調整及管理您的訓練。  這些部署會在您的訂用帳戶中進行，並遵守您的治理規則。 深入瞭解[Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>設定自動調整的定型叢集
 
-根據您的工作負載需求自動調整叢集有助於降低成本，因此您只需要使用所需的資訊。 AmlCompute 叢集的設計是根據您工作負載的需求動態自動調整。 叢集可以相應增加到已布建的節點數目上限，以及為訂用帳戶指定的配額內。 當每次執行完成時，叢集將會釋出節點，並自動調整為您指定的最小節點計數。
+根據您的工作負載需求自動調整叢集有助於降低成本，因此您只需要使用所需的資訊。
 
-除了設定節點的最小和最大數目，請在相應減少之前調整節點閒置的時間量。 根據預設，相應減少之前的閒置時間會設定為120秒。
+AmlCompute 叢集是設計來根據您的工作負載動態擴充。 叢集可以相應增加至您設定的節點數目上限。 當每次執行完成時，叢集就會釋放節點，並調整為您設定的最小節點計數。
+
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
+
+您也可以設定在相應減少之前，節點閒置的時間量。 根據預設，相應減少之前的閒置時間會設定為120秒。
 
 + 如果您執行較少的反復實驗，請減少這段時間來節省成本。 
-+ 如果您執行高度反復的開發/測試實驗，您可能需要增加這項功能，如此一來，在定型腳本或環境的每次變更之後，您就不需支付持續性相應縮小或相應減少的費用。
++ 如果您執行高度反復的開發/測試實驗，您可能需要增加時間，以便在每次變更訓練腳本或環境之後，不需支付持續的相應縮小和減少。
 
 您可以使用[AMLCOMPUTE SDK 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)搭配[REST api](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)，針對 Azure 入口網站中變更的工作負載需求設定 AmlCompute 叢集。
 
@@ -88,24 +92,24 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 ## <a name="set-quotas-on-resources"></a>設定資源的配額
 
-與其他 Azure 計算資源很類似，AmlCompute 隨附了固有的[配額（或限制）](how-to-manage-quotas.md#azure-machine-learning-compute)設定。 此配額是依 VM 系列（例如，Dv2 系列、NCv3 系列）而有所不同，並依每個訂用帳戶的地區而異。 訂用帳戶會以小型預設值開始進行，但使用此設定可控制可在您的訂用帳戶中啟動的 Amlcompute 資源量。 
+AmlCompute 隨附[配額（或限制）](how-to-manage-quotas.md#azure-machine-learning-compute)設定。 此配額是依 VM 系列（例如，Dv2 系列、NCv3 系列）而有所不同，並依每個訂用帳戶的地區而異。 訂用帳戶會以小型預設值開始進行，但使用此設定可控制可在您的訂用帳戶中啟動的 Amlcompute 資源量。 
 
-也針對訂用帳戶中的每個工作區，設定[VM 系列的工作區層級配額](how-to-manage-quotas.md#workspace-level-quota)。 這可讓您更細微地控制每個工作區可能會產生的成本，並限制特定的 VM 系列。 
+也針對訂用帳戶中的每個工作區，設定[VM 系列的工作區層級配額](how-to-manage-quotas.md#workspace-level-quota)。 這麼做可讓您更細微地控制每個工作區可能會產生的成本，並限制特定的 VM 系列。 
 
-若要在工作區層級設定配額，請從[Azure 入口網站](https://portal.azure.com)開始。  選取訂用帳戶中的任何工作區，然後在左窗格中選取 [**使用方式 + 配額**]。 然後選取 [**設定配額**] 索引標籤來查看配額。 您需要訂用帳戶範圍的許可權才能設定此配額，因為它是會影響多個工作區的設定。
+若要在工作區層級設定配額，請從[Azure 入口網站](https://portal.azure.com)開始。  選取訂用帳戶中的任何工作區，然後在左窗格中選取 [**使用方式 + 配額**]。 然後選取 [**設定配額**] 索引標籤來查看配額。 您需要訂用帳戶範圍的許可權來設定配額，因為它是會影響多個工作區的設定。
 
-## <a name="set-run-auto-termination-policies"></a>設定執行自動終止原則 
+## <a name="set-run-autotermination-policies"></a>設定執行 autotermination 原則 
 
-設定您的訓練回合以限制其持續時間，或在某些情況下儘早終止，特別是當您使用 Azure Machine Learning 內建的超參數微調或自動化 Machine Learning 功能時。 
+在某些情況下，您應該將訓練回合設定為限制其持續時間，或提早終止。 例如，當您使用 Azure Machine Learning 的內建超參數微調或自動化機器學習服務時。
 
 以下是一些您可以使用的選項：
 * 在您的 RunConfiguration `max_run_duration_seconds`中定義名為的參數，以控制可在您選擇的計算（本機或遠端雲端計算）上擴充執行的最長持續時間。
-* 針對[超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中間值停止原則或截斷選取原則定義提早終止原則。 此外，也請使用`max_total_runs`或`max_duration_minutes`之類的參數來進一步控制各種超參數的掃描。
+* 針對[超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中間值停止原則或截斷選取原則定義提早終止原則。 若要進一步控制超參數掃描，請使用`max_total_runs`或`max_duration_minutes`之類的參數。
 * 針對[自動化機器學習](how-to-configure-auto-train.md#exit)，請使用`enable_early_stopping`旗標來設定類似的終止原則。 也可以使用`iteration_timeout_minutes`和`experiment_timeout_minutes`等屬性來控制執行或整個實驗的最長持續時間。
 
 ## <a name="use-low-priority-vms"></a>使用低優先順序 VM
 
-Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批次和 Machine Learning 服務之間的低優先順序 Vm。 這些配置會預先 emptible，但相較于專用 Vm，其價格會降低。 一般來說，我們建議您針對 Batch 工作負載使用低優先順序的 Vm，或透過重新提交（適用于批次推斷）或藉由重新開機（適用于使用檢查點的深度學習訓練），讓中斷可以恢復。
+Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批次和 Machine Learning 服務之間的低優先順序 Vm。 這些配置會預先 emptible，但相較于專用 Vm，其價格會降低。 一般來說，我們建議針對 Batch 工作負載使用低優先順序的 Vm。 您也應該使用它們，透過重新提交（適用于批次推斷）或透過重新開機（適用于使用檢查點的深度學習訓練）來中斷可復原。
 
 低優先順序 Vm 的單一配額會與專用配額值（依 VM 系列而不同）。 深入瞭解[AmlCompute 配額](how-to-manage-quotas.md)。
 
@@ -131,9 +135,9 @@ Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批�
 
 ## <a name="use-reserved-instances"></a>使用保留執行個體
 
-Azure 保留的 VM 實例提供了另一種方式，可透過認可一年或三年期來取得計算資源的大量節約。 這些折扣的範圍高達72% 的隨用隨付價格，並會直接套用至您的每月 Azure 帳單。
+另一種節省計算資源費用的方法是 Azure 保留的 VM 實例。 在此供應專案中，您承諾使用一年或三年期的條款。 這些折扣的範圍高達72% 的隨用隨付價格，並會直接套用至您的每月 Azure 帳單。
 
-Azure Machine Learning 計算原本就支援保留實例。 因此，如果您購買了一年或三年期的保留實例，我們會自動將該保留實例折扣用於 Azure Machine Learning 內使用的受控計算，而不需要從您的結尾進行任何額外的設定。
+Azure Machine Learning 計算原本就支援保留實例。 如果您購買一年或三年期的保留實例，我們會自動根據您的 Azure Machine Learning 受控計算來套用折扣。
 
 
 ## <a name="next-steps"></a>後續步驟

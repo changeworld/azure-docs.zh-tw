@@ -4,23 +4,23 @@ description: Azure SQL Database Edge 預覽版中的機器學習支援 Open Neur
 keywords: 部署 sql database edge
 services: sql-database-edge
 ms.service: sql-database-edge
-ms.subservice: machine-learning
+ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 03/26/2020
-ms.openlocfilehash: 7813a08b6b18e517b81e8c4bfac660d198eba7f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53e884c6ef0b03b3bbc1a0c9729f497e40290416
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366272"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994318"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL Database Edge 預覽版中的機器學習服務和 AI 搭配 ONNX
 
 Azure SQL Database Edge 預覽版中的機器學習支援[Open Neural Network Exchange （ONNX）](https://onnx.ai/)格式的模型。 ONNX 是一種開放格式，可讓您用來在各種[機器學習架構和工具](https://onnx.ai/supported-tools)之間交換模型。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要在 Azure SQL Database Edge 中推斷機器學習模型，您需要先取得模型。 這可以是預先定型的模型，或是以您選擇的架構定型的自訂模型。 Azure SQL Database Edge 支援 ONNX 格式，而且您必須將模型轉換成此格式。 對模型的精確度應該不會有任何影響，而且一旦擁有 ONNX 模型，您就可以在 Azure SQL Database 邊緣部署模型，並搭配[預測 t-sql 函數使用原生計分](/sql/advanced-analytics/sql-native-scoring/)。
 

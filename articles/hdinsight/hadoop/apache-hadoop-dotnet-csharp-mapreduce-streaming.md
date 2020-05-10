@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: c8c4e35fb14d834721a29037c9ac12d8160507d9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28817489af535ee45a6cc06cc5fe9d4fde9da8eb
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209089"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996826"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>搭配 HDInsight 的 Apache Hadoop 上的 MapReduce 串流使用 C#
 
@@ -23,7 +23,7 @@ Apache Hadoop 串流可讓您使用腳本或可執行檔來執行 MapReduce 工�
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
-HDInsight 叢集會使用[Monohttps://mono-project.com) （](https://mono-project.com)來執行 .net 應用程式。 4.2.1 版的 Mono 隨附於 3.6 版的 HDInsight。 如需 HDInsight 隨附之 Mono 版本的詳細資訊，請參閱[不同 hdinsight 版本提供的 Apache Hadoop 元件](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。
+HDInsight 叢集會使用[Monohttps://mono-project.com) （](https://mono-project.com)來執行 .net 應用程式。 4.2.1 版的 Mono 隨附於 3.6 版的 HDInsight。 如需 HDInsight 隨附之 Mono 版本的詳細資訊，請參閱[不同 hdinsight 版本提供的 Apache Hadoop 元件](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。
 
 如需 Mono 與 .NET Framework 版本之相容性的詳細資訊，請參閱 [Mono 相容性](https://www.mono-project.com/docs/about-mono/compatibility/) \(英文\)。
 
@@ -39,7 +39,7 @@ HDInsight 叢集會使用[Monohttps://mono-project.com) （](https://mono-projec
 
 如需有關串流的詳細資訊，請參閱 [Hadoop 串流](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html) \(英文\)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Visual Studio。
 

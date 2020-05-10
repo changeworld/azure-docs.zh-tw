@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 77af321b74a47306a7202c1fddf6e81edc0ee02a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926063"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993953"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定（預覽）
 
@@ -195,7 +195,6 @@ Blob 版本的已簽署資源是`bv`。 如需詳細資訊，請參閱[建立服
 
 Blob 版本設定在下欄區域提供預覽：
 
-- 法國南部
 - 法國中部
 - 加拿大東部
 - 加拿大中部
