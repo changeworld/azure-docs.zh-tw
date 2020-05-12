@@ -1,21 +1,21 @@
 ---
 title: 關於搜尋結果分頁的 C# 教學課程
 titleSuffix: Azure Cognitive Search
-description: 本教學課程示範搜尋結果的分頁。 它是以現有的飯店專案為基礎而建置的，並依第一頁、下一頁、上一頁、最後一頁和編號按鈕分頁。 第二個分頁系統會使用無止盡捲動 (透過將垂直捲軸移至其下限來觸發)。
+description: 將分頁和導覽按鈕新增至搜尋結果，並以現有的飯店專案為基礎來新增 [第一頁]、[下一頁]、[上一頁]、[最後一頁] 和 [編號] 按鈕。 第二個分頁系統會使用無止盡捲動 (透過將垂直捲軸移至其下限來觸發)。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121515"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780567"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教學課程：搜尋結果分頁 - Azure 認知搜尋
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 將分頁新增至搜尋結果
 
 了解如何實作兩個不同的分頁系統，第一個會以頁碼為依據，第二個則與無止盡捲動有關。 這兩個分頁系統都受到廣泛使用，而且選取正確的分頁系統取決於您所需結果的使用者體驗。 此教學課程會將分頁系統建置於 [C# 教學課程：建立第一個您的應用程式 - Azure 認知搜尋](tutorial-csharp-create-first-app.md)教學課程中所建立的專案之上。
 

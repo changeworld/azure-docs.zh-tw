@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135550"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628600"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>決定您要購買的保留
 
 除了 Azure Databricks 以外，所有保留都會以小時為單位套用。 您應根據一致的基礎使用量來購買保留。 有多種方式可以決定您要購買的項目，而本文可協助您判斷所應購買的保留。
 
-若購買高於歷史使用量的容量，會導致保留的使用量過低。 您應該盡可能避免使用量過低。 未使用的保留容量挪移至下一個小時繼續執行。  超過保留數量的使用量會以較昂貴的隨用隨付費率計費。
+若購買高於歷史使用量的容量，會導致保留的使用量過低。 您應該盡可能避免使用量過低。 未使用的保留容量挪移至下一個小時繼續執行。 超過保留數量的使用量會以較昂貴的隨用隨付費率計費。
 
 ## <a name="analyze-usage-data"></a>分析使用量資料
 
@@ -40,11 +40,11 @@ ms.locfileid: "80135550"
 
 如果您想要在執行個體大小的系列層級進行分析，您可以從 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 取得執行個體大小彈性值。 將值與您的資料結合，以進行分析。 如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>分析使用量而據以購買 SQL Database 保留執行個體
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>分析 Azure Synapse Analytics 保留執行個體購買的使用量
 
-保留容量適用於 SQL Databases 虛擬核心計算價格。 此容量不適用於以 DTU 為基礎的價格、SQL 授權成本，或計算以外的任何成本。
+保留容量適用於 Azure Synapse Analytics DWU 定價。 其不適用於 Azure Synapse Analytics 授權成本，或計算以外的任何成本。
 
-若要縮小合格 SQL 使用量的範圍，請對您的使用量資料套用下列篩選條件：
+若要縮小合格使用量的範圍，請對您的使用量資料套用下列篩選條件：
 
 
 - 將 **MeterCategory** 篩選為 **SQL Database**。
@@ -60,22 +60,22 @@ ms.locfileid: "80135550"
 - 世代。 例如，第 5 代。
 - 資源位置
 
-### <a name="analysis-for-sql-data-warehouse"></a>SQL 資料倉儲的分析
+### <a name="analysis-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的分析
 
-保留容量適用於 SQL 資料倉儲 DWU 使用量，可以 100 DWU 為單位累加購買。 若要縮小合格 SQL 使用量的範圍，請對您的使用量資料套用下列篩選條件：
+保留容量適用於 Azure Synapse Analytics DWU 使用量，可以 100 DWU 為單位累加購買。 若要縮小合格使用量的範圍，請對您的使用量資料套用下列篩選條件：
 
 - 將 **MeterName** 篩選為 **100 DWU**。
 - 將 [計量子類別]  篩選為 [計算最佳化第 2 代]  。
 
-使用 [資源位置]  欄位來判斷 SQL DW 在某個區域中的使用量。
+使用 [資源位置]  欄位來判斷 Azure Synapse Analytics 在某個區域中的使用量。
 
-SQL 資料倉儲使用量可以在一天內相應增加和減少。 請洽詢負責管理 SQL 資料倉儲執行個體的小組，以了解基礎使用量。
+Azure Synapse Analytics 使用量可以在一天內相應增加和減少。 請洽詢負責管理 Azure Synapse Analytics 執行個體的小組，以了解基礎使用量。
 
-移至 Azure 入口網站中的 [保留]，並以 100 DWU 的倍數購買 SQL 資料倉儲保留容量。
+移至 Azure 入口網站中的 [保留]，並以 100 DWU 的倍數購買 Azure Synapse Analytics 保留容量。
 
 ## <a name="reservation-purchase-recommendations"></a>保留購買建議
 
-保留購買建議可藉由分析您過去 7、30 和 60 天的每小時使用量資料計算得出。 Azure 會設算您有保留時的成本，並將其與您長時間產生的實際隨用隨付成本進行比較。 對於您在時間範圍內使用的每個數量，都會執行此計算。 能夠節省最多成本的數量，即為建議值。 
+保留購買建議可藉由分析您過去 7、30 和 60 天的每小時使用量資料計算得出。 Azure 會設算您有保留時的成本，並將其與您長時間產生的實際隨用隨付成本進行比較。 對於您在時間範圍內使用的每個數量，都會執行此計算。 能夠節省最多成本的數量，即為建議值。
 
 例如，您大部分的時間可能使用 500 個 VM，但有時使用量會遽增至 700 個 VM。 在此範例中，Azure 會分別就 500 和 700 個 VM 的數量計算可節省的成本。 由於 700 個 VM 的使用量是偶發的，因此建議計算會判定購買 500 個 VM 的保留可節省最多成本，而提供 500 的建議數量。
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676681"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691883"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+請確定使用[適當的推斷資料類型](best-practices-sql-on-demand.md#check-inferred-data-types)來達到最佳效能。 
+
 ### <a name="filename-function"></a>Filename 函式
 
-此函式會傳回資料列來源的檔案名稱。
+此函式會傳回資料列來源的檔案名稱。 
 
 若要查詢特定檔案，請閱讀[查詢特定檔案](query-specific-files.md#filename)一文中的＜Filename＞一節。
+
+傳回資料類型為 nvarchar(1024)。 為了達到最佳效能，請一律將 filename 函式的結果轉換成適當的資料類型。 如果您使用字元資料類型，請務必確認長度適當。
 
 ### <a name="filepath-function"></a>Filepath 函式
 
@@ -137,6 +141,8 @@ BULK N'path_to_file(s)', FORMAT='PARQUET');
 - 若以參數進行呼叫，則會傳回路徑的一部分，該部分會與參數中所指定位置上的萬用字元相符。 例如，參數值 1 會傳回符合第一個萬用字元的路徑部分。
 
 如需詳細資訊，請參閱[查詢特定檔案](query-specific-files.md#filepath)一文的 Filepath 區段。
+
+傳回資料類型為 nvarchar(1024)。 為了達到最佳效能，請一律將 filepath 函式的結果轉換成適當的資料類型。 如果您使用字元資料類型，請務必確認長度適當。
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>使用複雜類型和巢狀或重複的資料結構
 

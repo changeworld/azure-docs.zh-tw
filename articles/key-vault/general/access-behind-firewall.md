@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: e24684063e73b8f8b659304987f46632f3601e8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426117"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732320"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>在防火牆後存取 Azure 金鑰保存庫
 
@@ -25,7 +25,7 @@ ms.locfileid: "81426117"
 
 * 透過 Azure Active Directory (Azure AD) 進行的驗證。
 * Azure 金鑰保存庫的管理。 這包括透過 Azure Resource Manager 建立、讀取、更新、刪除和設定存取原則。
-* 經由金鑰保存庫專用端點 (例如 [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net))，存取和管理金鑰保存庫本身儲存的物件 (金鑰和密碼)。  
+* 經由金鑰保存庫專用端點 (例如 `https://yourvaultname.vault.azure.net`)，存取和管理金鑰保存庫本身儲存的物件 (金鑰和密碼)。  
 
 視您的組態和環境而定，會有一些變化。
 
@@ -39,8 +39,8 @@ ms.locfileid: "81426117"
 
 | 主體類型 | 端點:連接埠 |
 | --- | --- |
-| 使用 Microsoft 帳戶的使用者<br> (例如，user@hotmail.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
-| 搭配使用公司帳戶或學校帳戶與 Azure AD 的使用者或服務主體 (例如，user@contoso.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br> login.microsoftonline.de:443 |
+| 使用 Microsoft 帳戶的使用者<br> (例如，user@hotmail.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br>  login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
+| 搭配使用公司帳戶或學校帳戶與 Azure AD 的使用者或服務主體 (例如，user@contoso.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br>  login.microsoftonline.de:443 |
 | 使用公司帳戶或學校帳戶加上 Active Directory 同盟服務 (AD FS) 或其他同盟端點的使用者或服務主體 (例如，user@contoso.com) |公司帳戶或學校帳戶的所有端點，加上 AD FS 或其他同盟端點 |
 
 還有其他可能的複雜案例。 如需其他資訊，請參閱 [Azure Active Directory 驗證流程](../../active-directory/develop/authentication-scenarios.md)、[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) 及 [Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
@@ -52,7 +52,7 @@ ms.locfileid: "81426117"
 | 運算的類型 | 端點:連接埠 |
 | --- | --- |
 | 透過 Azure Resource Manager 的<br> 金鑰保存庫控制項面作業 |**全域：**<br> management.azure.com:443<br><br> **Azure 中國︰**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API |**全域：**<br> graph.microsoft.com:443<br><br> **Azure 中國︰**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> graph.microsoft.com:443<br><br> **Azure 德國︰**<br> graph.cloudapi.de:443 |
+| Microsoft Graph API |**全域：**<br> graph.microsoft.com:443<br><br> **Azure 中國︰**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> graph.microsoft.com:443<br><br> **Azure 德國︰**<br>  graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>金鑰保存庫作業
 
@@ -64,7 +64,13 @@ ms.locfileid: "81426117"
 
 ## <a name="ip-address-ranges"></a>IP 位址範圍
 
-金鑰保存庫服務會使用其他 Azure 資源，例如 PaaS 基礎結構。 因此，不可能提供金鑰保存庫服務端點在任何特定時間會有的特定 IP 位址範圍。 如果您的防火牆只支援 IP 位址範圍，請參閱 [Microsoft Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)文件。 驗證和身分識別 (Azure Active Directory) 是全域服務，可能會在沒有通知的情況下，容錯移轉至其他地區或移動流量。 在此案例中，[驗證和身分識別 IP 位址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中所列出的 IP 範圍全都應該新增至防火牆。
+金鑰保存庫服務會使用其他 Azure 資源，例如 PaaS 基礎結構。 因此，不可能提供金鑰保存庫服務端點在任何特定時間會有的特定 IP 位址範圍。 如果您的防火牆只支援 IP 位址範圍，請參閱以下 Microsoft Azure 資料中心 IP 範圍文件：
+* [公開](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
+* [德國](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
+* [中國](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+驗證和身分識別 (Azure Active Directory) 是全域服務，可能會在沒有通知的情況下，容錯移轉至其他地區或移動流量。 在此案例中，[驗證和身分識別 IP 位址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中所列出的 IP 範圍全都應該新增至防火牆。
 
 ## <a name="next-steps"></a>後續步驟
 
