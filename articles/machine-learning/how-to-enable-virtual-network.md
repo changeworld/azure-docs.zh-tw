@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927338"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119047"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>使用私人虛擬網路保護您的機器學習服務生命週期
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ ms.locfileid: "82927338"
 > - 自動化機器學習的 UI
 > - 資料標記的 UI
 > - 資料集的 UI
+> - Notebooks
 > 
->  如果您嘗試，從虛擬網路內部的儲存體帳戶視覺化資料時，將會收到錯誤，如下所示：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> 如果您嘗試，您會收到類似下列錯誤的訊息：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>什麼是 VNET？
 
@@ -39,7 +40,7 @@ ms.locfileid: "82927338"
 Azure Machine Learning 依賴其他 Azure 服務來取得計算資源（也稱為[計算目標](concept-compute-target.md)），以定型和部署模型。 目標可以在虛擬網路內建立。 例如，您可以使用 Azure Machine Learning 計算來定型模型，然後將模型部署至 Azure Kubernetes Service （AKS）。 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 + Azure Machine Learning[工作區](how-to-manage-workspace.md)。
 
@@ -133,8 +134,8 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 - 使用 NSG 規則拒絕連出網際網路連線。
 
 - 針對__計算實例__或__計算__叢集，將輸出流量限制為下列專案：
-   - Azure 儲存體，方法是使用__RegionName__的__服務標記__。 其中`{RegionName}` ，是 Azure 區域的名稱。
-   - Azure Container Registry，方法是使用__AzureContainerRegistry. RegionName__的__服務標記__。 其中`{RegionName}` ，是 Azure 區域的名稱。
+   - Azure 儲存體，方法是使用__RegionName__的__服務標記__。 其中 `{RegionName}` ，是 Azure 區域的名稱。
+   - Azure Container Registry，方法是使用__AzureContainerRegistry. RegionName__的__服務標記__。 其中 `{RegionName}` ，是 Azure 區域的名稱。
    - Azure Machine Learning，方法是使用__AzureMachineLearning__的__服務標記__
    - Azure Resource Manager，方法是使用__AzureResourceManager__的__服務標記__
    - Azure Active Directory，方法是使用__AzureActiveDirectory__的__服務標記__
@@ -176,7 +177,7 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 
 * 在資源所在的區域中，為 Azure Batch 服務所使用的每個 IP 位址建立一個 UDR。 這些 Udr 可讓 Batch 服務與計算節點進行通訊，以進行工作排程。 此外，也請為資源所在的 Azure Machine Learning 服務新增 IP 位址，因為這是存取計算實例的必要參數。 若要取得 Batch 服務和 Azure Machine Learning 服務的 IP 位址清單，請使用下列其中一種方法：
 
-    * 下載[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤，並搜尋`BatchNodeManagement.<region>`和`AzureMachineLearning.<region>`的檔案，其中`<region>`是您的 Azure 區域。
+    * 下載[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤，並搜尋和的 `BatchNodeManagement.<region>` 檔案 `AzureMachineLearning.<region>` ，其中 `<region>` 是您的 Azure 區域。
 
     * 使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)下載資訊。 下列範例會下載 IP 位址資訊，並篩選出美國東部2區域的資訊：
 
@@ -185,7 +186,7 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
 
-* 您的內部部署網路應用裝置不得封鎖對 Azure 儲存體的輸出流量。 具體而言，url 的格式`<account>.table.core.windows.net`為、 `<account>.queue.core.windows.net`和。 `<account>.blob.core.windows.net`
+* 您的內部部署網路應用裝置不得封鎖對 Azure 儲存體的輸出流量。 具體而言，Url 的格式為 `<account>.table.core.windows.net` 、 `<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 。
 
 當您新增 Udr 時，請定義每個相關批次 IP 位址首碼的路由，並將 __[下一個躍點類型]__ 設定為 [__網際網路__]。 下圖顯示此 UDR 在 Azure 入口網站中的範例：
 
@@ -201,7 +202,7 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 
 1. 選取左側的 [計算]  。
 
-1. 從中央選取 [__定型__叢集]，然後選取__+__[]。
+1. 從中央選取 [__定型__叢集]，然後選取 [] __+__ 。
 
 1. 在 [__新增定型__叢集] 對話方塊中，展開 [ __Advanced settings__ ] （設定）區段。
 
@@ -288,7 +289,7 @@ except ComputeTargetException:
 >
 > 當您建立工作區時，會自動布建預設儲存體帳戶。
 >
-> 針對非預設儲存體帳戶，函式`storage_account` [ `Workspace.create()`中的參數可讓您](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)依 Azure 資源識別碼指定自訂儲存體帳戶。
+> 針對非預設儲存體帳戶，函式 `storage_account` 中的參數[ `Workspace.create()` 可](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)讓您依 Azure 資源識別碼指定自訂儲存體帳戶。
 
 
 <a id="aksvnet"></a>
@@ -309,7 +310,7 @@ except ComputeTargetException:
 
 1. 選取左側的 [計算]  。
 
-1. 從中央選取 [__推斷__叢集]，然後選取__+__[]。
+1. 從中央選取 [__推斷__叢集]，然後選取 [] __+__ 。
 
 1. 在 [__新增推斷__叢集] 對話方塊中，選取 [__網路__設定] 底下的 [ __Advanced__ ]。
 
@@ -330,7 +331,7 @@ except ComputeTargetException:
 
    [![輸入安全性規則](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
-您也可以使用 Azure Machine Learning SDK，在虛擬網路中新增 Azure Kubernetes Service。 如果您在虛擬網路中已經有 AKS 叢集，請將其附加至工作區，如[如何部署至 AKS](how-to-deploy-and-where.md)中所述。 下列程式碼會在名為`default` `mynetwork`的虛擬網路子網中建立新的 AKS 實例：
+您也可以使用 Azure Machine Learning SDK，在虛擬網路中新增 Azure Kubernetes Service。 如果您在虛擬網路中已經有 AKS 叢集，請將其附加至工作區，如[如何部署至 AKS](how-to-deploy-and-where.md)中所述。 下列程式碼會在 `default` 名為的虛擬網路子網中建立新的 AKS 實例 `mynetwork` ：
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -406,7 +407,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-命令所參考的`body.json`檔案內容與下列 JSON 檔類似：
+命令所參考的檔案內容 `body.json` 與下列 JSON 檔類似：
 
 ```json
 { 
@@ -439,9 +440,9 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 1. 若要在您的虛擬網路上啟用子網委派，請使用[新增或移除子網委派一](../virtual-network/manage-subnet-delegation.md)文中的資訊。 您可以在建立虛擬網路時啟用委派，或將它新增至現有的網路。
 
     > [!IMPORTANT]
-    > 啟用委派時，請`Microsoft.ContainerInstance/containerGroups`使用做為服務值的__委派子網__。
+    > 啟用委派時，請使用 `Microsoft.ContainerInstance/containerGroups` 做為服務值的__委派子網__。
 
-2. 使用[Deploy_configuration AciWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型， `vnet_name`並使用和`subnet_name`參數。 將這些參數設定為您已啟用委派的虛擬網路名稱和子網。
+2. 使用[Deploy_configuration AciWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型， `vnet_name` 並使用和 `subnet_name` 參數。 將這些參數設定為您已啟用委派的虛擬網路名稱和子網。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
 
@@ -469,7 +470,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 
     __Azure CLI__
 
-    如果您已[安裝 Azure CLI 的 Machine Learning 延伸](reference-azure-machine-learning-cli.md)模組，則可以使用`az ml workspace show`命令來顯示工作區資訊。
+    如果您已[安裝 Azure CLI 的 Machine Learning 延伸](reference-azure-machine-learning-cli.md)模組，則可以使用 `az ml workspace show` 命令來顯示工作區資訊。
 
     ```azurecli-interactive
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
@@ -558,7 +559,7 @@ Azure Data Lake Storage Gen 2 是一組適用于大規模資料分析的功能�
 
 在虛擬網路內使用具有 Data Lake Storage Gen 2 的 Azure Machine Learning 時，請使用下列指導方針：
 
-* 如果您使用__SDK 來建立資料集__，而執行程式碼的系統__不在虛擬網路中__，請使用`validate=False`參數。 此參數會略過驗證，如果系統不在與儲存體帳戶相同的虛擬網路中，就會失敗。 如需詳細資訊，請參閱[from_files （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法。
+* 如果您使用__SDK 來建立資料集__，而執行程式碼的系統__不在虛擬網路中__，請使用 `validate=False` 參數。 此參數會略過驗證，如果系統不在與儲存體帳戶相同的虛擬網路中，就會失敗。 如需詳細資訊，請參閱[from_files （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法。
 
 * 使用 Azure Machine Learning 計算實例或計算叢集來使用資料集來定型模型時，它必須位於與儲存體帳戶相同的虛擬網路中。
 
@@ -618,7 +619,7 @@ Azure Machine Learning 會使用與工作區相關聯的金鑰保存庫實例來
 
     * 在 [__來源服務標記__] 下拉式清單中，選取 [ __AzureMachineLearning__]。
 
-    * 在 [__來源埠範圍__] 下拉式清單中，選取__*__[]。
+    * 在 [__來源埠範圍__] 下拉式清單中，選取 [] __*__ 。
 
     * 在 [__目的地__] 下拉式清單中，選取 [__任何__]。
 

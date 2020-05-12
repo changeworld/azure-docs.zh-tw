@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519490"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120380"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集
 
@@ -109,7 +109,7 @@ ms.locfileid: "80519490"
 
 這些需求取決於特定的 Azure 資料中心限制。
 
-- 有幾個網站（例如澳大利亞、德國和英國南部）需要在包裹上寫入 Microsoft datacenter 輸入識別碼，以確保安全的理由。 將您的磁片磁碟機或磁片寄送到資料中心之前，請洽詢adbops@microsoft.comAzure DataBox 作業（）以取得此號碼。 若沒有此數位，將會拒絕封裝。
+- 有幾個網站（例如澳大利亞、德國和英國南部）需要在包裹上寫入 Microsoft datacenter 輸入識別碼，以確保安全的理由。 將您的磁片磁碟機或磁片寄送到資料中心之前，請洽詢 Azure DataBox 作業（ adbops@microsoft.com ）以取得此號碼。 若沒有此數位，將會拒絕封裝。
 - 印度的資料中心需要驅動程式的個人詳細資料，例如政府識別碼卡或證明否。 （例如，[PAN]、[AADHAR]、[DL]、[名稱]、[連絡人] 和 [汽車] 盤子編號，以取得閘道進入階段。 為避免傳遞延遲，請告知您的電訊廠商有關這些需求的資訊。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>建立作業時，寄送地址是與我儲存體帳戶位置不同的位置。 我該怎麼辦？
@@ -153,7 +153,7 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 匯入/匯出是否支援 AES-256 加密？
 
-否。 Azure 匯入/匯出服務會使用 AES-128 BitLocker 加密。
+是。 Azure 匯入/匯出服務會使用 AES-256 BitLocker 加密。
 
 ## <a name="next-steps"></a>後續步驟
 

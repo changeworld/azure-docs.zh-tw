@@ -5,19 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132352"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119250"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 託管應用程式的零檢測應用程式監視
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>使用 Istio Kubernetes 裝載應用程式的零檢測應用程式監視-已被取代
 
 > [!IMPORTANT]
-> 這項功能目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能目前已淘汰，將于2020年8月1日之後不再受支援。
+> 目前建議的版本僅適用于[透過獨立代理程式的 JAVA](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。
 
 Azure 監視器現在會利用 Kubernetes 叢集上的服務網格技術，為任何 Kubernetes 託管應用程式提供現成的應用程式監視。 使用預設的應用程式深入解析功能（例如[應用程式對應](../../azure-monitor/app/app-map.md)）來建立相依性模型，[即時計量資料流](../../azure-monitor/app/live-stream.md)使用[預設儀表板](../../azure-monitor/app/overview-dashboard.md)、計量[瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)和活頁[簿](../../azure-monitor/app/usage-workbooks.md)的即時監視、強大的視覺效果。 這項功能可協助使用者找出所選 Kubernetes 命名空間內所有 Kubernetes 工作負載的效能瓶頸和失敗熱點。 藉由使用 Istio 之類的技術，讓您的現有服務網格投資發揮最大效益，Azure 監視器不需要修改應用程式的程式碼，就能進行自動檢測的應用程式監視。
 

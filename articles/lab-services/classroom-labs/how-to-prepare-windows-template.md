@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521180"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119292"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>在 Azure 實驗室服務中設定 Windows 範本機器的指南
 
@@ -32,7 +32,7 @@ ms.locfileid: "80521180"
 
 若要手動下載並安裝 OneDrive，請參閱[onedrive](https://onedrive.live.com/about/download/)或[商務用 onedrive](https://onedrive.live.com/about/business/)下載頁面。
 
-您也可以使用下列 PowerShell 腳本。  它會自動下載並安裝最新版本的 OneDrive。  安裝 OneDrive 用戶端之後，請執行安裝程式。  在我們的範例中，我們`/allUsers`使用參數來為電腦上的所有使用者安裝 OneDrive。 我們也會使用`/silent`參數來以無訊息方式安裝 OneDrive。
+您也可以使用下列 PowerShell 腳本。  它會自動下載並安裝最新版本的 OneDrive。  安裝 OneDrive 用戶端之後，請執行安裝程式。  在我們的範例中，我們使用 `/allUsers` 參數來為電腦上的所有使用者安裝 OneDrive。 我們也會使用 `/silent` 參數來以無訊息方式安裝 OneDrive。
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -136,9 +136,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 如果您的範本電腦需要 Office，建議您透過[Office 部署工具（ODT）](https://www.microsoft.com/download/details.aspx?id=49117 )來安裝 office。 您將需要使用[office 365 用戶端設定服務](https://config.office.com/)來建立可重複使用的設定檔，以選擇要將哪些架構、Office 需要哪些功能，以及更新的頻率。
 
 1. 前往[Office 365 用戶端設定服務](https://config.office.com/)，並下載您自己的設定檔。
-2. 下載[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)。  下載的檔案將`setup.exe`會是。
-3. 執行`setup.exe /download configuration.xml`以下載 Office 元件。
-4. 執行`setup.exe /configure configuration.xml`以安裝 Office 元件。
+2. 下載[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)。  下載的檔案將會是 `setup.exe` 。
+3. 執行 `setup.exe /download configuration.xml` 以下載 Office 元件。
+4. 執行 `setup.exe /configure configuration.xml` 以安裝 Office 元件。
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>變更 Microsoft Office 365 更新通道
 
@@ -211,11 +211,11 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
 2. 搜尋「語言套件」
 3. 選擇要安裝的語言
 
-如果您已經登入範本 VM，請使用 [[安裝語言套件] 快捷方式](ms-settings:regionlanguage?activationSource=SMC-IA-4027670)直接前往適當的 [設定] 頁面。
+如果您已經登入範本 VM，請使用 [安裝語言套件] 快捷方式（ `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` ）直接移至適當的 [設定] 頁面。
 
 ## <a name="remove-unneeded-built-in-apps"></a>移除不必要的內建應用程式
 
-Windows 10 隨附許多內建應用程式，您的特定類別可能不需要此功能。 若要簡化學生的機器映射，您可能會想要從範本機器卸載一些應用程式。  若要查看已安裝的應用程式清單，請`Get-AppxPackage`使用 PowerShell Cmdlet。  下列範例顯示所有可以移除的已安裝應用程式。
+Windows 10 隨附許多內建應用程式，您的特定類別可能不需要此功能。 若要簡化學生的機器映射，您可能會想要從範本機器卸載一些應用程式。  若要查看已安裝的應用程式清單，請使用 PowerShell `Get-AppxPackage` Cmdlet。  下列範例顯示所有可以移除的已安裝應用程式。
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722956"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118153"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 儲存體監視資料參考
 
@@ -31,13 +31,13 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="account-level"></a>帳戶層級
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | UsedCapacity | 儲存體帳戶所使用的儲存體數量。 若為標準儲存體帳戶，則為 Blob、資料表、檔案和佇列所使用的容量總和。 若為進階儲存體帳戶和 Blob 儲存體帳戶，此數量和 BlobCapacity 相同。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 
 #### <a name="blob-storage"></a>Blob 儲存體
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 維度： **BlobType**和**BlobTier** （[定義](#metrics-dimensions)） |
 | BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 <br/> 維度： **BlobType**和**BlobTier** （[定義](#metrics-dimensions)） |
@@ -46,7 +46,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="table-storage"></a>資料表儲存體
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | TableCapacity | 儲存體帳戶所使用的表格儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 | TableCount   | 儲存體帳戶中的表格數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
@@ -54,7 +54,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="queue-storage"></a>佇列儲存體
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | QueueCapacity | 儲存體帳戶所使用的佇列儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 | QueueCount   | 儲存體帳戶中的佇列數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
@@ -62,7 +62,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="file-storage"></a>檔案儲存體
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | FileCapacity | 儲存體帳戶所使用的檔案儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：平均 <br/> 值範例：1024 |
 | FileCount   | 儲存體帳戶中的檔案數目。 <br/><br/> 單位：計數 <br/> 彙總類型：平均 <br/> 值範例：1024 |
@@ -74,7 +74,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 Azure 儲存體會提供下列 Azure 監視器交易計量。
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | 交易 | 向儲存體服務或所指定 API 作業傳送的要求數。 此數目包括成功與失敗的要求，以及產生錯誤的要求。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 適用維度：ResponseType、GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions))<br/> 值範例：1024 |
 | 輸入 | 輸入資料量。 此數目包括從外部用戶端輸入到 Azure 儲存體與 Azure 內的輸入。 <br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
@@ -89,7 +89,7 @@ Azure 儲存體會提供下列 Azure 監視器交易計量。
 
 Azure 儲存體支援下列 Azure 監視器計量維度。
 
-| 維度名稱 | 描述 |
+| 維度名稱 | 說明 |
 | ------------------- | ----------------- |
 | **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為**BlockBlob**、 **PageBlob**和**Azure Data Lake Storage**。 附加 Blob 隨附於 BlockBlob。 |
 | **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 blob 物件資料。 如需詳細資訊，請參閱[Azure 儲存體 blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>經常性**存取：熱**層</li> <li>**酷炫**：非經常性存取層</li> <li>封存 **：封存**層</li> <li>**Premium**：區塊 blob 的高階層級</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**： premium 分頁 blob 的層級類型</li> <li>**標準**：標準分頁 Blob 的層級類型</li> <li>**Untiered**：一般用途 v1 儲存體帳戶的層級類型</li> |
@@ -131,18 +131,18 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |:--- |:---|
 |**time** | 儲存體收到要求時的國際時間協調（UTC）時間。 例如： `2018/11/08 21:09:36.6900118` 。|
 |**resourceId** | 儲存體帳戶的資源識別碼。 例如： `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**類別** | 所要求之作業的分類。 例如： `StorageRead`、 `StorageWrite`或。 `StorageDelete`|
+|**類別** | 所要求之作業的分類。 例如： `StorageRead` 、 `StorageWrite` 或 `StorageDelete` 。|
 |**operationName** | 已執行的 REST 操作類型。 <br> 如需作業的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 |**operationVersion** | 提出要求時所指定的儲存體服務版本。 這相當於**x-ms 版本**標頭的值。 例如： `2017-04-17` 。|
 |**schemaVersion** | 記錄的架構版本。 例如： `1.0` 。|
-|**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會設定為`Unknown`。 <br> 例如： `206` |
-|**statusText** | 要求之作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在2017-04-17 版和更新版本中，不`ClientOtherError`會使用狀態訊息。 相反地，此欄位包含錯誤碼。 例如： `SASSuccess`  |
+|**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會設定為 `Unknown` 。 <br> 例如： `206` |
+|**statusText** | 要求之作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在2017-04-17 版和更新版本中，不會使用狀態訊息 `ClientOtherError` 。 相反地，此欄位包含錯誤碼。 例如： `SASSuccess`  |
 |**durationMs** | 執行要求之作業的總時間（以毫秒為單位）。 這包括讀取傳入要求的時間，以及將回應傳送給要求者。 例如： `12` 。|
 |**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如： `192.100.0.102:4362` 。 |
 |**correlationId** | 用來讓資源間的記錄相互關聯的識別碼。 例如： `b99ba45e-a01e-0042-4ea6-772bbb000000` 。 |
 |**location** | 儲存體帳戶的位置。 例如： `North Europe` 。 |
-|**protocol**|作業中使用的通訊協定。 例如： `HTTP`、 `HTTPS`、或`SMB``NFS`|
-| **uri** | 要求的統一資源識別項。 例如： http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10 。 |
+|**protocol**|作業中使用的通訊協定。 例如： `HTTP` 、 `HTTPS` 、 `SMB` 或`NFS`|
+| **uri** | 要求的統一資源識別項。 例如： `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10` 。 |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>描述如何驗證操作的欄位
 
@@ -175,9 +175,9 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 ```
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:---|
-|**身分識別/類型** | 用來提出要求的驗證類型。 例如： `OAuth`、 `SAS Key`、或`Account Key``Anonymous` |
+|**身分識別/類型** | 用來提出要求的驗證類型。 例如： `OAuth` 、 `SAS Key` 、 `Account Key` 或`Anonymous` |
 |**identity/tokenHash**|此欄位僅保留供內部使用。 |
 |**授權/動作** | 指派給要求的動作。 例如： `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**authorization/roleAssignmentId** | 角色指派識別碼。 例如： `4e2521b7-13be-4363-aeda-111111111111` 。|
@@ -230,7 +230,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 }
 ```
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:---|
 |**帳戶** | 儲存體帳戶的名稱。 例如： `mystorageaccount` 。  |
 |**requestUrl** | 要求的 URL。 例如： `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10` 。|
@@ -240,7 +240,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |**etag** | 傳回之物件的 ETag 識別碼 (以引號括住)。 例如： `0x8D101F7E4B662C4` 。  |
 |**Azurestoragelog.serverlatencyms** | 執行要求的作業所表示的總時間（以毫秒為單位）。 此值不包括網路延遲（讀取傳入要求並將回應傳送給要求者的時間）。 例如： `22` 。 |
 |**serviceType** | 與此要求相關聯的服務。 例如：`blob`、`table`、`files` 或 `queue`。 |
-|**operationCount** | 包含在要求中的每個已記錄作業的數目。 此計數以的索引為開頭`0`。 某些要求需要一項以上的作業，例如複製 blob 的要求。 大部分的要求只會執行一項作業。 例如： `1` 。 |
+|**operationCount** | 包含在要求中的每個已記錄作業的數目。 此計數以的索引為開頭 `0` 。 某些要求需要一項以上的作業，例如複製 blob 的要求。 大部分的要求只會執行一項作業。 例如： `1` 。 |
 |**requestHeaderSize** | 要求標頭的大小（以位元組為單位）。 例如： `578` 。 <br>如果要求不成功，此值可能是空的。 |
 |**requestBodySize** | 儲存體服務所讀取的要求封包大小（以位元組表示）。 <br> 例如： `0` 。 <br>如果要求不成功，此值可能是空的。  |
 |**responseHeaderSize** | 回應標頭的大小（以位元組為單位）。 例如： `216` 。 <br>如果要求不成功，此值可能是空的。  |
@@ -262,7 +262,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |**smbCommandMajor uint32** | [SMB2_HEADER]**命令**中的值。 目前，這是介於0到18（含）之間的數位。 例如： `0x6` |
 |**smbCommandMinor** | **SmbCommandMajor**的子類別（如果適用的話）。 例如： `DirectoryCloseAndDelete` |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - 如需監視 Azure 儲存體的說明，請參閱[監視 Azure 儲存體](monitor-storage.md)。
 - 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器監視 azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。

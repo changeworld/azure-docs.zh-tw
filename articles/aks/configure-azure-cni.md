@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207491"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120924"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
 
@@ -22,7 +22,7 @@ ms.locfileid: "82207491"
 ## <a name="prerequisites"></a>先決條件
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
-* AKS 叢集可能不會`169.254.0.0/16`使用`172.30.0.0/16`、 `172.31.0.0/16`、或`192.0.2.0/24`作為 Kubernetes 服務位址範圍。
+* AKS 叢集可能不會使用 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或 `192.0.2.0/24` 作為 Kubernetes 服務位址範圍。
 * AKS 叢集所使用的服務主體在您虛擬網路內的子網路上必須至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)權限。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -67,7 +67,9 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 
 ### <a name="configure-maximum---new-clusters"></a>設定最大值 - 新叢集
 
-您*只能在叢集部署階段*設定每一節點的 Pod 數目上限。 如果您使用 Azure CLI 或 Resource Manager 範本進行部署，則可以將每個節點的最大 pod 值設定為高達250。
+您可以在叢集部署期間，或在新增節點集區時，設定每個節點的 pod 數目上限。 如果您使用 Azure CLI 或 Resource Manager 範本進行部署，則可以將每個節點的最大 pod 值設定為高達250。
+
+如果您在建立新的節點集區時未指定 maxPods，您會收到 Azure CNI 的預設值30。
 
 會強制執行每個節點最大 pod 數的最小值，以確保系統 pod 對叢集健康狀態的重大空間。 只有在每個節點集區的設定至少有30個 pod 的空間時，才可以針對每個節點的最大 pod 數設定的最小值為10。 例如，將每個節點的最大 pod 數設定為最小值10時，每個個別節點集區至少要有3個節點。 這項需求也適用于每個建立的新節點集區，因此如果10定義為每個節點的最大 pod 數，則每個新增的節點集區至少必須有3個節點。
 
@@ -85,7 +87,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 
 ### <a name="configure-maximum---existing-clusters"></a>設定最大值 - 現有叢集
 
-您無法在現有 AKS 叢集上變更每個節點的 Pod 數目上限。 只有在您一開始部署叢集時，才能調整此數目。
+當您建立新的節點集區時，可以定義每個節點的 maxPod 設定。 如果您需要增加現有叢集上每個節點的 maxPod 設定，請使用新的所需 maxPod 計數來新增節點集區。 將 pod 遷移至新的集區之後，請刪除舊的集區。 若要刪除叢集中的任何舊版集區，請確定您正在設定節點集區模式，如 [系統節點集區檔[系統節點]集區] 中所定義。
 
 ## <a name="deployment-parameters"></a>部署參數
 
@@ -100,7 +102,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 * 不得在叢集的虛擬網路 IP 位址範圍內
 * 不得與叢集虛擬網路對等的任何其他虛擬網路重疊
 * 不得與任何內部部署 IP 重疊
-* 不得在、 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16`、或範圍內`192.0.2.0/24`
+* 不得在 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或範圍內`192.0.2.0/24`
 
 雖然技術上有可能指定與您叢集相同虛擬網路內的服務位址範圍，但不建議這麼做。 如果使用重疊的 IP 範圍，就會造成無法預期的行為。 如需詳細資訊，請參閱本文的[常見問題集](#frequently-asked-questions)一節。 如需有關 Kubernetes 服務的詳細資訊，請參閱 Kubernetes 文件中的[服務][services]。
 
@@ -212,3 +214,4 @@ az aks create \
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[系統節點集區]: use-system-pools.md

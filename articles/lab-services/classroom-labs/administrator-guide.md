@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183461"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118459"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務-系統管理員指南
 管理大學雲端資源的資訊技術（IT）系統管理員通常負責為其學校設定實驗室帳戶。 設定實驗室帳戶之後，系統管理員或教師會建立包含在實驗室帳戶中的教室實驗室。 本文提供相關 Azure 資源的高階總覽，以及建立它們的指引。
@@ -122,12 +122,12 @@ ms.locfileid: "82183461"
 
 當您開始使用 Azure 實驗室服務時，我們建議您為資源群組、實驗室帳戶、教室實驗室和共用映射資源庫建立命名慣例。 雖然您所建立的命名慣例會因貴組織的需求而不同，但下表概述一般方針。
 
-| 資源類型 | [角色] | 建議模式 | 範例 |
+| 資源類型 | 角色 | 建議模式 | 範例 |
 | ------------- | ---- | ----------------- | -------- | 
-| 資源群組 | 包含一或多個實驗室帳戶，以及一或多個共用映射資源庫 | \<組織簡短名稱\>-\<環境\>-rg<ul><li>**組織簡短名稱**會識別資源群組支援的組織名稱</li><li>**環境**會識別資源的環境，例如試驗或生產</li><li>**Rg**代表資源類型：資源群組。</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-試驗-rg<br/>contosouniversitylabs-生產-rg |
-| 實驗室帳戶 | 包含一或多個實驗室 | \<組織簡短名稱\>-\<環境\>-la<ul><li>**組織簡短名稱**會識別資源群組支援的組織名稱</li><li>**環境**會識別資源的環境，例如試驗或生產</li><li>**La**代表資源類型：實驗室帳戶。</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-試驗-la<br/>sciencedeptlabs-生產-la |
-| 教室實驗室 | 包含一或多個 Vm |\<類別名稱\>-\<時間\>-範圍\<教育者識別碼\><ul><li>[**類別名稱**] 可識別實驗室支援的類別名稱。</li><li>**時間範圍**可識別提供類別的時間範圍。</li>**教育識別碼**可識別擁有實驗室的教育者。</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
-| 共用映射資源庫 | 包含一或多個 VM 映射版本 | \<組織簡短名稱\>資源庫 | contosouniversitylabsgallery |
+| 資源群組 | 包含一或多個實驗室帳戶，以及一或多個共用映射資源庫 | \<組織簡短名稱 \> - \< 環境 \> -rg<ul><li>**組織簡短名稱**會識別資源群組支援的組織名稱</li><li>**環境**會識別資源的環境，例如試驗或生產</li><li>**Rg**代表資源類型：資源群組。</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-試驗-rg<br/>contosouniversitylabs-生產-rg |
+| 實驗室帳戶 | 包含一或多個實驗室 | \<組織簡短名稱 \> - \< 環境 \> -la<ul><li>**組織簡短名稱**會識別資源群組支援的組織名稱</li><li>**環境**會識別資源的環境，例如試驗或生產</li><li>**La**代表資源類型：實驗室帳戶。</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-試驗-la<br/>sciencedeptlabs-生產-la |
+| 教室實驗室 | 包含一或多個 Vm |\<類別名稱 \> - \< 時間範圍 \> - \< 教育者識別碼\><ul><li>[**類別名稱**] 可識別實驗室支援的類別名稱。</li><li>**時間範圍**可識別提供類別的時間範圍。</li>**教育識別碼**可識別擁有實驗室的教育者。</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
+| 共用映射資源庫 | 包含一或多個 VM 映射版本 | \<組織簡短名稱資源 \> 庫 | contosouniversitylabsgallery |
 
 如需有關命名其他 Azure 資源的詳細資訊，請參閱[Azure 資源的命名慣例](/azure/architecture/best-practices/naming-conventions)。
 

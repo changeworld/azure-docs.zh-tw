@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883326"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120414"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援（預覽）
 
@@ -36,6 +36,8 @@ ms.locfileid: "82883326"
   - 建立解決方案來備份、鏡像或複寫您帳戶中的物件狀態，以進行嚴重損壞的管理或合規性。
 
   - 建立連接的應用程式管線，以根據所建立或變更的物件來回應變更事件或排程執行。
+  
+變更摘要是[區塊 blob 的時間點還原](point-in-time-restore-overview.md)的必要條件功能。
 
 > [!NOTE]
 > 變更摘要為 blob 所發生的變更提供持久、已排序的記錄模型。 變更會以幾分鐘的時間，在變更摘要記錄檔中寫入並提供使用。 如果您的應用程式必須更快速地回應事件，請考慮改為使用[Blob 儲存體事件](storage-blob-event-overview.md)。 [Blob 儲存體事件](storage-blob-event-overview.md)會提供即時的一次性事件，讓您的 Azure Functions 或應用程式能夠快速回應 Blob 所發生的變更。 
@@ -55,7 +57,7 @@ ms.locfileid: "82883326"
 - 只有 GPv2 和 Blob 儲存體帳戶可以啟用變更摘要。 目前不支援 Premium BlockBlobStorage 帳戶和已啟用階層命名空間的帳戶。 不支援 GPv1 儲存體帳戶，但可在不停機的情況下升級至 GPv2，如需詳細資訊，請參閱[升級至 GPv2 儲存體帳戶](../common/storage-account-upgrade.md)。
 
 > [!IMPORTANT]
-> 變更摘要處於公開預覽狀態，並可在**westcentralus**和**westus2**區域中使用。 請參閱本文的[條件](#conditions)一節。 若要註冊預覽，請參閱本文的[註冊您的訂](#register)用帳戶一節。 您必須先註冊您的訂用帳戶，才能在您的儲存體帳戶上啟用變更摘要。
+> 變更摘要處於公開預覽狀態，並可在**美國中西部**、**美國西部 2**、**法國中部**、**法國南部**、**加拿大中部**和**加拿大東部**區域中取得。 請參閱本文的[條件](#conditions)一節。 若要註冊預覽，請參閱本文的[註冊您的訂](#register)用帳戶一節。 您必須先註冊您的訂用帳戶，才能在您的儲存體帳戶上啟用變更摘要。
 
 ### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -154,7 +156,7 @@ ms.locfileid: "82883326"
 
 變更摘要是組織成**每小時***區段*，但每隔幾分鐘就會附加和更新的變更記錄。 只有當該小時內發生 blob 變更事件時，才會建立這些區段。 這可讓您的用戶端應用程式取用在特定時間範圍內發生的變更，而不需要搜尋整個記錄檔。 若要深入瞭解，請參閱[規格](#specifications)。
 
-變更摘要的可用小時區段會在指定該區段變更摘要檔案路徑的資訊清單檔中描述。 `$blobchangefeed/idx/segments/`虛擬目錄的清單會顯示依時間排序的這些區段。 區段的路徑描述區段所代表之每小時時間範圍的開始。 您可以使用該清單來篩選出您感利率的記錄區段。
+變更摘要的可用小時區段會在指定該區段變更摘要檔案路徑的資訊清單檔中描述。 虛擬目錄的清單會 `$blobchangefeed/idx/segments/` 顯示依時間排序的這些區段。 區段的路徑描述區段所代表之每小時時間範圍的開始。 您可以使用該清單來篩選出您感利率的記錄區段。
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -168,7 +170,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 > [!NOTE]
 > `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json`當您啟用變更摘要時，會自動建立。 您可以放心地忽略此檔案。 這是一律是空的初始化檔。 
 
-區段資訊清單檔案（`meta.json`）會顯示`chunkFilePaths`屬性中該區段的變更摘要檔案路徑。 以下是區段資訊清單檔案的範例。
+區段資訊清單檔案（ `meta.json` ）會顯示內容中該區段的變更摘要檔案路徑 `chunkFilePaths` 。 以下是區段資訊清單檔案的範例。
 
 ```json
 {
@@ -199,7 +201,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> 只有`$blobchangefeed`在您已啟用帳戶的變更摘要功能之後，容器才會出現。 在您啟用變更摘要之後，您必須等候幾分鐘的時間，才能列出容器中的 blob。 
+> `$blobchangefeed`只有在您已啟用帳戶的變更摘要功能之後，容器才會出現。 在您啟用變更摘要之後，您必須等候幾分鐘的時間，才能列出容器中的 blob。 
 
 <a id="log-files"></a>
 
@@ -207,7 +209,13 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 變更摘要檔案包含一系列的變更事件記錄。 每個變更事件記錄都會對應到個別 blob 的一項變更。 這些記錄會使用[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式規格進行序列化並寫入檔案。 您可以使用 Avro 檔案格式規格來讀取記錄。 有數個程式庫可用來處理該格式的檔案。
 
-變更摘要檔案會以`$blobchangefeed/log/` [附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案`00000`會包含檔案名中的（例如`00000.avro`）。 每個新增至該路徑的後續記錄檔名稱會遞增1（例如： `00001.avro`）。
+變更摘要檔案會以 `$blobchangefeed/log/` [附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案會包含 `00000` 檔案名中的（例如 `00000.avro` ）。 每個新增至該路徑的後續記錄檔名稱會遞增1（例如： `00001.avro` ）。
+
+下列事件種類會在變更摘要記錄中捕捉：
+- Microsoft.storage.blobcreated
+- BlobDeleted
+- BlobPropertiesUpdated
+- BlobSnapshotCreated
 
 以下是從變更摘要檔案轉換為 Json 的變更事件記錄範例。
 
@@ -238,7 +246,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 }
 ```
 
-如需每個屬性的說明，請參閱[適用于 Blob 儲存體的 Azure Event Grid 事件架構](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。
+如需每個屬性的說明，請參閱[適用于 Blob 儲存體的 Azure Event Grid 事件架構](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件目前僅限於變更摘要，但 Blob 儲存體事件尚不支援。
 
 > [!NOTE]
 > 區段的變更摘要檔案不會立即在區段建立後出現。 延遲的長度是在變更摘要發佈延遲的標準間隔內，在變更摘要的幾分鐘內。
@@ -255,15 +263,15 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - 變更事件記錄會使用[Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html)格式規格序列化成記錄檔。
 
-- 變更事件記錄，其中`eventType`的值為內部`Control`系統記錄，而且不會反映您帳戶中的物件變更。 您可以放心地忽略那些記錄。
+- 變更事件記錄，其中的 `eventType` 值為 `Control` 內部系統記錄，而且不會反映您帳戶中的物件變更。 您可以放心地忽略那些記錄。
 
-- `storageDiagnonstics`屬性包中的值僅供內部使用，不適合應用程式使用。 您的應用程式不應對該資料具有合約相關性。 您可以放心地忽略這些屬性。
+- 屬性包中的值 `storageDiagnonstics` 僅供內部使用，不適合應用程式使用。 您的應用程式不應對該資料具有合約相關性。 您可以放心地忽略這些屬性。
 
 - 區段所表示的時間**大約**為15分鐘的界限。 因此，為了確保在指定的時間內，所有記錄的耗用量，會耗用連續的上一個和下一個小時區段。
 
-- `chunkFilePaths`由於記錄資料流程的內部資料分割可管理發佈輸送量，每個區段的數目可能會不同。 每個`chunkFilePath`中的記錄檔保證會包含互斥的 blob，而且可以平行取用和處理，而不會違反反覆運算期間每個 blob 的修改順序。
+- `chunkFilePaths`由於記錄資料流程的內部資料分割可管理發佈輸送量，每個區段的數目可能會不同。 每個中的記錄檔 `chunkFilePath` 保證會包含互斥的 blob，而且可以平行取用和處理，而不會違反反覆運算期間每個 blob 的修改順序。
 
-- 區段會以`Publishing`狀態開始。 一旦將記錄附加至區段完成後，就會是`Finalized`。 您的應用程式不應使用在檔案中的`LastConsumable`屬性`$blobchangefeed/meta/Segments.json`日期之後的任何區段中的記錄檔。 以下是檔案中`LastConsumable` `$blobchangefeed/meta/Segments.json`的屬性範例：
+- 區段會以狀態開始 `Publishing` 。 一旦將記錄附加至區段完成後，就會是 `Finalized` 。 `LastConsumable` `$blobchangefeed/meta/Segments.json` 您的應用程式不應使用在檔案中的屬性日期之後的任何區段中的記錄檔。 以下是檔案 `LastConsumable` 中的屬性範例 `$blobchangefeed/meta/Segments.json` ：
 
 ```json
 {
@@ -310,13 +318,13 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>條件和已知問題（預覽）
 
 本節說明變更摘要目前公開預覽版中的已知問題和條件。 
-- 針對預覽版本，您必須先[註冊您的訂](#register)用帳戶，才可以在 westcentralus 或 westus2 區域中啟用儲存體帳戶的變更摘要。 
-- 變更摘要只會捕捉建立、更新、刪除和複製作業。 目前不會在預覽中捕捉中繼資料更新。
+- 針對預覽版本，您必須先[註冊您的訂](#register)用帳戶，才能在美國中西部、美國西部2、法國中部、法國南部、加拿大中部和加拿大東部區域中啟用儲存體帳戶的變更摘要。 
+- 變更摘要只會捕捉建立、更新、刪除和複製作業。 也會捕捉 Blob 屬性和中繼資料變更。 不過，目前未捕捉到 [存取層] 屬性。 
 - 變更任何單一變更的事件記錄，可能會在變更摘要中出現一次以上。
-- 您還無法藉由在其上設定以時間為基礎的保留原則，而無法刪除 blob，來管理變更摘要記錄檔的存留期 
-- 記錄`url`檔的屬性目前一律是空的。
-- 區段`LastConsumable` . json 檔案的屬性不會列出變更摘要最終完成的第一個區段。 只有在第一個區段完成後，才會發生此問題。 第一個小時之後的所有後續區段會正確地在`LastConsumable`屬性中捕捉。
-- 當您呼叫 ListContainers API 時，您目前無法看到 **$blobchangefeed**容器，且容器未顯示在 Azure 入口網站或儲存體總管
+- 您還無法藉由在其上設定以時間為基礎的保留原則，而無法刪除 blob，來管理變更摘要記錄檔的存留期。
+- 記錄檔的 `url` 屬性目前一律是空的。
+- `LastConsumable`區段. json 檔案的屬性不會列出變更摘要最終完成的第一個區段。 只有在第一個區段完成後，才會發生此問題。 第一個小時之後的所有後續區段會正確地在 `LastConsumable` 屬性中捕捉。
+- 當您呼叫 ListContainers API 時，您目前無法看到 **$blobchangefeed**容器，而且容器不會顯示在 Azure 入口網站或儲存體總管上。 您可以直接在 $blobchangefeed 容器上呼叫 ListBlobs API 來查看內容。
 - 先前已起始[帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md)的儲存體帳戶，可能會有記錄檔未出現的問題。 任何未來的帳戶容錯移轉也可能會在預覽期間影響記錄檔。
 
 ## <a name="faq"></a>常見問題集

@@ -1,24 +1,30 @@
 ---
-title: 啟用 blob 的虛刪除
+title: 啟用和管理 blob 的虛刪除
 titleSuffix: Azure Storage
 description: 啟用 blob 物件的虛刪除，以在錯誤地修改或刪除您的資料時更容易復原。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884679"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120091"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>啟用 blob 的虛刪除
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用和管理 blob 的虛刪除
 
-下列步驟示範如何開始進行虛刪除。
+虛刪除可防止不小心或錯誤地修改或刪除 blob 資料。 針對儲存體帳戶啟用虛刪除時，該儲存體帳戶中的 blob、blob 版本（預覽）和快照集可能會在您指定的保留期限內被刪除之後復原。
+
+如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議您開啟虛刪除。
+
+本文說明如何開始進行虛刪除。
+
+## <a name="enable-soft-delete"></a>啟用虛刪除
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 您可以使用下列命令來確認該虛刪除是否已開啟：
 
 ```powershell
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>後續步驟
+
+- [Blob 儲存體的虛刪除](soft-delete-overview.md)
+- [Blob 版本設定（預覽）](versioning-overview.md)

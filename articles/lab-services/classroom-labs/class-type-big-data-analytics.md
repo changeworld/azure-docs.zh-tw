@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538774"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118425"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>使用 HortonWorks 資料平臺的 Docker 部署，將實驗室設定為海量資料分析
 
@@ -38,7 +38,7 @@ ms.locfileid: "81538774"
 
 針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
 
-| 實驗室帳戶設定 | Instructions |
+| 實驗室帳戶設定 | 指示 |
 | ------------------- | ------------ |
 |Marketplace 映射| 啟用 Windows 10 Pro 映射以在實驗室帳戶中使用。|
 
@@ -102,7 +102,7 @@ ms.locfileid: "81538774"
 1. 一旦部署並執行 HDP 沙箱的 Docker 容器，您就可以啟動瀏覽器，並遵循 Cloudera 的指示來開啟[沙箱歡迎頁面](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)並啟動 HDP 儀表板，以存取環境。
 
     > [!NOTE] 
-    > 這些指示假設您已先將沙箱環境的本機 IP 位址對應至範本 VM 上主機檔案中的 sandbox-hdp.hortonworks.com。  如果您**未**執行此對應，可以流覽至來[http://localhost:8080](http://localhost:8080)存取沙箱歡迎頁面。
+    > 這些指示假設您已先將沙箱環境的本機 IP 位址對應至範本 VM 上主機檔案中的 sandbox-hdp.hortonworks.com。  如果您**未**執行此對應，可以流覽至來存取沙箱歡迎頁面 `http://localhost:8080` 。
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>當學生登入時自動啟動 Docker 容器
 
