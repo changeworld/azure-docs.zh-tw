@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926981"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199444"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>來賓使用者的直接同盟與 AD FS 和協力廠商提供者（預覽）
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "82926981"
 本文說明如何設定與其他組織的直接同盟，以進行 B2B 共同作業。 您可以使用身分識別提供者（IdP）支援 SAML 2.0 或 WS-送出通訊協定的任何組織來設定直接同盟。
 當您設定與合作夥伴 IdP 的直接同盟時，來自該網域的新來賓使用者可以使用他們自己的 IdP 管理組織帳戶登入您的 Azure AD 租使用者，並開始與您共同作業。 來賓使用者不需要建立個別的 Azure AD 帳戶。
 > [!NOTE]
-> 直接同盟來賓使用者必須使用包含租使用者內容的連結（例如， `https://myapps.microsoft.com/?tenantid=<tenant id>`或`https://portal.azure.com/<tenant id>`已驗證網域的案例`https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`）來登入。 應用程式和資源的直接連結只要包含租用戶內容，也可有同樣作用。 直接同盟使用者目前無法使用沒有租使用者內容的通用端點進行登入。 例如，使用`https://myapps.microsoft.com`、 `https://portal.azure.com`或`https://teams.microsoft.com`將會導致錯誤。
+> 直接同盟來賓使用者必須使用包含租使用者內容的連結（例如， `https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>` 已驗證網域的案例）來登入 `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` 。 應用程式和資源的直接連結只要包含租用戶內容，也可有同樣作用。 直接同盟使用者目前無法使用沒有租使用者內容的通用端點進行登入。 例如，使用 `https://myapps.microsoft.com` 、 `https://portal.azure.com` 或 `https://teams.microsoft.com` 將會導致錯誤。
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>來賓使用者何時使用直接同盟進行驗證？
 在您設定與組織的直接同盟之後，您邀請的任何新來賓使用者都會使用直接同盟進行驗證。 請務必注意，設定直接同盟並不會變更已經兌換邀請之來賓使用者的驗證方法。 以下是一些範例：
@@ -61,7 +61,7 @@ ms.locfileid: "82926981"
 -   federation.exostar.com
 -   federation.exostartest.com
 
-例如，設定**fabrikam.com**的直接同盟時，驗證 URL `https://fabrikam.com/adfs`會通過驗證。 例如`https://sts.fabrikam.com/adfs`，相同網域中的主機也會通過。 不過，驗證 URL `https://fabrikamconglomerate.com/adfs`或`https://fabrikam.com.uk/adfs`適用于相同的網域將不會通過。
+例如，設定**fabrikam.com**的直接同盟時，驗證 URL `https://fabrikam.com/adfs` 會通過驗證。 例如，相同網域中的主機也會通過 `https://sts.fabrikam.com/adfs` 。 不過，驗證 URL `https://fabrikamconglomerate.com/adfs` 或 `https://fabrikam.com.uk/adfs` 適用于相同的網域將不會通過。
 
 ### <a name="signing-certificate-renewal"></a>簽署憑證更新
 如果您在身分識別提供者設定中指定中繼資料 URL，Azure AD 會在簽署憑證到期時自動更新。 不過，如果憑證因任何原因而在到期時間之前旋轉，或如果您未提供中繼資料 URL，Azure AD 將無法更新它。 在此情況下，您必須手動更新簽署憑證。
@@ -146,8 +146,8 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>在 Azure AD 入口網站中設定直接同盟
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)。 在左窗格中，選取 [Azure Active Directory]****。 
-2. 選取 [組織關係]****。
-3. 選取 [**識別提供者**]，然後選取 [**新增 SAML/WS-送出 IdP**]。
+2. 選取 [**組織關聯**性]  >  [所有**External Identities**身分**識別提供者**]  >  **All identity providers**
+3. 選取 []，然後選取 [**新增 SAML/WS-送出 IdP**]。
 
     ![顯示新增新的 SAML 或 WS-送出 IdP 按鈕的螢幕擷取畫面](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -174,7 +174,7 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
    Connect-AzureAD
    ```
 1. 在出現登入提示時，使用受控的全域系統管理員帳戶來登入。 
-2. 執行下列命令，並取代同盟中繼資料檔案中的值。 針對 AD FS Server 和 Okta，同盟檔案是 federationmetadata，例如： `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`。 
+2. 執行下列命令，並取代同盟中繼資料檔案中的值。 針對 AD FS Server 和 Okta，同盟檔案是 federationmetadata，例如： `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` 。 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -194,8 +194,8 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>如何? 編輯直接同盟關聯性嗎？
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)。 在左窗格中，選取 [Azure Active Directory]****。 
-2. 選取 [組織關係]****。
-3. 選取身分**識別提供者**
+2. 選取 [**組織關聯**性] （或 [**外部**身分識別]）。
+3. 選取**所有身分識別提供者**
 4. 在 [ **SAML/WS-送出識別提供者**] 底下，選取提供者。
 5. 在 [識別提供者詳細資料] 窗格中，更新值。
 6. 選取 [儲存]  。
@@ -205,8 +205,8 @@ IdP 所簽發的 WS-送出權杖所需的宣告：
 您可以移除直接同盟設定。 如果您這樣做，已兌換其邀請的直接同盟來賓使用者將無法登入。 但是，您可以將資源從目錄中刪除並加以 reinviting，讓他們再次存取您的資源。 若要在 Azure AD 入口網站中移除與身分識別提供者的直接同盟：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)。 在左窗格中，選取 [Azure Active Directory]****。 
-2. 選取 [組織關係]****。
-3. 選取 [**識別提供者**]。
+2. 選取 [**組織關聯**性] （或 [**外部**身分識別]）。
+3. 選取 [**所有識別提供者**]。
 4. 選取 [識別提供者]，然後選取 [**刪除**]。 
 5. 選取 [是]**** 以確認要刪除。 
 

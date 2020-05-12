@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269805"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201123"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
 
@@ -35,15 +36,15 @@ ms.locfileid: "79269805"
 ## <a name="create-a-console-application"></a>建立主控台應用程式
 
 1. 啟動 Visual Studio。 
-1. **在 [檔案**] 功能表上，按一下 [**新增** > **專案**]。 
+1. **在 [檔案**] 功能表上，按一下 [**新增**  >  **專案**]。 
 1. 建立 **.Net Core**主控台應用程式。
 
-本主題中的範例應用程式， `netcoreapp2.0`目標為。 程式碼會使用「非同步 main」，從 c # 7.1 開始提供。 如需詳細資訊，請參閱此[blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) 。
+本主題中的範例應用程式，目標為 `netcoreapp2.0` 。 程式碼會使用「非同步 main」，從 c # 7.1 開始提供。 如需詳細資訊，請參閱此[blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) 。
 
 ## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
-1. 在 Visual Studio 中，選取 [**工具** > ] [**nuget 套件管理員** > ] [**nuget 管理員主控台**]。
-2. 在 [**套件管理員主控台**] 視窗中`Install-Package` ，使用命令來新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
+1. 在 Visual Studio 中，選取 [**工具**] [  >  **nuget 套件管理員**] [  >  **nuget 管理員主控台**]。
+2. 在 [**套件管理員主控台**] 視窗中，使用 `Install-Package` 命令來新增下列 NuGet 套件。 例如 `Install-Package Microsoft.Azure.Management.Media`。
 
 |Package|描述|
 |---|---|
@@ -57,20 +58,20 @@ ms.locfileid: "79269805"
 
 ### <a name="create-appsettingsjson"></a>建立 appsettings
 
-1. Go go**一般** > **文字檔**。
+1. Go go**一般**  >  **文字檔**。
 1. 將它命名為 "appsettings"。
 1. 將 json 檔案的 [複製到輸出目錄] 屬性設定為 [更新時才複製] （如此一來，應用程式就能夠在發行時存取它）。
 
 ### <a name="set-values-in-appsettingsjson"></a>在 appsettings 中設定值
 
-執行`az ams account sp create`命令，如[存取 api](access-api-cli-how-to.md)中所述。 此命令會傳回您應該複製到 "appsettings" 中的 json。
+執行 `az ams account sp create` 命令，如[存取 api](access-api-cli-how-to.md)中所述。 此命令會傳回您應該複製到 "appsettings" 中的 json。
  
 ## <a name="add-configuration-file"></a>新增組態檔
 
 為了方便起見，請新增負責從 "appsettings" 讀取值的設定檔。
 
-1. 將新的 .cs 類別加入至您的專案。 將它命名為 `ConfigWrapper` 
-1. 將下列程式碼貼入此檔案（此範例假設您的命名空間為`ConsoleApp1`）。
+1. 將新的 .cs 類別加入至您的專案。 請命名為 `ConfigWrapper`。 
+1. 將下列程式碼貼入此檔案（此範例假設您的命名空間為 `ConsoleApp1` ）。
 
 ```csharp
 using System;

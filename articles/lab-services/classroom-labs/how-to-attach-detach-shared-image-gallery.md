@@ -11,24 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce79674462f82e05cc07e9e470cb82ff8e47f672
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284313"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118476"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 實驗室服務中附加或卸離共用映射資源庫
-教師/實驗室系統管理員可以將範本 VM 映射儲存在 Azure[共用映射資源庫](../../virtual-machines/windows/shared-image-galleries.md)中，供其他人重複使用。 第一個步驟是，實驗室系統管理員將現有的共用映射資源庫附加至實驗室帳戶。 連結共用映射資源庫之後，在實驗室帳戶中建立的實驗室可以將影像儲存到共用映射資源庫。 其他老師可以從共用映射庫中選取此映射，以建立其類別的範本。 
-
-當映射儲存到共用映射資源庫時，Azure 實驗室服務會將儲存的影像複寫到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他區域。 它可確保映射適用于在相同地理位置的其他區域中建立的實驗室。 將影像儲存到共用映射資源庫會產生額外的成本，包括所有複寫影像的成本。 這種成本與 Azure 實驗室服務的使用成本不同。 如需共用映射庫價格的詳細資訊，請參閱[共用映射資源庫–計費]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
-
 本文說明如何將共用映射資源庫連結或卸離至實驗室帳戶。 
 
-> [!NOTE]
-> 目前，Azure 實驗室服務僅支援根據共用映射庫中的**一般化**VM 映射（非特製化映射）建立範本 vm。 
+## <a name="scenarios"></a>案例
+以下是這項功能支援的幾個案例： 
+
+- 實驗室帳戶管理員會將共用映射資源庫附加至實驗室帳戶，並將影像上傳至實驗室內容外部的共用映射資源庫。 然後，實驗室建立者可以使用共用映射資源庫中的該映射來建立實驗室。 
+- 實驗室帳戶管理員會將共用映射資源庫附加至實驗室帳戶。 實驗室建立者（講師）會將其實驗室的自訂映射儲存到共用映射資源庫。 然後，其他實驗室建立者可以從共用映射庫中選取此映射，以建立其實驗室的範本。 
+
+    當映射儲存到共用映射資源庫時，Azure 實驗室服務會將儲存的影像複寫到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他區域。 它可確保映射適用于在相同地理位置的其他區域中建立的實驗室。 將影像儲存到共用映射資源庫會產生額外的成本，包括所有複寫影像的成本。 這種成本與 Azure 實驗室服務的使用成本不同。 如需共用映射庫價格的詳細資訊，請參閱[共用映射資源庫–計費]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
+
+    > [!NOTE]
+    > Azure 實驗室服務支援根據共用映射庫中的**一般化**和**特製**化映射來建立範本 vm。 
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在建立實驗室帳戶時設定

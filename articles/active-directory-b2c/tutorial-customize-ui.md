@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186245"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116521"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者體驗的介面
 
@@ -63,8 +63,8 @@ ms.locfileid: "78186245"
  瀏覽器中的 Azure AD B2C 程式碼會使用最新且標準的方法，從使用者流程中的指定 URL 載入自訂內容。 跨來源資源共用 (CORS) 可允許從其他網域要求網頁上受限制的資源。
 
 1. 在功能表中，選取 [CORS]****。
-2. 針對 [允許的來源]****，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com` 。 輸入您的租用戶名稱時，必須全部使用小寫字母。
-3. 針對**允許的方法**， `GET`選取`PUT`、和`OPTIONS`。
+2. 針對 [允許的來源]****，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如 `https://fabrikam.b2clogin.com`。 輸入您的租用戶名稱時，必須全部使用小寫字母。
+3. 針對**允許的方法**，選取 `GET` 、 `PUT` 和 `OPTIONS` 。
 4. 針對 [允許的標頭]****，輸入星號 (*)。
 5. 針對 [公開的標頭]****，輸入星號 (*)。
 6. 針對 [最大壽命]****，輸入 200。
@@ -75,9 +75,9 @@ ms.locfileid: "78186245"
 
 ### <a name="create-the-customization-files"></a>建立自訂檔案
 
-若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 `api` 的 **div** 元素。 例如： `<div id="api"></div>` 。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
+若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 `api` 的 **div** 元素。 例如 `<div id="api"></div>`。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
 
-1. 在本機資料夾中建立下列檔案，並確定您已將 `your-storage-account` 變更為儲存體帳戶名稱，以及將 `your-container` 變更為您建立的容器名稱。 例如： `https://store1.blob.core.windows.net/b2c/style.css` 。
+1. 在本機資料夾中建立下列檔案，並確定您已將 `your-storage-account` 變更為儲存體帳戶名稱，以及將 `your-container` 變更為您建立的容器名稱。 例如 `https://store1.blob.core.windows.net/b2c/style.css`。
 
     ```html
     <!DOCTYPE html>
@@ -166,4 +166,4 @@ ms.locfileid: "78186245"
 > * 測試自訂的 UI
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 中的語言自訂](user-flow-language-customization.md)
+> [在 Azure Active Directory B2C 中自訂 UI](customize-ui-overview.md)

@@ -3,12 +3,12 @@ title: 使用 PowerShell 還原 Azure 檔案儲存體
 description: 在本文中，您將瞭解如何使用 Azure 備份服務和 PowerShell 來還原 Azure 檔案儲存體。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097637"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201968"
 ---
 # <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 還原 Azure 檔案儲存體
 
@@ -17,7 +17,7 @@ ms.locfileid: "82097637"
 您可以還原整個檔案共用或共用上的特定檔案。 您可以還原至原始位置或替代位置。
 
 > [!WARNING]
-> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 如需詳細資訊，請參閱概述這項變更需求[一節](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
+> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 如需詳細資訊，請參閱概述這項變更需求[一節](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
 
 >[!NOTE]
 >Azure 備份現在支援使用 PowerShell，將多個檔案或資料夾還原到原始或替代位置。 請參閱檔的[這一節](#restore-multiple-files-or-folders-to-original-or-alternate-location)，以瞭解作法。

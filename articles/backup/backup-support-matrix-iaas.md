@@ -3,12 +3,12 @@ title: Azure VM 備份的支援矩陣
 description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801428"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199872"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -24,7 +24,7 @@ ms.locfileid: "82801428"
 
 以下說明如何使用 Azure 備份服務來備份和還原 Azure VM。
 
-**案例** | **Backup** | **代理程式** |**還原**
+**案例** | **Backup** | **代理程式** |**Restore**
 --- | --- | --- | ---
 直接備份 Azure VM  | 備份整個 VM。  | Azure VM 上不需要其他代理程式。 Azure 備份會安裝並使用在 VM 上執行的[AZURE vm 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)程式的擴充功能。 | 以下列方式進行還原：<br/><br/> - **建立基本 VM**。 如果 VM 沒有任何特殊設定（例如多個 IP 位址），這會很有用。<br/><br/> - **還原 VM 磁碟**。 還原磁碟。 然後將它連結至現有的 VM，或使用 PowerShell 從磁片建立新的 VM。<br/><br/> - **取代 VM 磁碟**。 如果有 VM 存在，且該 VM 使用受控磁碟 (未加密)，您可以還原某個磁碟，並用它來取代 VM 上現有的磁碟。<br/><br/> - **還原特定檔案/資料夾**。 您可以從 VM （而不是從整個 VM）還原檔案/資料夾。
 直接備份 Azure VM (僅限 Windows)  | 備份特定檔案/資料夾/磁片區。 | 安裝[Azure 復原服務代理程式](backup-azure-file-folder-backup-faq.md)。<br/><br/> 您可以將 MARS 代理程式與 Azure VM 代理程式的備份擴充功能一起執行，以在檔案/資料夾層級備份 VM。 | 還原特定資料夾/檔案。
@@ -81,7 +81,7 @@ Azure 備份不支援 32 位元作業系統。
 
 ## <a name="operating-system-support-linux"></a>作業系統支援 (Linux)
 
-針對 Azure VM Linux 備份，Azure 備份支援 [Azure 所背書的 Linux 散發套件清單](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。 注意下列事項：
+針對 Azure VM Linux 備份，Azure 備份支援 [Azure 所背書的 Linux 散發套件清單](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。 請注意：
 
 - Azure 備份不支援 Core OS Linux。
 - Azure 備份不支援 32 位元作業系統。
@@ -112,7 +112,7 @@ DPM/MABS 磁碟上的復原點 | 64（適用于檔案伺服器）和448（適用
 
 ## <a name="support-for-file-level-restore"></a>檔案層級還原的支援
 
-**還原** | **支援**
+**Restore** | **支援**
 --- | ---
 跨作業系統還原檔案 | 您可以在任何與備份的 VM 具有相同 (或相容) 作業系統的機器上還原檔案。 請參閱[相容的 OS 資料表](backup-azure-restore-files-from-vm.md#system-requirements)。
 從加密的 VM 還原檔案 | 不支援。
@@ -125,7 +125,7 @@ DPM/MABS 磁碟上的復原點 | 64（適用于檔案伺服器）和448（適用
 
 下表摘要說明在 VM 管理工作（例如新增或更換 VM 磁片）期間的備份支援。
 
-**還原** | **支援**
+**Restore** | **支援**
 --- | ---
 跨訂用帳戶/區域 (region)/區域 (zone) 進行還原。 | 不支援。
 還原至現有的 VM | 使用更換磁碟選項。
@@ -140,7 +140,7 @@ DPM/MABS 磁碟上的復原點 | 64（適用于檔案伺服器）和448（適用
 
 ## <a name="vm-compute-support"></a>VM 計算支援
 
-**Compute** | **支援**
+**計算** | **支援**
 --- | ---
 VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<br/><br/> [深入了解。](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 備份[可用性設定組](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets)中的 VM | 支援。<br/><br/> 您無法使用快速建立 VM 的選項，來還原可用集合中的 VM。 相反地，當您還原 VM 時，請復原磁碟並使用它來部署 VM，或復原磁碟並使用它來取代現有的磁片。
@@ -158,7 +158,7 @@ Gen2 Vm | 支援 <br> Azure 備份支援[Gen2 vm](https://azure.microsoft.com/up
 
 **元件** | **支援**
 --- | ---
-Azure VM 資料磁碟 | 備份具有16個或更少資料磁片的 VM。<BR> 若要註冊具有16個磁片的有限預覽 Vm （最多32個磁片），請將寫入我們的AskAzureBackupTeam@microsoft.com
+Azure VM 資料磁碟 | 在[這些區域](#backup-of-azure-virtual-machines-with-up-to-32-disks)中，支援最多32個磁片的 Azure vm 備份處於公開預覽狀態。<br><br> 支援使用非受控磁片或傳統 Vm 來備份 Azure Vm 最多可達16個磁片。
 資料磁碟大小 | 針對 VM 中的所有磁片，個別磁片大小最高可達 32 TB，最大為 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD 進階 SSD。
 受控磁碟 | 支援。
@@ -169,6 +169,13 @@ Azure VM 資料磁碟 | 備份具有16個或更少資料磁片的 VM。<BR> 若�
 在受保護的 VM 上調整磁碟大小 | 支援。
 共用存放裝置| 不支援使用叢集共用磁碟區（CSV）或向外延展檔案伺服器備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁片區的磁片可能無法啟動。
 [共用磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | 不支援。
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>備份最多32個磁片的 Azure 虛擬機器
+
+Azure 備份現在支援備份最多32個連接磁片的 Azure Vm。  這項功能在美國中西部中處於公開預覽狀態。  如果您對其他區域中的這項功能有興趣，請在將其寫為我們，以註冊有限的預覽 AskAzureBackupTeam@microsoft.com 。  
+
+>[!NOTE]
+>針對具有非受控磁片或傳統 Vm 的 Azure Vm，Azure 備份僅支援最多16個磁片。
 
 ## <a name="vm-network-support"></a>VM 網路支援
 
@@ -217,7 +224,7 @@ Azure VM | ![是][green] | ![是][green]
 
 ## <a name="vm-compression-support"></a>VM 壓縮支援
 
-備份支援壓縮備份流量，如下表摘要所示。 注意下列事項：
+備份支援壓縮備份流量，如下表摘要所示。 請注意：
 
 - 針對 Azure Vm，VM 擴充功能會透過儲存體網路直接從 Azure 儲存體帳戶讀取資料。 不需要壓縮此流量。
 - 如果您使用的是 DPM 或 MABS，您可以在備份至 DPM/MABS 之前壓縮資料，藉以節省頻寬。

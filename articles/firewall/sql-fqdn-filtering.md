@@ -5,21 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501507"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200459"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL Fqdn 設定 Azure 防火牆應用程式規則
-
-> [!IMPORTANT]
-> 具有 SQL Fqdn 的 Azure 防火牆應用程式規則目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您現在可以使用 SQL Fqdn 來設定 Azure 防火牆應用程式規則。 這可讓您將虛擬網路的存取限制為僅限指定的 SQL server 實例。
 
@@ -29,7 +24,7 @@ ms.locfileid: "79501507"
 - 從內部部署到 Azure SQL 受控實例或在您的 Vnet 中執行的 SQL IaaS。
 - 從輪輻到輪輻，到在您的 Vnet 中執行的 Azure SQL 受控實例或 SQL IaaS。
 
-在公開預覽期間，只支援[proxy 模式](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)中的 SQL FQDN 篩選（埠1433）。 如果您在預設的重新導向模式中使用 SQL，則可以使用 SQL 服務標籤來篩選存取，做為[網路規則](overview.md#network-traffic-filtering-rules)的一部分。
+僅[proxy 模式](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)支援 SQL FQDN 篩選（埠1433）。 如果您在預設的重新導向模式中使用 SQL，則可以使用 SQL 服務標籤來篩選存取，做為[網路規則](overview.md#network-traffic-filtering-rules)的一部分。
 如果您針對 SQL IaaS 流量使用非預設的埠，您可以在防火牆應用程式規則中設定這些埠。
 
 具有 SQL Fqdn 的應用程式規則目前可透過 Azure 入口網站、Azure CLI、REST 和範本在所有區域中使用。

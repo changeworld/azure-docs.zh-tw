@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717995"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115110"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>使用課堂實驗室進行訓練
-您可以設定定型的實驗室。 Azure 實驗室服務的教室實驗室可讓您為定型建立實驗室，其中每個受訓者都會使用相同和隔離的環境來進行定型。 您可以新增原則，以確保訓練環境只會在受訓者需要時才提供給他們使用，且包含足夠的訓練所需資源，例如虛擬機器。 
+Azure 實驗室服務可讓教授、講師或教學助理快速且輕鬆地建立線上實驗室，以布建預先設定的受訓者學習環境。 每個受訓者都可以使用相同和隔離的環境來進行定型。 您可以套用原則，確保每個受訓者的定型環境只有在需要時才可供使用，而且包含足夠的資源（例如虛擬機器），這是訓練所需的。 
 
 ![教室實驗室](../media/classroom-labs-scenarios/classroom.png)
 

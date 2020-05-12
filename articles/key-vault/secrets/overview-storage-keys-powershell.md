@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427779"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121111"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>設定變數
 
-首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新<YourResourceGroupName>、 <YourStorageAccountName>和<YourKeyVaultName>預留位置，並將 $keyVaultSpAppId 設定為`cfa8b339-82a2-471a-a3c9-0fc0be7a4093` （如上面的[服務主體應用程式識別碼](#service-principal-application-id)中所指定）。
+首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新 <YourResourceGroupName> 、 <YourStorageAccountName> 和 <YourKeyVaultName> 預留位置，並將 $keyVaultSpAppId 設定為 `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` （如上面的[服務主體應用程式識別碼](#service-principal-application-id)中所指定）。
 
 我們也會使用 Azure PowerShell [set-azcoNtext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0)和[new-azstorageaccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) Cmdlet 來取得您的使用者識別碼和 Azure 儲存體帳戶的內容。
 
@@ -84,14 +84,18 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> 對於傳統儲存體帳戶，請使用「主要」和「次要」進行 $storageAccountKey <br>
+> 針對傳統儲存體帳戶，請使用 ' Get-azresource-Name "ClassicStorageAccountName"-ResourceGroupName $resourceGroupName ' 而不是 of'Get-New-azstorageaccount '
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>授與 Key Vault 對儲存體帳戶的存取權
 
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>啟用金鑰重新產生
 
-如果您想要 Key Vault 定期重新產生儲存體帳戶金鑰，您可以使用 Azure PowerShell [AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) Cmdlet 來設定重新產生期間。 在此範例中，我們會設定三天的重新產生期間。 三天后，Key Vault 會重新產生 ' key2 '，並將作用中的金鑰從 ' key2 ' 交換為 ' key1 '。
+如果您想要 Key Vault 定期重新產生儲存體帳戶金鑰，您可以使用 Azure PowerShell [AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) Cmdlet 來設定重新產生期間。 在此範例中，我們會設定三天的重新產生期間。 三天后，Key Vault 會重新產生 ' key2 '，並將作用中的金鑰從 ' key2 ' 交換為 ' key1 ' （將取代為傳統儲存體帳戶的「主要」和「次要」）。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -192,12 +196,12 @@ Tags                :
 
 - 設定帳戶共用存取簽章定義。 
 - 為 Blob、檔案、資料表和佇列服務建立帳戶共用存取簽章權杖。 權杖是針對資源類型服務、容器和物件所建立。 權杖是以擁有權限（透過 HTTPs）和指定的開始和結束日期來建立。
-- 在保存庫中設定 Key Vault 管理的儲存體共用存取簽章定義。 定義具有已建立的共用存取簽章權杖的範本 URI。 定義具有共用存取簽章類型`account` ，且有效期為 N 天。
+- 在保存庫中設定 Key Vault 管理的儲存體共用存取簽章定義。 定義具有已建立的共用存取簽章權杖的範本 URI。 定義具有共用存取簽章類型 `account` ，且有效期為 N 天。
 - 確認已將共用存取簽章儲存在金鑰保存庫中做為密碼。
 - 
 ### <a name="set-variables"></a>設定變數
 
-首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新<YourStorageAccountName>和<YourKeyVaultName>預留位置。
+首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新 <YourStorageAccountName> 和 <YourKeyVaultName> 預留位置。
 
 我們也會使用 Azure PowerShell [AzStorageCoNtext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) Cmdlet 來取得 Azure 儲存體帳戶的內容。
 
@@ -205,7 +209,7 @@ Tags                :
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>建立共用存取簽章權杖
@@ -226,7 +230,7 @@ $SasToken 的值看起來會像這樣。
 
 ### <a name="generate-a-shared-access-signature-definition"></a>產生共用存取簽章定義
 
-使用 Azure PowerShell AzKeyVaultManagedStorageSasDefinition Cmdlet 來建立共用存取[簽](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0)章定義。  您可以將您選擇的名稱提供給`-Name`參數。
+使用 Azure PowerShell AzKeyVaultManagedStorageSasDefinition Cmdlet 來建立共用存取[簽](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0)章定義。  您可以將您選擇的名稱提供給 `-Name` 參數。
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
@@ -252,7 +256,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-您現在可以使用[AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) Cmdlet 和 secret `Name`屬性來查看該秘密的內容。
+您現在可以使用[AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) Cmdlet 和 secret `Name` 屬性來查看該秘密的內容。
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>

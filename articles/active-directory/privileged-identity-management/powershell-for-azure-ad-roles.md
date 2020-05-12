@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c42c0dd3848ec913f991e4b07612669c5a25c9f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233987"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197275"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -45,12 +45,12 @@ ms.locfileid: "82233987"
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. 前往**Azure Active Directory** >  > 內容**目錄識別碼**]，尋找 Azure AD 組織的租使用者識別碼。** ** 當您需要提供 resourceId 時，請在 [Cmdlet] 區段中使用此識別碼。
+1. 前往**Azure Active Directory**內容  >  **Properties**  >  **目錄識別碼**]，尋找 Azure AD 組織的租使用者識別碼。 當您需要提供 resourceId 時，請在 [Cmdlet] 區段中使用此識別碼。
 
     ![在 Azure AD 組織的屬性中尋找組織識別碼](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 下列各節是可協助您啟動並執行的簡單範例。 您可以在https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management找到有關下列 Cmdlet 的更詳細檔。 不過，您必須將 providerID 參數中的 "azureResources" 取代為 "aadRoles"。 您也必須記得使用您的 Azure AD 組織的 [組織識別碼] 作為 [resourceId] 參數。
+> 下列各節是可協助您啟動並執行的簡單範例。 您可以在找到有關下列 Cmdlet 的更詳細檔 https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management 。 不過，您必須將 providerID 參數中的 "azureResources" 取代為 "aadRoles"。 您也必須記得使用您的 Azure AD 組織的 [組織識別碼] 作為 [resourceId] 參數。
 
 ## <a name="retrieving-role-definitions"></a>正在抓取角色定義
 
@@ -122,11 +122,10 @@ Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-若要更新角色設定，您必須先定義設定物件，如下所示：
+若要更新角色設定，您必須取得特定角色的現有設定物件，並對其進行變更：
 
-    $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
-    $setting.RuleIdentifier = "JustificationRule"
-    $setting.Setting = "{'required':false}"
+    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+    $setting.UserMemberSetting.justificationRule = '{"required":false}'
 
 接著，您可以將設定套用至特定角色的其中一個物件，如下所示。 此處的識別碼是角色設定識別碼，可從清單角色設定 Cmdlet 的結果中抓取。
 

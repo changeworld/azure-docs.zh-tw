@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263500"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199516"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者
 
@@ -42,9 +42,6 @@ ms.locfileid: "79263500"
 
    ![顯示 [新增來賓使用者] 在 UI 中的位置](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > [新增來賓使用者]**** 選項也在 [組織關係]**** 頁面上。 在 [Azure Active Directory]**** 中，[管理]**** 下方，選取 [組織關係]****。
-
 5. 在 [新增使用者]**** 頁面上選取 [邀請使用者]****，然後新增來賓使用者的資訊。 
 
     > [!NOTE]
@@ -71,7 +68,7 @@ ms.locfileid: "79263500"
 3. 在 [管理]**** 底下選取 [群組]****。
 4. 選取群組 (或按一下 [新增群組]**** 以建立新的群組)。 您不妨納入群組描述，說明該群組包含 B2B 來賓使用者。
 5. 選取 [成員]****。 
-6. 請執行下列其中一項動作：
+6. 執行下列其中一個動作：
    - 如果目錄中已有來賓使用者，請搜尋 B2B 使用者。 選取使用者，然後按一下 [選取]**** 將使用者新增至群組中。
    - 如果目錄中尚未有來賓使用者存在，請藉由在搜尋方塊中鍵入使用者的電子郵件地址、選擇性鍵入個人訊息，然後按一下 [選取]****，來邀請他們加入群組。 邀請會自動傳送給受邀的使用者。
      
@@ -93,7 +90,7 @@ ms.locfileid: "79263500"
 
 6. 選取 [新增使用者]  。
 7. 在 [新增指派]**** 下，選取 [使用者和群組]****。
-8. 請執行下列其中一項動作：
+8. 執行下列其中一個動作：
    - 如果目錄中已有來賓使用者，請搜尋 B2B 使用者。 選取使用者，按一下 [選取]****，然後按一下 [指派]**** 將使用者新增至應用程式中。
    - 如果來賓使用者尚不在目錄中，請在 [選取成員或邀請外部使用者]**** 下方輸入使用者的電子郵件地址。 在訊息方塊中，輸入選擇性的個人訊息。 在訊息方塊下方，按一下 [邀請]****。
            

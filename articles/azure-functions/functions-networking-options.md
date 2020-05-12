@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419569"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121335"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路功能選項
 
@@ -30,11 +30,11 @@ ms.locfileid: "80419569"
 
 |                |[取用方案](functions-scale.md#consumption-plan)|[進階方案](functions-scale.md#premium-plan)|[App Service 計劃](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[輸入 IP 限制和私人網站存取](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
-|[虛擬網路整合](#virtual-network-integration)|❌否|✅是（區域）|✅是（區域和閘道）|✅是|
-|[虛擬網路觸發程式（非 HTTP）](#virtual-network-triggers-non-http)|❌否| ✅是 |✅是|✅是|
-|[混合式連接](#hybrid-connections)（僅限 Windows）|❌否|✅是|✅是|✅是|
-|[輸出 IP 限制](#outbound-ip-restrictions)|❌否| ✅是|✅是|✅是|
+|[輸入 IP 限制和私人網站存取](#inbound-ip-restrictions)|✅是的|✅是的|✅是的|✅是的|
+|[虛擬網路整合](#virtual-network-integration)|❌否|✅是（區域）|✅是（區域和閘道）|✅是的|
+|[虛擬網路觸發程式（非 HTTP）](#virtual-network-triggers-non-http)|❌否| ✅是的 |✅是的|✅是的|
+|[混合式連接](#hybrid-connections)（僅限 Windows）|❌否|✅是的|✅是的|✅是的|
+|[輸出 IP 限制](#outbound-ip-restrictions)|❌否| ✅是的|✅是的|✅是的|
 
 ## <a name="inbound-ip-restrictions"></a>輸入 IP 限制
 
@@ -50,7 +50,7 @@ ms.locfileid: "80419569"
 私用網站存取是指讓您的應用程式只能從私人網路（例如 Azure 虛擬網路）存取。
 
 * 設定服務端點時，可在[Premium](./functions-premium-plan.md)、[耗用量](functions-scale.md#consumption-plan)和[App Service](functions-scale.md#app-service-plan)方案中取得私用網站存取。
-    * 您可以在 [**平臺功能** > ] [**網路** > ] [**設定存取限制** > ] [**新增規則**] 底下，針對個別應用程式來設定服務端點。 現在可以選取 [虛擬網路] 做為 [規則類型]。
+    * 您可以在 [**平臺功能**] [網路] [  >  **Networking**  >  **設定存取限制**] [  >  **新增規則**] 底下，針對個別應用程式來設定服務端點。 現在可以選取 [虛擬網路] 做為 [規則類型]。
     * 如需詳細資訊，請參閱[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。
     * 請記住，使用服務端點時，即使已設定虛擬網路整合，您的函式仍會擁有網際網路的完整輸出存取權。
 * 您也可以在使用內部負載平衡器（ILB）設定的 App Service 環境中使用私人網站存取。 如需詳細資訊，請參閱[建立和使用內部負載平衡器與 App Service 環境](../app-service/environment/create-ilb-ase.md)。
@@ -102,9 +102,9 @@ Azure Functions 中的虛擬網路整合使用共用的基礎結構搭配 App Se
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程式的 Premium 方案
 
-當您執行高階方案時，您可以將非 HTTP 觸發程式函式連接到在虛擬網路中執行的服務。 若要這樣做，您必須啟用函數應用程式的虛擬網路觸發程式支援。 在 [**函數應用程式設定**] 下的 [ [Azure 入口網站](https://portal.azure.com)中，可找到**虛擬網路觸發程式支援**設定。
+當您執行高階方案時，您可以將非 HTTP 觸發程式函式連接到在虛擬網路中執行的服務。 若要這樣做，您必須啟用函數應用程式的虛擬網路觸發程式支援。 [**虛擬網路觸發程式支援**] 設定位於 [設定] [函式執行時間設定 **] 下的**[ [Azure 入口網站](https://portal.azure.com)  >  ** **。
 
-![虛擬網路切換](media/functions-networking-options/virtual-network-trigger-toggle.png)
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
 您也可以使用下列 Azure CLI 命令來啟用虛擬網路觸發程式：
 
@@ -114,7 +114,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 函數執行時間的2.x 版和更新版本支援虛擬網路觸發程式。 支援下列非 HTTP 觸發程式類型。
 
-| 分機 | 最小版本 |
+| 延伸 | 最小版本 |
 |-----------|---------| 
 |[Microsoft Azure Webjob。儲存空間](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 或更高版本 |
 |[EventHubs （副檔名為）](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 或更高版本|
@@ -146,7 +146,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 高階方案中提供輸出 IP 限制，App Service 方案或 App Service 環境。 您可以為部署 App Service 環境的虛擬網路設定輸出限制。
 
-當您將高階計畫中的函式應用程式或使用虛擬網路的 App Service 計畫整合時，應用程式預設仍可對網際網路進行輸出呼叫。 藉由新增應用程式`WEBSITE_VNET_ROUTE_ALL=1`設定，您可以強制將所有輸出流量傳送到您的虛擬網路，並在其中使用網路安全性群組規則來限制流量。
+當您將高階計畫中的函式應用程式或使用虛擬網路的 App Service 計畫整合時，應用程式預設仍可對網際網路進行輸出呼叫。 藉由新增應用程式設定 `WEBSITE_VNET_ROUTE_ALL=1` ，您可以強制將所有輸出流量傳送到您的虛擬網路，並在其中使用網路安全性群組規則來限制流量。
 
 ## <a name="troubleshooting"></a>疑難排解
 

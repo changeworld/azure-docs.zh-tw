@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006348"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117014"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用 JSON
 
@@ -19,7 +19,7 @@ ms.locfileid: "83006348"
 
 我們將摘要說明使用 JSON 的一些重要層面：
 
-- JSON 物件一律以`{`左大括弧開頭，並以`}`右大括弧結尾
+- JSON 物件一律以 `{` 左大括弧開頭，並以 `}` 右大括弧結尾
 - 您可以讓 JSON 屬性彼此[嵌套](#nested-properties)
 - JSON 屬性值可以是陣列
 - JSON 屬性名稱會區分大小寫
@@ -45,9 +45,9 @@ ms.locfileid: "83006348"
 }
 ```
 
-在此情況下， `state`、 `country`和`city`屬性全都嵌套在`address`屬性內。
+在此情況下， `state` 、 `country` 和 `city` 屬性全都嵌套在 `address` 屬性內。
 
-下列範例會投射兩個嵌套的`f.address.state`屬性`f.address.city`：和。
+下列範例會投射兩個嵌套的屬性： `f.address.state` 和 `f.address.city` 。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -141,9 +141,9 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 中的保留關鍵字和特殊字元
 
-您可以使用加上引號的屬性運算子`[]`來存取屬性。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 此語法適用于將包含空格、特殊字元或名稱與 SQL 關鍵字或保留字相同的屬性加以轉義。
+您可以使用加上引號的屬性運算子來存取屬性 `[]` 。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 此語法適用于將包含空格、特殊字元或名稱與 SQL 關鍵字或保留字相同的屬性加以轉義。
 
-例如，以下是具有名為`order`之屬性的檔，以及包含`price($)`特殊字元的屬性：
+例如，以下是具有名為之屬性的檔 `order` ，以及 `price($)` 包含特殊字元的屬性：
 
 ```json
 {
@@ -160,7 +160,7 @@ WHERE EXISTS(
 }
 ```
 
-如果您執行包含`order`屬性或`price($)`屬性的查詢，將會收到語法錯誤。
+如果您執行包含 `order` 屬性或屬性的查詢 `price($)` ，將會收到語法錯誤。
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -208,7 +208,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
     }]
 ```
 
-在上述範例中， `SELECT`子句需要建立 JSON 物件，而且由於此範例不會提供索引鍵，因此子句會使用隱含引數變數名稱`$1`。 下列查詢會傳回兩個隱含引數`$1`變數`$2`：和。
+在上述範例中， `SELECT` 子句需要建立 JSON 物件，而且由於此範例不會提供索引鍵，因此子句會使用隱含引數變數名稱 `$1` 。 下列查詢會傳回兩個隱含引數變數： `$1` 和 `$2` 。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +237,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ### <a name="examples"></a>範例
 
-用於`AS`別名的關鍵字是選擇性的，如下列範例所示，將第二個值投射`NameInfo`為：
+`AS`用於別名的關鍵字是選擇性的，如下列範例所示，將第二個值投射為 `NameInfo` ：
 
 ```sql
     SELECT
@@ -270,7 +270,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```

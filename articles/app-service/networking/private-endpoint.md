@@ -4,17 +4,17 @@ description: 使用 Azure 私用端點私下連接到 Web 應用程式
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756287"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198826"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 應用程式的私用端點（預覽）
 
@@ -28,7 +28,7 @@ ms.locfileid: "80756287"
 - 藉由設定私人端點來保護您的 Web 應用程式，以排除公開風險。
 - 使用 VPN 或 ExpressRoute 私用對等互連，從連線到 VNet 的內部部署網路安全地連線到 Web 應用程式。
 
-如果您只需要 VNet 與 Web 應用程式之間的安全連線，服務端點是最簡單的解決方案。 如果您也需要透過 Azure 閘道從內部部署連線到 web 應用程式，區域內對等互連 VNet 或全域對等互連 VNet，私用端點是解決方案。  
+如果您只需要 VNet 與 Web 應用程式之間的安全連線，服務端點是最簡單的解決方案。 如果您也需要透過 Azure 閘道、區域內對等互連 VNet 或全域對等互連 VNet，從內部部署連線到 web 應用程式，則私用端點是解決方案。  
 
 如需詳細資訊，請參閱[服務端點][serviceendpoint]。
 
@@ -65,11 +65,19 @@ ms.locfileid: "80756287"
 因為這項功能處於預覽狀態，所以我們不會在預覽期間變更 DNS 專案。 您必須自行管理私人 DNS 伺服器或 Azure DNS 私人區域中的 DNS 專案。
 如果您需要使用自訂 DNS 名稱，您必須在 Web 應用程式中新增自訂名稱。 在預覽期間，您必須使用公用 DNS 解析來驗證自訂名稱，就像任何自訂名稱一樣。 如需詳細資訊，請參閱[自訂 DNS 驗證][dnsvalidation]。
 
+如果您需要使用 Kudu 主控台，或 Kudu REST API （例如，使用 Azure DevOps 自我裝載代理程式部署），您需要在 Azure DNS 私人區域或自訂 DNS 伺服器中建立兩個記錄。 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
 ## <a name="pricing"></a>定價
 
 如需定價詳細資料，請參閱 [Azure Private Link 定價][pricing]。
 
 ## <a name="limitations"></a>限制
+
+當您在具有私用端點的彈性 Premium 方案中使用 Azure 函式時，若要在 Azure 入口網站中執行或執行函式，您必須具有直接的網路存取權，否則會收到 HTTP 403 錯誤。 換句話說，您的瀏覽器必須能夠連線到私人端點，才能從 Azure 入口網站執行此函式。 
+
+在預覽期間，只有生產位置會在私人端點後方公開，而其他位置僅供公用端點連線。
 
 我們會定期改善私人連結功能和私人端點，請參閱[這篇文章][pllimitations]，以取得有關限制的最新資訊。
 

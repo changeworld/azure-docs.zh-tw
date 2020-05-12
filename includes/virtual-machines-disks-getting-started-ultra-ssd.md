@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008619"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196954"
 ---
 Azure ultra 磁片提供高輸送量、高 IOPS 以及一致的低延遲磁片儲存體，適用于 Azure IaaS 虛擬機器（Vm）。 這個新的供應項目可提供絕佳的效能，同時保有我們現有磁碟供應項目的相同可用性層級。 Ultra 磁片的一個主要優點是能夠以動態方式變更 SSD 的效能和您的工作負載，而不需要重新開機您的 Vm。 Ultra 磁碟適用於處理大量資料的工作負載 (例如 SAP Hana)、最上層資料庫，以及高交易量的工作負載。
 
@@ -51,7 +51,7 @@ $vmSize = "Standard_E64s_v3"
 
 保留 [**區域**] 值，它代表您的可用性區域，而您將需要它來部署 Ultra 磁片。
 
-|ResourceType  |Name  |位置  |區域  |限制  |功能  |值  |
+|ResourceType  |名稱  |Location  |區域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -62,7 +62,7 @@ $vmSize = "Standard_E64s_v3"
 
 ### <a name="vms-with-no-redundancy-options"></a>沒有冗余選項的 Vm
 
-部署在美國西部的 Ultra 磁片必須立即部署，而不需要任何複製選項。 不過，並非每個支援 ultra 磁片的磁片大小都可以在此區域中。 若要判斷美國西部中的哪些人支援 ultra 磁片，您可以使用下列其中一個程式碼片段。 請務必先取代`vmSize`和`subscription`值：
+部署在美國西部的 Ultra 磁片必須立即部署，而不需要任何複製選項。 不過，並非每個支援 ultra 磁片的磁片大小都可以在此區域中。 若要判斷美國西部中的哪些人支援 ultra 磁片，您可以使用下列其中一個程式碼片段。 請務必 `vmSize` 先取代和 `subscription` 值：
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -79,7 +79,7 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
 ```
 
-回應會類似于下列格式， `UltraSSDAvailable   True`指出 VM 大小是否支援此區域中的 ultra 磁片。
+回應會類似于下列格式， `UltraSSDAvailable   True` 指出 VM 大小是否支援此區域中的 ultra 磁片。
 
 ```
 Name                                         Value
@@ -115,7 +115,7 @@ UltraSSDAvailable                            True
 
 如果您想要建立具有多個 ultra 磁片的 VM，請參閱[使用多個 ultra 磁片建立 vm](https://aka.ms/ultradiskArmTemplate)的範例。
 
-如果您想要使用自己的範本，請確定`Microsoft.Compute/virtualMachines`和`Microsoft.Compute/Disks`的`2018-06-01` **apiVersion**設定為（或更新版本）。
+如果您想要使用自己的範本，請確定和**apiVersion**的 apiVersion `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks` 設定為 `2018-06-01` （或更新版本）。
 
 將磁片 sku 設定為**UltraSSD_LRS**，然後設定磁片容量、IOPS、可用性區域和輸送量（以 MBps 為單位），以建立 ultra 磁片。
 

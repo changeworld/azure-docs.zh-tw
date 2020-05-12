@@ -8,16 +8,16 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 15e44b9c048f167935fe8660228581e5bac0f43d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 34b2282421b9c95ad99ad040cb11847a30d3b52c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006257"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199988"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-搭配 Azure 虛擬 WAN 的 WAN 連線架構
 
-Azure 虛擬 WAN 是一種網路服務，透過單一操作介面整合許多雲端連線能力和安全性服務。 這些服務包括分支（透過站對站 VPN）、遠端使用者（點對站 vpn）、私人（ExpressRoute）連線能力，以及適用于 Vnet、VPN 和 ExpressRoute 互連能力的雲端可轉移連線、路由、Azure 防火牆，以及私人連線的加密。
+Azure 虛擬 WAN 是一種網路服務，透過單一操作介面整合許多雲端連線能力和安全性服務。 這些服務包含分支（透過站對站 VPN）、遠端使用者（點對站 vpn）、私人（ExpressRoute）連線能力、適用于 Vnet 的雲端可轉移連線、VPN 和 ExpressRoute 互連能力、路由、Azure 防火牆，以及私人連線的加密。
 
 雖然 Azure 虛擬 WAN 本身是一種軟體定義的 WAN （SD WAN），但它也是設計來啟用與以內部部署為基礎的 SD 和服務的無縫互連。 我們的[虛擬 WAN](virtual-wan-locations-partners.md)生態系統和 Azure 網路管理服務合作夥伴[（msp）](../networking/networking-partners-msp.md)提供許多這類服務。 將其私人 WAN 轉換成 SD-WAN 的企業，在將其私用 SD-WAN 與 Azure 虛擬 WAN 進行互連時，會有選項。 企業可以從下列選項中選擇：
 
@@ -39,7 +39,7 @@ SD-WAN CPE 會繼續是執行和強制執行「流量優化」的位置，以及
 
 在此模型中，因為與虛擬 WAN 的連線是透過 IPsec 進行，而且 IPsec VPN 在虛擬 WAN VPN 閘道上終止，所以可能不支援以即時流量特性為基礎的部分廠商專屬流量優化。 例如，在分支 CPE 上選取的動態路徑是可行的，因為分支裝置會與另一個 SD WAN 節點交換各種網路封包資訊，因此識別最佳連結以在分支動態地使用各種優先順序的流量。 這項功能在需要最後英里優化（分支到最接近的 Microsoft POP）的區域中可能很有用。
 
-透過虛擬 WAN，使用者可以取得 Azure 直接選取，這是跨多個 ISP 連結（從 branch CPE 到虛擬 WAN VPN 閘道）的原則式路徑選取範圍。 虛擬 WAN 可讓您將多個連結（路徑）設定為相同的 SD WAN 分支 CPE，而每個連結都會在 SD-WAN CPE 的不同公用 IP 介面上終止。 SD-WAN 廠商可以利用這項功能，根據這些路徑特定的流量原則來選取最理想的 Azure 路徑。
+透過虛擬 WAN，使用者可以取得 Azure 直接選取，這是跨多個 ISP 連結（從 branch CPE 到虛擬 WAN VPN 閘道）的原則式路徑選取範圍。 虛擬 WAN 可讓您從相同的 SD-WAN 分支 CPE 設定多個連結（路徑）;每個連結都代表從 SD-WAN CPE 的唯一公用 IP 到兩個不同的 Azure 虛擬 WAN VPN 閘道實例的雙重通道連線。 SD-WAN 廠商可以根據其原則引擎在 CPE 連結上設定的流量原則，對 Azure 執行最佳的路徑。
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>間接互連模型
 

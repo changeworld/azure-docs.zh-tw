@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 應用程式深入解析中分隔遙測
+title: 如何設計您的 Application Insights 部署-一種與多項資源？
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562146"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125684"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>區分開發、測試及生產環境的遙測
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
 
-當您在開發下一版 Web 應用程式時，您不會想看到新版與已發行版本的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遙測混合在一起。 為了避免混淆，請將不同開發階段的遙測，以不同的檢測金鑰 (ikey) 傳送到不同的 Application Insights 資源。 為了能夠在版本移到另一個階段時更輕鬆地變更檢測金鑰，您可以將 ikey 設定在程式碼中 (而不是設定在組態檔中)。 
+當您在開發下一版 Web 應用程式時，您不會想看到新版與已發行版本的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遙測混合在一起。 為了避免混淆，請將不同開發階段的遙測，以不同的檢測金鑰 (ikey) 傳送到不同的 Application Insights 資源。 為了能夠在版本移到另一個階段時更輕鬆地變更檢測金鑰，您可以將 ikey 設定在程式碼中 (而不是設定在組態檔中)。
 
 (如果您的系統是「Azure 雲端服務」，有[另一個設定個別 ikey 的方法](../../azure-monitor/app/cloudservices.md))。
 
@@ -22,7 +22,7 @@ ms.locfileid: "82562146"
 
 每個 Application Insights 資源都隨附現成可用的計量。 如果完全不同的元件會回報給相同的 Application Insights 資源，這些計量對的儀表板/警示可能沒有意義。
 
-### <a name="use-a-single-application-insights-resource"></a>使用單一 Application Insights 資源
+### <a name="when-to-use-a-single-application-insights-resource"></a>使用單一 Application Insights 資源的時機
 
 -   適用于一起部署的應用程式元件。 通常由一組相同的 DevOps/ITOps 使用者所管理的單一小組所開發。
 -   如果在預設情況下匯總關鍵效能指標（Kpi）（例如回應持續時間、儀表板中的失敗率等等），則會在所有這些指標（您可以選擇依角色名稱分割計量瀏覽器體驗）。
@@ -124,7 +124,7 @@ IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得�
     若要允許 MSBuild 產生版本號碼，請在 AssemblyReference.cs 中設定類似 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和版次追蹤
-若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在您`.csproj`的檔案中，新增：  
+若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在您的檔案中 `.csproj` ，新增：  
 
 ```XML
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 4046d4ec5f62ffc4fab50e8c5a4a08fad326aa04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796950"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121179"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **將金鑰保存庫移至另一個訂用帳戶將會對您的環境造成重大變更。**
 
@@ -50,7 +50,7 @@ ms.locfileid: "82796950"
 
 請確定您已移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移至的訂用帳戶，並確定沒有任何不符。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 您的金鑰保存庫所在的目前訂用帳戶的參與者層級存取權或更高等級。
 * 參與者層級存取或更高版本，可供您想要移動金鑰保存庫的訂用帳戶使用。
@@ -83,6 +83,9 @@ $vault.Properties.AccessPolicies = @()                                     # Acc
                                                                            # applications/users/rights so that it does not need to be                             # done after this whole activity. Here we are not setting 
                                                                            # any access policies. 
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the key vault's properties.
+
+Clear-AzContext                                                            #Clear the context from PowerShell
+Connect-AzAccount                                                          #Log in again to confirm you have the correct tenant id
 ````
 
 ```azurecli

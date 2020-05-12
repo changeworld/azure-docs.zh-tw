@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617667"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199557"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -76,15 +77,15 @@ Windows Server 2008 R2 SP1 或更新版本。
 
 NPS 伺服器必須能夠透過連接埠 80 和 443 與下列 URL 通訊。
 
-- HTTPs：\//adnotifications.windowsazure.com
+- HTTPs： \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- HTTPs：\//credentials.azure.com
+- HTTPs： \/ /credentials.azure.com
 
 此外，必須連線到下列 Url，才能[使用提供的 PowerShell 腳本來完成介面卡的設定](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
-- HTTPs：\//provisioningapi.microsoftonline.com
-- HTTPs：\//aadcdn.msauth.net
+- HTTPs： \/ /provisioningapi.microsoftonline.com
+- HTTPs： \/ /aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>準備您的環境
 
@@ -110,7 +111,7 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 這個步驟在租用戶上可能已經完成，但建議最好再次檢查，確認 Azure AD Connect 最近已同步處理您的資料庫。
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory** > **Azure AD Connect**
+2. 選取**Azure Active Directory**  >  **Azure AD Connect**
 3. 確認同步處理狀態為 [已啟用]****，且上次同步處理為不到一小時前。
 
 如果您必須展開新一回合的同步處理，請使用 [Azure AD Connect 同步處理：排程器](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)中的指示。
@@ -223,9 +224,9 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 使用 NPS 擴充功能的 release 1.0.1.32，現在支援讀取多個憑證。 這項功能有助於在憑證更新到期前進行輪替。 如果您的組織執行的是舊版的 NPS 擴充功能，您應該升級為1.0.1.32 或更高版本。
 
-`AzureMfaNpsExtnConfigSetup.ps1`腳本所建立的憑證有效期限為2年。 IT 組織應該監視憑證的到期日。 NPS 擴充功能的憑證會放在 [個人] 底下的 [本機電腦] 憑證存放區中，併發行至提供給腳本的租使用者識別碼。
+腳本所建立的憑證 `AzureMfaNpsExtnConfigSetup.ps1` 有效期限為2年。 IT 組織應該監視憑證的到期日。 NPS 擴充功能的憑證會放在 [個人] 底下的 [本機電腦] 憑證存放區中，併發行至提供給腳本的租使用者識別碼。
 
-當憑證接近到期日時，應該建立新的憑證來取代它。  此程式是透過`AzureMfaNpsExtnConfigSetup.ps1`再次執行，並在出現提示時保留相同的租使用者識別碼來完成。 此程式應該在您環境中的每個 NPS 伺服器上重複執行。
+當憑證接近到期日時，應該建立新的憑證來取代它。  此程式是透過 `AzureMfaNpsExtnConfigSetup.ps1` 再次執行，並在出現提示時保留相同的租使用者識別碼來完成。 此程式應該在您環境中的每個 NPS 伺服器上重複執行。
 
 ## <a name="configure-your-nps-extension"></a>設定 NPS 擴充功能
 

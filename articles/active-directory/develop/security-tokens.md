@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926573"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115790"
 ---
 # <a name="security-tokens"></a>安全性權杖
 
@@ -31,7 +31,7 @@ ms.locfileid: "82926573"
 **識別碼權杖**會當做[OpenID connect](v2-protocols-oidc.md)流程的一部分傳送給用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。 若要深入瞭解 Microsoft 身分識別平臺如何發出識別碼權杖，請參閱[識別碼權杖](id-tokens.md)。
 
 > [!NOTE]
-> 本文討論 OAuth2 和 OpenID Connect 通訊協定的安全性權杖。 許多企業應用程式都使用 SAML 來驗證使用者。 如需 SAML 判斷提示的詳細資訊，請參閱[AZURE AD saml 權杖參考](reference-saml-tokens.md)。
+> 本文討論 OAuth2 和 OpenID Connect 通訊協定所使用的安全性權杖。 許多企業應用程式都使用 SAML 來驗證使用者。 如需 SAML 判斷提示的詳細資訊，請參閱[AZURE AD saml 權杖參考](reference-saml-tokens.md)。
 
 ## <a name="validating-security-tokens"></a>驗證安全性權杖
 
@@ -42,11 +42,11 @@ ms.locfileid: "82926573"
 * 存取應用程式或受保護資源的存取權杖，以及
 * 當存取權杖接近過期時，用來重新整理存取權杖的重新整理權杖。
 
-存取權杖會傳遞至 Web API 做為`Authorization`標頭中的持有人權杖。 應用程式可以為 STS 提供重新整理權杖，如果使用者存取應用程式時未撤銷，則會取得新的存取權杖和新的重新整理權杖。 這就是處理離開企業之人員案例的方式。 當 STS 收到重新整理權杖時，如果使用者不再獲得授權，就不會發出另一個有效的存取權杖。
+存取權杖會傳遞至 Web API 做為標頭中的持有人權杖 `Authorization` 。 應用程式可以為 STS 提供重新整理權杖，如果使用者存取應用程式時未撤銷，則會取得新的存取權杖和新的重新整理權杖。 這就是處理離開企業之人員案例的方式。 當 STS 收到重新整理權杖時，如果使用者不再獲得授權，就不會發出另一個有效的存取權杖。
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON Web 權杖（Jwt）和宣告
 
-Microsoft 身分識別平臺會將安全性權杖實作為包含**宣告**的**JSON Web 權杖（jwt）** 。
+Microsoft 身分識別平臺會將安全性權杖實作為包含**宣告**的**JSON Web 權杖（jwt）** 。 由於 Jwt 是用來做為安全性權杖，因此這種形式的驗證有時稱為**JWT 驗證**。
 
 宣告[會提供有關](developer-glossary.md#claim)某個實體（例如用戶端應用程式或[資源擁有](developer-glossary.md#resource-owner)者）到另一個實體（例如資源伺服器）的判斷提示。 宣告也可以稱為 JWT 宣告或 JSON Web 權杖宣告。
 
@@ -82,7 +82,7 @@ Microsoft 身分識別平臺會將安全性權杖實作為包含**宣告**的**J
 |[代理者流程](v2-oauth2-on-behalf-of-flow.md) | 存取權杖| x| x| x| |
 |[用戶端認證](v2-oauth2-client-creds-grant-flow.md) | | | x （僅限應用程式）| | |
 
-透過隱含模式發行的權杖有長度限制，因為透過 URL 傳遞回瀏覽器（其中`response_mode`是`query`或`fragment`）。  有些瀏覽器對於可以放在瀏覽器列中的 URL 大小有限制，而且太長時也會失敗。  因此，這些權杖不具有`groups`或`wids`宣告。
+透過隱含模式發行的權杖有長度限制，因為透過 URL 傳遞回瀏覽器（其中 `response_mode` 是 `query` 或 `fragment` ）。  有些瀏覽器對於可以放在瀏覽器列中的 URL 大小有限制，而且太長時也會失敗。  因此，這些權杖不具有 `groups` 或 `wids` 宣告。
 
 ## <a name="next-steps"></a>後續步驟
 

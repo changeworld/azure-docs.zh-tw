@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312040"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198806"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 遷移至 v2
 
@@ -50,18 +50,18 @@ ms.locfileid: "81312040"
 
 有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：
 
-* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用`Install-Script`選項來執行腳本。
+* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用 `Install-Script` 選項來執行腳本。
 * 如果您需要保留 Azure Az 模組，最好是下載並直接執行腳本。
 
-若要判斷您是否已安裝 Azure Az 模組，請`Get-InstalledModule -Name az`執行。 如果您看不到任何已安裝的`Install-Script` Az 模組，則可以使用方法。
+若要判斷您是否已安裝 Azure Az 模組，請執行 `Get-InstalledModule -Name az` 。 如果您看不到任何已安裝的 Az 模組，則可以使用 `Install-Script` 方法。
 
 ### <a name="install-using-the-install-script-method"></a>使用安裝腳本方法進行安裝
 
 若要使用此選項，您的電腦上不得安裝 Azure Az 模組。 如果已安裝，下列命令就會顯示錯誤。 您可以卸載 Azure Az 模組，或使用另一個選項手動下載腳本並加以執行。
   
-使用下列命令來執行指令碼：
+使用下列命令來執行腳本，以取得最新版本：
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 此命令也會安裝必要的 Az 模組。  
 
@@ -71,11 +71,11 @@ ms.locfileid: "81312040"
 
 執行指令碼：
 
-1. 使用`Connect-AzAccount`來連接到 Azure。
+1. 使用 `Connect-AzAccount` 來連接到 Azure。
 
-1. 使用`Import-Module Az`匯入 Az 模組。
+1. 使用匯 `Import-Module Az` 入 Az 模組。
 
-1. 執行`Get-Help AzureAppGWMigration.ps1`以檢查必要的參數：
+1. 執行 `Get-Help AzureAppGWMigration.ps1` 以檢查必要的參數：
 
    ```
    AzureAppGwMigration.ps1
@@ -101,7 +101,7 @@ ms.locfileid: "81312040"
 
    * **subnetAddressRange： [String]：必要**-這是您已為新的子網（或您想要配置）指派的 IP 位址空間，其中包含新的 v2 閘道。 這必須以 CIDR 標記法指定。 例如： 10.0.0.0/24。 您不需要事先建立此子網。 如果不存在，腳本會為您建立。
    * **appgwName： [String]：選擇性**。 這是您指定用來做為新 Standard_v2 或 WAF_v2 閘道之名稱的字串。 如果未提供此參數，則會使用現有 v1 閘道的名稱，並將尾碼附加 *_v2* 。
-   * **sslCertificates： [PSApplicationGatewaySslCertificate]：選擇性**。  您建立來代表 v1 閘道上的 TLS/SSL 憑證之 PSApplicationGatewaySslCertificate 物件的逗號分隔清單，必須上傳至新的 v2 閘道。 針對標準 v1 或 WAF v1 閘道所設定的每個 TLS/SSL 憑證，您可以透過此處顯示的`New-AzApplicationGatewaySslCertificate`命令來建立新的 PSApplicationGatewaySslCertificate 物件。 您需要 TLS/SSL 憑證檔案的路徑和密碼。
+   * **sslCertificates： [PSApplicationGatewaySslCertificate]：選擇性**。  您建立來代表 v1 閘道上的 TLS/SSL 憑證之 PSApplicationGatewaySslCertificate 物件的逗號分隔清單，必須上傳至新的 v2 閘道。 針對標準 v1 或 WAF v1 閘道所設定的每個 TLS/SSL 憑證，您可以透過此處顯示的命令來建立新的 PSApplicationGatewaySslCertificate 物件 `New-AzApplicationGatewaySslCertificate` 。 您需要 TLS/SSL 憑證檔案的路徑和密碼。
 
      只有在您未針對 v1 閘道或 WAF 設定 HTTPS 接聽程式時，這個參數才是選擇性的。 如果您至少有一個 HTTPS 接聽程式設定，就必須指定此參數。
 
@@ -115,7 +115,7 @@ ms.locfileid: "81312040"
         -Password $password
       ```
 
-     您可以在上述`$mySslCert1, $mySslCert2`範例中傳入（以逗號分隔），做為腳本中此參數的值。
+     您可以在 `$mySslCert1, $mySslCert2` 上述範例中傳入（以逗號分隔），做為腳本中此參數的值。
    * **trustedRootCertificates： [PSApplicationGatewayTrustedRootCertificate]：選擇性**。 以逗號分隔的 PSApplicationGatewayTrustedRootCertificate 物件清單，可讓您建立來代表[受信任的根憑證](ssl-overview.md)，以從您的 v2 閘道驗證後端實例。
    
       ```azurepowershell
@@ -162,7 +162,7 @@ ms.locfileid: "81312040"
 
   * 如果您在應用程式閘道上使用公用 IP 位址，您可以使用流量管理員設定檔進行受控制的細微遷移，以累加方式將流量（加權流量路由方法）路由傳送至新的 v2 閘道。
 
-    若要這麼做，您可以將 v1 和 v2 應用程式閘道的 DNS 標籤新增至[流量管理員設定檔](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，並將自訂 DNS 記錄（ `www.contoso.com`例如，） CNAMEing 至流量管理員網域（例如 contoso.trafficmanager.net）。
+    若要這麼做，您可以將 v1 和 v2 應用程式閘道的 DNS 標籤新增至[流量管理員設定檔](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，並將自訂 DNS 記錄（例如， `www.contoso.com` ） CNAMEing 至流量管理員網域（例如 contoso.trafficmanager.net）。
   * 或者，您可以更新您的自訂網域 DNS 記錄，以指向新 v2 應用程式閘道的 DNS 標籤。 視 DNS 記錄上設定的 TTL 而定，您的所有用戶端流量可能需要一些時間才能遷移至新的 v2 閘道。
 * **您的用戶端會連線至您應用程式閘道的前端 IP 位址**。
 
@@ -196,7 +196,7 @@ Azure PowerShell 腳本會建立具有適當大小的新 v2 閘道，以處理�
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   
-您可以將電子郵件傳送appgwmigrationsup@microsoft.com至，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
+您可以在「設定和安裝/遷移至 V2 SKU」主題中，聯絡 Azure 支援。 [在這裡](https://azure.microsoft.com/support/options/)深入瞭解 Azure 支援。
 
 ## <a name="next-steps"></a>後續步驟
 

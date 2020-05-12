@@ -2,18 +2,19 @@
 title: 在 Azure 中跨租使用者共用資源庫映射
 description: 瞭解如何使用共用映射資源庫跨 Azure 租使用者共用 VM 映射。
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: conceptual
-ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
+ms.date: 04/05/2019
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5b86335ab8bcc3af75dbd8af39e3d913f2461e58
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276347"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119836"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
 
@@ -22,7 +23,7 @@ ms.locfileid: "76276347"
 
 ## <a name="create-a-scale-set-using-azure-cli"></a>使用 Azure CLI 建立擴展集
 
-使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要`az account show --query "tenantId"` ，您可以使用來取得租使用者識別碼。
+使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要，您可以使用 `az account show --query "tenantId"` 來取得租使用者識別碼。
 
 ```azurecli-interactive
 az account clear

@@ -5,15 +5,18 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/05/2019
-ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249603"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199899"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure 監視器中執行跨資源記錄查詢  
+
+> [!IMPORTANT]
+> 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)遙測會儲存在 log Analytics 工作區中，並包含所有其他記錄資料。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
 
 先前使用 Azure 監視器時，您只能分析來自目前工作區內的資料，這項限制讓您無法跨訂用帳戶中定義的多個工作區執行查詢。  此外，您只能搜尋在 Application Insights 中或從 Visual Studio 直接使用 Application Insights 從 Web 應用程式收集的遙測項目。 如此一來，也難以將作業和應用程式資料一起以原生方式分析。
 

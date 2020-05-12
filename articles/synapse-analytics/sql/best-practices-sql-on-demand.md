@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692156"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198889"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse 分析中的 SQL 隨選（預覽）最佳做法
 
@@ -44,7 +44,7 @@ ms.locfileid: "82692156"
 
 可能的話，您可以準備檔案以獲得更佳的效能：
 
-- 將 CSV 轉換成 Parquet-Parquet 是單欄式格式。 因為它已壓縮，所以其檔案大小會小於具有相同資料的 CSV 檔案。 SQL 隨選需要較少的時間和儲存體要求來讀取它。
+- 將 CSV 和 JSON 轉換成 Parquet-Parquet 是單欄式格式。 因為它已壓縮，所以其檔案大小會小於 CSV 或具有相同資料的 JSON 檔案。 SQL 隨選需要較少的時間和儲存體要求來讀取它。
 - 如果查詢是以單一大型檔案為目標，您可以將其分割成多個較小的檔案，以獲得好處。
 - 請嘗試將 CSV 檔案大小保留低於 10 GB。
 - 最好是針對單一 OPENROWSET 路徑或外部資料表位置使用大小相同的檔案。
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 以下為結果集。
 
-|is_hidden|column_ordinal|NAME|system_type_name|max_length|
+|is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|Varchar （8000）|8000|
 |0|2|pickup_datetime|datetime2(7)|8|
@@ -118,7 +118,14 @@ FROM
 > [!TIP]
 > 一律將 filepath 和 fileinfo 函式的結果轉換成適當的資料類型。 如果您使用字元資料類型，請務必使用適當的長度。
 
+> [!NOTE]
+> 除了針對 Synapse Spark 中建立的每個資料表而自動建立的外部資料表以外，目前不支援用於分割區刪除、filepath 和 fileinfo 的函數。
+
 如果您儲存的資料未分割，請考慮將它分割，讓您可以使用這些函式來優化以這些檔案為目標的查詢。 從 SQL 隨選[查詢資料分割的 Spark 資料表](develop-storage-files-spark-tables.md)時，查詢只會自動鎖定所需的檔案。
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>使用 PARSER_VERSION 2.0 來查詢 CSV 檔案
+
+查詢 CSV 檔案時，您可以使用效能優化剖析器。 如需詳細資訊，請參閱[PARSER_VERSION](develop-openrowset.md) 。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 來增強查詢效能和聯結
 
@@ -127,6 +134,12 @@ FROM
 您可以使用 CETAS，將經常使用的查詢部分（例如聯結的參考資料表）儲存到新的一組檔案。 接下來，您可以加入這個單一外部資料表，而不是在多個查詢中重複常見的聯結。
 
 當 CETAS 產生 Parquet 檔案時，將會在第一次查詢以此外部資料表為目標時自動建立統計資料，進而提升效能。
+
+## <a name="aad-pass-through-performance"></a>AAD 傳遞效能
+
+SQL 隨選可讓您使用 AAD 傳遞或 SAS 認證來存取儲存體中的檔案。 相較于 SAS，您可能會遇到 AAD 傳遞的效能降低。 
+
+如果您需要更好的效能，請嘗試 SAS 認證來存取儲存體，直到已改善 AAD 傳遞效能為止。
 
 ## <a name="next-steps"></a>後續步驟
 

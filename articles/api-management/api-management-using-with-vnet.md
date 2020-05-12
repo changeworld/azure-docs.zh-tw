@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/11/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203192"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196975"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -108,7 +108,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 <a name="required-ports"> </a>當「API 管理」服務實例裝載于 VNET 時，會使用下表中的埠。
 
-| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標記](../virtual-network/security-overview.md#service-tags) <br> 來源 / 目的地   | 用途（\*）                                                 | 虛擬網路類型 |
+| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標記](../virtual-network/security-overview.md#service-tags) <br> 來源 / 目的地   | 用途（ \* ）                                                 | 虛擬網路類型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80]，443                  | 輸入            | TCP                | INTERNET / VIRTUAL_NETWORK            | 與 API 管理的用戶端通訊                      | 外部             |
 | * / 3443                     | 輸入            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 入口網站和 PowerShell 的管理端點         | 外部和內部  |
@@ -136,22 +136,22 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure 公用      | <ul><li>gcs.prod.monitoring.core.windows.net （**新增**）</li><li>prod.warmpath.msftcloudes.com （**即將淘汰**）</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-black.prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-black.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-red.prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-red.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 公用      | <ul><li>gcs.prod.monitoring.core.windows.net （**新增**）</li><li>prod.warmpath.msftcloudes.com （**即將淘汰**）</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-black.prod.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-black.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod3-red.prod.metrics.microsoftmetrics.com （**新增**）</li><li>prod3-red.prod3.metrics.nsatc.net （**即將淘汰**）</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com （**新增**）</li><li>shoebox2.metrics.nsatc.net （**即將淘汰**）</li><li>prod3.metrics.microsoftmetrics.com （**新增**）</li><li>prod3.metrics.nsatc.net （**即將淘汰**）</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > 上述叢集的變更與 dns 區域**nsatc.net** 。 **MICROSOFTMETRICS.COM**大多是 dns 變更。 叢集的 IP 位址不會變更。
 
 + **區域服務標記**：允許儲存體、SQL 和事件中樞服務標籤輸出連線的 NSG 規則，可能會使用對應于包含 api 管理實例之區域（例如，美國西部區域中的 api 管理實例的 WestUS）的地區版本。 在多重區域部署中，每個區域中的 NSG 應該允許該區域和主要區域的服務標記流量。
 
-+ **Smtp 轉送**： smtp 轉送的輸出網路連線能力，它會在`smtpi-co1.msn.com`主機、 `smtpi-ch1.msn.com` `smtpi-db3.msn.com`、 `smtpi-sin.msn.com`和底下解析`ies.global.microsoft.com`
++ **Smtp 轉送**： smtp 轉送的輸出網路連線能力，它會在主機 `smtpi-co1.msn.com` 、、 `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` 和底下解析`ies.global.microsoft.com`
 
-+ **開發人員入口網站 CAPTCHA**：開發人員入口網站 CAPTCHA 的輸出網路連線能力，它會`client.hip.live.com`在`partner.hip.live.com`主機和下解析。
++ **開發人員入口網站 CAPTCHA**：開發人員入口網站 CAPTCHA 的輸出網路連線能力，它會在主機和下解析 `client.hip.live.com` `partner.hip.live.com` 。
 
 + **Azure 入口網站診斷**：從虛擬網路內部使用 API 管理延伸模組時，若要從 Azure 入口網站啟用診斷記錄的流程，則需要在連接埠 443 上有 `dc.services.visualstudio.com` 的輸出存取權。 這有助於針對您在使用延伸模組時所可能面臨的問題進行疑難排解。
 
-+ **Azure Load Balancer**：允許來自服務標記`AZURE_LOAD_BALANCER`的輸入要求不是`Developer` SKU 的需求，因為我們只會在其後方部署一個計算單位。 但是調整為[168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)較高的 SKU 時`Premium`，從168.63.129.16 傳入的會變得很重要，因為從 Load Balancer 健康情況探查失敗時，會導致部署失敗。
++ **Azure Load Balancer**：允許來自服務標記的輸入要求 `AZURE_LOAD_BALANCER` 不是 SKU 的需求 `Developer` ，因為我們只會在其後方部署一個計算單位。 但是調整為較高的 SKU 時，從[168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)傳入的會變得 `Premium` 很重要，因為從 Load Balancer 健康情況探查失敗時，會導致部署失敗。
 
 + **使用 Express Route 或網路虛擬裝置強制對內部部署防火牆進行通道流量**：常見的客戶設定是定義自己的預設路由（0.0.0.0/0），以強制所有來自 API 管理委派子網的流量都能流經內部部署防火牆或網路虛擬裝置。 此流量流程一定會中斷與 Azure API 管理的連線，因為已在內部部署封鎖輸出流量，或者 NAT 至無法再使用各種 Azure 端點的一組無法辨識位址。 解決方案會要求您執行幾項工作：
 

@@ -4,15 +4,15 @@ description: 瞭解適用于 Azure Vm 的 ultra 磁片
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 683920b192e9feec382740b7e54dcb87d3098ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35eeab099f988941c5acd7ef3da9aa818193bbef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008620"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197367"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
 

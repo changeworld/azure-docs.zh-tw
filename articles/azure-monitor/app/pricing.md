@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995545"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199033"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -29,6 +29,10 @@ Application Insights 的設計，是為了取得監視 web 應用程式的可用
 [多重步驟 Web 測試](../../azure-monitor/app/availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」** 不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
 
 [啟用自訂計量維度警示](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的 Application Insights 選項也可能產生額外成本，因為這可能會導致建立額外的預先匯總度量。 [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)Application Insights 中的記錄式和預先匯總的計量，以及 Azure 監視器自訂計量的[定價](https://azure.microsoft.com/pricing/details/monitor/)。
+
+### <a name="workspace-based-application-insights"></a>以工作區為基礎的 Application Insights
+
+針對將資料傳送至 Log Analytics 工作區的 Application Insights 資源（稱為[工作區型 Application Insights 資源](create-workspace-resource.md)），資料內嵌和保留的計費是由 Application Insights 資料所在的工作區進行。 這可讓客戶利用 Log Analytics[定價模型](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model)的所有選項，包括隨用隨付的容量保留。 Log Analytics 也有更多的資料保留選項，包括[依資料類型的保留](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)。 工作區中的 Application Insights 資料類型會收到90天的保留期，而不會產生費用。 Web 測試的使用，以及啟用自訂計量維度的警示，仍然會透過 Application Insights 來回報。 瞭解如何使用[使用量和估計成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)、 [Azure 成本管理 + 帳單](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill)和[Log Analytics 查詢](#data-volume-for-workspace-based-application-insights-resources)，追蹤 Log Analytics 中的資料內嵌和保留成本。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估計管理應用程式的成本
 
@@ -69,17 +73,17 @@ Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure
 ### <a name="using-data-volume-metrics"></a>使用資料量計量
 <a id="understanding-ingested-data-volume"></a>
 
-若要深入瞭解您的資料磁片區，請選取 Application Insights 資源的**計量**，並新增新的圖表。 針對圖表計量，請在 [以**記錄為基礎的度量**] 底下選取 [**資料點磁片**區]。 按一下 [套用**分割**]，然後選取 [依** `Telemetryitem`類型**群組]。
+若要深入瞭解您的資料磁片區，請選取 Application Insights 資源的**計量**，並新增新的圖表。 針對圖表計量，請在 [以**記錄為基礎的度量**] 底下選取 [**資料點磁片**區]。 按一下 [套用**分割**]，然後選取 [依** `Telemetryitem` 類型**群組]。
 
 ![使用計量查看資料量](./media/pricing/10-billing.png)
 
 ### <a name="queries-to-understand-data-volume-details"></a>瞭解資料量細節的查詢
 
-有兩種方法可以調查 Application Insights 的資料磁片區。 第一個會使用`systemEvents`資料表中的匯總資訊，而第二個`_BilledSize`使用屬性，這在每個內嵌事件上都有提供。
+有兩種方法可以調查 Application Insights 的資料磁片區。 第一個會使用資料表中的匯總資訊 `systemEvents` ，而第二個使用 `_BilledSize` 屬性，這在每個內嵌事件上都有提供。 `systemEvents`對於以[工作區為基礎的應用程式深入](#data-volume-for-workspace-based-application-insights-resources)解析，將不會有資料大小資訊。
 
 #### <a name="using-aggregated-data-volume-information"></a>使用匯總資料量資訊
 
-例如，您可以使用`systemEvents`資料表來查看過去24小時內查詢的資料磁片區內嵌：
+例如，您可以使用 `systemEvents` 資料表來查看過去24小時內查詢的資料磁片區內嵌：
 
 ```kusto
 systemEvents
@@ -116,15 +120,56 @@ systemEvents
 
 #### <a name="using-data-size-per-event-information"></a>使用每個事件的資料大小資訊
 
-若要深入瞭解資料磁片區的來源，您可以使用出現在每`_BilledSize`個內嵌事件上的屬性。
+若要深入瞭解資料磁片區的來源，您可以使用 `_BilledSize` 出現在每個內嵌事件上的屬性。
 
-例如，若要查看過去30天內產生最多資料量的作業，我們可以加總`_BilledSize`所有相依性事件：
+例如，若要查看過去30天內產生最多資料量的作業，我們可以加總所有相依性 `_BilledSize` 事件：
 
 ```kusto
 dependencies
 | where timestamp >= startofday(ago(30d))
 | summarize sum(_BilledSize) by operation_Name
 | render barchart  
+```
+
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>以工作區為基礎 Application Insights 資源的資料量
+
+若要查看過去一周工作區中所有[工作區架構 Application Insights 資源](create-workspace-resource.md)的資料量趨勢，請移至 Log Analytics 工作區並執行查詢：
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+若要根據特定工作區型 Application Insights 資源的類型來查詢資料量趨勢，請在 Log Analytics 工作區中使用：
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
 ```
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>在您的 Azure 帳單上查看 Application Insights 使用量
@@ -174,7 +219,7 @@ Azure 在[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-man
 
 ![調整每日遙測資料量上限](./media/pricing/pricing-003.png)
 
-若要透過[Azure Resource Manager 變更每日上限](../../azure-monitor/app/powershell.md)，要變更的屬性為`dailyQuota`。  透過 Azure Resource Manager 您也可以設定`dailyQuotaResetTime`和每日上限。 `warningThreshold`
+若要透過[Azure Resource Manager 變更每日上限](../../azure-monitor/app/powershell.md)，要變更的屬性為 `dailyQuota` 。  透過 Azure Resource Manager 您也可以設定 `dailyQuotaResetTime` 和每日上限 `warningThreshold` 。
 
 ### <a name="create-alerts-for-the-daily-cap"></a>建立每日上限的警示
 
@@ -220,7 +265,7 @@ Application Insights 資源的預設保留期為90天。 可以為每個 Applica
 
 降低保留期時，會在移除最舊的資料之前，有幾天的寬限期。
 
-您也可以使用`retentionInDays`參數，透過[PowerShell 以程式設計方式設定](powershell.md#set-the-data-retention)保留期。 如果您將資料保留期設定為30天，您可以使用`immediatePurgeDataOn30Days`參數觸發立即清除較舊的資料，這可能適用于合規性相關案例。 這種清除功能只會透過 Azure Resource Manager 公開，而且應該小心使用。 資料量上限的每日重設時間可以使用 Azure Resource Manager 設定`dailyQuotaResetTime`參數。
+您也可以使用參數，透過[PowerShell 以程式設計方式設定](powershell.md#set-the-data-retention)保留期 `retentionInDays` 。 如果您將資料保留期設定為30天，您可以使用參數觸發立即清除較舊的資料 `immediatePurgeDataOn30Days` ，這可能適用于合規性相關案例。 這種清除功能只會透過 Azure Resource Manager 公開，而且應該小心使用。 資料量上限的每日重設時間可以使用 Azure Resource Manager 設定 `dailyQuotaResetTime` 參數。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 的資料傳輸費用
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443545"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115059"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>設定實驗室來教 Linux 上的 shell 腳本
 本文說明如何設定實驗室來教您在 Linux 上的 shell 腳本。 指令碼是系統管理中很有用的部分，可讓管理員避免重複的工作。 在此範例案例中，課程涵蓋了傳統的 Bash 指令碼和增強型指令碼。 增強型指令碼是結合了 Bash 命令與 Ruby 的指令碼。 這種方法可讓 Ruby 傳遞資料，以及讓 Bash 命令與殼層互動。 
@@ -30,24 +30,24 @@ ms.locfileid: "77443545"
 
 建立實驗室帳戶之後，請啟用實驗室帳戶中的下列設定： 
 
-| 實驗室帳戶設定 | Instructions |
+| 實驗室帳戶設定 | 指示 |
 | ----------- | ------------ |  
-| Marketplace 映射 | 啟用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映射，以便在您的實驗室帳戶中使用。 如需詳細資訊，請參閱[指定可供實驗室建立者使用的 Marketplace 映射](specify-marketplace-images.md)。 | 
+| Marketplace 映射 | 啟用 Ubuntu Server 18.04 LTS 映射，以便在您的實驗室帳戶中使用。 如需詳細資訊，請參閱[指定可供實驗室建立者使用的 Marketplace 映射](specify-marketplace-images.md)。 | 
 
 遵循[此教學](tutorial-setup-classroom-lab.md)課程來建立新的實驗室，並套用下列設定：
 
 | 實驗室設定 | 值/指示 | 
 | ------------ | ------------------ |
 | 虛擬機器（VM）大小 | 小型  |
-| VM 映射 | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| VM 映射 | Ubuntu Server 18.04 LTS |
 | 啟用遠端桌面連線 | 啟用。 <p>啟用此設定可讓教師和學生使用遠端桌面（RDP）連接到其 Vm。 如需詳細資訊，請參閱[在 Azure 實驗室服務中的實驗室中啟用 Linux 虛擬機器的遠端桌面](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)。 </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>安裝 desktop 和 xrdp
-[Ubuntu server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映射預設不會安裝遠端桌面伺服器。 依照在[Azure 中安裝和設定遠端桌面連線到 LINUX VM 一](../../virtual-machines/linux/use-remote-desktop.md)文中的指示，安裝範本機器上所需的套件，以透過遠端桌面通訊協定進行連線。
+Ubuntu Server 18.04 LTS 映射預設不會安裝遠端桌面伺服器。 依照在[Azure 中安裝和設定遠端桌面連線到 LINUX VM 一](../../virtual-machines/linux/use-remote-desktop.md)文中的指示，安裝範本機器上所需的套件，以透過遠端桌面通訊協定進行連線。
 
 ## <a name="install-ruby"></a>安裝 Ruby
-Ruby 是一種開放原始碼動態語言，可以與 bash 腳本結合。 本節說明如何使用`apt-get`來安裝最新版本的[Ruby](https://www.ruby-lang.org/)。
+Ruby 是一種開放原始碼動態語言，可以與 bash 腳本結合。 本節說明如何使用 `apt-get` 來安裝最新版本的[Ruby](https://www.ruby-lang.org/)。
 
 1. 執行下列命令來安裝更新：
 

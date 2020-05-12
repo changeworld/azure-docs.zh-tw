@@ -4,19 +4,19 @@ description: 在設定 Azure AD 之後，瞭解如何使用 Azure Active Directo
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: azure-synapse
+ms.custom: azure-synapse, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60a1b0deda75c1fc30a9e3b8255106d2809856ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419868"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198603"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 設定及管理 Azure Active Directory 驗證
 
@@ -187,9 +187,9 @@ SQL DB （單一資料庫和資料庫集區）、受控實例和 Azure Synapse �
 
 ### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>適用于 MI 的 Azure AD 登入 GA 的已知問題
 
-- 如果在用於 MI 的 master 資料庫中存在 Azure AD 登入（使用 T-sql 命令`CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`建立），則無法將其設定為 mi 的 Azure AD 系統管理員。 當您使用 Azure 入口網站、PowerShell 或 CLI 命令建立 Azure AD 登入，將登入設定為 Azure AD 管理員時，將會遇到錯誤。
-  - 您必須先使用命令`DROP LOGIN [myaadaccount]`將登入放在 master 資料庫中，才能將帳戶建立為 Azure AD 系統管理員。
-  - `DROP LOGIN`成功之後，在 Azure 入口網站中設定 Azure AD 系統管理員帳戶。 
+- 如果在用於 MI 的 master 資料庫中存在 Azure AD 登入（使用 T-sql 命令建立 `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER` ），則無法將其設定為 mi 的 Azure AD 系統管理員。 當您使用 Azure 入口網站、PowerShell 或 CLI 命令建立 Azure AD 登入，將登入設定為 Azure AD 管理員時，將會遇到錯誤。
+  - 您必須先使用命令將登入放在 master 資料庫中 `DROP LOGIN [myaadaccount]` ，才能將帳戶建立為 Azure AD 系統管理員。
+  - 成功之後，在 Azure 入口網站中設定 Azure AD 系統管理員帳戶 `DROP LOGIN` 。 
   - 如果您無法設定 Azure AD 系統管理員帳戶，請在受控實例的 master 資料庫中查看登入。 使用下列命令：`SELECT * FROM sys.server_principals`
   - 設定 MI 的 Azure AD 系統管理員，將會在此帳戶的 master 資料庫中自動建立登入。 移除 Azure AD 系統管理員，將會自動從 master 資料庫中卸載登入。
 
@@ -212,7 +212,7 @@ SQL DB （單一資料庫和資料庫集區）、受控實例和 Azure Synapse �
 
 用來布建和管理 SQL 受控實例之 Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 描述 |
+| Cmdlet 名稱 | 說明 |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控實例布建 Azure AD 系統管理員。 （必須來自目前的訂用帳戶）|
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控實例的 Azure AD 系統管理員。 |
@@ -240,7 +240,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以呼叫下列 CLI 命令，為 SQL 受控實例布建 Azure AD 管理員：
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 為 SQL 受控實例布建 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
 |[az sql mi ad-管理員刪除](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控實例的 Azure Active Directory 系統管理員。 |
@@ -303,13 +303,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 Azure SQL Database 和 Azure Synapse 之 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 描述 |
+| Cmdlet 名稱 | 說明 |
 | --- | --- |
 | [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |布建 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 |
 | [AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |傳回目前為 Azure SQL server 或 Azure Synapse 設定的 Azure Active Directory 系統管理員的相關資訊。 |
 
-使用 PowerShell 命令 get-help 來查看每個命令的詳細資訊。 例如： `get-help Set-AzSqlServerActiveDirectoryAdministrator` 。
+使用 PowerShell 命令 get-help 來查看每個命令的詳細資訊。 例如 `get-help Set-AzSqlServerActiveDirectoryAdministrator`。
 
 下列指令碼會在名為 **Group-23** 的資源群組中，為 **demo_server** 伺服器佈建名為 **DBA_Group** (物件識別碼 `40b79501-b343-44ed-9ce7-da4c8cc7353f`) 的 Azure AD 系統管理員群組：
 
@@ -348,7 +348,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 布建 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除 Azure SQL server 或 Azure Synapse 的 Azure Active Directory 系統管理員。 |
@@ -366,7 +366,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 在所有用戶端電腦上，您的應用程式或使用者會使用 Azure AD 身分識別連線到 Azure SQL Database 或 Azure Synapse，您必須安裝下列軟體：
 
-- 從[https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).NET Framework 4.6 或更新版本。
+- 從 .NET Framework 4.6 或更新版本 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 。
 - SQL Server 的 Azure Active Directory 驗證程式庫（*ADAL）。DLL*）。 以下是安裝最新的 SSMS、ODBC 和包含 ADAL 之 OLE DB 驅動程式的下載連結 *。DLL 連結*庫。
     1. [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
     1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
@@ -471,7 +471,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 1. 啟動 Management Studio 或 Data Tools，並在 [**連接到伺服器**] （或 **[連接到資料庫引擎**）] 對話方塊的 [**驗證**] 方塊中，選取 [ **Azure Active Directory-密碼**]。
 
-2. 在 [**使用者名稱**] 方塊中，以**username\@domain.com**的格式輸入您的 Azure Active Directory 使用者名稱。 使用者名稱必須是來自 Azure Active Directory 的帳戶，或是來自具有 Azure Active Directory 之受管理或同盟網域的帳戶。
+2. 在 [**使用者名稱**] 方塊中，以**username \@ domain.com**的格式輸入您的 Azure Active Directory 使用者名稱。 使用者名稱必須是來自 Azure Active Directory 的帳戶，或是來自具有 Azure Active Directory 之受管理或同盟網域的帳戶。
 
 3. 在 [**密碼**] 方塊中，輸入 Azure Active Directory 帳戶或受管理/同盟網域帳戶的使用者密碼。
 
@@ -498,7 +498,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 連接至資料庫的用戶端應用程式（或服務）必須在已加入網域的電腦上，以使用者的網域認證執行。
 
-若要使用整合式驗證和 Azure AD 的身分識別來連接到資料庫，資料庫連接字串中的驗證關鍵字必須設定`Active Directory Integrated`為。 下列 C# 程式碼範例會使用 ADO.NET。
+若要使用整合式驗證和 Azure AD 的身分識別來連接到資料庫，資料庫連接字串中的驗證關鍵字必須設定為 `Active Directory Integrated` 。 下列 C# 程式碼範例會使用 ADO.NET。
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -510,7 +510,7 @@ conn.Open();
 
 ### <a name="active-directory-password-authentication"></a>Active Directory 密碼驗證
 
-若要使用 Azure AD 僅限雲端的身分識別使用者帳戶或使用 Azure AD 混合式身分識別的使用者來連接到資料庫，則必須將`Active Directory Password`驗證關鍵字設定為。 連接字串必須包含使用者識別碼 (UID) 及密碼 (PWD) 關鍵字和值。 下列 C# 程式碼範例會使用 ADO.NET。
+若要使用 Azure AD 僅限雲端的身分識別使用者帳戶或使用 Azure AD 混合式身分識別的使用者來連接到資料庫，則必須將驗證關鍵字設定為 `Active Directory Password` 。 連接字串必須包含使用者識別碼 (UID) 及密碼 (PWD) 關鍵字和值。 下列 C# 程式碼範例會使用 ADO.NET。
 
 ```csharp
 string ConnectionString =
@@ -546,7 +546,7 @@ conn.Open();
 下列陳述式中使用 sqlcmd 13.1 進行連線，從 [下載中心](https://www.microsoft.com/download/details.aspx?id=53591)即可取得此版本。
 
 > [!NOTE]
-> `sqlcmd`使用`-G`命令時，不會使用系統身分識別，而且需要使用者主體登入。
+> `sqlcmd`使用 `-G` 命令時，不會使用系統身分識別，而且需要使用者主體登入。
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  

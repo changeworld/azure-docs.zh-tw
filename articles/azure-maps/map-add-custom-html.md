@@ -1,20 +1,20 @@
 ---
 title: 將 HTML 標籤新增至地圖 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，將 HTML 標籤新增至地圖。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2700d42c25d58911fb275ad9ce6c5610cd22624d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536763"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119285"
 ---
 # <a name="add-html-markers-to-the-map"></a>在地圖中新增 HTML 標記
 
@@ -28,9 +28,9 @@ ms.locfileid: "79536763"
 
 ## <a name="add-an-html-marker"></a>新增 HTML 標記
 
-[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)類別具有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HTML 標籤類別的預設樣式是具有`{color}`和`{text}`預留位置的 SVG 範本。 設定 HTML 標籤選項中快速自訂的 color 和 text 屬性。 
+[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)類別具有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HTML 標籤類別的預設樣式是具有和預留位置的 SVG 範本 `{color}` `{text}` 。 設定 HTML 標籤選項中快速自訂的 color 和 text 屬性。 
 
-下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並`click`使用事件來切換快顯視窗的可見度。
+下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並 `click` 使用事件來切換快顯視窗的可見度。
 
 ```javascript
 //Create an HTML marker and add it to the map.
@@ -82,7 +82,7 @@ HTML 標記的好處之一是您可以使用 CSS 來實現許多完美的自訂�
 
 ## <a name="draggable-html-markers"></a>可拖曳的 HTML 標記
 
-此範例說明如何建立可拖曳的 HTML 標記。 HTML 標籤支援`drag`、 `dragstart`和`dragend`事件。
+此範例說明如何建立可拖曳的 HTML 標記。 HTML 標籤支援 `drag` 、 `dragstart` 和 `dragend` 事件。
 
 <br/>
 

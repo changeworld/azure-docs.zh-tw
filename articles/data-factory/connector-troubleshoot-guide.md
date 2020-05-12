@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410236"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199000"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -30,7 +31,7 @@ ms.locfileid: "81410236"
 
 - **原因**： Blob 儲存體作業遇到問題。
 
-- **建議**：請在詳細資料中檢查錯誤。 請參閱 blob 說明文件： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes。 如需協助，請聯絡儲存小組。
+- **建議**：請在詳細資料中檢查錯誤。 請參閱 blob 說明文件： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 如需協助，請聯絡儲存小組。
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>錯誤碼： AzureBlobServiceNotReturnExpectedDataLength
@@ -134,7 +135,7 @@ ms.locfileid: "81410236"
 
 - **原因**：當錯誤訊息包含「禁止」時，您所使用的服務主體或受控識別可能沒有足夠的許可權可以存取 ADLS Gen2。
 
-- **建議**：請參閱說明文件： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication。
+- **建議**：請參閱說明文件： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
 
 - **原因**：當錯誤訊息包含 ' InternalServerError ' 時，ADLS Gen2 傳回錯誤。
 
@@ -198,11 +199,11 @@ ms.locfileid: "81410236"
 
 - **原因**：如果錯誤訊息包含 "SqlException"，SQL Database 會擲回錯誤，指出某些特定的作業失敗。
 
-- **建議**：如需更多詳細資料，請依本參考檔中的https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsSQL 錯誤碼進行搜尋：。 如果您需要進一步的協助，請洽詢 Azure SQL 支援。
+- **建議**：如需更多詳細資料，請依本參考檔中的 SQL 錯誤碼進行搜尋： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請洽詢 Azure SQL 支援。
 
 - **原因**：如果錯誤訊息包含「具有 IP 位址的用戶端 ...」不允許存取伺服器」，而且您正嘗試連接到 Azure SQL Database，這通常是由 Azure SQL Database 防火牆問題所造成。
 
-- **建議**：在 Azure SQL Server 防火牆設定中，啟用 [允許 Azure 服務和資源存取此伺服器] 選項。 參考檔： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure。
+- **建議**：在 Azure SQL Server 防火牆設定中，啟用 [允許 Azure 服務和資源存取此伺服器] 選項。 參考檔： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
 
 
 ### <a name="error-code--sqloperationfailed"></a>錯誤碼： SqlOperationFailed
@@ -211,8 +212,8 @@ ms.locfileid: "81410236"
 
 - **原因**：如果錯誤訊息包含 "SqlException"，SQL Database 會擲回錯誤，指出某些特定的作業失敗。
 
-- **建議**：如果 SQL 錯誤不清楚，請嘗試將資料庫變更為最新的相容性層級 ' 150 '。 它可能會擲回最新版本的 SQL 錯誤。 請參閱詳細檔： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat。
-        如需疑難排解 SQL 問題，請依本參考檔中的 SQL 錯誤碼進行搜尋，以https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors取得更多詳細資料：。 如果您需要進一步的協助，請洽詢 Azure SQL 支援。
+- **建議**：如果 SQL 錯誤不清楚，請嘗試將資料庫變更為最新的相容性層級 ' 150 '。 它可能會擲回最新版本的 SQL 錯誤。 請參閱詳細檔： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat 。
+        如需疑難排解 SQL 問題，請依本參考檔中的 SQL 錯誤碼進行搜尋，以取得更多詳細資料： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請洽詢 Azure SQL 支援。
 
 - **原因**：如果錯誤訊息包含 "PdwManagedToNativeInteropException"，通常是因為來源與接收資料行大小不相符所造成。
 
@@ -220,7 +221,7 @@ ms.locfileid: "81410236"
 
 - **原因**：如果錯誤訊息包含 "InvalidOperationException"，通常是因為不正確輸入資料所造成。
 
-- **建議**：若要找出發生問題的資料列，請在複製活動上啟用容錯功能，這可將有問題的資料列重新導向至儲存體，以供進一步調查。 參考檔： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance。
+- **建議**：若要找出發生問題的資料列，請在複製活動上啟用容錯功能，這可將有問題的資料列重新導向至儲存體，以供進一步調查。 參考檔： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>錯誤碼： SqlUnauthorizedAccess
@@ -323,7 +324,7 @@ ms.locfileid: "81410236"
 
 - **原因**： SQL 大量複製失敗，因為從 bcp 用戶端收到不正確資料行長度。
 
-- **建議**：若要找出發生問題的資料列，請在複製活動上啟用容錯功能，這可將有問題的資料列重新導向至儲存體，以供進一步調查。 參考檔： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance。
+- **建議**：若要找出發生問題的資料列，請在複製活動上啟用容錯功能，這可將有問題的資料列重新導向至儲存體，以供進一步調查。 參考檔： https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>錯誤碼： SqlConnectionIsClosed
@@ -545,7 +546,7 @@ ms.locfileid: "81410236"
 
 - **原因**： Azure Data Factory 中不支援 parquet 格式。
 
-- **建議**：再次檢查來源資料。 請參閱檔： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs。
+- **建議**：再次檢查來源資料。 請參閱檔： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>錯誤碼： ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ ms.locfileid: "81410236"
 
 - **原因**：無法將資料轉換成對應中指定的類型。來源
 
-- **建議**：請在複製活動資料行對應中，再次檢查來源資料，或為此資料行指定正確的資料類型。 請參閱檔： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs。
+- **建議**：請在複製活動資料行對應中，再次檢查來源資料，或為此資料行指定正確的資料類型。 請參閱檔： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>錯誤碼： ParquetDataCountNotMatchColumnCount

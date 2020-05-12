@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1edb0791e80a8503e5ecba3154d7b421206272c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189815"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198622"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器（Vm）、虛擬機器擴展集、IaaS 容器和非 Azure （包括內部部署）電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。 Log Analytics 代理程式也會將損毀傾印檔案複製到您的工作區。
@@ -25,7 +25,7 @@ ms.locfileid: "82189815"
 > [!NOTE]
 > - 只有計算資源（Vm、虛擬機器擴展集、IaaS 容器和非 Azure 電腦）才需要資料收集。 即使您未佈建代理程式，也可受惠於 Azure 資訊安全中心；不過，您的安全性有限，而且不支援以上所列的功能。  
 > - 如需支援的平台清單，請參閱 [Azure 資訊安全中心支援的平台](security-center-os-coverage.md)。
-> - 將資料儲存在 Log Analytics 中，不論您使用新的或現有的工作區，都可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+> - 將資料儲存在 Log Analytics 中，不論您使用新的或現有的工作區，都可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>啟用 Log Analytics 代理程式的自動布建<a name="auto-provision-mma"></a>
 
@@ -79,7 +79,7 @@ ms.locfileid: "82189815"
 
 > [!NOTE]
 > 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對免費層，資訊安全中心在預設工作區啟用 SecurityCenterFree** 解決方案。 對於標準層，資訊安全中心在預設工作區啟用 Security** 解決方案。
-> 將資料儲存在 Log Analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+> 將資料儲存在 Log Analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 如需有關現有 log analytics 帳戶的詳細資訊，請參閱[現有的 log analytics 客戶](./faq-azure-monitor-logs.md)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "82189815"
 
 > [!NOTE]
 > 在現有工作區上啟用的解決方案將套用至所連線的 Azure VM。 若為付費解決方案，這可能導致額外的費用。 對於資料隱私權考量，請確定您選取的工作區位於正確的地理區域中。
-> 將資料儲存在 log analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+> 將資料儲存在 log analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 若要選取現有的 Log Analytics 工作區：
 
@@ -139,7 +139,7 @@ ms.locfileid: "82189815"
 ## <a name="data-collection-tier"></a>資料收集層
 在 Azure 資訊安全中心中選取 [資料收集層]，只會影響 Log Analytics 工作區中安全性事件的儲存空間。 Log Analytics 代理程式仍然會收集並分析 Azure 資訊安全中心威脅防護所需的安全性事件，而不論您選擇在 Log Analytics 工作區中儲存哪一層安全性事件（如果有的話）。 選擇在工作區中儲存安全性事件，將允許在工作區中調查、搜尋和稽核這些事件。 
 > [!NOTE]
-> 將資料儲存在 log analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+> 將資料儲存在 log analytics 中可能會產生額外的資料儲存體費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 > 
 > 對於訂用帳戶和工作區，您可以從儲存在您工作區的四組事件中選擇合適的篩選原則： 
 
@@ -166,7 +166,7 @@ ms.locfileid: "82189815"
 
 | 資料層 | 收集的事件指標 |
 | --- | --- |
-| 最小 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| 基本 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
 | 通用 | 1，299，300，324，340，403，404，410，411，412，413，431，500，501，1100，1102，1107，1108，4608，4610，4611，4614，4622， |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
@@ -223,9 +223,8 @@ ms.locfileid: "82189815"
 
 自動佈建停用 (關閉) 後，就不會顯示預設的工作區組態區段。
 
-如果您關閉先前開啟的自動佈建：
--   代理程式就不會佈建在新的 VM 上。
--   資訊安全中心會停止從預設工作區收集資料。
+如果您在先前的代理程式上關閉自動布建，將不會在新的 Vm 上提供。
+
  
 > [!NOTE]
 >  停用自動布建並不會從已布建代理程式的 Azure Vm 移除 Log Analytics 代理程式。 如需移除 OMS 擴充功能的相關資訊，請參閱[我要如何移除資訊安全中心安裝的 OMS 擴充功能](faq-data-collection-agents.md#remove-oms)。
