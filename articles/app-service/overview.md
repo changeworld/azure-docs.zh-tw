@@ -3,14 +3,14 @@ title: 概觀
 description: 了解 Azure App Service 如何協助您開發和裝載 Web 應用程式
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 01/04/2017
+ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535633"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597853"
 ---
 # <a name="app-service-overview"></a>App Service 概觀
 
@@ -25,6 +25,7 @@ App Service 不只能將 Microsoft Azure 的功能新增到您的應用程式，
 以下是 App Service 的一些主要功能︰
 
 * **多種語言和架構** - App Service 具有 ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP 或 Python 的第一級支援。 您也可以將 [PowerShell 和其他指令碼或可執行檔](webjobs-create.md) 做為背景服務來執行。
+* **受控的實際執行環境** - App Service 會自動為您[修補及維護 OS 和語言架構](overview-patch-os-runtime.md)。 您可以將時間用在撰寫絕佳的應用程式上，而讓 Azure 來擔心平台問題。
 * **DevOps 最佳化** - 使用 Azure DevOps、GitHub、BitBucket、Docker Hub 或 Azure Container Registry 設定[持續整合和部署](deploy-continuous-deployment.md)。 透過 [測試和預備環境](deploy-staging-slots.md)升級更新。 使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令列介面 (CLI)](/cli/azure/install-azure-cli)，在 App Service 中管理您的應用程式。
 * **具高可用性的全域調整** - 以手動或自動方式相應[增加](manage-scale-up.md)或[放大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 的通用資料中心基礎結構中隨處裝載您的應用程式，而 App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 會承諾高可用性。
 * **SaaS 平台和內部部署資料的連線** - 有超過 50 種適用於企業系統 (例如 SAP)、SaaS 服務 (例如 Salesforce) 和網際網路服務 (例如 Facebook) 的[連接器](../connectors/apis-list.md)可供選擇。 使用[混合式連線](app-service-hybrid-connections.md)和 [Azure 虛擬網路](web-sites-integrate-with-vnet.md)存取內部部署資料。

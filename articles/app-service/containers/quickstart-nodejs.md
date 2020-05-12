@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74688976"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801479"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>在 Azure 中建立 Node.js 應用程式
 
@@ -23,7 +23,7 @@ Azure App Service 提供可高度擴充、自我修復的 Web 裝載服務。 �
 
 您需要安裝 [Visual Studio Code](https://code.visualstudio.com/) 及 [Node.js 和 npm](https://nodejs.org/en/download) (Node.js 套件管理員)。
 
-您也必須安裝 [Azure App Service 擴充功能](vscode:extension/ms-azuretools.vscode-azureappservice)，才能在 Azure 平台即服務 (PaaS) 上建立、管理和部署 Linux Web Apps。
+您也必須安裝 [Azure App Service 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)，才能在 Azure 平台即服務 (PaaS) 上建立、管理和部署 Linux Web Apps。
 
 ### <a name="sign-in"></a>登入
 
@@ -83,7 +83,7 @@ npm install
 npm start
 ```
 
-現在，開啟您的瀏覽器並流覽至 [http://localhost:3000](http://localhost:3000)，您應該會在這裡看到如下的內容：
+現在，開啟您的瀏覽器並流覽至 `http://localhost:3000`，您應該會在這裡看到如下的內容：
 
 ![執行 Express 應用程式](./media/quickstart-nodejs/express.png)
 
@@ -151,7 +151,7 @@ code .
 
 請在 [AZURE APP SERVICE]  總管畫面中找到應用程式，並以滑鼠右鍵按一下應用程式，然後選擇 [檢視串流記錄]  。
 
-出現提示時，請選擇啟用記錄，然後重新啟動應用程式。 重新啟動應用程式之後，VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。
+VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。
 
 ![檢視串流記錄](./media/quickstart-nodejs/view-logs.png)
 
@@ -159,12 +159,12 @@ code .
 
 幾秒鐘之後，您會看到指出您已連線至記錄串流服務的訊息。 重新整理頁面數次以查看更多活動。
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+<pre>
+2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+</pre>
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)

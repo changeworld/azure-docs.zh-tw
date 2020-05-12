@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586389"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791675"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 預算來管理成本
 
@@ -273,7 +273,7 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 1. 將 [Value]  \(值\) 設定成於上一節結尾利用 ArmClient 所建立的權杖。
 1. 選取 Postman 內的 [Body]  \(本文\) 索引標籤。
 1. 選取 [raw]  \(原始\) 按鈕選項。
-1. 在文字方塊中，貼上下列範例預算定義，不過您必須將 **subscriptionID**、**budgetname** 和 **actiongroupname** 參數取代為您的訂用帳戶識別碼、您預算的唯一名稱，以及您在 URL 和要求本文中建立的動作群組名稱：
+1. 在文字方塊中，貼上下列範例預算定義，不過必須將 `subscriptionID`、`resourcegroupname`和 `actiongroupname` 參數取代為您的訂用帳戶識別碼、您資源群組的唯一名稱，以及您在 URL 和要求本文中建立的動作群組名稱：
 
     ```
         {

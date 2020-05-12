@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176664"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853358"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -65,7 +65,7 @@ Azure 儲存體支援三種 blob 類型：
 
 目前已有幾個解決方案，可將現有資料移轉至 Blob 儲存體：
 
-- **AzCopy** 是一個簡單易用的命令列工具，可供 Windows 和 Linux 跨容器或跨儲存體帳戶，將資料複製到 Blob 儲存體或從該處複製資料。 如需 AzCopy 的相關詳細資訊，請參閱[使用 AzCopy v10 (預覽) 傳輸資料](../common/storage-use-azcopy-v10.md)。
+- **AzCopy** 是一個簡單易用的命令列工具，可供 Windows 和 Linux 跨容器或跨儲存體帳戶，將資料複製到 Blob 儲存體或從該處複製資料。 如需 AzCopy 的相關詳細資訊，請參閱[使用 AzCopy v10 傳輸資料](../common/storage-use-azcopy-v10.md)。
 - **Azure 儲存體資料移動程式庫**是用於在 Azure 儲存體服務之間移動資料的 .NET 程式庫。 AzCopy 公用程式已內建資料移動程式庫。 如需詳細資訊，請參閱資料移動程式庫的[參考文件](/dotnet/api/microsoft.azure.storage.datamovement)。
 - **Azure Data Factory**支援使用「帳戶金鑰」、「共用存取簽章」、「服務主體」或「Azure 資源的受控識別」來複製資料至 Blob 儲存體，或從該處複製資料。 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Azure Blob 或從該處複製資料](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - **Blobfuse** 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 您可以使用 Blobfuse 透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 如何詳細資訊，請參閱[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)。

@@ -1,6 +1,6 @@
 ---
-title: 快速入門 - 檢視使用者擁有的 Azure 資源存取權
-description: 在本快速入門中，了解如何使用角色型存取控制 (RBAC) 和 Azure 入口網站，來檢視使用者或其他安全性主體所擁有的 Azure 資源存取權。
+title: 快速入門 - 檢視使用者擁有的 Azure 資源存取權 - Azure RBAC
+description: 在本快速入門中，您將了解如何使用 Azure 入口網站和 Azure 角色型存取控制 (Azure RBAC)，來檢視使用者或其他安全性主體所擁有的 Azure 資源存取權。
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74419614"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734156"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>快速入門：檢視使用者擁有的 Azure 資源存取權
 
-您可以使用[角色型存取控制 (RBAC)](overview.md) 中的 [存取控制 (IAM)]  刀鋒視窗，來檢視使用者或另一個安全性主體所擁有的 Azure 資源存取權。 不過，有時候您只是要快速檢視單一使用者或另一個安全性主體的存取權。 這麼做的最簡單方式是使用 Azure 入口網站中的 [檢查存取]  功能。
+您可以使用 [Azure 角色型存取控制 (Azure RBAC)](overview.md) 中的 [存取控制 (IAM)]  刀鋒視窗，來檢視使用者或另一個安全性主體所擁有的 Azure 資源存取權。 不過，有時候您只是要快速檢視單一使用者或另一個安全性主體的存取權。 這麼做的最簡單方式是使用 Azure 入口網站中的 [檢查存取]  功能。
 
 ## <a name="view-role-assignments"></a>檢視角色指派
 
@@ -54,4 +54,4 @@ ms.locfileid: "74419614"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 RBAC 與 Azure 入口網站為使用者授與 Azure 資源的存取權](quickstart-assign-role-user-portal.md)
+> [教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](quickstart-assign-role-user-portal.md)

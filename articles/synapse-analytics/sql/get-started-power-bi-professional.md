@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425327"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692384"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>使用 Power BI Professional 連線到 Synapse SQL
 
@@ -26,7 +26,7 @@ ms.locfileid: "81425327"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線到 SQL 隨選 (預覽) 的步驟。
+在本教學課程中，我們將逐步解說用來將 Power BI Desktop 連線到 SQL 隨選 (預覽) 的步驟。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -57,12 +57,12 @@ ms.locfileid: "81425327"
 
 ### <a name="create-database"></a>建立資料庫
 
-由於您將使用示範環境，因此請建立自己的資料庫以供示範之用。 必須有資料庫才能在其中建立檢視。 您會將此資料庫用於本文件中的某些範例查詢。
+在本使用者入門文章中，您應該建立自己的資料庫來作為示範。 必須有資料庫以便建立檢視。 您會將此資料庫用於本文件中的某些範例查詢。
 
 > [!NOTE]
-> 請注意，資料庫僅用於檢視的中繼資料，不適用於實際資料。
+> 資料庫僅用於檢視中繼資料，不適用於實際資料。
 >
-> 請記下您使用的資料庫名稱以供稍後使用。
+> 請記下您所使用的資料庫名稱，以供稍後使用。
 
 ```sql
 DROP DATABASE IF EXISTS demo;
@@ -73,7 +73,7 @@ DROP DATABASE IF EXISTS demo;
 我們必須先建立認證，然後才能執行查詢。 SQL 隨選服務會使用此認證來存取儲存體中的檔案。
 
 > [!NOTE]
-> 請注意，您必須建立認證，才能存取儲存體帳戶。 雖然 SQL 隨選可以存取不同區域的儲存體，但在相同區域中擁有儲存體和 Azure Synapse 工作區可提供更好的效能體驗。
+> 您需要建立認證以存取儲存體帳戶。 雖然 SQL 隨選可以存取不同區域的儲存體，但在相同區域中擁有儲存體和 Azure Synapse 工作區可提供更好的效能體驗。
 
 **有關如何為人口普查資料容器建立認證的程式碼片段**，請執行：
 
@@ -92,17 +92,18 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>建立 Power BI Desktop 報告
 
-開啟 Power BI Desktop 應用程式並選取 [取得資料] 選項。
+開啟 Power BI Desktop 應用程式，然後選取 [取得資料]  選項。
+
 ![開啟 Power BI Desktop 應用程式並選取 [取得資料]。](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>步驟 1 - 選取資料來源
 
-在功能表中選取 [Azure]，然後按一下 [Azure SQL Database]。
+在功能表中選取 [Azure]  ，然後按一下 [Azure SQL Database]  。
 ![選取資料來源。](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>步驟 2 - 選取資料庫
 
-寫下資料庫的 URL 和檢視所在資料庫的名稱。
+寫入資料庫的 URL 和檢視所在資料庫的名稱。
 ![選取端點上的資料庫。](./media/get-started-power-bi-professional/step-2-db.png)
 
 ## <a name="next-steps"></a>後續步驟

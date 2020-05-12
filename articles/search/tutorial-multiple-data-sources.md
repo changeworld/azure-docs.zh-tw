@@ -1,5 +1,5 @@
 ---
-title: C# 教學課程：為多個資料來源編製索引
+title: 為多個 Azure 資料來源編製索引的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用索引子將多個資料來源的資料匯入至單一 Azure 認知搜尋服務索引。 本教學課程和範例程式碼採用 C#。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78271488"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780516"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教學課程：使用 C# 為多個資料來源的資料編製索引
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教學課程：使用 .NET SDK 從多個資料來源編製索引
 
 Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合併搜尋索引，並進行分析和編製索引。 這支援將結構化資料與其他來源的結構化程度較低或甚至純文字資料進行彙總的狀況，例如文字、HTML 或 JSON 文件。
 

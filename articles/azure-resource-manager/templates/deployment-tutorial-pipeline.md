@@ -4,12 +4,12 @@ description: 了解如何持續建置、測試及部署 Azure Resource Manager �
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084323"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731929"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -57,7 +57,7 @@ GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 
 
 1. 選取 [新建]  (綠色按鈕)。
 1. 在 [存放庫名稱]  中輸入存放庫名稱。  例如，**AzureRmPipeline-repo**。 請記得將任何 **AzureRmPipeline** 取代為您的專案名稱。 進行此教學課程時，您可以選取 [公開]  或 [私人]  。 然後選取 [建立存放庫]  。
-1. 請將 URL 抄寫下來。 存放庫 URL 的格式如下： **https://github.com/ [YourAccountName]/[YourRepositoryName]** 。
+1. 請將 URL 抄寫下來。 存放庫 URL 會具有以下格式 - **`https://github.com/[YourAccountName]/[YourRepositoryName]`** 。
 
 此存放庫稱為「遠端存放庫」  。 同一專案的每位開發人員都可以複製他/她自己的「本機存放庫」  ，並將變更合併至遠端存放庫。
 
@@ -104,7 +104,7 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
     ```
 
     您可能會收到關於 LF 的警告。 您可以忽略警告。 **master**為主要分支。  通常您會為每個更新建立分支。 為了簡化此教學課程，您可以直接使用 master 分支。
-1. 使用瀏覽器瀏覽至您的 GitHub 存放庫。  URL 為 **https://github.com/ [YourAccountName]/[YourGitHubRepository]** 。 您應該會看到 **CreateWebApp** 資料夾，以及資料夾內的三個檔案。
+1. 使用瀏覽器瀏覽至您的 GitHub 存放庫。  URL 為 **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** 。 您應該會看到 **CreateWebApp** 資料夾，以及資料夾內的三個檔案。
 1. 選取 [linkedStorageAccount.json]  以開啟範本。
 1. 選取 [原始]  按鈕。 URL 的開頭為 **raw.githubusercontent.com**。
 1. 複製 URL。  當您稍後在本教學課程中設定管線時，將必須提供此值。

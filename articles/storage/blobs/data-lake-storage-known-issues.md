@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767970"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007483"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -43,7 +43,7 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以在相同的資料上運作。
 
 * 您不能同時使用 Blob Api 和 Data Lake Storage Api 來寫入相同的檔案實例。 如果您使用 Data Lake Storage Gen2 Api 來寫入檔案，則對[Get 區塊清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list)blob API 的呼叫將不會顯示該檔案的區塊。 您可以使用 Data Lake Storage Gen2 Api 或 Blob Api 來覆寫檔案。 這不會影響檔案屬性。
 
-* 當您使用[列出 blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs)作業但未指定分隔符號時，結果會包含目錄和 blob。 如果您選擇使用分隔符號，請只使用正斜線（`/`）。 這是唯一支援的分隔符號。
+* 當您使用[列出 blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs)作業但未指定分隔符號時，結果會包含目錄和 blob。 如果您選擇使用分隔符號，請只使用正斜線（ `/` ）。 這是唯一支援的分隔符號。
 
 * 如果您使用「[刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API」來刪除目錄，則只有當該目錄是空的時，才會將它刪除。 這表示您無法以遞迴方式使用 Blob API 刪除目錄。
 
@@ -70,12 +70,11 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以在相同的資料上運作。
 
 ## <a name="lifecycle-management-policies"></a>生命週期管理原則
 
-* 尚不支援刪除 blob 快照集。  
+尚不支援刪除 blob 快照集。 
 
 ## <a name="archive-tier"></a>封存層
 
 目前有一個 bug 會影響封存存取層。
-
 
 ## <a name="blobfuse"></a>Blobfuse
 
@@ -91,7 +90,7 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以在相同的資料上運作。
 
 ## <a name="azure-storage-explorer"></a>Azure 儲存體總管
 
-僅使用版本 `1.6.0` 或更高版本。
+僅使用版本  `1.6.0`   或更高版本。
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以在相同的資料上運作。
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>存取控制清單（ACL）和匿名讀取權限
 
 如果已授與容器的[匿名讀取權限](storage-manage-access-to-resources.md)，則 acl 不會影響該容器或該容器中的檔案。
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>Premium-效能區塊 blob 儲存體帳戶
+
+### <a name="diagnostic-logs"></a>診斷記錄
+
+診斷記錄尚未使用 Azure 入口網站啟用。 您可以使用 PowerShell 來啟用它們。 例如：
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>生命週期管理原則
+
+- Premium 區塊 blob 儲存體帳戶尚未支援生命週期管理原則。 
+
+- 無法將資料從進階層移至較低層。 
+
+- 目前不支援「**刪除 Blob** 」動作。 
+
+### <a name="hdinsight-support"></a>HDInsight 支援
+
+當您建立 n 個 HDInsight 叢集時，您還無法選取已在其上啟用階層命名空間功能的區塊 blob 儲存體帳戶。 不過，您可以在建立叢集之後，將該帳戶附加至叢集。
+
+### <a name="dremio-support"></a>Dremio 支援
+
+Dremio 尚未連接到已啟用階層命名空間功能的區塊 blob 儲存體帳戶。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure 儲存體 Blob （WASB）驅動程式（不支援 Data Lake Storage Gen2）
 

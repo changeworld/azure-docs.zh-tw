@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: 全域傳輸網路架構
           href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN 連線架構
+          href: sd-wan-connectivity-architecture.md
         - name: 與中國互連
           href: interconnect-china.md
 - name: 教學課程

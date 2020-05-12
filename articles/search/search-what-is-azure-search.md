@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77580646"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891561"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
@@ -154,11 +154,6 @@ Azure 訂閱者可以[在免費層中佈建服務](search-create-service-portal.
 
 搜尋引擎是行動裝置應用程式、Web 和公司資料存放區中推動資訊擷取的常用工具。 Azure 認知搜尋所提供的工具可讓您創造類似於大型商業網站上的搜尋體驗。
 
-在程式管理員 Liam Cavanagh 主講的這段 9 分鐘影片中，您可以了解應用程式如何經由整合搜尋引擎而受益。 這段簡短的示範說明 Azure 認知搜尋中的主要功能，以及一般工作流程的樣貌。 
+在這段 15 分鐘的影片中，方案經理 Luis Cabrera 引進了 Azure 認知搜尋。 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ 0-3 分鐘涵蓋主要功能和使用案例。
-+ 3-4 分鐘涵蓋服務佈建。 
-+ 4-6 分鐘涵蓋使用「匯入資料」精靈，以內建的房地產資料集建立索引。
-+ 第 6-9 分鐘涵蓋「搜尋總管」和各種查詢。
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

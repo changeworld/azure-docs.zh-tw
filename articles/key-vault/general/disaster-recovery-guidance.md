@@ -2,19 +2,19 @@
 title: 發生影響 Azure Key Vault 的 Azure 服務中斷事件時該怎麼辦 - Azure Key Vault | Microsoft Docs
 description: 了解發生影響「Azure 金鑰保存庫」的 Azure 服務中斷事件時該怎麼辦。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 96929dcbe3d51589b0c3c0df89671dadb20e37cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/04/2020
+ms.author: sudbalas
+ms.openlocfilehash: 4796e6c555ca67794409fb1476f3c4fd0d760719
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425877"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780448"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 金鑰保存庫的可用性與備援
 
@@ -34,6 +34,8 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
 * 容錯移轉完成之後，您的金鑰保存庫會處於唯讀模式。 在此模式中支援的要求是：
   * 列出金鑰保存庫
   * 取得金鑰保存庫的屬性
+   * 列出憑證
+  * 取得憑證
   * 列出密碼
   * 取得密碼
   * 列出金鑰
@@ -44,6 +46,6 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
   * 解除包裝
   * Verify
   * 簽署
-  * Backup
+  * Backup 
 * 在容錯移轉進行容錯回復之後，所有要求類型 (包括讀取「和」  寫入要求) 都會可供使用。
 
