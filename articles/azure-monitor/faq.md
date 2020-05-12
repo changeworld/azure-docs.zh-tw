@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/11/2020
+ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732031"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117779"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -36,7 +36,7 @@ Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，而且會自�
 從 Azure 入口網站的 [**監視**] 功能表中，存取所有 Azure 監視器功能和資料。 不同 Azure 服務功能表的 [**監視**] 區段，可讓您存取與篩選至特定資源的資料相同的工具。 使用 CLI、PowerShell 和 REST API 的各種案例也可以存取 Azure 監視器資料。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure 監視器的內部部署版本？
-不可以。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
+否。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure 監視器可以監視內部部署資源嗎？
 是的，除了從 Azure 資源收集監視資料之外，Azure 監視器還可以從其他雲端和內部部署中的虛擬機器和應用程式收集資料。 如需 Azure 監視器，請參閱[監視資料的來源](platform/data-sources.md)。
@@ -196,11 +196,15 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 * [Azure 診斷](platform/diagnostics-extension-to-application-insights.md)
 * [JAVA web 應用程式](app/java-troubleshoot.md)
 
-我的伺服器沒有傳回資料**
+*我不會從伺服器取得任何資料：*
 
 * [設定防火牆例外狀況](app/ip-addresses.md)
 * [設定 ASP.NET 伺服器](app/monitor-performance-live-website-now.md)
 * [設定 Java 伺服器](app/java-agent.md)
+
+*我應該部署多少 Application Insights？：*
+
+* [如何設計您的 Application Insights 部署：一個與多個 Application Insights 資源？](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>我是否可以搭配 ... 來使用 Application Insights 嗎？
 
@@ -247,7 +251,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 * 將項目插入至：
   * Web.config
   * packages.config
-* （僅限新專案-如果您[將 Application Insights 新增至現有的專案][start]，就必須手動執行此動作）。在用戶端和伺服器程式碼中插入程式碼片段，以 Application Insights 資源識別碼將它們初始化。 例如，在 MVC 應用程式中，系統會將程式碼插入至主版頁面 Views\_/Shared/Layout。 cshtml
+* （僅限新專案-如果您[將 Application Insights 新增至現有的專案][start]，就必須手動執行此動作）。在用戶端和伺服器程式碼中插入程式碼片段，以 Application Insights 資源識別碼將它們初始化。 例如，在 MVC 應用程式中，系統會將程式碼插入至主版頁面 Views/Shared/ \_ Layout。 cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何從舊版 SDK 升級？
 請參閱您的應用程式類型所適用之 SDK 的[版本資訊](app/release-notes.md)。
@@ -255,7 +259,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何變更我的專案將資料傳送到哪一個 Azure 資源？
 在 [方案總管] 中，以滑鼠右鍵按一下 `ApplicationInsights.config` ，然後選擇 [ **更新 Application Insights**]。 您可以將資料傳送至 Azure 中的現有資源或新資源。 更新精靈會變更 ApplicationInsights.config 中的檢測金鑰，這決定伺服器 SDK 將您的資料送往何處。 除非您取消選取 [全部更新]，否則也會變更金鑰出現在您網頁中的位置。
 
-### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>我可以在`providers('Microsoft.Insights', 'components').apiVersions[0]`我的 Azure Resource Manager 部署中使用嗎？
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>我可以 `providers('Microsoft.Insights', 'components').apiVersions[0]` 在我的 Azure Resource Manager 部署中使用嗎？
 
 我們不建議使用此方法來填入 API 版本。 最新版本可以代表可能包含重大變更的預覽版本。 即使使用較新的非預覽版本，API 版本也不一定會與現有的範本回溯相容，或者在某些情況下，API 版本可能無法供所有訂用帳戶使用。
 
@@ -515,7 +519,7 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 
 如何計算這種情況？
 
-**其他進程** = 從*容器化進程*CAdvisor - 使用量*的總使用量*
+**其他進程**  = CAdvisor 的總*使用量*  - *從容器化的進程使用*
 
 **其他處理**套裝程式括：
 
@@ -537,7 +541,7 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 
 聯結其他資料表以在結果中包含這些屬性值。
 
-藉由聯結 ContainerID 屬性，修改您的查詢以```ContainerInventory```包含資料表中的 Image 和 ImageTag 屬性。 藉由聯結 ContainerID 屬性，您可以在 KubepodInventory 資料表的 ContaineName ```ContainerLog```欄位中包含 Name 屬性（如先前出現在資料表中）。這是建議的選項。
+藉由聯結 ContainerID 屬性，修改您的查詢以包含資料表中的 Image 和 ImageTag 屬性 ```ContainerInventory``` 。 藉 ```ContainerLog``` 由聯結 ContainerID 屬性，您可以在 KubepodInventory 資料表的 ContaineName 欄位中包含 Name 屬性（如先前出現在資料表中）。這是建議的選項。
 
 下列範例是範例詳細查詢，說明如何使用聯結來取得這些域值。
 
@@ -565,7 +569,7 @@ ContainerLog
 
 針對每個容器記錄行重新啟用這些屬性的集合。
 
-如果第一個選項因為涉及查詢變更而不方便，您可以在 [[資料收集設定](insights/container-insights-agent-config.md)] 中啟用代理程式設定```log_collection_settings.enrich_container_logs```對應，藉以重新啟用收集這些欄位的功能。
+如果第一個選項因為涉及查詢變更而不方便，您可以 ```log_collection_settings.enrich_container_logs``` 在 [[資料收集設定](insights/container-insights-agent-config.md)] 中啟用代理程式設定對應，藉以重新啟用收集這些欄位的功能。
 
 > [!NOTE]
 > 第二個選項不建議用於具有超過50個節點的大型叢集，因為它會從叢集中的每個節點產生 API 伺服器呼叫，以執行此擴充。 此選項也會針對每個收集的記錄行增加資料大小。
@@ -628,7 +632,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>當我啟用即時記錄時，如何? 解決 Azure AD 錯誤？ 
 
-您可能會看到下列錯誤：**在要求中指定的回復 url 不符合為應用程式設定的回復 url： ' <應用程式識別碼\>'**。 若要解決此問題，您可以在[如何使用適用于容器的 Azure 監視器來即時查看容器資料](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文中找到此解決方案。 
+您可能會看到下列錯誤：**在要求中指定的回復 url 不符合為應用程式設定的回復 url： ' <應用程式識別碼 \> '**。 若要解決此問題，您可以在[如何使用適用于容器的 Azure 監視器來即時查看容器資料](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文中找到此解決方案。 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>為什麼我在上架之後無法升級叢集？
 
