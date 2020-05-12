@@ -4,24 +4,42 @@ description: 了解如何從命令列建立函式，然後將本機專案發佈�
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732816"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626250"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
-在本文中，您會使用命令列工具建立可回應 HTTP 要求的函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。
+::: zone pivot="programming-language-csharp"  
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 JavaScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 TypeScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 PowerShell 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+在本文中，您會使用命令列工具建立可回應 HTTP 要求的 Java 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
+
+完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 這也是本文的 [Visual Studio Code 版本](functions-create-first-function-vs-code.md)。
 ::: zone-end  
-
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 等開發工具。
+> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 等開發工具。
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -381,9 +399,16 @@ mvn azure-functions:deploy
 
 否則，請使用下列命令刪除資源群組及其包含的所有資源，以避免產生額外的成本。
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
 ```
+::: zone-end
+::: zone pivot="programming-language-java"
+```azurecli
+az group delete --name java-functions-group
+```
+::: zone-end
 
 ## <a name="next-steps"></a>後續步驟
 

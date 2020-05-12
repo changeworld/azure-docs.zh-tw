@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 RBAC 與 Azure PowerShell 為群組授與 Azure 資源的存取權
-description: 在本教學課程中，了解如何使用角色型存取控制 (RBAC) 和 Azure PowerShell 為群組授與 Azure 資源的存取權。
+title: 教學課程：使用 Azure PowerShell 為群組授與 Azure 資源的存取權 - Azure RBAC
+description: 在本教學課程中，您將了解如何使用 Azure PowerShell 和 Azure 角色型存取控制 (Azure RBAC) 為群組授與 Azure 資源的存取權。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138247"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735516"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教學課程：使用 RBAC 與 Azure PowerShell 為群組授與 Azure 資源的存取權
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 為群組授與 Azure 資源的存取權
 
-[角色型存取控制 (RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會使用 Azure PowerShell 為群組授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
+[Azure 角色型存取控制 (Azure RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會使用 Azure PowerShell 為群組授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
 
 在本教學課程中，您會了解如何：
 
@@ -44,7 +44,7 @@ ms.locfileid: "77138247"
 
 ## <a name="role-assignments"></a>角色指派
 
-在 RBAC 中，若要授與存取權，您可以建立角色指派。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 以下是您將在本教學課程中執行的兩個角色指派：
+在 Azure RBAC 中，若要授與存取權，您可以建立角色指派。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 以下是您將在本教學課程中執行的兩個角色指派：
 
 | 安全性主體 | 角色定義 | 影響範圍 |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ ms.locfileid: "77138247"
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-如果您沒有建立群組的權限，您可以嘗試改用[教學課程：使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權](tutorial-role-assignments-user-powershell.md)。
+如果您沒有建立群組的權限，您可以嘗試改用[教學課程：使用 Azure PowerShell 為使用者授與 Azure 資源的存取權](tutorial-role-assignments-user-powershell.md)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -294,4 +294,4 @@ ms.locfileid: "77138247"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 RBAC 與 Azure PowerShell 管理 Azure 資源的存取權](role-assignments-powershell.md)
+> [使用 Azure PowerShell 新增或移除 Azure 角色指派](role-assignments-powershell.md)

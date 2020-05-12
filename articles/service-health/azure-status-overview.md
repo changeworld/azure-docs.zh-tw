@@ -3,12 +3,12 @@ title: Azure 狀態概觀 | Microsoft Docs
 description: Azure 服務健康狀態的全域檢視
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78898331"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732545"
 ---
 # <a name="azure-status-overview"></a>Azure 狀態概觀
 
@@ -24,9 +24,7 @@ ms.locfileid: "78898331"
 
 ## <a name="azure-status-history"></a>Azure 狀態歷程記錄
 
-因為 [Azure 狀態] 頁面一律會顯示最新的健康情況資訊，您可以使用 [Azure 狀態歷程記錄頁面](https://status.azure.com/status/history/)檢視較舊的事件。
-
-從 2019 年 11 月發佈的事件開始，狀態歷程記錄頁面會顯示過去最多 365 天的事件，包括初步的根本原因、緩和措施，以及 Azure 的後續步驟。
+因為 [Azure 狀態] 頁面一律會顯示最新的健康情況資訊，您可以使用 [Azure 狀態歷程記錄頁面](https://status.azure.com/status/history/)檢視較舊的事件。 歷程記錄頁面包含 2019 年 11 月 20 日 (含) 以後所發生事件的所有 RCA，並且可提供該日期之後 5 年的 RCA 歷程記錄。 您無法取得 2019 年 11 月 20 日之前的 RCA。
 
 ## <a name="rss-feed"></a>RSS 摘要
 

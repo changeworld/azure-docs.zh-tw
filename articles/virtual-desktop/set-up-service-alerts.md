@@ -8,14 +8,20 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2834ba924fa9c29d955c38fbaeb45ab23e5c4e9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ad25ab219cdb83227d39f86109d18b2c8402c38f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79127706"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612345"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教學課程：設定服務警示
+
+>[!IMPORTANT]
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)。
+>
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以使用 Azure 服務健康狀態，監視 Windows 虛擬桌面的服務問題和健康狀態諮詢。 Azure 服務健康狀態會以不同類型的警示 (例如，電子郵件或簡訊) 通知您，協助您了解問題所帶來的影響，並在問題解決時通知您； 也會協助您少停機時間，並針對可能影響資源可用性的計劃性維護和變更做好準備。
 
@@ -25,12 +31,6 @@ ms.locfileid: "79127706"
 > * 建立及設定服務警示。
 
 若要深入了解 Azure 服務健康狀態，請參閱 [Azure 健康狀態文件](https://docs.microsoft.com/azure/service-health/)。
-
-## <a name="prerequisites"></a>Prerequisites
-
-- [教學課程：在 Windows 虛擬桌面中建立租用戶](tenant-setup-azure-active-directory.md)
-- [教學課程：使用 PowerShell 建立服務主體和角色指派](create-service-principal-role-powershell.md)
-- [教學課程：透過 Azure Marketplace 建立主機集區](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>建立服務警示
 
@@ -51,7 +51,7 @@ ms.locfileid: "79127706"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [服務健康狀態]  。
-3. 使用[建立服務通知的活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的指示，設定您的警示和通知。
+3. 遵循[建立服務通知的活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的指示，設定您的警示和通知。
 
 ## <a name="next-steps"></a>後續步驟
 

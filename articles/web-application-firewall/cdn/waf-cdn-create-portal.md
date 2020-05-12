@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 738be1361bfbd944575abceb08781b241336f6e8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472540"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608808"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立 Azure CDN 的 WAF 原則
 
@@ -22,7 +22,7 @@ ms.locfileid: "79472540"
 
 > [!div class="checklist"]
 > * 建立 WAF 原則
-> * 將其與 CDN 端點產生關聯
+> * 將其與 CDN 端點產生關聯。 您只能將 WAF 原則與 **Microsoft SKU 的 Azure CDN 標準**上所裝載的端點建立關聯。
 > * 設定 WAF 規則
 
 ## <a name="prerequisites"></a>Prerequisites

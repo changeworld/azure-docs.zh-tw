@@ -5,20 +5,20 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 4be388eec3851154fd0f6af37d03a468fc52197b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76276065"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628515"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
 Microsoft *Azure Red Hat OpenShift* 服務可讓您部署完全受控的 [OpenShift](https://www.openshift.com/) 叢集。
 
-Azure Red Hat OpenShift 可擴充 [Kubernetes](https://kubernetes.io/)。 要在使用 Kubernetes 的生產環境中執行容器，需要其他工具和資源，例如映像登錄、儲存體管理、網路解決方案，以及記錄和監視工具，而這些項目必須受到一體的版本管理和測試。 要建置容器型應用程式，則需進一步進行與中介軟體、架構、資料庫和 CI/CD 工具的整合工作。 Azure Red Hat OpenShift 將其全數結合到單一平台中，不僅讓 IT 小組的作業更為簡便，同時也為應用程式小組提供他們必須執行的功能。
+Azure Red Hat OpenShift 可擴充 [Kubernetes](https://kubernetes.io/)。 使用 Kubernetes 在生產環境中執行容器需要額外的工具和資源。 這通常包括需要調整映像登錄、儲存體管理、網路解決方案，以及記錄和監視工具，這些都必須一起進行版本設定和測試。 要建置容器型應用程式，則需進一步進行與中介軟體、架構、資料庫和 CI/CD 工具的整合工作。 Azure Red Hat OpenShift 將其全數結合到單一平台中，不僅讓 IT 小組的作業更為簡便，同時也為應用程式小組提供他們必須執行的功能。
 
 Azure Red Hat OpenShift 由 Red Hat 與 Microsoft 共同設計、運作和支援，以提供整合的支援體驗。 無須執行任何虛擬機器，也不需要修補。 Microsoft 和 Red Hat 會為您修補、更新及監控主要節點、基礎結構和應用程式節點。 Azure Red Hat OpenShift 叢集會部署到您的 Azure 訂用帳戶中，並且包含在您的 Azure 帳單上。
 
@@ -32,21 +32,11 @@ Azure Red Hat OpenShift 由 Red Hat 與 Microsoft 共同設計、運作和支援
 
 ## <a name="cluster-and-node"></a>叢集與節點
 
-Azure Red Hat OpenShift 節點執行於 Azure 虛擬機器上。 您可以將儲存體連接到節點和 Pod、升級叢集節點，以及使用 GPU。
-
-## <a name="virtual-networks-and-ingress"></a>虛擬網路與輸入
-
-您可以透過對等互連[將 Azure Red Hat OpenShift 叢集連線至現有虛擬網路](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。 在此組態中，Pod 可以連線至對等互連虛擬網路中的其他服務。
-
-如需詳細資訊，請參閱[將叢集的虛擬網路連線到現有的虛擬網路](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
-
-## <a name="kubernetes-certification"></a>Kubernetes 憑證
-
-Azure Red Hat OpenShift 服務已經由 CNCF 認證，符合 Kubernetes 相關規範。
+Azure Red Hat OpenShift 節點執行於 Azure 虛擬機器上。 您可以將儲存體連線到節點和 Pod 並升級叢集元件。
 
 ## <a name="next-steps"></a>後續步驟
 
 了解 Azure Red Hat OpenShift 的必要條件：
 
 > [!div class="nextstepaction"]
-> [設定開發環境](howto-setup-environment.md)
+> [設定開發環境](tutorial-create-cluster.md)

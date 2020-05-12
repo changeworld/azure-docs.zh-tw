@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: 管理安全性警示
           href: security-center-managing-and-responding-alerts.md
+        - name: 安全性警示的隱藏規則
+          href: alerts-suppression-rules.md
         - name: 管理安全性事件
           href: security-center-incident.md
         - name: 雲端智慧警示相互關聯 (事件)

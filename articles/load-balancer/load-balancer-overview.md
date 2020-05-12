@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 8596b435ffa02da7daf4ef98bfe0fe7995b9270a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 1bc18788019c3ec97e06e3b01e823a0ba53541b8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768188"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734751"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -27,9 +27,9 @@ ms.locfileid: "81768188"
 
 Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運作。 這是用戶端的單一連絡點。 負載平衡器會將抵達負載平衡器前端的輸入流量分送給後端集區執行個體。 這些流量遵循已設定的負載平衡規則和健康情況探查。 後端集區執行個體可以是 Azure 虛擬機器，也可以是虛擬機器擴展集中的執行個體。
 
-**[公用負載平衡器](./concepts-limitations.md#publicloadbalancer)** 會為虛擬網路內的虛擬機器 (VM) 提供輸出連線。 這些連線會透過將其私人 IP 位址轉譯為公用 IP 位址來完成。 公用負載平衡器可用來對進入 VM 的網際網路流量進行負載平衡。
+**[公用負載平衡器](./components.md#frontend-ip-configurations)** 會為虛擬網路內的虛擬機器 (VM) 提供輸出連線。 這些連線會透過將其私人 IP 位址轉譯為公用 IP 位址來完成。 公用負載平衡器可用來對進入 VM 的網際網路流量進行負載平衡。
 
-只有在前端需要私人 IP 時，才會使用 **[內部 (或私人) 負載平衡器](./concepts-limitations.md#internalloadbalancer)** 。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡。 在混合案例中，您也可以從內部部署網路存取負載平衡器前端。
+只有在前端需要私人 IP 時，才會使用 **[內部 (或私人) 負載平衡器](./components.md#frontend-ip-configurations)** 。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡。 在混合案例中，您也可以從內部部署網路存取負載平衡器前端。
 
 <p align="center">
   <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
@@ -37,12 +37,7 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 *圖：使用公用和內部 Load Balancer 進行多層式應用程式的平衡*
 
-如需個別負載平衡器元件的詳細資訊，請參閱 [Azure Load Balancer 元件和限制](./concepts-limitations.md)
-
->[!NOTE]
-> Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 如果您需要高效能、低延遲、第 7 層負載平衡，請參閱[什麼是 Azure 應用程式閘道？](../application-gateway/overview.md) 如果您要尋找全域 DNS 負載平衡，請參閱[什麼是流量管理員？](../traffic-manager/traffic-manager-overview.md) 結合這些解決方案，可能有益於您的端對端案例。
->
-> 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。
+如需個別負載平衡器元件的詳細資訊，請參閱 [Azure Load Balancer 元件](./components.md)。
 
 ## <a name="why-use-azure-load-balancer"></a>為什麼使用 Azure Load Balancer？
 您可以使用 Standard Load Balancer 調整您的應用程式，並建立具備高可用性的服務。 負載平衡器支援輸入和輸出案例。 對於所有 TCP 和 UDP 應用程式，負載平衡器可提供低延遲和高輸送量，且最多可相應增加為數百萬個流程。
@@ -74,7 +69,6 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 Standard Load Balancer 在本質上建置於零信任網路安全性模型上。 Standard Load Balancer 受到預設的保護，而且是虛擬網路的一部分。 虛擬網路是私人的隔離式網路。  這表示對於輸入流量會關閉 Standard Load Balancer 和標準公用 IP 位址，除非網路安全性群組加以開啟。 NSG 可用來明確准許允許的流量。  如果您沒有子網路的 NSG 或虛擬機器資源的 NIC，系統不會允許流量存取此資源。 若要深入了解 NSG 及如何將其套用至您的案例，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 依預設會對網際網路開放基本負載平衡器。
 
-
 ## <a name="pricing-and-sla"></a>價格和 SLA
 
 如需 Standard Load Balancer 的定價資訊，請參閱 [Load Balancer 定價](https://azure.microsoft.com/pricing/details/load-balancer/)。
@@ -86,4 +80,6 @@ Standard Load Balancer 在本質上建置於零信任網路安全性模型上。
 
 請參閱 [建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 
-如需 Azure Load Balancer 限制和元件的詳細資訊，請參閱 [Azure Load Balancer 概念和限制](./concepts-limitations.md)
+如需 Azure Load Balancer 限制和元件的詳細資訊，請參閱 [Azure Load Balancer 元件](./components.md)和 [Azure Load Balancer 概念](./concepts.md)
+
+如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。

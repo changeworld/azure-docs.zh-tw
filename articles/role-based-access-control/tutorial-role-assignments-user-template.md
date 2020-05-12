@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 RBAC 和 Resource Manager 範本為使用者授與 Azure 資源的存取權
-description: 在本教學課程中，了解如何使用角色型存取控制 (RBAC) 和 Azure Resource Manager 範本為使用者授與 Azure 資源的存取權。
+title: 教學課程：使用 Azure Resource Manager 範本為使用者授與 Azure 資源的存取權 - Azure RBAC
+description: 在本教學課程中，您將了解如何使用 Azure Resource Manager 範本和 Azure 角色型存取控制 (Azure RBAC) 為使用者授與 Azure 資源的存取權。
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f98b1e9c57cf9f624c5af3e59c8afd56d073dd28
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138208"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735465"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教學課程：使用 RBAC 和 Resource Manager 範本為使用者授與 Azure 資源的存取權
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-an-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本為使用者授與 Azure 資源的存取權
 
-[角色型存取控制 (RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會建立資源群組並對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。 本教學課程著重於部署 Resource Manager 範本來授與存取權的程序。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Resource Manager 文件](/azure/azure-resource-manager/)和[範本參考](/azure/templates/microsoft.authorization/allversions
+[Azure 角色型存取控制 (Azure RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會建立資源群組並對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。 本教學課程著重於部署 Resource Manager 範本來授與存取權的程序。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Resource Manager 文件](/azure/azure-resource-manager/)和[範本參考](/azure/templates/microsoft.authorization/allversions
 )。
 
 在本教學課程中，您會了解如何：
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權](tutorial-role-assignments-user-powershell.md)
+> [教學課程：使用 Azure PowerShell 為使用者授與 Azure 資源的存取權](tutorial-role-assignments-user-powershell.md)

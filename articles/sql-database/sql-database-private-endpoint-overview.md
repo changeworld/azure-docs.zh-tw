@@ -3,24 +3,24 @@ title: 私人連結
 description: 私人端點功能的概觀
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78945378"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628992"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>適用於 Azure SQL Database 和資料倉儲的 Private Link
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Private Link
 
 Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../private-link/index.yml)頁面。 私人端點是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子網內的私人 IP 位址。 
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。 本文「不」  適用於 Azure SQL Database 中的**受控執行個體**部署。
+> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 Azure Synapse Analytics 資料庫。 為了簡單起見，參考 SQL Database 和 Azure Synapse Analytics 時都會使用 SQL Database。 本文「不」  適用於 Azure SQL Database 中的**受控執行個體**部署。
 
 ## <a name="data-exfiltration-prevention"></a>預防資料外洩
 
@@ -28,7 +28,7 @@ Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS �
 
 假設有一個案例，其中的使用者在連線到 SQL Database 的 Azure VM 內執行 SQL Server Management Studio (SSMS)。 此 SQL Database 位於「美國西部」資料中心。 下列範例示範如何使用網路存取控制，在 SQL Database 上限制公用端點的存取。
 
-1. 將 [允許 Azure 服務] 設為 [關閉]  ，即可阻止所有 Azure 服務流量透過公用端點流向 SQL Database。 請確定伺服器和資料庫層級防火牆規則中不允許任何 IP 位址。 如需詳細資訊，請參閱 [Azure SQL Database 和資料倉儲網路存取控制](sql-database-networkaccess-overview.md)。
+1. 將 [允許 Azure 服務] 設為 [關閉]  ，即可阻止所有 Azure 服務流量透過公用端點流向 SQL Database。 請確定伺服器和資料庫層級防火牆規則中不允許任何 IP 位址。 如需詳細資訊，請參閱 [Azure SQL Database 和 Azure Synapse Analytics 網路存取控制](sql-database-networkaccess-overview.md)。
 1. 僅允許使用 VM 的私人 IP 位址對 SQL Database 傳送流量。 如需詳細資訊，請參閱[服務端點](sql-database-vnet-service-endpoint-rule-overview.md)和 [VNet 防火牆規則](sql-database-firewall-configure.md)的相關文章。
 1. 在 Azure VM 上，請使用[網路安全性群組 (NSG)](../virtual-network/manage-network-security-group.md) 和服務標籤來縮小傳出連線的範圍，如下所示
     - 指定 NSG 規則，以允許服務標記 = SQL.WestUs 的流量 - 僅允許連線到位於美國西部的 SQL Database
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 結果會顯示某個 IP 位址已啟動；該位址會對應至私人端點的 IP 位址。
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 檢查連線能力
 > [!NOTE]
 > 在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** 。 任何直接對 IP 位址進行的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定 FQDN，登入才會成功。
@@ -174,11 +173,9 @@ where session_id=@@SPID
 - [ExpressRoute 線路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>使用 Polybase 從 Azure SQL 資料倉儲連線到 Azure 儲存體
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>使用 Polybase 從 Azure Synapse Analytics 連線至 Azure 儲存體
 
-PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料倉儲。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能透過私人端點、服務端點或 IP 型防火牆存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 如需透過連線至固定到 VNet 的 Azure 儲存體的 Azure SQL 資料倉儲來啟用 PolyBase 匯入和匯出案例，請按照[此處](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步驟進行。 
-
-
+PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Analytics。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能透過私人端點、服務端點或 IP 型防火牆存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 若要在 Azure Synapse Analytics 連線至固定到 VNet 的 Azure 儲存體時，進行 PolyBase 匯入和匯出案例，請按照[此處](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步驟進行。 
 
 ## <a name="next-steps"></a>後續步驟
 

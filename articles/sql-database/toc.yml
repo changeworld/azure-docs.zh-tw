@@ -127,6 +127,8 @@
               items:
                 - name: 弱點評估
                   href: sql-vulnerability-assessment.md
+                - name: 弱點評估規則
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: 在防火牆和 VNet 後方儲存 VA 掃描
                   href: sql-database-vulnerability-assessment-storage.md
             - name: 進階威脅防護

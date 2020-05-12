@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204537"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006458"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -49,7 +49,7 @@ ms.locfileid: "82204537"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>使用者 VPN (點對站) 可支援多少用戶端？
 
-每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-12 支援 5000 個連線、縮放單位 13-20 支援最多 10,000 個連線。 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 因此，每個閘道可以有 500 * 2 個連線，但不表示您要為此縮放單位規劃 1000 個連線 (而不是 500 個)，因為如果您超過建議的連線計數，額外 500 個連線的連線能力可能會中斷，進而造成執行個體需要支援。
+每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-12 支援 5000 個連線、縮放單位 13-20 支援最多 10,000 個連線。 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 因此，每個閘道可以有 500 * 2 個連線，但不表示您要為此縮放單位規劃 1000 個連線 (而不是 500 個)，因為如果您超過建議的連線計數，額外 500 個連線的連線能力可能會中斷，進而造成執行個體需要支援。 此外，如果您決定在縮放單位上擴大或縮小，或變更 VPN 閘道上的點對站設定，請務必規劃停機時間。
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虛擬網路閘道 (VPN 閘道) 與 Azure 虛擬 WAN VPN 閘道之間有何差異？
 
@@ -190,8 +190,8 @@ Azure 虛擬 WAN 中樞最多可同時支援 1,000 個 S2S 連線、10,000 個 P
 在入口網站中，導覽至中樞內的 VPN 閘道，並按一下縮放單位，以將其變更為適當的設定。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虛擬 WAN 是否允許內部部署裝置以平行方式使用多個 ISP，還是一律為單一 VPN 通道？
+內部部署裝置解決方案可以套用流量原則，將多個通道的流量引導至 Azure。
 
-使用分支的可用連結進入虛擬 WAN VPN 的連線，一律為主動-主動通道 (適用於相同中樞/區域內的復原)。 此連結可能是在內部部署分支的 ISP 連結。 虛擬 WAN「VPNSite」提供將連結資訊新增至網站的功能。 如果您在分支有多個 ISP，而且每個 ISP 提供一個連結，則可在 Azure 中的 VPN 網站資訊中設定該資訊。 不過，在分支中跨 ISP 管理容錯移轉完全是以分支為中心的路由作業。
 
 ### <a name="what-is-global-transit-architecture"></a>什麼是全域傳輸架構？
 
