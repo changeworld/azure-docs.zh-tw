@@ -3,12 +3,12 @@ title: 建立新的 Azure Application Insights 資源 | Microsoft Docs
 description: 針對新的即時應用程式手動設定 Application Insights 監視。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537571"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200679"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
@@ -26,9 +26,10 @@ Azure 應用程式 Insights 會在 Microsoft Azure*資源*中顯示應用程式�
 
    | 設定        |  值           | 描述  |
    | ------------- |:-------------|:-----|
-   | **名稱**      | 唯一值 | 識別您要監視之應用程式的名稱。 |
-   | **資源群組**     | myResourceGroup      | 要裝載 App Insights 資料的新或現有資源群組的名稱。 |
-   | **位置** | 美國東部 | 選擇您附近或接近應用程式裝載位置的位置。 |
+   | **名稱**      | `Unique value` | 識別您要監視之應用程式的名稱。 |
+   | **資源群組**     | `myResourceGroup`      | 要裝載 App Insights 資料的新或現有資源群組的名稱。 |
+   | **區域** | `East US` | 選擇您附近或接近應用程式裝載位置的地點。 |
+   | **資源模式** | `Classic` 或 `Workspace-based` | 以工作區為基礎的資源目前處於公開預覽狀態，可讓您將 Application Insights 遙測傳送至一般的 Log Analytics 工作區。 如需詳細資訊，請參閱以[工作區為基礎的資源一文](create-workspace-resource.md)。
 
 > [!NOTE]
 > 雖然您可以在不同的資源群組上使用相同的資源名稱，但使用全域唯一的名稱可能會很有説明。 如果您打算[執行跨資源查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，因為它會簡化必要的語法，這會很有用。
@@ -96,13 +97,13 @@ TenantId           : {subid}
 
 ### <a name="azure-cli-preview"></a>Azure CLI （預覽）
 
-若要存取預覽 Application Insights 您必須先執行的 Azure CLI 命令：
+若要存取預覽 Application Insights Azure CLI 命令，您必須先執行：
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-如果您未執行`az extension add`命令，您會看到一則錯誤訊息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+如果您未執行 `az extension add` 命令，您會看到一則錯誤訊息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 現在您可以執行下列程式來建立您的 Application Insights 資源：
 

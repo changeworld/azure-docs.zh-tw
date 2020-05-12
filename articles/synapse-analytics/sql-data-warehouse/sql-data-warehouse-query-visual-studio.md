@@ -11,17 +11,17 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 444cb2c8378ad873beb61116c5c4387ad3c59761
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416040"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200348"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連接到 Azure Synapse 分析
 > [!div class="op_single_selector"]
+> * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
@@ -39,7 +39,7 @@ ms.locfileid: "81416040"
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. 連接到您的 SQL 集區
 1. 開啟 Visual Studio 2019。
-2. 選取 [ **View** > **SQL Server 物件總管**] 來開啟 SQL Server 物件總管。
+2. 選取 [ **View**SQL Server 物件總管] 來開啟 SQL Server 物件總管  >  ** **。
    
     ![SQL Server 物件總管](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. 按一下 [加入 SQL Server] **** 圖示。
@@ -69,7 +69,7 @@ ms.locfileid: "81416040"
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 按一下綠色箭號或使用下列快捷方式來執行查詢`CTRL` + `SHIFT` + `E`：。
+4. 按一下綠色箭號或使用下列快捷方式來執行查詢： `CTRL` + `SHIFT` + `E` 。
    
     ![執行查詢](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. 查看查詢結果。 在此範例中，FactInternetSales 資料表有 60398 個資料列。

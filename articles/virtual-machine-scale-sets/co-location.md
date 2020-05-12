@@ -1,19 +1,20 @@
 ---
 title: 共同找出 Azure 虛擬機器擴展集
 description: 瞭解如何將 Azure 虛擬機器擴展集資源共置，以改善效能。
-author: cynthn
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 05/14/2019
-ms.author: cynthn
-ms.openlocfilehash: 9d6e4e15c552cc4467dd17221a1ba901fd8e4f58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: a5c3418ce30e41d5d6a664086a5ec0c0ba62f7a2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250825"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195769"
 ---
 # <a name="co-location"></a>位於相同位置
 

@@ -9,15 +9,15 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f83ae9c8290a52381c8087b46da959d4723d7f4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f36fb952b21b058fb50dc567f714e8bdb665d6c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745161"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200319"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 入門
 
@@ -38,15 +38,12 @@ Visual Studio **2019** SQL SERVER DATA TOOLS （SSDT）是單一工具，可讓�
 
 有些時候，Synapse SQL 的功能版本可能不包含 SSDT 的支援。 目前不支援下列功能：
 
-- [具體化檢視](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [已排序的叢集資料行存放區索引](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
-- [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+
 - [工作負載管理](sql-data-warehouse-workload-management.md)-工作負載群組和分類器
 - [資料列層級安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
   - 提交[支援票證，或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)以取得支援的功能。
 - [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
    - 提交[支援票證，或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)以取得支援的功能。
-- 不支援[具有條件約束的資料表](sql-data-warehouse-table-constraints.md#table-constraints)。 針對這些資料表物件，請將組建動作設定為 [無]。
 
 ## <a name="next-steps"></a>後續步驟
 

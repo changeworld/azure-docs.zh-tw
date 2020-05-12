@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428559"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201685"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連接到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -28,9 +28,8 @@ ms.locfileid: "81428559"
 
 使用 Visual Studio 來查詢使用 Azure Synapse 分析的 SQL 集區。 這個方法會使用 Visual Studio 2019 中的 SQL Server Data Tools （SSDT）延伸模組。 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>支援的 SQL 隨選工具 (預覽)
-
-Visual studio 目前不支援 SQL 隨選（預覽）。 不過，Azure 資料 Studi （預覽） o 是完全支援的工具。 SQL Server Management Studio 在18.4 版中部分支援，而且功能有限，例如連接和查詢。
+> [!NOTE]
+> SSDT 不支援 SQL 隨選（預覽）。
 
 ## <a name="prerequisites"></a>先決條件
 若要使用本教學課程，您需要有下列元件：
@@ -41,7 +40,7 @@ Visual studio 目前不支援 SQL 隨選（預覽）。 不過，Azure 資料 St
 
 ## <a name="1-connect-to-sql-pool"></a>1. 連接到 SQL 集區
 1. 開啟 Visual Studio 2019。
-2. 開啟 [SQL Server 物件總管]。 若要這麼做，請選取 [ **View** > **SQL Server 物件總管**]。
+2. 開啟 [SQL Server 物件總管]。 若要這麼做，請選取 [ **View**  >  **SQL Server 物件總管**]。
    
     ![SQL Server 物件總管](./media/get-started-visual-studio/open-ssdt.png)
 3. 按一下 [加入 SQL Server] **** 圖示。

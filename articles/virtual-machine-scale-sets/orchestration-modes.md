@@ -1,18 +1,20 @@
 ---
 title: 深入瞭解 Azure 中虛擬機器擴展集的協調流程模式
 description: 深入瞭解 Azure 中虛擬機器擴展集的協調流程模式。
-author: shandilvarun
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 10/23/2019
-ms.author: vashan
-ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279053"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198394"
 ---
 # <a name="orchestration-mode-preview"></a>協調流程模式（預覽）
 
@@ -39,7 +41,7 @@ ms.locfileid: "76279053"
 
 |                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM 設定模型      | None                                       | 必要 |
+| VM 設定模型      | 無                                       | 必要 |
 | 正在將新的 VM 新增至擴展集  | 建立 VM 時，會將 Vm 明確新增至擴展集。 | Vm 會根據 VM 設定模型、實例計數和自動調整規則，以隱含方式建立並新增至擴展集 | |
 | 刪除 VM                   | Vm 必須個別刪除，如果擴展集內有任何 Vm，則不會刪除它。 | 您可以個別刪除 Vm，而刪除擴展集將會刪除所有的 VM 實例。  |
 | 附加/卸離 Vm           | 不支援                              | 不支援 |

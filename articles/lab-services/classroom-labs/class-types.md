@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296722"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115025"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>課程類型概觀 - Azure 實驗室服務
 
@@ -61,6 +61,10 @@ Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 �
 
 如需如何設定此類實驗室的詳細資訊，請參閱[使用 Android Studio 設定實驗室來教授行動應用程式開發](class-type-mobile-dev-android-studio.md)。
 
+## <a name="big-data-analytics"></a>巨量資料分析
+您可以設定實驗室來教授 big data analytics 類別。 透過這種類型的類別，學員將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。 學生的主要目標是瞭解如何使用資料分析工具，例如 Apache Hadoop 的開放原始碼軟體套件，其中提供儲存、管理及處理 big data 的工具。 
+
+如需如何設定這種類型實驗室的詳細資訊，請參閱[使用 HortonWorks 資料平臺的 Docker 部署設定實驗室對 big data analytics](class-type-big-data-analytics.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

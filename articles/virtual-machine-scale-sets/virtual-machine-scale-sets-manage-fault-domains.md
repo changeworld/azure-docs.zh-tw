@@ -1,18 +1,20 @@
 ---
 title: 在 Azure 虛擬機器擴展集中管理容錯網域
 description: 了解如何在建立虛擬機器擴展集時選擇正確的 FD 數目。
-author: rajsqr
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 12/18/2018
-ms.author: drewm
-ms.openlocfilehash: 297837354cea4bb5ccdcc03261810dcffd144243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 1f5b253dbc2161892bcc2aee07c8cd3788fa5fb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76275735"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200022"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>為虛擬機器擴展集選擇正確的容錯網域數目
 在沒有任何區域 (zone) 的 Azure 區域 (region) 中，預設會建立具有五個容錯網域的虛擬機器擴展集。 針對支援區域部署虛擬機器擴展集的地區，如果選取此選項，則每個區域的容錯網域計數預設值為1。 在此情況下，FD = 1 表示屬於擴展集的 VM 執行個體會儘可能分散於許多機架。

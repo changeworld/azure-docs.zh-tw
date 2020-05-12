@@ -1,19 +1,20 @@
 ---
 title: 使用大型 Azure 虛擬機器擴展集
 description: 您需要知道的大型 Azure 虛擬機器擴展集，才能在您的應用程式中使用。
-author: cynthn
-ms.author: cynthn
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 11/9/2017
-ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531034"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200951"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型的虛擬機器擴展集
 您現在可以建立容量多達 1,000 個 VM 的 Azure [虛擬機器擴展集](/azure/virtual-machine-scale-sets/)。 本文件將_大型虛擬機器擴展集_定義為能夠調整到 100 個 VM 以上的擴展集。 此容量是由擴展集屬性 (_singlePlacementGroup=False_) 所設定。 
@@ -75,7 +76,7 @@ az vmss create --help
     }
 ```
 
-如需大型擴展集範本的完整範例，請參閱[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
+如需大型擴展集範本的完整範例，請參閱 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) 。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>將現有擴展集轉換為橫跨多個放置群組
 若要讓現有虛擬機器擴展集能夠調整為 100 個以上的 VM，您必須將擴展集模型中的 _singlePlacementGroup_ 屬性變更為 _false_。 您可以使用 [Azure 資源總管](https://resources.azure.com/)測試此屬性的變更。 找到現有擴展集，選取 [編輯]__，然後變更 [singlePlacementGroup]__ 屬性。 如果未看到此屬性，您可能是以舊版 Microsoft.Compute API 在檢視擴展集。

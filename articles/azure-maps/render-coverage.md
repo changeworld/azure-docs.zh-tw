@@ -1,19 +1,19 @@
 ---
 title: 轉譯涵蓋範圍 |Microsoft Azure 對應
 description: 在本文中，您將瞭解具有 Microsoft Azure Maps 轉譯涵蓋範圍的區域，以及其呈現的詳細資料層級。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536746"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123933"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure 地圖轉譯涵蓋範圍
 
@@ -152,7 +152,7 @@ Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 在最�
 | 英屬維京群島   | ✓ | ✓ |
 | 美屬維京群島      | ✓ | ✓ |
 
-## <a name="asia"></a>Asia 
+## <a name="asia"></a>亞洲 
 
 | 國家/區域 | 點陣圖格整合 | 向量圖格整合 |
 | ------ | :------------------: | :------------------: |

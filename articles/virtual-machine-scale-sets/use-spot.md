@@ -2,17 +2,19 @@
 title: 建立使用 Azure 點 Vm 的擴展集
 description: 瞭解如何建立使用點 Vm 的 Azure 虛擬機器擴展集，以節省成本。
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545944"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125021"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -26,7 +28,7 @@ ms.locfileid: "80545944"
 「點」實例的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定價。 
 
 
-有了可變的定價，您可以選擇使用最多5個小數位數來設定最大價格（以美元（美元）為單位）。 例如，此值`0.98765`是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為`-1`，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（這種情況較少），只要有可用的容量和配額即可。
+有了可變的定價，您可以選擇使用最多5個小數位數來設定最大價格（以美元（美元）為單位）。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（這種情況較少），只要有可用的容量和配額即可。
 
 ## <a name="eviction-policy"></a>收回原則
 
@@ -49,12 +51,12 @@ ms.locfileid: "80545944"
 
 ## <a name="portal"></a>入口網站
 
-建立使用點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-portal.md)中所述的流程相同。 當您部署擴展集時，您可以選擇設定「點」旗標和收回原則： ![使用「點」 vm 來建立擴展集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+建立使用點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-portal.md)中所述的流程相同。 當您部署擴展集時，您可以選擇設定「點」旗標和收回原則：使用「 ![ 點」 vm 來建立擴展集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-建立具有點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-cli.md)中所述的流程相同。 只要新增 [--Priority 位置] 和 [新增`--max-price`] 即可。 在此範例中，我們`-1`會`--max-price`使用 for，讓實例不會根據價格來收回。
+建立具有點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-cli.md)中所述的流程相同。 只要新增 [--Priority 位置] 和 [新增] 即可 `--max-price` 。 在此範例中，我們 `-1` 會使用 for， `--max-price` 讓實例不會根據價格來收回。
 
 ```azurecli
 az vmss create \
@@ -71,7 +73,7 @@ az vmss create \
 ## <a name="powershell"></a>PowerShell
 
 建立具有點 Vm 之擴展集的程式，與使用者入門[文章](quick-create-powershell.md)中所述的流程相同。
-只需新增「-優先順序點」，並將`-max-price`提供給[new-azvmssconfig](/powershell/module/az.compute/new-azvmssconfig)。
+只需新增「-優先順序點」，並將提供 `-max-price` 給[new-azvmssconfig](/powershell/module/az.compute/new-azvmssconfig)。
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 建立使用點 Vm 之擴展集的程式，與適用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的使用者入門文章中所述的流程相同。 
 
-針對點範本部署，請`"apiVersion": "2019-03-01"`使用或更新版本。 將`priority`、 `evictionPolicy`和`billingProfile`屬性新增至範本`"virtualMachineProfile":`中的區段： 
+針對點範本部署，請使用 `"apiVersion": "2019-03-01"` 或更新版本。 將 `priority` 、 `evictionPolicy` 和屬性新增 `billingProfile` 至 `"virtualMachineProfile":` 範本中的區段： 
 
 ```json
                 "priority": "Spot",
@@ -97,7 +99,7 @@ $vmssConfig = New-AzVmssConfig `
                 }
 ```
 
-若要在收回實例之後將它刪除，請將`evictionPolicy`參數變更`Delete`為。
+若要在收回實例之後將它刪除，請將 `evictionPolicy` 參數變更為 `Delete` 。
 
 ## <a name="faq"></a>常見問題集
 
@@ -123,12 +125,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **問：** 我可以將現有的擴展集轉換成點擴展集嗎？
 
-**答：** 否，只有在`Spot`建立時才支援設定旗標。
+**答：** 否， `Spot` 只有在建立時才支援設定旗標。
 
 
-**問：** 如果我使用`low`的是低優先順序的擴展集，是否需要改為開始使用`Spot` ？
+**問：** 如果我使用 `low` 的是低優先順序的擴展集，是否需要改為開始使用 `Spot` ？
 
-**答：** 目前， `low`和`Spot`都可以使用，但您應該使用`Spot`開始轉換成。
+**答：** 目前，和都可以使用 `low` `Spot` ，但您應該使用開始轉換成 `Spot` 。
 
 
 **問：** 我可以同時建立具有一般 Vm 和點 Vm 的擴展集嗎？
@@ -164,7 +166,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **問：** 我可以在何處張貼問題？
 
-**答：** 您可以`azure-spot`在[Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼和標記您的問題。 
+**答：** 您可以 `azure-spot` 在[Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼和標記您的問題。 
 
 ## <a name="next-steps"></a>後續步驟
 

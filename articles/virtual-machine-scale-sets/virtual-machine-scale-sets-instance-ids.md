@@ -2,18 +2,19 @@
 title: 了解 Azure VM 擴展集 VM 的執行個體識別碼
 description: 瞭解 Azure VM 擴展集虛擬機器的實例識別碼，以及它們所呈現的各種方式。
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: aa8b88bde4b6f8f02f6c9c81d0742d0dede761ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 02/22/2018
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273676"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200133"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
 本文說明擴展集的執行個體識別碼和它們呈現的各種方式。

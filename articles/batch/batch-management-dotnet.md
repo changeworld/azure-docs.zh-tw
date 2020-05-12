@@ -3,13 +3,13 @@ title: 使用 Batch Management .NET 程式庫來管理帳戶資源
 description: 使用 Batch Management .NET 程式庫建立、刪除和修改 Azure Batch 帳戶資源。
 ms.topic: article
 ms.date: 04/24/2017
-ms.custom: seodec18
-ms.openlocfilehash: 69e3eb04352feff11ee50acab11328adb7900539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115987"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201626"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>使用適用於 .NET 的 Batch 管理用戶端程式庫來管理 Batch 帳戶和配額
 

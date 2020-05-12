@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250006"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201337"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
 
@@ -273,13 +274,13 @@ ms.locfileid: "79250006"
 
 **錯誤：無法載入檔案或元件**
 
-之所以發生此錯誤，是因為 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將位於`C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`。
+之所以發生此錯誤，是因為 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將位於 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 。
 
-您也可以搜尋`Az.Accounts`資料夾來尋找正確的路徑。
+您也可以搜尋 `Az.Accounts` 資料夾來尋找正確的路徑。
 
 **錯誤： AzKeyVaultSecret 或 Get-AzKeyVaultSecret 無法辨識為 Cmdlet 的名稱**
 
-如果您使用舊的 AZ PowerShell 模組，您必須將這兩個命令變更`Get-AzureKeyVaultSecret`為`Get-AzureKeyVaultSecret`和。
+如果您使用舊的 AZ PowerShell 模組，您必須將這兩個命令變更為 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret` 。
 
 **參數範例**
 

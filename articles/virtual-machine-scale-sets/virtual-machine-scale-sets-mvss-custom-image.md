@@ -1,19 +1,20 @@
 ---
 title: 在 Azure 擴展集範本中參考自訂映射
 description: 了解如何將自訂映像新增到現有的「Azure 虛擬機器擴展集」範本
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: cynthn
+ms.author: cynthn
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: imaging
 ms.date: 04/26/2018
-ms.author: mimckitt
-ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273686"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124902"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>新增自訂映像至 Azure 擴展集範本
 

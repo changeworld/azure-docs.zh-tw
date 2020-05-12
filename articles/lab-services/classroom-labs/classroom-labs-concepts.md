@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526224"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115042"
 ---
 # <a name="classroom-labs-concepts"></a>教室實驗室概念
 
@@ -50,7 +50,7 @@ ms.locfileid: "77526224"
 
 ### <a name="lab-account-owner"></a>實驗室帳戶擁有者
 
-通常會是擁有 Azure 訂用帳戶的組織雲端資源 IT 系統管理員，並會執行下列工作：
+一般來說，組織雲端資源的 IT 系統管理員（擁有 Azure 訂用帳戶）會作為實驗室帳戶擁有者，並執行下列工作：
 
 - 為組織設定實驗室帳戶。
 - 管理並設定所有實驗室的原則。

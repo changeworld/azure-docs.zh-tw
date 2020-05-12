@@ -1,21 +1,21 @@
 ---
-title: 使用適用于 Cosmos DB 的 Azure 監視器監視 Azure Cosmos DB （預覽） |Microsoft Docs
+title: 使用 Cosmos DB 的 Azure 監視器監視 Azure Cosmos DB |Microsoft Docs
 description: 本文說明 Cosmos DB 功能的 Azure 監視器，可讓 Cosmos DB 擁有者快速瞭解其 CosmosDB 帳戶的效能和使用問題。
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250685"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195405"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB 的 Azure 監視器（預覽）
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索 Azure Cosmos DB 的 Azure 監視器
 
-Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體驗，查看所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況。 本文將協助您瞭解這項新監視體驗的優點，以及如何修改和調整體驗，以符合組織的獨特需求。   
+Azure Cosmos DB 的 Azure 監視器會以統一的互動體驗，提供所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況的觀點。 本文將協助您瞭解這項新監視體驗的優點，以及如何修改和調整體驗，以符合組織的獨特需求。   
 
 ## <a name="introduction"></a>簡介
 
@@ -44,11 +44,11 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
     ![含有 "Monitor" 一字的搜尋方塊，以及顯示服務 "Monitor" 的下拉式清單（具有 speedometer 樣式影像）](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. 選取 **[Cosmos DB （預覽）**]。
+3. 選取 [Cosmos DB]****。
 
     ![Cosmos DB 總覽活頁簿的螢幕擷取畫面](./media/cosmosdb-insights-overview/cosmos-db.png)
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 在**總覽**中，資料表會顯示互動式 Azure Cosmos DB 計量。 您可以根據您從下列下拉式清單中選取的選項來篩選結果：
 
@@ -72,7 +72,7 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 ![依 HTTP 要求類型的細目的失敗螢幕擷取畫面](./media/cosmosdb-insights-overview/failures.png)
 
-| 程式碼      |  描述       | 
+| 程式碼      |  說明       | 
 |-----------|:--------------------|
 | `200 OK`  | 已成功完成下列其中一個 REST 作業： </br>-在資源上取得。 </br> -放在資源上。 </br> -在資源上張貼。 </br> -在預存程式資源上張貼，以執行預存程式。|
 | `201 Created` | 成功完成建立資源的 POST 作業。 |
@@ -92,7 +92,7 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 選取頁面頂端的 [**作業**]，活頁簿範本的**作業**部分隨即開啟。 它可讓您查看依提出的要求類型細分的要求。 
 
-因此，在下列範例中，您`eastus-billingint`會看到主要是接收讀取要求，但有少量的 upsert 和 create 要求。 從`westeurope-billingint`要求的角度來看，這是唯讀的，至少在過去四小時內，活頁簿目前的範圍是透過其時間範圍參數。
+因此，在下列範例中，您 `eastus-billingint` 會看到主要是接收讀取要求，但有少量的 upsert 和 create 要求。 `westeurope-billingint`從要求的角度來看，這是唯讀的，至少在過去四小時內，活頁簿目前的範圍是透過其時間範圍參數。
 
 ![作業活頁簿](./media/cosmosdb-insights-overview/operation.png) 
 
@@ -110,9 +110,9 @@ Azure 監視器 for Azure Cosmos DB （預覽）可讓您以統一的互動體�
 
 ![展開活頁簿圖示](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>自訂 Azure Cosmos DB 的 Azure 監視器（預覽）
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>自訂 Azure Cosmos DB 的 Azure 監視器
 
-由於這項體驗是以 Azure 監視器活頁簿範本為基礎，因此您可以**自訂** > **編輯**，並將修改過的版本複本**儲存**到自訂活頁簿中。 
+由於這項體驗是以 Azure 監視器活頁簿範本為基礎，因此您可以**自訂**  >  **編輯**，並**將**修改過的版本複本儲存到自訂活頁簿中。 
 
 ![自訂橫條](./media/cosmosdb-insights-overview/customize.png)
 

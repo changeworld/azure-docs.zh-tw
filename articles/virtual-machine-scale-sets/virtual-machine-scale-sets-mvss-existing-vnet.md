@@ -1,19 +1,20 @@
 ---
 title: 在 Azure 擴展集範本中參考現有的虛擬網路
 description: 了解如何將虛擬網路新增到現有的「Azure 虛擬機器擴展集」範本
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273659"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124817"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 擴展集範本中新增對現有虛擬網路的參考
 
@@ -82,7 +83,7 @@ ms.locfileid: "81273659"
          "capacity": 2
 ```
 
-最後，傳入使用者所`subnetId`設定的參數（而不是使用`resourceId`來取得相同部署中的 vnet 識別碼，也就是基本可行擴展集範本的用途）。
+最後，傳入使用者所 `subnetId` 設定的參數（而不是使用 `resourceId` 來取得相同部署中的 vnet 識別碼，也就是基本可行擴展集範本的用途）。
 
 ```diff
                        "name": "myIpConfig",
