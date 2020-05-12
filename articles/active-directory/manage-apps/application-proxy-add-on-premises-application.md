@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481410"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597717"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -47,10 +47,12 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 若要在生產環境中實現高可用性，建議您準備多個 Windows 伺服器。 在本教學課程中，一部 Windows 伺服器就已足夠。
 
 > [!IMPORTANT]
-> 如果您是在 Windows Server 2019 上安裝連接器，則會有 HTTP2 的限制。 在此版本上使用連接器的解決方案是新增下列登錄機碼，然後重新啟動伺服器。 請注意，這是機器登錄適用的機碼。 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> 如果您要在 Windows Server 2019 上安裝連接器，您必須停用 WinHttp 元件中的 HTTP2 通訊協定支援。 在舊版的支援作業系統中，預設會停用此功能。 新增下列登錄機碼並重新啟動伺服器，即可在 Windows Server 2019 上停用此功能。 請注意，這是整部機器適用的登錄機碼。
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>針對連接器伺服器的建議
 

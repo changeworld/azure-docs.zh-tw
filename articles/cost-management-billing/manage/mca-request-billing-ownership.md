@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200722"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692315"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>從其他帳戶接管 Azure 訂用帳戶的帳單擁有權
 
@@ -177,7 +177,7 @@ Azure Marketplace 產品會連同其各自的訂用帳戶一起轉移。
 
 ### <a name="azure-reservations-transfer"></a>Azure 保留轉移
 
-Azure 保留不會自動隨著訂用帳戶轉移。 若要移轉保留，請[連絡 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+如果您要傳輸 Enterprise 合約 (EA) 訂用帳戶，Azure 保留不會自動與訂用帳戶一起移動。 若要移轉保留，請[連絡 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="access-to-azure-services"></a>對 Azure 服務的存取
 

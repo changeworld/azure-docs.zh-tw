@@ -1,5 +1,5 @@
 ---
-title: '教學課程：使用 C# 為 Azure SQL 資料庫中的資料編製索引 '
+title: 為 Azure SQL 資料編製索引的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 在此 C# 教學課程中，連線至 Azure SQL 資料庫、擷取可搜尋的資料，並將其載入至 Azure 認知搜尋服務索引。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78193963"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780754"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>教學課程：在 Azure 認知搜尋中使用 C# 為 SQL 資料庫中的資料編製索引
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
 設定[索引子](search-indexer-overview.md)，以從 Azure SQL 資料庫中擷取可搜尋的資料，並將其傳送至 Azure 認知搜尋中的搜尋索引。 
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200515"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791148"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
@@ -50,6 +50,7 @@ ms.locfileid: "77200515"
 
 1. 建立目標 Azure 訂用帳戶。
 1. 請確定來源和目標訂用帳戶位於相同的 Azure Active Directory (Azure AD) 租用戶中。 如需變更 Azure AD 租用戶的詳細資訊，請參閱[將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+    請注意，變更目錄不是 CSP 訂用帳戶。 例如，您要從 CSP 轉移到隨用隨付訂用帳戶。 您需要變更隨用隨付訂用帳戶的目錄，以符合目錄。
 
     > [!IMPORTANT]
     >  - 當您將訂用帳戶與不同的目錄建立關聯時，已使用 [RBAC](../../role-based-access-control/role-assignments-portal.md)指派角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。

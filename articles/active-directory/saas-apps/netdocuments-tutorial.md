@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72035714"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732502"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 NetDocuments 整合
 
@@ -137,49 +137,48 @@ ms.locfileid: "72035714"
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 NetDocuments 公司網站。
 
-2. 移至 [管理]  。
+2. 在右上角選取您的名稱>**Admin**。
 
-3. 按一下 [新增與移除使用者和群組]  。
+3. 選取 [資訊安全中心]  。
    
-    ![存放庫](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![存放庫](./media/netdocuments-tutorial/security-center.png "資訊安全中心")
 
-4. 按一下 [設定進階驗證選項]  。
+4. 選取 [進階驗證]  。
     
-    ![設定進階驗證選項](./media/netdocuments-tutorial/ic795048.png "設定進階驗證選項")
+    ![設定進階驗證選項](./media/netdocuments-tutorial/advance-authentication.png "設定進階驗證選項")
 
-5. 在 [同盟識別身分]  對話方塊上，執行下列步驟：
+5.  在 [同盟識別碼]  索引標籤上，執行下列步驟：   
    
-    ![同盟身分識別](./media/netdocuments-tutorial/ic795049.png "同盟身分識別")
+    ![同盟身分識別](./media/netdocuments-tutorial/federated-id.png "同盟身分識別")
    
     a. 對於**同盟識別身分伺服器類型**，請選取 [Active Directory 同盟服務]  。
-   
-    b. 按一下 [選擇檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
-   
-    c. 按一下 [確定]  。
+    
+    b.  選取 [選擇檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
+    
+    c.  選取 [儲存]  。
 
 ### <a name="create-netdocuments-test-user"></a>建立 NetDocuments 測試使用者
 
-為了讓 Azure AD 使用者能夠登入 NetDocuments，必須將他們佈建到 NetDocuments 中。  
-在 NetDocuments 的情況下，需以手動方式佈建。
+為了讓 Azure AD 使用者能夠登入 NetDocuments，必須將他們佈建到 NetDocuments 中。 在 NetDocuments 的情況下，需以手動方式佈建。
 
 **若要佈建使用者帳戶，請執行下列步驟：**
 
 1. 以系統管理員身分登入 **NetDocuments** 公司網站。
 
-2. 在頂端的功能表中，按一下 [系統管理員]  。
+2. 在右上角選取您的名稱>**Admin**。
    
-    ![管理員](./media/netdocuments-tutorial/ic795051.png "管理")
+    ![管理員](./media/netdocuments-tutorial/user-admin.png "管理")
 
-3. 按一下 [新增與移除使用者和群組]  。
+3. 選取 [使用者和群組]  。
    
-    ![存放庫](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![存放庫](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. 在 [電子郵件地址]  文字方塊中輸入您想要佈建的有效 Azure Active Directory 帳戶電子郵件地址，然後按一下 [新增使用者]  。
    
-    ![電子郵件地址](./media/netdocuments-tutorial/ic795053.png "電子郵件地址")
+    ![電子郵件地址](./media/netdocuments-tutorial/user-mail.png "電子郵件地址")
    
-    >[!NOTE]
-    >Azure Active Directory 帳戶的持有者會收到一封電子郵件，其中中包含在帳戶變成作用中之前確認帳戶的連結。 您可以使用任何其他的 NetDocuments 使用者帳戶建立工具或 NetDocuments 提供的 API 來佈建 Azure Active Directory 使用者帳戶。
+    > [!NOTE]
+    > Azure Active Directory 帳戶的持有者會收到一封電子郵件，其中中包含在帳戶變成作用中之前確認帳戶的連結。 您可以使用任何其他的 NetDocuments 使用者帳戶建立工具或 NetDocuments 提供的 API 來佈建 Azure Active Directory 使用者帳戶。
 
 ## <a name="test-sso"></a>測試 SSO 
 
@@ -196,4 +195,3 @@ ms.locfileid: "72035714"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 NetDocuments](https://aad.portal.azure.com/)
-

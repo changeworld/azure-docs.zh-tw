@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/08/2020
+ms.date: 05/06/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 9d5fc95c5845b9a75666860ce8900676972a16bc
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381905"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864091"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -40,12 +40,12 @@ Azure 防火牆可在部署期間進行設定，以跨越多個可用性區域�
 
 針對部署在「可用性區域」中的防火牆並不會產生額外費用。 不過，與可用性區域相關聯的輸入和輸出資料轉送會有額外成本。 如需詳細資訊，請參閱[頻寬價格詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
-Azure 防火牆可用性區域可用於支援可用性區域的區域中。 如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md#services-support-by-region)
+Azure 防火牆可用性區域可用於支援可用性區域的區域中。 如需詳細資訊，請參閱 [Azure 中支援可用性區域的區域](../availability-zones/az-region.md)
 
 > [!NOTE]
 > 可用性區域只能在部署期間進行設定。 您無法對現有的防火牆設定包含可用性區域。
 
-如需可用性區域的詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md)
+如需可用性區域的詳細資訊，請參閱 [Azure 中的區域和可用性區域](../availability-zones/az-overview.md)
 
 ## <a name="unrestricted-cloud-scalability"></a>不受限制的雲端延展性
 
@@ -83,12 +83,12 @@ FQDN 標籤讓您輕鬆就能允許已知的 Azure 服務網路流量通過您�
 
 ## <a name="multiple-public-ip-addresses"></a>多個公用 IP 位址
 
-您可以將多個公用 IP 位址 (最多 100 個) 與您的防火牆相關聯。
+您可以將多個公用 IP 位址 (最多 250 個) 與您的防火牆相關聯。
 
 這適用於下列案例：
 
 - **DNAT** - 您可以將多個標準連接埠執行個體轉譯到後端伺服器。 例如，如果您有兩個公用 IP 位址，您可以為這兩個 IP 位址轉譯 TCP 通訊埠 3389 (RDP)。
-- **SNAT** - 其他連接埠可用於輸出 SNAT 連線，降低 SNAT 連接埠耗盡的可能性。 目前，Azure 防火牆會隨機選取來源公用 IP 位址以用於連線。 如果您的網路上有任何下游篩選，則您必須允許與防火牆相關聯的所有公用 IP 位址。
+- **SNAT** - 其他連接埠可用於輸出 SNAT 連線，降低 SNAT 連接埠耗盡的可能性。 目前，Azure 防火牆會隨機選取來源公用 IP 位址以用於連線。 如果您的網路上有任何下游篩選，則您必須允許與防火牆相關聯的所有公用 IP 位址。 請考慮使用[公用 IP 位址首碼](../virtual-network/public-ip-address-prefix.md)來簡化此設定。
 
 ## <a name="azure-monitor-logging"></a>Azure 監視器記錄
 
@@ -111,7 +111,7 @@ Azure 防火牆有下列已知問題：
 |不支援將防火牆移動到不同的資源群組或訂用帳戶|不支援將防火牆移動到不同的資源群組或訂用帳戶。|在我們的規劃中，未來會支援這項功能。 若要將防火牆移動到不同的資源群組或訂用帳戶，您必須刪除目前的執行個體，並將其重新建立在新的資源群組或訂用帳戶中。|
 |威脅情報警示可能會遮罩處理|目的地為 80/443 的網路規則，可供輸出篩選遮罩處理設定為僅限警示模式的威脅情報警示。|使用應用程式規則建立 80/443 的輸出篩選。 或者，將威脅情報模式變更為 [警示並拒絕]  。|
 |Azure 防火牆只會使用 Azure DNS 來解析名稱|Azure 防火牆只會使用 Azure DNS 解析 FQDN。 不支援自訂的 DNS 伺服器。 對其他子網路上的 DNS 解析沒有任何影響。|我們正努力放寬這項限制。|
-|Azure 防火牆 SNAT/DNAT 不適用於私人 IP 目的地|Azure 防火牆 SNAT/DNAT 支援受限於網際網路輸出/輸入。 SNAT/DNAT 目前不適用於私人 IP 目的地。 例如，輪輻至輪輻。|這是目前的限制。|
+|Azure 防火牆 DNAT 不適用於私人 IP 目的地|Azure 防火牆 DNAT 支援受限於網際網路輸出/輸入。 DNAT 目前不適用於私人 IP 目的地。 例如，輪輻至輪輻。|這是目前的限制。|
 |無法移除第一個公用 IP 設定|每個 Azure 防火牆公用 IP 位址會指派給一個 *IP 設定*。  第一個 IP 設定會在防火牆部署期間指派，且通常也會包含防火牆子網路的參考 (除非透過範本部署明確做了不同的設定)。 您無法刪除此 IP 設定，因為這樣會將防火牆解除配置。 如果至少還有一個其他公用 IP 位址可供使用，您仍然可以變更或移除與此 IP 設定相關聯的公用 IP 位址。|這是原廠設定。|
 |可用性區域只能在部署期間進行設定。|可用性區域只能在部署期間進行設定。 在部署防火牆之後，您無法設定可用性區域。|這是原廠設定。|
 |輸入連線上的 SNAT|除了 DNAT，透過防火牆公用 IP 位址 (輸入) 的連線已對其中一個防火牆私人 IP 進行 SNAT 轉譯。 這項需求現在也適用於主動/主動 NVA 以確保對稱式路由。|若要保留 HTTP/S 的原始來源，請考慮使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 標題。 例如，在防火牆前使用 [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) 或 [Azure 應用程式閘道](../application-gateway/rewrite-http-headers.md)等服務。 您也可以將 WAF 新增為 Azure Front Door 的一部分和防火牆鏈結。
@@ -122,6 +122,7 @@ Azure 防火牆有下列已知問題：
 |啟用強制通道時不支援 DNAT|因為非對稱式路由，部署了強制通道的防火牆無法支援來自網際網路的輸入存取。|這是因為非對稱式路由的設計。 輸入連線的傳回路徑會透過內部部署防火牆進行，而此防火牆並未顯示已建立的連線。
 |輸出被動 FTP 不適用於具有多個公用 IP 位址的防火牆。|被動 FTP 會針對控制和資料通道建立不同的連線。 當具有多個公用 IP 位址的防火牆傳送輸出資料時，會為來源 IP 位址隨機選取其中一個公用 IP 位址。 當資料和控制通道使用不同的來源 IP 位址時，FTP 會失敗。|已規劃了明確的 SNAT 組態。 在這種情況下，也請考慮使用單一 IP 位址。|
 |NetworkRuleHit 計量缺少通訊協定維度|ApplicationRuleHit 計量允許篩選型的通訊協定，但對應的 NetworkRuleHit 計量中缺少這項功能。|我們正在調查提供修正程式的可能性。|
+|不支援在 64000 與 65535 之間使用連接埠的 NAT 規則|Azure 防火牆允許網路和應用程式規則使用 1-65535 範圍中的任何連接埠，不過 NAT 規則只支援 1-63999 範圍中的連接埠。|這是目前的限制。
 |組態更新平均可能需要 5 分鐘。|Azure 防火牆組態更新平均可能需要三到五分鐘，而且不支援平行更新。|我們正在調查提供修正程式的可能性。
 
 ## <a name="next-steps"></a>後續步驟

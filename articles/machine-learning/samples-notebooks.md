@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78673629"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780057"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure Machine Learning
 
@@ -55,7 +55,13 @@ ms.locfileid: "78673629"
 
 ## <a name="next-steps"></a>後續步驟
 
-瀏覽[範例 Notebook](https://aka.ms/aml-notebooks) 以探索 Azure Machine Learning 的功用，或嘗試進行下列教學課程：
+瀏覽[範例 Notebook](https://aka.ms/aml-notebooks) 以探索 Azure Machine Learning 的功用。
+
+如需更多 GitHub 範例專案和範例，請參閱下列存放庫：
++ [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
++ [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+試試以下教學課程︰
 
 - [使用 MNIST 定型和部署影像分類模型](tutorial-train-models-with-aml.md)
 

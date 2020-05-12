@@ -4,20 +4,20 @@ description: 即時 Web 應用程式的應用程式效能管理和使用量追�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536925"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891748"
 ---
 # <a name="what-is-application-insights"></a>什麼是 Application Insights？
-Application Insights (一項 [Azure 監視器](../overview.md)功能) 是開發人員和 DevOps 專業人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時應用程式。 其會自動偵測效能異常，其中包括強大的分析工具可協助診斷問題，並了解使用者實際上如何運用您的應用程式。  它是設計來協助您持續改善效能和可用性。 它適用於各種不同平台上的應用程式，包括裝載在內部部署、混合式或任何公用雲端的 .NET、Node.js 和 Java EE。 它可與您的 DevOps 程序整合，並有各種開發工具的連接點。 透過與 Visual Studio App Center 整合，還可以從行動應用程式監視並分析遙測資料。
+Application Insights (一項 [Azure 監視器](../overview.md)功能) 是開發人員和 DevOps 專業人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時應用程式。 其會自動偵測效能異常，其中包括強大的分析工具可協助診斷問題，並了解使用者實際上如何運用您的應用程式。  它是設計來協助您持續改善效能和可用性。 其適用於各種不同平台上的應用程式，包括裝載在內部部署、混合式或任何公用雲端的 .NET、Node.js 和 JAVA 和 Python。 它可與您的 DevOps 程序整合，並有各種開發工具的連接點。 透過與 Visual Studio App Center 整合，還可以從行動應用程式監視並分析遙測資料。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights 的運作方式
-您會在應用程式中安裝小型檢測套件，並且在 Microsoft Azure 入口網站中設定 Application Insights 資源。 此檢測套件會監視您的應用程式，並將遙測資料傳送至 Azure 監視器。 (應用程式可以在任何地方執行 - 不一定要裝載於 Azure 中。)
+您可以在您的應用程式中安裝小型檢測套件 (SDK)，或是在[支援](../../azure-monitor/app/platforms.md)時以無程式碼方式啟用 Application Insights。 此檢測會監視您的應用程式，並使用我們稱之為檢測金鑰的唯一 GUID，將遙測資料導向至 Azure Application Insights 資源。
 
-您不僅可以檢測 Web 服務應用程式，也可以檢測任何背景元件以及網頁本身中的 JavaScript。 
+您不僅可以檢測 Web 服務應用程式，也可以檢測任何背景元件以及網頁本身中的 JavaScript。 應用程式及其元件可以在任何地方執行 - 不一定要裝載於 Azure 中。
 
 ![您應用程式中的 Application Insights 檢測功能會將遙測傳送到 Application Insights 資源。](./media/app-insights-overview/diagram.png)
 
@@ -54,7 +54,7 @@ Application Insights 是以開發小組為目標，以協助您了解您的應�
 | [**分析工具**](../../azure-monitor/app/profiler.md)<br/>檢查取樣要求的執行設定檔。 |![分析工具](./media/app-insights-overview/profiler.png) |
 | [**使用量分析**](../../azure-monitor/app/usage-overview.md)<br/>分析使用者區隔和保留期。|![保留期工具](./media/app-insights-overview/retention.png) |
 | [**執行個體資料的診斷搜尋**](../../azure-monitor/app/diagnostic-search.md)<br/>搜尋和篩選事件，例如要求、例外狀況、相依性呼叫、記錄追蹤，以及頁面檢視。  |![搜尋遙測](./media/app-insights-overview/search-tn.png) |
-| [**彙總資料的計量瀏覽器**](../../azure-monitor/platform/metrics-charts.md)<br/>瀏覽、篩選和分割彙總的資料，例如，要求、錯誤和例外狀況的比率；回應時間、頁面載入時間。 |![度量](./media/app-insights-overview/metrics-tn.png) |
+| [**彙總資料的計量瀏覽器**](../../azure-monitor/platform/metrics-charts.md)<br/>瀏覽、篩選和分割彙總的資料，例如，要求、錯誤和例外狀況的比率；回應時間、頁面載入時間。 |![計量](./media/app-insights-overview/metrics-tn.png) |
 | [**儀表板**](../../azure-monitor/app/overview-dashboard.md)<br/>來自多個資源的交互式資料並與其他人員共用。 非常適用於多元件的應用程式，以及小組聊天室中的連續顯示。 |![儀表板範例](./media/app-insights-overview/dashboard-tn.png) |
 | [**即時計量串流**](../../azure-monitor/app/live-stream.md)<br/>當您部署新的組建時，請觀看這些近乎即時的效能指標，以確定一切如預期運作。 |![即時計量範例](./media/app-insights-overview/live-metrics-tn.png) |
 | [**分析**](../../azure-monitor/app/analytics.md)<br/>使用這個功能強大的查詢語言，回答有關您應用程式效能和使用方式的艱難問題。 |![分析範例](./media/app-insights-overview/analytics-tn.png) |

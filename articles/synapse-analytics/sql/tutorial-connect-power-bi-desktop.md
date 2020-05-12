@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769487"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692414"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>教學課程：將 SQL 隨選 (預覽) 連線到 Power BI Desktop 並建立報告
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選 (預覽) 搭配 Power BI Desktop 並建立報告
 
 在本教學課程中，您會了解如何：
 
@@ -24,7 +24,7 @@ ms.locfileid: "81769487"
 >
 > - 建立示範資料庫
 > - 建立用於報告的檢視
-> - 連線至 Power BI Desktop
+> - 將 Power BI Desktop 連線到 SQL 隨選
 > - 根據檢視來建立報告
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -130,11 +130,11 @@ FROM
 
     - AAD 的範例 
   
-    ![按一下 [登入]。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![按一下 [登入]。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - SQL 登入的範例 - 輸入您的使用者名稱和密碼。
 
-    ![使用 SQL 登入。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![使用 SQL 登入。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. 選取 `usPopulationView` 檢視，然後選取 [載入]  。 

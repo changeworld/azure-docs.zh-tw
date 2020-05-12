@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 5f4d1b8ef742a8dcafa2b8e34a6209f85ae050d9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d816a84dc8062890633661716cf78aa5ba58527
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77650598"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888853"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Spark 叢集
 
 在本快速入門中，您會使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Spark 叢集。 接著，您會建立 Jupyter Notebook，並將其用於對 Apache Hive 資料表執行 Spark SQL 查詢。 Azure HDInsight 是供企業使用的受控、全方位的開放原始碼分析服務。 適用於 HDInsight 的 Apache Spark 架構能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 Jupyter Notebook 可讓您與資料互動、將程式碼與 Markdown 文字相結合，以及執行簡單的視覺效果。
 
 如需可用設定的深入說明，請參閱[在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)。 如需如何使用入口網站來建立叢集的詳細資訊，請參閱[在入口網站中建立叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
+
+如果您同時使用多個叢集，您會想要建立虛擬網路，如果您使用的是 Spark 叢集，也會想要使用 Hive Warehouse Connector。 如需詳細資訊，請參閱[針對 Azure HDInsight 規劃虛擬網路](../hdinsight-plan-virtual-network-deployment.md)和[整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector](../interactive-query/apache-hive-warehouse-connector.md)。
 
 > [!IMPORTANT]  
 > 不論使用與否，HDInsight 叢集都是按分鐘計費。 請務必在使用完叢集後將其刪除。 如需詳細資訊，請參閱本文的[清除資源](#clean-up-resources)一節。

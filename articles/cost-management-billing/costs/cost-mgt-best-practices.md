@@ -3,17 +3,17 @@ title: 透過 Azure 成本管理將雲端投資最佳化
 description: 本文有助於從雲端投資中獲得最大價值、降低成本並評估您的資金支出。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874580"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791607"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -105,6 +105,12 @@ Azure 會提供工具來協助您評估程序。 這些工具可讓您了解啟�
 - 預付承諾用量的選項
 - 取得較低的 Azure 定價
 
+#### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- CSP 合作夥伴是處理客戶需求的第一個連絡窗口，也是客戶關係的中心
+- CSP 合作夥伴會佈建新客戶、訂購訂用帳戶、管理訂用帳戶，並代表客戶執行管理工作
+- CSP 合作夥伴會將服務與獨特的解決方案結合，或轉售 Azure，並同時控制定價、條款和計費
+
 ## <a name="estimate-the-cost-of-your-solution"></a>預估解決方案的成本
 
 部署任何基礎架構之前，請評估解決方案的費用。 評估將有助於為貴組織前期的工作負載建立預算。 接著，您可以使用預算一段時間，來衡量初始估計有效性的基準。 此外，您可以將其與已部署之解決方案的實際成本相比較。
@@ -153,7 +159,7 @@ Azure Migrate 是一種服務，可評估貴組織在內部部署資料中心內
 
 ### <a name="create-budgets"></a>建立預算
 
-在您找出並分析您的消費模式之後，務必開始為自己和您的小組設定限制。 Azure 預算讓您能夠設定以成本或使用量為基礎的預算，且其中包含多個臨界值與警示。 請務必審核您定期建立的預算，以查看您的預算燃盡進度，並視需要進行變更。 Azure 預算也可讓您設定達到指定預算臨界值時的自動化觸發程序，。 例如，您可以設定您的服務關閉 VM。 或者，您可以將基礎架構移至不同的定價層，以回應預算觸發程序。
+在您找出並分析您的消費模式之後，務必開始為自己和您的小組設定限制。 Azure 預算讓您能夠設定以成本或使用量為基礎的預算，且其中包含多個臨界值與警示。 請務必審核您定期建立的預算，以查看您的預算燃盡進度，並視需要進行變更。 Azure 預算也可讓您設定達到指定預算臨界值時的自動化觸發程序。 例如，您可以設定您的服務關閉 VM。 或者，您可以將基礎架構移至不同的定價層，以回應預算觸發程序。
 
 如需詳細資訊，請參閱 [Azure 預算](tutorial-acm-create-budgets.md)。
 

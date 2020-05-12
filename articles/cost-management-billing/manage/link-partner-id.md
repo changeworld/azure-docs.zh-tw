@@ -4,15 +4,15 @@ description: 將合作夥伴識別碼連結到您用來管理客戶資源的使�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204795"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778816"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
@@ -159,4 +159,5 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 來存取客戶資源，我該如何連結我的合作夥伴識別碼？**
 
-如果您[將受管理的服務供應項目發佈至 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。 如果您[部署 Azure Resource Manager 範本來將客戶上線](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，則必須將 Microsoft 合作夥伴網路 (MPN) 識別碼與至少一個可存取每個已上架訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業。 為了簡化作業，建議您在租用戶中建立與您的 MPN 識別碼相關聯的服務主體帳戶，並授與其對您上架的每個客戶擁有讀取存取權。
+如果您[將受管理的服務供應項目發佈至 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。 如果您[部署 Azure Resource Manager 範本來將客戶上線](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，則必須將 Microsoft 合作夥伴網路 (MPN) 識別碼與至少一個可存取每個已上架訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業。 為了簡化作業，建議您在租用戶中建立與您的 MPN 識別碼相關聯的服務主體帳戶，並授與其對您上架的每個客戶擁有讀取存取權。 在此範例中會使用 RBAC 讀取者角色，而且這個角色不符合 Partner Earned Credit 資格。 如需角色的詳細資訊，請參閱[適用於合作夥伴獲得之點數的角色和權限](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)。
+

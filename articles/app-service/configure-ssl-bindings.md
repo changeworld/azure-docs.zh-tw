@@ -3,15 +3,15 @@ title: 使用 TLS/SSL 繫結保護自訂 DNS
 description: 藉由建立具有憑證的 TLS/SSL 繫結，保護對自訂網域的 HTTPS 存取。 藉由強制執行 HTTPS 或 TLS 1.2 改善網站的安全性。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811742"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597890"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱
 
@@ -83,7 +83,7 @@ ms.locfileid: "80811742"
 |-|-|
 | 自訂網域 | 要新增 TLS/SSL 繫結的網域名稱。 |
 | 私人憑證指紋 | 要繫結的憑證。 |
-| TLS/SSL 類型 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 可新增多個 SNI SSL 繫結。 此選項可允許多個 TLS/SSL 憑證保護同一個 IP 位址上的多個網域。 現今大部分的瀏覽器 (包括 Internet Explorer、Chrome、Firefox 和 Opera) 都支援 SNI (如需詳細資訊，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication))。</li><li>**IP SSL** - 只能新增一個 IP SSL 繫結。 此選項只允許一個 TLS/SSL 憑證保護專用的公用 IP 位址。 設定繫結之後，請依照[為 IP SSL 重新對應 A 記錄](#remap-a-record-for-ip-ssl)中的步驟執行。<br/>僅在生產或隔離層中支援 IP SSL。 </li></ul> |
+| TLS/SSL 類型 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 可新增多個 SNI SSL 繫結。 此選項可允許多個 TLS/SSL 憑證保護同一個 IP 位址上的多個網域。 現今大部分的瀏覽器 (包括 Internet Explorer、Chrome、Firefox 和 Opera) 都支援 SNI (如需詳細資訊，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication))。</li><li>**IP SSL** - 只能新增一個 IP SSL 繫結。 此選項只允許一個 TLS/SSL 憑證保護專用的公用 IP 位址。 設定繫結之後，請依照[為 IP SSL 重新對應記錄](#remap-records-for-ip-ssl)中的步驟執行。<br/>只有**標準**層或更高的層級才支援 IP SSL。 </li></ul> |
 
 作業完成後，自訂網域的 TLS/SSL 狀態會變更為**安全**。
 
@@ -92,15 +92,17 @@ ms.locfileid: "80811742"
 > [!NOTE]
 > **自訂網域**中的**安全**狀態表示網域已透過憑證來保護，但是 App Service 不會檢查憑證是否已自我簽署或已過期等等，而這些狀況會導致瀏覽器顯示錯誤或警告。
 
-## <a name="remap-a-record-for-ip-ssl"></a>將 IP SSL 的 A 記錄重新對應
+## <a name="remap-records-for-ip-ssl"></a>為 IP SSL 重新對應記錄
 
 如果您未在應用程式中使用 IP SSL，請跳至[測試自訂網域的 HTTPS](#test-https)。
 
-根據預設，您的應用程式會使用共用的公用 IP 位址。 當您將憑證與 IP SSL 繫結時，App Service 會為您的應用程式建立新的專用 IP 位址。
+您可能需要進行兩個變更：
 
-如果您已將 A 記錄對應至應用程式，請使用這個新的專用 IP 位址來更新網域登錄。
+- 根據預設，您的應用程式會使用共用的公用 IP 位址。 當您將憑證與 IP SSL 繫結時，App Service 會為您的應用程式建立新的專用 IP 位址。 如果您已將 A 記錄對應至應用程式，請使用這個新的專用 IP 位址來更新網域登錄。
 
-應用程式的 [自訂網域]  頁面即會使用新的專用 IP 位址加以更新。 [複製此 IP 位址](app-service-web-tutorial-custom-domain.md#info)，然後[將 A 記錄重新對應](app-service-web-tutorial-custom-domain.md#map-an-a-record)到這個新的 IP 位址。
+    應用程式的 [自訂網域]  頁面即會使用新的專用 IP 位址加以更新。 [複製此 IP 位址](app-service-web-tutorial-custom-domain.md#info)，然後[將 A 記錄重新對應](app-service-web-tutorial-custom-domain.md#map-an-a-record)到這個新的 IP 位址。
+
+- 如果您有繫結至 `<app-name>.azurewebsites.net` 的 SNI SSL，[請重新對應任何 CNAME 對應](app-service-web-tutorial-custom-domain.md#map-a-cname-record)，以改為指向 `sni.<app-name>.azurewebsites.net` (新增 `sni` 前置詞)。
 
 ## <a name="test-https"></a>測試 HTTPS
 

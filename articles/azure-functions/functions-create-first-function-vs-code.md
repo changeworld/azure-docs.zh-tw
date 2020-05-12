@@ -3,26 +3,44 @@ title: 使用 Visual Studio Code 在 Azure 中建立第一個函式
 description: 使用 Visual Studio Code 中的 Azure Functions 擴充功能建立簡單 HTTP 觸發函式並發佈至 Azure。
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 08575164334db965a9e5592b761a06205208de9e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732778"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628175"
 ---
-# <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>快速入門：在 Visual Studio Code 中建立 Azure Functions 專案
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立函式
 
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。 
-
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-本文還有 [CLI 型版本](functions-create-first-azure-function-azure-cli.md)。
+::: zone pivot="programming-language-csharp"  
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
 ::: zone-end  
+::: zone pivot="programming-language-javascript"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 JavaScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 TypeScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 PowerShell 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Java 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
 
+完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。 
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+本文還有 [CLI 型版本](functions-create-first-azure-function-azure-cli.md)。
+::: zone-end
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 VS Code 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 等開發工具。
+> 如果 Visual Studio Code 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 等開發工具。
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>設定環境

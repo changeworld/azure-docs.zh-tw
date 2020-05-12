@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391513"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609352"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入門：建立及發佈受控應用程式定義
 
@@ -290,7 +290,7 @@ az managedapp definition create \
 
 * **資源群組**：資源群組的名稱，其中會建立受控應用程式定義。
 * **鎖定層級**：放在受控資源群組的鎖定類型。 它可以避免客戶在此資源群組上執行非預期的作業。 目前唯一支援的鎖定等級是 ReadOnly。 指定 ReadOnly 時，客戶只能讀取受控資源群組中存在的資源。 獲取受控資源群組存取權的發行者身分識別免除鎖定。
-* **authorizations**：描述用來授與權限給受控資源群組的主體識別碼及角色定義識別碼。 它是以 `<principalId>:<roleDefinitionId>` 格式來指定。 如果需要多個值，請在表單中指定它們：`<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`。 值之間以空格分隔。
+* **authorizations**：描述用來授與權限給受控資源群組的主體識別碼及角色定義識別碼。 它是以 `<principalId>:<roleDefinitionId>` 格式來指定。 如果需要多個值，請在表單中指定它們：`<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>`。 值之間以逗號分隔。
 * **套件檔案 URI**：該位置有包含必要檔案的 .zip 套件。
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>以您自備的儲存體存放受控應用程式定義

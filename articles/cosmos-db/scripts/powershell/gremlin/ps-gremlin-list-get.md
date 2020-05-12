@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: bd764dce0bc55582125bdb4e6ffd86dec924390b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: fb78be672566ef281a1323ca893d7fc2f194a6b0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366042"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651936"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>列出及取得 Azure Cosmos DB 資料庫和圖表 - Gremlin API
 
@@ -40,8 +40,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帳戶，或取得指定的 Cosmos DB 帳戶。 |
-| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | 列出帳戶中的 Cosmos DB Gremlin API 資料庫，或取得帳戶中指定的 Cosmos DB Gremlin API 資料庫。 |
-| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | 列出資料庫中的 Cosmos DB Gremlin API 圖形，或取得資料庫中指定的 Cosmos DB Gremlin API 資料表。 |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | 列出帳戶中的 Gremlin API 資料庫，或取得帳戶中指定的 Gremlin API 資料庫。 |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | 列出資料庫中的 Gremlin API 圖表，或取得資料庫中指定的 Gremlin API 資料表。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

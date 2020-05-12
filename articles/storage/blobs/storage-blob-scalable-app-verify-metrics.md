@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68698980"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692448"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>驗證儲存體帳戶的輸送量和延遲計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "68698980"
 > * 在 Azure 入口網站中設定圖表
 > * 驗證輸送量和延遲計量
 
-[Azure 儲存體計量](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)會使用 Azure 監視器來提供儲存體帳戶效能和可用性的統一檢視。
+[Azure 儲存體計量](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)會使用 Azure 監視器來提供儲存體帳戶效能和可用性的統一檢視。
 
 ## <a name="configure-metrics"></a>設定計量
 
@@ -52,7 +52,7 @@ ms.locfileid: "68698980"
 
 ## <a name="dimensions"></a>維度
 
-[維度](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)可用來更深入地查看圖表，並取得更詳細的資訊。 不同的計量會有不同的維度。 可使用的其中一個維度是 **API 名稱**維度。 此維度會將圖表細分為每個個別的 API 呼叫。 下方第一張圖表範例顯示儲存體帳戶的交易總數。 第二張顯示相同的圖表，但選擇了 API 名稱維度。 如您所見，列出的每一筆交易都有更詳細的資料，指出每個 API 名稱所執行的呼叫數量。
+[維度](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)可用來更深入地查看圖表，並取得更詳細的資訊。 不同的計量會有不同的維度。 可使用的其中一個維度是 **API 名稱**維度。 此維度會將圖表細分為每個個別的 API 呼叫。 下方第一張圖表範例顯示儲存體帳戶的交易總數。 第二張顯示相同的圖表，但選擇了 API 名稱維度。 如您所見，列出的每一筆交易都有更詳細的資料，指出每個 API 名稱所執行的呼叫數量。
 
 ![儲存體帳戶計量 - 不含維度的交易](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 
