@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261035"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115603"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中化應用程式管理
 
@@ -53,7 +53,7 @@ ms.locfileid: "81261035"
 
 |功能  |描述|建議 |
 |---------|---------|---------|
-|SCIM 布建|[SCIM](https://aka.ms/SICMOverview)是自動化使用者布建的業界最佳作法。 任何符合 SCIM 規範的應用程式都可以與 Azure AD 整合。 自動建立、更新和刪除使用者帳戶，而不需要維護 CSV 檔案、自訂腳本或內部內部部署解決方案。|查看 Azure AD 應用程式庫中[預先整合](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)之應用程式的成長清單|
+|SCIM 布建|[SCIM](https://aka.ms/SCIMOverview)是自動化使用者布建的業界最佳作法。 任何符合 SCIM 規範的應用程式都可以與 Azure AD 整合。 自動建立、更新和刪除使用者帳戶，而不需要維護 CSV 檔案、自訂腳本或內部內部部署解決方案。|查看 Azure AD 應用程式庫中[預先整合](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)之應用程式的成長清單|
 |Microsoft Graph|利用 Azure AD 的資料吸一口氣和深度，讓您的應用程式與所需的資料更豐富。|利用[microsoft graph](https://developer.microsoft.com/graph/)從整個 microsoft 生態系統取得資料。 |
 
 
