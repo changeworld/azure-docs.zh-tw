@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461796"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115127"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 
@@ -362,7 +362,7 @@ ms.locfileid: "77461796"
 
    ![為主要受控實例新增閘道](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 建立子網閘道之後，從左側流覽窗格中選取 [**建立資源**]，然後`Virtual network gateway`在 [搜尋] 方塊中輸入。 選取**Microsoft**發佈的**虛擬網路閘道**資源。 
+1. 建立子網閘道之後，從左側流覽窗格中選取 [**建立資源**]，然後 `Virtual network gateway` 在 [搜尋] 方塊中輸入。 選取**Microsoft**發佈的**虛擬網路閘道**資源。 
 
    ![建立新的虛擬網路閘道](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -373,11 +373,11 @@ ms.locfileid: "77461796"
     | **欄位** | 值 |
     | --- | --- |
     | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
-    | **Name** | 虛擬網路閘道的名稱。 | 
+    | **名稱** | 虛擬網路閘道的名稱。 | 
     | **區域** | 次要受控實例所在的區域。 |
     | **閘道類型** | 選取 [ **VPN**]。 |
     | **VPN 類型** | 選取以**路由為基礎的** |
-    | **SKU**| 保留預設值`VpnGw1`。 |
+    | **SKU**| 保留預設值 `VpnGw1` 。 |
     | **位置**| 次要受控實例和次要虛擬網路所在的位置。   |
     | **虛擬網路**| 選取次要受控實例的虛擬網路。 |
     | **公用 IP 位址**| 選取 [建立新的]  。 |
@@ -434,15 +434,15 @@ ms.locfileid: "77461796"
    | **欄位** | 值 |
    | --- | --- |
    | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
-   | **Name** | 虛擬網路閘道的名稱，例如`secondary-mi-gateway`。 | 
+   | **名稱** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 | 
    | **區域** | 次要受控實例所在的區域。 |
    | **閘道類型** | 選取 [ **VPN**]。 |
    | **VPN 類型** | 選取以**路由為基礎的** |
-   | **SKU**| 保留預設值`VpnGw1`。 |
+   | **SKU**| 保留預設值 `VpnGw1` 。 |
    | **位置**| 次要受控實例和次要虛擬網路所在的位置。   |
-   | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如`vnet-sql-mi-secondary`。 |
+   | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如 `vnet-sql-mi-secondary` 。 |
    | **公用 IP 位址**| 選取 [建立新的]  。 |
-   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如`secondary-gateway-IP`。 |
+   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如 `secondary-gateway-IP` 。 |
    | &nbsp; | &nbsp; |
 
    ![次要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -492,19 +492,19 @@ ms.locfileid: "77461796"
 使用 Azure 入口網站建立兩個閘道之間的連接。 
 
 1. 從 [ [Azure 入口網站](https://portal.azure.com)中選取 [**建立資源**]。
-1. 在`connection`搜尋方塊中輸入，然後按 enter 鍵進行搜尋，這會帶您前往 Microsoft 所發佈的**連線資源。**
+1. `connection`在搜尋方塊中輸入，然後按 enter 鍵進行搜尋，這會帶您**Connection**前往 Microsoft 所發佈的連線資源。
 1. 選取 [**建立**] 以建立連接。 
 1. 在 [**基本**] 索引標籤上，選取下列值，然後選取 **[確定]**。 
-    1. 選取`VNet-to-VNet` [] 作為 [連線**類型**]。 
+    1. 選取 `VNet-to-VNet` [] 作為 [連線**類型**]。 
     1. 從下拉式清單中選取訂用帳戶。 
     1. 在下拉式選單中，選取受控實例的資源群組。 
     1. 從下拉式選單選取主要受控實例的位置 
 1. 在 [**設定**] 索引標籤上，選取或輸入下列值，然後選取 **[確定]**：
-    1. 選擇**第一個虛擬網路閘道**的主要網路閘道，例如`Primary-Gateway`。  
-    1. 選擇**第二個虛擬網路閘道**的 [次要網路閘道`Secondary-Gateway`]，例如。 
+    1. 選擇**第一個虛擬網路閘道**的主要網路閘道，例如 `Primary-Gateway` 。  
+    1. 選擇**第二個虛擬網路閘道**的 [次要網路閘道]，例如 `Secondary-Gateway` 。 
     1. 選取 [**建立雙向連接**] 旁的核取方塊。 
     1. 請保留預設的主要連線名稱，或將它重新命名為您選擇的值。 
-    1. 提供連接的**共用金鑰（PSK）** ，例如`mi1m2psk`。 
+    1. 提供連接的**共用金鑰（PSK）** ，例如 `mi1m2psk` 。 
 
    ![建立閘道連線](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
@@ -644,11 +644,24 @@ ms.locfileid: "77461796"
 
 ---
 
+## <a name="use-private-link"></a>使用 Private Link
+
+使用私人連結，可讓您將邏輯伺服器關聯至虛擬網路和子網內的特定私人 IP 位址。 
+
+若要使用私人連結與您的容錯移轉群組，請執行下列動作：
+
+1. 確定您的主要和次要伺服器都在[配對的區域](/azure/best-practices-availability-paired-regions)中。 
+1. 在每個區域中建立虛擬網路和子網，以裝載主要和次要伺服器的私用端點，使其具有非重迭的 IP 位址空間。 例如，10.0.0.0/16 的主要虛擬網路位址範圍和 10.0.0.1/16 的次要虛擬網路位址範圍重迭。 如需虛擬網路位址範圍的詳細資訊，請參閱[設計 Azure 虛擬網路](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)的 blog。
+1. 建立[主要伺服器的私人端點和 Azure 私人 DNS 區域](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)。 
+1. 也請為次要伺服器建立私用端點，但這次請選擇重複使用為主伺服器所建立的相同私人 DNS 區域。 
+1. 建立私用連結之後，您可以遵循本文前面所述的步驟來建立容錯移轉群組。 
+
+
 ## <a name="locate-listener-endpoint"></a>尋找接聽程式端點
 
 一旦設定您的容錯移轉群組，請將應用程式的連接字串更新為接聽程式端點。 這會讓您的應用程式連接到容錯移轉群組接聽程式，而不是主資料庫、彈性集區或受控實例。 如此一來，您就不需要在每次 Azure SQL database 實體故障時手動更新連接字串，而會將流量路由傳送至目前主要的任何實體。 
 
-接聽程式端點的形式為`fog-name.database.windows.net`，當您查看容錯移轉群組時，會顯示在 Azure 入口網站中：
+接聽程式端點的形式為 `fog-name.database.windows.net` ，當您查看容錯移轉群組時，會顯示在 Azure 入口網站中：
 
 ![容錯移轉群組連接字串](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 

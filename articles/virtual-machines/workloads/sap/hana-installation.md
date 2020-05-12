@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617084"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117116"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
 
@@ -90,7 +90,7 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 以下是額外和有用的 SAP on SUSE 相關連結︰
 
 - [SUSE Linux 網站上的 SAP HANA](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [SAP 的最佳做法：加入佇列複寫 – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [SAP 的最佳做法：加入佇列複寫 – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [ClamSAP – SLES Virus Protection for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (包括 SLES 12 for SAP 應用程式)
 
 以下是適用於在 SLES 12 上實作 SAP HANA 的 SAP 支援附註︰
@@ -136,7 +136,7 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 
 ## <a name="storage"></a>儲存體
 
-SAP Hana on Azure （大型實例）的儲存體配置是透過 SAP 建議方針的 SAP Hana `service management`在 azure 上進行設定。 這些指引列載於 [SAP HANA 儲存體需求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮書中。 
+SAP Hana on Azure （大型實例）的儲存體配置是 `service management` 透過 SAP 建議方針的 SAP Hana 在 azure 上進行設定。 這些指引列載於 [SAP HANA 儲存體需求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮書中。 
 
 有不同 HANA 大型執行個體 SKU 的不同磁碟區的約略大小記載於 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -144,8 +144,8 @@ SAP Hana on Azure （大型實例）的儲存體配置是透過 SAP 建議方針
 
 | 儲存體使用量 | 掛接名稱 | 磁碟區名稱 | 
 | --- | --- | ---|
-| HANA 資料 | /hana/data/SID/mnt0000\<m> | 儲存體 IP：/hana_data_SID_mnt00001_tenant_vol |
-| HANA 記錄檔 | /hana/log/SID/mnt0000\<m> | 儲存體 IP：/hana_log_SID_mnt00001_tenant_vol |
+| HANA 資料 | /hana/data/SID/mnt0000 \< m> | 儲存體 IP：/hana_data_SID_mnt00001_tenant_vol |
+| HANA 記錄檔 | /hana/log/SID/mnt0000 \< m> | 儲存體 IP：/hana_log_SID_mnt00001_tenant_vol |
 | HANA 記錄備份 | /hana/log/backups | 儲存體 IP：/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA 共用 | /hana/shared/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -164,7 +164,7 @@ HANA/log/backup 磁碟區不支援作為資料庫備份的磁碟區。 它會調
 
 除了所提供的儲存體之外，您還可以購買額外的儲存體容量 (增量單位為 1 TB)。 此額外儲存體可以做為新的磁碟區新增至 HANA 大型執行個體。
 
-使用 Azure `service management`上的 SAP Hana 進行上線時，客戶會為 sidadm 使用者和 sapsys 群組指定使用者識別碼（UID）和群組識別碼（GID）（例如：1000500）。 安裝 SAP HANA 系統時，您必須使用這些相同的值。 因為您想要在一個單元上部署多個 HANA 執行個體，所以您會取得多個磁碟區集合 (每個執行個體一組)。 如此一來，在部署期間您需要定義：
+使用 Azure 上的 SAP Hana 進行上線時 `service management` ，客戶會為 sidadm 使用者和 sapsys 群組指定使用者識別碼（UID）和群組識別碼（GID）（例如：1000500）。 安裝 SAP HANA 系統時，您必須使用這些相同的值。 因為您想要在一個單元上部署多個 HANA 執行個體，所以您會取得多個磁碟區集合 (每個執行個體一組)。 如此一來，在部署期間您需要定義：
 
 - 不同的 (sidadm 衍生來源的) HANA 執行個體 SID。
 - 不同 HANA 執行個體的記憶體大小。 每個執行個體的記憶體大小都會定義每個個別磁碟區集合中的磁碟區大小。

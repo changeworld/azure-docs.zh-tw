@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629587"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116963"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>接收 HTTP 端點的事件
 
@@ -22,13 +22,13 @@ ms.locfileid: "82629587"
 > [!NOTE]
 > **強烈**建議您在使用事件格線觸發 Azure Function 時使用[事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 您需要具有 HTTP 觸發函式的函數應用程式。
 
 ## <a name="add-dependencies"></a>新增相依性
 
-如果您是在 .net 中進行[add a dependency](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) `Microsoft.Azure.EventGrid`開發，請將相依性新增至[NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函式。 本文的範例需要 1.4.0 版或更新版本。
+如果您是在 .NET 中進行開發，請將相依性[新增](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)至 `Microsoft.Azure.EventGrid` [NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函式。 本文的範例需要 1.4.0 版或更新版本。
 
 其他語言的 SDK 可以透過[發行 SDK](./sdk-overview.md#data-plane-sdks) 參考取得。 這些套件包含原生事件類型的模型，例如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`。
 
@@ -50,7 +50,7 @@ ms.locfileid: "82629587"
 
 ## <a name="endpoint-validation"></a>端點驗證
 
-首先您應該做的是處理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人訂閱事件時，事件方格即會將驗證事件傳送至在資料承載中具有 `validationCode` 的端點。 需要端點才能在回應主體中回應以[證明端點有效且為您所擁有](webhook-event-delivery.md)。 若您是使用[事件方格觸發程序](../azure-functions/functions-bindings-event-grid.md)而非 WebHook 觸發的函式，系統會為您處理端點的驗證。 如果您使用第三方 API 服務 (例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/))，可能就無法以程式設計方式回應驗證程式碼。 針對那些服務，您可以使用要在訂用帳戶驗證事件中傳送的驗證 URL，以手動方式驗證訂用帳戶。 在 `validationUrl` 屬性中複製該 URL，並透過 REST 用戶端或您的網頁瀏覽器傳送 GET 要求。
+首先您應該做的是處理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人訂閱事件時，事件方格即會將驗證事件傳送至在資料承載中具有 `validationCode` 的端點。 需要端點才能在回應主體中回應以[證明端點有效且為您所擁有](webhook-event-delivery.md)。 若您是使用[事件方格觸發程序](../azure-functions/functions-bindings-event-grid.md)而非 WebHook 觸發的函式，系統會為您處理端點的驗證。 如果您使用第三方 API 服務 (例如 [Zapier](https://zapier.com/home) 或 [IFTTT](https://ifttt.com/))，可能就無法以程式設計方式回應驗證程式碼。 針對那些服務，您可以使用要在訂用帳戶驗證事件中傳送的驗證 URL，以手動方式驗證訂用帳戶。 在 `validationUrl` 屬性中複製該 URL，並透過 REST 用戶端或您的網頁瀏覽器傳送 GET 要求。
 
 在 C# 中，`DeserializeEventGridEvents()` 函式會將事件方格事件還原序列化。 事件資料會還原序列化為適當的類型，例如 StorageBlobCreatedEventData。 使用 `Microsoft.Azure.EventGrid.EventTypes` 類別，以取得支援的事件類型和名稱。
 

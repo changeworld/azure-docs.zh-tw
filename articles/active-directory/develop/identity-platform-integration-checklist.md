@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050487"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115892"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平臺最佳做法和建議
 
@@ -26,6 +26,9 @@ ms.locfileid: "80050487"
 如果您剛開始使用，請參閱 Microsoft 身分[識別平臺檔](index.yml)，以瞭解驗證基本概念、microsoft 身分識別平臺中的應用程式案例等等。
 
 使用下列檢查清單，確保您的應用程式與[Microsoft 身分識別平臺](https://docs.microsoft.com/azure/active-directory/develop/)有效整合。
+
+> [!TIP]
+> Azure 入口網站中的 [*整合助理*] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何[應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然後選取 [**整合助理（預覽）** ] 功能表項目以開始使用 [助理]。
 
 ## <a name="basics"></a>基本概念
 
@@ -39,7 +42,7 @@ ms.locfileid: "80050487"
 |---|---|
 | ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 請確定與您用來註冊及管理應用程式的帳戶相關聯的資訊是最新的。 |
 
-## <a name="branding"></a>商標
+## <a name="branding"></a>Branding
 
 |   |   |
 |---|---|
@@ -56,7 +59,7 @@ ms.locfileid: "80050487"
 
 |   |   |
 |---|---|
-| ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理您的重新導向 Uri： <ul><li>維護所有重新導向 Uri 的擁有權，並將它們的 DNS 記錄保持在最新狀態。</li><li>請勿在您的 Uri 中使用萬用字元（*）。</li><li>針對 web 應用程式，請確定所有 Uri 都是安全且加密的（例如，使用 HTTPs 架構）。</li><li>若為公用用戶端，請使用平臺特定的重新導向 Uri （主要適用于 iOS 和 Android）。 否則，請使用具有大量隨機性的重新導向 Uri，以避免在回呼至您的應用程式時發生衝突。</li><li>如果您的應用程式是從隔離的 web 代理程式中使用， `https://login.microsoftonline.com/common/oauth2/nativeclient`您可以使用。</li><li>定期檢查並修剪所有未使用或不必要的重新導向 Uri。</li></ul> |
+| ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理您的重新導向 Uri： <ul><li>維護所有重新導向 Uri 的擁有權，並將它們的 DNS 記錄保持在最新狀態。</li><li>請勿在您的 Uri 中使用萬用字元（*）。</li><li>針對 web 應用程式，請確定所有 Uri 都是安全且加密的（例如，使用 HTTPs 架構）。</li><li>若為公用用戶端，請使用平臺特定的重新導向 Uri （主要適用于 iOS 和 Android）。 否則，請使用具有大量隨機性的重新導向 Uri，以避免在回呼至您的應用程式時發生衝突。</li><li>如果您的應用程式是從隔離的 web 代理程式中使用，您可以使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 。</li><li>定期檢查並修剪所有未使用或不必要的重新導向 Uri。</li></ul> |
 | ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果您的應用程式已在目錄中註冊，請將應用程式註冊擁有者的清單最小化並手動監視。 |
 | ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 除非明確需要，否則請勿啟用[OAuth2 隱含授與流程](v2-oauth2-implicit-grant-flow.md)的支援。 瞭解[這裡](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)的有效案例。 |
 | ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) | 移至使用者名稱/密碼之外。 請勿使用[資源擁有者密碼認證流程（ROPC）](v2-oauth-ropc.md)，這會直接處理使用者的密碼。 此流程需要高程度的信任和使用者暴露，而且只有在無法使用其他、更安全的流程時才使用。 在某些情節中，仍然需要此流程 (例如 DevOps)，但請注意，使用它會對您的應用程式施加限制式。  如需更現代化的方法，請參閱[驗證流程和應用程式案例](authentication-flows-app-scenarios.md)。|

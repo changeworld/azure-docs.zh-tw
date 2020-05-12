@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的支援矩陣
 description: 提供備份 Azure 檔案共用時的支援設定和限制摘要。
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 92fbd1333fa80c73bb48020d6e0e73e0cf545476
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 38e8cdba4913a56b4dc6b4398a99db9e9f93be51
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977612"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116725"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 檔案共用備份的支援矩陣
 
@@ -18,9 +18,11 @@ ms.locfileid: "82977612"
 
 Azure 檔案共用的備份可在下列地區中取得：
 
-| GA 地區 | 支援的區域（作為預覽的一部分），但尚未正式推出                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 澳大利亞東部（ASE）、加拿大中部（CNC）、美國中西部（WCUS）、美國西部2（WUS 2）、印度南部（INS）、美國中北部（NCUS）、日本東部（JPE）、巴西南部（BRS」）、南東亞（海運）、瑞士西部（SZW）、阿拉伯聯合大公國中部（UAC）、挪威東部（N 我們）、印度西部（INW）、澳大利亞中部（ACL）、韓國中部（KRC）、日本西部（JPW）、南非北部（SAN）、英國西部（UKW）、南韓南部（KRS）、德國北部（GN）、挪威西部（NWW）、南非西部（已看到）、瑞士北部（SZN）、德國中西部（GWC）、阿拉伯聯合大公國北部（UAN）、法國中部（FRC）、印度中部（INC）、加拿大東部（CNE）、東亞（EA）、澳大利亞東部（AE）、美國中部（CU）、美國西部（WUS）、US Gov 亞利桑那州（UGA）、US Gov 德克薩斯州（UGT）、US Gov 維吉尼亞州（UGV）、US DoD 中部（UDC）、US DoD 東部（UDE）                                                  |  美國東部（EUS）、美國東部2（EUS2）、北歐（NE）、美國中南部（SCUS）、英國南部（UKS）、西歐（我們）            |
+**GA 地區**：<br>
+澳大利亞東部（ASE）、加拿大中部（CNC）、美國中西部（WCUS）、美國西部2（WUS 2）、印度南部（INS）、美國中北部（NCUS）、日本東部（JPE）、巴西南部（BRS」）、南東亞（海運）、瑞士西部（SZW）、阿拉伯聯合大公國中部（UAC）、挪威東部（N 我們）、印度西部（INW）、澳大利亞中部（ACL）、韓國中部（KRC）、日本西部（JPW）、南非北部（SAN）、英國西部（UKW）、南韓南部（KRS）、德國北部（GN）、挪威西部（NWW）、南非西部（已看到）、瑞士北部（SZN）、德國中西部（GWC）、阿拉伯聯合大公國北部（UAN）、法國中部（FRC）、印度中部（INC）、加拿大東部（CNE）、東亞（EA）、澳大利亞東部（AE）、美國中部（CU）、美國西部（WUS）、US Gov 亞利桑那州（UGA）、US Gov 德克薩斯州（UGT）、US Gov 維吉尼亞州（UGV）、US DoD 中部（UDC）、US DoD 東部（UDE）
+
+**支援的區域（作為預覽的一部分），但尚未正式**推出：<br>
+美國東部（EUS）、美國東部2（EUS2）、北歐（NE）、美國中南部（SCUS）、英國南部（UKS）、西歐（我們）
 
 ## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 

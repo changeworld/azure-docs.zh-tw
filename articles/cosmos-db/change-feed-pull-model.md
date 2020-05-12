@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2854e3d92462ced3958afd1cf1e7e99d7e9892f6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984677"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116708"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 中的摘要提取模型
 
@@ -24,23 +24,23 @@ ms.locfileid: "82984677"
 
 ## <a name="consuming-an-entire-containers-changes"></a>使用整個容器的變更
 
-您可以使用提取`FeedIterator`模型來建立來處理變更摘要。 當您一`FeedIterator`開始建立時，可以在中指定`StartTime`選擇性的`ChangeFeedRequestOptions`。 若未指定，則`StartTime`會是目前的時間。
+您可以 `FeedIterator` 使用提取模型來建立來處理變更摘要。 當您一開始建立時 `FeedIterator` ，可以在中指定選擇性的 `StartTime` `ChangeFeedRequestOptions` 。 若未指定，則 `StartTime` 會是目前的時間。
 
-`FeedIterator`有兩種類別。 除了下列傳回實體物件的範例以外，您也可以透過`Stream`支援取得回應。 資料流程可讓您讀取資料，而不需要先將它還原序列化，並儲存在用戶端資源上。
+`FeedIterator`有兩種類別。 除了下列傳回實體物件的範例以外，您也可以透過支援取得回應 `Stream` 。 資料流程可讓您讀取資料，而不需要先將它還原序列化，並儲存在用戶端資源上。
 
-以下是取得`FeedIterator`傳回實體物件（在此案例中為`User`物件）的範例：
+以下是取得傳回 `FeedIterator` 實體物件（在此案例中為物件）的範例 `User` ：
 
 ```csharp
 FeedIterator<User> iteratorWithPOCOS = container.GetChangeFeedIterator<User>();
 ```
 
-以下是取得`FeedIterator`會傳回之的範例`Stream`：
+以下是取得會傳回之的範例 `FeedIterator` `Stream` ：
 
 ```csharp
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-使用`FeedIterator`，您可以依自己的步調輕鬆地處理整個容器的變更摘要。 以下是範例：
+使用 `FeedIterator` ，您可以依自己的步調輕鬆地處理整個容器的變更摘要。 以下是範例：
 
 ```csharp
 FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -58,7 +58,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 
 ## <a name="consuming-a-partition-keys-changes"></a>使用資料分割索引鍵的變更
 
-在某些情況下，您可能只想要處理特定的分割區索引鍵的變更。 您可以取得`FeedIterator`特定分割區索引鍵的，並以與整個容器相同的方式來處理變更：
+在某些情況下，您可能只想要處理特定的分割區索引鍵的變更。 您可以取得特定分割區索引鍵的，並以與 `FeedIterator` 整個容器相同的方式來處理變更：
 
 ```csharp
 FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -76,7 +76,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
 
 ## <a name="using-feedrange-for-parallelization"></a>使用 FeedRange 進行平行處理
 
-在[變更摘要處理器](change-feed-processor.md)中，工作會自動分散到多個取用者。 在變更摘要提取模型中，您可以使用`FeedRange`來平行處理變更摘要的處理。 `FeedRange`代表資料分割索引鍵值的範圍。
+在[變更摘要處理器](change-feed-processor.md)中，工作會自動分散到多個取用者。 在變更摘要提取模型中，您可以使用 `FeedRange` 來平行處理變更摘要的處理。 `FeedRange`代表資料分割索引鍵值的範圍。
 
 以下範例顯示如何取得容器的範圍清單：
 
@@ -84,14 +84,14 @@ while (iteratorForThePartitionKey.HasMoreResults)
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-當您取得容器的 FeedRanges 清單時，每個[實體分割](partition-data.md#physical-partitions)區會`FeedRange`取得一個。
+當您取得容器的 FeedRanges 清單時， `FeedRange` 每個[實體分割](partition-data.md#physical-partitions)區會取得一個。
 
-您可以`FeedRange`使用，建立`FeedIterator`來平行處理多部電腦或執行緒上的變更摘要處理。 與先前示範如何取得整個容器單一`FeedIterator`的範例不同的是，您可以使用`FeedRange`來取得可平行處理變更摘要的多個 FeedIterators。
+`FeedRange`您可以使用，建立 `FeedIterator` 來平行處理多部電腦或執行緒上的變更摘要處理。 與先前示範如何取得整個容器單一的範例不同的是 `FeedIterator` ，您可以使用 `FeedRange` 來取得可平行處理變更摘要的多個 FeedIterators。
 
 在您想要使用 FeedRanges 的情況下，您需要有可取得 FeedRanges 的協調器進程，並將它們散發到這些電腦。 此散發可能是：
 
-* 使用`FeedRange.ToJsonString`和散發這個字串值。 取用者可以使用此值搭配`FeedRange.FromJsonString`
-* 如果是同進程散發，則傳遞`FeedRange`物件參考。
+* 使用 `FeedRange.ToJsonString` 和散發這個字串值。 取用者可以使用此值搭配`FeedRange.FromJsonString`
+* 如果是同進程散發，則傳遞 `FeedRange` 物件參考。
 
 以下範例示範如何使用兩個平行讀取的假設個別電腦，從容器的變更摘要的開頭讀取：
 
@@ -127,7 +127,7 @@ while (iteratorB.HasMoreResults)
 
 ## <a name="saving-continuation-tokens"></a>儲存接續權杖
 
-您可以藉`FeedIterator`由建立接續 token 來儲存的位置。 接續 token 是一個字串值，會持續追蹤您的 FeedIterator 上次處理的變更。 這可讓`FeedIterator`稍後在此時間點繼續。 下列程式碼會在建立容器之後，讀取變更摘要。 在沒有更多變更可用之後，它會保存接續權杖，讓變更摘要耗用量可以在稍後繼續。
+您可以藉 `FeedIterator` 由建立接續 token 來儲存的位置。 接續 token 是一個字串值，會持續追蹤您的 FeedIterator 上次處理的變更。 這可讓 `FeedIterator` 稍後在此時間點繼續。 下列程式碼會在建立容器之後，讀取變更摘要。 在沒有更多變更可用之後，它會保存接續權杖，讓變更摘要耗用量可以在稍後繼續。
 
 ```csharp
 FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -137,9 +137,9 @@ string continuation = null;
 while (iterator.HasMoreResults)
 {
    FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = orders.ContinuationToken;
+   continuation = users.ContinuationToken;
 
-   foreach (User user in Users)
+   foreach (User user in users)
     {
         Console.WriteLine($"Detected change for user with id {user.id}");
     }

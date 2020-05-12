@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105653"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116283"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
 本文可協助您在 Azure 入口網站中管理 Multi-Factor Authentication 設定。 本文涵蓋各種主題，協助您充分發揮 Azure Multi-Factor Authentication 的功效。 並非所有版本的 Azure Multi-Factor Authentication 均提供這些功能。
 
-您可以流覽至**Azure Active Directory** > **安全性** > **MFA**，以從 Azure 入口網站存取 Azure 多重要素驗證的相關設定。
+您可以流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**，以從 Azure 入口網站存取 Azure 多重要素驗證的相關設定。
 
 ![Azure 入口網站 - Azure AD Multi-Factor Authentication 設定](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "82105653"
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 用來封鎖特定使用者無法接收多重要素驗證要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者自封鎖的時刻起，將持續封鎖 90 天。 |
 | [詐騙警示](#fraud-alert) | 設定使用者報告詐騙驗證要求的能力相關設定 |
 | [通知](#notifications) | 啟用 MFA 伺服器中事件的通知。 |
-| [OATH 權杖](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | 用於雲端式 Azure MFA 環境，以管理使用者的 OATH 權杖。 |
+| [OATH 權杖](concept-authentication-methods.md#oath-hardware-tokens) | 用於雲端式 Azure MFA 環境，以管理使用者的 OATH 權杖。 |
 | [通話設定](#phone-call-settings) | 設定雲端和內部部署環境之通話和問候語相關的設定。 |
 | 提供者 | 這會顯示任何可能已與您帳戶建立關聯的現有驗證提供者。 自 2018 年 9 月 1 日起，可能無法建立新的驗證提供者 |
 
@@ -62,15 +62,15 @@ ms.locfileid: "82105653"
 ### <a name="block-a-user"></a>封鎖使用者
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **安全性** > **MFA** > **封鎖/解除封鎖使用者**。
+2. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**  >  **封鎖/解除封鎖使用者**。
 3. 選取 [新增]**** 以封鎖使用者。
-4. 選取 [複寫群組]****。 將 [封鎖的使用者] 的使用者名稱輸入為**username\@domain.com**。 在 [原因]**** 欄位中輸入註解。
+4. 選取 [複寫群組]****。 將 [封鎖的使用者] 的使用者名稱輸入為**username \@ domain.com**。 在 [原因]**** 欄位中輸入註解。
 5. 選取 [新增]**** 以完成封鎖使用者。
 
 ### <a name="unblock-a-user"></a>解除封鎖使用者
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **安全性** > **MFA** > **封鎖/解除封鎖使用者**。
+2. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**  >  **封鎖/解除封鎖使用者**。
 3. 在要解除封鎖之使用者旁的 [動作]**** 資料行中，選取 [解除封鎖]****。
 4. 在 [解除封鎖的原因]**** 欄位中輸入註解。
 5. 選取 [解除封鎖]**** 以完成解除封鎖使用者。
@@ -82,14 +82,14 @@ ms.locfileid: "82105653"
 ### <a name="turn-on-fraud-alerts"></a>開啟詐騙警示
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **安全性** > **MFA** > **詐騙警示**。
+2. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**  >  **詐騙警示**。
 3. 將 [允許使用者提交詐騙警示]**** 設定設為 [開啟]****。
 4. 選取 [儲存]  。
 
 ### <a name="configuration-options"></a>設定選項
 
 * **回報詐騙時封鎖使用者**：如果使用者回報詐騙，他們的帳戶會遭封鎖 90 天，或是封鎖到系統管理員解除封鎖其帳戶為止。 系統管理員可以使用登入報告來檢閱登入，並採取適當的動作以避免未來的詐騙。 系統管理員接著可以[解除封鎖](#unblock-a-user)使用者的帳戶。
-* **初始問候語期間以代碼報告詐騙**：當使用者收到電話以執行雙步驟驗證時，他們一般會按下 **#** 來確認登入。 若要報告詐騙，使用者在按下**#** 之前輸入程式碼。 根據預設，此代碼是 **0**，但您可以自訂。
+* **初始問候語期間以代碼報告詐騙**：當使用者收到電話以執行雙步驟驗證時，他們一般會按下 **#** 來確認登入。 若要報告詐騙，使用者在按下之前輸入程式碼 **#** 。 根據預設，此代碼是 **0**，但您可以自訂。
 
    >[!NOTE]
    >Microsoft 的預設語音問候語會指示使用者按 **0#** 以提交詐騙警示。 如果您要使用 **0** 以外的代碼，則應該記錄下來，並上傳您自己的自訂語音問候語和適當的指示。
@@ -98,11 +98,11 @@ ms.locfileid: "82105653"
 ### <a name="view-fraud-reports"></a>檢視詐騙報告
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取**Azure Active Directory** > 登**入** > **驗證詳細資料**。 詐騙報告現在是標準 Azure AD 登入報告的一部分，它會顯示在 [已拒絕 MFA 的**結果詳細資料]** 中，輸入的詐騙代碼。
+2. 選取**Azure Active Directory**登  >  **入**  >  **驗證詳細資料**。 詐騙報告現在是標準 Azure AD 登入報告的一部分，它會顯示在 [已拒絕 MFA 的**結果詳細資料]** 中，輸入的詐騙代碼。
  
 ## <a name="notifications"></a>通知
 
-在這裡為將會收到詐騙警示電子郵件的使用者設定電子郵件地址， **Azure Active Directory** > **安全性** > **多因素驗證** > **通知**。
+在這裡為將會收到詐騙警示電子郵件的使用者設定電子郵件地址， **Azure Active Directory**  >  **安全性**  >  **多因素驗證**  >  **通知**。
 
 ![通知詐騙警示電子郵件範例](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "82105653"
 ### <a name="set-up-a-custom-message"></a>設定自訂訊息
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **安全性** > **MFA** > 通話**設定**。
+1. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**通話  >  **設定**。
 1. 選取 [新增問候語]****。
 1. 選擇問候語的類型。
 1. 選擇語言。
@@ -184,16 +184,16 @@ _單次許可_可讓使用者只驗證一次，不需要執行雙步驟驗證。
 ### <a name="create-a-one-time-bypass"></a>建立單次許可
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **Security** > **MFA** > **一次性略過**]。
+2. 流覽至**Azure Active Directory**  >  **Security**  >  **MFA**  >  **一次性略過**]。
 3. 選取 [新增]  。
 4. 如有必要，請選取此許可的複寫群組。
-5. 輸入使用者名稱**\@domain.com**作為使用者名稱。 輸入許可需持續的秒數。 輸入許可的原因。
+5. 輸入使用者名稱** \@ domain.com**作為使用者名稱。 輸入許可需持續的秒數。 輸入許可的原因。
 6. 選取 [新增]  。 時間限制會立即生效。 使用者必須在單次許可到期之前登入。
 
 ### <a name="view-the-one-time-bypass-report"></a>檢視單次許可報告
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **Security** > **MFA** > **一次性略過**]。
+2. 流覽至**Azure Active Directory**  >  **Security**  >  **MFA**  >  **一次性略過**]。
 
 ## <a name="caching-rules"></a>快取規則
 
@@ -205,7 +205,7 @@ _單次許可_可讓使用者只驗證一次，不需要執行雙步驟驗證。
 ### <a name="set-up-caching"></a>設定快取
 
 1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 流覽至**Azure Active Directory** > **安全性** > **MFA** > 快取**規則**。
+2. 流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**快取  >  **規則**。
 3. 選取 [新增]  。
 4. 從下拉式清單中選取 [快取類型]****。 輸入**快取秒數**的最大數目。
 5. 如有必要，選取驗證類型並指定應用程式。
@@ -213,7 +213,7 @@ _單次許可_可讓使用者只驗證一次，不需要執行雙步驟驗證。
 
 ## <a name="mfa-service-settings"></a>MFA 服務設定
 
-Azure Multi-Factor Authentication 的應用程式密碼、受信任的 IP、驗證選項和成員多重要素驗證等設定，位於服務設定中。 藉由流覽至**Azure Active Directory** > **安全性** > **MFA** > **Getting started** > 開始進行**設定** > **其他雲端式 mfa 設定**，可以從 Azure 入口網站存取服務設定。
+Azure Multi-Factor Authentication 的應用程式密碼、受信任的 IP、驗證選項和成員多重要素驗證等設定，位於服務設定中。 藉由流覽至**Azure Active Directory**  >  **安全性**  >  **MFA**開始進行  >  **Getting started**  >  **設定**  >  **其他雲端式 mfa 設定**，可以從 Azure 入口網站存取服務設定。
 
 ![Azure Multi-Factor Authentication 服務設定](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
@@ -278,7 +278,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 根據預設，使用者無法建立應用程式密碼。 必須啟用應用程式密碼功能。 若要讓使用者能夠建立應用程式密碼，請使用下列程序：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **使用者**]。
+2. 在左側，選取 [ **Azure Active Directory**  >  **使用者**]。
 3. 選取 [**多重要素驗證**]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]****。
 5. 在 [服務設定]**** 頁面上，選取 [允許使用者建立應用程式密碼以登入非瀏覽器應用程式]**** 選項。
@@ -318,7 +318,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 ### <a name="enable-named-locations-by-using-conditional-access"></a>使用條件式存取啟用命名位置
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **安全性** > ]**條件式存取** > （**名為 [位置**]）。
+2. 在左側，選取 [ **Azure Active Directory**  >  **安全性**]  >  **條件式存取**（  >  **名為 [位置**]）。
 3. 選取 [新增位置]****。
 4. 輸入位置的名稱。
 5. 選取 [**標示為信任的位置**]。
@@ -328,7 +328,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>使用條件式存取啟用信任的 Ip 功能
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **安全性** >  ]**條件式存取** > （**名為 [位置**]）。
+2. 在左側，選取 [ **Azure Active Directory**  >  **安全性**]  >   **條件式存取**（  >  **名為 [位置**]）。
 3. 選取 [**設定 MFA 信任的 ip**]。
 4. 在 [服務設定]**** 頁面的 [信任的 IP]**** 下方，選擇下列兩個選項中的任一項：
 
@@ -346,7 +346,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服務設定啟用信任的 IP 功能
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **使用者**]。
+2. 在左側，選取 [ **Azure Active Directory**  >  **使用者**]。
 3. 選取 [**多重要素驗證**]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]****。
 5. 在 [服務設定]**** 頁面的 [信任的 IP]**** 下方，選擇下列兩個選項中的一或兩項：
@@ -378,11 +378,11 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 ### <a name="enable-and-disable-verification-methods"></a>啟用和停用驗證方法
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **使用者**]。
+2. 在左側，選取 [ **Azure Active Directory**  >  **使用者**]。
 3. 選取 [**多重要素驗證**]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]****。
 5. 在 [服務設定]**** 頁面的 [驗證選項]**** 下，選取/取消選取要提供給使用者的方法。
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案]  。
 
 其他的驗證方法使用方式詳細資料，可在[驗證的方法](concept-authentication-methods.md)一文中找到。
 
@@ -414,7 +414,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 ### <a name="enable-remember-multi-factor-authentication"></a>啟用記住 Multi-Factor Authentication
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側，選取 [ **Azure Active Directory** > **使用者**]。
+2. 在左側，選取 [ **Azure Active Directory**  >  **使用者**]。
 3. 選取 [**多重要素驗證**]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]****。
 5. 在 [服務設定]**** 頁面、[管理記住多重要素驗證]****，選取 [允許使用者在其信任的裝置記住多重要素驗證]**** 選項。

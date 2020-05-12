@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7f3eaa54ecb39922a155e2ea65e15d38f2b138e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615301"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117422"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>設定工作階段主機虛擬機器
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。 如果您嘗試管理春季2020更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
 
 使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
 
@@ -84,7 +84,7 @@ ms.locfileid: "82615301"
 
 請遵循這些指示來確認已安裝元件，並檢查是否有錯誤訊息。
 
-1. 勾選 [**控制台** > ] [**程式** > ] [程式**和功能**]，確認已安裝這兩個元件。 如果**Windows 虛擬桌面 agent**和**Windows 虛擬桌面 agent 開機載入**器不可見，則不會安裝在 VM 上。
+1. 勾選 [**控制台**] [程式] [程式  >  **Programs**  >  **和功能**]，確認已安裝這兩個元件。 如果**Windows 虛擬桌面 agent**和**Windows 虛擬桌面 agent 開機載入**器不可見，則不會安裝在 VM 上。
 2. 開啟 [檔案**瀏覽器**] 並流覽至**C:\Windows\Temp\ScriptLog.log**。 如果檔案遺失，則表示安裝這兩個元件的 PowerShell DSC 無法在提供的安全性內容中執行。
 3. 如果檔案**C:\Windows\Temp\ScriptLog.log**存在，請將它開啟，並檢查是否有錯誤訊息。
 
@@ -237,7 +237,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 請依照下列指示，從相同的子網和網域執行補救：
 
 1. 使用標準遠端桌面通訊協定（RDP）連接到將套用修正的 VM。
-2. 從https://docs.microsoft.com/sysinternals/downloads/psexec下載 PsExec。
+2. 從下載 PsExec https://docs.microsoft.com/sysinternals/downloads/psexec 。
 3. 將下載的檔案解壓縮。
 4. 以本機系統管理員身分啟動命令提示字元。
 5. 流覽至已解壓縮 PsExec 的資料夾。
@@ -313,7 +313,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>停用遠端桌面授權模式群組原則設定
 
-在 VM 中開啟 [群組原則編輯器]，然後流覽至 [**系統管理範本** > **Windows 元件** > ]**遠端桌面服務** > **遠端桌面工作階段主機** > **授權** > **設定遠端桌面授權模式**，以檢查群組原則設定。 如果已**啟用**群組原則設定，請將它變更為 [**停用**]。 如果已停用，請將它保持原狀。
+在 VM 中開啟 [群組原則編輯器]，然後流覽至 [**系統管理範本**  >  **Windows 元件**  >  ]**遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **授權**  >  **設定遠端桌面授權模式**，以檢查群組原則設定。 如果已**啟用**群組原則設定，請將它變更為 [**停用**]。 如果已停用，請將它保持原狀。
 
 >[!NOTE]
 >如果您透過網域設定群組原則，請在以這些 Windows 10 企業版多會話 Vm 為目標的原則上停用此設定。
@@ -338,6 +338,12 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 ### <a name="version-1903"></a>版本1903
 
 使用 Azure 資源庫中最新版本的 Windows 10 版本1903映射重新部署主機作業系統。
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>因為安全性錯誤，所以無法連接到遠端電腦
+
+如果您的使用者看到錯誤訊息：「我們因為安全性錯誤而無法連接到遠端電腦。 如果持續發生，請向您的系統管理員或技術支援人員尋求協助，「驗證任何現有的原則是否會變更預設的 RDP 許可權。 可能導致此錯誤出現的一個原則是「允許透過遠端桌面服務安全性原則登入」。
+
+若要深入瞭解此原則，請參閱[允許透過遠端桌面服務登](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)入。
 
 ## <a name="next-steps"></a>後續步驟
 

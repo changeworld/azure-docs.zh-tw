@@ -2,13 +2,13 @@
 title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/11/2020
+ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927933"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115654"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -56,7 +56,7 @@ ms.locfileid: "82927933"
 
 取得 `TelemetryClient` 的執行個體 (除非是在網頁的 JavaScript 中)：
 
-針對適用于 .NET/.NET Core 應用程式的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)應用程式和[非 HTTP/背景工作角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建議您`TelemetryClient`從相依性插入容器中取得的實例，如其各自的檔所述。
+針對適用于 .NET/.NET Core 應用程式的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)應用程式和[非 HTTP/背景工作角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建議您從相依性插入容器中取得的實例， `TelemetryClient` 如其各自的檔所述。
 
 如果您使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-請遵循此檔：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
@@ -147,7 +147,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 [Application Insights 分析](analytics.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式`customEvents | summarize sum(itemCount)`代碼。
+如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式碼 `customEvents | summarize sum(itemCount)` 。
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -488,7 +488,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 描述
+ 參數 | 說明
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
 `properties` | 字串與字串的對應：用來在入口網站中[篩選例外](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)狀況的其他資料。 預設為空白。
@@ -991,7 +991,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-針對 node.js，您可以透過啟用內部記錄， `setInternalLogging`並將設定`maxBatchSize`為0，以啟用開發人員模式，這會在收集遙測資料時立即傳送。
+針對 node.js，您可以透過啟用內部記錄， `setInternalLogging` 並將設定為0，以啟用開發人員模式， `maxBatchSize` 這會在收集遙測資料時立即傳送。
 
 ```js
 applicationInsights.setup("ikey")
@@ -1096,16 +1096,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * [JAVA 參考](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 參考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-
 ## <a name="sdk-code"></a>SDK 程式碼
 
-* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server 套件](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [Windows Server 套件](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-
 
 ## <a name="questions"></a>問題
 

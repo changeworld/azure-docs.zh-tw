@@ -8,21 +8,25 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 28e76a93e309112d965c49f25be232ced789ad66
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983188"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117388"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機規模
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
 
 您可以藉由調整您的虛擬機器（Vm），降低總 Windows 虛擬桌面部署成本。 這表示關閉和解除配置工作階段主機 Vm 期間的離峰使用時數，然後將它們重新開啟，並在尖峰時間重新配置它們。
 
 在本文中，您將瞭解以 Azure 自動化和 Azure Logic Apps 為基礎的調整工具，其會自動調整 Windows 虛擬桌面環境中的工作階段主機虛擬機器。 若要瞭解如何使用調整工具，請直接跳至[必要條件](#prerequisites)。
+
+## <a name="report-issues"></a>回報問題
+
+目前正在 GitHub 上處理調整工具的問題報告，而不是 Microsoft 支援服務。 如果您遇到任何與調整工具有關的問題，您可以回報他們在[RDS github 頁面](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)上，開啟名為「4A-WVD-調整-logicapps」的 GitHub 問題。
 
 ## <a name="how-the-scaling-tool-works"></a>調整工具的運作方式
 
@@ -43,7 +47,7 @@ ms.locfileid: "82983188"
 
 在離峰使用時間期間，作業會根據*MinimumNumberOfRDSH*參數決定應關閉哪些工作階段主機 vm。 作業會將工作階段主機 Vm 設定為清空模式，以防止新會話連接到主機。 如果您將*LimitSecondsToForceLogOffUser*參數設定為非零的正值，此作業將會通知任何目前已登入的使用者儲存其工作、等候設定的時間量，然後強制使用者登出。當工作階段主機 VM 上的所有使用者會話都已登出後，此作業將會關閉 VM。
 
-如果您將*LimitSecondsToForceLogOffUser*參數設定為零，此作業將會允許指定群組原則中的會話設定，處理登出使用者會話。 若要查看這些群組原則，請移至 [電腦設定**原則** > **] 系統管理範本** > **Windows 元件** > **終端** > **機** > 服務] [終端機**伺服器** > **會話時間限制**]。 如果工作階段主機 VM 上有任何使用中會話，此作業會讓工作階段主機 VM 繼續執行。 如果沒有作用中的會話，此作業將會關閉工作階段主機 VM。
+如果您將*LimitSecondsToForceLogOffUser*參數設定為零，此作業將會允許指定群組原則中的會話設定，處理登出使用者會話。 若要查看這些群組原則，請移至 [**電腦**設定  >  **原則**]  >  **系統管理範本**  >  **Windows 元件**[終端機服務] [終端機  >  **Terminal Services**  >  **伺服器**  >  **會話時間限制**]。 如果工作階段主機 VM 上有任何使用中會話，此作業會讓工作階段主機 VM 繼續執行。 如果沒有作用中的會話，此作業將會關閉工作階段主機 VM。
 
 作業會根據設定的週期間隔定期執行。 您可以根據 Windows 虛擬桌面環境的大小來變更此間隔，但請記住，啟動和關閉虛擬機器可能需要一些時間，因此請記得考慮延遲。 建議您將週期間隔設定為每15分鐘一次。
 
@@ -55,7 +59,7 @@ ms.locfileid: "82983188"
 >[!NOTE]
 >調整工具可控制要調整之主機集區的負載平衡模式。 它會將其設定為尖峰和離峰時段的廣度優先負載平衡。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始設定調整工具之前，請確定您已備妥下列專案：
 
@@ -258,6 +262,3 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 ![縮放工具的輸出視窗影像。](../media/tool-output.png)
 
-## <a name="report-issues"></a>回報問題
-
-如果您遇到任何與調整工具有關的問題，可以在[RDS GitHub 頁面](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)上報告。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983902"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115144"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 實驗室服務中的教室實驗室-常見問題（FAQ）
 取得一些關於 Azure 實驗室服務中的教室實驗室最常見問題的解答。 
@@ -77,6 +77,6 @@ ms.locfileid: "82983902"
 如果此處未列出您的問題，請讓我們知道，讓我們可以協助您找到答案。
 
 - 將問題張貼在此常見問題集尾端。 
-- 若要觸及更多物件，請在[Azure 實驗室服務上張貼問題-Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-lab-services)。 
+- 若要觸及更多物件，請在[Azure 實驗室服務（技術小組論壇）](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)上張貼問題。 
 - 對於功能要求，請將您的要求和想法提交到[Azure 實驗室服務-User Voice](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)。
 
