@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222635"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610678"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>為內部部署 VMware VM 設定災害復原至 Azure
 
@@ -65,11 +65,11 @@ ms.locfileid: "79222635"
 - **主要目標伺服器**：主要目標伺服器會在從 Azure 容錯回復期間，處理複寫資料。
 
 
-這些元件會全部一起安裝在單一內部部署機器 (也稱為「組態伺服器」  ) 上。 根據預設，對於 VMware 災害復原，我們會將組態伺服器設定為高可用性 VMware VM。 若要這麼做，請下載備妥的開放式虛擬化應用程式 (OVA) 範本，然後將範本匯入 VMware 以建立 VM。 
+這些元件會全部一起安裝在單一內部部署機器 (也稱為「組態伺服器」  ) 上。 根據預設，對於 VMware 災害復原，我們會將組態伺服器設定為高可用性 VMware VM。 若要這麼做，請下載備妥的開放式虛擬化應用程式 (OVA) 範本，然後將範本匯入 VMware 以建立 VM。
 
 - 在入口網站中可取得最新版的組態伺服器。 您也可以從 [Microsoft 下載中心](https://aka.ms/asrconfigurationserver)直接下載。
 - 如果您因為某個理由而無法使用 OVA 範本來設定 VM，請遵循[這些指示](physical-manage-configuration-server.md)，手動設定組態伺服器。
-- 使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 在 VM 上執行 Windows 必須使用必要的授權來啟動。 
+- 使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 在 VM 上執行 Windows 必須使用必要的授權來啟動。
 
 
 ### <a name="download-the-vm-template"></a>下載 VM 範本
@@ -77,7 +77,7 @@ ms.locfileid: "79222635"
 1. 在保存庫中，移至 [準備基礎結構]   > [來源]  。
 2. 在 [準備來源]  中，選取 [+設定伺服器]  。
 3. 在 [新增伺服器]  中，檢查 [VMware 的組態伺服器]  是否出現在 [伺服器類型]  中。
-4. 下載設定伺服器的 OVF 範本。
+4. 下載設定伺服器的 OVA 範本。
 
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "79222635"
 
 
 1. 透過 VMWare vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
-2. 在 [檔案]  功能表上，選取 [部署 OVF 範本]  以啟動 [部署 OVF 範本精靈]  。 
+2. 在 [檔案]  功能表上，選取 [部署 OVF 範本]  以啟動 [部署 OVF 範本精靈]  。
 
      ![OVF 範本](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "79222635"
 
 1. 在 vSphere 用戶端詳細目錄中，以滑鼠右鍵按一下 VM 並選取 [編輯設定]  。
 2. 在 [硬體]  中，選取 [新增]   > [乙太網路介面卡]  。 然後選取 [下一步]  。
-3. 選取介面卡類型和網路。 
+3. 選取介面卡類型和網路。
 4. 若要在 VM 開啟時連線虛擬 NIC，請選取 [在電源開啟時連線]  。 選取 [下一步]   > [完成]  。 然後選取 [確定]  。
 
 
-## <a name="register-the-configuration-server"></a>註冊組態伺服器 
+## <a name="register-the-configuration-server"></a>註冊組態伺服器
 
 設定好組態伺服器後，您可在保存庫中加以註冊。
 
@@ -179,7 +179,7 @@ ms.locfileid: "79222635"
 3. 在 [機器類型]  中，選取 [虛擬機器] 
 4. 在 [vCenter/vSphere Hypervisor]  中，選取 vSphere 主機，或可管理該主機的 vCenter 伺服器。
 5. 選取處理序伺服器 (依預設安裝在組態伺服器 VM 上)。 然後選取 [確定]  。 每個處理序伺服器的健康狀態都會根據建議限制和其他參數來指示。 選擇狀況良好的處理序伺服器。 無法選擇狀態為[嚴重](vmware-physical-azure-monitor-process-server.md#process-server-alerts)的處理序伺服器。 您可以對錯誤進行[疑難排解及解決問題](vmware-physical-azure-troubleshoot-process-server.md)，**或是**設定[相應放大的處理序伺服器](vmware-azure-set-up-process-server-scale.md)。
-6. 在 [目標]  中，選取您想要在其中建立容錯移轉 VM 的訂用帳戶和資源群組。 我們會使用 Resource Manager 部署模型。 
+6. 在 [目標]  中，選取您想要在其中建立容錯移轉 VM 的訂用帳戶和資源群組。 我們會使用 Resource Manager 部署模型。
 7. 選取 Azure VM 在容錯移轉後所要連線的 Azure 網路和子網路。
 8. 選取 [立即設定選取的機器]  ，將網路設定套用到您啟用複寫的所有 VM 上。 選取 [稍後設定]  以選取每部機器的 Azure 網路。
 9. 在 [虛擬機器]   > [選取虛擬機器]  中，選取您要複寫的每部機器。 您只能選取可以啟用複寫的機器。 然後選取 [確定]  。 如果您無法檢視/選取任何特定的虛擬機器，請[深入了解](https://aka.ms/doc-plugin-VM-not-showing)如何解決此問題。

@@ -1,21 +1,21 @@
 ---
-title: 自動完成和建議
+title: 自動完成和建議的 C# 教學課程
 titleSuffix: Azure Cognitive Search
-description: 本教學課程示範自動完成和建議，作為向使用下拉式清單的使用者收集搜尋字詞輸入的方法。 它是以現有的飯店專案為基礎而建置的。
+description: 新增自動完成和建議，以使用下拉式清單向使用者收集搜尋字詞輸入。 此教學課程會以現有的飯店專案為基礎。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641081"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780550"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# 教學課程：新增自動完成和建議 - Azure 認知搜尋
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教學課程：使用 .NET SDK 新增自動完成和建議
 
 了解如何在使用者開始在搜尋方塊中輸入時實作自動完成 (預先輸入查詢及建議的文件)。 在本教學課程中，我們會分別示範自動完成的查詢和建議結果，然後將這兩者合併在一起。 使用者只需要輸入兩或三個字元，就可以找到可用的所有結果。
 

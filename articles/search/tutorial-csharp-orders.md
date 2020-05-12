@@ -1,21 +1,21 @@
 ---
 title: 排序結果的 C# 教學課程
 titleSuffix: Azure Cognitive Search
-description: 本教學課程會示範如何排序搜尋結果。 它是以先前的飯店專案為基礎所建置，依主要屬性、次要屬性進行排序，並包含評分設定檔來新增提升準則。
+description: 此 C# 教學課程會示範如何排序搜尋結果。 其是以先前的飯店專案為基礎所建置，依主要屬性、次要屬性進行排序，並包含評分設定檔來新增提升準則。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121556"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780601"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教學課程：排序結果 - Azure 認知搜尋
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 排序搜尋結果
 
 在我們的教學課程中到目前為止，結果是以預設順序傳回和顯示。 這可能是資料配置的順序，也可能已定義預設「評分設定檔」  ，當未指定排序參數時會使用此設定檔。 在此教學課程中，我們將會探討如何根據主要屬性排序結果、如何排序主要屬性相同的結果，以及如何根據次要屬性排序選擇。 作為依數值排序的替代方案，最後一個範例示範如何依自訂評分設定檔排序。 我們也會進一步探討如何顯示「複雜類型」  。
 
