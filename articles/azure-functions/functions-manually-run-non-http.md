@@ -3,14 +3,14 @@ title: 手動執行非 HTTP 觸發的 Azure 函式
 description: 使用 HTTP 要求執行非 HTTP 觸發的 Azure 函式
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892354"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121724"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手動執行非 HTTP 觸發的函式
 
@@ -37,11 +37,17 @@ ms.locfileid: "80892354"
 
 ## <a name="get-the-functions-master-key"></a>取得函式的主要金鑰
 
-瀏覽至您在 Azure 入口網站中的函式，然後按一下**管理**並尋找**主機金鑰**區段。 按一下 *_master* 資料列中的 [複製]  按鈕，將主要金鑰複製到您的剪貼簿。
+1. 在 Azure 入口網站中流覽至您的函式，然後選取 [**函數金鑰**]。 然後，選取您想要複製的功能鍵。 
 
-![從 [函式管理] 畫面複製主要金鑰](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="找出要複製的主要金鑰。" border="true":::
 
-複製主要金鑰之後，請按一下函式名稱以返回程式碼檔案視窗。 接著，請按一下 [記錄]  索引標籤。您會看到您從 Postman 手動執行函式時所傳回的函式訊息記錄在此處。
+1. 在 [**編輯金鑰**] 區段中，將 [金鑰] 值複製到您的剪貼簿，然後選取 **[確定]**。
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="將主要金鑰複製到剪貼簿。" border="true":::
+
+1. 複製 *_master*金鑰之後，請選取 [程式**代碼 + 測試**]，然後選取 [**記錄**]。 您會看到您從 Postman 手動執行函式時所傳回的函式訊息記錄在此處。
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="查看記錄以查看主要金鑰測試結果。" border="true":::
 
 > [!CAUTION]  
 > 由於主要金鑰會在您的函數應用程式中授與提高的權限，因此您不應與第三方共用此金鑰，或是在應用程式中加以散發。
@@ -51,27 +57,27 @@ ms.locfileid: "80892354"
 開啟 Postman 並遵循下列步驟：
 
 1. **在 URL 文字方塊中輸入要求位置**。
-2. 確定 HTTP 方法設定為 [POST]  。
-3. **按一下** [標頭]  索引標籤。
-4. 輸入 **x-functions-key** 作為第一個**金鑰**，並將主要金鑰 (從剪貼簿) 貼到 [值]  方塊中。
-5. 輸入**Content-type** 作為第二個**金鑰**，並輸入 **application/json** 作為**值**。
+1. 確定 HTTP 方法設定為 [POST]****。
+1. 選取 [標頭]**** 索引標籤。
+1. 輸入**x 函式-key**作為第一個索引鍵，並貼上主要金鑰（從剪貼簿）做為值。
+1. 輸入**Content-type**作為第二個金鑰，並輸入**application/json**做為值。
 
-    ![Postman 標頭設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Postman 標頭設定。" border="true":::
 
-6. **按一下** [本文]  索引標籤。
-7. 輸入 **{ "input": "test" }** 作為要求的本文。
+1. 選取 [Body]**** \(本文\) 索引標籤。
+1. 輸入 **{"input"： "test"}** 做為要求的主體。
 
-    ![Postman 本文設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman 主體設定。" border="true":::
 
-8. 按一下 [ **傳送**]。
+1. 選取 [**傳送**]。
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="使用 Postman 傳送要求。" border="true":::
 
-    ![使用 Postman 傳送要求](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    然後，Postman 會報告狀態 **202 已接受**。
 
-然後，Postman 會報告狀態 **202 已接受**。
+1. 接著請返回您在 Azure 入口網站中的函式。 查看記錄檔，您會看到來自函式手動呼叫的訊息。
 
-接著請返回您在 Azure 入口網站中的函式。 找出 [記錄]  視窗，您將會看到手動呼叫的函式所傳回的訊息。
-
-![手動呼叫的函式記錄結果](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="查看記錄以查看主要金鑰測試結果。" border="true":::
 
 ## <a name="next-steps"></a>後續步驟
 
