@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272996"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778990"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,11 +47,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 本教學課程會在您的工作區中使用雲端 Notebook 伺服器，讓您擁有免安裝和預先設定的體驗。 如果您想要控制您的環境、套件和相依性，[請使用您自己的環境](how-to-configure-environment.md#local)。
 
-請依照這段影片的說明，或使用下列詳細步驟，從您的工作區複製並執行教學課程。 
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
-
-
+ 使用下列詳細步驟，從您的工作區複製並執行教學課程。 
 
 ### <a name="clone-a-notebook-folder"></a>複製 Notebook 資料夾
 
@@ -63,7 +59,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 選取左側的 [筆記本]  。
 
-1. 開啟 **samples** 資料夾。
+1. 選取頂端的 [範例]  索引標籤。
 
 1. 開啟 **Python** 資料夾。
 
@@ -71,26 +67,33 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 選取 **tutorials** 資料夾右側的 **"..."** ，然後選取 [複製]  。
 
-    ![複製資料夾](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="複製教學課程資料夾":::
 
 1. 資料夾清單隨即顯示，其中顯示每位存取工作區的使用者。  選取您的資料夾，以將 **tutorials** 資料夾複製到該處。
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">開啟複製的筆記本
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>開啟複製的筆記本
 
-1. 在 [使用者檔案]  下開啟您的資料夾，然後開啟複製的 **tutorials** 資料夾。
-
-    ![開啟教學課程資料夾](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. 在 [使用者檔案]  區段中開啟剛才關閉的 **tutorials** 資料夾。
 
     > [!IMPORTANT]
     > 您可以查看 **samples** 資料夾中的 Notebook，但無法從該處執行 Notebook。  若要執行 Notebook，請務必在 [使用者檔案]  區段中開啟複製的 Notebook 版本。
     
 1. 在 tutorials/create-first-ml-experiment  資料夾中選取 tutorial-1st-experiment-sdk-train.ipynb  檔案。
 
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="開啟教學課程資料夾":::
+
+
 1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些 VM 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。 
 
 1. 如果找不到任何 VM，請選取 [+ 新增]  以建立計算執行個體 VM。 
 
-    1. 在建立 VM 時，請提供名稱。  此名稱的長度必須介於 2 到 16 個字元之間。 有效的字元是字母、數字和 - 字元，且在您的 Azure 訂用帳戶中必須是唯一的。
+    1. 當您建立 VM 時，請遵循下列規則：  
+        + 名稱是必要的，而且不可以空白。
+        + 在該工作區/計算執行個體的 Azure 區域中，名稱在其中所有現有計算執行個體中必須是唯一的 (以不區分大小寫的方式)。 如果您選擇的名稱不是唯一的，您將會收到警示。
+        + 有效字元是大寫和小寫字母、數字 (0 到 9) 和虛線字元 (-)。
+        + 名稱長度必須介於 3 到 24 個字元之間。
+        + 名稱應以字母開頭 (不是數字或虛線字元)。
+        + 如果使用虛線字元，則虛線後面必須至少接續一個字母。 範例：Test-、test-0、test-01 為無效名稱，而 test-a0、test-0a 才是有效執行個體。
 
     1.  從可用的選項中選取虛擬機器大小。
 

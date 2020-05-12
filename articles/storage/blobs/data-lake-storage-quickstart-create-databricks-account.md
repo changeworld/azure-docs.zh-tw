@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6dd1aab4c0ce6c656600d7cc7c71233d256aa0b
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77470729"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780533"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入門：以 Databricks 分析資料
 
@@ -78,7 +78,7 @@ ms.locfileid: "77470729"
 
 如需如何建立叢集的詳細資訊，請參閱[在 Azure Databricks 建立 Spark 叢集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
-## <a name="create-storage-account-container"></a>建立儲存體帳戶容器
+## <a name="create-notebook"></a>建立筆記本
 
 在本節中，您會在 Azure Databricks 工作區中建立 Notebook，然後執行程式碼片段以設定儲存體帳戶。
 

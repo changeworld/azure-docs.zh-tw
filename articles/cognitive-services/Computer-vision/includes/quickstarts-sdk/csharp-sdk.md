@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791692"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595273"
 ---
 <a name="HOLTop"></a>
 
@@ -23,7 +23,7 @@ ms.locfileid: "81791692"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* 最新版的 [.NET Core SDK](https://dotnet.microsoft.com/download/)。
 
 ## <a name="setting-up"></a>設定
 
@@ -42,13 +42,13 @@ Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入�
 
 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `computer-vision-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*ComputerVisionQuickstart.cs*。
 
-```console
+```dotnetcli
 dotnet new console -n computer-vision-quickstart
 ```
 
 將目錄變更為新建立的應用程式資料夾。 您可以使用下列命令來建置應用程式：
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -74,7 +74,7 @@ Build succeeded.
 
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的電腦視覺用戶端程式庫：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
 ```
 
@@ -253,7 +253,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 使用 `dotnet run` 命令從您的應用程式目錄執行應用程式。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529839"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691329"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "81529839"
 您將使用 Docker 引擎來執行範例標籤工具。 請依照下列步驟來設定 Docker 容器。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。
 
 > [!TIP]
-> OCR 表單標籤工具也可作為 GitHub 上的開放原始碼專案。 此工具是使用 React + Redux 建置的 Web 應用程式，並以 TypeScript 撰寫。 若要深入了解或參與，請參閱 [OCR 表單標籤工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)。
+> OCR 表單標籤工具也可作為 GitHub 上的開放原始碼專案。 此工具是使用R eact + Redux 建立的 TypeScript Web 應用程式。 若要深入了解或參與，請參閱 [OCR 表單標籤工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)存放庫。 若要線上試用此工具，請移至 [FOTT 網站](https://fott.azurewebsites.net/)。   
 
 1. 首先，在主機電腦上安裝 Docker。 本指南將說明如何使用本機電腦作為主機。 如果您想要在 Azure 中使用 Docker 主機服務，請參閱[部署範例標籤工具](../deploy-label-tool.md)操作指南。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "81529839"
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   此命令會讓範例標籤工具可透過網頁瀏覽器來使用。 移至 [http://localhost:3000](http://localhost:3000)。
+   此命令會讓範例標籤工具可透過網頁瀏覽器來使用。 移至 `http://localhost:3000`。
 
 > [!NOTE]
 > 您也可以使用表單辨識器 REST API 為文件加上標籤及定型模型。 若要使用此 REST API 進行定型和分析，請參閱[使用 REST API 和 Python以標籤定型](./python-labeled-data.md)。

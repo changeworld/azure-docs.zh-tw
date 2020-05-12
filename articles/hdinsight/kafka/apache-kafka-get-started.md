@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/24/2020
-ms.openlocfilehash: 90f7010970f70379c8adecc4214c44d896a1beaf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/29/2020
+ms.openlocfilehash: 0f6e1a7b8ac4dce0504fca5f03090588a75ae1ef
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80130222"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732436"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：在 Azure HDInsight 中使用 Azure 入口網站建立 Apache Kafka 叢集
 
@@ -23,7 +23,7 @@ ms.locfileid: "80130222"
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入門中，您會使用 SSH 直接存取叢集。 若要將其他服務、網路或虛擬機器連線到 Apache Kafka，您必須先建立虛擬網路，然後建立網路中的資源。 如需詳細資訊，請參閱[使用虛擬網路連線到 Apache Kafka](apache-kafka-connect-vpn-gateway.md) 文件。
+Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入門中，您會使用 SSH 直接存取叢集。 若要將其他服務、網路或虛擬機器連線到 Apache Kafka，您必須先建立虛擬網路，然後建立網路中的資源。 如需詳細資訊，請參閱[使用虛擬網路連線到 Apache Kafka](apache-kafka-connect-vpn-gateway.md) 文件。 如需如何為 HDInsight 規劃虛擬網路的一般資訊，請參閱[為 Azure HDInsight 規劃虛擬網路](../hdinsight-plan-virtual-network-deployment.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -167,7 +167,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
     ```
 
     > [!Note]  
-    > 此命令需要 Ambari 存取權。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行此命令。 
+    > 此命令需要 Ambari 存取權。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行此命令。
 
 1. 若要確認是否已正確設定環境變數，請使用下列命令：
 
@@ -186,7 +186,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
     ```
 
     > [!Note]  
-    > 此命令需要 Ambari 存取權。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行此命令。 
+    > 此命令需要 Ambari 存取權。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行此命令。
 
 1. 若要確認是否已正確設定環境變數，請使用下列命令：
 
@@ -214,21 +214,21 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
     * 每個分割區都會在叢集中的三個背景工作節點之間進行複寫。
 
-        如果您已在 Azure 區域中建立叢集來提供三個容錯網域，請使用複寫因子 3。 否則，使用複寫因子 4。
+        * 如果您已在 Azure 區域中建立叢集來提供三個容錯網域，請使用複寫因子 3。 否則，使用複寫因子 4。
         
-        在具有三個容錯網域的區域中，複寫因子 3 可讓複本散佈於容錯網域中。 在具有兩個容錯網域的區域中，複寫因子 4 會在網域中平均散佈複本。
+        * 在具有三個容錯網域的區域中，複寫因子 3 可讓複本散佈於容錯網域中。 在具有兩個容錯網域的區域中，複寫因子 4 會在網域中平均散佈複本。
         
-        如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
+        * 如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
 
-        Apache Kafka 不知道 Azure 容錯網域。 為主題建立副本時，可能無法正確發散副本以實現高可用性。
+        * Apache Kafka 不知道 Azure 容錯網域。 為主題建立副本時，可能無法正確發散副本以實現高可用性。
 
-        若要確保高可用性，請使用 [Apache Kafka 分割重新平衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。 您必須從連往 Apache Kafka 叢集前端節點的 SSH 連線來執行此工具。
+        * 若要確保高可用性，請使用 [Apache Kafka 分割重新平衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。 您必須從連往 Apache Kafka 叢集前端節點的 SSH 連線來執行此工具。
 
-        為了讓 Apache Kafka 資料具有最高可用性，您應該在下列情況中重新平衡主題的分割區複本：
+        * 為了讓 Apache Kafka 資料具有最高可用性，您應該在下列情況中重新平衡主題的分割區複本：
 
-        * 建立新主題或磁碟分割時
+            * 建立新主題或磁碟分割時
 
-        * 擴大叢集時
+            * 擴大叢集時
 
 * **若要列出主題**，請使用下列命令：
 

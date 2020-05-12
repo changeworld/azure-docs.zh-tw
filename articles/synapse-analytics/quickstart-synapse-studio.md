@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096328"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692431"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>快速入門：使用 Synapse Studio (預覽)
 
@@ -56,7 +56,7 @@ ms.locfileid: "82096328"
 
    ![查詢儲存體上的檔案](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. 執行產生的查詢或筆記本以查看檔案的內容：
+3. 執行產生的查詢或筆記本以查看檔案的內容。
 
    ![查看檔案的內容](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "82096328"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 Azure 儲存體中[指派**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，讓 Azure AD 使用者查詢檔案
+- 在 Azure 儲存體中指派[**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，讓 Azure AD 使用者查詢檔案
 - [使用 SQL 隨選查詢 Azure 儲存體上的檔案](sql/on-demand-workspace-overview.md)
-- [建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md)
+- [使用 Azure 入口網站建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md)
 - [建立儲存在 Azure 儲存體上之檔案的 Power BI 報告](sql/tutorial-connect-power-bi-desktop.md)

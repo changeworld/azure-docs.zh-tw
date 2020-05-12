@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417518"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626952"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -86,11 +86,11 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 
 ## <a name="charges-covered-by-reservation"></a>保留所涵蓋的費用
 
-- **保留的虛擬機器執行個體**：保留僅涵蓋虛擬機器計算成本。 這並不涵蓋其他軟體、Windows、網路或儲存體費用。
+- **保留的虛擬機器執行個體** - 保留僅涵蓋虛擬機器及雲端服務計算成本。 這並不涵蓋其他軟體、Windows、網路或儲存體費用。
 - **Azure 儲存體保留容量** - 保留涵蓋 Blob 儲存體或 Azure Data Lake Gen2 儲存體的標準儲存體帳戶儲存容量。 保留並未涵蓋頻寬或交易速率。
 - **Azure Cosmos DB 保留容量**：保留涵蓋針對資源所佈建的輸送量。 它未涵蓋儲存體和網路費用。
 - **SQL Database 保留的 vCore**：保留僅包含計算成本。 SQL 授權會分開計費。
-- **SQL 資料倉儲**：保留涵蓋 cDWU 使用量。 但未涵蓋與 SQL 資料倉儲使用量相關的儲存或網路費用。
+- **Azure Synapse Analytics** - 保留會涵蓋 cDWU 使用量。 其並未涵蓋與 Azure Synapse Analytics 使用量相關的儲存或網路費用。
 - **Azure Databricks** - 保留僅涵蓋 DBU 使用量。 其他費用 (例如計算、儲存體和網路) 會個別收取。
 - **App Service 戳記費用**：保留涵蓋戳記使用量。 但不會套用至背景工作角色，因此任何其他與戳記相關聯的資源也會分開收費。
 - **適用於 MySQL 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 MySQL Database 伺服器相關聯的軟體、網路或儲存體費用。

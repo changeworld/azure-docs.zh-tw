@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 12/05/2019
-  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
-  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.date: 05/07/2020
+  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/03/2020
-  ms.locfileid: "82732983"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930619"
 landingContent:
 - title: 關於 Load Balancer
   linkLists:
@@ -28,11 +28,13 @@ landingContent:
       url: concepts.md
     - text: Load Balancer 元件
       url: components.md
+    - text: Load Balancer SKU
+      url: skus.md
 - title: 開始使用
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 建立 Standard Load Balancer 以平衡 VM 的負載
+    - text: 建立 Load Balancer 以平衡 VM 的負載
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -54,25 +56,27 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 使用 Azure CLI 在 Standard Load Balancer 中設定負載平衡和輸出規則
+    - text: 在 Standard Load Balancer 中設定負載平衡和輸出規則 (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: 使用 PowerShell 建立採用 IPv6 的網際網路對應負載平衡器
+    - text: 建立採用 IPv6 的網際網路對應負載平衡器 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: 設定分配模式
       url: load-balancer-distribution-mode.md
+    - text: 從 Basic 升級到 Standard
+      url: upgrade-basic-standard.md
 - title: 部署
   linkLists:
   - linkListType: concept
     links:
     - text: 標準 Load Balancer 和可用性區域
       url: load-balancer-standard-availability-zones.md
-    - text: 具有閒置 TCP 重設的負載平衡器 (公開預覽)
+    - text: 具有閒置 TCP 重設的 Load Balancer
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: 建立具有區域備援前端的 Standard Load Balancer
+    - text: 建立具有區域備援前端的 Load Balancer
       url: load-balancer-get-started-internet-az-portal.md
-    - text: 建立具有區域前端的 Standard Load Balancer
+    - text: 建立具有區域前端的 Load Balancer
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 在多個 IP 組態上進行負載平衡
       url: load-balancer-multiple-ip.md
@@ -94,3 +98,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+    - text: ARM 範本
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: 常見的 Load Balancer 問題
+      url: load-balancer-faqs.md

@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: ef10dd7566d74a112a849f500da1831bc8ccb682
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: e3a2e1f277d0824089ef5288f8966f9cd4b21efc
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365697"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651998"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>更新 Azure Cosmos DB Kyspace 或資料表的 RU/秒 - Cassandra API
 
@@ -39,11 +39,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | Command | 注意 |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | 建立或更新 Cosmos DB Cassandra API Keyspace。 |
-| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 建立新的 CosmosDB Cassandra 叢集金鑰。 |
-| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 建立新的 CosmosDB Cassandra 資料行。 |
-| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | 建立新的 CosmosDB Cassandra 結構描述。 |
-| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | 建立或更新 Cosmos DB Cassandra API 資料表。 |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | 取得 Cassandra API 資料表的輸送量值。 |
+| [Update-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandratablethroughput) | 更新 Cassandra API 資料表的輸送量值。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

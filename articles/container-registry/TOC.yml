@@ -32,6 +32,11 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3 - 更新 Web 應用程式
               href: container-registry-tutorial-deploy-update.md
+    - name: 範例
+      items:
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
     - name: 概念
       expanded: false
       items:
@@ -39,7 +44,7 @@
           items:
             - name: 安全性基準
               href: security-baseline.md
-        - name: 容器登錄 SKU 和限制
+        - name: 容器登錄層級和限制
           href: container-registry-skus.md
         - name: 登錄、存放庫和映像
           href: container-registry-concepts.md
@@ -68,6 +73,8 @@
               href: container-registry-repositories.md
             - name: 匯入容器映像
               href: container-registry-import-images.md
+            - name: 傳送成品 (預覽)
+              href: container-registry-transfer-images.md
             - name: 鎖定容器映像
               href: container-registry-image-lock.md
             - name: 刪除容器映像
@@ -82,10 +89,14 @@
               href: container-registry-webhook.md
         - name: 安全性和驗證
           items:
-            - name: 限制虛擬網路的存取 (預覽)
-              href: container-registry-vnet.md
-            - name: 與 Azure Private Link 整合 (預覽)
+            - name: 使用私人端點來限制存取
               href: container-registry-private-link.md
+            - name: 設定服務防火牆規則
+              href: container-registry-access-selected-networks.md
+            - name: 使用服務端點限制存取 (預覽)
+              href: container-registry-vnet.md
+            - name: 使用客戶管理的金鑰加密
+              href: container-registry-customer-managed-keys.md
             - name: 在防火牆外存取
               href: container-registry-firewall-access-rules.md
             - name: 驗證
@@ -102,16 +113,14 @@
                   href: container-registry-auth-kubernetes.md
                 - name: 從 Azure Kubernetes Service (AKS) 進行驗證
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                - name: 使用存放庫範圍的權杖進行驗證 (預覽)
+                  href: container-registry-repository-scoped-permissions.md
             - name: 角色型存取控制
               href: container-registry-roles.md
-            - name: 存放庫範圍的權限 (預覽)
-              href: container-registry-repository-scoped-permissions.md
             - name: 內容信任
               href: container-registry-content-trust.md
             - name: 使用資訊安全中心掃描影像
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-            - name: 加密登錄資料 (預覽)
-              href: container-registry-customer-managed-keys.md
         - name: 登錄和其他 Azure 服務
           expanded: false
           items:

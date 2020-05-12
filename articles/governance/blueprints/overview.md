@@ -1,14 +1,14 @@
 ---
 title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677404"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864499"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -21,8 +21,7 @@ ms.locfileid: "80677404"
 - Azure 資源管理員範本
 - 資源群組
 
-Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/introduction.md) 所支援。
-藍圖物件會複寫至多個 Azure 區域。 此複寫可針對您的藍圖物件提供低延遲、高可用性和一致的存取，無論 Azure 藍圖將您的資源部署至哪個區域。
+Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/introduction.md) 所支援。 藍圖物件會複寫至多個 Azure 區域。 此複寫可針對您的藍圖物件提供低延遲、高可用性和一致的存取，無論 Azure 藍圖將您的資源部署至哪個區域。
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>它與 Resource Manager 範本有何不同
 
@@ -57,7 +56,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ### <a name="blueprint-definition-locations"></a>藍圖定義位置
 
-建立藍圖定義時，您將定義藍圖的儲存位置。 藍圖可以儲存到您有其[參與者](../management-groups/overview.md)權限的**管理群組**或訂用帳戶。 如果該位置是管理群組，則可將藍圖指派給該管理群組的任何子訂用帳戶。
+建立藍圖定義時，您將定義藍圖的儲存位置。 藍圖可以儲存到您有其**參與者**權限的[管理群組](../management-groups/overview.md)或訂用帳戶。 如果該位置是管理群組，則可將藍圖指派給該管理群組的任何子訂用帳戶。
 
 ### <a name="blueprint-parameters"></a>藍圖參數
 

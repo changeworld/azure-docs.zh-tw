@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214936"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858135"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料
 
@@ -81,6 +81,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或是，您可以直接跳到[執行應用程式](#run-the-app)。 
 
+
+# <a name="sync-api"></a>[同步 API](#tab/sync)
+
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>使用同步 API 管理資料庫資源
 
 * `CosmosClient` 初始化。 `CosmosClient` 提供適用於 Azure Cosmos 資料庫服務的用戶端邏輯表示法。 此用戶端會用於設定和執行針對服務的要求。
@@ -106,6 +109,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * 使用 `queryItems` 方法，透過 JSON 執行 SQL 查詢。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+# <a name="async-api"></a>[非同步 API](#tab/async)
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>使用非同步 API 管理資料庫資源
 
@@ -134,6 +139,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * 就像同步 API 一樣，透過 JSON 的 SQL 查詢是使用 `queryItems` 方法來執行。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+
+---
 
 ## <a name="run-the-app"></a>執行應用程式
 

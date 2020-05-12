@@ -107,7 +107,7 @@
       items:
         - name: 概觀
           href: backup-azure-vms-introduction.md
-        - name: 'Backup '
+        - name: Backup
           items:
             - name: 使用 Azure 備份立即還原來備份與還原 Azure VM
               href: backup-instant-restore-capability.md
@@ -139,7 +139,7 @@
       items:
         - name: 概觀
           href: backup-azure-sql-database.md
-        - name: 'Backup '
+        - name: Backup
           href: backup-sql-server-database-azure-vms.md
         - name: 還原
           href: restore-sql-database-azure-vm.md
@@ -155,7 +155,7 @@
               href: install-mars-agent.md
             - name: 升級 MARS 代理程式
               href: upgrade-mars-agent.md
-        - name: 'Backup '
+        - name: Backup
           items:
             - name: 備份 Windows Server 檔案和資料夾
               href: backup-windows-with-mars-agent.md
@@ -175,7 +175,7 @@
           href: azure-file-share-backup-overview.md
         - name: 從 Azure 入口網站
           items:
-            - name: 'Backup '
+            - name: Backup
               href: backup-afs.md
             - name: 還原
               href: restore-afs.md
@@ -183,7 +183,7 @@
               href: manage-afs-backup.md
         - name: 透過 Azure CLI
           items:
-            - name: 'Backup '
+            - name: Backup
               href: backup-afs-cli.md
             - name: 還原
               href: restore-afs-cli.md
@@ -191,7 +191,7 @@
               href: manage-afs-backup-cli.md
         - name: 透過 PowerShell
           items:
-            - name: 'Backup '
+            - name: Backup
               href: backup-azure-afs-automation.md
             - name: 還原
               href: restore-afs-powershell.md
@@ -199,7 +199,7 @@
               href: manage-afs-powershell.md
         - name: 使用 REST API
           items:
-            - name: 'Backup '
+            - name: Backup
               href: backup-azure-file-share-rest-api.md
             - name: 還原
               href: restore-azure-file-share-rest-api.md
@@ -209,7 +209,7 @@
       items:
         - name: 概觀
           href: sap-hana-db-about.md
-        - name: 'Backup '
+        - name: Backup
           href: backup-azure-sap-hana-database.md
         - name: 還原
           href: sap-hana-db-restore.md
@@ -357,6 +357,8 @@
               href: soft-delete-sql-saphana-in-azure-vm.md
         - name: 混合式備份的安全性
           href: backup-azure-security-feature.md
+        - name: 私人端點
+          href: private-endpoints.md
         - name: 加密
           href: backup-encryption.md
         - name: 內建安全性控制
