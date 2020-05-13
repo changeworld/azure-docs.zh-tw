@@ -1,21 +1,20 @@
 ---
 title: 使用 Visual Studio 部署虛擬機器調整集
 description: 使用 Visual Studio 和 Resource Manager 範本部署虛擬機器調整集
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: visual-studio
 ms.date: 09/09/2019
-ms.author: mimckitt
-ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273336"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124358"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 建立虛擬機器擴展集
 
@@ -65,7 +64,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
 部署 Azure Resource Manager 範本來建立虛擬機器擴展集資源：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選擇 [**部署** > **新**的]。
+1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選擇 [**部署**  >  **新**的]。
 
     ![部署專案](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -85,7 +84,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>探索您的虛擬機器擴展集<a name="exploring-your-virtual-machine-scale-set"></a>
 
-選取 [ **view** > **Cloud Explorer** ] 以查看新的虛擬機器擴展集。 如有必要，請使用 [**全部**重新整理]。
+選取 [ **view**  >  **Cloud Explorer** ] 以查看新的虛擬機器擴展集。 如有必要，請使用 [**全部**重新整理]。
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301670"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121689"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>使用 KEDA 在 Kubernetes 上 Azure Functions
 
@@ -28,11 +28,11 @@ Azure Functions 服務是由兩個主要元件所組成：執行時間和縮放�
 
 ### <a name="installing-with-helm"></a>使用 Helm 安裝
 
-有各種方式可以在任何 Kubernetes 叢集中安裝 KEDA，包括 Helm。  部署選項記載于[KEDA 網站](https://keda.sh/deploy/)。
+有各種方式可以在任何 Kubernetes 叢集中安裝 KEDA，包括 Helm。  部署選項記載于[KEDA 網站](https://keda.sh/docs/deploy/)。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>將函數應用程式部署至 Kubernetes
 
-您可以將任何函數應用程式部署到執行 KEDA 的 Kubernetes 叢集。  因為您的函式會在 Docker 容器中執行，所以`Dockerfile`您的專案需要。  如果它還沒有，您可以在函式專案的根目錄執行下列命令來新增 Dockerfile：
+您可以將任何函數應用程式部署到執行 KEDA 的 Kubernetes 叢集。  因為您的函式會在 Docker 容器中執行，所以您的專案需要 `Dockerfile` 。  如果它還沒有，您可以在函式專案的根目錄執行下列命令來新增 Dockerfile：
 
 ```cli
 func init --docker-only
@@ -41,7 +41,7 @@ func init --docker-only
 若要建立映射，並將您的函式部署至 Kubernetes，請執行下列命令：
 
 > [!NOTE]
-> 核心工具會利用 docker CLI 來建立和發佈映射。 請確定已安裝 docker，並使用連接到您的`docker login`帳戶。
+> 核心工具會利用 docker CLI 來建立和發佈映射。 請確定已安裝 docker，並使用連接到您的帳戶 `docker login` 。
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
@@ -49,15 +49,15 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > 以函式應用程式的名稱取代 `<name-of-function-deployment>`。
 
-這會建立 Kubernetes `Deployment`資源、 `ScaledObject`資源和`Secrets`，其中包括從您`local.settings.json`的檔案匯入的環境變數。
+這會建立 Kubernetes `Deployment` 資源、 `ScaledObject` 資源和 `Secrets` ，其中包括從您的檔案匯入的環境變數 `local.settings.json` 。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>從私用登錄部署函數應用程式
 
-上述流程也適用于私用登錄。  如果您要從私人登錄提取您的容器映射，請在`--pull-secret`執行時，包含參考保存私人登錄認證之 Kubernetes 密碼的`func kubernetes deploy`旗標。
+上述流程也適用于私用登錄。  如果您要從私人登錄提取您的容器映射，請在執行時，包含 `--pull-secret` 參考保存私人登錄認證之 Kubernetes 密碼的旗標 `func kubernetes deploy` 。
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>從 Kubernetes 移除函式應用程式
 
-部署之後，您可以移除相關聯`Deployment`的、和建立`ScaledObject`的， `Secrets`以移除函式。
+部署之後，您可以移除相關聯的 `Deployment` 、和建立的，以移除函 `ScaledObject` 式 `Secrets` 。
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

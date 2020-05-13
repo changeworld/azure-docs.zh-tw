@@ -1,18 +1,20 @@
 ---
 title: 使用擴充功能排序搭配 Azure 虛擬機器擴展集
 description: 了解在虛擬機器擴展集上部署多個擴充功能時如何擴充功能佈建排序。
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273744"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121026"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>為虛擬機器擴展集中的擴充功能佈建排序
 Azure 虛擬機器擴充功能可提供多種功能，例如部署後的設定和管理、監視、安全性等等。 生產環境部署通常會搭配使用多個為 VM 執行個體設定的擴充功能，以達成所需的結果。

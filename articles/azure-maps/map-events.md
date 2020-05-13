@@ -1,20 +1,20 @@
 ---
 title: 處理對應事件 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，建立互動式 Web SDK 與地圖事件的對應。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534893"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124001"
 ---
 # <a name="interact-with-the-map"></a>與地圖互動
 
@@ -57,9 +57,9 @@ ms.locfileid: "79534893"
 | `close`             | 在以手動方式或以程式設計方式關閉快顯視窗時引發。|
 | `contextmenu`       | 按一下滑鼠右鍵時引發。|
 | `data`              | 在任何對應資料載入或變更時引發。 |
-| `dataadded`         | 當圖形加入至時引發`DataSource`。|
-| `dataremoved`       | 當圖形從中移除時引發`DataSource`。|
-| `datasourceupdated` | 在更新`DataSource`物件時引發。|
+| `dataadded`         | 當圖形加入至時引發 `DataSource` 。|
+| `dataremoved`       | 當圖形從中移除時引發 `DataSource` 。|
+| `datasourceupdated` | 在 `DataSource` 更新物件時引發。|
 | `dblclick`          | 當指標裝置在地圖上的相同點按兩次時引發。|
 | `drag`              | 在地圖、快顯或 HTML 標籤的「拖曳至平移」互動期間重複引發。|
 | `dragend`           | 當地圖、快顯或 HTML 標籤上的「拖曳至移動流覽」互動結束時引發。|
@@ -87,15 +87,15 @@ ms.locfileid: "79534893"
 | `pitchend`          | 在地圖的螺距（傾斜）結束之後，立即引發，做為使用者互動或方法的結果。|
 | `pitchstart`        | 每當地圖的音調（傾斜）開始變更為使用者互動或方法的結果時，就會引發。|
 | `ready`             | 當對應已準備好要以程式設計方式與互動時，載入最小的必要對應資源時引發。|
-| `render`            | <p>當地圖繪製到螢幕時引發，做為的結果：<ul><li>地圖的位置、縮放、音調或軸承的變更。</li><li>地圖樣式的變更。</li><li>`DataSource`來源的變更。</li><li>向量磚、GeoJSON 檔、圖像或 sprite 的載入。</li></ul></p>|
+| `render`            | <p>當地圖繪製到螢幕時引發，做為的結果：<ul><li>地圖的位置、縮放、音調或軸承的變更。</li><li>地圖樣式的變更。</li><li>來源的變更 `DataSource` 。</li><li>向量磚、GeoJSON 檔、圖像或 sprite 的載入。</li></ul></p>|
 | `resize`            | 在地圖已調整大小之後立即引發。|
 | `rotate`            | 在「拖曳至旋轉」互動期間重複引發。|
 | `rotateend`         | 當「拖曳至旋轉」互動結束時引發。|
 | `rotatestart`       | 在「拖曳至旋轉」互動開始時引發。|
 | `shapechanged`      | 當繪圖物件屬性變更時引發。|
 | `sourcedata`        | 當其中一個對應的來源載入或變更時（包括屬於來源的磚載入或變更時）引發。 |
-| `sourceadded`       | 當`DataSource`或`VectorTileSource`加入至對應時引發。|
-| `sourceremoved`     | 從對應中`DataSource`移除`VectorTileSource`或時引發。|
+| `sourceadded`       | 當 `DataSource` 或 `VectorTileSource` 加入至對應時引發。|
+| `sourceremoved`     | `DataSource` `VectorTileSource` 從對應中移除或時引發。|
 | `styledata`         | 對應的樣式載入或變更時引發。|
 | `styleimagemissing` | 當圖層嘗試從不存在的影像 sprite 載入影像時引發 |
 | `tokenacquired`     | 取得 AAD 存取權杖時引發。|

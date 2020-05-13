@@ -1,20 +1,20 @@
 ---
 title: 在地圖上顯示路線指示 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，在地圖上顯示兩個位置之間的指示。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: dde9264d0cb65726b624b918982cfa01985b63ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371416"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123967"
 ---
 # <a name="show-directions-from-a-to-b"></a>顯示從甲地到乙地的指示
 
@@ -29,7 +29,7 @@ ms.locfileid: "80371416"
 
 在上述程式碼中，第一個區塊會建立地圖物件，並將驗證機制設定為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
 
-第二個程式碼區塊會`TokenCredential`建立，以使用存取權杖來驗證 AZURE 地圖服務的 HTTP 要求。 然後，它會`TokenCredential`將`atlas.service.MapsURL.newPipeline()`傳遞至，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)實例。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
+第二個程式碼區塊會建立 `TokenCredential` ，以使用存取權杖來驗證 Azure 地圖服務的 HTTP 要求。 然後，它會將傳遞 `TokenCredential` 至 `atlas.service.MapsURL.newPipeline()` ，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)實例。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
 
 第三個程式碼區塊會建立[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)物件，並將其新增至對應。
 
@@ -39,7 +39,7 @@ ms.locfileid: "80371416"
 
 [符號圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)會使用文字或圖示來轉譯資料[源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中所包裝的以點為基礎的資料。 文字或圖示會轉譯為地圖上的符號。 第五個程式碼區塊會建立符號圖層，並將其新增至地圖。
 
-第六個程式碼區塊會查詢 Azure 地圖服務路由服務，這是[服務模組](how-to-use-services-module.md)的一部分。 RouteURL 的[calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)方法是用來取得起點和終點之間的路線。 接著會使用`geojson.getFeatures()`方法來解壓縮回應中的 GeoJSON 功能集合，並將它加入至資料來源。 然後，它會將回應呈現為地圖上的路線。 如需有關將線條新增至地圖的詳細資訊，請參閱[在地圖上新增線條](map-add-line-layer.md)。
+第六個程式碼區塊會查詢 Azure 地圖服務路由服務，這是[服務模組](how-to-use-services-module.md)的一部分。 RouteURL 的[calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)方法是用來取得起點和終點之間的路線。 接著會使用方法來解壓縮回應中的 GeoJSON 功能集合 `geojson.getFeatures()` ，並將它加入至資料來源。 然後，它會將回應呈現為地圖上的路線。 如需有關將線條新增至地圖的詳細資訊，請參閱[在地圖上新增線條](map-add-line-layer.md)。
 
 程式碼的最後一個區塊會使用地圖的[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)屬性來設定地圖的界限。
 
@@ -74,7 +74,7 @@ ms.locfileid: "80371416"
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [對應](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 請參閱下列文章中的完整程式碼範例：
 

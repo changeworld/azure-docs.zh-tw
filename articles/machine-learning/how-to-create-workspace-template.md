@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2a35b75d2896f6e04c68d7562ed9f5455006ae4d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983256"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121315"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本來建立 Azure Machine Learning 的工作區
 
@@ -26,7 +26,7 @@ ms.locfileid: "82983256"
 
 如需詳細資訊，請參閱 [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **Azure 訂**用帳戶。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -85,201 +85,79 @@ ms.locfileid: "82983256"
 
 如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "workspaceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the Azure Machine Learning workspace."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "southcentralus",
-      "allowedValues": [
-        "eastus",
-        "eastus2",
-        "southcentralus",
-        "southeastasia",
-        "westcentralus",
-        "westeurope",
-        "westus2"
-      ],
-      "metadata": {
-        "description": "Specifies the location for all resources."
-      }
-    },
-    "sku":{
-      "type": "string",
-      "defaultValue": "basic",
-      "allowedValues": [
-        "basic",
-        "enterprise"
-      ],
-      "metadata": {
-        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
-      }
-    },
-    "high_confidentiality":{
-      "type": "string",
-      "defaultValue": "false",
-      "allowedValues": [
-        "false",
-        "true"
-      ],
-      "metadata": {
-        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
-      }
-    },
-    "encryption_status":{
-      "type": "string",
-      "defaultValue": "Disabled",
-      "allowedValues": [
-        "Enabled",
-        "Disabled"
-      ],
-      "metadata": {
-        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
-      }
-    },
-    "cmk_keyvault":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault Resource Manager ID."
-      }
-    },
-    "resource_cmk_uri":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault key uri."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
-    "storageAccountType": "Standard_LRS",
-    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
-    "tenantId": "[subscription().tenantId]",
-    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
-    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2018-07-01",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {
-        "encryption": {
-          "services": {
-            "blob": {
-              "enabled": true
-            },
-            "file": {
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        },
-        "supportsHttpsTrafficOnly": true
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2018-02-14",
-      "name": "[variables('keyVaultName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "tenantId": "[variables('tenantId')]",
-        "sku": {
-          "name": "standard",
-          "family": "A"
-        },
-        "accessPolicies": []
-      }
-    },
-    {
-      "type": "Microsoft.Insights/components",
-      "apiVersion": "2015-05-01",
-      "name": "[variables('applicationInsightsName')]",
-      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
-      "kind": "web",
-      "properties": {
-        "Application_Type": "web"
-      }
-    },
-    {
-      "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2017-10-01",
-      "name": "[variables('containerRegistryName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard"
-      },
-      "properties": {
-        "adminUserEnabled": true
-      }
-    },
-    {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2020-01-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
-        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
-        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
-      ],
-      "identity": {
-        "type": "systemAssigned"
-      },
-      "sku": {
-            "tier": "[parameters('sku')]",
-            "name": "[parameters('sku')]"
-      },
-      "properties": {
-        "friendlyName": "[parameters('workspaceName')]",
-        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
-        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
-        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
-        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
-         "encryption": {
-                "status": "[parameters('encryption_status')]",
-                "keyVaultProperties": {
-                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
-                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
-                  }
-            },
-        "hbiWorkspace": "[parameters('high_confidentiality')]"
-      }
-    }
-  ]
-}
-```
+> [!IMPORTANT]
+> 使用此範本之前，您的訂用帳戶必須符合一些特定需求：
+> * __Azure Machine Learning__應用程式必須是您 Azure 訂用帳戶的__參與者__。
+> * 您必須具有包含加密金鑰的現有 Azure Key Vault。
+> * 您在 Azure Key Vault 中必須擁有存取原則，才能授與__Azure Cosmos DB__應用程式的__get__、wrap 和解除__包裝____存取權__。
+> * Azure Key Vault 必須位於您打算建立 Azure Machine Learning 工作區的相同區域中。
+> * 您的訂用帳戶必須支援__客戶管理的金鑰__以進行 Azure Cosmos DB。
 
-若要取得 Key Vault 的識別碼，以及此範本所需的金鑰 URI，您可以使用 Azure CLI。 下列命令會取得 Key Vault 識別碼：
+__若要將 Azure Machine Learning 應用程式新增為參與者__，請使用下列命令：
 
-```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
-```
+1. 若要從 CLI 向 Azure 進行驗證，請使用下列命令：
 
-此命令會傳回如下值：`"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`。
+    ```azurecli-interactive
+    az login
+    ```
+    
+    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
 
-若要取得客戶管理金鑰的 URI，請使用下列命令：
+1. 若要取得 Azure Machine Learning 應用程式的物件識別碼，請使用下列命令。 每個 Azure 訂用帳戶的值可能不同：
 
-```azurecli-interactive
-az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
-```
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
 
-此命令會傳回如下值：`"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`。
+    此命令會傳回物件識別碼，也就是 GUID。
+
+1. 若要將物件識別碼新增為訂用帳戶的參與者，請使用下列命令。 `<object-ID>`將取代為上一個步驟中的 GUID。 將取代 `<subscription-ID>` 為您的 Azure 訂用帳戶名稱或識別碼：
+
+    ```azurecli-interactive
+    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
+    ```
+
+__若要將金鑰新增至您的 Azure Key Vault__，請使用使用__Azure CLI 來管理 Key Vault__一文中的將[金鑰、秘密或憑證新增至金鑰保存庫](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault)一節中的資訊。
+
+__若要將存取原則新增至金鑰保存庫，請使用下列命令__：
+
+1. 若要取得 Azure Cosmos DB 應用程式的物件識別碼，請使用下列命令。 每個 Azure 訂用帳戶的值可能不同：
+
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
+    
+    此命令會傳回物件識別碼，也就是 GUID。
+
+1. 若要設定原則，請使用下列命令。 取代 `<keyvault-name>` 為現有 Azure Key Vault 的名稱。 `<object-ID>`將取代為上一個步驟中的 GUID：
+
+    ```azurecli-interactive
+    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
+    ```
+
+__若要為 Azure Cosmos DB 啟用客戶管理的金鑰__，請 azurecosmosdbcmk@service.microsoft.com 使用您的 Azure 訂用帳戶識別碼傳送電子郵件給。 如需詳細資訊，請參閱[為您的 Azure Cosmos 帳戶設定客戶管理的金鑰](..//cosmos-db/how-to-setup-cmk.md)。
+
+__若要取得__ `cmk_keyvault` 此範本所需之（Key Vault 的識別碼）和 `resource_cmk_uri` （金鑰 URI）參數的值，請使用下列步驟：
+
+1. 若要取得 Key Vault 識別碼，請使用下列命令：
+
+    ```azurecli-interactive
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    ```
+
+    此命令會傳回如下值：`/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault`。
+
+1. 若要取得客戶管理之金鑰的 URI 值，請使用下列命令：
+
+    ```azurecli-interactive
+    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    ```
+
+    此命令會傳回如下值：`https://mykeyvault.vault.azure.net/keys/mykey/{guid}`。
+
+__範例範本__
+
+:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > 建立工作區之後，您就無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別元的設定。 若要變更這些值，您必須使用新的值來建立新的工作區。
@@ -340,13 +218,13 @@ az group deployment create \
 
 * 不要針對相同的參數多次部署範本。 或刪除現有的資源，然後再使用此範本重新建立它們。
 
-* 檢查 Key Vault 的存取原則，然後使用這些原則來設定範本`accessPolicies`的屬性。 若要查看存取原則，請使用下列 Azure CLI 命令：
+* 檢查 Key Vault 的存取原則，然後使用這些原則來設定 `accessPolicies` 範本的屬性。 若要查看存取原則，請使用下列 Azure CLI 命令：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    如需使用範本`accessPolicies`區段的詳細資訊，請參閱[AccessPolicyEntry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    如需使用 `accessPolicies` 範本區段的詳細資訊，請參閱[AccessPolicyEntry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
 * 檢查 Key Vault 資源是否已存在。 如果有，請不要透過範本重新建立它。 例如，若要使用現有的 Key Vault，而不是建立新的，請對範本進行下列變更：
 
@@ -381,7 +259,7 @@ az group deployment create \
         },
         ```
 
-    * **Remove**從工作`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",`區的`dependsOn`區段中移除該行。 此外**Change** ，也`keyVault`請變更工作`properties`區區段中的專案，以`keyVaultId`參考參數：
+    * **Remove** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 從工作區的區段中移除該行 `dependsOn` 。 此外，也請**變更** `keyVault` `properties` 工作區區段中的專案，以參考 `keyVaultId` 參數：
 
         ```json
         {
@@ -409,7 +287,7 @@ az group deployment create \
         }
         ```
 
-    這些變更之後，您可以在執行範本時指定現有 Key Vault 資源的識別碼。 然後範本會將工作區的`keyVault`屬性設為其識別碼，以重複使用 Key Vault。
+    這些變更之後，您可以在執行範本時指定現有 Key Vault 資源的識別碼。 然後範本會將 `keyVault` 工作區的屬性設為其識別碼，以重複使用 Key Vault。
 
     若要取得 Key Vault 的識別碼，您可以參考原始範本執行的輸出，或使用 Azure CLI。 下列命令是使用 Azure CLI 取得 Key Vault 資源識別碼的範例：
 

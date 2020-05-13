@@ -3,7 +3,7 @@ title: 針對 Azure VM 配置失敗進行疑難排解 | Microsoft Docs
 description: 在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 services: virtual-machines
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: felixwu
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
@@ -11,13 +11,13 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
-ms.author: cjiang
-ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484395"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124783"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "77484395"
 
 **錯誤碼**：AllocationFailed 或 ZonalAllocationFailed
 
-**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何改善配置成功的可能性，網址為\/HTTPs：/aka.ms/allocation-guidance "
+**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何改善配置成功的可能性，網址為 HTTPs： \/ /aka.ms/allocation-guidance "
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 

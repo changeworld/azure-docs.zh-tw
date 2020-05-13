@@ -12,16 +12,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131198"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124579"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
->將此 URL 複製並貼`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us`到您的 RSS 摘要讀取器，以取得有關何時要重新流覽此頁面以取得更新的通知。
+>將此 URL 複製並貼 `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` 到您的 RSS 摘要讀取器，以取得有關何時要重新流覽此頁面以取得更新的通知。
 
 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
 
@@ -34,9 +34,9 @@ ms.locfileid: "82131198"
 
 ### <a name="new-widget-parameters-capabilities"></a>新的 widget 參數功能
 
-**深入**解析 widget 包含新的參數`language` ： `control`和。
+**深入**解析 widget 包含新的參數： `language` 和 `control` 。
 
-**播放**程式 widget 有新`locale`的參數。 和`locale` `language`參數都控制播放機的語言。
+**播放**程式 widget 有新的 `locale` 參數。 `locale`和 `language` 參數都控制播放機的語言。
 
 如需詳細資訊，請參閱[widget 類型](video-indexer-embed-widgets.md#widget-types)一節。 
 
@@ -53,19 +53,19 @@ ms.locfileid: "82131198"
     * [取得帳戶-授權](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
     * [取得帳戶-使用-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
-    帳戶物件的`Url`欄位指向[影片索引子網站](https://www.videoindexer.ai/)的位置。
-針對付費帳戶， `Url`欄位目前指向內部 URL，而不是公用網站。
+    帳戶物件的 `Url` 欄位指向[影片索引子網站](https://www.videoindexer.ai/)的位置。
+針對付費帳戶， `Url` 欄位目前指向內部 URL，而不是公用網站。
 在接下來的幾周，我們將變更它，並傳回所有帳戶的[影片索引子網站](https://www.videoindexer.ai/)URL （試用版和付費）。
 
     請勿使用內部 Url，您應該使用[影片索引子公用 api](https://api-portal.videoindexer.ai/)。
-* 如果您要在應用程式中內嵌影片索引子 Url，且 Url 未指向[影片索引子網站](https://www.videoindexer.ai/)或[影片索引子 API 端點](https://api.videoindexer.ai)，而不是指向區域端點（例如`https://wus2.videoindexer.ai`），請重新產生 url。
+* 如果您要在應用程式中內嵌影片索引子 Url，且 Url 未指向[影片索引子網站](https://www.videoindexer.ai/)或影片索引子 API 端點（），而不是指向 `https://api.videoindexer.ai` 區域端點（例如 `https://wus2.videoindexer.ai` ），請重新產生 url。
 
    您可以透過下列方式來執行此動作：
 
     * 以指向影片索引子 widget Api 的 URL 取代 URL （例如，[深入解析 widget](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
     * 使用影片索引子網站來產生新的內嵌 URL：
          
-         按下 [**播放**] 以前往您的影片頁面-> 按一下 [ ** &lt; / &gt;內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
+         按下 [**播放**] 以前往您的影片頁面-> 按一下 [ ** &lt; / &gt; 內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
    
     區域 Url 不受支援，將在未來幾周內遭到封鎖。
 
@@ -73,7 +73,7 @@ ms.locfileid: "82131198"
  
 ### <a name="custom-language-support-for-additional-languages"></a>其他語言的自訂語言支援
 
-影片索引子現在支援、 `ar-SY` `en-UK`和`en-AU`的自訂語言模型（僅限 API）。
+影片索引子現在支援、和的自訂語言模型 `ar-SY` `en-UK` `en-AU` （僅限 API）。
  
 ### <a name="delete-account-timeframe-action-update"></a>刪除帳戶時間範圍動作更新
 
@@ -127,7 +127,7 @@ ms.locfileid: "82131198"
  
 * 韓文自訂語言模型支援
 
-    影片索引子現在支援 API 和入口網站中`ko-KR`韓文（）的自訂語言模型。 
+    影片索引子現在支援 `ko-KR` API 和入口網站中韓文（）的自訂語言模型。 
 * 語音轉換文字（STT）支援的新語言
 
     影片索引子 Api 現在支援阿拉伯文 Levantine （ar-SY）、英文英國方言（en-GB）和英文澳大利亞方言（en-us）中的 STT。

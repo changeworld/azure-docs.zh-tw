@@ -1,19 +1,20 @@
 ---
 title: 虛擬機器擴展集的鄰近放置群組預覽
 description: 瞭解如何在 Azure 中建立和使用 Windows 虛擬機器擴展集的鄰近放置群組。
-author: cynthn
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.subservice: availability
 ms.date: 07/01/2019
-ms.author: cynthn
-ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273610"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124341"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>預覽：使用 PowerShell 建立和使用近接位置群組
 
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>建立擴展集
 
-當您使用[get-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)建立擴展集時， `-ProximityPlacementGroup $ppg.Id`請使用在鄰近放置群組中建立調整，以參考鄰近放置群組識別碼。
+當您使用 Get-azvmss 建立擴展集時，請使用在鄰近放置群組中建立調整， `-ProximityPlacementGroup $ppg.Id` 以[New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)參考鄰近放置群組識別碼。
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

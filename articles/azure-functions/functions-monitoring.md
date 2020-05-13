@@ -4,12 +4,12 @@ description: 瞭解如何搭配 Azure Functions 使用 Azure 應用程式 Insigh
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202408"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121516"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -29,7 +29,7 @@ ms.locfileid: "82202408"
 
 [啟用 Application Insights 整合](#enable-application-insights-integration)之後，您可以在 [**監視**] 索引標籤中查看遙測資料。
 
-1. 在 [函數應用程式] 頁面中，選取在設定 Application Insights 後至少執行一次的函式。 然後選取 [**監視**] 索引標籤。**請定期選取**[重新整理]，直到函式呼叫清單出現為止。
+1. 在 [函數應用程式] 頁面中，選取在設定 Application Insights 後至少執行一次的函式。 然後，從左窗格中選取 [**監視**]。 定期**選取**[重新整理]，直到函式呼叫清單出現為止。
 
    ![引動過程清單](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +40,9 @@ ms.locfileid: "82202408"
 
    ![引動過程詳細資料](media/functions-monitoring/invocation-details-ai.png)
 
-1. 如果第一次在您的訂用帳戶中使用 Azure Log Analytics，請選擇 [**在 Application Insights 中執行**] 連結，以查看在 azure 記錄檔中抓取 Azure 監視器記錄資料的查詢來源，系統會要求您啟用到。
+1. 選擇 [**在 Application Insights 中執行**]，以查看可在 Azure 記錄中抓取 Azure 監視器記錄資料的查詢來源。 如果這是您第一次在訂用帳戶中使用 Azure Log Analytics，系統會要求您啟用它。
 
-1. 當您選擇該連結並選擇啟用記錄分析時。 會顯示下列查詢。 您可以看到查詢結果受限於過去30天（`where timestamp > ago(30d)`）。 此外，結果只會顯示20個以上的資料列`take 20`（）。 相反地，函式的調用詳細資料清單是過去30天沒有限制的。
+1. 啟用 Log Analytics 之後，會顯示下列查詢。 您可以看到查詢結果受限於過去30天（ `where timestamp > ago(30d)` ）。 此外，結果只會顯示20個以上的資料列（ `take 20` ）。 相反地，函式的調用詳細資料清單是過去30天沒有限制的。
 
    ![Application Insights 分析引動過程清單](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "82202408"
 
 ## <a name="view-telemetry-in-application-insights"></a>在 Application Insights 中檢視遙測
 
-若要從 Azure 入口網站中的函式應用程式開啟 Application Insights，請移至函數應用程式的 **[總覽**] 頁面。 在 [**已設定的功能**] 下，選取 [ **Application Insights**]。
+若要從 Azure 入口網站中的函式應用程式開啟 Application Insights，請在左側頁面的 [**設定**] 下選取 [ **Application Insights** ]。 如果這是您第一次使用 Application Insights 訂用帳戶，系統會提示您啟用它：選取 [**開啟 Application Insights**]，**然後選取下一頁的 [** 套用]。
 
 ![從函數應用程式的 [總覽] 頁面開啟 Application Insights](media/functions-monitoring/ai-link.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "82202408"
 
 評估函式中的行為、效能和錯誤時，Application Insights 的下欄區域會很有説明：
 
-| 調查 | 描述 |
+| 調查 | 說明 |
 | ---- | ----------- |
-| **[故障](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況建立圖表和警示。 **作業名稱**是函式名稱。 除非您針對相依性執行自訂遙測，否則不會顯示相依性中的失敗。 |
+| **[失敗](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況建立圖表和警示。 **作業名稱**是函式名稱。 除非您針對相依性執行自訂遙測，否則不會顯示相依性中的失敗。 |
 | **[效能](../azure-monitor/app/performance-counters.md)** | 藉由查看每個**雲端角色實例**的資源使用率和輸送量來分析效能問題。 如果要對函式拖累基礎資源的案例進行偵錯，此資料非常有用。 |
 | **[計量](../azure-monitor/app/metrics-explorer.md)** | 建立以度量為基礎的圖表和警示。 計量包括函式呼叫數目、執行時間和成功率。 |
 | **[即時計量](../azure-monitor/app/live-stream.md)** | 查看以近乎即時的方式建立的計量資料。 |
@@ -86,7 +86,7 @@ requests
 
 可用的資料表會顯示在左邊的 [**架構**] 索引標籤中。 您可以找到下表中函式引動過程所產生的資料：
 
-| Table | 描述 |
+| Table | 說明 |
 | ----- | ----------- |
 | **追蹤** | 由執行時間和函式程式碼所建立的記錄。 |
 | **要求** | 每個函式呼叫都有一個要求。 |
@@ -104,7 +104,7 @@ traces
 | where customDimensions.LogLevel == "Error"
 </pre>
 
-執行時間會提供`customDimensions.LogLevel`和`customDimensions.Category`欄位。 您可以在您的函式程式碼中撰寫的記錄中提供額外的欄位。 請參閱本文稍後的[結構化記錄](#structured-logging)。
+執行時間會提供 `customDimensions.LogLevel` 和 `customDimensions.Category` 欄位。 您可以在您的函式程式碼中撰寫的記錄中提供額外的欄位。 請參閱本文稍後的[結構化記錄](#structured-logging)。
 
 ## <a name="configure-categories-and-log-levels"></a>設定類別和記錄層級
 
@@ -114,18 +114,18 @@ traces
 
 Azure Functions 記錄器包括每個記錄的「類別」**。 類別指出寫入記錄的是哪個部分的執行階段程式碼或函式程式碼。 下圖描述執行時間所建立的主要記錄類別。 
 
-| 類別 | 描述 |
+| 類別 | 說明 |
 | ----- | ----- | 
-| Host.Results | 這些記錄會在 Application Insights 中顯示為**要求**。 它們表示函式的成功或失敗。 所有這些記錄檔都是在`Information`層級寫入。 如果您篩選的`Warning`是或更新版本，就不會看到這項資料。 |
-| 主機。匯總工具 | 這些記錄會透過[可設定](#configure-the-aggregator)的期間來提供函式引動過程的計數與平均。 預設期間為 30 秒或 1,000 個結果，視何者較早達到而定。 您可在 Application Insights 中的 **customMetrics** 資料表取得記錄。 範例包括執行數、成功率和持續時間。 所有這些記錄檔都是在`Information`層級寫入。 如果您篩選的`Warning`是或更新版本，就不會看到這項資料。 |
+| Host.Results | 這些記錄會在 Application Insights 中顯示為**要求**。 它們表示函式的成功或失敗。 所有這些記錄檔都是在 `Information` 層級寫入。 如果您篩選的 `Warning` 是或更新版本，就不會看到這項資料。 |
+| 主機。匯總工具 | 這些記錄會透過[可設定](#configure-the-aggregator)的期間來提供函式引動過程的計數與平均。 預設期間為 30 秒或 1,000 個結果，視何者較早達到而定。 您可在 Application Insights 中的 **customMetrics** 資料表取得記錄。 範例包括執行數、成功率和持續時間。 所有這些記錄檔都是在 `Information` 層級寫入。 如果您篩選的 `Warning` 是或更新版本，就不會看到這項資料。 |
 
 在 Application Insights 的**追蹤**資料表中可取得這些類別以外的所有記錄。
 
-具有以開頭之類別目錄的`Host`所有記錄都是由函式執行時間所撰寫。 函式已**啟動**，且函式**已完成**記錄具有類別目錄`Host.Executor`。 對於成功執行，這些記錄是`Information`層級。 例外狀況會記錄`Error`在層級。 執行階段也會建立 `Warning` 層級的記錄，例如：傳送至有害佇列的佇列訊息。
+具有以開頭之類別目錄的所有記錄 `Host` 都是由函式執行時間所撰寫。 函式已**啟動**，且函式**已完成**記錄具有類別目錄 `Host.Executor` 。 對於成功執行，這些記錄是 `Information` 層級。 例外狀況會記錄在 `Error` 層級。 執行階段也會建立 `Warning` 層級的記錄，例如：傳送至有害佇列的佇列訊息。
 
-函式執行時間會建立具有以 "Host" 開頭之類別的記錄。 在1.x 版中`function started`，、 `function executed`和`function completed`記錄檔具有類別目錄。 `Host.Executor` 從2.x 版開始，這些記錄具有類別目錄`Function.<YOUR_FUNCTION_NAME>`。
+函式執行時間會建立具有以 "Host" 開頭之類別的記錄。 在1.x 版中， `function started` 、 `function executed` 和 `function completed` 記錄檔具有類別目錄 `Host.Executor` 。 從2.x 版開始，這些記錄具有類別目錄 `Function.<YOUR_FUNCTION_NAME>` 。
 
-如果您在函式程式碼中寫入記錄，則類別`Function.<YOUR_FUNCTION_NAME>.User`目錄是，而且可以是任何記錄層級。 在1.x 版的函式執行時間中，類別是`Function`。
+如果您在函式程式碼中寫入記錄，則類別目錄為， `Function.<YOUR_FUNCTION_NAME>.User` 而且可以是任何記錄層級。 在1.x 版的函式執行時間中，類別是 `Function` 。
 
 ### <a name="log-levels"></a>記錄層級
 
@@ -184,13 +184,13 @@ Azure Functions 記錄器也會包含每個記錄檔的*記錄層級*。 [LogLev
 
 此範例會設定下列規則：
 
-* 針對分類`Host.Results`為或`Function`的記錄，只`Error`傳送層級和更新版本到 Application Insights。 `Warning` 層級和以下層級的記錄均會被忽略。
+* 針對分類為或的記錄 `Host.Results` `Function` ，只傳送 `Error` 層級和更新版本到 Application Insights。 `Warning` 層級和以下層級的記錄均會被忽略。
 * 針對類別為 `Host.Aggregator` 的記錄，則會將所有記錄傳送到 Application Insights。 `Trace` 記錄層級和某些記錄器稱為 `Verbose` 的記錄層級相同，但會在 [host.json] 檔案中使用 `Trace`。
 * 針對所有其他記錄，只會將 `Information` 層級和以上層級傳送至 Application Insights。
 
-[Host.json] 中的類別值會控制以相同值開頭之所有類別的記錄。 `Host`在[host.json]中`Host.General`，json 會控制、 `Host.Executor`、 `Host.Results`等等的記錄。
+[Host.json] 中的類別值會控制以相同值開頭之所有類別的記錄。 `Host`在中， [json]會控制、、等等的記錄 `Host.General` `Host.Executor` `Host.Results` 。
 
-如果 [host.json] 包含多個以相同字串開頭的類別，則會先比對較長的類別。 假設您想要`Host.Aggregator`來自執行時間`Error`的所有專案，但不包括登入`Host.Aggregator`層級，但是`Information`您想要在層級記錄：
+如果 [host.json] 包含多個以相同字串開頭的類別，則會先比對較長的類別。 假設您想要來自執行時間的所有專案 `Host.Aggregator` `Error` ，但不包括登入層級，但是您想 `Host.Aggregator` 要在 `Information` 層級記錄：
 
 ### <a name="version-2x-and-later"></a>2.x 版和更新版本
 
@@ -229,7 +229,7 @@ Azure Functions 記錄器也會包含每個記錄檔的*記錄層級*。 [LogLev
 
 ## <a name="configure-the-aggregator"></a>設定彙總工具
 
-如前一節所述，執行階段經過一段時間就會彙總有關函式執行的資料。 預設期間為 30 秒或 1,000 個執行，視何者較早達到而定。 您可以在 [host.json] 檔案中設定此設定。  範例如下：
+如前一節所述，執行階段經過一段時間就會彙總有關函式執行的資料。 預設期間為 30 秒或 1,000 個執行，視何者較早達到而定。 您可以在 [host.json] 檔案中設定此設定。  以下是範例：
 
 ```json
 {
@@ -242,7 +242,7 @@ Azure Functions 記錄器也會包含每個記錄檔的*記錄層級*。 [LogLev
 
 ## <a name="configure-sampling"></a>設定取樣
 
-Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可防止您在尖峰負載時，于已完成的執行中產生太多遙測資料。 當傳入執行的速率超過指定的臨界值時，Application Insights 會開始隨機忽略部分傳入的執行。 每秒執行數上限的預設值為20（版本1.x 中為5個）。 您可以在 [host.json] 中設定取樣。  範例如下：
+Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可防止您在尖峰負載時，于已完成的執行中產生太多遙測資料。 當傳入執行的速率超過指定的臨界值時，Application Insights 會開始隨機忽略部分傳入的執行。 每秒執行數上限的預設值為20（版本1.x 中為5個）。 您可以在 [host.json] 中設定取樣。  以下是範例：
 
 ### <a name="version-2x-and-later"></a>2.x 版和更新版本
 
@@ -281,9 +281,9 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 
 ### <a name="ilogger"></a>ILogger
 
-在您的函式中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 參數而不是 `TraceWriter` 參數。 使用`TraceWriter` [移至 Application Insights] 建立的記錄`ILogger` ，可讓您執行[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+在您的函式中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 參數而不是 `TraceWriter` 參數。 使用 [移至 Application Insights] 建立的記錄 `TraceWriter` ，可 `ILogger` 讓您執行[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會`Information`寫入類別為 "Function. <YOUR_FUNCTION_NAME> 的記錄。「使用者」。
+利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會寫入 `Information` 類別為 "Function. <YOUR_FUNCTION_NAME> 的記錄。「使用者」。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -305,7 +305,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 您可以使用這種方式來處理預留位置，讓您能夠執行結構化記錄。 Application Insights 會儲存參數名稱/值組和訊息字串。 結果就是訊息引數會變成您可以查詢的欄位。
 
-如果您的記錄器方法呼叫看起來像先前的範例，您可以查詢`customDimensions.prop__rowKey`欄位。 加入`prop__`前置詞，以確保執行時間新增的欄位與您的函式程式碼新增的欄位之間沒有衝突。
+如果您的記錄器方法呼叫看起來像先前的範例，您可以查詢欄位 `customDimensions.prop__rowKey` 。 `prop__`加入前置詞，以確保執行時間新增的欄位與您的函式程式碼新增的欄位之間沒有衝突。
 
 您也可以藉由參考欄位 `customDimensions.prop__{OriginalFormat}`，在原始訊息字串上進行查詢。  
 
@@ -330,7 +330,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 logger.LogMetric("TestMetric", 1234);
 ```
 
-這段程式碼是使用適用`TrackMetric`于 .net 的 Application Insights API 呼叫的替代方法。
+這段程式碼是 `TrackMetric` 使用適用于 .net 的 APPLICATION INSIGHTS API 呼叫的替代方法。
 
 ## <a name="write-logs-in-javascript-functions"></a>在 JavaScript 函式中寫入記錄
 
@@ -342,13 +342,13 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>自訂計量記錄
 
-當您在 1.x[版](functions-versions.md#creating-1x-apps)的函式執行時間執行時，node.js 函式可以使用`context.log.metric`方法，在 Application Insights 中建立自訂計量。 在2.x 版和更新版本中，目前不支援這個方法。 以下是範例方法呼叫：
+當您在 1.x[版](functions-versions.md#creating-1x-apps)的函式執行時間執行時，node.js 函式可以使用 `context.log.metric` 方法，在 Application Insights 中建立自訂計量。 在2.x 版和更新版本中，目前不支援這個方法。 以下是範例方法呼叫：
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-這段程式碼是使用適用`trackMetric`于 Application Insights 的 node.js SDK 呼叫的替代方法。
+這段程式碼是 `trackMetric` 使用適用于 Application Insights 的 NODE.JS SDK 呼叫的替代方法。
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函式中記錄自訂遙測
 
@@ -368,13 +368,13 @@ Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VE
 
 ---
 
-在此命令中， `<VERSION>`請將取代為支援您已安裝之[Microsoft](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)版本的此套件版本。 
+在此命令中，請 `<VERSION>` 將取代為支援您已安裝之[Microsoft](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)版本的此套件版本。 
 
 下列 c # 範例會使用[自訂遙測 API](../azure-monitor/app/api-custom-events-metrics.md)。 此範例適用於 .NET 類別庫，但 Application Insights 程式碼同樣適用於 C# 指令碼。
 
 ### <a name="version-2x-and-later"></a>2.x 版和更新版本
 
-2.x 版和更新版本的執行時間會使用 Application Insights 中的較新功能，自動將遙測與目前的作業相互關聯。 不需要手動設定作業`Id`、 `ParentId`或`Name`欄位。
+2.x 版和更新版本的執行時間會使用 Application Insights 中的較新功能，自動將遙測與目前的作業相互關聯。 不需要手動設定作業 `Id` 、 `ParentId` 或 `Name` 欄位。
 
 ```cs
 using System;
@@ -527,9 +527,9 @@ namespace functionapp0915
 }
 ```
 
-請勿呼叫`TrackRequest`或`StartOperation<RequestTelemetry>` ，因為您會看到函式呼叫的重複要求。  Functions 執行階段會自動追蹤要求。
+請勿呼叫 `TrackRequest` 或 `StartOperation<RequestTelemetry>` ，因為您會看到函式呼叫的重複要求。  Functions 執行階段會自動追蹤要求。
 
-請勿設定 `telemetryClient.Context.Operation.Id`。 當同時執行許多函式時，此全域設定會導致不正確的相互關聯。 請改為建立新的遙測執行個體 (`DependencyTelemetry`、`EventTelemetry`)，並修改其 `Context` 屬性。 然後將遙測實例傳入`Track` （ `TelemetryClient` `TrackDependency()`， `TrackEvent()`， `TrackMetric()`）上的對應方法。 這個方法可確保遙測具有目前函式呼叫的正確相互關聯詳細資料。
+請勿設定 `telemetryClient.Context.Operation.Id`。 當同時執行許多函式時，此全域設定會導致不正確的相互關聯。 請改為建立新的遙測執行個體 (`DependencyTelemetry`、`EventTelemetry`)，並修改其 `Context` 屬性。 然後將遙測實例傳入 `Track` `TelemetryClient` （ `TrackDependency()` ， `TrackEvent()` ，）上的對應方法 `TrackMetric()` 。 這個方法可確保遙測具有目前函式呼叫的正確相互關聯詳細資料。
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函式中記錄自訂遙測
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 };
 ```
 
-`tagOverrides`參數會將設定`operation_Id`為函式的調用識別碼。 此設定能夠讓指定的函式引動過程中所有自動產生和自訂的遙測相互關聯。
+`tagOverrides`參數會將設定 `operation_Id` 為函式的調用識別碼。 此設定能夠讓指定的函式引動過程中所有自動產生和自訂的遙測相互關聯。
 
 ## <a name="dependencies"></a>相依性
 
@@ -605,7 +605,7 @@ module.exports = function (context, req) {
 
 ![建立函式應用程式時啟用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
 
-當您選擇 [**建立**] 時，系統會使用您的函式應用程式建立`APPINSIGHTS_INSTRUMENTATIONKEY` Application Insights 資源，其在 [應用程式設定] 中有設定。 一切都已準備就緒。
+當您選擇 [**建立**] 時，系統會使用您的函式應用程式建立 Application Insights 資源，其 `APPINSIGHTS_INSTRUMENTATIONKEY` 在 [應用程式設定] 中有設定。 一切都已準備就緒。
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>新增至現有的函數應用程式 

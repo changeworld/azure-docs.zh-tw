@@ -1,17 +1,17 @@
 ---
 title: 設定和管理 Azure Cosmos DB 中的存留時間
 description: 瞭解如何設定和管理容器中的存留時間和 Azure Cosmos DB 中的專案
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3019e9f78a51a991d5c6e96655f5dbae1f224620
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869879"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124120"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
 

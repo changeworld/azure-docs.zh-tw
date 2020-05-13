@@ -1,21 +1,20 @@
 ---
 title: 垂直調整 Azure 虛擬機器擴展集
 description: 如何垂直調整虛擬機器大小以回應 Azure 自動化的監視警示
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 04/18/2019
-ms.author: mimckitt
-ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 69c613de02b9601966cae2d36c13428ca6c7becc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273353"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120992"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虛擬機器擴展集垂直自動調整
 
@@ -88,7 +87,7 @@ ms.locfileid: "81273353"
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用執行身分功能來建立 Azure 自動化帳戶
-您需要做的第一件事是建立 Azure 自動化帳戶，以此帳戶裝載用來調整虛擬機器擴展集執行個體的 Runbook。 最近，[Azure 自動化](https://azure.microsoft.com/services/automation/)引進了「執行身分帳戶」功能，此功能可設定服務主體以便代表使用者自動執行 Runbook。 如需詳細資訊，請參閱：
+您需要做的第一件事是建立 Azure 自動化帳戶，以此帳戶裝載用來調整虛擬機器擴展集執行個體的 Runbook。 最近，[Azure 自動化](https://azure.microsoft.com/services/automation/)引進了「執行身分帳戶」功能，此功能可設定服務主體以便代表使用者自動執行 Runbook。 如需詳細資訊，請參閱
 
 * [使用 Azure 執行身分帳戶驗證 Runbook](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -157,7 +156,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure 監視器 PowerShell 快速入門範例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure 監視器跨平台 CLI 快速入門範例](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 這篇文章示範簡單的垂直調整範例。 藉助這些建置組塊 (自動化帳戶、Runbook、Webhook、警示)，您可以連接各式各樣的事件與一組自訂的動作。
 

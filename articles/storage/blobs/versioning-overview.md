@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993953"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123831"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定（預覽）
 
@@ -167,7 +167,7 @@ Blob 快照集是特定時間點所取得之 blob 的唯讀複本。 Blob 快照
 您可以使用下列其中一種方法來授權 blob 版本的存取權：
 
 - 藉由使用角色型存取控制（RBAC）將許可權授與 Azure Active Directory （Azure AD）安全性主體。 Microsoft 建議使用 Azure AD 以獲得更佳的安全性和易用性。 如需有關使用 Azure AD 搭配 blob 作業的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
-- 藉由使用共用存取簽章（SAS）來委派 blob 版本的存取權。 指定已簽署資源類型`bv`的版本識別碼（代表 blob 版本），以針對特定版本的作業建立 SAS 權杖。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
+- 藉由使用共用存取簽章（SAS）來委派 blob 版本的存取權。 指定已簽署資源類型的版本識別碼 `bv` （代表 blob 版本），以針對特定版本的作業建立 SAS 權杖。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
 - 藉由使用帳戶存取金鑰，以共用金鑰組 blob 版本的作業進行授權。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所設計。 若要加強保護，刪除 blob 版本需要特殊許可權。 下列各節說明刪除 blob 版本所需的許可權。
@@ -176,14 +176,14 @@ Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所
 
 下表顯示哪些 RBAC 動作支援刪除 blob 或 blob 版本。
 
-| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 刪除 blob 的目前版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/delete/actionDeleting** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/** | 儲存體 Blob 資料擁有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a>共用存取簽章（SAS）參數
 
-Blob 版本的已簽署資源是`bv`。 如需詳細資訊，請參閱[建立服務 SAS](/rest/api/storageservices/create-service-sas)或[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。
+Blob 版本的已簽署資源是 `bv` 。 如需詳細資訊，請參閱[建立服務 SAS](/rest/api/storageservices/create-service-sas)或[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
 下表顯示在 SAS 上刪除 blob 版本所需的許可權。
 
@@ -224,9 +224,10 @@ Blob 版本設定適用于下列類型的儲存體帳戶：
 若要向 PowerShell 註冊，請呼叫[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
@@ -308,11 +309,11 @@ Blob 版本（例如 blob 快照集）的計費方式與使用中資料的費率
 
 #### <a name="scenario-4"></a>案例 4
 
-在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，帳戶會針對基底 blob 中的所有八個&mdash;唯一區塊和前一版中的四個區塊收費。 如果您使用 Put Blob 作業寫入 blob，就會發生此情況，因為它會取代基底 blob 的完整內容。
+在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，帳戶會針對基底 blob 中的所有八個唯一區塊 &mdash; 和前一版中的四個區塊收費。 如果您使用 Put Blob 作業寫入 blob，就會發生此情況，因為它會取代基底 blob 的完整內容。
 
 ![Azure 儲存體資源](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [啟用 Blob 版本設定](versioning-enable.md)
 - [建立 blob 的快照集](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

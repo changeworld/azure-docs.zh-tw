@@ -2,20 +2,20 @@
 title: 針對金鑰保存庫的存取進行保護 - Azure Key Vault | Microsoft Docs
 description: 針對 Azure Key Vault、金鑰和祕密進行存取權限管理。 包含 Key Vault 的驗證和授權模型以及如何保護金鑰保存庫。
 services: key-vault
-author: amitbapat
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ambapat
-ms.openlocfilehash: 0ae1b26bb2e01d388f3f91d94134bb9723a5a305
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432017"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121145"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -124,18 +124,18 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 下表摘要說明角色和應用程式的存取權限。
 
-| [角色] | 管理平面權限 | 資料平面權限 |
+| 角色 | 管理平面權限 | 資料平面權限 |
 | --- | --- | --- |
 | 安全性小組 | Key Vault 參與者 | 金鑰︰備份、建立、刪除、取得、匯入、列出、還原<br>祕密：所有作業 |
 | 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此許可權可讓已部署的 vm 從金鑰保存庫提取秘密。 | 無 |
 | 稽核員 | 無 | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此許可權可讓審計員檢查未在記錄中發出之金鑰和密碼的屬性（標記、啟用日期、到期日）。 |
-| Application | 無 | 金鑰︰簽署<br>密碼︰取得 |
+| 應用程式 | 無 | 金鑰︰簽署<br>密碼︰取得 |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 VM (或 Azure App Service 的 Web Apps 功能)，開發人員和操作員需要這些資源類型的 `Contributor` 存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。
 
 如需如何以程式設計方式部署憑證、存取金鑰和祕密的詳細資訊，請參閱下列資源：
 - 了解如何[將憑證從客戶管理的金鑰保存庫部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (部落格文章)。
-- 下載[Azure Key Vault 用戶端範例](https://www.microsoft.com/download/details.aspx?id=45343)。 此內容會示範如何使用啟動程序憑證，向 Azure AD 驗證以存取金鑰保存庫。
+- 查看[Azure Key Vault 用戶端範例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此內容會示範如何使用啟動程序憑證，向 Azure AD 驗證以存取金鑰保存庫。
 
 您可以使用 Azure 入口網站授與大部分的存取權限。 若要授與細微權限，您可以使用 Azure PowerShell 或 Azure CLI。
 
@@ -219,7 +219,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 * [金鑰存取控制](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
 
-* [秘密存取控制](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
+* [密碼存取控制](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
 
 * 使用 PowerShell [設定](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy)和[移除](/powershell/module/az.keyvault/Remove-azKeyVaultAccessPolicy) Key Vault 存取原則。
 

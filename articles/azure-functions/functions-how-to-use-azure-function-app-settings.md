@@ -3,14 +3,14 @@ title: 在 Azure 中設定函數應用程式設定
 description: 了解如何設定 Azure Functions 應用程式設定。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276942"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122287"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -27,9 +27,11 @@ ms.locfileid: "79276942"
 
 ## <a name="get-started-in-the-azure-portal"></a>開始使用 Azure 入口網站
 
-若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函數應用程式的名稱，然後從清單中選取它。 選取函數應用程式之後，您會看到下列頁面：
+1. 若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函數應用程式的名稱，並從清單中選取它。 
 
-![Azure 入口網站中的函數應用程式概觀](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. 在左窗格的 [設定] 下 **，選取 [****設定**]。
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 入口網站中的函數應用程式概觀":::
 
 您可以從 [總覽] 頁面流覽至管理函式應用程式所需的所有專案，特別是 [**[應用程式設定](#settings)**] 和 [**[平臺] 功能](#platform-features)**。
 
@@ -45,14 +47,14 @@ ms.locfileid: "79276942"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-此[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)命令會傳回現有的應用程式設定，如下列範例所示：
+此 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令會傳回現有的應用程式設定，如下列範例所示：
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)命令會新增或更新應用程式設定。 下列範例會使用名為`CUSTOM_FUNCTION_APP_SETTING`的索引鍵和的值來`12345`建立設定：
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)命令會新增或更新應用程式設定。 下列範例會使用名為的索引鍵 `CUSTOM_FUNCTION_APP_SETTING` 和的值來建立設定 `12345` ：
 
 
 ```azurecli-interactive
@@ -69,9 +71,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="platform-features"></a>平台功能
 
-![函數應用程式平台功能索引標籤。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-函數應用程式是在 Azure App Service 平台中執行並由此平台維護。 因此，您的函數應用程式可以存取 Azure 核心虛擬主機平台的大多數功能。 [平台功能]**** 索引標籤可供您存取許多可在函數應用程式中使用的 App Service 平台功能。 
+函式應用程式會在中執行，並由 Azure App Service 平臺維護。 因此，您的函數應用程式可以存取 Azure 核心虛擬主機平台的大多數功能。 左側窗格可讓您存取可在函數應用程式中使用之 App Service 平臺的許多功能。 
 
 > [!NOTE]
 > 當函數應用程式在「取用」主控方案上執行時，並非所有 App Service 功能都可供使用。
@@ -116,17 +116,17 @@ App Service 的進階工具 (也稱為 Kudu) 可讓您存取函數應用程式�
 
 ### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>跨原始資源共用
 
-為了避免在用戶端上執行惡意程式碼，現代化的瀏覽器會封鎖從 web 應用程式對在不同網域中執行之資源的要求。 [跨原始來源資源分享（CORS）](https://developer.mozilla.org/docs/Web/HTTP/CORS)可讓`Access-Control-Allow-Origin`標頭宣告哪些來源可以呼叫您函式應用程式上的端點。
+為了避免在用戶端上執行惡意程式碼，現代化的瀏覽器會封鎖從 web 應用程式對在不同網域中執行之資源的要求。 [跨原始來源資源分享（CORS）](https://developer.mozilla.org/docs/Web/HTTP/CORS)可讓 `Access-Control-Allow-Origin` 標頭宣告哪些來源可以呼叫您函式應用程式上的端點。
 
 #### <a name="portal"></a>入口網站
 
-當您設定函數應用程式的 [允許的原始**來源**] `Access-Control-Allow-Origin`清單時，會自動將標頭新增至函式應用程式中來自 HTTP 端點的所有回應。 
+當您設定函數應用程式的 [允許的原始**來源**] 清單時，會 `Access-Control-Allow-Origin` 自動將標頭新增至函式應用程式中來自 HTTP 端點的所有回應。 
 
 ![設定函數應用程式的 CORS 清單](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-使用萬用字元（`*`）時，會忽略所有其他網域。 
+使用萬用字元（ `*` ）時，會忽略所有其他網域。 
 
-使用[`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add)命令將網域新增至允許的來源清單。 下列範例會新增 contoso.com 網域：
+使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令將網域新增至允許的來源清單。 下列範例會新增 contoso.com 網域：
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,7 +134,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-使用[`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show)命令來列出目前允許的原始來源。
+使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令來列出目前允許的原始來源。
 
 ### <a name="authentication"></a><a name="auth"></a>驗證
 

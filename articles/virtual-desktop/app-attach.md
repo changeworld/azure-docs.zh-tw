@@ -5,21 +5,21 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612464"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121060"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
 > [!IMPORTANT]
 > MSIX 應用程式附加目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本主題將逐步引導您瞭解如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式連接。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82612464"
      >[!NOTE]
      >您必須是 Windows 測試人員程式的成員，才能存取 Windows 測試人員入口網站。 若要深入瞭解 Windows 測試人員程式，請參閱我們的[Windows 測試人員檔](/windows-insider/at-home/)。
 
-2. 向下流覽至 [**選取版本**] 區段，然後選取 [ **Windows 10 Insider PREVIEW Enterprise （FAST）–組建 19035**或更新版本]。
+2. 向下流覽至 [**選取版本**] 區段，然後選取 [ **Windows 10 Insider PREVIEW Enterprise （FAST）–組建 19041**或更新版本]。
 
 3. 選取 [**確認**]，然後選取您想要使用的語言，再選取 [**確認**]。
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+停用自動更新之後，您必須啟用 Hyper-v，因為您會使用丘-VHD 命令來將 VHD 預備和卸載至「移至容器」。 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>這種變更將需要您重新開機虛擬機器。
 
 接下來，準備適用于 Azure 的 VM VHD，並將產生的 VHD 磁片上傳至 Azure。 若要深入瞭解，請參閱[準備和自訂主要 VHD 映射](set-up-customize-master-image.md)。
 
@@ -207,11 +215,11 @@ MSIX 應用程式附加有四個不同的階段，必須依照下列循序執行
 
 4.  開啟父資料夾。 如果正確展開，您會看到與封裝同名的資料夾。 更新 **$packageName**變數以符合此資料夾的名稱。
 
-    例如： `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe` 。
+    例如 `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`。
 
 5.  開啟命令提示字元，然後輸入**mountvol**。 此命令將會顯示磁片區及其 Guid 的清單。 複製磁片區的 GUID，其中磁碟機號符合您在步驟2中掛接 VHD 的磁片磁碟機。
 
-    例如，在此 mountvol 命令的範例輸出中，如果您將 VHD 掛接到 C 磁片磁碟機，您會想要複製上述`C:\`的值：
+    例如，在此 mountvol 命令的範例輸出中，如果您將 VHD 掛接到 C 磁片磁碟機，您會想要複製上述的值 `C:\` ：
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ MSIX 應用程式附加有四個不同的階段，必須依照下列循序執行
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

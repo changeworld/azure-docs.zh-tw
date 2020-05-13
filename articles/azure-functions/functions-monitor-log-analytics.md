@@ -3,14 +3,14 @@ title: 使用 Azure 監視器記錄監視 Azure Functions
 description: 瞭解如何搭配 Azure Functions 使用 Azure 監視器記錄來監視函數執行。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649869"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121613"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>使用 Azure 監視器記錄監視 Azure Functions
 
@@ -25,17 +25,23 @@ Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/ku
 
 ## <a name="setting-up"></a>設定
 
-從 [**監視**] 區段中，選取 [**診斷設定**]，然後按一下 [**新增診斷設定**]。
+1. 從 [ [Azure 入口網站](https://portal.azure.com)中函數應用程式的 [**監視**] 區段中，選取 [**診斷設定**]，然後選取 [**新增診斷設定**]。
 
-![新增診斷設定](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="選取 [診斷設定]":::
 
-在 [**診斷設定**] 頁面中，選擇 [**傳送至 log analytics**]，然後選取您的 log analytics 工作區。 在 [**記錄**] 下選擇**FunctionAppLogs**，此資料表包含所需的記錄檔。
+1. 在 [**診斷設定**] 頁面的 [**類別細節**和**記錄**] 底下，選擇 [ **FunctionAppLogs**]。
 
-![新增診斷設定](media/functions-monitor-log-analytics/choose-table.png)
+   **FunctionAppLogs**資料表包含所需的記錄檔。
+
+1. 在 [**目的地詳細資料**] 底下，選擇 [**傳送至 log analytics**]，然後選取您的**log analytics 工作區**。 
+
+1. 輸入**診斷設定名稱**，然後選取 [**儲存**]。
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="新增診斷設定":::
 
 ## <a name="user-generated-logs"></a>使用者產生的記錄檔
 
-若要產生自訂記錄檔，您可以使用特定的記錄語句，視您的語言而定，以下是範例程式碼片段：
+若要產生自訂記錄，請使用您的語言特有的記錄語句。 以下是範例程式碼片段：
 
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>查詢記錄
 
-若要查詢產生的記錄，請移至您設定用來傳送函式記錄的 Log Analytics 工作區，然後按一下 [**記錄**]。
+若要查詢產生的記錄檔：
+ 
+1. 從您的函式應用程式中，選取 [**診斷設定**]。 
 
-![LA 工作區中的查詢視窗](media/functions-monitor-log-analytics/querying.png)
+1. 從 [**診斷設定**] 清單中，選取您設定用來傳送函式記錄的 Log Analytics 工作區。 
 
-Azure Functions 將所有記錄寫入至**FunctionAppLogs**資料表，以下是一些範例查詢。
+1. 從 [ **Log Analytics 工作區**] 頁面中，選取 [**記錄**]。
+
+   Azure Functions 會將所有記錄寫入**LogManagement**下的**FunctionAppLogs**資料表。 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics 工作區中的查詢視窗":::
+
+以下是一些範例查詢：
 
 ### <a name="all-logs"></a>所有記錄
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>特定的函數記錄
+### <a name="specific-function-logs"></a>特定函數記錄
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>後續步驟
 
-- 回顧[Azure Functions 總覽](functions-overview.md)
-- 深入瞭解[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)
+- 請參閱[Azure Functions 總覽](functions-overview.md)。
+- 深入瞭解[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)。
 - 深入瞭解[查詢語言](../azure-monitor/log-query/get-started-queries.md)。

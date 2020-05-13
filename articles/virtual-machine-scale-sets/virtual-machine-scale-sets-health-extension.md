@@ -1,25 +1,27 @@
 ---
 title: 搭配 Azure 虛擬機器擴展集使用應用程式健康狀態延伸模組
 description: 了解如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 05/06/2020
-ms.author: mimckitt
-ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864363"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124103"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
 監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。 您也可以使用健康情況延伸模組來監視擴展集中每個實例的應用程式健全狀況，並使用[自動實例修復](virtual-machine-scale-sets-automatic-instance-repairs.md)來執行實例修復。
 
 本文描述如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 本文假設您已熟悉以下各項：
 -   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
@@ -67,8 +69,8 @@ ms.locfileid: "82864363"
 | 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ----
 | protocol | `http`、`https` 或 `tcp` | 字串 |
-| 連接埠 | 當通訊協定為`http`或`https`時為選擇性，當通訊協定為時為必要`tcp` | int |
-| requestPath | 當通訊協定是`http`或`https`時，不允許使用`tcp` | 字串 |
+| 連接埠 | 當通訊協定為 `http` 或時 `https` 為選擇性，當通訊協定為時為必要`tcp` | int |
+| requestPath | 當通訊協定是 `http` 或 `https` 時，不允許使用`tcp` | 字串 |
 
 ## <a name="deploy-the-application-health-extension"></a>部署應用程式健康狀態延伸模組
 有多種方法可以將應用程式健康狀態延伸模組部署至您的擴展集，如下面的範例所詳述。

@@ -1,19 +1,19 @@
 ---
 title: 縮放層級和磚方格 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放層級和圖格格線。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530286"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123899"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
@@ -140,12 +140,12 @@ var tileY = Math.floor(pixelY / tileSize);
 
 ## <a name="quadkey-indices"></a>Quadkey 索引
 
-某些對應平臺會使用`quadkey`索引命名慣例，將磚 ZY 座標結合成一個名`quadtree`為 keys 或`quadkeys` short 的一維字串。 每`quadkey`個會唯一識別特定詳細層級的單一磚，而且可以當做通用資料庫 B 型樹狀目錄索引中的索引鍵使用。 除了[新增磚圖層](map-add-tile-layer.md)檔中所述，Azure 地圖服務`quadkey` sdk 還支援使用命名慣例的並排顯示圖層，以及其他命名慣例。
+某些對應平臺會使用 `quadkey` 索引命名慣例，將磚 ZY 座標結合成一個名為 `quadtree` keys 或 short 的一維字串 `quadkeys` 。 每個 `quadkey` 會唯一識別特定詳細層級的單一磚，而且可以當做通用資料庫 B 型樹狀目錄索引中的索引鍵使用。 `quadkey`除了[新增磚圖層](map-add-tile-layer.md)檔中所述，Azure 地圖服務 sdk 還支援使用命名慣例的並排顯示圖層，以及其他命名慣例。
 
 > [!NOTE]
 > `quadkeys`命名慣例僅適用于一或多個縮放層級。 Azure 地圖服務 SDK 的支援縮放層級0，這是整個世界的單一地圖磚。 
 
-若要將磚座標轉換`quadkey`成，Y 和 X 座標的位是交錯的，而且結果會被轉譯為以4為基底的數位（保留前置零）並轉換成字串。 比方說，在層級3指定（3，5）的磚 XY 座標時`quadkey` ，會依照下列方式決定：
+若要將磚座標轉換成 `quadkey` ，Y 和 X 座標的位是交錯的，而且結果會被轉譯為以4為基底的數位（保留前置零）並轉換成字串。 比方說，在層級3指定（3，5）的磚 XY 座標時， `quadkey` 會依照下列方式決定：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,13 +155,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有幾個有趣的屬性。 首先，的長度`quadkey` （數位數目）等於對應磚的縮放層級。 第二， `quadkey`任何磚的會以其`quadkey`父磚的（在上一個層級的包含磚）開頭。 如下列範例所示，磚2是磚20到23的父系：
+`Qquadkeys`有幾個有趣的屬性。 首先，的長度 `quadkey` （數位數目）等於對應磚的縮放層級。 第二， `quadkey` 任何磚的會以 `quadkey` 其父磚的（在上一個層級的包含磚）開頭。 如下列範例所示，磚2是磚20到23的父系：
 
 <center>
 
 ![Quadkey 磚金字塔圖](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-最後， `quadkeys`提供一維索引鍵，通常會在 XY 空間中保留磚的近條。 換句話說，附近具有鄰近 XY 座標的兩個磚，通常`quadkeys`會有相對較緊密的。 這對於優化資料庫效能非常重要，因為連續的磚通常會在群組中要求，而且最好將這些磚保留在相同的磁片區上，以便將磁片讀取的次數減至最少。
+最後， `quadkeys` 提供一維索引鍵，通常會在 XY 空間中保留磚的近條。 換句話說，附近具有鄰近 XY 座標的兩個磚，通常 `quadkeys` 會有相對較緊密的。 這對於優化資料庫效能非常重要，因為連續的磚通常會在群組中要求，而且最好將這些磚保留在相同的磁片區上，以便將磁片讀取的次數減至最少。
 
 ## <a name="tile-math-source-code"></a>磚數學原始程式碼
 

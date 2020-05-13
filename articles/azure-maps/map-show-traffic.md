@@ -1,20 +1,20 @@
 ---
 title: 顯示地圖上的流量 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，在地圖上顯示流量資料。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9bd5ae462013924a46a3da8400719e83abae3424
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534809"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123916"
 ---
 # <a name="show-traffic-on-the-map"></a>在地圖上顯示路況
 
@@ -50,7 +50,7 @@ map.setTraffic({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="交通的覆蓋選項" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的「畫筆流量重迭」<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>選項</a>。
+請參閱 CodePen 上 Azure 地圖服務（）的「畫筆流量重迭」<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟
@@ -58,7 +58,7 @@ map.setTraffic({
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [對應](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

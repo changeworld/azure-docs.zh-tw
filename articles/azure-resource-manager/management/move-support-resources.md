@@ -3,12 +3,12 @@ title: 依資源類型的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 81d545066ea6bcc1d3e2eecd884671324155d796
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900984"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124681"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 此文章列出 Azure 資源類型是否支援移動作業。 它也會提供移動資源時要考慮之特殊條件的相關資訊。
@@ -41,7 +41,7 @@ ms.locfileid: "82900984"
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.classiccompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft.classicnetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [認知](#microsoftcognition)
@@ -1253,8 +1253,7 @@ ms.locfileid: "82900984"
 
 > [!IMPORTANT]
 > 請確定移動到新的訂用帳戶不會超過訂用帳戶[配額](azure-subscription-service-limits.md#azure-monitor-limits)。
-
-> [!IMPORTANT]
+> 
 > 無法移動具有連結自動化帳戶的工作區。 開始移動作業之前，請務必將任何自動化帳戶取消連結。   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1677,8 +1676,8 @@ ms.locfileid: "82900984"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | account | 否 | 否 |
-> | 帳戶/擴充功能 | 是 | 是 |
-> | 帳戶/專案 | 是 | 是 |
+> | 帳戶/擴充功能 | 否 | 否 |
+> | 帳戶/專案 | 否 | 否 |
 
 > [!IMPORTANT]
 > 若要變更 Azure DevOps 的訂用帳戶，請參閱[變更用於計費的 Azure 訂用](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)帳戶。
@@ -1697,7 +1696,7 @@ ms.locfileid: "82900984"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | devices | 否 | 否 |
+> | 裝置 | 否 | 否 |
 > | vnfs | 否 | 否 |
 
 ## <a name="microsoftvsonline"></a>VSOnline
@@ -1705,8 +1704,8 @@ ms.locfileid: "82900984"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | 帳戶 | 是 | 是 |
-> | plans | 是 | 是 |
+> | 帳戶 | 否 | 否 |
+> | plans | 否 | 否 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 

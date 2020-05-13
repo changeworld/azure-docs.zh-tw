@@ -2,21 +2,20 @@
 title: 搭配 Azure 虛擬機器擴展集使用自訂相應縮小原則
 description: 瞭解如何搭配使用自動調整設定來管理實例計數的 Azure 虛擬機器擴展集，使用自訂的向外延展原則
 services: virtual-machine-scale-sets
-author: avirishuv
-manager: vashan
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 02/26/2020
-ms.author: avverma
-ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919833"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125157"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>搭配 Azure 虛擬機器擴展集使用自訂相應縮小原則
 
@@ -24,7 +23,7 @@ ms.locfileid: "77919833"
 
 相應縮小原則功能可讓使用者藉由三個相應縮小設定來設定虛擬機器的相應縮小順序： 
 
-1. 預設值
+1. Default
 2. NewestVM
 3. OldestVM
 

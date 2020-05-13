@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service （AKS）常見問題的解答。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854252"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123814"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -20,15 +20,15 @@ ms.locfileid: "82854252"
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>我可以跨區域散佈 AKS 叢集嗎？
 
-不需要。 AKS 叢集是區域性資源，無法跨區域。 如需如何建立包含多個區域之架構的指引，請參閱[商務持續性和嚴重損壞修復的最佳做法][bcdr-bestpractices]。
+否。 AKS 叢集是區域性資源，無法跨區域。 如需如何建立包含多個區域之架構的指引，請參閱[商務持續性和嚴重損壞修復的最佳做法][bcdr-bestpractices]。
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>我可以將 AKS 叢集分散到多個可用性區域嗎？
 
-可以。 您可以在[支援的區域][az-regions]中，跨一或多個[可用性區域][availability-zones]部署 AKS 叢集。
+是。 您可以在[支援的區域][az-regions]中，跨一或多個[可用性區域][availability-zones]部署 AKS 叢集。
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>我可以限制能夠存取 Kubernetes API 伺服器的人員嗎？
 
-可以。 有兩個選項可限制對 API 伺服器的存取：
+是。 有兩個選項可限制對 API 伺服器的存取：
 
 - 如果您想要維護 API 伺服器的公用端點，但限制存取一組信任的 IP 範圍，請使用[API 伺服器授權的 IP 範圍][api-server-authorized-ip-ranges]。
 - 如果您想要將 API 伺服器限制為*只能*從您的虛擬網路中存取，請使用[私人][private-clusters]叢集。
@@ -62,7 +62,7 @@ AKS 建基於一些 Azure 基礎結構資源，包括虛擬機器擴展集、虛
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我可以為 AKS 節點資源群組提供自己的名稱嗎？
 
-可以。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
+是。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
 
 若要指定您自己的資源組名，請安裝[aks-preview][aks-preview-cli] Azure CLI 延伸模組版本*0.3.2*或更新版本。 當您使用[az AKS create][az-aks-create]命令建立 AKS 叢集時，請使用 *--node--群組*參數並指定資源群組的名稱。 如果您[使用 Azure Resource Manager 範本][aks-rm-template]來部署 AKS 叢集，您可以使用*nodeResourceGroup*屬性來定義資源組名。
 
@@ -113,7 +113,7 @@ namespaceSelector:
 
 如果您的使用案例是在 kube 系統（不建議）上部署某些專案，而您的自訂許可 webhook 必須涵蓋這些專案，您可以新增下列標籤或批註，讓許可 Enforcer 忽略它。
 
-標籤```"admissions.enforcer/disabled": "true"``` ：或批註：```"admissions.enforcer/disabled": true```
+標籤： ```"admissions.enforcer/disabled": "true"``` 或批註：```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault 是否會與 AKS 整合？
 
@@ -127,6 +127,8 @@ AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 CSI 秘密存�
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服務等級協定？
 
+AKS 可讓您以 [執行時間 SLA] [執行時間-sla.md] 達到 API 伺服器的99.95% 可用性。
+
 在服務等級協定（SLA）中，如果未符合已發佈的服務層級，則提供者會同意補償客戶的服務成本。 由於 AKS 是免費的，因此不會有任何費用可補償，因此 AKS 沒有正式的 SLA。 不過，AKS 會尋求維護至少99.5% 的 Kubernetes API 伺服器可用性。
 
 請務必辨識 AKS 服務可用性之間的區別，這是指 Kubernetes 控制平面的執行時間，以及在 Azure 虛擬機器上執行的特定工作負載可用性。 雖然控制平面可能無法使用，但如果沒有就緒，則在 Azure Vm 上執行的叢集工作負載仍然可以運作。 假設 Azure Vm 是付費資源，其受金融 SLA 支援。 如需 Azure VM SLA 的詳細資訊，以及如何使用[可用性區域][availability-zones]之類的功能增加該可用性，請參閱[這裡](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。
@@ -137,13 +139,13 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此如果您已
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租使用者之間移動/遷移我的叢集嗎？
 
-命令`az aks update-credentials`可以用來在 Azure 租使用者之間移動 AKS 叢集。 遵循[選擇更新或建立服務主體](https://docs.microsoft.com/azure/aks/update-credentials)中的指示，然後[使用新的認證更新 aks](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)叢集。
+`az aks update-credentials`命令可以用來在 Azure 租使用者之間移動 AKS 叢集。 遵循[選擇更新或建立服務主體](https://docs.microsoft.com/azure/aks/update-credentials)中的指示，然後[使用新的認證更新 aks](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)叢集。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>我可以在訂用帳戶之間移動/遷移我的叢集嗎？
 
 目前不支援在訂用帳戶之間移動叢集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>我可以將我的 AKS 叢集從目前的 azure 訂用帳戶移至另一個嗎？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>我可以將我的 AKS 叢集從目前的 Azure 訂用帳戶移至另一個嗎？ 
 
 不支援在 Azure 訂用帳戶之間移動您的 AKS 叢集和其相關聯的資源。
 
@@ -173,7 +175,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此如果您已
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>我可以使用虛擬機器擴展集 Api 來手動調整嗎？
 
-否，不支援使用虛擬機器擴展集 Api 進行調整作業。 使用 AKS Api （`az aks scale`）。
+否，不支援使用虛擬機器擴展集 Api 進行調整作業。 使用 AKS Api （ `az aks scale` ）。
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>我可以使用虛擬機器擴展集來手動調整為0個節點嗎？
 
@@ -209,6 +211,7 @@ AKS 不是受控服務，且不支援操作 IaaS 資源。 安裝自訂群組件
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[執行時間-sla]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

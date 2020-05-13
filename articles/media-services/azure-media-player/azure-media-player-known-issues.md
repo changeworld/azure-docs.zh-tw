@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692250"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124630"
 ---
 # <a name="known-issues"></a>已知問題 #
 
@@ -41,6 +41,7 @@ ms.locfileid: "82692250"
 
 - 當瀏覽器中安裝了 ad 封鎖程式時，Ads 可能會有插入的問題（隨選或即時）
 - 行動裝置在播放 ads 時可能會發生問題。
+- Azure 媒體播放機目前不支援 Midroll ads。
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -62,7 +63,7 @@ ms.locfileid: "82692250"
 
 - 遺漏的功能
 - 技術和 HTTP 失敗（例如404網路超時），播放機會比其他 techs 需要更長的時間來進行復原。
-- 使用 Silverlight 的 Mac 播放上的 Safari 和 Firefox 需要`"http://`明確`https://`定義來源的或。
+- 使用 Silverlight 的 Mac 播放上的 Safari 和 Firefox 需要明確定義 `"http://` 來源的或 `https://` 。
 - 如果此技術缺少 API，通常會傳回 null。
 - 如果使用者已安裝 Flash，但未授與將其載入網站的許可權，則可能會發生無限旋轉。 這是因為播放機會認為外掛程式已安裝且可供使用，而且它會認為外掛程式正在執行內容。 已傳送 JavaScript 程式碼，但瀏覽器設定已封鎖外掛程式執行，直到使用者接受允許外掛程式的提示。 這可能會發生在所有瀏覽器中。  
 

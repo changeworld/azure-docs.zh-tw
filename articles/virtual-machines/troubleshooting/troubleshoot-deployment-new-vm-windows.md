@@ -3,7 +3,7 @@ title: 針對 Azure 中 Windows VM 部署進行疑難排解 | Microsoft Docs
 description: 針對在 Azure 中建立新 Windows 虛擬機器的 Resource Manager 部署問題進行疑難排解
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981395"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120958"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>針對在 Azure 中建立新 Windows VM 時的部署問題進行疑難排解
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "75981395"
 
 **N<sup>2</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被上傳，就會發生佈建失敗錯誤，VM 會卡在 OOBE 畫面，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
 
-**解決方法**
+**分析**
 
 若要解決這兩個錯誤，請使用 [Add-AzVhd ](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) \(英文\) 搭配與 OS 相同的設定 (一般化/特殊化)，來上傳原始的 VHD (適用於內部部署)。 若要以一般化形式上傳，請務必先執行 sysprep。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75981395"
 
 **N<sup>4</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
 
-**解決方法**
+**分析**
 
 若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../windows/create-vm-specialized.md)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "75981395"
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    按一下 [**資源** > 群組] 資源*群組* > **Resources** >  > **虛擬機器***虛擬*機 > **停止**的*可用性設定* > 組資源。
+    按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
   * 所有 VM 都停止後，建立所需大小的新 VM。
   * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [**啟動**]。
 

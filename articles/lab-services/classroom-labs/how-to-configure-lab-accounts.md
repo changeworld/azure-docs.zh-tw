@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14f66701d3a375807829493f866dcb91b131f2e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284300"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121077"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 實驗室服務中設定實驗室帳戶 
 在 Azure 實驗室服務中，實驗室帳戶是適用于受控實驗室類型的容器，例如教室實驗室。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 
@@ -38,6 +38,9 @@ ms.locfileid: "79284300"
 
 1. 在 [**實驗室帳戶**] 頁面上，選取左側功能表上的 [**實驗室設定**]。
 2. 針對 [**位址範圍**] 欄位，指定要在實驗室中建立之 vm 的位址範圍。 位址範圍應該是無類別網域間路由（CIDR）標記法（例如： 10.20.0.0/23）。 實驗室中的虛擬機器將會建立在此位址範圍內。
+
+    > [!NOTE]
+    > 只有針對實驗室啟用對等虛擬網路時，才會套用 [位址範圍] 屬性。 
 3. 在工具列上選取 [儲存]  。 
 
     ![設定位址範圍](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)

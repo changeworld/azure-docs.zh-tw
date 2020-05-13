@@ -3,14 +3,14 @@ title: 使用 GitHub 動作在 Azure Functions 中進行程式碼更新
 description: 瞭解如何使用 GitHub 動作來定義工作流程，以在 GitHub 中建立及部署 Azure Functions 專案。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878199"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122321"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -18,7 +18,7 @@ ms.locfileid: "80878199"
 
 在 GitHub 動作中，[工作流程](https://help.github.com/articles/about-github-actions#workflow)是您在 github 存放庫中定義的自動化進程。 此程式會告訴 GitHub 如何在 GitHub 上建立及部署函式應用程式專案。 
 
-工作流程是由存放庫中`/.github/workflows/`路徑內的 YAML （. yml）檔案所定義。 此定義包含組成工作流程的各種步驟和參數。 
+工作流程是由存放庫中路徑內的 YAML （. yml）檔案所定義 `/.github/workflows/` 。 此定義包含組成工作流程的各種步驟和參數。 
 
 若為 Azure Functions 工作流程，檔案有三個區段： 
 
@@ -46,22 +46,24 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="download-the-publishing-profile"></a>下載發行設定檔
 
-您可以前往應用程式的 [**總覽**] 頁面，然後按一下 [**取得發行設定檔**]，以下載函數應用程式的發行設定檔。
+若要下載函數應用程式的發行設定檔：
 
-   ![Download publish profile](media/functions-how-to-github-actions/get-publish-profile.png)
+1. 選取函數應用程式的 **[總覽**] 頁面，然後選取 [**取得發行設定檔**]。
 
-複製檔案的內容。
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Download publish profile":::
+
+1. 儲存並複製發佈設定檔案的內容。
 
 ## <a name="configure-the-github-secret"></a>設定 GitHub 秘密
 
-1. 在[GitHub](https://github.com)中，流覽至您的存放庫，選取 [**設定** > ] [**秘密** > ] [新增**密碼**]。
+1. 在[GitHub](https://github.com)中，流覽至您的存放庫，選取 [**設定**] [秘密] [新增  >  **Secrets**  >  **密碼**]。
 
-   ![新增秘密](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="新增秘密":::
 
 1. 加入新的秘密。
 
-   * 如果您使用的是使用 Azure CLI 所建立的服務主體，請使用`AZURE_CREDENTIALS`做為**名稱**。 然後貼上已複製的 JSON 物件輸出**值**，然後選取 [**新增密碼**]。
-   * 如果您使用的是發行設定檔， `SCM_CREDENTIALS`請使用做為**名稱**。 然後，使用發行設定檔的檔案內容作為 [**值**]，然後選取 [**新增密碼**]。
+   * 如果您使用的是使用 Azure CLI 所建立的服務主體，請使用做 `AZURE_CREDENTIALS` 為**名稱**。 然後，貼上已複製的 JSON 物件輸出**值**，然後選取 [**新增密碼**]。
+   * 如果您使用的是發行設定檔，請使用做 `SCM_CREDENTIALS` 為**名稱**。 然後，使用發行設定檔的檔案內容作為 [**值**]，然後選取 [**新增密碼**]。
 
 GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
@@ -71,7 +73,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示使用`actions/setup-node`動作來設定環境的工作流程部分：
+下列範例顯示使用 `actions/setup-node` 動作來設定環境的工作流程部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -86,7 +88,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示使用`actions/setup-python`動作來設定環境的工作流程部分：
+下列範例顯示使用 `actions/setup-python` 動作來設定環境的工作流程部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +103,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下列範例顯示使用`actions/setup-dotnet`動作來設定環境的工作流程部分：
+下列範例顯示使用 `actions/setup-dotnet` 動作來設定環境的工作流程部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -116,7 +118,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列範例顯示使用`actions/setup-java`動作來設定環境的工作流程部分：
+下列範例顯示使用 `actions/setup-java` 動作來設定環境的工作流程部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -197,7 +199,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 ## <a name="deploy-the-function-app"></a>部署函式應用程式
 
-若要將程式碼部署至函式應用程式，您必須使用`Azure/functions-action`動作。 此動作有兩個參數：
+若要將程式碼部署至函式應用程式，您必須使用 `Azure/functions-action` 動作。 此動作有兩個參數：
 
 |參數 |說明  |
 |---------|---------|
@@ -205,7 +207,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 |_**位置名稱**_ | 選擇性您想要部署的[部署](functions-deployment-slots.md)位置名稱。 位置必須已在您的函式應用程式中定義。 |
 
 
-下列範例會使用的`functions-action`第1版：
+下列範例會使用的第1版 `functions-action` ：
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +219,7 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要 yaml 完整的工作流程，請參閱[Azure GitHub 動作工作流程](https://aka.ms/functions-actions-samples)中的其中一個檔案，其中包含`functionapp`名稱中的範例存放庫。 您可以使用這些範例做為工作流程的起點。
+若要查看完整的 yaml 檔案，請參閱[Azure GitHub 動作工作流程範例](https://aka.ms/functions-actions-samples)存放庫中的其中一個檔案，其 `functionapp` 名稱為。 您可以使用這些範例做為工作流程的起點。
 
 > [!div class="nextstepaction"]
 > [深入瞭解 GitHub 動作](https://help.github.com/en/articles/about-github-actions)

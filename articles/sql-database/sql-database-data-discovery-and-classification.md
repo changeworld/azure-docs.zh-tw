@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766961"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123848"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse 分析的資料探索 & 分類
 
@@ -113,11 +113,11 @@ Azure SQL Database 內建 & 分類的資料探索。 它提供先進的功能來
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-資訊保護範例的一個重要層面是能夠監視機密資料的存取權。 [Azure SQL Database 的審核](sql-database-auditing.md)功能已增強，可在名`data_sensitivity_information`為的 audit 記錄檔中加入新的欄位。 這個欄位會記錄查詢所傳回之資料的敏感度分類（標籤）。 範例如下：
+資訊保護範例的一個重要層面是能夠監視機密資料的存取權。 [Azure SQL Database 的審核](sql-database-auditing.md)功能已增強，可在名為的 audit 記錄檔中加入新的欄位 `data_sensitivity_information` 。 這個欄位會記錄查詢所傳回之資料的敏感度分類（標籤）。 以下是範例：
 
 ![稽核記錄檔](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="permissions"></a>無權
+## <a name="permissions"></a><a id="permissions"></a>權限
 
 這些內建角色可以讀取 Azure SQL database 的資料分類：
 
@@ -152,18 +152,6 @@ Azure SQL Database 內建 & 分類的資料探索。 它提供先進的功能來
 - 若要從一或多個資料行移除分類： [DROP 敏感度分類](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 若要查看資料庫上的所有分類： [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>使用 Rest API
-
-您可以使用 REST API 以程式設計方式管理分類和建議。 已發佈的 REST API 支援下列作業：
-
-- [建立或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)：建立或更新指定資料行的敏感度標籤。
-- [Delete](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)：刪除指定資料行的敏感度標籤。
-- [停用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)：停用指定資料行的敏感度建議。
-- [啟用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation)：在指定的資料行上啟用敏感度建議。 （預設會在所有資料行上啟用建議）。
-- [Get：取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get)指定資料行的敏感度標籤。
-- [依資料庫列出目前](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)的：取得指定資料庫目前的敏感度標籤。
-- [資料庫所建議的清單](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：取得指定之資料庫的建議敏感度標籤。
-
 ### <a name="use-powershell-cmdlets"></a>使用 PowerShell Cmdlet
 您可以使用 PowerShell 來管理 Azure SQL Database 和受控實例的分類和建議。
 
@@ -185,6 +173,17 @@ Azure SQL Database 內建 & 分類的資料探索。 它提供先進的功能來
 - [啟用-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [停用-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>使用 Rest API
+
+您可以使用 REST API 以程式設計方式管理分類和建議。 已發佈的 REST API 支援下列作業：
+
+- [建立或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)：建立或更新指定資料行的敏感度標籤。
+- [Delete](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)：刪除指定資料行的敏感度標籤。
+- [停用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)：停用指定資料行的敏感度建議。
+- [啟用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation)：在指定的資料行上啟用敏感度建議。 （預設會在所有資料行上啟用建議）。
+- [Get：取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get)指定資料行的敏感度標籤。
+- [依資料庫列出目前](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)的：取得指定資料庫目前的敏感度標籤。
+- [資料庫所建議的清單](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：取得指定之資料庫的建議敏感度標籤。
 
 ## <a name="next-steps"></a><a id="next-steps"></a>後續步驟
 

@@ -2,18 +2,19 @@
 title: 自動調整 Azure 入口網站中的虛擬機器擴展集
 description: 如何在 Azure 入口網站中建立虛擬機器擴展集的自動調整規則
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms:service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 05/29/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010285"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124936"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>如何在 Azure 入口網站中自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。
@@ -82,7 +83,7 @@ ms.locfileid: "81010285"
 
 1. 請設定下列執行個體限制：
 
-    | 最小值 | 最大值 | 預設值|
+    | 最小值 | 最大值 | Default|
     |---------|---------|--------|
     | 2       | 10      | 2      |
 

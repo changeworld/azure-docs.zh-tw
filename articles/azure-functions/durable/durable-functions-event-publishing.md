@@ -2,13 +2,13 @@
 title: 發佈至 Azure 事件方格 (預覽) 的 Durable Functions
 description: 了解如何針對 Durable Functions 設定自動 Azure 事件方格發佈。
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/25/2020
+ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535480"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124223"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>發佈至 Azure 事件方格 (預覽) 的 Durable Functions
 
@@ -30,7 +30,7 @@ ms.locfileid: "81535480"
 
 ## <a name="create-a-custom-event-grid-topic"></a>建立自訂事件方格主題
 
-從 Durable Functions 建立可供傳送事件的事件方格主題。 下列指示說明如何使用 Azure CLI 建立主題。 您也可以[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[使用 Azure 入口網站](../../event-grid/custom-event-quickstart-portal.md)來執行這項操作。
+從 Durable Functions 建立可供傳送事件的事件方格主題。 下列指示說明如何使用 Azure CLI 建立主題。 您也可以[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[使用 Azure 入口網站](../../event-grid/custom-event-quickstart-portal.md)來建立主題。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
@@ -83,7 +83,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2。x
 
-將`notifications`區段新增至檔案`durableTask`的屬性，並以您`<topic_name>`選擇的名稱取代。 如果`durableTask`或`extensions`屬性不存在，請建立它們，如下列範例所示：
+將區段新增至檔案的 `notifications` `durableTask` 屬性， `<topic_name>` 並以您選擇的名稱取代。 如果 `durableTask` 或 `extensions` 屬性不存在，請建立它們，如下列範例所示：
 
 ```json
 {
@@ -101,7 +101,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-可能的 Azure 事件方格設定屬性可以在[host. json 檔](../functions-host-json.md#durabletask)中找到。 設定`host.json`檔案之後，您的函數應用程式會將生命週期事件傳送至事件方格主題。 這適用于您在本機和 Azure 中執行函數應用程式的情況。
+可能的 Azure 事件方格設定屬性可以在[host. json 檔](../functions-host-json.md#durabletask)中找到。 設定檔案之後 `host.json` ，您的函數應用程式會將生命週期事件傳送至事件方格主題。 此動作會在您于本機和 Azure 中執行函數應用程式時啟動。
 
 在函式應用程式和 `local.settings.json` 中設定主題索引鍵的應用程式設定。 以下 JSON 是本機偵錯的 `local.settings.json` 範例。 以主題索引鍵取代 `<topic_key>`。  
 
@@ -116,9 +116,9 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-如果您使用[儲存體模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows），請確定它正在運作。 在執行之前，最好先執行 `AzureStorageEmulator.exe clear all` 命令。
+如果您使用的是[儲存體模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows），請確定它可以正常運作。 在執行之前，最好先執行 `AzureStorageEmulator.exe clear all` 命令。
 
-如果您使用現有的 Azure 儲存體帳戶，請將`UseDevelopmentStorage=true`中`local.settings.json`的取代為其連接字串。
+如果您使用現有的 Azure 儲存體帳戶，請將 `UseDevelopmentStorage=true` 中的取代 `local.settings.json` 為其連接字串。
 
 ## <a name="create-functions-that-listen-for-events"></a>建立可接聽事件的函式
 
@@ -126,52 +126,65 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="create-an-event-grid-trigger-function"></a>建立事件方格觸發程序函式
 
-建立可接收生命週期事件的函式。 選取 [自訂函式]****。
+1. 在您的函數應用程式中 **，選取 [** 函式]，然後選取 [ **+ 新增**] 
 
-![選取 [建立自訂函式]。](./media/durable-functions-event-publishing/functions-portal.png)
+   :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
-選擇 [事件方格觸發程式]，然後選取語言。
+1. 搜尋**事件方格**，然後選取 [ **Azure 事件方格觸發**程式] 範本。 
 
-![選取事件方格觸發程序。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 [Azure 入口網站中選取 [事件方格觸發程式] 範本。" border="true":::
 
-輸入函式名稱，然後選取 `Create`。
+1. 將新的觸發程式命名為，然後選取 [**建立函數**]。
 
-![選取事件方格觸發程序。](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="將事件方格觸發程式命名為 Azure 入口網站。" border="true":::
 
-隨即建立具有下列程式碼的函式：
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+    隨即建立具有下列程式碼的函式：
 
-```csharp
-#r "Newtonsoft.Json"
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
+    # <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-public static void Run(JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
+    ```csharp
+    #r "Newtonsoft.Json"
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Microsoft.Extensions.Logging;
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+    public static void Run(JObject eventGridEvent, ILogger log)
+    {
+        log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+    }
+    ```
 
-```javascript
-module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
-}
-```
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+   ```javascript
+   module.exports = async function(context, eventGridEvent) {
+       context.log(typeof eventGridEvent);
+       context.log(eventGridEvent);
+   }
+   ```
 
 ---
 
-選取 `Add Event Grid Subscription`。 此作業會為您建立的事件方格主題新增事件方格訂用帳戶。 如需詳細資訊，請參閱 [Azure 事件方格概念](https://docs.microsoft.com/azure/event-grid/concepts)。
+### <a name="add-an-event-grid-subscription"></a>新增事件方格訂用帳戶
 
-![選取事件方格觸發程序連結。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+您現在可以為您所建立的事件方格主題新增事件方格訂用帳戶。 如需詳細資訊，請參閱[Azure 事件方格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
 
-針對 [主題類型] **** 選取 `Event Grid Topics`。 選取您為事件方格主題所建立的資源群組。 然後選取事件方格主題的執行個體。 按 `Create`。
+1. 在您的新函式中，選取 [**整合**]，然後選取 **[事件方格觸發程式（eventGridEvent）**]。 
 
-![建立事件格線訂用帳戶。](./media/durable-functions-event-publishing/eventsubscription.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="選取事件方格觸發程序連結。" border="true":::
+
+1. 選取 [**建立事件方格描述**]。
+
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="建立事件方格訂用帳戶。" border="true":::
+
+1. 為事件訂用帳戶命名，並選取 [**事件方格主題**] 主題類型。 
+
+1. 選取訂用帳戶。 然後，選取您為事件方格主題所建立的資源群組和資源。 
+
+1. 選取 [建立]  。
+
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="建立事件方格訂用帳戶。" border="true":::
 
 您現在已經準備好接收生命週期事件。
 

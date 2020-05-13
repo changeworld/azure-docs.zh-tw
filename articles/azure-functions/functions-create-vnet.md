@@ -3,15 +3,15 @@ title: 將 Azure Functions 與 Azure 虛擬網路整合
 description: 說明如何將函式連線至 Azure 虛擬網路的逐步教學課程
 author: alexkarcher-msft
 ms.topic: article
-ms.date: 5/03/2019
+ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75433221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122628"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教學課程：將 Functions 與 Azure 虛擬網路整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "75433221"
 
 高階方案中執行的函式與 Azure App Service 中的 web 應用程式具有相同的裝載功能，其中包括 VNet 整合功能。 若要深入瞭解 VNet 整合，包括疑難排解和先進設定，請參閱[整合您的應用程式與 Azure 虛擬網路](../app-service/web-sites-integrate-with-vnet.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在本教學課程中，您必須瞭解 IP 位址和子網。 您可以從本文開始[，其中涵蓋定址和子網的基本概念](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 您可以從線上取得更多文章和影片。
 
@@ -50,7 +50,7 @@ ms.locfileid: "75433221"
 
 接下來，建立預先設定的 VM，在虛擬網路內執行 WordPress （[WORDPRESS LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware）。 會使用 WordPress VM，因為它的成本和便利性較低。 此相同案例適用于虛擬網路中的任何資源，例如 REST Api、App Service 環境和其他 Azure 服務。 
 
-1. 在入口網站中，選擇左側流覽窗格中的 [ **+ 建立資源**]，在 [搜尋`WordPress LEMP7 Max Performance`] 欄位中輸入，然後按 enter。
+1. 在入口網站中，選擇左側流覽窗格中的 [ **+ 建立資源**]，在 [搜尋] 欄位中輸入 `WordPress LEMP7 Max Performance` ，然後按 enter。
 
 1. 在搜尋結果中選擇 [Wordpress] [ **LEMP 最大效能**]。 選取 Wordpress 的軟體方案**LEMP [CentOS 的最大效能**] 作為 [**軟體方案**]，然後選取 [**建立**]。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75433221"
     | 設定      | 建議的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **訂用帳戶** | 您的訂用帳戶 | 用來建立資源的訂用帳戶。 | 
-    | **[資源群組](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 選擇`myResourceGroup`，或您使用函數應用程式建立的資源群組。 當您完成本教學課程時，針對函數應用程式、WordPress VM 和主控方案使用相同的資源群組，可讓您更輕鬆地清除資源。 |
+    | **[資源群組](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 選擇 `myResourceGroup` ，或您使用函數應用程式建立的資源群組。 當您完成本教學課程時，針對函數應用程式、WordPress VM 和主控方案使用相同的資源群組，可讓您更輕鬆地清除資源。 |
     | **虛擬機器名稱** | VNET Wordpress | VM 名稱在資源群組中必須是唯一的 |
     | **[區域](https://azure.microsoft.com/regions/)** | 歐洲西歐 | 選擇接近您或接近存取 VM 之函數的區域。 |
     | **大小** | B1s | 選擇 [**變更大小**]，然後選取 B1s 標準映射，其具有 1 vCPU 和 1 GB 的記憶體。 |
@@ -100,17 +100,15 @@ ms.locfileid: "75433221"
 
 在虛擬網路中的 VM 上執行 WordPress 網站時，您現在可以將函式應用程式連線到該虛擬網路。
 
-1. 在您的新函數應用程式中，選取 [**平臺功能** > ] [**網路**]。
-
-    ![選擇函式應用程式中的網路功能](./media/functions-create-vnet/networking-0.png)
+1. 在您的新函數應用程式中，選取左側功能表中的 [**網路**]。
 
 1. 在 [ **VNet 整合**] 底下，選取 [**按一下這裡進行設定**]。
 
-    ![設定網路功能的狀態](./media/functions-create-vnet/Networking-1.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="選擇函式應用程式中的網路功能":::
 
-1. 在 [虛擬網路整合] 頁面上，選取 [**新增 VNet （預覽）**]。
+1. 在 [ **VNET 整合**] 頁面上，選取 [**新增 VNET**]。
 
-    ![新增 VNet 整合預覽](./media/functions-create-vnet/networking-2.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="新增 VNet 整合預覽":::
 
 1. 在 [**網路功能狀態**] 中，使用映射下表中的設定：
 
@@ -122,9 +120,9 @@ ms.locfileid: "75433221"
     | **子網路** | 建立新的子網 | 在虛擬網路中建立子網，以供您的函數應用程式使用。 VNet 整合必須設定為使用空的子網。 您的函式使用與您的 VM 不同的子網並不重要。 虛擬網路會自動路由兩個子網之間的流量。 |
     | **子網路名稱** | 函數-Net | 新子網路的名稱。 |
     | **虛擬網路位址區塊** | 10.10.0.0/16 | 選擇 WordPress 網站所使用的相同位址區塊。 您應該只定義一個位址區塊。 |
-    | **位址範圍** | 10.10.2.0/24   | 子網大小會限制高階方案函式應用程式可相應放大的實例總數。 這個範例會使用`/24`具有254可用主機位址的子網。 這個子網已過度布建，但很容易計算。 |
+    | **位址範圍** | 10.10.2.0/24   | 子網大小會限制高階方案函式應用程式可相應放大的實例總數。 這個範例會使用 `/24` 具有254可用主機位址的子網。 這個子網已過度布建，但很容易計算。 |
 
-1. 選取 **[確定]** 以新增子網。 關閉 [VNet 整合] 和 [網路功能狀態] 頁面，返回您的函數應用程式頁面。
+1. 選取 **[確定]** 以新增子網。 關閉 [ **VNet 整合**] 和 [**網路功能狀態**] 頁面，返回您的函數應用程式頁面。
 
 函數應用程式現在可以存取 WordPress 網站執行所在的虛擬網路。 接下來，您可以使用[Azure Functions Proxy](functions-proxies.md)從 WordPress 網站傳回檔案。
 
@@ -132,19 +130,19 @@ ms.locfileid: "75433221"
 
 啟用 VNet 整合之後，您可以在函式應用程式中建立 proxy，以將要求轉送至在虛擬網路中執行的 VM。
 
-1. 在您的函數應用程式中 **，選取** > **+**[proxy]，然後使用映射下表中的 proxy 設定：
+1. 在您的函數應用程式中 **，從左側功能表中選取**[proxy]，然後選取 [**新增**]。 使用影像下表中的 proxy 設定：
 
-    ![定義 proxy 設定](./media/functions-create-vnet/create-proxy.png)
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="定義 proxy 設定":::
 
     | 設定  | 建議的值  | 描述      |
     | -------- | ---------------- | ---------------- |
     | **名稱** | PlAnT | 名稱可以是任何值。 它是用來識別 proxy。 |
     | **路由範本** | /plant | 對應至 VM 資源的路由。 |
-    | **後端 URL** | HTTP://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 將`<YOUR_VM_IP>`取代為您稍早建立之 WordPress VM 的 IP 位址。 這個對應會從網站傳回單一檔案。 |
+    | **後端 URL** | HTTP://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 將取代 `<YOUR_VM_IP>` 為您稍早建立之 WORDPRESS VM 的 IP 位址。 這個對應會從網站傳回單一檔案。 |
 
 1. 選取 [**建立**]，將 proxy 新增至您的函式應用程式。
 
-## <a name="try-it-out"></a>試做
+## <a name="try-it-out"></a>試試看
 
 1. 在您的瀏覽器中，嘗試存取您用來做為**後端 url**的 url。 如預期般，要求會超時。因為您的 WordPress 網站僅連線到您的虛擬網路而不是網際網路，所以會發生超時。
 

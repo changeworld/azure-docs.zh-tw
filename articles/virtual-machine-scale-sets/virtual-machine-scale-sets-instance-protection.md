@@ -2,17 +2,19 @@
 title: Azure 虛擬機器擴展集實例的實例保護
 description: 瞭解如何保護 Azure 虛擬機器擴展集實例，不受相應縮小和擴展集作業的限制。
 author: avirishuv
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/26/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254114"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124052"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集實例的實例保護
 

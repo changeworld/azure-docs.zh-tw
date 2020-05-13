@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立和管�
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790553"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125242"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service 中的系統節點集區（AKS）
 
@@ -50,6 +50,7 @@ ms.locfileid: "82790553"
 * 刪除使用者節點集區。
 * 您可以刪除系統節點集區，但前提是您有另一個系統節點集區，以將其放在 AKS 叢集中。
 * AKS 叢集可能會有多個系統節點集區，而且至少需要一個系統節點集區。
+* 如果您想要變更現有節點集區上的各種不可變設定，可以建立新的節點集區來取代它們。 其中一個範例是使用新的 maxPods 設定來新增節點集區，並刪除舊的節點集區。
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>建立具有系統節點集區的新 AKS 叢集
 

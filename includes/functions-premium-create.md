@@ -5,29 +5,21 @@ services: functions
 author: jeffhollan
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: fca8c3b0b1bd4d22720a6d15313e297d05b7fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c53486bf3368039f172c7a13420e2291dd9c9892
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76020985"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122627"
 ---
-1. 開啟 Azure 入口網站[https://portal.azure.com](https://portal.azure.com)
+1. 從 Azure 入口網站功能表或[首頁]  頁面，選取 [建立資源]  。
 
-1. 選取 [建立資源]**** 按鈕
+1. 在 [新增]  頁面中，選取 [計算]   > [函數應用程式]  。
 
-    ![建立資源](./media/functions-create-function-app-portal/function-app-create-resource.png)
-
-1. 選取 [**計算** > **函數應用程式**]。
-
-    ![在 Azure 入口網站中建立函式應用程式](./media/functions-premium-create/function-app-create-start.png)
-
-1. 請使用影像下面的資料表中指定的函式應用程式設定。
-
-    ![基本概念](./media/functions-premium-create/function-app-create-basics.png)
+1. 在 [**基本**] 頁面上，使用下表中所指定的函數應用程式設定：
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
@@ -38,28 +30,32 @@ ms.locfileid: "76020985"
     | **執行階段堆疊** | 慣用語言 | 選擇支援您慣用函式程式設計語言的執行階段。 選擇 [適用于 c # 的 **.net** ] 和 [F # 函式]。 |
     |**區域**| 慣用區域 | 選擇與您接近的[區域](https://azure.microsoft.com/regions/)，或選擇與函式將會存取之其他服務接近的區域。 |
 
-    選取 [**下一步：裝載 >]** 按鈕。
+    ![基本頁面](./media/functions-premium-create/function-app-create-basics.png)
 
-1. 輸入下列裝載設定。
-
-    ![裝載](./media/functions-premium-create/function-app-premium-create-hosting.png)
+1. 選取 **[下一步：裝載]**。 在 [**裝載**] 頁面上，輸入下列設定：
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
     | **[儲存體帳戶](../articles/storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../articles/azure-functions/functions-scale.md#storage-account-requirements)。 |
     |**作業系統**| 慣用的作業系統 | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
-    | **[規劃](../articles/azure-functions/functions-scale.md)** | Premium | 針對 [方案類型]，選取 [ **Premium （預覽）** ]，然後選取 [ *Windows 方案*] 和 [ *Sku 和大小*] 選項的預設值。 |
+    | **[規劃](../articles/azure-functions/functions-scale.md)** | Premium | 會定義如何將資源配置給函式應用程式的主控方案。 選取 [ **Premium**]，然後選取 [ **Windows 方案**] 和 [ **Sku 和大小**] 的預設值。 |
 
-    選取 [**下一步：監視 >]** 按鈕。
+    ![裝載頁面](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
-1. 輸入下列監視設定。
-
-    ![監視](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+1. 選取 **[下一步：監視]**。 在 [**監視**] 頁面上，輸入下列設定：
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 您可以展開此設定，變更 [新資源名稱]  或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的**位置**。 |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 藉由展開此設定，您可以變更**新的資源名稱**，或選擇[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置中的不同**位置**來儲存您的資料。 |
 
-    選取 [**審查 + 建立**] 以審查應用程式設定選項。
+    ![[監視] 頁面](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
-1. 選取 [建立]**** 以佈建並部署函式應用程式。
+1. 選取 [檢閱 + 建立]  ，以檢閱應用程式組態選項。
+
+1. 在 [檢閱 + 建立]  頁面中檢閱您的設定，然後選取 [建立]  來佈建和部署函式應用程式。
+
+1. 選取入口網站右上角的 [**通知**] 圖示，並監看是否有**部署成功**訊息。
+
+1. 選取 [前往資源]  ，以檢視您新的函式應用程式。 您也可以選取 [釘選到儀表板]  。 釘選可讓您更輕鬆地從儀表板返回此函式應用程式資源。
+
+    ![部署通知](./media/functions-premium-create/function-app-create-notification2.png)

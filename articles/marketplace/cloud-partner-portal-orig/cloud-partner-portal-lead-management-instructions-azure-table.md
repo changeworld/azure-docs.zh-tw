@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280349"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124698"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>資料表儲存體的潛在客戶管理指示
 
@@ -98,7 +98,7 @@ ms.locfileid: "80280349"
 
    - **篩選查詢**：當您選取此欄位時，[**取得過去時間**] 圖示會顯示在快顯視窗中。 選取 [**過去時間**]，以使用此值做為時間戳記來篩選查詢。 或者，您可以將下列函數貼入欄位中：
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![設定篩選查詢函數](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "80280349"
      ![新增條件控制項](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. 在 [**條件**] 視窗中，選取 **[選擇值**]，然後在快顯視窗中選取 [**運算式**]。
-1. 在`length(body('Get_entities')?['value'])` ***fx***欄位中貼上。 選取 [確定]**** 來新增此函式。 
+1. `length(body('Get_entities')?['value'])`在***fx***欄位中貼上。 選取 [確定]**** 來新增此函式。 
 
 
 
@@ -133,7 +133,7 @@ ms.locfileid: "80280349"
 
       - **To**：將會收到通知之每個人的電子郵件地址。
       - 主旨 **：電子**郵件的主旨。 例如：*新的潛在客戶！*
-      - **Body**：您想要包含在每個電子郵件中的文字（選擇性）。 同時以函`body('Get_entities')?['value']`式的形式貼入插入潛在客戶資訊。
+      - **Body**：您想要包含在每個電子郵件中的文字（選擇性）。 同時以函式 `body('Get_entities')?['value']` 的形式貼入插入潛在客戶資訊。
 
         >[!NOTE] 
         >您可以在電子郵件的本文中插入額外的靜態或動態資料點。
