@@ -7,18 +7,26 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: ASP.NET 應用程式
-      href: cache-web-app-howto.md
-    - name: .NET Core 應用程式
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET 應用程式
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: JAVA 應用程式
-      href: cache-java-get-started.md
-    - name: Node.js 應用程式
-      href: cache-nodejs-get-started.md
-    - name: Python 應用程式
-      href: cache-python-get-started.md
+    - name: 建立快取
+      items:
+        - name: 基本、標準和進階層級
+          href: quickstart-create-redis.md
+        - name: 企業層級
+          href: quickstart-create-redis-enterprise.md
+    - name: 使用快取
+      items:
+        - name: ASP.NET 應用程式
+          href: cache-web-app-howto.md
+        - name: .NET Core 應用程式
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET 應用程式
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: JAVA 應用程式
+          href: cache-java-get-started.md
+        - name: Node.js 應用程式
+          href: cache-nodejs-get-started.md
+        - name: Python 應用程式
+          href: cache-python-get-started.md
 - name: 教學課程
   items:
     - name: 使用快取排行榜

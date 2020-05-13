@@ -557,6 +557,20 @@
       items:
         - name: 語音裝置 SDK 版本資訊
           href: devices-sdk-release-notes.md
+- name: 工具
+  items:
+    - name: SPX
+      items:
+        - name: 什麼是 SPX？
+          href: spx-overview.md
+        - name: SPX 基本概念
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: 什麼是 Speech Studio？
+          href: 'https://speech.microsoft.com'
+        - name: 使用 Speech Studio 建立自訂命令應用程式
+          href: quickstart-custom-speech-commands-create-new.md
 - name: 遷移
   items:
     - name: 從 Bing 語音

@@ -94,11 +94,11 @@
                   items:
                     - name: Check Point
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint 產品
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: 連線 Azure Stack VM
           href: connect-azure-stack.md
-    - name: 管理多租用戶 (MSSP)
+    - name: 使用多個租用戶 (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: 使用多個工作區中的事件
+      href: multiple-workspace-view.md
     - name: 設定客戶管理的金鑰 (CMK)
       href: customer-managed-keys.md
     - name: 從警示建立事件
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定價
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'

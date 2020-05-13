@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Azure PaaS 資源的功能涵蓋範圍
           href: features-paas.md
+    - name: 資訊安全中心的新功能？
+      href: release-notes.md
     - name: 安全性建議
       href: recommendations-reference.md
     - name: 安全性警示和意圖狙殺鏈
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的現有使用者
           href: faq-azure-monitor-logs.md
-    - name: 版本資訊
+    - name: 資訊安全中心內新功能的封存？
+      href: release-notes-archive.md
+    - name: Azure 藍圖部落格
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 功能與 API 淘汰 (2019 年 6 月)
       href: security-center-features-retirement-july2019.md

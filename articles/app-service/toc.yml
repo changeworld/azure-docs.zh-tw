@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: 啟用記錄
           href: troubleshoot-diagnostic-logs.md
+        - name: 取得資源事件
+          href: get-resource-events.md
     - name: 管理應用程式
       items:
         - name: 管理主機方案

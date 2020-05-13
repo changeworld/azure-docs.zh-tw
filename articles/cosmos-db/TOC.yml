@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: 從變更摘要處理器程式庫遷移
           href: how-to-migrate-from-change-feed-library.md
-        - name: 建立具有變更摘要的 JAVA SQL 應用程式
+        - name: 變更摘要 - 非同步 Java 範例
           href: create-sql-api-java-changefeed.md
     - name: 內建分析搭配 Apache Spark
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: 監視要求單位使用量
               href: monitor-request-unit-usage.md
+            - name: 監視正規化要求單位使用量
+              href: monitor-normalized-request-units.md
         - name: 使用 Azure 監視器記錄
           items:
             - name: 使用診斷記錄進行監視

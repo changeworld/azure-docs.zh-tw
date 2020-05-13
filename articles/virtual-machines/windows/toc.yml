@@ -392,6 +392,101 @@
           href: migration-classic-resource-manager-community-tools.md
         - name: 常見問題集
           href: migration-classic-resource-manager-faq.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 建立及共用映像
+          items:
+            - name: PowerShell
+              items:
+                - name: 建立資源庫
+                  href: ../shared-images-powershell.md
+                - name: 建立映像
+                  items:
+                    - name: 從 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 從受控映像遷移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 從另一個資源庫複製
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 建立 VM
+                  items:
+                    - name: 一般化
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 特製化
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新影像資源
+                  href: ../update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: 建立資源庫
+                  href: ../linux/shared-images.md
+                - name: 建立映像
+                  items:
+                    - name: 從 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 從受控映像遷移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 從另一個資源庫複製
+                      href: ../image-version-another-gallery-cli.md
+                    - name: 從另一個資源庫複製
+                      href: ../image-version-another-gallery-cli.md
+                - name: 建立 VM
+                  items:
+                    - name: 一般化
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新影像資源
+                  href: ../update-image-resources-cli.md
+            - name: 入口網站
+              items:
+                - name: 建立資源庫、映像和 VM
+                  href: shared-images-portal.md
+            - name: Resource Manager 範本
+              items:
+                - name: 建立共用映像庫
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: 在共用映像庫中建立映像定義
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: 在共用映像庫中建立映像版本
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: 從映像版本建立 VM
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: 針對共用映像進行疑難排解
+              href: troubleshooting-shared-images.md
+            - name: 使用客戶管理的金鑰
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: 映像產生器 (預覽)
+          items:
+            - name: 概觀
+              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 使用 Azure CLI
+              href: image-builder.md
+            - name: 建置供映像資源庫使用
+              href: image-builder-gallery.md
+            - name: 更新現有映像
+              href: image-builder-gallery-update-image-version.md
+            - name: 儲存指令碼
+              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ARM 範本參考
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 疑難排解
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: 尋找及使用映像
+          href: cli-ps-findimage.md
+        - name: 準備 VM 以上傳
+          href: prepare-for-upload-vhd-image.md
+        - name: 擷取 VM 映像
+          href: capture-image-resource.md
+        - name: 使用一般化映像
+          href: create-vm-generalized-managed.md
+        - name: 使用 Packer 建置映像
+          href: build-image-with-packer.md
+        - name: 使用 Windows 用戶端映像
+          href: client-images.md
+        - name: 下載現有磁碟
+          href: download-vhd.md
     - name: 保護 VM
       items:
         - name: 建議
@@ -528,98 +623,6 @@
           href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 利用 REST 取得使用計量
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: 使用映像
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: 建立及共用映像
-          items:
-            - name: PowerShell
-              items:
-                - name: 建立資源庫
-                  href: ../shared-images-powershell.md
-                - name: 建立映像
-                  items:
-                    - name: 從 VM
-                      href: ../image-version-vm-powershell.md
-                    - name: 從受控映像遷移
-                      href: ../image-version-managed-image-powershell.md
-                    - name: 從另一個資源庫複製
-                      href: ../image-version-another-gallery-powershell.md
-                - name: 建立 VM
-                  items:
-                    - name: 一般化
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: 特製化
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: 更新影像資源
-                  href: ../update-image-resources-powershell.md
-            - name: CLI
-              items:
-                - name: 建立資源庫
-                  href: ../linux/shared-images.md
-                - name: 建立映像
-                  items:
-                    - name: 從 VM
-                      href: ../image-version-vm-cli.md
-                    - name: 從受控映像遷移
-                      href: ../image-version-managed-image-cli.md
-                    - name: 從另一個資源庫複製
-                      href: ../image-version-another-gallery-cli.md
-                    - name: 從另一個資源庫複製
-                      href: ../image-version-another-gallery-cli.md
-                - name: 建立 VM
-                  items:
-                    - name: 一般化
-                      href: ../vm-generalized-image-version-cli.md
-                - name: 更新影像資源
-                  href: ../update-image-resources-cli.md
-            - name: 入口網站
-              items:
-                - name: 建立資源庫、映像和 VM
-                  href: shared-images-portal.md
-            - name: Resource Manager 範本
-              items:
-                - name: 建立共用映像庫
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: 在共用映像庫中建立映像定義
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: 在共用映像庫中建立映像版本
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: 從映像版本建立 VM
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: 針對共用映像進行疑難排解
-              href: troubleshooting-shared-images.md
-        - name: 映像產生器 (預覽)
-          items:
-            - name: 概觀
-              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 使用 Azure CLI
-              href: image-builder.md
-            - name: 建置供映像資源庫使用
-              href: image-builder-gallery.md
-            - name: 更新現有映像
-              href: image-builder-gallery-update-image-version.md
-            - name: 儲存指令碼
-              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM 範本參考
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 疑難排解
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: 尋找及使用映像
-          href: cli-ps-findimage.md
-        - name: 準備 VM 以上傳
-          href: prepare-for-upload-vhd-image.md
-        - name: 擷取 VM 映像
-          href: capture-image-resource.md
-        - name: 使用一般化映像
-          href: create-vm-generalized-managed.md
-        - name: 使用 Packer 建置映像
-          href: build-image-with-packer.md
-        - name: 使用 Windows 用戶端映像
-          href: client-images.md
-        - name: 下載現有磁碟
-          href: download-vhd.md
     - name: 可用性和級別
       items:
         - name: 虛擬機器擴展集

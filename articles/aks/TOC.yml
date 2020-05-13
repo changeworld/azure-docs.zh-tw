@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: 升級 AKS 叢集
           href: upgrade-cluster.md
+        - name: 使用執行時間 SLA
+          href: uptime-sla.md
         - name: 流程節點 OS 更新
           href: node-updates-kured.md
         - name: 設定 AKS 叢集
@@ -231,7 +233,7 @@
         - name: 啟用 Azure Active Directory 整合
           items:
             - name: 整合 Azure AD (預覽)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: 使用 Azure CLI
               href: azure-ad-integration-cli.md
             - name: 使用 Azure 入口網站

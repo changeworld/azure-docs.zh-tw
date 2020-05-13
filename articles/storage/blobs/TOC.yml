@@ -162,6 +162,8 @@
               href: snapshots-overview.md
             - name: 變更摘要
               href: storage-blob-change-feed.md
+            - name: 時間點還原
+              href: point-in-time-restore-overview.md
         - name: 存取和效能層級
           items:
             - name: 存取層級
@@ -379,7 +381,7 @@
               href: storage-blob-immutability-policies-manage.md
         - name: 管理資料備援
           items:
-            - name: 變更資料複寫的方式
+            - name: 變更備援性組態
               href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 設計可用性高的應用程式
               href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -393,6 +395,8 @@
               href: snapshots-manage-dotnet.md
             - name: 處理變更摘要記錄
               href: storage-blob-change-feed-how-to.md
+            - name: 啟用時間點還原
+              href: point-in-time-restore-manage.md
         - name: 管理災害復原
           items:
             - name: 檢查上次同步時間屬性

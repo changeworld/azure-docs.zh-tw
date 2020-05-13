@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: 建立資料處理站 - Resource Manager 範本
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 安全性 - 啟用客戶管理的金鑰加密
+      href: quickstart-enable-customer-managed-key.md
     - name: 建立資料流程
       href: data-flow-create.md
 - name: 教學課程
