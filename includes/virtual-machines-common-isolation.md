@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77123198"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343315"
 ---
 Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制，而且為單一客戶專用。  這些虛擬機器大小最適合需要與其他客戶高度隔離，且涉及合規性和法規要求等元素的工作負載。  客戶也可以選擇使用 [Azure 的巢狀虛擬機器支援](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，進一步細分這些隔離虛擬機器的資源。
 
@@ -23,18 +23,18 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
+* Standard_DS15_v2<sup>*</sup>
+* Standard_D15_v2<sup>*</sup>
 * Standard_F72s_v2
 
-您可以在[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)深入瞭解每個可用的隔離大小。
+<sup>*</sup>隔離保證將會在 2020 5 月15日淘汰
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>在 2020 5 月15日淘汰 D15_v2/DS15_v2 隔離
 **2020年2月10日更新：「隔離」淘汰時程表已擴充至5月15日，2020」**
 
 Azure 專用主機現已正式推出，可讓您在單一租使用者實體伺服器上執行貴組織的 Linux 和 Windows 虛擬機器。 我們計畫將隔離的 Azure Vm 完全取代為 Azure 專用主機。 **2020 5 月15日之後，** D15_v2/DS15_v2 Azure vm 將不再與硬體隔離。
 
-## <a name="how-does-this-affect-me"></a>此變更對我造成什麼影響？
+## <a name="how-does-this-affect-me"></a>此變更會對我造成什麼影響？
 在 2020 5 月15日之後，我們將不再針對您的 D15_v2/DS15_v2 Azure 虛擬機器提供隔離保證。 
 
 ## <a name="what-actions-should-i-take"></a>我應該採取哪些動作？
@@ -50,7 +50,7 @@ Azure 專用主機現已正式推出，可讓您在單一租使用者實體伺�
 
 如需詳細資訊，請參閱下列內容：
 
-## <a name="timeline"></a>時間軸
+## <a name="timeline"></a>時間表
 | Date | 動作 | 
 | --- | --- |
 | 2019 年 11 月 18 日 | D/DS15i_v2 的可用性（PAYG，1年 RI） |
@@ -86,7 +86,7 @@ Azure 專用主機現已正式推出，可讓您在單一租使用者實體伺�
 
 | RI |  實例大小彈性 | 權益資格 |   
 | --- | --- | --- |
-|   D15_v2  |   Off     |   D15_v2 和 D15i_v2 |    
+|   D15_v2  |   關閉     |   D15_v2 和 D15i_v2 |    
 |   D15_v2  |   另一  |   D15_v2 系列和 D15i_v2 全都會獲得 RI 權益。 |    
 |   D14_v2  |   另一  |   D15_v2 系列和 D15i_v2 全都會獲得 RI 權益。 |    
  
@@ -97,9 +97,9 @@ Azure 專用主機現已正式推出，可讓您在單一租使用者實體伺�
 
 | RI |  實例大小彈性 | 權益資格 |   
 | --- | --- | --- |
-| D15_v2 |  Off |   僅 D15_v2  
+| D15_v2 |  關閉 |   僅 D15_v2  
 | D15_v2 |  另一 |    D15_v2 系列將會獲得 RI 權益。 新的 D15i_v2 將無法享有此 RI 類型的 RI 權益。 | 
-| D15i_v2 |     Off | 僅 D15i_v2 |  
+| D15i_v2 |     關閉 | 僅 D15i_v2 |  
 | D15i_v2 |     另一  | 僅 D15i_v2 | 
  
 實例大小彈性不能用來套用至任何其他大小，例如 D2_v2、D4_v2 或 D15_v2。 同樣地，針對 Dsv2 系列。  
