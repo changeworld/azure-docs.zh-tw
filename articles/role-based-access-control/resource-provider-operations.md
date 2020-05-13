@@ -13,20 +13,18 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839091"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199571"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 資源提供者作業
 
-本文會列出每個 Azure Resource Manager 資源提供者可用的作業。 這些作業可用於[azure 自訂角色](custom-roles.md)，以對 azure 中的資源提供細微的存取控制。 作業字串的格式如下： `{Company}.{ProviderName}/{resourceType}/{action}`。 如需資源提供者命名空間如何對應至 Azure 服務的清單，請參閱[將資源提供者與服務比對](../azure-resource-manager/management/azure-services-resource-providers.md)。
+本文會列出每個 Azure Resource Manager 資源提供者可用的作業。 這些作業可用於[azure 自訂角色](custom-roles.md)，以對 azure 中的資源提供細微的存取控制。 作業字串的格式如下： `{Company}.{ProviderName}/{resourceType}/{action}` 。 如需資源提供者命名空間如何對應至 Azure 服務的清單，請參閱[將資源提供者與服務比對](../azure-resource-manager/management/azure-services-resource-providers.md)。
 
 資源提供者作業會不斷發展。 若要取得最新的作業，請使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list)。
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
@@ -2137,7 +2135,7 @@ Azure 服務：[認知服務](../cognitive-services/index.yml)
 > | DataAction | CognitiveServices/accounts/拼字檢查/拼字檢查/action | 透過 GET 或 POST 取得拼寫檢查查詢的結果。 |
 > |  | **帳戶/Microsoft.azure.cognitiveservices.language.textanalytics** |  |
 > | DataAction | CognitiveServices/accounts/Microsoft.azure.cognitiveservices.language.textanalytics/語言/動作 | 此 API 會傳回偵測到的語言，以及介於0和1之間的數值分數。 接近 1 的分數表示 100% 確定已識別的語言為真實。 總共支援 120 種語言。 |
-> | DataAction | CognitiveServices/accounts/Microsoft.azure.cognitiveservices.language.textanalytics/實體/動作 | 此 API 會傳回給定檔中已知實體和一般命名實體\"（\"人員\"、\"位置\"、\"組織等等）的清單。 |
+> | DataAction | CognitiveServices/accounts/Microsoft.azure.cognitiveservices.language.textanalytics/實體/動作 | 此 API 會傳回給定檔中已知實體和一般命名實體（ \" 人員 \" 、 \" 位置 \" 、 \" 組織 \" 等等）的清單。 |
 > | DataAction | CognitiveServices/accounts/Microsoft.azure.cognitiveservices.language.textanalytics/keyphrases/action | API 會傳回輸入文字中代表說話重點的字串清單。 |
 > | DataAction | CognitiveServices/accounts/Microsoft.azure.cognitiveservices.language.textanalytics/情感/action | 此 API 會傳回 0 到 1 之間的數值分數。<br>接近 1 的分數表示正面的情感，而接近 0 的分數則表示負面的情感。<br>分數0.5 表示缺少情感（例如<br>模擬語句）。 |
 > |  | **帳戶/VideoSearch** |  |

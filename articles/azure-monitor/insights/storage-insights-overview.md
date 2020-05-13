@@ -1,25 +1,25 @@
 ---
-title: 使用適用于儲存體的 Azure 監視器監視 Azure 儲存體服務（預覽） |Microsoft Docs
+title: 使用適用于儲存體的 Azure 監視器監視 Azure 儲存體服務 |Microsoft Docs
 description: 本文說明儲存體功能的 Azure 監視器，可讓儲存體管理員快速瞭解其 Azure 儲存體帳戶的效能和使用問題。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691120"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199963"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>使用適用于儲存體的 Azure 監視器監視儲存體服務（預覽）
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用于儲存體的 Azure 監視器監視儲存體服務
 
-適用于儲存體的 Azure 監視器（預覽）藉由提供 Azure 儲存體服務效能、容量和可用性的統一觀點，全面監視您的 Azure 儲存體帳戶。 您可以透過兩種方式來觀察儲存體容量和效能、直接從儲存體帳戶或從 Azure 監視器查看，查看不同的儲存體帳戶群組。 
+適用于儲存體的 Azure 監視器藉由提供 Azure 儲存體服務效能、容量和可用性的統一觀點，全面監視您的 Azure 儲存體帳戶。 您可以透過兩種方式來觀察儲存體容量和效能、直接從儲存體帳戶或從 Azure 監視器查看，查看不同的儲存體帳戶群組。 
 
-本文將協助您瞭解儲存體（預覽） Azure 監視器的體驗，以針對大規模的儲存體帳戶健全狀況和效能衍生可採取行動的知識，並提供著重于熱點和診斷延遲、節流和可用性問題的功能。
+本文將協助您瞭解儲存體的 Azure 監視器體驗，以提供大規模的儲存體帳戶健康情況和效能的可操作知識，並提供著重于熱點和診斷延遲、節流和可用性問題的功能。
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>儲存體 Azure 監視器簡介（預覽）
+## <a name="introduction-to-azure-monitor-for-storage"></a>儲存體 Azure 監視器簡介
 
 在深入探討經驗之前，您應該先瞭解它呈現和視覺化資訊的方式。 無論您是直接從儲存體帳戶或從 Azure 監視器選取儲存體功能，Azure 監視器的儲存體都會提供一致的體驗。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "82691120"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 從 Azure 入口網站的左側窗格中選取 [**監視**]，然後在 [**深入**解析] 區段下，選取 [**儲存體帳戶（預覽）**]。
+2. 從 Azure 入口網站的左側窗格中選取 [**監視**]，然後在 [**深入**解析] 區段底下，選取 [**儲存體帳戶**]。
 
     ![多個儲存體帳戶的觀點](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "82691120"
 
 1. 在 [Azure 入口網站中，選取 [儲存體帳戶]。
 
-2. 從清單中選擇儲存體帳戶。 在 [監視] 區段中，選擇 [Insights （預覽）]。
+2. 從清單中選擇儲存體帳戶。 在 [監視] 區段中，選擇 [深入解析]。
 
     ![選取的儲存體帳戶總覽頁面](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "82691120"
 
 ![匯出活頁簿方格結果範例](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>自訂儲存體的 Azure 監視器（預覽）
+## <a name="customize-azure-monitor-for-storage"></a>自訂儲存體的 Azure 監視器
 
 本節重點說明編輯活頁簿以自訂以支援資料分析需求的常見案例：
 
@@ -155,7 +155,7 @@ ms.locfileid: "82691120"
 
 您可以在每次執行時，將多個訂用帳戶和儲存體帳戶**總覽**或**容量**活頁簿設定為特定訂用帳戶或儲存體帳戶的範圍，然後執行下列步驟。
 
-1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶（預覽）** ]。
+1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶**]。
 
 2. 在 [**總覽**] 活頁簿上，從命令列選取 [**編輯**]。
 
@@ -176,7 +176,7 @@ ms.locfileid: "82691120"
 
 您可以對任何一個預先建立的**失敗**、**效能**、**可用性**和**容量**活頁簿執行相同的變更。
 
-1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶（預覽）** ]。
+1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶**]。
 
 2. 選取 [**容量**] 以切換至 [容量] 活頁簿，並從命令列中選取命令列中的 [**編輯**]。
 
@@ -210,7 +210,7 @@ ms.locfileid: "82691120"
 
 1. 從入口網站中選取 [**儲存體帳戶**]，然後從清單中選取儲存體帳戶。
 
-2. 從左側窗格中選取 [ **Insights （預覽）** ]。
+2. 從左側窗格中選取 [**見解**]。
 
 3. 在活頁簿中，選取 [**可用性**] 以切換至可用性活頁簿，然後從命令列選取 [**編輯**]。 
 
@@ -228,11 +228,11 @@ ms.locfileid: "82691120"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-本節將協助您進行診斷，並疑難排解使用 Azure 監視器儲存（預覽）時可能會遇到的一些常見問題。 請使用下列清單，找到與您的特定問題相關的資訊。
+本節將協助您進行診斷，並針對在使用 Azure 監視器儲存時可能會遇到的一些常見問題進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>解決效能、容量或可用性問題
 
-若要協助針對您使用 Azure 監視器 for Storage （預覽）識別的任何儲存體相關問題進行疑難排解，請參閱 Azure 儲存體[疑難排解指引](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
+若要協助疑難排解您使用 Azure 監視器儲存空間所識別的任何儲存體相關問題，請參閱 Azure 儲存體[疑難排解指引](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>為什麼我只能看到200儲存體帳戶？
 
@@ -311,8 +311,8 @@ ms.locfileid: "82691120"
 
 若要變更已儲存活頁簿中步驟的名稱，請選取步驟底下的 [編輯]，然後選取 [設定] 最下方的齒輪。
 
-![選取活頁簿步驟底部的 [編輯]，以開啟 [設定](./media/storage-insights-overview/fqa-edit.png)
-![] 中的設定選取底部的齒輪，即可變更步驟名稱](./media/storage-insights-overview/fqa-change-name.png)
+![選取活頁簿步驟底部的 [編輯]，以開啟 [設定] 中的設定 ](./media/storage-insights-overview/fqa-edit.png)
+ ![ 選取底部的齒輪，即可變更步驟名稱](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160730"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199498"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 共同作業邀請兌換
 
@@ -41,10 +41,10 @@ ms.locfileid: "82160730"
 除了邀請電子郵件以外，您還可以為來賓提供應用程式或入口網站的直接連結。 您必須先透過[Azure 入口網站](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或[PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)，將來賓使用者新增至您的目錄。 接著，您可以使用任何[可自訂的方式，將應用程式部署給使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)，包括直接登入連結。 當來賓使用直接連結而不是邀請電子郵件時，他們仍會引導您進行第一次的同意體驗。
 
 > [!IMPORTANT]
-> 直接連結必須是租使用者專用的。 換句話說，它必須包含租使用者識別碼或已驗證的網域，才能在您的租使用者（共用應用程式所在的位置）中驗證來賓。 類似https://myapps.microsoft.com的一般 URL 不適用於來賓，因為它會重新導向至其主租使用者進行驗證。 以下是一些直接連結與租使用者內容的範例：
- > - 應用程式存取面板https://myapps.microsoft.com/?tenantid=&lt：; 租使用者識別碼&gt; 
- > - 已驗證網域的應用程式存取面板https://myapps.microsoft.com/&lt：; 已驗證的網域&gt;
- > - Azure 入口網站： https://portal.azure.com/&lt; 租使用者識別碼&gt;
+> 直接連結必須是租使用者專用的。 換句話說，它必須包含租使用者識別碼或已驗證的網域，才能在您的租使用者（共用應用程式所在的位置）中驗證來賓。 類似的一般 URL https://myapps.microsoft.com 不適用於來賓，因為它會重新導向至其主租使用者進行驗證。 以下是一些直接連結與租使用者內容的範例：
+ > - 應用程式存取面板： https://myapps.microsoft.com/?tenantid=&lt ; 租使用者識別碼&gt; 
+ > - 已驗證網域的應用程式存取面板： https://myapps.microsoft.com/&lt ; 已驗證的網域&gt;
+ > - Azure 入口網站： https://portal.azure.com/&lt ; 租使用者識別碼&gt;
  > - 個別應用程式：請參閱如何使用[直接登入連結](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
 在某些情況下，建議您透過直接連結來使用邀請電子郵件。 如果這些特殊案例對您的組織來說很重要，建議您使用仍然會傳送邀請電子郵件的方法來邀請使用者：
@@ -99,7 +99,7 @@ ms.locfileid: "82160730"
 
    ![顯示新增使用規定的螢幕擷取畫面](media/redemption-experience/terms-of-use-accept.png) 
 
-   您可以在**管理** > **組織關聯** > 性**使用規定**中設定 [查看[使用](../governance/active-directory-tou.md)規定]。
+   您可以 >**使用規定**設定**組織關聯**性（或**外部**身分識別）中[的使用](../governance/active-directory-tou.md)規定。
 
 3. 除非另有指定，否則會將來賓重新導向至 [應用程式存取面板]，其中會列出來賓可以存取的應用程式。
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272905"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199423"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業，並管理誰可以邀請來賓
 
@@ -36,11 +36,9 @@ ms.locfileid: "74272905"
 ### <a name="to-configure-external-collaboration-settings"></a>若要設定外部協同作業設定：
 
 1. 以租使用者系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 選取 [ **Azure Active Directory** > **使用者** > ] [**使用者設定**]。
-3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
-   > [!NOTE]
-   > [外部共用作業設定]**** 也在 [組織關係]**** 頁面上。 在 Azure Active Directory 中，[管理]**** 下方，移至 [組織關係]**** >  [設定]****。
-4. 在 [**外部**共同作業設定] 頁面上，選擇您想要啟用的原則。
+2. 選取 **Azure Active Directory**。
+3. 選取 [**組織關聯**性  >  **設定**] （或選取 [**外部**識別] [外部共同作業  >  **設定**]）。
+6. 在 [**外部**共同作業設定] 頁面上，選擇您想要啟用的原則。
 
    ![外部共同作業設定](./media/delegate-invitations/control-who-to-invite.png)
 

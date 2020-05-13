@@ -5,7 +5,7 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse
-ms.custom: seoapril2019
+ms.custom: seoapril2019, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
-ms.openlocfilehash: 137e1919f460d2f5631810edbc09b6e213bfe651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 611a238fd829d9b1beb391da967c0f6c6d3b46ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133199"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198526"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>搭配使用多重要素 AAD 驗證與 Azure SQL Database 和 Azure Synapse 分析（適用于 MFA 的 SSMS 支援）
 Azure SQL Database 和 Azure Synapse 支援使用*Active Directory 通用驗證*來自 SQL SERVER MANAGEMENT STUDIO （SSMS）的連接。 本文討論各種驗證選項之間的差異，以及與使用通用驗證相關聯的限制。 
@@ -59,7 +59,7 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企業對企業支援   
-Azure AD 支援作為來賓使用者 Azure AD B2B 案例的使用者（請參閱[什麼是 AZURE B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)共同作業）只能連接到 SQL Database 和 azure Synapse，做為在目前 Azure AD 中建立之群組的成員，並使用指定資料庫中的 transact-sql `CREATE USER`語句手動對應。 例如，如果`steve@gmail.com`受邀 Azure AD `contosotest` （使用 Azure AD 網域`contosotest.onmicrosoft.com`），就`usergroup`必須在包含`steve@gmail.com`成員的 Azure AD 中建立 Azure AD 群組，例如。 然後，Azure AD SQL 系統管理員或 Azure AD DBO 必須藉由執行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 陳述式，針對特定資料庫 (也就是 MyDatabase) 建立此群組。 建立資料庫使用者後，使用者 `steve@gmail.com` 就可以使用 SSMS 驗證選項 `Active Directory – Universal with MFA support` 來登入 `MyDatabase`。 根據預設，使用者群組只有 connect 權限，而任何進一步的資料存取權則需以一般方式進行授與。 請注意，身為來賓使用者的使用者 `steve@gmail.com` 必須核取此方塊，並且在 SSMS [連線屬性]  對話方塊中新增 AD 網域名稱 `contosotest.onmicrosoft.com`。 [AD 網域名稱或租用戶 ID]  選項僅對 [通用驗證搭配 MFA 連線] 選項提供支援，否則會呈現灰色。
+Azure AD 支援作為來賓使用者 Azure AD B2B 案例的使用者（請參閱[什麼是 AZURE B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)共同作業）只能連接到 SQL Database 和 azure Synapse，做為在目前 Azure AD 中建立之群組的成員，並使用 `CREATE USER` 指定資料庫中的 transact-sql 語句手動對應。 例如，如果 `steve@gmail.com` 受邀 Azure AD `contosotest` （使用 Azure AD 網域 `contosotest.onmicrosoft.com` ），就 `usergroup` 必須在包含成員的 Azure AD 中建立 Azure AD 群組，例如 `steve@gmail.com` 。 然後，Azure AD SQL 系統管理員或 Azure AD DBO 必須藉由執行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 陳述式，針對特定資料庫 (也就是 MyDatabase) 建立此群組。 建立資料庫使用者後，使用者 `steve@gmail.com` 就可以使用 SSMS 驗證選項 `Active Directory – Universal with MFA support` 來登入 `MyDatabase`。 根據預設，使用者群組只有 connect 權限，而任何進一步的資料存取權則需以一般方式進行授與。 請注意，身為來賓使用者的使用者 `steve@gmail.com` 必須核取此方塊，並且在 SSMS [連線屬性]  對話方塊中新增 AD 網域名稱 `contosotest.onmicrosoft.com`。 [AD 網域名稱或租用戶 ID]  選項僅對 [通用驗證搭配 MFA 連線] 選項提供支援，否則會呈現灰色。
 
 ## <a name="universal-authentication-limitations-for-sql-database-and-azure-synapse"></a>SQL Database 和 Azure Synapse 的通用驗證限制
 - SSMS 和 SqlPackage.exe 是目前唯一透過 Active Directory 通用驗證，針對 MFA 啟用的工具。

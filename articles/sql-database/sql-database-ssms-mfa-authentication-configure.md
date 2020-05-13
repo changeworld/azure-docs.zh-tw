@@ -4,19 +4,19 @@ description: 瞭解如何搭配 SSMS 使用多重要素驗證來進行 SQL Datab
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e551ac54414cb3114a7d0905b1b2e59b0d16580a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627359"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198555"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 
@@ -25,7 +25,7 @@ ms.locfileid: "82627359"
 > [!NOTE]
 > 本主題適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse 資料庫。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
 
-## <a name="configuration-steps"></a>組態步驟
+## <a name="configuration-steps"></a>設定步驟
 
 1. **設定 Azure Active Directory** - 如需詳細資訊，請參閱[管理 Azure AD 目錄](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[整合內部部署身分識別與 Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md)、[將您自己的網域名稱新增至 Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure 現在支援與 Windows Server Active Directory 同盟](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx)。
 2. **設定 MFA** -如需逐步指示，請參閱[什麼是 Azure 多重要素驗證？](../active-directory/authentication/multi-factor-authentication.md)、[具有 Azure SQL Database 的條件式存取（MFA）和 Azure Synapse](sql-database-conditional-access.md)。 （完整條件式存取需要 Premium Azure Active Directory （Azure AD）。 有限的 MFA 適用於標準 Azure AD。)

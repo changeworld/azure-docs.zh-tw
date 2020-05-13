@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459027"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198495"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>將 Azure 儲存體帳戶移至另一個區域
 
@@ -55,7 +55,7 @@ ms.locfileid: "81459027"
 
 2. 選取 [**所有資源**]，然後選取您的儲存體帳戶。
 
-3. 選取 >**設定** > ] [**匯出範本**]。
+3. 選取 >**設定**] [  >  **匯出範本**]。
 
 4. 在 [**匯出範本**] 分頁中，選擇 [**下載**]。
 
@@ -115,7 +115,7 @@ ms.locfileid: "81459027"
 
 6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載的**範本. json**檔案。
 
-7. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為`mytargetaccount`。
+7. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ ms.locfileid: "81459027"
          "location": "centralus"
          }]          
     ```
-    若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格、**美國** = 中部**centralus**的區功能變數名稱稱。
+    若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格、**美國中部**  =  **centralus**的區功能變數名稱稱。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 部署範本：
 
-1. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為`mytargetaccount`。
+1. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ ms.locfileid: "81459027"
     },
     ``` 
 
-2. 將**範本. json**檔案中的**location**屬性編輯至目的地區域。 這個範例會將目的地區域設定`eastus`為。
+2. 將**範本. json**檔案中的**location**屬性編輯至目的地區域。 這個範例會將目的地區域設定為 `eastus` 。
 
     ```json
     "resources": [{
@@ -219,7 +219,7 @@ ms.locfileid: "81459027"
 
 下表列出這些功能，以及將它們新增至新儲存體帳戶的指導方針。
 
-| 功能    | 指導    |
+| 功能    | 指導方針    |
 |--------|-----------|
 | **生命週期管理原則** | [管理 Azure Blob 儲存體生命週期](../blobs/storage-lifecycle-management-concepts.md) |
 | **靜態網站** | [在 Azure 儲存體中裝載靜態網站](../blobs/storage-blob-static-website-how-to.md) |
@@ -232,25 +232,10 @@ ms.locfileid: "81459027"
 
 ### <a name="move-data-to-the-new-storage-account"></a>將資料移至新的儲存體帳戶
 
-以下是將資料移至的一些方式。
+AzCopy 是將資料移到的慣用工具。 它已針對效能進行優化。  其中一個較快的方法是，資料會直接複製到存放伺服器之間，因此 AzCopy 不會使用您電腦的網路頻寬。 在命令列或自訂腳本中使用 AzCopy。 請參閱[開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-： heavy_check_mark： **Azure 儲存體總管**
+您也可以使用 Azure Data Factory 來移動您的資料。 它提供了直覺的使用者介面。 若要使用 Azure Data Factory，請參閱下列任何連結：。 
 
-  它很容易使用，適用于小型資料集。 您可以複製容器和檔案共用，然後將它們貼入目標帳戶。
-
-  請參閱[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/);
-
-： heavy_check_mark： **AzCopy**
-
-  這是慣用的方法。 它已針對效能進行優化。  其中一個較快的方法是，資料會直接複製到存放伺服器之間，因此 AzCopy 不會使用您電腦的網路頻寬。 在命令列或自訂腳本中使用 AzCopy。
-
-  請參閱[開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-： heavy_check_mark： **Azure Data Factory** 
-
-  只有在您需要目前版本的 AzCopy 不支援的功能時，才使用此工具。 例如，在目前的 AzCopy 版本中，您無法在具有階層命名空間的帳戶之間複製 blob。 此外，AzCopy 也不會保留檔案存取控制清單或檔案時間戳記（例如：建立和修改時間戳記）。 
-
-  請參閱下列連結：
   - [使用 Azure Data Factory 在 Azure Blob 儲存體之間複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure Data Factory 從 Azure Data Lake Storage Gen2 來回複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)

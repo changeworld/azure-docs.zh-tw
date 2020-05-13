@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197857"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>移除與 Azure Cache for Redis 搭配使用的 TLS 1.0 和1。1
 
@@ -19,7 +19,7 @@ ms.locfileid: "81261221"
 
 作為這項工作的一部分，我們將對 Azure Cache for Redis 進行下列變更：
 
-* **第1階段：** 我們會針對新建立的快取實例，將預設的最低 TLS 版本設定為1.2。 （這是用來做為 TLS 1.0）。此時不會更新現有的快取實例。 如有需要，您可以將[最小的 TLS 版本變更](cache-configure.md#access-ports)回1.0 或1.1 以提供回溯相容性。 這種變更可以透過 Azure 入口網站或其他管理 Api 來完成。
+* **第1階段：** 我們會針對新建立的快取實例（先前的 TLS 1.0），將預設的最低 TLS 版本設定為1.2。  此時不會更新現有的快取實例。 如有需要，您可以將[最小的 TLS 版本變更](cache-configure.md#access-ports)回1.0 或1.1 以提供回溯相容性。 這種變更可以透過 Azure 入口網站或其他管理 Api 來完成。
 * **第2階段：** 我們將停止支援 TLS 版本1.0 和1.1。 在這種變更之後，您的應用程式必須使用 TLS 1.2 或更新版本來與您的快取通訊。
 
 此外，做為這項變更的一部分，我們將會移除對舊版、不安全的 cypher 套件的支援。  當快取設定為最低的 TLS 版本1.2 時，我們支援的 cypher 套件將受限於下列各項。
@@ -33,7 +33,7 @@ ms.locfileid: "81261221"
 
 | 雲端               | 第1階段開始日期 | 第2階段開始日期      |
 |---------------------|--------------------|-------------------------|
-| Azure (全域)      |  2020 年 1 月 13 日  | 2020 5 月11日（擴充） |
+| Azure (全域)      |  2020 年 1 月 13 日  | 2020 5 月11日            |
 | Azure Government    |  2020年3月13日    | 2020 5 月11日            |
 | Azure Germany       |  2020年3月13日    | 2020 5 月11日            |
 | Azure 中國         |  2020年3月13日    | 2020 5 月11日            |
@@ -50,7 +50,7 @@ ms.locfileid: "81261221"
 
 Redis .NET 用戶端預設會在 .NET Framework 4.5.2 或更早版本上使用最舊的 TLS 版本，並使用 .NET Framework 4.6 或更新版本上的最新 TLS 版本。 如果您使用較舊版本的 .NET Framework，您可以手動啟用 TLS 1.2：
 
-* **Stackexchange.redis. Redis：** 在`ssl=true`連接`sslprotocols=tls12`字串中設定和。
+* **Stackexchange.redis. Redis：**`ssl=true` `sslprotocols=tls12` 在連接字串中設定和。
 * **Servicestack.redis 時. Redis：** 請遵循[servicestack.redis 時. Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)指示，並至少需要 Servicestack.redis 時. Redis v 5.6。
 
 ### <a name="net-core"></a>.NET Core

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263370"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199474"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子郵件單次密碼驗證 (預覽版)
 
@@ -56,7 +56,7 @@ ms.locfileid: "79263370"
 
 邀請時，不會指出您邀請的使用者將使用單次密碼驗證。 但當來賓使用者登入時，如果沒有其他驗證方法可使用，單次密碼驗證將作為後援方法。 
 
-您可以前往與**其他組織** **Azure Active Directory** > 的**組織關係** > 使用者，查看在 Azure 入口網站中驗證一次密碼的來賓使用者。
+您可以前往 [ **Azure Active Directory**使用者]，在 Azure 入口網站中看到以一次性密碼驗證的來賓使用者  >  ** **。
 
 ![螢幕擷取畫面，其中顯示具有 OTP 來源值的單次密碼使用者](media/one-time-passcode/otp-users.png)
 
@@ -72,8 +72,7 @@ ms.locfileid: "79263370"
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站選擇加入
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  在導覽窗格中，選取 [Azure Active Directory]  。
-3.  在 [管理]**** 下方，選取 [組織關係]****。
-4.  選取 [設定]  。
+3.  選取 [**組織關聯**性  >  **設定**] （或選取 [**外部**識別] [外部共同作業  >  **設定**]）。
 5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)]**** 下方，選取 [是]****。
  
 ### <a name="to-opt-in-using-powershell"></a>使用 PowerShell 選擇加入
@@ -139,8 +138,7 @@ $currentpolicy -ne $null
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站關閉預覽版
 1.  以 Azure AD 全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2.  在導覽窗格中，選取 [Azure Active Directory]  。
-3.  在 [管理]**** 下方，選取 [組織關係]****。
-4.  選取 [設定]  。
+3.  選取 [**組織關聯**性  >  **設定**] （或選取 [**外部**識別] [外部共同作業  >  **設定**]）。
 5.  在 [為來賓啟用電子郵件單次密碼 (預覽版)]**** 下方，選取 [否]****。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>使用 PowerShell 關閉預覽版

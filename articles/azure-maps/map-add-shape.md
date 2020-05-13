@@ -1,28 +1,28 @@
 ---
 title: 將多邊形圖層新增至地圖 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何在 Microsoft Azure Maps Web SDK 的地圖上轉譯多邊形和多個多邊形。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9191f054ca3c7374bcbc7bec46573289a512612c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535047"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124035"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>將多邊形圖層新增至地圖
 
-本文說明如何使用多邊形圖層，在地圖`Polygon`上`MultiPolygon`轉譯的區域和功能幾何。 Azure 地圖服務 Web SDK 也支援建立 Circle 幾何，如[擴充 GeoJSON 架構](extend-geojson.md#circle)中所定義。 在地圖上轉譯時，這些圓形會轉換成多邊形。 以阿特拉斯包裝時，可以輕鬆地更新所有功能幾何[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)類別。
+本文說明如何 `Polygon` `MultiPolygon` 使用多邊形圖層，在地圖上轉譯的區域和功能幾何。 Azure 地圖服務 Web SDK 也支援建立 Circle 幾何，如[擴充 GeoJSON 架構](extend-geojson.md#circle)中所定義。 在地圖上轉譯時，這些圓形會轉換成多邊形。 以阿特拉斯包裝時，可以輕鬆地更新所有功能幾何[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)類別。
 
 ## <a name="use-a-polygon-layer"></a>使用多邊形圖層 
 
-當多邊形圖層連接至資料來源並載入到地圖上時，它會呈現具有`Polygon`和`MultiPolygon`功能的區域。 若要建立多邊形，請將它加入至資料來源，並使用[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)類別來呈現多邊形圖層。
+當多邊形圖層連接至資料來源並載入到地圖上時，它會呈現具有 `Polygon` 和功能的區域 `MultiPolygon` 。 若要建立多邊形，請將它加入至資料來源，並使用[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)類別來呈現多邊形圖層。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -63,12 +63,12 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>使用模式填滿多邊形
 
-除了以色彩填滿多邊形外，您還可以使用影像模式來填滿多邊形。 將影像模式載入地圖影像 sprite 資源，然後使用多邊形圖層的`fillPattern`屬性來參考此影像。
+除了以色彩填滿多邊形外，您還可以使用影像模式來填滿多邊形。 將影像模式載入地圖影像 sprite 資源，然後使用 `fillPattern` 多邊形圖層的屬性來參考此影像。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多邊形填滿模式" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多邊形填滿模式</a>。
+請參閱 CodePen 上的 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多邊形填滿模式</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -88,7 +88,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 ## <a name="add-a-circle-to-the-map"></a>將圓形新增至地圖
 
-Azure 地圖服務會使用 GeoJSON 架構的延伸版本，它會提供圓形的定義，如[這裡](extend-geojson.md#circle)所述。 藉由建立`Point`功能，在地圖上呈現圓形。 這`Point`有一個`subType`屬性，其值為`"Circle"` ，而`radius`屬性具有表示半徑的數位（以量為單位）。 
+Azure 地圖服務會使用 GeoJSON 架構的延伸版本，它會提供圓形的定義，如[這裡](extend-geojson.md#circle)所述。 藉由建立功能，在地圖上呈現圓形 `Point` 。 這 `Point` 有一個 `subType` 屬性，其值為 `"Circle"` ，而 `radius` 屬性具有表示半徑的數位（以量為單位）。 
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Azure 地圖服務會使用 GeoJSON 架構的延伸版本，它會提供圓形�
 }  
 ```
 
-Azure 地圖服務 Web SDK 會將這些`Point`功能轉換`Polygon`成功能。 然後，這些功能會使用多邊形和線條圖層呈現在地圖上，如下列程式碼範例所示。
+Azure 地圖服務 Web SDK 會將這些 `Point` 功能轉換成 `Polygon` 功能。 然後，這些功能會使用多邊形和線條圖層呈現在地圖上，如下列程式碼範例所示。
 
 <br/>
 
@@ -113,7 +113,7 @@ Azure 地圖服務 Web SDK 會將這些`Point`功能轉換`Polygon`成功能。 
 
 ## <a name="make-a-geometry-easy-to-update"></a>讓 geometry 易於更新
 
-類別會包裝[幾何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或功能，並可讓您輕鬆地更新和維護這些功能。 [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) `Shape` 若要具現化圖形變數，請將幾何或一組屬性傳遞給圖形的函式。
+`Shape`類別會包裝[幾何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，並可讓您輕鬆地更新和維護這些功能。 若要具現化圖形變數，請將幾何或一組屬性傳遞給圖形的函式。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.

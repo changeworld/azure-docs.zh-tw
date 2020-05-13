@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426507"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200390"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>使用 Azure 串流分析作業的 SQL Database 中的參考資料
 
@@ -147,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. 撰寫快照集查詢。 
 
-   使用** \@snapshotTime**參數來指示串流分析執行時間從 SQL database 時態表取得在系統期間有效的參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
+   使用** \@ snapshotTime**參數來指示串流分析執行時間從 SQL database 時態表取得在系統期間有效的參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 撰寫差異查詢。 
    
-   此查詢會抓取在開始時間、 ** \@deltaStartTime**和結束時間** \@deltaEndTime**內插入或刪除之 SQL 資料庫中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義在** \@deltaStartTime**與** \@deltaEndTime**之間插入或刪除資料列的情況。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 
+   此查詢會抓取在開始時間、 ** \@ deltaStartTime**和結束時間** \@ deltaEndTime**內插入或刪除之 SQL 資料庫中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義在** \@ deltaStartTime**與** \@ deltaEndTime**之間插入或刪除資料列的情況。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須從 SQL Server 端新增**浮水印**，以確保會適當地捕捉差異期間內的所有更新。 使用不含**浮水印**的差異查詢可能會導致不正確的參考資料集。  
 
    針對已更新的記錄，時態表會透過擷取插入和刪除作業來進行記錄。 串流分析執行階段接著便會將差異查詢的結果套用到先前的快照集，以將參考資料保持為最新狀態。 差異查詢的範例如下所示：
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

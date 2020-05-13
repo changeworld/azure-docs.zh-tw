@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/07/2020
-ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2838051d8e75ffbe3b7ecc9fbc655f24b57199e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982219"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198691"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -20,10 +20,6 @@ ms.locfileid: "82982219"
 我們建議您在設定之前，先審查下面的[限制和條件約束](#limitations-and-constraints)。
 
 ## <a name="disclaimers"></a>免責聲明
-
-- Azure 監視器 CMK 是早期存取功能，並已針對註冊的訂用帳戶啟用。
-
-- 本文中所述的 CMK 部署會以生產環境的品質來提供，並支援這種情況，雖然它是早期存取功能。
 
 - CMK 功能是在專用的 Log Analytics 叢集上提供，這是實體叢集和資料存放區，適用于每天傳送1TB 或更多的客戶
 
@@ -42,7 +38,7 @@ Azure 監視器儲存體存取包裝和解除封裝作業 Key Vault 的頻率是
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>CMK 在 Azure 監視器中的運作方式
 
-Azure 監視器會利用系統指派的受控識別，將存取權授與您的 Azure Key Vault。系統指派的受控識別只能與單一 Azure 資源相關聯。 叢集層級支援專用 Log Analytics 叢集的識別，這表示 CMK 功能會在專用的 Log Analytics 叢集上傳遞。 為了支援多個工作區上的 CMK，新的*Log Analytics 叢集*資源會在您的 Key Vault 與 Log Analytics 工作區之間以中繼身分識別連線的形式執行。 此概念會維護專用 Log Analytics 叢集與 Log Analytics*叢集資源之間*的身分識別，而相關聯的工作區資料則會以您的 Key Vault 金鑰來保護。 專用的 Log Analytics 叢集儲存體會\'使用與叢集資源相關聯的受控*Cluster*識別，透過 Azure Active Directory 來驗證和存取您的 Azure Key Vault。
+Azure 監視器會利用系統指派的受控識別，將存取權授與您的 Azure Key Vault。系統指派的受控識別只能與單一 Azure 資源相關聯。 叢集層級支援專用 Log Analytics 叢集的識別，這表示 CMK 功能會在專用的 Log Analytics 叢集上傳遞。 為了支援多個工作區上的 CMK，新的*Log Analytics 叢集*資源會在您的 Key Vault 與 Log Analytics 工作區之間以中繼身分識別連線的形式執行。 此概念會維護專用 Log Analytics 叢集與 Log Analytics*叢集資源之間*的身分識別，而相關聯的工作區資料則會以您的 Key Vault 金鑰來保護。 專用的 Log Analytics 叢集儲存體會使用與叢集資源相關聯的受控識別，透過 \' Azure Active Directory 來驗證和存取您的 Azure Key Vault。 *Cluster*
 
 ![CMK 總覽](media/customer-managed-keys/cmk-overview-8bit.png)
 1.    客戶的 Key Vault。
@@ -72,7 +68,7 @@ Azure 監視器會利用系統指派的受控識別，將存取權授與您的 A
 
 ## <a name="cmk-provisioning-procedure"></a>CMK 布建程式
 
-1. 訂用帳戶允許清單--這是此早期存取功能的必要項
+1. 訂用帳戶允許清單--若要確保您的專用 Log Analytics 叢集區域具有所需的容量，我們必須事先驗證您的訂用帳戶並將其列入允許清單
 2. 建立 Azure Key Vault 和儲存金鑰
 3. *建立叢集資源*
 5. 授與許可權給您的 Key Vault
@@ -173,7 +169,7 @@ CMK 功能是早期的存取功能。 您*打算建立叢集*資源的訂用帳�
 
 此資源是用來做為您的 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線。 在您收到訂用帳戶列入允許清單的確認之後，請在您的工作區所在的區域建立*Log Analytics 叢集*資源。
 
-建立*叢集資源時*，您必須指定*容量保留*層級（sku）。 *容量保留*層級的範圍可以是每日1000到 2000 GB，而您可以在稍後的100步驟中更新它。 如果您每天都需要超過 2000 GB 的容量保留層級，請與LAIngestionRate@microsoft.com我們聯絡。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+建立*叢集資源時*，您必須指定*容量保留*層級（sku）。 *容量保留*層級的範圍可以是每日1000到 2000 GB，而您可以在稍後的100步驟中更新它。 如果您每天都需要超過 2000 GB 的容量保留層級，請與我們聯絡 LAIngestionRate@microsoft.com 。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
     
 *BillingType*屬性會決定*叢集資源和其資料的計費*特性：
 - 叢集 *（預設*值）--計費的屬性為裝載*叢集資源的*訂用帳戶
@@ -420,16 +416,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK （KEK）撤銷
 
-您可以藉由停用您的金鑰或刪除 Key Vault 中的叢集資源存取*原則，撤銷*您對資料的存取權。 Azure 監視器儲存體一律會在一小時內遵循金鑰許可權的變更（通常較早），而且儲存體將會變成無法使用。 已卸載與*叢集資源相關*聯之工作區的任何資料內嵌，且查詢將會失敗。 只要*您是叢集資源，* 而且您的工作區不會被刪除，先前內嵌的資料就會在 Azure 監視器儲存體中保持無法存取。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時清除。 
+您可以藉由停用金鑰或刪除 Key Vault 中的叢集資源存取原則，來撤銷*資料的存取*權。 專用的 Log Analytics 叢集儲存體一律會在一小時或更快的時間內遵守金鑰許可權的變更，而且儲存體將會變成無法使用。 與*您的*叢集資源相關聯之工作區的任何資料內嵌都會被捨棄，且查詢將會失敗。 先前內嵌的資料在儲存體中仍無法存取，因為*您的叢集資源和*工作區不會被刪除。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時清除。 
 
-過去14天內的內嵌資料也會保留在快取記憶體（SSD 支援）中，以進行有效率的查詢引擎作業。 無論 CMK 設定為何，這項資料都會以 Microsoft 金鑰維持加密狀態，但會在金鑰撤銷作業中刪除，而且也會變成無法存取。
+過去14天內的內嵌資料也會保留在快取記憶體（SSD 支援）中，以進行有效率的查詢引擎作業。 這會在金鑰撤銷作業中刪除，而且也會變成無法存取。
 
-儲存體會定期輪詢您的 Key Vault 以嘗試解除包裝加密金鑰，並在存取之後，在30分鐘內進行資料內嵌和查詢繼續。
+儲存體會定期輪詢您的 Key Vault 以嘗試解除包裝加密金鑰，一旦存取之後，資料內嵌和查詢就會在30分鐘內繼續執行。
 
 ## <a name="cmk-kek-rotation"></a>CMK （KEK）旋轉
 
-CMK 的輪替需要在 Azure Key Vault 中，以新的金鑰版本明確更新*叢集資源。* 若要使用新的金鑰版本更新 Azure 監視器，請依照「使用金鑰識別碼詳細資料更新*叢集資源」* 步驟中的指示進行。 如果您在 Key Vault 中更新金鑰版本，而不更新*叢集資源中的新*金鑰識別碼詳細資料，Azure 監視器儲存體會繼續使用您先前的金鑰。
-您所有的資料都可以在金鑰輪替作業之後存取，包括旋轉之前和之後的資料內嵌，因為所有資料都會由帳戶加密金鑰（AEK）加密，而 AEK 現在會由新的金鑰加密金鑰（KEK）版本加密。
+CMK 的輪替需要在 Azure Key Vault 中使用新的金鑰版本來明確更新*叢集資源。* 依照「使用金鑰識別碼詳細*資料更新叢集*資源」步驟中的指示進行。 如果您未在*叢集資源中更新新的金鑰*識別碼詳細資料，專用的 Log Analytics 叢集儲存體會繼續使用您先前的金鑰。
+
+您的所有資料在金鑰輪替作業之後仍可供存取，包括旋轉之前和之後的資料內嵌，因為資料一律以帳戶加密金鑰（AEK）加密，而 AEK 現在使用 Key Vault 中的新金鑰加密金鑰（KEK）版本加密。
 
 ## <a name="limitations-and-constraints"></a>限制和限制
 
@@ -575,8 +572,7 @@ CMK 的輪替需要在 Azure Key Vault 中，以新的金鑰版本明確更新*�
 
 - **復原您的*叢集資源和*資料** 
   
-  在過去14天內*刪除的叢集資源處於*虛刪除狀態，而且可以復原。 這項作業目前是由產品小組手動執行。 使用您的 Microsoft 通道來取得復原要求。
-
+  在過去14天內*刪除的叢集資源處於*虛刪除狀態，而且可以使用其資料來復原。 由於所有工作區都會在刪除*時與叢集資源解除*關聯，因此您必須在復原 CMK 加密之後重新關聯您的工作區。 目前產品群組會手動執行復原操作。 使用您的 Microsoft 通道來取得復原要求。
 
 ## <a name="troubleshooting"></a>疑難排解
 - Key Vault 可用性的行為
@@ -595,3 +591,10 @@ CMK 的輪替需要在 Azure Key Vault 中，以新的金鑰版本明確更新*�
 - 如果您在建立叢集資源時收到衝突，可能是因為您在過去14天內*刪除了**叢集資源，* 而且它是在虛刪除期間。 叢集*資源名稱*會在虛刪除期間保持保留，而且您無法使用該名稱建立新的叢集。 當刪除*叢集資源時，此名稱*會在虛刪除期間釋放。
 
 - 當作業正在進行時，*如果您更新叢集資源，* 作業將會失敗。
+
+- 如果*您無法部署叢集資源，* 請確認您的 *Azure Key Vault、叢集*   資源和相關聯的 Log Analytics 工作區都位於相同的區域。 可以在不同的訂用帳戶中。
+
+- 如果您在 Key Vault 中更新金鑰版本，而不更新*叢集資源中的新*金鑰識別碼詳細資料，Log Analytics 叢集會繼續使用您先前的金鑰，而您的資料將會變成無法存取。 更新*叢集資源中*的新金鑰識別碼詳細資料，以繼續內嵌資料並能夠查詢資料。
+
+- 如需與客戶管理的金鑰相關的支援和說明，請在 Microsoft 中使用您的連絡人。
+

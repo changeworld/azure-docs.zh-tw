@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731968"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199730"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -22,6 +22,11 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 ## <a name="how-it-works"></a>運作方式
 
 自動調整功能使用兩種類型的條件來觸發調整事件：各種叢集效能標準（稱為以*負載為*基礎的調整）和以時間為基礎的觸發程式（稱為以*排程為基礎的調整*）的臨界值。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。 以排程為基礎的調整會根據您與特定日期和時間相關聯的作業，變更叢集中的節點數目。
+
+下列影片概述自動調整可解決的挑戰，以及它如何協助您使用 HDInsight 控制成本。
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>選擇以負載為基礎或以排程為基礎的調整
 
@@ -34,7 +39,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 自動調整會持續監視叢集，並收集下列計量：
 
-|計量|描述|
+|計量|說明|
 |---|---|
 |擱置中的 CPU 總計|開始執行所有擱置中容器時所需的核心總數。|
 |擱置中的記憶體總計|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
@@ -128,7 +133,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 #### <a name="load-based-autoscaling"></a>以負載為基礎的自動調整
 
-您`autoscale`可以透過將節點加入至`computeProfile`  >  `workernode`具有屬性`minInstanceCount`的區段，以使用載入型自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集， `maxInstanceCount`如下列 json 程式碼片段所示。
+您可以透過將節點加入至具有屬性的區段，以使用載入型自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集， `autoscale` `computeProfile`  >  `workernode` `minInstanceCount` `maxInstanceCount` 如下列 json 程式碼片段所示。
 
 ```json
 {
@@ -156,7 +161,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 #### <a name="schedule-based-autoscaling"></a>以排程為基礎的自動調整
 
-`autoscale`您可以藉由將節點新增至`computeProfile`  >  `workernode`區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集。 `autoscale`節點`recurrence`包含具有`timezone`和`schedule`的，可描述何時會進行變更。
+您可以藉由將節點新增至區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集 `autoscale` `computeProfile`  >  `workernode` 。 `autoscale`節點包含 `recurrence` 具有 `timezone` 和 `schedule` 的，可描述何時會進行變更。
 
 ```json
 {
@@ -202,7 +207,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-在要求承載中使用適當的參數。 下列 json 承載可用來啟用自動調整。 使用承載`{autoscale: null}`來停用自動調整。
+在要求承載中使用適當的參數。 下列 json 承載可用來啟用自動調整。 使用承載 `{autoscale: null}` 來停用自動調整。
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }

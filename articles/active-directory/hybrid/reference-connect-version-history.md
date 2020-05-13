@@ -12,12 +12,13 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: has-adal-ref
+ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981981"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200965"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -87,9 +88,9 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 > 如果您已**從 Ad 群組聯結**同步處理規則複製 in，而且尚未**從 Ad 群組的一般**同步處理規則複製到，並打算升級，請在升級過程中完成下列步驟：
 > 1. 在升級期間，取消核取 [設定**完成時啟動同步處理**程式] 選項。
 > 2. 編輯複製的聯結同步處理規則，並新增下列兩個轉換：
->     - 將 [直接`objectGUID`流程`sourceAnchorBinary`] 設定為。
->     - 將 [運算式`ConvertToBase64([objectGUID])`流程`sourceAnchor`] 設定為。     
-> 3. 使用來`Set-ADSyncScheduler -SyncCycleEnabled $true`啟用排程器。
+>     - 將 [直接流程] 設定 `objectGUID` 為 `sourceAnchorBinary` 。
+>     - 將 [運算式流程] 設定 `ConvertToBase64([objectGUID])` 為 `sourceAnchor` 。     
+> 3. 使用來啟用排程器 `Set-ADSyncScheduler -SyncCycleEnabled $true` 。
 
 
 
@@ -209,7 +210,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >[!IMPORTANT]
 >將 Azure AD Connect 從舊版升級至1.3.21.0 的已知問題，在此情況下，即使 Azure AD Connect 升級成功，O365 入口網站也不會反映更新的版本。
 >
-> 若要解決此問題，您必須匯入**AdSync**模組，然後`Set-ADSyncDirSyncConfiguration`在 Azure AD Connect 伺服器上執行 PowerShell Cmdlet。  您可以使用下列步驟：
+> 若要解決此問題，您必須匯入**AdSync**模組，然後 `Set-ADSyncDirSyncConfiguration` 在 Azure AD Connect 伺服器上執行 PowerShell Cmdlet。  您可以使用下列步驟：
 >
 >1. 在系統管理員身分模式中開啟 PowerShell。
 >2. 執行 `Import-Module "ADSync"`。
@@ -566,7 +567,7 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 *   將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。 關於 SELF，我們需要將預設權限維持不變。
 *   指派這些特定權限：
 
-類型     | 名稱                          | 存取               | 套用至
+類型     | 名稱                          | 存取權               | 套用至
 ---------|-------------------------------|----------------------|--------------|
 允許    | 系統                        | 完全控制         | 此物件  |
 允許    | Enterprise Admins             | 完全控制         | 此物件  |
@@ -940,8 +941,8 @@ CBool(
 #### <a name="issues-fixed"></a>已修正的問題
 
 * 下列 URL 是由 Azure AD 所引進的新 WS-同盟端點，可改善驗證中斷的復原，而且將會新增至內部部署 AD FS 信賴憑證者信任設定中：
-  * HTTPs：\//ests.login.microsoftonline.com/login.srf
-  * HTTPs：\//stamp2.login.microsoftonline.com/login.srf
+  * HTTPs： \/ /ests.login.microsoftonline.com/login.srf
+  * HTTPs： \/ /stamp2.login.microsoftonline.com/login.srf
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   

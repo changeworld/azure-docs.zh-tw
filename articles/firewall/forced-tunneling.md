@@ -5,23 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 463bccb29d59f06e7381d7d7123946029223a93a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597266"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199724"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Azure 防火牆強制通道（預覽）
+# <a name="azure-firewall-forced-tunneling"></a>Azure 防火牆強制通道
 
 您可以設定 Azure 防火牆，將所有網際網路系結流量路由傳送至指定的下一個躍點，而不是直接前往網際網路。 例如，您可能有內部部署邊緣防火牆或其他網路虛擬裝置（NVA），可以在將網路流量傳遞至網際網路之前，先處理它。
-
-> [!IMPORTANT]
-> Azure 防火牆強制通道目前為公開預覽版。
->
-> 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 特定功能可能不受支援、功能可能受限，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 根據預設，Azure 防火牆不允許強制通道，以確保符合其所有的輸出 Azure 相依性。 *AzureFirewallSubnet*上的使用者定義路由（UDR）設定若未直接傳送至網際網路，則會停用其預設路由。
 

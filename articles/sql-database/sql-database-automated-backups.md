@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061769"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198562"
 ---
 # <a name="automated-backups"></a>自動備份
 
@@ -61,6 +61,8 @@ SQL Database 使用 SQL Server 的技術，每週建立[完整備份](https://do
 SQL Database 藉由自動建立完整備份、差異備份和交易記錄備份，支援以自助式進行時間點還原（PITR）。 完整資料庫備份會每週建立，差異資料庫備份通常每隔12小時建立一次。 交易記錄備份通常每隔5到10分鐘就會建立一次。 交易記錄備份的頻率是以計算大小和資料庫活動量為基礎。 
 
 建立資料庫之後，會立即排程第一次完整備份。 此備份通常會在30分鐘內完成，但當資料庫很大時，可能會花費較長的時間。 比方說，在還原的資料庫或資料庫複本上，初始備份可能需要較長的時間。 第一次完整備份之後，將會自動排程進一步的備份，並在背景中以無訊息方式管理。 資料庫備份的確切時間，依 SQL Database 服務整體系統工作負載維持平衡而決定。 您無法變更或停用備份作業。
+
+### <a name="default-backup-retention-period"></a>預設備份保留期限
 
 PITR 備份會受到異地多餘儲存體的保護。 如需詳細資訊，請參閱 [Azure 儲存體備援](../storage/common/storage-redundancy.md) \(部分機器翻譯\)。
 
@@ -156,11 +158,11 @@ Azure SQL Database 會將您的保留備份儲存體總計計算為累計值。 
 
 Azure SQL Database 工程小組會持續自動測試已放置於邏輯伺服器和彈性資料庫集區之資料庫的自動資料庫備份的還原。 （此測試無法在受控實例中使用）。在還原時間點時，資料庫也會收到 DBCC CHECKDB 完整性檢查。
 
-在完成遷移之後，受控實例`CHECKSUM`會使用原生`RESTORE`命令所還原的資料庫，或使用 Azure 資料移轉服務來進行自動初始備份。
+在完成遷移之後，受控實例會使用 `CHECKSUM` 原生命令所還原的資料庫， `RESTORE` 或使用 Azure 資料移轉服務來進行自動初始備份。
 
 在完整性檢查期間找到的任何問題都會對工程小組發出警示。 如需詳細資訊，請參閱[Azure SQL Database 中的資料完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 
 當您將資料庫從以 DTU 為基礎的服務層級遷移至以 vCore 為基礎的服務層級時，會保留 PITR 保留，以確保應用程式的資料恢復原則不會受到危害。 如果預設保留不符合您的合規性需求，您可以使用 PowerShell 或 REST API 來變更 PITR 保留期限。 如需詳細資訊，請參閱[變更 PITR 備份保留期限](#change-the-pitr-backup-retention-period)。
 
@@ -212,7 +214,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
 
-#### <a name="request-body"></a>要求本文
+#### <a name="request-body"></a>Request body
 
 ```json
 {

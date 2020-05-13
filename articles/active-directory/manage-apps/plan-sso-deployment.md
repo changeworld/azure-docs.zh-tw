@@ -12,12 +12,13 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512822"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197860"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>規劃單一登入部署
 
@@ -59,7 +60,7 @@ ms.locfileid: "76512822"
 
 ### <a name="considerations-for-password-based-sso"></a>密碼型 SSO 的考慮
 
-使用密碼 SSO 的 Azure AD 需要部署瀏覽器延伸模組，以安全地抓取認證並填寫登入表單。 定義以[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)進行大規模部署擴充功能的機制。 選項包括：
+使用密碼 SSO 的 Azure AD 需要部署瀏覽器延伸模組，以安全地抓取認證並填寫登入表單。 定義以[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)進行大規模部署擴充功能的機制。 這些選項包括：
 
 - [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Internet Explorer 的 Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -236,11 +237,11 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 | 生活| 角色 | Azure AD 角色（如有必要） |
 |--------|-------|-----------------------------|
-| 技術支援中心系統管理員 | 第1層支援 | None |
+| 技術支援中心系統管理員 | 第1層支援 | 無 |
 | 身分識別管理員 | 在問題影響時設定和調試 Azure AD | 全域系統管理員 |
-| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
+| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
 | 基礎結構管理員 | 憑證變換擁有者 | 全域系統管理員 |
-| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
+| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
 
 我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）來管理您的角色，以針對具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
 

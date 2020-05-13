@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 027efd268ee80fbaf921b42d09cc424c8e8483ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9266f20d276b0b8d315cc83cd96fc235c79e773
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136918"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198963"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁片的伺服器端加密
 
@@ -75,11 +75,11 @@ Azure 受控磁片會使用[信封加密](../../storage/common/storage-client-si
 - 僅支援大小為2048的「[軟」和「硬性」 RSA 金鑰](../../key-vault/keys/about-keys.md)，沒有其他金鑰或大小。
 - 從使用伺服器端加密和客戶管理金鑰加密的自訂映射建立的磁片，必須使用相同的客戶管理金鑰進行加密，而且必須在相同的訂用帳戶中。
 - 從使用伺服器端加密和客戶管理金鑰加密的磁片建立的快照集，必須使用相同的客戶管理金鑰進行加密。
-- 使用伺服器端加密和客戶管理的金鑰所加密的自訂映射，無法在共用映射資源庫中使用。
 - 與客戶管理的金鑰相關的所有資源（Azure 金鑰保存庫、磁片加密集、Vm、磁片和快照）必須位於相同的訂用帳戶和區域中。
 - 使用客戶管理的金鑰加密的磁片、快照集和映射無法移至另一個訂用帳戶。
 - 如果您使用 Azure 入口網站建立磁片加密集，則目前無法使用快照。
 - 使用客戶管理的金鑰加密的受控磁片，也無法使用 Azure 磁碟加密進行加密。
+- 如需搭配使用客戶管理金鑰與共享映射資源庫的相關資訊，請參閱[預覽：使用客戶管理的金鑰來加密影像](../image-version-encryption.md)。
 
 ### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>設定您的 Azure Key Vault 和 DiskEncryptionSet

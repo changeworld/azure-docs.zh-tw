@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266503"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199384"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>關於 Azure Active Directory 報告的常見問題集
 
@@ -29,15 +29,15 @@ ms.locfileid: "79266503"
 
 ## <a name="getting-started"></a>開始使用 
 
-**問：我目前使用`https://graph.windows.net/<tenant-name>/reports/`端點 api，以程式設計方式將 Azure AD audit 和整合的應用程式使用方式報告提取到我們的報告系統中。我該切換到什麼？**
+**問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 api，以程式設計方式將 Azure AD audit 和整合的應用程式使用方式報告提取到我們的報告系統中。我該切換到什麼？**
 
 **答：** 請查閱 [API 參考](https://developer.microsoft.com/graph/)，查看您可以如何使用 API 來存取[活動報告](concept-reporting-api.md)。 此端點有兩個報告（「**審核**」和「登**入**」），可提供您在舊 API 端點中所擁有的所有資料。 這個新端點也有 Azure AD Premium 授權的登入報告，您可以用它來取得應用程式使用方式、裝置使用方式，以及使用者登入資訊。
 
 ---
 
-**問：我目前使用`https://graph.windows.net/<tenant-name>/reports/`端點 api，以程式設計方式將 Azure AD 的安全性報告（如洩漏的認證或從匿名 IP 位址登入等特定類型的偵測）提取到我們的報告系統中。我該切換到什麼？**
+**問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 api，以程式設計方式將 Azure AD 的安全性報告（如洩漏的認證或從匿名 IP 位址登入等特定類型的偵測）提取到我們的報告系統中。我該切換到什麼？**
 
-**答：** 您可以使用身分 [識別保護風險偵測 API](../identity-protection/graph-get-started.md) ，透過 Microsoft Graph 來存取安全性偵測。 這種新格式可讓您以更大的彈性來查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化成一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過，[新 API 會使用 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，這是 O365 或 Azure AD 這類 API 的 Microsoft 標準格式。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換到這個新的標準平臺。
+**答：** 您可以使用身分 [識別保護風險偵測 API](../identity-protection/graph-get-started.md)   ，透過 Microsoft Graph 來存取安全性偵測。 這種新格式可讓您以更大的彈性來查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化成一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過，[新 API 會使用 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，這是 O365 或 Azure AD 這類 API 的 Microsoft 標準格式。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換到這個新的標準平臺。
 
 ---
 
@@ -71,13 +71,7 @@ ms.locfileid: "79266503"
 
 **問：Azure 入口網站中活動記錄 (稽核和登入) 的資料保留期是多長？** 
 
-**答：** 下表列出活動記錄的資料保留期間。 如需詳細資訊，請參閱 [Azure AD 報告的資料保留原則](reference-reports-data-retention.md)。
-
-| 報表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| 稽核記錄             | 7 天        | 30 天             | 30 天             |
-| 登入               | N/A           | 30 天             | 30 天             |
-| Azure MFA 使用        | 30 天       | 30 天             | 30 天             |
+**答：** 如需詳細資訊，請參閱[Azure AD 報告的資料保留原則](reference-reports-data-retention.md)。
 
 ---
 

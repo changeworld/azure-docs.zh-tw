@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249590"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199019"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍
 當您在[Azure 入口網站的 Log Analytics](get-started-portal.md)中執行[記錄查詢](log-query-overview.md)時，查詢所評估的資料集取決於您選取的範圍和時間範圍。 本文說明範圍和時間範圍，以及如何根據您的需求進行設定。 它也會描述不同類型範圍的行為。
@@ -26,13 +26,16 @@ ms.locfileid: "79249590"
 
 範圍取決於您用來啟動 Log Analytics 的方法，在某些情況下，您可以按一下來變更範圍。 下表列出所使用的不同範圍類型，以及每個類別的不同詳細資料。
 
+> [!IMPORTANT]
+> 如果您使用 APM 2.1，則 Application Insights 應用程式會儲存在 Log Analytics 工作區中，並包含所有其他記錄檔資料，且 Application Insights 範圍無法使用。 如果您從 [Application Insights] 功能表中選取 [**記錄**]，則其作用會與**其他 Azure 資源**範圍相同，而且只有 Application Insights 資料表中該應用程式的資料可供使用。
+
 | 查詢範圍 | 範圍中的記錄 | 如何選取 | 變更範圍 |
 |:---|:---|:---|:---|
 | Log Analytics 工作區 | Log Analytics 工作區中的所有記錄。 | 從 [ **Azure 監視器**] 功能表或 [ **Log Analytics 工作區**] 功能表中選取 [**記錄**]。  | 可以將範圍變更為任何其他資源類型。 |
 | Application Insights 應用程式 | Application Insights 應用程式中的所有記錄。 | 從 Application Insights 的 **[總覽**] 頁面選取 [**分析**]。 | 只能將範圍變更為另一個 Application Insights 應用程式。 |
 | 資源群組 | 資源群組中所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [資源群組] 功能表中選取 [**記錄**]。 | 無法變更範圍。|
 | 訂用帳戶 | 訂用帳戶中的所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [訂用帳戶] 功能表中選取 [**記錄**]。   | 無法變更範圍。 |
-| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 從 [資源] 功能表中選取 [**記錄**]。<br>或者<br>從 [ **Azure 監視器**] 功能表中選取 [**記錄**]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
+| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 從 [資源] 功能表中選取 [**記錄**]。<br>OR<br>從 [ **Azure 監視器**] 功能表中選取 [**記錄**]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>範圍限定于資源的限制
 
@@ -44,7 +47,7 @@ ms.locfileid: "79249590"
 
 當範圍設定為資源時，您無法在查詢中使用下列命令，因為查詢範圍已經包含具有該資源或資源集之資料的任何工作區：
 
-- [相關](app-expression.md)
+- [app](app-expression.md)
 - [區域](workspace-expression.md)
  
 
