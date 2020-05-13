@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675325"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201536"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 web 應用程式中將 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -35,7 +35,7 @@ ms.locfileid: "78675325"
 * 開啟網頁以查看 IoT 中樞的即時溫度和濕度資料
 * 選擇性使用 Azure CLI 在 Azure App Service 中裝載您的 web 應用程式
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 * 完成[Raspberry Pi 線上](iot-hub-raspberry-pi-web-simulator-get-started.md)模擬器教學課程或其中一個裝置教學課程;例如，[使用 Node.js Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 其中涵蓋下列需求：
 
@@ -165,16 +165,16 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. 現在，在您的 App Service 方案中布建 web 應用程式。 `--deployment-local-git`參數可讓您從本機電腦上的 Git 儲存機制上傳和部署 web 應用程式程式碼。 您的 web 應用程式名稱必須是全域唯一的，而且可以包含大小寫字母、數位和連字號。 請務必針對`--runtime`參數指定節點版本10.6 或更新版本，視您使用的 node.js 執行階段版本而定。 您可以使用`az webapp list-runtimes`命令來取得支援的執行時間清單。
+2. 現在，在您的 App Service 方案中布建 web 應用程式。 `--deployment-local-git`參數可讓您從本機電腦上的 Git 儲存機制上傳和部署 web 應用程式程式碼。 您的 web 應用程式名稱必須是全域唯一的，而且可以包含大小寫字母、數位和連字號。 請務必針對參數指定節點版本10.6 或更新版本 `--runtime` ，視您使用的 node.js 執行階段版本而定。 您可以使用 `az webapp list-runtimes` 命令來取得支援的執行時間清單。
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
-3. 現在，針對指定 IoT 中樞連接字串和事件中樞取用者群組的環境變數，新增應用程式設定。 個別設定會在`-settings`參數中以空格分隔。 使用您的 IoT 中樞的服務連接字串，以及您先前在本教學課程中建立的取用者群組。 請勿將值加上引號。
+3. 現在，針對指定 IoT 中樞連接字串和事件中樞取用者群組的環境變數，新增應用程式設定。 個別設定會在參數中以空格分隔 `-settings` 。 使用您的 IoT 中樞的服務連接字串，以及您先前在本教學課程中建立的取用者群組。 請勿將值加上引號。
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. 啟用 web 應用程式的 Web 通訊端通訊協定，並將 web 應用程式設定為只接收 HTTPS 要求（HTTP 要求會重新導向至 HTTPS）。
@@ -198,7 +198,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. 將遠端新增至您的複本，以在 App Service 中參考 web 應用程式的 Git 存放庫。 針對\<[GIT 複製\>URL]，使用上一個步驟中所傳回的 url。 在命令視窗中執行下列命令。
+7. 將遠端新增至您的複本，以在 App Service 中參考 web 應用程式的 Git 存放庫。 針對 \< [Git 複製 URL] \> ，使用上一個步驟中所傳回的 url。 在命令視窗中執行下列命令。
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -251,9 +251,9 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 * 在 Azure 入口網站中，移至您的 web 應用程式。 在左窗格中的 [**監視**] 底下，選取 [ **App Service 記錄**]。 將 **[應用程式記錄（檔案系統）** ] 開啟，將 [**層級**] 設定為 [錯誤]，然後選取 [**儲存**]。 然後開啟**記錄資料流程**（在 [**監視**中] 底下）。
 
-* 從您在 Azure 入口網站的 web 應用程式的 [**開發工具**] 底下，選取 [**主控台**] `node -v` ， `npm -v`然後使用和驗證 [節點和 npm 版本]。
+* 從您在 Azure 入口網站的 web 應用程式的 [**開發工具**] 底下，選取 [**主控台**]，然後使用和驗證 [節點和 npm 版本] `node -v` `npm -v` 。
 
-* 如果您看到有關找不到套件的錯誤，您可能已不按照循序執行步驟。 部署網站時（使用`git push`），app service 會執行`npm install`，並根據目前已設定的節點版本來執行。 如果稍後設定中的變更，您必須對程式碼進行無意義的變更，然後再推送一次。
+* 如果您看到有關找不到套件的錯誤，您可能已不按照循序執行步驟。 部署網站時（使用 `git push` ），app service 會執行 `npm install` ，並根據目前已設定的節點版本來執行。 如果稍後設定中的變更，您必須對程式碼進行無意義的變更，然後再推送一次。
 
 ## <a name="next-steps"></a>後續步驟
 

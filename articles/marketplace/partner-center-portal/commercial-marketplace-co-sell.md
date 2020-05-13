@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80517932"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201439"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作夥伴中心內的共同銷售選項
 
@@ -22,11 +22,11 @@ ms.locfileid: "80517932"
 
 | **供應專案類型** | **合作夥伴中心提供的共同銷售頁面** |
 |    -----------------------    |    -----------------------------  |
-| 軟體即服務（SaaS） |     公開上市2020年4月      |
+| 軟體即服務（SaaS） |      現已推出      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     現已推出      |
 | Dynamics 365 for Operations     |     現已推出       |
-| Dynamics 365 Business Central      |  公開上市2020年4月     |
-| Azure 應用程式     |     公開上市2020年4月     |
+| Dynamics 365 Business Central      |   現已推出     |
+| Azure 應用程式     |      現已推出     |
 | Azure 虛擬機器      |     即將宣布       |
 | Azure 容器     |     即將宣布       |
 | 諮詢服務      |     即將宣布       |
@@ -51,14 +51,14 @@ ms.locfileid: "80517932"
 | :------------------- | :-------------------|
 | 裝置（硬體） | 一種供應專案，牽涉到從裝置製造商建立或銷售硬體。 |
 | IP （應用程式） | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如，可以在內部部署授權和安裝的 CRM 程式。 |
-| Service | 特定一次性專案的實際操作專業知識，通常是透過顧問來提供。 例如：設定用戶端的客戶資料庫（用戶端會假設在傳遞之後負責運算元據庫）。 |
-| 受控服務 | 以雲端為基礎的專案的實際操作專業知識，通常會持續進行。 例如：提供執行線上資料庫的平臺和工具，以及受控服務提供者所提供的持續管理。 |
+| 服務 | 特定一次性專案的實際操作專業知識，通常是透過顧問來提供。 例如：設定用戶端的客戶資料庫（用戶端會假設在傳遞之後負責運算元據庫）。 |
+| 受管理的服務 | 以雲端為基礎的專案的實際操作專業知識，通常會持續進行。 例如：提供執行線上資料庫的平臺和工具，以及受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
 
 解決方案區域可協助您進一步定義解決方案。
 
-您可以為您的供應專案新增最多三個解決方案區域。 針對每個解決方案區域，您最多可以選擇兩個方案子領域。 若要選取多個子類別， `Ctrl`請使用金鑰（在 Windows 上）或命令鍵（在 Mac OS 上）。
+您可以為您的供應專案新增最多三個解決方案區域。 針對每個解決方案區域，您最多可以選擇兩個方案子領域。 若要選取多個子類別，請使用 `Ctrl` 金鑰（在 Windows 上）或命令鍵（在 MAC OS 上）。
 
 ## <a name="documents"></a>文件
 
