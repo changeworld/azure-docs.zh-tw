@@ -212,6 +212,8 @@
     - name: 疑難排解
       items:
         - name: 疑難排解指南
+          href: troubleshooting-guide.md
+        - name: .NET 例外狀況
           href: event-hubs-messaging-exceptions.md
         - name: 資源管理員例外狀況
           href: resource-manager-exceptions.md

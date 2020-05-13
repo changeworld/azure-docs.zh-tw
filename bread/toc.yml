@@ -261,7 +261,7 @@
     - name: Azure Stack 使用者
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: 'Backup '
+    - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -605,7 +605,7 @@
         - name: 服務匯流排傳訊
           tocHref: /azure/service-bus-messaging/
           topicHref: /azure/service-bus-messaging/
-        - name: Service Bus 轉送
+        - name: Azure 轉送
           tocHref: /azure/service-bus-relay/
           topicHref: /azure/service-bus-relay/
     - name: 遷移

@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: 設定自我裝載閘道的本機計量和記錄
           href: how-to-configure-local-metrics-logs.md
-        - name: 使用 Azure Application Insights 記錄要求
-          href: api-management-howto-app-insights.md
         - name: 使用備份/還原設定 DR
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: 管理使用者帳戶
