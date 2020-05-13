@@ -4,15 +4,15 @@ description: 瞭解如何在 App Service 環境中建立、發佈及調整應用
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586126"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125803"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
 
@@ -36,7 +36,7 @@ App Service 環境（ASE）是在客戶的 Azure 虛擬網路實例的子網中 
 
 若要在 ASE 中建立應用程式：
 
-1. 選取 [**建立資源** > ] [**web +** > 行動] [**web 應用程式**]。
+1. 選取 [**建立資源**] [  >  **web +** 行動] [  >  **web 應用程式**]。
 
 1. 輸入應用程式的名稱。 如果您已在 ASE 中選取 App Service 方案，則應用程式的功能變數名稱會反映 ASE 的功能變數名稱：
 
@@ -104,14 +104,14 @@ App Service 可以將專用的 IP 位址配置給應用程式。 當您設定以
 
 ## <a name="app-access"></a>應用程式存取
 
-在外部 ASE 中，用於建立應用程式的網域尾碼是 *。&lt;asename&gt;. p.azurewebsites.net*。 如果您的 ASE 命名為_external-ASE_ ，而且您在該 ase 中裝載名為_contoso_的應用程式，您可以在下列 url 中找到它：
+在外部 ASE 中，用於建立應用程式的網域尾碼是 *。 &lt;asename &gt; . p.azurewebsites.net*。 如果您的 ASE 命名為_external-ASE_ ，而且您在該 ase 中裝載名為_contoso_的應用程式，您可以在下列 url 中找到它：
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 如需有關如何建立外部 ASE 的詳細資訊，請參閱[建立 App Service 環境][MakeExternalASE]。
 
-在 ILB ASE 中，用於建立應用程式的網域尾碼是 *。&lt;asename&gt;. appserviceenvironment.net*。 如果您的 ASE 命名為_ilb-ase_ ，而且您在該 ase 中裝載名為_contoso_的應用程式，您可以在下列 url 中找到它：
+在 ILB ASE 中，用於建立應用程式的網域尾碼是 *。 &lt;asename &gt; . appserviceenvironment.net*。 如果您的 ASE 命名為_ilb-ase_ ，而且您在該 ase 中裝載名為_contoso_的應用程式，您可以在下列 url 中找到它：
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ SCM URL 是用來存取 Kudu 主控台，或使用 Web Deploy 來發佈您的應
 
 ### <a name="dns-configuration"></a>DNS 組態 
 
-當您使用外部 ASE 時，在 ASE 中建立的應用程式會向 Azure DNS 註冊。 透過 ILB ASE，您必須管理您自己的 DNS。 
+當您使用外部 ASE 時，在 ASE 中建立的應用程式會向 Azure DNS 註冊。 外部 ASE 中不會有任何額外的步驟，讓您的應用程式可公開使用。 透過 ILB ASE，您必須管理您自己的 DNS。 您可以在自己的 DNS 伺服器或 Azure DNS 私人區域中執行此動作。
 
-若要使用您的 ILB ASE 設定 DNS：
+若要使用您的 ILB ASE 在自己的 DNS 伺服器中設定 DNS：
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. 建立 appserviceenvironment.net 的區域 <ASE name>
+1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+1. 在 appserviceenvironment.net 中建立 <ASE name> 名為 scm 的區域
+1. 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
 
-ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂功能變數名稱，而不會進行任何驗證。 如果您想要建立名為*contoso.net*的區域，您可以這麼做，並將它指向 ILB IP 位址。 自訂功能變數名稱適用于應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于* &lt;appname&gt;. scm。&lt;asename&gt;. appserviceenvironment.net*。 
+若要在 Azure DNS 私人區域中設定 DNS：
 
-名為的*區域&lt; 。asename&gt;。 appserviceenvironment.net*是全域唯一的。 在5月2019日前，客戶可以指定 ILB ASE 的網域尾碼。 如果您想要使用*contoso.com*做為網域尾碼，您可以這麼做，這會包含 scm 網站。 該模型有挑戰，包括：管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程式也會造成干擾，並導致應用程式重新開機。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響5月2019之後所做的 ILB Ase。 預先存在的 ILB Ase 仍然必須管理 ASE 的預設憑證和其 DNS 設定。
+1. 建立名為 appserviceenvironment.net 的 Azure DNS 私人區域 <ASE name> 。
+1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+1. 在該區域中建立 A 記錄，並將 *. scm 指向 ILB IP 位址
+
+ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂功能變數名稱，而不會進行任何驗證。 如果您想要建立名為*contoso.net*的區域，您可以這麼做，並將它指向 ILB IP 位址。 自訂功能變數名稱適用于應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于* &lt; appname &gt; . scm。 &lt;asename &gt; . appserviceenvironment.net*。 
+
+名為的區域 *。 &lt;asename &gt; 。 appserviceenvironment.net*是全域唯一的。 在5月2019日前，客戶可以指定 ILB ASE 的網域尾碼。 如果您想要使用*contoso.com*做為網域尾碼，您可以這麼做，這會包含 scm 網站。 該模型有挑戰，包括：管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程式也會造成干擾，並導致應用程式重新開機。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響5月2019之後所做的 ILB Ase。 預先存在的 ILB Ase 仍然必須管理 ASE 的預設憑證和其 DNS 設定。
 
 ## <a name="publishing"></a>發佈
 
@@ -152,11 +159,11 @@ ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅�
 
 如果沒有其他變更，以網際網路為基礎的 CI 系統（例如 GitHub 和 Azure DevOps）不會與 ILB ASE 搭配使用，因為發佈端點無法存取網際網路。 您可以藉由在包含 ILB ASE 的虛擬網路中安裝自我裝載的發行代理程式，從 Azure DevOps 啟用發佈至 ILB ASE。 或者，您也可以使用使用提取模型的 CI 系統，例如 Dropbox。
 
-ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它（在 [**總覽** > ] [**基本**] 和 [**屬性**] 中）。
+ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它（在 [**總覽**] [  >  **基本**] 和 [**屬性**] 中）。
 
 ## <a name="storage"></a>儲存體
 
-ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 根據預設，隔離定價 SKU 中的 App Service 方案有 250 GB 的限制。 如果您有五個以上的 App Service 方案，請小心不要超過 ASE 的 1 TB 限制。 如果您在一個 App Service 方案中需要超過 250 GB 的限制，請洽詢支援人員，將 App Service 方案限制調整為最多 1 TB。 調整計畫限制之後，ASE 中的所有 App Service 方案仍有 1 TB 的限制。
+ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 SKU 中的 App Service 方案有 250 GB 的限制。 在 ASE 中，250 GB 的儲存體會根據 App Service 方案新增至 1 TB 的限制。 您可以有多個 App Service 方案，而不只是四個，但不會有超過 1 TB 限制的額外儲存空間。
 
 ## <a name="logging"></a>記錄
 
@@ -164,16 +171,16 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 根據預設�
 
 | 實際 | 訊息 |
 |---------|----------|
-| ASE 狀況不良 | 因為虛擬網路設定無效，指定的 ASE 狀況不良。 如果狀況不良狀態繼續，ASE 將會暫停。 請確定已遵循此處定義的指導https://docs.microsoft.com/azure/app-service/environment/network-info方針：。 |
-| ASE 子網幾乎空間不足 | 指定的 ASE 位於幾乎空間不足的子網中。 有剩餘{0}的位址。 一旦這些位址耗盡之後，ASE 就無法調整。  |
-| ASE 已接近總實例限制 | 指定的 ASE 已接近 ASE 的總實例限制。 它目前包含{0}最多201個實例的 App Service 計畫實例。 |
-| ASE 無法到達相依性 | 無法連線到指定的 ASE {0}。  請確定已遵循此處定義的指導https://docs.microsoft.com/azure/app-service/environment/network-info方針：。 |
+| ASE 狀況不良 | 因為虛擬網路設定無效，指定的 ASE 狀況不良。 如果狀況不良狀態繼續，ASE 將會暫停。 請確定已遵循此處定義的指導方針： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 子網幾乎空間不足 | 指定的 ASE 位於幾乎空間不足的子網中。 有 {0} 剩餘的位址。 一旦這些位址耗盡之後，ASE 就無法調整。  |
+| ASE 已接近總實例限制 | 指定的 ASE 已接近 ASE 的總實例限制。 它目前包含 {0} 最多201個實例的 App Service 計畫實例。 |
+| ASE 無法到達相依性 | 無法連線到指定的 ASE {0} 。  請確定已遵循此處定義的指導方針： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 已暫停 | 指定的 ASE 已暫停。 ASE 暫止可能是因為帳戶 shortfall 或不正確虛擬網路設定所造成。 解決根本原因並繼續 ASE 以繼續服務流量。 |
 | ASE 升級已啟動 | 已開始對指定 ASE 進行平臺升級。 在調整作業中預期會延遲。 |
 | ASE 升級已完成 | 指定 ASE 的平臺升級已完成。 |
-| 調整規模作業已開始 | App Service 計畫（{0}）已開始調整。 預期狀態： {1}我{2}的工作者。
-| 調整作業已完成 | App Service 計畫（{0}）已完成調整。 目前狀態： {1}我{2}的工作者。 |
-| 調整作業失敗 | App Service 方案（{0}）無法調整。 目前狀態： {1}我{2}的工作者。 |
+| 調整規模作業已開始 | App Service 計畫（ {0} ）已開始調整。 預期狀態： {1} 我 {2} 的工作者。
+| 調整作業已完成 | App Service 計畫（ {0} ）已完成調整。 目前狀態： {1} 我 {2} 的工作者。 |
+| 調整作業失敗 | App Service 方案（ {0} ）無法調整。 目前狀態： {1} 我 {2} 的工作者。 |
 
 若要在您的 ASE 上啟用記錄功能：
 
@@ -200,16 +207,16 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 根據預設�
 
 ## <a name="upgrade-preference"></a>升級喜好設定
 
-如果您有多個 Ase，您可能會想要在其他人之前先升級某些 Ase。 在 ASE **HostingEnvironment Resource Manager**物件中，您可以設定**upgradePreference**的值。 您**upgradePreference**可以使用範本、ARMClient 或https://resources.azure.com來設定 upgradePreference 設定。 三種可能的值如下：
+如果您有多個 Ase，您可能會想要在其他人之前先升級某些 Ase。 在 ASE **HostingEnvironment Resource Manager**物件中，您可以設定**upgradePreference**的值。 您可以使用範本、ARMClient 或來設定**upgradePreference**設定 https://resources.azure.com 。 三種可能的值如下：
 
 - **無**： Azure 不會在特定的批次中升級您的 ASE。 這是預設值。
 - **早期**：您的 ASE 將會在 App Service 升級的前半部升級。
 - **晚期**：您的 ASE 將會在 App Service 升級的下半年升級。
 
-如果您使用https://resources.azure.com的是，請遵循下列步驟來設定**upgradePreferences**值：
+如果您使用 https://resources.azure.com 的是，請遵循下列步驟來設定**upgradePreferences**值：
 
 1. 請移至 resources.azure.com，並使用您的 Azure 帳戶登入。
-1. 前往\/\[訂用帳戶的資源訂用\]\/帳戶\/\[名稱 resourceGroups 資源\]\/組\/名提供者\/Microsoft\/\[. Web\]hostingEnvironments ASE 名稱。
+1. 前往訂用帳戶的資源訂用帳戶 \/ \[ 名稱 \] \/ resourceGroups \/ \[ 資源組名 \] \/ 提供者 \/ Microsoft. Web \/ hostingEnvironments \/ \[ ASE 名稱 \] 。
 1. 選取頂端的 [**讀取/寫入**]。
 1. 選取 [編輯]  。
 1. 將 [ **upgradePreference** ] 設定為您想要的三個值中的哪一個。

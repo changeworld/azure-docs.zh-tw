@@ -7,12 +7,12 @@ ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872609"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195950"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發和測試（預覽）
 
@@ -70,7 +70,7 @@ Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存�
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安裝及執行 Azurite
 
-此安裝方法會要求您必須安裝[node.js 8.0 版或更新](https://nodejs.org)版本。 節點套件管理員（npm）是每個 node.js 安裝內含的套件管理工具。 安裝 node.js 之後，請執行下列`npm`命令來安裝 Azurite。
+此安裝方法會要求您必須安裝[node.js 8.0 版或更新](https://nodejs.org)版本。 節點套件管理員（npm）是每個 node.js 安裝內含的套件管理工具。 安裝 node.js 之後，請執行下列 `npm` 命令來安裝 Azurite。
 
 ```console
 npm install -g azurite
@@ -88,7 +88,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 
 **執行 Azurite Docker 映射**：
 
-下列命令會執行 Azurite Docker 映射。 參數`-p 10000:10000`會將要求從主機電腦的埠10000重新導向至 Docker 實例。
+下列命令會執行 Azurite Docker 映射。 參數會將 `-p 10000:10000` 要求從主機電腦的埠10000重新導向至 Docker 實例。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -97,7 +97,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 
 **指定工作區位置**：
 
-在下列範例中， `-v c:/azurite:/data`參數會將*c：/Azurite*指定為 azurite 保存的資料位置。 在執行 Docker 命令之前，必須先建立目錄（ *c：/azurite*）。
+在下列範例中， `-v c:/azurite:/data` 參數會將*c：/azurite*指定為 azurite 保存的資料位置。 在執行 Docker 命令之前，必須先建立目錄（ *c：/azurite*）。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -142,7 +142,7 @@ npm install -g
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-此命令會告訴 Azurite 將所有資料儲存在特定目錄*c:\azurite*中。 如果省略`--location`選項，則會使用目前的工作目錄。
+此命令會告訴 Azurite 將所有資料儲存在特定目錄*c:\azurite*中。 如果 `--location` 省略選項，則會使用目前的工作目錄。
 
 ## <a name="command-line-options"></a>命令列選項
 
@@ -150,7 +150,7 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 
 ### <a name="help"></a>説明
 
-**選擇性**-使用`-h`或`--help`參數取得命令列說明。
+**選擇性**-使用或參數取得命令列說明 `-h` `--help` 。
 
 ```console
 azurite -h
@@ -159,7 +159,7 @@ azurite --help
 
 ### <a name="blob-listening-host"></a>Blob 接聽主機
 
-**選擇性**-根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用`--blobHost`參數來設定您的需求的位址。
+**選擇性**-根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用 `--blobHost` 參數來設定您的需求的位址。
 
 僅接受本機電腦上的要求：
 
@@ -178,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Blob 接聽埠設定
 
-**選擇性**-根據預設，Azurite 會接聽埠10000上的 Blob 服務。 使用`--blobPort`參數來指定您所需的接聽埠。
+**選擇性**-根據預設，Azurite 會接聽埠10000上的 Blob 服務。 使用 `--blobPort` 參數來指定您所需的接聽埠。
 
 > [!NOTE]
 > 使用自訂的埠之後，您必須在 Azure 儲存體工具或 Sdk 中更新連接字串或對應的設定。
@@ -199,7 +199,7 @@ azurite --blobPort 0
 
 ### <a name="queue-listening-host"></a>佇列接聽主機
 
-**選擇性**-根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用`--queueHost`參數來設定您的需求的位址。
+**選擇性**-根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用 `--queueHost` 參數來設定您的需求的位址。
 
 僅接受本機電腦上的要求：
 
@@ -218,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>佇列接聽埠設定
 
-**選擇性**-根據預設，Azurite 會接聽埠10001上的佇列服務。 使用`--queuePort`參數來指定您所需的接聽埠。
+**選擇性**-根據預設，Azurite 會接聽埠10001上的佇列服務。 使用 `--queuePort` 參數來指定您所需的接聽埠。
 
 > [!NOTE]
 > 使用自訂的埠之後，您必須在 Azure 儲存體工具或 Sdk 中更新連接字串或對應的設定。
@@ -239,7 +239,7 @@ azurite --queuePort 0
 
 ### <a name="workspace-path"></a>工作區路徑
 
-**選擇性**-Azurite 會在執行期間將資料儲存到本機磁片。 使用`-l`或`--location`參數，將路徑指定為工作區位置。 根據預設，將會使用目前的處理常式工作目錄。 請注意小寫的 ' l '。
+**選擇性**-Azurite 會在執行期間將資料儲存到本機磁片。 使用 `-l` 或 `--location` 參數，將路徑指定為工作區位置。 根據預設，將會使用目前的處理常式工作目錄。 請注意小寫的 ' l '。
 
 ```console
 azurite -l c:\azurite
@@ -248,7 +248,7 @@ azurite --location c:\azurite
 
 ### <a name="access-log"></a>存取記錄檔
 
-**選擇性**-根據預設，存取記錄會顯示在主控台視窗中。 使用`-s`或`--silent`參數，停用存取記錄的顯示。
+**選擇性**-根據預設，存取記錄會顯示在主控台視窗中。 使用或參數，停用存取記錄的顯示 `-s` `--silent` 。
 
 ```console
 azurite -s
@@ -256,7 +256,7 @@ azurite --silent
 ```
 ### <a name="debug-log"></a>Debug 記錄檔
 
-**選擇性**-debug 記錄檔包含每個要求和例外狀況堆疊追蹤的詳細資訊。 提供`-d`或`--debug`參數的有效本機檔案路徑，以啟用 debug 記錄檔。
+**選擇性**-debug 記錄檔包含每個要求和例外狀況堆疊追蹤的詳細資訊。 提供或參數的有效本機檔案路徑，以啟用 debug 記錄 `-d` 檔 `--debug` 。
 
 ```console
 azurite -d path/debug.log
@@ -265,7 +265,7 @@ azurite --debug path/debug.log
 
 ### <a name="loose-mode"></a>鬆散模式
 
-**選擇性**-根據預設，Azurite 會套用 strict 模式來封鎖不支援的要求標頭和參數。 使用`-L`或`--loose`參數停用 strict 模式。 請注意大寫的 ' L '。
+**選擇性**-根據預設，Azurite 會套用 strict 模式來封鎖不支援的要求標頭和參數。 使用或參數停用 strict `-L` 模式 `--loose` 。 請注意大寫的 ' L '。
 
 ```console
 azurite -L
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>版本
 
-**選擇性**-使用`-v`或`--version`參數顯示已安裝的 Azurite 版本號碼。
+**選擇性**-使用或參數顯示已安裝的 Azurite 版本 `-v` 號碼 `--version` 。
 
 ```console
 azurite -v
@@ -282,15 +282,15 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>憑證設定（HTTPS）
 
-**選擇性**-根據預設，Azurite 會使用 HTTP 通訊協定。 提供隱私權增強郵件（pem）或[個人資訊交換（.pfx）](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files)憑證檔案的路徑給`--cert`交換器，以啟用 HTTPS 模式。
+**選擇性**-根據預設，Azurite 會使用 HTTP 通訊協定。 提供隱私權增強郵件（pem）或[個人資訊交換（.pfx）](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files)憑證檔案的路徑給交換器，以啟用 HTTPS 模式 `--cert` 。
 
-當`--cert`提供 PEM 檔案的時，您必須提供對應`--key`的交換器。
+當 `--cert` 提供 PEM 檔案的時，您必須提供對應的 `--key` 交換器。
 
 ```console
 azurite --cert path/server.pem --key path/key.pem
 ```
 
-當`--cert`提供 PFX 檔案的時，您必須提供對應`--pwd`的交換器。
+當 `--cert` 提供 PFX 檔案的時，您必須提供對應的 `--pwd` 交換器。
 
 ```console
 azurite --cert path/server.pfx --pwd pfxpassword
@@ -300,22 +300,22 @@ azurite --cert path/server.pfx --pwd pfxpassword
 
 ### <a name="oauth-configuration"></a>OAuth 設定
 
-**選擇性**-使用`--oauth`參數啟用 Azurite 的 OAuth 驗證。
+**選擇性**-使用參數啟用 Azurite 的 OAuth 驗證 `--oauth` 。
 
 ```console
 azurite --oauth basic --cert path/server.pem --key path/key.pem
 ```
 
 > [!NOTE]
-> OAuth 需要 HTTPS 端點。 請確定已透過提供`--cert`交換器和`--oauth`交換器來啟用 HTTPS。
+> OAuth 需要 HTTPS 端點。 請確定已透過提供 `--cert` 交換器和交換器來啟用 HTTPS `--oauth` 。
 
-Azurite 會藉由指定`basic`參數來`--oauth`支援基本驗證。 Azurite 會執行基本驗證，例如驗證傳入的持有人權杖、檢查簽發者、物件和到期日。 Azurite 不會檢查權杖簽章或許可權。
+Azurite 會藉由指定參數來支援基本驗證 `basic` `--oauth` 。 Azurite 會執行基本驗證，例如驗證傳入的持有人權杖、檢查簽發者、物件和到期日。 Azurite 不會檢查權杖簽章或許可權。
 
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 Sdk 的授權
 
 使用任何驗證策略，從 Azure 儲存體 Sdk 或工具（例如[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)）連接到 Azurite。 需要驗證。 Azurite 支援使用 OAuth、共用金鑰和共用存取簽章（SAS）進行授權。 Azurite 也支援公用容器的匿名存取。
 
-如果您使用的是 Azure Sdk，請使用`--oauth basic and --cert --key/--pwd`選項開始 Azurite。
+如果您使用的是 Azure Sdk，請使用選項開始 Azurite `--oauth basic and --cert --key/--pwd` 。
 
 ### <a name="well-known-storage-account-and-key"></a>知名的儲存體帳戶和金鑰
 
@@ -326,7 +326,7 @@ Azurite 會接受舊版 Azure 儲存體模擬器所使用的相同知名帳戶�
 
 ### <a name="custom-storage-accounts-and-keys"></a>自訂儲存體帳戶和金鑰
 
-Azurite 支援自訂儲存體帳戶名稱和金鑰，方法`AZURITE_ACCOUNTS`是以下列格式設定環境變數`account1:key1[:key2];account2:key1[:key2];...`：。
+Azurite 支援自訂儲存體帳戶名稱和金鑰，方法是 `AZURITE_ACCOUNTS` 以下列格式設定環境變數： `account1:key1[:key2];account2:key1[:key2];...` 。
 
 例如，使用具有一個金鑰的自訂儲存體帳戶：
 
@@ -351,7 +351,7 @@ export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 根據預設，Azurite 會每分鐘重新整理來自環境變數的自訂帳戶名稱和金鑰。 透過這項功能，您可以在不重新開機 Azurite 的情況下，動態地旋轉帳戶金鑰，或新增新的儲存體帳戶。
 
 > [!NOTE]
-> 當您`devstoreaccount1`設定自訂儲存體帳戶時，預設儲存體帳戶會停用。
+> `devstoreaccount1`當您設定自訂儲存體帳戶時，預設儲存體帳戶會停用。
 
 ### <a name="connection-strings"></a>連接字串
 
@@ -393,7 +393,7 @@ export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
 
-如果您使用`dotnet dev-certs`來產生自我簽署憑證，請使用下列連接字串。
+如果您使用 `dotnet dev-certs` 來產生自我簽署憑證，請使用下列連接字串。
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
 
@@ -461,20 +461,22 @@ var client = new QueueClient(
 
 在儲存體總管中，遵循下列步驟來連接到 Azurite：
 
- 1. 選取 [**新增帳戶**] 圖示
+ 1. 選取 [**管理帳戶**] 圖示
+ 1. 選取 [**新增帳戶**]
  1. 選取 [**附加至本機模擬器**]
  1. 選取 [下一步] 
+ 1. 將 [**顯示名稱**] 欄位編輯為您選擇的名稱
  1. 再次選取 **[下一步]**
  1. 選取 **[連線]**
 
 #### <a name="connect-to-azurite-using-https"></a>使用 HTTPS 連接到 Azurite
 
-根據預設，儲存體總管不會開啟使用自我簽署憑證的 HTTPS 端點。 如果您是使用 HTTPS 執行 Azurite，您可能會使用自我簽署憑證。 在儲存體總管中，透過 [**編輯** -> **ssl 憑證** -> ] [匯**入憑證**] 對話方塊來匯入 ssl 憑證。
+根據預設，儲存體總管不會開啟使用自我簽署憑證的 HTTPS 端點。 如果您是使用 HTTPS 執行 Azurite，您可能會使用自我簽署憑證。 在儲存體總管中，透過 [**編輯**  ->  **ssl 憑證**] [匯  ->  **入憑證**] 對話方塊來匯入 ssl 憑證。
 
 ##### <a name="import-certificate-to-storage-explorer"></a>將憑證匯入儲存體總管
 
 1. 在您的本機電腦上尋找憑證。
-1. 在儲存體總管中，移至 [**編輯** -> **SSL 憑證** -> ] [匯**入憑證**] 並匯入您的憑證。
+1. 在儲存體總管中，移至 [**編輯**  ->  **SSL 憑證**] [匯  ->  **入憑證**] 並匯入您的憑證。
 
 如果您未匯入憑證，將會收到錯誤：
 
@@ -541,7 +543,7 @@ Azurite 與 Azure 儲存體錯誤處理邏輯一致，但有一些差異。 例�
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite 支援讀取權限異地冗余複寫（RA-GRS）。 針對儲存體資源，請將附加`-secondary`至帳戶名稱來存取次要位置。 例如，下列位址可能會用於在 Azurite 中使用唯讀次要資料庫來存取 blob：
+Azurite 支援讀取權限異地冗余複寫（RA-GRS）。 針對儲存體資源，請將附加至帳戶名稱來存取次要位置 `-secondary` 。 例如，下列位址可能會用於在 Azurite 中使用唯讀次要資料庫來存取 blob：
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

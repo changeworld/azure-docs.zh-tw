@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100272"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196186"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>將 SQL Server 遷移至 Azure SQL Database 受控執行個體
 
@@ -43,9 +43,7 @@ ms.locfileid: "82100272"
 
 首先，判斷受控執行個體是否與您應用程式的資料庫需求相容。 受控執行個體部署選項旨在為大部分內部部署或虛擬機器上使用 SQL Server 的現有應用程式，提供簡單的隨即轉移。 不過，有時候您可能需要尚未支援的功能或功能，而且執行因應措施的成本太高。
 
-使用[資料移轉小幫手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview)，可偵測影響 Azure SQL Database 資料庫功能的潛在相容性問題。 DMA 尚不支援將受控執行個體做為移轉目的地，但建議您針對 Azure SQL Database 執行評估，並針對產品文件，仔細檢閱提報的功能同位和相容性問題清單。 請參閱[Azure SQL Database 功能](sql-database-features.md)以檢查是否有一些在受控實例中無法封鎖的已報告封鎖問題，因為導致無法遷移 Azure SQL Database 的大部分封鎖問題都已透過受控實例移除。 例如跨資料庫查詢、相同執行個體內的跨資料庫交易、其他 SQL 來源的連結伺服器、CLR、全域暫存資料表、執行個體層級檢視、Service Broker 等功能皆可在受控執行個體中使用。
-
-若受控制執行個體部署選項並未移除一些回報的執行問題，您可能需要考慮替代選項，例如 [Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 以下是一些範例：
+使用[資料移轉小幫手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview)，可偵測影響 Azure SQL Database 資料庫功能的潛在相容性問題。 如果有一些回報的封鎖問題，您可能需要考慮替代選項，例如[Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 以下是一些範例：
 
 - 如果您需要直接存取作業系統或檔案系統，例如在具有 SQL Server 的相同虛擬機器上安裝第三方或自訂代理程式。
 - 如果您的執行個體與尚不支援的功能有緊密相依性，例如 FileStream / FileTable、PolyBase 及跨執行個體交易等功能。
@@ -53,6 +51,7 @@ ms.locfileid: "82100272"
 - 如果您的計算需求遠低於受控執行個體提供的功能 (例如，只需要一個虛擬核心)，而且資料庫彙總不是可接受的選項。
 
 如果您已解決所有已識別的遷移封鎖器，並繼續遷移至受控執行個體，請注意某些變更可能會影響工作負載的效能：
+
 - 必要的完整復原模式和定期自動備份排程可能會影響工作負載的效能，或是定期使用簡單/大量記錄模型或視需要停止備份的維護/ETL 動作。
 - 不同的伺服器或資料庫層級設定，例如追蹤旗標或相容性層級
 - 您所使用的新功能（例如透明資料庫加密（TDE）或自動容錯移轉群組）可能會影響 CPU 和 IO 使用量。
@@ -181,7 +180,7 @@ ms.locfileid: "82100272"
 受控執行個體提供許多先進的工具來進行監視和疑難排解，您應該使用它們來監視實例的效能。 您需要監視的某些參數包括：
 - 實例上的 CPU 使用量，以判斷您所布建的虛擬核心數目是否符合您的工作負載。
 - 受控執行個體上的頁面生命週期，以判斷[您是否需要額外的記憶體](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)。
-- 如或`PAGEIOLATCH`之類`INSTANCE_LOG_GOVERNOR`的等候統計資料會告訴您有儲存體 IO 問題，特別是在一般用途層中，您可能需要預先配置檔案以取得更佳的 IO 效能。
+- 如或之類的等候統計資料 `INSTANCE_LOG_GOVERNOR` `PAGEIOLATCH` 會告訴您有儲存體 IO 問題，特別是在一般用途層中，您可能需要預先配置檔案以取得更佳的 IO 效能。
 
 ## <a name="leverage-advanced-paas-features"></a>運用 advanced PaaS 功能
 

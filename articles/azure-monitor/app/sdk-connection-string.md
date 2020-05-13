@@ -6,16 +6,16 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410619"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125701"
 ---
 # <a name="connection-strings"></a>連接字串
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 連接字串可讓應用程式深入解析使用者使用單一設定，而不需要多個 proxy 設定。 對於想要將資料傳送到監視服務的內部網路 web 伺服器、主權或混合式雲端環境而言，非常有用。
 
@@ -64,10 +64,10 @@ ms.locfileid: "80410619"
 - `EndpointSuffix`（例如： applicationinsights.azure.cn）設定端點尾碼會指示 SDK 要連接的 Azure 雲端。 SDK 會將個別服務的其餘端點組合在一起。
 - 明確的端點。
   任何服務都可以在連接字串中明確覆寫。
-   - `IngestionEndpoint`exhttps://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`exhttps://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`exhttps://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`exhttps://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`（例如： `https://dc.applicationinsights.azure.com` ）
+   - `LiveEndpoint`（例如： `https://live.applicationinsights.azure.com` ）
+   - `ProfilerEndpoint`（例如： `https://profiler.applicationinsights.azure.com` ）
+   - `SnapshotEndpoint`（例如： `https://snapshot.applicationinsights.azure.com` ）
 
 #### <a name="endpoint-schema"></a>端點架構
 
@@ -106,10 +106,10 @@ ms.locfileid: "80410619"
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
 - 區域服務 Uri 是以[SDK 預設值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)為基礎，並會連線到公用全域 Azure：
-   - 攝取https://dc.services.visualstudio.com/
-   - 即時計量：https://rt.services.visualstudio.com/
-   - 頻寬https://agent.azureserviceprofiler.net/
-   - 偵錯工具https://agent.azureserviceprofiler.net/  
+   - 攝取`https://dc.services.visualstudio.com/`
+   - 即時計量：`https://rt.services.visualstudio.com/`
+   - 頻寬`https://agent.azureserviceprofiler.net/`
+   - 偵錯工具`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ ms.locfileid: "80410619"
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
 - 區域服務 Uri 是以提供的端點尾碼為基礎： 
-   - 攝取https://dc.ai.contoso.com
-   - 即時計量：https://live.ai.contoso.com
-   - 頻寬https://profiler.ai.contoso.com 
-   - 偵錯工具https://snapshot.ai.contoso.com   
+   - 攝取`https://dc.ai.contoso.com`
+   - 即時計量：`https://live.ai.contoso.com`
+   - 頻寬`https://profiler.ai.contoso.com`
+   - 偵錯工具`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ ms.locfileid: "80410619"
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
 - 區域服務 Uri 是以明確覆寫值為基礎： 
-   - 內嵌： HTTPs：\//custom.com:111/
-   - 即時計量： HTTPs：\//custom.com:222/
-   - Profiler： HTTPs：\//custom.com:333/ 
-   - 偵錯工具： HTTPs\/：/custom.com:444/   
+   - 攝取`https://custom.com:111/`
+   - 即時計量：`https://custom.com:222/`
+   - 頻寬`https://custom.com:333/`
+   - 偵錯工具`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何設定連接字串

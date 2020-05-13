@@ -11,12 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309202"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196380"
 ---
 # <a name="blocking-legacy-authentication"></a>封鎖舊版驗證
  
@@ -31,10 +32,10 @@ ms.locfileid: "81309202"
 
 您必須先瞭解您的使用者是否有使用舊版驗證的應用程式，以及它如何影響您的整體目錄，才可以在目錄中封鎖舊版驗證。 Azure AD 登入記錄可以用來瞭解您是否使用舊版驗證。
 
-1. 流覽至 **Azure 入口網站** > **Azure Active Directory** Azure Active Directory>登 **入**。
-1. 新增 [**用戶端應用程式**] 欄（如果未顯示，請按一下 [資料 **行** >] [ **用戶端應用程式**]）
-1. 依 **用戶端應用程式** 篩選> 檢查呈現的所有**舊版驗證用戶端**選項。
-1. 依**狀態** > **成功**篩選。 
+1. 流覽至 **Azure 入口網站**   >  **Azure Active Directory**登   >  **入**。
+1. 新增 [**用戶端應用程式**] 欄（如果未顯示，請按一下 [資料 **行**] [   >  **用戶端應用程式**]）
+1. 依 **用戶端應用程式**篩選  > 檢查呈現的所有**舊版驗證用戶端**選項。
+1. 依**狀態**  >  **成功**篩選。 
 1. 如有必要，請使用**日期**篩選器來展開您的日期範圍。
 
 篩選只會顯示選取的舊版驗證通訊協定所進行的成功登入嘗試。 按一下每個個別的登入嘗試，將會顯示其他詳細資料。 選取個別資料列之後，[基本資訊] 索引標籤下的 [用戶端應用程式] 資料行或 [用戶端應用程式] 欄位會指出使用了哪一個舊版驗證通訊協定。 這些記錄會指出哪些使用者仍會根據傳統驗證，以及哪些應用程式使用舊版通訊協定來提出驗證要求。 對於不會出現在這些記錄中且已確認不會使用舊版驗證的使用者，請執行條件式存取原則，或啟用基準原則：僅針對這些使用者封鎖舊版驗證。
@@ -49,8 +50,8 @@ ms.locfileid: "81309202"
 
 啟用新式驗證的第一個步驟，是確定您的目錄支援新式驗證。 2017年8月1日當天或之後所建立的目錄，預設會啟用新式驗證。 如果您的目錄是在此日期之前建立的，您必須使用下列步驟，為您的目錄手動啟用新式驗證：
 
-1. 從商務用 [Skype Online PowerShell 模組](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)執行，以查看您的目錄是否已支援新式驗證。 `Get-CsOAuthConfiguration`  
-1. 如果您的命令傳回空 `OAuthServers` 的屬性，則會停用新式驗證。 使用 `Set-CsOAuthConfiguration`來更新設定，以啟用新式驗證。 如果您 `OAuthServers` 的屬性包含專案，您就可以開始使用了。
+1.  `Get-CsOAuthConfiguration`   從 [商務用 Skype Online PowerShell 模組](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)執行，以查看您的目錄是否已支援新式驗證。
+1. 如果您的命令傳回空的  `OAuthServers`   屬性，則會停用新式驗證。 使用來更新設定，以啟用新式驗證  `Set-CsOAuthConfiguration` 。 如果您  `OAuthServers`   的屬性包含專案，您就可以開始使用了。
 
 請務必先完成此步驟，再繼續進行。 請務必先變更目錄設定，因為這些設定會規定所有 Office 用戶端將使用的通訊協定。 即使您使用的是支援新式驗證的 Office 用戶端，如果您的目錄上已停用新式驗證，則會預設為使用舊版通訊協定。
 
@@ -58,7 +59,7 @@ ms.locfileid: "81309202"
 
 在您的目錄中啟用新式驗證之後，您就可以藉由啟用 Office 用戶端的新式驗證來開始更新應用程式。 根據預設，Office 2016 或更新版本的用戶端支援新式驗證。 不需要額外的步驟。
 
-如果您使用的是 Office 2013 Windows 用戶端或更舊版本，建議您升級到 Office 2016 或更新版本。 即使在完成在目錄中啟用新式驗證的先前步驟之後，舊版 Office 應用程式仍會繼續使用舊版驗證通訊協定。 如果您使用的是 Office 2013 用戶端，而且無法立即升級為 Office 2016 或更新版本，請遵循下列文章中的步驟， [在 Windows 裝置上啟用 Office 2013 的新式驗證](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)。 若要在使用傳統驗證時協助保護您的帳戶，建議您在目錄中使用強式密碼。 查看 [Azure AD 密碼保護](../authentication/concept-password-ban-bad.md) ，以禁止在您的目錄中進行弱式密碼。
+如果您使用的是 Office 2013 Windows 用戶端或更舊版本，建議您升級到 Office 2016 或更新版本。 即使在完成在目錄中啟用新式驗證的先前步驟之後，舊版 Office 應用程式仍會繼續使用舊版驗證通訊協定。 如果您使用的是 Office 2013 用戶端，而且無法立即升級為 Office 2016 或更新版本，請遵循下列文章中的步驟， [在 Windows 裝置上啟用 Office 2013 的新式驗證](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)。 若要在使用傳統驗證時協助保護您的帳戶，建議您在目錄中使用強式密碼。 查看 [Azure AD 密碼保護](../authentication/concept-password-ban-bad.md)   ，以禁止在您的目錄中進行弱式密碼。
 
 Office 2010 不支援新式驗證。 您必須將任何使用 Office 2010 的使用者升級至較新版本的 Office。 我們建議您升級至 Office 2016 或更新版本，因為它預設會封鎖舊版驗證。
 

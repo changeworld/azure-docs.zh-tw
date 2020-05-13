@@ -5,15 +5,13 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 04/15/2020
 ms.reviewer: mahender
-ms.custom:
-- seodec18
-- fasttrack-edit
-ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457853"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196443"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -52,7 +50,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 針對所有語言架構，App Service 會將傳入權杖中的宣告（不論是來自已驗證的使用者或用戶端應用程式）提供給程式碼，方法是將它們插入要求標頭中。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](containers/configure-language-java.md#authenticate-users-easy-auth)宣告。
 
-針對[Azure Functions](../azure-functions/functions-overview.md)， `ClaimsPrincipal.Current`不會針對 .net 程式碼填入，但您仍然可以在要求標頭中找到使用者宣告，或從`ClaimsPrincipal`要求內容取得物件，甚至是透過系結參數。 如需詳細資訊，請參閱[使用用戶端](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)身分識別。
+針對[Azure Functions](../azure-functions/functions-overview.md)， `ClaimsPrincipal.Current` 不會針對 .net 程式碼填入，但您仍然可以在要求標頭中找到使用者宣告，或 `ClaimsPrincipal` 從要求內容取得物件，甚至是透過系結參數。 如需詳細資訊，請參閱[使用用戶端](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)身分識別。
 
 如需詳細資訊，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims)。
 
@@ -103,7 +101,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 | 步驟 | 不使用提供者 SDK | 使用提供者 SDK |
 | - | - | - |
 | 1. 將使用者登入 | 將用戶端重新導向至 `/.auth/login/<provider>`。 | 用戶端程式碼會直接使用提供者的 SDK 將使用者登入，並接收驗證權杖。 如需詳細資訊，請參閱提供者的文件。 |
-| 2. 驗證後 | 提供者會將用戶端重新導向至 `/.auth/login/<provider>/callback`。 | 用戶端程式代碼會將[來自提供者的 token 張貼](app-service-authentication-how-to.md#validate-tokens-from-providers)至`/.auth/login/<provider>`以進行驗證。 |
+| 2. 驗證後 | 提供者會將用戶端重新導向至 `/.auth/login/<provider>/callback`。 | 用戶端程式代碼會將[來自提供者的 token 張貼](app-service-authentication-how-to.md#validate-tokens-from-providers)至以 `/.auth/login/<provider>` 進行驗證。 |
 | 3. 建立已驗證的會話 | App Service 會將已驗證的 Cookie 新增至回應。 | App Service 會將自己的驗證權杖傳回至用戶端程式碼。 |
 | 4. 提供已驗證的內容 | 用戶端會在後續要求中包含驗證 Cookie (瀏覽器會自動處理)。 | 用戶端程式碼會在 `X-ZUMO-AUTH` 標頭中顯示驗證權杖 (Mobile Apps 用戶端 SDK 會自動處理)。 |
 
@@ -142,9 +140,9 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
-[在 App Service](app-service-authentication-how-to.md)
-[.net core Azure AppService EasyAuth （協力廠商）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-整合中自訂驗證和授權[使用 .net core （協力廠商）取得 Azure App Service 驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+[在 App Service](app-service-authentication-how-to.md) 
+ 中自訂驗證和授權[Azure AppService EasyAuth （協力廠商）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+ 的 .net Core 整合使用[.Net Core 取得 Azure App Service 驗證（協力廠商）](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 提供者專屬的使用說明指南：
 

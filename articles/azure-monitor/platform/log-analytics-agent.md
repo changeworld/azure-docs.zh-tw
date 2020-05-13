@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982202"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196251"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式總覽
 Azure Log Analytics 代理程式是針對任何雲端、內部部署機器及[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)監視的虛擬機器，開發的完整管理。 Windows 和 Linux 代理程式會將從不同來源收集的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、 [Azure 資訊安全中心](/azure/security-center/)和[Azure 自動化](../../automation/automation-intro.md)。
@@ -39,7 +39,7 @@ Log Analytics 代理程式沒有成本，但您可能會產生資料內嵌的費
 ## <a name="data-collected"></a>收集的資料
 下表列出您可以設定 Log Analytics 工作區從所有連線的代理程式收集的資料類型。 如需深入解析、解決方案和其他使用 Log Analytics 代理程式來收集其他資料類型的解決方案清單，請參閱[Azure 監視器監視哪些專案？](../monitor-reference.md) 。
 
-| 資料來源 | 描述 |
+| 資料來源 | 說明 |
 | --- | --- |
 | [Windows 事件記錄檔](data-sources-windows-events.md) | 傳送至 Windows 事件記錄系統的資訊。 |
 | [syslog](data-sources-syslog.md)                     | 傳送至 Linux 事件記錄系統的資訊。 |
@@ -53,7 +53,7 @@ Log Analytics 代理程式會將資料傳送至 Azure 監視器中的 Log Analyt
 ## <a name="other-services"></a>其他服務
 適用于 Linux 和 Windows 的代理程式不僅可用於連線到 Azure 監視器，也支援 Azure 自動化裝載混合式 Runbook 背景工作角色和其他服務，例如[變更追蹤](../../automation/change-tracking.md)、[更新管理](../../automation/automation-update-management.md)和[Azure 資訊安全中心](../../security-center/security-center-intro.md)。 如需有關「混合式 Runbook」背景工作角色的詳細資訊，請參閱 [Azure 自動化混合式 Runbook 背景工作](../../automation/automation-hybrid-runbook-worker.md)。  
 
-## <a name="installation-and-configuration"></a>安裝和組態
+## <a name="installation-and-configuration"></a>安裝及設定
 
 使用 Log Analytics 代理程式收集資料時，您必須瞭解下列各項，才能規劃代理程式部署：
 
@@ -115,11 +115,11 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 >如果您使用的散發版本或版本目前不受支援，且不符合支援模型，建議您為此存放庫建立分支，以認可 Microsoft 支援服務將不會對分支代理程式版本提供協助。
 
 * Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x86/x64) 和 7 (x64)  
-* Oracle Linux 6 和 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) 和 7 (x64)
-* Debian GNU/Linux 8 和 9 (x86/x64)
-* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64) 和 18.04 LTS (x64)
+* CentOS Linux 6 （x64）和7（x64）  
+* Oracle Linux 6 和7（x64） 
+* Red Hat Enterprise Linux Server 6 （x64）、7（x64）和8（x64）
+* Debian GNU/Linux 8 和9（x64）
+* Ubuntu 14.04 LTS （x86/x64）、16.04 LTS （x64）和 18.04 LTS （x64）
 * SUSE Linux Enterprise Server 12 （x64）和15（x64）
 
 >[!NOTE]
@@ -130,7 +130,7 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 
 下表將重點放在將安裝代理程式之支援的 Linux 散發版本所需的套件。
 
-|必要的套件 |描述 |最小版本 |
+|必要的套件 |說明 |最小版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 程式庫 | 2.5-12 
 |Openssl    | OpenSSL 程式庫 | 1.0. x 或 1.1. x |
@@ -190,7 +190,7 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 proxy 伺
 > [!NOTE]
 > 若您的 Proxy 伺服器不要求您進行驗證，Linux 代理程式仍會要求提供虛擬使用者/密碼。 這可以是任何使用者名稱或密碼。
 
-|屬性| 描述 |
+|屬性| 說明 |
 |--------|-------------|
 |通訊協定 | https |
 |user | 用於驗證 Proxy 的選擇性使用者名稱 |
@@ -201,7 +201,7 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 proxy 伺
 例如： `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> 如果您在密碼中使用特殊字元\@（例如 ""），則會收到 proxy 連接錯誤，因為值剖析錯誤。  若要暫時解決此問題，請使用 [URLDecode](https://www.urldecoder.org/) 之類的工具將 URL 中的密碼編碼。  
+> 如果您在密碼中使用特殊字元（例如 " \@ "），則會收到 proxy 連接錯誤，因為值剖析錯誤。  若要暫時解決此問題，請使用 [URLDecode](https://www.urldecoder.org/) 之類的工具將 URL 中的密碼編碼。  
 
 
 

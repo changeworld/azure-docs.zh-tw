@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928273"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195670"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -145,10 +145,10 @@ VNet 對 VNet 安全傳輸可讓 Vnet 透過虛擬 WAN 中樞的 Azure 防火牆
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet 對網際網路或協力廠商安全性服務（i）
 
-VNet 對網際網路或協力廠商的安全傳輸可讓 Vnet 透過虛擬 WAN 中樞的 Azure 防火牆連線到網際網路或支援的協力廠商安全性服務。
+VNet 對網際網路可讓 Vnet 透過虛擬 WAN 中樞的 Azure 防火牆連線到網際網路。 透過支援的協力廠商安全性服務傳送至網際網路的流量不會通過 Azure 防火牆。 您可以使用 Azure 防火牆管理員，透過支援的協力廠商安全性服務來設定 Vnet 對網際網路路徑。  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>分支對網際網路或協力廠商安全性服務（j）
-分支對網際網路或協力廠商安全傳輸可讓分支透過虛擬 WAN 中樞的 Azure 防火牆連線到網際網路或支援的協力廠商安全性服務。
+分支到網際網路可讓分支透過虛擬 WAN 中樞的 Azure 防火牆連線到網際網路。 透過支援的協力廠商安全性服務傳送至網際網路的流量不會通過 Azure 防火牆。 您可以使用 Azure 防火牆管理員，透過支援的協力廠商安全性服務來設定分支到網際網路的路徑。 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>如何? 在安全的虛擬中樞內啟用預設路由（0.0.0.0/0）
 

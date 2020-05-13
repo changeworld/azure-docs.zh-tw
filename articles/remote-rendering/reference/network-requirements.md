@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617887"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196537"
 ---
 # <a name="network-requirements"></a>網路需求
 
@@ -20,7 +20,7 @@ Azure 資料中心的穩定、低延遲網路連線，對於 Azure 遠端轉譯�
 
 確切的網路需求取決於您的特定使用案例，例如，對遠端場景圖形的修改次數和頻率，以及轉譯視圖的複雜度，但有一些指導方針可確保您的體驗盡可能有效：
 
-* 您的網際網路連線能力必須針對 Azure 遠端轉譯的單一使用者會話，一致支援至少**50 Mbps 下游**和**10 Mbps 上游**，假設網路上沒有競爭的流量。 我們建議較高的成功率以獲得更好的體驗。 透過相同網路上的更多使用者，這些需求會相應增加。
+* 您的網際網路連線能力必須針對 Azure 遠端轉譯的單一使用者會話，一致支援至少**40 Mbps 下游**和**5 Mbps 上游**，假設網路上沒有競爭的流量。 我們建議較高的成功率以獲得更好的體驗。 透過相同網路上的更多使用者，這些需求會相應增加。
 * 使用**5 ghz 的 wi-fi 寬頻**，通常會產生比 2.4 ghz wi-fi 波段更好的結果，但兩者都應該可行。
 * 如果附近有其他的 Wi-fi 網路，請避免使用這些其他網路所使用的 Wi-fi 通道。 您可以使用像是[WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html)的網路掃描工具來驗證您的 wi-fi 網路所使用的通道是否沒有競爭的流量。
 * 嚴格**避免使用 wi-fi 中繼器**或 powerline 轉送。

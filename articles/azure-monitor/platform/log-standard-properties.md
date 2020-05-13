@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/18/2019
-ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274472"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196243"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure 監視器記錄中的標準屬性
 Azure 監視器記錄檔中的資料會[儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](../log-query/logs-structure.md)，每一個都具有具有一組唯一屬性的特定資料類型。 有許多資料類型都具有多種類型之間通用的標準屬性。 本文將說明這些屬性，並提供在查詢中加以使用的範例。
+
+> [!IMPORTANT]
+> 如果您使用 APM 2.1，則 Application Insights 應用程式會儲存在 Log Analytics 工作區中，並包含所有其他的記錄檔資料。 資料表已經重新命名並重新產生，但與 Application Insights 應用程式中的資料表具有相同的資訊。 這些新資料表與 Log Analytics 工作區中的其他資料表具有相同的標準屬性。
 
 > [!NOTE]
 > 部分標準屬性不會顯示在 Log Analytics 中的架構視圖或 intellisense 中，除非您在輸出中明確指定屬性，否則不會顯示在查詢結果中。
@@ -46,7 +49,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-TimeReceived 屬性包含 Azure 雲端中的 Azure 監視器內嵌點收到記錄的日期和時間。 ** \_ ** 這有助於識別資料來源與雲端之間的延遲問題。 其中一個範例是網路問題，會造成從代理程式傳送資料的延遲。 如需詳細資訊，請參閱[Azure 監視器中的記錄資料內建時間](data-ingestion-time.md)。
+** \_ TimeReceived**屬性包含 Azure 雲端中的 Azure 監視器內嵌點收到記錄的日期和時間。 這有助於識別資料來源與雲端之間的延遲問題。 其中一個範例是網路問題，會造成從代理程式傳送資料的延遲。 如需詳細資訊，請參閱[Azure 監視器中的記錄資料內建時間](data-ingestion-time.md)。
 
 下列查詢提供來自代理程式之事件記錄的平均延遲（以小時為單位）。 這包括從代理程式到雲端的時間，以及記錄查詢可使用的總時間。
 
@@ -60,7 +63,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>類型和 itemType
-[**類型**（Log Analytics 工作區）] 和 [ **itemType** （Application Insights 應用程式）] 屬性會保存從中抓取記錄之資料表的名稱，也可以將其視為記錄類型。 在結合多份資料表中記錄的查詢中 (例如使用 `search` 運算子的那些查詢)，此屬性十分適合用來區分不同類型的記錄。 **$table** 可用來取代某些位置中的**類型**。
+[**類型**（Log Analytics 工作區）] 和 [ **itemType** （Application Insights 應用程式）] 屬性會保存從中抓取記錄之資料表的名稱，也可以將其視為記錄類型。 此屬性適用于結合多個資料表的記錄（例如使用運算子的查詢 `search` ）來區別不同類型的記錄。 **$table** 可用來取代某些位置中的**類型**。
 
 ### <a name="examples"></a>範例
 下列查詢會依據類型傳回過去一小時所收集的記錄計數。
@@ -72,11 +75,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-ItemId 屬性會保存記錄的唯一識別碼。 ** \_ **
+** \_ ItemId**屬性會保存記錄的唯一識別碼。
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-ResourceId 屬性會保存與記錄相關聯之資源的唯一識別碼。 ** \_ ** 這可讓您有標準屬性可用來將查詢範圍限定於來自特定資源的記錄，或跨多個資料表聯結相關的資料。
+** \_ ResourceId**屬性會保存與記錄相關聯之資源的唯一識別碼。 這可讓您有標準屬性可用來將查詢範圍限定於來自特定資源的記錄，或跨多個資料表聯結相關的資料。
 
 就 Azure 資源而言，**_ResourceId** 的值為 [Azure 資源識別碼 URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此屬性目前僅適用於 Azure 資源，但未來將擴充至 Azure 以外的資源，例如內部部署電腦。
 
@@ -122,7 +125,7 @@ union withsource = tt *
 請謹慎使用這些 `union withsource = tt *` 查詢，因為執行跨資料類型掃描的費用相當高昂。
 
 ## <a name="_isbillable"></a>\_IsBillable
-IsBillable 屬性會指定內嵌資料是否可計費。 ** \_ ** IsBillable 等於_false_的資料會免費收集，而不會向您的 Azure 帳戶收費。 ** \_ **
+** \_ IsBillable**屬性會指定內嵌資料是否可計費。 ** \_ IsBillable**等於的資料 `false` 會免費收集，而不會向您的 Azure 帳戶收費。
 
 ### <a name="examples"></a>範例
 若要取得傳送計費資料類型的電腦清單，請使用下列查詢：
@@ -149,7 +152,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-BilledSize 屬性會指定當** \_IsBillable**為 true 時，將向您的 Azure 帳戶收取的資料大小（以位元組為單位）。 ** \_ **
+** \_ BilledSize**屬性會指定當** \_ IsBillable**為 true 時，將向您的 Azure 帳戶收取的資料大小（以位元組為單位）。
 
 
 ### <a name="examples"></a>範例

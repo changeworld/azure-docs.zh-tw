@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 555ba9a55a135bd38dcc46e1ff7a3d751083d47e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271687"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196421"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的工作或學校帳戶的常見問題
 
@@ -32,7 +32,7 @@ ms.locfileid: "81271687"
 >[!Important]
 >如果您是系統管理員，您可以在[Azure AD 檔](https://docs.microsoft.com/azure/active-directory)中找到有關如何設定和管理您的 Azure AD 環境的詳細資訊。
 >
->此內容也僅適用于您的公司或學校帳戶，這是您的組織提供給您的帳戶（例如alain@contoso.com）。 如果您遇到雙因素驗證和個人 Microsoft 帳戶的問題，也就是您自行設定的帳戶（例如danielle@outlook.com），請參閱[針對您的 Microsoft 帳戶開啟或關閉雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+>此內容也僅適用于您的公司或學校帳戶，這是您的組織提供給您的帳戶（例如 alain@contoso.com ）。 如果您遇到雙因素驗證和個人 Microsoft 帳戶的問題，也就是您自行設定的帳戶（例如 danielle@outlook.com ），請參閱[針對您的 Microsoft 帳戶開啟或關閉雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我沒有我的行動裝置
 
@@ -99,9 +99,9 @@ ms.locfileid: "81271687"
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>我無法關閉雙因素驗證
 
-如果您使用與公司或學校帳戶（例如alain@contoso.com）的雙因素驗證，則最有可能表示您的組織已決定您必須使用這項新增的安全性功能。 因為您的組織已決定您必須使用此功能，所以您無法個別關閉此功能。 不過，如果您使用具有個人帳戶的雙因素驗證（例如alain@outlook.com），則您可以開啟和關閉此功能。 如需如何為您的個人帳戶控制雙因素驗證的指示，請參閱開啟[或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+如果您使用與公司或學校帳戶（例如）的雙因素驗證 alain@contoso.com ，則最有可能表示您的組織已決定您必須使用這項新增的安全性功能。 因為您的組織已決定您必須使用此功能，所以您無法個別關閉此功能。 不過，如果您使用具有個人帳戶的雙因素驗證（例如 alain@outlook.com ），則您可以開啟和關閉此功能。 如需如何為您的個人帳戶控制雙因素驗證的指示，請參閱開啟[或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
-如果您無法關閉雙因素驗證，也可能是因為在組織層級套用了安全性預設值。 如需安全性預設值的詳細資訊，請參閱[什麼是安全性 defulta？](../fundamentals/concept-fundamentals-security-defaults.md)
+如果您無法關閉雙因素驗證，也可能是因為在組織層級套用了安全性預設值。 如需安全性預設值的詳細資訊，請參閱[什麼是安全性預設值？](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到我的問題的解答
 

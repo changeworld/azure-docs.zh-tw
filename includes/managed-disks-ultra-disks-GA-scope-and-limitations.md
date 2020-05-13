@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008621"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196961"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
@@ -22,23 +22,30 @@ ms.locfileid: "81008621"
 下表概述可使用 ultra 磁片的區域，以及其對應的可用性選項：
 
 > [!NOTE]
-> 這些區域內的部分可用性區域不提供 ultra 磁片。
+> 如果下列清單中的區域沒有具備 ultra 磁片功能的可用性區域，則必須部署該區域中的 Vm，而不需要任何基礎結構重複選項，才能連接 ultra 磁片。
 
-|區域  |沒有基礎結構冗余  |可用性區域  |
-|---------|---------|---------|
-|美國西部     |是         |否         |
-|美國西部 2    |否         |是         |
-|美國東部     |否         |是         |
-|美國東部 2     |否         |是         |
-|東南亞     |否         |是         |
-|北歐     |否         |是         |
-|西歐     |否         |是         |
-|英國南部     |否         |是         |
+|區域  |支援 ultra 磁片的可用性區域數目  |
+|---------|---------|
+|US Gov 維吉尼亞州     |無         |
+|美國中南部     |無         |
+|美國中部     |三個區域         |
+|美國西部     |無         |
+|美國西部 2    |三個區域         |
+|美國東部     |三個區域         |
+|美國東部 2     |兩個區域         |
+|東南亞     |三個區域         |
+|北歐     |三個區域          |
+|西歐     |三個區域          |
+|英國南部     |三個區域          |
+|日本東部     |兩個區域         |
+
+
 
 - 僅支援下列 VM 系列：
-    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - FSv2
+    - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [FSv2](../articles/virtual-machines/fsv2-series.md)
+    - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - 並非每個 VM 大小都適用于具有 ultra 磁片的每個支援區域

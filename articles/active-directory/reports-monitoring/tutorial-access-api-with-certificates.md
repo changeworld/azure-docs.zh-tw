@@ -16,12 +16,13 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081705"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196885"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教學課程：使用 Azure Active Directory 報告 API 配合憑證來取得資料
 
@@ -44,7 +45,7 @@ ms.locfileid: "82081705"
     - 從使用者、應用程式金鑰和憑證存取權杖 (使用 ADAL)
     - 處理分頁結果的圖形 API
 
-6. 如果這是您第一次使用模組，請執行**Install-install-mscloudidutilsmodule**，否則請使用**import-module** PowerShell 命令匯入它。 您的會話看起來應該類似此畫面![： Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果這是您第一次使用模組，請執行**Install-install-mscloudidutilsmodule**，否則請使用**import-module** PowerShell 命令匯入它。 您的會話看起來應該類似此畫面： ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. 使用**SelfSignedCertificate** PowerShell commandlet 來建立測試憑證。
 

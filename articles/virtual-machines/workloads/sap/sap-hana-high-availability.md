@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2020
+ms.date: 05/11/2020
 ms.author: radeltch
-ms.openlocfilehash: e04b37d0c95f2176581c7d13f3641a13ecddfd8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101207"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196858"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 
@@ -77,7 +77,7 @@ ms.locfileid: "82101207"
   * 設定 SAP HANA SR 效能最佳化基礎結構 (SLES for SAP Applications 12 SP1)。 此指南包含所有必要資訊，可供您設定 SAP HANA 系統複寫以供內部部署開發之用。 請使用此指南做為基礎。
   * 設定 SAP HANA SR 成本最佳化基礎結構 (SLES for SAP Applications 12 SP1)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 為了達到高可用性，SAP HANA 會安裝在兩個虛擬機器上。 資料會使用「HANA 系統複寫」進行複寫。
 
@@ -277,10 +277,10 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 我們建議您建立等量磁片區以獲得更好的 i/o 效能，並將 stripe 大小與[SAP HANA VM 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中記載的值對齊。 `-i`引數應該是基礎實體磁片區的數目，而`-I`引數則是等量大小。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 資料磁片區的等量大小為**256KiB**。 記錄磁片區會使用一個實體磁片區，因此不`-i`會`-I`將任何或參數明確用於記錄檔磁片區命令。  
+   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 我們建議您建立等量磁片區以獲得更好的 i/o 效能，並將 stripe 大小與[SAP HANA VM 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中記載的值對齊。 `-i`引數應該是基礎實體磁片區的數目，而 `-I` 引數則是等量大小。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 資料磁片區的等量大小為**256KiB**。 記錄磁片區會使用一個實體磁片區，因此不 `-i` 會將任何或 `-I` 參數明確用於記錄檔磁片區命令。  
 
    > [!IMPORTANT]
-   > 當您要對每個資料、記錄或共用磁碟區使用多個實體磁碟區時，請使用 `-i` 參數，並將其值設定為基礎實體磁碟區的數目。 建立等`-I`量磁片區時，請使用參數來指定等量大小。  
+   > 當您要對每個資料、記錄或共用磁碟區使用多個實體磁碟區時，請使用 `-i` 參數，並將其值設定為基礎實體磁碟區的數目。 `-I`建立等量磁片區時，請使用參數來指定等量大小。  
    > 如需建議的儲存體設定，請參閱[SAP HANA VM 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定，包括等量大小和磁片數目。  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
@@ -407,14 +407,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
    如果您使用 SAP HANA 2.0 或 MDC，請為您的 SAP NetWeaver 系統建立租用戶資料庫。 將**NW1**取代為您 SAP 系統的 SID。
 
-   以 <hanasid>adm 身分\>adm 執行下列命令：
+   以 <hanasid>adm 身分 adm 執行下列命令 \> ：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一個節點上設定系統複寫：
 
-   將資料庫備份為 <hanasid>adm 身分\>adm：
+   將資料庫備份為 <hanasid>adm 身分 \> adm：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -434,7 +434,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[2]** 在第二個節點上設定系統複寫：
     
-   註冊第二個節點，以啟動系統複寫。 以 <hanasid>adm 身分\>adm 執行下列命令：
+   註冊第二個節點，以啟動系統複寫。 以 <hanasid>adm 身分 adm 執行下列命令 \> ：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -481,7 +481,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[1]** 在第一個節點上設定系統複寫。
 
-   建立主要網站做為 <hanasid>adm 身分\>adm：
+   建立主要網站做為 <hanasid>adm 身分 \> adm：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -489,7 +489,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[2]** 在次要節點上設定系統複寫。
 
-   將次要網站註冊為 <hanasid>adm 身分\>adm：
+   將次要網站註冊為 <hanasid>adm 身分 \> adm：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -547,7 +547,8 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b>
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b> \
+  meta resource-stickiness=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -759,7 +760,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在 node hn1-db-0\>上，以 <hanasid>adm 身分 adm 執行下列命令：
+   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -800,7 +801,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，如同在 node\>hn1 上 <hanasid>adm 身分 adm-db-1：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -841,7 +842,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在 node hn1-db-0\>上，以 <hanasid>adm 身分 adm 執行下列命令：
+   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -882,7 +883,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，如同在 node\>hn1 上 <hanasid>adm 身分 adm-db-1：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1025,7 +1026,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，如同在 node\>hn1 上 <hanasid>adm 身分 adm-db-1：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1062,7 +1063,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，如同在 node\>hn1 上 <hanasid>adm 身分 adm-db-1：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

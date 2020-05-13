@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128456"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196623"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
@@ -21,23 +21,29 @@ ms.locfileid: "82128456"
 
 Azure 監視器提供數種與計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 
 
-本文是 Azure 監視器的匯總計量管線目前提供的所有平臺（也就是自動收集）度量的完整清單。 清單上次更新日期為2020年3月27日。 在此日期之後變更或新增的計量可能不會出現在下方。 若要以程式設計方式查詢和存取計量清單，請使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+本文是 Azure 監視器的匯總計量管線目前提供的所有平臺（也就是自動收集）度量的完整清單。 清單上次更新日期為2020年3月27日。 在此日期之後變更或新增的計量可能不會出現在下方。 若要以程式設計方式查詢和存取計量清單，請使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)。 不在此清單上的其他計量可能會在入口網站中提供，或使用舊版 Api。
 
-其他計量可在入口網站中或使用舊版 API 提供。 在 Azure 虛擬機器、Service Fabric 和雲端服務中執行的客體作業系統（來賓 os）計量**不**會列在此處。 這些必須透過一或多個在作業系統上執行或作為一部分的代理程式來收集。 您可以使用[自訂計量](metrics-custom-overview.md)API （目前處於公開預覽狀態），將代理程式計量傳送到平臺計量資料庫。 然後，您可以圖表、警示，並以其他方式使用來賓 os 計量，例如平臺計量。 如需詳細資訊，請參閱[監視代理程式總覽](agents-overview.md)。    
+計量是依資源提供者和資源類型來組織。 如需服務及其所屬資源提供者的清單，請參閱[Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
 
-計量是依命名空間來組織。 如需服務及其所屬命名空間的清單，請參閱[Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
 
-> [!NOTE]
-> 目前不支援透過診斷設定傳送多維度計量。 跨維度值所彙總的維度計量會匯出為扁平化單一維度計量。
->
-> 「例如」**：可以在每個佇列層級瀏覽並繪製事件中樞上的「內送郵件」計量。 不過，當您透過診斷設定匯出時，計量將會呈現為事件中樞內所有佇列的所有內送郵件。
->
-> 如需可透過診斷設定匯出的平臺計量清單，請參閱[這篇文章](metrics-supported-export-diagnostic-settings.md)。
+## <a name="guest-os-metrics"></a>客體作業系統計量
+
+在 Azure 虛擬機器、Service Fabric 和雲端服務中執行的客體作業系統（來賓 os）計量**不**會列在此處。 相反地，您必須透過一或多個代理程式（執行于或作為客體作業系統的一部分）來收集來賓 os 效能計量。  「虛擬作業系統」計量包括可追蹤來賓 CPU 百分比或記憶體使用量的效能計數器，這兩者都經常用於自動調整或警示。  您可以使用[Azure 診斷擴充](diagnostics-extension-overview.md)功能，將客體作業系統效能計量傳送至儲存平臺計量的相同資料庫。 它會透過[自訂計量](metrics-custom-overview.md)API 來路由來賓 os 計量。 然後，您可以圖表、警示，並以其他方式使用來賓 os 計量，例如平臺計量。 如需詳細資訊，請參閱[監視代理程式總覽](agents-overview.md)。    
+
+## <a name="routing-platform-metrics-to-other-locations"></a>將平臺計量路由至其他位置
+
+您可以使用[診斷設定](diagnostic-settings.md)來將平臺計量路由至 Azure 儲存體、Azure 監視器記錄（以及 Log Analytics）和事件中樞。  
+
+可以路由的內容和儲存的形式有一些限制。 
+- 並非所有計量都可匯出至其他位置。 如需可透過診斷設定匯出的平臺計量清單，請參閱[這篇文章](metrics-supported-export-diagnostic-settings.md)。
+
+- 目前不支援透過診斷設定傳送多維度計量到其他位置。 跨維度值所彙總的維度計量會匯出為扁平化單一維度計量。
+「例如」**：可以在每個佇列層級瀏覽並繪製事件中樞上的「內送郵件」計量。 不過，當您透過診斷設定匯出時，計量將會呈現為事件中樞內所有佇列的所有內送郵件。
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|計數|Average|QPU。 範圍 0-100 (S1)、0-200 (S2) 和 0-400 (S4)|ServerResourceType|
 |memory_metric|記憶體|位元組|Average|記憶體。 範圍 0-25 GB (S1)、0-50 GB (S2) 和 0-100 GB (S4)|ServerResourceType|
@@ -90,7 +96,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TotalRequests|閘道要求總數（已淘汰）|計數|總計|閘道要求數目-請改用具有 GatewayResponseCodeCategory 維度的多維度要求度量|Location、Hostname|
 |SuccessfulRequests|成功的閘道要求（已淘汰）|計數|總計|成功的閘道要求數目-請改用具有 GatewayResponseCodeCategory 維度的多維度要求度量|Location、Hostname|
@@ -99,22 +105,22 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |OtherRequests|其他閘道要求（已淘汰）|計數|總計|其他閘道要求數目-請改用具有 GatewayResponseCodeCategory 維度的多維度要求度量|Location、Hostname|
 |Duration|閘道要求的整體持續期間|毫秒|Average|閘道要求的整體持續期間，以毫秒為單位|Location、Hostname|
 |BackendDuration|後端要求的持續時間|毫秒|Average|後端要求的持續時間（以毫秒為單位）|Location、Hostname|
-|Capacity|Capacity|百分比|Average|ApiManagement 服務的使用率衡量標準|位置|
-|EventHubTotalEvents|EventHub 事件總數|計數|總計|傳送至 EventHub 的事件數目|位置|
-|EventHubSuccessfulEvents|成功的 EventHub 事件|計數|總計|成功的 EventHub 事件數目|位置|
-|EventHubTotalFailedEvents|失敗的 EventHub 事件|計數|總計|失敗的 EventHub 事件數目|位置|
-|EventHubRejectedEvents|已拒絕 EventHub 事件|計數|總計|已拒絕的 EventHub 事件數（錯誤設定或未經授權）|位置|
-|EventHubThrottledEvents|已節流的 EventHub 事件|計數|總計|已節流的 EventHub 事件數目|位置|
-|EventHubTimedoutEvents|已超時的 EventHub 事件|計數|總計|已超時的 EventHub 事件數|位置|
-|EventHubDroppedEvents|已卸載 EventHub 事件|計數|總計|因為達到佇列大小上限而略過的事件數目|位置|
-|EventHubTotalBytesSent|EventHub 事件的大小|位元組|總計|EventHub 事件的總大小（以位元組為單位）|位置|
+|Capacity|Capacity|百分比|Average|ApiManagement 服務的使用率衡量標準|Location|
+|EventHubTotalEvents|EventHub 事件總數|計數|總計|傳送至 EventHub 的事件數目|Location|
+|EventHubSuccessfulEvents|成功的 EventHub 事件|計數|總計|成功的 EventHub 事件數目|Location|
+|EventHubTotalFailedEvents|失敗的 EventHub 事件|計數|總計|失敗的 EventHub 事件數目|Location|
+|EventHubRejectedEvents|已拒絕 EventHub 事件|計數|總計|已拒絕的 EventHub 事件數（錯誤設定或未經授權）|Location|
+|EventHubThrottledEvents|已節流的 EventHub 事件|計數|總計|已節流的 EventHub 事件數目|Location|
+|EventHubTimedoutEvents|已超時的 EventHub 事件|計數|總計|已超時的 EventHub 事件數|Location|
+|EventHubDroppedEvents|已卸載 EventHub 事件|計數|總計|因為達到佇列大小上限而略過的事件數目|Location|
+|EventHubTotalBytesSent|EventHub 事件的大小|位元組|總計|EventHub 事件的總大小（以位元組為單位）|Location|
 |Requests|Requests|計數|總計|具有多個維度的閘道要求計量|Location、Hostname、LastErrorReason、BackendResponseCode、GatewayResponseCode、BackendResponseCodeCategory、GatewayResponseCodeCategory|
 |NetworkConnectivity|資源的網路線上狀態（預覽）|計數|總計|來自 API 管理服務之相依資源類型的網路線上狀態|Location、ResourceType|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>AppConfiguration/configurationStores
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|計數|計數|傳入的 HTTP 要求總數。|StatusCode|
 |HttpIncomingRequestDuration|HttpIncomingRequestDuration|計數|Average|Http 要求的延遲。|StatusCode|
@@ -122,7 +128,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftappplatformspring"></a>AppPlatform/春季
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|系統 CPU 使用量百分比|百分比|Average|整個系統的最近 cpu 使用量|AppName、Pod|
 |AppCpuUsagePercentage|應用程式 CPU 使用量百分比|百分比|Average|應用程式 JVM CPU 使用量百分比|AppName、Pod|
@@ -152,7 +158,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TotalJob|工作總數|計數|總計|工作總數|Runbook，狀態|
 |TotalUpdateDeploymentRuns|更新部署執行總計|計數|總計|軟體更新部署執行總計|SoftwareUpdateConfigurationName，狀態|
@@ -161,7 +167,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CoreCount|專用核心計數|計數|總計|Batch 帳戶中的專用核心總數|無|
 |TotalNodeCount|專用節點計數|計數|總計|Batch 帳戶中的專用節點總數|無|
@@ -198,7 +204,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftbatchaiworkspaces"></a>BatchAI/工作區
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |已提交作業|已提交作業|計數|總計|已提交的作業數目|案例，ClusterName|
 |工作已完成|工作已完成|計數|總計|已完成的作業數目|案例，ClusterName，ResultType|
@@ -208,7 +214,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |無法使用的節點|無法使用的節點|計數|Average|無法使用的節點數目|案例，ClusterName|
 |搶先節點|搶先節點|計數|Average|先占節點的數量|案例，ClusterName|
 |離開節點|離開節點|計數|Average|離開節點的數目|案例，ClusterName|
-|核心總數|核心總數|計數|Average|核心總數|案例，ClusterName|
+|總核心數|總核心數|計數|Average|核心總數|案例，ClusterName|
 |現用核心|現用核心|計數|Average|使用中核心數目|案例，ClusterName|
 |閒置核心|閒置核心|計數|Average|閒置核心數|案例，ClusterName|
 |無法使用的核心|無法使用的核心|計數|Average|無法使用的核心數目|案例，ClusterName|
@@ -218,7 +224,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftblockchainblockchainmembers"></a>區塊鏈/blockchainMembers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|CPU 使用量百分比|百分比|最大值|CPU 使用量百分比|節點|
 |MemoryUsage|記憶體使用量|位元組|Average|記憶體使用量|節點|
@@ -240,7 +246,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |connectedclients|連線的用戶端|計數|最大值||ShardId|
 |totalcommandsprocessed|總作業數|計數|總計||ShardId|
@@ -261,7 +267,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |cacheRead|快取讀取|每秒位元組|最大值||ShardId|
 |percentProcessorTime|CPU|百分比|最大值||ShardId|
 |cacheLatency|快取延遲 (毫秒) (預覽)|計數|Average||ShardId|
-|錯誤|Errors|計數|最大值||ShardId、ErrorType|
+|錯誤|錯誤|計數|最大值||ShardId、ErrorType|
 |connectedclients0|連線的用戶端 (分區 0)|計數|最大值||無|
 |totalcommandsprocessed0|總作業數 (分區 0)|計數|總計||無|
 |cachehits0|快取點擊 (分區 0)|計數|總計||無|
@@ -428,14 +434,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft Cdn/cdnwebapplicationfirewallpolicies
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Web 應用程式防火牆要求計數|計數|總計|Web 應用程式防火牆處理的用戶端要求數|PolicyName、RuleName、Action|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|無|
 |Network In|Network In|位元組|總計|虛擬機器 (連入流量) 在所有網路介面上接收到的位元組數目。|無|
@@ -448,7 +454,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|RoleInstanceId|
 |Network In|Network In|位元組|總計|虛擬機器 (連入流量) 在所有網路介面上接收到的位元組數目。|RoleInstanceId|
@@ -462,7 +468,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft.ClassicStorage/storageAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |UsedCapacity|已使用容量|位元組|Average|帳戶使用的容量|無|
 |交易|交易|計數|總計|向儲存體服務或所指定 API 作業傳送的要求數。 此數目包括成功與失敗的要求，以及產生錯誤的要求。 使用 ResponseType 維度來取得不同類型回應的數目。|ResponseType、GeoType、ApiName、Authentication|
@@ -474,7 +480,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft.classicstorage/storageAccounts/blobServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob 容量|位元組|Average|儲存體帳戶 Blob 服務所使用的儲存體量 (位元組)。|BlobType，層|
 |BlobCount|Blob 計數|計數|Average|儲存體帳戶 Blob 服務中的 Blob 數目。|BlobType，層|
@@ -489,7 +495,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft.classicstorage/storageAccounts/tableServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TableCapacity|資料表容量|位元組|Average|儲存體帳戶資料表服務所使用的儲存體量 (位元組)。|無|
 |TableCount|資料表計數|計數|Average|儲存體帳戶資料表服務中的資料表數目。|無|
@@ -503,7 +509,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft.classicstorage/storageAccounts/fileServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |FileCapacity|檔案容量|位元組|Average|儲存體帳戶的檔案服務所使用的儲存體數量（以位元組為單位）。|FileShare|
 |FileCount|檔案計數|計數|Average|儲存體帳戶之檔案服務中的檔案數目。|FileShare|
@@ -520,7 +526,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft.classicstorage/storageAccounts/queueServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QueueCapacity|佇列容量|位元組|Average|儲存體帳戶佇列服務所使用的儲存體量 (位元組)。|無|
 |QueueCount|佇列計數|計數|Average|儲存體帳戶佇列服務中的佇列數目。|無|
@@ -535,7 +541,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TotalCalls|呼叫總數|計數|總計|呼叫總數。|ApiName、OperationName、Region|
 |SuccessfulCalls|成功的呼叫|計數|總計|成功的呼叫數。|ApiName、OperationName、Region|
@@ -555,7 +561,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無|
 |Network In|計費中的網路（已淘汰）|位元組|總計|虛擬機器在所有網路介面上接收的可計費位元組數（連入流量）（已淘汰）|無|
@@ -600,7 +606,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|VMName|
 |Network In|計費中的網路（已淘汰）|位元組|總計|虛擬機器在所有網路介面上接收的可計費位元組數（連入流量）（已淘汰）|VMName|
@@ -645,7 +651,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無|
 |Network In|計費中的網路（已淘汰）|位元組|總計|虛擬機器在所有網路介面上接收的可計費位元組數（連入流量）（已淘汰）|無|
@@ -689,7 +695,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CpuUsage|CPU 使用率|計數|Average|所有核心的 CPU 使用率 (以 millicores 為單位)。|containerName|
 |MemoryUsage|記憶體使用量|位元組|Average|總記憶體使用率 (位元組)。|containerName|
@@ -698,7 +704,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TotalPullCount|總提取計數|計數|Average|總映射提取次數|無|
 |SuccessfulPullCount|成功的提取計數|計數|Average|成功的映射提取次數|無|
@@ -709,7 +715,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|受控叢集中可用的 cpu 核心總數|計數|Average|受控叢集中可用的 cpu 核心總數|無|
 |kube_node_status_allocatable_memory_bytes|受控叢集中可用的記憶體總量|位元組|Average|受控叢集中可用的記憶體總量|無|
@@ -721,14 +727,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>CustomProviders/resourceproviders
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SuccessfullRequests|成功的要求|計數|總計|自訂提供者提出的成功要求|HttpMethod、CallPath、StatusCode|
 |FailedRequests|失敗的要求|計數|總計|取得自訂資源提供者的可用記錄|HttpMethod、CallPath、StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>DataBoxEdge/dataBoxEdgeDevices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |NICReadThroughput|讀取輸送量（網路）|每秒位元組|Average|閘道中所有磁片區的報告期間，裝置上網路介面的讀取輸送量。|InstanceName|
 |NICWriteThroughput|寫入輸送量（網路）|每秒位元組|Average|閘道中所有磁片區的報告期間，裝置上網路介面的寫入輸送量。|InstanceName|
@@ -746,7 +752,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.datacatalog/datacatalogs
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|依分類的資產散發|計數|總計|指出已指派特定分類的資產數目，也就是使用該標籤來分類。|分類，來源|
 |AssetDistributionByStorageType|依儲存體類型的資產散發|計數|總計|指出具有特定儲存體類型的資產數目。|StorageType|
@@ -761,7 +767,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |FailedRuns|失敗的執行|計數|總計||pipelineName、activityName|
 |SuccessfulRuns|成功的執行|計數|總計||pipelineName、activityName|
@@ -769,7 +775,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|失敗的管線執行計量|計數|總計||FailureType、Name|
 |PipelineSucceededRuns|成功的管線執行計量|計數|總計||FailureType、Name|
@@ -792,7 +798,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |JobEndedSuccess|成功的作業|計數|總計|成功作業計數。|無|
 |JobEndedFailure|失敗的作業|計數|總計|失敗作業計數。|無|
@@ -805,7 +811,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TotalStorage|儲存體總計|位元組|最大值|儲存在帳戶中的總資料量。|無|
 |DataWritten|寫入的資料|位元組|總計|寫入帳戶的總資料量。|無|
@@ -816,7 +822,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdatashareaccounts"></a>DataShare/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ShareCount|已傳送的共用|計數|最大值|帳戶中已傳送的共用數|ShareName|
 |ShareSubscriptionCount|已接收的共用|計數|最大值|帳戶中接收的共用數|ShareSubscriptionName|
@@ -828,7 +834,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |memory_percent|記憶體百分比|百分比|Average|記憶體百分比|無|
@@ -849,7 +855,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |memory_percent|記憶體百分比|百分比|Average|記憶體百分比|無|
@@ -870,7 +876,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |memory_percent|記憶體百分比|百分比|Average|記憶體百分比|無|
@@ -892,7 +898,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>DBforPostgreSQL/serversv2
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |memory_percent|記憶體百分比|百分比|Average|記憶體百分比|無|
@@ -906,7 +912,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>DBforPostgreSQL/singleservers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |memory_percent|記憶體百分比|百分比|Average|記憶體百分比|無|
@@ -926,7 +932,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|遙測訊息傳送嘗試|計數|總計|要嘗試傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
 |d2c.telemetry.ingress.success|已傳送的遙測訊息|計數|總計|成功傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
@@ -953,7 +959,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |d2c.endpoints.latency.storage|路由：儲存體的訊息延遲|毫秒|Average|訊息輸入到 IoT 中樞與遙測訊息輸入到儲存體端點之間的平均延遲 (毫秒)。|無|
 |d2c.endpoints.egress.storage.bytes|路由：傳遞至儲存體的資料|位元組|總計|IoT 中樞路由傳遞至儲存體端點的資料量 (位元組)。|無|
 |d2c.endpoints.egress.storage.blobs|路由：傳遞至儲存體的 BLOB|計數|總計|IoT 中樞路由將 BLOB 傳遞至儲存體端點的次數。|無|
-|EventGridDeliveries|事件方格傳遞（預覽）|計數|總計|已發佈至事件方格的 IoT 中樞事件數目。 使用 [結果] 維度來取得成功和失敗的要求數目。 [事件種類] 維度會顯示事件https://aka.ms/ioteventgrid)的類型（。|ResourceId、結果、事件識別碼|
+|EventGridDeliveries|事件方格傳遞（預覽）|計數|總計|已發佈至事件方格的 IoT 中樞事件數目。 使用 [結果] 維度來取得成功和失敗的要求數目。 [事件種類] 維度會顯示事件的類型（ https://aka.ms/ioteventgrid) 。|ResourceId、結果、事件識別碼|
 |EventGridLatency|事件方格延遲（預覽）|毫秒|Average|當事件發佈至事件方格時，從 Iot 中樞事件產生的平均延遲（毫秒）。 這個數位是所有事件種類之間的平均值。 使用 [事件種類] 維度來查看特定事件種類的延遲。|ResourceId，事件識別碼|
 |RoutingDeliveries|路由傳遞（預覽）|毫秒|總計|IoT 中樞嘗試使用路由將訊息傳遞至所有端點的次數。 若要查看成功或失敗的嘗試次數，請使用 [結果] 維度。 若要查看失敗的原因，例如 [無效]、[已捨棄] 或 [孤立]，請使用 [FailureReasonCategory] 維度。 您也可以使用端點和 EndpointType 維度來瞭解有多少訊息傳遞至不同的端點。 計量值會針對每個傳遞嘗試增加一個，包括訊息是否傳遞至多個端點，或訊息是否多次傳遞至相同的端點。|ResourceId、EndpointType、端點、FailureReasonCategory、Result、RoutingSource|
 |RoutingDeliveryLatency|路由傳遞延遲（預覽）|毫秒|Average|訊息輸入到 IoT 中樞的平均延遲（毫秒）和遙測訊息輸入到端點。 您可以使用端點和 EndpointType 維度來瞭解不同端點的延遲。|ResourceId、EndpointType、終結點、RoutingSource|
@@ -999,7 +1005,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |RegistrationAttempts|註冊嘗試數|計數|總計|嘗試的裝置註冊數|ProvisioningServiceName、IotHubName、Status|
 |DeviceAssignments|已指派的裝置數|計數|總計|已指派到 IoT 中樞的裝置數|ProvisioningServiceName、IotHubName|
@@ -1010,7 +1016,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AddRegion|已新增區域|計數|計數|已新增區域|區域|
 |AvailableStorage|可用的儲存體|位元組|總計|在5分鐘資料細微性報告的可用儲存空間總計|CollectionName、DatabaseName、Region|
@@ -1076,7 +1082,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>EnterpriseKnowledgeGraph/服務
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TransactionCount|交易計數|計數|計數|總交易計數|TransactionCount|
 |SuccessCount|成功計數|計數|計數|成功的交易計數|SuccessCount|
@@ -1085,7 +1091,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventgriddomains"></a>EventGrid/網域
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|計數|總計|發佈至本主題的事件總數|主題|
 |PublishFailCount|發行失敗的事件|計數|總計|發佈至本主題失敗的事件總數|主題、ErrorType、錯誤|
@@ -1099,7 +1105,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|計數|總計|發佈至本主題的事件總數|無|
 |PublishFailCount|發行失敗的事件|計數|總計|發佈至本主題失敗的事件總數|ErrorType，錯誤|
@@ -1114,7 +1120,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventgridsystemtopics"></a>EventGrid/systemTopics
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|計數|總計|發佈至本主題的事件總數|無|
 |PublishFailCount|發行失敗的事件|計數|總計|發佈至本主題失敗的事件總數|ErrorType，錯誤|
@@ -1129,7 +1135,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |MatchedEventCount|相符的事件|計數|總計|與此事件訂閱相符的事件總數|無|
 |DeliveryAttemptFailCount|傳遞失敗的事件|計數|總計|傳遞到此事件訂閱失敗的事件總數|Error、ErrorType|
@@ -1140,7 +1146,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|計數|總計|發佈至本主題的事件總數|無|
 |PublishFailCount|發行失敗的事件|計數|總計|發佈至本主題失敗的事件總數|ErrorType，錯誤|
@@ -1152,7 +1158,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功的要求|計數|總計|Microsoft.EventHub 的成功要求。|EntityName、OperationResult|
 |ServerErrors|伺服器錯誤。|計數|總計|Microsoft.EventHub 的伺服器錯誤。|EntityName、OperationResult|
@@ -1170,7 +1176,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |CaptureBacklog|擷取待辦項目。|計數|總計|Microsoft.EventHub 的擷取待辦項目。|EntityName|
 |CapturedMessages|已擷取的訊息。|計數|總計|Microsoft.EventHub 的已擷取訊息。|EntityName|
 |CapturedBytes|已擷取的位元組。|位元組|總計|Microsoft.EventHub 的已擷取位元組。|EntityName|
-|Size|Size|位元組|Average|EventHub 的大小 (以位元組為單位)。|EntityName|
+|大小|大小|位元組|Average|EventHub 的大小 (以位元組為單位)。|EntityName|
 |INREQS|傳入要求（已淘汰）|計數|總計|命名空間的連入傳送要求總數（已淘汰）|無|
 |SUCCREQ|成功的要求（已淘汰）|計數|總計|命名空間的成功要求總數（已淘汰）|無|
 |FAILREQ|失敗的要求（已淘汰）|計數|總計|命名空間的失敗要求總計（已淘汰）|無|
@@ -1191,7 +1197,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功的要求|計數|總計|Microsoft.EventHub 的成功要求。|OperationResult|
 |ServerErrors|伺服器錯誤。|計數|總計|Microsoft.EventHub 的伺服器錯誤。|OperationResult|
@@ -1209,14 +1215,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |CaptureBacklog|擷取待辦項目。|計數|總計|Microsoft.EventHub 的擷取待辦項目。|無|
 |CapturedMessages|已擷取的訊息。|計數|總計|Microsoft.EventHub 的已擷取訊息。|無|
 |CapturedBytes|已擷取的位元組。|位元組|總計|Microsoft.EventHub 的已擷取位元組。|無|
-|CPU|CPU|百分比|最大值|事件中樞叢集的 CPU 使用率 (百分比)|[角色]|
-|AvailableMemory|可用的記憶體|百分比|最大值|事件中樞叢集的可用記憶體（以總記憶體的百分比表示）。|[角色]|
-|Size|EventHub 的大小 (以位元組為單位)。|位元組|Average|EventHub 的大小 (以位元組為單位)。|[角色]|
+|CPU|CPU|百分比|最大值|事件中樞叢集的 CPU 使用率 (百分比)|角色|
+|AvailableMemory|可用的記憶體|百分比|最大值|事件中樞叢集的可用記憶體（以總記憶體的百分比表示）。|角色|
+|大小|EventHub 的大小 (以位元組為單位)。|位元組|Average|EventHub 的大小 (以位元組為單位)。|角色|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |GatewayRequests|閘道要求數|計數|總計|閘道器要求數目|HttpStatus|
 |CategorizedGatewayRequests|已分類的閘道要求數|計數|總計|依類別 (1xx/2xx/3xx/4xx/5xx) 區分的閘道要求數目|HttpStatus|
@@ -1225,7 +1231,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ObservedMetricValue|觀察的計量值|計數|Average|執行時由自動調整規模計算的值|MetricTriggerSource|
 |MetricThreshold|計量閾值|計數|Average|當自動調整規模執行時設定的自動調整規模閾值。|MetricTriggerRule|
@@ -1234,7 +1240,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|可用性|百分比|Average|已成功完成可用性測試的百分比|availabilityResult/name、availabilityResult/location|
 |availabilityResults/計數|可用性集合|計數|計數|可用性測試計數|availabilityResult/name、availabilityResult/location、availabilityResult/success|
@@ -1247,7 +1253,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |dependencies/count|相依性呼叫|計數|計數|應用程式對外部資源的呼叫計數。|dependency/type、dependency/performanceBucket、dependency/success、dependency/target、dependency/resultCode、operation/綜合、雲端/roleInstance、雲端/擁有項|
 |dependencies/duration|相依性持續時間|毫秒|Average|應用程式對外部資源的呼叫持續時間。|dependency/type、dependency/performanceBucket、dependency/success、dependency/target、dependency/resultCode、operation/綜合、雲端/roleInstance、雲端/擁有項|
 |dependencies/failed|相依性呼叫失敗|計數|計數|應用程式對外部資源進行相依性呼叫的失敗計數。|dependency/type、dependency/performanceBucket、dependency/success、dependency/target、dependency/resultCode、operation/綜合、雲端/roleInstance、雲端/擁有項|
-|pageViews/count|頁面檢視|計數|計數|頁面檢視計數。|作業/綜合、雲端/擁有|
+|pageViews/count|網頁檢視|計數|計數|頁面檢視計數。|作業/綜合、雲端/擁有|
 |pageViews/duration|頁面檢視載入時間|毫秒|Average|頁面檢視載入時間|作業/綜合、雲端/擁有|
 |performanceCounters/requestExecutionTime|HTTP 要求執行時間|毫秒|Average|最近要求的執行時間。|cloud/roleInstance|
 |performanceCounters/requestsInQueue|應用程式佇列中的 HTTP 要求數|計數|Average|應用程式要求佇列的長度。|cloud/roleInstance|
@@ -1270,7 +1276,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftiotcentraliotapps"></a>IoTCentral/IoTApps
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |connectedDeviceCount|已連線的裝置總數|計數|Average|連線到 IoT Central 的裝置數目|無|
 |c2d。屬性. 讀取. 成功|成功的裝置屬性從 IoT Central 讀取|計數|總計|從 IoT Central 起始的所有成功屬性讀取計數|無|
@@ -1285,7 +1291,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ServiceApiHit|服務 API 點擊次數總計|計數|計數|服務 API 點擊次數總數|ActivityType、ActivityName|
 |ServiceApiLatency|整體服務 API 延遲|毫秒|Average|服務 API 要求的整體延遲|ActivityType、ActivityName、StatusCode、StatusCodeClass|
@@ -1295,7 +1301,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CacheUtilization|快取使用率|百分比|Average|在叢集範圍的使用率等級|無|
 |QueryDuration|查詢持續時間|毫秒|Average|查詢的持續時間（秒）|QueryStatus|
@@ -1324,7 +1330,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |RunsStarted|執行已啟動|計數|總計|已啟動的工作流程執行數目。|無|
 |RunsCompleted|完成的執行|計數|總計|已完成的工作流程執行數目。|無|
@@ -1363,7 +1369,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. 邏輯/integrationServiceEnvironments
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |RunsStarted|執行已啟動|計數|總計|已啟動的工作流程執行數目。|無|
 |RunsCompleted|完成的執行|計數|總計|已完成的工作流程執行數目。|無|
@@ -1400,7 +1406,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |取消的執行|取消的執行|計數|總計|此工作區的執行數已取消|案例，RunType，PublishedPipelineId，ComputeType，PipelineStepType|
 |取消要求的執行|取消要求的執行|計數|總計|針對此工作區要求取消的執行次數|案例，RunType，PublishedPipelineId，ComputeType，PipelineStepType|
@@ -1414,12 +1420,12 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |佇列的執行|佇列的執行|計數|總計|為此工作區排入佇列的執行數|案例，RunType，PublishedPipelineId，ComputeType，PipelineStepType|
 |開始執行|開始執行|計數|總計|此工作區已開始執行的數目|案例，RunType，PublishedPipelineId，ComputeType，PipelineStepType|
 |開始執行|開始執行|計數|總計|此工作區已開始執行的數目|案例，RunType，PublishedPipelineId，ComputeType，PipelineStepType|
-|Errors|Errors|計數|總計|此工作區中的執行錯誤數目|案例|
-|警告|警告|計數|總計|此工作區中的執行警告數目|案例|
-|模型註冊成功|模型註冊成功|計數|總計|在此工作區中成功的模型註冊數目|案例|
+|錯誤|錯誤|計數|總計|此工作區中的執行錯誤數目|狀況|
+|警告|警告|計數|總計|此工作區中的執行警告數目|狀況|
+|模型註冊成功|模型註冊成功|計數|總計|在此工作區中成功的模型註冊數目|狀況|
 |模型註冊失敗|模型註冊失敗|計數|總計|在此工作區中失敗的模型註冊數目|案例，StatusCode|
-|模型部署已開始|模型部署已開始|計數|總計|在此工作區中啟動的模型部署數目|案例|
-|模型部署成功|模型部署成功|計數|總計|在此工作區中成功的模型部署數|案例|
+|模型部署已開始|模型部署已開始|計數|總計|在此工作區中啟動的模型部署數目|狀況|
+|模型部署成功|模型部署成功|計數|總計|在此工作區中成功的模型部署數|狀況|
 |模型部署失敗|模型部署失敗|計數|總計|在此工作區中失敗的模型部署數|案例，StatusCode|
 |節點總計|節點總計|計數|Average|總節點數。 此總計包括一些作用中節點、閒置節點、無法使用的節點、Premepted 節點、離開節點|案例，ClusterName|
 |現用節點|現用節點|計數|Average|Acitve 節點的數目。 這些是目前正在執行作業的節點。|案例，ClusterName|
@@ -1427,7 +1433,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |無法使用的節點|無法使用的節點|計數|Average|無法使用的節點數目。 無法使用的節點無法運作，因為有一些無法解析的問題。 Azure 將會回收這些節點。|案例，ClusterName|
 |搶先節點|搶先節點|計數|Average|已搶先節點的數目。 這些節點是從可用節點集區中取出的低優先順序節點。|案例，ClusterName|
 |離開節點|離開節點|計數|Average|離開節點的數目。 離開節點是剛完成作業並將進入閒置狀態的節點。|案例，ClusterName|
-|核心總數|核心總數|計數|Average|核心總數|案例，ClusterName|
+|總核心數|總核心數|計數|Average|核心總數|案例，ClusterName|
 |現用核心|現用核心|計數|Average|使用中核心數目|案例，ClusterName|
 |閒置核心|閒置核心|計數|Average|閒置核心數|案例，ClusterName|
 |無法使用的核心|無法使用的核心|計數|Average|無法使用的核心數目|案例，ClusterName|
@@ -1440,14 +1446,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |使用方式|使用方式|計數|計數|API 呼叫的計數|ApiCategory、ApiName、ResultType、ResponseCode|
 |可用性|可用性|百分比|Average|Api 的可用性|ApiCategory、ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft Media/windowsazure.mediaservices.extensions/Streamingendpoint
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |輸出|輸出|位元組|總計|輸出資料量（以位元組為單位）。|OutputFormat|
 |SuccessE2ELatency|成功的端對端延遲|毫秒|Average|成功要求的平均延遲（以毫秒為單位）。|OutputFormat|
@@ -1456,7 +1462,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft Media/windowsazure.mediaservices.extensions
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AssetQuota|資產配額|計數|Average|目前的媒體服務帳戶允許多少個資產|無|
 |AssetCount|資產計數|計數|Average|目前的媒體服務帳戶中已建立多少個資產|無|
@@ -1471,14 +1477,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>MixedReality/remoteRenderingAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AssetsConverted|已轉換的資產|計數|總計|已轉換的資產總數|AppId、ResourceId、SDKVersion|
 |ActiveRenderingSessions|現用轉譯會話|計數|總計|作用中的轉譯會話總數|AppId、ResourceId、SessionType、SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft NetApp/netAppAccounts/capacityPools/磁片區
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AverageReadLatency|讀取延遲的平均值|毫秒|Average|每個作業讀取延遲的平均值 (毫秒)|無|
 |AverageWriteLatency|寫入延遲的平均值|毫秒|Average|每個作業寫入延遲的平均值 (毫秒)|無|
@@ -1489,14 +1495,14 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|配置給磁片區大小的集區|位元組|Average|集區的已使用配置大小|無|
 |VolumePoolTotalLogicalSize|已耗用的集區大小|位元組|Average|屬於集區之所有磁碟區的邏輯大小的總和|無|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BytesSentRate|傳送的位元組數|位元組|總計|網路介面傳送的位元組數|無|
 |BytesReceivedRate|接收的位元組數|位元組|總計|網路介面接收的位元組數|無|
@@ -1505,7 +1511,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |VipAvailability|資料路徑可用性|計數|Average|每個持續時間 Load Balancer 資料路徑可用性的平均值|FrontendIPAddress、FrontendPort|
 |DipAvailability|健全狀況探查狀態|計數|Average|每個持續時間 Load Balancer 健全狀況探查狀態的平均值|ProtocolType、BackendPort、FrontendIPAddress、FrontendPort、BackendIPAddress|
@@ -1518,7 +1524,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QueryVolume|查詢磁碟區|計數|總計|為 DNS 區域儲存的查詢數目|無|
 |RecordSetCount|記錄集計數|計數|最大值|DNS 區域中的記錄集數目|無|
@@ -1527,7 +1533,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PacketsInDDoS|傳入封包 DDoS|每秒計數|最大值|傳入封包 DDoS|無|
 |PacketsDroppedDDoS|傳入封包捨棄 DDoS|每秒計數|最大值|傳入封包捨棄 DDoS|無|
@@ -1560,7 +1566,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Ping 至 VM 的來回時間|毫秒|Average|傳送至目的地 VM 之 Ping 的來回時間|SourceCustomerAddress,DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Ping 至 VM 失敗|百分比|Average|對目的地 VM 的已傳送 Ping 總數的失敗次數百分比|SourceCustomerAddress,DestinationCustomerAddress|
@@ -1568,7 +1574,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|應用程式規則計數|計數|總計|遇到應用程式規則的次數|狀態、原因、通訊協定|
 |NetworkRuleHit|網路規則計數|計數|總計|點擊網路規則的次數|狀態、原因、通訊協定|
@@ -1579,7 +1585,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Throughput|Throughput|每秒位元組|Average|應用程式閘道每秒已服務的位元組數目|無|
 |UnhealthyHostCount|狀況不良的主機計數|計數|Average|狀況不良的後端主機數目|BackendSettingsPool|
@@ -1611,7 +1617,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AverageBandwidth|閘道 S2S 頻寬|每秒位元組|Average|每秒閘道中站對站的平均頻寬 (位元組)|無|
 |P2SBandwidth|閘道 S2S 頻寬|每秒位元組|Average|每秒閘道中點對站的平均頻寬 (位元組)|無|
@@ -1627,7 +1633,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft 網路/expressRoutePorts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|計數|Average|Rx 光線層級（dBm）|連結，Lane|
 |TxLightLevel|TxLightLevel|計數|Average|以 dBm 為 Tx 的淺層級|連結，Lane|
@@ -1640,7 +1646,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|PeeringType|
 |BitsOutPerSecond|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|PeeringType|
@@ -1653,28 +1659,28 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|無|
 |BitsOutPerSecond|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|無|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|無|
 |BitsOutPerSecond|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|無|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft 網路/expressRouteGateways
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QpsByEndpoint|傳回的依端點查詢數|計數|總計|在指定時間範圍內傳回 Traffic Manager 端點的次數|EndpointName|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|依端點的端點狀態|計數|最大值|若端點探查狀態為「已啟用」則為 1，否則為 0。|EndpointName|
@@ -1683,7 +1689,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|失敗的探查百分比|百分比|Average|失敗的連線能力監視探查百分比|無|
 |AverageRoundtripMs|平均來回時間（毫秒）|毫秒|Average|在來源與目的地之間所傳送連線能力監視探查的平均網路來回時間 (毫秒)|無|
@@ -1693,7 +1699,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |RequestCount|要求計數|計數|總計|HTTP/S Proxy 服務的用戶端要求數|HttpStatus、HttpStatusGroup、ClientRegion、ClientCountry|
 |RequestSize|要求大小|位元組|總計|從用戶端傳送到 HTTP/S Proxy 的要求的位元組數|HttpStatus、HttpStatusGroup、ClientRegion、ClientCountry|
@@ -1708,7 +1714,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft 網路/privateDnsZones
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QueryVolume|查詢磁碟區|計數|總計|為私人 DNS 區域提供服務的查詢數目|無|
 |RecordSetCount|記錄集計數|計數|最大值|私人 DNS 區域中的記錄集數目|無|
@@ -1720,7 +1726,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |registration.all|註冊作業數|計數|總計|所有成功註冊作業 (建立、更新、查詢和刪除) 的計數。 |無|
 |registration.create|註冊建立作業|計數|總計|所有成功註冊建立的計數。|無|
@@ -1787,7 +1793,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Average_% Free Inodes|% Free Inodes|計數|Average|Average_% Free Inodes|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_% Free Space|% Free Space|計數|Average|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
@@ -1838,7 +1844,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |Average_Free Physical Memory|Free Physical Memory|計數|Average|Average_Free Physical Memory|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_Free Space in Paging Files|Free Space in Paging Files|計數|Average|Average_Free Space in Paging Files|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_Free Virtual Memory|Free Virtual Memory|計數|Average|Average_Free Virtual Memory|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
-|Average_Processes|處理序|計數|Average|Average_Processes|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
+|Average_Processes|Processes|計數|Average|Average_Processes|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_Size Stored In Paging Files|Size Stored In Paging Files|計數|Average|Average_Size Stored In Paging Files|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_Uptime|Uptime|計數|Average|Average_Uptime|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
 |Average_Users|使用者|計數|Average|Average_Users|Computer、ObjectName、InstanceName、CounterPath、及 sourcesystem|
@@ -1855,13 +1861,13 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft。對等互連/peeringServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |PrefixLatency|前置延遲|毫秒|Average|中間值前置延遲|PrefixName|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft。對等互連/對等互連
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|會話可用性 V4|百分比|Average|V4 會話的可用性|ConnectionId|
 |SessionAvailabilityV6|會話可用性 V6|百分比|Average|V6 會話的可用性|ConnectionId|
@@ -1871,7 +1877,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QueryDuration|查詢持續時間|毫秒|Average|最後一個間隔中的 DAX 查詢持續時間|無維度|
 |QueryPoolJobQueueLength|執行緒︰查詢集區的作業佇列長度|計數|Average|查詢執行緒集區佇列中的作業數目。|無維度|
@@ -1882,7 +1888,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftprojectbabylonaccounts"></a>ProjectBabylon/accounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|依分類的資產散發|計數|總計|指出已指派特定分類的資產數目，也就是使用該標籤來分類。|分類、來源、ResourceId|
 |AssetDistributionByStorageType|依儲存體類型的資產散發|計數|總計|指出具有特定儲存體類型的資產數目。|StorageType，ResourceId|
@@ -1899,7 +1905,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ListenerConnections-Success|ListenerConnections-Success|計數|總計|Microsoft.Relay 的成功 ListenerConnections。|EntityName、OperationResult|
 |ListenerConnections-ClientError|ListenerConnections-ClientError|計數|總計|Microsoft.Relay 的 ListenerConnections 上發生的 ClientError。|EntityName、OperationResult|
@@ -1918,7 +1924,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SearchLatency|搜尋延遲|秒|Average|搜尋服務的平均搜尋延遲|無|
 |SearchQueriesPerSecond|每秒搜尋查詢|每秒計數|Average|搜尋服務的每秒搜尋查詢|無|
@@ -1927,7 +1933,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功的要求|計數|總計|命名空間的成功要求總數|EntityName、OperationResult|
 |ServerErrors|伺服器錯誤。|計數|總計|Microsoft.ServiceBus 的伺服器錯誤。|EntityName、OperationResult|
@@ -1939,7 +1945,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |ActiveConnections|ActiveConnections|計數|總計|Microsoft.ServiceBus 的使用中連線總數。|無|
 |ConnectionsOpened|已開啟的連線。|計數|Average|Microsoft.ServiceBus 的已開啟連線。|EntityName|
 |ConnectionsClosed|已關閉的連線。|計數|Average|Microsoft.ServiceBus 的已關閉連線。|EntityName|
-|Size|Size|位元組|Average|佇列/主題的大小 (以位元組為單位)。|EntityName|
+|大小|大小|位元組|Average|佇列/主題的大小 (以位元組為單位)。|EntityName|
 |訊息|佇列/主題中的訊息計數。|計數|Average|佇列/主題中的訊息計數。|EntityName|
 |ActiveMessages|佇列/主題中的作用中訊息計數。|計數|Average|佇列/主題中的作用中訊息計數。|EntityName|
 |DeadletteredMessages|佇列/主題中的無效字母訊息計數。|計數|Average|佇列/主題中的無效字母訊息計數。|EntityName|
@@ -1952,7 +1958,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftservicefabricmeshapplications"></a>ServiceFabricMesh/應用程式
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|計數|Average|在 milli> 核心中配置給此容器的 Cpu|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|位元組|Average|配置給此容器的記憶體（MB）|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
@@ -1968,7 +1974,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ConnectionCount|連線計數|計數|最大值|使用者連線數量。|端點|
 |MessageCount|訊息計數|計數|總計|訊息總量|無|
@@ -1981,7 +1987,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |physical_data_read_percent|資料 IO 百分比|百分比|Average|資料 IO 百分比|無|
@@ -2040,7 +2046,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|無|
 |database_cpu_percent|CPU 百分比|百分比|Average|CPU 百分比|DatabaseResourceId|
@@ -2082,7 +2088,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU 百分比|百分比|Average|DTU 百分比|ElasticPoolResourceId|
 |database_dtu_consumption_percent|DTU 百分比|百分比|Average|DTU 百分比|DatabaseResourceId,ElasticPoolResourceId|
@@ -2092,7 +2098,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |virtual_core_count|虛擬核心計數|計數|Average|虛擬核心計數|無|
 |avg_cpu_percent|CPU 百分比平均|百分比|Average|CPU 百分比平均|無|
@@ -2106,7 +2112,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |UsedCapacity|已使用容量|位元組|Average|帳戶使用的容量|無|
 |交易|交易|計數|總計|向儲存體服務或所指定 API 作業傳送的要求數。 此數目包括成功與失敗的要求，以及產生錯誤的要求。 使用 ResponseType 維度來取得不同類型回應的數目。|ResponseType、GeoType、ApiName、Authentication|
@@ -2118,7 +2124,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob 容量|位元組|Average|儲存體帳戶 Blob 服務所使用的儲存體量 (位元組)。|BlobType，層|
 |BlobCount|Blob 計數|計數|Average|儲存體帳戶 Blob 服務中的 Blob 數目。|BlobType，層|
@@ -2133,7 +2139,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |TableCapacity|資料表容量|位元組|Average|儲存體帳戶資料表服務所使用的儲存體量 (位元組)。|無|
 |TableCount|資料表計數|計數|Average|儲存體帳戶資料表服務中的資料表數目。|無|
@@ -2147,7 +2153,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |FileCapacity|檔案容量|位元組|Average|儲存體帳戶的檔案服務所使用的儲存體數量（以位元組為單位）。|FileShare|
 |FileCount|檔案計數|計數|Average|儲存體帳戶之檔案服務中的檔案數目。|FileShare|
@@ -2164,7 +2170,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |QueueCapacity|佇列容量|位元組|Average|儲存體帳戶佇列服務所使用的儲存體量 (位元組)。|無|
 |QueueCount|佇列計數|計數|Average|儲存體帳戶佇列服務中的佇列數目。|無|
@@ -2182,7 +2188,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragecachecaches"></a>StorageCache/快取
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ClientIOPS|用戶端 IOPS 總計|計數|Average|快取處理的用戶端檔案作業的速率。|無|
 |ClientLatency|平均用戶端延遲|毫秒|Average|用戶端檔案作業對儲存體快取的平均延遲。|無|
@@ -2210,7 +2216,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>microsoft.storagesync/storageSyncServices
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|同步會話結果|計數|Average|每次伺服器端點成功完成與雲端端點的同步會話時，會將值記錄為1的度量|SyncGroupName、ServerEndpointName、SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|檔案已同步|計數|總計|已同步處理的檔案計數|SyncGroupName、ServerEndpointName、SyncDirection|
@@ -2224,7 +2230,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>microsoft.storagesync/storageSyncServices/syncGroups
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|檔案已同步|計數|總計|已同步處理的檔案計數|SyncGroupName、ServerEndpointName、SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|檔案無法同步|計數|總計|無法同步的檔案計數|SyncGroupName、ServerEndpointName、SyncDirection|
@@ -2232,7 +2238,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|檔案已同步|計數|總計|已同步處理的檔案計數|ServerEndpointName、SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|檔案無法同步|計數|總計|無法同步的檔案計數|ServerEndpointName、SyncDirection|
@@ -2240,7 +2246,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>microsoft.storagesync/storageSyncServices/registeredServers
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ServerHeartbeat|伺服器線上狀態|計數|最大值|每次 resigtered 伺服器順利記錄與雲端端點的心跳時，其值會記錄1的度量|ServerResourceId、ServerName|
 |ServerRecallIOTotalSizeBytes|雲端階層處理重新叫用|位元組|總計|伺服器回收的資料大小總計|ServerResourceId、ServerName|
@@ -2249,7 +2255,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |ResourceUtilization|SU % 使用率|百分比|最大值|SU % 使用率|LogicalName、PartitionId|
 |InputEvents|輸入事件|計數|總計|輸入事件|LogicalName、PartitionId|
@@ -2257,7 +2263,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |LateInputEvents|延遲輸入事件|計數|總計|延遲輸入事件|LogicalName、PartitionId|
 |OutputEvents|輸出事件|計數|總計|輸出事件|LogicalName、PartitionId|
 |ConversionErrors|資料轉換錯誤|計數|總計|資料轉換錯誤|LogicalName、PartitionId|
-|Errors|執行階段錯誤|計數|總計|執行階段錯誤|LogicalName、PartitionId|
+|錯誤|執行階段錯誤|計數|總計|執行階段錯誤|LogicalName、PartitionId|
 |DroppedOrAdjustedEvents|次序錯誤事件|計數|總計|次序錯誤事件|LogicalName、PartitionId|
 |AMLCalloutRequests|函式要求|計數|總計|函式要求|LogicalName、PartitionId|
 |AMLCalloutFailedRequests|失敗的函式要求|計數|總計|失敗的函式要求|LogicalName、PartitionId|
@@ -2270,7 +2276,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsynapseworkspaces"></a>Synapse/工作區
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |OrchestrationPipelineRunsEnded|管線執行結束|計數|總計|成功、失敗或已取消之協調流程管線執行的計數|結果、FailureType、管線|
 |OrchestrationActivityRunsEnded|活動執行結束|計數|總計|成功、失敗或已取消之協調流程活動的計數|Result、FailureType、Activity、ActivityType、Pipeline|
@@ -2281,7 +2287,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Synapse/workspace/bigDataPools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |SparkJobsEnded|結束的應用程式|計數|總計|已結束的應用程式計數|JobType、Jobresult.txt|
 |CoresCapacity|核心容量|計數|最大值|核心容量|無|
@@ -2289,7 +2295,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Synapse/workspace/sqlPools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |DWULimit|DWU 限制|計數|最大值|SQL 集區的服務等級目標|無|
 |DWUUsed|已使用 DWU|計數|最大值|表示跨 SQL 集區使用方式的高階標記法。 測量依據 DWU 限制 * DWU 百分比|無|
@@ -2310,7 +2316,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|輸入接收的訊息|計數|總計|從所有事件中樞或 IoT 中樞事件來源讀取的訊息計數|無|
 |IngressReceivedInvalidMessages|輸入接收的無效訊息|計數|總計|從所有事件中樞或 IoT 中樞事件來源讀取的無效訊息計數|無|
@@ -2326,7 +2332,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|輸入接收的訊息|計數|總計|從事件來源讀取的訊息計數|無|
 |IngressReceivedInvalidMessages|輸入接收的無效訊息|計數|總計|從事件來源讀取的無效訊息計數|無|
@@ -2340,7 +2346,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>VMwareCloudSimple/virtualMachines
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Disk Read Bytes/Sec|每秒位元組|Average|在取樣期間讀取作業所造成的平均磁片輸送量。|無|
 |DiskWriteBytesPerSecond|Disk Write Bytes/Sec|每秒位元組|Average|因取樣期間的寫入作業而造成的平均磁片輸送量。|無|
@@ -2364,7 +2370,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CpuPercentage|CPU 百分比|百分比|Average|CPU 百分比|執行個體|
 |MemoryPercentage|記憶體百分比|百分比|Average|記憶體百分比|執行個體|
@@ -2390,7 +2396,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 > [!IMPORTANT]
 > **平均回應時間**將會被取代，以避免與計量匯總產生混淆。 使用**回應時間**做為取代。
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CpuTime|CPU 時間|秒|總計|CPU 時間|執行個體|
 |Requests|Requests|計數|總計|Requests|執行個體|
@@ -2434,7 +2440,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 > [!NOTE]
 > **檔案系統使用**方式是全域推出的新計量，除非您已列入個人預覽版的白名單中，否則不會有任何資料。
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |BytesReceived|資料輸入|位元組|總計|資料輸入|執行個體|
 |BytesSent|資料輸出|位元組|總計|資料輸出|執行個體|
@@ -2462,7 +2468,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |CpuTime|CPU 時間|秒|總計|CPU 時間|執行個體|
 |Requests|Requests|計數|總計|Requests|執行個體|
@@ -2505,7 +2511,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |Requests|Requests|計數|總計|Requests|執行個體|
 |BytesReceived|資料輸入|位元組|總計|資料輸入|執行個體|
@@ -2532,7 +2538,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
-|計量|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|說明|維度|
 |---|---|---|---|---|---|
 |WorkersTotal|背景工作角色總數|計數|Average|背景工作角色總數|無|
 |WorkersAvailable|可用的背景工作角色|計數|Average|可用的背景工作角色|無|

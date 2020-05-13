@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72c4c3da193a1f61280a13ff1e2fa9eea2ff4823
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991274"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196412"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -71,6 +71,19 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager 範本](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+
+| 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| 系統指派 | ![可用][check] | - | - | - | 
+| 使用者指派 | ![可用][check] | - | - | - |
+
+
+如需詳細資訊，請參閱[在 Azure Kubernetes Service 中使用受控](https://docs.microsoft.com/azure/aks/use-managed-identity)識別。
+
+
 
 ### <a name="azure-blueprints"></a>Azure 藍圖
 

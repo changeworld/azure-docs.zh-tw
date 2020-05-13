@@ -1,19 +1,19 @@
 ---
 title: 使用變更摘要建立端對端 Azure Cosmos DB JAVA SDK v4 應用程式範例
-description: 本操作指南會逐步引導您完成簡單的 JAVA SQL API 應用程式，它會將檔插入 Azure Cosmos DB 容器中，同時使用變更摘要來維護容器的具體化視圖。
-author: anfeldma
+description: 本指南會逐步引導您瞭解簡單的 JAVA SQL API 應用程式，它會將檔插入 Azure Cosmos DB 容器中，同時使用變更摘要來維護容器的具體化視圖。
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5e8656e891d250547174aa3deb27a94eebaa0ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996516"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125667"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何建立 JAVA 應用程式，以使用 Azure Cosmos DB SQL API 和變更摘要處理器
 
@@ -23,7 +23,7 @@ ms.locfileid: "82996516"
 
 本操作指南會逐步引導您使用 Azure Cosmos DB SQL API 將檔插入 Azure Cosmos DB 容器中的簡單 JAVA 應用程式，同時使用變更摘要和變更摘要處理器來維護容器的具體化視圖。 JAVA 應用程式會使用 Azure Cosmos DB JAVA SDK v4 與 Azure Cosmos DB SQL API 進行通訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * Azure Cosmos DB 帳戶的 URI 和金鑰
 
@@ -33,11 +33,11 @@ ms.locfileid: "82996516"
 
 ## <a name="background"></a>背景
 
-Azure Cosmos DB 變更摘要會提供事件驅動介面，以觸發動作來回應文件插入。 這有許多用途。 例如，在讀取和寫入繁重的應用程式中，變更摘要的主要用途是要在內嵌文件時，建立容器的即時**具體化檢視**。 具體化檢視容器會保存相同的資料，但會加以分割以便有效率的讀取，讓應用程式能夠有效率的讀取和寫入。
+Azure Cosmos DB 變更摘要會提供事件驅動介面，以觸發動作以回應檔插入。 這有許多用途。 例如，在讀取和寫入繁重的應用程式中，變更摘要的主要用途是在內嵌檔時，建立容器的即時**具體化視圖**。 具體化檢視容器會保存相同的資料，但會加以分割以便有效率的讀取，讓應用程式能夠有效率的讀取和寫入。
 
-管理變更摘要事件的工作，主要是由 SDK 內建的變更摘要處理器程式庫負責處理。 此程式庫的功能強大，足以將變更摘要事件分散於多個背景工作角色 (如有需要的話)。 您只需要對變更摘要程式庫提供回呼。
+管理變更摘要事件的工作，主要是由 SDK 內建的變更摘要處理器程式庫負責處理。 此程式庫的功能強大，可以在多個背景工作角色之間散發變更摘要事件（如果需要的話）。 您只需要提供變更摘要庫回呼。
 
-此簡單範例示範具有單一背景工作角色的變更摘要處理器程式庫如何從具體化檢視建立和刪除文件。
+這個簡單的範例示範變更摘要處理器程式庫，其中包含單一背景工作從具體化視圖建立和刪除檔。
 
 ## <a name="setup"></a>安裝程式
 
@@ -75,7 +75,7 @@ mvn clean package
 
     * **InventoryContainer** - 我們的範例雜貨店的清查記錄，其依據項目 ```id``` (這是 UUID) 分割。
     * **InventoryContainer-pktype** - 清查記錄的具體化檢視，已針對項目 ```type``` 的查詢最佳化
-    * **InventoryContainer-leases**- 變更摘要一律需要租用容器；租用會追蹤應用程式讀取變更摘要的進度。
+    * **InventoryContainer-租用**-變更摘要一律需要租用容器;租用會追蹤應用程式讀取變更摘要的進度。
 
 
     ![空的容器](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
@@ -100,7 +100,7 @@ mvn clean package
         })
         .subscribe();
 
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start
+    while (!isProcessorRunning.get()); //Wait for change feed processor start
     ```
 
     ```"SampleHost_1"``` 是變更摘要處理器背景工作角色的名稱。 ```changeFeedProcessorInstance.start()``` 實際上會啟動變更摘要處理器。
@@ -109,7 +109,7 @@ mvn clean package
 
     ![租用](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
-1. 在終端機中再次按 Enter 鍵。 這會觸發 10 份要插入 **InventoryContainer** 中的文件。 每次文件插入都會以 JSON 形式出現在變更摘要中。下列回呼程式碼會藉由將 JSON 文件鏡射到具體化建立中來處理這些事件：
+1. 在終端機中再次按 Enter 鍵。 這會觸發 10 份要插入 **InventoryContainer** 中的文件。 每份檔插入都會以 JSON 形式出現在變更摘要中。下列回呼程式碼會藉由將 JSON 檔鏡像到具體化視圖中，來處理這些事件：
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）非同步 API
 
@@ -142,7 +142,7 @@ mvn clean package
 
     ![摘要容器](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items**。 這是具體化檢視 - 此容器鏡像 **InventoryContainer** 中的項目，因為其由變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
+1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items**。 這是具體化的視圖-此容器鏡像**InventoryContainer**中的專案，因為它們是透過變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
 
     ![具體化檢視](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
@@ -181,10 +181,10 @@ mvn clean package
     }    
     ```
 
-    變更摘要 ```feedPollDelay``` 已設定為 100 毫秒；因此，變更摘要幾乎會立即回應此更新，並呼叫如上所示的 ```updateInventoryTypeMaterializedView()```。 最後一個函式呼叫會將 TTL 為 5 秒的新文件 upsert 到 **InventoryContainer-pktype** 中。
+    變更摘要 ```feedPollDelay``` 已設定為100毫秒; 因此，變更摘要幾乎會立即回應此更新，並會 ```updateInventoryTypeMaterializedView()``` 顯示上述的呼叫。 最後一個函式呼叫會將 TTL 為 5 秒的新文件 upsert 到 **InventoryContainer-pktype** 中。
 
     結果是大約在 5 秒後，文件就會到期並從這兩個容器中刪除。
 
-    這是必要的程序，因為變更摘要只會在項目插入或更新 (而非項目刪除) 時發出事件。
+    此程式是必要的，因為變更摘要只會發出專案插入或更新時的事件，而不是刪除專案時。
 
 1. 再按一次 Enter 鍵，關閉程式並清除其資源。

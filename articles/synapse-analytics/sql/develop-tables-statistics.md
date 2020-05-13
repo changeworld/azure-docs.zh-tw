@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676944"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197571"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的統計資料
 
@@ -34,7 +34,7 @@ SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比
 
 ### <a name="automatic-creation-of-statistics"></a>自動建立統計資料
 
-當資料庫 AUTO_CREATE_STATISTICS 選項設定為`ON`時，SQL 集區會分析傳入的使用者查詢是否遺漏統計資料。  如果遺漏統計資料，查詢最佳化工具會針對查詢述詞或聯結條件中的個別資料行建立統計資料。 這個函數是用來改善查詢計劃的基數估計值。
+當資料庫 AUTO_CREATE_STATISTICS 選項設定為時，SQL 集區會分析傳入的使用者查詢是否遺漏統計資料 `ON` 。  如果遺漏統計資料，查詢最佳化工具會針對查詢述詞或聯結條件中的個別資料行建立統計資料。 這個函數是用來改善查詢計劃的基數估計值。
 
 > [!IMPORTANT]
 > 自動建立統計資料目前依預設開啟。
@@ -239,7 +239,7 @@ CREATE STATISTICS stats_col1
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category*。 針對*產品\_類別目錄*和*產品\_sub_category*計算交叉資料行統計資料：
+在此範例中，長條圖位於 *product\_category*。 針對*產品 \_ 類別目錄*和*產品 \_ sub_category*計算交叉資料行統計資料：
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-因為*產品\_類別*目錄和*\_產品子\_類別*之間存在相互關聯，所以當同時存取這些資料行時，多欄統計資料物件會很有用。
+因為*產品 \_ 類別*目錄和*產品 \_ 子 \_ 類別*之間存在相互關聯，所以當同時存取這些資料行時，多欄統計資料物件會很有用。
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>對資料表中的所有資料行建立統計資料
 
@@ -423,7 +423,7 @@ UPDATE STATISTICS 語句很容易使用。 請記住，它會更新資料表上�
 > [!NOTE]
 > 更新資料表上的所有統計資料時，SQL 集區會進行掃描，以針對每個統計資料物件進行資料表取樣。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
 
-如需程式的執行`UPDATE STATISTICS`方式，請參閱[臨時表](develop-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
+如需程式的執行方式 `UPDATE STATISTICS` ，請參閱[臨時表](develop-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
 如需完整語法，請參閱[更新統計資料](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="statistics-metadata"></a>統計資料中繼資料
@@ -434,7 +434,7 @@ UPDATE STATISTICS 語句很容易使用。 請記住，它會更新資料表上�
 
 這些系統檢視提供統計資料的相關資訊：
 
-| 目錄檢視 | 描述 |
+| 目錄檢視 | 說明 |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |每個資料行有一個資料列。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |資料庫中每個物件有一個資料列。 |
@@ -448,7 +448,7 @@ UPDATE STATISTICS 語句很容易使用。 請記住，它會更新資料表上�
 
 這些系統函式很適合用於處理統計資料：
 
-| 系統函式 | 描述 |
+| 系統函式 | 說明 |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |上次更新統計資料物件的日期。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |有關統計資料物件所理解之值散發的摘要層級和詳細資訊。 |
@@ -497,7 +497,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS() 顯示統計資料物件中保存的資料。 此資料來自三個部分：
 
-- 頁首
+- Header
 - 密度向量
 - 長條圖
 
@@ -611,6 +611,8 @@ SQL 隨選的可讓您手動建立統計資料。 對於 CSV 檔案，您必須�
 
 > [!NOTE]
 > 您目前只能建立單一資料行的統計資料。
+>
+> 程式 sp_create_file_statistics 會重新命名為 sp_create_openrowset_statistics。 公用伺服器角色已授與管理大量作業許可權，而 public 資料庫角色具有 sp_create_file_statistics 和 sp_drop_file_statistics 的執行許可權。 這可能會在未來變更。
 
 下列預存程式可用來建立統計資料：
 
@@ -618,7 +620,7 @@ SQL 隨選的可讓您手動建立統計資料。 對於 CSV 檔案，您必須�
 sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-引數： @stmt [=] N ' statement_text '-指定 transact-sql 語句，其會傳回要用於統計資料的資料行值。 您可以使用 TABLESAMPLE 來指定要使用的資料範例。 如果未指定 TABLESAMPLE，則會使用 FULLSCAN。
+引數： [ @stmt =] N ' statement_text '-指定 transact-sql 語句，其會傳回要用於統計資料的資料行值。 您可以使用 TABLESAMPLE 來指定要使用的資料範例。 如果未指定 TABLESAMPLE，則會使用 FULLSCAN。
 
 ```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
@@ -696,7 +698,10 @@ FROM OPENROWSET(
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-引數： @stmt [=] N ' statement_text '-指定建立統計資料時所使用的相同 transact-sql 語句。
+> [!NOTE]
+> 程式 sp_drop_file_statistics 會重新命名為 sp_drop_openrowset_statistics。 公用伺服器角色已授與管理大量作業許可權，而 public 資料庫角色具有 sp_create_file_statistics 和 sp_drop_file_statistics 的執行許可權。 這可能會在未來變更。
+
+引數： [ @stmt =] N ' statement_text '-指定建立統計資料時所使用的相同 transact-sql 語句。
 
 若要更新資料集（以人口 .csv 檔案為基礎）中 year 資料行的統計資料，您必須卸載並建立統計資料：
 

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653141"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195138"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>設定適用于 Windows 虛擬桌面的 PowerShell 模組
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。
 >
-> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虛擬桌面 PowerShell 模組已整合至 Azure PowerShell 模組。 本文將告訴您如何設定 PowerShell 模組，讓您可以針對 Windows 虛擬桌面執行 Cmdlet。
@@ -46,7 +46,7 @@ Install-Module -Name Az.DesktopVirtualization
 Connect-AzAccount
 ```
 
-登入您的 Azure 帳戶時，需要在執行 Connect Cmdlet 時產生的程式碼。 若要登入，請<https://microsoft.com/devicelogin>移至，輸入程式碼，然後使用您的 Azure 系統管理員認證登入。
+登入您的 Azure 帳戶時，需要在執行 Connect Cmdlet 時產生的程式碼。 若要登入，請移至 <https://microsoft.com/devicelogin> ，輸入程式碼，然後使用您的 Azure 系統管理員認證登入。
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 如果您想要在登入之後變更預設訂用帳戶，請執行此 Cmdlet：
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 當您選取要使用的新訂用帳戶時，您不需要在之後執行的 Cmdlet 中指定該訂用帳戶的識別碼。 例如，下列 Cmdlet 會在不需要訂用帳戶識別碼的情況下，抓取特定的工作階段主機：

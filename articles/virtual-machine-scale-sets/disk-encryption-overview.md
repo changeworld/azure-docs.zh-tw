@@ -1,18 +1,20 @@
 ---
 title: 啟用虛擬機器擴展集的 Azure 磁碟加密
 description: 本文提供針對虛擬機器擴展集啟用 Microsoft Azure 磁片加密的指示
-author: msmbaldwin
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.author: mbaldwin
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.custom: seodec18
-ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 6b9805d66149a18216a200bc89a79b3e06106c9d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278979"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195117"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 磁碟加密
 

@@ -1,5 +1,5 @@
 ---
-title: 疑難排解指南-Azure 事件中樞 |Microsoft Docs
+title: Azure 事件中樞-例外狀況
 description: 本文提供 Azure 事件中樞傳訊例外狀況和建議的動作清單。
 services: event-hubs
 documentationcenter: na
@@ -13,29 +13,56 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76309773"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125633"
 ---
-# <a name="troubleshooting-guide-for-azure-event-hubs"></a>Azure 事件中樞的疑難排解指南
-本文提供事件中樞 .NET Framework Api 所產生的一些 .NET 例外狀況，還有其他疑難排解問題的秘訣。 
-
-## <a name="event-hubs-messaging-exceptions---net"></a>事件中樞訊息例外狀況-.NET
+# <a name="event-hubs-messaging-exceptions---net"></a>事件中樞訊息例外狀況-.NET
 本節列出 .NET Framework Api 所產生的 .NET 例外狀況。 
 
-### <a name="exception-categories"></a>例外狀況類別
+## <a name="exception-categories"></a>例外狀況類別
 
-事件中樞 .NET Api 會產生可能屬於下列類別的例外狀況，以及您可以嘗試修正它們的相關聯動作。
+事件中樞的 .NET Api 會產生可能屬於下列類別的例外狀況，以及您可以嘗試修正它們的相關聯動作：
 
-1. 使用者程式碼撰寫錯誤： [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、 [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、 [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、 [system.web SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 一般動作：請先嘗試修正此程式碼，再繼續執行。
-2. 設定/組態錯誤：[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)、[Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)。 一般動作：檢閱您的組態並視需要進行變更。
-3. 暫時性例外狀況：[Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception)、[Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)。 一般動作：重試此操作或通知使用者。
-4. 其他例外狀況： [system.transactions.transactionexception](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、 [TimeoutException](#timeoutexception)、Microsoft.servicebus.messaging.messagelocklostexception、、、 [、](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)、 [、microsoft.servicebus.messaging.sessionlocklostexception](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)。 一般動作︰依例外狀況類型而異；請參閱下一節中的表格。 
+ - 使用者程式碼撰寫錯誤： 
+ 
+   - [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
+   - [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
+   - [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
+   - [SerializationException。](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   
+   一般動作：請先嘗試修正程式碼，再繼續進行。
+ 
+ - 設定/組態錯誤： 
+ 
+   - [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
+   - [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
+   - [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   
+   一般動作：請檢查您的設定，並視需要進行變更。
+   
+ - 暫時性例外狀況： 
+ 
+   - [MessagingException。](/dotnet/api/microsoft.servicebus.messaging.messagingexception)
+   - [Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception)
+   - [Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception)
+   - [MessagingCommunicationException。](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)
+   
+   一般動作：重試此作業或通知使用者。
+ 
+ - 其他例外狀況： 
+ 
+   - [System.transactions.transactionexception](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System.TimeoutException](#timeoutexception)
+   - [Microsoft.servicebus.messaging.messagelocklostexception。](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
+   - [、Microsoft.servicebus.messaging.sessionlocklostexception。](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
+   
+   一般動作：例外狀況類型特有;請參閱下一節中的表格。 
 
-### <a name="exception-types"></a>例外狀況類型
+## <a name="exception-types"></a>例外狀況類型
 下表列出傳訊例外狀況類型及其原因，並指出您可以採取的建議動作。
 
 | 例外狀況類型 | 描述/原因/範例 | 建議的動作 | 自動/立即重試的注意事項 |
@@ -54,91 +81,50 @@ ms.locfileid: "76309773"
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | 在停用的實體上要求執行階段作業。 |啟用實體。 | 如實體在過渡期間被啟用，重試可能會有幫助。 |
 | [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | 訊息承載超過 1 MB 的限制。 此 1 MB 的限制適用于 total 訊息，其中可能包括系統屬性和任何 .NET 額外負荷。 | 減少訊息裝載大小，然後再重試作業。 |重試將無助益。 |
 
-### <a name="quotaexceededexception"></a>QuotaExceededException
+## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) 指出已超過某特定實體的配額。
 
 如果在個別取用者群組層級開啟的接收者數目已達到上限 (5)，便可能發生此例外狀況。
 
-#### <a name="event-hubs"></a>事件中樞
+### <a name="event-hubs"></a>事件中樞
 每一個事件中樞都有 20 個用戶群組的限制。 當您嘗試建立更多時，您會收到 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)。 
 
-### <a name="timeoutexception"></a>TimeoutException
+## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) 表示使用者啟始作業所用的時間長過作業逾時。 
 
 事件中樞的逾時是指定為連接字串的一部分，或透過 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)指定。 錯誤訊息本身可能不盡相同，但它一定會包含目前作業的指定逾時值。 
 
-#### <a name="common-causes"></a>常見的原因
+### <a name="common-causes"></a>常見的原因
 這個錯誤有兩個常見的原因︰設定不正確或暫時性服務錯誤。
 
-1. **設定不正確** ：操作條件的作業逾時可能太小。 用戶端 SDK 的作業逾時預設值為 60 秒。 請檢查程式碼是否將值設定過小。 網路和 CPU 使用量的狀況會影響特定作業完成所需的時間，因此作業超時不應設定為較小的值。
-2. **暫時性服務錯誤** ：有時事件中樞服務在處理要求時會遇到延遲，例如，高流量的時段。 在這種情況下，您可以在延遲後重試作業，直到作業成功為止。 如果多次嘗試同一作業之後仍然失敗，請瀏覽 [Azure 服務狀態網站](https://azure.microsoft.com/status/)，看看是否有任何已知的服務中斷。
+- **設定不正確** ：操作條件的作業逾時可能太小。 用戶端 SDK 的作業逾時預設值為 60 秒。 請檢查程式碼是否將值設定過小。 網路和 CPU 使用量的狀況會影響特定作業完成所需的時間，因此作業超時不應設定為較小的值。
+- **暫時性服務錯誤** ：有時事件中樞服務在處理要求時會遇到延遲，例如，高流量的時段。 在這種情況下，您可以在延遲後重試作業，直到作業成功為止。 如果多次嘗試同一作業之後仍然失敗，請瀏覽 [Azure 服務狀態網站](https://azure.microsoft.com/status/)，看看是否有任何已知的服務中斷。
 
-### <a name="serverbusyexception"></a>ServerBusyException
+## <a name="serverbusyexception"></a>ServerBusyException
 
 [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) 或 [Microsoft.Azure.EventHubs.ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) 表示伺服器已超載。 此例外狀況有兩個相關的錯誤碼。
 
-#### <a name="error-code-50002"></a>錯誤碼 50002
-
+### <a name="error-code-50002"></a>錯誤碼 50002
 此錯誤會因為兩個原因其中之一而發生：
 
-1. 負載不會平均分散到事件中樞上的所有分割區，而一個分割區會達到本機輸送量單位限制。
+- 負載不會平均分散到事件中樞上的所有分割區，而一個分割區會達到本機輸送量單位限制。
     
-    解決方式︰修改資料分割散發策略，或嘗試 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)，可能會有幫助。
+    **解決**方式：修改分割區散發策略，或嘗試[EventHubClient （eventDataWithOutPartitionKey）](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)可能會有説明。
 
-2. 事件中樞命名空間沒有足夠的輸送量單位（您可以在 [ [Azure 入口網站](https://portal.azure.com)] 的 [事件中樞命名空間] 視窗中檢查 [**計量**] 畫面以確認）。 入口網站會顯示匯總（1分鐘）的資訊，但我們會即時測量輸送量–因此只是估計值。
+- 事件中樞命名空間沒有足夠的輸送量單位（您可以在 [ [Azure 入口網站](https://portal.azure.com)] 的 [事件中樞命名空間] 視窗中檢查 [**計量**] 畫面以確認）。 入口網站會顯示匯總（1分鐘）的資訊，但我們會即時測量輸送量–因此只是估計值。
 
-    解決方式︰增加命名空間的輸送量單位可能會有幫助。 您可以透過入口網站，在 [事件中樞命名空間] 畫面的 [調整]**** 視窗中執行此作業。 您也可以使用[自動擴充](event-hubs-auto-inflate.md)。
+    **解決**方式：增加命名空間的輸送量單位可能會有説明。 您可以透過入口網站，在 [事件中樞命名空間] 畫面的 [調整]**** 視窗中執行此作業。 您也可以使用[自動擴充](event-hubs-auto-inflate.md)。
 
-#### <a name="error-code-50001"></a>錯誤碼 50001
+### <a name="error-code-50001"></a>錯誤碼 50001
 
 此錯誤應該很少會發生。 它會在執行您命名空間的程式碼之容器的 CPU 不足時發生 – 就在事件中樞負載平衡器開始之前幾秒鐘。
 
-#### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>對 GetRuntimeInformation 方法的通話限制
-Azure 事件中樞支援每秒最多50個呼叫，每秒 GetRuntimeInfo。 達到限制之後，您可能會收到類似下列的例外狀況：
+**解決**方式：限制對 GetRuntimeInformation 方法的呼叫。 Azure 事件中樞支援每秒最多50個呼叫，每秒 GetRuntimeInfo。 達到限制之後，您可能會收到類似下列的例外狀況：
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
 ```
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>連線、憑證或超時問題
-下列步驟可協助您針對 *. servicebus.windows.net 下所有服務的連線/憑證/超時問題進行疑難排解。 
-
-- 流覽至或[wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`。 它有助於檢查您是否有 IP 篩選或虛擬網路或憑證鏈問題（最常見的情況是使用 java SDK）。
-
-    成功訊息的範例：
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    失敗錯誤訊息的範例：
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- 執行下列命令，以檢查防火牆上是否有任何埠遭到封鎖。 使用的埠為443（HTTPS）、5671（AMQP）和9093（Kafka）。 視您使用的程式庫而定，也會使用其他埠。 以下是檢查5671埠是否已封鎖的範例命令。
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    在 Linux 上：
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- 當發生間歇連線問題時，請執行下列命令來檢查是否有任何已丟棄的封包。 此命令會嘗試使用服務每隔1秒建立25個不同的 TCP 連線。 然後，您可以檢查其中有多少個成功/失敗，同時查看 TCP 連接延遲。 您可以從`psping` [這裡](/sysinternals/downloads/psping)下載此工具。
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
-    ```
-    如果您使用其他工具（例如`tnc`、 `ping`等等），可以使用對等的命令。 
-- 如果先前的步驟沒有使用[Wireshark](https://www.wireshark.org/)之類的工具來協助並加以分析，請取得網路追蹤。 如有需要，請聯絡[Microsoft 支援服務](https://support.microsoft.com/)。 
 
 ## <a name="next-steps"></a>後續步驟
 

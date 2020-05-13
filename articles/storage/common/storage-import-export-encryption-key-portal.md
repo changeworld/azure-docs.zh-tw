@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871153"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195244"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在匯入/匯出服務的 Azure Key Vault 中使用客戶管理的金鑰
 
@@ -23,7 +23,7 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
 
 本文說明如何在[Azure 入口網站](https://portal.azure.com/)中使用客戶管理的金鑰搭配匯入/匯出服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在您開始前，請確定：
 
@@ -99,9 +99,10 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
 
 | 錯誤碼     |詳細資料     | 升高?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | 已套用客戶管理的金鑰，但目前已撤銷金鑰存取權。 如需詳細資訊，請參閱如何[啟用金鑰存取](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。                                                      | 是，請檢查： <ol><li>金鑰保存庫在存取原則中仍有 MSI。</li><li>存取原則提供了取得、包裝、解除封裝的許可權。</li><li>如果 key vault 位於防火牆後方的 vNet 中，請檢查是否已啟用 [**允許 Microsoft 信任的服務**]。</li></ol>                                                                                            |
-| CmkErrorKeyDisabled      | 已套用客戶管理的金鑰，但金鑰已停用。 如需詳細資訊，請參閱如何[啟用金鑰](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)。                                                                             | 是，啟用金鑰版本     |
-| CmkErrorKeyNotFound      | 已套用客戶管理的金鑰，但找不到與金鑰相關聯的金鑰保存庫。<br>如果您已刪除金鑰保存庫，則無法復原客戶管理的金鑰。  如果您已將金鑰保存庫遷移至不同的租使用者，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 |   如果您已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫進行租使用者遷移，可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定`Identity = None` ，然後將值設定回`Identity = SystemAssigned`。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對`Get`金鑰`Wrap`保存庫`Unwrap`的存取原則中的新身分識別啟用、和許可權。</li></ol>|
+| CmkErrorAccessRevoked | 已撤銷對客戶管理的金鑰的存取權。                                                       | 是，請檢查： <ol><li>金鑰保存庫在存取原則中仍有 MSI。</li><li>存取原則已啟用「取得」、「包裝」和「解除封裝」許可權。</li><li>如果 key vault 位於防火牆後方的 VNet 中，請檢查是否已啟用 [**允許 Microsoft 信任的服務**]。</li><li>檢查作業資源的 MSI 是否已重設為 `None` 使用 api。<br>如果是，則將值設定回 `Identity = SystemAssigned` 。 這會重新建立作業資源的身分識別。<br>建立新的身分識別之後，請 `Get` `Wrap` `Unwrap` 在金鑰保存庫的存取原則中啟用、和許可權以使用新的身分識別</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | 客戶管理的金鑰已停用。                                         | 是，啟用金鑰版本     |
+| CmkErrorKeyNotFound      | 找不到客戶管理的金鑰。 | 是，如果已刪除金鑰，但仍在清除期間內，請使用[復原金鑰保存庫金鑰移除](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)。<br>東西 <ol><li>是，如果客戶已備份金鑰，並加以還原。</li><li>否，否則為。</li></ol>
+| CmkErrorVaultNotFound |找不到客戶管理的金鑰的金鑰保存庫。 |   如果已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫已遷移至不同的租使用者，可以使用下列其中一個步驟來復原：<ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設定回 `Identity = SystemAssigned` 。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對 `Get` `Wrap` `Unwrap` 金鑰保存庫的存取原則中的新身分識別啟用、和許可權。</li></ol>|
 
 ## <a name="next-steps"></a>後續步驟
 
