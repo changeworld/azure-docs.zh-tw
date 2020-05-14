@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: dd5748cf8afe19a49e5ea406aea9b558432eeaf3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82802202"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202039"
 ---
 # <a name="what-is-a-keyword"></a>什麼是關鍵字？
 
@@ -31,26 +31,15 @@ ms.locfileid: "82802202"
 | 關鍵字驗證 | 在本機偵測到關鍵字的高度信賴度時，會將音訊傳送至雲端，以進一步確認使用者是否已說出關鍵字。 關鍵字驗證藉由減少不正確的本機偵測和保護使用者隱私權的影響，提供額外一層的安全性。
 | 語音助理 & 語音 SDK 整合 | 您可以透過語音 SDK，輕鬆地在您的裝置或應用程式中整合自訂關鍵字在語音 Studio 上產生的關鍵字。 只要將 SDK 指向語音 Studio 所提供的關鍵字模型，您的產品就會啟用語音，並以關鍵字驗證做為後盾。 您可以藉由建立自己的[語音助理](voice-assistants.md)來完成產品的語音體驗。
 
-## <a name="sample-code"></a>範例程式碼
+## <a name="get-started-with-custom-keywords"></a>開始使用自訂關鍵字
 
-您可以在 GitHub 上找到整合關鍵字模型的範例程式碼。 這些範例涵蓋了用戶端應用程式，可讓您以數種熱門的程式設計語言來整合關鍵字。
-
-* [教學課程：使用語音 SDK （C）來啟動您的產品#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [語音助理範例 (SDK)](https://aka.ms/csspeech/samples) \(英文\)
-
-## <a name="tutorial"></a>教學課程
-
-* 如何[使用語音 Studio 建立自訂關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)。
-* 如何[使用語音 SDK 來語音啟動您的產品](tutorial-voice-enable-your-bot-speech-sdk.md)。
-
-## <a name="reference-docs"></a>參考文件
-
-* [自訂關鍵字命名指導方針](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-kws-guidelines)
-* [語音 SDK](speech-sdk-reference.md)
+* 教學課程：如何[使用語音 Studio 建立自訂關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
+* 教學課程：如何[使用 c # 以語音 SDK 語音啟動您的產品](tutorial-voice-enable-your-bot-speech-sdk.md)
+* 快速入門：[使用 c # 在通用 Windows 平臺上以語音 SDK 辨識關鍵字](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* 快速入門：[使用 JAVA 在 Android 上以語音 SDK 辨識關鍵字](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [免費取得語音服務的訂用帳戶金鑰](get-started.md)
-* [建立自訂關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
 * [取得語音 SDK](speech-sdk.md)
 * [深入瞭解語音助理](voice-assistants.md)

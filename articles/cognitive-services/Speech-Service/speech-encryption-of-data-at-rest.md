@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372438"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198661"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>待用資料的語音服務加密
 
@@ -42,13 +42,10 @@ ms.locfileid: "79372438"
 > [!IMPORTANT]
 > 如果您停用系統指派的受控識別，將會移除對儲存體帳戶的存取。 這會導致需要存取儲存體帳戶的語音服務部分停止運作。  
 
-## <a name="regional-availability"></a>區域可用性
+語音服務目前不支援客戶加密箱。 不過，您可以使用 BYOS 來儲存客戶資料，讓您可以達成類似的資料控制項來[客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md)。 請記住，語音服務資料會保留，並在語音資源建立所在的區域中進行處理。 這適用于待用資料和傳輸中的資料。 當您使用自訂功能（例如自訂語音和自訂語音）時，所有客戶資料都會在您的 BYOS （如果使用）和語音服務資源所在的相同區域中進行傳輸、儲存及處理。
 
-BYOS 目前可在下欄區域使用：
-
-* 美國中南部
-* 美國西部 2
-* 美國東部
+> [!IMPORTANT]
+> Microsoft 不**會**使用客戶資料來改善其語音模型。 此外，如果已停用端點記錄且未使用任何自訂專案，則不會儲存任何客戶資料。 
 
 ## <a name="next-steps"></a>後續步驟
 

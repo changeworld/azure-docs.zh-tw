@@ -3,19 +3,19 @@ title: 跨訂用帳戶遷移臉部資料-臉部
 titleSuffix: Azure Cognitive Services
 description: 本指南說明如何將已儲存的臉部資料從一個臉部訂用帳戶遷移至另一個。
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169819"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120805"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>將您的臉部資料移轉至其他臉部訂用帳戶
 
@@ -23,7 +23,7 @@ ms.locfileid: "76169819"
 
 相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱[臉部辨識概念](../concepts/face-recognition.md)指南中的定義。 本指南使用具有 c # 的臉部 .NET 用戶端程式庫。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案：
 
@@ -62,7 +62,7 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
 
 ## <a name="prepare-a-persongroup-for-migration"></a>備妥移轉的 PersonGroup
 
-若要將您來源訂用帳戶中的 PersonGroup 移轉到目標訂用帳戶，您會需要它的識別碼。 使用[PersonGroupOperationsExtensions. metrics.listasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet)方法來抓取 PersonGroup 物件的清單。 然後取得[PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId)屬性。 此程式會根據您擁有的 PersonGroup 物件而有所不同。 在本指南中，來源 PersonGroup 識別碼會儲存在`personGroupId`中。
+若要將您來源訂用帳戶中的 PersonGroup 移轉到目標訂用帳戶，您會需要它的識別碼。 使用[PersonGroupOperationsExtensions. metrics.listasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet)方法來抓取 PersonGroup 物件的清單。 然後取得[PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId)屬性。 此程式會根據您擁有的 PersonGroup 物件而有所不同。 在本指南中，來源 PersonGroup 識別碼會儲存在中 `personGroupId` 。
 
 > [!NOTE]
 > [範例程式碼](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)會建立並訓練要遷移的新 PersonGroup。 在大部分情況下，您應該已經有要使用的 PersonGroup。
@@ -85,14 +85,14 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>取出快照集識別碼
 
-用來製作快照集的方法是非同步，因此您必須等候其完成。 無法取消快照集作業。 在此程式碼中`WaitForOperation` ，方法會監視非同步呼叫。 它會每隔100毫秒檢查一次狀態。 在作業完成之後，藉由剖析`OperationLocation`欄位來取出作業識別碼。 
+用來製作快照集的方法是非同步，因此您必須等候其完成。 無法取消快照集作業。 在此程式碼中， `WaitForOperation` 方法會監視非同步呼叫。 它會每隔100毫秒檢查一次狀態。 在作業完成之後，藉由剖析欄位來取出作業識別碼 `OperationLocation` 。 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-一般`OperationLocation`的值看起來像這樣：
+一般的 `OperationLocation` 值看起來像這樣：
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
@@ -127,13 +127,13 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-在作業狀態顯示`Succeeded`之後，藉由剖析傳回之 OperationStatus 實例`ResourceLocation`的欄位來取得快照集識別碼。
+在作業狀態顯示之後 `Succeeded` ，藉由剖析 `ResourceLocation` 傳回之 OperationStatus 實例的欄位來取得快照集識別碼。
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-一般`resourceLocation`的值看起來像這樣：
+一般的 `resourceLocation` 值看起來像這樣：
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
@@ -152,13 +152,13 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > 快照集物件只適用于48小時。 如果您想要在不久後立即使用快照集來進行資料移轉，請只建立快照集。
 
-快照集套用要求會傳回另一個作業識別碼。 若要取得此識別碼，請`OperationLocation`剖析傳回之 applySnapshotResult 實例的欄位。 
+快照集套用要求會傳回另一個作業識別碼。 若要取得此識別碼，請剖析 `OperationLocation` 傳回之 applySnapshotResult 實例的欄位。 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-快照集應用程式進程也是非同步，因此`WaitForOperation` ，再次使用來等待它完成。
+快照集應用程式進程也是非同步，因此，再次使用 `WaitForOperation` 來等待它完成。
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);

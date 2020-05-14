@@ -3,13 +3,13 @@ author: erhopf
 ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/23/2019
-ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: ddc61a0d0cb5a630282a9ba0589cef6fda29c4b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78262265"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343458"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>向 Azure Active Directory 進行驗證
 
@@ -101,3 +101,19 @@ ms.locfileid: "78262265"
    ```
 
 或者，也可以使用憑證來驗證服務主體。 除了服務主體之外，也支援透過另一個 AAD 應用程式委派許可權的使用者主體。 在此情況下，當取得權杖時，系統會提示使用者進行雙因素驗證，而不是密碼或憑證。
+
+## <a name="authorize-access-to-managed-identities"></a>授權存取受控識別
+ 
+認知服務支援使用[Azure 資源的受控識別來](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用 Azure 虛擬機器（Vm）中執行的應用程式、函式應用程式、虛擬機器擴展集和其他服務的 Azure AD 認證，來授權認知服務資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。  
+
+### <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
+
+您必須先在 VM 上啟用 Azure 資源的受控識別，才可以使用 Azure 資源的受控識別來授權存取認知服務資源。 若要瞭解如何啟用適用于 Azure 資源的受控識別，請參閱：
+
+- [Azure 入口網站](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
+- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Azure Resource Manager 範本](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Azure Resource Manager 用戶端程式庫](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+
+如需受控識別的詳細資訊，請參閱[適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。

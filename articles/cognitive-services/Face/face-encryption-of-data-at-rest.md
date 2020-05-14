@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 793c21bb2341033aa51ff8c639846e57ada4bae3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1e0275c91b2243132650be7af256071589091c4b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372412"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201936"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>待用資料的臉部服務加密
 
@@ -25,7 +25,14 @@ ms.locfileid: "79372412"
 > [!IMPORTANT]
 > 客戶管理的金鑰僅適用于 E0 定價層。 若要要求能夠使用客戶管理的金鑰，請填寫並提交「[臉部服務客戶管理的金鑰要求」表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會放在佇列中，並已核准為可用空間。 一旦核准搭配臉部服務使用 CMK，您將需要建立新的臉部資源，並選取 [E0] 作為 [定價層]。 建立具有 E0 定價層的臉部資源之後，您就可以使用 Azure Key Vault 來設定受控識別。
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk-regions.md)]
+### <a name="regional-availability"></a>區域可用性
+
+客戶管理的金鑰目前適用于下欄區域：
+
+* 美國中南部
+* 美國西部 2
+* 美國東部
+* US Gov 維吉尼亞州
 
 [!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk.md)]
 
