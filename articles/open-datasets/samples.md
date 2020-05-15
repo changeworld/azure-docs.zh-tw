@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/06/2020
+ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73606151"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930313"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>顯示如何運用開放資料集擴充資料的 Jupyter Notebook 範例 
 Azure 開放資料集的 Jupyter Notebook 範例會示範如何載入開放資料集，並使用它們擴充示範資料。 這些技術包括使用 Apache Spark 和 Pandas 處理資料。
@@ -40,6 +40,6 @@ Azure 開放資料集的 Jupyter Notebook 範例會示範如何載入開放資�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：使用自動化機器學習和開放資料集來建置迴歸模型](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [教學課程：使用自動化機器學習和開放資料集來建置迴歸模型](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [適用於開放資料集的 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure 開放資料集目錄](https://azure.microsoft.com/services/open-datasets/catalog/) \(英文\)

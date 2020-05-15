@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行實體伺服器的評�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535276"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901417"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>準備評估實體伺服器並將其移轉至 Azure
 
@@ -105,10 +105,9 @@ ms.locfileid: "81535276"
 ### <a name="assign-azure-account-permissions"></a>指派 Azure 帳戶權限
 
 將「虛擬機器參與者」角色指派給 Azure 帳戶。 這會提供權限給：
-
-    - 在所選的資源群組中建立 VM。
-    - 在所選的虛擬網路中建立 VM。
-    - 寫入至 Azure 受控磁碟。 
+  - 在所選的資源群組中建立 VM。
+  - 在所選的虛擬網路中建立 VM。
+  - 寫入至 Azure 受控磁碟。 
 
 ### <a name="create-an-azure-network"></a>建立 Azure 網路
 

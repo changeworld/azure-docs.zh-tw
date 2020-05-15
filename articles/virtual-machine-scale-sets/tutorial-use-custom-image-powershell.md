@@ -2,19 +2,19 @@
 title: 教學課程 - 透過 Azure PowerShell 使用擴展集中的自訂 VM 映像
 description: 了解如何使用 Azure PowerShell 來建立可用於部署虛擬機器擴展集的自訂 VM 映像
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: akjosh
+ms.openlocfilehash: 3f99b68de4bce37e7ba9ce6656cf401209e73105
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792763"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200926"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集的自訂映像
 

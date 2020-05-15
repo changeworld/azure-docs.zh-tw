@@ -3,12 +3,12 @@ title: 快速入門：適用於 Python 的 QnA Maker 用戶端程式庫
 description: 本快速入門示範如何開始使用適用於 Python 的 QnA Maker 用戶端程式庫。
 ms.topic: include
 ms.date: 04/27/2020
-ms.openlocfilehash: ccd046ad8e511517abd9f45072781e736f0e79b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8a180096e21203dd45d806ceca14794c985d664a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204000"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876026"
 ---
 使用適用於 Python 的 QnA Maker 用戶端程式庫來：
 
@@ -53,7 +53,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 建立用戶端之後，請使用[知識庫](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python)建立、管理和發佈知識庫。
 
-針對立即性作業，方法通常會傳回可指出狀態的 JSON 物件。 針對長期作業，回應則是作業識別碼。 使用作業識別碼來呼叫 [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) 方法，以確認[要求的狀態](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)。
+針對立即性作業，方法通常會傳回可指出狀態的 JSON 物件。 針對長期作業，回應則是作業識別碼。 使用作業識別碼來呼叫 [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) 方法，以確認[要求的狀態](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python)。
 
 
 ## <a name="code-examples"></a>程式碼範例
@@ -84,7 +84,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-接著，使用金鑰建立 CognitiveServicesCredentials 物件，並使用該物件與您的端點建立 [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python) 物件。
+接著，使用金鑰建立 CognitiveServicesCredentials 物件，並使用該物件與您的端點建立 [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.qnamakerclient?view=azure-python) 物件。
 
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]

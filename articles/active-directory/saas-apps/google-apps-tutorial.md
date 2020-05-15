@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/14/2020
+ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048452"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Google Cloud (G Suite) Connector 整合
 
@@ -140,8 +140,8 @@ ms.locfileid: "80048452"
 
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
 
 1. 在 [基本 SAML 設定]  區段上，如果要設定 **Google Cloud Platform**，執行下列步驟：
@@ -161,8 +161,8 @@ ms.locfileid: "80048452"
     
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 Google Cloud (G Suite) Connector 不會在單一登入設定上提供實體識別碼/識別碼值，因此，當您取消勾選 [網域特定簽發者]  選項時，識別碼值將會是 `google.com`。 如果您勾選 [網域特定簽發者]  選項，其將是 `google.com/a/<yourdomainname.com>`。 若要勾選/取消勾選 [網域特定簽發者]  選項，您必須移至 [設定 Google Cloud (G Suite) Connector SSO]  區段，此教學課程稍後將會說明此區段。 如需詳細資訊，請連絡 [Google Cloud (G Suite) Connector 用戶端支援小組](https://www.google.com/contact/)。

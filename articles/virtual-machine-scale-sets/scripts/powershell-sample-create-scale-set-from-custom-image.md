@@ -1,19 +1,20 @@
 ---
 title: Azure PowerShell 範例 - 使用自訂 VM 映像
 description: 此指令碼會建立可使用自訂 VM 映像作為 VM 執行個體來源的虛擬機器擴展集。
-author: cynthn
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
+author: axayjo
+ms.author: akjosh
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2a272cf534ef8ac9cbc45c05f1b9d3f0fecfa1f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: cynthn
+ms.custom: akjosh
+ms.openlocfilehash: b99077223581c4960c838b54b6b8885309f7d999
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276670"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125106"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>使用 PowerShell 從自訂 VM 映像建立虛擬機器擴展集
 此指令碼會建立可使用自訂 VM 映像作為 VM 執行個體來源的虛擬機器擴展集。
