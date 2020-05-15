@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/06/2020
+ms.openlocfilehash: 24f5a671076a44db382ac37e2f6532e5f0f2a3ae
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73606163"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930381"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>什麼是 Azure 開放資料集，以及如何使用它們？
 
@@ -24,6 +24,8 @@ ms.locfileid: "73606163"
 
 ## <a name="curated-prepared-datasets"></a>經過策劃、準備的資料集
 Azure 開放資料集中經過策劃的開放式公用資料集已針對機器學習工作流程的取用進行最佳化。 
+
+若要查看所有可用的資料集，請移至 [Azure 開放資料集目錄](https://azure.microsoft.com/services/open-datasets/catalog/)。
 
 資料科學家通常會花費大部分的時間在清除和準備資料以進行進階分析。 開放資料集會複製到 Azure 雲端進行前置處理，以節省時間。 系統會定期從來源提取資料，例如經由與美國國家海洋暨大氣總署 (NOAA) 的 FTP 連線。 接下來，會將資料剖析成結構化格式，然後使用一些特性 (例如最接近氣象站的郵遞區號或位置) 適度擴充。
 
@@ -57,5 +59,5 @@ Azure 開放資料集中經過策劃的開放式公用資料集已針對機器�
 
 ## <a name="next-steps"></a>後續步驟
 * [範例筆記本](samples.md)
-* [教學課程：含紐約計程車資料的迴歸模型](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [教學課程：含紐約計程車資料的迴歸模型](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [適用於開放資料集的 Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

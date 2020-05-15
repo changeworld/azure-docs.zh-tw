@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL 與 UK NHS 藍圖範例控制項
 description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851361"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005604"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應
 
@@ -27,9 +27,6 @@ ms.locfileid: "74851361"
 - 應啟用儲存體帳戶的安全傳輸
 - 從未使用安全通訊協定的 Windows 網頁伺服器顯示稽核結果
 - 部署必要條件以稽核未使用安全通訊協定的 Windows 網頁伺服器
-- 您的 API 應用程式應使用最新的 TLS 版本
-- 您的 Web 應用程式應使用最新的 TLS 版本
-- 您的函式應用程式應使用最新的 TLS 版本
 
 ## <a name="23-data-at-rest-protection"></a>2.3 待用資料保護
 
@@ -129,8 +126,8 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 
 - \[預覽\]：部署需求以稽核有不具密碼帳戶的 Linux VM
 - \[預覽\]：部署需求以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
-- \[預覽\]：稽核有不具密碼帳戶的 Linux VM
-- \[預覽\]：稽核允許不使用密碼從帳戶遠端連線的 Linux VM
+- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
+- \[預覽\]：從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
 - 儲存體帳戶應移轉至新的 Azure Resource Manager 資源
 - 虛擬機器應移轉到新的 Azure Resource Manager 資源
 - 稽核不是使用受控磁碟的 VM
@@ -141,12 +138,10 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 
 - 稽核不受限制的儲存體帳戶網路存取
 - 應在虛擬機器上啟用自適性應用程式控制
-- 應在 IaaS 上強化 Web 應用程式的 NSG 規則
 - 應限制透過網際網路面向端點存取
-- 應強化與虛擬機器互動的網際網路網路安全性群組規則
+- 應在網際網路對應虛擬機器中套用自適性網路強化建議
 - 應在虛擬機器擴展集上安裝端點保護解決方案
 - Just-In-Time 網路存取控制應套用在虛擬機器上
-- 稽核不受限制的儲存體帳戶網路存取
 - 函式應用程式的遠端偵錯應關閉
 - Web 應用程式的遠端偵錯應關閉
 - 應關閉 API 應用程式的遠端偵錯
@@ -179,13 +174,13 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 
 此藍圖也指派了 Azure 原則定義來稽核 Linux VM 密碼檔案權限，以在其設定不正確時發出警示。 此設計可讓您採取更正措施，以確保驗證器不會遭到入侵。
 
-- \[預覽\]：稽核 Linux VM /etc/passwd 檔案權限已設定為 0644
+- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
 
 ## <a name="13-audit-information-for-users"></a>13 稽核使用者的資訊
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。 指派的原則也會稽核虛擬機器是否未將記錄傳送至指定的記錄分析工作區。
 
-- 應該在 SQL Server 上的進階資料安全性設定上啟用稽核
+- 應在 SQL 伺服器上啟用進階資料安全性
 - 稽核診斷設定
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式

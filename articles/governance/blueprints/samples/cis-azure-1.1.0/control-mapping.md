@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure 基礎基準測試藍圖範例控制項
 description: CI Microsoft Azure 基礎基準測試藍圖範例與 Azure 原則的建議對應。
-ms.date: 11/04/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656958"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863955"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CI Microsoft Azure 基礎基準測試藍圖範例的建議對應。
 
@@ -37,9 +37,9 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您監視可能需要移除的來賓帳戶。
 
-- 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 - 具有讀取權限的外部帳戶應該從您的訂用帳戶中移除
 - 應從訂用帳戶移除具有寫入權限的外部帳戶
+- 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 確定不會建立自訂訂用帳戶擁有者角色
 
@@ -51,7 +51,7 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您監視未啟用資訊安全中心標準層的網路和虛擬機器。
 
- - 應選取資訊安全中心標準定價層
+- 應選取資訊安全中心標準定價層
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2.2 確定 [監視代理程式的自動化佈建] 會設定為 [開啟]
 
@@ -87,20 +87,14 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您保護網際網路對應的虛擬機器。
 
-- 應強化與虛擬機器互動的網際網路網路安全性群組規則
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2.8 確定 ASC 預設原則設定 [監視 Web 應用程式防火牆] 不是 [已停用]
-
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您保護執行 Web 應用程式的虛擬機器。
-
-- 應在 IaaS 上強化 Web 應用程式的 NSG 規則
+- 應在網際網路對應虛擬機器中套用自適性網路強化建議
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2.9 確定 ASC 預設原則設定 [啟用新一代防火牆 (NGFW) 監視] 不是 [已停用]
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，藉由限制存取來協助保護子網路和虛擬機器免於受到威脅。 這個 CIS Microsoft Azure Foundations Benchmark 建議所參考的資訊安全中心原則已由兩個新的建議所取代。 以下參考的原則均會提出新的建議。
 
 - 子網路應該與網路安全性群組建立關聯
-- 虛擬機器應該與網路安全性群組建立關聯
+- 應使用網路安全性群組保護網際網路對應的虛擬機器
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2.10 確定 ASC 預設原則設定 [監視弱點評估] 不是 [已停用]
 
@@ -128,7 +122,7 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助確定已啟用 SQL 伺服器稽核。
 
-- 應該在 SQL Server 上的進階資料安全性設定上啟用稽核
+- 應啟用 SQL 伺服器上的稽核
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2.15 確定 ASC 預設原則設定 [監視 SQL 加密] 不是 [已停用]
 
@@ -182,7 +176,7 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助確定已啟用 SQL 伺服器稽核。 
 
-- 應該在 SQL Server 上的進階資料安全性設定上啟用稽核
+- 應啟用 SQL 伺服器上的稽核
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4.2 確定已在 SQL 伺服器的 [稽核] 原則中正確設定了 'AuditActionGroups' 原則
 
@@ -200,8 +194,8 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已在 SQL 伺服器和 SQL 受控執行個體上啟用進階資料安全性。
 
-- 應在 SQL 受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
+- 應在 SQL 受控執行個體上啟用進階資料安全性
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 確定 [威脅偵測類型] 設定為 [全部]
 
@@ -214,15 +208,15 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已正確啟用進階資料安全性通知。
 
-- SQL 受控執行個體的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
 - SQL 伺服器的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
+- SQL 受控執行個體的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4.7 確定 [電子郵件服務和共同管理員] 為 [已啟用]
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已正確啟用進階資料安全性通知。
 
-- 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知
 - 應在 SQL 伺服器進階資料安全性設定中啟用傳給系統管理員和訂用帳戶擁有者的通知
+- 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4.8 確定已設定 Azure Active Directory 管理員
 
@@ -240,8 +234,8 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 SQL 伺服器和 SQL 受控執行個體的透明資料加密保護裝置會使用您自己的金鑰進行加密。
 
-- SQL 受控執行個體的 TDE 保護裝置應以您自己的金鑰加密
 - SQL 伺服器的 TDE 保護裝置應以您自己的金鑰加密
+- SQL 受控執行個體的 TDE 保護裝置應以您自己的金鑰加密
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 確定會為 MySQL 資料庫伺服器將 [強制執行 SSL 連線] 設定為 [已啟用]
 
@@ -315,11 +309,83 @@ ms.locfileid: "80656958"
 
 - Azure 監視器應從所有區域收集活動記錄
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 確保內含容器且有活動記錄的儲存體帳戶會以 BYOK (使用您自己的金鑰) 加密。
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保包含活動記錄的儲存體帳戶會以 BYOK 加密。
+
+- 儲存體帳戶內含的容器如有活動記錄，就必須以 BYOK 加密
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 確定 Azure KeyVault 的記錄是 [已啟用]
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定會為金鑰保存庫啟用診斷記錄。
 
 - 應啟用 Key Vault 中的診斷記錄
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 確定建立原則指派的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定原則作業應有活動記錄警示
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 確定建立或更新網路安全性群組的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定系統管理作業應有活動記錄警示
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 確定刪除網路安全性群組的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定系統管理作業應有活動記錄警示
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 確定建立或更新網路安全性群組規則的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定系統管理作業應有活動記錄警示
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 確定刪除網路安全性群組規則的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定系統管理作業應有活動記錄警示
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 確定建立或更新安全性解決方案的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定安全性作業應有活動記錄警示
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 確定刪除安全性解決方案的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定安全性作業應有活動記錄警示
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 確定建立、更新或刪除 SQL Server 防火牆規則的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定系統管理作業應有活動記錄警示
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 確定更新安全性原則的活動記錄警示是否存在
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確保特定的活動記錄警示存在。
+
+- 特定安全性作業應有活動記錄警示
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6.1 確定已限制從網際網路進行 RDP 存取
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 RDP 連線已受限制。
+
+- 應禁止從網際網路存取 RDP
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6.2 確定已限制從網際網路進行 SSH 存取
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 SSH 連線已受限制。
+
+- 應禁止從網際網路存取 SSH
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6.5 確定網路監看員為 [已啟用]
 
@@ -349,7 +415,7 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定只會安裝核准的虛擬機器擴充功能。 此原則需要指定所有虛擬機器擴充功能的參數陣列。 此原則方案定義會包含客戶應驗證的建議預設值。 
 
- - 僅應安裝已核准的 VM 擴充功能
+- 僅應安裝已核准的 VM 擴充功能
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7.5 確定已為所有虛擬機器套用最新 OS 修補程式
 
@@ -373,7 +439,15 @@ ms.locfileid: "80656958"
 
 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定會為 Kubernetes 服務叢集中的受控權限使用角色型存取控制。
 
-- \[預覽\]：應在 Kubernetes 服務上使用角色型存取控制 (RBAC)
+- 應在 Kubernetes 服務上使用角色型存取控制 (RBAC)
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9.1 確定已在 Azure App Service 上設定 App Service 驗證
+
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，協助您確定 App Service 應用程式的要求已通過驗證。
+
+- 您的 API 應用程式應啟用驗證
+- 您的函式應用程式應啟用驗證
+- 您的 Web 應用程式應啟用驗證
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9.2 確定 Web 應用程式在 Azure App Service 中會將所有 HTTP 流量重新導向至 HTTPS
 
@@ -444,7 +518,6 @@ ms.locfileid: "80656958"
 - 確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行函式應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的
-
 
 ## <a name="next-steps"></a>後續步驟
 
