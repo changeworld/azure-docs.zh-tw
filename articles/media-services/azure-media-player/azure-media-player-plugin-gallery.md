@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 206200f3ba0757cd738439b58c8b94874cf5a938
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: ee29d1c45896583ef5aa5837e8383159db855d52
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727495"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124613"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure 媒體播放器外掛程式庫 #
 
@@ -26,7 +26,7 @@ ms.locfileid: "81727495"
 | 畫面播放速率和時間碼計算機 | [示範](http://mconvertitest001.blob.core.windows.net/public/example.html)                        | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | 此外掛程式會根據第一個 MPEG-DASH 影片片段的 `tfhd`/`trun` MP4 方塊來計算影片的畫面播放速率、剖析來自 MPEG-DASH 用戶端資訊清單的時間刻度值，也會提供方法讓您從播放器產生指定絕對時間的時間碼 (以及在給定時間碼的情況下提供播放器絕對時間) |
 | <strike>播放速度</strike>                      | [示範](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 此外掛程式可讓觀看者控制影片的速度。 *請注意，這項功能會自動在版本 AMP v2.0.0+ 中提供，但預設為停用。* 若要了解如何啟用這項功能，請參閱[這裡](https://github.com/Azure-Samples/azure-media-player-samples)的範例 |
 | 暫留時間提示                      | [示範](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 在滑鼠停留於進度列上時顯示時間提示，以進行時間精確的搜尋。 *注意：此外掛程式已整合到 AMP*，但如果您有興趣了解其程式設計方式，也可以看一下。                                                                                                                       |
-| 標題重疊                       | [示範](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/")                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | 在螢幕上重疊可設定的影片標題 |
+| 標題重疊                       | [示範](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | 在螢幕上重疊可設定的影片標題 |
 | 時間軸標記                    | [示範](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | 此外掛程式會接受時間陣列，並在進度列上於這些時間重疊小型標記。 |
 | 分析                           | | | |
 | Application Insights                | [部落格文章](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | 此外掛程式會追蹤您的播放器計量，並將其移植到 Power BI，以便能用圖形以直覺化的方式呈現觀看者的播放器體驗。 |

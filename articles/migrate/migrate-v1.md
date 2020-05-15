@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77914376"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993815"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -216,7 +216,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 複製工作區識別碼與金鑰。 在內部部署機器上安裝 MMA 時，需要用到這些識別碼與金鑰。
 
 > [!NOTE]
-> 若要自動安裝代理程式，您可以使用部署工具 (例如 Configuration Manager) 或合作夥伴工具 [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)，它提供適用於 Azure Migrate 的代理程式部署解決方案。
+> 若要自動安裝代理程式，您可以使用部署工具 (例如 Configuration Manager) 或合作夥伴工具 [Intigua](https://www.intigua.com/intigua-for-azure-migration)，它提供適用於 Azure Migrate 的代理程式部署解決方案。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>在 Windows 電腦上安裝 MMA 代理程式

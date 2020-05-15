@@ -2,18 +2,19 @@
 title: 快速入門 - 使用 Azure 範本建立 Windows 虛擬機器擴展集
 description: 了解如何使用 Azure Resource Manager 範本快速建立 Windows 虛擬機器擴展，可部署範例應用程式及設定自動縮放規則
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: windows
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 8bf75dc08a033c254152cb6e5b6f3af6389d8380
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010438"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198211"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>快速入門：使用 Azure 範本建立 Windows 虛擬機器擴展集
 
