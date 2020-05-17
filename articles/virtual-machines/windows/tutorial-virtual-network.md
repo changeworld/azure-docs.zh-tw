@@ -65,7 +65,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-使用 *New-AzVirtualNetworkSubnetConfig* 建立一個名為 [myFrontendSubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 的子網路設定：
+使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 建立一個名為 *myFrontendSubnet* 的子網路設定：
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>建立虛擬網路
 
-使用 *myFrontendSubnet* 和 *myBackendSubnet* 搭配 *New-AzVirtualNetwork*，建立名為 [myVNet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 的 VNET：
+使用 *myFrontendSubnet* 和 *myBackendSubnet* 搭配 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)，建立名為 *myVNet* 的 VNET：
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ $vnet = New-AzVirtualNetwork `
 
 配置方法可以設定為靜態，這可確保即使在已取消配置的狀態下，依然將 IP 位址指派給 VM。 如果您使用靜態 IP 位址，則無法指定 IP 位址本身， 而是從可用位址集區配置一個給它。
 
-使用 *New-AzPublicIpAddress* 建立一個名為 [myPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 的公用 IP 位址：
+使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 建立一個名為 *myPublicIPAddress* 的公用 IP 位址：
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -163,7 +163,7 @@ NSG 規則定義允許或拒絕流量的網路連接埠。 規則可以包含來
 
 ### <a name="create-network-security-groups"></a>建立網路安全性群組
 
-使用 *New-AzNetworkSecurityRuleConfig* 建立一個名為 *myFrontendNSGRule* 的輸入規則，以允許 [myFrontendVM](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 上的傳入網路流量：
+使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立一個名為 *myFrontendNSGRule* 的輸入規則，以允許 *myFrontendVM* 上的傳入網路流量：
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-使用 *New-AzNetworkSecurityGroup* 新增一個名為 [myFrontendNSG](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 的網路安全性群組：
+使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 新增一個名為 *myFrontendNSG* 的網路安全性群組：
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

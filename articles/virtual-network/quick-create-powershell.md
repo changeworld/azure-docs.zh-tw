@@ -59,7 +59,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>新增子網路
 
-Azure 會將資源部署至虛擬網路內的子網路，因此您必須建立子網路。 使用 *Add-AzVirtualNetworkSubnetConfig* 建立名為 [default](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 的子網路設定：
+Azure 會將資源部署至虛擬網路內的子網路，因此您必須建立子網路。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 建立名為 *default* 的子網路設定：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `

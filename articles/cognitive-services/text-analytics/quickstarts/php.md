@@ -20,7 +20,7 @@ ms.locfileid: "75378580"
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入門：使用 PHP 來呼叫文字分析認知服務
 <a name="HOLTop"></a>
 
-本文示範如何使用[文字分析 API](#Detect)[ 與 PHP 來](#SentimentAnalysis)偵測語言[、](#KeyPhraseExtraction)分析情感[、](#Entities)擷取關鍵片語 [，以及](//go.microsoft.com/fwlink/?LinkID=759711)識別已連結實體 。
+本文示範如何使用 [文字分析 API](//go.microsoft.com/fwlink/?LinkID=759711)  與 PHP 來[偵測語言](#Detect)、[分析情感](#SentimentAnalysis)、[擷取關鍵片語](#KeyPhraseExtraction)，以及[識別已連結實體](#Entities)。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

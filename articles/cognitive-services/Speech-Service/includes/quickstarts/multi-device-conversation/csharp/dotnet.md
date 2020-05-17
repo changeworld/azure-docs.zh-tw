@@ -201,7 +201,7 @@ ms.locfileid: "80671136"
 
 1. 在相同檔案中，以您的 Cognitive Speech 訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `YourServiceRegion`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `westus` 字串。
+1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
 
 1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
 
@@ -294,7 +294,7 @@ ms.locfileid: "80671136"
     }
     ```
 
-2. 使用下列內容取代 `CreateConversationAsync();` 函式中的 `public static async Task Main(string[] args)`：
+2. 使用下列內容取代 `public static async Task Main(string[] args)` 函式中的 `CreateConversationAsync();`：
 
     ```csharp
     // Set this to the conversation you want to join

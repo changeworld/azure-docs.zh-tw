@@ -52,7 +52,7 @@ Microsoft Translator 在 2016 年發行了[類神經機器翻譯 (NMT)](https://
 
 使用安全的[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站，使用者便可透過直覺式的使用者介面，來上傳訓練資料、對系統進行訓練、測試系統，然後將系統部署至生產環境。 在幾小時內 (實際時間取決於訓練資料大小)，系統便可供大規模使用。
 
-透過[專用 API](https://portal.customtranslator.azure.ai) (目前處於預覽狀態)，也能以程式設計方式存取[自訂翻譯工具](https://custom-api.cognitive.microsofttranslator.com/swagger/)。 此 API 可讓使用者透過自己的應用程式或 WebService，定期管理訓練的建立或更新。
+透過[專用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (目前處於預覽狀態)，也能以程式設計方式存取[自訂翻譯工具](https://portal.customtranslator.azure.ai)。 此 API 可讓使用者透過自己的應用程式或 WebService，定期管理訓練的建立或更新。
 
 使用自訂模型來翻譯內容的成本，取決於使用者的「翻譯工具文字 API」定價層。 如需定價層的詳細資料，請參閱認知服務[翻譯工具文字 API 定價網頁](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
 
