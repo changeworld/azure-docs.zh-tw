@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
-ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80639180"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589732"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>設定 RHEL/CentOS 7 for Speech SDK
 
@@ -45,7 +45,7 @@ ldconfig -p | grep libstdc++
 
 Vanilla RHEL/CentOS 7 （x64）上的輸出為：
 
-```
+```bash
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
@@ -57,7 +57,7 @@ strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 
 輸出應該是：
 
-```
+```bash
 ...
 GLIBCXX_3.4.19
 ...
@@ -65,14 +65,18 @@ CXXABI_1.3.7
 ...
 ```
 
-語音 SDK 需要**CXXABI_1 3.9**和**GLIBCXX_3. 4.21**。 您可以從 Linux 套件的語音`ldd libMicrosoft.CognitiveServices.Speech.core.so` SDK 程式庫執行來尋找這項資訊。
+語音 SDK 需要**CXXABI_1 3.9**和**GLIBCXX_3. 4.21**。 您可以 `ldd libMicrosoft.CognitiveServices.Speech.core.so` 從 Linux 套件的語音 SDK 程式庫執行來尋找這項資訊。
 
 > [!NOTE]
 > 建議您在系統上安裝的 GCC 版本至少為**5.4.0**，且具有相符的執行時間程式庫。
 
 ## <a name="example"></a>範例
 
-這是一個範例命令，說明如何使用語音 SDK 1.10.0 或更新版本來設定 RHEL/CentOS 7 x64 for 開發（c + +、c #、JAVA、Python）：
+這是範例命令集，說明如何使用語音 SDK 1.10.0 或更新版本設定 RHEL/CentOS 7 x64 for 開發（c + +、c #、JAVA、Python）：
+
+### <a name="1-general-setup"></a>1. 一般設定
+
+首先安裝所有一般相依性：
 
 ```bash
 # Only run ONE of the following two commands
@@ -86,16 +90,53 @@ sudo yum update -y
 sudo yum groupinstall -y "Development tools"
 sudo yum install -y alsa-lib dotnet-sdk-2.1 java-1.8.0-openjdk-devel openssl python3
 sudo yum install -y gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
 
-# Build GCC 5.4.0 and runtimes and install them under /usr/local
+### <a name="2-cc-compiler-and-runtime-libraries"></a>2. c/c + + 編譯器和執行時間程式庫
+
+使用下列命令安裝必要套件：
+
+```bash
 sudo yum install -y gmp-devel mpfr-devel libmpc-devel
+```
+
+> [!NOTE]
+> Libmpc-對內套件已在 RHEL 7.8 更新中被取代。 如果前一個命令的輸出包含訊息
+>
+> ```bash
+> No package libmpc-devel available.
+> ```
+>
+> 然後，需要從原始來源安裝必要的檔案。 執行下列命令：
+>
+> ```bash
+> curl https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O
+> tar zxf mpc-1.1.0.tar.gz
+> mkdir mpc-1.1.0-build && cd mpc-1.1.0-build
+> ../mpc-1.1.0/configure --prefix=/usr/local --libdir=/usr/local/lib64
+> make -j$(nproc)
+> sudo make install-strip
+> ```
+
+接下來，更新編譯器和執行時間程式庫：
+
+```bash
+# Build GCC 5.4.0 and runtimes and install them under /usr/local
 curl https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2 -O
 tar jxf gcc-5.4.0.tar.bz2
 mkdir gcc-5.4.0-build && cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-bootstrap --disable-multilib --prefix=/usr/local
 make -j$(nproc)
 sudo make install-strip
+```
 
+如果更新的編譯器和程式庫必須部署在數部電腦上，您可以直接將它們從下複製 `/usr/local` 到其他電腦。 如果只需要執行時間程式庫，中的檔案 `/usr/local/lib64` 就足夠了。
+
+### <a name="3-environment-settings"></a>3. 環境設定
+
+執行下列命令來完成設定：
+
+```bash
 # Set SSL cert file location
 # (this is required for any development/testing with Speech SDK)
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt

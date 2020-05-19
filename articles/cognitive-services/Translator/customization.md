@@ -1,5 +1,5 @@
 ---
-title: 翻譯自訂 - 翻譯工具文字 API
+title: 翻譯自訂-翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 以慣用的術語和樣式，使用 Microsoft Translator Hub 建置您自己的電腦翻譯系統。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71257630"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588644"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
 
-Microsoft 自訂翻譯工具是 Microsoft 翻譯工具服務的功能，可讓使用者在使用翻譯工具文字 API (僅限第 3 版) 翻譯文字時，自訂 Microsoft 翻譯工具的進階類神經機器翻譯。
+自訂翻譯是 Translator 服務的功能，可讓使用者在使用翻譯工具（僅限第3版）翻譯文字時，自訂 Microsoft Translator 的先進類神經機器翻譯。
 
 此功能在搭配使用[認知服務語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/)時，也可用來自訂語音翻譯。
 
@@ -33,7 +33,7 @@ Microsoft 自訂翻譯工具是 Microsoft 翻譯工具服務的功能，可讓�
 
 系統也接受在文件層級上為平行處理、但在句子層級上尚未對齊的資料。 若使用者可以存取使用多種語言、但位於在不同文件中的相同內容版本，自訂翻譯工具就能夠自動比對文件之間的句子。  系統還可以使用其中一或二種語言的單語資料，補充平行訓練資料來改善翻譯。
 
-然後，您可以利用 category 參數，透過定期呼叫 Microsoft 翻譯工具文字 API 來使用自訂系統。
+然後使用 category 參數，透過定期呼叫 Translator 來提供自訂系統。
 
 假設有適當的訓練資料類型和數量，透過使用自訂翻譯工具預期翻譯品質取得介於 5 到 10 之間或甚至更多的 BLEU 點數並不罕見。
 
@@ -59,7 +59,7 @@ Microsoft 自訂翻譯工具是 Microsoft 翻譯工具服務的功能，可讓�
 ## <a name="collaborative-translations-framework"></a>共同作業翻譯架構
 
 > [!NOTE]
-> 自 2018 年 2 月 1 起，AddTranslation() 和 AddTranslationArray() 不再適用於翻譯工具文字 API 2.0 版。 這些方法將會失敗，不會寫入任何內容。 翻譯工具文字 API 3.0 版不支援這些方法。
+> 從2018年2月1日起，AddTranslation （）和 AddTranslationArray （）已無法再與 Translator 2.0 搭配使用。 這些方法將會失敗，不會寫入任何內容。 Translator v3.0 不支援這些方法。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a67e199af1ee6e68f00dbde9a0a43d02e4c7d638
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221227"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588661"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什麼是自訂翻譯工具工作區？
 
@@ -39,7 +39,7 @@ ms.locfileid: "79221227"
 
 自訂翻譯工具可讓您將專案標籤指派給專案。 專案標籤可區分多個具有相同語言組和類別的專案。 最佳做法是，在非必要時避免使用專案標籤。
 
-專案標籤會作為 CategoryID 的一部分。 如果專案標籤保留為未設定，或是多個專案間做了相同的設定，則具有相同類別和*不同*語言組的專案將會共用相同的 CategoryID。 此方法有其效用，因為它可讓您或客戶在使用文字翻譯工具 API 時順利地切換語言，而無須顧慮每個專案具有唯一 CategoryID 的問題。
+專案標籤會作為 CategoryID 的一部分。 如果專案標籤保留為未設定，或是多個專案間做了相同的設定，則具有相同類別和*不同*語言組的專案將會共用相同的 CategoryID。 這種方法很有利，因為它可讓您或您的客戶在使用翻譯工具之間切換語言，而不需要擔心每個專案獨有的類別。
 
 例如，如果我想要在技術領域中啟用英文翻譯成法文和法文翻譯成英文的翻譯，我會建立兩個專案：一個用於英文 -\> 法文，另一個用於法文 -\> 英文。 我會為兩者指定相同的類別 (技術)，並將專案標籤保留為空白。 這兩個專案的 CategoryID 會相符，因此我無須修改 CategoryID，即可直接對 API 查詢英文和法文翻譯。
 

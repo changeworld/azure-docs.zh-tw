@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221355"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589188"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
@@ -23,44 +23,42 @@ ms.locfileid: "79221355"
 
 ## <a name="text-recognition"></a>文字辨識
 
-電腦視覺可以辨識許多語言的文字。 具體而言， [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) API 支援多種語言，而[讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)api 和[辨識文字](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)api 則僅支援英文。 如需這項功能的詳細資訊和每個 API 的優點，請參閱[辨識印刷和手寫文字](concept-recognizing-text.md)。
+電腦視覺可以辨識許多語言的文字。 OCR 和讀取 Api 不會要求您指定語言代碼。 如需這項功能的詳細資訊和每個 API 的優點，請參閱[辨識印刷和手寫文字](concept-recognizing-text.md)。
 
-OCR 會自動偵測輸入材質的語言，因此不需要在 API 呼叫中指定語言代碼。 不過，語言代碼一律會傳回為 JSON 回應中的`"language"`節點值。
-
-|Language| 語言代碼 | OCR API |
-|:-----|:----:|:-----:|
-|阿拉伯文 | `ar`|✔ |
-|中文 (簡體) | `zh-Hans`|✔ |
-|中文 (繁體) | `zh-Hant`|✔ |
-|捷克文 | `cs` |✔ |
-|丹麥文 | `da` |✔ |
-|荷蘭文 | `nl` |✔ |
-|英文 | `en` |✔ |
-|芬蘭文 | `fi` |✔ |
-|法文 | `fr` |✔ |
-|德文 | `de` |✔ |
-|希臘文 | `el` |✔ |
-|匈牙利文 | `hu` |✔ |
-|義大利文 | `it` |✔ |
-|日文 | `ja` |✔ |
-|韓文 | `ko` |✔ |
-|挪威文 | `nb` |✔ |
-|波蘭文 | `pl` |✔ |
-|葡萄牙文 | `pt` |✔ |
-|羅馬尼亞文 | `ro` |✔ |
-|俄文 | `ru` |✔ |
-|塞爾維亞文 (斯拉夫) | `sr-Cyrl` |✔ |
-|塞爾維亞文 (拉丁) | `sr-Latn` |✔ |
-|斯洛伐克文 | `sk` |✔ |
-|西班牙文 | `es` |✔ |
-|瑞典文 | `sw` |✔ |
-|土耳其文 | `tr` |✔ |
+|語言| 語言代碼 | OCR API | 讀取 API |
+|:-----|:----:|:-----:|:---:|
+|阿拉伯文 | `ar`|✔ | |
+|簡體中文 | `zh-Hans`|✔ | |
+|繁體中文 | `zh-Hant`|✔ | |
+|捷克文 | `cs` |✔ | |
+|丹麥文 | `da` |✔ | |
+|荷蘭文 | `nl` |✔ |✔ |
+|英文 | `en` |✔ |✔ |
+|芬蘭文 | `fi` |✔ | |
+|法文 | `fr` |✔ |✔ |
+|德文 | `de` |✔ |✔ |
+|希臘文 | `el` |✔ | |
+|匈牙利文 | `hu` |✔ | |
+|義大利文 | `it` |✔ |✔ |
+|日文 | `ja` |✔ | |
+|韓文 | `ko` |✔ | |
+|挪威文 | `nb` |✔ | |
+|波蘭文 | `pl` |✔ | |
+|葡萄牙文 | `pt` |✔ |✔ |
+|羅馬尼亞文 | `ro` |✔ | |
+|俄文 | `ru` |✔ | |
+|塞爾維亞文 (斯拉夫) | `sr-Cyrl` |✔ | |
+|塞爾維亞文 (拉丁) | `sr-Latn` |✔ | |
+|斯洛伐克文 | `sk` |✔ | |
+|西班牙文 | `es` |✔ |✔ |
+|瑞典文 | `sw` |✔ | |
+|土耳其文 | `tr` |✔ | |
 
 ## <a name="image-analysis"></a>影像分析
 
-[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以`language`查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用`visualFeatures`和`details`查詢參數所指定;請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
+[分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以 `language` 查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數所指定; 請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | Tags | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|語言 | 語言代碼 | 類別 | 標籤 | 描述 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

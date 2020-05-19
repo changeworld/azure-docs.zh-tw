@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836602"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588678"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>自訂翻譯常見問題
 
@@ -41,7 +41,7 @@ ms.locfileid: "73836602"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>如何存取已部署的系統？
 
-已部署的系統可透過 Microsoft Translator Text API V3 (藉由指定 CategoryID) 來存取。 如需翻譯工具文字 API 的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
+您可以藉由指定 [類別]，透過 Microsoft Translator V3 來存取已部署的系統。 如需翻譯的詳細資訊，請參閱[API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的資料已將句子對齊，如何略過對齊和斷句？
 

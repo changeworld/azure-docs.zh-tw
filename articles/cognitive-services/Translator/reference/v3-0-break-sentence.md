@@ -1,7 +1,7 @@
 ---
-title: 翻譯工具文字 API BreakSentence 方法
+title: Translator BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 翻譯工具文字 API BreakSentence 方法會識別句子界限在一段文字中的位置。
+description: Translator BreakSentence 方法會識別句子界限在一段文字中的位置。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548113"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588627"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>翻譯工具文字 API 3.0：BreakSentence
+# <a name="translator-30-breaksentence"></a>Translator 3.0： BreakSentence
 
 識別句子界限在一段文字裡的位置。
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 要求標頭包括：
 
-| headers | 描述 |
+| 標題 | 描述 |
 | ------- | ----------- |
 | 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
 | Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
@@ -65,7 +65,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 * 要求中包含的完整文字不能超過 50,000 個字元，包括空格。
 * 如果指定 `language` 查詢參數，則所有陣列項目必須都是相同的語言。 否則，語言自動偵測會個別套用至每個陣列項目。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 成功的回應是輸入陣列的每個字串各有一個結果的 JSON 陣列。 結果物件包含下列屬性：
 
@@ -96,7 +96,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ## <a name="response-headers"></a>回應標頭
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>X-RequestId</td>
@@ -117,7 +117,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
+    <td>其中一個查詢參數遺失或無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>401</td>
@@ -141,7 +141,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 [v3 翻譯工具文字 API 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上可找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
 
 ## <a name="examples"></a>範例
 

@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695158"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588899"
 ---
-# <a name="composite-entity"></a>複合實體 
+# <a name="composite-entity"></a>複合實體
 
-複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。 
+複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
+
+> [!CAUTION]
+> 這個實體已被**取代**。 請遷移至[機器學習的實體](reference-entity-machine-learned-entity.md)。
 
 **當資料有下列特性時，最適用此實體：**
 
-* 彼此相關。 
+* 彼此相關。
 * 在語句的內容中彼此相關。
 * 使用各種實體類型。
 * 需要由用戶端應用程式當作一個資訊單位進行分組和處理。
@@ -33,7 +36,7 @@ ms.locfileid: "71695158"
 
 ## <a name="example-json"></a>範例 JSON
 
-請考慮使用預建`number`和`Location::ToLocation`下列語句的複合實體：
+請考慮使用預建 `number` 和下列語句的複合實體 `Location::ToLocation` ：
 
 `book 2 tickets to cairo`
 
@@ -87,11 +90,11 @@ ms.locfileid: "71695158"
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果`verbose=false`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -108,7 +111,7 @@ ms.locfileid: "71695158"
 }
 ```
 
-如果`verbose=true`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=true` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -169,7 +172,7 @@ ms.locfileid: "71695158"
 }
 ```
 
-* * * 
+* * *
 
 
 |資料物件|實體名稱|值|
@@ -179,4 +182,7 @@ ms.locfileid: "71695158"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本[教學](luis-tutorial-composite-entity.md)課程中，新增**複合實體**以將各種類型的已解壓縮資料組合成單一包含實體。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。
+深入瞭解實體：
+
+* [概念](luis-concept-entity-types.md)
+* [如何建立](luis-how-to-add-entities.md)

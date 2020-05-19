@@ -2,13 +2,13 @@
 title: 列出實體類型-LUIS
 description: 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用建議功能，以根據目前的清單查看適用於新字組的建議。
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097569"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588882"
 ---
 # <a name="list-entity"></a>清單實體
 
@@ -84,7 +84,7 @@ ms.locfileid: "82097569"
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 
-如果`verbose=false`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ ms.locfileid: "82097569"
 }
 ```
 
-如果`verbose=true`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=true` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -132,4 +132,7 @@ ms.locfileid: "82097569"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本[教學](tutorial-list-entity.md)課程中，您將瞭解如何使用**清單實體**，從已知專案清單中解壓縮完全相符的文字。
+深入瞭解實體：
+
+* [概念](luis-concept-entity-types.md)
+* [如何建立](luis-how-to-add-entities.md)

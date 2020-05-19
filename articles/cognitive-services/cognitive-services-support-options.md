@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258418"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590531"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 認知服務支援和意見反應選項
 
@@ -28,7 +28,7 @@ ms.locfileid: "81258418"
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
-探索 [Azure 支援選項](https://azure.microsoft.com/support/plans)的範圍，而且無論您是剛開始開發人員雲端旅程的開發人員，或是部署商務關鍵性、策略性應用程式的大型組織，都能選出最適合的方案。 Azure 客戶可以在 Azure 入口網站中建立和管理支援要求。
+探索 Azure 支援選項的範圍，[並選擇](https://azure.microsoft.com/support/plans)最適合的方案，不論您是剛開始雲端旅程的開發人員，或是部署商務關鍵性、策略性應用程式的大型組織。 Azure 客戶可以在 Azure 入口網站中建立和管理支援要求。
 
 * [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [美國政府的 Azure 入口網站](https://portal.azure.us)
@@ -39,13 +39,13 @@ ms.locfileid: "81258418"
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
 </div>
 
-為獲得更快的結果，請搜尋相關網站，例如[Stack Overflow](https://stackoverflow.com/)、 [Microsoft](https://docs.microsoft.com/azure/cognitive-services/)檔或[GitHub 程式碼範例](https://github.com/azure-samples)。 在您`site:` [慣用的搜尋引擎](https://bing.com)中使用查詢標記法，例如：
+為獲得更快的結果，請搜尋相關網站，例如[Stack Overflow](https://stackoverflow.com/)、 [Microsoft](https://docs.microsoft.com/azure/cognitive-services/)檔或[GitHub 程式碼範例](https://github.com/azure-samples)。 `site:`在您[慣用的搜尋引擎](https://bing.com)中使用查詢標記法，例如：
 
 ```
 {search keywords} site:stackoverflow.com
 ```
 
-其中`{search keywords}`是您搜尋的內容。 請考慮適當地使用這些限定範圍的搜尋：
+其中 `{search keywords}` 是您搜尋的內容。 請考慮適當地使用這些限定範圍的搜尋：
 
  - Stack Overflow：`site:stackoverflow.com`
  - Microsoft Docs：`site:docs.microsoft.com`
@@ -84,7 +84,7 @@ ms.locfileid: "81258418"
  - [語音服務](speech-service/releasenotes.md)
  - [語音服務 SDK](speech-service/devices-sdk-release-notes.md)
  - [文字分析](text-analytics/whats-new.md)
- - [影片索引子](../media-services/video-indexer/release-notes.md)
+ - [影片索引器](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure 部落格
 
@@ -116,12 +116,12 @@ Reddit 是一個由社區驅動的討論網站，提供關於[Azure 認知服務
 > 雖然這是公開的論壇，但此處並不期待 Microsoft 提供支援，但要討論您想要在即將推出的認知服務版本中看到的新功能。
 
 
-| Service                       | 認知服務 UserVoice URL |
+| 服務                       | 認知服務 UserVoice URL |
 |-------------------------------|---------------|
-| 異常偵測器              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
+| Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Bing 服務                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | 電腦視覺               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| 內容仲裁             | https://cognitive.uservoice.com/forums/559960-content-moderator |
+| 內容仲裁者             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | 自訂視覺                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | 臉部                          | https://cognitive.uservoice.com/forums/430315-face |
 | 表單辨識器               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
@@ -132,8 +132,8 @@ Reddit 是一個由社區驅動的討論網站，提供關於[Azure 認知服務
 | 語音服務               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | 客製化的語音                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | 文字分析                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| 翻譯文字               | https://cognitive.uservoice.com/forums/558796-translator |
-| 影片索引子                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| 影片索引器                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>報告錯誤
 

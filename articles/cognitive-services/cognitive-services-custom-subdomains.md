@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647683"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590633"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>認知服務的自訂子功能變數名稱稱
 
@@ -34,7 +34,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>我是否需要更新現有的資源？
 
-否。 區域端點將繼續適用于新的和現有的認知服務，而自訂子功能變數名稱稱則是選擇性的。 即使新增了自訂子功能變數名稱稱，區域端點仍會繼續使用資源。
+不會。 區域端點將繼續適用于新的和現有的認知服務，而自訂子功能變數名稱稱則是選擇性的。 即使新增了自訂子功能變數名稱稱，區域端點仍會繼續使用資源。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>如果 SDK 向我詢問資源的區域，該怎麼做？
 
@@ -51,11 +51,11 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>自訂子功能變數名稱稱的需求為何？
 
-自訂子功能變數名稱稱對於您的資源而言是唯一的。 名稱只能包含英數位元和`-`字元。其長度必須介於2到64個字元之間，且不能以`-`結尾。
+自訂子功能變數名稱稱對於您的資源而言是唯一的。 名稱只可包含英數位元和 `-` 字元; 長度必須介於2到64個字元之間，且結尾不能是 `-` 。
 
 ## <a name="can-i-change-a-custom-domain-name"></a>我可以變更自訂功能變數名稱嗎？
 
-否。 建立自訂子功能變數名稱稱並與資源相關聯之後，就無法變更它。
+不會。 建立自訂子功能變數名稱稱並與資源相關聯之後，就無法變更它。
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>我可以重複使用自訂功能變數名稱嗎？
 
@@ -66,11 +66,11 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 是。 這是您可以搭配 Azure 認知服務資源使用的區域端點清單。
 
 > [!NOTE]
-> 翻譯工具文字 API 和 Bing 搜尋 Api 會使用全域端點。
+> Translator 服務和 Bing 搜尋 Api 會使用全域端點。
 
 | 端點類型 | 區域 | 端點 |
 |---------------|--------|----------|
-| 公用 | 全域（翻譯工具文字 & Bing） | `https://api.cognitive.microsoft.com` |
+| 公用 | 全域（Translator & Bing） | `https://api.cognitive.microsoft.com` |
 | | 澳大利亞東部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | 巴西南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | 加拿大中部 | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 | 中國 | 中國東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中國北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [認知服務是什麼？](Welcome.md)
 * [驗證](authentication.md)

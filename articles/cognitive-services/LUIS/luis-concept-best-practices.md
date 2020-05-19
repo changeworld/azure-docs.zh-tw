@@ -2,14 +2,14 @@
 title: 建立 LUIS 應用程式的最佳作法
 description: 瞭解最佳作法，以取得 LUIS 應用程式模型的最佳結果。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382395"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589800"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>建立語言理解（LUIS）應用程式的最佳作法
 使用應用程式撰寫流程來建立 LUIS 應用程式：
@@ -29,13 +29,13 @@ ms.locfileid: "81382395"
 ## <a name="do-and-dont"></a>建議事項和避免事項
 以下清單包含 LUIS 應用程式的最佳做法：
 
-|要做的事|不要做的事|
+|可行事項|禁止事項|
 |--|--|
-|[定義不同的意圖](#do-define-distinct-intents)<br>[將描述項新增至意圖](#do-add-descriptors-to-intents) |[將許多範例語句新增至意圖](#dont-add-many-example-utterances-to-intents)<br>[使用幾個或簡單的實體](#dont-use-few-or-simple-entities) |
+|[定義不同的意圖](#do-define-distinct-intents)<br>[將功能新增至意圖](#do-add-features-to-intents) |[將許多範例語句新增至意圖](#dont-add-many-example-utterances-to-intents)<br>[使用幾個或簡單的實體](#dont-use-few-or-simple-entities) |
 |[找出每個意圖的太攏統與太特定之間的最佳點](#do-find-sweet-spot-for-intents)|[使用 LUIS 作為定型平台](#dont-use-luis-as-a-training-platform)|
 |[使用版本反復組建您的應用程式](#do-build-your-app-iteratively-with-versions)<br>[模型分解的組建實體](#do-build-for-model-decomposition)|[新增許多相同格式的範例語句而忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[在稍後的反復專案中新增模式](#do-add-patterns-in-later-iterations)|[混合意圖和實體的定義](#dont-mix-the-definition-of-intents-and-entities)|
-|[讓您的語句在所有意圖之間達到平衡](#balance-your-utterances-across-all-intents)，除了 None 意圖之外。<br>[將範例語句新增至 None 意圖](#do-add-example-utterances-to-none-intent)|[建立具有所有可能值的描述項](#dont-create-descriptors-with-all-the-possible-values)|
+|[讓您的語句在所有意圖之間達到平衡](#balance-your-utterances-across-all-intents)，除了 None 意圖之外。<br>[將範例語句新增至 None 意圖](#do-add-example-utterances-to-none-intent)|[建立含有所有可能值的片語清單](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[利用主動式學習的建議功能](#do-leverage-the-suggest-feature-for-active-learning)|[新增太多模式](#dont-add-many-patterns)|
 |[使用批次測試來監視應用程式的效能](#do-monitor-the-performance-of-your-app)|[新增每一個範例語句都進行定型和發佈](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -51,11 +51,11 @@ ms.locfileid: "81382395"
 |預訂班機|
 |預訂飯店|
 
-`Book a flight`和`Book a hotel`使用相同的`book a `詞彙。 這種格式是相同的，因此它應該是與不同單字`flight`和`hotel`已解壓縮實體相同的意圖。
+`Book a flight`和 `Book a hotel` 使用相同的詞彙 `book a ` 。 這種格式是相同的，因此它應該是與不同單字和已解壓縮實體相同的意圖 `flight` `hotel` 。
 
-## <a name="do-add-descriptors-to-intents"></a>將描述項新增至意圖
+## <a name="do-add-features-to-intents"></a>將功能新增至意圖
 
-描述項有助於說明意圖的功能。 描述項可以是對該意圖而言非常重要的單字片語清單，或是對該意圖很重要的實體。
+功能會描述意圖的概念。 功能可以是對該意圖而言非常重要的單字片語清單，或是對該意圖非常重要的實體。
 
 ## <a name="do-find-sweet-spot-for-intents"></a>請務必找出意圖的最佳點
 請使用來自 LUIS 的預測資料來判斷您的意圖是否重疊。 重疊的意圖會混淆 LUIS。 結果會造成最高分的意圖太接近另一個意圖。 由於 LUIS 不會每次都使用完全相同的資料路徑來進行定型，因此重疊的意圖有可能在定型中成為第一或第二。 您會希望每個意圖的語句分數都儘量拉開，以便避免發生這類不確定情況。 良好的意圖區別應該每次都產生預期的最高分意圖。
@@ -73,17 +73,22 @@ ms.locfileid: "81382395"
 * 根據用戶端應用程式的使用者意圖建立**意圖**
 * 根據真實世界使用者輸入新增15-30 範例語句
 * 在範例語句中標記最上層資料概念
-* 將資料概念分成子元件
-* 將描述項（功能）新增至子元件
-* 將描述項（功能）新增至意圖
+* 將資料概念分解成子實體
+* 將功能新增至子實體
+* 將功能新增至意圖
 
 當您建立意圖並新增範例語句之後，下列範例會說明實體分解。
 
-一開始先找出您想要在語句中解壓縮的完整資料概念。 這是您機器學習的實體。 然後將片語分解成其部分。 這包括識別子元件（做為實體），以及描述項和條件約束。
+一開始先找出您想要在語句中解壓縮的完整資料概念。 這是您機器學習的實體。 然後將片語分解成其部分。 這包括識別子實體和功能。
 
-例如，如果您想要將位址解壓縮，可以呼叫`Address`最上層機器學習的實體。 建立位址時，請識別其部分子元件，例如街道位址、城市、州和郵遞區號。
+例如，如果您想要將位址解壓縮，可以呼叫最上層機器學習的實體 `Address` 。 建立位址時，請識別其部分子實體，例如街道位址、城市、州和郵遞區號。
 
-藉由將郵遞區號**限制**為正則運算式，繼續分解這些元素。 將街道位址分解成街道號碼的幾個部分（使用預先建立的號碼）、街道名稱和街道類型。 街道類型可**與描述項清單（** 例如，路、圓形、道路和 lane）一併說明。
+繼續分解這些元素的方式：
+* 將郵遞區號的必要功能加入為正則運算式實體。
+* 將街道位址分解成幾個部分：
+    * 具有編號預建實體之必要功能的**街道號碼**。
+    * **街道名稱**。
+    * 具有清單實體之必要功能的**街道類型**，包括管道、圓形、道路和通道等文字。
 
 V3 撰寫 API 允許模型分解。
 
@@ -145,9 +150,9 @@ LUIS 會預期意圖的語句中有所變化。 語句可以在改變的同時�
 
 若為將會預訂航班的 bot，請建立**BookFlight**意圖。 請勿為每個航空公司或每個目的地都建立意圖。 請使用這些資料片段作為[實體](luis-concept-entity-types.md)，然後在範例語句中標示它們。
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>請勿建立具有所有可能值的描述項
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>請勿建立含有所有可能值的片語清單
 
-提供描述項[片語清單](luis-concept-feature.md)中的幾個範例，而不是每個字組。 LUIS 會將內容一般化並納入考量。
+在[片語清單](luis-concept-feature.md)中提供一些範例，而不是每個單字或片語。 LUIS 會將內容一般化並納入考量。
 
 ## <a name="dont-add-many-patterns"></a>請勿新增許多模式
 

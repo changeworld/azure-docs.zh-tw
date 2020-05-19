@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: fa25d27e99a9516d461a84dde184e2a6412baa0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40906c97dc088687bbd960fecc91921a3eb888a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875028"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589953"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>安裝和執行異常偵測器容器（預覽）
 
@@ -42,14 +42,6 @@ ms.locfileid: "80875028"
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
-
-您必須先完成並提交異常偵測器[容器要求表單](https://aka.ms/adcontainer)，以要求容器的存取權。
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
-
 ## <a name="the-host-computer"></a>主機電腦
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
@@ -60,7 +52,7 @@ ms.locfileid: "80875028"
 
 下表描述要針對異常偵測器容器配置的最低和建議 CPU 核心和記憶體。
 
-| QPS （每秒查詢數） | 最小值 | 建議 |
+| QPS （每秒查詢數） | 最低需求 | 建議 |
 |-----------|---------|-------------|
 | 10 QPS | 4核心，1 GB 記憶體 | 8核心 2 GB 記憶體 |
 | 20 QPS | 8核心，2 GB 記憶體 | 16核心 4 GB 記憶體 |
@@ -71,11 +63,11 @@ ms.locfileid: "80875028"
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 取得容器映像
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令下載容器映射。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下載容器映射。
 
 | 容器 | Repository |
 |-----------|------------|
-| 認知服務-異常-偵測器 | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
+| 認知服務-異常-偵測器 | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -85,7 +77,7 @@ For a full description of available tags, such as `latest` used in the preceding
 ### <a name="docker-pull-for-the-anomaly-detector-container"></a>異常偵測器容器的 Docker pull
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
@@ -97,13 +89,13 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得`{ENDPOINT_URI}`和`{API_KEY}`值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
-命令的範例可供使用。 [Examples](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run`
+[Examples](anomaly-detector-container-configuration.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -180,7 +172,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解下載、安裝及執行異常偵測器容器的概念和工作流程。 摘要說明：
 

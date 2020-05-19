@@ -1,7 +1,7 @@
 ---
-title: 翻譯工具文字 API 語言方法
+title: 翻譯工具語言方法
 titleSuffix: Azure Cognitive Services
-description: 語言方法會取得翻譯工具文字 API 的其他作業目前支援的語言集合。
+description: 語言方法會取得翻譯工具的其他作業目前支援的語言集合。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73835839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588593"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0：語言
+# <a name="translator-30-languages"></a>翻譯工具3.0：語言
 
-取得翻譯工具文字 API 其他作業目前支援的語言集合。 
+取得 Translator 的其他作業目前支援的語言集合。 
 
 ## <a name="request-url"></a>要求 URL
 
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 要求標頭為：
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
@@ -63,7 +63,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 不需要驗證便能取得語言資源。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 用戶端使用 `scope` 查詢參數來定義其感興趣的語言群組。
 
@@ -229,7 +229,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ## <a name="response-headers"></a>回應標頭
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>ETag</td>
@@ -259,7 +259,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
+    <td>其中一個查詢參數遺失或無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>429</td>
@@ -275,7 +275,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 [v3 翻譯工具文字 API 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上可找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
 
 ## <a name="examples"></a>範例
 

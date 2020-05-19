@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202082"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588329"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -42,9 +42,9 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 以下所列認知服務的虛擬網路支援僅限於*美國中部 EUAP*、美國*中南部*、美國*東部*、*美國西部 2*、*歐洲北部*、*南非北部*、*西歐*、*印度中部*、*澳大利亞東部*、*美國西部*和*US Gov 維吉尼亞州*Azure 區域。 如果此處未列出服務供應專案，則不支援虛擬網路。
 
 > [!div class="checklist"]
-> * [異常偵測器](./anomaly-detector/index.yml)
+> * [Anomaly Detector](./anomaly-detector/index.yml)
 > * [電腦視覺](./computer-vision/index.yml)
-> * [內容仲裁](./content-moderator/index.yml)
+> * [內容仲裁者](./content-moderator/index.yml)
 > * [自訂視覺](./custom-vision-service/index.yml)
 > * [臉部](./face/index.yml)
 > * [表單辨識器](./form-recognizer/index.yml)
@@ -55,14 +55,14 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 以下所列認知服務的虛擬網路支援僅限於*美國中部 EUAP*、美國*中南部*、*美國東部*、*美國西部 2*、*全球*和*US Gov 維吉尼亞州*Azure 區域。
 > [!div class="checklist"]
-> * [翻譯文字](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [翻譯工具文字](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>服務標籤
 除了支援上述服務的虛擬網路服務端點之外，認知服務也支援輸出網路規則設定的服務標記。 下列服務會包含在 CognitiveServicesManagement 服務標記中。
 > [!div class="checklist"]
-> * [異常偵測器](./anomaly-detector/index.yml)
+> * [Anomaly Detector](./anomaly-detector/index.yml)
 > * [電腦視覺](./computer-vision/index.yml)
-> * [內容仲裁](./content-moderator/index.yml)
+> * [內容仲裁者](./content-moderator/index.yml)
 > * [自訂視覺](./custom-vision-service/index.yml)
 > * [臉部](./face/index.yml)
 > * [表單辨識器](./form-recognizer/index.yml)
@@ -70,7 +70,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 > * [個人化工具](./personalizer/index.yml)
 > * [文字分析](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [翻譯文字](./translator/index.yml)
+> * [Translator](./translator/index.yml)
 > * [語音服務](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>變更預設的網路存取規則
