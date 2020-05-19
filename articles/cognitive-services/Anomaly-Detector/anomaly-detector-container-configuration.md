@@ -1,25 +1,25 @@
 ---
 title: 如何設定異常偵測器 API 的容器
 titleSuffix: Azure Cognitive Services
-description: 異常偵測器 API 容器執行時間環境是使用`docker run`命令引數來設定。 此容器有數個必要的設定，和一些選擇性的設定。
+description: 異常偵測器 API 容器執行時間環境是使用 `docker run` 命令引數來設定。 此容器有數個必要的設定，和一些選擇性的設定。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 569499002c5e047d7030575342790e9a074b9404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875175"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593302"
 ---
 # <a name="configure-anomaly-detector-containers"></a>設定異常偵測器容器
 
-**異常**偵測器容器執行時間環境是使用`docker run`命令引數來設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
+**異常**偵測器容器執行時間環境是使用 `docker run` 命令引數來設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
 
 ## <a name="configuration-settings"></a>組態設定
 
@@ -37,11 +37,11 @@ ms.locfileid: "80875175"
 |否|[Mounts](#mount-settings)|從主機電腦將資料讀取和寫入至容器，以及從容器將資料讀取和寫回主機電腦。|
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、 [`Billing`](#billing-configuration-setting)和[`Eula`](#eula-setting)設定會一起使用，而且您必須為其中三個提供有效的值;否則，您的容器將不會啟動。 如需使用這些組態設定來將容器具現化的詳細資訊，請參閱[帳單](anomaly-detector-container-howto.md#billing)。
+> [`ApiKey`](#apikey-configuration-setting)、和 [`Billing`](#billing-configuration-setting) [`Eula`](#eula-setting) 設定會一起使用，而且您必須為其中三個提供有效的值，否則您的容器將不會啟動。 如需使用這些組態設定來將容器具現化的詳細資訊，請參閱[帳單](anomaly-detector-container-howto.md#billing)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 組態設定
 
-`ApiKey` 設定會指定用來追蹤容器帳單資訊的 Azure資源金鑰。 您必須指定 ApiKey 的值，且值必須是針對設定所指定[`Billing`](#billing-configuration-setting)之_異常_偵測器資源的有效索引鍵。
+`ApiKey` 設定會指定用來追蹤容器帳單資訊的 Azure資源金鑰。 您必須指定 ApiKey 的值，且值必須是針對設定所指定之_異常_偵測器資源的有效索引鍵 [`Billing`](#billing-configuration-setting) 。
 
 此設定可在下列位置找到：
 
@@ -90,22 +90,22 @@ ms.locfileid: "80875175"
 
 |選擇性| Name | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
-|不允許| `Input` | 字串 | 異常偵測器容器不會使用此。|
-|選擇性| `Output` | 字串 | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允許| `Input` | String | 異常偵測器容器不會使用此。|
+|選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令 
 
 下列範例會使用組態設定來說明如何撰寫和使用 `docker run` 命令。  開始執行後，容器就會持續執行，直到您加以[停止](anomaly-detector-container-howto.md#stop-the-container)。
 
-* **行接續字元**：下列各節中的 Docker 命令會使用反斜線`\`作為 bash shell 的行接續字元。 請根據您主機作業系統的需求加以替換或移除。 例如，適用於 Windows 的行接續字元是插入號 `^`。 以插入號取代反斜線。 
+* **行接續字元**：下列各節中的 Docker 命令會使用反斜線 `\` 作為 bash shell 的行接續字元。 請根據您主機作業系統的需求加以替換或移除。 例如，適用於 Windows 的行接續字元是插入號 `^`。 以插入號取代反斜線。 
 * **引數順序**：除非您非常熟悉 Docker 容器，否則請勿變更引數的順序。
 
-將括弧`{}`中的值取代為您自己的值：
+將括弧中的值取代 `{}` 為您自己的值：
 
 | 預留位置 | 值 | 格式或範例 |
 |-------------|-------|---|
-| **{API_KEY}** | [Azure `Anomaly Detector`金鑰] 頁面`Anomaly Detector`上資源的端點金鑰。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | 計費端點值可在 Azure `Anomaly Detector`總覽頁面上取得。| 如需明確的範例，請參閱[收集必要的參數](anomaly-detector-container-howto.md#gathering-required-parameters)。 |
+| **{API_KEY}** | [ `Anomaly Detector` Azure 金鑰] 頁面上資源的端點金鑰 `Anomaly Detector` 。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 計費端點值可在 Azure `Anomaly Detector` 總覽頁面上取得。| 如需明確的範例，請參閱[收集必要的參數](anomaly-detector-container-howto.md#gathering-required-parameters)。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -121,7 +121,7 @@ ms.locfileid: "80875175"
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ ms.locfileid: "80875175"
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

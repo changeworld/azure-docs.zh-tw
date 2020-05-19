@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879338"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593322"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 
@@ -68,7 +68,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令下載容器映射。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下載容器映射。
 
 ### <a name="docker-pull-for-the-read-container"></a>讀取容器的 Docker pull
 
@@ -87,9 +87,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得`{ENDPOINT_URI}`和`{API_KEY}`值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
-命令的範例可供使用。 [Examples](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run`
+[Examples](computer-vision-resource-container-config.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -125,13 +125,13 @@ ApiKey={API_KEY}
 
 ### <a name="asynchronous-read"></a>非同步讀取
 
-您可以使用`POST /vision/v2.0/read/core/asyncBatchAnalyze`和`GET /vision/v2.0/read/operations/{operationId}`作業，以非同步方式讀取影像，類似于電腦視覺服務使用這些對應 REST 作業的方式。 非同步 POST 方法會傳回`operationId` ，做為 HTTP GET 要求的識別碼使用。
+您可以使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 作業，以非同步方式讀取影像，類似于電腦視覺服務使用這些對應 REST 作業的方式。 非同步 POST 方法會傳回，做為 `operationId` HTTP GET 要求的識別碼使用。
 
-從 swagger UI 中，選取`asyncBatchAnalyze`以在瀏覽器中展開。 然後選取 [**試試** > 看]**[選擇**檔案]。 在此範例中，我們將使用下列影像：
+從 swagger UI 中，選取 `asyncBatchAnalyze` 以在瀏覽器中展開。 然後選取 [**試試**看]  >  **[選擇**檔案]。 在此範例中，我們將使用下列影像：
 
 ![索引標籤與空格](media/tabs-vs-spaces.png)
 
-當非同步 POST 順利執行時，它會傳回**HTTP 202**狀態碼。 作為回應的一部分，有一個`operation-location`標頭會保存要求的結果端點。
+當非同步 POST 順利執行時，它會傳回**HTTP 202**狀態碼。 作為回應的一部分，有一個 `operation-location` 標頭會保存要求的結果端點。
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ ApiKey={API_KEY}
  server: Kestrel
 ```
 
-`operation-location`是完整的 URL，並可透過 HTTP GET 來存取。 以下是從上一個影像執行`operation-location` URL 的 JSON 回應：
+`operation-location`是完整的 URL，並可透過 HTTP GET 來存取。 以下是從 `operation-location` 上一個影像執行 URL 的 JSON 回應：
 
 ```json
 {
@@ -186,7 +186,7 @@ ApiKey={API_KEY}
 
 ### <a name="synchronous-read"></a>同步讀取
 
-您可以使用`POST /vision/v2.0/read/core/Analyze`作業來同步讀取影像。 當影像完整讀取時，只有，API 才會傳回 JSON 回應。 唯一的例外狀況是如果發生錯誤。 當發生錯誤時，會傳回下列 JSON：
+您可以使用作業 `POST /vision/v2.0/read/core/Analyze` 來同步讀取影像。 當影像完整讀取時，只有，API 才會傳回 JSON 回應。 唯一的例外狀況是如果發生錯誤。 當發生錯誤時，會傳回下列 JSON：
 
 ```json
 {
@@ -194,7 +194,7 @@ ApiKey={API_KEY}
 }
 ```
 
-JSON 回應物件與非同步版本具有相同的物件圖形。 如果您是 JavaScript 使用者，而且想要型別安全，可以使用下列類型，將 JSON 回應轉換為`AnalyzeResult`物件。
+JSON 回應物件與非同步版本具有相同的物件圖形。 如果您是 JavaScript 使用者，而且想要型別安全，可以使用下列類型，將 JSON 回應轉換為 `AnalyzeResult` 物件。
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,7 +241,7 @@ export interface Word {
 }
 ```
 
-如需範例使用案例，請參閱<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">這裡<span class="docon docon-navigate-external x-hidden-focus"></span>的 TypeScript 沙箱</a>，然後選取 [**執行**] 以視覺化其便於使用。
+如需範例使用案例，請參閱<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">這裡 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 TypeScript 沙箱</a>，然後選取 [**執行**] 以視覺化其便於使用。
 
 ## <a name="stop-the-container"></a>停止容器
 
@@ -265,7 +265,7 @@ export interface Word {
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行電腦視覺容器的概念和工作流程。 摘要說明：
 
