@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221241"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587221"
 ---
 # <a name="how-to-manage-settings"></a>如何管理設定
 
@@ -29,11 +29,11 @@ ms.locfileid: "79221241"
 
 ## <a name="associating-microsoft-translator-subscription"></a>建立 Microsoft Translator 訂用帳戶的關聯
 
-您必須要有與工作區相關聯的 Microsoft Translator Text API 訂用帳戶金鑰，才能定型或部署模型。
+您需要有與工作區相關聯的 Translator 訂用帳戶金鑰，才能定型或部署模型。
 
 如果您沒有訂用帳戶，請遵循下列步驟：
 
-1. 訂閱 Microsoft Translator Text API。 本文說明如何訂閱 Microsoft Translator Text API。
+1. 訂閱翻譯工具。 本文說明如何訂閱翻譯工具。
 2. 記下翻譯工具訂用帳戶的金鑰。 可用的值為 Key1 或 Key2。
 3. 瀏覽回自訂翻譯工具入口網站。
 

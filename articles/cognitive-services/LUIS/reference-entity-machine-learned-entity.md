@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551993"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585584"
 ---
 # <a name="machine-learned-entity"></a>已採用機器學習的實體
 
@@ -38,13 +38,13 @@ ms.locfileid: "75551993"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-因為機器學習的實體可以有許多具有條件約束和描述項的子元件，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
+因為機器學習的實體可以有許多具有必要功能的子實體，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
 
 請考慮下列查詢：
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-如果`verbose=false`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ ms.locfileid: "75551993"
 
 ```
 
-如果`verbose=true`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=true` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {

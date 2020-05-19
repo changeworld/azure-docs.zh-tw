@@ -4,19 +4,19 @@ description: 建立實體以從 Language Understanding （LUIS）應用程式中
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382153"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585567"
 ---
 # <a name="pattern-syntax"></a>模式語法
 
 模式語法是語句的範本。 範本應該包含您想要比對的單字和實體，以及您想要忽略的單字和[標點符號](luis-reference-application-settings.md#punctuation-normalization)。 它**不是**一個規則運算式。
 
 > [!CAUTION]
-> 模式只包含機器學習的實體父系，而非子元件。
+> 模式只包含機器學習的實體父系，而不是子實體。
 
 模式中的實體是用大括弧 `{}` 括住。 模式可以包含實體，以及具有角色的實體。 [Pattern。 any](luis-concept-entity-types.md#patternany-entity)是僅用於模式的實體。
 
@@ -117,7 +117,7 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|
 
-在上表中，主旨應該是`the man from La Mancha` （書籍標題），但因為主旨包含選擇性的單字`from`，所以不會正確預測標題。
+在上表中，主旨應該是 `the man from La Mancha` （書籍標題），但因為主旨包含選擇性的單字，所以不 `from` 會正確預測標題。
 
 若要修正模式的這個例外狀況，請使用[撰寫明確清單的 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，新增 `the man from la mancha` 作為符合 {subject} 實體的明確清單。
 
@@ -126,10 +126,10 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 
 |模式與選用文字|意義|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`和`from {person}`是選擇性的|
+|`[find] email about {subject} [from {person}]`|`find`和 `from {person}` 是選擇性的|
 |' 可以協助我 [？]|標點符號是選擇性的|
 
-應該忽略標點符號`?`（ `!`、 `.`、），而且您必須在模式中使用方括弧語法來忽略它們。
+`?`應該忽略標點符號（、 `!` 、 `.` ），而且您必須在模式中使用方括弧語法來忽略它們。
 
 ## <a name="next-steps"></a>後續步驟
 

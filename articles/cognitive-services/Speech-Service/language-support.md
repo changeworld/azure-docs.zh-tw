@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587369"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -24,7 +24,7 @@ ms.locfileid: "82113828"
 
 ## <a name="speech-to-text"></a>語音轉文字
 
-Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 若要改善正確性，請透過上傳音訊 + 人為標記的文字記錄或相關文字：句子，提供部分語言的自訂。 發音自訂目前僅適用于`en-US`和`de-DE`。 [在這裡](how-to-custom-speech.md)深入瞭解自訂。
+Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 若要改善正確性，請透過上傳音訊 + 人為標記的文字記錄或相關文字：句子，提供部分語言的自訂。 發音自訂目前僅適用于 `en-US` 和 `de-DE` 。 [在這裡](how-to-custom-speech.md)深入瞭解自訂。
 
 <!--
 To get the AM and ML bits:
@@ -34,7 +34,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Locale  | Language                          | 支援 | 自訂                                    |
+| 地區設定  | 語言                          | 支援 | 自訂                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯文（阿拉伯聯合大公國）                      | 是       | 否                                                |
 | `ar-BH` | 阿拉伯文（巴林），現代化標準 | 是       | 語言模型                                    |
@@ -80,7 +80,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 ## <a name="text-to-speech"></a>文字轉換語音
 
-Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援地區設定所識別的特定語言和方言。
+Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援地區設定所識別的特定語言和方言。 您也可以透過[語音/清單 API](rest-text-to-speech.md#get-a-list-of-voices)，取得每個特定區域/端點所支援的語言和語音的完整清單。 
 
 > [!IMPORTANT]
 > 標準、自訂和神經語音的定價各不相同。 如需其他資訊，請瀏覽[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)頁面。
@@ -93,124 +93,139 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| Locale  | Language            | 性別 | 完整服務名稱對應                                               | 簡短的語音名稱        |
-|---------|---------------------|--------|-------------------------------------------------------------------------|-------------------------|
-| `de-DE` | 德文 (德國)    | Female | "Microsoft Server Speech 文字轉換語音 Voice （de，KatjaNeural）"     | "de-KatjaNeural"     |
-| `en-US` | 英文 (美國)        | Female | "Microsoft Server Speech 文字轉換語音 Voice （en-us，AriaNeural）"      | 「en-us-AriaNeural」      |
-| `en-US` | 英文 (美國)        | Male   | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)"       | 「en-us-GuyNeural」       |
-| `it-IT` | 義大利文 (義大利)     | Female | "Microsoft Server Speech 文字轉換語音 Voice （it-IT，ElsaNeural）"      | 「it-IT-ElsaNeural」      |
-| `pt-BR` | 葡萄牙文 (巴西) | Female | "Microsoft Server Speech 文字轉換語音 Voice （pt-BR，FranciscaNeural）" | "pt-BR-FranciscaNeural" |
-| `zh-CN` | 中文 (普通話，簡體)  | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"  | "zh-CN-XiaoxiaoNeural"  |
+|地區設定  | 語言            | 性別 | 語音名稱  | Bi 語言支援 | 樣式支援 |
+|--|--|--|--|--|--|
+| `de-DE` | 德文 (德國)    | Female | "de-KatjaNeural" | 是。 英文 (美國) | 一般 |
+| `en-AU` | 英文 (澳大利亞) | Female |  "en-us-NatashaNeural" | 否 | 一般 |
+| `en-CA` | 英文 (加拿大)    | Female |  「en-CA-ClaraNeural」| 否 | 一般 |
+| `en-GB` | 英文 (英國)        | Female |  "en-GB-LibbyNeural"| 否 | 一般 |
+|  |      | Female |  "en-GB-MiaNeural" | 否 | 一般 |
+| `en-US` | 英文 (美國)        | Female |  「en-us-AriaNeural」| 否 | 一般，可以使用多個語音樣式 |
+|  |      | Male   | 「en-us-GuyNeural」 | 否 | 一般 |
+| `es-ES` | 西班牙文 (西班牙)     | Female |  "es-ElviraNeural"| 是。 英文 (美國) | 一般 |
+| `es-MX` | 西班牙文 (墨西哥)    | Female |  "es-MX-DaliaNeural" | 是。 英文 (美國) | 一般 |
+| `fr-CA` | 法文 (加拿大)     | Female |  "fr-CA-SylvieNeural" | 是。 英文 (美國) | 一般 |
+| `fr-FR` | 法文 (法國)     | Female | "fr-fr-DeniseNeural"  | 是。 英文 (美國) | 一般 |
+| `it-IT` | 義大利文 (義大利)     | Female |  「it-IT-ElsaNeural」  | 是。 英文 (美國) | 一般 |
+| `ja-JP` | 日文            | Female |  "ja-jp-NanamiNeural" | 是。 英文 (美國) | 一般 |
+| `ko-KR` | 韓文              | Female |  "ko-KR-SunHiNeural" | 是。 英文 (美國) | 一般 |
+| `nb-NO` | 挪威文           | Female | 「nb-不 IselinNeural」 | 否 | 一般 |
+| `pt-BR` | 葡萄牙文 (巴西) | Female |  "pt-BR-FranciscaNeural" | 否 | 一般 |
+| `tr-TR` | 土耳其文             | Female | "tr-TR-EmelNeural" | 否 | 一般 |
+| `zh-CN` | 中文 (普通話，簡體)  | Female |  "zh-CN-XiaoxiaoNeural"  | 是。 英文 (美國) | 一般，可以使用多個語音樣式 |
+|  |  | Female |  "zh-CN-XiaoyouNeural"  | 是。 英文 (美國) | 兒童心聲，針對案例 narrating 優化 |
+|  |  | Male |  "zh-CN-YunyangNeural"  | 是。 英文 (美國) | 已針對新聞閱讀優化，提供多種語音樣式 |
+|  |  | Male |  "zh-CN-YunyeNeural"  | 否 | 已針對案例 narrating 優化 |
 
 > [!IMPORTANT]
-> `en-US-JessaNeural`語音已變更為`en-US-AriaNeural`。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
+> `en-US-JessaNeural`語音已變更為 `en-US-AriaNeural` 。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
 
 若要瞭解如何設定和調整類神經語音，請參閱[語音合成標記語言](speech-synthesis-markup.md#adjust-speaking-styles)。
 
 > [!TIP]
-> 您可以在語音合成要求中使用完整的服務名稱對應或簡短的語音名稱。
+> 您可以在語音合成要求中繼續使用完整的服務名稱對應，例如 "Microsoft Server Speech 文字轉換語音 Voice （en-us，AriaNeural）"。
 
 ### <a name="standard-voices"></a>標準語音
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| Locale | Language | 性別 | 完整服務名稱對應 | 簡短名稱 |
-|--|--|--|--|--|
-| <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-例如-Hoda" |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf" |
-| `bg-BG` | 保加利亞文 | Male | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan" |
-| `ca-ES` | 加泰蘭文 (西班牙) | Female | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | 「ca-ES-HerenaRUS」 |
-| `cs-CZ` | 捷克文 | Male | "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)" | "cs-CZ-Jakub" |
-| `da-DK` | 丹麥文 | Female | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)" | "da-深色-HelleRUS" |
-| `de-AT` | 德文 (奧地利) | Male | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)" | 「Michael」 |
-| `de-CH` | 德文 (瑞士) | Male | "Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)" | 「Karsten」 |
-| `de-DE` | 德文 (德國) | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)" | "de-Hedda" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)" | "de-HeddaRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)" | 「取消 Stefan-Apollo」 |
-| `el-GR` | 希臘文 | Male | "Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)" | "el-GR-Stefanos" |
-| `en-AU` | 英文 (澳大利亞) | Female | "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)" | "en-us-Catherine" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)" | "en-us-HayleyRUS" |
-| `en-CA` | 英文 (加拿大) | Female | "Microsoft Server Speech Text to Speech Voice (en-CA, Linda)" | 「en-CA-Linda」 |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (en-CA, HeatherRUS)" | 「en-CA-HeatherRUS」 |
-| `en-GB` | 英文 (英國) | Female | "Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)" | "en-us-Susan-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)" | "en-GB-HazelRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)" | "George-Apollo" |
-| `en-IE` | 英文 (愛爾蘭) | Male | "Microsoft Server Speech Text to Speech Voice (en-IE, Sean)" | 「en-IE-小紅」 |
-| `en-IN` | 英文 (印度) | Female | "Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)" | "en-us-Heera-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)" | 「PriyaRUS」 |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "en-us-Ravi-Apollo" |
-| `en-US` | 英文 (美國) | Female | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" | 「en-us-ZiraRUS」 |
-|  |  | Female | "Microsoft Server Speech 文字轉換語音 Voice （en-us，AriaRUS）" | 「en-us-AriaRUS」 |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)" | 「en-us-BenjaminRUS」 |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)" | 「en-us-Guy24kRUS」 |
-| `es-ES` | 西班牙文 (西班牙) | Female | "Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)" | "es-劉娜-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (es-ES, HelenaRUS)" | "es-HelenaRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (es-ES, Pablo, Apollo)" | "es-Pablo-Apollo" |
-| `es-MX` | 西班牙文 (墨西哥) | Female | "Microsoft Server Speech Text to Speech Voice (es-MX, HildaRUS)" | "es-MX-HildaRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (es-MX, Raul, Apollo)" | "es-MX-Raul-Apollo" |
-| `fi-FI` | 芬蘭文 | Female | "Microsoft Server Speech Text to Speech Voice (fi-FI, HeidiRUS)" | 「wi-fi-HeidiRUS」 |
-| `fr-CA` | 法文 (加拿大) | Female | "Microsoft Server Speech Text to Speech Voice (fr-CA, Caroline)" | "fr-CA-Caroline" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (fr-CA, HarmonieRUS)" | "fr-CA-HarmonieRUS" |
-| `fr-CH` | 法文 (瑞士) | Male | "Microsoft Server Speech Text to Speech Voice (fr-CH, Guillaume)" | "fr-CH-Guillaume" |
-| `fr-FR` | 法文 (法國) | Female | "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)" | "fr-fr-Julie-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)" | "fr-fr-HortenseRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)" | "fr-fr-Paul-Apollo" |
-| `he-IL` | 希伯來文 (以色列) | Male | "Microsoft Server Speech Text to Speech Voice (he-IL, Asaf)" | 「他-IL-Asaf」 |
-| `hi-IN` | 印度文 (印度) | Female | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana, Apollo)" | 「hi Kalpana-Apollo」 |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)" | 「hi Kalpana」 |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (hi-IN, Hemant)" | 「hi Hemant」 |
-| `hr-HR` | 克羅埃西亞文 | Male | "Microsoft Server Speech Text to Speech Voice (hr-HR, Matej)" | 「hr-HR-Matej」 |
-| `hu-HU` | 匈牙利文 | Male | "Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)" | "hu-HU-Szabolcs" |
-| `id-ID` | 印尼文 | Male | "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)" | "id-ID-Andika" |
-| `it-IT` | 義大利文 | Male | "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)" | "it-Cosimo-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (it-IT, LuciaRUS)" | 「it-IT-LuciaRUS」 |
-| `ja-JP` | 日文 | Female | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)" | "ja-jp-Ayumi-Apollo" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)" | "ja-jp-Ichiro-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (ja-JP, HarukaRUS)" | "ja-jp-HarukaRUS" |
-| `ko-KR` | 韓文 | Female | "Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS" |
-| `ms-MY` | 馬來文 | Male | "Microsoft Server Speech Text to Speech Voice (ms-MY, Rizwan)" | "ms-MY-Rizwan" |
-| `nb-NO` | 挪威文 | Female | "Microsoft Server Speech Text to Speech Voice (nb-NO, HuldaRUS)" | 「nb-不 HuldaRUS」 |
-| `nl-NL` | 荷蘭文 | Female | "Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)" | "nl-NL-HannaRUS" |
-| `pl-PL` | 波蘭文 | Female | "Microsoft Server Speech Text to Speech Voice (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS" |
-| `pt-BR` | 葡萄牙文 (巴西) | Female | "Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaRUS)" | "pt-BR-HeloisaRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (pt-BR, Daniel, Apollo)" | "pt-BR-Daniel-Apollo" |
-| `pt-PT` | 葡萄牙文 (葡萄牙) | Female | "Microsoft Server Speech Text to Speech Voice (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS" |
-| `ro-RO` | 羅馬尼亞文 | Male | "Microsoft Server Speech Text to Speech Voice (ro-RO, Andrei)" | "ro-RO-Andrei" |
-| `ru-RU` | 俄文 | Female | "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)" | 「ru-RU-Irina-Apollo」 |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)" | 「ru-RU-Pavel-Apollo」 |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)" | ru-RU-EkaterinaRUS |
-| `sk-SK` | 斯洛伐克文 | Male | "Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)" | "sk-SK-Filip" |
-| `sl-SI` | 斯洛維尼亞文 | Male | "Microsoft Server Speech Text to Speech Voice (sl-SI, Lado)" | "sl-SI-Lado" |
-| `sv-SE` | 瑞典文 | Female | "Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS" |
-| `ta-IN` | 坦米爾文 (印度) | Male | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)" | < Valluvar 中的 "ta" |
-| `te-IN` | 特拉古文 (印度) | Female | "Microsoft Server Speech Text to Speech Voice (te-IN, Chitra)" | "Chitra" |
-| `th-TH` | 泰文 | Male | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | 「第一次 Pattara」 |
-| `tr-TR` | 土耳其文 (土耳其) | Female | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS" |
-| `vi-VN` | 越南文 | Male | "Microsoft Server Speech Text to Speech Voice (vi-VN, An)" | 「vi-VN-a」 |
-| `zh-CN` | 中文 (普通話，簡體) | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | 中文（廣東話，繁體） | Female | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | 「zh-HK-Tracy-Apollo」 |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-HK-TracyRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | 「zh-HK-Danny-Apollo」 |
-| `zh-TW` | 中文 (繁體，國語) | Female | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-幼圓-Yating-Apollo" |
-|  |  | Female | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-幼圓-HanHanRUS" |
-|  |  | Male | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-幼圓-Zhiwei-Apollo" |
+| 地區設定 | 語言 | 性別 | 語音名稱 |
+|--|--|--|--|
+| <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "ar-例如-Hoda" |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "ar-SA-Naayf" |
+| `bg-BG` | 保加利亞文 | Male |  "bg-BG-Ivan" |
+| `ca-ES` | 加泰蘭文 (西班牙) | Female |  「ca-ES-HerenaRUS」 |
+| `cs-CZ` | 捷克文 | Male | "cs-CZ-Jakub" |
+| `da-DK` | 丹麥文 | Female |  "da-深色-HelleRUS" |
+| `de-AT` | 德文 (奧地利) | Male | 「Michael」 |
+| `de-CH` | 德文 (瑞士) | Male |  「Karsten」 |
+| `de-DE` | 德文 (德國) | Female |  "de-Hedda" |
+|  |  | Female | "de-HeddaRUS" |
+|  |  | Male |  「取消 Stefan-Apollo」 |
+| `el-GR` | 希臘文 | Male | "el-GR-Stefanos" |
+| `en-AU` | 英文 (澳大利亞) | Female |  "en-us-Catherine" |
+|  |  | Female |  "en-us-HayleyRUS" |
+| `en-CA` | 英文 (加拿大) | Female |  「en-CA-Linda」 |
+|  |  | Female |  「en-CA-HeatherRUS」 |
+| `en-GB` | 英文 (英國) | Female |  "en-us-Susan-Apollo" |
+|  |  | Female |  "en-GB-HazelRUS" |
+|  |  | Male |  "George-Apollo" |
+| `en-IE` | 英文 (愛爾蘭) | Male | 「en-IE-小紅」 |
+| `en-IN` | 英文 (印度) | Female | "en-us-Heera-Apollo" |
+|  |  | Female |  「PriyaRUS」 |
+|  |  | Male |  "en-us-Ravi-Apollo" |
+| `en-US` | 英文 (美國) | Female |  「en-us-ZiraRUS」 |
+|  |  | Female | 「en-us-AriaRUS」 |
+|  |  | Male | 「en-us-BenjaminRUS」 |
+|  |  | Male |  「en-us-Guy24kRUS」 |
+| `es-ES` | 西班牙文 (西班牙) | Female |  "es-劉娜-Apollo" |
+|  |  | Female | "es-HelenaRUS" |
+|  |  | Male | "es-Pablo-Apollo" |
+| `es-MX` | 西班牙文 (墨西哥) | Female |  "es-MX-HildaRUS" |
+|  |  | Male | "es-MX-Raul-Apollo" |
+| `fi-FI` | 芬蘭文 | Female | 「wi-fi-HeidiRUS」 |
+| `fr-CA` | 法文 (加拿大) | Female | "fr-CA-Caroline" |
+|  |  | Female | "fr-CA-HarmonieRUS" |
+| `fr-CH` | 法文 (瑞士) | Male | "fr-CH-Guillaume" |
+| `fr-FR` | 法文 (法國) | Female |  "fr-fr-Julie-Apollo" |
+|  |  | Female |"fr-fr-HortenseRUS" |
+|  |  | Male |  "fr-fr-Paul-Apollo" |
+| `he-IL` | 希伯來文 (以色列) | Male |  「他-IL-Asaf」 |
+| `hi-IN` | 印度文 (印度) | Female | 「hi Kalpana-Apollo」 |
+|  |  | Female |  「hi Kalpana」 |
+|  |  | Male |  「hi Hemant」 |
+| `hr-HR` | 克羅埃西亞文 | Male | 「hr-HR-Matej」 |
+| `hu-HU` | 匈牙利文 | Male |  "hu-HU-Szabolcs" |
+| `id-ID` | 印尼文 | Male | "id-ID-Andika" |
+| `it-IT` | 義大利文 | Male |  "it-Cosimo-Apollo" |
+|  |  | Female |  「it-IT-LuciaRUS」 |
+| `ja-JP` | 日文 | Female |  "ja-jp-Ayumi-Apollo" |
+|  |  | Male | "ja-jp-Ichiro-Apollo" |
+|  |  | Female |  "ja-jp-HarukaRUS" |
+| `ko-KR` | 韓文 | Female | "ko-KR-HeamiRUS" |
+| `ms-MY` | 馬來文 | Male |  "ms-MY-Rizwan" |
+| `nb-NO` | 挪威文 | Female |  「nb-不 HuldaRUS」 |
+| `nl-NL` | 荷蘭文 | Female |  "nl-NL-HannaRUS" |
+| `pl-PL` | 波蘭文 | Female |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | 葡萄牙文 (巴西) | Female | "pt-BR-HeloisaRUS" |
+|  |  | Male |  "pt-BR-Daniel-Apollo" |
+| `pt-PT` | 葡萄牙文 (葡萄牙) | Female | "pt-PT-HeliaRUS" |
+| `ro-RO` | 羅馬尼亞文 | Male | "ro-RO-Andrei" |
+| `ru-RU` | 俄文 | Female |  「ru-RU-Irina-Apollo」 |
+|  |  | Male | 「ru-RU-Pavel-Apollo」 |
+|  |  | Female |  ru-RU-EkaterinaRUS |
+| `sk-SK` | 斯洛伐克文 | Male | "sk-SK-Filip" |
+| `sl-SI` | 斯洛維尼亞文 | Male |  "sl-SI-Lado" |
+| `sv-SE` | 瑞典文 | Female | "sv-SE-HedvigRUS" |
+| `ta-IN` | 坦米爾文 (印度) | Male |  < Valluvar 中的 "ta" |
+| `te-IN` | 特拉古文 (印度) | Female |  "Chitra" |
+| `th-TH` | 泰文 | Male |  「第一次 Pattara」 |
+| `tr-TR` | 土耳其文 (土耳其) | Female | "tr-TR-SedaRUS" |
+| `vi-VN` | 越南文 | Male |  「vi-VN-a」 |
+| `zh-CN` | 中文 (普通話，簡體) | Female |  "zh-CN-HuihuiRUS" |
+|  |  | Female | "zh-CN-Yaoyao-Apollo" |
+|  |  | Male | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | 中文（廣東話，繁體） | Female |  「zh-HK-Tracy-Apollo」 |
+|  |  | Female | "zh-HK-TracyRUS" |
+|  |  | Male |  「zh-HK-Danny-Apollo」 |
+| `zh-TW` | 中文 (繁體，國語) | Female |  "zh-幼圓-Yating-Apollo" |
+|  |  | Female | "zh-幼圓-HanHanRUS" |
+|  |  | Male |  "zh-幼圓-Zhiwei-Apollo" |
 
 **1** *ar-例如，支援新式標準阿拉伯文（MSA）。*
 
 > [!IMPORTANT]
-> `en-US-Jessa`語音已變更為`en-US-Aria`。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
+> `en-US-Jessa`語音已變更為 `en-US-Aria` 。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
 
 > [!TIP]
-> 您可以在語音合成要求中使用完整的服務名稱對應或簡短的語音名稱。
+> 您可以在語音合成要求中繼續使用完整的服務名稱對應，例如 "Microsoft Server Speech 文字轉換語音 Voice （en-us，AriaRUS）"。
 
 ### <a name="customization"></a>自訂
 
-語音自訂適用于`de-DE`、 `en-GB`、 `en-IN`、 `en-US`、 `es-MX`、 `fr-FR` `it-IT` `pt-BR`、、和`zh-CN`。 選取適當的地區設定，以符合您必須訓練自訂語音模型的定型資料。 例如，如果您的記錄資料是以英式輔的英文來說，請選取`en-GB`。
+語音自訂適用于 `de-DE` 、 `en-GB` 、 `en-IN` 、 `en-US` 、、、、 `es-MX` `fr-FR` `it-IT` `pt-BR` 和 `zh-CN` 。 選取適當的地區設定，以符合您必須訓練自訂語音模型的定型資料。 例如，如果您的記錄資料是以英式輔的英文來說，請選取 `en-GB` 。
 
 > [!NOTE]
-> 除了中文-英文 bi 語言，我們不支援自訂語音中的 bi 語言模型定型。 如果您想要訓練中文語音（也可以說英文），請選取 [中文-英文雙語]。 所有地區設定的語音訓練都是以 2000 + 語句的資料集開始，除了`en-US`和`zh-CN`以外，您可以從任何規模的定型資料開始。
+> 除了中文-英文 bi 語言，我們不支援自訂語音中的 bi 語言模型定型。 如果您想要訓練中文語音（也可以說英文），請選取 [中文-英文雙語]。 所有地區設定的語音訓練都是以 2000 + 語句的資料集開始，除了 `en-US` 和以外， `zh-CN` 您可以從任何規模的定型資料開始。
 
 ## <a name="speech-translation"></a>語音翻譯
 
@@ -243,7 +258,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 | 希臘文                   | `el`          |
 | 古吉拉特文                | `gu`          |
 | 海地克裏奧爾文          | `ht`          |
-| Hebrew                  | `he`          |
+| 希伯來文                  | `he`          |
 | Hindi                   | `hi`          |
 | 白苗文               | `mww`         |
 | 匈牙利文               | `hu`          |

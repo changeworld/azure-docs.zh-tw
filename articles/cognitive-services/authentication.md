@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587675"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>驗證 Azure 認知服務要求
 
@@ -25,7 +25,7 @@ Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂�
 * [使用權杖進行驗證](#authenticate-with-an-authentication-token)
 * [使用 Azure Active Directory （AAD）進行驗證](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 提出要求之前，您需要 Azure 帳戶和 Azure 認知服務訂用帳戶。 如果您已經有帳戶，請繼續進行並跳至下一節。 如果您沒有帳戶，我們會引導您在幾分鐘內完成設定：[建立 Azure 的認知服務帳戶](cognitive-services-apis-create-account.md)。
 
@@ -38,12 +38,12 @@ Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂�
 | 頁首 | 描述 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此標頭以特定服務的訂用帳戶金鑰或多服務訂用帳戶金鑰進行驗證。 |
-| Ocp-Apim-Subscription-Region | 只有在搭配[翻譯工具文字 API](./Translator/reference/v3-0-reference.md) 使用多服務訂用帳戶金鑰時才需要此標頭。 使用此標頭指定訂用帳戶區域。 |
+| Ocp-Apim-Subscription-Region | 只有在搭配[Translator 服務](./Translator/reference/v3-0-reference.md)使用多服務訂用帳戶金鑰時，才需要此標頭。 使用此標頭指定訂用帳戶區域。 |
 | 授權 | 如果您使用驗證權杖，請使用此標頭。 下列各節會詳細說明執行權杖交換的步驟。 提供的值遵循下列格式：`Bearer <TOKEN>`。 |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>使用單一服務訂用帳戶金鑰進行驗證
 
-第一個選項是使用特定服務 (例如翻譯工具文字) 的訂用帳戶金鑰來驗證要求。 金鑰適用於 Azure 入口網站中您建立的每個資源。 若要使用訂用帳戶金鑰來驗證要求，它必須傳遞以作為 `Ocp-Apim-Subscription-Key` 標頭。
+第一個選項是使用特定服務（例如 Translator）的訂用帳戶金鑰來驗證要求。 金鑰適用於 Azure 入口網站中您建立的每個資源。 若要使用訂用帳戶金鑰來驗證要求，它必須傳遞以作為 `Ocp-Apim-Subscription-Key` 標頭。
 
 這些範例要求示範如何使用 `Ocp-Apim-Subscription-Key` 標頭。 請記住，當使用此範例時，您必須包含有效的訂用帳戶金鑰。
 
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-這是翻譯工具文字 API 的範例呼叫：
+這是對 Translator 服務的範例呼叫：
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -78,7 +78,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如： `westus.api.cognitive.microsoft.com` 。
 
-當搭配翻譯工具文字 API 使用多服務訂用帳戶金鑰時，您必須指定訂用帳戶區域與 `Ocp-Apim-Subscription-Region` 標頭。
+搭配 Translator 服務使用多服務訂用帳戶金鑰時，您必須使用標頭指定訂用帳戶區域 `Ocp-Apim-Subscription-Region` 。
 
 在以下區域中支援多服務驗證：
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-這是翻譯工具文字 API 的範例呼叫：
+這是對 Translator 服務的範例呼叫：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -150,7 +150,7 @@ curl -v -X POST \
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-取得驗證權杖之後，您必須在每個要求中加以傳遞作為 `Authorization` 標頭。 這是翻譯工具文字 API 的範例呼叫：
+取得驗證權杖之後，您必須在每個要求中加以傳遞作為 `Authorization` 標頭。 這是對 Translator 服務的範例呼叫：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -161,7 +161,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 [!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是認知服務？](welcome.md)
 * [認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/)

@@ -1,33 +1,26 @@
 ---
 title: 實體類型-LUIS
-titleSuffix: Azure Cognitive Services
-description: 實體會從語句中解壓縮資料。 實體類型可讓您進行可預測的資料提取。 實體有兩種類型：機器學習和非機器學習。 請務必知道您在語句中使用哪一種類型的實體。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
+description: 實體會在預測執行時間從使用者語句中提取資料。 _選擇性_的次要用途是使用實體做為功能來提升意圖或其他實體的預測。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: diberry
-ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: 9d8afd5a660b3af5556256835486e984d7d657bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221517"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585635"
 ---
-# <a name="entities-and-their-purpose-in-luis"></a>實體及其在 LUIS 中的用途
+# <a name="extract-data-with-entities"></a>使用實體來解壓縮資料
 
-實體的主要用途是提供用戶端應用程式可預測的資料提取。 _選擇性_的次要目的是要使用描述項來提升意圖或其他實體的預測。
+實體會在預測執行時間從使用者語句中提取資料。 _選擇性_的次要用途是使用實體做為功能來提升意圖或其他實體的預測。
 
-實體有兩種類型：
+實體有幾種類型：
 
-* 機器學習-從內容
-* 非機器學習-針對完全相符的文字、模式比對，或由預先建立的實體偵測
+* [已採用機器學習的實體](reference-entity-machine-learned-entity.md)
+* 非機器學慣用來做為必要[功能](luis-concept-feature.md)-針對完全相符的文字、模式比對，或透過預先建立的實體偵測
+* [Pattern. any](#patternany-entity) -從[模式](reference-entity-pattern-any.md)中將自由格式的文字（例如書籍標題）解壓縮
 
-機器學習的實體提供最廣泛的資料提取選擇。 非機器學習的實體會透過文字比對來進行處理，而且可以獨立使用，或作為機器學習實體的[條件約束](#design-entities-for-decomposition)。
+機器學習的實體提供最廣泛的資料提取選擇。 非機器學習的實體會依照文字比對來執行，並作為機器學習的實體或意圖的[必要功能](#design-entities-for-decomposition)。
 
 ## <a name="entities-represent-data"></a>實體代表資料
 
@@ -39,45 +32,37 @@ ms.locfileid: "79221517"
 
 |語句|單位|資料|
 |--|--|--|
-|購買 3 張到紐約的機票|預先建置的號碼<br>Location.Destination|3<br>紐約|
-|購買 1 張 3 月 5 日從紐約到倫敦的機票|Location.Origin<br>Location.Destination<br>預先建置的 datetimeV2|紐約<br>London<br>2018 年 3 月 5 日|
+|購買 3 張到紐約的機票|預先建置的號碼<br>Destination|3<br>紐約|
 
-### <a name="entities-are-optional"></a>實體是選擇性的
 
-意圖是必要的，實體則為選擇性。 您不需要為應用程式中的每個概念建立實體，只需針對用戶端應用程式執行動作所需的部分建立實體即可。
+### <a name="entities-are-optional-but-recommended"></a>實體是選擇性的，但建議使用
 
-如果您的語句沒有用戶端應用程式所需的資料，您就不需要新增實體。 當您的應用程式開發和識別出新的資料需求時，您可以稍後再將適當的實體新增至您的 LUIS 模型。
+雖然[意圖](luis-concept-intent.md)是必要的，但實體是選擇性的。 您不需要為應用程式中的每個概念建立實體，只適用于用戶端應用程式需要資料或實體作為另一個實體或意圖之提示或信號的使用者。
+
+當您的應用程式開發和識別出新的資料需求時，您可以稍後再將適當的實體新增至您的 LUIS 模型。
 
 ## <a name="entity-compared-to-intent"></a>實體與意圖的比較
 
-實體代表您要解壓縮之語句內的資料概念。
+實體代表_語句內_的資料概念。 意圖會分類_整個語句_。
 
-語句可以選擇性地包含實體。 相較之下，語句的意圖預測是_必要_的，代表整個語句。 LUIS 需要意圖中包含範例語句。
-
-請考慮下列4語句：
+請考慮下列四個語句：
 
 |語句|預測的意圖|已解壓縮的實體|說明|
 |--|--|--|--|
 |説明|help|-|沒有要解壓縮的內容。|
-|傳送內容|sendSomething|-|沒有要解壓縮的內容。 尚未訓練此模型在此內容中`something`進行解壓縮，也不會有任何收件者。|
-|傳送目前的 Bob|sendSomething|`Bob`, `present`|此模型已使用已解壓縮名稱[personName](luis-reference-prebuilt-person.md) `Bob`的 personName 預建實體進行定型。 已使用機器學習的實體來進行解壓縮`present`。|
-|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|實體已將兩個重要的`Bob`資料片段`box of chocolates`（和）解壓縮。|
+|傳送內容|sendSomething|-|沒有要解壓縮的內容。 此模型在此內容中沒有要解壓縮的必要功能 `something` ，而且沒有任何指定的收件者。|
+|傳送目前的 Bob|sendSomething|`Bob`, `present`|模型會藉 `Bob` 由加入預建實體的必要功能來解壓縮 `personName` 。 已使用機器學習的實體來進行解壓縮 `present` 。|
+|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|機器學習的實體已將兩個重要的資料片段（ `Bob` 和 `box of chocolates` ）解壓縮。|
 
 ## <a name="design-entities-for-decomposition"></a>設計用於分解的實體
 
-這是很好的實體設計，讓您的頂層實體成為機器學習的實體。 這可讓您在一段時間內變更實體**設計，並**選擇性**地使用****子元件**（子實體）來將最上層實體分解成用戶端應用程式所需的元件。
+機器學習的實體可讓您設計應用程式架構以進行分解，將大型概念分解成子實體。
 
 分解的設計可讓 LUIS 將深度的實體解析傳回給您的用戶端應用程式。 這可讓您的用戶端應用程式專注于商務規則，並將資料解析留給 LUIS。
 
-### <a name="machine-learned-entities-are-primary-data-collections"></a>機器學習的實體是主要資料集合
+機器學習的實體會根據透過範例語句學習到的內容觸發。
 
-[**機器學習的實體**](tutorial-machine-learned-entity.md)是最上層的資料單位。 子元件是機器學習實體的子實體。
-
-機器學習的實體會根據透過定型語句學習到的內容觸發。 **條件約束**是套用至機器學習實體的選擇性規則，會根據非機器學習的實體（例如[清單](reference-entity-list.md)或[Regex](reference-entity-regular-expression.md)）的精確文字比對定義，進一步限制觸發。 例如， `size`機器學習的實體可以有`sizeList`清單實體的條件約束，限制只有當遇到實體`size`中包含的`sizeList`值時，才會觸發該實體。
-
-[**描述**](luis-concept-feature.md)項是為了提升預測之單字或片語的相關性而套用的功能。 因為它們是用來*描述*意圖或實體，所以稱為 *「描述項*」。 描述項說明資料的特性或屬性，例如 LUIS 觀察及學習的重要單字或片語。
-
-當您在 LUIS 應用程式中建立片語清單功能時，預設會全域啟用，並會在所有意圖和實體之間平均套用。 不過，如果您將片語清單套用為機器學習實體（或*模型*）的描述項（功能），則其範圍會縮減為只套用至該模型，而且不再與所有其他模型搭配使用。 使用片語清單做為模型的描述項有助於分解，方法是協助其適用之模型的精確度。
+[**機器學習的實體**](tutorial-machine-learned-entity.md)是頂層擷取器。 子實體是機器學習實體的子實體。
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -88,51 +73,50 @@ ms.locfileid: "79221517"
 
 ## <a name="types-of-entities"></a>實體類型
 
+父系的列應該是機器學習的實體。 列可以使用非機器學習的實體做為[功能](luis-concept-feature.md)。
+
 您可以根據擷取資料的方式和資料在擷取之後的呈現方式，來選擇實體。
 
 |實體類型|目的|
 |--|--|
-|[**機器學習**](tutorial-machine-learned-entity.md)|機器學習實體會從語句中的內容學習。 實體的父群組，不論實體類型為何。 這會使位置變得語句顯著。 |
-|[**清單**](reference-entity-list.md)|以**完全相符文字**解壓縮的專案及其同義字清單。|
-|[**Pattern。**](reference-entity-pattern-any.md)|難以判斷實體結尾的實體。 |
+|[**機器學習**](tutorial-machine-learned-entity.md)|從已加上標籤的範例中，解壓縮學習的複雜資料。 |
+|[**名單**](reference-entity-list.md)|以**完全相符文字**解壓縮的專案及其同義字清單。|
+|[**Pattern。**](#patternany-entity)|找不到實體結尾的實體很容易判斷，因為實體是自由形式的。 僅適用于[模式](luis-concept-patterns.md)。|
 |[**預建**](luis-reference-prebuilt-entities.md)|已定型，可將特定類型的資料（例如 URL 或電子郵件）解壓縮。 在開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案中已定義部分這些預建實體。 如果目前不支援您的特定文化特性或實體，請向專案提出。|
 |[**規則運算式**](reference-entity-regular-expression.md)|會使用正則運算式來比對**完全相符的文字**。|
 
 ## <a name="extracting-contextually-related-data"></a>解壓縮內容相關資料
 
-語句可能包含兩個或更多出現的實體，其中資料的意義是根據語句內的內容。 例如，有兩個位置、來源和目的地的航班預約語句。
+語句可能包含兩個或更多出現的實體，其中資料的意義是根據語句內的內容。 例如，有兩個地理位置、來源和目的地的航班預約語句。
 
 `Book a flight from Seattle to Cairo`
 
-需要解壓縮`location`實體的兩個範例。 用戶端應用程式必須知道每個的位置類型，才能完成票證購買。
+這兩個位置必須以用戶端應用程式知道每個位置的類型，才能完成票證購買的方式進行解壓縮。
 
-有兩種方法可以用來解壓縮內容相關資料：
+若要將來源和目的地解壓縮，請在「票證訂單」機器學習實體中建立兩個子實體。 針對每個子實體，建立使用 geographyV2 的必要功能。
 
- * `location`實體是機器學習的實體，並使用兩個子元件實體來捕捉`origin`和`destination` （慣用）
- * `location`實體會使用和的`origin`兩個**角色**`destination`
+<a name="using-component-constraints-to-help-define-entity"></a>
+<a name="using-subentity-constraints-to-help-define-entity"></a>
 
-語句中可以有多個實體，而且如果使用的內容沒有任何意義，就可以不使用分解或角色來解壓縮。 例如，如果語句包含位置的清單， `I want to travel to Seattle, Cairo, and London.`這就是一個清單，其中的每個專案都不會有其他意義。
+### <a name="using-required-features-to-constrain-entities"></a>使用必要功能來限制實體
 
-### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>使用機器學習實體的子元件實體來定義內容
+深入瞭解[必要功能](luis-concept-feature.md)
 
-您可以使用[**機器學習的實體**](tutorial-machine-learned-entity.md)來解壓縮描述預訂航班動作的資料，然後將最上層實體分解成用戶端應用程式所需的個別元件。
+## <a name="patternany-entity"></a>Pattern.any 實體
 
-在此範例中`Book a flight from Seattle to Cairo`，最上層實體可以是`travelAction`並標示為 [解壓縮`flight from Seattle to Cairo`]。 接著，會建立兩個子元件`origin`實體`destination`，稱為和，兩者都套用了預`geographyV2`建實體的條件約束。 在 [定型] 語句中`origin` ， `destination`和會適當地標記。
+模式。任何只能在[模式](luis-concept-patterns.md)中使用。
 
-### <a name="using-entity-role-to-define-context"></a>使用實體角色來定義內容
+<a name="if-you-need-more-than-the-maximum-number-of-entities"></a>
+## <a name="exceeding-app-limits-for-entities"></a>超過實體的應用程式限制
 
-角色是以語句內的內容為基礎之實體的名稱別名。 角色可以與任何預先建置或自訂實體型別一起使用，並在範例表達和模式中使用。 在此範例中， `location`實體需要和`origin` `destination`的兩個角色，而且兩者都必須在範例語句中標示。
-
-如果 LUIS 找到， `location`但無法判斷角色，則仍會傳回 location 實體。 用戶端應用程式需要追蹤問題，以判斷使用者所代表的位置類型。
-
-
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>如果您所需的實體超出實體數目上限
-
-如果您需要超過限制，請聯絡支援人員。 若要這樣做，請收集您系統的相關詳細資訊、前往 [LUIS](luis-reference-regions.md#luis-website) 網站，然後選取 [Support] \(支援\)****。 如果您的 Azure 訂用帳戶包含支援服務，請與 [Azure 技術支援人員](https://azure.microsoft.com/support/options/)連絡。
+如果您需要超過[限制](luis-limits.md#model-limits)，請聯絡支援人員。 若要這樣做，請收集您系統的相關詳細資訊、前往 [LUIS](luis-reference-regions.md#luis-website) 網站，然後選取 [Support] \(支援\)****。 如果您的 Azure 訂用帳戶包含支援服務，請與 [Azure 技術支援人員](https://azure.microsoft.com/support/options/)連絡。
 
 ## <a name="entity-prediction-status"></a>實體預測狀態
 
-LUIS 入口網站會顯示實體（在範例中為語句）與您所選取的實體具有不同的實體預測。 這種不同的分數是以目前定型的模型為基礎。
+當實體的實體預測與您為範例語句所選取的實體不同時，LUIS 入口網站就會顯示。 這種不同的分數是以目前定型的模型為基礎。 使用此資訊可使用下列一或多項來解決定型錯誤：
+* 建立實體的[功能](luis-concept-feature.md)以協助識別實體的概念
+* 使用實體新增更多[範例語句](luis-concept-utterance.md)和標籤
+* 請參閱預測端點上所收到之任何語句的[主動式學習建議](luis-concept-review-endpoint-utterances.md)，可協助識別實體的概念。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -141,4 +125,4 @@ LUIS 入口網站會顯示實體（在範例中為語句）與您所選取的實
 請參閱[新增實體](luis-how-to-add-entities.md)，以深入了解如何將實體新增至 LUIS 應用程式。
 
 請參閱[教學課程：在 Language Understanding （LUIS）中使用機器學習的實體從使用者語句解壓縮結構化資料](tutorial-machine-learned-entity.md)，以瞭解如何使用機器學習的實體從語句中解壓縮結構化資料。
- 
+
