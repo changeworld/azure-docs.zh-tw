@@ -1,5 +1,5 @@
 ---
-title: 翻譯工具文字 API 字典查閱方法
+title: 翻譯工具字典查閱方法
 titleSuffix: Azure Cognitive Services
 description: 字典查閱方法提供單字和少量慣用片語的替代翻譯。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548946"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584734"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>翻譯工具文字 API 3.0 字典查閱
+# <a name="translator-30-dictionary-lookup"></a>翻譯工具3.0：字典查閱
 
 提供字組和少數慣用語的替代翻譯。 每個翻譯都有一個詞性和一份反向翻譯清單。 反向翻譯可讓使用者了解內容的翻譯。 [字典範例](./v3-0-dictionary-examples.md)作業允許進一步向下鑽研，以查看每組翻譯配對的範例用法。
 
@@ -42,7 +42,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 要求標頭包括：
 
-| headers  | 描述 |
+| 標題  | 描述 |
 | ------ | ----------- |
 | 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
 | Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
@@ -64,7 +64,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 * 陣列最多可以有 10 個項目。
 * 陣列項目的文字值不能超過 100 個字元，包括空格。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 成功的回應是輸入陣列的每個字串各有一個結果的 JSON 陣列。 結果物件包含下列屬性：
 

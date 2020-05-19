@@ -2,13 +2,13 @@
 title: 設定個人化工具
 description: 服務設定包括服務如何處理報酬、服務進行探索的頻率、模型重新定型的頻率，以及要儲存多少資料。
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221213"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584649"
 ---
 # <a name="configure-personalizer-learning-loop"></a>設定個人化工具學習迴圈
 
@@ -18,6 +18,23 @@ ms.locfileid: "79221213"
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>規劃設定變更
+
+因為某些設定變更會[重設您的模型](#settings-that-include-resetting-the-model)，所以您應該規劃您的設定變更。
+
+如果您打算使用[新手模式](concept-apprentice-mode.md)，請務必先檢查您的個人化工具設定，再切換到新手模式。
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>包含重設模型的設定
+
+下列動作會使用過去2天內最多可用的資料，觸發模型的重新定型。
+
+* 報酬
+* 探索
+
+若要[清除](how-to-manage-model.md)您的所有資料，請使用 [**模型與學習設定**] 頁面。
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>設定意見反應迴圈的報酬
 
@@ -66,16 +83,7 @@ ms.locfileid: "79221213"
 
 變更此值之後，請務必選取 [**儲存**]。
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>包含重設模型的設定
-
-下列動作包括立即重新訓練模型和過去2天的資料。
-
-* 報酬
-* 探索
-
-若要[清除](how-to-manage-model.md)您的所有資料，請使用 [模型與學習設定] 頁面。
 
 ## <a name="next-steps"></a>後續步驟
 

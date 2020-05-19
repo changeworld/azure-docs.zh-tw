@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75531474"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584615"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
@@ -91,10 +91,10 @@ ms.locfileid: "75531474"
 
 |認知服務|不需要定型資料|您提供部分或所有定型資料|即時或近乎即時的資料收集|
 |--|--|--|--|
-|[異常偵測器](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing 搜尋 |x|||
 |[電腦視覺](./Computer-vision/Home.md)|x|||
-|[內容仲裁](./Content-Moderator/overview.md)|x||x|
+|[內容仲裁者](./Content-Moderator/overview.md)|x||x|
 |[自訂視覺](./Custom-Vision-Service/home.md)||x||
 |[臉部](./Face/Overview.md)|x|x||
 |[表單辨識器](./form-recognizer/overview.md)||x||
@@ -108,8 +108,8 @@ ms.locfileid: "75531474"
 |[語音轉換文字（STT）](speech-service/speech-to-text.md)|x|x||
 |[語音翻譯](speech-service/speech-translation.md)|x|||
 |[文字分析](./text-analytics/overview.md)|x|||
-|[翻譯文字](./translator/translator-info-overview.md)|x|||
-|[翻譯工具文字-自訂翻譯工具](./translator/custom-translator/overview.md)||x||
+|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator-自訂翻譯工具](./translator/custom-translator/overview.md)||x||
 
 * 個人化工具只需要服務所收集的訓練資料（因為它會即時運作），以評估您的原則和資料。 個人化工具不需要用來進行前置或批次定型的大型歷程資料集。 
 

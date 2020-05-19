@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eee2271b6d1fb51ff4b27c0d612306b1f7f8747a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595611"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584717"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
 
@@ -102,6 +102,6 @@ ms.locfileid: "68595611"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 透過 [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 開始使用您已部署的自訂翻譯模型。
+- 從[Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。
 - 了解[如何管理設定](how-to-manage-settings.md)以共用您的工作區，和管理訂用帳戶金鑰。
 - 了解[如何移轉您的工作區和專案](how-to-migrate.md) (從 [Microsoft Translator 中樞](https://hub.microsofttranslator.com))

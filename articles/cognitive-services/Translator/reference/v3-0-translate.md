@@ -1,7 +1,7 @@
 ---
-title: 翻譯工具文字 API 翻譯方法
+title: 翻譯工具轉譯方法
 titleSuffix: Azure Cognitive Services
-description: 瞭解 Azure 認知服務翻譯工具文字 API 轉譯方法來翻譯文字的參數、標頭和主體訊息。
+description: 瞭解 Azure 認知服務 Translator 的「翻譯」方法的參數、標頭和內文訊息，以翻譯文字。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858552"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584632"
 ---
-# <a name="translator-text-api-30-translate"></a>翻譯工具文字 API 3.0 翻譯
+# <a name="translator-30-translate"></a>翻譯工具3.0：轉譯
 
 翻譯文字。
 
@@ -55,7 +55,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>從</td>
-    <td><em>選擇性參數</em>。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能<code>from</code>時，您必須使用參數，而不是自動偵測。</td>
+    <td><em>選擇性參數</em>。<br/>指定輸入文字的語言。 使用 <code>translation</code> 範圍查閱<a href="./v3-0-languages.md">支援語言</a>，以尋找可用於翻譯的來源語言。 若未指定 <code>from</code> 參數，則會套用自動語言偵測來判斷來源語言。 <br/><br/><code>from</code>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動態字典</a>功能時，您必須使用參數，而不是自動偵測。</td>
   </tr>  
   <tr>
     <td>textType</td>
@@ -103,7 +103,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 要求標頭包括：
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
@@ -111,7 +111,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必要的要求標頭<em></em>。<br/>指定承載的內容類型。<br/> 接受的值<code>application/json; charset=UTF-8</code>為。</td>
+    <td>必要的要求標頭<em></em>。<br/>指定承載的內容類型。<br/> 接受的值為 <code>application/json; charset=UTF-8</code> 。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -123,7 +123,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其代表要翻譯的字串。
 
@@ -181,7 +181,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 ## <a name="response-headers"></a>回應標頭
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
     <tr>
     <td>X-RequestId</td>
@@ -234,7 +234,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 [v3 翻譯工具文字 API 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上可找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
 
 ## <a name="examples"></a>範例
 
@@ -383,7 +383,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
     <td>不雅字眼會取代為輸出中的標記。 標記取決於 <code>ProfanityMarker</code> 參數。<br/><br/>
 對於 <code>ProfanityMarker=Asterisk</code>，不雅字眼會取代為 <code>***</code>：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
-    <strong>範例翻譯（英文）</strong>：他是\* \* \*。<br/><br/>
+    <strong>範例翻譯（英文）</strong>：他是 \* \* \* 。<br/><br/>
 對於 <code>ProfanityMarker=Tag</code>，不雅字眼會括上 XML 標籤 &lt;profanity&gt; 和 &lt;/profanity&gt;：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
     <strong>範例翻譯 (英文)</strong>：He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.

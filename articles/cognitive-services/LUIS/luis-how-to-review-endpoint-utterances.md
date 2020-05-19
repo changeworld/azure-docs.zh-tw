@@ -9,28 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221303"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584957"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何藉由審查端點語句來改善 LUIS 應用程式
 
 針對正確的預測來審查端點語句的程式稱為[主動式學習](luis-concept-review-endpoint-utterances.md)。 主動式學習會捕捉端點查詢，並選取不確定的使用者端點語句。 您可以檢查這些語句來選取意圖，並標記這些讀取世界語句的實體。 在您的範例語句中接受這些變更，然後進行定型和發佈。 然後，LUIS 會更準確地識別語句。
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 ## <a name="enable-active-learning"></a>啟用主動式學習
 
-若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有`log=true` querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成。
+若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有 querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成 `log=true` 。
 
 使用 LUIS 入口網站來建立正確的端點查詢。
 
-1. 在[預覽 LUIS 入口網站](https://preview.luis.ai/)中，從應用程式清單中選取您的應用程式。
+1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 移至 [**管理**] 區段，然後選取 [ **Azure 資源**]。
 1. 針對指派的預測資源，選取 [**變更查詢參數**]。
 
@@ -60,11 +59,11 @@ ms.locfileid: "79221303"
 
 您可以從檢閱清單中刪除每個語句。 刪除後，它就不再出現於清單中。 即使使用者從端點輸入相同意圖，情況也是如此。
 
-如果您不確定是否應該刪除語句，請將它移至 [無] 意圖，或建立新的意圖（例如`miscellaneous` ），並將語句移至該意圖。
+如果您不確定是否應該刪除語句，請將它移至 [無] 意圖，或建立新的意圖（例如）， `miscellaneous` 並將語句移至該意圖。
 
 ## <a name="disable-active-learning"></a>停用主動式學習
 
-若要停用主動式學習，請不要記錄使用者查詢。 這是藉由使用`log=false` querystring 參數和值來設定[端點查詢](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)，或不使用 querystring 值來完成，因為預設值為 false。
+若要停用主動式學習，請不要記錄使用者查詢。 這是藉由使用 querystring 參數和值來設定[端點查詢](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) `log=false` ，或不使用 querystring 值來完成，因為預設值為 false。
 
 ## <a name="next-steps"></a>後續步驟
 
