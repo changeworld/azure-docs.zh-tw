@@ -2,20 +2,20 @@
 title: 常見問題（FAQ）-LUIS
 description: 本文包含 Language Understanding (LUIS) 常見問題集的解答。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101105"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592843"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding 常見問題集 (FAQ)
 
 本文包含 Language Understanding (LUIS) 常見問題集的解答。
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>最新消息
 
 [深入瞭解](whats-new.md)Language Understanding 的新功能（LUIS）。
 
@@ -66,7 +66,7 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>預建實體會在範例語句中加上標籤，而不是我的自訂實體。 我要如何修正此問題？
 
-在 LUIS 入口網站中，您可以針對您想要解壓縮的確切實體，為文字加上標籤。 如果 LUIS 入口網站未顯示正確的實體預測，您可能需要新增更多語句，並在文字內標記實體，或加入描述項（例如功能）。
+在 LUIS 入口網站中，您可以針對您想要解壓縮的確切實體，為文字加上標籤。 如果 LUIS 入口網站未顯示正確的實體預測，您可能需要新增更多語句，並在文字內標記實體，或加入功能。
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我嘗試匯入應用程式或版本檔案，但收到錯誤訊息，發生了什麼事？
 
@@ -216,7 +216,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 若要深入瞭解，請參閱修正 HTTP 狀態碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) 。
 
-### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我建立了撰寫金鑰，但它並未顯示在 LUIS 入口網站中。 發生什麼情形？
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我建立了撰寫金鑰，但它並未顯示在 LUIS 入口網站中。 發生什麼事？
 
 在[遷移至撰寫金鑰體驗](luis-migration-authoring.md)之後，可在 LUIS 入口網站中取得撰寫金鑰。
 

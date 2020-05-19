@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690830"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592180"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題（FAQ）
 
@@ -22,16 +22,7 @@ ms.locfileid: "82690830"
 
 **問：什麼是可用的？**
 
-**答：** [azure 認知服務中的容器支援](../cognitive-services-container-support.md)可讓開發人員使用 azure 中可用的相同智慧型 api，但具有容器化的[優點](../cognitive-services-container-support.md#features-and-benefits)。 容器支援目前以預覽形式提供給 Azure 認知服務的一部分，包括下列各部分：
-
-> [!div class="checklist"]
-> * [異常偵測器][ad-containers]
-> * [電腦視覺][cv-containers]
-> * [臉部][fa-containers]
-> * [表單辨識器][fr-containers]
-> * [語言理解 (LUIS)][lu-containers]
-> * [語音服務 API][sp-containers]
-> * [文字分析][ta-containers]
+**答：** Azure 認知服務容器可讓開發人員使用 Azure 中可用的相同智慧型 Api，但具有容器化的[優點](../cognitive-services-container-support.md#features-and-benefits)。 有些容器是以[閘道預覽](../cognitive-services-gating-process.md)的形式提供，可能需要應用程式才能存取。 其他容器則以 ungated 預覽的形式公開提供，或已正式推出。 您可以在 Azure 認知服務一文中的[容器支援](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)中找到容器及其可用性的完整清單。 
 
 **問：認知服務雲端與容器之間是否有任何差異？**
 
@@ -62,7 +53,7 @@ ms.locfileid: "82690830"
 
 **問：如何將容器更新為最新版本？**
 
-**答：** 客戶可以選擇何時更新已部署的容器。 容器將會以標準[Docker 標記](https://docs.docker.com/engine/reference/commandline/tag/)（例如） `latest`標示，以指出最新版本。 我們鼓勵客戶在發行時提取最新版本的容器， [Azure Container Registry webhook](../../container-registry/container-registry-webhook.md) ，以取得如何在更新映射時收到通知的詳細資訊。
+**答：** 客戶可以選擇何時更新已部署的容器。 容器將會以標準[Docker 標記](https://docs.docker.com/engine/reference/commandline/tag/)（例如）標示， `latest` 以指出最新版本。 我們鼓勵客戶在發行時提取最新版本的容器， [Azure Container Registry webhook](../../container-registry/container-registry-webhook.md) ，以取得如何在更新映射時收到通知的詳細資訊。
  
 **問：將支援哪些版本？**
 
@@ -80,7 +71,7 @@ ms.locfileid: "82690830"
 
 **問：這些容器是否與 OpenShift 相容？** 
 
-我們不會使用 OpenShift 來測試容器，但一般來說，認知服務容器應該在支援 Docker 映射的任何平臺上執行。 如果您使用的是 OpenShift，建議您將容器當做`root-user`來執行。
+我們不會使用 OpenShift 來測試容器，但一般來說，認知服務容器應該在支援 Docker 映射的任何平臺上執行。 如果您使用的是 OpenShift，建議您將容器當做來執行 `root-user` 。
 
 **問：如何? 提供產品意見反應和功能建議嗎？**
 
@@ -111,7 +102,7 @@ ms.locfileid: "82690830"
 
 **答：** 客戶會根據耗用量計費，類似于認知服務雲端。 容器必須設定為將計量資料傳送至 Azure，而交易則會據此計費。 跨託管和內部部署服務使用的資源，將會新增至具有分層定價的單一配額，並針對這兩種使用方式進行計算。 如需詳細資訊，請參閱對應供應專案的定價頁面。
 
-* [異常偵測器][ad-containers-billing]
+* [Anomaly Detector][ad-containers-billing]
 * [電腦視覺][cv-containers-billing]
 * [臉部][fa-containers-billing]
 * [表單辨識器][fr-containers-billing]
@@ -138,7 +129,7 @@ ms.locfileid: "82690830"
 
 **答：** 認知服務容器是以 x64 為基礎的容器，可執行任何支援 x64 Linux Docker 容器的相容 Linux 節點、VM 和 edge 裝置。 它們都需要 CPU 處理器。 以下提供每個容器供應專案的最低和建議設定：
 
-* [異常偵測器][ad-containers-recommendations]
+* [Anomaly Detector][ad-containers-recommendations]
 * [電腦視覺][cv-containers-recommendations]
 * [臉部][fa-containers-recommendations]
 * [表單辨識器][fr-containers-recommendations]

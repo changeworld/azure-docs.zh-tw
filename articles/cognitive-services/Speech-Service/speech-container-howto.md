@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856421"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591010"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "82856421"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 特性 | 最新 |
+| 函式 | 功能 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和可將連續即時語音或批次音訊錄製。  | 2.2.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.2.0 |
@@ -47,7 +47,7 @@ ms.locfileid: "82856421"
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-填寫並提交認知服務的[語音容器要求表單](https://aka.ms/speechcontainerspreview/)，以要求存取容器。 
+填寫並提交[認知服務容器要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -151,11 +151,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest`標記會提取`en-US`地區設定。 如需其他地區設定，請參閱[語音轉換文字地區](#speech-to-text-locales)設定。
+> `latest`標記會提取 `en-US` 地區設定。 如需其他地區設定，請參閱[語音轉換文字地區](#speech-to-text-locales)設定。
 
 #### <a name="speech-to-text-locales"></a>語音轉換文字地區設定
 
-除了以外的所有標記`latest`都採用下列格式，而且會區分大小寫：
+除了以外的所有標記 `latest` 都採用下列格式，而且會區分大小寫：
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
@@ -180,7 +180,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 ```
 
 > [!NOTE]
-> 自`locale`定義`voice`語音容器的和是由容器所內嵌的自訂模型所決定。
+> `locale` `voice` 自訂語音容器的和是由容器所內嵌的自訂模型所決定。
 
 # <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
@@ -193,11 +193,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest`標記會提取`en-US`地區設定和`jessarus`語音。 如需其他地區設定，請參閱[文字轉換語音的地區](#text-to-speech-locales)設定。
+> `latest`標記會提取 `en-US` 地區設定和 `jessarus` 語音。 如需其他地區設定，請參閱[文字轉換語音的地區](#text-to-speech-locales)設定。
 
 #### <a name="text-to-speech-locales"></a>文字轉換語音的地區設定
 
-除了以外的所有標記`latest`都採用下列格式，而且會區分大小寫：
+除了以外的所有標記 `latest` 都採用下列格式，而且會區分大小寫：
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
@@ -212,7 +212,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 如需所有支援的地區設定和**文字轉換語音**容器的對應語音，請參閱[文字轉換語音影像標記](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 當您建立*標準的文字轉換語音*HTTP POST 時，[語音合成標記語言（SSML）](speech-synthesis-markup.md)訊息需要具有`voice` `name`屬性的元素。 值是對應的容器地區設定和語音，也稱為「[簡短名稱](language-support.md#standard-voices)」。 例如， `latest`標記的語音名稱會是`en-US-JessaRUS`。
+> 當您建立*標準的文字轉換語音*HTTP POST 時，[語音合成標記語言（SSML）](speech-synthesis-markup.md)訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「[簡短名稱](language-support.md#standard-voices)」。 例如，標記的 `latest` 語音名稱會是 `en-US-JessaRUS` 。
 
 # <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
@@ -225,7 +225,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 ```
 
 > [!NOTE]
-> 自`locale`定義`voice`語音容器的和是由容器所內嵌的自訂模型所決定。
+> `locale` `voice` 自訂語音容器的和是由容器所內嵌的自訂模型所決定。
 
 ***
 
@@ -238,11 +238,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得`{Endpoint_URI}`和`{API_Key}`值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 也[examples](speech-container-configuration.md#example-docker-run-commands)可以使用命令`docker run`的其他範例。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` 。 [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` 也可以使用命令的其他範例。
 
 # <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
-若要執行*語音轉換文字*容器，請執行下列`docker run`命令。
+若要執行*語音轉換文字*容器，請執行下列 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -302,12 +302,12 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 ![自訂語音訓練頁面](media/custom-speech/custom-speech-model-training.png)
 
-取得**模型識別碼**，做為`ModelId` `docker run`命令之參數的引數使用。
+取得**模型識別碼**，做為 `ModelId` 命令之參數的引數使用 `docker run` 。
 <br>
 
 ![自訂語音模型詳細資料](media/custom-speech/custom-speech-model-details.png)
 
-下表代表各種`docker run`參數和其對應的描述：
+下表代表各種 `docker run` 參數和其對應的描述：
 
 | 參數 | 描述 |
 |---------|---------|
@@ -316,7 +316,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 | `{ENDPOINT_URI}` | 需要端點才能進行計量和計費。 如需詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 |
 | `{API_KEY}` | 需要 API 金鑰。 如需詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 |
 
-若要執行*自訂的語音轉換文字*容器，請執行下列`docker run`命令：
+若要執行*自訂的語音轉換文字*容器，請執行下列 `docker run` 命令：
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -334,13 +334,13 @@ ApiKey={API_KEY}
 * 配置4個 CPU 核心和 4 gb 的記憶體。
 * 從磁片區輸入裝載載入*自訂語音轉換文字*模型，例如*C:\CustomSpeech*。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
-* 下載指定的`ModelId`模型（如果在磁片區掛接上找不到的話）。
-* 如果先前已下載自訂模型，則`ModelId`會忽略。
+* 下載指定的模型 `ModelId` （如果在磁片區掛接上找不到的話）。
+* 如果先前已下載自訂模型，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
 # <a name="text-to-speech"></a>[文字轉換語音](#tab/tts)
 
-若要執行*文字轉換語音*容器，請執行下列`docker run`命令。
+若要執行*文字轉換語音*容器，請執行下列 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -364,12 +364,12 @@ ApiKey={API_KEY}
 
 ![自訂語音訓練頁面](media/custom-voice/custom-voice-model-training.png)
 
-取得**模型識別碼**，做為 docker run 命令之`ModelId`參數的引數使用。
+取得**模型識別碼**，做為 `ModelId` docker run 命令之參數的引數使用。
 <br>
 
 ![自訂語音模型詳細資料](media/custom-voice/custom-voice-model-details.png)
 
-下表代表各種`docker run`參數和其對應的描述：
+下表代表各種 `docker run` 參數和其對應的描述：
 
 | 參數 | 描述 |
 |---------|---------|
@@ -378,7 +378,7 @@ ApiKey={API_KEY}
 | `{ENDPOINT_URI}` | 需要端點才能進行計量和計費。 如需詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 |
 | `{API_KEY}` | 需要 API 金鑰。 如需詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。 |
 
-若要執行*自訂文字轉換語音*容器，請執行下列`docker run`命令：
+若要執行*自訂文字轉換語音*容器，請執行下列 `docker run` 命令：
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -396,8 +396,8 @@ ApiKey={API_KEY}
 * 配置2個 CPU 核心和 1 gb 的記憶體。
 * 從磁片區輸入裝載載入*自訂文字轉換語音*模型，例如*C:\CustomVoice*。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
-* 下載指定的`ModelId`模型（如果在磁片區掛接上找不到的話）。
-* 如果先前已下載自訂模型，則`ModelId`會忽略。
+* 下載指定的模型 `ModelId` （如果在磁片區掛接上找不到的話）。
+* 如果先前已下載自訂模型，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
 ***
@@ -425,7 +425,7 @@ ApiKey={API_KEY}
 
 # <a name="simple-format"></a>[簡單格式](#tab/simple-format)
 
-若要將語音用戶端設定為使用簡單的格式`"Sentiment"` ，請新增做`Simple.Extensions`為的值。 如果您想要選擇特定的文字分析模型版本，請`'latest'`將屬性`speechcontext-phraseDetection.sentimentAnalysis.modelversion`設定中的取代為。
+若要將語音用戶端設定為使用簡單的格式，請新增 `"Sentiment"` 做為的值 `Simple.Extensions` 。 如果您想要選擇特定的文字分析模型版本，請 `'latest'` 將屬性設定中的取代為 `speechcontext-phraseDetection.sentimentAnalysis.modelversion` 。
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[詳細格式](#tab/detailed-format)
 
-若要將語音用戶端設定為使用詳細的格式`"Sentiment"` ，請新增做`Detailed.Extensions`為`Detailed.Options`、或兩者的值。 如果您想要選擇特定的文字分析模型版本，請`'latest'`將屬性`speechcontext-phraseDetection.sentimentAnalysis.modelversion`設定中的取代為。
+若要將語音用戶端設定為使用詳細的格式，請新增 `"Sentiment"` 做為 `Detailed.Extensions` 、 `Detailed.Options` 或兩者的值。 如果您想要選擇特定的文字分析模型版本，請 `'latest'` 將屬性設定中的取代為 `speechcontext-phraseDetection.sentimentAnalysis.modelversion` 。
 
 ```python
 speech_config.set_service_property(
@@ -479,7 +479,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`在回應的根層中提供情感結果。 `Detailed.Options`提供回應`NBest`層級的結果。 它們可以單獨使用或一起使用。
+`Detailed.Extensions`在回應的根層中提供情感結果。 `Detailed.Options`提供回應層級的結果 `NBest` 。 它們可以單獨使用或一起使用。
 
 ```json
 {
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-如果您想要完全停用情感分析，請`false`將值`sentimentanalysis.enabled`新增至。
+如果您想要完全停用情感分析，請將 `false` 值新增至 `sentimentanalysis.enabled` 。
 
 ```python
 speech_config.set_service_property(

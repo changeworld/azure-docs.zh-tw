@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372416"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590888"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>待用資料的 Translator 加密
 
@@ -41,7 +41,7 @@ Translator 會自動加密您的資料，您可以上傳來建立自訂翻譯模
 
 請遵循下列步驟，為 Translator 啟用客戶管理的金鑰：
 
-1. 建立新的地區翻譯工具文字或區域認知服務資源。 這不會與全域資源搭配使用。
+1. 建立新的地區翻譯工具或區域認知服務資源。 這不會與全域資源搭配使用。
 2. 已在 Azure 入口網站中啟用受控識別，並新增客戶管理的金鑰資訊。
 3. 在自訂翻譯中建立新的工作區，並建立此訂用帳戶資訊的關聯。
 

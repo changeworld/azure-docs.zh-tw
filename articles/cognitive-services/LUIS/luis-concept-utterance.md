@@ -2,13 +2,13 @@
 title: 良好的範例語句-LUIS
 description: 語句是應用程式需要解譯的使用者輸入。 收集您認為使用者會輸入的片語。 納入意義相同但以不同單字長度和單字位置建構的語句。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382282"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592860"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
 
@@ -68,11 +68,27 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 ## <a name="utterance-normalization"></a>語句正規化
 
-語句正規化是在定型和預測期間忽略標點符號和變音符號效果的程式。 使用[應用程式設定](luis-reference-application-settings.md)來控制語句正規化如何影響語句預測。
+語句正規化是在定型和預測期間忽略文字類型的效果，例如標點符號和變音符號的過程。
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>變音符號和標點符號的語句正規化
+預設會關閉語句正規化設定。 這些設定包括：
 
-當您建立或匯入應用程式時，會定義語句正規化，因為它是應用程式 JSON 檔案中的設定。 預設會關閉語句正規化設定。
+* Word 表單
+* 音調
+* 標點符號
+
+如果您開啟正規化設定，則該正規化設定的所有語句的 [**測試**] 窗格、[批次測試] 和 [端點] 查詢的分數將會變更。
+
+當您在 LUIS 入口網站中複製版本時，版本設定會繼續到新複製的版本。
+
+在 [**管理**] 區段的 [**應用程式設定**] 頁面上，或[更新版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)，透過 LUIS 入口網站設定版本設定。 若要深入瞭解這些正規化變更，請[參閱參考](luis-reference-application-settings.md)。
+
+### <a name="word-forms"></a>Word 表單
+
+正規化**word forms**會忽略擴充到根外之單字的差異。 例如，、和這一字會 `run` `running` `runs` 根據動詞時態而變更。
+
+<a name="utterance-normalization-for-diacritics-and-punctuation"></a>
+
+### <a name="diacritics"></a>音調
 
 變音符號是文字中的標記或符號，例如：
 
@@ -80,24 +96,8 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-如果您的應用程式開啟正規化，則在 [**測試**] 窗格中，批次測試和端點查詢的分數會針對所有使用變音符號或標點符號的語句進行變更。
-
-在參數中，為您的`settings` LUIS JSON 應用程式檔開啟語句正規化的字元或標點符號。
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"},
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
-
-正規化**標點符號**表示在您的模型經過定型之前，在您的端點查詢預測之前，會從語句中移除標點符號。
-
-正規化**變音符號**會以一般字元，在語句中以變音符號取代字元。 例如： `Je parle français`變成`Je parle francais`。
-
-正規化並不表示您不會在範例語句或預測回應中看到標點符號和變音符號，只是在定型和預測期間會忽略它們。
-
 ### <a name="punctuation-marks"></a>標點符號
+正規化**標點符號**表示在您的模型經過定型之前，在您的端點查詢預測之前，會從語句中移除標點符號。
 
 標點符號在 LUIS 中是個別的語彙基元。 在結尾處包含句號的語句，以及在結尾不包含句號的語句是兩個不同的語句，而且可能會得到兩個不同的預測。
 
@@ -109,9 +109,11 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略單字和標點符號
 
-如果您想要忽略模式中的特定單字或標點符號，請搭配使用[模式](luis-concept-patterns.md#pattern-syntax)與_略_過方括弧的語法`[]`。
+如果您想要忽略模式中的特定單字或標點符號，請搭配使用[模式](luis-concept-patterns.md#pattern-syntax)與_略_過方括弧的語法 `[]` 。
 
-## <a name="training-utterances"></a>將語句定型
+<a name="training-utterances"></a>
+
+## <a name="training-with-all-utterances"></a>所有語句的訓練
 
 定型通常不具確定性：版本或應用程式間的語句預測會稍微不同。
 您可以更新[版本設定](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API，以 `UseAllTrainingData`名稱/值配對來使用所有定型資料，藉此移除非確定性的定型。

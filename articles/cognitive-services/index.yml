@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 734c95524088bf9b4f92e7e1981aabe3f1b963f2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 3c68051c0df1cb2d15a1ef2bac6ea74fbf671f77
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529852"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83591789"
 highlightedContent:
   items:
   - title: 認知服務是什麼？
@@ -83,7 +83,7 @@ conceptualContent:
       text: 文字分析
     - url: ./translator/index.yml
       itemType: overview
-      text: 翻譯文字
+      text: 轉譯程式
   - title: 語音
     summary: 將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。
     links:

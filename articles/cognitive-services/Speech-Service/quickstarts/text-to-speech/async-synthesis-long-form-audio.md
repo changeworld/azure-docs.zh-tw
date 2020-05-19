@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561976"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592554"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入門：在 Python 中針對長格式音訊進行非同步合成（預覽）
 
 在本快速入門中，您將使用長音訊 API 以非同步方式將文字轉換成語音，並從服務所提供的 URI 中取出音訊輸出。 此 REST API 適用于需要從超過5000個字元的文字合成音訊的內容提供者（或長度超過10分鐘）。 如需詳細資訊，請參閱[長音訊 API](../../long-audio-api.md)。
 
-> [!NOTE]
-> 適用于長格式音訊的非同步合成僅能與[自訂類神經語音](../../how-to-custom-voice.md#custom-neural-voices)搭配使用。
+適用于長格式音訊的非同步合成可以搭配[公用類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)和[自訂類神經語音](../../how-to-custom-voice.md#custom-neural-voices)使用，每個都支援特定語言和方言。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -34,7 +33,7 @@ ms.locfileid: "82561976"
 
 ## <a name="create-a-project-and-import-required-modules"></a>建立專案，並匯入所需的模組
 
-在您慣用的 IDE 或編輯器建立新的 Python 專案。 然後將此程式碼片段複製到名為`voice_synthesis_client.py`的檔案中。
+在您慣用的 IDE 或編輯器建立新的 Python 專案。 然後將此程式碼片段複製到名為的檔案中 `voice_synthesis_client.py` 。
 
 ```python
 import argparse
@@ -56,7 +55,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ## <a name="get-a-list-of-supported-voices"></a>取得支援的語音清單
 
-這段程式碼會取得可用來將文字轉換成語音的語音清單。 將程式碼新增`voice_synthesis_client.py`至：
+這段程式碼可讓您取得您可以使用之特定區域/端點的完整語音清單。 請檢查[支援的區域/端點](../../long-audio-api.md)。 將程式碼新增至 `voice_synthesis_client.py` ：
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -83,7 +82,7 @@ if args.voices:
 讓我們來測試到目前為止所做的工作。 您必須更新下列要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將`<region>`取代為您的語音資源建立所在的區域（例如： `eastus`或`westus`）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 
 請執行這個命令：
 
@@ -100,13 +99,15 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+如果**PublicVoice**參數為**True**，則語音是公用神經語音。 否則，它是自訂類神經語音。 
+
 ## <a name="prepare-input-files"></a>準備輸入檔
 
 準備輸入文字檔。 它可以是純文字或 SSML 文字。 如需輸入檔的需求，請參閱如何[準備內容以進行合成](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)。
 
 ## <a name="convert-text-to-speech"></a>將文字轉換成語音
 
-準備輸入文字檔之後，請將下列語音合成程式碼加入`voice_synthesis_client.py`：
+準備輸入文字檔之後，請將下列語音合成程式碼加入 `voice_synthesis_client.py` ：
 
 > [!NOTE]
 > ' concatenateResult ' 是選擇性參數。 如果未設定此參數，則會針對每個段落產生音訊輸出。 您也可以藉由設定參數，將音訊串連成1個輸出。 根據預設，音訊輸出會設定為 riff-riff-16khz-16bit-mono-pcm-dxil 16 位-mono-pcm。 如需有關支援的音訊輸出的詳細資訊，請參閱[音訊輸出格式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)。
@@ -175,10 +176,10 @@ if args.submit:
 讓我們使用您的輸入檔做為來源，來提出合成文字的要求。 您必須更新下列要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將`<region>`取代為您的語音資源建立所在的區域（例如： `eastus`或`westus`）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 取代`<input>`為您已準備文字轉換語音的文字檔路徑。
-* 取代`<locale>`為想要的輸出地區設定。 如需詳細資訊，請參閱[語言支援](../../language-support.md#neural-voices)。
-* 取代`<voice_guid>`為所需的輸出聲音。 使用其中一個所傳回的語音，[取得支援的語音清單](#get-a-list-of-supported-voices)。
+* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 取代為 `<input>` 您已準備文字轉換語音的文字檔路徑。
+* 取代 `<locale>` 為想要的輸出地區設定。 如需詳細資訊，請參閱[語言支援](../../language-support.md#neural-voices)。
+* 取代 `<voice_guid>` 為所需的輸出聲音。 使用其中一個所傳回的語音，[取得支援的語音清單](#get-a-list-of-supported-voices)。
 
 使用下列命令將文字轉換為語音：
 
@@ -215,7 +216,7 @@ Succeeded... Result file downloaded : xxxx.zip
 
 伺服器會針對每個 Azure 訂用帳戶保留最多**20000**個要求。 如果您的要求數量超出此限制，請先移除先前的要求，再建立新的要求。 如果您未移除現有的要求，您會收到錯誤通知。
 
-將程式碼新增`voice_synthesis_client.py`至：
+將程式碼新增至 `voice_synthesis_client.py` ：
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -251,7 +252,7 @@ if args.delete:
 現在，讓我們檢查以查看您先前提交的要求。 在繼續之前，您必須先更新此要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將`<region>`取代為您的語音資源建立所在的區域（例如： `eastus`或`westus`）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 
 請執行這個命令：
 
@@ -271,8 +272,8 @@ ID : xxx , Name : xxx : Succeeded
 現在，讓我們移除先前提交的要求。 您必須更新下列程式碼中的幾個專案：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將`<region>`取代為您的語音資源建立所在的區域（例如： `eastus`或`westus`）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 取代`<synthesis_id>`為前一個要求中傳回的值。
+* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 取代 `<synthesis_id>` 為前一個要求中傳回的值。
 
 > [!NOTE]
 > 狀態為「執行中」/「正在等候」的要求無法移除或刪除。
@@ -292,7 +293,7 @@ delete successful
 
 ## <a name="get-the-full-client"></a>取得完整的用戶端
 
-您可以`voice_synthesis_client.py`從[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)下載已完成的。
+您 `voice_synthesis_client.py` 可以從[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)下載已完成的。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,90 +1,147 @@
 ---
 title: 功能-LUIS
-titleSuffix: Azure Cognitive Services
 description: 將特性新增至語言模型，以針對如何辨識您想要標示或分類的輸入，提供相關提示。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.author: diberry
-ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531893"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591891"
 ---
-# <a name="machine-learned-features"></a>機器學習的功能
+# <a name="machine-learning-ml-features"></a>機器學習（ML）功能
 
-在機器學習中，_功能_是您的系統觀察 & 學習之資料的特性或屬性（attribute）。 在 Language Understanding （LUIS）中，功能會描述並說明您的意圖和實體有何意義。
+在機器學習中， **功能**   是您的系統觀察到的資料特徵或屬性。
 
-在[預覽 LUIS 入口網站](https://preview.luis.ai)中，功能是描述項 _，因為它們是用_來_說明_意圖或實體。
+機器學習服務功能提供 LUIS 重要的提示，讓您在何處尋找會區分概念的專案。 這些是 LUIS 可以使用但不是硬規則的提示。  這些提示會與標籤搭配使用，以尋找資料。
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Language Understanding 中的功能（_描述_項）
+ LUIS 支援片語清單，並使用其他實體做為特徵：
+* 片語清單功能
+* 模型（意圖或實體）做為功能
 
-「功能」（也稱為「描述項」）描述可協助 Language Understanding 識別語句範例的線索。 功能包括：
+應該將功能視為架構設計的必要部分。
 
-* 片語清單做為意圖或實體的功能
-* 實體做為意圖或實體的特徵
+## <a name="a-phrase-list-for-a-particular-concept"></a>特定概念的片語清單
 
-您應該將功能視為架構的必要部分，以進行模型分解。
+片語清單是封裝特定概念的單字或片語清單。
 
-## <a name="what-is-a-phrase-list"></a>什麼是片語清單
+新增片語清單時，您可以將此功能設定為：
+* **[全域](#global-features)**。 全域功能適用于整個應用程式。
 
-片語清單是單字、片語、數位或其他字元的清單，可協助您識別您嘗試識別的概念。 此清單不區分大小寫。
+### <a name="when-to-use-a-phrase-list"></a>使用片語清單的時機
 
-## <a name="when-to-use-a-phrase-list"></a>使用片語清單的時機
-
-在片語清單中，LUIS 會考慮 coNtext 和一般化來識別類似的專案，但不是完全相符的文字。 如果您需要 LUIS 應用程式能夠將新專案一般化並加以識別，請使用片語清單。
-
-當您想要能夠辨識新的實例時（例如應該辨識新連絡人名稱的會議排程器），或應辨識新產品的清查應用程式，請從機器學習的實體開始。 然後建立片語清單，協助 LUIS 尋找具有類似意義的單字。 此片語清單會將額外的重要性新增至這些單字的值，以引導 LUIS 辨識範例。
-
-片語清單就像是網域專屬詞彙，有助於增強意圖和實體的理解品質。
-
-## <a name="considerations-when-using-a-phrase-list"></a>使用片語清單時的考慮
-
-根據預設，片語清單會套用至應用程式中的所有模型。 這適用于可跨所有意圖和實體的片語清單。 針對 decomposability，您應該只將片語清單套用到其相關的模型。
-
-如果您建立片語清單（預設為全域建立），然後將它當做描述項（功能）套用至特定模型，則會從其他模型中移除它。 這項移除會為其所套用的模型新增與片語清單的相關性，以協助改善模型中所提供的精確度。
-
-`enabledForAllModels`旗標會控制 API 中的此模型範圍。
-
-<a name="how-to-use-phrase-lists"></a>
+當您需要 LUIS 應用程式能夠一般化並識別概念的新專案時，請使用片語清單。 片語清單就像是網域專屬詞彙，有助於增強意圖和實體的理解品質。
 
 ### <a name="how-to-use-a-phrase-list"></a>如何使用片語清單
 
-當您的意圖或實體具有很重要的單字或片語時，請[建立片語清單](luis-how-to-add-features.md)，例如：
+在片語清單中，LUIS 會考慮 coNtext 和一般化來識別類似的專案，但不是完全相符的文字。
 
-* 業界術語
-* 俚語
-* 縮寫
-* 公司特定語言
-* 來自另一種語言但通常在您的應用程式中使用的語言
-* 範例表達中的關鍵字或片語
+使用片語清單的步驟：
+* 開始使用機器學習的實體
+    * 新增範例語句
+    * 具有機器學習實體的標籤
+* 新增片語清單
+    * 新增具有類似意義的文字-**不要新增每**個可能的單字或片語。 相反地，一次新增幾個單字或片語，然後重新定型和發佈。
+    * 審查並新增建議的單字
 
-請勿**新增每**個可能的單字或片語。 相反地，一次新增幾個單字或片語，然後重新定型和發佈。 當清單隨著時間成長時，您可能會發現某些詞彙有許多形式（同義字）。 將這些分解成另一個清單。
+### <a name="a-typical-scenario-for-a-phrase-list"></a>片語清單的一般案例
 
+片語清單的一般案例是要提升與特定概念相關的單字。
+
+可能需要片語清單才能提高其重要性的單字範例，就是醫療用語。 這些詞彙可以具有特定的實體、化學、ekko-wave 治療或抽象意義。 LUIS 不會知道詞彙對您的主旨網域而言很重要，而沒有片語清單。
+
+如果您想要將醫療詞彙解壓縮：
+* 首先，建立範例語句，並在這些語句中加上醫學用語。
+* 然後使用主體網域內的條款範例來建立片語清單。 此片語清單應包含您標示的實際字詞，以及描述相同概念的其他詞彙。
+* 將片語清單新增至實體或列，以解壓縮片語清單中所使用的概念。 最常見的案例是機器學習實體的元件（子系）。 如果片語清單應套用到所有意圖或實體，請將片語清單標記為全域片語清單。 旗標會 `enabledForAllModels` 控制 API 中的此模型範圍。
+
+<a name="how-to-use-phrase-lists"></a>
+<a name="how-to-use-a-phrase-lists"></a>
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>使用實體做為功能的時機
+## <a name="a-model-as-a-feature-helps-another-model"></a>當做功能的模型可協助另一個模型
 
-實體可以做為意圖或實體層級的功能加入。
+您可以將模型（意圖或實體）當做功能加入另一個模型（意圖或實體）。 藉由加入現有的意圖或實體做為功能，您就可以新增具有標籤範例的定義完善概念。
 
-### <a name="entity-as-a-feature-to-an-intent"></a>實體做為意圖的功能
+將模型新增為功能時，您可以將此功能設定為：
+* **[必要](#required-features)**。 必須找到必要的功能，才能從預測端點傳回模型。
+* **[全域](#global-features)**。 全域功能適用于整個應用程式。
 
-當實體的偵測對意圖而言很重要時，請將實體做為描述項（功能）新增至意圖。
+### <a name="when-to-use-an-entity-as-a-feature-to-an-intent"></a>何時使用實體做為意圖的功能
 
-例如，如果意圖是用來預約航班，而實體是票證資訊（例如基座數目、原點和目的地），則尋找票證資訊實體應該將權數新增至書籍航班意圖的預測。
+當實體的偵測對意圖而言很重要時，請將實體當做功能新增至意圖。
 
-### <a name="entity-as-a-feature-to-another-entity"></a>實體做為另一個實體的功能
+例如，如果意圖是用來預約航班， `BookFlight` 而實體是票證資訊（例如基座數目、原點和目的地），則尋找票證資訊實體應該會對意圖的預測增加相當的權數 `BookFlight` 。
+
+### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>使用實體做為另一個實體之功能的時機
 
 當實體（A）的偵測對實體（B）的預測很重要時，應該將實體（A）當做功能加入另一個實體（B）。
 
-例如，如果偵測到街道位址實體（A），則尋找街道位址（A）會為出貨位址實體（B）的預測增加權數。
+例如，如果 n 出貨位址實體包含街道位址列，則尋找街道位址列會為出貨位址實體的預測增加大量權數。
+
+* 交貨位址（機器學習的實體）
+    * 街道號碼（列）
+    * 街道位址（列）
+    * 城市（列）
+    * 州或省（列）
+    * 國家（地區）（列）
+    * 郵遞區號（列）
+
+## <a name="required-features"></a>必要的功能
+
+必須找到必要的功能，才能從預測端點傳回模型。 當您知道傳入的資料必須符合此功能時，請使用必要的功能。
+
+**必要功能會使用非機器學習的實體**：
+* 規則運算式實體
+* 清單實體
+* 預建實體
+
+哪些不錯的功能可以標示為必要？ 如果您確信您的模型會在資料中找到，請視需要設定此功能。 必要功能不會傳回任何專案（如果找不到的話）。
+
+繼續進行寄送位址的範例：
+* 交貨位址（機器學習的實體）
+    * 街道號碼（列）
+    * 街道位址（列）
+    * 街道名稱（列）
+    * 城市（列）
+    * 州或省（列）
+    * 國家（地區）（列）
+    * 郵遞區號（列）
+
+### <a name="required-feature-using-prebuilt-entities"></a>使用預先建立的實體所需的功能
+
+「城市」、「州」和「國家/地區」通常是一組封閉的清單，這表示它們不會隨著時間而改變。 這些實體可能會有相關的建議功能，而這些功能可能會標示為必要。 這表示不會傳回整個運送位址，因為找不到具有所需功能的實體。
+
+如果城市、州或國家（地區）位於語句中，但在 LUIS 不會預期的位置或俚語中，該怎麼辦？ 如果您想要提供一些 post 處理來協助解決實體，因為 LUIS 的信賴分數較低，請勿將此功能標示為必要。
+
+送貨位址的另一個必要功能範例是讓街道編號成為必要的[預先](luis-reference-prebuilt-entities.md)建立編號。 這可讓使用者輸入「1個 Microsoft 的方式」或「一位 Microsoft 的方式」。 兩者都會解析為街道號碼列的數位 "1"。
+
+### <a name="required-feature-using-list-entities"></a>使用清單實體所需的功能
+
+[清單實體](reference-entity-list.md)會用來做為正式名稱的清單及其同義字。 作為必要功能，如果語句不包含正式名稱或同義字，則實體不會當做預測端點的一部分傳回。
+
+繼續寄送位址範例，假設您的公司只會寄給一組有限的國家/地區。 您可以建立清單實體，其中包含您的客戶可以參考國家/地區的數種方式。 如果 LUIS 在語句的文字內找不到完全相符的專案，則預測中不會傳回實體（具有清單實體的必要功能）。
+
+|正式名稱|同義字|
+|--|--|
+|美國|美式英文<br>美國<br>美國<br>USA<br>0|
+
+用戶端應用程式（例如聊天機器人）可以詢問後續問題，因此客戶瞭解國家/地區選擇有限且_必要_。
+
+### <a name="required-feature-using-regular-expression-entities"></a>使用正則運算式實體的必要功能
+
+當做必要功能使用的[正則運算式實體](reference-entity-regular-expression.md)會提供豐富的文字比對功能。
+
+繼續使用寄送位址，您可以建立正則運算式來捕捉國家（地區）郵遞區號的語法規則。
+
+## <a name="global-features"></a>全域功能
+
+雖然最常見的用法是將功能套用至特定模型，但您可以將此功能設定為**全域功能**，以將它套用至整個應用程式。
+
+全域功能最常見的用途，就是將其他詞彙（例如另一種語言的單字）新增至應用程式。 如果您的客戶使用主要語言，但預期能夠在同一個語句中使用另一種語言，您可以新增包含次要語言文字的功能。
+
+由於使用者預期會在任何意圖或實體上使用第二種語言，因此應該將其加入片語清單，並將片語清單設定為全域功能。
 
 ## <a name="best-practices"></a>最佳作法
 了解[最佳做法](luis-concept-best-practices.md)。

@@ -1,20 +1,33 @@
 ---
 title: 新功能-Language Understanding （LUIS）
 description: 本文會定期更新 Azure 認知服務 Language Understanding API 的相關新聞。
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097722"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592792"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
 了解該服務的新功能。 這些專案包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="may-2020---build"></a>5月 2020-build
+
+* 發行為正式**推出**（GA）：
+    * [Language Understanding 容器](luis-container-howto.md)
+    * 預覽入口網站已升級為[目前的入口](https://www.luis.ai)網站，[先前](https://previous.luis.ai)的入口網站仍可使用
+    * 新的機器學習實體建立和標籤體驗
+    * 從複合和簡單實體升級為機器學習實體的[流程](migrate-from-composite-entity.md)
+    * [設定](how-to-application-settings-portal.md)正規化字變體的支援
+* 預覽編寫 API 變更
+    * 適用于嵌套機器學習實體的應用程式架構7。x
+    * [遷移至必要功能](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -26,7 +39,7 @@ ms.locfileid: "82097722"
 
 * 提升開發人員生產力
     * 正式推出的[預測端點 V3](luis-migration-api-v3.md)。
-    * 能夠以 lu （[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式匯入和匯出應用程式。 這鋪路了有效 CI/CD 程式的方式。
+    * 能夠以 `.lu` （[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式匯入和匯出應用程式。 這鋪路了有效 CI/CD 程式的方式。
 * 語言擴充
     * [阿拉伯文和印度](luis-language-support.md)文（公開預覽）。
 * 預先建置的模型

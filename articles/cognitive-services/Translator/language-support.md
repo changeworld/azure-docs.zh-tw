@@ -1,7 +1,7 @@
 ---
-title: 語言支援 - 翻譯工具文字 API
+title: 語言支援-Translator
 titleSuffix: Azure Cognitive Services
-description: 翻譯工具文字 API 支援下列使用類神經機器翻譯（NMT）之文字到文字翻譯的語言。
+description: 認知服務 Translator 支援下列使用類神經機器翻譯（NMT）之文字到文字翻譯的語言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684835"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592724"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>翻譯工具文字 API 支援的語言和區域
+# <a name="language-and-region-support-for-translator"></a>翻譯工具的語言和區域支援
 
-翻譯工具文字 API 支援以下語言的文字轉文字翻譯。 類神經機器翻譯 (NMT) 是高品質 AI 技術支援機器翻譯的新標準，在具備類神經系統時，若使用翻譯工具文字 API 第 3 版，該新標準將為預設值。
+翻譯工具支援文字轉換文字的下列語言。 類神經機器翻譯（NMT）是適用于高品質 AI 電腦翻譯的新標準，並可在類神經系統可用時，使用翻譯工具 V3 作為預設值。
 
 [深入了解機器翻譯的運作方式](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>翻譯
 
-**V2 Translator API**
+**V2 Translator**
 
 > [!NOTE]
 > V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以利用在 V3 中專門提供的新功能。
@@ -35,12 +35,12 @@ ms.locfileid: "81684835"
 * 類神經預設值：類神經是預設的轉譯系統。 使用 `category=smt` 參數存取搭配 Microsoft Translator Hub 使用的統計系統。
 * 僅類神經：僅可使用類神經轉譯。
 
-**V3 Translator API** V3 Translator API 預設為類神經架構，而統計系統僅適用於沒有類神經系統存在時。
+**V3 Translator**V3 轉譯程式預設為類神經，只有在沒有類神經系統存在時，才可使用統計系統。
 
 > [!NOTE]
 > 目前，類神經語言的子集可在自訂翻譯中使用，我們會逐漸新增其他類神經語言。 [觀看自訂翻譯中目前可用的語言](#customization)。
 
-|Language|  語言代碼|  V3 API|
+|語言|  語言代碼|  V3 API|
 |:-----|:-----:|:-----|
 |南非荷蘭文| `af`|   類神經|
 |阿拉伯文|    `ar`    |   類神經|
@@ -65,7 +65,7 @@ ms.locfileid: "81684835"
 |希臘文| `el`    |   類神經|
 |古吉拉特文|  `gu`    |   類神經|
 |海地克裏奧爾文|    `ht`        |統計|
-|Hebrew |`he`   |類神經
+|希伯來文 |`he`   |類神經
 |Hindi| `hi`    |   類神經|
 |白苗文| `mww`   |   統計|
 |匈牙利文| `hu`    |   類神經|
@@ -116,22 +116,22 @@ ms.locfileid: "81684835"
 |猶加敦馬雅文|  `yua`   |   統計|
 
 > [!NOTE]
-> 語言代碼`pt`會預設為`pt-br`，葡萄牙文（巴西）。
+> 語言代碼 `pt` 會預設為 `pt-br` ，葡萄牙文（巴西）。
 
 ## <a name="transliteration"></a>轉換
 
 轉換方法支援以下語言。 在「至/自」列中，「<-->」表示該語言後方所列的兩種文字可相互轉換。 「-->」表示該語言只能從某種文字轉寫成另一種文字。
 
-| Language    | 語言代碼 | 指令碼 | 至/自 | 指令碼|
+| 語言    | 語言代碼 | 指令碼 | 去/從 | 指令碼|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 |孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
-| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
-| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
-| 中文 (繁體) | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
-| 中文 (繁體) | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
+| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
+| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
+| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
+| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
 | 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | --> | 拉丁文 `Latn` |
-| Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
+| 希伯來文 | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
 | 坎那達文 | `kn` | 坎那達文 `Knda` | --> | 拉丁文 `Latn` |
@@ -149,7 +149,7 @@ ms.locfileid: "81684835"
 
 字典支援使用查閱與範例方法來查詢下列語言的英文譯文，或英文的下列語言譯文。
 
-| Language    | 語言代碼 |
+| 語言    | 語言代碼 |
 |:----------- |:-------------:|
 | 南非荷蘭文      | `af`          |
 | 阿拉伯文       | `ar`          |
@@ -168,7 +168,7 @@ ms.locfileid: "81684835"
 | 德文      | `de`          |
 | 希臘文      | `el`          |
 | 海地克裏奧爾文      | `ht`          |
-| Hebrew      | `he`          |
+| 希伯來文      | `he`          |
 | Hindi      | `hi`          |
 | 白苗文      | `mww`          |
 | 匈牙利文      | `hu`          |
@@ -204,12 +204,12 @@ ms.locfileid: "81684835"
 
 ## <a name="detect"></a>Detect
 
-翻譯工具文字 API 會偵測所有可用於轉譯和音譯的語言。
+翻譯工具會偵測所有可用於轉譯和音譯的語言。
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>以程式設計方式存取翻譯工具文字 API 的語言清單
+## <a name="access-the-translator-language-list-programmatically"></a>以程式設計方式存取翻譯工具語言清單
 
-您可以使用語言方法擷取翻譯工具文字 API v3.0 的支援語言清單。 您可以依特色、語言代碼，以及該語言的英文名稱或任何其他受支援語言的名稱，來檢視清單。 當我們提供新語言時，Microsoft Translator 服務會自動更新此清單。
+您可以使用 [語言] 方法，抓取 Translator v3.0 的支援語言清單。 您可以依特色、語言代碼，以及該語言的英文名稱或任何其他受支援語言的名稱，來檢視清單。 當我們提供新語言時，Microsoft Translator 服務會自動更新此清單。
 
 [檢視語言作業參考文件](reference/v3-0-languages.md)
 
@@ -217,7 +217,7 @@ ms.locfileid: "81684835"
 
 下列語言可使用[自訂翻譯](https://aka.ms/CustomTranslator)自訂或英文。
 
-| Language    | 語言代碼 |
+| 語言    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文       | `ar`          |
 | 孟加拉文      | `bn`          |
@@ -235,7 +235,7 @@ ms.locfileid: "81684835"
 | 法文      | `fr`          |
 | 德文      | `de`          |
 | 希臘文      | `el`          |
-| Hebrew      | `he`          |
+| 希伯來文      | `he`          |
 | Hindi      | `hi`          |
 | 匈牙利文      | `hu`          |
 | 冰島文 | `is` |
@@ -269,6 +269,6 @@ ms.locfileid: "81684835"
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>存取 Microsoft Translator 網站上的清單
 
-如需快速一覽所有語言，Microsoft Translator 網站顯示了翻譯工具文字與語音 API 支援的所有語言。 這份清單不含開發人員特定資訊，例如語言代碼。
+若要快速流覽語言，Microsoft Translator 網站會顯示 Translator 和 Speech Api 支援的所有語言。 這份清單不含開發人員特定資訊，例如語言代碼。
 
 [查看語言清單](https://www.microsoft.com/translator/languages.aspx) \(英文\)

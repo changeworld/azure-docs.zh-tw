@@ -1,7 +1,7 @@
 ---
-title: 轉換文字 - 翻譯工具文字 API
+title: 轉換文字-翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 使用翻譯工具文字 API 轉換文字。
+description: 使用翻譯工具轉換文字。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68594903"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592197"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
 > [!NOTE]
-> 此方法已被取代。 Translator Text API V3.0 中不提供此功能。
+> 此方法已被取代。 在翻譯工具的 v3.0 中不提供此功能。
 
 TransformText 方法是一個社交媒體的文字正規化函式，會傳回輸入內容的正規化形式。 針對機器翻譯或其他預期要有整齊輸入文字 (通常在社交媒體或使用者產生的內容中不會有) 的應用程式，此方法可用來作為前處理步驟。 此函式目前只對英文輸入有用。
 

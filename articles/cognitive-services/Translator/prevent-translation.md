@@ -1,7 +1,7 @@
 ---
-title: 防止翻譯內容 - Translator Text API
+title: 防止內容轉譯-Translator
 titleSuffix: Azure Cognitive Services
-description: 使用 Translator Text API 防止翻譯內容。 Translator Text API 可讓您標記內容，使其不要翻譯。
+description: 使用翻譯工具防止內容轉譯。 翻譯工具可讓您標記內容，使其不會轉譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33939976a0824ce8afeb2e6f6fb19e7033098683
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052475"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592690"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用 Translator Text API 防止翻譯內容
+# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何使用翻譯工具防止內容轉譯
 
-Translator Text API 可讓您標記內容，使其不要翻譯。 例如，您可以標記程式碼、品牌名稱，或當地語系化後沒有意義的字組/片語。
+翻譯工具可讓您標記內容，使其不會轉譯。 例如，您可以標記程式碼、品牌名稱，或當地語系化後沒有意義的字組/片語。
 
 ## <a name="methods-for-preventing-translation"></a>防止翻譯的方法
 
@@ -39,11 +39,11 @@ Translator Text API 可讓您標記內容，使其不要翻譯。 例如，您�
 
 2. 使用[動態字典](dynamic-dictionary.md)來規定特定翻譯。
 
-3. 請勿將字串傳遞至 Translator Text API 進行翻譯。
+3. 請勿將字串傳遞至翻譯工具進行轉譯。
 
 4. 自訂翻譯：使用[自訂翻譯中的字典](custom-translator/what-is-dictionary.md)來規定以100% 機率轉譯的片語。
 
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [避免在 Translator API 呼叫中翻譯](reference/v3-0-translate.md)
+> [避免翻譯工具呼叫中的轉譯](reference/v3-0-translate.md)
