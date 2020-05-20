@@ -101,7 +101,7 @@ ms.locfileid: "68943347"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     >[!NOTE]
     >您會從本教學課程的**設定 Recognize 單一登入**一節中取得**服務提供者中繼資料檔案**。
@@ -169,7 +169,7 @@ ms.locfileid: "68943347"
    
     ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-6. 在空白瀏覽器下方開啟**中繼資料 URL 連結**，以下載中繼資料文件。 然後，從檔案中複製 EntityDescriptor 值 (entityID) 值，然後貼到 Azure 入口網站中 [基本 SAML 組態]  區段的 [識別碼]  文字方塊中。
+6. 在空白瀏覽器下方開啟**中繼資料 URL 連結**，以下載中繼資料文件。 然後，從檔案中複製 EntityDescriptor 值 (entityID) 值，然後貼到 Azure 入口網站中 [基本 SAML 組態] 區段的 [識別碼] 文字方塊中。
     
     ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_004.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "68943347"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -132,7 +132,7 @@ TimeLive 與 Azure AD 整合提供下列優點：
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 TimeLive 公司網站。
 
-2. 在 [管理選項]  下選取 [喜好設定]  。
+2. 在 [管理選項] 下選取 [喜好設定]。
 
     ![TimeLive 組態](./media/timelive-tutorial/configure1.png)
 
@@ -144,7 +144,7 @@ TimeLive 與 Azure AD 整合提供下列優點：
 
     b. 選取 [啟用單一登入 (SSO)]  核取方塊。
 
-    c. 從標題為 [使用下列以單一登入 (SSO) 登入]  的下拉式功能表選取 [SAML]  。
+    c. 從標題為 [使用下列以單一登入 (SSO) 登入] 的下拉式功能表選取 [SAML]。
 
     d. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -194,7 +194,7 @@ TimeLive 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -34,7 +34,7 @@ ms.locfileid: "60889975"
 
 使用 Azure 帳戶認證登入 [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)。
 
-按一下 [遠端監視]  圖格。 在 [遠端監視]  頁面，按一下 [立即試用]  ：
+按一下 [遠端監視]  圖格。 在 [遠端監視] 頁面，按一下 [立即試用]：
 
 ![選擇遠端監視](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "60889975"
 
 [![儀表板中的地圖上顯示壓力警示和裝置](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
-在 [警示]  面板中，於 [瀏覽]  資料行中按一下 [冷卻器壓力過高]  規則旁的 [...]  。 此動作會將您導向 [維護]  頁面，以供您檢視觸發了警示的規則詳細資料。
+在 [警示] 面板中，於 [瀏覽] 資料行中按一下 [冷卻器壓力過高] 規則旁的 [...]。 此動作會將您導向 [維護]  頁面，以供您檢視觸發了警示的規則詳細資料。
 
 [冷卻器壓力過高]  維護頁面會顯示觸發了警示的規則詳細資料。 此頁面也會列出警示的發生時間，以及有哪些裝置觸發了這些警示：
 
@@ -131,7 +131,7 @@ ms.locfileid: "60889975"
 
 如果您打算繼續進行教學課程，請將已部署的遠端監視解決方案加速器保留下來。
 
-如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]  ，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除：
+如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除：
 
 ![刪除解決方案](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 

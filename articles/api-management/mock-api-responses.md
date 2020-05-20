@@ -49,11 +49,11 @@ ms.locfileid: "70067949"
 
 ![建立空白 API](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
-1. 從 [API 管理]  服務選取 [API]  。
+1. 從 [API 管理] 服務選取 [API]。
 2. 從左側功能表中選取 [+ 新增 API]  。
 3. 從清單選取 [空白 API]  。
-4. 針對 [顯示名稱]  輸入「測試 API」  。
-5. 針對 [產品]  輸入「無限制」  。
+4. 針對 [顯示名稱] 輸入「測試 API」。
+5. 針對 [產品] 輸入「無限制」。
 6. 選取 [建立]  。
 
 ## <a name="add-an-operation-to-the-test-api"></a>將作業新增到測試 API

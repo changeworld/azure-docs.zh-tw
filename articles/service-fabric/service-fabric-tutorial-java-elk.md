@@ -54,7 +54,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 1. 在 Azure 中建立由 [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) 認證的 ELK。 基於本教學課程的目的，建立此伺服器時，不需遵循任何特定的規格。
 
-2. 在 Azure 入口網站中移至您的資源，並進入 [支援 + 疑難排解]  區段下的 [開機診斷]  索引標籤。 接下來，按一下 [序列記錄]  索引標籤。
+2. 在 Azure 入口網站中移至您的資源，並進入 [支援 + 疑難排解] 區段下的 [開機診斷] 索引標籤。 接下來，按一下 [序列記錄]  索引標籤。
 
     ![開機診斷](./media/service-fabric-tutorial-java-elk/bootdiagnostics.png)
 3. 您必須在密碼的記錄上執行搜尋，才能存取 Kibana 執行個體。 這類似於下面程式碼片段：

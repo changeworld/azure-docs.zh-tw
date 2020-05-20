@@ -90,9 +90,9 @@ Azure Data Factory 的[複製精靈]  可讓您快速建立資料管線，以將
 4. 在 [指定 Azure Blob 儲存體帳戶]  頁面︰
    
    1. 輸入 **AzureStorageLinkedService** 做為 [連結服務名稱]  。
-   2. 確認已針對 [帳戶選取方法]  選取 [從 Azure 訂用帳戶]  選項。
+   2. 確認已針對 [帳戶選取方法] 選取 [從 Azure 訂用帳戶] 選項。
    3. 選取您的 Azure **訂用帳戶**。  
-   4. 從所選訂用帳戶中可用的 Azure 儲存體帳戶清單中，選取 [Azure 儲存體帳戶]  。 您也可以選擇手動輸入儲存體帳戶設定，其做法是選取 [帳戶選取方法]  的 [手動輸入]  選項，然後按 [下一步]  。 
+   4. 從所選訂用帳戶中可用的 Azure 儲存體帳戶清單中，選取 [Azure 儲存體帳戶]  。 您也可以選擇手動輸入儲存體帳戶設定，其做法是選取 [帳戶選取方法] 的 [手動輸入] 選項，然後按 [下一步]。 
       
       ![複製工具 - 指定 Azure Blob 儲存體帳戶](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. 在 [選擇輸入檔案或資料夾]  頁面︰
@@ -112,15 +112,15 @@ Azure Data Factory 的[複製精靈]  可讓您快速建立資料管線，以將
     ![複製工具 - 選擇目的地存放區](./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png)
 9. 在 [指定 Azure SQL 資料庫]  頁面︰
    
-   1. 針對 [連線名稱]  欄位輸入 **AzureSqlLinkedService**。
-   2. 確認已針對 [伺服器 / 資料庫選取方法]  選取 [從 Azure 訂用帳戶]  選項。
+   1. 針對 [連線名稱] 欄位輸入 **AzureSqlLinkedService**。
+   2. 確認已針對 [伺服器 / 資料庫選取方法] 選取 [從 Azure 訂用帳戶] 選項。
    3. 選取您的 Azure **訂用帳戶**。  
    4. 選取 [伺服器名稱]  和 [資料庫]  。
    5. 輸入 [使用者名稱]  和 [密碼]  。
    6. 按 [下一步]  。  
       
       ![複製工具 - 指定 Azure SQL 資料庫](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
-10. 在 [資料表對應]  頁面上，從 [目的地]  欄位的下拉式清單中選取 **emp**，按一下**向下箭號** (選擇性) 以查看結構描述及預覽資料。
+10. 在 [資料表對應] 頁面上，從 [目的地] 欄位的下拉式清單中選取 **emp**，按一下**向下箭號** (選擇性) 以查看結構描述及預覽資料。
     
      ![複製工具 - 資料表對應](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
 11. 在 [結構描述對應]  頁面上，按 [下一步]  。
@@ -140,7 +140,7 @@ Azure Data Factory 的[複製精靈]  可讓您快速建立資料管線，以將
 2. 監視應用程式會在網頁瀏覽器中的個別索引標籤中啟動。   
    
    ![監視應用程式](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)   
-3. 若要查看每小時配量的最新狀態，請按一下底部 [活動時段]  清單中的 [重新整理]  按鈕。 您可看到介於管線開始與結束時間之間五天的五個活動時段。 此清單不會自動重新整理，所以您可能需要按一下 [重新整理] 數次，才能看見處於 [就緒] 狀態的所有活動時段。 
+3. 若要查看每小時配量的最新狀態，請按一下底部 [活動時段] 清單中的 [重新整理] 按鈕。 您可看到介於管線開始與結束時間之間五天的五個活動時段。 此清單不會自動重新整理，所以您可能需要按一下 [重新整理] 數次，才能看見處於 [就緒] 狀態的所有活動時段。 
 4. 選取清單中的活動時段。 請參閱右側 [活動時段總管]  中的相關詳細資料。
 
     ![活動時段詳細資料](media/data-factory-copy-data-wizard-tutorial/activity-window-details.png)    

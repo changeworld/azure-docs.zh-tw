@@ -25,4 +25,4 @@ ms.locfileid: "67174409"
 
 若要在您的瀏覽器中檢視遠端監視解決方案儀表板，請先瀏覽至 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)。 系統可能會要求您使用 Azure 訂用帳戶認證來登入。
 
-接著，請針對您在[快速入門](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的遠端監視解決方案加速器，按一下其圖格上的 [啟動]  。
+接著，請針對您在[快速入門](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的遠端監視解決方案加速器，按一下其圖格上的 [啟動]。

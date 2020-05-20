@@ -112,7 +112,7 @@ Communifire 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.communifire.com/SAML/AssertionConsumerService.aspx`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Communifire 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -129,7 +129,7 @@ Communifire 與 Azure AD 整合提供下列優點：
 
     ![編輯 SAML 簽署憑證](common/edit-certificate.png)
 
-    a. 從 [簽署選項]  中選取 [簽署 SAML 回應及判斷提示]  。
+    a. 從 [簽署選項] 中選取 [簽署 SAML 回應及判斷提示]。
     
     b. 按一下 [儲存] 
 
@@ -190,7 +190,7 @@ Communifire 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

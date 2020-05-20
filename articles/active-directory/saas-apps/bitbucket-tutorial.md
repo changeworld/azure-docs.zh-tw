@@ -104,7 +104,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態]  區段執行下列步驟：
+4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態] 區段執行下列步驟：
 
     ![SAML SSO for Bitbucket by resolution GmbH 網域和 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -112,7 +112,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
-    c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+    c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![SAML SSO for Bitbucket by resolution GmbH 網域和 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -206,7 +206,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

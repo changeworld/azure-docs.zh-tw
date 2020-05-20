@@ -30,7 +30,7 @@ ms.locfileid: "77022404"
 
 ## <a name="manage-app-permissions"></a>管理應用程式權限
 
-若要檢視您或您的系統管理員已同意的權限，當您將滑鼠停留在 [我的應用程式]  入口網站中的應用程式上方時選取 [...]  ，然後選取 [管理您的應用程式]  ：
+若要檢視您或您的系統管理員已同意的權限，當您將滑鼠停留在 [我的應用程式] 入口網站中的應用程式上方時選取 [...]，然後選取 [管理您的應用程式]：
 
 ![在 [我的應用程式] 入口網站中管理應用程式](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 
@@ -52,6 +52,6 @@ ms.locfileid: "77022404"
 
 - [更新您的設定檔和帳戶資訊](my-account-portal-overview.md)。 相關指示，說明如何更新您在 [我的設定檔]  入口網站上顯示的個人資訊。
 
-- [管理您的組織](my-account-portal-organizations-page.md)。 相關指示，說明如何在 [我的設定檔]  入口網站的 [組織]  頁面上檢視及管理組織相關資訊。
+- [管理您的組織](my-account-portal-organizations-page.md)。 相關指示，說明如何在 [我的設定檔] 入口網站的 [組織] 頁面上檢視及管理組織相關資訊。
 
-- [管理已連線的裝置](my-account-portal-devices-page.md)。 相關指示，說明如何在 [我的設定檔]  入口網站的 [裝置]  頁面上，使用您的公司或學校帳戶來管理已連線的裝置。
+- [管理已連線的裝置](my-account-portal-devices-page.md)。 相關指示，說明如何在 [我的設定檔] 入口網站的 [裝置] 頁面上，使用您的公司或學校帳戶來管理已連線的裝置。

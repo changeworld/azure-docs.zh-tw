@@ -111,7 +111,7 @@ ms.locfileid: "73158075"
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://www.hostedgraphite.com/complete/saml/<user id>`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Hosted Graphite 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -201,7 +201,7 @@ ms.locfileid: "73158075"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

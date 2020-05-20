@@ -23,7 +23,7 @@ ms.locfileid: "67174571"
 4. 選取工具列上的 [警示]  按鈕，然後在清單中選取您的專案。 您會看到您專案的儀表板。 您也可以使用下列 URL 來直接巡覽至儀表板：`https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![在警示中選取您的專案](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
-5. 請記下儀表板之 [專案資訊]  磚中的 [專案編號]  。 
+5. 請記下儀表板之 [專案資訊] 磚中的 [專案編號]。 
 
     ![專案識別碼](./media/mobile-services-enable-google-cloud-messaging/project-number.png)
 6. 在儀表板的 [API]  磚上，選取 [Got to APIs overview] \(前往 API 概觀\)  。 

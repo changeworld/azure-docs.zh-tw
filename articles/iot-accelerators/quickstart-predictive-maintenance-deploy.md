@@ -80,7 +80,7 @@ Fabrikam 的飛機引擎由各種感應器進行檢測，而這些感應器會�
 
 如果您打算進一步探索，請讓預測性維護解決方案加速器維持部署。
 
-如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]  ，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除：
+如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除：
 
 ![刪除解決方案](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 

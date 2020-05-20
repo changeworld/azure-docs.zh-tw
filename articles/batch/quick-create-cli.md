@@ -13,7 +13,7 @@ ms.locfileid: "82116327"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Batch 作業
 
-Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門示範如何使用 Azure CLI 建立 Batch 帳戶、計算節點 (虛擬機器) 的「集區」  ，以及在集區上執行「工作」  的「作業」  。 每個範例工作都會在其中一個集區節點上執行基本命令。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門示範如何使用 Azure CLI 建立 Batch 帳戶、計算節點 (虛擬機器) 的「集區」，以及在集區上執行「工作」的「作業」。 每個範例工作都會在其中一個集區節點上執行基本命令。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,7 +25,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下列範例會在 eastus2  位置建立名為 myResourceGroup  的資源群組。
+下列範例會在 eastus2 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive 
 az group create \
@@ -49,7 +49,7 @@ az storage account create \
 
 使用 [az batch account create](/cli/azure/batch/account#az-batch-account-create) 命令建立 Batch 帳戶。 您需有帳戶才能建立計算資源 (運算節點的集區) 和 Batch 作業。
 
-下列範例會在 myResourceGroup  中建立名為 mybatchaccount  的 Batch 帳戶，並連結您所建立的儲存體帳戶。  
+下列範例會在 myResourceGroup 中建立名為 mybatchaccount 的 Batch 帳戶，並連結您所建立的儲存體帳戶。  
 
 ```azurecli-interactive 
 az batch account create \
@@ -91,7 +91,7 @@ az batch pool show --pool-id mypool \
 
 ## <a name="create-a-job"></a>建立作業
 
-既然您有集區，請建立要在其中執行的作業。  Batch 作業是一或多項工作的邏輯群組。 作業包含工作通用的設定，例如優先順序以及要執行工作的集區。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令建立 Batch 作業。 下列範例會在 mypool  集區上建立 myjob  作業。 一開始作業沒有任何工作。
+既然您有集區，請建立要在其中執行的作業。  Batch 作業是一或多項工作的邏輯群組。 作業包含工作通用的設定，例如優先順序以及要執行工作的集區。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令建立 Batch 作業。 下列範例會在 mypool 集區上建立 myjob 作業。 一開始作業沒有任何工作。
 
 ```azurecli-interactive 
 az batch job create \

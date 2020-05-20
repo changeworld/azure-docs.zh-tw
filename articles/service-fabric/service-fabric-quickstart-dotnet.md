@@ -157,7 +157,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 3. 儲存檔案。
 4. 以滑鼠右鍵按一下方案總管中的 [投票]  ，並選擇 [發行]  。 [發行] 對話方塊隨即出現。
 5. 按一下 [資訊清單版本]  按鈕以變更服務和應用程式的版本。
-6. 例如，將 [VotingWebPkg]  下的 [Code]  元素版本變更為 "2.0.0"，然後按一下 [儲存]  。
+6. 例如，將 [VotingWebPkg] 下的 [Code] 元素版本變更為 "2.0.0"，然後按一下 [儲存]。
 
     ![變更版本對話方塊](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. 在 [發行 Service Fabric 應用程式]  對話方塊中，核取 [升級應用程式]  核取方塊。

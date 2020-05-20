@@ -138,7 +138,7 @@ ms.locfileid: "73155652"
    
     ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_001.png)
 
-4. 從 [單一登入]  下拉式清單中選取 [SAML]  。
+4. 從 [單一登入] 下拉式清單中選取 [SAML]。
    
     ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_002.png)
 
@@ -154,9 +154,9 @@ ms.locfileid: "73155652"
 
     ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_005.png)
 
-    a. 複製**實體識別碼**值，並在 Azure 入口網站 [Front 網域與 URL]  區段的 [識別碼]  文字方塊中貼上。
+    a. 複製**實體識別碼**值，並在 Azure 入口網站 [Front 網域與 URL] 區段的 [識別碼] 文字方塊中貼上。
 
-    b. 複製 **ACS URL** 的值，並在 Azure 入口網站 [前端網域與 URL]  區段的 [回覆 URL]  文字方塊中貼上。
+    b. 複製 **ACS URL** 的值，並在 Azure 入口網站 [前端網域與 URL] 區段的 [回覆 URL] 文字方塊中貼上。
     
 8. 按一下 [儲存]  按鈕。
 
@@ -201,7 +201,7 @@ ms.locfileid: "73155652"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

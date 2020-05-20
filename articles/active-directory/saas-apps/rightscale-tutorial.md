@@ -105,7 +105,7 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
     ![Rightscale 網域與 URL 單一登入資訊](common/preintegrated.png)
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Rightscale 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -145,11 +145,11 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
-6. 將您從 Azure 入口網站複製的 [登入 URL]  值，貼到 RightScale 的 [SAML SSO 端點]  中。
+6. 將您從 Azure 入口網站複製的 [登入 URL] 值，貼到 RightScale 的 [SAML SSO 端點] 中。
 
     ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
-7. 將您從 Azure 入口網站複製的 [Azure AD 識別碼]  值，貼到 RightScale 的 [SAML 實體識別碼]  中。
+7. 將您從 Azure 入口網站複製的 [Azure AD 識別碼] 值，貼到 RightScale 的 [SAML 實體識別碼] 中。
 
     ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
@@ -201,7 +201,7 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

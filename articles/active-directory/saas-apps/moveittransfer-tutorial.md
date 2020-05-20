@@ -101,7 +101,7 @@ ms.locfileid: "73161313"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -111,14 +111,14 @@ ms.locfileid: "73161313"
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
-    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態]  區段中自動填入 [識別碼]  和 [回覆 URL]  值：
+    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼] 和 [回覆 URL] 值：
 
     ![MOVEit Transfer - Azure AD integration 網域和 URL 單一登入資訊](common/sp-identifier-reply.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://contoso.com`
 
     > [!NOTE]
-    > [登入 URL]  的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [MOVEit Transfer - Azure AD integration 用戶端支援](https://community.ipswitch.com/s/support)小組來取得此值。 您可以從**服務提供者中繼資料 URL** 中下載**服務提供者中繼資料檔案**，稍後會在教學課程中的＜設定 MOVEit Transfer - Azure AD integration 單一登入＞  一節中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL]  的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [MOVEit Transfer - Azure AD integration 用戶端支援](https://community.ipswitch.com/s/support)小組來取得此值。 您可以從**服務提供者中繼資料 URL** 中下載**服務提供者中繼資料檔案**，稍後會在教學課程中的＜設定 MOVEit Transfer - Azure AD integration 單一登入＞一節中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -151,7 +151,7 @@ ms.locfileid: "73161313"
     ![服務提供者中繼資料 URL](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
    * 請確認 **entityID** 符合**基本 SAML 組態**區段中的**識別碼**。
-   * 確認 [AssertionConsumerService]  位置 URL 符合 [基本 SAML 組態]  區段中的 **REPLY URL**。
+   * 確認 [AssertionConsumerService] 位置 URL 符合 [基本 SAML 組態] 區段中的 **REPLY URL**。
     
      ![在應用程式端設定單一登入](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
@@ -222,7 +222,7 @@ ms.locfileid: "73161313"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -86,7 +86,7 @@ ms.locfileid: "65467844"
 
 如果您打算進一步探索，請保留已部署的裝置模擬。
 
-如果您不再需要裝置模擬，請按一下其圖格，然後按一下 [刪除解決方案]  ，從 [已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard) 頁面中加以刪除：
+如果您不再需要裝置模擬，請按一下其圖格，然後按一下 [刪除解決方案]，從 [已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard) 頁面中加以刪除：
 
 ![刪除解決方案](media/quickstart-device-simulation-deploy/deletesolution.png)
 

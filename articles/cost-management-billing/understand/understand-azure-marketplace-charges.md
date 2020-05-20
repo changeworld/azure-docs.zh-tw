@@ -91,7 +91,7 @@ Azure Marketplace 費用會以您的當地貨幣顯示。
     ![顯示在發票方格中選取立即付費連結的螢幕擷取畫面](./media/understand-azure-marketplace-charges/pay-now-twd.png)
 
     >[!NOTE]
-    > 如果發票的類型是 [Azure Marketplace 和保留]  ，且發票付款狀態為到期或逾期，則您只會看到 [立即付費]  連結。
+    > 如果發票的類型是 [Azure Marketplace 和保留]，且發票付款狀態為到期或逾期，則您只會看到 [立即付費]連結。
 
 1. 在新頁面上，按一下 [選取付款方式]  連結。
 

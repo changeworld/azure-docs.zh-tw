@@ -168,9 +168,9 @@ ms.locfileid: "73154034"
 
    d. 將從 Azure 入口網站複製的 [Azure AD 識別碼]  貼到 [Idp 實體識別碼]  文字方塊中。
     
-   e. 在 [Idp 登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
+   e. 在 [Idp 登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]。
    
-   f. 在 [Idp 登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  。
+   f. 在 [Idp 登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]。
 
    g. 在「記事本」中開啟所下載的**憑證 (Base64)** 檔案。 將其內容複製到剪貼簿，然後貼到 [IdP Certificate] \(IdP 憑證\)  文字方塊中。
 
@@ -217,7 +217,7 @@ ms.locfileid: "73154034"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

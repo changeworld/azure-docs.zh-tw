@@ -34,7 +34,7 @@ Azure Container Registry (ACR) 是適用於容器映像的私人登錄。 私人
 
 若要建立 Azure Container Registry，您必須已有資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-使用 [az group create][az-group-create] 命令來建立資源群組。 在下列範例中，會在 eastus  區域中建立名為 myResourceGroup  的資源群組：
+使用 [az group create][az-group-create] 命令來建立資源群組。 在下列範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

@@ -111,7 +111,7 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 上述 URL 中的值只是示範。 請使用實際的識別碼更新此值，稍後會在本教學課程中說明。
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -139,7 +139,7 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
     ![BitaBIZ 設定](./media/bitabiz-tutorial/settings1.png)
 
-3. 按一下 [新增值]  下的 [Microsoft 整合]  。
+3. 按一下 [新增值]下的 [Microsoft 整合]。
 
     ![BitaBIZ 設定](./media/bitabiz-tutorial/settings2.png)
 
@@ -147,7 +147,7 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
     ![BitaBIZ 設定](./media/bitabiz-tutorial/settings3.png)
 
-    a. 複製 [實體識別碼]  (Azure AD 中的「識別碼」) 文字方塊中的值，然後貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [識別碼]  文字方塊中。 
+    a. 複製 [實體識別碼] (Azure AD 中的「識別碼」) 文字方塊中的值，然後貼到 Azure 入口網站中的 [基本 SAML 組態] 區段上的 [識別碼] 文字方塊中。 
 
     b. 在 [Azure AD 單一登入服務 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
@@ -202,7 +202,7 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -225,7 +225,7 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
     ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/settings1.png)
 
-3. 按一下 [組織]  區段下的 [新增使用者]  。
+3. 按一下 [組織] 區段下的 [新增使用者]。
 
     ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/user1.png)
 

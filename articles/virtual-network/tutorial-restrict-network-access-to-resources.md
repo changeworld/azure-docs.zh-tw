@@ -79,7 +79,7 @@ ms.locfileid: "74186359"
     |----|----|
     |名稱| Private |
     |位址範圍| 10.0.1.0/24|
-    |服務端點| 選取 [服務]  底下的 [Microsoft.Storage] |
+    |服務端點| 選取 [服務] 底下的 [Microsoft.Storage]|
 
 > [!CAUTION]
 > 針對具有資源的現有子網路啟用服務端點之前，請參閱[變更子網路設定](virtual-network-manage-subnet.md#change-subnet-settings)。
@@ -99,7 +99,7 @@ ms.locfileid: "74186359"
     |資源群組 | 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。|
     |Location| 選取 [美國東部]  |
 
-4. 建立網路安全性群組之後，請在入口網站頂端的 [搜尋資源、服務和文件]  方塊中，輸入 myNsgPrivate  。 當 **myNsgPrivate** 出現在搜尋結果中時，請加以選取。
+4. 建立網路安全性群組之後，請在入口網站頂端的 [搜尋資源、服務和文件] 方塊中，輸入 myNsgPrivate。 當 **myNsgPrivate** 出現在搜尋結果中時，請加以選取。
 5. 在 [設定]  下，選取 [輸出安全性規則]  。
 6. 選取 [+ 新增]  。
 7. 建立一個規則，允許 Azure 儲存體服務的輸出通訊。 輸入或選取下列資訊，然後選取 [新增]  ︰
@@ -145,9 +145,9 @@ ms.locfileid: "74186359"
     |優先順序|120|
     |名稱|Allow-RDP-All|
 
-12. 在 [設定]  底下，選取 [子網路]  。
+12. 在 [設定] 底下，選取 [子網路]。
 13. 選取 [+ 關聯] 
-14. 在 [建立子網路關聯]  底下，選取 [虛擬網路]  ，然後在 [選擇虛擬網路]  底下選取 [myVirtualNetwork]  。
+14. 在 [建立子網路關聯] 底下，選取 [虛擬網路]，然後在 [選擇虛擬網路] 底下選取 [myVirtualNetwork]。
 15. 在 [選取子網路]  下，選取 [私人]  ，然後選取 [確定]  。
 
 ## <a name="restrict-network-access-to-a-resource"></a>限制對資源的網路存取
@@ -177,12 +177,12 @@ ms.locfileid: "74186359"
    ![儲存體帳戶](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
 3. 選取 [+ 檔案共用]  。
-4. 在 [名稱]  下，輸入 my-file-share  ，然後選取 [確定]  。
+4. 在 [名稱] 下，輸入 my-file-share，然後選取 [確定]。
 5. 關閉 [檔案服務]  方塊。
 
 ### <a name="restrict-network-access-to-a-subnet"></a>限制對子網路的網路存取
 
-根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線，包括網際網路。 拒絕來自網際網路以及所有虛擬網路中所有其他子網路的網路存取，myVirtualNetwork  虛擬網路中的「私人」  子網路除外。
+根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線，包括網際網路。 拒絕來自網際網路以及所有虛擬網路中所有其他子網路的網路存取，myVirtualNetwork 虛擬網路中的「私人」子網路除外。
 
 1. 在儲存體帳戶的 [設定]  下，選取 [防火牆和虛擬網路]  。
 2. 選取 [選取的網路]  。
@@ -192,8 +192,8 @@ ms.locfileid: "74186359"
     |設定|值|
     |----|----|
     |訂用帳戶| 選取您的訂用帳戶。|
-    |虛擬網路|在 [虛擬網路]  下，選取 [myVirtualNetwork] |
-    |子網路| 在 [子網路]  下，選取 [私人] |
+    |虛擬網路|在 [虛擬網路] 下，選取 [myVirtualNetwork]|
+    |子網路| 在 [子網路] 下，選取 [私人]|
 
     ![防火牆與虛擬網路](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
@@ -230,7 +230,7 @@ ms.locfileid: "74186359"
 
    ![選取虛擬網路](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
 
-6. 在 [網路安全性群組]  下方，選取 [進階]  。 入口網站會自動為您建立允許連接埠 3389 的網路安全性群組；您必須開啟此連接埠，才能在後續的步驟中連線至虛擬機器。 在 [設定]  頁面上選取 [確定]  。
+6. 在 [網路安全性群組]  下方，選取 [進階]  。 入口網站會自動為您建立允許連接埠 3389 的網路安全性群組；您必須開啟此連接埠，才能在後續的步驟中連線至虛擬機器。 在 [設定] 頁面上選取 [確定]。
 7. 在 [摘要]  頁面上，選取 [建立]  來開始進行虛擬機器部署。 VM 需要幾分鐘的時間進行部署，但您在 VM 建立時可以繼續下一個步驟。
 
 ### <a name="create-the-second-virtual-machine"></a>建立第二部虛擬機器
@@ -279,9 +279,9 @@ ms.locfileid: "74186359"
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>確認對儲存體帳戶的存取遭到拒絕
 
-1. 在入口網站頂端的 [搜尋資源、服務和文件]  方塊中，輸入 myVmPublic  。
+1. 在入口網站頂端的 [搜尋資源、服務和文件] 方塊中，輸入 myVmPublic。
 2. 當 **myVmPublic** 出現在搜尋結果中時，請選取它。
-3. 在 myVmPublic  VM 的 [確認對儲存體帳戶的存取](#confirm-access-to-storage-account) 中，完成步驟 1-6。
+3. 在 myVmPublic VM 的 [確認對儲存體帳戶的存取](#confirm-access-to-storage-account) 中，完成步驟 1-6。
 
    短暫等候之後，您會收到 `New-PSDrive : Access is denied` 錯誤。 存取遭到拒絕，因為 myVmPublic  VM 是部署在「公用」  子網路中。 「公用」  子網路沒有已啟用的服務端點可供 Azure 儲存體使用。 儲存體帳戶只允許「私人」  子網路，而不允許「公用」  子網路的網路存取。
 
@@ -294,15 +294,15 @@ ms.locfileid: "74186359"
 
    ![拒絕存取錯誤](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
 
-   存取遭到拒絕，因為您的電腦不在 MyVirtualNetwork  虛擬網路的「私人」  子網路中。
+   存取遭到拒絕，因為您的電腦不在 MyVirtualNetwork 虛擬網路的「私人」子網路中。
 
 ## <a name="clean-up-resources"></a>清除資源
 
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除：
 
-1. 在入口網站頂端的 [搜尋]  方塊中，輸入 myResourceGroup  。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
+1. 在入口網站頂端的 [搜尋] 方塊中，輸入 myResourceGroup。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
 2. 選取 [刪除資源群組]  。
-3. 針對 [輸入資源群組名稱:]  輸入 myResourceGroup  ，然後選取 [刪除]  。
+3. 針對 [輸入資源群組名稱:] 輸入 myResourceGroup，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

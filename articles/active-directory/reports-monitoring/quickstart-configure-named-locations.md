@@ -43,7 +43,7 @@ ms.locfileid: "74014348"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在左窗格中，選取 [Azure Active Directory]  ，然後從 [安全性]  區段選取 [條件式存取]  。
+2. 在左窗格中，選取 [Azure Active Directory]，然後從 [安全性] 區段選取 [條件式存取]。
 
     ![[條件式存取] 索引標籤](./media/quickstart-configure-named-locations/entrypoint.png)
 

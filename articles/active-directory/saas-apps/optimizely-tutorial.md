@@ -116,7 +116,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-6. 除了以上屬性之外，Optimizely 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+6. 除了以上屬性之外，Optimizely 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
     | 名稱 | 來源屬性 |
     | ---------------| --------------- |
@@ -160,9 +160,9 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
 2. Optimizely 會回應您的電子郵件，提供單一登入 URL (SP 啟始的 SSO) 和識別碼 (服務提供者的實體識別碼) 的值。
 
-    a. 複製 Optimizely 提供的**SP 啟始的 SSO URL**，並貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [登入 URL]  文字方塊中。
+    a. 複製 Optimizely 提供的**SP 啟始的 SSO URL**，並貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [登入 URL] 文字方塊中。
 
-    b. 複製 Optimizely 提供的**服務提供者實體識別碼**，並貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [識別碼]  文字方塊中。
+    b. 複製 Optimizely 提供的**服務提供者實體識別碼**，並貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [識別碼] 文字方塊中。
 
 3. 在不同的瀏覽器視窗中，登入您的 Optimizely 應用程式。
 
@@ -170,7 +170,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
     ![Azure AD 單一登入](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
-5. 在 [帳戶] 索引標籤的 [概觀]  區段中，選取 [單一登入] 下的 [啟用 SSO]  方塊。
+5. 在 [帳戶] 索引標籤的 [概觀] 區段中，選取 [單一登入] 下的 [啟用 SSO] 方塊。
   
     ![Azure AD 單一登入](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
@@ -217,7 +217,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

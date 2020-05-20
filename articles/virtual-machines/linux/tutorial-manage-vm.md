@@ -40,7 +40,7 @@ Azure 虛擬機器提供完全可設定且彈性的計算環境。 本教學課�
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令來建立資源群組。 
 
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器之前建立。 在此範例中，會在 eastus  區域中建立名為 myResourceGroupVM  的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器之前建立。 在此範例中，會在 eastus 區域中建立名為 myResourceGroupVM 的資源群組。 
 
 ```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus

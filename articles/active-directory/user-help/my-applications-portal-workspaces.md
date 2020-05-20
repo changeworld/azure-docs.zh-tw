@@ -50,6 +50,6 @@ ms.locfileid: "77064031"
 
 - [更新您的設定檔和帳戶資訊](my-account-portal-overview.md)。 相關指示，說明如何更新您在 [我的設定檔]  入口網站上顯示的個人資訊。
 
-- [管理您的組織](my-account-portal-organizations-page.md)。 相關指示，說明如何在 [我的設定檔]  入口網站的 [組織]  頁面上檢視及管理組織相關資訊。
+- [管理您的組織](my-account-portal-organizations-page.md)。 相關指示，說明如何在 [我的設定檔] 入口網站的 [組織] 頁面上檢視及管理組織相關資訊。
 
-- [管理已連線的裝置](my-account-portal-devices-page.md)。 相關指示，說明如何在 [我的設定檔]  入口網站的 [裝置]  頁面上，使用您的公司或學校帳戶來管理已連線的裝置。
+- [管理已連線的裝置](my-account-portal-devices-page.md)。 相關指示，說明如何在 [我的設定檔] 入口網站的 [裝置] 頁面上，使用您的公司或學校帳戶來管理已連線的裝置。

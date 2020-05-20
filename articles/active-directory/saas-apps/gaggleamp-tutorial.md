@@ -109,7 +109,7 @@ GaggleAMP 與 Azure AD 整合提供下列優點：
 
     在 [識別碼]  文字方塊中，鍵入 URL：`https://accounts.gaggleamp.com/auth/saml/callback`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -140,7 +140,7 @@ GaggleAMP 與 Azure AD 整合提供下列優點：
    
     ![GaggleAMP 單一登入](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    a. 從 [識別提供者]  下拉式功能表中，選取 [其他]  。
+    a. 從 [識別提供者] 下拉式功能表中，選取 [其他]。
     
     b. 在 [識別提供者簽發者]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
     
@@ -191,7 +191,7 @@ GaggleAMP 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

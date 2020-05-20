@@ -162,7 +162,7 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     e. **已啟用**單一登入設定。
    
-    f. 在 [簽發者識別碼]  文字方塊中，貼上 [Azure AD 識別碼]  。
+    f. 在 [簽發者識別碼] 文字方塊中，貼上 [Azure AD 識別碼]。
    
     g. 在 [實體識別碼]  文字方塊中，輸入 URL `http://saml.marketo.com/sp`。
    
@@ -242,7 +242,7 @@ Marketo 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

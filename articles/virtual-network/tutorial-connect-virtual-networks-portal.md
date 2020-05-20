@@ -51,7 +51,7 @@ ms.locfileid: "77201293"
     |區域| 選取 [美國東部]  。|
     |名稱|myVirtualNetwork1|
 
-4. 在 [IP 位址]  索引標籤上，針對 [位址空間]  欄位輸入 10.0.0.0/16。 按一下下面的 [新增子網路]  按鈕，然後針對 [子網路名稱]  輸入 Subnet1  並針對 [子網路位址範圍]  輸入 10.0.0.0/24。
+4. 在 [IP 位址]  索引標籤上，針對 [位址空間]  欄位輸入 10.0.0.0/16。 按一下下面的 [新增子網路] 按鈕，然後針對 [子網路名稱] 輸入 Subnet1 並針對 [子網路位址範圍] 輸入 10.0.0.0/24。
 5. 選取 [檢閱 + 建立]  ，然後選取 [建立]  。
    
 5. 以下列變更再次完成步驟 1-5：
@@ -67,7 +67,7 @@ ms.locfileid: "77201293"
 ## <a name="peer-virtual-networks"></a>對等互連虛擬網路
 
 1. 在 Azure 入口網站頂端的 [搜尋] 方塊中，開始輸入 MyVirtualNetwork1  。 當搜尋結果中出現 myVirtualNetwork1  時加以選取。
-2. 選取 [設定]  底下的 [對等互連]  ，然後選取 [新增]  ，如下圖所示：
+2. 選取 [設定] 底下的 [對等互連]，然後選取 [新增]，如下圖所示：
 
     ![建立對等互連](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "77201293"
     |虛擬網路| myVirtualNetwork1 - 若尚未選取，請選取 [虛擬網路]  ，然後選取 [myVirtualNetwork1]  。|
     |子網路| Subnet1 - 若尚未選取，請選取 [子網路]  ，然後選取 [Subnet1]  。|
    
-6. 選取 [網路功能]  。 針對 [公用輸入連接埠]  選項選擇 [允許選取的連接埠]  。 針對底下的 [選取輸入連接埠]  選項選擇 [RDP]  。 
+6. 選取 [網路功能]  。 針對 [公用輸入連接埠] 選項選擇 [允許選取的連接埠]。 針對底下的 [選取輸入連接埠] 選項選擇 [RDP]。 
 
 7. 選取左下角的 [檢閱 + 建立]  按鈕，以開始進行 VM 部署。
 
@@ -132,14 +132,14 @@ ms.locfileid: "77201293"
 ## <a name="communicate-between-vms"></a>虛擬機器之間的通訊
 
 1. 在入口網站頂端的 [搜尋]  方塊中，開始輸入 myVm1  。 當 **myVm1** 出現在搜尋結果中時，選取它。
-2. 藉由選取 [連線]  來建立與 myVm1  虛擬機器的遠端桌面連線，如下圖所示：
+2. 藉由選取 [連線] 來建立與 myVm1 虛擬機器的遠端桌面連線，如下圖所示：
 
     ![連線至虛擬機器](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
 3. 若要連線至虛擬機器，請開啟所下載的 RDP 檔案。 如果出現提示，請選取 [連接]  。
 4. 輸入您在建立虛擬機器時指定的使用者名稱和密碼 (您可能需要選取 [更多選擇]  ，然後選取 [使用不同的帳戶]  以指定您在建立虛擬機器時輸入的認證)，然後選取 [確定]  。
 5. 您可能會在登入過程中收到憑證警告。 選取 [是]  以繼續進行連線。
-6. 稍後的步驟會使用 ping 從 myVm1  虛擬機器與 myVm2  虛擬機器通訊。 Ping 會使用網際網路控制訊息通訊協定 (ICMP)，它在通過 Windows 防火牆時預設會遭到拒絕。 在 *myVm1* VM 上，讓 ICMP 能夠通過 Windows 防火牆，您就能在稍後的步驟中使用 PowerShell，從 *myVm2* 針對此 VM 進行 Ping 操作：
+6. 稍後的步驟會使用 ping 從 myVm1 虛擬機器與 myVm2 虛擬機器通訊。 Ping 會使用網際網路控制訊息通訊協定 (ICMP)，它在通過 Windows 防火牆時預設會遭到拒絕。 在 *myVm1* VM 上，讓 ICMP 能夠通過 Windows 防火牆，您就能在稍後的步驟中使用 PowerShell，從 *myVm2* 針對此 VM 進行 Ping 操作：
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -165,9 +165,9 @@ ms.locfileid: "77201293"
 
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除： 
 
-1. 在入口網站頂端的 [搜尋]  方塊中，輸入 myResourceGroup  。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
+1. 在入口網站頂端的 [搜尋] 方塊中，輸入 myResourceGroup。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
 2. 選取 [刪除資源群組]  。
-3. 針對 [輸入資源群組名稱:]  輸入 myResourceGroup  ，然後選取 [刪除]  。
+3. 針對 [輸入資源群組名稱:] 輸入 myResourceGroup，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -141,7 +141,7 @@ Skills Base 與 Azure AD 整合提供下列優點：
 
     ![單一](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a. 按一下 [狀態]  選項旁的 [更新 IdP 中繼資料]  按鈕，然後將您從 Azure 入口網站下載的中繼資料 XML 內容貼在指定的文字方塊中。
+    a. 按一下 [狀態] 選項旁的 [更新 IdP 中繼資料] 按鈕，然後將您從 Azure 入口網站下載的中繼資料 XML 內容貼在指定的文字方塊中。
 
     > [!Note]
     > 您也可以透過 [中繼資料驗證程式]  工具來驗證 idp 中繼資料，如上述螢幕擷取畫面中的反白顯示。
@@ -189,7 +189,7 @@ Skills Base 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

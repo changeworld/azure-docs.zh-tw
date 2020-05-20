@@ -101,7 +101,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     > [!NOTE]
     > 您會收到**服務提供者中繼資料檔案**，稍後會在本教學課程中加以說明。
@@ -123,7 +123,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     d. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<subdomain>.silkroad-eng.com/Authentication/`
 
-5. 如果您沒有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+5. 如果您沒有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     ![SilkRoad Life Suite 網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
@@ -171,7 +171,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
-1. 按一下 [下載同盟中繼資料]  ，然後將資料檔儲存在您的電腦中。 在 Azure 入口網站的 [基本 SAML 設定]  區段中，使用所下載的同盟中繼資料作為**服務提供者中繼資料檔案**。
+1. 按一下 [下載同盟中繼資料]  ，然後將資料檔儲存在您的電腦中。 在 Azure 入口網站的 [基本 SAML 設定] 區段中，使用所下載的同盟中繼資料作為**服務提供者中繼資料檔案**。
 
     ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
@@ -260,7 +260,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

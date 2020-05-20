@@ -38,8 +38,8 @@ ms.locfileid: "74108110"
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
-1. 選取 [API 管理]  下方的 [API]  。
-2. 從 [加入新的 API]  清單選取 [WSDL]  。
+1. 選取 [API 管理] 下方的 [API]。
+2. 從 [加入新的 API] 清單選取 [WSDL]。
 
     ![SOAP API](./media/restify-soap-api/wsdl-api.png)
 3. 在 **WSDL 規格**中，輸入 SOAP API 的所在 URL。

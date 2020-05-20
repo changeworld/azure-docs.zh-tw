@@ -36,7 +36,7 @@ DC/OS 所提供的分散式平台可執行現代及容器化的應用程式。 �
 
 首先，使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下列範例會在 westeurope  位置建立名為 myResourceGroup  的資源群組。
+下列範例會在 westeurope 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope

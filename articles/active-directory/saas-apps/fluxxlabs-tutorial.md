@@ -140,7 +140,7 @@ Fluxx Labs 與 Azure AD 的整合可提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Fluxx Labs 公司網站。
 
-2. 選取 [設定]  區段下方的 [管理員]  。
+2. 選取 [設定] 區段下方的 [管理員]。
 
     ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config1.png)
 
@@ -213,7 +213,7 @@ Fluxx Labs 與 Azure AD 的整合可提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -119,7 +119,7 @@ ms.locfileid: "67094128"
     > [!NOTE]
     > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [Predictix Ordering 支援小組](https://www.predix.io/support/)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  對話方塊所顯示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，依據您的需求選取 [憑證 (Base64)]  旁邊的 [下載]  連結，並將憑證儲存在您的電腦上：
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，依據您的需求選取 [憑證 (Base64)] 旁邊的 [下載] 連結，並將憑證儲存在您的電腦上：
 
     ![憑證下載連結](common/certificatebase64.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "67094128"
 
     ![選取 [使用者和群組]](common/users-groups-blade.png)
 
-4. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![選取 [新增使用者]](common/add-assign-user.png)
 

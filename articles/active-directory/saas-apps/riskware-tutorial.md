@@ -156,7 +156,7 @@ ms.locfileid: "72027109"
 
     ![Riskware 設定：驗證設定](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a. 選取 [SAML]  作為驗證的 [Type] \(類型\)  。
+    a. 選取 [SAML] 作為驗證的 [Type] \(類型\)。
 
     b. 在 [Code]\(代碼\)  文字方塊中，輸入您的代碼，例如 AZURE_UAT。
 
@@ -226,7 +226,7 @@ ms.locfileid: "72027109"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

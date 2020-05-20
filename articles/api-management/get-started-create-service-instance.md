@@ -35,7 +35,7 @@ ms.locfileid: "75442568"
 
 ## <a name="create-a-new-service"></a>建立新的服務
 
-1. 從 Azure 入口網站功能表選取 [建立資源]  。 您也可以在 Azure **首頁**上選取 [建立資源]  。 
+1. 從 Azure 入口網站功能表選取 [建立資源]  。 您也可以在 Azure **首頁**上選取 [建立資源]。 
    
    ![選取 [建立資源]](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
@@ -68,7 +68,7 @@ ms.locfileid: "75442568"
 
 若不再需要，您可以遵循下列步驟來移除資源群組和所有相關資源：
 
-1. 在 Azure 入口網站中，搜尋並選取 [資源群組]  。 您也可以在**首頁**上選取 [資源群組]  。 
+1. 在 Azure 入口網站中，搜尋並選取 [資源群組]  。 您也可以在**首頁**上選取 [資源群組]。 
 
    ![資源群組導覽](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 

@@ -87,7 +87,7 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
 若要設定與 TurboRater 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TurboRater]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TurboRater] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入選項](common/select-sso.png)
 
@@ -173,11 +173,11 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
     ![[使用者和群組] 選項](common/users-groups-blade.png)
 
-1. 選取 [+ 新增使用者]  ，然後在 [新增指派]  窗格中選取 [使用者和群組]  。
+1. 選取 [+ 新增使用者]，然後在 [新增指派] 窗格中選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  窗格中，選取 [使用者]  清單中的 [B. Simon]  ，然後選擇窗格底部的 [選取]  。
+1. 在 [使用者和群組] 窗格中，選取 [使用者] 清單中的 [B. Simon]，然後選擇窗格底部的 [選取]。
 
 1. 如果您預期使用 SAML 判斷提示中的角色值，則在 [選取角色]  窗格的清單中選取適當的使用者角色。 選擇窗格底部的 [選取]  。
 

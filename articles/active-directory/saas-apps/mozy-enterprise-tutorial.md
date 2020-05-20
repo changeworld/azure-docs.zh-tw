@@ -142,9 +142,9 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
    
     c. 按一下 [SAML 驗證]  索引標籤。
    
-    d. 在 [Authentication URL] \(驗證 URL\)  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
+    d. 在 [Authentication URL] \(驗證 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]。
    
-    e. 在 [SAML Endpoint] \(SAML 端點\)  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  。
+    e. 在 [SAML Endpoint] \(SAML 端點\) 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]。
    
     f. 在記事本中開啟您下載的 base-64 編碼的憑證，將它的內容複製到您的剪貼簿，然後將整個憑證貼至 [SAML 憑證]  文字方塊中。
    
@@ -193,7 +193,7 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -219,7 +219,7 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
     ![使用者](./media/mozy-enterprise-tutorial/ic777317.png "使用者")
    
     >[!NOTE]
-    >只有在 [驗證原則]  底下選取 [Mozy]  做為提供者時，才會顯示 [新增使用者]  選項。 如果已設定 SAML 驗證，則會在使用者透過單一登入第一次登入時自動新增他們。
+    >只有在 [驗證原則] 底下選取 [Mozy] 做為提供者時，才會顯示 [新增使用者] 選項。 如果已設定 SAML 驗證，則會在使用者透過單一登入第一次登入時自動新增他們。
     
 3. 在 [新增使用者] 對話方塊上，執行下列步驟：
    

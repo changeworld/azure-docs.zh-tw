@@ -91,13 +91,13 @@ Contoso 已排序新的機制來延伸其中一個設備。 在等待新機制�
 
 選取所有的**卡車**和**原型**裝置。 然後，按一下 [作業]  。
 
-在 [作業]  面板中選取 [標記]  ，將作業名稱設定為 **AddConnectedVehicleTag**，然後使用 **ConnectedVehicle** 值新增名為 **FieldService** 的文字標記。 然後，按一下 [套用]  ：
+在 [作業] 面板中選取 [標記]，將作業名稱設定為 **AddConnectedVehicleTag**，然後使用 **ConnectedVehicle** 值新增名為 **FieldService** 的文字標記。 然後，按一下 [套用]  ：
 
 [![將標記新增至原型和卡車裝置](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
 在 [裝置] 頁面中，選取所有的**冷卻器**、**電梯**和**引擎**裝置。 然後，按一下 [作業]  。
 
-在 [作業]  面板中選取 [標記]  ，將作業名稱設定為 **AddSmartBuildingTag**，然後使用 **SmartBuilding** 值新增名為 **FieldService** 的文字標記。 然後，按一下 [套用]  ：
+在 [作業] 面板中選取 [標記]，將作業名稱設定為 **AddSmartBuildingTag**，然後使用 **SmartBuilding** 值新增名為 **FieldService** 的文字標記。 然後，按一下 [套用]  ：
 
 [![為冷卻器、電梯和引擎裝置新增標記](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 

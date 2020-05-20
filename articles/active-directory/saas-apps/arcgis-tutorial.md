@@ -117,7 +117,7 @@ ms.locfileid: "74232099"
 
     ![憑證下載連結](common/metadataxml.png)
 
-6. 若要自動執行 **ArcGIS Online** 內的設定，您必須按一下 [安裝延伸模組]  來安裝「我的應用程式安全登入瀏覽器延伸模組」  。
+6. 若要自動執行 **ArcGIS Online** 內的設定，您必須按一下 [安裝延伸模組] 來安裝「我的應用程式安全登入瀏覽器延伸模組」。
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "74232099"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -40,7 +40,7 @@ Application Insights 中的可用性測試，可讓您從世界各地的不同�
 
 1. 選取 [Application Insights]  ，然後選取您的訂用帳戶。  
 
-2. 選取 [調查]  功能表下方的 [可用性]  ，然後按一下 [建立測試]  。
+2. 選取 [調查] 功能表下方的 [可用性]，然後按一下 [建立測試]。
 
     ![加入可用性測試](media/tutorial-alert/add-test-001.png)
 

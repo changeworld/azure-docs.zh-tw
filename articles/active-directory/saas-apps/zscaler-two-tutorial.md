@@ -116,7 +116,7 @@ ms.locfileid: "68825104"
 
     ![image](common/edit-attribute.png)
 
-6. 除了以上屬性外，Zscaler Two 應用程式還會預期 SAML 回應傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+6. 除了以上屬性外，Zscaler Two 應用程式還會預期 SAML 回應傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
     
     | 名稱 | 來源屬性 |
     | ---------| ------------ |
@@ -157,7 +157,7 @@ ms.locfileid: "68825104"
 
 ### <a name="configure-zscaler-two-single-sign-on"></a>設定 Zscaler Two 單一登入
 
-1. 若要自動執行 Zscaler Two 內的設定，您必須按一下 [安裝擴充功能]  來安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+1. 若要自動執行 Zscaler Two 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
@@ -208,7 +208,7 @@ ms.locfileid: "68825104"
 
 1. 啟動 **Internet Explorer**。
 
-2. 從 [工具]  功能表選取 [網際網路選項]  可開啟 [網際網路選項]  對話方塊。   
+2. 從 [工具] 功能表選取 [網際網路選項] 可開啟 [網際網路選項] 對話方塊。   
     
      ![網際網路選項](./media/zscaler-two-tutorial/ic769492.png "，")
 
@@ -274,7 +274,7 @@ ms.locfileid: "68825104"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

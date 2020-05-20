@@ -61,7 +61,7 @@ ms.locfileid: "73473477"
 
     您的群組已建立，並已可以新增成員。
 
-1. 選取 [群組]  頁面中的 [成員]  區域，然後從 [選取成員]  頁面開始搜尋要新增至群組的成員。
+1. 選取 [群組] 頁面中的 [成員] 區域，然後從 [選取成員] 頁面開始搜尋要新增至群組的成員。
 
     ![在群組建立程序期間選取群組成員](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
 

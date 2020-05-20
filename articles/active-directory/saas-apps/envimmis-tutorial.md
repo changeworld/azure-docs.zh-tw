@@ -110,7 +110,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Envi MMIS 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -145,7 +145,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure2.png)
 
-4. 選取 [使用遠端驗證]  核取方塊，然後從 [驗證類型]  下拉式清單中選取 [HTTP 重新導向]  。
+4. 選取 [使用遠端驗證] 核取方塊，然後從 [驗證類型] 下拉式清單中選取 [HTTP 重新導向]。
 
     ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure3.png)
 
@@ -157,7 +157,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure5.png)
 
-    a. 從 [上傳來源]  下拉式清單中選取 [檔案]  選項。
+    a. 從 [上傳來源] 下拉式清單中選取 [檔案] 選項。
 
     b. 請選取 [選擇檔案]  圖示，上傳從 Azure 入口網站下載的中繼資料檔案。
 
@@ -208,7 +208,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

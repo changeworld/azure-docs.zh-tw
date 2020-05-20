@@ -13,4 +13,4 @@ ms.locfileid: "67174305"
 ---
 ## <a name="get-the-sample-images"></a>取得範例影像
 
-此範例會使用 GitHub 上**認知服務 Node.js SDK 範例**存放庫的 [Samples/customvision/images](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) 目錄中包含的影像。 將此存放庫複製或下載到您的開發環境。
+此範例會使用 GitHub 上[認知服務 Node.js SDK 範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images)存放庫的 **Samples/customvision/images** 目錄中包含的影像。 將此存放庫複製或下載到您的開發環境。

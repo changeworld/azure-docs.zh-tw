@@ -46,7 +46,7 @@ Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、
 
 5. 選取 [專案]   > [管理 NuGet 套件]   > [套件來源: nuget.org]   > [更新]  ，將 Application Insights SDK 套件更新至最新穩定版本。
 
-6. 從 [偵錯]  功能表選取 [開始偵錯]  或按 F5 鍵來執行您的應用程式。
+6. 從 [偵錯] 功能表選取 [開始偵錯]或按 F5 鍵來執行您的應用程式。
 
 ## <a name="confirm-app-configuration"></a>確認應用程式設定
 
@@ -60,7 +60,7 @@ Application Insights 會為您的應用程式收集遙測資料，不論其執�
 
 您現在可以在 Azure 入口網站中開啟 Application Insights 以檢視有關執行中應用程式的各種詳細資料。
 
-1. 在方案總管中展開 [連線的服務]  資料夾 (雲端和加號圖示)，然後以滑鼠右鍵按一下 [Application Insights]  資料夾，並按一下 [開啟 Application Insights 入口網站]  。  您可以看到有關您的應用程式的某些資訊和各種選項。
+1. 在方案總管中展開 [連線的服務] 資料夾 (雲端和加號圖示)，然後以滑鼠右鍵按一下 [Application Insights] 資料夾，並按一下 [開啟 Application Insights 入口網站]。  您可以看到有關您的應用程式的某些資訊和各種選項。
 
     ![應用程式對應](media/quick-monitor-portal/04-overview.png)
 

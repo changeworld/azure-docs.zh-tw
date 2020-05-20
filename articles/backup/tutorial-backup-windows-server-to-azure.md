@@ -39,7 +39,7 @@ ms.locfileid: "79222465"
 
 3. 在 [復原服務保存庫]  功能表中，
 
-    * 在 [名稱]  中鍵入 *myRecoveryServicesVault*。
+    * 在 [名稱] 中鍵入 *myRecoveryServicesVault*。
     * 目前的訂用帳戶識別碼會出現在 [訂用帳戶]  中。
     * 針對**資源群組**：選取 [使用現有]  並選擇 [myResourceGroup]  。 如果 [myResourceGroup]  不存在，請選取 [新建]  並鍵入 *myResourceGroup*。
     * 從 [位置]  下拉式功能表中，選擇 [西歐]  。
@@ -98,7 +98,7 @@ Microsoft Azure 復原服務 (MARS) 代理程式可在您的 Windows Server 及�
 
 1. 開啟 Microsoft Azure 復原服務代理程式。 您可以透過在您的電腦中搜尋 **Microsoft Azure 備份**來找出備份。
 
-2. 在 [復原服務代理程式] 主控台中，按一下 [動作窗格]  下的 [排程備份]  。
+2. 在 [復原服務代理程式] 主控台中，按一下 [動作窗格] 下的 [排程備份]。
 
     ![準備基礎結構](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 

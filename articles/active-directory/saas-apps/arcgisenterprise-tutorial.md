@@ -106,7 +106,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態]  區段執行下列步驟：
+4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態] 區段執行下列步驟：
 
     ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -114,7 +114,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
-    c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+    c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -147,11 +147,11 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. 在 [名稱]  文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
+    a. 在 [名稱] 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
 
     b. 在 [URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url]  值。
 
-    c. 按一下 [顯示進階設定]  並複製 [實體識別碼]  值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL]  區段的 [識別碼]  文字方塊。
+    c. 按一下 [顯示進階設定] 並複製 [實體識別碼] 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL] 區段的 [識別碼] 文字方塊。
     
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure5.png)
 
@@ -198,7 +198,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -124,7 +124,7 @@ ms.locfileid: "67091277"
 
 1. 以系統管理員身分登入您的 SensoScientific Wireless Temperature Monitoring System 應用程式。
 
-1. 在頂端的導覽功能表上，按一下 [設定]  ，然後前往 [單一登入]  下的 [設定]  開啟 [單一登入設定]，並執行下列步驟：
+1. 在頂端的導覽功能表上，按一下 [設定]，然後前往 [單一登入] 下的 [設定] 開啟 [單一登入設定]，並執行下列步驟：
 
     ![設定單一登入](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
@@ -180,7 +180,7 @@ ms.locfileid: "67091277"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

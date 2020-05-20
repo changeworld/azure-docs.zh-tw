@@ -112,7 +112,7 @@ Qumu Cloud 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.qumucloud.com/saml/SSO`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Qumu Cloud 網域和 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -125,7 +125,7 @@ Qumu Cloud 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-7. 除了以上屬性外，Qumu Cloud 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+7. 除了以上屬性外，Qumu Cloud 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
     | 名稱 | 來源屬性|
     | ---------------| --------------- |    
@@ -208,7 +208,7 @@ Qumu Cloud 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

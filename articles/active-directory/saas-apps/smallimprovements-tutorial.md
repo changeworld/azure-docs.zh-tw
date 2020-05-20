@@ -134,7 +134,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-1. 按一下 [整合]  區段的 [SAML SSO]  按鈕。
+1. 按一下 [整合] 區段的 [SAML SSO] 按鈕。
 
     ![設定單一登入](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
@@ -193,7 +193,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

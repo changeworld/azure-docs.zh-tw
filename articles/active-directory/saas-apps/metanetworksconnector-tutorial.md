@@ -111,7 +111,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Meta Networks Connector 網域及 URL 單一登入資訊](common/both-advanced-urls.png)
 
@@ -126,7 +126,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
     
-7. 除了以上屬性外，Meta Networks Connector 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+7. 除了以上屬性外，Meta Networks Connector 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
     
     | 名稱 | 來源屬性 | 命名空間|
     | ---------------| --------------- | -------- |
@@ -191,11 +191,11 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
     
     ![設定單一登入](./media/metanetworksconnector-tutorial/configure2.png)
     
-    a. 複製 [SSO URL]  值並將它貼至 [Meta Networks Connector 網域和 URL]  區段的 [登入 URL]  文字方塊。
+    a. 複製 [SSO URL] 值並將它貼至 [Meta Networks Connector 網域和 URL] 區段的 [登入 URL] 文字方塊。
     
-    b. 複製 [收件者 URL]  值並將它貼至 [Meta Networks Connector 網域和 URL]  區段的 [回覆 URL]  文字方塊。
+    b. 複製 [收件者 URL] 值並將它貼至 [Meta Networks Connector 網域和 URL] 區段的 [回覆 URL] 文字方塊。
     
-    c. 複製 [對象 URI (SP 實體識別碼)]  值並將它貼至 [Meta Networks Connector 網域和 URL]  區段的 [識別碼 (實體識別碼)]  文字方塊。
+    c. 複製 [對象 URI (SP 實體識別碼)] 值並將它貼至 [Meta Networks Connector 網域和 URL] 區段的 [識別碼 (實體識別碼)] 文字方塊。
     
     d. 啟用 SAML
     
@@ -252,7 +252,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

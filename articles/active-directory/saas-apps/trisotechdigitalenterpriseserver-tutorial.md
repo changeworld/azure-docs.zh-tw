@@ -134,7 +134,7 @@ Trisotech Digital Enterprise Server 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. 從 [驗證方法]  的下拉式清單中選取 [安全的聲明標記語言 2 (SAML 2)]  。
+    a. 從 [驗證方法] 的下拉式清單中選取 [安全的聲明標記語言 2 (SAML 2)]。
 
     b. 在 [中繼資料 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url]  值。
 
@@ -186,7 +186,7 @@ Trisotech Digital Enterprise Server 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

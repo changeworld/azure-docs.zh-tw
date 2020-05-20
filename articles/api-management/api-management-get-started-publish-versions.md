@@ -49,7 +49,7 @@ ms.locfileid: "73176828"
 3. 選取 [+ 新增版本]  。
 
 > [!TIP]
-> 當您第一次建立新的 API 時，也會啟用版本 - 請在 [新增 API]  畫面中選取 [要為此 API 設定版本嗎？]  。
+> 當您第一次建立新的 API 時，也會啟用版本 - 請在 [新增 API] 畫面中選取 [要為此 API 設定版本嗎？]。
 
 ## <a name="choose-a-versioning-scheme"></a>選擇版本設定配置
 
@@ -58,12 +58,12 @@ Azure API 管理可讓您選擇讓呼叫者指定他們想要之 API 版本的�
 ![新增版本畫面](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. 讓選取的**路徑**做為您的**版本設定配置**。
-2. 在 [名稱]  欄位中輸入 **demo-conference-api-v1**。
+2. 在 [名稱] 欄位中輸入 **demo-conference-api-v1**。
 
     > [!NOTE]
     > 版本實際上是以 API 的修訂為基礎的新 API。 **名稱**是新 API 的名稱，且在 API 管理執行個體中必須是唯一的。
 
-3. 在 [版本識別碼]  欄位中輸入 **v1**。
+3. 在 [版本識別碼] 欄位中輸入 **v1**。
 
     > [!TIP]
     > 如果您選取 [標題]  或 [查詢字串]  作為版本設定配置，您需要提供其他值 - 標題名稱或查詢字串參數。

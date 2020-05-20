@@ -40,7 +40,7 @@ ms.locfileid: "68989684"
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 從左側瀏覽窗格選取 [Azure Active Directory]  並使用 [切換目錄]  按鈕來選取您的 Active Directory。
 3. 從儀表板選取 [Azure Active Directory]  ，然後選取 [稽核記錄]  。 
-4. 在 [日期範圍]  篩選下拉式清單中選擇 [過去 24 小時]  ，然後選取 [套用]  以檢視過去 24 小時的稽核記錄。 
+4. 在 [日期範圍] 篩選下拉式清單中選擇 [過去 24 小時]，然後選取 [套用] 以檢視過去 24 小時的稽核記錄。 
 5. 選取 [下載]  按鈕、選取 **CSV** 作為檔案格式，並指定檔案名稱，以下載包含篩選記錄的 CSV 檔案。 
 
 ![報告](./media/quickstart-download-audit-report/download-audit-logs.png)

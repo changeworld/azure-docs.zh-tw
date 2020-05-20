@@ -116,7 +116,7 @@ ms.locfileid: "68943298"
 
     ![[使用者屬性] 對話方塊](common/edit-attribute.png)
 
-6. Zscaler Beta 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，依照下列步驟新增 SAML 權杖屬性，如下表所示。
+6. Zscaler Beta 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，依照下列步驟新增 SAML 權杖屬性，如下表所示。
     
     | 名稱 | 來源屬性 | 
     | ---------------| --------------- |
@@ -157,7 +157,7 @@ ms.locfileid: "68943298"
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>設定 Zscaler Beta 單一登入
 
-1. 若要自動執行 Zendesk Beta 內的設定，您必須選取 [安裝擴充功能]  以安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+1. 若要自動執行 Zendesk Beta 內的設定，您必須選取 [安裝擴充功能] 以安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
@@ -208,7 +208,7 @@ ms.locfileid: "68943298"
 
 1. 啟動 **Internet Explorer**。
 
-2. 從 [工具]  功能表選取 [網際網路選項]  ，以開啟 [網際網路選項]  對話方塊。 
+2. 從 [工具] 功能表選取 [網際網路選項]，以開啟 [網際網路選項] 對話方塊。 
     
      ![[網際網路選項] 對話方塊](./media/zscaler-beta-tutorial/ic769492.png "，")
 
