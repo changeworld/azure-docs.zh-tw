@@ -23,7 +23,7 @@ Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同�
 * [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/vs/whatsnew/)的任何版本。
 * [認知影像搜尋 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/)。
 
-若要在 Visual Studio 中安裝 Bing 影像搜尋用戶端程式庫，可在[方案總管]  中使用 [管理 NuGet 套件]  選項。
+若要在 Visual Studio 中安裝 Bing 影像搜尋用戶端程式庫，可在[方案總管] 中使用 [管理 NuGet 套件] 選項。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

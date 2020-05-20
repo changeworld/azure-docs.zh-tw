@@ -111,7 +111,7 @@ Kontiki 支援下列功能︰
     > [!NOTE]
     > 請連絡 [Kontiki 用戶端支援小組](https://customersupport.kontiki.com/enterprise/contactsupport.html)以取得要使用的正確值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  窗格的 [SAML 簽署憑證]  區段中，選取 [同盟中繼資料 XML]  旁邊的 [下載]  。 根據您的需求選取下載選項。 將憑證儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 窗格的 [SAML 簽署憑證] 區段中，選取 [同盟中繼資料 XML] 旁邊的 [下載]。 根據您的需求選取下載選項。 將憑證儲存在您的電腦上。
 
     ![同盟中繼資料 XML 憑證下載選項](common/metadataxml.png)
 

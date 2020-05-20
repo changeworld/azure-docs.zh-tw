@@ -111,7 +111,7 @@ ms.locfileid: "67087430"
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://secure.vidyard.com/sso/saml/<unique id>/consume`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![[Vidyard 網域及 URL] 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -152,11 +152,11 @@ ms.locfileid: "67087430"
 
     a. 請在 [Profile Name] \(設定檔名稱\)  文字方塊中，輸入一般設定檔名稱。
 
-    b. 複製 [SSO 使用者登入頁面]  值，然後將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [登入 URL]  文字方塊中。
+    b. 複製 [SSO 使用者登入頁面] 值，然後將其貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [登入 URL] 文字方塊中。
 
-    c. 複製 [ACS URL]  值，並且在 Azure 入口網站上貼入 [基本 SAML 設定]  區段的 [回覆 URL]  文字方塊中。
+    c. 複製 [ACS URL] 值，並且在 Azure 入口網站上貼入 [基本 SAML 設定] 區段的 [回覆 URL] 文字方塊中。
 
-    d. 複製 [簽發者/中繼資料 URL]  值，然後將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [識別碼]  文字方塊中。
+    d. 複製 [簽發者/中繼資料 URL] 值，然後將其貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [識別碼] 文字方塊中。
 
     e. 在「記事本」中開啟您從 Azure 入口網站下載的憑證，然後將其貼到 [X.509 Certificate] \(X.509 憑證\)  文字方塊中。
 
@@ -222,7 +222,7 @@ ms.locfileid: "67087430"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

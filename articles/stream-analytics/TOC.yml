@@ -58,6 +58,7 @@
       items:
         - name: 輸出概觀
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: 輸出至 Cosmos DB
           href: stream-analytics-documentdb-output.md
         - name: 輸出到 Azure SQL DB
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: 配對作業以獲得較高的可靠性
           href: stream-analytics-job-reliability.md
-        - name: 使用受控識別進行驗證 - ADLS Gen 1 輸出
-          href: stream-analytics-managed-identities-adls.md
         - name: 使用 SQL 參考資料
           href: sql-reference-data.md
-        - name: 使用受控識別進行驗證 - Blob 輸出
-          href: blob-output-managed-identity.md
-        - name: 使用受控識別進行驗證 - Power BI
-          href: powerbi-output-managed-identity.md
+        - name: 使用受控識別進行驗證
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob 儲存體
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: 將資料進行加密
           href: data-protection.md
     - name: 建置解決方案
@@ -226,7 +235,19 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: 資料錯誤
           href: data-errors.md
-    - name: 與 Machine Learning 整合
+        - name: 錯誤碼
+          items:
+            - name: 組態錯誤
+              href: configuration-error-codes.md
+            - name: 資料錯誤
+              href: data-error-codes.md
+            - name: 外部可用性錯誤
+              href: external-availability-error-codes.md
+            - name: 外部錯誤
+              href: external-error-codes.md
+            - name: 內部錯誤
+              href: internal-error-codes.md
+    - name: 與機器學習整合
       items:
         - name: 使用 ML 模型進行情感分析
           href: stream-analytics-machine-learning-integration-tutorial.md

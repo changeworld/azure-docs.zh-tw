@@ -38,7 +38,7 @@ ms.locfileid: "77199257"
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>VM 的 CSV 檔案「說明」區段
 
-CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Reservation-"** 的 [計量子類別]  欄位套用篩選。 您會看到類似下列螢幕擷取畫面的內容：
+CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Reservation-"** 的 [計量子類別] 欄位套用篩選。 您會看到類似下列螢幕擷取畫面的內容：
 
 ![篩選後保留使用量詳細資料與費用的螢幕擷取畫面](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -50,7 +50,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ![每日使用量詳細資料與費用的螢幕擷取畫面](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. [其他資訊]  欄位中的 **ReservationId** 是套用至 VM 的保留。
+1. [其他資訊] 欄位中的 **ReservationId** 是套用至 VM 的保留。
 2. **ConsumptionMeter** 是 VM 的計量識別碼。
 3. **Reservation-Base VM** 的 [計量子類別]  行在 [說明] 區段中代表 $0 成本。 執行此 VM 的成本已由保留支付。
 4. [計量識別碼]  是保留的計量識別碼。 此計量的成本為 $0。 任何有資格獲得保留折扣的 VM 都會出現此計量識別碼。
@@ -83,7 +83,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ![SQL Database 保留容量的 CSV 檔案](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. [其他資訊]  欄位中的 **ReservationId** 是套用至 SQL 資料庫資源的 SQL Database 保留容量。
+1. [其他資訊] 欄位中的 **ReservationId** 是套用至 SQL 資料庫資源的 SQL Database 保留容量。
 2. **ConsumptionMeter** 是 SQL Database 資源的計量識別碼。
 3. [計量識別碼]  是保留計量。 此計量的成本為 $0。 任何有資格獲得保留折扣的 SQL Database 資源都會在 CSV 檔案中顯示此計量識別碼。
 

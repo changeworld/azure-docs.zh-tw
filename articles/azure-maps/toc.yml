@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST API 教學課程
       items:
+        - name: 建立室內地圖
+          href: tutorial-creator-indoor-maps.md
         - name: 設定地理柵欄
           href: tutorial-geofence.md
         - name: 空間分析
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: 選擇適當的定價層
       href: choose-pricing-tier.md
+    - name: 室內地圖的建立工具
+      items:
+        - name: 室內地圖概念
+          href: creator-indoor-maps.md
+        - name: 繪製轉換錯誤和警告
+          href: drawing-conversion-error-codes.md
     - name: 涵蓋範圍
       items:
         - name: 地理編碼涵蓋範圍
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: 管理定價層
           href: how-to-manage-pricing-tier.md
+        - name: 管理建立工具
+          href: how-to-manage-creator.md
         - name: 檢視使用計量
           href: how-to-view-api-usage.md
     - name: 從 REST API 取得地圖資料
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: 顯示流量資料
           href: how-to-show-traffic-android.md
+    - name: 使用建立工具的室內地圖進行開發
+      items:
+        - name: 室內地圖模組
+          href: how-to-use-indoor-module.md
+        - name: 適用於室內地圖的動態樣式
+          href: indoor-map-dynamic-styling.md
+        - name: 繪製錯誤視覺化檢視
+          href: drawing-error-visualizer.md
     - name: 提供資料意見反應
       href: how-to-use-feedback-tool.md
 - name: 參考
   items:
     - name: API 和參數擴充功能
       items:
+        - name: 繪製套件需求
+          href: drawing-requirements.md
         - name: 車輛耗用模型
           href: consumption-model.md
         - name: 擴充 GeoJSON 格式
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: 空間 IO 模組
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: 室內模組
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.maps/accounts
 - name: 資源
@@ -287,7 +309,7 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-maps'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'

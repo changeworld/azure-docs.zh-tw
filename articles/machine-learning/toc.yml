@@ -138,9 +138,6 @@
       href: concept-model-management-and-deployment.md
     - name: 模型可攜性 (ONNX)
       href: concept-onnx.md
-    - name: 模型可解釋性
-      displayName: explainability
-      href: how-to-machine-learning-interpretability.md
     - name: ML 管線
       href: concept-ml-pipelines.md
     - name: 企業整備與安全性
@@ -172,6 +169,20 @@
           href: how-to-setup-authentication.md
         - name: 監視 Azure Machine Learning
           href: monitor-azure-machine-learning.md
+    - name: 負責任的 ML
+      items:
+        - name: 負責任的 ML 概觀
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: 模型可解釋性
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Machine Learning 中的公平性
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: 差分隱私
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
 - name: 操作指南
   items:
     - name: 建立和管理工作區
@@ -273,6 +284,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: 增強式學習
+          href: how-to-use-reinforcement-learning.md
     - name: 解譯和說明模型
       displayName: interpretability
       items:

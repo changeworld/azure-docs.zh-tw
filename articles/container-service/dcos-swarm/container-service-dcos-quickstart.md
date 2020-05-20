@@ -36,7 +36,7 @@ az login
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

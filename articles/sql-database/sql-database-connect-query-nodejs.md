@@ -30,15 +30,15 @@ ms.locfileid: "76768610"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  安裝 Homebrew 和 Node.js，然後使用**在 macOS 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Homebrew 和 Node.js，然後使用[在 macOS 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安裝 Node.js，然後使用**在 Ubuntu 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Node.js，然後使用[在 Ubuntu 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  安裝 Chocolatey 和 Node.js，然後使用**在 Windows 上使用 SQL Server 上建立 Node.js 應用程式**中的 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/) 步驟來安裝 ODBC 驅動程式和 SQLCMD。
+  安裝 Chocolatey 和 Node.js，然後使用[在 Windows 上使用 SQL Server 上建立 Node.js 應用程式](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)中的 **1.2** 和 **1.3** 步驟來安裝 ODBC 驅動程式和 SQLCMD。
 
   ---
 

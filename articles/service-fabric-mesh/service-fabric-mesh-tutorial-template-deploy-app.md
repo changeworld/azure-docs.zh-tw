@@ -61,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用下列命令，在 eastus  位置中，建立名為 myResourceGroup  的資源群組。
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用下列命令，在 eastus 位置中，建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

@@ -43,7 +43,7 @@ ms.locfileid: "75971925"
 
 若要執行本教學課程中的 CLI 指令碼範例，您有兩個選項：
 
-- 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看]  按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
+- 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看] 按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
 - 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶 

@@ -46,7 +46,7 @@ ms.locfileid: "75430741"
 ## <a name="customize-the-developer-portal"></a>自訂開發人員入口網站
 
 1. 選取 [概觀]  。
-2. 按一下 [概觀]  視窗頂端的 [開發人員入口網站 (舊版)]  按鈕。
+2. 按一下 [概觀] 視窗頂端的 [開發人員入口網站 (舊版)] 按鈕。
 3. 在螢幕的左上方，您會看到由兩支筆刷組成的圖示。 將滑鼠停留在此圖示上可開啟入口網站的自訂功能表。
 
     ![自訂樣式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)

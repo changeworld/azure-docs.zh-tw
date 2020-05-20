@@ -1,10 +1,10 @@
-- name: 翻譯工具文字文件
+- name: 翻譯工具文件
   href: index.yml
-- name: Translator Text API
+- name: 轉譯程式
   items:
     - name: 概觀
       items:
-        - name: 什麼是 Translator Text API？
+        - name: 什麼是翻譯工具？
           href: translator-info-overview.md
     - name: 快速入門
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: 教學課程
       items:
-        - name: '建立適用於翻譯工具文字的 WPF 應用程式，C#'
+        - name: '建立適用於翻譯工具的 WPF 應用程式 (C#)'
           href: tutorial-wpf-translation-csharp.md
         - name: 建立 Flask 轉譯應用程式，Python
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: 操作指南
       items:
-        - name: 註冊 Translator Text API
+        - name: 註冊翻譯工具
           href: translator-text-how-to-signup.md
         - name: 移轉至 V3 文字 API
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: 參考
       items:
-        - name: v3 Translator Text API 參考
+        - name: v3 翻譯工具參考
           href: reference/v3-0-reference.md
           items:
             - name: Languages
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: 字典範例
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator Text API 參考 (已過時)
+        - name: v2 翻譯工具參考 (已淘汰)
           href: reference/v2-0-reference.md
           items:
             - name: 轉換文字
@@ -108,7 +108,7 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 要求限制
           href: request-limits.md
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自訂翻譯工具
   items:
@@ -174,5 +174,5 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 加密
           href: translator-encryption-of-data-at-rest.md
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

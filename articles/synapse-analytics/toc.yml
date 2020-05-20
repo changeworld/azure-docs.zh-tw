@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: 使用 SQL 隨選
       href: quickstart-sql-on-demand.md
+    - name: 連線到適用於 Cosmos DB 的 Synapse Link
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教學課程
   items:
     - name: 執行適用於 Spark 集區的 Apache Spark 應用程式
@@ -80,7 +82,7 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 維護排程
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: 備份與還原
+        - name: 備份及還原
           href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 監視
       items:
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 資源類別
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Synapse Link 支援的功能
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 工具整合 (AI、ETL、BI)
       items:
         - name: 針對 Synapse Analytics Studio 進行疑難排解
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: 轉換及分析資料
       items:
+        - name: Synapse Link
+          items:
+            - name: 連線到適用於 Cosmos DB 的 Azure Synapse Link
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: 使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: 查詢儲存體中的資料

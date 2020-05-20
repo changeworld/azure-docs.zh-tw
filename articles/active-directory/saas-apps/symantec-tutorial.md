@@ -114,7 +114,7 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
-    > 如果 [識別碼]  和 [回覆 URL]  的值因為某些原因而沒有作用，請連絡 [Symantec Web Security Service (WSS) 客戶支援小組](https://www.symantec.com/contact-us)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 如果 [識別碼] 和 [回覆 URL] 的值因為某些原因而沒有作用，請連絡 [Symantec Web Security Service (WSS) 客戶支援小組](https://www.symantec.com/contact-us)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -165,7 +165,7 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

@@ -208,7 +208,7 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -254,7 +254,7 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
     d. 按一下 [確定]  。
 
-5. 瀏覽至 [單一登入]  索引標籤並選取 [SAML 2.0 識別碼]  區域中的 [新增]  。
+5. 瀏覽至 [單一登入] 索引標籤並選取 [SAML 2.0 識別碼] 區域中的 [新增]。
 
     ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
 

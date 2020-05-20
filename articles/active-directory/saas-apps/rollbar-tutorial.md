@@ -109,7 +109,7 @@ ms.locfileid: "67092686"
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://rollbar.com/<accountname>/saml/sso/azure/`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Rollbar 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "67092686"
 
     ![組態](./media/rollbar-tutorial/configure2.png)
 
-    a. 從 [SAML Identity Provider] \(SAML 身分識別提供者\)  下拉式清單中，選取 [AZURE]  。
+    a. 從 [SAML Identity Provider] \(SAML 身分識別提供者\) 下拉式清單中，選取 [AZURE]。
 
     b. 在記事本中開啟您的中繼資料檔案，將其內容複製到剪貼簿，然後貼到 [SAML Metadata] \(SAML 中繼資料\)  文字方塊中。
 
@@ -209,7 +209,7 @@ ms.locfileid: "67092686"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

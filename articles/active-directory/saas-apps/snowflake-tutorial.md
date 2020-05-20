@@ -103,7 +103,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態]  區段執行下列步驟：
+4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態] 區段執行下列步驟：
 
     ![Snowflake 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -140,7 +140,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Snowflake。
 
-1. 按一下頁面右上方的 [設定檔]  ，**切換角色**為 **ACCOUNTADMIN**。
+1. 按一下頁面右上方的 [設定檔]，**切換角色**為 **ACCOUNTADMIN**。
 
     > [!NOTE]
     > 這與您在右上角您使用者名稱底下選取的內容不同
@@ -203,7 +203,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -221,7 +221,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 以安全性系統管理員身分登入 Snowflake。
 
-2. 按一下頁面右上方的 [設定檔]  ，**切換角色**為 **ACCOUNTADMIN**。  
+2. 按一下頁面右上方的 [設定檔]，**切換角色**為 **ACCOUNTADMIN**。  
 
     ![Snowflake admin](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 

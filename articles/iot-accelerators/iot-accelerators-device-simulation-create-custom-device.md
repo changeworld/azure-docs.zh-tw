@@ -42,7 +42,7 @@ ms.locfileid: "61450504"
 
 系統可能會要求您使用 Azure 訂用帳戶認證來登入。
 
-接著，請針對您在[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中部署的裝置模擬，按一下其圖格上的 [啟動]  。
+接著，請針對您在[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中部署的裝置模擬，按一下其圖格上的 [啟動]。
 
 ## <a name="view-your-device-models"></a>檢視您的裝置型號
 

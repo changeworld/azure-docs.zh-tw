@@ -90,7 +90,7 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
 
 若要設定與 Ceridian Dayforce HCM 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Ceridian Dayforce HCM]  應用程式整合分頁上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Ceridian Dayforce HCM] 應用程式整合分頁上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -134,7 +134,7 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-6. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
+6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
     
     | 名稱 | 來源屬性|
     | ---------| --------- |
@@ -217,7 +217,7 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

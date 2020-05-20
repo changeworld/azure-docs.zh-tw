@@ -42,7 +42,7 @@ ms.locfileid: "68988197"
 
 若要設定 Azure AD 活動記錄的監視設定，請先登入 [Azure 入口網站](https://portal.azure.com)，然後選取 **Azure Active Directory**。 在此，您有兩種方式可存取診斷設定組態頁面：
 
-* 從 [監視]  區段選取 [診斷設定]  。
+* 從 [監視] 區段選取 [診斷設定]。
 
     ![診斷設定](./media/overview-monitoring/diagnostic-settings.png)
     

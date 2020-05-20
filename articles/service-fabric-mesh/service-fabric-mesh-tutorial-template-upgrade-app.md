@@ -68,7 +68,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 將您的變更儲存到參數檔案。  
 
-frontEndCpu  參數的宣告位置位於 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的「參數」  區段：
+frontEndCpu 參數的宣告位置位於 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的「參數」區段：
 
 ```json
 "frontEndCpu": {

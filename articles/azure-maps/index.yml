@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 地圖服務文件
-summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
+summary: Micrsoft Azure 地圖服務提供強大的地理空間功能供所有產業的開發人員使用。 這些地理空間功能還包含最詳細的對應資料。 Azure 地圖服務提供網頁和行動裝置應用程式使用。 Azure 地圖服務是 REST API 的 Azure One API 相容集合。 以下只列出 Azure 地圖服務服務提供的高階概觀，包括地圖服務、搜尋、路由、流量、行動性、天氣、時區、地理位置、地理柵欄、地圖資料和空間作業。 網頁和 Android SDK 讓開發工作變得更簡單、更具彈性，且可跨多個平台使用。
 metadata:
   title: Azure 地圖服務文件 | Microsoft Docs
   description: 了解 Azure 地圖服務以及如何使用它來為 Web 或行動應用程式提供地理空間服務。
@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: 852a01416b52c6a7b98c3b4883210749bf3cc509
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b3e986c67c55af467ea6534dd7484a307ec08227
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80132453"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83589256"
 landingContent:
 - title: 關於 Azure 地圖服務
   linkLists:
@@ -56,6 +56,36 @@ landingContent:
       url: how-to-manage-pricing-tier.md
     - text: 檢視 Azure 地圖服務 API 使用計量
       url: how-to-view-api-usage.md
+- title: 使用建立工具進行開發
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 室內地圖概念
+      url: creator-indoor-maps.md
+  - linkListType: tutorial
+    links:
+    - text: 使用建立工具來建立室內地圖資料
+      url: tutorial-creator-indoor-maps.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理建立工具的室內地圖
+      url: how-to-manage-creator.md
+    - text: 為室內地圖實作動態樣式
+      url: indoor-map-dynamic-styling.md
+    - text: 使用 Azure 地圖服務繪製錯誤視覺化檢視
+      url: drawing-error-visualizer.md
+    - text: 使用室內地圖模組
+      url: how-to-use-indoor-module.md
+  - linkListType: reference
+    links:
+    - text: 轉換服務
+      url: https://docs.microsoft.com/rest/api/maps/conversion
+    - text: 資料集服務
+      url: https://docs.microsoft.com/rest/api/maps/dataset
+    - text: Tileset 服務
+      url: https://docs.microsoft.com/rest/api/maps/tileset
+    - text: 功能 stateset 服務
+      url: https://docs.microsoft.com/rest/api/maps/featurestate
 - title: 使用 Web SDK 進行開發
   linkLists:
   - linkListType: concept

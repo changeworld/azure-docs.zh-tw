@@ -89,7 +89,7 @@ ms.locfileid: "74233298"
 
 若要設定透過 Thoughtworks Mingle 使用 Azure AD 單一登入功能，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Thoughtworks Mingle]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Thoughtworks Mingle] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -180,7 +180,7 @@ ms.locfileid: "74233298"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "74233298"
  
     a. 在相關的文字方塊中，輸入您要佈建之有效 Azure AD 帳戶的 [登入名稱]  、[顯示名稱]  、[選擇密碼]  、[確認密碼]  。 
 
-    b. 選取 [完整使用者]  做為 [使用者類型]  。
+    b. 選取 [完整使用者] 做為 [使用者類型]。
 
     c. 按一下 [建立這個設定檔]  。
 

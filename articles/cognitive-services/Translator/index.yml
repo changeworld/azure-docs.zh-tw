@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: 翻譯工具文字文件
-summary: 翻譯工具文字是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此 API 採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具文字 API 的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具文字 API 或 Microsoft 語音服務來翻譯文字。
+title: 翻譯工具文件
+summary: 翻譯工具是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此服務採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具或 Microsoft 語音服務來翻譯文字。
 metadata:
-  title: 翻譯工具文字文件 - 快速入門、教學課程和 API 參考
+  title: 翻譯工具文件 - 快速入門、教學課程和 API 參考
   titleSuffix: Azure Cognitive Services
-  description: 翻譯工具文字是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此 API 採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具文字 API 的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具文字 API 或 Microsoft 語音服務來翻譯文字。
+  description: 翻譯工具是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此服務採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具或 Microsoft 語音服務來翻譯文字。
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529787"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592741"
 landingContent:
 - title: 轉譯程式
   linkLists:
   - linkListType: overview
     links:
-    - text: Translator Text API
+    - text: 轉譯程式
       url: translator-info-overview.md
     - text: 自訂翻譯工具
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: 常見問題集
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Translator Text API
+- title: 開始使用
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: 翻譯工具文字 API 參考 (v3)
+    - text: 翻譯工具參考 (v3)
       url: reference/v3-0-reference.md
     - text: 要求限制
       url: request-limits.md
@@ -104,5 +104,5 @@ landingContent:
     links:
     - text: GitHub 範例
       url: https://aka.ms/TranslatorGitHub
-    - text: 堆疊溢位
+    - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator

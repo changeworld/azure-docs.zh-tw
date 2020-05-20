@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. 擷取使用者資料
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. 從使用者的語句中取得情感分析
           href: tutorial-publish-settings.md
-    - name: 建立和使用實體
-      items:
-        - name: 規則運算式實體
-          href: tutorial-regex-entity.md
-        - name: 清單實體
-          href: tutorial-list-entity.md
-        - name: 實體角色
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: 使用複合實體將相關資料分組並加以擷取
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: 改善應用程式
       items:
         - name: 修正不確定的預測
@@ -79,17 +67,19 @@
     - name: 規劃您的應用程式
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: 資料收集
+      href: data-collection.md
     - name: 應用程式模型
       items:
         - name: 類型
           href: luis-concept-model.md
-        - name: 對應方式
+        - name: 意圖會分類語句
           href: luis-concept-intent.md
-        - name: 表達方式
-          href: luis-concept-utterance.md
-        - name: 實體
+        - name: 實體會擷取資料
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: 範例語句
+          href: luis-concept-utterance.md
         - name: 預先建置的模型
           href: luis-concept-prebuilt-model.md
         - name: 模式
@@ -97,7 +87,7 @@
           displayName: roles
         - name: 特性
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: 在執行階段擴充應用程式
           href: schema-change-prediction-runtime.md
     - name: 預測分數
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: 語句中的標籤實體
           href: label-entity-example-utterance.md
-        - name: 新增描述項
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: 新增功能
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: 使用 REST API
           items:
             - name: 使用 Node.js 以程式設計方式建置應用程式
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: 使用清單實體比對使用 Node.js 的確切文字
-              href: luis-tutorial-list-entity.md
     - name: 整合
       items:
         - name: 使用 Bing 拼字檢查 v7
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: 查詢預測執行階段
       href: luis-get-started-get-intent-from-browser.md
+    - name: 遷移
+      items:
+        - name: 從複合實體遷移
+          href: migrate-from-composite-entity.md
+        - name: 遷移至製作資源
+          items:
+            - name: 概觀
+              href: luis-migration-authoring.md
+            - name: 如何遷移
+              href: luis-migration-authoring-steps.md
+        - name: 遷移至 V3 API
+          href: luis-migration-api-v3.md
     - name: 管理應用程式
       items:
         - name: Azure 資源
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: 應用程式和版本設定
+          href: how-to-application-settings-portal.md
         - name: 遷移至製作資源
           items:
             - name: 概觀
@@ -216,6 +218,8 @@
       items:
         - name: 開發人員
           href: developer-reference-resource.md
+        - name: 應用程式結構描述
+          href: app-schema-definition.md
         - name: 遷移至 V3 撰寫 API
           href: luis-migration-authoring-entities.md
         - name: 遷移至 V3 預測 API
@@ -259,6 +263,8 @@
         - name: 概觀
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: 應用程式結構描述
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: Azure RM PowerShell
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: 限制
       href: luis-limits.md
-    - name: 應用程式設定
+    - name: 應用程式和版本設定
       href: luis-reference-application-settings.md
     - name: 預先建置的實體參考
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: 模式語法
       href: reference-pattern-syntax.md
-    - name: 情感
+    - name: 情感參考
       href: luis-reference-prebuilt-sentiment.md
 - name: 資源
   items:

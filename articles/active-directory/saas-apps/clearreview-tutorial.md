@@ -110,7 +110,7 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<customer name>.clearreview.com/sso/acs/`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Clear Review 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -125,7 +125,7 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
 7. 在 [使用者屬性和宣告]  對話方塊中，執行下列步驟：
 
-    a. 按一下 [名稱識別項值]  右邊的 [編輯] 圖示  。
+    a. 按一下 [名稱識別項值] 右邊的 [編輯] 圖示。
 
     ![image](./media/clearreview-tutorial/attribute02.png)
 
@@ -157,7 +157,7 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入儲存按鈕](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. 在頁面底部的 [整合]  區段中，按一下 [單一登入設定]  右邊的 [變更]  按鈕。
+3. 在頁面底部的 [整合] 區段中，按一下 [單一登入設定] 右邊的 [變更] 按鈕。
 
     ![設定單一登入儲存按鈕](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -216,7 +216,7 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

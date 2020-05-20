@@ -36,7 +36,7 @@ Internet Analyzer CLI 會公開下列類型的資源：
 * **時間序列**：時間序列會顯示計量隨著時間變更的方式。
 
 ## <a name="profile-and-test-creation"></a>設定檔和測試建立
-1. 依照 **Azure Internet Analyzer 常見問題集**中的[如何參與預覽？](internet-analyzer-faq.md)指示，取得 Internet Analyzer 預覽存取。
+1. 依照 [Azure Internet Analyzer 常見問題集](internet-analyzer-faq.md)中的**如何參與預覽？** 指示，取得 Internet Analyzer 預覽存取。
 2. [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 3. 執行 `login` 命令以啟動 CLI 工作階段：
     ```azurecli-interactive

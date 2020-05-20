@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 7f953c7de34e5574deb843dc42092103c8d9b87a
-  ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+  ms.date: 05/19/2020
+  ms.openlocfilehash: 4e1b18e1037b37deba3e037f3e896bf1536f4fd7
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "81603335"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83591908"
 highlightedContent:
   items:
   - title: 什麼是 Azure AD？
@@ -81,34 +81,6 @@ conceptualContent:
       text: 啟用 Azure Multi-Factor Authentication
     footerLink:
       url: ./authentication/index.yml
-      text: 查看更多
-  - title: 企業對企業 (B2B)
-    links:
-    - url: ./b2b/what-is-b2b.md
-      itemType: overview
-      text: 什麼是 Azure AD B2B？
-    - url: ./b2b/add-users-administrator.md
-      itemType: how-to-guide
-      text: 在入口網站中新增來賓使用者
-    - url: ./b2b/o365-external-user.md
-      itemType: concept
-      text: B2B 和 Office 365 共用
-    footerLink:
-      url: ./b2b/index.yml
-      text: 查看更多
-  - title: 企業對消費者 (B2C)
-    links:
-    - url: ../active-directory-b2c/active-directory-b2c-overview.md
-      itemType: overview
-      text: 什麼是 Azure AD B2C？
-    - url: ../active-directory-b2c/tutorial-create-tenant.md
-      itemType: tutorial
-      text: 建立 Azure AD B2C 租用戶
-    - url: ../active-directory-b2c/active-directory-b2c-get-started-custom.md
-      itemType: how-to-guide
-      text: Azure AD B2C 中的自訂原則
-    footerLink:
-      url: ../active-directory-b2c/index.yml
       text: 查看更多
   - title: 雲端佈建
     links:
@@ -193,6 +165,20 @@ conceptualContent:
       text: Azure Active Directory 服務限制
     footerLink:
       url: ./users-groups-roles/index.yml
+      text: 查看更多
+  - title: 外部身分識別
+    links:
+    - url: ./b2b/compare-with-b2c.md
+      itemType: overview
+      text: 比較外部使用者適用的解決方案
+    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+      itemType: overview
+      text: 將您的應用程式調整為適用於消費者 (B2C)
+    - url: ./b2b/what-is-b2b.md
+      itemType: overview
+      text: 與您組織外部的使用者共同作業 (B2B)
+    footerLink:
+      url: ./b2b/index.yml
       text: 查看更多
   - title: 混合式身分識別
     links:

@@ -9,6 +9,8 @@
       href: cognitive-services-and-machine-learning.md
     - name: 認知服務的自訂子網域
       href: cognitive-services-custom-subdomains.md
+    - name: 認知服務控制流程
+      href: cognitive-services-gating-process.md
     - name: 語言支援
       href: language-support.md
 - name: 快速入門

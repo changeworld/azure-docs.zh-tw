@@ -111,7 +111,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<entity-id>.pingboard.com/auth/saml/consume`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Pingboard 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -196,7 +196,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -214,7 +214,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入您的 Pingboard 公司網站。
 
-2. 按一下 [目錄]  頁面上的 [新增員工]  按鈕。
+2. 按一下 [目錄] 頁面上的 [新增員工] 按鈕。
 
     ![新增員工](./media/pingboard-tutorial/create_testuser_add.png)
 

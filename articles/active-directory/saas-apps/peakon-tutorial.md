@@ -109,7 +109,7 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://app.peakon.com/saml/<companyid>/assert`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Peakon 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -158,9 +158,9 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     c. 按一下 [Choose file]  \(選擇檔案\)，將您從 Azure 入口網站下載的憑證上傳至 [憑證] 方塊。
 
-    d. 按一下**圖示**以複製 [實體 URL]  ，並且在 Azure 入口網站上貼入 [基本 SAML 設定]  區段的 [識別碼]  文字方塊中。
+    d. 按一下**圖示**以複製 [實體 URL]，並且在 Azure 入口網站上貼入 [基本 SAML 設定] 區段的 [識別碼] 文字方塊中。
 
-    e. 按一下**圖示**以複製 [回覆 URL (ACS)]  ，並且在 Azure 入口網站上貼入 [基本 SAML 設定]  區段的 [回覆 URL]  文字方塊中。
+    e. 按一下**圖示**以複製 [回覆 URL (ACS)]，並且在 Azure 入口網站上貼入 [基本 SAML 設定] 區段的 [回覆 URL] 文字方塊中。
 
     f. 按一下 [儲存] 
 
@@ -205,7 +205,7 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
