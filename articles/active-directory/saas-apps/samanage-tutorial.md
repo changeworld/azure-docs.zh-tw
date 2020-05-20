@@ -90,7 +90,7 @@ Samanage 與 Azure AD 整合提供下列優點：
 
 若要使用 Samanage 設定 Azure AD 單一登入功能，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Samanage]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Samanage] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -147,7 +147,7 @@ Samanage 與 Azure AD 整合提供下列優點：
  
     b. 在 [識別提供者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。    
  
-    c. 確認 [登入 URL]  符合 Azure 入口網站中 [基本 SAML 設定]  區段的 [登入 URL]  。
+    c. 確認 [登入 URL] 符合 Azure 入口網站中 [基本 SAML 設定] 區段的 [登入 URL]。
  
     d. 在 [登出 URL]  文字方塊中，輸入您從 Azure 入口網站複製的 [登出 URL]  值。
  
@@ -200,7 +200,7 @@ Samanage 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

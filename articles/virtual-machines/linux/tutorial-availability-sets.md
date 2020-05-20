@@ -46,7 +46,7 @@ ms.locfileid: "76277253"
 
 ## <a name="create-an-availability-set"></a>建立可用性設定組
 
-您可以使用 [az vm availability-set create](/cli/azure/vm/availability-set) 來建立可用性設定組。 在此範例中，我們會針對 myResourceGroupAvailability  資源群組中名為 myAvailabilitySet  的可用性設定組，將更新和容錯網域數目設定為 2  。
+您可以使用 [az vm availability-set create](/cli/azure/vm/availability-set) 來建立可用性設定組。 在此範例中，我們會針對 myResourceGroupAvailability 資源群組中名為 myAvailabilitySet 的可用性設定組，將更新和容錯網域數目設定為 2。
 
 首先，使用 [az group create](/cli/azure/group#az-group-create) 建立資源群組，然後建立可用性設定組：
 
