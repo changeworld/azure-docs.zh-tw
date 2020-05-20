@@ -110,7 +110,7 @@ ms.locfileid: "67086239"
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > 上述 [回覆 URL]  值並非真正的值。 您應從 [設定 Zoho One 單一登入]`<saml-identifier>`**的步驟 4 取得** 值，本教學課程稍後將加以說明。
+    > 上述 [回覆 URL]  值並非真正的值。 您應從 [設定 Zoho One 單一登入] 的步驟 4 取得 `<saml-identifier>` 值，本教學課程稍後將加以說明。
 
     c. 按一下 [設定額外的 URL]  。
 
@@ -144,7 +144,7 @@ ms.locfileid: "67086239"
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Zoho One 公司網站。
 
-2. 在 [Organization]\(組織\)  索引標籤上，按一下 [SAML Authentication]\(SAML 驗證\)  下的 [Setup]\(設定\)  。
+2. 在 [Organization]\(組織\) 索引標籤上，按一下 [SAML Authentication]\(SAML 驗證\) 下的 [Setup]\(設定\)。
 
     ![Zoho One：組織](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "67086239"
 
     d. 按一下 [檔案]  。
 
-4. 儲存 SAML 驗證設定之後，請複製 [SAML 識別項]  值並將其附加至 [回覆 URL]  以取代 `<saml-identifier>` (例如 `https://accounts.zoho.com/samlresponse/one.zoho.com`)，並在 [基本 SAML 組態]  區段下的 [回覆 URL]  文字方塊中貼上產生的值。
+4. 儲存 SAML 驗證設定之後，請複製 [SAML 識別項] 值並將其附加至 [回覆 URL] 以取代 `<saml-identifier>` (例如 `https://accounts.zoho.com/samlresponse/one.zoho.com`)，並在 [基本 SAML 組態] 區段下的 [回覆 URL] 文字方塊中貼上產生的值。
 
     ![Zoho One：SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "67086239"
     b. 按一下 [新增]  。
 
     >[!Note]
-    >新增網域之後，請依照[這些](https://www.zoho.com/one/help/admin-guide/domain-verification.html)步驟來確認您的網域。 確認網域之後，請在 Azure 入口網站 [基本 SMAL 組態]  區段的 [登入 URL]  中使用您的網域名稱。
+    >新增網域之後，請依照[這些](https://www.zoho.com/one/help/admin-guide/domain-verification.html)步驟來確認您的網域。 確認網域之後，請在 Azure 入口網站 [基本 SMAL 組態] 區段的 [登入 URL] 中使用您的網域名稱。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -219,7 +219,7 @@ ms.locfileid: "67086239"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

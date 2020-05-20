@@ -17,7 +17,7 @@ ms.locfileid: "67174534"
 ---
 ## <a name="run-image-from-registry"></a>從登錄執行映像
 
-現在，您可以使用 `hello-world:v1`docker run[ 從您的容器登錄中提取 ][docker-run] 容器映像並加以執行：
+現在，您可以使用 [docker run][docker-run] 從您的容器登錄中提取 `hello-world:v1` 容器映像並加以執行：
 
 ```
 docker run <acrLoginServer>/hello-world:v1  

@@ -149,7 +149,7 @@ namespace CosmosTableSamples
 
 ## <a name="create-a-table"></a>建立資料表 
 
-[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) 類別可讓您擷取表格儲存體中儲存的資料表。 因為我們在 Cosmos DB 資料表 API 帳戶中沒有任何資料表，讓我們在 `CreateTableAsync`Common.cs**類別中新增** 方法來建立資料表：
+[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) 類別可讓您擷取表格儲存體中儲存的資料表。 因為我們在 Cosmos DB 資料表 API 帳戶中沒有任何資料表，讓我們在 **Common.cs** 類別中新增 `CreateTableAsync` 方法來建立資料表：
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)

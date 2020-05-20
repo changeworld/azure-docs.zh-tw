@@ -103,7 +103,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些 URL 中的值僅供示範。 您必須從實際的「回覆 URL」和「識別碼」來更新這些值。 您可以從 [驗證] 區段下的 [單一登入]  索引標籤取得這些值，本教學課程稍後會說明。
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Help Scout 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -164,7 +164,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -176,7 +176,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 ## <a name="configure-help-scout-sso"></a>設定 Help Scout SSO
 
-1. 若要自動執行 Help Scout 內的設定，您必須按一下 [安裝擴充功能]  來安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+1. 若要自動執行 Help Scout 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
@@ -198,9 +198,9 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/helpscout-tutorial/settings3.png)
 
-    a. 複製**回傳 URL (判斷提示取用者服務 URL)** 值，並在 Azure 入口網站的 [基本 SAML 組態]  區段中的 [回覆 URL]  文字方塊內貼上該值。
+    a. 複製**回傳 URL (判斷提示取用者服務 URL)** 值，並在 Azure 入口網站的 [基本 SAML 組態] 區段中的 [回覆 URL] 文字方塊內貼上該值。
 
-    b. 複製 [對象 URl (服務提供者實體識別碼)]  值，並在 Azure 入口網站的 [基本 SAML 組態]  中的 [識別碼]  文字方塊內貼上該值。
+    b. 複製 [對象 URl (服務提供者實體識別碼)] 值，並在 Azure 入口網站的 [基本 SAML 組態] 中的 [識別碼] 文字方塊內貼上該值。
 
 1. 將 [啟用 SAML]  切換為開啟，並執行下列步驟：
 
@@ -210,7 +210,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     b. 按一下 [上傳憑證]  以上傳從 Azure 入口網站下載的**憑證 (Base64)** 。
 
-    c. 在 [電子郵件網域]`contoso.com`**文字方塊中，輸入組織的電子郵件網域，如**。 您可以使用逗號來分隔多個網域。 每當 Help Scout 使用者或系統管理員在 [Help Scout 登入頁面](https://secure.helpscout.net/members/login/)中輸入該特定網域時，便會路由傳送至「識別提供者」，以驗證其認證。
+    c. 在 [電子郵件網域] 文字方塊中，輸入組織的電子郵件網域，如 `contoso.com`。 您可以使用逗號來分隔多個網域。 每當 Help Scout 使用者或系統管理員在 [Help Scout 登入頁面](https://secure.helpscout.net/members/login/)中輸入該特定網域時，便會路由傳送至「識別提供者」，以驗證其認證。
 
     d. 最後，如果您希望使用者只能透過此方法登入 Help Scout，則可以切換開啟 [強制 SAML 登入]  。 如果您仍想保留以 Help Scout 認證登入的選項，則可以將其切換為關閉。 即使啟用此選項，帳戶擁有者一律可以使用其帳戶密碼來登入 Help Scout。
 

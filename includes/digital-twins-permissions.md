@@ -39,7 +39,7 @@ ms.locfileid: "77029060"
 
 1. [驗證]  刀鋒視窗會指定重要的驗證組態設定。 
 
-    1. 選取 [+ 新增平台]  ，以新增 [重新導向 URI]  並設定 [存取權杖]  。
+    1. 選取 [+ 新增平台]，以新增 [重新導向 URI] 並設定 [存取權杖]。
 
     1. 選取 [是]  ，將應用程式指定為**公用用戶端**。
 
@@ -71,7 +71,7 @@ ms.locfileid: "77029060"
 
 1. 開啟應用程式註冊的 [API 權限]  窗格。 選取 [+ 新增權限]  按鈕。 在 [要求 API 權限]  窗格中選取 [我的組織使用的 API]  索引標籤，然後搜尋下列其中一個項目：
     
-    1. `Azure Digital Twins`第 1 課：建立 Windows Azure 儲存體物件{2}。 選取 **Azure Digital Twins** API。
+    1. `Azure Digital Twins`第 1 課：建立 Windows Azure 儲存體物件`Azure Digital Twins`。 選取 **Azure Digital Twins** API。
 
         [![搜尋 API 或 Azure Digital Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -84,11 +84,11 @@ ms.locfileid: "77029060"
     > * 測試租用戶和客戶帳戶應搜尋 `Azure Digital Twins`。
     > * 其他 Microsoft 帳戶應搜尋 `Azure Smart Spaces Service`。
 
-1. 任一 API 經選取後，將會在相同的 [要求 API 權限]  窗格中顯示為 **Azure Digital Twins**。 選取 [讀取 ]  下拉式選項，然後選取 [Read.Write]  核取方塊。 選取 [新增權限]  按鈕。
+1. 任一 API 經選取後，將會在相同的 [要求 API 權限] 窗格中顯示為 **Azure Digital Twins**。 選取 [讀取 ]  下拉式選項，然後選取 [Read.Write]  核取方塊。 選取 [新增權限]  按鈕。
 
     [![新增 API 權限](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. 根據您組織的設定，您可能需要執行其他步驟，授與對此 API 的系統管理員存取權。 請連絡系統管理員以取得詳細資訊。 管理員存取權一經核准，[API 權限]  窗格中的 [需要管理員同意]  資料行就會顯示您的權限。 
+1. 根據您組織的設定，您可能需要執行其他步驟，授與對此 API 的系統管理員存取權。 請連絡系統管理員以取得詳細資訊。 管理員存取權一經核准，[API 權限] 窗格中的 [需要管理員同意] 資料行就會顯示您的權限。 
 
     [![系統管理員同意核准](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 

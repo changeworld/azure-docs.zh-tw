@@ -43,7 +43,7 @@ ms.locfileid: "78248288"
 
 若要執行本教學課程中的 CLI 指令碼範例，您有兩個選項：
 
-- 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看]  按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
+- 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看] 按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
 - 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
 
 ## <a name="create-a-cosmos-db-account"></a>建立 Cosmos DB 帳戶 
@@ -118,7 +118,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]  ，移至您的 Linux 虛擬機器，然後在 [概觀]  頁面中，按一下頂端的 [連線]  。 複製字串以連線到您的 VM。 
 2. 使用 SSH 用戶端連線到 VM。  
-3. 接下來，系統會提示您輸入建立 Linux VM  時新增的 [密碼]  。 您應該可以順利登入。  
+3. 接下來，系統會提示您輸入建立 Linux VM 時新增的 [密碼]。 您應該可以順利登入。  
 4. 使用 CURL 取得 Azure Resource Manager 的存取權杖： 
      
     ```bash
@@ -157,7 +157,7 @@ CURL 回應會提供金鑰清單。  例如，如果您收到唯讀金鑰：
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
 
-現在，您已有 Cosmos DB 帳戶的存取金鑰，您可以將其傳至 Cosmos DB SDK，並進行呼叫以存取帳戶。  如需快速範例，您可以將存取金鑰傳至 Azure CLI。  您可以透過 Azure 入口網站，從 Cosmos DB 帳戶刀鋒視窗上的 [概觀]  索引標籤取得 `<COSMOS DB CONNECTION URL>`。  請將 `<ACCESS KEY>` 取代為您先前取得的值：
+現在，您已有 Cosmos DB 帳戶的存取金鑰，您可以將其傳至 Cosmos DB SDK，並進行呼叫以存取帳戶。  如需快速範例，您可以將存取金鑰傳至 Azure CLI。  您可以透過 Azure 入口網站，從 Cosmos DB 帳戶刀鋒視窗上的 [概觀] 索引標籤取得 `<COSMOS DB CONNECTION URL>`。  請將 `<ACCESS KEY>` 取代為您先前取得的值：
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

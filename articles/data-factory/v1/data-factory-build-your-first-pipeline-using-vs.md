@@ -64,7 +64,7 @@ ms.locfileid: "75438980"
 2. 若要建立 Data Factory 執行個體，您必須是訂用帳戶/資源群組層級的 [Data Factory 參與者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成員。  
 3. 您必須已在電腦上安裝下列項目：
    * Visual Studio 2013 或 Visual Studio 2015
-   * 下載 Azure SDK for Visual Studio 2013 或 Visual Studio 2015。 瀏覽至 [Azure 下載頁面](https://azure.microsoft.com/downloads/)，然後按一下 [.NET]  區段中的 [VS 2013]  或 [VS 2015]  。
+   * 下載 Azure SDK for Visual Studio 2013 或 Visual Studio 2015。 瀏覽至 [Azure 下載頁面](https://azure.microsoft.com/downloads/)，然後按一下 [.NET] 區段中的 [VS 2013] 或 [VS 2015]。
    * 下載適用於 Visual Studio 的最新 Azure Data Factory 外掛程式：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 您也可以執行下列步驟來更新外掛程式：在功能表中按一下 [工具]   -> [擴充功能和更新]   -> [線上]   -> [Visual Studio 組件庫]   -> [Microsoft Azure Data Factory Tools for Visual Studio]   -> [更新]  。
 
 現在，讓我們使用 Visual Studio 來建立 Azure Data Factory。
@@ -275,7 +275,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 
     在 HDInsight Hive 活動特有的類型屬性中，您會指定哪個 Azure 儲存體連結服務具有 Hive 指令碼檔案、指令碼檔案的路徑，以及指令碼檔案的路徑。 
 
-    Hive 指令碼檔案 (**partitionweblogs.hql**) 會儲存於 Azure 儲存體帳戶 (由 scriptLinkedService 指定)，以及容器 `script` 的 `adfgetstarted` 資料夾中。
+    Hive 指令碼檔案 (**partitionweblogs.hql**) 會儲存於 Azure 儲存體帳戶 (由 scriptLinkedService 指定)，以及容器 `adfgetstarted` 的 `script` 資料夾中。
 
     `defines` 區段可用來指定執行階段設定，該設定將傳遞到 Hive 指令碼作為 Hive 設定值 (`${hiveconf:inputtable}`、`${hiveconf:partitionedtable})`)。
 
@@ -288,7 +288,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 1. 以滑鼠右鍵按一下 [方案總管]  視窗中的 [相依性]  ，指向 [新增]  ，按一下 [現有項目]  。  
 2. 瀏覽至 **C:\ADFGettingStarted**、選取 **partitionweblogs.hql** 及 **input.log** 檔案，然後按一下 [新增]  。 您建立了兩個檔案，作為一部分的 [教學課程概觀](data-factory-build-your-first-pipeline.md)必要條件。
 
-當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到  **Blob 容器中的**指令碼`adfgetstarted`資料夾。   
+當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到 `adfgetstarted` Blob 容器中的**指令碼**資料夾。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>發佈/部署 Data Factory 實體
 在此步驟中，您會將專案中的 Data Factory 實體 (連結的服務、資料集和管線) 發佈至 Azure Data Factory 服務。 在發佈過程中，您可指定資料處理站的名稱。 
@@ -309,7 +309,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
         > 如果看不到任何訂用帳戶，請確定您是使用訂用帳戶的管理員或共同管理員的帳戶進行登入。
    4. 針對要建立的 Data Factory 選取 [資源群組]  。
    5. 選取 Data Factory 的 [區域]  。
-   6. 按 [下一步]  ，切換至 [發佈項目]  頁面。 (如果 [下一步]  按鈕已停用，請按 **TAB** 來移出 [名稱] 欄位)。
+   6. 按 [下一步]  ，切換至 [發佈項目]  頁面。 (如果 [下一步] 按鈕已停用，請按 **TAB** 來移出 [名稱] 欄位)。
 
       > [!IMPORTANT]
       > 如果您在發佈時收到錯誤：「Data Factory 名稱 “DataFactoryUsingVS” 無法使用」  ，請變更名稱 (例如 yournameDataFactoryUsingVS)。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。   
@@ -375,7 +375,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
    > 建立隨選 HDInsight 叢集通常需要一些時間 (大約 20 分鐘)。 因此，管線預計需要 **大約 30 分鐘** 的時間來處理配量。  
    
     ![資料集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 當配量處於**就緒**狀態時，檢查您 blob 儲存體中 `partitioneddata` 容器內 `adfgetstarted` 資料夾的輸出資料。  
+10. 當配量處於**就緒**狀態時，檢查您 blob 儲存體中 `adfgetstarted` 容器內 `partitioneddata` 資料夾的輸出資料。  
 
     ![輸出資料](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 按一下配量，以在 [資料配量]  刀鋒視窗中查看其詳細資料。
@@ -402,11 +402,11 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
     ![活動時段詳細資料](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 (input.log) 上傳至 `inputdata` 容器的 `adfgetstarted` 資料夾。
+> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 (input.log) 上傳至 `adfgetstarted` 容器的 `inputdata` 資料夾。
 
 ### <a name="additional-notes"></a>其他注意事項
 - 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換輸入資料。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單，請參閱 [計算連結服務](data-factory-compute-linked-services.md) 。
-- 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單以及可在其上執行的[轉換活動](data-factory-compute-linked-services.md)，請參閱[計算連結服務](data-factory-data-transformation-activities.md)。
+- 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單以及可在其上執行的[轉換活動](data-factory-data-transformation-activities.md)，請參閱[計算連結服務](data-factory-compute-linked-services.md)。
 - 如需使用於 Azure 儲存體連結服務定義之 JSON 屬性的詳細資料，請參閱[從 Azure Blob 移入/移出資料](data-factory-azure-blob-connector.md#azure-storage-linked-service)。
 - 您可以使用自己的 HDInsight 叢集，不必使用隨選的 HDInsight 叢集。 請參閱 [計算連結服務](data-factory-compute-linked-services.md) 以取得詳細資料。
 -  Data Factory 會使用先前的 JSON 為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。

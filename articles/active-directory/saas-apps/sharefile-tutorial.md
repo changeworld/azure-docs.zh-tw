@@ -211,7 +211,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -229,7 +229,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 1. 登入您的 **Citrix ShareFile** 租用戶。
 
-2. 按一下 [管理使用者]  **[管理使用者首頁] \> [+ 建立員工]\>** 。
+2. 按一下 [管理使用者] \> [管理使用者首頁] \> [+ 建立員工]。
    
     ![建立員工](./media/sharefile-tutorial/IC781050.png "建立員工")
 
@@ -239,9 +239,9 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
    
     a. 在 [Email Address] \(電子郵件地址\)  文字方塊中，以 **brittasimon\@contoso.com** 形式輸入 Britta Simon 帳戶的電子郵件地址。
    
-    b. 在 [名字]  文字方塊中，輸入 **Britta** 作為使用者的**名字**。
+    b. 在 [名字] 文字方塊中，輸入 **Britta** 作為使用者的**名字**。
    
-    c. 在 [姓氏]  文字方塊中，輸入 **Simon** 作為使用者的**姓氏**。
+    c. 在 [姓氏] 文字方塊中，輸入 **Simon** 作為使用者的**姓氏**。
 
 4. 按一下 [新增使用者]  。
   

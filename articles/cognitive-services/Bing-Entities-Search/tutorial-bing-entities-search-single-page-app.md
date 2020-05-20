@@ -163,7 +163,7 @@ function bingSearchOptions(form) {
 
 例如，安全搜尋功能可以是 `strict`、`moderate` 或 `off`，預設為 `moderate`。 但我們的表單使用只有兩種狀態的核取方塊。 JavaScript 程式碼會將此設定轉換成 `strict` 或 `off` (我們不使用 `moderate`)。
 
-`mapquery` 中不會處理 `bingSearchOptions()` 欄位，因為它適用於 Bing 地圖服務位置查詢，不適用於 Bing 實體搜尋。
+`bingSearchOptions()` 中不會處理 `mapquery` 欄位，因為它適用於 Bing 地圖服務位置查詢，不適用於 Bing 實體搜尋。
 
 ## <a name="obtaining-a-location"></a>取得位置
 

@@ -45,7 +45,7 @@ ms.locfileid: "73821726"
 
 在建立受控執行個體並設定存取後，您即可開始從 SQL Server 內部部署或 Azure VM 移轉資料庫。 如果您想要遷移的來源資料庫具有不支援的功能，移轉將會失敗。 若要避免失敗並檢查相容性，您可以安裝 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) \(英文\)，其會分析您位於 SQL Server 上的資料庫，並找出可能會防止移轉到受控執行個體的所有問題 (例如存在 [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) 或多個記錄檔)。 如果您解決這些問題，您的資料庫便已準備好遷移至受控執行個體。 [資料庫測試助理](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) \(英文\) 是另一個有用的工具，其可記錄您在 SQL Server 上的工作負載，並在受控執行個體上重新播放它，讓您可以判斷在遷移到受控執行個體之後是否會發生任何效能問題。
 
-一旦您確定可以將資料庫遷移至受控執行個體後，即可使用原生的 SQL Server 還原功能，從 `.bak` 檔案將資料庫還原到受控執行個體。 您可以使用此方法，從安裝內部部署或 Azure VM 的 SQL Server 資料庫引擎移轉資料庫。 如需快速入門，請參閱[從備份還原至受控執行個體](sql-database-managed-instance-get-started-restore.md)。 在此快速入門中，您將使用 `.bak` Transact-SQL 命令，從儲存在 Azure Blob 儲存體中的 `RESTORE` 檔案進行還原。
+一旦您確定可以將資料庫遷移至受控執行個體後，即可使用原生的 SQL Server 還原功能，從 `.bak` 檔案將資料庫還原到受控執行個體。 您可以使用此方法，從安裝內部部署或 Azure VM 的 SQL Server 資料庫引擎移轉資料庫。 如需快速入門，請參閱[從備份還原至受控執行個體](sql-database-managed-instance-get-started-restore.md)。 在此快速入門中，您將使用 `RESTORE` Transact-SQL 命令，從儲存在 Azure Blob 儲存體中的 `.bak` 檔案進行還原。
 
 > [!TIP]
 > 若要使用 `BACKUP` TRANSACT-SQL 命令來為 Azure Blob 儲存體中的資料庫建立備份，請參閱 [SQL Server 備份至 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)。

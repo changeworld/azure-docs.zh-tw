@@ -53,7 +53,7 @@ ms.locfileid: "78251974"
 
 1. 複製 [Dev Spaces 應用程式範例](https://github.com/Azure/dev-spaces)：`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. 簽出遠端分支 azds_updates  ：`git checkout -b azds_updates origin/azds_updates`
-1. 選取 dev  空間：`azds space select --name dev`。 出現選取父代開發人員空間的提示時，請選取_無\<\>_ 。
+1. 選取 dev  空間：`azds space select --name dev`。 出現選取父代開發人員空間的提示時，請選取\<無\>。
 1. 瀏覽至 mywebapi  目錄並執行：`azds up -d`
 1. 瀏覽至 webfrontend  目錄並執行：`azds up -d`
 1. 執行 `azds list-uris` 以查看 webfrontend  的公用端點
@@ -81,7 +81,7 @@ webfrontend-6b6ddbb98f-fgvnc  dev       Pod      1m ago   Running
 DevSpace 資料行會顯示兩個服務正在名為 dev  的空間中執行。 開啟公用 URL 並瀏覽至 Web 應用程式的任何人，都會叫用透過兩個服務執行的已簽入程式碼路徑。 現在假設您想要繼續開發 mywebapi  。 您要如何使用開發環境進行程式碼變更及測試，又不會打斷其他開發人員？ 為此，您應設定自己的空間。
 
 ### <a name="create-a-dev-space"></a>建立開發人員空間
-若要在 dev  以外的空間執行您自己的 mywebapi  版本，您可以使用下列命令建立您自己的空間：
+若要在 dev 以外的空間執行您自己的 mywebapi 版本，您可以使用下列命令建立您自己的空間：
 
 ```cmd
 azds space select --name scott
@@ -98,7 +98,7 @@ azds space select --name scott
 我們要了解它是如何運作的。
 
 ### <a name="make-a-code-change"></a>進行程式碼變更
-請移至 `mywebapi` 的 VS Code 視窗，並對 `string Get(int id)` 中的 `Controllers/ValuesController.cs` 方法進行程式碼編輯，例如：
+請移至 `mywebapi` 的 VS Code 視窗，並對 `Controllers/ValuesController.cs` 中的 `string Get(int id)` 方法進行程式碼編輯，例如：
 
 ```csharp
 [HttpGet("{id}")]
@@ -133,16 +133,16 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-請注意，webfrontend  的公用存取點 URL 前面會加上 scott.s  。 此 URL 是 dev/scott  空間專屬的。 此 URL 前置詞會指示輸入控制器將要求路由傳送至服務的 dev/scott  版本。 當 Dev Spaces 處理具有此 URL 的要求時，輸入控制器會先嘗試將要求路由傳送至 dev/scott  空間中的 webfrontend  服務。 如果該嘗試失敗，則會將要求路由傳送至 dev  空間中的 webfrontend  服務以作為後援。 另請注意，會有 localhost URL 可供使用 Kubernetes 的「連接埠轉送」  功能來透過 localhost 存取服務。 如需 Azure Dev Spaces 中 URL 和路由的詳細資訊，請參閱 [Azure Dev Spaces 的運作和設定方式](how-dev-spaces-works.md)。
+請注意，webfrontend  的公用存取點 URL 前面會加上 scott.s  。 此 URL 是 dev/scott  空間專屬的。 此 URL 前置詞會指示輸入控制器將要求路由傳送至服務的 dev/scott  版本。 當 Dev Spaces 處理具有此 URL 的要求時，輸入控制器會先嘗試將要求路由傳送至 dev/scott 空間中的 webfrontend 服務。 如果該嘗試失敗，則會將要求路由傳送至 dev 空間中的 webfrontend 服務以作為後援。 另請注意，會有 localhost URL 可供使用 Kubernetes 的「連接埠轉送」  功能來透過 localhost 存取服務。 如需 Azure Dev Spaces 中 URL 和路由的詳細資訊，請參閱 [Azure Dev Spaces 的運作和設定方式](how-dev-spaces-works.md)。
 
 ![空間路由](media/common/Space-Routing.png)
 
 Azure Dev Spaces 的這項內建功能可讓您在共用空間中測試程式碼，而不需要每位開發人員在其空間中重新建立服務的完整堆疊。 這個路由需要您的應用程式程式碼才能轉送傳播標頭，如本指南的上一個步驟所述。
 
 ### <a name="test-code-in-a-space"></a>在空間中測試程式碼
-若要搭配 webfrontend  來測試您的新版 mywebapi  ，請在瀏覽器中開啟到 webfrontend  的公用存取點 URL，並且移至 [關於] 頁面。 您應該會看到新訊息顯示。
+若要搭配 webfrontend 來測試您的新版 mywebapi，請在瀏覽器中開啟到 webfrontend 的公用存取點 URL，並且移至 [關於] 頁面。 您應該會看到新訊息顯示。
 
-現在，移除 URL 的 "scott.s." 部分，然後重新整理瀏覽器。 您應該會看到舊的行為 (使用在 dev  中執行的 mywebapi  版本)。
+現在，移除 URL 的 "scott.s." 部分，然後重新整理瀏覽器。 您應該會看到舊的行為 (使用在 dev 中執行的 mywebapi 版本)。
 
 您擁有的 dev  空間一定會包含最新的變更，而且如果您應用程式的設計目的是要利用 DevSpace 的空間型路由 (如本教學課程這一節所述)，您應該就能輕鬆地發現，Dev Spaces 會對在較大的應用程式內容中測試新功能大有助益。 您不必在私用空間中部署所有  服務，而是可以建立衍生自 dev  的私用空間，並只「啟動」您實際使用的服務。 Dev Spaces 的路由基礎結構會處理其餘工作，其會盡可能使用所有可以從私用空間找到的服務，同時將其預設回到 dev  空間中所執行的最新版本。 更棒的是，多個  開發人員可以同時在自己的空間積極開發不同的服務，卻又不會干擾到彼此。
 

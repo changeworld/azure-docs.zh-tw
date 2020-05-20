@@ -35,7 +35,7 @@ ms.locfileid: "73583198"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>適用於資料大小 <b> 40 TB 的</b>資料箱磁碟&lt;。 Microsoft 會寄送給您 1 至 5 個已加密的固態硬碟 (SSD)，以便複製資料並且送回。</p>
+                            <p>適用於資料大小 &lt; 40 TB 的<b>資料箱磁碟</b>。 Microsoft 會寄送給您 1 至 5 個已加密的固態硬碟 (SSD)，以便複製資料並且送回。</p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ ms.locfileid: "73583198"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>適用於資料大小 <b> 500 TB 的 </b>Data Box Heavy&gt;。 Microsoft 會透過貨運寄送給您 1 PB 的裝置，以便複製資料並且送回。</p>
+                            <p>適用於資料大小 &gt; 500 TB 的 <b>Data Box Heavy</b>。 Microsoft 會透過貨運寄送給您 1 PB 的裝置，以便複製資料並且送回。</p>
                         </div>
                     </div>
                 </div>

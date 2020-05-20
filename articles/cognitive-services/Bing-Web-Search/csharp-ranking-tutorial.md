@@ -48,7 +48,7 @@ JSON.net 讓您能夠使用 API 所傳回的 JSON 回應。 將它的 NuGet 套�
 
 - 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。
 - 在 [瀏覽]  索引標籤上，搜尋 `Newtonsoft.Json`。 選取最新版本，然後按一下 [安裝]  。
-- 按一下 [檢閱變更]  視窗上的 [確定]  按鈕。
+- 按一下 [檢閱變更] 視窗上的 [確定] 按鈕。
 - 關閉標題為 **NuGet: MyConsoleSearchApp** 的 Visual Studio 索引標籤。
 
 ## <a name="add-a-reference-to-systemweb"></a>新增對 System.Web 的參考
@@ -61,7 +61,7 @@ JSON.net 讓您能夠使用 API 所傳回的 JSON 回應。 將它的 NuGet 套�
 
 ## <a name="add-some-necessary-using-statements"></a>新增一些必要的 using 陳述式
 
-本教學課程中的程式碼需要三個額外的 using 陳述式。 將這些陳述式新增到 `using`Program.cs**頂端的現有** 陳述式下方：
+本教學課程中的程式碼需要三個額外的 using 陳述式。 將這些陳述式新增到 **Program.cs** 頂端的現有 `using` 陳述式下方：
 
 ```csharp
 using System.Web;

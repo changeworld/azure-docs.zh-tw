@@ -186,7 +186,7 @@ Rally Software 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -204,7 +204,7 @@ Rally Software 與 Azure AD 整合提供下列優點：
 
 1. 登入您的 Rally Software 租用戶。
 
-2. 按一下 [設定]  **[使用者]\>** ，然後按一下 [新增使用者]  。
+2. 按一下 [設定] \> [使用者]，然後按一下 [新增使用者]。
    
     ![使用者](./media/rally-software-tutorial/ic781039.png "使用者")
 

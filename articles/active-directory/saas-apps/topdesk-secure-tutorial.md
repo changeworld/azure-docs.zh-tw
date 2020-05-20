@@ -145,7 +145,7 @@ ms.locfileid: "74233408"
 
     ![一般](./media/topdesk-secure-tutorial/ic790600.png "一般")
 
-5. 在 [SAML 登入]  組態區段的 **Secure** 區段中，執行下列步驟：
+5. 在 [SAML 登入] 組態區段的 **Secure** 區段中，執行下列步驟：
 
     ![技術設定](./media/topdesk-secure-tutorial/ic790855.png "技術設定")
 
@@ -232,7 +232,7 @@ ms.locfileid: "74233408"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -251,7 +251,7 @@ TOPdesk - Secure 需以手動的方式佈建。
 
 1. 以系統管理員身分登入您的 **TOPdesk - Secure** 公司網站。
 
-2. 在上方功能表中按一下 [TOPdesk]  **[新增] \> [支援檔案] \> [操作員]\>** 。
+2. 在上方功能表中按一下 [TOPdesk] \> [新增] \> [支援檔案] \> [操作員]。
 
     ![運算子](./media/topdesk-secure-tutorial/ic790610.png "運算子")
 
@@ -263,9 +263,9 @@ TOPdesk - Secure 需以手動的方式佈建。
 
     b. 在 [Surname] \(姓氏\)  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [位置]  區段中選取該帳戶的 [網站]  。
+    c. 在 [位置] 區段中選取該帳戶的 [網站]。
 
-    d. 在 [TOPdesk 登入]  區段的 [登入名稱]  文字方塊中，輸入使用者的登入名稱。
+    d. 在 [TOPdesk 登入] 區段的 [登入名稱] 文字方塊中，輸入使用者的登入名稱。
 
     e. 按一下 [檔案]  。
 

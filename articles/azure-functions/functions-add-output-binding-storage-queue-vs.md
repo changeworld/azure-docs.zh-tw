@@ -75,7 +75,7 @@ ms.locfileid: "74849202"
 
 1. 在 Visual Studio 的 [檢視]  功能表中，選取 [Cloud Explorer]  。
 
-1. 在 [Cloud Explorer]  中，展開您的 Azure 訂用帳戶和 [儲存體帳戶]  ，然後展開您的函式所使用的儲存體帳戶。 如果您不記得儲存體帳戶名稱，請檢查 local.settings.json`AzureWebJobsStorage`*檔案中的* 連接字串設定。  
+1. 在 [Cloud Explorer]  中，展開您的 Azure 訂用帳戶和 [儲存體帳戶]  ，然後展開您的函式所使用的儲存體帳戶。 如果您不記得儲存體帳戶名稱，請檢查 local.settings.json 檔案中的 `AzureWebJobsStorage` 連接字串設定。  
 
 1. 展開 [佇列]  節點，然後按兩下名為 **outqueue** 的佇列，以在 Visual Studio 中查看佇列的內容。 
 

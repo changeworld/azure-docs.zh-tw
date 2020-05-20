@@ -125,7 +125,7 @@ ms.locfileid: "73161336"
     c. 登出 URL
 
     >[!NOTE]
-    >在 Azure 入口網站中的 [基本 SAML 組態]`<Azure AD Identifier>`**區段中，將複製的 Azure AD 識別碼值和登入 URL 附加至** 位置。
+    >在 Azure 入口網站中的 [基本 SAML 組態] 區段中，將複製的 Azure AD 識別碼值和登入 URL 附加至 `<Azure AD Identifier>` 位置。
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>設定 My Award Points Top Sub/Top Team 單一登入
 
@@ -172,7 +172,7 @@ ms.locfileid: "73161336"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

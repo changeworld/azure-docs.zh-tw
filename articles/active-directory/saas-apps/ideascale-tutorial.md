@@ -140,7 +140,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     ![社群設定](./media/ideascale-tutorial/ic790847.png "社群設定")
 
-3. 移至 [安全性]  **[單一登入設定]\>** 。
+3. 移至 [安全性] \> [單一登入設定]。
 
     ![單一登入設定](./media/ideascale-tutorial/ic790848.png "單一登入設定")
 
@@ -201,7 +201,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -223,7 +223,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
     ![社群設定](./media/ideascale-tutorial/ic790847.png "社群設定")
 
-3. 移至 [基本設定]  **[成員管理]\>** 。
+3. 移至 [基本設定] \> [成員管理]。
 
 4. 按一下 [新增成員]  。
 

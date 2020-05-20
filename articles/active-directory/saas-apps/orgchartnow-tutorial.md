@@ -107,14 +107,14 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     在 [識別碼]  文字方塊中，鍵入 URL：`https://sso2.orgchartnow.com`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![image](common/both-preintegrated-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` 是從＜設定 OrgChart Now＞  一節複製的 [Azure AD 識別碼]  ，稍後會在教學課程中說明。
+    > `<YourEntityID>` 是從＜設定 OrgChart Now＞一節複製的 [Azure AD 識別碼]，稍後會在教學課程中說明。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -175,7 +175,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
 1. OrgChart Now 支援預設啟用的 Just-In-Time 佈建。 當您嘗試存取 OrgChart Now 時，如果 OrgChart Now 還沒有使用者，它將會建立新的使用者。 當 SSO 要求是來自已辨識的 IDP，且在使用者清單中找不到 SAML 判斷提示中的電子郵件時，Just-In-Time 使用者佈建功能只會建立**唯讀**使用者。 針對此自動佈建功能，您必須在 OrgChart Now 中建立標題為「一般」  的存取群組。 請依照以下步驟建立存取群組：
 
-    a. 在按一下 UI 右上角的**齒輪**之後，移至 [管理群組]  選項。
+    a. 在按一下 UI 右上角的**齒輪**之後，移至 [管理群組] 選項。
 
     ![OrgChart Now 群組](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 

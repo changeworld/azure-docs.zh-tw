@@ -35,7 +35,7 @@ ms.locfileid: "76277511"
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. 從 `spring.redis.*` 檔案移除任何 `application.properties` 屬性
+1. 從 `application.properties` 檔案移除任何 `spring.redis.*` 屬性
 
 1. 使用 `az spring-cloud app update` 來更新目前的部署，或是使用 `az spring-cloud app deployment create` 來建立新部署。
 

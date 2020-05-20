@@ -195,7 +195,7 @@ Get-AzStorageFile `
 - Linux 系統的[邏輯磁碟區管理員 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照集。
 - macOS 的 [Apple 檔案系統 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照集。 
 
-您可以對檔案共用 (使用 `Snapshot`Get-AzStorageShare[Cmdlet 所擷取) 的 PowerShell 物件使用 ](/powershell/module/az.storage/Get-AzStorageShare) 方法，來為共用建立共用快照集。 
+您可以對檔案共用 (使用 [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare)Cmdlet 所擷取) 的 PowerShell 物件使用 `Snapshot` 方法，來為共用建立共用快照集。 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
@@ -203,7 +203,7 @@ $snapshot = $share.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>瀏覽共用快照集
-您可以將快照集參考 (`$snapshot`) 傳至 `-Share` Cmdlet 的 `Get-AzStorageFile` 參數，以瀏覽共用快照集的內容。
+您可以將快照集參考 (`$snapshot`) 傳至 `Get-AzStorageFile` Cmdlet 的 `-Share` 參數，以瀏覽共用快照集的內容。
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Share $snapshot
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>刪除共用快照集
-您可以使用 [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) Cmdlet 搭配包含 `$snapshot` 參數之 `-Share` 參考的變數，來刪除共用快照集。
+您可以使用 [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) Cmdlet 搭配包含 `-Share` 參數之 `$snapshot` 參考的變數，來刪除共用快照集。
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `

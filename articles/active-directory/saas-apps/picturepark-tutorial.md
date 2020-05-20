@@ -162,11 +162,11 @@ Picturepark 與 Azure AD 整合提供下列優點：
    
     d. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
    
-    e. 在 [信任的簽發者指紋]  文字方塊中，貼上您從 [SAML 簽署憑證]  區段複製的 [指紋]  值。 
+    e. 在 [信任的簽發者指紋] 文字方塊中，貼上您從 [SAML 簽署憑證] 區段複製的 [指紋] 值。 
 
 5. 按一下 [JoinDefaultUsersGroup]  。
 
-6. 若要在 [宣告]  文字方塊中設定 [Emailaddress]  屬性，請輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`，然後按一下 [儲存]  。
+6. 若要在 [宣告] 文字方塊中設定 [Emailaddress] 屬性，請輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`，然後按一下 [儲存]。
 
       ![組態](./media/picturepark-tutorial/ic795065.png "組態")
 
@@ -210,7 +210,7 @@ Picturepark 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -240,7 +240,7 @@ Picturepark 與 Azure AD 整合提供下列優點：
    
     ![建立使用者](./media/picturepark-tutorial/ic795069.png "建立使用者")
    
-    a. 在 [電子郵件地址]  文字方塊中，輸入使用者  **的**電子郵件地址`BrittaSimon@contoso.com`。  
+    a. 在 [電子郵件地址] 文字方塊中，輸入使用者 `BrittaSimon@contoso.com` 的**電子郵件地址**。  
    
     b. 在 [密碼]  和 [確認密碼]  文字方塊中，輸入 BrittaSimon 的**密碼**。 
    

@@ -45,7 +45,7 @@ Service Fabric SDK 和工具會提供一個服務範本，協助您將容器部�
 
 選取 [Service Fabric 應用程式]  、將它命名為 "MyFirstContainer"，然後按一下 [建立]  。
 
-從 [裝載的容器和應用程式]  範本選取 [容器]  。
+從 [裝載的容器和應用程式] 範本選取 [容器]。
 
 在 [映像名稱]  中，輸入 "mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016"、[Windows Server Core Server 和 IIS 基底映像](https://hub.docker.com/_/microsoft-windows-servercore-iis)。
 
@@ -132,7 +132,7 @@ Thumbprint                                Subject
 
 以滑鼠右鍵按一下 [方案總管] 中的 **MyFirstContainer**，並選擇 [發佈]  。 [發行] 對話方塊隨即出現。
 
-當您執行上述 **命令時，在 PowerShell 視窗中複製**CN =`Import-PfxCertificate` 後面的內容，並在其中新增連接埠 `19000`。 例如： `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 將它複製到 [連線端點]  欄位中。 請記住這個值，因為您會在之後的步驟中用到該值。
+當您執行上述 `Import-PfxCertificate` 命令時，在 PowerShell 視窗中複製 **CN =** 後面的內容，並在其中新增連接埠 `19000`。 例如： `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 將它複製到 [連線端點]  欄位中。 請記住這個值，因為您會在之後的步驟中用到該值。
 
 按一下 [進階連線參數]  並確認連線參數資訊。  *FindValue* 和 *ServerCertThumbprint* 值必須符合您在前一個步驟中執行 `Import-PfxCertificate` 時所安裝的憑證指紋。
 

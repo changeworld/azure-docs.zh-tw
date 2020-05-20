@@ -51,7 +51,7 @@ Bing 影片搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 > * CSS - 定義頁面的外觀
 > * JavaScript - 定義頁面的行為
 
-大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項。 該表單會使用 `onsubmit` 標籤的 `<form>` 屬性，連接至執行搜尋的 JavaScript：
+大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項。 該表單會使用 `<form>` 標籤的 `onsubmit` 屬性，連接至執行搜尋的 JavaScript：
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">

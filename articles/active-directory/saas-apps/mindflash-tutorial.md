@@ -171,7 +171,7 @@ Mindflash 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -203,7 +203,7 @@ Mindflash 與 Azure AD 整合提供下列優點：
 
     b. 在 [姓氏]  文字方塊中，輸入 **Simon** 作為使用者的**姓氏**。
     
-    c. 在 [電子郵件]  文字方塊中，輸入 **BrittaSimon**contoso.com **作為使用者的\@電子郵件地址**。
+    c. 在 [電子郵件] 文字方塊中，輸入 **BrittaSimon\@contoso.com** 作為使用者的**電子郵件地址**。
 
     b. 按一下 [新增]  。
 

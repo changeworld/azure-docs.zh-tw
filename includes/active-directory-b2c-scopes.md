@@ -17,8 +17,8 @@ ms.locfileid: "78183364"
 1. 選取**應用程式**。
 1. 選取 *webapi1* 應用程式以開啟其**屬性**頁面。
 1. 選取 [發佈的範圍]  。 發佈的範圍可以用來為用戶端應用程式授與對 Web API 的部份權限。
-1. 針對 [範圍]  請輸入 `demo.read`，並輸入  **作為 [描述]** `Read access to the web API`。
-1. 針對 [範圍]  請輸入 `demo.write`，並輸入  **作為 [描述]** `Write access to the web API`。
+1. 針對 [範圍] 請輸入 `demo.read`，並輸入 `Read access to the web API` 作為 [描述]。
+1. 針對 [範圍] 請輸入 `demo.write`，並輸入 `Write access to the web API` 作為 [描述]。
 1. 選取 [儲存]  。
 
 #### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)

@@ -205,7 +205,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由於您已將登錄設定為要進行異地複寫，因此系統會使用單一  *命令，將您的映像自動複寫至「美國西部」* *和「美國東部」* `docker push`地區。
+由於您已將登錄設定為要進行異地複寫，因此系統會使用單一 `docker push` 命令，將您的映像自動複寫至「美國西部」和「美國東部」地區。
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191002"
 ---
-將  *參數新增至函式定義和 \\ 陳述式下的 \_，以更新 \_HttpExample\_\_* init`msg``msg.set(name)`.py`if name:`，使其符合下列程式碼。
+將 `msg` 參數新增至函式定義和 `msg.set(name)` 陳述式下的 `if name:`，以更新 *HttpExample\\\_\_init\_\_.py*，使其符合下列程式碼。
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 

@@ -103,7 +103,7 @@ ms.locfileid: "75889234"
 
    * 輸入叢集的名稱。
    * 針對本文，請使用 6.0  執行階段建立叢集。
-   * 請確定您已選取 [在活動 **\_分鐘後終止]\_** 核取方塊。 請提供用來終止叢集的叢集未使用持續時間 (以分鐘為單位)。
+   * 請確定您已選取 [在活動\_\_分鐘後終止] 核取方塊。 請提供用來終止叢集的叢集未使用持續時間 (以分鐘為單位)。
 
    選取符合您技術準則和[預算](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)的叢集背景工作角色和驅動程式節點大小。
 
@@ -123,7 +123,7 @@ ms.locfileid: "75889234"
 
     ![Twitter 應用程式詳細資料](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter 應用程式詳細資料")
 
-3. 在應用程式頁面中，選取 [金鑰和權杖]  索引標籤，並複製 [取用者 API 金鑰]  和 [取用者 API 秘密金鑰]  的值。 此外，選取 [存取權杖和存取權杖密碼]  底下的 [建立]  來產生存取權杖。 複製 [存取權杖]  和 [存取權杖祕密]  的值。
+3. 在應用程式頁面中，選取 [金鑰和權杖]  索引標籤，並複製 [取用者 API 金鑰]  和 [取用者 API 秘密金鑰]  的值。 此外，選取 [存取權杖和存取權杖密碼] 底下的 [建立] 來產生存取權杖。 複製 [存取權杖]  和 [存取權杖祕密]  的值。
 
     ![Twitter 應用程式詳細資料](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter 應用程式詳細資料")
 
@@ -612,7 +612,7 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
 
-在 [情感]  資料行中，接近 **1** 的值表示絕佳的 Azure 體驗。 接近 **0** 的值表示使用者在使用 Microsoft Azure 時所遇到的問題。
+在 [情感] 資料行中，接近 **1** 的值表示絕佳的 Azure 體驗。 接近 **0** 的值表示使用者在使用 Microsoft Azure 時所遇到的問題。
 
 就這麼簡單！ 您已使用 Azure Databricks 成功地以近乎即時的速度將資料串流到 Azure 事件中樞、使用事件中樞連接器取用串流資料，然後對串流資料執行情感分析。
 
@@ -622,7 +622,7 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 
 ![停止 Databricks 叢集](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "停止 Databricks 叢集")
 
-如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 **\_ 分鐘後終止]\_** 核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
+如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 \_\_ 分鐘後終止] 核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解如何使用 Azure Databricks 將資料串流到 Azure 事件中樞，然後從事件中樞即時讀取串流資料。 您已了解如何︰

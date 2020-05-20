@@ -19,7 +19,7 @@ ms.locfileid: "75749721"
 
 延遲 (有時候會被視為回應時間) 是應用程式必須等候要求完成的時間量。 延遲可能會直接影響應用程式的效能。 低延遲通常對於人機互動 \(human-in-the-loop\) 情節很重要，例如進行信用卡交易或載入網頁。 需要以較高的速率處理傳入事件的系統 (例如遙測記錄或 IoT 事件) 也需要低延遲。 此文章說明如何了解和測量區塊 Blob 上的作業延遲，以及如何針對低延遲設計您的應用程式。
 
-Azure 儲存體提供兩個不同的區塊 Blob 效能選項：進階和標準。 透過高效能 SSD 磁碟，進階區塊 Blob 可提供比標準區塊 Blob 明顯較低且更一致的延遲。 如需詳細資訊，請參閱 **Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層**中的[進階效能區塊 Blob 儲存體](storage-blob-storage-tiers.md)。
+Azure 儲存體提供兩個不同的區塊 Blob 效能選項：進階和標準。 透過高效能 SSD 磁碟，進階區塊 Blob 可提供比標準區塊 Blob 明顯較低且更一致的延遲。 如需詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)中的**進階效能區塊 Blob 儲存體**。
 
 ## <a name="about-azure-storage-latency"></a>關於 Azure 儲存體延遲
 
@@ -39,7 +39,7 @@ Azure 儲存體提供兩個區塊 Blob 的延遲計量。 您可以在 Azure 入
 
 - **伺服器延遲**會測量從 Azure 儲存體收到要求的最後一個封包，到 Azure 儲存體傳回回應第一個封包之間的時間間隔。
 
-下圖顯示呼叫  **作業的範例工作負載的**平均成功 E2E 延遲**和**平均成功伺服器延遲`Get Blob`：
+下圖顯示呼叫 `Get Blob` 作業的範例工作負載的**平均成功 E2E 延遲**和**平均成功伺服器延遲**：
 
 ![顯示 Get Blob 作業延遲計量的螢幕擷取畫面](media/storage-blobs-latency/latency-metrics-get-blob.png)
 

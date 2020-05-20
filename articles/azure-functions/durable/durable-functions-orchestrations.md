@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要區段 (Durable Functions 2.x，目前僅限 .NET)
 
-協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用  *方法來定義「重要區段」* `LockAsync`。
+協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用 `LockAsync` 方法來定義「重要區段」。
 
 下列範例程式碼顯示可定義重要區段的協調器函式。 它會使用 `LockAsync` 方法輸入重要區段。 此方法需要將一或多個參考傳遞至[長期實體](durable-functions-entities.md)，其會持久地管理鎖定狀態。 此協調流程一次只有一個執行個體可以在重要區段中執行程式碼。
 
@@ -267,7 +267,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 新功能：
+在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

@@ -143,7 +143,7 @@ Kintone 與 Azure AD 整合提供下列優點：
 
     ![使用者與系統管理](./media/kintone-tutorial/ic785880.png "使用者與系統管理")
 
-1. 在 [系統管理  **安全性]\>** 底下，按一下 [登入]  。
+1. 在 [系統管理 \> 安全性] 底下，按一下 [登入]。
 
     ![登入](./media/kintone-tutorial/ic785881.png "登入")
 
@@ -204,7 +204,7 @@ Kintone 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

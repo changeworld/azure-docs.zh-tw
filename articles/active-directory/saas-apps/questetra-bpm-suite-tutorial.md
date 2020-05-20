@@ -110,7 +110,7 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.questetra.net/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 您可以從 **Questetra BPM Suite** [SP 資訊]  區段取得這些值，本教學課程後續將會加以說明；您也可以連絡 [Questetra BPM Suite 用戶端支援小組](https://www.questetra.com/contact/)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 您可以從 **Questetra BPM Suite** [SP 資訊] 區段取得這些值，本教學課程後續將會加以說明；您也可以連絡 [Questetra BPM Suite 用戶端支援小組](https://www.questetra.com/contact/)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -140,9 +140,9 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
 
 4. 在 **Questetra BPM Suite** 公司網站的 [SP 資訊]  區段中，執行以下步驟：
 
-    a. 從 Azure 入口網站複製 [ACS URL]  ，然後將它貼入 [基本 SAML 組態]  區段中的 [登入 URL]  文字方塊。
+    a. 從 Azure 入口網站複製 [ACS URL]，然後將它貼入 [基本 SAML 組態] 區段中的 [登入 URL] 文字方塊。
     
-    b. 從 Azure 入口網站複製 [實體識別碼]  ，然後將它貼入 [基本 SAML 組態]  區段中的 [識別碼]  文字方塊。
+    b. 從 Azure 入口網站複製 [實體識別碼]，然後將它貼入 [基本 SAML 組態] 區段中的 [識別碼] 文字方塊。
 
 5. 在您的 **Questetra BPM Suite** 公司網站上，執行下列步驟： 
    
@@ -202,7 +202,7 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -226,9 +226,9 @@ Questetra BPM Suite 與 Azure AD 整合提供下列優點：
    
     ![建立測試使用者][300] 
    
-    a. 在 [名稱]  文字方塊中，輸入使用者  **的**名稱britta.simon@contoso.com。
+    a. 在 [名稱] 文字方塊中，輸入使用者 britta.simon@contoso.com 的**名稱**。
    
-    b. 在 [電子郵件]  文字方塊中，輸入使用者  **的**電子郵件britta.simon@contoso.com。
+    b. 在 [電子郵件] 文字方塊中，輸入使用者 britta.simon@contoso.com 的**電子郵件**。
    
     c. 在 [密碼]  文字方塊中，輸入使用者的**密碼**。
     

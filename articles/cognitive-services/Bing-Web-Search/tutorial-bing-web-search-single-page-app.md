@@ -66,7 +66,7 @@ npm install
 
 ## <a name="html-form"></a>HTML 表單
 
-`index.html` 包含一個表單，讓使用者能夠用來搜尋並選取搜尋選項。 `onsubmit` 屬性會在提交表單時引發，以呼叫 `bingWebSearch()` 中所定義的 `scripts.js` 方法。 它會採用三個引數︰
+`index.html` 包含一個表單，讓使用者能夠用來搜尋並選取搜尋選項。 `onsubmit` 屬性會在提交表單時引發，以呼叫 `scripts.js` 中所定義的 `bingWebSearch()` 方法。 它會採用三個引數︰
 
 * 搜尋查詢
 * 選取的選項
@@ -127,9 +127,9 @@ function bingSearchOptions(form) {
 }
 ```
 
-您可以使用 `SafeSearch` (此為 Bing Web 搜尋的預設設定)，將 `strict` 設定為 `moderate`、`off` 或 `moderate`。 此表單使用具備兩種狀態的核取方塊：`strict` 或 `moderate`。
+您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊：`strict` 或 `moderate`。
 
-如果選取了任何 [升階]  核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `answerCount` 參數，則必須使用 `promote`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
+如果選取了任何 [升階]  核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `promote` 參數，則必須使用 `answerCount`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
 > [!NOTE]
 > 將結果類型升階，不「保證」  它將包含於搜尋結果中。 實際情況是，升階會提高此類結果相對於其正常狀態下的排名。 若要將搜尋限定於特定類型的結果，請使用 `responseFilter` 查詢參數，或呼叫更明確的端點，例如 Bing 影像搜尋或 Bing 新聞搜尋。
 
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` 函式會依序逐一查看每個 `RankingResponse` 集合中的項目、使用 `answerType` 和 `resultIndex` 值來將每個排名結果對應至搜尋結果，然後呼叫適當的轉譯函式以產生 HTML。 若未針對項目指定 `resultIndex`，則 `renderResultsItems()` 會逐一查看該類型的所有結果，並為每個項目呼叫轉譯函式。 產生的 HTML 會插入到 `<div>` 中適當的 `index.html` 元素。
+`renderResultsItems()` 函式會依序逐一查看每個 `RankingResponse` 集合中的項目、使用 `answerType` 和 `resultIndex` 值來將每個排名結果對應至搜尋結果，然後呼叫適當的轉譯函式以產生 HTML。 若未針對項目指定 `resultIndex`，則 `renderResultsItems()` 會逐一查看該類型的所有結果，並為每個項目呼叫轉譯函式。 產生的 HTML 會插入到 `index.html` 中適當的 `<div>` 元素。
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and

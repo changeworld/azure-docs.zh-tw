@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191004"
 ---
-加入會使用 `msg` 上的 `context.bindings` 輸出繫結物件的程式碼來建立佇列訊息。 在 `context.res` 陳述式前面新增此程式碼。
+加入會使用 `context.bindings` 上的 `msg` 輸出繫結物件的程式碼來建立佇列訊息。 在 `context.res` 陳述式前面新增此程式碼。
 
 :::code language="typescript" range="10" source="~/functions-docs-typescript/functions-add-output-binding-storage-queue-cli/HttpExample/index.ts":::
 

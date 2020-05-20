@@ -141,7 +141,7 @@ ms.locfileid: "77192963"
 
     > [!NOTE]
     > 安全性注意事項：`AuthenticationTestHandler` 類別未提供真正的驗證。 它僅可用於模仿基本驗證而且並不安全。 您必須在生產應用程式和服務中實作安全的驗證機制。
-5. 若要註冊訊息處理常式，請在 `Register`App_Start/WebApiConfig.cs**類別中** 方法的結尾新增下列程式碼：
+5. 若要註冊訊息處理常式，請在 **App_Start/WebApiConfig.cs** 類別中 `Register` 方法的結尾新增下列程式碼：
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());
@@ -394,7 +394,7 @@ ms.locfileid: "77192963"
 
 4. 選取 [建立]  。
 
-5. 記下 [摘要]  區段中的 [網站 URL]  屬性。 此 URL 是您在本教學課程中稍後使用的「後端端點」  。
+5. 記下 [摘要] 區段中的 [網站 URL] 屬性。 此 URL 是您在本教學課程中稍後使用的「後端端點」  。
 
 6. 選取 [發佈]  。
 

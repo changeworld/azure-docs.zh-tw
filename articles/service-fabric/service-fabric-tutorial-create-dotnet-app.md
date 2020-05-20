@@ -241,7 +241,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-此外在 `GetVotingDataServiceName` 下方新增下列 `CreateServiceInstanceListeners()`，然後儲存變更。 `GetVotingDataServiceName` 會在輪詢時傳回服務名稱。
+此外在 `CreateServiceInstanceListeners()` 下方新增下列 `GetVotingDataServiceName`，然後儲存變更。 `GetVotingDataServiceName` 會在輪詢時傳回服務名稱。
 
 ```csharp
 internal static Uri GetVotingDataServiceName(ServiceContext context)
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 建立 VotingWeb 前端服務時，Visual Studio 會隨機選擇服務要接聽的連接埠。  VotingWeb 服務是作為此應用程式的前端，並接受外部流量，因此讓我們將該服務繫結至固定的已知連接埠。  [服務資訊清單](service-fabric-application-and-service-manifests.md)會宣告服務端點。
 
-在 [方案總管] 中，開啟 VotingWeb/PackageRoot/ServiceManifest.xml  。  在 [資源]  區段中尋找 [端點]  元素，並將 [連接埠]  值變更為 **8080**。 若要在本機上部署並執行應用程式，則必須在您的電腦上開啟應用程式接聽連接埠，並讓此連接埠可供使用。
+在 [方案總管] 中，開啟 VotingWeb/PackageRoot/ServiceManifest.xml  。  在 [資源] 區段中尋找 [端點] 元素，並將 [連接埠] 值變更為 **8080**。 若要在本機上部署並執行應用程式，則必須在您的電腦上開啟應用程式接聽連接埠，並讓此連接埠可供使用。
 
 ```xml
 <Resources>

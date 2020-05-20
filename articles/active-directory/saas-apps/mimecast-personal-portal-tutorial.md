@@ -157,7 +157,7 @@ Mimecast Personal Portal 與 Azure AD 整合提供下列優點：
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Mimecast Personal Portal 公司網站。
 
-2. 移至 [服務]  **[應用程式]\>** 。
+2. 移至 [服務] \> [應用程式]。
    
     ![應用程式](./media/mimecast-personal-portal-tutorial/ic794998.png "應用程式")
 
@@ -232,7 +232,7 @@ Mimecast Personal Portal 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -252,7 +252,7 @@ Mimecast Personal Portal 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身份登入您的 **Mimecast Personal Portal** 。
 
-2. 移至 [目錄  **內部]\>** 。
+2. 移至 [目錄 \> 內部]。
    
     ![Directories](./media/mimecast-personal-portal-tutorial/ic795003.png "目錄")
 
@@ -268,7 +268,7 @@ Mimecast Personal Portal 與 Azure AD 整合提供下列優點：
    
     ![儲存](./media/mimecast-personal-portal-tutorial/ic795006.png "儲存")
    
-    a. 在 [Email Address] \(電子郵件\)  文字方塊中，以 **BrittaSimon**contoso.com **形式輸入使用者的\@電子郵件地址**。
+    a. 在 [Email Address] \(電子郵件\) 文字方塊中，以 **BrittaSimon\@contoso.com** 形式輸入使用者的**電子郵件地址**。
     
     b. 在 [全域名稱]  文字方塊中，輸入**使用者名稱**：**BrittaSimon**。
 

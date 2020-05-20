@@ -128,7 +128,7 @@ ms.locfileid: "73157862"
 
 ### <a name="configure-asana-single-sign-on"></a>設定 Asana 單一登入
 
-1. 在不同的瀏覽器視窗中，登入您的 Asana 應用程式。 若要在 Asana 中設定 SSO，請按一下螢幕右上角的工作區名稱來存取工作區設定。 然後，按一下 [**您的工作區名稱\< 設定]\>** 。
+1. 在不同的瀏覽器視窗中，登入您的 Asana 應用程式。 若要在 Asana 中設定 SSO，請按一下螢幕右上角的工作區名稱來存取工作區設定。 然後，按一下 [\<您的工作區名稱\> 設定]。
 
     ![Asana sso 設定](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "73157862"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

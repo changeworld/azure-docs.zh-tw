@@ -49,7 +49,7 @@ Visual Studio 會建立 Service Fabric Mesh 應用程式專案和 ASP.NET Core �
 
 ## <a name="build-and-publish-to-your-local-cluster"></a>建置並發行至您的本機叢集
 
-一旦您的專案載入之後，Docker 映像就會自動建置並發行至您的本機叢集。 此程序可能需要一些時間。 您可以視需要，在 [輸出]  視窗下拉式清單中選取 [Service Fabric 工具]  項目，藉以在 [輸出]  視窗中監視 Service Fabric 工具的進度。 您可以在部署 Dcker 映像時繼續工作。
+一旦您的專案載入之後，Docker 映像就會自動建置並發行至您的本機叢集。 此程序可能需要一些時間。 您可以視需要，在 [輸出] 視窗下拉式清單中選取 [Service Fabric 工具] 項目，藉以在 [輸出] 視窗中監視 Service Fabric 工具的進度。 您可以在部署 Dcker 映像時繼續工作。
 
 建立專案之後，按一下 **F5**，對您的服務進行本機偵錯。 完成本機部署且 Visual Studio 正在執行您的專案時，瀏覽器視窗將會開啟並提供一個範例網頁。
 
@@ -67,17 +67,17 @@ Visual Studio 會建立 Service Fabric Mesh 應用程式專案和 ASP.NET Core �
 
 選取您的 Azure 帳戶和訂用帳戶。 選擇 [位置]  。 本文使用**美國東部**。
 
-在 [資源群組]  下方，選取 [**建立新的資源群組...>]\<** 。 [建立資源群組]  對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立]  以建立資源群組並返回發行對話方塊。
+在 [資源群組] 下方，選取 [\<建立新的資源群組...>]。 [建立資源群組]  對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立]  以建立資源群組並返回發行對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回 [發佈 Service Fabric 應用程式]  對話方塊，在 [Azure Container Registry]  下方，選取 [**建立新的容器登錄...>]\<** 。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]  ，然後按一下 [建立]  以返回發行對話方塊。
+返回 [發佈 Service Fabric 應用程式] 對話方塊，在 [Azure Container Registry] 下方，選取 [\<建立新的容器登錄...>]。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]  ，然後按一下 [建立]  以返回發行對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
 在發行對話方塊中，按一下 [發行]  按鈕，將您的 Service Fabric Mesh 應用程式部署到 Azure。
 
-當您首次發行到 Azure 時，會將 Dcker 映像推送到 Azure Container Registry (ACR)，所需時間取決於映像大小。 後續發行相同專案的速度將會加快。 您可以在 Visual Studio 的 [輸出]  視窗下拉式清單中選取 [Service Fabric 工具]  ，藉以監視部署的進度。 一旦部署完成之後，**Service Fabric 工具**輸出將會以 URL 形式來顯示應用程式的 IP 位址和連接埠。
+當您首次發行到 Azure 時，會將 Dcker 映像推送到 Azure Container Registry (ACR)，所需時間取決於映像大小。 後續發行相同專案的速度將會加快。 您可以在 Visual Studio 的 [輸出] 視窗下拉式清單中選取 [Service Fabric 工具]，藉以監視部署的進度。 一旦部署完成之後，**Service Fabric 工具**輸出將會以 URL 形式來顯示應用程式的 IP 位址和連接埠。
 
 ```
 Packaging Application...

@@ -173,7 +173,7 @@ moconavi 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ moconavi 與 Azure AD 整合提供下列優點：
 
     ![測試單一登入](./media/moconavi-tutorial/testing1.png)
 
-4. 在 [Connect to URL]`https://mcs-admin.moconavi.biz/gateway` **\(連線至 URL\) 文字方塊中輸入**，然後按一下 [Done]  \(完成\) 按鈕。
+4. 在 [Connect to URL] \(連線至 URL\) 文字方塊中輸入 `https://mcs-admin.moconavi.biz/gateway`，然後按一下 [Done] \(完成\) 按鈕。
 
     ![測試單一登入](./media/moconavi-tutorial/testing2.png)
 
@@ -205,9 +205,9 @@ moconavi 與 Azure AD 整合提供下列優點：
 
     ![測試單一登入](./media/moconavi-tutorial/testing3.png)
 
-    a. 在 [Input Authentication Key]  \(輸入驗證金鑰\) 文字方塊中輸入`azureAD`輸入驗證金鑰 **：** 。
+    a. 在 [Input Authentication Key] \(輸入驗證金鑰\) 文字方塊中輸入**輸入驗證金鑰**：`azureAD`。
 
-    b. 在 [Input User ID]  \(輸入使用者識別碼\) 文字方塊中輸入`your ad account`輸入使用者識別碼 **：** 。
+    b. 在 [Input User ID] \(輸入使用者識別碼\) 文字方塊中輸入**輸入使用者識別碼**：`your ad account`。
 
     c. 按一下 [LOGIN]  \(登入\)。
 

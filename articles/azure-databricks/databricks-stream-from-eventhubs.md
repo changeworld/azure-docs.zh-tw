@@ -102,7 +102,7 @@ ms.locfileid: "75889137"
 
    * 輸入叢集的名稱。
    * 針對本文，請使用 6.0  執行階段建立叢集。
-   * 請確定您已選取 [在活動 **\_分鐘後終止]\_** 核取方塊。 請提供用來終止叢集的叢集未使用持續時間 (以分鐘為單位)。
+   * 請確定您已選取 [在活動\_\_分鐘後終止] 核取方塊。 請提供用來終止叢集的叢集未使用持續時間 (以分鐘為單位)。
 
    選取符合您技術準則和[預算](https://azure.microsoft.com/pricing/details/databricks/)的叢集背景工作角色和驅動程式節點大小。
 
@@ -122,7 +122,7 @@ ms.locfileid: "75889137"
 
     ![Twitter 應用程式詳細資料](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Twitter 應用程式詳細資料")
 
-3. 在應用程式頁面中，選取 [金鑰和權杖]  索引標籤，並複製 [取用者 API 金鑰]  和 [取用者 API 秘密金鑰]  的值。 此外，選取 [存取權杖和存取權杖密碼]  底下的 [建立]  來產生存取權杖。 複製 [存取權杖]  和 [存取權杖祕密]  的值。
+3. 在應用程式頁面中，選取 [金鑰和權杖]  索引標籤，並複製 [取用者 API 金鑰]  和 [取用者 API 秘密金鑰]  的值。 此外，選取 [存取權杖和存取權杖密碼] 底下的 [建立] 來產生存取權杖。 複製 [存取權杖]  和 [存取權杖祕密]  的值。
 
     ![Twitter 應用程式詳細資料](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Twitter 應用程式詳細資料")
 
@@ -406,7 +406,7 @@ ms.locfileid: "75889137"
 
 ![停止 Databricks 叢集](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "停止 Databricks 叢集")
 
-如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 **\_ 分鐘後終止]\_** 核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
+如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 \_\_ 分鐘後終止] 核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解如何：

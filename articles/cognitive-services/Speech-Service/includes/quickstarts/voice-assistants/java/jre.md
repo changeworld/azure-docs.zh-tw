@@ -42,7 +42,7 @@ ms.locfileid: "80671296"
 
 1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案]   > [新增]   > [類別]  。
 
-1. 在 [新增 Java 類別]  視窗中，於 [套件]  欄位中輸入 _speechsdk.quickstart_，並在 [名稱]  欄位中輸入 _Main_。
+1. 在 [新增 Java 類別] 視窗中，於 [套件] 欄位中輸入 _speechsdk.quickstart_，並在 [名稱] 欄位中輸入 _Main_。
 
    ![[新增 Java 類別] 視窗的螢幕擷取畫面](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
