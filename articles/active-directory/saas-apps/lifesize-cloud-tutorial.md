@@ -168,7 +168,7 @@ Lifesize Cloud 與 Azure AD 整合提供下列優點：
 
 6. 檢查 [啟用 SSO]  按鈕以啟用 SSO。
 
-7. 現在按一下 [更新]  按鈕，以儲存所有設定。 這會產生 RelayState 值。 複製文字方塊中產生的 RelayState 值，貼到 [Lifesize Cloud 網域及 URL]  區段下方的 [轉送狀態]  文字方塊。
+7. 現在按一下 [更新]  按鈕，以儲存所有設定。 這會產生 RelayState 值。 複製文字方塊中產生的 RelayState 值，貼到 [Lifesize Cloud 網域及 URL] 區段下方的 [轉送狀態] 文字方塊。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -211,7 +211,7 @@ Lifesize Cloud 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

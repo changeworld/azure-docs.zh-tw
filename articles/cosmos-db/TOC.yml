@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: 遍及各區
           href: regional-presence.md
-        - name: 交易式和分析儲存體
-          href: globally-distributed-transactional-analytical-storage.md
     - name: 資料分割
       items:
         - name: 資料分割概觀
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: 變更摘要提取模型
           href: change-feed-pull-model.md
-    - name: 全域散發的分析和 AI
+    - name: 使用 Synapse Link 進行分析
       items:
-        - name: 分析使用案例
-          href: analytics-usecases.md
-        - name: 分析 - 解決方案架構
-          href: analytics-solution-architectures.md
-        - name: Lambda 架構
-          href: lambda-architecture.md
+        - name: 適用於 Azure Cosmos DB 的 Synapse Link
+          href: synapse-link.md
+        - name: 分析存放區 - 概觀
+          href: analytical-store-introduction.md
+        - name: Synapse Link 常見問題集
+          href: synapse-link-frequently-asked-questions.md
+        - name: Synapse Link 使用案例
+          href: synapse-link-use-cases.md
     - name: 內建 Jupyter 筆記本
       items:
         - name: Jupyter 筆記本概觀
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: 變更摘要 - 非同步 Java 範例
           href: create-sql-api-java-changefeed.md
+    - name: 使用 Synapse Link 進行分析
+      items:
+        - name: 設定 Synapse Link
+          href: configure-synapse-link.md
     - name: 內建分析搭配 Apache Spark
       items:
         - name: Azure Databricks Spark 連接器

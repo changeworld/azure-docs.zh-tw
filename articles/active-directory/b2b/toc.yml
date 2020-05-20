@@ -1,12 +1,12 @@
-- name: Azure Active Directory B2B 文件
+- name: 外部身分識別文件
   href: index.yml
   items:
     - name: 概觀
       items:
+        - name: 比較外部身分識別的解決方案
+          href: compare-with-b2c.md
         - name: 什麼是 B2B 來賓使用者存取權？
           href: what-is-b2b.md
-        - name: 比較 B2B 與 B2C
-          href: compare-with-b2c.md
     - name: 快速入門
       items:
         - name: 在入口網站中新增來賓使用者
@@ -48,16 +48,20 @@
           href: conditional-access.md
         - name: 適用於混合式組織的 B2B
           href: hybrid-organizations.md
-        - name: 自助式註冊
+        - name: 適用於外部身分識別的識別提供者
+          href: identity-providers.md
+        - name: 自助式註冊使用者流程 (預覽)
+          href: self-service-sign-up-overview.md
+        - name: Azure AD 權利管理
           href: self-service-portal.md
         - name: 目前的限制
           href: current-limitations.md
     - name: 操作指南
       expanded: true
       items:
-        - name: 管理 B2B 共用
+        - name: 設定外部共用
           href: delegate-invitations.md
-        - name: 管理邀請
+        - name: 邀請 B2B 使用者
           items:
             - name: 管理員新增 B2B 使用者
               href: add-users-administrator.md
@@ -65,20 +69,32 @@
               href: add-users-information-worker.md
             - name: 邀請內部使用者加入 B2B
               href: invite-internal-users.md
-            - name: Google 同盟
-              href: google-federation.md
-            - name: 單次密碼驗證
-              href: one-time-passcode.md
-            - name: 直接同盟
-              href: direct-federation.md
-            - name: 與 AD FS 建立直接同盟的範例
-              href: direct-federation-adfs.md
             - name: 允許或封鎖邀請
               href: allow-deny-list.md
             - name: 在沒有邀請的情況下新增 B2B 使用者
               href: add-user-without-invite.md
-            - name: API 與自訂
+            - name: 邀請 API 和自訂
               href: customize-invitation-api.md
+        - name: 與識別提供者建立同盟
+          items:
+            - name: Google 同盟
+              href: google-federation.md
+            - name: Facebook 同盟
+              href: facebook-federation.md
+            - name: 直接同盟
+              href: direct-federation.md
+            - name: 與 AD FS 建立直接同盟的範例
+              href: direct-federation-adfs.md
+        - name: 單次密碼驗證
+          href: one-time-passcode.md
+        - name: 自助式註冊 (預覽)
+          items:
+            - name: 新增自助式註冊使用者流程
+              href: self-service-sign-up-user-flow.md
+            - name: 定義自訂屬性
+              href: user-flow-add-custom-attributes.md
+            - name: 自訂使用者流程語言
+              href: user-flow-customize-language.md
         - name: 管理來賓帳戶
           items:
             - name: 將 B2B 使用者新增至角色
@@ -123,7 +139,7 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 服務更新
           href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
         - name: 影片
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

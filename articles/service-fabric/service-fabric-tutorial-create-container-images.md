@@ -92,7 +92,7 @@ az account set --subscription <subscription_id>
 
 部署 Azure Container Registry 時，您必須先有資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-使用 **az group create** 命令來建立資源群組。 在此範例中，會在 westus  區域中建立名為 myResourceGroup  的資源群組。
+使用 **az group create** 命令來建立資源群組。 在此範例中，會在 westus 區域中建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus

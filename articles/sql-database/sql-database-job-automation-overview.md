@@ -205,11 +205,11 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 「作業資料庫」  不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務目標。 「作業資料庫」  的建議服務目標為 S1 或更高，但最佳選擇取決於作業的效能需求：作業步驟數、作業目標數，以及作業的執行頻率。 例如，若為每小時執行少量作業且目標少於 10 個資料庫的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時，S0 資料庫可能就不夠快，而更高的服務層級可能比較適合。
 
-如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV 來[監視](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](sql-database-service-tiers-dtu.md) 或 [vCore 模型](sql-database-service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
+如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV 來[監視](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](sql-database-service-tiers-dtu.md) 或 [vCore 模型](sql-database-service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
 
 ##### <a name="job-database-permissions"></a>作業資料庫權限
 
-在作業代理程式建立期間，會在「作業資料庫」  中建立結構描述、資料表，以及名為 jobs_reader  的角色。 此角色會具有下列權限，而且旨在賦予系統管理員更細微的存取控制以便監視作業：
+在作業代理程式建立期間，會在「作業資料庫」中建立結構描述、資料表，以及名為 jobs_reader 的角色。 此角色會具有下列權限，而且旨在賦予系統管理員更細微的存取控制以便監視作業：
 
 |角色名稱 |'jobs' 結構描述權限 |'jobs_internal' 結構描述權限 |
 |---------|---------|---------|
@@ -267,7 +267,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 #### <a name="job-history"></a>作業歷程記錄
 
-作業執行歷程記錄會儲存在「作業資料庫」  中。 系統清理作業會清除留存超過 45 天的執行歷程記錄。 若要移除留存少於 45 天的歷程記錄，請在「作業資料庫」  中呼叫 *sp_purge_history* 預存程序。
+作業執行歷程記錄會儲存在「作業資料庫」  中。 系統清理作業會清除留存超過 45 天的執行歷程記錄。 若要移除留存少於 45 天的歷程記錄，請在「作業資料庫」中呼叫 **sp_purge_history** 預存程序。
 
 ### <a name="agent-performance-capacity-and-limitations"></a>代理程式效能、容量和限制
 

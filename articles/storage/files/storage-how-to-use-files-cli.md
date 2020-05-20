@@ -28,7 +28,7 @@ Azure CLI 命令預設會傳回 JavaScript 物件標記法 (JSON)。 JSON 是從
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是一種邏輯容器，您會在其中部署與管理 Azure 資源。 如果您還沒有 Azure 資源群組，您可以使用 [az group create](/cli/azure/group) 命令建立一個。 
 
-下列範例會在「美國西部 2」  位置建立名為 myResourceGroup  的資源群組：
+下列範例會在「美國西部 2」位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"

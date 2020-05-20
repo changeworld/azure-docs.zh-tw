@@ -43,7 +43,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-azure-load-balancer"></a>建立 Azure Load Balancer
-本節將詳細說明如何建立及設定負載平衡器的每個元件。 請先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組，才可建立負載平衡器。 下列範例會在 EastUS  位置建立名為 myResourceGroupLoadBalancer  的資源群組：
+本節將詳細說明如何建立及設定負載平衡器的每個元件。 請先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組，才可建立負載平衡器。 下列範例會在 EastUS 位置建立名為 myResourceGroupLoadBalancer 的資源群組：
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -52,7 +52,7 @@ New-AzResourceGroup `
 ```
 
 ### <a name="create-a-public-ip-address"></a>建立公用 IP 位址
-若要存取網際網路上您的應用程式，您需要負載平衡器的公用 IP 位址。 使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會在 myResourceGroupLoadBalancer  資源群組中建立名為 myPublicIP  的公用 IP 位址：
+若要存取網際網路上您的應用程式，您需要負載平衡器的公用 IP 位址。 使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會在 myResourceGroupLoadBalancer 資源群組中建立名為 myPublicIP 的公用 IP 位址：
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -269,7 +269,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 若要查看負載平衡器如何將流量分散到其餘兩部執行您應用程式的 VM，您可以強制重新整理您的 Web 瀏覽器。 您現在可以在 VM 上執行維護，例如安裝 OS 更新或執行 VM 重新開機。
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>將 VM 新增至負載平衡器
-在執行 VM 維護之後，或者如果需要擴充容量，請經由 [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) 將虛擬 NIC 的 LoadBalancerBackendAddressPools  屬性設定為 BackendAddressPool  ：
+在執行 VM 維護之後，或者如果需要擴充容量，請經由 [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) 將虛擬 NIC 的 LoadBalancerBackendAddressPools 屬性設定為 BackendAddressPool：
 
 取得負載平衡器：
 

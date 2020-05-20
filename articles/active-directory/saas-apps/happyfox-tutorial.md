@@ -139,7 +139,7 @@ HappyFox 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/happyfox-tutorial/header.png) 
 
-3. 在 [整合] 索引標籤中，按一下 [SAML 整合]  下的 [設定]  以開啟 [單一登入設定]。
+3. 在 [整合] 索引標籤中，按一下 [SAML 整合] 下的 [設定] 以開啟 [單一登入設定]。
 
     ![設定單一登入](./media/happyfox-tutorial/configure.png)
 
@@ -196,7 +196,7 @@ HappyFox 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

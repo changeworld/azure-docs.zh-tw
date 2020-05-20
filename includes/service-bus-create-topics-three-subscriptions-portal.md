@@ -30,7 +30,7 @@ ms.locfileid: "67174215"
 2. 在 [服務匯流排主題]  頁面上，從左側功能表中選取 [訂用帳戶]  ，然後選取工具列上的 [+ 訂用帳戶]  。 
     
     ![新增訂用帳戶按鈕](./media/service-bus-create-topics-subscriptions-portal/add-subscription-button.png)
-3. 在 [建立訂用帳戶]  頁面上，針對訂用帳戶的**名稱**輸入 **S1**，然後選取 [建立]  。 
+3. 在 [建立訂用帳戶] 頁面上，針對訂用帳戶的**名稱**輸入 **S1**，然後選取 [建立]。 
 
     ![建立訂用帳戶頁面](./media/service-bus-create-topics-subscriptions-portal/create-subscription-page.png)
 4. 重複執行前一個步驟兩次，以建立名為 **S2** 和 **S3** 的訂用帳戶。

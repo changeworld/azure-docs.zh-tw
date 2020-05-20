@@ -4,6 +4,14 @@
   items:
     - name: 關於對等互連服務
       href: about.md
+- name: 教學課程
+  items:
+    - name: 註冊對等互連服務連線
+      href: azure-portal.md
+    - name: 建立對等互連服務連線
+      href: create-connection.md
+    - name: 測量對等互連服務連線遙測
+      href: measure-connection-telemetry.md
 - name: 概念
   items:
     - name: 位置與合作夥伴
@@ -18,14 +26,10 @@
   items:
     - name: 註冊對等互連服務
       items:
-        - name: Azure 入口網站
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: 測量連線遙測
-      href: measure-connection-telemetry.md
 - name: 參考
   items:
     - name: Azure PowerShell
@@ -42,7 +46,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: 網路意見反應
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/azure-peering/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/?service=azure-peering'

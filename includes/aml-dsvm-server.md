@@ -26,7 +26,7 @@ ms.locfileid: "79485969"
 
 1. 使用以下其中一種方法將工作區組態檔新增至複製的目錄：
 
-    * 在 [Azure 入口網站](https://ms.portal.azure.com)中，從您工作區的 [概觀]  區段選取 [下載 config.json]  。 
+    * 在 [Azure 入口網站](https://ms.portal.azure.com)中，從您工作區的 [概觀] 區段選取 [下載 config.json]。 
 
     ![下載 config.json](./media/aml-dsvm-server/download-config.png)
 

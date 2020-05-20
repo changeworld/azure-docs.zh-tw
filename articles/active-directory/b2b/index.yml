@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Azure Active Directory B2B 文件
-summary: 了解如何使用 Azure AD 企業對企業 (B2B) 共同作業，以與來賓使用者和來自任何組織的外部夥伴安全地共用公司的應用程式及服務，同時持續控制貴公司的資料。
+title: 外部身分識別文件
+summary: 外部身分識別是一組可讓組織保護和管理任何外部使用者 (包括客戶和合作夥伴) 的功能。 以 B2B 共同作業為基礎，外部身分識別可提供與組織外部使用者互動和連線的其他功能。
 metadata:
-  title: 應用程式管理文件
-  description: 了解如何使用 Azure AD 企業對企業 (B2B) 共同作業，以與來賓使用者和來自任何組織的外部夥伴安全地共用公司的應用程式及服務，同時持續控制貴公司的資料。
+  title: 外部身分識別文件
+  description: 外部身分識別是一組可讓組織保護和管理任何外部使用者 (包括客戶和合作夥伴) 的功能。 以 B2B 共同作業為基礎，外部身分識別可提供與組織外部使用者互動和連線的其他功能。
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272687"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587471"
 landingContent:
-- title: 關於 Azure B2B 共同作業
+- title: 關於外部身分識別
   linkLists:
   - linkListType: overview
     links:
+    - text: 比較外部身分識別解決方案
+      url: compare-with-b2c.md
     - text: 什麼是 B2B 來賓使用者存取權？
       url: what-is-b2b.md
 - title: 邀請 B2B 來賓使用者

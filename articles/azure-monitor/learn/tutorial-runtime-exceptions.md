@@ -47,7 +47,7 @@ Azure Application Insights 會從您的應用程式收集遙測，以協助識�
 Application Insights 會收集應用程式中的任何失敗，並可讓您檢視錯誤在不同作業間的發生頻率，以協助您專注於影響最大的部分。  您可以再向下鑽研這些失敗的詳細資料，以識別根本原因。   
 
 1. 選取 [Application Insights]  ，然後選取您的訂用帳戶。  
-2. 若要開啟 [失敗]  面板中，請選取 [調查]  功能表下方的 [失敗]  ，或按一下 [失敗的要求]  圖形。
+2. 若要開啟 [失敗] 面板中，請選取 [調查] 功能表下方的 [失敗]，或按一下 [失敗的要求] 圖形。
 
     ![失敗的要求](media/tutorial-runtime-exceptions/failed-requests.png)
 

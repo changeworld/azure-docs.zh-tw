@@ -113,7 +113,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Comeet Recruiting Software 用戶端支援小組](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Comeet Recruiting Software 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
@@ -123,7 +123,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-6. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，使用 [編輯]  圖示來編輯宣告或使用 [新增宣告]  來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟： 
+6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，使用 [編輯] 圖示來編輯宣告或使用 [新增宣告] 來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟： 
 
     | 名稱 |  來源屬性|
     | ---------------| --------------- |
@@ -207,7 +207,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

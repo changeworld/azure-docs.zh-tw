@@ -39,7 +39,7 @@ ms.locfileid: "73827096"
   | 設定 | [伺服器層級 IP 防火牆規則](sql-database-server-level-firewall-rule.md)| [VM 的連線能力](sql-database-managed-instance-configure-vm.md)|
   |||[現場的連線能力](sql-database-managed-instance-configure-p2s.md)
   |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||從 [GitHub](sql-database-import.md) 中的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 檔案還原或匯入 Adventure Works|
+  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](sql-database-import.md) 檔案還原或匯入 Adventure Works|
   |||
 
   > [!IMPORTANT]

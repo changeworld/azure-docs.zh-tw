@@ -111,7 +111,7 @@ LoginRadius 與 Azure AD 整合可提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`https://LoginRadius.hub.loginradius.com/`
 
     > [!NOTE]
-    > 開啟 [登入 URL] 頁面。 按一下[單一登入]  索引標籤並輸入 **LoginRadius 支援小組**提供的[外掛程式名稱](mailto:support@loginradius.com)，然後按一下 [登入]  按鈕，系統會將您重新導向至 Azure AD 頁面進行登入。
+    > 開啟 [登入 URL] 頁面。 按一下[單一登入] 索引標籤並輸入 [LoginRadius 支援小組](mailto:support@loginradius.com)提供的**外掛程式名稱**，然後按一下 [登入] 按鈕，系統會將您重新導向至 Azure AD 頁面進行登入。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -171,7 +171,7 @@ LoginRadius 與 Azure AD 整合可提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

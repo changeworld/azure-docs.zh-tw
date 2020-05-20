@@ -153,7 +153,7 @@ ms.locfileid: "67085648"
  
     ![Zscaler Private Access Administrator IdP 選取](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
-    a. 按一下 [IdP Metadata File Upload] \(IdP 中繼資料檔案上傳\)  欄位中的 [Select File] \(選取檔案)  ，以上傳從 Azure AD 下載的中繼資料檔案。
+    a. 按一下 [IdP Metadata File Upload] \(IdP 中繼資料檔案上傳\) 欄位中的 [Select File] \(選取檔案)，以上傳從 Azure AD 下載的中繼資料檔案。
 
     b. 它會從 Azure AD 讀取 **IdP 中繼資料**，並填入所有欄位資訊，如下所示。
 
@@ -205,7 +205,7 @@ ms.locfileid: "67085648"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

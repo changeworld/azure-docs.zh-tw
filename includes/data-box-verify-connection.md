@@ -17,7 +17,7 @@ ms.locfileid: "67174646"
 
     ![資料箱儀表板](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. 貼上您的 [帳戶名稱]  和 [帳戶金鑰]  (來自本機 Web UI 中 [連線並複製]  頁面的金鑰 1 值)。 選取 [其他 (在下方輸入)]  作為儲存體端點網域，然後提供 Blob 服務端點，如下所示。 請只在透過 **http** 傳輸的情況下，才勾選 [使用 HTTP]  選項。 如果使用 *https*，請將此選項維持不勾選。 選取 [下一步]  。
+2. 貼上您的 [帳戶名稱]  和 [帳戶金鑰]  (來自本機 Web UI 中 [連線並複製]  頁面的金鑰 1 值)。 選取 [其他 (在下方輸入)]  作為儲存體端點網域，然後提供 Blob 服務端點，如下所示。 請只在透過 *http* 傳輸的情況下，才勾選 [使用 HTTP]選項。 如果使用 *https*，請將此選項維持不勾選。 選取 [下一步]  。
 
     ![資料箱儀表板](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 

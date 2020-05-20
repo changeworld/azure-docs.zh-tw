@@ -47,6 +47,8 @@
           items:
             - name: Azure 網路延遲
               href: azure-network-latency.md
+            - name: Azure 中的網際網路路由喜好設定
+              href: ../virtual-network/routing-preference-overview.md
         - name: 虛擬網路
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 網路負載平衡
@@ -149,7 +151,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=virtual-network'

@@ -102,7 +102,7 @@ runcmd:
 如需 Cloud-init 組態選項的詳細資訊，請參閱 [Cloud-init 組態範例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) \(英文\)。
 
 ## <a name="create-virtual-machine"></a>建立虛擬機器
-建立 VM 之前，請先使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroupAutomate  的資源群組：
+建立 VM 之前，請先使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroupAutomate 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus

@@ -120,7 +120,7 @@ XaitPorter 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-xaitporter-single-sign-on"></a>設定 XaitPorter 單一登入
 
-1. 若要自動執行 XaitPorter 內的設定，您必須按一下 [安裝擴充功能]  來安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+1. 若要自動執行 XaitPorter 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
@@ -134,7 +134,7 @@ XaitPorter 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/xaitporter-tutorial/user1.png)
 
-5. 從 [系統安裝]  下拉式清單中，選取 [管理單一登入]  。
+5. 從 [系統安裝] 下拉式清單中，選取 [管理單一登入]。
 
     ![設定單一登入](./media/xaitporter-tutorial/user2.png)
 
@@ -190,7 +190,7 @@ XaitPorter 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

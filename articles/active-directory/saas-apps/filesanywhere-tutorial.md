@@ -110,7 +110,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![FilesAnywhere 網域與 URL 單一登入資訊](common/both-signonurl.png)
 
@@ -123,9 +123,9 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-    當使用者註冊 FilesAnywhere 時，他們會取得來自 **FilesAnywhere 小組**的 [clientid](mailto:support@FilesAnywhere.com) 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端 ID] 屬性。
+    當使用者註冊 FilesAnywhere 時，他們會取得來自 [FilesAnywhere 小組](mailto:support@FilesAnywhere.com)的 **clientid** 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端 ID] 屬性。
 
-7. 除了以上屬性外，FilesAnywhere 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+7. 除了以上屬性外，FilesAnywhere 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
     | 名稱 | 來源屬性|
     | ---------------| --------------- |    
@@ -208,7 +208,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

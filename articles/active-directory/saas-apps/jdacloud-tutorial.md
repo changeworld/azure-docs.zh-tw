@@ -109,14 +109,14 @@ JDA Cloud 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.jdadelivers.com/sp/ACS.saml2`
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![JDA Cloud 網域和 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://ssonp-dl2.jdadelivers.com/sp/startSSO.ping?PartnerIdpId=<Azure AD Identifier>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 您將會從 [設定 JDA Cloud]  區段取得 [Azure AD 識別碼]  值。 請連絡 [JDA Cloud 用戶端支援小組](https://support.jda.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 您將會從 [設定 JDA Cloud] 區段取得 [Azure AD 識別碼] 值。 請連絡 [JDA Cloud 用戶端支援小組](https://support.jda.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -177,7 +177,7 @@ JDA Cloud 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 

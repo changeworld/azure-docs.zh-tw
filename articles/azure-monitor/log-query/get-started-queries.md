@@ -95,7 +95,7 @@ SecurityEvent
 ## <a name="where-filtering-on-a-condition"></a>Where︰針對條件進行篩選
 顧名思義，篩選會根據特定條件來篩選資料。 這種方式最常用來限制查詢結果，以便只顯示相關資訊。
 
-若要對查詢新增篩選，請使用 **where** 運算子，後面加上一或多個條件。 例如，下列查詢只會傳回 Level  等於 8  的 SecurityEvent  記錄：
+若要對查詢新增篩選，請使用 **where** 運算子，後面加上一或多個條件。 例如，下列查詢只會傳回 Level 等於 8 的 SecurityEvent 記錄：
 
 ```Kusto
 SecurityEvent
