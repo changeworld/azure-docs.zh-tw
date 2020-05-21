@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592894"
+ms.locfileid: "83659280"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding （LUIS）容器限制
 
@@ -35,7 +35,7 @@ LUIS 容器有一些值得注意的限制。 從不支援的相依性到支援�
 
 不支援的應用程式組態|詳細資料|
 |--|--|
-|不支援的容器文化特性| 荷蘭文（ `nl-NL` ）<br>日文（ `ja-JP` ）<br>只有[1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions)支援德文。|
+|不支援的容器文化特性| `nl-NL`只有 1.0.2 tokenizer 支援荷蘭文（）、日文（ `ja-JP` ）和德文（ `de-DE` ）語言。 [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions)|
 |所有文化特性皆不支援的實體|適用於所有文化特性的 [KeyPhrase](luis-reference-prebuilt-keyphrase.md) 預先建置實體|
 |英文（）文化特性不支援的實體 `en-US`|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 預先建置的實體|
 |語音預備|在容器中不支援外部相依性。|
@@ -46,7 +46,7 @@ LUIS 容器有一些值得注意的限制。 從不支援的相依性到支援�
 
 LUIS 容器支援 LUIS 適當支援的[語言](luis-language-support.md#languages-supported)子集。 LUIS 容器能夠瞭解下列語言的語句：
 
-| 語言 | 地區設定 | 預建網域 | 預建實體 | 片語清單建議 | **[文字分析](../text-analytics/language-support.md)<br>(情感和<br>關鍵字)|
+| Language | 地區設定 | 預建網域 | 預建實體 | 片語清單建議 | **[文字分析](../text-analytics/language-support.md)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 美式英文 | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |

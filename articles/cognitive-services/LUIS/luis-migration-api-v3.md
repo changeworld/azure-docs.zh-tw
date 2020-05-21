@@ -2,14 +2,14 @@
 title: V3 API 中的預測端點變更
 description: 查詢預測端點 V3 Api 已變更。 使用本指南來瞭解如何遷移至第3版端點 Api。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530380"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653858"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的預測端點變更
 
@@ -39,11 +39,11 @@ V3 進行下列變更，做為移至 GA 的一部分：
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * 可測量的單位索引`units`鍵名稱，從到`unit`
+    * 可測量的單位索引鍵名稱 `units` ，從到`unit`
 
 * 要求主體 JSON 變更：
-    * 從`preferExternalEntities`到`preferExternalEntities`
-    * 外部`score`實體的選擇性參數
+    * 從 `preferExternalEntities` 到`preferExternalEntities`
+    * `score`外部實體的選擇性參數
 
 * 回應主體 JSON 變更：
     * `normalizedQuery`拆卸
@@ -55,7 +55,7 @@ V3 進行下列變更，做為移至 GA 的一部分：
 如果您不知道您的用戶端應用程式或整合（Bot Framework 和 Bing 拼寫檢查 V7）都受到影響，而且您很樂意同時遷移 LUIS 應用程式撰寫和預測端點，請開始使用 V3 預測端點。 V2 預測端點仍然可供使用，而且是不錯的回溯策略。
 
 
-## <a name="not-supported"></a>不支援
+## <a name="not-supported"></a>不受支援
 
 ### <a name="bing-spell-check"></a>Bing 拼字檢查
 
@@ -73,16 +73,9 @@ V3 預測端點中不支援此 API-繼續使用 V2 API 預測端點進行拼寫�
 
 ### <a name="changes-by-slot-name-and-version-name"></a>依位置名稱和版本名稱的變更
 
-V3 端點 HTTP 呼叫的格式已變更。
+[V3 端點 HTTP](developer-reference-resource.md#rest-endpoints)呼叫的格式已變更。
 
-如果您想要依版本進行查詢，您必須先透過[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)與`"directVersionPublish":true`發行。 查詢參考版本識別碼的端點，而不是位置名稱。
-
-|預測 API 版本|METHOD|URL|
-|--|--|--|
-|V3|GET|HTTPs://<b>{REGION}</b>。 api.cognitive.microsoft.com/luis/<b>預測</b>/<b>v3.0</b>/apps/<b>{應用程式識別碼}</b>/slots/<b>{位置名稱}</b>/predict？ query =<b>{query}</b>|
-|V3|POST|HTTPs://<b>{REGION}</b>。 api.cognitive.microsoft.com/luis/<b>預測</b>/<b>v3.0</b>/apps/<b>{應用程式識別碼}</b>/slots/<b>{位置名稱}</b>/predict|
-|V2|GET|HTTPs://<b>{REGION}</b>。 api.cognitive.microsoft.com/luis/<b>預測</b>/<b>v3.0</b>/apps/<b>{應用程式識別碼}</b>/versions/<b>{版本識別碼}</b>/predict？ query =<b>{query}</b>|
-|V2|POST|HTTPs://<b>{REGION}</b>。 api.cognitive.microsoft.com/luis/<b>預測</b>/<b>v3.0</b>/apps/<b>{應用程式識別碼}</b>/versions/<b>{版本識別碼}</b>/predict|
+如果您想要依版本進行查詢，您必須先透過[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)與發行 `"directVersionPublish":true` 。 查詢參考版本識別碼的端點，而不是位置名稱。
 
 |有效的值`SLOT-NAME`|
 |--|
@@ -98,11 +91,11 @@ V3 API 有不同的查詢字串參數。
 |參數名稱|類型|版本|預設|目的|
 |--|--|--|--|--|
 |`log`|boolean|V2 & V3|false|將查詢儲存在記錄檔中。 預設值為 false。|
-|`query`|字串|僅限第 3 版|無預設值-GET 要求中需要它|**在 V2 中**，要預測的語句是在`q`參數中。 <br><br>**在 V3**中，此功能會在`query`參數中傳遞。|
-|`show-all-intents`|boolean|僅限第 3 版|false|傳回在**預測. 意圖**物件中具有對應分數的所有意圖。 意圖會以物件的形式傳回父`intents`物件。 這可讓您以程式設計方式存取，而不需要在`prediction.intents.give`陣列中尋找意圖：。 在 V2 中，這些會在陣列中傳回。 |
-|`verbose`|boolean|V2 & V3|false|**在第2版中**，當設定為 true 時，會傳回所有預測意圖。 如果您需要所有預測的`show-all-intents`意圖，請使用的 V3 參數。<br><br>**在 V3 中**，這個參數只提供實體預測的實體中繼資料詳細資料。  |
+|`query`|字串|僅限第 3 版|無預設值-GET 要求中需要它|**在 V2 中**，要預測的語句是在 `q` 參數中。 <br><br>**在 V3**中，此功能會在參數中傳遞 `query` 。|
+|`show-all-intents`|boolean|僅限第 3 版|false|傳回在**預測. 意圖**物件中具有對應分數的所有意圖。 意圖會以物件的形式傳回父 `intents` 物件。 這可讓您以程式設計方式存取，而不需要在陣列中尋找意圖： `prediction.intents.give` 。 在 V2 中，這些會在陣列中傳回。 |
+|`verbose`|boolean|V2 & V3|false|**在第2版中**，當設定為 true 時，會傳回所有預測意圖。 如果您需要所有預測的意圖，請使用的 V3 參數 `show-all-intents` 。<br><br>**在 V3 中**，這個參數只提供實體預測的實體中繼資料詳細資料。  |
 |`timezoneOffset`|字串|V2|-|適用于 datetimeV2 實體的時區。|
-|`datetimeReference`|字串|V3|-|適用于 datetimeV2 實體的[時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 取代`timezoneOffset`為 V2。|
+|`datetimeReference`|字串|V3|-|適用于 datetimeV2 實體的[時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 取代為 `timezoneOffset` V2。|
 
 
 ### <a name="v3-post-body"></a>V3 張貼內容
@@ -125,7 +118,7 @@ V3 API 有不同的查詢字串參數。
 |`externalEntities`|array|僅限第 3 版|不需要。|[外部實體](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可讓您的 LUIS 應用程式在執行時間中識別實體並為其加上標籤，以做為現有實體的功能。 |
 |`options.datetimeReference`|字串|僅限第 3 版|無預設值|用來判斷[datetimeV2 位移](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 DatetimeReference 的格式為[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|僅限第 3 版|false|指定是否使用使用者的[外部實體（具有與現有實體相同的名稱）](schema-change-prediction-runtime.md#override-existing-model-predictions) ，或模型中的現有實體用於預測。 |
-|`query`|字串|僅限第 3 版|必要。|**在 V2 中**，要預測的語句是在`q`參數中。 <br><br>**在 V3**中，此功能會在`query`參數中傳遞。|
+|`query`|字串|僅限第 3 版|必要。|**在 V2 中**，要預測的語句是在 `q` 參數中。 <br><br>**在 V3**中，此功能會在參數中傳遞 `query` 。|
 
 ## <a name="response-changes"></a>回應變更
 
@@ -135,7 +128,7 @@ V3 API 有不同的查詢字串參數。
 
 
 
-當設定為 true 時`verbose` ，V2 的最上層 JSON 屬性是，它會傳回`intents`屬性中的所有意圖和其分數：
+當設定為 true 時，V2 的最上層 JSON 屬性是，它會傳回 `verbose` 屬性中的所有意圖和其分數 `intents` ：
 
 ```JSON
 {
@@ -160,7 +153,7 @@ V3 的最上層 JSON 屬性包括：
 }
 ```
 
-`intents`物件是未排序的清單。 請勿假設中的第一個子系`intents`對應至`topIntent`。 相反地，請`topIntent`使用值來尋找分數：
+`intents`物件是未排序的清單。 請勿假設中的第一個子系 `intents` 對應至 `topIntent` 。 相反地，請使用 `topIntent` 值來尋找分數：
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
@@ -169,22 +162,22 @@ const score = intents[topIntentName];
 
 回應 JSON 架構變更允許：
 
-* 清除原始語句、 `query`和傳回的預測之間的`prediction`區別。
+* 清除原始語句、 `query` 和傳回的預測之間的區別 `prediction` 。
 * 以程式設計方式輕鬆存取預測的資料。 您可以透過**名稱**來存取意圖和實體的值，而不是列舉 V2 中的陣列。 對於預測實體角色，會傳回角色名稱，因為它在整個應用程式中都是唯一的。
 * 會遵守資料類型（如果已決定）。 數值不會再以字串傳回。
-* 在物件中傳回的第一個優先順序預測資訊和其他元`$instance`資料之間的區別。
+* 在物件中傳回的第一個優先順序預測資訊和其他中繼資料之間的區別 `$instance` 。
 
 ### <a name="entity-response-changes"></a>實體回應變更
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>標記實體在語句中的位置
 
-**在 V2 中**，實體已在具有和`startIndex` `endIndex`的語句中標記。
+**在 V2 中**，實體已在具有和的語句中 `startIndex` 標記 `endIndex` 。
 
-**在 V3 中**，實體會以`startIndex`和`entityLength`標記。
+**在 V3 中**，實體會以 `startIndex` 和標記 `entityLength` 。
 
-#### <a name="access-instance-for-entity-metadata"></a>實體`$instance`中繼資料的存取
+#### <a name="access-instance-for-entity-metadata"></a>`$instance`實體中繼資料的存取
 
-如果您需要實體中繼資料，則查詢字串必須使用`verbose=true`旗標，而回應會包含`$instance`物件中的中繼資料。 下列各節的 JSON 回應中會顯示範例。
+如果您需要實體中繼資料，則查詢字串必須使用 `verbose=true` 旗標，而回應會包含物件中的中繼資料 `$instance` 。 下列各節的 JSON 回應中會顯示範例。
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>每個預測實體都會以陣列表示
 
@@ -210,7 +203,7 @@ V3 回應物件包含預建實體的變更。 若要深入瞭解，請參閱[特
 ```
 每個內部陣列都會對應至語句內的文字。 內建物件是一個陣列，因為相同的文字可能會出現在清單實體的一個以上子清單中。
 
-在`entities`物件與`$instance`物件之間進行對應時，會保留物件的順序供清單實體預測之用。
+在 `entities` 物件與物件之間進行對應時 `$instance` ，會保留物件的順序供清單實體預測之用。
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -220,9 +213,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 #### <a name="entity-role-name-instead-of-entity-name"></a>實體角色名稱，而不是機構名稱
 
-在 V2 中， `entities`陣列傳回所有具有機構名稱的預測實體為唯一識別碼。 在 V3 中，如果實體使用角色，而預測是針對實體角色，則主要識別碼是角色名稱。 這是可行的，因為在整個應用程式中，實體角色名稱必須是唯一的，包括其他模型（意圖、實體）名稱。
+在 V2 中， `entities` 陣列傳回所有具有機構名稱的預測實體為唯一識別碼。 在 V3 中，如果實體使用角色，而預測是針對實體角色，則主要識別碼是角色名稱。 這是可行的，因為在整個應用程式中，實體角色名稱必須是唯一的，包括其他模型（意圖、實體）名稱。
 
-在下列範例中：請考慮包含文字的語句`Yellow Bird Lane`。 此文字會預測為的自`Location`定義實體角色`Destination`。
+在下列範例中：請考慮包含文字的語句 `Yellow Bird Lane` 。 此文字會預測為的自訂 `Location` 實體角色 `Destination` 。
 
 |語句文字|實體名稱|角色名稱|
 |--|--|--|
@@ -253,7 +246,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 }
 ```
 
-在 V3 中，具有傳回實體元`verbose`資料之旗標的相同結果：
+在 V3 中，具有傳回實體中繼資料之旗標的相同結果 `verbose` ：
 
 ```JSON
 "entities":{

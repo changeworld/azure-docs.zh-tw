@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585618"
+ms.locfileid: "83653890"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中建立新的 LUIS 應用程式
 有好幾種方法可建立 LUIS 應用程式。 您可以在 LUIS 入口網站中建立 LUIS 應用程式，或透過 LUIS 撰寫 [API](developer-reference-resource.md)。
@@ -45,10 +45,10 @@ ms.locfileid: "83585618"
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中建立新的應用程式
 
-1. 在**我的應用程式**] 頁面上，選取您的訂用帳戶並撰寫資源，然後按 [ **+ 建立**]。 如果您使用免費試用金鑰，請瞭解如何[建立撰寫資源](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)。
+1. 在**我的應用程式**] 頁面上，選取您的**訂**用帳戶並**撰寫資源**，然後按 [ **+ 建立**]。 如果您使用免費試用金鑰，請瞭解如何[建立撰寫資源](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)。
 
-    ![LUIS 應用程式清單](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![LUIS 應用程式清單](./media/create-app-in-portal.png)
 
 1. 在對話方塊中，輸入應用程式的名稱，例如 `Pizza Tutorial` 。
 
@@ -64,7 +64,7 @@ ms.locfileid: "83585618"
     > [!div class="mx-imgBorder"]
     > ![未使用任何範例語句建立的意圖清單（不含任何意圖）。](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>其他可用的動作
+## <a name="other-actions-available-on-my-apps-page"></a>我的應用程式頁面上可用的其他動作
 
 內容工具列提供其他動作：
 

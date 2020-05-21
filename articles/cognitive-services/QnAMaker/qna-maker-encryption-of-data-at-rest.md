@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372390"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653656"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>待用資料的加密 QnA Maker
 
@@ -37,7 +37,7 @@ QnA Maker 服務會使用來自 Azure 搜尋服務服務的 CMK。 請遵循下�
 
    ![查看加密設定](../media/cognitive-services-encryption/qna-encryption-1.png)
 
-2. 當您建立 QnA Maker 資源時，它會自動與 Azure 搜尋服務實例相關聯。 這不能與 CMK 搭配使用。 若要使用 CMK，您必須將在步驟1建立的新建立 Azure 搜尋服務實例建立關聯。 具體而言，您必須在 QnA Maker 資源`AzureSearchAdminKey`中`AzureSearchName`更新和。
+2. 當您建立 QnA Maker 資源時，它會自動與 Azure 搜尋服務實例相關聯。 這不能與 CMK 搭配使用。 若要使用 CMK，您必須將在步驟1建立的新建立 Azure 搜尋服務實例建立關聯。 具體而言，您必須 `AzureSearchAdminKey` `AzureSearchName` 在 QnA Maker 資源中更新和。
 
    ![查看加密設定](../media/cognitive-services-encryption/qna-encryption-2.png)
 
@@ -52,6 +52,11 @@ QnA Maker 服務會使用來自 Azure 搜尋服務服務的 CMK。 請遵循下�
 ## <a name="regional-availability"></a>區域可用性
 
 客戶管理的金鑰會在所有 Azure 搜尋服務區域中提供。
+
+## <a name="encryption-of-data-in-transit"></a>傳輸中資料加密
+
+QnA Maker 入口網站會在使用者的瀏覽器中執行。 每個動作都會觸發對個別認知服務 API 的直接呼叫。 因此，QnA Maker 與傳輸中的資料相容。
+不過，因為 QnA Maker portal 服務裝載于美國西部，所以它仍然不適合非美國客戶。 
 
 ## <a name="next-steps"></a>後續步驟
 

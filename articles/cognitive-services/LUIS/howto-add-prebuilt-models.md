@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 653882db4b62d7731123faf7b177da44dbd74e3f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584989"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680949"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>為一般使用案例新增預先建立的模型
 
@@ -40,7 +40,7 @@ LUIS 包含一組預先建立的模型，可快速新增常見的交談式使用
 
 1. 在 [**意圖**] 頁面上，從 [意圖] 清單上方的工具列中選取 [**新增預先建立的定義域意圖**]。
 
-1. 從快顯對話方塊中選取 [Utilities.Cancel]**** 意圖。
+1. 從快顯對話方塊中選取意圖。
 
     > [!div class="mx-imgBorder"]
     > ![新增預先建置的意圖](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
@@ -59,7 +59,18 @@ LUIS 包含一組預先建立的模型，可快速新增常見的交談式使用
     > [!div class="mx-imgBorder"]
     > ![新增預先建置的實體對話方塊](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. 選取 [完成]  。 新增實體之後，您不需要進行應用程式定型。
+1. 選取 [完成] 。 新增實體之後，您不需要進行應用程式定型。
+
+## <a name="add-a-prebuilt-domain-entity"></a>新增預先建立的網域實體
+1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
+1. 選取左側的 [**實體**]。
+
+1. 在 [**實體**] 頁面上，選取 [**新增預先建立的領域實體**]。
+
+1. 在 [**新增預先建立的定義域模型**] 對話方塊中，選取 [預先建立的領域] 實體。
+
+1. 選取 [完成] 。 新增實體之後，您不需要進行應用程式定型。
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>發行以從預測端點中查看預先建立的模型
 
@@ -67,7 +78,7 @@ LUIS 包含一組預先建立的模型，可快速新增常見的交談式使用
 
 ## <a name="entities-containing-a-prebuilt-entity-token"></a>包含預建實體 token 的實體
 
-如果您的機器學習實體需要預建實體的必要功能，請將子元件新增至機器學習的實體，然後新增預建實體的_必要_功能。
+如果您的機器學習服務實體需要預建實體的必要功能，請將列新增至機器學習服務實體，然後新增預建實體的_必要_功能。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

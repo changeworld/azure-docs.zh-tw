@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474863"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659554"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>取得 GenerateAnswer API 和中繼資料的解答
 
@@ -64,7 +64,7 @@ QnA Maker 可讓您以索引鍵和值組的形式，將中繼資料新增至您�
 POST 要求會使用：
 
 * 必要的[URI 參數](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* 必要的標頭`Authorization`屬性，用於安全性
+* 必要的標頭屬性， `Authorization` 用於安全性
 * 必要的[主體屬性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
 
 GenerateAnswer URL 的格式如下：
@@ -73,7 +73,7 @@ GenerateAnswer URL 的格式如下：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-請記得將的 HTTP 標頭屬性`Authorization`設定為，並將字串`EndpointKey`的值加上尾端空格，然後在 [**設定**] 頁面上找到端點金鑰。
+請記得將的 HTTP 標頭屬性設定為，並將 `Authorization` 字串的值 `EndpointKey` 加上尾端空格，然後在 [**設定**] 頁面上找到端點金鑰。
 
 範例 JSON 主體如下所示：
 
@@ -168,7 +168,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用中繼資料來篩選自訂元資料標記的答案
 
-新增中繼資料可讓您依這些元資料標記篩選答案。 從 [**視圖選項**] 功能表新增 [中繼資料] 資料行。 藉由選取中繼資料**+** 圖示來新增中繼資料組，以將中繼資料新增至您的知識庫。 此配對包含一個索引鍵和一個值。
+新增中繼資料可讓您依這些元資料標記篩選答案。 從 [**視圖選項**] 功能表新增 [中繼資料] 資料行。 藉由選取中繼資料 **+** 圖示來新增中繼資料組，以將中繼資料新增至您的知識庫。 此配對包含一個索引鍵和一個值。
 
 ![新增中繼資料的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -226,9 +226,9 @@ GenerateAnswer 的回應包含相符的問題和答案集合的對應中繼資�
 
 ## <a name="match-questions-only-by-text"></a>只比對問題（依文字）
 
-根據預設，QnA Maker 會搜尋問題和答案。 如果您只想要搜尋問題，若要產生解答，請`RankerType=QuestionOnly`在 GenerateAnswer 要求的 POST 主體中使用。
+根據預設，QnA Maker 會搜尋問題和答案。 如果您只想要搜尋問題，若要產生解答，請 `RankerType=QuestionOnly` 在 GenerateAnswer 要求的 POST 主體中使用。
 
-您可以使用`isTest=true`在測試 kb 中搜尋已`isTest=false`發佈的 kb、使用或。
+您可以使用在測試 kb 中搜尋已發佈的 kb、使用 `isTest=false` 或 `isTest=true` 。
 
 ```json
 {
@@ -243,7 +243,7 @@ GenerateAnswer 的回應包含相符的問題和答案集合的對應中繼資�
 
 |程式碼|說明|
 |:--|--|
-|2xx|成功|
+|2xx|Success|
 |400|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
 |400|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|
 |401|金鑰無效|
@@ -256,4 +256,4 @@ GenerateAnswer 的回應包含相符的問題和答案集合的對應中繼資�
 [**發佈**] 頁面也會提供資訊，以使用 Postman 或捲曲[產生答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 > [!div class="nextstepaction"]
-> [建立知識庫 Bot](../tutorials/integrate-qnamaker-luis.md)
+> [取得知識庫的分析](../how-to/get-analytics-knowledge-base.md)

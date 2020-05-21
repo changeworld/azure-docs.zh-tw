@@ -11,17 +11,17 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588367"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702143"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
 > [!NOTE]
-> * 適用于情感分析 v3 的容器現已正式運作。 關鍵字組的解壓縮和語言偵測容器是以[ungated 公開預覽](../../cognitive-services-gating-process.md)的形式提供。
+> * 適用于情感分析 v3 的容器現已正式運作。 關鍵字組的解壓縮和語言偵測容器是以 ungated 公開預覽的形式提供。
 > * 實體連結和 NER 目前無法當做容器使用。
 
 容器可讓您在自己的環境中執行文字分析 Api，而且非常適合您的特定安全性和資料控管需求。 文字分析容器提供原始文字的先進自然語言處理，並包含三個主要功能：情感分析、關鍵字組解壓縮和語言偵測。 

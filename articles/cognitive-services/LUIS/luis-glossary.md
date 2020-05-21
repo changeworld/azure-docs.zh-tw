@@ -3,12 +3,12 @@ title: 詞彙-LUIS
 description: 此詞彙說明使用 LUIS API Service 時可能遇到的字詞。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589664"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681611"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
 Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能會遇到的詞彙。
@@ -141,7 +141,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 列是機器學習實體的子實體。
 
-### <a name="non-machine-learned-entity"></a>非機器學習的實體
+### <a name="non-machine-learning-entity"></a>非機器學習實體
 
 使用文字對應來解壓縮資料的實體：
 * 清單實體
@@ -160,7 +160,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 請參閱預建[實體](#prebuilt-entity)的預建模型專案
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 在機器學習中，功能是可協助模型辨識特定概念的特性。 這是 LUIS 可以使用但不是硬規則的提示。
 
@@ -199,6 +199,10 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 ## <a name="normalized-value"></a>正規化值
 
 您會將值新增至您的[清單](#list-entity)實體。 每個值都可以有一或多個同義字的清單。 只有正規化的值會在回應中傳回。
+
+## <a name="overfitting"></a>過度學習
+
+當模型注視在特定的範例上，而且無法妥善一般化時，就會發生過度學習。
 
 ## <a name="owner"></a>擁有者
 
@@ -260,7 +264,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 ## <a name="schema"></a>結構描述
 
-您的架構包含您的意圖和實體，以及子實體。 架構一開始會進行規劃，然後在一段時間後逐一查看。 此架構不包括應用程式設定、功能或範例語句。 
+您的架構包含您的意圖和實體，以及子實體。 架構一開始會進行規劃，然後在一段時間後逐一查看。 此架構不包括應用程式設定、功能或範例語句。
 
 ## <a name="sentiment-analysis"></a>情感分析
 情感分析提供由[文字分析](../text-analytics/overview.md)提供的語句的正值或負值。

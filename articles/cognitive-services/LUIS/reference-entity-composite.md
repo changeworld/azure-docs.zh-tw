@@ -10,19 +10,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588899"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681401"
 ---
 # <a name="composite-entity"></a>複合實體
 
 複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
 
 > [!CAUTION]
-> 這個實體已被**取代**。 請遷移至[機器學習的實體](reference-entity-machine-learned-entity.md)。
+> 這個實體已被**取代**。 請遷移至[機器學習實體](reference-entity-machine-learned-entity.md)。
 
 **當資料有下列特性時，最適用此實體：**
 

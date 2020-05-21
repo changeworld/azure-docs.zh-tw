@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c28e6c1edf4188cf3ea80c14565785dcf1dcbba
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78194628"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653836"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>遷移至 Azure 撰寫資源的步驟
 
 從 Language Understanding （LUIS）入口網站，遷移您擁有的所有應用程式，以使用 Azure 撰寫資源。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **（選擇性**）藉由匯出每個應用程式或使用匯出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，從 LUIS 入口網站的應用程式清單備份應用程式。
 * **（選擇性**）儲存每個應用程式的 collaborator's 清單。 所有共同作業者都可以在遷移過程中傳送電子郵件。
@@ -97,12 +97,12 @@ ms.locfileid: "78194628"
 
 1. 存取您的應用程式之前，請先選取訂用帳戶，然後 LUIS 撰寫資源]，以查看您可以撰寫的應用程式。
 
-    ![選取 [訂用帳戶] 和 [LUIS 撰寫資源]，以查看您可以撰寫的應用程式。](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
-
+    > [!div class="mx-imgBorder"]
+    > ![選取 [訂用帳戶] 和 [LUIS 撰寫資源]，以查看您可以撰寫的應用程式。](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
 ## <a name="app-contributor-begins-the-migration-process"></a>應用程式參與者開始進行遷移流程
 
-遵循與應用程式擁有者相同的步驟來進行遷移。 此程式會建立種類`LUIS.Authoring`的新撰寫資源。
+遵循與應用程式擁有者相同的步驟來進行遷移。 此程式會建立種類的新撰寫資源 `LUIS.Authoring` 。
 
 您必須遷移您的帳戶，才能將其新增為其他人所擁有之已遷移應用程式的參與者。
 
@@ -114,7 +114,7 @@ ms.locfileid: "78194628"
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>針對遷移程式的錯誤進行疑難排解
 
-如果您在 LUIS `MissingSubscriptionRegistration`入口網站中于遷移程式期間收到含有紅色通知列的錯誤，請在[Azure 入口網站](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或[Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)中建立認知服務資源。 深入瞭解[此錯誤的原因](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)。
+如果您在 `MissingSubscriptionRegistration` LUIS 入口網站中于遷移程式期間收到含有紅色通知列的錯誤，請在[Azure 入口網站](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或[Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)中建立認知服務資源。 深入瞭解[此錯誤的原因](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)。
 
 ## <a name="next-steps"></a>後續步驟
 

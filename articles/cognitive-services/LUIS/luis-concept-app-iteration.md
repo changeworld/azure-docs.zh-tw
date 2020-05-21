@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: cc994875e39410ecf01417c4d08248d5bc7d034a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589817"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683106"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的反復應用程式設計
 
@@ -26,7 +26,7 @@ Language Understanding （LUIS）應用程式會透過反復專案來學習和�
 * 編輯 LUIS 應用程式架構。 這包括：
     * 範例語句的意圖
     * 實體
-    * 功能
+    * 特性
 * 定型、測試和發佈
     * 在主動式學習的預測端點上測試
 * 從端點查詢收集資料
@@ -115,7 +115,7 @@ LUIS 應用程式必須發佈，才能在清單[預測端點區域](luis-referen
 
 匯出的檔案**不**包含：
 
-* 機器學習的資訊，因為應用程式會在匯入後重新訓練
+* 機器學習服務資訊，因為應用程式會在匯入後重新訓練
 * 參與者資訊
 
 若要備份 LUIS 應用程式架構，請從[LUIS 入口網站](https://www.luis.ai/applications)匯出版本。

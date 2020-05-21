@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592299"
+ms.locfileid: "83654092"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>使用功能來提升單字清單的信號
 
@@ -43,14 +43,29 @@ ms.locfileid: "83592299"
 
 1. 片語清單可套用至具有**全域**設定的整個應用程式，或套用至特定模型（意圖或實體）。 如果您建立片語清單做為意圖或實體的_功能_，則不會針對全域設定切換。 在此情況下，切換的意義是此功能只會在該模型的本機上，因此不是應用程式的_全域_。
 
-1. 選取 [完成]  。 新的功能會新增至**ML 功能**頁面。
+1. 選取 [完成] 。 新的功能會新增至**ML 功能**頁面。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > 您可以從 [ **ML 功能**] 頁面上的內容相關工具列中刪除或停用片語清單。
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>全域片語清單適用于整個應用程式
+
+片語清單應該套用到其所要協助的意圖或實體，但有時可能會有片語清單套用至整個應用程式做為**全域**功能。
+
+在 [ML 功能] 頁面上，選取 [片語] 清單，然後選取頂端內容工具列中的 [**設為全域**]。
+
+## <a name="model-as-a-feature"></a>模型即功能
+
+實體可以是[意圖或實體的功能](luis-concept-feature.md)。
+
+若要將實體做為功能新增至意圖，請從 [意圖] 頁面選取意圖，然後選取內容工具列上方的 [ **+ 新增功能**]。 此清單會包含所有可套用為功能的片語清單和實體。
+
+若要將實體當做功能加入至另一個實體，您可以使用[實體](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette)選擇區，在意圖詳細資料頁面上加入此功能，也可以在實體詳細資料頁面上[加入此功能](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity)。
 
 ## <a name="next-steps"></a>後續步驟
 

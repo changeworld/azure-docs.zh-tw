@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 84000016af4b16bd0716c15e7c27b4ab56614532
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591010"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702162"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "83591010"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 功能 | 最新 |
+| 函式 | 特性 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和可將連續即時語音或批次音訊錄製。  | 2.2.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.2.0 |
@@ -47,7 +47,8 @@ ms.locfileid: "83591010"
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-填寫並提交[認知服務容器要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。
+填寫並提交[要求表單](https://aka.ms/speechcontainerspreview/)，以要求容器的存取權。 
+
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

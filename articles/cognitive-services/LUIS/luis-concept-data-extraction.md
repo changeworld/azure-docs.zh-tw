@@ -4,17 +4,17 @@ description: 使用意圖和實體從語句文字中解壓縮資料。 瞭解哪
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589715"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682184"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖和實體從語句文字解壓縮資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
 
-最難擷取的資料是機器學習資料，因為它不是全文相符的資料。 機器學習[實體](luis-concept-entity-types.md)的資料擷取必須是[撰寫循環](luis-concept-app-iteration.md)的一部分，直到您確信收到預期的資料為止。
+最難解壓縮的資料是機器學習資料，因為它不是完全相符的文字。 機器學習[實體](luis-concept-entity-types.md)的資料提取必須是[撰寫週期](luis-concept-app-iteration.md)的一部分，直到您確信收到預期的資料為止。
 
 ## <a name="data-location-and-key-usage"></a>資料位置和金鑰使用方式
 LUIS 會從已發佈[端點](luis-glossary.md#endpoint)的使用者語句中，解壓縮資料。 **HTTPS 要求** (POST 或 GET) 除了包含一些額外的設定 (例如預備或生產環境) 之外，也包含語句。
@@ -245,7 +245,7 @@ LUIS 會從已發佈[端點](luis-glossary.md#endpoint)的使用者語句中，�
 
 ## <a name="patternany-entity-data"></a>Pattern.any 實體資料
 
-[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。 您必須在模式中找到使用的實體，才能套用模式。 
+[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。 您必須在模式中找到使用的實體，才能套用模式。
 
 ## <a name="sentiment-analysis"></a>情感分析
 如果在[發行](luis-how-to-publish-app.md#sentiment-analysis)時設定了情感分析，LUIS json 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。

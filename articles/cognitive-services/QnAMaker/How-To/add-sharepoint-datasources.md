@@ -3,12 +3,12 @@ title: SharePoint 檔案-QnA Maker
 description: 將受保護的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 保護的問題和答案來擴充知識庫。
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294887"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660303"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>將受保護的 SharePoint 資料來源新增至您的知識庫
 
@@ -18,7 +18,7 @@ ms.locfileid: "80294887"
 
 如果 QnA Maker 知識庫管理員不是 Active Directory 管理員，您就必須與 Active Directory 管理員通訊，才能完成此程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 以雲端為基礎的 SharePoint QnA Maker 會使用 Microsoft Graph 的許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 解壓縮，因為 Microsoft Graph 無法判斷許可權。
 * URL 格式-QnA Maker 只支援為了共用而產生的 SharePoint url，格式為`https://\*.sharepoint.com`
@@ -27,12 +27,12 @@ ms.locfileid: "80294887"
 
 您可以從 SharePoint 網站將所有 QnA Maker 支援的[檔案類型](../Concepts/content-types.md)加入至您的知識庫。 如果檔案資源受到保護，您可能必須授與[許可權](#permissions)。
 
-1. 從具有 SharePoint 網站的程式庫中，選取檔案的省略號功能表`...`。
+1. 從具有 SharePoint 網站的程式庫中，選取檔案的省略號功能表 `...` 。
 1. 複製檔案的 URL。
 
    ![選取檔案的省略號功能表，然後複製 URL，以取得 SharePoint 檔案 URL。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. 在 QnA Maker 入口網站的 [**設定**] 頁面上，[將 URL 加入](manage-knowledge-bases.md#edit-knowledge-base)至知識庫。
+1. 在 QnA Maker 入口網站的 [**設定**] 頁面上，將 URL 加入至知識庫。
 
 ### <a name="images-with-sharepoint-files"></a>含有 SharePoint 檔案的影像
 
@@ -44,7 +44,7 @@ ms.locfileid: "80294887"
 ![Explanation or description of image](URL of public image)
 ```
 
-方括弧`[]`中的文字會說明影像。 括弧`()`中的 URL 是影像的直接連結。
+方括弧中的文字會 `[]` 說明影像。 括弧中的 URL `()` 是影像的直接連結。
 
 當您在互動式測試面板中測試 QnA 組時，在 QnA Maker 入口網站中，會顯示影像，而不是 markdown 文字。 這會驗證可以從您的用戶端應用程式公開抓取映射。
 
@@ -113,7 +113,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Active Directory 管理員會登入 Azure 入口網站並開啟**[企業應用程式](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**。
 
-1. 搜尋`QnAMakerPortalSharePoint` [選取 QnA Maker 應用程式]。
+1. 搜尋 `QnAMakerPortalSharePoint` [選取 QnA Maker 應用程式]。
 
     [![搜尋企業應用程式清單中的 QnAMakerPortalSharePoint](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
