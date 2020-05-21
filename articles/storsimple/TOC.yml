@@ -416,7 +416,7 @@
     - name: 行銷部落格
       href: 'https://blogs.technet.com/b/cis/'
     - name: Marketing
-      href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
+      href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple 支援選項
       href: storsimple-8000-support-options.md
     - name: MSDN 論壇

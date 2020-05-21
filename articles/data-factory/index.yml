@@ -11,13 +11,12 @@ metadata:
   author: markingmyname
   ms.author: maghan
   ms.date: 10/02/2019
-  monikerRange: ''
-  ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 5e7c778eb3d5de197044cb51e35875399908d205
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74321759"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83657223"
 landingContent:
 - title: 關於 Azure Data Factory
   linkLists:
@@ -29,7 +28,7 @@ landingContent:
     links:
     - text: 白皮書
       url: /azure/data-factory/whitepapers
-    - text: 價格
+    - text: 定價
       url: https://azure.microsoft.com/pricing/details/data-factory/
     - text: 透過範例了解定價
       url: /azure/data-factory/pricing-concepts

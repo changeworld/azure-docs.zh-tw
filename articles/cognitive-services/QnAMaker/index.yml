@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文件
   description: QnA Maker 是一項雲端式 API 服務，可對您的資料建立交談式的問答層。 QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。 QnA Maker 服務會將使用者的自然語言問題與知識庫中各個 QnA 可能包含的最佳解答比對，以回答這些問題。
-  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "76844104"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83651151"
 landingContent:
 - title: 關於 QnA Maker
   linkLists:
@@ -96,8 +96,6 @@ landingContent:
     links:
     - text: 入口網站：建立 QnA Bot
       url: tutorials/create-qna-bot.md
-    - text: .Net：建立具有 QnA Maker 和 Language Understanding 的 Bot
-      url: tutorials/integrate-qnamaker-luis.md
     - text: 其他 Bot 範例
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: 參考

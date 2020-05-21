@@ -16,7 +16,7 @@
   expanded: true
   items:
     - name: 建立私人 Azure Red Hat OpenShift 4 叢集
-      href: create-private-cluster.md
+      href: howto-create-private-cluster-4x.md
     - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送
       href: dns-forwarding.md
     - name: 設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證
@@ -48,7 +48,7 @@
         - name: 管理 Azure Red Hat OpenShift 3.11 叢集中的專案
           href: howto-manage-projects.md
         - name: 建立私人 Azure Red Hat OpenShift 3.11 叢集
-          href: howto-create-private-cluster.md
+          href: howto-create-private-cluster-3x.md
         - name: Azure Red Hat OpenShift 3.11 的監視和記錄
           items:
             - name: 適用於 Azure Red Hat OpenShift 3.11 (預覽) 中容器的 Azure 監視器
