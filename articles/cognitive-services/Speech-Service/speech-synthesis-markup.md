@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592775"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714316"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -111,16 +111,16 @@ SSML 的語音服務執行是以全球資訊網協會的[語音合成標記語�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```csharp
 speechConfig.SetProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="c"></a>[C + +](#tab/cpp)
+# <a name="c"></a>[C++](#tab/cpp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```cpp
 speechConfig->SetProperty(
@@ -129,7 +129,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```java
 speechConfig.setProperty(
@@ -138,7 +138,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```python
 speech_config.set_property_by_name(
@@ -147,7 +147,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```javascript
 speechConfig.setProperty(
@@ -156,7 +156,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -164,7 +164,7 @@ speechConfig.setProperty(
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊， <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -195,10 +195,8 @@ speechConfig!.setPropertyTo(
 
 目前，這些類神經語音支援說話的樣式調整：
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 變更會在句子層級套用，而樣式會因語音而有所不同。 如果樣式不受支援，服務將會以預設的中性說話樣式傳回語音。
 
@@ -223,15 +221,11 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表示隨意且寬鬆的色調                         |
 |                         | `style="cheerful"`        | 表達正面且滿意的語氣                         |
 |                         | `style="empathetic"`      | 表達管也和認知的意義               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | 表達冷靜色調               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 表達 narrating 新聞的正式和專業音調 |
 |                         | `style="customerservice"` | 為客戶支援表示易記且有用的語氣  |
 |                         | `style="assistant"`       | 表達數位助理的暖和寬鬆音調    |
 |                         | `style="lyrical"`         | 以 melodic 和感情的方式表達表情         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | 為客戶支援表示易記且有用的語氣  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | 表達冷靜色調               |  
-|                         | `style="sad"`       | 表達不滿意和不高興的語氣    |
-|                         | `style="serious"`         | 表達一個非常困難的語氣        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | 為客戶支援表示易記且有用的語氣  | 
 
 **範例**
 

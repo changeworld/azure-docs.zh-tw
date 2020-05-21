@@ -1,20 +1,20 @@
 ---
-author: IEvangelist
-ms.author: dapine
+author: aahill
+ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
-ms.openlocfilehash: 88d83676de1e7fa18c4c1dcbf347da8d685ba2fa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/18/2020
+ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593321"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698554"
 ---
-填寫並提交[認知服務容器要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。 該表格需要有關您本身、您的公司，以及您將會使用該容器之使用者情節的資訊。 提交表單之後，Azure 認知服務小組會進行審查，以確保您符合存取私人容器登錄的準則。
+該表格需要有關您本身、您的公司，以及您將會使用該容器之使用者情節的資訊。 提交表單之後，Azure 認知服務小組會進行審查，以確保您符合存取私人容器登錄的準則。
 
 > [!IMPORTANT]
-> 您必須使用與 Microsoft 帳戶（MSA）或表單中的 Azure Active Directory （Azure AD）帳戶相關聯的電子郵件地址。 如需驗收準則的詳細資訊，請參閱[認知服務控制流程](../articles/cognitive-services/cognitive-services-gating-process.md)。
+> 您必須使用與 Microsoft 帳戶（MSA）或表單中的 Azure Active Directory （Azure AD）帳戶相關聯的電子郵件地址。
 
 如果您的要求已通過核准，您會收到一封電子郵件，其中包含說明如何取得認證和存取私人容器登錄的指示。
 

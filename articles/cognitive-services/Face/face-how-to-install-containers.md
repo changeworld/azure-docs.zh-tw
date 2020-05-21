@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878539"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702145"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝和執行臉部容器（預覽）
 
@@ -31,12 +31,14 @@ Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影�
 |必要|目的|
 |--|--|
 |Docker 引擎| Docker 引擎必須安裝在[主機電腦](#the-host-computer)上。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> 在 Windows 上，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
-|熟悉 Docker | 您需要對 Docker 概念（例如登錄、存放庫、容器和容器映射）的基本瞭解。 您也需要基本`docker`命令的知識。| 
+|熟悉 Docker | 您需要對 Docker 概念（例如登錄、存放庫、容器和容器映射）的基本瞭解。 您也需要基本命令的知識 `docker` 。| 
 |臉部資源 |若要使用容器，您必須具有：<br><br>Azure**臉部**資源和相關聯的 API 金鑰和端點 URI。 這兩個值都可在資源的 [**總覽**] 和 [**金鑰**] 頁面上取得。 您必須啟動容器。<br><br>**{API_KEY}**： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}**： [**總覽**] 頁面上所提供的端點
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
+
+填寫並提交[要求表單](https://aka.ms/VisionContainersPreview)，以要求容器的存取權。 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -82,9 +84,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="run-the-container-with-docker-run"></a>使用 docker run 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得`{ENDPOINT_URI}`和`{API_KEY}`值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
-命令的範例可供使用。 [Examples](face-resource-container-config.md#example-docker-run-commands) `docker run`
+[Examples](face-resource-container-config.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -104,7 +106,7 @@ ApiKey={API_KEY}
 `docker run` 命令有相關[範例](./face-resource-container-config.md#example-docker-run-commands)可供參考。 
 
 > [!IMPORTANT]
-> 您`Eula`必須`Billing`指定、 `ApiKey`和選項來執行容器，否則容器將不會啟動。 如需詳細資訊，請參閱[帳單](#billing)。
+> 您 `Eula` `Billing` `ApiKey` 必須指定、和選項來執行容器，否則容器將不會啟動。 如需詳細資訊，請參閱[帳單](#billing)。
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -142,7 +144,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解如何下載、安裝及執行臉部服務容器的概念和工作流程。 摘要說明：
 

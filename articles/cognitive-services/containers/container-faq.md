@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592180"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701805"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題（FAQ）
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592180"
 
 **問：什麼是可用的？**
 
-**答：** Azure 認知服務容器可讓開發人員使用 Azure 中可用的相同智慧型 Api，但具有容器化的[優點](../cognitive-services-container-support.md#features-and-benefits)。 有些容器是以[閘道預覽](../cognitive-services-gating-process.md)的形式提供，可能需要應用程式才能存取。 其他容器則以 ungated 預覽的形式公開提供，或已正式推出。 您可以在 Azure 認知服務一文中的[容器支援](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)中找到容器及其可用性的完整清單。 
+**答：** Azure 認知服務容器可讓開發人員使用 Azure 中可用的相同智慧型 Api，但具有容器化的[優點](../cognitive-services-container-support.md#features-and-benefits)。 有些容器是以閘道預覽的形式提供，可能需要應用程式才能存取。 其他容器則以 ungated 預覽的形式公開提供，或已正式推出。 您可以在 Azure 認知服務一文中的[容器支援](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)中找到容器及其可用性的完整清單。 
 
 **問：認知服務雲端與容器之間是否有任何差異？**
 
@@ -102,7 +102,7 @@ ms.locfileid: "83592180"
 
 **答：** 客戶會根據耗用量計費，類似于認知服務雲端。 容器必須設定為將計量資料傳送至 Azure，而交易則會據此計費。 跨託管和內部部署服務使用的資源，將會新增至具有分層定價的單一配額，並針對這兩種使用方式進行計算。 如需詳細資訊，請參閱對應供應專案的定價頁面。
 
-* [Anomaly Detector][ad-containers-billing]
+* [異常偵測器][ad-containers-billing]
 * [電腦視覺][cv-containers-billing]
 * [臉部][fa-containers-billing]
 * [表單辨識器][fr-containers-billing]
@@ -129,7 +129,7 @@ ms.locfileid: "83592180"
 
 **答：** 認知服務容器是以 x64 為基礎的容器，可執行任何支援 x64 Linux Docker 容器的相容 Linux 節點、VM 和 edge 裝置。 它們都需要 CPU 處理器。 以下提供每個容器供應專案的最低和建議設定：
 
-* [Anomaly Detector][ad-containers-recommendations]
+* [異常偵測器][ad-containers-recommendations]
 * [電腦視覺][cv-containers-recommendations]
 * [臉部][fa-containers-recommendations]
 * [表單辨識器][fr-containers-recommendations]

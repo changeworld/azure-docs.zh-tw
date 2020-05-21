@@ -7,15 +7,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72755229"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685301"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>使用 C# 分析視訊內容中的不當題材
 
@@ -40,7 +40,7 @@ Content Moderator 的影片仲裁功能是以 Azure 媒體服務 (AMS) 中免費
 
 在 [Azure AD 應用程式]**** 區段中，選取 [新建]****，並為您新的 Azure AD 應用程式註冊命名 (例如 "VideoModADApp")。 按一下 [儲存]****，在設定應用程式的同時，請稍候幾分鐘。 然後，您應該會在頁面的 [Azure AD 應用程式]**** 區段底下看到您新增的應用程式註冊。
 
-選取您的應用程式註冊，然後按一下其下方 [管理應用程式]**** 按鈕。 記下 [應用程式識別碼]**** 欄位中的值，稍後會需要它。 選取 [**設定** > ] [**金鑰**]，然後輸入新金鑰的描述（例如 "VideoModKey"）。 按一下 [儲存]****，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
+選取您的應用程式註冊，然後按一下其下方 [管理應用程式]**** 按鈕。 記下 [應用程式識別碼]**** 欄位中的值，稍後會需要它。 選取 [**設定**]  >  [**金鑰**]，然後輸入新金鑰的描述（例如 "VideoModKey"）。 按一下 [儲存]****，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
 
 如需上述程序更完整的逐步解說，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)。
 

@@ -1,5 +1,5 @@
 ---
-title: 機器學習的實體類型-LUIS
+title: 機器學習實體類型-LUIS
 titleSuffix: Azure Cognitive Services
 description: 機器學習實體是用來建立 LUIS 應用程式的慣用實體。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585584"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684570"
 ---
-# <a name="machine-learned-entity"></a>已採用機器學習的實體
+# <a name="machine-learning-entity"></a>機器學習服務實體
 
 機器學習實體是用來建立 LUIS 應用程式的慣用實體。
 
@@ -38,7 +38,7 @@ ms.locfileid: "83585584"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-因為機器學習的實體可以有許多具有必要功能的子實體，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
+因為機器學習服務實體可以有許多具有必要功能的子實體，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
 
 請考慮下列查詢：
 
@@ -348,6 +348,6 @@ ms.locfileid: "83585584"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解機器學習的實體，包括[教學](tutorial-machine-learned-entity.md)課程、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
+深入瞭解機器學習服務實體，包括[教學](tutorial-machine-learned-entity.md)課程、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
 
 瞭解[清單](reference-entity-list.md)實體和[正則運算式](reference-entity-regular-expression.md)實體。

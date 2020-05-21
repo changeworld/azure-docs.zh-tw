@@ -2,17 +2,17 @@
 title: 良好的範例語句-LUIS
 description: 語句是應用程式需要解譯的使用者輸入。 收集您認為使用者會輸入的片語。 納入意義相同但以不同單字長度和單字位置建構的語句。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592860"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685264"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
 
-**語句**是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動學習或持續將新語句定型的程序，對 LUIS 提供的機器學習智慧非常重要。
+**語句**是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動式學習或繼續訓練新語句的程式，對於 LUIS 提供的機器學習智慧而言，是不可或缺的。
 
 收集您認為使用者會輸入的語句。 包括意義相同但結構不同的語句：
 
@@ -84,7 +84,7 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 ### <a name="word-forms"></a>Word 表單
 
-正規化**word forms**會忽略擴充到根外之單字的差異。 例如，、和這一字會 `run` `running` `runs` 根據動詞時態而變更。
+正規化**word forms**會忽略擴充到根外之單字的差異。
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

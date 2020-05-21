@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997772"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714775"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 的設計助理體驗
 
 在 Windows 10 上開發的語音助理必須實行下列使用者經驗指導方針，以提供 Windows 10 上語音啟用的最佳體驗。 本檔將引導開發人員瞭解語音助理與 Windows 10 Shell 整合所需的重要工作。
 
-## <a name="contents"></a>內容
+## <a name="contents"></a>目錄
 
 - [Windows 10 中支援的語音啟用視圖摘要](#summary-of-voice-activation-views-supported-in-windows-10)
 - [需求摘要](#requirements-summary)
@@ -63,25 +63,22 @@ Windows 10 會根據裝置內容來推斷客戶內容的啟用體驗。 下列�
 - Assistant 正在處理和準備回應
 - 助理正在回應
 
-即使狀態變更很快，還是值得考慮提供各種狀態的 UX，因為持續時間在 Windows 生態系統中是可變的。 視覺效果的意見反應以及簡短的音訊 chimes 或鳴叫（ &quot;也&quot;稱為 earcons）都可以是解決方案的一部分。 同樣地，與音訊描述結合的視覺卡也適用于良好的回應選項。
+即使狀態變更很快，還是值得考慮提供各種狀態的 UX，因為持續時間在 Windows 生態系統中是可變的。 視覺效果的意見反應以及簡短的音訊 chimes 或鳴叫（也稱為 &quot; earcons &quot; ）都可以是解決方案的一部分。 同樣地，與音訊描述結合的視覺卡也適用于良好的回應選項。
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>應用程式內語音啟用的設計指導方針
 
 當 assistant 應用程式有焦點時，客戶意圖會清楚地與應用程式互動，因此所有的語音啟用體驗都應該由主應用程式視圖來處理。 客戶可以調整此視圖的大小。 為了協助說明助理 shell 的互動，本檔的其餘部分會使用名為 Contoso 的金融服務助理的具體範例。 在此圖和後續的圖表中，客戶所說的內容會顯示在左側的卡通語音氣泡中，並在右側的卡通氣泡中出現小幫手回應。
 
-**應用程式內視圖。語音啟動開始時的初始狀態：**
-![啟用前的 Windows 語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**應用程式內視圖。語音啟動開始時的初始狀態：** 
+ ![ 啟用前的 Windows 語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**應用程式內視圖。語音啟用成功之後，接聽體驗會開始：**![Windows 上的語音助理在語音助理接聽時的螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/listening.png)
+**應用程式內視圖。語音啟用成功之後，接聽體驗會開始：** ![ Windows 上的語音助理在語音助理接聽時的螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**應用程式內視圖。所有回應都會保留在應用程式體驗中。**![Windows 上的語音助理作為輔助程式回復的螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/response.png)
+**應用程式內視圖。所有回應都會保留在應用程式體驗中。** ![Windows 上的語音助理作為輔助程式回復的螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>在鎖定上方進行語音啟用的設計指導方針
 
 以19H2 提供，Windows 語音啟用平臺上建立的助理可用來回答上述鎖定。
-
-> [!NOTE]
-> 由於有作用中的問題，在上述鎖定 UI 上繪製的助理必須針對所有 dismissals 執行 WindowService Closewindowsg （）。 這會導致應用程式終止，但會降低技術問題，並讓小幫手保持正常狀態。 此外，若要在啟用以上鎖定語音啟動的應用程式時維持「清除」狀態，則當裝置鎖定時，必須接聽鎖定狀態變更和 WindowService。 Closewindowsg （）。
 
 ### <a name="customer-opt-in"></a>客戶加入宣告
 
@@ -108,16 +105,16 @@ Windows 10 會根據裝置內容來推斷客戶內容的啟用體驗。 下列�
 - 顯示在 [鎖定] 上方的所有小幫手**畫布都必須包含**右上角的 X，以關閉助理。
 - **按任意鍵也必須關閉助理應用程式**。 鍵盤輸入是客戶想要登入的傳統鎖定應用程式信號。 因此，任何鍵盤/文字輸入都不應該導向至應用程式。 相反地，應用程式應該在偵測到鍵盤輸入時自行關閉，讓客戶能夠輕鬆登入其裝置。
 - **如果畫面停止，應用程式必須自行關閉。** 這可確保下一次客戶使用其電腦時，登入畫面將會就緒，並等待他們。
-- 如果應用程式正在&quot;使用&quot;中，它可能會繼續進行鎖定。 &quot;使用&quot;中構成任何輸入或輸出。 例如，串流音樂或影片時，應用程式可能會繼續鎖定。 &quot;請遵循&quot; ，並允許其他 multiturn 對話步驟讓應用程式保持在鎖定上方。
+- 如果應用程式正在 &quot; 使用中 &quot; ，它可能會繼續進行鎖定。 &quot;使用中 &quot; 構成任何輸入或輸出。 例如，串流音樂或影片時，應用程式可能會繼續鎖定。 &quot;請遵循 &quot; ，並允許其他 multiturn 對話步驟讓應用程式保持在鎖定上方。
 - 如需**關閉應用程式的執行詳細資料**，請參閱[上述鎖定執行指南](windows-voice-assistants-implementation-guide.md#closing-the-application)。
 
 ![啟用前的 Windows 語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
 ![啟用前的 Windows 語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
-### <a name="privacy-amp-security-considerations-above-lock"></a>高於&amp;鎖定的隱私權安全性考慮
+### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;高於鎖定的隱私權安全性考慮
 
-許多電腦都是可移植的，但不一定是在客戶觸及範圍內。 他們可能會短暫留在旅館室、飛機基座或工作區中，而其他人則具有實體存取權。 如果在上述鎖定上啟用的助理未備妥，它們可能會受到所謂的&quot;[惡意 maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot;攻擊類別所限制。
+許多電腦都是可移植的，但不一定是在客戶觸及範圍內。 他們可能會短暫留在旅館室、飛機基座或工作區中，而其他人則具有實體存取權。 如果在上述鎖定上啟用的助理未備妥，它們可能會受到所謂的 &quot; [惡意 maid](https://en.wikipedia.org/wiki/Evil_maid_attack)攻擊類別所限制 &quot; 。
 
 因此，助理應遵循本節中的指導方針，以協助保持安全的體驗。 當 Windows 使用者未經驗證時，就會發生與鎖定的互動。 這表示在一般情況下，**助理的輸入也應該被視為未驗證**。
 
@@ -127,9 +124,9 @@ Windows 10 會根據裝置內容來推斷客戶內容的啟用體驗。 下列�
 
 | **Action 類別** | **說明** | **範例（不是完整的清單）** |
 | --- | --- | --- |
-| 安全但不驗證 | 一般用途資訊或基本應用程式命令與控制 | &quot;現在 幾點鐘？&quot;， &quot;播放下一個曲目&quot; |
-| 具有說話者識別碼的安全 | 模擬風險，並洩漏個人資訊。 | &quot;我的下一個約會是什麼&#39;？&quot;， &quot;請參閱我的&quot;購物&quot;清單，回答電話&quot; |
-| 只有在 Windows 驗證之後才安全 | 攻擊者可能用來傷害客戶的高風險動作 | &quot;購買更多&quot;雜貨商店&quot;，刪除我的（重要&quot;） &quot;約會，傳送（mean）文字&quot;訊息&quot;，啟動（惡意）網頁&quot; |
+| 安全但不驗證 | 一般用途資訊或基本應用程式命令與控制 | &quot;這是什麼時間？ &quot; ， &quot; 播放下一首&quot; |
+| 具有說話者識別碼的安全 | 模擬風險，並洩漏個人資訊。 | &quot;我的下一個約會是什麼&#39;？ &quot; 請 &quot; 參閱我 &quot; 的購物清單， &quot; 回答電話&quot; |
+| 只有在 Windows 驗證之後才安全 | 攻擊者可能用來傷害客戶的高風險動作 | &quot;購買更多雜貨商店 &quot; ， &quot; 刪除我的（重要）約會 &quot; ， &quot; 傳送（mean）文字訊息 &quot; ， &quot; 啟動（惡意）網頁&quot; |
 
 在 Contoso 的案例中，公用股票資訊的一般資訊在沒有驗證的情況下是安全的。 客戶特定的資訊（例如所擁有的共用數目）可能會受到說話者識別碼的安全。 不過，在沒有 Windows 驗證的情況下，不允許購買或銷售股票。
 

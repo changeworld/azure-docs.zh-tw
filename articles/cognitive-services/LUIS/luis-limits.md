@@ -3,12 +3,12 @@ title: 限制-LUIS
 description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的已知限制。 LUIS 有數個限制區域。 模型限制會控制 LUIS 中的意圖、實體和功能。 以金鑰類型為基礎的配額限制。 鍵盤組合可控制 LUIS 網站。
 ms.topic: reference
 ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593234"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684613"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的[鍵盤組合](#keyboard-controls)。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -28,7 +28,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 | 外部實體 | 無限制 |
 | [對應方式][intents]|每個應用程式500：499個自訂意圖，以及必要的_None_意圖。<br>[分派式](https://aka.ms/dispatch-tool)應用程式具有對應的500分派來源。|
 | [清單實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
-| [機器學習的實體 + 角色](./luis-concept-entity-types.md)：<br> 複<br>單個<br>實體角色|100父實體或330實體的限制，以一開始的限制為准。 角色會針對此限制的目的，計算為實體。 其中一個範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 簡單 + 2 個角色 = 4 個330實體。<br>子實體可以嵌套最多5個層級。|
+| [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複<br>單個<br>實體角色|100父實體或330實體的限制，以一開始的限制為准。 角色會針對此限制的目的，計算為實體。 其中一個範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 簡單 + 2 個角色 = 4 個330實體。<br>子實體可以嵌套最多5個層級。|
 |模型即功能| 可做為特定模型之功能的模型數目上限為10個模型。 用來做為特定模型之功能的片語清單數目上限為10個片語清單。|
 | [預覽-動態清單實體](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2個每個查詢預測端點要求的清單|
 | [模式](luis-concept-patterns.md)|每個應用程式 500 個模式。<br>模式的長度上限為 400 個字元。<br>每個模式 3 個 pattern.any 實體<br>模式中最多有 2 個巢狀選擇性文字|
@@ -53,8 +53,8 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 |物件|限制|
 |--|--|
 |意圖、實體|所有意圖和機構名稱在某個版本的應用程式中都必須是唯一的。|
-|ML 實體元件|所有機器學習實體元件（子實體）在該實體內都必須是唯一的，在相同層級的元件。|
-|功能 | 所有命名的功能（例如片語清單）在某個版本的應用程式中都必須是唯一的。|
+|ML 實體元件|所有的機器學習實體元件（子實體）在該實體內都必須是唯一的，且位於相同層級的元件。|
+|特性 | 所有命名的功能（例如片語清單）在某個版本的應用程式中都必須是唯一的。|
 |實體角色|實體或實體元件上的所有角色在相同的實體層級（父系、子系、孫項等）時，都必須是唯一的。|
 
 ## <a name="object-naming"></a>物件命名

@@ -2,13 +2,13 @@
 title: 在 LUIS 入口網站中測試應用程式
 description: 使用 Language Understanding (LUIS) 來持續調整您的應用程式，以改善應用程式及提升其語言理解能力。
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591857"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714379"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中測試您的 LUIS 應用程式
 
@@ -42,33 +42,36 @@ ms.locfileid: "83591857"
 
 1. 該語句，連同評分最高的意圖及其分數，會被新增至文字方塊底下的語句清單中。
 
-    ![互動式測試識別出錯誤意圖](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![互動式測試識別出錯誤意圖](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>檢查分數
+## <a name="inspect-the-prediction"></a>檢查預測
 
 您會在 [**檢查**] 面板中檢查測試結果的詳細資料。
 
 1. [測試]**** 滑出面板開啟時，請針對您想要比較的語句選取 [檢查]****。
 
-    ![選取 [檢查] 按鈕以查看測試結果的相關詳細資料](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![選取 [檢查] 按鈕以查看測試結果的相關詳細資料](./media/luis-how-to-interactive-test/inspect.png)
 
-1. [**檢查**] 面板隨即出現。 該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。
+1. [**檢查**] 面板隨即出現。 該面板包含評分最高的意圖，以及任何已識別的實體。 此面板會顯示所選語句的預測。
 
-    ![該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。](./media/luis-how-to-interactive-test/inspect-panel.png)
+    > [!div class="mx-imgBorder"]
+    > ![測試檢查面板的部分螢幕擷取畫面](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>修正評分最高的意圖
+## <a name="add-to-example-utterances"></a>新增至範例語句
 
-1. 若評分最高的意圖是錯誤的，請選取 [編輯]**** 按鈕。
+從 [檢查] 面板中，您可以選取 [**新增至範例語句**]，將測試語句新增至意圖。
 
-1.  在下拉式清單中，為該語句選取正確的意圖。
+## <a name="disable-required-features"></a>停用必要功能
 
-    ![選取正確的意圖](./media/luis-how-to-interactive-test/intent-select.png)
+若不需要實體的功能，請選取此切換來查看預測的結果。
+
+此切換可協助您根據所需的功能，判斷定型的應用程式是否能正確預測您的實體。 定型的應用程式可能會根據範例語句的錯誤標記或所需的功能不符合文字，來錯估機器學習的實體。
 
 ## <a name="view-sentiment-results"></a>檢視情感結果
 
 若已在 [[發行](luis-how-to-publish-app.md#enable-sentiment-analysis)]**** 頁面上設定 [情感分析]****，測試結果將會包含在語句中找到的情感。
-
-![具有情感分析之 [測試] 窗格的影像](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>修正相符模式的意圖
 
@@ -78,12 +81,14 @@ ms.locfileid: "83591857"
 
 您可以搭配已發行的[端點](luis-glossary.md#endpoint)版本來測試應用程式的作用中版本。 在 [檢查]**** 面板中，選取 [與已發行比較]****。 針對已發行模型所做的任何測試，將會從您的 Azure 訂用帳戶配額餘額中扣除。
 
-![[與已發行比較]](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![[與已發行比較]](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>在 [測試] 面板中檢視端點 JSON
 您可以選取 [顯示 JSON 檢視]**** 來檢視針對比較傳回的端點 JSON。
 
-![已發行的 JSON 回應](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![已發行的 JSON 回應](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>[測試] 面板中的其他設定
 

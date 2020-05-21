@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 27ce3931e6808c5ba7ee0dbf9d3354220bbc0177
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a3860b2cedbdf8154658449349439f918775cb25
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592163"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701881"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝和執行表單辨識器容器（預覽）
 
@@ -25,7 +25,7 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 > [!IMPORTANT]
 > 表單辨識器容器目前使用1.0 版的表單辨識器 API。 您可以改為使用受控服務來存取 API 的最新版本。
 
-| 函式 | 功能 |
+| 函式 | 特性 |
 |----------|----------|
 | 表單辨識器 | <li>處理 PDF、PNG 和 JPG 檔案<li>以相同版面配置的最少五種形式，訓練自訂模型 <li>解壓縮索引鍵/值組和資料表資訊 <li>使用 Azure 認知服務電腦視覺 API 辨識文字功能，從表單內的影像偵測及解壓縮印刷文字<li>不需要注釋或標籤 |
 
@@ -67,7 +67,7 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-填寫並提交[認知服務容器要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。
+填寫並提交[要求表單](https://aka.ms/FormRecognizerContainerRequestAccess)，以要求容器的存取權。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

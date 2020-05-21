@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f1b6b9ffb53972aa81d6dd1150640b8db9dd7be9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593322"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698566"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 
@@ -37,6 +37,8 @@ ms.locfileid: "83593322"
 |電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure**電腦視覺**資源和相關聯的 API 金鑰端點 URI。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有才能啟動容器。<br><br>**{API_KEY}**： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}**： [**總覽**] 頁面上所提供的端點|
 
 ## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
+
+填寫並提交[要求表單](https://aka.ms/VisionContainersPreview)，以要求容器的存取權。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 

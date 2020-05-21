@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 7a142060a29561526c378ce04b23aa2b286cd6c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997756"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714724"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上執行語音助理
 
@@ -43,7 +43,7 @@ MVA 需要有麥克風可供使用，而且能夠偵測語音啟用。 使用[Ap
 
 應用程式必須向 Windows 註冊自己、其關鍵字模型和其語言。
 
-從抓取關鍵字偵測器開始。 在此範例程式碼中，我們會抓取第一個偵測器，但您可以從`configurableDetectors`選取特定的偵測器來選取它。
+從抓取關鍵字偵測器開始。 在此範例程式碼中，我們會抓取第一個偵測器，但您可以從選取特定的偵測器來選取它 `configurableDetectors` 。
 
 ```csharp
 private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsync()
@@ -65,19 +65,19 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 }
 ```
 
-取得 ActivationSignalDetector 物件之後，請使用信號`ActivationSignalDetector.CreateConfigurationAsync`識別碼、模型識別碼和顯示名稱呼叫其方法，以註冊您的關鍵字並抓取您的`ActivationSignalDetectionConfiguration`應用程式。 信號和模型識別碼應由開發人員決定 guid，並針對相同的關鍵字保持一致。
+取得 ActivationSignalDetector 物件之後，請 `ActivationSignalDetector.CreateConfigurationAsync` 使用信號識別碼、模型識別碼和顯示名稱呼叫其方法，以註冊您的關鍵字並抓取您的應用程式 `ActivationSignalDetectionConfiguration` 。 信號和模型識別碼應由開發人員決定 guid，並針對相同的關鍵字保持一致。
 
 ### <a name="verify-that-the-voice-activation-setting-is-enabled"></a>確認已啟用 [語音啟動] 設定
 
-若要使用語音啟用，使用者必須啟用其系統的語音啟動，並啟用其應用程式的語音啟動。 您可以在 [Windows 設定] 中的 [語音啟用隱私權設定] 下找到此設定。 若要在您的應用程式中檢查語音啟用設定的狀態，請使用的`ActivationSignalDetectionConfiguration`實例來註冊關鍵字。 上的[AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128)欄位`ActivationSignalDetectionConfiguration`包含列舉值，描述語音啟用設定的狀態。
+若要使用語音啟用，使用者必須啟用其系統的語音啟動，並啟用其應用程式的語音啟動。 您可以在 [Windows 設定] 中的 [語音啟用隱私權設定] 下找到此設定。 若要在您的應用程式中檢查語音啟用設定的狀態，請使用的實例來 `ActivationSignalDetectionConfiguration` 註冊關鍵字。 上的[AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128)欄位 `ActivationSignalDetectionConfiguration` 包含列舉值，描述語音啟用設定的狀態。
 
 ### <a name="retrieve-a-conversationalagentsession-to-register-the-app-with-the-mva-system"></a>取得 ConversationalAgentSession 以向 MVA 系統註冊應用程式
 
-`ConversationalAgentSession`是 Windows SDK 中的類別，可讓您的應用程式以應用程式狀態（閒置、偵測、接聽、工作中、說話）和接收事件（例如，螢幕鎖定之類的啟用偵測和系統狀態變更）來更新 Windows。 抓取 AgentSession 的實例也可向 Windows 註冊應用程式，以透過語音來啟動。 最佳做法是維護的`ConversationalAgentSession`一個參考。 若要取出會話，請使用`ConversationalAgentSession.GetCurrentSessionAsync` API。
+`ConversationalAgentSession`是 Windows SDK 中的類別，可讓您的應用程式以應用程式狀態（閒置、偵測、接聽、工作中、說話）和接收事件（例如，螢幕鎖定之類的啟用偵測和系統狀態變更）來更新 Windows。 抓取 AgentSession 的實例也可向 Windows 註冊應用程式，以透過語音來啟動。 最佳做法是維護的一個參考 `ConversationalAgentSession` 。 若要取出會話，請使用 `ConversationalAgentSession.GetCurrentSessionAsync` API。
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>接聽兩個啟用信號： OnBackgroundActivated 和 OnSignalDetected
 
-當您的應用程式以兩種方式的其中一種偵測到關鍵字時，Windows 就會發出信號。 如果應用程式不在使用中（也就是說，您沒有的非處置實例的`ConversationalAgentSession`參考），則它會啟動您的應用程式，並在應用程式的 App.xaml.cs 檔中呼叫 OnBackgroundActivated 方法。 如果事件引數的`BackgroundActivatedEventArgs.TaskInstance.Task.Name`欄位符合字串 "AgentBackgroundTrigger"，則應用程式啟動是由語音啟用所觸發。 應用程式需要覆寫此方法，並取出 ConversationalAgentSession 的實例，以通知現在作用中的 Windows。 當應用程式處於作用中狀態時，Windows 會使用`ConversationalAgentSession.OnSignalDetected`事件來通知語音啟用的出現次數。 一旦您取得，請將事件處理常式新增至此事件`ConversationalAgentSession`。
+當您的應用程式以兩種方式的其中一種偵測到關鍵字時，Windows 就會發出信號。 如果應用程式不在使用中（也就是說，您沒有的非處置實例的參考 `ConversationalAgentSession` ），則它會啟動您的應用程式，並在應用程式的 App.xaml.cs 檔中呼叫 OnBackgroundActivated 方法。 如果事件引數的 `BackgroundActivatedEventArgs.TaskInstance.Task.Name` 欄位符合字串 "AgentBackgroundTrigger"，則應用程式啟動是由語音啟用所觸發。 應用程式需要覆寫此方法，並取出 ConversationalAgentSession 的實例，以通知現在作用中的 Windows。 當應用程式處於作用中狀態時，Windows 會使用事件來通知語音啟用的出現次數 `ConversationalAgentSession.OnSignalDetected` 。 一旦您取得，請將事件處理常式新增至此事件 `ConversationalAgentSession` 。
 
 ## <a name="keyword-verification"></a>關鍵字驗證
 
@@ -85,7 +85,7 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 
 ### <a name="retrieve-activation-audio"></a>取出啟用音訊
 
-建立[AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) ，並將它傳遞至`CreateAudioDeviceInputNodeAsync`的`ConversationalAgentSession`。 這會在偵測*到關鍵字前大約3秒開始*載入圖形的音訊緩衝區。 其中包含這個額外的音訊，以容納各種關鍵字長度和說話者的速度。 然後，處理音訊圖形中的[QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362)事件，以取出音訊資料。
+建立[AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) ，並將它傳遞至的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 這會在偵測*到關鍵字前大約3秒開始*載入圖形的音訊緩衝區。 其中包含這個額外的音訊，以容納各種關鍵字長度和說話者的速度。 然後，處理音訊圖形中的[QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362)事件，以取出音訊資料。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -98,13 +98,13 @@ audioGraph.QuantumStarted += OnQuantumStarted;
 
 ### <a name="launch-in-the-foreground"></a>在前景中啟動
 
-當關鍵字驗證成功時，應用程式必須移至前景才會顯示 UI。 呼叫`ConversationalAgentSession.RequestForegroundActivationAsync` API，將您的應用程式移至前景。
+當關鍵字驗證成功時，應用程式必須移至前景才會顯示 UI。 呼叫 `ConversationalAgentSession.RequestForegroundActivationAsync` API，將您的應用程式移至前景。
 
 ### <a name="transition-from-compact-view-to-full-view"></a>從 compact view 轉換成完整視圖
 
 當您的應用程式第一次由語音啟動時，它就會以精簡的方式啟動。 請閱讀[語音啟用預覽的設計指導](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)方針，以取得有關 Windows 上語音助理的不同視圖和轉換的指引。
 
-若要從 compact view 轉換到完整的應用程式，請使用 ApplicationView API `TryEnterViewModeAsync`：
+若要從 compact view 轉換到完整的應用程式，請使用 ApplicationView API `TryEnterViewModeAsync` ：
 
 ```csharp
 var appView = ApplicationView.GetForCurrentView();
@@ -113,19 +113,28 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 ## <a name="implementing-above-lock-activation"></a>執行上述鎖定啟用
 
-下列步驟涵蓋在 Windows 上啟用語音助理以執行上述鎖定的需求，包括範例程式碼的參考和管理應用程式生命週期的指導方針。 如需有關設計上述鎖定體驗的指引，請造訪[最佳做法指南](windows-voice-assistants-best-practices.md)。
+下列步驟涵蓋在 Windows 上啟用語音助理以執行上述鎖定的需求，包括範例程式碼的參考和管理應用程式生命週期的指導方針。
+
+如需有關設計上述鎖定體驗的指引，請造訪[最佳做法指南](windows-voice-assistants-best-practices.md)。
+
+當應用程式顯示 [鎖定] 上方的視圖時，會將它視為 [Kiosk 模式]。 如需有關如何執行使用 Kiosk 模式之應用程式的詳細資訊，請參閱[Kiosk 模式檔](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)。
+
+### <a name="transitioning-above-lock"></a>轉換上方鎖定
+
+上述的啟用鎖定類似于以下的啟用鎖定。 如果應用程式沒有作用中的實例，則會在背景啟動新的實例，並 `OnBackgroundActivated` 在 App.xaml.cs 中呼叫。 如果有應用程式的實例，該實例會透過事件取得通知 `ConversationalAgentSession.SignalDetected` 。
+
+如果應用程式尚未顯示在鎖定上方，則必須呼叫 `ConversationalAgentSession.RequestForegroundActivationAsync` 。 這會觸發 `OnLaunched` App.xaml.cs 中的方法，其中應流覽至將顯示在鎖定上方的視圖。
 
 ### <a name="detecting-lock-screen-transitions"></a>偵測鎖定畫面轉換
 
-Windows SDK 中的 ConversationalAgent 程式庫會提供 API，讓鎖定畫面狀態和鎖定畫面狀態的變更容易存取。 若要偵測目前的鎖定畫面狀態，請`ConversationalAgentSession.IsUserAuthenticated`檢查欄位。 若要偵測鎖定狀態的變更，請將事件處理常式`ConversationalAgentSession`新增至`SystemStateChanged`物件的事件。 當螢幕從 [未鎖定] 變更為 [已鎖定] 或 [反之亦然] 時，就會引發。 如果事件引數的值為`ConversationalAgentSystemStateChangeType.UserAuthentication`，則鎖定畫面狀態已變更，應用程式應該會關閉。
+Windows SDK 中的 ConversationalAgent 程式庫會提供 API，讓鎖定畫面狀態和鎖定畫面狀態的變更容易存取。 若要偵測目前的鎖定畫面狀態，請檢查 `ConversationalAgentSession.IsUserAuthenticated` 欄位。 若要偵測鎖定狀態的變更，請將事件處理常式新增至 `ConversationalAgentSession` 物件的 `SystemStateChanged` 事件。 當螢幕從 [未鎖定] 變更為 [已鎖定] 或 [反之亦然] 時，就會引發。 如果事件引數的值為 `ConversationalAgentSystemStateChangeType.UserAuthentication` ，則鎖定畫面狀態已變更。
 
 ```csharp
-// When the app changes lock state, close the application to prevent duplicates running at once
 conversationalAgentSession.SystemStateChanged += (s, e) =>
 {
     if (e.SystemStateChangeType == ConversationalAgentSystemStateChangeType.UserAuthentication)
     {
-        WindowService.CloseWindow();
+        // Handle lock state change
     }
 };
 ```
@@ -136,7 +145,10 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 
 ## <a name="closing-the-application"></a>關閉應用程式
 
-若要在高於或低於鎖定時，以程式設計方式適當`WindowService.CloseWindow()`地關閉應用程式，請使用 API。 這會觸發所有 UWP 生命週期方法，包括 OnSuspend，讓應用程式在關閉`ConversationalAgentSession`之前處置其實例。
+若要在高於或低於鎖定時，以程式設計方式適當地關閉應用程式，請使用 `WindowService.CloseWindow()` API。 這會觸發所有 UWP 生命週期方法，包括 OnSuspend，讓應用程式在 `ConversationalAgentSession` 關閉之前處置其實例。
+
+> [!NOTE]
+> 應用程式可以關閉，而不關閉[下列鎖定實例](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)。 在此情況下，上述鎖定視圖必須「清除」，確保在螢幕解除鎖定之後，不會有任何事件處理常式或工作嘗試操作上述鎖定視圖。
 
 ## <a name="next-steps"></a>後續步驟
 

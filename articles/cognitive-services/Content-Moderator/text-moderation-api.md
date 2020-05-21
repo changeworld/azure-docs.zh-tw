@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274005"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685075"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
 
-使用內容仲裁的電腦輔助文字仲裁和[人工審核](Review-Tool-User-Guide/human-in-the-loop.md)功能來仲裁文字內容。
+使用內容仲裁的文字仲裁模型來分析文字內容。
 
-您可以根據您的原則及閾值來封鎖、核准或檢閱內容。 使用它來增強合作夥伴、員工和取用者產生之文字內容所在環境的人工仲裁審核。 這些環境包括聊天室、討論區、聊天機器人、電子商務目錄和文件。 
+您可以根據您的原則和閾值來封鎖、核准或審核內容（請參閱[評論、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核）。 使用文字仲裁模型，為合作夥伴、員工和取用者產生文字內容的環境，增強人工審核。 這些環境包括聊天室、討論區、聊天機器人、電子商務目錄和文件。 
 
 服務回應會包含下列資訊：
 
@@ -155,4 +155,4 @@ Content Moderator 有提供一個[字詞清單 API](https://westus.dev.cognitive
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[文字仲裁 API 主控台](try-text-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 c #，請同時查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的文字審核一節。
+使用[文字審核 api 主控台](try-text-api.md)來測試 api。 另請參閱[審查、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核。

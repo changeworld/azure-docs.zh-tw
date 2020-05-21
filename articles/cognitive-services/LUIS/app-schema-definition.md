@@ -3,12 +3,12 @@ title: 應用程式架構定義
 description: LUIS 應用程式會以或表示， `.json` 其中 `.lu` 包含所有意圖、實體、範例語句、功能和設定。
 ms.topic: reference
 ms.date: 05/05/2020
-ms.openlocfilehash: 21b58f79ffd2baf553c6f8b07daa84473e620f77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599569"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684351"
 ---
 # <a name="app-schema-definition"></a>應用程式架構定義
 
@@ -25,8 +25,8 @@ LUIS 應用程式會以或表示， `.json` 其中 `.lu` 包含所有意圖、�
 
 ## <a name="version-7x"></a>版本7。x
 
-* 移至版本7.x，實體會以已嵌套的機器學習實體來表示。
-* 支援在 `enableNestedChildren` 下列撰寫 api 上使用屬性來撰寫已進行機器學習的實體：
+* 移至版本7.x，實體會以嵌套的機器學習實體來表示。
+* 支援使用下列撰寫 Api 的屬性來撰寫嵌套機器學習實體 `enableNestedChildren` ：
     * [新增標籤](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
     * [新增批次標籤](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09)
     * [審查標籤](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c0a)

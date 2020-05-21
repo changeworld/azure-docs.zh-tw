@@ -4,19 +4,19 @@ description: 建立實體以從 Language Understanding （LUIS）應用程式中
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585567"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684542"
 ---
 # <a name="pattern-syntax"></a>模式語法
 
 模式語法是語句的範本。 範本應該包含您想要比對的單字和實體，以及您想要忽略的單字和[標點符號](luis-reference-application-settings.md#punctuation-normalization)。 它**不是**一個規則運算式。
 
 > [!CAUTION]
-> 模式只包含機器學習的實體父系，而不是子實體。
+> 模式只包含機器學習實體父系，而不是子實體。
 
 模式中的實體是用大括弧 `{}` 括住。 模式可以包含實體，以及具有角色的實體。 [Pattern。 any](luis-concept-entity-types.md#patternany-entity)是僅用於模式的實體。
 

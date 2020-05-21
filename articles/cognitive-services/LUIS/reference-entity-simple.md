@@ -1,7 +1,7 @@
 ---
 title: 簡單實體類型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 簡單實體描述來自機器學習內容的單一概念。 使用簡單實體來改善結果時，請新增片語清單。
+description: 簡單實體描述來自機器學習服務內容的單一概念。 使用簡單實體來改善結果時，請新增片語清單。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74894767"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684565"
 ---
 # <a name="simple-entity"></a>簡單實體
 
-簡單實體是描述單一概念並從機器學習內容學習到的一般實體。 由於簡單實體通常是名稱，例如公司名稱、產品名稱或其他類別的名稱，因此，使用簡單實體時可加入[片語清單](luis-concept-feature.md)，以提升所用名稱所代表的信號。
+簡單實體是描述單一概念並從機器學習內容學習的一般實體。 由於簡單實體通常是名稱，例如公司名稱、產品名稱或其他類別的名稱，因此，使用簡單實體時可加入[片語清單](luis-concept-feature.md)，以提升所用名稱所代表的信號。
 
 **以下時機適用此實體：**
 
@@ -51,7 +51,7 @@ ms.locfileid: "74894767"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果`verbose=false`是在查詢字串中設定，則這是 JSON：
+如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
