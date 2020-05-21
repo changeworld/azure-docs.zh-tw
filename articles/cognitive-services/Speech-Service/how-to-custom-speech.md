@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402072"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725528"
 ---
 # <a name="what-is-custom-speech"></a>什麼是自訂語音？
 
@@ -37,9 +37,11 @@ ms.locfileid: "81402072"
 
 4. [評估精確度](how-to-custom-speech-evaluate-data.md)-評估語音轉換文字模型的精確度。 [自訂語音入口網站](https://speech.microsoft.com/customspeech)會提供一個*文字*錯誤率，可用來判斷是否需要額外的訓練。 如果您對正確性感到滿意，可以直接使用語音服務 Api。 如果您想要以 5%-20% 的相對平均來改善精確度，請使用入口網站中的 [**定型**] 索引標籤上傳其他訓練資料，例如人為標記的文字記錄和相關的文字。
 
-5. [將模型定型](how-to-custom-speech-train-model.md)-藉由提供撰寫的文字記錄（10-1000 小時）和相關文字（<200 MB）以及您的音訊測試資料，來改善語音轉換文字模型的精確度。 這種資料有助於訓練語音轉換文字模型。 定型之後，請重新測試，如果您對結果感到滿意，可以部署您的模型。
+5. [改善精確度](how-to-custom-speech-improve-accuracy.md)-以策略性的形式選擇其他定型資料，以根據您的案例改善語音轉換文字模型的品質。
 
-6. [部署模型](how-to-custom-speech-deploy-model.md)-針對您的語音轉換文字模型建立自訂端點，並在您的應用程式、工具或產品中使用它。
+6. [將模型定型](how-to-custom-speech-train-model.md)-藉由提供撰寫的文字記錄（10-1000 小時）和相關文字（<200 MB）以及您的音訊測試資料，來改善語音轉換文字模型的精確度。 這種資料有助於訓練語音轉換文字模型。 定型之後，請重新測試，如果您對結果感到滿意，可以部署您的模型。
+
+7. [部署模型](how-to-custom-speech-deploy-model.md)-針對您的語音轉換文字模型建立自訂端點，並在您的應用程式、工具或產品中使用它。
 
 ## <a name="set-up-your-azure-account"></a>設定您的 Azure 帳戶
 

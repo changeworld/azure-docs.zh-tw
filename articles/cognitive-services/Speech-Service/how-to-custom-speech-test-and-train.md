@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402133"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725545"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -27,18 +27,18 @@ ms.locfileid: "81402133"
 
 | 資料類型 | 用於測試 | 建議數量 | 用於定型 | 建議數量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [音訊](#audio-data-for-testing) | 是<br>用於視覺檢查 | 5 + 音訊檔案 | 否 | N/a |
+| [音訊](#audio-data-for-testing) | 是<br>用於視覺檢查 | 5 + 音訊檔案 | 否 | N/A |
 | [音訊 + 人為標記的文字記錄](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用來評估精確度 | 0.5-5 小時的音訊 | 是 | 1-1000 小時的音訊 |
 | [相關文字](#related-text-data-for-training) | 否 | N/a | 是 | 1-200 MB 的相關文字 |
 
 檔案應該依類型分組至資料集，並上傳為 .zip 檔案。 每個資料集只能包含單一資料類型。
 
 > [!TIP]
-> 若要快速開始，請考慮使用範例資料。 如需<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">範例自訂語音資料<span class="docon docon-navigate-external x-hidden-focus"></span> </a> ，請參閱此 GitHub 存放庫
+> 若要快速開始，請考慮使用範例資料。 如需<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">範例自訂語音資料 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ，請參閱此 GitHub 存放庫
 
 ## <a name="upload-data"></a>上傳資料
 
-若要上傳您的資料，請流覽至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音入口網站<span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 在入口網站中，按一下 [**上傳資料**] 以啟動精靈，並建立您的第一個資料集。 系統會要求您選取資料集的語音資料類型，然後才允許您上傳資料。
+若要上傳您的資料，請流覽至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 在入口網站中，按一下 [**上傳資料**] 以啟動精靈，並建立您的第一個資料集。 系統會要求您選取資料集的語音資料類型，然後才允許您上傳資料。
 
 ![從語音入口網站選取音訊](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -81,6 +81,8 @@ ms.locfileid: "81402133"
 
 若要在處理您的音訊檔案時測量 Microsoft 的語音轉換文字精確度準確度，您必須提供人為標記的轉譯（單字）以進行比較。 雖然人加上標記的轉譯經常耗用時間，但還是必須評估精確度，並針對您的使用案例來定型模型。 請記住，辨識的改進只會與所提供的資料一樣好。 基於這個理由，請務必只上傳高品質的文字記錄。
 
+音訊檔案在錄音的開頭和結尾可能會有無聲。 可能的話，請在每個範例檔案中的語音前後至少包含每半秒的靜音。 雖然錄製音量較少的音訊或干擾性背景雜音並不實用，但它應該不會傷害您的自訂模型。 在收集音訊範例之前，請一律考慮升級麥克風和信號處理硬體。
+
 | 屬性                 | 值                               |
 |--------------------------|-------------------------------------|
 | 檔案格式              | RIFF (WAV)                          |
@@ -110,7 +112,7 @@ ms.locfileid: "81402133"
 
 文字記錄會經過文字正規化，以便系統進行處理。 不過，在將資料上傳到語音 Studio 之前，必須先完成一些重要的正規化。 若要在準備轉譯時使用適當的語言，請參閱[如何建立人為標記](how-to-custom-speech-human-labeled-transcriptions.md)的轉譯
 
-收集音訊檔案和對應的轉譯之後，請將它們封裝成單一 .zip 檔案，然後再上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音<span class="docon docon-navigate-external x-hidden-focus"></span>入口網站</a>。 以下是包含三個音訊檔案和人為標記轉譯檔案的範例資料集：
+收集音訊檔案和對應的轉譯之後，請將它們封裝成單一 .zip 檔案，然後再上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音 <span class="docon docon-navigate-external x-hidden-focus"></span> 入口網站</a>。 以下是包含三個音訊檔案和人為標記轉譯檔案的範例資料集：
 
 > [!div class="mx-imgBorder"]
 > ![從語音入口網站選取音訊](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -124,7 +126,7 @@ ms.locfileid: "81402133"
 | 句子（語句） | 在辨識產品名稱或句子內容中的產業特定詞彙時，改善正確性。 |
 | 發音 | 使用未定義的發音來改善不常見詞彙、縮略字或其他單字的發音。 |
 
-句子可以當做單一文字檔或多個文字檔來提供。 若要改善正確性，請使用更接近預期說話語句的文字資料。 發音應以單一文字檔的形式提供。 所有專案都可以封裝成單一 zip 檔案，並上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂<span class="docon docon-navigate-external x-hidden-focus"></span>語音入口網站</a>。
+句子可以當做單一文字檔或多個文字檔來提供。 若要改善正確性，請使用更接近預期說話語句的文字資料。 發音應以單一文字檔的形式提供。 所有專案都可以封裝成單一 zip 檔案，並上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂 <span class="docon docon-navigate-external x-hidden-focus"></span> 語音入口網站</a>。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>建立句子檔案的指導方針
 
@@ -143,7 +145,7 @@ ms.locfileid: "81402133"
 此外，您會想要考慮下列限制：
 
 * 避免重複字元超過四次。 例如： "aaaa" 或 "uuuu"。
-* 請不要使用上述`U+00A1`的特殊字元或 utf-8 字元。
+* 請不要使用上述的特殊字元或 UTF-8 字元 `U+00A1` 。
 * Uri 將會遭到拒絕。
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>建立發音檔案的指導方針
@@ -163,9 +165,9 @@ ms.locfileid: "81402133"
 
 說出的形式就是語音順序。它可以包含字母、字組、音節或全部三種組合。
 
-自訂發音提供英文（`en-US`）和德文（`de-DE`）。 下表依語言顯示支援的字元：
+自訂發音提供英文（ `en-US` ）和德文（ `de-DE` ）。 下表依語言顯示支援的字元：
 
-| Language | Locale | 字元 |
+| Language | 地區設定 | 字元 |
 |----------|--------|------------|
 | 英文 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德文 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |

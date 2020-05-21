@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587369"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726072"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -24,7 +24,11 @@ ms.locfileid: "83587369"
 
 ## <a name="speech-to-text"></a>語音轉文字
 
-Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 若要改善正確性，請透過上傳音訊 + 人為標記的文字記錄或相關文字：句子，提供部分語言的自訂。 發音自訂目前僅適用于 `en-US` 和 `de-DE` 。 [在這裡](how-to-custom-speech.md)深入瞭解自訂。
+Microsoft 語音 SDK 和 REST API 都支援下列語言（地區設定）。 
+
+若要改善正確性，請透過上傳**音訊 + 人為標記**的文字記錄或**相關文字：句子**，提供部分語言的自訂。 若要深入瞭解自訂，請參閱[開始使用自訂語音](how-to-custom-speech.md)。
+
+如需如何改善發音的詳細資訊，請參閱[改善自訂語音的模型](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)。
 
 <!--
 To get the AM and ML bits:
@@ -34,12 +38,14 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| 地區設定  | 語言                          | 支援 | 自訂                                    |
+| 地區設定  | Language                          | 支援 | 自訂                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯文（阿拉伯聯合大公國）                      | 是       | 否                                                |
 | `ar-BH` | 阿拉伯文（巴林），現代化標準 | 是       | 語言模型                                    |
 | `ar-EG` | 阿拉伯文 (埃及)                    | 是       | 語言模型                                    |
+| `ar-IL` | 阿拉伯文（以色列）                   | 是       | 否                                                |
 | `ar-KW` | 阿拉伯文 (科威特)                   | 是       | 否                                                |
+| `ar-PS` | 阿拉伯文（巴勒斯坦國）                | 是       | 否                                                |
 | `ar-QA` | 阿拉伯文 (卡達)                    | 是       | 否                                                |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 是       | 否                                                |
 | `ar-SY` | 阿拉伯文 (敘利亞)                    | 是       | 語言模型                                    |
@@ -73,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ta-IN` | 坦米爾文 (印度)                     | 是       | 語言模型                                    |
 | `te-IN` | 特拉古文 (印度)                    | 是       | 否                                                |
 | `th-TH` | 泰文 (泰國)                   | 是       | 否                                                |
-| `tr-TR` | 土耳其文 (土耳其)                  | 是       | 否                                                |
+| `tr-TR` | 土耳其文 (土耳其)                  | 是       | 語言模型                                    |
 | `zh-CN` | 中文 (普通話，簡體)    | 是       | 原音模型<br>語言模型                  |
 | `zh-HK` | 中文（廣東話，繁體）  | 是       | 語言模型                                    |
 | `zh-TW` | 中文 (繁體，國語)      | 是       | 語言模型                                    |
@@ -93,29 +99,29 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-|地區設定  | 語言            | 性別 | 語音名稱  | Bi 語言支援 | 樣式支援 |
-|--|--|--|--|--|--|
-| `de-DE` | 德文 (德國)    | Female | "de-KatjaNeural" | 是。 英文 (美國) | 一般 |
-| `en-AU` | 英文 (澳大利亞) | Female |  "en-us-NatashaNeural" | 否 | 一般 |
-| `en-CA` | 英文 (加拿大)    | Female |  「en-CA-ClaraNeural」| 否 | 一般 |
-| `en-GB` | 英文 (英國)        | Female |  "en-GB-LibbyNeural"| 否 | 一般 |
-|  |      | Female |  "en-GB-MiaNeural" | 否 | 一般 |
-| `en-US` | 英文 (美國)        | Female |  「en-us-AriaNeural」| 否 | 一般，可以使用多個語音樣式 |
-|  |      | Male   | 「en-us-GuyNeural」 | 否 | 一般 |
-| `es-ES` | 西班牙文 (西班牙)     | Female |  "es-ElviraNeural"| 是。 英文 (美國) | 一般 |
-| `es-MX` | 西班牙文 (墨西哥)    | Female |  "es-MX-DaliaNeural" | 是。 英文 (美國) | 一般 |
-| `fr-CA` | 法文 (加拿大)     | Female |  "fr-CA-SylvieNeural" | 是。 英文 (美國) | 一般 |
-| `fr-FR` | 法文 (法國)     | Female | "fr-fr-DeniseNeural"  | 是。 英文 (美國) | 一般 |
-| `it-IT` | 義大利文 (義大利)     | Female |  「it-IT-ElsaNeural」  | 是。 英文 (美國) | 一般 |
-| `ja-JP` | 日文            | Female |  "ja-jp-NanamiNeural" | 是。 英文 (美國) | 一般 |
-| `ko-KR` | 韓文              | Female |  "ko-KR-SunHiNeural" | 是。 英文 (美國) | 一般 |
-| `nb-NO` | 挪威文           | Female | 「nb-不 IselinNeural」 | 否 | 一般 |
-| `pt-BR` | 葡萄牙文 (巴西) | Female |  "pt-BR-FranciscaNeural" | 否 | 一般 |
-| `tr-TR` | 土耳其文             | Female | "tr-TR-EmelNeural" | 否 | 一般 |
-| `zh-CN` | 中文 (普通話，簡體)  | Female |  "zh-CN-XiaoxiaoNeural"  | 是。 英文 (美國) | 一般，可以使用多個語音樣式 |
-|  |  | Female |  "zh-CN-XiaoyouNeural"  | 是。 英文 (美國) | 兒童心聲，針對案例 narrating 優化 |
-|  |  | Male |  "zh-CN-YunyangNeural"  | 是。 英文 (美國) | 已針對新聞閱讀優化，提供多種語音樣式 |
-|  |  | Male |  "zh-CN-YunyeNeural"  | 否 | 已針對案例 narrating 優化 |
+|地區設定  | Language            | 性別 | 語音名稱 | 樣式支援 |
+|--|--|--|--|--|
+| `de-DE` | 德文 (德國)                | Female | "de-KatjaNeural"      | 一般 |
+| `en-AU` | 英文 (澳大利亞)             | Female | "en-us-NatashaNeural"    | 一般 |
+| `en-CA` | 英文 (加拿大)                | Female | 「en-CA-ClaraNeural」      | 一般 |
+| `en-GB` | 英文 (英國)                    | Female | "en-GB-LibbyNeural"      | 一般 |
+|         |                                 | Female | "en-GB-MiaNeural"        | 一般 |
+| `en-US` | 英文 (美國)                    | Female | 「en-us-AriaNeural」       | 一般，可以使用多個語音樣式 |
+|         |                                 | Male   | 「en-us-GuyNeural」        | 一般 |
+| `es-ES` | 西班牙文 (西班牙)                 | Female | "es-ElviraNeural"     | 一般 |
+| `es-MX` | 西班牙文 (墨西哥)                | Female | "es-MX-DaliaNeural"      | 一般 |
+| `fr-CA` | 法文 (加拿大)                 | Female | "fr-CA-SylvieNeural"     | 一般 |
+| `fr-FR` | 法文 (法國)                 | Female | "fr-fr-DeniseNeural"     | 一般 |
+| `it-IT` | 義大利文 (義大利)                 | Female | 「it-IT-ElsaNeural」       | 一般 |
+| `ja-JP` | 日文                        | Female | "ja-jp-NanamiNeural"     | 一般 |
+| `ko-KR` | 韓文                          | Female | "ko-KR-SunHiNeural"      | 一般 |
+| `nb-NO` | 挪威文                       | Female | 「nb-不 IselinNeural」     | 一般 |
+| `pt-BR` | 葡萄牙文 (巴西)             | Female | "pt-BR-FranciscaNeural"  | 一般 |
+| `tr-TR` | 土耳其文                         | Female | "tr-TR-EmelNeural"       | 一般 |
+| `zh-CN` | 中文 (普通話，簡體)  | Female | "zh-CN-XiaoxiaoNeural"   | 一般，可以使用多個語音樣式 |
+|         |                                 | Female | "zh-CN-XiaoyouNeural"    | 兒童心聲，針對案例 narrating 優化 |
+|         |                                 | Male   | "zh-CN-YunyangNeural"    | 已針對新聞閱讀優化，提供多種語音樣式 |
+|         |                                 | Male   | "zh-CN-YunyeNeural"      | 已針對案例 narrating 優化 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`語音已變更為 `en-US-AriaNeural` 。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
@@ -129,7 +135,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| 地區設定 | 語言 | 性別 | 語音名稱 |
+| 地區設定 | Language | 性別 | 語音名稱 |
 |--|--|--|--|
 | <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "ar-例如-Hoda" |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "ar-SA-Naayf" |

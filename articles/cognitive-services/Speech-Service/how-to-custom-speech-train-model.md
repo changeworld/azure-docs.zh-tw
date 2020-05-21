@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137760"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722621"
 ---
 # <a name="train-a-model-for-custom-speech"></a>定型自訂語音的模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "77137760"
 2. 流覽至**語音轉換文字 > 自訂語音 > 訓練**。
 3. 按一下 [**定型模型**]。
 4. 接下來，為您的訓練提供**名稱**和**描述**。
-5. 從 [**案例和基準模型**] 下拉式功能表中，選取最適合您的網域的案例。 如果您不確定要選擇哪一個案例，請選取 **[一般**]。 基準模型是訓練的起點。 如果您沒有喜好設定，可以使用最新版本。
+5. 從 [**案例和基準模型**] 下拉式功能表中，選取最適合您的網域的案例。 如果您不確定要選擇哪一個案例，請選取 **[一般**]。 基準模型是訓練的起點。 最新的模型通常是最佳選擇。
 6. 從 [**選取定型資料**] 頁面中，選擇一或多個音訊 + 個人化的轉譯資料集，您想要用來進行定型。
 7. 定型完成後，您可以選擇對新定型的模型執行精確度測試。 這是選擇性步驟。
 8. 選取 [**建立**] 以建立您的自訂模型。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721429"
 ---
 ### <a name="container-repositories-and-images"></a>容器存放庫和映射
 
@@ -58,11 +58,11 @@ Microsoft Container Registry （MCR）會 syndicates 所有正式推出的容器
 |--|--|--|
 | [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 關鍵片語擷取 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 語言偵測 | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [異常偵測器](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
+| [異常偵測器](../../anomaly-detector/anomaly-detector-container-howto.md) | 異常偵測器 | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>公用「閘道」預覽（container registry： `containerpreview.azurecr.io` ）
 
-下列閘道預覽容器會裝載在容器預覽登錄上，而且需要應用程式才能存取。 如需詳細資訊，請參閱[認知服務控制流程](../../cognitive-services-gating-process.md)。
+下列閘道預覽容器會裝載在容器預覽登錄上，而且需要應用程式才能存取。 如需詳細資訊，請參閱下列容器文章。
 
 | 服務 | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
