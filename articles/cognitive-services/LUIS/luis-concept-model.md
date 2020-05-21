@@ -3,12 +3,12 @@ title: 使用模型設計-LUIS
 description: 語言理解會提供數種類型的模型。 有些模型可用於多種方式。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591874"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683926"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意圖和實體模型設計
 
@@ -24,7 +24,7 @@ LUIS 的機器教學方法可讓您輕鬆地將概念告訴機器。 瞭解_機�
 
 <a name="v3-authoring-model-decomposition"></a>
 
-## <a name="intents-classify-utterances"></a>意圖分類語句
+## <a name="intents-classify-utterances"></a>意圖會分類語句
 
 意圖會分類範例語句，以教授 LUIS 的意圖。 意圖中的範例語句會當做語句的正面範例使用。 這些相同的語句會當做所有其他意圖中的負面範例使用。
 
@@ -34,9 +34,9 @@ LUIS 的機器教學方法可讓您輕鬆地將概念告訴機器。 瞭解_機�
 
 `Buy the top-rated book on bot architecture.`
 
-## <a name="entities-extract-data"></a>實體會將資料解壓縮
+## <a name="entities-extract-data"></a>實體會擷取資料
 
-實體代表您要從語句中解壓縮的資料單位。 機器學習的實體是包含子實體的最上層實體，也就是機器學習的實體。
+實體代表您要從語句中解壓縮的資料單位。 機器學習實體是包含子實體的最上層實體，也就是機器學習實體。
 
 機器學習實體的範例是平面票證的訂單。 在概念上，這是具有許多較小資料單位的單一交易，例如日期、時間、基座數量、基座類型，例如第一個類別或教練、原始位置、目的地位置，以及飲食選擇。
 
@@ -65,16 +65,16 @@ LUIS 支援使用撰寫 Api 來進行_模型分解_，將概念細分成較小�
 
 * [意圖](#intents-classify-utterances)
     * [功能](#features)
-* [機器學習的實體](reference-entity-machine-learned-entity.md)
-    * 子實體（也是機器學習的實體）
+* [機器學習服務實體](reference-entity-machine-learned-entity.md)
+    * 子實體（也是機器學習實體）
         * [功能](#features)
             * [片語清單](luis-concept-feature.md)
-            * [非機器學習的實體](luis-concept-feature.md)，例如[正則運算式](reference-entity-regular-expression.md)、[清單](reference-entity-list.md)和預先建立的[實體](luis-reference-prebuilt-entities.md)
+            * [非機器學習實體](luis-concept-feature.md)，例如[正則運算式](reference-entity-regular-expression.md)、[清單](reference-entity-list.md)和預先建立的[實體](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 [功能](luis-concept-feature.md)是您的系統觀察到的資料特徵或屬性。 機器學習服務功能提供 LUIS 重要的提示，讓您在何處尋找會區分概念的專案。 這些是 LUIS 可以使用但不是硬規則的提示。 這些提示會與標籤搭配使用，以尋找資料。
 

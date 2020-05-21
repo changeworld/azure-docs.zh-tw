@@ -2,13 +2,13 @@
 title: 實體類型-LUIS
 description: 實體會在預測執行時間從使用者語句中提取資料。 _選擇性_的次要用途是使用實體做為功能來提升意圖或其他實體的預測。
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 9d8afd5a660b3af5556256835486e984d7d657bc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585635"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682182"
 ---
 # <a name="extract-data-with-entities"></a>使用實體來解壓縮資料
 
@@ -16,11 +16,11 @@ ms.locfileid: "83585635"
 
 實體有幾種類型：
 
-* [已採用機器學習的實體](reference-entity-machine-learned-entity.md)
-* 非機器學慣用來做為必要[功能](luis-concept-feature.md)-針對完全相符的文字、模式比對，或透過預先建立的實體偵測
+* [機器學習服務實體](reference-entity-machine-learned-entity.md)-這是主要實體。 使用其他實體之前，您應該使用此實體類型來設計架構。
+* 非機器學慣用來做為必要[功能](luis-concept-feature.md)-針對完全相符的文字、模式比對，或由預先建立的實體偵測
 * [Pattern. any](#patternany-entity) -從[模式](reference-entity-pattern-any.md)中將自由格式的文字（例如書籍標題）解壓縮
 
-機器學習的實體提供最廣泛的資料提取選擇。 非機器學習的實體會依照文字比對來執行，並作為機器學習的實體或意圖的[必要功能](#design-entities-for-decomposition)。
+機器學習服務實體提供最廣泛的資料提取選擇。 非機器學習實體會依照文字比對來執行，並作為機器學習實體或意圖的[必要功能](#design-entities-for-decomposition)。
 
 ## <a name="entities-represent-data"></a>實體代表資料
 
@@ -51,18 +51,26 @@ ms.locfileid: "83585635"
 |--|--|--|--|
 |説明|help|-|沒有要解壓縮的內容。|
 |傳送內容|sendSomething|-|沒有要解壓縮的內容。 此模型在此內容中沒有要解壓縮的必要功能 `something` ，而且沒有任何指定的收件者。|
-|傳送目前的 Bob|sendSomething|`Bob`, `present`|模型會藉 `Bob` 由加入預建實體的必要功能來解壓縮 `personName` 。 已使用機器學習的實體來進行解壓縮 `present` 。|
-|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|機器學習的實體已將兩個重要的資料片段（ `Bob` 和 `box of chocolates` ）解壓縮。|
+|傳送目前的 Bob|sendSomething|`Bob`, `present`|模型會藉 `Bob` 由加入預建實體的必要功能來解壓縮 `personName` 。 已使用機器學習實體來解壓縮 `present` 。|
+|將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|機器學習實體已將兩個重要的資料片段（ `Bob` 和 `box of chocolates` ）解壓縮。|
 
 ## <a name="design-entities-for-decomposition"></a>設計用於分解的實體
 
-機器學習的實體可讓您設計應用程式架構以進行分解，將大型概念分解成子實體。
+機器學習服務實體可讓您設計應用程式架構以進行分解，將大型概念分解成子實體。
 
 分解的設計可讓 LUIS 將深度的實體解析傳回給您的用戶端應用程式。 這可讓您的用戶端應用程式專注于商務規則，並將資料解析留給 LUIS。
 
-機器學習的實體會根據透過範例語句學習到的內容觸發。
+機器學習實體會根據透過範例語句所學習到的內容觸發。
 
-[**機器學習的實體**](tutorial-machine-learned-entity.md)是頂層擷取器。 子實體是機器學習實體的子實體。
+[**機器學習實體**](tutorial-machine-learned-entity.md)是頂層擷取器。 子實體是機器學習實體的子系實體。
+
+## <a name="effective-machine-learned-entities"></a>有效的機器學習實體
+
+若要有效率地建立機器學習的實體：
+
+* 您的標籤在意圖中應該一致。 這包括您在包含此實體的**None**意圖中提供的語句。 否則，此模型將無法有效地判斷序列。
+* 如果您有機器學習的實體具有子實體，請確定實體和子實體的不同訂單和變體會顯示在標示的語句中。 標記的範例語句應包含所有有效的表單，並包含出現且不存在的實體，而且也會在語句內重新排序。
+* 您應該避免將實體過度學習到非常固定的集合。 當模型未妥善一般化，且在機器學習模型中是常見的問題時，就會發生**過度學習**。 這表示應用程式無法適當地處理新資料。 接著，您應該改變加上標籤的範例語句，讓應用程式能夠一般化超過您所提供的有限範例。 您應該改變不同的子實體與模型的足夠變更，以考慮更多概念，而不只是所示的範例。
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -73,7 +81,7 @@ ms.locfileid: "83585635"
 
 ## <a name="types-of-entities"></a>實體類型
 
-父系的列應該是機器學習的實體。 列可以使用非機器學習的實體做為[功能](luis-concept-feature.md)。
+父系的列應該是機器學習實體。 列可以使用非機器學習實體做為[功能](luis-concept-feature.md)。
 
 您可以根據擷取資料的方式和資料在擷取之後的呈現方式，來選擇實體。
 
@@ -85,6 +93,15 @@ ms.locfileid: "83585635"
 |[**預建**](luis-reference-prebuilt-entities.md)|已定型，可將特定類型的資料（例如 URL 或電子郵件）解壓縮。 在開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案中已定義部分這些預建實體。 如果目前不支援您的特定文化特性或實體，請向專案提出。|
 |[**規則運算式**](reference-entity-regular-expression.md)|會使用正則運算式來比對**完全相符的文字**。|
 
+
+## <a name="extraction-versus-resolution"></a>提取與解析
+
+當資料出現在語句中時，實體會將資料解壓縮。 實體不會變更或解析資料。 如果文字是實體的有效值，實體將不會提供任何解析。
+
+有一些方法可以將解決方案帶入解壓縮中，但您應該要注意，這會限制應用程式不受變化和錯誤影響的能力。
+
+[清單實體] 和 [正則運算式] （文字比對）實體可用來做為列的[必要功能](luis-concept-feature.md#required-features)，並做為提取的篩選準則。 您應該小心使用這一點，不要妨礙應用程式的預測能力。
+
 ## <a name="extracting-contextually-related-data"></a>解壓縮內容相關資料
 
 語句可能包含兩個或更多出現的實體，其中資料的意義是根據語句內的內容。 例如，有兩個地理位置、來源和目的地的航班預約語句。
@@ -93,7 +110,7 @@ ms.locfileid: "83585635"
 
 這兩個位置必須以用戶端應用程式知道每個位置的類型，才能完成票證購買的方式進行解壓縮。
 
-若要將來源和目的地解壓縮，請在「票證訂單」機器學習實體中建立兩個子實體。 針對每個子實體，建立使用 geographyV2 的必要功能。
+若要將來源和目的地解壓縮，請建立兩個子實體作為票證訂單機器學習實體的一部分。 針對每個子實體，建立使用 geographyV2 的必要功能。
 
 <a name="using-component-constraints-to-help-define-entity"></a>
 <a name="using-subentity-constraints-to-help-define-entity"></a>
@@ -124,5 +141,5 @@ ms.locfileid: "83585635"
 
 請參閱[新增實體](luis-how-to-add-entities.md)，以深入了解如何將實體新增至 LUIS 應用程式。
 
-請參閱[教學課程：在 Language Understanding （LUIS）中使用機器學習的實體從使用者語句解壓縮結構化資料](tutorial-machine-learned-entity.md)，以瞭解如何使用機器學習的實體從語句中解壓縮結構化資料。
+請參閱[教學課程：在 Language Understanding （LUIS）中使用機器學習服務實體從使用者語句解壓縮結構化資料](tutorial-machine-learned-entity.md)，以瞭解如何使用機器學習服務實體從語句中解壓縮結構化資料。
 

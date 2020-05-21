@@ -10,20 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: e0aea7e55381e9571b156701699f5f45315bb384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399685"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650600"
 ---
 # <a name="what-is-speech-to-text"></a>什麼是語音轉換文字？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-語音服務的語音轉換文字（也稱為語音辨識）可將音訊串流的即時轉譯為文字。 您的應用程式、工具或裝置可以針對此文字使用、顯示和採取動作作為命令輸入。 這項服務是由 Microsoft 用於 Cortana 和 Office 產品的相同辨識技術所支援。 它可順暢地與<a href="./speech-translation.md" target="_blank">翻譯<span class="docon docon-navigate-external x-hidden-focus"></span> </a>和<a href="./text-to-speech.md" target="_blank">文字到語音<span class="docon docon-navigate-external x-hidden-focus"></span> </a>轉換服務供應專案搭配運作。 如需可用語音轉換文字語言的完整清單，請參閱[支援的語言](language-support.md#speech-to-text)。
+語音服務的語音轉換文字（也稱為語音辨識）可將音訊串流的即時轉譯為文字。 您的應用程式、工具或裝置可以針對此文字使用、顯示和採取動作作為命令輸入。 這項服務是由 Microsoft 用於 Cortana 和 Office 產品的相同辨識技術所支援。 它可順暢地與<a href="./speech-translation.md" target="_blank">翻譯 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>和<a href="./text-to-speech.md" target="_blank">文字到語音 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>轉換服務供應專案搭配運作。 如需可用語音轉換文字語言的完整清單，請參閱[支援的語言](language-support.md#speech-to-text)。
 
 語音轉換文字服務預設會使用通用語言模型。 此模型已使用 Microsoft 所擁有的資料進行定型，並已部署在雲端中。 這對於對話式和聽寫案例而言是最理想的。 在獨特的環境中使用語音轉換文字進行辨識和轉譯時，您可以建立及定型自訂聲場、語言和發音模型。 自訂有助於解決環境雜訊或產業特定詞彙。
+
+使用其他的參考文字做為輸入，語音轉換文字服務也會啟用[發音評估](rest-speech-to-text.md#pronunciation-assessment-parameters)功能，以評估語音發音，並提供說話者精確度和順暢的說話者意見反應。 使用發音評估，語言學習工具可以實務、取得即時意見反應，並改善其發音，讓他們可以放心地說話和呈現。 教育者可以使用此功能來即時評估多個說話者的發音。 此功能目前支援美式英文，並與專家所進行的語音評量相互關聯。
 
 > [!NOTE]
 > Bing 語音已于2019年10月15日解除委任。 如果您的應用程式、工具或產品使用 Bing 語音 Api，我們就建立了指南，協助您遷移至語音服務。
@@ -39,6 +41,8 @@ ms.locfileid: "81399685"
 
 如果您想要使用語音轉換文字 REST 服務，請參閱[Rest api](rest-speech-to-text.md)。
 
+ - [快速入門：使用參考輸入進行發音評估](rest-speech-to-text.md#pronunciation-assessment-parameters)
+
 ## <a name="tutorials-and-sample-code"></a>教學課程和範例程式碼
 
 當您有機會使用語音服務後，請嘗試使用我們的教學課程，其中會教導您如何使用語音 SDK 和 LUIS 從語音辨識意圖。
@@ -49,6 +53,7 @@ ms.locfileid: "81399685"
 
 - [語音轉換文字範例（SDK）](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [批次轉譯範例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [發音評估範例（REST）](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>自訂
 

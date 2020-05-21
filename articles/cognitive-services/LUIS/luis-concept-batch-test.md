@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221339"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680418"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>在 LUIS 入口網站使用 1000 個語句進行批次測試
 
@@ -24,7 +24,7 @@ ms.locfileid: "79221339"
 
 ## <a name="group-data-for-batch-test"></a>批次測試的群組資料
 
-重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句的資料，請將語句分成三個集合：新增至意圖的範例語句、從已發行的端點接收的語句，以及在定型後用來進行批次測試語句的 LUIS。 
+重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句的資料，請將語句分成三個集合：新增至意圖的範例語句、從已發行的端點接收的語句，以及在定型後用來進行批次測試語句的 LUIS。
 
 ## <a name="a-data-set-of-utterances"></a>語句的資料集
 
@@ -35,7 +35,7 @@ ms.locfileid: "79221339"
 |*無重複的語句|
 |1000 個語句或更少|
 
-*重複項目會被視為完全相同的相符字串項目，而不是先權杖化的相符項目。 
+*重複項目會被視為完全相同的相符字串項目，而不是先權杖化的相符項目。
 
 ## <a name="entities-allowed-in-batch-tests"></a>批次測試中允許的實體
 
@@ -46,7 +46,7 @@ ms.locfileid: "79221339"
 
 ## <a name="batch-file-format"></a>批次檔格式
 
-批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您想要偵測的[機器學習實體](luis-concept-entity-types.md#types-of-entities)。 
+批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您預期會偵測到的任何[機器學習實體](luis-concept-entity-types.md#types-of-entities)。
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>使用實體的意圖批次語法範本
 
@@ -57,7 +57,7 @@ ms.locfileid: "79221339"
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ ms.locfileid: "79221339"
 ]
 ```
 
-批次檔會使用 **startPos** 和 **endPos** 屬性，來記錄實體的開頭與結尾。 值是以零為起始的，而且不應以空格作為開頭或結尾。 這與查詢記錄不同，後者使用 startIndex 與 endIndex 屬性。 
+批次檔會使用 **startPos** 和 **endPos** 屬性，來記錄實體的開頭與結尾。 值是以零為起始的，而且不應以空格作為開頭或結尾。 這與查詢記錄不同，後者使用 startIndex 與 endIndex 屬性。
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "79221339"
 
 ## <a name="common-errors-importing-a-batch"></a>匯入批次的常見錯誤
 
-常見錯誤包括： 
+常見錯誤包括：
 
 > * 超過 1000 個語句
 > * 沒有實體屬性的語句 JSON 物件。 屬性可以是空陣列。
@@ -112,7 +112,7 @@ LUIS 會追蹤每個資料集最後一項測試的狀態。 這包括大小 (批
 
 ## <a name="batch-test-results"></a>批次測試結果
 
-批次測試結果會是散佈圖，也稱為錯誤矩陣。 此圖表是對於批次檔案中的語句以及目前模型的預測意圖和實體進行的 4 向比較。 
+批次測試結果會是散佈圖，也稱為錯誤矩陣。 此圖表是對於批次檔案中的語句以及目前模型的預測意圖和實體進行的 4 向比較。
 
 **誤判**和**漏判**區段的資料點表示錯誤，應該加以調查。 如果所有資料點都位於**真肯定**和**真否定**區段，則您的應用程式精確度在此資料集上是最佳的。
 
@@ -124,13 +124,13 @@ LUIS 會追蹤每個資料集最後一項測試的狀態。 這包括大小 (批
 
 ## <a name="errors-in-the-results"></a>結果中的錯誤
 
-批次測試中顯示錯誤，表示並未預測出如批次檔中所述之意圖。 圖表的兩個紅色區段會顯示錯誤。 
+批次測試中顯示錯誤，表示並未預測出如批次檔中所述之意圖。 圖表的兩個紅色區段會顯示錯誤。
 
-誤判區段顯示語句對應到不應該對應的意圖或實體。 漏判區段顯示語句未對應到應該對應的意圖或實體。 
+誤判區段顯示語句對應到不應該對應的意圖或實體。 漏判區段顯示語句未對應到應該對應的意圖或實體。
 
 ## <a name="fixing-batch-errors"></a>修正批次錯誤
 
-如果批次測試有錯誤，您可以將更多語句加入到意圖，及/或對於更多語句標示實體，幫助 LUIS 區別不同的意圖。 如果您加入並標示語句，但是測試批次仍然出現預測錯誤，請考慮加入具有特定領域詞彙的[片語清單](luis-concept-feature.md)功能，幫助 LUIS 加速學習。 
+如果批次測試有錯誤，您可以將更多語句加入到意圖，及/或對於更多語句標示實體，幫助 LUIS 區別不同的意圖。 如果您加入並標示語句，但是測試批次仍然出現預測錯誤，請考慮加入具有特定領域詞彙的[片語清單](luis-concept-feature.md)功能，幫助 LUIS 加速學習。
 
 ## <a name="next-steps"></a>後續步驟
 

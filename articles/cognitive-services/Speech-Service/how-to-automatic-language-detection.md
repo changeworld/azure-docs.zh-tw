@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-set-nineteen
+ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658459"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>語音轉換文字的自動語言偵測
 
 自動語言偵測是用來判斷與所提供語言清單相較之下，傳遞至語音 SDK 的音訊最可能相符的情況。 然後，自動語言偵測傳回的值會用來選取語音轉換文字的語言模型，為您提供更精確的轉譯。 若要查看有哪些語言可供使用，請參閱[語言支援](language-support.md)。
 
-在本文中，您將瞭解如何使用`AutoDetectSourceLanguageConfig`來建立`SpeechRecognizer`物件，並取出偵測到的語言。
+在本文中，您將瞭解如何使用 `AutoDetectSourceLanguageConfig` 來建立 `SpeechRecognizer` 物件，並取出偵測到的語言。
 
 > [!IMPORTANT]
-> 這項功能僅適用于適用于 c #、c + +、JAVA 和 Python 的語音 SDK。
+> 這項功能僅適用于使用 c #、c + +、JAVA、Python 和目標-C 的語音 SDK。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用語音 SDK 進行自動語言偵測
 
-自動語言偵測目前在每次偵測時有兩種語言的服務端限制。 在建設您`AudoDetectSourceLanguageConfig`的物件時，請記住這項限制。 在下列範例中，您將建立`AutoDetectSourceLanguageConfig`，然後使用它來建立。 `SpeechRecognizer`
+自動語言偵測目前在每次偵測時有兩種語言的服務端限制。 在建設您的物件時，請記住這項限制 `AudoDetectSourceLanguageConfig` 。 在下列範例中，您將建立 `AutoDetectSourceLanguageConfig` ，然後使用它來建立 `SpeechRecognizer` 。
 
 > [!TIP]
 > 您也可以指定要在執行語音轉換文字時使用的自訂模型。 如需詳細資訊，請參閱[使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。
@@ -118,11 +118,28 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+NSArray *languages = @[@"zh-CN", @"de-DE"];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]init:languages];
+SPXSpeechRecognizer* speechRecognizer = \
+        [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                           autoDetectSourceLanguageConfiguration:autoDetectSourceLanguageConfig
+                                              audioConfiguration:audioConfig];
+SPXSpeechRecognitionResult *result = [speechRecognizer recognizeOnce];
+SPXAutoDetectSourceLanguageResult *languageDetectionResult = [[SPXAutoDetectSourceLanguageResult alloc] init:result];
+NSString *detectedLanguage = [languageDetectionResult language];
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>使用自訂模型進行自動語言偵測
 
 除了使用語音服務模型偵測語言之外，您還可以指定自訂模型來進行增強式辨識。 如果未提供自訂模型，服務將會使用預設語言模型。
 
-下列程式碼片段說明如何在您的語音服務呼叫中指定自訂模型。 如果偵測到的語言`en-US`是，則會使用預設模型。 如果偵測到的語言`fr-FR`是，則會使用自訂模型的端點：
+下列程式碼片段說明如何在您的語音服務呼叫中指定自訂模型。 如果偵測到的語言是 `en-US` ，則會使用預設模型。 如果偵測到的語言是 `fr-FR` ，則會使用自訂模型的端點：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -178,6 +195,20 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
  fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
  auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
         sourceLanguageConfigs=[en_language_config, fr_language_config])
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+SPXSourceLanguageConfiguration* enLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"en-US"];
+SPXSourceLanguageConfiguration* frLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"fr-FR"
+                                                     endpointId:@"The Endpoint Id for custom model of fr-FR"];
+NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
 ```
 
 ::: zone-end

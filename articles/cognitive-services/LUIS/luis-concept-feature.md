@@ -2,13 +2,13 @@
 title: 功能-LUIS
 description: 將特性新增至語言模型，以針對如何辨識您想要標示或分類的輸入，提供相關提示。
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591891"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682154"
 ---
 # <a name="machine-learning-ml-features"></a>機器學習（ML）功能
 
@@ -38,9 +38,9 @@ ms.locfileid: "83591891"
 在片語清單中，LUIS 會考慮 coNtext 和一般化來識別類似的專案，但不是完全相符的文字。
 
 使用片語清單的步驟：
-* 開始使用機器學習的實體
+* 開始使用機器學習服務實體
     * 新增範例語句
-    * 具有機器學習實體的標籤
+    * 具有機器學習服務實體的標籤
 * 新增片語清單
     * 新增具有類似意義的文字-**不要新增每**個可能的單字或片語。 相反地，一次新增幾個單字或片語，然後重新定型和發佈。
     * 審查並新增建議的單字
@@ -88,9 +88,21 @@ ms.locfileid: "83591891"
     * 國家（地區）（列）
     * 郵遞區號（列）
 
+## <a name="nested-subentities-with-features"></a>具有功能的嵌套子實體
+
+已學習列的機器表示父實體有一個概念，不論該父系是另一個列還是最上層實體。 列的值會作為其父系的功能。
+
+列可以同時有片語清單做為功能，以及模型（另一個實體）做為功能。
+
+當列有片語清單時，這會提升概念的詞彙，但不會將任何資訊新增至預測的 JSON 回應。
+
+當列具有另一個實體的功能時，JSON 回應會包含該其他實體的已解壓縮資料。
+
 ## <a name="required-features"></a>必要的功能
 
 必須找到必要的功能，才能從預測端點傳回模型。 當您知道傳入的資料必須符合此功能時，請使用必要的功能。
+
+如果語句文字不符合所需的功能，則不會將它解壓縮。
 
 **必要功能會使用非機器學習的實體**：
 * 規則運算式實體

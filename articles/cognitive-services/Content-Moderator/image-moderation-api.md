@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404255"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684057"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解影像仲裁概念
 
-使用內容仲裁的電腦輔助影像仲裁和[人對迴圈審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
+使用內容仲裁的電腦輔助影像仲裁和[審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>評估成人和猥褻內容
 
@@ -147,4 +147,4 @@ ms.locfileid: "81404255"
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 c #，請同時查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的「影像仲裁」一節。
+試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 另請參閱[審查、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核。

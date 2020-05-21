@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585652"
+ms.locfileid: "83653937"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>將作用中且經過訓練的應用程式發佈至預備或生產端點
 
@@ -37,7 +37,7 @@ ms.locfileid: "83585652"
 
 在快顯視窗顯示時選取正確的位置：
 
-* 執行
+* 預備
 * 生產
 
 藉由使用這兩個發佈位置，可讓您在已發行的端點或相同版本的兩個不同端點上，使用應用程式的兩個不同版本。
@@ -57,7 +57,7 @@ ms.locfileid: "83585652"
 選取位置之後，請設定下列各內容的發佈設定：
 
 * 情感分析
-* 拼寫更正-僅限 v2 預測端點
+* [拼寫更正](luis-tutorial-bing-spellcheck.md)-僅限 v2 預測端點
 * 語音預備
 
 在您發佈之後，這些設定可從 [**管理**] 區段的 [**發行設定**] 頁面中進行審核。 您可以在每次發行時變更設定。 如果您取消發行，則在發行期間所做的任何變更也會一併取消。
@@ -78,7 +78,7 @@ ms.locfileid: "83585652"
 
 情感資料是一個介於 1 與 0 之間的分數，指出資料的正面 (較接近 1) 或負面 (較接近 0) 情感。 `positive`、`neutral` 及 `negative` 情感標籤是依支援的文化特性 (Culture) 而定。 目前，只有英文支援情感標籤。
 
-如需使用情感分析之 JSON 端點回應的詳細資訊，請參閱[情感分析](luis-concept-data-extraction.md#sentiment-analysis)
+如需使用情感分析之 JSON 端點回應的詳細資訊，請參閱[情感分析](luis-reference-prebuilt-sentiment.md)
 
 ## <a name="spelling-correction"></a>拼字校正
 

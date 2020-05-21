@@ -2,13 +2,13 @@
 title: 新功能-Language Understanding （LUIS）
 description: 本文會定期更新 Azure 認知服務 Language Understanding API 的相關新聞。
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592792"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675951"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
@@ -22,11 +22,17 @@ ms.locfileid: "83592792"
     * [Language Understanding 容器](luis-container-howto.md)
     * 預覽入口網站已升級為[目前的入口](https://www.luis.ai)網站，[先前](https://previous.luis.ai)的入口網站仍可使用
     * 新的機器學習實體建立和標籤體驗
-    * 從複合和簡單實體升級為機器學習實體的[流程](migrate-from-composite-entity.md)
+    * 從複合和簡單實體升級至機器學習實體的[流程](migrate-from-composite-entity.md)
     * [設定](how-to-application-settings-portal.md)正規化字變體的支援
 * 預覽編寫 API 變更
-    * 適用于嵌套機器學習實體的應用程式架構7。x
+    * 適用于嵌套機器學習服務實體的應用程式架構7。x
     * [遷移至必要功能](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* 開發人員的新資源
+    * [持續整合工具](developer-reference-resource.md#continuous-integration-tools)
+    * 研討會-[使用 LUIS 瞭解_天然 Language Understanding_ （NLU）的最佳作法](developer-reference-resource.md#workshops)
+* [客戶管理的金鑰](luis-encryption-of-data-at-rest.md)-使用您自己的金鑰來加密您在 LUIS 中使用的所有資料
+* [AI show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) （影片）-請參閱 LUIS 中的新功能
+
 
 
 ### <a name="march-2020"></a>2020 年 3 月
@@ -48,13 +54,13 @@ ms.locfileid: "83592792"
     * 義大利[建實體](luis-reference-prebuilt-entities.md#italian-entity-support)-從 V2 變更的年齡、貨幣、維度、數位和百分比解析。
 * [Preview.luis.ai 入口網站](https://preview.luis.ai)中增強的使用者體驗-改頭換面標記體驗，以啟用建立和調試複雜模型。 試用預覽入口網站教學課程：
     * [僅意圖](tutorial-intents-only.md)
-    * [分解機器學習的實體](tutorial-machine-learned-entity.md)
+    * [分解機器學習實體](tutorial-machine-learned-entity.md)
 * 預先語言理解功能-以較少的方式[建立複雜的語言模型](luis-concept-entity-types.md)。
 * 在模型層級定義機器學習功能，並讓模型用來做為其他模型的信號，例如使用實體做為意圖和其他實體的功能。
 * 新的擴充[限制](luis-limits.md)-片語清單的最大上限和片語總計、新模型做為功能限制
 * 以深層階層結構的格式從文字中解壓縮資訊，讓對話應用程式更強大。
 
-    ![機器學習的實體映射](./media/whats-new/deep-entity-extraction-example.png)
+    ![機器學習服務實體影像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019年9月3日
 

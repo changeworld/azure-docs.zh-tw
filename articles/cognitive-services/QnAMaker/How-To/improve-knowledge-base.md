@@ -3,12 +3,12 @@ title: 改善知識庫 - QnA Maker
 description: 利用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756730"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650770"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "80756730"
 
     [![使用 [依建議篩選] 切換，即可只查看主動式學習的建議問題替代方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. 每個 QnA 組都會以核取記號來建議新的問題`✔`替代專案，以接受問題或`x`拒絕建議。 選取核取記號可新增問題。
+1. 每個 QnA 組都會以核取記號來建議新的問題替代專案， `✔` 以接受問題或 `x` 拒絕建議。 選取核取記號可新增問題。
 
     [![選取或拒絕主動式學習的建議問題，方法是選取綠色核取記號或紅色刪除標記。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -50,7 +50,7 @@ ms.locfileid: "80756730"
 
 Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動式學習：
 
-* Bot 會透過 GenerateAnswer API[從知識庫取得答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，並使用`top`屬性來取得一些答案。
+* Bot 會透過 GenerateAnswer API[從知識庫取得答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，並使用 `top` 屬性來取得一些答案。
 * Bot 會決定明確的意見反應：
     * 使用您自己的[自訂商務邏輯](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，篩選出低分數。
     * 在 bot 或用戶端應用程式中，顯示使用者可能的解答清單，並取得使用者選取的答案。
@@ -59,7 +59,7 @@ Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動�
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 要求中的 top 屬性來取得數個相符的答案
 
-提交問題給 QnA Maker 以取得解答時，JSON 主體`top`的屬性會設定要傳回的答案數目。
+提交問題給 QnA Maker 以取得解答時， `top` JSON 主體的屬性會設定要傳回的答案數目。
 
 ```json
 {
@@ -71,7 +71,7 @@ Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動�
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分數屬性和商務邏輯來取得顯示使用者的答案清單
 
-當用戶端應用程式（例如聊天機器人）收到回應時，就會傳回前3個問題。 使用`score`屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
+當用戶端應用程式（例如聊天機器人）收到回應時，就會傳回前3個問題。 使用 `score` 屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
 
 ```json
 {
@@ -130,7 +130,7 @@ Content-Type: application/json
 |HTTP 要求屬性|名稱|類型|目的|
 |--|--|--|--|
 |URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
-|自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為`host`。|
+|自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host` 。|
 |頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
 |頁首|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |張貼本文|JSON 物件|JSON|訓練意見反應|
@@ -142,7 +142,7 @@ JSON 主體有數個設定：
 |`feedbackRecords`|array|意見反應清單。|
 |`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
 |`userQuestion`|字串|使用者查詢的確切文字。 必要。|
-|`qnaID`|number|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|數字|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體如下所示：
 
@@ -162,7 +162,7 @@ JSON 主體有數個設定：
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>將許多意見反應記錄批次成單一呼叫
 
-在用戶端應用程式（例如 bot）中，您可以儲存資料，然後在`feedbackRecords`陣列中的單一 JSON 主體中傳送許多記錄。
+在用戶端應用程式（例如 bot）中，您可以儲存資料，然後在陣列中的單一 JSON 主體中傳送許多記錄 `feedbackRecords` 。
 
 範例 JSON 主體如下所示：
 
@@ -311,7 +311,7 @@ async callTrain(stepContext){
 
 當您的應用程式啟用主動式學習，並匯出應用程式時， `SuggestedQuestions` tsv 檔案中的資料行會保留使用中的學習資料。
 
-資料`SuggestedQuestions`行是隱含、 `autosuggested`和明確的`usersuggested`意見反應之資訊的 JSON 物件。 針對單一使用者提交的問題，此 JSON 物件的範例`help`為：
+資料 `SuggestedQuestions` 行是隱含、和明確的意見反應之資訊的 JSON 物件 `autosuggested` `usersuggested` 。 針對單一使用者提交的問題，此 JSON 物件的範例 `help` 為：
 
 ```JSON
 [
@@ -329,11 +329,6 @@ async callTrain(stepContext){
     }
 ]
 ```
-
-您也可以使用 REST 或任何以語言為基礎的 Sdk，透過下載更改 API 來檢查這些變更：
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 當您重新匯入此應用程式時，主動式學習會繼續收集資訊，並建議您的知識庫建議。
 

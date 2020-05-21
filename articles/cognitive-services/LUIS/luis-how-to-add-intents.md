@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584959"
+ms.locfileid: "83654047"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>新增意圖以判斷語句的使用者用意
 
 將[意圖](luis-concept-intent.md)新增至 LUIS 應用程式，以識別具有相同用意的問題或命令群組。
 
-從上方導覽列的 [建置]**** 區段，然後從左側面板的 [意圖]**** 管理意圖。
+在 LUIS 入口網站中，意圖是從上方導覽列的 [**組建**] 區段，然後從左側面板的**意圖**進行管理。
 
-## <a name="add-intent"></a>新增意圖
+## <a name="add-an-intent-to-your-app"></a>將意圖新增至您的應用程式
 
 1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
@@ -34,7 +34,7 @@ ms.locfileid: "83584959"
     > [!div class="mx-imgBorder"]
     > ![新增意圖](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    意圖需要範例語句。
+    意圖需要[範例語句](luis-concept-utterance.md)，才能在已發行的預測端點上預測語句。
 
 ## <a name="add-an-example-utterance"></a>新增範例語句
 
@@ -51,16 +51,16 @@ ms.locfileid: "83584959"
 
 ## <a name="intent-prediction-errors"></a>意圖預測錯誤
 
-意圖中的範例語句可能會在範例語句目前所在的意圖和定型期間決定的意圖之間有意圖預測錯誤。
+意圖預測錯誤是在語句未以定型應用程式的意圖預測時決定。
 
-若要尋找語句預測錯誤並加以修正，請使用 [不正確且不清楚] 的**篩選**選項與 [**詳細視圖**] 的 [ **view** ] 選項結合。
+1. 若要找出語句的預測錯誤並加以修正，請使用不正確且不清楚的**篩選**選項。
 
-![若要尋找語句預測錯誤並加以修正，請使用 [篩選] 選項。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![若要尋找語句預測錯誤並加以修正，請使用 [篩選] 選項。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-套用篩選和視圖，而且有範例語句出現錯誤時，[範例語句] 清單會顯示語句和問題。
+1. 若要在 [意圖詳細資料] 頁面上顯示分數值，請從 [**視圖**選項] 功能表中選取 [**顯示詳細資料意圖分數**]。
 
-> [!div class="mx-imgBorder"]
-> ![![套用篩選準則和視圖時，如果有範例語句出現錯誤，則範例語句清單會顯示語句和問題。](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    套用篩選和視圖，而且有範例語句出現錯誤時，[範例語句] 清單會顯示語句和問題。
 
 每個資料列都會顯示語句範例的目前定型分數，這是最接近的競爭對手分數，這就是這兩個分數的差異。
 
