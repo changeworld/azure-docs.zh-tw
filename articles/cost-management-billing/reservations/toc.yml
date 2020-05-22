@@ -6,7 +6,6 @@
     - name: 什麼是 Azure 保留項目？
       href: save-compute-costs-reservations.md
 - name: 操作指南
-  expanded: true
   items:
     - name: 決定要購買的項目
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: 交換和退款保留項目
           href: exchange-and-refund-azure-reservations.md
+    - name: 報告成本
+      items:
+        - name: 檢視保留交易
+          href: view-purchase-refunds.md
+        - name: 針對保留成本進行退費
+          href: charge-back-usage.md
     - name: 更新保留項目
       items:
         - name: 更新保留
           href: reservation-renew.md
 - name: 概念
-  expanded: true
   items:
     - name: 建立保留建議的方式
       href: reserved-instance-purchase-recommendations.md

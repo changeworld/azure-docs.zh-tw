@@ -4,12 +4,12 @@ description: 在本教學課程中，藉由驗證或更正透過 LUIS 不確定�
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548730"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592571"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教學課程：檢閱端點語句以修正不確定的預測
 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTPS 端點所收到的語句來改善應用程式的預測。 您應該在排定的 LUIS 維護中定期檢閱端點語句。
@@ -33,11 +33,11 @@ ms.locfileid: "80548730"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>匯入範例應用程式
+## <a name="download-json-file-for-app"></a>下載應用程式的 JSON 檔案
 
-請使用下列步驟來匯入應用程式。
+下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
 
-1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
+## <a name="import-json-file-for-app"></a>匯入應用程式的 JSON 檔案
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -73,9 +73,9 @@ ms.locfileid: "80548730"
 
 ## <a name="review-endpoint-utterances"></a>檢閱端點語句
 
-請檢閱端點語句，以獲得正確對齊的意圖。 雖然有單一語句集區可供進行跨所有版本的檢閱，但正確對齊意圖的程序會讓語句範例只新增至目前「使用中的模型」  。
+請檢閱端點語句，以獲得正確對齊的意圖。 雖然有單一語句集區可供進行跨所有版本的檢閱，但正確對齊意圖的程序會讓語句範例只新增至目前「使用中的模型」。
 
-1. 從入口網站的 [建置]  區段中，選取左側導覽中的 [檢閱端點語句]  。 此清單已針對 **ApplyForJob** 意圖進行篩選。
+1. 從入口網站的 [建置] 區段中，選取左側導覽中的 [檢閱端點語句]。 此清單已針對 **ApplyForJob** 意圖進行篩選。
 
     > [!div class="mx-imgBorder"]
     > ![[檢閱端點語句] 按鈕在左側導覽中的螢幕擷取畫面](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
@@ -89,7 +89,7 @@ ms.locfileid: "80548730"
 
     檢閱此意圖中的其餘語句，並視需要更正對齊的意圖。 使用本教學課程中的初始語句資料表來檢視對齊的意圖。
 
-    [檢閱端點語句]  清單應該不會再有更正過的語句。 如果出現更多語句，請繼續瀏覽清單並更正對齊的意圖，直到清單變成空白為止。
+    [檢閱端點語句] 清單應該不會再有更正過的語句。 如果出現更多語句，請繼續瀏覽清單並更正對齊的意圖，直到清單變成空白為止。
 
     從 [意圖詳細資料] 頁面對齊意圖之後，便會更正實體的標籤。
 

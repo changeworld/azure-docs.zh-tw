@@ -42,8 +42,6 @@
         - name: 2. 擷取使用者資料
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. 從使用者的語句中取得情感分析
-          href: tutorial-publish-settings.md
     - name: 改善應用程式
       items:
         - name: 修正不確定的預測
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: 自訂實體參考
       items:
-        - name: 已採用機器學習的實體
+        - name: 機器學習實體
           href: reference-entity-machine-learned-entity.md
         - name: 複合實體
           href: reference-entity-composite.md

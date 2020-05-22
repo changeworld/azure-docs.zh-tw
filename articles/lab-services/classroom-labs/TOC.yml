@@ -118,10 +118,12 @@
       items:
         - name: 存取教室實驗室
           href: how-to-use-classroom-lab.md
-        - name: 使用適用於 Linux VM 的遠端桌面連線
+        - name: 連線至 Linux VM
           href: how-to-use-remote-desktop-linux-student.md
         - name: 使用 RDP 從 Mac 連線至 VM
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: 使用 RDP 從 Chromebook 連線至 VM
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: 設定或重設適用於虛擬機器的密碼
           href: how-to-set-virtual-machine-passwords-student.md
         - name: 檢視支援資訊 (學生)

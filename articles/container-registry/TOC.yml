@@ -91,7 +91,7 @@
           items:
             - name: 使用私人端點來限制存取
               href: container-registry-private-link.md
-            - name: 設定服務防火牆規則
+            - name: 設定公用登錄存取
               href: container-registry-access-selected-networks.md
             - name: 使用服務端點限制存取 (預覽)
               href: container-registry-vnet.md

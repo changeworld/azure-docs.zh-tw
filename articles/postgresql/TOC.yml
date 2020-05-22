@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: 設定 Azure AD 整合
               href: howto-configure-sign-in-aad-authentication.md
+            - name: 與受控識別連線
+              href: howto-connect-with-managed-identity.md
         - name: 最佳化
           items:
             - name: 大量插入

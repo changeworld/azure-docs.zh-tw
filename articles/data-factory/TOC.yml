@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: 建立資料處理站 - Resource Manager 範本
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: 安全性 - 啟用客戶管理的金鑰加密
-      href: quickstart-enable-customer-managed-key.md
     - name: 建立資料流程
       href: data-flow-create.md
 - name: 教學課程
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: 角色和權限
       href: concepts-roles-permissions.md
-    - name: 了解定價
-      href: pricing-concepts.md
     - name: 命名規則
       href: naming-rules.md
 - name: 操作指南
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: SharePoint Online 清單
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: 容錯
           href: copy-activity-fault-tolerance.md
+        - name: 資料一致性驗證
+          href: copy-activity-data-consistency.md
         - name: 格式和壓縮支援 (舊版)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: 轉換資料
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: 適用於 Data Factory 的受控身分識別
           href: data-factory-service-identity.md
+        - name: 客戶管理的金鑰加密
+          href: quickstart-enable-customer-managed-key.md
     - name: 監視及管理
       items:
+        - name: 以視覺化方式監視
+          href: monitor-visually.md
         - name: 使用 Azure 監視器進行監視
           href: monitor-using-azure-monitor.md
         - name: 使用 SDK 進行監視
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: 共用的自我裝載整合執行階段
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: 自我裝載整合執行階段的自動化指令碼
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: 在 Azure 中執行 SSIS 套件
       items:
         - name: 從 SSDT 在 Azure 中執行 SSIS 套件
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: 啟用適用於 Azure-SSIS IR 的 Azure AD 驗證
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: 使用 Windows 驗證連線到資料
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: 儲存檔案及連線到檔案共用
-          href: ssis-azure-files-file-shares.md
         - name: 佈建適用於 Azure-SSIS IR 的 Enterprise Edition
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Azure SSIS IR 上內建和預先安裝的元件
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: 適用於 Azure-SSIS IR 的自訂設定
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: 安裝適用於 Azure-SSIS IR 的授權元件
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: 使用彈性資料庫作業清除 SSISDB 記錄
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: 搭配 Azure-SSIS IR 使用 Azure SQL 受控執行個體
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: 使用 SSMS 移轉 SSIS 作業
           href: how-to-migrate-ssis-job-ssms.md
     - name: 建立觸發程序
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: 使用 Azure Databricks 進行轉換
           href: solution-template-databricks-notebook.md
+    - name: 了解定價
+      items:
+        - name: 規劃和管理成本
+          href: plan-manage-costs.md
+        - name: 計費範例
+          href: pricing-concepts.md
     - name: 疑難排解指南
       items:
         - name: 活動

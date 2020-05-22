@@ -32,6 +32,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: 將應用程式繫結至 Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: 搭配 Azure Spring Cloud 的斷路器儀表板
+      href: spring-cloud-tutorial-circuit-breaker.md
     - name: 將自訂 DNS 名稱對應至 Azure Spring Cloud
       href: spring-cloud-tutorial-custom-domain.md
     - name: 使用 IntelliJ 部署 Azure Spring Cloud 應用程式
@@ -69,7 +71,6 @@
       href: spring-cloud-howto-log-streaming.md
     - name: 在 Azure Spring Cloud 中使用持續性儲存體
       href: spring-cloud-howto-persistent-storage.md
-    - name: 對 Azure Spring Cloud 進行 DevOps 部署
     - name: 整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
       href: spring-cloud-howto-integrate-azure-load-balancers.md
 - name: 對 Azure Spring Cloud 進行 DevOps 部署

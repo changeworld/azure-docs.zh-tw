@@ -276,6 +276,8 @@
       items:
         - name: 設定 Azure AD 整合
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: 與受控識別連線
+          href: howto-connect-with-managed-identity.md
     - name: 拒絕公用網路存取
       items:
         - name: Azure 入口網站

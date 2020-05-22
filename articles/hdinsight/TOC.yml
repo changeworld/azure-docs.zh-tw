@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: 叢集容量規劃
           href: ./hdinsight-capacity-planning.md
+        - name: 要求增加 CPU 核心配額
+          href: ./quota-increase-request.md
         - name: 叢集管理最佳做法
           href: ./cluster-management-best-practices.md
         - name: 高度可用性與可靠性
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Apache Oozie 疑難排解
               href: ./troubleshoot-oozie.md
+            - name: 了解並解決 WebHCat 錯誤
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: 參考
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: 啟用 Apache Hadoop 適用的服務堆積傾印
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: 了解並解決 WebHCat 錯誤
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: 在論壇上取得協助
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: 定價計算機
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: 最佳化 Apache Spark 作業
           href: ./spark/apache-spark-perf.md
+        - name: 遷移至 Spark 2.3 或 2.4
+          href: ./spark/migrate-versions.md
     - name: 如何
       items:
         - name: 使用工具
@@ -736,6 +740,8 @@
       items:
         - name: 閘道最佳做法
           href: ./interactive-query/gateway-best-practices.md
+        - name: 調整大小指導方針
+          href: ./interactive-query/sizing-guidelines.md
     - name: 如何
       items:
         - name: 開發
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Apache Tez 應用程式停止回應
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP 調整大小指導方針
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP 查詢效能
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: 緩慢歸納器

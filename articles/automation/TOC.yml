@@ -63,7 +63,7 @@
           href: automation-role-based-access-control.md
         - name: 將自動化帳戶移至另一個訂用帳戶
           href: how-to/move-account.md
-        - name: 從 System Center Orchestrator 遷移
+        - name: 從 Orchestrator 移轉到 Azure 自動化 (Beta)
           href: automation-orchestrator-migration.md
     - name: 共用資源
       items:
@@ -89,7 +89,7 @@
           href: troubleshoot/shared-resources.md
     - name: 程序自動化
       items:
-        - name: 尋找 PowerShell 資源庫中的 Runbook 和模組
+        - name: 使用 PowerShell 資源庫中的 Runbook 和模組
           href: automation-runbook-gallery.md
         - name: 了解 PowerShell 工作流程
           href: automation-powershell-workflow.md
@@ -123,11 +123,11 @@
               href: automation-runbook-graphical-error-handling.md
             - name: 將作業資料轉送至 Azure 監視器記錄
               href: automation-manage-send-joblogs-log-analytics.md
-        - name: 疑難排解
+        - name: 針對 Runbook 進行疑難排解
           items:
-            - name: 針對 Runbook 進行疑難排解
+            - name: 針對 Runbook 問題進行疑難排解
               href: troubleshoot/runbooks.md
-            - name: 開啟支援案例之前要收集的資料
+            - name: 開啟 Microsoft Azure 自動化案例時要收集的資料
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: 使用混合式 Runbook 背景工作角色
           items:
@@ -137,75 +137,81 @@
               href: automation-linux-hrw-install.md
             - name: 在混合式 Runbook 背景工作角色上啟動 Runbook
               href: automation-hrw-run-runbooks.md
-            - name: 混合式 Runbook 背景工作的疑難排解
+            - name: 針對混合式 Runbook 背景工作角色問題進行疑難排解
               href: troubleshoot/hybrid-runbook-worker.md
         - name: 使用原始檔控制整合
           href: source-control-integration.md
     - name: 組態管理
       items:
-        - name: 狀態組態 (DSC)
+        - name: Azure 自動化狀態設定
           items:
             - name: 概觀
               href: automation-dsc-overview.md
             - name: 開始使用狀態設定
               href: automation-dsc-getting-started.md
-            - name: 上架管理機器
+            - name: 啟用狀態設定
               href: automation-dsc-onboarding.md
-            - name: 將機器設定為預期狀態
+            - name: 將伺服器設定為預期狀態並管理漂移
               href: tutorial-configure-servers-desired-state.md
-            - name: 編譯 DSC 設定
-              href: automation-dsc-compile.md
-            - name: 補救設定漂移
-              href: automation-dsc-remediate.md
             - name: 撰寫 DSC 設定
               href: compose-configurationwithcompositeresources.md
+            - name: 編譯 DSC 設定
+              href: automation-dsc-compile.md
+            - name: 補救不符合規範的狀態設定伺服器
+              href: automation-dsc-remediate.md
             - name: 使用 Chocolatey 設定持續部署
               href: automation-dsc-cd-chocolatey.md
             - name: 與 Azure 監視器記錄整合
               href: automation-dsc-diagnostics.md
-            - name: 針對 DSC 的問題進行疑難排解
-              href: troubleshoot/desired-state-configuration.md
-            - name: Azure DSC 延伸模組版本歷程記錄
+            - name: 使用狀態設定延伸模組版本歷程記錄
               href: automation-dsc-extension-history.md
+            - name: 針對狀態設定問題進行疑難排解
+              href: troubleshoot/desired-state-configuration.md
         - name: 變更追蹤和清查
           items:
             - name: 概觀
               href: change-tracking.md
             - name: 已連結 Log Analytics 工作區的支援區域
               href: how-to/region-mappings.md
-            - name: 啟用變更追蹤和清查
+            - name: 啟用
               items:
-                - name: 使用 Azure 入口網站
-                  href: automation-onboard-solutions-from-browse.md
-                - name: 從 Azure 虛擬機器
-                  href: automation-onboard-solutions-from-vm.md
-                - name: 從自動化帳戶
-                  href: automation-onboard-solutions-from-automation-account.md
-                - name: 從自動化 Runbook
-                  href: automation-onboard-solutions.md
+                - name: 'Azure 入口網站的 [啟用變更追蹤和清查]'
+                  href: automation-enable-changes-from-browse.md
+                - name: 'Azure VM 的 [啟用變更追蹤和清查]'
+                  href: automation-enable-changes-from-vm.md
+                - name: '自動化帳戶的 [啟用變更追蹤和清查]'
+                  href: automation-enable-changes-from-auto-acct.md
+                - name: 'Runbook 的 [啟用變更追蹤和清查]'
+                  href: automation-enable-changes-from-runbook.md
             - name: 管理變更追蹤和清查
               href: change-tracking-file-contents.md
             - name: 從虛擬機器管理清查集合
               href: automation-vm-inventory.md
+            - name: 使用範圍設定
+              href: automation-scope-configurations-change-tracking.md
+            - name: 取消工作區與自動化帳戶的連結
+              href: automation-unlink-workspace-change-tracking.md
+            - name: 從變更追蹤和清查中移除 VM
+              href: automation-remove-vms-from-change-tracking.md
             - name: 疑難排解
               items:
-                - name: 登入
+                - name: 針對功能部署問題進行疑難排解
                   href: troubleshoot/onboarding.md
-                - name: 使用變更追蹤和清查
+                - name: 針對變更追蹤和清查問題進行疑難排解
                   href: troubleshoot/change-tracking.md
-    - name: 於下班時間開始/停止 VM
+    - name: 停機期間啟動/停止 VM
       items:
         - name: 概觀
           href: automation-solution-vm-management.md
         - name: 已連結 Log Analytics 工作區的支援區域
           href: how-to/region-mappings.md
-        - name: 啟用
+        - name: 啟用停機期間啟動/停止 VM
           href: automation-solution-vm-management-enable.md
-        - name: 設定
+        - name: 設定停機期間停止/啟動 VM
           href: automation-solution-vm-management-config.md
-        - name: 使用日誌查詢分析資料
+        - name: 從停機期間啟動/停止 VM 查詢記錄
           href: automation-solution-vm-management-logs.md
-        - name: 疑難排解
+        - name: 針對停機期間停止/啟動 VM 進行疑難排解
           href: troubleshoot/start-stop-vm.md
     - name: 更新管理
       items:
@@ -215,21 +221,23 @@
           href: how-to/region-mappings.md
         - name: 啟用
           items:
-            - name: 使用 Resource Manager 範本
+            - name: 使用 Azure Resource Manager 範本啟用更新管理
               href: automation-update-management-deploy-template.md
-            - name: 使用 Azure 入口網站
+            - name: 從 Azure 入口網站啟用更新管理
               href: automation-onboard-solutions-from-browse.md
-            - name: 從 Azure 虛擬機器
+            - name: 從 Azure VM 啟用更新管理
               href: automation-onboard-solutions-from-vm.md
-            - name: 從自動化帳戶
+            - name: 從自動化帳戶啟用更新管理
               href: automation-onboard-solutions-from-automation-account.md
+            - name: 從 Runbook 啟用更新管理
+              href: automation-onboard-solutions.md
         - name: 管理 Azure 虛擬機器的更新
           href: automation-tutorial-update-management.md
         - name: 管理多個虛擬機器的更新
           href: manage-update-multi.md
         - name: 檢視更新評估
           href: automation-view-update-assessments.md
-        - name: 管理前置和後置指令碼
+        - name: 管理前指令碼和後指令碼
           href: pre-post-scripts.md
         - name: 與 Configuration Manager 整合
           href: updatemgmt-mecmintegration.md
@@ -239,13 +247,19 @@
           href: automation-update-management-groups.md
         - name: 查詢更新管理記錄
           href: automation-update-management-query-logs.md
+        - name: 使用範圍設定
+          href: automation-scope-configurations-update-management.md
+        - name: 取消工作區與自動化帳戶的連結
+          href: automation-unlink-workspace-update-management.md
+        - name: 從更新管理中移除 VM
+          href: automation-remove-vms-from-update-management.md
         - name: 疑難排解
           items:
-            - name: 登入
+            - name: 針對功能部署問題進行疑難排解
               href: troubleshoot/onboarding.md
-            - name: 使用更新管理
+            - name: 針對更新管理問題進行疑難排解
               href: troubleshoot/update-management.md
-            - name: 針對 Windows Update 代理程式問題進行疑難排解
+            - name: 針對 Windows 更新代理程式問題進行疑難排解
               href: troubleshoot/update-agent-issues.md
             - name: 針對 Linux 更新代理程式問題進行疑難排解
               href: troubleshoot/update-agent-issues-linux.md
@@ -269,7 +283,9 @@
           href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: 參考
   items:
-    - name: Azure PowerShell
+    - name: Azure PowerShell Az
+      href: /powershell/module/az.automation
+    - name: Azure PowerShell AzureRM
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

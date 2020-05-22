@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 03/17/2020
-  ms.openlocfilehash: 5745c6c9a7f380d7e9b1d8d59d56a81581c66e14
-  ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+  ms.openlocfilehash: 99b15e3b311a033e346cb8994bb9109401d90a20
+  ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80294321"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83715761"
 highlightedContent:
   items:
   - title: 什麼是 Azure 網路？
@@ -32,9 +32,9 @@ highlightedContent:
   - title: Azure 中的中樞輪輻網路拓撲
     itemType: architecture
     url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: SQL 資料庫伺服器的私人存取
-    itemType: tutorial
-    url: ../private-link/create-private-endpoint-portal.md
+  - title: 什麼是路由喜好設定？
+    itemType: concept
+    url: ../virtual-network/routing-preference-overview.md
   - title: 使用 Azure 服務從遠端工作
     itemType: concept
     url: working-remotely-support.md

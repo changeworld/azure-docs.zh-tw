@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Azure EA 入口網站系統管理員
           href: ea-portal-administration.md
+        - name: 適用於合作夥伴的 Azure EA 入口網站管理
+          href: ea-partner-portal-administration.md
+        - name: Azure Enterprise 傳輸
+          href: ea-transfers.md
         - name: Microsoft 客戶合約中的 EA 工作
           href: mca-enterprise-operations.md
         - name: Azure EA 合約和修訂文件
           href: ea-portal-agreements.md
         - name: 企業註冊發票
           href: ea-portal-enrollment-invoices.md
+        - name: Azure EA 定價
+          href: ea-pricing-overview.md
         - name: Azure 企業版 REST API
           href: ea-portal-rest-apis.md
         - name: Azure EA VM 保留執行個體
           href: ea-portal-vm-reservations.md
         - name: 針對 Azure EA 入口網站存取進行疑難排解
           href: ea-portal-troubleshoot.md
+        - name: Azure Marketplace
+          href: ea-azure-marketplace.md
 - name: 疑難排解
   items:
     - name: 找不到訂用帳戶

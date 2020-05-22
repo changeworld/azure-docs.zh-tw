@@ -2,13 +2,13 @@
 title: 教學課程：模式 - LUIS
 description: 在本教學課程中，您將可以在提供較少語句範例的情況下，使用模式來提高意圖和實體預測準確度。 此模式是以範本語句範例的方式來提供，其中包含用來識別實體及可忽略文字的語法。
 ms.topic: tutorial
-ms.date: 04/14/2020
-ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/07/2020
+ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380776"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592911"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教學課程：新增通用模式範本語句格式以改善預測
 
@@ -41,23 +41,24 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)。
 
-1. 將 JSON 匯入[預覽 LUIS 入口網站](https://preview.luis.ai)中的新應用程式。 在 [我的應用程式]  頁面中，選取 [+ 新增對話應用程式]  ，然後選取 [匯入為 JSON]  。 選取您在上個步驟中下載的檔案。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
+1. 將 JSON 匯入至 [LUIS 入口網站](https://www.luis.ai)中的新應用程式。 在 [我的應用程式] 頁面中，選取 [+ 新增對話應用程式]，然後選取 [匯入為 JSON]。 選取您在上個步驟中下載的檔案。
 
-1. 從 [管理]  區段的 [版本]  索引標籤上選取使用中的版本，然後選取 [複製]  。 將複製的版本命名為 `patterns`。 複製是一個既可測試各種 LUIS 功能又不影響原始版本的絕佳方式。 因為版本名稱會作為 URL 路由的一部分，所以此名稱不能包含任何在 URL 中無效的字元。
+1. 從 [管理] 區段的 [版本] 索引標籤上選取使用中的版本，然後選取 [複製]。 將複製的版本命名為 `patterns`。 複製是一個既可測試各種 LUIS 功能又不影響原始版本的絕佳方式。 因為版本名稱會作為 URL 路由的一部分，所以此名稱不能包含任何在 URL 中無效的字元。
 
 ## <a name="create-new-intents-and-their-utterances"></a>建立新意圖及其語句
 
 這兩個意圖會根據語句文字來尋找管理員或管理員的直屬報告。 困難之處在於這兩個意圖_表示_不同的專案，但大部分的單字都相同。 只有單字順序不同。 為了正確預測意圖，必須有許多範例。
 
-1. 從導覽列中選取 [建置]  。
+1. 從導覽列中選取 [建置]。
 
-1. 在 [意圖]  頁面上，選取 [+ 建立]  以建立新意圖。
+1. 在 [意圖] 頁面上，選取 [+ 建立] 以建立新意圖。
 
-1. 在快顯對話方塊方塊中輸入 `OrgChart-Manager`，然後選取 [完成]  。
+1. 在快顯對話方塊方塊中輸入 `OrgChart-Manager`，然後選取 [完成]。
 
     ![建立新的訊息快顯視窗](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-1. 將語句範例新增至意圖。 這些語句並不完全  相同，但有一個可以解取的模式。
+1. 將語句範例新增至意圖。 這些語句並不完全相同，但有一個可以解取的模式。
 
     |範例語句|
     |--|
@@ -69,9 +70,9 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
     如果是在意圖的語句 (而不是員工實體的語句) 中標示 keyPhrase 實體，也沒關係。 這兩者都可在端點的 [測試] 窗格中正確預測。
 
-1. 在左側導覽中，選取 [意圖]  。
+1. 在左側導覽中，選取 [意圖]。
 
-1. 選取 [+ 建立]  以建立新的意圖。 在快顯對話方塊方塊中輸入 `OrgChart-Reports`，然後選取 [完成]  。
+1. 選取 [+ 建立] 以建立新的意圖。 在快顯對話方塊方塊中輸入 `OrgChart-Reports`，然後選取 [完成]。
 
 1. 將語句範例新增至意圖。
 
@@ -224,11 +225,11 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 ### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>新增 OrgChart-Manager 意圖的模式
 
-1. 在上方功能表中，選取 [建置]  。
+1. 在上方功能表中，選取 [建置]。
 
-1. 在左導覽窗格中的 [Improve app performance] \(改善應用程式效能\)  底下，選取 [Patterns] \(模式\)  。
+1. 在左導覽窗格中的 [Improve app performance] \(改善應用程式效能\) 底下，選取 [Patterns] \(模式\)。
 
-1. 選取 [OrgChart-Manager]  意圖，然後輸入下列範本語句：
+1. 選取 [OrgChart-Manager] 意圖，然後輸入下列範本語句：
 
     |範本語句|
     |:--|
@@ -241,7 +242,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
     這些範本語句包括具有大括弧標記法的 **Employee** 實體。
 
-1. 同樣在 [模式] 頁面上，選取 [OrgChart-Reports]  意圖，然後輸入下列範本語句：
+1. 同樣在 [模式] 頁面上，選取 [OrgChart-Reports] 意圖，然後輸入下列範本語句：
 
     |範本語句|
     |:--|
@@ -256,7 +257,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 模式現在已新增至應用程式，請在預測執行階段端點定型、發佈及查詢應用程式。
 
-1. 選取 [訓練]  。 定型完成之後，請選取 [發佈]  並選取 [生產]  位置，然後選取 [完成]  。
+1. 選取 [訓練]。 定型完成之後，請選取 [發佈] 並選取 [生產] 位置，然後選取 [完成]。
 
 1. 發佈完成後，將瀏覽器索引標籤切換回 [端點 URL] 索引標籤。
 
@@ -388,7 +389,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 ### <a name="add-new-pattern-template-utterances"></a>新增模式範本語句
 
-1. 當您還在 [建置]  的 [模式]  中時，可以新增數個模式範本語句。 從意圖下拉式功能表中選取 [OrgChart Manager]  ，並輸入以下每個範本語句：
+1. 當您還在 [建置] 的 [模式] 中時，可以新增數個模式範本語句。 從意圖下拉式功能表中選取 [OrgChart Manager]，並輸入以下每個範本語句：
 
     |Intent|包含選用文字和預先建置實體的語句範例|
     |--|--|
@@ -396,13 +397,13 @@ LUIS 應用程式中儲存了兩種類型的語句：
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. 選取導覽列中的 [定型]  來進行應用程式定型。
+2. 選取導覽列中的 [定型] 來進行應用程式定型。
 
-3. 定型完成之後，在面板頂端選取 [測試]  ，以開啟測試面板。
+3. 定型完成之後，在面板頂端選取 [測試]，以開啟測試面板。
 
 4. 輸入數個測試語句，以驗證模式符合，而且意圖分數相當高。
 
-    輸入第一個語句之後，請選取結果下方的 [檢查]  ，然後您就可以看到所有預測結果。 每個語句應該都有 **OrgChart-Manager** 意圖，且應該擷取 Employee 和 datetimeV2 實體的值。
+    輸入第一個語句之後，請選取結果下方的 [檢查]，然後您就可以看到所有預測結果。 每個語句應該都有 **OrgChart-Manager** 意圖，且應該擷取 Employee 和 datetimeV2 實體的值。
 
     |語句|
     |--|
@@ -437,7 +438,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 這會使用 **group** 圍住必要的動詞時態，以及使用選用的 `in` 和 `on` (兩者之間有 **or** 垂直線)。
 
-1. 在 [模式]  頁面上，選取 **OrgChart-Manager** 篩選器。 藉由搜尋 `manager` 來縮小清單。
+1. 在 [模式] 頁面上，選取 **OrgChart-Manager** 篩選器。 藉由搜尋 `manager` 來縮小清單。
 
 1. 保留一個範本語句版本 (以在下一個步驟中編輯) 並刪除其他變化。
 
@@ -445,9 +446,9 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-2. 選取導覽列中的 [定型]  來進行應用程式定型。
+2. 選取導覽列中的 [定型] 來進行應用程式定型。
 
-3. 定型完成之後，在面板頂端選取 [測試]  ，以開啟測試面板。
+3. 定型完成之後，在面板頂端選取 [測試]，以開啟測試面板。
 
     使用 [測試] 窗格來測試語句的版本：
 
@@ -468,39 +469,13 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 ## <a name="using-patternany-entity"></a>使用 Pattern.any 實體
 
-Pattern.any 實體可讓您尋找自由格式的資料，其中實體的用字方式使其很難從語句的剩餘部分判斷實體的結尾。
-
-這個人力資源應用程式可協助員工尋找公司表單。
-
-|語句|
-|--|
-|**HRF-123456** 在哪裡？|
-|**HRF-123234** 的作者是誰？|
-|**HRF-456098** 是以法文發行的嗎？|
-
-不過，每個表單都具備一個格式化的名稱 (上表所使用的名稱) 及一個易記名稱 (例如 `Request relocation from employee new to the company 2018 version 5`)。
-
-含有易記表單名稱的語句看起來如下：
-
-|語句|
-|--|
-|**新進員工要求調職 2018 年第 5 版**在哪裡？|
-|**「新進員工要求調職 2018 年第 5 版」** 的作者是誰？|
-|**新進員工要求調職 2018 年第 5 版**是以法文發行的嗎？|
-
-這個變動長度包含可能造成 LUIS 無法正確辨識實體結束位置的字組。 在模式中使用 Pattern.any 實體可讓您指定表單名稱的開頭和結尾，讓 LUIS 能夠正確擷取表單名稱。
-
-|範本語句的範例|
-|--|
-|{FormName} 在哪裡[?]|
-|{FormName} 的作者是誰[?]|
-|{FormName} 是以法文發行的嗎[?]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>使用 Pattern.any 新增範例語句
 
-1. 從上方瀏覽列中選取 [建置]  ，然後從左方瀏覽列中選取 [意圖]  。
+1. 從上方瀏覽列中選取 [建置]，然後從左方瀏覽列中選取 [意圖]。
 
-1. 從意圖清單中選取 [FindForm]  。
+1. 從意圖清單中選取 [FindForm]。
 
 1. 新增一些範例語句。 應預測為 Pattern.any 的文字均為**粗體文字**。 在語句中很難判斷表單名稱周圍的其他單字。 Pattern.any 可作出實體界限，因此大有幫助。
 
@@ -509,22 +484,22 @@ Pattern.any 實體可讓您尋找自由格式的資料，其中實體的用字�
     |**實驗室發生火災時該怎麼辦**的表單在哪裡，而且當我閱讀該表單之後需要誰簽名？|實驗室發生火災時該怎麼辦
     |**新進員工要求調職**位於伺服器上的何處？|新進員工要求調職|
     |「**主要校園的健康與福利要求**」的作者是誰且最新版本為何？|主要校園的健康與福利要求|
-    |我正在尋找名為「包含實體資產在內的辦公室搬遷要求」  的表單。 |Office 移動要求，包括實體資產|
+    |我正在尋找名為「包含實體資產在內的辦公室搬遷要求」的表單。 |Office 移動要求，包括實體資產|
 
     在沒有 Pattern.any 實體的情況下，LUIS 很難理解表單標題結束位置，因為表單名稱有許多種變化。
 
 ### <a name="create-a-patternany-entity"></a>建立 Pattern.any 實體
 Pattern.any 實體可擷取各種不同長度的實體。 其僅適用於模式，因為模式會以語法標示實體的開頭和結尾。
 
-1. 從左側導覽窗格中選取 [Entities] \(實體\)  。
+1. 從左側導覽窗格中選取 [Entities] \(實體\)。
 
-1. 選取 [+ 建立]  、輸入名稱 `FormName`，然後選取 [Pattern.any]  作為類型。 選取 [建立]  。
+1. 選取 [+ 建立]、輸入名稱 `FormName`，然後選取 [Pattern.any] 作為類型。 選取 [建立]。
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>新增使用 Pattern.any 的模式
 
-1. 從左側導覽窗格中選取 [Patterns] \(模式\)  。
+1. 從左側導覽窗格中選取 [Patterns] \(模式\)。
 
-1. 選取 [FindForm]  意圖。
+1. 選取 [FindForm] 意圖。
 
 1. 輸入下列使用新實體的範本語句：
 
@@ -538,17 +513,17 @@ Pattern.any 實體可擷取各種不同長度的實體。 其僅適用於模式�
 1. 將應用程式定型。
 
 ### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>測試新模式以擷取自由格式資料
-1. 從頂端列選取 [Test] \(測試\)  來開啟測試面板。
+1. 從頂端列選取 [Test] \(測試\) 來開啟測試面板。
 
 1. 輸入下列語句：
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-1. 選取結果底下的 [Inspect] \(檢查\)  ，以查看實體和意圖的測試結果。
+1. 選取結果底下的 [Inspect] \(檢查\)，以查看實體和意圖的測試結果。
 
     系統會先尋找實體 `FormName`，然後才尋找可判斷意圖的模式。 如果您的測試結果未偵測到實體，因而未找到模式，您就必須針對意圖新增更多範例語句 (而非模式)。
 
-1. 選取頂端導覽列中的 [Test] \(測試\)  按鈕。
+1. 選取頂端導覽列中的 [Test] \(測試\) 按鈕。
 
 ### <a name="using-an-explicit-list"></a>使用明確的清單
 

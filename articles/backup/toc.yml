@@ -407,8 +407,8 @@
       href: compliance-offerings.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
+    - name: Microsoft 問答集 - Azure 備份
+      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新

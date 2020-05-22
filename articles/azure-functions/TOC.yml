@@ -127,6 +127,9 @@
           href: 'functions-reference-node.md#typescript'
     - name: 安全性
       items:
+        - name: 安全性概觀
+          href: security-concepts.md
+          displayName: 'secure, ssl'
         - name: 安全性基準
           href: security-baseline.md
     - name: 診斷
@@ -332,6 +335,8 @@
       items:
         - name: 針對儲存體進行疑難排解
           href: functions-recover-storage-account.md
+        - name: 針對 Python 相依性進行疑難排解
+          href: recover-module-not-found.md
 - name: 參考
   items:
     - name: API 參考
@@ -347,12 +352,16 @@
         - name: Blob 儲存體
           items:
             - name: 概觀
+              displayName: Blob storage
               href: functions-bindings-storage-blob.md
             - name: 觸發程序
+              displayName: Blob storage
               href: functions-bindings-storage-blob-trigger.md
             - name: 輸入
+              displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
             - name: 輸出
+              displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
@@ -378,10 +387,13 @@
           items:
             - name: 概觀
               href: functions-bindings-event-grid.md
+              displayName: Event Grid
             - name: 觸發程序
               href: functions-bindings-event-grid-trigger.md
+              displayName: Event Grid
             - name: 輸出
               href: functions-bindings-event-grid-output.md
+              displayName: Event Grid
         - name: 事件中樞
           items:
             - name: 概觀
@@ -408,10 +420,13 @@
           items:
             - name: 概觀
               href: functions-bindings-http-webhook.md
+              displayName: HTTP
             - name: 觸發程序
               href: functions-bindings-http-webhook-trigger.md
+              displayName: HTTP
             - name: 輸出
               href: functions-bindings-http-webhook-output.md
+              displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
@@ -422,20 +437,26 @@
           items:
             - name: 概觀
               href: functions-bindings-storage-queue.md
+              displayName: Queue storage
             - name: 觸發程序
               href: functions-bindings-storage-queue-trigger.md
+              displayName: Queue storage
             - name: 輸出
               href: functions-bindings-storage-queue-output.md
+              displayName: Queue storage
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服務匯流排
           items:
             - name: 概觀
               href: functions-bindings-service-bus.md
+              displayName: Service Bus
             - name: 觸發程序
               href: functions-bindings-service-bus-trigger.md
+              displayName: Service Bus
             - name: 輸出
               href: functions-bindings-service-bus-output.md
+              displayName: Service Bus
         - name: SignalR Service
           items:
             - name: 概觀

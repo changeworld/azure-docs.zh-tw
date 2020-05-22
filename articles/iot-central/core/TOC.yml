@@ -6,8 +6,14 @@
       href: overview-iot-central.md
     - name: UI 導覽
       href: overview-iot-central-tour.md
+    - name: 開發裝置
+      href: overview-iot-central-developer.md
     - name: 最近更新
       items:
+        - name: 2020 年 4 月新功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: 2020 年 4 月更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
         - name: 2020 年 3 月
           href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: 快速入門
@@ -81,6 +87,8 @@
           href: howto-manage-devices.md
         - name: 設定規則
           href: howto-configure-rules.md
+        - name: 使用工作流程與其他服務整合
+          href: howto-configure-rules-advanced.md
         - name: 分析您的裝置資料
           href: howto-create-analytics.md
         - name: 將圖格新增至您的儀表板

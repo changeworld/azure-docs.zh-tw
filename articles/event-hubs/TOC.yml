@@ -133,6 +133,8 @@
   items:
     - name: 跨區域移動
       href: move-across-regions.md
+    - name: 動態新增分割區
+      href: dynamically-add-partitions.md
     - name: 使用 Blob 儲存體作為 Azure Stack Hub 上的檢查點存放區
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: 從 Azure Service Manager (傳統) API 遷移至 Resource Manager API
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: 設定虛擬網路服務端點
           href: event-hubs-service-endpoints.md
-        - name: 設定私人端點 (預覽)
+        - name: 設定私人端點
           href: private-link-service.md
         - name: 設定客戶管理的金鑰
           href: configure-customer-managed-key.md

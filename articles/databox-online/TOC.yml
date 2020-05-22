@@ -88,7 +88,11 @@
         - name: 安全性概觀
           href: azure-stack-edge-security.md
         - name: 檢閱規格
-          href: azure-stack-edge-technical-specifications-compliance.md
+          items:
+            - name: 裝置規格
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: 電源線規格
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 如何
       items:
         - name: '開發 C# 模組'
@@ -133,5 +137,5 @@
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
     - name: Azure Stack Edge/資料箱閘道產品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

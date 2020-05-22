@@ -1,5 +1,5 @@
 ---
-title: 教學課程：建置 Flask 應用程式以翻譯、合成和分析文字 - 翻譯工具文字 API
+title: 教學課程：建置 Flask 應用程式以翻譯、合成和分析文字 - 翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將建置以 Flask 為基礎的 Web 應用程式來翻譯文字、分析情緒，以及將翻譯的文字合成為語音。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397941"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592350"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教學課程：建置採用 Azure 認知服務的 Flask 應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "80397941"
 > * 取得 Azure 訂用帳戶金鑰
 > * 設定開發環境及安裝相依性
 > * 建立 Flask 應用程式
-> * 使用翻譯工具文字 API 來翻譯文字
+> * 使用翻譯工具翻譯文字
 > * 使用文字分析來分析輸入文字和翻譯的正面/負面情感
 > * 使用語音服務將翻譯的文字轉換成合成語音
 > * 在本機執行 Flask 應用程式
@@ -52,14 +52,14 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文字編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) 或 [Firefox](https://www.mozilla.org/firefox)
-* **翻譯工具文字**訂用帳戶金鑰 (請注意，您不需要選取區域。)
+* **翻譯工具**訂用帳戶金鑰 (請注意，您不需要選取區域。)
 * **美國西部**區域的**文字分析**訂用帳戶金鑰。
 * **美國西部**區域的**語音服務**訂用帳戶金鑰。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>建立帳戶並訂閱資源
 
 如前所述，您在本教學課程中將需要三個訂用帳戶金鑰。 這表示您必須在 Azure 帳戶中建立下列項目的資源：
-* 翻譯文字
+* 轉譯程式
 * 文字分析
 * 語音服務
 
@@ -245,14 +245,14 @@ def about():
 
 現在您已大致了解簡易 Flask 應用程式的運作方式，接下來我們將：
 
-* 撰寫 Python 以呼叫翻譯工具文字 API 並傳回回應
+* 撰寫 Python 以呼叫翻譯工具並傳回回應
 * 建立 Flask 路由以呼叫 Python 程式碼
 * 使用文字輸入和翻譯的區域、語言選取器和翻譯按鈕來更新 HTML
 * 撰寫可讓使用者從 HTML 與您的 Flask 應用程式互動的 Javascript
 
-### <a name="call-the-translator-text-api"></a>呼叫翻譯工具文字 API
+### <a name="call-the-translator"></a>呼叫翻譯工具
 
-首要工作是撰寫用來呼叫翻譯工具文字 API 的函式。 此函式會採用兩個引數：`text_input` 和 `language_output`。 每當有使用者在您的應用程式中按下翻譯按鈕時，就會呼叫此函式。 HTML 中的文字區域會以 `text_input` 的形式傳送，而 HTML 中的語言選取值則以 `language_output` 的形式傳送。
+首要工作是撰寫用來呼叫翻譯工具的函式。 此函式會採用兩個引數：`text_input` 和 `language_output`。 每當有使用者在您的應用程式中按下翻譯按鈕時，就會呼叫此函式。 HTML 中的文字區域會以 `text_input` 的形式傳送，而 HTML 中的語言選取值則以 `language_output` 的形式傳送。
 
 1. 首先，我們要在工作目錄的根目錄中建立名為 `translate.py` 的檔案。
 2. 接著，將下列程式碼新增至 `translate.py`。 此函式會採用兩個引數：`text_input` 和 `language_output`。
@@ -288,7 +288,7 @@ def about():
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. 新增您的翻譯工具文字訂用帳戶金鑰並儲存。
+3. 新增您的翻譯工具訂用帳戶金鑰並儲存。
 
 ### <a name="add-a-route-to-apppy"></a>將路由新增至 `app.py`
 
@@ -961,6 +961,6 @@ flask run
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Translator Text API 參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [翻譯工具參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [文字分析 API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
-  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.openlocfilehash: e379515ea34206e21f80ceb23a465858d6d4da81
+  ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80678309"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83773214"
 landingContent:
 - title: 關於 Azure 遠端轉譯
   linkLists:
@@ -58,9 +58,11 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 從頭開始設定 Unity 專案
+    - text: Unity：從頭開始設定專案
       url: tutorials/unity/project-setup.md
-    - text: 在 Unity 中使用遠端實體
+    - text: Unity：使用遠端實體
       url: tutorials/unity/working-with-remote-entities.md
-    - text: 變更環境與材質
+    - text: Unity：變更環境與材質
       url: tutorials/unity/changing-environment-and-materials.md
+    - text: Native C++：將遠端轉譯整合到 Hololens 全像攝影應用程式
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

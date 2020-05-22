@@ -13,6 +13,8 @@
       href: create-notification-hub-portal.md
     - name: 建立通知中樞 - Azure CLI
       href: create-notification-hub-azure-cli.md
+    - name: 建立通知中樞 - Azure Resource Manager 範本
+      href: create-notification-hub-template.md
     - name: 設定通知中樞
       href: configure-notification-hub-portal-pns-settings.md
 - name: 教學課程
@@ -170,7 +172,7 @@
       href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: 要求功能
       href: 'https://feedback.azure.com/forums/218849-notification-hubs'

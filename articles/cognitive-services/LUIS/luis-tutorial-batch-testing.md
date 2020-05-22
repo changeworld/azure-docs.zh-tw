@@ -2,13 +2,13 @@
 title: 教學課程：使用批次測試找出問題 - LUIS
 description: 本教學課程示範如何使用批次測試來驗證 Language Understanding (LUIS) 應用程式的品質。
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78250484"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592588"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教學課程：批次測試資料集
 
@@ -22,7 +22,7 @@ ms.locfileid: "78250484"
 * 沒有重複項目。
 * 允許的實體類型：僅限機器學習實體。
 
-使用本教學課程以外的應用程式時，請「不要」  使用已新增至應用程式的範例語句。
+使用本教學課程以外的應用程式時，請「不要」使用已新增至應用程式的範例語句。
 
 **在本教學課程中，您將了解如何：**
 
@@ -41,9 +41,11 @@ ms.locfileid: "78250484"
 
 1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true)。
 
-1. 使用[預覽 LUIS 入口網站](https://preview.luis.ai/)將 JSON 匯入至新的應用程式，並將應用程式命名為 `Pizza app`。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
+1. 將 JSON 匯入新的應用程式中，並將應用程式命名為 `Pizza app`。
 
-1. 選取導覽區右上角的 [定型]  ，為應用程式定型。
+
+1. 選取導覽區右上角的 [定型]，為應用程式定型。
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>批次檔語句應包含的內容
 
@@ -63,25 +65,25 @@ ms.locfileid: "78250484"
 
 ## <a name="run-the-batch"></a>執行批次
 
-1. 選取頂端導覽列中的 [Test] \(測試\)  。
+1. 選取頂端導覽列中的 [Test] \(測試\)。
 
-2. 選取右側面板中的 [Batch testing panel] \(批次測試面板\) 
+2. 選取右側面板中的 [Batch testing panel] \(批次測試面板\)
 
-3. 選取 [Import dataset] \(匯入資料集\)  。
+3. 選取 [Import dataset] \(匯入資料集\)。
 
     > [!div class="mx-imgBorder"]
     > ![已醒目提示 [匯入資料集] 的 LUIS 應用程式螢幕擷取畫面](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
 4. 選擇 `pizza-with-machine-learned-entity-test.json` 檔案的檔案位置。
 
-5. 將資料集命名為 `pizza test`，然後選取 [完成]  。
+5. 將資料集命名為 `pizza test`，然後選取 [完成]。
 
     > [!div class="mx-imgBorder"]
     > ![選取檔案](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
-6. 選取 [執行]  按鈕。
+6. 選取 [執行] 按鈕。
 
-7. 選取 [See results] \(查看結果\)  。
+7. 選取 [See results] \(查看結果\)。
 
 8. 檢閱圖表和圖例中的結果。
 
@@ -107,7 +109,7 @@ ms.locfileid: "78250484"
 
     篩選器清單中出現綠色核取記號時，也表示各項意圖測試成功。 所有其他意圖都會以 1/1 的正值分數列出，因為已對每個意圖測試語句，而任何意圖的反向測試都不會列於批次測試中。
 
-1. 選取 [確認]  意圖。 此意圖未列在批次測試中，因此這是批次測試中所列語句的反向測試。
+1. 選取 [確認] 意圖。 此意圖未列在批次測試中，因此這是批次測試中所列語句的反向測試。
 
     > [!div class="mx-imgBorder"]
     > ![針對批次檔中未列出的意圖成功將語句預測為負面](./media/luis-tutorial-batch-testing/true-negative-intent.png)

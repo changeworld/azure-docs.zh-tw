@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982697"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592758"
 ---
 # <a name="what-is-custom-translator"></a>什麼是自訂翻譯工具？
 
@@ -34,7 +34,7 @@ ms.locfileid: "75982697"
 |[建置知道您商務術語的系統](what-are-parallel-documents.md)     |  使用平行處理的文件來自訂和建置翻譯系統，其了解您自己的企業和產業中所使用的術語。       |
 |[使用字典來建置模型](what-is-dictionary.md)     |   如果您沒有訓練資料集，則可以只使用字典資料來訓練模型。       |
 |[與其他人共同作業](how-to-manage-settings.md#share-your-workspace)     |   藉由與不同的人共享工作，來與您的小組共同作業。     |
-|[存取自訂翻譯模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  現有應用程式/程式隨時可以透過 Microsoft Translator 文字 API V3 存取您的自訂轉譯模型。       |
+|[存取自訂翻譯模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  現有應用程式/程式可隨時透過 Translator V3 存取您的自訂翻譯模型。       |
 
 ## <a name="get-better-translations"></a>獲得更好的翻譯
 
@@ -54,11 +54,11 @@ Microsoft Translator 在 2016 年發行了[類神經機器翻譯 (NMT)](https://
 
 透過[專用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (目前處於預覽狀態)，也能以程式設計方式存取[自訂翻譯工具](https://portal.customtranslator.azure.ai)。 此 API 可讓使用者透過自己的應用程式或 WebService，定期管理訓練的建立或更新。
 
-使用自訂模型來翻譯內容的成本，取決於使用者的「翻譯工具文字 API」定價層。 如需定價層的詳細資料，請參閱認知服務[翻譯工具文字 API 定價網頁](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
+使用自訂模型來翻譯內容的成本，取決於使用者的翻譯工具定價層。 如需定價層的詳細資料，請參閱認知服務[翻譯工具定價網頁](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>隨時隨地在所有應用程式和服務上安全地進行翻譯
 
-透過標準 REST 技術，自訂系統可供透過 Microsoft Translator 文字 API 順暢地進行存取並整合到任何產品或商務工作流程中，且不受裝置限制。
+透過標準 REST 技術，自訂系統可供透過翻譯工具順暢地進行存取並整合到任何產品或商務工作流程中，且不受裝置限制。
 
 ## <a name="next-steps"></a>後續步驟
 

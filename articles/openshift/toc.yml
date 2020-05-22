@@ -1,10 +1,12 @@
 - name: Azure Red Hat OpenShift
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 關於 Azure Red Hat OpenShift
       href: intro-openshift.md
 - name: 教學課程
+  expanded: true
   items:
     - name: 1 - 建立 Azure Red Hat OpenShift 4 叢集
       href: tutorial-create-cluster.md
@@ -13,7 +15,6 @@
     - name: 3 - 刪除 Azure Red Hat OpenShift 4 叢集
       href: tutorial-delete-cluster.md
 - name: 操作指南
-  expanded: true
   items:
     - name: 建立私人 Azure Red Hat OpenShift 4 叢集
       href: howto-create-private-cluster-4x.md
@@ -37,7 +38,6 @@
       items:
         - name: 針對 Azure Red Hat OpenShift 3.11 設定您的 Azure Red Hat OpenShift 開發環境
           href: howto-setup-environment.md
-          expanded: true
           items:
             - name: 建立 Azure AD 租用戶
               href: howto-create-tenant.md
@@ -85,7 +85,9 @@
       href: support-policies-v4.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Red Hat OpenShift 文件
-      href: 'https://docs.openshift.com/aro/welcome/index.html'
+    - name: Azure Red Hat OpenShift 4.3 文件
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
+    - name: Azure Red Hat OpenShift 3.11 文件
+      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'

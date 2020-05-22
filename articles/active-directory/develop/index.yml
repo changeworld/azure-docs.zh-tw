@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: f5b1594993a1d4361746847439374dd2b7122510
-  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.openlocfilehash: 71f591f04e8762761c449ca4924db5edb4de3f6c
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/31/2020
-  ms.locfileid: "80420109"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83681775"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
@@ -30,16 +30,14 @@ landingContent:
     links:
     - text: 驗證基本概念
       url: authentication-scenarios.md
-    - text: 涵蓋基本概念的影片
-      url: identity-videos.md
     - text: 驗證流程和應用程式案例
       url: authentication-flows-app-scenarios.md
     - text: 最佳做法和建議
       url: identity-platform-integration-checklist.md
-  - linkListType: learn
+  - linkListType: video
     links:
-    - text: One Dev Minute - Microsoft 身分識別平台
-      url: https://youtu.be/y_fgJAatVhk
+    - text: 序列：適用於開發人員的身分識別平台
+      url: identity-videos.md
 - title: 建置單頁應用程式
   linkLists:
   - linkListType: get-started
@@ -48,13 +46,17 @@ landingContent:
       url: scenario-spa-overview.md
   - linkListType: quickstart
     links:
-    - text: JavaScript
+    - text: JavaScript - 驗證碼
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript - 隱含
       url: quickstart-v2-javascript.md
     - text: Angular
       url: quickstart-v2-angular.md
   - linkListType: tutorial
     links:
-    - text: JavaScript
+    - text: JavaScript - 驗證碼
+      url: tutorial-v2-javascript-auth-code.md
+    - text: JavaScript - 隱含
       url: tutorial-v2-javascript-spa.md
   - linkListType: download
     links:

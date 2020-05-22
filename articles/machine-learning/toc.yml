@@ -79,9 +79,8 @@
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: 設計工具資料集
-      href: sample-designer-datasets.md
-    - name: 設計工具範例管線
+    - name: 設計工具範例與資料集
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: 端對端 MLOps 範例
       href: 'https://github.com/microsoft/MLOps'
@@ -261,6 +260,9 @@
             - name: 版本和追蹤資料集
               displayName: 'data, data set'
               href: how-to-version-track-datasets.md
+            - name: 保留資料隱私權
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
     - name: 將模型定型
       items:
         - name: 為 ML 使用估算器
@@ -376,6 +378,9 @@
               href: how-to-monitor-data-drift.md
             - name: 使用 Application Insights 進行監視
               href: how-to-enable-app-insights.md
+        - name: 部署加密的推斷服務
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
     - name: 建置及使用 ML 管線
       displayName: pipelines
       items:
@@ -393,9 +398,6 @@
         - name: 對 Application Insights 中的管線進行偵錯
           displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
-        - name: 適用於 CI/CD 的 Azure Pipelines
-          displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: 設計工具轉換資料
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -417,6 +419,9 @@
         - name: 反覆運算和進化機器學習管線
           displayName: modularizing testing
           href: concept-pipeline-practices-tips.md
+    - name: 適用於 CI/CD 的 Azure Pipelines
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: 管理資源配額
       displayName: limits
       href: how-to-manage-quotas.md

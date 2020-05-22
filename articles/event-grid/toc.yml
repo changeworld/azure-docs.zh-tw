@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure 訂用帳戶
               href: event-schema-subscriptions.md
+    - name: 合作夥伴主題
+      items:
+        - name: 合作夥伴主題概觀
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: 變成 Event Grid 合作夥伴
+          href: partner-onboarding-overview.md
     - name: 事件網域
       href: event-domains.md
     - name: 事件結構描述格式
@@ -186,6 +194,8 @@
   items:
     - name: 張貼到自訂主題
       href: post-to-custom-topic.md
+    - name: 訂閱 Auth0 事件
+      href: auth0-how-to.md
     - name: 接收 HTTP 端點的事件
       href: receive-events.md
     - name: 無法寄出信件並重試
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: 使用 AAD 保護 WebHook
           href: secure-webhook-delivery.md
+        - name: 使用受控識別進行事件傳遞
+          href: managed-service-identity.md
     - name: 疑難排解
       items:
         - name: 啟用診斷記錄
