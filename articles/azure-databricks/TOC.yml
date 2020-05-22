@@ -1623,20 +1623,6 @@
                     - name: Azure AD 權杖驗證概觀
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: 使用 Azure AD 驗證程式庫來取得 Azure AD 權杖
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: 使用服務主體來取得 Azure AD 權杖
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: 針對 Azure AD 存取權杖進行疑難排解
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory 權杖
-                  items:
-                    - name: Azure AD 權杖驗證概觀
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: 使用 AAD 驗證程式庫來取得 Azure AD 權杖
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
