@@ -1,14 +1,14 @@
 ---
 title: 教學課程：預測用意 - LUIS
-description: 在本教學課程中，建立自訂應用程式來預測使用者的用意。 此應用程式不會擷取語句文字中的各種資料元素 (例如電子郵件地址或日期)，因此是最簡單的 LUIS 應用程式類型。
+description: 在本教學課程中建立自訂應用程式，以根據語句 (文字) 預測使用者的用意。
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80286739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588924"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教學課程：建置 LUIS 應用程式來判斷使用者意圖
 
@@ -37,7 +37,7 @@ ms.locfileid: "80286739"
 |`ModifyOrder`|判斷使用者的披薩訂單。|
 |`Greeting`|開始進行 Bot 對話。|
 |`ConfirmOrder`|確認披薩訂單。|
-|`None`|判斷使用者是否詢問應用程式不該回答的事項。 此意圖是在應用程式建立過程中提供，且無法刪除。 |
+|`None`|判斷使用者是否詢問了應用程式無法適當回答的事項。 此意圖會在應用程式建立過程中提供，且無法刪除。 |
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
@@ -49,7 +49,7 @@ ms.locfileid: "80286739"
 
 若要將語句分類，意圖需要應歸類為此意圖的使用者語句範例。
 
-1. 在 [意圖]  頁面上的 [建置]  區段中，選取 [+ 建立]  以建立新意圖。 輸入新意圖名稱 `OrderPizza`，然後選取 [完成]  。
+1. 在 [意圖] 頁面上的 [建置] 區段中，選取 [+ 建立] 以建立新意圖。 輸入新意圖名稱 `OrderPizza`，然後選取 [完成]。
 
     當使用者想要訂購披薩時，系統就會預測 `OrderPizza` 意圖。
 
@@ -64,9 +64,10 @@ ms.locfileid: "80286739"
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![新增範例語句](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![在 LUIS 入口網站中的 [意圖] 頁面上新增範例語句的螢幕擷取畫面](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    藉由提供_範例語句_，您可以教導 LUIS 應針對此意圖預測哪些種類的語句。
+    藉由提供_範例語句_，您可以教導 LUIS 應針對此意圖預測哪些種類的語句。 這些是正面範例。 所有其他意圖中的語句都會被視為此意圖的負面範例。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -178,6 +179,8 @@ ms.locfileid: "80286739"
 
 ## <a name="client-application-next-steps"></a>用戶端應用程式的後續步驟
 
+本教學課程已在端點上建立 LUIS 應用程式、建立意圖、新增每個意圖的範例語句、將範例語句新增至 None 意圖、進行訓練、發佈及測試。 這些是建置 LUIS 模型的基本步驟。
+
 在 LUIS 傳回 JSON 回應之後，隨著此要求完成 LUIS。 LUIS 不會提供使用者語句的回答，只會在自然語言中識別所要求的是哪一類資訊。 Azure Bot 等用戶端應用程式會提供交談式後續追蹤。
 
 
@@ -193,8 +196,6 @@ ms.locfileid: "80286739"
 
 
 ## <a name="next-steps"></a>後續步驟
-
-本教學課程已在端點上建立 LUIS 應用程式、建立意圖、新增每個意圖的範例語句、將範例語句新增至 None 意圖、進行訓練、發佈及測試。 這些是建置 LUIS 模型的基本步驟。
 
 > [!div class="nextstepaction"]
 > [將可分解實體新增至此應用程式](tutorial-machine-learned-entity.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 217bf672761d5e5dfb2e9112266dc3381b96e3fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "69906738"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586601"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > 如果您未曾使用這些模組，則必須先加以安裝，再執行您的程式。 若要安裝這些套件，請執行：`pip install requests uuid`。
 
-第一個註解會指出您的 Python 解譯器應使用 UTF-8 編碼。 然後，所需的模組會匯入，並從環境變數中讀取您的訂用帳戶金鑰、建構 HTTP 要求、建立唯一的識別碼，並處理翻譯工具文字 API 所傳回的 JSON 回應。
+第一個註解會指出您的 Python 解譯器應使用 UTF-8 編碼。 然後，所需的模組會匯入，並從環境變數中讀取您的訂用帳戶金鑰、建構 HTTP 要求、建立唯一的識別碼，並處理翻譯工具所傳回的 JSON 回應。
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>設定訂用帳戶金鑰、端點和路徑
 
-此範例會嘗試從環境變數：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
+此範例會嘗試從環境變數 `TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscription_key` 和 `endpoint` 設為字串，並註解化條件陳述式。
 
 請將下列程式碼複製到您的專案中：
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-翻譯工具文字全域端點會設定為 `endpoint`。 `path` 會設定 `translate` 路由，並指出我們要叫用第 3 版的 API。
+翻譯工具全域端點會設定為 `endpoint`。 `path` 會設定 `translate` 路由，並指出我們要叫用第 3 版的 API。
 
 `params` 會用來設定輸出語言。 在此範例中，我們會將英文翻譯成義大利文和德文：`it` 和 `de`。
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具 3.0：翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)。
 
 ```python
 path = '/translate?api-version=3.0'
@@ -104,7 +104,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-如此，您就建立了一個簡單的程式，會呼叫翻譯工具文字 API 並傳回 JSON 回應。 現在，請執行您的程式：
+如此，您就建立了一個簡單的程式，會呼叫翻譯工具並傳回 JSON 回應。 現在，請執行您的程式：
 
 ```console
 python translate-text.py
@@ -141,7 +141,7 @@ python translate-text.py
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 API 參考，以了解您可以使用翻譯工具文字 API 執行的所有作業。
+查看 API 參考，以了解您可以使用翻譯工具執行的所有作業。
 
 > [!div class="nextstepaction"]
 > [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

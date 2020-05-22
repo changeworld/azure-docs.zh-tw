@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 649af0d3b1503a5607717c4ccbadd8f1d822be32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "69906972"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586839"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ const uuidv4 = require('uuid/v4');
 
 ## <a name="set-the-endpoint"></a>設定端點
 
-此範例會嘗試從環境變數：`TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字端點。 如果您不熟悉環境變數，您可以將 `endpoint` 設為字串，並註解化條件陳述式。
+此範例會嘗試從環境變數 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具端點。 如果您不熟悉環境變數，您可以將 `endpoint` 設為字串，並註解化條件陳述式。
 
 ```javascript
 lorum ipsum
@@ -42,7 +42,7 @@ lorum ipsum
 `request()` 方法 (可透過要求模組取得) 可讓我們傳遞 HTTP 方法、URL、要求參數、標頭和 JSON 內文作為 `options` 物件。 在此程式碼片段中，我們將設定要求：
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具 3.0：語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-如此，您就建立了一個簡單的程式，會呼叫翻譯工具文字 API 並傳回 JSON 回應。 現在，請執行您的程式：
+如此，您就建立了一個簡單的程式，會呼叫翻譯工具並傳回 JSON 回應。 現在，請執行您的程式：
 
 ```console
 node get-languages.js
@@ -181,7 +181,7 @@ node get-languages.js
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 API 參考，以了解您可以使用翻譯工具文字 API 執行的所有作業。
+查看 API 參考，以了解您可以使用翻譯工具執行的所有作業。
 
 > [!div class="nextstepaction"]
 > [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

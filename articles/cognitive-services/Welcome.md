@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169099"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588287"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
 
@@ -52,7 +52,7 @@ Azure 認知服務是用來協助開發人員建置智慧型應用程式，且�
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding 服務 (LUIS) 可讓應用程式了解人在文字中所表達的意思。|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker 可讓您從半結構化內容建置問題與解答服務。|
 |[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文字分析")|文字分析可針對原始文字進行自然語言處理，進行情感分析、關鍵片語擷取和語言偵測。|
-|[翻譯工具文字](https://docs.microsoft.com/azure/cognitive-services/translator/ "翻譯文字")|翻譯工具文字提供幾乎即時的機器式文字翻譯。|
+|[翻譯工具](https://docs.microsoft.com/azure/cognitive-services/translator/ "轉譯程式")|翻譯工具可提供近乎即時的機器文字翻譯。|
 
 
 ## <a name="search-apis"></a>搜尋 API

@@ -1,7 +1,7 @@
 ---
-title: 快速入門：取得支援的語言清單 - 翻譯工具文字 API
+title: 快速入門：取得支援的語言清單 - 翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您可以使用翻譯工具文字 API，取得翻譯、直譯及查閱字典時所支援的語言清單。
+description: 在本快速入門中，您可以使用翻譯工具，取得翻譯、直譯及查閱字典時所支援的語言清單。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: bfb8b9d81496d10601bf6e6cfeb26d18b57e3eca
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77525136"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586840"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>快速入門：使用翻譯工具文字 API 取得支援的語言清單
+# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>快速入門：使用翻譯工具取得支援的語言清單
 
-在本快速入門中，您可以使用翻譯工具文字 API，取得翻譯、直譯及查閱字典時所支援的語言清單。
+在本快速入門中，您可以使用翻譯工具，取得翻譯、直譯及查閱字典時所支援的語言清單。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]

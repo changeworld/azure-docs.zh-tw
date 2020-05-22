@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370233"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587083"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入門：建置、部署和使用自訂模型來進行翻譯
 
@@ -24,13 +24,13 @@ ms.locfileid: "80370233"
 
 1. 若要使用[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站，您必須擁有 [Microsoft 帳戶](https://signup.live.com)或 [Azure AD 帳戶](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (裝載於 Azure 上的組織帳戶) 以便進行登入。
 
-2. 可透過 Azure 入口網站來使用的翻譯工具文字 API 訂用帳戶。 您必須有翻譯工具文字 API 訂用帳戶金鑰，才能與工作區相關聯。 請參閱[如何註冊翻譯工具文字 API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
+2. 透過 Azure 入口網站訂閱翻譯工具。 您必須要有翻譯工具訂用帳戶金鑰，才能與自訂翻譯工具中的工作區相關聯。 請參閱[如何註冊翻譯工具](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
 
 3. 當您擁有上述兩帳戶時，請登入[自訂翻譯](https://portal.customtranslator.azure.ai)入口網站來建立工作區、專案、上傳檔案，以及建立/部署模型。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
-如果您是第一次登入的使用者，系統會要求您先同意服務條款，才能建立工作區，並將您的工作區與 Microsoft 翻譯工具文字 API 訂用帳戶建立關聯。
+如果您是第一次登入的使用者，系統會要求您先同意服務條款，才能建立工作區，並將您的工作區與翻譯工具訂用帳戶建立關聯。
 
 ![建立工作區](media/quickstart/terms-of-service.png)
 ![建立工作區](media/quickstart/create-workspace-1.png)
@@ -40,7 +40,7 @@ ms.locfileid: "80370233"
 ![建立工作區](media/quickstart/create-workspace-5.png)
 ![建立工作區](media/quickstart/create-workspace-6.png)
 
-之後造訪自訂翻譯入口網站時，您可以瀏覽至可管理工作區的 [設定] 頁面來建立更多工作區、將 Microsoft 翻譯工具文字 API 訂用帳戶金鑰與您的工作區建立關聯、新增共同擁有者，以及變更訂用帳戶金鑰。
+之後造訪自訂翻譯入口網站時，您可以瀏覽至可管理工作區的 [設定] 頁面、建立更多工作區、將翻譯工具訂用帳戶金鑰與您的工作區建立關聯、新增共同擁有者，以及變更訂用帳戶金鑰。
 
 ## <a name="create-a-project"></a>建立專案
 
@@ -83,7 +83,7 @@ ms.locfileid: "80370233"
 
 ## <a name="use-a-deployed-model"></a>使用已部署的模型
 
-已部署的模型可透過 Microsoft 翻譯工具[文字 API V3 (藉由指定 CategoryID)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 來存取。 如需翻譯工具文字 API 的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
+已部署的模型可透過 Microsoft 翻譯工具[文字 API V3 (藉由指定 CategoryID)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 來存取。 如需翻譯工具的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
 
 ## <a name="next-steps"></a>後續步驟
 

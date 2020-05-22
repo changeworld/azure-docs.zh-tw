@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 513de6d990884f9abf2378ea208ec1dbe556d397
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "69907207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587124"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>建立 JSON 回應的類別
 
-接下來，我們將建立在還原序列化翻譯工具文字 API 所傳回的 JSON 回應時所使用的類別。
+接下來，我們將建立在還原序列化翻譯工具所傳回的 JSON 回應時所使用的類別。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class DetectResult
 {
@@ -191,7 +191,7 @@ foreach (DetectResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一個步驟是在 `DetectTextRequest()` 中呼叫 `Main`。 找出 `static void Main(string[] args)` 並將其取代為下列程式碼：
+最後一個步驟是在 `Main` 中呼叫 `DetectTextRequest()`。 找出 `static void Main(string[] args)` 並將其取代為下列程式碼：
 
 ```csharp
 static async Task Main(string[] args)
@@ -270,7 +270,7 @@ Transliteration supported: False.
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 API 參考，以了解您可以使用翻譯工具文字 API 執行的所有作業。
+查看 API 參考，以了解您可以使用翻譯工具執行的所有作業。
 
 > [!div class="nextstepaction"]
 > [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

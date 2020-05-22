@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1030afe802eebb385b4d0d662e8fd233790a445f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "69906712"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586602"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -30,7 +30,7 @@ cd translator-sample
 gradle init --type basic
 ```
 
-出現選擇 **DSL** 的提示時，請選取 [Kotlin]  。
+出現選擇 **DSL** 的提示時，請選取 [Kotlin]。
 
 ## <a name="configure-the-build-file"></a>設定組建檔案
 
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>建立用以剖析回應的函式
 
-這個簡單的函式會剖析並美化翻譯工具文字服務的 JSON 回應。
+這個簡單的函式會剖析並美化翻譯工具服務的 JSON 回應。
 
 ```java
 // This function prettifies the json response.
@@ -192,7 +192,7 @@ gradle run
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 API 參考，以了解您可以使用翻譯工具文字 API 執行的所有作業。
+查看 API 參考，以了解您可以使用翻譯工具執行的所有作業。
 
 > [!div class="nextstepaction"]
 > [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

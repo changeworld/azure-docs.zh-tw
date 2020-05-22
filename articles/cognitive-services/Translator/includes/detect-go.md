@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 7f3824ba4683c5ade4ac5bb84b853caf72e1073b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71837537"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587125"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>建立 main 函式
 
-此範例會嘗試從這些環境變數：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具文字訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscriptionKey` 和 `endpoint` 設為字串，並為條件陳述式加上註解。
+此範例會嘗試從環境變數 `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT` 中讀取您的翻譯工具訂用帳戶金鑰和端點。 如果您不熟悉環境變數，可以將 `subscriptionKey` 和 `endpoint` 設為字串，並為條件陳述式加上註解。
 
 請將下列程式碼複製到您的專案中：
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-detect-the-text-language"></a>建立可偵測文字語言的函式
 
-讓我們來建立可偵測文字語言的函式。 此函式將會接受單一引數：您的翻譯工具文字訂用帳戶金鑰。
+讓我們來建立可偵測文字語言的函式。 此函式將會採用單一引數：您的翻譯工具訂用帳戶金鑰。
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -90,7 +90,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具文字 API 3.0：偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)。
+> 如需關於端點、路由和要求參數的詳細資訊，請參閱[翻譯工具 3.0：偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)。
 
 ## <a name="create-a-struct-for-your-request-body"></a>建立您的要求本文結構
 
@@ -108,7 +108,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>建立要求
 
-既然您已將要求本文編碼為 JSON，您就可以建置 POST 要求並呼叫翻譯工具文字 API。
+現在您已將要求本文編碼為 JSON，接下來即可建置 POST 要求，並呼叫翻譯工具。
 
 ```go
 // Build the HTTP POST request
@@ -120,7 +120,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -146,7 +146,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-如此，您就建立了一個簡單的程式，會呼叫翻譯工具文字 API 並傳回 JSON 回應。 現在，請執行您的程式：
+如此，您就建立了一個簡單的程式，會呼叫翻譯工具並傳回 JSON 回應。 現在，請執行您的程式：
 
 ```console
 go run detect-language.go
@@ -189,7 +189,7 @@ go run detect-language.go
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 API 參考，以了解您可以使用翻譯工具文字 API 執行的所有作業。
+查看 API 參考，以了解您可以使用翻譯工具執行的所有作業。
 
 > [!div class="nextstepaction"]
 > [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

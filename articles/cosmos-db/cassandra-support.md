@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 978dbf3d8e6a92242c0a984b26bb35cf911a3369
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80420160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590415"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -104,9 +104,13 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 * Azure 入口網站的資料總管、計量、記錄診斷、PowerShell 及 CLI 均為其他支援管理帳戶的機制。
 
-## <a name="cql-shell"></a>CQL Shell  
+## <a name="hosted-cql-shell-preview"></a>裝載的 CQL Shell (預覽)
 
-CQLSH 命令列公用程式隨附 Apache Cassandra 3.1.1，而且只需設定一些環境變數即可立即運作。
+您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
+
+![CQLSH](./media/cassandra-support/cqlsh.png)
+
+您也可以使用本機電腦上安裝的 CQLSH 連線至 Azure Cosmos DB 中的 Cassandra API。 其中隨附 Apache Cassandra 3.1.1，且只需設定環境變數即可立即運作。 以下幾節包含相關指示，可引導您在 Windows 或 Linux 上使用 CQLSH 安裝、設定及連線至 Azure Cosmos DB 中的 Cassandra API。
 
 **Windows：**
 
@@ -198,9 +202,8 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>使用 Cassandra 重試連線原則
 
-Azure Cosmos DB 是資源控管系統。 這表示您可以根據作業所取用的要求單位，在規定的秒數內執行特定數量的作業。 如果應用程式在規定的秒數內超過該限制，則要求會受到速率限制，並且會擲回例外狀況。 Azure Cosmos DB 中的 Cassandra API 會將這些例外狀況轉譯成 Cassandra 原生通訊協定上的多載錯誤。 為了確保您的應用程式可以在發生速率限制時攔截並重試要求，因而提供 [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) 和 [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 擴充功能。 如果您使用其他 SDK 來存取 Azure Cosmos DB 中的 Cassandra API，請建立連線原則以在這些例外狀況重試。
+Azure Cosmos DB 是資源控管系統。 這表示您可以根據作業所取用的要求單位，在規定的秒數內執行特定數量的作業。 如果應用程式在規定的秒數內超過該限制，則要求會受到速率限制，並且會擲回例外狀況。 Azure Cosmos DB 中的 Cassandra API 會將這些例外狀況轉譯成 Cassandra 原生通訊協定上的多載錯誤。 為了確保您的應用程式可以在發生速率限制時攔截並重試要求，因而提供了 [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) 和 [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 擴充功能。 連線至 Azure Cosmos DB 中的 Cassandra API 時，另請參閱[第 3 版](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)和[第 4 版](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) Datastax 驅動程式的 Java 程式碼範例。 如果您使用其他 SDK 來存取 Azure Cosmos DB 中的 Cassandra API，請建立連線原則以在這些例外狀況重試。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 開始使用 Java 應用程式來[建立 Cassandra API 帳戶、資料庫及資料表](create-cassandra-api-account-java.md)。
-

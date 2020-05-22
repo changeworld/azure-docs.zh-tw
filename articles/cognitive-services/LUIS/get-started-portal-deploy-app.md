@@ -2,13 +2,13 @@
 title: 快速入門：使用 LUIS 入口網站部署應用程式
 description: 此快速入門說明如何藉由建立預測端點資源、指派資源、訓練及發佈應用程式來部署應用程式。
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756299"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585049"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -30,15 +30,15 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 
 每當您為 LUIS 建立新製作或查詢預測資源時，都需要將資源指派給 LUIS 應用程式。 指派之後，除非您建立新的資源，否則不需要再次執行此步驟。 您可以建立新的資源，以擴充您的應用程式區域，或支援更多預測查詢數目。
 
-1. 登入[預覽 LUIS 入口網站](https://preview.luis.ai)，從應用程式清單中選擇 **myEnglishApp** 應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，從應用程式清單中選擇 **myEnglishApp** 應用程式。
 
-1. 選取右上方功能表中的 [管理]  ，然後選取 [Azure 資源]  。
+1. 選取右上方功能表中的 [管理]，然後選取 [Azure 資源]。
 
-1. 若要新增 LUIS，請選取 [新增預測資源]  。
+1. 若要新增 LUIS，請選取 [新增預測資源]。
 
     ![若要新增 LUIS 預測資源，請選取 [新增預測資源]。](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. 選取您的租用戶、訂用帳戶和資源群組。 選取 [指派資源]  。
+1. 選取您的租用戶、訂用帳戶和資源群組。 選取 [指派資源]。
 
    ![將資源指派給應用程式](./media/get-started-portal-deploy-app/assign-resource.png)
 
@@ -47,7 +47,7 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 1. 在新預測資源的資料表中尋找新的資料列並複製端點 URL。 以正確方式建構，可對 LUIS API 端點提出 `HTTP GET` 要求進行預測。
 
 > [!TIP]
-> 如果您想要使用主動式學習來改善 LUIS 應用程式，請選取 [變更查詢參數]  ，然後選取 [儲存記錄]  。 此動作會藉由新增 `log=true` 查詢字串參數來變更範例 URL。 對執行階段端點進行預測查詢時，請複製並使用已變更的範例查詢 URL。
+> 如果您想要使用主動式學習來改善 LUIS 應用程式，請選取 [變更查詢參數]，然後選取 [儲存記錄]。 此動作會藉由新增 `log=true` 查詢字串參數來變更範例 URL。 對執行階段端點進行預測查詢時，請複製並使用已變更的範例查詢 URL。
 
 ## <a name="train-the-app"></a>進行應用程式定型
 
@@ -59,7 +59,7 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 
 ## <a name="prediction-endpoint-request"></a>預測端點要求
 
-在預覽入口網站中，URL 結尾的 `query=` 是使用者的語句附加至 GET 要求之處。 在 `query=` 後面，輸入於先前快速入門結尾使用的相同使用者表達：
+在入口網站中，URL 結尾的 `query=` 是使用者的語句附加至 GET 要求之處。 在 `query=` 後面，輸入於先前快速入門結尾使用的相同使用者表達：
 
 ```Is there a form named hrf-234098```
 
@@ -107,13 +107,13 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 }
 ```
 
-若要在 [測試] 窗格中看到和此相同層級的資訊，您必須發佈應用程式。 發佈應用程式之後，請選取[測試] 窗格中的 [與已發行比較]  。 在發佈的測試窗格中，使用 [顯示 JSON 檢視]  ，即可查看和上一個步驟相同的 JSON。 如此一來，您即可比較目前作業所在應用程式的變更與已發佈至端點的應用程式。
+若要在 [測試] 窗格中看到和此相同層級的資訊，您必須發佈應用程式。 發佈應用程式之後，請選取[測試] 窗格中的 [與已發行比較]。 在發佈的測試窗格中，使用 [顯示 JSON 檢視]，即可查看和上一個步驟相同的 JSON。 如此一來，您即可比較目前作業所在應用程式的變更與已發佈至端點的應用程式。
 
 [![比較目前正在編輯與已發佈的應用程式版本](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您完成本快速入門時，請從頂端導覽功能表中，選取 [我的應用程式]  。 從清單中選取應用程式的核取方塊，再從清單上方的內容工具列中選取 [刪除]  。
+您完成本快速入門時，請從頂端導覽功能表中，選取 [我的應用程式]。 從清單中選取應用程式的核取方塊，再從清單上方的內容工具列中選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

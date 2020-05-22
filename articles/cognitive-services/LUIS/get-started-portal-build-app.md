@@ -2,13 +2,13 @@
 title: 快速入門：在 LUIS 入口網站中建立新的應用程式
 description: 在本快速入門中，您會建立應用程式、意圖和實體的基本部分，以及在 LUIS 入口網站中使用範例語句進行測試。
 ms.topic: quickstart
-ms.date: 04/14/2020
-ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/05/2020
+ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382575"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585179"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
@@ -18,12 +18,12 @@ ms.locfileid: "81382575"
 
 ## <a name="create-an-app"></a>建立應用程式
 
-1. 從內容工具列中選取 [+ 新增對話應用程式]  ，然後選取 [新增對話應用程式]  。
+1. 從內容工具列中選取 [+ 新增對話應用程式]，然後再次選取 [+ 新增對話應用程式]。
 
     > [!div class="mx-imgBorder"]
-    > [![在 LUIS 入口網站中建立新的應用程式](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [![在 LUIS 入口網站中建立新應用程式的螢幕擷取畫面](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
-1. 在快顯視窗中，使用下列設定進行應用程式設定，然後選取 [完成]  。
+1. 在快顯視窗中，使用下列設定進行應用程式設定，然後選取 [完成]。
 
    |設定名稱| 值 | 目的|
    |--|--|--|
@@ -32,7 +32,7 @@ ms.locfileid: "81382575"
    |說明 (選擇性)|`App made with LUIS Portal`|應用程式的描述<br>選用|
    |預測資源 (選擇性) |-  |請勿選取。 LUIS 提供入門金鑰，可免費用於製作 1000 個預測端點要求。 |
 
-   ![輸入新的應用程式設定](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![輸入新應用程式設定的螢幕擷取畫面](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>建議意圖
 
@@ -41,7 +41,7 @@ ms.locfileid: "81382575"
  1. 尋找和應徵工作
  1. 找到應徵工作的表單
 
-應用程式的兩個不同「目的」  均符合下列意圖：
+應用程式的兩個不同「目的」均符合下列意圖：
 
 |Intent|使用者的文字範例<br>稱為_語句_|
 |--|--|
@@ -50,11 +50,11 @@ ms.locfileid: "81382575"
 
 若要建立意圖，請完成下列步驟：
 
-1. 應用程式建立後，您會在 [建置]  區段的 [意圖]  頁面上。 選取 [建立]  。
+1. 應用程式建立後，您會在 [建置] 區段的 [意圖] 頁面上。 選取 [建立]。
 
-   [![選取建立以建立新的意圖](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![選取 [建立] 以建立新意圖的螢幕擷取畫面](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. 輸入意圖名稱 `FindForm`，然後選取 [完成]  。
+1. 輸入意圖名稱 `FindForm`，然後選取 [完成]。
 
 ## <a name="add-an-example-utterance"></a>新增範例語句
 
@@ -63,27 +63,27 @@ ms.locfileid: "81382575"
 至於此範例應用程式的 `FindForm` 意圖，範例語句會納入表單號碼。 用戶端應用程式需要表單號碼才能滿足使用者的要求，因此必須將表單號碼包含在表達中。
 
 > [!div class="mx-imgBorder"]
-> [![輸入 FindForm 意圖的範例語句](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [![輸入 FindForm 意圖範例語句的螢幕擷取畫面](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 請將下列 15 個範例語句新增至 `FindForm` 意圖。
 
 |#|範例語句|
 |--|--|
-|1|尋找 hrf-123456|
-|2|人力資源表單 hrf-234591 在哪裡？|
-|3|hrf-345623 在哪裡|
-|4|可以將 hrf-345794 傳送給我嗎|
-|5|應徵內部工作需要 hrf-234695 嗎？|
-|6|我的經理需要知道我要應徵 hrf-234091 的工作嗎|
-|7|hrf-234918 應傳送至何處？ 送到時我會收到電子郵件回應嗎？|
-|8|hrf-234555|
-|9|何時更新了 hrf-234987？|
-|10|應徵工程師職位應使用 hrf-876345 表單嗎|
-|11|我的公開徵才提交的是新版的 hrf-765234 嗎？|
-|12|應徵國際職位應使用 hrf-234234 嗎？|
-|13|hrf-234598 有拼字錯誤|
-|14|有新的需求應編輯 hrf-234567 嗎|
-|15|hrf-123456、hrf-123123、hrf-234567|
+|1|`Looking for hrf-123456`|
+|2|`Where is the human resources form hrf-234591?`|
+|3|`hrf-345623, where is it`|
+|4|`Is it possible to send me hrf-345794`|
+|5|`Do I need hrf-234695 to apply for an internal job?`|
+|6|`Does my manager need to know I'm applying for a job with hrf-234091`|
+|7|`Where do I send hrf-234918? Do I get an email response it was received?`|
+|8|`hrf-234555`|
+|9|`When was hrf-234987 updated?`|
+|10|`Do I use form hrf-876345 to apply for engineering positions`|
+|11|`Was a new version of hrf-765234 submitted for my open req?`|
+|12|`Do I use hrf-234234 for international jobs?`|
+|13|`hrf-234598 spelling mistake`|
+|14|`will hrf-234567 be edited for new requirements`|
+|15|`hrf-123456, hrf-123123, hrf-234567`|
 
 依據設計，這些範例語句有下列方面的不同：
 
@@ -96,20 +96,21 @@ ms.locfileid: "81382575"
 
 ## <a name="create-a-regular-expression-entity"></a>建立規則運算式實體
 
-若要在執行階段預測回應中傳回表單號碼，表單必須標示為實體。 由於表單號碼文字高度結構化，因此可以使用規則運算式實體來標示。 請依照下列步驟建立此實體：
+若要在執行階段預測回應中傳回表單號碼，必須以實體的形式擷取表單號碼。 由於表單號碼文字高度結構化，因此您可以使用規則運算式實體。 請依照下列步驟建立規則運算式實體：
 
-1. 從左側的功能表中選取 [實體]  。
+1. 從左側的功能表中選取 [實體]。
 
-1. 選取 [實體]  頁面上的 [建立]  。
+1. 選取 [實體] 頁面上的 [建立]。
 
-1. 輸入名稱 `Human Resources Form Number`，選取 [Regex]  實體類型，然後選取 [下一步]  。
+1. 輸入名稱 `FormNumber`，選取 [Regex] 實體類型。
 
-   ![建立規則運算式實體](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+1. 在 [RegEx] 欄位中，輸入規則運算式 `hrf-[0-9]{6}`。 這個實體會比對出常值字元 `hrf-` (僅允許六個數字)，然後選取 [建立]。
 
-1. 輸入規則運算式 (**RegEx**) 運算式 `hrf-[0-9]{6}`。 這個實體會比對出常值字元 `hrf-`，且僅允許 6 個數字，然後選取 [建立]  。
+    > [!div class="mx-imgBorder"]
+    > ![建立規則運算式實體的螢幕擷取畫面](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-   ![輸入實體的規則運算式](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
 
+    此實體會擷取與任何意圖中的規則運算式相符的任何文字。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>將範例語句新增至 None 意圖
 
@@ -117,17 +118,16 @@ ms.locfileid: "81382575"
 
 **None** 意圖的範例語句應在您的用戶端應用程式定義域以外。
 
-1. 從左功能表中選取 [意圖]  ，然後從 [意圖] 清單中選取 [None]  。
+1. 從左功能表中選取 [意圖]，然後從 [意圖] 清單中選取 [None]。
 
 1. 請將下列範例語句新增至意圖：
 
    |None 意圖範例語句|
    |--|
-   |狗一直叫很煩人|
-   |幫我訂披薩|
-   |海裡面的企鵝|
+   |`Barking dogs are annoying`|
+   |`Penguins in the ocean`|
 
-   在此應用程式中，這些範例語句不在定義域內。 如果您的定義域包含動物、食物或海洋，請對 [None]  意圖使用不同的範例語句。
+   在此應用程式中，這些範例語句不在定義域內。 如果您的定義域包含動物或海洋，請對 [None] 意圖使用不同的範例語句。
 
 ## <a name="train-the-app"></a>進行應用程式定型
 
@@ -135,33 +135,33 @@ ms.locfileid: "81382575"
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>查看範例語句中的規則運算式實體
 
-1. 從左側功能表中選取 [意圖]  ，以確認實體位於 **FindForm** 意圖中。 然後選取 [FindForm]  意圖。
+1. 從左側功能表中選取 [意圖]，以確認實體位於 **FindForm** 意圖中。 然後選取 [FindForm] 意圖。
 
-   實體會標示它在範例語句中的顯示之處。 如果您想要查看原始文字，請從工具列切換 [實體檢視]  ，而不是使用實體名稱。
+   實體會標示它在範例語句中的顯示之處。 如果您想要查看原始文字，請從工具列切換 [實體檢視]，而不是使用實體名稱。
 
    > [!div class="mx-imgBorder"]
-   > [![標示了實體的所有範例語句](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [![標示了實體的所有範例語句的螢幕擷取畫面](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>使用互動式測試窗格測試新的應用程式
 
-使用 LUIS 入口網站中的互動式 [測試]  窗格，驗證實體擷取自應用程式尚未看過新表達。
+使用 LUIS 入口網站中的互動式 [測試] 窗格，驗證實體擷取自應用程式尚未看過新表達。
 
-1. 從右上方的功能表中選取 [測試]  。
+1. 從右上方的功能表中選取 [測試]。
 
 1. 新增表達，然後按 Enter 鍵：
 
    ```Is there a form named hrf-234098```
 
-    選取 [檢查]  以查看實體預測。
+    選取 [檢查] 以查看實體預測。
 
    > [!div class="mx-imgBorder"]
-   > ![對測試窗格中的新語句進行測試](./media/get-started-portal-build-app/test-new-utterance.png)
+   > ![對測試窗格中的新語句進行測試的螢幕擷取畫面](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   最高預測意圖是信賴度超過 90% (0.977) 的 **FindForm**。 對於**人力資源表單號碼**實體擷取到 hrf-234098 的值。
+   最高預測意圖是信賴度超過 90% (0.977) 的 **FindForm**。 **FormNumber** 實體的擷取值為 hrf-234098。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成本快速入門後，若您不繼續進行下一個快速入門，請從頂端導覽功能表中選取 [我的應用程式]  。 然後，從清單中選取應用程式左側的核取方塊，再從清單上方的內容工具列中選取 [刪除]  。
+在完成本快速入門後，若您不繼續進行下一個快速入門，請從頂端導覽功能表中選取 [我的應用程式]。 然後，從清單中選取應用程式左側的核取方塊，再從清單上方的內容工具列中選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
