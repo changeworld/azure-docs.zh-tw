@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726072"
+ms.locfileid: "83746517"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -38,51 +38,51 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| 地區設定  | Language                          | 支援 | 自訂                                    |
+| Locale  | 語言                          | 支援 | 自訂                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯文（阿拉伯聯合大公國）                      | 是       | 否                                                |
-| `ar-BH` | 阿拉伯文（巴林），現代化標準 | 是       | 語言模型                                    |
-| `ar-EG` | 阿拉伯文 (埃及)                    | 是       | 語言模型                                    |
+| `ar-BH` | 阿拉伯文（巴林），現代化標準 | Yes       | 語言模型                                    |
+| `ar-EG` | 阿拉伯文 (埃及)                    | Yes       | 語言模型                                    |
 | `ar-IL` | 阿拉伯文（以色列）                   | 是       | 否                                                |
 | `ar-KW` | 阿拉伯文 (科威特)                   | 是       | 否                                                |
 | `ar-PS` | 阿拉伯文（巴勒斯坦國）                | 是       | 否                                                |
 | `ar-QA` | 阿拉伯文 (卡達)                    | 是       | 否                                                |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 是       | 否                                                |
-| `ar-SY` | 阿拉伯文 (敘利亞)                    | 是       | 語言模型                                    |
-| `ca-ES` | 卡達隆尼亞文                           | 是       | 語言模型                                    |
-| `da-DK` | 丹麥文 (丹麥)                  | 是       | 語言模型                                    |
-| `de-DE` | 德文 (德國)                  | 是       | 原音模型<br>語言模型<br>發音 |
-| `en-AU` | 英文 (澳大利亞)               | 是       | 原音模型<br>語言模型                  |
-| `en-CA` | 英文 (加拿大)                  | 是       | 原音模型<br>語言模型                  |
-| `en-GB` | 英文 (英國)          | 是       | 原音模型<br>語言模型<br>發音 |
-| `en-IN` | 英文 (印度)                   | 是       | 原音模型<br>語言模型                  |
-| `en-NZ` | 英文 (紐西蘭)             | 是       | 原音模型<br>語言模型                  |
-| `en-US` | 英文 (美國)           | 是       | 原音模型<br>語言模型<br>發音 |
-| `es-ES` | 西班牙文 (西班牙)                   | 是       | 原音模型<br>語言模型                  |
-| `es-MX` | 西班牙文 (墨西哥)                  | 是       | 原音模型<br>語言模型                  |
-| `fi-FI` | 芬蘭文 (芬蘭)                 | 是       | 語言模型                                    |
-| `fr-CA` | 法文 (加拿大)                   | 是       | 原音模型<br>語言模型                  |
-| `fr-FR` | 法文 (法國)                   | 是       | 原音模型<br>語言模型<br>發音 |
-| `gu-IN` | 古吉拉特文（印度）                 | 是       | 語言模型                                    |
-| `hi-IN` | 印度文 (印度)                     | 是       | 原音模型<br>語言模型                  |
-| `it-IT` | 義大利文 (義大利)                   | 是       | 原音模型<br>語言模型<br>發音 |
-| `ja-JP` | 日文 (日本)                  | 是       | 語言模型                                    |
-| `ko-KR` | 韓文 (韓國)                    | 是       | 語言模型                                    |
-| `mr-IN` | 馬拉提文 (印度)                   | 是       | 語言模型                                    |
-| `nb-NO` | 挪威文 (巴克摩) (挪威)       | 是       | 語言模型                                    |
-| `nl-NL` | 荷蘭文 (荷蘭)               | 是       | 語言模型                                    |
-| `pl-PL` | 波蘭文 (波蘭)                   | 是       | 語言模型                                    |
-| `pt-BR` | 葡萄牙文 (巴西)               | 是       | 原音模型<br>語言模型<br>發音 |
-| `pt-PT` | 葡萄牙文 (葡萄牙)             | 是       | 語言模型                                    |
-| `ru-RU` | 俄文 (俄羅斯)                  | 是       | 原音模型<br>語言模型                  |
-| `sv-SE` | 瑞典文 (瑞典)                  | 是       | 語言模型                                    |
-| `ta-IN` | 坦米爾文 (印度)                     | 是       | 語言模型                                    |
+| `ar-SY` | 阿拉伯文 (敘利亞)                    | Yes       | 語言模型                                    |
+| `ca-ES` | 卡達隆尼亞文                           | Yes       | 語言模型                                    |
+| `da-DK` | 丹麥文 (丹麥)                  | Yes       | 語言模型                                    |
+| `de-DE` | 德文 (德國)                  | Yes       | 原音模型<br>語言模型<br>發音 |
+| `en-AU` | 英文 (澳大利亞)               | Yes       | 原音模型<br>語言模型                  |
+| `en-CA` | 英文 (加拿大)                  | Yes       | 原音模型<br>語言模型                  |
+| `en-GB` | 英文 (英國)          | Yes       | 原音模型<br>語言模型<br>發音 |
+| `en-IN` | 英文 (印度)                   | Yes       | 原音模型<br>語言模型                  |
+| `en-NZ` | 英文 (紐西蘭)             | Yes       | 原音模型<br>語言模型                  |
+| `en-US` | 英文 (美國)           | Yes       | 原音模型<br>語言模型<br>發音 |
+| `es-ES` | 西班牙文 (西班牙)                   | Yes       | 原音模型<br>語言模型                  |
+| `es-MX` | 西班牙文 (墨西哥)                  | Yes       | 原音模型<br>語言模型                  |
+| `fi-FI` | 芬蘭文 (芬蘭)                 | Yes       | 語言模型                                    |
+| `fr-CA` | 法文 (加拿大)                   | Yes       | 原音模型<br>語言模型                  |
+| `fr-FR` | 法文 (法國)                   | Yes       | 原音模型<br>語言模型<br>發音 |
+| `gu-IN` | 古吉拉特文（印度）                 | Yes       | 語言模型                                    |
+| `hi-IN` | 印度文 (印度)                     | Yes       | 原音模型<br>語言模型                  |
+| `it-IT` | 義大利文 (義大利)                   | Yes       | 原音模型<br>語言模型<br>發音 |
+| `ja-JP` | 日文 (日本)                  | Yes       | 語言模型                                    |
+| `ko-KR` | 韓文 (韓國)                    | Yes       | 語言模型                                    |
+| `mr-IN` | 馬拉提文 (印度)                   | Yes       | 語言模型                                    |
+| `nb-NO` | 挪威文 (巴克摩) (挪威)       | Yes       | 語言模型                                    |
+| `nl-NL` | 荷蘭文 (荷蘭)               | Yes       | 語言模型                                    |
+| `pl-PL` | 波蘭文 (波蘭)                   | Yes       | 語言模型                                    |
+| `pt-BR` | 葡萄牙文 (巴西)               | Yes       | 原音模型<br>語言模型<br>發音 |
+| `pt-PT` | 葡萄牙文 (葡萄牙)             | Yes       | 語言模型                                    |
+| `ru-RU` | 俄文 (俄羅斯)                  | Yes       | 原音模型<br>語言模型                  |
+| `sv-SE` | 瑞典文 (瑞典)                  | Yes       | 語言模型                                    |
+| `ta-IN` | 坦米爾文 (印度)                     | Yes       | 語言模型                                    |
 | `te-IN` | 特拉古文 (印度)                    | 是       | 否                                                |
 | `th-TH` | 泰文 (泰國)                   | 是       | 否                                                |
-| `tr-TR` | 土耳其文 (土耳其)                  | 是       | 語言模型                                    |
-| `zh-CN` | 中文 (普通話，簡體)    | 是       | 原音模型<br>語言模型                  |
-| `zh-HK` | 中文（廣東話，繁體）  | 是       | 語言模型                                    |
-| `zh-TW` | 中文 (繁體，國語)      | 是       | 語言模型                                    |
+| `tr-TR` | 土耳其文 (土耳其)                  | Yes       | 語言模型                                    |
+| `zh-CN` | 中文 (普通話，簡體)    | Yes       | 原音模型<br>語言模型                  |
+| `zh-HK` | 中文（廣東話，繁體）  | Yes       | 語言模型                                    |
+| `zh-TW` | 中文 (繁體，國語)      | Yes       | 語言模型                                    |
 
 ## <a name="text-to-speech"></a>文字轉換語音
 
@@ -99,7 +99,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-|地區設定  | Language            | 性別 | 語音名稱 | 樣式支援 |
+|Locale  | 語言            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
 | `de-DE` | 德文 (德國)                | Female | "de-KatjaNeural"      | 一般 |
 | `en-AU` | 英文 (澳大利亞)             | Female | "en-us-NatashaNeural"    | 一般 |
@@ -135,12 +135,12 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| 地區設定 | Language | 性別 | 語音名稱 |
+| Locale | 語言 | 性別 | 語音名稱 |
 |--|--|--|--|
 | <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "ar-例如-Hoda" |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "ar-SA-Naayf" |
 | `bg-BG` | 保加利亞文 | Male |  "bg-BG-Ivan" |
-| `ca-ES` | 加泰蘭文 (西班牙) | Female |  「ca-ES-HerenaRUS」 |
+| `ca-ES` | 卡達隆尼亞文 | Female |  「ca-ES-HerenaRUS」 |
 | `cs-CZ` | 捷克文 | Male | "cs-CZ-Jakub" |
 | `da-DK` | 丹麥文 | Female |  "da-深色-HelleRUS" |
 | `de-AT` | 德文 (奧地利) | Male | 「Michael」 |

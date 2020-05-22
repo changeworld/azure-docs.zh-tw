@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732366"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745604"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -104,7 +104,7 @@ ms.locfileid: "82732366"
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）是否有語音資源：
 
-| 名稱 | 類型  | Location |
+| 名稱 | 類型  | 位置 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
 
@@ -125,7 +125,7 @@ ms.locfileid: "82732366"
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）有兩個資源：
 
-| 名稱 | 類型  | Location |
+| 名稱 | 類型  | 位置 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-語音 | 認知服務 | 美國西部 |
@@ -146,7 +146,7 @@ ms.locfileid: "82732366"
    ```
 
 2. 啟動 Visual Studio。
-3. 從工具列中 **，選取** > [檔案] [**開啟** > **專案/方案**]，然後開啟 [Echo Bot 專案] 方案：
+3. 從工具列中 **，選取 [** 檔案] [  >  **開啟**  >  **專案/方案**]，然後開啟 [Echo Bot 專案] 方案：
 
    ```
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
@@ -163,7 +163,7 @@ ms.locfileid: "82732366"
 
 1. 安裝4.3.0 或更新版本的[Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest)
 2. 啟動 Bot Framework Emulator 並開啟您的 Bot：
-   * **File**檔案開啟**Bot。**  -> 
+   * **File**檔案  -> **開啟 [Bot**]。
 3. 輸入您 bot 的 URL。 例如：
 
    ```
@@ -178,7 +178,7 @@ ms.locfileid: "82732366"
 下一個步驟是將 Echo Bot 部署至 Azure。 有幾種方式可以部署 bot，但在本教學課程中，我們將著重于直接從 Visual Studio 發佈。
 
 > [!NOTE]
-> 或者，您可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署範本](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)來部署 bot。
+> 或者，您可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署範本](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)來部署 bot。
 
 1. 從 Visual Studio，開啟已設定為與 Direct Line 語音通道搭配使用的 Echo Bot：
 
@@ -207,7 +207,7 @@ ms.locfileid: "82732366"
 1. 您的預設瀏覽器應該會開啟並顯示一頁：「您的 bot 已就緒！」。
 1. 此時，請檢查 Azure 入口網站中的資源群組**SpeechEchoBotTutorial-ResourceGroup** ，並確認有三個資源：
 
-| 名稱 | 類型  | Location |
+| 名稱 | 類型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
@@ -241,14 +241,14 @@ ms.locfileid: "82732366"
    * 針對 [**資源群組**]，選取 [ **SpeechEchoBotTutorial-ResourceGroup**]。
    * 針對 [**位置**]，選取 [**美國西部**]。
      * 針對 [**定價層**]，選取 [ **F0**]。
-     * 針對 [**訊息端點**]，輸入 web 應用程式的 URL， `/api/messages`並在結尾附加路徑。 例如：如果您的全域唯一應用程式名稱是**EchoBot20190805125647**，則您的訊息端點`https://EchoBot20190805125647.azurewebsites.net/api/messages/`會是：。
+     * 針對 [**訊息端點**]，輸入 web 應用程式的 URL，並在 `/api/messages` 結尾附加路徑。 例如：如果您的全域唯一應用程式名稱是**EchoBot20190805125647**，則您的訊息端點會是： `https://EchoBot20190805125647.azurewebsites.net/api/messages/` 。
      * 針對**application insights**，您可以將此設為**Off**。 如需詳細資訊，請參閱[Bot analytics](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)。
      * 忽略**自動建立應用程式識別碼和密碼**。
 5. 在 [ **Bot 通道註冊**] 分頁底部，按一下 [**建立**]。
 
 此時，請檢查 Azure 入口網站中的資源群組**SpeechEchoBotTutorial-ResourceGroup** 。 它現在應該會顯示四個資源：
 
-| 名稱 | 類型  | Location |
+| 名稱 | 類型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
@@ -309,7 +309,7 @@ Windows 語音助理用戶端具有簡單的 UI，可讓您設定與 bot 的連�
 
 ### <a name="view-bot-activities"></a>查看 bot 活動
 
-每個 bot 都會傳送及接收**活動**訊息。 在 Windows 語音助理用戶端的 [**活動記錄**] 視窗中，您會看到有時間戳記的記錄，其中包含用戶端從 bot 收到的每個活動。 您也可以使用[`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)方法，查看用戶端傳送至 bot 的活動。 當您選取記錄檔專案時，它會將相關聯活動的詳細資料顯示為 JSON。
+每個 bot 都會傳送及接收**活動**訊息。 在 Windows 語音助理用戶端的 [**活動記錄**] 視窗中，您會看到有時間戳記的記錄，其中包含用戶端從 bot 收到的每個活動。 您也可以使用方法，查看用戶端傳送至 bot 的活動 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) 。 當您選取記錄檔專案時，它會將相關聯活動的詳細資料顯示為 JSON。
 
 以下是用戶端收到的活動範例 json：
 
@@ -351,7 +351,7 @@ Windows 語音助理用戶端具有簡單的 UI，可讓您設定與 bot 的連�
 
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>查看語音 SDK 呼叫的用戶端原始程式碼
 
-Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)的 NuGet 套件，其中包含語音 SDK。 開始審查範例程式碼的好地方是檔案中的方法 InitSpeechConnector （） [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)，它會建立這兩個語音 SDK 物件：
+Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)的 NuGet 套件，其中包含語音 SDK。 開始審查範例程式碼的好地方是檔案中的方法 InitSpeechConnector （） [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) ，它會建立這兩個語音 SDK 物件：
 - [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig)-針對設定（例如語音訂用帳戶金鑰、金鑰區域）
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor)-管理通道連線和用戶端訂閱事件，以處理可辨識的語音和 bot 回應。
 
@@ -367,8 +367,8 @@ Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/
 請遵循下列步驟來建立關鍵字模型、設定 Windows 語音助理用戶端使用此模型，最後再使用您的 bot 進行測試。
 
 1. 遵循這些指示，[使用語音服務來建立自訂關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)。
-2. 將您在上一個步驟中下載的模型檔案解壓縮。 它應該以您的關鍵字命名。 您正在尋找名為`kws.table`的檔案。
-3. 在 Windows 語音助理用戶端中，找出 [**設定**] 功能表（尋找右上方的齒輪圖示）。 尋找**Model file path** [ `kws.table`模型檔案路徑]，然後輸入步驟2中檔案的完整路徑名稱。
+2. 將您在上一個步驟中下載的模型檔案解壓縮。 它應該以您的關鍵字命名。 您正在尋找名為的檔案 `kws.table` 。
+3. 在 Windows 語音助理用戶端中，找出 [**設定**] 功能表（尋找右上方的齒輪圖示）。 尋找 [**模型檔案路徑**]，然後輸入 `kws.table` 步驟2中檔案的完整路徑名稱。
 4. 請務必核取標示為 [**已啟用**] 的方塊。 您應該會在核取方塊旁看到此訊息：「將在下一次連接時接聽關鍵字」。 如果您提供錯誤的檔案或不正確路徑，您應該會看到錯誤訊息。
 5. 輸入您的語音訂用帳戶**金鑰**[訂用帳戶**金鑰區域**]，然後按一下 **[確定]** 以關閉 [**設定**] 功能表。
 6. 按一下 [**重新連接**]。 您應該會看到一則訊息：「新對話已開始-輸入，按下麥克風按鈕，或說關鍵字」。 應用程式現在會持續接聽。
@@ -384,18 +384,18 @@ Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/
 
 在 Windows 語音助理用戶端原始程式碼中，請查看這些檔案，以查看用來啟用關鍵字偵測的程式碼：
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)包含語音 SDK 方法[`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-)的呼叫，它是用來從磁片上的本機檔案具現化模型。
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)包含語音 SDK 方法[`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)的呼叫，它會啟動連續關鍵字偵測。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)包含語音 SDK 方法的呼叫 [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) ，它是用來從磁片上的本機檔案具現化模型。
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)包含語音 SDK 方法的呼叫 [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) ，它會啟動連續關鍵字偵測。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>選擇性變更語言和 bot 的聲音
 
-您所建立的 bot 會以英文來接聽和回應，並使用預設的美國英文文字轉換語音語音。 不過，您不限於使用英文或預設語音。 在本節中，您將瞭解如何變更 bot 將接聽並回應的語言。 您也將瞭解如何為該語言選取不同的語音。
+您所建立的 bot 將會以英文來接聽並回應，並以預設的美國英文文字轉換語音語音。 不過，您不限於使用英文或預設語音。 在本節中，您將瞭解如何變更 bot 將接聽並回應的語言。 您也將瞭解如何為該語言選取不同的語音。
 
 ### <a name="change-the-language"></a>變更語言
 
 您可以選擇[語音轉換文字](language-support.md#speech-to-text)資料表中所述的任何一種語言。 在下列範例中，我們會將語言變更為德文。
 
-1. 開啟 Windows 語音助理用戶端應用程式，按一下 [設定] 按鈕（右上方的齒輪圖示），然後`de-de`在 [語言] 欄位中輸入（這是[語音轉換文字](language-support.md#speech-to-text)資料表中所述的地區設定值）。 這會設定要辨識的語音語言，並覆寫`en-us`預設值。 這也會指示 Direct Line 語音通道使用 Bot 回復的預設德文語音。
+1. 開啟 Windows 語音助理用戶端應用程式，按一下 [設定] 按鈕（右上方的齒輪圖示），然後 `de-de` 在 [語言] 欄位中輸入（這是[語音轉換文字](language-support.md#speech-to-text)資料表中所述的地區設定值）。 這會設定要辨識的語音語言，並覆寫預設值 `en-us` 。 這也會指示 Direct Line 語音通道使用 Bot 回復的預設德文語音。
 2. 關閉 [設定] 頁面，然後按一下 [重新連接] 按鈕，以建立與您 echo bot 的新連線。
 3. 按一下 [麥克風] 按鈕，然後在德文中說出一個片語。 您會看到已辨識的文字，而 echo bot 會以預設的德文語音回復。
 
@@ -403,7 +403,7 @@ Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/
 
 如果 Bot 以[語音合成標記語言](speech-synthesis-markup.md)（SSML）的形式指定回復，而不是簡單文字，則選取文字轉換語音的語音和控制發音可以完成。 Echo bot 不會使用 SSML，但我們可以輕鬆地修改程式碼來執行此動作。 在下列範例中，我們會將 SSML 新增至 echo bot 回復，這樣就會使用德文 voice Stefan Apollo （男性語音），而不是預設的女性聲音。 請參閱您的語言支援的[標準語音](language-support.md#standard-voices)和類[神經語音](language-support.md#neural-voices)清單。
 
-1. 讓我們從開啟`samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`開始。
+1. 讓我們從開啟開始 `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs` 。
 2. 找出這兩行：
     ```csharp
     var replyText = $"Echo: {turnContext.Activity.Text}";
@@ -428,7 +428,7 @@ Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/
 1. 在 [方案總管] 視窗中，以滑鼠右鍵按一下**EchoBot**專案，然後選取 [**發佈**]。
 2. 先前的部署設定已載入為預設值。 只要按一下 [ **EchoBot20190805125647-Web Deploy**] 旁的 [**發佈**] 即可。
 3. [**發佈成功**] 訊息會出現在 [Visual Studio 輸出] 視窗中，而網頁會啟動並顯示「您的 bot 已就緒！」訊息。
-4. 開啟 Windows 語音助理用戶端應用程式，按一下 [設定] 按鈕（右上方的齒輪圖示），並確定 [語言] `de-de`欄位中仍然有。
+4. 開啟 Windows 語音助理用戶端應用程式，按一下 [設定] 按鈕（右上方的齒輪圖示），並確定 `de-de` [語言] 欄位中仍然有。
 5. 依照執行[Windows 語音助理用戶端](#run-the-windows-voice-assistant-client)中的指示，重新連線到您新部署的 bot，以新的語言說話，並以新的語音收聽 bot 的回復。
 
 ## <a name="clean-up-resources"></a>清除資源
