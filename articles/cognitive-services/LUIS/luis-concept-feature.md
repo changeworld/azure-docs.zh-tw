@@ -3,12 +3,12 @@ title: 功能-LUIS
 description: 將特性新增至語言模型，以針對如何辨識您想要標示或分類的輸入，提供相關提示。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682154"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742720"
 ---
 # <a name="machine-learning-ml-features"></a>機器學習（ML）功能
 
@@ -85,7 +85,7 @@ ms.locfileid: "83682154"
     * 街道位址（列）
     * 城市（列）
     * 州或省（列）
-    * 國家（地區）（列）
+    * 國家/地區（列）
     * 郵遞區號（列）
 
 ## <a name="nested-subentities-with-features"></a>具有功能的嵌套子實體
@@ -118,14 +118,14 @@ ms.locfileid: "83682154"
     * 街道名稱（列）
     * 城市（列）
     * 州或省（列）
-    * 國家（地區）（列）
+    * 國家/地區（列）
     * 郵遞區號（列）
 
 ### <a name="required-feature-using-prebuilt-entities"></a>使用預先建立的實體所需的功能
 
-「城市」、「州」和「國家/地區」通常是一組封閉的清單，這表示它們不會隨著時間而改變。 這些實體可能會有相關的建議功能，而這些功能可能會標示為必要。 這表示不會傳回整個運送位址，因為找不到具有所需功能的實體。
+城市、州和國家/地區通常是一組封閉的清單，這表示它們不會隨著時間而改變。 這些實體可能會有相關的建議功能，而這些功能可能會標示為必要。 這表示不會傳回整個運送位址，因為找不到具有所需功能的實體。
 
-如果城市、州或國家（地區）位於語句中，但在 LUIS 不會預期的位置或俚語中，該怎麼辦？ 如果您想要提供一些 post 處理來協助解決實體，因為 LUIS 的信賴分數較低，請勿將此功能標示為必要。
+如果城市、州或國家/地區位於語句中，但在 LUIS 不會預期的位置或俚語中，該怎麼辦？ 如果您想要提供一些 post 處理來協助解決實體，因為 LUIS 的信賴分數較低，請勿將此功能標示為必要。
 
 送貨位址的另一個必要功能範例是讓街道編號成為必要的[預先](luis-reference-prebuilt-entities.md)建立編號。 這可讓使用者輸入「1個 Microsoft 的方式」或「一位 Microsoft 的方式」。 兩者都會解析為街道號碼列的數位 "1"。
 
@@ -139,13 +139,13 @@ ms.locfileid: "83682154"
 |--|--|
 |美國|美式英文<br>美國<br>美國<br>USA<br>0|
 
-用戶端應用程式（例如聊天機器人）可以詢問後續問題，因此客戶瞭解國家/地區選擇有限且_必要_。
+用戶端應用程式（例如聊天機器人）可以詢問後續問題，因此客戶瞭解國家/地區選取範圍有限且_需要_。
 
 ### <a name="required-feature-using-regular-expression-entities"></a>使用正則運算式實體的必要功能
 
 當做必要功能使用的[正則運算式實體](reference-entity-regular-expression.md)會提供豐富的文字比對功能。
 
-繼續使用寄送位址，您可以建立正則運算式來捕捉國家（地區）郵遞區號的語法規則。
+繼續使用寄送位址，您可以建立正則運算式來捕捉國家/地區郵遞區號的語法規則。
 
 ## <a name="global-features"></a>全域功能
 
