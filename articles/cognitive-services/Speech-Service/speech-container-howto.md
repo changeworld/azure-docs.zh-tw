@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 84000016af4b16bd0716c15e7c27b4ab56614532
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d1df46a5a8de4396011cc18ea062fe2d6b52ca8d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773974"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -26,12 +26,12 @@ ms.locfileid: "83702162"
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 特性 | 最新 |
+| 函式 | 功能 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和可將連續即時語音或批次音訊錄製。  | 2.2.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.2.0 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言（SSML），將文字轉換成自然發音的語音。 | 1.3.0 |
-| 自訂文字轉換語音 | 使用自[定義語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，以純文字輸入或語音合成標記語言（SSML）將文字轉換成自然發音的語音。 | 1.3.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言（SSML），將文字轉換成自然發音的語音。 | 1.4.0 |
+| 自訂文字轉換語音 | 使用自[定義語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，以純文字輸入或語音合成標記語言（SSML）將文字轉換成自然發音的語音。 | 1.4.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

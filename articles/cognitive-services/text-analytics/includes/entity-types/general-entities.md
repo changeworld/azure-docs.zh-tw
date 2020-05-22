@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77211412"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778192"
 ---
 ## <a name="general-entity-types"></a>一般實體類型：
 
@@ -22,11 +22,11 @@ ms.locfileid: "77211412"
 辨識文字中的人員名稱。
 
 語言：
-* 公開預覽： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Swedish` 、、 `Norwegian (Bokmål)`、、、、、、、、、、、、和`Japanese` `Korean` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公開預覽： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、、和`Turkish`
 
-| 子類型名稱 | 描述                                                      | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                      | 從模型版本開始提供 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| N/A          | 辨識的`Bill Gates`人員名稱，例如`Marie Curie` | `2019-10-01`                          | 
+| N/A          | 辨識的人員名稱 `Bill Gates` ，例如`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>PersonType
 人員所持有的作業類型或角色。
@@ -34,22 +34,22 @@ ms.locfileid: "77211412"
 語言：
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                                                                | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                                                | 從模型版本開始提供 |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | `civil engineer`作業類型`salesperson` `chef`，例如、、 `librarian`、`nursing aide` | `2020-02-01`                           |
+| N/A          | 作業類型，例如、、 `civil engineer` `salesperson` `chef` `librarian` 、`nursing aide` | `2020-02-01`                           |
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 自然和人為地標、結構、地理功能和地緣政治實體。
 
 語言：
 
-* 公開預覽： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Swedish` 、、 `Norwegian (Bokmål)`、、、、、、、、、、、、和`Japanese` `Korean` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公開預覽： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、、和`Turkish`
 
-| 子類型名稱              | 描述                                                                              | 從模型版本開始提供 |
+| 子類型名稱              | Description                                                                              | 從模型版本開始提供 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A                       | 位置， `Atlantic Ocean` `library`例如、 `Eiffel Tower`、`Statue of Liberty`  | `2019-10-01`                           |
-| 地緣政治實體（GPE）-僅限英文| 城市、國家/地區、州`Seattle`/ `Pennsylvania`省`South Africa`，例如、、`Tokyo` | `2020-02-01`                           |
+| N/A                       | 位置，例如、 `Atlantic Ocean` `library` `Eiffel Tower` 、`Statue of Liberty`  | `2019-10-01`                           |
+| 地緣政治實體（GPE）-僅限英文| 城市、國家/地區、州/省，例如、、 `Seattle` `Pennsylvania` `South Africa` 、`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>組織  
 
@@ -57,11 +57,11 @@ ms.locfileid: "77211412"
 
 語言： 
 
-* 公開預覽： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Swedish` 、、 `Norwegian (Bokmål)`、、、、、、、、、、、、和`Japanese` `Korean` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公開預覽： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、、和`Turkish`
 
-| 子類型名稱 | 描述                                                                                             | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                                                             | 從模型版本開始提供 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 組織， `Microsoft` `NASA`例如、 `National Oceanic and Atmospheric Administration`、`VOA` | `2019-10-01`                           |
+| N/A          | 組織，例如、 `Microsoft` `NASA` `National Oceanic and Atmospheric Administration` 、`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>事件  
 
@@ -71,11 +71,11 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                                            | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                            | 從模型版本開始提供 |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| N/A          | 事件`wedding`，例如、 `hurricane`、 `car accident`、 `solar eclipse`、`American Revolution` | `2020-02-01`                           |
+| N/A          | 事件，例如 `wedding` 、 `hurricane` 、 `car accident` 、 `solar eclipse` 、`American Revolution` | `2020-02-01`                           |
 
-### <a name="product"></a>Products  
+### <a name="product"></a>產品  
 
 各種類別目錄的實體物件。  
 
@@ -83,9 +83,9 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                                                        | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                                        | 從模型版本開始提供 |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | `Microsoft Surface laptop`例如， `sunglasses`、、 `motorcycle`、、 `bag``Xbox` | `2020-02-01`                           |
+| N/A          | 例如，、 `Microsoft Surface laptop` 、 `sunglasses` `motorcycle` 、 `bag` 、`Xbox` | `2020-02-01`                           |
 | 運算    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>技能  
@@ -96,7 +96,7 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                                                 | 從模型版本開始提供 |
+| 子類型名稱 | Description                                                                 | 從模型版本開始提供 |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
 | N/A          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
@@ -108,7 +108,7 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                    | 從模型版本開始提供 |
+| 子類型名稱 | Description                                    | 從模型版本開始提供 |
 |--------------|------------------------------------------------|----------------------------------------|
 | N/A          | 美國電話號碼，例如`(312) 555-0176` | `2019-10-01`                           |
 
@@ -120,7 +120,7 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                      | 從模型版本開始提供 |
+| 子類型名稱 | Description                                      | 從模型版本開始提供 |
 |--------------|--------------------------------------------------|----------------------------------------|
 | N/A          | 電子郵件地址，例如`support@contoso.com` | `2019-10-01`                           |
 
@@ -132,7 +132,7 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                                          | 從模型版本開始提供 |
+| 子類型名稱 | Description                                          | 從模型版本開始提供 |
 |--------------|------------------------------------------------------|----------------------------------------|
 | N/A          | 網站的 Url，例如`https://www.bing.com` | `2019-10-01`                           |
 
@@ -144,7 +144,7 @@ ms.locfileid: "77211412"
 
 * 公開預覽：`English`
 
-| 子類型名稱 | 描述                              | 從模型版本開始提供 |
+| 子類型名稱 | Description                              | 從模型版本開始提供 |
 |--------------|------------------------------------------|----------------------------------------|
 | N/A          | 例如的網路位址`10.0.0.101` | `2019-10-01`                           |
 
@@ -156,13 +156,13 @@ ms.locfileid: "77211412"
 
 語言：
 
-* 公開預覽： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
+* 公開預覽： `Chinese-Simplified` 、 `English` 、 `French` `German` 和`Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|
 | N/A         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
-| Date  | `May 2nd, 2017`, `05/02/2017`       |
-| 時間     | `8:15`, `6AM`              |
+| 日期  | `May 2nd, 2017`, `05/02/2017`       |
+| Time     | `8:15`, `6AM`              |
 | 日期範圍    | `August 2nd to August 5th`         |
 | 時間範圍   | `4-6PM`, `10:00AM to Noon`          |
 | Duration | `2.5 minutes`, `one and a half hours`         |
@@ -176,7 +176,7 @@ ms.locfileid: "77211412"
 
 語言：
 
-* 公開預覽： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
+* 公開預覽： `Chinese-Simplified` 、 `English` 、 `French` `German` 和`Spanish`
 
 | 子類型名稱    | 範例                     |
 |-------------|------------------------------|
@@ -184,6 +184,6 @@ ms.locfileid: "77211412"
 | 百分比  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
 | Age         | `90 day old`, `30 years old` |
-| 貨幣    | `$10.99`, `€30.00`           |
+| 貨幣    | `$10.99`, `&euro;30.00`           |
 | 維度   | `10 miles`, `40 cm`          |
 | 溫度 | `32 degrees`, `10°C`         |
