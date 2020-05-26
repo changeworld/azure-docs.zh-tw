@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 辨識儲存在 Blob 儲存體中的語音
           href: quickstarts/from-blob.md
-        - name: 具有參考輸入的發音評量
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: 操作指南
       items:
         - name: 選擇語音辨識模式
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: 工具
   items:
-    - name: SPX
+    - name: Speech CLI
+      displayName: SPX
       items:
-        - name: 什麼是 SPX？
+        - name: 什麼是 Speech CLI？
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: SPX 基本概念
+        - name: Speech CLI 基本概念
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a323bd9b9c605363963d5a25d1746727e379553
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393193"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587590"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -52,15 +52,15 @@ Azure 事件方格的部署方式是以原生方式分散到每個區域中中�
 
 如需各個處理常式的功能以及相關文件的完整資料，請參閱[處理常式來源](event-handlers.md)。 目前支援處理來自事件格線之事件的 Azure 服務如下： 
 
-* [Azure 自動化](event-handlers.md#azure-automation)
-* [Azure Functions](event-handlers.md#azure-functions)
-* [事件中樞](event-handlers.md#event-hubs)
-* [混合式連線](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
+* [Azure 自動化](handler-webhooks.md#azure-automation)
+* [Azure Functions](handler-functions.md)
+* [事件中樞](handler-event-hubs.md)
+* [轉送混合式連線](handler-relay-hybrid-connections.md)
+* [Logic Apps](handler-webhooks.md#logic-apps)
 * [Power Automate (先前稱為 Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [服務匯流排](event-handlers.md#service-bus)
-* [佇列儲存體](event-handlers.md#queue-storage)
-* [WebHook](event-handlers.md#webhooks)
+* [服務匯流排](handler-service-bus.md)
+* [佇列儲存體](handler-storage-queues.md)
+* [WebHook](handler-webhooks.md)
 
 ## <a name="concepts"></a>概念
 

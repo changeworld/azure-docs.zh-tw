@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a3860b2cedbdf8154658449349439f918775cb25
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 761cf5831bb2332ae8c3f7a9a8edee707e6810ee
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701881"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816330"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝和執行表單辨識器容器（預覽）
 
@@ -67,7 +67,7 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-填寫並提交[要求表單](https://aka.ms/FormRecognizerContainerRequestAccess)，以要求容器的存取權。
+填寫並提交[要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -325,7 +325,7 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行表單辨識器容器的概念和工作流程。 摘要說明：
 

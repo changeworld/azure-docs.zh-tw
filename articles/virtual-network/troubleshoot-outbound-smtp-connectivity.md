@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e5a878c8108706c4a3a175c920708beeeaa4aa12
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 148a8bf7626d8b8ee687658990fdaf2fce9f7de7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801745"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590089"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>針對 Azure 中的外送 SMTP 連線能力問題進行疑難排解
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=027fa865-2329-23de-3740-cfbe35359302" target='_blank'> </a></span><span class="has-padding-small">使用虛擬代理程式執行<b>自動化診斷</b>，開始快速解決您的問題。</span><div align="right"> <sub>Privacy Statement</sub>隱私權聲明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
+
 從 2017 年 11 月 15 日起，直接從虛擬機器 (VM) 傳送到外部網域 (例如 outlook.com 和 gmail.com) 的外寄郵件訊息僅供 Microsoft Azure 中特定訂用帳戶類型使用。 使用 TCP 連接埠 25 的外送 SMTP 連線會遭到封鎖。 (連接埠 25 主要用於未經驗證的電子郵件傳遞。)
 
 這項行為變更僅適用於 2017 年 11 月 15 日之後的新訂用帳戶及新部署。
@@ -36,22 +36,22 @@ ms.locfileid: "82801745"
 ## <a name="pay-as-you-go"></a>Pay-As-You-Go
 若您在 2017 年 11 月 15 日之前註冊隨用隨付或 Microsoft 合作夥伴網路訂閱供應項目，嘗試外寄電子郵件傳遞的技術能力不會有任何變更。 您可以繼續嘗試從這些訂用帳戶中的 Azure VM 將外寄電子郵件直接傳遞到外部電子郵件提供者，而不會受到 Azure 平台的任何限制。 同樣地，不保證電子郵件提供者會接受從任何指定使用者的內送電子郵件，並且使用者將需要直接使用電子郵件提供者來修正涉及特定提供者的任何訊息傳遞或垃圾郵件篩選問題。
 
-針對在2017年11月15日之後建立的預付型方案或 Microsoft 合作夥伴網路訂用帳戶，將會有技術限制，會封鎖直接從這些訂用帳戶內的 Vm 傳送的電子郵件。 如果您想要將電子郵件從 Azure VM 直接傳送給外部電子郵件提供者 (不使用經驗證的 SMTP 轉送) 的功能，可以提出移除限制的要求。 要求將在 Microsoft 的判斷下進行審核及核准，而且只會在進行其他反詐騙檢查之後才授與。 若要提出要求，請使用下列問題類型開啟支援案例：**技術** > **虛擬網路** > 連線**能力** > **無法傳送電子郵件（SMTP/埠25）**。 請務必新增詳細資料，說明為何您的部署需要直接將電子郵件傳送到電子郵件提供者，而不是使用經驗證的轉送。
+針對在 2017 年 11 月 15 日之後建立的隨用隨付或 Microsoft 合作夥伴網路訂用帳戶，將會受到技術性限制，而無法從這些訂用帳戶內的 VM 直接傳送電子郵件。 如果您想要將電子郵件從 Azure VM 直接傳送給外部電子郵件提供者 (不使用經驗證的 SMTP 轉送) 的功能，可以提出移除限制的要求。 要求將在 Microsoft 的斟酌下審查與核准，而且只會在另外完成反詐騙檢查之後授權。 若要提出要求，請使用下列問題類型來開啟支援案例：[技術] > [虛擬網路] > [連線] > [無法傳送電子郵件 (SMTP/連接埠 25)]。 請務必新增詳細資料，說明為何您的部署需要直接將電子郵件傳送到電子郵件提供者，而不是使用經驗證的轉送。
 
-在預付型方案或 Microsoft 合作夥伴網路訂用帳戶豁免，而且已從 Azure 入口網站「已啟動」 & 「已啟動」 Vm 之後，該訂用帳戶內的所有 Vm 都將被免除。 豁免僅適用于要求的訂用帳戶，且僅適用于直接路由傳送至網際網路的虛擬機器流量。 不支援透過 Azure PaaS 服務（例如[Azure 防火牆](https://azure.microsoft.com/services/azure-firewall/)）路由埠25流量。
+在隨用隨付或 Microsoft 合作夥伴網路訂用帳戶受到豁免，而且已存 Azure 入口網站「停止後啟動」VM 之後，該訂用帳戶內的 VM 將會在之後受到豁免。 豁免僅適用於要求的訂用帳戶，且僅適用於直接路由傳送至網際網路的虛擬機器流量。 不支援透過 Azure PaaS 服務 (例如 [Azure 防火牆](https://azure.microsoft.com/services/azure-firewall/)) 路由傳送連接埠 25 流量。
 
 > [!NOTE]
 > Microsoft 保留在判斷發生違反服務條款的情況時撤銷此豁免的權利。
 
 ## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN、Azure Pass、Azure in Open、Education、BizSpark 及免費試用
-如果您在2017年11月15日之後建立 MSDN、Azure Pass、Azure in Open、教育版、BizSpark、Azure 贊助、Azure Student、免費試用或任何 Visual Studio 訂用帳戶，您將會有技術限制，會封鎖從這些訂用帳戶內的 Vm 直接傳送至電子郵件提供者的電子郵件。 這些限制的目的為避免不當使用。 任何針對移除此限制所提出的要求都不會獲得認可。
+若您在 2017 年 11 月 15 日之後建立 MSDN、Azure Pass、Azure in Open、Education、BizSpark、Azure 贊助、Azure 學生、免費試用或任何 Visual Studio 訂用帳戶，由於技術性限制，您將無法從這些訂用帳戶內的 VM 直接將電子郵件傳送給電子郵件提供者。 這些限制的目的為避免不當使用。 任何針對移除此限制所提出的要求都不會獲得認可。
 
-如果您使用這些訂用帳戶類型，建議您使用 SMTP 轉送服務，如本文稍早所述，或變更您的訂用帳戶類型。
+若您使用這些訂用帳戶類型，我們建議您使用 SMTP 轉送服務 (如本文先前所述)，或變更您的訂用帳戶類型。
 
 ## <a name="cloud-service-provider-csp"></a>雲端服務提供者 (CSP)
 
-如果您是透過 CSP 使用 Azure 資源，如果無法使用安全的 SMTP 轉送，您可以要求 CSP 為您的 Microsoft 建立解除封鎖豁免要求。
+若您是透過 CSP 使用 Azure 資源，可以在無法使用安全 SMTP 轉送時要求 CSP 代您向 Microsoft 提出解除封鎖豁免要求。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
-如果您仍然需要協助，請[洽詢支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人員，以使用下列問題類型快速解決您的問題：**訂閱管理**問題類型：**要求啟用埠25的電子郵件流程**。
+如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以使用下列問題類型快速解決您的問題：**訂用帳戶管理**問題類型：**啟用連接埠 25 電子郵件流程的要求**。

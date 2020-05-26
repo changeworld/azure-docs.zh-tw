@@ -10,16 +10,24 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80155183"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589086"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
-了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
+了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書籤，以掌握服務的最新狀態。
+
+## <a name="may-2020"></a>2020 年 5 月
+電腦視覺 API v3.0 已公開上市，並包含[讀取 API](concept-recognizing-text.md) 的更新：
+
+* 支援英文、荷蘭文、法文、德文、義大利文、葡萄牙文和西班牙文
+* 更高的精確度
+* 每個擷取字組的信賴分數
+* 新的輸出格式
 
 ## <a name="march-2020"></a>2020 年 3 月
 

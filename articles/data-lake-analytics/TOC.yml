@@ -161,8 +161,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 要求變更
       href: 'https://feedback.azure.com/forums/327234-data-lake'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: 定價計算機

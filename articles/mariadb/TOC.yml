@@ -219,8 +219,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 要求功能

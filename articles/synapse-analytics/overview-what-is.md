@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 65f6c6627093358f8cbc66055bb9b16561f7c610
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420952"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587865"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
 
@@ -24,11 +24,11 @@ ms.locfileid: "81420952"
 
 建立、設定、保護和維護這類解決方案相當不容易，因此會延遲智慧型深入解析的即時擷取。
 
-**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得所有資料的深入解析，且不論資料規模為何。 此服務將企業資料倉儲中所用的 **SQL** 技術、巨量資料分析中所用的 **Spark** 技術，以及協調活動和資料移動的**管線**完美地結合在一起。 
+**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得所有資料的深入解析，且不論資料規模為何。 此服務將企業資料倉儲中所用的 **SQL** 技術、巨量資料分析中所用的 **Spark** 技術，以及協調活動和資料移動的**管線**完美地結合在一起。
 
 Azure Synapse 隨附 Web 原生的 **Studio** 使用者體驗，可提供管理、監視、編碼和安全性的單一體驗和模型。
 
-Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使用最熟悉的分析方式來對任何規模的任何資料收集深入解析。 其與 **Power BI** 緊密整合，讓資料工程師能夠建立端對端的分析解決方案，來提供商業智慧。 
+Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使用最熟悉的分析方式來對任何規模的任何資料收集深入解析。 其與 **Power BI** 緊密整合，讓資料工程師能夠建立端對端的分析解決方案，來提供商業智慧。
 
 此外，Azure Synapse 可透過透過其內建的 **AzureML** 支援，使用機器學習來協助預測模型的建置和進行進階分析。
 
@@ -44,14 +44,14 @@ Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使
 
 ### <a name="industry-standard-apache-spark"></a>業界標準的 Apache Spark
 
-**Synapse Spark** 會深入且完美地整合 Apache Spark (這是最受歡迎的開放原始碼巨量資料引擎，可用於資料準備、資料工程、ETL 和機器學習)。
+**適用於 Synapse Spark 的 Apache Spark** 會深入且完美地整合 Apache Spark (這是最受歡迎的開放原始碼巨量資料引擎，可用於資料準備、資料工程、ETL 和機器學習)。
 
 * Apache Spark 2.4 具有搭配 SparkML 演算法和 AzureML 整合的 ML 模型，且內建 Linux Foundation Delta Lake 支援。
 * 簡化的資源模型，讓您不必擔心如何管理叢集。
 * 快速的 Spark 啟動和主動進行自動調整。
 * Spark 的內建 .NET 支援，可讓您在 Spark 應用程式中重複使用您的 C# 專業知識和現有的 .NET 程式碼。
 
-### <a name="interop-of-sql-and-spark-on-your-data-lake"></a>在 Data Lake 上交互操作 SQL 和 Spark
+### <a name="interop-of-sql-and-apache-spark-on-your-data-lake"></a>在 Data Lake 上交互操作 SQL 和 Apache Spark
 
 Azure Synapse 移除了同時使用 SQL 和 Spark 的傳統技術障礙。 您可以根據需求和專長，順暢地混搭這兩項功能。
 

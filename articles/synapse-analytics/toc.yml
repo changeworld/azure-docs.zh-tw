@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教學課程
   items:
+    - name: 開始使用
+      href: get-started.md
     - name: 執行適用於 Spark 集區的 Apache Spark 應用程式
       href: ./spark/intellij-tool-synapse.md
     - name: Spark 作業定義

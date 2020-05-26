@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: 暫停及重新啟用訊息實體
           href: entity-suspend.md
+        - name: 使用 Service Bus Explorer 來執行服務匯流排上的資料作業
+          href: explorer.md
         - name: 使用 ARM 範本
           href: service-bus-resource-manager-overview.md
           items:

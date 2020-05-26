@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591755"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800618"
 ---
 # <a name="whats-new-in-personalizer"></a>個人化工具的新功能
 
@@ -48,7 +48,7 @@ ms.locfileid: "83591755"
 
 ### <a name="2019-build-videos"></a>2019組建影片
 
-* [使用認知服務個人化工具的 Xbox & 內容提供適當的體驗](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [使用認知服務個人化工具的 Xbox & 內容提供適當的體驗](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>服務更新
 

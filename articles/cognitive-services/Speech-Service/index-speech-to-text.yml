@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83653469"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800868"
 landingContent:
 - title: 關於語音轉換文字
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: batch-transcription.md
     - text: 語音辨識基本概念
       url: speech-to-text-basics.md
-    - text: 針對語音轉換文字使用 SPX，而不使用程式碼
+    - text: 使用適用于語音轉換文字的語音 CLI，而不使用任何程式碼
       url: spx-overview.md
   - linkListType: quickstart
     links:
@@ -64,7 +64,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: 建立人為標記的轉譯
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: 參考
+- title: 參考資料
   linkLists:
   - linkListType: reference
     links:

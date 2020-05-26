@@ -9,37 +9,33 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0d2683091898e9c84457b3b538776f0e6b0469d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420052"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589273"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
+# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
-SQL 隨選 (預覽版) 查詢會直接從 Azure 儲存體讀取檔案。 因為儲存體帳戶是 SQL 隨選資源以外的物件，所以需要適當的認證。 使用者需要獲派適當權限，才能使用必要的認證。 本文將說明您可以使用的認證類型，以及如何為 SQL 和 Azure AD 使用者制訂認證查閱。
+SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存體上檔案的權限會由兩個層級來控制：
+- **儲存體層級** - 使用者應該具有存取基礎儲存體檔案的權限。 您的儲存體管理員應允許 Azure AD 主體讀取/寫入檔案，或產生將用來存取儲存體的 SAS 金鑰。
+- **SQL 服務層級** - 使用者應該具有從[外部資料表](develop-tables-external-tables.md)讀取資料的 `SELECT` 權限，或執行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 權限，以及使用存取儲存體所需認證的權限。
+
+本文將說明您可以使用的認證類型，以及如何為 SQL 和 Azure AD 使用者制訂認證查閱。
 
 ## <a name="supported-storage-authorization-types"></a>支援的儲存體授權類型
 
-已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中的檔案。 支援三種授權類型：
+已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 支援三種授權類型：
 
-- [共用存取簽章](#shared-access-signature)
-- [受控身分識別](#managed-identity)
-- [使用者身分識別](#user-identity)
+- [共用存取簽章](?tabs=shared-access-signature)
+- [使用者身分識別](?tabs=user-identity)
+- [受控身分識別](?tabs=managed-identity)
 
 > [!NOTE]
-> 當您建立工作區時，[Azure AD 傳遞](#force-azure-ad-pass-through)是預設的行為。 如果您使用此行為，則不需要為使用 AD 登入來存取的每個儲存體帳戶建立認證。 您可以[停用此行為](#disable-forcing-azure-ad-pass-through)。
+> 當您建立工作區時，[Azure AD 傳遞](#force-azure-ad-pass-through)是預設的行為。 如果您使用此行為，則不需要為使用 Azure AD 登入來存取的每個儲存體帳戶建立認證。 您可以[停用此行為](#disable-forcing-azure-ad-pass-through)。
 
-您可以在下表中找到支援或即將支援的不同授權類型。
-
-| 授權類型                    | SQL 使用者     | Azure AD 使用者      |
-| ------------------------------------- | ------------- | -----------    |
-| [SAS](#shared-access-signature)       | 支援     | 支援      |
-| [受控身分識別](#managed-identity) | 不支援 | 不支援  |
-| [使用者身分識別](#user-identity)       | 不支援 | 支援      |
-
-### <a name="shared-access-signature"></a>共用存取簽章
+### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
 **共用存取簽章 (SAS)** 可提供您儲存體帳戶中資源的委派存取權。 透過 SAS，客戶可以對用戶端授與儲存體帳戶中資源的存取權，而不必共用帳戶金鑰。 針對具有 SAS 的用戶端，SAS 可讓您精準控制這些用戶端應獲得的存取類型，包括有效性間隔、授與的權限、可接受的 IP 位址範圍，以及可接受的通訊協定 (HTTPs/HTTP)。
 
@@ -50,12 +46,11 @@ SQL 隨選 (預覽版) 查詢會直接從 Azure 儲存體讀取檔案。 因為�
 >
 > SAS 權杖：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-### <a name="user-identity"></a>使用者身分識別
+您必須建立資料庫範圍或伺服器範圍的認證，才能使用 SAS 權杖來啟用存取。
+
+### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
 
 **使用者身分識別** (也稱為「傳遞」) 是一種授權類型，其使用登入 SQL 隨選的 Azure AD 使用者身分識別來授與資料存取權。 存取資料之前，Azure 儲存體管理員必須將權限授與 Azure AD 使用者。 如上表所示，SQL 使用者類型不支援此方式。
-
-> [!NOTE]
-> 如果您使用 [Azure AD 傳遞](#force-azure-ad-pass-through)，則不需要為使用 AD 登入來存取的每個儲存體帳戶建立認證。
 
 > [!IMPORTANT]
 > 您必須具有儲存體 Blob 資料擁有者/參與者/讀者角色，才能使用您的身分識別來存取資料。
@@ -64,86 +59,9 @@ SQL 隨選 (預覽版) 查詢會直接從 Azure 儲存體讀取檔案。 因為�
 > 若要深入了解 Azure Data Lake Store Gen2 中的存取控制，請參閱 [Azure Data Lake Storage Gen2 文章中的存取控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
 >
 
-### <a name="managed-identity"></a>受控識別
+您必須明確地啟用 Azure AD 傳遞驗證，才能讓 Azure AD 使用者使用其身分識別來存取儲存體。
 
-**受控識別**也稱為 MSI。 這是 Azure Active Directory (Azure AD) 的功能，可為 SQL 隨選提供 Azure 服務。 此外，也會在 Azure AD 中部署自動受控識別。 在 Azure 儲存體中，此身分識別可用來授與資料存取要求的權限。
-
-存取資料之前，Azure 儲存體管理員必須將權限授與受控識別，才能存取資料。 將權限授與受控識別的方式，與對任何其他 Azure AD 使用者授與權限的方式一樣。
-
-## <a name="create-credentials"></a>建立認證
-
-若要查詢 Azure 儲存體中的檔案，您的 SQL 隨選端點需要其中包含驗證資訊的伺服器層級認證。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
-
-> [!NOTE]
-> 不支援 FOR CRYPTOGRAPHIC PROVIDER 引數。
-
-針對所有支援的授權類型，認證可以指向帳戶、容器、任何目錄 (非根目錄) 或單一檔案。
-
-CREDENTIAL NAME 必須符合容器、資料夾或檔案的完整路徑，其格式如下：`<prefix>://<storage_account_path>/<storage_path>`
-
-| 外部資料來源       | 前置詞 | 儲存體帳戶路徑                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob 儲存體         | https  | <storage_account>.blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
-
- '<storage_path>' 是儲存體內的路徑，其指向您想要讀取的資料夾或檔案。
-
-> [!NOTE]
-> 特殊的 CREDENTIAL NAME `UserIdentity` 會[強制執行 Azure AD 傳遞](#force-azure-ad-pass-through)。 請了解執行查詢時，此方式對[認證查閱](#credential-lookup)產生的影響。
-
-(選擇性) 若要允許使用者建立或卸載認證，系統管理員可以對使用者執行 GRANT/DENY ALTER ANY CREDENTIAL 權限：
-
-```sql
-GRANT ALTER ANY CREDENTIAL TO [user_name];
-```
-
-### <a name="supported-storages-and-authorization-types"></a>支援的儲存體和授權類型
-
-您可以使用下列的授權和 Azure 儲存體類型組合：
-
-|                     | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
-| ------------------- | ------------   | --------------   | -----------   |
-| SAS                | 支援      | 不支援   | 支援     |
-| 受控識別  | 不支援  | 不支援    | 不支援 |
-| 使用者身分識別     | 支援      | 支援        | 支援     |
-
-### <a name="examples"></a>範例
-
-視[授權類型](#supported-storage-authorization-types)而定，您可以使用下列 T-SQL 語法來建立認證。
-
-**共用存取簽章和 Blob 儲存體**
-
-請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='SHARED ACCESS SIGNATURE'
-, SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
-GO
-```
-
-**使用者身分識別和 Azure Data Lake Storage Gen1**
-
-請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.azuredatalakestore.net/webhdfs/v1/<mystorageaccountcontainername>]
-WITH IDENTITY='User Identity';
-GO
-```
-
-**使用者身分識別和 Azure Data Lake Storage Gen2**
-
-請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='User Identity';
-GO
-```
-
-## <a name="force-azure-ad-pass-through"></a>強制執行 Azure AD 傳遞
+#### <a name="force-azure-ad-pass-through"></a>強制執行 Azure AD 傳遞
 
 強制執行 Azure AD 傳遞是使用特殊 CREDENTIAL NAME `UserIdentity` 時的預設行為，這會在佈建 Azure Synapse 工作區期間自動建立。 其會針對每個 Azure AD 登入的每個查詢強制使用 Azure AD 傳遞，而且不論是否有其他認證存在，都會發生此情形。
 
@@ -163,9 +81,7 @@ WITH IDENTITY = 'User Identity';
 GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
 ```
 
-若要深入了解 SQL 隨選如何尋找要使用的認證，請參閱[認證查閱](#credential-lookup)。
-
-## <a name="disable-forcing-azure-ad-pass-through"></a>停用強制執行 Azure AD 傳遞
+#### <a name="disable-forcing-azure-ad-pass-through"></a>停用強制執行 Azure AD 傳遞
 
 您可以[對每個查詢停用強制執行 Azure AD 傳遞](#force-azure-ad-pass-through)。 若要將其停用，請使用下列方式卸載 `Userdentity` 認證：
 
@@ -175,17 +91,55 @@ DROP CREDENTIAL [UserIdentity];
 
 如果您想要重新啟用，請參閱[強制執行 Azure AD 傳遞](#force-azure-ad-pass-through)一節。
 
-若要對特定使用者停用強制執行 Azure AD 傳遞，您可以拒絕特定使用者認證 `UserIdentity` 上的 REFERENCE 權限。 下列範例會對 user_name 停用強制執行 Azure AD 傳遞：
+### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
+
+**受控識別**也稱為 MSI。 這是 Azure Active Directory (Azure AD) 的功能，可為 SQL 隨選提供 Azure 服務。 此外，也會在 Azure AD 中部署自動受控識別。 在 Azure 儲存體中，此身分識別可用來授與資料存取要求的權限。
+
+存取資料之前，Azure 儲存體管理員必須將權限授與受控識別，才能存取資料。 將權限授與受控識別的方式，與對任何其他 Azure AD 使用者授與權限的方式一樣。
+
+### <a name="anonymous-access"></a>[匿名存取](#tab/public-access)
+
+您可以存取放在 Azure 儲存體帳戶上的公用檔案，而且這些檔案[允許匿名存取](/azure/storage/blobs/storage-manage-access-to-resources.md)。
+
+---
+
+### <a name="supported-authorization-types-for-databases-users"></a>資料庫使用者可用的授權類型
+
+在下表中，您可以找到可用的授權類型：
+
+| 授權類型                    | SQL 使用者    | Azure AD 使用者     |
+| ------------------------------------- | ------------- | -----------    |
+| [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)       | 不支援 | 支援      |
+| SAS[](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支援     | 支援      |
+| [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 不支援 | 支援      |
+
+### <a name="supported-storages-and-authorization-types"></a>支援的儲存體和授權類型
+
+您可以使用下列的授權和 Azure 儲存體類型組合：
+
+|                     | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
+| ------------------- | ------------   | --------------   | -----------   |
+| SAS               | 支援      | 不支援   | 支援     |
+| 受控識別 | 支援      | 支援        | 支援     |
+| 使用者身分識別    | 支援      | 支援        | 支援     |
+
+## <a name="credentials"></a>認證
+
+若要查詢 Azure 儲存體中的檔案，您的 SQL 隨選端點需要其中包含驗證資訊的認證。 您可以使用兩種類型的認證：
+- 伺服器層級的認證適用於使用 `OPENROWSET` 函式執行的特定查詢。 認證名稱必須符合儲存體 URL。
+- DATABASE SCOPED CREDENTIAL 適用於外部資料表。 外部資料表會參考具有存取儲存體所需認證的 `DATA SOURCE`。
+
+若要允許使用者建立或卸載認證，系統管理員可以對使用者執行 GRANT/DENY ALTER ANY CREDENTIAL 權限：
 
 ```sql
-DENY REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
+GRANT ALTER ANY CREDENTIAL TO [user_name];
 ```
 
-若要深入了解 SQL 隨選如何尋找要使用的認證，請參閱[認證查閱](#credential-lookup)。
+存取外部儲存體的資料庫使用者必須擁有使用認證的權限。
 
-## <a name="grant-permissions-to-use-credential"></a>授與使用認證的權限
+### <a name="grant-permissions-to-use-credential"></a>授與使用認證的權限
 
-若要使用認證，使用者必須具有特定認證的 REFERENCES 權限。 若要在 specific_user 的 storage_credential 上授與 REFERENCES 權限，請執行：
+若要使用認證，使用者必須具有特定認證的 `REFERENCES` 權限。 若要在 specific_user 的 storage_credential 上授與 `REFERENCES` 權限，請執行：
 
 ```sql
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
@@ -197,47 +151,193 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 ```
 
-## <a name="credential-lookup"></a>認證查閱
+## <a name="server-scoped-credential"></a>伺服器範圍的認證
 
-授權查詢時，認證查閱會用來存取儲存體帳戶，並以下列規則為基礎：
+當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱**必須**符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
 
-- 使用者需以 Azure AD 登入的身分登入
+> [!NOTE]
+> 不支援 FOR CRYPTOGRAPHIC PROVIDER 引數。
 
-  - 如果 UserIdentity 認證存在，而且使用者具有其參考權限，則會使用 Azure AD 傳遞，否則會使用[依路徑查閱認證](#lookup-credential-by-path)
+伺服器層級的 CREDENTIAL 名稱必須符合儲存體帳戶 (和選擇性容器) 的完整路徑，其格式如下：`<prefix>://<storage_account_path>/<storage_path>`。 下表說明儲存體帳戶路徑：
 
-- 使用者以 SQL 登入的身分登入
+| 外部資料來源       | 前置詞 | 儲存體帳戶路徑                                |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Azure Blob 儲存體         | https  | <storage_account>.blob.core.windows.net             |
+| Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
 
-  - 使用[依路徑查閱認證](#lookup-credential-by-path)
+> [!NOTE]
+> 特殊的伺服器層級 CREDENTIAL `UserIdentity` 會[強制執行 Azure AD 傳遞](?tabs=user-identity#force-azure-ad-pass-through)。
 
-### <a name="lookup-credential-by-path"></a>依路徑查閱認證
+伺服器範圍的認證可讓您使用下列驗證類型來存取 Azure 儲存體：
 
-若強制執行 Azure AD 傳遞已停用，則會根據儲存體路徑 (深度優先)，以及該特定認證的 REFERENCES 權限是否存在，來進行認證查閱。 當有多個認證可用來存取相同的檔案時，SQL 隨選會使用最明確的一個。  
+### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
-以下範例會對下列檔案路徑進行查詢：account.dfs.core.windows.net/filesystem/folder1/.../folderN/fileX.ext 
+下列指令碼會建立伺服器層級的認證，讓 `OPENROWSET` 函式可以使用 SAS 權杖來存取 Azure 儲存體上的任何檔案。 建立此認證可讓 SQL 主體執行 `OPENROWSET` 函式，在符合認證名稱中 URL 的 Azure 儲存體上讀取以 SAS 金鑰保護的檔案。
 
-認證查閱會依照下列順序完成：
+請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
+
+```sql
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+WITH IDENTITY='SHARED ACCESS SIGNATURE'
+, SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
+GO
+```
+
+### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
+
+下列指令碼會建立伺服器層級的認證，讓使用者可以使用 Azure AD 身分識別進行模擬。
+
+```sql
+CREATE CREDENTIAL [UserIdentity]
+WITH IDENTITY = 'User Identity';
+```
+
+### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
+
+下列指令碼會建立伺服器層級的認證，讓 `OPENROWSET` 函式可以使用工作區受控識別來存取 Azure 儲存體上的任何檔案。
+
+```sql
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+WITH IDENTITY='Managed Identity'
+```
+
+### <a name="public-access"></a>[公用存取權](#tab/public-access)
+
+下列指令碼會建立伺服器層級的認證，以便 `OPENROWSET` 函式用來存取公用 Azure 儲存體上的任何檔案。 建立此認證可讓 SQL 主體執行 `OPENROWSET` 函式，在符合認證名稱中 URL 的 Azure 儲存體上讀取公用檔案。
+
+您必須將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
+
+```sql
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+WITH IDENTITY='SHARED ACCESS SIGNATURE'
+, SECRET = '';
+GO
+```
+---
+
+## <a name="database-scoped-credential"></a>資料庫範圍認證
+
+當任何主體呼叫具有 `DATA_SOURCE` 的 `OPENROWSET` 函式，或從未存取公用檔案的[外部資料表](develop-tables-external-tables.md)選取資料時，就會使用資料庫範圍的認證。 資料庫範圍認證不需要符合儲存體帳戶的名稱，因為其會在定義儲存體位置的 DATA SOURCE 中明確地使用。
+
+資料庫範圍的認證可讓您使用下列驗證類型來存取 Azure 儲存體：
+
+### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
+
+下列指令碼會建立認證，以使用認證中指定的 SAS 權杖來存取儲存體上的檔案。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [SasToken]
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
+GO
+```
+
+### <a name="azure-ad-identity"></a>[Azure AD 身分識別](#tab/user-identity)
+
+下列指令碼會建立資料庫範圍認證給[外部資料表](develop-tables-external-tables.md)和搭配認證使用資料來源的 `OPENROWSET` 使用，讓其能夠使用自己的 Azure AD 身分識別來存取儲存體檔案。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
+WITH IDENTITY = 'User Identity';
+GO
+```
+
+### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
+
+下列指令碼會建立資料庫範圍認證，以用來將目前的 Azure AD 使用者模擬為服務的受控識別。 
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+WITH IDENTITY = 'Managed Identity';
+GO
+```
+
+資料庫範圍認證不需要符合儲存體帳戶的名稱，因為其會在定義儲存體位置的 DATA SOURCE 中明確地使用。
+
+### <a name="public-access"></a>[公用存取權](#tab/public-access)
+
+存取公用檔案不需要資料庫範圍認證。 建立[不含資料庫範圍認證的資料來源](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)，以存取 Azure 儲存體上的公用檔案。
+
+---
+
+資料庫範圍認證會用於外部資料源中，其用途是指定將用來存取此儲存體的驗證方法：
+
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
+          CREDENTIAL = <name of database scoped credential> 
+)
+```
+
+## <a name="examples"></a>範例
+
+**存取公用的資料來源**
+
+使用下列指令碼建立可存取可公用資料來源的資料表。
+
+```sql
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+GO
+CREATE EXTERNAL DATA SOURCE publicData
+WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
+GO
+
+CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
+WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+```
+
+資料庫使用者可以使用參考資料源的外部資料表或 [OPENROWSET](develop-openrowset.md) 函式，從資料來源讀取檔案內容：
+
+```sql
+SELECT TOP 10 * FROM dbo.userPublicData;
+GO
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+GO
+```
+
+**使用認證來存取資料來源**
+
+修改下列指令碼來建立外部資料表，使其可使用 SAS 權杖、使用者的 Azure AD 身分識別或工作區的受控識別來存取 Azure 儲存體。
+
+```sql
+-- Create master key in databases with some password (one-off per database)
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
+GO
+
+-- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+
+CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+GO
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
+GO
+CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+
+-- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
+
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+GO
+
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
+-- Uncomment one of these options depending on authentication method that you want to use to access data source:
+--,CREDENTIAL = MyIdentity 
+--,CREDENTIAL = WorkspaceIdentity 
+--,CREDENTIAL = SasCredential 
+)
+
+CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
+WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
 
 ```
-account.dfs.core.windows.net/filesystem/folder1/.../folderN/fileX
-account.dfs.core.windows.net/filesystem/folder1/.../folderN
-account.dfs.core.windows.net/filesystem/folder1
-account.dfs.core.windows.net/filesystem
-account.dfs.core.windows.net
+
+資料庫使用者可以使用參考資料源的[外部資料表](develop-tables-external-tables.md)或 [OPENROWSET](develop-openrowset.md) 函式，從資料來源讀取檔案內容：
+
+```sql
+SELECT TOP 10 * FROM dbo.userdata;
+GO
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+GO
 ```
-
-如果使用者沒有認證編號 5 的 REFERENCES 權限，則 SQL 隨選會檢查使用者是否在較高層級的認證上有 REFERENCES 權限，直到找到使用者有其 REFERENCES 授權的認證為止。 如果找不到這類權限，則會傳回錯誤訊息。
-
-### <a name="credential-and-path-level"></a>認證和路徑層級
-
-根據您想要的路徑圖形，執行查詢的需求如下：
-
-- 如果查詢的目標是多個檔案 (包含或不含萬用字元的資料夾)，使用者必須至少能夠存取根目錄層級 (容器層級) 上的認證。 此存取層級是必要的，因為清單檔與根目錄相關 (Azure 儲存體限制)
-- 如果查詢是以單一檔案為目標，則使用者必須能夠存取任何層級的認證，因為 SQL 隨選會直接存取檔案，也就是不會列出資料夾。
-
-|                  | *帳戶* | *根目錄* | *任何其他目錄* | *檔案*        |
-| ---------------- | --------- | ---------------- | --------------------- | ------------- |
-| 單一檔案     | 支援 | 支援        | 支援             | 支援     |
-| 多個檔案  | 支援 | 支援        | 不支援         | 不支援 |
 
 ## <a name="next-steps"></a>後續步驟
 

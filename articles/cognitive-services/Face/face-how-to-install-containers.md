@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702145"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815786"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝和執行臉部容器（預覽）
 
@@ -38,7 +38,7 @@ Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影�
 
 ## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
 
-填寫並提交[要求表單](https://aka.ms/VisionContainersPreview)，以要求容器的存取權。 
+填寫並提交[要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -144,7 +144,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解如何下載、安裝及執行臉部服務容器的概念和工作流程。 摘要說明：
 

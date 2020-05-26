@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050730"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585809"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什麼是 Azure Active Directory B2B 中的來賓使用者存取權？
 
@@ -88,6 +88,19 @@ Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業，可讓您
 
 - 使用 [Azure AD 權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)來設定原則，以[管理外部使用者的存取權](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)。
 - 使用 [B2B 共同作業邀請 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 來自訂您的上線體驗。
+
+## <a name="integrate-with-identity-providers"></a>與識別提供者整合
+
+Azure AD 支援 Facebook、Microsoft 帳戶、Google 或企業識別提供者之類的外部識別提供者。 您可以設定與識別提供者的同盟，以便外部使用者使用其現有社交或企業帳戶進行登入，而不只是為您的應用程式建立新的帳戶。 深入了解外部身分識別的識別提供者。
+
+![顯示 [識別提供者] 頁面的螢幕擷取畫面](media/what-is-b2b/identity-providers.png)
+
+
+## <a name="create-a-self-service-sign-up-user-flow-preview"></a>建立自助式註冊使用者流程 (預覽)
+
+透過自助式註冊使用者流程，您可以為想要存取您應用程式的外部使用者建立註冊體驗。 在註冊流程中，您可以為不同的社交或企業識別提供者提供選項，並收集使用者的相關資訊。 了解自助式註冊及如何進行設定。
+
+![顯示使用者流程頁面的螢幕擷取畫面](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
 ## <a name="next-steps"></a>後續步驟
 

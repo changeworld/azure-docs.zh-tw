@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: 使用 SMS 式驗證 (預覽)
       href: howto-authentication-sms-signin.md
+    - name: 使用電子郵件地址登入 (預覽)
+      href: howto-authentication-use-email-signin.md
     - name: Azure AD 智慧鎖定
       href: howto-password-smart-lockout.md
     - name: 憑證式驗證
@@ -223,8 +225,8 @@
   items:
     - name: Azure 意見反應論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新

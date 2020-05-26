@@ -95,6 +95,8 @@
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: VM 因為更新而沒有回應
           href: unresponsive-vm-apply-windows-update.md
+        - name: 套用群組原則時 VM 沒有回應
+          href: unresponsive-vm-apply-group-policy.md
 - name: 無法連接到我的 VM
   items:
     - name: RDP

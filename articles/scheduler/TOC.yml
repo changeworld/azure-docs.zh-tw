@@ -48,9 +48,9 @@
       href: 'https://azure.microsoft.com/updates/?product=scheduler'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-scheduler.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/scheduler/'
