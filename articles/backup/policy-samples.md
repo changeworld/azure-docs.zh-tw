@@ -1,15 +1,15 @@
 ---
 title: 適用於 Azure 備份的內建原則定義
 description: 列出適用於 Azure 備份的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 424cb4f17c657db5a239fb7dd19a71324283f18b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 8f910d9926678ee3c3fb0fe5f9af1476c23375da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837784"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635836"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-backup"></a>適用於 Azure 備份的 Azure 原則內建原則定義
 

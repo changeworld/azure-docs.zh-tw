@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78944280"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592061"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教學課程：使用 SQL Server 資料庫在邊緣儲存資料
 
@@ -41,7 +41,7 @@ ms.locfileid: "78944280"
 
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 AMD64 Linux 裝置](quickstart-linux.md)。
-  * ARM 裝置 (例如 Raspberry Pi) 無法執行 SQL Server。 如果您想要在 ARM 裝置上使用 SQL，您可以註冊試用 [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) 預覽版。
+  * ARM 裝置 (例如 Raspberry Pi) 無法執行 SQL Server。 如果您想要在 ARM 裝置上使用 SQL，您可以註冊試用 [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) 預覽版。
 * 容器登錄，像是 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
@@ -61,7 +61,7 @@ ms.locfileid: "78944280"
 
 1. 開啟 Visual Studio Code。
 
-2. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
+2. 選取 [檢視] > [命令選擇區]，以開啟 VS Code 命令選擇區。
 
 3. 在命令選擇區中，輸入並執行命令 Azure IoT Edge:**新增 IoT Edge 解決方案**。 在命令選擇區中提供下列資訊，以建立解決方案：
 
@@ -69,7 +69,7 @@ ms.locfileid: "78944280"
    | ----- | ----- |
    | 選取資料夾 | 選擇開發機器上可供 VS Code 建立解決方案檔案的位置。 |
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱 (例如 **SqlSolution**)，或接受預設值。 |
-   | 選取模組範本 | 選擇 [Azure Functions - C#]  。 |
+   | 選取模組範本 | 選擇 [Azure Functions - C#]。 |
    | 提供模組名稱 | 將模組命名為 **sqlFunction**。 |
    | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br>最終字串看起來會類似於：\<登錄名稱\>.azurecr.io/sqlfunction。 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "78944280"
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將私人映像提取到 IoT Edge 裝置。
 
 1. 在 VS Code 總管中，開啟 .env 檔案。
-2. 使用從 Azure Container Registry 複製過來的 [使用者名稱]  和 [密碼]  值來更新欄位。
+2. 使用從 Azure Container Registry 複製過來的 [使用者名稱] 和 [密碼] 值來更新欄位。
 3. 儲存這個檔案。
 
 ### <a name="select-your-target-architecture"></a>選取您的目標架構
@@ -93,7 +93,7 @@ ms.locfileid: "78944280"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自訂程式碼來更新模組
 
-1. 在 VS Code 總管中，開啟 [模組]   > [sqlFunction]   > [sqlFunction.cs]  。
+1. 在 VS Code 總管中，開啟 [模組] > [sqlFunction] > [sqlFunction.cs]。
 
 2. 將檔案的整個內容取代為下列程式碼：
 
@@ -184,7 +184,7 @@ ms.locfileid: "78944280"
    }
    ```
 
-3. 在第 35 行中，將字串 **\<sql connection string\>** 取代為下列字串。 [資料來源]  屬性會參考尚不存在的 SQL Server 容器。 在下一節中，您將使用 **SQL** 這個名稱來建立容器。
+3. 在第 35 行中，將字串 **\<sql connection string\>** 取代為下列字串。 [資料來源] 屬性會參考尚不存在的 SQL Server 容器。 在下一節中，您將使用 **SQL** 這個名稱來建立容器。
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
@@ -206,24 +206,24 @@ ms.locfileid: "78944280"
 
 [部署資訊清單](module-composition.md)會宣告 IoT Edge 執行階段會在 IoT Edge 裝置上安裝哪些模組。 您在上一節中提供了用來建立自訂函式模組的程式碼，但該 SQL Server 模組早已建置完成並可在 Azure Marketplace 中取得。 您只需要指示 IoT Edge 執行階段納入該模組，然後在裝置上加以設定即可。
 
-1. 在 Visual Studio Code 中，選取 [檢視]   > [命令選擇區]  ，以開啟命令選擇區。
+1. 在 Visual Studio Code 中，選取 [檢視] > [命令選擇區]，以開啟命令選擇區。
 
-2. 在命令選擇區中，輸入並執行命令 [Azure IoT Edge:  新增 IoT Edge 模組]。 在命令選擇區中，提供下列資訊以新增模組：
+2. 在命令選擇區中，輸入並執行命令 [Azure IoT Edge:新增 IoT Edge 模組]。 在命令選擇區中，提供下列資訊以新增模組：
 
    | 欄位 | 值 |
    | ----- | ----- |
    | 選取部署範本檔案 | 命令選擇區會醒目提示您目前解決方案資料夾中的 deployment.template.json 檔案。 選取該檔案。  |
-   | 選取模組範本 | 選取 [來自 Azure Marketplace 的模組]  。 |
+   | 選取模組範本 | 選取 [來自 Azure Marketplace 的模組]。 |
 
-3. 在 Azure IoT Edge 模組市集中搜尋並選取 [SQL Server 模組]  。
+3. 在 Azure IoT Edge 模組市集中搜尋並選取 [SQL Server 模組]。
 
 4. 將模組名稱變更為 **sql** (全部小寫)。 此名稱符合 sqlFunction.cs 檔案中的連接字串所宣告的容器名稱。
 
-5. 選取 [匯入]  將模組新增至您的解決方案。
+5. 選取 [匯入] 將模組新增至您的解決方案。
 
 6. 在您的解決方案資料夾中，開啟 **deployment.template.json** 檔案。
 
-7. 尋找 [模組]  區段。 您應該會看到三個模組。 SimulatedTemperatureSensor  模組預設會包含在新的解決方案內，並提供測試資料供您與其他模組搭配使用。 sqlFunction  模組就是您一開始所建立，並使用新程式碼加以更新的模組。 最後，sql  模組則是從 Azure Marketplace 匯入的。
+7. 尋找 [模組] 區段。 您應該會看到三個模組。 SimulatedTemperatureSensor 模組預設會包含在新的解決方案內，並提供測試資料供您與其他模組搭配使用。 sqlFunction 模組就是您一開始所建立，並使用新程式碼加以更新的模組。 最後，sql 模組則是從 Azure Marketplace 匯入的。
 
    >[!Tip]
    >SQL Server 模組在推出時已在部署資訊清單的環境變數中設定有預設密碼。 每當您在生產環境中建立了 SQL Server 容器時，就應該[變更預設的系統管理員密碼](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)。
@@ -234,7 +234,7 @@ ms.locfileid: "78944280"
 
 在前幾節中，您以一個模組建立了解決方案，然後將另一個模組新增至部署資訊清單範本。 SQL Server 模組會由 Microsoft 公開裝載，但您必須在 Functions 模組中將該程式碼容器化。 在本節中，您會建置解決方案、建立 sqlFunction 模組的容器映像，並將其推送至容器登錄。
 
-1. 在 Visual Studio Code 中，選取 [檢視]   > [終端機]  ，以開啟整合式終端機。  
+1. 在 Visual Studio Code 中，選取 [檢視] > [終端機]，以開啟整合式終端機。  
 
 1. 在 Visual Studio Code 中登入您的容器登錄，以便將您的映像推送到登錄。 請使用您新增至 .env 檔案中的同一個 Azure Container Registry (ACR) 認證。 在整合式終端機中輸入下列命令：
 
@@ -244,21 +244,21 @@ ms.locfileid: "78944280"
 
     您也可能看到安全性警告，建議您使用 --password-stdin 參數。 其使用超出本文的範圍時，建議您遵循此最佳做法。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 命令參考。
 
-1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]。
 
 當您指示 Visual Studio Code 建置解決方案時，它會先擷取部署範本中的資訊，再於名為 **config** 的新資料夾中，產生 deployment.json 檔案。然後，它會在整合式終端機中執行兩個命令：`docker build` 和 `docker push`。 建置命令會建立您的程式碼並將模組容器化。 然後，推送命令會將程式碼推送至您在初始化解決方案時所指定的容器登錄。
 
-您可以確認 sqlFunction 模組是否已成功推送至容器登錄。 在 Azure 入口網站中，瀏覽到您的容器登錄。 選取 [存放庫]  並搜尋 **sqlFunction**。 另外兩個模組 (SimulatedTemperatureSensor 和 sql) 將不會推送至容器登錄，因為其存放庫已經在 Microsoft 登錄中。
+您可以確認 sqlFunction 模組是否已成功推送至容器登錄。 在 Azure 入口網站中，瀏覽到您的容器登錄。 選取 [存放庫] 並搜尋 **sqlFunction**。 另外兩個模組 (SimulatedTemperatureSensor 和 sql) 將不會推送至容器登錄，因為其存放庫已經在 Microsoft 登錄中。
 
 ## <a name="deploy-the-solution-to-a-device"></a>將解決方案部署至裝置
 
 您可以透過 IoT 中樞在裝置上設定模組，但您也可以透過 Visual Studio Code 存取 IoT 中樞和裝置。 在本節中，您會設定對 IoT 中樞的存取，然後使用 VS Code 將解決方案部署至您的 IoT Edge 裝置。
 
-1. 在 VS Code 總管中，展開 [Azure IoT 中樞裝置]  區段。
+1. 在 VS Code 總管中，展開 [Azure IoT 中樞裝置] 區段。
 
-2. 以滑鼠右鍵按一下部署的目標裝置，然後選取 [建立單一裝置的部署]  。
+2. 以滑鼠右鍵按一下部署的目標裝置，然後選取 [建立單一裝置的部署]。
 
-3. 在檔案總管中，瀏覽至解決方案內的 **config** 資料夾，然後選擇 **deployment.amd64**。 按一下 [選取 Edge 部署資訊清單]  。
+3. 在檔案總管中，瀏覽至解決方案內的 **config** 資料夾，然後選擇 **deployment.amd64**。 按一下 [選取 Edge 部署資訊清單]。
 
    請勿將 deployment.template.json 檔案作為部署資訊清單。
 

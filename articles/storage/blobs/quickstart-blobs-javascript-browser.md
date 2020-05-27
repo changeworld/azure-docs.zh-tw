@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3b23eac4ab50401e68e17064d0964dacc3c17d32
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82120447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634078"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -32,9 +32,9 @@ Azure Blob 儲存體經過最佳化，能妥善儲存大量的非結構化資料
 * [Node.js](https://nodejs.org)
 * [Microsoft Visual Studio Code](https://code.visualstudio.com)
 * 可用於瀏覽器偵錯的 Visual Studio Code 擴充功能，例如：
-    * [適用於 Microsoft Edge 的偵錯工具](vscode:extension/msjsdiag.debugger-for-edge)
-    * [適用於 Chrome 的偵錯工具](vscode:extension/msjsdiag.debugger-for-chrome)
-    * [適用於 Firefox 的偵錯工具](vscode:extension/firefox-devtools.vscode-firefox-debug)
+    * [適用於 Microsoft Edge 的偵錯工具](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+    * [適用於 Chrome 的偵錯工具](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+    * [適用於 Firefox 的偵錯工具](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 05/19/2020
 ms.locfileid: "83120131"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 入口網站建立 Durable Functions
@@ -17,12 +17,12 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 > [!NOTE]
 > 
-> * 如果您是在 c # 中開發長期函式，您應該改為考慮[Visual Studio 2019 開發](durable-functions-create-first-csharp.md)。
+> * 如果您正在使用 C# 開發長期函式，則應考慮 [Visual Studio 2019 開發](durable-functions-create-first-csharp.md)。
 > * 如果您正在使用 JavaScript 開發長期函式，則應考慮 [Visual Studio Code 開發](./quickstart-js-vscode.md)。
 
 ## <a name="create-a-function-app"></a>建立函數應用程式
 
-您必須擁有函式應用程式以便主控任何函式的執行。 函數應用程式可讓您將函式群組為邏輯單位，以方便您管理、部署、調整和共用資源。 您可以建立 .NET 或 JavaScript 應用程式。
+您必須擁有函式應用程式以便主控任何函式的執行。 函式應用程式可讓您將多個函式群組為邏輯單位，方便管理、部署、調整和共用資源。 您可以建立 .NET 或 JavaScript 應用程式。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -30,19 +30,19 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>安裝 Durable Functions npm 套件 (僅限 JavaScript)
 
-如果您要建立 JavaScript Durable Functions，則必須安裝[ `durable-functions` npm 套件](https://www.npmjs.com/package/durable-functions)：
+如果您要建立 JavaScript Durable Functions，您必須安裝 [`durable-functions`npm 套件](https://www.npmjs.com/package/durable-functions)：
 
-1. 從函式應用程式的頁面，在左窗格中選取 [**開發工具**] 下的 [ **Advanced tools** ]。
+1. 從函式應用程式的頁面，選取左窗格中 [開發工具] 之下的 [進階工具]。
 
    :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="函式平台功能會選擇 Kudu":::
 
-2. 在 [ **Advanced Tools** ] 頁面中，選取 [ **Go**]。
+2. 在 [進階工具] 頁面中，選取 [執行]。
 
-3. 在 Kudu 主控台中，依序選取 [ **Debug console**] 和 [ **CMD**]。
+3. 在 Kudu 主控台中，選取 [偵錯主控台]，然後選取 [CMD]。
 
    :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 偵錯主控台":::
 
-3. 函式應用程式的檔案目錄結構應該會顯示。 瀏覽至 `site/wwwroot` 資料夾。 從這裡，您可以將 `package.json` 檔案拖放到檔案目錄視窗來上傳該檔案。 範例 `package.json` 如下：
+3. 函式應用程式的檔案目錄結構應該會顯示。 瀏覽到 `site/wwwroot` 資料夾。 從這裡，您可以將 `package.json` 檔案拖放到檔案目錄視窗來上傳該檔案。 範例 `package.json` 如下：
 
     ```json
     {
@@ -60,23 +60,23 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 ## <a name="create-an-orchestrator-function"></a>建立協調器函式
 
-1. 在函數應用程式中，從左窗格中選取 [**函數**]，然後從頂端功能表中選取 [**新增**]。 
+1. 在您的函式應用程式中，從左側窗格選取 [函式]，然後從頂端功能表選取 [新增]。 
 
-1. 在 [**新增函數**] 頁面的 [搜尋] 欄位中，輸入 `durable` ，然後選擇 [ **Durable Functions HTTP 入門**] 範本。
+1. 在 [新函式] 的搜尋欄位中，輸入 `durable`，然後選擇 [Durable Functions HTTP 入門] 範本。
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="選取 Durable Functions HTTP starter":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="選取 Durable Functions HTTP 入門":::
 
-1. 針對**新**的 [函式名稱]，輸入 `HttpStart` ，然後選取 [**建立函數**]。
+1. 針對 [新函式] 名稱，輸入 `HttpStart`，然後選取 [建立函式]。
 
    建立的函式用來啟動協調流程。
 
-1. 在函數應用程式中建立另一個函式，這次是使用**Durable Functions orchestrator**範本。 將新的協調流程函式命名為 `HelloSequence`。
+1. 在函式應用程式中建立另一個函式，這次是使用 **Durable Functions 協調器**範本。 將新的協調流程函式命名為 `HelloSequence`。
 
-1. `Hello`使用**Durable Functions 活動**範本，建立名為的第三個函式。
+1. 使用 **Durable Functions 活動**範本建立名為 `Hello` 的第三個函式。
 
 ## <a name="test-the-durable-function-orchestration"></a>測試長期函式的協調流程
 
-1. 回到**HttpStart**函式，選擇 [**取得**函式 Url]，然後選取 [**複製到剪貼**簿] 圖示以複製 Url。 您可以使用此 URL 來啟動 **HelloSequence** 函式。
+1. 回到 **HttpStart** 函式，選擇 [取得函式 URL]，然後選取 [複製到剪貼簿] 圖示以複製該 URL。 您可以使用此 URL 來啟動 **HelloSequence** 函式。
 
 1. 使用 Postman 或 cURL 等 HTTP 工具，將 POST 要求傳送至您複製的 URL。 下列範例是 cURL 命令，它向長期函式傳送 POST 要求：
 
@@ -108,7 +108,7 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
         }
     ```
 
-1. 繼續呼叫 `statusQueryGetUri` 端點，直到狀態變成 [已完成]****，您會看到如下列範例所示的回應：
+1. 繼續呼叫 `statusQueryGetUri` 端點，直到狀態變成 [已完成]，您會看到如下列範例所示的回應：
 
     ```json
     {
