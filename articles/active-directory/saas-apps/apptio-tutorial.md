@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d353aad9f0ecf871410dd94b0081381a0b1304c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71129735"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Apptio 整合
 
@@ -129,11 +129,11 @@ ms.locfileid: "71129735"
 
 ## <a name="configure-apptio-sso"></a>設定 Apptio SSO
 
-若要在 **Apptio** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Apptio 支援小組](https://www.apptio.com/about/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Apptio** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Apptio 支援小組](https://www.apptio.com/resources/customer-support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-apptio-test-user"></a>建立 Apptio 測試使用者
 
-在本節中，您要在 Apptio 中建立名為 B.Simon 的使用者。 請與 [Apptio 支援小組](https://www.apptio.com/about/contact)合作，在 Apptio 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Apptio 中建立名為 B.Simon 的使用者。 請與 [Apptio 支援小組](https://www.apptio.com/resources/customer-support/)合作，在 Apptio 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 

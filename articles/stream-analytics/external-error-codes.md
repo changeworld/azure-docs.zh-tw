@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: e7ef1adea72ed69dc11f0ea8c7e3ce0db3e6ab7c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594077"
+ms.locfileid: "83650042"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure 串流分析外部錯誤碼
 
@@ -24,10 +24,6 @@ ms.locfileid: "83594077"
 ## <a name="adapterfailedtowriteevents"></a>AdapterFailedToWriteEvents
 
 * **原因**︰將資料寫入到配接器時發生錯誤。
-
-## <a name="kafkaservererror"></a>KafkaServerError
-
-* **原因**︰Kafka 伺服器傳回了錯誤：
 
 ## <a name="azurefunctionhttperror"></a>AzureFunctionHttpError
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596337"
+ms.locfileid: "83654430"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -49,7 +49,7 @@ ms.locfileid: "83596337"
  - 您自己的 Jupyter Notebook 伺服器
 
     - 安裝 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
-    - 安裝 [Azure Machine Learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug)：`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - 安裝 [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 建立[工作區組態檔](how-to-configure-environment.md#workspace)。
     - 執行虛擬網路[安裝筆記本](https://aka.ms/azure-rl-env-setup)，以開啟用於分散式增強式學習的網路連接埠。
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>建立增強式學習估算器
 
-在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug)，將訓練作業提交至 Azure Machine Learning。
+在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py)，將訓練作業提交至 Azure Machine Learning。
 
 Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 如需 Azure Machine Learning 估算器模式的詳細資訊，請參閱[如何使用估算器來定型模型](how-to-train-ml-models.md)。
 

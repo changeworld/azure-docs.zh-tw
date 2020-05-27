@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792168"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652988"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立 Azure VM 的自訂映像
 
@@ -196,5 +196,5 @@ Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://
 請前進到下一個教學課程，了解高可用性的虛擬機器。
 
 > [!div class="nextstepaction"]
-> [建立高可用性 VM](tutorial-availability-sets.md)。
+> [建立高可用性 VM](tutorial-availability-sets.md)
 

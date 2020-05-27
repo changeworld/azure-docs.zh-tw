@@ -4,21 +4,21 @@ description: 取得 Azure PowerShell 範例，以在 Azure Cosmos DB Gremlin API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: d0deef4df6cfdcfdb2d549cee35892620cf6b791
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 175e527e46bc15b894f7beec7c6c95d56e8c6d17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365733"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649732"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例 - Gremlin API
 
 下表包含適用於 Azure Cosmos DB for Gremlin API 的範例 Azure PowerShell 指令碼的連結。
 
 > [!NOTE]
-> 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請注意，`Az.CosmosDB` Cmdlet 仍處於預覽狀態，發行前可能還會變更。 請定期檢查是否有 `Az.CosmosDB` 的更新。
+> 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請定期檢查是否有 `Az.CosmosDB` 的更新。
 
 | | |
 |---|---|

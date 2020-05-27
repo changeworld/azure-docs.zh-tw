@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592945"
+ms.locfileid: "83656188"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區 (預覽)
 
@@ -29,7 +29,7 @@ ms.locfileid: "83592945"
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Synapse Analytics 工作區](quickstart-create-workspace.md)
-- [Apache Spark 集區](quickstart-create-apache-spark-pool.md)
+- [Apache Spark 集區](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -133,7 +133,9 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-Azure Synapse 會將您的資料儲存在 Azure Data Lake Storage 中。 當 Spark 執行個體不在使用中時，您可以安全地允許其關閉。 只要執行Azure Synapse Apache Spark 集區，您就需要為其支付費用，即使不在使用中也一樣。 集區的費用比儲存體費用多出許多倍。 因此，讓 Spark 執行個體在不使用時關閉較符合經濟效益。
+Azure Synapse 會將您的資料儲存在 Azure Data Lake Storage 中。 當 Spark 執行個體不在使用中時，您可以安全地讓其關閉。 只要執行Azure Synapse Apache Spark 集區，您就需要為其支付費用，即使不在使用中也一樣。 
+
+由於集區費用是儲存體費用的許多倍，所以關閉非使用中的 Spark 執行個體較符合經濟效益。
 
 為確保 Spark 執行個體已關閉，請結束任何已連線的工作階段 (Notebook)。 當達到 Apache Spark 集區中指定的**閒置時間**時，集區就會關閉。 您也可以從 Notebook 底部的狀態列中選取 [結束工作階段]。
 

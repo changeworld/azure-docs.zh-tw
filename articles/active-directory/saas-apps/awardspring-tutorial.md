@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e199b0d6cf2be7dc956267843f4dabe521d87428
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AwardSpring 整合
 
@@ -157,7 +157,7 @@ ms.locfileid: "78897803"
 本節會在 AwardSpring 中建立名為 B.Simon 的使用者。 AwardSpring 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 AwardSpring 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 > [!Note]
-> 如果您需要手動建立使用者，請連絡 [AwardSpring 支援小組](maito:support@awardspring.com)。
+> 如果您需要手動建立使用者，請連絡 [AwardSpring 支援小組](mailto:support@awardspring.com)。
 
 ## <a name="test-sso"></a>測試 SSO
 

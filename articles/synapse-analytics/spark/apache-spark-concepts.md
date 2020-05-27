@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6276d198e547efec3d2e3cb88816da5e2b593aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096277"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644690"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics 中的 Apache Spark 核心概念
 
@@ -30,7 +30,7 @@ Spark 集區 (預覽) 會建立在 Azure 入口網站中。 其定義是，當 S
 
 最佳做法是建立較小的 Spark 集區來進行開發和偵錯，然後建立更大的集區來執行生產工作負載。
 
-您可以在這裡了解如何建立 Spark 集區並查看其所有屬性：[開始使用 Synapse Analytics 中的 Spark 集區](../quickstart-create-apache-spark-pool.md)
+您可以在這裡了解如何建立 Spark 集區並查看其所有屬性：[開始使用 Synapse Analytics 中的 Spark 集區](../quickstart-create-apache-spark-pool-portal.md)
 
 ## <a name="spark-instances"></a>Spark 執行個體
 

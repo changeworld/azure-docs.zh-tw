@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 026165c7c2052992e8ab485f9ab81c8964f38235
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75889063"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647960"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>教學課程：使用 Azure Key Vault 從 Azure Databricks 存取 Azure Blob 儲存體
 
@@ -176,7 +176,7 @@ ms.locfileid: "75889063"
 6. 執行下列命令，將 Blob 儲存體容器中的文字檔讀取至資料框架。 變更命令中的值，以符合您的掛接名稱和檔案名稱。
 
    ```python
-   df = spark.read.text("mnt/<mount-name>/<file-name>")
+   df = spark.read.text("/mnt/<mount-name>/<file-name>")
    ```
 
    ![將檔案讀取至資料框架](./media/store-secrets-azure-key-vault/command2.png)

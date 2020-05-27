@@ -1,18 +1,18 @@
 ---
 title: Azure 虛擬機器擴展集的內建原則定義
 description: 列出 Azure 虛擬機器擴展集的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 9809be2fd86aec287a1986250955eac5e8220cc4
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 0c408fc37e59b20770266a018c55e2465744943f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842419"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655150"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的 Azure 原則內建原則定義
 

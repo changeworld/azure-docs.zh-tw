@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 092b548e73330fe80ef10b2e25d9ab7883b256ac
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ce867d60c53b9befe5b4480693b54d2c9eba018
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595197"
+ms.locfileid: "83650061"
 ---
 # <a name="azure-stream-analytics-external-availability-error-codes"></a>Azure 串流分析的外部可用性錯誤碼
 
@@ -20,11 +20,7 @@ ms.locfileid: "83595197"
 ## <a name="externalserviceunavailable"></a>ExternalServiceUnavailable
 
 * **原因**︰服務暫時無法使用。
-* **建議**：串流分析會繼續嘗試連線到服務。 
-
-## <a name="kafkaservernotavailable"></a>KafkaServerNotAvailable
-
-* **原因**︰Kafka 伺服器無法使用。
+* **建議**：串流分析會繼續嘗試連線到服務。
 
 ## <a name="eventhubmessagingerror"></a>EventHubMessagingError
 
@@ -36,5 +32,5 @@ ms.locfileid: "83595197"
 * [對輸入連線進行疑難排解](stream-analytics-troubleshoot-input.md)
 * [對 Azure 串流分析輸出進行疑難排解](stream-analytics-troubleshoot-output.md)
 * [對 Azure 串流分析查詢進行疑難排解](stream-analytics-troubleshoot-query.md)
-* [使用資源記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
+* [使用資料記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
 * [Azure 串流分析資料錯誤](data-errors.md)
