@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 29967c5f8d452fbf66d9a121357415176139b39d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564516"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774117"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>教學課程：使用 Azure Stack Edge 轉換資料
 
@@ -136,11 +136,11 @@ ms.locfileid: "82564516"
 
     ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  
-1.    在 [檔案總管] 中，連線到您先前建立的 Edge 本機共用和 Edge 共用。
+1. 在 [檔案總管] 中，連線到您先前建立的 Edge 本機共用和 Edge 共用。
 
     ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
-1.    將資料新增至本機共用。
+1. 將資料新增至本機共用。
 
     ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
