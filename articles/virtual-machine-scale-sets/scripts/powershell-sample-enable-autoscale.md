@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.custom: avverma
-ms.openlocfilehash: 4e9c050c82a08572042f75e7979fc338b8133d0f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 759ebb58afcceade8d52305c6a6a41a782ed4df6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125055"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702006"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 自動調整虛擬機器擴展集
 此指令碼會建立執行 Windows Server 2016 的虛擬機器擴展集，並在 CPU 負載變更時，使用主機型計量來進行自動調整。
@@ -49,4 +49,3 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="next-steps"></a>後續步驟
 如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
 
-您可以在 [Azure 虛擬機器擴展集文件](../powershell-samples.md)中找到其他的虛擬機器擴展集 PowerShell 指令碼範例。

@@ -4,14 +4,14 @@ description: 取得 Azure PowerShell 範例，以在 Azure Cosmos DB SQL API 帳
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: efc0ff8e6c198071d3906a0e7e999510198f73bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366178"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713534"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例 - SQL (Core) API
 
@@ -20,7 +20,7 @@ ms.locfileid: "80366178"
 如需 SQL (核心) API 的其他 Cosmos DB PowerShell 範例及文件，請參閱[使用 PowerShell 管理 Azure Cosmos DB SQL API 資源](manage-with-powershell.md)。 如需其他 API 的 Cosmos DB PowerShell 範例，請參閱 [Cassandra API](powershell-samples-cassandra.md)、[MongoDB API](powershell-samples-mongodb.md)、[Gremlin API](powershell-samples-gremlin.md) 和[資料表 API](powershell-samples-table.md)。
 
 > [!NOTE]
-> 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請注意，`Az.CosmosDB` Cmdlet 仍處於預覽狀態，發行前可能還會變更。 請定期檢查是否有 `Az.CosmosDB` 的更新。
+> 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請定期檢查是否有 `Az.CosmosDB` 的更新。
 
 | | |
 |---|---|

@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201732"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722553"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教學課程：使用 Logic Apps 和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知
 
@@ -240,7 +240,7 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-您不必使用 Azure 入口網站，可改用 Azure CLI 來完成 IoT 中樞步驟。 如需詳細資訊，請參閱 Azure CLI 頁面：[建立事件訂用帳戶](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[建立 IoT 裝置](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)。
+您不必使用 Azure 入口網站，可改用 Azure CLI 來完成 IoT 中樞步驟。 如需詳細資訊，請參閱 Azure CLI 頁面：[建立事件訂用帳戶](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[建立 IoT 裝置](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
