@@ -1,6 +1,6 @@
 ---
-title: 課堂實驗室概念-Azure 實驗室服務 |Microsoft Docs
-description: 瞭解實驗室服務的基本概念，以及它如何讓您輕鬆地建立和管理實驗室。
+title: 教室實驗室概念 - Azure Lab Services | Microsoft Docs
+description: 了解 Lab Services 的基本概念，以及其如何讓您輕鬆地建立和管理實驗室。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,38 +11,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115042"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592622"
 ---
 # <a name="classroom-labs-concepts"></a>教室實驗室概念
 
-下列清單包含重要的實驗室服務概念和定義：
+下列清單包含重要的 Lab Services 概念和定義：
 
 ## <a name="quota"></a>Quota
 
-配額是老師可以設定供學生使用實驗室 VM 的時間限制（以小時為單位）。 可以設定為0，或指定的時數。 如果配額設定為0，只有在執行排程或老師手動開啟學生的虛擬機器時，學生才能使用虛擬機器。  
+配額是一種時間限制 (以小時為單位)，教師可針對學生設定以使用實驗室 VM。 此值可設為 0 或特定時數。 如果配額設為 0，學生只能在執行排程時，或教師手動為學生開啟虛擬機器時，使用虛擬機器。  
 
-當學生自行啟動實驗室 VM 時，會計算配額時數。  如果老師手動啟動學生的實驗室 VM，該學生不會使用配額時數。
+當學生自行啟動實驗室 VM 時，就會計算配額時數。  如果教師手動為學生啟動實驗室 VM，該學生不會使用配額時數。
 
 ## <a name="schedules"></a>排程
 
-排程是老師可以為類別建立的時間位置，讓學生 Vm 可供班級時間使用。  排程可以是一次性或週期性。  當排程正在執行時，不會使用配額時數。
+排程是教師可為課程建立的時段，讓學生 VM 可供課程時間使用。  排程可以是一次性或週期性。  當排程正在執行時，不會使用配額時數。
 
-排程的類型有三種： [標準]、[僅啟動] 和 [僅停止]。
+排程有三種類型：[標準]、[僅啟動] 和 [僅停止]。
 
-- **標準**。  此排程會在指定的開始時間啟動所有學生 Vm，並在指定的停止時間關閉所有學生 Vm。
-- **僅啟動**。   此排程會在指定的時間啟動所有學生 Vm。  學生 Vm 將不會停止，直到學生透過 Azure 實驗室服務入口網站停止其 VM，或發生「僅停止」排程。
-- **僅停止**。  此排程將會在指定的時間停止所有學生 Vm。  
+- **標準**。  此排程會在指定的開始時間啟動所有學生 VM，並在指定的停止時間關閉所有學生 VM。
+- **僅啟動**。   此排程會在指定的時間啟動所有學生 VM。  直到學生透過 Azure Lab Services 入口網站或「僅停止」排程停止其 VM，學生 VM 才會停止。
+- **僅停止**。  此排程將會在指定的時間停止所有學生 VM。  
 
 ## <a name="template-virtual-machine"></a>範本虛擬機器
 
-實驗室中的範本虛擬機器是基底虛擬機器映射，會從中建立所有使用者的虛擬機器。 訓練員/實驗室建立者會設定範本虛擬機器，並使用他們想要提供給訓練出席者以進行實驗室的軟體進行設定。 當您發佈範本 VM 時，Azure 實驗室服務會根據範本 VM 來建立或更新實驗室 Vm。
+實驗室中的範本虛擬機器是所有使用者的虛擬機器據以建立的基底虛擬機器映像。 訓練員/實驗室建立者會設定範本虛擬機器，並使用他們想提供給訓練出席者進行實驗的軟體進行設定。 當您發佈範本 VM 時，Azure Lab Services 會根據範本 VM 建立或更新實驗室 VM。
 
 ## <a name="user-profiles"></a>使用者設定檔
 
@@ -50,13 +50,13 @@ ms.locfileid: "83115042"
 
 ### <a name="lab-account-owner"></a>實驗室帳戶擁有者
 
-一般來說，組織雲端資源的 IT 系統管理員（擁有 Azure 訂用帳戶）會作為實驗室帳戶擁有者，並執行下列工作：
+通常是擁有 Azure 訂用帳戶的組織雲端資源 IT 系統管理員，並會執行下列工作：
 
 - 為組織設定實驗室帳戶。
 - 管理並設定所有實驗室的原則。
 - 給予組織中人員在實驗室帳戶下建立實驗室的權限。
 
-### <a name="professor"></a>教授
+### <a name="educator"></a>教育工作者
 
 通常，教師或線上訓練人員等使用者會在實驗室帳戶下建立教室實驗室。 教育工作者會執行下列工作：
 

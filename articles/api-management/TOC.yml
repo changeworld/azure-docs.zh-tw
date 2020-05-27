@@ -269,8 +269,8 @@
       href: 'https://aka.ms/apimwish'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-api-management.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 設計指引

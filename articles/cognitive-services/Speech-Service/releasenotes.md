@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584904"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800243"
 ---
 # <a name="release-notes"></a>版本資訊
 ## <a name="speech-sdk-1120-2020-may-release"></a>語音 SDK 1.12.0： 2020-可能發行
 
-**SPX Azure 語音服務命令主控台**
+**Azure 語音 CLI**
 - **SPX**是新的命令列工具，可讓您從命令列執行辨識、合成、翻譯、批次轉譯和自訂語音管理。 使用它來測試 Azure 語音服務，或編寫您需要執行的語音服務工作的腳本。 下載工具並閱讀[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)的檔。
 
 **新功能**

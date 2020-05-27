@@ -53,12 +53,26 @@
       items:
         - name: 安全性基準
           href: security-baseline.md
-    - name: 開發人員功能
-      href: batch-api-basics.md
+    - name: Batch 服務工作流程和資源
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch 帳戶
+          displayName: storage account
+          href: accounts.md
+        - name: 節點和集區
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: 工作 (Job) 和工作 (Task)
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: 檔案和目錄
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API 和各項工具
       href: batch-apis-tools.md
-    - name: 偵測和處理 Batch 服務錯誤
-      href: batch-retry-after-errors.md
+    - name: 錯誤處理和偵測
+      href: error-handling.md
     - name: 最佳作法
       href: best-practices.md
     - name: 配額和限制
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地存取 Key Vault
           href: credential-access-key-vault.md
+        - name: 搭配 Batch 使用憑證
+          href: batch-certificates.md
+    - name: 使用應用程式封裝
+      href: batch-application-packages.md
     - name: 將檔案和應用程式複製到集區節點
       items:
         - name: 將應用程式和資料複製到集區節點
