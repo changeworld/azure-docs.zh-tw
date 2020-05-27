@@ -6,28 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9951a6ddfbd1c562184e2b7e02a9da98f7d94b12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595587"
+ms.locfileid: "83650066"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure 串流分析設定錯誤碼
 
 您可使用活動記錄和資源記錄，協助對 Azure 串流分析作業中的非預期行為進行偵錯。 本文列出每個設定錯誤碼的描述。 設定錯誤與您的作業設定或輸入和輸出設定相關。
-
-## <a name="kafkainvalidpermission"></a>KafkaInvalidPermission
-
-* **原因**︰串流分析作業沒有適當的權限可執行某些動作。
-
-## <a name="kafkainvalidconfiguration"></a>KafkaInvalidConfiguration
-
-* **原因**︰Kafka 配接器上的某些組態無效。
-
-## <a name="kafkainvalidtimestamptype"></a>KafkaInvalidTimestampType
-
-* **原因**︰Kafka 所使用的時間戳記類型無效。
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 
@@ -113,5 +101,5 @@ ms.locfileid: "83595587"
 * [對輸入連線進行疑難排解](stream-analytics-troubleshoot-input.md)
 * [對 Azure 串流分析輸出進行疑難排解](stream-analytics-troubleshoot-output.md)
 * [對 Azure 串流分析查詢進行疑難排解](stream-analytics-troubleshoot-query.md)
-* [使用資料記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
+* [使用資源記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
 * [Azure 串流分析資料錯誤](data-errors.md)

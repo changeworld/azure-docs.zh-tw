@@ -6,28 +6,28 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671047"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797822"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗圖來探索客戶如何使用您的應用程式
 
-了解客戶體驗對於您的企業非常重要。 如果您的應用程式牽涉到多個階段，您需要了解大部分的客戶會處理整個程序，或者他們會在某個時間點結束處理程序。 在 web 應用程式中逐步執行一系列的步驟，稱為「*漏斗*圖」。 您可以使用 Azure Application Insights 漏斗圖來深入了解使用者，並監視各步驟的轉換率。 
+了解客戶體驗對於您的企業非常重要。 如果您的應用程式牽涉到多個階段，您需要了解大部分的客戶會處理整個程序，或者他們會在某個時間點結束處理程序。 在 Web 應用程式中通過一系列步驟的過程便稱為漏斗圖。 您可以使用 Azure Application Insights 漏斗圖來深入了解使用者，並監視各步驟的轉換率。 
 
 ## <a name="create-your-funnel"></a>建立您的漏斗圖
 建立您的漏斗圖之前，請決定要獲得回答的問題。 例如，您可能想要知道有多少使用者檢視首頁、檢視客戶設定檔和建立票證。 在此範例中，Fabrikam Fiber 公司的擁有者想要知道已成功建立客戶票證的客戶百分比。
 
 以下是他們用來建立漏斗圖所採取的步驟。
 
-1. 在 Application Insights 漏斗圖工具中，選取 [新增]****。
-1. 從 [時間範圍]**** 下拉式清單中，選取 [過去 90 天]****。 選取 [我的漏斗圖]**** 或 [共用的漏斗圖]****。
-1. 從 [步驟 1]**** 下拉式清單中，選取 [索引]****。 
-1. 從 [步驟 2]**** 下拉式清單中，選取 [客戶]****。
-1. 從 [步驟 3]**** 下拉式清單中，選取 [建立]****。
-1. 新增漏斗圖的名稱，然後選取 [儲存]****。
+1. 在 Application Insights 漏斗圖工具中，選取 [新增]。
+1. 從 [時間範圍] 下拉式清單中，選取 [過去 90 天]。 選取 [我的漏斗圖] 或 [共用的漏斗圖]。
+1. 從 [步驟 1] 下拉式清單中，選取 [索引]。 
+1. 從 [步驟 2] 下拉式清單中，選取 [客戶]。
+1. 從 [步驟 3] 下拉式清單中，選取 [建立]。
+1. 新增漏斗圖的名稱，然後選取 [儲存]。
 
 以下螢幕擷取畫面顯示漏斗圖工具產生的資料類型範例。 Fabrikam 擁有者可以看到在過去 90 天期間，54.3% 的客戶已造訪首頁、建立客戶票證。 他們也會看到 2,700 個客戶從首頁來到索引。 這可能表示重新整理問題。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77671047"
   * [使用量概觀](usage-overview.md)
   * [使用者、工作階段和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+  * [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
   * [新增使用者內容](usage-send-user-context.md)
   * [匯出至 Power BI](../../azure-monitor/app/export-power-bi.md )
 

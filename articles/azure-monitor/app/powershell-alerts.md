@@ -3,18 +3,18 @@ title: 在 Application Insights 中使用 PowerShell 設定警示 | Microsoft Do
 description: 自動化 Application Insights 的組態以取得有關度量變更的電子郵件。
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669840"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701825"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自動設定[警示](../../azure-monitor/app/alerts.md)的組態。
+您可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自動設定[警示](../../azure-monitor/platform/alerts-log.md)的組態。
 
 此外，您可以[設定 webhook 以自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。
 
@@ -126,7 +126,7 @@ GUID 是該訂用帳戶的 ID (而非應用程式的檢測金鑰)。
 ## <a name="webhooks"></a>Webhook
 您可以[自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。 Azure 會在出現警示時呼叫您選擇的網址。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [用來設定 Application Insights 的指令碼](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [從範本建立 Application Insights 和 Web 測試資源](powershell.md)
 * [自動化 Microsoft Azure 診斷與 Application Insights 的耦合](powershell-azure-diagnostics.md)
