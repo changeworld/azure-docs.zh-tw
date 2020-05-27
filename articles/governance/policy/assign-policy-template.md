@@ -1,15 +1,15 @@
 ---
 title: 快速入門：使用範本進行新原則指派
 description: 在本快速入門中，使用 Resource Manager 範本建立原則指派以識別不符合規範的資源。
-ms.date: 03/16/2020
+ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b9e372e8b86e1ac5b0a99d0aba77982896b4d11
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187778"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757444"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 建立原則指派以識別不相容資源
 
@@ -30,7 +30,7 @@ ms.locfileid: "82187778"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-36" highlight="26-34":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
 
 範本中定義的資源為：
 

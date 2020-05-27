@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6edc114a2d69dfe8f1e6e5d3c0a2d4af26dbad67
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596597"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743537"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>實作建立工具室內地圖的動態樣式
 
-Azure 地圖服務建立工具的[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)可讓您根據室內地圖資料功能的動態屬性來套用樣式。  例如，您可以使用特定色彩來顯示公用會議室，以反映使用狀態。 在本文中，我們將說明如何使用[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)和[室內 Web 模組](how-to-use-indoor-module.md)，以動態方式顯示室內地圖功能。
+Azure 地圖服務建立工具的[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate)可讓您根據室內地圖資料功能的動態屬性來套用樣式。  例如，您可以使用特定色彩來顯示公用會議室，以反映使用狀態。 在本文中，我們將說明如何使用[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate)和[室內 Web 模組](how-to-use-indoor-module.md)，以動態方式顯示室內地圖功能。
 
 ## <a name="prerequisites"></a>Prerequisites
 

@@ -3,12 +3,12 @@ title: 快速入門：使用 Azure CLI 進行新原則指派
 description: 在本快速入門中，使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
 ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b1d93cdb4dfa1c82e8004af4052c22bba60f3a3a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75978314"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745749"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入門：建立原則指派，以便使用 Azure CLI 識別不相容資源
 
@@ -67,7 +67,7 @@ az policy assignment list --query "[?displayName=='Audit VMs without managed dis
 接下來，執行下列命令，以取得不合規資源的資源識別碼，而這些識別碼會輸出到 JSON 檔案中：
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-09-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 您的結果類似下列範例：
