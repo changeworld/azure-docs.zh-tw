@@ -2,13 +2,13 @@
 title: 快速入門：建立、定型和發佈知識庫-QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756817"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871424"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -34,8 +34,8 @@ ms.locfileid: "80756817"
 
 1. 在 [步驟 3]**** 中，選取您的 Active directory、訂用帳戶、服務 (資源)，以及在服務中所建立所有知識庫的語言。
 
-   ![選取 QnA Maker 服務知識庫的螢幕擷取畫面](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
-
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
+    
 1. 在 [步驟 3]**** 中，將知識庫命名為**我的範例 QnA KB**。
 
 1. 在 [步驟 4]  中，使用下表進行設定：
@@ -64,7 +64,7 @@ ms.locfileid: "80756817"
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ 以文字型式新增問題與使用 markdown 設定格式的答案。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="以文字型式新增問題與使用 markdown 設定格式的答案。":::
 
     markdown 符號 `*` 用於表示項目符號。 `\n` 用於表示新行。
 
@@ -81,7 +81,7 @@ ms.locfileid: "80756817"
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ 在文字方塊中輸入範例使用者查詢。 ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="在文字方塊中輸入範例使用者查詢。":::
 
 1. 選取 [檢查]****，更詳細地檢查回應。 測試視窗是用來測試您對知識庫所做的變更，然後加以發佈。
 
@@ -117,7 +117,7 @@ ms.locfileid: "80756817"
     * **對**
         * 變更 Bot 控制代碼 - 如果不是唯一的。
         * 選取 SDK 語言。 建立 Bot 後，您可以將程式碼下載至您的本機開發環境，並繼續進行開發程序。
-    * **避免事項**
+    * **禁止事項**
         * 建立 Bot 時，請勿在 Azure 入口網站中變更下列設定。 這些是為您現有知識庫預先填入的內容：
            * QnA 驗證金鑰
            * App Service 方案和位置
@@ -131,7 +131,7 @@ ms.locfileid: "80756817"
 
     聊天 Bot 會使用來自您知識庫的答案來回應。
 
-    ![在測試網頁聊天中輸入使用者查詢。](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="在測試網頁聊天中輸入使用者查詢。":::
 
 ## <a name="what-did-you-accomplish"></a>您完成了哪些工作？
 

@@ -83,8 +83,6 @@
       href: high-availability-disaster-recovery.md
     - name: 工作執行階段環境變數
       href: batch-compute-node-environment-variables.md
-    - name: 與 Azure 原則批次整合
-      href: batch-integration-policies.md
 - name: 操作指南
   items:
     - name: 管理 Batch 帳戶
