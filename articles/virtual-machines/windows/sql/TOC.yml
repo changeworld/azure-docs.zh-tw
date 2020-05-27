@@ -131,7 +131,7 @@
   items:
     - name: 常見問題集
       href: virtual-machines-windows-sql-server-iaas-faq.md
-    - name: 價格
+    - name: 定價
       href: virtual-machines-windows-sql-server-pricing-guidance.md
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
@@ -141,7 +141,7 @@
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

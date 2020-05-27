@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: 啟用 Apache Hadoop 適用的服務堆積傾印
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: 在論壇上取得協助
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: 取得 Microsoft 問與答頁面的協助
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: 定價計算機
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: HDInsight 適用的 Windows 工具
