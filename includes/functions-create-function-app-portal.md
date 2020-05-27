@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: c590b61ee1424d32d83dc5f758682fde37492c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 439b312050f657566026a36c145e7b6dd5cc9bad
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057036"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116312"
 ---
-1. 從 Azure 入口網站功能表或[首頁]  頁面，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或[首頁] 頁面，選取 [建立資源]。
 
-1. 在 [新增]  頁面中，選取 [計算]   > [函數應用程式]  。
+1. 在 [新增] 頁面中，選取 [計算] > [函數應用程式]。
 
-1. 在 [基本資訊]  頁面中，使用下表中指定的函式應用程式設定。
+1. 在 [基本資訊] 頁面中，使用下表中指定的函式應用程式設定。
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
@@ -33,7 +33,7 @@ ms.locfileid: "80057036"
 
     ![基本概念](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
-1. 選取 [下一步：  裝載]。 在 [裝載]  頁面中輸入下列設定。
+1. 選取 [下一步：裝載]。 在 [裝載] 頁面中輸入下列設定。
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
@@ -43,20 +43,20 @@ ms.locfileid: "80057036"
 
     ![裝載](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
-1. 選取 [下一步：  監視]。 在 [掛接]  頁面中輸入下列設定。
+1. 選取 [下一步：監視]。 在 [掛接] 頁面中輸入下列設定。
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 您可以展開此設定，變更 [新資源名稱]  或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的**位置**。 |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 展開此設定或選取 [新增]，即可變更 Application Insights 名稱或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的區域。 |
 
     ![監視](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
-1. 選取 [檢閱 + 建立]  ，以檢閱應用程式組態選項。
+1. 選取 [檢閱 + 建立]，以檢閱應用程式組態選項。
 
-1. 在 [檢閱 + 建立]  頁面中檢閱您的設定，然後選取 [建立]  來佈建和部署函式應用程式。
+1. 在 [檢閱 + 建立] 頁面中檢閱您的設定，然後選取 [建立] 來佈建和部署函式應用程式。
 
-1. 選取入口網站右上角的 [通知] 圖示，查看是否有**部署成功**訊息。
+1. 選取入口網站右上角的 [通知] 圖示，查看是否有 [部署成功] 訊息。
 
-1. 選取 [前往資源]  ，以檢視您新的函式應用程式。 您也可以選取 [釘選到儀表板]  。 釘選可讓您更輕鬆地從儀表板返回此函式應用程式資源。
+1. 選取 [前往資源]，以檢視您新的函式應用程式。 您也可以選取 [釘選到儀表板]。 釘選可讓您更輕鬆地從儀表板返回此函式應用程式資源。
 
     ![部署通知](./media/functions-create-function-app-portal/function-app-create-notification2.png)

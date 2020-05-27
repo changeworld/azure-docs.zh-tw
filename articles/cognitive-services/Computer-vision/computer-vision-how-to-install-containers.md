@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: f1b6b9ffb53972aa81d6dd1150640b8db9dd7be9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 75b71fe9a15b05679ab1b71b13bb0b1f51b7d1d1
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698566"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816143"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器（預覽）
 
@@ -38,7 +38,7 @@ ms.locfileid: "83698566"
 
 ## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
 
-填寫並提交[要求表單](https://aka.ms/VisionContainersPreview)，以要求容器的存取權。 
+填寫並提交[要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -267,7 +267,7 @@ export interface Word {
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行電腦視覺容器的概念和工作流程。 摘要說明：
 
