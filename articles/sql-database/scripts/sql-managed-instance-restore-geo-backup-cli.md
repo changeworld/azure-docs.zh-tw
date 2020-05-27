@@ -3,7 +3,7 @@ title: CLI 範例還原異地備份 - Azure SQL Database
 description: 可從異地備援備份還原 Azure SQL 受控執行個體資料庫的 Azure CLI 範例指令碼。
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1bd0322aee83fb980c60382a2ff3eaab1cd1313c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061756"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774464"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>使用 CLI 將受控執行個體資料庫還原到另一個地理區域
 

@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: 設定使用 Amazon Web Services 進行驗證
           href: automation-config-aws-account.md
+        - name: 使用 Azure AD 設定驗證
+          href: automation-use-azure-ad.md
         - name: 管理自動化執行身分帳戶
           href: manage-runas-account.md
         - name: 管理角色權限與安全性
@@ -199,7 +201,7 @@
                   href: troubleshoot/onboarding.md
                 - name: 針對變更追蹤和清查問題進行疑難排解
                   href: troubleshoot/change-tracking.md
-    - name: 停機期間啟動/停止 VM
+    - name: 於下班時間開始/停止 VM
       items:
         - name: 概觀
           href: automation-solution-vm-management.md
