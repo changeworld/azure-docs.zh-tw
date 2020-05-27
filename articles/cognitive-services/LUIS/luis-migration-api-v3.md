@@ -4,12 +4,12 @@ description: 查詢預測端點 V3 Api 已變更。 使用本指南來瞭解如�
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653858"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849326"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的預測端點變更
 
@@ -55,7 +55,7 @@ V3 進行下列變更，做為移至 GA 的一部分：
 如果您不知道您的用戶端應用程式或整合（Bot Framework 和 Bing 拼寫檢查 V7）都受到影響，而且您很樂意同時遷移 LUIS 應用程式撰寫和預測端點，請開始使用 V3 預測端點。 V2 預測端點仍然可供使用，而且是不錯的回溯策略。
 
 
-## <a name="not-supported"></a>不受支援
+## <a name="not-supported"></a>不支援
 
 ### <a name="bing-spell-check"></a>Bing 拼字檢查
 
@@ -283,4 +283,4 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 V3 API 檔，將現有的 REST 呼叫更新為 LUIS[端點](https://aka.ms/luis-api-v3)api。
+使用 V3 API 檔，將現有的 REST 呼叫更新為 LUIS[端點](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8)api。

@@ -81,8 +81,6 @@
           href: boot-error-status-not-found.md
         - name: 針對 Windows Update 安裝容量進行疑難排解
           href: windows-update-installation-capacity.md
-        - name: 套用本機使用者和群組原則時，VM 沒有回應
-          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: 不是可開機磁碟
           href: troubleshoot-guide-not-bootable-disk.md
         - name: 重新開機迴圈
