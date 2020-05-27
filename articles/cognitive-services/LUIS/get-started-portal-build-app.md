@@ -2,13 +2,13 @@
 title: 快速入門：在 LUIS 入口網站中建立新的應用程式
 description: 在本快速入門中，您會建立應用程式、意圖和實體的基本部分，以及在 LUIS 入口網站中使用範例語句進行測試。
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585179"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697239"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
@@ -137,7 +137,7 @@ ms.locfileid: "83585179"
 
 1. 從左側功能表中選取 [意圖]，以確認實體位於 **FindForm** 意圖中。 然後選取 [FindForm] 意圖。
 
-   實體會標示它在範例語句中的顯示之處。 如果您想要查看原始文字，請從工具列切換 [實體檢視]，而不是使用實體名稱。
+   實體會標示它在範例語句中的顯示之處。
 
    > [!div class="mx-imgBorder"]
    > [![標示了實體的所有範例語句的螢幕擷取畫面](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

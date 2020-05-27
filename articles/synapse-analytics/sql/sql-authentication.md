@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421222"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700308"
 ---
 # <a name="sql-authentication"></a>SQL 驗證
 
@@ -50,7 +50,7 @@ AAD 授權依賴 Azure Active Directory，並可讓您在單一位置管理使�
 - 可以新增和移除 `dbmanager` 和 `loginmanager` 角色的成員。
 - 可以檢視 `sys.sql_logins` 系統資料表。
 
-## <a name="sql-on-demand-preview"></a>SQL 隨選 (預覽)
+## <a name="sql-on-demand-preview"></a>[SQL 隨選 (預覽)](#tab/serverless)
 
 若要管理可存取 SQL 隨選的使用者，您可以使用下列指示。
 
@@ -72,7 +72,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 登入和使用者建立好之後，您就可以使用一般 SQL Server 語法來授與權限。
 
-## <a name="sql-pool"></a>SQL 集區
+## <a name="sql-pool"></a>[SQL 集區](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>系統管理員存取路徑
 
@@ -127,6 +127,8 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ### <a name="login-managers"></a>登入管理員
 
 另一個系統管理角色是登入管理員角色。 此角色的成員可以在 master 資料庫中建立新的登入。 如果您想要的話，可以完成相同的步驟 (建立登入和使用者，並將使用者新增至 **loginmanager** 角色)，讓使用者能夠在 master 資料庫中建立新的登入。 通常不需要登入，因為 Microsoft 建議使用自主資料庫使用者，這會在資料庫層級進行驗證，而不是根據登入來使用使用者。 如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+
+---
 
 ## <a name="non-administrator-users"></a>非系統管理員的使用者
 

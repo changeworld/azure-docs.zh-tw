@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596777"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681985"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>繪製轉換錯誤和警告
 
-[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/data/conversion)可讓您將上傳的繪圖套件轉換成地圖資料。 繪圖套件必須符合[繪圖套件需求](drawing-requirements.md)。 如果不符合一或多項需求，轉換服務就會傳回錯誤或警告。 本文列出轉換錯誤和警告的代碼，並提供解決這些問題的建議。 此外也會提供一些可能導致轉換服務傳回這些代碼的繪製範例。
+[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)可讓您將上傳的繪圖套件轉換成地圖資料。 繪圖套件必須符合[繪圖套件需求](drawing-requirements.md)。 如果不符合一或多項需求，轉換服務就會傳回錯誤或警告。 本文列出轉換錯誤和警告的代碼，並提供解決這些問題的建議。 此外也會提供一些可能導致轉換服務傳回這些代碼的繪製範例。
 
 出現任何轉換警告時，轉換服務仍會成功。 但建議您檢閱所有警告並加以解決。 出現警告時，表示已忽略或自動修正轉換的一部分。 若無法解決警告，可能會導致後續的程序發生錯誤。
 
@@ -73,7 +73,7 @@ ms.locfileid: "83596777"
 
 下圖顯示在標籤圖層上以不支援的實體類型作為多行文字物件的情形。
   
-![標籤圖層上的多行文字物件範例](./media/drawing-conversion-error-codes/multiline.png)
+![標籤圖層上的多行文字物件範例](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*如何修正 unsupportedFeatureRepresentation*
 
@@ -494,7 +494,7 @@ _manifest. json_file 因 JSON 格式或語法錯誤而無法讀取。 若要深�
 
 下圖顯示與相鄰層級上的多個垂直穿透區域重疊的垂直穿透區域。
 
-![垂直穿透範例 2](./media/drawing-conversion-error-codes/vrt.png)
+![垂直穿透範例 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>如何修正 verticalPenetrationError
 

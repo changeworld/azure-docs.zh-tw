@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80611812"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682540"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 範本部署認知搜尋
 
@@ -30,9 +30,9 @@ ms.locfileid: "80611812"
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 範本](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50":::
+:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50,70-85":::
 
 此範本中定義的 Azure 資源：
 
@@ -42,7 +42,7 @@ ms.locfileid: "80611812"
 
 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Azure 認知搜尋資源。
 
-[![部署至 Azure](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 入口網站會顯示一個表單，讓您輕鬆地提供參數值。 有些參數會預先填入範本中的預設值。 您必須提供您的訂用帳戶、資源群組、位置和服務名稱。 如果您想要在 [AI 擴充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)管線中使用認知服務，例如用於分析二進位影像檔案中的文字，請選擇同時提供認知搜尋和認知服務的位置。 這兩項服務必須位於相同的區域中，才能處理 AI 擴充工作負載。 完成表單後，您必須同意條款與條件，然後選取購買按鈕來完成部署。
 

@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d050efe1224e2783cdad52a12c842f7abe44b7af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595067"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682433"
 ---
 # <a name="publisher-verification-preview"></a>發行者驗證 (預覽)
 
-發行者驗證 (預覽) 可協助系統管理員和終端使用者了解與 Microsoft 身分識別平台整合的應用程式開發人員是否真實。 換句話說，發行者是否為已知的來源，或不良的執行者偽裝成知名的發行者？ 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
+發行者驗證 (預覽) 可協助系統管理員和終端使用者了解與 Microsoft 身分識別平台整合的應用程式開發人員是否真實。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
 
 Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」徽章：![同意提示](./media/publisher-verification-overview/consent-prompt.png)
 
