@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: ab947dd5485c68e8b971b1cf98fc389945a69914
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 67d56429f092343193fe5c1e3449aff033673320
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769321"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727139"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入門：從 Android 裝置傳送 IoT 遙測
 
@@ -108,7 +108,7 @@ az extension add --name azure-iot
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)來監視由 Android 裝置傳送的裝置訊息。
+在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由 Android 裝置傳送的裝置訊息。
 
 1. 使用 Azure Cloud Shell，執行下列命令以連線到您的 IoT 中樞並讀取訊息：
 

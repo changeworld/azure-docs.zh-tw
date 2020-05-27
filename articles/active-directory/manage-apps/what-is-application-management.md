@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063317"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739748"
 ---
 # <a name="application-management-with-azure-active-directory"></a>搭配 Azure Active Directory 的應用程式管理
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 可藉由為雲端和內部部署應用程式�
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>使用條件式存取原則來管理風險
 
-結合 Azure AD 單一登入 (SSO) 及[條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)，將能針對應用程式的存取提供高層級的安全性。 安全性功能包括雲端規模的身分識別保護、以風險為基礎的存取控制、原生的多重要素驗證，以及條件式存取原則。 這些功能可提供以應用程式為基礎的細微控制原則，或是針對需要較高安全性層級的群組提供。
+結合 Azure AD 單一登入 (SSO) 及[條件式存取](../conditional-access/concept-conditional-access-cloud-apps.md)，將能針對應用程式的存取提供高層級的安全性。 安全性功能包括雲端規模的身分識別保護、以風險為基礎的存取控制、原生的多重要素驗證，以及條件式存取原則。 這些功能可提供以應用程式為基礎的細微控制原則，或是針對需要較高安全性層級的群組提供。
 
 ## <a name="improve-productivity-with-single-sign-on"></a>使用單一登入改善生產力
 
