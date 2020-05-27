@@ -1,21 +1,14 @@
 ---
 title: 快速入門：使用批次問題來測試知識庫
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: 使用 QnA Maker 批次測試工具來測試 QnA Maker 資源中的知識庫，以取得預期答案、信賴分數和多回合提示。
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873667"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入門：使用批次問題和預期答案來測試知識庫
 
@@ -34,7 +27,7 @@ ms.locfileid: "80756708"
 
 ## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>透過多回合 sample.docx 檔案建立新的知識庫
 
-1. 從工具列中選取 [建立知識庫]  。
+1. 從工具列中選取 [建立知識庫]。
 1. 您應該已經有 QnA Maker 資源，因此請略過**步驟 1**，前往**步驟 2** 以選取現有資源的資訊：
     * Azure Active Directory 識別碼
     * Azure 訂用帳戶名稱
@@ -42,23 +35,23 @@ ms.locfileid: "80756708"
     * 語言 - 英文
 1. 輸入名稱 `Multi-turn batch test quickstart` 作為知識庫的名稱。
 
-1. 在 [步驟 4]  中，使用下表進行設定：
+1. 在 [步驟 4] 中，使用下表進行設定：
 
     |設定|值|
     |--|--|
     |**啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取。**|已檢查|
     |**預設答案文字**| `Batch test - default answer not found.`|
     |**+ 新增檔案**|選取 [必要條件] 中所下載的 `.docx` 檔案清單。|
-    |**閒聊**|選取 [Professional] |
+    |**閒聊**|選取 [Professional]|
 
-1. 在**步驟 5** 中，選取 [建立知識庫]  。
+1. 在**步驟 5** 中，選取 [建立知識庫]。
 
     當建立程序完成時，入口網站會顯示可編輯的知識庫。
 
 ## <a name="save-train-and-publish-knowledge-base"></a>知識庫的儲存、定型和發佈
 
-1. 從工具列中選取 [儲存並定型]  以儲存知識庫。
-1. 從工具列中選取 [發佈]  ，然後再次選取 [發佈]  以發佈知識庫。 發佈會讓知識庫可供公用 URL 端點執行查詢。 當發佈程序完成時，請儲存 [發佈]  頁面上所顯示的主機 URL 和端點金鑰資訊。
+1. 從工具列中選取 [儲存並定型] 以儲存知識庫。
+1. 從工具列中選取 [發佈]，然後再次選取 [發佈] 以發佈知識庫。 發佈會讓知識庫可供公用 URL 端點執行查詢。 當發佈程序完成時，請儲存 [發佈] 頁面上所顯示的主機 URL 和端點金鑰資訊。
 
     |必要資料| 範例|
     |--|--|
@@ -74,7 +67,7 @@ ms.locfileid: "80756708"
 |--|--|--|
 |知識庫識別碼|在 [發佈] 頁面上所找到的知識庫識別碼。 藉由在單一檔案中使用不同的知識庫識別碼，便能以單一檔案在同一個服務中一次測試數個知識庫。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (`POST` 內所顯示的其中 36 個字元字串) |
 |問題|使用者會輸入的問題文字。 最多可輸入 1,000 個字元。|`How do I sign out?`|
-|中繼資料標記|選用|`topic:power` 會使用「key:value」  格式|
+|中繼資料標記|選用|`topic:power` 會使用「key:value」格式|
 |Top 參數|選用|`25`|
 |預期答案的識別碼|選用|`13`|
 
@@ -108,7 +101,7 @@ ms.locfileid: "80756708"
 
 請在命令列中使用下列 CLI 格式來執行批次測試程式。
 
-以您自己的服務名稱和端點金鑰值取代 `YOUR-RESOURCE-NAME` 和 `ENDPOINT-KEY`。 這些值可在 QnA Maker 入口網站的 [設定]  頁面上找到。
+以您自己的服務名稱和端點金鑰值取代 `YOUR-RESOURCE-NAME` 和 `ENDPOINT-KEY`。 這些值可在 QnA Maker 入口網站的 [設定] 頁面上找到。
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
@@ -136,13 +129,13 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 |資料行編號|選擇性資料行|資料位置|
 |--|--|--|
-|3|中繼資料|匯出現有「key:value」配對  的現有知識庫。|
+|3|中繼資料|匯出現有「key:value」配對的現有知識庫。|
 |4|top|建議以 `25` 作為預設值。|
 |5|問答集識別碼|匯出識別碼值的現有知識庫。 另請注意，輸出檔案中會傳回識別碼。|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>將中繼資料新增至知識庫
 
-1. 在 QnA 入口網站的 [編輯]  頁面上，將 `topic:power` 的中繼資料新增至下列問題：
+1. 在 QnA 入口網站的 [編輯] 頁面上，將 `topic:power` 的中繼資料新增至下列問題：
 
     |問題|
     |--|
@@ -152,9 +145,9 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
     兩個 QnA 配對已設定了中繼資料。
 
     > [!TIP]
-    > 為了查看每個集合的中繼資料和 QnA 識別碼，請匯出知識庫。 選取 [設定]  頁面，然後選取 [匯出]  為 `.xls` 檔案。 尋找所下載的這個檔案，並以 Excel 開啟來檢閱中繼資料和識別碼。
+    > 為了查看每個集合的中繼資料和 QnA 識別碼，請匯出知識庫。 選取 [設定] 頁面，然後選取 [匯出] 為 `.xls` 檔案。 尋找所下載的這個檔案，並以 Excel 開啟來檢閱中繼資料和識別碼。
 
-1. 選取 [儲存並定型]  ，然後選取 [發佈]  頁面和 [發佈]  按鈕。 這些動作會將變更提供給批次測試使用。 從 [設定]  頁面下載知識庫。
+1. 選取 [儲存並定型]，然後選取 [發佈] 頁面和 [發佈] 按鈕。 這些動作會將變更提供給批次測試使用。 從 [設定] 頁面下載知識庫。
 
     所下載的檔案會有正確的中繼資料格式，以及正確的問答集識別碼。 在下一節使用這些欄位
 
@@ -203,8 +196,8 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 如果您不打算繼續使用此知識庫，請使用下列步驟刪除知識庫：
 
-1. 在 QnA Maker 入口網站中，從頂端功能表中選取 [我的知識庫]  。
-1. 在知識庫清單中，在本快速入門的知識庫資料列上選取 [刪除]  圖示。
+1. 在 QnA Maker 入口網站中，從頂端功能表中選取 [我的知識庫]。
+1. 在知識庫清單中，在本快速入門的知識庫資料列上選取 [刪除] 圖示。
 
 ## <a name="next-steps"></a>後續步驟
 

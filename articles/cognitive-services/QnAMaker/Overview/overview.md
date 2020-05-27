@@ -1,21 +1,14 @@
 ---
 title: 什麼是 QnA Maker 服務？
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 是一項雲端式 NLP 服務，可對您的資料輕鬆地建立自然對話層。 其可從資訊的自訂知識庫 (KB) 為指定的自然語言輸入尋找最適當的答案。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/21/2020
-ms.author: diberry
-ms.openlocfilehash: 2863a086343b0a5d3bc69ae319dbe93d557bcb4a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052918"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873714"
 ---
 # <a name="what-is-the-qna-maker-service"></a>什麼是 QnA Maker 服務？
 
@@ -40,7 +33,7 @@ QnA Maker 的用戶端應用程式是任何可透過自然語言與使用者溝�
 
 |步驟|動作|
 |:--|:--|
-|1|用戶端應用程式傳送使用者的問題  (以自己的話語表達的文字)「如何以程式設計方式更新知識庫？」 到知識庫端點。|
+|1|用戶端應用程式傳送使用者的問題 (以自己的話語表達的文字)「如何以程式設計方式更新知識庫？」 到知識庫端點。|
 |2|QnA Maker 使用訓練好的知識庫來提供正確解答，以及任何可用來精簡搜尋以獲得最佳解答的後續提示。 QnA Maker 會傳回 JSON 格式的回應。|
 |3|用戶端應用程式使用 JSON 回應來決定如何繼續對話。 這些決定可能包括顯示最佳解答和呈現更多選擇來精簡搜尋以獲得最佳解答。 |
 |||
@@ -60,7 +53,7 @@ QnA Maker 會在問答集的知識庫中[匯入您的內容](../concepts/knowled
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>不使用程式碼而在聊天機器人中進行建立、管理和發佈動作
 
-QnA Maker 入口網站可提供完整的知識庫撰寫體驗。 您可以將文件 (以其目前的格式) 匯入到知識庫。 這些文件 (例如常見問題集、產品手冊、試算表或網頁) 會轉換成問答集。 系統會分析每個問答集來提供後續提示，且這些問答集各自都會與其他問答集連結。 最終的 Markdown  格式支援豐富的呈現方式，包括影像和連結。
+QnA Maker 入口網站可提供完整的知識庫撰寫體驗。 您可以將文件 (以其目前的格式) 匯入到知識庫。 這些文件 (例如常見問題集、產品手冊、試算表或網頁) 會轉換成問答集。 系統會分析每個問答集來提供後續提示，且這些問答集各自都會與其他問答集連結。 最終的 Markdown 格式支援豐富的呈現方式，包括影像和連結。
 
 知識庫編輯完成後，請將知識庫發佈至運作中的 [Azure Web 應用程式聊天機器人](https://azure.microsoft.com/services/bot-service/) (不必撰寫任何程式碼)。 在 [Azure 入口網站](https://portal.azure.com)中測試聊天機器人，或下載並繼續開發。
 
