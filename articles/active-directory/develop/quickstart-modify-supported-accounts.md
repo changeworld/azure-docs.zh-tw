@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050233"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826854"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入門：修改應用程式所支援的帳戶
 
@@ -39,8 +39,8 @@ ms.locfileid: "80050233"
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-1. 在左側導覽窗格中，選取 [Azure Active Directory]  服務，然後選取 [應用程式註冊]  。
-1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀]  或主要註冊頁面。
+1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
+1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
 1. 遵循相關步驟來[變更應用程式註冊以支援不同的帳戶](#change-the-application-registration-to-support-different-accounts)。
 1. 如果您有單頁應用程式，請[啟用 OAuth 2.0 隱含授與](#enable-oauth-20-implicit-grant-for-single-page-applications)。
 
@@ -53,11 +53,11 @@ ms.locfileid: "80050233"
 
 ### <a name="to-change-who-can-access-your-application"></a>變更可以存取應用程式的使用者
 
-1. 從應用程式的 [概觀]  頁面，選取 [驗證]  區段，然後變更 [支援的帳戶類型]  底下所選取的值。
-    * 如果您要建置企業營運 (LOB) 應用程式，請選取 [只有這個目錄中的帳戶]  。 如果未在目錄中註冊應用程式，則無法使用此選項。
-    * 如果您想要鎖定所有商業和教育客戶，請選取 [任何組織目錄中的帳戶]  。
-    * 選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  以鎖定最廣泛的一組客戶。
-1. 選取 [儲存]  。
+1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段，然後變更 [支援的帳戶類型] 底下所選取的值。
+    * 如果您要建置企業營運 (LOB) 應用程式，請選取 [只有這個目錄中的帳戶]。 如果未在目錄中註冊應用程式，則無法使用此選項。
+    * 如果您想要鎖定所有商業和教育客戶，請選取 [任何組織目錄中的帳戶]。
+    * 選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶] 以鎖定最廣泛的一組客戶。
+1. 選取 [儲存]。
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>啟用單頁應用程式的 OAuth 2.0 隱含授與
 
@@ -69,10 +69,12 @@ ms.locfileid: "80050233"
 
 ### <a name="to-enable-oauth-20-implicit-grant"></a>啟用 OAuth 2.0 隱含授權
 
-1. 從應用程式的 [概觀]  頁面，選取 [驗證]  區段。
-1. 在 [進階設定]  底下，找到 [隱含授與]  區段。
-1. 選取 [識別碼權杖]  和 (或) [存取權杖]  。
-1. 選取 [儲存]  。
+1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
+1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
+1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段。
+1. 在 [進階設定] 底下，找到 [隱含授與] 區段。
+1. 選取 [識別碼權杖] 和 (或) [存取權杖]。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

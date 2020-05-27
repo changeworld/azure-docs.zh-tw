@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605213"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680537"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>快速入門：阵立具有多個公用 IP 位址的 Azure 防火牆 - Resource Manager 範本
 
-在本快速入門中，您會使用 Resource Manager 範本部署具有多個公用 IP 位址的 Azure 防火牆和 IP 群組。
-
-已部署的防火牆具有 NAT 規則集合規則，可允許 RDP 連線到兩部 Windows Server 2019 虛擬機器。
+在本快速入門中，您會使用 Resource Manager 範本部署具有多個公用 IP 位址的 Azure 防火牆和 IP 群組。 已部署的防火牆具有 NAT 規則集合規則，可允許 RDP 連線到兩部 Windows Server 2019 虛擬機器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,38 +33,37 @@ ms.locfileid: "81605213"
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json)
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/fw-docs-qs)。
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
 範本中定義了多個 Azure 資源：
 
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>部署範本
 
 將 Resource Manager 範本部署至 Azure：
 
-1. 選取 [部署至 Azure]  以登入 Azure 並開啟範本。 此範本會建立 Azure 防火牆、網路基礎結構和兩部虛擬機器。
+1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會建立 Azure 防火牆、網路基礎結構和兩部虛擬機器。
 
    [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-2. 在入口網站的 [建立具有多個公用 IP 位址的 Azure 防火牆]  頁面上，輸入或選取下列值：
+2. 在入口網站的 [建立具有多個公用 IP 位址的 Azure 防火牆] 頁面上，輸入或選取下列值：
    - 訂用帳戶：從現有的訂用帳戶選取 
-   - 資源群組：從現有的資源群組選取，或選取 [新建]  ，然後選取 [確定]  。
+   - 資源群組：從現有的資源群組選取，或選取 [新建]，然後選取 [確定]。
    - 位置：選取位置
    - 管理員使用者名稱：輸入系統管理員使用者帳戶的使用者名稱 
    - 管理員密碼：輸入管理員密碼或金鑰
 
-3. 選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 部署可能需要 10 分鐘或更久的時間才能完成。
+3. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 部署可能需要 10 分鐘或更久的時間才能完成。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 

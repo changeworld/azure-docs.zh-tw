@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 05/13/2020
+ms.date: 04/26/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c6a7f128dd2479645cc379f36532563c0ade5d14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 47105fdbc2bc48d43aa5539613854c82ce4ffbd6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651653"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190908"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 

@@ -12,17 +12,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4b6a2481c18314a44470a020033ffdc4ba1d7259
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380022"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860047"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入門：讓使用者登入並取得 Angular 單頁應用程式中的存取權杖
-
-> [!IMPORTANT]
-> 此功能目前為預覽狀態。 若您同意[補充的使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 在本快速入門中，您會使用程式碼範例了解 Angular 單頁應用程式 (SPA) 如何讓具有個人 Microsoft 帳戶、公司帳戶或學校帳戶的使用者登入。 Angular SPA 也可以取得呼叫 Microsoft Graph API 或任何 Web API 的存取權杖。
 
@@ -41,7 +38,7 @@ ms.locfileid: "81380022"
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure Active Directory (Azure AD) 租用戶。
 > 1. 在 Azure 入口網站中開啟新的[應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
-> 1. 輸入應用程式的名稱，然後選取 [註冊]  。
+> 1. 輸入應用程式的名稱，然後選取 [註冊]。
 > 1. 移至快速入門窗格並檢視 Angular 快速入門。 依照指示來下載並自動設定新應用程式。
 >
 > ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>選項 2 (手動)：註冊並手動設定應用程式和程式碼範例
@@ -51,12 +48,12 @@ ms.locfileid: "81380022"
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
 > 1. 依照指示，在 Azure 入口網站中[註冊單頁應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
-> 1. 在應用程式註冊的 [驗證]  窗格中新增平台，然後註冊重新導向 URI：`http://localhost:4200/`。
-> 1. 本快速入門會使用[隱含的授與流程](v2-oauth2-implicit-grant-flow.md)。 選取 [識別碼權杖]  和 [存取權杖]  的 [隱含授與]  設定。 因為此應用程式會將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
+> 1. 在應用程式註冊的 [驗證] 窗格中新增平台，然後註冊重新導向 URI：`http://localhost:4200/`。
+> 1. 本快速入門會使用[隱含的授與流程](v2-oauth2-implicit-grant-flow.md)。 選取 [識別碼權杖] 和 [存取權杖] 的 [隱含授與] 設定。 因為此應用程式會將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定應用程式
-> 若要讓此快速入門中的程式碼範例正常運作，您需要將重新導向 URI 新增為 **http://localhost:4200/** ，並且啟用 [隱含授與]  。
+> 若要讓此快速入門中的程式碼範例正常運作，您需要將重新導向 URI 新增為 **http://localhost:4200/** ，並且啟用 [隱含授與]。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這些變更]()
 >
@@ -101,14 +98,14 @@ ms.locfileid: "81380022"
 >
 >|值名稱|描述|
 >|---------|---------|
->|Enter_the_Application_Id_Here|在應用程式註冊的 [概觀]  頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
+>|Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
 >|Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
->|Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」  ，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」  ，請將此值取代為 [組織]  。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」  ，請將此值取代為 [通用]  。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」  ，請將此值取代為 [取用者]  。 |
+>|Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
 >|Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|
 >|cacheLocation  | (選用) 設定驗證狀態的瀏覽器儲存體。 預設值是 **sessionStorage**。   |
 >|storeAuthStateInCookie  | (選用) 識別儲存驗證要求狀態的程式庫。 需要此狀態，才能驗證瀏覽器 cookie 中的驗證流程。 此 Cookie 會針對 Internet Explorer 和 Edge 進行設定，以容納這兩個瀏覽器。 如需詳細資料，請參閱[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
 > > [!TIP]
-> > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  和 [支援的帳戶類型]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。
+> > 若要尋找 [應用程式 (用戶端) 識別碼]、[目錄 (租用戶) 識別碼] 和 [支援的帳戶類型] 的值，請在 Azure 入口網站中移至應用程式的 [概觀] 頁面。
 
 如需可用之可設定選項的詳細資訊，請參閱[將用戶端應用程式初始化](msal-js-initializing-client-applications.md) \(英文\)。 
 
@@ -130,10 +127,10 @@ ms.locfileid: "81380022"
    ```
 
 1. 瀏覽至 **http://localhost:4200/** 。
-1. 選取 [登入]  。
-1. 選取 [設定檔]  以呼叫 Microsoft Graph。
+1. 選取 [登入]。
+1. 選取 [設定檔] 以呼叫 Microsoft Graph。
 
-在瀏覽器載入應用程式之後，請選取 [登入]  。 第一次開始登入時，系統會提示您同意允許應用程式存取您的設定檔，並將您登入。 成功登入後，選取 [設定檔]  ，而您的使用者設定檔資訊會顯示在頁面上。
+在瀏覽器載入應用程式之後，請選取 [登入]。 第一次開始登入時，系統會提示您同意允許應用程式存取您的設定檔，並將您登入。 成功登入後，選取 [設定檔]，而您的使用者設定檔資訊會顯示在頁面上。
 
 ## <a name="how-the-sample-works"></a>此範例的運作方式
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d0f246a96072a6e433b0762256467f1c20a45fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 517bdc0846ae56e0db41631f1dc5411471c6c2bd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77581713"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800133"
 ---
 # <a name="what-is-azure-sentinel"></a>什麼是 Azure Sentinel？
 
@@ -51,7 +51,7 @@ Azure Sentinel 以完方位的現有 Azure 服務為基礎，原生併入經過�
 
 ## <a name="workbooks"></a>活頁簿
 
-在  [將資料來源連線](quickstart-onboard.md) 至 Azure Sentinel 之後，您可以使用 Azure Sentinel 與 Azure 監視器活頁簿的整合來監視資料，此整合可提供建立自訂活頁簿的豐富功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但很適合用於查看如何[使用 Azure 監視器活頁簿建立互動式報告](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
+在  [將資料來源連線](quickstart-onboard.md) 至 Azure Sentinel 之後，您可以使用 Azure Sentinel 與 Azure 監視器活頁簿的整合來監視資料，此整合可提供建立自訂活頁簿的豐富功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但很適合用於查看如何[使用 Azure 監視器活頁簿建立互動式報告](../azure-monitor/platform/workbooks-overview.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
 
 ![儀表板](./media/tutorial-monitor-data/access-workbooks.png)
 
