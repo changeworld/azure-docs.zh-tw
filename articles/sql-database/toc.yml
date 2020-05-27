@@ -852,8 +852,8 @@
       href: sql-database-public-data-sets.md
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-sql-database.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑難排解

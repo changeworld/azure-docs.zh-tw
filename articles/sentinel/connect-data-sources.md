@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 5cb1f699f070bbb0c37d4b6adf5e919c7ec5d6cd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 4060cfe08e91c87467a8ef6801adab6f027473bf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591970"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696862"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
 若要將 Azure Sentinel 上架，必須先連線到資料來源。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 威脅防護解決方案與 Microsoft 365 來源，例如 Office 365、Azure AD、Azure ATP 和 Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。  
 
-1. 在功能表上，選取 [資料連接器]  。 此頁面可讓您查看 Azure Sentinel 提供的連接器完整清單及其狀態。 選取您想要連線的連接器，然後選取 [開啟連接器頁面]  。 
+1. 在功能表上，選取 [資料連接器]。 此頁面可讓您查看 Azure Sentinel 提供的連接器完整清單及其狀態。 選取您想要連線的連接器，然後選取 [開啟連接器頁面]。 
 
    ![資料收集器](./media/collect-data/collect-data-page.png)
 
-1. 在特定連接器頁面上，確定您已符合所有必要條件，並遵循指示將資料連線到 Azure Sentinel。 可能需要一些時間，記錄才能開始與 Azure Sentinel 同步處理。 連線之後，您會在 [接收的資料]  圖表中看見資料摘要，以及資料類型的連線狀態。
+1. 在特定連接器頁面上，確定您已符合所有必要條件，並遵循指示將資料連線到 Azure Sentinel。 可能需要一些時間，記錄才能開始與 Azure Sentinel 同步處理。 連線之後，您會在 [接收的資料] 圖表中看見資料摘要，以及資料類型的連線狀態。
 
    ![連接收集器](./media/collect-data/opened-connector-page.png)
   
-1. 按一下 [後續步驟]  索引標籤，以取得 Azure Sentinel 針對特定資料類型提供的立即可用內容清單。
+1. 按一下 [後續步驟] 索引標籤，以取得 Azure Sentinel 針對特定資料類型提供的立即可用內容清單。
 
    ![資料收集器](./media/collect-data/data-insights.png)
  
@@ -130,7 +130,7 @@ Azure Sentinel 支援下列資料連線方法：
 | ASC SecurityAlert  | [連線 Azure 資訊安全中心](connect-azure-security-center.md)  | V | |
 | MCAS SecurityAlert  | [連線 Microsoft Cloud App Security](connect-cloud-app-security.md)  | V | |
 | SecurityAlert | | | |
-| Sysmon (事件) | [連線 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [連線 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [取得 Sysmon 剖析器](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon-v10.42-Parser.txt)| X | 預設不會在虛擬機器上安裝 Sysmon 集合。 如需有關如何安裝 Sysmon 代理程式的詳細資訊，請參閱 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |
+| Sysmon (事件) | [連線 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [連線 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [取得 Sysmon 剖析器](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| X | 預設不會在虛擬機器上安裝 Sysmon 集合。 如需有關如何安裝 Sysmon 代理程式的詳細資訊，請參閱 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |
 | ConfigurationData  | [自動執行 VM 清查](../automation/automation-vm-inventory.md)| X | |
 | ConfigurationChange  | [自動執行 VM 追蹤](../automation/change-tracking.md) | X | |
 | F5 BIG-IP | [連線 F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |

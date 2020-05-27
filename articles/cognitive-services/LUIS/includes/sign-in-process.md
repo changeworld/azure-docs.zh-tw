@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778210"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837936"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
 
 LUIS 的新使用者必須遵循此程序：
 
-1. 登入 [LUIS 入口網站](https://www.luis.ai)，選取您的國家/地區並同意使用規定。 如果您看到的是**我的應用程式**，表示已有 LUIS 資源存在，您應直接跳到建立應用程式的步驟。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，選取您的國家/地區並同意使用規定。 如果您看到的是**我的應用程式**，表示已有 LUIS 資源存在，您應直接跳到建立應用程式的步驟。 對於支援的區域，請造訪[撰寫和發佈區域及相關聯的金鑰](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)。
 
 1. 選取 [建立 Azure 資源]，然後選取 [建立要作為應用程式遷移目的地的撰寫資源]。
 

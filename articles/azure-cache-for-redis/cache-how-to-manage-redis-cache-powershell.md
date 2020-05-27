@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278528"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647977"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "79278528"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-如需傳統部署模型的詳細資訊，請參閱 [Azure Resource Manager 與傳統部署比較：了解資源的部署模型和狀態](../azure-resource-manager/management/deployment-models.md)。
+如需傳統部署模型的詳細資訊，請參閱 [Azure Resource Manager 與傳統部署：了解資源的部署模型和狀態](../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 如果您已安裝 Azure PowerShell，其必須是 Azure PowerShell 1.0.0 或更新的版本。 您可以在 Azure PowerShell 命令提示字元下使用這個命令來檢查已安裝的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -119,22 +119,22 @@ ms.locfileid: "79278528"
 
 | 參數 | 描述 | 預設 |
 | --- | --- | --- |
-| Name |快取的名稱 | |
-| 位置 |快取的位置 | |
+| 名稱 |快取的名稱 | |
+| Location |快取的位置 | |
 | resourceGroupName |資源群組名稱，將在其中建立快取 | |
-| Size |快取的大小。 有效值為：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| 大小 |快取的大小。 有效值為：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在啟用叢集的情況下建立進階快取時要建立的分區數目。 有效值為：1、2、3、4、5、6、7、8、9、10 | |
-| SKU |指定快取的 SKU。 有效值為：Basic、Standard、Premium |Standard |
+| SKU |指定快取的 SKU。 有效值為：基本、標準、進階 |標準 |
 | RedisConfiguration |指定 Redis 組態設定。 如需每個設定的詳細資訊，請參閱以下的 [RedisConfiguration 屬性](#redisconfiguration-properties) 表格。 | |
 | EnableNonSslPort |指出是否已啟用非 SSL 連接埠。 |False |
 | MaxMemoryPolicy |這個參數已被取代，請改用 RedisConfiguration。 | |
 | StaticIP |當快取是裝載在 VNET 中，為快取在子網路中指定唯一 IP 位址。 如果未提供，則會從子網路中為您選擇一個。 | |
 | 子網路 |當快取是裝載在 VNET 中，指定要在其中部署快取的子網路。 | |
 | VirtualNetwork |當快取是裝載在 VNET 中，指定要在其中部署快取的 VNET 之資源識別碼。 | |
-| KeyType |指定更新存取金鑰時要重新產生哪一個存取金鑰。 有效值為：Primary、Secondary | |
+| KeyType |指定更新存取金鑰時要重新產生哪一個存取金鑰。 有效值為：主要、次要 | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 屬性
-| 屬性 | 說明 | 定價層 |
+| 屬性 | 描述 | 定價層 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已啟用 [Redis 資料持續性](cache-how-to-premium-persistence.md) |僅限進階版 |
 | rdb-storage-connection-string |[Redis 資料持續性](cache-how-to-premium-persistence.md) |僅限進階版 |
@@ -776,8 +776,8 @@ ms.locfileid: "79278528"
 
 * [MSDN 上的 Azure Cache for Redis Cmdlet 文件](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager Cmdlet](https://go.microsoft.com/fwlink/?LinkID=394765)：了解如何使用 Azure Resource Manager 模組中的 Cmdlet。
-* [使用資源群組管理 Azure 資源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 入口網站中建立和管理資源群組。
-* [Azure 部落格](https://azure.microsoft.com/blog/)：深入了解 Azure 的新功能。
-* [Windows PowerShell 部落格](https://blogs.msdn.com/powershell)：深入了解 Windows PowerShell 的新功能。
-* ["Hey, Scripting Guy!" 部落格](https://blogs.technet.com/b/heyscriptingguy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
+* [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 入口網站中建立和管理資源群組。
+* [Azure 部落格](https://azure.microsoft.com/blog/)：了解 Azure 的新功能。
+* [Windows PowerShell 部落格](https://devblogs.microsoft.com/powershell/)：了解 Windows PowerShell 的新功能。
+* ["Hey, Scripting Guy!"部落格](https://blogs.technet.com/b/heyscriptingguy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
 

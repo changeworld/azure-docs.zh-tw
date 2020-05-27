@@ -67,8 +67,6 @@
           href: cdn-restrict-access-by-country.md
         - name: 藉由壓縮檔案來改善效能
           href: cdn-improve-performance.md
-        - name: 端點的多個來源
-          href: endpoint-multiorigin.md
         - name: 控制快取行為
           items:
             - name: 透過使用快取規則控制快取行為
@@ -185,8 +183,8 @@
       href: cdn-billing.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 定價計算機

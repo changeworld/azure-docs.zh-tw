@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: 遷移
       items:
+        - name: 概觀
+          href: migration.md
         - name: 從複合實體遷移
           href: migrate-from-composite-entity.md
         - name: 遷移至製作資源

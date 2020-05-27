@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670367"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835864"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>使用 Azure 監視器警示來回應事件
 Azure 監視器中的警示可識別您 Log Analytics 存放庫中的重要資訊。 它們是由自動定期執行記錄搜尋的警示規則所建立，如果記錄搜尋的結果符合特定準則，則會建立一個警示記錄，而它可以設定為執行自動化的回應。  本教學課程是[建立和共用 Log Analytics 資料的儀表板](tutorial-logs-dashboards.md)教學課程的延續。   
@@ -23,7 +23,7 @@ Azure 監視器中的警示可識別您 Log Analytics 存放庫中的重要資�
 > * 建立警示規則
 > * 設定動作群組以傳送電子郵件通知
 
-若要完成本教學課程中的範例，您目前必須有[連線至 Log Analytics 工作區](../../azure-monitor/learn/quick-collect-azurevm.md)的虛擬機器。  
+若要完成本教學課程中的範例，您目前必須有[連線至 Log Analytics 工作區](quick-collect-azurevm.md)的虛擬機器。  
 
 ## <a name="sign-in-to-azure-portal"></a>登入 Azure 入口網站
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。 
@@ -69,4 +69,4 @@ Azure 監視器中的警示可識別您 Log Analytics 存放庫中的重要資�
 點選以下連結以查看預先建立的 Log Analytics 指令碼範例。  
 
 > [!div class="nextstepaction"]
-> [Log Analytics 指令碼範例](../../azure-monitor/platform/powershell-samples.md)
+> [Log Analytics 指令碼範例](../samples/powershell-samples.md)

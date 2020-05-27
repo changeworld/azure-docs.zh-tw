@@ -393,8 +393,8 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: 定價計算機
