@@ -1,14 +1,14 @@
 ---
 title: 教學課程：在 Azure 入口網站中管理查詢
 description: 在本教學課程中，您將建立 Resource Graph 查詢，並在 Azure 入口網站中與其他人共用新查詢。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74303954"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637756"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中建立和共用 Azure Resource Graph 查詢
 

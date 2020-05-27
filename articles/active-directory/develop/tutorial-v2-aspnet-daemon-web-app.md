@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201749"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641111"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 
@@ -39,7 +39,7 @@ ms.locfileid: "82201749"
 
 ## <a name="scenario"></a>狀況
 
-由於此應用程式是供 Microsoft 企業客戶使用的多租用戶應用程式，因此必須提供方法讓客戶可以「註冊」應用程式或將應用程式「連線」至其公司資料。 在連線過程中，公司管理員會先將「應用程式權限」  直接授與應用程式，讓它能夠在沒有登入使用者的情況下，以非互動方式存取公司資料。 此範例中的邏輯主要將說明如何使用身分識別平台的[管理員同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)端點來完成此連線流程。
+由於此應用程式是供 Microsoft 企業客戶使用的多租用戶應用程式，因此必須提供方法讓客戶可以「註冊」應用程式或將應用程式「連線」至其公司資料。 在連線過程中，公司管理員會先將「應用程式權限」直接授與應用程式，讓它能夠在沒有登入使用者的情況下，以非互動方式存取公司資料。 此範例中的邏輯主要將說明如何使用身分識別平台的[管理員同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)端點來完成此連線流程。
 
 ![拓撲](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
@@ -69,7 +69,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 - 遵循[向 Azure Active Directory 租用戶註冊範例](#register-your-application)和[設定範例以使用 Azure AD 租用戶](#choose-the-azure-ad-tenant)中的步驟。
 - 使用 PowerShell 指令碼來：
-  - 「自動」  為您建立 Azure AD 應用程式和相關物件 (密碼、權限、相依性)。
+  - 「自動」為您建立 Azure AD 應用程式和相關物件 (密碼、權限、相依性)。
   - 修改 Visual Studio 專案的組態檔。
 
 如果您想要使用自動化功能：
@@ -89,46 +89,46 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
    [應用程式建立指令碼](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/blob/master/AppCreationScripts/AppCreationScripts.md)中會有其他指令碼執行方式的說明。
 
-1. 開啟 Visual Studio 解決方案，然後選取 [啟動]  以執行程式碼。
+1. 開啟 Visual Studio 解決方案，然後選取 [啟動] 以執行程式碼。
 
 如果您不想要使用自動化功能，則請使用下列各節中的步驟。
 
 ### <a name="choose-the-azure-ad-tenant"></a>選擇 Azure AD 租用戶
 
 1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶位於多個 Azure AD 租用戶，請選取頁面頂端功能表上的設定檔，然後選取 [切換目錄]  。
+1. 如果您的帳戶位於多個 Azure AD 租用戶，請選取頁面頂端功能表上的設定檔，然後選取 [切換目錄]。
 1. 將入口網站工作階段變更為所需的 Azure AD 租用戶。
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>註冊用戶端應用程式 (dotnet-web-daemon-v2)
 
 1. 移至開發人員所適用 Microsoft 身分識別平台中的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]  。
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-   - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **dotnet-web-daemon-v2**。
-   - 在 [支援的帳戶類型]  區段中，選取 [任何組織目錄中的帳戶]  。
-   - 在 [重新導向 URI (選用)]  區段中，選取下拉式方塊中的 [Web]  ，然後輸入下列重新導向 URI：
+1. 選取 [新增註冊]。
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **dotnet-web-daemon-v2**。
+   - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶]。
+   - 在 [重新導向 URI (選用)] 區段中，選取下拉式方塊中的 [Web]，然後輸入下列重新導向 URI：
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
 
-     如果有超過兩個的重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證]  索引標籤新增這些 URI。
-1. 選取 [註冊]  以建立應用程式。
-1. 在應用程式的 [概觀]  頁面上，尋找 [應用程式 (用戶端) 識別碼]  值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
-1. 在應用程式頁面清單中，選取 [驗證]  。 然後：
-   - 在 [進階設定]  區段中，將 [登出 URL]  設定為 **https://localhost:44316/Account/EndSession** 。
-   - 在 [進階設定]   > [隱含授與]  區段中，選取 [存取權杖]  和 [識別碼權杖]  。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)才能讓使用者登入並呼叫 API。
-1. 選取 [儲存]  。
-1. 從 [憑證和祕密]  頁面的 [用戶端密碼]  區段中，選取 [新增用戶端密碼]  。 然後：
+     如果有超過兩個的重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
+1. 選取 [註冊] 以建立應用程式。
+1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
+1. 在應用程式頁面清單中，選取 [驗證]。 然後：
+   - 在 [進階設定] 區段中，將 [登出 URL] 設定為 **https://localhost:44316/Account/EndSession** 。
+   - 在 [進階設定] > [隱含授與] 區段中，選取 [存取權杖] 和 [識別碼權杖]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)才能讓使用者登入並呼叫 API。
+1. 選取 [儲存]。
+1. 從 [憑證和祕密] 頁面的 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。 然後：
 
    1. 輸入金鑰描述 (例如，**應用程式祕密**)。
-   1. 選取金鑰持續時間，此值可為 [1 年]  、[2 年]  或 [永不過期]  。
-   1. 選取 [新增]  按鈕。
+   1. 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
+   1. 選取 [新增] 按鈕。
    1. 金鑰值出現時，將其複製並儲存到安全的位置。 稍後您將需要用此金鑰在 Visual Studio 中設定專案。 金鑰值不會再次顯示，也無法透過任何其他方式來取得。
-1. 在應用程式頁面清單中，選取 [API 權限]  。 然後：
-   1. 選取 [新增權限]  按鈕。
-   1. 確定已選取 [Microsoft API]  索引標籤。
-   1. 在 [常用的 Microsoft API]  區段中，選取 [Microsoft Graph]  。
-   1. 在 [應用程式權限]  區段中，確定已選取正確的權限：**User.Read.All**。
-   1. 選取 [新增權限]  按鈕。
+1. 在應用程式頁面清單中，選取 [API 權限]。 然後：
+   1. 選取 [新增權限] 按鈕。
+   1. 確定已選取 [Microsoft API] 索引標籤。
+   1. 在 [常用的 Microsoft API] 區段中，選取 [Microsoft Graph]。
+   1. 在 [應用程式權限] 區段中，確定已選取正確的權限：**User.Read.All**。
+   1. 選取 [新增權限] 按鈕。
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>設定範例以使用您的 Azure AD 租用戶
 
@@ -161,7 +161,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 授與權限之後，您就會從應用程式登出。 讓您登出可確保 Microsoft Graph 的任何現有存取權杖都會從權杖快取中移除。 當您再次登入時，所取得的全新權杖就會有可對 MS Graph 發出呼叫的必要權限。
 
 
-當您授與權限時，應用程式便可在任何時間點查詢使用者。 您可以選取 [同步使用者]  按鈕，然後重新整理使用者清單來確認這一點。 嘗試新增或移除使用者，並重新同步處理此清單。 (但請注意，應用程式只會同步處理第一頁的使用者)。
+當您授與權限時，應用程式便可在任何時間點查詢使用者。 您可以選取 [同步使用者] 按鈕，然後重新整理使用者清單來確認這一點。 嘗試新增或移除使用者，並重新同步處理此清單。 (但請注意，應用程式只會同步處理第一頁的使用者)。
 
 ## <a name="about-the-code"></a>關於程式碼
 
@@ -176,8 +176,8 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 1. 在 Visual Studio 中，建立新的 **Visual C#** **ASP.NET Web 應用程式 (.NET Framework)** 專案。
 1. 在下一個畫面中，選擇 **MVC** 專案範本。 此外，也請為 **Web API** 新增資料夾和核心參考，因為稍後會新增 Web API 控制器。 將專案選擇的驗證模式保留為預設值：**沒有驗證**。
-1. 在 [方案總管]  視窗中選取專案，然後選取 **F4** 鍵。
-1. 在 [專案屬性] 中，將 [已啟用 SSL]  設定為 **True**。 請記下 **SSL URL** 中的資訊。 在 Azure 入口網站中設定此應用程式的註冊時，將會用到這項資料。
+1. 在 [方案總管] 視窗中選取專案，然後選取 **F4** 鍵。
+1. 在 [專案屬性] 中，將 [已啟用 SSL] 設定為 **True**。 請記下 **SSL URL** 中的資訊。 在 Azure 入口網站中設定此應用程式的註冊時，將會用到這項資料。
 1. 新增下列 ASP.NET OWIN 中介軟體 NuGet 套件：
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
@@ -191,7 +191,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。
    請務必採用整個類別定義。 定義會從**公用類別啟動**變更為**公用部分類別啟動**。
 1. 在 **Startup.Auth.cs** 中，藉由新增 Visual Studio IntelliSense 所建議的 **using** 陳述式來解析遺漏的參考。
-1. 以滑鼠右鍵按一下專案，選取 [新增]  ，然後選取 [類別]  。
+1. 以滑鼠右鍵按一下專案，選取 [新增]，然後選取 [類別]。
 1. 在搜尋方塊中，輸入 **OWIN**。 **OWIN 啟動類別**便會顯示為選取項目。 加以選取，並將類別命名為 **Startup.cs**。
 1. 在 **Startup.cs** 中，將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。 同樣地，請注意定義會從**公用類別啟動**變更為**公用部分類別啟動**。
 1. 在 **Models** 資料夾中，新增名為 **MsGraphUser.cs** 的新類別。 請將實作取代為範例中同名檔案的內容。
@@ -212,33 +212,33 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>建立 dotnet-web-daemon-v2 並將其發佈至 Azure 網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左上角，選取 [建立資源]  。
-1. 選取 [Web]   > [Web 應用程式]  ，然後為網站提供名稱。 例如，將網站命名為 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
-1. 選取 [訂用帳戶]  、[資源群組]  和 [App Service 方案和位置]  的資訊。 [OS]  是 [Windows]  ，[發佈]  則是 [程式碼]  。
-1. 選取 [建立]  ，並等待 App Service 建立。
-1. 當您收到**部署成功**通知時，請選取 [移至資源]  以移至新建立的 App Service。
-1. 網站建立好之後，請在 [儀表板]  中找到網站，然後加以選取以開啟 App Service 的 [概觀]  畫面。
-1. 從 App Service 的 [概觀]  索引標籤中，選取 [取得發行設定檔]  連結以下載發行設定檔，並加以儲存。 您可以使用其他部署機制，例如從原始檔控制進行部署。
+1. 在左上角，選取 [建立資源]。
+1. 選取 [Web] > [Web 應用程式]，然後為網站提供名稱。 例如，將網站命名為 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
+1. 選取 [訂用帳戶]、[資源群組] 和 [App Service 方案和位置] 的資訊。 [OS] 是 [Windows]，[發佈] 則是 [程式碼]。
+1. 選取 [建立]，並等待 App Service 建立。
+1. 當您收到**部署成功**通知時，請選取 [移至資源] 以移至新建立的 App Service。
+1. 網站建立好之後，請在 [儀表板] 中找到網站，然後加以選取以開啟 App Service 的 [概觀] 畫面。
+1. 從 App Service 的 [概觀] 索引標籤中，選取 [取得發行設定檔] 連結以下載發行設定檔，並加以儲存。 您可以使用其他部署機制，例如從原始檔控制進行部署。
 1. 切換至 Visual Studio，然後：
    1. 移至 **dotnet-web-daemon-v2** 專案。
-   1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
-   1. 選取底部列上的 [匯入設定檔]  ，然後匯入您先前下載的發行設定檔。
-1. 選取 [設定]  。
-1. 在 [連線]  索引標籤上，更新目的地 URL 使其使用 "https"。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 選取 [下一步]  。
-1. 在 [設定]  索引標籤上，確定已清除 [啟用組織驗證]  。
-1. 選取 [儲存]  。 選取主畫面上的 [發佈]  。
+   1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]。
+   1. 選取底部列上的 [匯入設定檔]，然後匯入您先前下載的發行設定檔。
+1. 選取 [設定] 。
+1. 在 [連線] 索引標籤上，更新目的地 URL 使其使用 "https"。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 選取 [下一步] 。
+1. 在 [設定] 索引標籤上，確定已清除 [啟用組織驗證]。
+1. 選取 [儲存]。 選取主畫面上的 [發佈]。
 
 Visual Studio 會發佈專案，並自動開啟瀏覽器並導向至專案的 URL。 如果您看到專案的預設網頁，表示發佈成功。
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>更新 dotnet-web-daemon-v2 的 Azure AD 租用戶應用程式註冊
 
 1. 回到 [Azure 入口網站](https://portal.azure.com)。
-1. 在左窗格中，選取 [Azure Active Directory]  服務，然後選取 [應用程式註冊]  。
+1. 在左窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
 1. 選取 **dotnet-web-daemon-v2** 應用程式。
-1. 在您應用程式的 [驗證]  頁面上，以您的服務位址更新 [登出 URL]  欄位。 例如，使用 [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)。
-1. 從 [商標]  功能表，將 [首頁 URL]  更新為您的服務位址。 例如，使用 [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)。
+1. 在您應用程式的 [驗證] 頁面上，以您的服務位址更新 [登出 URL] 欄位。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
+1. 從 [商標] 功能表，將 [首頁 URL] 更新為您的服務位址。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
 1. 儲存組態。
-1. 在 [驗證]   > [重新導向 URI]  功能表的值清單中，新增相同的 URL。 如果您有多個重新導向 URL，請確定在使用應用程式服務的 URI 作為每個重新導向 URL 時，都有新的輸入項目。
+1. 在 [驗證] > [重新導向 URI] 功能表的值清單中，新增相同的 URL。 如果您有多個重新導向 URL，請確定在使用應用程式服務的 URI 作為每個重新導向 URL 時，都有新的輸入項目。
 
 ## <a name="clean-up-resources"></a>清除資源
 如果不再需要，請刪除您在[註冊應用程式](#register-your-application)步驟中所建立的應用程式物件。  若要移除應用程式，請遵循[移除您或貴組織所編寫的應用程式](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)中的指示。
