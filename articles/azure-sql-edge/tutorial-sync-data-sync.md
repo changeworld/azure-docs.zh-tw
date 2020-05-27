@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593441"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680503"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>教學課程：使用 SQL 資料同步將 SQL Edge 中的資料同步至 Azure SQL Database
 
@@ -32,7 +32,7 @@ ms.locfileid: "83593441"
 
 * 在您的 Azure SQL Database 部署中建立資料表和其他必要物件。
 
-* 在您的 Azure SQL Edge 部署中建立必要的資料表和物件。 如需詳細資訊，請參閱[將 SQL Database DAC 套件用於 SQL Edge](stream-analytics.md)。
+* 在您的 Azure SQL Edge 部署中建立必要的資料表和物件。 如需詳細資訊，請參閱[將 SQL Database DAC 套件用於 SQL Edge](deploy-dacpac.md)。
 
 * 將 Azure SQL Edge 執行個體註冊至適用於 Azure SQL 資料同步的 Data Sync Agent。如需詳細資訊，請參閱[新增內部部署 SQL Server 資料庫](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem)。
 

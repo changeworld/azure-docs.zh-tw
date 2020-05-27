@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9618dc1cef8d04cc5906579af0ef372694aeaaa9
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674690"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673402"
 ---
 ## <a name="create-a-device-template"></a>建立裝置範本
 
 在本機電腦上建立名為 `environmental-sensor` 的資料夾。
 
-下載[環境感應器功能模型](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON 檔案，並儲存在 `environmental-sensor` 資料夾中。
+下載[環境感應器功能模型](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON 檔案，並儲存在 `environmental-sensor` 資料夾中。
 
 請在文字編輯器中，將 `{YOUR_COMPANY_NAME_HERE}` 的兩個執行個體以您下載的 `EnvironmentalSensorInline.capabilitymodel.json` 檔案中的公司名稱取代。
 

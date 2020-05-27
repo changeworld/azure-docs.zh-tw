@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 945c7035c2eeada3fea358489460f80c40438950
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595937"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677934"
 ---
 # <a name="manage-azure-maps-creator"></a>管理 Azure 地圖服務建立工具
 
@@ -39,7 +39,7 @@ Azure 地圖服務建立工具可讓您建立私人室內地圖資料。 您可�
 
 5. 檢閱設定，然後按一下 [建立]。
 
-    ![「確認建立工具帳戶設定「頁面](./media/how-to-manage-creator/creator-create.PNG)
+    ![「確認建立工具帳戶設定「頁面](./media/how-to-manage-creator/creator-create-dialog.png)
 
 6. 部署完成時，您會看到包含成功或失敗訊息的頁面。
 

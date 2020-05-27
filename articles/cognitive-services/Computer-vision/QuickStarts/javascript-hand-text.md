@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 907b3ead8e39268bc73604599bd2c37b18ddfa21
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404754"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676081"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷和手寫文字
 
@@ -73,10 +73,7 @@ ms.locfileid: "81404754"
 
 <script type="text/javascript">
     function processImage() {
-        // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
-
+        // Fetch your Computer Vision key and endpoint for this sample.
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
         

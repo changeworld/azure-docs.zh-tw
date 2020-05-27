@@ -1,20 +1,20 @@
 ---
 title: IRS 1075 藍圖範例控制項
 description: IRS 1075 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 11/20/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 86570012000e660b53b2c3c7291b9ca98576a004
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cd69a35cb4ad30a565a2392f7109c74d75de4d7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546832"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659820"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 藍圖範例的控制項對應
 
 下列文章將詳細說明 Azure 藍圖 IRS 1075 藍圖範例與 IRS 1075 控制項的對應情形。 如需控制項的詳細資訊，請參閱 [IRS 1075](https://www.irs.gov/pub/irs-pdf/p1075.pdf)。
 
-以下是與 **IRS 1075** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\]：稽核 IRS 1075 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
+以下是與 **IRS 1075** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：稽核 IRS 1075 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/irs-1075/control-mapping.md) \(英文\)。
