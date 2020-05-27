@@ -60,6 +60,32 @@
           href: learn/tutorial-app-dashboards.md
 - name: 範例
   items:
+    - name: Resource Manager 範本
+      items:
+        - name: 概觀
+          href: samples/resource-manager-samples.md
+        - name: 代理程式
+          href: samples/resource-manager-agent.md
+        - name: 警示
+          items:
+            - name: 記錄警示規則
+              href: samples/resource-manager-alerts-log.md
+            - name: 計量警示規則
+              href: samples/resource-manager-alerts-metric.md
+            - name: 動作群組
+              href: samples/resource-manager-action-groups.md
+        - name: 診斷設定
+          href: samples/resource-manager-diagnostic-settings.md
+        - name: Log Analytics 工作區
+          href: samples/resource-manager-workspace.md
+        - name: 記錄查詢
+          href: samples/resource-manager-log-queries.md
+        - name: 活頁簿
+          href: samples/resource-manager-workbooks.md
+        - name: 適用於容器的 Azure 監視器
+          href: samples/resource-manager-container-insights.md
+        - name: 適用於 VM 的 Azure 監視器
+          href: samples/resource-manager-vminsights.md
     - name: Azure CLI
       href: samples/cli-samples.md
     - name: Azure PowerShell

@@ -59,8 +59,8 @@
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: MSDN 支援論壇
-      href: 'https://aka.ms/workbenchforum'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
     - name: 社群支援
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: 堆疊溢位支援

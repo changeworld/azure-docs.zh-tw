@@ -216,9 +216,9 @@
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: 相關的 Microsoft 資源
       items:
-        - name: MSDN 論壇
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-        - name: 堆疊溢位
+        - name: Microsoft 問與答頁面
+          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: 影片
           href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
