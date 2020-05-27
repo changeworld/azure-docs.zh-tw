@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: a0bf8a89fa34f8a7d22979f4b42faaf94db60281
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 8a58079f44fb4d78c2d3f652a5f3b61dae9c8991
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83200630"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800805"
 landingContent:
 - title: 關於文字轉換語音
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
       url: text-to-speech.md
     - text: 語音合成基本概念
       url: text-to-speech-basics.md
-    - text: 使用 SPX 進行文字轉換語音，而不使用程式碼
+    - text: 將語音 CLI 用於文字轉換語音，而不使用程式碼
       url: spx-overview.md
   - linkListType: quickstart
     links:
@@ -54,7 +54,7 @@ landingContent:
       url: how-to-custom-voice-create-voice.md
     - text: 自訂語音的管制
       url: concepts-gating-overview.md
-- title: 參考資料
+- title: 參考
   linkLists:
   - linkListType: reference
     links:

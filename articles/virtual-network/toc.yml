@@ -432,8 +432,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 網路部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: 網路論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Azure 網路的 Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: 網路意見反應
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: 定價

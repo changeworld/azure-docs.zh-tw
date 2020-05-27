@@ -282,7 +282,7 @@
         - name: 儲存體總管協助工具
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure 儲存體論壇
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Stack Overflow 上的 Azure 儲存體
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Azure 儲存體定價

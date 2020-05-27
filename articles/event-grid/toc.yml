@@ -138,7 +138,7 @@
           href: partner-topics-overview.md
         - name: Auth0
           href: auth0-overview.md
-        - name: 變成 Event Grid 合作夥伴
+        - name: 變成事件方格合作夥伴
           href: partner-onboarding-overview.md
     - name: 事件網域
       href: event-domains.md

@@ -152,7 +152,7 @@
           href: 'https://docs.microsoft.com/samples/browse/?term=iot'
     - name: 價格與可用性
       items:
-        - name: 價格
+        - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
         - name: 定價計算機
           href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -164,14 +164,14 @@
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT 支援和協助選項
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN 論壇
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft 問與答頁面
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: 意見反應及論壇
       items:
-        - name: MSDN 論壇
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft 問與答頁面
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: 產品要求和建議
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure 影片

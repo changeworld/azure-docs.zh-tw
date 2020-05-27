@@ -4,18 +4,18 @@ description: 本文包含 Language Understanding (LUIS) 常見問題集的解答
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592843"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834997"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding 常見問題集 (FAQ)
 
 本文包含 Language Understanding (LUIS) 常見問題集的解答。
 
-## <a name="whats-new"></a>最新消息
+## <a name="whats-new"></a>新功能
 
 [深入瞭解](whats-new.md)Language Understanding 的新功能（LUIS）。
 
@@ -333,4 +333,4 @@ LUIS 應用程式預設會記錄使用者的語句。 若要下載使用者傳�
 
 若要深入了解 LUIS，請參閱下列資源：
 * [Stack Overflow questions tagged with LUIS](https://stackoverflow.com/questions/tagged/luis) (使用 LUIS 加上標籤的 Stack Overflow 問題)
-* [MSDN Language Understanding Intelligent Services (LUIS) Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) (MSDN Language Understanding Intelligent Services (LUIS) 論壇)
+* [Microsoft Q&MSDN Language Understanding 智慧型服務（LUIS）的問題頁面](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
