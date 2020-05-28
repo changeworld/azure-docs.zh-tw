@@ -47,6 +47,8 @@
       href: synchronization.md
     - name: 密碼雜湊同步處理如何運作
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 傳統部署遷移的優點
+      href: concepts-migration-benefits.md
     - name: 什麼是 Azure Active Directory？
       href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
     - name: Azure Active Directory 架構

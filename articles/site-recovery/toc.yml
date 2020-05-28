@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: 刪除保存庫
               href: delete-vault.md
-    - name: 鄰近放置群組的 Site Recovery 支援
+    - name: 鄰近放置群組的 Site Recovery
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: 應用程式災害復原
       items:

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627988"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996817"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -27,11 +27,10 @@ ms.locfileid: "82627988"
 
 ### <a name="new-features"></a>新功能
 * **表單辨識器 API V2.0 公開預覽的 SDK 支援**本月份我們已擴充服務支援，以包含適用于表單辨識器 v2.0 （預覽）版本的預覽 SDK。 使用下列連結以開始使用您選擇的語言： 
-   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
-   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
-
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-previewr)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)
 
   新的 SDK 支援適用于表單辨識器的 v2.0 REST API 的所有功能。 例如，您可以將具有或不含標籤的模型定型，並從表單中解壓縮文字、索引鍵值組和資料表、使用預先建立的回條服務從回條解壓縮資料，以及使用您的檔中的版面佈建服務來解壓縮文字和資料表。 您可以透過[Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  
@@ -39,6 +38,10 @@ ms.locfileid: "82627988"
    * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
    * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
 
+### <a name="security-improvements"></a>安全性改善
+
+* 客戶管理的金鑰現在可供 FormRecognizer。 如需詳細資訊，請參閱[表單辨識器的待用資料加密](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)。
+* 使用受控識別，以 Azure Active Directory 存取 Azure 資源。 如需詳細資訊，請參閱[授權存取受控](https://docs.microsoft.com/azure/cognitive-services/authentication#authorize-access-to-managed-identities)識別。
 
 ## <a name="march-2020"></a>2020 年 3 月 
 
@@ -64,7 +67,7 @@ ms.locfileid: "82627988"
   > [!div class="mx-imgBorder"]
   > ![使用範例標籤工具的資料表視覺效果](./media/whats-new/formre-table-viz.png)
 
-    已解壓縮的資料表可在的 JSON 輸出中`"pageResults"`取得。
+    已解壓縮的資料表可在的 JSON 輸出中取得 `"pageResults"` 。
 
   > [!IMPORTANT]
   > 不支援標記資料表。 如果無法辨識資料表並自動 extrated，您只能將它們標示為索引鍵/值組。 將資料表標記為索引鍵/值組時，會將每個資料格標記為唯一值。

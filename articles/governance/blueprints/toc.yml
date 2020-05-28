@@ -284,13 +284,15 @@
   items:
     - name: GitHub - Azure 藍圖範例
       href: 'https://github.com/Azure/azure-blueprints'
+    - name: 適用於 Azure 藍圖的 Microsoft 問答集
+      href: /answers/topics/azure-blueprints.html.html
+    - name: 治理 YouTube 頻道
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - name: Azure Friday - Azure 藍圖概觀
+      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
-    - name: 治理 YouTube 頻道
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Azure Friday - Azure 藍圖概觀
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345058'

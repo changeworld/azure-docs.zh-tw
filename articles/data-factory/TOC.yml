@@ -543,6 +543,8 @@
       items:
         - name: 資料移動安全性考量
           href: data-movement-security-considerations.md
+        - name: 資料存取策略
+          href: data-access-strategies.md
         - name: Azure Integration Runtime IP 位址
           href: azure-integration-runtime-ip-addresses.md
         - name: 在 Azure Key Vault 中儲存認證
