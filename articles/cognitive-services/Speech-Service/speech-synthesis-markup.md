@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 855feaf9b5b47b7b725ee7927418a2b3a9e25393
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714316"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017761"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -118,7 +118,7 @@ speechConfig.SetProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="c"></a>[C++](#tab/cpp)
+# <a name="c"></a>[C + +](#tab/cpp)
 
 如需詳細資訊， <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
@@ -330,7 +330,7 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定合成屬性中字串的發音時，所要使用的語音字母 `ph` 。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;通用電話集合</li></ul><br>字母僅適用于 `phoneme` 元素中的。 | 選擇性 |
+| `alphabet` | 指定合成屬性中字串的發音時，所要使用的語音字母 `ph` 。 指定字母的字串必須以小寫字母指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際語音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話集合</a></li></ul><br>字母僅適用于 `phoneme` 元素中的。 | 選擇性 |
 | `ph` | 包含電話的字串，指定元素中單字的發音 `phoneme` 。 如果指定的字串包含無法辨識的手機，文字轉換語音（TTS）服務會拒絕整個 SSML 檔，而且不會產生任何在檔中指定的語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
@@ -378,7 +378,7 @@ speechConfig!.setPropertyTo(
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部另外檔的位址。 | 必要。           |
 
-**使用量**
+**使用方式**
 
 若要定義多個實體的讀取方式，您可以建立自訂的詞典，它會儲存為 .xml 或. 另外檔案。 以下是範例 .xml 檔案。
 
@@ -582,7 +582,7 @@ speechConfig!.setPropertyTo(
 
 以下是和屬性支援的內容類型 `interpret-as` `format` 。 只有在 `format` `interpret-as` 設為日期和時間時，才包含屬性。
 
-| 解讀為 | format | 解譯 |
+| 解讀為 | format | 解讀 |
 |--------------|--------|----------------|
 | `address` | | 文字會以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法院的美國華盛頓州 redmond」。 |
 | `cardinal`, `number` | | 文字是以基本數位來讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三種替代方案」。 |
@@ -594,7 +594,7 @@ speechConfig!.setPropertyTo(
 | `telephone` | | 文字會以電話號碼的形式讀出。 `format`屬性可以包含代表國家/地區代碼的數位。 例如，美國的 "1" 或義大利的 "39"。 語音合成引擎可能會使用這項資訊來引導其電話號碼的發音。 電話號碼也可能包含國家/地區代碼，若是如此，則會優先于中的國家（地區）代碼 `format` 。 語音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As 「我的數位是區功能變數代碼 8 8 8 5 5 5 1 2 1 2」。 |
 | `time` | hms12, hms24 | 文字會以一段時間讀出。 `format`屬性會指定是否使用12小時制（hms12）或24小時制（hms24）來指定時間。 使用冒號來分隔代表小時、分鐘和秒數的數位。 以下是有效的時間範例：12:35、1:14:32、08:15 和02:50:45。 語音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />「訓練離開在四個 M」。 |
 
-**使用量**
+**使用方式**
 
 `say-as`元素只能包含文字。
 

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 9232082e845ef651d188adcc2ccd5cd3b96d90b4
-  ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+  ms.openlocfilehash: 8dd70bbe8b3e495473523a662e0501613703354f
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/26/2020
-  ms.locfileid: "83849598"
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84021767"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -597,14 +597,26 @@ productDirectory:
     - databases
     - migration
     url: dms/index.yml
+  - title: Azure SQL
+    summary: 適用於遷移和應用程式現代化的現代化 SQL 系列
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
+    azureCategories:
+    - featured
+    - hybrid
+    - databases
+    url: azure-sql/index.yml
   - title: Azure SQL Database
     summary: 雲端中的智慧型受控 SQL
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
     azureCategories:
-    - featured
     - databases
-    - hybrid
-    url: sql-database/index.yml
+    url: azure-sql/database/index.yml
+  - title: Azure SQL 受控執行個體
+    summary: 雲端中的受控、一律保持最新的 SQL 執行個體
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg
+    azureCategories:
+    - databases
+    url: azure-sql/managed-instance/index.yml
   - title: Azure SQL Edge (預覽)
     summary: 磁碟使用量低、邊緣最佳化的資料引擎，並內建 AI
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
