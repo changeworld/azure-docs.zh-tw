@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647374"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994298"
 ---
 # <a name="upload-a-document"></a>上傳文件
 
@@ -24,7 +24,7 @@ ms.locfileid: "73647374"
 
 ## <a name="how-to-upload-document"></a>如何上傳文件？
 
-從[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站中，按一下 [文件] 索引標籤，即可移至文件頁面。
+從[自訂翻譯](https://portal.customtranslator.azure.ai)入口網站中，按一下 [檔] 索引標籤以移至 [檔] 頁面。
 
 ![文件上傳連結](media/how-to/how-to-upload-1.png)
 
@@ -61,11 +61,11 @@ ms.locfileid: "73647374"
 
     ![上傳文件對話方塊](media/how-to/how-to-upload-dialog.png)
 
-3.  此時，我們會處理您的文件，並嘗試擷取句子。 您可以按一下 [檢視上傳進度] 來檢查文件的處理狀態。
+3.  此時，我們會處理您的文件，並嘗試擷取句子。 您可以按一下 [查看上傳進度]，在檔處理時檢查其狀態。
 
     ![上傳文件的處理對話方塊](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  此頁面會顯示上傳期間每個檔案的狀態及任何錯誤。 按一下 [上傳記錄] 索引標籤，即可檢視過去任何時間的上傳狀態。
+4.  此頁面會顯示上傳期間每個檔案的狀態及任何錯誤。 您可以隨時按一下 [上傳歷程記錄] 索引標籤，以查看過去的上傳狀態。
 
     ![上傳文件記錄對話方塊](media/how-to/how-to-upload-document-history.png)
 

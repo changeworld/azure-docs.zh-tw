@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592231"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995780"
 ---
 # <a name="request-limits-for-translator"></a>Translator 的要求限制
 
@@ -27,14 +27,14 @@ ms.locfileid: "83592231"
 
 下表列出每個轉譯程式作業的陣列元素和字元限制。
 
-| 作業 | 陣列元素的大小上限 |   陣列元素的最大數目 |  要求大小上限（字元） |
+| 作業 | 陣列元素的大小上限 |    陣列元素的最大數目 |    要求大小上限（字元） |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
-| 字典查閱| 100 |  10  | 1,000 |
-| 字典範例 | 100用於文字，100用於轉譯（200 total）| 10|   2,000 |
+| Translate | 5,000    | 100    | 5,000 |
+| Transliterate | 5,000    | 10    | 5,000 |
+| Detect | 10,000 |    100 |    50,000 |
+| BreakSentence | 10,000    | 100 |    50,000 |
+| 字典查閱| 100 |    10    | 1,000 |
+| 字典範例 | 100用於文字，100用於轉譯（200 total）| 10|    2,000 |
 
 ## <a name="character-limits-per-hour"></a>每小時的字元限制
 
@@ -64,7 +64,7 @@ ms.locfileid: "83592231"
 
 使用 [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) 函式時，句子長度受限於 275 個字元。 下列語言有一些例外狀況：
 
-| 語言 | 程式碼 | 字元限制 |
+| Language | 程式碼 | 字元限制 |
 |----------|------|-----------------|
 | 中文 | zh | 132 |
 | 德文 | de | 290 |
@@ -82,4 +82,4 @@ ms.locfileid: "83592231"
 
 * [定價](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [區域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 翻譯工具參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

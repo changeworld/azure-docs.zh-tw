@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 252759139de7f53cd7875efeb7f477219092aa0b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584685"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996358"
 ---
 # <a name="unsupported-language-deployments"></a>不支援的語言部署
 
@@ -25,14 +25,14 @@ ms.locfileid: "83584685"
 
 我們現在有一個程式，可讓您透過自訂翻譯部署不受支援的模型。  此程式可讓您使用最新的 V3 API 繼續翻譯內容。  這些模型將會主控，直到您選擇解除部署它們，或自訂翻譯中的語言組變成可用為止。  本文說明以不支援的語言組來部署模型的程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了讓您的模型成為部署的候選項目，它們必須符合下列準則：
 * 包含模型的專案必須已經從中樞遷移至使用遷移工具的自訂翻譯。  您可以在[這裡](how-to-migrate.md)找到遷移專案和工作區的進程。
 * 當發生遷移時，模型必須處於已部署狀態。  
 * 在自訂翻譯中，模型的語言組必須是不支援的語言組。  語言在語言中支援或來自英文，但配對本身不包含英文，這是不支援的語言部署的候選項目。  例如，法文到德文語言組的中樞模型會被視為不受支援的語言組，即使法文到英文，而且英文至德文也是支援的語言組。
 
-## <a name="process"></a>程序
+## <a name="process"></a>Process
 當您從中樞遷移模型作為部署的候選項目之後，您可以移至工作區的 [**設定**] 頁面，然後在頁面結尾處滾動到您將會看到**不支援的 Translator Hub**訓練區段。  只有當您的專案符合上述必要條件時，才會顯示此區段。
 
 ![如何從中樞移轉](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 71f1e3f460fa58b999af0a60c8cffa90c8ac8cd4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc81b0c01bf749bf7f643833026e364fa7c8ebd2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221231"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996324"
 ---
 # <a name="what-are-trainings-and-models"></a>什麼是定型和模型？
 
@@ -27,7 +27,7 @@ ms.locfileid: "79221231"
 
 自訂翻譯工具會使用包含在定型集中的文件作為建置模型的基礎。 在執行定型期間，這些文件中出現的句字會對齊 (或配對)。 您可以自由地撰寫自己的定型文件集。 您可以在一個模型中，納入您認為有些許相關性的文件。 在另一個模型中再次將它們排除在外，看看對於 [BLEU (Bilingual Evaluation Understudy，雙語評估替補) 分數](what-is-bleu-score.md)的影響。 只要您保留微調集和測試集常數，便可放心地撰寫定型集。 這是修改翻譯系統品質的有效方法。
 
-您可以在專案中執行多個定型，並比較所有執行之定型的 [BLEU 分數](what-is-bleu-score.md)。 當您執行多個定型以進行比較時，請確定每次都指定相同的微調/測試資料。 另外也請務必在 [[測試](how-to-view-system-test-results.md)] 索引標籤中手動檢查結果。
+您可以在專案中執行多個定型，並比較所有執行之定型的 [BLEU 分數](what-is-bleu-score.md)。 當您執行多個定型以進行比較時，請確定每次都指定相同的微調/測試資料。 此外，也請務必在 [[測試](how-to-view-system-test-results.md)] 索引標籤中手動檢查結果。
 
 ## <a name="tuning-document-type-for-custom-translator"></a>微調自訂翻譯的檔案類型
 

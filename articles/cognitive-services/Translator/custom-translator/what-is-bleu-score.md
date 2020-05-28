@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b35dce5a2b572e5a3f11601d5e67efb2da02cdec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647363"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997055"
 ---
 # <a name="what-is-a-bleu-score"></a>什麼是 BLEU 分數？
 
@@ -26,7 +26,7 @@ BLEU 演算法會比較自動翻譯的連續片語與它在參考翻譯中找到
 
 ## <a name="how-bleu-works"></a>BLEU 的運作方式為何？
 
-BLEU 的作用在於能夠為測試主體算出個別句子判斷錯誤的平均值，進而與人為判斷產生適當的關聯，而不是試圖找出每個句子確切的人為判斷。
+BLEU 的優點是，它會將測試主體的個別句子判斷錯誤平均地相互關聯，而不是嘗試為每個句子設計精確的人為判斷。
 
 如需 BLEU 分數的詳細討論，請參閱[這裡](https://youtu.be/-UqDljMymMg)。
 
