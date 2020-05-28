@@ -197,8 +197,8 @@
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub - 社群原則存放庫
       href: 'https://github.com/Azure/Community-Policy'
-    - name: 影片 - Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 適用於 Azure 原則的 Microsoft 問答集
+      href: /answers/topics/azure-policy.html.html
     - name: 治理 YouTube 頻道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 來賓設定影片
@@ -211,9 +211,11 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: 補救工作
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
+    - name: 影片 - Build 2018
+      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
