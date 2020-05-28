@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 05/20/2020
-  ms.openlocfilehash: 347e60c8b0c50db1bdba7c8262701542448fe12a
-  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+  ms.openlocfilehash: de9d2a95a19872e8f62a6ca412dabadadbfec3fb
+  ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83682080"
+  ms.lasthandoff: 05/26/2020
+  ms.locfileid: "83849921"
 landingContent:
 - title: 關於 Azure 原則
   linkLists:
@@ -91,10 +91,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
+    - text: 適用於 Azure 原則的 Microsoft 問答集
+      url: /answers/topics/azure-policy.html
     - text: Azure Governance YouTube 頻道
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 要求產品功能
-      url: https://feedback.azure.com/forums/915958-azure-governance
+      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345055
     - text: Azure Governance 技術社群
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: 參考

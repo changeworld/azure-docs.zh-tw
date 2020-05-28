@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: Azure SQL 受控執行個體文件
+summary: 尋找與 Azure SQL 受控執行個體相關的文件，其為 Azure 中的受控執行個體 (根據 Microsoft SQL Server 的最新穩定版本)。
+metadata:
+  title: Azure SQL 受控執行個體文件
+  description: 尋找與 Azure SQL 受控執行個體相關的文件，其為 Azure 中的受控執行個體 (根據 Microsoft SQL Server 的最新穩定版本)。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 967bf5461a1f4e6cf8869bcea6a0e7c74204d1a1
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023614"
+landingContent:
+- title: Azure SQL 受控執行個體
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立 SQL 受控執行個體
+      url: instance-create-quickstart.md
+  - linkListType: concept
+    links:
+    - text: 新功能
+      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: 什麼是 SQL 受控執行個體？
+      url: sql-managed-instance-paas-overview.md
+    - text: 購買選項
+      url: ../database/purchasing-models.md
+    - text: 服務層
+      url: ../database/service-tiers-general-purpose-business-critical.md
+    - text: 異動複寫
+      url: replication-transactional-overview.md
+    - text: 從 SQL Server 移轉
+      url: migrate-to-instance-from-sql-server.md
+    - text: T-SQL 與 SQL Server 的差異
+      url: transact-sql-tsql-differences-sql-server.md
+- title: 進階安全性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全性功能
+      url: ../database/security-overview.md
+    - text: 安全性最佳做法
+      url: ../database/security-best-practice.md
+    - text: 登入、使用者帳戶、角色和權限
+      url: ../database/logins-create-manage.md
+    - text: Azure Active Directory
+      url: ../database/authentication-aad-overview.md
+    - text: 稽核
+      url: auditing-configure.md
+    - text: 透明資料加密 (TDE)
+      url: ../database/transparent-data-encryption-tde-overview.md
+    - text: 動態資料遮罩
+      url: ../database/dynamic-data-masking-overview.md
+    - text: 公用端點
+      url: public-endpoint-overview.md
+- title: 參考
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 教育性 SQL 資源
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI 範例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell 範例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM 範本範例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 移轉指南
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: 業務持續性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 業務持續性
+      url: ../database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 高可用性
+      url: ../database/high-availability-sla.md
+    - text: 自動容錯移轉群組
+      url: ../database/auto-failover-group-overview.md
+    - text: 自動備份
+      url: ../database/automated-backups-overview.md
+    - text: 使用備份進行復原
+      url: ../database/recovery-using-backups.md
+    - text: 長期備份保留期
+      url: ../database/long-term-retention-overview.md
+- title: 執行個體集區
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是執行個體集區？
+      url: instance-pools-overview.md
+    - text: 設定
+      url: instance-pools-configure.md
