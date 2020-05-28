@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: 已匯入內容類型
           href: Concepts/content-types.md
-        - name: 問答集
+        - name: 問與答組
           href: Concepts/question-answer-set.md
     - name: 知識庫生命週期
       items:
