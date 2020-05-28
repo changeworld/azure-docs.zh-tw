@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588644"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996993"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
 
@@ -49,12 +49,12 @@ ms.locfileid: "83588644"
 
 |   | **中樞** | **自訂翻譯工具**|
 |:-----|:----:|:----:|
-|自訂功能狀態   | 正式運作  | 正式運作 |
-| 文字 API 版本  | 僅限第 2 版   | 僅限第 3 版 |
-| SMT 自訂 | 是   | 否 |
-| NMT 自訂 | 否    | 是 |
-| 新的統一語音服務自訂 | 否    | 是 |
-| [不追蹤](https://www.aka.ms/notrace) | 是  | 是 |
+|自訂功能狀態    | 正式運作    | 正式運作 |
+| 文字 API 版本    | 僅限第 2 版    | 僅限第 3 版 |
+| SMT 自訂    | 是    | 否 |
+| NMT 自訂    | 否    | 是 |
+| 新的統一語音服務自訂    | 否    | 是 |
+| [不追蹤](https://www.aka.ms/notrace) | 是    | 是 |
 
 ## <a name="collaborative-translations-framework"></a>共同作業翻譯架構
 

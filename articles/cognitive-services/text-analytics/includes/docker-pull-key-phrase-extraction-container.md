@@ -18,7 +18,7 @@ ms.locfileid: "80876974"
 ---
 #### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>關鍵片語擷取容器的 Docker pull
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令從 Microsoft container Registry 下載容器映射。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft Container Registry 下載容器映射。
 
 如需文字分析容器可用標記的完整描述，請參閱 Docker Hub 上的[關鍵片語擷取](https://go.microsoft.com/fwlink/?linkid=2018757)容器。
 

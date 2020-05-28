@@ -393,8 +393,10 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup?view=azure-cli-latest
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: PowerShell – Azure 備份代理程式
+      href: /powershell/module/msonlinebackup
     - name: REST - 備份
       href: /rest/api/backup/
     - name: REST - 復原服務保存庫
