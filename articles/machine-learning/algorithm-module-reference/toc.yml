@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: 編輯中繼資料
       href: edit-metadata.md
+    - name: 將資料分組成 Bin
+      href: group-data-into-bins.md
     - name: 聯結資料
       href: join-data.md
     - name: 將資料標準化
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: 文字分析
   items:
+    - name: 將 Word 轉換為向量
+      href: convert-word-to-vector.md
     - name: 從文字擷取 N-Gram 特徵
       href: extract-n-gram-features-from-text.md
     - name: 特性雜湊
