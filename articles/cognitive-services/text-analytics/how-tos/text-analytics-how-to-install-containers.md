@@ -26,12 +26,12 @@ ms.locfileid: "83702143"
 
 容器可讓您在自己的環境中執行文字分析 Api，而且非常適合您的特定安全性和資料控管需求。 文字分析容器提供原始文字的先進自然語言處理，並包含三個主要功能：情感分析、關鍵字組解壓縮和語言偵測。 
 
-如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT]
 > 免費帳戶限制為每月5000筆交易，只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求率的詳細資訊，請參閱[資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行任何文字分析的容器，您必須擁有主機電腦和容器環境。
 
@@ -153,7 +153,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本文中，您已了解下載、安裝及執行文字分析容器的概念和工作流程。 摘要說明：
 

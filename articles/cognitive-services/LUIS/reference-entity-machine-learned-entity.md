@@ -17,7 +17,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83684570"
 ---
-# <a name="machine-learning-entity"></a>機器學習服務實體
+# <a name="machine-learning-entity"></a>機器學習實體
 
 機器學習實體是用來建立 LUIS 應用程式的慣用實體。
 

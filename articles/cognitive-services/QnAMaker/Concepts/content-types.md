@@ -4,12 +4,12 @@ description: 內容類型包含許多標準結構化檔，例如 PDF、DOC 和 T
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2569832f7f87ed7b8fccbc44e431fa45495ba67
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77650192"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996103"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>可新增至知識庫的檔內容類型
 內容類型包含許多標準結構化檔，例如 PDF、DOC 和 TXT。
@@ -49,4 +49,4 @@ ms.locfileid: "77650192"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解哪些資訊儲存在[問答集（QnA）](question-answer-set.md)中。
+瞭解哪些資訊是以「[問答」（QnA）配對](question-answer-set.md)來儲存。

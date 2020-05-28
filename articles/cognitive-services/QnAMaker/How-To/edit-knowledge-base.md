@@ -3,12 +3,12 @@ title: 編輯知識庫 - QnA Maker
 description: QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的內容。
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650854"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993570"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>在您的知識庫中編輯 QnA 配對
 
@@ -85,7 +85,7 @@ QnA 組會從資料來源（例如檔案或 URL）新增，或加入做為編輯
 
 ## <a name="delete-a-qna-pair"></a>刪除 QnA 組
 
-若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除]**** 圖示。 這是永久性的作業。 該作業無法復原。 刪除集合之前，請考慮從 [**發行**] 頁面匯出您的知識庫。
+若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除]**** 圖示。 這是永久性的作業。 該作業無法復原。 請考慮先從 [發佈]**** 頁面匯出知識庫，再刪除 QnA 組。
 
 ![刪除 QnA 組](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ QnA 組會從資料來源（例如檔案或 URL）新增，或加入做為編輯
 
 ## <a name="add-metadata"></a>新增中繼資料
 
-藉由先選取 [**視圖選項**]，然後選取 [**顯示中繼資料**] 來新增元資料集。 這會顯示 [中繼資料] 資料行。 接下來，選取 [ **+** 符號] 來新增元資料集。 這個集合是由一個索引鍵和一個值所組成。
+藉由先選取 [**視圖選項**]，然後選取 [**顯示中繼資料**] 來新增中繼資料組。 這會顯示 [中繼資料] 資料行。 接下來，選取 **+** 正負號來新增中繼資料組。 此配對包含一個索引鍵和一個值。
 
 ## <a name="save-changes-to-the-qna-pairs"></a>儲存 QnA 配對的變更
 
