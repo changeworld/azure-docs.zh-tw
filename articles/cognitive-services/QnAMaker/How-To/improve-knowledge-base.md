@@ -131,8 +131,8 @@ Content-Type: application/json
 |--|--|--|--|
 |URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
 |自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host` 。|
-|頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
-|頁首|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|Header|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
+|Header|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |張貼本文|JSON 物件|JSON|訓練意見反應|
 
 JSON 主體有數個設定：

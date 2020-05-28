@@ -18,7 +18,7 @@ ms.locfileid: "80876972"
 ---
 #### <a name="docker-pull-for-the-language-detection-container"></a>語言偵測容器的 Docker pull
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令從 Microsoft container Registry 下載容器映射。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令從 Microsoft Container Registry 下載容器映射。
 
 如需文字分析容器可用標記的完整描述，請參閱 Docker Hub 上的[語言偵測](https://go.microsoft.com/fwlink/?linkid=2018759)容器。
 

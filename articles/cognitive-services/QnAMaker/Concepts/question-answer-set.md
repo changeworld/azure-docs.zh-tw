@@ -1,29 +1,29 @@
 ---
 title: 設計知識庫-QnA Maker
-description: QnA Maker 知識庫是由一組問答集（QnA）集以及與每個 QnA 配對相關聯的選用中繼資料所組成。
+description: QnA Maker 知識庫是由一組問題和答案（QnA）配對以及與每個 QnA 配對相關聯的選用中繼資料所組成。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756795"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992992"
 ---
-# <a name="question-and-answer-set-concepts"></a>問題與解答集概念
+# <a name="question-and-answer-pair-concepts"></a>問與答配對概念
 
-知識庫是由問題和答案（QnA）集所組成。  每個集合都有一個答案，而一組包含與該_答案_相關聯的所有資訊。 答案可能會與資料庫資料列或資料結構實例鬆散類似。
+知識庫是由「問答」（QnA）配對所組成。  每個配對都有一個答案，而一組包含與該_答案_相關聯的所有資訊。 答案可能會與資料庫資料列或資料結構實例鬆散類似。
 
-## <a name="question-and-answer-sets"></a>問答集
+## <a name="question-and-answer-pairs"></a>問與答配對
 
-問題與答案（QnA）集中的**必要**設定包括：
+問答（QnA）配對中的**必要**設定包括：
 
 * 使用者查詢的**問題**文字，用來 QnA Maker 的機器學習服務，以不同的用語和相同的答案，與使用者的問題文字配合
-* **答案**-集合的答案是當使用者查詢符合相關聯的問題時，所傳回的回應。
+* **答案**-配對的答案是當使用者查詢符合相關聯的問題時，所傳回的回應。
 
-每個集合都是以**識別碼**表示。
+每個配對都會以**識別碼**表示。
 
-集合的**選擇性**設定包括：
+配對的**選擇性**設定包括：
 
 * **問題的替代形式**-這有助於 QnA Maker 傳回更多片語問題的正確答案。
 * **中繼資料**：中繼資料是與 QnA 組相關聯的標記，並以索引鍵/值組表示。 中繼資料標記用來篩選 QnA 配對，並限制執行查詢比對的集合。

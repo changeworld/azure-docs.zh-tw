@@ -34,7 +34,7 @@
   items:
     - name: 資訊安全中心
       href: 'https://azure.microsoft.com/services/security-center/'
-    - name: SQL DB Advisor
+    - name: SQL Database 建議程式
       href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
     - name: App Service 方案
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
@@ -58,7 +58,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=advisor'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=advisor'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?service=advisor'

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595586"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994237"
 ---
 # <a name="view-document-details"></a>檢視文件詳細資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "68595586"
 
 按一下個別文件，可檢視文件的詳細資料頁面。 文件的詳細資料頁面會顯示從文件中擷取的句子清單。
 
-- 依預設會在下拉式欄位中選取「來源」語言，但您可以切換以檢視目標語言的句子。
+- 根據預設，下拉式欄位中會選取「來源」語言，但是您可以切換成以目的語言來查看句子。
 - 根據預設，每頁會顯示 20 個句子。 您可以使用分頁控制項在頁面之間瀏覽。
 
 ![文件詳細資料](media/how-to/how-to-view-document-details.png)

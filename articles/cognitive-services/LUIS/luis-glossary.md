@@ -67,7 +67,7 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 
 在批次測試中，資料點代表您的應用程式不正確預測了存在目標意圖/實體的語句。
 
-### <a name="precision"></a>Precision
+### <a name="precision"></a>準確率
 在批次測試中，精確度 (也稱為陽性預測值) 是相關語句在所擷取語句之間的比例。
 
 動物批次測試的範例是預測的為伍數目除以動物總數（為伍和非為伍）。
@@ -160,7 +160,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 請參閱預建[實體](#prebuilt-entity)的預建模型專案
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 在機器學習中，功能是可協助模型辨識特定概念的特性。 這是 LUIS 可以使用但不是硬規則的提示。
 
@@ -192,7 +192,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 請參閱[應用程式的定義（app）](#application-app)。
 
-## <a name="model"></a>模型
+## <a name="model"></a>型號
 
 （機器學習）模型是對輸入資料進行預測的函數。 在 LUIS 中，我們會將意圖分類器和實體擷取器視為「模型」，而我們會將一組定型、發佈及查詢的模型當做「應用程式」來參考。
 
@@ -283,9 +283,9 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 |Nomalized 值| 同義字|
 |--|--|
-|小| 一小部分，8盎司|
+|小型| 一小部分，8盎司|
 |中| 標準，12盎司|
-|大| 大、16盎司|
+|大型| 大、16盎司|
 |Xtra 大型| 最大的一個，24盎司|
 
 當輸入中出現任何同義字時，此模型會傳回實體的正規化值。
@@ -300,7 +300,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 請參閱[變更預先建置 datetimeV2 實體的時區](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-## <a name="token"></a>權杖
+## <a name="token"></a>Token
 [Token](luis-language-support.md#tokenization)是 LUIS 可以辨識之文字的最小單位。 這在不同的語言之間有些微。
 
 若為**英文**，則 token 為字母和數位的連續範圍（不含空格或標點符號）。 空格不是 token。

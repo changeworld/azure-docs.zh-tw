@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: seodec18
-ms.openlocfilehash: 1a26b00a95b1b71993385e816d06d6686f89a5a1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599601"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995746"
 ---
 # <a name="how-to-sign-up-for-translator"></a>如何註冊 Translator
 
@@ -54,7 +53,7 @@ Microsoft 翻譯工具通常會在驗證訂用帳戶狀態之前讓您最初的�
 
 ## <a name="pricing-options"></a>定價選項
 
-- [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [翻譯工具](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
 ## <a name="customization"></a>自訂
 

@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: 與協調者的關聯
       href: container-instances-orchestrator-relationship.md
-    - name: 安全性考量
-      href: container-instances-image-security.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
+        - name: 安全性考量
+          href: container-instances-image-security.md
     - name: 虛擬網路
       href: container-instances-virtual-network-concepts.md
 - name: 操作指南

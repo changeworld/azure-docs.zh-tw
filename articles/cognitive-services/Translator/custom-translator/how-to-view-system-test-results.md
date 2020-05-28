@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: eee2271b6d1fb51ff4b27c0d612306b1f7f8747a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584717"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994254"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
 
@@ -68,7 +68,7 @@ ms.locfileid: "83584717"
 
 1.  選取專案，移至 [模型] 索引標籤。
 
-2. 針對成功定型的模型會顯示 [部署] 按鈕 (若尚未部署)。
+2. 若為成功定型的模型，則會顯示 [部署] 按鈕（如果未部署）。
 
     ![部署模型](media/how-to/how-to-deploy-model.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "83584717"
 
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
-5.  您可以在 [狀態] 資料行中檢視模型的狀態。
+5.  您可以在 [狀態] 資料行中，查看模型的狀態。
 
 >[!Note]
 >自訂翻譯在任何時間點都支援工作區中10個已部署的模型。
@@ -92,7 +92,7 @@ ms.locfileid: "83584717"
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  選取 [更新]  。
+3.  選取 [更新]。
 4.  對您想要部署或解除部署模型的區域選取 [已部署]**** 或 [已解除部署]****，然後按一下 [儲存]****。
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)

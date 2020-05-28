@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595558"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994184"
 ---
 # <a name="view-model-details"></a>檢視模型詳細資料
 
@@ -58,7 +58,7 @@ ms.locfileid: "68595558"
 
 8.  Mono 句子計數：顯示用來作為 Mono 集的句子總數。
 
-9.  部署動作按鈕：針對成功定型的模型會顯示 [部署] 按鈕 (若尚未部署)。 如果模型已部署，則會顯示 [解除部署] 按鈕。
+9.  部署動作按鈕：針對成功定型的模型，如果未部署，則會顯示 [部署] 按鈕。 如果已部署模型，則會顯示 [解除部署] 按鈕。
 
 10. 刪除：如果您想要刪除模型，可以使用此按鈕。 刪除模型不會刪除用來建立該模型的任何文件。
 

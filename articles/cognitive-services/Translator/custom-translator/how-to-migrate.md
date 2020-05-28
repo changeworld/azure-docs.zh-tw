@@ -6,25 +6,25 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586977"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992890"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
 您可以輕鬆地將 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 工作區和專案移轉至自訂翻譯工具。 若要從 Microsoft Hub 起始移轉，只要選取工作區或專案，然後選取自訂翻譯工具中的工作區，再選取您要移轉的訓練即可。 移轉開始後，選取的訓練設定將會連同所有相關的文件一起移轉。 已部署的模型已定型，並且可在完成後自動部署。
 
 在移轉期間會執行下列動作：
-* 所有文件和專案定義的名稱都會在前面加上 "hub_" 再進行移轉。 自動產生的測試和調整資料將會命名為 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
+* 所有檔和專案定義都會以名稱前面加上 "hub_" 的方式傳送其名稱。 自動產生的測試和調整資料將會命名為 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
 * 任何在移轉執行時處於已部署狀態的訓練，都將使用 Hub 訓練的文件自動定型。 此訓練不會對您的訂用帳戶產生費用。 如果在移轉時選取了自動部署，已定型的模型就會在完成後隨即部署。 這適用一般裝載費用。
 * 任何已移轉、但未處於已部署狀態的訓練，都會進入已移轉的草稿狀態中。 在此狀態下，您可以選擇使用已移轉的定義為模型定型，但需支付一般訓練費用。
-* 您隨時都可在模型的 TrainingDetails 頁面中找到從 Hub 訓練移轉的 BLEU 分數，其標題為「MT Hub 中的 Bleu 分數」。
+* 在任何時間點，從中樞訓練遷移的 BLEU 分數，都可以在模型的 [TrainingDetails] 頁面中找到，其位於 [MT 中樞的 Bleu 分數] 標題中。
 
 > [!Note] 
 > 若要成功定型，自訂翻譯需要至少10000個唯一的解壓縮句子。 自訂翻譯無法以少於[建議的最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)來進行定型。
@@ -92,7 +92,7 @@ ms.locfileid: "83586977"
 
 ## <a name="migration-history"></a>移轉歷程記錄
 
-如果您要求從中樞進行工作區/專案移轉，您將可在自訂翻譯工具的 [設定] 頁面中找到移轉歷程記錄。
+當您從中樞要求工作區/專案遷移時，您會在自訂翻譯設定] 頁面中找到您的遷移歷程記錄。
 
 若要檢視移轉歷程記錄，請遵循下列步驟：
 
@@ -132,11 +132,11 @@ ms.locfileid: "83586977"
 
 |   | 中樞 | 自訂翻譯工具 |
 |:-----|:----:|:----:|
-|自訂功能狀態   | 正式運作  | 正式運作 |
-| 文字 API 版本  | V2    | V3  |
-| SMT 自訂 | 是   | 否 |
-| NMT 自訂 | 否    | 是 |
-| 新的統一語音服務自訂 | 否    | 是 |
+|自訂功能狀態    | 正式運作    | 正式運作 |
+| 文字 API 版本    | V2     | V3  |
+| SMT 自訂    | 是    | 否 |
+| NMT 自訂    | 否    | 是 |
+| 新的統一語音服務自訂    | 否    | 是 |
 | 不追蹤 | 是 | 是 |
 
 ## <a name="new-languages"></a>新語言

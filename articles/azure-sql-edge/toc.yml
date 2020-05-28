@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: 如何
   items:
-    - name: DAC 套件和串流分析作業
+    - name: 部署串流分析作業
       href: stream-analytics.md
     - name: 設定複寫
       href: configure-replication.md
