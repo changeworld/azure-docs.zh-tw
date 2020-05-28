@@ -1,7 +1,7 @@
 ---
 title: 中繼資料與 GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 可讓您將索引鍵/值組形式的中繼資料新增至問答集。 您可以將結果篩選為使用者查詢，並儲存可在後續交談中使用的其他資訊。
+description: QnA Maker 可讓您將中繼資料（以索引鍵/值組的形式）新增至您的問題/答案配對。 您可以將結果篩選為使用者查詢，並儲存可在後續交談中使用的其他資訊。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993502"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>取得 GenerateAnswer API 和中繼資料的解答
 
 若要取得使用者問題的預測答案，請使用 GenerateAnswer API。 當您發佈知識庫時，您可以在 [**發行**] 頁面上看到如何使用此 API 的相關資訊。 您也可以設定 API，根據元資料標記篩選答案，並使用測試查詢字串參數從端點測試知識庫。
 
-QnA Maker 可讓您以索引鍵和值組的形式，將中繼資料新增至您的問題和答案集合。 接著，您可以使用這項資訊來篩選使用者查詢的結果，以及儲存可在後續交談中使用的其他資訊。 如需詳細資訊，請參閱[知識庫](../Concepts/knowledge-base.md)。
+QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至您的問題和答案配對。 接著，您可以使用這項資訊來篩選使用者查詢的結果，以及儲存可在後續交談中使用的其他資訊。 如需詳細資訊，請參閱[知識庫](../Concepts/knowledge-base.md)。
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ QnA Maker 可讓您以索引鍵和值組的形式，將中繼資料新增至您�
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>使用 GenerateAnswer API 取得答案預測
 
-您可以在 bot 或應用程式中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ，以使用者問題查詢您的知識庫，以取得最符合的問題與解答集。
+您可以在 bot 或應用程式中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ，以使用者問題查詢您的知識庫，以取得最符合的問題和答案配對。
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用問題和答案結果來保持交談內容
 
-GenerateAnswer 的回應包含相符的問題和答案集合的對應中繼資料資訊。 您可以在用戶端應用程式中使用這項資訊來儲存上一個交談的內容，以便在稍後的交談中使用。
+GenerateAnswer 的回應包含相符的問題和答案配對的對應中繼資料資訊。 您可以在用戶端應用程式中使用這項資訊來儲存上一個交談的內容，以便在稍後的交談中使用。
 
 ```json
 {
@@ -243,7 +243,7 @@ GenerateAnswer 的回應包含相符的問題和答案集合的對應中繼資�
 
 |程式碼|說明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
 |400|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|
 |401|金鑰無效|

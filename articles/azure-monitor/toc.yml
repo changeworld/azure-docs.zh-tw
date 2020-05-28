@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: 健康情況監視組態
           href: insights/container-insights-health-monitors-config.md
+        - name: 管理成本和使用量
+          href: insights/container-insights-cost.md
         - name: 停用監視
           items:
             - name: 停用監視 AKS
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: 網路
           href: insights/network-insights-overview.md
         - name: 儲存體
