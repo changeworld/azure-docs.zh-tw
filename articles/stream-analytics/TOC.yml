@@ -9,14 +9,18 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立作業 - Azure 入口網站
-      href: stream-analytics-quick-create-portal.md
-    - name: 建立作業 - PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: 建立作業 - Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: 建立作業 - Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: 建立作業
+      items:
+        - name: Azure 入口網站
+          href: stream-analytics-quick-create-portal.md
+        - name: ARM 範本
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: 教學課程
   items:
     - name: 1 - 建立/管理作業

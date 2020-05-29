@@ -236,8 +236,8 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
-        - name: Azure SQL Database 受控執行個體
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Azure SQL 受控執行個體
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure 表格儲存體
@@ -697,7 +697,7 @@
       items:
         - name: SSIS 移轉概觀
           href: scenario-ssis-migration-overview.md
-        - name: 將 SSISDB 移轉至 Azure SQL Database 受控執行個體
+        - name: 將 SSISDB 移轉至 Azure SQL 受控執行個體
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: 參考
   items:

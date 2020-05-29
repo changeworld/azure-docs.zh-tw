@@ -42,6 +42,8 @@
   items:
     - name: 使用表單辨識器搭配 Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: 使用表單辨識器搭配認知搜尋
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: 操作指南
   items:
     - name: 建置訓練資料集
