@@ -2,13 +2,13 @@
 title: 設定 QnA Maker 服務-QnA Maker
 description: 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402993"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171169"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -58,6 +58,7 @@ ms.locfileid: "81402993"
    ![建立新 QnA Maker 服務的資源](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     具有_認知服務_類型的資源具有您的_訂_用帳戶金鑰。
+
 
 ## <a name="find-subscription-keys-in-the-azure-portal"></a>尋找 Azure 入口網站中的訂用帳戶金鑰
 
@@ -117,7 +118,7 @@ ms.locfileid: "81402993"
 
 如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要執行此動作，請依照下列步驟執行：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
@@ -145,7 +146,7 @@ ms.locfileid: "81402993"
 
 QnAMaker 執行時間是您在 Azure 入口網站中[建立 QnAMaker 服務](./set-up-qnamaker-service-azure.md)時所部署 Azure App Service 實例的一部分。 執行階段會定期進行更新。 2019年4月網站延伸模組版本（第5版 +）之後，QnA Maker App Service 實例處於自動更新模式。 此更新的設計目的是要在升級期間處理零停機時間。
 
-您可以在上https://www.qnamaker.ai/UserSettings檢查目前的版本。 如果您的版本早于版本5.x，則必須重新開機 App Service，才能套用最新的更新：
+您可以在上檢查目前的版本 https://www.qnamaker.ai/UserSettings 。 如果您的版本早于版本5.x，則必須重新開機 App Service，才能套用最新的更新：
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 QnAMaker 服務（資源群組）。
 
@@ -210,6 +211,29 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
 
 深入瞭解如何設定 App Service[一般設定](../../../app-service/configure-common.md#configure-general-settings)。
 
+## <a name="business-continuity-with-traffic-manager"></a>流量管理員的業務持續性
+
+商務持續性方案的主要目標是建立彈性的知識庫端點，藉以確保聊天機器人或應用程式使用知識庫時不會停機。
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker bcp 方案](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+以上呈現的高階構想如下所示：
+
+1. 在 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中設定兩個平行的 [QnA Maker 服務](set-up-qnamaker-service-azure.md)。
+
+1. [備份](../../../app-service/manage-backup.md)您的主要 QnA Maker App service，並在次要設定中將它[還原](../../../app-service/web-sites-restore.md)。 這可確保這兩個程式都使用相同的主機名稱和金鑰。
+
+1. 保持主要和次要 Azure 搜尋索引的同步。使用[這裡](https://github.com/pchoudhari/QnAMakerBackupRestore)的 GitHub 範例來瞭解如何備份-還原 Azure 索引。
+
+1. 使用[連續匯出](../../../application-insights/app-insights-export-telemetry.md)備份 Application Insights。
+
+1. 設定主要和次要堆疊後，使用[流量管理員](../../../traffic-manager/traffic-manager-overview.md)設定兩個端點，並設定路由方法。
+
+1. 您必須為您的流量管理員端點建立傳輸層安全性（TLS），先前稱為安全通訊端層（SSL）憑證。 系結應用程式服務中[的 TLS/SSL 憑證](../../../app-service/configure-ssl-bindings.md)。
+
+1. 最後，在聊天機器人或應用程式中使用流量管理員端點。
+
 ## <a name="delete-azure-resources"></a>刪除 Azure 資源
 
 如果您刪除任何用於 QnA Maker 知識庫的 Azure 資源，知識庫將無法再運作。 在刪除任何資源之前，請務必先從 [設定]**** 頁面匯出知識庫。
@@ -219,4 +243,4 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
 深入瞭解[App service](../../../app-service/index.yml)和[Search 服務](../../../search/index.yml)。
 
 > [!div class="nextstepaction"]
-> [建立和發佈知識庫](../Quickstarts/create-publish-knowledge-base.md)
+> [瞭解如何與其他人一起撰寫](../how-to/collaborate-knowledge-base.md)
