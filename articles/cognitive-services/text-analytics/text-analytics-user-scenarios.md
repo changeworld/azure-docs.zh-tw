@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221193"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141803"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API 的範例使用者案例
 
@@ -41,7 +41,7 @@ Text Analytics API 是雲端式服務，可對文字提供進階自然語言處�
 
 ## <a name="monitor-your-products-social-media-feeds"></a>監視產品的社交媒體摘要
 
-監視產品 Twitter 或 Facebook 頁面上的使用者產品意見反應。 使用這些資料分析客戶對新產品推出的情緒、擷取關於功能和功能要求的關鍵片語，或在發生客戶抱怨時解決它們。 請參閱範例 [Microsoft Flow 範本](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)。
+在您產品的 twitter 或 Facebook 頁面上監視使用者產品意見反應。 使用這些資料分析客戶對新產品推出的情緒、擷取關於功能和功能要求的關鍵片語，或在發生客戶抱怨時解決它們。 請參閱範例 [Microsoft Flow 範本](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)。
 
 ![說明如何使用關鍵片語擷取監視您的產品及公司對社交社交媒體的意見反應的影像](media/use-cases/social-feed.svg)
 
@@ -50,6 +50,13 @@ Text Analytics API 是雲端式服務，可對文字提供進階自然語言處�
 使用命名實體辨識來識別檔中的個人和敏感性資訊。 使用資料對檔進行分類或修訂，讓它們可以安全地共用。
 
 ![說明如何使用 NER 來偵測個人資訊及分類和修訂檔的影像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>執行意見挖掘
+
+在問卷中與產品或服務的特定層面相關的意見、客戶意見反應，或文字持有某方面的意見。 使用它來協助引導產品上市和改進、行銷工作，或反白顯示您的產品或服務的執行方式。 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="飯店的範例意見。":::
 
 ## <a name="next-steps"></a>後續步驟
 

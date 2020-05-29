@@ -7,12 +7,15 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 Databricks 工作區 - 入口網站
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: 建立 Databricks 工作區 - Resource Manager 範本
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: 建立 Databricks 工作區 - 虛擬網路
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: 建立工作區
+      items:
+        - name: 入口網站
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: 虛擬網路
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: 教學課程
   items:
     - name: 在 Docker 容器中執行的查詢 SQL Server
