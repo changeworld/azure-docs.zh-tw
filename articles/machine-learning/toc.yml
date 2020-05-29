@@ -452,8 +452,6 @@
     - name: 設計工具模組參考
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: 大規模 ML
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: 監視資料參考
       href: monitor-resource-reference.md
     - name: 學習管線 YAML 參考
