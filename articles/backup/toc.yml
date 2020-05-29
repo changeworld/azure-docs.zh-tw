@@ -355,6 +355,8 @@
               href: soft-delete-virtual-machines.md
             - name: 對於 Azure VM 中的 SQL Server 和 SAP Hana
               href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: 刪除 Azure 檔案共用的保護
+          href: soft-delete-azure-file-share.md
         - name: 混合式備份的安全性
           href: backup-azure-security-feature.md
         - name: 私人端點

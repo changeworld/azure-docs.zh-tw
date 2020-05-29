@@ -30,7 +30,7 @@
           href: ../../cost-management-billing/costs/quick-create-budget-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 適用於 MySQL 的資料庫
           href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Event Grid
+        - name: 事件方格
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 事件中樞
           href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -58,6 +58,8 @@
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 受控應用程式
           href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 通知中樞
+          href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 原則
           href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Resource Graph
@@ -156,6 +158,8 @@
       href: templates-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
+    - name: 部署歷程記錄刪除
+      href: deployment-history-deletions.md
     - name: 完整模式刪除
       href: complete-mode-deletion.md
     - name: 部署管理員

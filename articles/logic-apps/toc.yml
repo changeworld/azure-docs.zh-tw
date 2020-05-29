@@ -82,6 +82,8 @@
           href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: 批次程序訊息
           href: logic-apps-batch-process-send-receive-messages.md
+        - name: 依順序傳送訊息 - 循序群組
+          href: send-related-messages-sequential-convoy.md
         - name: 製作 JSON 定義
           href: logic-apps-author-definitions.md
         - name: 處理內容類型

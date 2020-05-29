@@ -54,6 +54,8 @@
       href: concepts/text-offsets.md
     - name: 資料限制
       href: concepts/data-limits.md
+    - name: 模型版本設定
+      href: concepts/model-versioning.md
 - name: 操作指南
   items:
     - name: 呼叫文字分析 API
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes 服務 (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: 遷移至 API 第 3 版
+      href: migration-guide.md
 - name: 參考
   items:
     - name: CLI 參考
@@ -118,7 +122,7 @@
       href: text-analytics-resource-external-community.md
     - name: 常見問題集
       href: text-analytics-resource-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

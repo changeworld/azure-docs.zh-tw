@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具進行疑難排解
           href: troubleshoot-conditional-access-what-if.md
+        - name: 常見問題集
+          href: faqs.md
 - name: 資源
   items:
     - name: Azure 意見反應論壇
