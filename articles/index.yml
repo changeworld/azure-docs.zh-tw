@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 8dd70bbe8b3e495473523a662e0501613703354f
-  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.openlocfilehash: 3bae82ca96497d91dab9d158fe26bed9cd8d0467
+  ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84021767"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84171186"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -636,6 +636,12 @@ productDirectory:
     azureCategories:
     - developer-tools
     url: azure-app-configuration/index.yml
+  - title: Azure Data Studio
+    summary: 一種可執行隨選 SQL 查詢、檢視結果並將其儲存為文字、JSON 或 Excel 的輕量編輯器。
+    imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
+    azureCategories:
+    - developer-tools
+    url: https://docs.microsoft.com/sql/azure-data-studio/
   - title: Azure DevOps
     summary: 供團隊分享程式碼、追蹤工作及送出軟體的服務
     imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
@@ -797,7 +803,7 @@ productDirectory:
     - mobile
     - web
     url: api-management/index.yml
-  - title: Event Grid
+  - title: 事件方格
     summary: 取得可靠的大規模事件傳遞
     imageSrc: https://static.docs.com/ui/media/product/azure/event-grid-domains.svg
     azureCategories:

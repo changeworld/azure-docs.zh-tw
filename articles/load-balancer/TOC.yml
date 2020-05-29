@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 內部負載平衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 疑難排解
-      items:
-        - name: 針對 Azure Load Balancer 進行疑難排解
-          href: load-balancer-troubleshoot.md
-        - name: 針對一般部署錯誤進行疑難排解
-          href: load-balancer-common-deployment-errors.md
+- name: 疑難排解
+  items:
+    - name: 針對 Azure Load Balancer 進行疑難排解
+      href: load-balancer-troubleshoot.md
+    - name: 針對一般部署錯誤進行疑難排解
+      href: load-balancer-common-deployment-errors.md
+    - name: 解決常見的輸出連線問題
+      href: troubleshoot-outbound-connection.md
 - name: 參考
   items:
     - name: 程式碼範例

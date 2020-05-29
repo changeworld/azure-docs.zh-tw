@@ -7,7 +7,7 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 安全虛擬中樞
+    - name: 安全虛擬中樞 - ARM 範本
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
 - name: 教學課程

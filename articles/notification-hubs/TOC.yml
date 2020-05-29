@@ -14,6 +14,7 @@
     - name: 建立通知中樞 - Azure CLI
       href: create-notification-hub-azure-cli.md
     - name: 建立通知中樞 - ARM 範本
+      displayName: Resource Manager
       href: create-notification-hub-template.md
     - name: 設定通知中樞
       href: configure-notification-hub-portal-pns-settings.md
@@ -23,7 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: 將推播通知傳送到所有註冊
+            - name: 將推播通知傳送至所有註冊 (SDK 1.0.0 版-preview1)
+              href: android-sdk.md
+            - name: 將推播通知傳送至所有註冊 (SDK 0.6 版)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: 將推播通知傳送至特定裝置
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -33,7 +36,7 @@
               href: xamarin-notification-hubs-push-notifications-android-gcm.md
         - name: Google 雲端通訊 (已淘汰)
           items:
-            - name: 將推播通知傳送到所有註冊
+            - name: 將推播通知傳送至所有註冊
               href: notification-hubs-android-push-notification-google-gcm-get-started.md
             - name: 將推播通知傳送至特定裝置
               href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
@@ -139,7 +142,7 @@
     - name: 向應用程式後端註冊
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: 搭配 Apple 裝置使用以權杖為基礎的驗證
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: 針對已捨棄通知進行疑難排解
       href: notification-hubs-push-notification-fixer.md
     - name: 使用百度雲推送傳送推播通知

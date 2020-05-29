@@ -73,6 +73,8 @@
       href: spring-cloud-howto-persistent-storage.md
     - name: 整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
       href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: 針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
 - name: 對 Azure Spring Cloud 進行 DevOps 部署
   items:
     - name: 使用 Azure DevOps 的 CI/CD

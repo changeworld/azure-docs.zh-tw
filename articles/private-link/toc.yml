@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: 建立私人端點 - Azure CLI
       href: create-private-endpoint-cli.md
+    - name: 建立私人端點 - ARM 範本
+      href: create-private-endpoint-template.md
     - name: 建立私人連結服務 - 入口網站
       href: create-private-link-service-portal.md
     - name: 建立私人連結服務 - PowerShell
