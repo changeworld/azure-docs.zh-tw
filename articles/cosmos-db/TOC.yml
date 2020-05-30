@@ -139,7 +139,7 @@
           href: how-to-choose-offer.md
         - name: 自動調整常見問題集
           href: autoscale-faq.md
-    - name: SQL 查詢 (SQL query)
+    - name: SQL 查詢
       items:
         - name: 開始使用
           displayName: 'sql query, query basics'
@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: 合作夥伴
       href: partners-migration-cosmosdb.md
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure 藍圖

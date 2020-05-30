@@ -1,6 +1,7 @@
 - name: 一般
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 關於 Azure Key Vault
       href: overview.md

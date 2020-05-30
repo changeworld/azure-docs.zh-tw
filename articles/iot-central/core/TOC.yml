@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: 設定規則
           href: howto-configure-rules.md
-        - name: 使用工作流程與其他服務整合
-          href: howto-configure-rules-advanced.md
         - name: 分析您的裝置資料
           href: howto-create-analytics.md
         - name: 將圖格新增至您的儀表板
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: 建立規則的 Webhook
           href: howto-create-webhooks.md
+        - name: 使用工作流程與其他服務整合
+          href: howto-configure-rules-advanced.md
         - name: 連接規則的 Azure 監視器動作群組
           href: howto-use-action-groups.md
         - name: 建立自訂規則
