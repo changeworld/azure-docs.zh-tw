@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589273"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835830"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -26,11 +26,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 
 ## <a name="supported-storage-authorization-types"></a>支援的儲存體授權類型
 
-已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 支援三種授權類型：
-
-- [共用存取簽章](?tabs=shared-access-signature)
-- [使用者身分識別](?tabs=user-identity)
-- [受控身分識別](?tabs=managed-identity)
+已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 您可以使用三種授權類型來存取非公用儲存體：[使用者身分識別](?tabs=user-identity)、[共用存取簽章](?tabs=shared-access-signature)以及[受控識別](?tabs=managed-identity)。
 
 > [!NOTE]
 > 當您建立工作區時，[Azure AD 傳遞](#force-azure-ad-pass-through)是預設的行為。 如果您使用此行為，則不需要為使用 Azure AD 登入來存取的每個儲存體帳戶建立認證。 您可以[停用此行為](#disable-forcing-azure-ad-pass-through)。
@@ -99,7 +95,7 @@ DROP CREDENTIAL [UserIdentity];
 
 ### <a name="anonymous-access"></a>[匿名存取](#tab/public-access)
 
-您可以存取放在 Azure 儲存體帳戶上的公用檔案，而且這些檔案[允許匿名存取](/azure/storage/blobs/storage-manage-access-to-resources.md)。
+您可以存取放在 Azure 儲存體帳戶上的公用檔案，而且這些檔案[允許匿名存取](/azure/storage/blobs/storage-manage-access-to-resources)。
 
 ---
 
@@ -110,7 +106,7 @@ DROP CREDENTIAL [UserIdentity];
 | 授權類型                    | SQL 使用者    | Azure AD 使用者     |
 | ------------------------------------- | ------------- | -----------    |
 | [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)       | 不支援 | 支援      |
-| SAS[](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支援     | 支援      |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支援     | 支援      |
 | [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 不支援 | 支援      |
 
 ### <a name="supported-storages-and-authorization-types"></a>支援的儲存體和授權類型
