@@ -3,12 +3,12 @@ title: Azure 資源-QnA Maker
 description: QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使用它們的方式，可讓您規劃並選取正確的定價層，或知道何時要變更定價層。 瞭解它們的組合使用方式，可讓您在發生問題時找出並加以修正。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80873900"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236078"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -72,7 +72,7 @@ QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使�
 
 ## <a name="resource-naming-considerations"></a>資源命名考慮
 
-QnA Maker 資源的資源名稱（例如`qna-westus-f0-b`）也會用來命名其他資源。
+QnA Maker 資源的資源名稱（例如 `qna-westus-f0-b` ）也會用來命名其他資源。
 
 [Azure 入口網站建立] 視窗可讓您建立 QnA Maker 資源，並選取其他資源的定價層。
 
@@ -144,13 +144,13 @@ QnA Maker 資源可讓您在執行時間存取撰寫和發佈 Api，以及 QnA �
 
 QnA Maker 會建立數個 Azure 資源。 若要減少管理和受益于成本共用，請使用下表來瞭解您可以和無法共用的內容：
 
-|Service|共用|原因|
+|服務|共用|原因|
 |--|--|--|
 |認知服務|X|設計不可行|
 |App Service 方案|✔|已修正配置給 App Service 方案的磁碟空間。 如果其他共用相同 App Service 方案的應用程式使用大量磁碟空間，QnAMaker App Service 實例就會發生問題。|
 |App Service|X|設計不可行|
 |Application Insights|✔|可以共用|
-|搜尋服務|✔|1. `testkb`是 QnAMaker 服務的保留名稱;不能供其他人使用。<br>2. 為 QnAMaker 服務保留名稱`synonym-map`為的同義字對應。<br>3. 已發佈的知識庫數目會受到搜尋服務層級的限制。 如果有可用的索引，其他服務就可以使用它們。|
+|搜尋服務|✔|1. `testkb` 是 QnAMaker 服務的保留名稱，不能供其他人使用。<br>2. 為 QnAMaker 服務保留名稱為的同義字對應 `synonym-map` 。<br>3. 已發佈的知識庫數目會受到搜尋服務層級的限制。 如果有可用的索引，其他服務就可以使用它們。|
 
 ### <a name="using-a-single-cognitive-search-service"></a>使用單一認知搜尋服務
 
@@ -182,6 +182,14 @@ QnA Maker 的管理服務僅適用于 QnA Maker 入口網站，以及用於初�
 撰寫和查詢端點金鑰這兩者都是更正詞彙。 先前的詞彙是**訂**用帳戶金鑰。 如果您看到參考訂用帳戶金鑰的其他檔，這些就相當於撰寫和查詢端點金鑰（在執行時間中使用）。
 
 您必須知道金鑰的存取權、知識庫管理或知識庫查詢，以知道您需要尋找的索引鍵。
+
+## <a name="recommended-settings-for-network-isolation"></a>網路隔離的建議設定
+
+* 藉由設定[虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)，保護認知服務資源免于公用存取。
+* 從公用存取保護 App Service （QnA 執行時間）：
+    * 只允許來自認知服務 Ip 的流量。 這些已包含在服務標記 "CognitiveServicesManagement" 中。 這是撰寫 Api （建立/更新 KB）來叫用 app service 並據以更新 Azure 搜尋服務服務的必要條件。
+    * 請確定您也允許其他進入點，例如 Bot 服務、QnA Maker 入口網站（可能是您的公司網路）等，以進行預測 "GenerateAnswer" API 存取。
+    * 查看[服務標記的詳細資訊。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>後續步驟
 

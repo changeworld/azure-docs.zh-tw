@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: 輸出連線
       href: load-balancer-outbound-connections.md
-    - name: 輸出規則
-      href: load-balancer-outbound-rules-overview.md
     - name: 逾時時的 TCP 重設
       href: load-balancer-tcp-reset.md
     - name: 標準 Load Balancer 和可用性區域

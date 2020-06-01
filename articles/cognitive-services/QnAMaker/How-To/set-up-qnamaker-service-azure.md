@@ -3,12 +3,12 @@ title: 設定 QnA Maker 服務-QnA Maker
 description: 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171169"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235526"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -210,6 +210,11 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
 1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]  。
 
 深入瞭解如何設定 App Service[一般設定](../../../app-service/configure-common.md#configure-general-settings)。
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>設定 App Service 環境以裝載 Qna Maker App Service
+App Service 環境可以用來裝載 QnA Maker App Service。 如果 App Service 環境為內部，則您需要遵循下列步驟：
+1. 建立 app service 和 azure 搜尋服務。
+2. 在公用 DNS 上公開應用程式服務，並將 QnA Maker 服務標籤的白名單： CognitiveServicesManagement，或讓它保持網際網路面向。
+3. 使用 Azure Resource Manager 建立 QnA Maker 認知服務實例（CognitiveServices/帳戶），其中 QnA Maker 端點應設定為 App Service 環境。 
 
 ## <a name="business-continuity-with-traffic-manager"></a>流量管理員的業務持續性
 

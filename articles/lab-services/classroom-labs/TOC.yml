@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: 教室實驗室架構基本概念
       href: classroom-labs-fundamentals.md
+    - name: 容量限制
+      href: capacity-limits.md
     - name: 案例
       items:
         - name: 使用實驗室教授課程

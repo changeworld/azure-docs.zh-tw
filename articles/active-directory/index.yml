@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 05/19/2020
-  ms.openlocfilehash: 4e1b18e1037b37deba3e037f3e896bf1536f4fd7
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 05/29/2020
+  ms.openlocfilehash: e5567804ec64fd4c1399bc3c978287ddec9817ce
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83591908"
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84233938"
 highlightedContent:
   items:
   - title: 什麼是 Azure AD？
@@ -109,20 +109,6 @@ conceptualContent:
       text: 以位置為基礎的條件
     footerLink:
       url: ./conditional-access/index.yml
-      text: 查看更多
-  - title: 開發人員
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: 關於 Microsoft 身分識別平台
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: OAuth 2.0 程式碼流程授與
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: 使用 Microsoft 身分識別平台來註冊應用程式
-    footerLink:
-      url: ./develop/index.yml
       text: 查看更多
   - title: 裝置管理
     links:
@@ -235,6 +221,20 @@ conceptualContent:
       text: 支援受控識別的服務
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
+      text: 查看更多
+  - title: Microsoft 身分識別平台
+    links:
+    - url: ./develop/v2-overview.md
+      itemType: overview
+      text: 關於 Microsoft 身分識別平台
+    - url: ./develop/v2-oauth2-auth-code-flow.md
+      itemType: concept
+      text: OAuth 2.0 程式碼流程授與
+    - url: ./develop/quickstart-register-app.md
+      itemType: quickstart
+      text: 使用 Microsoft 身分識別平台來註冊應用程式
+    footerLink:
+      url: ./develop/index.yml
       text: 查看更多
   - title: Privileged Identity Management (PIM)
     links:
