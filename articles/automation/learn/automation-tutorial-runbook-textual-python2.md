@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 自動化中建立 Python Runbook
-description: 示範如何建立、測試及發佈簡單 Python Runbook 的教學課程。
+description: 本文說明如何建立、測試及發佈簡單的 Python Runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608689"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714469"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教學課程：建立 Python Runbook
 
@@ -36,19 +36,19 @@ ms.locfileid: "82608689"
 
 ## <a name="create-a-new-runbook"></a>建立新的 Runbook
 
-您會由建立一個可輸出 Hello World  文字的簡單 Runbook 開始。
+您會由建立一個可輸出 Hello World 文字的簡單 Runbook 開始。
 
 1. 在 Azure 入口網站中，開啟您的自動化帳戶。
 
     [自動化帳戶] 頁面提供這個帳戶中資源的快速檢視。 您應該已經有一些資產。 其中大部分資產是自動包含在新自動化帳戶的模組。 您應該也擁有 [必要條件](#prerequisites)中所述的認證資產。
 
-2. 選取 [程序自動化]  底下的 [Runbook]  ，以開啟 Runbook 清單。
+2. 選取 [程序自動化] 底下的 [Runbook]，以開啟 Runbook 清單。
 
-3. 選取 [新增 Runbook]  以建立新的 Runbook。
+3. 選取 [新增 Runbook] 以建立新的 Runbook。
 
-4. 將 Runbook 命名為「MyFirstRunbook-Python」  。
+4. 將 Runbook 命名為「MyFirstRunbook-Python」。
 
-5. 選取 [Python 2]  作為 [Runbook 類型]  。
+5. 選取 [Python 2] 作為 [Runbook 類型]。
 
 6. 按一下 [建立]  來建立 Runbook 並開啟文字式編輯器。
 
@@ -60,7 +60,7 @@ ms.locfileid: "82608689"
 print("Hello World!")
 ```
 
-按一下 [儲存]  以儲存 Runbook。
+按一下 [儲存] 以儲存 Runbook。
 
 ## <a name="test-the-runbook"></a>測試 Runbook
 
@@ -79,25 +79,23 @@ print("Hello World!")
 
 ## <a name="publish-and-start-the-runbook"></a>發佈和啟動 Runbook
 
-您建立的 Runbook 仍處於 [草稿] 模式。 您需要將它發佈，才能在生產環境中執行它。
-當您發佈 Runbook 時，您會使用草稿版本覆寫現有的已發佈版本。
-在此情況下，因為您剛剛建立 Runbook，所以還沒有已發佈的版本。
+您建立的 Runbook 仍處於 [草稿] 模式。 您需要將它發佈，才能在生產環境中執行它。 當您發佈 Runbook 時，您會使用草稿版本覆寫現有的已發佈版本。 在此情況下，因為您剛剛建立 Runbook，所以還沒有已發佈的版本。
 
-1. 按一下 [發佈]  來發佈 Runbook，然後出現提示時按一下 [是]  。
+1. 按一下 [發佈] 來發佈 Runbook，然後出現提示時按一下 [是]。
 
-2. 如果您向左捲動以檢視 [Runbook]  頁面中的 Runbook，則應該會看到 [已發佈]  的 [撰寫狀態]  。
+2. 如果您向左捲動以檢視 [Runbook] 頁面中的 Runbook，則應該會看到 [已發佈] 的 [撰寫狀態]。
 
-3. 捲動回到右側，檢視 [MyFirstRunbook-Python]  的窗格。
+3. 捲動回到右側，檢視 [MyFirstRunbook-Python] 的窗格。
 
    整個頂端的選項可讓您啟動 Runbook、檢視 Runbook，或將其排程為在未來的某個時間啟動。
 
-4. 按一下 [啟動]  ，然後在 [啟動 Runbook] 刀鋒視窗開啟時按一下 [確定]  。
+4. 按一下 [啟動]，然後在 [啟動 Runbook] 刀鋒視窗開啟時按一下 [確定]。
 
 5. 作業窗格會針對您所建立的 Runbook 作業開啟。 您可以關閉此窗格，但請讓其保持開啟，以便觀看作業的進度。
 
-6. [作業摘要]  中會顯示作業狀態，且符合當您測試 Runbook 時看到的狀態。
+6. [作業摘要] 中會顯示作業狀態，且符合當您測試 Runbook 時看到的狀態。
 
-7. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]  。 [輸出] 窗格隨即開啟，您可以在其中看到 `Hello World`。
+7. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]。 [輸出] 窗格隨即開啟，您可以在其中看到 `Hello World`。
 
 8. 關閉 [輸出] 窗格。
 
@@ -118,7 +116,7 @@ print("Hello World!")
 > 必須使用服務主體功能建立自動化帳戶，才會有執行身分憑證。
 > 如果您的自動化帳戶不是透過服務主體建立的，則可以如[使用適用於 Python 的 Azure 管理程式庫](/azure/python/python-sdk-azure-authenticate)所述來進行驗證。
 
-1. 按一下 [MyFirstRunbook-Python] 窗格上的 [編輯]  以開啟文字編輯器。
+1. 按一下 [MyFirstRunbook-Python] 窗格上的 [編輯] 以開啟文字編輯器。
 
 2. 加入下列程式碼，對 Azure 進行驗證：
 
@@ -208,7 +206,7 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-當您啟動 Python Runbook (在 [測試] 窗格或作為已發佈的 Runbook) 時，您可以在 [參數]  下的 [啟動 Runbook] 頁面中輸入參數值。
+當您啟動 Python Runbook (在 [測試] 窗格或作為已發佈的 Runbook) 時，您可以在 [參數] 下的 [啟動 Runbook] 頁面中輸入參數值。
 
 在第一個方塊中輸入值之後，會出現第二個方塊，以此類推，以便您可以視需要輸入許多參數值。
 
@@ -218,7 +216,7 @@ async_vm_start.wait()
 
 ![輸入參數值](../media/automation-tutorial-runbook-textual-python/runbook-python-params.png)
 
-按一下 [確定]  啟動 Runbook。 隨即執行 Runbook，並開始您所指定的虛擬機器。
+按一下 [確定] 啟動 Runbook。 隨即執行 Runbook，並開始您所指定的虛擬機器。
 
 ## <a name="error-handling-in-python"></a>Python 中的錯誤處理
 
@@ -246,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要開始使用 PowerShell Runbook，請參閱[建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
-- 若要開始使用圖形化 Runbook，請參閱[建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)。
-- 若要開始使用 PowerShell 工作流程 Runbook，請參閱[建立 PowerShell 工作流程 Runbook](automation-tutorial-runbook-textual.md)。
-- 若要深入了解 Runbook 類型、其優點和限制，請參閱 [Azure 自動化 Runbook 類型](../automation-runbook-types.md)。
-- 若要深入了解 Azure with Python 的開發，請參閱 [Azure with Python 開發人員](/azure/python/)。
-- 若要檢視範例 Python 2 Runbook，請參閱 [Azure 自動化 GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)。
+- [建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)
+- [建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)
+- [建立 PowerShell 工作流程 Runbook](automation-tutorial-runbook-textual.md)
+- [Azure 自動化 Runbook 類型](../automation-runbook-types.md)
+- [適用於 Python 開發人員的 Azure](/azure/python/)
+- [Azure 自動化 GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)

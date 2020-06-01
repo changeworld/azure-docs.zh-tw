@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770717"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744071"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
@@ -35,9 +35,7 @@ A：Azure Synapse 是適用於 BI、AI 和持續型智能的整合式資料平�
 
 ### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>問：如何開始使用 Azure Synapse Analytics
 
-A：若要開始使用 Azure Synapse Analytics，請建立 [Synapse 工作區 (免費！)](https://portal.azure.com)，並在該工作區底下建立您想要的資源。 您可以遵循我們的其中一個快速入門教學課程，例如[建立 Synapse SQL 集區](quickstart-create-sql-pool.md)或[建立工作區](quickstart-create-workspace.md)，這會引導您完成簡單的使用案例。 
-
-您也可以在我們的 [存放庫](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)中找到範例筆記本和 SQL 指令碼。 如果您需要連線到公用資料集，請使用下列屬性來建立新的連結服務：
+A：若要開始使用 Azure Synapse Analytics，請從資源提供者清單中選取 [Microsoft.Synapse]，以[註冊 Azure Synapse 資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。 然後建立 [Synapse 工作區 (免費！)](https://portal.azure.com)，並在該工作區底下建立您想要的資源。 您可以遵循我們的其中一個快速入門教學課程，例如[建立 Synapse SQL 集區](quickstart-create-sql-pool-portal.md)或[建立工作區](quickstart-create-workspace.md)，這會引導您完成簡單的使用案例。 您也可以在我們的 [存放庫](https://github.com/Azure-Samples/Synapse)中找到範例筆記本和 SQL 指令碼。 如果您需要連線到公用資料集，請使用下列屬性來建立新的連結服務：
 
 - azure_storage_account_name = "azureopendatastorage"
 - azure_storage_sas_token = "" (write **""** )
@@ -94,9 +92,9 @@ A：資料流程可讓工程師在無須撰寫程式碼的情況下開發圖形�
 
 A：端對端單一登入體驗是 Synapse Analytics 中的重要驗證程序。 透過完整 AAD 整合來管理和傳遞身分識別是必須的。
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>問：如何取得 ADLSg2 中檔案和資料夾的存取權
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>問：如何取得 ADLS Gen2 中檔案和資料夾的存取權
 
-A：檔案和資料夾的存取權目前是透過 ADLSg2 來管理。 如需詳細資訊，請參閱 [Data Lake 儲存體的存取控制](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+A：檔案和資料夾的存取權目前是透過 ADLS Gen2 來管理。 如需詳細資訊，請參閱 [Data Lake 儲存體的存取控制](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>問：我可以使用第三方商業智慧工具來存取 Azure Synapse Analytics 嗎
 
@@ -106,6 +104,6 @@ A：是，您可以使用第三方商務應用程式 (例如 Tableau 和 Power B
 
 - [建立工作區](quickstart-create-workspace.md)
 - [使用 Synapse Studio](quickstart-synapse-studio.md)
-- [建立 SQL 集區](quickstart-create-sql-pool.md)
+- [建立 SQL 集區](quickstart-create-sql-pool-portal.md)
 - [使用 SQL 隨選](quickstart-sql-on-demand.md)
-- [建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md) 
+- [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md) 

@@ -1,5 +1,5 @@
 ---
-title: 快速入門：電腦視覺 2.0 和 2.1 - 擷取印刷和手寫文字 - REST、C#
+title: 快速入門：電腦視覺 2.1 和 3.0 - 擷取印刷和手寫文字 - REST、C#
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將搭配使用電腦視覺 API 與 C# 來擷取影像中的印刷和手寫文字。
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b5bb1e80ac7a2a7fca053365b1062df61b2acc03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bd42dd52af039ee61585b110ee31f1ad41613162
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405142"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681203"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-c"></a>快速入門：使用電腦視覺 2.0 和 2.1 REST API 和 C# 擷取印刷和手寫文字
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-21-and-30-rest-api-and-c"></a>快速入門：使用電腦視覺 2.1 和 3.0 REST API 和 C# 擷取印刷和手寫文字
 
 在本快速入門中，您將使用電腦視覺 REST API 來擷取影像中的印刷和/或手寫文字。 您可以使用[批次讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)與[讀取作業結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法偵測影像中的文字，然後將辨識出的字元擷取到電腦可讀取的字元資料流中。 API 將決定要針對每一行文字使用哪一種辨識模型，因此它支援同時含有印刷和手寫文字的影像。
 
-相較於電腦視覺 2.0 和 2.1，電腦視覺 3.0 公開預覽版可提供：
+相較於電腦視覺 2.1 和 3.0，電腦視覺 3.0 公開預覽版可提供：
 
 * 更好的精確度
 * 已變更的輸出格式
@@ -34,7 +34,7 @@ ms.locfileid: "81405142"
 > [!IMPORTANT]
 > [批次讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法會以非同步方式執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫這個 URI (它代表[讀取作業結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API)，檢查狀態並傳回「辨識文字」方法呼叫的結果。
 
-#### <a name="version-3-public-preview"></a>[第 3 版 (公開預覽版)](#tab/version-3)
+#### <a name="version-3"></a>[第 3 版](#tab/version-3)
 
 > [!IMPORTANT]
 > [批次讀取](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005)方法會以非同步方式執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫這個 URI (它代表[讀取作業結果](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API)，檢查狀態並傳回「辨識文字」方法呼叫的結果。
@@ -57,9 +57,9 @@ ms.locfileid: "81405142"
 
 1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式範本建立新的 Visual Studio 解決方案。
 1. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]  ，選取 [NuGet 套件管理員]  ，然後選取 [管理解決方案的 NuGet 套件]  。
-    1. 按一下 [瀏覽]  索引標籤，然後在 [搜尋]  方塊中鍵入 "Newtonsoft.Json"。
-    1. 顯示時選取 [Newtonsoft.Json]  ，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]  。
+    1. 在功能表中，按一下 [工具]，選取 [NuGet 套件管理員]，然後選取 [管理解決方案的 NuGet 套件]。
+    1. 按一下 [瀏覽] 索引標籤，然後在 [搜尋] 方塊中鍵入 "Newtonsoft.Json"。
+    1. 顯示時選取 [Newtonsoft.Json]，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]。
 1. 執行程式。
 1. 在系統提示時，輸入本機影像的路徑。
 
@@ -80,29 +80,20 @@ namespace CSHttpClientSample
         static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
-        
+
         // the Batch Read method endpoint
         static string uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
+        // Add your own local image with text (png or jpg OK)
+        static string imageFilePath = @"my-image.png";
 
-        static async Task Main()
+        static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Text Recognition:");
-            Console.Write(
-                "Enter the path to an image with text you wish to read: ");
-            string imageFilePath = Console.ReadLine();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                await ReadText(imageFilePath);
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
-            Console.WriteLine("\nPress Enter to exit...");
+            // Call the REST API method.
+            Console.WriteLine("\nExtracting text...\n");
+            ReadText(imageFilePath).Wait();
+
+            Console.WriteLine("\nPress Enter to exit.");
             Console.ReadLine();
         }
 
@@ -230,9 +221,9 @@ namespace CSHttpClientSample
 
 1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式範本建立新的 Visual Studio 解決方案。
 1. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]  ，選取 [NuGet 套件管理員]  ，然後選取 [管理解決方案的 NuGet 套件]  。
-    1. 按一下 [瀏覽]  索引標籤，然後在 [搜尋]  方塊中鍵入 "Newtonsoft.Json"。
-    1. 顯示時選取 [Newtonsoft.Json]  ，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]  。
+    1. 在功能表中，按一下 [工具]，選取 [NuGet 套件管理員]，然後選取 [管理解決方案的 NuGet 套件]。
+    1. 按一下 [瀏覽] 索引標籤，然後在 [搜尋] 方塊中鍵入 "Newtonsoft.Json"。
+    1. 顯示時選取 [Newtonsoft.Json]，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]。
 1. 執行程式。
 1. 在提示字元中，輸入本機影像的路徑和要辨識的語言。
 
@@ -257,70 +248,20 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0-preview/read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0-preview//read/analyze";
 
-        static void PrintUsage()
-        {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Cognitive Service Batch Read File Sample");
-            Console.WriteLine("Usage: ");
-            Console.WriteLine("    From Azure Cogntivie Service, retrieve your endpoint and subscription key.");
-            Console.WriteLine("    Set environment variable COMPUTER_VISION_ENDPOINT, such as \"https://westus2.api.cognitive.microsoft.com\"");
-            Console.WriteLine("    Set environment variable COMPUTER_VISION_SUBSCRIPTION_KEY, such as \"1234567890abcdef1234567890abcdef\"\n");
-            Console.WriteLine("    Run the program without argument to enter a file name and a language manually.");
-            Console.WriteLine("    Or run the program with a file name for an image file (bmp/jpg/png/tiff) or a PDF file, plus the language. The language can be \"en\" or \"es\".");
-            Console.WriteLine("       For example: dotnet Program.dll sample.jpg en");
-            Console.WriteLine();
-        }
+        // Add a local image with text here (png or jpg is OK)
+        static string imageFilePath = @"my-image.png";
+        // Add a language, either "en" or "es"
+        static string language = "en";
+
 
         static void Main(string[] args)
         {
-            PrintUsage();
+            // Call the REST API method.
+            Console.WriteLine("\nExtracting text...\n");
+            ReadText(imageFilePath, language).Wait();
 
-            if (string.IsNullOrEmpty(subscriptionKey) || string.IsNullOrEmpty(endpoint))
-            {
-                Console.Error.WriteLine("Please set environment variables COMPUTER_VISION_ENDPOINT and COMPUTER_VISION_SUBSCRIPTION_KEY.");
-                return;
-            }
-
-            string imageFilePath;
-            string language;
-            if (args.Length == 0)
-            {
-                Console.Write(
-                    "Enter the path to an image (bmp/jpg/png/tiff) or PDF with text you wish to read: ");
-                imageFilePath = Console.ReadLine();
-            }
-            else
-            {
-                imageFilePath = args[0];
-            }
-
-            if (args.Length <= 1)
-            {
-                Console.Write(
-                    "Enter the language to read: \"en\" or \"es\": ");
-                language = Console.ReadLine();
-            }
-            else
-            {
-                language = args[1];
-            }
-
-            Console.WriteLine($"Endpoint:     [{endpoint}]");
-            Console.WriteLine($"Subscription: [{subscriptionKey}]");
-            Console.WriteLine($"URL:          [{uriBase}]");
-
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                ReadText(imageFilePath, language).Wait();
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }

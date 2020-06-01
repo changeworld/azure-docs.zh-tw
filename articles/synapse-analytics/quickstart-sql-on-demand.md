@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692161"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836799"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>快速入門：使用 SQL 隨選
+# <a name="quickstart-use-sql-on-demand"></a>快速入門：使用 SQL 隨選
 
-Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用 SQL 隨選來查詢各種類型的檔案。
+Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用 SQL 隨選來查詢各種類型的檔案。 支援的格式會列在 [OPENROWSET](sql/develop-openrowset.md) 中。
 
-以下是支援的檔案類型：JSON、CSV、Apache Parquet
+本快速入門示範如何查詢：CSV、Apache Parquet 和 JSON 檔案。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -30,7 +30,7 @@ Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放�
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) 是一種用戶端工具，可讓您在隨選資料庫上執行 SQL 查詢和筆記本。
 - [SQL Server Management Studio](sql/get-started-ssms.md) 是一種用戶端工具，可讓您在隨選資料庫上執行 SQL 查詢。
 
-用於快速入門的參數：
+本快速入門的參數：
 
 | 參數                                 | 描述                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -60,36 +60,24 @@ Synapse SQL 隨選 (預覽) 是一項無伺服器查詢服務，可讓您對放�
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>建立認證
+### <a name="create-data-source"></a>建立資料來源
 
-若要使用 SQL 隨選執行查詢，請建立讓 SQL 隨選用來存取儲存體中檔案的認證。
-
-> [!NOTE]
-> 若要在本節中成功執行範例，您必須使用 SAS 權杖。
->
-> 若要開始使用 SAS 權杖，您必須卸除 UserIdentity，如下列[文章](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)所述。
->
-> SQL 隨選一律預設使用 AAD 傳遞。
-
-如需有關如何管理儲存體存取控制的詳細資訊，請參閱[控制 SQL 隨選的儲存體帳戶存取](sql/develop-storage-files-storage-access-control.md)一文。
-
-執行下列程式碼片段，以建立本節範例所使用的認證：
+若要使用 SQL 隨選來執行查詢，請建立隨選 SQL 可用來存取儲存體中檔案的資料來源。
+執行下列程式碼片段，以建立本節範例所使用的資料來源：
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
-## <a name="querying-csv-files"></a>查詢 CSV 檔案
+## <a name="query-csv-files"></a>查詢 CSV 檔案
 
 下圖是要查詢的檔案預覽：
 
@@ -101,8 +89,9 @@ GO
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -118,7 +107,7 @@ WHERE
 您可以在查詢編譯時間上指定架構。
 如需更多範例，請參閱如何[查詢 CSV 檔案](sql/query-single-csv-file.md)。
 
-## <a name="querying-parquet-files"></a>查詢 Parquet 檔案
+## <a name="query-parquet-files"></a>查詢 Parquet 檔案
 
 下列範例顯示用於查詢 Parquet 檔案的自動結構描述推斷功能。 其會傳回 2017 年 9 月的資料列數目，而不需要指定架構。
 
@@ -129,18 +118,19 @@ WHERE
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
 尋找更多有關[查詢 Parquet 檔案](sql/query-parquet-files.md)的資訊。
 
-## <a name="querying-json-files"></a>查詢 JSON 資料
+## <a name="query-json-files"></a>查詢 JSON 檔案
 
 ### <a name="json-sample-file"></a>JSON 範例檔案
 
-檔案會儲存在 json  容器的 books 資料夾  中，並包含採用下列結構的單一書籍項目：
+檔案會儲存在 json 容器的 books 資料夾中，並包含採用下列結構的單一書籍項目：
 
 ```json
 {  
@@ -158,7 +148,7 @@ FROM OPENROWSET
 }
 ```
 
-### <a name="querying-json-files"></a>查詢 JSON 資料
+### <a name="query-json-files"></a>查詢 JSON 檔案
 
 下列查詢會示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，從名為 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* 的書籍中擷取純量值 (書名、發行者)：
 
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'

@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d904be260db8fe6170f57d438d3be6d306864d89
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392795"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725086"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -31,33 +31,33 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 若要建立 AKS 叢集，請完成下列步驟：
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
 
-2. 選取 [容器]   >  [Kubernetes Service]  。
+2. 選取 [容器] >  [Kubernetes Service]。
 
-3. 在 [基本資料]  頁面上設定下列選項：
-    - **專案詳細資料**：選取 Azure [訂用帳戶]  ，然後選取或建立 Azure [資源群組]  ，例如 *myResourceGroup*。
-    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster  。 選取 AKS 叢集的 [區域]  、[Kubernetes 版本]  及 [DNS 名稱前置詞]  。
-    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]  。 VM 大小「無法」  在 AKS 叢集部署完畢後變更。 
-            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數]  設為「1」  。 節點計數*可以*在叢集部署完畢後調整。
+3. 在 [基本資料] 頁面上設定下列選項：
+    - **專案詳細資料**：選取 Azure [訂用帳戶]，然後選取或建立 Azure [資源群組]，例如 *myResourceGroup*。
+    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster。 選取 AKS 叢集的 [區域]、[Kubernetes 版本] 及 [DNS 名稱前置詞]。
+    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]。 VM 大小「無法」在 AKS 叢集部署完畢後變更。 
+            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數] 設為「1」。 節點計數*可以*在叢集部署完畢後調整。
     
     ![建立 AKS 叢集 - 提供基本資訊](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    完成時，選取 [下一步:  調整]。
+    完成時，選取 [下一步:調整]。
 
-4. 在 [調整]  頁面上，保留預設選項。 按一下畫面底部的 [下一步:  驗證]。
+4. 在 [調整] 頁面上，保留預設選項。 按一下畫面底部的 [下一步:驗證]。
     > [!CAUTION]
-    > 建立新的 AAD 服務主體可能需要數分鐘的時間才能傳播並變成可用，導致 Azure 入口網站中找不到服務主體的錯誤和驗證失敗。 如果您遇到這種情況，請造訪[這裡](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)以取得緩和措施。
+    > 建立新的 AAD 服務主體可能需要數分鐘的時間才能傳播並變成可用，導致 Azure 入口網站中找不到服務主體的錯誤和驗證失敗。 如果您遇到這種情況，請造訪[這裡](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)以取得緩和措施。
 
-5. 在 [驗證]  頁面上，設定下列選項：
-    - 讓 [服務主體]  欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體]  以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
+5. 在 [驗證] 頁面上，設定下列選項：
+    - 讓 [服務主體] 欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體] 以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
     - 啟用 Kubernetes 角色型存取控制 (RBAC) 的選項。 這會針對 AKS 叢集中部署的 Kubernetes 資源提供更細部的存取控管。
 
     您也可以使用受控識別而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-根據預設，會使用「基本」  網路，並啟用適用於容器的 Azure 監視器。 按一下 [檢閱 + 建立]  ，然後在驗證完成時按一下 [建立]  。
+根據預設，會使用「基本」網路，並啟用適用於容器的 Azure 監視器。 按一下 [檢閱 + 建立]，然後在驗證完成時按一下 [建立]。
 
-建立 AKS 叢集需要幾分鐘的時間。 完成部署時，請按一下 [移至資源]  ，或瀏覽至 AKS 叢集資源群組 (例如 myResourceGroup  )，然後選取 AKS 資源 (例如 myAKSCluster  )。 AKS 叢集儀表板隨即顯示，如此範例所示：
+建立 AKS 叢集需要幾分鐘的時間。 完成部署時，請按一下 [移至資源]，或瀏覽至 AKS 叢集資源群組 (例如 myResourceGroup)，然後選取 AKS 資源 (例如 myAKSCluster)。 AKS 叢集儀表板隨即顯示，如此範例所示：
 
 ![Azure 入口網站中的 AKS 儀表板範例](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -69,7 +69,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 ![在入口網站中開啟 Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。 下列範例會針對 myResourceGroup  資源群組中的叢集名稱 myAKSCluster  取得認證：
+若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。 下列範例會針對 myResourceGroup 資源群組中的叢集名稱 myAKSCluster 取得認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -228,24 +228,24 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 當您建立叢集後，就已啟用容器的 Azure 監視器。 此監視功能可針對 AKS 叢集和叢集上執行的 Pod 提供健康情況計量。
 
-可能需要幾分鐘，此資料才會填入至 Azure 入口網站。 若要查看 Azure 投票應用程式 Pod 的目前狀態、執行時間及資源使用量，請往回瀏覽到 Azure 入口網站中的 AKS 資源，例如 myAKSCluster  。 然後，您可以存取健康狀態，如下所示：
+可能需要幾分鐘，此資料才會填入至 Azure 入口網站。 若要查看 Azure 投票應用程式 Pod 的目前狀態、執行時間及資源使用量，請往回瀏覽到 Azure 入口網站中的 AKS 資源，例如 myAKSCluster。 然後，您可以存取健康狀態，如下所示：
 
-1. 在左側的 [監視]  底下，選擇 [見解] 
-1. 在頂端選擇 [+ 新增篩選器] 
-1. 選取 [命名空間]  作為屬性，然後選擇 \<除了 kube-system 以外的所有項目\> 
+1. 在左側的 [監視] 底下，選擇 [見解]
+1. 在頂端選擇 [+ 新增篩選器]
+1. 選取 [命名空間] 作為屬性，然後選擇 \<除了 kube-system 以外的所有項目\>
 1. 選擇檢視**容器**。
 
-系統會顯示 azure-vote-back  和 azure-vote-front  容器，如下列範例所示：
+系統會顯示 azure-vote-back 和 azure-vote-front 容器，如下列範例所示：
 
 ![檢視 AKS 中執行的容器健康情況](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的記錄，請從容器清單的下拉式清單中選取 [檢視容器記錄]  。 這些記錄包含來自容器的 stdout  和 stderr  資料流。
+若要查看 `azure-vote-front` Pod 的記錄，請從容器清單的下拉式清單中選取 [檢視容器記錄]。 這些記錄包含來自容器的 stdout 和 stderr 資料流。
 
 ![在 AKS 中檢視容器記錄](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>刪除叢集
 
-不再需要叢集時，請刪除叢集資源，這將會刪除所有相關的資源。 此操作可以在 Azure 入口網站中選取 AKS 叢集儀表板上的 [刪除]  按鈕來完成。 或者，您可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
+不再需要叢集時，請刪除叢集資源，這將會刪除所有相關的資源。 此操作可以在 Azure 入口網站中選取 AKS 叢集儀表板上的 [刪除] 按鈕來完成。 或者，您可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait

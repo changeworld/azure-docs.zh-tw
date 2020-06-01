@@ -3,12 +3,12 @@ title: 快速入門 - 建置和執行容器映像
 description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的 Docker 容器映像。
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76986269"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680588"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -26,7 +26,7 @@ ms.locfileid: "76986269"
 
 如果您還沒有容器登錄，您可以使用 [az group create][az-group-create] 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此範例會建立「基本」  登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄 SKU][container-registry-skus]。
+此範例會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>從 Dockerfile 建置映像
 

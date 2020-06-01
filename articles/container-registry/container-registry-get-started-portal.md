@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure 入口網站在 Azure Container Regi
 ms.topic: quickstart
 ms.date: 03/03/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0875e5be628ddfe47696a9d4fc537a8a07122804
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409228"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682811"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立私人容器登錄
 
@@ -25,23 +25,23 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
-選取 [建立資源]   > [容器]   > [容器登錄]  。
+選取 [建立資源] > [容器] > [容器登錄]。
 
 ![在 Azure 入口網站中建立容器登錄][qs-portal-01]
 
-在 [基本資料]  索引標籤中，輸入**資源群組**和**登錄名稱**的值。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 在此快速入門中，請在 `West US` 位置中建立名為 `myResourceGroup` 的新資源群組，並選取 [基本] 作為 [SKU]  。 
+在 [基本資料] 索引標籤中，輸入**資源群組**和**登錄名稱**的值。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 在此快速入門中，請在 `West US` 位置中建立名為 `myResourceGroup` 的新資源群組，並選取 [基本] 作為 [SKU]。 
 
 ![在 Azure 入口網站中建立容器登錄][qs-portal-03]
 
-接受其餘設定的預設值。 然後，選取 [檢閱 + 建立]  。 檢閱設定之後，選取 [建立]  。
+接受其餘設定的預設值。 然後，選取 [檢閱 + 建立]。 檢閱設定之後，選取 [建立]。
 
-您在本快速入門中會建立「基本」  登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄 SKU][container-registry-skus]。
+您在本快速入門中會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
-當 [部署成功]  訊息出現時，請在入口網站中選取容器登錄。 
+當 [部署成功] 訊息出現時，請在入口網站中選取容器登錄。 
 
 ![Azure 入口網站中的容器登錄概觀][qs-portal-05]
 
-記下 [登入伺服器]  的值。 當您使用 Docker 推送和提取映像時，您會在下列步驟中使用此值。
+記下 [登入伺服器] 的值。 當您使用 Docker 推送和提取映像時，您會在下列步驟中使用此值。
 
 ## <a name="log-in-to-registry"></a>登入登錄
 
@@ -57,9 +57,9 @@ az acr login --name <acrName>
 
 ## <a name="list-container-images"></a>列出容器映像
 
-若要列出您登錄中的映像，請瀏覽至入口網站中的登錄，然後選取 [存放庫]  ，以及選取您使用 `docker push` 建立的存放庫。
+若要列出您登錄中的映像，請瀏覽至入口網站中的登錄，然後選取 [存放庫]，以及選取您使用 `docker push` 建立的存放庫。
 
-在此範例中，我們選取 **hello-world** 存放庫，且可以在 [標籤]  之下看到 `v1` 標記的映像。
+在此範例中，我們選取 **hello-world** 存放庫，且可以在 [標籤] 之下看到 `v1` 標記的映像。
 
 ![列出 Azure 入口網站中的容器映像][qs-portal-09]
 
@@ -67,7 +67,7 @@ az acr login --name <acrName>
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若要清除資源，請在入口網站中瀏覽至 **myResourceGroup** 資源群組。 載入資源群組後，按一下 [刪除資源群組]  以移除資源群組、容器登錄，以及儲存於該處的容器映像。
+若要清除資源，請在入口網站中瀏覽至 **myResourceGroup** 資源群組。 載入資源群組後，按一下 [刪除資源群組] 以移除資源群組、容器登錄，以及儲存於該處的容器映像。
 
 ![在 Azure 入口網站中刪除資源群組][qs-portal-08]
 

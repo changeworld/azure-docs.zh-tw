@@ -4,12 +4,12 @@ description: 即時 Web 應用程式的應用程式效能管理和使用量追�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891748"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828724"
 ---
 # <a name="what-is-application-insights"></a>什麼是 Application Insights？
 Application Insights (一項 [Azure 監視器](../overview.md)功能) 是開發人員和 DevOps 專業人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時應用程式。 其會自動偵測效能異常，其中包括強大的分析工具可協助診斷問題，並了解使用者實際上如何運用您的應用程式。  它是設計來協助您持續改善效能和可用性。 其適用於各種不同平台上的應用程式，包括裝載在內部部署、混合式或任何公用雲端的 .NET、Node.js 和 JAVA 和 Python。 它可與您的 DevOps 程序整合，並有各種開發工具的連接點。 透過與 Visual Studio App Center 整合，還可以從行動應用程式監視並分析遙測資料。
@@ -49,7 +49,7 @@ Application Insights 是以開發小組為目標，以協助您了解您的應�
 
 |  |  |
 | --- | --- |
-| [**智慧型偵測和手動警示**](../../azure-monitor/app/proactive-diagnostics.md)<br/>如果發生常見模式之外的一些狀況，自動警示會適應您的應用程式在遙測和觸發下的正常模式。 您也可以在自訂或標準計量的特定層級上[設定警示](../../azure-monitor/app/alerts.md)。 |![警示範例](./media/app-insights-overview/alerts-tn.png) |
+| [**智慧型偵測和手動警示**](../../azure-monitor/app/proactive-diagnostics.md)<br/>如果發生常見模式之外的一些狀況，自動警示會適應您的應用程式在遙測和觸發下的正常模式。 您也可以在自訂或標準計量的特定層級上[設定警示](../../azure-monitor/platform/alerts-log.md)。 |![警示範例](./media/app-insights-overview/alerts-tn.png) |
 | [**應用程式對應**](../../azure-monitor/app/app-map.md)<br/>探索應用程式的元件，包含重要計量和警示。 |![應用程式對應](./media/app-insights-overview/appmap-tn.png)  |
 | [**分析工具**](../../azure-monitor/app/profiler.md)<br/>檢查取樣要求的執行設定檔。 |![分析工具](./media/app-insights-overview/profiler.png) |
 | [**使用量分析**](../../azure-monitor/app/usage-overview.md)<br/>分析使用者區隔和保留期。|![保留期工具](./media/app-insights-overview/retention.png) |
@@ -127,7 +127,7 @@ Application Insights 是 Microsoft Azure 中裝載的多項服務之一，而遙
 ## <a name="support-and-feedback"></a>支援與意見反應
 * 疑難排解與問題：
   * [疑難排解][qna]
-  * [MSDN 論壇](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * 您的建議：
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

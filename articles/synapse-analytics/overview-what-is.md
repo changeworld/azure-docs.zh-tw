@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587865"
+ms.locfileid: "83656200"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
 
@@ -63,7 +63,7 @@ Azure Synapse 移除了同時使用 SQL 和 Spark 的傳統技術障礙。 您�
 
 Azure Synapse 內建與 Azure Data Factory 相同的資料整合引擎和體驗，可讓您建立豐富的資料管線，而不需要使用個別的協調流程引擎。
 
-* 在 Synapse 與 85 個以上的內部部署資料來源之間移動資料
+* 在 Azure Synapse 與 90 個以上的內部部署資料來源之間移動資料
 * 可協調 Notebook、管線、Spark 作業、SQL 指令碼、預存程序
 * 搭配資料流程活動的無程式碼 ETL
 
@@ -87,6 +87,6 @@ Azure Synapse 為企業提供單一方式來管理分析資源、監視使用方
 
 * [建立工作區](quickstart-create-workspace.md)
 * [使用 Synapse Studio](quickstart-synapse-studio.md)
-* [建立 SQL 集區](quickstart-create-sql-pool.md)
+* [建立 SQL 集區](quickstart-create-sql-pool-portal.md)
 * [使用 SQL 隨選](quickstart-sql-on-demand.md)
-* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md)
+* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)

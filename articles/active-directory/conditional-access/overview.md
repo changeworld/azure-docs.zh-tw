@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: contperfq4
+ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79215986"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798250"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -47,7 +48,7 @@ ms.locfileid: "79215986"
    - 原則能夠以特定使用者和群組為目標，讓系統管理員更精細地控制存取。
 - IP 位置資訊
    - 組織可以建立信任的 IP 位址範圍，以便在做出原則決策時使用。 
-   - 系統管理員可以指定整個國家/地區的 IP 範圍，以封鎖或允許來自其中的流量。
+   - 系統管理員可以指定整個國家/區域的 IP 範圍，以封鎖或允許來自其中的流量。
 - 裝置
    - 在強制執行條件式存取原則時，可以使用具有特定平台裝置或其裝置以特定狀態標記的使用者。
 - Application
@@ -71,7 +72,7 @@ ms.locfileid: "79215986"
 
 ## <a name="commonly-applied-policies"></a>一般會套用的原則
 
-許多組織都有適用條件式存取原則的常見存取考量，例如：
+許多組織都有[適用條件式存取原則的常見存取考量](concept-conditional-access-policy-common.md)，例如：
 
 - 針對具有系統管理角色的使用者，要求執行多重要素驗證
 - Azure 管理工作需要多重要素驗證
@@ -96,12 +97,8 @@ ms.locfileid: "79215986"
 
 ## <a name="next-steps"></a>後續步驟
 
-[逐步建置條件式存取原則](concept-conditional-access-policies.md)
-
-若要了解如何在環境中實作條件式存取，請參閱[在 Azure Active Directory 中規劃條件式存取部署](plan-conditional-access.md)。
-
-[了解 Identity Protection](../identity-protection/overview-v2.md)
-
-[了解 Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
-
-[了解 Microsoft Intune](/intune/index)
+- [逐步建置條件式存取原則](concept-conditional-access-policies.md)
+- [規劃條件式存取部署](plan-conditional-access.md)
+- [了解 Identity Protection](../identity-protection/overview-v2.md)
+- [了解 Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- [了解 Microsoft Intune](/intune/index)

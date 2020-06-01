@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692414"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745408"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選 (預覽) 搭配 Power BI Desktop 並建立報告
 
@@ -51,10 +51,7 @@ ms.locfileid: "82692414"
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
-BEGIN
-    DROP DATABASE Demo
-END;
+DROP DATABASE IF EXISTS Demo
 GO
 
 -- Create new database
@@ -62,23 +59,16 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 - 建立認證
+## <a name="2---create-data-source"></a>2 - 建立資料來源
 
-需要有認證才能讓 SQL 隨選服務存取儲存體中的檔案。 為與您端點位於相同區域的儲存體帳戶建立認證。 雖然 SQL 隨選可存取來自不同區域的儲存體帳戶，但讓儲存體和端點位於相同區域將會提供較佳的效能。
+需要有資料來源才能讓 SQL 隨選服務存取儲存體中的檔案。 為與您端點位於相同區域的儲存體帳戶建立資料來源。 雖然 SQL 隨選可存取來自不同區域的儲存體帳戶，但讓儲存體和端點位於相同區域將會提供較佳的效能。
 
-執行下列 Transact-SQL (T-SQL) 指令碼來建立認證：
+執行下列 Transact-SQL (T-SQL) 指令碼來建立資料來源：
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
-GO
-
--- Create credentials for Census Data container which resides in a azure open data storage account
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = '';
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a secret.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="3---prepare-view"></a>3 - 準備檢視
@@ -96,7 +86,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS uspv;
 ```
@@ -114,15 +105,15 @@ FROM
 
 使用下列步驟建立 Power BI Desktop 的報告：
 
-1. 開啟 Power BI Desktop 應用程式，然後選取 [取得資料]  。
+1. 開啟 Power BI Desktop 應用程式，然後選取 [取得資料]。
 
    ![開啟 Power BI Desktop 應用程式並選取 [取得資料]。](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. 選取 [Azure]   > [Azure SQL Database]  。 
+2. 選取 [Azure] > [Azure SQL Database]。 
 
    ![選取資料來源。](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. 在 [伺服器]  欄位中，輸入資料庫所在伺服器的名稱，然後在資料庫名稱中輸入 `Demo`。 選取 [匯入]  選項，然後選取 [確定]  。 
+3. 在 [伺服器] 欄位中，輸入資料庫所在伺服器的名稱，然後在資料庫名稱中輸入 `Demo`。 選取 [匯入] 選項，然後選取 [確定]。 
 
    ![選取端點上的資料庫。](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -137,15 +128,15 @@ FROM
         ![使用 SQL 登入。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. 選取 `usPopulationView` 檢視，然後選取 [載入]  。 
+5. 選取 `usPopulationView` 檢視，然後選取 [載入]。 
 
    ![在所選資料庫上選取一個檢視。](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. 等候作業完成，然後會出現快顯視窗指出 `There are pending changes in your queries that haven't been applied`。 選取 [套用變更]  。 
+6. 等候作業完成，然後會出現快顯視窗指出 `There are pending changes in your queries that haven't been applied`。 選取 [套用變更]。 
 
    ![按一下 [套用變更]。](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
-7. 等待 [套用查詢變更]  對話方塊消失，這可能需要幾分鐘的時間。 
+7. 等待 [套用查詢變更] 對話方塊消失，這可能需要幾分鐘的時間。 
 
    ![等待查詢完成。](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
 
@@ -163,7 +154,7 @@ FROM
 1. 刪除儲存體帳戶的認證
 
    ```sql
-   DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+   DROP EXTENAL DATA SOURCE AzureOpenData
    ```
 
 2. 刪除檢視

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77914069"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747556"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
 
@@ -194,7 +194,7 @@ ms.locfileid: "77914069"
 
 ### <a name="localizing-the-map"></a>將地圖當地語系化
 
-如果您的受眾分散在多個國家/地區或使用不同語言，當地語系化便很重要。
+如果您的受眾分散在多個國家/區域或使用不同語言，當地語系化便很重要。
 
 **之前：Google 地圖**
 
@@ -212,7 +212,7 @@ ms.locfileid: "77914069"
 
 **之後：Azure 地圖服務**
 
-Azure 地圖服務提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將此資訊新增至全域 atlas  命名空間。 這會導致您應用程式中的所有地圖控制項執行個體皆以這些設定作為預設值。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」：
+Azure 地圖服務提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將此資訊新增至全域 atlas 命名空間。 這會導致您應用程式中的所有地圖控制項執行個體皆以這些設定作為預設值。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」：
 
 ```javascript
 atlas.setLanguage('fr-FR');

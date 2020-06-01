@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420772"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736002"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 在 SQL 隨選 (預覽) 中建立及使用檢視
 
@@ -22,17 +22,14 @@ ms.locfileid: "81420772"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您的第一個步驟是檢閱下列文章，並確定您已符合建立和使用 SQL 隨選檢視的必要條件：
-
-- [第一次設定](query-data-storage.md#first-time-setup)
-- [先決條件](query-data-storage.md#prerequisites)
+您的第一個步驟是建立資料庫以便在其中建立檢視，並藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，而初始化要在 Azure 儲存體上進行驗證所需的物件。 本文中的所有查詢將會在您的範例資料庫上執行。
 
 ## <a name="create-a-view"></a>建立檢視
 
-您可以用建立一般 SQL Server 檢視的相同方式來建立檢視。 下列查詢會建立可讀取 population.csv  檔案的檢視。
+您可以用建立一般 SQL Server 檢視的相同方式來建立檢視。 下列查詢會建立可讀取 population.csv 檔案的檢視。
 
 > [!NOTE]
-> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。 如果您尚未建立資料庫，請參閱[第一次設定](query-data-storage.md#first-time-setup)。
+> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。
 
 ```sql
 USE [mydbname];
@@ -44,8 +41,9 @@ GO
 CREATE VIEW populationView AS
 SELECT * 
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV', 
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', 
         FIELDTERMINATOR =',', 
         ROWTERMINATOR = '\n'
     )
@@ -57,14 +55,27 @@ WITH (
 ) AS [r];
 ```
 
+此範例中的檢視會使用 `OPENROWSET` 函式，以使用基礎檔案的絕對路徑。 如果您的 `EXTERNAL DATA SOURCE` 具有儲存體的根 URL，則可以搭配使用 `OPENROWSET` 與 `DATA_SOURCE` 和相對檔案路徑：
+
+```
+CREATE VIEW TaxiView
+AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
+FROM
+    OPENROWSET(
+        BULK 'parquet/taxi/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT='PARQUET'
+    ) AS nyc
+```
+
 ## <a name="use-a-view"></a>使用檢視
 
 您可以在查詢中使用檢視，就像在 SQL Server 查詢中使用檢視一樣。
 
-下列查詢會示範如何使用我們在[建立檢視](#create-a-view)中建立的 population_csv  檢視。 此範例會以遞減順序傳回各個國家/地區名稱和其 2019 年的人口數目。
+下列查詢會示範如何使用我們在[建立檢視](#create-a-view)中建立的 population_csv 檢視。 此查詢會以遞減順序傳回各個國家/地區名稱和其 2019 年的人口數目。
 
 > [!NOTE]
-> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。 如果您尚未建立資料庫，請參閱[第一次設定](query-data-storage.md#first-time-setup)。
+> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。
 
 ```sql
 USE [mydbname];

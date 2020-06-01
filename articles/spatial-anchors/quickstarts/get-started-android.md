@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75376455"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652494"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Android 應用程式
 
@@ -66,11 +66,11 @@ git submodule update --init --recursive
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-選取 [開啟現有的 Android Studio 專案]  ，並選取位於 `Android/Java/` 上的專案。
+選取 [開啟現有的 Android Studio 專案]，並選取位於 `Android/Java/` 上的專案。
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-選取 [開啟現有的 Android Studio 專案]  ，並選取位於 `Android/NDK/` 上的專案。
+選取 [開啟現有的 Android Studio 專案]，並選取位於 `Android/NDK/` 上的專案。
 
 ---
 
@@ -86,6 +86,8 @@ git submodule update --init --recursive
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+找出 `public AzureSpatialAnchorsManager(Session arCoreSession)` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`。
+
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 開啟 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`。
@@ -94,21 +96,23 @@ git submodule update --init --recursive
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+找出 `AzureSpatialAnchorsApplication::StartCloudSession()` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`。
+
 ---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>將應用程式部署到您的 Android 裝置
 
 將 Android 裝置開機並登入，然後使用 USB 纜線將其連接到電腦。
 
-在 Android Studio 工具列中選取 [執行]  。
+在 Android Studio 工具列中選取 [執行]。
 
 ![Android Studio 的部署和執行](./media/get-started-android/android-studio-deploy-run.png)
 
-在 [選取部署目標]  對話方塊中選取 Android 裝置，然後選取 [確定]  以在 Android 裝置上執行應用程式。
+在 [選取部署目標] 對話方塊中選取 Android 裝置，然後選取 [確定] 以在 Android 裝置上執行應用程式。
 
 依照應用程式中的指示放置及回收錨點。
 
-在 Android Studio 工具列中選取 [停止]  ，以停止應用程式。
+在 Android Studio 工具列中選取 [停止]，以停止應用程式。
 
 ![Android Studio 的停止](./media/get-started-android/android-studio-stop.png)
 

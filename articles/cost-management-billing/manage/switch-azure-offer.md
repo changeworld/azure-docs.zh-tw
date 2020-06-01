@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199512"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715880"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>將 Azure 訂用帳戶變更為其他供應項目
 
@@ -45,7 +45,7 @@ ms.locfileid: "77199512"
 
 1. 登入 [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions)。
 1. 使用隨用隨付費率來選取您的個別訂用帳戶。
-1. 按一下 [切換到其他供應項目]  。 只有當您有使用隨用隨付費率的個別訂用帳戶，並已完成第一個計費期間時，才可以使用此選項。
+1. 按一下 [切換到其他供應項目] 。 只有當您有使用隨用隨付費率的個別訂用帳戶，並已完成第一個計費期間時，才可以使用此選項。
 
    ![請注意頁面右側的 [切換供應項目] 按鈕](./media/switch-azure-offer/switchbutton.png)
 1. 從您的訂用帳戶可切換的供應項目清單中**選取所需的供應項目**。 這份清單會根據您帳戶相關聯的會員資格而有所不同。 如果沒有清單，請檢查[您可切換的可用供應項目清單](#whats-supported)，並確定您有正確的會員資格。
@@ -54,7 +54,7 @@ ms.locfileid: "77199512"
 1. 根據您所切換的供應項目，您可能會看到有關切換所造成之影響的附註。 在您繼續進行之前，請先仔細瀏覽這份清單並依照指示操作。
 
    ![檢閱注意事項](./media/switch-azure-offer/thingstonote.png)
-1. 您可以重新命名訂用帳戶。 預設會將它設定為新的供應項目名稱。 按一下 [切換供應項目]  以完成程序。
+1. 您可以重新命名訂用帳戶。 預設不會將其設定為新的供應項目名稱。 按一下 [切換供應項目]  以完成程序。
 
    ![按一下綠色按鈕](./media/switch-azure-offer/confirmpage.png)
 1. 成功！ 您的訂用帳戶現在已經切換到新的供應項目。
@@ -64,13 +64,13 @@ ms.locfileid: "77199512"
 
 ### <a name="what-is-an-azure-offer"></a>什麼是 Azure 供應項目？
 
-Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」  。 例如，[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) 和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 皆為 Azure 供應項目。 每個供應項目有不同的[條款](https://azure.microsoft.com/support/legal/offer-details/)，有些則有特殊優點。 您可以在帳戶中心的 [訂用帳戶] 頁面中找到訂用帳戶的供應項目。 按一下供應項目名稱以取得更多詳細資料。
+Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」。 例如，[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) 和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 皆為 Azure 供應項目。 每個供應項目有不同的[條款](https://azure.microsoft.com/support/legal/offer-details/)，有些則有特殊優點。 您可以在帳戶中心的 [訂用帳戶] 頁面中找到訂用帳戶的供應項目。 按一下供應項目名稱以取得更多詳細資料。
 
    ![按一下帳戶中心的 [供應項目] 連結以取得更多詳細資料](./media/switch-azure-offer/offerlink01.png)
 
 ### <a name="why-dont-i-see-the-button"></a>為什麼看不到該按鈕？
 
-在下列情況下，您可能看不到 [切換為其他供應項目]  選項：
+在下列情況下，您可能看不到 [切換為其他供應項目] 選項：
 
 * 您沒有[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)。 目前只有採用隨用隨付費率的訂用帳戶可以轉換成其他供應項目。
   * 如果您有[免費試用](https://azure.microsoft.com/free/)，請了解如何[升級至隨用隨付](upgrade-azure-subscription.md)。
@@ -100,7 +100,7 @@ Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」  。 例如�
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>我可以從採用隨用隨付費率的訂用帳戶遷移至雲端解決方案提供者 (CSP) 或 Enterprise 合約 (EA) 嗎？
 
-* 若要移轉為 CSP，請參閱 [Azure 隨用隨付訂用帳戶移轉至 CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)。
+* 要遷移至 CSP，請參閱[在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](transfer-subscriptions-subscribers-csp.md)。
 * 若要移轉至 EA，可請您的註冊系統管理員將您的帳戶新增至 EA。 請遵循邀請電子郵件中的指示，將訂用帳戶移至 EA 註冊底下。 若要深入了解，請參閱 EA 入口網站中的[與現有帳戶相關聯](https://ea.azure.com/helpdocs/associateExistingAccount)。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>是否可以將資料與服務移轉至新的訂用帳戶？

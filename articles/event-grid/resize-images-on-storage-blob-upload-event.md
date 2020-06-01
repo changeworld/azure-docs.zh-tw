@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482203"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652688"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -192,15 +192,15 @@ az functionapp deployment source config --name $functionapp \
 
 事件訂閱表示您想要傳送至特定端點之提供者產生的事件。 在此情況下，端點會由函式公開。 使用下列步驟，在 Azure 入口網站中建立事件訂閱，以傳送通知給您的函式：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取左側功能表中的 [所有服務]  ，然後選取 [函式應用程式]  。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，於頁面頂端搜尋並選取 `Function App`，然後選擇您剛才建立的函式應用程式。 選取 [函式]，然後選擇 [縮圖] 函式。
 
-    ![瀏覽至 Azure 入口網站中的函式應用程式](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="選擇入口網站中的縮圖功能":::
 
-2. 展開函式應用程式，選擇 **Thumbnail** 函式，然後選取 [新增事件方格訂用帳戶]  。
+1.  選取 [整合]，然後選擇 [事件方格觸發程式]並選取 [建立事件方格訂用帳戶]。
 
-    ![瀏覽至 Azure 入口網站中的新增事件方格訂用帳戶](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="瀏覽至 Azure 入口網站中的新增事件方格訂用帳戶" :::
 
-3. 使用表格中指定的事件訂閱設定。
+1. 使用表格中指定的事件訂閱設定。
     
     ![從 Azure 入口網站中的函式建立事件訂閱](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -209,19 +209,19 @@ az functionapp deployment source config --name $functionapp \
     | **名稱** | imageresizersub | 用以識別新事件訂閱的名稱。 |
     | **主題類型** | 儲存體帳戶 | 選擇儲存體帳戶事件提供者。 |
     | **訂用帳戶** | 您的 Azure 訂用帳戶 | 預設會選取您目前的 Azure 訂用帳戶。 |
-    | **資源群組** | myResourceGroup | 選取 [使用現有]  ，並選擇您在本教學課程中一直使用的資源群組。 |
+    | **資源群組** | myResourceGroup | 選取 [使用現有]，並選擇您在本教學課程中一直使用的資源群組。 |
     | **Resource** | 您的 Blob 儲存體帳戶 | 選擇您建立的 Blob 儲存體帳戶。 |
-    | **事件類型** | 已建立 Blob | 取消勾選 [已建立 Blob]  以外的所有類型。 只有 `Microsoft.Storage.BlobCreated` 的事件類型會傳遞至函式。 |
+    | **事件類型** | 已建立 Blob | 取消勾選 [已建立 Blob] 以外的所有類型。 只有 `Microsoft.Storage.BlobCreated` 的事件類型會傳遞至函式。 |
     | **端點類型** | 自動產生 | 預先定義為 **Azure 函式**。 |
     | **端點** | 自動產生 | 函數的名稱。 在此案例中，此名稱為**縮圖**。 |
 
-4. 切換至 [篩選條件]  索引標籤，並執行下列動作：
-    1. 選取 [啟用主旨篩選]  選項。
-    2. 針對 [主旨開頭]  ，輸入下列值： **/blobServices/default/containers/images/blobs/** 。
+1. 切換至 [篩選條件] 索引標籤，並執行下列動作：
+    1. 選取 [啟用主旨篩選] 選項。
+    2. 針對 [主旨開頭]，輸入下列值： **/blobServices/default/containers/images/blobs/** 。
 
         ![指定事件訂閱的篩選條件](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. 選取 [建立]  以新增事件訂閱。 當 Blob 新增至 `images` 容器時，這會建立可觸發 `Thumbnail` 函式的事件訂閱。 此函式會調整映像大小，並將其新增至 `thumbnails` 容器。
+1. 選取 [建立] 以新增事件訂閱。 當 Blob 新增至 `images` 容器時，這會建立可觸發 `Thumbnail` 函式的事件訂閱。 此函式會調整映像大小，並將其新增至 `thumbnails` 容器。
 
 既然已設定了後端服務，您可以在範例 Web 應用程式中測試映像調整大小功能。
 
@@ -231,15 +231,15 @@ az functionapp deployment source config --name $functionapp \
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-按一下 [上傳相片]  區域，以選取並上傳檔案。 您也可以將相片拖曳到此區域。
+按一下 [上傳相片] 區域，以選取並上傳檔案。 您也可以將相片拖曳到此區域。
 
-請注意，上傳的映像消失之後，上傳映像的複本會顯示在 [產生縮圖]  浮動切換中。 此映像已由函式調整大小、新增至 *thumbnails* 容器，並由 Web 用戶端下載。
+請注意，上傳的映像消失之後，上傳映像的複本會顯示在 [產生縮圖] 浮動切換中。 此映像已由函式調整大小、新增至 *thumbnails* 容器，並由 Web 用戶端下載。
 
 ![瀏覽器中已發佈的 Web 應用程式](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-按一下 [選擇檔案]  來選取檔案，然後按一下 [上傳映像]  。 上傳成功時，瀏覽器會瀏覽至成功頁面。 按一下連結以返回首頁。 所上傳映像的複本會顯示在 [產生縮圖]  區域中。 (如果映像一開始並未出現，請嘗試重新載入頁面)。此映像已由函式調整大小、新增至 *thumbnails* 容器，並由 Web 用戶端下載。
+按一下 [選擇檔案] 來選取檔案，然後按一下 [上傳映像]。 上傳成功時，瀏覽器會瀏覽至成功頁面。 按一下連結以返回首頁。 所上傳映像的複本會顯示在 [產生縮圖] 區域中。 (如果映像一開始並未出現，請嘗試重新載入頁面)。此映像已由函式調整大小、新增至 *thumbnails* 容器，並由 Web 用戶端下載。
 
 ![瀏覽器中已發佈的 Web 應用程式](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

@@ -1,15 +1,15 @@
 ---
-title: 快速入門 - 建立登錄 - Powershell
+title: 快速入門 - 建立登錄 - PowerShell
 description: 快速了解如何使用 PowerShell 在 Azure Container Registry 中建立私人 Docker 登錄
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 792146abeaad137a29bfea25a59a957c5f69c5ac
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74456382"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682769"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立私人容器登錄
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-您在本快速入門中會建立「基本」  登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄 SKU][container-registry-skus]。
+您在本快速入門中會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
 ## <a name="log-in-to-registry"></a>登入登錄
 

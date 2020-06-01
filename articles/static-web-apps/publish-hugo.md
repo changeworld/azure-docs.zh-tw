@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593694"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870689"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -99,8 +99,8 @@ ms.locfileid: "83593694"
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 按一下 [建立資源]
-1. 搜尋 [靜態 Web Apps]
-1. 按一下 [靜態 Web Apps (預覽)]
+1. 搜尋 [Static Web Apps]
+1. 按一下 [Static Web Apps (預覽)]
 1. 按一下 [建立] 
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
@@ -133,13 +133,11 @@ ms.locfileid: "83593694"
 
 1. 按 [下一步：組建 >] 按鈕，以編輯組建組態
 
-1. 將 [應用程式位置] 設定為 **/** 。
+1. 將 [應用程式位置] 設定為 [公用]。
 
-1. 將 [應用程式成品位置] 設定為 [公用]。
+1. 將 [應用程式成品位置] 保留為空白。
 
    [API 位置] 的值並非必要值，因為您此時不會部署 API。
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="組建設定":::
 
 ### <a name="review-and-create"></a>檢閱並建立
 
@@ -155,12 +153,12 @@ ms.locfileid: "83593694"
 
 1. 在文字編輯器中開啟 Hugo 應用程式，然後開啟 _.github/workflows/azure-pages-<WORKFLOW_NAME>.yml_ 檔案。
 
-1. 將 `- uses: actions/checkout@v1` 一行 (第 18 行) 取代為下列程式碼，以建置 Hugo 應用程式。
+1. 將 `- uses: actions/checkout@v2` 一行 (第 18 行) 取代為下列程式碼，以建置 Hugo 應用程式。
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

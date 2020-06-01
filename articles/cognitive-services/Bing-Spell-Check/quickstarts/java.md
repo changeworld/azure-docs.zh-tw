@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735108"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869795"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Java 進行拼字檢查
 
-使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 Java 應用程式會將要求傳送至 API，並傳回建議的更正清單。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上找到此應用程式的原始程式碼。
+使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 Java 應用程式會將要求傳送至 API，並傳回建議的更正清單。 
+
+雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上找到此應用程式的原始程式碼。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,7 +33,7 @@ ms.locfileid: "82735108"
 
 ## <a name="create-and-initialize-an-application"></a>建立應用程式並將其初始化
 
-1. 在您慣用的 IDE 或編輯器中，使用您選擇的類別名稱建立新的 Java 專案，並匯入下列套件。
+1. 在您慣用的 IDE 或編輯器中，使用您選擇的類別名稱建立新的 Java 專案，並匯入下列套件：
 
     ```java
     import java.io.*;
@@ -40,7 +42,7 @@ ms.locfileid: "82735108"
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. 為 API 端點的主機、路徑和訂用帳戶金鑰建立變數。 然後，為您的市場、您要進行拼字檢查的文字，以及拼字檢查模式的字串建立變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 為 API 端點的主機、路徑和訂用帳戶金鑰建立變數。 然後，為您的市場、您要進行拼字檢查的文字，以及拼字檢查模式的字串建立變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +57,11 @@ ms.locfileid: "82735108"
 
 ## <a name="create-and-send-an-api-request"></a>建立和傳送 API 要求
 
-1. 建立名為 `check()` 的函式，以建立及傳送 API 要求。 接著，依照下列步驟操作。 建立要求參數的字串。 將 `?mkt=` 參數附加至您的市場字串，並將 `&mode=` 參數附加至您的拼字檢查模式。  
+1. 建立名為 `check()` 的函式，以建立及傳送 API 要求。 在此函式內，新增後續步驟中指定的程式碼。 建立要求參數的字串：
+
+   a. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 
+
+   b. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 
 
    ```java
    public static void check () throws Exception {
@@ -71,7 +77,7 @@ ms.locfileid: "82735108"
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. 開啟 URL 的連線。 將要求方法設為 `POST`。 新增要求參數。 請務必將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。
+3. 開啟 URL 的連線。 將要求方法設定為 `POST` 並新增您的要求參數。 請務必將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。
 
     ```java
     connection.setRequestMethod("POST");
@@ -91,7 +97,7 @@ ms.locfileid: "82735108"
 
 ## <a name="format-and-read-the-api-response"></a>格式化並讀取 API 回應
 
-1. 將此方法新增至您的類別。 它會將 JSON 格式化以取得更容易閱讀的輸出。
+1. 將 `prettify()` 方法新增至您的類別，以將 JSON 格式化為更容易閱讀的輸出。
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +123,7 @@ ms.locfileid: "82735108"
 
 ## <a name="call-the-api"></a>呼叫 API
 
-在應用程式的 main 函式中，呼叫您在上方建立的 check() 方法。
+在應用程式的 main 函式中，呼叫您在先前建立的 `check()` 方法。
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +137,19 @@ ms.locfileid: "82735108"
 
 ## <a name="run-the-application"></a>執行應用程式
 
-建置並執行專案。
+建置並執行專案。 如果您使用命令列，請使用下列命令建置並執行該應用程式：
 
-如果您使用命令列，請使用下列命令建置並執行該應用程式。
+1. 建置應用程式：
 
-**Build:**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**Run:**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. 執行應用程式：
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>範例 JSON 回應
 

@@ -6,39 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3651467de86d3b026ab348675249f93ebf3a86a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: da1bd9c812c20f60264d1a5ee1f8821128900618
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420212"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698861"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共用資料庫
 
-Azure Synapse Analytics 可讓不同的計算工作區引擎在其 Spark 集區 (預覽)、SQL 隨選 (預覽) 引擎和 SQL 集區之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的計算工作區引擎在其 Spark 集區 (預覽) 和 SQL 隨選 (預覽) 引擎之間共用資料庫和資料表。
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
 使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區 (預覽) 以及 SQL 隨選引擎。
 
-如果工作區中有已經啟用中繼資料同步處理的 SQL 集區，或如果您建立啟用了中繼資料同步處理的新 SQL 集區，則這些 Spark 所建資料庫便會自動對應至 SQL 集區資料庫中的特殊結構描述。 
+Spark 預設資料庫 (稱為 `default`) 也會在 SQL 隨選內容中顯示為稱為 `default` 的資料庫。
 
-每個結構描述都會以 Spark 資料庫名稱再加上 `$` 前置詞來命名。 Spark 所產生資料庫中的外部和受控資料表都會在對應的特殊結構描述中公開為外部資料表。
-
-Spark 預設資料庫 (稱為 `default`) 也會在 SQL 隨選內容中顯示為稱為 `default` 的資料庫，而在任何已開啟中繼資料同步處理的 SQL 集區資料庫中則會顯示為結構描述 `$default`。
-
-由於資料庫不會即時同步至 SQL 及 SQL 集區，因此資料表會延遲顯示。
+由於資料庫不會即時同步至 SQL，因此資料庫會延遲顯示。
 
 ## <a name="manage-a-spark-created-database"></a>管理 Spark 建立的資料庫
 
 使用 Spark 來管理 Spark 建立的資料庫。 例如，透過 Spark 集區作業來刪除資料庫，以及從 Spark 建立其中的資料表。
 
 如果您使用 SQL 隨選在 Spark 所建資料庫中建立物件，或嘗試卸除資料庫，則作業將會成功。 但是，原始的 Spark 資料庫不會有任何改變。
-
-如果您嘗試卸除 SQL 集區中已同步的結構描述，或嘗試在其中建立資料表，Azure 會傳回錯誤。
 
 ## <a name="handling-of-name-conflicts"></a>名稱衝突的處理方式
 
@@ -79,22 +73,7 @@ SELECT * FROM sys.databases;
 
 確認結果中包含 `mytestdb`。
 
-### <a name="exposing-a-spark-database-in-a-sql-pool"></a>在 SQL 集區中公開 Spark 資料庫
-
-在上一個範例建立了資料庫之後，現在請於工作區中建立名為 `mysqlpool` 的 SQL 集區，並啟用中繼資料同步處理。
-
-針對 `mysqlpool` SQL 集區執行下列陳述式：
-
-```sql
-SELECT * FROM sys.schema;
-```
-
-在結果中確認所新建資料庫的結構描述。
-
 ## <a name="next-steps"></a>後續步驟
 
 - [深入了解 Azure Synapse Analytics 的共用中繼資料](overview.md)
 - [深入了解 Azure Synapse Analytics 的共用中繼資料資料表](table.md)
-
-<!-- - [Learn more about the Synchronization with SQL Analytics on-demand](overview.md)
-- [Learn more about the Synchronization with SQL Analytics pools](overview.md)-->

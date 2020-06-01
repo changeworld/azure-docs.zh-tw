@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77372192"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871295"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -28,53 +28,12 @@ ms.locfileid: "77372192"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Language Understanding (LUIS) 入口網站帳戶：[建立免費帳戶](https://www.luis.ai)。
-* [Python 3.x](https://www.python.org/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* 最新版的 [Python 3.x](https://www.python.org/)。
+* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中[建立 Language Understanding 撰寫資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    * 您需要您[建立](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)之資源的金鑰和端點，以將應用程式連線至 Language Understanding 撰寫。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。 您可以使用免費定價層 (`F0`) 來試用服務。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>取得您的 Language Understanding (LUIS) 入門金鑰
-
-藉由建立 LUIS 撰寫資源，取得您的[入門金鑰](../luis-how-to-azure-subscription.md#starter-key)。 請保留您的金鑰和金鑰區域，以進行下一個步驟。
-
-### <a name="create-an-environment-variable"></a>建立環境變數
-
-使用金鑰和金鑰區域，建立兩個環境變數以進行驗證：
-
-* `LUIS_AUTHORING_KEY` - 用於驗證您要求的資源金鑰。
-* `LUIS_REGION` - 與您金鑰相關聯的區域。 例如 `westus` 。
-
-請使用適合您作業系統的指示。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-新增環境變數之後，請重新啟動主控台視窗。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-編輯 `.bash_profile`，然後新增環境變數：
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
-***
 
 ### <a name="install-the-python-library-for-luis"></a>安裝 Python LUIS 程式庫
 
@@ -136,7 +95,7 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 
 ## <a name="create-intent-for-the-app"></a>建立應用程式的意圖
-LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。  意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
+LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。 意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
 
 使用具有唯一意圖名稱的 [model.add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-)，然後傳遞應用程式識別碼、版本識別碼和新的意圖名稱。
 

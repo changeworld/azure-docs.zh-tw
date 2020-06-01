@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d45986dcd8b846015abfef9cb3719d0107c6b8d6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d62917b7c3b2029df21ed29ccfd7f64269196362
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400073"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673147"
 ---
 在本快速入門中，您將了解如何使用適用於 Linux 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 目前僅支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。
 
-此應用程式是使用語音 SDK 套件，以及 64 位元 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8) 上的 Eclipse Java IDE (v4) 來建置。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
+此應用程式是使用語音 SDK 套件，以及 64 位元 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) 上的 Eclipse Java IDE (v4) 來建置。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
 
 本指南需要 [Azure 認知服務帳戶](../get-started.md)和語音服務資源。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/)來取得訂用帳戶金鑰。
 
@@ -24,7 +24,7 @@ ms.locfileid: "81400073"
 
 本快速入門需要：
 
-* 作業系統：64 位元 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8 和 CentOS 8)
+* 作業系統：64 位元 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8 和 CentOS 7/8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/) \(英文\)
 * 僅限 [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
@@ -49,15 +49,16 @@ ms.locfileid: "81400073"
   sudo apt-get install libssl1.0.2 libasound2
   ```
 
-在 RHEL/CentOS 8 上：
-
+* 在 RHEL/CentOS 上：
+  
   ```sh
   sudo yum update
   sudo yum install alsa-lib openssl
   ```
 
-> [!NOTE]
-> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
+  > [!NOTE]
+  > - 在 RHEL/CentOS 7 上，依照[如何設定適用於 Speech SDK 的 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的指示進行。
+> - 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 交談轉譯目前只適用於 “centralus” 和 “eastasia” 區域中的 "en-US" 和 "zh-CN"。 您在其中一個區域中必須具有語音金鑰，才能使用交談轉譯。
 
@@ -67,19 +68,19 @@ ms.locfileid: "81400073"
 
 1. 啟動 Eclipse。
 
-1. 在 [Eclipse Launcher]  中，於 [工作區]  欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]  。
+1. 在 [Eclipse Launcher] 中，於 [工作區] 欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]。
 
    ![Eclipse Launcher 的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. 不久之後，Eclipse IDE 的主要視窗隨即出現。 如果出現 [歡迎使用] 畫面，請加以關閉。
 
-1. 從 Eclipse 功能表列中，選擇 [檔案]   > [新增]   > [Java 專案]  以建立新專案。 如果無法使用，請選擇 [專案]  ，然後選擇 [Java 專案]  。
+1. 從 Eclipse 功能表列中，選擇 [檔案] > [新增] > [Java 專案] 以建立新專案。 如果無法使用，請選擇 [專案]，然後選擇 [Java 專案]。
 
-1. [新增 Java 專案]  精靈隨即啟動。 [瀏覽]  範例專案的位置。 選取 [完成]  。
+1. [新增 Java 專案] 精靈隨即啟動。 [瀏覽] 範例專案的位置。 選取 [完成]。
 
    ![[新增 Java 專案] 精靈的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. 在 [套件總管]  中，以滑鼠右鍵按一下您的專案。 從操作功能表中選擇 [設定]   > [轉換成 Maven 專案]  。 選取 [完成]  。
+1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 從操作功能表中選擇 [設定] > [轉換成 Maven 專案]。 選取 [完成]。
 
    ![套件總管的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -99,20 +100,20 @@ ms.locfileid: "81400073"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.0</version>
         </dependency>
     </dependencies>
    ```
 
-1. 在 [套件總管]  中，以滑鼠右鍵按一下您的專案。 依序選擇 [屬性]  、[執行/偵錯設定]   > [新增...]  > [Java 應用程式]  。 
+1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 依序選擇 [屬性]、[執行/偵錯設定] > [新增...] > [Java 應用程式]。 
 
-1. [編輯組態]  視窗隨即出現。 在 [名稱]  欄位中輸入 **Main**，並在 [主要類別]  中使用 [搜尋]  來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]  。
+1. [編輯組態] 視窗隨即出現。 在 [名稱] 欄位中輸入 **Main**，並在 [主要類別] 中使用 [搜尋] 來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]。
 
    ![編輯啟動組態的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
 1. 將目標架構的音訊二進位檔從 **Linux-arm** 或 **Linux-x64** 複製到 Java 專案位置，例如 **/home/wcaltest/JRE-Sample-Release**
 
-1. 此外，從 [編輯組態]  視窗中選取 [環境]  頁面和 [新增]  。 [新增環境變數]  視窗隨即出現。 在 [名稱]  欄位中輸入 **LD_LIBRARY_PATH**，並在 [值]  欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
+1. 此外，從 [編輯組態] 視窗中選取 [環境] 頁面和 [新增]。 [新增環境變數] 視窗隨即出現。 在 [名稱] 欄位中輸入 **LD_LIBRARY_PATH**，並在 [值] 欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
 
 1. 將 `kws.table` 和 `participants.properties` 複製到專案資料夾 **target/classes**
 
@@ -156,24 +157,24 @@ ms.locfileid: "81400073"
 
 ## <a name="run-the-sample-application-from-eclipse"></a>從 Eclipse 執行範例應用程式
 
-1. 從 Eclipse 功能表列，選取 [執行]   > [執行]  。 
+1. 從 Eclipse 功能表列，選取 [執行] > [執行]。 
 
 1. 「語音裝置 SDK」範例應用程式會啟動，並顯示下列選項：
 
    ![「語音裝置 SDK」範例應用程式和選項](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. 嘗試新的 [交談轉譯]  示範。 透過 [工作階段]   > [啟動]  開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
    ![示範交談轉譯應用程式](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>建立及執行獨立應用程式
 
-1. 在 [套件總管]  中，以滑鼠右鍵按一下您的專案。 選擇 [匯出]  。 
-1. [匯出]  視窗隨即出現。 展開 [Java]  ，然後選取 [可執行的 JAR 檔案]  ，然後選取 [下一步]  。
+1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 選擇 [匯出]。 
+1. [匯出] 視窗隨即出現。 展開 [Java]，然後選取 [可執行的 JAR 檔案]，然後選取 [下一步]。
 
    ![[匯出] 視窗的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. [可執行的 JAR 檔案匯出]  視窗隨即出現。 選擇應用程式的 [匯出目的地]  ，然後選取 [完成]  。
+1. [可執行的 JAR 檔案匯出] 視窗隨即出現。 選擇應用程式的 [匯出目的地]，然後選取 [完成]。
  
    ![可執行的 JAR 檔案匯出的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 

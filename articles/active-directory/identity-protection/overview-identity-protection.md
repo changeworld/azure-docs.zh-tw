@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79497668"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647349"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 是什麼？
 
@@ -85,6 +85,8 @@ Identity Protection 要求使用者必須是安全性讀取者、安全性操作
 | 安全性系統管理員 | 完整存取 Identity Protection | 重設使用者的密碼 |
 | 安全性操作員 | 查看所有身分識別保護報告和 [概觀] 刀鋒視窗 <br><br> 解除使用者風險、確認安全登入、確認洩漏 | 設定或變更原則 <br><br> 重設使用者的密碼 <br><br> 設定警示 |
 | 安全性讀取者 | 查看所有身分識別保護報告和 [概觀] 刀鋒視窗 | 設定或變更原則 <br><br> 重設使用者的密碼 <br><br> 設定警示 <br><br> 在偵測上提供意見反應 |
+
+目前，安全性操作員角色無法存取有風險的登入報告。
 
 條件式存取系統管理員也可以建立原則來將登入風險視為條件，如需詳細資訊，請參閱[條件式存取：條件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)。
 

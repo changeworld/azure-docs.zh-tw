@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333b1fd94372a79e501de6be261a4cde5c6ab074
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282268"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658360"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>什麼是地區人工智慧資料科學虛擬機器？
 
-地區人工智慧資料科學虛擬機器 (也稱為地區 AI 資料科學 VM 或 Geo-DSVM) 會從 Azure 資料科學虛擬機器 (DSVM) 提供地理空間分析功能。 具體而言，此 VM 是藉由新增 ESRI 引領市場的 [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理資訊系統，來擴充 [DSVM](overview.md) 中的 AI 和資料科學工具組。
+地區人工智慧資料科學虛擬機器 (也稱為地區 AI 資料科學 VM 或 Geo-DSVM) 會從 Azure 資料科學虛擬機器 (DSVM) 提供地理空間分析功能。 具體而言，此 VM 是藉由新增 Esri 引領市場的 [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理資訊系統，來擴充 [DSVM](overview.md) 中的 AI 和資料科學工具組。
 
- 地區 AI 資料科學 VM 是 ESRI 和 Microsoft 共同合作的產品供應項目。 合作成果是一個功能強大的環境，可讓您：
+ 地區 AI 資料科學 VM 是 Esri 和 Microsoft 共同合作的產品供應項目。 合作成果是一個功能強大的環境，可讓您：
 
 - 用最受歡迎的 AI 與資料科學工具探索資料
 - 從地理或空間的角度將統計分析套用到資料
@@ -37,7 +37,7 @@ Windows 2016 DSVM 可支援 地區 AI 資料科學 VM。 Geo-DSVM 上也預先�
 
 Microsoft 的[資料科學虛擬機器 (DSVM)](overview.md) 是在 Azure 上常用的實驗和定型環境，可作為 AI、機器學習和資料科學工具的裝載主機。 這些平台和工具都方便地預先設定，幫助您立即獲得生產力。
 
-地區 AI 資料科學 VM 結合了 DSVM 的預測功能與 Azure 雲端的擴充性以及來自 [ESRI](https://www.esri.com) 的地理空間分析軟體。 此開創性整合為資料科學家和地理空間分析師提供了具生產力的平臺，讓其可以從資料取得新的情報，並找出新的商機。
+地區 AI 資料科學 VM 結合了 DSVM 的預測功能與 Azure 雲端的擴充性以及來自 [Esri](https://www.esri.com) 的地理空間分析軟體。 此開創性整合為資料科學家和地理空間分析師提供了具生產力的平臺，讓其可以從資料取得新的情報，並找出新的商機。
 
 
 ## <a name="next-steps"></a>後續步驟

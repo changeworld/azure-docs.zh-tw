@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dc748260c6e71eaaa469defb227d5cc2748a1345
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419552"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645312"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -30,8 +30,9 @@ Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure VNet
 
 >[!IMPORTANT]
 >只有在具有受控工作區 VNet 的 Azure Synapse 工作區中，才支援受控私人端點。
+
 >[!NOTE]
->建議您使用受控私人端點連線到所有資料來源。 來自受控工作區 VNet 的所有輸出流量未來都會遭到封鎖。
+>來自受控工作區 VNet 的所有輸出流量 (除了透過受控的私人端點以外) 未來都會遭到封鎖。 建議您建立受控私人端點，以連線到工作區外部的所有 Azure 資料來源。 
 
 當您在 Azure Synapse 中建立受控私人端點時，會以「擱置」狀態建立私人端點連線。 已起始核准工作流程。 私人連結資源的擁有者會負責核准或拒絕連線。
 
@@ -45,7 +46,7 @@ SQL 集區和 SQL 隨選是 Azure Synapse 工作區中的分析功能。 這些�
 
 建立工作區時，Azure Synapse 會在該工作區中，在 SQL 集區和 SQL 隨選中建立兩個受控私人端點。 
 
-這兩個受控私人端點會列在 Azure Synapse Studio 中。 選取左側導覽中的 [管理]  ，然後選取 [受控虛擬網路]  以在 Studio 中查看。
+這兩個受控私人端點會列在 Azure Synapse Studio 中。 選取左側導覽中的 [管理]，然後選取 [受控虛擬網路] 以在 Studio 中查看。
 
 以 SQL 集區為目標的受控私人端點稱為 *synapse-ws-sql--\<workspacename\>* ，而以 SQL 隨選為目標的受控私人端點則稱為 *synapse-ws-sqlOnDemand--\<workspacename\>* 。
 ![適用於 SQL 集區的受控私人端點和 SQL 隨選](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)

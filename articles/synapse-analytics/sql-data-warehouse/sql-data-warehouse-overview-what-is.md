@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f21f1f897aa6bc1ed5d1151ed23b24d82909d168
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585363"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835116"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什麼是 Azure Synapse Analytics (先前為 SQL DW)？
 
@@ -66,5 +66,5 @@ Synapse SQL 集區會將資料儲存到具有單欄式儲存體的關聯式資�
 - 搜尋[部落格](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - 提交[功能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md)
-- 搜尋 [MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- 搜尋 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - 搜尋 [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)

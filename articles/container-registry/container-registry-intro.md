@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40a1d75ff90efafff14cd27ab439df8ab3729c50
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77132037"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674312"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的私人 Docker 容器登錄的簡介
 
@@ -36,7 +36,7 @@ Azure 會提供工具 (例如 Azure 命令列介面、Azure 入口網站和 API 
 
 ## <a name="key-features"></a>主要功能
 
-* **登錄 SKU** - 在您的 Azure 訂用帳戶中建立一或多個容器登錄。 登錄可以三個 SKU 提供：[基本、標準和進階](container-registry-skus.md)，每個 SKU 都支援 Webhook 整合、使用 Azure Active Directory 的登錄驗證，以及刪除功能。 在與您的部署相同的 Azure 位置建立登錄，以利用容器映像接近網路的本機儲存體。 將進階登錄庫的[異地複寫](container-registry-geo-replication.md)功能用於進階複寫和容器映像散發案例。 
+* **登錄服務層** - 在您的 Azure 訂用帳戶中建立一或多個容器登錄。 登錄可以三個層次提供：[基本、標準和進階](container-registry-skus.md)，每個 SKU 都支援 Webhook 整合、使用 Azure Active Directory 的登錄驗證，以及刪除功能。 在與您的部署相同的 Azure 位置建立登錄，以利用容器映像接近網路的本機儲存體。 將進階登錄庫的[異地複寫](container-registry-geo-replication.md)功能用於進階複寫和容器映像散發案例。 
 
 * **安全性和存取權** - 使用 Azure CLI 或標準 `docker login` 命令登入登錄。 Azure Container Registry 會透過 HTTPS 傳輸容器映像並支援 TLS 以保護用戶端連線。 
 
@@ -45,7 +45,7 @@ Azure 會提供工具 (例如 Azure 命令列介面、Azure 入口網站和 API 
 
   您可以使用採用 Azure Active Directory 的[服務主體](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理員帳戶，對容器登錄進行[存取控制](container-registry-authentication.md)。 使用角色型存取控制 (RBAC)，將使用者或系統的細微權限指派給登錄。
 
-  進階 SKU 的安全性功能包括可供映像標籤簽署的[內容信任](container-registry-content-trust.md)，以及[防火牆和虛擬網路 (預覽)](container-registry-vnet.md)可限制登錄的存取權。 Azure 資訊安全中心可以選擇性地與 Azure Container Registry 整合，以便在每次將映像推送至登錄時[掃描映像](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)。
+  進階服務層的安全性功能包括可供映像標籤簽署的[內容信任](container-registry-content-trust.md)，以及[防火牆和虛擬網路 (預覽)](container-registry-vnet.md)可限制登錄的存取權。 Azure 資訊安全中心可以選擇性地與 Azure Container Registry 整合，以便在每次將映像推送至登錄時[掃描映像](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)。
 
 * **支援的映像和成品** - 群組在存放庫中，每個映像是 Docker 相容容器的唯讀快照集。 Azure 容器登錄庫可以包含 Windows 和 Linux 映像。 您可以控制您的所有容器部署的映像名稱。 使用標準 [Docker 命令](https://docs.docker.com/engine/reference/commandline/) 將映像推送到儲存機制，或從儲存機制提取映像。 除了 Docker 容器映像外，Azure Container Registry 還會將[相關的內容格式](container-registry-image-formats.md) (例如所建置的 [Helm 圖表](container-registry-helm-repos.md)和映像) 儲存到 [Open Container Initiative (OCI) 映像格式規格](https://github.com/opencontainers/image-spec/blob/master/spec.md)。
 

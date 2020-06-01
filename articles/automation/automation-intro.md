@@ -1,24 +1,20 @@
 ---
-title: Azure 自動化概觀
-description: 了解如何使用 Azure 自動化，將基礎結構和應用程式的生命週期自動化。
+title: Azure 自動化簡介
+description: 本文說明 Azure 自動化是什麼，以及如何將其使用於進行基礎結構和應用程式的生命週期自動化。
 services: automation
 ms.subservice: process-automation
 keywords: azure 自動化, DSC, powershell, 狀態組態, 更新管理, 變更追蹤, DSC, 清查, Runbook, python, 圖形
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010234"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835269"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
-
-本文提供 Azure 自動化的簡短概觀，並回答一些常見問題。 如需不同功能的詳細資訊，請瀏覽本概觀的所有連結。
-
-## <a name="about-azure-automation"></a>關於 Azure 自動化
 
 Azure 自動化會提供以雲端為基礎的自動化和設定服務，在您的 Azure 和非 Azure 環境之間支援一致的管理； 其中包含流程自動化、組態管理、更新管理、共用功能及異質功能。 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
 
@@ -30,15 +26,24 @@ Azure 自動化中的流程自動化能讓您將頻繁、費時且容易產生�
 
 流程自動化可將 Azure 服務與部署、設定及管理您端對端程序所需的其他公用系統進行整合。 服務可讓您使用 PowerShell 或 Python，以圖形方式撰寫 [Runbook](automation-runbook-types.md)。 您可以使用[混合式 Runbook 背景工作](automation-hybrid-runbook-worker.md)，在內部部署環境之間協調，從而整合管理。 [Webhook](automation-webhooks.md) 可讓您透過從 ITSM、DevOps 和監視系統觸發自動化來滿足要求，並確保持續傳遞和作業。 
 
-## <a name="configuration-management"></a>設定管理
+## <a name="configuration-management"></a>組態管理
 
-Azure 自動化[狀態組態](automation-dsc-overview.md) 是適用於 PowerShell 預期ˊ狀態組態 (DSC) 的以雲端為基礎架構解決方案，可提供企業環境所需的服務。 使用此功能，您可以在 Azure 自動化中管理 DSC 資源，並將組態從 Azure 雲端中的 DSC 提取伺服器套用至虛擬或實體機器。 您可以在位於雲端或內部部署的 Windows 或 Linux 實體及虛擬機器上，監視及自動更新機器設定。 清查支援可讓您查詢客體內的資源，看見已安裝的應用程式和其他設定項目。
- 
-Azure 自動化狀態組態服務提供豐富的報告和搜尋功能。 您可以使用這些功能來尋找有關作業系統內所設定內容的詳細資訊。 此服務支援跨服務、精靈、軟體、登錄和您環境中的檔案變更追蹤，以協助您診斷不必要的變更並引發警示。 重要的相關功能是主要事件的報告；例如，當節點偏離其指派的組態時所發出的事件。 
+Azure 自動化中的設定管理可讓您存取兩項功能：
+
+* 變更追蹤與詳細目錄
+* Azure 自動化狀態設定
+
+### <a name="change-tracking-and-inventory"></a>變更追蹤與詳細目錄
+
+變更追蹤和清查結合了變更追蹤和清查功能，可讓您追蹤虛擬機器和伺服器基礎結構的變更。 此服務支援跨服務、精靈、軟體、登錄和您環境中的檔案變更追蹤，以協助您診斷不必要的變更並引發警示。 清查支援可讓您查詢客體內的資源，看見已安裝的應用程式和其他設定項目。 如需這項功能的詳細資訊，請參閱[變更追蹤和清查](change-tracking.md)。
+
+### <a name="azure-automation-state-configuration"></a>Azure 自動化狀態設定
+
+Azure 自動化[狀態設定](automation-dsc-overview.md)是適用於 PowerShell Desired State Configuration (DSC) 的雲端式功能，可提供企業環境所需的服務。 使用此功能，您可以在 Azure 自動化中管理 DSC 資源，並將組態從 Azure 雲端中的 DSC 提取伺服器套用至虛擬或實體機器。 
 
 ## <a name="update-management"></a>更新管理
 
-Azure 自動化包括跨混合式環境中適用於 Windows 和 Linux 系統的[更新管理](automation-update-management.md)解決方案。 使用此解決方案，您可以看見跨 Azure 和其他雲端，以及內部部署間的更新相容性。 更新管理可讓您建立排程部署，在定義的維護時間內協調更新安裝。 如果不應該在機器上安裝更新，您可以使用更新管理功能將其從部署中排除。
+Azure 自動化包括跨混合式環境中適用於 Windows 和 Linux 系統的[更新管理](automation-update-management.md)功能。 更新管理可讓您看見跨 Azure 和其他雲端及內部部署環境的更新相容性。 此功能可讓您建立排程部署，在定義的維護時間內協調更新安裝。 如果不應該在電腦上安裝更新，您可使用更新管理功能將其從部署中排除。
 
 ## <a name="shared-capabilities"></a>共用功能
 
@@ -63,7 +68,7 @@ Azure 自動化支援角色型存取控制 (RBAC)，以控制自動化帳戶和�
 
 ### <a name="source-control-integration"></a>原始檔控制整合
 
-Azure 自動化允許[原始檔控制整合](source-control-integration.md)。 此功能將組態升階為程式碼，Runbook 或設定可在其中簽入原始檔控制系統。
+Azure 自動化支援[原始檔控制整合](source-control-integration.md)。 此功能將組態升階為程式碼，Runbook 或設定可在其中簽入原始檔控制系統。
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>異質支援 (Windows 和 Linux)
 
@@ -85,7 +90,7 @@ Azure 自動化可支援透過基礎結構和應用程式的生命週期進行�
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>自動化的定價
+## <a name="pricing-for-azure-automation"></a>Azure 自動化的定價
 
 您可以在[定價](https://azure.microsoft.com/pricing/details/automation/)頁面上檢閱 Azure 自動化的相關價格。
 
@@ -93,4 +98,3 @@ Azure 自動化可支援透過基礎結構和應用程式的生命週期進行�
 
 > [!div class="nextstepaction"]
 > [建立自動化帳戶](automation-quickstart-create-account.md)
-

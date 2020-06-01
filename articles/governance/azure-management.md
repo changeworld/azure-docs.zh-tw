@@ -1,14 +1,14 @@
 ---
 title: Azure 管理概觀 - Azure 控管
 description: 管理 Azure 應用程式與資源的區域概觀，並提供 Azure 管理工具內容的連結。
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75980906"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828142"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 管理服務概觀
 
@@ -18,7 +18,7 @@ ms.locfileid: "75980906"
 
 下圖說明維護應用程式或資源所需的不同管理範圍。 您可以將這些不同的區域視為生命週期。 在資源的存留期間內，各個領域必須接續進行。 此一資源生命週期始於最初的部署，在經歷持續的作業後，因遭到淘汰而告終。
 
-![Azure 中的管理專業領域](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 中的管理專業領域" border="false":::
 
 沒有單一 Azure 服務能完全符合特定管理領域的需求。 必須在多項服務的搭配運作下，才能符合這些需求。 某些服務可提供針對 Web 應用程式進行監視的功能，例如 Application Insights。 有些服務則可儲存其他服務的管理資料，例如 Azure 監視器記錄。 這項功能可讓您對不同服務所收集的不同資料類型進行分析。
 
@@ -36,7 +36,9 @@ ms.locfileid: "75980906"
 ## <a name="govern"></a>治理
 
 治理提供多項機制和流程，以便維持控制 Azure 中的應用程式與資源。 它同時也涉及規劃您的新措施，以及設定策略層級的優先順序。
-在 Azure 中的治理主要是透過兩個服務進行實作。 [Azure 原則](./policy/overview.md)可讓您建立、指派和管理原則定義，以強制執行資源的規則。 此功能可確保這些資源能夠符合公司的標準規範。 針對您的 Azure 資源和其他雲端服務提供者，[Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)可讓您追蹤雲端使用量和費用。
+在 Azure 中的治理主要是透過兩個服務進行實作。 [Azure 原則](./policy/overview.md)可讓您建立、指派和管理原則定義，以強制執行資源的規則。
+此功能可確保這些資源能夠符合公司的標準規範。
+針對您的 Azure 資源和其他雲端服務提供者，[Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)可讓您追蹤雲端使用量和費用。
 
 ## <a name="secure"></a>安全
 

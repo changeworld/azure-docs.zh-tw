@@ -1,5 +1,5 @@
 ---
-title: 教學課程：透過設計工具部署機器學習模型
+title: 教學課程：使用設計工具部署 ML 模型
 titleSuffix: Azure Machine Learning
 description: 本教學課程說明如何在 Azure Machine Learning 設計工具中建置預測性分析解決方案 (預覽)。 使用拖放模組進行機器學習模型的定型、評分和部署。
 author: peterclu
@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.custom: designer
+ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389387"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656531"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教學課程：透過設計工具部署機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +38,7 @@ ms.locfileid: "80389387"
 
 ### <a name="create-a-real-time-inference-pipeline"></a>建立即時推斷管線
 
-1. 在管線畫布上方，選取 [建立推斷管線]   > [即時推斷管線]  。
+1. 在管線畫布上方，選取 [建立推斷管線] > [即時推斷管線]。
 
     ![顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
@@ -45,9 +46,9 @@ ms.locfileid: "80389387"
 
    ![此螢幕擷取畫面顯示管線在做好部署準備後的預期組態](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    當您選取 [建立推斷管線]  時，會發生若干情況：
+    當您選取 [建立推斷管線] 時，會發生若干情況：
     
-    * 定型的模型會儲存為模組選擇區中的**資料集**模組。 您可以在 [我的資料集]  下方找到該項目。
+    * 定型的模型會儲存為模組選擇區中的**資料集**模組。 您可以在 [我的資料集] 下方找到該項目。
     * 訓練模組 (例如**訓練模型**和**分割資料**) 會被移除。
     * 儲存的定型模型會加回管線中。
     * 會新增 **Web 服務輸入**和 **Web 服務輸出**模組。 這些模組會顯示使用者資料將在何處進入管線，以及資料會在何處傳回。
@@ -56,45 +57,45 @@ ms.locfileid: "80389387"
     > 根據預設，**Web 服務輸入**會預期與用來建立預測管線的訓練資料相同的資料結構描述。 在此情況下，價格會包含在結構描述中。 不過，在預測期間並不會以價格作為因素。
     >
 
-1. 選取 [提交]  ，並使用您在第一部分中使用的相同計算目標和實驗。
+1. 選取 [提交]，並使用您在第一部分中使用的相同計算目標和實驗。
 
     如果是第一次執行，您的管線可能需要 20 分鐘的時間才能完成執行。 預設計算設定的最小節點大小為 0，這表示設計工具必須在閒置之後配置資源。 重複的管線執行花費較少的時間，因為已經配置計算資源。 此外，設計工具會針對每個模組使用快取的結果，進一步提升效率。
 
-1. 選取 [部署]  。
+1. 選取 [部署]。
 
 ## <a name="create-an-inferencing-cluster"></a>建立推斷叢集
 
 在出現的對話方塊中，您可以從任何現有的 Azure Kubernetes Service (AKS) 叢集進行選取，以將模型部署至其中。 如果您沒有 AKS 叢集，請使用下列步驟建立一個。
 
-1. 在出現的對話方塊中選取 [計算]  ，以移至 [計算]  頁面。
+1. 在出現的對話方塊中選取 [計算]，以移至 [計算] 頁面。
 
-1. 在導覽功能區中，選取 [推斷叢集]   > [+ 新增]  。
+1. 在導覽功能區中，選取 [推斷叢集] > [+ 新增]。
 
     ![顯示如何移至 [新增推斷叢集] 窗格的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
 1. 在推斷叢集窗格中，設定新的 Kubernetes 服務。
 
-1. 輸入 aks-compute  作為**計算名稱**。
+1. 輸入 aks-compute 作為**計算名稱**。
     
 1. 選取附近的適用區域作為**區域**。
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
     > [!NOTE]
-    > 建立新的 AKS 服務需要約 15 分鐘。 您可以在 [推斷叢集]  頁面上查看佈建狀態。
+    > 建立新的 AKS 服務需要約 15 分鐘。 您可以在 [推斷叢集] 頁面上查看佈建狀態。
     >
 
 ## <a name="deploy-the-real-time-endpoint"></a>部署即時端點
 
 在您的 AKS 服務完成佈建後，請回到即時推斷管線以完成部署。
 
-1. 選取畫布上方的 [部署]  。
+1. 選取畫布上方的 [部署]。
 
-1. 選取 [部署新的即時端點]  。 
+1. 選取 [部署新的即時端點]。 
 
 1. 選取您建立的 AKS 叢集。
 
-1. 選取 [部署]  。
+1. 選取 [部署]。
 
     ![顯示如何設定新即時端點的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
@@ -102,15 +103,15 @@ ms.locfileid: "80389387"
 
 ## <a name="test-the-real-time-endpoint"></a>測試即時端點
 
-部署完成後，您即可移至 [端點]  頁面，以測試您的即時端點。
+部署完成後，您即可移至 [端點] 頁面，以測試您的即時端點。
 
-1. 在 [端點]  頁面上，選取您部署的端點。
+1. 在 [端點] 頁面上，選取您部署的端點。
 
     ![顯示即時端點索引標籤的螢幕擷取畫面，其中醒目提示了最近建立的端點](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
-1. 選取 [測試]  。
+1. 選取 [測試]。
 
-1. 您可以手動輸入測試資料或使用自動填入的範例資料，然後選取 [測試]  。
+1. 您可以手動輸入測試資料或使用自動填入的範例資料，然後選取 [測試]。
 
     入口網站會將測試要求提交至端點，並顯示結果。 雖然對輸入資料會產生價格值，但該值並不會用來產生預測值。
 

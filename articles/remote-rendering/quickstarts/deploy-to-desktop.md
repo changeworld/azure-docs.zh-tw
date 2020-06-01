@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415713"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758991"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>快速入門：將 Unity 範例部署到桌面
 
@@ -24,7 +24,7 @@ ms.locfileid: "81415713"
 >* 將範例部署到電腦
 >* 在電腦上執行範例
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本快速入門中，我們從以下位置部署範例專案：[快速入門：使用 Unity 轉譯模型](render-model.md)。
 
@@ -34,28 +34,28 @@ ms.locfileid: "81415713"
 
 桌上型電腦目前僅支援一般傳統型應用程式，因此必須停用 VR 支援。
 
-1. 開啟 [編輯] > [專案設定...] 
-1. 選取左側的 [播放器]  。
-1. 選取 [通用 Windows 平台設定]  索引標籤。
-1. 展開 [XR 設定]  。
-1. 停用 [虛擬實境支援]  。
+1. 開啟 [編輯] > [專案設定...]
+1. 選取左側的 [播放器]。
+1. 選取 [通用 Windows 平台設定] 索引標籤。
+1. 展開 [XR 設定]。
+1. 停用 [虛擬實境支援]。
     ![播放器設定](./media/unity-disable-xr.png)
-1. 在 [XR 設定]  之上，展開 [發佈設定]  。
-1. 在 [支援的裝置系列]  中，確定已勾選 [傳統型]  。
+1. 在 [XR 設定] 之上，展開 [發佈設定]。
+1. 在 [支援的裝置系列] 中，確定已勾選 [傳統型]。
 
 ## <a name="build-the-sample-project"></a>建置範例專案
 
-1. 開啟 [檔案] -> [組建設定]  。
-1. 將 [平台]  變更為 [通用 Windows 平台]  。
-1. 將 [目標裝置]  設定為 [電腦]  。
-1. 將 [架構]  設定為 [x86]  。
-1. 將 [組建類型]  設定為 [D3D 專案]  。
+1. 開啟 [檔案] -> [組建設定]。
+1. 將 [平台] 變更為 [通用 Windows 平台] (也支援 [獨立電腦]，但此處不會使用)。
+1. 將 [目標裝置] 設定為 [電腦]。
+1. 將 [架構] 設定為 [x86]。
+1. 將 [組建類型] 設定為 [D3D 專案]。
   ![組建設定](./media/unity-build-settings-pc.png)
-1. 選取 [切換至平台]  。
-1. 按下 [建置]  (或 [建置並執行]) 時，系統會要求您選取應儲存解決方案的資料夾。
+1. 選取 [切換至平台]。
+1. 按下 [建置] (或 [建置並執行]) 時，系統會要求您選取應儲存解決方案的資料夾。
 1. 使用 Visual Studio 開啟所產生的 **Quickstart.sln**。
-1. 將設定變更為 [版本]  和 [x86]  。
-1. 將偵錯工具模式切換到 [本機電腦]  。
+1. 將設定變更為 [版本] 和 [x86]。
+1. 將偵錯工具模式切換到 [本機電腦]。
   ![解決方案設定](./media/unity-deploy-config-pc.png)
 1. 建置解決方案 (F7)。
 

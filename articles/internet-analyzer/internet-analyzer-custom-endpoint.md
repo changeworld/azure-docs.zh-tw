@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0b5647dd2e43c8a73bb999af559a579c14bb86a1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76713093"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683973"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>測量要在 Internet Analyzer 測試中評估的自訂端點 
 
@@ -31,7 +31,7 @@ ms.locfileid: "76713093"
 
 1. 在[這裡](https://fpc.msedge.net/apc/trans.gif)下載透明的單一像素測試影像。 這個單一像素影像就是用戶端 JavaScript 將擷取來測量效能的資產。
 2. 在您的自訂 Web 應用程式中，將此測試影像部署於可公開存取的路徑中。 此路徑應透過 HTTPS 才能運作。 
-3. 在您的測試建立期間，將完整的自訂端點 URL (例如 https://contoso.com/test/trans.gif) 複製到自訂端點欄位中。
+3. 在您的測試建立期間，將完整的自訂端點 URL (例如 `https://contoso.com/test/trans.gif`) 複製到自訂端點欄位中。
 
 ## <a name="next-steps"></a>後續步驟
 

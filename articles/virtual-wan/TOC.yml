@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: 檢視虛擬中樞的有效路由
           href: effective-routes-virtual-hub.md
+        - name: 多個 ISP 連結 - Azure 路徑選擇
+          href: path-selection-multiple-links.md
     - name: 安全性
       items:
         - name: 在中樞安裝 Azure 防火牆

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420942"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652650"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics 功能提要
 
@@ -30,8 +30,8 @@ Azure Synapse Analytics 功能提要會引導您了解服務及重要命令的�
 ## <a name="concepts"></a>概念
 | 名詞和動詞                         | 作用       |
 |:---                                 |:---                 |
-| **Synapse 工作區 (預覽)** | 在 Azure 中進行雲端式企業分析的安全共同作業界限。 工作區會部署在特定區域中，並且具有相關聯的 ADLSg2 帳戶和檔案系統 (用於儲存暫存資料)。 工作區位在資源群組底下。 |
-| **SQL Analytics**   | 使用集區或隨選功能執行分析。  |
+| **Synapse 工作區 (預覽)** | 在 Azure 中進行雲端式企業分析的安全共同作業界限。 工作區會部署在特定區域中，並且具有相關聯的 ADLS Gen2 帳戶和檔案系統 (用於儲存暫存資料)。 工作區位在資源群組底下。 |
+| **Synapse SQL**   | 使用集區或隨選功能執行分析。  |
 | **SQL 集區**   | 您可以在工作區中部署 0 對 N 的 SQL 佈建資源及其對應資料庫。 每個 SQL 集區都有相關聯的資料庫。 SQL 集區可以透過手動或自動方式進行調整、暫停及繼續。 SQL 集區可以從 100 DWU 擴充到 30,000 DWU。       |
 | **SQL 隨選 (預覽)**   | 針對大規模資料所建立的分散式資料處理系統，可讓您對資料湖中的資料執行 T-SQL 查詢。 這是無伺服器服務，因此您不需要管理基礎結構。       |
 |**Apache Spark** | Spark 集區中使用的 Spark 執行階段。 目前支援的版本為 Spark 2.4，其搭配 Python 3.6.1、Scala 2.11.12、適用於 Apache Spark 0.5 的 .NET 支援和 Delta Lake 0.3 。  | 
@@ -55,7 +55,7 @@ Azure Synapse Analytics 功能提要會引導您了解服務及重要命令的�
 
 - [建立工作區](quickstart-create-workspace.md)
 - [使用 Synapse Studio](quickstart-synapse-studio.md)
-- [建立 SQL 集區](quickstart-create-sql-pool.md)
+- [建立 SQL 集區](quickstart-create-sql-pool-portal.md)
 - [使用 SQL 隨選](quickstart-sql-on-demand.md)
-- [建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md)
+- [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
 

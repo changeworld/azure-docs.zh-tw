@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195341"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873113"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>快速入門：使用 Swift 或 Objective-C 建立搭配 Azure Spatial Anchors 的 iOS 應用程式
 
@@ -101,6 +101,8 @@ open ./SampleObjC.xcworkspace
 
 找出 `spatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+找出 `startSession()` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`cloudSession!.configuration.accountDomain = "MyAccountDomain";`。
+
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 開啟 `iOS/Objective-C/SampleObjC/BaseViewController.m`。
@@ -109,22 +111,24 @@ open ./SampleObjC.xcworkspace
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+找出 `startSession()` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`_cloudSession.configuration.accountDomain = @"MyAccountDomain";`。
+
 ---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>將應用程式部署到您的 iOS 裝置
 
-將 iOS 裝置連接至 Mac，並將 [作用中配置]  設定為您的 iOS 裝置。
+將 iOS 裝置連接至 Mac，並將 [作用中配置] 設定為您的 iOS 裝置。
 
 ![選取裝置](./media/get-started-ios/select-device.png)
 
-選取 [建置然後執行目前的配置]  。
+選取 [建置然後執行目前的配置]。
 
 ![部署並執行](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
 > 如果您看到 `library not found for -lPods-SampleObjC` 錯誤，您可能開到 `.xcodeproj` 檔案，而不是 `.xcworkspace`。 開啟 `.xcworkspace`，然後再試一次。
 
-在 Xcode 中，按下 [停止]  即可停止應用程式。
+在 Xcode 中，按下 [停止] 即可停止應用程式。
 
 ## <a name="troubleshooting"></a>疑難排解
 

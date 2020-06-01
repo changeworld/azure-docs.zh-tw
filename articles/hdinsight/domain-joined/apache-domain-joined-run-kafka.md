@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78204730"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677548"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache Kafka 原則 (預覽)
 
@@ -48,9 +48,9 @@ ms.locfileid: "78204730"
 
 1. 開啟 **Ranger 管理員 UI**。
 
-2. 選取 [Kafka]  底下的 [\<ClusterName>_kafka]  。 可能會列出其中一個預先設定的原則。
+2. 選取 [Kafka] 底下的 [\<ClusterName>_kafka]。 可能會列出其中一個預先設定的原則。
 
-3. 選取 [新增原則]  ，並輸入下列值︰
+3. 選取 [新增原則]，並輸入下列值︰
 
    |設定  |建議的值  |
    |---------|---------|
@@ -66,11 +66,11 @@ ms.locfileid: "78204730"
 
    ![Apache Ranger 管理員 UI 建立原則1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
-   如果 [選取使用者]  未自動填入網域使用者，請稍候 Ranger 與 Azure AD 同步處理。
+   如果 [選取使用者] 未自動填入網域使用者，請稍候 Ranger 與 Azure AD 同步處理。
 
-4. 選取 [新增]  以儲存規則。
+4. 選取 [新增] 以儲存規則。
 
-5. 選取 [新增原則]  ，並輸入下列值︰
+5. 選取 [新增原則]，並輸入下列值︰
 
    |設定  |建議的值  |
    |---------|---------|
@@ -81,7 +81,7 @@ ms.locfileid: "78204730"
 
    ![Apache Ranger 管理員 UI 建立原則2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. 選取 [新增]  以儲存規則。
+6. 選取 [新增] 以儲存規則。
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>在 Kafka 叢集中使用 ESP 建立主題
 
@@ -147,7 +147,8 @@ ms.locfileid: "78204730"
 
 4. 依照**建置並部署範例**底下的步驟 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user**使用。
 
-**注意：在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。**
+> [!NOTE]  
+> 在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。
 
 5. 藉由執行下列命令，確認 **sales_user1** 可產生至主題 `salesevents`：
 
@@ -192,10 +193,10 @@ ms.locfileid: "78204730"
 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 Kafka 叢集：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
-1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
-1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。 
-1. 按一下 **[刪除]** 。 按一下 [是]  。
+1. 在頂端的 [搜尋] 方塊中，輸入 **HDInsight**。
+1. 在 [服務] 底下，選取 [HDInsight 叢集]。
+1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]。 
+1. 按一下 **[刪除]** 。 按一下 [是] 。
 
 ## <a name="troubleshooting"></a>疑難排解
 如果 kafka-producer-consumer.jar 無法在已加入網域的叢集中運作，請確定您使用的是 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。

@@ -1,17 +1,16 @@
 ---
 title: 在 Azure 自動化中建立 PowerShell 工作流程 Runbook
-description: 示範如何建立、測試及發佈簡單 PowerShell 工作流程 Runbook 的教學課程。
-keywords: powershell 工作流程, powershell 工作流程範例, 工作流程 powershell
+description: 本文說明如何建立、測試及發佈簡單的 PowerShell 工作流程 Runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: cdf43bb82baf28ba21e00d0f58dc8bafe84fbe42
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 80c84693f466ea30c4a65a8960472a55e98d1efe
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725332"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714452"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>教學課程：建立 PowerShell 工作流程 Runbook
 
@@ -22,9 +21,6 @@ ms.locfileid: "81725332"
 > * 測試和發佈 Runbook
 > * 執行和追蹤 Runbook 作業的狀態
 > * 更新 Runbook 以使用 Runbook 參數啟動 Azure 虛擬機器
-
->[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,13 +38,13 @@ ms.locfileid: "81725332"
 
    [自動化帳戶] 頁面提供這個帳戶中資源的快速檢視。 您應該已經有一些資產。 其中大部分資產是自動包含在新自動化帳戶的模組。 您也應該擁有與您的訂用帳戶相關聯的認證資產。
  
-2. 選取 [程序自動化]  底下的 [Runbook]  ，以開啟 Runbook 清單。
+2. 選取 [程序自動化] 底下的 [Runbook]，以開啟 Runbook 清單。
 
-3. 藉由選取 [建立 Runbook]  來建立新的 Runbook。
+3. 藉由選取 [建立 Runbook] 來建立新的 Runbook。
 
-4. 將 Runbook 命名為「MyFirstRunbook-Workflow」  。
+4. 將 Runbook 命名為「MyFirstRunbook-Workflow」 。
 
-5. 在此情況下，您即將建立 [PowerShell 工作流程 Runbook](../automation-runbook-types.md#powershell-workflow-runbooks)。 針對 [Runbook 類型]  ，選取 [PowerShell 工作流程]  。
+5. 在此情況下，您即將建立 [PowerShell 工作流程 Runbook](../automation-runbook-types.md#powershell-workflow-runbooks)。 針對 [Runbook 類型]，選取 [PowerShell 工作流程]。
 
 6. 按一下 [建立]  來建立 Runbook 並開啟文字式編輯器。
 
@@ -73,15 +69,15 @@ ms.locfileid: "81725332"
    }
    ```
 
-3. 按一下 [儲存]  來儲存 Runbook。
+3. 按一下 [儲存] 來儲存 Runbook。
 
 ## <a name="step-3---test-the-runbook"></a>步驟 3 - 測試 Runbook
 
 在您發佈 Runbook 之前，為了使其可用於生產環境，您應該進行測試以確定其可正常運作。 測試 Runbook 時，系統會執行其「草稿」版本並可讓您以互動方式檢視其輸出。
 
-1. 選取 [測試窗格]  來開啟 [測試] 窗格。
+1. 選取 [測試窗格] 來開啟 [測試] 窗格。
 
-2. 按一下 [開始]  以開始測試，並測試唯一啟用的選項。
+2. 按一下 [開始] 以開始測試，並測試唯一啟用的選項。
 
 3. 請注意，系統會建立 [Runbook 作業](../automation-runbook-execution.md)並在窗格中顯示其狀態。
 
@@ -97,25 +93,25 @@ ms.locfileid: "81725332"
 
 您所建立的 Runbook 仍處於草稿模式。 您必須先將其發佈，才能在生產環境中加以執行。 當您發佈 Runbook 時，您會使用草稿版本覆寫現有的已發佈版本。 在此情況下，因為您剛剛建立 Runbook，所以還沒有已發佈的版本。
 
-1. 按一下 [發佈]  來發佈 Runbook，然後出現提示時按一下 [是]  。
+1. 按一下 [發佈] 來發佈 Runbook，然後出現提示時按一下 [是]。
 
-2. 向左捲動以在 [Runbook]  頁面上流檢視 Runbook，並請注意 [撰寫狀態]  值會設為 [已發佈]  。
+2. 向左捲動以在 [Runbook] 頁面上流檢視 Runbook，並請注意 [撰寫狀態] 值會設為 [已發佈]。
 
 3. 捲動回到右側，檢視 **MyFirstRunbook-Workflow** 的頁面。
 
    頂端的選項可讓您立即啟動 Runbook、排程在未來啟動時間，或建立 [Webhook](../automation-webhooks.md)，以便透過 HTTP 呼叫啟動該 Runbook。
 
-4. 選取 [開始]  ，然後在系統提示時選取 [是]  ，以啟動 Runbook。
+4. 選取 [開始]，然後在系統提示時選取 [是]，以啟動 Runbook。
 
    ![啟動 Runbook](../media/automation-tutorial-runbook-textual/automation-runbook-controls-start.png)
 
 5. [作業] 窗格會針對已建立的 Runbook 作業開啟。 在此情況下，讓窗格保持開啟狀態，以便觀看作業的進度。
 
-6. 請注意，作業狀態會顯示在 [作業摘要]  中。 此狀態會符合您在測試 Runbook 時看到的狀態。
+6. 請注意，作業狀態會顯示在 [作業摘要] 中。 此狀態會符合您在測試 Runbook 時看到的狀態。
 
    ![工作摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-7. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]  。 [輸出] 頁面隨即開啟，您可在其中看到 `Hello World` 訊息。
+7. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]。 [輸出] 頁面隨即開啟，您可在其中看到 `Hello World` 訊息。
 
    ![工作摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
 
@@ -127,7 +123,7 @@ ms.locfileid: "81725332"
 
 10. 關閉 [資料流] 窗格和 [工作] 窗格，以返回 MyFirstRunbook 頁面。
 
-11. 按一下 [資源]  底下的 [作業]  ，以開啟此 Runbook 的 [作業] 頁面。 此頁面會列出 Runbook 建立的所有作業。 由於您只執行一次作業，所以應該只會看到一項作業列出。
+11. 按一下 [資源] 底下的 [作業]，以開啟此 Runbook 的 [作業] 頁面。 此頁面會列出 Runbook 建立的所有作業。 由於您只執行一次作業，所以應該只會看到一項作業列出。
 
    ![工作](../media/automation-tutorial-runbook-textual/runbook-control-job-tile.png)
 
@@ -140,7 +136,7 @@ ms.locfileid: "81725332"
 >[!NOTE]
 >針對 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](../automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
 
-1. 瀏覽至 MyFirstRunbook-Workflow 頁面，然後按一下 [編輯]  以開啟文字編輯器。
+1. 瀏覽至 MyFirstRunbook-Workflow 頁面，然後按一下 [編輯] 以開啟文字編輯器。
 
 2. 刪除 `Write-Output` 行。
 
@@ -159,7 +155,7 @@ ms.locfileid: "81725332"
    $AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
    ```
 
-5. 按一下 [測試]  窗格，您便可測試 Runbook。
+5. 按一下 [測試] 窗格，您便可測試 Runbook。
 
 6. 按一下 [開始]  以開始測試。 當測試完成後，您應該會從帳戶收到如同以下顯示基本資訊的輸出。 此動作可確認認證有效。
 
@@ -187,7 +183,7 @@ ms.locfileid: "81725332"
    }
    ```
 
-2. 儲存 Runbook，然後按一下 [測試]  窗格，您便能加以測試。
+2. 儲存 Runbook，然後按一下 [測試] 窗格，您便能加以測試。
 
 3. 按一下 [開始]  以開始測試。 當測試完成後，請確認 VM 已啟動。
 
@@ -223,7 +219,7 @@ ms.locfileid: "81725332"
 
 6. 按一下 [開始]  以啟動 Runbook。 
 
-7. 針對您即將啟動的 VM，輸入 [VMNAME]  和 [RESOURCEGROUPNAME]  的值。
+7. 針對您即將啟動的 VM，輸入 [VMNAME] 和 [RESOURCEGROUPNAME] 的值。
 
    ![啟動 Runbook](../media/automation-tutorial-runbook-textual/automation-pass-params.png)
 
@@ -231,10 +227,9 @@ ms.locfileid: "81725332"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](https://docs.microsoft.com/powershell/scripting/overview)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
-* 若要開始使用圖形化 Runbook，請參閱[建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)。
-* 若要開始使用 PowerShell Runbook，請參閱[建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
-* 若要深入了解 Runbook 類型以及其優點和限制，請參閱 [Azure 自動化 Runbook 類型](../automation-runbook-types.md)。
-* 如需 PowerShell 指令碼支援功能的詳細資訊，請參閱 [Azure 自動化中的原生 PowerShell 指令碼支援](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
+* [PowerShell Docs](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)
+* [建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)
+* [Azure 自動化 Runbook 類型](../automation-runbook-types.md)
+* [Azure 自動化中的原生 PowerShell 指令碼支援](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

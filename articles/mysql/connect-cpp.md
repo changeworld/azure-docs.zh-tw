@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062575"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871503"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用連接器/C++ 連線並查詢資料
 本快速入門示範如何使用 C++ 應用程式來連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 C++ 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
@@ -29,6 +29,9 @@ ms.locfileid: "80062575"
 - 安裝 [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - 安裝 [Boost](https://www.boost.org/)
 
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
+
 ## <a name="install-visual-studio-and-net"></a>安裝 Visual Studio 和 .NET
 本節中的步驟假設您已熟悉使用 .NET 進行開發。
 
@@ -43,15 +46,15 @@ ms.locfileid: "80062575"
    - 新增 C++ 連接器的 "\include" 目錄 (例如：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)。
    - 新增 Boost 程式庫的根目錄 (例如：C:\boost_1_64_0\)。
 3. 從 Visual Studio 的專案 -> 屬性 -> 連結器 -> 輸入 > 其他相依性，將 **mysqlcppconn.lib** 新增到文字欄位。
-4. 從步驟 3 的 C++ 連接器程式庫資料夾將 mysqlcppconn.dll  複製到與應用程式可執行檔相同的目錄，或將它新增至環境變數，您的應用程式便可找到它。
+4. 從步驟 3 的 C++ 連接器程式庫資料夾將 mysqlcppconn.dll 複製到與應用程式可執行檔相同的目錄，或將它新增至環境變數，您的應用程式便可找到它。
 
 ## <a name="get-connection-information"></a>取得連線資訊
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]  ，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
-4. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  ![Azure Database for MySQL 伺服器名稱](./media/connect-cpp/1_server-overview-name-login.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料

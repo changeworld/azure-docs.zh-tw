@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6cdee6dd30c1af44b321b12c96f3e2ecdcd0d2b3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478552"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871978"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入門：使用 Bing 影像搜尋 REST API 和 Python 來搜尋影像
 
-使用本快速入門，開始將搜尋要求傳送至 Bing 影像搜尋 API。 這個 Python 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，了解如何將搜尋要求傳送至 Bing 影像搜尋 API。 這個 Python 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-您可以按一下 [launch Binder] \(啟動 Binder\) 徽章，在 [MyBinder](https://mybinder.org) \(英文\) 上以 Jupyter Notebook 執行此範例：
+若要在 [MyBinder](https://mybinder.org) 上以 Jupyter Notebook 執行此範例，請選取 [啟動文件夾] 徽章：
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ ms.locfileid: "80478552"
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列模組。 建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 `search_url` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列模組。 建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 針對 [，您可使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的`search_url`自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```python
     import requests
@@ -61,7 +61,7 @@ ms.locfileid: "80478552"
 
 ## <a name="create-and-send-a-search-request"></a>建立及傳送搜尋要求
 
-1. 建立搜尋要求參數的字典。 將您的搜尋字詞新增至 `q` 參數。 將 "public" 用於 `license` 參數，以搜尋公用網域中的影像。 將 "photo" 用於 `imageType` 以僅搜尋相片。
+1. 建立搜尋要求參數的字典。 將您的搜尋字詞新增至 `q` 參數。 將 `license` 參數設定為 `public`，以搜尋公用網域中的影像。 將 `imageType` 設定為 `photo`，只搜尋相片。
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
@@ -78,7 +78,7 @@ ms.locfileid: "80478552"
 
 ## <a name="view-the-response"></a>檢視回應
 
-1. 使用 matplotlib 程式庫建立包含四個資料行和四個資料列的新圖表。 
+1. 使用 matplotlib 程式庫，建立包含四個資料行和四個資料列的新圖表。 
 
 2. 逐一查看該圖表的資料列和資料行，並使用 PIL 程式庫的 `Image.open()` 方法將影像縮圖新增至每個空間。 
 
@@ -152,6 +152,6 @@ ms.locfileid: "80478552"
 
 * [什麼是 Bing 影像搜尋 API？](../overview.md)  
 * Bing 搜尋 API 的[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。 
+* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)。
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

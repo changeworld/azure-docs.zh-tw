@@ -6,23 +6,21 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b26d516080961a482a3ba67f314e98ece4c9f24
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7bd44a350b3c3eeb723b73b0ec416cdd1c0ec643
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420172"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698762"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共用中繼資料
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 (預覽)、SQL 隨選 (預覽) 引擎和 SQL 集區之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 (預覽) 和 SQL 隨選引擎 (預覽) 之間共用資料庫和資料表。
 
 [!INCLUDE [preview](../includes/note-preview.md)]
-
-
 
 共用支援所謂的新式資料倉儲模式，並可讓工作區 SQL 引擎存取以 Spark 建立的資料庫和資料表。 也可讓 SQL 引擎建立自己的物件，而不會與其他引擎共用。
 
@@ -34,9 +32,7 @@ Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 
 
 2. Spark 建立的資料庫及其所有資料表都會顯示在任何 Azure Synapse 工作區 Spark 集區執行個體中，而且可以從任何 Spark 作業中使用。 這項功能會受限於[權限](#security-model-at-a-glance)，因為工作區中所有 Spark 集區都會共用相同的基礎目錄中繼存放區。
 
-3. Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區 SQL 隨選引擎中顯示。 [資料庫](database.md)會在 SQL 隨選中繼資料中自動建立，而由 Spark 作業建立的[外部和受控資料表](table.md)，則會在對應資料庫的 `dbo` 結構描述中，以外部資料表的形式存在 SQL 隨選中繼資料中來供以存取。 <!--For more details, see [ADD LINK].-->
-
-4. 如果工作區中有已啟用中繼資料資料同步的 SQL 集區執行個體 <!--[ADD LINK]--> 或者，如果在啟用中繼資料同步的情況下建立了新的 SQL 集區執行個體，則 Spark 建立的資料庫及其受 Parquet 支援的資料表就會自動對應到 SQL 集區資料庫，如 [Azure Synapse Analytics 共用資料庫](database.md)中所述。
+3. Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區 SQL 隨選引擎中顯示。 [資料庫](database.md)會在 SQL 隨選中繼資料中自動建立，而由 Spark 作業建立的[外部和受控資料表](table.md)，則會在對應資料庫的 `dbo` 結構描述中，以外部資料表的形式存在 SQL 隨選中繼資料中來供以存取。 
 
 <!--[INSERT PICTURE]-->
 
@@ -56,7 +52,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ## <a name="change-maintenance"></a>變更維護
 
-如果使用 Spark 刪除或變更中繼資料物件，系統會提取變更並傳播至已同步物件的 SQL 隨選引擎和 SQL 集區。 同步並非即時進行，變更會在短暫延遲之後反映在 SQL 引擎中。
+如果使用 Spark 刪除或變更中繼資料物件，則系統會取出變更並傳播至 SQL 隨選引擎。 同步並非即時進行，變更會在短暫延遲之後反映在 SQL 引擎中。
 
 ## <a name="next-steps"></a>後續步驟
 

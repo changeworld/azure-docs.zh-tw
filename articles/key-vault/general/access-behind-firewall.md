@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732320"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834317"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>在防火牆後存取 Azure 金鑰保存庫
 
@@ -39,8 +39,8 @@ ms.locfileid: "82732320"
 
 | 主體類型 | 端點:連接埠 |
 | --- | --- |
-| 使用 Microsoft 帳戶的使用者<br> (例如，user@hotmail.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br>  login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
-| 搭配使用公司帳戶或學校帳戶與 Azure AD 的使用者或服務主體 (例如，user@contoso.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br>  login.microsoftonline.de:443 |
+| 使用 Microsoft 帳戶的使用者<br> (例如，user@hotmail.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
+| 搭配使用公司帳戶或學校帳戶與 Azure AD 的使用者或服務主體 (例如，user@contoso.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br> login.microsoftonline.de:443 |
 | 使用公司帳戶或學校帳戶加上 Active Directory 同盟服務 (AD FS) 或其他同盟端點的使用者或服務主體 (例如，user@contoso.com) |公司帳戶或學校帳戶的所有端點，加上 AD FS 或其他同盟端點 |
 
 還有其他可能的複雜案例。 如需其他資訊，請參閱 [Azure Active Directory 驗證流程](../../active-directory/develop/authentication-scenarios.md)、[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) 及 [Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
@@ -52,11 +52,11 @@ ms.locfileid: "82732320"
 | 運算的類型 | 端點:連接埠 |
 | --- | --- |
 | 透過 Azure Resource Manager 的<br> 金鑰保存庫控制項面作業 |**全域：**<br> management.azure.com:443<br><br> **Azure 中國︰**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API |**全域：**<br> graph.microsoft.com:443<br><br> **Azure 中國︰**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> graph.microsoft.com:443<br><br> **Azure 德國︰**<br>  graph.cloudapi.de:443 |
+| Microsoft Graph API |**全域：**<br> graph.microsoft.com:443<br><br> **Azure 中國︰**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> graph.microsoft.com:443<br><br> **Azure 德國︰**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>金鑰保存庫作業
 
-對於所有金鑰保存庫物件 (金鑰和密碼) 管理和密碼編譯作業，金鑰保存庫用戶端需要存取金鑰保存庫端點。 視金鑰保存庫的位置而定，端點 DNS 尾碼會有所不同。 金鑰保存庫端點的格式為 vault-name.region-specific-dns-suffix   ，如下表所述。  
+對於所有金鑰保存庫物件 (金鑰和密碼) 管理和密碼編譯作業，金鑰保存庫用戶端需要存取金鑰保存庫端點。 視金鑰保存庫的位置而定，端點 DNS 尾碼會有所不同。 金鑰保存庫端點的格式為 vault-name.region-specific-dns-suffix ，如下表所述。  
 
 | 運算的類型 | 端點:連接埠 |
 | --- | --- |
@@ -74,4 +74,4 @@ ms.locfileid: "82732320"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您有關於金鑰保存庫的問題，請造訪 [Azure 金鑰保存庫論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。
+如果您對 Key Vault 有任何疑問，請造訪 [Microsoft 的 Azure Key Vault 問與答頁面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。

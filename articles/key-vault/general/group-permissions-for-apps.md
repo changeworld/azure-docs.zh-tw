@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425377"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652214"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用存取控制原則提供 Key Vault 驗證
 
@@ -60,10 +60,10 @@ ms.locfileid: "81425377"
 
 有兩種方式可取得應用程式的 objectId。  第一種方式是向 Azure Active Directory 註冊您的應用程式。 若要這麼做，請依照[使用 Microsoft 身分識別平台來註冊應用程式](../../active-directory/develop/quickstart-register-app.md)快速入門中的步驟操作。 註冊完成時，objectID 會列示為「應用程式 (用戶端) 識別碼」。
 
-第二種方式是在終端機視窗中建立服務主體。 在 Azure CLI 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令。
+第二種方式是在終端機視窗中建立服務主體。 在 Azure CLI 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，並提供唯一的服務主體名稱給 -n 旗標，且格式為 "http://&lt;my-unique-service-principle-name&gt;"。
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 objectId 會在輸出中列示為 `clientID`。
@@ -72,7 +72,7 @@ objectId 會在輸出中列示為 `clientID`。
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 objectId 會在輸出中列示為 `Id` (而非 `ApplicationId`)。
@@ -222,6 +222,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 最後，使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令或 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) Cmdlet，為 AD 群組授與金鑰保存庫的權限。 例如，請參閱前述的[為應用程式、Azure AD 群組或使用者授與金鑰保存庫的存取權](#give-the-principal-access-to-your-key-vault)一節。
 
 應用程式也需要至少一個指派給金鑰保存庫的身分識別與存取管理 (IAM) 角色。 否則，應用程式將無法登入，且將會因為沒有足夠的權限可存取訂用帳戶而失敗。
+
+> [!WARNING]
+> 具有受控識別的 Azure AD 群組可能需要多達 8 小時才能重新整理權杖並生效。
 
 ## <a name="next-steps"></a>後續步驟
 

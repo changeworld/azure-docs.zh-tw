@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 在雲端中執行大規模平行作業
-description: '了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載 '
-ms.topic: overview
+description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116344"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779555"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -74,7 +74,7 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 
 請記住，這只是使用 Batch 的一種方式，此案例只說明其部分功能。 例如，您可以在每個計算節點上[平行執行多項工作](batch-parallel-node-tasks.md)。 或者，使用[作業的準備與完成工作](batch-job-prep-release.md)為您的作業準備節點，並在之後加以清除。 
 
-請參閱[適用於開發人員的 Batch 功能概觀](batch-api-basics.md)，以取得有關集區、節點、作業和工作的詳細資訊，以及在建置 Batch 應用程式時可使用的許多 API 功能。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
+如需集區、節點、作業和工作等功能的概觀，請參閱 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="next-steps"></a>後續步驟
 

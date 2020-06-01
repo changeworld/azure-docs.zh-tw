@@ -60,6 +60,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器執行個體
           href: deploy-form-recognizer-on-container-instances.md
+    - name: 複製模型以進行災害復原
+      href: disaster-recovery.md
 - name: 參考
   items:
     - name: 表單辨識器 API v2.0

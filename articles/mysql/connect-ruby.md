@@ -7,21 +7,24 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: b069a9ba0e2c56ff027e351789177f8bfe0b2ff4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74770640"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869975"
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL︰使用 Ruby 來連線及查詢資料
+# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 Ruby 連線並查詢資料
 本快速入門示範如何從 Windows、Ubuntu Linux 和 Mac 平台使用 [Ruby](https://www.ruby-lang.org) 應用程式和 [mysql2](https://rubygems.org/gems/mysql2) Gem，連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 Ruby 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 本快速入門使用在以下任一指南中建立的資源作為起點︰
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
 
 ## <a name="install-ruby"></a>安裝 Ruby
 在自己的電腦上安裝 Ruby、Gem 和 MySQL2 程式庫。 
@@ -53,9 +56,9 @@ ms.locfileid: "74770640"
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]  ，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
-4. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  ![Azure Database for MySQL 伺服器名稱](./media/connect-ruby/1_server-overview-name-login.png)
 
 ## <a name="run-ruby-code"></a>執行 Ruby 程式碼 

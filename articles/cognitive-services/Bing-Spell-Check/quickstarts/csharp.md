@@ -8,33 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb126dc31620515c54a653ef595bfc017aaac73
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382943"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869588"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入門：使用 Bing 拼字檢查 REST API 和 C# 進行檢查拼字
 
-使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 此簡單 C# 應用程式會將要求傳送至 API 並傳回建議的修正清單。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上找到此應用程式的原始程式碼。
+使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 此簡單 C# 應用程式會將要求傳送至 API 並傳回建議的修正清單。 
+
+雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上找到此應用程式的原始程式碼。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
-* 在 Visual Studio 中安裝 `Newtonsoft.Json` 作為 NuGet 套件：
-    1. 在 [方案總管]  中，以滑鼠右鍵按一下 [方案] 檔案。
-    1. 選取 [管理解決方案的 NuGet 套件]  。
-    1. 然後搜尋 `Newtonsoft.Json` 並安裝該套件。
+* Newtonsoft.Json NuGet 套件。 
+     
+   在 Visual Studio 中安裝此套件：
+
+     1. 在 [方案總管] 中，以滑鼠右鍵按一下 [方案] 檔案。
+     1. 選取 [管理解決方案的 NuGet 套件]。
+     1. 搜尋 Newtonsoft.Json 並安裝套件
+
 * 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立一個名為 `SpellCheckSample` 的新主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案。
+1. 在 Visual Studio 中建立一個名為 SpellCheckSample 的新主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案：
     
     ```csharp
     using System;
@@ -46,7 +52,7 @@ ms.locfileid: "75382943"
     using Newtonsoft.Json;
     ```
 
-2. 針對 API 端點、您的訂用帳戶金鑰以及要拼字檢查的文字，建立變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 針對 API 端點、您的訂用帳戶金鑰以及要拼字檢查的文字，建立變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +68,11 @@ ms.locfileid: "75382943"
     }
     ```
 
-3. 針對您的搜尋參數建立變數。 在 `mkt=` 之後附加您的市場代碼。 市場代碼是您提出要求的國家/地區。 另外，在 `&mode=` 之後附加拼字檢查模式。 模式是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查，但沒有多少文法錯誤)。
+3. 針對您的搜尋參數建立字串： 
+
+   a. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 市場代碼是您提出要求的國家/區域。 
+
+   b. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 模式可以是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查錯誤，但沒有多少文法錯誤)。
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +80,7 @@ ms.locfileid: "75382943"
 
 ## <a name="create-and-send-a-spell-check-request"></a>建立及傳送拼字檢查要求
 
-1. 建立名為 `SpellCheck()` 的非同步函式，將要求傳送至 API。 建立 `HttpClient`，並將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。 然後在函式中執行下列步驟。
+1. 建立名為 `SpellCheck()` 的非同步函式，將要求傳送至 API。 建立 `HttpClient`，並將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。 在函式內，遵循下列步驟。
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +137,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>呼叫拼字檢查函式
 
-在您專案的 Main 函式中，呼叫 `SpellCheck()`。
+在您專案的 `Main()` 函式中，呼叫 `SpellCheck()`。
 
 ```csharp
 static void Main(string[] args)

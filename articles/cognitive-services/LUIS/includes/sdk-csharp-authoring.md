@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 53e6382cf8d046b2c9818b906890bc64642fd2ed
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 6f735831594e5084c56b6b1d88f18b27ddabcb7d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77372072"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871269"
 ---
 使用適用於 .NET 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -28,54 +28,12 @@ ms.locfileid: "77372072"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Language Understanding (LUIS) 入口網站帳戶 - [建立免費帳戶](https://www.luis.ai)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-
+* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中[建立 Language Understanding 撰寫資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    * 您需要您[建立](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)之資源的金鑰和端點，以將應用程式連線至 Language Understanding 撰寫。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。 您可以使用免費定價層 (`F0`) 來試用服務。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>取得您的 Language Understanding (LUIS) 入門金鑰
-
-藉由建立 LUIS 撰寫資源，取得您的[入門金鑰](../luis-how-to-azure-subscription.md#starter-key)。 請保留您的金鑰和金鑰區域，以進行下一個步驟。
-
-### <a name="create-an-environment-variable"></a>建立環境變數
-
-使用金鑰和金鑰區域，建立兩個環境變數以進行驗證：
-
-* `COGNITIVESERVICE_AUTHORING_KEY` - 用於驗證您要求的資源金鑰。
-* `COGNITIVESERVICE_REGION` - 與您金鑰相關聯的區域。 例如 `westus` 。
-
-請使用適合您作業系統的指示。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
-setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
-```
-
-新增環境變數之後，請重新啟動主控台視窗。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
-export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
-```
-
-新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-編輯 `.bash_profile`，然後新增環境變數：
-
-```bash
-export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
-export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
-```
-
-新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
-***
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
@@ -147,23 +105,17 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 從專案目錄，在慣用的編輯器或 IDE 中開啟 *Program.cs* 檔案。 將現有的 `using` 程式碼取代為下列 `using` 指示詞：
 
-[!code-csharp[Using statements](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Dependencies)]
+[!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-1. 建立變數來管理從名為 `COGNITIVESERVICES_AUTHORING_KEY` 的環境變數提取的撰寫金鑰。 如果您在應用程式啟動後才建立環境變數，則執行該應用程式的編輯器、IDE 或殼層必須先關閉再重新載入後，才能存取該變數。 方法會於稍後建立。
+1. 建立變數，以保存您的撰寫金鑰和撰寫端點。
 
-1. 建立變數來保存您的撰寫區域和端點。 撰寫金鑰的區域取決於您撰寫的位置。 [三種撰寫區域](../luis-reference-regions.md)如下：
-
-    * 澳大利亞 - `australiaeast`
-    * 歐洲 - `westeurope`
-    * 美國和其他地區 - `westus` (預設值)
-
-    [!code-csharp[Authorization to resource key](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Variables)]
+    [!code-csharp[Authorization to resource key](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=Variables)]
 
 1. 使用您的金鑰建立 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.apikeyserviceclientcredentials?view=azure-dotnet) 物件，並使用該物件與您的端點建立 [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) 物件。
 
-    [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
+    [!code-csharp[Create LUIS client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>建立 LUIS 應用程式
 
@@ -173,14 +125,14 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 1. 呼叫 [Apps.AddAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.addasync?view=azure-dotnet) 方法。 回應為應用程式識別碼。
 
-    [!code-csharp[Create a LUIS app](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateApplication)]
+    [!code-csharp[Create a LUIS app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringCreateApplication)]
 
 ## <a name="create-intent-for-the-app"></a>建立應用程式的意圖
-LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。  意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
+LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。 意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
 
 建立具有唯一意圖名稱的 [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modelcreateobject?view=azure-dotnet)，然後將應用程式識別碼、版本識別碼和 ModelCreateObject 傳至 [Model.AddIntentAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addintentasync?view=azure-dotnet) 方法。 回應為意圖識別碼。
 
-[!code-csharp[Create intent](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddIntents)]
+[!code-csharp[Create intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringAddIntents)]
 
 ## <a name="create-entities-for-the-app"></a>建立應用程式的實體
 
@@ -192,7 +144,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 實體的建立方法是[模型](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet)類別的一部分。 每個實體類型都有本身的資料轉換物件 (DTO) 模型，而[模型](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet)命名空間中通常會包含 `model` 這個字。
 
-[!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddEntities)]
+[!code-csharp[Create entities](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringAddEntities)]
 
 ## <a name="add-example-utterance-to-intent"></a>將範例語句新增至意圖
 
@@ -202,7 +154,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 使用應用程式識別碼、版本識別碼和範例清單來呼叫 [Examples.BatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ExamplesExtensions_BatchAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_IExamples_System_Guid_System_String_System_Collections_Generic_IList_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_Models_ExampleLabelObject__System_Threading_CancellationToken_)。 此呼叫會以結果清單來回應。 您必須檢查每個範例的結果，以確定範例已成功新增至模型。
 
-[!code-csharp[Add example utterances to a specific intent](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringBatchAddUtterancesForIntent)]
+[!code-csharp[Add example utterances to a specific intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringBatchAddUtterancesForIntent)]
 
 **CreateUtterance** 和 **CreateLabel** 方法是可協助您建立物件的公用程式方法。
 
@@ -214,13 +166,13 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 非常小的模型 (如本快速入門所示) 會非常快速地進行定型。 針對生產層級的應用程式，在為應用程式定型時，必須進行 [GetStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_TrainExtensions_GetStatusAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ITrain_System_Guid_System_String_System_Threading_CancellationToken_) 方法的輪詢呼叫，以確認定型成功的時間或是否成功。 其回應是 [ModelTrainingInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-dotnet) 物件的清單，每個物件各有不同的狀態。 所有物件都必須成功，才會將定型視為完成。
 
-[!code-csharp[Train the app's version](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringTrainVersion)]
+[!code-csharp[Train the app's version](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringTrainVersion)]
 
 ## <a name="publish-a-language-understanding-app"></a>發佈 Language Understanding 應用程式
 
 使用 [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet) 方法發佈 LUIS 應用程式。 這會將目前的定型版本發佈至端點上的指定位置。 您的用戶端應用程式會使用此端點來傳送使用者語句，以進行意圖和實體擷取的預測。
 
-[!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringPublishVersionAndSlot)]
+[!code-csharp[Create entities](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/authoring/authoring-with-sdk.cs?name=AuthoringPublishVersionAndSlot)]
 
 ## <a name="run-the-application"></a>執行應用程式
 

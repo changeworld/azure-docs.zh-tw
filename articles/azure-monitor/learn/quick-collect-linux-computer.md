@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637901"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850057"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入門：使用 Azure 監視器從混合式環境中的 Linux 電腦收集資料
 
@@ -34,23 +34,23 @@ ms.locfileid: "80637901"
 
 ## <a name="create-a-workspace"></a>建立工作區
 
-1. 在 Azure 入口網站中，選取 [所有服務]  。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]  。
+1. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 
     ![在 Azure 入口網站中尋找 Log Analytics 工作區](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. 選取 [建立]  ，然後選取下列項目的選項：
+2. 選取 [建立]，然後選取下列項目的選項：
 
-   * 為新的 [Log Analytics 工作區]  提供名稱，例如 DefaultLAWorkspace  。  
-   * 如果選取的預設值不合適，請從下拉式清單中選取要連結的 [訂用帳戶]  。
-   * 對於 [資源群組]  ，選取包含一或多個 Azure 虛擬機器的現有資源群組。  
-   * 選取要部署 VM 的 [位置]  。  如需詳細資訊，請查看 [Log Analytics 的可用區域](https://azure.microsoft.com/regions/services/)。
-   * 如果您要在 2018 年 4 月 2 之後建立的新訂用帳戶中建立工作區，系統會自動使用「每 GB」  定價方案和選項來選取將無法使用的定價層。  如果您要為在 4 月 2 日之前建立的現有訂用帳戶，或已繫結至現有 EA 註冊的訂用帳戶建立工作區，請選取您偏好的定價層。  如需特定層的詳細資訊，請參閱 [Log Analytics 價格詳細資料](https://azure.microsoft.com/pricing/details/log-analytics/)。
+   * 為新的 [Log Analytics 工作區] 提供名稱，例如 DefaultLAWorkspace。  
+   * 如果選取的預設值不合適，請從下拉式清單中選取要連結的 [訂用帳戶]。
+   * 對於 [資源群組]，選取包含一或多個 Azure 虛擬機器的現有資源群組。  
+   * 選取要部署 VM 的 [位置]。  如需詳細資訊，請查看 [Log Analytics 的可用區域](https://azure.microsoft.com/regions/services/)。
+   * 如果您要在 2018 年 4 月 2 之後建立的新訂用帳戶中建立工作區，系統會自動使用「每 GB」定價方案和選項來選取將無法使用的定價層。  如果您要為在 4 月 2 日之前建立的現有訂用帳戶，或已繫結至現有 EA 註冊的訂用帳戶建立工作區，請選取您偏好的定價層。  如需特定層的詳細資訊，請參閱 [Log Analytics 價格詳細資料](https://azure.microsoft.com/pricing/details/log-analytics/)。
   
         ![在 Azure 入口網站中建立 Log Analytics 工作區](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
-3. 在 [Log Analytics 工作區]  窗格中提供必要資訊之後，選取 [確定]  。  
+3. 在 [Log Analytics 工作區] 窗格中提供必要資訊之後，選取 [確定]。  
 
-在驗證資訊及建立工作區時，您可以在功能表的 [通知]  底下追蹤其進度。 
+在驗證資訊及建立工作區時，您可以在功能表的 [通知] 底下追蹤其進度。 
 
 ## <a name="obtain-workspace-id-and-key"></a>取得工作區識別碼和金鑰
 
@@ -58,17 +58,17 @@ ms.locfileid: "80637901"
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]  。 在搜尋方塊中，輸入 **Log Analytics**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]  。
+1. 在 Azure 入口網站的左上角，選取 [所有服務]。 在搜尋方塊中，輸入 **Log Analytics**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 
 2. 在 Log Analytics 工作區清單中，選取您稍早建立的工作區 (您可能已經將它命名為 **DefaultLAWorkspace**)。
 
-3. 選取 [進階設定]  ：
+3. 選取 [進階設定]：
 
     ![Azure 入口網站中的 Log Analytics 進階設定功能表](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
  
-4. 選取 [連接的來源]  ，然後選取 [Linux 伺服器]  。
+4. 選取 [連接的來源]，然後選取 [Linux 伺服器]。
 
-5. [工作區識別碼]  和 [主要金鑰]  右邊的值。 將兩者複製並貼到您最愛的編輯器。
+5. [工作區識別碼] 和 [主要金鑰] 右邊的值。 將兩者複製並貼到您最愛的編輯器。
 
 ## <a name="install-the-agent-for-linux"></a>安裝 Agent for Linux
 
@@ -115,33 +115,33 @@ ms.locfileid: "80637901"
 
 Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於較長期分析和報告的效能計數器。 它也可以在偵測到特定條件時採取動作。 請遵循下列步驟來開始設定收集 Linux Syslog 的事件以及數個常用的效能計數器。  
 
-1. 在 Azure 入口網站的左下角，選取 [更多服務]  。 在搜尋方塊中，輸入 **Log Analytics**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]  。
+1. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中，輸入 Log Analytics。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區] 並在您的 Log Analytics 工作區清單中選取要尋找的工作區，然後選取 [Log Analytics] 工作區的 [進階設定]。
 
-2. 選取 [資料]  ，然後選取 [Syslog]  。  
+2. 選取 [資料]，然後選取 [Syslog]。  
 
 3. 您可以輸入記錄的名稱，來新增 syslog。 輸入 **Syslog**，然後選取加號 **+** 。  
 
-4. 在表格中，取消選取 [資訊]  、[注意]  和 [偵錯]  嚴重性。 
+4. 在表格中，取消選取 [資訊]、[注意] 和 [偵錯] 嚴重性。 
 
-5. 選取頁面頂端的 [儲存]  來儲存設定。
+5. 選取頁面頂端的 [儲存] 來儲存設定。
 
-6. 選取 [Linux 效能資料]  以啟用 Linux 電腦上的效能計數器收集。 
+6. 選取 [Linux 效能資料] 以啟用 Linux 電腦上的效能計數器收集。 
 
 7. 當您第一次為新的 Log Analytics 工作區設定 Linux 效能計數器時，系統會提供選項，讓您快速建立數個常用的計數器。 這些計數器旁邊皆會列出核取方塊。
 
     ![在 Azure 監視器中選取的預設 Linux 效能計數器](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
-    選取 [將下列設定套用至我的機器]  ，然後選取 [新增選取的效能計數器]  。 隨即會新增且收集取樣間隔時間的預設值為 10 秒。  
+    選取 [將下列設定套用至我的機器]，然後選取 [新增選取的效能計數器]。 隨即會新增且收集取樣間隔時間的預設值為 10 秒。  
 
-8. 選取頁面頂端的 [儲存]  來儲存設定。
+8. 選取頁面頂端的 [儲存] 來儲存設定。
 
 ## <a name="view-data-collected"></a>檢視收集的資料
 
 既然您已啟用資料收集，現在即可執行簡單的記錄搜尋範例，以查看來自目標電腦的一些資料。  
 
-1. 在選取的工作區中，從左側窗格中選取 [記錄]  。
+1. 在選取的工作區中，從左側窗格中選取 [記錄]。
 
-2. 在記錄查詢頁面的查詢編輯器中輸入 `Perf`，然後選取 [執行]  。
+2. 在記錄查詢頁面的查詢編輯器中輸入 `Perf`，然後選取 [執行]。
  
     ![Log Analytics 記錄搜尋](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -157,13 +157,13 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-若要刪除工作區，請選取您先前建立的 Log Analytics 工作區，然後在資源頁面上，選取 [刪除]  。
+若要刪除工作區，請選取您先前建立的 Log Analytics 工作區，然後在資源頁面上，選取 [刪除]。
 
 ![刪除 Log Analytics 資源](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您正在從內部部署 Linux 電腦收集作業和效能資料，即可輕鬆開始針對收集的資料「免費」  進行探索、分析及採取行動。  
+既然您正在從內部部署 Linux 電腦收集作業和效能資料，即可輕鬆開始針對收集的資料「免費」進行探索、分析及採取行動。  
 
 若要了解如何檢視和分析資料，請繼續進行本教學課程。
 

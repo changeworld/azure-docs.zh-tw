@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992aa8a4cb0ff31f7f1657be45fa1a64fdb27e7c
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128880"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780552"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -38,7 +38,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ### <a name="developer-tier"></a>開發人員層
 
-建議將此層用於評估、開發及測試案例。 單一方案包含與標準層相同的功能，但其處理能力、QPU 及記憶體大小有限。 此層「無法使用」  查詢複本相應放大功能。 此層不提供 SLA。
+建議將此層用於評估、開發及測試案例。 單一方案包含與標準層相同的功能，但其處理能力、QPU 及記憶體大小有限。 此層「無法使用」查詢複本相應放大功能。 此層不提供 SLA。
 
 |計畫  |QPU  |記憶體 (GB)  |
 |---------|---------|---------|
@@ -47,7 +47,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ### <a name="basic-tier"></a>基本層
 
-此層建議用於具備小型表格式模型、使用者並行能力有限，且只需簡單資料重新整理功能的生產解決方案。 此層「無法使用」  查詢複本相應放大功能。 此層不支援  檢視方塊、多個分割區和 DirectQuery 表格式模型功能。  
+此層建議用於具備小型表格式模型、使用者並行能力有限，且只需簡單資料重新整理功能的生產解決方案。 此層「無法使用」查詢複本相應放大功能。 此層不支援檢視方塊、多個分割區和 DirectQuery 表格式模型功能。  
 
 |計畫  |QPU  |記憶體 (GB)  |
 |---------|---------|---------|
@@ -124,7 +124,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>擴增資源以獲得快速的查詢回應
 
-透擴增，用戶端查詢會在查詢集區中分散到多個查詢複本  。 查詢複本已同步處理您表格式模型的副本。 透過分配查詢工作負載，可以降低在高度查詢工作負載期間的回應時間。 模型處理作業可與查詢集區分開處理，確保用戶端查詢不會受到處理作業的不良影響。 
+透擴增，用戶端查詢會在查詢集區中分散到多個查詢複本。 查詢複本已同步處理您表格式模型的副本。 透過分配查詢工作負載，可以降低在高度查詢工作負載期間的回應時間。 模型處理作業可與查詢集區分開處理，確保用戶端查詢不會受到處理作業的不良影響。 
 
 您可以建立一個多達七個額外查詢複本的查詢集區 (總共八個，包含您的伺服器)。 您可以在集區中擁有的查詢複本數目取決於您所選擇的方案和區域。 查詢複本無法分散到伺服器所在區域之外。 查詢複本會以相同的伺服器費率計費。
 
@@ -136,7 +136,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ## <a name="built-on-sql-server-analysis-services"></a>建置在 SQL Server Analysis Services 上
 
-Azure Analysis Services 與 SQL Server Analysis Services Enterprise Edition 中現有的許多優質功能相容。 Azure Analysis Services 支援 1200 或更高[相容性層級](analysis-services-compat-level.md)的表格式模型。 表格式模型屬於關聯式模型建構 (模型、資料表、資料行)，在表格式模型指令碼語言 (TMSL) 和表格式物件模型 (TOM) 程式碼中會以表格式中繼資料物件定義來加以聯結。 分割區、檢視方塊、資料列層級安全性、雙向關聯性和轉譯都有支援\*。 多維度模型和 PowerPivot for SharePoint 則不受  Azure Analysis Services 支援。
+Azure Analysis Services 與 SQL Server Analysis Services Enterprise Edition 中現有的許多優質功能相容。 Azure Analysis Services 支援 1200 或更高[相容性層級](analysis-services-compat-level.md)的表格式模型。 表格式模型屬於關聯式模型建構 (模型、資料表、資料行)，在表格式模型指令碼語言 (TMSL) 和表格式物件模型 (TOM) 程式碼中會以表格式中繼資料物件定義來加以聯結。 分割區、檢視方塊、資料列層級安全性、雙向關聯性和轉譯都有支援\*。 多維度模型和 PowerPivot for SharePoint 則不受 Azure Analysis Services 支援。
 
 記憶體內部模式和 DirectQuery 模式皆支援表格式模型。 記憶體內部模式 (預設值) 的表格式模型支援多個資料來源。 因為模型資料經過高度壓縮，且會快取到記憶體內部，此模式可在資料量很大時提供最快的查詢回應速度。 針對複雜的資料集和查詢，它也可提供最大的彈性。 分割能實現累加式載入、增加平行處理能力，並降低記憶體耗用量。 其他進階的資料模型功能 (例如，導出的資料表和所有的 DAX 函式) 都可獲得支援。 記憶體內部模型必須經過重新整理 (處理)，才能從資料來源更新快取資料。 搭配 Azure 服務主體支援，使用 PowerShell、TOM、TMSL 和 REST 的自動重新整理作業可提供彈性，確保模型資料永遠是最新的。 
 
@@ -246,7 +246,7 @@ Azure Analysis Services 也支援使用[動態管理檢視 (DMV)](https://docs.m
 
 Analysis Services 文件 (如本文) 屬開放式來源。 若要深入了解您可以參與的方式，請參閱[文件參與者指南](https://docs.microsoft.com/contribute/)。 
 
-Azure Analysis Services 文件也會使用 [GitHub 問題](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 您可以提供有關產品或文件的意見反應。 請使用文章底部的 [意見反應]  。 共用 Analysis Services 文件還未啟用「GitHub 問題」。 
+Azure Analysis Services 文件也會使用 [GitHub 問題](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 您可以提供有關產品或文件的意見反應。 請使用文章底部的 [意見反應]。 共用 Analysis Services 文件還未啟用「GitHub 問題」。 
 
 ## <a name="blogs"></a>部落格
 

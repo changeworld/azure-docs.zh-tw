@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 02/05/2020
+ms.date: 05/14/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743114"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657005"
 ---
 # <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
 
-Azure 虛擬 WAN 是一種網路服務，可將許多網路功能、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線能力 (透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE)、站對站 VPN 連線能力、遠端使用者 VPN (點對站) 連線、私人 (ExpressRoute) 連線、雲端連線能力、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密等等。您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 您可以只開始使用一個使用案例，並在網路演變時進行調整。 虛擬 WAN 架構是中樞與輪輻架構，具有內建的規模和效能，包括分支 (VPN/SD-WAN 裝置)、使用者 (Azure VPN/OpenVPN/IKEv2 用戶端)、ExpressRoute 線路和虛擬網路。 其會實現[全域傳輸網路架構](virtual-wan-global-transit-network-architecture.md)，讓雲端裝載的網路「中樞」能夠在可能分散到不同「輪輻」類型的端點之間實現傳輸連線。
+Azure 虛擬 WAN 是一種網路服務，可將許多網路功能、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線 (透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE)、站對站 VPN 連線、遠端使用者 VPN (點對站) 連線、私人 (ExpressRoute) 連線、雲端內連線 (虛擬網路的過渡連線)、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密。 您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 您可以只開始使用一個使用案例，然後在網路演變時進行調整。
 
-Azure 區域作為中樞，您可以選擇連線到該中樞。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的輪輻連線能力，使用者可以在 Azure 虛擬 WAN 中手動設定，或使用虛擬 WAN CPE (SD-WAN/VPN) 合作夥伴來設定與 Azure 的連線。 我們有一份支援與 Azure 虛擬 WAN 連線自動化的合作夥伴清單 (能夠將裝置資訊匯出至 Azure、下載 Azure 組態，並建立連線) 。 如需詳細資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 
+虛擬 WAN 架構是中樞與輪輻架構，具有內建的規模和效能，包括分支 (VPN/SD-WAN 裝置)、使用者 (Azure VPN/OpenVPN/IKEv2 用戶端)、ExpressRoute 線路和虛擬網路。 其會實現[全域傳輸網路架構](virtual-wan-global-transit-network-architecture.md)，讓雲端裝載的網路「中樞」能夠在可能分散到不同「輪輻」類型的端點之間實現傳輸連線。
+
+Azure 區域作為中樞，您可以選擇連線到該中樞。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的輪輻連線能力，使用者可以在 Azure 虛擬 WAN 中手動設定，或使用虛擬 WAN CPE (SD-WAN/VPN) 合作夥伴來設定與 Azure 的連線。 我們有一份支援與 Azure 虛擬 WAN 連線自動化的合作夥伴清單 (能夠將裝置資訊匯出至 Azure、下載 Azure 組態，並建立連線)。 如需詳細資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan1.png)
 

@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個 Azure CLI 查詢
 description: 在本快速入門中，您將依照步驟為 Azure CLI 啟用 Resource Graph 延伸模組，並執行第一個查詢。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c7c3a37c2fc5b6aebaa42cacba71897684b2207
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215636"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871982"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Resource Graph 查詢
 
@@ -69,7 +69,7 @@ ms.locfileid: "79215636"
    ```
 
    > [!NOTE]
-   > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 這會先限制查詢結果，然後將結果進行排序。
+   > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
 1. 將查詢更新為第一個 `order by`，**名稱**屬性，然後 `limit` 為前五個結果：
 
@@ -78,7 +78,7 @@ ms.locfileid: "79215636"
    az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致且符合預期 - 依照**名稱**屬性排序，但仍限制為前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 

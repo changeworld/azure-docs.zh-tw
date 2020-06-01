@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 625a1a256ec5f1668c97e74c37e567a4ceb3612f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75465139"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871145"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Xamarin iOS 應用程式
 
@@ -55,17 +55,21 @@ ms.locfileid: "75465139"
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+開啟 `Xamarin/SampleXamarin.iOS/ViewControllers/DemoViewControllerBase.cs`
+
+找出 `StartSession()` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`this.cloudSession.Configuration.AccountDomain = "MyAccountDomain";`。
+
 ## <a name="deploy-the-app-to-your-ios-device"></a>將應用程式部署到您的 iOS 裝置
 
 將 iOS 裝置開啟電源並登入，然後使用 USB 纜線將其連接到電腦。
 
-將起始專案設為 **SampleXamarin.iOS**、將 [解決方案組態]  變更為 [發行]  ，然後在裝置選取器下拉式清單中選取要部署到的裝置。
+將起始專案設為 **SampleXamarin.iOS**、將 [解決方案組態] 變更為 [發行]，然後在裝置選取器下拉式清單中選取要部署到的裝置。
 
 ![Visual Studio 設定](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-選取 [執行]   > [啟動但不偵錯]  以部署並啟動您的應用程式。
+選取 [執行] > [啟動但不偵錯] 以部署並啟動您的應用程式。
 
-在應用程式中，選取 [基本]  以執行示範，依照指示放置及回收錨點。
+在應用程式中，選取 [基本] 以執行示範，依照指示放置及回收錨點。
 
 > ![螢幕擷取畫面 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
 > ![螢幕擷取畫面 2](./media/get-started-xamarin-ios/screenshot-2.jpg)

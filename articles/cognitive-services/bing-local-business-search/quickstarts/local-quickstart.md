@@ -8,27 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: da7d210140bf348e734f16cef2aaa01caf7e4f8b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475606"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873125"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入門：傳送查詢至以 C# 撰寫的 Bing 當地商家搜尋 API
 
-使用此快速入門開始向 Bing 當地商家搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 C# 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
+使用此快速入門了解如何向 Bing 當地企業搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 C# 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
 
-此範例應用程式會從 API 取得搜尋查詢 `hotel in Bellevue` 的當地回應資料。
+此範例應用程式會從 API 取得搜尋查詢的當地回應資料。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
-* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/)來執行此應用程式。
-
-您必須有具備 Bing 搜尋 API 的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) \(英文\)。 [免費試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)即足以供本快速入門使用。  另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
+* 具有 Bing 搜尋 API 的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免費試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)即足以供本快速入門使用。 啟動免費試用時，請儲存提供的 API 金鑰。 如需詳細資訊，請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-the-request"></a>建立要求 
 
@@ -54,10 +53,10 @@ ms.locfileid: "80475606"
 
 ## <a name="run-the-complete-application"></a>執行完整應用程式
 
-Bing 當地商家搜尋 API 會從 Bing 搜尋引擎傳回本地化的搜尋結果。
-1. 在 Visual Studio 中建立新的主控台解決方案 (Community Edition 即適用)。
+下列程式碼會使用 Bing 當地企業搜尋 API，從 Bing 搜尋引擎傳回本地化的搜尋結果。 您可以依照下列步驟執行此程式碼：
+1. 在 Visual Studio 中建立新的主控台解決方案 (Community Edition 即足夠使用)。
 2. 將 Program.cs 取代為下面提供的程式碼。
-3. 以訂用帳戶有效的存取金鑰來取代 accessKey 值。
+3. 以訂用帳戶有效的存取金鑰來取代 `accessKey` 值。
 4. 執行程式。
 
 ```csharp
@@ -210,5 +209,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>後續步驟
 - [當地商家搜尋 Java 快速入門](local-search-java-quickstart.md)
-- [當地商家搜尋 Node 快速入門](local-search-node-quickstart.md)
+- [當地企業搜尋 Node.js 快速入門](local-search-node-quickstart.md)
 - [當地商家搜尋 Python 快速入門](local-search-python-quickstart.md)

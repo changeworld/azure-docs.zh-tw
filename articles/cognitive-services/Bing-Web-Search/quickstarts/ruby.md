@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169543"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873809"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>快速入門：使用 Ruby 來呼叫 Bing Web 搜尋 API  
 
-使用本快速入門進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 Ruby 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing Web 搜尋 API。 這個 Ruby 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,7 +43,13 @@ require 'json'
 
 ## <a name="define-variables"></a>定義變數
 
-必須先設定幾個變數才能繼續。 `uri` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 請確認 `uri` 和 `path` 有效，並將 `accessKey` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 請自行取代 `term` 的值來自訂搜尋查詢。
+必須先設定幾個變數才能繼續：
+
+1. 對於 `uri` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 
+
+2. 請確認 `uri` 和 `path` 值有效，並將 `accessKey` 值換成您 Azure 帳戶中的訂用帳戶金鑰。 
+
+3. (選擇性) 取代 `term` 的值以自訂搜尋查詢。
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -60,7 +66,7 @@ end
 
 ## <a name="make-a-request"></a>發出要求
 
-您可以使用這段程式碼來提出要求並處理回應。
+您可以使用這段程式碼來提出要求並處理回應：
 
 ```ruby
 # Construct the endpoint uri.
@@ -96,7 +102,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一步就是驗證您的程式碼並執行！ 如果想要將您的程式碼與我們的程式碼做比較，以下是完整的程式：
+最後一步就是驗證您的程式碼並執行。 如果想要將您的程式碼與我們的程式碼做比較，以下是完整的程式：
 
 ```ruby
 require 'net/https'
@@ -135,7 +141,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="sample-response"></a>範例回應
+## <a name="example-json-response"></a>範例 JSON 回應
 
 來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 本範例回應已截斷而只顯示單一結果。
 
@@ -264,6 +270,6 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing Web 搜尋單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

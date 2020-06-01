@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 59bf2f3cc66391bc25ac56d8a1bf228b7c2b3765
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593013"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680520"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -45,6 +45,8 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 + Jupyter 筆記本：使用我們的[範例筆記本](https://aka.ms/aml-notebooks)或建立您自己的筆記本，將<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
 
 + R 指令碼或筆記本，您可以在其中使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">適用於 R 的 SDK</a> 來撰寫您自己的程式碼，或在設計工具中使用 R 模組。
+
++ + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 
 + [Visual Studio Code 擴充功能](tutorial-setup-vscode-extension.md) \(英文\)
 

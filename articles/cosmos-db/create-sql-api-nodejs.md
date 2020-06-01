@@ -1,26 +1,26 @@
 ---
 title: 快速入門 - 使用 Node.js 從 Azure Cosmos DB SQL API 帳戶進行查詢
 description: 如何使用 Node.js 建立連線至 Azure Cosmos DB SQL API 帳戶並查詢資料的應用程式。
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240323"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655351"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Node.js 連線至 Azure Cosmos DB SQL API 帳戶並從中查詢資料
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -45,9 +45,9 @@ ms.locfileid: "80240323"
 
 1. 瀏覽至[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 頁面。
 
-1. 選擇 [SQL]  API 帳戶，然後選取 [建立]  。 使用您的 Microsoft 帳戶登入 。
+1. 選擇 [SQL] API 帳戶，然後選取 [建立]。 使用您的 Microsoft 帳戶登入 。
 
-1. 登入成功之後，您的 Azure Cosmos 帳戶應該已就緒。 選取 [在 Azure 入口網站中開啟]  ，以開啟新建立的帳戶。
+1. 登入成功之後，您的 Azure Cosmos 帳戶應該已就緒。 選取 [在 Azure 入口網站中開啟]，以開啟新建立的帳戶。
 
 「免費試用 Azure Cosmos DB」選項不需要 Azure 訂用帳戶，您可以使用 Azure Cosmos 帳戶 30 天。 如果想使用 Azure Cosmos 帳戶較長的時間，您應該在 Azure 訂用帳戶內[建立帳戶](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。
 
@@ -55,24 +55,24 @@ ms.locfileid: "80240323"
 
 您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立資料庫和容器。
 
-1. 選取 [資料總管]   > [新增容器]  。
+1. 選取 [資料總管] > [新增容器]。
 
-   [新增容器]  區域會顯示在最右邊，您可能需要向右捲動才能看到它。
+   [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
 
    ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
-2. 在 [新增容器]  頁面上，輸入新容器的設定。
+2. 在 [新增容器] 頁面上，輸入新容器的設定。
 
    | 設定           | 建議的值 | 描述                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **資料庫識別碼**   | 工作           | 輸入 _Tasks_ 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量]  選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
+   | **資料庫識別碼**   | 工作           | 輸入 _Tasks_ 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量] 選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
    | **輸送量**    | 400             | 讓輸送量保持在每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。                                                                                                                                                                                                                                                    |
    | **容器識別碼**  | 項目           | 輸入 _Items_ 作為新容器的名稱。 容器識別碼與資料庫名稱具有相同的字元需求。                                                                                                                                                                                                                                                               |
    | **分割區索引鍵** | /類別       | 本文中所述的範例使用 _/category_ 作為分割區索引鍵。                                                                                                                                                                                                                                                                                                           |
 
-   除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]  。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
+   除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
 
-   選取 [確定]  。 [資料總管] 會顯示新的資料庫和容器。
+   選取 [確定]。 [資料總管] 會顯示新的資料庫和容器。
 
 ## <a name="add-sample-data"></a>新增範例資料
 
@@ -96,7 +96,7 @@ ms.locfileid: "80240323"
 
 此為選用步驟。 若您想要了解如何在程式碼中建立 Azure Cosmos 資料庫資源，您可以檢閱下列程式碼片段。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。
 
-如果您熟悉舊版 SQL JavaScript SDK，則可能已習慣看到「集合」  和「文件」  等字詞。 因為 Azure Cosmos DB 支援[多個 API 模型](introduction.md)，[2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 會使用「容器」  這個泛用字詞，此字詞可能是用來說明容器內容的集合、圖表或資料表和「項目」  。
+如果您熟悉舊版 SQL JavaScript SDK，則可能已習慣看到「集合」和「文件」等字詞。 因為 Azure Cosmos DB 支援[多個 API 模型](introduction.md)，[2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 會使用「容器」這個泛用字詞，此字詞可能是用來說明容器內容的集合、圖表或資料表和「項目」。
 
 Cosmos DB JavaScript SDK 稱為「@azure/cosmos」，可以從 npm 安裝...
 
@@ -173,17 +173,17 @@ npm install @azure/cosmos
 
 現在請回到 Azure 入口網站，以取得 Azure Cosmos 帳戶的連接字串詳細資料。 將連接字串複製到應用程式中，使其可連線至您的資料庫。
 
-1. 在您於 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，從左側瀏覽區選取 [金鑰]  ，然後選取 [讀寫金鑰]  。 在下一個步驟中，使用畫面右側的複製按鈕，將 URI 和主要金鑰複製到 app.js  檔案。
+1. 在您於 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，從左側瀏覽區選取 [金鑰]，然後選取 [讀寫金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 URI 和主要金鑰複製到 app.js 檔案。
 
    ![在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/create-sql-api-dotnet/keys.png)
 
-2. 開啟 config.js  檔案。
+2. 開啟 config.js 檔案。
 
-3. 從入口網站複製您的 URI 值 (使用 [複製] 按鈕)，並使其成為 config.js  中的端點金鑰值。
+3. 從入口網站複製您的 URI 值 (使用 [複製] 按鈕)，並使其成為 config.js 中的端點金鑰值。
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. 然後，從入口網站複製您的主要金鑰值，並使其成為 config.js  中的 `config.key` 值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。
+4. 然後，從入口網站複製您的主要金鑰值，並使其成為 config.js 中的 `config.key` 值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。
 
    `key: "<Your Azure Cosmos account key>"`
 

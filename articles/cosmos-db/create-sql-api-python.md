@@ -1,30 +1,30 @@
 ---
 title: 快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 description: 提供 Python 程式碼範例，您可用來連線及查詢 Azure Cosmos DB SQL API
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 674b9d132f96b8807355955949463c000565bb38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78942615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654605"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -47,24 +47,24 @@ ms.locfileid: "78942615"
 
 您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立資料庫和容器。 
 
-1. 選取 [資料總管]   > [新增容器]  。 
+1. 選取 [資料總管] > [新增容器]。 
     
-    [新增容器]  區域會顯示在最右邊，您可能需要向右捲動才能看到它。
+    [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
 
     ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
-2. 在 [新增容器]  頁面上，輸入新容器的設定。
+2. 在 [新增容器] 頁面上，輸入新容器的設定。
 
     |設定|建議的值|描述
     |---|---|---|
-    |**資料庫識別碼**|工作|輸入 *Tasks* 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量]  選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
+    |**資料庫識別碼**|工作|輸入 *Tasks* 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量] 選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
     |**輸送量**|400|讓輸送量保持在每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。| 
     |**容器識別碼**|項目|輸入 *Items* 作為新容器的名稱。 容器識別碼與資料庫名稱具有相同的字元需求。|
     |**分割區索引鍵**| /類別| 本文中所述的範例使用 */category* 作為分割區索引鍵。|
     
-    除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]  。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
+    除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
     
-    選取 [確定]  。 [資料總管] 會顯示新的資料庫和容器。
+    選取 [確定]。 [資料總管] 會顯示新的資料庫和容器。
 
 ## <a name="add-sample-data"></a>新增範例資料
 
@@ -105,27 +105,27 @@ ms.locfileid: "78942615"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]  。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 cosmos_get_started.py  檔案中。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 cosmos_get_started.py 檔案中。
 
     ![在 Azure 入口網站的 [金鑰] 設定中取得存取金鑰和 URI](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. 在 Visual Studio Code 中，開啟 \git-samples\azure-cosmos-db-python-getting-started  中的 cosmos_get_started.py  檔案。
+2. 在 Visual Studio Code 中，開啟 \git-samples\azure-cosmos-db-python-getting-started 中的 cosmos_get_started.py 檔案。
 
-3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使其成為 cosmos_get_started.py  中的**端點**變數值。 
+3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使其成為 cosmos_get_started.py 中的**端點**變數值。 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. 然後，從入口網站複製您的 [主要金鑰]  值，並使其成為 cosmos_get_started.py  中的 [金鑰]  值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
+4. 然後，從入口網站複製您的 [主要金鑰] 值，並使其成為 cosmos_get_started.py 中的 [金鑰] 值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
 
     `key = 'FILLME'`
 
-5. 儲存 cosmos_get_started.py  檔案。
+5. 儲存 cosmos_get_started.py 檔案。
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
 此為選用步驟。 了解以程式碼建立的資料庫資源，或直接跳到[更新您的連接字串](#update-your-connection-string)。
 
-下列程式碼片段全部取自 cosmos_get_started.py  檔案。
+下列程式碼片段全部取自 cosmos_get_started.py 檔案。
 
 * 已初始化 CosmosClient。 請務必如[更新連接字串](#update-your-connection-string)一節所述，更新「端點」和「索引鍵」值。 
 
@@ -153,15 +153,15 @@ ms.locfileid: "78942615"
    
 ## <a name="run-the-app"></a>執行應用程式
 
-1. 在 Visual Studio Code 中，選取 [檢視]   > [命令選擇區]  。 
+1. 在 Visual Studio Code 中，選取 [檢視] > [命令選擇區]。 
 
 2. 在提示字元中，輸入 **Python:Select Interpreter**，然後選取要使用的 Python 版本。
 
     Visual Studio Code 中的頁尾會更新以指出選取的解譯器。 
 
-3. 選取 [檢視]   > [整合式終端機]  以開啟 Visual Studio Code 整合式終端機。
+3. 選取 [檢視] > [整合式終端機] 以開啟 Visual Studio Code 整合式終端機。
 
-4. 在整合式終端機視窗中，確定您在 azure-cosmos-db-python-getting-started  資料夾中。 如果不是，請執行下列命令來切換至範例資料夾。 
+4. 在整合式終端機視窗中，確定您在 azure-cosmos-db-python-getting-started 資料夾中。 如果不是，請執行下列命令來切換至範例資料夾。 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
@@ -181,7 +181,7 @@ ms.locfileid: "78942615"
     python cosmos_get_started.py
     ```
 
-7. 若要確認已建立並儲存新項目，請在 Azure 入口網站中，選取 [資料總管]   > [AzureSampleFamilyDatabase]   > [項目]  。 檢視已建立的項目。 例如，以下是適用於 Andersen 家族的範例 JSON 文件：
+7. 若要確認已建立並儲存新項目，請在 Azure 入口網站中，選取 [資料總管] > [AzureSampleFamilyDatabase] > [項目]。 檢視已建立的項目。 例如，以下是適用於 Andersen 家族的範例 JSON 文件：
    
    ```json
    {

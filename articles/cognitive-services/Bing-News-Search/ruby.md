@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448539"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873412"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>快速入門：使用 Ruby 和 Bing 新聞搜尋 REST API 來執行新聞搜尋
 
-使用本快速入門以第一次呼叫 Bing 新聞搜尋 API，並接收 JSON 回應。 這個簡單的 JavaScript 應用程式會將搜尋查詢傳送給 API，並處理結果。
+使用本快速入門，第一次呼叫 Bing 新聞搜尋 API。 這個簡單的 Ruby 應用程式會將搜尋查詢傳送給 API，並處理 JSON 回應。
 
-雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) 上有此範例的原始程式碼。
+雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 
+
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) 上有此範例的原始程式碼。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -32,7 +34,7 @@ ms.locfileid: "75448539"
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 將下列套件匯入至您的程式碼檔案中。
+1. 將下列套件匯入至您的程式碼檔案中：
 
     ```ruby
     require 'net/https'
@@ -40,7 +42,7 @@ ms.locfileid: "75448539"
     require 'json'
     ```
 
-2. 建立適用於 API 端點、新聞搜尋 URL、您訂用帳戶金鑰及搜尋字詞的變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 建立適用於 API 端點、新聞搜尋 URL、您訂用帳戶金鑰及搜尋字詞的變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ ms.locfileid: "75448539"
 
 ## <a name="format-and-make-an-api-request"></a>製作 API 要求格式並提出 API 要求
 
-使用上一個步驟中的變數來製作適用於 API 要求的搜尋 URL 格式。 然後傳送要求。
+使用前一個步驟中的變數將 API 要求的搜尋 URL 格式化。 然後傳送要求。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>處理及列印 JSON 回應
 
-在收到回應之後，您可以剖析 JSON，並列印回應主體和其標頭：
+在收到回應之後，剖析 JSON，然後列印回應主體和其標頭。
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON 回應
+## <a name="example-json-response"></a>範例 JSON 回應
 
 如以下範例所示，成功的回應會以 JSON 格式來傳回：
 
@@ -177,4 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [建立單頁應用程式](tutorial-bing-news-search-single-page-app.md)
+> [建立單頁 Web 應用程式](tutorial-bing-news-search-single-page-app.md)

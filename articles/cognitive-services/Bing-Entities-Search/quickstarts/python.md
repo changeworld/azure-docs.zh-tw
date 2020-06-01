@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448606"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650214"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>快速入門：使用 Python 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -31,7 +31,7 @@ ms.locfileid: "75448606"
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您慣用的 IDE 或編輯器中建立新的 Python 專案，以及新增下列匯入項目。 針對您的訂用帳戶金鑰、端點、市場和搜尋查詢建立變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+1. 在您慣用的 IDE 或編輯器中建立新的 Python 專案，以及新增下列匯入項目。 針對您的訂用帳戶金鑰、端點、市場和搜尋查詢建立變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```python
     import http.client, urllib.parse
@@ -44,7 +44,7 @@ ms.locfileid: "75448606"
     query = 'italian restaurants near me'
     ```
 
-2. 藉由將市場變數附加至 `?mkt=` 參數來建立要求 url。 對查詢進行 URL 編碼，並將它附加至 `&q=` 參數。 
+2. 藉由將市場變數附加至 `?mkt=` 參數來建立要求 url。 對查詢進行 Url 編碼，並將其附加至 `&q=` 參數。 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -52,21 +52,24 @@ ms.locfileid: "75448606"
 
 ## <a name="send-a-request-and-get-a-response"></a>傳送要求並取得回應
 
-1. 建立稱為 `get_suggestions()` 的函式。 然後執行下列步驟。
-   1. 使用 `Ocp-Apim-Subscription-Key` 作為金鑰，將訂用帳戶金鑰新增至字典中。
-   2. 使用 `http.client.HTTPSConnection()` 建立 HTTPS 用戶端物件。 使用 `request()` 與路徑和參數以及標頭資訊來傳送 `GET` 要求。
-   3. 使用 `getresponse()` 儲存回應，並傳回 `response.read()`。
+1. 建立稱為 `get_suggestions()` 的函式。 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. 在此函式中，使用 `Ocp-Apim-Subscription-Key` 作為金鑰，將訂用帳戶金鑰新增至字典中。
 
-2. 呼叫 `get_suggestions()`，並列印 json 回應。
+3. 使用 `http.client.HTTPSConnection()` 建立 HTTPS 用戶端物件。 使用 `request()` 與路徑和參數以及標頭資訊來傳送 `GET` 要求。
+
+4. 使用 `getresponse()` 儲存回應，並傳回 `response.read()`。
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. 呼叫 `get_suggestions()`，並列印 JOSN 回應。
 
     ```python
     result = get_suggestions ()
@@ -143,5 +146,5 @@ ms.locfileid: "75448606"
 > [!div class="nextstepaction"]
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什麼是 Bing 實體搜尋 API](../search-the-web.md)
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什麼是 Bing 實體搜尋 API？](../search-the-web.md)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

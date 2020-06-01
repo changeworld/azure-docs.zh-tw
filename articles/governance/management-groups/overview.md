@@ -3,12 +3,12 @@ title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381547"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773146"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理群組來組織資源
 
@@ -164,12 +164,13 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 在管理群組上使用自訂角色時，有一些限制存在。 
 
  - 您只能在新角色的可指派範圍中定義一個管理群組。 這項限制是為了減少角色定義和角色指派中斷連線的情況。 當具有角色指派的訂用帳戶或管理群組移至沒有角色定義的不同父系時，就會發生這種情況。  
- - 不允許在管理群組自訂角色中定義 RBAC 資料平面動作。 有這項限制是因為 RBAC 動作更新資料平面資源提供者時會發生延遲問題。 此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
+ - 不允許在管理群組自訂角色中定義 RBAC 資料平面動作。 有這項限制是因為 RBAC 動作更新資料平面資源提供者時會發生延遲問題。
+   此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
  - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果有錯字或列出了不正確的管理群組識別碼，則仍會建立角色定義。  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>移動管理群組和訂用帳戶 
 
-若要將管理群組或訂用帳戶作為另一個管理群組的子系，則有三個規則必須評估為 true。
+若要將管理群組或訂用帳戶移為另一個管理群組的子系，則有三個規則必須評估為 true。
 
 如果您要執行移動動作，您需要： 
 

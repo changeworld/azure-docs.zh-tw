@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996004"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747685"
 ---
 ::: zone target="docs"
 
@@ -49,14 +49,14 @@ ms.locfileid: "82996004"
     - 我們建議您使用安全的氣泡片來包裝磁碟。
     - 確保穩固裝入磁碟，以免在箱子內移動。
 
-後續步驟則取決於您退回裝置的地點。 美國/加拿大、歐盟 (EU)、澳洲或亞洲國家/地區的指示會有所不同。
+後續步驟則取決於您退回裝置的地點。 美國/加拿大、歐盟 (EU)、澳洲或亞洲國家/區域的指示會有所不同。
 
 ### <a name="in-us-or-canada"></a>[美國或加拿大](#tab/in-us-or-canada)
 
 如果在美國或加拿大退回裝置，請執行下列步驟。
 
 1. 使用黏貼在外盒上，透明塑膠套裡面的退貨標籤。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]  ，然後下載寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]，然後下載寄回的出貨標籤。
     - 將標籤黏貼在裝置上。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
@@ -72,13 +72,13 @@ ms.locfileid: "82996004"
 如果在歐洲退回裝置，請執行下列步驟。
 
 1. 使用黏貼在外盒上，透明塑膠套裡面的退貨標籤。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]  ，然後下載寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]，然後下載寄回的出貨標籤。
     - 將標籤黏貼在裝置上。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
 3. 如果是在歐洲經由 DHL 辦理裝置退貨，請造訪 DHL 的網站並且指定空運提單號碼，要求他們取貨。
-4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)  。    
-3. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨)  以安排取貨。
+4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)。    
+3. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨) 以安排取貨。
 
 ### <a name="in-australia"></a>[澳大利亞](#tab/in-australia)
 
@@ -133,7 +133,7 @@ ms.locfileid: "82996004"
 ### <a name="in-singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 列印出貨標籤並黏貼在紙箱上。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]  ，並取得寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]，並取得寄回的出貨標籤。
     - 將標籤黏貼在裝置上。 請確定標籤清楚可見。
 
 2. 若要要求取貨，請使用下列範本搭配追蹤號碼 (您可以在傳遞套件中提供的傳回標籤上找到追蹤號碼)，傳送電子郵件給 SingPost 客戶服務。
@@ -142,10 +142,10 @@ ms.locfileid: "82996004"
     To: kadcustcare@singpost.com
     Subject: Microsoft Azure Pick-up - XZ00001234567 
     Body: 
-     a. Requestor name
-     b. Requestor contact number
-     c. Requestor collection address
-     d. Preferred collection date
+     a.    Requestor name
+     b.    Requestor contact number
+     c.    Requestor collection address
+     d.    Preferred collection date
     ```
 
    > [!NOTE]
@@ -161,13 +161,13 @@ ms.locfileid: "82996004"
 
 如果您在日本、新加坡、韓國和西歐使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
 
-1. 在 Azure 入口網站中，移至您訂單的 [概觀]  刀鋒視窗。 請遵循您在選取 [排程取貨]  時顯示的指示。 您應會看到托運訂單時所使用的授權碼。
+1. 在 Azure 入口網站中，移至您訂單的 [概觀] 刀鋒視窗。 請遵循您在選取 [排程取貨] 時顯示的指示。 您應會看到托運訂單時所使用的授權碼。
 
 2. 當您準備好傳回裝置時，請使用下列範本將電子郵件傳送給 Azure 資料箱作業小組。
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

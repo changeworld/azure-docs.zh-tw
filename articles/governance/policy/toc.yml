@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: 部署資源
           href: ./samples/pattern-deploy-resources.md
+    - name: 法規合規性內建項目
+      items:
+        - name: Azure 安全性效能評定
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: 概念
   items:
-    - name: Azure 原則定義結構
+    - name: 定義結構
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: 了解原則效果
+    - name: 了解效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure 原則指派結構
+    - name: 計畫結構
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: 指派結構
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: 評估新原則的影響
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 法規合規性
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: 設計原則即程式碼工作流程
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: 啟用適用於 VM 的 Azure 監視器 (預覽)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: 疑難排解
+  href: ./troubleshoot/general.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub - 社群原則存放庫
       href: 'https://github.com/Azure/Community-Policy'
     - name: 適用於 Azure 原則的 Microsoft 問答集
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: 治理 YouTube 頻道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 來賓設定影片

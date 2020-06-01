@@ -1,5 +1,5 @@
 ---
-title: 使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區
+title: 使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區 (預覽)
 description: 如何使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02d4b6a636bff5ef11686abba6efb52f45f04779
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599249"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700197"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-with-apache-spark-for-azure-synapse-analytics"></a>使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區
+# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區 (預覽)
 
 本文會提供一些範例，說明如何透過 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 按一下以探索資料時，也非常適合使用手勢。
 

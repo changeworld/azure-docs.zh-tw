@@ -3,12 +3,12 @@ title: 快速入門：使用 LUIS 入口網站部署應用程式
 description: 此快速入門說明如何藉由建立預測端點資源、指派資源、訓練及發佈應用程式來部署應用程式。
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585049"
+ms.locfileid: "83653240"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -40,7 +40,8 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 
 1. 選取您的租用戶、訂用帳戶和資源群組。 選取 [指派資源]。
 
-   ![將資源指派給應用程式](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![將資源指派給應用程式](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. 完成相同的步驟，將製作金鑰新增至您的應用程式。
 
@@ -51,11 +52,11 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 
 ## <a name="train-the-app"></a>進行應用程式定型
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+如果您自從上次訓練後已變更應用程式，請將應用程式[定型](get-started-portal-build-app.md)。
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>將應用程式發佈至預測端點
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>預測端點要求
 

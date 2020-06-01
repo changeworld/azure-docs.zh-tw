@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46bb3517af31e328efae89afef8f3e83ccbc8bfa
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222965"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778755"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教學課程：設定適用於同盟網域的混合式 Azure Active Directory Join
 
@@ -26,7 +26,7 @@ ms.locfileid: "79222965"
 - 混合式 Azure AD Join
 - Azure AD 註冊
 
-將您的裝置導入 Azure AD 中，您將可透過跨雲端和內部部署資源的單一登入 (SSO)，將使用者的生產力最大化。 同時您可以利用[條件式存取](../active-directory-conditional-access-azure-portal.md)來保護對雲端和內部部署資源的存取。
+將您的裝置導入 Azure AD 中，您將可透過跨雲端和內部部署資源的單一登入 (SSO)，將使用者的生產力最大化。 同時您可以利用[條件式存取](../conditional-access/howto-conditional-access-policy-compliant-device.md)來保護對雲端和內部部署資源的存取。
 
 同盟環境應具有支援下列需求的識別提供者。 如果您的同盟環境使用 Active Directory 同盟服務 (AD FS)，則已支援下列需求。
 
@@ -40,7 +40,7 @@ ms.locfileid: "79222965"
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務]   > [端點]  下方查看已啟用的端點。
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務] > [端點] 下方查看已啟用的端點。
 
 在本教學課程中，您會了解如何為使用 AD FS 的同盟環境中已加入 Active Directory 網域的電腦裝置設定混合式 Azure AD Join。
 
@@ -104,47 +104,47 @@ ms.locfileid: "79222965"
 
 **若要使用 Azure AD Connect 設定混合式 Azure AD Join**：
 
-1. 啟動 Azure AD Connect，然後選取 [設定]  。
+1. 啟動 Azure AD Connect，然後選取 [設定]。
 
    ![歡迎使用](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. 在 [其他工作]  頁面上選取 [設定裝置選項]  ，然後選取 [下一步]  。
+1. 在 [其他工作] 頁面上選取 [設定裝置選項]，然後選取 [下一步]。
 
    ![其他工作](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. 在 [概觀]  頁面上，選取 [下一步]  。
+1. 在 [概觀] 頁面上，選取 [下一步]。
 
    ![概觀](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. 在 [連線到 Azure AD]  頁面上，輸入 Azure AD 租用戶的全域管理員認證，然後選取 [下一步]  。
+1. 在 [連線到 Azure AD] 頁面上，輸入 Azure AD 租用戶的全域管理員認證，然後選取 [下一步]。
 
    ![連接至 Azure AD](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. 在 [裝置選項]  頁面上選取 [設定混合式 Azure AD Join]  ，然後選取 [下一步]  。
+1. 在 [裝置選項] 頁面上選取 [設定混合式 Azure AD Join]，然後選取 [下一步]。
 
    ![裝置選項](./media/hybrid-azuread-join-federated-domains/15.png)
 
-1. 在 [SCP]  頁面上執行下列步驟，然後選取 [下一步]  ：
+1. 在 [SCP] 頁面上執行下列步驟，然後選取 [下一步]：
 
    ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. 選取樹系。
    1. 選取驗證服務。 除非您的組織獨有 Windows 10 用戶端，而且您已設定電腦/裝置同步或您的組織使用無縫 SSO，否則您必須選取 **AD FS 伺服器**。
-   1. 選取 [新增]  ，並輸入企業系統管理員認證。
+   1. 選取 [新增]，並輸入企業系統管理員認證。
 
-1. 在 [裝置作業系統]  頁面上，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]  。
+1. 在 [裝置作業系統] 頁面上，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]。
 
    ![裝置作業系統](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. 在 [同盟組態]  頁面上輸入 AD FS 系統管理員的認證，然後選取 [下一步]  。
+1. 在 [同盟組態] 頁面上輸入 AD FS 系統管理員的認證，然後選取 [下一步]。
 
    ![同盟組態](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. 在 [準備設定]  頁面上，選取 [設定]  。
+1. 在 [準備設定] 頁面上，選取 [設定]。
 
    ![準備設定](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. 在 [設定完成]  頁面上，選取 [結束]  。
+1. 在 [設定完成] 頁面上，選取 [結束]。
 
    ![組態完成](./media/hybrid-azuread-join-federated-domains/20.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "79222965"
 - 組織的 STS (適用於同盟網域)
 - `https://autologon.microsoftazuread-sso.com` (適用於無縫 SSO)
 
-您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]  。
+您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]。
 
 ### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>為舊版 Windows 電腦安裝 Microsoft Workplace Join
 
@@ -178,25 +178,69 @@ ms.locfileid: "79222965"
 
 ## <a name="verify-the-registration"></a>確認註冊
 
-若要確認 Azure 租用戶的裝置註冊狀態，您可以在 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** Cmdlet。
+以下是用來尋找並驗證裝置狀態的三種方式：
+
+### <a name="locally-on-the-device"></a>在本機裝置上
+
+1. 開啟 Windows PowerShell。
+2. 輸入 `dsregcmd /status`。
+3. 確認 **AzureAdJoined** 和 **DomainJoined** 都設定為 [是]。
+4. 您可以使用 **DeviceId**，並使用 Azure 入口網站或 PowerShell 來比較服務的狀態。
+
+### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
+
+1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。 在同盟環境中，只有在無法註冊，而且 AAD connect 已設定為同步裝置時，才會發生這種情況。
+4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
+
+### <a name="using-powershell"></a>使用 PowerShell
+
+請使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中。
 
 使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
 
 - 必須要有**裝置識別碼**與 Windows 用戶端上的識別碼相符的物件存在。
-- **DeviceTrustType** 的值必須是 [已加入網域]  。 此設定相當於 Azure AD 入口網站中 [裝置]  下的 [已加入混合式 Azure AD]  狀態。
-- 在條件式存取中使用的裝置，[Enabled]  的值必須是 [True]  ，而 [DeviceTrustLevel]  必須是 [Managed]  。
-
-**若要查看服務詳細資料**：
+- **DeviceTrustType** 的值是 [已加入網域]。 此設定相當於 Azure AD 入口網站中的 [裝置] 頁面上所呈現的 [已加入混合式 Azure AD] 狀態。
+- 在條件式存取中使用的裝置，[Enabled] 的值是 [True]，而 [DeviceTrustLevel] 是 [Managed]。
 
 1. 以系統管理員身分開啟 Windows PowerShell。
-1. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。  
-1. 輸入 `get-msoldevice -deviceId <deviceId>`。
-1. 確認 [已啟用]  設為 [True]  。
+2. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (不包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>列出已加入混合式 Azure AD 的裝置
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>列出單一裝置的詳細資料：
+
+1. 輸入 `get-msoldevice -deviceId <deviceId>` (這是在本機裝置上取得的 **DeviceId**)。
+2. 確認 [已啟用] 設為 [True]。
 
 ## <a name="troubleshoot-your-implementation"></a>對您的實作進行疑難排解
 
 如果您為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
+- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [針對現行 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
 - [針對舊版 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 

@@ -7,18 +7,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 9b6635a0dab20c8122ad4df4b7fbc5a0cb6f4c99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a9ab62d5ea408a5c7683d2f06e2cd52f52da1bb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71351130"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683875"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：適用於 SQL API 的 .NET 範例
+
 > [!div class="op_single_selector"]
-> * [.NET 範例](sql-api-dotnet-samples.md)
-> * [Java 範例](sql-api-java-samples.md)
-> * [非同步 Java 範例](sql-api-async-java-samples.md)
+> * [.NET V2 SDK 範例](sql-api-dotnet-samples.md)
+> * [.NET V3 SDK 範例](sql-api-dotnet-v3sdk-samples.md)
+> * [Java V4 SDK 範例](sql-api-java-sdk-samples.md)
 > * [Node.js 範例](sql-api-nodejs-samples.md)
 > * [Python 範例](sql-api-python-samples.md)
 > * [Azure 程式碼範例庫](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -50,7 +51,7 @@ Azure 訂用帳戶或免費的 Cosmos DB 試用帳戶
 > 
 
 ## <a name="database-examples"></a>資料庫範例
-DatabaseManagement  專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -60,7 +61,7 @@ DatabaseManagement  專案範例的 [RunDatabaseDemo](https://github.com/Azure/a
 | [刪除資料庫](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L89) |[DocumentClient.DeleteDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedatabaseasync) |
 
 ## <a name="collection-examples"></a>集合範例
-CollectionManagement  專案範例的 [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+CollectionManagement 專案範例的 [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -71,7 +72,7 @@ CollectionManagement  專案範例的 [RunCollectionDemo](https://github.com/Azu
 | [刪除集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L228) |[DocumentClient.DeleteDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync) |
 
 ## <a name="document-examples"></a>文件範例
-DocumentManagement  專案範例的 [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+DocumentManagement 專案範例的 [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -87,7 +88,7 @@ DocumentManagement  專案範例的 [RunDocumentsDemo](https://github.com/Azure/
 | [僅在文件變更時才讀取文件](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L454-L500) |[DocumentClient.AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition)<br>[Documents.Client.AccessConditionType](/dotnet/api/microsoft.azure.documents.client.accessconditiontype) |
 
 ## <a name="indexing-examples"></a>索引範例
-範例 IndexManagement  專案的 [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)。 
+範例 IndexManagement 專案的 [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -99,7 +100,7 @@ DocumentManagement  專案範例的 [RunDocumentsDemo](https://github.com/Azure/
 | [執行索引轉換](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L318-L370) |[ReplaceDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync) |
 
 ## <a name="geospatial-examples"></a>地理空間範例
-Geospatial  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L94-L139) 方法會說明如何執行下列工作。  若要在執行下列範例之前先了解 GeoJSON 和地理空間資料，請參閱[使用地理空間和 GeoJSON 位置資料](geospatial.md)。 
+Geospatial 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L94-L139) 方法會說明如何執行下列工作。  若要在執行下列範例之前先了解 GeoJSON 和地理空間資料，請參閱[使用地理空間和 GeoJSON 位置資料](geospatial.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -111,7 +112,7 @@ Geospatial  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-docume
 | [驗證點和多邊形資料](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L290-L326) |[ST_ISVALID](sql-query-st-isvalid.md)<br>[ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)<br>[GeometryOperationExtensions.IsValid](/dotnet/api/microsoft.azure.documents.spatial.geometryoperationextensions.isvalid)<br>[GeometryOperationExtensions.IsValidDetailed](/dotnet/api/microsoft.azure.documents.spatial.geometryoperationextensions.isvaliddetailed) |
 
 ## <a name="query-examples"></a>查詢範例
-Queries  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L64-L129) 方法會說明如何使用 SQL 查詢文法、使用 LINQ 提供者搭配查詢以及使用 Lambda 來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](how-to-sql-query.md)。 
+Queries 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L64-L129) 方法會說明如何使用 SQL 查詢文法、使用 LINQ 提供者搭配查詢以及使用 Lambda 來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](how-to-sql-query.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -131,7 +132,7 @@ Queries  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentd
 | [使用 RDER BY 查詢分割集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L809-L882) |[DocumentQueryable.CreateDocumentQuery](/previous-versions/azure/dn850285(v=azure.100)) |
 
 ## <a name="change-feed-examples"></a>變更摘要範例 
-ChangeFeed  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L54-L97) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的變更摘要，請參閱[讀取 Azure Cosmos DB 變更摘要](read-change-feed.md)和[變更摘要處理器](change-feed-processor.md)。 
+ChangeFeed 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L54-L97) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的變更摘要，請參閱[讀取 Azure Cosmos DB 變更摘要](read-change-feed.md)和[變更摘要處理器](change-feed-processor.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -141,7 +142,7 @@ ChangeFeed  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-docume
 變更摘要處理器範例 [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) 會示範如何使用變更摘要處理器程式庫將資料複寫至另一個 Cosmos 容器。   
 
 ## <a name="server-side-programming-examples"></a>伺服器端程式設計範例
-ServerSideScripts  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)。 
+ServerSideScripts 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -154,7 +155,7 @@ ServerSideScripts  專案範例的 [RunDemoAsync](https://github.com/Azure/azure
 | [建立使用者定義函數 (UDF)](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L421) |[DocumentClient.CreateUserDefinedFunctionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync) |
 
 ## <a name="user-management-examples"></a>使用者管理範例
-UserManagement  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs#L55-L129) 方法會說明如何執行下列工作：
+UserManagement 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs#L55-L129) 方法會說明如何執行下列工作：
 
 | Task | API 參考資料 |
 | --- | --- |

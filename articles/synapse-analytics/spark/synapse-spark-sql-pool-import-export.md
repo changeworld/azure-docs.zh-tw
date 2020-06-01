@@ -9,28 +9,30 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420422"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739272"
 ---
 # <a name="introduction"></a>簡介
 
-Spark SQL 分析連接器的設計目的是要讓您在 Azure Synapse 中於 Spark 集區 (預覽) 和 SQL 集區之間有效率地傳輸資料。 Spark SQL 分析連接器僅適用於 SQL 集區，而不適用於 SQL 隨選。
+Azure Synapse Apache Spark 對 Synapse SQL 連接器的設計目的是要讓您在 Azure Synapse 中於 Spark 集區 (預覽) 和 SQL 集區之間有效率地傳輸資料。 Azure Synapse Apache Spark 對 Synapse SQL 連接器僅適用於 SQL 集區，不適用於 SQL 隨選。
 
 ## <a name="design"></a>設計
 
 若要在 Spark 集區和 SQL 集區之間傳輸資料，可使用 JDBC 來進行。 不過，在有兩個分散式系統 (例如 Spark 和 SQL 集區) 的情況下，JDBC 往往會成為序列資料傳輸的瓶頸。
 
-對於 SQL 分析連接器來說，Spark 集區是 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen 2 以及 SQL 集區中的 Polybase，以在 Spark 叢集與 SQL 分析執行個體之間有效率地傳輸資料。
+Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen2 以及 SQL 集區中的 Polybase，以在 Spark 叢集與 Synapse SQL 執行個體之間有效率地傳輸資料。
 
 ![連接器架構](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的驗證
 
-在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 在存取儲存體帳戶或資料倉儲伺服器時，會有一個與 Azure Active Directory 連線的權杖服務可供您取得所要使用的安全性權杖。 因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 AAD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
+在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 在存取儲存體帳戶或資料倉儲伺服器時，會有一個與 Azure Active Directory 連線的權杖服務可供您取得所要使用的安全性權杖。 
+
+因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 AAD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
 
 ## <a name="constraints"></a>條件約束
 
@@ -42,14 +44,14 @@ Spark SQL 分析連接器的設計目的是要讓您在 Azure Synapse 中於 Spa
 
 若要建立使用者，請連線到資料庫，並遵循下列範例：
 
-```Sql
+```sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 若要指派角色：
 
-```Sql
+```sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
 ```
 
@@ -62,14 +64,14 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 > [!NOTE]
 > **筆記本體驗中不需要匯入**
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>讀取 API
 
-```Scala
+```scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
@@ -77,13 +79,13 @@ val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 
 #### <a name="write-api"></a>寫入 API
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
 其中 TableType 可以是 Constants.INTERNAL 或 Constants.EXTERNAL
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
@@ -95,14 +97,14 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 > [!NOTE]
 > 筆記本體驗中不需要匯入
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>讀取 API
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
@@ -110,7 +112,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>寫入 API
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
@@ -122,7 +124,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 目前，連接器不支援對工作區外的 SQL 集區進行權杖型驗證。 您必須使用 SQL 驗證。
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -132,7 +134,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>寫入 API
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -147,23 +149,51 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 假使您有想要寫入到 DW 的「pyspark_df」資料框架。
 
-請在 PySpark 中使用資料框架建立暫存資料表
+請在 PySpark 中使用資料框架建立暫存資料表：
 
-```Python
+```py
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-請使用 magic 在 PySpark 筆記本中執行 Scala 資料格
+請使用 magic 在 PySpark 筆記本中執行 Scala 資料格：
 
-```Scala
+```scala
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
+
 同樣地，在讀取案例中，請使用 Scala 讀取資料並將其寫入暫存資料表，並在 PySpark 中使用 Spark SQL 將暫存資料表查詢至資料框架。
+
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>允許其他使用者在您的工作區中使用 DW 連接器
+
+您必須是連線到工作區的 ADLS Gen2 儲存體帳戶上所存在的儲存體 Blob 資料擁有者，才能更改其他人的遺漏權限。 請確定使用者可存取工作區並有權執行筆記本。
+
+### <a name="option-1"></a>選項 1
+
+- 將使用者設為儲存體 Blob 資料參與者/擁有者
+
+### <a name="option-2"></a>選項 2
+
+- 在資料夾結構上指定下列 ACL：
+
+| 資料夾 | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+|--|--|--|--|--|--|--|--|
+| 存取權限 | --X | --X | --X | --X | --X | --X | -WX |
+| 預設權限 | ---| ---| ---| ---| ---| ---| ---|
+
+- 您應該能夠從 Azure 入口網站，對所有來自 "synapse" 和其下層的資料夾執行 ACL。 若要對根 "/" 資料夾執行 ACL，請遵循下列指示。
+
+- 使用 AAD 從儲存體總管連線到與工作區連線的儲存體帳戶
+- 選取您的帳戶，並提供工作區的 ADLS Gen2 URL 和預設檔案系統
+- 在看到儲存體帳戶列出後，請以滑鼠右鍵按一下列出的工作區，然後選取 [管理存取權]。
+- 將具有「執行」存取權限的使用者新增至 / 資料夾。 選取 [確定]
+
+> [!IMPORTANT]
+> 如果您不想要設定預設值的話，請確定您未選取 [預設]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立 SQL 集區]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [為 Azure Synapse Analytics 工作區建立新的 Apache Spark 集區](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [使用 Azure 入口網站建立 SQL 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [使用 Azure 入口網站建立新的 Apache Spark 集區](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

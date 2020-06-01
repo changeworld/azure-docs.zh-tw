@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421302"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702052"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選 (預覽) 
 
@@ -28,7 +28,7 @@ SQL 隨選是一種分散式資料處理系統，專門建置來處理大規模�
 
 SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢集。 每個 Azure Synapse 工作區內都會提供用於此服務的預設端點，因此您可以在工作區建立好之後就立即開始查詢資料。 所保留的資源不會收費，您只需就執行查詢時所掃描的資料來支付費用，因此此模型是真正的按使用次數付費模型。  
 
-如果您在資料管線中使用 Spark 來進行資料準備、清理或擴充，則可以直接從 SQL 隨選[查詢您在程序中所建立的任何 Spark 資料表](develop-storage-files-spark-tables.md)。 使用 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) 則可將 SQL 隨選端點帶入到[受控工作區 VNet](../security/synapse-workspace-managed-vnet.md)。  
+如果您在資料管線中使用 Apache Spark for Azure Synapse 來進行資料準備、清理或擴充，則可以直接從 SQL 隨選[查詢您在程序中所建立的外部 Spark 資料表](develop-storage-files-spark-tables.md)。 使用 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) 則可將 SQL 隨選端點帶入到[受控工作區 VNet](../security/synapse-workspace-managed-vnet.md)。  
 
 ## <a name="who-is-sql-on-demand-for"></a>SQL 隨選的適用對象
 
@@ -42,7 +42,7 @@ SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢�
 
 - 資料工程師可以使用此服務來探索資料湖、轉換和準備資料，並簡化其資料轉換管線。 如需詳細資訊，請參閱此[教學課程](tutorial-data-analyst.md)。
 - 由於有 OPENROWSET 和自動結構描述推斷等功能，資料科學家可以快速地推論資料湖所含資料的內容和結構。
-- 資料分析師可以使用連線至 SQL 隨選的熟悉 T-SQL 語言或其最愛的工具，來[探索資料科學家或資料工程師所建立的資料和 Spark 資料表](develop-storage-files-spark-tables.md)。
+- 資料分析師可以使用連線至 SQL 隨選的熟悉 T-SQL 語言或其最愛的工具，來[探索資料科學家或資料工程師所建立的資料和 Spark 外部資料表](develop-storage-files-spark-tables.md)。
 - BI 專業人員可以快速地[根據資料湖所含的資料建立 Power BI 報告](tutorial-connect-power-bi-desktop.md)和 Spark 資料表。
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>要執行哪些動作才能開始使用？
@@ -110,7 +110,7 @@ SQL 隨選有機制可以保護資料的存取。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 整合和多重要素驗證
 
-SQL 隨選可讓您透過 [Azure Active Directory 整合](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 這項功能簡化了權限管理並增強安全性。 Azure Active Directory (Azure AD) 支援[多重要素驗證](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA)，以提高資料和應用程式安全性，同時支援單一登入程序。
+SQL 隨選可讓您透過 [Azure Active Directory 整合](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 這項功能簡化了權限管理並增強安全性。 Azure Active Directory (Azure AD) 支援[多重要素驗證](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA)，以提高資料和應用程式安全性，同時支援單一登入程序。
 
 #### <a name="authentication"></a>驗證
 

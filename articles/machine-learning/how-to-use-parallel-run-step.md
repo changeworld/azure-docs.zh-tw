@@ -6,47 +6,101 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
-ms.author: vaidyas
-author: vaidya-s
-ms.date: 01/15/2020
-ms.custom: Ignite2019
-ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracychms
+ms.date: 04/15/2020
+ms.custom: Build2020
+ms.openlocfilehash: 058cdaa77a38dcb45164e01a54e73218b469940b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79477182"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860948"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何使用 Azure Machine Learning 以非同步和平行的方式處理大量資料。 這裡所述的 ParallelRunStep 功能屬於公開預覽版。 此預覽版能以高效能且高輸送量的方式產生推斷和處理資料。 其會提供現成可用的非同步功能。
+了解如何使用 Azure Machine Learning 以非同步和平行的方式執行大量資料的批次推斷。 ParallelRunStep 提供現成的平行處理原則功能。
 
-透過 ParallelRunStep，即可直接將離線推斷擴充至大型機器叢集的數 TB 生產資料，進而提升生產力並獲得最佳成本。
+透過 ParallelRunStep，即可直接將離線推斷擴充至大型機器叢集的數 TB 結構化和非結構化資料，進而提升生產力並獲得最佳成本。
 
 您會在本文中了解下列工作：
 
-> * 建立遠端計算資源。
-> * 撰寫自訂推斷指令碼。
-> * 建立[機器學習管線](concept-ml-pipelines.md)來註冊以 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 資料集為基礎的預先定型影像分類模型。 
-> * 使用此模型對 Azure Blob 儲存體帳戶中可用的影像範例執行批次推斷。 
+> * 設定機器學習資源。
+> * 設定批次推斷資料輸入和輸出。
+> * 根據 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 資料集，準備預先定型的影像分類模型。 
+> * 撰寫推斷指令碼。
+> * 建立包含 ParallelRunStep 的[機器學習管線](concept-ml-pipelines.md)，並在 MNIST 測試映像上執行批次推斷。 
+> * 重新提交具有新資料輸入和參數的批次推斷執行。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 如需引導式快速入門，但您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請先完成[設定教學課程](tutorial-1st-experiment-sdk-setup.md)。 
+* 如需引導式快速入門，但您還沒有 Azure Machine Learning 工作區，請先完成[設定教學課程](tutorial-1st-experiment-sdk-setup.md)。 
 
-* 若要管理您自己的環境和相依性，請參閱關於如何設定自有環境的[操作指南](how-to-configure-environment.md)。 在您的環境中執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps`，以下載必要的相依性。
+* 若要管理您自己的環境和相依性，請參閱關於如何設定自有本機環境的[操作指南](how-to-configure-environment.md)。
 
 ## <a name="set-up-machine-learning-resources"></a>設定機器學習資源
 
-下列動作會設定要執行批次推斷管線所需的資源：
+下列動作會設定要執行批次推斷管線所需的機器學習資源：
 
-- 建立資料存放區，並使其指向具有所要推斷影像的 Blob 容器。
-- 將資料參考設定為批次推斷管線步驟的輸入和輸出。
-- 設定計算叢集來執行批次推斷步驟。
+- 連線到工作區。
+- 建立或連結現有的計算資源。
+
+### <a name="configure-workspace"></a>設定工作區
+
+從現有的工作區建立工作區物件。 `Workspace.from_config()` 會讀取 config.json 檔案，並將詳細資料載入到名為 ws 的物件。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+> [!IMPORTANT]
+> 此程式碼片段預期工作區組態會儲存在目前目錄或其父系目錄中。 如需建立工作區的詳細資訊，請參閱[建立和管理 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 如需將組態儲存至檔案的詳細資訊，請參閱[建立工作區組態檔](how-to-configure-environment.md#workspace)。
+
+### <a name="create-a-compute-target"></a>建立計算目標
+
+在 Azure Machine Learning 中，*計算* (或*計算目標*) 係指會在您機器學習管線中執行計算步驟的機器或叢集。 請執行下列程式碼來建立以 CPU 為基礎的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目標。
+
+```python
+from azureml.core.compute import AmlCompute, ComputeTarget
+from azureml.core.compute_target import ComputeTargetException
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
+
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
+
+    # create the cluster
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
+```
+
+## <a name="configure-inputs-and-output"></a>設定輸入和輸出
 
 ### <a name="create-a-datastore-with-sample-images"></a>建立具有影像範例的資料存放區
 
@@ -76,25 +130,13 @@ mnist_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-inputs-and-outputs"></a>設定資料輸入和輸出
+### <a name="create-the-data-inputs"></a>建立資料輸入
 
-現在，您需要設定資料輸入和輸出，包括：
+批次推斷的輸入是您想要分割以進行平行處理的資料。 批次推斷管線會透過 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)接受資料輸入。
 
-- 包含輸入影像的目錄。
-- 預先定型的模型儲存所在的目錄。
-- 包含標籤的目錄。
-- 用於輸出的目錄。
-
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) 類別可用來在 Azure Machine Learning 中探索、轉換和管理資料。 此類別有兩種類型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此範例中，您將使用 `FileDataset` 作為批次推斷管線步驟的輸入。 
-
-> [!NOTE] 
-> 批次推斷中的 `FileDataset` 支援目前僅限於 Azure Blob 儲存體。 
-
-您也可以在自訂推斷指令碼中參照其他資料集。 例如，您可以藉由使用 `Dataset.register` 和 `Dataset.get_by_name`，而用此類別來存取指令碼中用於標記影像的標籤。
+`Dataset` 可用來在 Azure Machine Learning 中探索、轉換和管理資料。 有兩種類型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此範例中，您將使用 `FileDataset` 作為輸入。 `FileDataset` 讓您將檔案下載或掛接至您的計算。 您可以建立資料集，以建立資料來源位置的參考。 如果您對資料集套用任何子集轉換，這些轉換也會儲存在資料集中。 資料會保留在現有的位置，因此不會產生額外的儲存成本。
 
 如需 Azure Machine Learning 資料集的詳細資訊，請參閱[建立和存取資料集 (預覽)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
-
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -103,50 +145,28 @@ mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
-named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
+```
+
+若要在執行批次推斷管線時使用動態資料輸入，您可以將輸入 `Dataset` 定義為 [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)。 您可以在每次重新提交批次推斷管線執行時，指定輸入資料集。
+
+```python
+from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="mnist_param", default_value=input_mnist_ds)
+input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pipeline_param).as_mount()
+```
+
+### <a name="create-the-output"></a>建立輸出
+
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
+
+```python
+from azureml.pipeline.core import Pipeline, PipelineData
 
 output_dir = PipelineData(name="inferences", 
                           datastore=def_data_store, 
                           output_path_on_compute="mnist/results")
-```
-
-### <a name="set-up-a-compute-target"></a>設定計算目標
-
-在 Azure Machine Learning 中，*計算* (或*計算目標*) 係指會在您機器學習管線中執行計算步驟的機器或叢集。 請執行下列程式碼來建立以 CPU 為基礎的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目標。
-
-```python
-from azureml.core.compute import AmlCompute, ComputeTarget
-from azureml.core.compute_target import ComputeTargetException
-
-# choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
-compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
-
-# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
-
-
-if compute_name in ws.compute_targets:
-    compute_target = ws.compute_targets[compute_name]
-    if compute_target and type(compute_target) is AmlCompute:
-        print('found compute target. just use it. ' + compute_name)
-else:
-    print('creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
-                                                                min_nodes = compute_min_nodes, 
-                                                                max_nodes = compute_max_nodes)
-
-    # create the cluster
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
-    
-    # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
-    
-     # For a more detailed view of current AmlCompute status, use get_status()
-    print(compute_target.get_status().serialize())
 ```
 
 ## <a name="prepare-the-model"></a>準備模型
@@ -168,7 +188,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-然後，向您的工作區註冊模型，使其可供遠端計算資源使用。
+然後，向您的工作區註冊模型，使其可供計算資源使用。
 
 ```python
 from azureml.core.model import Model
@@ -186,11 +206,11 @@ model = Model.register(model_path="models/",
 >[!Warning]
 >下列程式碼只是[筆記本範例](https://aka.ms/batch-inference-notebooks)所使用的範例。 請針對您的案例建立自己的指令碼。
 
-指令碼「必須包含」  兩個函式：
+指令碼「必須包含」兩個函式：
 - `init()`:請將此函式用於高成本或一般的準備，以進行後續的推斷。 例如，使用此函式將模型載入至全域物件。 此函式只會在程序開始時呼叫一次。
 -  `run(mini_batch)`:此函式會針對每個 `mini_batch` 執行個體來執行。
-    -  `mini_batch`:ParallelRunStep 會叫用 run 方法，並將 list 或 Pandas 資料框架作為引數傳遞給方法。 min_batch 中的每個項目會是檔案路徑 (如果輸入是 FileDataset) 或 Pandas 資料框架 (如果輸入是 TabularDataset)。
-    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 您應確保執行結果中有足夠的資料可將輸入對應至執行結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以您應該在輸出中使用某個索引鍵以將其對應至輸入。
+    -  `mini_batch`:ParallelRunStep 會叫用 run 方法，並將 list 或 Pandas 資料框架作為引數傳遞給方法。 mini_batch 中的每個項目會是檔案路徑 (如果輸入是 FileDataset) 或 Pandas 資料框架 (如果輸入是 TabularDataset)。
+    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 您應確保執行結果中有足夠的資料可將輸入對應至執行輸出結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以您應該在輸出中使用某個索引鍵以將其對應至輸入。
 
 ```python
 # Snippets from a sample script.
@@ -237,9 +257,7 @@ def run(mini_batch):
     return resultList
 ```
 
-### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>如何在 entry_script 中存取來源目錄中的其他檔案
-
-如果輸入指令碼所在的相同目錄中有另一個檔案或資料夾，您可以藉由尋找目前的工作目錄來對其進行參照。
+如果推斷指令碼所在的相同目錄中有另一個檔案或資料夾，您可以藉由尋找目前的工作目錄來對其進行參照。
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
@@ -248,29 +266,31 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>建置並執行包含 ParallelRunStep 的管線
 
-現在，您已備妥一切所需而可建置管線。
+現在您已擁有所需的所有項目：資料輸入、模型、輸出和推斷指令碼。 現在可以建置包含 ParallelRunStep 的批次推斷管線了。
 
-### <a name="prepare-the-run-environment"></a>準備執行環境
+### <a name="prepare-the-environment"></a>準備環境
 
-首先，為指令碼指定相依性。 當您稍後建立管線步驟時，將會用到這個物件。
+首先，為指令碼指定相依性。 這可讓您安裝 pip 套件，以及設定環境。 請一律包含 **azureml-core** 和 **azureml-dataprep[pandas, fuse]** 套件。
+
+如果您使用自訂 Docker 映像 (user_managed_dependencies=True)，也應該安裝 Conda。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
+                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
 batch_env.docker.base_image = DEFAULT_GPU_IMAGE
-batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>指定批次推斷管線步驟的參數
+### <a name="specify-the-parameters-using-parallelrunconfig"></a>使用 ParallelRunConfig 指定參數
 
-`ParallelRunConfig` 是 Azure Machine Learning 管線內，適用於新引進批次推斷 `ParallelRunStep` 執行個體的主要設定。 您可以用此設定來包裝指令碼並設定必要參數，包括下列參數：
+`ParallelRunConfig` 是 Azure Machine Learning 管線中 `ParallelRunStep` 執行個體的主要組態。 您可以用此設定來包裝指令碼並設定必要參數，包括下列各項：
 - `entry_script`:作為本機檔案路徑的使用者指令碼，將會在多個節點上平行執行。 如果 `source_directory` 存在，請使用相對路徑。 否則，使用可在機器上存取的路徑即可。
 - `mini_batch_size`:傳遞至單一 `run()` 呼叫的迷你批次大小。 (選擇性；FileDataset 的預設值為 `10` 個檔案，而 TabularDataset 的預設值為 `1MB`。)
     - 針對 `FileDataset`，這是最小值為 `1` 的檔案數目。 您可以將多個檔案結合成一個迷你批次。
@@ -278,60 +298,61 @@ batch_env.spark.precache_packages = False
 - `error_threshold`:處理期間應該忽略的記錄失敗數目 (針對 `TabularDataset`) 和檔案失敗數目 (針對 `FileDataset`)。 如果整個輸入的錯誤計數超過此值，作業便會中止。 錯誤閾值適用於整個輸入，而非適用於傳送至 `run()` 方法的個別迷你批次。 範圍為 `[-1, int.max]`。 `-1` 部分會指出要在處理期間忽略所有失敗。
 - `output_action`:下列其中一個值說明輸出的資料會如何被組合：
     - `summary_only`:使用者指令碼會儲存輸出。 `ParallelRunStep` 只會將輸出用於計算錯誤閾值。
-    - `append_row`:針對所有輸入檔案，輸出檔案夾中只會建立一個檔案，並以直線分隔的方式附加所有輸出。 檔案名稱會是 `parallel_run_step.txt`。
+    - `append_row`:針對所有輸入，輸出檔案夾中只會建立一個檔案，並以直線分隔的方式附加所有輸出。
+- `append_row_file_name`:若要自訂 append_row output_action 的輸出檔名稱 (選用，預設值為 `parallel_run_step.txt`)。
 - `source_directory`:資料夾的路徑，此資料夾包含要在計算目標上執行的所有檔案 (選擇性)。
 - `compute_target`:只支援 `AmlCompute`。
 - `node_count`:要用來執行使用者指令碼的計算節點數目。
-- `process_count_per_node`:每個節點的處理序數目。
-- `environment`:Python 環境定義。 您可以將其設定為使用現有 Python 環境，也可以設定用來進行實驗的暫存環境。 定義也會負責設定必要的應用程式相依性 (選擇性)。
+- `process_count_per_node`:每個節點的處理序數目。 最佳做法是設定為節點擁有的 GPU 或 CPU 數目 (選用，預設值為 `1`)。
+- `environment`:Python 環境定義。 您可以將其設定為使用現有 Python 環境，也可以設定暫存環境。 定義也會負責設定必要的應用程式相依性 (選擇性)。
 - `logging_level`:記錄詳細程度。 增加詳細程度的值包括：`WARNING`、`INFO` 和 `DEBUG`。 (選擇性；預設值為 `INFO`)
 - `run_invocation_timeout`:`run()` 方法叫用逾時 (以秒為單位)。 (選擇性；預設值為 `60`)
+- `run_max_try`:迷你批次的 `run()` 嘗試次數上限。 如果擲回例外狀況，或達到 `run_invocation_timeout` 時未傳回任何內容 (選用；預設值為 `3`)，則 `run()` 會失敗。 
+
+您可以將 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 指定為 `PipelineParameter`，以便在重新提交管線執行時，可以微調參數值。 在此範例中，您會針對 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，而且將會在稍後重新提交執行時變更這些值。 
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.core import PipelineParameter
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     source_directory=scripts_folder,
     entry_script="digit_identification.py",
-    mini_batch_size="5",
+    mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
     output_action="append_row",
+    append_row_file_name="mnist_outputs.txt",
     environment=batch_env,
     compute_target=compute_target,
-    node_count=4)
+    process_count_per_node=PipelineParameter(name="process_count_param", default_value=2),
+    node_count=2)
 ```
 
-### <a name="create-the-pipeline-step"></a>建立管線步驟
+### <a name="create-the-parallelrunstep"></a>建立 ParallelRunStep
 
-使用指令碼、環境設定和參數來建立管線步驟。 指定您已附加至工作區的計算目標以作為指令碼的執行目標。 使用 `ParallelRunStep` 來建立批次推斷管線步驟，其採用下列所有參數：
+使用指令碼、環境組態和參數來建立 ParallelRunStep。 指定您已附加至工作區的計算目標以作為推斷指令碼的執行目標。 使用 `ParallelRunStep` 來建立批次推斷管線步驟，其採用下列所有參數：
 - `name`:步驟的名稱，具有下列命名限制：唯一的、3 至 32 個字元，且 RegEx ^\[a-z\]([-a-z0-9]*[a-z0-9])?$。
-- `models`:已在 Azure Machine Learning 模型登錄中註冊的零個或多個模型名稱。
 - `parallel_run_config`:如先前所定義的 `ParallelRunConfig` 物件。
-- `inputs`:一或多個單一類型的 Azure Machine Learning 資料集。
+- `inputs`:要分割以進行平行處理的一或多個單一類型 Azure Machine Learning 資料集。
+- `side_inputs`:一或多個參考資料或資料集，用來作為不需要分割的端輸入。
 - `output`:對應至輸出目錄的 `PipelineData` 物件。
-- `arguments`:傳遞至使用者指令碼的引數清單 (選擇性)。
+- `arguments`:傳遞至使用者指令碼的引數清單。 使用 unknown_args，在您的輸入腳本中擷取 (選用)。
 - `allow_reuse`:在使用相同設定/輸入執行時，步驟是否應重複使用先前的結果。 如果此參數為 `False`，則在管線執行期間，一律會為此步驟產生新的執行。 (選擇性；預設值為 `True`。)
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
 
 parallelrun_step = ParallelRunStep(
-    name="batch-mnist",
-    models=[model],
+    name="predict-digits-mnist",
     parallel_run_config=parallel_run_config,
-    inputs=[named_mnist_ds],
+    inputs=[input_mnist_ds_consumption],
     output=output_dir,
-    arguments=[],
     allow_reuse=True
 )
 ```
+### <a name="create-and-run-the-pipeline"></a>建立並執行管線
 
->[!Note]
-> 上述步驟取決於 `azureml-contrib-pipeline-steps`，如[必要條件](#prerequisites)中所述。 
-
-### <a name="submit-the-pipeline"></a>提交管線
-
-現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次評分只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
+現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次推斷只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
 
 接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。
 
@@ -340,12 +361,13 @@ from azureml.pipeline.core import Pipeline
 from azureml.core.experiment import Experiment
 
 pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
-pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+experiment = Experiment(ws, 'digit_identification')
+pipeline_run = experiment.submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>監視平行執行作業
+## <a name="monitor-the-batch-inference-job"></a>監視批次推斷作業
 
-批次推斷作業需要很長的時間才能完成。 此範例會使用 Jupyter 小工具來監視進度。 您也可以使用下列方式來管理作業的進度：
+批次推斷作業需要很長的時間才能完成。 此範例會使用 Jupyter 小工具來監視進度。 您也可以使用下列方式來監視作業的進度：
 
 * Azure Machine Learning Studio。 
 * 來自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) 物件的主控台輸出。
@@ -355,6 +377,24 @@ from azureml.widgets import RunDetails
 RunDetails(pipeline_run).show()
 
 pipeline_run.wait_for_completion(show_output=True)
+```
+
+## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>以新的資料輸入和參數重新提交執行
+
+由於您已進行輸入，並將數個項目設定為 `PipelineParameter`，因此可以重新提交具有不同資料集輸入的批次推斷執行並微調參數，而不需要建立全新的管線。 您會使用相同的資料存放區，但只會使用單一影像作為資料輸入。
+
+```python
+path_on_datastore = mnist_data.path('mnist/0.png')
+single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+single_image_ds._ensure_saved(ws)
+
+pipeline_run_2 = experiment.submit(pipeline, 
+                                   pipeline_parameters={"mnist_param": single_image_ds, 
+                                                        "batch_size_param": "1",
+                                                        "process_count_param": 1}
+)
+
+pipeline_run_2.wait_for_completion(show_output=True)
 ```
 
 ## <a name="next-steps"></a>後續步驟

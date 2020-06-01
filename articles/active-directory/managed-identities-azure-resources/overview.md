@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/18/2020
+ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81682579"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770919"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什麼是適用於 Azure 資源的受控識別？
 
@@ -54,9 +54,6 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 此外，當建立使用者指派或系統指派的身分識別時，受控識別資源提供者 (MSRP) 會在內部發出該身分識別的憑證。 
 
 您的程式碼可以使用受控識別來要求存取權杖，以存取支援 Azure AD 驗證的服務。 Azure 會負責更新服務個體使用的認證。 
-
-## <a name="credential-rotation"></a>認證輪替
-認證輪替是由裝載 Azure 資源的資源提供者所控制。 認證的預設輪替每 46 天發生一次。 需由資源提供者呼叫新的認證，因此資源提供者可能會等待超過 46 天。
 
 下圖顯示受控服務識別與 Azure 虛擬機器一起運作的方式。
 
@@ -107,6 +104,9 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 
 6. 使用步驟 3 所設定的用戶端識別碼和憑證，呼叫 Azure AD 以要求步驟 5 所指定的存取權杖。 Azure AD 會傳回 JSON Web 權杖 (JWT) 存取權杖。
 7. 您的程式碼會在呼叫上傳送存取權杖給支援 Azure AD 驗證的服務。
+
+## <a name="credential-rotation"></a>認證輪替
+認證輪替是由裝載 Azure 資源的資源提供者所控制。 認證的預設輪替每 46 天發生一次。 需由資源提供者呼叫新的認證，因此資源提供者可能會等待超過 46 天。
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>如何使用適用於 Azure 資源的受控識別？
 

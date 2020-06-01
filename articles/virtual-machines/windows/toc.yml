@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: 建立 VM
                   items:
+                    - name: 特製化
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 一般化
                       href: ../vm-generalized-image-version-cli.md
                 - name: 更新影像資源
@@ -664,7 +666,7 @@
                       items:
                         - name: 虛擬機器
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM 擴展集
+                        - name: 擴展集
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: 傳送至事件中樞
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

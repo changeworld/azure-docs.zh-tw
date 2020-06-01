@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: 教學課程
   items:
-    - name: 匯入受 HSM 保護的金鑰
+    - name: 匯入受 HSM 保護的金鑰 (概觀)
       href: hsm-protected-keys.md
-    - name: 匯入受 HSM 保護的金鑰 (預覽)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: 匯入受 HSM 保護的金鑰 (舊版)
-      href: hsm-protected-keys-legacy.md
+    - name: 匯入受 HSM 保護的金鑰 (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: 匯入受 HSM 保護的金鑰 (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: 範例
   items:
     - name: Azure 原則內建
@@ -47,6 +47,8 @@
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: 「攜帶您自己的金鑰」規格
+      href: byok-specification.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

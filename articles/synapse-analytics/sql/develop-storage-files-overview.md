@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 204fd1b1a0a2984886684bbabf33dc7e73c1b45c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691883"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653531"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案
 

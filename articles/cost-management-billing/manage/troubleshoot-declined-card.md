@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409394"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745515"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>針對 Azure 註冊上遭拒的卡片進行疑難排解
 
@@ -20,9 +20,9 @@ ms.locfileid: "80409394"
 
 若要解決您的問題，請選取下列與您的錯誤最相似的主題。
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>您的國家/地區不接受信用卡提供者
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>您的國家/區域不接受信用卡提供者
 
-選擇信用卡時，Azure 會顯示在您所選國家/地區中有效的卡片選項。 如果您的信用卡具備國際交易功能，請連絡您的銀行或發卡機構來進行確認。 如需有關受支援國家/地區和貨幣的詳細資訊，請參閱 [Azure 購買常見問題集](https://azure.microsoft.com/pricing/faq/)。
+選擇信用卡時，Azure 會顯示在您所選國家/區域中有效的卡片選項。 如果您的信用卡具備國際交易功能，請連絡您的銀行或發卡機構來進行確認。 如需有關受支援國家/區域和貨幣的詳細資訊，請參閱 [Azure 購買常見問題集](https://azure.microsoft.com/pricing/faq/)。
 
 >[!Note]
 >印度目前不支援美國 Express 信用卡作為付款方式。 我們尚未有何時接受其作為付款形式的時間規劃。

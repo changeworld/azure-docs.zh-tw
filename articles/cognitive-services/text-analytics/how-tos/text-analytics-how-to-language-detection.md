@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70387795"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745578"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>範例：使用文字分析來偵測語言
 
@@ -155,9 +155,9 @@ ms.locfileid: "70387795"
 
 ### <a name="ambiguous-content"></a>模稜兩可的內容
 
-在某些情況下，可能難以根據輸入來區分語言。 您可以使用 `countryHint` 參數來指定 2 個字母的國碼。 根據預設，API 會使用 "US" 作為預設 countryHint，若要移除此行為，您可以將此值設定為空字串 `countryHint = ""`，以重設此參數。
+在某些情況下，可能難以根據輸入來區分語言。 您可以使用 `countryHint` 參數來指定 2 個字母的國碼/區域碼。 根據預設，API 會使用 "US" 作為預設 countryHint，若要移除此行為，您可以將此值設定為空字串 `countryHint = ""`，以重設此參數。
 
-例如，"Impossible" 是英文和法文通用的詞彙，如果提供上下文有限的話，回應將會以 "US" 國家的提示為準。 如果文字的來源已知是來自法國，這一點也可作為一項提示。
+例如，"Impossible" 是英文和法文通用的詞彙，如果提供上下文有限的話，回應將會以 "US" 國家/區域的提示為準。 如果文字的來源已知是來自法國，這一點也可作為一項提示。
 
 **輸入**
 

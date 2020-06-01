@@ -9,13 +9,13 @@ ms.custom:
 - seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/09/2020
-ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: 827a34999cc3f4d90344915a9b57492a0f31bafe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067906"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870036"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>快速入門：使用 Python 連線適用於 MySQL 的 Azure 資料庫並查詢資料
 
@@ -27,6 +27,9 @@ ms.locfileid: "80067906"
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 適用於 MySQL 的 Azure 資料庫伺服器。 [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
 
 ## <a name="install-python-and-the-mysql-connector"></a>安裝 Python 和 MySQL 連接器
 
@@ -61,7 +64,7 @@ ms.locfileid: "80067906"
    
    ![Azure Database for MySQL 伺服器名稱](./media/connect-python/1_server-overview-name-login.png)
    
-1. 在伺服器的 [概觀]  頁面上，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 如果您忘記密碼，您也可以從此頁面重設密碼。
+1. 在伺服器的 [概觀] 頁面上，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此頁面重設密碼。
    
    ![Azure Database for MySQL 伺服器名稱](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 

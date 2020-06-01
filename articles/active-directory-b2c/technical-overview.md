@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332538"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739094"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -23,19 +23,19 @@ ms.locfileid: "80332538"
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C 租用戶
 
-在 Azure Active Directory B2C (Azure AD B2C) 中，「租用戶」  代表您的組織，而實際上是一個使用者目錄。 每個 Azure AD B2C 租用戶都不相同，並與其他 Azure AD B2C 租用戶分開。 Azure AD B2C 租用戶與 Azure Active Directory 租用戶不同 (您可能已有後者)。
+在 Azure Active Directory B2C (Azure AD B2C) 中，「租用戶」代表您的組織，而實際上是一個使用者目錄。 每個 Azure AD B2C 租用戶都不相同，並與其他 Azure AD B2C 租用戶分開。 Azure AD B2C 租用戶與 Azure Active Directory 租用戶不同 (您可能已有後者)。
 
 您在 Azure AD B2C 租用戶中使用的主要資源包括：
 
-* **目錄** -「目錄」  是 Azure AD B2C 儲存使用者認證和設定檔資料，以及您的應用程式註冊的位置。
+* **目錄** -「目錄」是 Azure AD B2C 儲存使用者認證和設定檔資料，以及您的應用程式註冊的位置。
 * **應用程式註冊** - 您向 Azure AD B2C 註冊 Web、行動和原生應用程式，以啟用身分識別管理。 還有，您想要使用 Azure AD B2C 保護的任何 API。
 * **使用者流程**和**自訂原則**- 您應用程式的內建 (使用者流程) 並可完全自訂 (自訂原則) 的身分識別體驗。
-  * 使用「使用者流程」  來快速設定和啟用常見身分識別工作，例如註冊、登入和設定檔編輯。
-  * 使用「自訂原則」  來啟用使用者體驗，不僅適於常見身分識別工作，還能為貴組織、客戶、員工、合作夥伴和公民獨有的複雜身分識別工作流程提供特別支援。
+  * 使用「使用者流程」來快速設定和啟用常見身分識別工作，例如註冊、登入和設定檔編輯。
+  * 使用「自訂原則」來啟用使用者體驗，不僅適於常見身分識別工作，還能為貴組織、客戶、員工、合作夥伴和公民獨有的複雜身分識別工作流程提供特別支援。
 * **身分識別提供者** - 同盟設定適用於：
-  * 您想要在應用程式中支援的「社交」  識別提供者，例如 Facebook、LinkedIn 或 Twitter。
-  * 可支援標準身分識別通訊協定的「外部」  識別提供者，例如 OAuth 2.0、OpenID Connect 等等。
-  * 可讓使用者以使用者名稱 (或電子郵件地址或其他識別碼) 和密碼進行註冊和登入的「本機」  帳戶。
+  * 您想要在應用程式中支援的「社交」識別提供者，例如 Facebook、LinkedIn 或 Twitter。
+  * 可支援標準身分識別通訊協定的「外部」識別提供者，例如 OAuth 2.0、OpenID Connect 等等。
+  * 可讓使用者以使用者名稱 (或電子郵件地址或其他識別碼) 和密碼進行註冊和登入的「本機」帳戶。
 * **金鑰** - 新增及管理用於簽署和驗證權杖的加密金鑰。
 
 Azure AD B2C 租用戶是開始使用 Azure AD B2C 所需建立的第一個資源。 了解方法，請參閱[教學課程：建立 Azure Active Directory B2C 租用戶](tutorial-create-tenant.md)。
@@ -52,7 +52,7 @@ Azure AD B2C 定義數種類型的使用者帳戶。 Azure Active Directory、Az
 
 ### <a name="consumer-accounts"></a>取用者帳戶
 
-使用「取用者」  帳戶，使用者可以登入您使用 Azure AD B2C 保護的應用程式。 不過，具有取用者帳戶的使用者無法存取 Azure 資源，例如 Azure 入口網站。
+使用「取用者」帳戶，使用者可以登入您使用 Azure AD B2C 保護的應用程式。 不過，具有取用者帳戶的使用者無法存取 Azure 資源，例如 Azure 入口網站。
 
 取用者帳戶可與下列身分識別類型產生關聯：
 
@@ -63,7 +63,7 @@ Azure AD B2C 定義數種類型的使用者帳戶。 Azure Active Directory、Az
 
 ![取用者帳戶身分識別](media/technical-overview/identities.png)<br/>*圖：Azure AD B2C 中具有多個身分識別的單一取用者帳戶*
 
-Azure AD B2C 可讓您管理取用者帳戶設定檔的一般屬性，例如顯示名稱、姓氏、名字、城市等等。 您也可以擴充 Azure AD 結構描述，以儲存使用者的其他資訊。 例如，其國家或住處、慣用語言和喜好設定，像是是否想要訂閱電子報或啟用多重要素驗證。
+Azure AD B2C 可讓您管理取用者帳戶設定檔的一般屬性，例如顯示名稱、姓氏、名字、城市等等。 您也可以擴充 Azure AD 結構描述，以儲存使用者的其他資訊。 例如，其國家/區域或住處、慣用語言和喜好設定，像是是否想要訂閱電子報或啟用多重要素驗證。
 
 在 [Azure Active Directory B2C 中的使用者帳戶概觀](user-overview.md)中深入了解 Azure AD B2C 中的使用者帳戶類型。
 
@@ -91,16 +91,16 @@ Azure AD B2C 的可延伸原則架構是其核心優點。 原則可描述使用
 
 * **自訂原則**可讓您建立自己的使用者旅程圖，以進行複雜的身分識別體驗案例。
 
-使用者流程和自訂原則都是由 Identity Experience Framework  支援，這是 Azure AD B2C 的原則協調流程引擎。
+使用者流程和自訂原則都是由 Identity Experience Framework 支援，這是 Azure AD B2C 的原則協調流程引擎。
 
 ### <a name="user-flow"></a>使用者流程
 
-為了協助您快速設定最常見的身分識別工作，Azure 入口網站包含數個預先定義且可設定的原則，稱之為「使用者流程」  。
+為了協助您快速設定最常見的身分識別工作，Azure 入口網站包含數個預先定義且可設定的原則，稱之為「使用者流程」。
 
 您可以設定如下所示的使用者流程設定，以控制應用程式中的身分識別體驗行為：
 
 * 用於登入的帳戶類型，例如 Facebook 之類的社交帳戶，或使用電子郵件地址和密碼進行登入的本機帳戶
-* 要向取用者收集的屬性，例如名字、郵遞區號或所在國家/地區
+* 要向取用者收集的屬性，例如名字、郵遞區號或所在國家/區域
 * Azure Multi-Factor Authentication (MFA)
 * 使用者介面的自訂
 * 在使用者完成使用者流程之後，您的應用程式所收到權杖中的一組宣告
@@ -150,13 +150,13 @@ Azure AD B2C 支援在使用者旅程圖中使用 [OpenID Connect 和 OAuth 2.0 
 
 ## <a name="application-integration"></a>應用程式整合
 
-當使用者想要登入您的應用程式時，無論是 Web、行動、傳統型或單頁應用程式 (SPA)，應用程式都會對使用者流程或自訂原則提供的端點起始授權要求。 使用者流程或自訂原則會定義和控制使用者的體驗。 當他們完成使用者流程 (例如「註冊或登入」  流程) 時，Azure AD B2C 會產生權杖，然後將使用者重新導向回您的應用程式。
+當使用者想要登入您的應用程式時，無論是 Web、行動、傳統型或單頁應用程式 (SPA)，應用程式都會對使用者流程或自訂原則提供的端點起始授權要求。 使用者流程或自訂原則會定義和控制使用者的體驗。 當他們完成使用者流程 (例如「註冊或登入」流程) 時，Azure AD B2C 會產生權杖，然後將使用者重新導向回您的應用程式。
 
 ![以箭號顯示 Azure AD B2C 登入頁面之間流程的行動應用程式](media/technical-overview/app-integration.png)
 
 多個應用程式可使用相同的使用者流程或自訂原則。 單一應用程式可使用多個使用者流程或自訂原則。
 
-例如，若要登入應用程式，應用程式會使用「註冊或登入」  使用者流程。 使用者登入之後，他們可以編輯其設定檔，因此應用程式會起始另一個授權要求，這次使用「設定檔編輯」  使用者流程。
+例如，若要登入應用程式，應用程式會使用「註冊或登入」使用者流程。 使用者登入之後，他們可以編輯其設定檔，因此應用程式會起始另一個授權要求，這次使用「設定檔編輯」使用者流程。
 
 ## <a name="seamless-user-experiences"></a>流暢的使用者體驗
 
@@ -168,7 +168,7 @@ Azure AD B2C 支援在使用者旅程圖中使用 [OpenID Connect 和 OAuth 2.0 
 
 ## <a name="localization"></a>當地語系化
 
-Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 36 種語言的翻譯，但您也可以針對任何語言提供自己的的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
+Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 36 種語言的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
 
 ![以不同語言顯示 UI 文字的三個註冊登入頁面](media/technical-overview/localization.png)
 

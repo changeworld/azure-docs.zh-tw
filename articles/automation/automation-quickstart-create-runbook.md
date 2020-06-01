@@ -1,17 +1,17 @@
 ---
 title: Azure 快速入門 - 建立 Azure 自動化 Runbook | Microsoft Docs
-description: 了解如何建立 Azure 自動化 Runbook
+description: 本文可協助您開始建立 Azure 自動化 Runbook。
 services: automation
 ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536993"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836731"
 ---
 # <a name="create-an-azure-automation-runbook"></a>建立 Azure 自動化 Runbook
 
@@ -29,15 +29,15 @@ ms.locfileid: "81536993"
 
 1. 開啟自動化帳戶。
 
-1. 按一下 [程序自動化]  下的 [Runbook]  。 隨即顯示 Runbook 的清單。
+1. 按一下 [程序自動化] 下的 [Runbook]。 隨即顯示 Runbook 的清單。
 
-1. 按一下清單頂端的 [建立 Runbook]  。
+1. 按一下清單頂端的 [建立 Runbook]。
 
-1. 在 [名稱]  欄位中輸入 Runbook 的名稱 `Hello-World`，然後在 [ Runbook 類型]  欄位選取 [PowerShell]  。 
+1. 在 [名稱] 欄位中輸入 Runbook 的名稱 `Hello-World`，然後在 [ Runbook 類型] 欄位選取 [PowerShell]。 
 
    ![在頁面中輸入您自動化 Runbook 的相關資訊](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. 按一下頁面底部的 [新增]  。 隨即建立 Runbook，並隨即開啟 [編輯 PowerShell Runbook] 頁面。
+1. 按一下頁面底部的 [新增] 。 隨即建立 Runbook，並隨即開啟 [編輯 PowerShell Runbook] 頁面。
 
     ![在 Runbook 編輯器中撰寫 PowerShell 指令碼](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "81536993"
    "Hello $Name!"
    ```
 
-1. 按一下 [儲存]  可儲存 Runbook 草稿副本。
+1. 按一下 [儲存] 可儲存 Runbook 草稿副本。
 
     ![在 Runbook 編輯器中撰寫 PowerShell 指令碼](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
 
@@ -63,13 +63,13 @@ ms.locfileid: "81536993"
 
 1. 按一下 [測試窗格]  來開啟 [測試] 窗格。
 
-1. 輸入一個 [名稱]  的值，然後按一下 [啟動]  。 隨即啟動測試作業，並顯示作業狀態和輸出。
+1. 輸入一個 [名稱] 的值，然後按一下 [啟動]。 隨即啟動測試作業，並顯示作業狀態和輸出。
 
     ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. 按一下右上角的 **X** 可關閉 [測試] 頁面。 在隨即出現的快顯視窗中選取 [確定]  。
+1. 按一下右上角的 **X** 可關閉 [測試] 頁面。 在隨即出現的快顯視窗中選取 [確定]。
 
-1. 在 [編輯 PowerShell Runbook] 頁面上，按一下 [發佈]  ，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
+1. 在 [編輯 PowerShell Runbook] 頁面上，按一下 [發佈]，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,25 +77,25 @@ ms.locfileid: "81536993"
 
 一旦 Runbook 發佈之後，隨即顯示 [概觀] 頁面。
 
-1. 在 Runbook [概觀] 頁面中，按一下 [啟動]  可開啟這個 Runbook 的 [啟動 Runbook] 設定頁面。
+1. 在 Runbook [概觀] 頁面中，按一下 [啟動] 可開啟這個 Runbook 的 [啟動 Runbook] 設定頁面。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. 將 [名稱]  保留空白以便使用預設值，然後按一下 [確定]  。 隨即提交 Runbook 作業，且隨即出現 [作業] 頁面。
+1. 將 [名稱] 保留空白以便使用預設值，然後按一下 [確定]。 隨即提交 Runbook 作業，且隨即出現 [作業] 頁面。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. 當作業狀態為 `Running` 或 `Completed` 時，按一下 [輸出]  可開啟 [輸出] 窗格並檢視 Runbook 輸出。
+1. 當作業狀態為 `Running` 或 `Completed` 時，按一下 [輸出] 可開啟 [輸出] 窗格並檢視 Runbook 輸出。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，請刪除 Runbook。 若要這樣做，選取 Runbook 清單中的 Runbook，然後按一下 [刪除]  。
+若不再需要，請刪除 Runbook。 若要這樣做，選取 Runbook 清單中的 Runbook，然後按一下 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已建立、編輯、測試和發佈 Runbook，並啟動 Runbook 作業。 若要深入了解自動化 Runbook，請繼續閱讀相關文件，了解您可以在自動化中建立並使用的不同 Runbook 類型。
 
 > [!div class="nextstepaction"]
-> [自動化方法 - Runbook 類型](./automation-runbook-types.md)
+> [Azure 自動化 Runbook 類型](./automation-runbook-types.md)

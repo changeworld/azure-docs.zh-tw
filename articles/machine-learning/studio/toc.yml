@@ -58,7 +58,7 @@
       items:
         - name: 匯入資料
           href: import-data.md
-        - name: 從內部部署 SQL 使用資料
+        - name: 使用來自 SQL Server 的資料
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: 將模型定型

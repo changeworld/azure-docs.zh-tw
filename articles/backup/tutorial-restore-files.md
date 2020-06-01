@@ -4,12 +4,12 @@ description: 了解如何使用備份與復原服務，在 Azure VM 上執行檔
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171727"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653275"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>在 Azure 中將檔案還原到虛擬機器
 
@@ -117,6 +117,9 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 ## <a name="restore-file-to-your-vm"></a>將檔案還原到您的 VM
 
 將復原指令碼複製到您的 VM 之後，您現在可以連線到復原點並還原檔案。
+
+>[!NOTE]
+> 請查看[這裡](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script)，查看是否可以先在 VM 上執行指令碼，再繼續執行作業。
 
 1. 透過 SSH 連線到您的 VM。 以您 VM 的公用 IP 位址取代 *publicIpAddress*，如下所示：
 

@@ -3,17 +3,17 @@ title: 網際網路對等互連與對等互連服務
 titleSuffix: Azure
 description: 網際網路對等互連與對等互連服務
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75772805"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849377"
 ---
 # <a name="internet-peering-vs-peering-service"></a>網際網路對等互連與對等互連服務
 
@@ -38,15 +38,15 @@ ms.locfileid: "75772805"
 
 **對等互連服務的客戶權益：**
 * 可透過網際網路以最佳公用路由連接 Microsoft 雲端服務，獲得最理想的效能和可靠性。
-* 能夠選取慣用的 SP 連線至 Microsoft 雲端。
+* 能夠選取慣用的服務提供者以連線至 Microsoft 雲端的能力。
 * 流量深入解析，例如延遲報告和首碼監視。
 * Microsoft 雲端的最佳網路躍點 (AS 躍點)。
 * 路由分析和統計資料 - 邊界閘道協定 ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) 路由異常 (流失/劫持偵測) 和次佳路由的事件。
 
 ## <a name="peering-service-partnership-requirements"></a>對等互連服務的合作關係需求
-* 以最接近客戶的位置連線至 Microsoft 雲端。 合作夥伴服務提供者會將使用者流量路由至最接近使用者的 Microsoft Edge。 同樣地，將流量傳送給使用者時，Microsoft 會 (使用 BGP 標籤) 將流量路由至最接近使用者的邊緣位置，而 SP 會將流量傳遞給使用者。
+* 以最接近客戶的位置連線至 Microsoft 雲端。 合作夥伴服務提供者會將使用者流量路由至最接近使用者的 Microsoft Edge。 同樣地，將流量傳送給使用者時，Microsoft 會 (使用 BGP 標籤) 將流量路由至最接近使用者的邊緣位置，而服務提供者會將流量傳遞給使用者。
 * 合作夥伴與 Microsoft 全球網路之間將保有高可用性、高輸送量和異地備援的連線能力。
-* 合作夥伴只要符合需求，即可使用其現有的對等互連來支援對等服務
+* 合作夥伴只要符合需求，即可使用其現有的對等互連來支援對等服務。
 
 ## <a name="faq"></a>常見問題集
 如需常見問題集，請參閱[對等互連服務 - 常見問題集](service-faqs.md)。

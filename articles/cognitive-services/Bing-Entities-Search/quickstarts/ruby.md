@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385774"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650176"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>搭配使用 Bing 實體搜尋 API 與 Ruby 的快速入門
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>快速入門：使用 Ruby 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
 使用本快速入門以第一次呼叫 Bing 實體搜尋 API，並檢視 JSON 回應。 這個簡單的 Ruby 應用程式會將新聞搜尋查詢傳送給 API，並顯示回應。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb) 上找到此應用程式的原始程式碼。
 
@@ -31,7 +31,7 @@ ms.locfileid: "75385774"
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您最愛的 IDE 或程式碼編輯器中，建立新聞 Ruby 檔案並匯入下列套件。
+1. 在您最愛的 IDE 或程式碼編輯器中，建立新聞 Ruby 檔案並匯入下列套件：
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ ms.locfileid: "75385774"
     require 'json'
     ```
 
-2. 建立適用於 API 端點、新聞搜尋 URL、訂用帳戶金鑰及搜尋查詢的變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 建立適用於 API 端點、新聞搜尋 URL、訂用帳戶金鑰及搜尋查詢的變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -65,7 +65,7 @@ ms.locfileid: "75385774"
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. 傳送要求並列印回應
+3. 傳送要求並列印回應。
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -145,5 +145,5 @@ ms.locfileid: "75385774"
 > [!div class="nextstepaction"]
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什麼是 Bing 實體搜尋 API](../search-the-web.md)
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什麼是 Bing 實體搜尋 API？](../search-the-web.md)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

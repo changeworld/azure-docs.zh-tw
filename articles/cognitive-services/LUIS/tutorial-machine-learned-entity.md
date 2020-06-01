@@ -3,14 +3,14 @@ title: 教學課程：使用機器學習實體擷取結構化資料 - LUIS
 description: 使用機器學習實體從語句中擷取結構化資料。 若要提高擷取的正確性，請新增具有特徵的子實體。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: d1bc8fc6aac52e264cb4352ca05f9df45ccfc50e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588865"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676180"
 ---
-# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
+# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
 在本教學課程中，您將使用機器學習實體從語句中擷取結構化資料。
 
@@ -28,7 +28,7 @@ ms.locfileid: "83588865"
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
 
-## <a name="why-use-a-machine-learned-entity"></a>為何要機器學習實體？
+## <a name="why-use-a-machine-learning-entity"></a>為何要使用機器學習實體？
 
 本教學課程會新增機器學習實體，以從使用者的語句中擷取資料。
 
@@ -46,7 +46,7 @@ ms.locfileid: "83588865"
 
 雖然您在開始執行應用程式時可能還不確定實體所需的詳細程度，但最佳做法是從機器學習實體開始著手，然後在您的應用程式成熟時，使用子實體進行分解。
 
-在本教學課程中，您會建立機器學習實體以代表比薩應用程式的訂單。 實體會擷取與訂單相關的文字，並取出大小和數量。
+在本教學課程中，您會建立機器學習實體以代表披薩應用程式的訂單。 實體會擷取與訂單相關的文字，並取出大小和數量。
 
 `Please deliver one large cheese pizza to me` 的語句應將 `one large cheese pizza` 擷取為訂單，然後也應擷取 `1` (數量) 和 `large` (大小)。
 
@@ -58,9 +58,9 @@ ms.locfileid: "83588865"
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="label-text-as-entities-in-example-utterances"></a>在範例語句中將文字標記為實體
+## <a name="create-machine-learned-entity"></a>建立機器學習實體
 
-若要擷取關於比薩訂單的詳細資料，請建立最上層的機器學習 `Order` 實體。
+若要擷取關於披薩訂單的詳細資料，請建立最上層的機器學習 `Order` 實體。
 
 1. 在 [意圖] 頁面上，選取 [OrderPizza] 意圖。
 
@@ -70,7 +70,7 @@ ms.locfileid: "83588865"
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    請從最左邊的文字 `pickup` 前面開始選取 (#1)，再選取到最右邊的文字 `anchovies` (#2 - 如此即結束標籤程序)。 快顯功能表隨即出現。 在快顯方塊中，輸入 `Order` 作為實體的名稱 (#3)。 然後，從清單中選取 `Order - Create new entity` (#4)。
+    請從最左邊的文字 `pickup` 前面開始選取 (#1)，再選取到最右邊的文字 `anchovies` (#2 - 如此即結束標籤程序)。 快顯功能表隨即出現。 在快顯方塊中，輸入 `Order` 作為實體的名稱 (#3)。 然後，從清單中選取 `Order Create new entity` (#4)。
 
     ![完整訂單文字的標籤開頭和結尾](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -81,139 +81,165 @@ ms.locfileid: "83588865"
 
     ![將結構新增至實體](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. 在 [建立機器學習實體] 方塊中，在 [結構] 方塊內新增 `Size`，然後選取 [輸入]。
-1. 若要新增**特徵**，請在 [特徵] 區域中選取 `+`，然後選取 [建立新的片語清單]。
+1. 在 [新增子實體 (選用)] 方塊中，選取 `Order` 列上的 **+** ，然後將 `Size` 和 `Quantity` 新增為子實體，然後選取 [建立]。
 
-1. 在 [建立新的片語清單] 方塊中輸入名稱 `SizeFeature`，然後依序輸入 `small`、`medium` 和 `large` 的值。 在填入 [建議] 方塊後，選取 `extra large` 和 `xl`。 選取 [完成] 以建立新的片語清單。
+    > [!div class="mx-imgBorder"]
+    > ![將結構新增至實體](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
-    此片語清單特徵可為 `Size` 子實體提供範例文字，以利該子實體尋找與大小相關的文字。 這份清單不需要包含每個大小文字，但應包含預期會指出大小的文字。
+## <a name="edit-subentities-to-improve-extraction"></a>編輯子實體以改善擷取
 
-    ![建立大小子實體的特徵](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
+先前的步驟會建立實體和子實體。 若要改善擷取，請將特徵新增至子實體。
 
-1. 在 [建立機器學習實體] 視窗上選取 [建立]，以完成建立 `Size` 子實體的作業。
+### <a name="improve-size-extraction-with-phrase-list"></a>使用片語清單改善大小擷取
 
-    此時會建立具有 `Size` 實體的 `Order` 實體，但只有 `Order` 實體會套用至語句。 您必須在範例語句中為 `Size` 實體文字加上標籤。
+1. 從左側功能表中選取 [實體]，然後選取 [訂單] 實體。
 
-1. 在相同的範例語句中，藉由選取 `large` 這個字，然後從下拉式清單中選取 [大小] 實體，為該字的 [大小] 子實體加上標籤。
+1. 在 [結構描述和功能] 索引標籤上，選取 [大小] 子實體，然後選取 [+新增特徵]。
 
-    ![在語句中為文字的大小實體加上標籤。](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
+1. 在下拉式功能表中選取 [建立新片語清單]。
 
-    由於您已_明確_為文字加上標籤，標籤與預測均相符，因此文字底下會顯示實線。
+1. 在 [建立新的片語清單] 方塊中輸入名稱 `SizePhraselist`，然後依序輸入 `small`、`medium` 和 `large` 的值。 在填入 [建議] 方塊後，選取 `extra large` 和 `xl`。 選取 [儲存] 以建立新的片語清單。
 
-1. 為其餘語句中的 `Order` 實體和大小實體加上標籤。 文字中的方括弧分別表示加上標籤的 `Order` 實體及其中的 `Size` 實體。
+    此片語清單特徵可為 `Size` 子實體提供範例文字，以利該子實體尋找與大小相關的文字。 此片語清單不需要包含每個大小文字，但應包含預期會指出大小的文字。
 
-    |訂單範例語句|
-    |--|
-    |`can i get [a pepperoni pizza and a can of coke] please`|
-    |`can i get [a [small] pizza with onions peppers and olives]`|
-    |`[delivery for a [small] pepperoni pizza]`|
-    |`i need [2 [large] cheese pizzas 6 [large] pepperoni pizzas and 1 [large] supreme pizza]`|
+### <a name="add-sizelist-entity"></a>新增 SizeList 實體
 
-    ![在其餘所有的範例語句中建立實體和子實體。](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
+新增用戶端應用程式可辨識的已知大小清單也有助於擷取。
 
-    > [!CAUTION]
-    > 如何處理隱含的資料 (例如，意指單一比薩的字母 `a`)？ 或者，若沒有 `pickup` 和 `delivery` 可指出比薩的預期位置，該如何處理？ 沒有大小可指出您的預設大小 (大或小) 時，又該如何處理？ 請考慮在用戶端應用程式中，將隱含的資料處理視為商務規則的一部分，而不是或不僅是 LUIS。
+1. 從左側功能表中選取 [實體]，然後選取 [+建立]。
 
-1. 若要將應用程式定型，請選取 [定型]。 在定型後，會將變更 (例如新的實體和加上標籤的語句) 套用至使用中模型。
+1. 將實體名稱設為 `SizeListentity`，以便在與上一節中建立的 `SizePhraselist` 比較時輕鬆識別。
 
-1. 定型之後，請將新的範例語句新增至意圖，以了解 LUIS 對機器學習實體的理解程度。
+1. 新增用戶端應用程式預期的大小：`Small`、`Medium`、`Large` 和 `XLarge`，然後為每個項目新增同義字。 同義字應該是使用者在聊天機器人中輸入的詞彙。 當實體完全符合標準化的值或同義字時，會使用清單實體來將其擷取。
 
-    |訂單範例語句|
-    |--|
-    |`pickup XL meat lovers pizza`|
+    |標準化值|同義字|
+    |--|--|
+    |小型|sm、sml、小型、最小|
+    |中|md、mdm、一般、平均、中型|
+    |大型|lg、lrg、大|
+    |特大|xl、最大、特大|
 
-    整體而言的最高實體 `Order` 會加上標籤，而 `Size` 子實體也會以虛線標示。
 
-    ![使用實體預測的新範例語句](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![將結構新增至實體](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
-    虛線連結表示預測。
+### <a name="add-feature-of-sizelist-entity"></a>新增 SizeList 實體的特徵
 
-1. 若要將預測變更為加上標籤的實體，請選取資料列，然後選取 [確認實體預測]。
+1. 從左側功能表中選取 [實體]，以返回實體清單。
 
-    ![選取 [確認實體預測] 以接受預測。](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
+1. 從實體清單中選取 [訂單]。
 
-    此時機器學習實體就會開始運作，因為它可在新的範例語句內找到實體。 當您新增範例語句時，如果實體未正確預測，請為該實體和子實體加上標籤。 如果正確預測實體，請務必確認預測。
+1. 在 [結構描述和特徵] 索引標籤上，選取 [大小] 實體，然後選取 [+新增特徵]。
 
+1. 從下拉式清單中選取 [@ SizeList]。
+
+<a name="add-prebuilt-number-entity-to-app"></a>
+
+### <a name="add-prebuilt-number-entity"></a>使用預先建置的數字實體
+
+新增預先建立的數字實體也會協助擷取。
+
+1. 從左側功能表中選取 [實體]，然後選取 [新增預先建立的實體]。
+
+1. 從清單中選取 [數字]，然後選取 [完成]。
+
+1. 從左側功能表中選取 [實體]，以返回實體清單。
+
+### <a name="add-feature-of-prebuilt-number-entity"></a>新增預先建立的數字實體特徵
+
+1. 從實體清單中選取 [訂單]。
+
+1. 在 [結構描述和特徵] 索引標籤上，選取 [數量] 實體，然後選取 [+新增特徵]。
+
+1. 從下拉式清單中選取 [@ number]。
 
 <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>
 
-## <a name="add-subentity-with-feature-of-prebuilt-entity"></a>為預建實體新增具有特徵的子實體
+## <a name="configure-required-features"></a>設定必要特徵
 
-訂單資訊應該也會包含訂單中的項目數，例如比薩的數量。 若要擷取這項資料，必須將新的機器學習子實體新增至 `Order`，且該子實體必須要有預建數值的必要特徵。 藉由將預建實體的特徵用於預建數值，無論文字是數字 `2` 還是文字 `two`，實體均可找出並擷取數值。
+在 [訂單] 的實體詳細資料頁面上，為 [@ SizeList] 特徵和 [@ number] 特徵選取星號 `*`。 星號會出現在與特徵名稱相同的標籤中。
 
-## <a name="add-prebuilt-number-entity-to-app"></a>將預先建立的數字實體新增至應用程式
-訂單資訊應該也會包含訂單中的項目數，例如比薩的數量。 若要擷取這項資料，必須將新的機器學習子元件新增至 `Order`，且該元件必須要有預建數值的必要特徵。 藉由將實體限定於預建的數值，無論文字是數字 `2` 還是文字 `two`，實體均可找出並擷取數值。
+> [!div class="mx-imgBorder"]
+> ![將結構新增至實體](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
-首先，將預建的數值實體新增至應用程式。
+<a name="label-text-as-entities-in-example-utterances"></a>
+<a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
 
-1. 從左側功能表中選取 [實體]，然後選取 [+ 新增預先建立的實體]。
+## <a name="label-example-utterances"></a>標籤範例語句
 
-1. 在 [新增預先建置的實體] 方塊中搜尋並選取**數值**，然後選取 [完成]。
+已建立機器學習的實體，而且子實體具有特徵。 若要改進擷取，必須以子實體標記範例語句。
 
-    ![新增預先建置的實體](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
+1. 從左側導覽中選取 [意圖]，然後選取 [OrderPizza] 意圖。
 
-    預建實體會新增至應用程式，但此時還不是特徵。
+1. 若要開啟**實體選擇區**，請在內容工具列中選取 @ 符號。
 
-## <a name="create-subentity-entity-with-required-feature-to-help-extract-data"></a>建立具有必要特徵的子實體以利擷取資料
+1. 選取選擇區中的每個實體資料列，然後使用選擇區游標來選取每個範例語句中的實體。 當您完成時，實體清單看起來應該如下圖所示。
 
-`Order` 實體應具有 `Quantity` 子特徵，用以判斷訂單中某個項目的數量。 數量應使用預建數值的必要特徵，以便用戶端應用程式可立即依名稱使用擷取的資料。
+    > [!div class="mx-imgBorder"]
+    > ![設定必要特徵的部分螢幕擷取畫面](media/tutorial-machine-learned-entity/labeled-example-utterances-for-machine-learned-entity.png)
 
-必要特徵會套用作為文字比對項目；包括經由完全相符比對 (例如清單實體)，或透過規則運算式 (例如規則運算式實體或預建實體)。
+## <a name="train-the-app"></a>進行應用程式定型
 
-以非機器學習實體作為特徵時，只會擷取相符的文字。
+若要將應用程式定型，請選取 [定型]。 在定型後，會將變更 (例如新的實體和加上標籤的語句) 套用至使用中模型。
 
-1. 選取 [實體]，然後選取 `Order` 實體。
-1. 選取 [+ 新增實體] 並輸入名稱 `Quantity`，然後選取 [輸入] 將新的子實體新增至 `Order` 實體。
-1. 在出現成功通知後，在 [進階選項] 中選取 [限制式] 鉛筆圖示。
-1. 在下拉式清單中，選取預建的數值。
+## <a name="add-a-new-example-utterance"></a>新增新的範例語句
 
-    ![以預建的數值作為限制式，建立數量實體。](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
+1. 訓練之後，請將新的範例語句新增至 `OrderPizza` 意圖，以了解 LUIS 對機器學習實體的理解程度。
 
-    當文字符合預先建立的數子實體時，就會套用 `Quantity` 實體。
+    |訂單範例語句|
+    |--|
+    |`I need a large pepperoni pizza`|
 
-    具有必要特徵的實體已建立，但尚未套用至範例語句。
+    整體而言的最高實體 `Order` 會加上標籤，而 `Size` 子實體也會以虛線標示。
 
-    > [!NOTE]
-    > 子實體可內嵌在其他子實體中，最多 5 個層級。 本文並未加以說明，但您可從入口網站和 API 取得相關資訊。
+    > [!div class="mx-imgBorder"]
+    > ![使用實體預測的新範例語句部分螢幕擷取畫面](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>標記範例語句，以告知 LUIS 有關實體的資訊
+    虛線表示以目前定型的應用程式為基礎的預測。
 
-1. 從左側導覽中選取 [意圖]，然後選取 [OrderPizza] 意圖。 下列語句中的三個數值會加上標籤，但會顯示在 `Order` 實體行下方。 這種較低的層級表示已找到實體，但未將其視為 `Order` 實體以外的實體。
+1. 若要將預測變更為加上標籤的實體，請在相同的資料列上選取核取記號。
 
-    ![已找到預建的數值，但尚未將其視為訂單實體以外的實體。](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![使用實體預測的新範例語句部分螢幕擷取畫面](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
-1. 在範例語句中選取 `2`，然後從清單中選取 `Quantity`，為數值標示 `Quantity` 實體。 在相同的範例語句中，為 `6` 和 `1` 加上標籤。
+    此時機器學習實體就會開始運作，因為其可在新的範例語句內找到實體。 當您新增範例語句時，如果實體未正確預測，請為該實體和子實體加上標籤。 如果正確預測實體，請務必確認預測。
 
-    ![為文字標示數量實體。](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>為應用程式定型以將實體變更套用至應用程式
 
-選取 [定型]，以使用這些新的語句為應用程式定型。 訓練之後，`Order` 實體會正確預測出 `Quantity` 子實體。 這種正確的預測會以實線表示。
-
-![為應用程式定型，然後檢閱範例語句。](media/tutorial-machine-learned-entity/trained-example-utterances.png)
+選取 [定型]，以使用這些新的語句將應用程式定型。
 
 此時，訂單有一些可供擷取的詳細資料 (大小、數量和訂單總計文字)。 `Order` 實體還會更加精細，例如比薩配料、餅皮類型和附餐。 這類項目應分別建立為 `Order` 實體的子實體。
 
 ## <a name="test-the-app-to-validate-the-changes"></a>測試應用程式以驗證變更
 
-使用互動式**測試**面板來測試應用程式。 此程序可讓您輸入新的語句，然後檢視預測結果，以確認作用中和已定型的應用程式運作的情形。 意圖預測應有不錯的信賴度 (高於70%)，且實體擷取應該至少會取用 `Order` 實體。 訂單實體可能會不夠詳細，因為 5 個語句不足以處理每個案例。
+使用互動式**測試**面板來測試應用程式。 此程序可讓您輸入新的語句，然後檢視預測結果，以確認作用中且已定型的應用程式運作的情形。 意圖預測應有不錯的信賴度 (高於 60%)，且實體擷取應該至少會取用 `Order` 實體。 訂單實體可能會不夠詳細，因為幾個語句不足以處理每個案例。
 
 1. 選取頂端導覽中的 [測試]。
-1. 輸入語句 `deliver a medium veggie pizza`，然後選取 [輸入]。 使用中模型在超過 70% 的信賴度下預測了正確的意圖。
+1. 輸入語句 `2 small cheese pizzas for pickup`，然後選取 [輸入]。 使用中模型在超過 60% 的信賴度下預測了正確的意圖。
 
-    ![輸入新的語句以測試意圖。](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
 1. 選取 [檢查] 以查看實體預測。
 
-    ![在互動式測試面板中檢視實體預測。](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
+    > [!div class="mx-imgBorder"]
+    > ![在互動式測試面板中檢視實體預測的部分螢幕擷取畫面。](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
 
-    大小已正確識別。 請記住，`OrderPizza` 意圖中的範例語句並不會以 `medium` 的範例作為大小，但會使用包含 medium 的 `SizeFeature` 片語清單的特徵。
-
-    數量未正確預測。 如果 LUIS 預測中沒有傳回大小，您可以在用戶端應用程式中修正此問題，方法是將大小預設為 1。
+<a name="publish-with-sentiment-analysis"></a>
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>發佈應用程式以便從 HTTP 端點加以存取
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+若要在聊天機器人或其他應用程式中收到 LUIS 預測，您必須將應用程式發佈到端點。
+
+1. 選取右上方導覽列中的 [發佈]。
+
+    ![右上方功能表中的 LUIS 發佈到端點按鈕的螢幕擷取畫面](./media/howto-publish/publish-button.png)
+
+1. 選取 [生產] 位置，然後選取 [變更設定]、[情感分析]，然後選取 [完成]。
+
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 發佈到端點的螢幕擷取畫面](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
+
+1. 選取通知中的 [存取您的端點 URL] 連結，以移至 [Azure 資源] 頁面。 端點 URL 會列為 [範例查詢]。
 
 ## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>從 HTTP 端點取得意圖和實體預測
 
@@ -221,13 +247,13 @@ ms.locfileid: "83588865"
 
 1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_。
 
-    `deliver a medium veggie pizza`
+    `2 small cheese pizzas for pickup`
 
     最後一個 querystring 參數是 `query`，也就是 **query** 語句。
 
     ```json
     {
-        "query": "deliver a medium veggie pizza",
+        "query": "2 small cheese pizzas for pickup",
         "prediction": {
             "topIntent": "OrderPizza",
             "intents": {
@@ -248,44 +274,19 @@ ms.locfileid: "83588865"
                 "Order": [
                     {
                         "Size": [
-                            "medium"
+                            "small"
                         ],
-                        "$instance": {
-                            "Size": [
-                                {
-                                    "type": "Size",
-                                    "text": "medium",
-                                    "startIndex": 10,
-                                    "length": 6,
-                                    "score": 0.9955588,
-                                    "modelTypeId": 1,
-                                    "modelType": "Entity Extractor",
-                                    "recognitionSources": [
-                                        "model"
-                                    ]
-                                }
-                            ]
-                        }
+                        "Quantity": [
+                            2
+                        ]
                     }
-                ],
-                "$instance": {
-                    "Order": [
-                        {
-                            "type": "Order",
-                            "text": "a medium veggie pizza",
-                            "startIndex": 8,
-                            "length": 21,
-                            "score": 0.7983857,
-                            "modelTypeId": 1,
-                            "modelType": "Entity Extractor",
-                            "recognitionSources": [
-                                "model"
-                            ]
-                        }
-                    ]
-                }
+                ]
             }
-        }
+        },
+        "sentimentAnalysis":{
+            "label":"neutral",
+            "score":0.98
+       }
     }
     ```
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75376353"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870992"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>快速入門：在 C++/WinRT 和 DirectX 中使用 Azure Spatial Anchors 建立 HoloLens 應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "75376353"
 若要完成本快速入門，請確定您具備︰
 - 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 的 Windows 機器，並且具有**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件。 您也必須安裝 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安裝 Visual Studio 的 [C++/WinRT Visual Studio 延伸模組 (VSIX)](https://aka.ms/cppwinrt/vsix)。
-- 已啟用[開發人員模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2018 年 10 月更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (也稱為 RS5) 的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]  ，然後選取 [檢查更新]  按鈕。
+- 已啟用[開發人員模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2018 年 10 月更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (也稱為 RS5) 的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
 - 您的應用程式必須在其 AppX 資訊清單中設定 **spatialPerception** 功能。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -54,9 +54,11 @@ ms.locfileid: "75376353"
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+找出 `case DemoStep::ConfigSession:` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`configuration.AccountDomain("MyAccountDomain");`。
+
 ## <a name="deploy-the-app-to-your-hololens"></a>將應用程式部署到您的 HoloLens
 
-將 [方案設定]  變更為 [發行]  ，並將 [方案平台]  變更為 [x86]  ，然後從部署目標選項中選取 [裝置]  。
+將 [方案設定] 變更為 [發行]，並將 [方案平台] 變更為 [x86]，然後從部署目標選項中選取 [裝置]。
 
 如果使用 HoloLens 2，請使用 **ARM64** 作為**解決方案平台**，而非使用 **x86**。
 
@@ -64,11 +66,11 @@ ms.locfileid: "75376353"
 
 將 HoloLens 裝置開機並登入，然後使用 USB 纜線將其連接到電腦。
 
-選取 [偵錯]   > [開始偵錯]  來部署您的應用程式並開始偵錯。
+選取 [偵錯] > [開始偵錯] 來部署您的應用程式並開始偵錯。
 
 依照應用程式中的指示放置及回收錨點。
 
-在 Visual Studio 中，您可以選取 [停止偵錯]  或按下 **Shift + F5** 來停止應用程式。
+在 Visual Studio 中，您可以選取 [停止偵錯] 或按下 **Shift + F5** 來停止應用程式。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

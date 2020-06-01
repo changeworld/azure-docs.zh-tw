@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420042"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696825"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS 搭配 Synapse SQL
 
@@ -78,6 +78,9 @@ SELECT <select_criteria>
 
 將 SELECT 陳述式產生的結果填入新資料表。 *select_criteria* 是 SELECT 陳述式的主體，可決定要複製到新資料表的資料。 如需 SELECT 陳述式的相關資訊，請參閱 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
+> [!NOTE]
+> 在 CETAS 的 SELECT 部分中不支援 ORDER BY 子句。
+
 ## <a name="permissions"></a>權限
 
 您必須擁有列出資料夾內容和寫入 LOCATION 資料夾的權限，CETAS 才能正常執行。
@@ -86,7 +89,9 @@ SELECT <select_criteria>
 
 這些範例會使用 CETAS，將依據年和州彙總的總人口數儲存至位於 population_ds 資料來源中的 aggregated_data 資料夾。
 
-此範例會依賴先前建立的認證、資料來源和外部檔案格式。 請參閱[外部資料表](develop-tables-external-tables.md)文件。 若要將查詢結果儲存到相同資料來源中的不同資料夾，請變更 LOCATION 引數。 若要將結果儲存到不同的儲存體帳戶，請為 DATA_SOURCE 引數建立並使用不同的資料來源。
+此範例會依賴先前建立的認證、資料來源和外部檔案格式。 請參閱[外部資料表](develop-tables-external-tables.md)文件。 若要將查詢結果儲存到相同資料來源中的不同資料夾，請變更 LOCATION 引數。 
+
+若要將結果儲存到不同的儲存體帳戶，請為 DATA_SOURCE 引數建立並使用不同的資料來源。
 
 > [!NOTE]
 > 接下來的範例會使用公用 Azure 開放資料儲存體帳戶。 此範例僅供讀取。 若要執行這些查詢，您需要提供您具有寫入權限的資料來源。
@@ -152,7 +157,8 @@ CETAS 可以用來儲存屬於下列 SQL 資料類型的結果集：
 - TINYINT
 - bit
 
-LOB 無法與 CETAS 搭配使用。
+> [!NOTE]
+> LOB 無法與 CETAS 搭配使用。
 
 下列資料類型不能用在 CETAS 的 SELECT 部分中：
 
@@ -167,4 +173,4 @@ LOB 無法與 CETAS 搭配使用。
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以嘗試查詢 [Spark 資料表](develop-storage-files-spark-tables.md)。
+您可以試著查詢 [Apache Spark for Azure Synapse 外部資料表](develop-storage-files-spark-tables.md)。

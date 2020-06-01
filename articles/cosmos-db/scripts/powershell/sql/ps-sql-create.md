@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/01/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 434cc6df326a0028f327c6d9e2eda0d19989ca01
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 3e0869e045db0a791bc25f4b81db2efdc1b1645d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653171"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715897"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>建立 Azure Cosmos DB 資料庫和容器 - SQL API
 
@@ -41,16 +41,16 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | Command | 注意 |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 建立新的 Cosmos DB 帳戶。 |
-| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | 建立新的或更新現有的 Cosmos DB SQL Database。 |
-| [New-AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | 建立新的 Cosmos DB SQL PSSqlUniqueKey 物件，以作為 New-AzCosmosDBSqlUniqueKeyPolicy 的參數使用。 |
-| [New-AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | 建立新的 Cosmos DB SQL PSSqlUniqueKeyPolicy 物件，以作為 Set-AzCosmosDBSqlContainer 的參數使用。 |
-| [New-AzCosmosDBSqlCompositePath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath) | 建立新的 Cosmos DB SQL PSCompositePath 物件，以作為 New-AzCosmosDBSqlIndexingPolicy 的參數使用。 |
-| [New-AzCosmosDBSqlIncludedPathIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | 建立 PSIndexes 類型的新物件，以作為 Set-AzCosmosDBSqlIncludedPath 的參數使用。 |
-| [New-AzCosmosDBSqlIncludedPath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | 建立 PSIncludedPath 類型的新物件，以作為 New-AzCosmosDBSqlIndexingPolicy 的參數使用。 |
-| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | 建立 PSSqlIndexingPolicy 類型的新物件，以作為 Set-AzCosmosDBSqlContainer 的參數使用。 |
-| [New-AzCosmosDBSqlConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy) | 建立 PSSqlConflictResolutionPolicy 類型的新物件，以作為 Set-AzCosmosDBSqlContainer 的參數使用。 |
-| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | 建立新的或更新現有的 Cosmos DB SQL 容器。 |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 建立 Cosmos DB 帳戶。 |
+| [New-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqldatabase) | 建立 Cosmos DB SQL Database。 |
+| [New-AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | 建立 PSSqlUniqueKey 物件，以作為 New-AzCosmosDBSqlUniqueKeyPolicy 的參數使用。 |
+| [New-AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | 建立 PSSqlUniqueKeyPolicy 物件，以作為 New-AzCosmosDBSqlContainer 的參數使用。 |
+| [New-AzCosmosDBSqlCompositePath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath) | 建立 PSCompositePath 物件，以作為 New-AzCosmosDBSqlIndexingPolicy 的參數使用。 |
+| [New-AzCosmosDBSqlIncludedPathIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | 建立 PSIndexes 物件，以作為 New-AzCosmosDBSqlIncludedPath 的參數使用。 |
+| [New-AzCosmosDBSqlIncludedPath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | 建立 PSIncludedPath 物件，以作為 New-AzCosmosDBSqlIndexingPolicy 的參數使用。 |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | 建立 PSSqlIndexingPolicy 物件，以作為 SNew-AzCosmosDBSqlContainer 的參數使用。 |
+| [New-AzCosmosDBSqlConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy) | 建立 PSSqlConflictResolutionPolicy 物件，以作為 New-AzCosmosDBSqlContainer 的參數使用。 |
+| [New-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer) | 建立新的 Cosmos DB SQL 容器。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

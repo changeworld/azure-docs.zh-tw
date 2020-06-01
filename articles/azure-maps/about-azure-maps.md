@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 113e745e078bd5d345845318af1b10ed98f2aecb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80335739"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746924"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -155,7 +155,7 @@ Azure 地圖服務的空間作業服務會取得位置資訊。 該服務會快�
 
 ### <a name="ip-to-location-service"></a>IP 對位置服務
 
-可使用「IP 對位置」服務預覽從 IP 位址擷取的兩個字母國家代碼。 此服務可協助您藉由根據地理位置提供自訂應用程式內容，來加強使用者體驗。
+可使用「IP 對位置」服務預覽從 IP 位址擷取的兩個字母國碼/區域碼。 此服務可協助您藉由根據地理位置提供自訂應用程式內容，來加強使用者體驗。
 
 如需與 REST API 中的「IP 到地點」服務有關的資訊，請閱讀 [Azure 地圖服務地理位置 API 文件](https://docs.microsoft.com/rest/api/maps/geolocation)。
 
@@ -180,7 +180,7 @@ Azure 地圖服務 API 目前可在下列國家以外的所有國家和地區中
 * 中國
 * 南韓
 
-請確認您目前 IP 位址的位置處於支援的國家/地區中。
+請確認您目前 IP 位址的位置處於支援的國家/區域中。
 
 ## <a name="next-steps"></a>後續步驟
 

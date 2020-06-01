@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166737"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873917"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>快速入門：使用 JAVA 以 Bing Web 搜尋 REST API (Azure 認知服務) 來搜尋網頁
 
-在本快速入門中，您會使用 Java 應用程式進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 Java 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+在本快速入門中，您會使用 Java 應用程式進行對 Bing Web 搜尋 API 第一次的呼叫。 這個 Java 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>在 Maven POM 檔案中宣告 Gson
 
-如果您使用 Maven，請在 `POM.xml` 中宣告 Gson。 如果您已在本機安裝 Gson，請略過此步驟。
+如果您使用 Maven，請在 POM.xml 中宣告 Gson。 如果您已在本機安裝 Gson，請略過此步驟。
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ import com.google.gson.JsonParser;
 
 ## <a name="declare-the-bingwebsearch-class"></a>宣告 BingWebSearch 類別
 
-宣告 `BingWebSearch` 類別。 其中包含我們在此快速入門中檢閱的大部分程式碼，包括 `main` 方法。  
+宣告 `BingWebSearch` 類別。 其中包含我們在此快速入門中檢閱的大部分程式碼，包括 `main()` 方法。  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>定義變數
 
-此程式碼會設定 `subscriptionKey`、`host`、`path` 和 `searchTerm`。 `host` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 將 `subscriptionKey` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 請自行取代 `searchTerm` 的值來自訂搜尋查詢。 請記得將此程式碼新增至 `BingWebSearch` 類別，如先前所述。
+下列程式碼會設定 `subscriptionKey`、`host`、`path` 和 `searchTerm`。 將此程式碼新增至上一節所述的 `BingWebSearch` 類別：
+
+1. 對於 `host` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 
+
+2. 將 `subscriptionKey` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 
+
+3. (選擇性) 取代 `searchTerm` 的值以自訂搜尋查詢。 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>建構要求
 
-此方法 (位於 `BingWebSearch` 類別中) 會建構 `url`、接收和剖析回應，並擷取 Bing 相關的 HTTP 標頭。  
+`SearchWeb()` 方法 (包含在 `BingWebSearch` 類別中) 會建構 `url`、接收和剖析回應，以及擷取 Bing 相關的 HTTP 標頭。  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>宣告 main 方法
 
-這是必要方法，也是程式啟動時叫用的第一個方法。 在此應用程式中，此方法包含的程式碼會驗證 `subscriptionKey`、提出要求，並列印 JSON 回應。
+`main()` 方法是必要方法，也是您啟動程式時所叫用的第一個方法。 在此應用程式中，此方法包含的程式碼會驗證 `subscriptionKey`、提出要求，然後列印 JSON 回應。
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>建立搜尋結果的容器類別
 
-`SearchResults` 容器類別位於 `BingWebSearch` 類別外部。 其中包含回應的相關標頭和 JSON 資料。
+`SearchResults` 容器類別定義於 `BingWebSearch` 類別之外。 其中包含回應的相關標頭和 JSON 資料。
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一步就是編譯您的程式碼並執行！ 命令如下：
+最後一步就是編譯您的程式碼並執行。 使用下列命令：
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 如果想要將您的程式碼與我們的程式碼做比較，[GitHub 上提供程式碼範例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java) (英文)。
 
-## <a name="sample-response"></a>範例回應
+## <a name="example-json-response"></a>範例 JSON 回應
 
 來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 本範例回應已截斷而只顯示單一結果。
 
@@ -320,6 +326,6 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing Web 搜尋單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

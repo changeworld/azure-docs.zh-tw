@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223595"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681810"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教學課程：使用 Apache Kafka Producer 和 Consumer API
 
@@ -73,7 +73,7 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 
 ### <a name="producerjava"></a>Producer.java
 
-產生者會與 Kafka 訊息代理程式主機 (背景工作節點) 通訊，並將資料傳送至 Kafka 主題。 下列程式碼片段取自 [GitHub 存放庫](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 檔案，可說明如何設定產生者屬性：
+產生者會與 Kafka 訊息代理程式主機 (背景工作節點) 通訊，並將資料傳送至 Kafka 主題。 下列程式碼片段取自 [GitHub 存放庫](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 檔案，可說明如何設定產生者屬性。 針對已啟用企業安全性的叢集，必須新增額外的屬性 "properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");"
 
 ```java
 Properties properties = new Properties();
@@ -87,7 +87,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-取用者會與 Kafka 代理程式主機 (背景工作節點) 通訊，以迴圈方式讀取記錄。 來自於 [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) 檔案的下列程式碼片段會設定取用者屬性：
+取用者會與 Kafka 代理程式主機 (背景工作節點) 通訊，以迴圈方式讀取記錄。 來自於 [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) 檔案的下列程式碼片段會設定取用者屬性。 針對已啟用企業安全性的叢集，必須新增額外的屬性 "properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");"
 
 ```java
 KafkaConsumer<String, String> consumer;
@@ -115,6 +115,16 @@ consumer = new KafkaConsumer<>(properties);
 
 ## <a name="build-and-deploy-the-example"></a>建置並部署範例
 
+### <a name="use-pre-built-jar-files"></a>使用預建的 JAR 檔案
+
+從 [Kafka 開始使用 Azure 範例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars)下載 JAR。 如果您的叢集已啟用**企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 使用下列命令將 JAR 複製到您的叢集。
+
+```cmd
+scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+```
+
+### <a name="build-the-jar-files-from-code"></a>從程式碼建置 JAR 檔案
+
 如果您想要略過此步驟，可從 `Prebuilt-Jars` 子目錄下載預先建立的 jar。 下載 kafka-producer-consumer.jar。 如果您的叢集已啟用**企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 執行步驟 3 將 jar 複製到您的 HDInsight 叢集。
 
 1. 從 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下載並解壓縮範例。
@@ -125,12 +135,12 @@ consumer = new KafkaConsumer<>(properties);
     mvn clean package
     ```
 
-    此命令會建立名為 `target` 的目錄，其中包含名為 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的檔案。
+    此命令會建立名為 `target` 的目錄，其中包含名為 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的檔案。 若為 ESP 叢集，檔案將會是 `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. 將 `sshuser` 取代為叢集的 SSH 使用者，並將 `CLUSTERNAME` 取代為叢集的名稱。 輸入下列命令，將 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 檔案複製到 HDInsight 叢集。 出現提示時，請輸入 SSH 使用者的密碼。
 
     ```cmd
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
 ## <a name="run-the-example"></a><a id="run"></a> 執行範例
@@ -169,6 +179,7 @@ consumer = new KafkaConsumer<>(properties);
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
     已讀取的記錄以及記錄計數隨即顯示。
@@ -202,7 +213,13 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 > [!IMPORTANT]  
 > 一個取用者群組中的取用者執行個體不得超過資料分割。 在此範例中，一個取用者群組可以包含最多 8 個取用者，因為這是主題中的資料分割數目。 或者，您可以有多個取用者群組，其各有不超過 8 個取用者。
 
-Kafka 中儲存的記錄會依照其在資料分割內接收的順序儲存。 若要達到依序傳遞「資料分割內」  的記錄，請建立取用者群組，其中的取用者執行個體數目與資料分割數目相符。 若要達到依序傳遞「主題內」  的記錄，請建立只有一個取用者執行個體的取用者群組。
+Kafka 中儲存的記錄會依照其在資料分割內接收的順序儲存。 若要達到依序傳遞「資料分割內」的記錄，請建立取用者群組，其中的取用者執行個體數目與資料分割數目相符。 若要達到依序傳遞「主題內」的記錄，請建立只有一個取用者執行個體的取用者群組。
+
+## <a name="common-issues-faced"></a>常見的問題
+
+1. **主題建立失敗** 如果您的叢集已啟用企業安全性套件，請使用[適用於生產者和取用者的預建 JAR 檔案](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 您可以從[`DomainJoined-Producer-Consumer`子目錄](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的程式碼建立 ESP JAR。 請注意，生產者和取用者屬性都有已啟用 ESP 的叢集所適用的額外屬性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
+
+2. **面臨已啟用 ESP 的叢集問題** 如果產生和取用作業失敗，而且您使用已啟用 ESP 的叢集，請檢查使用者 `kafka` 是否存在於所有 Ranger 原則中。 如果不存在，請將其新增至所有 Ranger 原則。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -210,9 +227,9 @@ Kafka 中儲存的記錄會依照其在資料分割內接收的順序儲存。 �
 
 若要使用 Azure 入口網站移除資源群組：
 
-1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
-2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多]  按鈕 (...)。
-3. 選取 [刪除資源群組]  ，並加以確認。
+1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組] 以顯示資源群組的清單。
+2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多] 按鈕 (...)。
+3. 選取 [刪除資源群組]，並加以確認。
 
 ## <a name="next-steps"></a>後續步驟
 

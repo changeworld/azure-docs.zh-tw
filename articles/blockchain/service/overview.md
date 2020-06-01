@@ -1,15 +1,15 @@
 ---
 title: Azure 區塊鏈服務概觀
 description: Azure 區塊鏈服務的概觀
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38d0a5564e1e7a28168ac95826cc527d47ef093b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529148"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844585"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -29,11 +29,11 @@ Azure 區塊鏈服務旨在支援多個總帳通訊協定。 目前使用 [Istan
 
 ### <a name="performance-and-service-tiers"></a>效能和服務層級
 
-Azure 區塊鏈服務提供兩個服務層級：「基本」  和「標準」  。 每一層均提供不同的效能和功能，以支援精簡型開發並測試工作負載，最高可達大規模的生產區塊鏈部署。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。 這兩個層級至少包含一個交易節點，以及一個驗證程式節點 (基本) 或兩個驗證程式節點 (標準)。 
+Azure 區塊鏈服務提供兩個服務層級：「基本」和「標準」。 每一層均提供不同的效能和功能，以支援精簡型開發並測試工作負載，最高可達大規模的生產區塊鏈部署。 使用「基本」層來進行開發、測試和概念證明。 使用「標準」層來進行生產等級的部署。 這兩個層級至少包含一個交易節點，以及一個驗證程式節點 (基本) 或兩個驗證程式節點 (標準)。 
 
 ![定價層](./media/overview/pricing-tiers.png)
 
-除了提供兩個驗證程式節點，「標準」  層可為每個交易和驗證程式節點提供兩個「虛擬核心」  ，而「基本」  層可提供 1 個虛擬核心設定。  藉由為交易和驗證程式節點提供 2 個虛擬核心，即可將 1 個虛擬核心專用於 Quorum 總帳，而剩餘的 1 個虛擬核心可用於其他基礎結構相關服務，以確保會針對生產區塊鏈工作負載取得最佳效能。 如需價格詳細資料的詳細資訊，請參閱 [Azure 區塊鏈服務價格](https://azure.microsoft.com/pricing/details/blockchain-service)。
+除了提供兩個驗證程式節點，「標準」層可為每個交易和驗證程式節點提供兩個「虛擬核心」，而「基本」層可提供 1 個虛擬核心設定。  藉由為交易和驗證程式節點提供 2 個虛擬核心，即可將 1 個虛擬核心專用於 Quorum 總帳，而剩餘的 1 個虛擬核心可用於其他基礎結構相關服務，以確保會針對生產區塊鏈工作負載取得最佳效能。 如需價格詳細資料的詳細資訊，請參閱 [Azure 區塊鏈服務價格](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
 ### <a name="security-and-maintenance"></a>安全性和維護
 
@@ -75,7 +75,7 @@ Azure 區塊鏈服務的區塊鏈資料管理員會將 Azure 區塊鏈服務交�
 
 洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
 
-* [Azure 區塊鏈服務 MSDN 論壇](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure 區塊鏈服務的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
 * [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

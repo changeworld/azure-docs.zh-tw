@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: c40aa9b0a94940f48a8edbd046a744678f02cbd2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76775340"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827230"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT 支援和協助選項
 
@@ -53,11 +53,11 @@ ms.locfileid: "76775340"
 
 若無法透過搜尋找到問題的解答，請在服務相關的論壇上，將新問題提交至 MSDN：
 
-- [Azure Digital Twins](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredigitaltwins)
-- [Azure IoT 中心](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azureiothub)
-- [Azure IoT Edge](https://social.msdn.microsoft.com/Forums/en-US/home?forum=iotedge)
-- [Azure 地圖服務](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelbs)
-- [Azure 時間序列深入解析](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights)
+- [Azure Digital Twins 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure IoT 中樞的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Azure IoT Edge 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure 地圖服務的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Azure 時間序列深入解析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 意見反應上提交意見反應
 

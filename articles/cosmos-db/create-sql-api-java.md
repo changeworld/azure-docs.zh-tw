@@ -1,20 +1,20 @@
 ---
 title: 快速入門 - 使用 Java 以 Azure Cosmos DB 建立文件資料庫
 description: 本快速入門提供 Java 程式碼範例，讓您用來連線及查詢 Azure Cosmos DB SQL API
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858135"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647698"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料
 
@@ -22,12 +22,16 @@ ms.locfileid: "82858135"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 在本快速入門中，您會從 Azure 入口網站以及藉由使用從 GitHub 複製的 Java 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 首先，您必須使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、使用 SQL Java SDK 建立 Java 應用程式，然後使用 Java 應用程式將資源新增至您的 Cosmos DB 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
+
+> [!IMPORTANT]  
+> 本快速入門僅適用於 Azure Cosmos DB Java SDK v4。 如需詳細資訊，請檢視 Azure Cosmos DB Java SDK v4 [版本資訊](sql-api-sdk-java-v4.md)、[Maven 存放庫](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [效能秘訣](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB Java SDK v4 [疑難排解指南](troubleshoot-java-sdk-v4-sql.md)。 如果您目前使用的版本比 v4 舊，請參閱[遷移至 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南，以取得升級至 v4 的協助。
+>
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -38,15 +42,15 @@ ms.locfileid: "82858135"
 
 ## <a name="introductory-notes"></a>簡介注意事項
 
-Cosmos DB 帳戶的結構。  不論是 API 還是程式設計語言，Cosmos DB「帳戶」  會包含零個以上的「資料庫」  、「資料庫」  (DB) 會包含零個以上的「容器」  ，「容器」  則會包含零個以上的項目，如下圖所示：
+Cosmos DB 帳戶的結構。 不論是 API 還是程式設計語言，Cosmos DB「帳戶」會包含零個以上的「資料庫」、「資料庫」(DB) 會包含零個以上的「容器」，「容器」則會包含零個以上的項目，如下圖所示：
 
 ![Azure Cosmos 帳戶項目](./media/databases-containers-items/cosmos-entities.png)
 
-您可以在[這裡](databases-containers-items.md)進一步了解資料庫、容器和項目。 幾個重要的屬性會定義於容器層級，其中包括「佈建的輸送量」  和「分割區索引鍵」  。 
+您可以在[這裡](databases-containers-items.md)進一步了解資料庫、容器和項目。 幾個重要的屬性會定義於容器層級，其中包括「佈建的輸送量」和「分割區索引鍵」。 
 
-佈建的輸送量會以具有貨幣價格的要求單位 (RU  ) 來進行測量，在決定帳戶的營運成本時，RU 會是一大因素。 佈建的輸送量可依每一容器的細微性或每一資料庫的細微性來加以選取，不過一般來說，最好是指定容器層級的輸送量。 您可以在[這裡](set-throughput.md)進一步了解輸送量佈建。
+佈建的輸送量會以具有貨幣價格的要求單位 (RU) 來進行測量，在決定帳戶的營運成本時，RU 會是一大因素。 佈建的輸送量可依每一容器的細微性或每一資料庫的細微性來加以選取，不過一般來說，最好是指定容器層級的輸送量。 您可以在[這裡](set-throughput.md)進一步了解輸送量佈建。
 
-隨著 Cosmos DB 容器中不斷插入項目，資料庫也可藉由新增更多儲存體和計算來處理要求，以水平方式跟著成長。 儲存體和計算容量會以離散單位 (稱為「分割區」  ) 來新增，而且您必須在文件中選擇一個欄位來作為分割區索引鍵，以將每個文件對應至分割區。 分割區的管理方式是為每個分割區指派分割區索引鍵值範圍中大致相等的配量；因此，建議您選擇相對隨機或平均分佈的分割區索引鍵。 否則，某些分割區會看到高出許多的要求 (「熱分割區」  )，其他分割區則會看到少了許多的要求 (「冷分割區」  )，我們應該避免這種情況。 您可以在[這裡](partitioning-overview.md)深入了解分割。
+隨著 Cosmos DB 容器中不斷插入項目，資料庫也可藉由新增更多儲存體和計算來處理要求，以水平方式跟著成長。 儲存體和計算容量會以離散單位 (稱為「分割區」) 來新增，而且您必須在文件中選擇一個欄位來作為分割區索引鍵，以將每個文件對應至分割區。 分割區的管理方式是為每個分割區指派分割區索引鍵值範圍中大致相等的配量；因此，建議您選擇相對隨機或平均分佈的分割區索引鍵。 否則，某些分割區會看到高出許多的要求 (「熱分割區」)，其他分割區則會看到少了許多的要求 (「冷分割區」)，我們應該避免這種情況。 您可以在[這裡](partitioning-overview.md)深入了解分割。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 

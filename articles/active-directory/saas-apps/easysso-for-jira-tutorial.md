@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a9009121c2dab0701d08f40de7c8f26777bc3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e3226ef8d739df6902a96cff336762ce4425c5de
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189968"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740293"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 EasySSO for Jira 整合
 
@@ -52,12 +52,11 @@ ms.locfileid: "82189968"
 若要設定將 EasySSO for Jira 整合到 Azure AD 中，您需要從資源庫將 EasySSO for Jira 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **EasySSO for Jira**。
-1. 從結果面板選取 [EasySSO for Jira]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
-
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **EasySSO for Jira**。
+1. 從結果面板選取 [EasySSO for Jira]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-jira"></a>設定及測試 EasySSO for Jira 的 Azure AD 單一登入
 
@@ -76,21 +75,21 @@ ms.locfileid: "82189968"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [EasySSO for Jira]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [EasySSO for Jira] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/jirasso/login.jsp`
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/jirasso/login.jsp`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [EasySSO for Jira 用戶端支援小組](mailto:support@techtime.co.nz)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -109,48 +108,85 @@ ms.locfileid: "82189968"
     | urn:oid:2.5.4.4 | | user.surname |
     | urn:oid:2.5.4.42 | | user.givenname |
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將資料儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
     ![憑證下載連結](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 EasySSO for Jira 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [EasySSO for Jira]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [EasySSO for Jira]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-easysso-for-jira-sso"></a>設定 EasySSO for Jira SSO
 
-若要在 **EasySSO for Jira** 端設定單一登入，您必須將**應用程式同盟中繼資料 Url** 傳送給 [EasySSO for Jira 支援小組](mailto:support@techtime.co.nz)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+1. 使用系統管理員權限登入您的 Atlassian Jira 執行個體，然後瀏覽至 [管理應用程式] 區段。
+
+    ![管理應用程式](./media/easysso-for-jira-tutorial/jira-admin-1.png)
+
+1. 按一下 [EasySSO]。
+
+    ![EasySSO](./media/easysso-for-jira-tutorial/jira-admin-2.png)
+
+1. 選取 [SAML] 選項。 這會帶您前往 [SAML 設定] 區段。
+
+    ![SAML](./media/easysso-for-jira-tutorial/jira-admin-3.png)
+
+1. 選取頂端的 [憑證] 索引標籤，然後便會看到下列畫面，請找到您在先前 **Azure AD SSO** 設定的步驟中儲存的 [憑證 (Base64)] 或 [中繼資料檔案]。 您有下列選項可以繼續進行：
+
+    ![中繼資料 URL](./media/easysso-for-jira-tutorial/jira-admin-4.png)
+
+    a. 使用您下載到電腦上本機檔案的應用程式同盟 [中繼資料檔案]。 選取 [上傳] 選項按鈕，然後遵循您的作業系統特有的 [上傳檔案] 對話方塊
+
+    **OR**
+
+    b. 開啟應用程式同盟 [中繼資料檔案]，以查看檔案的內容 (在任何純文字編輯器中)，並將其複製到剪貼簿。 選取 [輸入] 選項，並將剪貼簿內容貼到文字欄位中。
+
+    **OR**
+
+    c. 完全手動設定。 開啟應用程式同盟 [憑證 (Base64)]，以查看檔案的內容 (在任何純文字編輯器中)，並將其複製到剪貼簿。 將其貼入 [IdP 權杖簽署憑證] 文字欄位中。 然後瀏覽至 [一般] 索引標籤，並分別在 [POST 繫結 URL] 和 [實體識別碼] 欄位中填入先前所儲存的 [登入 URL ] 和 [Azure AD 識別碼] 值。
+
+1. 按一下頁面底部的 [儲存] 按鈕。 您便會看到中繼資料或憑證檔案的內容剖析到設定欄位中。 EasySSO for Jira 設定完成。
+
+1. 若要獲得最佳測試體驗，請瀏覽至 [外觀及風格] 索引標籤，然後將 [SAML 登入按鈕] 選項核取為開啟狀態。 這會在 Jira 登入畫面上啟用個別的按鈕，以專門用來端對端測試您的 Azure AD SAML 整合。 您可以讓此按鈕保持開啟狀態，並且也將其位置、色彩和轉譯設定為生產模式。
+
+    ![外觀及風格](./media/easysso-for-jira-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > 如果您有任何問題，請連絡 [EasySSO 支援小組](mailto:support@techtime.co.nz)。
 
 ### <a name="create-easysso-for-jira-test-user"></a>建立 EasySSO for Jira 測試使用者
 
-本節會在 EasySSO for Jira 中建立名為 Britta Simon 的使用者。 EasySSO for Jira 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 EasySSO for Jira 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Jira 中建立名為 B.Simon 的使用者。 EasySSO for Jira 支援依預設**停用**的 Just-In-Time 使用者佈建。 若要啟用使用者佈建，您必須在 EasySSO 外掛程式設定的 [一般] 區段中，明確地核取 [在登入成功時建立使用者] 選項。 如果 Jira 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
-## <a name="test-sso"></a>測試 SSO 
+不過，如果您不想要在使用者第一次登入時啟用自動使用者佈建，則使用者必須存在於後端使用者目錄中，以供 Jira 執行個體使用，例如 LDAP 或 Atlassian Crowd 等。
+
+![使用者佈建](./media/easysso-for-jira-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
@@ -169,4 +205,3 @@ ms.locfileid: "82189968"
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [如何使用進階可見性和控制項保護 EasySSO for Jira](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

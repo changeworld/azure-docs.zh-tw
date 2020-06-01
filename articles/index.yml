@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 3bae82ca96497d91dab9d158fe26bed9cd8d0467
-  ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+  ms.openlocfilehash: 5d8dfc5c51ab6a56823a4984a7788b3cce98e7e1
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84171186"
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84230070"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -359,12 +359,6 @@ productDirectory:
     azureCategories:
     - blockchain
     url: blockchain/service/index.yml
-  - title: Azure Blockchain Tokens (預覽)
-    summary: 輕鬆定義、建立和管理以總帳為基礎的權杖
-    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-token.svg
-    azureCategories:
-    - blockchain
-    url: blockchain/tokens/index.yml
   - title: Azure Blockchain Workbench (預覽)
     summary: 在雲端中輕鬆建立區塊鏈應用程式的原型
     imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg
@@ -726,6 +720,12 @@ productDirectory:
     azureCategories:
     - devops
     url: https://docs.microsoft.com/azure/devops/test/
+  - title: 適用於 Azure 的 GitHub Actions
+    summary: 從 GitHub 建立、測試應用程式並將任何應用程式部署至 Azure
+    imageSrc: ./media/index/github-actions-icon.svg
+    azureCategories:
+    - devops
+    url: https://docs.microsoft.com/en-us/azure/developer/github/github-actions
   - title: Azure Active Directory (AD)
     summary: 同步處理內部部署目錄和啟用單一登入
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg

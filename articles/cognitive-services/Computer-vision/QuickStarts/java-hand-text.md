@@ -1,5 +1,5 @@
 ---
-title: 快速入門：電腦視覺 2.0 和 2.1 - 擷取印刷和手寫文字 - REST、Java
+title: 快速入門：電腦視覺 2.1 和 3.0 - 擷取印刷和手寫文字 - REST、Java
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將搭配使用電腦視覺 API 與 Java 來擷取影像中的印刷和手寫文字。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aaaa382d41990b801d1c451b2bf416493a7ba7c6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d26b75e3839eac6c1a2ad32507a4d708495fda36
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404920"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683189"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>快速入門：使用電腦視覺 REST API 和 Java 擷取印刷和手寫文字
 
@@ -85,14 +85,10 @@ ms.locfileid: "81404920"
 
 ```java
 public class Main {
-    // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
-
     // Add your Computer Vision subscription key and endpoint to your environment variables.
     // After setting, close and then re-open your command shell or project for the changes to take effect.
-    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
-    String endpoint = ("COMPUTER_VISION_ENDPOINT");
+    private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
     private static final String uriBase = endpoint + 
             "vision/v2.1/read/core/asyncBatchAnalyze";
@@ -229,9 +225,6 @@ public class Main {
 ```java
 
 public class Main {
-    // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
 
     // Add your Computer Vision subscription key and endpoint to your environment variables.
     // After setting, close and then re-open your command shell or project for the changes to take effect.
@@ -239,10 +232,10 @@ public class Main {
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
     // Set the language that you want to recognize
-    private static String language = "en";  // Accepted values are "en" for English, or "es" for Spanish
+    // Accepted values are "en" for English, or "es" for Spanish
+    private static String language = "en";  
 
-    private static String uriBase = endpoint +
-            "/vision/v3.0-preview/read/analyze";
+    private static String uriBase = endpoint + "/vision/v3.0-preview/read/analyze";
 
     private static String imageToAnalyze =
             "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +

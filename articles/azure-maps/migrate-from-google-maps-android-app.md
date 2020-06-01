@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209727"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747426"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>從 Google 地圖遷移 Android 應用程式
 
@@ -152,7 +152,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 若要使用適用於 Android 的 Azure 地圖服務 SDK 來顯示地圖，必須執行下列步驟：
 
-1. 開啟頂層 **build.gradle** 檔案，並將下列程式碼新增至 [所有專案]  區塊區段：
+1. 開啟頂層 **build.gradle** 檔案，並將下列程式碼新增至 [所有專案]區塊區段：
 
     ```JAVA
     maven {
@@ -181,7 +181,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
         > [!Note]
         > Azure 地圖服務 Android SDK 會定期進行升級和強化。 您可以參閱[開始使用 Android 地圖控制項](how-to-use-android-map-control-library.md)，以取得最新的 Azure 地圖服務版本號碼。 此外，您也可以將版本號碼從 "0.2" 設定為 "0+"，使您的程式碼一律指向最新版本。
     
-    4. 移至工具列中 [檔案]  ，然後按一下 [同步處理專案與 Gradle 檔案]  。
+    4. 移至工具列中 [檔案]，然後按一下 [同步處理專案與 Gradle 檔案]。
 3. 將地圖片段新增至主要活動 (resources \> layout \> activity\_main.xml)：
     
     ```XML
@@ -310,11 +310,11 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 請注意，Azure 地圖服務控制項支援更高倍數的縮小，而更能提供涵蓋全世界的檢視。
 
 > [!TIP]
-> 如果您在 Windows 機器中使用 Android 模擬器，則地圖可能會因為與 OpenGL 和軟體加速圖形轉譯發生衝突，而不會呈現。 下列方法可協助某些人員解決此問題。 開啟 [AVD 管理員]，然後選取要編輯的虛擬裝置。 向下捲動 [確認設定]  面板。 在 [模擬的效能]  區段中，將 [圖形]  選項設定為 [硬體]  。
+> 如果您在 Windows 機器中使用 Android 模擬器，則地圖可能會因為與 OpenGL 和軟體加速圖形轉譯發生衝突，而不會呈現。 下列方法可協助某些人員解決此問題。 開啟 [AVD 管理員]，然後選取要編輯的虛擬裝置。 向下捲動 [確認設定] 面板。 在 [模擬的效能] 區段中，將 [圖形] 選項設定為 [硬體]。
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 
-如果您的受眾分散在多個國家/地區或使用不同語言，當地語系化便很重要。
+如果您的受眾分散在多個國家/區域或使用不同語言，當地語系化便很重要。
 
 **之前：Google 地圖**
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508423"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698087"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>針對 Azure 虛擬網路 NAT 連線進行疑難排解
 
@@ -31,6 +31,7 @@ ms.locfileid: "82508423"
 * [ICMP Ping 失敗](#icmp-ping-is-failing)
 * [連線失敗](#connectivity-failures)
 * [IPv6 共存](#ipv6-coexistence)
+* [連線並非來自 NAT 閘道 IP](#connection-doesnt-originate-from-nat-gateway-ips)
 
 若要解決這些問題，請遵循下一節中的步驟。
 
@@ -61,10 +62,10 @@ _**解決方案：**_ 使用適當的模式和最佳做法
 - 如果用戶端未快取 DNS 解析程式結果，DNS 就可以在磁碟區引進許多個別流程。 使用快取。
 - UDP 流程 (例如 DNS 查閱) 會在閒置逾時期間配置 SNAT 連接埠。 閒置的逾時時間愈長，SNAT 連接埠上的壓力愈高。 使用較短的閒置時間 (例如4分鐘)。
 - 使用連接集區來塑造您的連線磁碟區。
-- 永遠不要以無訊息方式放棄 TCP 流程，並依賴 TCP 計時器來清除流程。 如果您未讓 TCP 明確關閉連線，則狀態會保持分配於中繼系統和端點，並讓 SNAT 連接埠無法供其他連線使用。 這可能會觸發應用程式失敗和 SNAT 耗盡的問題。 
+- 永遠不要以無訊息方式放棄 TCP 流程，並依賴 TCP 計時器來清除流程。 如果您未讓 TCP 明確關閉連線，則狀態會保持分配於中繼系統和端點，並讓 SNAT 連接埠無法供其他連線使用。 此模式可能會觸發應用程式失敗和 SNAT 耗盡的問題。 
 - 在沒有從專業角度了解可能產生的影響時，請勿變更 作業系統層級 TCP 關閉相關的計時器值。 雖然 TCP 堆疊會復原，但當連線端點的表現不如預期時，您的應用程式效能可能會受到負面影響。 變更計時器的需求通常是基礎設計出現問題的信號。 請檢閱下列建議。
 
-SNAT 耗盡通常也會隨著基礎應用程式中的其他反向模式而增加。 請參閱這些額外的模式和最佳做法，以改善服務的規模調整和可靠性。
+SNAT 耗盡也會隨著基礎應用程式中的其他反向模式而增加。 請參閱這些額外的模式和最佳做法，以改善服務的規模調整和可靠性。
 
 - 探索減少 [TCP 閒置逾時](nat-gateway-resource.md#timers)的影響，以降低包括稍早要釋放 SNAT 連接埠清單的 4 分鐘預設閒置逾時。
 - 請考慮針對長時間執行的作業使用[非同步輪詢模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以釋出連線資源給其他作業使用。
@@ -116,7 +117,7 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 
 #### <a name="configuration"></a>組態
 
-請進行下列檢查：
+檢查組態：
 1. NAT 閘道資源是否至少有一個公用 IP 資源或一個公用 IP 首碼資源？ 您必須至少有一個與 NAT 閘道相關聯的 IP 位址，才能提供輸出連線能力。
 2. 虛擬網路的子網路是否已設定為使用 NAT 閘道？
 3. 您是否使用 UDR (使用者定義的路由)，以及是否要覆寫目的地？  NAT 閘道資源會成為已設定子網路上的預設路由 (0/0)。
@@ -182,6 +183,18 @@ _**解決方案：**_
 _**解決方案：**_ 在沒有 IPv6 前置詞的子網路上部署 NAT 閘道。
 
 您可以透過 [虛擬網路 NAT UserVoice](https://aka.ms/natuservoice)，指出其他功能的相關性質。
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>連線並非來自 NAT 閘道 IP
+
+您可以設定 NAT 閘道、要使用的 IP 位址，以及應該使用 NAT 閘道資源的子網路。 不過，在部署 NAT 閘道之前，來自虛擬機器執行個體的連線不會使用 IP 位址。  這些連線似乎使用了不與 NAT 閘道資源搭配使用的 IP 位址。
+
+_**解決方案：**_
+
+[虛擬網路 NAT](nat-overview.md) 會取代其設定所在子網路的輸出連線能力。 從預設 SNAT 或負載平衡器輸出 SNAT 轉換為使用 NAT 閘道時，新的連線會立即開始使用與 NAT 閘道資源相關聯的 IP 位址。  不過，如果虛擬機器在切換到 NAT 閘道資源期間仍有已建立的連線，連線將會繼續使用建立連線時所指派的舊 SNAT IP 位址。  請確定您確實建立了新的連線，而不是重複使用已經存在的連線，因為 OS 或瀏覽器是在連線集區中快取連線。  例如，在 PowerShell 中使用「捲曲」時，請務必指定「-DisableKeepalive」參數來強制執行新的連線。  如果您使用的是瀏覽器，也可以將連線集區化。
+
+您不需要重新啟動虛擬機器來設定 NAT 閘道資源的子網路。  不過，如果重新啟動虛擬機器，則連線狀態會是已排清。  將連線狀態排清後，所有連線都會開始使用 NAT 閘道資源的 IP 位址。  不過，這是重新啟動虛擬機器的副作用，而不是需要重新啟動的指標。
+
+如果您仍然遇到問題，請開啟支援案例以取得進一步的疑難排解。
 
 ## <a name="next-steps"></a>後續步驟
 

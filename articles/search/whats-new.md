@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80247192"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682457"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
 了解該服務的新功能。 將此頁面加入書籤，以掌握服務的最新狀態。
 
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>新服務名稱
-
-Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核心作業中已展開 (但為選用功能) 的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都沒有變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
-
 ## <a name="feature-announcements"></a>功能公告
+
+### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft 組建)
+
++ [偵錯工作階段](cognitive-search-debug-session.md)功能現在處於預覽狀態。 [註冊以要求存取](https://aka.ms/DebugSessions)。 偵錯工作階段提供以入口網站為基礎的介面，用來調查和解決技能集的問題。 在偵錯工作階段中建立的修正程式可以儲存到生產環境技能集。 開始使用[本教學課程](cognitive-search-tutorial-debug-sessions.md)。
+
++ 安全性增強功能包括[設定私人搜尋端點 (預覽)](service-create-private-endpoint.md) 的能力，公用網際網路無法提供此功能。 您也可以[設定適用於輸入防火牆支援 (預覽)](service-configure-firewall.md) 的 IP 規則。
+
++ 使用[受系統管理的身分識別 (預覽)](search-howto-managed-identities-data-sources.md) 來設定與 Azure 資料來源的連線，以編製索引。 適用於來自 Azure 資料來源 (例如 Azure SQL Database、Azure Cosmos DB 和 Azure 儲存體) 內嵌內容的[索引子](search-indexer-overview.md)。
+
++ 使用 [scoringStatistics=global 查詢參數](index-similarity-and-scoring.md#scoring-statistics)，變更搜尋分數的基礎計算方式 (從每個分區到所有分區)。
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -45,7 +49,7 @@ Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核
 
 + 搜尋服務的私人存取會透過兩種機制提供，目前均已納入預覽版中：
 
-  + 您可以使用管理 REST API `api-version=2019-10-01-Preview` 來建立服務，以限制對特定 IP 位址的存取。 預覽 API 在 **CreateOrUpdate API** 中有新的 **IpRule** 和 [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 屬性。 此預覽功能可在幾個區域中使用。 如需詳細資訊，請參閱[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+  + 您可以使用管理 REST API `api-version=2019-10-01-Preview` 來建立服務，以限制對特定 IP 位址的存取。 預覽 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中有新的 **IpRule** 和 **NetworkRuleSet** 屬性。 此預覽功能可在幾個區域中使用。 如需詳細資訊，請參閱[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
   + 目前透過限制存取預覽提供，您可以針對來自相同虛擬網路上用戶端的連線，佈建支援 Azure 私人端點的 Azure 搜尋服務服務。 如需詳細資訊，請參閱[建立安全連線的私人端點](service-create-private-endpoint.md)。
 
@@ -73,6 +77,12 @@ Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核
 ### <a name="july-2019"></a>2019 年 7 月
 
 + 已在 [Azure Government 雲端](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)中正式推出。
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>新服務名稱
+
+Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核心作業中已展開 (但為選用功能) 的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都沒有變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
 
 ## <a name="service-updates"></a>服務更新
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: f36a76187538d93b57d2d3f5973408f141271f67
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1dfac9a56e3bc299fbb0651ae1cd5644eba83267
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420162"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645823"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火牆規則 (預覽)
 
@@ -24,13 +24,13 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>建立和管理 IP 防火牆規則
 
-有兩種方式可將 IP 防火牆規則新增至 Synapse 工作區。 若要將 IP 防火牆新增至您的工作區，請選取 [安全性 + 網路]  ，並在建立工作區時，核取 [允許從所有 IP 位址進行連線]  。
+有兩種方式可將 IP 防火牆規則新增至 Synapse 工作區。 若要將 IP 防火牆新增至您的工作區，請選取 [安全性 + 網路]，並在建立工作區時，核取 [允許從所有 IP 位址進行連線]。
 
 ![Azure 入口網站的 Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
 
 ![Azure 入口網站的 Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
 
-您也可以在建立工作區之後，將 IP 防火牆規則新增至 Synapse 工作區。 從 Azure 入口網站的 [安全性]  底下，選取 [防火牆]  。 若要新增 IP 防火牆規則，請提供名稱、起始 IP 和結束 IP。 完成時選取 [儲存]  。
+您也可以在建立工作區之後，將 IP 防火牆規則新增至 Synapse 工作區。 從 Azure 入口網站的 [安全性] 底下，選取 [防火牆]。 若要新增 IP 防火牆規則，請提供名稱、起始 IP 和結束 IP。 完成時選取 [儲存]  。
 
 ![Azure 入口網站中的 Azure Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
@@ -42,7 +42,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 此外，您還需要為 Synapse Studio 允許 UDP 連接埠 53 上的傳出通訊。 若要使用 SSMS 和 Power BI 這類工具進行連線，您必須允許 TCP 通訊埠 1433 上的傳出通訊。
 
-如果您使用預設的重新導向連線原則設定，您可能需要允許其他連接埠上的傳出通訊。 您可以在這裡深入了解連線原則。
+如果您使用預設的重新導向連線原則設定，您可能需要允許其他連接埠上的傳出通訊。 您可以在[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)深入了解連線原則。
 
 ## <a name="next-steps"></a>後續步驟
 

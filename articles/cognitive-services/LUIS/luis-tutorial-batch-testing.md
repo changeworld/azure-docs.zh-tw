@@ -3,12 +3,12 @@ title: 教學課程：使用批次測試找出問題 - LUIS
 description: 本教學課程示範如何使用批次測試來驗證 Language Understanding (LUIS) 應用程式的品質。
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592588"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681625"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教學課程：批次測試資料集
 

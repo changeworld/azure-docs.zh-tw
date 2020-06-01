@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75465187"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870891"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Xamarin Android 應用程式
 
@@ -63,27 +63,31 @@ ms.locfileid: "75465187"
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
+開啟 `Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`。
+
+找出 `AzureSpatialAnchorsManager(Session arCoreSession)` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";`。
+
 ## <a name="deploy-the-app-to-your-android-device"></a>將應用程式部署到您的 Android 裝置
 
 將 Android 裝置開啟電源並登入，然後使用 USB 纜線將其連接到電腦。
 
-將起始專案設為 **SampleXamarin.Android**、將 [解決方案組態]  變更為 [發行]  ，然後在裝置選取器下拉式清單中選取要部署到的裝置。
+將起始專案設為 **SampleXamarin.Android**、將 [解決方案組態] 變更為 [發行]，然後在裝置選取器下拉式清單中選取要部署到的裝置。
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Visual Studio 設定](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-選取 [偵錯]   > [開始偵錯]  以部署並啟動您的應用程式。
+選取 [偵錯] > [開始偵錯] 以部署並啟動您的應用程式。
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio 設定](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-選取 [執行]   > [啟動但不偵錯]  以部署並啟動您的應用程式。
+選取 [執行] > [啟動但不偵錯] 以部署並啟動您的應用程式。
 
 ---
 
-在應用程式中，選取 [基本]  以執行示範，依照指示放置及回收錨點。
+在應用程式中，選取 [基本] 以執行示範，依照指示放置及回收錨點。
 
 > ![螢幕擷取畫面 1](./media/get-started-xamarin-android/screenshot-1.jpg)
 > ![螢幕擷取畫面 2](./media/get-started-xamarin-android/screenshot-2.jpg)

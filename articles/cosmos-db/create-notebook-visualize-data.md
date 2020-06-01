@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720919"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743583"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教學課程：在 Azure Cosmos DB 中建立筆記本來分析資料並將其視覺化
 
@@ -26,15 +26,15 @@ ms.locfileid: "73720919"
  
 在這一節中，您將建立 Azure Cosmos 資料庫、容器，並將零售資料匯入容器。
 
-1. 瀏覽至 Azure Cosmos 帳戶並開啟 [資料總管]  。
+1. 瀏覽至 Azure Cosmos 帳戶並開啟 [資料總管]。
 
-1. 移至 [筆記本]  索引標籤，選取 [我的筆記本]  旁邊的 `…`，然後建立 [新筆記本]  。 選取 [Python 3]  作為預設核心。
+1. 移至 [筆記本] 索引標籤，選取 [我的筆記本] 旁邊的 `…`，然後建立 [新筆記本]。 選取 [Python 3]作為預設核心。
 
    ![建立新的 Notebook](./media/create-notebook-visualize-data/create-new-notebook.png)
 
 1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
 
-1. 接下來，您將建立名為 "RetailDemo" 的資料庫，以及名為 "WebsiteData" 的容器來存放零售資料。 您可以使用/CardID 作為分割區索引鍵。 將下列程式碼複製並貼到您筆記本中的新儲存格，並加以執行：
+1. 接下來，您將建立名為 "RetailDemo" 的資料庫，以及名為 "WebsiteData" 的容器來存放零售資料。 您可以使用/CartID 作為分割區索引鍵。 將下列程式碼複製並貼到您筆記本中的新儲存格，並加以執行：
 
    ```python
    import azure.cosmos
@@ -47,7 +47,7 @@ ms.locfileid: "73720919"
    print('Container WebsiteData created')
    ```
 
-   若要執行儲存格，請選取 `Shift + Enter` 或選取儲存格，然後選擇資料總管瀏覽列上的 [執行作用儲存格]  選項。
+   若要執行儲存格，請選取 `Shift + Enter` 或選取儲存格，然後選擇資料總管瀏覽列上的 [執行作用儲存格] 選項。
 
    ![執行作用儲存格](./media/create-notebook-visualize-data/run-active-cell.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "73720919"
     Container WebsiteData created
    ```
 
-   您也可以重新整理 [資料]  索引標籤，並查看新建立的資源：
+   您也可以重新整理 [資料] 索引標籤，並查看新建立的資源：
 
    ![重新整理 [資料] 索引標籤以查看新容器](media/create-notebook-visualize-data/refresh-data-tab.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "73720919"
 {Query text}
 ```
 
-若要深入了解，請參閱 [Azure Cosmos DB 中的內建筆記本命令和功能](use-notebook-features-and-commands.md)一文。 您將會執行查詢 - `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`。 結果將會儲存到名為 df_cosmos 的 Pandas 資料框架中。 在新的儲存格中貼上下列命令並加以執行：
+若要深入了解，請參閱 [Azure Cosmos DB 中的內建筆記本命令和功能](use-python-notebook-features-and-commands.md)一文。 您將會執行查詢 - `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`。 結果將會儲存到名為 df_cosmos 的 Pandas 資料框架中。 在新的儲存格中貼上下列命令並加以執行：
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 在這一節中，您將對所擷取的資料執行一些查詢。
 
-* **查詢 1：** 在資料框架上執行依群組查詢，以取得每個國家/地區的總銷售收益總和，並顯示結果中的 5 個項目。 在新的筆記本儲存格中，執行下列程式碼：
+* **查詢 1：** 在資料框架上執行依群組查詢，以取得每個國家/區域的總銷售收益總和，並顯示結果中的 5 個項目。 在新的筆記本儲存格中，執行下列程式碼：
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -170,16 +170,16 @@ df_cosmos.head(10)
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. 接下來，準備將資料繪製在地圖上。 聯結 Azure Cosmos DB 中的資料與位於 Azure Blob 儲存體中的國家/地區資訊，並將結果轉換為 GeoJSON 格式。 將下列程式碼複製到新的筆記本儲存格並加以執行。
+1. 接下來，準備將資料繪製在地圖上。 聯結 Azure Cosmos DB 中的資料與位於 Azure Blob 儲存體中的國家/區域資訊，並將結果轉換為 GeoJSON 格式。 將下列程式碼複製到新的筆記本儲存格並加以執行。
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ df_cosmos.head(10)
    json_data = json.dumps(merged_json)
    ```
 
-1. 在新的筆記本儲存格中執行下列程式碼，以在世界地圖上將不同國家/地區的銷售收益視覺化：
+1. 在新的筆記本儲存格中執行下列程式碼，以在世界地圖上將不同國家/區域的銷售收益視覺化：
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   輸出會以不同的色彩顯示世界地圖。 較深到較淺的色彩代表具有最高收益到最低收益的國家/地區。
+   輸出會以不同的色彩顯示世界地圖。 較深到較淺的色彩代表具有最高收益到最低收益的國家/區域。
 
-   ![國家/地區收益地圖視覺效果](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![國家/區域收益地圖視覺效果](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. 讓我們看看另一個資料視覺效果案例。 WebsiteData 容器記錄了已檢視項目、放入其購物車，以及購買項目的使用者。 讓我們繪製所購買項目的轉換率。 在新儲存格中執行下列程式碼，將每個項目的轉換率視覺化：
 
@@ -290,4 +290,4 @@ df_cosmos.head(10)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解筆記本命令，請參閱[如何使用 Azure Cosmos DB 中的內建筆記本命令和功能](use-notebook-features-and-commands.md)一文。
+* 若要深入了解 Python 筆記本命令，請參閱[如何使用 Azure Cosmos DB 中的內建筆記本命令和功能](use-python-notebook-features-and-commands.md)一文。

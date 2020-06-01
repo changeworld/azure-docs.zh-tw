@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: 建立資料處理站 - Resource Manager 範本
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 安全性 - 啟用客戶管理的金鑰加密
+      href: quickstart-enable-customer-managed-key.md
     - name: 建立資料流程
       href: data-flow-create.md
 - name: 教學課程
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: 從內部部署 SQL Server 資料庫到 Azure Blob 儲存體
+        - name: 從 SQL Server 資料庫到 Azure Blob 儲存體
           items:
             - name: 複製資料工具
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: 從多個內部部署 SQL Server 資料表
+            - name: 來自多個 SQL Server 資料庫資料表
               items:
                 - name: 使用者介面 (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -605,6 +607,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: 啟用適用於 Azure-SSIS IR 的 Azure AD 驗證
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: 使用 Windows 驗證連線到資料
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: 儲存檔案及連線到檔案共用
+          href: ssis-azure-files-file-shares.md
         - name: 佈建適用於 Azure-SSIS IR 的 Enterprise Edition
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure SSIS IR 上內建和預先安裝的元件
@@ -623,6 +629,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: 使用 SSMS 移轉 SSIS 作業
           href: how-to-migrate-ssis-job-ssms.md
+        - name: 使用 Azure-SSIS IR 套件存放區來管理套件
+          href: azure-ssis-integration-runtime-package-store.md
     - name: 建立觸發程序
       items:
         - name: 建立事件型觸發程序

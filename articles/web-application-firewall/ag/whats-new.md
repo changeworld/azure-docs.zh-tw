@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 0e0e67bfb893e1bf141182e45ce4a49f5f6880ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73495496"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745152"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web 應用程式防火牆有哪些新功能？
 
@@ -28,7 +28,7 @@ Azure Web 應用程式防火牆會持續更新。 為了讓您隨時掌握最新
 |功能  |描述  |新增日期  |
 |---------|---------|---------|
 |Bot 風險降低規則集 (預覽)|您可以將 Bot 風險降低規則集與您選擇的 CRS 規則集一起啟用。 | 2019 年 11 月 |
-|GeoDB 整合 (預覽)|現在，您可以建立依來源國家/地區限制流量的自訂規則。 | 2019 年 11 月 |
+|GeoDB 整合 (預覽)|現在，您可以建立依來源國家/區域限制流量的自訂規則。 | 2019 年 11 月 |
 |WAF 每個網站/每個 URI 的原則 (預覽)|WAF-v2 現在支援將原則套用至接聽程式，以及路徑式規則。 請參閱[建立 WAF 原則](create-waf-policy-ag.md)。 | 2019 年 11 月 |
 |WAF 自訂規則 |應用程式閘道 WAF_v2 現在支援建立自訂規則。 請參閱[應用程式閘道自訂規則](custom-waf-rules-overview.md)。 |2019 年 6 月 |
 |WAF 組態和排除清單     |我們已新增更多選項，以協助您設定 WAF 和減少誤判。 如需詳細資訊，請參閱 [Web 應用程式防火牆要求大小限制與排除清單](application-gateway-waf-configuration.md)。|2018 年 12 月|

@@ -7,20 +7,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
-ms.openlocfilehash: 65d34d1e82a46cc5b3d7b0ad3239836acaee6f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d162639885a7736953a3e7388336c3105f2f0893
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585350"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683853"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) 範例
 
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK 範例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 範例](sql-api-dotnet-v3sdk-samples.md)
-> * [Java 範例](sql-api-java-samples.md)
-> * [非同步 Java 範例](sql-api-async-java-samples.md)
+> * [Java V4 SDK 範例](sql-api-java-sdk-samples.md)
 > * [Node.js 範例](sql-api-nodejs-samples.md)
 > * [Python 範例](sql-api-python-samples.md)
 > * [Azure 程式碼範例庫](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -53,7 +52,7 @@ Azure 訂用帳戶或免費的 Cosmos DB 試用帳戶
 
 ## <a name="database-examples"></a>資料庫範例
 
-DatabaseManagement  專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。
+DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -91,7 +90,7 @@ DatabaseManagement  專案範例的 [RunDatabaseDemo](https://github.com/Azure/a
 
 ## <a name="indexing-examples"></a>索引範例
 
-範例 IndexManagement  專案的 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)。 
+範例 IndexManagement 專案的 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -101,7 +100,7 @@ DatabaseManagement  專案範例的 [RunDatabaseDemo](https://github.com/Azure/a
 
 ## <a name="query-examples"></a>查詢範例
 
-Queries  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) 方法會說明如何使用 SQL 查詢文法、使用 LINQ 提供者搭配查詢以及使用 Lambda 來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](how-to-sql-query.md)。
+Queries 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) 方法會說明如何使用 SQL 查詢文法、使用 LINQ 提供者搭配查詢以及使用 Lambda 來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](how-to-sql-query.md)。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -122,7 +121,7 @@ Queries  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-cosmos-do
 
 ## <a name="server-side-programming-examples"></a>伺服器端程式設計範例
 
-ServerSideScripts  專案範例的 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L72-L102) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)。
+ServerSideScripts 專案範例的 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L72-L102) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的伺服器端程式設計，請參閱[預存程序、觸發程序和使用者定義函式](stored-procedures-triggers-udfs.md)。
 
 | Task | API 參考資料 |
 | --- | --- |

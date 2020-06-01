@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: spelluru
-ms.openlocfilehash: fd4b41cc2fe97ad0c2f075884e21f4f2ffc01561
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44e77330e6a651a93b1f88fa6b20450ebc2b1455
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159449"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773980"
 ---
-# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>將事件傳送至 Azure 事件中樞及從中接收事件 - .NET Core (Azure.Messaging.EventHubs) 
-本快速入門說明如何使用 **Azure.Messaging.EventHubs** .NET Core 程式庫，將事件傳送至事件中樞，以及從中接收事件。 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>將事件傳送至 Azure 事件中樞及從中接收事件 - .NET (Azure.Messaging.EventHubs) 
+本快速入門說明如何使用 **Azure.Messaging.EventHubs** .NET 程式庫，將事件傳送至事件中樞，以及從中接收事件。 
 
 > [!IMPORTANT]
 > 本快速入門使用新的 **Azure.Messaging.EventHubs** 程式庫。 如需使用舊版 **Microsoft.Azure.EventHubs** 程式庫的快速入門，請參閱[使用 Microsoft.Azure.EventHubs 程式庫傳送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)。 
@@ -34,7 +34,7 @@ ms.locfileid: "82159449"
 若要完成本快速入門，您必須符合下列必要條件：
 
 - **Microsoft Azure 訂用帳戶**。 若要使用 Azure 服務 (包括 Azure 事件中樞)，您需要訂用帳戶。  如果您沒有現有的 Azure 帳戶，您可以申請[免費試用](https://azure.microsoft.com/free/)，或是在[建立帳戶](https://azure.microsoft.com)時使用 MSDN 訂閱者權益。
-- **Microsoft Visual Studio 2019**。 Azure 事件中樞用戶端程式庫會使用 C# 8.0 中引進的新功能。  您仍然可以搭配舊版 C# 使用程式庫，但部分功能將無法使用。  若要啟用這些功能，您必須[以 .NET Core 3.0 為目標](/dotnet/standard/frameworks#how-to-specify-target-frameworks)或[指定您想要使用的語言版本](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8.0 或更新版本)。 如果您使用的是 Visual Studio，Visual Studio 2019 之前的版本與建立 C# 8.0 專案所需的工具不相容。 Visual Studio 2019 (包括免費的 Community 版) 可以在[這裡](https://visualstudio.microsoft.com/vs/)下載
+- **Microsoft Visual Studio 2019**。 Azure 事件中樞用戶端程式庫會使用 C# 8.0 中引進的新功能。  您仍然可以使用之前 C# 程式設計語言版本，但無法使用新的語法。 若要使用完整的語法，建議您使用 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 或更新版本，並將[語言版本](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) 設為 `latest` 以進行編譯。 如果您使用的是 Visual Studio，Visual Studio 2019 之前的版本與建立 C# 8.0 專案所需的工具不相容。 Visual Studio 2019 (包括免費的 Community 版) 可以在[這裡](https://visualstudio.microsoft.com/vs/)下載。
 - **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得**事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
 
 ## <a name="send-events"></a>傳送事件 
@@ -43,21 +43,21 @@ ms.locfileid: "82159449"
 ### <a name="create-a-console-application"></a>建立主控台應用程式
 
 1. 啟動 Visual Studio 2019。 
-1. 選取 [建立新專案]  。 
-1. 在 [建立新專案]  對話方塊中，執行下列步驟：如果您看不到此對話方塊，請在功能表上選取 [檔案]  ，然後依序選取 [新增]  和 [專案]  。 
-    1. 選取 [C#]  作為程式設計語言。
-    1. 選取 [主控台]  作為應用程式的類型。 
-    1. 從結果清單中選取 [主控台應用程式 (.NET Core)]  。 
-    1. 然後，選取 [下一步]  。 
+1. 選取 [建立新專案]。 
+1. 在 [建立新專案] 對話方塊中，執行下列步驟：如果您看不到此對話方塊，請在功能表上選取 [檔案]，然後依序選取 [新增] 和 [專案]。 
+    1. 選取 [C#] 作為程式設計語言。
+    1. 選取 [主控台] 作為應用程式的類型。 
+    1. 從結果清單中選取 [主控台應用程式 (.NET Core)]。 
+    1. 然後，選取 [下一步]。 
 
         ![[新增專案] 對話方塊](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
-1. 輸入 **EventHubsSender** 作為專案名稱、輸入 **EventHubsQuickStart** 作為解決方案名稱，然後選取 [確定]  以建立專案。 
+1. 輸入 **EventHubsSender** 作為專案名稱、輸入 **EventHubsQuickStart** 作為解決方案名稱，然後選取 [確定] 以建立專案。 
 
     ![C# > 主控台應用程式](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>新增事件中樞 NuGet 封裝
 
-1. 從功能表選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。 
+1. 從功能表選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 
 1. 執行以下命令來安裝 **Azure.Messaging.EventHubs** NuGet 套件：
 
     ```cmd
@@ -67,7 +67,7 @@ ms.locfileid: "82159449"
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>撰寫程式碼以將訊息傳送到事件中樞
 
-1. 在 Program.cs  檔案開頭處加入 `using` 陳述式：
+1. 在 Program.cs 檔案開頭處加入 `using` 陳述式：
 
     ```csharp
     using System.Text;
@@ -107,7 +107,7 @@ ms.locfileid: "82159449"
     ```
 5. 建置專案，並確定沒有任何錯誤。
 6. 執行程式，並等候確認訊息。 
-7. 在 Azure 入口網站中，您可以確認事件中樞是否已收到訊息。 切換至 [計量]  區段中的 [訊息]  檢視。 請重新整理頁面來更新圖表。 可能需要幾秒鐘的時間，頁面才會顯示已收到訊息。 
+7. 在 Azure 入口網站中，您可以確認事件中樞是否已收到訊息。 切換至 [計量] 區段中的 [訊息] 檢視。 請重新整理頁面來更新圖表。 可能需要幾秒鐘的時間，頁面才會顯示已收到訊息。 
 
     [![確認事件中樞已收到訊息](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
@@ -133,13 +133,13 @@ ms.locfileid: "82159449"
 
 ### <a name="create-a-project-for-the-receiver"></a>為接收者建立專案
 
-1. 在 [方案總管] 視窗中，以滑鼠右鍵按一下 [EventHubQuickStart]  解決方案，並指向 [新增]  ，然後選取 [新增專案]  。 
-1. 選取 [主控台應用程式 (.NET Core)]  ，然後選取 [下一步]  。 
-1. 輸入 **EventHubsReceiver** 作為**專案名稱**，然後選取 [建立]  。 
+1. 在 [方案總管] 視窗中，以滑鼠右鍵按一下 [EventHubQuickStart] 解決方案，並指向 [新增]，然後選取 [新增專案]。 
+1. 選取 [主控台應用程式 (.NET Core)]，然後選取 [下一步]。 
+1. 輸入 **EventHubsReceiver** 作為**專案名稱**，然後選取 [建立]。 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>新增事件中樞 NuGet 封裝
 
-1. 從功能表選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。 
+1. 從功能表選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 
 1. 執行以下命令來安裝 **Azure.Messaging.EventHubs** NuGet 套件：
 
     ```cmd

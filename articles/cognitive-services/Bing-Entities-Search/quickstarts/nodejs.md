@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 194368acd6be65da6a800ad1394ac156a6654b50
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448638"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650234"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入門：使用 Node.js 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -27,20 +27,20 @@ ms.locfileid: "75448638"
 
 * 最新版的 [Node.js](https://nodejs.org/en/download/)。
 
-* [JavaScript 要求程式庫](https://github.com/request/request)
+* [JavaScript 要求程式庫](https://github.com/request/request)。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您最愛的 IDE 或編輯器中建立新的 JavaScript 檔案，並設定嚴謹度 和 https 需求。
+1. 在您最愛的 IDE 或編輯器中建立新的 JavaScript 檔案，並設定嚴謹度 和 HTTPS 需求。
 
     ```javaScript
     'use strict';
     let https = require ('https');
     ```
 
-2. 建立適用於 API 端點、您訂用帳戶金鑰及搜尋查詢的變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 建立適用於 API 端點、您訂用帳戶金鑰及搜尋查詢的變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -58,52 +58,53 @@ ms.locfileid: "75448638"
 
 ## <a name="handle-and-parse-the-response"></a>處理及剖析回應
 
-1. 定義一個名為 `response_handler` 的函式，此函式會接受 HTTP 呼叫 `response` 作為參數。 在此函式內，執行下列步驟：
+1. 定義一個名為 `response_handler()` 的函式，此函式會接受 HTTP 呼叫 `response` 作為參數。 
 
-    1. 定義一個變數來包含 JSON 回應本文。  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
+2. 在此函式中，定義一個變數來包含 JSON 回應本文。  
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
+
+3. 在呼叫 `data` 旗標時，儲存回應本文。
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. 出現 `end` 旗標的訊號時，剖析 JSON，然後將其列印出來。
+
+    ```javascript
+    response.on ('end', function () {
+    let json = JSON.stringify(JSON.parse(body), null, '  ');
+    console.log (json);
+    });
         ```
 
-    2. 當呼叫 **data** 旗標時，儲存回應本文
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+## Send a request
 
-    3. 出現 **end** 旗標的信號時，剖析 JSON，然後將其列印出來。
+1. Create a function called `Search()` to send a search request. In it, perform the following steps:
 
-        ```javascript
-        response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log (json);
-        });
-        ```
+2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
 
-## <a name="send-a-request"></a>傳送要求
-
-1. 建立名為 `Search` 的函式，以傳送搜尋要求。 在其中執行下列步驟。
-
-   1. 建立包含要求參數的 JSON 物件：使用 `Get` 方法，然後新增主機和路徑資訊。 將訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。 
-   2. 使用 `https.request()` 以稍早建立的回應處理常式傳送要求與搜尋參數。
+3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
     
-      ```javascript
-      let Search = function () {
-       let request_params = {
-           method : 'GET',
-           hostname : host,
-           path : path + query,
-           headers : {
-               'Ocp-Apim-Subscription-Key' : subscriptionKey,
-           }
-       };
+   ```javascript
+   let Search = function () {
+    let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + query,
+        headers : {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
     
-       let req = https.request (request_params, response_handler);
-       req.end ();
-      }
+    let req = https.request (request_params, response_handler);
+    req.end ();
+   }
       ```
 
 2. 呼叫 `Search()` 函式。
@@ -179,4 +180,4 @@ ms.locfileid: "75448638"
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什麼是 Bing 實體搜尋 API？](../overview.md )
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

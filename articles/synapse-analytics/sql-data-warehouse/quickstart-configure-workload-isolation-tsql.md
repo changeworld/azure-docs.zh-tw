@@ -11,12 +11,12 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f0aabf4bd18f82c247a43931e02e4b6890b2ef4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207797"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650679"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入門：使用 T-SQL 設定工作負載隔離
 
@@ -25,11 +25,11 @@ ms.locfileid: "82207797"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!NOTE]
-> 在 Azure Synapse Analytics 中建立 SQL 分析執行個體，可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中建立 Synapse SQL 執行個體，可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本快速入門假設您已有 Azure Synapse 中的 SQL 分析執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
+本快速入門假設您已有 Azure Synapse 中的 Synapse SQL 執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
 
 ## <a name="create-login-for-dataloads"></a>建立 DataLoads 的登入
 

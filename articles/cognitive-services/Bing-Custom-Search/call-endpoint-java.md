@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80238883"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873248"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>快速入門：使用 Java 呼叫您的 Bing 自訂搜尋端點
 
-您可以使用本快速入門來開始向「Bing 自訂搜尋」執行個體要求搜尋結果。 雖然此應用程式是以 Java 撰寫的，但 Bing 自訂搜尋 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) 上有此範例的原始程式碼。
+使用本快速入門來了解如何向 Bing 自訂搜尋執行個體要求搜尋結果。 雖然此應用程式是以 Java 撰寫的，但 Bing 自訂搜尋 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) 上有此範例的原始程式碼。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 「Bing 自訂搜尋」執行個體。 請參閱[快速入門：建立您的第一個 Bing 自訂搜尋執行個體](quick-start.md)，以取得詳細資訊。
+- 「Bing 自訂搜尋」執行個體。 如需詳細資訊，請參閱[快速入門：建立您的第一個 Bing 自訂搜尋執行個體](quick-start.md)。
 
-- 最新的 [Java 開發套件](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- 最新的 [Java 開發套件](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 
-- [Gson 程式庫](https://github.com/google/gson)
+- [Gson 程式庫](https://github.com/google/gson)。
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Java 專案，並匯入下列程式庫。
+1. 在您慣用的 IDE 或編輯器中建立新的 Java 專案，並匯入下列程式庫：
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ ms.locfileid: "80238883"
     import com.google.gson.JsonParser;
     ```
 
-2. 建立名為 `CustomSrchJava` 的類別，並建立訂用帳戶金鑰、自訂搜尋端點和搜尋執行個體的自訂組態識別碼的變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 建立名為 `CustomSrchJava` 的類別，然後建立訂用帳戶金鑰、自訂搜尋端點和搜尋執行個體的自訂組態識別碼的變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -63,8 +63,8 @@ ms.locfileid: "80238883"
 
 3. 建立名為 `SearchResults` 的另一個類別，以包含 Bing 自訂搜尋執行個體的回應。
 
-    ```csharp
-    class SearchResults{
+    ```java
+    class SearchResults {
         HashMap<String, String> relevantHeaders;
         String jsonResponse;
         SearchResults(HashMap<String, String> headers, String json) {
@@ -120,7 +120,7 @@ ms.locfileid: "80238883"
         }
     ```
 
-3. 在應用程式的 Main 方法中，使用您的搜尋字詞呼叫 `SearchWeb()`： 
+3. 列印 JSON 回應。
 
     ```java
     System.out.println("\nJSON Response:\n");

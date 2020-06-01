@@ -3,12 +3,12 @@ title: 快速入門：建立應用程式 - LUIS
 description: 本快速入門說明如何建立 LUIS 應用程式，該應用程式會使用預先建置網域 `HomeAutomation` 來開啟或關閉燈光和應用程式。 這個預先建置網域可為您提供意圖、實體和範例語句。 完成之後，您會擁有一個在雲端中執行的 LUIS 端點。
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589115"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701255"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入門：使用預先建置的家庭自動化應用程式
 
@@ -42,7 +42,8 @@ ms.locfileid: "83589115"
 1. 搜尋 **HomeAutomation**。
 1. 在 HomeAutomation 卡片上選取 [新增網域]。
 
-    ![選取 [預建網域]，然後搜尋 'HomeAutomation'。 在 HomeAutomation 卡片上選取 [新增網域]。](media/luis-quickstart-new-app/home-automation.png)
+    > [!div class="mx-imgBorder"]
+    > ![選取「預先建置網域」，然後搜尋 'HomeAutomation'。 在 HomeAutomation 卡片上選取「新增網域」。](media/luis-quickstart-new-app/home-automation.png)
 
     當成功新增網域時，預先建置網域方塊會顯示 [移除網域] 按鈕。
 
@@ -50,7 +51,8 @@ ms.locfileid: "83589115"
 
 1. 選取**意圖**，以檢閱 HomeAutomation 網域意圖。 預建網域意圖具有範例語句。
 
-    ![HomeAutomation 意圖清單的螢幕擷取畫面](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意圖清單的螢幕擷取畫面")
+    > [!div class="mx-imgBorder"]
+    > ![HomeAutomation 意圖清單的螢幕擷取畫面](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意圖清單的螢幕擷取畫面")
 
     > [!NOTE]
     > 「無」是所有 LUIS 應用程式都會提供的意圖。 您可以使用它來處理未對應至應用程式所提供功能的語句。
@@ -114,25 +116,25 @@ ms.locfileid: "83589115"
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.984315455
+                    "score": 0.969448864
                 },
                 "HomeAutomation.QueryState": {
-                    "score": 0.009912962
-                },
-                "HomeAutomation.TurnDown": {
-                    "score": 0.00626645749
+                    "score": 0.0122336326
                 },
                 "HomeAutomation.TurnUp": {
-                    "score": 0.00572059769
+                    "score": 0.006547436
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.0050634006
                 },
                 "HomeAutomation.SetDevice": {
-                    "score": 0.00379381469
+                    "score": 0.004951761
                 },
                 "HomeAutomation.TurnOn": {
-                    "score": 0.00366983772
+                    "score": 0.00312553928
                 },
                 "None": {
-                    "score": 0.000623856
+                    "score": 0.000552945654
                 }
             },
             "entities": {
@@ -156,7 +158,7 @@ ms.locfileid: "83589115"
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.907323956,
+                            "score": 0.902181149,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

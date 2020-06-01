@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382679"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849581"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>快速入門：使用 Bing 影片搜尋 REST API 和 Python 來搜尋影片
 
-使用本快速入門來進行您對 Bing 影片搜尋 API 的第一次呼叫，並從 JSON 回應檢視搜尋結果。 這個簡單的 Python 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示回應。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上有此範例的原始程式碼，其中還有其他錯誤處理和註釋。
+使用本快速入門，第一次呼叫 Bing 影片搜尋 API。 這個簡單的 Python 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 
 
-您可以按一下 [launch Binder] \(啟動 Binder\) 徽章，在 [MyBinder](https://mybinder.org) \(英文\) 上以 Jupyter Notebook 執行此範例： 
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上有此範例的原始程式碼，其中還有其他錯誤處理和註釋。
+
+您可以選取 [啟動文件夾] 徽章，在 [MyBinder](https://mybinder.org) 上以 Jupyter Notebook 執行此範例： 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -34,13 +36,13 @@ ms.locfileid: "75382679"
 
 ## <a name="initialize-the-application"></a>初始化應用程式
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列程式庫。
+1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列程式庫：
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 `search_url` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2.  建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 對於 `search_url` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
     
     ```python
     subscription_key = None
@@ -57,7 +59,7 @@ ms.locfileid: "75382679"
 
 ## <a name="send-your-request"></a>傳送您的要求
 
-1. 建立名為 `params` 的字典，以將參數新增至您的要求。 請將您的搜尋字詞新增至 `q` 參數，影片的計數為 5、傳回影片的定價為 `free`、影片長度為 `short`。
+1. 建立名為 `params` 的字典，以將參數新增至您的要求。 請將您的搜尋字詞新增至 `q` 參數：影片的計數為 5、傳回影片的定價為 `free`、影片長度為 `short`。
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}

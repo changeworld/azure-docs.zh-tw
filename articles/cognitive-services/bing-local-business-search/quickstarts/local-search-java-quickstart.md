@@ -8,28 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/29/2019
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: c50222c645926a6e48995e6c66d7844adc02699f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74665180"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873006"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入門：使用 Java 向 Bing 當地商家搜尋 API 傳送查詢
 
-使用此快速入門開始向 Bing 當地商家搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 Java 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
+使用此快速入門了解如何向 Bing 當地企業搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 Java 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
 
-此範例應用程式會從 API 取得搜尋查詢 `hotel in Bellevue` 的當地回應資料。
+此範例應用程式會從 API 取得搜尋查詢的當地回應資料。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Java 開發套件 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java 開發套件 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+* 具有 Bing 搜尋 API 的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免費試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)即足以供本快速入門使用。 啟動免費試用時，請儲存提供的 API 金鑰。 如需詳細資訊，請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-您必須有具備 Bing 搜尋 API 的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) \(英文\)。 [免費試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)即足以供本快速入門使用。 啟用免費試用時，您必須提供存取金鑰。  另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-
-此範例應用程式會從 *hotel in Bellevue* 的查詢取得當地回應資料。
 
 ## <a name="create-the-request"></a>建立要求 
 
@@ -51,11 +49,11 @@ ms.locfileid: "74665180"
 
 ## <a name="run-the-complete-application"></a>執行完整應用程式
 
-Bing 當地商家搜尋 API 會從 Bing 搜尋引擎傳回結果。
+下列程式碼會使用 Bing 當地企業搜尋 API，從 Bing 搜尋引擎傳回本地化的搜尋結果。 依照下列步驟執行此程式碼：
 1. 下載或安裝 gson 程式庫。
 2. 在您最愛的 IDE 或編輯器中建立新的 Java 專案。
 3. 新增下方提供的程式碼。
-4. 將 subscriptionKey 值取代為您訂用帳戶的有效存取金鑰。
+4. 以訂用帳戶有效的存取金鑰來取代 `subscriptionKey` 值。
 5. 執行程式。
 
 ```java
@@ -165,6 +163,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- [當地商家搜尋快速入門](local-quickstart.md)
-- [當地商家搜尋 Node 快速入門](local-search-node-quickstart.md)
+- [當地企業搜尋 C# 快速入門](local-quickstart.md)
+- [當地企業搜尋 Node.js 快速入門](local-search-node-quickstart.md)
 - [當地商家搜尋 Python 快速入門](local-search-python-quickstart.md)

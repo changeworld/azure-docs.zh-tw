@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 94946b4b6d0f0fc9c94cac7aca1e971b3f6262f9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78924882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673215"
 ---
 本指南說明如何安裝適用於 64 位元 JAVA 8 JRE 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，就無法在 Maven 中央存放庫中使用 JAVA SDK。 無論您使用的是 Gradle 或 `pom.xml` 相依性檔案，都需要新增指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自訂存放庫 (請參閱下方的套件名稱)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "78924882"
 - JAVA 語音 SDK 套件適用於下列作業系統：
   - Windows：僅限 64 位元
   - Mac：macOS X 10.13 版或更新版本
-  - Linux：64 位元僅在 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8 和 CentOS 8 提供
+  - Linux：64 位元僅在 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8 和 CentOS 7/8 提供
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "78924882"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - 在 RHEL/CentOS 8 上，執行下列命令以安裝必要的套件：
+  - 在 RHEL/CentOS 上，執行下列命令以安裝必要的套件：
 
         ```sh
         sudo yum update
@@ -60,7 +60,8 @@ ms.locfileid: "78924882"
         ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
+> - 在 RHEL/CentOS 7 上，依照[如何設定適用於 Speech SDK 的 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的指示進行。
+> - 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 - 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 請注意，第一次安裝時，可能需要重新啟動 Windows，再繼續進行本指南。
 

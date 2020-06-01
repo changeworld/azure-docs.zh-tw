@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 816f2692a71d5d4281248405cc84102cfa881f66
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44dc3f16128913f76369ad645a32e91f38272546
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382875"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869855"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入門：使用 Bing 拼字檢查 REST API 和 PHP 進行拼字檢查
 
-使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 PHP 應用程式會將要求傳送至 API 並傳回建議的修正清單。 雖然此應用程式是以 PHP 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 PHP 應用程式會將要求傳送至 API 並傳回建議的修正清單。 
+
+雖然此應用程式是以 PHP 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -28,12 +30,12 @@ ms.locfileid: "75382875"
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
-## <a name="get-spell-check-results"></a>取得拼字檢查結果
+## <a name="get-bing-spell-check-rest-api-results"></a>取得 Bing 拼字檢查 REST API 結果
 
 1. 在您最愛的 IDE 中建立新的 PHP 專案。
 2. 新增下方提供的程式碼。
 3. 以訂用帳戶有效的存取金鑰來取代 `subscriptionKey` 值。
-4. 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+4. 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 5. 執行程式。
     
     ```php

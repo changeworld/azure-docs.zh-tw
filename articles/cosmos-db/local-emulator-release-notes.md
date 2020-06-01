@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77168638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746995"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模擬器 - 版本資訊和下載資訊
 
@@ -25,6 +25,15 @@ ms.locfileid: "77168638"
 |**開始使用**|[使用 Azure Cosmos 模擬器在本機開發](local-emulator.md)|
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="2110"></a>2.11.0
+
+- 此版本引進自動調整佈建輸送量的支援。 這些新功能包括能夠在要求單位中設定自訂的最大輸送量層級 (RU/秒)、在現有的資料庫和容器上啟用自動調整，以及透過 Azure Cosmos DB SDK 進行程式設計支援。
+- 修正在查詢大量文件 (超過 1 GB) 時，模擬器將會失敗，並出現內部錯誤狀態碼 500 的問題。
+
+### <a name="292"></a>2.9.2
+
+- 此版本會修正錯誤 (bug)，同時啟用 MongoDb 端點 3.2 版本的支援。 同時也會使用 WPR (而非 LOGMAN) 來新增為了疑難排解產生 ETL 追蹤的支援。
 
 ### <a name="291"></a>2.9.1
 

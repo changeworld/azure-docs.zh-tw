@@ -2,19 +2,19 @@
 title: SQL 隨選 (預覽) 自助服務
 description: 本節所包含的資訊可協助您針對 SQL 隨選 (預覽) 的問題進行疑難排解。
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8b2a9b6c5324240d71a80cde904057757d6ef421
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421192"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658884"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL 隨選 (預覽) 的自助服務
 
@@ -33,13 +33,43 @@ ms.locfileid: "81421192"
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>查詢失敗，因為目前的資源條件約束導致其無法執行 
 
-如果您的查詢失敗，並出現錯誤訊息「此查詢因為目前的資源條件約束而無法執行」，則表示 SQL OD 目前因為資源條件約束而無法執行查詢： 
+如果您的查詢失敗，並出現錯誤訊息「此查詢因為目前的資源條件約束而無法執行」，則表示 SQL 隨選目前因為資源條件約束而無法執行查詢： 
 
 - 請確定您已使用適當大小的資料類型。 此外，請針對字串資料行指定 Parquet 檔案的結構描述，因為其預設會是 VARCHAR (8000)。 
 
 - 如果您的查詢以 CSV 檔案作為目標，請考慮[建立統計資料](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)。 
 
 - 請瀏覽 [SQL 隨選的效能最佳做法](best-practices-sql-on-demand.md)以將查詢最佳化。  
+
+## <a name="create-statement-is-not-supported-in-master-database"></a>master 資料庫不支援 CREATE 'STATEMENT'
+
+如果您的查詢失敗，並出現錯誤訊息：
+
+> 「無法執行查詢。 錯誤：master 資料庫不支援 CREATE EXTERNAL TABLE/DATA SOURCE/DATABASE SCOPED CREDENTIAL/FILE FORMAT。」 
+
+這表示 SQL 隨選中的 master 資料庫不支援建立下列項目：
+  - 外部資料表
+  - 外部資料來源
+  - 資料庫範圍認證
+  - 外部檔案格式
+
+解決方案：
+
+  1. 建立使用者資料庫：
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. 在 <DATABASE_NAME> 的內容中執行建立陳述式，先前在 master 資料庫這麼做會失敗。 
+  
+  建立外部檔案格式的範例：
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
 
 ## <a name="next-steps"></a>後續步驟
 

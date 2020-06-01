@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5f552dfc320459d23e538e65e5f34c085f5b5ad9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 909c787c8ddc9443dca46dd80c0757cf099449c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80134450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778171"
 ---
 <a name="HOLTop"></a>
 
@@ -38,7 +38,7 @@ Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入�
  
 ### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-建立新的 Python 指令碼&mdash;例如，quickstart-file.py  。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
+建立新的 Python 指令碼&mdash;例如，quickstart-file.py。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -162,13 +162,13 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 
-首先，使用下列程式碼來呼叫指定影像的 **batch_read_file** 方法。 這會傳回作業識別碼並啟動非同步程序來讀取影像的內容。
+首先，使用下列程式碼來呼叫指定影像的 **read** 方法。 這會傳回作業識別碼並啟動非同步程序來讀取影像的內容。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 ### <a name="get-read-results"></a>取得讀取結果
 
-接下來，取得從 **batch_read_file** 呼叫傳回的作業識別碼，並使用它來查詢服務中的作業結果。 下列程式碼會以一秒的間隔檢查作業，直到傳回結果為止。 然後，它會將已解壓縮的文字資料輸出到主控台。
+接下來，取得從 **read** 呼叫傳回的作業識別碼，並使用該識別碼來查詢服務中的作業結果。 下列程式碼會以一秒的間隔檢查作業，直到傳回結果為止。 然後，它會將已解壓縮的文字資料輸出到主控台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 

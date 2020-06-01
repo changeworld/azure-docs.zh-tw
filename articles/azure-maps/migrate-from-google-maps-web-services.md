@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371467"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747491"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>從 Google Maps 遷移 Web 服務
 
@@ -56,7 +56,7 @@ Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
 Azure 地圖服務提供數種用來地理編碼地址的方法：
 
 - [**自由格式的地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定單一地址字串，並立即處理要求。 舉例來說，「1 Microsoft way, Redmond, WA」便是單一地址字串。 如果您需要快速地進行個別地址的地理編碼程序，建議使用此 API。
-- [**結構化的地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定單一地址的各個部分 (例如，街道名稱、城市、國家/地區和郵遞區號)，然後立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，而且已將資料剖析成個別的地址部分，則建議使用此 API。
+- [**結構化的地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定單一地址的各個部分 (例如，街道名稱、城市、國家/區域和郵遞區號)，然後立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，而且已將資料剖析成個別的地址部分，則建議使用此 API。
 - [**批次地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)：建立最多包含 10,000 個地址的要求，並讓這些地址進行一段時間的處理。 所有地址會在伺服器上以平行方式進行地理編碼，並可於完成後下載完整的結果集。 若要對大型資料集進行地理編碼，則建議使用此做法。
 - [**模糊搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 會結合地址地理編碼與景點搜尋。 此 API 會接受自由格式的字串。 這個字串可以是地址、地點、地標、景點或景點類別。 此 API 會近乎即時地處理要求。 如果應用程式可供使用者在相同文字方塊中搜尋地址或景點，則建議使用此 API。
 - [**模糊批次搜尋**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：建立最多包含 10,000 個地址、地點、地標或景點的要求，並讓這些項目進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
@@ -67,7 +67,7 @@ Azure 地圖服務提供數種用來地理編碼地址的方法：
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` 和 `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` - 市/鎮<br/>`municipalitySubdivision` – 鄰近地區、副城市/超級城市<br/>`countrySubdivision` - 州或省<br/>`countrySecondarySubdivision` - 郡/縣<br/>`countryTertiarySubdivision` - 行政區<br/>`countryCode` - 兩個字母的國家/地區代碼 |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` - 市/鎮<br/>`municipalitySubdivision` – 鄰近地區、副城市/超級城市<br/>`countrySubdivision` - 州或省<br/>`countrySecondarySubdivision` - 郡/縣<br/>`countryTertiarySubdivision` - 行政區<br/>`countryCode` - 兩個字母的國家/區域代碼 |
 | `key`                       | `subscription-key` – 另請參閱[向 Azure 地圖服務驗證](azure-maps-authentication.md)文件。 |
 | `language`                  | `language` – 請參閱[支援的語言](supported-languages.md)文件。  |
 | `region`                    | `countrySet`                       |
@@ -197,8 +197,8 @@ Azure 地圖服務路線服務會提供下列 API 來計算路線：
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
-| `region`                       | *N/A* – 這是與地理編碼相關的功能。 在使用 Azure 地圖服務的地理編碼 API 時，請使用 countrySet  參數。  |
-| `traffic_model`               | *N/A* – 只能指定是否應該讓交通資料與 traffic  參數搭配使用。 |
+| `region`                       | *N/A* – 這是與地理編碼相關的功能。 在使用 Azure 地圖服務的地理編碼 API 時，請使用 countrySet 參數。  |
+| `traffic_model`               | *N/A* – 只能指定是否應該讓交通資料與 traffic 參數搭配使用。 |
 | `transit_mode`                | 請參閱[行動服務文件](https://docs.microsoft.com/rest/api/maps/mobility) |
 | `transit_routing_preference` | 請參閱[行動服務文件](https://docs.microsoft.com/rest/api/maps/mobility) |
 | `units`                        | *N/A* – Azure 地圖服務只會使用公制單位。  |

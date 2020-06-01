@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425797"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828078"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>在訂用帳戶移動之後變更金鑰保存庫租用戶識別碼
 
@@ -61,4 +61,4 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您有關於 Azure 金鑰保存庫的問題，請造訪 [Azure 金鑰保存庫論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。
+如果您對 Azure Key Vault 有任何疑問，請造訪 [Microsoft 的 Azure Key Vault 問與答頁面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f9b5fb1837fdafe818fdb27221f8575d93ec304d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77912630"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701622"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>快速入門：使用適用於 Go 的文字分析用戶端程式庫
 
-[參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [套件 (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[參考文件](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go) | [套件 (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > 本快速入門僅適用於文字分析 2.1 版。 目前無法使用適用於 Go 的 v3 用戶端程式庫。
@@ -89,7 +89,7 @@ $ touch quickstart.go
 
 ## <a name="code-examples"></a>程式碼範例
 
-這些程式碼片段說明如何使用適用於 Python 的文字分析用戶端程式庫來執行下列工作：
+這些程式碼片段說明如何使用適用於 Go 的文字分析用戶端程式庫來執行下列工作：
 
 * [驗證用戶端](#authenticate-the-client)
 * [情感分析](#sentiment-analysis)

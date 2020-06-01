@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75770708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873618"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 
@@ -30,9 +30,9 @@ ms.locfileid: "75770708"
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>建立已針對 Azure Dev Spaces 啟用的 Kubernetes 叢集
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 選擇 [建立資源]  > 搜尋 **Kubernetes** > 選取 [Kubernetes Service]   > [建立]  。
+1. 選擇 [建立資源] > 搜尋 **Kubernetes** > 選取 [Kubernetes Service] > [建立]。
 
-   在每個「建立 Kubernetes 叢集」  表單的標題底下完成下列步驟，並確認您所選擇的[地區支援 Azure Dev Spaces][supported-regions]。
+   在每個「建立 Kubernetes 叢集」表單的標題底下完成下列步驟，並確認您所選擇的[地區支援 Azure Dev Spaces][supported-regions]。
 
    - **專案詳細資料**：選取 Azure 訂用帳戶，以及新的或現有的 Azure 資源群組。
    - **叢集詳細資料**：輸入 AKS 叢集的名稱、地區、版本及 DNS 名稱前置詞。
@@ -41,16 +41,16 @@ ms.locfileid: "75770708"
    ![Kubernetes 組態設定](media/common/Kubernetes-Create-Cluster-2.PNG)
 
 
-   完成時，選取 [下一步:  驗證]。
+   完成時，選取 [下一步:驗證]。
 
 1. 選擇您想要的角色型存取控制 (RBAC) 設定。 Azure Dev Spaces 會在啟用或停用 RBAC 的情況下支援叢集。
 
     ![RBAC 設定](media/common/k8s-RBAC.PNG)
 
-1. 選取 [檢閱 + 建立]  ，然後在完成時選取 [建立]  。
+1. 選取 [檢閱 + 建立]，然後在完成時選取 [建立]。
 
 ## <a name="get-the-visual-studio-tools"></a>取得 Visual Studio 工具
-安裝最新版的 [Visual Studio](https://www.visualstudio.com/vs/)。 針對 Visual Studio 2019 (Windows 版)，您必須安裝 Azure 開發工作負載。 針對 Visual Studio 2017 (Windows 版)，您必須安裝 ASP.NET 和 Web 開發工作負載以及[適用於 Kubernetes 的 Visual Studio Tools](https://aka.ms/get-azds-visualstudio)。
+在具有 Azure 開發工作負載的 Windows 上安裝最新版的 [Visual Studio 2019](https://www.visualstudio.com/vs/)。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>建立在容器中執行的 Web 應用程式
 
@@ -62,13 +62,13 @@ ms.locfileid: "75770708"
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
-選取 [Web 應用程式 (Model-View-Controller)]  範本，並確定您的目標是對話方塊頂端的兩個下拉式清單中的 **.NET Core** 和 **ASP.NET Core 2.0**。 按一下 [確定]  以建立專案。
+選取 [Web 應用程式 (Model-View-Controller)] 範本，並確定您的目標是對話方塊頂端的兩個下拉式清單中的 **.NET Core** 和 **ASP.NET Core 2.0**。 按一下 [確定]  以建立專案。
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>針對 AKS 叢集啟用 Dev Spaces
 
-使用您剛建立的專案，然後從啟動設定下拉式清單中選取 [Azure Dev Spaces]  ，如下所示。
+使用您剛建立的專案，然後從啟動設定下拉式清單中選取 [Azure Dev Spaces]，如下所示。
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
@@ -76,22 +76,22 @@ ms.locfileid: "75770708"
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
-現在讓 [空間]  下拉式清單預設為 `default`。 稍後，您將深入了解這個選項。 請核取 [可公開存取]  核取方塊，以便透過公用端點存取 Web 應用程式。 這不是必要的設定，但是對於稍後在本逐步解說中示範一些概念很有幫助。 請別擔心，在任一情況下，您都能夠使用 Visual Studio 進行您的網站偵錯。
+現在讓 [空間] 下拉式清單預設為 `default`。 稍後，您將深入了解這個選項。 請核取 [可公開存取] 核取方塊，以便透過公用端點存取 Web 應用程式。 這不是必要的設定，但是對於稍後在本逐步解說中示範一些概念很有幫助。 請別擔心，在任一情況下，您都能夠使用 Visual Studio 進行您的網站偵錯。
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
-按一下 [確定]  以選取或建立叢集。
+按一下 [確定] 以選取或建立叢集。
 
 如果您選擇尚無法與 Azure 開發人員空間搭配使用的叢集，您會看到訊息詢問您是否要加以設定。
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-選擇 [確定]  。
+選擇 [確定]。
 
 > [!IMPORTANT]
 > Azure Dev Spaces 設定程序會移除叢集中的 `azds` 命名空間 (如果存在的話)。
 
- 將啟動背景工作，以完成這項作業。 這需要幾分鐘才能完成。 若要查看它是否仍在建立中，請將指標停留在狀態列左下角的 [背景工作]  圖示上，如下圖所示。
+ 將啟動背景工作，以完成這項作業。 這需要幾分鐘才能完成。 若要查看它是否仍在建立中，請將指標停留在狀態列左下角的 [背景工作] 圖示上，如下圖所示。
 
 ![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
@@ -114,7 +114,7 @@ ms.locfileid: "75770708"
 
 Visual Studio 會與開發人員空間通訊，以建置和部署應用程式，然後以執行中的 Web 應用程式開啟瀏覽器。 容器可能看起來像在本機執行，但實際是在 Azure 的開發人員空間中執行。 localhost 位址的原因是因為 Azure 開發人員空間會對在 AKS 中執行的容器建立暫存 SSH 通道。
 
-按一下頁面頂端的 [關於]  連結，以觸發中斷點。 就如同已在本機執行程式碼一樣，您擁有偵錯資訊的完整存取權，例如呼叫堆疊、區域變數、例外狀況資訊等等。
+按一下頁面頂端的 [關於] 連結，以觸發中斷點。 就如同已在本機執行程式碼一樣，您擁有偵錯資訊的完整存取權，例如呼叫堆疊、區域變數、例外狀況資訊等等。
 
 ## <a name="iteratively-develop-code"></a>反覆開發程式碼
 

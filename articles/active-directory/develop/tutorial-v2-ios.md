@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1251049add8c9d3c71b6ba13aff24e086613e84b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450950"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640559"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
@@ -57,25 +57,25 @@ ms.locfileid: "81450950"
 
 ## <a name="create-a-new-project"></a>建立新專案
 
-1. 開啟 Xcode，然後選取 [Create a new Xcode project] \(建立新的 Xcode 專案\)  。
-2. 針對 iOS 應用程式，選取 [iOS]   > [單一檢視應用程式]  ，然後選取 [下一步]  。
-3. 針對 macOS 應用程式，選取 [macOS]   > [Cocoa 應用程式]  ，然後選取 [下一步]  。
+1. 開啟 Xcode，然後選取 [Create a new Xcode project] \(建立新的 Xcode 專案\)。
+2. 針對 iOS 應用程式，選取 [iOS] > [單一檢視應用程式]，然後選取 [下一步]。
+3. 針對 macOS 應用程式，選取 [macOS] > [Cocoa 應用程式]，然後選取 [下一步]。
 4. 提供產品名稱。
-5. 將 [語言]  設定為 [Swift]  ，然後選取 [下一步]  。
-6. 選取用來建立應用程式的資料夾，然後按一下 [建立]  。
+5. 將 [語言] 設定為 [Swift]，然後選取 [下一步]。
+6. 選取用來建立應用程式的資料夾，然後按一下 [建立]。
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 
 1. 移至 [Azure 入口網站](https://aka.ms/MobileAppReg)
-2. 開啟 應用程式註冊刀鋒視窗，然後按一下 [+新增註冊]  。
+2. 開啟 應用程式註冊刀鋒視窗，然後按一下 [+新增註冊]。
 3. 輸入應用程式的**名稱**，無需設定重新導向 URI。
-4. 在 [支援的帳戶類型]  下，選取**任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)**
-5. 按一下 [註冊] 
-6. 在顯示的窗格中，從 [管理]  區段選取 [驗證]  。
+4. 在 [支援的帳戶類型] 下，選取**任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)**
+5. 按一下 [註冊]
+6. 在顯示的窗格中，從 [管理] 區段選取 [驗證]。
 
-7. 在靠近畫面頂端的地方，按一下 [試用新體驗]  來開啟新的應用程式註冊體驗，然後按一下 [+ 新增註冊]   > [+ 新增平台]   > [iOS/macOS]  。
-    - 輸入您專案的組合識別碼。 如果您已下載程式碼，這會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般]  索引標籤。[身分識別]  區段中會出現組合識別碼。
-8. 按一下 `Configure` 並儲存出現在 [MSAL 組態]  頁面中的 [MSAL 組態]  ，以便稍後在設定應用程式時可加以輸入。  按一下 [完成]  。
+7. 在靠近畫面頂端的地方，按一下 [試用新體驗] 來開啟新的應用程式註冊體驗，然後按一下 [+ 新增註冊] > [+ 新增平台] > [iOS/macOS]。
+    - 輸入您專案的組合識別碼。 如果您已下載程式碼，這會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
+8. 按一下 `Configure` 並儲存出現在 [MSAL 組態] 頁面中的 [MSAL 組態]，以便稍後在設定應用程式時可加以輸入。  按一下 [完成] 。
 
 ## <a name="add-msal"></a>新增 MSAL
 
@@ -151,11 +151,17 @@ var currentAccount: MSALAccount?
 
 上方唯一需要修改的值是指派給 `kClientID` 的值，應修改為您的[應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)。 此值是 MSAL 設定資料的一部分，也就是本教學課程一開始以步驟引導您在 Azure 入口網站中註冊應用程式時，您所儲存的資料。
 
+## <a name="configure-xcode-project-settings"></a>進行 Xcode 專案設定
+
+將新的金鑰鏈群組新增至您的專案**簽署和功能**。 在 iOS 上金鑰鏈群組應為 `com.microsoft.adalcache`，而在 macOS 上應為 `com.microsoft.identity.universalstorage`。
+
+![顯示應如何設定金鑰鏈群組的 Xcode UI](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
+
 ## <a name="for-ios-only-configure-url-schemes"></a>(僅適用於 iOS) 設定 URL 配置
 
 您將在此步驟中註冊 `CFBundleURLSchemes`，讓使用者可以在登入之後重新導回應用程式。 順便一提，`LSApplicationQueriesSchemes` 也可讓您的應用程式使用 Microsoft Authenticator。
 
-在 Xcode 中，以原始檔的形式開啟 `Info.plist`，並在 `<dict>` 區段內新增下列程式碼。 將 `[BUNDLE_ID]` 取代為您在 Azure 入口網站中使用的值，如果您已下載程式代碼，該值就會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般]  索引標籤。[身分識別]  區段中會出現組合識別碼。
+在 Xcode 中，以原始檔的形式開啟 `Info.plist`，並在 `<dict>` 區段內新增下列程式碼。 將 `[BUNDLE_ID]` 取代為您在 Azure 入口網站中使用的值，如果您已下載程式代碼，該值就會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -176,8 +182,8 @@ var currentAccount: MSALAccount?
 
 ## <a name="for-macos-only-configure-app-sandbox"></a>(僅適用於 macOS) 設定應用程式沙箱
 
-1. 移至您的 Xcode 專案設定 > [功能]  索引標籤 > [應用程式沙箱] 
-2. 選取 [傳出連線 (用戶端)]  核取方塊。 
+1. 移至您的 Xcode 專案設定 > [功能] 索引標籤 > [應用程式沙箱]
+2. 選取 [傳出連線 (用戶端)] 核取方塊。 
 
 ## <a name="create-your-apps-ui"></a>建立您應用程式的 UI
 
@@ -705,8 +711,8 @@ func acquireTokenInteractively() {
 
 啟用權杖快取：
 1. 確定您的應用程式已正確簽署
-2. 移至您的 Xcode 專案設定 > [功能]  索引標籤  >  [啟用 Keychain 共用] 
-3. 按一下 **+** ，然後輸入下列 [金鑰鏈群組]  項目：3.a 針對 iOS 輸入 `com.microsoft.adalcache` 3.b 針對 macOS 輸入 `com.microsoft.identity.universalstorage`
+2. 移至您的 Xcode 專案設定 > [功能] 索引標籤  >  [啟用 Keychain 共用]
+3. 按一下 **+** ，然後輸入下列 [金鑰鏈群組] 項目：3.a 針對 iOS 輸入 `com.microsoft.adalcache` 3.b 針對 macOS 輸入 `com.microsoft.identity.universalstorage`
 
 ### <a name="add-helper-methods"></a>新增協助程式方法
 將下列協助程式方法新增至 `ViewController` 類別以完成範例。

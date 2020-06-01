@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 21a8d47f80dae35553114f522c1c78a97a086518
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383934"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650228"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入門：使用 PHP 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -31,12 +31,12 @@ ms.locfileid: "75383934"
 
 ## <a name="search-entities"></a>搜尋實體
 
-若要執行此應用程式，請遵循下列步驟。
+若要執行此應用程式，請遵循下列步驟：
 
 1. 在您最愛的 IDE 中建立新的 PHP 專案。
 2. 新增下方提供的程式碼。
 3. 以訂用帳戶有效的存取金鑰來取代 `key` 值。
-4. 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+4. 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 5. 執行程式。
 
 ```php
@@ -83,7 +83,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**回應**
+## <a name="example-json-response"></a>範例 JSON 回應
 
 如以下範例所示，成功的回應會以 JSON 格式來傳回： 
 
@@ -154,4 +154,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什麼是 Bing 實體搜尋 API？](../overview.md )
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c9e594af96fd43bc03f67caa06f585ab57b4b6e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591772"
+ms.locfileid: "83643460"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -70,6 +70,9 @@ ms.locfileid: "83591772"
     1. 選取 [連線] 以連線至範本 VM。 如果是 Linux 範本 VM，您可選擇是否要使用 SSH 或 RDP 連線 (若已啟用 RDP)。
     3. 在範本 VM 上安裝和設定您的類別所需的軟體。 
     4. **停止**範本 VM。  
+
+    > [!NOTE]
+    > 範本 VM 會在執行時產生**成本**，因此確保當您不需要範本 VM 執行時，其已關閉。 
 
 ## <a name="publish-the-template-vm"></a>發佈範本 VM
 在此步驟中，請發佈範本 VM。 當您發佈範本 VM 時，Azure 實驗室服務會使用範本在實驗室中建立 VM。 所有虛擬機器都有與範本相同的設定。

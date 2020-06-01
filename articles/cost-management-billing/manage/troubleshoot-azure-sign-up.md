@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133174"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745536"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>針對在 Azure 入口網站或 Azure 帳戶中心註冊新帳戶時所發生的問題進行疑難排解
 
@@ -37,7 +37,7 @@ ms.locfileid: "82133174"
 
 1. 使用帳戶管理員認證登入 [Azure 帳戶中心](https://account.azure.com/Profile)。
 
-2. 選取 [編輯詳細資料]  。
+2. 選取 [編輯詳細資料]。
 
 3. 確定所有地址欄位皆已填寫完畢且正確無誤。
 
@@ -45,7 +45,7 @@ ms.locfileid: "82133174"
 
 如果仍收到錯誤訊息，請嘗試用其他瀏覽器進行註冊。
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>[依據卡片進行身分識別驗證]  區段中的進度列停止回應。
+### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>[依據卡片進行身分識別驗證] 區段中的進度列停止回應。
 
 若要使用卡片完成身分識別驗證，您必須允許瀏覽器接受第三方 Cookie。
 
@@ -53,9 +53,9 @@ ms.locfileid: "82133174"
 
 使用下列步驟來更新瀏覽器的 Cookie 設定。
 
-1. 如果您是使用 Chrome，請選取 [設定]   > [顯示進階設定]   > [隱私權]   > [內容設定]  。 清除 [封鎖第三方 Cookie 和網站資料]  。
+1. 如果您是使用 Chrome，請選取 [設定] > [顯示進階設定] > [隱私權] > [內容設定]。 清除 [封鎖第三方 Cookie 和網站資料]。
 
-2. 如果您使用 Microsoft Edge，請選取 [設定]   > [檢視進階設定]   > [Cookie]   > [不要封鎖 Cookie]  。
+2. 如果您使用 Microsoft Edge，請選取 [設定] > [檢視進階設定] > [Cookie] > [不要封鎖 Cookie]。
 
 3. 重新整理 Azure 登入頁面，然後檢查問題是否已獲得解決。
 
@@ -63,7 +63,7 @@ ms.locfileid: "82133174"
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>信用卡表單不支援我的帳單地址
 
-您的帳單地址必須位於您在 [關於您]  一節所選的國家/地區。 請確定您選取正確的國家/地區。
+您的帳單地址必須位於您在 [關於您] 一節所選的國家/區域。 請確定您選取正確的國家/區域。
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>註冊帳戶驗證期間沒有文字訊息或呼叫
 
@@ -72,8 +72,8 @@ ms.locfileid: "82133174"
 以下是一些其他的祕訣：
 
 - Voice-over-IP (VoiP) 電話號碼無法用於電話驗證程序。
-- 再次確認您輸入的電話號碼，包括您在下拉式功能表中選取的國碼 (地區碼)。
-- 如果您的手機沒有收到簡訊 (SMS)，請嘗試 [撥號給我]  選項。
+- 再次確認您輸入的電話號碼，包括您在下拉式功能表中選取的國碼/區域碼。
+- 如果您的手機沒有收到簡訊 (SMS)，請嘗試 [撥號給我] 選項。
 - 請確定您的電話可以接收來自美國電話號碼的來電或簡訊。
 
 當您收到簡訊或來電時，請在文字方塊中輸入您收到的代碼。
@@ -108,7 +108,7 @@ ms.locfileid: "82133174"
 
 若要建立 Azure in Open 訂用帳戶，您必須具有有效的線上服務啟用 (OSA) 金鑰與至少一個相關聯的 Azure in Open 權杖。 如果您沒有 OSA 金鑰，請連絡 [Microsoft Pinpoint](https://pinpoint.microsoft.com/) 中列出的其中一個 Microsoft 合作夥伴。
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>錯誤：您不符合 Azure 訂用帳戶的資格 
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>錯誤：您不符合 Azure 訂用帳戶的資格
 
 若要解決此問題，請再次檢查下列項目是否成立：
 
@@ -116,7 +116,7 @@ ms.locfileid: "82133174"
 - 信用卡資訊正確。
 - 您沒有使用相同資訊的 Microsoft 帳戶。
 
-### <a name="error-your-current-account-type-is-not-supported"></a>錯誤：不支援您目前的帳戶類型 
+### <a name="error-your-current-account-type-is-not-supported"></a>錯誤：不支援您目前的帳戶類型
 
 如果帳戶是在[非受控 Azure AD 目錄](../../active-directory/users-groups-roles/directory-self-service-signup.md)中註冊，而且不在您組織的 Azure AD 目錄中註冊，就會發生此問題。
 

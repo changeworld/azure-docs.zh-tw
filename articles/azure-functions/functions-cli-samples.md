@@ -1,17 +1,16 @@
 ---
 title: Azure CLI 範例 - Azure Functions
 description: Azure CLI 範例 - Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 61ac1b95055b8ec9e65c3009d76f79581721f594
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223745"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779553"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 範例
 
@@ -22,8 +21,8 @@ ms.locfileid: "79223745"
 | 建立應用程式 | 描述 |
 |---|---|
 | [建立無伺服器也可執行的函式應用程式](scripts/functions-cli-create-serverless.md) | 在取用方案中建立函數應用程式。  |
-| [建立無伺服器 Python 函式應用程式](scripts/functions-cli-create-serverless-python.md) | 在專用的 App Service 方案中建立函數應用程式。 |
-| [在可調整的進階方案中建立函式應用程式](scripts/functions-cli-create-premium-plan.md) | 在專用的 App Service 方案中建立函數應用程式。 |
+| [建立無伺服器 Python 函式應用程式](scripts/functions-cli-create-serverless-python.md) | 在取用方案中建立 Python 函式應用程式。 |
+| [在可調整的進階方案中建立函式應用程式](scripts/functions-cli-create-premium-plan.md) | 在進階方案中建立函式應用程式。 |
 | [在專用的 (App Service) 方案中建立函式應用程式](scripts/functions-cli-create-app-service-plan.md) | 在專用的 App Service 方案中建立函數應用程式。 |
 
 | 整合 | 描述|

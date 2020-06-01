@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd00972c2da0d3d5dafe76a8619e0f0ccaedc19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222985"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778824"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -30,7 +30,7 @@ ms.locfileid: "79222985"
 
 本文著重於混合式 Azure AD Join。
 
-將您的裝置導入 Azure AD 中，您將可透過跨雲端和內部部署資源的單一登入 (SSO)，將使用者的生產力最大化。 同時您可以利用[條件式存取](../active-directory-conditional-access-azure-portal.md)來保護對雲端和內部部署資源的存取。
+將您的裝置導入 Azure AD 中，您將可透過跨雲端和內部部署資源的單一登入 (SSO)，將使用者的生產力最大化。 同時您可以利用[條件式存取](../conditional-access/howto-conditional-access-policy-compliant-device.md)來保護對雲端和內部部署資源的存取。
 
 您可以藉由使用[密碼雜湊同步 (PHS)](../hybrid/whatis-phs.md) 或[傳遞驗證 (PTA)](../hybrid/how-to-connect-pta.md) 並搭配[無縫單一登入](../hybrid/how-to-connect-sso.md)來部署受控環境。 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
@@ -85,43 +85,43 @@ ms.locfileid: "79222985"
 
 若要使用 Azure AD Connect 來設定混合式 Azure AD Join：
 
-1. 啟動 Azure AD Connect，然後選取 [設定]  。
+1. 啟動 Azure AD Connect，然後選取 [設定]。
 
    ![歡迎使用](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
 
-1. 在 [其他工作]  中選取 [設定裝置選項]  ，然後選取 [下一步]  。
+1. 在 [其他工作] 中選取 [設定裝置選項]，然後選取 [下一步]。
 
    ![其他工作](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
-1. 在 [概觀]  中，選取 [下一步]  。
+1. 在 [概觀] 中，選取 [下一步]。
 
    ![概觀](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
 
-1. 在 [連線到 Azure AD]  中，輸入 Azure AD 租用戶的全域管理員認證。  
+1. 在 [連線到 Azure AD] 中，輸入 Azure AD 租用戶的全域管理員認證。  
 
    ![連接至 Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
-1. 在 [裝置選項]  中選取 [設定混合式 Azure AD Join]  ，然後選取 [下一步]  。
+1. 在 [裝置選項] 中選取 [設定混合式 Azure AD Join]，然後選取 [下一步]。
 
    ![裝置選項](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
 
-1. 在 [SCP 設定]  中，針對要以 Azure AD Connect 設定 SCP 的每個樹系完成下列步驟，然後選取 [下一步]  。
+1. 在 [SCP 設定] 中，針對要以 Azure AD Connect 設定 SCP 的每個樹系完成下列步驟，然後選取 [下一步]。
 
-   1. 選取 [樹系]  。
-   1. 選取 [驗證服務]  。
-   1. 選取 [新增]  ，並輸入企業系統管理員認證。
+   1. 選取 [樹系]。
+   1. 選取 [驗證服務]。
+   1. 選取 [新增]，並輸入企業系統管理員認證。
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. 在 [裝置作業系統]  中，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]  。
+1. 在 [裝置作業系統] 中，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]。
 
    ![裝置作業系統](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
-1. 在 [準備好設定]  中，選取 [設定]  。
+1. 在 [準備好設定] 中，選取 [設定]。
 
    ![準備設定](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
 
-1. 在 [設定完成]  中，選取 [結束]  。
+1. 在 [設定完成] 中，選取 [結束]。
 
    ![組態完成](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "79222985"
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`
 
-您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]  。
+您也必須在使用者的本機內部網路區域中啟用 [允許透過指令碼更新狀態列]。
 
 ### <a name="configure-seamless-sso"></a>設定無縫 SSO
 
@@ -159,25 +159,69 @@ ms.locfileid: "79222985"
 
 ## <a name="verify-the-registration"></a>確認註冊
 
+以下是用來尋找並驗證裝置狀態的三種方式：
+
+### <a name="locally-on-the-device"></a>在本機裝置上
+
+1. 開啟 Windows PowerShell。
+2. 輸入 `dsregcmd /status`。
+3. 確認 **AzureAdJoined** 和 **DomainJoined** 都設定為 [是]。
+4. 您可以使用 **DeviceId**，並使用 Azure 入口網站或 PowerShell 來比較服務的狀態。
+
+### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
+
+1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。
+4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
+
+### <a name="using-powershell"></a>使用 PowerShell
+
 請使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中。
 
 使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
 
 - 必須要有**裝置識別碼**與 Windows 用戶端上的識別碼相符的物件存在。
-- **DeviceTrustType** 的值是 [已加入網域]  。 此設定相當於 Azure AD 入口網站中的 [裝置]  頁面上所呈現的 [已加入混合式 Azure AD]  狀態。
-- 在條件式存取中使用的裝置，[Enabled]  的值是 [True]  ，而 [DeviceTrustLevel]  是 [Managed]  。
-
-若要查看服務詳細資料：
+- **DeviceTrustType** 的值是 [已加入網域]。 此設定相當於 Azure AD 入口網站中的 [裝置] 頁面上所呈現的 [已加入混合式 Azure AD] 狀態。
+- 在條件式存取中使用的裝置，[Enabled] 的值是 [True]，而 [DeviceTrustLevel] 是 [Managed]。
 
 1. 以系統管理員身分開啟 Windows PowerShell。
-1. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。  
-1. 輸入 `get-msoldevice -deviceId <deviceId>`。
-1. 確認 [已啟用]  設為 [True]  。
+2. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (不包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>列出已加入混合式 Azure AD 的裝置
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>列出單一裝置的詳細資料：
+
+1. 輸入 `get-msoldevice -deviceId <deviceId>` (這是在本機裝置上取得的 **DeviceId**)。
+2. 確認 [已啟用] 設為 [True]。
 
 ## <a name="troubleshoot-your-implementation"></a>對您的實作進行疑難排解
 
 如果您在為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
+- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
 - [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 

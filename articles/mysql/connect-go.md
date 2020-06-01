@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 5/26/2020
+ms.openlocfilehash: 1a6942364e6f77c97c93903b25bffa130222cd59
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681880"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869872"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 Go 語言連線並查詢資料
 本快速入門示範如何從 Windows、Ubuntu Linux 和 Apple macOS 平台使用以 [Go](https://golang.org/) 語言撰寫的程式碼，連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 Go 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
@@ -22,6 +22,9 @@ ms.locfileid: "81681880"
 本快速入門使用在以下任一指南中建立的資源作為起點︰
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
 
 ## <a name="install-go-and-mysql-connector"></a>安裝 Go 與 MySQL 連接器
 在自己的電腦上安裝 [Go](https://golang.org/doc/install) 和 [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation)。 根據您的平台，遵循適當小節中的步驟：
@@ -79,9 +82,9 @@ ms.locfileid: "81681880"
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]  ，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
-4. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  ![Azure Database for MySQL 伺服器名稱](./media/connect-go/1_server-overview-name-login.png)
    
 

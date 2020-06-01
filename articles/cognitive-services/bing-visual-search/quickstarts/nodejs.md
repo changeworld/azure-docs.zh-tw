@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7dfb3adb5d7bf5b005beb7e7b75fb339d456cd15
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379703"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872593"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>快速入門：使用 Bing 圖像式搜尋 REST API 和 Node.js 來取得影像見解
 
-使用本快速入門來進行您對 Bing 圖像式搜尋 API 的第一次呼叫並檢視搜尋結果。 這個簡單的 JavaScript 應用程式會將影像上傳至 API，並顯示傳回的相關資訊。 雖然此應用程式是以 JavaScript 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing 圖像式搜尋 API。 這個簡單的 JavaScript 應用程式會將影像上傳至 API，並顯示傳回的相關資訊。 雖然此應用程式是以 JavaScript 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -39,7 +39,7 @@ ms.locfileid: "75379703"
     var fs = require('fs');
     ```
 
-2. 為您的 API 端點、訂用帳戶金鑰以及您影像的路徑，建立變數。 `baseUri` 可以是下方的全域端點，也可以是 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點：
+2. 為您的 API 端點、訂用帳戶金鑰以及您影像的路徑，建立變數。 對於 `baseUri` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ ms.locfileid: "75379703"
     var imagePath = "path-to-your-image";
     ```
 
-3. 建立名為 `requestCallback()` 的函式，以列印來自 API 的回應：
+3. 建立名為 `requestCallback()` 的函式，以列印來自 API 的回應。
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -57,25 +57,25 @@ ms.locfileid: "75379703"
 
 ## <a name="construct-and-send-the-search-request"></a>建構及傳送搜尋要求
 
-上傳本機影像時，表單資料必須包含 `Content-Disposition` 標頭。 您必須將其 `name` 參數設為 "image"，而 `filename` 參數則可設為任何字串。 表單的內容包含影像的二進位資料。 您可以上傳的影像大小上限為 1 MB。
+1. 上傳本機影像時，表單資料必須包含 `Content-Disposition` 標頭。 將其 `name` 參數設為 "image"，以及將 `filename` 參數設為影像的檔案名稱。 表單的內容包含影像的二進位資料。 您可以上傳的影像大小上限為 1 MB。
 
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+   ```
+   --boundary_1234-abcd
+   Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+   ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
---boundary_1234-abcd--
-```
+   --boundary_1234-abcd--
+   ```
 
-1. 使用 `FormData()` 建立新的 **FormData** 物件，並使用 `fs.createReadStream()` 為其附加您的影像路徑：
+2. 使用 `FormData()` 建立新的 `FormData` 物件，並使用 `fs.createReadStream()` 來附加影像路徑。
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. 使用要求程式庫來上傳影像，並呼叫 `requestCallback()` 來列印回應。 請務必將您的訂用帳戶金鑰新增至要求標頭：
+3. 使用要求程式庫來上傳影像，並呼叫 `requestCallback()` 來列印回應。 將您的訂用帳戶金鑰新增至要求標頭。
 
     ```javascript
     form.getLength(function(err, length){

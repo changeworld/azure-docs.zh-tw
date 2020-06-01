@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77915634"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816364"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 應用程式防火牆
 
@@ -26,7 +26,7 @@ WAF 可防止惡意攻擊接近攻擊來源，不讓其進入虛擬網路。 您
 
 ## <a name="waf-policy-and-rules"></a>WAF 原則和規則
 
-您可以設定 WAF 原則，並將其與一或多個 Front Door 前端建立關聯以進行保護。 WAF 原則包含兩種類型的安全性規則：
+您可以設定 [WAF 原則](waf-front-door-create-portal.md)，並將其與一或多個 Front Door 前端建立關聯以進行保護。 WAF 原則包含兩種類型的安全性規則：
 
 - 客戶所撰寫的自訂規則。
 

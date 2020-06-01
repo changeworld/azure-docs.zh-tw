@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727595"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698303"
 ---
 # <a name="changelog"></a>變更記錄 #
 
@@ -577,8 +577,8 @@ ms.locfileid: "81727595"
 - [錯誤修正][AzureHtml5JS] 當時間戳記中有小型非精度時，即時播放會在 MPD 更新時凍結
 - [錯誤修正][AzureHtml5JS] 已減輕數個即時播放問題
 - [錯誤修正][AzureHtml5JS] 視窗大小啟發學習法開啟時排清緩衝區，並進入較高解析度的畫面
-- [錯誤修正][AzureHtml5JS] Chrome 現在會正確顯示已結束的事件。 已連結到先前已知的問題：*Chrome 在使用 AzureHtml5JS 時不會正確地傳送 â&euro;œendedâ&euro; 事件。基礎瀏覽器中發生問題。*
-- [錯誤修正][AzureHtml5JS] 已針對此技術停用 Safari，以解決 *OSX Yosemite 與 AzureHtml5JS 技術搭配使用時的播放問題。MSE 有實作問題。暫時的避免方法：強制以 â&euro;œflashSSâ&euro;、â&euro;œsilverlightSSâ&euro; 作為這些使用者代理程式的技術順序*
+- [錯誤修正][AzureHtml5JS] Chrome 現在會正確顯示已結束的事件。 已連結到先前已知的問題：*Chrome 在使用 AzureHtml5JS 時不會正確地傳送已結束的事件。基礎瀏覽器中發生問題。*
+- [錯誤修正][AzureHtml5JS] 已針對此技術停用 Safari，以解決 *OSX Yosemite 與 AzureHtml5JS 技術搭配使用時的播放問題。MSE 有實作問題。暫時的避免方法：強制以 flashSS、silverlightSS 作為這些使用者代理程式的技術順序*
 - [錯誤修正][FlashSS] 發生錯誤後會引發 loadstart
 
 ## <a name="020-beta"></a>0.2.0 (Beta) ##

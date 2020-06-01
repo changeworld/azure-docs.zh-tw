@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: tyao
-ms.openlocfilehash: e3119745e35140d0344d25f34f54b63939d2542d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10f8bd3682b442dd55e195c6dc1855fae07a155c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744091"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何為 Front Door 設定地區篩選 WAF 原則
 本教學課程會說明如何使用 Azure PowerShell 來建立簡單的地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯。 此範例地區篩選原則範例會封鎖來自美國以外的所有其他國家/地區的要求。
@@ -51,7 +51,7 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="define-geo-filtering-match-condition"></a>定義地區篩選比對條件
 
-建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 [此處](front-door-geo-filtering.md)會提供兩個字母的國家/地區代碼對國家/地區對應。
+建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 [此處](front-door-geo-filtering.md)會提供兩個字母的國家/區域代碼對國家/區域對應。
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -77,7 +77,7 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 ## <a name="add-rules-to-a-policy"></a>在原則中新增規則
 使用 `Get-AzResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)，在包含 Front Door 設定檔的指定資源群組中，建立包含 `nonUSBlockRule` 的 `geoPolicy` 原則物件。 您必須為地區篩選原則提供唯一的名稱。 
 
-下列範例會使用資源群組名稱 myResourceGroupFD1  ，並假設您已使用[快速入門：建立 Front Door](quickstart-create-front-door.md) 一文中所提供的指示建立 Front Door 設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly  取代為唯一的原則名稱。
+下列範例會使用資源群組名稱 myResourceGroupFD1，並假設您已使用[快速入門：建立 Front Door](quickstart-create-front-door.md) 一文中所提供的指示建立 Front Door 設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly 取代為唯一的原則名稱。
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `

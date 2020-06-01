@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201018"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778728"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -93,7 +93,7 @@ Azure AD Connect：
 
 您可以使用 [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) Cmdlet 來擷取樹系的組態命名內容。  
 
-如果樹系的 Active Directory 網域名稱為 fabrikam.com  ，則組態命名內容為：
+如果樹系的 Active Directory 網域名稱為 fabrikam.com，則組態命名內容為：
 
 `CN=Configuration,DC=fabrikam,DC=com`
 
@@ -141,7 +141,7 @@ Azure AD Connect：
 
 * 使用 Active Directory PowerShell 模組和 Azure Active Directory Domain Services (Azure AD DS) 工具。 這些工具須依賴在網域控制站上執行的 Active Directory Web 服務。 執行 Windows Server 2008 R2 和更新版本的網域控制站可支援 Active Directory Web 服務。
 * 只有 MSOnline PowerShell 模組 1.1.166.0 版才支援。 若要下載此模組，請使用[這個連結](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)。
-* 若未安裝 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 將會失敗。 您可以透過 [功能]   > [遠端伺服器管理工具]   > [角色管理工具]  下的 [伺服器管理員] 來安裝 AD DS 工具。
+* 若未安裝 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 將會失敗。 您可以透過 [功能] > [遠端伺服器管理工具] > [角色管理工具] 下的 [伺服器管理員] 來安裝 AD DS 工具。
 
 對於執行 Windows Server 2008 或更早版本的網域控制站，請使用下列指令碼來建立服務連接點。 在多樹系組態中，請使用下列指令碼在電腦所在的樹系中建立服務連接點。
 
@@ -185,7 +185,7 @@ Azure AD Connect：
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務]   > [端點]  下方查看已啟用的端點。
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務] > [端點] 下方查看已啟用的端點。
 
 > [!NOTE]
 >如果您未以 AD FS 作為內部部署同盟服務，請依照廠商的指示確定他們支援 WS-Trust 1.3 或 2005 端點，且這些端點可透過中繼資料交換檔 (MEX) 發佈。
@@ -200,7 +200,7 @@ Azure AD Connect：
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-如果您已發出 ImmutableID 宣告 (例如，替代登入識別碼)，則必須為電腦提供一個對應宣告：
+如果您已發出 ImmutableID 宣告 (例如，使用 `mS-DS-ConsistencyGuid` 或另一個屬性作為 ImmutableID 的來源值)，則必須為電腦提供一個對應宣告：
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -329,7 +329,7 @@ Azure AD Connect：
 
 ![公司網域的清單](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>當使用者有電腦的 ImmutableID 時 (例如已設定替代登入識別碼)，請發出電腦的 ImmutableID
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>當有使用者 ImmutableID 存在時，為電腦發出 ImmutableID (例如，使用 mS-DS-ConsistencyGuid 作為 ImmutableID 的來源)
 
 `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` 宣告必須包含電腦的有效值。 在 AD FS 中，您可以新增發行轉換規則，如下所示︰
 
@@ -501,9 +501,9 @@ Azure AD Connect：
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>在 Azure AD 中設定原則，讓使用者可以註冊裝置
 
-若要註冊舊版 Windows 裝置，請確定可允許使用者在 Azure AD 中註冊裝置的設定已啟用。 在 Azure 入口網站中，您可以在 [Azure Active Directory]   > [使用者和群組]   > [裝置設定]  下方找到此設定。
+若要註冊舊版 Windows 裝置，請確定可允許使用者在 Azure AD 中註冊裝置的設定已啟用。 在 Azure 入口網站中，您可以在 [Azure Active Directory] > [使用者和群組] > [裝置設定] 下方找到此設定。
 
-以下原則必須設定為 [全部]  ：**使用者可以向 Azure AD 註冊其裝置**。
+以下原則必須設定為 [全部]：**使用者可以向 Azure AD 註冊其裝置**。
 
 ![可讓使用者註冊裝置的 [全部] 按鈕](./media/hybrid-azuread-join-manual/23.png)
 
@@ -523,17 +523,17 @@ Azure AD Connect：
 
 在 AD FS 中，您必須新增可傳遞驗證方法的發行轉換規則。 若要新增此規則︰
 
-1. 在 AD FS 管理主控台中，移至 [AD FS]   >  [信任關係]   >  [信賴憑證者信任]  。
-1. 在 [Microsoft Office 365 身分識別平台] 信賴憑證者信任物件上按一下滑鼠右鍵，然後選取 [編輯宣告規則]  。
-1. 在 [發佈轉換規則]  索引標籤上，選取 [新增規則]  。
-1. 在 [宣告規則]  範本清單中，選取 [使用自訂規則傳送宣告]  。
-1. 選取 [下一步]  。
-1. 在 [宣告規則名稱]  方塊中，輸入**驗證方法宣告規則**。
-1. 在 [宣告規則]  方塊中，輸入下列規則︰
+1. 在 AD FS 管理主控台中，移至 [AD FS] >  [信任關係] >  [信賴憑證者信任]。
+1. 在 [Microsoft Office 365 身分識別平台] 信賴憑證者信任物件上按一下滑鼠右鍵，然後選取 [編輯宣告規則]。
+1. 在 [發佈轉換規則] 索引標籤上，選取 [新增規則]。
+1. 在 [宣告規則] 範本清單中，選取 [使用自訂規則傳送宣告]。
+1. 選取 [下一步] 。
+1. 在 [宣告規則名稱] 方塊中，輸入**驗證方法宣告規則**。
+1. 在 [宣告規則] 方塊中，輸入下列規則︰
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. 在您的同盟伺服器上，輸入下列 PowerShell 命令。 請將 **\<RPObjectName\>** 取代為 Azure AD 信賴憑證者信任物件的信賴憑證者物件名稱。 此物件通常名為「Microsoft Office 365 身分識別平台」  。
+1. 在您的同盟伺服器上，輸入下列 PowerShell 命令。 請將 **\<RPObjectName\>** 取代為 Azure AD 信賴憑證者信任物件的信賴憑證者物件名稱。 此物件通常名為「Microsoft Office 365 身分識別平台」。
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -549,16 +549,71 @@ Azure AD Connect：
 
 ## <a name="verify-joined-devices"></a>確認加入的裝置
 
-您可以在 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0) 中使用 [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) Cmdlet，以查看您組織中已成功加入的裝置。
+以下是用來尋找並驗證裝置狀態的三種方式：
 
-此 Cmdlet 的輸出會顯示已註冊和已加入 Azure AD 的裝置。 若要取得所有裝置，請使用 **-All** 參數，然後使用 **deviceTrustType** 屬性進行篩選。 已加入網域的裝置具有**已加入網域**這個值。
+### <a name="locally-on-the-device"></a>在本機裝置上
+
+1. 開啟 Windows PowerShell。
+2. 輸入 `dsregcmd /status`。
+3. 確認 **AzureAdJoined** 和 **DomainJoined** 都設定為 [是]。
+4. 您可以使用 **DeviceId**，並使用 Azure 入口網站或 PowerShell 來比較服務的狀態。
+
+### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
+
+1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。 在同盟環境中，只有在無法註冊，而且 AAD connect 已設定為同步裝置時，才會發生這種情況。
+4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
+
+### <a name="using-powershell"></a>使用 PowerShell
+
+請使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中。
+
+使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
+
+- 必須要有**裝置識別碼**與 Windows 用戶端上的識別碼相符的物件存在。
+- **DeviceTrustType** 的值是 [已加入網域]。 此設定相當於 Azure AD 入口網站中的 [裝置] 頁面上所呈現的 [已加入混合式 Azure AD] 狀態。
+- 在條件式存取中使用的裝置，[Enabled] 的值是 [True]，而 [DeviceTrustLevel] 是 [Managed]。
+
+1. 以系統管理員身分開啟 Windows PowerShell。
+2. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (不包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>列出已加入混合式 Azure AD 的裝置
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>列出單一裝置的詳細資料：
+
+1. 輸入 `get-msoldevice -deviceId <deviceId>` (這是在本機裝置上取得的 **DeviceId**)。
+2. 確認 [已啟用] 設為 [True]。
 
 ## <a name="troubleshoot-your-implementation"></a>對您的實作進行疑難排解
 
-如果您為已加入網域的 Windows 裝置執行混合式 Azure AD Join 時遇到問題，請參閱：
+如果您在為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
-* [對現行 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
-* [對舊版 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
+- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
+- [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>後續步驟
 

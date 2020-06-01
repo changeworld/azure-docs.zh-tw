@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384146"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650254"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>快速入門：使用 Java 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -25,15 +25,15 @@ ms.locfileid: "75384146"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Java 開發套件 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* [Gson 程式庫](https://github.com/google/gson)
+* [Java 開發套件 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)。
+* [Gson 程式庫](https://github.com/google/gson)。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Java 專案，並匯入下列程式庫。
+1. 在您慣用的 IDE 或編輯器中建立新的 Java 專案，並匯入下列程式庫：
 
    ```java
    import java.io.*;
@@ -50,7 +50,7 @@ ms.locfileid: "75384146"
    import com.google.gson.JsonParser;
    ```
 
-2. 在新類別中，建立 API 端點變數、您的訂用帳戶金鑰及搜尋查詢。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 在新類別中，建立 API 端點變數、您的訂用帳戶金鑰及搜尋查詢。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
    ```java
    public class EntitySearch {
@@ -68,7 +68,7 @@ ms.locfileid: "75384146"
 
 ## <a name="construct-a-search-request-string"></a>建構搜尋要求字串
 
-1. 建立稱為 `search()` 且會傳回 JSON `String` 的函式。 對搜尋查詢進行 url 編碼，並使用 `&q=` 將其新增至參數字串。 使用 `?mkt=` 將您的市場新增至字串中。
+1. 建立稱為 `search()` 且會傳回 JSON `String` 的函式。 對搜尋查詢進行 url 編碼，並使用 `&q=` 將其新增至參數字串。 使用 `?mkt=` 將您的市場新增至參數字串。
  
 2. 使用您的主機、路徑和參數字串建立 URL 物件。
     
@@ -104,7 +104,7 @@ ms.locfileid: "75384146"
     //...
     ```
 
-3. 建立 `String` 物件以儲存從 `BufferedReader` 傳回的回應。 逐一查看，並將每一行附加至字串。 然後關閉讀取器，並傳回回應。 
+3. 建立 `String` 物件以儲存從 `BufferedReader` 傳回的回應。 逐一查看，並將每一行附加至字串。 然後關閉讀取器並傳回回應。 
     
     ```java
     String line;
@@ -119,9 +119,9 @@ ms.locfileid: "75384146"
 
 ## <a name="format-the-json-response"></a>格式化 JSON 回應
 
-1. 建立稱為 `prettify` 的新函式以格式化 JSON 回應。 建立新的 `JsonParser`，並在 json 文字上呼叫 `parse()`，然後將其儲存為 JSON 物件。 
+1. 建立稱為 `prettify` 的新函式以格式化 JSON 回應。 建立新的 `JsonParser`，並在 JSON 文字上呼叫 `parse()`，然後將其儲存為 JSON 物件。 
 
-2. 使用 Gson 程式庫來建立新的 `GsonBuilder()`，並使用 `setPrettyPrinting().create()` 格式化 json。 然後將其傳回。    
+2. 使用 Gson 程式庫來建立新的 `GsonBuilder()`，使用 `setPrettyPrinting().create()` 來格式化 JSON，然後將其傳回。    
   
    ```java
    //...
@@ -136,7 +136,7 @@ ms.locfileid: "75384146"
 
 ## <a name="call-the-search-function"></a>呼叫搜尋函式
 
-1. 從專案的主要方法呼叫 `search()`，然後使用 `prettify()` 來格式化文字。
+- 從專案的主要方法呼叫 `search()`，然後使用 `prettify()` 來格式化文字。
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +220,5 @@ ms.locfileid: "75384146"
 > [!div class="nextstepaction"]
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什麼是 Bing 實體搜尋 API？](../overview.md )
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什麼是 Bing 實體搜尋 API？](../overview.md)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

@@ -6,58 +6,44 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 20916ff80ae52ee9fc215d87c0987900d89e590a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 8ae5bf3790db82d8d96f872d6375e9d3b167bf6d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733294"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654265"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 * [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
-## <a name="create-luis-runtime-key-for-predictions"></a>建立預測的 LUIS 執行階段金鑰
+## <a name="create-pizza-app"></a>建立披薩應用程式
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 按一下[建立 **Language Understanding**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. 輸入執行階段金鑰的所有必要設定：
-
-    |設定|值|
-    |--|--|
-    |名稱|所需的名稱 (2-64 個字元)|
-    |訂用帳戶|選取適當的訂用帳戶|
-    |Location|選取任何附近和可用的位置|
-    |定價層|`F0` - 最低定價層|
-    |資源群組|選取可用的資源群組|
-
-1. 按一下 [建立]  ，並等待系統建立資源。 資源建立後，請瀏覽至 [資源] 頁面。
-1. 收集已設定的 `endpoint` 和 `key`。
+[!INCLUDE [Create pizza app](get-started-get-intent-create-pizza-app.md)]
 
 ## <a name="get-intent-programmatically"></a>以程式設計方式取得意圖
 
 使用 C# (.NET Core) 查詢[預測端點](https://aka.ms/luis-apim-v3-prediction)並取得預測結果。
 
-1. 建立以 C# 語言為目標的新主控台應用程式，其專案和資料夾名稱為 `predict-with-rest`。
+1. 建立以 C# 語言為目標的新主控台應用程式，其專案和資料夾名稱為 `csharp-predict-with-rest`。
 
     ```console
-    dotnet new console -lang C# -n predict-with-rest
+    dotnet new console -lang C# -n csharp-predict-with-rest
     ```
 
-1. 變更為您剛才建立的 `predict-with-rest` 目錄，並使用下列命令安裝必要的相依性：
+1. 變更為您建立的 `csharp-predict-with-rest` 目錄，並使用此命令安裝必要的相依性：
 
     ```console
-    cd predict-with-rest
+    cd csharp-predict-with-rest
     dotnet add package System.Net.Http
     ```
 
 1. 在您慣用的 IDE 或編輯器中開啟 `Program.cs`。 然後使用下列程式碼覆寫 `Program.cs`：
 
-   ```csharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -68,22 +54,24 @@ ms.locfileid: "81733294"
         {
             static void Main(string[] args)
             {
-                // YOUR-KEY: 32 character key
-                var key = "YOUR-KEY";
+                // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
+                var appId = "YOUR-APP-ID";
 
-                // YOUR-ENDPOINT: example is your-resource-name.api.cognitive.microsoft.com
-                var endpoint = "YOUR-ENDPOINT";
+                // YOUR-PREDICTION-KEY: 32 character key.
+                var key = "YOUR-PREDICTION-KEY";
 
-                // //public sample app
-                var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
+                // YOUR-PREDICTION-ENDPOINT: Example is "https://westus.api.cognitive.microsoft.com/"
+                var endpoint = "YOUR-PREDICTION-ENDPOINT";
 
-                var utterance = "turn on all lights";
+                // An utterance to test the pizza app.
+                var utterance = "I want two large pepperoni pizzas on thin crust please";
 
                 MakeRequest(key, endpoint, appId, utterance);
 
-                Console.WriteLine("Hit ENTER to exit...");
+                Console.WriteLine("Press ENTER to exit...");
                 Console.ReadLine();
             }
+
             static async void MakeRequest(string key, string endpoint, string appId, string utterance)
             {
                 var client = new HttpClient();
@@ -101,26 +89,32 @@ ms.locfileid: "81733294"
                 queryString["staging"] = "false";
                 queryString["timezoneOffset"] = "0";
 
-                var endpointUri = String.Format("https://{0}/luis/prediction/v3.0/apps/{1}/slots/production/predict?query={2}", endpoint, appId, queryString);
+                var endpointUri = String.Format("{0}luis/prediction/v3.0/apps/{1}/slots/production/predict?{2}", endpoint, appId, queryString);
+
+                // Remove these before updating the article.
+                Console.WriteLine("endpoint: " + endpoint);
+                Console.WriteLine("appId: " + appId);
+                Console.WriteLine("queryString: " + queryString);
+                Console.WriteLine("endpointUri: " + endpointUri);
 
                 var response = await client.GetAsync(endpointUri);
 
                 var strResponseContent = await response.Content.ReadAsStringAsync();
 
-                // Display the JSON result from LUIS
+                // Display the JSON result from LUIS.
                 Console.WriteLine(strResponseContent.ToString());
             }
         }
     }
+    ```
 
-   ```
-
-1. 將 `YOUR-KEY` 和 `YOUR-ENDPOINT` 值取代為您自己的預測金鑰和端點。
+1. 將 `YOUR-APP-ID`、`YOUR-KEY` 和 `YOUR-ENDPOINT` 值取代為您自己的預測金鑰和端點。
 
     |資訊|目的|
     |--|--|
-    |`YOUR-KEY`|您的 32 字元預測金鑰。|
-    |`YOUR-ENDPOINT`| 您的預測 URL 端點。 例如： `replace-with-your-resource-name.api.cognitive.microsoft.com` 。|
+    |`YOUR-APP-ID`|您的應用程式識別碼。 位於您應用程式的 LUIS 入口網站 [應用程式設定] 頁面上。
+    |`YOUR-PREDICTION-KEY`|您的 32 字元預測金鑰。 位於您應用程式的 LUIS 入口網站 [Azure 資源] 頁面上。
+    |`YOUR-PREDICTION-ENDPOINT`| 您的預測 URL 端點。 位於您應用程式的 LUIS 入口網站 [Azure 資源] 頁面上。<br>例如： `https://westus.api.cognitive.microsoft.com/` 。|
 
 1. 使用以下命令建置主控台應用程式：
 
@@ -136,57 +130,175 @@ ms.locfileid: "81733294"
 
 1. 檢閱預測回應，其以 JSON 格式傳回：
 
-    ```console
-    Hit ENTER to exit...
-    {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
+    ```json
+    {"query":"I want two large pepperoni pizzas on thin crust please","prediction":{"topIntent":"ModifyOrder","intents":{"ModifyOrder":{"score":1.0},"None":{"score":8.55E-09},"Greetings":{"score":1.82222226E-09},"CancelOrder":{"score":1.47272727E-09},"Confirmation":{"score":9.8125E-10}},"entities":{"Order":[{"FullPizzaWithModifiers":[{"PizzaType":["pepperoni pizzas"],"Size":[["Large"]],"Quantity":[2],"Crust":[["Thin"]],"$instance":{"PizzaType":[{"type":"PizzaType","text":"pepperoni pizzas","startIndex":17,"length":16,"score":0.9978157,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Size":[{"type":"SizeList","text":"large","startIndex":11,"length":5,"score":0.9984481,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Quantity":[{"type":"builtin.number","text":"two","startIndex":7,"length":3,"score":0.999770939,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Crust":[{"type":"CrustList","text":"thin crust","startIndex":37,"length":10,"score":0.933985531,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}]}}],"$instance":{"FullPizzaWithModifiers":[{"type":"FullPizzaWithModifiers","text":"two large pepperoni pizzas on thin crust","startIndex":7,"length":40,"score":0.90681237,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}]}}],"ToppingList":[["Pepperoni"]],"$instance":{"Order":[{"type":"Order","text":"two large pepperoni pizzas on thin crust","startIndex":7,"length":40,"score":0.9047088,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"ToppingList":[{"type":"ToppingList","text":"pepperoni","startIndex":17,"length":9,"modelTypeId":5,"modelType":"List Entity Extractor","recognitionSources":["model"]}]}}}}
     ```
 
     針對可讀性格式化的 JSON 回應：
 
     ```JSON
     {
-        "query": "turn on all lights",
-        "prediction": {
-            "topIntent": "HomeAutomation.TurnOn",
-            "intents": {
-                "HomeAutomation.TurnOn": {
-                    "score": 0.5375382
-                },
-                "None": {
-                    "score": 0.08687421
-                },
-                "HomeAutomation.TurnOff": {
-                    "score": 0.0207554
-                }
-            },
-            "entities": {
-                "HomeAutomation.Operation": [
-                    "on"
-                ],
-                "$instance": {
-                    "HomeAutomation.Operation": [
-                        {
-                            "type": "HomeAutomation.Operation",
-                            "text": "on",
-                            "startIndex": 5,
-                            "length": 2,
-                            "score": 0.724984169,
-                            "modelTypeId": -1,
-                            "modelType": "Unknown",
-                            "recognitionSources": [
-                                "model"
-                            ]
-                        }
+      "query": "I want two large pepperoni pizzas on thin crust please",
+      "prediction": {
+        "topIntent": "ModifyOrder",
+        "intents": {
+          "ModifyOrder": {
+            "score": 1
+          },
+          "None": {
+            "score": 8.55e-9
+          },
+          "Greetings": {
+            "score": 1.82222226e-9
+          },
+          "CancelOrder": {
+            "score": 1.47272727e-9
+          },
+          "Confirmation": {
+            "score": 9.8125e-10
+          }
+        },
+        "entities": {
+          "Order": [
+            {
+              "FullPizzaWithModifiers": [
+                {
+                  "PizzaType": [
+                    "pepperoni pizzas"
+                  ],
+                  "Size": [
+                    [
+                      "Large"
                     ]
+                  ],
+                  "Quantity": [
+                    2
+                  ],
+                  "Crust": [
+                    [
+                      "Thin"
+                    ]
+                  ],
+                  "$instance": {
+                    "PizzaType": [
+                      {
+                        "type": "PizzaType",
+                        "text": "pepperoni pizzas",
+                        "startIndex": 17,
+                        "length": 16,
+                        "score": 0.9978157,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Size": [
+                      {
+                        "type": "SizeList",
+                        "text": "large",
+                        "startIndex": 11,
+                        "length": 5,
+                        "score": 0.9984481,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Quantity": [
+                      {
+                        "type": "builtin.number",
+                        "text": "two",
+                        "startIndex": 7,
+                        "length": 3,
+                        "score": 0.999770939,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Crust": [
+                      {
+                        "type": "CrustList",
+                        "text": "thin crust",
+                        "startIndex": 37,
+                        "length": 10,
+                        "score": 0.933985531,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ]
+                  }
                 }
+              ],
+              "$instance": {
+                "FullPizzaWithModifiers": [
+                  {
+                    "type": "FullPizzaWithModifiers",
+                    "text": "two large pepperoni pizzas on thin crust",
+                    "startIndex": 7,
+                    "length": 40,
+                    "score": 0.90681237,
+                    "modelTypeId": 1,
+                    "modelType": "Entity Extractor",
+                    "recognitionSources": [
+                      "model"
+                    ]
+                  }
+                ]
+              }
             }
+          ],
+          "ToppingList": [
+            [
+              "Pepperoni"
+            ]
+          ],
+          "$instance": {
+            "Order": [
+              {
+                "type": "Order",
+                "text": "two large pepperoni pizzas on thin crust",
+                "startIndex": 7,
+                "length": 40,
+                "score": 0.9047088,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                  "model"
+                ]
+              }
+            ],
+            "ToppingList": [
+              {
+                "type": "ToppingList",
+                "text": "pepperoni",
+                "startIndex": 17,
+                "length": 9,
+                "modelTypeId": 5,
+                "modelType": "List Entity Extractor",
+                "recognitionSources": [
+                  "model"
+                ]
+              }
+            ]
+          }
         }
+      }
     }
     ```
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您完成本快速入門時，請從檔案系統中刪除該檔案。
+完成本快速入門時，請從檔案系統中刪除專案資料夾。
 
 ## <a name="next-steps"></a>後續步驟
 

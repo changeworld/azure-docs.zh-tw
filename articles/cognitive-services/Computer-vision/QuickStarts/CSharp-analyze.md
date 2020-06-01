@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d8002530120eee4a3613f2310c4a59cc18612cad
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ed003e83d8343d2da0f1b11c6d82581b76d3168d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405170"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679888"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>快速入門：使用電腦視覺 REST API 和 C# 分析本機影像
 
@@ -33,13 +33,14 @@ ms.locfileid: "81405170"
 
 若要在 Visual Studio 中建立範例，請執行下列步驟：
 
-1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式 (.NET Framework) 範本建立新的 Visual Studio 解決方案。
+1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式 (.NET Core Framework) 範本建立新的 Visual Studio 解決方案/專案。
 1. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]  ，選取 [NuGet 套件管理員]  ，然後選取 [管理解決方案的 NuGet 套件]  。
-    1. 按一下 [瀏覽]  索引標籤，然後在 [搜尋]  方塊中鍵入 "Newtonsoft.Json"。
-    1. 顯示時選取 [Newtonsoft.Json]  ，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]  。
+    1. 在功能表中，按一下 [工具]，選取 [NuGet 套件管理員]，然後選取 [管理解決方案的 NuGet 套件]。
+    1. 按一下 [瀏覽] 索引標籤，然後在 [搜尋] 方塊中鍵入 "Newtonsoft.Json" (如果尚未顯示)。
+    1. 選取 [Newtonsoft.Json]，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]。
+1. 將下面的範例程式碼片段複製並貼入 Program.cs 檔案。 如果此命名空間名稱與您建立的命名空間名稱不同，請加以調整。
+1. 將您選擇的映像新增至 bin/debug/netcoreappX 資料夾，然後將映像名稱 (含副檔名) 新增至 'imageFilePath' 變數。
 1. 執行程式。
-1. 在系統提示時，輸入本機影像的路徑。
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,26 +60,18 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Analyze method endpoint
-        static string uriBase = endpoint + "vision/v2.1/analyze";
+        static string uriBase = endpoint + "vision/v3.0/analyze";
 
-        static async Task Main()
+        // Image you want analyzed (add to your bin/debug/netcoreappX.X folder)
+        // For sample images, download one from here (png or jpg):
+        // https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
+        static string imageFilePath = @"my-sample-image";
+
+        public static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Analyze an image:");
-            Console.Write(
-                "Enter the path to the image you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
+            // Call the API
+            MakeAnalysisRequest(imageFilePath).Wait();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait for the results to appear.\n");
-                await MakeAnalysisRequest(imageFilePath);
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }
@@ -167,7 +160,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>檢查回應
 
-成功的回應會以 JSON 的形式傳回。 範例應用程式會在主控台視窗中剖析並顯示成功的回應，如下列範例所示：
+成功的回應在主控台視窗中會以 JSON 傳回 (根據您使用的自有映像)，如下列範例所示：
 
 ```json
 {

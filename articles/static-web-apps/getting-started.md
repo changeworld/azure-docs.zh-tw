@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599128"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714231"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入門：建置您的第一個靜態 Web 應用程式
 
@@ -81,7 +81,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 - 選取您的 _Azure 訂用帳戶_
 - 選取或建立新的 [資源群組]
 - 將應用程式命名為 **my-first-static-web-app**。
-  - 有效字元為 `a-z` (區分大小寫)、`0-9` 以及 `_`。
+  - 有效字元為 `a-z` (區分大小寫)、`0-9` 以及 `-`。
 - 選取最靠近您的 [區域]
 - 選取 [免費] _SKU_
 - 按一下 [使用 GitHub 登入] 按鈕，並向 GitHub 進行驗證
@@ -130,6 +130,8 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 按一下 [檢閱 + 建立] 按鈕。
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="檢閱建立按鈕":::
+
+若要在建立應用程式之後變更這些值，您可以編輯[工作流程檔案](github-actions-workflow.md)。
 
 ### <a name="review--create"></a>檢閱 + 建立
 

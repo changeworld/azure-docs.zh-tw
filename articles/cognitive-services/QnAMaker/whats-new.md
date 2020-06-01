@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/14/2020
+ms.date: 05/19/2020
 ms.author: diberry
-ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e1ac608d064e3ad60fb98f35abab61e453d20edd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80155982"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654790"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 的新功能
 
@@ -24,6 +24,11 @@ ms.locfileid: "80155982"
 ## <a name="release-notes"></a>版本資訊
 
 了解 QnA Maker 的新功能。
+
+### <a name="may-2020"></a>2020 年 5 月
+
+* [角色型存取控制 (RBAC)](concepts/role-based-access-control.md)
+* [適用於回答的 RTF 編輯](how-to/edit-knowledge-base.md#rich-text-editing-for-answer)
 
 ### <a name="march-2020"></a>2020 年 3 月
 

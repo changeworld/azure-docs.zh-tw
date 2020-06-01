@@ -6,37 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c1951c772dcd2f49f4f7c09021f69193af0a87e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420832"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701072"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區 (預覽)、SQL 隨選 (預覽) 引擎和 SQL 集區之間共用資料庫和 Parquet 支援的資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區 (預覽) 和 SQL 隨選 (預覽) 引擎之間共用資料庫和 Parquet 支援的資料表。
 
 Spark 作業建立資料庫之後，您就可以透過 Spark，在其中建立使用 Parquet 儲存格式的資料表。 這些資料表隨即可供任何 Azure Synapse 工作區 Spark 集區查詢。 若具有適當權限，您也可以從任何 Spark 作業中使用這些資料表。
 
-Spark 建立及管理的外部資料表也會以外部資料表的形式提供，並以相同名稱存在於 SQL 隨選中對應的同步資料庫，以及 SQL 集區 (已啟用中繼資料同步) 中相對應且首碼為 `$` 的結構描述中。 [在 SQL 中公開 Spark 資料表](#exposing-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
+Spark 所建立和管理的資料表以及外部資料表也會在 SQL 隨選的對應同步資料庫中，以同名的外部資料表形式來提供使用。 [在 SQL 中公開 Spark 資料表](#exposing-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
 
-由於資料表不會即時同步至 SQL 及 SQL 集區，因此資料表會延遲顯示。
-
-資料表與外部資料表、資料來源和檔案格式的對應。
+由於資料表不會即時同步至 SQL，因此資料表會延遲顯示。
 
 ## <a name="manage-a-spark-created-table"></a>管理 Spark 建立的資料表
 
 使用 Spark 來管理 Spark 建立的資料庫。 例如，透過 Spark 集區作業來刪除資料庫，以及從 Spark 建立其中的資料表。
 
 如果您透過 SQL 隨選在這類資料庫中建立物件，或嘗試卸載資料庫，雖然此作業將會成功，但不會變更原始的 Spark 資料庫。
-
-如果您嘗試卸載 SQL 集區中已同步的結構描述，或嘗試在其中建立資料表，Azure 會傳回錯誤。
 
 ## <a name="exposing-a-spark-table-in-sql"></a>在 SQL 中公開 Spark 資料表
 
@@ -193,27 +189,6 @@ id | name | birthdate
 ---+-------+-----------
 1 | Alice | 2010-01-01
 ```
-
-### <a name="querying-spark-tables-in-a-sql-pool"></a>查詢 SQL 集區中的 Spark 資料表
-
-前一個範例建立好資料表後，現在您的工作區中會建立已啟用中繼資料同步且名為 `mysqlpool` 的 SQL 集區 (或使用已在＜[公開 SQL 集區中的 Spark 資料庫](database.md#exposing-a-spark-database-in-a-sql-pool)＞中建立的集區)。
-
-針對 `mysqlpool` SQL 集區執行下列陳述式：
-
-```sql
-SELECT * FROM sys.tables;
-```
-
-確認 `myParquetTable` 資料表和 `myExternalParquetTable` 已在 `$mytestdb` 結構描述中顯示。
-
-現在您可以從 SQL 隨選中讀取資料，如下所示：
-
-```sql
-SELECT * FROM [$mytestdb].myParquetTable WHERE name = 'Alice';
-SELECT * FROM [$mytestdb].myExternalParquetTable WHERE name = 'Alice';
-```
-
-您應該會得到與上述 SQL 隨選相同的結果。
 
 ## <a name="next-steps"></a>後續步驟
 

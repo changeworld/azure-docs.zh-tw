@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4695164e7bcbc63b852f2f4364cdccbc8ea7d8c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594197"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849309"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共用： 
@@ -42,23 +42,23 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 > 本文會針對 Azure 公用區域使用儲存體帳戶 DNS 尾碼 `core.windows.net`。 此註解也適用於 Azure 主權雲端 (例如 Azure 美國政府雲端和 Azure 中國雲端)，只需替換為適合您環境的尾碼即可。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-瀏覽至您想要為其建立私人端點的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [私人端點連線]  和 [+ 私人端點]  ，以建立新的私人端點。 
+瀏覽至您想要為其建立私人端點的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [私人端點連線] 和 [+ 私人端點]，以建立新的私人端點。 
 
 ![儲存體帳戶目錄中的私人端點連線項目螢幕擷取畫面](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
 
 產生的精靈會有多個頁面需要完成。
 
-在 [基本]  刀鋒視窗中，為您的私人端點選取所需的資源群組、名稱和區域。 您可以任意選取這些項目，而不一定要與儲存體帳戶相符，但您建立私人端點的所在區域，必須與您要在其中建立私人端點的虛擬網路相同。
+在 [基本] 刀鋒視窗中，為您的私人端點選取所需的資源群組、名稱和區域。 您可以任意選取這些項目，而不一定要與儲存體帳戶相符，但您建立私人端點的所在區域，必須與您要在其中建立私人端點的虛擬網路相同。
 
 ![此螢幕擷取畫面顯示 [建立私人端點] 區段的 [基本] 區段](media/storage-files-networking-endpoints/create-private-endpoint-1.png)
 
-在 [資源]  索引標籤上，選取 [連線到我目錄中的 Azure 資源]  的選項按鈕。 在 [資源類型]  底下，選取 [Microsoft.Storage/storageAccounts]  作為 [資源類型]。 [資源]  欄位是您要連線到的 Azure 檔案共用所屬的儲存體帳戶。 目標子資源是**檔案**，因為這是用於 Azure 檔案儲存體的。
+在 [資源] 索引標籤上，選取 [連線到我目錄中的 Azure 資源] 的選項按鈕。 在 [資源類型] 底下，選取 [Microsoft.Storage/storageAccounts] 作為 [資源類型]。 [資源] 欄位是您要連線到的 Azure 檔案共用所屬的儲存體帳戶。 目標子資源是**檔案**，因為這是用於 Azure 檔案儲存體的。
 
-[設定]  刀鋒視窗可讓您選取要新增私人端點的特定虛擬網路和子網路。 選取您先前建立的虛擬網路。 您必須選取與先前新增了服務端點的子網路不同的子網路。 [設定] 刀鋒視窗也包含用來建立/更新私人 DNS 區域的資訊。 我們建議您使用預設的 `privatelink.file.core.windows.net` 區域。
+[設定] 刀鋒視窗可讓您選取要新增私人端點的特定虛擬網路和子網路。 選取您先前建立的虛擬網路。 您必須選取與先前新增了服務端點的子網路不同的子網路。 [設定] 刀鋒視窗也包含用來建立/更新私人 DNS 區域的資訊。 我們建議您使用預設的 `privatelink.file.core.windows.net` 區域。
 
 ![設定區段的螢幕擷取畫面](media/storage-files-networking-endpoints/create-private-endpoint-2.png)
 
-按一下 [檢閱 + 建立]  以建立私人端點。 
+按一下 [檢閱 + 建立] 以建立私人端點。 
 
 如果您的虛擬網路內有虛擬機器，或已依照[此處](storage-files-networking-dns.md)所述的方式設定 DNS 轉送，您可以從 PowerShell、命令列或終端機執行下列命令，測試您的私人端點是否已正確設定 (適用於 Windows、Linux 或 macOS)。 您必須將 `<storage-account-name>` 取代為適當的儲存體帳戶名稱：
 
@@ -400,7 +400,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址：
+如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址。 請注意，您仍應使用 storageaccount.file.core.windows.net 來計算到檔案共用而非 privatelink 路徑。
 
 ```Output
 Server:         127.0.0.53
@@ -418,15 +418,15 @@ Address: 192.168.0.5
 您可以使用儲存體帳戶防火牆設定來限制公用端點的存取。 一般而言，大部分的儲存體帳戶防火牆原則都會將網路存取限制在一或多個虛擬網路內。 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
 
 - [為儲存體帳戶建立一個或多個私人端點](#create-a-private-endpoint)，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
-- 將公用端點限制在一或多個虛擬網路內。 其運作方式是使用稱為「服務端點」  的虛擬網路功能。 當您透過服務端點來限制流往儲存體帳戶的流量時，您仍然可以透過公用 IP 位址來存取儲存體帳戶。
+- 將公用端點限制在一或多個虛擬網路內。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制流往儲存體帳戶的流量時，您仍然可以透過公用 IP 位址來存取儲存體帳戶。
 
 ### <a name="restrict-all-access-to-the-public-endpoint"></a>限制公用端點的所有存取
 當公用端點的所有存取都受到限制時，您仍然可以透過其本身的私人端點來存取儲存體帳戶。 否則，以儲存體帳戶公用端點為目標的有效要求將會遭到拒絕。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-瀏覽至您想要對其限制所有公用端點存取的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [防火牆和虛擬網路]  。
+瀏覽至您想要對其限制所有公用端點存取的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [防火牆和虛擬網路]。
 
-在頁面頂端，選取 [選取的網路]  選項按鈕。 這會將一些設定取消隱藏，以控制公用端點的限制。 請核取 [允許受信任的 Microsoft 服務存取此服務帳戶]  ，以允許受信任的第一方 Microsoft 服務 (例如 Azure 檔案同步) 來存取儲存體帳戶。
+在頁面頂端，選取 [選取的網路] 選項按鈕。 這會將一些設定取消隱藏，以控制公用端點的限制。 請核取 [允許受信任的 Microsoft 服務存取此服務帳戶]，以允許受信任的第一方 Microsoft 服務 (例如 Azure 檔案同步) 來存取儲存體帳戶。
 
 ![具有適當限制的防火牆和虛擬網路刀鋒視窗螢幕擷取畫面](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
 
@@ -459,14 +459,14 @@ az storage account update \
 ---
 
 ### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>將公用端點的存取限制在特定虛擬網路
-如果您將儲存體帳戶限制為允許特定虛擬網路的存取，表示您允許來自指定虛擬網路內的公用端點要求。 其運作方式是使用稱為「服務端點」  的虛擬網路功能。 這可以搭配使用或不搭配使用私人端點。
+如果您將儲存體帳戶限制為允許特定虛擬網路的存取，表示您允許來自指定虛擬網路內的公用端點要求。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 這可以搭配使用或不搭配使用私人端點。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-瀏覽至您想要將其公用端點限制為特定虛擬網路的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [防火牆和虛擬網路]  。 
+瀏覽至您想要將其公用端點限制為特定虛擬網路的儲存體帳戶。 在儲存體帳戶的目錄中，選取 [防火牆和虛擬網路]。 
 
-在頁面頂端，選取 [選取的網路]  選項按鈕。 這會將一些設定取消隱藏，以控制公用端點的限制。 按一下 [+ 新增現有虛擬網路]  ，以選取已允許透過公用端點存取儲存體帳戶的特定虛擬網路。 這將需要選取虛擬網路和該虛擬網路的子網路。 
+在頁面頂端，選取 [選取的網路] 選項按鈕。 這會將一些設定取消隱藏，以控制公用端點的限制。 按一下 [+ 新增現有虛擬網路]，以選取已允許透過公用端點存取儲存體帳戶的特定虛擬網路。 這將需要選取虛擬網路和該虛擬網路的子網路。 
 
-請核取 [允許受信任的 Microsoft 服務存取此服務帳戶]  ，以允許受信任的第一方 Microsoft 服務 (例如 Azure 檔案同步) 來存取儲存體帳戶。
+請核取 [允許受信任的 Microsoft 服務存取此服務帳戶]，以允許受信任的第一方 Microsoft 服務 (例如 Azure 檔案同步) 來存取儲存體帳戶。
 
 ![[防火牆和虛擬網路] 刀鋒視窗的螢幕擷取畫面，其中包含允許透過公用端點存取儲存體帳戶的特定虛擬網路](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
 

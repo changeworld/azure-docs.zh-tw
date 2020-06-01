@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333848"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746052"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -90,7 +90,7 @@ ms.locfileid: "80333848"
 
 另一種方法是將此資料集轉換成瀏覽器可輕易地剖析的一般文字檔案。 檔案本身可隨著應用程式的其餘部分而裝載。 此選項較為單純，但僅適用於較小的資料集，因為使用者會下載所有資料。 我們將為此資料集使用一般文字檔案，因為其資料檔案大小不到 1 MB。  
 
-若要將活頁簿轉換成一般文字檔案，請將活頁簿儲存為 Tab 鍵分隔檔案。 每個資料行都會以 Tab 字元分隔，以便在我們的程式碼中剖析資料行。 您可以使用逗號分隔值 (CSV) 格式，但該選項需要較多剖析邏輯。 周圍有逗號的任何欄位都會在兩側加上引號。 若要將此資料匯出為 Excel 中的 Tab 鍵分隔檔案，請選取 [另存新檔]  。 在 [存檔類型]  下拉式清單中，選取 [文字 (Tab 鍵分隔) (*.txt)]  。 將檔案命名為 *ContosoCoffee.txt*。 
+若要將活頁簿轉換成一般文字檔案，請將活頁簿儲存為 Tab 鍵分隔檔案。 每個資料行都會以 Tab 字元分隔，以便在我們的程式碼中剖析資料行。 您可以使用逗號分隔值 (CSV) 格式，但該選項需要較多剖析邏輯。 周圍有逗號的任何欄位都會在兩側加上引號。 若要將此資料匯出為 Excel 中的 Tab 鍵分隔檔案，請選取 [另存新檔]。 在 [存檔類型] 下拉式清單中，選取 [文字 (Tab 鍵分隔) (*.txt)]。 將檔案命名為 *ContosoCoffee.txt*。 
 
 <center>
 
@@ -397,7 +397,7 @@ ms.locfileid: "80333848"
 
 1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
 
-   當使用者選取搜尋按鈕，或是在搜尋方塊中輸入位置然後按下 Enter 鍵時，就會起始使用者查詢的模糊搜尋。 將國家/地區 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
+   當使用者選取搜尋按鈕，或是在搜尋方塊中輸入位置然後按下 Enter 鍵時，就會起始使用者查詢的模糊搜尋。 將國家/區域 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
   
    搜尋完成後，請取用第一項結果，並設定該區域的地圖相機。 當使用者選取 [我的位置] 按鈕時，請使用 HTML5 地理位置 API 來擷取使用者的位置。 此 API 會內建在瀏覽器中。 然後，將他們的位置放在地圖中心。  
 
@@ -453,7 +453,7 @@ ms.locfileid: "80333848"
         });
     }
 
-    //Create an array of country ISO 2 values to limit searches to. 
+    //Create an array of country/region ISO 2 values to limit searches to. 
     var countrySet = ['US', 'CA', 'GB', 'FR','DE','IT','ES','NL','DK'];
 
     function performSearch() {
@@ -461,7 +461,7 @@ ms.locfileid: "80333848"
 
         //Perform a fuzzy search on the users query.
         searchURL.searchFuzzy(atlas.service.Aborter.timeout(3000), query, {
-            //Pass in the array of country ISO2 for which we want to limit the search to.
+            //Pass in the array of country/region ISO2 for which we want to limit the search to.
             countrySet: countrySet
         }).then(results => {
             //Parse the response into GeoJSON so that the map can understand.

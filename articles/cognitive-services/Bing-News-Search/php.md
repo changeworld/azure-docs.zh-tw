@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecdcfc7d90f61443cc6947680df9bbf9d9b9514e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75383079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873221"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入門：使用 PHP 和 Bing 新聞搜尋 REST API 來執行新聞搜尋
 
-使用本快速入門來進行您對「Bing 影像搜尋 API」的第一次呼叫，並接收 JSON 回應。 這個簡單的 JavaScript 應用程式會將搜尋查詢傳送給 API，並顯示原始結果。
+使用本快速入門，第一次呼叫 Bing 新聞搜尋 API。 這個簡單的 PHP 應用程式會將搜尋查詢傳送給 API，然後顯示 JSON 回應。
 
 雖然此應用程式是以 PHP 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
@@ -30,18 +30,18 @@ ms.locfileid: "75383079"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+如需詳細資訊，請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="run-the-application"></a>執行應用程式
 
-[Bing 新聞搜尋 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 會從 Bing 搜尋引擎傳回新聞結果。
+若要執行此應用程式，請遵循下列步驟：
 
-1. 請確定 `php.ini` 中已啟用安全 HTTP 支援，如程式碼註解中所述。
+1. 藉由取消 `;extension=php_openssl.dll` 行的註解，在 `php.ini` 檔案中啟用安全 HTTP 支援，如程式碼註解所述。
 2. 在您最愛的 IDE 或編輯器中建立新的 PHP 專案。
 3. 新增下方提供的程式碼。
 4. 以訂用帳戶有效的存取金鑰來取代 `accessKey` 值。
-5. 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
-5. 執行程式。
+5. 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+6. 執行程式。
 
 ```php
 <?php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**回應**
+## <a name="example-json-response"></a>範例 JSON 回應
 
 如以下範例所示，成功的回應會以 JSON 格式來傳回： 
 

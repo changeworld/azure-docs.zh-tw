@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192258"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773274"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的機密運算
 
@@ -42,13 +42,13 @@ Microsoft Azure 可協助您將受攻擊面最小化，以獲得更強大的資�
 
 ## <a name="introduction-to-confidential-computing"></a>機密運算簡介 <a id="intro to acc"></a>
 
-機密運算是由[機密運算聯盟](https://confidentialcomputing.io/) (CCC) 所定義的業界術語，這是專門用來定義和加速採用機密運算的基金會。 機密運算是執行運算時所使用的資料保護方式。 運算會發生在以硬體為基礎的可信執行環境 (Trusted Execution Environment，TEE) 中。
+機密運算是由[機密運算聯盟](https://confidentialcomputing.io/) (CCC) 所定義的業界術語，這是專門用來定義和加速採用機密運算的基金會。 CCC 對於機密運算的定義是，藉由在硬體型的受信任執行環境 (TEE) 中執行運算以保護使用中的資料。
 
 TEE 是一種環境，其強制只能執行已獲授權的程式碼。 TEE 以外的任何程式碼，都無法讀取或竄改該環境中的任何資料。
 
-### <a name="enclaves-and-trusted-execution-environments"></a>記憶體保護區和可信執行環境
+### <a name="enclaves"></a>記憶體保護區
 
-在機密運算的內容中，TEE 通常稱為「記憶體保護區」  或「安全的記憶體保護區」  。 記憶體保護區是硬體處理器和記憶體的安全部分。 即使使用偵錯工具，也沒有辦法檢視記憶體保護區內的資料或程式碼。 如果不受信任的程式碼嘗試修改記憶體保護區記憶體中的內容，則會停用環境並拒絕作業。
+記憶體保護區是硬體處理器和記憶體的安全部分。 即使使用偵錯工具，也沒有辦法檢視記憶體保護區內的資料或程式碼。 如果不受信任的程式碼嘗試修改記憶體保護區記憶體中的內容，則會停用環境並拒絕作業。
 
 開發應用程式時，您可使用[軟體工具](#oe-sdk)來防護記憶體保護區內的部分程式碼和資料。 這些工具可確保受信任環境以外的任何人都無法檢視或修改您的程式碼和資料。 
 
@@ -96,11 +96,11 @@ Azure 機密運算基礎結構目前由虛擬機器 (VM) 的專用 SKU 組成。
 1. 「不受信任」的元件 (主機)
 1. 「受信任」的元件 (記憶體保護區)
 
-**主機**是在不受信任的環境中執行的記憶體保護區應用程式。 主機中的程式碼無法存取已載入至記憶體保護區的程式碼。 
+**主機**是記憶體保護區應用程式的執行基礎所在，而且是不受信任的環境。 主機無法存取部署在主機上的記憶體保護區程式碼。 
 
-**記憶體保護區**是程式碼和資料在 TEE 實作內執行的地方。 記憶體保護區中應該會進行安全運算，以確保秘密和敏感性資料受到保護。 
+**記憶體保護區**是應用程式程式碼及其快取的資料/記憶體執行所在的位置。 記憶體保護區中應該會進行安全運算，以確保秘密和敏感性資料受到保護。 
 
-當您開始開發記憶體保護區應用程式時，您需要判斷哪些程式碼和資料需要保護。 您選擇要放入受信任元件中的程式碼會與您應用程式的其餘部分隔離。 在記憶體保護區初始化且程式碼載入至記憶體後，就無法從外部受保護的環境讀取或變更該程式碼。
+在應用程式設計期間，請務必識別並判斷應用程式必須在記憶體保護區中執行的部分。 您選擇要放入受信任元件中的程式碼會與您應用程式的其餘部分隔離。 記憶體保護區完成初始化且程式碼載入至記憶體後，就無法從不受信任的元件讀取或變更該程式碼。 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave 軟體開發套件 (OE SDK) <a id="oe-sdk"></a>
 

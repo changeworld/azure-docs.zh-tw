@@ -5,16 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: banders
-ms.openlocfilehash: b8c523acabd02dc30e9b13f7f83a4a44554cbd4d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690932"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660350"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure Enterprise 合約系統管理角色
+# <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
 為了協助您管理組織的使用方式及費用，具有 Enterprise 合約 (EA) 的 Azure 客戶可以指派五個不同的系統管理角色：
 
@@ -62,6 +62,19 @@ ms.locfileid: "82690932"
 - <sup>4</sup>通知連絡人會收到有關於 Azure Enterprise 合約的電子郵件通訊。
 - <sup>5</sup> 工作僅限於您部門中的帳戶。
 
+## <a name="add-a-new-enterprise-administrator"></a>新增企業系統管理員
+
+在管理 Azure EA 註冊上，企業系統管理員擁有最多權限。 設定 EA 合約時會建立最初的 Azure EA 系統管理員。 不過，您可以隨時新增或移除系統管理員。 新的系統管理員只會由現有的系統管理員新增。 如需新增其他企業系統管理員的詳細資訊，請參閱[建立另一個企業系統管理員](ea-portal-get-started.md#create-another-enterprise-administrator)。如需有關帳單設定檔角色和工作的詳細資訊，請參閱[帳單設定檔角色和工作](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+
+## <a name="update-account-owner-state-from-pending-to-active"></a>將帳戶擁有者狀態從擱置更新為使用中
+
+當新的帳戶擁有者 (AO) 第一次新增至 Azure EA 註冊時，其狀態會顯示為 [擱置]。 當新的帳戶擁有者收到用於啟用的歡迎電子郵件時，他們就可以登入來啟用其帳戶。 當他們啟用帳戶時，帳戶狀態會從 [擱置] 更新為 [作用中]。 帳戶擁有者必須閱讀「警告」訊息，然後選取 [繼續]。 系統可能會提示新使用者輸入其名字和姓氏，以建立商務帳戶。 若是如此，他們必須新增必要的資訊才能繼續，然後帳戶才會啟用。
+
+## <a name="add-a-department-admin"></a>新增部門系統管理員
+
+Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可以新增部門系統管理員，並將其與部門產生關聯。 部門系統管理員可以建立新的帳戶。 必須有新帳戶，才能建立 Azure EA 訂用帳戶。
+
+如需新增部門管理員的詳細資訊，請參閱[建立 Azure EA 部門管理員](ea-portal-get-started.md#add-a-department-administrator)。
 
 ## <a name="usage-and-costs-access-by-role"></a>依角色存取的使用方式和成本
 
@@ -77,8 +90,7 @@ ms.locfileid: "82690932"
 - <sup>6</sup> 要求企業系統管理員在企業版入口網站中啟用 **DA 檢視費用**原則。 部門系統管理員接著可以查看部門的成本詳細資料。
 - <sup>7</sup> 要求企業系統管理員在企業版入口網站中啟用 **AO 檢視費用**原則。 帳戶擁有者接著可以查看帳戶的成本詳細資料。
 
-
-## <a name="pricing-in-azure-portal"></a>Azure 入口網站中的價格
+## <a name="see-pricing-for-different-user-roles"></a>請參閱不同使用者角色的定價
 
 根據您的系統管理角色，以及企業系統管理員設定檢視費用原則的方式而定，您可能會在 Azure 入口網站中看到不同的價格。 企業版入口網站中以下的這兩個原則會影響您在 Azure 入口網站中看到價格：
 
@@ -98,6 +110,8 @@ ms.locfileid: "82690932"
 |None|不適用 |擁有者|零售價格|
 
 您會在企業版入口網站中設定企業系統管理員角色和檢視費用原則。 RBAC 角色可以在 Azure 入口網站中更新。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
