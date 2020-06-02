@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184373"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901406"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教學課程：從 Power Apps 查詢認知搜尋索引
 
@@ -43,15 +43,15 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
 1. [登入](http://make.powerapps.com) Power Apps。
 
-1. 在左側展開 [資料]   > [自訂連接器]  。
+1. 在左側展開 [資料] > [自訂連接器]。
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="自訂連接器功能表" border="true":::
 
-1. 選取 [+ 新增自訂連接器]  ，然後選取 [從空白建立]  。
+1. 選取 [+ 新增自訂連接器]，然後選取 [從空白建立]。
 
     :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="[從空白建立] 功能表" border="true":::
 
-1. 為自訂連接器命名 (例如，*AzureSearchQuery*)，然後按一下 [繼續]  。
+1. 為自訂連接器命名 (例如，*AzureSearchQuery*)，然後按一下 [繼續]。
 
 1. 在 [一般] 頁面中輸入資訊：
 
@@ -62,15 +62,15 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
     :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="[一般資訊] 對話方塊" border="true":::
 
-1. 在 [安全性] 頁面中，將 [API 金鑰]  設定為 [驗證類型]  ，並將參數標籤和參數名稱皆設定為 [api-key]  。 在 [參數位置]  中選取 [標頭]  ，如下所示。
+1. 在 [安全性] 頁面中，將 [API 金鑰] 設定為 [驗證類型]，並將參數標籤和參數名稱皆設定為 [api-key]。 在 [參數位置] 中選取 [標頭]，如下所示。
 
     :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="驗證類型選項" border="true":::
 
-1. 在 [定義] 頁面中選取 [+ 新增動作]  以建立會查詢索引的動作。 輸入「查詢」這個值來作為作業識別碼的摘要和名稱。 輸入說明，例如「查詢搜尋索引」  。
+1. 在 [定義] 頁面中選取 [+ 新增動作] 以建立會查詢索引的動作。 輸入「查詢」這個值來作為作業識別碼的摘要和名稱。 輸入說明，例如「查詢搜尋索引」。
 
     :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="新增動作選項" border="true":::
 
-1. 向下捲動。 在 [要求] 中選取 [+ 從範例匯入]  按鈕，以設定搜尋服務的查詢要求：
+1. 向下捲動。 在 [要求] 中選取 [+ 從範例匯入] 按鈕，以設定搜尋服務的查詢要求：
 
    * 選取動詞 `GET`
 
@@ -82,25 +82,25 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="從範例匯入" border="true":::
 
-1. 按一下 [匯入]  以自動填入要求。 按一下每個參數旁邊的 [...]  符號來完成參數中繼資料的設定 。 按一下 [上一步]  可在每個參數更新之後返回 [要求] 頁面。
+1. 按一下 [匯入] 以自動填入要求。 按一下每個參數旁的 **...** 符號，以完成參數中繼資料的設定。 按一下 [上一步] 可在每個參數更新之後返回 [要求] 頁面。
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="[從範例匯入] 對話方塊" border="true":::
 
-1. 針對 [搜尋]  ：將 `*` 設定為 [預設值]  、將 [必要]  設定為 [False]  ，並將 [可見性]  設定為 [無]  。 
+1. 針對 [搜尋]：將 `*` 設定為 [預設值]、將 [必要] 設定為 [False]，並將 [可見性] 設定為 [無]。 
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="搜尋參數中繼資料" border="true":::
 
-1. 針對 [選取]  ：將 `HotelName,Description,Address/City` 設定為 [預設值]  、將 [必要]  設定為 [False]  ，並將 [可見性]  設定為 [無]  。  
+1. 針對 [選取]：將 `HotelName,Description,Address/City` 設定為 [預設值]、將 [必要] 設定為 [False]，並將 [可見性] 設定為 [無]。  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="版本參數中繼資料" border="true":::
 
-1. 針對 [api-version]  ：將 `2019-05-06` 設定為 [預設值]  、將 [必要]  設定為 [True]  ，並將 [可見性]  設定為 [內部]  。  
+1. 針對 [api-version]：將 `2019-05-06` 設定為 [預設值]、將 [必要] 設定為 [True]，並將 [可見性] 設定為 [內部]。  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="版本參數中繼資料" border="true":::
 
-1. 針對 [Content-Type]  ：設定為 `application/json`。
+1. 針對 [Content-Type]：設定為 `application/json`。
 
-1. 在進行這些變更後，切換至 [Swagger 編輯器]  檢視。 在 [參數] 區段中，您應該會看到下列設定：
+1. 在進行這些變更後，切換至 [Swagger 編輯器] 檢視。 在 [參數] 區段中，您應該會看到下列設定：
 
     ```JSON
     parameters:
@@ -111,7 +111,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
-1. 返回 **3.要求**步驟，並向下卷動到 [回應] 區段。 按一下 [新增預設回應]  。 這很重要，因為這可協助 Power Apps 了解回應的結構描述。 
+1. 返回 **3.要求**步驟，並向下卷動到 [回應] 區段。 按一下 [新增預設回應]。 這很重要，因為這可協助 Power Apps 了解回應的結構描述。 
 
 1. 貼上範例回應。 若要擷取範例回應，有個簡單的方式是透過 Azure 入口網站中的「搜尋總管」。 在「搜尋總管」中，您應該輸入與要求相同的查詢，但新增 **$top=2** 以將結果限制為只有兩個文件：`search=*&$select=HotelName,Description,Address/City&$top=2`。 
 
@@ -144,7 +144,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
     > [!TIP] 
     > 您可以輸入的 JSON 回應有字元限制，因此，您可以先簡化 JSON 再貼上。 回應的結構描述和格式比值本身更加重要。 例如，[說明] 欄位可以簡化為只有第一個句子。
 
-1. 按一下右上方的 [建立連接器]  。
+1. 按一下右上方的 [建立連接器]。
 
 ## <a name="2---test-the-connection"></a>2 - 測試連線
 
@@ -152,23 +152,23 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
 您需要有[查詢 API 金鑰](search-security-api-keys.md#find-existing-keys)才能進行此工作。 每次建立連線時 (無論是測試回合還是包含在應用程式中)，連接器都需要使用查詢 API 金鑰來連線到 Azure 認知搜尋。
 
-1. 在最左邊按一下 [自訂連接器]  。
+1. 在最左邊按一下 [自訂連接器]。
 
 1. 依名稱搜尋連接器 (在本教學課程中為 "AzureSearchQuery")。
 
-1. 選取連接器、展開 [動作] 清單，然後選取 [檢視屬性]  。
+1. 選取連接器、展開 [動作] 清單，然後選取 [檢視屬性]。
 
     :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="檢視屬性" border="true":::
 
-1. 選取右上方的 [編輯]  。
+1. 選取右上方的 [編輯]。
 
-1. 選取 [4.  測試] 以開啟 [測試] 頁面。
+1. 選取 [4.測試] 以開啟 [測試] 頁面。
 
-1. 在 [測試作業] 中，按一下 [+ 新增連線]  。
+1. 在 [測試作業] 中，按一下 [+ 新增連線]。
 
 1. 輸入查詢 API 金鑰。 這種 Azure 認知搜尋查詢已可用於對索引進行唯讀存取。 您可以在 Azure 入口網站中[尋找金鑰](search-security-api-keys.md#find-existing-keys)。 
 
-1. 在 [作業] 中，按一下 [測試作業]  按鈕。 如果成功，您應該會看到 200 狀態，並在回應主體中看到說明搜尋結果的 JSON。
+1. 在 [作業] 中，按一下 [測試作業] 按鈕。 如果成功，您應該會看到 200 狀態，並在回應主體中看到說明搜尋結果的 JSON。
 
     :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON 回應" border="true":::
 
@@ -176,13 +176,13 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
 在此步驟中，請建立具有搜尋方塊、搜尋按鈕和結果顯示區域的 Power App。 Power App 會連線到最近建立的自訂連接器，以從 Azure 搜尋服務取得資料。
 
-1. 在左側展開 [應用程式]   > [+ 新增應用程式]   > [畫布]  。
+1. 在左側展開 [應用程式] > [+ 新增應用程式] > [畫布]。
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="建立畫布應用程式" border="true":::
 
-1. 選取應用程式的類型。 在本教學課程中，請建立具有 [手機配置]  的 [空白應用程式]  。 隨即會出現 **Power Apps Studio**。
+1. 選取應用程式的類型。 在本教學課程中，請建立具有 [手機配置] 的 [空白應用程式]。 隨即會出現 **Power Apps Studio**。
 
-1. 進入 Power Apps Studio 後，選取 [資料來源]  索引標籤，然後按一下您剛才建立的新連接器。 在我們的案例中，此連接器的名稱為 *AzureSearchQuery*。 按一下 [新增連線]  。
+1. 進入 Power Apps Studio 後，選取 [資料來源] 索引標籤，然後按一下您剛才建立的新連接器。 在我們的案例中，此連接器的名稱為 *AzureSearchQuery*。 按一下 [新增連線]。
 
    輸入查詢 API 金鑰。
 
@@ -190,7 +190,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
     現在 *AzureSearchQuery* 是可從應用程式使用的資料來源。
 
-1. 在 [插入]  索引標籤上，於畫布中新增一些控制項。
+1. 在 [插入] 索引標籤上，於畫布中新增一些控制項。
 
     :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="插入控制項" border="true":::
 
@@ -205,7 +205,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
     :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="控制項配置" border="true":::
 
-1. 若要讓 [搜尋]  按鈕發出查詢，請將下列動作貼入 **OnSelect**：
+1. 若要讓 [搜尋] 按鈕發出查詢，請將下列動作貼入 **OnSelect**：
 
     ```
     If(!IsBlank(txtQuery.Text),
@@ -216,7 +216,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
     :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="按鈕 OnSelect" border="true":::
 
-   此動作會讓按鈕使用 [txtQuery]  文字方塊中的文字作為查詢字詞，來以搜尋查詢的結果更新名為 *azResult* 的新集合。
+   此動作會讓按鈕使用 [txtQuery] 文字方塊中的文字作為查詢字詞，來以搜尋查詢的結果更新名為 *azResult* 的新集合。
 
    > [!NOTE]
    > 如果您收到公式語法錯誤「函式 'ClearCollect' 有一些不正確函式」，請嘗試下列方法：
@@ -230,9 +230,9 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
    選取資源庫控制項，然後在 [屬性] 窗格中執行下列動作。
 
-   * 將 [資料來源]  設定為 [azResult]  。
-   * 根據索引資料的類型選取適合您的 [配置]  。 在本案例中，我們使用的是 [標題、副標題和主體]  配置。
-   * [編輯欄位]  ，然後選取您想要視覺化的欄位。
+   * 將 [資料來源] 設定為 [azResult]。
+   * 根據索引資料的類型選取適合您的 [配置]。 在本案例中，我們使用的是 [標題、副標題和主體] 配置。
+   * [編輯欄位]，然後選取您想要視覺化的欄位。
 
     由於我們在定義連接器時提供了範例結果，因此應用程式會知道索引中可用的欄位。
     
@@ -252,7 +252,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261715"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929820"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -67,8 +67,8 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 |OS|必要授權|
 |---|---|
-|Windows 10 企業版的多重工作階段或 Windows 10 企業版|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
-|Windows 7 企業版 |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 企業版的多重工作階段或 Windows 10 企業版|Microsoft 365 E3、E5、A3、A5、F3、Business、Premium<br>Windows E3、E5、A3、A5|
+|Windows 7 企業版 |Microsoft 365 E3、E5、A3、A5、F3、Business、Premium<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|具有軟體保證的 RDS 用戶端存取使用權 (CAL)|
 
 您的基礎結構需要下列項目才能支援 Windows 虛擬桌面：
@@ -98,9 +98,12 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 |prod.warmpath.msftcloudes.com|443|代理程式流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
 
 >[!IMPORTANT]
->建議您在大部分情況下使用服務標籤，而不要使用 URL，以避免產生服務問題。 對於可靠的 Windows 虛擬桌面部署而言，請務必將這些 URL 取消封鎖。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於 Windows 虛擬桌面的網站和資源，並不包含其他服務 (例如 Azure Active Directory) 的 URL。
+>Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+>
+>建議您使用 FQDN 標籤，而不要使用 URL，以避免產生服務問題。 列出的 URL 和標籤僅對應於 Windows 虛擬桌面網站和資源。 其中不包含其他服務 (例如 Azure Active Directory) 的 URL。
 
 下表列出您的 Azure 虛擬機器可存取的選用 URL：
 
@@ -123,7 +126,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [事件檢視器]  ，並瀏覽至 [Windows 記錄]   > [應用程式]   > [WVD-Agent]  ，然後尋找事件識別碼 3702。
+>2. 開啟 [事件檢視器]，並瀏覽至 [Windows 記錄] > [應用程式] > [WVD-Agent]，然後尋找事件識別碼 3702。
 >3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對要在其中部署虛擬機器的每個區域，重複執行相關 URL 的白名單程序。
 
 Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式，以及由 Microsoft 在 Azure 上裝載為服務的管理解決方案。 桌面和應用程式都可以部署在任何 Azure 區域的虛擬機器 (VM) 中，而這些 VM 的管理解決方案和資料都會位於美國。 這可能會導致資料轉送到美國。
@@ -180,20 +183,22 @@ Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Wind
 
 可用的自動化和部署選項取決於您所選的作業系統和版本，如下表所示： 
 
-|作業系統|Azure 映像庫|手動 VM 部署|Azure Resource Manager 範本整合|在 Azure Marketplace 上佈建主機集區|Windows 虛擬桌面代理程式更新|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 多工作階段，版本1903|是|是|是|是|自動|
-|Windows 10 多工作階段，版本1809|是|是|否|否|自動|
-|Windows 10 企業版，版本1903|是|是|是|是|自動|
-|Windows 10 企業版，版本1809|是|是|否|否|自動|
-|Windows 7 企業版|是|是|否|否|手動|
-|Windows Server 2019|是|是|否|否|自動|
-|Windows Server 2016|是|是|是|是|自動|
-|Windows Server 2012 R2|是|是|否|否|自動|
+|作業系統|Azure 映像庫|手動 VM 部署|Azure Resource Manager 範本整合|在 Azure Marketplace 上佈建主機集區|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 多工作階段，版本1903|是|是|是|是|
+|Windows 10 多工作階段，版本1809|是|是|否|否|
+|Windows 10 企業版，版本1903|是|是|是|是|
+|Windows 10 企業版，版本1809|是|是|否|否|
+|Windows 7 企業版|是|是|否|否|
+|Windows Server 2019|是|是|否|否|
+|Windows Server 2016|是|是|是|是|
+|Windows Server 2012 R2|是|是|否|否|
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，您必須建立租用戶。 若要深入了解如何建立租用戶，請繼續進行租用戶建立教學課程。
+如果您使用 Windows 虛擬桌面 2019 年秋季版，您可以從[在 Windows 虛擬桌面中建立租用戶](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)的教學課程開始著手。
+
+如果您使用的是 Windows 虛擬桌面 2020 年春季版，您必須改為建立主機集區。 請前往下列教學課程以開始著手。
 
 > [!div class="nextstepaction"]
-> [在 Windows 虛擬桌面中建立租用戶](tenant-setup-azure-active-directory.md)
+> [透過 Azure 入口網站建立主機集區](create-host-pools-azure-marketplace.md)

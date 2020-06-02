@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147781"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343441"
 ---
 ## <a name="benefits-of-managed-disks"></a>受控磁碟的好處
 
@@ -55,11 +55,14 @@ ms.locfileid: "82147781"
 
 ### <a name="server-side-encryption"></a>伺服器端加密
 
-[Azure 伺服器端加密](../articles/virtual-machines/windows/disk-encryption.md)提供待用加密，並保護資料安全，以符合組織安全性和合規性承諾。 在所有受控磁碟可供使用的區域中，所有受控磁碟、快照集和映像預設都會啟用伺服器端加密。 您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪[受控磁碟常見問題頁面](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+[Azure 伺服器端加密](../articles/virtual-machines/windows/disk-encryption.md)提供待用加密，並保護資料安全，以符合組織安全性和合規性承諾。 在所有受控磁碟可供使用的區域中，所有受控磁碟、快照集和映像依預設都會啟用伺服器端加密。 (另一方面，「儲存體服務加密」並不會加密暫存磁碟；請參閱[磁碟角色：暫存磁碟](#temporary-disk))。
+
+您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪[受控磁碟常見問題頁面](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-Azure 磁碟加密可讓您加密由 IaaS 虛擬機器所使用的作業系統和資料磁碟。 此加密包含受控磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 加密程序會與 Azure Key Vault 整合，可讓您控制和管理磁碟加密金鑰。 如需詳細資訊，請參閱 [IaaS 虛擬機器適用的 Azure 磁碟加密](../articles/security/azure-security-disk-encryption-overview.md)。
+Azure 磁碟加密可讓您加密由 IaaS 虛擬機器所使用的作業系統和資料磁碟。 此加密包含受控磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 加密程序會與 Azure Key Vault 整合，可讓您控制和管理磁碟加密金鑰。 如需詳細資訊，請參閱[適用於 Linux VM 的 Azure 磁碟加密](../articles/virtual-machines/linux/disk-encryption-overview.md)或[適用於 Windows VM 的 Azure 磁碟加密](../articles/virtual-machines/windows/disk-encryption-overview.md)。
 
 ## <a name="disk-roles"></a>磁碟角色
 
@@ -79,7 +82,9 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 ### <a name="temporary-disk"></a>暫存磁碟
 
-每個虛擬機器皆包含一個暫存磁碟，此非受控磁碟。 暫存磁碟為應用程式和處理程序提供短期的儲存空間，且僅供用來儲存分頁檔之類的資料。 暫存磁碟上的資料可能會在[維護事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署虛擬機器](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時遺失。 在 Azure Linux VM 上，暫存磁碟預設為 /dev/sdb，而在 Windows VM 上，暫存磁碟預設為 D:。 在 VM 的成功標準重新開機期間，暫存磁碟上的資料將保留。
+每個虛擬機器皆包含一個暫存磁碟，此非受控磁碟。 暫存磁碟為應用程式和處理程序提供短期的儲存空間，且僅供用來儲存分頁檔之類的資料。 暫存磁碟上的資料可能會在[維護事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署虛擬機器](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時遺失。 在 VM 的成功標準重新開機期間，暫存磁碟上的資料將保留。  
+
+在 Azure Linux VM 上，暫存磁碟通常是 /dev/sdb，而 Windows VM 上的暫存磁碟則預設為 D:。 「伺服器端加密」不會加密暫存磁碟 (請參閱[加密](#encryption))。
 
 ## <a name="managed-disk-snapshots"></a>受控磁碟快照集
 

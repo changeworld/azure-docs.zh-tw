@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727445"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005882"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>關於金鑰、祕密與憑證
 
@@ -46,7 +46,7 @@ Azure Key Vault 可讓 Microsoft Azure 應用程式和使用者儲存及使用�
 
 儲存於 Key Vault 中的物件在每次有新的物件執行個體建立時，就會建立版本。 每個版本會有指派的唯一識別碼和 URL。 第一次建立的物件會獲得唯一的版本識別碼，並標示為物件的目前版本。 以相同物件名稱建立新的執行個體，會使新物件獲得唯一版本識別碼，並使其成為目前的版本。  
 
-您可以使用目前的識別碼或版本專屬的識別碼，來處理 Key Vault 中的物件。 例如，假設某個金鑰的名稱為 `MasterKey`，以目前識別碼執行作業時，系統就會使用最新的可用版本。 若以版本專屬的識別碼來執行作業，則系統就會使用該特定版本的物件。  
+Key Vault 中的物件可以藉由指定版本來定址，或藉由對現行物件版本的作業省略版本來定址。 例如，假設某個金鑰的名稱為 `MasterKey`，在未指定版本的情況下執行作業時，系統就會使用最新的可用版本。 若以版本專屬的識別碼來執行作業，則系統就會使用該特定版本的物件。  
 
 物件在 Key Vault 中可使用 URL 進行唯一識別。 系統中的任兩個物件都不會有相同的 URL，無論地理位置為何。 物件的完整 URL 稱為物件識別碼。 URL 包含可識別 Key Vault 的前置詞、物件類型、使用者提供的物件名稱和物件版本。 物件名稱不區分大小寫且無法變更。 不包含物件版本的識別碼稱為「基底識別碼」。  
 
@@ -62,7 +62,7 @@ Azure Key Vault 可讓 Microsoft Azure 應用程式和使用者儲存及使用�
 |-|-|  
 |`keyvault-name`|Microsoft Azure Key Vault 服務中的金鑰保存庫名稱。<br /><br /> Key Vault 名稱由使用者選取，且具有全域唯一性。<br /><br /> Key Vault 名稱必須是 3-24 個字元的字串，且只能包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|物件的類型，「金鑰」、「秘密」或「憑證」。|  
-|`object-name`|`object-name` 是由使用者提供的名稱，而且在 Key Vault 中必須是唯一的。 其名稱必須是 1-127 個字元的字串，且只能包含 0-9、a-z、A-Z 和 -。|  
+|`object-name`|`object-name` 是由使用者提供的名稱，而且在 Key Vault 中必須是唯一的。 其名稱必須是 1-127 個字元的字串，開頭必須是字母，且只能包含 0-9、a-z、A-Z 和 -。|  
 |`object-version`|`object-version` 是由系統產生的、包含 32 個字元的字串識別碼，可選擇性地用來當作物件的唯一版本。|  
 
 ## <a name="next-steps"></a>後續步驟

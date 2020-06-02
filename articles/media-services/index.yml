@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: 2f2049f710dcdbb210594331fa69e6743f5e431e
-  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+  ms.openlocfilehash: 5d49173a9c06e35c5af3831e504fc6f55a8dfc50
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81869319"
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259536"
 highlightedContent:
   items:
   - title: 關於 Azure 媒體服務 v3
@@ -33,15 +33,18 @@ highlightedContent:
   - title: 比較媒體服務 v3 預設值與影片索引器
     itemType: concept
     url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: IoT Edge 上的 Live Video Analytics (預覽)
+    itemType: overview
+    url: ./live-video-analytics-edge/overview.md
+  - title: Azure 媒體播放器
+    itemType: overview
+    url: https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview
   - title: 關於 Azure 媒體服務 v2 (舊版)
     itemType: overview
     url: ./previous/media-services-overview.md
   - title: 將媒體服務 v2 遷移至 v3
     itemType: concept
     url: ./latest/migrate-from-v2-to-v3.md
-  - title: Azure 媒體播放器
-    itemType: overview
-    url: azure-media-player/azure-media-player-overview.md
 conceptualContent:
   items:
   - title: 使用媒體服務 v3 API 進行開發
@@ -110,6 +113,14 @@ conceptualContent:
     - url: media-services-fmp4-live-ingest-overview.md
       itemType: concept
       text: Smooth Streaming 內嵌通訊協定
+  - title: IoT Edge 上的 Live Video Analytics (預覽)
+    links:
+    - url: ./live-video-analytics-edge/overview.md
+      itemType: overview
+      text: 概觀
+    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+      itemType: quickstart
+      text: 使用自己的模型執行 Live Video Analytics
 additionalContent:
   sections:
   - items:
@@ -119,6 +130,6 @@ additionalContent:
     - title: CDN
       summary: 使用 Azure CDN 的強大功能，透過 Akamai 和 Verizon 的各項服務來大規模串流內容，或跨多個內容傳遞網路進行負載平衡
       url: https://docs.microsoft.com/azure/cdn
-    - title: Event Grid
+    - title: 事件方格
       summary: 了解如何使用 Azure 事件方格來回應相關事件
       url: https://docs.microsoft.com/azure/event-grid/

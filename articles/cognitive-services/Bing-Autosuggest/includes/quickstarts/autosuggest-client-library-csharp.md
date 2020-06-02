@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac46eb0119ac95cf09e48823686a6c563d8d4d4a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 3793f57a6c3dff04f678e629b2903ab216611f75
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887392"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82975071"
 ---
 開始使用適用於 .NET 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
@@ -23,29 +23,24 @@ ms.locfileid: "80887392"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，[您可以建立免費帳戶](https://azure.microsoft.com/free/)。
 * 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-
-## <a name="setting-up"></a>設定
-
-### <a name="create-an-azure-resource"></a>建立 Azure 資源
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-### <a name="create-an-environment-variable"></a>建立環境變數
+## <a name="create-environment-variables"></a>建立環境變數
 
 >[!NOTE]
 > 在 2019 年 7 月 1 日之後為非試用資源建立的端點會使用自訂的子網域格式，如下所示。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
 
 在您建立的資源中，使用金鑰和端點來建立兩個環境變數以進行驗證：
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY` - 用於驗證您要求的資源金鑰。
-* `AUTOSUGGEST_ENDPOINT` -用來傳送 API 要求的資源端點。 它看起來像下面這樣： 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`:用來驗證要求的資源金鑰。
+* `AUTOSUGGEST_ENDPOINT`:用來傳送 API 要求的資源端點。 它看起來應該像這樣：`https://<your-custom-subdomain>.api.cognitive.microsoft.com`。 
 
 請使用適合您作業系統的指示。
 <!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
+### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
@@ -54,7 +49,7 @@ setx AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 
 新增環境變數之後，請重新啟動主控台視窗。
 
-#### <a name="linux"></a>[Linux](#tab/linux)
+### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -63,7 +58,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
 
-#### <a name="macos"></a>[macOS](#tab/unix)
+### <a name="macos"></a>[macOS](#tab/unix)
 
 編輯 `.bash_profile`，然後新增環境變數：
 
@@ -75,7 +70,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
 ***
 
-### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
+## <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
 在您慣用的編輯器或 IDE 中，建立新的 .NET Core 應用程式。 
 
@@ -133,7 +128,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>安裝用戶端程式庫
+## <a name="install-the-client-library"></a>安裝用戶端程式庫
 
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 Bing 自動建議用戶端程式庫：
 
@@ -150,7 +145,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Search.AutoSuggest --versio
 * [驗證用戶端](#authenticate-the-client)
 * [傳送自動建議要求](#send-an-autosuggest-request)
 
-## <a name="authenticate-the-client"></a>驗證用戶端
+### <a name="authenticate-the-client"></a>驗證用戶端
 
 > [!NOTE]
 > 本快速入門假設您已為 Bing 自動建議金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (名為 `AUTOSUGGEST_SUBSCRIPTION_KEY`)，並為端點建立名為 `AUTOSUGGEST_ENDPOINT` 的環境變數。
@@ -170,7 +165,7 @@ async static Task RunQuickstart()
 }
 ```
 
-## <a name="send-an-autosuggest-request"></a>傳送自動建議要求
+### <a name="send-an-autosuggest-request"></a>傳送自動建議要求
 
 在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)回應，並列印第一個建議。
 
@@ -208,10 +203,10 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
+如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除與其相關聯的任何其他資源：
 
-* [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [在 Azure 入口網站中刪除資源群組](../../../cognitive-services-apis-create-account.md#clean-up-resources)。
+* [在 Azure CLI 中刪除資源群組](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>後續步驟
 

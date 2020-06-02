@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: 自訂命令 (預覽)
       items:
-        - name: 什麼是自訂命令應用程式？
+        - name: 什麼是自訂命令？
           href: custom-commands.md
         - name: 快速入門
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: 自訂關鍵字辨識
           href: speech-devices-sdk-create-kws.md
+- name: 說話者辨識
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是說話者辨識？
+          href: speaker-recognition-overview.md
+    - name: 參考
+      items:
+        - name: REST API
+          items:
+            - name: 語音辨識 REST API
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: 裝載
   items:
     - name: 裝載文件

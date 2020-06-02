@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613924"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124392"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教學課程：在 Windows 虛擬桌面中建立租用戶
 
@@ -58,7 +58,7 @@ ms.locfileid: "82613924"
    >```
 
 2. 使用全域管理員帳戶登入 Windows 虛擬桌面同意頁面。 例如，如果您屬於 Contoso 組織，您的帳戶可能是 admin@contoso.com 或 admin@contoso.onmicrosoft.com。
-3. 選取 [接受]  。
+3. 選取 [接受]。
 4. 請稍後片刻，讓 Azure AD 可記錄同意。
 5. 開啟瀏覽器，並開始進行 [Windows 虛擬桌面用戶端應用程式](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)的管理員同意流程。
    >[!NOTE]
@@ -68,7 +68,7 @@ ms.locfileid: "82613924"
    >```
 
 6. 如同步驟 2 一樣，以全域管理員身分登入 Windows 虛擬桌面同意頁面。
-7. 選取 [接受]  。
+7. 選取 [接受]。
 
 ## <a name="assign-the-tenantcreator-application-role"></a>指派 TenantCreator 應用程式角色
 
@@ -76,16 +76,16 @@ ms.locfileid: "82613924"
 
 若要指派 TenantCreator 應用程式角色：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)以管理 TenantCreator 應用程式角色。 搜尋並選取 [企業應用程式]  。 如果您正在處理多個 Azure Active Directory 租用戶，最佳做法是開啟私人瀏覽器工作階段，然後將 URL 複製並貼入位址列中。
+1. 移至 [Azure 入口網站](https://portal.azure.com)以管理 TenantCreator 應用程式角色。 搜尋並選取 [企業應用程式]。 如果您正在處理多個 Azure Active Directory 租用戶，最佳做法是開啟私人瀏覽器工作階段，然後將 URL 複製並貼入位址列中。
 
    ![在 Azure 入口網站中搜尋企業應用程式的螢幕擷取畫面](../media/azure-portal-enterprise-applications.png)
-2. 在 [企業應用程式]  中，搜尋 [Windows 虛擬桌面]  。 您會看到您在上一節中同意的兩個應用程式。 在這兩個應用程式中，選取 [Windows 虛擬桌面]  。
+2. 在 [企業應用程式] 中，搜尋 [Windows 虛擬桌面]。 您會看到您在上一節中同意的兩個應用程式。 在這兩個應用程式中，選取 [Windows 虛擬桌面]。
    
    ![在「企業應用程式」中搜尋「Windows 虛擬桌面」時的搜尋結果螢幕擷取畫面。 已醒目提示名為「Windows 虛擬桌面」的應用程式。](../media/tenant-enterprise-app.png)
-3. 選取 [使用者和群組]  。 您可能會看到對應用程式授與同意權的系統管理員已列出，並且已獲派**預設存取**角色。 這還不足以建立 Windows 虛擬桌面租用戶。 請繼續遵循這些指示來對使用者新增 **TenantCreator** 角色。
+3. 選取 [使用者和群組]。 您可能會看到對應用程式授與同意權的系統管理員已列出，並且已獲派**預設存取**角色。 這還不足以建立 Windows 虛擬桌面租用戶。 請繼續遵循這些指示來對使用者新增 **TenantCreator** 角色。
    
    ![指派來管理「Windows 虛擬桌面」企業應用程式之使用者和群組的螢幕擷取畫面。 螢幕擷取畫面顯示只有一個指派，其適用於「預設存取」。](../media/tenant-default-access.png)
-4. 選取 [新增使用者]  ，然後在 [新增指派]  索引標籤中選取 [使用者和群組]  。
+4. 選取 [新增使用者]，然後在 [新增指派] 索引標籤中選取 [使用者和群組]。
 5. 搜尋您將建立 Windows 虛擬桌面租用戶的使用者帳戶。 為了簡單起見，這可以是全域管理員帳戶。
    - 如果您使用的是 Microsoft 身分識別提供者，例如，contosoadmin@live.com 或 contosoadmin@outlook.com，您可能無法登入 Windows 虛擬桌面。 我們建議使用類似 admin@contoso.com 或 admin@contoso.onmicrosoft.com 的網域特定帳戶。
 
@@ -93,8 +93,8 @@ ms.locfileid: "82613924"
    > [!NOTE]
    > 您必須選取來自此 Azure Active Directory 執行個體的使用者 (或包含使用者的群組)。 您無法選擇來賓 (B2B) 使用者或服務主體。
 
-6. 選取使用者帳戶，選擇 [選取]  按鈕，然後選取 [指派]  。
-7. 在 [Windows 虛擬桌面 - 使用者和群組]  頁面上，確認您有看到新項目，其中 **TenantCreator** 角色已指派給將要建立 Windows 虛擬桌面租用戶的使用者。
+6. 選取使用者帳戶，選擇 [選取] 按鈕，然後選取 [指派]。
+7. 在 [Windows 虛擬桌面 - 使用者和群組] 頁面上，確認您有看到新項目，其中 **TenantCreator** 角色已指派給將要建立 Windows 虛擬桌面租用戶的使用者。
 
    ![指派來管理「Windows 虛擬桌面」企業應用程式之使用者和群組的螢幕擷取畫面。 螢幕擷取畫面現在包含使用者獲派 "TenantCreator" 角色的第二個項目。](../media/tenant-tenant-creator-added.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "82613924"
    - 您的 Azure 訂用帳戶 ID
 
 若要尋找您的 Azure Active Directory 租用戶識別碼 (或**目錄識別碼**)：
-1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [Azure Active Directory]  。
+1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [Azure Active Directory]。
 
    ![在 Azure 入口網站中搜尋 "Azure Active Directory" 之結果的螢幕擷取畫面。 [服務] 底下的搜尋結果已醒目提示。](../media/tenant-search-azure-active-directory.png)
 2. 向下捲動，直到您找到**屬性**，然後將其選取。
@@ -113,7 +113,7 @@ ms.locfileid: "82613924"
    ![Azure Active Directory 屬性的螢幕擷取畫面。 滑鼠停留在 [目錄識別碼] 的剪貼簿圖示上，以便複製及貼上。](../media/tenant-directory-id.png)
 
 若要尋找您的 Azure 訂用帳戶識別碼：
-1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [訂用帳戶]  。
+1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [訂用帳戶]。
    
    ![在 Azure 入口網站中搜尋 "Azure Active Directory" 之結果的螢幕擷取畫面。 [服務] 底下的搜尋結果已醒目提示。](../media/tenant-search-subscription.png)
 2. 選取您想要用來接收 Windows 虛擬桌面服務通知的 Azure 訂用帳戶。
@@ -152,6 +152,8 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
+如需更深入的逐步解說，請參閱我們的 [Windows 虛擬桌面學習路徑](https://docs.microsoft.com/learn/paths/m365-wvd/)。
 
 建立好您的租用戶後，您必須在 Azure Active Directory 中建立服務主體，並對其指派 Windows 虛擬桌面內的角色。 服務主體可讓您順利部署 Windows 虛擬桌面的 Azure Marketplace 供應項目，進而建立主機集區。 若要深入了解主機集區，請繼續進行在 Windows 虛擬桌面中建立主機集區的教學課程。
 

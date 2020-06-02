@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 C# 和 AI 處理 Azure Blob
+title: 在 Azure Blob 上使用 AI 的 C# 教學課程
 titleSuffix: Azure Cognitive Search
 description: 逐步解說使用 C# 和 Azure 認知搜尋 .NET SDK 對 Blob 儲存體中的內容進行文字擷取和自然語言處理的範例。
 manager: nitinme
@@ -7,15 +7,15 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/27/2020
-ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/05/2020
+ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78851129"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872321"
 ---
-# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 C# 和 AI 從 Azure Blob 產生可搜尋的內容
+# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教學課程：使用 .NET SDK 以 AI 方式從 Azure Blob 產生可搜尋的內容
 
 如果您在 Azure Blob 儲存體中有非結構化的文字或影像，您可以利用 [AI 擴充管線](cognitive-search-concept-intro.md)來擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 在此 C# 教學課程中，我們將對影像套用光學字元辨識 (OCR) 功能，並執行自然語言處理，以建立可在查詢、Facet 和篩選器中運用的新欄位。
 
@@ -41,9 +41,11 @@ ms.locfileid: "78851129"
 
 ## <a name="download-files"></a>下載檔案
 
-1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]  ，將檔案複製到您的電腦。 
+1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]，將檔案複製到您的電腦。 
 
-1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]  。 其中有 14 個不同類型的檔案。 在本教學課程中請全數加以使用。
+1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]。 其中有 14 個不同類型的檔案。 在此練習中，您將使用 7 個檔案。
+
+您也可以下載本教學課程的原始程式碼。 原始程式碼位於 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 存放庫的 tutorial-ai-enrichment 資料夾中。
 
 ## <a name="1---create-services"></a>1 - 建立服務
 
@@ -53,9 +55,9 @@ ms.locfileid: "78851129"
 
 ### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]  。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]。
 
-1. 搜尋「儲存體帳戶」  ，然後選取 Microsoft 的儲存體帳戶供應項目。
+1. 搜尋「儲存體帳戶」，然後選取 Microsoft 的儲存體帳戶供應項目。
 
    ![建立儲存體帳戶](media/cognitive-search-tutorial-blob/storage-account.png "建立儲存體帳戶")
 
@@ -63,34 +65,34 @@ ms.locfileid: "78851129"
 
    + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
+   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
 
    + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]  。
+   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]。
 
-1. 按一下 [檢閱 + 建立]  以建立服務。
+1. 按一下 [檢閱 + 建立] 以建立服務。
 
-1. 建立後，按一下 [移至資源]  以開啟 [概觀] 頁面。
+1. 建立後，按一下 [移至資源] 以開啟 [概觀] 頁面。
 
-1. 按一下 [Blob]  服務。
+1. 按一下 [Blob] 服務。
 
-1. 按一下 [+ 容器]  以建立容器，並將其命名為 *basic-demo-data-pr*。
+1. 按一下 [+ 容器] 來建立容器，並將其命名為 cog-search-demo。
 
-1. 選取 [basic-demo-data-pr]  ，然後按一下 [上傳]  以開啟其中儲存下載檔案的資料夾。 將十四個檔案全選，然後按一下 [確定]  加以上傳。
+1. 選取 [cog-search-demo]，然後按一下 [上傳] 以開啟其中儲存下載檔案的資料夾。 將十四個檔案全選，然後按一下 [確定] 加以上傳。
 
    ![上傳範例檔案](media/cognitive-search-quickstart-blob/sample-data.png "上傳範例檔案")
 
 1. 在您離開 Azure 儲存體之前，請取得連接字串，以便在 Azure 認知搜尋中制定連線。 
 
-   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus  作為範例)。 
+   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstoragewestus 作為範例)。 
    
-   1. 在左側導覽窗格中，選取 [存取金鑰]  並複製其中一個連接字串。 
+   1. 在左側導覽窗格中，選取 [存取金鑰] 並複製其中一個連接字串。 
 
    連接字串應為類似於下列範例的 URL：
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=blobstoragewestus;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. 將連接字串儲存到記事本。 您稍後設定資料來源連線時會用到該字串。
@@ -99,7 +101,7 @@ ms.locfileid: "78851129"
 
 AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的文字分析和電腦視覺。 如果您的目標是要完成實際的原型或專案，您應在此時佈建認知服務 (位於 Azure 認知搜尋所在的區域)，以便將其連結至索引作業。
 
-不過，在此練習中，您可以略過資源佈建，因為 Azure 認知搜尋可以在幕後連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 由於本教學課程會使用 7 筆交易，因此使用免費配置就已足夠。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。
+不過，在此練習中，您可以略過資源佈建，因為 Azure 認知搜尋可以在幕後連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 由於本教學課程會使用 14 筆交易，因此使用免費配置就已足夠。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。
 
 ### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
@@ -109,9 +111,9 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 若要與 Azure 認知搜尋服務互動，您需要服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-1. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
@@ -129,33 +131,33 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 針對此專案，請安裝第 9 版或更新版本的 `Microsoft.Azure.Search` NuGet 套件。
 
-1. 開啟套件管理員主控台。 選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。 
-
-1. 瀏覽至 [Microsoft.Azure.Search NuGet 套件頁面](https://www.nuget.org/packages/Microsoft.Azure.Search)。
+1. 在瀏覽器中，移至 [Microsoft.Azure.Search NuGet 套件頁面](https://www.nuget.org/packages/Microsoft.Azure.Search)。
 
 1. 選取最新版本 (9 或更新版本)。
 
 1. 複製套件管理員命令。
 
-1. 返回套件管理員主控台，然後執行您在上一個步驟中複製的命令。
+1. 開啟套件管理員主控台。 選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 
+
+1. 貼上並執行您在先前的步驟中複製的命令。
 
 接著，安裝最新的 `Microsoft.Extensions.Configuration.Json` NuGet 套件。
 
-1. 選取 [工具]   > [NuGet 套件管理員]   > [管理解決方案的 NuGet 套件...]  。 
+1. 選取 [工具] > [NuGet 套件管理員] > [管理解決方案的 NuGet 套件...]。 
 
-1. 按一下 [瀏覽]  ，然後搜尋 `Microsoft.Extensions.Configuration.Json` NuGet 套件。 
+1. 按一下 [瀏覽]，然後搜尋 `Microsoft.Extensions.Configuration.Json` NuGet 套件。 
 
-1. 選取該套件、選取您的專案、確認該版本為最新的穩定版本，然後按一下 [安裝]  。
+1. 選取該套件、選取您的專案、確認該版本為最新的穩定版本，然後按一下 [安裝]。
 
 ### <a name="add-service-connection-information"></a>新增服務連線資訊
 
-1. 在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選取 [新增]   > [新增項目...]  。 
+1. 在 [方案總管] 中以滑鼠右鍵按一下您的專案，然後選取 [新增] > [新增項目...]。 
 
-1. 將檔案命名為 `appsettings.json`，然後選取 [新增]  。 
+1. 將檔案命名為 `appsettings.json`，然後選取 [新增]。 
 
 1. 將此檔案包含在您的輸出目錄中。
-    1. 以滑鼠右鍵按一下 `appsettings.json`，然後選取 [屬性]  。 
-    1. 將 [複製到輸出目錄]  的值變更為 [有更新時才複製]  。
+    1. 以滑鼠右鍵按一下 `appsettings.json`，然後選取 [屬性]。 
+    1. 將 [複製到輸出目錄] 的值變更為 [有更新時才複製]。
 
 1. 將下列 JSON 複製到新的 JSON 檔案。
 
@@ -167,8 +169,10 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-
+    
 新增您的搜尋服務與 Blob 儲存體帳戶資訊。 您應該記得，您可以從上一節所指示的服務佈建步驟中取得這項資訊。
+
+針對 **SearchServiceName**，請輸入簡短服務名稱，而不是完整 URL。
 
 ### <a name="add-namespaces"></a>新增命名空間
 
@@ -246,7 +250,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
     DataSource dataSource = DataSource.AzureBlobStorage(
         name: "demodata",
         storageConnectionString: configuration["AzureBlobConnectionString"],
-        containerName: "basic-demo-data-pr",
+        containerName: "cog-search-demo",
         description: "Demo files to demonstrate cognitive search capabilities.");
 
     // The data source does not need to be deleted if it was already created
@@ -282,41 +286,13 @@ public static void Main(string[] args)
     DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
 ```
 
-
-<!-- 
-```csharp
-DataSource dataSource = DataSource.AzureBlobStorage(
-    name: "demodata",
-    storageConnectionString: configuration["AzureBlobConnectionString"],
-    containerName: "basic-demo-data-pr",
-    deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-        softDeleteColumnName: "IsDeleted",
-        softDeleteMarkerValue: "true"),
-    description: "Demo files to demonstrate cognitive search capabilities.");
-```
-
-Now that you have initialized the `DataSource` object, create the data source. `SearchServiceClient` has a `DataSources` property. This property provides all the methods you need to create, list, update, or delete Azure Cognitive Search data sources.
-
-For a successful request, the method will return the data source that was created. If there is a problem with the request, such as an invalid parameter, the method will throw an exception.
-
-```csharp
-try
-{
-    serviceClient.DataSources.CreateOrUpdate(dataSource);
-}
-catch (Exception e)
-{
-    // Handle the exception
-}
-``` -->
-
 建置並執行解決方案。 由於這是您第一個要求，請查看 Azure 入口網站，以確認已在 Azure 認知搜尋中建立資料來源。 在搜尋服務儀表板頁面上，確認 [資料來源] 圖格有新的項目。 您可能需要等候幾分鐘，讓入口網站重新整理頁面。
 
   ![入口網站中的資料來源圖格](./media/cognitive-search-tutorial-blob/data-source-tile.png "入口網站中的資料來源圖格")
 
 ### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
-在此節中，您會定義一組要套用至資料的擴充步驟。 每個擴充步驟均稱為一個「技能」  ，而一組擴充步驟會稱為一個「技能集」  。 本教學課程會使用為技能集[內建的認知技能](cognitive-search-predefined-skills.md)：
+在此節中，您會定義一組要套用至資料的擴充步驟。 每個擴充步驟均稱為一個「技能」，而一組擴充步驟會稱為一個「技能集」。 本教學課程會使用為技能集[內建的認知技能](cognitive-search-predefined-skills.md)：
 
 + [光學字元辨識](cognitive-search-skill-ocr.md)可辨識影像檔案中的列印和手寫文字。
 
@@ -593,7 +569,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 此索引的欄位會使用模型類別來定義。 每個模型類別的屬性皆具有屬性，會判斷對應索引欄位的搜尋相關行為。 
 
-我們會將模型類別新增至新的 C# 檔案。 以滑鼠右鍵按一下您的專案，然後選取 [新增]   > [新增項目]  、選取 [類別] 並將檔案命名為 `DemoIndex.cs`，然後選取 [新增]  。
+我們會將模型類別新增至新的 C# 檔案。 以滑鼠右鍵按一下您的專案，然後選取 [新增] > [新增項目]、選取 [類別] 並將檔案命名為 `DemoIndex.cs`，然後選取 [新增]。
 
 請務必指出您想要使用來自 `Microsoft.Azure.Search` 和 `Microsoft.Azure.Search.Models` 命名空間的類型。
 
@@ -629,33 +605,6 @@ namespace EnrichwithAI
     }
 }
 ```
-
-<!-- Add the below model class definition to `DemoIndex.cs` and include it in the same namespace where you'll create the index.
-
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Cognitive Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-}
-``` -->
 
 既然您已定義模型類別，請返回 `Program.cs`，您現在可以非常輕鬆地建立索引定義。 此索引的名稱將會是 `demoindex`。 如果已有索引使用該名稱，將會加以刪除。
 
@@ -696,27 +645,14 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 ```csharp
     // Create the index
     Console.WriteLine("Creating the index...");
-    Index demoIndex = CreateDemoIndex(serviceClient);
+    Microsoft.Azure.Search.Models.Index demoIndex = CreateDemoIndex(serviceClient);
 ```
 
-<!-- ```csharp
-try
-{
-    bool exists = serviceClient.Indexes.Exists(index.Name);
+新增下列 using 陳述式以解析「消除歧義」參考。
 
-    if (exists)
-    {
-        serviceClient.Indexes.Delete(index.Name);
-    }
-
-    serviceClient.Indexes.Create(index);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
+```csharp
+using Index = Microsoft.Azure.Search.Models.Index;
 ```
- -->
 
 若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
@@ -799,7 +735,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
-    Console.WriteLine("Creating the indexer...");
+    Console.WriteLine("Creating the indexer and executing the pipeline...");
     Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
 ```
 

@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d1c2da10270747aa09ecbcfdc537df567b4cdfc9
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238975"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929650"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>快速入門：使用 Bing 自動建議 REST API 與 Java 建議搜尋查詢
 
-
-使用本快速入門開始呼叫 Bing 自動建議 API，並取得 JSON 回應。 這個簡單的 Java 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) 上找到此範例的原始程式碼
+本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 Java 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) 上找到此範例的原始程式碼
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -44,7 +43,7 @@ ms.locfileid: "80238975"
     import com.google.gson.JsonParser;
     ```
 
-2. 針對您的訂用帳戶金鑰、API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)及搜尋查詢，建立變數。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+2. 針對您的訂用帳戶金鑰、API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)及搜尋查詢，建立變數。 請使用下方的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -57,7 +56,7 @@ ms.locfileid: "80238975"
 
 ## <a name="format-the-response"></a>將回應格式化
 
-建立名為 `prettify()` 的方法，以格式化 Bing 影片 API 傳回的回應。 使用 Gson 程式庫的 `JsonParser` 來取得 JSON 字串，並將其轉換成物件。 然後使用 `GsonBuilder()` 和 `toJson()` 來建立格式化的字串。
+建立名為 `prettify()` 的方法，以格式化 Bing 影片 API 傳回的回應。 使用 Gson 程式庫的 `JsonParser` 來取得 JSON 字串，並將其轉換成物件。 然後，使用 `GsonBuilder()` 和 `toJson()` 建立格式化的字串。
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -84,7 +83,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. 使用 API 主機、路徑及上面建立的參數，為要求建立新的 URL。 
+   2. 使用 API 主機、路徑，以及您在先前的步驟中建立的參數，為要求建立新的 URL。 
     
        ```java
        //...
@@ -103,7 +102,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. 讀取 `StringBuilder` 的 API 回應。 在擷取回應之後，關閉 `InputStreamReader` 串流，並將回應傳回。
+   4. 將 API 回應儲存在 `StringBuilder`中。 在擷取回應之後，關閉 `InputStreamReader` 串流，並將回應傳回。
 
        ```java
        //...
@@ -119,7 +118,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. 在應用程式的 main 函式中，呼叫 `get_suggestions()`，並使用 `prettify()` 列印回應。
+2. 在應用程式的 main 函式中呼叫 `get_suggestions()`，並使用 `prettify()` 列印回應。
     
     ```java
     public static void main(String[] args) {

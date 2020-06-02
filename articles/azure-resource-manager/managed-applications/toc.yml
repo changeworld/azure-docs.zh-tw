@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: 要求 Just-In-Time 存取
           href: request-just-in-time-access.md
+        - name: 使用現有虛擬網路
+          href: existing-vnet-integration.md
         - name: 更新受控資源
           href: update-managed-resources.md
         - name: 使用入口網站發佈應用程式定義

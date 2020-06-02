@@ -595,11 +595,14 @@
         - name: Azure 媒體播放器
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
+        - name: IoT Edge 上的 Live Video Analytics
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
     - name: 訊息服務
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/
       items:
-        - name: Event Grid
+        - name: 事件方格
           tocHref: /azure/event-grid/
           topicHref: /azure/event-grid
         - name: 事件中樞

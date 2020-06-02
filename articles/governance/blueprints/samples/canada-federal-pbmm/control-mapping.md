@@ -1,20 +1,20 @@
 ---
 title: 加拿大聯邦 PBMM 藍圖範例控制項
 description: 加拿大聯邦 PBMM 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545262"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005704"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大聯邦 PBMM 藍圖範例的控制項對應
 
 下列文章詳細說明 Azure 藍圖：加拿大聯邦 B 級保護、中度完整性、中度可用性 (PBMM) 藍圖範例如何對應至加拿大聯邦 PBMM 控制項。 如需控制項的詳細資訊，請參閱[加拿大聯邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)。
 
-以下是**加拿大聯邦 PBMM**控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\]：稽核加拿大聯邦 PBMM 控制項**的內建原則計畫。
+以下是**加拿大聯邦 PBMM**控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：稽核加拿大聯邦 PBMM 控制項**的內建原則計畫。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md) \(英文\)。
@@ -57,8 +57,8 @@ Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-cont
 
 - 應針對您的訂用帳戶指定最多 3 位擁有者
 - 應將一個以上的擁有者指派給您的訂用帳戶
-- 稽核其中 Administrators 群組包含了任一指定成員的 Windows VM
-- 稽核其中 Administrators 群組不包含任何指定成員的 Windows VM
+- 顯示其中 Administrators 群組包含了任一指定成員的 Windows VM 稽核結果
+- 從其中 Administrators 群組不包含任何指定成員的 Windows VM 顯示稽核結果
 - 部署需求以稽核其中 Administrators 群組包含了任一指定成員的 Windows VM
 - 部署需求以稽核其中 Administrators 群組不包含任何指定成員的 Windows VM
 
@@ -68,8 +68,8 @@ Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-cont
 
 - 應針對您的訂用帳戶指定最多 3 位擁有者
 - 應將一個以上的擁有者指派給您的訂用帳戶
-- 稽核其中 Administrators 群組包含了任一指定成員的 Windows VM
-- 稽核其中 Administrators 群組不包含任何指定成員的 Windows VM
+- 顯示其中 Administrators 群組包含了任一指定成員的 Windows VM 稽核結果
+- 從其中 Administrators 群組不包含任何指定成員的 Windows VM 顯示稽核結果
 - 部署需求以稽核其中 Administrators 群組包含了任一指定成員的 Windows VM
 - 部署需求以稽核其中 Administrators 群組不包含任何指定成員的 Windows VM
 
@@ -85,7 +85,7 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 
 此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義來監視和控制遠端存取，進而監視 Azure App Service 應用程式的遠端偵錯程式是否已關閉。 此藍圖也會指派 Azure 原則定義，以稽核允許帳戶無需密碼便可從遠端連線的 Linux 虛擬機器。 此外，此藍圖還會指派 Azure 原則定義，協助您監視無限制地存取儲存體帳戶。 監視這些指標可協助您確保遠端存取方法符合安全性原則。
 
-- \[預覽\]：稽核允許不使用密碼從帳戶遠端連線的 Linux VM
+- \[預覽\]：從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
 - \[預覽\]：部署需求以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
 - 稽核不受限制的儲存體帳戶網路存取
 - 應關閉 API 應用程式的遠端偵錯
@@ -107,7 +107,7 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視稽核與事件記錄設定。 監視這些設定可提供稽核系統失敗或設定不正確的指標，並協助您採取矯正措施。
 
 - 稽核診斷設定
-- 稽核 SQL 伺服器層級稽核設定
+- 應啟用 SQL 伺服器上的稽核
 - 應在受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
 
@@ -131,7 +131,7 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 - 稽核診斷設定
-- 稽核 SQL 伺服器層級稽核設定
+- 應啟用 SQL 伺服器上的稽核
 - 應在受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
 - 在 SQL 伺服器上部署進階資料安全性
@@ -167,8 +167,8 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核允許帳戶無需密碼便可從遠端連線和/或在 passwd 檔案設定不正確權限的 Linux 虛擬機器。 此藍圖還指派了原則定義，稽核 Windows 虛擬機器的密碼加密類型搭配。 監視這些指標可協助您確保系統驗證器符合貴組織的識別與驗證原則。
 
-- \[預覽\]：稽核密碼檔權限未設為 0644 的 Linux VM
-- \[預覽\]：稽核有不具密碼帳戶的 Linux VM
+- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
+- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
 - \[預覽\]：部署需求以稽核密碼檔權限未設為 0644 的 Linux VM
 - \[預覽\]：部署需求以稽核有不具密碼帳戶的 Linux VM
 
@@ -176,11 +176,11 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核未強制執行最低強度和其他密碼需求的 Windows 虛擬機器，以協助您強制要求使用強式密碼。 了解有哪些虛擬機器違反密碼強度原則可協助您採取矯正措施，以確保所有虛擬機器使用者帳戶的密碼都符合貴組織的密碼原則。
 
-- \[預覽\]：稽核允許重複使用前 24 個舊密碼的 Windows 虛擬機器
-- \[預覽\]：稽核最大密碼存留期不是 70 天的 Windows VM
-- \[預覽\]：稽核最小密碼存留期不是 1 天的 Windows VM
-- \[預覽\]：稽核未啟用密碼複雜度設定的 Windows VM
-- \[預覽\]：稽核最小密碼長度未限制為 14 個字元的 Windows 虛擬機器
+- \[預覽\]：從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
+- \[預覽\]：從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
+- \[預覽\]：從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
+- \[預覽\]：從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
+- \[預覽\]：從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
 - \[預覽\]：部署需求以稽核允許重複使用前 24 個舊密碼的 Windows VM
 - \[預覽\]：部署需求以稽核最大密碼存留期不是 70 天的 Windows VM
 - \[預覽\]：部署需求以稽核最小密碼存留期不是 1 天的 Windows VM
@@ -217,10 +217,9 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。
 此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
-- 應強化與虛擬機器互動的網際網路網路安全性群組規則
+- 應在網際網路對應虛擬機器中套用自適性網路強化建議
 - 應限制透過網際網路面向端點存取
 - 稽核不受限制的儲存體帳戶網路存取
-- 應在 IaaS 上強化 Web 應用程式的 NSG 規則
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 界限保護 | 存取點
 
@@ -239,7 +238,7 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義來協助您監視針對通訊協定所實作的密碼編譯機制，進而協助您保護傳輸資訊的機密和完整性。 確保通訊受到適當加密，可協助您符合貴組織的需求，或保護資訊免於遭受未經授權的揭露和修改。
 
 - API 應用程式應只可經由 HTTPS 存取
-- 稽核未使用安全通訊協定的 Windows 網頁伺服器
+- 從未使用安全通訊協定的 Windows 網頁伺服器顯示稽核結果
 - 部署需求以稽核未使用安全通訊協定的 Windows 網頁伺服器
 - 函式應用程式應只可經由 HTTPS 存取
 - 應該只允許對 Redis Cache 的安全連線

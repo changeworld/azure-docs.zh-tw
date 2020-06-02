@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: 存取權杖
               href: access-tokens.md
+            - name: 使用者資訊端點
+              href: userinfo.md
             - name: 憑證認證
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 通訊協定

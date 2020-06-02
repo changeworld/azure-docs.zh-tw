@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685442"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930466"
 ---
 # <a name="about-azure-key-vault-secrets"></a>關於 Azure Key Vault 秘密
 
@@ -27,13 +27,17 @@ Key Vault 提供儲存祕密 (例如密碼和資料庫連接字串) 的安全機
 
 Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密的內容類型，以利在擷取秘密資料時進行解譯。 此欄位的長度上限為 255 個字元。 沒有任何預先定義的值。 建議的用法是作為解譯秘密資料的提示。 例如，實作可能會將密碼和憑證儲存為秘密，然後使用此欄位來區分。 沒有任何預先定義的值。  
 
+## <a name="encryption"></a>加密
+
+您 Key Vault 中的所有秘密都會以加密方式儲存。 這種加密是透明的，使用者無須執行任何動作。 Azure Key Vault 服務會在您新增秘密時將其加密，並在您讀取秘密時自動加以解密。 加密金鑰對每個金鑰保存庫而言都是唯一的。
+
 ## <a name="secret-attributes"></a>秘密屬性
 
 除了秘密內容，您可以指定下列屬性：  
 
-- *exp*：選擇性的 IntDate，預設值為永久 (**forever**)。 Exp  (到期時間) 屬性會識別到期時間，在此時間點或之後「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用，因為它告知金鑰保存庫的使用者服，特定祕密可能無法使用。 其值必須是包含 IntDate 值的數字。   
-- *nbf*：選擇性的 IntDate，預設值為現在 (**now**)。 nbf  (不早於) 屬性會識別一個時間，在此時間之前「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用。 其值必須是包含 IntDate 值的數字。 
-- enabled  ：選擇性的布林值，預設值是 **true**。 此屬性會指定是否可以擷取秘密資料。 當作業發生於 *nbf* 和 *exp* 之間時，enabled 屬性會用來搭配 *nbf* 和 *exp* 使用，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf  和 exp  範圍外的作業將自動禁止，除了在[特定情況下](#date-time-controlled-operations)。  
+- *exp*：選擇性的 IntDate，預設值為永久 (**forever**)。 Exp (到期時間) 屬性會識別到期時間，在此時間點或之後「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用，因為它告知金鑰保存庫的使用者服，特定祕密可能無法使用。 其值必須是包含 IntDate 值的數字。   
+- *nbf*：選擇性的 IntDate，預設值為現在 (**now**)。 nbf (不早於) 屬性會識別一個時間，在此時間之前「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用。 其值必須是包含 IntDate 值的數字。 
+- enabled：選擇性的布林值，預設值是 **true**。 此屬性會指定是否可以擷取秘密資料。 當作業發生於 *nbf* 和 *exp* 之間時，enabled 屬性會用來搭配 *nbf* 和 *exp* 使用，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf 和 exp 範圍外的作業將自動禁止，除了在[特定情況下](#date-time-controlled-operations)。  
 
 任何包含秘密屬性的回應中，可包含其他唯讀屬性：  
 
@@ -42,7 +46,7 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 
 ### <a name="date-time-controlled-operations"></a>受到日期時間控制的作業
 
-秘密的**取得**作業將會用於尚未生效和過期的秘密 (在 nbf   / exp  範圍外)。 呼叫祕密的**取得**作業來取得尚未生效的秘密，可以用於測試。 擷取 (**取得**) 過期的密碼，可用於復原作業。
+秘密的**取得**作業將會用於尚未生效和過期的秘密 (在 nbf  / exp 範圍外)。 呼叫祕密的**取得**作業來取得尚未生效的秘密，可以用於測試。 擷取 (**取得**) 過期的密碼，可用於復原作業。
 
 ## <a name="secret-access-control"></a>秘密存取控制
 

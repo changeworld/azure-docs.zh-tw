@@ -9,21 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420872"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198509"
 ---
 # <a name="connect-to-synapse-sql"></a>連線到 Synapse SQL
 連線到 Azure Synapse Analytics 中的 Synapse SQL 功能。
 
 ## <a name="supported-tools-for-sql-on-demand-preview"></a>支援 SQL 隨選的工具 (預覽)
 
-完全支援的工具為 Azure Data Studio (預覽)。
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 從 1.18.0 版開始便已獲得完整支援。 SSMS 從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
-SQL Server Management Studio 從 18.4 版開始可部分支援。 其中有一些受限功能，例如連線和查詢。
+> [!NOTE]
+> 如果 AAD 登入在執行查詢時開啟連線超過 1 小時，任何仰賴 AAD 的查詢都會失敗。 這包括使用 AAD 傳遞以及會與 AAD 互動的陳述式 (例如 CREATE EXTERNAL PROVIDER) 來查詢儲存體。 這會影響每個讓連線保持開啟的工具，例如 SSMS 和 ADS 中的查詢編輯器。 開啟新連線以執行查詢的工具 (例如 Synapse Studio) 則不受影響。
+
+> 您可以重新啟動 SSMS，或在 ADS 中連線再中斷連線，以減輕這個問題。 
 
 ## <a name="find-your-server-name"></a>尋找您的伺服器名稱
 
@@ -33,7 +36,7 @@ SQL Server Management Studio 從 18.4 版開始可部分支援。 其中有一�
 若要尋找完整的伺服器名稱：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [Synapse 工作區]  。
+2. 按一下 [Synapse 工作區]。
 3. 按一下您想要連線的工作區。
 4. 移至概觀。
 5. 找出完整的伺服器名稱。
@@ -47,7 +50,7 @@ SQL Server Management Studio 從 18.4 版開始可部分支援。 其中有一�
 ![SQL 隨選的完整伺服器名稱](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支援的驅動程式和連接字串
-Synapse SQL 支援 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]  。 下列一些範例顯示每個驅動程式的連接字串。
+Synapse SQL 支援 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]。 下列一些範例顯示每個驅動程式的連接字串。
 
 > [!NOTE]
 > 請考慮將連線逾時設定為 300 秒，以便在短時間無法使用時能夠維持連線。

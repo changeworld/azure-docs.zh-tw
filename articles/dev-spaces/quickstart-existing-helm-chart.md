@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和命令列，在 Azure Kubernetes Service 上使用現有的 Helm 圖表開發應用程式
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e767b1ade2a80882ee33ff1fdd718c691dcefcf3
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025283"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996686"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>快速入門：在 Kubernetes 上使用現有的 Helm 圖表開發應用程式 - Azure Dev Spaces
 在本指南中，您將了解如何：
@@ -26,7 +26,7 @@ ms.locfileid: "82025283"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>建立 Azure Kubernetes Service 叢集
 
-您必須在[支援的區域][supported-regions]中建立 AKS 叢集。 下列命令會建立名為 MyResourceGroup  的資源群組與名為 MyAKS  的 AKS 叢集。
+您必須在[支援的區域][supported-regions]中建立 AKS 叢集。 下列命令會建立名為 MyResourceGroup 的資源群組與名為 MyAKS 的 AKS 叢集。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -48,7 +48,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 
 在本文中，您會使用 [Azure Dev Spaces 應用程式範例](https://github.com/Azure/dev-spaces)來示範如何使用 Azure Dev Spaces。
 
-請複製 GitHub 中的應用程式，然後瀏覽至 dev-spaces/samples/python/getting-started/webfrontend  目錄：
+請複製 GitHub 中的應用程式，然後瀏覽至 dev-spaces/samples/python/getting-started/webfrontend 目錄：
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -96,18 +96,18 @@ Press Ctrl+C to detach
 ...
 ```
 
-您可以藉由開啟公用 URL (顯示於 `azds up` 命令所產生的輸出中)，來查看服務的執行。 在此範例中，公用 URL 為 http://dev.service.1234567890abcdef1234.eus.azds.io/  。
+您可以藉由開啟公用 URL (顯示於 `azds up` 命令所產生的輸出中)，來查看服務的執行。 在此範例中，公用 URL 為 `http://dev.service.1234567890abcdef1234.eus.azds.io/`。
 
 > [!NOTE]
 > 當您在執行 `azds up` 同時瀏覽至您的服務時，HTTP 要求追蹤也會顯示在 `azds up` 命令的輸出中。 這些追蹤可協助您針對服務進行疑難排解及偵錯。 當執行 `azds up` 時，您可以使用 `--disable-http-traces` 來停用這些追蹤。
 
-如果您使用 Ctrl+c  停止 `azds up` 命令，則服務會繼續在 AKS 中執行，且公用 URL 會維持可供使用的狀態。
+如果您使用 Ctrl+c 停止 `azds up` 命令，則服務會繼續在 AKS 中執行，且公用 URL 會維持可供使用的狀態。
 
 ## <a name="update-code"></a>更新程式碼
 
 若要部署更新過的服務版本，您可以在專案中更新任何檔案，然後重新執行 `azds up` 命令。 例如：
 
-1. 如果 `azds up` 仍在執行，請按 Ctrl+c  。
+1. 如果 `azds up` 仍在執行，請按 Ctrl+c。
 1. 將 [`webfrontend.py` 中的第 13 行](https://github.com/Azure/dev-spaces/blob/master/samples/python/getting-started/webfrontend/webfrontend.py#L13) \(英文\) 更新為：
     
     ```javascript
@@ -127,7 +127,7 @@ Press Ctrl+C to detach
     ```
 
 1. 瀏覽至執行中的服務，然後觀察您的變更。
-1. 按 Ctrl+c  來停止 `azds up` 命令。
+1. 按 Ctrl+c 來停止 `azds up` 命令。
 
 ## <a name="clean-up-your-azure-resources"></a>清除 Azure 資源
 

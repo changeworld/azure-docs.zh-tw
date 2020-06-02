@@ -1,30 +1,30 @@
 ---
 title: 教學課程 - 建置採用 Blob 儲存體的高可用性應用程式
 titleSuffix: Azure Storage
-description: 使用讀取權限異地備援儲存體讓應用程式資料具有高可用性。
+description: 使用讀取權限異地區域備援 (RA-GZRS) 儲存體讓應用程式資料具有高可用性。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606017"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856123"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教學課程：建置採用 Blob 儲存體的高可用性應用程式
 
 本教學課程是一個系列的第一部分。 在其中，您可了解如何讓應用程式資料在 Azure 中具有高可用性。
 
-當您完成本教學課程時，就會擁有主控台應用程式，可從[讀取權限異地備援](../common/storage-redundancy.md) (RA-GRS) 儲存體帳戶上傳及擷取 Blob。
+當您完成本教學課程時，就會擁有主控台應用程式，可從[讀取權限異地區域備援](../common/storage-redundancy.md) (RA-GZRS) 儲存體帳戶上傳及擷取 Blob。
 
-RA-GRS 的運作方式是將交易從主要區域複寫到次要區域。 此複寫程序可保證次要區域中的資料是最終一致的。 該應用程式會使用[斷路器](/azure/architecture/patterns/circuit-breaker)模式來決定要連線到哪一個端點，並且在模擬失敗和復原時自動在端點間切換。
+Azure 儲存體中的異地備援可將交易從主要區域非同步複寫到相隔數百英哩的次要區域。 此複寫程序可保證次要區域中的資料是最終一致的。 主控台應用程式會使用[斷路器](/azure/architecture/patterns/circuit-breaker)模式來決定要連線至哪一個端點，並且在模擬失敗和復原時自動在端點間切換。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -64,25 +64,24 @@ RA-GRS 的運作方式是將交易從主要區域複寫到次要區域。 此複
 
 儲存體帳戶提供唯一命名空間來儲存及存取您的 Azure 儲存體資料物件。
 
-請遵循下列步驟來建立讀取權限異地備援儲存體帳戶：
+請依照下列步驟建立讀取權限異地區域備援 (RA-GZRS) 儲存體帳戶：
 
-1. 選取 Azure 入口網站左上角的 [建立資源]  按鈕。
-2. 從 [新增]  頁面選取 [儲存體]  。
-3. 在 [精選]  之下選取 [儲存體帳戶 - blob、檔案、資料表、佇列]  。
-4. 在儲存體帳戶表單中填寫下列資訊 (如下圖所示)，然後選取 [建立]  ：
+1. 在 Azure 入口網站中選取 [建立資源] 按鈕。
+2. 在 [新增] 頁面中，選取 [儲存體帳戶 - Blob、檔案、資料表、佇列]。
+4. 在儲存體帳戶表單中填寫下列資訊 (如下圖所示)，然後選取 [建立]：
 
-   | 設定       | 建議的值 | 描述 |
+   | 設定       | 範例值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **名稱** | mystorageaccount | 用於儲存體帳戶的唯一值 |
-   | **部署模型** | Resource Manager  | Resource Manager 含有最新的功能。|
-   | **帳戶類型** | StorageV2 | 如需帳戶類型的詳細資訊，請參閱[儲存體帳戶的類型](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **效能** | 標準 | 標準便足供此案例範例使用。 |
-   | **複寫**| 讀取權限異地備援儲存體 (RA-GRS) | 這是讓範例起作用的必要項目。 |
-   |**訂用帳戶** | 您的訂用帳戶 |如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.azure.com/Subscriptions)。 |
-   |**ResourceGroup** | myResourceGroup |如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
-   |**位置** | 美國東部 | 選擇位置。 |
+   | **訂用帳戶** | *我的訂用帳戶* | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.azure.com/Subscriptions)。 |
+   | **ResourceGroup** | *myResourceGroup* | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
+   | **名稱** | *mystorageaccount* | 儲存體帳戶的唯一名稱。 |
+   | **位置** | 美國東部 | 選擇位置。 |
+   | **效能** | *Standard* | 在範例案例中，標準效能是不錯的選擇。 |
+   | **帳戶類型** | *StorageV2* | 建議使用一般用途 v2 儲存體帳戶。 如需 Azure 儲存體帳戶類型的詳細資訊，請參閱[儲存體帳戶概觀](../common/storage-account-overview.md)。 |
+   | **複寫**| *讀取權限異地區域備援儲存體 (RA-GZRS)* | 主要區域具區域備援性質，若已啟用次要區域的讀取權限，則會複寫至次要區域。 |
+   | **存取層**| *經常性* | 針對經常存取的資料，請使用經常性存取層。 |
 
-![建立儲存體帳戶](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![建立儲存體帳戶](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>下載範例
 
@@ -118,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 在應用程式，您必須提供儲存體帳戶的連接字串。 您可以在執行應用程式的本機電腦上，將此連接字串儲存在環境變數內。 請根據您的作業系統，遵循以下其中一個範例來建立環境變數。
 
-在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定]  下的 [存取金鑰]  。 從主要或次要金鑰複製**連接字串**。 根據您的作業系統執行下列其中一個命令，將 \<yourconnectionstring\> 取代為實際的連接字串。 此命令會將一個環境變數儲存至本機電腦。 在 Windows 中，必須重新載入**命令提示字元**或您所使用的殼層，才能使用此環境變數。
+在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定] 下的 [存取金鑰]。 從主要或次要金鑰複製**連接字串**。 根據您的作業系統執行下列其中一個命令，將 \<yourconnectionstring\> 取代為實際的連接字串。 此命令會將一個環境變數儲存至本機電腦。 在 Windows 中，必須重新載入**命令提示字元**或您所使用的殼層，才能使用此環境變數。
 
 ### <a name="linux"></a>Linux
 
@@ -136,7 +135,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 您必須在應用程式中提供儲存體帳戶認證。 您可以在執行應用程式的本機電腦上，將此資訊儲存在環境變數中。 視您的作業系統而定，遵循以下其中一個範例來建立環境變數。
 
-在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定]  下的 [存取金鑰]  。 將 [儲存體帳戶名稱]  和 [金鑰]  值貼到下列命令中，取代 \<youraccountname\> 和 \<youraccountkey\> 預留位置。 此命令會將環境變數儲存至本機電腦。 在 Windows 中，必須重新載入**命令提示字元**或您所使用的殼層，才能使用此環境變數。
+在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定] 下的 [存取金鑰]。 將 [儲存體帳戶名稱] 和 [金鑰] 值貼到下列命令中，取代 \<youraccountname\> 和 \<youraccountkey\> 預留位置。 此命令會將環境變數儲存至本機電腦。 在 Windows 中，必須重新載入**命令提示字元**或您所使用的殼層，才能使用此環境變數。
 
 ### <a name="linux"></a>Linux
 
@@ -161,7 +160,7 @@ AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-您可以在 Azure 入口網站中，瀏覽至儲存體帳戶，然後在 [設定]  區段中選取 [存取金鑰]  ，即可找到此資訊。
+您可以在 Azure 入口網站中，瀏覽至儲存體帳戶，然後在 [設定] 區段中選取 [存取金鑰]，即可找到此資訊。
 
 安裝必要的相依性。 若要這樣做，請開啟命令提示字元，瀏覽至範例資料夾，然後輸入 `npm install`。
 
@@ -171,9 +170,9 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-在 Visual Studio 中，按下 **F5** 或選取 [啟動]  ，開始對應用程式進行偵錯。 如有設定，Visual Studio 會自動還原缺少的 NuGet 套件，如需深入了解，請造訪[透過套件還原來安裝和解除安裝套件](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)。
+在 Visual Studio 中，按下 **F5** 或選取 [啟動]，開始對應用程式進行偵錯。 如有設定，Visual Studio 會自動還原缺少的 NuGet 套件，如需深入了解，請造訪[透過套件還原來安裝和解除安裝套件](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)。
 
-隨即會有主控台視窗啟動，應用程式也會開始執行。 此應用程式會將 **HelloWorld.png** 影像從解決方案上傳到儲存體帳戶。 此應用程式會進行檢查，以確保影像已複寫到次要 RA-GRS 端點。 之後，則會開始下載影像，最多會下載 999 次。 每次的讀取都會以 **P** 或 **S** 來表示。其中，**P** 代表主要端點，**S** 則代表次要端點。
+隨即會有主控台視窗啟動，應用程式也會開始執行。 此應用程式會將 **HelloWorld.png** 影像從解決方案上傳到儲存體帳戶。 此應用程式會進行檢查，以確定影像已複寫至次要 RA-GZRS 端點。 之後，則會開始下載影像，最多會下載 999 次。 每次的讀取都會以 **P** 或 **S** 來表示。其中，**P** 代表主要端點，**S** 則代表次要端點。
 
 ![主控台應用程式執行中](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 # <a name="python"></a>[Python](#tab/python)
 
-若要在終端機或命令提示字元上執行應用程式，請移至 **circuitbreaker.py** 目錄，然後輸入 `python circuitbreaker.py`。 此應用程式會將 **HelloWorld.png** 影像從解決方案上傳到儲存體帳戶。 此應用程式會進行檢查，以確保影像已複寫到次要 RA-GRS 端點。 之後，則會開始下載影像，最多會下載 999 次。 每次的讀取都會以 **P** 或 **S** 來表示。其中，**P** 代表主要端點，**S** 則代表次要端點。
+若要在終端機或命令提示字元上執行應用程式，請移至 **circuitbreaker.py** 目錄，然後輸入 `python circuitbreaker.py`。 此應用程式會將 **HelloWorld.png** 影像從解決方案上傳到儲存體帳戶。 此應用程式會進行檢查，以確定影像已複寫至次要 RA-GZRS 端點。 之後，則會開始下載影像，最多會下載 999 次。 每次的讀取都會以 **P** 或 **S** 來表示。其中，**P** 代表主要端點，**S** 則代表次要端點。
 
 ![主控台應用程式執行中](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>後續步驟
 
-在系列的第一部分中，您已了解如何使用 RA-GRS 儲存體帳戶讓應用程式具有高可用性。
+在系列的第一部分中，您已了解如何使用 RA-GZRS 儲存體帳戶讓應用程式具有高可用性。
 
-請進入系列的第二個部分，以了解如何模擬失敗狀況，並強制應用程式使用次要 RA-GRS 端點。
+請進入系列的第二個部分，以了解如何模擬失敗狀況，並強制應用程式使用次要 RA-GZRS 端點。
 
 > [!div class="nextstepaction"]
-> [從主要區域模擬讀取失敗](storage-simulate-failure-ragrs-account-app.md)
+> [從主要區域模擬讀取失敗](simulate-primary-region-failure.md)

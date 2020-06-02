@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181591"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201336"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "82181591"
 本教學課程將示範 Angular 單頁應用程式 (SPA) 如何執行下列動作：
 - 登入個人帳戶、公司帳戶或學校帳戶。
 - 取得存取權杖。
-- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點  中存取權杖的 API。
+- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API。
 
 >[!NOTE]
 >本教學課程將逐步引導您了解如何使用 Microsoft 驗證程式庫 (MSAL) 來建立新的 Angular SPA。 如果想下載範例應用程式，請參閱[快速入門](quickstart-v2-angular.md)。
@@ -75,7 +75,7 @@ ng generate component page-name                  # To add a new page (such as a 
 
 依照指示，在 Azure 入口網站中[註冊單頁應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
 
-在您註冊的應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
+在您註冊的應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
 
 將您的**重新導向 URI** 值註冊為 **http://localhost:4200/** 並啟用隱含授與設定。
 
@@ -125,9 +125,9 @@ ng generate component page-name                  # To add a new page (such as a 
 
     |值名稱|關於|
     |---------|---------|
-    |Enter_the_Application_Id_Here|在應用程式註冊的 [概觀]  頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
+    |Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
     |Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
-    |Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」  ，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」  ，請將此值取代為 [組織]  。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」  ，請將此值取代為 [通用]  。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」  ，請將此值取代為 [取用者]  。 |
+    |Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
     |Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|
 
     如需可用之可設定選項的詳細資訊，請參閱[將用戶端應用程式初始化](msal-js-initializing-client-applications.md) \(英文\)。
@@ -330,20 +330,19 @@ logout() {
 
 ## <a name="add-scopes-and-delegated-permissions"></a>新增範圍與委派的權限
 
-Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Calendars.Read  範圍才能列出使用者的行事曆。
+Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Calendars.Read 範圍才能列出使用者的行事曆。
 
-為了在應用程式內容中存取使用者的行事曆，請將 Calendars.Read  委派權限新增至應用程式註冊資訊。 接著，將 Calendars.Read  範圍新增至 `acquireTokenSilent` 呼叫。
+為了在應用程式內容中存取使用者的行事曆，請將 Calendars.Read 委派權限新增至應用程式註冊資訊。 接著，將 Calendars.Read 範圍新增至 `acquireTokenSilent` 呼叫。
 
 >[!NOTE]
 >系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
-如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId  作為範圍以取得權杖。
+如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId 作為範圍以取得權杖。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，在 Angular 教學課程中了解如何讓使用者登入並取得權杖：
+如果您不熟悉身分識別和存取管理，我們有數篇文章可協助您了解新式驗證概念，就從[驗證與授權](authentication-vs-authorization.md)開始。
 
-> [!div class="nextstepaction"]
-> [Angular 教學課程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+如果您想要深入了解如何在 Microsoft 身分識別平台上開發單頁應用程式，有多個部分的[案例：單頁應用程式](scenario-spa-overview.md)系列文章可協助您開始著手。

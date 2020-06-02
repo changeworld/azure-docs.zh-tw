@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbd42668a0a1821e0ab7a6edc8ad05c79bfebe7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165717"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123520"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -235,7 +235,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     
     在本教學課程中，儲存體帳戶只會產生幾美分的費用。
     
-1. 使用命令，針對 [彈性進階 1]  定價層 (`--sku EP1`)、西歐區域 (`-location westeurope` 或使用您附近的適當區域) 和 Linux 容器 (`--is-linux`) 中名為 `myPremiumPlan` 的 Azure Functions 建立進階方案。
+1. 使用命令，針對 [彈性進階 1] 定價層 (`--sku EP1`)、西歐區域 (`-location westeurope` 或使用您附近的適當區域) 和 Linux 容器 (`--is-linux`) 中名為 `myPremiumPlan` 的 Azure Functions 建立進階方案。
 
     ```azurecli
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
@@ -295,17 +295,24 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
     # <a name="portal"></a>[入口網站](#tab/portal)
 
-    1. 登入 Azure 入口網站，然後在頁面頂端的 [**搜尋**] 方塊中輸入函式應用程式名稱，以找出您的函式應用程式。 在結果中，選取 [App Service]  資源。
+    1. 登入 Azure 入口網站，然後搜尋並選取 [函式應用程式]。
 
-    1. 在左側導覽面板中的 [函式 (唯讀)]  底下，選取您的函式名稱。
+    1. 選取您要驗證的函式。
 
-    1. 在詳細資料面板中，選取 [</> 取得函式 URL]  ：
+    1. 在左側導覽面板中選取 [函式]，然後選取您要驗證的函式。
+
+        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+
     
-        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+    1. 選取 [取得函式 URL]。
 
-    1. 在快顯視窗中，選取 [預設 (函式金鑰)]  ，然後選取 [複製]  。 此金鑰是緊接在 `?code=` 後面的字元字串。
+        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
-        ![從 Azure 入口網站複製函式 URL](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+    
+    1. 在快顯視窗中選取 [預設 (函式金鑰)]，然後將 URL 複製到剪貼簿。 此金鑰是緊接在 `?code=` 後面的字元字串。
+
+        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+
 
     > [!NOTE]  
     > 因為您的函數應用程式會部署為容器，所以，您無法在入口網站中對函式程式碼進行變更。 您必須改為更新本機映像中的專案、再次將映像推送至登錄，然後重新部署至 Azure。 您可以在後面的章節中設定持續部署。
@@ -336,7 +343,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     1. 命令的輸出為函式金鑰。 然後完整的函式 URL 為 `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`，並以您特定的值取代 `<app_name>`、`<function_name>` 和 `<key>`。
     
         > [!NOTE]
-        > 此處所擷取的金鑰是「主機」  金鑰，其適用於函式應用程式中的所有函式；針對入口網站顯示的方法只會擷取一個函式的金鑰。
+        > 此處所擷取的金鑰是「主機」金鑰，其適用於函式應用程式中的所有函式；針對入口網站顯示的方法只會擷取一個函式的金鑰。
 
     ---
 
@@ -344,7 +351,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
     ![瀏覽器中的函式回應。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. 若要測試授權，請移除 URL 中的 code= 參數，並確認您不會取得來自函式的回應。
+1. 若要測試授權，請移除 URL 中的 `code=` 參數，並確認您不會取得來自函式的回應。
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>啟用持續部署至 Azure
@@ -361,7 +368,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
 1. 將部署 Webhook URL 複製到剪貼簿。
 
-1. 開啟 [Docker Hub](https://hub.docker.com/)、登入，然後選取導覽列上的 [存放庫]  。 找出並選取映像，選取 [Webhook]  索引標籤、指定 [Webhook 名稱]  、在 [Webhook URL]  中貼入您的 URL，然後選取 [建立]  ：
+1. 開啟 [Docker Hub](https://hub.docker.com/)、登入，然後選取導覽列上的 [存放庫]。 找出並選取映像，選取 [Webhook] 索引標籤、指定 [Webhook 名稱]、在 [Webhook URL] 中貼入您的 URL，然後選取 [建立]：
 
     ![在 DockerHub 存放庫中新增 Webhook](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -421,7 +428,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
 
 1. 在瀏覽器中，開啟 `https://<app_name>.scm.azurewebsites.net/`，以您的唯一名稱取代 `<app_name>`。 此 URL 是您函式應用程式容器的進階工具(Kudu) 端點。
 
-1. 登入您的 Azure 帳戶，然後選取 [SSH]  ，以建立與容器的連線。 如果 Azure 仍在更新容器映像，連線可能需要幾分鐘的時間。
+1. 登入您的 Azure 帳戶，然後選取 [SSH]，以建立與容器的連線。 如果 Azure 仍在更新容器映像，連線可能需要幾分鐘的時間。
 
 1. 建立與容器的連線之後，執行 `top` 命令來檢視目前執行中的程序。 
 
@@ -429,7 +436,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
 
 ## <a name="write-to-an-azure-storage-queue"></a>寫入至 Azure 儲存體佇列
 
-Azure Functions 可讓您將函式連線至其他 Azure 服務和資源，而不需要撰寫自己的整合程式碼。 這些*繫結*同時代表輸入和輸出，會宣告於函式定義內。 繫結中的資料會提供給函式作為參數。 「觸發程序」  是一種特殊的輸入繫結。 雖然函式只有一個觸發程序，但可以有多個輸入和輸出繫結。 若要深入了解，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
+Azure Functions 可讓您將函式連線至其他 Azure 服務和資源，而不需要撰寫自己的整合程式碼。 這些*繫結*同時代表輸入和輸出，會宣告於函式定義內。 繫結中的資料會提供給函式作為參數。 「觸發程序」是一種特殊的輸入繫結。 雖然函式只有一個觸發程序，但可以有多個輸入和輸出繫結。 若要深入了解，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
 
 本節說明如何將您的函式與 Azure 儲存體佇列整合。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至佇列中的訊息。
 

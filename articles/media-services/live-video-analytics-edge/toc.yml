@@ -1,0 +1,82 @@
+- name: IoT Edge 上的 Live Video Analytics (預覽) 文件
+  href: index.yml
+- name: 切換至 Azure 媒體服務 v3 文件
+  href: ../latest/index.yml
+- name: 概觀
+  items:
+    - name: 關於 IoT Edge 上的 Live Video Analytics
+      href: overview.md
+    - name: 詞彙
+      href: terminology.md
+    - name: 新功能
+      items:
+        - name: 版本資訊
+          href: release-notes.md
+- name: 快速入門
+  items:
+    - name: 開始使用 - IoT Edge 上的 Live Video Analytics
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 偵測動作、將影片錄製到媒體服務
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: 偵測動作並發出事件
+      href: detect-motion-emit-events-quickstart.md
+    - name: 在邊緣裝置上偵測動作、錄製影片
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: 使用自己的模型執行 Live Video Analytics
+      href: use-your-model-quickstart.md
+- name: 教學課程
+  items:
+    - name: 連續影片錄製
+      href: continuous-video-recording-tutorial.md
+    - name: 以事件為基礎的影片錄製
+      href: event-based-video-recording-tutorial.md
+    - name: 播放多日錄製
+      href: playback-multi-day-recordings-tutorial.md
+- name: 範例
+  items:
+    - name: 'IoT Edge C# 範例上的 Live Video Analytics'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: 概念
+  items:
+    - name: 媒體圖表
+      href: media-graph-concept.md
+    - name: 影片錄製
+      href: video-recording-concept.md
+    - name: 影片播放
+      href: video-playback-concept.md
+    - name: 案例
+      items:
+        - name: 連續影片錄製
+          href: continuous-video-recording-concept.md
+        - name: 以事件為基礎的影片錄製
+          href: event-based-video-recording-concept.md
+        - name: 沒有影片錄製的 Live Video Analytics
+          href: analyze-live-video-concept.md
+- name: 操作指南
+  items:
+    - name: 建立自訂 Azure Resource Manager 角色
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: 部署到 IoT Edge 裝置
+      href: deploy-iot-edge-device.md
+    - name: 監視和記錄
+      href: monitoring-logging.md
+    - name: 播放錄製
+      href: playback-recordings-how-to.md
+    - name: 管理錄製原則
+      href: manage-recording-policy-how-to.md
+    - name: 使用您選擇的 AI 分析即時影片
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: 疑難排解
+      href: troubleshoot-how-to.md
+- name: 參考
+  items:
+    - name: 直接方法
+      href: direct-methods.md
+    - name: 模組對應項組態結構描述
+      href: module-twin-configuration-schema.md
+    - name: 配額和限制
+      href: quotas-limitations.md
+    - name: 常見問題集
+      href: faq.md
+    - name: 生產環境就緒和最佳做法
+      href: production-readiness.md

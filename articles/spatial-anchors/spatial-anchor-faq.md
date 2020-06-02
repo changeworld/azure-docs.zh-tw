@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844882"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004479"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -49,6 +49,10 @@ Azure Spatial Anchors 是一個受控雲端服務和開發人員平台，可在 
 
 **答：** 錨點會依 Azure 帳戶隔離。 應用程式必須已獲得帳戶的存取權，才能存取該帳戶中的錨點。
 
+**問：Azure Spatial Anchors 如何儲存資料？**
+
+**答：** 所有資料都會使用 Microsoft 管理的資料加密金鑰進行加密儲存。
+
 **問：使用 Azure Spatial Anchors 時，會在服務上傳送和儲存哪些環境相關資訊？是否會傳送及儲存環境的圖片？**
 
 **答**：在建立或尋找錨點時，環境的圖片會在裝置上處理成衍生的格式。 這個衍生的格式傳送至服務並儲存於其中。
@@ -59,7 +63,6 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 ![環境及其衍生的疏鬆點雲](./media/sparse-point-cloud.png)
 *圖 1：環境及其衍生的疏鬆點雲*
-
 
 **問：是否有方法可將診斷資訊傳送給 Microsoft？**
 

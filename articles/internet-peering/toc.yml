@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: 透過路由伺服器建立或修改 Exchange 對等互連
+      items:
+        - name: 入口網站
+          href: how-to-exchange-route-server-portal.md
 - name: 參考
   items:
     - name: Azure CLI

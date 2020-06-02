@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77919663"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996972"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>快速入門：使用適用於 Ruby 的文字分析用戶端程式庫
 
@@ -31,7 +31,7 @@ ms.locfileid: "77919663"
 > [!NOTE]
 > 本快速入門僅適用於文字分析 2.1 版。 目前無法使用適用於 Ruby 的 v3 用戶端程式庫。
 
-[參考文件](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [套件 (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [套件 (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`
 
 ## <a name="code-examples"></a>程式碼範例
 
-這些程式碼片段說明如何使用適用於 Python 的文字分析用戶端程式庫來執行下列工作：
+這些程式碼片段說明如何使用適用於 Ruby 的文字分析用戶端程式庫執行下列工作：
 
 * [驗證用戶端](#authenticate-the-client)
 * [情感分析](#sentiment-analysis)

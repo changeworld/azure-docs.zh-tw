@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: VM 部署指引
   items:
+    - name: 升級至 SLES 15 SP1
+      href: linux-upgrade-suse-15sp1.md
     - name: 新的 VM 部署
       items:
         - name: Linux

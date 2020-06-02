@@ -4,12 +4,12 @@ description: 了解如何將輸出繫結新增至您的 Visual Studio Code 專�
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673476"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125826"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 
@@ -41,7 +41,7 @@ ms.locfileid: "80673476"
 
 1. 按 F1 鍵來開啟命令選擇區，然後搜尋並執行 `Azure Functions: Download Remote Settings....` 命令。 
 
-1. 選擇您在先前的文章中所建立的函式應用程式。 選取 [全部皆是]  來覆寫現有的本機設定。 
+1. 選擇您在先前的文章中所建立的函式應用程式。 選取 [全部皆是] 來覆寫現有的本機設定。 
 
     > [!IMPORTANT]  
     > 由於 local.settings.json 檔案中包含祕密，因此一律不會被發行，且會從原始檔控制中排除。
@@ -56,7 +56,7 @@ ms.locfileid: "80673476"
 
 您的專案已設定為使用[擴充功能配套](functions-bindings-register.md#extension-bundles)，這會自動安裝一組預先定義的擴充功能套件。 
 
-系統會在專案根目錄的 host. json 檔案中啟用擴充功能配套，如下所示：
+系統會在專案根目錄的 host. json 檔案中啟用擴充功能套件組合，如下所示：
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -160,11 +160,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 如果您已經安裝 Azure 儲存體總管並將它連線至您的 Azure 帳戶，請略過此節內容。
 
-1. 執行 Azure 儲存體總管工具，選取左側的連線圖示，然後選取 [新增帳戶]  。
+1. 執行 Azure 儲存體總管工具，選取左側的連線圖示，然後選取 [新增帳戶]。
 
     ![將 Azure 帳戶新增至 Microsoft Azure 儲存體總管](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. 在 [連線]  對話方塊中，選擇 [新增 Azure 帳戶]  ，選擇您的 [Azure 環境]  ，然後選取 [登入]  。 
+1. 在 [連線] 對話方塊中，選擇 [新增 Azure 帳戶]，選擇您的 [Azure 環境]，然後選取 [登入]。 
 
     ![登入您的 Azure 帳戶](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -174,7 +174,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 在 Visual Studio Code 中，按 F1 鍵來開啟命令選擇區，然後搜尋並執行 `Azure Storage: Open in Storage Explorer` 命令，並選擇您的儲存體帳戶名稱。 您的儲存體帳戶會在 Azure 儲存體總管中開啟。  
 
-1. 展開 [佇列]  節點，然後選取名為 **outqueue** 的佇列。 
+1. 展開 [佇列] 節點，然後選取名為 **outqueue** 的佇列。 
 
    佇列包含訊息，該訊息將您執行 HTTP 觸發程序函式時建立的輸出繫結排入佇列。 如果您已叫用預設 `name` 值為 *Azure* 的函式，則佇列訊息是 *Name passed to the function:Azure*。
 
@@ -188,7 +188,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 在 Visual Studio Code 中按 F1 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Deploy to function app...`。
 
-1. 選擇您在第一篇文章中所建立的函式應用程式。 由於您是要將專案部署至相同的應用程式，請選取 [部署]  來關閉關於覆寫檔案的警告。
+1. 選擇您在第一篇文章中所建立的函式應用程式。 由於您是要將專案部署至相同的應用程式，請選取 [部署] 來關閉關於覆寫檔案的警告。
 
 1. 部署完成後，您便可以再次使用 cURL 或瀏覽器來測試重新部署的函式。 如同以往，將查詢字串 `&name=<yourname>` 附加至 URL，如下列範例所示：
 
@@ -200,7 +200,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在 Azure 中「資源」  是指函式應用程式、函式、儲存體帳戶等等。 它們會分組為「資源群組」  ，您可以藉由刪除群組來刪除群組中的所有項目。
+在 Azure 中，「資源」是指函式應用程式、函式、儲存體帳戶等等。 其會分組為「資源群組」，您可以藉由刪除群組來刪除群組中的所有項目。
 
 您已建立資源來完成這些快速入門。 您可能必須支付這些資源，取決於您的[帳戶狀態](https://azure.microsoft.com/account/)和[服務定價](https://azure.microsoft.com/pricing/)。 如果您不再需要資源，刪除方式如下：
 

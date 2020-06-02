@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7e164420b02be35069103ac06238d56449eb7ef
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78274082"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996724"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 
@@ -66,33 +66,33 @@ ms.locfileid: "78274082"
 
 ## <a name="step-2-create-a-new-aspnet-core-mvc-application"></a><a name="create-a-new-mvc-application"></a>步驟 2：建立新的 ASP.NET Core MVC 應用程式
 
-1. 開啟 Visual Studio，然後選取 [建立新專案]  。
+1. 開啟 Visual Studio，然後選取 [建立新專案]。
 
-1. 在 [建立新專案]  中，針對 C# 尋找並選取 [ASP.NET Core Web 應用程式]  。 選取 [下一步]  以繼續操作。
+1. 在 [建立新專案] 中，針對 C# 尋找並選取 [ASP.NET Core Web 應用程式]。 選取 [下一步] 以繼續操作。
 
    ![建立新的 ASP.NET Core Web 應用程式專案](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
-1. 在 [設定新的專案]  中，將專案命名為 *todo*，然後選取 [建立]  。
+1. 在 [設定新的專案] 中，將專案命名為 *todo*，然後選取 [建立]。
 
-1. 在 [建立新的 ASP.NET Core Web 應用程式]  中，選擇 [Web 應用程式 (Model-View-Controller)]  。 選取 [建立]  繼續作業。
+1. 在 [建立新的 ASP.NET Core Web 應用程式] 中，選擇 [Web 應用程式 (Model-View-Controller)]。 選取 [建立]  繼續作業。
 
    Visual Studio 會建立空白的 MVC 應用程式。
 
-1. 選取 [偵錯]   > [開始偵錯]  或 F5 以在本機執行 ASP.NET 應用程式。
+1. 選取 [偵錯] > [開始偵錯]或 F5 以在本機執行 ASP.NET 應用程式。
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>步驟 3：對專案新增 Azure Cosmos DB NuGet 套件
 
 現在我們已經擁有此解決方案所需的大部分 ASP.NET Core MVC 架構程式碼，接下來讓我們新增所需的 NuGet 套件以便連線到 Azure Cosmos DB。
 
-1. 在**方案總管**中，對專案按一下滑鼠右鍵，然後選取 [管理 NuGet 套件]  。
+1. 在**方案總管**中，對專案按一下滑鼠右鍵，然後選取 [管理 NuGet 套件]。
 
-1. 在 [NuGet 套件管理員]  中，搜尋並選取 [Microsoft.Azure.Cosmos]  。 選取 [安裝]  。
+1. 在 [NuGet 套件管理員] 中，搜尋並選取 [Microsoft.Azure.Cosmos]。 選取 [安裝]。
 
    ![安裝 NuGet 套件](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png)
 
    Visual Studio 會下載和安裝 Azure Cosmos DB 套件及其相依性。
 
-   您也可以使用 [套件管理員主控台]  來安裝 NuGet 套件。 若要這麼做，請選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。 在出現提示時輸入下列命令：
+   您也可以使用 [套件管理員主控台] 來安裝 NuGet 套件。 若要這麼做，請選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。 在出現提示時輸入下列命令：
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -104,9 +104,9 @@ ms.locfileid: "78274082"
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a>新增模型
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Models]  資料夾，選取 [新增]   > [類別]  。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Models] 資料夾，選取 [新增] > [類別]。
 
-1. 在 [新增項目]  中，將新的類別命名為 *Item.cs*，然後選取 [新增]  。
+1. 在 [新增項目] 中，將新的類別命名為 *Item.cs*，然後選取 [新增]。
 
 1. 以下列程式碼取代 *Item.cs* 類別的內容：
 
@@ -124,20 +124,20 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 #### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>新增清單項目檢視
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Views]  資料夾，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Item*。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Views] 資料夾，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Item*。
 
-1. 以滑鼠右鍵按一下空的 [Item]  資料夾，然後選取 [新增]   > [檢視]  。
+1. 以滑鼠右鍵按一下空的 [Item] 資料夾，然後選取 [新增] > [檢視]。
 
-1. 在 [新增 MVC 檢視]  中提供下列值：
+1. 在 [新增 MVC 檢視] 中提供下列值：
 
-   * 在 [檢視名稱]  中，輸入 [索引]  。
-   * 在 [範本]  中選取 [清單]  。
-   * 在 [模型類別]  中，選取 [項目 (todo.Models)]  。
-   * 選取 [使用版面配置頁面]  ，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+   * 在 [檢視名稱] 中，輸入 [索引]。
+   * 在 [範本] 中選取 [清單]。
+   * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
 
    ![顯示 [新增 MVC 檢視] 對話方塊的螢幕擷取畫面](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
 
-1. 新增這些值之後，請選取 [新增]  ，並讓 Visual Studio 建立新的範本檢視。
+1. 新增這些值之後，請選取 [新增]，並讓 Visual Studio 建立新的範本檢視。
 
 完成後，Visual Studio 會開啟它所建立的 *cshtml*檔案。 您可以在 Visual Studio 中關閉該檔案。 我們稍後會再回來。
 
@@ -145,59 +145,71 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 與您建立檢視以列出項目的方法類似，請使用下列步驟建立新的檢視，來建立項目：
 
-1. 在 [方案總管]  中，再次以滑鼠右鍵按一下 [Item]  資料夾，選取 [新增]   > [檢視]  。
+1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
 
-1. 在 [新增 MVC 檢視]  中，進行下列變更：
+1. 在 [新增 MVC 檢視] 中，進行下列變更：
 
-   * 在 [檢視名稱]  中，輸入 [建立]  。
-   * 在 [範本]  中選取 [建立]  。
-   * 在 [模型類別]  中，選取 [項目 (todo.Models)]  。
-   * 選取 [使用版面配置頁面]  ，然後輸入 *~/Views/Shared/_Layout.cshtml*。
-   * 選取 [新增]  。
+   * 在 [檢視名稱] 中，輸入 [建立]。
+   * 在 [範本] 中選取 [建立]。
+   * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+   * 選取 [新增]。
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>新增編輯項目檢視
 
 最後，請新增檢視以透過下列步驟編輯項目：
 
-1. 在 [方案總管]  中，再次以滑鼠右鍵按一下 [Item]  資料夾，選取 [新增]   > [檢視]  。
+1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
 
-1. 在 [新增 MVC 檢視]  中，進行下列變更：
+1. 在 [新增 MVC 檢視] 中，進行下列變更：
 
-   * 在 [檢視名稱]  方塊中，輸入*編輯*。
-   * 在 [範本]  方塊中，選取 [編輯]  。
-   * 在 [模型類別]  方塊中，選取 [項目 (todo.Models)]  。
-   * 選取 [使用版面配置頁面]  ，然後輸入 *~/Views/Shared/_Layout.cshtml*。
-   * 選取 [新增]  。
+   * 在 [檢視名稱] 方塊中，輸入*編輯*。
+   * 在 [範本] 方塊中，選取 [編輯]。
+   * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+   * 選取 [新增]。
 
-完成這些步驟後，請將 Visual Studio 中的所有 cshtml  文件關閉，您稍後會回頭使用這些檢視。
+完成這些步驟後，請將 Visual Studio 中的所有 cshtml 文件關閉，您稍後會回頭使用這些檢視。
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>宣告並初始化服務
 
 首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDBService` 的類別和名為 `ICosmosDBService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [新增]   > [新增資料夾]  。 將資料夾命名為 *Services*。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Services*。
 
-1. 以滑鼠右鍵按一下 [Services]  資料夾，選取 [新增]   > [類別]  。 將新的類別命名為 *CosmosDBService*，然後選取 [新增]  。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *CosmosDBService*，然後選取 [新增]。
 
 1. 以下列程式碼取代 *CosmosDBService.cs* 的內容：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. 以滑鼠右鍵按一下 [Services]  資料夾，選取 [新增]   > [類別]  。 將新的類別命名為 *ICosmosDBService*，然後選取 [新增]  。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *ICosmosDBService*，然後選取 [新增]。
 
 1. 將下列程式碼新增至 *ICosmosDBService* 類別：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. 開啟解決方案中的 *Startup.cs* 檔案，並將 `ConfigureServices` 方法取代為：
+1. 在您的解決方案中開啟 *Startup.cs* 檔案，並新增 **InitializeCosmosClientInstanceAsync** 方法，以讀取組態並初始化用戶端。
 
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
-    此步驟中的程式碼會根據組態將用戶端初始化為 Singleton 執行個體，以透過 [ASP.NET Core 中的相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)來插入。
+1. 在相同的檔案上，將 `ConfigureServices` 方法取代為：
 
-1. 在相同的檔案中，新增以下方法 **InitializeCosmosClientInstanceAsync**，以讀取組態並初始化用戶端。
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+   此步驟中的程式碼會根據組態將用戶端初始化為 Singleton 執行個體，以透過 [ASP.NET Core 中的相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)來插入。
+
+   此外，請務必在相同檔案的 `Configure` 方法中編輯路由，以將預設的 MVC 控制器變更為 `Item`：
+
+   ```csharp
+    app.UseEndpoints(endpoints =>
+          {
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Item}/{action=Index}/{id?}");
+          });
+   ```
+
 
 1. 在專案的 *appsettings.json* 檔案中定義設定，如下列程式碼片段所示：
 
@@ -205,9 +217,9 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>新增控制器
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下 [Controllers]  資料夾，選取 [新增]   > [控制器]  。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Controllers] 資料夾，選取 [新增] > [控制器]。
 
-1. 在 [新增 Scaffold]  中，選取 [MVC 控制器 - 空的]  ，然後選取 [新增]  。
+1. 在 [新增 Scaffold] 中，選取 [MVC 控制器 - 空的]，然後選取 [新增]。
 
    ![在 [新增 Scaffold] 中選取 [MVC 控制器 - 空的]](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 
@@ -231,13 +243,13 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    
    如果應用程式改為在開啟後進入首頁，請將 `/Item` 附加至 URL。
 
-1. 選取 [新建]  連結，並在 [名稱]  和 [描述]  欄位中新增值。 讓 [已完成]  核取方塊保持未選取狀態。 如果您選取它，則應用程式會新增已完成狀態的項目。 此項目不再出現於初始清單。
+1. 選取 [新建] 連結，並在 [名稱] 和 [描述] 欄位中新增值。 讓 [已完成] 核取方塊保持未選取狀態。 如果您選取它，則應用程式會新增已完成狀態的項目。 此項目不再出現於初始清單。
 
-1. 選取 [建立]  。 應用程式會讓您回到 [索引]  檢視，且您的項目會出現在清單中。 您可以再將一些項目新增至 [待辦事項]  清單。
+1. 選取 [建立]。 應用程式會讓您回到 [索引] 檢視，且您的項目會出現在清單中。 您可以再將一些項目新增至 [待辦事項] 清單。
 
     ![[索引] 檢視的螢幕擷取畫面](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
   
-1. 選取清單上 [項目]  旁邊的 [編輯]  。 應用程式會開啟 [編輯]  檢視，您可在此更新物件的任何屬性，包括 [已完成]  旗標。 如果您選取 [已完成]  並選取 [儲存]  ，應用程式會在清單中將 [項目]  顯示為 [已完成]。
+1. 選取清單上 [項目] 旁邊的 [編輯]。 應用程式會開啟 [編輯] 檢視，您可在此更新物件的任何屬性，包括 [已完成] 旗標。 如果您選取 [已完成] 並選取 [儲存]，應用程式會在清單中將 [項目] 顯示為 [已完成]。
 
    ![[索引] 檢視的螢幕擷取畫面，其中已勾選 [已完成] 方塊](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 
@@ -249,27 +261,27 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 您已經擁有可在 Azure Cosmos DB 正常運作的完整應用程式，我們現在要將此 Web 應用程式部署至 Azure App Service。  
 
-1. 若要發佈此應用程式，請以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [發佈]  。
+1. 若要發佈此應用程式，請以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [發佈]。
 
-1. 在 [挑選發佈目標]  中，選取 [App Service]  。
+1. 在 [挑選發佈目標] 中，選取 [App Service]。
 
-1. 若要使用現有的 App Service 設定檔，請選擇 [選取現有]  ，然後選取 [發佈]  。
+1. 若要使用現有的 App Service 設定檔，請選擇 [選取現有]，然後選取 [發佈]。
 
-1. 在 [App Service]  中，選取 [訂用帳戶]  。 使用 [檢視]  篩選器來依資源群組或資源類型排序。
+1. 在 [App Service] 中，選取 [訂用帳戶]。 使用 [檢視] 篩選器來依資源群組或資源類型排序。
 
-1. 尋找您的設定檔，然後選取 [確定]  。 接著搜尋所需的 Azure App Service，然後選取 [確定]  。
+1. 尋找您的設定檔，然後選取 [確定]。 接著搜尋所需的 Azure App Service，然後選取 [確定]。
 
    ![Visual Studio 中的 [App Service] 對話方塊](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png)
 
 另一個選項是建立新的設定檔：
 
-1. 如先前的程序，在 [方案總管]  中以滑鼠右鍵按一下專案，再選取 [發佈]  。
+1. 如先前的程序，在 [方案總管] 中以滑鼠右鍵按一下專案，再選取 [發佈]。
   
-1. 在 [挑選發佈目標]  中，選取 [App Service]  。
+1. 在 [挑選發佈目標] 中，選取 [App Service]。
 
-1. 在 [挑選發佈目標]  中，選取 [新建]  ，然後選取 [發佈]  。
+1. 在 [挑選發佈目標] 中，選取 [新建]，然後選取 [發佈]。
 
-1. 在 [App Service]  中，輸入您的 Web 應用程式名稱和適當的訂用帳戶、資源群組和主控方案，然後選取 [建立]  。
+1. 在 [App Service] 中，輸入您的 Web 應用程式名稱和適當的訂用帳戶、資源群組和主控方案，然後選取 [建立]。
 
    ![Visual Studio 中的 [建立 App Service] 對話方塊](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png)
 

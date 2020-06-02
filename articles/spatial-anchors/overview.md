@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657302"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006099"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors 概觀
 
@@ -26,7 +26,7 @@ ms.locfileid: "77657302"
 
 Spatial Anchors 可支援的範例使用案例包括：
 
-- [多使用者體驗](tutorials/tutorial-share-anchors-across-devices.md)。 Spatial Anchors 可讓處於相同位置的人員輕鬆參與多使用者的混合實境應用程式。 例如，兩個人可以在桌上放置虛擬棋盤，展開混合實境的西洋棋遊戲。 然後，他們只要將裝置指向桌面，就可以一起檢視虛擬棋盤並與其互動。
+- [多使用者體驗](tutorials/tutorial-share-anchors-across-devices.md)。 Azure Spatial Anchors 可讓處於相同位置的人員輕鬆參與多使用者的混合實境應用程式。 例如，兩個人可以在桌上放置虛擬棋盤，展開混合實境的西洋棋遊戲。 然後，他們只要將裝置指向桌面，就可以一起檢視虛擬棋盤並與其互動。
 
 - [指向](concepts/anchor-relationships-way-finding.md)。 開發人員也可以將 Spatial Anchors 連接在一起，以建立其間的關聯性。 例如，應用程式可能有某項體驗包含兩個或更多須由使用者互動來完成工作的景點。 這些景點可透過連線的方式建立。 之後，當使用者完成多步驟工作時，應用程式可要求現有錨點附近的錨點，以指示使用者前往工作中的下一個步驟。
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors 由支援的裝置平台適用的受控服務和用戶端 
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 Spatial Anchors 建立您的第一個應用程式。
+使用 Azure Spatial Anchors 建立您的第一個應用程式。
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

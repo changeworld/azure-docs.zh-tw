@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393852"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196042"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教學課程：使用 Azure 儲存體在雲端中上傳影像資料
 
 本教學課程是一個系列的第一部分。 本教學課程會示範如何部署 Web 應用程式，其使用 Azure Blob 儲存體用戶端程式庫將映像上傳至儲存體帳戶。 完成後，您就有可儲存和顯示 Azure 儲存體映像資料的 Web 應用程式。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 ![.NET 中的影像大小調整器應用程式](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 ![Node.js V10 中的影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -73,11 +73,11 @@ az storage account create --name $blobStorageAccount --location southeastasia \
 
 ## <a name="create-blob-storage-containers"></a>建立 Blob 儲存體容器
 
-應用程式在 Blob 儲存體帳戶中使用兩個容器。 容器類似資料夾，可儲存 Blob。 應用程式會將高解析度的影像上傳到 [影像]  容器。 在系列的後半部分，Azure 函式應用程式會將已調整大小的影像縮圖上傳到 [縮圖]  容器。
+應用程式在 Blob 儲存體帳戶中使用兩個容器。 容器類似資料夾，可儲存 Blob。 應用程式會將高解析度的影像上傳到 [影像] 容器。 在系列的後半部分，Azure 函式應用程式會將已調整大小的影像縮圖上傳到 [縮圖] 容器。
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令取得儲存體帳戶金鑰。 接著，使用此金鑰透過 [az storage container create](/cli/azure/storage/container) 命令來建立兩個容器。
 
-images  容器的公用存取設為 `off`。 thumbnails  容器的公用存取設為 `container`。 `container` 公用存取設定允許使用者瀏覽網頁來檢視縮圖。
+images 容器的公用存取設為 `off`。 thumbnails 容器的公用存取設為 `container`。 `container` 公用存取設定允許使用者瀏覽網頁來檢視縮圖。
 
 ```azurecli-interactive
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -121,7 +121,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>從 GitHub 存放庫部署範例應用程式
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 應用程式服務支援數種將內容部署至 Web 應用程式的方法。 在本教學課程中，您會從[公用 GitHub 範例存放庫](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)部署 Web 應用程式。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令設定 Web 應用程式的 GitHub 部署。
 
@@ -133,7 +133,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 應用程式服務支援數種將內容部署至 Web 應用程式的方法。 在本教學課程中，您會從[公用 GitHub 範例存放庫](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)部署 Web 應用程式。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令設定 Web 應用程式的 GitHub 部署。
 
 ```azurecli-interactive
@@ -146,7 +146,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>設定 Web 應用程式設定
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 範例 Web 應用程式會使用[適用於 .NET 的 Azure 儲存體 API](/dotnet/api/overview/azure/storage) 來上傳映像。 儲存體帳戶認證是在 Web 應用程式的應用程式設定中設定。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令將應用程式設定新增至已部署的應用程式。
 
@@ -158,7 +158,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 範例 Web 應用程式使用 [Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-js)要求存取權杖，其用來上傳影像。 儲存體 SDK 所使用的儲存體帳戶認證是在 Web 應用程式的應用程式設定中設定。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令將應用程式設定新增至已部署的應用程式。
 
@@ -176,13 +176,13 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 若要測試 Web 應用程式，請瀏覽至已發佈應用程式的 URL。 Web 應用程式的預設 URL 是 `https://<web_app>.azurewebsites.net`。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-選取 [上傳相片]  區域以指定並上傳檔案，或將檔案拖曳到區域。 如果上傳成功，影像就會消失。 [產生的縮圖]  區段就會維持空白，直到我們在本主題稍後對其完成測試。
+選取 [上傳相片] 區域以指定並上傳檔案，或將檔案拖曳到區域。 如果上傳成功，影像就會消失。 [產生的縮圖] 區段就會維持空白，直到我們在本主題稍後對其完成測試。
 
 ![在 .NET 中上傳相片](media/storage-upload-process-images/figure1.png)
 
-在範例程式碼中，Storagehelper.cs  檔案中的 `UploadFileToStorage` 工作，可供使用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法將映像上傳至儲存體帳戶內的 images  容器。 下列程式碼範例包含 `UploadFileToStorage` 工作。
+在範例程式碼中，Storagehelper.cs 檔案中的 `UploadFileToStorage` 工作，可供使用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法將映像上傳至儲存體帳戶內的 images 容器。 下列程式碼範例包含 `UploadFileToStorage` 工作。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -218,9 +218,9 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String) 建構函式](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
-選取 [選擇檔案]  來選取檔案，然後按一下 [上傳映像]  。 [產生的縮圖]  區段就會維持空白，直到我們在本主題稍後對其完成測試。 
+選取 [選擇檔案] 來選取檔案，然後按一下 [上傳映像]。 [產生的縮圖] 區段就會維持空白，直到我們在本主題稍後對其完成測試。 
 
 ![在 Node.js V10 中上傳相片](media/storage-upload-process-images/upload-app-nodejs.png)
 
@@ -300,31 +300,31 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>確定影像顯示在儲存體帳戶中
 
-登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]  ，然後選取您的儲存體帳戶名稱。 選取 [容器]  ，然後選取**映像**容器。
+登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取**映像**容器。
 
 確認影像顯示在容器中。
 
-![Azure 入口網站的影像清單容器](media/storage-upload-process-images/figure13.png)
+![Azure 入口網站中列出的影像容器](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>測試縮圖檢視
 
 若要測試縮圖檢視，您要將映像上傳至 **thumbnails** 容器，以檢查應用程式是否否讀取 **thumbnails** 容器。
 
-登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]  ，然後選取您的儲存體帳戶名稱。 選取 [容器]  ，然後選取**縮圖**容器。 選取 [上傳]  開啟 [上傳 Blob]  窗格。
+登入 [Azure 入口網站](https://portal.azure.com)。 從左側的功能表中選取 [儲存體帳戶]，然後選取您的儲存體帳戶名稱。 選取 [容器]，然後選取**縮圖**容器。 選取 [上傳] 開啟 [上傳 Blob] 窗格。
 
-使用檔案選擇器選擇檔案，並選取 [上傳]  。
+使用檔案選擇器選擇檔案，並選取 [上傳]。
 
-巡覽回您的應用程式，確認可以看到上傳至 [縮圖]  容器的影像。
+巡覽回您的應用程式，確認可以看到上傳至 [縮圖] 容器的影像。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 ![顯示新影像的 .NET 影像大小調整器應用程式](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 ![顯示新影像的 Node.js V10 影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-在本系列的第二部分，您會自動建立縮圖映像，因此您不需要此映像。 在 Azure 入口網站的 [縮圖]  容器中，選取您上傳的影像，然後選取 [刪除]  來刪除影像。 
+在本系列的第二部分，您會自動建立縮圖映像，因此您不需要此映像。 在 Azure 入口網站的 [縮圖] 容器中，選取您上傳的影像，然後選取 [刪除] 來刪除影像。 
 
 您可以啟用內容傳遞網路 (CDN)，從您的 Azure 儲存體快取內容。 如需如何在 Azure 儲存體帳戶啟用 CDN 的詳細資訊，請參閱[整合 Azure 儲存體帳戶與 Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md)。
 
