@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 437dc18dc16e879e95ff4ec7c1a9ab7ec3f17bef
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746517"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265993"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -38,51 +38,51 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Locale  | 語言                          | 支援 | 自訂                                    |
+| 地區設定  | Language                          | 支援 | 自訂                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯文（阿拉伯聯合大公國）                      | 是       | 否                                                |
-| `ar-BH` | 阿拉伯文（巴林），現代化標準 | Yes       | 語言模型                                    |
-| `ar-EG` | 阿拉伯文 (埃及)                    | Yes       | 語言模型                                    |
+| `ar-BH` | 阿拉伯文（巴林），現代化標準 | 是       | 語言模型                                    |
+| `ar-EG` | 阿拉伯文 (埃及)                    | 是       | 語言模型                                    |
 | `ar-IL` | 阿拉伯文（以色列）                   | 是       | 否                                                |
 | `ar-KW` | 阿拉伯文 (科威特)                   | 是       | 否                                                |
 | `ar-PS` | 阿拉伯文（巴勒斯坦國）                | 是       | 否                                                |
 | `ar-QA` | 阿拉伯文 (卡達)                    | 是       | 否                                                |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 是       | 否                                                |
-| `ar-SY` | 阿拉伯文 (敘利亞)                    | Yes       | 語言模型                                    |
-| `ca-ES` | 卡達隆尼亞文                           | Yes       | 語言模型                                    |
-| `da-DK` | 丹麥文 (丹麥)                  | Yes       | 語言模型                                    |
-| `de-DE` | 德文 (德國)                  | Yes       | 原音模型<br>語言模型<br>發音 |
-| `en-AU` | 英文 (澳大利亞)               | Yes       | 原音模型<br>語言模型                  |
-| `en-CA` | 英文 (加拿大)                  | Yes       | 原音模型<br>語言模型                  |
-| `en-GB` | 英文 (英國)          | Yes       | 原音模型<br>語言模型<br>發音 |
-| `en-IN` | 英文 (印度)                   | Yes       | 原音模型<br>語言模型                  |
-| `en-NZ` | 英文 (紐西蘭)             | Yes       | 原音模型<br>語言模型                  |
-| `en-US` | 英文 (美國)           | Yes       | 原音模型<br>語言模型<br>發音 |
-| `es-ES` | 西班牙文 (西班牙)                   | Yes       | 原音模型<br>語言模型                  |
-| `es-MX` | 西班牙文 (墨西哥)                  | Yes       | 原音模型<br>語言模型                  |
-| `fi-FI` | 芬蘭文 (芬蘭)                 | Yes       | 語言模型                                    |
-| `fr-CA` | 法文 (加拿大)                   | Yes       | 原音模型<br>語言模型                  |
-| `fr-FR` | 法文 (法國)                   | Yes       | 原音模型<br>語言模型<br>發音 |
-| `gu-IN` | 古吉拉特文（印度）                 | Yes       | 語言模型                                    |
-| `hi-IN` | 印度文 (印度)                     | Yes       | 原音模型<br>語言模型                  |
-| `it-IT` | 義大利文 (義大利)                   | Yes       | 原音模型<br>語言模型<br>發音 |
-| `ja-JP` | 日文 (日本)                  | Yes       | 語言模型                                    |
-| `ko-KR` | 韓文 (韓國)                    | Yes       | 語言模型                                    |
-| `mr-IN` | 馬拉提文 (印度)                   | Yes       | 語言模型                                    |
-| `nb-NO` | 挪威文 (巴克摩) (挪威)       | Yes       | 語言模型                                    |
-| `nl-NL` | 荷蘭文 (荷蘭)               | Yes       | 語言模型                                    |
-| `pl-PL` | 波蘭文 (波蘭)                   | Yes       | 語言模型                                    |
-| `pt-BR` | 葡萄牙文 (巴西)               | Yes       | 原音模型<br>語言模型<br>發音 |
-| `pt-PT` | 葡萄牙文 (葡萄牙)             | Yes       | 語言模型                                    |
-| `ru-RU` | 俄文 (俄羅斯)                  | Yes       | 原音模型<br>語言模型                  |
-| `sv-SE` | 瑞典文 (瑞典)                  | Yes       | 語言模型                                    |
-| `ta-IN` | 坦米爾文 (印度)                     | Yes       | 語言模型                                    |
+| `ar-SY` | 阿拉伯文 (敘利亞)                    | 是       | 語言模型                                    |
+| `ca-ES` | 卡達隆尼亞文                           | 是       | 語言模型                                    |
+| `da-DK` | 丹麥文 (丹麥)                  | 是       | 語言模型                                    |
+| `de-DE` | 德文 (德國)                  | 是       | 原音模型<br>語言模型<br>發音 |
+| `en-AU` | 英文 (澳大利亞)               | 是       | 原音模型<br>語言模型                  |
+| `en-CA` | 英文 (加拿大)                  | 是       | 原音模型<br>語言模型                  |
+| `en-GB` | 英文 (英國)          | 是       | 原音模型<br>語言模型<br>發音 |
+| `en-IN` | 英文 (印度)                   | 是       | 原音模型<br>語言模型                  |
+| `en-NZ` | 英文 (紐西蘭)             | 是       | 原音模型<br>語言模型                  |
+| `en-US` | 英文 (美國)           | 是       | 原音模型<br>語言模型<br>發音 |
+| `es-ES` | 西班牙文 (西班牙)                   | 是       | 原音模型<br>語言模型                  |
+| `es-MX` | 西班牙文 (墨西哥)                  | 是       | 原音模型<br>語言模型                  |
+| `fi-FI` | 芬蘭文 (芬蘭)                 | 是       | 語言模型                                    |
+| `fr-CA` | 法文 (加拿大)                   | 是       | 原音模型<br>語言模型                  |
+| `fr-FR` | 法文 (法國)                   | 是       | 原音模型<br>語言模型<br>發音 |
+| `gu-IN` | 古吉拉特文（印度）                 | 是       | 語言模型                                    |
+| `hi-IN` | 印度文 (印度)                     | 是       | 原音模型<br>語言模型                  |
+| `it-IT` | 義大利文 (義大利)                   | 是       | 原音模型<br>語言模型<br>發音 |
+| `ja-JP` | 日文 (日本)                  | 是       | 語言模型                                    |
+| `ko-KR` | 韓文 (韓國)                    | 是       | 語言模型                                    |
+| `mr-IN` | 馬拉提文 (印度)                   | 是       | 語言模型                                    |
+| `nb-NO` | 挪威文 (巴克摩) (挪威)       | 是       | 語言模型                                    |
+| `nl-NL` | 荷蘭文 (荷蘭)               | 是       | 語言模型                                    |
+| `pl-PL` | 波蘭文 (波蘭)                   | 是       | 語言模型                                    |
+| `pt-BR` | 葡萄牙文 (巴西)               | 是       | 原音模型<br>語言模型<br>發音 |
+| `pt-PT` | 葡萄牙文 (葡萄牙)             | 是       | 語言模型                                    |
+| `ru-RU` | 俄文 (俄羅斯)                  | 是       | 原音模型<br>語言模型                  |
+| `sv-SE` | 瑞典文 (瑞典)                  | 是       | 語言模型                                    |
+| `ta-IN` | 坦米爾文 (印度)                     | 是       | 語言模型                                    |
 | `te-IN` | 特拉古文 (印度)                    | 是       | 否                                                |
 | `th-TH` | 泰文 (泰國)                   | 是       | 否                                                |
-| `tr-TR` | 土耳其文 (土耳其)                  | Yes       | 語言模型                                    |
-| `zh-CN` | 中文 (普通話，簡體)    | Yes       | 原音模型<br>語言模型                  |
-| `zh-HK` | 中文（廣東話，繁體）  | Yes       | 語言模型                                    |
-| `zh-TW` | 中文 (繁體，國語)      | Yes       | 語言模型                                    |
+| `tr-TR` | 土耳其文 (土耳其)                  | 是       | 語言模型                                    |
+| `zh-CN` | 中文 (普通話，簡體)    | 是       | 原音模型<br>語言模型                  |
+| `zh-HK` | 中文（廣東話，繁體）  | 是       | 語言模型                                    |
+| `zh-TW` | 中文 (繁體，國語)      | 是       | 語言模型                                    |
 
 ## <a name="text-to-speech"></a>文字轉換語音
 
@@ -99,29 +99,29 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-|Locale  | 語言            | 性別 | 語音名稱 | 樣式支援 |
+|地區設定  | Language            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
-| `de-DE` | 德文 (德國)                | Female | "de-KatjaNeural"      | 一般 |
-| `en-AU` | 英文 (澳大利亞)             | Female | "en-us-NatashaNeural"    | 一般 |
-| `en-CA` | 英文 (加拿大)                | Female | 「en-CA-ClaraNeural」      | 一般 |
-| `en-GB` | 英文 (英國)                    | Female | "en-GB-LibbyNeural"      | 一般 |
-|         |                                 | Female | "en-GB-MiaNeural"        | 一般 |
-| `en-US` | 英文 (美國)                    | Female | 「en-us-AriaNeural」       | 一般，可以使用多個語音樣式 |
-|         |                                 | Male   | 「en-us-GuyNeural」        | 一般 |
-| `es-ES` | 西班牙文 (西班牙)                 | Female | "es-ElviraNeural"     | 一般 |
-| `es-MX` | 西班牙文 (墨西哥)                | Female | "es-MX-DaliaNeural"      | 一般 |
-| `fr-CA` | 法文 (加拿大)                 | Female | "fr-CA-SylvieNeural"     | 一般 |
-| `fr-FR` | 法文 (法國)                 | Female | "fr-fr-DeniseNeural"     | 一般 |
-| `it-IT` | 義大利文 (義大利)                 | Female | 「it-IT-ElsaNeural」       | 一般 |
-| `ja-JP` | 日文                        | Female | "ja-jp-NanamiNeural"     | 一般 |
-| `ko-KR` | 韓文                          | Female | "ko-KR-SunHiNeural"      | 一般 |
-| `nb-NO` | 挪威文                       | Female | 「nb-不 IselinNeural」     | 一般 |
-| `pt-BR` | 葡萄牙文 (巴西)             | Female | "pt-BR-FranciscaNeural"  | 一般 |
-| `tr-TR` | 土耳其文                         | Female | "tr-TR-EmelNeural"       | 一般 |
-| `zh-CN` | 中文 (普通話，簡體)  | Female | "zh-CN-XiaoxiaoNeural"   | 一般，可以使用多個語音樣式 |
-|         |                                 | Female | "zh-CN-XiaoyouNeural"    | 兒童心聲，針對案例 narrating 優化 |
-|         |                                 | Male   | "zh-CN-YunyangNeural"    | 已針對新聞閱讀優化，提供多種語音樣式 |
-|         |                                 | Male   | "zh-CN-YunyeNeural"      | 已針對案例 narrating 優化 |
+| `de-DE` | 德文 (德國)                | `Female` | "de-KatjaNeural"      | 一般 |
+| `en-AU` | 英文 (澳大利亞)             | `Female` | "en-us-NatashaNeural"    | 一般 |
+| `en-CA` | 英文 (加拿大)                | `Female` | 「en-CA-ClaraNeural」      | 一般 |
+| `en-GB` | 英文 (英國)                    | `Female` | "en-GB-LibbyNeural"      | 一般 |
+|         |                                 | `Female` | "en-GB-MiaNeural"        | 一般 |
+| `en-US` | 英文 (美國)                    | `Female` | 「en-us-AriaNeural」       | 一般，可以使用多個語音樣式 |
+|         |                                 | `Male`   | 「en-us-GuyNeural」        | 一般 |
+| `es-ES` | 西班牙文 (西班牙)                 | `Female` | "es-ElviraNeural"     | 一般 |
+| `es-MX` | 西班牙文 (墨西哥)                | `Female` | "es-MX-DaliaNeural"      | 一般 |
+| `fr-CA` | 法文 (加拿大)                 | `Female` | "fr-CA-SylvieNeural"     | 一般 |
+| `fr-FR` | 法文 (法國)                 | `Female` | "fr-fr-DeniseNeural"     | 一般 |
+| `it-IT` | 義大利文 (義大利)                 | `Female` | 「it-IT-ElsaNeural」       | 一般 |
+| `ja-JP` | 日文                        | `Female` | "ja-jp-NanamiNeural"     | 一般 |
+| `ko-KR` | 韓文                          | `Female` | "ko-KR-SunHiNeural"      | 一般 |
+| `nb-NO` | 挪威文                       | `Female` | 「nb-不 IselinNeural」     | 一般 |
+| `pt-BR` | 葡萄牙文 (巴西)             | `Female` | "pt-BR-FranciscaNeural"  | 一般 |
+| `tr-TR` | 土耳其文                         | `Female` | "tr-TR-EmelNeural"       | 一般 |
+| `zh-CN` | 中文 (普通話，簡體)  | `Female` | "zh-CN-XiaoxiaoNeural"   | 一般，可以使用多個語音樣式 |
+|         |                                 | `Female` | "zh-CN-XiaoyouNeural"    | 兒童心聲，針對案例 narrating 優化 |
+|         |                                 | `Male`   | "zh-CN-YunyangNeural"    | 已針對新聞閱讀優化，提供多種語音樣式 |
+|         |                                 | `Male`   | "zh-CN-YunyeNeural"      | 已針對案例 narrating 優化 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`語音已變更為 `en-US-AriaNeural` 。 如果您之前使用 "Jessa"，請將轉換成「Aria」。
@@ -135,88 +135,88 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| Locale | 語言 | 性別 | 語音名稱 |
+| 地區設定 | Language | 性別 | 語音名稱 |
 |--|--|--|--|
-| <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "ar-例如-Hoda" |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "ar-SA-Naayf" |
-| `bg-BG` | 保加利亞文 | Male |  "bg-BG-Ivan" |
-| `ca-ES` | 卡達隆尼亞文 | Female |  「ca-ES-HerenaRUS」 |
-| `cs-CZ` | 捷克文 | Male | "cs-CZ-Jakub" |
-| `da-DK` | 丹麥文 | Female |  "da-深色-HelleRUS" |
-| `de-AT` | 德文 (奧地利) | Male | 「Michael」 |
-| `de-CH` | 德文 (瑞士) | Male |  「Karsten」 |
-| `de-DE` | 德文 (德國) | Female |  "de-Hedda" |
-|  |  | Female | "de-HeddaRUS" |
-|  |  | Male |  「取消 Stefan-Apollo」 |
-| `el-GR` | 希臘文 | Male | "el-GR-Stefanos" |
-| `en-AU` | 英文 (澳大利亞) | Female |  "en-us-Catherine" |
-|  |  | Female |  "en-us-HayleyRUS" |
-| `en-CA` | 英文 (加拿大) | Female |  「en-CA-Linda」 |
-|  |  | Female |  「en-CA-HeatherRUS」 |
-| `en-GB` | 英文 (英國) | Female |  "en-us-Susan-Apollo" |
-|  |  | Female |  "en-GB-HazelRUS" |
-|  |  | Male |  "George-Apollo" |
-| `en-IE` | 英文 (愛爾蘭) | Male | 「en-IE-小紅」 |
-| `en-IN` | 英文 (印度) | Female | "en-us-Heera-Apollo" |
-|  |  | Female |  「PriyaRUS」 |
-|  |  | Male |  "en-us-Ravi-Apollo" |
-| `en-US` | 英文 (美國) | Female |  「en-us-ZiraRUS」 |
-|  |  | Female | 「en-us-AriaRUS」 |
-|  |  | Male | 「en-us-BenjaminRUS」 |
-|  |  | Male |  「en-us-Guy24kRUS」 |
-| `es-ES` | 西班牙文 (西班牙) | Female |  "es-劉娜-Apollo" |
-|  |  | Female | "es-HelenaRUS" |
-|  |  | Male | "es-Pablo-Apollo" |
-| `es-MX` | 西班牙文 (墨西哥) | Female |  "es-MX-HildaRUS" |
-|  |  | Male | "es-MX-Raul-Apollo" |
-| `fi-FI` | 芬蘭文 | Female | 「wi-fi-HeidiRUS」 |
-| `fr-CA` | 法文 (加拿大) | Female | "fr-CA-Caroline" |
-|  |  | Female | "fr-CA-HarmonieRUS" |
-| `fr-CH` | 法文 (瑞士) | Male | "fr-CH-Guillaume" |
-| `fr-FR` | 法文 (法國) | Female |  "fr-fr-Julie-Apollo" |
-|  |  | Female |"fr-fr-HortenseRUS" |
-|  |  | Male |  "fr-fr-Paul-Apollo" |
-| `he-IL` | 希伯來文 (以色列) | Male |  「他-IL-Asaf」 |
-| `hi-IN` | 印度文 (印度) | Female | 「hi Kalpana-Apollo」 |
-|  |  | Female |  「hi Kalpana」 |
-|  |  | Male |  「hi Hemant」 |
-| `hr-HR` | 克羅埃西亞文 | Male | 「hr-HR-Matej」 |
-| `hu-HU` | 匈牙利文 | Male |  "hu-HU-Szabolcs" |
-| `id-ID` | 印尼文 | Male | "id-ID-Andika" |
-| `it-IT` | 義大利文 | Male |  "it-Cosimo-Apollo" |
-|  |  | Female |  「it-IT-LuciaRUS」 |
-| `ja-JP` | 日文 | Female |  "ja-jp-Ayumi-Apollo" |
-|  |  | Male | "ja-jp-Ichiro-Apollo" |
-|  |  | Female |  "ja-jp-HarukaRUS" |
-| `ko-KR` | 韓文 | Female | "ko-KR-HeamiRUS" |
-| `ms-MY` | 馬來文 | Male |  "ms-MY-Rizwan" |
-| `nb-NO` | 挪威文 | Female |  「nb-不 HuldaRUS」 |
-| `nl-NL` | 荷蘭文 | Female |  "nl-NL-HannaRUS" |
-| `pl-PL` | 波蘭文 | Female |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | 葡萄牙文 (巴西) | Female | "pt-BR-HeloisaRUS" |
-|  |  | Male |  "pt-BR-Daniel-Apollo" |
-| `pt-PT` | 葡萄牙文 (葡萄牙) | Female | "pt-PT-HeliaRUS" |
-| `ro-RO` | 羅馬尼亞文 | Male | "ro-RO-Andrei" |
-| `ru-RU` | 俄文 | Female |  「ru-RU-Irina-Apollo」 |
-|  |  | Male | 「ru-RU-Pavel-Apollo」 |
-|  |  | Female |  ru-RU-EkaterinaRUS |
-| `sk-SK` | 斯洛伐克文 | Male | "sk-SK-Filip" |
-| `sl-SI` | 斯洛維尼亞文 | Male |  "sl-SI-Lado" |
-| `sv-SE` | 瑞典文 | Female | "sv-SE-HedvigRUS" |
-| `ta-IN` | 坦米爾文 (印度) | Male |  < Valluvar 中的 "ta" |
-| `te-IN` | 特拉古文 (印度) | Female |  "Chitra" |
-| `th-TH` | 泰文 | Male |  「第一次 Pattara」 |
-| `tr-TR` | 土耳其文 (土耳其) | Female | "tr-TR-SedaRUS" |
-| `vi-VN` | 越南文 | Male |  「vi-VN-a」 |
-| `zh-CN` | 中文 (普通話，簡體) | Female |  "zh-CN-HuihuiRUS" |
-|  |  | Female | "zh-CN-Yaoyao-Apollo" |
-|  |  | Male | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | 中文（廣東話，繁體） | Female |  「zh-HK-Tracy-Apollo」 |
-|  |  | Female | "zh-HK-TracyRUS" |
-|  |  | Male |  「zh-HK-Danny-Apollo」 |
-| `zh-TW` | 中文 (繁體，國語) | Female |  "zh-幼圓-Yating-Apollo" |
-|  |  | Female | "zh-幼圓-HanHanRUS" |
-|  |  | Male |  "zh-幼圓-Zhiwei-Apollo" |
+| <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | `Female` | "ar-例如-Hoda" |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | `Male` | "ar-SA-Naayf" |
+| `bg-BG` | 保加利亞文 | `Male` |  "bg-BG-Ivan" |
+| `ca-ES` | 卡達隆尼亞文 | `Female` |  「ca-ES-HerenaRUS」 |
+| `cs-CZ` | 捷克文 | `Male` | "cs-CZ-Jakub" |
+| `da-DK` | 丹麥文 | `Female` |  "da-深色-HelleRUS" |
+| `de-AT` | 德文 (奧地利) | `Male` | 「Michael」 |
+| `de-CH` | 德文 (瑞士) | `Male` |  「Karsten」 |
+| `de-DE` | 德文 (德國) | `Female` |  "de-Hedda" |
+|  |  | `Female` | "de-HeddaRUS" |
+|  |  | `Male` |  「取消 Stefan-Apollo」 |
+| `el-GR` | 希臘文 | `Male` | "el-GR-Stefanos" |
+| `en-AU` | 英文 (澳大利亞) | `Female` |  "en-us-Catherine" |
+|  |  | `Female` |  "en-us-HayleyRUS" |
+| `en-CA` | 英文 (加拿大) | `Female` |  「en-CA-Linda」 |
+|  |  | `Female` |  「en-CA-HeatherRUS」 |
+| `en-GB` | 英文 (英國) | `Female` |  "en-us-Susan-Apollo" |
+|  |  | `Female` |  "en-GB-HazelRUS" |
+|  |  | `Male` |  "George-Apollo" |
+| `en-IE` | 英文 (愛爾蘭) | `Male` | 「en-IE-小紅」 |
+| `en-IN` | 英文 (印度) | `Female` | "en-us-Heera-Apollo" |
+|  |  | `Female` |  「PriyaRUS」 |
+|  |  | `Male` |  "en-us-Ravi-Apollo" |
+| `en-US` | 英文 (美國) | `Female` |  「en-us-ZiraRUS」 |
+|  |  | `Female` | 「en-us-AriaRUS」 |
+|  |  | `Male` | 「en-us-BenjaminRUS」 |
+|  |  | `Male` |  「en-us-Guy24kRUS」 |
+| `es-ES` | 西班牙文 (西班牙) | `Female` |  "es-劉娜-Apollo" |
+|  |  | `Female` | "es-HelenaRUS" |
+|  |  | `Male` | "es-Pablo-Apollo" |
+| `es-MX` | 西班牙文 (墨西哥) | `Female` |  "es-MX-HildaRUS" |
+|  |  | `Male` | "es-MX-Raul-Apollo" |
+| `fi-FI` | 芬蘭文 | `Female` | 「wi-fi-HeidiRUS」 |
+| `fr-CA` | 法文 (加拿大) | `Female` | "fr-CA-Caroline" |
+|  |  | `Female` | "fr-CA-HarmonieRUS" |
+| `fr-CH` | 法文 (瑞士) | `Male` | "fr-CH-Guillaume" |
+| `fr-FR` | 法文 (法國) | `Female` |  "fr-fr-Julie-Apollo" |
+|  |  | `Female` |"fr-fr-HortenseRUS" |
+|  |  | `Male` |  "fr-fr-Paul-Apollo" |
+| `he-IL` | 希伯來文 (以色列) | `Male` |  「他-IL-Asaf」 |
+| `hi-IN` | 印度文 (印度) | `Female` | 「hi Kalpana-Apollo」 |
+|  |  | `Female` |  「hi Kalpana」 |
+|  |  | `Male` |  「hi Hemant」 |
+| `hr-HR` | 克羅埃西亞文 | `Male` | 「hr-HR-Matej」 |
+| `hu-HU` | 匈牙利文 | `Male` |  "hu-HU-Szabolcs" |
+| `id-ID` | 印尼文 | `Male` | "id-ID-Andika" |
+| `it-IT` | 義大利文 | `Male` |  "it-Cosimo-Apollo" |
+|  |  | `Female` |  「it-IT-LuciaRUS」 |
+| `ja-JP` | 日文 | `Female` |  "ja-jp-Ayumi-Apollo" |
+|  |  | `Male` | "ja-jp-Ichiro-Apollo" |
+|  |  | `Female` |  "ja-jp-HarukaRUS" |
+| `ko-KR` | 韓文 | `Female` | "ko-KR-HeamiRUS" |
+| `ms-MY` | 馬來文 | `Male` |  "ms-MY-Rizwan" |
+| `nb-NO` | 挪威文 | `Female` |  「nb-不 HuldaRUS」 |
+| `nl-NL` | 荷蘭文 | `Female` |  "nl-NL-HannaRUS" |
+| `pl-PL` | 波蘭文 | `Female` |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | 葡萄牙文 (巴西) | `Female` | "pt-BR-HeloisaRUS" |
+|  |  | `Male` |  "pt-BR-Daniel-Apollo" |
+| `pt-PT` | 葡萄牙文 (葡萄牙) | `Female` | "pt-PT-HeliaRUS" |
+| `ro-RO` | 羅馬尼亞文 | `Male` | "ro-RO-Andrei" |
+| `ru-RU` | 俄文 | `Female` |  「ru-RU-Irina-Apollo」 |
+|  |  | `Male` | 「ru-RU-Pavel-Apollo」 |
+|  |  | `Female` |  ru-RU-EkaterinaRUS |
+| `sk-SK` | 斯洛伐克文 | `Male` | "sk-SK-Filip" |
+| `sl-SI` | 斯洛維尼亞文 | `Male` |  "sl-SI-Lado" |
+| `sv-SE` | 瑞典文 | `Female` | "sv-SE-HedvigRUS" |
+| `ta-IN` | 坦米爾文 (印度) | `Male` |  < Valluvar 中的 "ta" |
+| `te-IN` | 特拉古文 (印度) | `Female` |  "Chitra" |
+| `th-TH` | 泰文 | `Male` |  「第一次 Pattara」 |
+| `tr-TR` | 土耳其文 (土耳其) | `Female` | "tr-TR-SedaRUS" |
+| `vi-VN` | 越南文 | `Male` |  「vi-VN-a」 |
+| `zh-CN` | 中文 (普通話，簡體) | `Female` |  "zh-CN-HuihuiRUS" |
+|  |  | `Female` | "zh-CN-Yaoyao-Apollo" |
+|  |  | `Male` | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | 中文（廣東話，繁體） | `Female` |  「zh-HK-Tracy-Apollo」 |
+|  |  | `Female` | "zh-HK-TracyRUS" |
+|  |  | `Male` |  「zh-HK-Danny-Apollo」 |
+| `zh-TW` | 中文 (繁體，國語) | `Female` |  "zh-幼圓-Yating-Apollo" |
+|  |  | `Female` | "zh-幼圓-HanHanRUS" |
+|  |  | `Male` |  "zh-幼圓-Zhiwei-Apollo" |
 
 **1** *ar-例如，支援新式標準阿拉伯文（MSA）。*
 

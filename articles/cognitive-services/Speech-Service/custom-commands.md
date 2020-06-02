@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367834"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266010"
 ---
-# <a name="what-are-custom-commands-preview"></a>什麼是自訂命令（預覽）？
+# <a name="what-is-custom-commands-preview"></a>什麼是自訂命令（預覽）？
 
-聲音應用程式（例如[語音助理](voice-assistants.md)）會接聽使用者並採取動作來回應，通常會說回來。 他們使用[語音轉換文字](speech-to-text.md)來轉譯使用者的語音，然後對文字的自然語言理解採取行動。 此動作通常包含以[文字轉換語音](text-to-speech.md)所產生的小幫手的語音輸出。 裝置會使用語音 SDK 的`DialogServiceConnector`物件連接到助理。
+聲音應用程式（例如[語音助理](voice-assistants.md)）會接聽使用者並採取動作來回應，通常會說回來。 他們使用[語音轉換文字](speech-to-text.md)來轉譯使用者的語音，然後對文字的自然語言理解採取行動。 此動作通常包含以[文字轉換語音](text-to-speech.md)所產生的小幫手的語音輸出。 裝置會使用語音 SDK 的物件連接到助理 `DialogServiceConnector` 。
 
 **自訂命令（預覽）** 是用來建立語音應用程式的簡化解決方案。 它提供統一的撰寫經驗、自動裝載模型，以及相對較低的複雜性與其他選項，例如[Direct Line Speech](direct-line-speech.md)。 不過，這種簡化功能會降低彈性。 因此，自訂命令（預覽）最適合用於工作完成或命令和控制案例。 這對於物聯網（IoT）和無周邊裝置而言特別符合。
 

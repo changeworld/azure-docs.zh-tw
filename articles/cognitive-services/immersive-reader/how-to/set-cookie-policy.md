@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
-ms.openlocfilehash: 6de651f1eb51ea1bc941c2af675c8a8d5b0f9cd7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 876379a211038933cf665bd1a4a4daae9c9b2787
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946282"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267064"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>如何設定沉浸式讀取器的 cookie 原則
 
@@ -45,7 +45,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="next-steps"></a>後續步驟
 
-* 檢視 [Node.js 快速入門](../quickstart-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
+* 檢視 [Node.js 快速入門](../quickstarts/client-libraries.md?pivots=programming-language-nodejs)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 檢視 [Python 教學課程](../tutorial-python.md)，以查看您還可以使用 Python 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 觀看[swift 教學](../tutorial-ios-picture-immersive-reader.md)課程，以瞭解如何使用 Swift 的沉浸式讀取器 SDK 來執行其他工作
 * 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../reference.md)
