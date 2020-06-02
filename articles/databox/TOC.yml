@@ -200,6 +200,6 @@
         - name: 資料箱產品
           href: 'https://azure.microsoft.com/services/storage/databox/data/'
         - name: 資料箱定價
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: 資料箱磁碟定價
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/disk/'

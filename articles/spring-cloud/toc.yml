@@ -90,7 +90,7 @@
 - name: 參考
   items:
     - name: Azure CLI 外掛程式
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
     - name: 資源
       href: spring-cloud-resources.md
     - name: 常見問題集

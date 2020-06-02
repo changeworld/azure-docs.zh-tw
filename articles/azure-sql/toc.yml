@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: 進階威脅防護
               href: database/threat-detection-overview.md
+            - name: 資料探索與分類
+              href: database/data-discovery-and-classification-overview.md
             - name: 動態資料遮罩
               href: database/dynamic-data-masking-overview.md
             - name: SQL 弱點評定
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: 自備金鑰 (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: 資料探索與分類
-                  href: database/data-discovery-and-classification-overview.md
         - name: 業務持續性
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -258,7 +258,7 @@
               href: database/active-geo-replication-security-configure.md
             - name: 異地分散應用程式
               href: database/geo-distributed-application-configure-tutorial.md
-            - name: 作用中異地複寫
+            - name: 使用中的地理複寫
               href: database/active-geo-replication-configure-portal.md
         - name: 安全性
           items:
@@ -312,7 +312,7 @@
                   href: database/resource-limits-logical-server.md
         - name: 業務持續性
           items:
-            - name: 作用中異地複寫
+            - name: 使用中的地理複寫
               href: database/active-geo-replication-overview.md
             - name: 中斷復原指引
               href: database/disaster-recovery-guidance.md
@@ -977,7 +977,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: Prerequisites
+                        - name: 必要條件
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
