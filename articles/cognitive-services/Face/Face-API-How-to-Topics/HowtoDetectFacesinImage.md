@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fd308ede17f510b3e9188f2bebc93a08a61181
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169883"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263171"
 ---
 # <a name="get-face-detection-data"></a>取得臉部偵測資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "76169883"
 
 ## <a name="setup"></a>安裝程式
 
-本指南假設您已使用臉部訂[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)用帳戶金鑰和`faceClient`端點 URL 來建立名為的 FaceClient 物件。 從這裡開始，您可以藉由呼叫本指南中所使用的[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)或[DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)，來使用臉部偵測功能。 如需有關如何設定此功能的指示，請遵循其中一個快速入門。
+本指南假設您已[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) `faceClient` 使用臉部訂用帳戶金鑰和端點 URL 來建立名為的 FaceClient 物件。 從這裡開始，您可以藉由呼叫本指南中所使用的[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)或[DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)，來使用臉部偵測功能。 如需有關如何設定此功能的指示，請遵循其中一個快速入門。
 
 本指南著重于偵測呼叫的細節，例如您可以傳遞的引數，以及您可以對傳回的資料執行哪些動作。 我們建議您只查詢所需的功能。 每項作業需要額外的時間才能完成。
 
@@ -145,7 +145,6 @@ foreach (var face in faces)
 在本指南中，您已瞭解如何使用臉部偵測的各種功能。 接下來，請遵循深入教學課程，將這些功能整合到您的應用程式中。
 
 - [教學課程：建立 WPF 應用程式來顯示影像中的臉部資料](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [教學課程：建立 Android 應用程式來偵測並框出影像中的臉部](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>相關主題
 

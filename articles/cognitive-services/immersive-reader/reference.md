@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231912"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267234"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式讀取器 SDK 參考指南
 
@@ -50,17 +50,17 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>傳回值
 
-傳回`Promise<LaunchResponse>`，它會在載入沉浸式讀取器時解析。 會`Promise`解析為[`LaunchResponse`](#launchresponse)物件。
+傳回 `Promise<LaunchResponse>` ，它會在載入沉浸式讀取器時解析。 會 `Promise` 解析為 [`LaunchResponse`](#launchresponse) 物件。
 
 ### <a name="exceptions"></a>例外狀況
 
-如果無法`Promise`載入沉浸式讀取器[`Error`](#error) ，則傳回的將會被物件拒絕。 如需詳細資訊，請參閱[錯誤碼](#error-codes)。
+`Promise` [`Error`](#error) 如果無法載入沉浸式讀取器，則傳回的將會被物件拒絕。 如需詳細資訊，請參閱[錯誤碼](#error-codes)。
 
 ## <a name="close"></a>關閉
 
 關閉沉浸式讀取器。
 
-此函式的範例使用案例是，如果在 [[選項](#options)] 中設定```hideExitButton: true```隱藏 [結束] 按鈕，則為。 然後，另一個按鈕（例如，行動電話標頭的上一頁箭號）可以```close```在按一下時呼叫這個函式。
+此函式的範例使用案例是，如果在 [選項] 中設定隱藏 [結束] 按鈕，則為 ```hideExitButton: true``` 。 [options](#options) 然後，另一個按鈕（例如，行動電話標頭的上一頁箭號）可以 ```close``` 在按一下時呼叫這個函式。
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-此函式會將檔的樣式和更新內容， 如果```options.elements```提供，則此函式會在內```options.elements```呈現按鈕。 否則，按鈕將會在具有類別```immersive-reader-button```的檔元素中轉譯。
+此函式會將檔的樣式和更新內容， 如果 ```options.elements``` 提供，則此函式會在內呈現按鈕 ```options.elements``` 。 否則，按鈕將會在具有類別的檔元素中轉譯 ```immersive-reader-button``` 。
 
 當視窗載入時，SDK 會自動呼叫此函式。
 
@@ -80,11 +80,11 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 設定 renderButtons 函數之特定行為的選項。 選擇性。 |
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 ### <a name="content"></a>內容
 
@@ -111,7 +111,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-包含呼叫的回應`ImmersiveReader.launchAsync`。
+包含呼叫的回應 `ImmersiveReader.launchAsync` 。
 
 ```typescript
 {
@@ -130,7 +130,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>支援的 MIME 類型
 
-| MIME 類型 | 描述 |
+| MIME 類型 | 說明 |
 | --------- | ----------- |
 | text/plain | 純文字。 |
 | text/html | HTML 內容。 [深入了解](#html-support)|
@@ -147,7 +147,7 @@ enum CookiePolicy { Disable, Enable }
 
 不支援的標記會以同等方式呈現。 目前不支援影像和資料表。
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 包含屬性，可設定沉浸式讀取器的特定行為。
 
@@ -188,16 +188,16 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="error-codes"></a>錯誤碼
 
-| 程式碼 | 描述 |
+| 程式碼 | 說明 |
 | ---- | ----------- |
-| BadArgument | 提供的引數無效。 `message`如需詳細資料，請參閱。 |
+| BadArgument | 提供的引數無效 `message` 。如需詳細資料，請參閱。 |
 | 逾時 | 沉浸式讀取器無法在指定的超時時間內載入。 |
 | TokenExpired | 提供的權杖已過期。 |
 | 調整執行速度 | 已超過呼叫率限制。 |
 
 ## <a name="launching-the-immersive-reader"></a>啟動沉浸式讀取器
 
-SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 使用`immersive-reader-button`類別屬性來啟用此樣式。 如需詳細資訊，請參閱[這篇文章](./how-to-customize-launch-button.md)。
+SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 使用 `immersive-reader-button` 類別屬性來啟用此樣式。 如需詳細資訊，請參閱[這篇文章](./how-to-customize-launch-button.md)。
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -210,7 +210,7 @@ SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 使用`immersiv
 | 屬性 | 描述 |
 | --------- | ----------- |
 | `data-button-style` | 設定按鈕的樣式。 可以是 `icon`、`text` 或 `iconAndText`。 預設為 `icon`。 |
-| `data-locale` | 設定地區設定。 例如，`en-US` 或 `fr-FR`。 預設為英文`en`。 |
+| `data-locale` | 設定地區設定。 例如，`en-US` 或 `fr-FR`。 預設為英文 `en` 。 |
 | `data-icon-px-size` | 設定圖示的大小（以圖元為單位）。 預設為20px。 |
 
 ## <a name="browser-support"></a>瀏覽器支援
@@ -226,4 +226,4 @@ SDK 會為啟動沉浸式讀取器的按鈕提供預設樣式。 使用`immersiv
 ## <a name="next-steps"></a>後續步驟
 
 * 探索 [GitHub 上的沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [快速入門：建立可啟動沉浸式讀取器的 web 應用程式（c #）](./quickstart.md)
+* [快速入門：建立可啟動沉浸式讀取器的 web 應用程式（c #）](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

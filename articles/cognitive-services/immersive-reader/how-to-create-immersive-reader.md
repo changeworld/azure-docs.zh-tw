@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330714"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267098"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>建立沉浸式讀取器資源並設定 Azure Active Directory 驗證
 
@@ -29,7 +29,7 @@ ms.locfileid: "78330714"
 
 ## <a name="set-up-powershell-environment"></a>設定 PowerShell 環境
 
-1. 從開啟[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)開始。 確定 cloud shell 已設定為左上角下拉式清單中的 PowerShell，或輸入`pwsh`。
+1. 從開啟[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)開始。 確定在左上角的下拉式清單中，或輸入，Cloud Shell 設定為 [PowerShell] `pwsh` 。
 
 1. 將下列程式碼片段複製並貼到 shell 中。
 
@@ -141,7 +141,7 @@ ms.locfileid: "78330714"
     }
     ```
 
-1. 執行函式`Create-ImmersiveReaderResource`，並視需要提供參數。
+1. 執行函式 `Create-ImmersiveReaderResource` ，並視需要提供參數。
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -157,15 +157,15 @@ ms.locfileid: "78330714"
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
     ```
 
-    | 參數 | 評價 |
+    | 參數 | 註解 |
     | --- | --- |
     | SubscriptionName |要用於您的沉浸式讀取器資源的 Azure 訂用帳戶名稱。 您必須擁有訂用帳戶，才能建立資源。 |
     | ResourceName |  必須是英數位元，而且可以包含 '-'，前提是 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。|
     | ResourceSubdomain |您的沉浸式讀取器資源需要自訂子域。 當呼叫沉浸式讀取器服務來啟動讀取器時，SDK 會使用子域。 子域必須是全域唯一的。 子域必須是英數位元，而且可以包含 '-'，前提是 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。 如果資源已經存在，此參數是選擇性的。 |
-    | ResourceSKU |選項： `S0`。 請流覽我們的[認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，以深入瞭解每個可用的 SKU。 如果資源已經存在，此參數是選擇性的。 |
-    | ResourceLocation |選項： `eastus`、 `eastus2`、 `southcentralus`、 `westus`、 `westus2`、 `australiaeast` `southeastasia` `centralindia` `japaneast`、、、、、、 `westeurope` `northeurope` `uksouth` 如果資源已經存在，此參數是選擇性的。 |
+    | ResourceSKU |選項： `S0` 。 請流覽我們的[認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，以深入瞭解每個可用的 SKU。 如果資源已經存在，此參數是選擇性的。 |
+    | ResourceLocation |選項： `eastus` 、 `eastus2` 、 `southcentralus` 、 `westus` 、 `westus2` 、 `australiaeast` `southeastasia` `centralindia` `japaneast` `northeurope` `uksouth` `westeurope` 、、、、、、。 如果資源已經存在，此參數是選擇性的。 |
     | resourceGroupName |資源會建立在訂用帳戶內的資源群組中。 提供現有資源群組的名稱。 如果資源群組不存在，則會建立一個具有這個名稱的新群組。 |
-    | ResourceGroupLocation |如果您的資源群組不存在，您必須提供要在其中建立群組的位置。 若要尋找位置的清單，請`az account list-locations`執行。 在傳回的結果中使用*name*屬性（不含空格）。 如果您的資源群組已經存在，此參數是選擇性的。 |
+    | ResourceGroupLocation |如果您的資源群組不存在，您必須提供要在其中建立群組的位置。 若要尋找位置的清單，請執行 `az account list-locations` 。 在傳回的結果中使用*name*屬性（不含空格）。 如果您的資源群組已經存在，此參數是選擇性的。 |
     | AADAppDisplayName |Azure Active Directory 應用程式顯示名稱。 如果找不到現有的 Azure AD 應用程式，則會建立一個具有這個名稱的新的。 如果 Azure AD 應用程式已存在，則此參數為選擇性。 |
     | AADAppIdentifierUri |Azure AD 應用程式的 URI。 如果找不到現有的 Azure AD 應用程式，將會建立一個具有此 URI 的新應用程式。 例如： `https://immersivereaderaad-mycompany` 。 |
     | AADAppClientSecret |您所建立的密碼，會在您取得權杖以啟動沉浸式讀取器時用來進行驗證。 密碼長度至少必須有16個字元，至少包含1個特殊字元，且至少包含1個數字字元。 |
@@ -183,7 +183,7 @@ ms.locfileid: "78330714"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 檢視 [Node.js 快速入門](./quickstart-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
+* 檢視 [Node.js 快速入門](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 檢視 [Python 教學課程](./tutorial-python.md)，以查看您還可以使用 Python 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 觀看[swift 教學](./tutorial-ios-picture-immersive-reader.md)課程，以瞭解如何使用 Swift 的沉浸式讀取器 SDK 來執行其他工作
 * 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](./reference.md)
