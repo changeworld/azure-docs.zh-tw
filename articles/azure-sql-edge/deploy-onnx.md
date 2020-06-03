@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge (預覽) 中使用 ONNX 進行部署和預測
 description: 了解如何將模型定型、將其轉換為 ONNX、將其部署至 Azure SQL Edge (預覽)，然後使用上傳的 ONNX 模型對資料執行原生預測。
 keywords: 部署 SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: f0b64dd9f752a2d574a04022c84eae05d9ff6445
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66e2fb663d14ed2590af9c0cc62e6dad119d086f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594657"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233269"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>在 Azure SQL Edge (預覽) 中使用 ONNX 模型進行部署和預測
 
@@ -384,7 +384,7 @@ AS (
     )
 SELECT predict_input.id
     , p.variable1 AS MEDV
-FROM PREDICT(MODEL = @model, DATA = predict_input) WITH (variable1 FLOAT) AS p
+FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1 FLOAT) AS p
 ```
 
 ## <a name="next-steps"></a>後續步驟

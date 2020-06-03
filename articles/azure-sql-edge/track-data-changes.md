@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge (預覽) 中追蹤資料變更
 description: 了解如何在 Azure SQL Edge (預覽) 中進行變更追蹤和異動資料擷取
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a91ed5d4763aa521c9f6ed913dc532b08e37039f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3e3a6c3e171383d1812f63b945735d1b82f70b9c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594447"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235090"
 ---
 # <a name="tracking-data-changes-in-azure-sql-edge-preview"></a>在 Azure SQL Edge (預覽) 中追蹤資料變更
 

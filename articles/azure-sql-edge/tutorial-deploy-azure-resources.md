@@ -2,19 +2,19 @@
 title: 設定資源以在 Azure SQL Edge 中部署 ML 模型
 description: 在此 Azure SQL Edge 教學課程三部曲的第一部分中，您會在 Azure SQL Edge 中安裝必要軟體並設定必要的 Azure 資源，以部署機器學習模型。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 30c024aafc1cf8f479de77107b7f0aaaa262d47c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772823"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235085"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>安裝軟體並設定教學課程的資源
 

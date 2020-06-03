@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9921db093cc111917d50acfccc10165c0eab6b0f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930738"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232986"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -108,7 +108,7 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 
 ## <a name="networking"></a>網路功能
 * [虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
-* [Azure 中的 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Azure 中的 IP 位址](../../virtual-network/public-ip-addresses.md)
 * [對 Azure 中的 Linux VM 開啟連接埠](nsg-quickstart.md)
 * [在 Azure 入口網站中建立完整格式的網域名稱](portal-create-fqdn.md)
 

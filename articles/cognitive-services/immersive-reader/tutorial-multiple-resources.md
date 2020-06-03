@@ -9,16 +9,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195616"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267200"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教學課程：整合多個沈浸式閱讀程式資源
 
-在[概觀](./overview.md)中，您會了解什麼是沈浸式閱讀程式，及其如何實作經實證的技術，針對語言學習者、沈浸式讀者及存在學習差異的學生改善其閱讀理解程度。 在 [快速入門](./quickstart-nodejs.md)中，您已了解如何搭配單一資源使用沈浸式閱讀程式。 本教學課程將說明如何在同一個應用程式中整合多個沈浸式閱讀程式資源。 在本教學課程中，您會了解如何：
+在[概觀](./overview.md)中，您會了解什麼是沈浸式閱讀程式，及其如何實作經實證的技術，針對語言學習者、沈浸式讀者及存在學習差異的學生改善其閱讀理解程度。 在 [快速入門](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)中，您已了解如何搭配單一資源使用沈浸式閱讀程式。 本教學課程將說明如何在同一個應用程式中整合多個沈浸式閱讀程式資源。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 在現有的資源群組下建立多個沈浸式閱讀程式資源
@@ -28,7 +28,7 @@ ms.locfileid: "82195616"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 遵循[快速入門](./quickstart-nodejs.md)，以使用 NodeJS 建立可啟動沈浸式閱讀程式的 Web 應用程式 在該快速入門中，您會設定單一沈浸式閱讀程式資源。 在本教學課程中，我們將以該資源作為基礎。
+* 遵循[快速入門](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)，以使用 NodeJS 建立可啟動沈浸式閱讀程式的 Web 應用程式 在該快速入門中，您會設定單一沈浸式閱讀程式資源。 在本教學課程中，我們將以該資源作為基礎。
 
 ## <a name="create-the-immersive-reader-resources"></a>建立沈浸式閱讀程式資源
 
