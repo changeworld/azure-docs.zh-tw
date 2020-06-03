@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656575"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119027"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教學課程：使用設計工具預測汽車價格 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取 [迴歸] > [線性迴歸]，然後將其拖曳到管線畫布上。
 
-1. 將 [線性迴歸] 模組的輸出連接到 [訓練模型] 模組的左側輸入。
-
 1. 在模組選擇區中，展開 [模組訓練] 區段，然後將 [訓練模型] 模組拖曳至畫布。
 
-1. 選取 [定型模型] 模組，並將其拖曳至管線畫布。
+1. 將 [線性迴歸] 模組的輸出連接到 [訓練模型] 模組的左側輸入。
 
 1. 將**分割資料**模組的訓練資料輸出 (左側連接埠) 連接到**訓練模型**模組的右側輸入。
     

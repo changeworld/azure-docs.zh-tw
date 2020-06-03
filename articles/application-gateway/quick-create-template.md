@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/23/2020
+ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604907"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170489"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入門：使用 Azure 應用程式閘道來引導網路流量 - Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "81604907"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -55,18 +55,20 @@ ms.locfileid: "81604907"
 
 將 Resource Manager 範本部署至 Azure：
 
-1. 選取 [部署至 Azure]  以登入 Azure 並開啟範本。 此範本會在執行 IIS 的後端集區中建立應用程式閘道、網路基礎結構和兩個虛擬機器。
+1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會在執行 IIS 的後端集區中建立應用程式閘道、網路基礎結構和兩個虛擬機器。
 
    [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. 選取或建立資源群組，輸入虛擬機器系統管理員的使用者名稱和密碼。
-3. 選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 部署可能需要 20 分鐘或更久的時間才能完成。
+3. 選取 [檢閱 + 建立]，然後選取 [建立]。
+
+   部署可能需要 20 分鐘或更久的時間才能完成。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 
 雖然不需要 IIS 即可建立應用程式閘道，但仍會加以安裝以確認 Azure 是否已成功建立應用程式閘道。 使用 IIS 測試應用程式閘道：
 
-1. 在 [概觀]  頁面上尋找應用程式閘道的公用 IP 位址。![記錄應用程式閘道公用 IP 位址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) 或者，您可以選取 [所有資源]  ，並在搜尋方塊中輸入 *myAGPublicIPAddress*，然後在搜尋結果中加以選取。 Azure 會在 [概觀]  頁面上顯示公用 IP 位址。
+1. 在 [概觀] 頁面上尋找應用程式閘道的公用 IP 位址。![記錄應用程式閘道公用 IP 位址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) 或者，您可以選取 [所有資源]，並在搜尋方塊中輸入 *myAGPublicIPAddress*，然後在搜尋結果中加以選取。 Azure 會在 [概觀] 頁面上顯示公用 IP 位址。
 2. 將公用 IP 位址複製並貼到您瀏覽器的網址列，以瀏覽該 IP 位址。
 3. 檢查回應。 有效的回應會確認應用程式閘道已成功建立，並可與後端順利連線。
 

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869795"
+ms.locfileid: "83995968"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Java 進行拼字檢查
 
@@ -23,7 +23,7 @@ ms.locfileid: "83869795"
 
 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上找到此應用程式的原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Java 開發套件 (JDK) 7 或更新版本。
 
@@ -59,9 +59,9 @@ ms.locfileid: "83869795"
 
 1. 建立名為 `check()` 的函式，以建立及傳送 API 要求。 在此函式內，新增後續步驟中指定的程式碼。 建立要求參數的字串：
 
-   a. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 
+   1. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 
 
-   b. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 
+   1. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 
 
    ```java
    public static void check () throws Exception {

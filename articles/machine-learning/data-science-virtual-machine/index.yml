@@ -11,12 +11,12 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5e1aa239d375b6985d7c2a58086d416f745098b8
-  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+  ms.openlocfilehash: 584d2c262c3db8d67a71a683e8429712c99dbedd
+  ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80755100"
+  ms.lasthandoff: 06/02/2020
+  ms.locfileid: "84297882"
 landingContent:
 - title: 開始使用您的資料科學虛擬機器
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
     links:
     - text: 什麼是資料科學虛擬機器？
       url: overview.md
-    - text: 什麼是地區人工智慧資料科學虛擬機器？
-      url: geo-ai-dsvm-overview.md
     - text: 資料科學虛擬機器上包含的工具
       url: tools-included.md
     - text: 版本資訊
@@ -36,8 +34,6 @@ landingContent:
       url: provision-vm.md
     - text: 建立 Ubuntu 資料科學虛擬機器
       url: dsvm-ubuntu-intro.md
-    - text: 建立地區人工智慧資料科學虛擬機器
-      url: provision-geo-ai-dsvm.md
 - title: 管理您的資料科學虛擬機器
   linkLists:
   - linkListType: architecture

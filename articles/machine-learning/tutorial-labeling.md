@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759178"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196525"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 (預覽) 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "83759178"
 > * 為您的資料加上標籤。  您或您的標記人員可以執行這項工作。
 > * 藉由檢閱和匯出資料來完成專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -83,7 +83,7 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 1. 選取 [+ 新增專案]。
 
-    ![建立專案](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="建立專案":::
 
 ### <a name="project-details"></a>專案詳細資料
 

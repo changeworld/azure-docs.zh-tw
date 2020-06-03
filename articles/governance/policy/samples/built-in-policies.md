@@ -1,21 +1,21 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 04/26/2020
+ms.date: 05/29/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 47105fdbc2bc48d43aa5539613854c82ce4ffbd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b95029a5422a427e071cb2d3e4481b846ff9a295
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190908"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233744"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
 此頁面是 Azure 原則內建原則定義的索引。
 
-Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源]  資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
 
 ## <a name="app-configuration"></a>應用程式組態
 
@@ -65,6 +65,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)]
 
+## <a name="event-grid"></a>事件方格
+
+[!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)]
+
 ## <a name="event-hub"></a>事件中樞
 
 [!INCLUDE [azure-policy-samples-policies-event-hub](../../../../includes/policy/samples/bycat/policies-event-hub.md)]
@@ -89,10 +93,6 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes 服務
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)]
-
 ## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)]
@@ -100,6 +100,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+## <a name="machine-learning"></a>Machine Learning
+
+[!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>受控應用程式
 

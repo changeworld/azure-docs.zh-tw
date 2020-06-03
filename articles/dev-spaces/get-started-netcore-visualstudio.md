@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873618"
+ms.locfileid: "83995899"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 
@@ -26,28 +26,59 @@ ms.locfileid: "83873618"
 > [!Note]
 > **如果作業出現停滯的情況**，請參閱[疑難排解](troubleshooting.md)一節。
 
+## <a name="install-the-azure-cli"></a>安裝 Azure CLI
+Azure 開發人員空間需要基本的本機電腦設定。 大部分開發人員空間的組態都會儲存在雲端，而且可與其他使用者共用。 從下載和執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 著手。
+
+### <a name="sign-in-to-azure-cli"></a>登入 Azure CLI
+登入 Azure。 在終端機視窗中輸入下列命令：
+
+```azurecli
+az login
+```
+
+> [!Note]
+> 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>如果您有多個 Azure 訂用帳戶...
+您可以執行下列命令以檢視訂用帳戶： 
+
+```azurecli
+az account list --output table
+```
+
+尋找 *IsDefault* 為 *True* 的訂用帳戶。
+如果這不是您要使用的訂用帳戶，您可以變更預設訂用帳戶：
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>建立已針對 Azure Dev Spaces 啟用的 Kubernetes 叢集
 
-1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 選擇 [建立資源] > 搜尋 **Kubernetes** > 選取 [Kubernetes Service] > [建立]。
+在命令提示字元中，於[支援 Azure Dev Spaces 的區域][supported-regions]建立資源群組。
 
-   在每個「建立 Kubernetes 叢集」表單的標題底下完成下列步驟，並確認您所選擇的[地區支援 Azure Dev Spaces][supported-regions]。
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **專案詳細資料**：選取 Azure 訂用帳戶，以及新的或現有的 Azure 資源群組。
-   - **叢集詳細資料**：輸入 AKS 叢集的名稱、地區、版本及 DNS 名稱前置詞。
-   - **級別**：選取 AKS 代理程式節點的 VM 大小和節點數目。 如果您開始使用 Azure Dev Spaces，一個節點就足以瀏覽所有功能。 節點計數可以輕易在叢集部署後隨時調整。 請注意，VM 大小無法在 AKS 叢集建立後變更。 不過，部署 AKS 叢集後，您就可以輕鬆地建立具有較大 VM 的新 AKS 叢集，而如果您需要擴大，請使用 Dev Spaces 重新部署到該較大叢集。
+使用下列命令來建立 Kubernetes 叢集：
 
-   ![Kubernetes 組態設定](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+建立叢集需要幾分鐘的時間。
 
-   完成時，選取 [下一步:驗證]。
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>設定您的 AKS 叢集以使用 Azure Dev Spaces
 
-1. 選擇您想要的角色型存取控制 (RBAC) 設定。 Azure Dev Spaces 會在啟用或停用 RBAC 的情況下支援叢集。
+使用其中包含您 AKS 叢集和 AKS 叢集名稱的資源群組，輸入下列 Azure CLI 命令。 命令會使用 Azure Dev Spaces 的支援來設定您的叢集。
 
-    ![RBAC 設定](media/common/k8s-RBAC.PNG)
-
-1. 選取 [檢閱 + 建立]，然後在完成時選取 [建立]。
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Azure Dev Spaces 設定程序會移除叢集中的 `azds` 命名空間 (如果存在的話)。
 
 ## <a name="get-the-visual-studio-tools"></a>取得 Visual Studio 工具
 在具有 Azure 開發工作負載的 Windows 上安裝最新版的 [Visual Studio 2019](https://www.visualstudio.com/vs/)。
