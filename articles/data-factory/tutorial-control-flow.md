@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418723"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022107"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
@@ -48,7 +48,7 @@ ms.locfileid: "81418723"
 
 * Azure 儲存體帳戶。 您會使用 Blob 儲存體作為來源資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../storage/common/storage-account-create.md)。
 * Azure 儲存體總管。 若要安裝此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。
-* Azure SQL Database。 您會使用資料庫作為接收資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL Database](../sql-database/sql-database-get-started-portal.md)。
+* Azure SQL Database。 您會使用資料庫作為接收資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)。
 * Visual Studio。 本文使用 Visual Studio 2019。
 * Azure .NET SDK。 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
