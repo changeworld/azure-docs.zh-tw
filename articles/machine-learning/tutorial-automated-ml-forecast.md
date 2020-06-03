@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 05/19/2020
-ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656561"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118902"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -229,7 +229,7 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
 
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
 + 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
-+ 深入了解[特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。
++ 深入了解[特徵化](how-to-configure-auto-features.md#featurization)。
 + 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。
 
 >[!NOTE]

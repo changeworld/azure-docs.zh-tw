@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21c3e3c7ae515f5a740384d202451f61291bc05b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613844"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117732"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
@@ -82,4 +82,4 @@ Cmdlet 的結果應該類似以下輸出：
 現在您已建立驗證主機集區，接下來可以了解如何使用 Azure 服務健康狀態來監視您的 Windows 虛擬桌面部署。 
 
 > [!div class="nextstepaction"]
-> [設定服務警示](../set-up-service-alerts.md)
+> [設定服務警示](set-up-service-alerts-2019.md)
