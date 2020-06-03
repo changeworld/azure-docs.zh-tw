@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454249"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016384"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教學課程：設定伺服器管理員和使用者角色
 
@@ -59,7 +59,7 @@ ms.locfileid: "81454249"
     ![在 SSMS 中連線](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > 建議選擇 [具 MFA 支援的 Active Directory 通用]。 此類型的驗證支援[非互動式或多因素驗證](../../sql-database/sql-database-ssms-mfa-authentication.md)。 
+    > 建議選擇 [具 MFA 支援的 Active Directory 通用]。 此類型的驗證支援[非互動式或多因素驗證](../../azure-sql/database/authentication-mfa-ssms-overview.md)。 
 
 3. 在 [物件總管]  中，展開伺服器物件加以檢視。 按一下滑鼠右鍵以檢視伺服器屬性。
    
