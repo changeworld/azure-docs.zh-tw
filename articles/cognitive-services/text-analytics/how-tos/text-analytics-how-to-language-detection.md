@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745578"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142379"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>範例：使用文字分析來偵測語言
 
-此 API 的[語言偵測](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)功能會針對每份文件評估文字輸入，並傳回語言識別碼，其中含有指出分析強度的分數。
+此 API 的[語言偵測](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)功能會針對每份文件評估文字輸入，並傳回語言識別碼，其中含有指出分析強度的分數。
 
 此功能對於收集任意文字且語言為未知的內容存放區而言非常實用。 您可以剖析此分析的結果，以判斷輸入文件中使用的是哪一種語言。 回應也會傳回分數來反映對模型的信賴度。 該分數值介於 0 到 1之間。
 
@@ -67,16 +67,16 @@ ms.locfileid: "83745578"
 
 如需有關要求定義的詳細資訊，請參閱[呼叫文字分析 API](text-analytics-how-to-call-api.md)。 為了方便起見，我們將重申下列各點：
 
-+ 建立 POST 要求。 若要檢閱適用於此要求的 API 文件，請參閱[語言偵測 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) \(英文\)。
++ 建立 POST 要求。 若要檢閱適用於此要求的 API 文件，請參閱[語言偵測 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) \(英文\)。
 
-+ 設定適用於語言偵測的 HTTP 端點。 使用 Azure 文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)。 您必須在 URL 中納入 `/text/analytics/v2.1/languages`。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages` 。
++ 設定適用於語言偵測的 HTTP 端點。 使用 Azure 文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)。 您必須在 URL 中納入 `/text/analytics/v3.0/languages`。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` 。
 
 + 設定要求標頭以包含文字分析作業的[存取金鑰](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 + 在要求主體中，提供您準備用於此分析的 JSON 文件集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
 
 ## <a name="step-2-post-the-request"></a>步驟 2:張貼要求
 
@@ -96,61 +96,57 @@ ms.locfileid: "83745578"
 1\.0 的正面分數表示最高的分析信賴等級。
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "detectedLanguages": [
-                    {
-                        "name": "English",
-                        "iso6391Name": "en",
-                        "score": 1
-                    }
-                ]
+{
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "2",
-                "detectedLanguages": [
-                    {
-                        "name": "Spanish",
-                        "iso6391Name": "es",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "3",
-                "detectedLanguages": [
-                    {
-                        "name": "French",
-                        "iso6391Name": "fr",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "4",
-                "detectedLanguages": [
-                    {
-                        "name": "Chinese_Simplified",
-                        "iso6391Name": "zh_chs",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "5",
-                "detectedLanguages": [
-                    {
-                        "name": "Russian",
-                        "iso6391Name": "ru",
-                        "score": 1
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+            "warnings": []
+        },
+        {
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
+}
 ```
 
 ### <a name="ambiguous-content"></a>模稜兩可的內容
@@ -190,7 +186,7 @@ ms.locfileid: "83745578"
                     {
                         "name": "English",
                         "iso6391Name": "en",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             },
@@ -200,7 +196,7 @@ ms.locfileid: "83745578"
                     {
                         "name": "French",
                         "iso6391Name": "fr",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             }
@@ -218,7 +214,7 @@ ms.locfileid: "83745578"
             {
                 "name": "(Unknown)",
                 "iso6391Name": "(Unknown)",
-                "score": "NaN"
+                "confidenceScore": "NaN"
             }
         ]
     }
@@ -254,7 +250,7 @@ ms.locfileid: "83745578"
             {
               "name": "Spanish",
               "iso6391Name": "es",
-              "score": 0.9375
+              "confidencescore": 0.94
             }
           ]
         }
@@ -267,17 +263,13 @@ ms.locfileid: "83745578"
 
 在此文章中，您已了解使用 Azure 認知服務中的文字分析進行語言偵測的概念與工作流程。 已說明及示範下列幾點：
 
-+ [語言偵測](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)適用於多種不同的語言、變體、方言，以及某些區域性或文化語言。
++ [語言偵測](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)適用於多種不同的語言、變體、方言，以及某些區域性或文化語言。
 + 要求主體中的 JSON 文件包含識別碼和文字。
 + 使用對您訂用帳戶有效的個人化[存取金鑰和端點](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，將要求 POST 到 `/languages` 端點。
 + 回應輸出包含每個文件識別碼的語言識別碼。 輸出可以串流處理到任何接受 JSON 的應用程式。 範例應用程式包括 Excel 與 Power BI 等等。
 
 ## <a name="see-also"></a>另請參閱
 
- [文字分析概觀](../overview.md) [常見問題集 (FAQ)](../text-analytics-resource-faq.md)</br>
- [文字分析產品頁面](//go.microsoft.com/fwlink/?LinkID=759712)
-
-## <a name="next-steps"></a>後續步驟
-
-> [!div class="nextstepaction"]
-> [分析情感](text-analytics-how-to-sentiment-analysis.md)
+* [文字分析概觀](../overview.md)
+* [使用文字分析用戶端程式庫](../quickstarts/text-analytics-sdk.md)
+* [新功能](../whats-new.md)

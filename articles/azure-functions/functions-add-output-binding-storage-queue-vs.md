@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio 新增輸出繫結，以將 C# 類
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74849202"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235376"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 將函式連線至 Azure 儲存體
 
@@ -23,7 +23,7 @@ ms.locfileid: "74849202"
 
 開始本文之前，您必須： 
 
- - 完成 [Visual Studio 快速入門的第 1 部分](./functions-create-first-function-vs-code.md)。 
+ - 完成 [Visual Studio 快速入門的第 1 部分](./functions-create-your-first-function-visual-studio.md)。 
 
 - 從 Visual Studio 登入您的 Azure 訂用帳戶。
 

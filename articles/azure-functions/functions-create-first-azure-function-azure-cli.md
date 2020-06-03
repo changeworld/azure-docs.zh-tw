@@ -4,12 +4,12 @@ description: 了解如何從命令列建立函式，然後將本機專案發佈�
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8b720a34268a1a43b65ef8a7b8afbf61b753f79a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626250"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195038"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -105,7 +105,7 @@ Maven 會要求您提供在部署時完成產生專案所需的值。
 | **groupId** | `com.fabrikam` | 此值可在所有專案中唯一識別您的專案，並遵循適用於 Java 的[套件命名規則](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)。 |
 | **artifactId** | `fabrikam-functions` | 此值是 jar 的名稱 (不含版本號碼)。 |
 | **version** | `1.0-SNAPSHOT` | 選擇預設值。 |
-| **套件** | `com.fabrikam.functions` | 此值是所產生函式程式碼的 Java 套件。 使用預設值。 |
+| **套件** | `com.fabrikam` | 此值是所產生函式程式碼的 Java 套件。 使用預設值。 |
 
 輸入 `Y` 或按 Enter 進行確認。
 
@@ -145,7 +145,7 @@ cd fabrikam-functions
 #### <a name="functionjava"></a>Function.java
 Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資料，而該變數是一個以 [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) 註釋裝飾的 [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)，可定義觸發程序行為。 
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java":::
+:::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
 回應訊息是由 [HttpResponseMessage.Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API 所產生。
 
@@ -153,7 +153,7 @@ Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資�
 
 為裝載應用程式所建立的 Azure 資源設定，會定義於外掛程式的 **configuration** 元素中，並在產生的 pom.xml 檔案中使用 `com.microsoft.azure` 的 **groupId**。 例如，下方的 configuration 元素會指示以 Maven 為基礎的部署，以在 `westus` 區域的 `java-functions-group` 資源群組中建立函式應用程式。 函式應用程式本身會在 `java-functions-app-service-plan` 方案所裝載的 Windows 上執行，預設為無伺服器取用方案。    
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="116-155":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 您可以變更這些設定，以控制在 Azure 中建立資源的方式，例如，在初始部署之前將 `runtime.os` 從 `windows` 變更為 `linux`。 如需 Maven 外掛程式支援的設定完整清單，請參閱[組態詳細資料](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
 
@@ -414,3 +414,4 @@ az group delete --name java-functions-group
 
 > [!div class="nextstepaction"]
 > [連線至 Azure 儲存體佇列](functions-add-output-binding-storage-queue-cli.md)
+ 

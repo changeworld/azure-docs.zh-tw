@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061928"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022772"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>使用 CLI 將 Azure SQL Database 彈性集區新增至容錯移轉群組
 
@@ -61,4 +61,4 @@ az group delete --name $resource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/overview)。
 
-其他的 SQL Database Azure CLI 指令碼範例可在 [Azure SQL Database CLI 指令碼](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database Azure CLI 指令碼範例可在 [Azure SQL Database CLI 指令碼](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

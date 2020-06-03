@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: df7753983cea2ca2cc285f04cd32da6ed065f415
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656156"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112854"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>快速入門：建立 Azure Synapse Analytics 工作區 (預覽)
 
@@ -25,9 +25,6 @@ ms.locfileid: "83656156"
 ## <a name="prerequisites"></a>Prerequisites
 
 - [Azure Data Lake Storage Gen2 儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="register-azure-synapse-resource-provider"></a>註冊 Azure Synapse 資源提供者
-如果您尚未這麼做，請註冊 Azure Synapse 資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 若要註冊 Azure Synapse 資源提供者，請參閱 [Azure 資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。 當您註冊時，請從資源提供者清單中選擇 [Microsoft.Synapse]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
