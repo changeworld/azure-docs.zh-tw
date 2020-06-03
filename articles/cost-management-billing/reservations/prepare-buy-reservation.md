@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780635"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019036"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -72,7 +72,7 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 - [專用主機](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/concept-reserved-pricing.md)
 - [適用於 MySQL 的 Azure 資料庫](../../mysql/concept-reserved-pricing.md)
 - [適用於 MariaDB 的 Azure 資料庫](../../mariadb/concept-reserved-pricing.md)

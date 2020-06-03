@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382730"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018713"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教學課程：使用 Azure Databrick 擷取、轉換和載入資料
 
@@ -370,7 +370,7 @@ ms.locfileid: "81382730"
    > [!NOTE]
    > 此範例會使用 `forward_spark_azure_storage_credentials` 旗標，這會導致 Azure Synapse 使用存取金鑰來存取 Blob 儲存體中的資料。 這是唯一支援的驗證方法。
    >
-   > 如果您的 Azure Blob 儲存體受限於選取虛擬網路，則 Azure Synapse 需要[受控服務識別，而不是存取金鑰](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 這會導致「此要求未經授權執行此作業」錯誤。
+   > 如果您的 Azure Blob 儲存體受限於選取虛擬網路，則 Azure Synapse 需要[受控服務識別，而不是存取金鑰](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 這會導致「此要求未經授權執行此作業」錯誤。
 
 6. 連線至 SQL 資料庫，並確認您看到名為 **SampleTable** 的資料庫。
 

@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536126"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169843"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -126,12 +126,12 @@ ms.locfileid: "81536126"
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. 如果您要為 [Azure AD 國家雲端](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)建置應用程式，請使用正確端點來取代開頭為 'let kGraphEndpoint' 的那一行。 在 [全域存取] 中，請使用預設值：
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
 > 1. 其他端點則記載在[這裡](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)。 例如，若要執行 Azure AD Germany 的快速入門，請使用下列內容：
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
