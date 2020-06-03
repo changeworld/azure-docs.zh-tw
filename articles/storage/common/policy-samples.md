@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 儲存體的內建原則定義
 description: 列出適用於 Azure 儲存體的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-samples
-ms.openlocfilehash: c08c7375ec4d011633eaa9ffe2a1ccfa03b4c560
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3071858bb9745b3f36e52e597e1add63e3a5973e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656382"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235944"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-storage"></a>適用於 Azure 儲存體的 Azure 原則內建原則定義
 

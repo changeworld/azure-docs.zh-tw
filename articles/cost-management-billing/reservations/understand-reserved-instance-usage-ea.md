@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 76d73b57202acabdf42ce0bec6b9b33cde15592f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8fbdcc9176b2297d160a4166b7d9079ff1b7fb5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199274"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022345"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約保留成本和使用量
 
@@ -157,7 +157,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)
 - [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../sql-database/sql-database-reserved-capacity.md)
+- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 保留項目](manage-reserved-vm-instance.md)
 - [了解保留項目折扣的套用方式](../manage/understand-vm-reservation-charges.md)
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
