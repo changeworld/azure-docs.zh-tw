@@ -3,12 +3,12 @@ title: 教學課程：在 Azure 入口網站中管理查詢
 description: 在本教學課程中，您將建立 Resource Graph 查詢，並在 Azure 入口網站中與其他人共用新查詢。
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637756"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148016"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中建立和共用 Azure Resource Graph 查詢
 
@@ -44,7 +44,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
    選取 [執行查詢]  ，以查看底部窗格中的查詢結果。
 
-   如需此查詢的詳細資訊，請參閱[範例 - 依作業系統類型計算虛擬機器計數](../samples/starter.md#count-virtual-machines-by-os-type)。
+   如需此查詢的詳細資訊，請參閱[範例 - 依作業系統類型計算虛擬機器計數](../samples/starter.md#count-os)。
 
 
 1. 選取 [儲存]  或 [另存新檔]  ，輸入「依作業系統計算 VM 計數」  作為名稱，並將類型保留為 [私人查詢]  ，然後在 [儲存查詢]  窗格底部選取 [儲存]  。 索引標籤標題會從「查詢 1」  變更為「依作業系統計算 VM 計數」  。
@@ -76,7 +76,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
     
    選取 [執行查詢]  ，以查看底部窗格中的查詢結果。
 
-   如需此查詢的詳細資訊，請參閱[範例 - 依作業系統類型計算虛擬機器計數](../samples/starter.md#count-virtual-machines-by-os-type)。
+   如需此查詢的詳細資訊，請參閱[範例 - 依作業系統類型計算虛擬機器計數](../samples/starter.md#count-os)。
 
 1. 選取 [儲存]  或 [另存新檔]  。
 
