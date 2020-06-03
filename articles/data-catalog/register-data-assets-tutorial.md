@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68950239"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021597"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教學課程：註冊 Azure 資料目錄中的資料資產
 
@@ -39,7 +39,7 @@ ms.locfileid: "68950239"
 
 ### <a name="register-a-data-source"></a>註冊資料來源
 
-您會註冊 [Azure SQL 資料庫範例](../sql-database/sql-database-single-database-get-started.md)中的資料資產 (資料表)，但如果您偏好使用熟悉且與您的角色相關的資料，也可以使用任何支援的資料來源。 如需支援的資料來源清單，請參閱 [支援的資料來源](data-catalog-dsr.md)。
+您會註冊 [Azure SQL 資料庫範例](../azure-sql/database/single-database-create-quickstart.md)中的資料資產 (資料表)，但如果您偏好使用熟悉且與您的角色相關的資料，也可以使用任何支援的資料來源。 如需支援的資料來源清單，請參閱 [支援的資料來源](data-catalog-dsr.md)。
 
 我們在本教學課程使用的 Azure SQL 資料庫名稱為 *RLSTest*。
 

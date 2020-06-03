@@ -7,12 +7,12 @@ ms.reviewer: yashesvi
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 2dadcac3c776feed5ee521284f6b244a050e83e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237933"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019991"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 
@@ -168,7 +168,7 @@ ms.locfileid: "79237933"
 
 購買服務方案：
 - [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../sql-database/sql-database-reserved-capacity.md)
+- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [以 Azure Cosmos DB 保留容量預先支付 Azure Cosmos DB 資源的費用](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 購買軟體方案：

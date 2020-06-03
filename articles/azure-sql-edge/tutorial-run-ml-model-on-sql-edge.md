@@ -2,19 +2,19 @@
 title: 使用 ONNX 在 Azure SQL Edge 上部署 ML 模型
 description: 在此 Azure SQL Edge 教學課程三部曲的第三部分中，您會在 SQL Edge 上執行 ONNX 機器學習模型，以預測鐵礦中的雜質含量。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 64594267dc51fa42dabcc3083d18d631904a9cab
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 02850b8780e70d402cff2b8fd301c2f79cd6c55e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593540"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235072"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>使用 ONNX 在 Azure SQL Edge 上部署 ML 模型 
 

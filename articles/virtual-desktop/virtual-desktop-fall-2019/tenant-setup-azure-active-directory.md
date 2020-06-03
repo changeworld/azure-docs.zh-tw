@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124392"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234110"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教學課程：在 Windows 虛擬桌面中建立租用戶
 
@@ -152,9 +152,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>後續步驟
-
-如需更深入的逐步解說，請參閱我們的 [Windows 虛擬桌面學習路徑](https://docs.microsoft.com/learn/paths/m365-wvd/)。
-
 建立好您的租用戶後，您必須在 Azure Active Directory 中建立服務主體，並對其指派 Windows 虛擬桌面內的角色。 服務主體可讓您順利部署 Windows 虛擬桌面的 Azure Marketplace 供應項目，進而建立主機集區。 若要深入了解主機集區，請繼續進行在 Windows 虛擬桌面中建立主機集區的教學課程。
 
 > [!div class="nextstepaction"]
