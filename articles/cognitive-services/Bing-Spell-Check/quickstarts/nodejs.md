@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 3a98308716696f677f04db66e83ff4e9d5d08c85
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869838"
+ms.locfileid: "83995950"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Node.js 進行拼字檢查
 
@@ -45,9 +45,9 @@ ms.locfileid: "83869838"
 
 2. 為搜尋參數和要檢查的文字建立變數： 
 
-   a. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 市場代碼是您提出要求的國家/區域。 
+   1. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 市場代碼是您提出要求的國家/區域。 
 
-   b. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 模式可以是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查錯誤，但沒有多少文法錯誤)。
+   1. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 模式可以是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查錯誤，但沒有多少文法錯誤)。
 
     ```javascript
     let mkt = "en-US";

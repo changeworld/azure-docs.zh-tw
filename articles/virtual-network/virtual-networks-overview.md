@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 0577b61cd30ef0f8fd5fc8ef1593d210c00bb25c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879355"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300079"
 ---
 # <a name="what-is-azure-virtual-network"></a>什麼是 Azure 虛擬網路？
 
@@ -59,9 +59,9 @@ Azure 資源可透過下列其中一種方式安全地相互通訊：
 
 您可以使用下列選項的任意組合，將內部部署電腦和網路連線至虛擬網路︰
 
-- **點對站虛擬私人網路 (VPN)：** 建立於虛擬網路與您網路中的單一電腦之間。 每部想要與虛擬網路建立連線的電腦，都必須設定其連線。 如果您剛開始使用 Azure，此連線類型就很適合您，也適用於開發人員，因為它幾乎不需要變更您現有的網路。 您的電腦與虛擬網路之間的通訊，會在網際網路間透過加密通道傳送。 若要深入了解，請參閱[點對站 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#P2S)。
-- **站對站 VPN：** 建立於您的內部部署 VPN 裝置與虛擬網路中部署的 Azure VPN 閘道之間。 此連線類型可讓您授權的任何內部部署資源存取虛擬網路。 您的內部部署 VPN 裝置與 Azure VPN 閘道之間的通訊，會在網際網路間透過加密通道傳送。 若要深入了解，請參閱[站對站 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)。
-- **Azure ExpressRoute：** 透過 ExpressRoute 合作夥伴，建立於您的網路與 Azure 之間。 此連線是私人連線。 流量不會經由網際網路傳送。 若要深入了解，請參閱 [ExpressRoute](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ExpressRoute)。
+- **點對站虛擬私人網路 (VPN)：** 建立於虛擬網路與您網路中的單一電腦之間。 每部想要與虛擬網路建立連線的電腦，都必須設定其連線。 如果您剛開始使用 Azure，此連線類型就很適合您，也適用於開發人員，因為它幾乎不需要變更您現有的網路。 您的電腦與虛擬網路之間的通訊，會在網際網路間透過加密通道傳送。 若要深入了解，請參閱[點對站 VPN](../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-network%2ftoc.json#)。
+- **站對站 VPN：** 建立於您的內部部署 VPN 裝置與虛擬網路中部署的 Azure VPN 閘道之間。 此連線類型可讓您授權的任何內部部署資源存取虛擬網路。 您的內部部署 VPN 裝置與 Azure VPN 閘道之間的通訊，會在網際網路間透過加密通道傳送。 若要深入了解，請參閱[站對站 VPN](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)。
+- **Azure ExpressRoute：** 透過 ExpressRoute 合作夥伴，建立於您的網路與 Azure 之間。 此連線是私人連線。 流量不會經由網際網路傳送。 若要深入了解，請參閱 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="filter-network-traffic"></a>篩選網路流量
 

@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065674"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015942"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解保留折扣如何套用至 Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Azure 計費系統會將保留計費權益指派給第一個處理且符合保�
 
 * [什麼是 Azure 的保留](save-compute-costs-reservations.md)  
 * [以 Azure Cosmos DB 保留容量預先支付 Azure Cosmos DB 資源的費用](../../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../sql-database/sql-database-reserved-capacity.md)  
+* [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)  
 * [管理 Azure 的保留](manage-reserved-vm-instance.md)  
 * [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)  
 * [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)

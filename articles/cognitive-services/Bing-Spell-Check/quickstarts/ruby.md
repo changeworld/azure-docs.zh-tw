@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9f5f841bd7fd33d4d6c7dcd1a1f7ab754610b973
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869900"
+ms.locfileid: "83993519"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Ruby 進行檢查拼字
 
@@ -42,9 +42,9 @@ ms.locfileid: "83869900"
 
 2. 針對您的訂用帳戶金鑰、端點 URI 和路徑建立變數。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 建立要求參數：
 
-   a. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 市場代碼是您提出要求的國家/區域。 
+   1. 使用 `=` 運算子，將您的市場代碼指派給 `mkt` 參數。 市場代碼是您提出要求的國家/區域。 
 
-   b. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 模式可以是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查錯誤，但沒有多少文法錯誤)。 
+   1. 使用 `&` 運算子新增 `mode` 參數，然後指派拼字檢查模式。 模式可以是 `proof` (攔截大部分的拼字/文法錯誤) 或 `spell` (攔截大部分的拼字檢查錯誤，但沒有多少文法錯誤)。 
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'

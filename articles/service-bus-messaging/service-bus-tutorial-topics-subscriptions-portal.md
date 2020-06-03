@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 321417813346e7d5c92876c22516c627aff5ab12
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76310113"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300744"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教學課程：使用 Azure 入口網站和主題/訂用帳戶來更新庫存
 
@@ -55,7 +55,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 佈建命名空間和主題/訂用帳戶，且您已擁有必要的認證之後，您即可在訂用帳戶上建立篩選規則，然後傳送和接收訊息。 您可以在[此 GitHub 範例資料夾](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中查看程式碼。
 
-### <a name="send-and-receive-messages"></a>傳送及接收訊息
+## <a name="send-and-receive-messages"></a>傳送及接收訊息
 
 若要執行程式碼，請執行下列動作：
 

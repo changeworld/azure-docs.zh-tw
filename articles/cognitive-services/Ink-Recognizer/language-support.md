@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e5c1c74a3659be855b3f846c16672d0d73b9de4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67721749"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309691"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆跡辨識器 API 的語言和區域支援
 
@@ -70,10 +70,10 @@ ms.locfileid: "67721749"
 | 俄文                                    |     `ru-RU`     |
 | 蘇格蘭蓋爾文                            |     `gd-GB`     |
 | 北索托文                           |    `nso-ZA`     |
-| 塞爾維亞文 (斯拉夫、波士尼亞及赫塞哥維納) |  `sr-Cyrl-BA`   |
+| 塞爾維亞文 (斯拉夫、波士尼亞與赫塞哥維納) |  `sr-Cyrl-BA`   |
 | 塞爾維亞文（斯拉夫，黑山）             |  `sr-Cyrl-ME`   |
 | 塞爾維亞文 (斯拉夫，塞爾維亞)                 |  `sr-Cyrl-RS`   |
-| 塞爾維亞文（拉丁、波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
+| 塞爾維亞文（拉丁，波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
 | 塞爾維亞文（拉丁，黑山）                |  `sr-Latn-ME`   |
 | 塞爾維亞文 (拉丁，塞爾維亞)                    |  `sr-Latn-RS`   |
 | 塞茲瓦納文 (南非)                    |     `tn-ZA`     |
@@ -89,7 +89,7 @@ ms.locfileid: "67721749"
 | 科薩文                                      |     `xh-ZA`     |
 | 祖魯文                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是筆跡辨識器 API？](overview.md)
 * [將數位筆跡筆劃傳送至筆跡辨識器 API](concepts/send-ink-data.md)
