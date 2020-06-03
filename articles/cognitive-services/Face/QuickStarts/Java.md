@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403434"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263987"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入門：使用 REST API 和 Java 偵測影像中的人臉
 
@@ -248,7 +248,7 @@ public class Main {
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立簡單的 Java 主控台應用程式以對 Azure 臉部 API 使用 REST 呼叫，進而偵測影像中的臉部並傳回其屬性。 接下來，您可以了解如何在 Android 應用程式中使用此功能來執行更多動作。
+在本快速入門中，您已建立簡單的 Java 主控台應用程式以對 Azure 臉部 API 使用 REST 呼叫，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
 
 > [!div class="nextstepaction"]
-> [教學課程：建立 Android 應用程式來偵測並框出臉部](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

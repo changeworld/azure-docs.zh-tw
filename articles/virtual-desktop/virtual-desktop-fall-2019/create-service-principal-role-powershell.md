@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f87f5387fc97e3b697488b266cb2c3981409294
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613864"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117714"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教學課程：使用 PowerShell 建立服務主體和角色指派
 
@@ -116,4 +116,4 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
 建立服務主體並將 Windows 虛擬桌面租用戶中的角色指派給租用戶之後，您就可以使用此租用戶建立主機集區。 若要深入了解主機集區，請繼續進行在 Windows 虛擬桌面中建立主機集區的教學課程。
 
  > [!div class="nextstepaction"]
- > [透過 Azure Marketplace 建立主機集區](../create-host-pools-azure-marketplace.md)
+ > [透過 Azure Marketplace 建立主機集區](create-host-pools-azure-marketplace-2019.md)
