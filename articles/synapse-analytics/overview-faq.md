@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744071"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118378"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
@@ -32,13 +32,6 @@ A：Azure Synapse 是適用於 BI、AI 和持續型智能的整合式資料平�
 - 輕鬆地進行監視，並快速地對工作區活動在任何層級上發生的事件進行最佳化、反應和偵錯。
 - 跨引擎管理您的中繼資料。 建立 Spark 資料表，這會在您的 Azure Synapse 資料庫中自動提供。
 - 透過統一的使用者體驗與資料互動。 Synapse Studio 會將巨量資料開發人員、資料工程師、DBA、資料分析師和資料科學家帶到相同的平台上。
-
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>問：如何開始使用 Azure Synapse Analytics
-
-A：若要開始使用 Azure Synapse Analytics，請從資源提供者清單中選取 [Microsoft.Synapse]，以[註冊 Azure Synapse 資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。 然後建立 [Synapse 工作區 (免費！)](https://portal.azure.com)，並在該工作區底下建立您想要的資源。 您可以遵循我們的其中一個快速入門教學課程，例如[建立 Synapse SQL 集區](quickstart-create-sql-pool-portal.md)或[建立工作區](quickstart-create-workspace.md)，這會引導您完成簡單的使用案例。 您也可以在我們的 [存放庫](https://github.com/Azure-Samples/Synapse)中找到範例筆記本和 SQL 指令碼。 如果您需要連線到公用資料集，請使用下列屬性來建立新的連結服務：
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (write **""** )
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>問：Azure Synapse Analytics 的主要元件有哪些
 

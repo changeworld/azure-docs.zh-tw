@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66388571"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310575"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing 自訂搜尋 API 支援的語言和區域
 
@@ -32,11 +32,11 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |國家/地區|程式碼|
 |-------|----|
 |阿根廷|AR|
-|澳大利亞|AU|
+|澳洲|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
-|Canada|CA|
+|加拿大|CA|
 |智利|CL|
 |丹麥|DK|
 |芬蘭|FI|
@@ -44,7 +44,7 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|識別碼|
+|印尼|ID|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -65,28 +65,28 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|CH|
 |台灣|TW|
 |土耳其|TR|
-|United Kingdom|GB|
-|美國|US|
+|英國|GB|
+|美國|美國|
 
 
 ## <a name="markets"></a>市場
 
-|國家/地區|Language|市場代碼|
+|國家/地區|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳大利亞|英文|en-AU|
+|澳洲|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|Canada|英文|en-CA|
-|Canada|法文|fr-CA|
+|加拿大|英文|en-CA|
+|加拿大|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
 |法國|法文|fr-FR|
 |德國|德文|de-DE|
-|香港特別行政區，特別行政區|繁體中文|zh-HK|
+|香港特別行政區|繁體中文|zh-HK|
 |印度|英文|en-IN|
 |印尼|英文|en-ID|
 |義大利|義大利文|it-IT|
@@ -110,6 +110,6 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|United Kingdom|英文|en-GB|
+|英國|英文|en-GB|
 |美國|英文|zh-TW|
 |美國|西班牙文|es-US|
