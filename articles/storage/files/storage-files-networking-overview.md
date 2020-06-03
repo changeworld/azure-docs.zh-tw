@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067157"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296522"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 檔案儲存體的網路功能考量 
 您可以透過兩種方式連線至 Azure 檔案共用：
@@ -51,7 +51,7 @@ Azure 檔案儲存體支援下列機制，以在內部部署工作站和伺服�
 
 - [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)：VPN 閘道是特定的虛擬網路閘道類型，可透過網際網路在 Azure 虛擬網路與替代位置 (例如，內部部署環境) 之間傳送加密流量。 Azure VPN 閘道是一種 Azure 資源，可供部署在儲存體帳戶或其他 Azure 資源的資源群組中。 VPN 閘道會公開兩種不同的連線類型：
     - [點對站 (P2S) VPN](../../vpn-gateway/point-to-site-about.md) 閘道連線，這是 Azure 與個別用戶端之間的 VPN 連線。 此解決方案主要適用於不屬於組織內部部署網路的裝置，例如，想要能夠從家裡、咖啡廳或外出時所住的飯店掛接其 Azure 檔案共用的遠距工作者。 若要將 P2S VPN 連線用於 Azure 檔案儲存體，必須為每個要連線的用戶端設定 P2S VPN 連線。 若要簡化 P2S VPN 連線的部署，請參閱[在 Windows 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體](storage-files-configure-p2s-vpn-windows.md)和[在 Linux 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體](storage-files-configure-p2s-vpn-linux.md)使用。
-    - [站對站 (S2S) VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)，這是 Azure 與您組織內網路之間的 VPN 連線。 S2S VPN 連線可讓您一次就為組織網路上裝載的 VPN 伺服器或裝置設定 VPN 連線，而不必針對需要存取 Azure 檔案共用的每個用戶端裝置進行設定。 若要簡化 S2S VPN 連線的部署，請參閱[設定站對站 (S2S) VPN 以用於 Azure 檔案儲存體](storage-files-configure-s2s-vpn.md)。
+    - [站對站 (S2S) VPN](../../vpn-gateway/design.md#s2smulti)，這是 Azure 與您組織內網路之間的 VPN 連線。 S2S VPN 連線可讓您一次就為組織網路上裝載的 VPN 伺服器或裝置設定 VPN 連線，而不必針對需要存取 Azure 檔案共用的每個用戶端裝置進行設定。 若要簡化 S2S VPN 連線的部署，請參閱[設定站對站 (S2S) VPN 以用於 Azure 檔案儲存體](storage-files-configure-s2s-vpn.md)。
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)，可讓您在 Azure 與不會周遊網際網路的內部部署網路之間建立已定義好的路由。 由於 ExpressRoute 會在您的內部部署資料中心與 Azure 之間提供專用路徑，因此若要將網路效能納入考量時，ExpressRoute 可能會很有用。 當組織的原則或法規需求要求您的雲端資源必須有確定的路徑時，ExpressRoute 也會是不錯的選擇。
 
 無論您使用哪一種通道方法來存取 Azure 檔案共用，都需要備有機制來確保朝向儲存體帳戶的流量會通過通道進入，而不是通過一般的網際網路連線。 技術上而言，您可以路由傳送至儲存體帳戶的公用端點，不過這需要針對區域中的 Azure 儲存體叢集，將其所有的 IP 位址寫入程式碼，因為儲存體帳戶可能會隨時在儲存體叢集之間移動。 這也需要持續更新 IP 位址對應，因為隨時都會有新的叢集新增進來。
