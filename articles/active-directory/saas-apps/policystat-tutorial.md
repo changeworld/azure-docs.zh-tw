@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848714"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教學課程：Azure Active Directory 與 PolicyStat 整合
 
@@ -175,11 +175,11 @@ PolicyStat 與 Azure AD 整合提供下列優點：
    
     a. 在 [使用者名稱屬性] 文字方塊中，輸入 **uid**。
 
-    b. 在 [名字屬性] 文字方塊中，輸入來自 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** 的名字屬性宣告名稱。
+    b. 在 [名字屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 的名字屬性宣告名稱。
 
-    c. 在 [姓氏屬性] 文字方塊中，輸入來自 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** 的姓氏屬性宣告名稱。
+    c. 在 [姓氏屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 的姓氏屬性宣告名稱。
 
-    d. 在 [電子郵件屬性] 文字方塊中，輸入來自 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 的電子郵件屬性宣告名稱。
+    d. 在 [電子郵件屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 的電子郵件屬性宣告名稱。
 
     e. 按一下 **[儲存變更]** 。
 
