@@ -41,6 +41,8 @@
       href: ../../backup/security-baseline.md
     - name: 批次安全性基準
       href: ../../batch/security-baseline.md
+    - name: 容器執行個體安全性基準
+      href: ../../container-instances/security-baseline.md
     - name: 容器登錄安全性基準
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB 安全性基準

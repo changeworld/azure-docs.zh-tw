@@ -87,11 +87,11 @@
         - name: 註冊 SAML 服務提供者
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: 註冊 Graph 應用程式
+        - name: 註冊 Microsoft Graph 應用程式
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: 新增 Web API 應用程式
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: 新增原生用戶端應用程式
           href: add-native-application.md
         - name: 使用 App Auth 的 iOS ObjC
@@ -279,7 +279,7 @@
                       href: date-transformations.md
                     - name: 一般
                       href: general-transformations.md
-                    - name: '整數 '
+                    - name: 整數
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: 參考
   items:
+    - name: 應用程式註冊
+      href: app-registrations-training-guide.md
     - name: 計費模式
       href: billing.md
     - name: 程式碼範例

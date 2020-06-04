@@ -952,8 +952,10 @@
               href: configure-raid.md
             - name: 設定 LVM
               href: configure-lvm.md
-        - name: 尋找未連接的磁碟
+        - name: 尋找未連接的磁碟 - CLI
           href: find-unattached-disks.md
+        - name: 尋找未連接的磁碟 - 入口網站
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 使用檔案儲存體
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: 磁碟常見問題

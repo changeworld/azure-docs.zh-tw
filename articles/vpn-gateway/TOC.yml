@@ -24,6 +24,8 @@
           href: work-remotely-support.md
         - name: NVA 組態和遠端工作
           href: nva-work-remotely-support.md
+    - name: 關於 VPN 閘道設計
+      href: design.md
     - name: 關於 VPN 閘道設定
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: 關於 VPN 裝置

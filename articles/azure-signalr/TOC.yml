@@ -73,6 +73,12 @@
       items:
         - name: 存取金鑰輪替
           href: signalr-howto-key-rotation.md
+        - name: 使用 Azure 服務標記
+          href: howto-service-tags.md
+        - name: 使用 Azure 私人端點
+          href: howto-private-endpoints.md
+        - name: 管理網路存取控制
+          href: howto-network-access-control.md
     - name: 整合
       items:
         - name: Azure Functions 繫結
@@ -105,7 +111,7 @@
       href: signalr-resource-faq.md
     - name: SignalR 服務訂用帳戶層級限制
       href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: 影片
       href: 'https://www.youtube.com/results?search_query=Azure+SignalR+Core'

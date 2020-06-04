@@ -50,6 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: 使用 Azure Files 和 Azure AD DS
           href: create-profile-container-adds.md
+    - name: 建立設定檔容器檔案共用
+      href: create-file-share.md
     - name: 設定主機集區設定
       items:
         - name: RDP 屬性
@@ -134,6 +136,8 @@
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: 資源
   items:
+    - name: PowerShell
+      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
     - name: 體驗估算工具
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 定價計算機

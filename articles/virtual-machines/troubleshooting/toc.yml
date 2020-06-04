@@ -69,6 +69,8 @@
       items:
         - name: 開機診斷
           href: boot-diagnostics.md
+        - name: 開機錯誤 - 發生磁片讀取錯誤
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker 錯誤
           href: troubleshoot-bitlocker-boot-error.md
         - name: 藍色畫面錯誤

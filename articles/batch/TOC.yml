@@ -129,6 +129,8 @@
           href: batch-custom-images.md
         - name: 在虛擬網路中建立集區
           href: batch-virtual-network.md
+        - name: 使用公用 IP 位址建立集區
+          href: create-pool-public-ip.md
         - name: 掛載虛擬檔案系統
           href: virtual-file-mount.md
         - name: 裝載 Azure 檔案共用
