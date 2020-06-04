@@ -4,19 +4,19 @@ description: 這個以 Java REST 為基礎的快速入門會逐步引導您以�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 67f09b6d1e284cdf35825a2e584b372bd2adf70a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: f162276044e63c9deb46a60033ffe9904366f777
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851971"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342794"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>快速入門：使用 JAVA 從知識庫中取得問題的答案
 
 本快速入門會逐步引導您以程式設計方式從已發佈的 QnA Maker 知識庫取得答案。 知識庫包含[資料來源](../Concepts/knowledge-base.md)中的問題和答案，例如常見問題集。 [問題](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)會傳送至 QnA Maker 服務。 [回應](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含位居預測首位的答案。
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
 ## <a name="prerequisites"></a>Prerequisites
 

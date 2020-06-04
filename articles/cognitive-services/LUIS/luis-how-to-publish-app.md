@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9c8b607b1dc3f7f67ee1fdad353d15023318947
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653937"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340686"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>將作用中且經過訓練的應用程式發佈至預備或生產端點
 
 當您完成建立、定型和測試使用中的 LUIS 應用程式時，請將它發佈至端點，讓用戶端應用程式可以使用它。
 
 ## <a name="publishing"></a>發佈
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 若要發佈至端點，請選取右側面板頂端的 [發佈]****。
 
@@ -38,7 +38,7 @@ ms.locfileid: "83653937"
 在快顯視窗顯示時選取正確的位置：
 
 * 預備
-* 生產
+* Production
 
 藉由使用這兩個發佈位置，可讓您在已發行的端點或相同版本的兩個不同端點上，使用應用程式的兩個不同版本。
 

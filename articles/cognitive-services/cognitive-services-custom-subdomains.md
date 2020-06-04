@@ -34,7 +34,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>我是否需要更新現有的資源？
 
-不會。 區域端點將繼續適用于新的和現有的認知服務，而自訂子功能變數名稱稱則是選擇性的。 即使新增了自訂子功能變數名稱稱，區域端點仍會繼續使用資源。
+否。 區域端點將繼續適用于新的和現有的認知服務，而自訂子功能變數名稱稱則是選擇性的。 即使新增了自訂子功能變數名稱稱，區域端點仍會繼續使用資源。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>如果 SDK 向我詢問資源的區域，該怎麼做？
 
@@ -55,7 +55,7 @@ Azure 認知服務針對透過[Azure 入口網站](https://portal.azure.com)、 
 
 ## <a name="can-i-change-a-custom-domain-name"></a>我可以變更自訂功能變數名稱嗎？
 
-不會。 建立自訂子功能變數名稱稱並與資源相關聯之後，就無法變更它。
+否。 建立自訂子功能變數名稱稱並與資源相關聯之後，就無法變更它。
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>我可以重複使用自訂功能變數名稱嗎？
 

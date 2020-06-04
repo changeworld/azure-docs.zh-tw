@@ -1,14 +1,14 @@
 ---
 title: 遷移知識庫 - Qna Maker
 description: 遷移知識庫必須先從某個知識庫匯出，再匯入至另一個知識庫。
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80258085"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343083"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用匯出-匯入移轉知識庫
 
@@ -20,7 +20,7 @@ ms.locfileid: "80258085"
 
 若要遷移知識庫，您必須從現有的知識庫匯出，然後再匯入到另一個知識庫。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 開始之前，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 設定新的 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)

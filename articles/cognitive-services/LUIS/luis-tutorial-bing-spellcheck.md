@@ -8,26 +8,26 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396824"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344130"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用 Bing 拼字檢查更正拼錯的字組
 
-您可以整合 LUIS 應用程式與 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/)，以在 LUIS 預測語句的分數和實體之前更正拼錯的字組。 
+您可以整合 LUIS 應用程式與 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/)，以在 LUIS 預測語句的分數和實體之前更正拼錯的字組。
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>為 Bing 拼字檢查 V7 建立第一個金鑰
 
-您的[第一個 Bing 拼字檢查 API v7 金鑰](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免費的。 
+您的[第一個 Bing 拼字檢查 API v7 金鑰](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免費的。
 
 ![建立免費金鑰](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "80396824"
 ## <a name="create-endpoint-key"></a>建立端點金鑰
 如果您的免費金鑰過期，請建立端點金鑰。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 在左上角選取 [建立資源]****。
 
@@ -44,9 +44,9 @@ ms.locfileid: "80396824"
 
     ![搜尋 Bing 拼字檢查 API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. 選取此服務。 
+4. 選取此服務。
 
-5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立]**** 開始訂用帳戶建立程序。 
+5. 資訊面板會顯示在右邊，包含法律聲明等資訊。 選取 [建立]**** 開始訂用帳戶建立程序。
 
 6. 在下一個面板中，輸入您的服務設定。 等候服務建立程序完成。
 
@@ -54,13 +54,13 @@ ms.locfileid: "80396824"
 
 7. 選取左側導覽列上 [我的最愛]**** 標題底下的 [所有資源]****。
 
-8. 選取新服務。 其類型為 [認知服務]**** 且位置為 [全域]****。 
+8. 選取新服務。 其類型為 [認知服務]**** 且位置為 [全域]****。
 
 9. 在主面板中，選取 [金鑰]**** 以查看新的金鑰。
 
     ![擷取金鑰](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. 複製第一個金鑰。 您只需要兩個金鑰中的其中一個。 
+10. 複製第一個金鑰。 您只需要兩個金鑰中的其中一個。
 
 <!--
 ## Using the key in LUIS test panel
@@ -76,7 +76,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>將拼錯的語句傳送至 LUIS
 1. 在網頁瀏覽器中，複製上述字串，並以您自己的值取代 `region`、`appId`、`luisKey` 和 `bingKey`。 如果端點區域不同於您的發佈[區域](luis-reference-regions.md)，請務必使用端點區域。
 
-2. 新增拼錯的語句，例如 "How far is the mountainn?"。 在英文中，包含一個 `n` 的 `mountain` 是正確的拼法。 
+2. 新增拼錯的語句，例如 "How far is the mountainn?"。 在英文中，包含一個 `n` 的 `mountain` 是正確的拼法。
 
 3. 選取 Enter 將查詢傳送至 LUIS。
 
@@ -96,15 +96,15 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼字錯誤
 
-如果您不想要使用 Bing 拼寫檢查 API v7 服務，則必須新增正確和不正確的拼寫。 
+如果您不想要使用 Bing 拼寫檢查 API v7 服務，則必須新增正確和不正確的拼寫。
 
 有兩種解決方案：
 
 * 標籤範例語句，其中包含所有不同的拼寫，讓 LUIS 可以學習正確的拼寫及打字錯誤。 相較於使用拼字檢查工具，此選項需要更多標記工作。
-* 建立包含單字所有變化的片語清單。 透過此解決方案，您不需要在範例語句中標記單字變化。 
+* 建立包含單字所有變化的片語清單。 透過此解決方案，您不需要在範例語句中標記單字變化。
 
 ## <a name="publishing-page"></a>發佈頁面
-[發佈](luis-how-to-publish-app.md) 頁面具有 **啟用 Bing 拼字檢查工具** 核取方塊。 這方便於建立金鑰並理解如何變更端點 URL。 您仍然必須使用正確的端點參數，以便更正每個語句的拼字。 
+[發佈](luis-how-to-publish-app.md) 頁面具有 **啟用 Bing 拼字檢查工具** 核取方塊。 這方便於建立金鑰並理解如何變更端點 URL。 您仍然必須使用正確的端點參數，以便更正每個語句的拼字。
 
 > [!div class="nextstepaction"]
 > [深入了解範例語句](luis-how-to-add-example-utterances.md)

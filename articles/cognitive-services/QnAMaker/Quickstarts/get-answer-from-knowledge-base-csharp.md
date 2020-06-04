@@ -4,21 +4,21 @@ description: 這個以 C# REST 為基礎的快速入門會逐步引導您以程�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 16093ec5e837b098da3c9b038fe2a57cd76c7151
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 8e821531fdc7be13833b134b087d26c2b157425a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851983"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342828"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>快速入門：從知識庫使用 C 取得問題的答案#
 
 本快速入門會逐步引導您以程式設計方式從已發佈的 QnA Maker 知識庫取得答案。 知識庫包含[資料來源](../Concepts/knowledge-base.md)中的問題和答案，例如常見問題集。 [問題](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)會傳送至 QnA Maker 服務。 [回應](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含位居預測首位的答案。
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 最新 [**Visual Studio Community 版本**](https://www.visualstudio.com/downloads/)。
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰，請在 QnA Maker 資源的 Azure 儀表板中選取 [資源管理]**** 下方的 [金鑰]****。

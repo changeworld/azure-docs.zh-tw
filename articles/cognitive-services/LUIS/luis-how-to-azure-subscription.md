@@ -2,14 +2,14 @@
 title: 如何使用撰寫和執行時間金鑰-LUIS
 description: 當您第一次使用 Language Understanding （LUIS）時，您不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101020"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344453"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -51,7 +51,7 @@ ms.locfileid: "82101020"
 
 使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)來個別建立每個資源。
 
-資源`kind`：
+資源 `kind` ：
 
 * 製作`LUIS.Authoring`
 * 翻`LUIS`
@@ -64,13 +64,13 @@ ms.locfileid: "82101020"
 
     這會開啟瀏覽器，讓您選取正確的帳戶並提供驗證。
 
-1. 在為`westus`區域命名`my-resource-group`的_現有_資源群組`LUIS.Authoring`中， `my-luis-authoring-resource`建立名為的**LUIS 撰寫資源**（種類）。
+1. 在為**LUIS authoring resource** `LUIS.Authoring` `my-luis-authoring-resource` 區域命名的_現有_資源群組中，建立名為的 LUIS 撰寫資源（種類） `my-resource-group` `westus` 。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. 在為`westus`區域命名`my-resource-group`的_現有_資源群組中`LUIS`，建立`my-luis-prediction-resource`名為的**LUIS 預測端點資源**（種類）。 如果您想要比免費層更高的輸送量， `F0`請`S0`將變更為。 深入瞭解[定價層和輸送量](luis-limits.md#key-limits)。
+1. 在為**LUIS prediction endpoint resource** `LUIS` `my-luis-prediction-resource` 區域命名的_現有_資源群組中，建立名為的 LUIS 預測端點資源（種類） `my-resource-group` `westus` 。 如果您想要比免費層更高的輸送量，請將變更 `F0` 為 `S0` 。 深入瞭解[定價層和輸送量](luis-limits.md#key-limits)。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -85,7 +85,7 @@ ms.locfileid: "82101020"
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)。
 1. 在上方導覽列中，選取最右側的 [使用者帳戶]，然後選取 [**設定**]。
-1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [儲存]  。
+1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [儲存]。
 
 ## <a name="assign-a-resource-to-an-app"></a>將資源指派給應用程式
 
@@ -124,11 +124,11 @@ ms.locfileid: "82101020"
 
     |類型|設定|值|
     |--|--|--|
-    |頁首|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
-    |頁首|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
-    |頁首|`Content-type`|`application/json`|
+    |Header|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
+    |Header|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
+    |Header|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 應用程式識別碼。
-    |body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
+    |主體||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
     此 API 成功執行時，會傳回「201 - 已建立」狀態。
 

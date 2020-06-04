@@ -4,13 +4,13 @@ description: 這個以 Python REST 為基礎的快速入門會逐步引導您以
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 31763a10ea365e9879557dcd6dcec65c9943f9db
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851985"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343450"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入門：使用 Python 在 QnA Maker 中建立知識庫
 
@@ -20,11 +20,11 @@ ms.locfileid: "78851985"
 * [建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [取得作業詳細資料](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Python 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Python 3.7](https://www.python.org/downloads/)
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。

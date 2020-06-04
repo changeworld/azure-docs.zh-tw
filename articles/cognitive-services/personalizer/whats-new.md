@@ -7,15 +7,15 @@ manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 55153cc7fc125c97a5b73084f83dd320240ca256
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800618"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342100"
 ---
 # <a name="whats-new-in-personalizer"></a>個人化工具的新功能
 
@@ -33,7 +33,7 @@ ms.locfileid: "83800618"
 
 * 現在對於此服務的所有 HTTP 要求都會強制執行 TLS 1.2。 如需詳細資訊，請參閱 [Azure 認知服務安全性](../cognitive-services-security.md)。
 
-### <a name="november-2019---ignite-conference"></a>2019年11月-Ignite 會議
+### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 會議
 
 * 個人化工具已正式推出（GA）
 * 包含整個生命週期的 Azure Notebooks[教學](tutorial-use-azure-notebook-generate-loop-data.md)課程

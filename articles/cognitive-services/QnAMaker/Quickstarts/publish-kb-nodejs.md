@@ -4,13 +4,13 @@ description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Ma
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851959"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342726"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker 適用于 node.js 的 REST Api
 
@@ -25,7 +25,7 @@ ms.locfileid: "78851959"
 * 下載知識庫
 * 取得作業的狀態
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | node.js[範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
