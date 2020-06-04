@@ -21,7 +21,7 @@ ms.locfileid: "80876720"
 
 了解如何部署語言偵測容器。 此程序示範如何建立本機的 Docker 容器、將容器推送至私人容器登錄、在 Kubernetes 叢集中執行容器，並在網頁瀏覽器中進行測試。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。
 

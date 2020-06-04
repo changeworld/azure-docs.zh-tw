@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68932680"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344742"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 應用程式 API v1 至 v2 的移轉指南
-第1版[端點](https://aka.ms/v1-endpoint-api-docs)和[編寫](https://aka.ms/v1-authoring-api-docs)api 已被取代。 使用本指南來瞭解如何遷移至第2版[端點](https://go.microsoft.com/fwlink/?linkid=2092356)和[編寫](https://go.microsoft.com/fwlink/?linkid=2092087)api。 
+第1版[端點](https://aka.ms/v1-endpoint-api-docs)和[編寫](https://aka.ms/v1-authoring-api-docs)api 已被取代。 使用本指南來瞭解如何遷移至第2版[端點](https://go.microsoft.com/fwlink/?linkid=2092356)和[編寫](https://go.microsoft.com/fwlink/?linkid=2092087)api。
 
 ## <a name="new-azure-regions"></a>新的 Azure 區域
 LUIS 針對 LUIS API 提供新的[區域](https://aka.ms/LUIS-regions)。 LUIS 為區域群組提供不同的入口網站。 編寫應用程式的區域必須與您預期查詢的區域相同。 應用程式不會自動移轉區域。 您要從一個區域匯出應用程式，然後匯入至另一個區域，才能在新的區域中使用。
@@ -28,7 +28,7 @@ LUIS 針對 LUIS API 提供新的[區域](https://aka.ms/LUIS-regions)。 LUIS �
 編寫 API 路由從使用 **prog** 路由變更為使用 **api** 路由。
 
 
-| 版本 | 路由 |
+| version | 路由 |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -37,7 +37,7 @@ LUIS 針對 LUIS API 提供新的[區域](https://aka.ms/LUIS-regions)。 LUIS �
 ## <a name="endpoint-route-changes"></a>端點路由變更
 端點 API 有新的查詢字串參數和不同的回應。 如果 verbose 旗標為 true，除了 topScoringIntent 之外，在名為 intents 的陣列中還會傳回所有意圖 (不論分數為何)。
 
-| 版本 | GET 路由 |
+| version | GET 路由 |
 |--|--|
 |1|/luis/v1/application?ID={appId}&q={q}|
 |2|/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]|
@@ -107,17 +107,17 @@ v2 端點成功回應：
 ## <a name="key-management-no-longer-in-api"></a>API 中不再有金鑰管理
 訂用帳戶端點金鑰 API 已被取代，傳回 410 GONE。
 
-| 版本 | 路由 |
+| version | 路由 |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [端點金鑰](luis-how-to-azure-subscription.md)會在 Azure 入口網站中產生。 您要在**[發佈](luis-how-to-azure-subscription.md)** 頁面上指派金鑰給 LUIS 應用程式。 您不需要知道實際的金鑰值。 LUIS 會使用訂用帳戶名稱來進行指派。 
+Azure [端點金鑰](luis-how-to-azure-subscription.md)會在 Azure 入口網站中產生。 您要在**[發佈](luis-how-to-azure-subscription.md)** 頁面上指派金鑰給 LUIS 應用程式。 您不需要知道實際的金鑰值。 LUIS 會使用訂用帳戶名稱來進行指派。
 
 ## <a name="new-versioning-route"></a>新的版本控制路由
 v2 模型現在包含在[版本](luis-how-to-manage-versions.md)中。 版本名稱是路由中的 10 個字元。 預設版本為 "0.1"。
 
-| 版本 | 路由 |
+| version | 路由 |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities|
 |2|/luis/**api**/v2.0/apps/{appId}/**versions**/{versionId}/entities|
@@ -136,7 +136,7 @@ v2 模型現在包含在[版本](luis-how-to-manage-versions.md)中。 版本名
 ## <a name="sample-renamed-to-suggest"></a>"Sample" 已重新命名為 "suggest"
 LUIS 建議使用現有[端點語句](luis-how-to-review-endpoint-utterances.md)中的語句來加強模型。 在舊版中，這名為 **sample**。 在新版中，名稱已從 sample 變更為 **suggest**。 這在 LUIS 網站中稱為**[檢閱端點語句](luis-how-to-review-endpoint-utterances.md)** \(英文\)。
 
-| 版本 | 路由 |
+| version | 路由 |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**sample**|
@@ -153,22 +153,22 @@ LUIS 建議使用現有[端點語句](luis-how-to-review-endpoint-utterances.md)
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
 ## <a name="importing-1x-app-into-2x"></a>將 1.x 應用程式匯入至 2.x
-匯入至 [LUIS][LUIS] 2.0 之前，匯出的 1.x 應用程式的 JSON 有一些您需要變更的區域。 
+匯入至 [LUIS][LUIS] 2.0 之前，匯出的 1.x 應用程式的 JSON 有一些您需要變更的區域。
 
-### <a name="prebuilt-entities"></a>預先建置的實體 
-[預先建置的實體](luis-prebuilt-entities.md)已經變更。 確定您使用 V2 預先建置的實體。 這包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md)，而不是 datetime。 
+### <a name="prebuilt-entities"></a>預先建置的實體
+[預先建置的實體](luis-prebuilt-entities.md)已經變更。 確定您使用 V2 預先建置的實體。 這包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md)，而不是 datetime。
 
 ### <a name="actions"></a>動作
-動作屬性不再有效。 它應該是空白 
+動作屬性不再有效。 它應該是空白
 
 ### <a name="labeled-utterances"></a>加上標籤的語句
-V1 允許加上標籤的語句，在單字或片語的開頭或結尾包含空格。 移除空格。 
+V1 允許加上標籤的語句，在單字或片語的開頭或結尾包含空格。 移除空格。
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP 回應狀態碼的常見原因
 請參閱 [LUIS API 回應碼](luis-reference-response-codes.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 v2 API 文件，更新現有 REST 呼叫 LUIS [端點](https://go.microsoft.com/fwlink/?linkid=2092356)和[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API。 
+使用 v2 API 文件，更新現有 REST 呼叫 LUIS [端點](https://go.microsoft.com/fwlink/?linkid=2092356)和[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API。
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

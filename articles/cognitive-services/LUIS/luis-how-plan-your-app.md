@@ -1,14 +1,14 @@
 ---
 title: 規劃您的應用程式-LUIS
 description: 概述相關的應用程式意圖和實體，然後在 Language Understanding Intelligent Service (LUIS) 中建立應用程式計畫。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654120"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340227"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>規劃您的 LUIS 應用程式架構與主旨網域和資料提取
 

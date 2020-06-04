@@ -1,14 +1,14 @@
 ---
 title: 快速入門：建立、定型和發佈知識庫-QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871424"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340584"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -35,17 +35,17 @@ ms.locfileid: "83871424"
 1. 在 [步驟 3]**** 中，選取您的 Active directory、訂用帳戶、服務 (資源)，以及在服務中所建立所有知識庫的語言。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
-    
+
 1. 在 [步驟 3]**** 中，將知識庫命名為**我的範例 QnA KB**。
 
-1. 在 [步驟 4]  中，使用下表進行設定：
+1. 在 [步驟 4] 中，使用下表進行設定：
 
     |設定|值|
     |--|--|
     |**啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取。**|已檢查|
     |**預設答案文字**| `Quickstart - default answer not found.`|
     |**+ 新增 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**閒聊**|選取 [Professional] |
+    |**閒聊**|選取 [Professional]|
 
 1. 在**步驟 5**中，選取 [**建立您的 KB**]。
 

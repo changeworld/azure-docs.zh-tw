@@ -19,7 +19,7 @@ ms.locfileid: "82735397"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>即時對話轉譯（預覽）
 
-語音 SDK 的**ConversationTranscriber** API 可讓您透過使用`PullStream`或`PushStream`，將音訊串流到語音服務，轉譯會議和其他交談，使其能夠加入、移除和識別多個參與者。 本主題會要求您瞭解如何搭配語音 SDK （1.8.0 或更新版本）使用語音轉換文字。 如需詳細資訊，請參閱[什麼是語音服務](overview.md)。
+語音 SDK 的**ConversationTranscriber** API 可讓您透過使用或，將音訊串流到語音服務，轉譯會議和其他交談，使其能夠加入、移除和識別多個參與者 `PullStream` `PushStream` 。 本主題會要求您瞭解如何搭配語音 SDK （1.8.0 或更新版本）使用語音轉換文字。 如需詳細資訊，請參閱[什麼是語音服務](overview.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -35,7 +35,7 @@ ms.locfileid: "82735397"
 - [ROOBO 裝置範例程式碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
 - [Azure Kinect 開發工具組範例程式碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 語音服務訂用帳戶。 您可以[取得語音試用版訂用](https://azure.microsoft.com/try/cognitive-services/)帳戶（如果您沒有的話）。
 
@@ -50,7 +50,7 @@ ms.locfileid: "82735397"
 
 ### <a name="sample-code"></a>範例程式碼
 
-下列範例顯示使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)來建立語音簽名的兩種不同方式。 請注意，您必須以「YourSubscriptionKey」的真實資訊、「speakerVoice」的 wave 檔案名，以及`{region}`和「YourServiceRegion」（_centralus_或_eastasia_）的區域取代。
+下列範例顯示使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)來建立語音簽名的兩種不同方式。 請注意，您必須以「YourSubscriptionKey」的真實資訊、「speakerVoice」的 wave 檔案名，以及 `{region}` 和「YourServiceRegion」（_centralus_或_eastasia_）的區域取代。
 
 ```csharp
 class Program
@@ -108,12 +108,12 @@ class Program
 
 範例程式碼重點包括：
 
-- 使用以`Conversation`產生的會議`SpeechConfig`識別碼，從物件建立物件`Guid.NewGuid()`
-- 建立`ConversationTranscriber`物件並與`JoinConversationAsync()`交談加入以開始轉譯
+- `Conversation` `SpeechConfig` 使用以產生的會議識別碼，從物件建立物件`Guid.NewGuid()`
+- 建立 `ConversationTranscriber` 物件並與交談加入 `JoinConversationAsync()` 以開始轉譯
 - 註冊感關注的事件
 - 使用交談物件在交談中加入或移除參與者
 - 串流處理音訊
-- 在語音 SDK 版本 1.9.0 `int`中，語音簽名`string`版本欄位支援和數值型別。
+- 在語音 SDK 版本1.9.0 中， `int` `string` 語音簽名版本欄位支援和數值型別。
 
 轉譯和說話者識別碼會回到已註冊的事件中。
 

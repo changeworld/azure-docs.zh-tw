@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978089"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014650"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure 虛擬機器中的 SQL Server 自動修補 (傳統)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/automated-patching.md)
 > * [傳統](../classic/sql-automated-patching.md)
 > 
 > 
@@ -32,14 +32,14 @@ ms.locfileid: "75978089"
 自動修補會針對執行 SQL Server 的 Azure 虛擬機器建立維護時間範圍。 自動更新只能在此維護時間範圍內安裝。 對於 SQL Server，這可以確保系統更新和任何相關聯的重新啟動會在對資料庫最好的時間發生。 
 
 > [!IMPORTANT]
-> 只會安裝標示為 [重要]**** 的 Windows 更新。 其他 SQL Server 更新 (例如累計更新) 必須以手動方式安裝。 
+> 只會安裝標示為 [重要] 的 Windows 更新。 其他 SQL Server 更新 (例如累計更新) 必須以手動方式安裝。 
 
 自動修補相依於 [SQL Server IaaS 代理程式擴充](../classic/sql-server-agent-extension.md)。
 
 > [!IMPORTANT] 
-> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Patching for SQL Server in Azure Virtual Machines (Resource Manager)](../sql/virtual-machines-windows-sql-automated-patching.md)(Azure 虛擬機器的 SQL Server 自動修補 (Resource Manager))。
+> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。 若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Patching for SQL Server in Azure Virtual Machines Resource Manager](../../../azure-sql/virtual-machines/windows/automated-patching.md)(Azure 虛擬機器的 SQL Server 自動修補 (Resource Manager))。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要使用自動修補，請考慮下列必要條件︰
 
 **作業系統**：
@@ -74,7 +74,7 @@ ms.locfileid: "75978089"
 | **PATCH 類別** |重要事項 |要下載並安裝的更新類別。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 進行設定
-在下列範例中，會使用 PowerShell 在現有的 SQL Server VM 上設定自動修補。 **New-AzureVMSqlServerAutoPatchingConfig** 命令會設定自動更新的新維護視窗。
+在下列範例中，會使用 PowerShell 在現有的 SQL Server VM 上設定自動修補。 **New-AzureVMSqlServerAutoPatchingConfig** 命令會設定自動更新的維護時間範圍。
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
@@ -96,5 +96,5 @@ ms.locfileid: "75978089"
 ## <a name="next-steps"></a>後續步驟
 如需有關其他可用之自動化工作的資訊，請參閱 [SQL Server IaaS 代理程式擴充功能](../classic/sql-server-agent-extension.md)。
 
-如需有關在 Azure VM 上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+如需有關在 Azure VM 上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 

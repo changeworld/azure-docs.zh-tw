@@ -23,7 +23,7 @@ ms.locfileid: "83120805"
 
 相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱[臉部辨識概念](../concepts/face-recognition.md)指南中的定義。 本指南使用具有 c # 的臉部 .NET 用戶端程式庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要下列專案：
 

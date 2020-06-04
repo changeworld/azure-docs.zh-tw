@@ -3,15 +3,15 @@ title: Azure Functions 的 Cosmos DB 觸發程序連線原則
 description: 了解如何設定 Azure Functions 的 Cosmos DB 觸發程序所使用的連線原則
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: df30a0ddca58e6d7bd74184fa7287df6818cfc37
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604959"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117151"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>如何設定 Azure Functions 的 Cosmos DB 觸發程序所使用的連線原則
 

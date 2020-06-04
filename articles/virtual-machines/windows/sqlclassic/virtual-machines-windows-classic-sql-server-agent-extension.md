@@ -15,35 +15,35 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982275"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017525"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理程式延伸模組 (傳統) 自動化 Azure 虛擬機器上的管理工作
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
-> * [傳統](../classic/sql-server-agent-extension.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)
+> * [傳統](virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
 >
  
 Azure 虛擬機器會執行 SQL Server IaaS Agent 擴充功能 (SQLIaaSAgent) 以自動化系統管理工作。 本主題概述擴充功能所支援的服務，以及與安裝、狀態及移除相關的指示。
 
 > [!IMPORTANT] 
-> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  若要檢視這篇文章的 Resource Manager 版本，請參閱 [適用於 SQL Server VM Resource Manager 的 SQL Server Agent 擴充功能](../sql/virtual-machines-windows-sql-server-agent-extension.md)。
+> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。 若要檢視這篇文章的 Resource Manager 版本，請參閱 [適用於 SQL Server VM Resource Manager 的 SQL Server Agent 擴充功能](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)。
 
 ## <a name="supported-services"></a>支援的服務
 SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 
-| 系統管理功能 | 說明 |
+| 系統管理功能 | 描述 |
 | --- | --- |
 | **SQL 自動備份** |針對 VM 中 SQL Server 的預設執行個體，將所有資料庫的備份排程自動化。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動備份 (傳統)](../classic/sql-automated-backup.md)。 |
 | **SQL 自動修補** |設定維護期間 (在此期間會進行 VM 的重要 Windows 更新)，以避免在工作負載尖峰時段進行更新。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動修補 (傳統)](../classic/sql-automated-patching.md)。 |
-| **Azure Key Vault 整合** |讓您在 SQL Server VM 上自動安裝和設定 Azure 金鑰保存庫。 如需詳細資訊，請參閱 [在 Azure VM 上設定 SQL Server 的 Azure 金鑰保存庫整合 (傳統)](../classic/ps-sql-keyvault.md)。 |
+| **Azure 金鑰保存庫整合** |讓您在 SQL Server VM 上自動安裝和設定 Azure 金鑰保存庫。 如需詳細資訊，請參閱 [在 Azure VM 上設定 SQL Server 的 Azure 金鑰保存庫整合 (傳統)](../classic/ps-sql-keyvault.md)。 |
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 在 VM 上使用 SQL Server IaaS 代理程式擴充功能的需求：
 
 ### <a name="operating-system"></a>作業系統：
@@ -82,19 +82,19 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 > 傳統虛擬機器沒有可透過入口網站安裝及設定「SQL IaaS 代理程式擴充功能」的選項。
 
 > [!NOTE]
-> 只有 [SQL Server VM 資源庫映像](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (隨用隨付或自備授權) 可支援 SQL Server IaaS 代理程式擴充功能。 如果您在 OS 專用的 Windows Server 虛擬機器上手動安裝 SQL Server，或是部署自訂的 SQL Server VM VHD，則不支援此擴充功能。 在這些情況下，可以使用 PowerShell 以手動方式安裝和管理擴充功能，但強烈建議您改為安裝 SQL Server 資源庫映像，然後加以自訂。
+> 只有 [SQL Server VM 資源庫映像](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (隨用隨付或自備授權) 可支援 SQL Server IaaS 代理程式擴充功能。 如果您在 OS 專用的 Windows Server 虛擬機器上手動安裝 SQL Server，或是部署自訂的 SQL Server VM VHD，則不支援此擴充功能。 在這些情況下，可以使用 PowerShell 以手動方式安裝和管理擴充功能，但強烈建議您改為安裝 SQL Server 資源庫映像，然後加以自訂。
 
 ## <a name="status"></a>狀態
-驗證已安裝擴充功能的其中一項方法，是在 Azure 入口網站中檢視代理程式狀態。 請選取虛擬機器刀鋒視窗中所列的一部虛擬機器，然後按一下 [擴充功能]****。 您應該會看到其中列出 **SQLIaaSAgent** 擴充功能。
+驗證已安裝擴充功能的其中一項方法，是在 Azure 入口網站中檢視代理程式狀態。 請選取虛擬機器刀鋒視窗中所列的一部虛擬機器，然後按一下 [擴充功能]。 您應該會看到其中列出 **SQLIaaSAgent** 擴充功能。
 
 ![Azure 入口網站中的 SQL Server IaaS 代理程式擴充功能](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
 
-您也可以使用**Set-azurevmsqlserverextension** Azure Powershell Cmdlet。
+您也可以使用 **Get-AzureVMSqlServerExtension** Azure Powershell Cmdlet。
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
 ## <a name="removal"></a>移除
-在「Azure 入口網站」中，您可以按一下虛擬機器屬性 [擴充功能] **** 刀鋒視窗上的省略符號，來將擴充功能解除安裝。 然後按一下 [解除安裝]****。
+在「Azure 入口網站」中，您可以按一下虛擬機器屬性 [擴充功能]  刀鋒視窗上的省略符號，來將擴充功能解除安裝。 然後按一下 [解除安裝]。
 
 ![將 Azure 入口網站中的 SQL Server IaaS 代理程式擴充功能解除安裝](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
 
@@ -105,5 +105,5 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 ## <a name="next-steps"></a>後續步驟
 開始使用擴充功能所支援的其中一項服務。 如需詳細資訊，請參閱本文 [支援的服務](#supported-services) 一節中參考的主題。
 
-如需在 Azure 虛擬機器上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+如需在 Azure 虛擬機器上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 

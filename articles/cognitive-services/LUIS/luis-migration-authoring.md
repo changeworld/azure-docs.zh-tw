@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096617"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337983"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -61,12 +61,12 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 ### <a name="before-you-migrate"></a>在您遷移之前
 
-* **必要**，您必須擁有[Azure 訂](https://azure.microsoft.com/free/)用帳戶。 訂用帳戶程式的一部分需要帳單資訊。 不過，當您使用 LUIS 時，`F0`可以使用免費（）定價層。
+* **必要**，您必須擁有[Azure 訂](https://azure.microsoft.com/free/)用帳戶。 訂用帳戶程式的一部分需要帳單資訊。 不過， `F0` 當您使用 LUIS 時，可以使用免費（）定價層。
 * **（選擇性**）藉由匯出每個應用程式或使用匯出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，從 LUIS 入口網站的應用程式清單備份應用程式。
 * **（選擇性**）儲存每個應用程式的 collaborator's 清單。 此電子郵件清單是在遷移過程中提供。
 
 
-`F0` **撰寫您的 LUIS 應用程式是免費**的，由層級表示。 深入瞭解[定價層](luis-limits.md#key-limits)。
+**撰寫您的 LUIS 應用程式是免費**的，由 `F0` 層級表示。 深入瞭解[定價層](luis-limits.md#key-limits)。
 
 如果您沒有 Azure 訂用帳戶，請[註冊](https://azure.microsoft.com/free/)。
 

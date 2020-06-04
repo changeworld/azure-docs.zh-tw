@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654047"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344419"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>新增意圖以判斷語句的使用者用意
 
@@ -26,7 +26,7 @@ ms.locfileid: "83654047"
 
 ## <a name="add-an-intent-to-your-app"></a>將意圖新增至您的應用程式
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 在 [**意圖**] 頁面上，選取 [ **+ 建立**]。
 1. 在 [**建立新的意圖**] 對話方塊中，輸入意圖名稱，例如 `ModifyOrder` ，然後選取 [**完成**]。

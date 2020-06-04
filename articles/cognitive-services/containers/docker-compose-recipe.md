@@ -25,7 +25,7 @@ ms.locfileid: "80878777"
 
 在單一主機電腦上協調多個容器映射可能會很有用。 在本文中，我們會將讀取和表單辨識器容器提取在一起。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此程式需要幾個必須在本機上安裝和執行的工具：
 
@@ -46,7 +46,7 @@ ms.locfileid: "80878777"
 
 ## <a name="docker-compose-file"></a>Docker Compose 檔案
 
-YAML 檔案會定義要部署的所有服務。 這些服務依賴或現有的`DockerFile`容器映射。 在此情況下，我們將使用兩個預覽影像。 複製並貼上下列 YAML 檔案，並將它儲存為*YAML*。 在檔案中提供適當的**apikey**、**帳單**和**EndpointUri**值。
+YAML 檔案會定義要部署的所有服務。 這些服務依賴 `DockerFile` 或現有的容器映射。 在此情況下，我們將使用兩個預覽影像。 複製並貼上下列 YAML 檔案，並將它儲存為*YAML*。 在檔案中提供適當的**apikey**、**帳單**和**EndpointUri**值。
 
 ```yaml
 version: '3.7'
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>測試容器
 
-在主機電腦上開啟瀏覽器，並使用*yaml*檔案中的指定埠（例如http://localhost:5021/swagger/index.html），移至**localhost** 。 例如，您可以在 API 中使用 [**試試看**] 功能來測試表單辨識器端點。 這兩個容器都應該可供使用和測試。
+在主機電腦上開啟瀏覽器，並使用*yaml*檔案中的指定埠（例如），移至**localhost** http://localhost:5021/swagger/index.html 。 例如，您可以在 API 中使用 [**試試看**] 功能來測試表單辨識器端點。 這兩個容器都應該可供使用和測試。
 
 ![表單辨識器容器](media/form-recognizer-swagger-page.png)
 

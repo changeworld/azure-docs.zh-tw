@@ -160,7 +160,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 請參閱預建[實體](#prebuilt-entity)的預建模型專案
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 在機器學習中，功能是可協助模型辨識特定概念的特性。 這是 LUIS 可以使用但不是硬規則的提示。
 
@@ -196,7 +196,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 （機器學習）模型是對輸入資料進行預測的函數。 在 LUIS 中，我們會將意圖分類器和實體擷取器視為「模型」，而我們會將一組定型、發佈及查詢的模型當做「應用程式」來參考。
 
-## <a name="normalized-value"></a>正規化值
+## <a name="normalized-value"></a>標準化值
 
 您會將值新增至您的[清單](#list-entity)實體。 每個值都可以有一或多個同義字的清單。 只有正規化的值會在回應中傳回。
 
@@ -300,7 +300,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 請參閱[變更預先建置 datetimeV2 實體的時區](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-## <a name="token"></a>Token
+## <a name="token"></a>權杖
 [Token](luis-language-support.md#tokenization)是 LUIS 可以辨識之文字的最小單位。 這在不同的語言之間有些微。
 
 若為**英文**，則 token 為字母和數位的連續範圍（不含空格或標點符號）。 空格不是 token。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454640"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012971"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -28,7 +28,7 @@ ms.locfileid: "81454640"
 
 ## <a name="encryption-of-data-at-rest"></a>待用資料加密
 
-待用資料包含位於實體媒體之永續性儲存體中任何數位格式的資訊。 這個媒體包括磁性或光學媒體上的檔案、已封存的資料，以及資料備份。 Microsoft Azure 提供各種資料儲存體解決方案來符合不同的需求，包括檔案、磁碟、Blob 和資料表儲存體。 Microsoft 也提供加密來保護 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md) 和 Azure Data Lake。
+待用資料包含位於實體媒體之永續性儲存體中任何數位格式的資訊。 這個媒體包括磁性或光學媒體上的檔案、已封存的資料，以及資料備份。 Microsoft Azure 提供各種資料儲存體解決方案來符合不同的需求，包括檔案、磁碟、Blob 和資料表儲存體。 Microsoft 也提供加密來保護 [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md) 和 Azure Data Lake。
 
 待用資料加密適用於軟體即服務 (SaaS)、平台即服務 (PaaS) 和基礎結構即服務 (IaaS) 雲端模型中的服務。 本文摘要說明並提供可協助您使用 Azure 加密選項的資源。
 
@@ -85,11 +85,11 @@ Azure Blob 儲存體和 Azure 檔案共用中的待用資料可以在伺服器�
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>使用 Azure SQL Database 加密待用資料
 
-[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 是 Azure 中的一般用途關聯式資料庫服務，可支援關聯式資料、JSON、空間和 XML 等結構。 SQL Database 透過透明資料加密 (TDE) 功能支援伺服器端加密，並透過 Always Encrypted 功能支援用戶端加密。
+[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) 是 Azure 中的一般用途關聯式資料庫服務，可支援關聯式資料、JSON、空間和 XML 等結構。 SQL Database 透過透明資料加密 (TDE) 功能支援伺服器端加密，並透過 Always Encrypted 功能支援用戶端加密。
 
 #### <a name="transparent-data-encryption"></a>透明資料加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) 即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 和 [Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)資料檔案，該金鑰儲存在資料庫開機記錄中，以在復原期間使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) 即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) 和 [Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)資料檔案，該金鑰儲存在資料庫開機記錄中，以在復原期間使用。
 
 TDE 會使用 AES 和三重資料加密標準 (3DES) 加密演算法來保護資料和記錄檔。 資料庫檔案的加密會在頁面層級執行。 已加密資料庫中的頁面會在寫入磁碟之前進行加密，並會在讀入記憶體時進行解密。 現在預設會在新建立的 Azure SQL 資料庫上啟用 TDE。
 
@@ -105,7 +105,7 @@ CLE 具有內建函式，可供您使用對稱或非對稱金鑰、憑證的公�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 資料庫加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全域散發多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 是 Microsoft 之全域散發的多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的待用加密
 
@@ -181,7 +181,7 @@ Azure 提供許多機制，可在將資料從一個位置移至另一個位置�
 
 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，來設定虛擬網路的站對站 VPN 連線。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 [在 Azure 入口網站中建立站對站連線](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

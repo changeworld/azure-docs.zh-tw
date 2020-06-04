@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 43ff230d4769a23c9007b3da29858d2105366f9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978106"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014667"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure 虛擬機器中的 SQL Server 自動備份 (傳統)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 > * [傳統](../classic/sql-automated-backup.md)
 > 
 > 
@@ -32,9 +32,9 @@ ms.locfileid: "75978106"
 自動備份會針對執行 SQL Server 2014 Standard 或 Enterprise 之 Azure VM 上所有現存和新的資料庫，自動設定 [受控備份至 Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) 。 這可讓您設定採用持久性 Azure Blob 儲存體的一般資料庫備份。 自動備份相依於 [SQL Server IaaS 代理程式擴充](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 > [!IMPORTANT] 
-> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Backup for SQL Server in Azure Virtual Machines (Resource Manager)](../sql/virtual-machines-windows-sql-automated-backup.md)(Azure 虛擬機器的 SQL Server 自動備份 (Resource Manager))。
+> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。 若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Backup for SQL Server in Azure Virtual Machines Resource Manager](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md) (Azure 虛擬機器的 SQL Server 自動備份 (Resource Manager))。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要使用自動備份，請考慮下列必要條件︰
 
 **作業系統**：
@@ -51,7 +51,7 @@ ms.locfileid: "75978106"
 > [!NOTE]
 > Resource Manager 虛擬機器支援 SQL Server 2016 的自動備份。 如需詳細資訊，請參閱 [Azure 虛擬機器 (Resource Manager) 的 SQL Server 2016 自動備份 v2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)。
 
-**資料庫**設定：
+**資料庫組態**：
 
 * 目標資料庫必須使用完整復原模型。
 
@@ -71,10 +71,10 @@ ms.locfileid: "75978106"
 | **自動備份** |啟用/停用 (已停用) |針對執行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM，啟用或停用自動備份。 |
 | **保留週期** |1-30 天 (30 天) |保留備份的天數。 |
 | **儲存體帳戶** |Azure 儲存體帳戶 (針對指定 VM 建立的儲存體帳戶) |將自動備份檔案儲存在 Blob 儲存體中時，所使用的 Azure 儲存體帳戶。 這個位置會建立一個容器來儲存所有備份檔案。 備份檔案命名慣例包括日期、時間和電腦名稱。 |
-| [加密]**** |啟用/停用 (已停用) |啟用或停用加密。 啟用加密時，用來還原備份的憑證會放在與使用相同命名慣例之相同 automaticbackup 容器中的指定儲存體帳戶裡。 如果密碼變更，就會以該密碼產生新的憑證，但是舊的憑證還是會保留，以還原先前的備份。 |
+| **加密** |啟用/停用 (已停用) |啟用或停用加密。 啟用加密時，用來還原備份的憑證會放在與使用相同命名慣例之相同 automaticbackup 容器中的指定儲存體帳戶裡。 如果密碼變更，就會以該密碼產生新的憑證，但是舊的憑證還是會保留，以還原先前的備份。 |
 | **密碼** |密碼文字 (無) |加密金鑰的密碼。 唯有啟用加密時，才需要此密碼。 若要還原加密的備份，您必須要有建立備份時所使用的正確密碼和相關憑證。 |
 | **備份系統資料庫** | 啟用/停用 (已停用) | 完整備份 Master、Model 及 MSDB |
-| **設定備份排程** | 手動/自動化 (自動化) | 若要根據記錄檔的成長情況自動執行完整或記錄備份，請選取 [手動]****。 若要指定完整或記錄備份的排程，請選取 [手動]****。 |
+| **設定備份排程** | 手動/自動化 (自動化) | 若要根據記錄檔的成長情況自動執行完整或記錄備份，請選取 [手動]。 若要指定完整或記錄備份的排程，請選取 [手動]。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 進行設定
 在下列 PowerShell 範例中，是針對現有的 SQL Server 2014 VM 設定自動備份。 **New-AzureVMSqlServerAutoBackupConfig** 命令會設定自動備份設定，以在 $storageaccount 變數所指定的 Azure 儲存體帳戶中儲存備份。 這些備份將會保留 10 天。 **Set-AzureVMSqlServerExtension** 命令會使用這些設定更新指定的 Azure VM。
@@ -109,9 +109,9 @@ ms.locfileid: "75978106"
 ## <a name="next-steps"></a>後續步驟
 自動備份會在 Azure VM 上設定受控備份。 因此，請務必 [檢閱受控備份的文件](https://msdn.microsoft.com/library/dn449496.aspx) ，以了解其行為和隱含意義。
 
-您可以在下列主題中找到 Azure VM 上 SQL Server 的其他備份和還原指引： [Azure 虛擬機器中的 SQL Server 備份和還原](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
+您可以在下列主題中找到 Azure VM 上 SQL Server 的其他備份和還原指引：[Azure 虛擬機器中的 SQL Server 備份和還原](../../../azure-sql/virtual-machines/windows/backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
 
 如需有關其他可用之自動化工作的資訊，請參閱 [SQL Server IaaS 代理程式擴充功能](../classic/sql-server-agent-extension.md)。
 
-如需有關在 Azure VM 上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+如需有關在 Azure VM 上執行 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
