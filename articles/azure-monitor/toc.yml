@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: 篩選器
               href: platform/view-designer-filters.md
-        - name: 自訂解決方案
-          items:
-            - name: 設計和建置
-              href: insights/solutions-creating.md
-            - name: 解決方案檔案
-              href: insights/solutions-solution-file.md
-            - name: 自動化資源
-              href: insights/solutions-resources-automation.md
-            - name: 記錄搜尋與警示
-              href: insights/solutions-resources-searches-alerts.md
-            - name: 檢視
-              href: insights/solutions-resources-views.md
-            - name: 最佳作法
-              href: insights/solutions-best-practices.md
     - name: 活頁簿
       items:
         - name: 概觀

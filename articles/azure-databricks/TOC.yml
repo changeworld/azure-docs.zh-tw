@@ -1188,6 +1188,8 @@
             - name: 使用者定義路由的設定
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP 位址
+              href: mysql-ip-address.md
     - name: 疑難排解
       items:
         - name: 常見問題

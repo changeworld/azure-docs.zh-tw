@@ -77,6 +77,8 @@
       href: spring-cloud-howto-integrate-azure-load-balancers.md
     - name: 針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別
       href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: 自我診斷並解決 Azure Spring Cloud 中的問題
+      href: spring-cloud-howto-self-diagnose-solve.md
 - name: 對 Azure Spring Cloud 進行 DevOps 部署
   items:
     - name: 使用 Azure DevOps 的 CI/CD

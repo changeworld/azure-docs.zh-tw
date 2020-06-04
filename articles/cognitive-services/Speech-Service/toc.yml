@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 辨識儲存在 Blob 儲存體中的語音
           href: quickstarts/from-blob.md
+        - name: 在語音 Studio 中使用音訊檔案測試模型
+          href: quickstarts/speech-studio-test-model.md
     - name: 操作指南
       items:
         - name: 選擇語音辨識模式
@@ -466,7 +468,7 @@
           items:
             - name: 語音辨識 REST API
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: 裝載
+- name: Hosting
   items:
     - name: 裝載文件
       href: index-hosting.yml

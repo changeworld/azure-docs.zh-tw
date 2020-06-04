@@ -148,9 +148,9 @@
               href: storage-files-identity-auth-active-directory-enable.md
             - name: 啟用 AD DS 驗證
               href: storage-files-identity-ad-ds-enable.md
-            - name: 指派權限
+            - name: 指派共用層級權限
               href: storage-files-identity-ad-ds-assign-permissions.md
-            - name: 設定權限
+            - name: 指派目錄/檔案層級權限
               href: storage-files-identity-ad-ds-configure-permissions.md
             - name: 掛接檔案共用
               href: storage-files-identity-ad-ds-mount-file-share.md
@@ -234,48 +234,8 @@
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: 參考
   items:
-    - name: Azure PowerShell (儲存體)
-      href: /powershell/module/az.storage
-    - name: Azure PowerShell (StorageSync)
-      href: /powershell/module/az.storagesync
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: 檔案 (版本 11.x)
-          href: /dotnet/api/microsoft.azure.storage.file
-        - name: 資料移動
-          href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: 儲存體資源提供者
-          href: /dotnet/api/overview/azure/storage/management
-    - name: Java
-      items:
-        - name: 檔案 (版本 8.x)
-          href: /java/api/com.microsoft.azure.storage.file
-        - name: 儲存體資源提供者
-          href: /java/api/overview/azure/storage/management
-    - name: JavaScript (版本 10.x)
-      href: /javascript/api/@azure/storage-file
-    - name: Python (版本 2.x)
-      href: /python/api/azure-storage-file/?view=azure-python
-    - name: REST
-      items:
-        - name: Blob、佇列、資料表和檔案
-          href: /rest/api/storageservices
-        - name: 儲存體資源提供者
-          href: /rest/api/storagerp
-        - name: 匯入/匯出
-          href: /rest/api/storageimportexport
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+    - name: Azure 檔案共用儲存體參考
+      href: ../files/reference.md
     - name: Resource Manager 範本
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions

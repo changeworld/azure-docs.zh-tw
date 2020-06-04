@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: 還原
           items:
+            - name: 關於 Azure VM 還原
+              href: about-azure-vm-restore.md
             - name: 在 入口網站中還原 Azure VM
               href: backup-azure-arm-restore-vms.md
             - name: 從 Azure VM 備份中復原檔案
