@@ -12,7 +12,7 @@ ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606163"
@@ -32,7 +32,7 @@ Azure-SSIS 整合執行階段的企業版可讓您使用下列進階功能：
 
 ## <a name="enterprise-features"></a>企業功能
 
-| **企業功能** | **附帶** |
+| **企業功能** | **說明** |
 |---|---|
 | CDC 元件 | CDC 來源、控制工作和分隔器轉換會在 Azure-SSIS IR 企業版上預先安裝。 若要連線到 Oracle，您還需要在另一部電腦上安裝 CDC 設計工具和服務。 |
 | Oracle 連接器 | Oracle 連線管理員、來源和目的地會在 Azure-SSIS IR 企業版上預先安裝。 您也需要在 Azure-SSIS IR 上安裝 Oracle Call Interface (OCI) 驅動程式，並於必要時設定 Oracle Transport Network Substrate (TNS)。 如需詳細資訊，請參閱[自訂 Azure-SSIS 整合執行階段的安裝程式](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
@@ -65,6 +65,6 @@ Azure-SSIS 整合執行階段的企業版可讓您使用下列進階功能：
 
 ## <a name="next-steps"></a>後續步驟
 
--   [Azure-SSIS 整合執行階段的自訂安裝](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 -   [如何開發 Azure-SSIS 整合執行階段的付費或授權自訂元件](how-to-develop-azure-ssis-ir-licensed-components.md)

@@ -41,7 +41,7 @@ ms.locfileid: "83116312"
     |**作業系統**| 慣用的作業系統 | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
     | **[規劃](../articles/azure-functions/functions-scale.md)** | **使用量 (無伺服器)** | 會定義如何將資源配置給函式應用程式的主控方案。 在預設**取用**方案中，您的函式會根據需要來動態新增資源。 在此[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)裝載中，您只需要針對函式有執行的時間來付費。 在 App Service 方案中執行時，您必須管理[函式應用程式的調整](../articles/azure-functions/functions-scale.md)。  |
 
-    ![裝載](./media/functions-create-function-app-portal/function-app-create-hosting.png)
+    ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
 1. 選取 [下一步：監視]。 在 [掛接] 頁面中輸入下列設定。
 

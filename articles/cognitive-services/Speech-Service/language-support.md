@@ -38,7 +38,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| 地區設定  | Language                          | 支援 | 自訂                                    |
+| 地區設定  | 語言                          | 支援 | 自訂                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯文（阿拉伯聯合大公國）                      | 是       | 否                                                |
 | `ar-BH` | 阿拉伯文（巴林），現代化標準 | 是       | 語言模型                                    |
@@ -99,7 +99,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-|地區設定  | Language            | 性別 | 語音名稱 | 樣式支援 |
+|地區設定  | 語言            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
 | `de-DE` | 德文 (德國)                | `Female` | "de-KatjaNeural"      | 一般 |
 | `en-AU` | 英文 (澳大利亞)             | `Female` | "en-us-NatashaNeural"    | 一般 |
@@ -135,7 +135,7 @@ Microsoft 語音 SDK 和 REST Api 都支援這些語音，其中每個都支援�
 
 以超過 45 個語言和地區設定提供 75 個以上的標準語音，可讓您將文字轉換為合成語音。 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
 
-| 地區設定 | Language | 性別 | 語音名稱 |
+| 地區設定 | 語言 | 性別 | 語音名稱 |
 |--|--|--|--|
 | <sup>sha-1</sup>`ar-EG` | 阿拉伯文 (埃及) | `Female` | "ar-例如-Hoda" |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | `Male` | "ar-SA-Naayf" |
