@@ -7,15 +7,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685294"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344470"
 ---
 # <a name="add-entities-to-extract-data"></a>新增實體以將資料解壓縮
 
@@ -61,7 +61,7 @@ ms.locfileid: "83685294"
 
 此程式適用于機器學習的實體、清單實體和正則運算式實體。
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 選取 [**實體**] 頁面。
 1. 選取 [ **+ 建立**]，然後選取實體類型。
@@ -69,10 +69,10 @@ ms.locfileid: "83685294"
 
 ## <a name="create-a-machine-learned-entity"></a>建立機器學習的實體
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 在 [**組建**] 區段中，選取左面板中的 [**實體**]，然後選取 [ **+ 建立**]。
-1. 在 [**建立實體類型**] 對話方塊中，輸入實體的名稱並選取 [已**學習的電腦**]，然後選取。 若要新增子實體，請選取 [**新增結構**]。 選取 [建立]  。
+1. 在 [**建立實體類型**] 對話方塊中，輸入實體的名稱並選取 [已**學習的電腦**]，然後選取。 若要新增子實體，請選取 [**新增結構**]。 選取 [建立]。
 
     > [!div class="mx-imgBorder"]
     > ![建立機器學習實體的螢幕擷取畫面。](media/add-entities/machine-learned-entity-with-structure.png)
@@ -86,7 +86,7 @@ ms.locfileid: "83685294"
 
 ## <a name="add-a-feature-to-a-machine-learned-entity"></a>將功能新增至機器學習的實體
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 從 [**組建**] 區段中，選取左面板中的 [**實體**]，然後選取 [機器學習實體]。
 1. 在 [實體] 或 [列] 資料列上選取 [ **+ 新增功能**] 來加入功能。
@@ -98,7 +98,7 @@ ms.locfileid: "83685294"
 
 ## <a name="create-a-regular-expression-entity"></a>建立規則運算式實體
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 在 [**組建**] 區段中，選取左面板中的 [**實體**]，然後選取 [ **+ 建立**]。
 
@@ -123,7 +123,7 @@ ms.locfileid: "83685294"
 |綠色|王，酸|
 
 使用程式來建立清單實體。 建立清單實體之後，您就不需要在意圖中標示範例語句。 清單專案和同義字會使用完全相符的文字進行比對。
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 在 [**組建**] 區段中，選取左面板中的 [**實體**]，然後選取 [ **+ 建立**]。
 
@@ -151,7 +151,7 @@ ms.locfileid: "83685294"
 `Pick up the package from Seattle and deliver to New York City.`
 
 在此程式中，將 `origin` 和 `destination` 角色新增至預先建立的 geographyV2 實體。
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 從 [建置]**** 區段，選取左面板中的 [實體]****。
 
@@ -173,7 +173,7 @@ ms.locfileid: "83685294"
 > [!TIP]
 > 您可以使用機器學習實體的子實體標記來取代角色。
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 移至意圖詳細資料頁面，其中包含使用角色的範例語句。
 1. 若要以角色加上標籤，請選取範例語句中的實體標籤（[文字] 底下的實線），然後從下拉式清單中選取 [**在實體窗格中查看]** 。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654092"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344436"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>使用功能來提升單字清單的信號
 
@@ -26,7 +26,7 @@ ms.locfileid: "83654092"
 
 ## <a name="add-phrase-list-as-a-feature"></a>將片語清單新增為功能
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 選取 [**組建**]，然後選取應用程式左側面板中的 [**功能**]。
 

@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: ce85c2d264b2b4849a4a36ed757150292fdf39f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2fa4e47f600737c9bff5dbff4dd743946b4e82aa
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77622800"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342148"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用離線評估來分析您的學習迴圈
 
@@ -25,7 +25,7 @@ ms.locfileid: "77622800"
 
 閱讀[離線評估](concepts-offline-evaluation.md)進一步了解。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 已設定的個人化工具迴圈
 * 個人化工具迴圈必須有代表性的資料量-作為約略，我們建議記錄中至少有50000個事件，以取得有意義的評估結果。 (選擇性) 您可能先前也已匯出「學習原則」__ 檔案，以便在相同評估中進行比較和測試。

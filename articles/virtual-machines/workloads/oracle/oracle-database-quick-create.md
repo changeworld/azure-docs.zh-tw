@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683648"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995814"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -33,7 +33,7 @@ ms.locfileid: "81683648"
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -82,10 +82,10 @@ ssh azureuser@<publicIpAddress>
 
 Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下所示。 
 
-1.  切換至 oracle** 超級使用者，然後將接聽程式初始化以啟用記錄功能：
+1.  切換至 oracle 超級使用者，然後將接聽程式初始化以啟用記錄功能：
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -143,14 +143,14 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 
 3. 設定 Oracle 變數
 
-連接之前，您需要設定兩個環境變數： *ORACLE_HOME*和*ORACLE_SID*。
+在連線之前，您需要設定兩個環境變數︰ORACLE_HOME 和 ORACLE_SID。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入之用。請確認已使用您選擇的編輯器`~/.bashrc` ，將下列語句新增至檔案。
+您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入。請確認已使用您選擇的編輯器，將下列陳述式新增至 `~/.bashrc` 檔案。
 
 ```bash
 # Add ORACLE_HOME. 
@@ -246,7 +246,7 @@ export ORACLE_SID=cdb1
     esac
     ```
 
-4.  使用 chmod** 變更檔案的權限，如下所示：
+4.  使用 chmod 變更檔案的權限，如下所示：
 
     ```bash
     chgrp dba /etc/init.d/dbora
@@ -311,7 +311,7 @@ export ORACLE_SID=cdb1
     https://<VM ip address or hostname>:5502/em
     ```
 
-您可以使用 SYS**** 帳戶進行登入，然後勾選 as sysdba**** 核取方塊。 使用您在安裝期間設定的密碼 OraPasswd1****。 
+您可以使用 SYS 帳戶進行登入，然後勾選 as sysdba 核取方塊。 使用您在安裝期間設定的密碼 OraPasswd1。 
 
 ![Oracle OEM Express 登入頁面的螢幕擷取畫面](./media/oracle-quick-start/oracle_oem_express_login.png)
 

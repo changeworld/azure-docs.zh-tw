@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098436"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233356"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure 虛擬網路的常用 PowerShell 命令
 
@@ -27,11 +27,11 @@ ms.locfileid: "82098436"
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-| 工作 | Command |
+| Task | Command |
 | ---- | ------- |
 | 建立子網路組態 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>一般網路可能有[網際網路面向負載平衡器](../../load-balancer/load-balancer-internet-overview.md)的子網路和[內部負載平衡器](../../load-balancer/load-balancer-internal-overview.md)的不同子網路。 |
 | 建立虛擬網路 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
-| 唯一網域名稱的測試 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>您可以指定[公用 IP 資源](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)的 DNS 網域名稱，以建立 domainname.location.cloudapp.azure.com 與 Azure 受控 DNS 伺服器中的公用 IP 位址的對應。 名稱只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字，而網域名稱必須是其 Azure 位置內唯一的。 如果傳回 **True** ，表示您提出的名稱是全域唯一的。 |
+| 唯一網域名稱的測試 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>您可以指定[公用 IP 資源](../../virtual-network/public-ip-addresses.md)的 DNS 網域名稱，以建立 domainname.location.cloudapp.azure.com 與 Azure 受控 DNS 伺服器中的公用 IP 位址的對應。 名稱只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字，而網域名稱必須是其 Azure 位置內唯一的。 如果傳回 **True** ，表示您提出的名稱是全域唯一的。 |
 | 建立公用 IP 位址 |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp" -ResourceGroupName $myResourceGroup -DomainNameLabel "myDNS" -Location $location -AllocationMethod Dynamic<BR><BR>公用 IP 位址會使用您先前測試並由負載平衡器前端組態使用的網域名稱。 |
 | 建立前端 IP 組態 |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP" -PublicIpAddress $pip<BR><BR>前端組態包含您先前針對連入網路流量建立的公用 IP 位址。 |
 | 建立後端位址集區 |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>提供可透過網路介面存取的負載平衡器後端內部位址。 |
@@ -43,7 +43,7 @@ ms.locfileid: "82098436"
 
 ## <a name="get-information-about-network-resources"></a>取得關於網路資源的資訊
 
-| 工作 | Command |
+| Task | Command |
 | ---- | ------- |
 | 列出虛擬網路 |[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>列出資源群組中的所有虛擬網路。 |
 | 取得虛擬網路的相關資訊 |Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName $myResourceGroup |
@@ -57,7 +57,7 @@ ms.locfileid: "82098436"
 
 ## <a name="manage-network-resources"></a>管理網路資源
 
-| 工作 | Command |
+| Task | Command |
 | ---- | ------- |
 | 將子網路新增至虛擬網路 |[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX.X.X.X/XX -Name "mySubnet1" -VirtualNetwork $vnet<BR><BR>可將子網路新增現有虛擬網路。 $Vnet 值代表 Get-AzVirtualNetwork 所傳回的物件。 |
 | 刪除虛擬網路 |[Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup<BR><BR>從資源群組移除指定的虛擬網路。 |

@@ -1,14 +1,14 @@
 ---
 title: 管理模型和學習設定-個人化工具
 description: 您可以匯出機器學習的模型和學習設定，以便在您自己的原始檔控制系統中進行備份。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624328"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344351"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和學習設定
 
@@ -49,7 +49,7 @@ ms.locfileid: "77624328"
 
 1. 開啟 [ [Azure 入口網站](https://portal.azure.com)]，然後選取您的個人化工具資源。
 1. 在 [**資源管理**] 區段中選取 [**模型和學習設定**]。
-1. 針對 [匯**入學習設定**]，選取 [**匯出學習設定**] 按鈕。 這會將`json`檔案儲存到您的本機電腦。
+1. 針對 [匯**入學習設定**]，選取 [**匯出學習設定**] 按鈕。 這會將檔案儲存 `json` 到您的本機電腦。
 
 ## <a name="next-steps"></a>後續步驟
 

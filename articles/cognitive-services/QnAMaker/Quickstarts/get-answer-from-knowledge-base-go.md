@@ -4,21 +4,21 @@ description: 這個以 Go REST 為基礎的快速入門會逐步引導您以程�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 37a8925f8460e448dce3b66354f5181fe103a6a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 3899fdb84e2263ea78aa70669a5fde88088b6fc5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851981"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342811"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>快速入門：使用 Go 從知識庫中取得問題的答案
 
 本快速入門會逐步引導您以程式設計方式從已發佈的 QnA Maker 知識庫取得答案。 知識庫包含[資料來源](../Concepts/knowledge-base.md)中的問題和答案，例如常見問題集。 [問題](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)會傳送至 QnA Maker 服務。 [回應](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含位居預測首位的答案。
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [Visual Studio Code](https://code.visualstudio.com/)
