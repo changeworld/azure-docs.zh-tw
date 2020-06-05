@@ -16,7 +16,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83198232"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 建立及管理虛擬機器擴展集
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及管理虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "83198232"
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus  區域中建立名為 myResourceGroup  的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -44,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet  的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
+您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -122,7 +122,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 執行個體映像
-當您在教學課程一開始建立擴展集時，您為 VM 執行個體指定了 `--image`UbuntuLTS*的*。 Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要查看最常用的映像清單，請使用 [az vm image list](/cli/azure/vm/image) 命令。
+當您在教學課程一開始建立擴展集時，您為 VM 執行個體指定了 *UbuntuLTS* 的 `--image`。 Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要查看最常用的映像清單，請使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -234,7 +234,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>變更擴展集的容量
-當您在教學課程一開始建立擴展集時，您依預設部署了兩個 VM 執行個體。 您可以在使用 `--instance-count`az vmss create[ 時指定 ](/cli/azure/vmss) 參數，以變更要隨擴展集建立的執行個體數目。 若要增加或減少您現有擴展集中的 VM 執行個體數目，您可以手動變更容量。 擴展集會建立或移除所需的 VM 執行個體數目，然後設定用來分散流量的負載平衡器。
+當您在教學課程一開始建立擴展集時，您依預設部署了兩個 VM 執行個體。 您可以在使用 [az vmss create](/cli/azure/vmss) 時指定 `--instance-count` 參數，以變更要隨擴展集建立的執行個體數目。 若要增加或減少您現有擴展集中的 VM 執行個體數目，您可以手動變更容量。 擴展集會建立或移除所需的 VM 執行個體數目，然後設定用來分散流量的負載平衡器。
 
 若要手動增加或減少擴展集中的 VM 執行個體數目，請使用 [az vmss scale](/cli/azure/vmss)。 下列範例會將擴展集中的 VM 執行個體數目設為 *3*：
 

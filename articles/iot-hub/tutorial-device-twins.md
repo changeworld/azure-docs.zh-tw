@@ -39,7 +39,7 @@ ms.locfileid: "81767817"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
 
@@ -248,7 +248,7 @@ node ServiceClient.js "{your service connection string}"
 
 如果您打算繼續完成下一個教學課程，請保留資源群組和 IoT 中樞，以供稍後重複使用。
 
-如果您不再需要 IoT 中樞，請在入口網站中刪除它和資源群組。 若要這麼做，請選取包含 IoT 中樞的 **tutorial-iot-hub-rg** 資源群組，然後按一下 [刪除]  。
+如果您不再需要 IoT 中樞，請在入口網站中刪除它和資源群組。 若要這麼做，請選取包含 IoT 中樞的 **tutorial-iot-hub-rg** 資源群組，然後按一下 [刪除]。
 
 或者，請使用 CLI：
 

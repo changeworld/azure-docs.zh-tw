@@ -13,13 +13,13 @@ ms.locfileid: "82117211"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入門：使用 .NET API 執行您的第一個 Azure Batch 作業
 
-本快速入門會從在 Azure Batch .NET API 上建置的 C# 應用程式執行 Azure Batch 作業。 此應用程式會將數個輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」  。 然後，它會建立可執行「工作」  的「作業」  範例，以使用基本命令處理集區上的每個輸入檔案。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+本快速入門會從在 Azure Batch .NET API 上建置的 C# 應用程式執行 Azure Batch 作業。 此應用程式會將數個輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」。 然後，它會建立可執行「工作」的「作業」範例，以使用基本命令處理集區上的每個輸入檔案。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
 ![快速入門應用程式工作流程](./media/quick-run-dotnet/sampleapp.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs) \(英文\)，或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) \(英文\)。 
 
@@ -60,7 +60,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 若要查看執行中的 Batch 工作流程，請在 Visual Studio 中建置及執行應用程式，或是在命令列使用 `dotnet build` 和 `dotnet run` 命令。 執行此應用程式之後，檢閱程式碼以了解應用程式的每部分用途。 例如，在 Visual Studio 中：
 
-* 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]  。 
+* 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]。 
 
 * 出現提示時，請確認任何 NuGet 封裝的還原。 如果您需要下載遺漏的套件，請確保已安裝 [NuGet 套件管理員](https://docs.nuget.org/consume/installing-nuget)。
 
@@ -144,7 +144,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 為了建立 Batch 集區，應用程式會使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法來設定節點數目、VM 大小和集區設定。 在此，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 物件會將 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) 指定至 Azure Marketplace 中發佈的 Windows Server 映像。 Batch 支援 Azure Marketplace 中各式各樣的 Linux 和 Windows Server 映像，以及自訂 VM 映像。
 
-節點數目 (`PoolNodeCount`) 和 VM 大小 (`PoolVMSize`) 都是已定義的常數。 此範例預設建立的集區包含 2 個大小為 Standard_A1_v2  的節點。 建議的大小可為此快速範例提供良好的效能與成本平衡。
+節點數目 (`PoolNodeCount`) 和 VM 大小 (`PoolVMSize`) 都是已定義的常數。 此範例預設建立的集區包含 2 個大小為 Standard_A1_v2 的節點。 建議的大小可為此快速範例提供良好的效能與成本平衡。
 
 [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 方法會將集區提交至 Batch 服務。
 
@@ -202,7 +202,7 @@ try
 
 ### <a name="create-tasks"></a>建立工作
 
-應用程式會建立一份 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 物件清單。 每項工作都會使用 `ResourceFile`CommandLine[ 屬性來處理輸入 ](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 物件。 在此範例中，命令列會執行 Windows `type` 命令以顯示輸入檔案。 這個命令是用於示範的簡單範例。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
+應用程式會建立一份 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 物件清單。 每項工作都會使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 屬性來處理輸入 `ResourceFile` 物件。 在此範例中，命令列會執行 Windows `type` 命令以顯示輸入檔案。 這個命令是用於示範的簡單範例。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
 
 然後，應用程式會使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法將工作新增至作業，該方法會將工作排入佇列以在計算節點上執行。
 
@@ -240,7 +240,7 @@ foreach (CloudTask task in completedtasks)
 
 應用程式會自動刪除它所建立的儲存體容器，並且為您提供用於刪除 Batch 集區和工作的選項。 即使沒有排定的作業，您仍需支付節點執行時的集區費用。 當您不再需要集區時，請將它刪除。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。
 
-若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]  。
+若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

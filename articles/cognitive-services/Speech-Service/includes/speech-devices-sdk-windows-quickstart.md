@@ -20,7 +20,7 @@ ms.locfileid: "83673113"
 
 [範例應用程式](https://aka.ms/sdsdk-download-JRE)的原始程式碼包含在語音裝置 SDK 中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本快速入門需要：
 
@@ -42,19 +42,19 @@ ms.locfileid: "83673113"
 
 1. 啟動 Eclipse。
 
-1. 在 [Eclipse Launcher]  中，於 [工作區]  欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]  。
+1. 在 [Eclipse Launcher] 中，於 [工作區] 欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]。
 
    ![Eclipse Launcher 的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. 不久之後，Eclipse IDE 的主要視窗隨即出現。 如果出現 [歡迎使用] 畫面，請加以關閉。
 
-1. 從 Eclipse 功能表列中，選擇 [檔案]   > [新增]   > [Java 專案]  以建立新專案。 如果無法使用，請選擇 [專案]  ，然後選擇 [Java 專案]  。
+1. 從 Eclipse 功能表列中，選擇 [檔案] > [新增] > [Java 專案] 以建立新專案。 如果無法使用，請選擇 [專案]，然後選擇 [Java 專案]。
 
-1. [新增 Java 專案]  精靈隨即啟動。 [瀏覽]  範例專案的位置。 選取 [完成]  。
+1. [新增 Java 專案] 精靈隨即啟動。 [瀏覽] 範例專案的位置。 選取 [完成]。
 
    ![[新增 Java 專案] 精靈的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. 在 [套件總管]  中，以滑鼠右鍵按一下您的專案。 從操作功能表中選擇 [設定]   > [轉換成 Maven 專案]  。 選取 [完成]  。
+1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 從操作功能表中選擇 [設定] > [轉換成 Maven 專案]。 選取 [完成]。
 
    ![套件總管的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "83673113"
 
 ## <a name="run-the-sample-application-from-eclipse"></a>從 Eclipse 執行範例應用程式
 
-1. 從 Eclipse 功能表列，選取 [執行]   > [執行身分]   > [Java 應用程式]  。 然後選取 [FunctionsList]  和 [確定]  。
+1. 從 Eclipse 功能表列，選取 [執行] > [執行身分] > [Java 應用程式]。 然後選取 [FunctionsList] 和 [確定]。
 
    ![選取 Java 應用程式的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,19 +129,19 @@ ms.locfileid: "83673113"
 
    ![「語音裝置 SDK」範例應用程式和選項](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. 嘗試新的 [交談轉譯]  示範。 透過 [工作階段]   > [啟動]  開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾**target/classes**的 `participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾**target/classes**的 `participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
    ![示範交談轉譯應用程式](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>建立及執行獨立應用程式
 
-1. 在 [套件總管]  中，以滑鼠右鍵按一下您的專案。 選擇 [匯出]  。
+1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 選擇 [匯出]。
 
-1. [匯出]  視窗隨即出現。 展開 [Java]  ，然後選取 [可執行的 JAR 檔案]  ，然後選取 [下一步]  。
+1. [匯出] 視窗隨即出現。 展開 [Java]，然後選取 [可執行的 JAR 檔案]，然後選取 [下一步]。
 
    ![[匯出] 視窗的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. [可執行的 JAR 檔案匯出]  視窗隨即出現。 選擇應用程式的 [匯出目的地]  ，然後選取 [完成]  。
+1. [可執行的 JAR 檔案匯出] 視窗隨即出現。 選擇應用程式的 [匯出目的地]，然後選取 [完成]。
 
    ![可執行的 JAR 檔案匯出的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 

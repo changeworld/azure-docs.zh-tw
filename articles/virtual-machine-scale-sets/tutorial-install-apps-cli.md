@@ -16,7 +16,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83197109"
 ---
-# <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 在虛擬機器擴展集中安裝應用程式
+# <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程：使用 Azure CLI 在虛擬機器擴展集中安裝應用程式
 若要在擴展集的虛擬機器 (VM) 執行個體上執行應用程式，您需要先安裝應用程式元件和必要的檔案。 在先前的教學課程中，您已了解如何建立及使用自訂 VM 映像來部署您的 VM 執行個體。 此自訂映像已包含手動應用程式安裝和組態。 您也可以在部署好每個 VM 執行個體後，讓應用程式自動安裝到擴展集，或更新已在擴展集上執行的應用程式。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
@@ -53,13 +53,13 @@ ms.locfileid: "83197109"
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet  的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
+現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -75,7 +75,7 @@ az vmss create \
 
 
 ## <a name="apply-the-custom-script-extension"></a>套用自訂指令碼擴充功能
-使用 [az vmss extension set](/cli/azure/vmss/extension)，將自訂指令碼延伸組態套用到擴展集中的 VM 執行個體。 下列範例會將 customConfig.json  組態套用到 myResourceGroup  資源群組中的 myScaleSet  VM 執行個體：
+使用 [az vmss extension set](/cli/azure/vmss/extension)，將自訂指令碼延伸組態套用到擴展集中的 VM 執行個體。 下列範例會將 customConfig.json 組態套用到 myResourceGroup 資源群組中的 myScaleSet VM 執行個體：
 
 ```azurecli-interactive
 az vmss extension set \
@@ -91,7 +91,7 @@ az vmss extension set \
 
 
 ## <a name="test-your-scale-set"></a>測試您的擴展集
-若要允許流量觸達 Web 伺服器，請使用 [az network lb rule create](/cli/azure/network/lb/rule) 建立負載平衡器規則。 下列範例會建立名為 myLoadBalancerRuleWeb  的規則：
+若要允許流量觸達 Web 伺服器，請使用 [az network lb rule create](/cli/azure/network/lb/rule) 建立負載平衡器規則。 下列範例會建立名為 myLoadBalancerRuleWeb 的規則：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -105,7 +105,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-若要查看作用中的 web 伺服器，可使用 [az network public-ip show](/cli/azure/network/public-ip) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立作為擴展集一部分的 myScaleSetLBPublicIP  IP 位址︰
+若要查看作用中的 web 伺服器，可使用 [az network public-ip show](/cli/azure/network/public-ip) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立作為擴展集一部分的 myScaleSetLBPublicIP IP 位址︰
 
 ```azurecli-interactive
 az network public-ip show \
@@ -123,9 +123,9 @@ az network public-ip show \
 
 
 ## <a name="update-app-deployment"></a>更新應用程式部署
-在擴展集的整個生命週期中，您可能需要部署更新版的應用程式。 透過自訂指令碼擴充功能，您可以參考已更新的部署指令碼，然後將擴充功能重新套用至擴展集。 在上一個步驟中建立擴展集時，`--upgrade-policy-mode` 已設定為「自動」  。 此設定可讓擴展集中的 VM 執行個體自動更新並套用最新版的應用程式。
+在擴展集的整個生命週期中，您可能需要部署更新版的應用程式。 透過自訂指令碼擴充功能，您可以參考已更新的部署指令碼，然後將擴充功能重新套用至擴展集。 在上一個步驟中建立擴展集時，`--upgrade-policy-mode` 已設定為「自動」。 此設定可讓擴展集中的 VM 執行個體自動更新並套用最新版的應用程式。
 
-在您目前的殼層中，建立名為 customConfigv2.json  的檔案並貼上下列組態。 此定義會執行已更新的 v2  版應用程式安裝指令碼：
+在您目前的殼層中，建立名為 customConfigv2.json 的檔案並貼上下列組態。 此定義會執行已更新的 v2 版應用程式安裝指令碼：
 
 ```json
 {
@@ -134,7 +134,7 @@ az network public-ip show \
 }
 ```
 
-使用 [az vmss extension set](/cli/azure/vmss/extension)，再次將自訂指令碼擴充功能組態套用到擴展集中的 VM 執行個體。 customConfigv2.json  會用來套用更新版的應用程式：
+使用 [az vmss extension set](/cli/azure/vmss/extension)，再次將自訂指令碼擴充功能組態套用到擴展集中的 VM 執行個體。 customConfigv2.json 會用來套用更新版的應用程式：
 
 ```azurecli-interactive
 az vmss extension set \

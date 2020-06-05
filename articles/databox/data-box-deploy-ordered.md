@@ -28,7 +28,7 @@ Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而�
 > * 追蹤訂單狀態
 > * 取消訂單
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您部署裝置之前，請完成下列資料箱服務與裝置的組態必要條件。
 
@@ -52,7 +52,7 @@ Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而�
 
    [![搜尋 Azure 資料箱 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. 按一下頁面底部的 [新增] 。
+3. 按一下 [建立]。
 
 4. 確認您的區域是否適用資料箱服務。 輸入或選取下列資訊，然後按一下 [套用]。
 

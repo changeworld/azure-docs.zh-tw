@@ -74,7 +74,7 @@ App1 使用重新導向 `msauth.com.contoso.app1://auth` App2 使用 `msauth.com
 
 MSAL 會驗證您的重新導向 URI 是否正確註冊，如果為否，則會傳回錯誤。
     
-* 如果您想使用通用連結做為重新導向 URI，`<scheme>` 必須是 `https`，而且不需要在 `CFBundleURLSchemes` 中進行宣告。 然而，請依照 Apple 的指示在[適用於開發人員的通用連結](https://developer.apple.com/ios/universal-links/)設定應用程式和網域，並且在您的應用程式透過通用連結開啟時，呼叫 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法。
+* 如果您想使用通用連結做為重新導向 URI，`<scheme>` 必須是 `https`，而且不需要在 `CFBundleURLSchemes` 中進行宣告。 然而，請依照 Apple 的指示在[適用於開發人員的通用連結](https://developer.apple.com/ios/universal-links/)設定應用程式和網域，並且在您的應用程式透過通用連結開啟時，呼叫 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法。
 
 ## <a name="use-a-custom-redirect-uri"></a>使用自訂重新導向 URI
 
@@ -110,7 +110,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>處理 URL 開啟的事件
 
-當您的應用程式透過 URL 配置或通用連結接收任何回應時，其應該呼叫 MSAL。 當您的應用程式開啟時，呼叫 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法。 自訂配置的範例如下︰
+當您的應用程式透過 URL 配置或通用連結接收任何回應時，其應該呼叫 MSAL。 當您的應用程式開啟時，呼叫 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法。 自訂配置的範例如下︰
 
 Objective-C：
 

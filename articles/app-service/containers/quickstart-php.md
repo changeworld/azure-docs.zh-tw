@@ -26,7 +26,7 @@ ms.locfileid: "83848063"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本快速入門：
 
@@ -142,7 +142,7 @@ git push azure master
 
 移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，以管理您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]  ，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 

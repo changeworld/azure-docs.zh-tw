@@ -100,6 +100,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: 適用於 HoloLens C++/WinRT 的 SDK
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: 資源
   items:
     - name: 版本資訊
@@ -110,7 +112,7 @@
       href: spatial-anchor-faq.md
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
     - name: 支援
       href: spatial-anchor-support.md

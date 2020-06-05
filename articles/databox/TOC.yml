@@ -195,6 +195,10 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: 從 HDFS 存放區
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+    - name: 參考
+      items:
+        - name: Azure CLI
+          href: /cli/azure/ext/databox/databox
     - name: 資源
       items:
         - name: 資料箱產品

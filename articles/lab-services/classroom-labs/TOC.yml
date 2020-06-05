@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: 指定支援資訊 (實驗室帳戶擁有者)
           href: lab-account-owner-support-information.md
+        - name: 適用於實驗室的成本管理
+          href: cost-management-guide.md
     - name: 建立和設定教室實驗室 (教師)
       items:
         - name: 建立和管理教室實驗室

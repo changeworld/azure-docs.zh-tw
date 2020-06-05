@@ -38,7 +38,7 @@ ms.locfileid: "81254604"
 > * 使用查詢字串來控制快取的版本。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -60,27 +60,27 @@ ms.locfileid: "81254604"
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>建立 CDN 設定檔和端點
 
-在左側導覽中，選取 [應用程式服務]  ，然後選取您在[靜態 HTML 快速入門](../app-service/app-service-web-get-started-html.md)中建立的應用程式。
+在左側導覽中，選取 [應用程式服務]，然後選取您在[靜態 HTML 快速入門](../app-service/app-service-web-get-started-html.md)中建立的應用程式。
 
 ![在入口網站中選取 App Service 應用程式](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-在 [App Service]  頁面的 [設定]  區段中，選取 [網路] > [設定您應用程式的 Azure CDN]  。
+在 [App Service] 頁面的 [設定] 區段中，選取 [網路] > [設定您應用程式的 Azure CDN]。
 
 ![在入口網站中選取 CDN](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-在 [Azure 內容傳遞網路]  頁面中，提供表格中所指定的 [新端點]  設定。
+在 [Azure 內容傳遞網路] 頁面中，提供表格中所指定的 [新端點] 設定。
 
 ![在入口網站中建立設定檔和端點](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
 | 設定 | 建議的值 | 描述 |
 | ------- | --------------- | ----------- |
 | **CDN 設定檔** | myCDNProfile | CDN 設定檔是定價層相同的 CDN 端點集合。 |
-| **定價層** | 標準 Akamai | [定價層](cdn-features.md)指定提供者和可用的功能。 本教學課程使用標準 Akamai  。 |
+| **定價層** | 標準 Akamai | [定價層](cdn-features.md)指定提供者和可用的功能。 本教學課程使用標準 Akamai。 |
 | **CDN 端點名稱** | azureedge.net 網域中任何唯一的名稱 | 您可以在網域 *&lt;endpointname&gt;* .azureedge.net 上存取您的快取資源。
 
-選取 [建立]  以建立 CDN 設定檔。
+選取 [建立] 以建立 CDN 設定檔。
 
-Azure 會建立設定檔和端點。 新端點會出現在 [端點]  清單中，而且其佈建後的狀態為 [執行中]  。
+Azure 會建立設定檔和端點。 新端點會出現在 [端點] 清單中，而且其佈建後的狀態為 [執行中]。
 
 ![清單中的新端點](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
@@ -91,7 +91,7 @@ Azure 會建立設定檔和端點。 新端點會出現在 [端點]  清單中�
    - 若為**來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
    - 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 90 分鐘內完成傳播。 
 
-範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css*、*img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css  資料夾中的 bootstrap.css  檔案︰
+範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css*、*img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css 資料夾中的 bootstrap.css 檔案︰
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -158,7 +158,7 @@ http://<endpointname>.azureedge.net/index.html
 
 若要觸發 CDN 更新其快取的版本，請清除 CDN。
 
-在入口網站的左側導覽中，選取 [資源群組]  ，然後選取您為 Web 應用程式 (myResourceGroup) 建立的資源群組。
+在入口網站的左側導覽中，選取 [資源群組]，然後選取您為 Web 應用程式 (myResourceGroup) 建立的資源群組。
 
 ![選取資源群組](media/cdn-add-to-web-app/portal-select-group.png)
 
@@ -166,13 +166,13 @@ http://<endpointname>.azureedge.net/index.html
 
 ![選取端點](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-在 [端點]  頁面頂端選取 [清除]  。
+在 [端點] 頁面頂端選取 [清除]。
 
 ![選取清除](media/cdn-add-to-web-app/portal-select-purge.png)
 
 輸入您想要清除的內容路徑。 您可以傳遞完整檔案路徑來清除個別檔案，也可以傳遞路徑區段來清除並重新整理資料夾中的所有內容。 因為您變更了 *index.html*，所以請確認該項目位在其中一個路徑內。
 
-選取頁面底部的 [清除]  。
+選取頁面底部的 [清除]。
 
 ![清除頁面](media/cdn-add-to-web-app/app-service-web-purge-cdn.png)
 
@@ -206,11 +206,11 @@ Azure CDN 提供下列快取行為選項︰
 
 ### <a name="change-the-cache-behavior"></a>變更快取行為
 
-在 Azure 入口網站的 [CDN 端點]  頁面中，選取 [快取]  。
+在 Azure 入口網站的 [CDN 端點] 頁面中，選取 [快取]。
 
-從 [查詢字串快取行為]  下拉式清單中，選取 [快取每個唯一 URL]  。
+從 [查詢字串快取行為] 下拉式清單中，選取 [快取每個唯一 URL]。
 
-選取 [儲存]  。
+選取 [儲存]。
 
 ![選取查詢字串快取行為](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

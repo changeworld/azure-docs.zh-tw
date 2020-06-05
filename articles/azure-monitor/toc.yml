@@ -230,7 +230,7 @@
                     - name: 版本歷程記錄
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON 行資源記錄格式
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: 疑難排解
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: 平台記錄
       items:
+        - name: 支援的資源記錄類型和類別
+          href: platform/resource-logs-categories.md
         - name: 資源記錄結構描述
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: 活動記錄結構描述
           href: platform/activity-log-schema.md
     - name: 診斷擴充功能結構描述

@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400446"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -28,11 +28,11 @@ ms.locfileid: "81400446"
 1. 啟動 Visual Studio 2019。
 2. 載入您的專案，並開啟 `Program.cs`。
 3. 下載<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike.wav <span class="docon docon-download x-hidden-focus"></span></a>，並將其新增至您的專案。
-    - 儲存 `Program.cs` 檔案旁邊的 whatstheweatherlike.wav  檔案。
-    - 在 [方案總管]  中，以滑鼠右鍵按一下專案，然後選取 [新增] > [現有項目]  。
-    - 選取 whatstheweatherlike.wav  檔案，然後選取 [新增]  按鈕。
-    - 以滑鼠右鍵按一下新增的檔案，然後選取 [屬性]  。
-    - 將 [複製到輸出目錄]  變更為 [永遠複製]  。
+    - 儲存 `Program.cs` 檔案旁邊的 whatstheweatherlike.wav 檔案。
+    - 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [現有項目]。
+    - 選取 whatstheweatherlike.wav 檔案，然後選取 [新增] 按鈕。
+    - 以滑鼠右鍵按一下新增的檔案，然後選取 [屬性]。
+    - 將 [複製到輸出目錄] 變更為 [永遠複製]。
 
 ## <a name="start-with-some-boilerplate-code"></a>從重複使用程式碼開始著手
 
@@ -197,8 +197,8 @@ namespace HelloWorld
 
 現在您已準備好使用語音服務來建立應用程式，並測試我們的語音辨識。
 
-1. 編譯程式碼：從 Visual Studio  的功能表列中，選擇 [建置]   > [建置解決方案]  。
-2. 啟動您的應用程式：從功能表列中，選擇 [偵錯]   > [開始偵錯]  ，或按 **F5**。
+1. 編譯程式碼：從 Visual Studio 的功能表列中，選擇 [建置] > [建置解決方案]。
+2. 啟動您的應用程式：從功能表列中，選擇 [偵錯] > [開始偵錯]，或按 **F5**。
 3. 開始辨識：您的音訊檔會傳送至語音服務、轉譯為文字，並在主控台中轉譯。
 
    ```console

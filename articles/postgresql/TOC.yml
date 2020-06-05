@@ -235,6 +235,10 @@
               href: howto-migrate-using-export-and-import.md
             - name: 最少停機時間的移轉
               href: howto-migrate-online.md
+        - name: 連線應用程式
+          items:
+            - name: 設定 TLS
+              href: howto-tls-configurations.md
         - name: 設定伺服器參數
           items:
             - name: Azure 入口網站

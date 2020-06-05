@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: 建立 VM - Azure CLI
       href: quick-create-cli.md
+    - name: 建立 VM - ARM 範本
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: 教學課程
   items:
     - name: 1 - 建立/管理 VM

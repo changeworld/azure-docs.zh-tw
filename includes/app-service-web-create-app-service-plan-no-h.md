@@ -19,7 +19,7 @@ ms.locfileid: "82085170"
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
-下列範例會在`myAppServicePlan`免費**定價層中建立名為**  的 App Service 方案。
+下列範例會在**免費**定價層中建立名為 `myAppServicePlan` 的 App Service 方案。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: trbye
 ms.openlocfilehash: 2e6be94a7fc83c6da8bf7a46fde6ea0f5ef7c764
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400534"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -89,12 +89,12 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 1. 在您的電腦上下載並安裝 64 位元版本的 [Python](https://www.python.org/downloads/) \(英文\) (3.5 到 3.8 版本)。
 1. 下載並安裝 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 開啟 Visual Studio Code，然後安裝 Python 擴充功能。 從功能表選取 [檔案]   > [喜好設定]   > [擴充功能]  。 搜尋 **Python**。
+1. 開啟 Visual Studio Code，然後安裝 Python 擴充功能。 從功能表選取 [檔案] > [喜好設定] > [擴充功能]。 搜尋 **Python**。
 
    ![安裝 Python 擴充功能](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. 建立資料夾來儲存專案。 例如，使用 Windows 檔案總管。
-1. 在 Visual Studio Code 中選取 [檔案]  圖示。 然後開啟您所建立的資料夾。
+1. 在 Visual Studio Code 中選取 [檔案] 圖示。 然後開啟您所建立的資料夾。
 
    ![開啟資料夾](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
@@ -109,7 +109,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 您可以從 Visual Studio Code 內安裝語音 SDK Python 套件。 如果您選取的 Python 直譯器尚未安裝該套件，請按照以下步驟安裝。
    若要安裝語音 SDK 套件，請開啟終端機。 再次開啟命令選擇區 <kbd>Ctrl+Shift+P</kbd>，然後輸入 **Terminal:Create New Integrated Terminal** 來開啟終端機。
    在開啟的終端機中，輸入命令 `python -m pip install azure-cognitiveservices-speech` 或系統所適用的命令。
-1. 若要執行範例程式碼，請在編輯器內任意地方按一下滑鼠右鍵。 選取 [在終端機中執行 Python 檔案]  。
+1. 若要執行範例程式碼，請在編輯器內任意地方按一下滑鼠右鍵。 選取 [在終端機中執行 Python 檔案]。
    系統會從音訊檔案中辨識語音輸入的前 15 秒，並記錄在主控台視窗中。
 
    ```console

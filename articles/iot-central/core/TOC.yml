@@ -57,6 +57,8 @@
       href: concepts-architecture.md
     - name: 什麼是應用程式範本？
       href: concepts-app-templates.md
+    - name: 什麼是裝置範本？
+      href: concepts-device-templates.md
     - name: 裝置連線能力
       href: concepts-get-connected.md
     - name: 連線 Azure IoT Edge 裝置

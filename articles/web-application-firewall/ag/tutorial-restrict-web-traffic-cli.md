@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-這些虛擬網路和子網路可用來為應用程式閘道及其相關聯的資源提供網路連線。 建立名為 myVNet  的虛擬網路，以及名為 myAGSubnet  的子網路。 然後建立名為 myAGPublicIPAddress  的公用 IP 位址。
+這些虛擬網路和子網路可用來為應用程式閘道及其相關聯的資源提供網路連線。 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet 的子網路。 然後建立名為 myAGPublicIPAddress 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>建立包含 WAF 的應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway  的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet  和 myAGPublicIPAddress  。
+您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -99,15 +99,15 @@ az network application-gateway waf-config set \
 
 可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool  - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings  - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener  - 與 appGatewayBackendPool  相關聯的預設接聽程式。
-- appGatewayFrontendIP  - 將 myAGPublicIPAddress  指派給 appGatewayHttpListener  。
-- rule1  - 與 appGatewayHttpListener  相關聯的預設路由規則。
+- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
+- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
+- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立虛擬機器擴展集，為應用程式閘道中的後端集區提供兩部伺服器。 擴展集中的虛擬機器會與 myBackendSubnet  子網路相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此範例中，您會建立虛擬機器擴展集，為應用程式閘道中的後端集區提供兩部伺服器。 擴展集中的虛擬機器會與 myBackendSubnet 子網路相關聯。 若要建立擴展集，您可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
 
 ```azurecli-interactive
 az vmss create \

@@ -114,6 +114,8 @@
   items:
     - name: 管理
       items:
+        - name: 自動調整作業
+          href: stream-analytics-autoscale.md
         - name: 更新認證
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: 設定事件順序原則
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: 資源
   items:
     - name: 串流分析預覽

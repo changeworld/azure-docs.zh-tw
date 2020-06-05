@@ -37,7 +37,7 @@ ms.locfileid: "83196042"
 > * 進行應用程式設定
 > * 與 Web 應用程式互動
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要 Azure 訂用帳戶。 開始之前，請建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

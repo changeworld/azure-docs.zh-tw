@@ -466,7 +466,7 @@
       items:
         - name: REST API
           items:
-            - name: 語音辨識 REST API
+            - name: 說話者辨識 REST API
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:

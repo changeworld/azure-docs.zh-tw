@@ -19,7 +19,7 @@ ms.locfileid: "82731946"
 
 本快速入門會引導您將應用程式的 App Center 執行個體連線到 Application Insights。 Application Insights 提供查詢、分割、篩選及分析遙測資料的強大工具，遠勝於 App Center 的 [Analytics](https://docs.microsoft.com/mobile-center/analytics/) \(英文\) 服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本快速入門，您需要：
 
@@ -61,14 +61,14 @@ Analytics.trackEvent("Video clicked")
 
 若要從其他應用程式平台傳送自訂事件，請使用其 App Center SDK 中的 `trackEvent`。
 
-若要確認有接收到您的自訂事件，請移至 App Center 中 [分析]  區段下的 [事件]  索引標籤。 事件從應用程式傳送之後，可能需要幾分鐘的時間才會顯示。
+若要確認有接收到您的自訂事件，請移至 App Center 中 [分析] 區段下的 [事件] 索引標籤。 事件從應用程式傳送之後，可能需要幾分鐘的時間才會顯示。
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
 一旦您的應用程式開始傳送自訂事件，且 App Center 已經收到這些事件，您就需要在 Azure 入口網站中建立 App Center 類型的 Application Insights 資源：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [建立資源]   > [開發人員工具]   > [Application Insights]  。
+2. 選取 [建立資源] > [開發人員工具] > [Application Insights]。
 
     > [!NOTE]
     > 如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文件以進一步了解。
@@ -81,18 +81,18 @@ Analytics.trackEvent("Video clicked")
      | **資源群組**     | 新的資源群組或功能表中現有的資源群組 | 要在其中建立新 Application Insights 資源的資源群組 |
    | **位置** | 功能表中的位置 | 選擇您附近或接近應用程式裝載位置的地點 |
 
-3. 按一下頁面底部的 [新增]  。
+3. 按一下 [建立]。
 
 如果您的應用程式支援多個平台 (iOS、Android 等等)，建議針對每個平台建立個別的 Application Insights 資源。
 
 ## <a name="export-to-application-insights"></a>匯出到 Application Insights
 
-位於 [概觀]  頁面上您的新 Application Insights 資源中。 從資源複製檢測金鑰。
+位於 [概觀] 頁面上您的新 Application Insights 資源中。 從資源複製檢測金鑰。
 
 在應用程式的 [App Center](https://appcenter.ms/) 執行個體中：
 
-1. 在 [設定]  頁面上，按一下 [匯出]  。
-2. 選擇 [新匯出]  ，挑選 [Application Insights]  ，然後按一下 [自訂]  。
+1. 在 [設定] 頁面上，按一下 [匯出]。
+2. 選擇 [新匯出]，挑選 [Application Insights]，然後按一下 [自訂]。
 3. 將您的 Application Insights 檢測金鑰貼到方塊中。
 4. 同意增加包含您 Application Insights 資源的 Azure 訂用帳戶使用量。 每個 Application Insights 資源每月前 1 GB 接收的資料為免費。 [深入了解 Application Insights 定價](https://azure.microsoft.com/pricing/details/application-insights/)
 
@@ -106,7 +106,7 @@ Analytics.trackEvent("Video clicked")
 
 Application Insights 可以查詢、分割、篩選及分析應用程式的自訂事件遙測資料，遠勝於 App Center 提供的分析工具。
 
-1. **查詢您的自訂事件遙測資料。** 從 Application Insights [概觀]  頁面，選擇 [記錄 (分析)]  。
+1. **查詢您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇 [記錄 (分析)]。
 
    此時會開啟與您的 Application Insights 資源相關聯的 Application Insights 記錄 (分析) 入口網站。 記錄 (分析) 入口網站可讓您使用 Log Analytics 查詢語言直接查詢資料，因此您可以任意詢問有關應用程式和其使用者的複雜問題。
    
@@ -122,12 +122,12 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
    ![記錄 (分析) 入口網站](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. 在文字編輯器中的查詢上任一處按一下，以選取該查詢。
-   2. 按一下 [執行]  來執行查詢。 
+   2. 按一下 [執行] 來執行查詢。 
 
    深入了解 [Application Insights 分析](../../azure-monitor/app/analytics.md)以及 [Log Analytics 查詢語言](https://aka.ms/LogAnalyticsLanguageReference) \(英文\)。
 
 
-2. **分割及篩選您的自訂事件遙測資料。** 從 Application Insights [概觀]  頁面，選擇目錄中的 [使用者]  。
+2. **分割及篩選您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者]。
 
    ![使用者工具圖示](./media/mobile-center-quickstart/users-icon-001.png)
 
@@ -135,9 +135,9 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 
    ![使用者工具](./media/mobile-center-quickstart/users-001.png) 
 
-   例如，選擇 [分割依據]  下拉式功能表中的 [國家或地區]  ，以根據地理位置來分割使用量。
+   例如，選擇 [分割依據] 下拉式功能表中的 [國家或地區]，以根據地理位置來分割使用量。
 
-3. **分析應用程式中的轉換、保留和瀏覽模式。** 從 Application Insights [概觀]  頁面，選擇目錄中的 [使用者流程]  。
+3. **分析應用程式中的轉換、保留和瀏覽模式。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者流程]。
 
    ![使用者流程工具](./media/mobile-center-quickstart/user-flows-001.png)
 
@@ -145,10 +145,10 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 
    除了 [使用者流程] 之外，Application Insights 還有可以回答特定問題的其他使用者行為分析工具：
 
-   * [漏斗圖]  可分析及監視轉換率。
-   * [保留期]  可分析應用程式隨著時間留住使用者的能力。
-   * [活頁簿]  可將視覺效果和文字結合成可共用的報表。
-   * [世代]  可命名或儲存特定使用者群組或事件，以方便從其他分析工具參考。
+   * [漏斗圖] 可分析及監視轉換率。
+   * [保留期] 可分析應用程式隨著時間留住使用者的能力。
+   * [活頁簿] 可將視覺效果和文字結合成可共用的報表。
+   * [世代] 可命名或儲存特定使用者群組或事件，以方便從其他分析工具參考。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -156,13 +156,13 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 
 在 App Center 中關閉匯出：
 
-1. 在 App Center 中，移至 [設定]  並選擇 [匯出]  。
-2. 按一下您要刪除的 Application Insights 匯出，然後按一下底端的 [刪除匯出]  並確認。
+1. 在 App Center 中，移至 [設定] 並選擇 [匯出]。
+2. 按一下您要刪除的 Application Insights 匯出，然後按一下底端的 [刪除匯出] 並確認。
 
 刪除 Application Insights 資源：
 
-1. 在 Azure 入口網站的左側功能表中，按一下 [資源群組]  ，然後選取 Application Insights 資源建立於其中的資源群組。
-2. 開啟您要刪除的 Application Insights 資源。 然後按一下資源最上層功能表中的 [刪除]  並確認。 如此將永久刪除匯出到 Application Insights 的資料複本。
+1. 在 Azure 入口網站的左側功能表中，按一下 [資源群組]，然後選取 Application Insights 資源建立於其中的資源群組。
+2. 開啟您要刪除的 Application Insights 資源。 然後按一下資源最上層功能表中的 [刪除] 並確認。 如此將永久刪除匯出到 Application Insights 的資料複本。
 
 ## <a name="next-steps"></a>後續步驟
 

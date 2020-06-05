@@ -32,7 +32,7 @@ Azure 虛擬機器使用硬碟來儲存 VM 作業系統、應用程式和資料�
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="default-azure-disks"></a>預設 Azure 磁碟
 
@@ -138,7 +138,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>驗證資料磁碟
 
-若要確認資料磁碟已連結，請檢視已連結 `StorageProfile` 的 `DataDisks`。
+若要確認資料磁碟已連結，請檢視已連結 `DataDisks` 的 `StorageProfile`。
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks

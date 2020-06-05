@@ -23,7 +23,7 @@ ms.locfileid: "82159330"
 
 您可以設定事件中樞，以便從 Azure 儲存體帳戶或 Azure Data Lake Storage Gen 1 或 Gen 2 擷取傳送到事件中樞的資料。 本文將說明如何撰寫 Python 程式碼來將事件傳送至事件中樞，以及從 **Azure Blob 儲存體**讀取已擷取的資料。 如需此功能的詳細資訊，請參閱[事件中樞擷取功能概觀](event-hubs-capture-overview.md)。
 
-此快速入門使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 來示範「擷取」功能。 sender.py  應用程式會以 JSON 格式將模擬的環境遙測傳送至事件中樞。 事件中樞已設定為使用擷取功能，將此資料批次寫入至 Blob 儲存體。 capturereader.py  應用程式會讀取這些 Blob，並為每個裝置建立附加檔案。 此應用程式接著會將資料寫入至 CSV 檔案。
+此快速入門使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 來示範「擷取」功能。 sender.py 應用程式會以 JSON 格式將模擬的環境遙測傳送至事件中樞。 事件中樞已設定為使用擷取功能，將此資料批次寫入至 Blob 儲存體。 capturereader.py 應用程式會讀取這些 Blob，並為每個裝置建立附加檔案。 此應用程式接著會將資料寫入至 CSV 檔案。
 
 > [!IMPORTANT]
 > 本快速入門使用第 5 版的 Azure 事件中樞 Python SDK。 如需使用第 1 版 Python SDK 的快速入門，請參閱[這篇文章](event-hubs-capture-python.md)。 
@@ -37,7 +37,7 @@ ms.locfileid: "82159330"
 > * 使用 Python 指令碼，將資料傳送至您的事件中樞。
 > * 使用另一個 Python 指令碼，讀取和處理事件中樞「擷取」的檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Python 2.7 和 3.5 或更新版本，且已安裝並更新 PIP。  
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。  
@@ -92,14 +92,14 @@ ms.locfileid: "82159330"
     * 將 `EVENT HUBS NAMESPACE CONNECTION STRING` 取代為事件中樞命名空間的連接字串。  
     * 將 `EVENT HUB NAME` 取代為您的事件中樞名稱。  
 5. 執行指令碼以將事件傳送到事件中樞。  
-6. 在 Azure 入口網站中，您可以確認事件中樞是否已收到訊息。 切換至 [計量]  區段中的 [訊息]  檢視。 請重新整理頁面來更新圖表。 可能需要幾秒鐘的時間，頁面才會顯示已收到訊息。 
+6. 在 Azure 入口網站中，您可以確認事件中樞是否已收到訊息。 切換至 [計量] 區段中的 [訊息] 檢視。 請重新整理頁面來更新圖表。 可能需要幾秒鐘的時間，頁面才會顯示已收到訊息。 
 
     [![確認事件中樞已收到訊息](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>建立 Python 指令碼來讀取擷取檔案
 在此範例中，已擷取的資料會儲存在 Azure Blob 儲存體中。 本節中的指令碼會從您的 Azure 儲存體帳戶讀取已擷取的資料檔案，並產生方便您開啟和檢視的 CSV 檔案。 您會在應用程式目前的工作目錄中看到 10 個檔案。 這些檔案將包含 10 部裝置的環境數據。 
 
-1. 在 Python 編輯器中，建立名為 capturereader.py  的指令碼。 此指令碼會讀取擷取檔案，並為每個裝置建立檔案以便只寫入該裝置的資料。
+1. 在 Python 編輯器中，建立名為 capturereader.py 的指令碼。 此指令碼會讀取擷取檔案，並為每個裝置建立檔案以便只寫入該裝置的資料。
 2. 將下列程式碼貼到 *capturereader.py* 中。 
    
     ```python
@@ -157,7 +157,7 @@ ms.locfileid: "82159330"
     
     startProcessing()    
     ```
-3. 將 `AZURE STORAGE CONNECTION STRING` 取代為 Azure 儲存體帳戶的連接字串。 您在本快速入門中建立的容器名稱是 capture  。 如果您使用不同的容器名稱，請將 capture  取代為儲存體帳戶中的容器名稱。 
+3. 將 `AZURE STORAGE CONNECTION STRING` 取代為 Azure 儲存體帳戶的連接字串。 您在本快速入門中建立的容器名稱是 capture。 如果您使用不同的容器名稱，請將 capture 取代為儲存體帳戶中的容器名稱。 
 
 ## <a name="run-the-scripts"></a>執行指令碼
 1. 開啟在其路徑中具有 Python 的命令提示字元，並執行下列命令來安裝 Python 必要條件封裝︰
@@ -167,7 +167,7 @@ ms.locfileid: "82159330"
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. 將目錄變更為儲存已儲存 sender.py  和 capturereader.py  的目錄，並執行此命令︰
+2. 將目錄變更為儲存已儲存 sender.py 和 capturereader.py 的目錄，並執行此命令︰
    
    ```
    python sender.py

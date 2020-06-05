@@ -16,7 +16,7 @@ ms.locfileid: "82085171"
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式
 
 > [!NOTE]
-> 本文會將應用程式部署至 Windows 上的 App Service。 若要在 Linux  上部署至 App Service，請參閱[在 Linux 上的 Azure App Service 中建置 PHP 和 MySQL 應用程式](./containers/tutorial-php-mysql-app.md)。
+> 本文會將應用程式部署至 Windows 上的 App Service。 若要在 Linux 上部署至 App Service，請參閱[在 Linux 上的 Azure App Service 中建置 PHP 和 MySQL 應用程式](./containers/tutorial-php-mysql-app.md)。
 >
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本教學課程示範如何在 Azure 中建立 PHP 應用程式，並將它連線到 MySQL 資料庫。 完成後，您將有一個在 Azure App Service 上執行的 [Laravel](https://laravel.com/) 應用程式。
@@ -35,7 +35,7 @@ ms.locfileid: "82085171"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -156,7 +156,7 @@ php artisan serve
 
 在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) 命令在適用於 MySQL 的 Azure 資料庫中建立伺服器。
 
-在下列命令中，使用唯一的伺服器名稱取代 \<mysql_server_name>  預留位置，使用使用者名稱取代 \<admin_user>  預留位置，並使用密碼取代 \<admin_password>  預留位置。 這個伺服器名稱會用來作為 MySQL 端點 (`https://<mysql_server_name>.mysql.database.azure.com`) 的一部分，所以在 Azure 的所有伺服器中必須是唯一的名稱。
+在下列命令中，使用唯一的伺服器名稱取代 \<mysql_server_name> 預留位置，使用使用者名稱取代 \<admin_user> 預留位置，並使用密碼取代 \<admin_password> 預留位置。 這個伺服器名稱會用來作為 MySQL 端點 (`https://<mysql_server_name>.mysql.database.azure.com`) 的一部分，所以在 Azure 的所有伺服器中必須是唯一的名稱。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
@@ -345,7 +345,7 @@ git commit -m "database.php updates"
 
 如先前所指出，您可以使用 App Service 中的環境變數，連線至 Azure MySQL 資料庫。
 
-在 Cloud Shell 中，您可以使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」  。
+在 Cloud Shell 中，您可以使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」。
 
 下列命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、`DB_PASSWORD` 應用程式設定。 取代預留位置 _&lt;appname>_ 和 _&lt;mysql_server_name>_ 。
 
@@ -386,7 +386,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>設定虛擬應用程式路徑
 
-設定應用程式的虛擬應用程式路徑。 需要執行此步驟，是因為 [Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」  目錄中啟動，而不是在應用程式的根目錄。 在根目錄中啟動生命週期的其他 PHP 架構，不需要手動設定虛擬應用程式路徑即可運作。
+設定應用程式的虛擬應用程式路徑。 需要執行此步驟，是因為 [Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 在根目錄中啟動生命週期的其他 PHP 架構，不需要手動設定虛擬應用程式路徑即可運作。
 
 在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令來設定虛擬應用程式路徑。 取代 _&lt;appname>_ 預留位置。
 
@@ -481,7 +481,7 @@ public function down()
 php artisan migrate
 ```
 
-根據 [Laravel 命名慣例](https://laravel.com/docs/5.4/eloquent#defining-models)，依預設 `Task` 模型 (請看 app/Task.php  ) 會對應至 `tasks` 資料表。
+根據 [Laravel 命名慣例](https://laravel.com/docs/5.4/eloquent#defining-models)，依預設 `Task` 模型 (請看 app/Task.php) 會對應至 `tasks` 資料表。
 
 ### <a name="update-application-logic"></a>更新應用程式邏輯
 
@@ -600,7 +600,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 移至 [Azure 入口網站](https://portal.azure.com)，以管理您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]  ，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 

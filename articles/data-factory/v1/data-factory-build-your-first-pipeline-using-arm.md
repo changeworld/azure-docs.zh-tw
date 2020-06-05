@@ -28,18 +28,18 @@ ms.locfileid: "82203891"
 > 
  
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 來建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
 
 在本文中，您會使用 Azure Resource Manager 範本來建立第一個 Azure Data Factory。 若要使用其他工具/SDK 進行本教學課程，請選取下拉式清單的其中一個選項。
 
 本教學課程中的管線有一個活動︰**HDInsight Hive 活動**。 此活動會在 Azure HDInsight 叢集上執行 Hive 指令碼，以轉換輸入資料來產生輸出資料。 管線已排定每個月在指定的開始與結束時間之間執行一次。 
 
 > [!NOTE]
-> 本教學課程中的資料管線會轉換輸入資料來產生輸出資料， 如需說明如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程：將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本教學課程中的資料管線會轉換輸入資料來產生輸出資料， 如需如何使用 Azure Data Factory 複製資料的教學課程，請參閱[教學課程︰將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 本教學課程中的管線只有一個 HDInsightHive 類型的活動。 一個管線中可以有多個活動。 您可以將一個活動的輸出資料集設為另一個活動的輸入資料集，藉此鏈結兩個活動 (讓一個活動接著另一個活動執行)。 如需詳細資訊，請參閱 [Data Factory 排程和執行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
+> 本教學課程中的管線只有一個以下類型的活動：HDInsightHive。 一個管線中可以有多個活動。 您可以將一個活動的輸出資料集設為另一個活動的輸入資料集，藉此鏈結兩個活動 (讓一個活動接著另一個活動執行)。 如需詳細資訊，請參閱 [Data Factory 排程和執行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -261,7 +261,7 @@ ms.locfileid: "82203891"
 ```
 
 > [!NOTE]
-> 您可以找到另一個 Resource Manager 範本的範例，以在[教學課程︰使用 Azure Resource Manager 範本建立管線與複製活動](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)上建立 Azure Data Factory。  
+> 您可以找到可供建立 Azure Data Factory 的其他 Resource Manager 範本範例：[教學課程：使用 Azure Resource Manager 範本建立具有複製活動的管線](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)。  
 > 
 > 
 
@@ -332,13 +332,13 @@ ms.locfileid: "82203891"
     ```
 
 ## <a name="monitor-pipeline"></a>監視管線
-1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [瀏覽]  ，然後選取 [Data Factory]  。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [瀏覽]，然後選取 [Data Factory]。
      ![瀏覽 Data Factory](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
-2. 在 [Data Factory]  刀鋒視窗中，按一下您建立的 Data Factory (**TutorialFactoryARM**)。    
-3. 在您 Data Factory 的 [Data Factory]  刀鋒視窗中，按一下 [圖表]  。
+2. 在 [Data Factory] 刀鋒視窗中，按一下您建立的 Data Factory (**TutorialFactoryARM**)。    
+3. 在您 Data Factory 的 [Data Factory] 刀鋒視窗中，按一下 [圖表]。
 
      ![圖表磚](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4. 在 [圖表檢視]  中，您會看到管線的概觀，以及在本教學課程中使用的資料集。
+4. 在 [圖表檢視] 中，您會看到管線的概觀，以及在本教學課程中使用的資料集。
    
    ![圖表檢視](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. 在 [圖表檢視] 中，按兩下 **AzureBlobOutput**資料集。 您會看到目前正在處理的配量。
@@ -347,7 +347,7 @@ ms.locfileid: "82203891"
 6. 處理完成時，您會看到配量處於 [就緒]  狀態。 建立隨選 HDInsight 叢集通常需要一些時間 (大約 20 分鐘)。 因此，管線預計需要 **大約 30 分鐘** 的時間來處理配量。
    
     ![資料集](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
-7. 當配量處於 [就緒]  狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  
+7. 當配量處於 [就緒] 狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  
 
 如需如何使用 Azure 入口網站刀鋒視窗來監視您在本教學課程中建立的管線和資料集的指示，請參閱 [監視資料集和管線](data-factory-monitor-manage-pipelines.md) 。
 
@@ -615,7 +615,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
     ]
 }
 ```
-此範本會利用名為 GatewayUsingARM 的閘道建立名為 GatewayUsingArmDF 的 Data Factory。 
+此範本會利用以下名稱的閘道建立名為 GatewayUsingArmDF 的 Data Factory：GatewayUsingARM。 
 
 ## <a name="see-also"></a>另請參閱
 

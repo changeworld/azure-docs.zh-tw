@@ -18,7 +18,7 @@ ms.locfileid: "83673130"
 
 範例應用程式的原始程式碼包含在「語音裝置 SDK」中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始使用語音裝置 SDK 之前，您需要：
 
@@ -35,7 +35,7 @@ ms.locfileid: "83673130"
 
 - 如果您打算使用語音服務來識別使用者語句中的意圖 (或動作)，您將需要 [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
-  您可以[建立簡單 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用簡單 LUIS 模型 LUIS-example.json。 您可以從[語音裝置 SDK 下載網站](https://aka.ms/sdsdk-luis)取得範例 LUIS 模型。 若要將您模型的 JSON 檔案上傳到 [LUIS 入口網站](https://www.luis.ai/home)，請選取 [Import new app] \(匯入新應用程式\)  ，然後選取 JSON 檔案。
+  您可以[建立簡單 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用簡單 LUIS 模型 LUIS-example.json。 您可以從[語音裝置 SDK 下載網站](https://aka.ms/sdsdk-luis)取得範例 LUIS 模型。 若要將您模型的 JSON 檔案上傳到 [LUIS 入口網站](https://www.luis.ai/home)，請選取 [Import new app] \(匯入新應用程式\)，然後選取 JSON 檔案。
 
 - 在您的電腦上安裝 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 
@@ -45,9 +45,9 @@ ms.locfileid: "83673130"
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. 您的裝置應該會列在 [Choose a device] \(選擇裝置\)  底下。 選取裝置旁邊的 [View] \(檢視\)  按鈕。
+1. 您的裝置應該會列在 [Choose a device] \(選擇裝置\) 底下。 選取裝置旁邊的 [View] \(檢視\) 按鈕。
 
-1. 選取資料夾圖示，然後選取 [Settings] \(設定\)   > [WLAN]  ，以連線到您的無線網路。
+1. 選取資料夾圖示，然後選取 [Settings] \(設定\) > [WLAN]，以連線到您的無線網路。
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "83673130"
    >
    > ![Vysor 檔案資料夾](../media/speech-devices-sdk/qsg-10.png)
    >
-   > 選取 [Settings] \(設定)  。 搜尋 "mac address"，然後選取 [Mac address] \(Mac 位址\)   > [Advanced WLAN] \(進階 WLAN\)  。 記下出現在靠近對話方塊底部的 MAC 位址。
+   > 選取 [Settings] \(設定) 。 搜尋 "mac address"，然後選取 [Mac address] \(Mac 位址\) > [Advanced WLAN] \(進階 WLAN\)。 記下出現在靠近對話方塊底部的 MAC 位址。
    >
    > ![Vysor MAC 位址](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -70,11 +70,11 @@ ms.locfileid: "83673130"
 
 1. 啟動 Android Studio。
 
-1. 選取 [開啟現有 Android Studio 專案]  。
+1. 選取 [開啟現有 Android Studio 專案]。
 
    ![Android Studio - 開啟現有專案](../media/speech-devices-sdk/qsg-5.png)
 
-1. 前往 C:\SDSDK\Android-Sample-Release\example。 選取 [OK] \(確定\)  以開啟範例專案。
+1. 前往 C:\SDSDK\Android-Sample-Release\example。 選取 [OK] \(確定\) 以開啟範例專案。
 
 1. 將 Gradle 設定為參考語音 SDK。 您可以在 Android Studio 中的 **Gradle 指令碼**下找到下列檔案。
 
@@ -152,9 +152,9 @@ ms.locfileid: "83673130"
    |          |         | 針對使用所有麥克風的線性開發套件：`Linear4` |
    |          |         | 針對使用兩個麥克風的線性開發套件：`Linear2` |
 
-1. 若要建置應用程式，請在 [Run] \(執行\)  功能表上選擇 [Run 'app'] \(執行「應用程式」\)  。 隨即會顯示 [Select Deployment Target] \(選取部署目標\)  對話方塊。
+1. 若要建置應用程式，請在 [Run] \(執行\) 功能表上選擇 [Run 'app'] \(執行「應用程式」\)。 隨即會顯示 [Select Deployment Target] \(選取部署目標\) 對話方塊。
 
-1. 選取您的裝置，然後選取 [OK] \(確定\)  ，以將應用程式部署到裝置。
+1. 選取您的裝置，然後選取 [OK] \(確定\)，以將應用程式部署到裝置。
 
    ![[Select Deployment Target] \(選取部署目標\) 對話方塊](../media/speech-devices-sdk/qsg-7.png)
 

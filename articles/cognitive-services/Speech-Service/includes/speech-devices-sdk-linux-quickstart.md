@@ -20,7 +20,7 @@ ms.locfileid: "83673147"
 
 [範例應用程式](https://aka.ms/sdsdk-download-JRE)的原始程式碼包含在語音裝置 SDK 中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本快速入門需要：
 

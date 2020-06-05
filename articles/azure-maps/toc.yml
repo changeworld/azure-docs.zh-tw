@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: 顯示從甲地到乙地的指示
               href: map-route.md
+        - name: 室內地圖模組
+          items:
+            - name: 室內地圖模組
+              href: how-to-use-indoor-module.md
+            - name: 適用於室內地圖的動態樣式
+              href: indoor-map-dynamic-styling.md
+            - name: 繪製錯誤視覺化檢視
+              href: drawing-error-visualizer.md
         - name: 空間 IO 模組
           items:
             - name: 使用空間 IO 模組
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: 顯示流量資料
           href: how-to-show-traffic-android.md
-    - name: 使用建立工具的室內地圖進行開發
-      items:
-        - name: 室內地圖模組
-          href: how-to-use-indoor-module.md
-        - name: 適用於室內地圖的動態樣式
-          href: indoor-map-dynamic-styling.md
-        - name: 繪製錯誤視覺化檢視
-          href: drawing-error-visualizer.md
     - name: 提供資料意見反應
       href: how-to-use-feedback-tool.md
 - name: 參考
