@@ -4,6 +4,8 @@
   items:
     - name: 關於 Azure 區塊鏈服務
       href: overview.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   expanded: true
   items:
