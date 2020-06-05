@@ -32,7 +32,7 @@ ms.locfileid: "82790757"
 
 您可以使用任何程式碼編輯器來進行本教學課程中的步驟。 Windows、macOS 及 Linux 平台上都有提供的 [Visual Studio Code](https://code.visualstudio.com/) 是一個絕佳的選項。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 如果您在本機建置，請下載並安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (如果您還沒有這麼做)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "82790757"
 
 ### <a name="export-an-app-configuration-store"></a>匯出應用程式組態存放區
 
-1. 開啟 .csproj  檔案，並新增下列指令碼：
+1. 開啟 .csproj 檔案，並新增下列指令碼：
 
     ```xml
     <Target Name="Export file" AfterTargets="Build">
@@ -48,7 +48,7 @@ ms.locfileid: "82790757"
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. 開啟 Program.cs  ，並藉由呼叫 `CreateWebHostBuilder` 方法，將 `config.AddJsonFile()` 方法更新為使用匯出的 JSON 檔案。  也請新增 `System.Reflection` 命名空間。
+1. 開啟 Program.cs，並藉由呼叫 `config.AddJsonFile()` 方法，將 `CreateWebHostBuilder` 方法更新為使用匯出的 JSON 檔案。  也請新增 `System.Reflection` 命名空間。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -32,7 +32,7 @@ ms.locfileid: "80292044"
 > * [設定應用程式的監視和診斷](service-fabric-tutorial-java-elk.md)
 > * [設定 CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前：
 
@@ -95,7 +95,7 @@ ms.locfileid: "80292044"
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. 存取 [Azure 入口網站](https://portal.azure.com)並瀏覽至儲存體帳戶的 [共用存取簽章]  索引標籤。 產生 SAS 權杖，如下所示。
+7. 存取 [Azure 入口網站](https://portal.azure.com)並瀏覽至儲存體帳戶的 [共用存取簽章] 索引標籤。 產生 SAS 權杖，如下所示。
 
     ![產生儲存體的 SAS](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "80292044"
     }
     ```
 
-11. 執行 eventhubssastoken.py  指令碼，為您建立的 EventHubs 資源產生 SAS url。 Service Fabric 叢集會使用 SAS URL 將記錄傳送至事件中樞。 因此，**寄件者**原則用來產生 URL。 指令碼會針對下一個步驟中使用的事件中樞資源傳回 SAS URL：
+11. 執行 eventhubssastoken.py 指令碼，為您建立的 EventHubs 資源產生 SAS url。 Service Fabric 叢集會使用 SAS URL 將記錄傳送至事件中樞。 因此，**寄件者**原則用來產生 URL。 指令碼會針對下一個步驟中使用的事件中樞資源傳回 SAS URL：
 
     ```python
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
@@ -164,7 +164,7 @@ ms.locfileid: "80292044"
 
     EventHubs 的 SAS URL 會遵循以下結構：`https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`。 例如， `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
-12. 開啟 sfdeploy.parameters.json  檔案，並取代從先前的步驟中取得的下列內容。 步驟 8 中註明了 [SAS-URL-STORAGE-ACCOUNT]。 步驟 11 中註明了 [SAS-URL-EVENT-HUBS]。
+12. 開啟 sfdeploy.parameters.json 檔案，並取代從先前的步驟中取得的下列內容。 步驟 8 中註明了 [SAS-URL-STORAGE-ACCOUNT]。 步驟 11 中註明了 [SAS-URL-EVENT-HUBS]。
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -191,7 +191,7 @@ ms.locfileid: "80292044"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>將應用程式部署到叢集
 
-1. 在部署您的應用程式之前，您必須將下列程式碼片段新增至 Voting/VotingApplication/ApplicationManifest.xml  檔案。 **X509FindValue** 欄位是從「在 Azure 中建立 Service Fabric 叢集」  一節的步驟 4 傳回的指紋。 此程式碼片段會以巢狀形式存在 **Secretscertificate** 欄位 (根欄位) 之下。
+1. 在部署您的應用程式之前，您必須將下列程式碼片段新增至 Voting/VotingApplication/ApplicationManifest.xml 檔案。 **X509FindValue** 欄位是從「在 Azure 中建立 Service Fabric 叢集」一節的步驟 4 傳回的指紋。 此程式碼片段會以巢狀形式存在 **Secretscertificate** 欄位 (根欄位) 之下。
 
     ```xml
     <Certificates>
@@ -211,13 +211,13 @@ ms.locfileid: "80292044"
     sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. 若要部署您的應用程式，請瀏覽至 Voting/Scripts  資料夾並執行 **install.sh** 指令碼。
+4. 若要部署您的應用程式，請瀏覽至 Voting/Scripts 資料夾並執行 **install.sh** 指令碼。
 
     ```bash
     ./install.sh
     ```
 
-5. 若要存取 Service Fabric 總管，請開啟您慣用的瀏覽器並輸入 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 。 從憑證存放區選擇您要用來連線到此端點的憑證。 如果您使用 Linux 機器，new-service-fabric-cluster-certificate.sh  指令碼所產生的憑證必須匯入 Chrome 中，才能檢視 Service Fabric 總管。 如果您使用 Mac，則必須將 PFX 檔案安裝到您的金鑰鏈。 您會注意您的應用程式已安裝於叢集上。
+5. 若要存取 Service Fabric 總管，請開啟您慣用的瀏覽器並輸入 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 。 從憑證存放區選擇您要用來連線到此端點的憑證。 如果您使用 Linux 機器，new-service-fabric-cluster-certificate.sh 指令碼所產生的憑證必須匯入 Chrome 中，才能檢視 Service Fabric 總管。 如果您使用 Mac，則必須將 PFX 檔案安裝到您的金鑰鏈。 您會注意您的應用程式已安裝於叢集上。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
@@ -225,7 +225,7 @@ ms.locfileid: "80292044"
 
     ![Voting 應用程式 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. 若要從叢集將您的應用程式解除安裝，請執行 *Scripts* 資料夾中的 **uninstall.sh** 指令碼。
+7. 若要從叢集將您的應用程式解除安裝，請執行 **Scripts** 資料夾中的 *uninstall.sh* 指令碼。
 
     ```bash
     ./uninstall.sh

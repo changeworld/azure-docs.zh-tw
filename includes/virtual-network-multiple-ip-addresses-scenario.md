@@ -6,21 +6,21 @@ ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173901"
 ---
-## <a name="scenario"></a>案例
-建立具有單一 NIC 的 VM，並連接至虛擬網路。 VM 需要三個不同的「私人」** IP 位址和兩個「公用」** IP 位址。 IP 位址會指派給下列 IP 組態︰
+## <a name="scenario"></a>狀況
+建立具有單一 NIC 的 VM，並連接至虛擬網路。 VM 需要三個不同的「私人」IP 位址和兩個「公用」IP 位址。 IP 位址會指派給下列 IP 組態︰
 
-* **IPConfig-1：** 指派「靜態」** 私人 IP 位址和「靜態」** 公用 IP 位址。
-* **IPConfig-2：** 指派「靜態」** 私人 IP 位址和「靜態」** 公用 IP 位址。
-* **IPConfig-3：** 指派「靜態」** 私人 IP 位址，不指派任何公用 IP 位址。
+* **IPConfig-1：** 指派「靜態」私人 IP 位址和「靜態」公用 IP 位址。
+* **IPConfig-2：** 指派「靜態」私人 IP 位址和「靜態」公用 IP 位址。
+* **IPConfig-3：** 指派「靜態」私人 IP 位址，不指派任何公用 IP 位址。
   
     ![多個 IP 位址](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
 建立 NIC 時，IP 組態會與 NIC 產生關聯，而建立 VM 時，NIC 會連結至 VM。 此案例使用的 IP 位址類型只是舉例說明。 您可以指派您需要的任何 IP 位址和作業類型。
 
 > [!NOTE]
-> 雖然本文中的步驟會將所有 IP 組態指派給單一 NIC，您也可以指派多個 IP 組態給多個 NIC VM 中的任何 NIC。 若要瞭解如何建立具有多個 Nic 的 VM，請閱讀[建立具有多個 nic 的 vm 一](../articles/virtual-machines/windows/multiple-nics.md)文。
+> 雖然本文中的步驟會將所有 IP 組態指派給單一 NIC，您也可以指派多個 IP 組態給多個 NIC VM 中的任何 NIC。 閱讀[建立具有多個 NIC 的 VM](../articles/virtual-machines/windows/multiple-nics.md) 文章以了解如何建立具有多個 NIC 的 VM。

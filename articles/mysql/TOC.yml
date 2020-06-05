@@ -190,6 +190,8 @@
           href: howto-connection-string.md
         - name: 設定 SSL
           href: howto-configure-ssl.md
+        - name: 設定 TLS
+          href: howto-tls-configurations.md
         - name: Web 應用程式
           href: howto-connect-webapp.md
         - name: 使用重新導向連線

@@ -54,7 +54,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 ## <a name="set-up-your-project"></a>設定專案
 
-您會在本節中建立新的專案來示範如何整合 Windows Desktop .NET 應用程式 (XAML) 與使用 Microsoft 登入  ，以便應用程式可以查詢需要權杖的 Web API。
+您會在本節中建立新的專案來示範如何整合 Windows Desktop .NET 應用程式 (XAML) 與使用 Microsoft 登入，以便應用程式可以查詢需要權杖的 Web API。
 
 您使用本指南所建立的應用程式會顯示用來呼叫圖表的按鈕、在畫面上顯示結果的區域，以及登出按鈕。
 
@@ -64,13 +64,13 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 若要建立應用程式，請執行下列動作：
 
-1. 在 Visual Studio 中，選取 [檔案]   >  [新增]   >  [專案]  。
-2. 在 [範本]  底下，選取 [Visual C#]  。
-3. 選取 [WPF 應用程式 (.NET Framework)]  ，視您所使用的 Visual Studio 版本而定。
+1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。
+2. 在 [範本] 底下，選取 [Visual C#]。
+3. 選取 [WPF 應用程式 (.NET Framework)]，視您所使用的 Visual Studio 版本而定。
 
 ## <a name="add-msal-to-your-project"></a>將 MSAL 新增至您的專案
 
-1. 在 Visual Studio 中，選取 [工具]   >  [NuGet 套件管理員]  >  [套件管理員主控台]  。
+1. 在 Visual Studio 中，選取 [工具] >  [NuGet 套件管理員]>  [套件管理員主控台]。
 2. 在 [套件管理器主控台] 視窗中，貼上下列 Azure PowerShell 命令：
 
     ```powershell
@@ -89,7 +89,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 執行下列動作，即可快速註冊您的應用程式：
 1. 移至 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
-1. 輸入應用程式的名稱，並選取 [註冊]  。
+1. 輸入應用程式的名稱，並選取 [註冊]。
 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 
 ### <a name="option-2-advanced-mode"></a>選項 2：進階模式
@@ -98,16 +98,16 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]  。
-   - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `Win-App-calling-MsGraph`。
-   - 在 [支援的帳戶類型]  區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  ，例如 Skype、Xbox、Outlook.com。
-   - 選取 [註冊]  以建立應用程式。
-1. 在應用程式頁面清單中，選取 [驗證]  。
-   1. 在「重新導向 URI」清單的 [重新導向 URI]  區段中：
-   1. 在 [型別]  欄中，選取 [公開用戶端/原生 (行動和傳統型)]  。
-   1. 在 [重新導向 URI]  資料行中輸入 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
-1. 選取 [註冊]  。
-1. 移至 Visual Studio，開啟 App.xaml.cs  檔案，然後將下列程式碼片段中的 `Enter_the_Application_Id_here` 取代為您剛剛註冊及複製的應用程式 ID。
+1. 選取 [新增註冊]。
+   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `Win-App-calling-MsGraph`。
+   - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]，例如 Skype、Xbox、Outlook.com。
+   - 選取 [註冊] 以建立應用程式。
+1. 在應用程式頁面清單中，選取 [驗證]。
+   1. 在「重新導向 URI」清單的 [重新導向 URI] 區段中：
+   1. 在 [型別] 欄中，選取 [公開用戶端/原生 (行動和傳統型)]。
+   1. 在 [重新導向 URI] 資料行中輸入 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
+1. 選取 [註冊]。
+1. 移至 Visual Studio，開啟 App.xaml.cs 檔案，然後將下列程式碼片段中的 `Enter_the_Application_Id_here` 取代為您剛剛註冊及複製的應用程式 ID。
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -117,7 +117,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 在這個步驟中，您建立類別來處理和 MSAL 的互動，例如處理權杖。
 
-1. 開啟 App.xaml.cs  檔案，然後將 MSAL 的參考新增至類別：
+1. 開啟 App.xaml.cs 檔案，然後將 MSAL 的參考新增至類別：
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -158,7 +158,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 本節會說明應用程式如何查詢受保護的後端伺服器 (例如 Microsoft Graph)。
 
-系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 \<Grid>  節點取代為下列程式碼：
+系統應會自動建立 MainWindow.xaml 檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 \<Grid> 節點取代為下列程式碼：
 
 ```xml
 <Grid>
@@ -179,7 +179,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 在本節中，使用 MSAL 取得 Microsoft Graph API 的權杖。
 
-1. 在 MainWindow.xaml.cs  檔案中，將 MSAL 的參考新增至類別：
+1. 在 MainWindow.xaml.cs 檔案中，將 MSAL 的參考新增至類別：
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -345,7 +345,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 
 ## <a name="display-basic-token-information"></a>顯示基本權杖資訊
 
-若要顯示和權杖有關的基本資訊，將下列方法新增到您的 MainWindow.xaml.cs  檔案：
+若要顯示和權杖有關的基本資訊，將下列方法新增到您的 MainWindow.xaml.cs 檔案：
 
 ```csharp
 /// <summary>
@@ -364,6 +364,6 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 ### <a name="more-information"></a>詳細資訊
 
-除了用來呼叫 Microsoft Graph API 的存取權杖之外，使用者登入之後，MSAL 也會取得 ID 權杖。 此權杖包含與使用者相關的一小部分資訊。 `DisplayBasicTokenInfo` 方法會顯示權杖中包含的基本資訊。 例如，它會顯示使用者的顯示名稱和 ID，以及權杖到期日期和代表存取權杖本身的字串。 您可以選取 [呼叫 Microsoft Graph API]  按鈕多次，以了解相同的權杖如何重複用於多個後續要求。 您也可以在 MSAL 決定應該要更新權杖時，看到延長的到期日期。
+除了用來呼叫 Microsoft Graph API 的存取權杖之外，使用者登入之後，MSAL 也會取得 ID 權杖。 此權杖包含與使用者相關的一小部分資訊。 `DisplayBasicTokenInfo` 方法會顯示權杖中包含的基本資訊。 例如，它會顯示使用者的顯示名稱和 ID，以及權杖到期日期和代表存取權杖本身的字串。 您可以選取 [呼叫 Microsoft Graph API] 按鈕多次，以了解相同的權杖如何重複用於多個後續要求。 您也可以在 MSAL 決定應該要更新權杖時，看到延長的到期日期。
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]

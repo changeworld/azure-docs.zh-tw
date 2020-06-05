@@ -8,52 +8,56 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76158940"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194206"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>將 IP 位址新增至 VM 作業系統
 
 連線並登入您使用多個私人 IP 位址建立的 VM。 您必須手動新增您新增至 VM 的所有私人 IP 位址 (包括主要位址)。 對您的 VM 作業系統完成後續步驟。
 
-### <a name="windows"></a>Windows
+### <a name="windows-server"></a>Windows Server
+<details>
+  <summary>展開</summary>
 
 1. 從命令提示字元輸入 *ipconfig /all*。  您只會看到 *Primary* 私人 IP 位址 (透過 DHCP)。
-2. 在命令提示字元中輸入 ncpa.cpl**，以開啟 [網路連線]****。
-3. 開啟適當介面卡的屬性：**區域連線**。
+2. 在命令提示字元中輸入 ncpa.cpl，以開啟 [網路連線]。
+3. 開啟適當介面卡的屬性：**乙太網路**。
 4. 按兩下 [網際網路通訊協定第 4 版 (IPv4)]。
-5. 選取 [使用下列 IP 位址] **** 並輸入下列值︰
+5. 選取 [使用下列 IP 位址]  並輸入下列值︰
 
-    * **IP 位址**︰輸入 *Primary* 私人 IP 位址
-    * **子網路遮罩**︰根據您的子網路設定。 例如，如果子網路為 /24 子網路，則子網路遮罩為 255.255.255.0。
-    * **預設閘道**︰子網路中的第一個 IP 位址。 如果您的子網路為 10.0.0.0/24，則閘道 IP 位址為 10.0.0.1。
-    * 選取 [使用下列 DNS 伺服器位址] **** 並輸入下列值︰
-        * **慣用 DNS 伺服器**︰如果您不是使用自己的 DNS 伺服器，請輸入 168.63.129.16。  如果您是使用自己的 DNS 伺服器，請輸入您的伺服器 IP 位址。
-    * 選取 [進階]**** 按鈕，然後新增其他 IP 位址。 將您在上一個步驟中新增至 Azure 網路介面的每個次要私人 IP 位址新增至 Windows 網路介面，而該 Windows 網路介面已獲取指派給 Azure 網路介面的主要 IP 位址。
+    * **IP 位址**：輸入「主要」 私人 IP 位址
+    * **子網路遮罩**：根據您的子網路設定。 例如，如果子網路為 /24 子網路，則子網路遮罩為 255.255.255.0。
+    * **預設閘道**：子網路中的第一個 IP 位址。 如果您的子網路為 10.0.0.0/24，則閘道 IP 位址為 10.0.0.1。
+    * 選取 [使用下列 DNS 伺服器位址]  並輸入下列值︰
+        * **慣用 DNS 伺服器**：如果您不是使用自己的 DNS 伺服器，請輸入 168.63.129.16。  如果您是使用自己的 DNS 伺服器，請輸入您的伺服器 IP 位址。  (針對替代 DNS 伺服器，您可以挑選任何免費的公用 DNS 伺服器位址)。
+    * 選取 [進階] 按鈕，然後新增其他 IP 位址。 將您在上一個步驟中新增至 Azure 網路介面的每個次要私人 IP 位址新增至 Windows 網路介面，而該 Windows 網路介面已獲取指派給 Azure 網路介面的主要 IP 位址。
 
         請勿手動指派在虛擬機器作業系統內已指派給 Azure 虛擬機器的公用 IP 位址。 當您手動設定作業系統內的 IP 位址時，請確保它的位址與指派給 Azure [網路介面](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)的私人 IP 位址相同，否則您可能會失去與虛擬機器的連線。 深入了解[私人 IP 位址](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)設定。 您絕對不能指派作業系統內的 Azure 公用 IP 位址。
 
-    * 按一下 [確定]**** 關閉 TCP/IP 設定，然後再按一次 [確定]**** 關閉介面卡設定。 您的 RDP 連接已重建。
+    * 按一下 [確定] 關閉 TCP/IP 設定，然後再按一次 [確定] 關閉介面卡設定。 您的 RDP 連接已重建。
 
-6. 從命令提示字元輸入 *ipconfig /all*。 此時會顯示您加入的所有 IP 位址，而 DHCP 是關閉的。
+6. 從命令提示字元輸入 *ipconfig /all*。 確認您新增的所有 IP 位址都已顯示，而 DHCP 是關閉的。
 7. 設定 Windows 在 Azure 中使用主要 IP 設定的私人 IP 位址，作為適用於 Windows 的主要 IP 位址。 如需詳細資訊，請參閱[從具有多個 IP 位址的 Azure Windows VM 無權存取網際網路](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)。 
 
-### <a name="validation-windows"></a>驗證 (Windows)
+### <a name="validation-windows-server"></a>驗證 (Windows Server)
 
-若要確保您能夠透過相關聯的公用 IP 從第二個 IP 組態連接到網際網路，在使用上述步驟正確地新增該 IP 後，請使用下列命令︰
+若要確保您能夠透過相關聯的公用 IP 從第二個 IP 組態連接到網際網路，在使用上述步驟正確地新增該 IP 後，請使用下列命令 (將 10.0.0.7 取代為次要、私人 IP 位址)：
 
 ```bash
-ping -S 10.0.0.5 hotmail.com
+ping -S 10.0.0.7 outlook.com
 ```
 >[!NOTE]
 >對於次要 IP 組態，如果組態有與其相關聯的公用 IP 位址，您只可以 Ping 網際網路。 對於主要 IP 組態，公用 IP 位址不需要 Ping 網際網路。
+</details>
 
-### <a name="linux-ubuntu-1416"></a>Linux （Ubuntu 14/16）
-
-我們建議您查看 Linux 散發套件的最新檔。 
+### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
+<details>
+  <summary>展開</summary>
+我們建議您查看 Linux 散發套件的最新文件。 
 
 1. 開啟終端機視窗。
 2. 請確定您是 root 使用者。 如果不是，請輸入下列命令：
@@ -112,9 +116,34 @@ ping -S 10.0.0.5 hotmail.com
 
    您應該會在清單中看到您加入的 IP 位址。
 
-### <a name="linux-ubuntu-1804"></a>Linux （Ubuntu 18.04 +）
+### <a name="validation-ubuntu-1416"></a>驗證 (Ubuntu 14/16)
 
-Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我們建議您查看 Linux 散發套件的最新檔。 
+若要確保您能夠透過相關聯的公用 IP 從第二個 IP 組態連接到網際網路，請使用下列命令︰
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>對於次要 IP 組態，如果組態有與其相關聯的公用 IP 位址，您只可以 Ping 網際網路。 對於主要 IP 組態，公用 IP 位址不需要 Ping 網際網路。
+
+對於 Linux VM，在嘗試驗證來自次要 NIC 的輸出連線能力時，您可能需要新增適當的路由。 有許多方法可以執行這項作業。 請參閱您的 Linux 散發套件相關文件。 以下是完成這項作業的其中一種方法︰
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- 請務必︰
+    - 將 **10.0.0.5** 替換成有相關聯公用 IP 位址的私人 IP 位址
+    - 將 **10.0.0.1** 替換為您的預設閘道
+    - 將 **eth2** 替換為您的次要 NIC 名稱</details>
+
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+<details>
+  <summary>展開</summary>
+Ubuntu 18.04 和更新版本已變更為 OS 網路管理的 `netplan`。 我們建議您查看 Linux 散發套件的最新文件。 
 
 1. 開啟終端機視窗。
 2. 請確定您是 root 使用者。 如果不是，請輸入下列命令：
@@ -123,13 +152,13 @@ Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我�
     sudo -i
     ```
 
-3. 建立第二個介面的檔案，並在文字編輯器中開啟它：
+3. 建立第二個介面的檔案，並在文字編輯器中開啟：
 
     ```bash
     vi /etc/netplan/60-static.yaml
     ```
 
-4. 將下列幾行新增至檔案，並`10.0.0.6/24`將取代為您的 IP/網路遮罩：
+4. 將下列幾行新增至檔案，並將 `10.0.0.6/24` 取代為您的 IP/網路遮罩：
 
     ```bash
     network:
@@ -146,16 +175,16 @@ Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我�
     :wq
     ```
 
-6. 使用[netplan 嘗試](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html)確認語法來測試變更：
+6. 使用 [netplan try](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) 來測試變更，以確認語法：
 
     ```bash
     netplan try
     ```
 
 > [!NOTE]
-> `netplan try`會暫時套用變更，並于120秒後回復變更。 如果連線中斷，請等候120秒，然後重新連線。 在這段時間，變更將會復原。
+> `netplan try` 會暫時套用變更，並於 120 秒後復原變更。 如果連線中斷，請等候 120 秒，然後重新連線。 在這段時間，變更將會復原。
 
-7. 假設沒有發生任何`netplan try`問題，請套用設定變更：
+7. 假設 `netplan try` 沒有問題，請套用設定變更：
 
     ```bash
     netplan apply
@@ -185,8 +214,33 @@ Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我�
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-    
+### <a name="validation-ubuntu-1804"></a>驗證 (Ubuntu 18.04+)
+
+若要確保您能夠透過相關聯的公用 IP 從第二個 IP 組態連接到網際網路，請使用下列命令︰
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>對於次要 IP 組態，如果組態有與其相關聯的公用 IP 位址，您只可以 Ping 網際網路。 對於主要 IP 組態，公用 IP 位址不需要 Ping 網際網路。
+
+對於 Linux VM，在嘗試驗證來自次要 NIC 的輸出連線能力時，您可能需要新增適當的路由。 有許多方法可以執行這項作業。 請參閱您的 Linux 散發套件相關文件。 以下是完成這項作業的其中一種方法︰
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- 請務必︰
+    - 將 **10.0.0.5** 替換成有相關聯公用 IP 位址的私人 IP 位址
+    - 將 **10.0.0.1** 替換為您的預設閘道
+    - 將 **eth2** 替換為您的次要 NIC 名稱</details>
+
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat、CentOS 以及其他)
+<details>
+  <summary>展開</summary>
 
 1. 開啟終端機視窗。
 2. 請確定您是 root 使用者。 如果不是，請輸入下列命令：
@@ -221,7 +275,7 @@ Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我�
     vi ifcfg-eth0:0
     ```
 
-7. 使用下列命令，新增檔案內容，在此案例中為 eth0:0**。 請務必根據您的 IP 位址更新資訊。
+7. 使用下列命令，新增檔案內容，在此案例中為 eth0:0。 請務必根據您的 IP 位址更新資訊。
 
     ```bash
     DEVICE=eth0:0
@@ -246,12 +300,12 @@ Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我�
 
     您應該會在傳回的清單中看到您加入的 IP 位址 *eth0:0*。
 
-### <a name="validation-linux"></a>驗證 (Linux)
+### <a name="validation-red-hat-centos-and-others"></a>驗證 (Red Hat、CentOS 以及其他)
 
 若要確保您能夠透過相關聯的公用 IP 從第二個 IP 組態連接到網際網路，請使用下列命令︰
 
 ```bash
-ping -I 10.0.0.5 hotmail.com
+ping -I 10.0.0.5 outlook.com
 ```
 >[!NOTE]
 >對於次要 IP 組態，如果組態有與其相關聯的公用 IP 位址，您只可以 Ping 網際網路。 對於主要 IP 組態，公用 IP 位址不需要 Ping 網際網路。
@@ -268,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - 請務必︰
     - 將 **10.0.0.5** 替換成有相關聯公用 IP 位址的私人 IP 位址
     - 將 **10.0.0.1** 替換為您的預設閘道
-    - 將 **eth2** 替換為您的次要 NIC 名稱
+    - 將 **eth2** 替換為您的次要 NIC 名稱</details>

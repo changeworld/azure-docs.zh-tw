@@ -142,6 +142,8 @@
           href: howto-connection-string.md
         - name: 設定 SSL
           href: howto-configure-ssl.md
+        - name: 設定 TLS
+          href: howto-tls-configurations.md
     - name: 設定伺服器參數
       items:
         - name: Azure 入口網站

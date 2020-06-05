@@ -30,7 +30,7 @@ ms.locfileid: "83798501"
 * 每個 Python 範例專案檔中各項工作的連結。
 * 相關 API 參考內容的連結。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

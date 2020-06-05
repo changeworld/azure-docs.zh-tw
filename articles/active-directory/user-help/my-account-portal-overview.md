@@ -20,9 +20,9 @@ ms.locfileid: "83742199"
 ---
 # <a name="what-is-the-my-account-portal"></a>什麼是「我的帳戶」入口網站？
 
-[我的帳戶]  (預覽) 入口網站可藉由設定和管理安全性資訊、管理已連線的組織和裝置，以及檢視組織使用資料的方式，協助您管理公司或學校帳戶。
+[我的帳戶] (預覽) 入口網站可藉由設定和管理安全性資訊、管理已連線的組織和裝置，以及檢視組織使用資料的方式，協助您管理公司或學校帳戶。
 
-您可以從下列任何瀏覽器目前的版本前往 [我的帳戶]  入口網站 (https://myaccount.microsoft.com) )：
+您可以從下列任何瀏覽器目前的版本前往 [我的帳戶] 入口網站 (https://myaccount.microsoft.com) )：
 
 - Chrome
 - Microsoft Edge
@@ -51,8 +51,8 @@ ms.locfileid: "83742199"
 
 - [登入以管理您的 Office 產品](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [前往 Office [我的帳戶]  頁面](https://portal.office.com/account/)
+- [前往 Office [我的帳戶] 頁面](https://portal.office.com/account/)
 
-- [前往 Office [我的安裝]  頁面](https://portal.office.com/account/#installs)
+- [前往 Office [我的安裝] 頁面](https://portal.office.com/account/#installs)
 
-- [前往 Office [訂閱]  頁面](https://portal.office.com/account/#subscriptions)
+- [前往 Office [訂閱] 頁面](https://portal.office.com/account/#subscriptions)

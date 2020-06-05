@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400488"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
@@ -21,9 +21,9 @@ ms.locfileid: "81400488"
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
-1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案]   > [新增]   > [類別]  。
+1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案] > [新增] > [類別]。
 
-1. 在 [新增 Java 類別]  視窗中，於 [套件]  欄位中輸入 **speechsdk.quickstart**，並在 [名稱]  欄位中輸入 **Main**。
+1. 在 [新增 Java 類別] 視窗中，於 [套件] 欄位中輸入 **speechsdk.quickstart**，並在 [名稱] 欄位中輸入 **Main**。
 
    ![[新增 Java 類別] 視窗的螢幕擷取畫面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "81400488"
 
 ## <a name="build-and-run-the-app"></a>建置並執行應用程式
 
-按 F11 鍵，或選取 [執行]   > [偵錯]  。
+按 F11 鍵，或選取 [執行] > [偵錯]。
 系統會從音訊檔案中辨識語音輸入的前 15 秒，並記錄在主控台視窗中。
 
    ```text

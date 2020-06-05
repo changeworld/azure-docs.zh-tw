@@ -12,6 +12,7 @@
         - name: 入口網站
           href: quickstart-create-databricks-workspace-portal.md
         - name: ARM 範本
+          displayName: Resource Manager
           href: quickstart-create-databricks-workspace-resource-manager-template.md
         - name: 虛擬網路
           href: quickstart-create-databricks-workspace-vnet-injection.md

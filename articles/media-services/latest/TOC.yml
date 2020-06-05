@@ -73,7 +73,7 @@
           displayName: 'name, naming, file name, upload, output, download'
     - name: 處理檔案
       items:
-        - name: 轉換與工作
+        - name: 轉換和作業
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
     - name: 內容編碼
@@ -93,13 +93,13 @@
         - name: 概觀
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: 轉換與工作
+        - name: 轉換和作業
           href: transforms-jobs-concept.md
     - name: 即時串流
       items:
         - name: 概觀
           href: live-streaming-overview.md
-        - name: 即時事件與即時輸出
+        - name: 即時活動與即時輸出
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: 測試的內部部署即時編碼器
@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.media/allversions
+    - name: 標準編碼器格式結構描述
+      items:
+        - name: 輸出中繼資料
+          href: output-metadata-schema.md
 - name: 資源
   items:
     - name: Azure 媒體服務社群

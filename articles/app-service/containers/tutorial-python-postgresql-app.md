@@ -55,19 +55,19 @@ djangoapp 範例存放庫包含資料驅動的 [Django](https://www.djangoprojec
 
 ## <a name="prepare-app-for-app-service"></a>準備適用於 App Service 的應用程式
 
-如同許多 Python Web 架構，Django [需要進行某些變更，才能在生產伺服器中執行](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)，而且與 App Service 並無不同。 您必須在預設 azuresite/settings.py  檔案中變更並新增一些設定，讓應用程式在部署至 App Service 之後能夠運作。 
+如同許多 Python Web 架構，Django [需要進行某些變更，才能在生產伺服器中執行](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)，而且與 App Service 並無不同。 您必須在預設 azuresite/settings.py 檔案中變更並新增一些設定，讓應用程式在部署至 App Service 之後能夠運作。 
 
-請參閱 azuresite/production.py  ，這會為 App Service 進行必要的組態設定。 基本上會執行下列設定：
+請參閱 azuresite/production.py，這會為 App Service 進行必要的組態設定。 基本上會執行下列設定：
 
-- 從 azuresite/settings.py  繼承所有設定。
+- 從 azuresite/settings.py 繼承所有設定。
 - 將 App Service 應用程式的完整網域名稱新增至允許的主機。 
-- 使用 [WhiteNoise](https://whitenoise.evans.io/en/stable/) 以在生產環境中提供靜態檔案，因為 Django 預設不會在生產環境中提供靜態檔案。 WhiteNoise 套件已包含在 requirements.txt  中。
-- 新增適用於 PostgreSQL 資料庫的組態。 根據預設，Django 會使用 Db.sqlite3 作為資料庫，但不適用於生產應用程式。 [psycopg2-binary](https://pypi.org/project/psycopg2-binary/) 套件已包含在 requirements.txt  中。
+- 使用 [WhiteNoise](https://whitenoise.evans.io/en/stable/) 以在生產環境中提供靜態檔案，因為 Django 預設不會在生產環境中提供靜態檔案。 WhiteNoise 套件已包含在 requirements.txt 中。
+- 新增適用於 PostgreSQL 資料庫的組態。 根據預設，Django 會使用 Db.sqlite3 作為資料庫，但不適用於生產應用程式。 [psycopg2-binary](https://pypi.org/project/psycopg2-binary/) 套件已包含在 requirements.txt 中。
 - Postgres 組態會使用環境變數。 稍後，您將了解如何在 App Service 中設定環境變數。
 
-azuresite/production.py  包含在存放庫中以方便使用，但應用程式尚未使用。 為確保在 App Service 中使用其設定，您需要設定兩個檔案，分別是 manage.py  和 azuresite/wsgi.py  才能存取。
+azuresite/production.py 包含在存放庫中以方便使用，但應用程式尚未使用。 為確保在 App Service 中使用其設定，您需要設定兩個檔案，分別是 manage.py 和 azuresite/wsgi.py 才能存取。
 
-- 在 manage.py  中變更以下程式碼行：
+- 在 manage.py 中變更以下程式碼行：
 
     <pre>
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azuresite.settings')
@@ -84,9 +84,9 @@ azuresite/production.py  包含在存放庫中以方便使用，但應用程式�
 
     稍後當您設定 App Service 應用程式時，將會設定 `DJANGO_ENV` 環境變數。
 
-- 在 azuresite/wsgi.py  中，進行相同的變更。
+- 在 azuresite/wsgi.py中，進行相同的變更。
 
-    在 App Service 中，您可以使用 manage.py  來執行資料庫移轉，App Service 會使用 azuresite/wsgi.py  ，在生產環境中執行您的 Django 應用程式。 這兩個檔案中進行的這項變更可確保在這兩種情況下都會使用生產環境設定。
+    在 App Service 中，您可以使用 manage.py 來執行資料庫移轉，App Service 會使用 azuresite/wsgi.py，在生產環境中執行您的 Django 應用程式。 這兩個檔案中進行的這項變更可確保在這兩種情況下都會使用生產環境設定。
 
 ## <a name="sign-in-to-azure-cli"></a>登入 Azure CLI
 
@@ -111,7 +111,7 @@ az login
 az extension add --name db-up
 ```
 
-使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令建立 Postgres 資料庫，如下列範例所示。 以「唯一」  名稱取代 \<postgresql-name>  (伺服器端點是 https://\<postgresql-name>.postgres.database.azure.com  )。 針對 \<admin-username>  和 \<admin-password>  ，請指定認證以建立此 Postgres 伺服器的管理員使用者。
+使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令建立 Postgres 資料庫，如下列範例所示。 以「唯一」 名稱取代 \<postgresql-name> (伺服器端點是 https://\<postgresql-name>.postgres.database.azure.com)。 針對 \<admin-username> 和 \<admin-password>，請指定認證以建立此 Postgres 伺服器的管理員使用者。
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -146,7 +146,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 
 請確定您已回到儲存機制根路徑 (`djangoapp`)，因為應用程式將會從這個目錄進行部署。
 
-使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令建立 App Service 應用程式，如下列範例所示。 以「唯一」  名稱取代 \<app-name>  (伺服器端點為 https://\<app-name>.azurewebsites.net  )。 \<app-name>  的有效字元為 `A`-`Z`、`0`-`9` 和 `-`。
+使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令建立 App Service 應用程式，如下列範例所示。 以「唯一」 名稱取代 \<app-name> (伺服器端點為 https://\<app-name>.azurewebsites.net)。 \<app-name> 的有效字元為 `A`-`Z`、`0`-`9` 和 `-`。
 
 ```azurecli
 az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
@@ -180,10 +180,10 @@ az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-nam
 }
 </pre>
 
-複製 \<app-resource-group>  的值。 您稍後需要用來設定應用程式。 
+複製 \<app-resource-group> 的值。 您稍後需要用來設定應用程式。 
 
 > [!TIP]
-> 相關的設定會儲存到您存放庫中隱藏的 .azure  目錄。 您稍後可以使用簡單的命令來重新部署任何變更，並立即啟用診斷記錄：
+> 相關的設定會儲存到您存放庫中隱藏的 .azure 目錄。 您稍後可以使用簡單的命令來重新部署任何變更，並立即啟用診斷記錄：
 > 
 > ```azurecli
 > az webapp up
@@ -193,9 +193,9 @@ az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-nam
 
 ### <a name="configure-environment-variables"></a>設定環境變數
 
-在本機執行應用程式時，您可以在終端機工作階段中設定環境變數。 在 App Service 中，您可以使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令，使用 app settings  設定環境變數。
+在本機執行應用程式時，您可以在終端機工作階段中設定環境變數。 在 App Service 中，您可以使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令，使用 app settings 設定環境變數。
 
-執行下列命令，將資料庫連線詳細資料指定為應用程式設定。 請將 \<app-name>  、\<app-resource-group>  和 \<postgresql-name>  取代為您自己的值。 請記住，`az postgres up` 會為您建立使用者認證 `root` 和 `Pollsdb1`。
+執行下列命令，將資料庫連線詳細資料指定為應用程式設定。 請將 \<app-name>、\<app-resource-group> 和 \<postgresql-name> 取代為您自己的值。 請記住，`az postgres up` 會為您建立使用者認證 `root` 和 `Pollsdb1`。
 
 ```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <app-resource-group> --settings DJANGO_ENV="production" DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="root@<postgresql-name>" DBPASS="Pollsdb1" DBNAME="pollsdb"
@@ -205,7 +205,7 @@ az webapp config appsettings set --name <app-name> --resource-group <app-resourc
 
 ### <a name="run-database-migrations"></a>執行資料庫移轉
 
-若要在 App Service 中執行資料庫移轉，請在瀏覽器中開啟 SSH 工作階段，方法是瀏覽至 https://\<app-name>.scm.azurewebsites.net/webssh/host  ：
+若要在 App Service 中執行資料庫移轉，請在瀏覽器中開啟 SSH 工作階段，方法是瀏覽至 https://\<app-name>.scm.azurewebsites.net/webssh/host：
 
 <!-- doesn't work when container not started -->
 <!-- ```azurecli
@@ -227,17 +227,17 @@ python manage.py createsuperuser
 
 ### <a name="browse-to-the-azure-app"></a>瀏覽至 Azure 應用程式
 
-在瀏覽器中透過 URL http:\//\<app-name>.azurewebsites.net  瀏覽至已部署的應用程式。 您應該會看到**沒有可用的輪詢**訊息。 
+在瀏覽器中透過 URL http:\//\<app-name>.azurewebsites.net 瀏覽至已部署的應用程式。 您應該會看到**沒有可用的輪詢**訊息。 
 
-瀏覽至 http:\//\<app-name>.azurewebsites.net/admin  ，然後使用您在上一個步驟中建立的管理使用者進行登入。 選取 [問題]  旁的 [新增]  ，然後建立具有一些選項的投票問題。
+瀏覽至 http:\//\<app-name>.azurewebsites.net/admin，然後使用您在上一個步驟中建立的管理使用者進行登入。 選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
 
-透過 URL http:\//\<app-name>.azurewebsites.net/admin  瀏覽至已部署的應用程式，再建立一些輪詢問題。 您可以在 http:\//\<app-name>.azurewebsites.net/  中查看問題。 
+透過 URL http:\//\<app-name>.azurewebsites.net/admin 瀏覽至已部署的應用程式，再建立一些輪詢問題。 您可以在 http:\//\<app-name>.azurewebsites.net/ 中查看問題。 
 
 ![在 Azure App Service 中執行 Python Django 應用程式](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
 
-再次透過 URL http:\//\<app-name>.azurewebsites.net  瀏覽至已部署的應用程式，建立一些輪詢問題並回答問題。
+再次透過 URL http:\//\<app-name>.azurewebsites.net 瀏覽至已部署的應用程式，建立一些輪詢問題並回答問題。
 
-App Service 會藉由尋找每個子目錄中的 wsgi.py  檔案 (依預設會由 `manage.py startproject` 建立)，來偵測存放庫中的 Django 專案。 App Service 找到此檔案時，就會載入 Django Web 應用程式。 如需 App Service 如何載入 Python 應用程式的詳細資訊，請參閱[設定內建 Python 映像](how-to-configure-python.md)。
+App Service 會藉由尋找每個子目錄中的 wsgi.py 檔案 (依預設會由 `manage.py startproject` 建立)，來偵測存放庫中的 Django 專案。 App Service 找到此檔案時，就會載入 Django Web 應用程式。 如需 App Service 如何載入 Python 應用程式的詳細資訊，請參閱[設定內建 Python 映像](how-to-configure-python.md)。
 
 **恭喜！** 您正在適用於 Linux 的 Azure App Service 中執行 Python (Django) Web 應用程式。
 
@@ -316,7 +316,7 @@ Quit the server with CONTROL-C.
 
 在瀏覽器中移至 *http:\//localhost:8000*。 您應該會看到**沒有可用的輪詢**訊息。 
 
-移至 *http:\//localhost:8000/admin*，然後使用您在上一個步驟中建立的管理使用者進行登入。 選取 [問題]  旁的 [新增]  ，然後建立具有一些選項的投票問題。
+移至 *http:\//localhost:8000/admin*，然後使用您在上一個步驟中建立的管理使用者進行登入。 選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
 
 ![在本機 App Service 中執行 Python Django 應用程式](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
@@ -344,7 +344,7 @@ choice_text = models.CharField(max_length=100)
 python manage.py makemigrations
 ```
 
-您可以執行移轉、執行程式開發伺服器，然後瀏覽至 http:\//localhost:8000/admin  ，在本機測試您的變更：
+您可以執行移轉、執行程式開發伺服器，然後瀏覽至 http:\//localhost:8000/admin，在本機測試您的變更：
 
 ```
 python manage.py migrate
@@ -363,7 +363,7 @@ App Service 會偵測到應用程式存在，而且只會部署程式碼。
 
 ### <a name="rerun-migrations-in-azure"></a>在 Azure 中重新執行移轉
 
-因為您對資料模型進行了變更，所以需要在 App Service 中重新執行資料庫移轉。 請在瀏覽器中開啟 SSH 工作階段，方法是瀏覽至 https://\<app-name>.scm.azurewebsites.net/webssh/host  。 執行下列命令：
+因為您對資料模型進行了變更，所以需要在 App Service 中重新執行資料庫移轉。 請在瀏覽器中開啟 SSH 工作階段，方法是瀏覽至 https://\<app-name>.scm.azurewebsites.net/webssh/host。 執行下列命令：
 
 ```
 cd site/wwwroot
@@ -376,7 +376,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>檢閱生產環境中的應用程式
 
-瀏覽至 http:\//\<app-name>.azurewebsites.net  並查看生產環境中即時執行的變更。 
+瀏覽至 http:\//\<app-name>.azurewebsites.net 並查看生產環境中即時執行的變更。 
 
 ## <a name="stream-diagnostic-logs"></a>資料流診斷記錄
 
@@ -408,7 +408,7 @@ az webapp log tail --name <app-name> --resource-group <app-resource-group>
 
 ![瀏覽至您在 Azure 入口網站中的 Python Django 應用程式](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
-根據預設，入口網站會顯示應用程式的 [概觀]  頁面。 此頁面可讓您檢視應用程式的執行方式。 在此，您也可以執行基本管理工作，例如瀏覽、停止、重新啟動和刪除。 分頁左側的索引標籤會顯示您可開啟的各種設定分頁。
+根據預設，入口網站會顯示應用程式的 [概觀] 頁面。 此頁面可讓您檢視應用程式的執行方式。 在此，您也可以執行基本管理工作，例如瀏覽、停止、重新啟動和刪除。 分頁左側的索引標籤會顯示您可開啟的各種設定分頁。
 
 ![在 Azure 入口網站的 [概觀] 頁面中管理您的 Python Django 應用程式](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
