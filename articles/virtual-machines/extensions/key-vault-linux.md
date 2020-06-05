@@ -1,6 +1,6 @@
 ---
-title: 適用于 Linux 的 Azure Key Vault VM 擴充功能
-description: 使用虛擬機器擴充功能來部署代理程式，以在虛擬機器上執行 Key Vault 憑證的自動重新整理。
+title: 適用於 Linux 的 Azure Key Vault VM 擴充功能
+description: 在虛擬機器上，使用虛擬機器擴充功能部署執行自動重新整理金鑰保存庫憑證的代理程式。
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -8,20 +8,20 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e653adfd7a148cea7bfb1ecfdbbf386eff0c3e86
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410874"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723318"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Key Vault 虛擬機器擴充功能
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
-Key Vault 的 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體而言，延伸模組會監視儲存在金鑰保存庫中的已觀察憑證清單。  在偵測到變更時，延伸模組會抓取並安裝對應的憑證。 Key Vault 的 VM 擴充功能已由 Microsoft 發佈並支援，目前在 Linux Vm 上。 本檔詳述適用于 Linux 的 Key Vault VM 擴充功能所支援的平臺、設定和部署選項。 
+金鑰保存庫 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體而言，此擴充功能會監視儲存於金鑰保存庫的觀察憑證清單。  在偵測到變更時，擴充功能會擷取並安裝對應的憑證。 Microsoft 目前會在 Linux VM 上發行金鑰保存庫 VM 擴充功能並提供支援。 本文件詳述適用於 Linux 的金鑰保存庫 VM 擴充功能所支援的平台、組態和部署選項。 
 
 ### <a name="operating-system"></a>作業系統
 
-Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
+Key Vault VM 擴充功能支援下列 Linux 發行版本：
 
 - Ubuntu-1604
 - Ubuntu-1804
@@ -31,11 +31,11 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 ### <a name="supported-certificate-content-types"></a>支援的憑證內容類型
 
 - PKCS #12
-- .PEM
+- PEM
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 此擴充功能不需要受保護的設定，其所有設定都會被視為沒有安全性影響的資訊。 此擴充功能需要有受監視的祕密、輪詢頻率和目的地憑證存放區的清單。 明確說來：  
+下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 此擴充功能不需要受保護的設定，其所有設定都會被視為沒有安全性影響的資訊。 此擴充功能需要有受監視的祕密、輪詢頻率和目的地憑證存放區的清單。 具體來說：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -65,14 +65,14 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 ```
 
 > [!NOTE]
-> 您觀察到的憑證 Url 格式`https://myVaultName.vault.azure.net/secrets/myCertName`應為。
+> 您觀察到的憑證 URL 格式應該是 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 這是因為`/secrets`路徑不會傳回完整憑證（包括私密金鑰） `/certificates` 。 如需憑證的詳細資訊，請參閱： [Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | 字串 |
@@ -88,9 +88,9 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 擴充功能可以部署到個別的 Vm 或虛擬機器擴展集。 結構描述與組態對於這兩種範本類型都是通用的。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 此擴充功能可以部署到個別的 VM 或虛擬機器擴展集。 結構描述與組態對於這兩種範本類型都是通用的。 
 
-虛擬機器擴充功能的 JSON 設定必須嵌套在範本的虛擬機器資源片段中，特別`"resources": []`是虛擬機器範本的物件，以及在 [物件] 下`"virtualMachineProfile":"extensionProfile":{"extensions" :[]`的虛擬機器擴展集案例。
+虛擬機器擴充功能的 JSON 組態必須在內嵌在範本的虛擬機器資源片段，具體來說，就是虛擬機器範本的 `"resources": []` 物件，而若是虛擬機器擴展集，則會在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 物件下。
 
 ```json
     {
@@ -167,7 +167,7 @@ Azure PowerShell 可以用來將金鑰保存庫 VM 擴充功能部署到現有�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
+Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
  
 * 若要在 VM 上部署擴充功能：
     
@@ -194,7 +194,7 @@ Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機�
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - 使用 MSI 為 VM/VMSS 身分識別設定 Key Vault 存取原則
+  - 必須使用受控識別設定 VM/VMSS 身分識別的金鑰保存庫存取原則。 請參閱[提供受控識別的 Key Vault 驗證](../../key-vault/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
@@ -215,4 +215,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
