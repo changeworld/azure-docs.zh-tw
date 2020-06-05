@@ -19,7 +19,7 @@ ms.locfileid: "80876394"
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>確認關鍵片語擷取的容器實例
 
 1. 選取 [**總覽**] 索引標籤，然後複製 [IP 位址]。
-1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`）。 容器的首頁隨即顯示，讓您知道容器正在執行。
+1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入 `http://<IP-address>:5000 (http://55.55.55.55:5000` ）。 容器的首頁隨即顯示，讓您知道容器正在執行。
 
     ![查看容器首頁以確認它正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "80876394"
     }
     ```
 
-1. 將**showStats**設定`true`為。
+1. 將**showStats**設定為 `true` 。
 
 1. 選取 [**執行**] 以決定文字的情感。
 
@@ -100,4 +100,4 @@ ms.locfileid: "80876394"
     }
     ```
 
-我們現在可以將回應裝載`id`的 JSON 資料檔案與原始要求裝載檔`id`相互關聯。 產生的檔具有`keyPhrases`陣列，其中包含已從對應的輸入檔解壓縮的主要片語清單。 此外，每個產生的檔都`characterCount`有`transactionCount`各種統計資料（例如和）。
+我們現在可以將回應裝載的 `id` JSON 資料檔案與原始要求裝載檔相互關聯 `id` 。 產生的檔具有 `keyPhrases` 陣列，其中包含已從對應的輸入檔解壓縮的主要片語清單。 此外， `characterCount` `transactionCount` 每個產生的檔都有各種統計資料（例如和）。
