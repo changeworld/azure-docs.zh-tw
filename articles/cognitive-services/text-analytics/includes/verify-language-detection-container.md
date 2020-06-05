@@ -19,7 +19,7 @@ ms.locfileid: "80876396"
 ### <a name="verify-the-language-detection-container-instance"></a>確認語言偵測的容器實例
 
 1. 選取 [**總覽**] 索引標籤，然後複製 [IP 位址]。
-1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`）。 容器的首頁隨即顯示，讓您知道容器正在執行。
+1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入 `http://<IP-address>:5000 (http://55.55.55.55:5000` ）。 容器的首頁隨即顯示，讓您知道容器正在執行。
 
     ![查看容器首頁以確認它正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "80876396"
     }
     ```
 
-1. 將**showStats**設定`true`為。
+1. 將**showStats**設定為 `true` 。
 
 1. 選取 [**執行**] 以決定文字的情感。
 
@@ -127,4 +127,4 @@ ms.locfileid: "80876396"
     }
     ```
 
-我們現在可以依據對應`id`的，將回應承載的 JSON 資料檔案與原始要求承載檔相互關聯。 每份檔都會獨立處理`characterCount` ，其中包含各種統計`transactionCount`資料，例如和。 此外，每個產生的檔`detectedLanguages`都有陣列`name`， `iso6391Name`其中每`score`個偵測到的語言都有、和。 當偵測到多個語言時`score` ，會使用來判斷最可能的語言。
+我們現在可以依據對應的，將回應承載的 JSON 資料檔案與原始要求承載檔相互關聯 `id` 。 每份檔都會獨立處理，其中包含各種統計資料 `characterCount` ，例如和 `transactionCount` 。 此外，每個產生的檔都有 `detectedLanguages` 陣列 `name` ，其中每個偵測到的語言都有、 `iso6391Name` 和 `score` 。 當偵測到多個語言時， `score` 會使用來判斷最可能的語言。
