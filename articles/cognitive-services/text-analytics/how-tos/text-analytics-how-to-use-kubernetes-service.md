@@ -21,7 +21,7 @@ ms.locfileid: "80877803"
 
 瞭解如何將 Azure 認知服務[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)容器映射部署至 AZURE KUBERNETES SERVICE （AKS）。 此程式會示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何從瀏覽器執行這兩個協調流程。 使用容器可以將您的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。 您需要下列項目：
 

@@ -21,7 +21,7 @@ ms.locfileid: "82608368"
 
 管理內部部署語音容器的一個選項是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 來定義語音轉換文字和文字轉換語音的容器映射，我們將建立 Kubernetes 套件。 此套件將會部署到內部部署的 Kubernetes 叢集。 最後，我們將探討如何測試已部署的服務和各種設定選項。 如需在沒有 Kubernetes 協調流程的情況下執行 Docker 容器的詳細資訊，請參閱[安裝和執行語音服務容器](speech-container-howto.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在內部部署使用語音容器之前，請先遵循下列必要條件：
 
@@ -35,12 +35,12 @@ ms.locfileid: "82608368"
 
 ## <a name="the-recommended-host-computer-configuration"></a>建議的主機電腦設定
 
-如需參考，請參閱[語音服務容器主機電腦][speech-container-host-computer]詳細資料。 此*helm 圖*會根據使用者指定的解碼（並行要求數目），自動計算 CPU 和記憶體需求。 此外，它也會根據音訊/文字輸入的優化是否設定為`enabled`來進行調整。 Helm 圖預設為、兩個並行要求和停用優化。
+如需參考，請參閱[語音服務容器主機電腦][speech-container-host-computer]詳細資料。 此*helm 圖*會根據使用者指定的解碼（並行要求數目），自動計算 CPU 和記憶體需求。 此外，它也會根據音訊/文字輸入的優化是否設定為來進行調整 `enabled` 。 Helm 圖預設為、兩個並行要求和停用優化。
 
-| Service | CPU/容器 | 記憶體/容器 |
+| 服務 | CPU/容器 | 記憶體/容器 |
 |--|--|--|
-| **語音轉文字** | 一個解碼器至少需要 1150 millicore。 如果`optimizedForAudioFile`已啟用，則需要 1950 millicore。 （預設值：兩個解碼器） | 必要： 2 GB<br>限制： 4 GB |
-| **文字轉換語音** | 一個並行要求至少需要 500 millicore。 如果`optimizeForTurboMode`已啟用，則需要 1000 millicore。 （預設值：兩個並行要求） | 必要： 1 GB<br> 限制： 2 GB |
+| **語音轉文字** | 一個解碼器至少需要 1150 millicore。 如果 `optimizedForAudioFile` 已啟用，則需要 1950 millicore。 （預設值：兩個解碼器） | 必要： 2 GB<br>限制： 4 GB |
+| **文字轉換語音** | 一個並行要求至少需要 500 millicore。 如果 `optimizeForTurboMode` 已啟用，則需要 1000 millicore。 （預設值：兩個並行要求） | 必要： 1 GB<br> 限制： 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>連接到 Kubernetes 叢集
 
@@ -48,9 +48,9 @@ ms.locfileid: "82608368"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與 Kubernetes 叢集共用 Docker 認證
 
-若要允許 Kubernetes `docker pull`叢集從`containerpreview.azurecr.io`容器登錄中設定的映射，您需要將 docker 認證傳輸到叢集。 執行下列[`kubectl create`][kubectl-create]命令，根據容器登錄存取必要條件中提供的認證建立*docker 登錄密碼*。
+若要允許 Kubernetes 叢集 `docker pull` 從容器登錄中設定的映射 `containerpreview.azurecr.io` ，您需要將 docker 認證傳輸到叢集。 執行 [`kubectl create`][kubectl-create] 下列命令，根據容器登錄存取必要條件中提供的認證建立*docker 登錄密碼*。
 
-從您選擇的命令列介面，執行下列命令。 `<username>`請務必將、 `<password>`和`<email-address>`取代為容器登錄認證。
+從您選擇的命令列介面，執行下列命令。 請務必將 `<username>` 、和取代為 `<password>` `<email-address>` 容器登錄認證。
 
 ```console
 kubectl create secret docker-registry mcr \
@@ -61,7 +61,7 @@ kubectl create secret docker-registry mcr \
 ```
 
 > [!NOTE]
-> 如果您已經有容器登錄的`containerpreview.azurecr.io`存取權，您可以改為使用一般旗標來建立 Kubernetes 秘密。 請考慮下列會針對您的 Docker 設定 JSON 執行的命令。
+> 如果您已經有容器登錄的存取權 `containerpreview.azurecr.io` ，您可以改為使用一般旗標來建立 Kubernetes 秘密。 請考慮下列會針對您的 Docker 設定 JSON 執行的命令。
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -74,13 +74,13 @@ kubectl create secret docker-registry mcr \
 secret "mcr" created
 ```
 
-若要確認是否已建立密碼，請[`kubectl get`][kubectl-get]使用`secrets`旗標來執行。
+若要確認是否已建立密碼，請使用旗標來執行 [`kubectl get`][kubectl-get] `secrets` 。
 
 ```console
 kubectl get secrets
 ```
 
-執行會`kubectl get secrets`列印所有設定的秘密。
+執行會 `kubectl get secrets` 列印所有設定的秘密。
 
 ```console
 NAME    TYPE                              DATA    AGE
@@ -89,13 +89,13 @@ mcr     kubernetes.io/dockerconfigjson    1       30s
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>設定部署的 Helm 圖表值
 
-請造訪[Microsoft Helm Hub][ms-helm-hub] ，取得 microsoft 所提供的所有公開上市 Helm 圖表。 您可以從 Microsoft Helm 中樞找到**認知服務的語音內部部署圖表**。 **認知服務 Speech 內部部署**是我們將安裝的圖表，但我們必須先建立`config-values.yaml`具有明確設定的檔案。 讓我們從將 Microsoft 存放庫新增至我們的 Helm 實例開始。
+請造訪[Microsoft Helm Hub][ms-helm-hub] ，取得 microsoft 所提供的所有公開上市 Helm 圖表。 您可以從 Microsoft Helm 中樞找到**認知服務的語音內部部署圖表**。 **認知服務 Speech 內部部署**是我們將安裝的圖表，但我們必須先建立具有明確設定的檔案 `config-values.yaml` 。 讓我們從將 Microsoft 存放庫新增至我們的 Helm 實例開始。
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-接下來，我們將設定我們的 Helm 圖表值。 將下列 YAML 複製並貼到名為`config-values.yaml`的檔案中。 如需自訂**認知服務 Speech 內部部署 Helm 圖表**的詳細資訊，請參閱[自訂 Helm 圖表](#customize-helm-charts)。 以您`# {ENDPOINT_URI}`自己`# {API_KEY}`的值取代和批註。
+接下來，我們將設定我們的 Helm 圖表值。 將下列 YAML 複製並貼到名為的檔案中 `config-values.yaml` 。 如需自訂**認知服務 Speech 內部部署 Helm 圖表**的詳細資訊，請參閱[自訂 Helm 圖表](#customize-helm-charts)。 `# {ENDPOINT_URI}` `# {API_KEY}` 以您自己的值取代和批註。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> 如果未`billing`提供`apikey`和值，服務會在15分鐘後到期。 同樣地，驗證將會失敗，因為服務將無法使用。
+> 如果 `billing` `apikey` 未提供和值，服務會在15分鐘後到期。 同樣地，驗證將會失敗，因為服務將無法使用。
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes 套件（Helm 圖）
 
-*Helm 圖表*包含要從`containerpreview.azurecr.io`容器登錄中提取之 docker 映射的設定。
+*Helm 圖表*包含要從容器登錄中提取之 docker 映射的設定 `containerpreview.azurecr.io` 。
 
 > [Helm 圖][helm-charts]是描述一組相關 Kubernetes 資源的檔案集合。 單一圖表可能用來部署一些簡單的東西，像是 memcached pod 或複雜的東西，像是具有 HTTP 伺服器、資料庫、快取等的完整 web 應用程式堆疊。
 
-提供的*Helm 圖表*會從`containerpreview.azurecr.io`容器登錄中提取語音服務的 docker 映射，包括文字轉換語音和語音轉換文字服務。
+提供的*Helm 圖表*會從容器登錄中提取語音服務的 docker 映射，包括文字轉換語音和語音轉換文字服務 `containerpreview.azurecr.io` 。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 叢集上安裝 Helm 圖表
 
-若要安裝*helm 圖*，我們需要執行[`helm install`][helm-install-cmd]命令，並將取代`<config-values.yaml>`為適當的路徑和檔案名引數。 以下`microsoft/cognitive-services-speech-onpremise`所參考的 Helm 圖表可在[這裡的 Microsoft Helm Hub][ms-helm-hub-speech-chart]取得。
+若要安裝*helm 圖*，我們需要執行 [`helm install`][helm-install-cmd] 命令，並將取代為 `<config-values.yaml>` 適當的路徑和檔案名引數。 `microsoft/cognitive-services-speech-onpremise`以下所參考的 Helm 圖表可在[這裡的 Microsoft Helm Hub][ms-helm-hub-speech-chart]取得。
 
 ```console
 helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
@@ -238,7 +238,7 @@ helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> 如果 POD 狀態不`Running`是或部署未列在資料`AVAILABLE`行底下，這些測試將會失敗。 請耐心等候，這可能需要十分鐘的時間才能完成。
+> 如果 POD 狀態不是或部署未列在資料行底下，這些測試將會失敗 `Running` `AVAILABLE` 。 請耐心等候，這可能需要十分鐘的時間才能完成。
 
 這些測試會輸出各種狀態結果：
 
@@ -249,7 +249,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-除了執行*helm 測試*以外，您還可以從`kubectl get all`命令收集*外部 IP*位址和對應的埠。 使用 IP 和埠，開啟網頁瀏覽器並流覽至`http://<external-ip>:<port>:/swagger/index.html`以查看 API swagger 頁面。
+除了執行*helm 測試*以外，您還可以從命令收集*外部 IP*位址和對應的埠 `kubectl get all` 。 使用 IP 和埠，開啟網頁瀏覽器並流覽至 `http://<external-ip>:<port>:/swagger/index.html` 以查看 API swagger 頁面。
 
 ## <a name="customize-helm-charts"></a>自訂 Helm 圖表
 

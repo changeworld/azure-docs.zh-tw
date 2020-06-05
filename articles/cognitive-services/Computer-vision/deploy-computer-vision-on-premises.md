@@ -21,7 +21,7 @@ ms.locfileid: "80877963"
 
 管理內部部署電腦視覺容器的其中一個選項是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定義電腦視覺的容器映射，我們將建立 Kubernetes 套件。 此套件將會部署到內部部署的 Kubernetes 叢集。 最後，我們將探討如何測試已部署的服務。 如需執行 Docker 容器而不 Kubernetes 協調流程的詳細資訊，請參閱[安裝並執行電腦視覺容器](computer-vision-how-to-install-containers.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在內部部署使用電腦視覺容器之前，請先遵循下列必要條件：
 
@@ -48,9 +48,9 @@ ms.locfileid: "80877963"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與 Kubernetes 叢集共用 Docker 認證
 
-若要允許 Kubernetes `docker pull`叢集從`containerpreview.azurecr.io`容器登錄中設定的映射，您需要將 docker 認證傳輸到叢集。 執行下列[`kubectl create`][kubectl-create]命令，根據容器登錄存取必要條件中提供的認證建立*docker 登錄密碼*。
+若要允許 Kubernetes 叢集 `docker pull` 從容器登錄中設定的映射 `containerpreview.azurecr.io` ，您需要將 docker 認證傳輸到叢集。 執行 [`kubectl create`][kubectl-create] 下列命令，根據容器登錄存取必要條件中提供的認證建立*docker 登錄密碼*。
 
-從您選擇的命令列介面，執行下列命令。 `<username>`請務必將、 `<password>`和`<email-address>`取代為容器登錄認證。
+從您選擇的命令列介面，執行下列命令。 請務必將 `<username>` 、和取代為 `<password>` `<email-address>` 容器登錄認證。
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,7 +61,7 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> 如果您已經有容器登錄的`containerpreview.azurecr.io`存取權，您可以改為使用一般旗標來建立 Kubernetes 秘密。 請考慮下列會針對您的 Docker 設定 JSON 執行的命令。
+> 如果您已經有容器登錄的存取權 `containerpreview.azurecr.io` ，您可以改為使用一般旗標來建立 Kubernetes 秘密。 請考慮下列會針對您的 Docker 設定 JSON 執行的命令。
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -74,13 +74,13 @@ kubectl create secret docker-registry containerpreview \
 secret "containerpreview" created
 ```
 
-若要確認是否已建立密碼，請[`kubectl get`][kubectl-get]使用`secrets`旗標來執行。
+若要確認是否已建立密碼，請使用旗標來執行 [`kubectl get`][kubectl-get] `secrets` 。
 
 ```console
 kubectl get secrets
 ```
 
-執行會`kubectl get secrets`列印所有設定的秘密。
+執行會 `kubectl get secrets` 列印所有設定的秘密。
 
 ```console
 NAME                  TYPE                                  DATA      AGE
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-若要設定 Helm 圖表的預設值，請將下列 YAML 複製並貼到名`values.yaml`為的檔案中。 以您`# {ENDPOINT_URI}`自己`# {API_KEY}`的值取代和批註。
+若要設定 Helm 圖表的預設值，請將下列 YAML 複製並貼到名為的檔案中 `values.yaml` 。 `# {ENDPOINT_URI}` `# {API_KEY}` 以您自己的值取代和批註。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -118,9 +118,9 @@ read:
 ```
 
 > [!IMPORTANT]
-> 如果未`billing`提供`apikey`和值，服務會在15分鐘後到期。 同樣地，驗證將會失敗，因為服務將無法使用。
+> 如果 `billing` `apikey` 未提供和值，服務會在15分鐘後到期。 同樣地，驗證將會失敗，因為服務將無法使用。
 
-在*讀取*目錄下建立*templates*資料夾。 將下列 YAML 複製並貼到名為`deployment.yaml`的檔案中。 `deployment.yaml`檔案將作為 Helm 範本。
+在*讀取*目錄下建立*templates*資料夾。 將下列 YAML 複製並貼到名為的檔案中 `deployment.yaml` 。 檔案 `deployment.yaml` 將作為 Helm 範本。
 
 > 範本會產生資訊清單檔案，這些檔案是 Kubernetes 可瞭解的 YAML 格式資源描述。 [-Helm 圖表範本指南][chart-template-guide]
 
@@ -167,15 +167,15 @@ spec:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes 套件（Helm 圖）
 
-*Helm 圖表*包含要從`containerpreview.azurecr.io`容器登錄中提取之 docker 映射的設定。
+*Helm 圖表*包含要從容器登錄中提取之 docker 映射的設定 `containerpreview.azurecr.io` 。
 
 > [Helm 圖][helm-charts]是描述一組相關 Kubernetes 資源的檔案集合。 單一圖表可能用來部署一些簡單的東西，像是 memcached pod 或複雜的東西，像是具有 HTTP 伺服器、資料庫、快取等的完整 web 應用程式堆疊。
 
-提供的*Helm 圖表*會提取電腦視覺服務的 docker 映射，以及`containerpreview.azurecr.io`容器登錄中的對應服務。
+提供的*Helm 圖表*會提取電腦視覺服務的 docker 映射，以及容器登錄中的對應服務 `containerpreview.azurecr.io` 。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 叢集上安裝 Helm 圖表
 
-若要安裝*helm 圖*，我們必須執行[`helm install`][helm-install-cmd]命令。 請務必從`read`資料夾上方的目錄執行 install 命令。
+若要安裝*helm 圖*，我們必須執行 [`helm install`][helm-install-cmd] 命令。 請務必從資料夾上方的目錄執行 install 命令 `read` 。
 
 ```console
 helm install read ./read

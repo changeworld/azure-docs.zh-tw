@@ -24,7 +24,7 @@ ms.locfileid: "80877800"
     az login
     ```
 
-1. 登入 AKS 叢集。 以`your-cluster-name`適當`your-resource-group`的值取代和。
+1. 登入 AKS 叢集。 `your-cluster-name` `your-resource-group` 以適當的值取代和。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
@@ -37,7 +37,7 @@ ms.locfileid: "80877800"
     ```
 
     > [!WARNING]
-    > 如果您的 Azure 帳戶有多個可用的訂用帳戶， `az aks get-credentials`且該命令傳回錯誤，則常見的問題是您使用了錯誤的訂閱。 將 Azure CLI 會話的內容設定為使用您用來建立資源的相同訂用帳戶，然後再試一次。
+    > 如果您的 Azure 帳戶有多個可用的訂用帳戶，且該 `az aks get-credentials` 命令傳回錯誤，則常見的問題是您使用了錯誤的訂閱。 將 Azure CLI 會話的內容設定為使用您用來建立資源的相同訂用帳戶，然後再試一次。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
@@ -48,7 +48,7 @@ ms.locfileid: "80877800"
     code .
     ```
 
-1. 在文字編輯器中，建立名為*keyphrase*的新檔案，並在其中貼上下列 yaml。 請務必將和`billing/value` `apikey/value`取代為您自己的資訊。
+1. 在文字編輯器中，建立名為*keyphrase*的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,7 +95,7 @@ ms.locfileid: "80877800"
     ```
 
 1. 儲存檔案，然後關閉文字編輯器。
-1. 以`apply` *keyphrase. yaml*檔案作為目標來執行 Kubernetes 命令：
+1. 以 `apply` *keyphrase. yaml*檔案作為目標來執行 Kubernetes 命令：
 
     ```console
     kubectl apply -f keyphrase.yaml

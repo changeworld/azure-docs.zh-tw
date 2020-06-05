@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996069"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434279"
 ---
 # <a name="language-and-region-support-for-translator"></a>翻譯工具的語言和區域支援
 
@@ -65,7 +65,7 @@ ms.locfileid: "83996069"
 |希臘文|    `el`    |    類神經|
 |古吉拉特文|    `gu`    |    類神經|
 |海地克裏奧爾文|    `ht`        |統計|
-|Hebrew    |`he`    |類神經
+|希伯來文    |`he`    |類神經
 |Hindi|    `hi`    |    類神經|
 |白苗文|    `mww`    |    統計|
 |匈牙利文|    `hu`    |    類神經|
@@ -74,10 +74,11 @@ ms.locfileid: "83996069"
 |愛爾蘭文 | `ga`| 類神經
 |義大利文|    `it`    |    類神經|
 |日文|    `ja`    |    類神經|
-|坎那達文|`kn`| 類神經
+|坎那達文|`kn`| 類神經|
+|哈薩克文 |`kk`| 類神經|
 |史瓦希里文|    `sw`    |    統計|
-|克林貢文|    `tlh`    |    統計|
-|克林貢文 (plqaD)|    `tlh-Qaak`    |    統計|
+|克林貢文|    `tlh-Latn`    |    統計|
+|克林貢文 (plqaD)|    `tlh-Piqd`    |    統計|
 |韓文    |`ko`    |    類神經|
 |拉脫維亞文|    `lv`    |    類神經|
 |立陶宛文|    `lt`    |    類神經|
@@ -130,20 +131,20 @@ ms.locfileid: "83996069"
 | 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
-| 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | --> | 拉丁文 `Latn` |
-| Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
+| 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | <--> | 拉丁文 `Latn` |
+| 希伯來文 | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
-| 坎那達文 | `kn` | 坎那達文 `Knda` | --> | 拉丁文 `Latn` |
-| 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | --> | 拉丁文 `Latn` |
-| 馬拉地文 | `mr` | 梵文字母 `Deva` | --> | 拉丁文 `Latn` |
+| 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
+| 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | <--> | 拉丁文 `Latn` |
+| 馬拉地文 | `mr` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 歐利亞文 | `or` | 歐利亞文 `Orya` | <--> | 拉丁文 `Latn` |
 | 旁遮普文 | `pa` | 古木基文 `Guru`  | <--> | 拉丁文 `Latn`  |
 | 塞爾維亞文 (斯拉夫) | `sr-Cyrl` | 斯拉夫文 `Cyrl`  | --> | 拉丁文 `Latn` |
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|
-| 坦米爾文 | `ta` | 坦米爾文 `Taml` | --> | 拉丁文 `Latn` |
-| 泰盧固文 | `te` | 泰盧固文 `Telu` | --> | 拉丁文 `Latn` |
-| 泰文 | `th` | 泰文 `Thai` | --> | 拉丁文 `Latn` |
+| 坦米爾文 | `ta` | 坦米爾文 `Taml` | <--> | 拉丁文 `Latn` |
+| 泰盧固文 | `te` | 泰盧固文 `Telu` | <--> | 拉丁文 `Latn` |
+| 泰文 | `th` | 泰文 `Thai` | <--> | 拉丁文 `Latn` |
 
 ## <a name="dictionary"></a>字典
 
@@ -168,7 +169,7 @@ ms.locfileid: "83996069"
 | 德文      | `de`          |
 | 希臘文      | `el`          |
 | 海地克裏奧爾文      | `ht`          |
-| Hebrew      | `he`          |
+| 希伯來文      | `he`          |
 | Hindi      | `hi`          |
 | 白苗文      | `mww`          |
 | 匈牙利文      | `hu`          |
@@ -177,7 +178,7 @@ ms.locfileid: "83996069"
 | 義大利文      | `it`          |
 | 日文      | `ja`          |
 | 史瓦希里文      | `sw`          |
-| 克林貢文      | `tlh`          |
+| 克林貢文      | `tlh-Latn`          |
 | 韓文      | `ko`          |
 | 拉脫維亞文      | `lv`          |
 | 立陶宛文      | `lt`          |
@@ -235,7 +236,7 @@ ms.locfileid: "83996069"
 | 法文      | `fr`          |
 | 德文      | `de`          |
 | 希臘文      | `el`          |
-| Hebrew      | `he`          |
+| 希伯來文      | `he`          |
 | Hindi      | `hi`          |
 | 匈牙利文      | `hu`          |
 | 冰島文 | `is` |
