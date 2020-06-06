@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/03/2020
 ms.author: aahi
-ms.openlocfilehash: 32dc7e86d5cd737533a4a6c8b3d9ce7d00795c65
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140495"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462784"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -137,7 +137,7 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [什麼是文字分析 API？](overview.md)  
+* [文字分析 API 是什麼？](overview.md)  
 * [使用者案例範例](text-analytics-user-scenarios.md)
 * [情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [語言偵測](how-tos/text-analytics-how-to-language-detection.md)

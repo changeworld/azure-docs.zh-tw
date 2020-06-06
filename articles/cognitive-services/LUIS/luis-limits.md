@@ -2,13 +2,13 @@
 title: 限制-LUIS
 description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的已知限制。 LUIS 有數個限制區域。 模型限制會控制 LUIS 中的意圖、實體和功能。 以金鑰類型為基礎的配額限制。 鍵盤組合可控制 LUIS 網站。
 ms.topic: reference
-ms.date: 05/06/2020
-ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/04/2020
+ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684613"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449493"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的[鍵盤組合](#keyboard-controls)。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -37,8 +37,8 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 | [預先建置的實體](./luis-prebuilt-entities.md) | 沒有限制|
 | [規則運算式實體](./luis-concept-entity-types.md)|20 個實體<br>每個規則運算式實體模式 具有 500 個字元的上限|
 | [角色](luis-concept-roles.md)|每個應用程式 300 個角色。 每個實體 10 個角色|
-| [語句][utterances] | 500 個字元|
-| [表達方式][utterances] | 每個應用程式 15000-每個意圖的語句數目沒有限制|
+| [語句][utterances] | 500 個字元<br><br>如果您的文字長度超過此字元限制，您必須在輸入 LUIS 之前先分割語句，並據以合併回應。 您可以使用明顯的分隔符號號，例如語音中的標點符號和長時間暫停。|
+| [語句範例][utterances] | 每個應用程式 15000-每個意圖的語句數目沒有限制<br><br>如果您需要以更多範例來訓練應用程式，請使用[分派](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)模型方法。 您可以使用一或多個意圖，將個別的 LUIS 應用程式（稱為子應用程式）定型至父分派應用程式，然後將來自每個子 LUIS 應用程式語句的分派應用程式定型，以將預測要求導向至正確的子應用程式。 |
 | [版本](luis-concept-version.md)| 100每個應用程式的版本 |
 | [版本名稱][luis-how-to-manage-versions] | 128 個字元 |
 
@@ -54,14 +54,14 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 |--|--|
 |意圖、實體|所有意圖和機構名稱在某個版本的應用程式中都必須是唯一的。|
 |ML 實體元件|所有的機器學習實體元件（子實體）在該實體內都必須是唯一的，且位於相同層級的元件。|
-|功能 | 所有命名的功能（例如片語清單）在某個版本的應用程式中都必須是唯一的。|
+|特性 | 所有命名的功能（例如片語清單）在某個版本的應用程式中都必須是唯一的。|
 |實體角色|實體或實體元件上的所有角色在相同的實體層級（父系、子系、孫項等）時，都必須是唯一的。|
 
 ## <a name="object-naming"></a>物件命名
 
 請不要在下列名稱中使用下列字元。
 
-|Object|排除字元|
+|物件|排除字元|
 |--|--|
 |意圖、實體和角色名稱|`:`<br>`$` <br> `&`|
 |版本名稱|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|

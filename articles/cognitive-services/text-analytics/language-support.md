@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/03/2020
 ms.author: aahi
-ms.openlocfilehash: c0e71ffcc88a85caf4b76c34940293663c4acf66
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142158"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465587"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文字分析 API v3 語言支援 
 
 > [!IMPORTANT]
-> 文字分析 API 的2.x 版目前無法在下欄區域使用：印度中部、Fairfax、阿拉伯聯合大公國北部、南非北部、中國北部2、中國東部。
+> 文字分析 API 的2.x 版目前無法在下欄區域使用：印度中部、阿拉伯聯合大公國北部、中國北部2、中國東部。
 
 
 #### <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment-analysis)
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              備忘錄 |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              注意 |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | 簡體中文    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | 也接受 `zh` |
 | 繁體中文   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -49,18 +49,18 @@ ms.locfileid: "84142158"
 
 ### <a name="opinion-mining-v31-preview-only"></a>意見挖掘（僅限 3.1-僅預覽）
 
-| Language              | 語言代碼 | 從 v3 模型版本開始： |              備忘錄 |
+| Language              | 語言代碼 | 從 v3 模型版本開始： |              注意 |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | 英文               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[命名實體識別（NER）](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[具名實體辨識 (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
 > * NER v3 目前僅支援英文語言。 如果您使用不同的語言呼叫 NER v3，則 API 會傳回2.1 版的結果，前提是版本2.1 中支援該語言。
 > * v 2.1 只會針對英文、簡體中文、法文、德文和西班牙文等語言，傳回一組完整的可用實體。  針對其他支援的語言，會傳回「人員」、「位置」和「組織」實體。
 
-| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       備忘錄        |
+| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       注意        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | 阿拉伯文                |     `ar`      |     ✓      |            |                                 |                    |
 | 捷克文                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -72,7 +72,7 @@ ms.locfileid: "84142158"
 | 芬蘭文               |     `fi`      |     ✓      |            |                                 |                    |
 | 法文                 |     `fr`      |     ✓      |            |                                 |                    |
 | 德文                 |     `de`      |     ✓      |            |                                 |                    |
-| Hebrew                |     `he`      |     ✓      |            |                                 |                    |
+| 希伯來文                |     `he`      |     ✓      |            |                                 |                    |
 | 匈牙利文             |     `hu`      |     ✓      |            |                                 |                    |
 | 義大利文               |     `it`      |     ✓      |            |                                 |                    |
 | 日文              |     `ja`      |     ✓      |            |                                 |                    |
@@ -88,7 +88,7 @@ ms.locfileid: "84142158"
 
 #### <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/key-phrase-extraction)
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       備忘錄        |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       注意        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | 荷蘭文                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 英文               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -108,7 +108,7 @@ ms.locfileid: "84142158"
 
 #### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
 
-| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 備忘錄 |
+| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 注意 |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | 英文  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | 西班牙文  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
@@ -125,4 +125,4 @@ ms.locfileid: "84142158"
 
 ## <a name="see-also"></a>另請參閱
 
-* [什麼是文字分析 API？](overview.md)   
+* [文字分析 API 是什麼？](overview.md)   
