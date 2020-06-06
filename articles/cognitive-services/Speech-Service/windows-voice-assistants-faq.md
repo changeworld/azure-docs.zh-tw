@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997758"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456997"
 ---
 # <a name="samples-and-faqs"></a>範例和常見問題
 
@@ -31,19 +31,19 @@ UWP 語音助理範例是 Windows 上的語音助理，其適用于
 範例應用程式所提供的檔會逐步解說語音啟用和代理程式管理的程式碼路徑，從啟動的必要條件到適當的清除。
 
 > [!div class="nextstepaction"]
-> [流覽適用于 UWP 範例的 Github 存放庫](https://aka.ms/MVA/sample)
+> [流覽適用于 UWP 範例的 GitHub 存放庫](https://aka.ms/MVA/sample)
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="how-do-i-contact-microsoft-for-resources-like-limited-access-feature-tokens-and-keyword-model-files"></a>如何? 與 Microsoft 聯繫，以取得有限的存取功能權杖和關鍵字模型檔案之類的資源嗎？
 
-請winvoiceassistants@microsoft.com聯絡以要求這些資源。
+請聯絡 winvoiceassistants@microsoft.com 以要求這些資源。
 
 ### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>我的應用程式在按語音啟動時，會顯示在小視窗中。 如何從 compact view 轉換到完整的應用程式視窗？
 
 當您的應用程式第一次由語音啟動時，它就會以精簡的方式啟動。 請閱讀[語音啟用預覽的設計指導](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)方針，以取得有關 Windows 上語音助理的不同視圖和轉換的指引。
 
-若要從 compact view 轉換到完整的應用程式，請使用 appView API `TryEnterViewModeAsync`：
+若要從 compact view 轉換到完整的應用程式，請使用 appView API `TryEnterViewModeAsync` ：
 
 `var appView = ApplicationView.GetForCurrentView();
  await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);`
