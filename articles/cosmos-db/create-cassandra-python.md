@@ -1,32 +1,34 @@
 ---
 title: 快速入門：Cassandra API 與 Python - Azure Cosmos DB
 description: 本快速入門示範如何使用 Azure Cosmos DB 的 Apache Cassandra API，以使用 Python 建立設定檔應用程式。
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/18/2020
+ms.openlocfilehash: f2f09e67c16993696f4f352abf68991ca20f9369
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134704"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310014"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入門：使用 Python SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
 
 在本快速入門中，您會建立 Azure Cosmos DB Cassandra API 帳戶，並使用從 GitHub 複製得到的 Cassandra Python 應用程式來建立 Cassandra 資料庫和容器。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。
 - [Python 2.7.14+ 或 3.4+](https://www.python.org/downloads/)。
@@ -63,7 +65,7 @@ ms.locfileid: "77134704"
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
-此為選用步驟。 如果您有興趣了解程式碼如何建立資料庫資源，您可以檢閱下列程式碼片段。 此程式碼片段全都取自 pyquickstart.py  檔案。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。 
+此為選用步驟。 如果您有興趣了解程式碼如何建立資料庫資源，您可以檢閱下列程式碼片段。 此程式碼片段全都取自 pyquickstart.py 檔案。 或者也可以直接跳至[更新您的連接字串](#update-your-connection-string)。 
 
 * 使用者名稱與密碼值是使用 Azure 入口網站中的連接字串頁面所設定。 `path\to\cert` 提供 X509 憑證的路徑。 
 
@@ -132,13 +134,13 @@ ms.locfileid: "77134704"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 連接字串可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
     使用 ![[複製] 按鈕](./media/create-cassandra-python/copy.png) 按鈕 (畫面右方) 來複製最高值 ([連絡點])。
 
     ![在 Azure 入口網站的 [連接字串] 刀鋒視窗檢視及複製存取使用者名稱、密碼及連絡點](./media/create-cassandra-python/keys.png)
 
-2. 開啟 config.py  檔案。 
+2. 開啟 config.py 檔案。 
 
 3. 從入口網站將 [連絡點] 值貼到 `<FILLME>` 的行 10。
 
@@ -158,17 +160,17 @@ ms.locfileid: "77134704"
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. 儲存 config.py  檔案。
+6. 儲存 config.py 檔案。
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 憑證
 
-1. 從 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 下載 Baltimore CyberTrust Root 憑證到本機。 使用副檔名 .cer  來重新命名檔案。
+1. 從 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 下載 Baltimore CyberTrust Root 憑證到本機。 使用副檔名 .cer 來重新命名檔案。
 
    憑證有序號 `02:00:00:b9` 和 SHA1 指紋 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`。
 
-2. 開啟 pyquickstart.py  ，然後將 `path\to\cert` 變更為指向您的新憑證。
+2. 開啟 pyquickstart.py，然後將 `path\to\cert` 變更為指向您的新憑證。
 
-3. 儲存 pyquickstart.py  。
+3. 儲存 pyquickstart.py。
 
 ## <a name="run-the-python-app"></a>執行 Python 應用程式
 
@@ -195,7 +197,7 @@ ms.locfileid: "77134704"
 
     ![檢視並確認輸出](./media/create-cassandra-python/output.png)
     
-4. 在 Azure 入口網站中，開啟 [資料總管]  以查詢、修改及使用這個新資料。 
+4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
     ![在資料總管中檢視資料](./media/create-cassandra-python/data-explorer.png)
 

@@ -70,6 +70,8 @@
       href: azure-portal-safelist-urls.md
     - name: Azure 儀表板結構
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: 資源
   items:
     - name: Azure 藍圖
@@ -80,7 +82,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

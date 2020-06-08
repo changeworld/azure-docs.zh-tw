@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 整合執行階段
       href: concepts-integration-runtime.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 資料流程
       items:
         - name: 使用對應資料流程來轉換資料

@@ -341,6 +341,12 @@
   items:
     - name: API 參考
       items:
+        - name: ARM 範本
+          href: /azure/templates/microsoft.web/2018-11-01/sites/functions
+        - name: Azure CLI
+          href: /cli/azure/functionapp
+        - name: Azure PowerShell
+          href: /powershell/module/az.functions
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
         - name: Python
@@ -383,7 +389,7 @@
                 - name: 輸出
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
-        - name: Event Grid
+        - name: 事件方格
           items:
             - name: 概觀
               href: functions-bindings-event-grid.md
@@ -461,6 +467,9 @@
           items:
             - name: 概觀
               href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 觸發程序
+              href: functions-bindings-signalr-service-trigger.md
               displayName: SignalR Service
             - name: 輸入
               href: functions-bindings-signalr-service-input.md
