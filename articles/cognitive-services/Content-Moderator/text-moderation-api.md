@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685075"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561036"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
 
 使用內容仲裁的文字仲裁模型來分析文字內容。
 
-您可以根據您的原則和閾值來封鎖、核准或審核內容（請參閱[評論、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核）。 使用文字仲裁模型，為合作夥伴、員工和取用者產生文字內容的環境，增強人工審核。 這些環境包括聊天室、討論區、聊天機器人、電子商務目錄和文件。 
+您可以根據您的原則和閾值來封鎖、核准或審核內容（請參閱[評論、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核）。 使用文字仲裁模型，為合作夥伴、員工和取用者產生文字內容的環境，增強人工審核。 這些環境包括聊天室、討論區、聊天機器人、電子商務目錄和文件。
 
 服務回應會包含下列資訊：
 
@@ -30,7 +30,7 @@ ms.locfileid: "83685075"
 - 個人資料
 - 自動校正的文字
 - 原始文字
-- Language
+- 語言
 
 ## <a name="profanity"></a>粗話
 

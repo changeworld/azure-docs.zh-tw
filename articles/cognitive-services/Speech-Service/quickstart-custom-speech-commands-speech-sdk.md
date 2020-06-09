@@ -3,19 +3,19 @@ title: 快速入門：使用語音 SDK 連接到自訂命令應用程式-語音�
 titleSuffix: Azure Cognitive Services
 description: 在本文中，您將使用自訂命令來建立語音 SDK 用戶端應用程式。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872506"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508925"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "82872506"
 - 發行自訂命令應用程式，並取得應用程式識別碼（App ID）
 - 使用語音 SDK 建立通用 Windows 平臺（UWP）用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 必須要有自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，您可以在先前的快速入門中執行此動作：
 > [!div class = "checklist"]
@@ -37,7 +37,7 @@ ms.locfileid: "82872506"
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 > * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
-> * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [啟用您的裝置以用於開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>選擇性：快速入門
 
@@ -120,7 +120,7 @@ ms.locfileid: "82872506"
 
 加入程式碼後置來源，讓應用程式如預期般運作。 開啟程式碼後置來源：
 
-- 和`using` `Speech.Dialog`命名空間的`Speech`必要語句
+- `using` `Speech` 和命名空間的必要 `Speech.Dialog` 語句
 - 進行簡單的實作，確認麥克風存取正常並連線至按鈕處理常式
 - 應用程式中的基本 UI 協助程式會顯示訊息及錯誤
 - 初始程式碼路徑登陸點，稍後會填入資訊
@@ -129,7 +129,7 @@ ms.locfileid: "82872506"
 
 新增程式碼後置來源，如下所示：
 
-1. 在**Solution Explorer** `MainPage.xaml.cs` [方案總管] 中，開啟程式碼後置原始程式`MainPage.xaml`檔（在下分組）
+1. 在 [**方案總管**] 中，開啟程式碼後置原始程式檔 `MainPage.xaml.cs` （在下分組 `MainPage.xaml` ）
 
 1. 將檔案的內容取代為下列程式碼： 
 
@@ -321,7 +321,7 @@ ms.locfileid: "82872506"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 以您自己`YourApplicationId`的`YourSpeechSubscriptionKey`應用程式`YourServiceRegion` 、語音訂用帳戶和[區域](regions.md)的值取代字串、和
+1. 以您 `YourApplicationId` `YourSpeechSubscriptionKey` `YourServiceRegion` 自己的應用程式、語音訂用帳戶和[區域](regions.md)的值取代字串、和
 
 1. 將下列程式碼片段附加至的方法主體結尾`InitializeDialogServiceConnector`
 
@@ -381,7 +381,7 @@ ms.locfileid: "82872506"
    };
    ```
 
-1. 將下列程式碼片段新增至`ListenButton_ButtonClicked` `MainPage`類別中方法的主體。
+1. 將下列程式碼片段新增至 `ListenButton_ButtonClicked` 類別中方法的主體。 `MainPage`
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -405,7 +405,7 @@ ms.locfileid: "82872506"
    }
    ```
 
-1. 從功能表列中 **，選擇 [** > 檔案] [**全部儲存**] 以儲存您的變更
+1. 從功能表列中 **，選擇 [** 檔案] [  >  **全部儲存**] 以儲存您的變更
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
@@ -424,7 +424,7 @@ ms.locfileid: "82872506"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何：使用語音 SDK 完成用戶端上的命令（預覽）](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [如何：使用語音 SDK 完成用戶端上的命令（預覽）](./how-to-custom-speech-commands-fulfill-sdk.md) 
 > [如何：將驗證新增至自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)
 
 ## <a name="sample-source-code"></a>範例原始程式碼

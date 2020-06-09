@@ -3,19 +3,19 @@ title: 快速入門：使用參數來建立自訂命令預覽應用程式-語音
 titleSuffix: Azure Cognitive Services
 description: 在本文中，您會將參數新增至自訂命令應用程式，讓它可以開啟和關閉多個裝置。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 940b3604487fbef7736c0d8f4f9299563b0b86d5
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142277"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509299"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>快速入門：使用參數來建立自訂命令預覽應用程式
 
@@ -54,7 +54,7 @@ ms.locfileid: "84142277"
     | **為全域**          | 已清除       | 一個核取方塊，指出參數的值是否會全域套用至應用程式中的所有命令。|
     | **必要**           | 已選取         | 指出是否需要參數值的核取方塊。  |
     | **必要參數的回應**      |**簡單編輯器-> 開啟或關閉？**      | 當不知道參數的值時，會出現提示要求。 |
-    | **類型**               | **字串**          | 參數類型。 例如，數位、字串、日期時間、地理位置。   |
+    | **型別**               | **String**          | 參數類型。 例如，數位、字串、日期時間、地理位置。   |
     | **設定**      | **接受來自內部目錄的預先定義輸入值** | 若為字串，這項設定會將輸入限制為一組可能的值。 |
     | **預先定義的輸入值**     | **開啟**、**關閉**             | 一組可能的值及其別名。         |
        
@@ -74,7 +74,7 @@ ms.locfileid: "84142277"
        | **為全域**          | 已清除             | 一個核取方塊，指出參數的值是否會全域套用至應用程式中的所有命令。 |
        | **必要**           | 已選取               | 指出是否需要參數值的核取方塊。          |
        | **簡單編輯器**      | **哪一個裝置？**    | 當不知道參數的值時，會出現提示要求。                                       |
-       | **類型**               | **字串**                | 參數類型。 例如，數位、字串、日期時間、地理位置。                                                |
+       | **型別**               | **String**                | 參數類型。 例如，數位、字串、日期時間、地理位置。                                                |
        | **設定**      | **接受來自內部目錄的預先定義輸入值** | 若為字串，這項設定會將輸入限制為一組可能的值。       |
        | **預先定義的輸入值** | **電視**、**風扇**               | 一組可能的值及其別名。                               |
        | **別名**（電視）      | **電視**， **telly**     | 每個預先定義輸入值的選擇性別名。                                 |

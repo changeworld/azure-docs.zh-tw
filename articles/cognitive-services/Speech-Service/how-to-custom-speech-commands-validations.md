@@ -3,25 +3,25 @@ title: 在自訂命令預覽中新增驗證-語音服務
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何將驗證新增至自訂命令預覽應用程式中的命令參數。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: donkim
-ms.openlocfilehash: 6686016f109fad4ee8b7f4e494b1374a6003658c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: nitinme
+ms.openlocfilehash: eb011510a9f636aea9910a4be445cd094acf0c21
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310405"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509571"
 ---
 # <a name="add-validations-to-a-command-parameter-in-a-custom-commands-preview-application"></a>將驗證新增至自訂命令預覽應用程式中的命令參數
 
 在本文中，您將瞭解如何將驗證新增至參數，並提示更正。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成下列文章中的步驟：
 
@@ -43,7 +43,7 @@ ms.locfileid: "84310405"
    | **名稱**              | **低**                       | 參數的描述性名稱                                |
    | **必要**          | 已檢查                           | 指出是否需要此參數值的核取方塊，才能完成命令 |
    | **必要參數的回應**     | **簡單編輯器-> 您想要的溫度為何？**  | 當不知道此參數的值時，所要求的提示 |
-   | **類型**              | **Number**                            | 參數的類型，例如 Number、String、DateTime 或 Geography   |
+   | **型別**              | **Number**                            | 參數的類型，例如 Number、String、DateTime 或 Geography   |
 
 1. 新增溫度參數的驗證。
 
