@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221203"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561014"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
-針對**文字分析 API** 的呼叫是 HTTP POST/GET 呼叫，可由您以任何語言編寫。 在本文中，我們會使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) \(英文\) 來示範重點概念。
+針對**文字分析 API** 的呼叫是 HTTP POST/GET 呼叫，可由您以任何語言編寫。 在本文中，我們會使用 REST 和 [Postman](https://www.postman.com/downloads/) \(英文\) 來示範重點概念。
 
 每個要求都必須包含您的存取金鑰和 HTTP 端點。 端點會指定您在註冊時所選擇的區域、服務 URL，以及用於要求的資源：`sentiment`、`keyphrases`、`languages` 和 `entities`。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "79221203"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "79221203"
 
 您目前可以針對所有文字分析作業提交相同的文件：情感、關鍵片語、語言偵測，以及實體識別。 (未來結構描述很有可能會針對每個分析而有所不同)。
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 項目 | 有效值 | 必要？ | 使用方式 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../text-analytics-supported-languages.md)。 |
@@ -90,7 +90,7 @@ ms.locfileid: "79221203"
 
    在 Postman 中，回應會以單一 JSON 文件的形式顯示在下一個視窗中，且在要求中所提供的每個文件識別碼都會有一個項目。
 
-## <a name="see-also"></a>請參閱 
+## <a name="see-also"></a>另請參閱 
 
  [文字分析總覽](../overview.md)  
  [常見問題集 (FAQ)](../text-analytics-resource-faq.md)

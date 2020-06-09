@@ -3,26 +3,26 @@ title: 快速入門：建立自訂命令預覽應用程式-語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本文中，您將建立並測試託管的自訂命令預覽應用程式。 應用程式將會處理語句。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142345"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509350"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>快速入門：建立自訂命令預覽應用程式
 
 在本快速入門中，您將瞭解如何建立和測試自訂命令應用程式。
 應用程式會處理像是「開啟電視」的語句，並使用像是「確定，開啟電視」之類的簡單訊息來回複。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">建立 Azure 語音資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
