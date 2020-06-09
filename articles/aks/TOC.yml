@@ -133,6 +133,8 @@
           href: upgrade-cluster.md
         - name: 使用執行時間 SLA
           href: uptime-sla.md
+        - name: 升級節點映像 (預覽)
+          href: node-image-upgrade.md
         - name: 流程節點 OS 更新
           href: node-updates-kured.md
         - name: 設定 AKS 叢集

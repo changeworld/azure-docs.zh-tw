@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: db4bccbc2b366cbd2997542b3b10068b0f5941a2
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: b4a5ebe22c01f3a16831d3a7739b7c56eab7dc00
+  ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701847"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84559177"
 landingContent:
 - title: 關於靜態 Web 應用程式
   linkLists:
@@ -52,6 +52,8 @@ landingContent:
       url: publish-hugo.md
     - text: 從 VuePress 發佈
       url: publish-vuepress.md
+    - text: 從 Jekyll 發佈
+      url: publish-jekyll.md
     - text: 從 Next.js 部署
       url: deploy-nextjs.md
     - text: 從 Nuxt.js 部署

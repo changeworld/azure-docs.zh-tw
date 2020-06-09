@@ -1,78 +1,19 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: 概觀
-  items:
-    - name: 關於 Azure Digital Twins
-      href: about-digital-twins.md
 - name: 快速入門
   expanded: true
-  items:
-    - name: 尋找閒置空間
-      href: quickstart-view-occupancy-dotnet.md
 - name: 教學課程
   items:
     - name: 使用 Digital Twins 監控建築物
-      items:
-        - name: 部署及設定
-          href: tutorial-facilities-setup.md
-        - name: 佈建與監控情況
-          href: tutorial-facilities-udf.md
-        - name: 使用 Logic Apps 發出通知
-          href: tutorial-facilities-events.md
-        - name: 使用時間序列深入解析將事件視覺化
-          href: tutorial-facilities-analyze.md
 - name: 概念
   items:
-    - name: Digital Twins 物件模型與空間智慧圖表
-      href: concepts-objectmodel-spatialgraph.md
-    - name: 裝置連線能力與遙測輸入
-      href: concepts-device-ingress.md
-    - name: 資料處理與各項使用者定義功能
-      href: concepts-user-defined-functions.md
-    - name: 活動及訊息路線規劃
-      href: concepts-events-routing.md
-    - name: 公開預覽服務限制
-      href: concepts-service-limits.md
     - name: 安全性
-      items:
-        - name: 安全性最佳做法
-          href: security-best-practices.md
-        - name: 角色型存取控制
-          href: security-role-based-access-control.md
-        - name: 建立和管理角色指派
-          href: security-create-manage-role-assignments.md
-        - name: 管理 API 驗證
-          href: security-authenticating-apis.md
 - name: 操作指南
   items:
-    - name: 啟用多租用戶應用程式
-      href: how-to-multitenant-applications.md
-    - name: 建立使用者定義函式
-      href: how-to-user-defined-functions.md
-    - name: 透過端點規劃活動及訊息路線
-      href: how-to-egress-endpoints.md
-    - name: 將 Blob 新增至物件
-      href: how-to-add-blobs.md
-    - name: 使用 Digital Twins Swagger
-      href: how-to-use-swagger.md
-    - name: 偵錯使用者定義函數
-      href: how-to-diagnose-user-defined-functions.md
-    - name: 設定監視
-      href: how-to-configure-monitoring.md
     - name: 查詢 Digital Twins API
-      items:
-        - name: 設定 Postman
-          href: how-to-configure-postman.md
-        - name: 使用 Digital Twins API
-          href: how-to-navigate-apis.md
-        - name: 常見查詢模式
-          href: how-to-query-common-apis.md
 - name: 參考
-  items:
-    - name: 使用者定義函式用戶端程式庫
-      href: reference-user-defined-functions-client-library.md
 - name: 資源
-  expanded: true
   items:
     - name: 開發人員資源
       items:
@@ -116,3 +57,4 @@
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure IoT 更新
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
+  expanded: true

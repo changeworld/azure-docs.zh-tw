@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: 建立 Ubuntu 資料科學虛擬機器
       href: dsvm-ubuntu-intro.md
+- name: 教學課程
+  items:
+    - name: 使用 ARM 範本建立 DSVM
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: 概念
   items:
     - name: 深度學習和 AI 架構

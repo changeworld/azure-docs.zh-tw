@@ -194,6 +194,30 @@
               href: wrangling-data-flow-overview.md
             - name: 支援的函數
               href: wrangling-data-flow-functions.md
+    - name: 資料湖和 EDW 的資料移轉
+      items:
+        - name: 為何使用 Azure Data Factory
+          href: data-migration-guidance-overview.md
+        - name: 從 AWS S3 將資料遷移至 Azure
+          href: data-migration-guidance-s3-azure-storage.md
+        - name: 將資料從內部部署 Hadoop 叢集遷移到 Azure
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: 將資料從內部部署 Netezza 伺服器遷移到 Azure
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: 使用對應資料流程進行轉換
+      items:
+        - name: 處理固定寬度的文字檔
+          href: how-to-fixed-width.md
+        - name: 處理資料列時發生錯誤
+          href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB 至 CosmosDB
+          href: how-to-sqldb-to-cosmosdb.md
+    - name: 從內部部署進行 SSIS 移轉
+      items:
+        - name: SSIS 移轉概觀
+          href: scenario-ssis-migration-overview.md
+        - name: 將 SSISDB 移轉至 Azure SQL 受控執行個體
+          href: scenario-ssis-migration-ssisdb-mi.md
     - name: 角色和權限
       href: concepts-roles-permissions.md
     - name: 命名規則
@@ -697,32 +721,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR 中的封裝執行
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: 案例
-  items:
-    - name: 資料湖和 EDW 的資料移轉
-      items:
-        - name: 為何使用 Azure Data Factory
-          href: data-migration-guidance-overview.md
-        - name: 從 AWS S3 將資料遷移至 Azure
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: 將資料從內部部署 Hadoop 叢集遷移到 Azure
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: 將資料從內部部署 Netezza 伺服器遷移到 Azure
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: 使用對應資料流程進行轉換
-      items:
-        - name: 處理固定寬度的文字檔
-          href: how-to-fixed-width.md
-        - name: 處理資料列時發生錯誤
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB 至 CosmosDB
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: 從內部部署進行 SSIS 移轉
-      items:
-        - name: SSIS 移轉概觀
-          href: scenario-ssis-migration-overview.md
-        - name: 將 SSISDB 移轉至 Azure SQL 受控執行個體
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: 參考
   items:
     - name: 資料流程指令碼

@@ -132,6 +132,8 @@
           href: concepts-query-performance-insight.md
         - name: 效能建議
           href: concepts-performance-recommendations.md
+        - name: 伺服器參數
+          href: concepts-server-parameters.md
     - name: 部署
       items:
         - name: 驅動程式和工具相容性

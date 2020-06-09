@@ -447,7 +447,7 @@
             - name: 使用資源健康狀態了解連線問題
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: 從 DTU 遷移至虛擬核心
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: 調整資料庫資源
               href: database/single-database-scale.md
             - name: 調整集區資源
