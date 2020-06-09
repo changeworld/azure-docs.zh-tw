@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: JavaScript 的來源對應
                   href: app/source-map-support.md
+                - name: 疑難排解
+                  items:
+                    - name: SDK 載入失敗
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API 摘要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: 追蹤要求以進行剖析
               href: app/profiler-trackrequests.md
+            - name: 設定 BYOS (自備儲存體)
+              href: app/profiler-bring-your-own-storage.md
             - name: Profiler 疑難排解
               href: app/profiler-troubleshooting.md
         - name: 快照集偵錯工具
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: 升級快照偵錯工具
               href: app/snapshot-debugger-upgrade.md
+            - name: 設定 BYOS (自備儲存體)
+              href: app/profiler-bring-your-own-storage.md
             - name: 快照偵錯工具的疑難排解
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

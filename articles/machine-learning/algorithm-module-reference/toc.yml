@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: 定型模型
       href: train-model.md
+    - name: 將 PyTorch 模型定型
+      href: train-pytorch-model.md
     - name: 調整模型超參數
       href: tune-model-hyperparameters.md
 - name: 模型評分與評估
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: 評估模型
       href: evaluate-model.md
+    - name: 映像計分模型
+      href: score-image-model.md
     - name: 計分模型
       href: score-model.md
 - name: Python 語言
@@ -142,6 +146,20 @@
       href: preprocess-text.md
     - name: 隱含狄利克雷分佈
       href: latent-dirichlet-allocation.md
+- name: 電腦視覺
+  items:
+    - name: 套用映像轉換
+      href: apply-image-transformation.md
+    - name: 轉換至映像目錄
+      href: convert-to-image-directory.md
+    - name: 初始化映像轉換
+      href: init-image-transformation.md
+    - name: 分割映像目錄
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: 建議
   items:
     - name: 評估推薦

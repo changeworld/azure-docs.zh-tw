@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: 使用 Azure Files 和 Azure AD DS
           href: create-profile-container-adds.md
-    - name: 建立設定檔容器檔案共用
-      href: create-file-share.md
+        - name: 使用 Azure 檔案和 AD DS
+          href: create-file-share.md
     - name: 設定主機集區設定
       items:
         - name: RDP 屬性
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: 識別並診斷問題
       href: diagnostics-role-service.md
-    - name: 建立租用戶和主機集區
+    - name: 主機集區建立
       href: troubleshoot-set-up-issues.md
     - name: 設定工作階段主機虛擬機器
       href: troubleshoot-vm-configuration.md

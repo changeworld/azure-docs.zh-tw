@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Microsoft 365 Government 的最新消息
       href: whats-new-microsoft-365-government.md
+    - name: 封存 Azure AD 的新功能
+      href: whats-new-archive.md
 - name: 快速入門
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 部署 30、90 及更多
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory 部署方案
+          href: active-directory-deployment-plans.md
     - name: 資料儲存體
       items:
         - name: 適用於歐洲的身分識別資料儲存體
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: 新增或移除群組擁有者
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: 使用群組管理對資源的存取
+          href: active-directory-manage-groups.md
     - name: 使用者
       items:
         - name: 新增或刪除新的使用者
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: 還原已刪除的使用者
           href: active-directory-users-restore.md
-- name: 資源
+- name: 疑難排解
   expanded: true
   items:
     - name: 取得 Azure Active Directory 支援
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory 常見問題集
       href: active-directory-faq.md
-    - name: Azure Active Directory 部署方案
-      href: active-directory-deployment-plans.md
-    - name: 封存 Azure AD 的新功能
-      href: whats-new-archive.md

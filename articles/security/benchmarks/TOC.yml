@@ -35,6 +35,8 @@
       href: security-baselines-overview.md
     - name: API 管理安全性基準
       href: ../../api-management/security-baseline.md
+    - name: 應用程式閘道安全性基準
+      href: ../../application-gateway/security-baseline.md
     - name: Azure Cache for Redis 安全性基準
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: 備份安全性基準
@@ -47,8 +49,12 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB 安全性基準
       href: ../../cosmos-db/security-baseline.md
+    - name: 客戶加密箱安全性基準
+      href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: 資料總管安全性基準
       href: /azure/data-explorer/security-baseline
+    - name: Data Factory 安全性基準
+      href: /azure/data-factory/security-baseline
     - name: Databricks 安全性基準
       href: ../../azure-databricks/security-baseline.md
     - name: 事件中樞安全性基準
@@ -67,5 +73,7 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL Database 安全性基準
       href: ../../sql-database/security-baseline.md
+    - name: 串流分析基準
+      href: ../../stream-analytics/security-baseline.md
     - name: 批次安全性基準
       href: ../../storage/common/security-baseline.md

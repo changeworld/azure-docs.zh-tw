@@ -23,55 +23,54 @@
       href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-    - name: 規劃 Azure 檔案服務部署
-      href: storage-files-planning.md
-    - name: 規劃 Azure 檔案同步部署
-      href: storage-sync-files-planning.md
-    - name: 直接存取的網路功能考量
-      href: storage-files-networking-overview.md
-    - name: 關於雲端階層處理
-      href: storage-sync-cloud-tiering.md
-    - name: 防止資料意外刪除
-      href: storage-files-prevent-file-share-deletion.md
-    - name: 關於儲存體帳戶
-      href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Azure 檔案共用快照集
-      href: storage-snapshots-files.md
-    - name: 資料備援
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 災害復原和容錯移轉
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure 檔案
+      items:
+        - name: 規劃 Azure 檔案服務部署
+          href: storage-files-planning.md
+        - name: 身分識別型驗證和授權
+          href: storage-files-active-directory-overview.md
+        - name: 直接存取的網路功能考量
+          href: storage-files-networking-overview.md
+        - name: 防止資料意外刪除
+          href: storage-files-prevent-file-share-deletion.md
+        - name: 待用加密
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 使用客戶管理的金鑰加密待用資料
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 災害復原和容錯移轉
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure 檔案共用快照集
+          href: storage-snapshots-files.md
+        - name: 部署
+          items:
+            - name: 管理並行
+              href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 共用金鑰驗證
+              href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
+            - name: 共用存取簽章 (SAS)
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 監視及疑難排解
+          items:
+            - name: 監控、診斷及疑難排解
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Azure 監視器中的計量
+              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 移轉為新計量
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 儲存體分析計量 (傳統)
+              href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure 檔案同步
+      items:
+        - name: 規劃 Azure 檔案同步部署
+          href: storage-sync-files-planning.md
+        - name: 混合式存取的網路功能考量
+          href: storage-sync-files-networking-overview.md
+        - name: 關於雲端階層處理
+          href: storage-sync-cloud-tiering.md
     - name: 擴充和效能目標
       href: storage-files-scale-targets.md
-    - name: 身分識別型驗證和授權
-      href: storage-files-active-directory-overview.md
-    - name: Azure 儲存體待用加密
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-      items:
-        - name: 客戶管理的金鑰與 Azure Key Vault
-          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 設定網路路由喜好設定
-      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 合規性供應項目
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 部署
-      items:
-        - name: 管理並行
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 共用金鑰驗證
-          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-        - name: 共用存取簽章 (SAS)
-          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 監視及疑難排解
-      items:
-        - name: 監控、診斷及疑難排解
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure 監視器中的計量
-          href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 移轉為新計量
-          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 儲存體分析計量 (傳統)
-          href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 常見問題集
       href: storage-files-faq.md
 - name: 操作指南
@@ -90,8 +89,6 @@
           href: storage-files-deployment-guide.md
         - name: 部署 Azure 檔案同步
           href: storage-sync-files-deployment-guide.md
-        - name: 設定檔案同步 Proxy 和防火牆設定
-          href: storage-sync-files-firewall-and-proxy.md
         - name: SQL Server FCI 搭配進階檔案共用
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 掛接
@@ -104,10 +101,18 @@
           href: storage-how-to-use-files-mac.md
     - name: 網路
       items:
-        - name: 設定 Azure 檔案儲存體網路端點
-          href: storage-files-networking-endpoints.md
-        - name: 設定 Azure 檔案儲存體的 DNS 轉送
-          href: storage-files-networking-dns.md
+        - name: Azure 檔案
+          items:
+            - name: 設定 Azure 檔案儲存體網路端點
+              href: storage-files-networking-endpoints.md
+            - name: 設定 Azure 檔案儲存體的 DNS 轉送
+              href: storage-files-networking-dns.md
+        - name: Azure 檔案同步
+          items:
+            - name: 設定 Azure 檔案同步網路端點
+              href: storage-sync-files-networking-endpoints.md
+            - name: 設定檔案同步 Proxy 和防火牆設定
+              href: storage-sync-files-firewall-and-proxy.md
         - name: 設定站對站 VPN
           href: storage-files-configure-s2s-vpn.md
         - name: 在 Windows 上設定點對站 VPN

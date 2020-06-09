@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: 設定驗證提供者
           href: concept-mfa-authprovider.md
+        - name: 使用應用程式密碼
+          href: howto-mfa-app-passwords.md
         - name: 目錄同盟
           items:
             - name: Windows Server 2016 AD FS 介面卡
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Mobile App Web 服務
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: 進行設定
+          href: howto-mfa-server-settings.md
         - name: 設定高可用性
           href: howto-mfaserver-deploy-ha.md
         - name: 升級 MFA 伺服器

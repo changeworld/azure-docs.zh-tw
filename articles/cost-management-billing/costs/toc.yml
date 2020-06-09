@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: 了解並使用範圍
           href: understand-work-scopes.md
+        - name: 使用自動化管理成本
+          href: manage-automation.md
         - name: 從 EA 遷移到 MCA API
           href: migrate-cost-management-api.md
     - name: 操作指南
