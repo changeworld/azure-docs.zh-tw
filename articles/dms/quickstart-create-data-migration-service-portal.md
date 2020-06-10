@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873532"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187532"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 資料庫移轉服務的執行個體
 
-在本快速入門中，使用 Azure 入口網站來建立 Azure 資料庫移轉服務的執行個體。  建立執行個體之後，您可將其使用於將資料從內部部署 SQL Server 遷移到 Azure SQL Database。
+在本快速入門中，使用 Azure 入口網站來建立 Azure 資料庫移轉服務的執行個體。  建立執行個體之後，就可以用於將資料從 SQL Server 移轉到 Azure SQL Database。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -78,4 +78,4 @@ ms.locfileid: "83873532"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [將內部部署 SQL Server 移轉至 Azure SQL Database](tutorial-sql-server-to-azure-sql.md)
+> [將 SQL Server 移轉至 Azure SQL Database](tutorial-sql-server-to-azure-sql.md)

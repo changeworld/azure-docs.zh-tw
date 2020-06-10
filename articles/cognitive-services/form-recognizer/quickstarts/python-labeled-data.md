@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 482e1bfe14181a59b744efd794a5636a442ce9a4
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594163"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141937"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 以標籤定型表單辨識器模型
 
@@ -22,11 +22,14 @@ ms.locfileid: "82594163"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
 - 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+
+> [!NOTE]
+> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) (英文)。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -34,15 +37,15 @@ ms.locfileid: "82594163"
 
 ## <a name="set-up-training-data"></a>設定定型資料
 
-接下來，您必須設定必要的輸入資料。 加上標籤的資料功能除了用以定型自訂模型的需求外，還有特殊的輸入需求。 
+接下來，您必須設定必要的輸入資料。 加上標籤的資料功能，除了用以定型無標籤自訂模型的需求外，還有特殊的輸入需求。
 
 請確定所有定型文件都有相同的格式。 如果您的表單有多種格式，請根據共同的格式將這些表單組織成子資料夾。 在定型時，您必須將 API 導向子資料夾。
 
 若要使用加上標籤的資料來定型模型，您需要擁有下列檔案來作為子資料夾中的輸入。 您會在下面了解如何建立這些檔案。
 
 * **來源表單** – 要從中擷取資料的表單。 支援的類型有 JPEG、PNG、PDF 或 TIFF。
-* **OCR 版面配置檔案** - JSON 檔案，這些檔案會描述每個來源表單中所有可讀文字的大小和位置。 您將使用表單辨識器版面配置 API 來產生此資料。 
-* **標籤檔案** - JSON 檔案，這些檔案會描述使用者手動輸入的資料標籤。
+* **OCR 版面配置檔案** - 為 JSON 檔案，這些檔案可描述每個來源表單中所有可讀文字的大小與位置。 您將使用表單辨識器版面配置 API 來產生此資料。 
+* **標籤檔案** - 為 JSON 檔案，這些檔案可描述使用者手動輸入的資料標籤。
 
 上述這些檔案全都應該佔用相同的子資料夾，並採用下列格式：
 
@@ -63,7 +66,7 @@ ms.locfileid: "82594163"
 
 1. 在讀取的版面配置容器上，讓輸入檔作為要求本文的一部分來呼叫 **[分析版面配置](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API。 儲存在回應的 **Operation-Location** 標頭中找到的識別碼。
 1. 使用上一個步驟中的作業識別碼，呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API。
-1. 取得回應並將內容寫入至檔案中。 針對每個來源表單，相對應的 OCR 檔案應該在原始檔案名稱後面附加 `.ocr.json`。 OCR JSON 輸出應具有下列格式。 如需完整範例，請參閱[範例 OCR 檔案](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)。 
+1. 取得回應並將內容寫入檔案中。 針對每個來源表單，相對應的 OCR 檔案應該在原始檔案名稱後面附加 `.ocr.json`。 OCR JSON 輸出應具有下列格式。 如需完整範例，請參閱[範例 OCR 檔案](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)。 
 
     ```json
     {
@@ -116,7 +119,7 @@ ms.locfileid: "82594163"
 
 ### <a name="create-the-label-files"></a>建立標籤檔案
 
-標籤檔案會包含使用者手動輸入的索引鍵/值關聯。 已加上標籤的資料定型需要這些關聯，但並非每個來源檔案都必須有對應的標籤檔案。 系統會將沒有標籤的原始檔視為一般定型文件。 建議您使用五個以上的加上標籤檔案，以便獲得可靠的定型。
+標籤檔案會包含使用者手動輸入的索引鍵/值關聯。 已加上標籤的資料定型需要這些關聯，但並非每個來源檔案都必須有對應的標籤檔案。 系統會將沒有標籤的原始檔視為一般定型文件。 建議您使用五個以上的加上標籤檔案，以便獲得可靠的定型。 您可以使用像是[範例標籤工具](./label-tool.md)之類的 UI 工具，產生這些檔案。
 
 您在建立標籤檔案時，可以在文件上選擇性地指定區域，也就是值的確切位置。 這會讓定型的精確度提高。 區域會格式化成一組八個值，並分別對應到四個 X,Y 座標：左上角、右上角、右下角和左下角。 座標值介於 0 與 1 之間，並會調整為頁面的尺寸。
 
@@ -187,8 +190,8 @@ ms.locfileid: "82594163"
                 ...
 ```
 
-> [!NOTE]
-> 每個文字元素只能套用一個標籤，而且每個頁面只能將每個標籤套用一次。 您目前無法將標籤套用到多個頁面。
+> [!IMPORTANT]
+> 每個文字元素只能套用一個標籤，而且每個頁面只能將每個標籤套用一次。 您無法將標籤套用到多個頁面。
 
 
 ## <a name="train-a-model-using-labeled-data"></a>使用加上標籤的資料來定型模型
@@ -196,7 +199,7 @@ ms.locfileid: "82594163"
 若要使用加上標籤的資料來定型模型，請執行下列 Python 程式碼，以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API。 執行程式碼之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您表單辨識器資源的端點 URL。
-1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]  。 確定 [讀取]  和 [列出]  權限均已勾選，再按一下 [建立]  。 然後，複製 [URL]  區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 1. 以輸入資料所在 Blob 容器中的資料夾名稱取代 `<Blob folder name>`。 或者，如果資料位於根目錄，則請讓其保持空白，並從 HTTP 要求的本文中移除 `"prefix"` 欄位。
 
 ```python
@@ -554,4 +557,7 @@ print("Train operation did not complete within the allocated time.")
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何搭配使用表單辨識器 REST API 與 Python，來以手動加上標籤的資料定型模型。 接下來，請參閱 [API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)來深入探索表單辨識器 API。
+在本快速入門中，您已了解如何搭配使用表單辨識器 REST API 與 Python，來以手動加上標籤的資料定型模型。 接下來，請參閱 API 參考文件來深入探索表單辨識器 API。
+
+> [!div class="nextstepaction"]
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 08/06/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: e0d2d2ea99822c95b9fab73642db37430771c583
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82083759"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217932"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入門：使用 Node.js 與 Azure Cosmos DB 建置資料表 API 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "82083759"
 
 在本快速入門中，您會建立 Azure Cosmos DB 資料表 API 帳戶，並使用資料總管和從 GitHub 複製的 Node.js 應用程式來建立資料表和實體。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 - [Node.js 0.10.29+](https://nodejs.org/)。
@@ -70,25 +70,85 @@ ms.locfileid: "82083759"
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-> ![TIP] 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-nodejs.md)一文。 
+> [!TIP]
+> 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-nodejs.md)一文。 
 
+## <a name="review-the-code"></a>檢閱程式碼
+
+此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或是，您可以跳至本文件的[更新您的連接字串](#update-your-connection-string)一節。
+
+* 下列程式碼會示範如何在 Azure 儲存體內建立資料表：
+
+  ```javascript
+  storageClient.createTableIfNotExists(tableName, function (error, createResult) {
+    if (error) return callback(error);
+
+    if (createResult.isSuccessful) {
+      console.log("1. Create Table operation executed successfully for: ", tableName);
+    }
+  }
+
+  ```
+
+* 下列程式碼會示範如何在資料表中插入資料：
+
+  ```javascript
+  var customer = createCustomerEntityDescriptor("Harp", "Walter", "Walter@contoso.com", "425-555-0101");
+
+  storageClient.insertOrMergeEntity(tableName, customer, function (error, result, response) {
+    if (error) return callback(error);
+
+    console.log("   insertOrMergeEntity succeeded.");
+  }
+  ```
+
+* 下列程式碼會示範如何查詢資料表中的資料：
+
+  ```javascript
+  console.log("6. Retrieving entities with surname of Smith and first names > 1 and <= 75");
+
+  var storageTableQuery = storage.TableQuery;
+  var segmentSize = 10;
+
+  // Demonstrate a partition range query whereby we are searching within a partition for a set of entities that are within a specific range. 
+  var tableQuery = new storageTableQuery()
+      .top(segmentSize)
+      .where('PartitionKey eq ?', lastName)
+      .and('RowKey gt ?', "0001").and('RowKey le ?', "0075");
+  
+  runPageQuery(tableQuery, null, function (error, result) {
+  
+      if (error) return callback(error);
+  
+  ```
+
+* 下列程式碼會示範如何刪除資料表中的資料：
+
+  ```javascript
+  storageClient.deleteEntity(tableName, customer, function entitiesQueried(error, result) {
+      if (error) return callback(error);
+  
+      console.log("   deleteEntity succeeded.");
+  }
+  ```
+  
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 這可讓您的應用程式與託管資料庫進行通訊。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
     ![在 [連接字串] 窗格中檢視及複製所需的連接字串資訊](./media/create-table-nodejs/connection-string.png)
 
 2. 使用右側的複製按鈕複製 PRIMARY CONNECTION STRING。
 
-3. 開啟 app.config  檔案，然後將值貼到第三行上的 connectionString 中。 
+3. 開啟 app.config 檔案，然後將值貼到第三行上的 connectionString 中。 
 
     > [!IMPORTANT]
     > 如果端點使用 documents.azure.com，這表示您擁有預覽帳戶，因此您需要建立一個[新的資料表 API 帳戶](#create-a-database-account)與正式推出的資料表 API SDK 搭配使用。
     >
 
-3. 儲存 app.config  檔案。
+3. 儲存 app.config 檔案。
 
 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
 
@@ -100,7 +160,7 @@ ms.locfileid: "82083759"
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. 執行下列命令在本機安裝 [azure]、[node-uuid]、[nconf] 及 [async] 模組，並將其項目儲存至 package.json  檔案。
+2. 執行下列命令在本機安裝 [azure]、[node-uuid]、[nconf] 及 [async] 模組，並將其項目儲存至 package.json 檔案。
 
    ```
    npm install azure-storage node-uuid async nconf --save

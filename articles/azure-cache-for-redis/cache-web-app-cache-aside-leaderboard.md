@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75411947"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195584"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教學課程：在 ASP.NET 上建立另行快取排行榜
 
@@ -28,7 +28,7 @@ ms.locfileid: "75411947"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您必須具備下列先決條件：
 
@@ -40,13 +40,13 @@ ms.locfileid: "75411947"
 
 ## <a name="add-a-leaderboard-to-the-project"></a>將排行榜新增至專案
 
-在教學課程的這一節當中，您會為 ContosoTeamStats  專案設定一個排行榜，以報告一份清單中各虛擬隊伍輸、贏、平手的統計資料。
+在教學課程的這一節當中，您會為 ContosoTeamStats 專案設定一個排行榜，以報告一份清單中各虛擬隊伍輸、贏、平手的統計資料。
 
 ### <a name="add-the-entity-framework-to-the-project"></a>將 Entity Framework 新增至專案
 
 1. 在 Visual Studio 中，開啟您在 [Azure Redis 快取的 ASP.NET 快速入門](cache-web-app-howto.md)中建立的 *ContosoTeamStats* 解決方案。
-2. 按一下 [工具] > [NuGet 套件管理員] > [套件管理員主控台]  。
-3. 從 [套件管理員主控台]  視窗中執行下列命令，以安裝 EntityFramework：
+2. 按一下 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。
+3. 從 [套件管理員主控台] 視窗中執行下列命令，以安裝 EntityFramework：
 
     ```powershell
     Install-Package EntityFramework
@@ -56,13 +56,13 @@ ms.locfileid: "75411947"
 
 ### <a name="add-the-team-model"></a>新增隊伍模型
 
-1. 在 [方案總管]  中以滑鼠右鍵按一下 [模型]  ，並選擇 [新增]  [類別]  。
+1. 在 [方案總管] 中以滑鼠右鍵按一下 [模型]，並選擇 [新增][類別]。
 
-1. 針對類別名稱輸入 `Team`，然後按一下 [新增]  。
+1. 針對類別名稱輸入 `Team`，然後按一下 [新增]。
 
     ![新增模型類別](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
-1. 將 Team.cs  檔案頂端的 `using` 陳述式替換為下列 `using` 陳述式：
+1. 將 Team.cs 檔案頂端的 `using` 陳述式替換為下列 `using` 陳述式：
 
     ```csharp
     using System;
@@ -142,13 +142,13 @@ ms.locfileid: "75411947"
     }
     ```
 
-1. 在 [方案總管]  中，連按兩下 [Web.config]  加以開啟。
+1. 在 [方案總管] 中，連按兩下 [Web.config] 加以開啟。
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
 1. 將下列 `connectionStrings` 區段新增至 `configuration` 區段中。 連接字串的名稱必須符合 Entity Framework 資料庫內容類別的名稱，亦即 `TeamContext`。
 
-    這個連接字串假設您已符合[先決條件](#prerequisites)並已安裝 SQL Server Express LocalDB (這是隨 Visual Studio 2019 一起安裝的 .NET 桌面開發  工作負載的一部分)。
+    這個連接字串假設您已符合[先決條件](#prerequisites)並已安裝 SQL Server Express LocalDB (這是隨 Visual Studio 2019 一起安裝的 .NET 桌面開發工作負載的一部分)。
 
     ```xml
     <connectionStrings>
@@ -173,17 +173,17 @@ ms.locfileid: "75411947"
 
 1. 在 Visual Studio 中建置專案。 
 
-1. 在 [方案總管]  中，於 [控制器]  資料夾上按一下滑鼠右鍵，然後依序選擇 [新增]  和 [控制器]  。
+1. 在 [方案總管] 中，於 [控制器] 資料夾上按一下滑鼠右鍵，然後依序選擇 [新增] 和 [控制器]。
 
-1. 選擇 [使用 Entity Framework，包含檢視的 MVC 5 控制器]  ，然後按一下 [新增]  。 如果您在按一下 [新增]  後收到錯誤，請確定您已先建置專案。
+1. 選擇 [使用 Entity Framework，包含檢視的 MVC 5 控制器]，然後按一下 [新增]。 如果您在按一下 [新增] 後收到錯誤，請確定您已先建置專案。
 
     ![新增控制器類別](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. 在 [模型類別]  下拉式清單中選取 [Team (ContosoTeamStats.Models)]  。 在 [資料內容類別]  下拉式清單中選取 [TeamContext (ContosoTeamStats.Models)]  。 在 [控制器名稱]  文字方塊中輸入 `TeamsController` (如果尚未自動填入)。 按一下 [新增]  以建立控制器類別並新增預設檢視。
+1. 在 [模型類別] 下拉式清單中選取 [Team (ContosoTeamStats.Models)]。 在 [資料內容類別] 下拉式清單中選取 [TeamContext (ContosoTeamStats.Models)]。 在 [控制器名稱] 文字方塊中輸入 `TeamsController` (如果尚未自動填入)。 按一下 [新增]  以建立控制器類別並新增預設檢視。
 
     ![設定控制器](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
-1. 在 [方案總管]  中展開 [Global.asax]  ，然後按兩下 [Global.asax.cs]  來加以開啟。
+1. 在 [方案總管] 中展開 [Global.asax]，然後按兩下 [Global.asax.cs] 來加以開啟。
 
     ![Global.asax.cs](./media/cache-web-app-cache-aside-leaderboard/cache-global-asax.png)
 
@@ -200,7 +200,7 @@ ms.locfileid: "75411947"
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
-1. 在 [方案總管]  中展開 `App_Start`，然後按兩下 `RouteConfig.cs`。
+1. 在 [方案總管] 中展開 `App_Start`，然後按兩下 `RouteConfig.cs`。
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "75411947"
 
 ### <a name="configure-the-layout-view"></a>設定版面配置檢視
 
-1. 在 [方案總管]  中依序展開 [檢視]  資料夾和 [共用]  資料夾，然後按兩下 **_Layout.cshtml**。 
+1. 在 [方案總管] 中依序展開 [檢視] 資料夾和 [共用] 資料夾，然後按兩下 **_Layout.cshtml**。 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -226,7 +226,7 @@ ms.locfileid: "75411947"
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. 在 `body` 區段中，於「Azure Redis 快取測試」  的連結正下方，新增下列新的 *Contoso Team Stats*`Html.ActionLink` 陳述式。
+1. 在 `body` 區段中，於「Azure Redis 快取測試」的連結正下方，新增下列新的 *Contoso Team Stats*`Html.ActionLink` 陳述式。
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,7 +234,7 @@ ms.locfileid: "75411947"
 
     ![程式碼變更](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. 按 **Ctrl+F5** 以建置並執行應用程式。 這個版本的應用程式會直接從資料庫讀取結果。 請注意透過 [使用 Entity Framework，包含檢視的 MVC 5 控制器]  scaffold 自動新增至應用程式的 [建立新的]  、[編輯]  、[詳細資料]  和 [刪除]  動作。 在本教學課程的下一節中，您將會新增「Azure Redis 快取」，以將資料存取最佳化並為應用程式提供其他功能。
+1. 按 **Ctrl+F5** 以建置並執行應用程式。 這個版本的應用程式會直接從資料庫讀取結果。 請注意透過 [使用 Entity Framework，包含檢視的 MVC 5 控制器] scaffold 自動新增至應用程式的 [建立新的]、[編輯]、[詳細資料] 和 [刪除] 動作。 在本教學課程的下一節中，您將會新增「Azure Redis 快取」，以將資料存取最佳化並為應用程式提供其他功能。
 
     ![起始應用程式](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,9 +244,9 @@ ms.locfileid: "75411947"
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>將快取連線新增至隊伍控制器
 
-您已在快速入門中安裝 StackExchange.Redis  用戶端程式庫套件。 您也已經將「CacheConnection  應用程式設定」設定為要在本機與已發佈的 App Service 搭配使用。 請在 TeamsController  中使用這個相同的用戶端程式庫和 CacheConnection  資訊。
+您已在快速入門中安裝 StackExchange.Redis 用戶端程式庫套件。 您也已經將「CacheConnection 應用程式設定」設定為要在本機與已發佈的 App Service 搭配使用。 請在 TeamsController 中使用這個相同的用戶端程式庫和 CacheConnection 資訊。
 
-1. 在 [方案總管]  中展開 [控制器]  資料夾，然後按兩下 [TeamsController.cs]  來加以開啟。
+1. 在 [方案總管] 中展開 [控制器] 資料夾，然後按兩下 [TeamsController.cs] 來加以開啟。
 
     ![隊伍控制器](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
@@ -574,7 +574,7 @@ ms.locfileid: "75411947"
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>將快取方法新增至隊伍索引檢視
 
-1. 在 [方案總管]  中依序展開 [檢視]  資料夾和 [隊伍]  資料夾，然後按兩下 [Index.cshtml]  。
+1. 在 [方案總管] 中依序展開 [檢視] 資料夾和 [隊伍] 資料夾，然後按兩下 [Index.cshtml]。
 
     ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -642,46 +642,46 @@ ms.locfileid: "75411947"
 
 ## <a name="publish-and-run-in-azure"></a>在 Azure 中發佈並執行
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>佈建應用程式的 SQL Azure 資料庫
+### <a name="provision-a-database-for-the-app"></a>佈建應用程式的資料庫
 
-在本節中，您將會佈建新的 SQL Azure 資料庫，以供應用程式在裝載於 Azure 時使用。
+在此節中，您將會在 SQL Database 中佈建新資料庫，以供應用程式在裝載於 Azure 時使用。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 Azure 入口網站左上角的 [建立資源]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 Azure 入口網站左上角的 [建立資源]。
 
-1. 在 [新增]  頁面上，按一下 [資料庫]   > [SQL Database]  。
+1. 在 [新增] 頁面上，按一下 [資料庫] > [SQL Database]。
 
 1. 針對新的 SQL Database 使用下列設定：
 
    | 設定       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **資料庫名稱** | ContosoTeamsDatabase  | 如需有效的資料庫名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。 |
+   | **資料庫名稱** | ContosoTeamsDatabase | 如需有效的資料庫名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。 |
    | **訂用帳戶** | *您的訂用帳戶*  | 選取您在建立快取和裝載 App Service 時所使用的相同訂用帳戶。 |
-   | **資源群組**  | TestResourceGroup  | 按一下 [使用現有的]  ，並使用您用來放置快取和 App Service 的相同資源群組。 |
+   | **資源群組**  | TestResourceGroup | 按一下 [使用現有的]，並使用您用來放置快取和 App Service 的相同資源群組。 |
    | **選取來源** | **空白資料庫** | 以空白資料庫開始。 |
 
-1. 在 [伺服器]  底下，按一下 [進行必要設定]   > [建立新的伺服器]  並提供下列資訊，然後按一下 [選取]  按鈕：
+1. 在 [伺服器] 底下，按一下 [進行必要設定] > [建立新的伺服器] 並提供下列資訊，然後按一下 [選取] 按鈕：
 
    | 設定       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **伺服器名稱** | 任何全域唯一名稱 | 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
    | **伺服器管理員登入** | 任何有效名稱 | 如需有效的登入名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。 |
    | **密碼** | 任何有效密碼 | 您的密碼至少要有 8 個字元，而且必須包含下列幾種字元的其中三種︰大寫字元、小寫字元、數字和非英數字元。 |
-   | **位置** | 美國東部  | 選取您用來建立快取和 App Service 的相同區域。 |
+   | **位置** | 美國東部 | 選取您用來建立快取和 App Service 的相同區域。 |
 
-1. 按一下 [釘選到儀表板]  ，然後按一下 [建立]  以建立新的資料庫和伺服器。
+1. 按一下 [釘選到儀表板]，然後按一下 [建立] 以建立新的資料庫和伺服器。
 
-1. 建立新的資料庫後，按一下 [顯示資料庫連接字串]  ，然後複製 **ADO.NET** 連接字串。
+1. 建立新的資料庫後，按一下 [顯示資料庫連接字串]，然後複製 **ADO.NET** 連接字串。
 
     ![Show connection strings](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. 在 Azure 入口網站中，瀏覽至 App Service 並按一下 [應用程式設定]  ，然後在 [連接字串] 區段底下**新增連接字串**。
+1. 在 Azure 入口網站中，瀏覽至 App Service 並按一下 [應用程式設定]，然後在 [連接字串] 區段底下**新增連接字串**。
 
-1. 新增名為 TeamContext  的連接字串以符合 Entity Framework 資料庫內容類別。 貼上新資料庫的連接字串作為值。 請務必取代連接字串中的下列預留位置，然後按一下 [儲存]  ：
+1. 新增名為 TeamContext 的連接字串以符合 Entity Framework 資料庫內容類別。 貼上新資料庫的連接字串作為值。 請務必取代連接字串中的下列預留位置，然後按一下 [儲存]：
 
     | 預留位置 | 建議的值 |
     | --- | --- |
-    | {your_username}  | 針對您剛才建立的資料庫伺服器使用**伺服器系統管理員登入**。 |
-    | {your_password}  | 針對您剛才建立的資料庫伺服器使用密碼。 |
+    | {your_username} | 針對您剛才建立的資料庫伺服器使用**伺服器系統管理員登入**。 |
+    | {your_password} | 針對您剛才建立的資料庫伺服器使用密碼。 |
 
     藉由新增使用者名稱和密碼作為應用程式設定，程式碼中就不會包含使用者名稱和密碼。 這種方法可協助您保護這些認證。
 
@@ -689,11 +689,11 @@ ms.locfileid: "75411947"
 
 在教學課程的這個步驟中，您會將應用程式更新發佈至 Azure 以在雲端中執行。
 
-1. 在 Visual Studio 中以滑鼠右鍵按一下 [ContosoTeamStats]  專案，然後選擇 [發佈]  。
+1. 在 Visual Studio 中以滑鼠右鍵按一下 [ContosoTeamStats] 專案，然後選擇 [發佈]。
 
     ![發佈](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. 按一下 [發佈]  ，以使用您在快速入門中所建立的相同發行設定檔。
+2. 按一下 [發佈]，以使用您在快速入門中所建立的相同發行設定檔。
 
 3. 發佈完成後，Visual Studio 會在預設網頁瀏覽器中啟動應用程式。
 
@@ -717,19 +717,19 @@ ms.locfileid: "75411947"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您完成教學課程的範例應用程式時，您可以刪除使用的 Azure 資源以節省成本和資源。 您的所有資源應該都會包含在相同的資源群組內，您可以透過刪除資源群組在單一作業中將它們一起刪除。 本主題的指示使用的是名為 TestResources  的資源群組。
+當您完成教學課程的範例應用程式時，您可以刪除使用的 Azure 資源以節省成本和資源。 您的所有資源應該都會包含在相同的資源群組內，您可以透過刪除資源群組在單一作業中將它們一起刪除。 本主題的指示使用的是名為 TestResources 的資源群組。
 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作，資源群組和其內的所有資源將會永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 如果您是在包含有需要保留之資源的現有資源群組內，建立用來裝載此範例的資源，則可以從每個資源各自的刀鋒視窗中個別刪除每個資源。
 >
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]  。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
 2. 在 [篩選項目...]  文字方塊中輸入您的資源群組名稱。
-3. 按一下資源群組右邊的 [...]  ，然後按一下 [刪除資源群組]  。
+3. 按一下資源群組右邊的 [...]，然後按一下 [刪除資源群組]。
 
     ![刪除](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. 系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]  。
+4. 系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]。
 
     片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 

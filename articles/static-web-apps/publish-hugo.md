@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870689"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298020"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -28,7 +28,7 @@ ms.locfileid: "83870689"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://azure.microsoft.com/free/)。
 - GitHub 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://github.com/join)。
@@ -109,7 +109,7 @@ ms.locfileid: "83870689"
 
 1. 在 [資源群組] 中選取 [新增]。 在 [新增資源群組名稱] 中輸入 hugo-static-app，然後選取 [確定]。
 
-1. 接著，在 [名稱] 方塊中，為您的應用程式提供全域唯一的名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值會作為您靜態應用程式的 URL 前置詞，格式為 `https://<APP_NAME>....`。
+1. 接下來，在 [名稱] 方塊中提供應用程式的名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。
 
 1. 在 [區域] 中，選取您附近的可用區域。
 
@@ -153,7 +153,7 @@ ms.locfileid: "83870689"
 
 1. 在文字編輯器中開啟 Hugo 應用程式，然後開啟 _.github/workflows/azure-pages-<WORKFLOW_NAME>.yml_ 檔案。
 
-1. 將 `- uses: actions/checkout@v2` 一行 (第 18 行) 取代為下列程式碼，以建置 Hugo 應用程式。
+1. 將 `- uses: actions/checkout@v2` 一行 (第 18 行) 取代為下列程式碼，以建置 Hugo 應用程式。 如果您需要 Hugo Extended，請將 `extended: true` 取消註解。
 
    ```yml
    - uses: actions/checkout@v2
@@ -164,6 +164,7 @@ ms.locfileid: "83870689"
      uses: peaceiris/actions-hugo@v2.4.8
      with:
        hugo-version: "latest"
+       # extended: true
 
    - name: Build
      run: hugo

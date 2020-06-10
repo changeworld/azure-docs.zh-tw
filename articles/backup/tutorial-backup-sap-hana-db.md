@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747220"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248238"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -22,7 +22,10 @@ ms.locfileid: "83747220"
 
 [這裡](sap-hana-backup-support-matrix.md#scenario-support)提供我們目前支援的所有案例。
 
-## <a name="prerequisites"></a>Prerequisites
+>[!NOTE]
+>[開始使用](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)適用於 RHEL (7.4、7.6、7.7 或 8.1) 的 SAP Hana 備份預覽。 如有其他問題，請透過此地址發送電子郵件給我們：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+
+## <a name="prerequisites"></a>必要條件
 
 設定備份之前，請務必先執行下列動作：
 
@@ -34,9 +37,7 @@ ms.locfileid: "83747220"
 * 以根使用者身分，在安裝 HANA 的虛擬機器中執行 SAP HANA 備份設定指令碼 (預先註冊指令碼)。 [此指令碼](https://aka.ms/scriptforpermsonhana)會為 HANA 系統做好備份的準備。 請參閱[預先註冊指令碼的功能](#what-the-pre-registration-script-does)一節，以深入了解預先註冊指令碼。
 
 >[!NOTE]
->在 Azure VM 中執行 SAP HANA 資料庫備份時，Azure 備份不會自動調整日光節約時間變更。
->
->請視需要手動修改原則。
+>預先註冊指令碼會為在 RHEL (7.4、7.6 及 7.7) 上執行的 SAP Hana 工作負載安裝 **compat-unixODBC234**，並為 RHEL 8.1 安裝 **unixODBC**。 [此套件位於 RHEL for SAP Hana (適用於 RHEL 7 伺服器) SAP 解決方案 (RPM) 的更新服務存放庫](https://access.redhat.com/solutions/5094721) \(英文\)。  對於 Azure Marketplace RHEL 映像，存放庫是 **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
 
 ## <a name="set-up-network-connectivity"></a>設定網路連線
 

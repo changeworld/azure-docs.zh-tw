@@ -1,20 +1,20 @@
 ---
 title: DoD 影響等級 4 藍圖範例控制
 description: 控制 DoD 影響等級 4 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 03/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024824"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168976"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>控制 DoD 影響等級 4 藍圖範例的對應
 
 下列文章會詳細說明 Azure 藍圖的美國國防部影響等級 4 (DoD IL4) 藍圖範例如何對應至 DoD 影響等級 4 的控制。 如需關於控制的詳細資訊，請參閱 [DoD 雲端運算安全性需求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)。 國防資訊系統局 (DISA) 是美國國防部 (DoD) 的下轄機構，負責開發和維護 DoD 雲端運算安全性需求指南 (SRG)。 SRG 會針對裝載 DoD 資訊、系統和應用程式的雲端服務提供者 (CSP) 以及 DoD 使用的雲端服務，定義其基準安全性需求。  
 
-下列對應是針對 **DoD 影響等級 4** 的控制。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\]：DoD 影響等級 4** 內建原則計畫。
+下列對應是針對 **DoD 影響等級 4** 的控制。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：DoD 影響等級 4** 內建原則計畫。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。
@@ -132,9 +132,7 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 稽核檢閱、分析和報告 | 整合 / 掃描和監視功能
 
-此藍圖會提供原則定義，以便利用虛擬機器、虛擬機器擴展集、SQL 受控實例和 SQL 伺服器的弱點評定分析來稽核記錄。
-這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 這些深入解析可讓您即時檢視已部署資源的安全性狀態，並且可協助您排定補救措施的優先順序。
-如需詳細的弱點掃描和監視，建議您也要利用 Azure Sentinel 和 Azure 資訊安全中心。
+此藍圖會提供原則定義，以便利用虛擬機器、虛擬機器擴展集、SQL Database 伺服器與 SQL 伺服器受控執行個體的弱點評定分析來稽核記錄。 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 這些深入解析可讓您即時檢視已部署資源的安全性狀態，並且可協助您排定補救措施的優先順序。 如需詳細的弱點掃描和監視，建議您也要利用 Azure Sentinel 和 Azure 資訊安全中心。
 
 - \[預覽\]：虛擬機器上應啟用弱點評定
 - 弱點評定應於您的 SQL 伺服器上啟用

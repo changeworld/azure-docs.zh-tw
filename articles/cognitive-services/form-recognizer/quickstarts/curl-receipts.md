@@ -7,26 +7,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: b1f2d97aabfee47110946336c0ad8ad03d86a163
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77118499"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116586"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>快速入門：搭配使用表單辨識器 REST API 和 cURL 來擷取收據資料
 
-在本快速入門中，您將搭配使用 Azure 表單辨識器 REST API 與 cURL 來擷取及識別美國銷售收據上的相關資訊。
+在此快速入門中，您將搭配使用 Azure 表單辨識器 REST API 與 cURL，擷取及識別美國銷售收據上的相關資訊。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 - 已安裝 [cURL](https://curl.haxx.se/windows/)。
-- 收據影像的 URL。 您可以使用本快速入門的[範例影像](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true)。
+- 收據影像的 URL。 您可以使用本快速入門的[範例影像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -54,7 +54,7 @@ https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations
 
 呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 執行命令之前，請進行下列變更：
 
-1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。 您可以在表單辨識器的資源 [概觀]  索引標籤上找到此項目。
+1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。 您可以在表單辨識器的資源 [概觀] 索引標籤上找到此項目。
 1. 將 `<operationId>` 取代為先前步驟中的作業識別碼。
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
 
@@ -399,7 +399,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已搭配使用表單辨識器 REST API 和 cURL 來擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
+在此快速入門中，您已搭配使用表單辨識器 REST API 與 cURL，擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
 > [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

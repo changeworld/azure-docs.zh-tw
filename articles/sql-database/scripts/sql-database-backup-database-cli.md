@@ -1,5 +1,5 @@
 ---
-title: CLI 範例 -備份 - Azure SQL 資料庫
+title: Azure CLI：在 Azure SQL Database 中備份資料庫
 description: 將 Azure SQL 單一資料庫備份至 Azure 儲存體容器的 Azure CLI 範例指令碼
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 68af42bd83565243dad5d48f227fa5cef3115cf6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 605b2690f85ea8c800e6485b0eb998b795ea9d10
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061870"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022704"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>使用 CLI 將 Azure SQL 單一資料庫備份至 Azure 儲存體容器
 
-此 Azure CLI 範例會將 Azure SQL 資料庫備份至 Azure 儲存體容器。  
+此 Azure CLI 範例會將 SQL Database 中的資料庫備份至 Azure 儲存體容器。  
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -60,4 +60,4 @@ az group delete --name $resource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

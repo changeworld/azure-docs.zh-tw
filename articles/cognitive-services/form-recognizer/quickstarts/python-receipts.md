@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118763"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141920"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取收據資料
 
@@ -22,11 +22,14 @@ ms.locfileid: "77118763"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
-- 收據影像的 URL。 您可以使用本快速入門的[範例影像](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true)。
+- 收據影像的 URL。 您可以使用本快速入門的[範例影像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)。
+
+> [!NOTE]
+> 本快速入門使用 URL 存取的遠端收據。 若要改為使用本機檔案，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync) (英文)。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -78,7 +81,7 @@ ms.locfileid: "77118763"
         quit()
     ```
 
-1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如：form-recognizer-receipts.py  。
+1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如：form-recognizer-receipts.py。
 1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-receipts.py` 。
 
@@ -459,7 +462,7 @@ while n_try < n_tries:
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已使用表單辨識器 REST API 搭配 Python 來擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
+在本快速入門中，您使用表單辨識器 REST API 搭配 Python 來擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
 > [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

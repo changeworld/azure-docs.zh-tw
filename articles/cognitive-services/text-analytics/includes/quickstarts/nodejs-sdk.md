@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82095906"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140690"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 [v3 參考文件](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 套件 (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
@@ -29,11 +29,11 @@ ms.locfileid: "82095906"
 
 ---
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Node.js](https://nodejs.org/)。
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]  。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
@@ -56,12 +56,12 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 安裝 `@azure/ai-text-analytics` NPM 套件：
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.4
+npm install --save @azure/ai-text-analytics@1.0.0-preview.5
 ```
 
 > [!TIP]
@@ -83,7 +83,7 @@ npm install --save @azure/cognitiveservices-textanalytics
 您應用程式的 `package.json` 檔案會隨著相依性而更新。
 建立名為 `index.js` 的檔案，並新增下列內容：
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -128,7 +128,7 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 ## <a name="client-authentication"></a>用戶端驗證
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 使用金鑰和端點作為參數來建立新的 `TextAnalyticsClient` 物件。
 
@@ -146,7 +146,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `analyzeSentiment()` 方法，並取得傳回的 `SentimentBatchResult` 物件。 逐一查看結果清單，並印出每份文件的識別碼、文件層級情感與信賴分數。 針對每份文件，結果中會包含句子層級的情感，以及位移、長度和信賴分數。
 
@@ -213,7 +213,7 @@ ID: 0
 
 ## <a name="language-detection"></a>語言偵測
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `detectLanguage()` 方法，並取得傳回的 `DetectLanguageResultCollection`。 接著逐一查看結果，並印出每個文件的識別碼以及各自的主要語言。
 
@@ -262,7 +262,7 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 > [!NOTE]
 > 在 `3.0-preview` 版中：
@@ -283,7 +283,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.confidenceScore}`);
         });
     });
 }
@@ -297,26 +297,20 @@ entityRecognition(textAnalyticsClient);
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 1
+        Score: 0.29
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Score: 0.67
+        Score: 0.78
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Score: 0.81
+        Score: 0.82
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Score: 0.8
-        Name: interpreters      Category: PersonType    Subcategory: N/A
-        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
         Score: 0.8
 Document ID: 1
-        Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 0.96
-        Name: Redmond   Category: Location      Subcategory: GPE
-        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
-        Score: 0.31
+        Score: 0.25
 ```
 
 ## <a name="entity-linking"></a>實體連結
@@ -337,8 +331,8 @@ async function linkedEntityRecognition(client){
             console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
-            });
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
         });
     });
 }
@@ -353,24 +347,24 @@ linkedEntityRecognition(textAnalyticsClient);
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800       Score: 0.78
+                Text: Altair 8800       Score: 0.88
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates        Score: 0.55
-                Text: Gates     Score: 0.55
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen        Score: 0.53
+                Text: Paul Allen        Score: 0.60
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft         Score: 0.47
-                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4   Score: 0.25
+                Text: April 4   Score: 0.32
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC     Score: 0.28
+                Text: BASIC     Score: 0.33
 ```
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
@@ -418,7 +412,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `extractKeyPhrases()` 方法，並取得傳回的 `ExtractKeyPhrasesResult` 物件。 逐一查看結果，並列印每份文件的識別碼，以及任何偵測到的關鍵片語。
 

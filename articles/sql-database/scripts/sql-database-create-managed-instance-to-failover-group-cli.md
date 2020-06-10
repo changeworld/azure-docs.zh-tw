@@ -1,6 +1,6 @@
 ---
-title: CLI 範例 - 容錯移轉群組 - Azure SQL Database 受控執行個體
-description: Azure CLI 範例指令碼，用以建立 Azure SQL Database 受控執行個體、將其新增至容錯移轉群組，以及測試容錯移轉。
+title: Azure CLI：將受控執行個體新增到容錯移轉群組
+description: Azure CLI 範例指令碼，用以建立 Azure SQL 受控執行個體、將其新增至容錯移轉群組，以及測試容錯移轉。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 792746ec3bfcf429afb7919458b9ac7ec8446b60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061854"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115390"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>使用 CLI 將 Azure SQL Database 受控執行個體新增至容錯移轉群組
+# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 將 Azure SQL 受控執行個體新增至容錯移轉群組
 
 此 Azure CLI 範例會建立兩個受控執行個體，並將其新增至容錯移轉群組，然後測試是否能從主要受控執行個體容錯移轉至次要受控執行個體。
 
@@ -53,13 +53,13 @@ az group delete --name $resource
 | [az network nsg](/cli/azure/network/nsg) | 網路安全性群組命令。 |
 | [az network nsg rule](/cli/azure/network/nsg/rule)| 網路安全性規則命令。 |
 | [az network route-table](/cli/azure/network/route-table) | 路由表命令。 |
-| [az sql mi](/cli/azure/sql/mi) | 受控執行個體命令。 |
+| [az sql mi](/cli/azure/sql/mi) | SQL 受控執行個體命令。 |
 | [az network public-ip](/cli/azure/network/public-ip) | 網路公用 IP 位址命令。 |
 | [az network vnet-gateway](/cli/azure/network/vnet-gateway) | 虛擬網路閘道命令 |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | 受控執行個體容錯移轉群組命令。 |
+| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | SQL 受控執行個體容錯移轉群組命令。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

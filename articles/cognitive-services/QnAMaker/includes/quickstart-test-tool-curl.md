@@ -10,16 +10,16 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203947"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237666"
 ---
 這個以 cURL 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 最新 [**cURL**](https://curl.haxx.se/)。
 * 您必須具有
@@ -27,13 +27,13 @@ ms.locfileid: "82203947"
     * 先前的[快速入門](../Quickstarts/add-question-metadata-portal.md)中已定型並發佈的知識庫，其中具有問題與答案並已使用中繼資料和閒聊資料加以設定。
 
 > [!NOTE]
-> 當您準備好從知識庫產生問題的答案時，就必須[定型](../Quickstarts/create-publish-knowledge-base.md#save-and-train)並[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)知識庫。 發佈知識庫時，[發佈]  頁面會顯示用來產生答案的 HTTP 要求設定。 [cURL]  索引標籤會顯示從命令列工具產生答案所需的設定。
+> 當您準備好從知識庫產生問題的答案時，就必須[定型](../Quickstarts/create-publish-knowledge-base.md#save-and-train)並[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)知識庫。 發佈知識庫時，[發佈] 頁面會顯示用來產生答案的 HTTP 要求設定。 [cURL] 索引標籤會顯示從命令列工具產生答案所需的設定。
 
 ## <a name="use-metadata-to-filter-answer"></a>使用中繼資料來篩選答案
 
 使用先前的知識庫來根據中繼資料快速查詢答案。
 
-1. 從知識庫的 [設定]  頁面，選取 [CURL]  索引標籤來查看用來從知識庫產生答案的 cURL 命令範例。
+1. 從知識庫的 [設定] 頁面，選取 [CURL] 索引標籤來查看用來從知識庫產生答案的 cURL 命令範例。
 1. 將命令複製到可編輯的環境 (例如文字檔) 以便編輯命令。 如下所示編輯問題值，以將 `service:qna_maker` 的中繼資料作為 QnA 配對的篩選條件。
 
     ```bash
@@ -77,9 +77,11 @@ ms.locfileid: "82203947"
     }
     ```
 
-    如果有不符合搜尋詞彙但符合篩選條件的問答集，則不會傳回。 相反地，會傳回一般性答案 `No good match found in KB.`。
+    如果有不符合搜尋字詞但符合篩選條件的問答組，則不會傳回。 相反地，會傳回一般性答案 `No good match found in KB.`。
 
 ## <a name="use-debug-query-property"></a>使用 debug 查詢屬性
+> [!NOTE]
+>不建議針對任何相依性使用 Debug 屬性。 已新增此屬性以協助產品小組進行疑難排解。
 
 偵錯資訊可協助您了解所傳回答案的判斷方式。 此資訊雖然有用，但並非必要。 若要使用偵錯資訊來產生答案，請新增 `debug` 屬性：
 

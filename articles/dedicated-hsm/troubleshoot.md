@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80337217"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310099"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
@@ -120,7 +120,7 @@ Microsoft 無法提供 Thales SafeNet Luna 7 HSM 裝置的軟體和文件，必�
 
 ### <a name="hsm-device-reboot"></a>HSM 裝置重新開機
 
-有些設定變更需要將 HSM 重啟電源或重新開機。 Microsoft 在 Azure 中測試 HSM 時，判定在某些情況下，重新開機可能會停止回應。 這暗示必須在 Azure 入口網站中建立支援要求以要求強制重新開機，而且最多可能需要 48 小時的時間才能完成 (考量到這是 Azure 資料中心的手動程序)。  若要避免這種情況，請確保您已部署可直接從 Thales 取得的重新開機修補程式。 請參閱 Thales Luna Network HSM 7.2 下載中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，以取得重新開機停止回應問題的建議修補程式 (注意：您必須已在 Thales 支援入口網站中註冊才能下載)。
+有些設定變更需要將 HSM 重啟電源或重新開機。 Microsoft 在 Azure 中進行 HSM 測試判定了在某些情況下，重新開機有可能會停止回應。 這暗示必須在 Azure 入口網站中建立支援要求以要求強制重新開機，而且最多可能需要 48 小時的時間才能完成 (考量到這是 Azure 資料中心的手動程序)。  若要避免這種情況，請確保您已部署可直接從 Thales 取得的重新開機修補程式。 請參閱 Thales Luna Network HSM 7.2 下載中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，以取得重新開機停止回應問題的建議修補程式 (注意：您必須已在 Thales 支援入口網站中註冊才能下載)。
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS 憑證不同步
 當憑證過期或已透過設定更新覆寫時，用戶端可能會失去與 HSM 連線的能力。 每個 HSM 都應該重新套用憑證交換用戶端設定。

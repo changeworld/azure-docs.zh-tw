@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 991a31898bb010dab3db7a545cd115a60bfe3ed1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592350"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995711"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教學課程：建置採用 Azure 認知服務的 Flask 應用程式
 
@@ -44,7 +44,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 * [Flask 文件](http://flask.pocoo.org/)
 * [Flask for Dummies - Flask 的初學者指南](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 我們要先檢視本教學課程所將需要的軟體和訂用帳戶金鑰。
 
@@ -144,7 +144,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
    ```
    版本應列印至終端機。 若非如此，表示有錯誤發生。
 
-2. 若要執行 Flask 應用程式，您可以使用 flask 命令，或將 Python 的 -m 參數與 Flask 搭配使用。 您必須先匯出 `FLASK_APP` 環境變數，向終端機指出所要使用的應用程式，才能這麼做：
+2. 若要執行 Flask 應用程式，可以使用 flask 命令，或使用 Python 的 -m 參數搭配 Flask 使用。 您必須先匯出 `FLASK_APP` 環境變數，向終端機指出所要使用的應用程式，才能這麼做：
 
    **macOS/Linux**：
    ```

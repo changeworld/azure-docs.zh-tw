@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183309"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298752"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 在 Web 應用程式中啟用驗證
 
@@ -31,7 +31,7 @@ ms.locfileid: "78183309"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [建立使用者流程](tutorial-create-user-flows.md)以在您的應用程式中達成使用者體驗。
 * 安裝包含 **ASP.NET 和 Web 開發**工作負載的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
@@ -42,28 +42,27 @@ ms.locfileid: "78183309"
 
 ### <a name="add-a-redirect-uri-reply-url"></a>新增重新導向 URI (回覆 URL)
 
-您可以使用目前的 [應用程式]  體驗，或使用新整合的 [應用程式註冊 (預覽)]  體驗來更新應用程式。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要在您的 Azure AD B2C 租用戶中更新應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
+#### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 選擇 Azure 入口網站左上角的 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 選取 [應用程式]  ，然後選取 [webapp1]  應用程式。
-1. 在 [回覆 URL]  下方，新增 `https://localhost:44316`。
-1. 選取 [儲存]  。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式註冊]、選取 [擁有的應用程式] 索引標籤，然後選取 [webapp1] 應用程式。
+1. 在 [Web] 底下，選取 [新增 URI] 連結，輸入 `https://localhost:44316`，然後選取 [儲存]。
+1. 選取 [概觀]。
+1. 當您設定 Web 應用程式時，請記錄 [應用程式 (用戶端) 識別碼]，以供後續步驟使用。
+
+#### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式 (舊版)]，然後選取 [webapp1] 應用程式。
+1. 在 [回覆 URL] 下方，新增 `https://localhost:44316`。
+1. 選取 [儲存]。
 1. 當您設定 Web 應用程式時，請在 [屬性] 頁面上，記錄應用程式識別碼，以供後續步驟使用。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 選取 [應用程式註冊 (預覽)]  ，選取 [擁有的應用程式]  索引標籤，然後選取 *webapp1* 應用程式。
-1. 選取 [驗證]  ，然後選取 [試用全新體驗]  (若已顯示)。
-1. 在 [Web]  底下，選取 [新增 URI]  連結，輸入 `https://localhost:44316`，然後選取 [儲存]  。
-1. 選取 [概觀]  。
-1. 當您設定 Web 應用程式時，請記錄 [應用程式 (用戶端) 識別碼]  ，以供後續步驟使用。
 
 * * *
 
@@ -93,6 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 1. 在 Visual Studio 中開啟 **B2C-WebAPI-DotNet** 方案。
 1. 在 **TaskWebApp** 專案中，開啟 **Web.config** 檔案。
     1. 將 `ida:Tenant` 和 `ida:AadInstance` 的值更新為您所建立的 Azure AD B2C 租用戶名稱。 例如，以 `contoso` 取代 `fabrikamb2c`。
+    1. 將 `ida:TenantId` 的值取代為目錄識別碼，您可以在 Azure B2C 租用戶的屬性中找到識別碼 (在 Azure 入口網站的 [Azure Active Directory] > [屬性] > [目錄識別碼] 底下)。
     1. 將 `ida:ClientId` 的值取代為您所記錄下來的應用程式識別碼。
     1. 將 `ida:ClientSecret` 的值更換為您所記錄下來的金鑰。 如果用戶端密碼包含任何預先定義的 XML 實體，例如小於 (`<`)、大於 (`>`)、連字號 (`&`) 或雙引號 (`"`)，您必須在將用戶端密碼新增至 web.config 之前，以 XML 將其編碼來逸出這些字元。
     1. 將 `ida:SignUpSignInPolicyId` 的值取代為 `b2c_1_signupsignin1`。
@@ -101,18 +101,18 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ## <a name="run-the-sample"></a>執行範例
 
-1. 在方案總管中，以滑鼠右鍵按一下 **TaskWebApp** 專案，然後按一下 [設為起始專案]  。
+1. 在方案總管中，以滑鼠右鍵按一下 **TaskWebApp** 專案，然後按一下 [設為起始專案]。
 1. 按 **F5**。 預設瀏覽器隨即啟動，並顯示本機網站位址 `https://localhost:44316/`。
 
 ### <a name="sign-up-using-an-email-address"></a>使用電子郵件地址註冊
 
-1. 選取 [註冊 / 登入]  以應用程式的使用者身分註冊。 便會使用 **b2c_1_signupsignin1** 使用者流程。
-1. Azure AD B2C 會顯示含有註冊連結的登入頁面。 由於您還沒有帳戶，因此選取 [立即註冊]  。 註冊工作流程會顯示一個使用電子郵件地址來收集並驗證使用者身分識別的頁面。 註冊工作流程也會收集使用者的密碼，以及在使用者流程中定義的要求屬性。
+1. 選取 [註冊 / 登入] 以應用程式的使用者身分註冊。 便會使用 **b2c_1_signupsignin1** 使用者流程。
+1. Azure AD B2C 會顯示含有註冊連結的登入頁面。 由於您還沒有帳戶，因此選取 [立即註冊]。 註冊工作流程會顯示一個使用電子郵件地址來收集並驗證使用者身分識別的頁面。 註冊工作流程也會收集使用者的密碼，以及在使用者流程中定義的要求屬性。
 1. 請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
     ![註冊頁面顯示為登入/註冊工作流程的一部分](./media/tutorial-web-app-dotnet/sign-up-workflow.PNG)
 
-1. 選取 [建立]  ，在 Azure AD B2C 租用戶中建立本機帳戶。
+1. 選取 [建立]，在 Azure AD B2C 租用戶中建立本機帳戶。
 
 應用程式使用者現在已可使用電子郵件地址登入並使用 Web 應用程式。
 

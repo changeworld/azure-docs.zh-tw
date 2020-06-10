@@ -9,57 +9,49 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836476"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248323"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>開始使用 Azure Synapse Analytics
 
-本教學課程將引導您完成設定及使用 Azure Synapse Analytics 所需的所有基本步驟。
+本文件將引導您完成設定及使用 Azure Synapse Analytics 所需的所有基本步驟。
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>準備與 Synapse 工作區搭配使用的儲存體帳戶
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)
-1. 使用下列設定建立新的儲存體帳戶：
-    * 在 [基本] 索引標籤中
+* 開啟 [Azure 入口網站](https://portal.azure.com)
+* 使用下列設定建立新的儲存體帳戶：
 
-    |設定 | 建議的值 | 描述 |
-    |---|---|---|
-    |**儲存體帳戶名稱**| 請為其指定任何名稱。|在本文件中，我們將其稱為 `contosolake`。
-    |**帳戶類型**|必須設定為 `StorageV2`||
-    |**位置**|您可以挑選任何位置| 我們建議您的 Synapse 工作區與 Azure Data Lake Storage (ADLS) Gen2 帳戶位於相同的區域。|
-    ||||
-    
-    * 在 [進階] 索引標籤中
-    
-    |設定 | 建議的值 | 描述 |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure Synapse 僅適用於已啟用此設定的儲存體帳戶。|
-    ||||
+    |索引標籤|設定 | 建議的值 | 描述 |
+    |---|---|---|---|
+    |基本概念|**儲存體帳戶名稱**| 請為其指定任何名稱。|在本文件中，我們將其稱為 `contosolake`。|
+    |基本概念|**帳戶類型**|必須設定為 `StorageV2`||
+    |基本概念|**位置**|您可以挑選任何位置| 我們建議您的 Synapse 工作區與 Azure Data Lake Storage (ADLS) Gen2 帳戶位於相同的區域。|
+    |進階|**Data Lake Storage Gen2**|`Enabled`| Azure Synapse 僅適用於已啟用此設定的儲存體帳戶。|
 
 1. 建立儲存體帳戶之後，請從左側導覽中選取 [存取控制 (IAM)]。 然後指派下列角色，或確定其已指派。 
+
     a. * 將您自己指派給儲存體帳戶 b 上的 [擁有者] 角色。 * 將您自己指派給儲存體帳戶上的 [儲存體 Blob 資料擁有者] 角色
+
 1. 從左側導覽中，選取 [容器] 並建立容器。 請為其指定任何名稱。 接受預設的 [公用存取層級]。 在本文件中，我們將呼叫容器 `users`。 選取 [建立]。 
+
+在下列步驟中，您會將 Synapse 工作區設定為使用此儲存體帳戶作為其「主要」儲存體帳戶，以及用來儲存工作區資料的容器。 工作區會將資料儲存在此帳戶的 Apache Spark 資料表和 Spark 應用程式記錄檔中，名為 `/synapse/workspacename` 的資料夾底下。
 
 ## <a name="create-a-synapse-workspace"></a>建立 Synapse 工作區
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 `Synapse`。
-1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]
-1. 選取 [+ 新增]
-1. [基本] 索引標籤：
+* 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 `Synapse`。
+* 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]
+* 選取 [+ 新增]，使用這些設定來建立工作區
 
-    |設定 | 建議的值 | 描述 |
-    |---|---|---|
-    |**工作區名稱**|您可以將其命名為任何名稱。| 在本文件中，我們將使用 `myworkspace`
-    |**區域**|比對儲存體帳戶的區域||
-    |||
+    |索引標籤|設定 | 建議的值 | 描述 |
+    |---|---|---|---|
+    |基本概念|**工作區名稱**|您可以將其命名為任何名稱。| 在本文件中，我們將使用 `myworkspace`|
+    |基本概念|**區域**|比對儲存體帳戶的區域|
 
 1. 在 [選取 Data Lake Storage Gen 2] 底下，選取您先前建立的帳戶和容器。
-    > [!NOTE]
-    > 我們會將這裡所選的儲存體帳戶視為 Synapse 工作區的「主要」儲存體帳戶。 此帳戶是用於將資料儲存在 Apache Spark 資料表中，以及用於在建立 Spark 集區或執行 Spark 應用程式時所建立的記錄。
 
 1. 選取 [檢閱 + 建立]。 選取 [建立]。 您的工作區將會在幾分鐘內就緒。
 
@@ -81,27 +73,17 @@ ms.locfileid: "83836476"
 ## <a name="create-a-sql-pool"></a>建立 SQL 集區
 
 1. 在 Synapse Studio 的左側導覽中，選取 [管理 > SQL 集區]
-
-    > [!NOTE] 
-    > 所有 Synapse 工作區都有預先建立的集區，稱為 **SQL 隨選**。
-
 1. 選取 [+ 新增]，然後輸入下列設定：
 
     |設定 | 建議的值 | 
-    |---|---|---|
+    |---|---|
     |**SQL 集區名稱**| `SQLDB1`|
     |**效能等級**|`DW100C`|
-    |||
 
 1. 選取 [檢閱 + 建立]，然後選取 [建立]。
-1. 您的 SQL 集區將會在幾分鐘內就緒。
+1. 您的 SQL 集區將會在幾分鐘內就緒。 建立 SQL 集區時，其會與 SQL 集區資料庫相關聯 (亦稱為 **SQLDB1**)。
 
-    > [!NOTE]
-    > Synapse SQL 集區會對應到過去稱為「Azure SQL 資料倉儲」的項目
-
-只要 SQL 集區執行中，就會取用計費資源。 因此，您可以視需要暫停集區，以降低成本。
-
-建立 SQL 集區時，其會與 SQL 集區資料庫相關聯 (亦稱為 **SQLDB1**)。
+SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫停集區，以降低成本。
 
 ## <a name="create-an-apache-spark-pool"></a>建立 Apache Spark 集區
 
@@ -109,11 +91,10 @@ ms.locfileid: "83836476"
 1. 選取 [+ 新增]，然後輸入下列設定：
 
     |設定 | 建議的值 | 
-    |---|---|---|
+    |---|---|
     |**Apache Spark 集區名稱**|`Spark1`
     |**節點大小**| `Small`|
     |**節點數目**| 將最小值設定為 3，以及最大值設定為 3|
-    |||
 
 1. 選取 [檢閱 + 建立]，然後選取 [建立]。
 1. 您的 Apache Spark 集區會在幾秒內準備就緒。
@@ -126,7 +107,7 @@ ms.locfileid: "83836476"
 當您在 Synapse 中執行任何 Spark 活動時，需指定要使用的 Spark 集區。 集區會通知 Synapse 要使用多少 Spark 資源。 您只需支付已使用的資源。 當您使用集區主動停止時，資源將會自動逾時並予以回收。
 
 > [!NOTE]
-> 會從 Spark 集區獨立建立 Spark 資料庫。 工作區一律會有一個名為**預設**的 Spark DB，您可以建立額外的 Spark 資料庫。
+> 會從 Spark 集區獨立建立 Spark 資料庫。 工作區一律會有一個名為**預設**的 Spark 資料庫，您可用於建立額外的 Spark 資料庫。
 
 ## <a name="the-sql-on-demand-pool"></a>SQL 隨選集區
 
@@ -149,7 +130,7 @@ ms.locfileid: "83836476"
 1. 瀏覽至 [SQLDB1 > 資料表]。 您會看到已載入數個資料表。
 1. 以滑鼠右鍵按一下 [dbo.Trip] 資料表，然後選取 [新增 SQL 指令碼 > 選取前 100 個資料列]
 1. 將會建立並自動執行新的 SQL 指令碼。
-1. 請注意，在 SQL 指令碼頂端的 [連線到] 會自動設定成名為 SQLDB1 的 SQL 集區。
+1. 請注意，在 SQL 指令碼頂端的 [連接到] 會自動設定成名為 `SQLDB1` 的 SQL 集區。
 1. 將 SQL 指令碼的文字取代為此程式碼並加以執行。
 
     ```sql
@@ -167,7 +148,7 @@ ms.locfileid: "83836476"
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>將 NYC 計程車範例資料載入 Spark nyctaxi 資料庫
 
-我們在 `SQLDB1` 資料表中提供資料。 現在，我們會將其載入名為 'nyctaxi` 的 Spark 資料庫。
+我們在 `SQLDB1` 資料表中提供資料。 我們現在會將其載入名為 `nyctaxi` 的 Spark 資料庫。
 
 1. 在 Synapse Studio 中，瀏覽至 [開發] 中樞
 1. 選取 [+]，然後選取 [筆記本]
@@ -189,7 +170,7 @@ ms.locfileid: "83836476"
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和筆記本來分析 NYC 計程車資料
 
 1. 返回筆記本
-1. 建立新的程式碼儲存格、輸入下列文字，然後執行儲存格，以舉例說明我們載入 `nyctaxi` Spark DB 的 NYC 計程車資料。
+1. 建立新的程式碼儲存格並輸入下列文字，然後執行該儲存格，舉例說明我們載入 `nyctaxi` Spark 資料庫的 NYC 計程車資料。
 
    ```py
    %%pyspark
@@ -299,8 +280,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 選取 [已連結]
 1. 瀏覽至 [儲存體帳戶 > myworkspace (主要 - contosolake)]
 1. 選取 [使用者 (主要)]
-1. 您應該會看到名為 `NYCTaxi' 的資料夾。 在其中，您應該會看到 'PassengerCountStats.csv' 和 'PassengerCountStats.parquet' 這兩個資料夾。
-1. 瀏覽至 `PassengerCountStats.parquet' 資料夾。
+1. 您應會看到名為 `NYCTaxi` 的資料夾。 您應該會在其內看到 `PassengerCountStats.csv` 及 `PassengerCountStats.parquet` 這兩個資料夾。
+1. 瀏覽至 `PassengerCountStats.parquet` 資料夾。
 1. 在 Parquet 檔案內以滑鼠右鍵按一下，然後選取 [新增筆記本]，隨即會建立具有如下儲存格的筆記本：
 
     ```py
@@ -342,11 +323,10 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 選取 [+ 新增]，然後選取 [連線到 Power BI]，並設定下欄欄位：
 
     |設定 | 建議的值 | 
-    |---|---|---|
+    |---|---|
     |**名稱**|`NYCTaxiWorkspace1`|
     |**工作區名稱**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. 選取 [建立]。
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>建立在 Synapse 工作區中使用資料的 Power BI 資料集

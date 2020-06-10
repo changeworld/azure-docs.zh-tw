@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644676"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140968"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>什麼是 Azure Synapse Analytics 中的 Apache Spark
 
@@ -39,9 +39,9 @@ Azure Synapse 中的 Spark 集區提供完全受控的 Spark 服務。 這裡列
 | 容易使用 |Synapse Analytics 包括衍生自 [Nteract](https://nteract.io/) 的自訂筆記本。 您可以使用這些 Notebook 來進行互動式的資料處理和視覺化。|
 | REST API |Synapse Analytics 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，這是是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 |
 | 支援 Azure Data Lake Storage Generation 2| Azure Synapse 中的 Spark 集區可以使用 Azure Data Lake Storage Generation 2 以及 Blob 儲存體。 如需有關 Data Lake Storage 的詳細資訊，請參閱 [Azure Data Lake Storage 概觀](../../data-lake-store/data-lake-store-overview.md)。 |
-| 第三方 IDE 整合 | Azure Synapse 提供 [Jetbrains' IntelliJ IDEA](https://www.jetbrains.com/idea/) 的 IDE 外掛程式，適用於建立應用程式並將其提交至 Spark 集區。 |
+| 第三方 IDE 整合 | Azure Synapse 提供 [Jetbrains' IntelliJ IDEA](https://www.jetbrains.com/idea/) 的 IDE 外掛程式，在建立應用程式並將其提交至 Spark 集區上很有幫助。 |
 | 預先載入的 Anaconda 程式庫 |Azure Synapse 中的 Spark 集區隨附預先安裝的 Anaconda 程式庫。 [Anaconda](https://docs.continuum.io/anaconda/) 為機器學習、資料分析、視覺化等主題提供將近 200 個程式庫。 |
-| 延展性 | Azure Synapse 集區中的 Apache Spark 可以啟用自動調整功能，因此集區會視需要擴大和縮小。 此外，由於所有資料都儲存在 Azure 儲存體或 Data Lake Storage 內，因此您可以在不遺失資料的情況下關閉 Spark 集區。 |
+| 延展性 | Azure Synapse 集區中的 Apache Spark，可以啟用自動調整功能，讓集區可視需要而透過新增及刪除節點的方式，進行擴放。 此外，由於所有資料都儲存在 Azure 儲存體或 Data Lake Storage 內，因此您可以在不遺失資料的情況下關閉 Spark 集區。 |
 
 依預設，Azure Synapse 中的 Spark 集區能經由集區提供下列元件。
 

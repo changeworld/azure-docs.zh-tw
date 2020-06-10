@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 12/09/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592758"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996936"
 ---
 # <a name="what-is-custom-translator"></a>什麼是自訂翻譯工具？
 
@@ -54,7 +54,7 @@ Microsoft Translator 在 2016 年發行了[類神經機器翻譯 (NMT)](https://
 
 透過[專用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (目前處於預覽狀態)，也能以程式設計方式存取[自訂翻譯工具](https://portal.customtranslator.azure.ai)。 此 API 可讓使用者透過自己的應用程式或 WebService，定期管理訓練的建立或更新。
 
-使用自訂模型來翻譯內容的成本，取決於使用者的翻譯工具定價層。 如需定價層的詳細資料，請參閱認知服務[翻譯工具定價網頁](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
+使用自訂模型來翻譯內容的費用，取決於使用者的翻譯工具定價層。 如需定價層的詳細資料，請參閱認知服務[翻譯工具定價網頁](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>隨時隨地在所有應用程式和服務上安全地進行翻譯
 

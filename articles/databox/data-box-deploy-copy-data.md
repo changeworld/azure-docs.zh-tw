@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1730317296c672eb9347986ec41fdba25427408e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200494"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219102"
 ---
-::: zone target="docs" 
+::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教學課程：透過 SMB 將資料複製到 Azure 資料箱
 
@@ -35,27 +35,28 @@ ms.locfileid: "83200494"
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * Prerequisites
+>
+> * 必要條件
 > * 連線至資料箱
 > * 將資料複製到資料箱
 
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
 1. 您已完成[教學課程：設定 Azure 資料箱](data-box-deploy-set-up.md)。
-2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]  。
+2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]。
 3. 您有一部主機電腦，其中包含要複製到資料箱的資料。 您的主機電腦必須符合下列條件：
-    - 執行[支援的作業系統](data-box-system-requirements.md)。
-    - 連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，請使用 1 GbE 資料連結，但是複製速度會受到影響。
+   * 執行[支援的作業系統](data-box-system-requirements.md)。
+   * 連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，請使用 1 GbE 資料連結，但是複製速度會受到影響。
 
 ## <a name="connect-to-data-box"></a>連線至資料箱
 
 根據選取的儲存體帳戶，資料箱最多會建立：
-- 每個相關聯的儲存體帳戶三個共用 (針對 GPv1 與 GPv2)。
-- 一個適用於進階儲存體的共用。
-- 一個適用於 Blob 儲存體帳戶的共用。
+
+* 每個相關聯的儲存體帳戶三個共用 (針對 GPv1 與 GPv2)。
+* 一個適用於進階儲存體的共用。
+* 一個適用於 Blob 儲存體帳戶的共用。
 
 在區塊 Blob 與分頁 Blob 共用底下，第一層實體是容器，而第二層實體是 Blob。 在 Azure 檔案共用底下，第一層實體是共用，第二層實體是檔案。
 
@@ -69,15 +70,15 @@ ms.locfileid: "83200494"
 
 如果使用 Windows Server 主機電腦，請依照下列步驟來連線至資料箱。
 
-1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]  。 按一下 [取得認證]  ，以取得您儲存體帳戶相關共用的存取認證。 
+1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 按一下 [取得認證]，以取得您儲存體帳戶相關共用的存取認證。 
 
     ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱]  和 [密碼]  。 按一下 [確定]  。
+2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 按一下 [確定]。
     
     ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 devicemanagertest1  )，請開啟命令視窗。 在命令提示字元中，輸入：
+3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 devicemanagertest1)，請開啟命令視窗。 在命令提示字元中，輸入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -85,7 +86,7 @@ ms.locfileid: "83200494"
     - Azure 區塊 Blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure 分頁 Blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Azure 檔案服務 - `\\10.126.76.172\devicemanagertest1_AzFile`
-    
+
 4. 出現提示時，請輸入共用的密碼。 下列範例說明如何透過前述命令連線至共用。
 
     ```
@@ -94,15 +95,15 @@ ms.locfileid: "83200494"
     The command completed successfully.
     ```
 
-4. 按 Windows + R。在 [執行]  視窗中，指定 `\\<device IP address>`。 按一下 [確定]  以開啟檔案總管。
+4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 按一下 [確定] 以開啟檔案總管。
     
     ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     您現在應可看到以資料夾形式呈現的共用。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+    ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
@@ -113,17 +114,19 @@ ms.locfileid: "83200494"
 連線至資料箱共用後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
 * 確實將資料複製到與適當資料格式相對應的共用。 例如，將區塊 Blob 資料複製到區塊 Blob 的共用。 將 VHD 複製到分頁 Blob。 如果資料格式不符合適當的共用類型，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
-*  複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。
+* 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。
 * 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
 * 我們的建議如下：
   * 您不要同時使用 SMB 與 NFS。
   * 將相同的資料複製到 Azure 上的相同最終目的地。
 
   在這類情況下，無法判斷最後的結果。
-* 一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
-* 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
+* 一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 
-連線至 SMB 共用之後，請開始複製資料。 您可以使用任何與 SMB 相容的檔案複製工具 (例如 Robocopy) 來複製資料。 使用 Robocopy 可起始多個複製作業。 使用下列命令：
+> [!IMPORTANT]
+> 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
+
+連線至 SMB 共用之後，開始複製資料。 您可以使用任何與 SMB 相容的檔案複製工具 (例如 Robocopy) 來複製資料。 使用 Robocopy 可起始多個複製作業。 使用下列命令：
     
     robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
@@ -203,7 +206,6 @@ ms.locfileid: "83200494"
         Files :        17        17         0         0         0         0
         Bytes :     3.9 k     3.9 k         0         0         0         0          
     C:\Users>
-       
 
 若要將效能最佳化，複製資料時請使用下列 robocopy 參數。
 
@@ -211,13 +213,12 @@ ms.locfileid: "83200494"
 |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
 |    資料箱         |    2 個 Robocopy 工作階段 <br> 每個工作階段 16 個執行緒    |    3 個 Robocopy 工作階段 <br> 每個工作階段 16 個執行緒    |    2 個 Robocopy 工作階段 <br> 每個工作階段 24 個執行緒    |
 
-
 如需 Robocopy 命令的詳細資訊，請移至 [Robocopy 和數個範例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。
 
 開啟目標資料夾，以檢視並確認已複製的檔案。 如果您在複製程序期間遇到任何錯誤，請下載錯誤檔以進行疑難排解。 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 
 為了確保資料完整性，在複製資料時會計算內嵌的總和檢查碼。 複製完成後，請確認您的裝置上已使用的空間和可用空間。
-    
+
    ![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
@@ -230,41 +231,51 @@ ms.locfileid: "83200494"
 
 ## <a name="copy-data-via-smb"></a>透過 SMB 複製資料
 
+若要透過 SMB 複製資料：
+
 1. 如果使用 Windows 主機，請使用下列命令來連線到 SMB 共用：
 
     `\\<IP address of your device>\ShareName`
 
-2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製]  頁面。
+2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製] 頁面。
 3. 使用與 SMB 相容的檔案複製工具 (例如 Robocopy) 來將資料複製到共用。 
 
 如需逐步指示，請移至[教學課程：透過 SMB 將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
 
 ## <a name="copy-data-via-nfs"></a>透過 NFS 複製資料
 
+若要透過 NFS 複製資料：
+
 1. 如果使用 NFS 主機，請使用下列命令在您的資料箱上掛接 NFS 共用：
 
     `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
 
-2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製]  頁面。
+2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製] 頁面。
 3. 使用 `cp` 或 `rsync` 命令來複製您的資料。
 
 如需逐步指示，請移至[教學課程：透過 NFS 將資料複製到 Azure 資料箱](data-box-deploy-copy-data-via-nfs.md)。
 
 ## <a name="copy-data-via-rest"></a>透過 REST 複製資料
 
-1. 若要透過 REST API 使用資料箱 Blob 儲存體來複製資料，您可以透過 HTTP  或 HTTPS  來進行連線。
+若要透過 REST 複製資料：
+
+1. 若要透過 REST API 使用資料箱 Blob 儲存體來複製資料，您可以透過 HTTP 或 HTTPS 來進行連線。
 2. 若要將資料複製到資料箱 Blob 儲存體，您可以使用 AzCopy。
 
 如需逐步指示，請移至[教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體](data-box-deploy-copy-data-via-nfs.md)。
 
 ## <a name="copy-data-via-data-copy-service"></a>透過資料複製服務來複製資料
 
-1. 若要使用資料複製服務來複製資料，您需要建立一項作業。 在您資料箱的本機 Web UI 中，移至 [管理] > [複製資料] > [建立]  。 
+若要透過資料複製服務來複製資料：
+
+1. 若要使用資料複製服務來複製資料，您需要建立一項作業。 在您資料箱的本機 Web UI 中，移至 [管理] > [複製資料] > [建立]。
 2. 填寫參數並建立作業。
 
 如需逐步指示，請移至[教學課程：使用資料複製服務將資料複製到 Azure 資料箱](data-box-deploy-copy-data-via-copy-service.md)。
 
 ## <a name="copy-data-to-managed-disks"></a>將資料複製到受控磁碟
+
+若要複製資料受控磁碟：
 
 1. 訂購資料箱裝置時，您應該已選取受控磁碟作為儲存體目的地。
 2. 您可以透過 SMB 或 NFS 共用連線到資料箱。
@@ -274,7 +285,6 @@ ms.locfileid: "83200494"
 
 ::: zone-end
 
-
 ::: zone target="docs"
 
 ## <a name="next-steps"></a>後續步驟
@@ -282,10 +292,10 @@ ms.locfileid: "83200494"
 在本教學課程中，您已了解 Azure 資料箱的相關主題，像是：
 
 > [!div class="checklist"]
-> * Prerequisites
+>
+> * 必要條件
 > * 連線至資料箱
 > * 將資料複製到資料箱
-
 
 請繼續進行下一個教學課程，了解如何將資料箱送回給 Microsoft。
 
@@ -293,4 +303,3 @@ ms.locfileid: "83200494"
 > [將您的 Azure 資料箱寄送給 Microsoft](./data-box-deploy-picked-up.md)
 
 ::: zone-end
-

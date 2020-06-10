@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593375"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299303"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>教學課程：將 Gatsby 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -28,7 +28,7 @@ ms.locfileid: "83593375"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://azure.microsoft.com/free/)。
 - GitHub 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://github.com/join)。
@@ -85,8 +85,8 @@ ms.locfileid: "83593375"
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 按一下 [建立資源]
-1. 搜尋 [靜態 Web Apps]
-1. 按一下 [靜態 Web Apps (預覽)]
+1. 搜尋 [Static Web Apps]
+1. 按一下 [Static Web Apps (預覽)]
 1. 按一下 [建立] 
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
@@ -95,7 +95,7 @@ ms.locfileid: "83593375"
 
 1. 在 [資源群組] 中選取 [新增]。 在 [新增資源群組名稱] 中輸入 gatsby-static-web-app，然後選取 [確定]。
 
-1. 接著，在 [名稱] 方塊中，為您的應用程式提供全域唯一的名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值會作為您靜態 Web 應用程式的 URL 前置詞，格式為 `https://<YOUR_APP_NAME>.azurestaticapps.net`。
+1. 接下來，在 [名稱] 方塊中提供應用程式的名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。
 
 1. 在 [區域] 中，選取您附近的可用區域。
 

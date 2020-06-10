@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683352"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248527"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站
 
@@ -143,12 +143,13 @@ ms.locfileid: "83683352"
     f. 選取 [確定]。   
 
     ![設定 OutputDataset 的屬性](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>建立管線 
 在此程序中，您會建立並驗證管線，其中含有使用輸入和輸出資料集的複製活動。 複製活動會將資料從您在輸入資料集設定中指定的檔案，複製到您在輸出資料集設定中指定的檔案。 如果輸入資料集僅指定資料夾 (而不是檔案名稱)，則複製活動會將來源資料夾中的所有檔案複製到目的地。 
 
 1. 選取 **+** (加號) 按鈕，然後選取 [管線]。 
 
-1. 在 [一般] 索引標籤上，指定 **CopyPipeline** 作為 [名稱]。 
+1. 在 [屬性] 底下的 [一般] 面板中，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的屬性圖示來摺疊面板。
 
 1. 在 [活動] 工具箱中，展開 [移動和轉換]。 將 [活動] 工具箱中的 [資料複製] 活動拖到管線設計工具介面。 您也可以在 [活動] 工具箱中搜尋活動。 指定 **CopyFromBlobToBlob** 作為 [名稱]。
    ![建立複製資料活動](./media/quickstart-create-data-factory-portal/copy-activity.png)

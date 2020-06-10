@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130857"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015993"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
 
@@ -22,39 +22,42 @@ ms.locfileid: "80130857"
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
-*   首先，您應建立已啟用**擷取**功能的事件中樞，並 Azure Blob 儲存體設定為目的地。 WindTurbineGenerator 所產生的資料會串流至事件中樞，並以 Avro 檔案的形式自動擷取到 Azure 儲存體中。 
-*   接下來，您應建立以事件中樞命名空間作為來源，並以 Azure 函式端點作為目的地的 Azure 事件格線訂用帳戶。
-*   每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式，。 接著，此函式會將資料從 Blob 移轉至 SQL 資料倉儲。
+- 首先，您應建立已啟用**擷取**功能的事件中樞，並 Azure Blob 儲存體設定為目的地。 WindTurbineGenerator 所產生的資料會串流至事件中樞，並以 Avro 檔案的形式自動擷取到 Azure 儲存體中。
+- 接下來，您應建立以事件中樞命名空間作為來源，並以 Azure 函式端點作為目的地的 Azure 事件格線訂用帳戶。
+- 每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式，。 接著，此函式會將資料從 Blob 移轉至 SQL 資料倉儲。
 
-在本教學課程中，您會執行下列動作： 
+在本教學課程中，您會執行下列動作：
 
 > [!div class="checklist"]
-> * 部署基礎結構
-> * 將程式碼發佈至 Functions 應用程式
-> * 從 Functions 應用程式建立事件格線訂用帳戶
-> * 將範例資料串流至事件中樞。 
-> * 確認 SQL 資料倉儲中已擷取的資料
+>
+> - 部署基礎結構
+> - 將程式碼發佈至 Functions 應用程式
+> - 從 Functions 應用程式建立事件格線訂用帳戶
+> - 將範例資料串流至事件中樞。
+> - 確認 SQL 資料倉儲中已擷取的資料
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs/)。 在安裝時，請確實安裝下列工作負載：.NET 桌面開發、Azure 開發、ASP.NET 和 Web 開發、Node.js 開發和 Python 開發
 - 下載 [Git 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)。範例解決方案包含下列元件：
-    - *WindTurbineDataGenerator* – 一個簡單的發行者，會將範例風力發電機資料傳送至已啟用擷取功能的事件中樞
-    - *FunctionDWDumper* – 一個 Azure 函式，會在 Avro 檔案擷取至 Azure 儲存體 Blob 時收到事件格線通知。 它會接收 Blob 的 URI 路徑、讀取其內容，並將這項資料推送至 SQL 資料倉儲。
 
-    此範例使用最新的 Azure.Messaging.EventHubs 套件。 您可以在[這裡](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 套件的舊範例。 
+  - *WindTurbineDataGenerator* – 一個簡單的發行者，會將範例風力發電機資料傳送至已啟用擷取功能的事件中樞
+  - *FunctionDWDumper* – 一個 Azure 函式，會在 Avro 檔案擷取至 Azure 儲存體 Blob 時收到事件格線通知。 它會接收 Blob 的 URI 路徑、讀取其內容，並將這項資料推送至 SQL 資料倉儲。
+
+  此範例使用最新的 Azure.Messaging.EventHubs 套件。 您可以在[這裡](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 套件的舊範例。
 
 ### <a name="deploy-the-infrastructure"></a>部署基礎結構
+
 使用 Azure PowerShell 或 Azure CLI，利用此 [Azure Resource Manager 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json)部署本教學課程所需要的基礎結構。 此範本會建立下列資源：
 
--   已啟用擷取功能的事件中樞
--   已擷取的事件資料適用的儲存體帳戶
--   用來裝載 Functions 應用程式的 Azure App Service 方案
--   對已擷取的事件檔案進行處理的函式應用程式
--   用來裝載資料倉儲的 SQL Server
--   SQL 資料倉儲，用來儲存移轉的資料
+- 已啟用擷取功能的事件中樞
+- 已擷取的事件資料適用的儲存體帳戶
+- 用來裝載 Functions 應用程式的 Azure App Service 方案
+- 對已擷取的事件檔案進行處理的函式應用程式
+- 用來裝載資料倉儲的邏輯 SQL 伺服器
+- SQL 資料倉儲，用來儲存移轉的資料
 
 以下幾節將提供相關 Azure CLI 和 Azure PowerShell 命令，用以部署本教學課程所需的基礎結構。 執行這些命令之前，請先更新下列物件的名稱： 
 
@@ -62,7 +65,7 @@ ms.locfileid: "80130857"
 - 資源群組的區域
 - 事件中樞命名空間
 - 事件中樞
-- Azure SQL Server
+- 邏輯 SQL 伺服器
 - SQL 使用者 (和密碼)
 - Azure SQL 資料庫
 - Azure 儲存體 
@@ -71,6 +74,7 @@ ms.locfileid: "80130857"
 這些指令碼需要一些時間才能建立所有的 Azure 成品。 請靜候指令碼完成，再繼續操作。 如果部署因故失敗，請刪除資源群組並修正回報的問題，然後再重新執行命令。 
 
 #### <a name="azure-cli"></a>Azure CLI
+
 若要使用 Azure CLI 部署範本，請使用下列命令：
 
 ```azurecli-interactive
@@ -91,8 +95,8 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
+### <a name="create-a-table-in-sql-data-warehouse"></a>在 SQL 資料倉儲中建立資料表
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>在 SQL 資料倉儲中建立資料表 
 使用 [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) 或入口網站中的查詢編輯器執行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 指令碼，在您的 SQL 資料倉儲中建立資料表。 
 
 ```sql
@@ -108,21 +112,21 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>將程式碼發佈至 Functions 應用程式
 
-1. 在 Visual Studio 2019 中開啟解決方案 EventHubsCaptureEventGridDemo.sln  。
+1. 在 Visual Studio 2019 中開啟解決方案 EventHubsCaptureEventGridDemo.sln。
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 [FunctionEGDWDumper]  ，然後選取 [發佈]  。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [FunctionEGDWDumper]，然後選取 [發佈]。
 
    ![發佈函數應用程式](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. 選取 [Azure 函數應用程式]  和 [選取現有的]  。 選取 [發佈]  。
+1. 選取 [Azure 函數應用程式] 和 [選取現有的]。 選取 [發佈] 。
 
    ![目標函數應用程式](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. 選取透過範本部署的函數應用程式。 選取 [確定]  。
+1. 選取透過範本部署的函數應用程式。 選取 [確定]。
 
    ![選取函數應用程式](./media/store-captured-data-data-warehouse/select-function-app.png)
 
-1. 當 Visual Studio 完成設定檔設定時，選取 [發佈]  。
+1. 當 Visual Studio 完成設定檔設定時，選取 [發佈]。
 
    ![Select publish](./media/store-captured-data-data-warehouse/select-publish.png)
 
@@ -139,26 +143,26 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![選取函式](./media/store-captured-data-data-warehouse/select-function.png)
 
-1. 選取 [新增事件方格訂用帳戶]  。
+1. 選取 [新增事件方格訂用帳戶]。
 
    ![新增訂用帳戶](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. 為事件方格訂用帳戶指定名稱。 使用 [事件中樞命名空間]  作為事件類型。 提供值以選取您的事件中樞命名空間執行個體。 將訂閱者端點保留為提供的值。 選取 [建立]  。
+1. 為事件方格訂用帳戶指定名稱。 使用 [事件中樞命名空間] 作為事件類型。 提供值以選取您的事件中樞命名空間執行個體。 將訂閱者端點保留為提供的值。 選取 [建立]。
 
    ![建立訂用帳戶](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>產生範例資料  
 現在，您已設定事件中樞、SQL 資料倉儲、Azure 函式應用程式和事件格線訂用帳戶。 您可以執行 WindTurbineDataGenerator.exe，以產生在原始程式碼中的事件中樞更新了連接字串和名稱之後會傳至事件中樞的資料流。 
 
-1. 在入口網站中，選取您的事件中樞命名空間。 選取 [連接字串]  。
+1. 在入口網站中，選取您的事件中樞命名空間。 選取 [連接字串]。
 
    ![選取連接字串](./media/store-captured-data-data-warehouse/event-hub-connection.png)
 
-2. 選取 [RootManageSharedAccessKey] 
+2. 選取 [RootManageSharedAccessKey]
 
    ![選取索引鍵](./media/store-captured-data-data-warehouse/show-root-key.png)
 
-3. 複製 [連接字串 - 主索引鍵] 
+3. 複製 [連接字串 - 主索引鍵]
 
    ![複製金鑰](./media/store-captured-data-data-warehouse/copy-key.png)
 

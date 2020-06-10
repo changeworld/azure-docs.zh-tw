@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714605"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141954"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 與 Python 來擷取文字和版面配置資訊
 
@@ -22,11 +22,15 @@ ms.locfileid: "83714605"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
 - 表單文件。 您可以從本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)下載影像。
+
+> [!NOTE]
+> 本快速入門使用本機儲存的文件。 如需了解如何使用 URL 存取的遠端文件，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync) (英文)。
+
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -73,7 +77,7 @@ ms.locfileid: "83714605"
         quit()
     ```
 
-1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如，form-recognizer-layout.py  。
+1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如，form-recognizer-layout.py。
 1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-layout.py` 。
 

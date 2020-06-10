@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure 中設定 VMware 私人雲端的網路功能
 description: 了解如何建立及設定在 Azure 中部署私人雲端所需的網路功能
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6cac420fb77526746dbdbfef5a88b071c007d555
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873857"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148101"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教學課程：在 Azure 中設定 VMWare 私人雲端的網路功能
 

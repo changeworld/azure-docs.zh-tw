@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661527"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148254"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>建立和共用 Log Analytics 資料的儀表板
 
@@ -30,32 +30,40 @@ Log Analytics 儀表板可以視覺化方式呈現所有儲存的記錄查詢，
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。 
 
 ## <a name="create-a-shared-dashboard"></a>建立共用儀表板
-選取 [儀表板]  以開啟您的預設[儀表板](../../azure-portal/azure-portal-dashboards.md)。 您的儀表板外觀與以下範例不同。
+選取 [儀表板] 以開啟您的預設[儀表板](../../azure-portal/azure-portal-dashboards.md)。 您的儀表板外觀與以下範例不同。
 
 ![Azure 入口網站儀表板](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 您可以在這裡將所有 Azure 資源中對 IT 最重要的作業資料結合在一起，包括來自 Azure Log Analytics 的遙測資料。  在我們進入以視覺化方式呈現記錄查詢之前，請先建立並共用儀表板。  接著我們可以專注於範例效能記錄查詢，該查詢會轉譯為折線圖，然後將其新增至儀表板。  
 
+> [!NOTE]
+> 在使用記錄查詢的 Azure 儀表板中，系統支援下列圖表類型：
+> - areachart
+> - columnchart
+> - piechart (在儀表板中會轉譯為環圈圖)
+> - scatterchart
+> - 時間圖
+
 若要建立儀表板，請選取目前的儀表板名稱旁的 [新增儀表板]  按鈕。
 
 ![在 Azure 入口網站中建立新儀表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-01.png)
 
-這個動作會建立全新的空白私人儀表板並讓您進入自訂模式，供您為儀表板命名並新增或重新排列圖格。 編輯儀表板名稱，並指定此教學課程的「範例儀表板」  ，然後選取 [自訂完成]  。<br><br> ![儲存自訂的 Azure 儀表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-02.png)
+這個動作會建立全新的空白私人儀表板並讓您進入自訂模式，供您為儀表板命名並新增或重新排列圖格。 編輯儀表板名稱，並指定此教學課程的「範例儀表板」，然後選取 [自訂完成]。<br><br> ![儲存自訂的 Azure 儀表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-02.png)
 
 當您建立儀表板時，它預設是私人用途，這表示只有您會看得到。 若要讓其他人也能看見，請使用與其他儀表板命令一同出現的 [共用]  按鈕。
 
 ![在 Azure 入口網站中共用新儀表板](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-系統會要求您選擇可將儀表板發佈至的訂用帳戶和資源群組。 為了方便起見，入口網站的發佈體驗會引導您朝向將儀表板放在稱為 **儀表板**的資源群組中的模式。  確認選取的訂用帳戶，然後按一下[發行]  。  使用[Azure 資源存取控制](../../role-based-access-control/role-assignments-portal.md)來控制對儀表板中顯示資訊的存取權。   
+系統會要求您選擇可將儀表板發佈至的訂用帳戶和資源群組。 為了方便起見，入口網站的發佈體驗會引導您朝向將儀表板放在稱為 **儀表板**的資源群組中的模式。  確認選取的訂用帳戶，然後按一下[發行]。  使用[Azure 資源存取控制](../../role-based-access-control/role-assignments-portal.md)來控制對儀表板中顯示資訊的存取權。   
 
 ## <a name="visualize-a-log-query"></a>以視覺化方式呈現記錄查詢
 [Log Analytics](../log-query/get-started-portal.md) 是專用的入口網站，用來處理記錄查詢及其結果。 功能包括在多行上編輯查詢、選擇性執行程式碼、區分內容的 Intellisense 和 Smart Analytics。 在本教學課程中，您將會使用 Log Analytics，以圖形的形式建立效能檢視，儲存以用於未來查詢，然後將其釘選在稍早建立的共用儀表板。
 
-藉由選取 [Azure 監視器] 功能表中的 [記錄]  來開啟 Log Analytics。 它會從新的空白查詢來開始。
+藉由選取 [Azure 監視器] 功能表中的 [記錄] 來開啟 Log Analytics。 它會從新的空白查詢來開始。
 
 ![首頁](media/tutorial-logs-dashboards/homepage.png)
 
-輸入下列查詢，只為 Windows 和 Linux 電腦傳回處理器使用率記錄，依電腦和 TimeGenerated 分組並顯示在視覺化圖表中。 按一下 [執行]  以執行查詢，並且檢視產生的圖表。
+輸入下列查詢，只為 Windows 和 Linux 電腦傳回處理器使用率記錄，依電腦和 TimeGenerated 分組並顯示在視覺化圖表中。 按一下 [執行] 以執行查詢，並且檢視產生的圖表。
 
 ```Kusto
 Perf 
@@ -64,17 +72,17 @@ Perf
 | render timechart
 ```
 
-從頁面上方選取 [儲存]  按鈕來儲存查詢。
+從頁面上方選取 [儲存]按鈕來儲存查詢。
 
 ![儲存查詢](media/tutorial-logs-dashboards/save-query.png)
 
-在 [儲存查詢]  控制台中，提供像是「Azure VM - 處理器使用率」  的名稱，和例如「儀表板」  的分類，然後按一下 [儲存]  。  這樣一來，您可以建立可使用及修改的常用查詢程式庫。  最後，從頁面右上角選取 [釘選到儀表板]  ，然後選取儀表板名稱，將此項目釘選在稍早建立的共用儀表板。
+在 [儲存查詢] 控制台中，提供像是「Azure VM - 處理器使用率」的名稱，和例如「儀表板」的分類，然後按一下 [儲存]。  這樣一來，您可以建立可使用及修改的常用查詢程式庫。  最後，從頁面右上角選取 [釘選到儀表板]，然後選取儀表板名稱，將此項目釘選在稍早建立的共用儀表板。
 
 現在我們已將查詢釘選在儀表板，您會注意到其下方會有一般標題與註解。
 
 ![Azure 儀表板範例](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-01.png)
 
- 我們應將它重新命名為有意義的名稱，讓檢視者容易了解。  按一下 [編輯] 按鈕以自訂圖格的標題和子標題，然後按一下 [更新]  。  橫幅隨即出現，要求您發行變更或捨棄。  按一下 [儲存複本]  。  
+ 我們應將它重新命名為有意義的名稱，讓檢視者容易了解。  按一下 [編輯] 按鈕以自訂圖格的標題和子標題，然後按一下 [更新]。  橫幅隨即出現，要求您發行變更或捨棄。  按一下 [儲存複本]。  
 
 ![已完成儀表板範例的設定](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 

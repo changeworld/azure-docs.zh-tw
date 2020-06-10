@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052373"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267268"
 ---
 # <a name="what-is-immersive-reader"></a>什麼是沈浸式閱讀程式？
 
@@ -61,6 +61,6 @@ ms.locfileid: "80052373"
 
 開始使用沈浸式閱讀程式：
 
-* 從[快速入門](./quickstart.md)直接進入
+* 直接進入[快速入門](./quickstarts/client-libraries.md?pivots=programming-language-csharp)
 * 探索 [GitHub 上的沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)
 * 閱讀[沈浸式閱讀程式 SDK 參考](./reference.md)

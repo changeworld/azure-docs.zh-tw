@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780074"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996307"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -43,7 +43,7 @@ HDInsight 的[企業安全性套件](apache-domain-joined-architecture.md)提供
 
 大多數企業所依循的最佳做法，就是確保並非每一位員工都能完全存取所有的企業資源。 同樣地，系統管理員可以針對叢集資源定義角色型存取控制原則。 此動作僅適用於 ESP 叢集。
 
-Hadoop 系統管理員可以設定角色型存取控制 (RBAC)。 這些設定會使用 Apache Range 外掛程式來保護 Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md)。 設定 RBAC 原則可讓您將權限與組織中的角色產生關聯。 這一層的抽象概念可讓您更輕鬆地確保人員只擁有執行其職責所需的權限。 Ranger 也可讓您稽核員工的存取資料以及對存取控制原則所做的任何變更。
+Hadoop 系統管理員可以設定角色型存取控制 (RBAC)。 這些設定使用 Apache Ranger 外掛程式來保護 Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md)。 設定 RBAC 原則可讓您將權限與組織中的角色產生關聯。 這一層的抽象概念可讓您更輕鬆地確保人員只擁有執行其職責所需的權限。 Ranger 也可讓您稽核員工的存取資料以及對存取控制原則所做的任何變更。
 
 例如，系統管理員可以設定 [Apache Ranger](https://ranger.apache.org/) 以設定 Hive 的存取控制原則。 此功能可確保執行資料列層級和資料行層級的篩選 (資料遮罩)。 並且篩選未經授權使用者的敏感性資料。
 

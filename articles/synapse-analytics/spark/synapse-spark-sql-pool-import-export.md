@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739272"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020858"
 ---
 # <a name="introduction"></a>簡介
 
@@ -38,7 +38,7 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 
 - 此連接器僅適用於 Scala。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 在想要於其中往返傳輸資料的資料庫/SQL 集區中，準備好 **db_exporter** 角色。
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 您不必提供匯入陳述式，筆記本體驗已預先匯入這些陳述式。
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>在與工作區連結的邏輯伺服器 (DW 執行個體) 中，於 SQL 集區中往返傳輸資料
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>在連結有工作區的 SQL 集區之間來回傳輸資料
 
 > [!NOTE]
 > **筆記本體驗中不需要匯入**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 對儲存體和 SQL Server 的驗證完成
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>如果您要在工作區外的邏輯伺服器中，於 SQL 集區或資料庫中往返傳輸資料
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果您要在工作區外的 SQL 集區或資料庫之間來回傳輸資料
 
 > [!NOTE]
 > 筆記本體驗中不需要匯入

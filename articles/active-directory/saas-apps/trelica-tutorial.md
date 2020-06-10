@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402448"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994216"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Trelica 整合
 
@@ -34,7 +34,7 @@ ms.locfileid: "83402448"
 
 若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -90,9 +90,11 @@ ms.locfileid: "83402448"
     1. 在 [回覆 URL] 方塊中，輸入模式為 `https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` 的 URL。
 
     > [!NOTE]
-    > 這裡的 [回覆 URL] 不是真實的值。 請使用實際的回覆 URL 來更新此值。 請連絡 [Trelica 用戶端支援小組](mailto:support@trelica.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [回覆 URL] 不是真實的值。 使用實際的「回覆 URL」(亦稱為 ACS) 來更新此值。
+    > 您可以登入 Trelica 並前往 [SAML 識別提供者設定頁面](https://app.trelica.com/Admin/Profile/SAML) \([系統管理員] > [帳戶] > [SAML]\) 來找到此資訊。 按一下 [判斷提示取用者服務 (ACS) URL] 旁的複製按鈕來將其放在剪貼簿上，以準備好貼入 Azure AD 中的 [回覆 URL] 文字方塊。
+    > 如有任何問題，請閱讀 [Trelica 說明文件](https://docs.trelica.com/admin/saml/azure-ad) \(英文\) 或連絡 [Trelica 用戶端支援小組](mailto:support@trelica.com)。
 
-1. 在 [以 SAML 設定單一登入] 頁面上，移至 [SAML 簽署憑證] 區段。 在 [應用程式同盟中繼資料 Url] 的右邊，選取 [複製] 按鈕以複製 URL。 將 URL 儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
     ![[SAML 簽署憑證] 區段，[應用程式同盟中繼資料 Url] 旁邊醒目提示著 [複製] 按鈕](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ ms.locfileid: "83402448"
 
 ## <a name="configure-trelica-sso"></a>設定 Trelica SSO
 
-若要在 **Trelica** 端設定單一登入，請將複製的**應用程式同盟中繼資料 Url** 值傳送給 [Trelica 支援小組](mailto:support@trelica.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Trelica** 端設定單一登入，請移至 [SAML 識別提供者設定頁面](https://app.trelica.com/Admin/Profile/SAML) \([系統管理員] > [帳戶] > [SAML]\)。 按一下 [新增] 按鈕。 輸入 **Azure AD** 作為名稱，然後選擇 [來自 URL 的中繼資料] 作為資中繼資料類型。 將您從 Azure AD 取得的 [應用程式同盟中繼資料 URL]，貼入 Trelica 的 [中繼資料 URL] 欄位中。
+
+如有任何問題，請閱讀 [Trelica 說明文件](https://docs.trelica.com/admin/saml/azure-ad) \(英文\) 或連絡 [Trelica 用戶端支援小組](mailto:support@trelica.com)。
 
 ### <a name="create-a-trelica-test-user"></a>建立 Trelica 測試使用者
-
-在本節中，您會在 Trelica 中建立名為 B.Simon 的使用者。
 
 Trelica 支援依預設啟用的 Just-In-Time 使用者佈建。 這一節沒有您需要進行的動作。 如果 Trelica 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 

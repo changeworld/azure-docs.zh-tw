@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2cd1b846b77e4b600fc9b7590715a73b0ca8f672
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770919"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266316"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什麼是適用於 Azure 資源的受控識別？
 
@@ -50,7 +50,7 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 - **系統指派的受控識別**可直接在 Azure 服務執行個體上啟用。 啟用此身分識別時，Azure 會在執行個體的訂用帳戶所信任的 Azure AD 租用戶中，建立執行個體的身分識別。 建立身分識別後，就會將認證佈建到執行個體。 系統指派的身分識別生命週期，會直接繫結至已啟用該身分識別的 Azure 服務執行個體。 如果執行個體已刪除，則 Azure 會自動清除 Azure AD 中的認證和身分識別。
 - **使用者指派的受控識別**會以獨立 Azure 資源的形式建立。 透過建立程序，Azure 會在所使用訂用帳戶信任的 Azure AD 租用戶中建立身分識別。 建立身分識別之後，即可將它指派給一個或多個 Azure 服務執行個體。 使用者指派的身分識別與獲指派此身分識別的 Azure 服務執行個體，兩者的生命週期分開管理。
 
-就內部而言，受控識別是特殊類型的服務主體，且限定為僅可於 Azure 資源。 刪除受控識別後，對應的服務主體也會自動移除。
+就內部而言，受控識別是特殊類型的服務主體，只能用於 Azure 資源。 刪除受控識別後，對應的服務主體也會自動移除。
 此外，當建立使用者指派或系統指派的身分識別時，受控識別資源提供者 (MSRP) 會在內部發出該身分識別的憑證。 
 
 您的程式碼可以使用受控識別來要求存取權杖，以存取支援 Azure AD 驗證的服務。 Azure 會負責更新服務個體使用的認證。 
@@ -61,10 +61,10 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 
 |  屬性    | 系統指派的受控識別 | 使用者指派的受控識別 |
 |------|----------------------------------|--------------------------------|
-| 建立 |  建立為 Azure 資源的一部分 (例如 Azure 虛擬機器或 Azure App Service) | 建立為獨立的 Azure 資源 |
+| 建立 |  建立為 Azure 資源的一部分 (例如 Azure 虛擬機器或 Azure App Service)。 | 建立為獨立的 Azure 資源。 |
 | 生命週期 | 與用來建立受控識別的 Azure 資源共用生命週期。 <br/> 當父代資源刪除時，受控識別也會一併刪除。 | 獨立的生命週期。 <br/> 必須明確刪除。 |
-| 由所有 Azure 資源共用 | 無法共用。 <br/> 它只能與單一 Azure 資源相關聯。 | 可以共用 <br/> 使用者指派的同一個受控識別可與多個 Azure 資源相關聯。 |
-| 一般使用案例 | 包含在單一 Azure 資源內的工作負載 <br/> 您需要獨立身分識別的工作負載。 <br/> 例如，在單一虛擬機器上執行的應用程式 | 在多個資源上執行、且可共用單一身分識別的工作負載。 <br/> 在佈建流程中需要預先授權以保護資源的工作負載。 <br/> 資源回收頻率高、但權限應保持一致的工作負載。 <br/> 例如，有多個虛擬機器需要存取相同資源的工作負載 |
+| 由所有 Azure 資源共用 | 無法共用。 <br/> 它只能與單一 Azure 資源相關聯。 | 可以共用。 <br/> 使用者指派的同一個受控識別可與多個 Azure 資源相關聯。 |
+| 一般使用案例 | 包含在單一 Azure 資源內的工作負載。 <br/> 您需要獨立身分識別的工作負載。 <br/> 例如，在單一虛擬機器上執行的應用程式 | 在多個資源上執行、且可共用單一身分識別的工作負載。 <br/> 在佈建流程中需要預先授權以保護資源的工作負載。 <br/> 資源回收頻率高、但權限應保持一致的工作負載。 <br/> 例如，有多個虛擬機器需要存取相同資源的工作負載 |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>系統指派的受控識別如何與 Azure VM 一起運作
 

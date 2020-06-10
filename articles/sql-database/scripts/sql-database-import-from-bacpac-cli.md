@@ -1,6 +1,6 @@
 ---
-title: CLI 範例：將 BACPAC 檔案匯入 Azure SQL 資料庫
-description: 將 BASPAC 檔案匯入 SQL Database 的 Azure CLI 範例指令碼
+title: Azure CLI：將 BACPAC 檔案匯入到 Azure SQL Database 中的資料庫
+description: 將 BACPAC 檔案匯入 Azure SQL Database 中資料庫的 Azure CLI 範例指令碼
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: f47d0ec2edf54aaa708c176e92a9e1026b446882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e3638c9823ed0fbae61a0dc5a93dff2e211d3f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061839"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022636"
 ---
-# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>使用 CLI 將 BACPAC 檔案匯入 Azure SQL 資料庫
+# <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>使用 CLI 將 BACPAC 檔案匯入 SQL Database 中的資料庫
 
-此 Azure CLI 指令碼範例會從 *bacpac* 檔案將資料庫匯入 Azure SQL 資料庫。  
+此 Azure CLI 指令碼範例會從 *.bacpac* 檔案將資料庫匯入 SQL Database 中的資料庫。  
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -55,4 +55,4 @@ az group delete --name $resource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

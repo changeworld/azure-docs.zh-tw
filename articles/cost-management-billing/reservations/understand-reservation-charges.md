@@ -7,24 +7,26 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46236355ca569c28ed9418f9c341a1510c1335b1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200277"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114070"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>保留折扣套用至 Azure SQL Database 的方式
 
 購買 Azure SQL Database 保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 SQL Database。 保留會涵蓋 SQL Database 的計算成本。 您必須依標準費率支付軟體、儲存體和網路的費用。 您可以利用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 來涵蓋 SQL Database 的授權成本。
 
+請注意，保留折扣並不適用於 Azure SQL Database 無伺服器。
+
 若要了解保留的虛擬機器執行個體，請參閱[了解 Azure 保留的 VM 執行個體折扣](../manage/understand-vm-reservation-charges.md)。
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 
-保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
+保留折扣採「不用則作廢」的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
+當您關閉資源時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」保留時數。
 
 ## <a name="discount-applied-to-sql-databases"></a>適用於 SQL Database 的折扣
 
@@ -52,7 +54,7 @@ ms.locfileid: "77200277"
 
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)
 - [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../sql-database/sql-database-reserved-capacity.md)
+- [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 保留項目](manage-reserved-vm-instance.md)
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)

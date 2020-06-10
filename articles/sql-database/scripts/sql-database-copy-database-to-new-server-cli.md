@@ -1,6 +1,6 @@
 ---
-title: CLI 範例 - 複製 - Azure SQL 資料庫 - 新伺服器
-description: 將 SQL 資料庫複製到新伺服器的 Azure CLI 範例指令碼
+title: Azure CLI：將 Azure SQL Database 中的資料庫複製到新伺服器
+description: 將 Azure SQL Database 中的資料庫複製到新伺服器的 Azure CLI 範例指令碼
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067485"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022687"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>使用 CLI 將 SQL 資料庫複製到新伺服器
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>使用 CLI 將 Azure SQL Database 中的資料庫複製到新伺服器
 
 此 Azure CLI 指令碼範例會在新的伺服器中建立現有資料庫的複本。
 
@@ -61,4 +61,4 @@ az group delete --name $targetResource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

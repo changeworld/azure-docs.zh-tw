@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682563"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300567"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入門：使用 Unity 轉譯模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "83682563"
 >* 取得並建置適用於 Unity 的 ARR 快速入門範例應用程式
 >* 在 ARR 快速入門範例應用程式中轉譯模型
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要取得 Azure 遠端轉譯服務的存取權，您必須先[建立帳戶](../how-tos/create-an-account.md)。
 
@@ -33,6 +33,9 @@ ms.locfileid: "83682563"
 
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列*工作負載*：
+  * **具備 C++ 的桌面開發**
+  * **通用 Windows 平台 (UWP) 開發**
 * GIT [(下載)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(下載)](https://unity3d.com/get-unity/download)
   * 在 Unity 中安裝下列模組：

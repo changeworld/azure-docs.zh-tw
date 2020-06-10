@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745408"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258278"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選 (預覽) 搭配 Power BI Desktop 並建立報告
 
@@ -27,12 +27,16 @@ ms.locfileid: "83745408"
 > - 將 Power BI Desktop 連線到 SQL 隨選
 > - 根據檢視來建立報告
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要完成此教學課程，您需要下列軟體：
+若要完成本教學課程，您需要下列必要條件：
+
+- [Power BI Desktop](https://powerbi.microsoft.com/downloads/) - 將資料視覺化並建立報表所需的項目。
+- [Azure Synapse 工作區](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) - 建立資料庫、外部資料來源與檢視所需的項目。
+
+選擇性：
 
 - SQL 查詢工具，例如 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 或 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
-- [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 
 下列參數的值：
 
