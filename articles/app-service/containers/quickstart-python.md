@@ -3,13 +3,13 @@ title: 快速入門：建立 Linux Python 應用程式
 description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 ms.topic: quickstart
 ms.date: 04/03/2020
-ms.custom: seo-python-october2019, cli-validate
-ms.openlocfilehash: 5b055c3ed93d5f093295b52c7a28a73e242bfe75
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: seo-python-october2019, cli-validate, tracking-python
+ms.openlocfilehash: 622709098d8b45f6c7badfddd3006dc730a6bf14
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690869"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561707"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -102,11 +102,6 @@ az login
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
-> [!CAUTION]
-> 如果您使用 **Azure CLI 2.5.0 版**，`az webapp up` 中會發生迴歸，也就是如果未包含 `-l <location-name>` 參數，特定案例將會失敗。 我們[已在這裡追蹤](https://github.com/Azure/azure-cli/issues/13257)此問題。  
-> 
->您可以使用 `az --version` 命令來檢查您所使用的 Azure CLI 版本。
->
 
 `--sku F1` 引數會在免費定價層上建立 Web 應用程式。 您可以省略這個引數，改為使用進階層，如此會產生每小時成本。
 

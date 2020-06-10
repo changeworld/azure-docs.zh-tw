@@ -1,19 +1,19 @@
 ---
 title: 教學課程：建立新的 HoloLens Unity 應用程式
 description: 在本教學課程中，您將了解如何使用 Azure Spatial Anchors 建立新的 HoloLens Unity 應用程式。
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a3a81cdfa9e3c6659c870b184cda4ebe6f7f805a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75457732"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429683"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
 

@@ -9,12 +9,12 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: b6eac711ed6c420330b036cb6094c841508cee9f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 76f37beb22e28c0232efd0d62e82c8d3b60c78dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790712"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345082"
 ---
 # <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-a-resource-manager-template"></a>教學課程：使用 Resource Manager 範本部署 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "83790712"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-machine-learning-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json" range="1-258" highlight="224-254":::
 
 範本中會定義下列資源：
 

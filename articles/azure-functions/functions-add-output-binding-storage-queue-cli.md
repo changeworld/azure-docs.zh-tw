@@ -3,13 +3,14 @@ title: 使用命令列工具將 Azure Functions 連線到 Azure 儲存體
 description: 了解如何將輸出繫結新增至您的命令列專案，進而將 Azure Functions 連線到 Azure 儲存體佇列。
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673366"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560109"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>使用命令列工具將 Azure Functions 連線到 Azure 儲存體
 

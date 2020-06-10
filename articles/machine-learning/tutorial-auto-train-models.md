@@ -10,12 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 97b129bfaa1a8612040e59c6378aa1965c5c49cd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: tracking-python
+ms.openlocfilehash: 440c2b0f0c9e89cff03e92fb650dabe1e2c88e1f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118882"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558358"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

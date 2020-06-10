@@ -3,12 +3,13 @@ title: 使用自訂環境建立 Azure Notebooks 預覽專案
 description: 在使用一組已安裝的特定套件及啟動指令碼設定的 Azure Notebooks 預覽中建立新專案。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78196836"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559739"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中使用自訂環境建立專案
 

@@ -3,12 +3,13 @@ title: 教學課程 - 建立並執行 Jupyter Notebook - Azure Notebooks 預覽
 description: 了解如何在 Azure Notebooks 預覽中建立和執行 Jupyter Notebook，以示範資料科學的線性迴歸流程。
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75660812"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561759"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教學：使用 Python 建立和執行 Jupyter Notebook
 

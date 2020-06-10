@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: glenga
-ms.openlocfilehash: 44969063765099d350e21abfbd07792891443911
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f89383c1b7d0ccce82f35d91acbe1ff8c902db29
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673169"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448900"
 ---
 ::: zone pivot="programming-language-python"  
 ## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>建立並啟用虛擬環境
@@ -54,5 +54,5 @@ py -m venv .venv
 
 ---
 
-您將在這個已啟用的虛擬環境中執行所有後續命令。 (若要退出虛擬環境，請執行 `deactivate`。)
+您將在這個已啟用的虛擬環境中執行所有後續命令。   
 ::: zone-end
