@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202001"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608446"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
@@ -112,7 +113,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```csharp
 using static System.Environment;
@@ -129,9 +130,9 @@ class Program
 }
 ```
 
-# <a name="c"></a>[C + +](#tab/cpp)
+# <a name="c"></a>[C++](#tab/cpp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-如需詳細資訊，請參閱 <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```java
 import java.lang.*;
@@ -163,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-如需詳細資訊，請參閱 <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-如需詳細資訊，請參閱 <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```python
 import os
@@ -184,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-如需詳細資訊，請參閱 <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a> \(英文\)。
+如需詳細資訊，請參閱 <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -200,7 +201,7 @@ NSString* value =
 
 客戶加密箱適用于此認知服務：
 
-* 轉譯程式
+* Translator
 
 針對 Language Understanding，Microsoft 工程師將不會存取 E0 SKU 中的任何客戶資料。 若要要求能夠使用 E0 SKU，請填寫並提交 [LUIS 服務要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會放在佇列中，並已核准為可用空間。 一旦核准搭配 LUIS 使用 E0 SKU，您就必須從 Azure 入口網站建立新的 Language Understanding 資源，然後選取 [E0] 作為 [定價層]。 使用者將無法從 F0 升級至新的 E0 SKU。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806315"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636121"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話語音資料的語音服務
 
@@ -97,7 +97,7 @@ ms.locfileid: "74806315"
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 用來建立每次錄音的共用存取簽章 (SAS) URI，並觸發 HTTP POST 要求以開始轉譯。 此外，Azure Functions 用來建立使用批次轉譯 API 擷取和刪除轉譯的要求。
 
 我們在內部使用上述技術來支援批次模式的 Microsoft 客戶通話。
-![批次架構](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="用來支援批次模式中的 Microsoft 客戶呼叫的技術。":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>話務中心資料的即時轉譯
 
@@ -125,7 +125,7 @@ ms.locfileid: "74806315"
 | -------------- | ----- | ----------- |
 | 語音轉文字 | [原音模型](how-to-customize-acoustic-models.md) | 針對用於特定環境 (例如汽車或工廠) 的應用程式、工具或裝置建立自訂原音模型，而這每一個的錄音條件都較特殊。 例如，帶有口音的語音、特定背景雜音或使用特定麥克風來錄音。 |
 |                | [語言模型](how-to-customize-language-model.md) | 建立自訂語言模型來提升特定產業的詞彙和文法轉譯，例如醫療術語或 IT 專業術語。 |
-|                | [發音模型](how-to-customize-pronunciation.md) | 使用自訂發音模型，您可以定義語音形式，並顯示單字或詞彙。 它可用於處理自訂的字詞，如產品名稱或縮略字。 您需要開始使用的是一個發音檔案，這是一個簡單`.txt`的檔案。 |
+|                | [發音模型](how-to-customize-pronunciation.md) | 使用自訂發音模型，您可以定義語音形式，並顯示單字或詞彙。 它可用於處理自訂的字詞，如產品名稱或縮略字。 您需要開始使用的是一個發音檔案，這是一個簡單的檔案 `.txt` 。 |
 | 文字轉換語音 | [聲音音調](how-to-customize-voice-font.md) | 自訂聲音音調可讓您為自己的品牌建立可辨識的獨特聲音。 只需少量資料即可開始建立。 提供的資料愈多，您的聲音音調聽起來就愈自然且愈像真人。 |
 
 ## <a name="sample-code"></a>範例程式碼

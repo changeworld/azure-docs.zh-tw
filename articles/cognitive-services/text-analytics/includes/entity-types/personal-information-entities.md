@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140909"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637564"
 ---
 > [!NOTE]
 > 若要偵測 `PHI` ，請使用 `domain=phi` 參數和模型版本 `2020-04-01` 或更新版本。
@@ -22,7 +22,7 @@ ms.locfileid: "84140909"
  
 將要求傳送至端點時，會傳回下列實體類別 `/v3.1-preview.1/entities/recognition/pii` 。
 
-| 類別   | 子類別 | 描述                          | 啟動模型版本 | 備忘錄 |
+| 類別   | 子類別 | 描述                          | 啟動模型版本 | 注意 |
 |------------|-------------|--------------------------------------|------------------------|---|
 | 個人     | N/A         | 人員的名稱。  | `2019-10-01`  | 也會隨一起傳回 `domain=phi` 。 |
 | PersonType | N/A         | 人員所持有的作業類型或角色。 | `2020-02-01` | |
@@ -37,11 +37,11 @@ ms.locfileid: "84140909"
 | URL | N/A | 網站的 Url。 | `2019-10-01` | 也會隨一起傳回 `domain=phi` 。 |
 | IP | N/A | 網路 IP 位址。 | `2019-10-01` | |
 | Datetime | N/A | 當日的日期和時間。 | `2019-10-01` |  | 
-| Datetime | 日期 | 行事曆日期。 | `2019-10-01` | 也會隨一起傳回 `domain=phi` 。 |
+| Datetime | Date | 行事曆日期。 | `2019-10-01` | 也會隨一起傳回 `domain=phi` 。 |
 | 數量 | N/A | 數位和數值數量。 | `2019-10-01` |  |
 | 數量 | Age | 年齡. | `2019-10-01` | | |
-| 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第九個修訂。   | `2020-04-01` | 也會隨一起傳回 `domain=phi` 。 |
-| 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第十個修訂。    | `2020-04-01` | 也會隨一起傳回 `domain=phi` 。 |
+| 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第九個修訂。   | `2020-04-01` | |
+| 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第十個修訂。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure 資訊
 

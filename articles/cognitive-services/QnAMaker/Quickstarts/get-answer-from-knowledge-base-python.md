@@ -3,20 +3,20 @@ title: 快速入門：從知識庫取得答案 - REST (Python) - QnA Maker
 description: 這個以 Python REST 為基礎的快速入門會逐步引導您以程式設計方式從知識庫取得答案。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, tracking-python
 ms.topic: how-to
-ms.openlocfilehash: ead33b3602c75046a71f67c5b5a556b17ae8703d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d985bafe3303acdaf8b47e70a9d5368e3b26335c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342760"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610129"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>快速入門：使用 Python 從知識庫中取得問題的答案
 
 本快速入門會逐步引導您以程式設計方式從已發佈的 QnA Maker 知識庫取得答案。 知識庫包含[資料來源](../Concepts/knowledge-base.md)中的問題和答案，例如常見問題集。 [問題](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)會傳送至 QnA Maker 服務。 [回應](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含位居預測首位的答案。
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
+[參考文件](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
 ## <a name="prerequisites"></a>必要條件
 

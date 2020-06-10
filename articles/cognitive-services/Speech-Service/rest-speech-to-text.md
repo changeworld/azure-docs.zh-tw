@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 7664ce89c01c543544bc576c5eee3fd288d323d5
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248510"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636082"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -49,24 +49,24 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 REST 要求的查詢字串中可能包括這些參數。
 
-| 參數 | 說明 | 必要/選用 |
+| 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要 |
-| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含四種不同的顯示文字標記法。 預設設定是 `simple`。 | 選用 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為，以星號取代不雅內容， `masked` `removed` 這會移除結果中的所有不雅內容，或 `raw` （包含結果中的不雅內容）。 預設設定是 `masked`。 | 選用 |
-| `cid` | 使用[自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過 [**部署**] 頁面上找到的**端點識別碼**來使用自訂模型。 使用**端點識別碼**作為 `cid` 查詢字串參數的引數。 | 選用 |
+| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含四種不同的顯示文字標記法。 預設設定是 `simple`。 | 選擇性 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值為，以星號取代不雅內容， `masked` `removed` 這會移除結果中的所有不雅內容，或 `raw` （包含結果中的不雅內容）。 預設設定是 `masked`。 | 選擇性 |
+| `cid` | 使用[自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過 [**部署**] 頁面上找到的**端點識別碼**來使用自訂模型。 使用**端點識別碼**作為 `cid` 查詢字串參數的引數。 | 選擇性 |
 
 ## <a name="request-headers"></a>要求標頭
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|Header| 說明 | 必要/選用 |
+|Header| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
-| `Pronunciation-Assessment` | 指定用來在辨識結果中顯示發音分數的參數，其會評估語音輸入的發音品質，以及精確度、順暢、完整性等等的指示器。此參數是 base64 編碼的 json，其中包含多個詳細參數。 如需如何建立此標頭的詳細資料，請參閱[發音評估參數](#pronunciation-assessment-parameters)。 | 選用 |
+| `Pronunciation-Assessment` | 指定用來在辨識結果中顯示發音分數的參數，其會評估語音輸入的發音品質，以及精確度、順暢、完整性等等的指示器。此參數是 base64 編碼的 json，其中包含多個詳細參數。 如需如何建立此標頭的詳細資料，請參閱[發音評估參數](#pronunciation-assessment-parameters)。 | 選擇性 |
 | `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要 |
-| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選用 |
+| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選擇性 |
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最佳做法是一律包含 `Accept` 。 | 此為選用步驟，但建議執行。 |
 
@@ -86,14 +86,14 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出發音評估的必要和選擇性參數。
 
-| 參數 | 說明 | 必要/選用 |
+| 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | ReferenceText | 要針對發音進行評估的文字。 | 必要 |
-| GradingSystem | 用於評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設設定是 `FivePoint`。 | 選用 |
-| 細微度 | 評估資料細微性。 接受的值為 `Phoneme` ，它會顯示全文檢索單字和音素層級的分數，這會顯示全文檢索 `Word` 和字層級的分數，這 `FullText` 只會顯示全文檢索層級的分數。 預設設定是 `Phoneme`。 | 選用 |
-| 維度 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數（例如，在全文檢索層級上順暢分數和完整性分數，word 層級的錯誤類型）。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設設定是 `Basic`。 | 選用 |
-| EnableMiscue | 啟用 miscue 計算。 啟用此功能時，發音會與參考文字進行比較，而且會根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設設定是 `False`。 | 選用 |
-| ScenarioId | 指出自訂點系統的 GUID。 | 選用 |
+| GradingSystem | 用於評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設設定是 `FivePoint`。 | 選擇性 |
+| 細微度 | 評估資料細微性。 接受的值為 `Phoneme` ，它會顯示全文檢索單字和音素層級的分數，這會顯示全文檢索 `Word` 和字層級的分數，這 `FullText` 只會顯示全文檢索層級的分數。 預設設定是 `Phoneme`。 | 選擇性 |
+| 維度 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數（例如，在全文檢索層級上順暢分數和完整性分數，word 層級的錯誤類型）。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設設定是 `Basic`。 | 選擇性 |
+| EnableMiscue | 啟用 miscue 計算。 啟用此功能時，發音會與參考文字進行比較，而且會根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設設定是 `False`。 | 選擇性 |
+| ScenarioId | 指出自訂點系統的 GUID。 | 選擇性 |
 
 以下是包含發音評估參數的 JSON 範例：
 
@@ -113,6 +113,8 @@ var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"Grading
 var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+我們強烈建議在張貼音訊資料時進行串流（區塊）上傳，這可能會大幅降低延遲。 請參閱[不同程式設計語言的範例程式碼](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)，以瞭解如何啟用串流。
 
 >[!NOTE]
 >發音評估功能目前僅適用于 `westus` 、 `eastasia` 和 `centralindia` 區域。 這項功能目前僅適用于 `en-US` 語言。
@@ -198,7 +200,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `RecognitionStatus` 欄位可包含下列的值：
 
-| 狀態 | 說明 |
+| 狀態 | 描述 |
 |--------|-------------|
 | `Success` | 辨識成功並顯示 `DisplayText` 欄位。 |
 | `NoMatch` | 音訊串流中偵測到語音，但目標語言中沒有符合的字組。 通常表示辨識語言與使用者的口語語言不同。 |
