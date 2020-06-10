@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78194049"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608786"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
 

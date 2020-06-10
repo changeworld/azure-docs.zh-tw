@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891561"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466216"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
@@ -68,7 +68,7 @@ Azure 認知搜尋適用於下列應用程式案例：
 |-------------------|----------|
 | 用於原型設計和檢查的工具 | 在入口網站中，您可以使用 [[匯入資料]  ](search-import-data-portal.md) 精靈設定索引子、使用索引設計工具建立索引，以及使用 [[搜尋總管]  ](search-explorer.md) 測試查詢並修改評分設定檔。 您也可以開啟任何索引，以檢視其結構描述。 |
 | 監視和診斷 | [**啟用監視功能**](search-monitor-usage.md)，使其超越永遠可以在入口網站看到，且一目了然的計量。 自動會擷取每秒查詢次數、延遲和節流的計量，並在入口網站頁面中報告，不需要其他設定。|
-| 伺服器端加密 | [**Microsoft 管理的待用加密**](search-security-overview.md#encrypted-transmission-and-storage)會內建到內部儲存層，而且無法回復。 您可以選擇性地使用[**客戶管理的加密金鑰**](search-security-manage-encryption-keys.md)補充預設加密。 您在 Azure Key Vault 中建立並管理的金鑰用來加密 Azure 認知搜尋中的索引和同義字地圖。 |
+| 伺服器端加密 | [**Microsoft 管理的待用加密**](search-security-overview.md#encrypted-transmissions-and-storage)會內建到內部儲存層，而且無法回復。 您可以選擇性地使用[**客戶管理的加密金鑰**](search-security-manage-encryption-keys.md)補充預設加密。 您在 Azure Key Vault 中建立並管理的金鑰用來加密 Azure 認知搜尋中的索引和同義字地圖。 |
 | 基礎結構 | **高可用性平台**可確保相當可靠的搜尋服務體驗。 經過適當的調整，[Azure 認知搜尋可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> Azure 認知搜尋是**完全受控和可調整的**端對端解決方案，完全不需要基礎結構管理。 以兩種方式調整您的服務，即可針對您的需求量身訂做，以處理更多的文件儲存體、更高的查詢負載，或兩者。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure 認知搜尋的使用方式

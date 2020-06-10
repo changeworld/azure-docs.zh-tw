@@ -7,13 +7,14 @@ ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 04/27/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 68ea934e366caa4a6575a39f42156e5c3380ea10
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1a8541e0ac1f819bf8189e677a532244a0900789
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133949"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610044"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>快速入門：使用自訂視覺 SDK 建立物件偵測專案
 

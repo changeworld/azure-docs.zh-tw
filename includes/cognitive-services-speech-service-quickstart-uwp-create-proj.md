@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673096"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609270"
 ---
 若要建立適用於通用 Windows 平台 (UWP) 開發的 Visual Studio 專案，您必須設定 Visual Studio 開發選項、建立專案、選取目標架構、設定音訊擷取，以及安裝語音 SDK。
 
@@ -104,4 +104,4 @@ ms.locfileid: "83673096"
 
 1. 在 [預覽變更]  對話方塊中，選取 [確定]  。
 
-1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld`。
+1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld`。
