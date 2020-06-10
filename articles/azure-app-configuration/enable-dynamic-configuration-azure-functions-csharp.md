@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187292"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558149"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>教學課程：在 Azure Functions 應用程式中使用動態組態
 
@@ -67,7 +67,7 @@ ms.locfileid: "74187292"
     }
     ```
 
-3. 在 Functions 呼叫開始時使用 `Refresh` 方法，以更新重新整理組態的 `Run` 方法和信號。 如果未達到快取到期時間範圍，這就不會有任何作用。 如果您想要在不封鎖的情況下重新整理組態，請移除 `await` 運算子。
+3. 在 Functions 呼叫開始時使用 `TryRefreshAsync` 方法，以更新重新整理組態的 `Run` 方法和信號。 如果未達到快取到期時間範圍，這就不會有任何作用。 如果您想要在不封鎖的情況下重新整理組態，請移除 `await` 運算子。
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ ms.locfileid: "74187292"
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];

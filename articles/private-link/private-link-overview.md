@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 06/02/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21289874792987e35fa1cc5731a63e3f55fedc35
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4752fe65cf06b894413df2fda0decdfbb427afd5
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835762"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449374"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -61,7 +61,7 @@ Azure Private Link 提供下列優點：
 |Azure 服務匯流排 | 所有公用區域      |  GA   <br/> [深入了解](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure 轉送 | 所有公用區域      |   預覽 <br/> [深入了解](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| 所有公用區域       |   GA   <br/> [深入了解](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Web Apps | 所有公用區域      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | IoT 中樞 | 所有公用區域    |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://aka.ms/asrs/privatelink)   |
