@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b907663971e7a8a7c3b2c6cac95c38131e1ccb26
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 47714be27cd4588b9bdf481750974394d3738985
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74931742"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119283"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教學課程：使用 .NET API 建立具有複製活動的管線
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "74931742"
 > 
 > 本教學課程中的資料管線會將資料從來源資料存放區，複製到目的地資料存放區。 如需如何使用 Azure Data Factory 轉換資料的教學課程，請參閱[教學課程︰使用 Hadoop 叢集建置管線來轉換資料](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -122,17 +122,17 @@ ms.locfileid: "74931742"
 ## <a name="walkthrough"></a>逐步介紹
 1. 使用 Visual Studio 2012/2013/2015 建立 C# .NET 主控台應用程式。
    1. 啟動 **Visual Studio** 2012/2013/2015。
-   2. 按一下 [檔案]  ，指向 [新增]  ，然後按一下 [專案]  。
-   3. 展開 [範本]  ，然後選取 [Visual C#]  。 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。
+   2. 按一下 [檔案]，指向 [新增]，然後按一下 [專案]。
+   3. 展開 [範本]，然後選取 [Visual C#]。 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。
    4. 從右邊的專案類型清單中選取 [主控台應用程式]  。
    5. 在 [名稱] 中輸入 **DataFactoryAPITestApp** 。
    6. 在 [位置] 中選取 **C:\ADFGetStarted**。
    7. 按一下 [確定]  以建立專案。
 2. 按一下 [**工具**]，指向 [**NuGet 封裝管理員**]，然後按一下 [**封裝管理員主控台**]。
-3. 在 [Package Manager Console]  中，輸入下列命令：
+3. 在 [Package Manager Console] 中，輸入下列命令：
    1. 執行以下命令安裝 Data Factory 套件：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 執行下列命令安裝 Azure Active Directory 套件 (您在程式碼中使用 Active Directory API)︰`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. 將下列 **appSetttings** 區段新增 **App.config** 檔案。 以下 Helper 方法會使用這些設定： **Microsoft.identitymodel.waad.preview.graph.graphinterface**。
+4. 將下列 **appSetttings** 區段新增 **App.config** 檔案。 以下協助程式方法會使用這些設定：**GetAuthorizationHeader**。
 
     以您自己的值取代 **&lt;應用程式識別碼&gt;** 、 **&lt;密碼&gt;** 、 **&lt;訂用帳戶識別碼&gt;** **&lt;租用戶識別碼&gt;** 的值。
 
@@ -234,13 +234,13 @@ ms.locfileid: "74931742"
 
     您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本教學課程中，您不會使用任何計算服務，例如 Azure HDInsight 或 Azure Data Lake Analytics。 您可以使用兩種類型的資料存放區：Azure 儲存體 (來源) 和 Azure SQL Database (目的地)。 
 
-    因此，您可以建立名為 AzureStorageLinkedService 和 AzureSqlLinkedService 的兩個連結服務︰類型為 AzureStorage 和 AzureSqlDatabase。  
+    因此，您可以建立名為 AzureStorageLinkedService 和 AzureSqlLinkedService 的兩個連結服務類型︰分別為 AzureStorage 和 AzureSqlDatabase。  
 
     AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站。 此儲存體帳戶是您在其中建立容器並將資料上傳為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一部分的帳戶。
 9. 將下列會建立 **Azure SQL 連結服務**的程式碼新增至 **Main** 方法中。
 
    > [!IMPORTANT]
-   > 以您的 Azure SQL 伺服器名稱、資料庫名稱、使用者和密碼取代 **servername**、**databasename**、**username** **password**。
+   > 以您的伺服器名稱、資料庫名稱、使用者和密碼取代 **servername**、**databasename**、**username** **password**。
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -503,19 +503,19 @@ ms.locfileid: "74931742"
     }
     ```
 
-15. 在 [方案總管] 中展開專案 (DataFactoryAPITestApp)，以滑鼠右鍵按一下 [參考]  ，然後按一下 [新增參考]  。 選取 **System.Configuration** 組件的核取方塊。 然後按一下 [確定]  。
-16. 建置主控台應用程式。 按一下功能表上的 [建置]  ，再按一下 [建置方案]  。
+15. 在 [方案總管] 中展開專案 (DataFactoryAPITestApp)，以滑鼠右鍵按一下 [參考]，然後按一下 [新增參考]。 選取 **System.Configuration** 組件的核取方塊。 然後按一下 [確定]。
+16. 建置主控台應用程式。 按一下功能表上的 [建置]，再按一下 [建置方案]。
 17. 確認您 Azure Blob 儲存體之 **adftutorial** 容器中至少有一個檔案。 如果沒有，請在「記事本」中以下列內容建立 **Emp.txt** 檔案，然後將它上傳至 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-18. 按一下功能表上的 [偵錯]   -> [開始偵錯]  ，執行範例。 當您看到 [取得資料配量的執行詳細資料]  ，請等待數分鐘再按 **ENTER**。
+18. 按一下功能表上的 [偵錯] -> [開始偵錯]，執行範例。 當您看到 [取得資料配量的執行詳細資料]，請等待數分鐘再按 **ENTER**。
 19. 使用 Azure 入口網站確認 Data Factory： **APITutorialFactory** 是使用下列成品所建立：
     * 連結服務：**LinkedService_AzureStorage**
-    * 資料集︰**InputDataset** 和 **OutputDataset**。
-    * 管線： **PipelineBlobSample**
+    * 資料集：**InputDataset** 和 **OutputDataset**。
+    * 管線：**PipelineBlobSample**
 20. 確認在指定 Azure SQL 資料庫的 **emp** 資料表中建立兩筆員工記錄。
 
 ## <a name="next-steps"></a>後續步驟

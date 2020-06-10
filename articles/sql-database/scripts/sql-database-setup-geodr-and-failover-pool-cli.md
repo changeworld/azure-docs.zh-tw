@@ -1,22 +1,22 @@
 ---
-title: CLI 範例 - 作用中異地複寫 - 集區 Azure SQL 資料庫
+title: Az CLI：為彈性集區設定作用中異地複寫
 description: 為 Azure SQL Database 中的集區資料庫設定作用中異地複寫並且進行容錯移轉的 Azure CLI 範例指令碼。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067367"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019378"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>使用 CLI 為 Azure SQL Database 中的集區資料庫設定作用中異地複寫
 
@@ -62,4 +62,4 @@ az group delete --name $secondaryResource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

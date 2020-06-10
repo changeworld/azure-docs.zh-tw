@@ -1,21 +1,21 @@
 ---
 title: CIS Microsoft Azure 基礎基準測試藍圖範例控制項
 description: CI Microsoft Azure 基礎基準測試藍圖範例與 Azure 原則的建議對應。
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863955"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167225"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CI Microsoft Azure 基礎基準測試藍圖範例的建議對應。
 
 下列文章將詳細說明 Azure 藍圖 CIS Microsoft Azure 基礎基準測試藍圖範例如何對應至 CIS Microsoft Azure 基礎基準測試建議。 如需關於建議的詳細資訊，請參閱 [CIS Microsoft Azure基礎基準測試](https://www.cisecurity.org/benchmark/azure/)。
 
 以下是 **CIS Microsoft Azure 基礎基準測試 v1.1.0** 建議的對應。 使用右側的導覽區可直接跳到特定的建議對應。
-許多對應的建議都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\] 稽核 CIS Microsoft Azure 基礎基準測試 v1.1.0 建議，並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
+許多對應的建議都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 CIS Microsoft Azure 基礎基準測試 v1.1.0 建議，並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md) \(英文\)。
@@ -192,14 +192,14 @@ ms.locfileid: "82863955"
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4.4 確定 SQL 伺服器上的 [進階資料安全性] 設定為 [開啟]
 
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已在 SQL 伺服器和 SQL 受控執行個體上啟用進階資料安全性。
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已在 SQL Database 和 SQL 受控執行個體伺服器上啟用進階資料安全性。
 
 - 應在 SQL 伺服器上啟用進階資料安全性
 - 應在 SQL 受控執行個體上啟用進階資料安全性
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 確定 [威脅偵測類型] 設定為 [全部]
 
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已在 SQL 伺服器和 SQL 受控執行個體上正確設定進階威脅防護。
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定已在 SQL Database 和 SQL 受控執行個體伺服器上正確設定進階威脅防護。
 
 - 在 SQL 伺服器的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
 - 在 SQL 受控執行個體的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
@@ -232,7 +232,7 @@ ms.locfileid: "82863955"
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4.10 確定 SQL 伺服器的 TDE 保護裝置已使用 BYOK 加密 (使用您自己的金鑰)
 
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 SQL 伺服器和 SQL 受控執行個體的透明資料加密保護裝置會使用您自己的金鑰進行加密。
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 SQL Database 和 SQL 受控執行個體伺服器的透明資料加密保護裝置會使用您自己的金鑰進行加密。
 
 - SQL 伺服器的 TDE 保護裝置應以您自己的金鑰加密
 - SQL 受控執行個體的 TDE 保護裝置應以您自己的金鑰加密

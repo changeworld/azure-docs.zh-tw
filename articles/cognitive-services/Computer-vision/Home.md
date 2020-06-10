@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131756"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117522"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據您感興趣的視覺功能來處理影像並傳回資訊。 例如，電腦視覺可判斷影像中是否包含成人內容，也可以尋找影像中的所有人臉。
+Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據您感興趣的視覺功能來處理影像並傳回資訊。 例如，電腦視覺可以判斷影像是否包含成人內容、尋找特定品牌或物件，或尋找人臉。
 
-您可以藉由原生 SDK 或直接叫用 REST API，在應用程式中使用電腦視覺。 本頁會廣泛說明電腦視覺的功用。
+您可以透過用戶端程式庫 SDK 或直接呼叫 REST API，在應用程式中使用電腦視覺。 本頁會廣泛說明電腦視覺的功用。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>用於管理數位資產的電腦視覺
 
@@ -32,7 +32,7 @@ Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據�
 
 ## <a name="analyze-images-for-insight"></a>深入分析影像
 
-您可以分析影像，以偵測並提供與其視覺特徵和特性有關的深入解析。 下表中的所有功能是由[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 所提供。
+您可以分析影像，以提供與其視覺特徵和特性有關的深入解析。 下表中的所有功能是由[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 所提供。
 
 | 動作 | 描述 |
 | ------ | ----------- |
@@ -45,12 +45,12 @@ Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據�
 |**[偵測影像類型](concept-detecting-image-types.md)**|偵測影像的關於特性，例如影像是否為線條繪圖，或影像為美工圖案的可能性。|
 |**[偵測特定領域內容](concept-detecting-domain-content.md)**|使用領域模型可偵測及識別影像中的特定領域內容，例如名人和地標。 例如，如果影像包含人物，電腦視覺即可使用名人領域模型，判斷影像中偵測到的人物是否為知名人士。|
 |**[偵測色彩配置](concept-detecting-color-schemes.md)**|分析影像中的用色方式。 電腦視覺可判斷影像是黑白還是彩色的，如果是彩色影像，則會找出主色和輔色。|
-|**[產生縮圖](concept-generating-thumbnails.md)**|分析影像的內容，為其產生適當的縮圖。 「電腦視覺」會先產生高品質的縮圖，然後分析該影像內的物件，以判斷「關注區域」  。 接著，「電腦視覺」會裁剪影像以符合關注區域的需求。 產生的縮圖可以使用與原始影像的外觀比例不同的外觀比例來呈現，視您的需求而定。|
-|**[取得關注區域](concept-generating-thumbnails.md#area-of-interest)**|分析影像的內容以傳回「關注區域」  的座標。 「電腦視覺」會傳回該區域的週框方塊座標，而不會裁剪影像並產生縮圖，因此呼叫端應用程式可以視需要修改原始影像。|
+|**[產生縮圖](concept-generating-thumbnails.md)**|分析影像的內容，為其產生適當的縮圖。 「電腦視覺」會先產生高品質的縮圖，然後分析該影像內的物件，以判斷「關注區域」。 接著，「電腦視覺」會裁剪影像以符合關注區域的需求。 產生的縮圖可以使用與原始影像的外觀比例不同的外觀比例來呈現，視您的需求而定。|
+|**[取得關注區域](concept-generating-thumbnails.md#area-of-interest)**|分析影像的內容以傳回「關注區域」的座標。 「電腦視覺」會傳回該區域的週框方塊座標，而不會裁剪影像並產生縮圖，因此呼叫端應用程式可以視需要修改原始影像。|
 
 ## <a name="extract-text-from-images"></a>擷取影像中的文字
 
-您可以使用電腦視覺[閱讀 API](concept-recognizing-text.md#read-api)，將影像中列印和手寫文字擷取到電腦可讀取的字元資料流中。 讀取 API 會使用最新的模型並處理各種表層和背景上的文字，例如收據、海報、名片、信件和白板等。 目前，英文和西班牙文是唯一支援的語言。
+您可以使用電腦視覺[閱讀](concept-recognizing-text.md#read-api) API，將影像中列印和手寫文字擷取到電腦可讀取的字元資料流中。 讀取 API 會使用最新的模型並處理各種表層和背景上的文字，例如收據、海報、名片、信件和白板等。 目前適用於七種不同的語言 (請參閱[語言支援](./language-support.md))。
 
 您也可以使用[光學字元辨識 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API，以數種語言擷取列印的文字。 如有需要，OCR 會校正已辨識文字的旋轉角度，並提供每個字的框架座標。 OCR 支援 25 種語言，且會根據辨識的文字自動偵測其語言。
 

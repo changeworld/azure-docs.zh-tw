@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dff2acba63eaa2caabaddb0228424744be6ded16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80f7ba4a4493299d9d1795631401689f4619d873
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101683"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014622"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 來建立及管理 Windows 虛擬機器的 Azure 虛擬網路
 
@@ -31,7 +31,7 @@ Azure 虛擬機器會使用 Azure 網路進行內部和外部的網路通訊。 
 
 ## <a name="vm-networking-overview"></a>VM 網路概觀
 
-Azure 虛擬網路可以讓虛擬機器、網際網路與其他 Azure 服務 (例如 Azure SQL 資料庫) 之間的網路連線更安全。 虛擬網路會被分割成邏輯區段，稱為子網路。 子網路是用來控制網路流量，並作為安全性界限。 在部署 VM 時，通常會包含連結至子網路的虛擬網路介面。
+Azure 虛擬網路可以讓虛擬機器、網際網路與其他 Azure 服務 (例如 Azure SQL Database) 之間的網路連線更安全。 虛擬網路會被分割成邏輯區段，稱為子網路。 子網路是用來控制網路流量，並作為安全性界限。 在部署 VM 時，通常會包含連結至子網路的虛擬網路介面。
 
 完成本教學課程時，您可以看到這些建立的資源：
 
@@ -52,7 +52,7 @@ Azure 虛擬網路可以讓虛擬機器、網際網路與其他 Azure 服務 (�
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 
 ## <a name="create-subnet"></a>建立子網路 
@@ -238,7 +238,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 在本教學課程中，建立後端 VM 的最簡單方式是使用 SQL Server 映像。 本教學課程只會建立具有資料庫伺服器的 VM，而不會提供有關存取該資料庫的資訊。
 
-建立 myBackendNic  ：
+建立 myBackendNic：
 
 ```azurepowershell-interactive
 $backendNic = New-AzNetworkInterface `

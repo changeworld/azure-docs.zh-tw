@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b0d6221aaafe3ade70bc23ce4196a7b53c9474c5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421032"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169962"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取憑證
 
@@ -30,17 +30,17 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]。
 2. 在 [搜尋] 方塊中輸入 **Key Vault**。
-3. 從結果清單中，選擇 [Key Vault]  。
-4. 在 [金鑰保存庫] 區段上選擇 [建立]  。
-5. 在 [建立金鑰保存庫]  區段上提供下列資訊：
+3. 從結果清單中，選擇 [Key Vault]。
+4. 在 [金鑰保存庫] 區段上選擇 [建立]。
+5. 在 [建立金鑰保存庫] 區段上提供下列資訊：
     - **Name**：唯一名稱是必要項。 在本快速入門中，我們會使用 **Example-Vault**。 
-    - 訂用帳戶  ：選擇訂用帳戶。
-    - 在 [資源群組]  底下，選擇 [新建]  ，然後輸入資源群組名稱。
-    - 在 [位置]  下拉式功能表中選擇位置。
+    - 訂用帳戶：選擇訂用帳戶。
+    - 在 [資源群組] 底下，選擇 [新建]，然後輸入資源群組名稱。
+    - 在 [位置] 下拉式功能表中選擇位置。
     - 將其他的選項保留預設值。
-6. 提供上述資訊之後，請選取 [建立]  。
+6. 提供上述資訊之後，請選取 [建立]。
 
 請記下下列兩個屬性：
 
@@ -55,18 +55,19 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 若要在保存庫中新增憑證，您只需要另外進行幾個步驟。 在本案例中，我們會新增可供應用程式使用的自我簽署憑證。 此憑證稱為 **ExampleCertificate**。
 
-1. 在 Key Vault 屬性頁面上，選取 [憑證]  。
-2. 按一下 [產生/匯入]  。
-3. 在 [建立憑證]  畫面上，選擇下列值：
+1. 在 Key Vault 屬性頁面上，選取 [憑證]。
+2. 按一下 [產生/匯入]。
+3. 在 [建立憑證] 畫面上，選擇下列值：
     - **憑證建立方法**：產生。
     - **憑證名稱**：ExampleCertificate。
     - **主體**：CN=ExampleDomain
-    - 將其他的值保留預設值。 按一下頁面底部的 [新增]  。
+    - 將其他的值保留預設值。 按一下 [建立]。
 
 一旦收到已成功建立憑證的訊息，即可按一下清單上的憑證。 您可以接著看見某些屬性。 如果您按一下目前的版本，您可以看到您在上一個步驟中指定的值。
 
 ![憑證屬性](../media/certificates/quick-create-portal/current-version-hidden.png)
 
+## <a name="export-certificate-from-key-vault"></a>從 Key Vault 匯出憑證
 按一下 [以 CER 格式下載] 或 [以 PFX/PEM 格式下載] 按鈕即可下載憑證。 
 
 ![憑證下載](../media/certificates/quick-create-portal/current-version-shown.png)
@@ -77,8 +78,8 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 如果不再需要，請刪除資源群組，這會刪除 Key Vault 和相關資源。 若要透過入口網站刪除資源群組：
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入資源群組的名稱。 當您在搜尋結果中看到本快速入門中使用的資源群組時，請加以選取。
-2. 選取 [刪除資源群組]  。
-3. 在 [輸入資源群組名稱:]  方塊中輸入資源群組的名稱，然後選取 [刪除]  。
+2. 選取 [刪除資源群組]。
+3. 在 [輸入資源群組名稱:] 方塊中輸入資源群組的名稱，然後選取 [刪除]。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6a6aaedc1bb4abc5cf02ea1cd081ad48ec78d19
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418748"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118194"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure Data Factory 大量複製多個資料表
 
@@ -46,7 +46,7 @@ ms.locfileid: "81418748"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "81418748"
 
 **準備來源 Azure SQL Database**：
 
-遵循[建立 Azure SQL Database](../sql-database/sql-database-get-started-portal.md) 文章來建立具有 Adventure Works LT 範例資料的 Azure SQL Database。 本教學課程會將所有資料表從這個範例資料庫中複製到 SQL 資料倉儲。
+遵循[建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) 文章來建立具有 Adventure Works LT 範例資料的 Azure SQL Database。 本教學課程會將所有資料表從這個範例資料庫中複製到 SQL 資料倉儲。
 
 **準備接收 Azure SQL 資料倉儲**：
 
@@ -69,11 +69,11 @@ ms.locfileid: "81418748"
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服務存取 SQL Server
 
-針對 SQL Database 和 SQL 資料倉儲，允許 Azure 服務存取 SQL 伺服器。 確保 Azure SQL Server 的 [允許存取 Azure 服務]  設定已 [開啟]  。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure SQL 資料倉儲。 若要確認並開啟此設定，請執行下列步驟：
+針對 SQL Database 和 SQL 資料倉儲，允許 Azure 服務存取 SQL 伺服器。 確保伺服器的 [允許存取 Azure 服務] 設定已 [開啟]。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure SQL 資料倉儲。 若要確認並開啟此設定，請執行下列步驟：
 
-1. 按一下左邊的 [所有服務]  中樞，然後按一下 [SQL Server]  。
-2. 選取您的伺服器，然後按一下 [設定]  下的 [防火牆]  。
-3. 在 [防火牆設定]  頁面中，對 [允許存取 Azure 服務]  按一下 [開啟]  。
+1. 按一下左邊的 [所有服務] 中樞，然後按一下 [SQL Server]。
+2. 選取您的伺服器，然後按一下 [設定] 下的 [防火牆]。
+3. 在 [防火牆設定] 頁面中，對 [允許存取 Azure 服務] 按一下 [開啟]。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
@@ -111,7 +111,7 @@ ms.locfileid: "81418748"
         ```
 
     * 若要建立 Data Factory 執行個體，您必須是 Azure 訂用帳戶的參與者或系統管理員。
-    * 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+    * 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
 ## <a name="create-linked-services"></a>建立連結的服務
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395733"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141852"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
@@ -88,7 +88,7 @@ ms.locfileid: "78395733"
 |------------------------|---------------|
 | 單一文件的大小上限 | 依 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 測量的 5,120 個字元。 |
 | 整體要求的大小上限 | 1 MB |
-| 要求中的文件數上限 | 1,000 份文件 |
+| 要求中的文件數上限 | 最多 1,000 份文件 ([依各項功能而異](concepts/data-limits.md)) |
 
 您的速率限制會隨著定價層而不同。
 

@@ -3,12 +3,12 @@ title: 什麼是 QnA Maker 服務？
 description: QnA Maker 是一項雲端式 NLP 服務，可對您的資料輕鬆地建立自然對話層。 其可從資訊的自訂知識庫 (KB) 為指定的自然語言輸入尋找最適當的答案。
 ms.topic: overview
 ms.date: 05/26/2020
-ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873714"
+ms.locfileid: "83994862"
 ---
 # <a name="what-is-the-qna-maker-service"></a>什麼是 QnA Maker 服務？
 
@@ -40,9 +40,9 @@ QnA Maker 的用戶端應用程式是任何可透過自然語言與使用者溝�
 
 ## <a name="what-is-a-knowledge-base"></a>什麼是知識庫？
 
-QnA Maker 會在問答集的知識庫中[匯入您的內容](../concepts/knowledge-base.md)。 匯入程序會擷取結構化和半結構化內容各部分之間關聯性的相關資訊，來表示問答集之間的關聯性。 您可以編輯這些問答集或新增問答集。
+QnA Maker 會在問答組的知識庫中[匯入您的內容](../concepts/knowledge-base.md)。 匯入程序會擷取結構化和半結構化內容各部分之間關聯性的相關資訊，來表示問答組之間的關聯性。 您可以編輯這些問答組或新增問答組。
 
-問答集的內容包括：
+問答組的內容包括：
 * 問題的所有替代形式
 * 在搜尋期間用來篩選答案選擇的中繼資料標籤
 * 後續提示，以繼續精簡搜尋
@@ -53,7 +53,7 @@ QnA Maker 會在問答集的知識庫中[匯入您的內容](../concepts/knowled
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>不使用程式碼而在聊天機器人中進行建立、管理和發佈動作
 
-QnA Maker 入口網站可提供完整的知識庫撰寫體驗。 您可以將文件 (以其目前的格式) 匯入到知識庫。 這些文件 (例如常見問題集、產品手冊、試算表或網頁) 會轉換成問答集。 系統會分析每個問答集來提供後續提示，且這些問答集各自都會與其他問答集連結。 最終的 Markdown 格式支援豐富的呈現方式，包括影像和連結。
+QnA Maker 入口網站可提供完整的知識庫撰寫體驗。 您可以將文件 (以其目前的格式) 匯入到知識庫。 這些文件 (例如常見問題集、產品手冊、試算表或網頁) 會轉換成問答組。 系統會分析每個問答組來提供後續提示，且這些問答組各自都會與其他問答組連結。 最終的 Markdown 格式支援豐富的呈現方式，包括影像和連結。
 
 知識庫編輯完成後，請將知識庫發佈至運作中的 [Azure Web 應用程式聊天機器人](https://azure.microsoft.com/services/bot-service/) (不必撰寫任何程式碼)。 在 [Azure 入口網站](https://portal.azure.com)中測試聊天機器人，或下載並繼續開發。
 
@@ -63,7 +63,7 @@ QnA Maker 的系統是分層排名方法。 資料會儲存在 Azure 搜尋服�
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker 可改善對話流程
 
-QnA Maker 提供多回合提示和主動式學習，可協助您改善基本的問答集。
+QnA Maker 提供多回合提示和主動式學習，可協助您改善基本的問答組。
 
 **多回合提示**讓您有機會連結問題和答案配對。 此連結可讓用戶端應用程式提供最佳答案，並提供更多問題來精簡搜尋以獲得最終答案。
 

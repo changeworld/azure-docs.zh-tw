@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438882"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119239"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教學課程：使用 REST API 建立 Azure Data Factory 管線來複製資料 
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.locfileid: "75438882"
 >  
 > 本教學課程中的資料管線會將資料從來源資料存放區，複製到目的地資料存放區。 如需如何使用 Azure Data Factory 轉換資料的教學課程，請參閱[教學課程︰使用 Hadoop 叢集建置管線來轉換資料](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -121,7 +121,7 @@ ms.locfileid: "75438882"
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
-> 將 **servername**、**databasename**、**username** 和 **password** 替換為您的 Azure SQL Server 名稱、SQL Database 名稱、使用者帳戶及帳戶的密碼。  
+> 將 **servername**、**databasename**、**username** 和 **password** 替換為您的伺服器名稱、SQL Database 名稱、使用者帳戶及帳戶的密碼。  
 > 
 >
 
@@ -351,7 +351,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 請注意下列幾點：
 
-* Azure Data Factory 的名稱在全域必須是唯一的。 如果您在結果中看到錯誤：「Data factory 名稱 "ADFCopyTutorialDF" 無法使用」  ，請執行下列步驟︰  
+* Azure Data Factory 的名稱在全域必須是唯一的。 如果您在結果中看到錯誤：「Data factory 名稱 "ADFCopyTutorialDF" 無法使用」，請執行下列步驟︰  
   
   1. 在 **datafactory.json** 檔案中變更名稱 (例如，yournameADFCopyTutorialDF)。
   2. 在指派 **$cmd** 變數值的第一個命令中，以新的名稱取代 ADFCopyTutorialDF 並執行命令。 
@@ -360,7 +360,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。
 * 若要建立 Data Factory 執行個體，您必須是 Azure 訂用帳戶的參與者/系統管理員
 * Data Factory 的名稱未來可能會註冊為 DNS 名稱，因此會變成公開可見的名稱。
-* 如果您收到錯誤：「此訂用帳戶未註冊為使用命名空間 Microsoft.DataFactory」  ，請執行下列其中一項，然後嘗試再次發佈︰ 
+* 如果您收到錯誤：「此訂用帳戶未註冊為使用命名空間 Microsoft.DataFactory」，請執行下列其中一項，然後嘗試再次發佈︰ 
   
   * 在 Azure PowerShell 中，執行下列命令以註冊 Data Factory 提供者： 
 
@@ -403,7 +403,7 @@ AzureSqlLinkedService 會將 Azure SQL 資料庫連結至資料處理站。 從 
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>建立 Azure SQL 連結服務
-在此步驟中，您會將您的 Azure SQL 資料庫連結到您的 Data Factory。 在此區段中指定 Azure SQL 伺服器名稱、資料庫名稱、使用者名稱和使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。
+在此步驟中，您會將您的 Azure SQL 資料庫連結到您的 Data Factory。 在此區段中指定邏輯 SQL 伺服器名稱、資料庫名稱、使用者名稱和使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。
 
 1. 將命令指派給名為 **cmd**的變數。 
    
@@ -515,7 +515,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒]  狀態或 [失敗]  狀態。 當配量處於 [就緒] 狀態時，請檢查您的 Azure SQL 資料庫的 **emp** 資料表中的輸出資料。 
+執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒] 狀態或 [失敗] 狀態。 當配量處於 [就緒] 狀態時，請檢查您的 Azure SQL 資料庫的 **emp** 資料表中的輸出資料。 
 
 對於每個配量，來源檔案中有兩個資料列會複製到 Azure SQL 資料庫中的 emp 資料表。 因此，成功處理所有配量 (處於 [就緒] 狀態) 後，您會在 emp 資料表中看到 24 筆新記錄。 
 

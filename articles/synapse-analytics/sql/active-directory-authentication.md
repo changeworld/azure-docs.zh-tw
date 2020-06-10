@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086091"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021648"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>使用 Azure Active Directory 驗證向 Synapse SQL 進行驗證
 
@@ -22,7 +22,7 @@ Azure Active Directory 驗證機制使用 Azure Active Directory (Azure AD) 中�
 透過 Azure AD 驗證，您可以集中管理可存取 Azure Synapse 的使用者身分識別，以簡化權限管理。 包括以下優點：
 
 - 提供替代一般使用者名稱和密碼驗證的方法。
-- 協助停止跨資料庫伺服器使用過多的使用者身分識別。
+- 協助停止跨伺服器使用過多的使用者身分識別。
 - 允許在單一位置變換密碼。
 - 客戶可以使用外部 (Azure AD) 群組來管理權限。
 - 它可以藉由啟用整合式 Windows 驗證和 Azure Active Directory 支援的其他形式驗證來避免儲存密碼。

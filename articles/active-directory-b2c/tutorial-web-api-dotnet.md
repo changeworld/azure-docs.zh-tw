@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 23531bd4c53dc2fc4851a1e4718fca0e9c3bfc1c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78187418"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298783"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 授與存取 ASP.NET Web API 的權限
 
@@ -32,7 +32,7 @@ ms.locfileid: "78187418"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成以下教學課程中的步驟和必要條件：[教學課程：使用 Azure Active Directory B2C 在 Web 應用程式中啟用驗證](tutorial-web-app-dotnet.md)。
 
@@ -40,31 +40,31 @@ ms.locfileid: "78187418"
 
 Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到用戶端應用程式保護而提供存取權杖的資源要求。
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
+#### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-4. 選取 [應用程式]  ，然後選取 [新增]  。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
+1. 輸入應用程式的 [名稱]。 例如，*webapi1*。
+1. 在 [重新導向 URI] 底下，選取 [Web]，然後輸入 Azure AD B2C 應傳回您應用程式所要求之任何權杖的端點。 在本教學課程中，範例會在本機執行並在 `https://localhost:44332` 接聽。
+1. 選取 [註冊]。
+1. 記錄 [應用程式 (用戶端) 識別碼]，以便在稍後的步驟中使用。
+
+#### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 選取 [應用程式 (舊版)]，然後選取 [新增]。
 5. 輸入應用程式的名稱。 例如，*webapi1*。
-6. 針對 [包含 Web 應用程式/Web API]  ，選取 [是]  。
+6. 針對 [包含 Web 應用程式/Web API]，選取 [是]。
 7. 針對**回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 在本教學課程中，範例會在本機執行並在 `https://localhost:44332` 接聽。
 8. 針對**應用程式識別碼 URI**，請輸入您的 Web API 所使用的識別碼。 系統會為您產生包含網域的完整識別碼 URI。 例如： `https://contosotenant.onmicrosoft.com/api` 。
-9. 按一下頁面底部的 [新增]  。
+9. 按一下 [建立]。
 10. 在 [屬性] 頁面上，記錄您會在設定 Web 應用程式時使用的應用程式識別碼。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 選取 [應用程式註冊 (預覽)]  ，然後選取 [新增註冊]  。
-1. 輸入應用程式的 [名稱]  。 例如，*webapi1*。
-1. 在 [重新導向 URI]  底下，選取 [Web]  ，然後輸入 Azure AD B2C 應傳回您應用程式所要求之任何權杖的端點。 在本教學課程中，範例會在本機執行並在 `https://localhost:44332` 接聽。
-1. 選取 [註冊]  。
-1. 記錄 [應用程式 (用戶端) 識別碼]  ，以便在稍後的步驟中使用。
 
 * * *
 
@@ -119,13 +119,13 @@ Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-1. 將用戶端識別碼設定為已註冊 Web API 應用程式 (webapi1)  的應用程式識別碼。
+1. 將用戶端識別碼設定為已註冊 Web API 應用程式 (webapi1) 的應用程式識別碼。
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. 使用註冊和登入使用者流程的名稱 B2C_1_signupsignin1  來更新使用者流程設定。
+1. 使用註冊和登入使用者流程的名稱 B2C_1_signupsignin1 來更新使用者流程設定。
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
@@ -142,16 +142,16 @@ Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到
 
 您必須同時執行 **TaskWebApp** 和 **TaskService** 專案。
 
-1. 在方案總管中，以滑鼠右鍵按一下方案，然後選取 [設定啟始專案]  。
-1. 選取 [多個啟始專案]  。
-1. 將兩個專案的 [動作]  變更為 [啟動]  。
-1. 按一下 [確定]  以儲存組態。
+1. 在方案總管中，以滑鼠右鍵按一下方案，然後選取 [設定啟始專案]。
+1. 選取 [多個啟始專案]。
+1. 將兩個專案的 [動作] 變更為 [啟動]。
+1. 按一下 [確定] 以儲存組態。
 1. 按 **F5** 鍵執行兩個應用程式。 每個應用程式會在自己的瀏覽器視窗中啟。
     * `https://localhost:44316/`是 Web 應用程式。
     * `https://localhost:44332/` 為 Web API。
 
-1. 在 Web 應用程式中，選取 [註冊 / 登入]  ，以登入 Web 應用程式。 使用您先前建立的帳戶。
-1. 登入之後，選取 [待辦事項清單]  並建立待辦事項清單項目。
+1. 在 Web 應用程式中，選取 [註冊 / 登入]，以登入 Web 應用程式。 使用您先前建立的帳戶。
+1. 登入之後，選取 [待辦事項清單] 並建立待辦事項清單項目。
 
 在您建立待辦事項清單項目時，Web 應用程式會對 Web API 提出要求，以產生待辦事項清單項目。 您受保護的 Web 應用程式會呼叫由 Azure AD B2C 保護的 Web API。
 

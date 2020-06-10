@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/25/2020
 ms.author: aahi
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240107"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605471"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
 
@@ -32,7 +33,7 @@ ms.locfileid: "80240107"
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * 文字分析 API 的最新預覽版本是 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。 最新穩定版本是 `2.1`。
+> * 文字分析用戶端程式庫的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
 
@@ -43,7 +44,7 @@ ms.locfileid: "80240107"
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * 本快速入門僅適用於文字分析用戶端程式庫的 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。
+> * 文字分析用戶端程式庫的最新穩定版本是 `3.0`。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -53,7 +54,7 @@ ms.locfileid: "80240107"
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * 文字分析 API 的最新預覽版本是 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。 最新穩定版本是 `2.1`。
+> * 文字分析用戶端程式庫的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
 > * 您也可以在[瀏覽器](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)中執行此版本的文字分析用戶端程式庫。
@@ -65,7 +66,7 @@ ms.locfileid: "80240107"
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * 文字分析 API 的最新預覽版本是 `3.0-preview` 版，這個版本包含已改善的[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[具名實體辨識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 公開預覽。 最新穩定版本是 `2.1`。
+> * 文字分析用戶端程式庫的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。 
 

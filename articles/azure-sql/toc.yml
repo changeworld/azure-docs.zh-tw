@@ -967,8 +967,6 @@
                   items:
                     - name: Azure SQL VM CLI
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Azure 入口網站範本
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Azure 快速入門範本
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: 多個區域

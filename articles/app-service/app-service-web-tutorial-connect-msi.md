@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207627"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021223"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -41,17 +41,17 @@ ms.locfileid: "82207627"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文會從您結束[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)或[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)。 如果您尚未進行，請先依照這兩個教學課程的其中一個來進行。 或者，您可以使用 SQL Database 針對自己的 .NET 應用程式調整步驟。
 
-若要使用 SQL Database 作為後端對您的應用程式進行偵錯，請確定您已允許從您的電腦進行用戶端連線。 如果尚未這麼做，請遵循[使用 Azure 入口網站管理伺服器層級 IP 防火牆規則](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)中的步驟來新增用戶端 IP。
+若要使用 SQL Database 作為後端對您的應用程式進行偵錯，請確定您已允許從您的電腦進行用戶端連線。 如果尚未這麼做，請遵循[使用 Azure 入口網站管理伺服器層級 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)中的步驟來新增用戶端 IP。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>將資料庫存取權授與 Azure AD 使用者
 
-首先，將 Azure AD 使用者指派為 SQL Database 伺服器的 Active Directory 管理員，以啟用對 SQL Database 的 Azure AD 驗證。 此使用者與您用來註冊 Azure 訂用帳戶的 Microsoft 帳戶不同。 這必須是您已在 Azure AD 中建立、匯入、同步處理或受邀加入的使用者。 若要進一步了解允許的 Azure AD 使用者，請參閱 [SQL Database 中的 Azure AD 功能和限制](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)。
+首先，將 Azure AD 使用者指派為伺服器的 Active Directory 管理員，對 SQL Database 啟用 Azure AD 驗證。 此使用者與您用來註冊 Azure 訂用帳戶的 Microsoft 帳戶不同。 這必須是您已在 Azure AD 中建立、匯入、同步處理或受邀加入的使用者。 若要進一步了解允許的 Azure AD 使用者，請參閱 [SQL Database 中的 Azure AD 功能和限制](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)。
 
 如果您的 Azure AD 租用戶還沒有使用者，請依照[使用 Azure Active Directory 新增或刪除使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步驟建立一個。
 
@@ -64,20 +64,20 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > 若要在 Azure AD 中查看所有使用者主體名稱的清單，請執行 `az ad user list --query [].userPrincipalName`。
 >
 
-在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) 命令，將此 Azure AD 使用者新增為 Active Directory 管理員。 在下列命令中，將 *\<server-name>* 取代為 SQL Database 伺服器名稱 (不含 `.database.windows.net` 尾碼)。
+在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) 命令，將此 Azure AD 使用者新增為 Active Directory 管理員。 在下列命令中，將 *\<server-name>* 取代為伺服器名稱 (不含 `.database.windows.net` 尾碼)。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-如需關於新增 Active Directory 管理員的詳細資訊，請參閱[為 Azure SQL Database 伺服器佈建 Azure Active Directory 管理員](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)
+如需關於新增 Active Directory 管理員的詳細資訊，請參閱[為伺服器佈建 Azure Active Directory 管理員](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)
 
 ## <a name="set-up-visual-studio"></a>設定 Visual Studio
 
 ### <a name="windows"></a>Windows
-Visual Studio for Windows 會與 Azure AD 驗證整合。 若要啟用在 Visual Studio 中的開發和偵錯，請從功能表中選取 [檔案]   > [帳戶設定]  ，然後按一下 [新增帳戶]  ，以在 Visual Studio 中新增您的 Azure AD 使用者。
+Visual Studio for Windows 會與 Azure AD 驗證整合。 若要啟用在 Visual Studio 中的開發和偵錯，請從功能表中選取 [檔案] > [帳戶設定]，然後按一下 [新增帳戶]，以在 Visual Studio 中新增您的 Azure AD 使用者。
 
-若要設定 Azure 服務驗證的 Azure AD 使用者，請從功能表中選取 [工具]   > [選項]  ，然後選取 [Azure 服務驗證]   > [帳戶選取]  。 選取您新增的 Azure AD 使用者，然後按一下 [確定]  。
+若要設定 Azure 服務驗證的 Azure AD 使用者，請從功能表中選取 [工具] > [選項]，然後選取 [Azure 服務驗證] > [帳戶選取]。 選取您新增的 Azure AD 使用者，然後按一下 [確定]。
 
 現在您已可開始將 SQL Database 作為後端，使用 Azure AD 驗證開發和偵錯您的應用程式。
 
@@ -107,7 +107,7 @@ az login --allow-no-subscriptions
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-在 Web.config  中，從檔案頂端開始處理，並進行下列變更：
+在 Web.config 中，從檔案頂端開始處理，並進行下列變更：
 
 - 在 `<configSections>` 中，新增下列區段宣告：
 
@@ -130,7 +130,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 > [!NOTE]
 > 您剛註冊的 SqlAuthenticationProvider 是以您稍早安裝的 AppAuthentication 程式庫為基礎。 根據預設，其會使用系統指派的身分識別。 若要利用使用者指派的身分識別，您需要提供其他組態。 請參閱 AppAuthentication 程式庫的[連接字串支援](../key-vault/general/service-to-service-authentication.md#connection-string-support)。
 
-這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您會設定 SQL Database 伺服器以允許來自 App Service 應用程式受控識別的連線。
+這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您將設定 SQL Database 以允許來自 App Service 應用程式受控識別的連線。
 
 輸入 `Ctrl+F5` 以再次執行應用程式。 瀏覽器中的相同 CRUD 應用程式此時會使用 Azure AD 驗證直接連線至 Azure SQL Database。 此設定可讓您從 Visual Studio 執行資料庫移轉。
 
@@ -142,13 +142,13 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-在 [ASP.NET Core 和 SQL Database 教學課程](app-service-web-tutorial-dotnetcore-sqldb.md)中完全不會使用連接字串 `MyDbConnection`，因為本機開發環境會使用 Sqlite 資料庫檔案，Azure 生產環境則會使用來自 App Service 的連接字串。 在使用 Active Directory 驗證時，您會希望這兩個環境使用相同的連接字串。 在 appsettings.json  中，將 `MyDbConnection` 連接字串的值取代為：
+在 [ASP.NET Core 和 SQL Database 教學課程](app-service-web-tutorial-dotnetcore-sqldb.md)中完全不會使用連接字串 `MyDbConnection`，因為本機開發環境會使用 Sqlite 資料庫檔案，Azure 生產環境則會使用來自 App Service 的連接字串。 在使用 Active Directory 驗證時，您會希望這兩個環境使用相同的連接字串。 在 appsettings.json 中，將 `MyDbConnection` 連接字串的值取代為：
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-接下來，您要提供 Entity Framework 資料庫內容，以及 SQL Database 的存取權杖。 在 Data\MyDatabaseContext.cs  中，將下列程式碼新增至空白 `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` 建構函式的大括弧內：
+接下來，您要提供 Entity Framework 資料庫內容，以及 SQL Database 的存取權杖。 在 Data\MyDatabaseContext.cs 中，將下列程式碼新增至空白 `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` 建構函式的大括弧內：
 
 ```csharp
 var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
@@ -158,7 +158,7 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > [!NOTE]
 > 為了能簡單明瞭地說明，此示範程式碼是同步的。
 
-這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您會設定 SQL Database 伺服器以允許來自 App Service 應用程式受控識別的連線。 `AzureServiceTokenProvider` 類別會快取記憶體中的權杖，並在到期之前從 Azure AD 擷取權杖。 您不需使用任何自訂程式碼來重新整理權杖。
+這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您將設定 SQL Database 以允許來自 App Service 應用程式受控識別的連線。 `AzureServiceTokenProvider` 類別會快取記憶體中的權杖，並在到期之前從 Azure AD 擷取權杖。 您不需使用任何自訂程式碼來重新整理權杖。
 
 > [!TIP]
 > 如果您設定的 Azure AD 使用者有權存取多個租用戶，請搭配所需的租用戶識別碼來呼叫 `GetAccessTokenAsync("https://database.windows.net/", tenantid)`，以取得適當的存取權杖。
@@ -204,7 +204,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 > ```
 >
 
-在 Cloud Shell 中，使用 SQLCMD 命令登入 SQL Database。 請將 _\<server-name>_ 取代為您的 SQL Database 伺服器名稱，將 _\<db-name>_ 取代為您的應用程式使用的資料庫名稱，並將 _\<aad-user-name>_ 和 _\<aad-password>_ 取代為您 Azure AD 使用者的認證。
+在 Cloud Shell 中，使用 SQLCMD 命令登入 SQL Database。 以您的伺服器名稱取代 _\<server-name>_ ，將 _\<db-name>_ 取代為應用程式所使用的資料庫名稱，並且將 _\<aad-user-name>_ 和 _\<aad-password>_ 取代為r Azure AD 使用者的憑證。
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
@@ -229,7 +229,7 @@ GO
 
 ### <a name="modify-connection-string"></a>修改連接字串
 
-請記住，您在 Web.config  或 appsettings.json  中所做的相同變更也適用於受控識別，因此您唯一要做的，就是在 App Service 中移除現有的連接字串，也就是 Visual Studio 在第一次部署您的應用程式時建立的字串。 使用下列命令，但將 *\<app-name>* 取代為您的應用程式名稱。
+請記住，您在 Web.config 或 appsettings.json 中所做的相同變更也適用於受控識別，因此您唯一要做的，就是在 App Service 中移除現有的連接字串，也就是 Visual Studio 在第一次部署您的應用程式時建立的字串。 使用下列命令，但將 *\<app-name>* 取代為您的應用程式名稱。
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -239,11 +239,11 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 現在只剩下將您的變更發佈至 Azure。
 
-**如果您來自[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)** ，請在 Visual Studio 中發佈變更。 在 [方案總管]  中，以滑鼠右鍵按一下 [DotNetAppSqlDb]  專案，然後選取 [發佈]  。
+**如果您來自[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)** ，請在 Visual Studio 中發佈變更。 在 [方案總管] 中，以滑鼠右鍵按一下 [DotNetAppSqlDb] 專案，然後選取 [發佈]。
 
 ![從方案總管發佈](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-在發佈頁面中，按一下 [發佈]  。 
+在發佈頁面中，按一下 [發佈]。 
 
 **如果您來自[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)** ，請使用 Git 和下列命令來發佈變更：
 

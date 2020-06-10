@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871382"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141886"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "83871382"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 
@@ -143,7 +143,8 @@ ms.locfileid: "83871382"
     > * 標示出現在表單上的值；請勿嘗試將值分割成具有兩個不同標記的兩個部分。 例如，位址欄位應該以單一標記標示，即使其橫跨多行也一樣。
     > * 請勿在標記的欄位中包含索引鍵，&mdash; 只能包含值。
     > * 系統應會自動偵測資料表資料，而且將會在最終輸出 JSON 檔案中提供。 不過，如果模型無法偵測所有資料表資料，您也可以手動標記這些欄位。 以不同的標籤標記資料表中的每個資料格。 如果您的表單具有不同資料列數目的資料表，請務必標記至少一個具有最大可能資料表的表單。
-    > * 若要刪除已套用的標記，請選取文件檢視上的矩形，然後按下刪除鍵。
+    > * 使用 **+** 右邊的按鈕來搜尋、重新命名、重新排序和刪除您的標記。
+    > * 若要移除已套用的標記，而不刪除標記本身，請在文件檢視上選取加上標記的矩形，然後按下 Delete 鍵。
 
 ![範例標籤工具的主要編輯器視窗](../media/label-tool/main-editor.png)
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 5d995e9a5cdb6fc18532e0c3533959e9feece908
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310200"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021240"
 ---
 # <a name="tutorial-working-with-remote-entities-in-unity"></a>教學課程：在 Unity 中使用遠端實體
 
@@ -26,7 +26,7 @@ ms.locfileid: "81310200"
 > * 將遠端實體四處移動。
 > * 使用切割平面來查看物件內部。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 本教學課程的基礎是[教學課程：從頭開始設定 Unity 專案](project-setup.md)。
 
@@ -192,7 +192,7 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> 請不要將此指令碼指派給任何遊戲物件，因為下列程式碼會以程式設計方式指派。
+> 請不要將此指令碼指派給任何 Unity 遊戲物件，因為下列程式碼會以程式設計方式指派。
 
 接下來，我們必須擴充 *RemoteRaycaster*，以將 *RemoteModelEntity* 元件新增至我們剛才挑選的物件。
 
@@ -487,7 +487,7 @@ public class RemoteCutPlane : MonoBehaviour
 }
 ```
 
-當您立即執行程式碼時，您應會看到平面將模型切開的方式。 您可以選取 *CutPlane* 物件，然後在 [場景]  視窗中進行移動並旋轉。 您可藉由停用切割平面物件來開啟和關閉切割平面。
+當您立即執行程式碼時，您應會看到平面將模型切開的方式。 您可以選取 *CutPlane* 物件，然後在 [場景] 視窗中進行移動並旋轉。 您可藉由停用切割平面物件來開啟和關閉切割平面。
 
 ## <a name="next-steps"></a>後續步驟
 

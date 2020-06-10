@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007539"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171545"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -38,7 +38,7 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 > * 匯出標籤
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 
 * 您要加上標籤的資料，無論是在本機檔案中還是在 Azure Blob 儲存體中。
@@ -55,8 +55,7 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 
 若要建立專案，請選取 [新增專案]。 請為專案指定適當名稱，然後選取 [標籤工作類型]。
 
-![加上標籤專案建立精靈](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="加上標籤專案建立精靈":::
 
 * 如果只要對影像套用某組類別中的「單一類別」，請為專案選擇 [影像分類多重類別]。
 * 如果要對影像套用某組類別中的「一或多個」標籤，請為專案選擇 [影像分類多重標籤]。 例如，狗狗的相片可同時加上「狗」和「白天」標籤。

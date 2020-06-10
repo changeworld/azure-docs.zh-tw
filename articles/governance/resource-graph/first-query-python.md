@@ -1,14 +1,15 @@
 ---
 title: 快速入門：您的第一個 Python 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 Python 的 Resource Graph 程式庫，並執行第一個查詢。
-ms.date: 05/26/2020
+ms.date: 05/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: 9d247f00bdfc5a5ac1642c853923dc8fc84d6e18
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: tracking-python
+ms.openlocfilehash: 58ba931f5d222df8d863a11a25af6563192ef453
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883169"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609942"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入門：使用 Python 執行您的第一個 Resource Graph 查詢
 
@@ -16,7 +17,7 @@ ms.locfileid: "83883169"
 
 在此程序結束時，程式庫將新增到您的 Python 安裝中，並執行您的第一個 Resource Graph 查詢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -53,15 +54,13 @@ ms.locfileid: "83883169"
    ```
 
    > [!NOTE]
-   > 如果為所有使用者安裝 Python，則必須從提高許可權的主控台執行此命令。
+   > 如果為所有使用者安裝 Python，則必須從提高許可權的主控台執行這些命令。
 
 1. 驗證是否已安裝程式庫。 `azure-mgmt-resourcegraph` 應為 **2.0.0** 或更高版本，`azure-mgmt-resource` 應為 **9.0.0** 或更高版本，`azure-cli-core` 應為 **2.5.0** 或更高版本。
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-resourcegraph
-   pip show azure-mgmt-resource
-   pip show azure-cli-core
+   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
    ```
 
 ## <a name="run-your-first-resource-graph-query"></a>執行第一個 Resource Graph 查詢
@@ -82,18 +81,20 @@ ms.locfileid: "83883169"
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
-       subClient = get_client_from_cli_profile(SubscriptionClient)
-       subsRaw = [sub.as_dict() for sub in subClient.subscriptions.list()]
-       subList = []
+       subsClient = get_client_from_cli_profile(SubscriptionClient)
+       subsRaw = []
+       for sub in subsClient.subscriptions.list():
+           subsRaw.append(sub.as_dict())
+       subsList = []
        for sub in subsRaw:
-           subList.append(sub.get('subscription_id'))
+           subsList.append(sub.get('subscription_id'))
        
        # Create Azure Resource Graph client and set options
        argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
        
        # Create query
-       argQuery = arg.models.QueryRequest(subscriptions=subList, query=strQuery, options=argQueryOptions)
+       argQuery = arg.models.QueryRequest(subscriptions=subsList, query=strQuery, options=argQueryOptions)
        
        # Run query
        argResults = argClient.resources(argQuery)
@@ -130,9 +131,7 @@ ms.locfileid: "83883169"
 
 ```bash
 # Remove the installed libraries from the Python environment
-pip uninstall azure-mgmt-resourcegraph
-pip uninstall azure-mgmt-resource
-pip uninstall azure-cli-core
+pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 ```
 
 ## <a name="next-steps"></a>後續步驟

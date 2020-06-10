@@ -1,6 +1,6 @@
 ---
 title: 使用變更追蹤以累加方式複製資料
-description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從內部部署 SQL Server 資料庫中的多個資料表，複製到 Azure SQL 資料庫。
+description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 551cf909e6f78b26f3432f3ad9fdbe2140b9702b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b83b10c15bcc5d1a8ea9fc094e1d709d57221902
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415287"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196151"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>使用變更追蹤資訊，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
@@ -44,7 +44,7 @@ ms.locfileid: "81415287"
 以下是使用變更追蹤技術，以累加方式載入資料的典型端對端工作流程步驟。
 
 > [!NOTE]
-> Azure SQL Database 和 SQL Server 都支援變更追蹤技術。 本教學課程會使用 Azure SQL Database 作為來源資料存放區。 但您也可以使用內部部署的 SQL Server。
+> Azure SQL Database 和 SQL Server 都支援變更追蹤技術。 本教學課程會使用 Azure SQL Database 作為來源資料存放區。 您也可以使用 SQL Server 執行個體。
 
 1. **初始載入歷史資料** (執行一次)：
     1. 在來源 Azure SQL 資料庫中啟用變更追蹤技術。
@@ -71,15 +71,15 @@ ms.locfileid: "81415287"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure PowerShell。 依照[如何安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps)中的指示，安裝最新的 Azure PowerShell 模組。
-* **Azure SQL Database**。 您需要使用資料庫作為**來源**資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)一文，按照步驟建立資料庫。
+* **Azure SQL Database**。 您需要使用資料庫作為**來源**資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
 * **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為**接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **adftutorial** 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 資料庫中建立資料來源資料表
-1. 啟動 **SQL Server Management Studio**，然後連線到 Azure SQL Server。
-2. 在**伺服器總管**中，以滑鼠右鍵按一下您的**資料庫**，然後選擇 [新增查詢]  。
+1. 啟動 **SQL Server Management Studio**，然後連線至 SQL Database。
+2. 在**伺服器總管**中，以滑鼠右鍵按一下您的**資料庫**，然後選擇 [新增查詢]。
 3. 對 Azure SQL 資料庫執行下列 SQL 命令，以建立名為 `data_source_table` 的資料表作為資料來源存放區。  
 
     ```sql
@@ -193,7 +193,7 @@ ms.locfileid: "81415287"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為**參與者**或**擁有者**角色，或是 Azure 訂用帳戶的**管理員**。
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
 
 ## <a name="create-linked-services"></a>建立連結的服務
@@ -234,7 +234,7 @@ ms.locfileid: "81415287"
 ### <a name="create-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務。
 在此步驟中，您會將您的 Azure SQL 資料庫連結到您的 Data Factory。
 
-1. 使用下列內容，在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 資料夾中建立名為 **AzureSQLDatabaseLinkedService.json** 的 JSON 檔案：儲存檔案之前，以您的 Azure SQL Server 名稱、資料庫名稱、使用者識別碼和密碼，取代 **&lt;伺服器&gt; &lt;資料庫名稱&gt;、&lt;使用者識別碼&gt; 和 &lt;密碼&gt;** 。
+1. 使用下列內容，在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 資料夾中建立名為 **AzureSQLDatabaseLinkedService.json** 的 JSON 檔案：儲存檔案之前，以您的伺服器名稱、資料庫名稱、使用者識別碼和密碼，取代 **&lt;伺服器&gt; &lt;資料庫名稱&gt;、&lt;使用者識別碼&gt; 和 &lt;密碼&gt;** 。
 
     ```json
     {
@@ -441,22 +441,22 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 ### <a name="monitor-the-full-copy-pipeline"></a>監視完整的複製管線
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [所有服務]  ，以 `data factories` 關鍵字進行搜尋，然後選取 [資料處理站]  。
+2. 按一下 [所有服務]，以 `data factories` 關鍵字進行搜尋，然後選取 [資料處理站]。
 
     ![Data Factory 功能表](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. 在 Data Factory 清單中搜尋**您的 Data Factory**，然後加以選取以啟動 [Data Factory] 頁面。
 
     ![搜尋您的 Data Factory](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
-4. 在資料管理站頁面上，按一下 [監視及管理]  圖格。
+4. 在資料管理站頁面上，按一下 [監視及管理] 圖格。
 
     ![監視及管理圖格](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. **資料整合應用程式**會在不同的索引標籤中啟動。您可以看到所有**管線執行**及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]  。 按一下 [參數]  資料行中的連結，即可檢查傳遞到管線的參數。 如果有錯誤，您就會在 [錯誤]  資料行中看到連結。 按一下 [動作]  資料行中的連結。
+5. **資料整合應用程式**會在不同的索引標籤中啟動。您可以看到所有**管線執行**及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]。 按一下 [參數] 資料行中的連結，即可檢查傳遞到管線的參數。 如果有錯誤，您就會在 [錯誤] 資料行中看到連結。 按一下 [動作] 資料行中的連結。
 
     ![管線執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
-6. 當您按一下 [動作]  資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
+6. 當您按一下 [動作] 資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
 
     ![活動執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
-7. 若要切換回 [管線執行]  檢視，請按一下 [管線]  ，如下圖所示。
+7. 若要切換回 [管線執行] 檢視，請按一下 [管線]，如下圖所示。
 
 
 ### <a name="review-the-results"></a>檢閱結果
@@ -629,13 +629,13 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>監視累加複製管線
-1. 在**資料整合應用程式**中，重新整理 [管線執行]  檢視。 確認您有在清單中看到 IncrementalCopyPipeline。 按一下 [動作]  資料行中的連結。  
+1. 在**資料整合應用程式**中，重新整理 [管線執行] 檢視。 確認您有在清單中看到 IncrementalCopyPipeline。 按一下 [動作] 資料行中的連結。  
 
     ![管線執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
-2. 當您按一下 [動作]  資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
+2. 當您按一下 [動作] 資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
 
     ![活動執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
-3. 若要切換回 [管線執行]  檢視，請按一下 [管線]  ，如下圖所示。
+3. 若要切換回 [管線執行] 檢視，請按一下 [管線]，如下圖所示。
 
 ### <a name="review-the-results"></a>檢閱結果
 您會在 `adftutorial` 容器的 `incchgtracking` 資料夾中看到第二個檔案。

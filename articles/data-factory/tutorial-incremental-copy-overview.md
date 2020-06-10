@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409911"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194500"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以累加方式將資料從來源資料存放區載入到目的地資料存放區
 
@@ -32,7 +32,7 @@ ms.locfileid: "81409911"
 
 如需逐步指示，請參閱下列教學課程： 
 - [以累加方式將資料從 Azure SQL Database 中的一個資料表複製到 Azure Blob 儲存體](tutorial-incremental-copy-powershell.md)
-- [以累加方式將內部部署 SQL Server 中多個資料表的資料複製到 Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [以累加方式將 SQL Server 執行個體中多個資料表的資料複製到 Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 如需範本，請參閱下列資訊：
 - [使用控制資料表進行差異複製](solution-template-delta-copy-with-control-table.md)

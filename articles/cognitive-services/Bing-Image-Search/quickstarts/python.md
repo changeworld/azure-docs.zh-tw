@@ -10,13 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 6cdee6dd30c1af44b321b12c96f3e2ecdcd0d2b3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: c913e6a8f1acf6603fad7a0b93758e5a7678f9a5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871978"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609194"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入門：使用 Bing 影像搜尋 REST API 和 Python 來搜尋影像
 
@@ -30,7 +30,7 @@ ms.locfileid: "83871978"
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) 取得，其中含有其他錯誤處理和註釋。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Python 2.x 或 3.x](https://www.python.org/)
 * [Python Imaging Library (PIL)](https://pillow.readthedocs.io/en/stable/index.html)

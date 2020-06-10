@@ -1,32 +1,34 @@
 ---
 title: 快速入門：搭配 Node.js 的 Cassandra API - Azure Cosmos DB
 description: 本快速入門示範如何使用 Azure Cosmos DB Cassandra API，以使用 Node.js 建立設定檔應用程式
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/18/2020
+ms.openlocfilehash: 39bdd2d34260b9adb12b25adff9d661083d51fe4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77210337"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310048"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入門：使用 Node.js SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
 
 在本快速入門中，您會建立 Azure Cosmos DB Cassandra API 帳戶，並使用從 GitHub 複製得到的 Cassandra Node.js 應用程式來建立 Cassandra 資料庫和容器。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
 
@@ -166,7 +168,7 @@ ms.locfileid: "77210337"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 連接字串可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
     使用 ![[複製] 按鈕](./media/create-cassandra-nodejs/copy.png) 按鈕 (畫面右方) 來複製最高值 ([連絡點])。
 
@@ -238,7 +240,7 @@ ms.locfileid: "77210337"
 
     按 CTRL+C 來停止執行程式，並關閉主控台視窗。 
 
-5. 在 Azure 入口網站中，開啟 [資料總管]  以查詢、修改及使用這個新資料。 
+5. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
     ![在資料總管中檢視資料](./media/create-cassandra-nodejs/data-explorer.png) 
 

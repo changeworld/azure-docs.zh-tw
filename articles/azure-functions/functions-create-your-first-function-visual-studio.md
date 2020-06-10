@@ -5,26 +5,22 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122743"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231586"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入門：使用 Visual Studio 在 Azure 中建立第一個函式
 
-Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要先建立 VM 或發佈 Web 應用程式。
+在本文中，您會使用 Visual Studio 建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。  
 
-在本快速入門中，您將了解如何使用 Visual Studio 2019 在本機建立及測試 HTTP 觸發的 C# 函式應用程式 "hello world"，然後將其發佈至 Azure。 
+完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。
 
-![瀏覽器中的函式 localhost 回應](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
+## <a name="prerequisites"></a>必要條件
 
-本快速入門針對 Visual Studio 2019 所設計。 
-
-## <a name="prerequisites"></a>Prerequisites
-
-若要完成本教學課程，請先安裝 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 請務必在安裝期間選取 [Azure 開發]  工作負載。 如果您想要改為使用 Visual Studio 2017 來建立 Azure Functions 專案，您必須先安裝[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
+若要完成本教學課程，請先安裝 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 請務必在安裝期間選取 [Azure 開發] 工作負載。 如果您想要改為使用 Visual Studio 2017 來建立 Azure Functions 專案，您必須先安裝[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
 
 ![透過 Azure 開發工作負載安裝 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
@@ -34,11 +30,19 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio 會建立一個專案，其中的類別包含 HTTP 觸發程序函式類型的重複使用程式碼。 `FunctionName` 方法屬性會設定函式名稱，其預設為 `Function1`。 `HttpTrigger` 屬性指定此函式是由 HTTP 要求所觸發。 重複使用程式碼會傳送 HTTP 回應，其中包含要求內文或查詢字串中的值。
+Visual Studio 會建立一個專案，其中的類別包含 HTTP 觸發程序函式類型的重複使用程式碼。 重複使用程式碼會傳送 HTTP 回應，其中包含要求內文或查詢字串中的值。 `HttpTrigger` 屬性指定此函式是由 HTTP 要求所觸發。 
 
-將適當的屬性套用至方法，進而使用輸入和輸出繫結來擴展您的函式功能。 如需詳細資訊，請參閱 [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)的[觸發程序和繫結](functions-dotnet-class-library.md#triggers-and-bindings)一節。
+## <a name="rename-the-function"></a>重新命名函式
 
-您現在已建立函式專案和 HTTP 觸發的函式，可以在本機電腦上進行測試。
+`FunctionName` 方法屬性會設定函式的名稱，其預設將產生為 `Function1`。 因為當您建立專案時，工具不會讓您覆寫預設函式名稱，所以請花幾分鐘為函式類別、檔案與中繼資料建立更好的名稱。
+
+1. 在 [檔案總管] 中，在 Function1.cs 檔案按一下滑鼠右鍵，並將其重新命名為 `HttpExample.cs`。
+
+1. 在程式碼中，將 Function1 類別重新命名為 'HttpExample'。
+
+1. 在名為 `run` 的 `HttpTrigger` 方法中，將 `FunctionName` 方法屬性重新命名為 `HttpExample`。
+
+您現在已重新命名函式，可以在本機電腦上進行測試。
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
@@ -56,19 +60,41 @@ Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Azur
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
 
-1. 從**發佈**設定檔頁面複製函式應用程式的基底 URL。 使用新的基底 URL，取代在本機測試函式時所使用的 URL `localhost:port` 部分。 將查詢字串 `?name=<YOUR_NAME>` 附加至此 URL 並執行要求。
+1. 在 Cloud Explorer 中，您應選取新的函數應用程式。 若沒有，請展開您的訂用帳戶 > [應用程式服務]，然後選取新的函數應用程式。
+
+1. 在函數應用程式按一下滑鼠右鍵，然後選擇 [在瀏覽器中開啟]。 這會在您預設之網頁瀏覽器中開啟函數應用程式的根，並顯示表示您的函數應用程式正在執行的頁面。 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="正在執行的函數應用程式":::
+
+1. 在瀏覽器的網址列中，將字串 `/api/HttpExample?name=Functions` 附加至基底 URL，然後執行要求。
 
     呼叫 HTTP URL 觸發函式的 URL 會採用下列格式：
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 下圖顯示瀏覽器中對於函式傳回之遠端 GET 要求所做出的回應︰
+2. 前往此 URL，您會看到瀏覽器中對於函式所傳回遠端 GET 要求所做出的回應，其看起來像下列範例︰
 
-    ![瀏覽器中的函式回應](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="瀏覽器中的函式回應":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行後續的快速入門、教學課程或者您在本快速入門中建立的任何服務，請勿清除資源。
+
+在 Azure 中「資源」是指函式應用程式、函式、儲存體帳戶等等。 其會分組為「資源群組」，您可以藉由刪除群組來刪除群組中的所有項目。 
+
+您已建立資源來完成這些快速入門。 您可能必須支付這些資源，取決於您的[帳戶狀態](https://azure.microsoft.com/account/)和[服務定價](https://azure.microsoft.com/pricing/)。 如果您不再需要資源，刪除方式如下：
+
+1. 在 Cloud Explorer 中，展開您的訂用帳戶 > [應用程式服務]，在函數應用程式按一下滑鼠右鍵，然後選擇 [在入口網站中開啟]。 
+
+1. 在函數應用程式頁面中，選取 [概觀] 索引標籤，然後選取 [資源群組] 底下的連結。
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="選取要從函數應用程式頁面中刪除的資源群組":::
+
+2. 在 [資源群組] 分頁中，檢閱包含資源的清單，並確認這些是您想要刪除的項目。
+ 
+3. 選取 [刪除資源群組]，並遵循指示。
+
+   刪除需要幾分鐘的時間。 完成時，通知會出現幾秒鐘的時間。 您也可以選取分頁頂端的鈴鐺圖示以檢視通知。
 
 ## <a name="next-steps"></a>後續步驟
 

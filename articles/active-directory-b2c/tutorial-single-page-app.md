@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 4a36019f9023490c3aac68dbe7004b053f08e5ec
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875539"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298817"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證
 
@@ -34,7 +34,7 @@ ms.locfileid: "80875539"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要先備妥下列 Azure AD B2C 資源，才能繼續本教學課程中的步驟：
 
@@ -51,28 +51,27 @@ ms.locfileid: "80875539"
 
 在已完成的第二個必要教學課程中，您在 Azure AD B2C 中註冊了 Web 應用程式。 若要啟用本教學課程中範例程式碼的通訊，請在應用程式註冊中新增回覆 URL (也稱為重新導向 URI)。
 
-您可以使用目前的 [應用程式]  體驗，或使用新整合的 [應用程式註冊 (預覽)]  體驗來更新應用程式。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 選取 Azure 入口網站左上角的 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 選取 [應用程式]  ，然後選取 [webapp1]  應用程式。
-1. 在 [回覆 URL]  下方，新增 `http://localhost:6420`。
-1. 選取 [儲存]  。
-1. 在 [屬性] 頁面上，記錄 [應用程式識別碼]  。 當您在單頁 Web 應用程式中更新程式碼時，您可在稍後步驟中使用應用程式識別碼。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 選取 [應用程式註冊 (預覽)]  ，選取 [擁有的應用程式]  索引標籤，然後選取 *webapp1* 應用程式。
-1. 選取 [驗證]  ，然後選取 [試用全新體驗]  (若已顯示)。
-1. 在 [Web]  底下，選取 [新增 URI]  連結，輸入 `http://localhost:6420`，然後選取 [儲存]  。
-1. 選取 [概觀]  。
-1. 當您在單頁 Web 應用程式中更新程式碼時，記錄 [應用程式 (用戶端) 識別碼]  ，以供後續步驟使用。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式註冊]，選取 [擁有的應用程式] 索引標籤，然後選取 [webapp1] 應用程式。
+1. 在 [Web] 底下，選取 [新增 URI] 連結，輸入 `http://localhost:6420`，然後選取 [儲存]。
+1. 選取 [概觀]。
+1. 當您在單頁 Web 應用程式中更新程式碼時，記錄 [應用程式 (用戶端) 識別碼]，以供後續步驟使用。
+
+#### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 選取 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式 (舊版)]，然後選取 [webapp1] 應用程式。
+1. 在 [回覆 URL] 下方，新增 `http://localhost:6420`。
+1. 選取 [儲存]。
+1. 在 [屬性] 頁面上，記錄 [應用程式識別碼]。 當您在單頁 Web 應用程式中更新程式碼時，您可在稍後步驟中使用應用程式識別碼。
 
 * * *
 
@@ -90,7 +89,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 既然您已取得範例，請使用您的 Azure AD B2C 租用戶名稱和您在先前步驟中記錄的應用程式識別碼更新程式碼。
 
-1. 開啟 JavaScriptSPA  資料夾內的 authConfig.js  檔案。
+1. 開啟 JavaScriptSPA 資料夾內的 authConfig.js 檔案。
 1. 在 `msalConfig` 物件中，更新：
     * `clientId`，以您在先前步驟中記錄的**應用程式 (用戶端) 識別碼**作為值
     * *URI，以具有您 Azure AD B2C 租用戶名稱和建立為一部分必要條件的註冊/登入使用者流程名稱 (例如 `authority`B2C_1_signupsignin1*) 。
@@ -136,25 +135,25 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 這個範例應用程式支援註冊、登入和密碼重設。 在本教學課程中，您會使用電子郵件地址來註冊。
 
-1. 選取 [登入]  ，以起始您在先前的步驟中指定的 *B2C_1_signupsignin1* 使用者流程。
-1. Azure AD B2C 會顯示包含註冊連結的登入頁面。 由於您還沒有帳戶，因此請選取 [立即註冊]  連結。
+1. 選取 [登入]，以起始您在先前的步驟中指定的 *B2C_1_signupsignin1* 使用者流程。
+1. Azure AD B2C 會顯示包含註冊連結的登入頁面。 由於您還沒有帳戶，因此請選取 [立即註冊] 連結。
 1. 註冊工作流程會顯示一個使用電子郵件地址來收集並驗證使用者身分識別的頁面。 註冊工作流程也會收集使用者的密碼，以及在使用者流程中定義的要求屬性。
 
     請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
     :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C 使用者流程所顯示的註冊頁面":::
 
-1. 選取 [建立]  ，在 Azure AD B2C 目錄中建立本機帳戶。
+1. 選取 [建立]，在 Azure AD B2C 目錄中建立本機帳戶。
 
-當您選取 [建立]  時，應用程式會顯示已登入之使用者的名稱。
+當您選取 [建立] 時，應用程式會顯示已登入之使用者的名稱。
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="網頁瀏覽器顯示具有已登入使用者的單頁應用程式":::
 
-如果想測試登入，請選取 [登出]  按鈕，然後選取 [登入]  ，然後以您註冊時所輸入的電子郵件地址和密碼登入。
+如果想測試登入，請選取 [登出] 按鈕，然後選取 [登入]，然後以您註冊時所輸入的電子郵件地址和密碼登入。
 
 ### <a name="what-about-calling-the-api"></a>該如何呼叫 API？
 
-如果在登入後選取 [呼叫 API]  按鈕，則系統會顯示註冊/登入使用者流程頁面，而不是 API 呼叫的結果。 這是預期的情況，因為您尚未設定應用程式的 API 部分，無法與  Azure AD B2C 租用戶中註冊的 Web API 應用程式進行通訊。
+如果在登入後選取 [呼叫 API] 按鈕，則系統會顯示註冊/登入使用者流程頁面，而不是 API 呼叫的結果。 這是預期的情況，因為您尚未設定應用程式的 API 部分，無法與 Azure AD B2C 租用戶中註冊的 Web API 應用程式進行通訊。
 
 此時，應用程式仍在嘗試與示範租用戶 (fabrikamb2c.onmicrosoft.com) 中註冊的 API 通訊，而因為您未使用該租用戶進行驗證，所以會顯示註冊/登入頁面。
 

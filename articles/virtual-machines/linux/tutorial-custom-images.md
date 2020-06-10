@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652988"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324567"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立 Azure VM 的自訂映像
 
@@ -29,7 +29,7 @@ ms.locfileid: "83652988"
 > * 共用映像庫
 
 
-本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
+本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83652988"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-an-image-gallery"></a>建立映像資源庫 
 
@@ -61,14 +61,14 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。   資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
-使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」  建立名為 myGalleryRG  的資源群組，以及名為 myGallery  的資源庫。
+使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」建立名為 myGalleryRG 的資源群組，以及名為 myGallery 的資源庫。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="get-infornation-about-the-vm"></a>取得 VM 的相關資訊
+## <a name="get-information-about-the-vm"></a>取得 VM 的相關資訊
 
 您可以使用 [az vm list](/cli/azure/vm#az-vm-list)查看可用的 VM 清單。 
 
@@ -94,7 +94,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。 
 
-在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 
+在此範例中，映像定義會命名為 myImageDefinition，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -116,7 +116,7 @@ az sig image-definition create \
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，我們的映像版本是 1.0.0  ，而我們將使用區域備援儲存體，在「美國中西部」  區域中建立 2 個複本、在「美國中南部」  區域中建立 1 個複本，以及在「美國東部 2」  區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
+在此範例中，我們的映像版本是 1.0.0，而我們將使用區域備援儲存體，在「美國中西部」區域中建立 2 個複本、在「美國中南部」區域中建立 1 個複本，以及在「美國東部 2」區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
 
 將此範例中 `--managed-image` 的值取代為上一個步驟中的 VM 識別碼。
 
@@ -144,7 +144,7 @@ az sig image-version create \
 
 使用 `--image` 的映像定義識別碼，從可用的最新映像版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立 VM。 
 
-在此範例中，我們會從最新版本的 myImageDefinition  映像建立 VM。
+在此範例中，我們會從最新版本的 myImageDefinition 映像建立 VM。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

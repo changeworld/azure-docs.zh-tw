@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834402"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Slack 整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "83834402"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -40,7 +40,7 @@ ms.locfileid: "83834402"
 * 已啟用 Slack 單一登入 (SSO) 的訂用帳戶。
 
 > [!NOTE]
-> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
+> 如果您需要在一個租用戶中整合多個 Slack 執行個體，每個應用程式的識別碼都可以是變數。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -93,20 +93,24 @@ ms.locfileid: "83834402"
 
     > [!NOTE]
     > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Slack 用戶端支援小組](https://slack.com/help/contact)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    
+    > [!NOTE]
+    > 如果您有多個 Slack 執行個體需要與租用戶整合，**識別碼 (實體識別碼)** 可以是變數。 使用模式 `https://<DOMAIN NAME>.slack.com`。 在此案例中，您也必須使用相同的值，與 Slack 中的另一個設定配對。
 
 1. Slack 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
     ![image](common/edit-attribute.png)
 
-1. 除了上述屬性外，Slack 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。 如果使用者沒有電子郵件地址，請將 **emailaddress** 對應至 **user.userprincipalname**。
+1. 除了上述屬性外，Slack 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。 您也必須新增 `email` 屬性。 如果使用者沒有電子郵件地址，請將 **emailaddress** 對應至 **user.userprincipalname**，以及將 **email** 對應至 **user.userprincipalname**。
 
     | 名稱 | 來源屬性 |
     | -----|---------|
     | emailaddress | user.userprincipalname |
+    | 電子郵件 | user.userprincipalname |
     | | |
 
-> [!NOTE]
-    > 若要設定服務提供者 (SP) 組態，您必須按一下 SAML 設定頁面中 [進階選項] 旁的 [展開]。 在 [服務提供者簽發者] 方塊中，輸入工作區 URL。 預設值為 slack.com。 
+   > [!NOTE]
+   > 若要設定服務提供者 (SP) 組態，您必須按一下 SAML 設定頁面中 [進階選項] 旁的 [展開]。 在 [服務提供者簽發者] 方塊中，輸入工作區 URL。 預設值為 slack.com。 
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -126,7 +130,7 @@ ms.locfileid: "83834402"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -172,9 +176,12 @@ ms.locfileid: "83834402"
 
     ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. 按一下**展開**，然後在 [識別提供者簽發者] 文字方塊中輸入 `https://slack.com`。
+    e. 按一下 [展開]，然後在 [服務提供者簽發者] 文字方塊中輸入 `https://slack.com`。
 
     f.  按一下 [儲存組態] 。
+    
+    > [!NOTE]
+    > 如果您有多個需要與 Azure AD 整合的 Slack 執行個體，請將 `https://<DOMAIN NAME>.slack.com` 設定為**服務提供者簽發者**，使其可以與 Azure 應用程式**識別碼**設定配對。
 
 ### <a name="create-slack-test-user"></a>建立 Slack 測試使用者
 

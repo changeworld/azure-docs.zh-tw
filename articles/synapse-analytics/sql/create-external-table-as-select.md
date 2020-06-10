@@ -9,30 +9,29 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647529"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117584"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>透過 Azure Synapse Analytics 使用 SQL 隨選 (預覽) 將查詢結果儲存至儲存體
 
 在本文中，您將了解如何使用 SQL 隨選 (預覽) 將查詢結果儲存至儲存體。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-您的第一步是檢閱下列文章，並確定您已符合必要條件：
+您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用來讀取這些範例中資料的外部檔案格式。
 
-- [第一次設定](query-data-storage.md#first-time-setup)
-- [先決條件](query-data-storage.md#prerequisites)
+依照本文中的指示，建立資料來源、資料庫範圍認證，以及用來將資料寫入輸出儲存體的外部檔案格式。
 
 ## <a name="create-external-table-as-select"></a>Create external table as select
 
 您可以使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 陳述式將查詢結果儲存至儲存體。
 
 > [!NOTE]
-> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。 如果您尚未建立資料庫，請參閱[第一次設定](query-data-storage.md#first-time-setup)。 您必須將 Mydatasource 外部資料來源的 LOCATION 變更為指向您擁有其寫入權限的位置。 
+> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。
 
 ```sql
 USE [mydbname];
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 您可以像一般外部資料表一樣地使用透過 CETAS 所建立的外部資料表。
 
 > [!NOTE]
-> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。 如果您尚未建立資料庫，請參閱[第一次設定](query-data-storage.md#first-time-setup)。
+> 變更查詢中的第一行，也就是 [mydbname]，以使用您所建立的資料庫。
 
 ```sql
 USE [mydbname];

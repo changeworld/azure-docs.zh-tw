@@ -9,22 +9,22 @@ ms.service: notification-hubs
 ms.devlang: azurecli
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 830fd33e19a10ec6472650e3d26fec677b82c3d7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80069481"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485153"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 通知中樞
 
 Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您從任何後端 (雲端或內部部署) 傳送通知到任何平台 (iOS、Android、Windows、Kindle、Baidu 等)。 如需該服務的詳細資訊，請參閱[什麼是 Azure 通知中樞？](notification-hubs-push-notification-overview.md)。
 
-在本快速入門中，您會使用 Azure CLI 建立通知中樞。 第一節會提供建立通知中樞命名空間的相關步驟，以及該命名空間的查詢存取原則。 第二節會提供相關步驟讓您在現有命名空間中建立通知中樞。  您也會了解如何建立自訂存取原則。
+在本快速入門中，您會使用 Azure CLI 建立通知中樞。 第一節會提供讓您建立通知中樞命名空間的相關步驟。  第二節會提供相關步驟讓您在現有命名空間中建立通知中樞。  您也會了解如何建立自訂存取原則。  
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +38,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
    如果您使用的是 CLI 的本機安裝，請使用 [az login](/cli/azure/reference-index#az-login) 命令登入。
 
-    ```azurecli-interactive
+    ```azurecli
     az login
     ```
 
@@ -46,51 +46,85 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 2. 安裝 Azure CLI 擴充功能。
 
-   若要針對通知中樞執行 Azure CLI 命令，請安裝 Azure CLI 的[通知中樞擴充功能](/cli/azure/ext/notification-hub/notification-hub)。  
+   當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。  Azure CLI 延伸模組可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。  若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
 
-    ```azurecli-interactive
+   執行下列命令，以安裝 [適用於通知中樞的延伸模組](/cli/azure/ext/notification-hub/notification-hub)：
+
+    ```azurecli
     az extension add --name notification-hub
    ```
 
 3. 建立資源群組。
 
-   Azure 通知中樞和所有 Azure 資源相同，都必須部署到資源群組中。 資源群組可讓您組織和管理相關的 Azure 資源。
+   Azure 通知中樞與所有 Azure 資源一樣都必須部署到資源群組中。 資源群組可讓您組織和管理相關的 Azure 資源。
 
-   針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus  位置中建立一個名為 spnhubrg  的資源群組：
+   針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus 位置中建立一個名為 spnhubrg 的資源群組：
 
-   ```azurecli-interactive
+   ```azurecli
    az group create --name spnhubrg --location eastus
    ```
 
 ## <a name="create-a-notification-hub-namespace"></a>建立通知中樞命名空間
 
-1. 建立通知中樞的命名空間
+1. 建立通知中樞的命名空間。
 
-   命名空間會包含一個或多個中樞，此名稱在所有 Azure 訂用帳戶中必須是唯一的。  若要檢查指定服務命名空間的可用性，請使用 [az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) 命令。  執行 [az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) 命令來建立命名空間。  
+   命名空間會包含一或多個中樞，**此名稱在所有 Azure 訂用帳戶中必須是唯一的，並且長度至少為 6 個字元**。  若要檢查名稱的可用性，請使用 [az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) 命令。
 
-   ```azurecli-interactive
-   #check availability
+   ```azurecli
    az notification-hub namespace check-availability --name spnhubns
+   ```
 
-   #create the namespace
+   Azure CLI 會顯示下列主控台輸出，以回應您的可用性要求：
+
+   ```output
+   {
+   "id": "/subscriptions/yourSubscriptionID/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
+   "isAvailiable": true,
+   "location": null,
+   "name": "spnhubns",
+   "properties": false,
+   "sku": null,
+   "tags": null,
+   "type": "Microsoft.NotificationHubs/namespaces/checkNamespaceAvailability"
+   }
+   ```
+
+   請注意 Azure CLI 回應中的第二行，`"isAvailable": true`。  若可以使用您為命名空間所指定的所需名稱，則此行將會讀取 `false`。  一旦您確認名稱的可用性之後，請執行 [az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) 命令來建立您的命名空間。  
+
+   ```azurecli
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-2. 列出命名空間存取原則的索引鍵和連接字串。
+   若您提供給 `az notification-hub namespace create` 命令的 `--name` 無法使用，或不符合 [Azure 資源的命名規則與限制](/azure/azure-resource-manager/management/resource-name-rules)，Azure CLI 會以下列主控台輸出回應：
 
-   系統會自動為新的命名空間建立名為 **RootManageSharedAccessKey** 的存取原則。  每個存取原則都有兩組索引鍵和連接字串。  若要列出命名空間的索引鍵和連接字串，請執行 [az notification-hub namespace authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) 命令。
+   ```output
+   #the name is not available
+   The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.
 
-   ```azurecli-interactive
-   az notification-hub namespace authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --name RootManageSharedAccessKey
+   #the name is invalied
+   The specified service namespace is invalid.
+   ```
+
+   若您嘗試的第一個名字不成功，請為新的命名空間選取不同的名稱，然後再次執行 `az notification-hub namespace create` 命令。
+
+   > [!NOTE]
+   > 在此步驟中，您必須在您從本快速入門複製的每個 Azure CLI 命令中，取代 `--namespace` 參數的值。
+
+2. 取得命名空間的清單。
+
+   若要查看新命名空間的詳細資料，請使用 [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) 命令。  若您想要查看訂用帳戶的所有命名空間，可選擇 `--resource-group` 參數。
+
+   ```azurecli
+   az notification-hub namespace list --resource-group spnhubrg
    ```
 
 ## <a name="create-notification-hubs"></a>建立通知中樞
 
 1. 建立您的第一個通知中樞。
 
-   現在您可以在新的命名空間中建立通知中樞。  執行 [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) 命令來建立通知中樞。
+   現在您可以在新的命名空間中，建立一或多個通知中樞。  執行 [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) 命令來建立通知中樞。
 
-   ```azurecli-interactive
+   ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
    ```
 
@@ -98,40 +132,50 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
    您可以在單一命名空間中建立多個通知中樞。  若要在相同的命名空間中建立第二個通知中樞，請使用不同的中樞名稱再次執行 `az notification-hub create` 命令。
 
-   ```azurecli-interactive
+   ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name mysecondnhub --location eastus --sku Free
    ```
 
-## <a name="work-with-access-policies"></a>使用存取原則
+3. 取得通知中樞的清單。
 
-1. 為通知中樞建立新的授權規則。
+   Azure CLI 會傳回每個已執行命令的成功或錯誤訊息；然而，也保證可以查詢通知中樞清單。  [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) 命令是針對這個用途所設計。
 
-   系統會自動為每個新的通知中樞建立存取原則。  若要建立和自訂您自己的存取原則，請使用 [az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) 命令。
-
-   ```azurecli-interactive
-   az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Send
+   ```azurecli
+   az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
    ```
 
-2. 列出通知中樞的存取原則。
+## <a name="work-with-notification-hub-access-policies"></a>搭配通知中樞存取原則一起使用
 
-   若要查詢通知中樞有哪些存取原則，請使用 [az  notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令。
+1. 列出通知中樞的存取原則。
 
-   ```azurecli-interactive
+   Azure 通知中樞透過使用存取原則，使用[共用存取簽章安全性](/azure/notification-hubs/notification-hubs-push-notification-security)。  當您建立通知中樞時，會自動建立兩個原則。  必須有這些原則的連接字串，才能設定推播通知。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令會提供原則名稱與其各自資源群組的清單。
+
+   ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
    ```
 
    > [!IMPORTANT]
-   > 請勿在應用程式中使用 **DefaultFullSharedAccessSignature** 原則。 這只能在後端使用。  用戶端應用程式中應只使用 **Listen** 存取原則。
+   > 請勿在應用程式中使用 _DefaultFullSharedAccessSignature_ 原則。 這只能在後端使用。  用戶端應用程式中應只使用 `Listen` 存取原則。
+
+2. 為通知中樞建立新的授權規則。
+
+   若您想要使用意義的名稱建立其他授權規則，您可以使用 [az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) 命令來建立及自訂您自己的存取原則。  `--rights` 參數是您想要指派的權限清單 (以空格分隔)。
+
+   ```azurecli
+   az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Manage Send
+   ```
 
 3. 列出通知中樞存取原則的索引鍵和連接字串
 
-   每個存取原則都有兩組索引鍵和連接字串。  您稍後需要用到這些連接字串來處理推播通知。  若要列出通知中樞存取原則的索引鍵和連接字串，請執行 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)命令。
+   每個存取原則都有兩組索引鍵和連接字串。  您稍後需要用到這些連接字串來[設定通知中樞](/azure/notification-hubs/configure-notification-hub-portal-pns-settings)。  若要列出通知中樞存取原則的索引鍵和連接字串，請執行 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)命令。
 
-   ```azurecli-interactive
+   ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature
-   az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name DefaultListenSharedAccessSignature --output json
+   az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name DefaultListenSharedAccessSignature --output table
+   ```
 
-   #query the keys and connection strings for the custom policy
+   ```azurecli
+   #query the keys and connection strings for a custom policy
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --output table
    ```
 
@@ -142,15 +186,20 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 若不再需要，請使用 [az group delete](/cli/azure/group) 命令來移除資源群組和所有相關資源。
 
-```azurecli-interactive
+```azurecli
 az group delete --name spnhubrg
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-探索使用 Azure CLI 管理通知中樞的完整功能。
+* 在本快速入門中，您已建立通知中樞。 若要了解如何使用平台通知系統 (PNS) 設定來設定中樞，請參閱[在通知中樞內設定推播通知](configure-notification-hub-portal-pns-settings.md)
 
-* [通知中樞的完整 Azure CLI 參考清單](/cli/azure/ext/notification-hub/notification-hub)
-* [通知中樞命名空間的 Azure CLI 參考清單](/cli/azure/ext/notification-hub/notification-hub/namespace)
-* [通知中樞授權規則的 Azure CLI 參考清單](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
-* [通知中樞認證的 Azure CLI 參考清單](/cli/azure/ext/notification-hub/notification-hub/credential)
+* 探索使用 Azure CLI 管理通知中樞的大量功能。
+
+  [通知中樞的完整參考清單](/cli/azure/ext/notification-hub/notification-hub)
+
+  [通知中樞命名空間的參考清單](/cli/azure/ext/notification-hub/notification-hub/namespace)
+
+  [通知中樞授權規則的參考清單](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
+
+  [通知中樞認證認證的參考清單](/cli/azure/ext/notification-hub/notification-hub/credential)

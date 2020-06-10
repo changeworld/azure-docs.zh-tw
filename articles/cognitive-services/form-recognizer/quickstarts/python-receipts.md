@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.custom: tracking-python
+ms.openlocfilehash: 8fe179cb3bc965112ece9e2be4b98d758c4db28f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141920"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606253"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取收據資料
 

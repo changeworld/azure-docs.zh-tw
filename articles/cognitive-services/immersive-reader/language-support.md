@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538646"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309300"
 ---
 # <a name="language-support-for-immersive-reader"></a>沈浸式閱讀程式的語言支援
 
@@ -33,8 +33,8 @@ ms.locfileid: "81538646"
 | 卡達隆尼亞文 | ca-ES |
 | 中文 | zh |
 | 中文 (中國) | zh-CN |
-| 中文 (香港) | zh-HK |
-| 中文 (澳門) | zh-MO |
+| 中文 (香港特別行政區) | zh-HK |
+| 中文 (澳門特別行政區) | zh-MO |
 | 中文 (新加坡) | zh-SG |
 | 中文 (台灣) | zh-TW |
 | 簡體中文 | zh-Hans |
@@ -42,7 +42,7 @@ ms.locfileid: "81538646"
 | 簡體中文 (新加坡) | zh-Hans-SG |
 | 繁體中文 | zh-Hant-CN |
 | 繁體中文 (香港特別行政區) | zh-Hant-HK |
-| 繁體中文 (澳門) | zh-Hant-MO |
+| 繁體中文 (澳門特別行政區) | zh-Hant-MO |
 | 繁體中文 (台灣) | zh-Hant-TW |
 | 克羅埃西亞文 | hr |
 | 克羅埃西亞文 (克羅埃西亞) | hr-HR |
@@ -135,8 +135,8 @@ ms.locfileid: "81538646"
 | 卡達隆尼亞文 | ca-ES |
 | 中文 | zh |
 | 中文 (中國) | zh-CN |
-| 中文 (香港) | zh-HK |
-| 中文 (澳門) | zh-MO |
+| 中文 (香港特別行政區) | zh-HK |
+| 中文 (澳門特別行政區) | zh-MO |
 | 中文 (新加坡) | zh-SG |
 | 中文 (台灣) | zh-TW |
 | 簡體中文 | zh-Hans |
@@ -144,7 +144,7 @@ ms.locfileid: "81538646"
 | 簡體中文 (新加坡) | zh-Hans-SG |
 | 繁體中文 | zh-Hant-CN |
 | 繁體中文 (香港特別行政區) | zh-Hant-HK |
-| 繁體中文 (澳門) | zh-Hant-MO |
+| 繁體中文 (澳門特別行政區) | zh-Hant-MO |
 | 繁體中文 (台灣) | zh-Hant-TW |
 | 克羅埃西亞文 | hr |
 | 克羅埃西亞文 (克羅埃西亞) | hr-HR |
@@ -268,7 +268,7 @@ ms.locfileid: "81538646"
 | 簡體中文 (新加坡) | zh-Hans-SG |
 | 繁體中文 | zh-Hant-CN |
 | 繁體中文 (香港特別行政區) | zh-Hant-HK |
-| 繁體中文 (澳門) | zh-Hant-MO |
+| 繁體中文 (澳門特別行政區) | zh-Hant-MO |
 | 繁體中文 (台灣) | zh-Hant-TW |
 | 克羅埃西亞文 | hr |
 | 克羅埃西亞文 (克羅埃西亞) | hr-HR |

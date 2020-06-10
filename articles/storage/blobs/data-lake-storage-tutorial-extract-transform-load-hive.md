@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74327567"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014905"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 擷取、轉換和載入資料
 
@@ -28,7 +28,7 @@ ms.locfileid: "74327567"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **針對 HDInsight 設定的 Azure Data Lake Storage Gen2 儲存體帳戶**
 
@@ -58,7 +58,7 @@ ms.locfileid: "74327567"
    
    清除所有其他欄位。
 
-3. 選取 [下載]  。 您會取得含有您所選資料欄位的 .zip 檔案。
+3. 選取 [下載]。 您會取得含有您所選資料欄位的 .zip 檔案。
 
 ## <a name="extract-and-upload-the-data"></a>擷取並上傳資料
 
@@ -228,11 +228,11 @@ ms.locfileid: "74327567"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [SQL 資料庫]  。
+2. 選取 [SQL 資料庫]。
 
-3. 篩選您選擇要使用的資料庫名稱。 伺服器名稱會列在 [伺服器名稱]  資料行中。
+3. 篩選您選擇要使用的資料庫名稱。 伺服器名稱會列在 [伺服器名稱] 資料行中。
 
-4. 篩選您要使用的資料庫名稱。 伺服器名稱會列在 [伺服器名稱]  資料行中。
+4. 篩選您要使用的資料庫名稱。 伺服器名稱會列在 [伺服器名稱] 資料行中。
 
     ![取得 Azure SQL 伺服器詳細資料](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "取得 Azure SQL 伺服器詳細資料")
 
@@ -244,12 +244,12 @@ ms.locfileid: "74327567"
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. 安裝完成後，請使用下列命令連線至 SQL Database 伺服器。
+6. 安裝完成後，請使用下列命令連線至 SQL Database。
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * 以 SQL Database 伺服器名稱取代 `<server-name>` 預留位置。
+   * 以邏輯 SQL 伺服器名稱取代 `<server-name>` 預留位置。
 
    * 以 SQL 資料庫的管理員登入取代 `<admin-login>` 預留位置。
 

@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658851"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235293"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽) 支援的功能
 
-本文說明適用於 Azure Cosmos DB 的 Azure Synapse Link 中目前支援的功能。 
+本文說明適用於 Azure Cosmos DB 的 Azure Synapse Link 中目前支援的功能。
 
 ## <a name="azure-synapse-support"></a>Azure Synapse 支援
 
 Azure Cosmos DB 中有兩種類型的容器：
 * HTAP 容器 - 已啟用 Synapse Link 的容器。 此容器同時具有交易存放區和分析存放區。 
 * OLTP 容器 - 僅具有交易存放區的容器；未啟用 Synapse Link。 
+
+> [!IMPORTANT]
+> 適用於 Azure Cosmos DB 的 Azure Synapse Link 現在支援未啟用受控虛擬網路的工作區。 
 
 您可以在未啟用 Synapse Link 的情況下連線至 Azure Cosmos DB 的容器，此時，您只能讀取/寫入交易存放區。 接下來是適用於 Azure Cosmos DB 的 Synapse Link 中目前支援的功能清單。 
 

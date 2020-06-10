@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739094"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140783"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -36,7 +36,7 @@ ms.locfileid: "83739094"
   * 您想要在應用程式中支援的「社交」識別提供者，例如 Facebook、LinkedIn 或 Twitter。
   * 可支援標準身分識別通訊協定的「外部」識別提供者，例如 OAuth 2.0、OpenID Connect 等等。
   * 可讓使用者以使用者名稱 (或電子郵件地址或其他識別碼) 和密碼進行註冊和登入的「本機」帳戶。
-* **金鑰** - 新增及管理用於簽署和驗證權杖的加密金鑰。
+* **金鑰** - 新增及管理用於簽署和驗證權杖、用戶端密碼、憑證和密碼的加密金鑰。
 
 Azure AD B2C 租用戶是開始使用 Azure AD B2C 所需建立的第一個資源。 了解方法，請參閱[教學課程：建立 Azure Active Directory B2C 租用戶](tutorial-create-tenant.md)。
 
@@ -69,7 +69,7 @@ Azure AD B2C 可讓您管理取用者帳戶設定檔的一般屬性，例如顯�
 
 ## <a name="external-identity-providers"></a>外部識別提供者
 
-您可以設定 Azure AD B2C，允許使用者使用來自外部社交或企業識別提供者 (IdP) 的認證來登入您的應用程式。 Azure AD B2C 支援外部識別提供者，例如 Facebook、Microsoft 帳戶、Google、Twitter，以及任何支援 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 或 WS-同盟通訊協定的識別提供者。
+您可以設定 Azure AD B2C，允許使用者使用來自外部社交或企業識別提供者 (IdP) 的認證來登入您的應用程式。 Azure AD B2C 支援外部識別提供者，例如 Facebook、Microsoft 帳戶、Google、Twitter，以及任何支援 OAuth 1.0、OAuth 2.0、OpenID Connect 和 SAML 通訊協定的識別提供者。
 
 ![外部識別提供者](media/technical-overview/external-idps.png)
 
@@ -134,15 +134,13 @@ Identity Experience Framework 可讓您利用任何步驟組合來建立使用�
 
 ## <a name="protocols-and-tokens"></a>通訊協定和權杖
 
-Azure AD B2C 支援在使用者旅程圖中使用 [OpenID Connect 和 OAuth 2.0 通訊協定](protocols-overview.md)。 在 Azure AD B2C 的 OpenID Connect 實作中，您的應用程式會向 Azure AD B2C 發出驗證要求，以起始使用者旅程圖。
+- 針對應用程式，Azure AD B2C 支援在使用者旅程圖中使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 通訊協定](connect-with-saml-service-providers.md)。 您的應用程式會向 Azure AD B2C 發出驗證要求，以起始使用者旅程圖。 提出 Azure AD B2C 的要求後會產生安全性權杖，例如[識別碼權杖或存取權杖](tokens-overview.md)或 SAML 權杖。 此安全性權杖會定義應用程式內的使用者身分識別。
 
-提出 Azure AD B2C 的要求後會產生安全性權杖，例如[識別碼權杖或存取權杖](tokens-overview.md)。 此安全性權杖會定義使用者的身分識別。 權杖接收自 Azure AD B2C 端點，像是 `/token` 或 `/authorize` 端點。 利用這些權杖，您可以存取可用來驗證身分識別和允許存取安全資源的宣告。
+- 針對外部身分識別，Azure AD B2C 支援與任何 OAuth 1.0、OAuth 2.0、OpenID Connect 和 SAML 身分識別提供者同盟。
 
-針對外部身分識別，Azure AD B2C 支援與任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 和 WS-同盟識別提供者同盟。
+下圖顯示 Azure AD B2C 如何使用相同驗證流程內的各種不同通訊協定來進行通訊：
 
 ![與 SAML 型 IdP 進行 OIDC 型用戶端應用程式同盟的圖表](media/technical-overview/protocols.png)
-
-上圖顯示 Azure AD B2C 如何使用相同驗證流程內的各種不同通訊協定來進行通訊：
 
 1. 信賴憑證者應用程式會使用 OpenID Connect 起始對 Azure AD B2C 的授權要求。
 1. 當應用程式的使用者選擇使用採用 SAML 通訊協定的外部識別提供者登入時，Azure AD B2C 會叫用 SAML 通訊協定來與該識別提供者進行通訊。

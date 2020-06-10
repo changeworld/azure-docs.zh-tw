@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: bd9eaad0c141eda815da159e3c13d6c51f5e6200
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593595"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297986"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>教學課程：將 VuePress 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -26,7 +26,7 @@ ms.locfileid: "83593595"
 > - 設定 Azure 靜態 Web Apps
 > - 將 VuePress 應用程式部署至 Azure
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://azure.microsoft.com/free/)。
 - GitHub 帳戶。 如果您沒有帳戶，可以[免費建立帳戶](https://github.com/join)。
@@ -110,8 +110,8 @@ ms.locfileid: "83593595"
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 按一下 [建立資源]
-1. 搜尋 [靜態 Web Apps]
-1. 按一下 [靜態 Web Apps (預覽)]
+1. 搜尋 [Static Web Apps]
+1. 按一下 [Static Web Apps (預覽)]
 1. 按一下 [建立] 
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
@@ -120,7 +120,7 @@ ms.locfileid: "83593595"
 
 1. 在 [資源群組] 中選取 [新增]。 在 [新增資源群組名稱] 中輸入 vuepress-static-app，然後選取 [確定]。
 
-1. 接著，在 [名稱] 方塊中，為您的應用程式提供全域唯一的名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值會作為您靜態應用程式的 URL 前置詞，格式為 `https://<APP_NAME>.azurestaticapps.net`。
+1. 接下來，在 [名稱] 方塊中輸入應用程式名稱。 有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `-`。
 
 1. 在 [區域] 中，選取您附近的可用區域。
 

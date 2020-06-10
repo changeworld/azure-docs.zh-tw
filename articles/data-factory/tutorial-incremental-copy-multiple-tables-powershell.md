@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以累加方式複製多個資料表
-description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從內部部署 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database。
+description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410014"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194518"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從內部部署 SQL Server 中的多個資料表載入到 Azure SQL Database。    
+在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從 SQL Server 資料庫中的多個資料表載入到 Azure SQL Database。    
 
 您會在本教學課程中執行下列步驟：
 
@@ -67,16 +67,16 @@ ms.locfileid: "81410014"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* **SQL Server**。 在本教學課程中，您會使用內部部署 SQL 資料庫作為來源資料存放區。 
-* **Azure SQL Database**。 您會使用 SQL 資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)，按照步驟來建立 SQL 資料庫。 
+* **SQL Server**。 在本教學課程中，您會使用 SQL 資料庫作為來源資料存放區。 
+* **Azure SQL Database**。 您會使用 SQL 資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 資料庫中建立來源資料表
 
-1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至內部部署 SQL Server 資料庫。
+1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
 
-2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]  。
+2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
 3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的資料表：
 
@@ -113,9 +113,9 @@ ms.locfileid: "81410014"
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL Database 中建立目的地資料表
 
-1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至內部部署 SQL Server 資料庫。
+1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
 
-2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]  。
+2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
 3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的 SQL 資料表：  
 
@@ -283,17 +283,17 @@ END
 
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為參與者或擁有者角色，或是 Azure 訂用帳戶的管理員。
 
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對內部部署 SQL Server 資料庫和 Azure SQL Database 建立連結服務。 
+您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對 SQL Server 資料庫和 Azure SQL Database 建立連結服務。 
 
 ### <a name="create-the-sql-server-linked-service"></a>建立 SQL Server 連結服務
 
-在此步驟中，您要將內部部署 SQL Server 資料庫連結至資料處理站。
+在此步驟中，您要將 SQL Server 資料庫連結至資料處理站。
 
 1. 使用下列內容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 資料夾中建立名為 **SqlServerLinkedService.json** 的 JSON 檔案 (如果該資料夾尚不存在，請建立本機資料夾)。 以您用於連線到 SQL Server 的驗證作為基礎，選取右側區段。  
 
@@ -357,7 +357,7 @@ END
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務 AzureStorageLinkedService。 在下列範例中，您會傳遞 ResourceGroupName  和 DataFactoryName  參數的值： 
+3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務 AzureStorageLinkedService。 在下列範例中，您會傳遞 ResourceGroupName 和 DataFactoryName 參數的值： 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -814,21 +814,21 @@ END
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [所有服務]  ，以關鍵字「資料處理站」  進行搜尋，然後選取 [資料處理站]  。 
+2. 選取 [所有服務]，以關鍵字「資料處理站」進行搜尋，然後選取 [資料處理站]。 
 
-3. 在 Data Factory 清單中搜尋您的 Data Factory，然後加以選取以開啟 [Data Factory]  頁面。 
+3. 在 Data Factory 清單中搜尋您的 Data Factory，然後加以選取以開啟 [Data Factory] 頁面。 
 
-4. 在 [Data Factory]  頁面上選取 [編寫與監視]  ，以在個別索引標籤中啟動 Azure Data Factory。
+4. 在 [Data Factory] 頁面上選取 [編寫與監視]，以在個別索引標籤中啟動 Azure Data Factory。
 
-5. 在 [立即開始]  頁面中，選取左側的 [監視]  。 
+5. 在 [立即開始] 頁面中，選取左側的 [監視]。 
 ![管線執行](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. 您可以看到所有管線執行及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]  。 若要檢查傳遞到管線的參數，請選取 [參數]  資料行中的連結。 如果發生錯誤，您就會在 [錯誤]  資料行中看到連結。
+6. 您可以看到所有管線執行及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]。 若要檢查傳遞到管線的參數，請選取 [參數] 資料行中的連結。 如果發生錯誤，您就會在 [錯誤] 資料行中看到連結。
 
     ![管線執行回合](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-7. 當您選取 [動作]  資料行中的連結時，您會看到管線的所有活動執行。 
+7. 當您選取 [動作] 資料行中的連結時，您會看到管線的所有活動執行。 
 
-8. 若要回到 [管線執行]  檢視，請選取 [所有管線執行]  。 
+8. 若要回到 [管線執行] 檢視，請選取 [所有管線執行]。 
 
 ## <a name="review-the-results"></a>檢閱結果
 
@@ -907,11 +907,11 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. 遵循[監視管線](#monitor-the-pipeline)一節中的指示，以監視管線執行。 當管線狀態為 [進行中]  時，您會在 [動作]  底下看到另一個動作連結，其可供取消管線執行。 
+2. 遵循[監視管線](#monitor-the-pipeline)一節中的指示，以監視管線執行。 當管線狀態為 [進行中] 時，您會在 [動作] 底下看到另一個動作連結，其可供取消管線執行。 
 
-3. 選取 [重新整理]  可重新整理清單，直到管線執行成功。 
+3. 選取 [重新整理] 可重新整理清單，直到管線執行成功。 
 
-4. 選擇性地，選取 [動作]  底下的 [檢視活動執行]  連結，可查看與此管線執行相關聯的所有活動執行。 
+4. 選擇性地，選取 [動作] 底下的 [檢視活動執行] 連結，可查看與此管線執行相關聯的所有活動執行。 
 
 ## <a name="review-the-final-results"></a>檢閱最終結果
 

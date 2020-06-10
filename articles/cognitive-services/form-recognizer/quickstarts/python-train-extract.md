@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.custom: tracking-python
+ms.openlocfilehash: 948c30c641b68f7966831a3324c1bfab5dbd3b03
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141903"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610730"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入門：搭配使用 REST API 與 Python 將表單辨識器模型定型並擷取表單資料
 
@@ -29,7 +30,7 @@ ms.locfileid: "84141903"
 - 至少有五個相同類型的表單。 您將使用此資料來定型模型。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 > [!NOTE]
-> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱 [參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) (英文)。
+> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) (英文)。
 
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源

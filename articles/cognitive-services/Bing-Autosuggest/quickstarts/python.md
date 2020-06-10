@@ -10,18 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 94ee870771cd0f0c372602648e5a81e99cbd5537
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: tracking-python
+ms.openlocfilehash: ea2605258b37c8dd706c5ff82d060d1a14770f63
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929517"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608990"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>快速入門：使用 Bing 自動建議 REST API 與 Python 建議搜尋查詢
 
 本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 Python 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) 上找到此範例的原始程式碼
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Python 3.x](https://www.python.org/downloads/) 
 

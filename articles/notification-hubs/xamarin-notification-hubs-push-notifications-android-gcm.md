@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72387656"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308127"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>教學課程：使用通知中樞將推播通知傳送至 Xamarin.Android 應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "72387656"
 > * 建立 Xamarin.Android 應用程式，並將其連線至通知中樞
 > * 從 Azure 入口網站傳送測試通知
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Visual Studio 搭配 Xamarin] (在 Windows 上) 或 [Visual Studio for Mac] (在 OS X 上)。
@@ -56,9 +56,9 @@ ms.locfileid: "72387656"
 
 ### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>設定通知中樞的 GCM/FCM 設定
 
-1. 選取左側功能表上的 [設定]  區段中的 [Google (GCM/FCM)]  。
+1. 選取左側功能表上的 [設定] 區段中的 [Google (GCM/FCM)]。
 2. 輸入您從 Google Firebase 主控台記下的**伺服器金鑰**。
-3. 在工具列上選取 [儲存]  。
+3. 在工具列上選取 [儲存]。
 
     ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
@@ -71,39 +71,39 @@ ms.locfileid: "72387656"
 > [!NOTE]
 > 本教學課程所述的步驟適用於 Visual Studio 2017。 
 
-1. 在 Visual Studio 中，開啟 [檔案]  功能表，選取 [新增]  ，然後選取 [專案]  。 在 [新增專案]  視窗中，執行下列步驟：
-    1. 依序展開 [已安裝]  和 [Visual C#]  ，然後按一下 [Android]  。
-    2. 從清單中選取 [Android 應用程式 (Xamarin)]  。
+1. 在 Visual Studio 中，開啟 [檔案] 功能表，選取 [新增]，然後選取 [專案]。 在 [新增專案] 視窗中，執行下列步驟：
+    1. 依序展開 [已安裝] 和 [Visual C#]，然後按一下 [Android]。
+    2. 從清單中選取 [Android 應用程式 (Xamarin)]。
     3. 輸入專案的 [名稱]  。
     4. 選取專案的 [位置]  。
-    5. 選取 [確定] 
+    5. 選取 [確定]
 
         ![[新增專案] 對話方塊](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. 在 [新的 Android 應用程式]  對話方塊中，選取 [空白應用程式]  ，然後選取 [確定]  。
+2. 在 [新的 Android 應用程式] 對話方塊中，選取 [空白應用程式]，然後選取 [確定]。
 
     ![[新增專案] 對話方塊](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
-3. 在 [方案總管]  視窗中展開 [屬性]  ，然後按一下 **AndroidManifest.xml**。 更新套件名稱，使其符合您在 Google Firebase 主控台中將 Firebase 雲端通訊新增至專案時輸入的套件名稱。
+3. 在 [方案總管] 視窗中展開 [屬性]，然後按一下 **AndroidManifest.xml**。 更新套件名稱，使其符合您在 Google Firebase 主控台中將 Firebase 雲端通訊新增至專案時輸入的套件名稱。
 
     ![GCM 中的套件名稱](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. 將專案的目標 Android 版本設定為 **Android 9.0 (pie)** ，方法是遵循下列步驟： 
-    1. 以滑鼠右鍵按一下專案，然後選取 [屬性]  。 
-    1. 針對 [使用下列 Android 版本進行編譯：  目標架構)] 欄位，選取 [Android 9.0 (Pie)]  。 
-    1. 在訊息方塊上選取 [是]  ，繼續變更目標 Framework。
+    1. 以滑鼠右鍵按一下專案，然後選取 [屬性]。 
+    1. 針對 [使用下列 Android 版本進行編譯：目標架構)] 欄位，選取 [Android 9.0 (Pie)]。 
+    1. 在訊息方塊上選取 [是]，繼續變更目標 Framework。
 1. 遵循下列步驟將必要的 NuGet 套件新增至專案：
-    1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件...]  。
-    1. 切換至 [已安裝]  索引標籤，選取 [Xamarin.Android.Support.Design]  ，然後選取右窗格中的 [更新]  將套件更新為最新版本。
-    1. 切換至 [瀏覽]  索引標籤。搜尋 **Xamarin.GooglePlayServices.Base**。 在結果清單中選取 **Xamarin.GooglePlayServices.Base**。 然後，選取 [安裝]  。
+    1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件...]。
+    1. 切換至 [已安裝] 索引標籤，選取 [Xamarin.Android.Support.Design]，然後選取右窗格中的 [更新] 將套件更新為最新版本。
+    1. 切換至 [瀏覽] 索引標籤。搜尋 **Xamarin.GooglePlayServices.Base**。 在結果清單中選取 **Xamarin.GooglePlayServices.Base**。 然後，選取 [安裝]。
 
         ![Google Play 服務 NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-    6. 在 [NuGet 套件管理員]  視窗中，搜尋 **Xamarin.Firebase.Messaging**。 在結果清單中選取 **Xamarin.Firebase.Messaging**。 然後，選取 [安裝]  。
-    7. 現在，請搜尋 **Xamarin.Azure.NotificationHubs.Android**。 在結果清單中選取 **Xamarin.Azure.NotificationHubs.Android**。 然後，選取 [安裝]  。
+    6. 在 [NuGet 套件管理員] 視窗中，搜尋 **Xamarin.Firebase.Messaging**。 在結果清單中選取 **Xamarin.Firebase.Messaging**。 然後，選取 [安裝]。
+    7. 現在，請搜尋 **Xamarin.Azure.NotificationHubs.Android**。 在結果清單中選取 **Xamarin.Azure.NotificationHubs.Android**。 然後，選取 [安裝]。
 
 ### <a name="add-the-google-services-json-file"></a>新增 Google Services JSON 檔案
 
 1. 將您從 Google Firebase 主控台下載的 `google-services.json` 複製到專案資料夾。
 2. 將 `google-services.json` 新增至專案。
-3. 在 [方案總管]  視窗中選取 `google-services.json`。
-4. 在 [屬性]  窗格中，將 [建置動作] 設定為 **GoogleServicesJson**。 如果您未看到 **GoogleServicesJson**，請關閉 Visual Studio 再加以重新啟動，並重新開啟專案，然後重試。
+3. 在 [方案總管] 視窗中選取 `google-services.json`。
+4. 在 [屬性] 窗格中，將 [建置動作] 設定為 **GoogleServicesJson**。 如果您未看到 **GoogleServicesJson**，請關閉 Visual Studio 再加以重新啟動，並重新開啟專案，然後重試。
 
     ![GoogleServicesJson 建置動作](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
 
@@ -135,9 +135,9 @@ ms.locfileid: "72387656"
 
 3. 收集您的 Android 應用程式和通知中樞的下列資訊：
 
-   * **接聽連接字串**：在 [Azure 入口網站]的儀表板上，選擇 [檢視連接字串]  。 複製此值得 `DefaultListenSharedAccessSignature` 連接字串。
+   * **接聽連接字串**：在 [Azure 入口網站]的儀表板上，選擇 [檢視連接字串]。 複製此值得 `DefaultListenSharedAccessSignature` 連接字串。
    * **中樞名稱**：您的中樞在 [Azure 入口網站]中的名稱。 例如， *mynotificationhub2*。
-4. 在 [方案總管]  視窗中，以滑鼠右鍵按一下您的**專案**，選取 [新增]  ，然後選取 [類別]  。
+4. 在 [方案總管] 視窗中，以滑鼠右鍵按一下您的**專案**，選取 [新增]，然後選取 [類別]。
 5. 為您的 Xamarin 專案建立 `Constants.cs` 類別，並定義類別中的下列常數值。 以您的值取代預留位置。
 
     ```csharp
@@ -248,7 +248,7 @@ ms.locfileid: "72387656"
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. 將下列程式碼新增至 `MyFirebaseMessagingService.cs` 以處理所接收的訊息。 
+18. 將下列程式碼新增至 `MyFirebaseMessagingService` 類別內，以處理所接收的訊息。 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ ms.locfileid: "72387656"
         }
     ```
 
-19. 將下列方法新增至 MyFirebaseMessagingService 類別以接收 FCM 註冊權杖，並將其傳送至通知中樞執行個體 (中樞)。 
+19. 將下列方法新增至 MyFirebaseMessagingService 類別 (在先前步驟中新增的程式碼正下方) 以接收 FCM 註冊權杖，並將其傳送至通知中樞執行個體 (中樞)。 
 
     ```csharp
         public override void OnNewToken(string token)
@@ -318,7 +318,7 @@ ms.locfileid: "72387656"
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>從 Azure 入口網站傳送測試通知
 
-您可以在 [Azure 入口網站] 中，使用 [測試傳送]  選項測試應用程式能否接收通知。 它會將測試推播通知傳送至您的裝置。
+您可以在 [Azure 入口網站] 中，使用 [測試傳送] 選項測試應用程式能否接收通知。 它會將測試推播通知傳送至您的裝置。
 
 ![Azure 入口網站 - 測試傳送](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 

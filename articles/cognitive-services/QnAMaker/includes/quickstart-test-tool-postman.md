@@ -10,16 +10,16 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203948"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237724"
 ---
 這個以 Postman 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 最新的 [**Postman**](https://www.getpostman.com/) \(英文\)。
 * 您必須具有
@@ -27,7 +27,7 @@ ms.locfileid: "82203948"
     * 已定型並發佈的[知識庫，其中具有從快速入門建置得來的問題與答案](../Quickstarts/add-question-metadata-portal.md)，並已使用中繼資料和閒聊資料加以設定。
 
 > [!NOTE]
-> 當您準備好從知識庫產生問題的答案時，就必須[定型](../Quickstarts/create-publish-knowledge-base.md#save-and-train)並[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)知識庫。 發佈知識庫時，[發佈]  頁面會顯示用來產生答案的 HTTP 要求設定。 [Postman]  索引標籤會顯示為了產生答案所需的設定。
+> 當您準備好從知識庫產生問題的答案時，就必須[定型](../Quickstarts/create-publish-knowledge-base.md#save-and-train)並[發佈](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)知識庫。 發佈知識庫時，[發佈] 頁面會顯示用來產生答案的 HTTP 要求設定。 [Postman] 索引標籤會顯示為了產生答案所需的設定。
 
 ## <a name="set-up-postman-for-requests"></a>針對要求來設定 Postman
 
@@ -35,7 +35,7 @@ ms.locfileid: "82203948"
 
 使用此程序來設定 Postman，然後閱讀後續各節以設定 POST 主體 JSON。
 
-1. 從知識庫的 [設定]  頁面，選取 [Postman]  索引標籤來查看用來從知識庫產生答案的設定。 複製下列要用於 Postman 的資訊。
+1. 從知識庫的 [設定] 頁面，選取 [Postman] 索引標籤來查看用來從知識庫產生答案的設定。 複製下列要用於 Postman 的資訊。
 
     |名稱|設定|目的和值|
     |--|--|--|
@@ -64,7 +64,7 @@ ms.locfileid: "82203948"
     }
     ```
 
-    此問題就只有一個字 `size`，其可以傳回兩個問答集的其中一個。 `strictFilters` 陣列會辨別回應，而將回應減少到只剩 `qna_maker` 答案。
+    此問題就只有一個字 `size`，其可以傳回兩個問答組的其中一個。 `strictFilters` 陣列會辨別回應，而將回應減少到只剩 `qna_maker` 答案。
 
 1. 回應只會包含符合篩選準則的答案。
 
@@ -103,9 +103,12 @@ ms.locfileid: "82203948"
     }
     ```
 
-    如果有不符合搜尋詞彙但符合篩選條件的問答集，則不會傳回。 相反地，會傳回一般性答案 `No good match found in KB.`。
+    如果有不符合搜尋詞彙但符合篩選條件的問答組，則不會傳回。 相反地，會傳回一般性答案 `No good match found in KB.`。
 
 ## <a name="use-debug-query-property"></a>使用 debug 查詢屬性
+
+> [!NOTE]
+>不建議針對相依性使用 Debug 屬性。 已新增此屬性以協助產品小組進行疑難排解。
 
 偵錯資訊可協助您了解所傳回答案的判斷方式。 此資訊雖然有用，但並非必要。 若要使用偵錯資訊來產生答案，請新增 `debug` 屬性：
 

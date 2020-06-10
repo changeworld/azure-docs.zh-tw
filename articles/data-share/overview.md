@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621862"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636764"
 ---
 # <a name="what-is-azure-data-share"></a>什麼是 Azure Data Share？
 
@@ -78,15 +78,6 @@ Azure Data Share 可讓資料取用者：
 * 訂閱資料共用以透過累加快照集接收最新的資料複本
 
 上述所有重要功能均透過 Azure 入口網站或透過 REST API 來支援。 如需如何透過 REST API 來使用 Azure Data Share 的詳細資訊，請參閱我們的參考文件。 
-
-## <a name="security"></a>安全性
-
-Azure Data Share 會利用 Azure 提供的基礎安全性來保護待用資料和傳輸中資料。 資料在待用情況下會加密，基礎資料存放區有這方面的支援。 傳輸中的資料也會加密。 資料共用的相關中繼資料也會在待用情況下和傳輸過程中加密。 
-
-您可以在 Azure Data Share 資源層級設定存取控制，以確保資料存取者有獲得授權。 
-
-Azure Data Share 會利用 Azure 資源的受控身分識別 (先前稱為 MSI) 來自動管理 Azure Active Directory 中的身分識別。 Azure 資源的受控身分識別可用來存取要用於資料共用的資料存放區。 資料提供者與資料取用者之間不會交換認證。 如需詳細資訊，請參閱 [Azure 資源的受控身分識別頁面](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。 
-
 
 ## <a name="supported-regions"></a>支援區域
 

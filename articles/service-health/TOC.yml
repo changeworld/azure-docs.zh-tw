@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 將警示傳送至 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: 使用 REST 擷取健康狀態事件
-      href: service-health-rest.md
     - name: 設定適用於資源健康狀態事件的警示
       href: resource-health-alert-arm-template-guide.md
 - name: 參考

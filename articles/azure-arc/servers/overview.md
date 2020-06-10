@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648054"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449476"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
 
@@ -37,9 +37,10 @@ ms.locfileid: "83648054"
 
 使用適用於伺服器的 Azure Arc (預覽) 時，只有特定區域可受到支援：
 
+- EastUS
 - WestUS2
 - WestEurope
-- WestAsia
+- SoutheastAsia
 
 在大部分情況下，您在建立安裝指令碼時所選取的位置，應該是地理位置最接近機器位置的 Azure 區域。 待用資料會儲存在包含您所指定區域的 Azure 地理位置中，如果您有資料落地需求，這可能也會影響選擇的區域。 如果您的機器所連線的 Azure 區域受到中斷影響，連線的機器不會受到影響，但使用 Azure 的管理作業可能無法完成。 在發生區域性中斷的情況下，如果您有多個位置可提供異地備援服務，最好將每個位置中的機器連線到不同的 Azure 區域。
 

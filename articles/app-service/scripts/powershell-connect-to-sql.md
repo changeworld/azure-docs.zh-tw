@@ -6,12 +6,12 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74685392"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020025"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>將 App Service 應用程式連線至 SQL 資料庫
 
@@ -42,8 +42,8 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 建立 App Service 方案。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 建立 App Service 應用程式。 |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | 建立 SQL Database 伺服器。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 建立 SQL Database 伺服器防火牆規則。 |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | 建立伺服器。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 建立伺服器層級防火牆規則。 |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | 建立資料庫或彈性資料庫。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改 App Service 應用程式的設定。 |
 

@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: 減輕風險的理論式執行
           href: mitigate-se.md
-        - name: 監視中繼資料
+        - name: Azure 執行個體中繼資料服務
           href: instance-metadata-service.md
         - name: 啟用巢狀虛擬化
           href: nested-virtualization.md

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 0e98a10573a2e3abda255c325845190ed5067bb3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e27719f7a639a97a0cde04848a51ba6135c3199e
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778186"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84346135"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 [v3 參考文件](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics) | [3 套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
@@ -28,7 +28,7 @@ ms.locfileid: "83778186"
 
 ---
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
@@ -42,9 +42,9 @@ ms.locfileid: "83778186"
 
 使用 Visual Studio IDE，建立新的 .NET Core 主控台應用程式。 這會建立 "Hello World" 專案，內含單一 C# 原始程式檔：program.cs。
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
-以滑鼠右鍵按一下 [方案總管] 中的解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Azure.AI.TextAnalytics`。 選取版本 `1.0.0-preview.4`，然後 **安裝**。 您也可以使用[套件管理員主控台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+以滑鼠右鍵按一下 [方案總管] 中的解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Azure.AI.TextAnalytics`。 選取版本 `1.0.0-preview.5`，然後 **安裝**。 您也可以使用[套件管理員主控台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 > [!TIP]
 > 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) 上找到該檔案，其中包含本快速入門中的程式碼範例。 
@@ -58,7 +58,7 @@ ms.locfileid: "83778186"
 
 ---
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 開啟 *program.cs* 檔案並新增下列 `using` 指示詞：
 
@@ -121,7 +121,7 @@ private static readonly string endpoint = "<replace-with-your-text-analytics-end
 
 文字分析用戶端是 `TextAnalyticsClient` 物件，會使用您的金鑰向 Azure 進行驗證，並提供可接受文字作為單一字串或批次的函式。 您可以透過同步或非同步方式將文字傳送至 API。 回應物件會包含每個傳送文件的分析資訊。 
 
-如果您使用服務的 `3.0-preview` 版，您可以使用選擇性 `TextAnalyticsClientOptions` 執行個體來初始化具有各種預設設定 (例如，預設語言或國家/區域提示) 的用戶端。 您也可以使用 Azure Active Directory 權杖進行驗證。 
+如果您使用服務的 `3.0` 版，您可以使用選擇性 `TextAnalyticsClientOptions` 執行個體來初始化具有各種預設設定 (例如，預設語言或國家/區域提示) 的用戶端。 您也可以使用 Azure Active Directory 權杖進行驗證。 
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -133,7 +133,7 @@ private static readonly string endpoint = "<replace-with-your-text-analytics-end
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 確定您先前的 main 方法會使用您的端點和認證建立新的用戶端物件。
 
@@ -155,7 +155,7 @@ var client = new TextAnalyticsClient(endpoint, credentials);
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立名為 `SentimentAnalysisExample()` 的新函式，該函式會使用您稍早建立的用戶端，並呼叫其 `AnalyzeSentiment()` 函式。 傳回的 `Response<DocumentSentiment>` 物件會包含整個輸入文件的情感標籤和分數，且如果成功，還會包含每個句子的情感分析。 如果發生錯誤，則會擲回 `RequestFailedException`。
 
@@ -166,11 +166,9 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     DocumentSentiment documentSentiment = client.AnalyzeSentiment(inputText);
     Console.WriteLine($"Document sentiment: {documentSentiment.Sentiment}\n");
 
-    var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
+        Console.WriteLine($"\tText: \"{sentence.Text}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
         Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
         Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
@@ -184,14 +182,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -215,7 +211,7 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>語言偵測
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 
 建立名為 `LanguageDetectionExample()` 的新函式，該函式會使用您稍早建立的用戶端，並呼叫其 `DetectLanguage()` 函式。 傳回的 `Response<DetectedLanguage>` 物件會包含偵測到的語言，以及其名稱和 ISO-6391 代碼。 如果發生錯誤，則會擲回 `RequestFailedException`。
@@ -258,11 +254,11 @@ Language: English
 
 ## <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 
 > [!NOTE]
-> `3.0-preview` 版本中的新功能：
+> `3.0` 版本中的新功能：
 > * 實體連結現已與實體辨識分開。
 
 
@@ -276,7 +272,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
     foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
+        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -285,11 +281,14 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 
 ```console
 Named Entities:
+        Text: trip,     Category: Event,        Sub-Category:
+                Score: 0.61
+
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Length: 7,      Score: 0.92
+                Score: 0.82
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Length: 9,      Score: 0.80
+                Score: 0.80
 ```
 
 ## <a name="entity-linking"></a>實體連結
@@ -313,7 +312,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
+            Console.WriteLine($"\t\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -326,38 +325,38 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Length: 11,     Score: 0.78
+                Score: 0.88
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Length: 10,     Score: 0.55
+                Score: 0.63
 
                 Text: Gates
-                Length: 5,      Score: 0.55
+                Score: 0.63
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Length: 10,     Score: 0.53
+                Score: 0.60
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Length: 7,      Score: 0.25
+                Score: 0.32
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Length: 5,      Score: 0.28
+                Score: 0.33
 ```
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
@@ -374,7 +373,7 @@ Linked Entities:
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立名為 `KeyPhraseExtractionExample()` 的新函式，該函式會使用您稍早建立的用戶端，並呼叫其 `ExtractKeyPhrases()` 函式。 傳回的 `<Response<IReadOnlyCollection<string>>` 物件會包含偵測到的關鍵片語清單。 如果發生錯誤，則會擲回 `RequestFailedException`。
 

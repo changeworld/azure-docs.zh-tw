@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: aahi
-ms.openlocfilehash: d58f294195efc393c07ecc3886c29e33dba02e6d
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b842084d00c1ce8ec347994371a55c97b89ba54f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81422098"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140692"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 [v3 參考文件](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 套件 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
@@ -23,11 +23,11 @@ ms.locfileid: "81422098"
 
 ---
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]  。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81422098"
 
 安裝 Python 之後，您可以透過以下項目安裝用戶端程式庫：
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
@@ -71,7 +71,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>物件模型
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 文字分析用戶端是一個 `TextAnalyticsClient` 物件，會使用您的金鑰向 Azure 進行驗證。 此用戶端提供數種用來分析文字 (以批次的形式) 的方法。 
 
@@ -100,7 +100,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 使用上方建立的 `key` 和 `endpoint` 來建立可具現化 `TextAnalyticsClient` 物件的函式。 然後，建立新的用戶端。 
 
@@ -129,7 +129,7 @@ client = authenticate_client()
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立名為 `sentiment_analysis_example()` 的新函式，此函式會將用戶端當做引數，然後呼叫 `analyze_sentiment()` 函式。 傳回的回應物件會包含整個輸入文件的情感標籤和分數，以及每個句子的情感分析。
 
@@ -146,7 +146,7 @@ def sentiment_analysis_example(client):
         response.confidence_scores.negative,
     ))
     for idx, sentence in enumerate(response.sentences):
-        print("[Length: {}]".format(sentence.grapheme_length))
+        print("Sentence: {}".format(sentence.text))
         print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
         print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
             sentence.confidence_scores.positive,
@@ -163,14 +163,14 @@ sentiment_analysis_example(client)
 Document Sentiment: positive
 Overall scores: positive=1.00; neutral=0.00; negative=0.00 
 
-[Length: 30]
+Sentence: I had the best day of my life.
 Sentence 1 sentiment: positive
 Sentence score:
 Positive=1.00
 Neutral=0.00
 Negative=0.00
 
-[Length: 30]
+Sentence: I wish you were there with me.
 Sentence 2 sentiment: neutral
 Sentence score:
 Positive=0.21
@@ -197,7 +197,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>語言偵測
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立名為 `language_detection_example()` 的新函式，此函式會將用戶端當做引數，然後呼叫 `detect_language()` 函式。 如果成功，傳回的回應物件會在 `primary_language` 中包含所偵測到的語言，如果未能成功，則會包含 `error`。
 
@@ -242,10 +242,10 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 > [!NOTE]
-> 在 `3.0-preview` 版中： 
+> 在 `3.0` 版中： 
 > * 實體連結是不同於 NER 的要求。
 
 建立名為 `entity_recognition_example` 的新函式，此函式會將用戶端作為引數，然後呼叫 `recognize_entities()` 函式並逐一查看結果。 如果成功，傳回的回應物件會在 `entity` 中包含所偵測到實體的清單，若未能成功，則會包含 `error`。 針對每個偵測到的實體，列印其類別目錄和子類別 (如果有的話)。
@@ -260,7 +260,7 @@ def entity_recognition_example(client):
         print("Named Entities:\n")
         for entity in result.entities:
             print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
+                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -272,11 +272,14 @@ entity_recognition_example(client)
 ```console
 Named Entities:
 
-    Text:    Seattle        Category:        Location       SubCategory:     GPE
-    Length:          7      Confidence Score:        0.92
+        Text:    trip   Category:        Event  SubCategory:     None
+        Confidence Score:        0.61
 
-    Text:    last week      Category:        DateTime       SubCategory:     DateRange
-    Length:          9      Confidence Score:        0.8
+        Text:    Seattle        Category:        Location       SubCategory:     GPE
+        Confidence Score:        0.82
+
+        Text:    last week      Category:        DateTime       SubCategory:     DateRange
+        Confidence Score:        0.8
 ```
 
 ## <a name="entity-linking"></a>實體連結
@@ -301,7 +304,7 @@ def entity_linking_example(client):
             print("\tMatches:")
             for match in entity.matches:
                 print("\t\tText:", match.text)
-                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score), "\tLength: {}\n".format(match.grapheme_length))
+                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score))
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -313,47 +316,40 @@ entity_linking_example(client)
 ```console
 Linked Entities:
 
-    Name:  Altair 8800     Id:  Altair 8800     Url:  https://en.wikipedia.org/wiki/Altair_8800 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Altair 8800
-        Confidence Score: 0.00     Length: 11
-
-    Name:  Bill Gates     Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Bill Gates
-        Confidence Score: 0.00     Length: 10
-
-        Text: Gates
-        Confidence Score: 0.00     Length: 5
-
-    Name:  Paul Allen     Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Paul Allen
-        Confidence Score: 0.00     Length: 10
-
-    Name:  Microsoft     Id:  Microsoft     Url:  https://en.wikipedia.org/wiki/Microsoft 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Microsoft
-        Confidence Score: 0.00     Length: 9
-
-        Text: Microsoft
-        Confidence Score: 0.00     Length: 9
-
-    Name:  April 4     Id:  April 4     Url:  https://en.wikipedia.org/wiki/April_4 
-    Data Source:  Wikipedia
-    Matches:
-        Text: April 4
-        Confidence Score: 0.00     Length: 7
-
-    Name:  BASIC     Id:  BASIC     Url:  https://en.wikipedia.org/wiki/BASIC 
-    Data Source:  Wikipedia
-    Matches:
-        Text: BASIC
-        Confidence Score: 0.00     Length: 5
+        Name:  Altair 8800      Id:  Altair 8800        Url:  https://en.wikipedia.org/wiki/Altair_8800
+        Data Source:  Wikipedia
+        Matches:
+                Text: Altair 8800
+                Confidence Score: 0.88
+        Name:  Bill Gates       Id:  Bill Gates         Url:  https://en.wikipedia.org/wiki/Bill_Gates
+        Data Source:  Wikipedia
+        Matches:
+                Text: Bill Gates
+                Confidence Score: 0.63
+                Text: Gates
+                Confidence Score: 0.63
+        Name:  Paul Allen       Id:  Paul Allen         Url:  https://en.wikipedia.org/wiki/Paul_Allen
+        Data Source:  Wikipedia
+        Matches:
+                Text: Paul Allen
+                Confidence Score: 0.60
+        Name:  Microsoft        Id:  Microsoft  Url:  https://en.wikipedia.org/wiki/Microsoft
+        Data Source:  Wikipedia
+        Matches:
+                Text: Microsoft
+                Confidence Score: 0.55
+                Text: Microsoft
+                Confidence Score: 0.55
+        Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4
+        Data Source:  Wikipedia
+        Matches:
+                Text: April 4
+                Confidence Score: 0.32
+        Name:  BASIC    Id:  BASIC      Url:  https://en.wikipedia.org/wiki/BASIC
+        Data Source:  Wikipedia
+        Matches:
+                Text: BASIC
+                Confidence Score: 0.33
 ```
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
@@ -409,7 +405,7 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 
 
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 建立名為 `key_phrase_extraction_example()` 的新函式，此函式會將用戶端當做引數，然後呼叫 `extract_key_phrases()` 函式。 如果成功，結果將會在 `key_phrases` 中包含偵測到的關鍵片語清單，若不成功則為 `error`。 列印任何偵測到的關鍵片語。
 

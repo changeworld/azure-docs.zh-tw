@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067708"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608020"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入門：使用簡單的 Azure CLI 命令建立適用於 MySQL 的 Azure 資料庫 - az mysql up (預覽)
 
@@ -22,7 +22,7 @@ ms.locfileid: "80067708"
 
 「適用於 MySQL 的 Azure 資料庫」是一個受控服務，可讓您在雲端執行、管理及調整高可用性 MySQL 資料庫。 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) 命令，使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器。 除了建立伺服器，`az mysql up` 命令還會建立範例資料庫、資料庫中的根使用者、開啟 Azure 服務的防火牆，以及建立用戶端電腦的預設防火牆規則。 這有助於加速開發程序。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tie
 backup-retention | 7 | 備份應保留的時間長度。 單位為天。
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。
 location | westus2 | 伺服器的 Azure 位置。
-ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 SSL。
+ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 SSL。
 storage-size | 5120 | 伺服器的儲存體容量 (單位為 MB)。
 version | 5.7 | MySQL 主要版本。
 admin-user | 由系統產生 | 適用於系統管理員登入的使用者名稱。

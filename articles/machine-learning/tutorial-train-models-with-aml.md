@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 3cdd39ea9581384e7dd37ed67c641849f2696e1c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115562"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558326"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教學課程：使用 MNIST 資料和 scikit-learn 將影像分類模型定型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,14 +39,14 @@ ms.locfileid: "82115562"
 >[!NOTE]
 > 此文章中的程式碼已經過 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.83 版的測試。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 完成[教學課程：開始建立您的第一個 Azure ML 實驗](tutorial-1st-experiment-sdk-setup.md)，以便：
     * 建立工作區
     * 將教學課程 Notebook 複製到工作區中的資料夾。
     * 建立雲端式計算執行個體。
 
-* 在複製的 tutorials/image-classification-mnist-data  資料夾中，開啟 img-classification-part1-training.ipynb  筆記本。 
+* 在複製的 tutorials/image-classification-mnist-data 資料夾中，開啟 img-classification-part1-training.ipynb 筆記本。 
 
 
 如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中使用此教學課程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上取得此教學課程和隨附的 **utils.py** 檔案。 執行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以安裝此教學課程的相依性。
@@ -55,7 +55,7 @@ ms.locfileid: "82115562"
 > 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
 >
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]  ，以執行整個 Notebook。
+> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>設定您的開發環境
 
@@ -107,7 +107,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 資料科學家可藉由使用 Azure Machine Learning Compute 這項受控服務，在 Azure 虛擬機器的叢集上訓練機器學習模型。 範例包括具有 GPU 支援的 VM。 在本教學課程中，您會建立 Azure Machine Learning Compute 作為訓練環境。 您會提交 Python 程式碼，以便稍後於本教學課程中在此 VM 上執行。 
 
-如果您的工作區中還沒有計算叢集，下列程式碼將會為您建立計算叢集。
+如果您的工作區中還沒有計算叢集，下列程式碼將會為您建立計算叢集。 會將叢集設定為當未在使用中時縮小為 0，並且可以擴大到最多 4 個節點。 
 
  **建立計算目標需要大約 5 分鐘的時間。** 如果工作區中已有計算資源，則程式碼會加以使用而略過建立程序。
 

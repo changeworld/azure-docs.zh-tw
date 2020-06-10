@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 4b5eb92e97675bee8d2d273ecdc8f23d7a12c53b
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 9c76e77db424d357ffcff12124a86bd7df550f97
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299429"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608888"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>快速入門：使用電腦視覺 REST API 和 Python 擷取印刷和手寫文字
 
-在本快速入門中，您將使用電腦視覺 REST API，擷取影像中的印刷及手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) (英文) 和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) (英文) 方法，來偵測影像中的文字，然後將可辨識的字元擷取至機器可讀取的字元串流。 
+在本快速入門中，您將使用電腦視覺 REST API，擷取影像中的印刷及手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。 
 
 > [!IMPORTANT]
-> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) (英文) 方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫此 URI，其代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) (英文) API，來檢查狀態並傳回「讀取」方法呼叫的結果。
+> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫此 URI，其代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) (英文) API，來檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ---
 

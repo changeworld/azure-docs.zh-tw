@@ -6,16 +6,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 8ae5bf3790db82d8d96f872d6375e9d3b167bf6d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b092d0e2c932e3d0c4b2d7880b1243513e45980
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654265"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418001"
 ---
-## <a name="prerequisites"></a>Prerequisites
+[參考文件](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/LanguageUnderstanding/csharp-predict-with-rest/Program.cs)
+
+## <a name="prerequisites"></a>必要條件
 
 * [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -43,72 +45,9 @@ ms.locfileid: "83654265"
 
 1. 在您慣用的 IDE 或編輯器中開啟 `Program.cs`。 然後使用下列程式碼覆寫 `Program.cs`：
 
-    ```csharp
-    using System;
-    using System.Net.Http;
-    using System.Web;
+    [!code-csharp[Code snippet](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/csharp-predict-with-rest/Program.cs)]
 
-    namespace predict_with_rest
-    {
-        class Program
-        {
-            static void Main(string[] args)
-            {
-                // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
-                var appId = "YOUR-APP-ID";
-
-                // YOUR-PREDICTION-KEY: 32 character key.
-                var key = "YOUR-PREDICTION-KEY";
-
-                // YOUR-PREDICTION-ENDPOINT: Example is "https://westus.api.cognitive.microsoft.com/"
-                var endpoint = "YOUR-PREDICTION-ENDPOINT";
-
-                // An utterance to test the pizza app.
-                var utterance = "I want two large pepperoni pizzas on thin crust please";
-
-                MakeRequest(key, endpoint, appId, utterance);
-
-                Console.WriteLine("Press ENTER to exit...");
-                Console.ReadLine();
-            }
-
-            static async void MakeRequest(string key, string endpoint, string appId, string utterance)
-            {
-                var client = new HttpClient();
-                var queryString = HttpUtility.ParseQueryString(string.Empty);
-
-                // The request header contains your subscription key
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-
-                // The "q" parameter contains the utterance to send to LUIS
-                queryString["query"] = utterance;
-
-                // These optional request parameters are set to their default values
-                queryString["verbose"] = "true";
-                queryString["show-all-intents"] = "true";
-                queryString["staging"] = "false";
-                queryString["timezoneOffset"] = "0";
-
-                var endpointUri = String.Format("{0}luis/prediction/v3.0/apps/{1}/slots/production/predict?{2}", endpoint, appId, queryString);
-
-                // Remove these before updating the article.
-                Console.WriteLine("endpoint: " + endpoint);
-                Console.WriteLine("appId: " + appId);
-                Console.WriteLine("queryString: " + queryString);
-                Console.WriteLine("endpointUri: " + endpointUri);
-
-                var response = await client.GetAsync(endpointUri);
-
-                var strResponseContent = await response.Content.ReadAsStringAsync();
-
-                // Display the JSON result from LUIS.
-                Console.WriteLine(strResponseContent.ToString());
-            }
-        }
-    }
-    ```
-
-1. 將 `YOUR-APP-ID`、`YOUR-KEY` 和 `YOUR-ENDPOINT` 值取代為您自己的預測金鑰和端點。
+1. 使用您自己的值取代以 `YOUR-` 開頭的值。
 
     |資訊|目的|
     |--|--|

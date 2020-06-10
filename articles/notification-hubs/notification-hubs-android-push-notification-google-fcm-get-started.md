@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 通知中樞和 Firebase 將推播通知傳送至 Android | Microsoft Docs
-description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將通知推送至 Android 裝置。
+title: 使用 Azure 通知中樞和 Firebase SDK 0.6 版將推播通知傳送至 Android | Microsoft Docs
+description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將推播通知傳送至 Android 裝置。
 services: notification-hubs
 documentationcenter: android
 keywords: 推播通知,推播通知,android 推播通知,fcm,firebase 雲端通訊
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/11/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80521561"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170438"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>教學課程：使用 Firebase 將推播通知傳送至 Android 裝置
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教學課程：使用 Firebase SDK 0.6 版將推播通知傳送至 Android 裝置
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-本教學課程說明如何使用 Azure 通知中樞和 Firebase 雲端通訊 (FCM)，將通知推送至 Android 應用程式。 在本教學課程中，您會建立空白的 Android 應用程式，其可使用 Firebase 雲端通訊 (FCM) 接收推播通知。
+本教學課程說明如何使用 Azure 通知中樞和 Firebase 雲端通訊 (FCM) SDK 0.6 版，將推播通知傳送到 Android 應用程式。 在本教學課程中，您會建立空白的 Android 應用程式，其可使用 Firebase 雲端通訊 (FCM) 接收推播通知。
 
 您可以[從 GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp) 下載本教學課程的完整程式碼。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80521561"
 > * 將應用程式連線至中樞。
 > * 測試應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/free/)。 
 
@@ -58,12 +58,12 @@ ms.locfileid: "80521561"
 ## <a name="create-an-android-studio-project"></a>建立 Android Studio 專案
 
 1. 啟動 Android Studio。
-2. 選取 [檔案]  ，指向 [新增]  ，然後選取 [新增專案]  。 
-2. 在 [選擇您的專案]  頁面上，選取 [空的活動]  ，然後選取 [下一步]  。 
-3. 在 [設定您的專案]  頁面上，採取下列步驟： 
+2. 選取 [檔案]，指向 [新增]，然後選取 [新增專案]。 
+2. 在 [選擇您的專案] 頁面上，選取 [空的活動]，然後選取 [下一步]。 
+3. 在 [設定您的專案] 頁面上，採取下列步驟： 
     1. 輸入應用程式的名稱。
     2. 指定要用來儲存專案檔的位置。 
-    3. 選取 [完成]  。 
+    3. 選取 [完成]。 
 
         ![設定您的專案](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -77,12 +77,12 @@ ms.locfileid: "80521561"
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>設定中樞的 Firebase 雲端通訊設定
 
-1. 在左窗格的 [設定]  下方，選取 [Google (GCM/FCM)]  。 
+1. 在左窗格的 [設定] 下方，選取 [Google (GCM/FCM)]。 
 2. 針對您稍早儲存的 FCM 專案，輸入其**伺服器金鑰**。 
-3. 在工具列上，選取 [儲存]  。 
+3. 在工具列上，選取 [儲存]。 
 
     ![Azure 通知中樞 - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. Azure 入口網站會在警示中顯示訊息來指出中樞的更新已成功。 [儲存]  按鈕已停用。 
+4. Azure 入口網站會在警示中顯示訊息來指出中樞的更新已成功。 [儲存] 按鈕已停用。 
 
 您的中樞現在已設定為與 Firebase 雲端通訊搭配使用。 您也擁有了所需的連接字串，而可將通知傳送給裝置並註冊應用程式來接收通知。
 
@@ -90,18 +90,18 @@ ms.locfileid: "80521561"
 
 ### <a name="add-google-play-services-to-the-project"></a>新增 Google Play 服務至專案
 
-1. 在 Android Studio 中，選取功能表上的 [工具]  ，然後選取 [SDK 管理員]  。 
-2. 選取您專案中使用的 Android SDK 目標版本。 然後選取 [顯示套件詳細資料]  。 
+1. 在 Android Studio 中，選取功能表上的 [工具]，然後選取 [SDK 管理員]。 
+2. 選取您專案中使用的 Android SDK 目標版本。 然後選取 [顯示套件詳細資料]。 
 
     ![Android SDK 管理員 - 選取目標版本](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. 如果尚未安裝 [Google API]  ，請加以選取。
+3. 如果尚未安裝 [Google API]，請加以選取。
 
     ![Android SDK Manager - 已選取 Google API](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. 切換到 [SDK 工具]  索引標籤。如果您尚未安裝 Google Play Services，請選取 [Google Play Services]  ，如下圖所示。 然後選取 [套用]  來安裝。 請注意在稍後步驟中使用的 SDK 路徑。
+4. 切換到 [SDK 工具] 索引標籤。如果您尚未安裝 Google Play Services，請選取 [Google Play Services]，如下圖所示。 然後選取 [套用] 來安裝。 請注意在稍後步驟中使用的 SDK 路徑。
 
     ![Android SDK Manager - 已選取 Google Play Services](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. 如果您看到 [確認變更]  對話方塊，請選取 [確定]  。 元件安裝程式會安裝要求的元件。 在元件安裝完成後選取 [完成]  。
-4. 選取 [確定]  以關閉 [新專案的設定]  對話方塊。  
+3. 如果您看到 [確認變更] 對話方塊，請選取 [確定]。 元件安裝程式會安裝要求的元件。 在元件安裝完成後選取 [完成]。
+4. 選取 [確定] 以關閉 [新專案的設定] 對話方塊。  
 1. 開啟 AndroidManifest.xml 檔案，然後在*application*標籤中新增下列標籤。
 
     ```xml
@@ -130,7 +130,7 @@ ms.locfileid: "80521561"
 
 ### <a name="add-google-firebase-support"></a>新增 Google Firebase 支援
 
-1. 在應用程式的 Build.Gradle 檔案中，於 [相依性]  區段中新增下列幾行 (如果還沒有這幾行程式碼的話)。 
+1. 在應用程式的 Build.Gradle 檔案中，於 [相依性] 區段中新增下列幾行 (如果還沒有這幾行程式碼的話)。 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
@@ -142,7 +142,7 @@ ms.locfileid: "80521561"
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
-3. 在工具列上選取 [立即同步]  。
+3. 在工具列上選取 [立即同步]。
 
 ### <a name="update-the-androidmanifestxml-file"></a>更新 AndroidManifest.xml 檔案
 
@@ -173,11 +173,11 @@ ms.locfileid: "80521561"
 
 ### <a name="add-code"></a>新增程式碼
 
-1. 在 [專案檢視] 中，展開 [app]   > [src]   > [main]   > [java]  。 以滑鼠右鍵按一下 **java** 底下您的套件資料夾，並選取 [新增]  ，然後選取 [Java 類別]  。 輸入 **NotificationSettings** 作為名稱，然後選取 [確定]  。
+1. 在 [專案檢視] 中，展開 [app] > [src] > [main] > [java]。 以滑鼠右鍵按一下 **java** 底下您的套件資料夾，並選取 [新增]，然後選取 [Java 類別]。 輸入 **NotificationSettings** 作為名稱，然後選取 [確定]。
 
     請務必在 `NotificationSettings` 類別的下列程式碼中更新這三個預留位置：
 
-   * **HubListenConnectionString**：中樞的 **DefaultListenAccessSignature** 連接字串。 在 [Azure 入口網站]上的中樞內按一下 [存取原則]  ，即可複製該連接字串。
+   * **HubListenConnectionString**：中樞的 **DefaultListenAccessSignature** 連接字串。 在 [Azure 入口網站]上的中樞內按一下 [存取原則]，即可複製該連接字串。
    * **HubName**︰使用出現在 [Azure 入口網站]中樞頁面中的中樞名稱。
 
      `NotificationSettings` 程式碼︰
@@ -522,7 +522,7 @@ ms.locfileid: "80521561"
     }
     ```
 
-13. 在 Android Studio 的功能表列上，選取 [建置]   > [重新建置專案]  ，來確保程式碼中未沒有任何錯誤。 如果您收到有關 `ic_launcher` 圖示的錯誤，請移除 AndroidManifest.xml 檔案中的下列陳述式： 
+13. 在 Android Studio 的功能表列上，選取 [建置] > [重新建置專案]，來確保程式碼中未沒有任何錯誤。 如果您收到有關 `ic_launcher` 圖示的錯誤，請移除 AndroidManifest.xml 檔案中的下列陳述式： 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -542,9 +542,9 @@ ms.locfileid: "80521561"
 
 您可以採取下列步驟，從 [Azure 入口網站]傳送推播通知：
 
-1. 在 Azure 入口網站中，於中樞的 [通知中樞] 頁面上，選取 [疑難排解]  區段中的 [測試傳送]  。
-3. 針對 [平台]  ，選取 [Android]  。
-4. 選取 [傳送]  。  您尚未在 Android 裝置上執行行動應用程式，所以不會在裝置上看到通知。 在您執行行動應用程式後，請再次選取 [傳送]  按鈕，以查看通知訊息。
+1. 在 Azure 入口網站中，於中樞的 [通知中樞] 頁面上，選取 [疑難排解] 區段中的 [測試傳送]。
+3. 針對 [平台]，選取 [Android]。
+4. 選取 [傳送]。  您尚未在 Android 裝置上執行行動應用程式，所以不會在裝置上看到通知。 在您執行行動應用程式後，請再次選取 [傳送] 按鈕，以查看通知訊息。
 5. 在底部的清單中查看作業的結果。
 
     ![Azure 通知中樞 - 測試傳送](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
@@ -558,7 +558,7 @@ ms.locfileid: "80521561"
 ### <a name="run-the-mobile-app-on-emulator"></a>在模擬器上執行行動應用程式
 在模擬器內測試推播通知之前，請先確定您的模擬器映像支援您為應用程式選擇的 Google API 層級。 如果您的映像不支援原生 Google API，您可能會遇到 **SERVICE\_NOT\_AVAILABLE** 例外狀況。
 
-此外，請確定已將 Google 帳戶新增至執行中模擬器的 [設定]   > [帳戶]  下方。 否則，嘗試向 FCM 註冊可能會導致 **AUTHENTICATION\_FAILED** 例外狀況。
+此外，請確定已將 Google 帳戶新增至執行中模擬器的 [設定] > [帳戶] 下方。 否則，嘗試向 FCM 註冊可能會導致 **AUTHENTICATION\_FAILED** 例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已使用 Firebase 雲端通訊將通知廣播至所有向服務註冊的 Android 裝置。 若想了解如何將通知推送至特定裝置，請繼續進行下列教學課程：

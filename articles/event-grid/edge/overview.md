@@ -2,17 +2,17 @@
 title: Edge 上的事件驅動架構 — IoT Edge 上的 Azure 事件方格
 description: 以 Azure 事件方格作為 IoT Edge 上的模組，用於模組、Edge 裝置和雲端之間的轉送事件。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
-ms.author: babanisa
-ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844646"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561676"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>什麼是 Azure IoT Edge 上的 Azure 事件方格？
 IoT Edge 上的事件方格可將 Azure 事件方格的強大功能和彈性導入 Edge。 您可以建立主題、發佈事件及訂閱多個目的地，不論它們是相同裝置、其他 Edge 裝置或雲端服務中的模組。

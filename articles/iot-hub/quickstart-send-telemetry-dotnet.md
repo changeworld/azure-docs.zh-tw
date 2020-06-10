@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: b1ee14afcf46dfbedfb9d696b6a0add22ccd39cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/01/2020
+ms.openlocfilehash: 2efd2c982fcd4c799a6c9daa1d89fde25e7f2c64
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769124"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307605"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (.NET)
 
@@ -31,9 +31,9 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-您在此快速入門中執行的兩個範例應用程式是使用 C# 所撰寫的。 您的開發電腦上需要有 .NET Core SDK 2.1.0 或更高版本。
+您在此快速入門中執行的兩個範例應用程式是使用 C# 所撰寫的。 您的開發電腦上必須有 .NET Core SDK 3.0 或以上版本。
 
 您可以從 [.NET](https://www.microsoft.com/net/download/all) 下載適用於多種平台的 .NET Core SDK。
 
@@ -42,6 +42,9 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 ```cmd/sh
 dotnet --version
 ```
+
+> [!NOTE]
+> 建議使用 .NET Core SDK 3.0 或以上版本來編譯在本快速入門中用來讀取遙測的事件中樞服務程式碼。 若您將服務程式碼的語言版本設定為預覽，如[從中樞讀取遙測](#read-the-telemetry-from-your-hub)一節中所述，就可以使用 .NET Core SDK 2.1。
 
 執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
 
@@ -73,7 +76,7 @@ az extension add --name azure-iot
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」  ：
+2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
@@ -87,7 +90,7 @@ az extension add --name azure-iot
 
     您稍後將會在快速入門中使用此值。
 
-3. 您還需要 IoT 中樞的「事件中樞相容端點」  、「事件中樞相容路徑」  和「服務主要金鑰」  ，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
+3. 您還需要 IoT 中樞的「事件中樞相容端點」、「事件中樞相容路徑」和「服務主要金鑰」，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
@@ -125,7 +128,7 @@ az extension add --name azure-iot
 
     下列螢幕擷取畫面顯示模擬裝置應用程式將遙測傳送到 IoT 中樞時的輸出：
 
-    ![執行模擬的裝置](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
+    ![執行模擬的裝置](media/quickstart-send-telemetry-dotnet/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
@@ -137,9 +140,12 @@ az extension add --name azure-iot
 
     | 變數 | 值 |
     | -------- | ----------- |
-    | `s_eventHubsCompatibleEndpoint` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
-    | `s_eventHubsCompatiblePath`     | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
-    | `s_iotHubSasKey`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
+    | `EventHubsCompatibleEndpoint` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
+    | `EventHubName`                | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
+    | `IotHubSasKey`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
+
+    > [!NOTE]
+    > 若您使用 .NET Core SDK 2.1，必須將語言版本設定為預覽，才能編譯程式碼。 若要這麼做，請開啟 **read-d2c-messages .csproj** 檔案，並將 `<LangVersion>` 元素的值設定為 `preview`。
 
 3. 在本機終端機視窗中，執行下列命令以安裝後端應用程式所需的程式庫：
 
@@ -155,7 +161,7 @@ az extension add --name azure-iot
 
     下列螢幕擷取畫面顯示由模擬裝置傳送遙測至中樞時，後端應用程式接收遙測的輸出：
 
-    ![執行後端應用程式](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![執行後端應用程式](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ab6eb9b516ca30d92437bdc358e3f1f56cfe8e71
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470855"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457213"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來啟動 Java Spring 應用程式
 
@@ -28,7 +28,7 @@ Azure Spring Cloud 可讓您輕鬆地在 Azure 上執行以 Spring Boot 為基�
 > * 部署每個微服務
 > * 為您的應用程式指派公用端點
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 >[!Note]
 > Azure Spring Cloud 目前提供公開預覽版。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需有關預覽期間支援的詳細資訊，請參閱我們的[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)以深入了解。
@@ -154,16 +154,8 @@ az spring-cloud app update -n gateway --is-public true
 
 2. 查詢**閘道**應用程式來取得其公用 IP，讓您可以確認該應用程式正在執行：
 
-Linux：
-
 ```azurecli
-az spring-cloud app show --name gateway | grep url
-```
-
-Windows：
-
-```azurecli
-az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
+az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. 瀏覽至由上一個命令所提供的 URL，以執行 PiggyMetrics 應用程式。
@@ -176,7 +168,7 @@ az spring-cloud app show -s <service name> -g <resource group> -n gateway -o tab
 
     ![正在執行 PiggyMetrics 的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. 在 [閘道概觀]  頁面上尋找 URL ![正在執行 PiggyMetrics 的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. 在 [閘道概觀] 頁面上尋找 URL ![正在執行 PiggyMetrics 的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

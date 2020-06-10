@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f4de4c25cea251ea0db72bcb435ceb63eb308ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb2679d0f681ae82bbe1a50671bd2ff70a239dfb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409219"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194513"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以累加方式將資料從 Azure SQL 資料庫載入到 Azure Blob 儲存體
 
@@ -59,16 +59,16 @@ ms.locfileid: "81409219"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**。 您需要使用資料庫作為來源資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)，按照步驟來建立 SQL 資料庫。
+* **Azure SQL Database**。 您需要使用資料庫作為來源資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。
 * **Azure 儲存體**。 您需要使用 Blob 儲存體作為接收資料存放區。 如果您沒有儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟來建立儲存體帳戶。 建立名為 adftutorial 的容器。 
 * **Azure PowerShell**(英文)。 遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 資料庫中建立資料來源資料表
-1. 開啟 SQL Server Management Studio。 在 [伺服器總管]  中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]  。
+1. 開啟 SQL Server Management Studio。 在 [伺服器總管] 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
 2. 對 SQL 資料庫執行下列 SQL 命令，以建立名為 `data_source_table` 的資料表作為資料來源存放區：
 
@@ -192,7 +192,7 @@ END
     ```
 
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為參與者或擁有者角色，或是 Azure 訂用帳戶的管理員。
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
 
 
 ## <a name="create-linked-services"></a>建立連結的服務
@@ -214,7 +214,7 @@ END
     ```
 2. 在 PowerShell 中，切換至 ADF 資料夾。
 
-3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務 AzureStorageLinkedService。 在下列範例中，您會傳遞 ResourceGroupName  和 DataFactoryName  參數的值：
+3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務 AzureStorageLinkedService。 在下列範例中，您會傳遞 ResourceGroupName 和 DataFactoryName 參數的值：
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -520,7 +520,7 @@ END
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-2. 執行 **Get-AzDataFactoryV2ActivityRun** Cmdlet 來檢查管線的狀態，直到您看到所有活動成功執行為止。 在 RunStartedAfter  和 RunStartedBefore  參數中，以您自己的適當時間取代預留位置。 在本教學課程中，您會使用 -RunStartedAfter "2017/09/14"  和 -RunStartedBefore "2017/09/15"  。
+2. 執行 **Get-AzDataFactoryV2ActivityRun** Cmdlet 來檢查管線的狀態，直到您看到所有活動成功執行為止。 在 RunStartedAfter 和 RunStartedBefore 參數中，以您自己的適當時間取代預留位置。 在本教學課程中，您會使用 -RunStartedAfter "2017/09/14" 和 -RunStartedBefore "2017/09/15"。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -640,7 +640,7 @@ END
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. 執行 **Get-AzDataFactoryV2ActivityRun** Cmdlet 來檢查管線的狀態，直到您看到所有活動成功執行為止。 在 RunStartedAfter  和 RunStartedBefore  參數中，以您自己的適當時間取代預留位置。 在本教學課程中，您會使用 -RunStartedAfter "2017/09/14"  和 -RunStartedBefore "2017/09/15"  。
+3. 執行 **Get-AzDataFactoryV2ActivityRun** Cmdlet 來檢查管線的狀態，直到您看到所有活動成功執行為止。 在 RunStartedAfter 和 RunStartedBefore 參數中，以您自己的適當時間取代預留位置。 在本教學課程中，您會使用 -RunStartedAfter "2017/09/14" 和 -RunStartedBefore "2017/09/15"。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -732,7 +732,7 @@ END
 > * 執行管道。
 > * 監視管道執行。
 
-在本教學課程中，管線已從 SQL 資料庫中的單一資料表將資料複製到 Blob 儲存體。 請前進到下列教學課程，了解如何將資料從內部部署 SQL Server 資料庫中的多個資料表複製到 SQL 資料庫。
+在本教學課程中，管線已從 SQL 資料庫中的單一資料表將資料複製到 Blob 儲存體。 請前進到下列教學課程，了解如何將資料從 SQL Server 資料庫中的多個資料表複製到 SQL 資料庫。
 
 > [!div class="nextstepaction"]
 >[以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)

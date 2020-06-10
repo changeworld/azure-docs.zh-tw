@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774464"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019838"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>使用 CLI 將受控執行個體資料庫還原到另一個地理區域
 
@@ -26,9 +26,9 @@ ms.locfileid: "83774464"
 
 ## <a name="sample-script"></a>範例指令碼
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
-一組現有的受控執行個體，請參閱[使用 Azure CLI 建立 Azure SQL Database 受控執行個體](sql-database-create-configure-managed-instance-cli.md)。
+一組現有的受控執行個體，請參閱[使用 Azure CLI 建立 Azure SQL 受控執行個體](sql-database-create-configure-managed-instance-cli.md)。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -64,4 +64,4 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

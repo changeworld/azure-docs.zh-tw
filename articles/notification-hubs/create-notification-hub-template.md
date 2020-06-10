@@ -10,30 +10,28 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743520"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996664"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立通知中樞
 
 Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您從任何後端 (雲端或內部部署) 傳送通知到任何平台 (iOS、Android、Windows、Kindle 等)。 如需該服務的詳細資訊，請參閱[什麼是 Azure 通知中樞](notification-hubs-push-notification-overview.md)。
 
-本快速入門會使用 Azure Resource Manager 範本來建立 Azure 通知中樞命名空間，以及該命名空間內名為「MyHub」的通知中樞。
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+本快速入門會使用 Azure Resource Manager 範本來建立 Azure 通知中樞命名空間，以及該命名空間內名為 **MyHub** 的通知中樞。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 無。
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>建立通知中樞命名空間和中樞
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>檢閱範本
 
@@ -48,7 +46,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 選取以下影像來登入 Azure 並開啟範本。 範本會採用通知中樞命名空間的名稱做為參數。 然後範本會建立具有該名稱的命名空間，以及該命名空間內名為 **MyHub** 的通知中樞。
 
-[![部署至 Azure](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 

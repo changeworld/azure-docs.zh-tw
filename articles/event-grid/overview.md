@@ -2,19 +2,19 @@
 title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
 ms.date: 02/20/2020
-ms.author: babanisa
+ms.author: femila
 ms.custom: seodec18
-ms.openlocfilehash: 75ee828c659aba895f65d0cf14070966428a1d19
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682500"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560314"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688026"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216326"
 ---
 # <a name="about-azure-key-vault"></a>關於 Azure Key Vault
 
@@ -73,7 +73,7 @@ Azure Key Vault 可能受軟體或硬體 HSM 保護。 在您需要加強保證�
 
 Key Vault 是 Azure 中的安全存放區，常用來簡化如下的案例：
 -  [Azure 磁碟加密](../../security/fundamentals/encryption-overview.md)
--  SQL Server 和 Azure SQL Database 中的 [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能
+-  SQL 伺服器和 Azure SQL Database 中的[一律加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)和[透明資料加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)功能
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate)。 
 
 Key Vault 本身可與儲存體帳戶、事件中樞和記錄分析整合。

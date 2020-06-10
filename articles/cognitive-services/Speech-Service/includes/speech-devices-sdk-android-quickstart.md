@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 04c31a12348fe0059bcfd417682647676dbc8948
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673130"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637479"
 ---
 在本快速入門中，您將了解如何使用適用於 Android 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。
 
@@ -96,7 +96,7 @@ ms.locfileid: "83673130"
     將這一行新增至 [相依性] 區段，以更新 **build.gradle(Module:app)** 。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
     ```
     
 1. 將您的語音訂用帳戶金鑰加入至原始程式碼中。 如果您想要試用意圖辨識，請一併新增您的 [Language Understanding 服務](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)訂用帳戶金鑰和應用程式識別碼。

@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844517"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995644"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -75,8 +75,13 @@ _<sup>**4**</sup> 點數型和預付型訂用帳戶的歷程記錄資料可能�
 | **支援方案** | Azure Government 專業指導支援 | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **支援方案** | Azure Government 開發人員支援  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>判斷供應項目類型
-如果您未看到訂用帳戶的資料，而您想要確認訂用帳戶是否屬於支援的供應項目，您可以驗證您的訂用帳戶是否受支援。 若要確認 Azure 訂用帳戶是否受支援，請登入 [Azure 入口網站](https://portal.azure.com)。 然後，在左側功能表窗格中選取 [所有服務]  。 在服務清單中，選取 [訂用帳戶]  。 在訂用帳戶清單功能表中，選取您要確認的訂用帳戶。 您的訂用帳戶會顯示在 [概觀] 索引標籤上，您會看到 [供應項目]  和 [供應項目識別碼]  。 下圖說明一個範例。
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>從免費試用升級至隨用隨付
+
+如需從免費試用升級至隨用隨付定價之後，免費層服務可用性的相關資訊，請參閱 [Azure 免費帳戶常見問題](https://azure.microsoft.com/free/free-account-faq/)。
+
+### <a name="determine-your-offer-type"></a>判斷供應項目類型
+
+如果您未看到訂用帳戶的資料，而您想要確認訂用帳戶是否屬於支援的供應項目，您可以驗證您的訂用帳戶是否受支援。 若要確認 Azure 訂用帳戶是否受支援，請登入 [Azure 入口網站](https://portal.azure.com)。 然後，在左側功能表窗格中選取 [所有服務]。 在服務清單中，選取 [訂用帳戶]。 在訂用帳戶清單功能表中，選取您要確認的訂用帳戶。 您的訂用帳戶會顯示在 [概觀] 索引標籤上，您會看到 [供應項目] 和 [供應項目識別碼]。 下圖說明一個範例。
 
 ![顯示供應項目和供應項目識別碼的訂用帳戶概觀範例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -106,7 +111,7 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - 僅部署至資源群組的資源可支援資源標記。
 - 某些已部署的資源可能不支援標記，或是可能無法在使用量資料中包含標記 – 請參閱 [Azure 資源的標記支援](../../azure-resource-manager/tag-support.md)。
 - 資源標記只會在套用標記時，包含在使用量資料中 – 標記不會套用至歷史記錄資料。
-- 只有在重新整理資料後，您才能在成本管理中使用資源標記，請參閱[使用量資料更新頻率不相同](#usage-data-update-frequency-varies)。
+- 只有在重新整理資料後，您才能在成本管理中使用資源標記，請參閱[成本和使用量資料更新與保留](#cost-and-usage-data-updates-and-retention)。
 - 資源標記只有在資源為作用中/執行中，以及正在產生使用量記錄時 (例如，未將 VM 解除配置時)，才可在成本管理中使用。
 - 管理標記需要每個資源的參與者存取權。
 - 管理標記原則需要管理群組、訂用帳戶或資源群組的擁有者或原則參與者存取權。
@@ -114,7 +119,7 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 如果您在成本管理中看不到特定標記，請考量下列事項：
 
 - 標記是否已直接套用至資源？
-- 標記套用的時間是否已超過 24 小時？ 請參閱[使用量資料更新頻率不相同](#usage-data-update-frequency-varies)
+- 標記套用的時間是否已超過 24 小時？ 請參閱 [成本和使用量資料更新與保留](#cost-and-usage-data-updates-and-retention)
 - 該資源類型是否支援標記？ 自 2019 年 12 月 1 日起，下列資源類型不支援在使用量資料中使用標記。 如需支援內容的完整清單，請參閱[適用於 Azure 資源的 標記支援](../../azure-resource-manager/tag-support.md)。
     - Azure Active Directory B2C 目錄
     - Azure 防火牆
@@ -134,24 +139,22 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - 將標記 API 與 Query 或 UsageDetails 搭配使用，以根據目前的標記取得所有成本。
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>從免費試用升級至隨用隨付
+## <a name="cost-and-usage-data-updates-and-retention"></a>成本和使用量資料更新與保留
 
-如需從免費試用升級至隨用隨付定價之後，免費層服務可用性的相關資訊，請參閱 [Azure 免費帳戶常見問題](https://azure.microsoft.com/free/free-account-faq/)。
+成本與使用量資料通常可於 8 至 24 小時內從 Azure 入口網站和[支援 API](../index.yml) 的 [成本管理 + 計費] 中取得。 檢閱成本時，請記住以下幾點：
 
-## <a name="rated-usage-data-refresh-schedule"></a>評比使用量資料重新整理排程
-
-成本與使用量資料可從 Azure 入口網站和[支援 API](../index.yml) 的 [成本管理 + 計費] 中取得。 檢閱成本時，請記住以下幾點：
-
+- 每個 Azure 服務 (例如儲存體、計算和 SQL) 都會以不同的間隔發出使用量資料 – 您可能會看到某些服務的資料的時間比其他服務更早。
 - 目前計費期間的預估費用每天會更新 6 次。
 - 目前計費期間的預估費用可能隨著您產生更多使用量而變更。
 - 每次更新將持續累積，包含前次更新的所有明細項目和資訊。
 - Azure 會在計費期間結束後的 72 小時 (三個日曆天) 內終止或_關閉_目前計費期間。
 
-下列範例說明計費期間的結束方式。
+下列範例說明計費期間的結束方式：
 
-Enterprise 合約 (EA) 訂用帳戶 – 如果計費月份在 3 月 31 日結束，預估費用將會在 72 個小時內更新。 在此範例中，即 4 月 4 日午夜 (UTC)。
+* Enterprise 合約 (EA) 訂用帳戶 – 如果計費月份在 3 月 31 日結束，預估費用將會在 72 個小時內更新。 在此範例中，即 4 月 4 日午夜 (UTC)。
+* 隨用隨付訂用帳戶 – 如果計費月份在 5 月 15 日結束，預估費用將可在 72 個小時內更新。 在此範例中，即 5 月 19 日午夜 (UTC)。
 
-隨用隨付訂用帳戶 – 如果計費月份在 5 月 15 日結束，預估費用將可在 72 個小時內更新。 在此範例中，即 5 月 19 日午夜 (UTC)。
+一旦成本和使用量資料可在「成本管理 + 帳單」中查看後，這些資料將會保留至少 7 年。
 
 ### <a name="rerated-data"></a>重新評估的資料
 
@@ -166,16 +169,6 @@ Enterprise 合約 (EA) 訂用帳戶 – 如果計費月份在 3 月 31 日結束
   - 費用 2：$0.004
   -    轉譯的匯總費用：0.004 + 0.004 = 0.008。 顯示的費用為 $0.01。
 - 查詢 API - 費用會顯示八個小數位數，而且不會四捨五入。
-
-
-## <a name="usage-data-update-frequency-varies"></a>使用量資料更新頻率不相同
-
-您產生的使用量資料在成本管理中的可用性取決於某些因素，包括：
-
-- Azure 服務 (例如儲存體、計算、CDN 和 SQL) 發出使用量資料的頻率。
-- 透過評比引擎和成本管理管線處理使用量資料所花費的時間。
-
-某些服務會比其他服務更頻繁地發出使用量資料。 因此，您在「成本管理」中可能會看到某些服務的資料比其他發出資料頻率較低的服務更快出現。 服務的使用量通常需要 8-24 小時才會出現在「成本管理」中。 請記住，在尚未結算的月份中，該資料會隨著您產生更多使用量而重新整理，因為更新會持續累積。
 
 ## <a name="historical-data-might-not-match-invoice"></a>歷程記錄資料可能與發票不符
 

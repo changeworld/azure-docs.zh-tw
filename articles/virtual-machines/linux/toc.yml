@@ -657,7 +657,7 @@
               href: update-agent.md
         - name: 減輕風險的理論式執行
           href: mitigate-se.md
-        - name: 監視中繼資料
+        - name: Azure 執行個體中繼資料服務
           href: instance-metadata-service.md
         - name: 利用 REST 取得使用計量
           href: metrics-vm-usage-rest.md

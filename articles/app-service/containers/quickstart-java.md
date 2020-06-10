@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732891"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300058"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Java 應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "81732891"
 在 Cloud Shell 提示字元中執行下列 Maven 命令，以建立名為 `helloworld` 的新應用程式：
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 然後將您的工作目錄變更為專案資料夾：
 
@@ -44,13 +44,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>設定 Maven 外掛程式
 
-部署到 Azure App Service 的程序從 Azure CLI 使用帳戶認證。 繼續執行前，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio)的詳細資料。
 
-```azurecli
-az login
-```
-
-您可以設定部署，在命令提示字元中執行 maven 命令，並按 **ENTER** 鍵使用預設組態，直到您看到**確認 (是/否)** 提示，然後按 **'y'** 完成設定。 
+若要設定部署，請在命令提示字元中執行 Maven 命令，並按 **ENTER** 鍵使用預設設定，直到您看到**確認 (Y/N)** 提示，然後按 **'y'** 完成設定。 
 ```cmd
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
@@ -93,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > 在本文中，我們只會使用封裝在 WAR 檔案中的 JAVA 應用程式。 此外掛程式也支援 JAR Web 應用程式，請瀏覽[將 Java SE JAR 檔案部署至 Linux 上的 App Service](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，並加以試用。
 
-再次瀏覽至 `pom.xml` 以查看外掛程式組態是否已更新，如有需要，您可以直接在 pom 檔案中修改 App Service 的其他組態，以下列出一些常見的組態：
+開啟至 `pom.xml` 以查看更新過的設定。
+
+```bash
+code pom.xml
+```
+
+如有需要，您可以直接在 pom 檔案中修改 App Service 的設定，以下列出一些常見的設定：
 
  屬性 | 必要 | 描述 | 版本
 ---|---|---|---
@@ -147,7 +149,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [使用 Java 連線至適用於 PostgreSQL 的 Azure DB](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [設定 Java 應用程式](configure-custom-container.md)
+> [設定 Java 應用程式](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [使用 Jenkins 的 CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)

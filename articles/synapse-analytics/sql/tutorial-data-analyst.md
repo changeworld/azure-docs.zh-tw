@@ -1,5 +1,5 @@
 ---
-title: 資料分析師教學課程 - 使用 SQL 隨選 (預覽) 在 Azure Synapse Studio (預覽) 中分析 Azure 開放資料集
+title: 資料分析師教學課程：在 Azure Synapse Studio (預覽) 中使用 SQL 隨選 (預覽) 來分析 Azure 開放資料集
 description: 在本教學課程中，您將了解如何使用 SQL 隨選 (預覽) 輕鬆地執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
 services: synapse-analytics
 author: azaricstefan
@@ -9,81 +9,74 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b2fe4dea27564b96c5ef1734dc16ca4525011d17
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745636"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299531"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>使用 SQL 隨選 (預覽) 來分析 Azure 開放資料集，並在 Azure Synapse Studio (預覽) 中將結果視覺化
 
 在本教學課程中，您將了解如何使用 SQL 隨選合併不同的 Azure 開放資料集，然後在 Azure Synapse Studio 中將結果視覺化，以執行探勘資料分析。
 
-特別是，您將分析[紐約市 (NYC) 計程車資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)，其內含乘客上下車的日期/時間、上下車的位置、乘車距離、車資明細、費率類型、付款類型，以及駕駛所回報的乘客人數。
+具體來說，您會分析[紐約市 (NYC) 計程車資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)，其中包括：
 
-分析重點在於找出一段時間內計程車乘車數量的變化趨勢。 您可以分析另外兩個 Azure 開放資料集 ([國定假日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)和[天氣資料](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) 來了解計程車乘車數量的極端值。
-
-## <a name="create-data-source"></a>建立資料來源
-
-資料來源物件可用來參考需要在其中分析資料的 Azure 儲存體帳戶。 公開可用的儲存體不需要某些認證即可存取儲存體。
-
-```sql
--- There is no credential in data surce. We are using public storage account which doesn't need a credential.
-CREATE EXTERNAL DATA SOURCE AzureOpenData
-WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
-```
+- 上下車日期和時間。
+- 上下車地點。 
+- 行車距離：
+- 車資明細。
+- 費率類型。
+- 付款類型。 
+- 司機報告的乘客計數。
 
 ## <a name="automatic-schema-inference"></a>自動推斷結構描述
 
-因為資料是以 Parquet 檔案格式來儲存的，所以您可以使用自動推斷結構描述，以便輕鬆查詢資料，而不需要列出檔案中所有資料行的資料類型。 此外，您也可以利用虛擬資料行機制和 filepath 函式來篩選出特定的檔案子集。
+因為資料是以 Parquet 檔案格式儲存，所以可以使用自動架構推斷。 您可以輕鬆地查詢資料，而不需要列出檔案中所有資料行的資料類型。 您也可以使用虛擬資料行機制和 filepath 函式來篩選出特定的檔案子集。
 
 讓我們先執行下列查詢以熟悉 NYC 計程車資料：
 
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 ```
 
-下圖顯示 NYC 計程車資料的結果程式碼片段：
+下列程式碼片段顯示 NYC 計程車資料的結果：
 
-![結果程式碼片段](./media/tutorial-data-analyst/1.png)
+![NYC 計程車資料結果程式碼片段](./media/tutorial-data-analyst/1.png)
 
-同樣地，我們也可以使用下列查詢來查詢國定假日資料集：
+同樣地，您也可以使用下列查詢來查詢國定假日資料集：
 
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'holidaydatacontainer/Processed/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
         FORMAT='PARQUET'
     ) AS [holidays]
 ```
 
-下圖顯示國定假日資料集的結果程式碼片段：
+下列程式碼片段顯示國定假日資料集的結果：
 
-![結果程式碼片段 2](./media/tutorial-data-analyst/2.png)
+![公用假日資料集結果程式碼片段](./media/tutorial-data-analyst/2.png)
 
-最後，我們也可以使用下列查詢來查詢天氣資料集：
+最後，您也可以使用下列查詢來查詢天氣資料資料集：
 
 ```sql
 SELECT
     TOP 100 *
 FROM  
     OPENROWSET(
-        BULK 'isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [weather]
 ```
 
-下圖顯示天氣資料集的結果程式碼片段：
+下列程式碼片段顯示天氣資料資料集的結果：
 
-![結果程式碼片段 3](./media/tutorial-data-analyst/3.png)
+![氣象資料資料集結果程式碼片段](./media/tutorial-data-analyst/3.png)
 
 您可以在 [NYC 計程車](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)、[國定假日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)和[天氣資料](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)資料集的說明中深入了解個別資料行的意義。
 
@@ -97,8 +90,7 @@ SELECT
     COUNT(*) AS rides_per_year
 FROM
     OPENROWSET(
-        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) >= '2009' AND nyc.filepath(1) <= '2019'
@@ -106,18 +98,18 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-下圖顯示每年計程車乘車數量的結果程式碼片段：
+下列程式碼片段顯示每年計程車乘車數量的結果：
 
-![結果程式碼片段 4](./media/tutorial-data-analyst/4.png)
+![每年計程車乘車結果程式碼片段數](./media/tutorial-data-analyst/4.png)
 
-您可以從 [資料表] 檢視切換至 [圖表] 檢視，以在 Synapse Studio 中用視覺方式呈現資料。 您可以選擇不同的圖表類型 (區域圖、橫條圖、直條圖、折線圖、圓形圖和散佈圖)。 在本案例中，我們要繪製將 [類別] 資料行設定為 [current_year] 的直條圖：
+您可以在 Synapse Studio 中從 [資料表] 檢視切換至 [圖表] 檢視，以視覺方式呈現資料。 您可以選擇不同的圖表類型，例如**區域圖**、**橫條圖**、**直條圖**、**折線圖**、**圓形圖** 和**散佈圖**。 在本案例中，我們要將 [類別] 資料行設定為 [current_year] 的情況下繪製**直條圖**：
 
-![結果視覺效果 5](./media/tutorial-data-analyst/5.png)
+![顯示每年乘車次數的直條圖](./media/tutorial-data-analyst/5.png)
 
-從這個視覺效果可以清楚地看出乘車數量多年來逐漸下滑的趨勢，這可能是因為近期共乘公司日漸受到歡迎所致。
+從這個視覺效果中，可以清楚地看出乘車次數多年來減少的趨勢。 這項減少的原因是，分享公司最近愈來愈受到歡迎。
 
 > [!NOTE]
-> 在本教學課程撰寫當下，2019 年的資料還不完整，因此該年度的乘車數量大幅下滑。
+> 在撰寫本教學課程時，2019 年的資料不完整。 如此一來，這一年的乘車次數會大幅下降。
 
 接下來，讓我們將分析重點放在單一年度，例如 2016 年。 下列查詢會傳回該年度內的每日乘車數量：
 
@@ -127,8 +119,7 @@ SELECT
     COUNT(*) as rides_per_day
 FROM
     OPENROWSET(
-        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) = '2016'
@@ -136,17 +127,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-下圖顯示此查詢的結果程式碼片段：
+下列程式碼片段顯示此查詢的結果：
 
-![結果程式碼片段 6](./media/tutorial-data-analyst/6.png)
+![2016 年每日乘車次數結果程式碼片段](./media/tutorial-data-analyst/6.png)
 
-同樣地，我們可以藉由繪製 [類別] 資料行為 [current_day] 和 [圖例 (數列)] 資料行為 [rides_per_day] 的直條圖，來輕鬆地用視覺方式呈現資料。
+同樣地，您可以在 **[類別]** 資料行設定為 **[current_day]** 且 **[圖例 (數列)]** 資料行設定為 **[rides_per_day]** 的情況下繪製**直條圖**，輕鬆地用視覺方式呈現資料。
 
-![結果視覺效果 7](./media/tutorial-data-analyst/7.png)
+![顯示 2016 年每日乘車次數的直條圖](./media/tutorial-data-analyst/7.png)
 
-從繪圖中可以發現每週的週六會有乘車高峰的模式。 夏季月份期間由於是假期，所以計程車乘車數量較少。 不過，圖中也有一些地方出現計程車乘車數量大幅下滑的情形，但其發生時間和原因則沒有明顯模式。
+從繪圖圖表中，您可以看到有每週模式，而星期六為尖峰日。 由於夏季月份期間屬於假期，所以計程車乘車數量較少。 圖中也有一些地方出現計程車乘車數量大幅下滑的情形，但其發生時間和原因則沒有明顯模式。
 
-接下來，讓我們將 NYC 計程車乘車與國定假日資料集聯結起來，以了解這些下滑是否可能與國定假日有所關聯：
+接下來，讓我們將 NYC 計程車乘車資料集與國定假日資料集聯結起來，以了解這些下滑是否與國定假日有所關聯：
 
 ```sql
 WITH taxi_rides AS
@@ -156,8 +147,7 @@ WITH taxi_rides AS
         COUNT(*) as rides_per_day
     FROM  
         OPENROWSET(
-            BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-            DATA_SOURCE = 'AzureOpenData',
+            BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
             FORMAT='PARQUET'
         ) AS [nyc]
     WHERE nyc.filepath(1) = '2016'
@@ -170,8 +160,7 @@ public_holidays AS
         date
     FROM
         OPENROWSET(
-            BULK 'holidaydatacontainer/Processed/*.parquet',
-            DATA_SOURCE = 'AzureOpenData',
+            BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
             FORMAT='PARQUET'
         ) AS [holidays]
     WHERE countryorregion = 'United States' AND YEAR(date) = 2016
@@ -183,13 +172,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![結果視覺效果 8](./media/tutorial-data-analyst/8.png)
+![NYC 計程車乘車和公定假日資料集結果視覺效果](./media/tutorial-data-analyst/8.png)
 
-這一次，我們想要醒目提示國定假日期間的計程車乘車數量。 基於這個目的，我們會選擇 [無] 來作為 [類別] 資料行，並選擇 [rides_per_day] 和 [假日] 作為 [圖例 (數列)] 資料行。
+這一次，我們想要醒目提示國定假日期間的計程車乘車數量。 基於這個目的，我們會選擇 [none] 來作為 [類別] 資料行，並選擇 [rides_per_day] 和 [holiday] 作為 [圖例 (數列)] 資料行。
 
-![結果視覺效果 9](./media/tutorial-data-analyst/9.png)
+![公定假日期間的計程車乘車次數圖表](./media/tutorial-data-analyst/9.png)
 
-從繪圖中可以清楚發現，國定假日期間有一些計程車乘車數量較低。 不過，這仍無法有效解釋 1 月 23 日的大幅下滑。 讓我們查詢天氣資料集來查看 NYC 當天的天氣：
+從繪圖中可以發現，國定假日期間有一些計程車乘車數量較低。 這仍無法有效解釋 1 月 23 日的大幅下滑。 讓我們查詢天氣資料資料集來查看 NYC 當天的天氣：
 
 ```sql
 SELECT
@@ -210,24 +199,23 @@ SELECT
     MAX(snowdepth) AS max_snowdepth
 FROM
     OPENROWSET(
-        BULK 'isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
-        DATA_SOURCE = 'AzureOpenData',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [weather]
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![結果視覺效果 10](./media/tutorial-data-analyst/10.png)
+![氣象資料資料集結果視覺效果](./media/tutorial-data-analyst/10.png)
 
-查詢的結果指出，計程車的乘車數量下滑是因為：
+查詢的結果指出，計程車的乘車次數發生下滑是因為：
 
-- NYC 當天有暴風雪，從降雪量很大 (將近 30 公分) 可以得知
-- 天氣很冷 (溫度低於攝氏零度)
-- 而且風很大 (將近每秒 10 公尺)
+- NYC 當天有暴風雪，降雪量很大 (將近 30 公分)。
+- 天氣很冷 (溫度低於攝氏零度)。
+- 當天風大 (風速大約 10 公尺/秒)。
 
 本教學課程已示範資料分析師要如何快速執行探勘資料分析、使用 SQL 隨選輕鬆地合併不同資料集，以及使用 Azure Synapse Studio 將結果視覺化。
 
 ## <a name="next-steps"></a>後續步驟
 
-請檢閱[將 SQL 隨選連線到 Power BI Desktop 並建立報告](tutorial-connect-power-bi-desktop.md)一文，以了解如何將 SQL 隨選連線到 Power BI Desktop 並建立報告。
+若要了解如何將 SQL 隨選連線到 Power BI Desktop 並建立報告，請參閱[將 SQL 隨選連線到 Power BI Desktop 並建立報告](tutorial-connect-power-bi-desktop.md)。
  

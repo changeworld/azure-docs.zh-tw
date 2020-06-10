@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9013fe7b05467400afc300bd08c92eedc95ed0e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7b8fc62744b8e0f4f088522bdef5fb484aa7a8d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662186"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ShareVault 整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "83662186"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -102,7 +102,7 @@ ms.locfileid: "83662186"
     | ------------- | --------- |
     | sv.svid |  < `svid number` > |
     | sv.firstname | user.givenname |
-    | user.lastname | user.surname |
+    | sv.lastname | user.surname |
     | sv.email | user.userprincipalname |
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
@@ -119,7 +119,7 @@ ms.locfileid: "83662186"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

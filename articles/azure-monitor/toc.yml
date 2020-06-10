@@ -155,6 +155,8 @@
           displayname: VM
     - name: 管理和設定
       items:
+        - name: 大規模部署
+          href: platform/deploy-scale.md
         - name: 角色權限與安全性
           href: platform/roles-permissions-security.md
         - name: IP 位址
