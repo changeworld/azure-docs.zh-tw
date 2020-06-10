@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將瞭解如何使用 IoT Edge 上的 Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 92367634a2f5785ecbb102db1e03f3d5f12d744e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300819"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456601"
 ---
 # <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>教學課程：以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -181,7 +181,7 @@ ms.locfileid: "84300819"
 
 1. 在 GraphTopologySet 節點底下，編輯下列各項：
 
-    `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
 1. 接下來，在節點 GraphInstanceSet 和 GraphTopologyDelete 底下編輯，
 
