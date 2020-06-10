@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341728"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607028"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用見解權杖取得影像的深入解析
 
-Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以使用影像的 URL、見解權杖，或上傳影像來提供影像。 如需這些選項的資訊，請參閱[什麼是 Bing 圖像式搜尋 API？](overview.md) 本文將示範如何使用見解權杖。 如需示範如何上傳影像以取得見解的範例，請參閱快速入門（[c #](quickstarts/csharp.md) | [JAVA](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | node.js[Python](quickstarts/python.md)）。
+Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以使用影像的 URL、見解權杖，或上傳影像來提供影像。 如需這些選項的資訊，請參閱[什麼是 Bing 圖像式搜尋 API？](overview.md) 本文將示範如何使用見解權杖。 如需示範如何上傳影像以取得見解的範例，請參閱快速入門（[c #](quickstarts/csharp.md)  |  [JAVA](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)）。
 
-如果您將影像權杖或 URL 傳送 Bing 圖像式搜尋，以下會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含`Content-Disposition`標頭，而且您必須將其`name`參數設為 "knowledgeRequest"。 如需物件的`imageInfo`詳細資訊，請參閱要求：
+如果您將影像權杖或 URL 傳送 Bing 圖像式搜尋，以下會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求：
 
 ```json
 {
@@ -43,7 +44,7 @@ Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以
 }
 ```
 
-本文中的範例將示範如何使用見解權杖。 您會從/images/search API 回應中`Image`的物件取得深入解析權杖。 如需取得深入解析權杖的相關資訊，請參閱[什麼是 BING 影像搜尋 API？](../Bing-Image-Search/overview.md)。
+本文中的範例將示範如何使用見解權杖。 您會從 `Image` /IMAGES/SEARCH API 回應中的物件取得深入解析權杖。 如需取得深入解析權杖的相關資訊，請參閱[什麼是 BING 影像搜尋 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-如需使用 insights token 的範例，請參閱[c #](#use-with-c) | [JAVA](#use-with-java) | [Node.js](#use-with-nodejs) | node.js[Python](#use-with-python)。
+如需使用 insights token 的範例，請參閱[c #](#use-with-c)  |  [JAVA](#use-with-java)  |  [node.js](#use-with-nodejs)  |  [Python](#use-with-python)。
 
 ## <a name="use-with-c"></a>搭配 C 使用#
 

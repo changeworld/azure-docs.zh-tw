@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466233"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629043"
 ---
 # <a name="inspect-custom-speech-data"></a>檢查自訂語音資料
 
@@ -33,7 +33,7 @@ ms.locfileid: "84466233"
 請依照下列指示來建立測試：
 
 1. 登入[自訂語音入口網站](https://speech.microsoft.com/customspeech)。
-2. 流覽至**語音轉換文字 > 自訂語音 > 測試**。
+2. 流覽至**語音轉換文字 > 自訂語音 > [專案名稱] > 測試**。
 3. 按一下 [**加入測試**]。
 4. 選取 **[檢查品質（僅限音訊資料）**]。 為測試指定名稱、描述，然後選取您的音訊資料集。
 5. 選取最多兩個您想要測試的模型。

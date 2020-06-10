@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: tracking-python
+ms.openlocfilehash: 95959ceceb9ebcc0b9ec2b4613e6ffd086f9c11e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592554"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609211"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入門：在 Python 中針對長格式音訊進行非同步合成（預覽）
 
@@ -23,7 +24,7 @@ ms.locfileid: "83592554"
 
 適用于長格式音訊的非同步合成可以搭配[公用類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)和[自訂類神經語音](../../how-to-custom-voice.md#custom-neural-voices)使用，每個都支援特定語言和方言。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本快速入門需要：
 
@@ -77,7 +78,7 @@ if args.voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 ```
 
-### <a name="test-your-code"></a>測試您的程式碼
+### <a name="test-your-code"></a>測試程式碼
 
 讓我們來測試到目前為止所做的工作。 您必須更新下列要求中的一些事項：
 
@@ -171,7 +172,7 @@ if args.submit:
         time.sleep(10)
 ```
 
-### <a name="test-your-code"></a>測試您的程式碼
+### <a name="test-your-code"></a>測試程式碼
 
 讓我們使用您的輸入檔做為來源，來提出合成文字的要求。 您必須更新下列要求中的一些事項：
 
@@ -247,7 +248,7 @@ if args.delete:
     deleteSynthesis(args.synthesisId)
 ```
 
-### <a name="test-your-code"></a>測試您的程式碼
+### <a name="test-your-code"></a>測試程式碼
 
 現在，讓我們檢查以查看您先前提交的要求。 在繼續之前，您必須先更新此要求中的一些事項：
 

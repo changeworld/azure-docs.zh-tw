@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261814"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635164"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>什麼是 Azure 說話者辨識服務？
 
@@ -27,7 +27,7 @@ ms.locfileid: "84261814"
 
 ### <a name="how-does-speaker-verification-work"></a>說話者驗證如何運作？
 
-![說話者驗證的運作方式](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="說話者驗證流程圖。":::
 
 說話者驗證可以是文字相依或與文字無關。 **文字相關**驗證表示說話者需要選擇相同的複雜密碼，才能在註冊和驗證階段中使用。 與**文字無關**的驗證表示說話者可以在註冊和驗證片語中以每天的語言來交談。
 
@@ -59,4 +59,5 @@ ms.locfileid: "84261814"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
+> * 完成說話者辨識[基本概念一文](speaker-recognition-basics.md)，以瞭解您可以在應用程式中使用的常見設計模式。
 > * 請參閱[影片教學](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/)課程，以瞭解與文字無關的說話者驗證。
