@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682457"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344198"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "83682457"
 
 + 使用[受系統管理的身分識別 (預覽)](search-howto-managed-identities-data-sources.md) 來設定與 Azure 資料來源的連線，以編製索引。 適用於來自 Azure 資料來源 (例如 Azure SQL Database、Azure Cosmos DB 和 Azure 儲存體) 內嵌內容的[索引子](search-indexer-overview.md)。
 
-+ 使用 [scoringStatistics=global 查詢參數](index-similarity-and-scoring.md#scoring-statistics)，變更搜尋分數的基礎計算方式 (從每個分區到所有分區)。
++ 使用 [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) 與 sessionId 查詢參數，變更搜尋分數的基礎計算方式 (從每個分區到所有分區)。
 
 ### <a name="march-2020"></a>2020 年 3 月
 

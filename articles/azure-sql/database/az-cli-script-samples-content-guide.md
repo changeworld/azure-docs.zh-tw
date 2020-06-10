@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1006b8719a1141bd38792bdbbe116d0c477071dd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a17b5d80817637f1038996b034f926ee74cf54e9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190051"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344657"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>用於 Azure SQL Database 和 SQL 受控執行個體的 Azure CLI 範例 
  
@@ -57,7 +57,7 @@ ms.locfileid: "84190051"
 | [從 BACPAC 檔案匯入資料庫](../../sql-database/scripts/sql-database-import-from-bacpac-cli.md)| 從 BACPAC 檔案將資料庫匯入 SQL Database。 |
 |||
 
-深入了解[單一資料庫 Azure CLI API](single-database-manage.md#azure-cli)。
+深入了解[單一資料庫 Azure CLI API](single-database-manage.md#the-azure-cli)。
 
 # <a name="azure-sql-managed-instance"></a>[Azure SQL 受控執行個體](#tab/managed-instance)
 

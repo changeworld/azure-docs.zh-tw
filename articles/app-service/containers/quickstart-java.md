@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bff1e22df1583491bf8d249cdb8752e9a1e4f57
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300058"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485387"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Java 應用程式
 
@@ -44,7 +44,7 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>設定 Maven 外掛程式
 
-部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio)的詳細資料。
+部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)的詳細資料。
 
 若要設定部署，請在命令提示字元中執行 Maven 命令，並按 **ENTER** 鍵使用預設設定，直到您看到**確認 (Y/N)** 提示，然後按 **'y'** 完成設定。 
 ```cmd
@@ -89,13 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > 在本文中，我們只會使用封裝在 WAR 檔案中的 JAVA 應用程式。 此外掛程式也支援 JAR Web 應用程式，請瀏覽[將 Java SE JAR 檔案部署至 Linux 上的 App Service](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，並加以試用。
 
-開啟至 `pom.xml` 以查看更新過的設定。
+開啟 `pom.xml`，查看更新過的設定。
 
 ```bash
 code pom.xml
 ```
 
-如有需要，您可以直接在 pom 檔案中修改 App Service 的設定，以下列出一些常見的設定：
+您可視需要，直接在 pom 檔案中修改 App Service 的其他設定，以下列出一些常見的設定：
 
  屬性 | 必要 | 描述 | 版本
 ---|---|---|---
