@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745378"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672658"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding （LUIS）容器限制
 
@@ -46,9 +46,10 @@ LUIS 容器有一些值得注意的限制。 從不支援的相依性到支援�
 
 LUIS 容器支援 LUIS 適當支援的[語言](luis-language-support.md#languages-supported)子集。 LUIS 容器能夠瞭解下列語言的語句：
 
-| 語言 | Locale | 預建網域 | 預建實體 | 片語清單建議 | **[文字分析](../text-analytics/language-support.md)<br>(情感和<br>關鍵字)|
+| Language | 地區設定 | 預建網域 | 預建實體 | 片語清單建議 | **[文字分析](../text-analytics/language-support.md)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英文 (美國) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| 阿拉伯文（預覽-現代化標準阿拉伯文） |`ar-AR`|❌|❌|❌|❌|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | 法文 (法國) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 法文 (加拿大) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUIS 容器支援 LUIS 適當支援的[語言](luis-language-support.md#language
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | 義大利文 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 韓文 |`ko-KR` | ✔️ | ❌ | ❌ | 僅限*關鍵字*組 |
+| 馬拉地文 | `mr-IN`|❌|❌|❌|❌|
 | 葡萄牙文 (巴西) |`pt-BR` | ✔️ | ✔️ | ✔️ | 並非所有的次文化特性 |
 | 西班牙文 (西班牙) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | 西班牙文 (墨西哥)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| 坦米爾文 | `ta-IN`|❌|❌|❌|❌|
+| 泰盧固文 | `te-IN`|❌|❌|❌|❌|
 | 土耳其文 | `tr-TR` |✔️| ❌ | ❌ | 僅限*情感* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
