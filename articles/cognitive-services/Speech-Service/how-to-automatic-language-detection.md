@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a9fac89f529cfefbb8a8d82135838bb96e2689db
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658459"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669812"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>語音轉換文字的自動語言偵測
 
@@ -29,7 +29,7 @@ ms.locfileid: "83658459"
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用語音 SDK 進行自動語言偵測
 
-自動語言偵測目前在每次偵測時有兩種語言的服務端限制。 在建設您的物件時，請記住這項限制 `AudoDetectSourceLanguageConfig` 。 在下列範例中，您將建立 `AutoDetectSourceLanguageConfig` ，然後使用它來建立 `SpeechRecognizer` 。
+自動語言偵測目前在每次偵測時都有四種語言的服務端限制。 在建設您的物件時，請記住這項限制 `AudoDetectSourceLanguageConfig` 。 在下列範例中，您將建立 `AutoDetectSourceLanguageConfig` ，然後使用它來建立 `SpeechRecognizer` 。
 
 > [!TIP]
 > 您也可以指定要在執行語音轉換文字時使用的自訂模型。 如需詳細資訊，請參閱[使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。

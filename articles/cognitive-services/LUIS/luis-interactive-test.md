@@ -1,14 +1,14 @@
 ---
 title: 在 LUIS 入口網站中測試應用程式
 description: 使用 Language Understanding (LUIS) 來持續調整您的應用程式，以改善應用程式及提升其語言理解能力。
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344147"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677726"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中測試您的 LUIS 應用程式
 
@@ -65,9 +65,25 @@ ms.locfileid: "84344147"
 
 ## <a name="disable-required-features"></a>停用必要功能
 
-若不需要實體的功能，請選取此切換來查看預測的結果。
+此切換可協助您根據所需的功能，判斷定型的應用程式是否能正確預測您的實體。 預設設定是在預測期間視需要套用此功能。 如果不需要列的功能，請選取此切換來查看預測的結果。
 
-此切換可協助您根據所需的功能，判斷定型的應用程式是否能正確預測您的實體。 定型的應用程式可能會根據範例語句的錯誤標記或所需的功能不符合文字，來錯估機器學習的實體。
+### <a name="when-to-disable-required-features"></a>停用必要功能的時機
+
+定型的應用程式可能會根據下列其中一項來錯估機器學習的實體：
+* 範例語句的標記不正確。
+* 所需的功能不符合文字。
+
+範例是機器學習的實體，具有人員名稱的列。
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="LUIS 入口網站機器學習的實體架構與必要功能的螢幕擷取畫面":::
+
+此機器學習的實體的範例語句為： `Assign Bob Jones to work on the new security feature` 。
+
+此提取應 `security feature` 作為票證描述，並 `Bob Jones` 作為工程師，這是實體的兩個子實體 `Assign ticket` 。
+
+為了協助列成功預測，請將預先建立的實體[PersonName](luis-reference-prebuilt-person.md) aa a 功能新增至 `engineer` 列。 如果您將此功能設為必要，這表示只有在針對文字預測 PersonName 預建實體時，才會解壓縮列。 這表示文字中不會使用 PersonName 列預測的任何名稱，將不會當做標記的列傳回 `engineer` 。
+
+當您使用 [互動式測試] 窗格，並看到具有必要功能的列時，不會進行預測，請切換此設定，以查看列是否會在沒有必要功能的情況下預測。 列可能會因為正確標記的範例語句，而不需要此功能就能正確預測。
 
 ## <a name="view-sentiment-results"></a>檢視情感結果
 

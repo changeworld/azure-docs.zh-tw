@@ -2,13 +2,13 @@
 title: 實體類型-LUIS
 description: 實體會在預測執行時間從使用者語句中提取資料。 _選擇性_的次要用途是使用實體做為功能來提升意圖或其他實體的預測。
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682182"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676483"
 ---
 # <a name="extract-data-with-entities"></a>使用實體來解壓縮資料
 
@@ -41,7 +41,9 @@ ms.locfileid: "83682182"
 
 當您的應用程式開發和識別出新的資料需求時，您可以稍後再將適當的實體新增至您的 LUIS 模型。
 
-## <a name="entity-compared-to-intent"></a>實體與意圖的比較
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>實體代表資料提取
 
 實體代表_語句內_的資料概念。 意圖會分類_整個語句_。
 
@@ -49,10 +51,14 @@ ms.locfileid: "83682182"
 
 |語句|預測的意圖|已解壓縮的實體|說明|
 |--|--|--|--|
-|説明|help|-|沒有要解壓縮的內容。|
+|[說明]|help|-|沒有要解壓縮的內容。|
 |傳送內容|sendSomething|-|沒有要解壓縮的內容。 此模型在此內容中沒有要解壓縮的必要功能 `something` ，而且沒有任何指定的收件者。|
 |傳送目前的 Bob|sendSomething|`Bob`, `present`|模型會藉 `Bob` 由加入預建實體的必要功能來解壓縮 `personName` 。 已使用機器學習實體來解壓縮 `present` 。|
 |將巧克力的方區塊轉送給 Bob|sendSomething|`Bob`, `box of chocolates`|機器學習實體已將兩個重要的資料片段（ `Bob` 和 `box of chocolates` ）解壓縮。|
+
+## <a name="label-entities-in-all-intents"></a>為所有意圖中的實體加上標籤
+
+不論預測的意圖為何，實體都會解壓縮資料。 請務必標記所有意圖中的_所有_範例語句。 `None`遺漏實體標記的意圖會造成混淆，即使其他意圖的定型語句較多。
 
 ## <a name="design-entities-for-decomposition"></a>設計用於分解的實體
 
@@ -91,7 +97,7 @@ ms.locfileid: "83682182"
 |[**名單**](reference-entity-list.md)|以**完全相符文字**解壓縮的專案及其同義字清單。|
 |[**Pattern。**](#patternany-entity)|找不到實體結尾的實體很容易判斷，因為實體是自由形式的。 僅適用于[模式](luis-concept-patterns.md)。|
 |[**預建**](luis-reference-prebuilt-entities.md)|已定型，可將特定類型的資料（例如 URL 或電子郵件）解壓縮。 在開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案中已定義部分這些預建實體。 如果目前不支援您的特定文化特性或實體，請向專案提出。|
-|[**規則運算式**](reference-entity-regular-expression.md)|會使用正則運算式來比對**完全相符的文字**。|
+|[**正則運算式**](reference-entity-regular-expression.md)|會使用正則運算式來比對**完全相符的文字**。|
 
 
 ## <a name="extraction-versus-resolution"></a>提取與解析
