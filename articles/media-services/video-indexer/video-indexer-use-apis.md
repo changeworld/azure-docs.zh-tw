@@ -1,27 +1,27 @@
 ---
 title: 使用影片索引器 API
 titleSuffix: Azure Media Services
-description: 本文說明如何開始使用 Azure 媒體服務影片索引子 API。
+description: 本文說明如何開始使用 Azure 媒體服務的影片索引器 API。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 82bdb177cf4d9c400d1b13ba7178658089950557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314342"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774352"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引子 API
+# <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引器 API
 
-影片索引子將 Microsoft 提供的各種音訊和影片人工智慧（AI）技術合併成一個整合式服務，讓開發變得更簡單。 這些 Api 的設計可讓開發人員專注于使用媒體 AI 技術，而不必擔心雲端平臺的規模、全球範圍、可用性和可靠性。 您可以使用 API 來上傳檔案、取得詳細的影片深入解析、取得可內嵌深入解析和播放程式 widget 的 Url 等等。
+影片索引器會將 Microsoft 提供的各種音訊和視訊人工智慧 (AI) 技術合併成一個整合式服務，讓開發變得更簡單。 API 可讓開發人員將焦點放在使用媒體 AI 技術上，而不需擔心雲端平台的規模、全球觸達率、可用性和可靠性。 您可使用 API 來上傳檔案、取得詳細的影片見解、取得可內嵌見解和播放程式介面控件的 URL 等等。
 
-建立影片索引子帳戶時，您可以選擇免費試用帳戶（您可取得特定的免費編制索引分鐘數）或付費選項（您不會受限於配額）。 使用免費試用版，影片索引子最多可為網站使用者提供600分鐘的免費編制索引，以及最多2400分鐘的 API 使用者免費編制索引。 使用付費選項時，您會建立[連接到您的 Azure 訂用帳戶](connect-to-azure.md)的影片索引子帳戶，以及 Azure 媒體服務帳戶。 您需支付已編製索引的分鐘數，以及 Azure 媒體服務帳戶相關費用。
+建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及 Azure 媒體服務帳戶相關費用。
 
 本文說明開發人員可以如何善用[影片索引器 API](https://api-portal.videoindexer.ai/)。
 
@@ -29,48 +29,48 @@ ms.locfileid: "81314342"
 
 1. 登入[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)。
     
-    ![登入影片索引子開發人員入口網站](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![登入影片索引器開發人員入口網站](./media/video-indexer-use-apis/video-indexer-api01.png)
 
    > [!Important]
    > * 您必須使用註冊影片索引器時所使用的提供者。
-   > * 個人 Google 和 Microsoft （Outlook/Live）帳戶只能用於試用帳戶。 連線至 Azure 的帳戶需要 Azure AD。
-   > * 每封電子郵件只能有一個使用中的帳戶。 如果使用者嘗試使用user@gmail.com user@gmail.com適用于 Google 的 LinkedIn 和更新版本登入，則後者會顯示錯誤頁面，指出使用者已存在。
+   > * 個人 Google 和 Microsoft (Outlook/Live) 帳戶僅能用於試用帳戶。 連線至 Azure 的帳戶需要 Azure AD。
+   > * 每個電子郵件只能有一個使用中的帳戶。 如果使用者嘗試在使用 LinkedIn 的 user@gmail.com 登入後，然後使用 Google 的 user@gmail.com 登入，則系統會顯示錯誤頁面，表示使用者已存在。
 
 2. 訂閱。
 
-    選取 [[產品](https://api-portal.videoindexer.ai/products)] 索引標籤。然後，選取 [授權和訂閱]。
+    選取 [[產品](https://api-portal.videoindexer.ai/products)] 索引標籤。然後，選取授權並訂閱。
     
-    ![影片索引子開發人員入口網站中的 [產品] 標籤](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![影片索引器開發人員入口網站中的 [產品] 索引標籤](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
     > 系統會自動完成新使用者的授權訂閱。
     
-    訂閱之後，您就可以看到您的訂用帳戶與主要和次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 用戶端不應該提供它們（.js、.html 等等）。
+    當您完成訂閱時，即可看到您的訂用帳戶和主要及次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 不應該用於用戶端 (.js、.html 等等)。
 
-    ![影片索引子開發人員入口網站中的訂用帳戶和金鑰](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![影片索引器開發人員入口網站中的訂用帳戶和金鑰](./media/video-indexer-use-apis/video-indexer-api03.png)
 
 > [!TIP]
 > 影片索引器使用者可以使用單一訂用帳戶金鑰來連線到多個影片索引器帳戶。 接著，您可以將這些影片索引器帳戶連結到不同媒體服務帳戶。
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>使用授權 API 取得存取權杖
 
-訂閱授權 API 後，您就可以取得存取權杖。 這些存取權杖可用來對作業 API 進行驗證。
+訂閱授權 API 後，您即可取得存取權杖。 這些存取權杖可用來對作業 API 進行驗證。
 
 作業 API 的每次呼叫皆應與存取權杖相關聯，以符合呼叫的授權範圍。
 
 - 使用者層級：使用者層級的存取權杖可讓您在**使用者**層級上執行作業。 例如，取得相關聯的帳戶。
-- 帳戶層級：帳戶層級的存取權杖可讓您在**帳戶**層級或**影片**層級上執行作業。 例如，上傳影片、列出所有影片、取得影片深入解析等等。
-- 影片層級：影片層級的存取權杖可讓您在特定**影片**上執行作業。 例如，取得影片深入解析、下載字幕、取得 widget 等等。
+- 帳戶層級：帳戶層級的存取權杖可讓您在**帳戶**層級或**影片**層級上執行作業。 例如，上傳影片、列出所有影片、取得影片見解等等。
+- 影片層級：影片層級的存取權杖可讓您在特定**影片**上執行作業。 例如，取得影片見解、下載字幕、取得介面控件等等。
 
-您可以藉由指定**allowEdit = true/false**來控制這些權杖是否為唯讀或允許編輯。
+您可藉由指定 **allowEdit=true/false** 來控制這些權杖是唯讀還是可編輯。
 
-對於大部分的伺服器對伺服器案例，您可能會使用相同的**帳戶**權杖，因為它涵蓋**帳戶**作業和**影片**作業。 不過，如果您打算對影片索引子進行用戶端呼叫（例如，從 JavaScript），您會想要使用**影片**存取權杖，以防止用戶端取得整個帳戶的存取權。 這也是在用戶端內嵌影片索引子用戶端程式代碼（例如，使用 [**取得深入解析 widget** ] 或 [**取得播放機] widget**）時的原因，您必須提供**影片**存取權杖。
+針對大部分的伺服器對伺服器案例，您可能會使用相同的**帳戶**權杖，因為其同時涵蓋**帳戶**作業和**影片**作業。 不過，如果您打算讓用戶端呼叫影片索引器 (例如，從 javascript)，您可以使用**影片**存取權杖，以防止用戶端取得整個帳戶的存取權。 這也是為什麼當您將 VideoIndexer 用戶端程式碼內嵌到用戶端 (例如使用**取得見解介面控件**或**取得播放程式介面控件**) 時，您必須提供**影片**存取權杖。
 
 為了方便起見，您可以使用**授權** API > **GetAccounts** 來取得您的帳戶，而不需先取得使用者權杖。 您也可以透過有效權杖來要求取得帳戶，以略過用於取得帳戶權杖的額外呼叫。
 
 存取權杖會在 1 小時後過期。 請先確定您的存取權杖有效，再使用作業 API。 如果過期，請再次呼叫授權 API 以取得新的存取權杖。
 
-您已經準備好開始與 API 整合。 請探索[每個影片索引器 REST API 的詳細描述](https://api-portal.videoindexer.ai/)。
+您已可以開始整合 API。 請探索[每個影片索引器 REST API 的詳細描述](https://api-portal.videoindexer.ai/)。
 
 ## <a name="account-id"></a>帳戶識別碼
 
@@ -79,14 +79,14 @@ ms.locfileid: "81314342"
 * 使用**影片索引器網站**來取得帳戶識別碼：
 
     1. 瀏覽至[影片索引子](https://www.videoindexer.ai/)網站並登入。
-    2. 瀏覽至 [設定]**** 頁面。
+    2. 瀏覽至 [設定] 頁面。
     3. 複製帳戶識別碼。
 
-        ![影片索引子設定和帳戶識別碼](./media/video-indexer-use-apis/account-id.png)
+        ![影片索引器設定和帳戶識別碼](./media/video-indexer-use-apis/account-id.png)
 
 * 使用**影片索引器開發人員入口網站**，以程式設計方式取得帳戶識別碼。
 
-    使用[取得帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?)API。
+    使用[取得帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API。
 
     > [!TIP]
     > 您可以藉由定義 `generateAccessTokens=true` 來產生帳戶的存取權杖。
@@ -103,9 +103,9 @@ ms.locfileid: "81314342"
 
 本節會列出使用影片索引器 API 時的一些建議。
 
-- 如果您打算上傳影片，建議您將檔案放在某個公用網路位置（例如 OneDrive）。 取得影片的連結，並將此 URL 作為上傳檔案參數。
+- 如果您打算上傳影片，建議您將檔案放在某個公用網路位置 (例如 OneDrive)。 取得影片的連結，並將此 URL 作為上傳檔案參數。
 
-    提供給影片索引器的 URL 必須指向媒體 (音訊或視訊) 檔案。 有些 OneDrive 所產生的連結是包含檔案的 HTML 網頁。 URL 的簡單驗證是將它貼到瀏覽器中-如果檔案開始下載，可能是很好的 URL。 如果瀏覽器正在轉譯某些視覺效果，則可能不是檔案的連結，而是 HTML 網頁的連結。
+    提供給影片索引器的 URL 必須指向媒體 (音訊或視訊) 檔案。 有些 OneDrive 所產生的連結是包含檔案的 HTML 網頁。 驗證 URL 的簡單方式是將其貼到瀏覽器中，如果檔案開始下載，表示這可能是好的 URL。 如果瀏覽器呈現一些視覺效果，則表示這可能不是檔案的連結，而是 HTML 網頁的連結。
 
 - 當您呼叫 API 以取得指定影片的影片深入解析時，取得的回應內容會是詳細的 JSON 輸出。 [請在本主題中參閱傳回的 JSON 詳細資料](video-indexer-output-json-v2.md)。
 
@@ -116,7 +116,7 @@ ms.locfileid: "81314342"
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
 var accountId = "..."; 
-var location = "westus2";
+var location = "westus2"; // replace with the account's location, or with “trial” if this is a trial account
 var apiKey = "..."; 
 
 System.Net.ServicePointManager.SecurityProtocol = System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -207,13 +207,13 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [影片索引子概觀](video-indexer-overview.md)
 - [區域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [檢查輸出 JSON 的詳細資料](video-indexer-output-json-v2.md)
-- 查看範例程式[代碼](https://github.com/Azure-Samples/media-services-video-indexer)，示範上傳影片和編制索引的重要層面。 遵循程式碼可讓您瞭解如何使用我們的 API 來進行基本功能。 請務必閱讀內嵌批註，並注意我們的最佳做法妥通知。
+- [查看輸出 JSON 的詳細資料](video-indexer-output-json-v2.md)
+- 查看[範例程式碼](https://github.com/Azure-Samples/media-services-video-indexer)，其示範上傳影片和編製其索引的重要層面。 遵循程式碼可讓您了解如何使用我們的 API 來執行基本功能。 請務必閱讀內嵌註解，並注意我們建議的最佳做法。
 

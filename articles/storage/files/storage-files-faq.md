@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: b4d3be9fbacee82f36f1238c5d9b4598c95b5df2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 8896aba104a99d323b3c39cfaeab6043d1c12f9d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888811"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832005"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -20,9 +20,9 @@ ms.locfileid: "82888811"
 本文將回答有關 Azure 檔案服務特性與功能 (包括將 Azure 檔案同步與 Azure 檔案搭配使用) 的常見問題。 如果您找不到問題的答案，可透過下列管道 (依先後順序) 和我們連絡：
 
 1. 本文的留言區。
-2. [Azure 儲存體論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
+2. [Azure 儲存體的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-file-storage.html)。
 3. [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\)。 
-4. Microsoft 支援服務。 若要建立新的支援要求，在 Azure 入口網站的 [說明]**** 索引標籤上，選取 [說明 + 支援]**** 按鈕，然後選取 [新增支援要求]****。
+4. Microsoft 支援服務。 若要建立新的支援要求，在 Azure 入口網站的 [說明] 索引標籤上，選取 [說明 + 支援] 按鈕，然後選取 [新增支援要求]。
 
 ## <a name="general"></a>一般
 * <a id="why-files-useful"></a>
@@ -54,7 +54,7 @@ ms.locfileid: "82888811"
 
     若要從 Azure 檔案服務和 Azure 虛擬機器中所裝載 (除了使用 Azure 磁碟作為後端儲存體) 的檔案伺服器獲取最大效益，其中一個方法是在雲端 VM 上所裝載的檔案伺服器上安裝 Azure 檔案同步。 如果 Azure 檔案共用位於和您檔案伺服器相同的區域，您可以啟用雲端分層，並將磁碟區可用空間百分比設定為最大值 (99%)。 這確保資料重複出現的機率最低。 您也可以使用任何您想要與檔案伺服器搭配使用的應用程式，例如，需要 NFS 通訊協定支援的應用程式。
 
-    如需在 Azure 中設定高效能和高可用性檔案伺服器的選項相關資訊，請參閱[在 Microsoft Azure 中部署 IaaS VM 客體叢集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/) \(英文\)。 如需 Azure 檔案儲存體和 Azure 磁片之間差異的更深入說明，請參閱[核心 Azure 儲存體服務簡介](../common/storage-introduction.md)。 若要深入了解 Azure 磁碟，請參閱 [Azure 受控磁碟概觀](../../virtual-machines/windows/managed-disks-overview.md)。
+    如需在 Azure 中設定高效能和高可用性檔案伺服器的選項相關資訊，請參閱[在 Microsoft Azure 中部署 IaaS VM 客體叢集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/) \(英文\)。 如需 Azure 檔案儲存體與 Azure 資料箱磁碟之間差異的更深入說明，請參閱[核心 Azure 儲存體服務簡介](../common/storage-introduction.md)。 若要深入了解 Azure 磁碟，請參閱 [Azure 受控磁碟概觀](../../virtual-machines/windows/managed-disks-overview.md)。
 
 * <a id="get-started"></a>
   **如何開始使用 Azure 檔案服務？**  
@@ -68,21 +68,21 @@ ms.locfileid: "82888811"
 
 * <a id="redundancy-options"></a>
   **Azure 檔案服務支援哪些儲存體備援選項？**  
-    目前，Azure 檔案儲存體支援本地冗余儲存體（LRS）、區域冗余儲存體（ZRS）、異地多餘儲存體（GRS）和異地區域冗余儲存體（切換）。 我們計劃在未來支援讀取權限異地備援 (RA-GRS) 儲存體，但目前尚無確切時間表。
+    Azure 檔案儲存體目前支援本地備援儲存體 (LRS)、區域備援儲存體 (ZRS)、異地備援儲存體 (GRS)，以及異地區域備援儲存體 (GZRS)。 我們計劃在未來支援讀取權限異地備援 (RA-GRS) 儲存體，但目前尚無確切時間表。
 
 * <a id="tier-options"></a>
   **Azure 檔案服務中支援哪些儲存層？**  
-    Azure 檔案儲存體支援兩種儲存層： premium 和 standard。 系統會在一般用途（GPv1 或 GPv2）儲存體帳戶中建立標準檔案共用，並在 FileStorage 儲存體帳戶中建立 premium 檔案共用。 深入瞭解如何建立標準檔案[共用](storage-how-to-create-file-share.md)和 premium 檔案[共用](storage-how-to-create-premium-fileshare.md)。 
+    Azure 檔案儲存體支援兩種儲存層：進階和標準。 標準檔案共用是會在一般用途 (GPv1 或 GPv2) 儲存體帳戶中建立的，而進階檔案共用則是在 FileStorage 儲存體帳戶中建立的。 深入了解如何建立[標準檔案共用](storage-how-to-create-file-share.md)和[進階檔案共用](storage-how-to-create-premium-fileshare.md)。 
     
     > [!NOTE]
-    > 您無法從 Blob 儲存體帳戶或*premium*一般用途（GPv1 或 GPv2）儲存體帳戶建立 Azure 檔案共用。 標準 Azure 檔案共用必須只在*標準*一般用途帳戶中建立，而且必須在 FileStorage 儲存體帳戶中建立 premium azure 檔案共用。 *Premium*一般用途（GPv1 和 GPv2）儲存體帳戶僅適用于 premium 分頁 blob。 
+    > 您無法從 Blob 儲存體帳戶或「進階」一般用途 (GPv1 或 GPv2) 儲存體帳戶建立 Azure 檔案共用。 標準 Azure 檔案共用僅能在*標準*一般用途帳戶中建立，而進階檔案共用只能在 FileStorage 儲存體帳戶中建立。 *進階*一般用途 (GPv1 和 GPv2) 儲存體帳戶僅適用於進階分頁 Blob。 
 
 * <a id="give-us-feedback"></a>
-  **我真的想要查看 Azure 檔案儲存體新增的特定功能。可以新增嗎？**  
+  **我真的希望 Azure 檔案服務中能加入某個特定功能。是否有此可能？**  
     Azure 檔案服務小組很樂意聽到您對於我們所提供之服務的所有意見反應。 請在 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\) 上投票支持您認同的功能要求！ 我們期待能透過諸多新的功能讓您感到滿意。
 
   **Azure 檔案儲存體是否支援檔案鎖定？**  
-    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式的檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。 
+    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。 
     
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 
@@ -92,56 +92,56 @@ ms.locfileid: "82888811"
 
 * <a id="cross-domain-sync"></a>
   **相同的同步群組中是否可以同時有已加入網域和未加入網域的伺服器？**  
-    可以。 同步群組可以包含具有不同 Active Directory 成員資格的伺服器端點，即使它們是未加入網域的端點也一樣。 雖然就技術上來說，這樣的設定是可行的，但我們不建議您將此作為一般設定，因為針對某部伺服器上的檔案和資料夾所定義的存取控制清單 (ACL)，可能無法由同步群組中的其他伺服器強制執行。 為獲得最佳結果，建議您在相同 Active Directory 樹系的伺服器之間、在位於不同 Active Directory 樹系但已建立信任關係的伺服器之間，或是在不在網域中的伺服器之間進行同步。 我們建議您避免混用這些設定。
+    是。 同步群組可以包含具有不同 Active Directory 成員資格的伺服器端點，即使它們是未加入網域的端點也一樣。 雖然就技術上來說，這樣的設定是可行的，但我們不建議您將此作為一般設定，因為針對某部伺服器上的檔案和資料夾所定義的存取控制清單 (ACL)，可能無法由同步群組中的其他伺服器強制執行。 為獲得最佳結果，建議您在相同 Active Directory 樹系的伺服器之間、在位於不同 Active Directory 樹系但已建立信任關係的伺服器之間，或是在不在網域中的伺服器之間進行同步。 我們建議您避免混用這些設定。
 
 * <a id="afs-change-detection"></a>
-  **我直接在 Azure 檔案共用中使用 SMB 或在入口網站中建立檔案。檔案同步至同步群組中的伺服器需要多久的時間？**  
+  **我直接在 Azure 檔案共用中使用 SMB 建立了檔案，或是在入口網站中建立了檔案。將該檔案與同步群組中的伺服器進行同步，需要花費多少時間？**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
-* <a id="afs-conflict-resolution"></a>**如果兩部伺服器上的同一個檔案幾乎同時變更，會發生什麼事？**  
+* <a id="afs-conflict-resolution"></a>**如果同一個檔案近乎同時地在兩部伺服器上進行變更，會發生什麼事？**  
     Azure 檔案同步會使用簡單的衝突解決策略：我們會對已同時在兩部伺服器上變更的檔案，保留這兩個變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案則會在名稱後面附加「來源」機器和衝突號碼。 它會遵循此分類法： 
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    例如，如果 CentralServer 是發生較舊寫入的位置，則 CompanyReport.docx 的第一個衝突會變成 CompanyReport CentralServer.docx。 第二個衝突會命名為 CompanyReport-CentralServer-1.docx。 Azure 檔案同步支援每個檔案100個衝突檔案。 一旦達到衝突檔案的最大數目，檔案將無法同步，直到衝突的檔案數目小於100為止。
+    例如，如果 CentralServer 是發生較舊寫入的位置，則 CompanyReport.docx 的第一個衝突會變成 CompanyReport CentralServer.docx。 第二個衝突會命名為 CompanyReport-CentralServer-1.docx。 Azure 檔案同步支援每個檔案 100 個衝突檔案。 一旦達到衝突檔案數目上限，檔案就無法同步，直到衝突檔案的數目小於 100 為止。
 
 * <a id="afs-storage-redundancy"></a>
   **Azure 檔案同步是否支援異地備援儲存體？**  
     是，Azure 檔案服務同時支援本機備援儲存體 (LRS) 和異地備援儲存體 (GRS)。 如果您從針對 GRS 設定的帳戶起始配對區域之間的儲存體帳戶容錯移轉，Microsoft 會建議您將新的區域視為僅只資料的備份。 Azure 檔案同步不會自動開始同步處理新的主要區域。 
 
 * <a id="sizeondisk-versus-size"></a>
-  **使用 Azure 檔案同步之後，為什麼檔案的「*磁片大小*」屬性不符合「*大小*」屬性？**  
+  **使用 Azure 檔案同步之後，為什麼檔案的「磁碟大小」屬性不符合「大小」屬性？**  
   請參閱[了解雲端階層處理](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
 
 * <a id="is-my-file-tiered"></a>
   **如何判斷檔案是否已分層？**  
   請參閱[了解雲端階層處理](storage-sync-cloud-tiering.md#is-my-file-tiered)。
 
-* <a id="afs-recall-file"></a>**我想要使用的檔案已分層。如何將檔案回收到磁片以在本機使用？**  
+* <a id="afs-recall-file"></a>**我想要使用的檔案已分層。如何將檔案回收到磁碟，以便在本機使用？**  
   請參閱[了解雲端階層處理](storage-sync-cloud-tiering.md#afs-recall-file)。
 
 * <a id="afs-force-tiering"></a>
-  **如何? 強制將檔案或目錄分層嗎？**  
+  **如何強制讓檔案或目錄分層？**  
   請參閱[了解雲端階層處理](storage-sync-cloud-tiering.md#afs-force-tiering)。
 
 * <a id="afs-effective-vfs"></a>
-  **當磁片區上有多個伺服器端點時，如何解讀*磁片區可用空間*？**  
+  **如果磁碟區上有多個伺服器端點，如何解譯「磁碟區可用空間」？**  
   請參閱[了解雲端階層處理](storage-sync-cloud-tiering.md#afs-effective-vfs)。
 
 * <a id="afs-files-excluded"></a>
   **Azure 檔案同步會自動排除哪些檔案或資料夾？**  
-  請參閱[略過](storage-sync-files-planning.md#files-skipped)的檔案。
+  請參閱[跳過的檔案](storage-sync-files-planning.md#files-skipped)。
 
 * <a id="afs-os-support"></a>
   **我可以將 Azure 檔案同步與 Windows Server 2008 R2、Linux 或網路連接儲存裝置 (NAS) 搭配使用嗎？**  
-    目前，Azure 檔案同步僅支援 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2。 現階段我們沒有其他計劃，但會保持開放態度，並根據客戶需求來支援其他平台。 請前往 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\)，讓我們知道您希望我們支援哪些平台。
+    Azure 檔案同步目前只支援 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2。 現階段我們沒有其他計劃，但會保持開放態度，並根據客戶需求來支援其他平台。 請前往 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\)，讓我們知道您希望我們支援哪些平台。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **分層的檔案為何存在於伺服器端點命名空間以外？**  
     在 Azure 檔案同步代理程式版本 3 之前，Azure 檔案同步會禁止移動位於伺服器端點以外外、但與伺服器端點位於相同磁碟區上的分層檔案。 非分層檔案的複製作業和移動，以及從分層磁碟區到其他磁碟區的移動，均不受影響。 之所以會有此行為，是因為系統隱含地假設在相同磁碟區上執行這些移動作業的檔案總管和其他 Windows API (幾近於) 是 即時的重新命名作業。 這表示，當 Azure 檔案同步回復雲端中的資料時，移動作業將會使檔案總管或其他的移動方法 (例如命令列或 PowerShell) 呈現為無回應的狀態。 從 [Azure 檔案同步代理程式 3.0.12.0 版](storage-files-release-notes.md#supported-versions)開始，Azure 檔案同步將可讓您移動伺服器端點以外的分層檔案。 我們讓分層的檔案以分層的形式存在於伺服器端點以外，然後在背景中回復檔案，以避免產生負面影響。 這表示，相同磁碟區上的移動會即時執行，而我們會在移動完成後，再執行所有將檔案回復至磁碟的工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-  **我的伺服器上的 Azure 檔案同步發生問題（同步、雲端階層處理等）。我應該移除並重新建立伺服器端點嗎？**  
+  **我在伺服器上的 Azure 檔案同步有問題 (同步、雲端分層等)。我是否應移除並重新建立伺服器端點？**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
@@ -154,65 +154,65 @@ ms.locfileid: "82888811"
 * <a id="afs-ntfs-acls"></a>
   **Azure 檔案同步是否會在 Azure 檔案中隨著資料保留目錄/檔案層級 NTFS AC？**
 
-    從2020年2月24日日起，Azure 檔案同步會以 NTFS 格式保存新的和現有的 Acl，而直接對 Azure 檔案共用所做的 ACL 修改將會同步至同步群組中的所有伺服器。 對 Azure 檔案儲存體的 Acl 進行的任何變更，都會透過 Azure 檔案同步進行同步處理。將資料複製到 Azure 檔案儲存體時，請務必使用 SMB 來存取共用並保留您的 Acl。 現有以 REST 為基礎的工具，例如 AzCopy 或儲存體總管不會保存 Acl。
+    從 2020 年 2 月 24 日起，Azure 檔案同步所分層的新和現有 ACL 會以 NTFS 格式保存，而且直接對 Azure 檔案共用所做的 ACL 修改將會同步至同步群組中的所有伺服器。 ACL 上對 Azure 檔案儲存體進行的任何變更，都會透過 Azure 檔案同步進行同步處理。將資料複製到 Azure 檔案儲存體時，請務必使用 SMB 來存取共用並保留您的 ACL。 現有 REST 型工具 (例如 AzCopy 或儲存體總管) 不會保存 ACL。
 
-    如果您已在檔案同步受控檔案共用上啟用 Azure 備份，檔案 Acl 可以繼續還原為備份還原工作流程的一部分。 這適用于整個共用或個別檔案/目錄。
+    如果您已在檔案同步受控檔案共用上啟用 Azure 備份，則檔案 ACL 可以繼續進行還原，做為備份還原工作流程的一部分。 這適用於整個共用或個別檔案/目錄。
 
-    如果您使用快照集做為受檔案同步管理之檔案共用的自我管理備份解決方案的一部分，則如果在2020年2月24日之前取得快照集，您的 Acl 可能無法正確地還原為 NTFS Acl。 如果發生這種情況，請考慮聯絡 Azure 支援。
+    如果您是針對檔案同步管理的檔案共用使用快照集，做為自我管理備份解決方案的一部分，則若在 2020 年 2 月 24 日之前取得快照集，您的 ACL 可能無法正確地還原為 NTFS ACL。 如果發生這種情況，請考慮連絡 Azure 支援。
     
 ## <a name="security-authentication-and-access-control"></a>安全性、驗證和存取控制
 * <a id="ad-support"></a>
-**Azure 檔案儲存體是否支援以身分識別為基礎的驗證和存取控制？**  
+**Azure 檔案服務是否支援身分識別型驗證和存取控制？**  
     
-    是，Azure 檔案儲存體支援以身分識別為基礎的驗證和存取控制。 您可以選擇下列兩種方式的其中一種來使用身分識別型存取控制：內部部署 Active Directory Domain Services （預覽）或 Azure Active Directory Domain Services （Azure AD DS）。 內部部署 Active Directory Domain Services （AD DS）支援使用內部部署或 Azure 中 AD DS 已加入網域的電腦進行驗證，以透過 SMB 存取 Azure 檔案共用。 Azure AD 透過 SMB 進行的 DS 驗證 Azure 檔案儲存體可讓已加入網域的 Azure AD DS Windows Vm 使用 Azure AD 認證來存取共用、目錄和檔案。 如需詳細資訊，請參閱[SMB 存取的 Azure 檔案儲存體身分識別型驗證支援的總覽](storage-files-active-directory-overview.md)。 
+    是，Azure 檔案支援身分識別型驗證和存取控制。 您可以選擇下列兩種方式的其中一種來使用身分識別型存取控制：內部部署 Active Directory Domain Services (預覽) 或 Azure Active Directory Domain Services (Azure AD DS)。 內部部署 Active Directory Domain Services (AD DS) 支援使用加入 AD DS 網域的機器進行驗證 (內部部署或在 Azure 中)，以透過 SMB 存取 Azure 檔案共用。 針對 Azure 檔案儲存體透過 SMB 進行 Azure AD DS 驗證可讓加入 Azure AD DS 網域的 Windows VM 使用 Azure AD 認證來存取共用、目錄與檔案。 如需詳細資訊，請參閱[支援 Azure 檔案儲存體身分識別型驗證進行 SMB 存取的概觀](storage-files-active-directory-overview.md)。 
 
     Azure 檔案服務提供兩種管理存取控制的額外方式：
 
-    - 您可以使用共用存取簽章 (SAS)，來產生具有特定權限且在指定時間間隔內有效的權杖。 例如，您可以產生具有指定檔案唯讀存取權且會在 10 分鐘到期的權杖。 擁有權杖的任何人，在該權杖的 10 分鐘有效時間內，具有該檔案的唯讀存取權。 只有透過 REST API 或用戶端程式庫才支援共用存取簽章金鑰。 您必須使用儲存體帳戶金鑰，透過 SMB 掛接 Azure 檔案共用。
+    - 您可以使用共用存取簽章 (SAS)，來產生具有特定權限且在指定時間間隔內有效的權杖。 例如，您可以產生具有指定檔案唯讀存取權且會在 10 分鐘到期的權杖。 擁有權杖的任何人，在該權杖的 10 分鐘有效時間內，具有該檔案的唯讀存取權。 只能透過 REST API 或在用戶端程式庫中支援共用存取簽章金鑰。 您必須使用儲存體帳戶金鑰，透過 SMB 掛接 Azure 檔案共用。
 
     - Azure 檔案同步會保留並複製所有判別 ACL 或 DACL (不論是以 Active Directory 為基礎或本機) 到它要同步的所有伺服器端點。 
     
-    您可以參閱[授權存取 Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)以取得 Azure 儲存體服務支援之所有通訊協定的完整標記法。 
+    您可以參閱[授權存取 Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，以取得 Azure 儲存體服務上所有支援通訊協定的完整表示法。 
 
 * <a id="ad-support-devices"></a>
-**Azure 檔案儲存體 Azure Active Directory Domain Services （Azure AD DS）驗證是否支援使用已加入或已向 Azure AD 註冊之裝置的 Azure AD 認證進行 SMB 存取？**
+**Azure 檔案儲存體 Azure Active Directory Domain Services (Azure AD DS) 驗證是否支援使用來自已加入 Azure AD 或已向其註冊之 Azure AD 認證的 SMB 存取？**
 
     否，不支援此案例。
 
 * <a id="ad-support-rest-apis"></a>
 **是否有 REST API 支援取得/設定/複製目錄/檔案 NTFS ACL？**
 
-    是，我們支援使用[2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) （或更新版本） REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST api。
+    是，我們支援在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (或更新版本) REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST API。
 
 * <a id="ad-vm-subscription"></a>
-**我可以從不同訂用帳戶下的 VM 使用 Azure AD 認證來存取 Azure 檔案共用嗎？**
+**我是否可以從不同訂用帳戶下的 VM 使用 Azure AD 認證來存取 Azure 檔案共用？**
 
-    如果用來部署檔案共用的訂用帳戶 Azure AD 與 VM 已加入網域的 Azure AD DS 部署相關聯，您就可以使用相同的 Azure AD 認證來存取 Azure 檔案共用。 不僅訂用帳戶有限制，關聯的 Azure AD 租用戶也有。
+    若檔案共用部署所在的訂用帳戶與和部署到 VM 所加入網域的 Azure AD DS 相同的 Azure AD 租用戶關聯，則您可以使用相同的 Azure AD 認證來存取 Azure 檔案。 不僅訂用帳戶有限制，關聯的 Azure AD 租用戶也有。
     
 * <a id="ad-support-subscription"></a>
-**我可以使用與 Azure 檔案共用的主要租使用者不同的 Azure AD 租使用者，啟用 Azure 檔案共用的 Azure AD DS 或內部部署 AD DS 驗證嗎？**
+**我是否可以使用與 Azure 檔案共用主要租用戶不同的 Azure AD 租用戶，啟用 Azure 檔案共用的 Azure AD DS 或內部部署 AD DS 驗證？**
 
-    否，Azure 檔案儲存體只支援與檔案共用位於相同訂用帳戶中的 Azure AD 租使用者 Azure AD DS 或內部部署 AD DS 整合。 只有一個訂用帳戶能與 Azure AD 租用戶關聯。 這項限制適用于 Azure AD DS 和內部部署 AD DS 驗證方法。 使用內部部署 AD DS 進行驗證時， [AD DS 認證必須同步至](../../active-directory/hybrid/how-to-connect-install-roadmap.md)與儲存體帳戶相關聯的 Azure AD。
+    否，Azure 檔案儲存體只支援使用位於與檔案共用之訂用帳戶相同的訂用帳戶的 Azure AD 租用戶來進行 Azure AD DS 或內部部署 AD DS 整合。 只有一個訂用帳戶能與 Azure AD 租用戶關聯。 這項限制同時適用於 Azure AD DS 和內部部署 AD DS 驗證方法。 使用內部部署 AD DS 進行驗證時，[AD DS 認證必須同步至儲存體帳戶與其相關聯的 Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md)。
 
 * <a id="ad-linux-vms"></a>
-**適用于 Azure 檔案共用的 Azure AD DS 或內部部署 AD DS 驗證是否支援 Linux Vm？**
+**適用於 Azure 檔案共用的 Azure AD DS 或內部部署 AD DS 驗證是否支援 Linux VM？**
 
-    否，不支援來自 Linux Vm 的驗證。
+    否，不支援來自 Linux VM 的驗證。
 
 * <a id="ad-aad-smb-afs"></a>
-**Azure 檔案同步所管理的檔案共用是否支援 Azure AD DS 或內部部署 AD DS （預覽）驗證？**
+**Azure 檔案同步所管理的檔案共用是否支援 Azure AD DS 或內部部署 AD DS (預覽) 驗證？**
 
-    是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 Azure AD DS 或內部部署 AD DS 驗證。本機檔案伺服器上目錄/檔案 NTFS Acl 的變更將分層成 Azure 檔案儲存體，反之亦然。
+    是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 Azure AD DS 或內部部署 AD DS 驗證。本機檔案伺服器上目錄/檔案 NTFS ACL 的變更將分層至 Azure 檔案儲存體，反之亦然。
 
 * <a id="ad-aad-smb-files"></a>
-**如何檢查我是否已在我的儲存體帳戶上啟用 AD DS 驗證，並取出網域資訊？**
+**如何檢查是否已在我的儲存體帳戶上啟用 AD DS 驗證，以及擷取網域資訊？**
 
-    如需指示，請參閱[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)。
+    如需相關指示，請參閱[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)。
     
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  
 
-    可以。 如需詳細資訊，請參閱[Azure 儲存體服務加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    是。 如需詳細資訊，請參閱 [Azure 儲存體服務加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="access-via-browser"></a>
 **如何使用網頁瀏覽器來提供對特定檔案的存取權？**  
@@ -220,14 +220,14 @@ ms.locfileid: "82888811"
     您可以使用共用存取簽章，來產生具有特定權限且在指定時間間隔內有效的權杖。 例如，您可以產生可在一段特定時間內提供特定檔案唯讀存取權限的權杖。 任何人只要擁有此 URL，就可以在權杖有效時間內，直接從任何網頁瀏覽器存取檔案。 您可以從類似儲存體總管的 UI，輕易產生共用存取簽章金鑰。
 
 * <a id="file-level-permissions"></a>
-**是否可以對共用內的資料夾指定唯讀或僅限寫入的許可權？**  
+**可以對共用內的資料夾指定唯讀或唯寫權限嗎？**  
 
     如果您使用 SMB 來掛接檔案共用，則您對權限沒有資料夾層級的控制。 不過，如果您使用 REST API 或用戶端程式庫建立共用存取簽章，就可以在共用中的資料夾上指定唯讀或唯寫權限。
 
 * <a id="ip-restrictions"></a>
 **我是否可以對 Azure 檔案共用實作 IP 限制？**  
 
-    可以。 您可以在儲存體帳戶層級限制對 Azure 檔案共用的存取。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    是。 您可以在儲存體帳戶層級限制對 Azure 檔案共用的存取。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="data-compliance-policies"></a>
 **Azure 檔案服務支援哪些資料合規性原則？**  
@@ -236,53 +236,53 @@ ms.locfileid: "82888811"
    
 ### <a name="ad-authentication"></a>AD 驗證
 * <a id=""></a>
-**Azure 檔案儲存體 Azure AD 驗證是否支援 Linux Vm？**
+**Azure 檔案儲存體 Azure AD 驗證是否支援 Linux VM？**
 
-    否，不支援來自 Linux Vm 的驗證。
+    否，不支援來自 Linux VM 的驗證。
 
 * <a id="ad-multiple-forest"></a>
-**內部部署 AD DS Azure 檔案共用的驗證是否支援與使用多個樹系的 AD DS 環境整合？**    
+**適用於 Azure 檔案共用的內部部署 AD DS 驗證是否支援使用多個樹系與 AD DS 環境整合？**    
 
-    Azure 檔案儲存體內部部署 AD DS 驗證只會與儲存體帳戶註冊的網域服務樹系整合。 若要支援來自另一個樹系的驗證，您的環境必須正確設定樹系信任。 Azure 檔案儲存體註冊 AD DS 幾乎與一般檔案伺服器相同，它會在 AD DS 中建立身分識別（電腦或服務登入帳戶）以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這不符合網域尾碼。 請洽詢您的網域系統管理員，查看是否需要對 DNS 路由原則進行任何更新，以啟用多樹系驗證，因為不同的網域尾碼。
+    Azure 檔案儲存體內部部署 AD DS 驗證只會與儲存體帳戶註冊的網域服務樹系整合。 若要支援來自另一個樹系的驗證，您的環境必須正確地設定樹系信任。 Azure 檔案儲存體在 AD DS 中註冊的方式幾乎與一般檔案伺服器相同，註冊時會在 AD DS 中建立身分識別 (電腦或服務登入帳戶) 以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這與網域尾碼不符。 請洽詢您的網域管理員，查看是否需要對 DNS 路由原則進行任何更新，以啟用多樹系驗證，因為網域尾碼不同。
 
 * <a id=""></a>
-**哪些區域可供 Azure 檔案儲存體 AD DS authentication （預覽）？**
+**哪些區域適用於 Azure 檔案儲存體 AD DS 驗證？**
 
-    如需詳細資訊，請參閱[AD DS 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
+    如需詳細資料，請參閱 [AD DS 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
     
 * <a id="ad-aad-smb-afs"></a>
-**我可以在 Azure 檔案同步所管理的檔案共用上，利用 Azure 檔案儲存體 Active Directory （AD）驗證（預覽）嗎？**
+**我是否可在 Azure 檔案同步所管理的檔案共用上運用 Azure 檔案儲存體 Active Directory (AD) 驗證？**
 
-    是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 AD 驗證。本機檔案伺服器上目錄/檔案 NTFS Acl 的變更將分層成 Azure 檔案儲存體，反之亦然。
-
-* <a id="ad-aad-smb-files"></a>
-**如何檢查我的儲存體帳戶和 AD 網域資訊是否已啟用 AD 驗證？**
-
-    您可以參考[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的指示，以驗證您的儲存體帳戶是否已啟用 Azure 檔案儲存體 AD 驗證，並取得 ad 網域資訊。
+    是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 AD 驗證。本機檔案伺服器上目錄/檔案 NTFS ACL 的變更將分層至 Azure 檔案儲存體，反之亦然。
 
 * <a id="ad-aad-smb-files"></a>
-**建立電腦帳戶或服務登入帳戶是否有任何差異，以代表 AD 中的儲存體帳戶？**
+**如何檢查是否已在我的儲存體帳戶上啟用 AD 驗證，以及 AD 網域資訊？**
 
-    建立[電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（預設）或[服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)，對於驗證如何使用 Azure 檔案儲存體並沒有差別。 您可以自行選擇如何在 AD 環境中，將儲存體帳戶表示為身分識別。 在 AzStorageAccountForAuth Cmdlet 中設定的預設 DomainAccountType 是電腦帳戶。 不過，針對電腦或服務登入帳戶，AD 環境中設定的密碼到期時間可能會不同，因此您必須將它納入考慮，以便[在 ad 中更新儲存體帳戶身分識別的密碼](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)。
+    您可以參閱[這裡](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)所提供的指示，來驗證是否已在您的儲存體帳戶上啟用 Azure 檔案儲存體 AD 驗證，以及擷取 AD 網域資訊。
+
+* <a id="ad-aad-smb-files"></a>
+**建立電腦帳戶或服務登入帳戶來代表 AD 中的儲存體帳戶，是否有任何差異？**
+
+    建立[電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (預設) 或[服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)與驗證使用 Azure 檔案儲存體的方式沒有任何差異。 您可以自行選擇如何在 AD 環境中，將儲存體帳戶表示為身分識別。 在 Join-AzStorageAccountForAuth 中設定的預設 DomainAccountType 是電腦帳戶。 不過，對於電腦或服務登入帳戶，AD 環境中設定的密碼到期日可能會有所不同，而且您必須在 [更新 AD 中您儲存體帳戶身分識別的密碼](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)時將其納入考慮。
 
 ## <a name="on-premises-access"></a>內部部署存取
 
 * <a id="port-445-blocked"></a>
-**我的 ISP 或它會封鎖 Azure 檔案儲存體掛接失敗的埠445。我該怎麼做？**
+**我的 ISP 或 IT 封鎖連接埠 445，這使得 Azure 檔案儲存體裝載失敗。我該怎麼辦？**
 
-    您可以在這裡瞭解各種因應措施的因應措施已[封鎖埠445的方法](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。 Azure 檔案儲存體只允許從區域外部使用 SMB 3.0 （具有加密支援）的連接。 SMB 3.0 通訊協定引進了許多安全性功能，包括通道加密，這在網際網路上使用時非常安全。 不過，因為在較低的 SMB 版本中發現漏洞的歷程記錄原因，所以可能已封鎖埠445。 在理想的情況下，應該只針對 SMB 1.0 流量封鎖埠，並在所有用戶端上關閉 SMB 1.0。
+    您可以在[這裡](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)了解各種因應措施來解決封鎖的連接埠 445。 Azure 檔案儲存體只允許從區域或資料中心外部使用 SMB 3.0 (搭配加密支援) 進行的連線。 SMB 3.0 通訊協定引進了許多安全性功能，包括通道加密，這在網際網路上使用時非常安全。 不過，因為在較低的 SMB 版本中發現弱點的歷史原因，所以可能已封鎖埠445。 在理想的情況下，應該只針對 SMB 1.0 流量封鎖連接埠，並應在所有用戶端上關閉 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **我必須使用 Azure ExpressRoute 來連線到 Azure 檔案服務，還是必須在內部部署中使用 Azure 檔案同步？**  
 
-    不需要。 不需要 ExpressRoute 就能存取 Azure 檔案共用。 如果您要直接在內部部署掛接 Azure 檔案共用，只需開啟連接埠 445 (TCP 輸出) 以進行網際網路存取 (這是 SMB 用來進行通訊的連接埠)。 如果您使用 Azure 檔案同步，只需連接埠 443 (TCP 輸出) 以進行 HTTPS 存取 (不需要 SMB)。 不過，您可以** 將 ExpressRoute 與這些其中一個選項搭配使用。
+    否。 不需要 ExpressRoute 就能存取 Azure 檔案共用。 如果您要直接在內部部署掛接 Azure 檔案共用，只需開啟連接埠 445 (TCP 輸出) 以進行網際網路存取 (這是 SMB 用來進行通訊的連接埠)。 如果您使用 Azure 檔案同步，只需連接埠 443 (TCP 輸出) 以進行 HTTPS 存取 (不需要 SMB)。 不過，您可以將 ExpressRoute 與這些其中一個選項搭配使用。
 
 * <a id="mount-locally"></a>
-**如何在我的本機電腦上掛接 Azure 檔案共用？**  
+**如何在本機電腦上掛接 Azure 檔案共用？**  
 
     如果已開啟連接埠 445 (TCP 輸出) 且您的用戶端支援 SMB 3.0 通訊協定 (例如，若您使用的是 Windows 10 或 Windows Server 2016)，即可使用 SMB 通訊協定掛接檔案共用。 如果組織的原則或您的 ISP 會封鎖連接埠 445，您可以使用 Azure 檔案同步來存取 Azure 檔案共用。
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **如何備份我的 Azure 檔案共用？**  
     您可以使用定期[共用快照集](storage-snapshots-files.md)來防範意外刪除的情況。 您也可以使用 AzCopy、RoboCopy，或是可備份已掛接檔案共用的協力廠商備份工具。 Azure 備份會提供 Azure 檔案的備份。 深入了解如何[使用 Azure 備份來備份 Azure 檔案共用](https://docs.microsoft.com/azure/backup/backup-azure-files)。
@@ -304,7 +304,7 @@ ms.locfileid: "82888811"
 
 * <a id="snapshot-limits"></a>
 **我可以使用的共用快照集數目是否有限制？**  
-    可以。 Azure 檔案服務最多可保留 200 個共用快照集。 共用快照集不會計入共用配額，因此，所有共用快照集所使用的總空間沒有每個共用的限制。 但儲存體帳戶限制依然有效。 保留 200 個共用快照集之後，必須先刪除舊的快照集，才能建立新的共用快照集。
+    是。 Azure 檔案服務最多可保留 200 個共用快照集。 共用快照集不會計入共用配額，因此，所有共用快照集所使用的總空間沒有每個共用的限制。 但儲存體帳戶限制依然有效。 保留 200 個共用快照集之後，必須先刪除舊的快照集，才能建立新的共用快照集。
 
 * <a id="snapshot-cost"></a>
 **共用快照集需要多少成本？**  
@@ -317,7 +317,7 @@ ms.locfileid: "82888811"
 ### <a name="create-share-snapshots"></a>建立共用快照集
 * <a id="file-snaphsots"></a>
 **我可以建立個別檔案的共用快照集嗎？**  
-    共用快照集是在檔案共用層級建立的。 您可以從檔案共用快照集還原個別檔案，但您無法建立檔案層級的共用快照集。 不過，如果您已擷取共用層級的共用快照集，而且想要列出已變更特定檔案的共用快照集，就可以在 Windows 所掛接之共用上的 [舊版]**** 下方執行此動作。 
+    共用快照集是在檔案共用層級建立的。 您可以從檔案共用快照集還原個別檔案，但您無法建立檔案層級的共用快照集。 不過，如果您已擷取共用層級的共用快照集，而且想要列出已變更特定檔案的共用快照集，就可以在 Windows 所掛接之共用上的 [舊版] 下方執行此動作。 
     
     如果您需要檔案快照集功能，請前往 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\)，讓我們知道。
 
@@ -345,7 +345,7 @@ ms.locfileid: "82888811"
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
 **我可以將共用快照集的資料還原到不同的儲存體帳戶嗎？**  
-    可以。 您可以將共用快照集的檔案複製到原始位置或替代位置，其中包含相同區域或不同區域中的同一個儲存體帳戶或不同的儲存體帳戶。 您也可以將檔案複製到內部部署位置或任何其他雲端。    
+    是。 您可以將共用快照集的檔案複製到原始位置或替代位置，其中包含相同區域或不同區域中的同一個儲存體帳戶或不同的儲存體帳戶。 您也可以將檔案複製到內部部署位置或任何其他雲端。    
   
 ### <a name="clean-up-share-snapshots"></a>清除共用快照集
 * <a id="delete-share-keep-snapshots"></a>
@@ -373,29 +373,29 @@ ms.locfileid: "82888811"
     如需 Azure 檔案服務的延展性和效能目標相關資訊，請參閱 [Azure 檔案服務延展性和效能目標](storage-files-scale-targets.md)。
 
 * <a id="need-larger-share"></a>
-**適用于 Azure 檔案共用的大小有哪些？**  
-    Azure 檔案共用大小（premium 和 standard）可以相應增加至 100 TiB。 請參閱規劃指南的上[架至較大的檔案共用（標準層）](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)一節，以取得有關標準層的較大檔案共用的入門指示。
+**適用於 Azure 檔案共用的大小有哪些？**  
+    Azure 檔案共用大小 (進階和標準) 可以擴大至 100 TiB。 請參閱規劃指南的[上線至大型檔案共用 (標準層)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) 一節，以取得上線至標準層大型檔案共用的指示。
 
 * <a id="lfs-performance-impact"></a>
-**擴充我的檔案共用配額會影響我的工作負載或 Azure 檔案同步嗎？**
+**擴充我的檔案共用配額是否會影響我的工作負載或 Azure 檔案同步？**
     
-    不需要。 擴充配額不會影響您的工作負載或 Azure 檔案同步。
+    否。 擴充配額不會影響您的工作負載或 Azure 檔案同步。
 
 * <a id="open-handles-quota"></a>
-**多少個用戶端可以同時存取相同的檔案？**   
+**多少個用戶端可以同時存取相同的檔案？**    
     單一檔案的開啟控制代碼配額為 2,000 個。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
 * <a id="zip-slow-performance"></a>
-**當我在 Azure 檔案儲存體解壓縮檔案時，效能會變慢。我該怎麼做？**  
+**當我在 Azure 檔案服務中將檔案解壓縮時，效能變慢了。我該怎麼辦？**  
     若要將大量檔案傳輸到 Azure 檔案服務，建議您使用 AzCopy (適用於 Windows；針對 Linux/Unix 則是在預覽版中) 或 Azure PowerShell。 這些工具已針對網路傳輸最佳化。
 
 * <a id="slow-perf-windows-81-2012r2"></a>
 **當我在 Windows Server 2012 R2 或 Windows 8.1 上掛接 Azure 檔案共用之後，為什麼我的效能變慢了？**  
-    在 Windows Server 2012 R2 和 Windows 8.1 上掛接 Azure 檔案共用時，有一個已知的問題。 此問題已在 Windows 8.1 和 Windows Server 2012 R2 的 2014 年 4 月累計更新中加以修補。 若要取得最佳效能，請確定 Windows Server 2012 R2 和 Windows 8.1 的所有執行個體都已套用這個修補程式 （您應該一律透過 Windows Update 接收 Windows 修補程式）。如需詳細資訊，請參閱相關的 Microsoft 知識庫檔[當您從 Windows 8.1 或伺服器 2012 R2 存取 Azure 檔案儲存體時，效能會變慢](https://support.microsoft.com/kb/3114025)。
+    在 Windows Server 2012 R2 和 Windows 8.1 上掛接 Azure 檔案共用時，有一個已知的問題。 此問題已在 Windows 8.1 和 Windows Server 2012 R2 的 2014 年 4 月累計更新中加以修補。 若要取得最佳效能，請確定 Windows Server 2012 R2 和 Windows 8.1 的所有執行個體都已套用這個修補程式 (您應該一律會透過 Windows Update 接收到 Windows 修補程式)。如需詳細資訊，請參閱相關的 Microsoft 知識庫文章：[當您從 Windows 8.1 或 Server 2012 R2 存取 Azure 檔案服務時效能變慢](https://support.microsoft.com/kb/3114025) \(機器翻譯\)。
 
 ## <a name="features-and-interoperability-with-other-services"></a>功能及與其他服務的互通性
 * <a id="cluster-witness"></a>
-**我可以使用 Azure 檔案共用作為 Windows Server 容錯移轉叢集的「檔案共用見證」** 嗎？**  
+**我可以使用 Azure 檔案共用作為 Windows Server 容錯移轉叢集的「檔案共用見證」嗎？**  
     Azure 檔案共用目前不支援此設定。 如需如何為 Azure Blob 儲存體設定此項的詳細資訊，請參閱[為容錯移轉叢集部署雲端見證](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) \(機器翻譯\)。
 
 * <a id="containers"></a>
@@ -407,8 +407,8 @@ ms.locfileid: "82888811"
     目前沒有。
 
 * <a id="nested-shares"></a>
-**我可以設定嵌套共用嗎？換句話說，共用下的共用？**  
-    不需要。 檔案共用*是*您可以掛接的虛擬驅動程式，因此不支援嵌套的共用。
+**我可以設定巢狀共用嗎？也就是說，共用下的共用？**  
+    否。 檔案共用是您可以掛接的虛擬驅動程式，因此不支援巢狀共用。
 
 * <a id="ibm-mq"></a>
 **如何將 Azure 檔案服務與 IBM MQ 搭配使用？**  

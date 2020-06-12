@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594092"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835439"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>在 Linux 上使用 HDInsight 的相關資訊
 
@@ -23,9 +23,9 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
 
 本文件中的許多步驟都使用下列公用程式，可能需要安裝在您的系統上。
 
-* [捲曲](https://curl.haxx.se/)-用來與 web 服務進行通訊。
-* **jq**，這是一個命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -用來從遠端系統管理 Azure 服務。
+* [cURL](https://curl.haxx.se/) - 用來與 Web 型服務通訊。
+* **jq**，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - 用來從遠端管理 Azure 服務。
 * **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="users"></a>使用者
@@ -36,23 +36,23 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
 
 ## <a name="domain-names"></a>網域名稱
 
-從網際網路連線到叢集時所要使用的完整功能變數名稱（FQDN）是`CLUSTERNAME.azurehdinsight.net`或`CLUSTERNAME-ssh.azurehdinsight.net` （僅適用于 SSH）。
+從網際網路連接到叢集時所要使用的完整網域名稱 (FQDN) 是 `CLUSTERNAME.azurehdinsight.net` 或 `CLUSTERNAME-ssh.azurehdinsight.net` (僅適用於 SSH)。
 
-就內部而言，叢集中的每個節點都具有在叢集組態期間指派的名稱。 若要尋找叢集名稱，請參閱 Ambari Web UI 上的 [主機]**** 頁面。 您也可以使用下列命令從 Ambari REST API 傳回主機清單︰
+就內部而言，叢集中的每個節點都具有在叢集組態期間指派的名稱。 若要尋找叢集名稱，請參閱 Ambari Web UI 上的 [主機] 頁面。 您也可以使用下列命令從 Ambari REST API 傳回主機清單︰
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-將 `CLUSTERNAME` 取代為您的叢集名稱。 出現提示時，請輸入系統管理員帳戶的密碼。 此命令會傳回包含叢集中主機清單的 JSON 文件。 [jq](https://stedolan.github.io/jq/)是用來解壓縮每`host_name`個主控制項的元素值。
+將 `CLUSTERNAME` 取代為您的叢集名稱。 出現提示時，請輸入系統管理員帳戶的密碼。 此命令會傳回包含叢集中主機清單的 JSON 文件。 [jq](https://stedolan.github.io/jq/) 用來擷取每部主機的 `host_name` 元素值。
 
 如果您需要針對特定服務尋找節點的名稱，您可以查詢 Ambari 有無該元件。 例如，若要尋找主機有無 HDFS 名稱節點，請使用下列命令：
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-此命令會傳回描述服務的 JSON 檔，然後[jq](https://stedolan.github.io/jq/)只會提取主機的`host_name`值。
+此命令會傳回描述服務的 JSON 文件，然後 [jq](https://stedolan.github.io/jq/) 只會針對主機提取 `host_name` 值。
 
 ## <a name="remote-access-to-services"></a>遠端存取服務
 
-* **Ambari （web）** - `https://CLUSTERNAME.azurehdinsight.net`
+* **Ambari (web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     使用叢集系統管理員使用者和密碼進行驗證，然後登入 Ambari。
 
@@ -63,21 +63,21 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
     >
     > 若要使用 Ambari Web UI 的完整功能，請使用 SSH 通道將 Web 流量以 Proxy 處理傳輸到叢集前端節點。 請參閱[使用 SSH 通道來存取 Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 及其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari （REST）** - `https://CLUSTERNAME.azurehdinsight.net/ambari`
+* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > 使用叢集系統管理員使用者和密碼進行驗證。
     >
     > 驗證是純文字的 - 請一律使用 HTTPS 來協助確保連線的安全性。
 
-* **WebHCat （Templeton）** - `https://CLUSTERNAME.azurehdinsight.net/templeton`
+* **WebHCat (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > 使用叢集系統管理員使用者和密碼進行驗證。
     >
     > 驗證是純文字的 - 請一律使用 HTTPS 來協助確保連線的安全性。
 
-* 埠22或23上的**SSH** CLUSTERNAME-ssh.azurehdinsight.net。 連接埠 22 用來連接至主要前端節點，而 23 用來連接至次要前端節點。 如需前端節點的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)。
+* **SSH** - 連接埠 22 或 23 上的 CLUSTERNAME-ssh.azurehdinsight.net。 連接埠 22 用來連接至主要前端節點，而 23 用來連接至次要前端節點。 如需前端節點的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)。
 
     > [!NOTE]  
     > 您只能從用戶端電腦透過 SSH 存取叢集前端節點。 然後在連線後，再從前端節點使用 SSH 存取背景工作角色節點。
@@ -88,52 +88,52 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
 
 Hadoop 相關檔案可以在叢集節點的 `/usr/hdp`上找到。 此目錄包含下列子目錄：
 
-* **2.6.5.3009-43**：目錄名稱是 HDInsight 所使用的 Hadoop 平臺版本。 叢集上的數字可能不同於此處所列的數字。
-* **目前**：此目錄包含**2.6.5.3009-43**目錄底下子目錄的連結。 因為有此目錄，您就不必記住版本號碼。
+* **2.6.5.3009-43**:目錄名稱是 HDInsight 所使用的 Hadoop 平台版本。 叢集上的數字可能不同於此處所列的數字。
+* **current**︰此目錄包含 **2.6.5.3009-43** 目錄下的子目錄連結。 因為有此目錄，您就不必記住版本號碼。
 
 在 Hadoop 分散式檔案系統的 `/example` 和 `/HdiSamples` 可取得範例資料和 JAR 檔案。
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS、Azure 儲存體和 Data Lake Storage
 
-在大部分的 Hadoop 散發套件中，資料會儲存在 HDFS 中。 HDFS 是由叢集中電腦上的本機儲存體所支援。 以雲端為基礎的解決方案，使用本機儲存體的成本可能很高，因為計算資源是以每小時或每分鐘為單位來計費。
+在大部分的 Hadoop 散發套件中，資料會儲存在 HDFS 中。 叢集中機器上的本機儲存體會支援 HDFS。 針對雲端解決方案使用本機儲存體的成本可能相當高，因為計算資源是以每小時或每分鐘為單位來計費。
 
-使用 HDInsight 時，資料檔案會以可調整且彈性的方式儲存在雲端中，使用 Azure Blob 儲存體並選擇性地 Azure Data Lake Storage。 這些服務提供下列優點：
+使用 HDInsight 時，會使用 Azure Blob 儲存體 (並選擇性地使用 Azure Data Lake Storage) 以適用的彈性方式將資料檔案儲存在雲端中。 這些服務提供下列優點：
 
 * 長期儲存成本低廉。
 * 可從各種外部服務進行存取，例如網站、檔案上傳/下載公用程式、各種語言的 SDK 和網頁瀏覽器。
-* 大型檔案容量和大型的可調儲存體。
+* 大型檔案容量和大型適用的儲存體。
 
 如需詳細資訊，請參閱[了解 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和[Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)。
 
-使用 Azure 儲存體或 Data Lake Storage 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出`/example/data`資料夾中的檔案，不論其儲存在 Azure 儲存體或 Data Lake Storage：
+使用 Azure 儲存體或 Data Lake Storage 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出 `/example/data` 資料夾中的檔案，不論其是否儲存在 Azure 儲存體或 Data Lake Storage 中：
 
     hdfs dfs -ls /example/data
 
-在 HDInsight 中，資料儲存體資源 (Azure Blob 儲存體和 Azure Data Lake Storage) 會與計算資源分離。 您可以視需要建立 HDInsight 叢集來執行計算，稍後在工作完成時刪除叢集。 同時，只要您需要，就能安全地將資料檔案保存在雲端存放裝置中。
+在 HDInsight 中，資料儲存體資源 (Azure Blob 儲存體和 Azure Data Lake Storage) 會與計算資源分離。 您可以視需要建立 HDInsight 叢集來執行計算，稍後在工作完成時刪除叢集。 同時，只要您需要，就能安全地將資料檔案保存在雲端儲存體中。
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI 和配置
 
 有些命令可能需要您在存取檔案時於 URI 中指定配置。 例如，Storm-HDFS 元件就需要您指定配置。 在使用非預設儲存體 (新增為叢集「其他」儲存體的儲存體) 時，您一律必須在 URI 中使用配置。
 
-使用[**Azure 儲存體**](./hdinsight-hadoop-use-blob-storage.md)時，請使用下列其中一種 URI 配置：
+使用 [**Azure 儲存體**](./hdinsight-hadoop-use-blob-storage.md)時，請使用下列其中一種 URI 配置：
 
-* `wasb:///`︰使用未加密通訊存取預設儲存體。
+* `wasb:///`:使用未加密通訊存取預設儲存體。
 
-* `wasbs:///`︰使用加密通訊存取預設儲存體。  HDInsight 3.6 版和更新版本才會支援 wasbs 配置。
+* `wasbs:///`:使用加密通訊存取預設儲存體。  HDInsight 3.6 版和更新版本才會支援 wasbs 配置。
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net/`︰以非預設儲存體帳戶進行通訊時使用。 例如，當您有其他儲存體帳戶，或在可公開存取的儲存體帳戶中存取儲存的資料時。
+* `wasb://<container-name>@<account-name>.blob.core.windows.net/`:與非預設儲存體帳戶進行通訊時使用。 例如，當您有其他儲存體帳戶，或在可公開存取的儲存體帳戶中存取儲存的資料時。
 
-使用[**Azure Data Lake Storage Gen2**](./hdinsight-hadoop-use-data-lake-storage-gen2.md)時，請使用下列 URI 配置：
+使用 [**Azure Data Lake Storage Gen2**](./hdinsight-hadoop-use-data-lake-storage-gen2.md) 時，請使用下列 URI 配置：
 
-* `abfs://`︰使用加密通訊存取預設儲存體。
+* `abfs://`:使用加密通訊存取預設儲存體。
 
-* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`︰以非預設儲存體帳戶進行通訊時使用。 例如，當您有其他儲存體帳戶，或在可公開存取的儲存體帳戶中存取儲存的資料時。
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:與非預設儲存體帳戶進行通訊時使用。 例如，當您有其他儲存體帳戶，或在可公開存取的儲存體帳戶中存取儲存的資料時。
 
-使用[**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md)時，請使用下列其中一種 URI 配置：
+使用 [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) 時，請使用下列其中一種 URI 配置：
 
-* `adl:///`︰存取叢集的預設 Data Lake Storage。
+* `adl:///`:存取叢集的預設 Data Lake Storage。
 
-* `adl://<storage-name>.azuredatalakestore.net/`：與非預設 Data Lake Storage 進行通訊時使用。 也用來存取 HDInsight 叢集根目錄之外的資料。
+* `adl://<storage-name>.azuredatalakestore.net/`:與非預設 Data Lake Storage 進行通訊時使用。 也用來存取 HDInsight 叢集根目錄之外的資料。
 
 > [!IMPORTANT]  
 > 使用 Data Lake Storage 做為 HDInsight 的預設存放區時，您必須在存放區內指定要做為 HDInsight 儲存體根目錄的路徑。 預設路徑為 `/clusters/<cluster-name>/`。
@@ -177,7 +177,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)，選取您的 HDInsight 叢集。
 
-2. 從 [屬性]**** 區段中，選取 [儲存體帳戶]****。 隨即會顯示叢集的儲存體資訊。
+2. 從 [屬性] 區段中，選取 [儲存體帳戶]。 隨即會顯示叢集的儲存體資訊。
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>如何從 HDInsight 外部存取檔案
 
@@ -199,22 +199,22 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 如果使用 __Azure Data Lake Storage__，請參閱下列連結，以取得可供存取資料的方式︰
 
-* [網頁瀏覽器](../data-lake-store/data-lake-store-get-started-portal.md)
+* [Web 瀏覽器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [適用于 Visual Studio 的 Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Visual Studio 適用的 Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>調整您的叢集規模
 
-叢集調整功能可讓您動態變更叢集所用的資料節點數目。 您可以在叢集上執行其他工作或進程時進行調整作業。  請參閱 [調整 HDInsight 叢集](./hdinsight-scaling-best-practices.md)
+叢集調整功能可讓您動態變更叢集所用的資料節點數目。 在叢集上執行其他工作或處理序時，您可以執行調整作業。  請參閱 [調整 HDInsight 叢集](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>如何安裝 Hue (或其他 Hadoop 元件)？
 
-HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會刪除失敗節點並建立要取代它的節點。 當您以手動方式在叢集上安裝專案時，它們不會在此作業發生時保存。 請改用 [HDInsight 指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)。 指令碼動作可用來進行下列變更︰
+HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會刪除失敗節點並建立要取代它的節點。 當您以手動方式在叢集上安裝項目時，若發生此作業，則不會保存這些項目。 請改用 [HDInsight 指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)。 指令碼動作可用來進行下列變更︰
 
 * 安裝及設定服務或網站。
 * 安裝及設定需要在叢集中的多個節點上進行組態變更的元件。
@@ -223,7 +223,7 @@ HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會�
 
 ### <a name="jar-files"></a>JAR 檔案
 
-某些 Hadoop 技術提供獨立的 jar 檔案。 這些檔案包含用來做為 MapReduce 工作一部分的函式，或是從 Pig 或 Hive 內部使用的函數。 它們通常不需要任何設定，而且可在佈建後上傳到叢集並直接使用。 如果您想要確保元件不受叢集的重新安裝映射，請將 jar 檔案儲存在叢集預設儲存體中。
+某些 Hadoop 技術提供獨立式 jar 檔案。 這些檔案包含當作 MapReduce 作業一部分使用的函式，或來自 Pig 或 Hive 內的函式。 它們通常不需要任何設定，而且可在佈建後上傳到叢集並直接使用。 如果您想要確定元件會在重新安裝叢集的映像後保存下來，請將 jar 檔案儲存在叢集預設儲存體中。
 
 例如，如果您想要使用最新版本的 [Apache DataFu](https://datafu.incubator.apache.org/)，則可下載包含專案的 jar，並將它上傳至 HDInsight 叢集。 接著遵循 DataFu 文件中，如何從 Pig 或 Hive 中使用它的指示進行。
 
@@ -239,10 +239,10 @@ HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會�
 > [!IMPORTANT]
 > 透過 HDInsight 叢集提供的元件會受到完整支援，且 Microsoft 支援服務會協助釐清與解決這些元件的相關問題。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多可以使用的社區網站，例如：[適用于 HDInsight 的 MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在上[https://apache.org](https://apache.org)也有專案網站，例如[Hadoop](https://hadoop.apache.org/)、 [Spark](https://spark.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)，[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Ambari REST API 來管理 HDInsight 叢集](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [搭配 HDInsight 使用 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [搭配 HDInsight 使用 MapReduce 作業](hadoop/hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce 工作](hadoop/hdinsight-use-mapreduce.md)

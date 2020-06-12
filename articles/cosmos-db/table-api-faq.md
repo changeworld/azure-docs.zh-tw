@@ -1,23 +1,23 @@
 ---
-title: 有關 Azure Cosmos DB 中的資料表 API 常見問題
-description: 在 Azure Cosmos DB 中取得有關資料表 API 常見問題的解答
+title: 關於 Azure Cosmos DB 中資料表 API 的常見問題集
+description: 取得 Azure Cosmos DB 中資料表 API 常見問題集的解答
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 981c6f145f0bf06fbe81234d473b9fbcd2235174
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614482"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836221"
 ---
-# <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>有關 Azure Cosmos DB 中的資料表 API 常見問題
+# <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中資料表 API 的常見問題集
 
-您必須先註冊 Azure 訂用帳戶，才能在[Azure 入口網站](https://portal.azure.com)中取得 Azure Cosmos DB 資料表 API。 註冊之後，您可以將 Azure Cosmos DB 資料表 API 帳戶加入 Azure 訂用帳戶，接著再將資料表加入帳戶。 您可以在 [Azure Cosmos DB 資料表 API 簡介](table-introduction.md)中找到支援的語言和相關快速入門。
+您必須先註冊 Azure 訂用帳戶，才能在 [Azure 入口網站](https://portal.azure.com)中使用 Azure Cosmos DB 資料表 API。 註冊之後，您可以將 Azure Cosmos DB 資料表 API 帳戶加入 Azure 訂用帳戶，接著再將資料表加入帳戶。 您可以在 [Azure Cosmos DB 資料表 API 簡介](table-introduction.md)中找到支援的語言和相關快速入門。
 
-## <a name="table-api-in-azure-cosmos-db-vs-azure-table-storage"></a><a id="table-api-vs-table-storage"></a>Azure Cosmos DB Vs Azure 資料表儲存體中的資料表 API
+## <a name="table-api-in-azure-cosmos-db-vs-azure-table-storage"></a><a id="table-api-vs-table-storage"></a>Azure Cosmos DB 與 Azure 資料表儲存體中的資料表 API
 
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>資料表 API 與 Azure 資料表儲存體的行為有哪些不同？
 
@@ -25,21 +25,21 @@ ms.locfileid: "82614482"
 
 * Azure Cosmos DB 資料表 API 使用保留容量模型來確保效能獲得保證，但這也表示，使用者一建立資料表，就必須支付其容量費用，即使該容量並未使用也是如此。 而在使用 Azure 資料表儲存體時，使用者只需要就使用的容量付費。 此一行為有助於解釋，為何資料表 API 可於第 99 個百分位數的水準提供 10 毫秒的讀取和 15 毫秒的寫入 SLA，而 Azure 資料表儲存體則是提供 10 秒的 SLA。 但也因為這樣，資料表 API 的資料表 (甚至是沒有任何要求的空白資料表) 必須付出金錢，才能確保有容量可用來處理其所收到的任何要求，並以 Azure Cosmos DB 所提供的 SLA 來進行。
 
-* 資料表 API 所傳回的查詢結果不會依照 Azure 資料表儲存體中的資料分割索引鍵/資料列索引鍵順序排序。
+* 資料表 API 所傳回的查詢結果，不會和 Azure 資料表儲存體一樣使用資料分割索引鍵/資料列索引鍵順序來排序。
 
-* 資料列索引鍵最多隻能有255個位元組。
+* 資料列索引鍵最多只能是 255 個位元組。
 
-* 批次最多隻能有 2 Mb。
+* 批次最多只可有 2 MB。
 
 * 目前不支援 CORS。
 
-* Azure 資料表儲存體中的資料表名稱不區分大小寫，但它們在 Azure Cosmos DB 資料表 API 中。
+* 資料表名稱在 Azure 資料表儲存體中不區分大小寫，但在 Azure Cosmos DB 資料表 API 中則有區分。
 
 * 部分 Azure Cosmos DB 用於編碼資訊 (例如二進位欄位) 的內部格式，目前不如預期地有效率。 因此這會對資料大小造成非預期的限制。 例如，目前無法使用資料表實體的完整 1 Meg 來儲存二進位資料，因為編碼方式增加了資料的大小。
 
-* 目前不支援實體屬性名稱 ' ID '。
+* 目前不支援實體屬性名稱 'ID'。
 
-* TableQuery TakeCount 不限於1000。
+* TableQuery TakeCount 不限於 1000。
 
 * 就 REST API 來說，Azure Cosmos DB 資料表 API 並不支援某些端點/查詢選項：
 
@@ -50,7 +50,7 @@ ms.locfileid: "82614482"
   | GET | `/?restype=service@comp=stats` | [取得資料表服務統計資料](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | 提供主要與次要資料庫之間的資料複寫速度有多快的資訊。 因為複寫是寫入的一部分，因此這不是 Cosmos DB 中的必須作業。 |
   | GET、PUT | `/mytable?comp=acl` | [取得資料表 ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) 和[設定資料表 ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | 這會取得並設定用來管理共用存取簽章 (SAS) 的預存存取原則。 雖然 SAS 有受到支援，但其設定和管理方式並不相同。 |
 
-* Azure Cosmos DB 資料表 API 僅支援 JSON 格式，而非 ATOM。
+* Azure Cosmos DB 資料表 API 只支援 JSON 格式，而不支援 ATOM。
 
 * 雖然 Azure Cosmos DB 支援共用存取簽章 (SAS)，但它也有某些不支援的原則，具體地說，它不支援與管理作業有關的原則，例如用以建立新資料表的權限。
 
@@ -117,13 +117,13 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmosDB;AccountKey=<
 
 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 和 [Azure Cosmos DB 資料移轉工具](import-data.md)皆有受到支援。
 
-### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>假設我一開始就有 n** GB 的資料，而我的資料將隨著時間過去成長為 1 TB，我該如何針對此服務完成儲存體大小的擴充？
+### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>假設我一開始就有 n GB 的資料，而我的資料將隨著時間過去成長為 1 TB，我該如何針對此服務完成儲存體大小的擴充？
 
 Azure Cosmos DB 的設計乃藉由使用水平調整提供無限制的儲存體。 這項服務能監視並有效地增加您的儲存體。
 
 ### <a name="how-do-i-monitor-the-table-api-offering"></a>如何監視資料表 API 供應項目？
 
-您可以使用資料表 API 的 [計量]**** 窗格，來監視要求和儲存體使用量。
+您可以使用資料表 API 的 [計量] 窗格，來監視要求和儲存體使用量。
 
 ### <a name="how-do-i-calculate-the-throughput-i-require"></a>如何計算我需要的輸送量？
 
@@ -143,7 +143,7 @@ Azure Cosmos DB 的設計乃藉由使用水平調整提供無限制的儲存體�
 
 ### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-across-more-than-one-region-of-azure"></a>如何在「資料表 API」中新增跨多個 Azure 區域的資料複寫？
 
-您可以使用 Azure Cosmos DB 入口網站的「全域複寫」[設定](tutorial-global-distribution-sql-api.md#portal)來新增適用于您應用程式的區域。 若要開發全域散發的應用程式，您還應該使用設為本地區域的 PreferredLocation 資訊來加入您的應用程式，以提供低讀取延遲。
+您可以使用 Azure Cosmos DB 入口網站的[全域複寫設定](tutorial-global-distribution-sql-api.md#portal)，加入適合應用程式的區域。 若要開發全域散發的應用程式，您還應該使用設為本地區域的 PreferredLocation 資訊來加入您的應用程式，以提供低讀取延遲。
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>如何在「資料表 API」中變更帳戶的主要寫入區域？
 
@@ -167,11 +167,11 @@ Azure Cosmos DB 可在一致性、高可用性及延遲之間提供完全合乎�
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>啟用全域散發時，複寫資料需要多久的時間？
 
-Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即將資料推送到其他區域。 這項複寫操作只取決於資料中心的來回時間 (RTT)。 若要深入了解 Azure Cosmos DB 的全域散發能力，請參閱 [Azure Cosmos DB︰Azure 上分散在世界各地的資料庫服務](distribute-data-globally.md)。
+Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即將資料推送到其他區域。 這項複寫操作只取決於資料中心的來回時間 (RTT)。 若要深入了解 Azure Cosmos DB 的全域散發能力，請參閱[透過 Azure Cosmos DB 進行全域資料散發](distribute-data-globally.md)。
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>可以變更讀取要求一致性層級嗎？
 
-有了 Azure Cosmos DB，您可以設定容器層級的一致性層級 (在資料表中)。 透過 .NET SDK，您可以在 app.config 檔案中提供 TableConsistencyLevel 索引鍵的值，藉以變更層級。 可能的值包括：強式、限定過期、工作階段、一致前置詞或最終。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的 Tunable 資料一致性層級](consistency-levels.md)。 主要概念在於，您無法將要求一致性層級設定為高於資料表設定的值。 例如，您無法將資料表的一致性層級設定為「最終」，而將要求一致性層級設定為「強式」。
+有了 Azure Cosmos DB，您可以設定容器層級的一致性層級 (在資料表中)。 透過 .NET SDK，您可以在 app.config 檔案中提供 TableConsistencyLevel 索引鍵的值，藉以變更層級。 可能的值包括：「強式」、「限定過期」、「工作階段」、「一致前置詞」或「最終」。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的 Tunable 資料一致性層級](consistency-levels.md)。 主要概念在於，您無法將要求一致性層級設定為高於資料表設定的值。 例如，您無法將資料表的一致性層級設定為「最終」，而將要求一致性層級設定為「強式」。
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>當區域發生服務中斷時，「資料表 API」如何處理容錯移轉？
 
@@ -185,17 +185,17 @@ Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即�
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>資料表 API 預設會為實體的所有屬性編製索引嗎？
 
-是，根據預設，它會為實體的所有屬性編製索引。 如需詳細資訊，請參閱[Azure Cosmos DB：編制索引原則](index-policy.md)。
+是，根據預設，它會為實體的所有屬性編製索引。 如需詳細資訊，請參閱 [Azure Cosmos DB中的編製索引原則](index-policy.md)。
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>這表示我不需要建立多個索引來滿足查詢嗎？
 
-是，Azure Cosmos DB 資料表 API 會為所有屬性提供自動編製索引，而不需任何結構描述定義。 這項資訊能讓開發人員專注於應用程式，而不需擔心索引的建立和管理。 如需詳細資訊，請參閱[Azure Cosmos DB：編制索引原則](index-policy.md)。
+是，Azure Cosmos DB 資料表 API 會為所有屬性提供自動編製索引，而不需任何結構描述定義。 這項資訊能讓開發人員專注於應用程式，而不需擔心索引的建立和管理。 如需詳細資訊，請參閱 [Azure Cosmos DB中的編製索引原則](index-policy.md)。
 
 ### <a name="can-i-change-the-indexing-policy"></a>我可以變更索引編制原則嗎？
 
 是，您可以提供索引定義來變更索引編制原則。 您需要適當地進行編碼和逸出這些設定。
 
-針對非 .NET SDK，索引編製原則只能在入口網站的**資料總管**中進行設定，請瀏覽至您想要變更的特定資料表，然後移至 [規模與設定]**** -> [索引編製原則]，進行所需的變更，然後 [儲存]****。
+針對非 .NET SDK，索引編製原則只能在入口網站的**資料總管**中進行設定，請瀏覽至您想要變更的特定資料表，然後移至 [規模與設定] -> [索引編製原則]，進行所需的變更，然後 [儲存]。
 
 透過 .NET SDK，您可在 app.config 檔案中提交原則：
 
@@ -238,9 +238,9 @@ Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即�
 滿足以下任一條件時，您應該變更 TableThroughput：
 
 * 您即將要執行資料擷取、轉換及載入 (ETL)，或想要在短時間內上傳大量資料。
-* 您需要更多來自後端容器或容器集的輸送量。 例如，您發現使用的輸送量比佈建的輸送量還多，而您正要開始進行節流。 如需詳細資訊，請參閱[設定 Azure Cosmos 容器的輸送量](set-throughput.md)。
+* 您需要更多來自後端容器或容器集的輸送量。 例如，您發現使用的輸送量比佈建的輸送量還多，而您正要開始進行節流。 如需詳細資訊，請參閱[設定 Azure Cosmos 容器輸送量](set-throughput.md)。
 
-### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>我可以相應增加或減少資料表 API 資料表的輸送量嗎？
+### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>我可以擴大或縮小資料表 API 資料表的輸送量嗎？
 
 是，您可以使用 Azure Cosmos DB 入口網站的調整窗格來調整輸送量。 如需詳細資訊，請參閱[設定輸送量](set-throughput.md)。
 
@@ -274,11 +274,11 @@ Azure Cosmos DB 已設計為全域散發的 SLA 型系統，並提供可用性�
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>將資料內嵌至「Azure 資料表」儲存體時，我從未收到「配額已滿」通知 (表示分割區已滿)。 當我使用資料表 API 時，卻收到了這則訊息。 這個供應項目會限制我，並強迫我變更我現有的應用程式嗎？
 
-Azure Cosmos DB 是 SLA 型系統，它提供無限制的調整和延遲、輸送量、可用性、一致性保證。 若要獲得保證的進階效能，您必須確定資料大小和索引是可管理且可調整的。 每個資料分割索引鍵的實體或項目數目限制為 10 GB，這是為了確保我們能夠提供絕佳的查閱和查詢效能。 為了確保您的應用程式能夠針對 Azure 儲存體進行更佳的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。
+Azure Cosmos DB 是 SLA 型系統，它提供無限制的調整和延遲、輸送量、可用性、一致性保證。 若要獲得保證的進階效能，您必須確定資料大小和索引是可管理且可調整的。 每個資料分割索引鍵的實體或項目數目限制為 10 GB，這是為了確保我們能夠提供絕佳的查閱和查詢效能。 為了確保您的應用程式能夠針對 Azure 儲存體進行更佳的調整，建議您「避免」建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>這樣說來，資料表 API 仍然需要 PartitionKey 和 RowKey 嗎？
 
-可以。 因為「資料表 API」的介面區與「Azure 資料表」儲存體 SDK 的介面區類似，所以分割區索引鍵能提供有效率的資料散發方式。 資料列索引鍵在該資料分割內是唯一的。 資料列索引鍵必須存在且不能為 Null，如同在標準 SDK 中。 RowKey 的長度是 255 個位元組，而 PartitionKey 為 1 KB。
+是。 因為「資料表 API」的介面區與「Azure 資料表」儲存體 SDK 的介面區類似，所以分割區索引鍵能提供有效率的資料散發方式。 資料列索引鍵在該資料分割內是唯一的。 資料列索引鍵必須存在且不能為 Null，如同在標準 SDK 中。 RowKey 的長度是 255 個位元組，而 PartitionKey 為 1 KB。
 
 ### <a name="what-are-the-error-messages-for-the-table-api"></a>資料表 API 的錯誤訊息將有哪些？
 
@@ -293,7 +293,7 @@ Azure Cosmos DB 是 SLA 型系統，可提供延遲、輸送量、可用性及�
 您可以使用以下任何方式來分享意見反應：
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 最適合用於詢問程式設計問題。 確保您的問題[契合主題](https://stackoverflow.com/help/on-topic)且[盡可能提供愈多的詳細資料，讓問題更加清楚並可得到答覆](https://stackoverflow.com/help/how-to-ask)。
 
 ## <a name="next-steps"></a>後續步驟

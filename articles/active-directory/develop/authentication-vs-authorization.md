@@ -1,7 +1,7 @@
 ---
-title: 驗證與授權 |Azure
+title: 驗證與授權 | Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解 Microsoft 身分識別平臺（v2.0）中驗證和授權的基本概念。
+description: 了解 Microsoft 身分識別平台 (v2.0) 中驗證與授權的基本概念。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,52 +9,51 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: fca794d51e06c72f157dc063445d1cab09d92d28
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115858"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83825953"
 ---
 # <a name="authentication-vs-authorization"></a>驗證與授權
 
-本文會定義驗證和授權，並簡要說明如何使用 Microsoft 身分識別平臺來驗證和授權 web 應用程式、web Api 或呼叫受保護 web Api 的應用程式中的使用者。 如果您看到不熟悉的詞彙，請嘗試我們的[詞彙](developer-glossary.md)或我們的[Microsoft 身分識別平臺](identity-videos.md)影片，其中涵蓋了基本概念。
+本文會定義驗證與授權，並簡要說明如何使用 Microsoft 身分識別平台來驗證和授權 Web 應用程式、Web API 或應用程式 (呼叫受保護 Web API ) 中的使用者。 如果您看到不熟悉的詞彙，請嘗試我們的[詞彙](developer-glossary.md)或我們的 [Microsoft 身分識別平台影片](identity-videos.md)，其中涵蓋基本概念。
 
 ## <a name="authentication"></a>驗證
 
-**驗證**是證明您是誰所說的程式。 驗證 (Authentication) 有時會被簡稱為 AuthN。 Microsoft 身分識別平臺會實行[OpenID connect](https://openid.net/connect/)通訊協定來處理驗證。
+**驗證**是證明您確實是您本人的程序。 驗證 (Authentication) 有時會被簡稱為 AuthN。 Microsoft 身分識別平台會實行 [OpenID Connect](https://openid.net/connect/) 通訊協定來處理驗證。
 
 ## <a name="authorization"></a>授權
 
-**授權**是指授與已驗證的合作物件使用權限來執行某個作業的動作。 它會指定您可存取的資料，以及您可以對該資料執行的動作。 授權 (Authorization) 有時會被簡稱為 AuthZ。 Microsoft 身分識別平臺會實行[OAuth 2.0](https://oauth.net/2/)通訊協定來處理授權。
+**授權**是授與已驗證的合作對象權限以執行某些工作的動作。 會指定您可以存取哪些資料，以及可以將該資料用於哪些用途。 授權 (Authorization) 有時會被簡稱為 AuthZ。 Microsoft 身分識別平台會實作 [OAuth 2.0](https://oauth.net/2/) 通訊協定以處理授權。
 
-## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>使用 Microsoft 身分識別平臺的驗證和授權
+## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>使用 Microsoft 身分識別平台的驗證與授權
 
-應用程式不會建立每個應用程式來維護自己的使用者名稱和密碼資訊，而是在您需要跨多個應用程式新增或移除使用者時，產生高系統管理負擔，而應用程式可以將該責任委派給集中式身分識別提供者。
+應用程式不是建立應用程式，需要個別維護自己的使用者名稱和密碼資訊，因為這樣當您需要跨多個應用程式新增或移除使用者時，會產生高系統管理負擔，而是應用程式可以將該責任委派給集中式識別提供者。
 
-Azure Active Directory （Azure AD）是雲端中的集中式身分識別提供者。 將驗證和授權委派給它可啟用條件式存取原則，例如要求使用者位於特定位置、使用多重要素驗證，以及讓使用者登入一次，然後自動登入所有共用相同集中式目錄的 web 應用程式。 這項功能稱為「**單一登入」（SSO）**。
+Azure Active Directory (Azure AD) 是雲端中的集中式識別提供者。 將驗證與授權委派給識別提供者可啟用例如條件式存取原則的案例，該原則會要求使用者位於特定位置、使用[多重要素驗證](../authentication/concept-mfa-howitworks.md) (有時稱為雙因素驗證或 2FA)，以及讓使用者登入一次，然後自動登入共用相同集中式目錄的所有 Web 應用程式。 這項功能稱為**單一登入 (SSO)** 。
 
-Microsoft 身分識別平臺藉由提供身分識別即服務來簡化應用程式開發人員的驗證和授權，並支援業界標準的通訊協定（例如 OAuth 2.0 和 OpenID Connect），以及適用于不同平臺的開放原始碼程式庫，協助您快速開始編碼。 它可讓開發人員建立應用程式來登入所有 Microsoft 身分識別、取得權杖以呼叫[Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft api 或開發人員已建立的 api。 如需詳細資訊，請參閱[Microsoft 身分識別平臺的演進](about-microsoft-identity-platform.md)。
+Microsoft 身分識別平台可透過以服務的形式提供身分識別來簡化應用程式開發人員的授權與驗證工作，並支援業界標準的通訊協定 (例如 OAuth 2.0 和 OpenID Connect)，以及適用於不同平台的開放原始碼程式庫，以協助您快速開始撰寫程式碼。 可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 [Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft API 或開發人員所建置的 API。 如需詳細資訊，請參閱 [Microsoft 身分識別平台的演化](about-microsoft-identity-platform.md)。
 
-以下是 Microsoft 身分識別平臺所使用的各種通訊協定的簡短比較：
+以下是 Microsoft 身分識別平台所使用各種通訊協定的簡短比較：
 
-* **Oauth 與 Openid connect**： oauth 是用於授權，而 openid CONNECT （OIDC）用於驗證。 OpenID Connect 建置於 OAuth 2.0 之上，因此這兩者的術語和流程都很類似。 您甚至可以驗證使用者（使用 OpenID Connect），並取得授權以存取使用者在一個要求中所擁有（使用 OAuth 2.0）的受保護資源。 如需詳細資訊，請參閱[OAuth 2.0 和 Openid connect 通訊協定](active-directory-v2-protocols.md)和[openid connect 通訊協定](v2-protocols-oidc.md)。
-* **Oauth 與 saml**： oauth 是用於授權，而 saml 用於驗證。 如需如何搭配使用這兩個通訊協定來驗證使用者（使用 SAML）並取得授權以存取受保護資源（使用 OAuth 2.0）的詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0 SAML 持有](v2-saml-bearer-assertion.md)人判斷提示流程。
-* **Openid connect 與 saml**： openid CONNECT 和 saml 都是用來驗證使用者，而且可用來啟用單一登入。 SAML 驗證常用於身分識別提供者（例如 Active Directory 同盟服務（ADFS）同盟至 Azure AD，因此經常用於企業應用程式中。 OpenID Connect 通常用於雲端中純粹的應用程式，例如行動應用程式、網站和 web Api。
+* **OAuth 與 OpenID Connect**：OAuth 用於授權，而 OpenID Connect (OIDC) 用於驗證。 OpenID Connect 建置於 OAuth 2.0 之上，因此兩者的術語和流程都很類似。 您甚至可以驗證使用者 (使用 OpenID Connect)，並取得授權以在一個要求中存取使用者所擁有 (使用 OAuth 2.0) 的受保護資源。 如需詳細資訊，請參閱 [OAuth 2.0 和 OpenID Connect 通訊協定](active-directory-v2-protocols.md)和 [OpenID Connect 通訊協定](v2-protocols-oidc.md)。
+* **OAuth 與 SAML**：OAuth 用於授權，而 SAML 用於驗證。 如需如何搭配使用這兩種通訊協定，同時驗證使用者 (使用 SAML ) 及取得授權以存取受保護的資源 (使用 OAuth 2.0) 的詳細資訊，請參閱 [Microsoft 身分識別平台和 OAuth 2.0 SAML 持有人聲明流程](v2-saml-bearer-assertion.md)。
+* **OpenID Connect 與 SAML**：OpenID Connect 和 SAML 都會用來驗證使用者，並用於啟用單一登入。 SAML 驗證常用於識別提供者，例如 Active Directory 同盟服務 (ADFS) 同盟至 Azure AD，因此經常用於企業應用程式中。 OpenID Connect 通常用於純粹在雲端中的應用程式，例如行動應用程式、網站和 Web API。
 
 ## <a name="next-steps"></a>後續步驟
 
-其他涵蓋驗證和授權基本概念的主題：
+如需涵蓋驗證和授權基本概念的其他主題：
 
-* 請參閱[安全性權杖](security-tokens.md)，以瞭解如何在驗證和授權中使用存取權杖、重新整理權杖和識別碼權杖。
-* 請參閱[應用程式模型](application-model.md)，以瞭解註冊應用程式以與 Microsoft 身分識別平臺整合的過程。
-* 請參閱[應用程式登入流程](app-sign-in-flow.md)，以瞭解 Microsoft 身分識別平臺中 web、桌面和行動應用程式的登入流程。
+* 若要了解存取權杖、重新整理權杖和識別碼權杖如何用於授權和驗證，請參閱[安全性權杖](security-tokens.md)。
+* 若要了解註冊應用程式以與 Microsoft 身分識別平台整合的程序，請參閱[應用程式模型](application-model.md)。
+* 若要了解 Microsoft 身分識別平台中 Web、傳統型和行動應用程式的登入流程，請參閱[應用程式登入流程](app-sign-in-flow.md)。
 
-若要深入瞭解 Microsoft 身分識別平臺所實行的通訊協定：
-
-* 如需 OpenID Connect 和 OAuth 2.0 標準的詳細資訊，請參閱[Microsoft 身分識別平臺上的 OAuth 2.0 和 Openid connect 通訊協定](active-directory-v2-protocols.md)。
-* 如需 Microsoft 身分識別平臺如何支援單一登入的詳細資訊，請參閱[單一登入 SAML 通訊協定](single-sign-on-saml-protocol.md)。
+* 若要深入了解 Microsoft 身分識別平台所實行的通訊協定，請參閱 [Microsoft 身分識別平台上的 OAuth 2.0 和 OpenID Connect 通訊協定](active-directory-v2-protocols.md)。
+* 如需 Microsoft 身分識別平台如何支援單一登入的詳細資訊，請參閱[單一登入 SAML 通訊協定](single-sign-on-saml-protocol.md)。
+* 如需您可以在應用程式中實作單一登入的不同方式詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。

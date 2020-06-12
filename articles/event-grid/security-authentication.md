@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588253"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774301"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>驗證 Azure 事件方格資源存取權
 本文提供下列案例的相關資訊：  
 
 - 使用共用存取簽章 (SAS) 或金鑰，驗證將事件發佈到 Azure 事件方格主題的用戶端。 
-- 使用 Azure Active Directory (Azure AD) 來保護 Webhook 端點，以驗證事件方格，進而將事件**傳遞**至端點。
+- 使用 Azure Active Directory (Azure AD) 或共用祕密，保護用來從事件方格接收事件的 Webhook 端點。
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>使用 SAS 或金鑰來驗證發佈用戶端
 自訂主題使用共用存取簽章 (SAS) 或金鑰驗證。 我們建議使用 SAS，但金鑰驗證提供簡單的程式編寫，並且與許多現有的 Webhook 發佈者相容。
@@ -89,12 +89,12 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 下列各節說明如何驗證對 Webhook 端點的事件傳遞。 無論您使用哪種方法，都必須使用驗證交握機制。 如需詳細資訊，請參閱 [Webhook 事件傳遞](webhook-event-delivery.md)。 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD)
-您可以使用 Azure Active Directory (Azure AD) 來保護 Webhook 端點，以驗證事件方格，進而授權將事件傳遞至端點。 您必須建立 Azure AD 應用程式、在授權事件方格的應用程式中建立角色和服務主體，以及將事件訂用帳戶設定為使用 Azure AD 應用程式。 [了解如何使用事件方格設定 Azure Active Directory](secure-webhook-delivery.md)。
+您可以使用 Azure AD，保護用來從事件方格接收事件的 Webhook 端點。 您必須建立 Azure AD 應用程式、在授權事件方格的應用程式中建立角色和服務主體，以及將事件訂用帳戶設定為使用 Azure AD 應用程式。 [了解如何使用事件方格設定 Azure Active Directory](secure-webhook-delivery.md)。
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>使用用戶端秘密作為查詢參數
-您可以在建立事件訂閱時將查詢參數新增至 Webhook URL，以保護您的 Webhook 端點。 將這些查詢參數中的其中一個設定為用戶端祕密，例如[存取權杖](https://en.wikipedia.org/wiki/Access_token)或共用秘密。 Webhook 可以使用秘密來辨識事件是否來自「事件方格」且具有有效的權限。 事件格線會在傳遞至 Webhook 的每個事件中包含這些查詢參數。 如果用戶端秘密已更新，則也需要更新事件訂用帳戶。 為避免在此秘密輪替期間發生傳遞失敗，請在有限的期間內讓 Webhook 接受舊秘密與新秘密。 
+您也可以在建立事件訂閱時將查詢參數新增至指定的 Webhook 目的地 URL，以保護您的 Webhook 端點。 將這些查詢參數中的其中一個設定為用戶端祕密，例如[存取權杖](https://en.wikipedia.org/wiki/Access_token)或共用秘密。 事件方格服務會在 Webhook 的每個事件傳遞要求中包含這些查詢參數。 Webhook 服務可以擷取和驗證祕密。 如果用戶端秘密已更新，則也需要更新事件訂用帳戶。 為避免在此秘密輪替期間發生傳遞失敗，請在有限的期間內讓 Webhook 接受舊秘密與新秘密，然後再利用新祕密更新事件訂閱。 
 
-由於查詢參數可能包含用戶端秘密，因此會特別小心加以處理。 用戶端秘密會以加密方式儲存，且不能供服務操作員存取。 其不會記錄為服務記錄/追蹤的一部分。 編輯事件訂閱時，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數，否則不會顯示或傳回查詢參數。
+由於查詢參數可能包含用戶端秘密，因此會特別小心加以處理。 用戶端秘密會以加密方式儲存，且不能供服務操作員存取。 其不會記錄為服務記錄/追蹤的一部分。 在擷取事件訂閱屬性時，預設不會傳回目的地查詢參數。 例如：[--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數將用於 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中。
 
 如需將事件傳遞至 Webhook 的詳細資訊，請參閱 [Webhook 事件傳遞](webhook-event-delivery.md)
 

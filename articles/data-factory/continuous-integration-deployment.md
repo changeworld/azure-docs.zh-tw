@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 中的持續整合與傳遞
+title: Azure Data Factory 中的持續整合和傳遞
 description: 了解如何使用持續整合和傳遞將一個環境 (開發、測試、生產) 中的 Data Factory 管線移至另一個環境。
 services: data-factory
 documentationcenter: ''
@@ -11,27 +11,27 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124715"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772857"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合與傳遞
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>概觀
 
-持續整合是一種作法，可以自動且儘早地測試對程式碼基底所做的每項變更。持續傳遞會遵循持續整合期間所發生的測試，並將變更推送至暫存或生產系統。
+持續整合是指進行相關實作，以自動並及早測試對您的程式碼基底所做的每項變更。 在持續整合期間執行測試，並將變更推送至暫存或生產系統後，就會進行持續傳遞。
 
-在 Azure Data Factory 中，持續整合和傳遞（CI/CD）表示將 Data Factory 管線從一個環境（開發、測試、生產）移至另一個環境。 Azure Data Factory 利用[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)來儲存各種 ADF 實體的設定（管線、資料集、資料流程等等）。 有兩個建議的方法可將資料處理站升級至另一個環境：
+在 Azure Data Factory 中，持續整合和傳遞 (CI/CD) 是指將一個環境 (開發、測試、生產) 中的 Data Factory 管線移至另一個環境。 Azure Data Factory 利用 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)來儲存各種 ADF 實體 (管線、資料集、資料流程等等) 的設定。 有兩個建議方法可將資料處理站提升至另一個環境：
 
--    使用 Data Factory 與[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)整合的自動化部署
--    使用 Data Factory UX 整合搭配 Azure Resource Manager，手動上傳 Resource Manager 範本。
+-    使用 Data Factory 與 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的整合進行自動化部署
+-    使用 Data Factory UX 與 Azure Resource Manager 的整合，手動上傳 Resource Manager 範本。
 
-如需這項功能的9分鐘簡介和示範，請觀看這段影片：
+如需這項功能的 9 分鐘簡介和示範，請觀看這段影片：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
@@ -39,102 +39,102 @@ ms.locfileid: "83124715"
 
 ## <a name="cicd-lifecycle"></a>CI/CD 生命週期
 
-以下是使用 Azure Repos Git 設定之 Azure data factory 中 CI/CD 生命週期的範例總覽。 如需如何設定 Git 儲存機制的詳細資訊，請參閱[Azure Data Factory 中的原始檔控制](source-control.md)。
+以下是使用 Azure Repos Git 設定的 Azure 資料處理站中 CI/CD 生命週期的範例概觀。 如需如何設定 Git 存放庫的詳細資訊，請參閱 [Azure Data Factory 中的原始檔控制](source-control.md)。
 
-1.  使用 Azure Repos Git 建立和設定開發資料處理站。 所有開發人員都應該擁有撰寫 Data Factory 資源（例如管線和資料集）的許可權。
+1.  使用 Azure Repos Git 建立和設定開發資料處理站。 所有開發人員都應該具有撰寫 Data Factory 資源 (例如管線和資料集) 的權限。
 
-1.  開發人員會建立[功能分支](source-control.md#creating-feature-branches)以進行變更。 他們會使用最新的變更來對管線執行進行 debug。 如需如何對管線執行進行偵錯工具的詳細資訊，請參閱[使用 Azure Data Factory 的反復式開發和調試](iterative-development-debugging.md)。
+1.  開發人員會[建立功能分支](source-control.md#creating-feature-branches)以進行變更。 他們會使用最新的變更來對管線執行進行偵錯。 如需如何對管線執行進行偵錯的詳細資訊，請參閱[使用 Azure Data Factory 進行反覆式開發和偵錯](iterative-development-debugging.md)。
 
-1.  當開發人員對其變更感到滿意之後，他們會從其功能分支建立提取要求至主要或共同作業分支，以取得對等的變更。
+1.  如果開發人員滿意其變更，便可從其功能分支建立對主要或共同作業分支的提取要求，讓同事檢閱其變更。
 
-1.  在提取要求經過核准並在主要分支中合併變更後，變更就會發佈到開發 factory。
+1.  在提取要求經過核准並在主要分支中合併變更後，變更就會發佈到開發處理站。
 
-1.  當小組準備好要將變更部署到測試或 UAT factory 時，小組會前往其 Azure Pipelines 版本，並將所需的開發 factory 版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的設定。
+1.  當小組準備好將變更部署到測試或 UAT 處理站時，小組會前往其 Azure Pipelines 發行，並將所需的開發處理站版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
 
-1.  在測試處理站中驗證變更之後，請使用管線發行的下一個工作來部署到生產工廠。
+1.  在測試處理站中驗證變更之後，請使用管線發行的下一個工作來部署到生產處理站。
 
 > [!NOTE]
-> 只有開發工廠會與 git 存放庫相關聯。 測試和生產工廠不應該有相關聯的 git 存放庫，而且只能透過 Azure DevOps 管線或透過資源管理範本進行更新。
+> 只有開發處理站會與 git 存放庫相關聯。 測試和生產處理站不得有相關聯的 git 存放庫，而且只能透過 Azure DevOps 管線或透過資源管理範本進行更新。
 
-下圖顯示此生命週期的不同步驟。
+下圖醒目提示此生命週期的不同步驟。
 
 ![透過 Azure Pipelines 進行持續整合的圖表](media/continuous-integration-deployment/continuous-integration-image12.png)
 
-## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>使用 Azure Pipelines 版本自動化持續整合
+## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>使用 Azure Pipelines 發行將持續整合自動化
 
-以下是設定 Azure Pipelines 版本的指南，可自動將資料處理站部署至多個環境。
+以下是設定 Azure Pipelines 發行以將資料處理站自動部署至多個環境的指南。
 
 ### <a name="requirements"></a>需求
 
--   連結至使用 [Azure Resource Manager 服務端點](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)Visual Studio Team Foundation Server 或 Azure Repos 的 Azure 訂用帳戶。
+-   使用 [Azure Resource Manager 服務端點](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)連結至 Visual Studio Team Foundation Server 或 Azure Repos 的 Azure 訂用帳戶。
 
--   以 Azure Repos Git 整合設定的 data factory。
+-   設定了 Azure Repos Git 整合的資料處理站。
 
--    [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)，其中包含每個環境的密碼。
+-    [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)，其中包含每個環境的秘密。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>設定 Azure Pipelines 發行
 
-1.  在[Azure DevOps](https://dev.azure.com/)中，開啟使用您的 data factory 設定的專案。
+1.  在 [Azure DevOps](https://dev.azure.com/) 中，開啟使用您的資料處理站設定的專案。
 
-1.  在頁面左側選取 [**管線**]，然後選取 [**發行**]。
+1.  在頁面的左側，選取 [管線]，然後選取 [發行]。
 
-    ![選取管線，版本](media/continuous-integration-deployment/continuous-integration-image6.png)
+    ![選取管線、發行](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  選取 [**新增管線**]，或者，如果您有現有的管線，請選取 [**新增**]，然後選取 [**新增發行管線**]。
+1.  選取 [新增管線]，或者，如有現有的管線，請選取 [新增]，然後選取 [新增發行管線]。
 
-1.  選取 [**空白作業**] 範本。
+1.  選取 [空白作業] 範本。
 
     ![選取空白作業](media/continuous-integration-deployment/continuous-integration-image13.png)
 
-1.  在 [**階段名稱**] 方塊中，輸入您的環境名稱。
+1.  在 [階段名稱] 中，輸入您的環境名稱。
 
-1.  選取 [**新增**成品]，然後選取您的開發資料處理站所設定的 git 存放庫。 為**預設分支**選取存放庫的 [[發行] 分支](source-control.md#configure-publishing-settings)。 根據預設，此發佈分支為 `adf_publish` 。 針對**預設版本**，從 [**預設分支**] 選取 [最新]。
+1.  選取 [新增成品]，然後選取使用您的開發資料處理站所設定的 git 存放庫。 針對 [預設分支] 選取存放庫的[發佈分支](source-control.md#configure-publishing-settings)。 根據預設，此發行分支為 `adf_publish`。 針對 [預設版本]，選取 [來自預設分支的最新版本]。
 
     ![新增構件](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  新增 Azure Resource Manager 部署工作：
 
-    a.  在 [階段] 視圖中，選取 [ **view stage tasks**]。
+    a.  在階段檢視中，選取 [檢視階段工作]。
 
-    ![階段視圖](media/continuous-integration-deployment/continuous-integration-image14.png)
+    ![階段檢視](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  建立新的工作。 搜尋 [ **Azure 資源群組部署**]，然後選取 [**新增**]。
+    b.  建立新的工作。 搜尋 [Azure 資源群組部署]，然後選取 [新增]。
 
-    c.  在 [部署] 工作中，選取 [訂用帳戶]、[資源群組] 和 [目標 data factory 的位置]。 視需要提供認證。
+    c.  在部署工作中，選取目標資料處理站的訂用帳戶、資源群組和位置。 視需要提供認證。
 
-    d.  在 [**動作**] 清單中，選取 [**建立或更新資源群組**]。
+    d.  在 [動作] 清單中，選取 [建立或更新資源群組]。
 
-    e.  選取 [**範本**] 方塊旁的省略號按鈕（**...**）。 流覽已設定之 git 存放庫的發佈分支中所產生的 Azure Resource Manager 範本。 `ARMTemplateForFactory.json`在 adf_publish 分支的資料夾中尋找檔案 <FactoryName> 。
+    e.  選取 [範本] 方塊旁的省略符號按鈕 ( **...** )。 瀏覽在已設定 git 存放庫的發佈分支中產生的 Azure Resource Manager 範本。 在 adf_publish 分支的 <FactoryName> 資料夾中尋找 `ARMTemplateForFactory.json` 檔案。
 
-    f.  選取 **...** 在 [**範本參數**] 方塊旁，選擇參數檔案。 `ARMTemplateParametersForFactory.json`在 adf_publish 分支的資料夾中尋找檔案 <FactoryName> 。
+    f.  選取 [範本參數] 方塊旁的 **…** ，以選擇 parameters 檔案。 在 adf_publish 分支的 <FactoryName> 資料夾中尋找 `ARMTemplateParametersForFactory.json` 檔案。
 
-    g.  選取 **...** 在 [覆**寫範本參數**] 方塊旁，輸入目標 data factory 所需的參數值。 針對來自 Azure Key Vault 的認證，請在雙引號之間輸入密碼的名稱。 例如，如果密碼的名稱是 cred1，請輸入 **"$ （cred1）"** 作為此值。
+    g.  選取 [覆寫範本參數] 方塊旁的 **…** ，然後輸入目標資料處理站所需的參數值。 針對來自 Azure Key Vault 的認證，請在雙引號之間輸入秘密的名稱。 例如，如果秘密的名稱是 cred1，請針對此值輸入 **"$(cred1)"** 。
 
-    h. 針對**部署模式**選取 [**增量**]。
+    h. 針對 [部署模式] 選取 [增量]。
 
     > [!WARNING]
-    > 如果您針對**部署模式**選取 [**完成**]，可能會刪除現有的資源，包括未在 [Resource Manager] 範本中定義的目標資源群組中的所有資源。
+    > 如果您針對 [部署模式] 選取 [完整]，則可能刪除現有的資源，包括目標資源群組中未定義於 Resource Manager 範本內的所有資源。
 
-    ![Data Factory 的生產部署](media/continuous-integration-deployment/continuous-integration-image9.png)
+    ![Data Factory 生產部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
 1.  儲存發行管線。
 
-1. 若要觸發發行，請選取 [**建立發行**]。 若要自動建立發行，請參閱[Azure DevOps 版本觸發](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)程式
+1. 若要觸發發行，請選取 [建立發行]。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)
 
-   ![選取 [建立發行]](media/continuous-integration-deployment/continuous-integration-image10.png)
+   ![建立建立發行](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 > [!IMPORTANT]
-> 在 CI/CD 案例中，不同環境中的整合執行時間（IR）類型必須相同。 例如，如果您在開發環境中有自我裝載的 IR，相同的 IR 也必須屬於其他環境中的自我裝載類型，例如測試和生產。 同樣地，如果您要跨多個階段共用整合執行時間，則必須在所有環境中將整合執行時間設定為連結的自我裝載，例如開發、測試和生產。
+> 在 CI/CD 案例中，不同環境中的整合執行階段 (IR) 類型必須相同。 例如，如果您在開發環境中有自我裝載 IR，則相同的 IR 在其他環境 (例如測試和生產環境) 中也必須屬於自我裝載類型。 同樣地，如果您要跨多個階段共用整合執行階段，則必須將所有環境中的整合執行階段設定為連結自我裝載，例如開發、測試和生產環境。
 
 ### <a name="get-secrets-from-azure-key-vault"></a>從 Azure Key Vault 取得秘密
 
-如果您有要傳入 Azure Resource Manager 範本的密碼，建議您在 Azure Pipelines 版本中使用 Azure Key Vault。
+如果您要將祕密傳遞至 Azure Resource Manager 範本，建議您使用 Azure Key Vault 搭配 Azure Pipelines 發行。
 
-有兩種方式可處理密碼：
+有兩種方式可處理秘密︰
 
 1.  將祕密新增至參數檔案。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。
 
-    建立要上傳至發佈分支之參數檔案的複本。 使用下列格式，設定您想要從 Key Vault 取得的參數值：
+    建立已上傳至發佈分支之 parameters 檔案的複本。 使用下列格式，設定您想要從 Key Vault 取得的參數值：
 
     ```json
     {
@@ -155,27 +155,27 @@ ms.locfileid: "83124715"
 
     參數檔案也必須位於發行分支中。
 
-1. 在上一節所述的 Azure Resource Manager 部署工作之前，新增[Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)工作：
+1. 在上一節中所述的 Azure Resource Manager 部署工作之前，新增 [Azure Key Vault 工作](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
-    1.  在 [工作] 索引標籤上，建立新**的工作。** 搜尋**Azure Key Vault**並加以新增。
+    1.  在 [工作] 索引標籤上，建立新的工作。 搜尋 **Azure Key Vault** 並加以新增。
 
-    1.  在 [Key Vault] 工作中，選取您在其中建立金鑰保存庫的訂用帳戶。 視需要提供認證，然後選取金鑰保存庫。
+    1.  在 Key Vault 工作中，選取您在其中建立金鑰保存庫的訂用帳戶。 視需要提供認證，然後選取金鑰保存庫。
 
     ![新增 Key Vault 工作](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>為 Azure Pipelines 代理程式授與權限
 
-如果未設定正確的許可權，Azure Key Vault 工作可能會失敗並出現「拒絕存取」錯誤。 下載版本的記錄檔，並找出包含命令的 ps1 檔案，以授與 Azure Pipelines 代理程式的許可權。 您可以直接執行命令。 或者，您可以從檔案複製主體識別碼，然後在 Azure 入口網站中手動新增存取原則。 `Get`和 `List` 是所需的最小許可權。
+如果未設定正確的權限，Azure Key Vault 工作可能會失敗並出現「拒絕存取」錯誤。 請下載發行的記錄，並找出 .ps1 檔案，其中包含為 Azure Pipelines 代理程式賦予權限的命令。 您可以直接執行此命令。 也可以從檔案複製主體識別碼，然後在 Azure 入口網站中手動新增存取原則。 `Get`和 `List` 是所需的最低權限。
 
-### <a name="updating-active-triggers"></a>正在更新作用中的觸發程式
+### <a name="updating-active-triggers"></a>更新作用中的觸發程序
 
-如果您嘗試更新使用中的觸發程序，部署可能會失敗。 若要更新作用中的觸發程式，您需要手動停止它們，然後在部署之後重新開機它們。 您可以使用 Azure PowerShell 工作來執行這項作業：
+如果您嘗試更新使用中的觸發程序，部署可能會失敗。 若要更新使用中的觸發程序，您必須手動將其停止，然後在部署後加以啟動。 您可以使用 Azure PowerShell 工作來執行此作業：
 
-1.  在發行**的 [工作]** 索引標籤上，加入**Azure PowerShell**工作。 選擇 [工作版本 4. *]。 
+1.  在發行的 [工作] 索引標籤中，新增 [Azure Powershell] 工作。 選擇工作版本 4.*。 
 
-1.  選取您的 factory 所在的訂用帳戶。
+1.  選取您的處理站所在的訂用帳戶。
 
-1.  選取 [**指令檔路徑**] 作為腳本類型。 這會要求您將 PowerShell 腳本儲存在存放庫中。 下列 PowerShell 腳本可以用來停止觸發程式：
+1.  選取 [指令檔路徑] 作為指令碼類型。 這會要求您將 PowerShell 指令碼儲存在存放庫中。 下列 PowerShell 指令碼可以用來停止觸發程序：
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -183,66 +183,66 @@ ms.locfileid: "83124715"
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-您可以完成類似的步驟（使用函式 `Start-AzDataFactoryV2Trigger` ），以在部署之後重新開機觸發程式。
+在部署之後，您可完成類似的步驟 (使用 `Start-AzDataFactoryV2Trigger` 函式) 以重新啟動觸發程序。
 
-Data factory 小組已提供位於本文底部的[範例預先部署和後置部署腳本](#script)。 
+資料處理站小組已提供位於本文底部的[範例部署前後指令碼](#script)。 
 
-## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>針對每個環境手動升級 Resource Manager 範本
+## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>為每個環境手動提升 Resource Manager 範本
 
-1. 在 [ **ARM 範本**] 清單中，選取 [**匯出 ARM 範本**]，以在開發環境中匯出 data factory 的 Resource Manager 範本。
+1. 在 [ARM 範本]清單中，選取 [匯出 ARM 範本]，以在開發環境中匯出資料處理站的 Resource Manager 範本。
 
    ![匯出 Resource Manager 範本](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-1. 在您的測試和生產資料處理站中，選取 [匯**入 ARM 範本**]。 此動作會將您移至 Azure 入口網站，您可以在此處匯入先前匯出的範本。 **在編輯器中選取 [建立您自己的範本**]，以開啟 [Resource Manager 範本編輯器]。
+1. 在您的測試和生產資料處理站中，選取 [匯入 ARM 範本]。 此動作會將您移至 Azure 入口網站，您可以在此處匯入先前匯出的範本。 選取 [在編輯器中建立自己的範本]，以開啟 Resource Manager 範本編輯器。
 
-   ![建立您自己的範本](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
+   ![建立自己的範本](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. 選取 [**載入**檔案]，然後選取 [產生的 Resource Manager] 範本。 這是在步驟1匯出的 .zip 檔案中的**arm_template json**檔案。
+1. 選取 [載入檔案]，然後選取所產生的 Resource Manager 範本。 這是 **arm_template.json** 檔案，其位於步驟 1 匯出的 .zip 檔案中。
 
    ![編輯範本](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
-1. 在 [設定] 區段中，輸入設定值，例如 [已連結的服務認證]。 當您完成時，請選取 [**購買**] 以部署 Resource Manager 範本。
+1. 在 [設定] 區段中，輸入設定值，像是連結服務認證。 當您完成時，請選取 [購買] 以部署 Resource Manager 範本。
 
    ![設定區段](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>搭配使用自訂參數與 Resource Manager 範本
 
-如果您的開發 factory 具有相關聯的 git 存放庫，您可以覆寫發佈或匯出範本所產生之 Resource Manager 範本的預設 Resource Manager 範本參數。 在這些情況下，您可能會想要覆寫預設參數化範本：
+如果開發處理站具有相關聯的 git 存放庫，對於經由發佈或匯出範本所產生的 Resource Manager 範本，您可覆寫其預設 Resource Manager 範本參數。 在這些情況下，您可以覆寫預設參數化範本：
 
-* 您會使用自動化的 CI/CD，而您想要在 Resource Manager 部署期間變更某些屬性，但預設不會將屬性參數化。
-* 因為預設 Resource Manager 範本的數目超過允許的最大值（256），所以您的 factory 很大。
+* 您使用自動化 CI/CD，而且想要在 Resource Manager 部署期間變更某些屬性，但預設不會將屬性參數化。
+* 您的處理站很大，以致預設 Resource Manager 範本無效，這是因為其具有的參數超過允許的上限 (256)。
 
-若要覆寫預設參數化範本，請在 git 分支的根資料夾中建立名為**arm-template-parameters-定義**的檔案。 您必須使用該正確的檔案名。
+若要覆寫預設參數化範本，請在 git 分支的根資料夾中建立名為 **arm-template-parameters-definition.json** 的檔案。 您必須使用該確切的檔案名稱。
 
-   ![自訂參數檔案](media/continuous-integration-deployment/custom-parameters.png)
+   ![自訂 parameters 檔案](media/continuous-integration-deployment/custom-parameters.png)
 
-從共同作業分支發佈時，Data Factory 會讀取這個檔案，並使用其設定來產生參數化的屬性。 如果找不到任何檔案，則會使用預設範本。
+從共同作業分支發佈時，Data Factory 會讀取這個檔案，並使用其組態來產生參數化的屬性。 如果找不到檔案，則會使用預設範本。
 
-匯出 Resource Manager 範本時，Data Factory 會從您目前正在處理的任何分支（而不只是從共同作業分支）讀取此檔案。 您可以從私人分支建立或編輯該檔案，您可以在 UI 中選取 [**匯出 ARM 範本**] 來測試變更。 接著，您可以將檔案合併到共同作業分支。
+匯出 Resource Manager 範本時，Data Factory 會從您目前正在處理的任何分支 (而不只是從共同作業分支) 讀取此檔案。 您可以從私人分支建立或編輯該檔案，在 UI 中選取 [匯出 ARM 範本]，即可測試變更。 接著，您可將檔案合併到共同作業分支中。
 
 > [!NOTE]
-> 自訂參數化範本不會變更 ARM 範本參數限制256。 它可讓您選擇並減少參數化屬性的數目。
+> 自訂參數化範本不會變更 ARM 範本參數限制 256。 其可讓您選擇並減少參數化屬性的數目。
 
 ### <a name="custom-parameter-syntax"></a>自訂參數語法
 
-當您建立自訂參數檔案時，請遵循下列指導方針： **arm-範本-參數定義. json**。 檔案是由每個實體類型的區段所組成：觸發程式、管線、連結服務、資料集、整合執行時間和資料流程。
+以下是當您建立自訂 parameters 檔案 (arm-template-parameters-definition.json) 時所要遵循的一些指導方針。 此檔案是由每個實體類型的區段所組成：觸發程序、管線、連結服務、資料集、整合執行階段和資料流程。
 
-* 在相關實體類型下輸入屬性路徑。
-* 將屬性名稱設定為，  `*` 表示您想要參數化其底下的所有屬性（僅限向下到第一個層級，而非以遞迴方式）。 您也可以提供此設定的例外狀況。
-* 將屬性的值設定為字串，表示您想要將屬性參數化。 使用格式  `<action>:<name>:<stype>` 。
+* 輸入相關實體類型下的屬性路徑。
+* 將屬性名稱設定為 `*`，表示您想要將其下的所有屬性參數化 (僅限向下的第一層，而非採用遞迴方式)。 您也可以提供此組態的例外狀況。
+* 將屬性的值設定為字串，就表示您想要將屬性參數化。 使用此格式： `<action>:<name>:<stype>`。
    *  `<action>` 可以是下列其中一個字元：
-      * `=` 表示保留目前的值做為參數的預設值。
-      * `-` 表示不保留參數的預設值。
-      * `|` 這是一個特殊案例，用於連接字串或金鑰 Azure Key Vault 的秘密。
-   * `<name>` 這是參數的名稱。 如果是空的，則會接受屬性的名稱。 如果值是以字元開頭 `-` ，則名稱會縮短。 例如， `AzureStorage1_properties_typeProperties_connectionString` 會縮短為 `AzureStorage1_connectionString` 。
-   * `<stype>` 這是參數的類型。 如果  `<stype>`   為空白，則預設類型為 `string` 。 支援的值： `string` 、 `bool` 、 `number` 、 `object` 和 `securestring` 。
-* 在定義檔中指定陣列，表示範本中的相符屬性是陣列。 Data Factory 會使用陣列的 integration runtime 物件中指定的定義，逐一查看陣列中的所有物件。 第二個物件 (字串) 會變成屬性的名稱，以作為每個反覆項目參數的名稱。
-* 定義不能是資源實例特有的。 任何定義都會套用至該類型的所有資源。
-* 根據預設，所有安全字串（例如 Key Vault 秘密）和安全字串（例如連接字串、金鑰和權杖）都會參數化。
+      * `=` 表示將目前的值保留作為參數的預設值。
+      * `-` 表示不要保留參數的預設值。
+      * `|` 是 Azure Key Vault 中連接字串或金鑰祕密的特殊案例。
+   * `<name>` 是參數的名稱。 如果空白，便會採用屬性的名稱。 如果值是以 `-` 字元開頭，則名稱會縮短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 會縮短成 `AzureStorage1_connectionString`。
+   * `<stype>` 是參數的類型。 如果 `<stype>` 空白，則預設類型為 `string`。 支援的值：`string`、`bool`、`number`、`object` 和 `securestring`。
+* 在定義檔中指定陣列，就表示範本中的比對屬性是陣列。 Data Factory 會使用陣列的整合執行階段物件中所指定的定義，逐一查看陣列中的所有物件。 第二個物件 (字串) 會變成屬性的名稱，以作為每個反覆項目參數的名稱。
+* 定義不得專屬於特定資源執行個體。 任何定義都會套用至該類型的所有資源。
+* 根據預設，所有安全字串 (例如 Key Vault 秘密) 和安全字串 (例如連接字串、金鑰和權杖) 都會參數化。
  
 ### <a name="sample-parameterization-template"></a>範例參數化範本
 
-以下是參數化範本可能外觀的範例：
+以下是參數化範本可能的外觀範例：
 
 ```json
 {
@@ -303,35 +303,35 @@ Data factory 小組已提供位於本文底部的[範例預先部署和後置部
     }
 }
 ```
-以下說明如何建立前述範本，並依資源類型細分。
+以下說明如何建構前述範本，並依資源類型細分。
 
 #### <a name="pipelines"></a>管線
     
-* 路徑中的任何屬性 `activities/typeProperties/waitTimeInSeconds` 都已參數化。 管線中具有名為之程式碼層級屬性的任何活動 `waitTimeInSeconds` （例如， `Wait` 活動）都會參數化為具有預設名稱的數位。 但它在 Resource Manager 範本中沒有預設值。 在 Resource Manager 部署期間，這會是必要的輸入。
-* 同樣地，名為的屬性 `headers` （例如，活動中的 `Web` ）會以類型 `object` （JObject）進行參數化。 它具有預設值，這與來源 factory 的值相同。
+* `activities/typeProperties/waitTimeInSeconds` 路徑中的任何屬性都已參數化。 管線中具有名為 `waitTimeInSeconds` 之程式碼層級屬性的任何活動 (例如，`Wait` 活動) 都會參數化為數字，並採用預設名稱。 但其在 Resource Manager 範本中沒有預設值。 在 Resource Manager 部署期間，必須加以輸入。
+* 同樣地，名為 `headers` 的屬性 (例如，在 `Web` 活動中) 會以類型 `object` (JObject) 進行參數化。 其具有預設值，這與來源處理站的值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 路徑下的所有屬性 `typeProperties` 都會使用其各自的預設值進行參數化。 例如，type 屬性底下有兩個屬性 `IntegrationRuntimes` ： `computeProperties` 和 `ssisProperties` 。 這兩個屬性類型都會使用其各自的預設值和類型（物件）來建立。
+* 路徑 `typeProperties` 下的所有屬性都會使用其各自的預設值進行參數化。 例如，`IntegrationRuntimes` 類型屬性底下有兩個屬性：`computeProperties` 和 `ssisProperties`。 這兩個屬性類型都是使用其各自的預設值和類型 (物件) 來建立。
 
 #### <a name="triggers"></a>觸發程序
 
-* 在底下 `typeProperties` ，會將兩個屬性參數化。 第一個是 `maxConcurrency` ，其指定為具有預設值，且的類型為 `string` 。 它具有預設的參數名稱 `<entityName>_properties_typeProperties_maxConcurrency` 。
-* `recurrence`屬性也已參數化。 在其底下，會指定該層級的所有屬性，以預設值和參數名稱參數化為字串。 例外狀況是 `interval` 屬性，其參數化為類型 `number` 。 參數名稱尾碼為 `<entityName>_properties_typeProperties_recurrence_triggerSuffix` 。 同樣地， `freq` 屬性是字串，而且會參數化為字串。 不過， `freq` 屬性在沒有預設值的情況下參數化。 名稱會縮短並加上尾碼。 例如 `<entityName>_freq`。
+* 在 `typeProperties` 底下，有兩個屬性已參數化。 第一個是 `maxConcurrency`，其已指定為具有預設值且類型為 `string`。 其具有預設參數名稱 `<entityName>_properties_typeProperties_maxConcurrency`。
+* `recurrence` 屬性也已參數化。 在其底下，該層級的所有屬性都已指定成要參數化為字串，且具有預設值和參數名稱。 `interval` 屬性為例外狀況，其已參數化為 `number` 類型。 參數名稱後面會加上 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同樣地，`freq` 屬性是字串並已參數化為字串。 不過，`freq` 屬性已參數化但沒有預設值。 名稱會縮短並加上尾碼。 例如： `<entityName>_freq` 。
 
-#### <a name="linkedservices"></a>Linkedservices.json 和 datasets.json
+#### <a name="linkedservices"></a>LinkedServices
 
-* 連結服務是唯一的。 因為已連結的服務和資料集有範圍廣泛的類型，所以您可以提供特定類型的自訂。 在此範例中，會針對類型的所有連結服務套用 `AzureDataLakeStore` 特定的範本。 針對所有其他專案（透過 `*` ），將會套用不同的範本。
-* `connectionString`屬性會參數化為 `securestring` 值。 它不會有預設值。 它會有一個加上尾碼的簡短參數名稱 `connectionString` 。
-* 屬性 `secretAccessKey` 剛好是 `AzureKeyVaultSecret` （例如，在 Amazon S3 連結服務中）。 它會自動參數化為 Azure Key Vault 秘密，並從已設定的金鑰保存庫提取。 您也可以將金鑰保存庫本身參數化。
+* 連結服務是唯一的。 因為連結服務和資料集的類型廣泛，所以您可提供特定類型的自訂。 在此範例中，`AzureDataLakeStore` 類型的所有連結服務將會套用特定範本。 所有其他類型 (透過 `*`) 將會套用不同的範本。
+* `connectionString` 屬性將會參數化為 `securestring` 值。 其不會有預設值。 但是會有後面加上 `connectionString` 的簡短參數名稱。
+* `secretAccessKey` 的屬性會是 `AzureKeyVaultSecret` (例如，在 Amazon S3 連結服務中)。 其會自動參數化為 Azure Key Vault 秘密，並從已設定的金鑰保存庫提取。 您也可以將金鑰保存庫本身參數化。
 
 #### <a name="datasets"></a>資料集
 
-* 雖然特定類型的自訂適用于資料集，但您可以在不明確擁有層級設定的情況下提供設定 \* 。 在上述範例中，下的所有資料集屬性 `typeProperties` 都會參數化。
+* 雖然特定類型的自訂適用於資料集，但您可提供組態，而不需明確擁有 \* 層級的組態。 在上述範例中，`typeProperties` 下的所有資料集屬性都已參數化。
 
 ### <a name="default-parameterization-template"></a>預設參數化範本
 
-以下是目前的預設參數化範本。 如果您只需要新增幾個參數，則直接編輯此範本可能是很好的主意，因為您將不會遺失現有的參數化結構。
+以下是目前的預設參數化範本。 如果您只需要新增幾個參數，則直接編輯此範本可能是很好的想法，因為您不會遺失現有的參數化結構。
 
 ```json
 {
@@ -443,7 +443,7 @@ Data factory 小組已提供位於本文底部的[範例預先部署和後置部
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>範例：參數化現有的 Azure Databricks 互動式叢集識別碼
 
-下列範例顯示如何將單一值新增至預設參數化範本。 我們只想要將 Databricks 連結服務的現有 Azure Databricks 互動式叢集識別碼新增到參數檔案。 請注意，這個檔案與上一個檔案相同，除了在的 `existingClusterId` [屬性] 欄位下新增以外 `Microsoft.DataFactory/factories/linkedServices` 。
+下列範例顯示如何將單一值新增至預設參數化範本。 我們只想要將 Databricks 連結服務的現有 Azure Databricks 互動式叢集識別碼新增到 parameters 檔案。 請注意，除了在 `Microsoft.DataFactory/factories/linkedServices` 的 properties 欄位下新增 `existingClusterId` 以外，此檔案與先前的檔案相同。
 
 ```json
 {
@@ -556,31 +556,31 @@ Data factory 小組已提供位於本文底部的[範例預先部署和後置部
 
 ## <a name="linked-resource-manager-templates"></a>連結的 Resource Manager 範本
 
-如果您已為資料處理站設定 CI/CD，您可能會超過您的工廠成長時的 Azure Resource Manager 範本限制。 例如，其中一個限制是 Resource Manager 範本中的資源數目上限。 為了在產生 factory 的完整 Resource Manager 範本時容納大型工廠，Data Factory 現在會產生連結的 Resource Manager 範本。 透過這項功能，整個 factory 承載會分成數個檔案，因此您不受限於限制。
+如果您已經為資料處理站設定 CI/CD，則隨著處理站日益狀大，您可能會超過 Azure Resource Manager 範本限制。 例如，其中一個限制是 Resource Manager 範本中的資源數目上限。 為了在產生處理站的完整 Resource Manager 範本時，容納大型處理站，Data Factory 現在會產生連結的 Resource Manager 範本。 透過這項功能，整個處理站承載會分成數個檔案，因此您不受限制約束。
 
-如果您已設定 Git，則會產生連結的範本，並在名為 linkedTemplates 的新資料夾中，連同 adf_publish 分支中的完整 Resource Manager 範本一起儲存：
+如果您已設定 Git，則會產生連結的範本並與完整 Resource Manager 範本一起儲存在 adf_publish 分支中名為 linkedTemplates 的新資料夾中：
 
 ![連結的 Resource Manager 範本資料夾](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-連結的 Resource Manager 範本通常包含主要範本，以及連結至主要的一組子範本。 父範本稱為 ArmTemplate_master. json，而子範本會使用 ArmTemplate_0. json、ArmTemplate_1 json 等模式來命名。 
+連結的 Resource Manager 範本通常包含一個主要範本，以及一組連結到主要範本的子系範本。 父代範本稱為 ArmTemplate_master.json，而子系範本則會使用 ArmTemplate_0.json、ArmTemplate_1.json 等模式來命名。 
 
-若要使用連結的範本，而不是完整的 Resource Manager 範本，請更新您的 CI/CD 工作，使其指向 ArmTemplate_master 的 json，而不是 ArmTemplateForFactory （完整 Resource Manager 的範本）。 Resource Manager 也會要求您將連結的範本上傳至儲存體帳戶，讓 Azure 在部署期間可以存取它們。 如需詳細資訊，請參閱[使用 VSTS 部署連結的 Resource Manager 範本](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
+若要使用連結的範本，而不是完整的 Resource Manager 範本，請更新您的 CI/CD 工作，使其指向 ArmTemplate_master.json，而不是 ArmTemplateForFactory.json (完整 Resource Manager 範本)。 Resource Manager 也會要求您將連結的範本上傳到儲存體帳戶，以便 Azure 在部署期間存取這些範本。 如需詳細資訊，請參閱[透過 VSTS 部署連結的 Resource Manager 範本](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
 
 請記得在在部署工作之前和之後，於 CI/CD 管線中新增 Data Factory 指令碼。
 
-如果您未設定 Git，您可以透過**Arm 範本**清單中的 [**匯出 arm] 範本**來存取連結的範本。
+如果尚未設定 Git，則可透過 [ARM 範本] 清單中的 [匯出 ARM 範本]來存取連結的範本。
 
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>從 CI/CD 排除 Azure SSIS 整合執行時間
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>從 CI/CD 中排除 Azure-SSIS 整合執行階段
 
-如果您的開發工廠具有 Azure SSIS 整合執行時間，您可以在下列案例中，從 CI/CD 程式中排除所有的 Azure SSIS 整合執行時間：
+如果開發處理站具有 Azure-SSIS 整合執行階段，在下列情況下，可以從 CI/CD 程式中排除所有的 Azure-SSIS 整合執行階段：
 
-- Azure SSIS IR 基礎結構很複雜，而且在每個環境中各有不同。  
-- Azure-針對具有相同名稱的每個環境，以手動方式設定 SSIS IR。 否則，如果有活動，視 Azure SSIS IR 而定，發行將會失敗。
+- Azure-SSIS IR 基礎結構很複雜，而且在每個環境中有所不同。  
+- 已針對具有相同名稱的每個環境，手動設定 Azure-SSIS IR。 否則，如果有活動相依於 Azure-SSIS IR，將會發佈失敗。
 
-若要排除 Azure SSIS 整合執行時間：
+若要排除 Azure-SSIS 整合執行階段：
 
-1. 將 publish_config json 檔案加入至共同作業分支中的根資料夾（如果不存在）。
-1. 將下列設定新增至 publish_config json： 
+1. 將 publish_config.json 檔案新增至共同作業分支中的根資料夾 (如果不存在)。
+1. 將下列設定新增至 publish_config.json： 
 
 ```json
 {
@@ -588,71 +588,71 @@ Data factory 小組已提供位於本文底部的[範例預先部署和後置部
 }
 ```
 
-從共同作業分支發佈時，會從產生的 Resource Manager 範本中排除 Azure SSIS 整合執行時間。
+從共同作業分支發佈時，將會從所產生的 Resource Manager 範本中排除 Azure-SSIS 整合執行階段。
 
-## <a name="hotfix-production-branch"></a>修補程式生產分支
+## <a name="hotfix-production-branch"></a>Hotfix 生產分支
 
-如果您將工廠部署到生產環境，併發現需要立即修正的 bug，但是您無法部署目前的共同作業分支，則可能需要部署一個修補程式。 這種方法稱為快速修正程式設計或 QFE。
+如果您將處理站部署到生產環境，並發現有需要立即修正的錯誤 (bug)，但是您無法部署目前的共同作業分支，則可能需要部署 Hotfix。 這種方法也稱為快速檢修或 QFE。
 
-1.    在 Azure DevOps 中，移至已部署至生產環境的版本。 尋找已部署的最後一個認可。
+1.    在 Azure DevOps 中，移至已部署至生產環境的發行。 尋找已部署的最後一個認可。
 
 2.    從認可訊息中，取得共同作業分支的認可識別碼。
 
-3.    從該認可建立新的「修補程式」分支。
+3.    從該認可建立新的 Hotfix 分支。
 
-4.    移至 Azure Data Factory UX 並切換至 [修補程式] 分支。
+4.    移至 Azure Data Factory UX 並切換至 Hotfix 分支。
 
-5.    藉由使用 Azure Data Factory UX，修正 bug。 測試您的變更。
+5.    藉由使用 Azure Data Factory UX，修正錯誤 (bug)。 測試您的變更。
 
-6.    確認修正之後，請選取 [**匯出 ARM 範本**]，以取得 Resource Manager 範本的 [此修補程式]。
+6.    確認修正之後，請選取 [匯出 ARM 範本]，以取得 Hotfix Resource Manager 範本。
 
-7.    以手動方式將此組建簽入 adf_publish 分支。
+7.    手動將此組建簽入 adf_publish 分支。
 
-8.    如果您已設定發行管線根據 adf_publish 簽入自動觸發，則會自動啟動新的版本。 否則，請手動將發行排到佇列。
+8.    如果您已將發行管線設定為根據 adf_publish 簽入自動觸發，則會自動啟動新的發行。 否則，手動將發行排入佇列。
 
-9.    將此修補程式版本部署到測試和生產工廠。 此版本包含先前的生產環境承載，以及您在步驟5中所做的修正。
+9.    將此 Hotfix 發行部署到測試和生產處理站。 此發行包含先前的生產承載，以及您在步驟 5 所做的修正。
 
-10.   將修正程式中的變更新增至開發分支，讓之後的版本不會包含相同的 bug。
+10.   將 Hotfix 中的變更新增至開發分支，後續的發行就不會包含相同的錯誤 (bug)。
 
 ## <a name="best-practices-for-cicd"></a>CI/CD 的最佳做法
 
-如果您使用與資料處理站的 Git 整合，而且具有 CI/CD 管線，可將您的變更從開發移至測試，再到生產環境，我們建議您採用下列最佳作法：
+如果您將 Git 整合與資料處理站搭配使用，而且具有 CI/CD 管線，可將您的變更從開發轉移到測試，然後再轉移到生產，我們建議採用以下最佳做法：
 
--   **Git 整合**。 只使用 Git 整合來設定您的開發資料處理站。 測試和生產環境的變更會透過 CI/CD 部署，而不需要 Git 整合。
+-   **Git 整合**。 只要使用 Git 整合設定您的開發資料處理站。 測試與生產變更已透過 CI/CD 部署，而且不需要 Git 整合。
 
--   **部署前和後置腳本**。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止和重新開機觸發程式，並執行清除作業。 我們建議您在部署工作前後使用 PowerShell 腳本。 如需詳細資訊，請參閱更新作用中的[觸發](#updating-active-triggers)程式。 Data factory 小組已提供可在此頁面底部使用的[腳本](#script)。
+-   **部署前後指令碼**。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
 
--   **整合執行時間與共享**。 整合執行時間不會經常變更，而且在 CI/CD 中的所有階段都很類似。 因此 Data Factory 要求您在 CI/CD 的所有階段都擁有相同名稱和類型的整合執行時間。 如果您想要跨所有階段共用整合執行時間，請考慮使用三元處理站，只包含共用的整合執行時間。 您可以在所有環境中使用此共用 factory 作為連結的整合執行時間類型。
+-   **整合執行階段和共用**。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
 
--   **Key Vault**。 當您使用連結服務，其連線資訊儲存在 Azure Key Vault 中時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的許可權等級。 例如，您可能不希望小組成員擁有生產密碼的許可權。 如果您遵循此方法，我們建議您在所有階段保留相同的密碼名稱。 如果您保留相同的秘密名稱，則不需要參數化所有 CI/CD 環境的連接字串，因為唯一變更的是金鑰保存庫名稱，這是個別的參數。
+-   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
 
 ## <a name="unsupported-features"></a>不支援的功能
 
-- 根據設計，Data Factory 不允許對認可或選擇性發佈資源進行揀選選擇。 發行將會包含在 data factory 中進行的所有變更。
+- 根據設計，Data Factory 不允許揀選認可或選擇性發佈資源。 發佈將會包含在資料處理站中進行的所有變更。
 
-    - Data factory 實體相依于彼此。 例如，觸發程式取決於管線，而管線則相依于資料集和其他管線。 選擇性發佈資源子集可能會導致未預期的行為和錯誤。
-    - 在罕見的情況下，當您需要選擇性發行時，請考慮使用「修補程式」。 如需詳細資訊，請參閱[修補生產分支](#hotfix-production-branch)。
+    - 資料處理站實體彼此相依。 例如，觸發程序取決於管線，而管線取決於資料集和其他管線。 選擇性發佈資源子集可能會導致非預期的行為和錯誤。
+    - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱 [Hotfix 生產分支](#hotfix-production-branch)。
 
 -   您無法從私人分支發佈。
 
 -   您目前無法在 Bitbucket 上裝載專案。
 
-## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a>範例部署前和部署後腳本
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a>範例部署前後指令碼
 
-下列範例腳本可用來在部署之前停止觸發程式，並于之後重新開機。 此指令碼也包含可將已移除的資源刪除的程式碼。 將腳本儲存在 Azure DevOps git 存放庫中，並透過使用第4版的 Azure PowerShell 工作加以參考。
+下列範例指令碼可用來在部署前停止觸發程序，且之後重新啟動觸發程序。 此指令碼也包含可將已移除的資源刪除的程式碼。 將指令碼儲存在 Azure DevOps Git 存放庫中，並透過使用 4.* 版的 Azure PowerShell 工作加以參考。
 
-執行預先部署腳本時，您必須在 [**腳本引數**] 欄位中指定下列參數的變化。
+執行部署前指令碼時，您必須在 [指令碼引數] 欄位中指定下列參數的變化。
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
 
 
-執行部署後腳本時，您必須在 [**腳本引數**] 欄位中指定下列參數的變化。
+執行部署後指令碼時，您必須在 [指令碼引數] 欄位中指定下列參數的變化。
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
 ![Azure PowerShell 工作](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-以下是可用於預先部署和部署後的腳本。 其適用于已刪除資源和資源參考的帳戶。
+以下是可用於部署前後的指令碼。 其可說明已刪除的資源和資源參考。
 
   
 ```powershell
@@ -795,25 +795,44 @@ $resources = $templateJson.resources
 
 #Triggers 
 Write-Host "Getting triggers"
-$triggersADF = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-$triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
-$triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
-$triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
+$triggersInTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
+$triggerNamesInTemplate = $triggersInTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+
+$triggersDeployed = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+
+$triggersToStop = $triggersDeployed | Where-Object { $triggerNamesInTemplate -contains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToDelete = $triggersDeployed | Where-Object { $triggerNamesInTemplate -notcontains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToStart = $triggersInTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.name.Substring(37, $_.name.Length-40)
+        TriggerType = $_.Properties.type
+    }
+}
 
 if ($predeployment -eq $true) {
     #Stop all triggers
-    Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { 
-        Write-host "Disabling trigger " $_
-        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Disabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    Write-Host "Stopping deployed triggers`n"
+    $triggersToStop | ForEach-Object {
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Unsubscribing" $_.Name "from events"
+            $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Disabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Stopping trigger" $_.Name
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 else {
@@ -850,10 +869,18 @@ else {
 
     #Delete resources
     Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { 
+    $triggersToDelete | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
+            if ($_.TriggerType -eq "BlobEventsTrigger") {
+                Write-Host "Unsubscribing trigger" $_.Name "from events"
+                $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                while ($status.Status -ne "Disabled"){
+                    Start-Sleep -s 15
+                    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                }
+            }
             Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
         }
         Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
@@ -904,15 +931,17 @@ else {
 
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { 
-        Write-host "Enabling trigger " $_
-        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Enabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    $triggersToStart | ForEach-Object { 
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Subscribing" $_.Name "to events"
+            $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Enabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Starting trigger" $_.Name
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 ```

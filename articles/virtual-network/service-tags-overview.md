@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解服務標籤。 服務標籤有助於將建立安全性規則的複雜度降到最低。
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660596"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263181"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ ms.locfileid: "83660596"
 | **AzureDataExplorerManagement** | Azure 資料總管管理。 | 輸入 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 輸出 | 否 | 是 |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 輸出 | 否 | 否 |
-| **AzureEventGrid** | Azure 事件格線。 <br/><br/>*注意：* 此標籤僅涵蓋美國中南部、美國東部、美國東部 2、美國西部 2 和美國中部的 Azure 事件方格端點。 | 兩者 | 否 | 否 |
+| **AzureEventGrid** | Azure 事件格線。 | 兩者 | 否 | 否 |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 兩者 | 否 | 否 |
 | **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory**、**AzureFrontDoor.Frontend** 和 **AzureFrontDoor.FirstParty** 標籤。 | 輸出 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |

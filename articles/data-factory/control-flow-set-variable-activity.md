@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417975"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832775"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory 中的設定變數活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,17 +27,17 @@ ms.locfileid: "81417975"
 
 屬性 | 描述 | 必要
 -------- | ----------- | --------
-名稱 | 管線中的活動名稱 | 是
+NAME | 管線中的活動名稱 | 是
 description | 說明活動用途的文字 | 否
-type | 必須設定為**SetVariable** | 是
-value | 將指派變數的字串常值或運算式物件值 | 是
-variableName | 此活動所將設定的變數名稱 | 是
+type | 必須設為 [SetVariable] | 是
+value | 變數所指派至的字串常值或運算式物件值 | 是
+variableName | 此活動所設定的變數名稱 | 是
 
 ## <a name="incrementing-a-variable"></a>遞增變數
 
-關於 Azure Data Factory 中的變數，常見的案例是在 until 或 foreach 活動內使用變數做為反覆運算器。 在 [ `value`設定變數] 活動中，您無法參考要在欄位中設定的變數。 若要解決這項限制，請設定暫存變數，然後建立第二個集合變數活動。 第二個 [設定變數] 活動會將反覆運算器的值設定為暫存變數。 
+牽涉到 Azure Data Factory 中變數的常見案例是在 until 或 foreach 活動內使用變數作為迭代器。 在設定變數活動中，您無法參考要在 `value` 欄位中設定的變數。 若要解決這項限制，請設定暫存變數，然後建立第二個設定變數活動。 第二個設定變數活動會將迭代器的值設定為暫存變數。 
 
-以下是此模式的範例：
+此模式的範例如下：
 
 ![遞增變數](media/control-flow-set-variable-activity/increment-variable.png "遞增變數")
 

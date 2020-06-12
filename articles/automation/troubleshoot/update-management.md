@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735883"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170251"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -50,7 +50,7 @@ Error details: Failed to enable the Update solution
 
 * 請移至[網路設定](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)，了解必須允許哪些位址和連接埠，才能讓 Log Analytics 代理程式運作。
 
-* 檢查範圍設定問題。 [範圍設定](../automation-onboard-solutions-from-automation-account.md#scope-configuration)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但是不在更新管理入口網站中，您必須將範圍設定設為以電腦為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
+* 檢查範圍設定問題。 [範圍設定](../automation-scope-configurations-update-management.md)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但是不在更新管理入口網站中，您必須將範圍設定設為以電腦為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
 
 * 依照[從內部部署 Windows 電腦移除混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[從內部部署 Linux 電腦移除混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步驟，來移除背景工作角色設定。 
 

@@ -1,127 +1,43 @@
 ---
-title: '& 資源群組部署跨訂用帳戶的資源'
+title: 跨訂用帳戶與資源群組部署資源
 description: 示範如何在部署期間將目標放在多個 Azure 訂用帳戶和資源群組。
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460342"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650634"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>將 Azure 資源部署至多個訂用帳戶和資源群組
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>跨訂用帳戶與資源群組部署 Azure 資源
 
-一般而言，您要將範本中的所有資源都部署至單一[資源群組](../management/overview.md)。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 例如，建議您將 Azure Site Recovery 的備份虛擬機器部署至不同的資源群組和位置。 Resource Manager 可讓您使用嵌套的範本，以多個訂用帳戶和資源群組為目標。
+Resource Manager 可讓您在單一部署中部署到一個以上的資源群組。 您可以使用巢狀的範本來指定和部署作業中資源群組不同的資源群組。 資源群組可以存在於不同的訂用帳戶中。
 
 > [!NOTE]
-> 您在單一部署中只能部署至五個資源群組。 一般而言，此限制表示您可以部署至一個指定用於父範本的資源群組，並且可在巢狀或連結的部署中部署至最多四個資源群組。 不過，如果父範本只包含巢狀或連結的範本，而本身未部署任何資源，則您可以在巢狀或連結的部署中包含最多五個資源群組。
+> 您可以在單一部署中部署至 **800 個資源群組**。 一般而言，此限制表示您可以部署至一個指定用於父代範本的資源群組，並且可在巢狀或連結的部署中部署至最多 799 個資源群組。 不過，如果父代範本只包含巢狀或連結的範本，本身未部署任何資源，則您可以在巢狀或連結的部署中包含最多 800 個資源群組。
 
 ## <a name="specify-subscription-and-resource-group"></a>指定訂用帳戶和資源群組
 
-若要以不同的資源群組或訂用帳戶為目標，請使用[嵌套或連結的範本](linked-templates.md)。 `Microsoft.Resources/deployments`資源類型提供`subscriptionId`和`resourceGroup`的參數，可讓您指定用於嵌套部署的訂用帳戶和資源群組。 如果您未指定訂用帳戶識別碼或資源群組，則會使用來自父範本的訂用帳戶和資源群組。 執行部署之前，所有資源群組都必須存在。
+若要以不同於父代範本的資源群組為目標，請使用[巢狀或連結的範本](linked-templates.md)。 在部署資源類型中，指定將成為巢狀範本部署目標的「訂用帳戶識別碼」和「資源群組」的值。
 
-您用來部署範本的帳戶必須具有可部署到指定訂用帳戶 ID 的權限。 如果指定的訂用帳戶在不同的 Azure Active Directory 租用戶中，您必須[從另一個目錄中新增來賓使用者](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-若要指定不同的資源群組和訂用帳戶，請使用：
+如未指定訂用帳戶識別碼或資源群組，則會使用父代範本中的訂用帳戶及資源群組。 執行部署之前，所有資源群組都必須存在。
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+部署範本的帳戶必須具有可部署到指定訂用帳戶識別碼的權限。 如果指定的訂用帳戶在不同的 Azure Active Directory 租用戶中，您必須[從另一個目錄中新增來賓使用者](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
 
-如果您的資源群組位於相同的訂用帳戶中，則可以移除 **subscriptionId** 值。
+下列範例會部署兩個儲存體帳戶。 第一個儲存體帳戶會部署到部署作業中指定的資源群組。 第二個儲存體帳戶會部署到 `secondResourceGroup` 和 `secondSubscriptionID` 參數指定的資源群組：
 
-下列範例會部署兩個儲存體帳戶。 第一個儲存體帳戶會部署到部署期間指定的資源群組。 第二個儲存體帳戶會部署至`secondResourceGroup`和`secondSubscriptionID`參數中指定的資源群組：
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
-
-如果您將`resourceGroup`設定為不存在的資源組名，部署將會失敗。
+如果您將 `resourceGroup` 設定為不存在的資源群組名稱，部署就會失敗。
 
 若要測試上述範本並查看結果，請使用 PowerShell 或 Azure CLI。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要將兩個儲存體帳戶部署到**相同訂**用帳戶中的兩個資源群組，請使用：
+若要將兩個儲存體帳戶部署至**相同訂用帳戶**中的兩個資源群組，請使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -138,7 +54,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-若要將兩個儲存體帳戶部署到**兩個**訂用帳戶，請使用：
+若要將兩個儲存體帳戶部署至**兩個訂用帳戶**，請使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -164,7 +80,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要將兩個儲存體帳戶部署到**相同訂**用帳戶中的兩個資源群組，請使用：
+若要將兩個儲存體帳戶部署至**相同訂用帳戶**中的兩個資源群組，請使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -179,7 +95,7 @@ az deployment group create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-若要將兩個儲存體帳戶部署到**兩個**訂用帳戶，請使用：
+若要將兩個儲存體帳戶部署至**兩個訂用帳戶**，請使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -205,115 +121,23 @@ az deployment group create \
 
 ## <a name="use-functions"></a>使用函式
 
-[ResourceGroup （）](template-functions-resource.md#resourcegroup)和訂用帳戶[（）](template-functions-resource.md#subscription)函式會根據您指定範本的方式，以不同方式進行解析。 當您連結至外部範本時，函數一律會解析為該範本的範圍。 當您將範本嵌套在父範本中時，請`expressionEvaluationOptions`使用屬性來指定函式是否解析為父範本或嵌套範本的資源群組和訂用帳戶。 將屬性設定為`inner` ，以解析成嵌套範本的範圍。 將屬性設定為`outer` ，以解析為父範本的範圍。
+[resourceGroup()](template-functions-resource.md#resourcegroup) 和 [subscription()](template-functions-resource.md#subscription) 函式會根據您指定範本的方式進行不同的解析。 當您連結至外部範本時，函式一律會解析為該範本的範圍。 當您將範本巢狀嵌入父代範本中時，請使用 `expressionEvaluationOptions` 屬性來指定函式要解析為父代範本或巢狀範本的資源群組和訂用帳戶。 屬性設定為 `inner`，會解析成巢狀範本的範圍。 屬性設定為 `outer`，會解析成父代範本的範圍。
 
-下表顯示函式是否解析成父系或內嵌的資源群組和訂用帳戶。
+下表顯示函式會解析成父代或內嵌的資源群組和訂用帳戶。
 
 | 範本類型 | 影響範圍 | 解決方案 |
 | ------------- | ----- | ---------- |
-| 巢狀        | 外部（預設值） | 父資源群組 |
+| 巢狀        | 外部 (預設值) | 父代資源群組 |
 | 巢狀        | inner | 子資源群組 |
-| 已連結        | N/A   | 子資源群組 |
+| 連結        | N/A   | 子資源群組 |
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)顯示：
+以下[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)示範：
 
-* 具有預設（外部）範圍的嵌套範本
-* 具有內部範圍的嵌套範本
+* 具有預設 (外部) 範圍的巢狀範本
+* 具有內部範圍的巢狀範本
 * 連結的範本
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
 若要測試上述範本並查看結果，請使用 PowerShell 或 Azure CLI。
 

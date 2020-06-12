@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684895"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267608"
 ---
 # <a name="monitor-azure-storage"></a>監視 Azure 儲存體
 
@@ -407,4 +407,3 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 - 如需 Azure 儲存體所建立記錄和計量的參考，請參閱 [Azure 儲存體監視資料參考](monitor-storage-reference.md)。
 - 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。
 - 如需有關計量移轉的詳細資訊，請參閱 [Azure 儲存體計量移轉](./storage-metrics-migration.md)。
-

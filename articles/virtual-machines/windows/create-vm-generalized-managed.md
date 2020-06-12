@@ -1,35 +1,36 @@
 ---
-title: 在 Azure 中從受控映射建立 VM
-description: 使用 Azure PowerShell 或入口網站，從一般化受控映射建立 Windows 虛擬機器。
+title: 在 Azure 中從受控映像建立 VM
+description: 使用 Azure PowerShell 或入口網站，從一般化受控映像建立 Windows 虛擬機器。
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086312"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726956"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>從受控映像建立 VM
 
 您可以使用 Azure 入口網站或 PowerShell，從 Azure 受控 VM 映像建立多部虛擬機器 (VM)。 受控 VM 映像包含建立 VM 所需的資訊，包括 OS 和資料磁碟。 組成映像的虛擬硬碟 (VHD) (包括 OS 磁碟和任何資料磁碟) 會儲存為受控磁碟。 
 
-在建立新的 VM 之前，您必須[建立受控 vm 映射](capture-image-resource.md)以作為來源映射，並將映射的讀取權限授與任何應具有映射存取權的使用者。 
+在建立新的 VM 之前，您必須[建立受控 VM 映像](capture-image-resource.md) 做為來源映像，並將映像的讀取權限授與任何應該有權存取映像的使用者。 
 
+一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的 VM 時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
 
 ## <a name="use-the-portal"></a>使用入口網站
 
-1. 移至[Azure 入口網站](https://portal.azure.com)以尋找受控映射。 搜尋並選取 [**映射**]。
-3. 從清單選取您要使用的映像。 映像的 [概觀]**** 頁面隨即開啟。
-4. 從功能表選取 [建立 VM]****。
-5. 輸入虛擬機器資訊。 在此輸入的使用者名稱和密碼將用於登入虛擬機器。 完成時選取 [確定]****。 您可以在現有資源群組中建立新的 VM，或選擇 [建立新項目]**** 來建立用於儲存 VM 的新資源群組。
-6. 選取 VM 的大小。 若要查看更多大小，請選取 [**全部查看**] 或 [變更**支援的磁片類型**] 篩選器。 
-7. 在 [設定]**** 下，視需要變更，然後選取 [確定]****。 
-8. 在摘要頁面上，您應該會看到您的映像名稱列出為**私人映像**。 選取 [確定]**** 以開始虛擬機器部署。
+1. 移至 [Azure 入口網站](https://portal.azure.com)尋找受控映像。 搜尋並選取 [映像]。
+3. 從清單選取您要使用的映像。 映像的 [概觀] 頁面隨即開啟。
+4. 從功能表選取 [建立 VM]。
+5. 輸入虛擬機器資訊。 在此輸入的使用者名稱和密碼將用於登入虛擬機器。 完成時選取 [確定]。 您可以在現有資源群組中建立新的 VM，或選擇 [建立新項目] 來建立用於儲存 VM 的新資源群組。
+6. 選取 VM 的大小。 若要查看更多大小，請選取 [檢視全部] 或變更 [支援的磁碟類型] 篩選條件。 
+7. 在 [設定] 下，視需要變更，然後選取 [確定]。 
+8. 在摘要頁面上，您應該會看到您的映像名稱列出為**私人映像**。 選取 [確定] 以開始虛擬機器部署。
 
 
 ## <a name="use-powershell"></a>使用 PowerShell
@@ -59,5 +60,5 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure PowerShell 模組來建立和管理 Windows Vm](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[使用 Azure PowerShell 模組建立和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

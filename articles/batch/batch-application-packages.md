@@ -1,15 +1,15 @@
 ---
-title: 在計算節點上安裝應用程式套件
+title: 將應用程式套件部署到計算節點
 description: 使用 Azure Batch 的應用程式封裝功能輕鬆地管理多個應用程式和版本，以便安裝在 Batch 計算節點。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115613"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780317"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 應用程式套件將應用程式部署至計算節點
 
@@ -28,9 +28,9 @@ Azure Batch 的應用程式套件功能可讓您輕鬆管理工作應用程式�
 若要使用應用程式套件，您必須[將 Azure 儲存體帳戶連結](#link-a-storage-account)到 Batch 帳戶。
 
 ## <a name="about-applications-and-application-packages"></a>關於應用程式和應用程式封裝
-在 Azure Batch 中，「應用程式」 ** 是指一組已建立版本的二進位檔，這些檔案可自動下載到集區中的計算節點。 「應用程式套件」** 指的是這些二進位檔的「特定組合」**，其代表應用程式的特定「版本」**。
+在 Azure Batch 中，「應用程式」  是指一組已建立版本的二進位檔，這些檔案可自動下載到集區中的計算節點。 「應用程式套件」指的是這些二進位檔的「特定組合」，其代表應用程式的特定「版本」。
 
-![應用程式和應用程式封裝的高階圖表][1]
+![應用程式和應用程式套件的高階圖表][1]
 
 ### <a name="applications"></a>應用程式
 Batch 中的應用程式包含一或多個應用程式封裝，並且會指定應用程式的組態選項。 例如，應用程式可以指定要安裝在計算節點上的預設應用程式套件版本，以及應用程式的套件是否可以更新或刪除。
@@ -40,7 +40,7 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 
 您可以在集區和工作層級指定應用程式套件。 當您建立集區或工作時，您可以指定這些套件之中的一個或多個，以及 (選擇性) 指定版本。
 
-* **集區應用程式套件**會部署到集區中的「每個」** 節點。 當節點加入集區以及重新啟動或重新安裝映像時，就會部署應用程式。
+* **集區應用程式套件**會部署到集區中的「每個」節點。 當節點加入集區以及重新啟動或重新安裝映像時，就會部署應用程式。
   
     當集區中的所有節點都執行某作業的工作時，便適合使用集區應用程式套件。 您可以在建立集區時指定一或多個應用程式套件，而且可以新增或更新現有集區的套件。 如果您更新現有集區的應用程式套件，您必須重新啟動它的節點，以安裝新的套件。
 * **工作應用程式套件** 只會部署到排程要執行工作的計算節點。 如果節點上已有指定的應用程式套件和版本，則不會重新部署，而會使用現有套件。
@@ -68,30 +68,30 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 您可以使用 [Azure 入口網站][portal]或 Batch Management API 來管理 Batch 帳戶中的應用程式套件。 在接下來的幾節中，我們會先示範如何連結儲存體帳戶，接著討論如何使用入口網站來新增應用程式和套件以及管理它們。
 
 ### <a name="link-a-storage-account"></a>連結儲存體帳戶
-若要使用應用程式套件，您必須先將 [Azure 儲存體帳戶](batch-api-basics.md#azure-storage-account)連結到 Batch 帳戶。 如果您尚未設定儲存體帳戶，Azure 入口網站會在您第一次按下 Batch 帳戶中的 [應用程式]**** 時顯示警告。
+若要使用應用程式套件，您必須先將 [Azure 儲存體帳戶](accounts.md#azure-storage-accounts)連結到 Batch 帳戶。 如果您尚未設定儲存體帳戶，Azure 入口網站會在您第一次按下 Batch 帳戶中的 [應用程式] 時顯示警告。
 
 
 
-![Azure 入口網站中的 [未設定儲存體帳戶] 警告][9]
+![Azure 入口網站中的「未設定儲存體帳戶」警告][9]
 
-Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 在連結兩個帳戶之後，Batch 便能將儲存在連結之儲存體帳戶中的封裝自動部署到計算節點。 若要將儲存體帳戶連結至 Batch 帳戶，請按一下 [警告]**** 視窗上的 [儲存體帳戶]****，然後再次按一下 [儲存體帳戶]****。
+Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 在連結兩個帳戶之後，Batch 便能將儲存在連結之儲存體帳戶中的封裝自動部署到計算節點。 若要將儲存體帳戶連結至 Batch 帳戶，請按一下 [警告] 視窗上的 [儲存體帳戶]，然後再次按一下 [儲存體帳戶]。
 
 ![Azure 入口網站中的選擇儲存體帳戶刀鋒視窗][10]
 
-我們建議您建立「專門」** 用來與 Batch 帳戶搭配使用的儲存體帳戶，並在此處選取它。 在建立儲存體帳戶之後，您可以使用 [儲存體帳戶] **** 視窗，將它連結到 Batch 帳戶。
+我們建議您建立「專門」用來與 Batch 帳戶搭配使用的儲存體帳戶，並在此處選取它。 在建立儲存體帳戶之後，您可以使用 [儲存體帳戶]  視窗，將它連結到 Batch 帳戶。
 
 > [!IMPORTANT] 
 > - 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
-> - 已將**階層命名空間**設定為 [**已啟用**] 的 Azure 儲存體帳戶，無法用於應用程式封裝。
+> - 搭配**階層命名空間**且設定為 [已啟用] 的 Azure 儲存體帳戶無法用於應用程式封裝。
 
-Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 blob 資料，您需[支付一般費用][storage_pricing]，而每個套件的大小不能超過區塊 blob 大小上限。 如需詳細資訊，請參閱[儲存體帳戶的 Azure 儲存體擴充性和效能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
+Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 Blob 資料，您需[支付標準費用][storage_pricing]，而每個套件的大小則不能超過區塊 Blob 大小上限。 如需詳細資訊，請參閱[儲存體帳戶的 Azure 儲存體延展性和效能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
 
 ### <a name="view-current-applications"></a>檢視目前的應用程式
-若要檢視 Batch 帳戶中的應用程式，請在檢視 [Batch 帳戶]**** 視窗時按一下左側功能表中的 [應用程式]**** 功能表項目。
+若要檢視 Batch 帳戶中的應用程式，請在檢視 [Batch 帳戶] 視窗時按一下左側功能表中的 [應用程式] 功能表項目。
 
 ![應用程式圖格][2]
 
-選取此功能表選項會開啟 [應用程式]**** 視窗：
+選取此功能表選項會開啟 [應用程式] 視窗：
 
 ![列出應用程式][3]
 
@@ -99,18 +99,18 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 * **套件**：與此應用程式相關聯的版本號碼。
 * **預設版本**：如果您在指定集區的應用程式時未指定版本，系統會安裝的應用程式版本。 這個設定是選擇性的。
-* **允許更新**：此值會指定是否允許更新、刪除和新增套件。 如果此值設為 [否]****，應用程式會停用套件的更新和刪除， 而只能新增新的應用程式封裝版本。 預設值為 **[是]**。
+* **允許更新**：此值會指定是否允許更新、刪除和新增套件。 如果此值設為 [否]，應用程式會停用套件的更新和刪除， 而只能新增新的應用程式封裝版本。 預設值為 [是]。
 
-如果您想要在計算節點上查看應用程式套件的檔案結構，請在入口網站中流覽至您的 Batch 帳戶。 從您的 Batch 帳戶，流覽至 [集區 **]。** 選取包含您感興趣之計算節點的集區。
+如果您想要在計算節點上查看應用程式套件的檔案結構，請在入口網站中瀏覽至您的 Batch 帳戶。 從您的 Batch 帳戶中，瀏覽至 [集區]。 選取一個集區，其中包含您感興趣的計算節點。
 
 ![集區中的節點][13]
 
-選取集區之後，流覽至應用程式封裝安裝所在的計算節點。 應用程式封裝的詳細資料位於 [**應用程式**] 資料夾中。 計算節點上的其他資料夾包含其他檔案，例如啟動工作、輸出檔案、錯誤輸出等。
+一旦選取了您的集區，就會瀏覽至應用程式套件安裝所在的計算節點。 從該處，應用程式套件的詳細資料位於 **applications** 資料夾中。 計算節點上的其他資料夾包含其他檔案，例如啟動工作、輸出檔案、錯誤輸出等。
 
 ![節點上的檔案][14]
 
 ### <a name="view-application-details"></a>檢視應用程式詳細資料
-若要查看應用程式的詳細資料，請在 [應用程式]**** 視窗中選取應用程式。
+若要查看應用程式的詳細資料，請在 [應用程式] 視窗中選取應用程式。
 
 ![應用程式詳細資料][4]
 
@@ -123,11 +123,11 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 ### <a name="add-a-new-application"></a>加入新的應用程式
 若要建立新應用程式，請新增應用程式封裝並指定新的唯一應用程式識別碼。 使用新應用程式識別碼新增的第一個應用程式套件也會建立新的應用程式。
 
-按一下 [應用程式]   > [新增]  。
+按一下 [應用程式] > [新增]。
 
 ![Azure 入口網站中的新增應用程式刀鋒視窗][5]
 
-[新增應用程式] **** 視窗提供以下欄位，供您指定新應用程式和應用程式套件的設定。
+[新增應用程式]  視窗提供以下欄位，供您指定新應用程式和應用程式套件的設定。
 
 **應用程式識別碼**
 
@@ -147,38 +147,38 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 * 在應用程式內必須是唯一的。
 * 需保留大小寫和區分大小寫。
 
-**應用程式套件**
+**應用程式封裝**
 
-此欄位指定包含應用程式執行所需之應用程式二進位檔和支援檔案的 .zip 檔案。 按一下 [選取檔案] **** 方塊或資料夾圖示，以瀏覽及選取包含應用程式檔案的 .zip 檔案。
+此欄位指定包含應用程式執行所需之應用程式二進位檔和支援檔案的 .zip 檔案。 按一下 [選取檔案]  方塊或資料夾圖示，以瀏覽及選取包含應用程式檔案的 .zip 檔案。
 
-在選取檔案之後，請按一下 [確定] **** 以開始上傳到 Azure 儲存體。 上傳作業完成時，入口網站會顯示通知。 因上傳之檔案的大小和網路連線速度不盡相同，這項作業可能需要花費一些時間。
+在選取檔案之後，請按一下 [確定]  以開始上傳到 Azure 儲存體。 上傳作業完成時，入口網站會顯示通知。 因上傳之檔案的大小和網路連線速度不盡相同，這項作業可能需要花費一些時間。
 
 > [!WARNING]
-> 上傳作業完成之前，請勿關閉 [新增應用程式]**** 視窗。 否則上傳程序會停止。
+> 上傳作業完成之前，請勿關閉 [新增應用程式] 視窗。 否則上傳程序會停止。
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>加入新應用程式封裝
-若要為現有的應用程式新增應用程式套件版本，請在 [應用程式]**** 視窗中選取應用程式，然後按一下 [套件]**** > [新增]****。
+若要為現有的應用程式新增應用程式套件版本，請在 [應用程式] 視窗中選取應用程式，然後按一下 [套件] > [新增]。
 
-![Azure 入口網站中的加入應用程式封裝刀鋒視窗][8]
+![Azure 入口網站中的新增應用程式套件刀鋒視窗][8]
 
-如您所見，欄位與 [**新增應用程式**] 視窗中的欄位相符，但 [**應用程式識別碼**] 方塊已停用。 依照和新增應用程式相同的方式，指定新套件的 [版本]****，瀏覽至您的**應用程式套件** .zip 檔案，然後按一下 [確定]**** 以上傳套件。
+如您所見，欄位與 [新增應用程式] 視窗中的欄位相符，但 [應用程式識別碼] 方塊已停用。 依照和新增應用程式相同的方式，指定新套件的 [版本]，瀏覽至您的**應用程式套件** .zip 檔案，然後按一下 [確定] 以上傳套件。
 
 ### <a name="update-or-delete-an-application-package"></a>更新或刪除應用程式封裝
-若要更新或刪除現有的應用程式套件，請開啟應用程式的詳細資料，按一下 [套件]****，針對要修改的應用程式套件資料列，按一下**省略符號**，然後選取要執行的動作。
+若要更新或刪除現有的應用程式套件，請開啟應用程式的詳細資料，按一下 [套件]，針對要修改的應用程式套件資料列，按一下**省略符號**，然後選取要執行的動作。
 
-![在 Azure 入口網站中更新或刪除封裝][7]
+![在 Azure 入口網站中更新或刪除套件][7]
 
 **更新**
 
-當您按一下 [更新]**** 時，[更新套件]**** 視窗隨即出現。 此視窗與 [新增應用程式套件] **** 視窗相似，只不過已啟用套件選取欄位，因此您可以指定要上傳的新 ZIP 檔案。
+當您按一下 [更新] 時，[更新套件] 視窗隨即出現。 此視窗與 [新增應用程式套件]  視窗相似，只不過已啟用套件選取欄位，因此您可以指定要上傳的新 ZIP 檔案。
 
-![Azure 入口網站中的更新封裝刀鋒視窗][11]
+![Azure 入口網站中的更新套件刀鋒視窗][11]
 
 **刪除**
 
-當您按一下 [刪除] **** 時，系統會要求您確認要刪除套件版本，隨後 Batch 會從 Azure 儲存體中刪除該套件。 如果您刪除應用程式的預設版本，系統會移除應用程式的 [預設版本] **** 設定。
+當您按一下 [刪除] 時，系統會要求您確認要刪除套件版本，隨後 Batch 會從 Azure 儲存體中刪除該套件。 如果您刪除應用程式的預設版本，系統會移除應用程式的 [預設版本]  設定。
 
 ![刪除應用程式][12]
 
@@ -186,7 +186,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 您已了解如何使用 Azure 入口網站管理應用程式套件，接下來我們可以討論如何使用 Batch 工作，將它們部署到計算節點並加以執行。
 
 ### <a name="install-pool-application-packages"></a>安裝集區應用程式套件
-若要將應用程式套件安裝在集區中的所有計算節點上，請為集區指定一或多個應用程式套件「參考」 ** 。 您針對集區指定的應用程式封裝會在每個電腦節點加入集區時，以及該節點重新啟動或重新安裝映像時，安裝於該節點上。
+若要將應用程式套件安裝在集區中的所有計算節點上，請為集區指定一或多個應用程式套件「參考」  。 您針對集區指定的應用程式封裝會在每個電腦節點加入集區時，以及該節點重新啟動或重新安裝映像時，安裝於該節點上。
 
 在 Batch .NET 中，請在建立新集區時指定一或多個 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]，或為現有集區指定。 [ApplicationPackageReference][net_pkgref] 類別能指定要安裝在集區之計算節點上的應用程式識別碼和版本。
 
@@ -218,9 +218,9 @@ await myCloudPool.CommitAsync();
 > 
 
 ### <a name="install-task-application-packages"></a>安裝工作應用程式套件
-類似於集區，您可以為工作指定應用程式套件「參考」 ** 。 在節點上排程要執行的工作時，會先下載並解壓縮套件，再執行工作的命令列。 如果節點上已安裝指定的套件和版本，則不會下載套件，而會使用現有套件裝。
+類似於集區，您可以為工作指定應用程式套件「參考」  。 在節點上排程要執行的工作時，會先下載並解壓縮套件，再執行工作的命令列。 如果節點上已安裝指定的套件和版本，則不會下載套件，而會使用現有套件裝。
 
-若要安裝工作應用程式套件，請設定工作的 [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] 屬性︰
+若要安裝工作應用程式套件，請設定工作的 [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] 屬性：
 
 ```csharp
 CloudTask task =
@@ -255,7 +255,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID` 和 `version` 是對應於為部署所指定的應用程式和套件版本的值。 例如，如果您指定應該在 Windows 節點上安裝 2.7 版的「Blender」** 應用程式，您的工作命令列就會使用此環境變數來存取其檔案︰
+`APPLICATIONID` 和 `version` 是對應於為部署所指定的應用程式和套件版本的值。 例如，如果您指定應該在 Windows 節點上安裝 2.7 版的「Blender」應用程式，您的工作命令列就會使用此環境變數來存取其檔案︰
 
 ```
 Windows:
@@ -269,13 +269,13 @@ Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-當您上傳應用程式套件時，您可以指定要部署至運算節點的預設版本。 如果您已經指定應用程式的預設版本，當您參考應用程式時就可以省略版本尾碼。 您可以在 Azure 入口網站中的 [應用程式]**** 視窗上指定預設應用程式版本，如[上傳及管理應用程式](#upload-and-manage-applications)中所示。
+當您上傳應用程式套件時，您可以指定要部署至運算節點的預設版本。 如果您已經指定應用程式的預設版本，當您參考應用程式時就可以省略版本尾碼。 您可以在 Azure 入口網站中的 [應用程式] 視窗上指定預設應用程式版本，如[上傳及管理應用程式](#upload-and-manage-applications)中所示。
 
-例如，如果您設定「2.7」作為「Blender」** 應用程式的預設版本，且您的工作是參考下列環境變數，您的 Windows 節點就會執行 2.7 版：
+例如，如果您設定「2.7」作為「Blender」應用程式的預設版本，且您的工作是參考下列環境變數，您的 Windows 節點就會執行 2.7 版：
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-下列程式碼片段會顯示工作命令列範例，其可啟動「Blender」 ** 應用程式的預設版本︰
+下列程式碼片段會顯示工作命令列範例，其可啟動「Blender」  應用程式的預設版本︰
 
 ```csharp
 string taskId = "blendertask01";
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> 如需計算節點環境設定的詳細資訊，請參閱 [Batch 功能概觀](batch-api-basics.md)中的[工作的環境設定](batch-api-basics.md#environment-settings-for-tasks)。
-> 
-> 
+> 如需計算節點環境設定的詳細資訊，請參閱[工作的環境設定](jobs-and-tasks.md#environment-settings-for-tasks)。 
 
 ## <a name="update-a-pools-application-packages"></a>更新集區的應用程式封裝
 如果您已設定現有集區的應用程式封裝，可以指定集區的新封裝。 如果您為集區指定新的封裝參考，則會適用下列情況：
@@ -296,7 +294,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 * 在更新封裝參考時已存在集區中的計算節點不會自動安裝新應用程式封裝。 這些計算節點必須重新啟動或重新安裝映像才能接收新封裝。
 * 部署新的封裝之後，所建立的環境變數會反映新的應用程式封裝參考。
 
-在此範例中，現有集區已將 Blender** 應用程式的 2.7 版設定為其中一個 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 若要將集區的節點更新為 2.76b 版，請將 [ApplicationPackageReference][net_pkgref] 指定為新版本並認可變更。
+在此範例中，現有集區已將 *Blender* 應用程式的 2.7 版設定為其中一個 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 若要將集區的節點更新為 2.76b 版，請將 [ApplicationPackageReference][net_pkgref] 指定為新版本並認可變更。
 
 ```csharp
 string newVersion = "2.76b";
@@ -310,7 +308,7 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-既然您已設定新版本，Batch 服務就會將 2.76b 版安裝到任何加入集區的「新」** 節點。 若要將 2.76b 安裝在「已存在」 ** 集區中的節點上，請將節點重新啟動或重新安裝映像。 請注意，重新啟動的節點會保留前次套件部署的檔案。
+既然您已設定新版本，Batch 服務就會將 2.76b 版安裝到任何加入集區的「新」節點。 若要將 2.76b 安裝在「已存在」  集區中的節點上，請將節點重新啟動或重新安裝映像。 請注意，重新啟動的節點會保留前次套件部署的檔案。
 
 ## <a name="list-the-applications-in-a-batch-account"></a>列出 Batch 帳戶中的應用程式
 您可以使用 [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] 方法列出 Batch 帳戶中的應用程式和應用程式套件。
@@ -333,7 +331,7 @@ foreach (ApplicationSummary app in applications)
 透過應用程式封裝，您可以協助客戶選取其作業適用的應用程式，以及指定在以啟用 Batch 功能的服務處理作業時所要使用的確切版本。 您也可以在服務中提供讓客戶上傳及追蹤其應用程式的功能。
 
 ## <a name="next-steps"></a>後續步驟
-* [Batch REST API][api_rest] 也提供應用程式套件的使用支援。 例如，請參閱[將集區新增至帳戶][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 項目，以取得如何使用 REST API 來指定要安裝之套件的相關資訊。 如需如何使用 Batch REST API 來取得應用程式資訊的詳細資料，請參閱[應用程式][rest_applications]。
+* [Batch REST API][api_rest] 也提供應用程式套件的使用支援。 例如，請參閱[將集區新增至帳戶][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，以取得如何使用 REST API 來指定要安裝之套件的相關資訊。 如需如何使用 Batch REST API 來取得應用程式資訊的詳細資料，請參閱[應用程式][rest_applications]。
 * 了解如何以程式設計方式 [使用 Batch Management .NET 管理 Azure Batch 帳戶和配額](batch-management-dotnet.md)。 [Batch Management .NET][api_net_mgmt] 程式庫可以啟用 Batch 應用程式或服務的帳戶建立和刪除功能。
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
@@ -359,12 +357,12 @@ foreach (ApplicationSummary app in applications)
 [2]: ./media/batch-application-packages/app_pkg_02.png "Azure 入口網站中的應用程式圖格"
 [3]: ./media/batch-application-packages/app_pkg_03.png "Azure 入口網站中的應用程式刀鋒視窗"
 [4]: ./media/batch-application-packages/app_pkg_04.png "Azure 入口網站中的應用程式詳細資料刀鋒視窗"
-[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 入口網站中的新應用程式分頁"
+[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 入口網站中的新增應用程式刀鋒視窗"
 [7]: ./media/batch-application-packages/app_pkg_07.png "Azure 入口網站中的更新或刪除套件下拉式清單"
 [8]: ./media/batch-application-packages/app_pkg_08.png "Azure 入口網站中的新增應用程式套件刀鋒視窗"
 [9]: ./media/batch-application-packages/app_pkg_09.png "沒有連結的儲存體帳戶警示"
-[10]: ./media/batch-application-packages/app_pkg_10.png "選擇 Azure 入口網站中的 [儲存體帳戶] 分頁"
-[11]: ./media/batch-application-packages/app_pkg_11.png "更新 Azure 入口網站中的封裝分頁"
+[10]: ./media/batch-application-packages/app_pkg_10.png "Azure 入口網站中的選擇儲存體帳戶刀鋒視窗"
+[11]: ./media/batch-application-packages/app_pkg_11.png "Azure 入口網站中的更新套件刀鋒視窗"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 入口網站中的刪除套件確認對話方塊"
-[13]: ./media/batch-application-packages/package-file-structure.png "計算 Azure 入口網站中的節點資訊"
-[14]: ./media/batch-application-packages/package-file-structure-node.png "計算節點上的檔案會顯示在 Azure 入口網站"
+[13]: ./media/batch-application-packages/package-file-structure.png "Azure 入口網站中的計算節點資訊"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "計算節點上顯示在 Azure 入口網站上的檔案"

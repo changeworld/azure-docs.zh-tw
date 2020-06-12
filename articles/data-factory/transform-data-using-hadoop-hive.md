@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 01/15/2019
-ms.openlocfilehash: 8c5c917e12b1314c40763f58a7723a4df787ffa0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/08/2019
+ms.openlocfilehash: 877c1719a76f23f8446164b641dc2dac84261e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418927"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849275"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop Hive 活動轉換資料
 
@@ -60,13 +60,13 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Hive 活
 ## <a name="syntax-details"></a>語法詳細資料
 | 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| 名稱                | 活動的名稱                                         | 是      |
+| NAME                | 活動的名稱                                         | 是      |
 | description         | 說明活動用途的文字                | 否       |
 | type                | 對於 Hive 活動，活動類型為 HDinsightHive        | 是      |
 | linkedServiceName   | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
-| scriptLinkedService | Azure 儲存體已連結的服務用來儲存要執行之 Hive 指令碼的參考。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
+| scriptLinkedService | Azure 儲存體已連結的服務用來儲存要執行之 Hive 指令碼的參考。 這裡僅支援 **[Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** 和 **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** 的連結服務。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。  | 否       |
 | scriptPath          | 提供儲存在 scriptLinkedService 引用之 Azure 儲存體中指令碼檔案的路徑。 檔案名稱有區分大小寫。 | 是      |
-| getDebugInfo        | 指定何時將記錄檔複製到 HDInsight 叢集所使用 (或) scriptLinkedService 所指定的 Azure 儲存體。 允許的值︰None、Always 或 Failure。 預設值：None。 | 否       |
+| getDebugInfo        | 指定何時將記錄檔複製到 HDInsight 叢集所使用 (或) scriptLinkedService 所指定的 Azure 儲存體。 允許的值：None、Always 或 Failure。 預設值：無。 | 否       |
 | 引數           | 指定 Hadoop 作業的引數陣列。 引數會以命令列引數的方式傳遞給每項工作。 | 否       |
 | 定義             | 指定參數作為機碼/值組，以供在 Hive 指令碼內參考。 | 否       |
 | queryTimeout        | 查詢逾時值 (單位為分鐘)。 適用於企業安全性套件已啟用的 HDInsight 叢集。 | 否       |
@@ -81,4 +81,4 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Hive 活
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
-* [預存程式活動](transform-data-using-stored-procedure.md)
+* [預存程序活動](transform-data-using-stored-procedure.md)

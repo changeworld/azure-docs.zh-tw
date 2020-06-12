@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609896"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860509"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Azure AD 登入
 
@@ -125,14 +125,39 @@ ms.locfileid: "82609896"
 1. 建立應用程式註冊之後，複製 [應用程式 (用戶端) 識別碼] 的值。
 1. 選取 [API 權限] > [新增權限] > [我的 API]。
 1. 選取您稍早為 App Service 應用程式建立的應用程式註冊。 如果沒看到應用程式註冊，請確定您已在[在 Azure AD 中為 App Service 應用程式建立應用程式註冊](#register)中新增了 **user_impersonation** 範圍。
-1. 選取 **user_impersonation**，然後選取 [新增權限]。
+1. 在 [委派權限] 底下，選取 [user_impersonation]，然後選取 [新增權限]。
 
 您現在已設定了可代表使用者存取您 App Service 應用程式的原生用戶端應用程式。
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>設定服務對服務呼叫的精靈用戶端應用程式
+
+您的應用程式可以取得權杖以代表其本身 (而非代表使用者) 呼叫裝載於 App Service 或函式應用程式中的 Web API。 此案例適用於未使用已登入使用者來執行工作的非互動式精靈應用程式。 其會使用標準 OAuth 2.0 [用戶端認證](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)授與。
+
+1. 在 [Azure 入口網站]中，選取 [Active Directory] > [應用程式註冊] > [新增註冊]。
+1. 在 [註冊應用程式] 頁面上，輸入精靈應用程式註冊的 [名稱]。
+1. 若為精靈應用程式，您不需要重新導向 URI，因此可以保留空白。
+1. 選取 [建立]。
+1. 建立應用程式註冊之後，複製 [應用程式 (用戶端) 識別碼] 的值。
+1. 選取 [憑證及祕密] > [新增用戶端密碼] > [新增]。 複製頁面中顯示的用戶端秘密值。 它將不會再次顯示。
+
+您現在可以[使用用戶端識別碼和用戶端密碼來要求存取權杖](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，方法是將 `resource` 參數設定為目標應用程式的**應用程式識別碼 URI**。 接著，您可以使用標準 [OAuth 2.0 授權標頭](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)，將產生的存取權杖呈現給目標應用程式，然後 App Service 驗證/授權就會像往常一樣驗證並使用權杖，但現在會指出呼叫端 (在此案例中為應用程式，而非使用者) 已通過驗證。
+
+目前，這可讓您在 Azure AD 租用戶中的_任何_用戶端應用程式要求存取權杖，並向目標應用程式進行驗證。 如果您也想要強制讓_授權_僅允許特定的用戶端應用程式，就必須執行一些額外的設定。
+
+1. 在應用程式註冊 (代表您要保護的 App Service 或函式應用程式) 的資訊清單中[定義應用程式角色](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)。
+1. 在應用程式註冊 (代表需要授權的用戶端) 上，選取 [API 權限] > [新增權限] > [我的 API]。
+1. 選取您稍早建立的應用程式註冊。 如果您沒有看到應用程式註冊，請確定您已[新增應用程式角色](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)。
+1. 在 [應用程式權限] 底下，選取您稍早建立的應用程式角色，然後選取 [新增權限]。
+1. 確實按一下 [授與管理員同意]，以授權用戶端應用程式要求權限。
+1. 類似於上一個案例 (在新增任何角色之前)，您現在可以針對相同的目標 `resource` [要求存取權杖](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，而且存取權杖將會包含 `roles` 宣告，內含已授權給用戶端應用程式的應用程式角色。
+1. 在目標 App Service 或函式應用程式的程式碼內，您現在可以驗證預期的角色是否存在於權杖中 (這不會由 App Service 驗證/授權來執行)。 如需詳細資訊，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims)。
+
+您現在已設定可使用自己的身分識別來存取 App Service 應用程式的精靈用戶端應用程式。
 
 ## <a name="next-steps"></a><a name="related-content"> </a>後續步驟
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
+* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure 入口網站]: https://portal.azure.com/

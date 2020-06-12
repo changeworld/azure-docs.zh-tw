@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438617"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743004"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -89,7 +89,7 @@ A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂�
 ## <a name="configure-and-connect"></a>設定和連線
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>Q. 如何將資料箱解除鎖定？ 
-A.  在 Azure 入口網站中，移至您的資料箱訂單，並瀏覽至 [裝置詳細資料]****。 複製解除鎖定密碼。 使用此密碼，登入資料箱上的本機 Web UI。 如需詳細資訊，請移至[教學課程：打開包裝、接上纜線、連接您的 Azure 資料箱](data-box-deploy-set-up.md)。
+A.  在 Azure 入口網站中，移至您的資料箱訂單，並瀏覽至 [裝置詳細資料]。 複製解除鎖定密碼。 使用此密碼，登入資料箱上的本機 Web UI。 如需詳細資訊，請移至[教學課程：打開包裝、接上纜線、連接您的 Azure 資料箱](data-box-deploy-set-up.md)。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Q. 是否可使用 Linux 主機電腦連線到資料箱，並將資料複製到該處？
 A.  是。 您可以使用資料箱連線至 SMB 與 NFS 用戶端。 如需詳細資訊，請移至主機電腦[支援的作業系統](data-box-system-requirements.md)清單。
@@ -101,7 +101,7 @@ A.  您只能在資料箱訂購之後，並在訂單處理之前取消訂單。 
 A. 是。 您可以將多個資料箱連線到多部主機電腦以傳輸資料，而且可以平行執行多個複製作業。 如需詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Q. 是否可以連線到資料箱上的兩個 10 GbE 介面來傳輸資料？
-A. 是。 在資料箱上可以連線這兩個 10 GbE 介面來同時複製資料。 如需如何複製資料的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
+A. 是。 在資料箱上可以連線這兩個 10 GbE 介面來同時複製資料。 如需有關如何複製資料的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -116,7 +116,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Q. 前操作面板上的系統錯誤 LED 指示燈亮起。 我該怎麼辦？
-A. 如果系統錯誤 LED 指示燈亮起，表示您的系統健康情況不良。 [請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)以進行後續步驟。
+A. 如果系統錯誤 LED 指示燈亮起，表示您的系統健康情況不良。 [連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) 以進行後續步驟。
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Q. 我無法在 Azure 入口網站中存取資料箱解除鎖定密碼。 為什麼會這樣？
 A. 如果您無法在 Azure 入口網站中存取解除鎖定密碼，請檢查您的訂用帳戶與儲存體帳戶的權限。 請確定您有資源群組層級的參與者或擁有者權限。 如果沒有，則您至少需要擁有資料箱操作員角色權限，才能看到存取認證。
@@ -130,10 +130,10 @@ A. 我們在資料箱上不支援連接埠通道設定、多重路徑 IO (MPIO) 
 A.  您可以在 Azure 入口網站中追蹤資料箱訂單的狀態。 當您建立訂單時，系統也會提示您提供通知電子郵件。 如果您有提供的話，您將會透過電子郵件獲知訂單的所有狀態變更。 請取得關於如何[設定通知電子郵件](data-box-portal-ui-admin.md#edit-notification-details)的資訊。
 
 ### <a name="q-how-do-i-return-the-device"></a>Q. 如何送回裝置？ 
-A.  Microsoft 會在電子墨水顯示器上顯示出貨標籤。 如果出貨標籤沒有顯示在電子墨水顯示器上，請移至 [概觀] > [下載出貨標籤]****。 下載並列印標籤，將標籤插入裝置上的塑膠貨籤中，然後將裝置投遞到貨運公司地點。 
+A.  Microsoft 會在電子墨水顯示器上顯示出貨標籤。 如果出貨標籤沒有顯示在電子墨水顯示器上，請移至 [概觀] > [下載出貨標籤]。 下載並列印標籤，將標籤插入裝置上的塑膠貨籤中，然後將裝置投遞到貨運公司地點。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Q. 我收到電子郵件通知我的裝置已經送達 Azure 資料中心。 我要如何知道資料是否正在上傳？
-A. 您可以移至 Azure 入口網站中的資料箱訂單，然後移至 [概觀]****。 如果已開始將資料上傳至 Azure，您將會在右窗格中看到複製進度。 
+A. 您可以移至 Azure 入口網站中的資料箱訂單，然後移至 [概觀]。 如果已開始將資料上傳至 Azure，您將會在右窗格中看到複製進度。 
 
 ## <a name="migrate-data"></a>移轉資料
 
@@ -159,14 +159,14 @@ A.  若要加快複製程序：
 - 使用多個資料複製串流。 例如，採用 Robocopy 時，請使用多執行緒選項。 如需與使用之確切命令有關的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱並確認](data-box-deploy-copy-data.md)。
 - 使用多個工作階段。
 - 請務必將資料放置在資料箱所連接的本機電腦上，而不要透過網路共用進行複製 (此方式可能會受限於網路速度)。
-- 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品]**** 索引標籤，然後下載 MSI。
+- 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品] 索引標籤，然後下載 MSI。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. 是否可對資料箱使用多個儲存體帳戶？
@@ -180,22 +180,22 @@ A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳�
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Q. 我已收到裝置，但裝置似乎已經損毀。 我該怎麼辦？
 A. 如果您收到的裝置已損毀，或是有遭到竄改的跡象，請勿使用該裝置。 請[連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)並儘快送回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，將不會對您收取更換裝置的費用。
 
-### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自行挑選我的資料箱順序嗎？ 我可以透過我選擇的電信公司來傳回資料箱嗎？
-A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 下資料箱訂單時，您可以選擇 [自我管理的出貨] 選項。 若要挑選您的資料箱裝置，請執行下列步驟：
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自取我的資料箱訂單嗎？ 我可以透過我選擇的貨運公司寄回資料箱嗎？
+A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 若要自取資料箱裝置，請執行下列步驟：
     
-1. 在您下訂單之後，就會處理訂單並準備資料箱。 當您的訂單可供取貨時，您會收到電子郵件通知。 
-2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀]**** 刀鋒視窗。 
+1. 在您下訂單之後，我們就會處理訂單並準備資料箱。 當您的訂單可供取貨時，您會收到電子郵件通知。 
+2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀] 刀鋒視窗。 
 3. 您會在 Azure 入口網站中看到含有代碼的通知。 請傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將代碼提供給他們。 小組會提供位置並安排取貨日期和時間。 收到電子郵件通知之後，您必須在 5 個工作天內連絡小組。
 
-資料複製完成後，請採取下列步驟來傳回您的裝置：
+資料複製完成後，請採取下列步驟來寄回您的裝置：
 
-1. 一旦資料複製完成且沒有錯誤，請執行**寄送準備**。 準備完成後，您會在裝置的本機 web UI 中收到程式碼。 複製並儲存程式碼。
-2. 關閉裝置，並移除連接的纜線。
+1. 一旦資料複製完成且沒有任何錯誤，請執行 [寄送準備]。 準備完成後，您會在裝置的本機 Web UI 中收到代碼。 複製並儲存代碼。
+2. 關閉裝置並移除連接纜線。
 3. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-4. 以電子郵件傳送[Azure 資料箱作業小組](mailto:adbops@microsoft.com)，並為他們提供您稍早儲存的程式碼。 他們會提供有關卸載裝置之位置和時機的資訊。
+4. 傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將您稍早儲存的代碼提供給他們。 他們會提供您交送裝置的位置和時間。
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. 我的資料箱服務在運送期間可以跨國家/地區邊界使用嗎？
-A. 所有的資料箱裝置都是在與目的地相同的國家/地區內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/地區之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. 我的資料箱服務在運送期間可以跨國家/區域邊界使用嗎？
+A. 所有的資料箱裝置都是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/區域之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. 我在美國東部訂購了一個資料箱，但收到的裝置卻是從美國西部的某個位置出貨。 我應該將裝置送歸何處？
 A. 我們會設法讓您盡快收到資料箱裝置。 我們雖會優先從最接近您儲存體帳戶位置的資料中心出貨，但會從有可用庫存的任何 Azure 資料中心寄送裝置。 您的資料箱應送歸出貨標籤中所顯示的同一個出貨位置。
@@ -203,7 +203,7 @@ A. 我們會設法讓您盡快收到資料箱裝置。 我們雖會優先從最�
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. 電子墨水顯示器並未顯示寄回用的出貨標籤。 我該怎麼辦？
 A. 如果電子墨水顯示器並未顯示寄回用的出貨標籤，請執行下列步驟：
 - 將先前寄送時的舊出貨標籤與任何貼紙移除。
-- 移至 Azure 入口網站中的訂單。 移至 [概觀]****，然後**下載出貨標籤**。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
+- 移至 Azure 入口網站中的訂單。 移至 [概觀]，然後**下載出貨標籤**。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
 - 列印出貨標籤，然後將它插入裝置上隨附的乾淨塑膠保護套。 
 - 確認出貨標籤清晰可見。 
 
@@ -222,7 +222,7 @@ A. 如果您的裝置無法開機，請移至您在 Azure 入口網站中的訂�
 ## <a name="verify-and-upload"></a>確認和上傳
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>Q. 在送回資料箱後，多久可以在 Azure 中存取我的資料？ 
-A.  當 [資料複製]**** 的訂單狀態顯示為 [完成]**** 時，您應該就能立即存取您的資料。
+A.  當 [資料複製] 的訂單狀態顯示為 [完成] 時，您應該就能立即存取您的資料。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. 我的資料在上傳後會存放於 Azure 的何處？
 A.  當您將資料複製到資料箱時，視資料為區塊 Blob、分頁 Blob 或 Azure 檔案而定，資料會上傳到 Azure 儲存體帳戶中的下列其中一個路徑。
@@ -261,7 +261,7 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  不可以。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  否。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
 
 
 ## <a name="next-steps"></a>後續步驟
