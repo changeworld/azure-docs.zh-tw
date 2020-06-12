@@ -7,15 +7,17 @@ author: nabhishek
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 40da43b88e5f95335e8c1766128ac60502630c7b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: 0b966b10c5bbc7bb90a4226d94dda8b75e25c3af
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853670"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247473"
 ---
 # <a name="data-access-strategies"></a>資料存取策略
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 組織的重要安全性目標是保護其資料存放區，使其無法透過網際網路進行隨機存取，無論是內部部署或雲端/SaaS 資料存放區。 
 

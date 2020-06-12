@@ -7,16 +7,16 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726412"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831869"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何使用 iOS 的 Blob 儲存體
 
-本文示範如何使用 Microsoft Azure Blob 儲存體執行一般案例。 這些範例均以 Objective-C 撰寫，並使用 [Azure Storage Client Library for iOS](https://github.com/Azure/azure-storage-ios)。 所涵蓋的案例包括「上傳、列出、下載」及「刪除」Blob。 如需 blob 的詳細資訊，請參閱[後續步驟](#next-steps)一節。 您也可以下載 [範例應用程式](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) ，以快速查看在 iOS 應用程式中使用 Azure 儲存體的方法。
+本文示範如何使用 Microsoft Azure Blob 儲存體執行一般案例。 這些範例均以 Objective-C 撰寫，並使用 [Azure Storage Client Library for iOS](https://github.com/Azure/azure-storage-ios)。 所涵蓋的案例包括「上傳、列出、下載」及「刪除」Blob。 如需 Blob 的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。 您也可以下載 [範例應用程式](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) ，以快速查看在 iOS 應用程式中使用 Azure 儲存體的方法。
 
 若要深入了解 Blob 儲存體，請參閱 [Azure Blob 儲存體簡介](storage-blobs-introduction.md)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "68726412"
 程式庫的另一個用法，是手動建立架構︰
 
 1. 首先，請下載或複製 [azure-storage-ios repo](https://github.com/azure/azure-storage-ios)。
-2. 移至*azure-儲存體-ios* -> *Lib* -> *Azure 儲存體用戶端程式庫*， `AZSClient.xcodeproj`並在 Xcode 中開啟。
+2. 移至 *azure-storage-ios* -> *Lib* -> *Azure 儲存體用戶端程式庫*，然後在 Xcode 中開啟 `AZSClient.xcodeproj`。
 3. 在 Xcode 左上方，將作用中配置從「Azure 儲存體用戶端程式庫」變更為「架構」。
 4. 建置專案 (⌘ + B)。 這會在您的桌面上建立 `AZSClient.framework` 檔案。
 
@@ -70,9 +70,9 @@ ms.locfileid: "68726412"
 
 1. 建立新的專案，或在 Xcode 中開啟現有的專案。
 2. 將 `AZSClient.framework` 拖曳到您的 Xcode 專案導覽器。
-3. 選取 [必要時複製項目]**，然後按一下 [完成]**。
-4. 按一下左側導覽列中的專案，然後按一下專案編輯器頂端的 [一般] ** 索引標籤。
-5. 在 [連結的架構和程式庫] ** 區段下，按一下 [新增] 按鈕 (+)。
+3. 選取 [必要時複製項目]，然後按一下 [完成]。
+4. 按一下左側導覽列中的專案，然後按一下專案編輯器頂端的 [一般]  索引標籤。
+5. 在 [連結的架構和程式庫]  區段下，按一下 [新增] 按鈕 (+)。
 6. 在已提供的程式庫清單中搜尋 `libxml2.2.tbd` ，並將它新增至您的專案。
 
 ## <a name="import-the-library"></a>匯入程式庫
@@ -82,11 +82,11 @@ ms.locfileid: "68726412"
 #import <AZSClient/AZSClient.h>
 ```
 
-如果您使用 Swift，您必須建立橋接標頭，並將 AZSClient \</AZSClient 匯入>：
+如果您使用 Swift，必須建立橋接標頭並在標頭匯入 \<AZSClient/AZSClient.h>：
 
 1. 建立標頭檔 `Bridging-Header.h`，並加入上述匯入陳述式。
-2. 移至 [建置設定]** 索引標籤，搜尋[OBJECTIVE-C 橋接標頭]**。
-3. 按兩下 [OBJECTIVE-C 橋接標頭]** 欄位，並將此路徑加入標頭檔︰`ProjectName/Bridging-Header.h`
+2. 移至 [建置設定] 索引標籤，搜尋[OBJECTIVE-C 橋接標頭]。
+3. 按兩下 [OBJECTIVE-C 橋接標頭] 欄位，並將此路徑加入標頭檔︰`ProjectName/Bridging-Header.h`
 4. 建立專案 (⌘ + B) 以確認 Xcode 已收取橋接標頭。
 5. 直接在任何 Swift 檔案中開始使用程式庫，就不需要匯入陳述式。
 
@@ -131,13 +131,13 @@ ms.locfileid: "68726412"
 
 ## <a name="set-container-permissions"></a>設定容器權限
 
-依預設會針對 [私人] **** 存取設定容器的權限。 不過，容器會提供幾個不同的容器存取選項：
+依預設會針對 [私人]  存取設定容器的權限。 不過，容器會提供幾個不同的容器存取選項：
 
 - **私人**：只有帳戶擁有者可以讀取容器和 Blob 資料。
 - **Blob**：您可以透過匿名要求讀取此容器內的 Blob 資料，但您無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob。
 - **容器**：可以透過匿名要求讀取容器和 Blob 資料。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
 
-下列範例說明如何建立具有 [容器] **** 存取權限，而允許網際網路上的所有使用者進行公用、唯讀存取的容器：
+下列範例說明如何建立具有 [容器]  存取權限，而允許網際網路上的所有使用者進行公用、唯讀存取的容器：
 
 ```objc
 -(void)createContainerWithPublicAccess{
@@ -225,9 +225,9 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 - **useFlatBlobListing** - 如 [命名與參考容器和 Blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 一節中所述，雖然 Blob 服務是一般儲存體配置，雖然您可以路徑資訊為 Blob 命名，以建立虛擬階層。 不過目前不支援非一般列出。 不久後將有此功能。 目前，此值應為 **YES**。
 - **blobListingDetails** - 您可以指定列出 Blob 時所要包含的項目
   - _AZSBlobListingDetailsNone_：僅列出已認可的 Blob，且不傳回 Blob 中繼資料。
-  - _AZSBlobListingDetailsSnapshots_︰列出已認可的 Blob 和 Blob 快照。
+  - _AZSBlobListingDetailsSnapshots_：列出已認可的 Blob 和 Blob 快照。
   - _AZSBlobListingDetailsMetadata_：為清單中傳回的每個 Blob 擷取 Blob 中繼資料。
-  - _AZSBlobListingDetailsUncommittedBlobs_︰列出已認可和未認可的 Blob。
+  - _AZSBlobListingDetailsUncommittedBlobs_：列出已認可及未認可的 Blob。
   - _AZSBlobListingDetailsCopy_：在清單中包含複製屬性。
   - _AZSBlobListingDetailsAll_：列出所有可用的已認可 Blob、未認可的 Blob 和快照，並傳回這些 Blob 的所有中繼資料和複製狀態。
 - **maxResults** - 要為此作業傳回的結果數目上限。 使用 -1 則不會設定限制。
@@ -392,7 +392,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 - [Azure Storage Client Library for iOS](https://github.com/azure/azure-storage-ios)
 - [Azure 儲存體 iOS 參考文件](https://azure.github.io/azure-storage-ios/)
 - [Azure 儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure 儲存體團隊部落格](https://blogs.msdn.com/b/windowsazurestorage)
+- [Azure 儲存體團隊部落格](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
-如果您有關于此程式庫的問題，歡迎您貼文到我們的[MSDN Azure 論壇](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)或[Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
+如果您有關於此程式庫的問題，歡迎您貼文到我們的 [MSDN 問與答頁面](https://docs.microsoft.com/answers/topics/azure-blob-storage.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
 如果您有 Azure 儲存體功能方面的建議，請貼文到 [Azure 儲存體意見反應](https://feedback.azure.com/forums/217298-storage/)。

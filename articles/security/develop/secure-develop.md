@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800278"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266758"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
@@ -128,7 +128,7 @@ Server、X-Powered-By、X-AspNet-Version 等標頭會揭露有關伺服器和基
 
 DAST 與靜態應用程式安全性測試 (SAST) 不同。 SAST 工具會在程式碼未執行時，分析原始程式碼或程式碼的編譯版本，以找出安全性缺陷。
 
-執行 DAST 時最好有安全性專業人員的協助 ([滲透測試者](../fundamentals/pen-testing.md)或弱點評估者)。 如果無法與安全性專業人員合作，您可以使用 Web Proxy 掃描器和一些訓練來自行執行 DAST。 請提早插入 DAST 掃描器，以確保您不會在程式碼中引進明顯的安全性問題。 如需 Web 應用程式弱點掃描器的清單，請參閱 [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) 網站。
+執行 DAST 時最好有安全性專業人員的協助 ([滲透測試者](../fundamentals/pen-testing.md)或弱點評估者)。 如果無法與安全性專業人員合作，您可以使用 Web Proxy 掃描器和一些訓練來自行執行 DAST。 請提早插入 DAST 掃描器，以確保您不會在程式碼中引進明顯的安全性問題。 如需 Web 應用程式弱點掃描器的清單，請參閱 [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) 網站。
 
 ### <a name="perform-fuzz-testing"></a>執行模糊測試
 

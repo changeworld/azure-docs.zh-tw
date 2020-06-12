@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821493"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017594"
 ---
 ## <a name="application-performance-indicators"></a>應用程式效能指標
 
@@ -333,7 +333,7 @@ sudo reboot
 
 比方說，如果應用程式所產生的 IO 要求大於磁碟等量大小，儲存體系統會跨越等量單位界限，將此要求寫入多個磁碟上。 在需要存取該資料時，必須跨越一個以上的等量單位來搜尋，才能完成要求。 這種行為的累積效果可能會導致效能大幅降低。 相反地，如果 IO 要求大小比等量大小更小，而且是隨機性質，IO 要求可能聚集在相同的磁碟上而造成瓶頸，最終導致 IO 效能降低。
 
-請根據應用程式執行的工作負載類型，選擇適當的等量大小。 對於隨機小型 IO 要求，請使用較小的等量大小。 對於大型循序 IO 要求，請使用較大的等量大小。 針對您要在進階儲存體上執行的應用程式，請參考等量大小建議。 對於 SQL Server 而言，請將 OLTP 工作負載的等量大小設定為 64 KB，而資料倉儲工作負載則設定為 256 KB。 若要深入了解，請參閱 [Azure 虛擬機器中的 SQL Server 效能最佳作法](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) 。
+請根據應用程式執行的工作負載類型，選擇適當的等量大小。 對於隨機小型 IO 要求，請使用較小的等量大小。 對於大型循序 IO 要求，請使用較大的等量大小。 針對您要在進階儲存體上執行的應用程式，請參考等量大小建議。 對於 SQL Server 而言，請將 OLTP 工作負載的等量大小設定為 64 KB，而資料倉儲工作負載則設定為 256 KB。 若要深入了解，請參閱 [Azure 虛擬機器中的 SQL Server 效能最佳作法](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) 。
 
 > [!NOTE]
 > 在 DS 系列 VM 上，最多可以串接 32 個進階儲存體磁碟，而在 GS 系列 VM 上，最多可以串接 64 個進階儲存體磁碟。

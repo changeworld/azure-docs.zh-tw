@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/28/2020
+ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683310"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187603"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>對應資料流程中的查閱轉換
 
@@ -21,7 +21,9 @@ ms.locfileid: "83683310"
 
 使用查閱轉換在資料流程串流中參考另一個來源的資料。 查閱轉換會將相符資料的資料行附加到您的來源資料。
 
-查閱轉換類似於左方外部聯結。 主要串流中的所有資料列將會存在於輸出串流中，並具有來自查閱串流的其他資料行。 
+查閱轉換類似於左方外部聯結。 主要串流中的所有資料列將會存在於輸出串流中，並具有來自查閱串流的其他資料行。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xsVT]
 
 ## <a name="configuration"></a>組態
 
