@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283951"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797783"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
@@ -20,9 +20,9 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 1. **伺服器程式碼：** 為您的 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)應用程式安裝適當的模組。
 
-    * *不想要安裝伺服器程式碼嗎？只需[建立 Azure 應用程式 Insights 資源](../../azure-monitor/app/create-new-resource.md )。*
+    * *不想安裝伺服器程式碼嗎？請直接[建立 Azure Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。*
 
-2. **網頁程式碼：** 在關閉``</head>``之前，將下列腳本新增至您的網頁。 使用 Application Insights 資源的適當值來取代檢測金鑰：
+2. **網頁程式碼：** 將下列指令碼新增至網頁的右 ``</head>`` 之前。 使用 Application Insights 資源的適當值來取代檢測金鑰：
     
     ```html
     <script type="text/javascript">
@@ -34,7 +34,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
     </script>
     ```
 
-    若要深入瞭解監視網站的更多設定，請參閱[JAVASCRIPT SDK 參考文章](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+    若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK 參考](https://docs.microsoft.com/azure/azure-monitor/app/javascript) \(部分機器翻譯\) 一文。
 
 3. **行動應用程式程式碼：** 使用 App Center SDK 從應用程式收集事件，然後將這些事件的複本傳送至 Application Insights，[按照此指南](../../azure-monitor/learn/mobile-center-quickstart.md)的指示進行分析。
 
@@ -155,9 +155,9 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 **ASP.NET Core 應用程式**
 
 > [!NOTE]
-> 使用`ApplicationInsights.config`或 using `TelemetryConfiguration.Active`加入初始化運算式對 ASP.NET Core 應用程式而言是不正確。 
+> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 新增初始設定式不適用於 ASP.NET Core 應用程式。 
 
-針對[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)應用程式，加入新`TelemetryInitializer`的是藉由將它新增至相依性插入容器來完成，如下所示。 這會在您`ConfigureServices` `Startup.cs`的類別的方法中完成。
+針對 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 應用程式，加入新的 `TelemetryInitializer` 是藉由將其新增至相依性插入容器來完成，如下所示。 這會在 `Startup.cs` 類別的 `ConfigureServices` 方法中完成。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -175,5 +175,5 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
    - [漏斗圖](usage-funnels.md)
    - [保留](usage-retention.md)
    - [使用者流程](usage-flows.md)
-   - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+   - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
    - [新增使用者內容](usage-send-user-context.md)

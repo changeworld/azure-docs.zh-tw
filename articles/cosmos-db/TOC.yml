@@ -977,41 +977,40 @@
           href: how-to-manage-indexing-policy.md
         - name: 定義唯一索引鍵
           href: how-to-define-unique-keys.md
-    - name: 最佳作法
+    - name: 效能和疑難排解
       items:
-        - name: 效能秘訣
+        - name: 查詢
           items:
             - name: 取得查詢執行計量
-              displayName: 'query profile, profile'
               href: profile-sql-api-query.md
             - name: 微調查詢效能
               href: sql-api-query-metrics.md
-            - name: .NET SDK 的效能秘訣
+            - name: 針對查詢效能進行疑難排解
+              href: troubleshoot-query-performance.md
+        - name: .NET
+          items:
+            - name: .NET SDK v3 的效能秘訣
+              href: performance-tips-dotnet-sdk-v3-sql.md
+            - name: .NET SDK v2 的效能秘訣
               href: performance-tips.md
+            - name: 針對 .NET SDK 進行疑難排解
+              href: troubleshoot-dot-net-sdk.md
+        - name: Java
+          items:
             - name: Java SDK v4 的效能秘訣
               href: performance-tips-java-sdk-v4-sql.md
-            - name: 舊版 Java SDK 的效能秘訣
-              items:
-                - name: 非同步 Java SDK v2
-                  href: performance-tips-async-java.md
-                - name: 同步處理 Java SDK v2
-                  href: performance-tips-java.md
-            - name: 效能測試 - 範例應用程式
-              href: performance-testing.md
-        - name: 符合成本效益的讀取和寫入
-          href: key-value-store-cost.md
-    - name: 疑難排解
-      items:
-        - name: 針對查詢效能進行疑難排解
-          href: troubleshoot-query-performance.md
-        - name: 針對 Java SDK v4 進行疑難排解
-          href: troubleshoot-java-sdk-v4-sql.md
-        - name: 針對舊版 Java SDK 進行疑難排解
-          items:
+            - name: 針對 Java SDK v4 進行疑難排解
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: 非同步 Java SDK v2
+              href: performance-tips-async-java.md
+            - name: 同步處理 Java SDK v2
+              href: performance-tips-java.md
             - name: 非同步 Java SDK v2
               href: troubleshoot-java-async-sdk.md
-        - name: 針對 .NET SDK 進行疑難排解
-          href: troubleshoot-dot-net-sdk.md
+        - name: 效能測試 - 範例應用程式
+          href: performance-testing.md
+        - name: 符合成本效益的讀取和寫入
+          href: key-value-store-cost.md
     - name: 遷移至較新的 SDK
       items:
         - name: 遷移至 JAVA V4 SDK
@@ -1194,28 +1193,30 @@
           href: how-to-migrate-from-bulk-executor-library.md
         - name: 大量執行程式 - Java 程式庫
           href: bulk-executor-java.md
-- name: 參考
+- name: SQL API SDK 的參考
   items:
-    - name: .NET
-      href: sql-api-sdk-dotnet.md
-    - name: .NET Core
-      href: sql-api-sdk-dotnet-core.md
-    - name: .NET Standard
-      href: sql-api-sdk-dotnet-standard.md
-    - name: .NET 變更摘要程式庫
-      href: sql-api-sdk-dotnet-changefeed.md
-    - name: .NET 大量執行程式程式庫
-      href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java 大量執行程式程式庫
-      href: sql-api-sdk-bulk-executor-java.md
-    - name: 適用於 Core 的 JAVA SDK v4
-      href: sql-api-sdk-java-v4.md
-    - name: 適用於 Core 的舊版 JAVA SDK
+    - name: .NET SDK
       items:
+        - name: .NET SDK v3
+          href: sql-api-sdk-dotnet-standard.md
+        - name: .NET SDK v2
+          href: sql-api-sdk-dotnet.md
+        - name: .NET Core SDK v2
+          href: sql-api-sdk-dotnet-core.md
+        - name: .NET 變更摘要程式庫 v2
+          href: sql-api-sdk-dotnet-changefeed.md
+        - name: .NET 大量執行程式程式庫 v2
+          href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java SDK
+      items:
+        - name: Java SDK v4
+          href: sql-api-sdk-java-v4.md
         - name: 非同步 Java SDK v2
           href: sql-api-sdk-async-java.md
         - name: 同步處理 Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Java 大量執行程式程式庫 v2
+          href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

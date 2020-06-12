@@ -302,6 +302,8 @@
           href: connector-dynamics-ax.md
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
+        - name: Excel 格式
+          href: format-excel.md
         - name: 檔案系統
           href: connector-file-system.md
         - name: FTP

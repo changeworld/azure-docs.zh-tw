@@ -16,54 +16,54 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691848"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259298"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
 您可以檢視 Azure 事件中樞的兩種記錄類型：
 
-* **[活動記錄](../azure-monitor/platform/platform-logs-overview.md)**：這些記錄檔包含作業上完成之作業的相關資訊。 系統一律會啟用這些記錄。 您可以在 Azure 入口網站的事件中樞命名空間的左窗格中選取 [**活動記錄**]，以查看活動記錄專案。 例如：「建立或更新命名空間」、「建立或更新事件中樞」。
+* **[活動記錄](../azure-monitor/platform/platform-logs-overview.md)** ：這些記錄包含對作業所執行之操作的相關資訊。 系統一律會啟用這些記錄。 您可以在 Azure 入口網站中，於事件中樞命名空間的左窗格中選取 [活動記錄] 來查看活動記錄項目。 例如：「建立或更新命名空間」、「建立或更新事件中樞」。
 
     ![事件中樞命名空間的活動記錄](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)**：診斷記錄會使用 API，或透過語言 SDK 上的管理用戶端，為您的命名空間所進行的作業和動作提供更豐富的資訊。 
+* **[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)** ：診斷記錄能透過使用 API，或是透過語言 SDK 上的管理用戶端，為針對您命名空間所進行的作業和動作提供更加豐富的資訊。 
     
-    下一節將說明如何啟用事件中樞命名空間的診斷記錄。
+    下列小節會示範如何為事件中樞命名空間啟用診斷記錄。
 
 ## <a name="enable-diagnostic-logs"></a>啟用診斷記錄
 診斷記錄預設為停用。 若要啟用診斷記錄，請依照下列步驟操作：
 
-1.  在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的事件中樞命名空間。 
-2. 在左窗格中選取 [**監視**] 底下的 [**診斷設定**]，然後選取 [ **+ 新增診斷設定**]。 
+1.  在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的事件中樞命名空間。 
+2. 在左窗格中，選取 [監視] 底下的 [診斷設定]，然後選取 [+ 新增診斷設定]。 
 
-    ![診斷設定頁面-新增診斷設定](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. 在 [**類別目錄詳細資料**] 區段中，選取您想要啟用的**診斷記錄類型**。 您稍後會在本文中找到這些類別的詳細資料。 
-5. 在 [**目的地詳細資料**] 區段中，設定您想要的封存目標（目的地）;例如，儲存體帳戶、事件中樞或 Log Analytics 工作區。
+    ![[診斷設定] 頁面 - 新增診斷設定](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. 在 [類別詳細資料] 區段中，選取您想要啟用的**診斷記錄類型**。 您稍後會在此文章中找到關於這些類別的詳細資料。 
+5. 在 [目的地詳細資料] 區段中，設定您想要的封存目標 (目的地)，例如儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
     ![[新增診斷設定] 頁面](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
-6.  選取工具列上的 [**儲存**] 以儲存診斷設定。
+6.  選取工具列上的 [儲存] 來儲存診斷設定。
 
-    新的設定大約會在 10 分鐘內生效。 之後，記錄就會在 [診斷記錄]**** 窗格內的已設定封存目標中顯示。
+    新的設定大約會在 10 分鐘內生效。 之後，記錄就會在 [診斷記錄] 窗格內的已設定封存目標中顯示。
 
     如需設定診斷的詳細資訊，請參閱 [Azure 診斷記錄概觀](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>診斷記錄類別
 
-事件中樞會針對下列類別來捕捉診斷記錄：
+事件中樞會擷取下列類別的診斷記錄：
 
 | 類別 | 描述 | 
 | -------- | ----------- | 
-| 封存記錄 | 捕捉[事件中樞 capture](event-hubs-capture-overview.md)作業的相關資訊，特別是與捕捉錯誤相關的記錄。 |
-| 作業記錄 | 捕捉在 Azure 事件中樞命名空間上執行的所有管理作業。 資料作業不會被捕捉，因為 Azure 事件中樞上執行的資料作業量很高。 |
-| 自動調整記錄 | 捕捉在事件中樞命名空間上完成的自動擴充作業。 |
-| Kafka 協調器記錄檔 | 捕捉與事件中樞相關的 Kafka 協調器作業。 |
-| Kafka 使用者錯誤記錄檔 | 捕捉事件中樞上呼叫之 Kafka Api 的相關資訊。 |
-| 事件中樞虛擬網路（VNet）連接事件 | 捕捉將流量傳送至事件中樞之 IP 位址和虛擬網路的相關資訊。 |
-| 客戶管理的金鑰使用者記錄 | 捕捉與客戶管理的金鑰相關的作業。 |
+| 封存記錄 | 擷取[事件中樞擷取](event-hubs-capture-overview.md)作業的相關資訊，具體而言就是與擷取錯誤相關的記錄。 |
+| 作業記錄 | 擷取在 Azure 事件中樞命名空間上執行的所有管理作業。 不會擷取資料作業，因為在 Azure 事件中樞上執行的資料作業量很高。 |
+| 自動調整記錄 | 擷取在事件中樞命名空間上完成的自動擴充作業。 |
+| Kafka 協調器記錄 | 擷取與事件中樞相關的 Kafka 協調器作業。 |
+| Kafka 使用者錯誤記錄 | 擷取在事件中樞上呼叫之 Kafka API 的相關資訊。 |
+| 事件中樞虛擬網路 (VNet) 連線事件 | 擷取傳送流量到事件中樞的 IP 位址和虛擬網路的相關資訊。 |
+| 客戶管理的金鑰使用者記錄 | 擷取與客戶管理的金鑰相關的作業。 |
 
 
 所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個項目都具有字串欄位，這些欄位會使用下列小節所述的格式。
@@ -79,12 +79,12 @@ ActivityId | 用於追蹤的內部識別碼
 trackingId | 用於追蹤的內部識別碼
 resourceId | Azure Resource Manager 資源識別碼
 eventHub | 事件中樞完整名稱 (包括命名空間名稱)
-partitionId | 要寫入的事件中樞分割區
-archiveStep | 可能的值： ArchiveFlushWriter、DestinationInit
+partitionId | 要寫入的事件中樞資料分割
+archiveStep | 可能值：ArchiveFlushWriter、DestinationInit
 startTime | 失敗開始時間
 failures | 發生失敗的次數
 durationInSeconds | 失敗持續時間
-訊息 | 錯誤訊息
+message | 錯誤訊息
 category | ArchiveLogs
 
 下列程式碼是封存記錄 JSON 字串的範例：
@@ -112,7 +112,7 @@ category | ArchiveLogs
 
 名稱 | 描述
 ------- | -------
-ActivityId | 用於追蹤目的的內部識別碼 |
+ActivityId | 內部識別碼，用來進行追蹤 |
 EventName | 作業名稱 |
 resourceId | Azure Resource Manager 資源識別碼 |
 SubscriptionId | 訂用帳戶識別碼 |
@@ -139,27 +139,37 @@ Example:
 }
 ```
 
-## <a name="autoscale-logs-schema"></a>自動調整記錄架構
-自動調整記錄 JSON 包含下表所列的元素：
+## <a name="autoscale-logs-schema"></a>自動調整記錄結構描述
+自動調整記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| TrackingId | 用於追蹤目的的內部識別碼 |
+| TrackingId | 內部識別碼，用來進行追蹤 |
 | ResourceId | Azure Resource Manager 資源識別碼。 |
-| 訊息 | 參考用訊息，其中提供自動擴充動作的詳細資料。 此訊息包含給定命名空間的輸送量單位先前和目前值，以及觸發了 TU 的擴大。 |
+| 訊息 | 參考訊息，其能提供自動擴充動作的詳細資料。 訊息會包含指定命名空間之輸送量單位先前與目前的值，以及觸發 TU 擴充的項目。 |
 
-## <a name="kafka-coordinator-logs-schema"></a>Kafka 協調器記錄架構
-Kafka 協調器記錄檔 JSON 包含下表所列的元素：
+以下是自動調整事件的範例： 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
+
+## <a name="kafka-coordinator-logs-schema"></a>Kafka 協調器記錄結構描述
+Kafka 協調器記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| RequestId | 要求識別碼，用於追蹤用途 |
+| RequestId | 要求識別碼，用來進行追蹤 |
 | ResourceId | Azure Resource Manager 資源識別碼 |
-| 作業 | 在群組協調期間完成的作業名稱 |
+| 作業 | 在群組協調期間完成之作業的名稱 |
 | ClientId | 用戶端識別碼 |
 | NamespaceName | 命名空間名稱 | 
 | SubscriptionId | Azure 訂用帳戶識別碼 |
-| 訊息 | 資訊或警告訊息，其中提供在群組協調期間完成之動作的詳細資料。 |
+| 訊息 | 參考或警告訊息，其能提供在群組協調期間完成之動作的詳細資料。 |
 
 ### <a name="example"></a>範例
 
@@ -176,32 +186,32 @@ Kafka 協調器記錄檔 JSON 包含下表所列的元素：
 }
 ```
 
-## <a name="kafka-user-error-logs-schema"></a>Kafka 使用者錯誤記錄架構
-Kafka 使用者錯誤記錄檔 JSON 包含下表所列的元素：
+## <a name="kafka-user-error-logs-schema"></a>Kafka 使用者錯誤記錄結構描述
+Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- |
-| TrackingId | 追蹤識別碼，用於追蹤用途。 |
+| TrackingId | 追蹤識別碼，用來進行追蹤。 |
 | NamespaceName | 命名空間名稱 |
 | Eventhub | 事件中樞名稱 |
 | PartitionId | 資料分割識別碼 |
 | GroupId | 群組識別碼 |
 | ClientId | 用戶端識別碼 |
 | ResourceId | Azure Resource Manager 資源識別碼。 |
-| 訊息 | 告知性訊息，其中提供錯誤的相關詳細資料 |
+| 訊息 | 參考訊息，其能提供錯誤的詳細資料 |
 
-## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中樞虛擬網路線上活動架構
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中樞虛擬網路連線事件結構描述
 
-事件中樞虛擬網路（VNet）線上活動 JSON 包含下表所列的元素：
+事件中樞虛擬網路 (VNet) 連線事件 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---  | ----------- | 
 | SubscriptionId | Azure 訂用帳戶識別碼 |
 | NamespaceName | 命名空間名稱 |
-| IPAddress | 連接到事件中樞服務之用戶端的 IP 位址 |
-| 動作 | 評估連接要求時，事件中樞服務所執行的動作。 支援的動作為「**接受**連線」和「**拒絕連接**」。 |
-| 原因 | 提供動作完成的原因 |
-| 計數 | 指定動作的發生次數 |
+| IPAddress | 連線到事件中樞服務之用戶端的 IP 位址 |
+| 動作 | 由事件中樞服務在評估連線要求時完成的動作。 支援的動作為 [接受連線] 和 [拒絕連線]。 |
+| 原因 | 提供完成動作的原因 |
+| Count | 指定動作的出現次數 |
 | ResourceId | Azure Resource Manager 資源識別碼。 |
 
 ### <a name="example"></a>範例
@@ -220,24 +230,24 @@ Kafka 使用者錯誤記錄檔 JSON 包含下表所列的元素：
 ```
 
 ## <a name="customer-managed-key-user-logs"></a>客戶管理的金鑰使用者記錄
-客戶管理的金鑰使用者記錄 JSON 包含下表所列的元素：
+客戶管理的金鑰使用者記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| 類別 | 訊息的類別目錄類型。 這是下列其中一個值： [**錯誤**] 和 [**資訊**] |
-| ResourceId | 內部資源識別碼，包括 Azure 訂用帳戶識別碼和命名空間名稱 |
-| KeyVault | Key Vault 資源的名稱 |
-| 機碼 | Key Vault 索引鍵的名稱。 |
-| 版本 | Key Vault 金鑰的版本 |
-| 作業 | 執行以處理要求的作業名稱 |
+| 類別 | 訊息的類別類型。 其為下列其中一個值：**error** 和 **info** |
+| ResourceId | 內部資源識別碼，其包括 Azure 訂用帳戶識別碼和命名空間名稱 |
+| KeyVault | 金鑰保存庫資源的名稱 |
+| Key | 金鑰保存庫金鑰的名稱。 |
+| 版本 | 金鑰保存庫金鑰的版本 |
+| 作業 | 為提供要求所完成之作業的名稱 |
 | 程式碼 | 狀態碼 |
-| 訊息 | 訊息，提供錯誤或告知性訊息的相關詳細資料 |
+| 訊息 | 訊息，其能提供錯誤或參考訊息的詳細資料 |
 
 
 
 ## <a name="next-steps"></a>後續步驟
 - [事件中樞簡介](event-hubs-what-is-event-hubs.md)
-- [事件中樞 API 總覽](event-hubs-api-overview.md)
+- [事件中樞範例](sdks.md)
 - 開始使用事件中心
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

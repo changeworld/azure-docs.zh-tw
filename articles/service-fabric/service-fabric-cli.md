@@ -3,14 +3,14 @@ title: 開始使用 Azure Service Fabric CLI
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何連線到叢集，以及如何管理應用程式。
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258937"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681794"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -18,7 +18,7 @@ Azure Service Fabric 命令列介面 (CLI) 是一個命令列公用程式，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 安裝之前，請確定您的環境已安裝 Python 和 pip。 如需詳細資訊，請參閱 [pip 快速入門文件](https://pip.pypa.io/en/latest/quickstart/)和正式的 [Python 安裝文件](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -30,7 +30,8 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 | CLI 版本   | 支援的執行階段版本 |
 |---------------|---------------------------|
-| 最新（~ = 9）  | 最新 (~=7)              |
+| 最新 (~=10) | 最新 (~=7.1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -61,9 +62,9 @@ pip install -I sfctl==1.1.0
 
 2. 開始安裝程式。
 
-3. 在提示字元的底部，選取 [將 Python 3.7 新增至路徑]****。
+3. 在提示字元的底部，選取 [將 Python 3.7 新增至路徑]。
 
-4. 選取 [立即安裝]****，並完成安裝。
+4. 選取 [立即安裝]，並完成安裝。
 
 現在您可以開啟新的命令視窗，並取得 Python 和 pip 的版本。
 

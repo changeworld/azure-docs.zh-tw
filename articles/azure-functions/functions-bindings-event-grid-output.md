@@ -1,35 +1,35 @@
 ---
-title: 適用于 Azure Functions 的 Azure 事件方格輸出系結
-description: 瞭解如何在 Azure Functions 中傳送事件方格事件。
+title: 適用於 Azure Functions 的 Azure 事件方格輸出繫結
+description: 了解如何在 Azure Functions 中傳送事件方格事件。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627682"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773957"
 ---
-# <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格輸出系結
+# <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用於 Azure Functions 的 Azure 事件方格輸出繫結
 
-使用事件方格輸出系結，將事件寫入至自訂主題。 您必須擁有[自訂主題的有效存取金鑰](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
+使用事件方格輸出繫結，以將事件寫入至自訂事件。 您必須具有[適用於自訂主題的有效存取金鑰](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-event-grid.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-event-grid.md)。
 
 > [!NOTE]
-> 事件方格輸出系結不支援共用存取簽章（SAS 權杖）。 您必須使用主題的存取金鑰。
+> 事件方格輸出繫結不支援共用存取簽章 (SAS 權杖)。 您必須使用主題的存取金鑰。
 
 > [!IMPORTANT]
-> 事件方格輸出系結僅適用于2.x 和更高版本的函式。
+> 事件方格輸出繫結僅適用於 Functions 2.x 版和更新版本。
 
 ## <a name="example"></a>範例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下列範例顯示[c #](functions-dotnet-class-library.md)函式，它會使用方法傳回值做為輸出，將訊息寫入至事件方格自訂主題：
+下列範例顯示的 [C# 函式](functions-dotnet-class-library.md) 可將訊息寫入至事件方格自訂主題，並使用方法傳回值作為輸出：
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -40,7 +40,7 @@ public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTim
 }
 ```
 
-下列範例顯示如何使用`IAsyncCollector`介面來傳送訊息批次。
+下列程式碼示範如何使用 `IAsyncCollector` 介面來傳送一批訊息。
 
 ```csharp
 [FunctionName("EventGridAsyncOutput")]
@@ -57,9 +57,9 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例顯示在函式*json*檔案中的事件方格輸出系結資料。
+下列範例顯示 *function.json* 檔案中的事件方格輸出繫結資料。
 
 ```json
 {
@@ -71,7 +71,7 @@ public static async Task Run(
 }
 ```
 
-以下是建立一個事件的 c # 腳本程式碼：
+以下是可建立一個事件的 C# 指令碼程式碼：
 
 ```cs
 #r "Microsoft.Azure.EventGrid"
@@ -85,7 +85,7 @@ public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogge
 }
 ```
 
-以下是建立多個事件的 c # 腳本程式碼：
+以下是可建立數個事件的 C# 指令碼程式碼：
 
 ```cs
 #r "Microsoft.Azure.EventGrid"
@@ -102,7 +102,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示在函式*json*檔案中的事件方格輸出系結資料。
+下列範例顯示 *function.json* 檔案中的事件方格輸出繫結資料。
 
 ```json
 {
@@ -114,7 +114,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
-以下是建立單一事件的 JavaScript 程式碼：
+以下是可建立單一事件的 JavaScript 指令碼程式碼：
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -132,7 +132,7 @@ module.exports = async function (context, myTimer) {
 };
 ```
 
-以下是建立多個事件的 JavaScript 程式碼：
+以下是可建立多個事件的 JavaScript 指令碼程式碼：
 
 ```javascript
 module.exports = function(context) {
@@ -162,21 +162,67 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 無法使用事件方格輸出系結。
+下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 然後，其會在事件中傳送至自訂事件方格主題，如 `topicEndpointUri` 所指定。
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+以下是透過設定 `EventGridOutputEvent`，將事件傳送至自訂事件方格主題的 Python 範例：
+
+```python
+import logging
+import azure.functions as func
+import datetime
+
+
+def main(eventGridEvent: func.EventGridEvent, 
+         outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
+
+    logging.log("eventGridEvent: ", eventGridEvent)
+
+    outputEvent.set(
+        func.EventGridOutputEvent(
+            id="test-id",
+            data={"tag1": "value1", "tag2": "value2"},
+            subject="test-subject",
+            event_type="test-event-1",
+            event_time=datetime.datetime.utcnow(),
+            data_version="1.0"))
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
-JAVA 無法使用事件方格輸出系結。
+Java 無法使用事件方格輸出繫結。
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-針對[c # 類別庫](functions-dotnet-class-library.md)，請使用[EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs)屬性。
+對於 [C# 類別庫](functions-dotnet-class-library.md)，請使用 [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) 屬性。
 
-屬性的函式會採用包含自訂主題名稱的應用程式設定名稱，以及包含主題索引鍵之應用程式設定的名稱。 如需這些設定的詳細資訊，請參閱[輸入 - 組態](#configuration)一節。 以下是 `EventGrid` 屬性範例：
+此屬性的建構函式會接受包含自訂主題名稱的應用程式設定名稱，以及包含主題金鑰的應用程式設定名稱。 如需這些設定的詳細資訊，請參閱[輸入 - 組態](#configuration)一節。 以下是 `EventGrid` 屬性範例：
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -189,9 +235,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 如需完整範例，請參閱[範例](#example)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -199,52 +245,52 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 無法使用事件方格輸出系結。
+Python 無法使用事件方格輸出繫結。
 
 # <a name="java"></a>[Java](#tab/java)
 
-JAVA 無法使用事件方格輸出系結。
+Java 無法使用事件方格輸出繫結。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`EventGrid`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `EventGrid` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設定為 "eventGrid"。 |
-|**方向** | n/a | 必須設定為 "out"。 當您在 Azure 入口網站中建立繫結時，會自動設定此參數。 |
+|**direction** | n/a | 必須設定為 "out"。 當您在 Azure 入口網站中建立繫結時，會自動設定此參數。 |
 |**name** | n/a | 函式程式碼中所使用的變數名稱，代表事件。 |
-|**topicEndpointUri** |**TopicEndpointUri** | 應用程式設定的名稱，其中包含自訂主題的 URI，例如`MyTopicEndpointUri`。 |
+|**topicEndpointUri** |**TopicEndpointUri** | 應用程式設定的名稱，其中包含自訂主題的 URI，例如 `MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 應用程式設定的名稱，其中包含自訂主題的存取金鑰。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> 請確定您將`TopicEndpointUri` configuration 屬性的值設定為應用程式設定的名稱，其中包含自訂主題的 URI。 請勿直接在這個屬性中指定自訂主題的 URI。
+> 請確定您會將 `TopicEndpointUri` 設定屬性的值設定為包含自訂主題 URI 的應用程式設定名稱。 請勿直接在此屬性中指定自訂主題的 URI。
 
-## <a name="usage"></a>使用狀況
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法參數（例如） `out EventGridEvent paramName`來傳送訊息。 若要寫入多則訊息，您可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 取代 `out EventGridEvent`。
+使用方法參數 (例如 `out EventGridEvent paramName`) 來傳送訊息。 若要寫入多則訊息，您可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 取代 `out EventGridEvent`。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數（例如） `out EventGridEvent paramName`來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 取代 `out EventGridEvent`。
+使用方法參數 (例如 `out EventGridEvent paramName`) 來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 取代 `out EventGridEvent`。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<name>`來存取輸出事件，其中`<name>`是在*函數. json*的`name`屬性中指定的值。
+使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是 *function.json* 的 `name` 屬性中指定的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 無法使用事件方格輸出系結。
+Python 無法使用事件方格輸出繫結。
 
 # <a name="java"></a>[Java](#tab/java)
 
-JAVA 無法使用事件方格輸出系結。
+Java 無法使用事件方格輸出繫結。
 
 ---
 

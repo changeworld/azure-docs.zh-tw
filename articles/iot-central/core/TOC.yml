@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: 使用 Databricks 建立自訂分析
           href: howto-create-custom-analytics.md
+        - name: 在 Power BI 中將資料視覺化
+          href: howto-connect-powerbi.md
     - name: 系統管理
       items:
         - name: 管理您的應用程式

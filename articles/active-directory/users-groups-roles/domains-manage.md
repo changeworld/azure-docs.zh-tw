@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582962"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845945"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
 
@@ -31,23 +31,27 @@ ms.locfileid: "82582962"
 
 1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 **Azure Active Directory**。
-3. 選取 [自訂網域名稱]****。
+3. 選取 [自訂網域名稱]。
   
-   ![開啟 [使用者管理] 頁面](./media/domains-manage/add-custom-domain.png)
+   ![開啟使用者管理頁面](./media/domains-manage/add-custom-domain.png)
 4. 選取您想要設為主要網域的網域名稱。
-5. 選取 [設為主要]**** 命令。 出現提示時，請確認您的選擇。
+5. 選取 [設為主要] 命令。 出現提示時，請確認您的選擇。
   
-   ![將功能變數名稱設為主要名稱](./media/domains-manage/make-primary-domain.png)
+   ![將網域名稱設為主要網域名稱](./media/domains-manage/make-primary-domain.png)
 
 您可以將目錄的主要網域名稱變更為任何已驗證的非同盟自訂網域。 變更目錄的主要網域時，並不會變更任何現有使用者的使用者名稱。
 
-## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>將自訂功能變數名稱新增至您的 Azure AD 組織
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>新增自訂網域名稱到您的 Azure AD 組織
 
 您最多可以新增 900 個受控網域名稱。 如果您要設定所有網域與內部部署 Active Directory 建立同盟，則最多可以在每個目錄中新增 450 個網域名稱。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>新增自訂網域的子網域
 
 如果您想要將第三層網域名稱新增至您的目錄，例如 'europe.contoso.com'，則應先新增並驗證第二層網域，例如 contoso.com。 Azure AD 會自動驗證子網域。 若要查看您新增的子網域是否通過驗證，請重新整理瀏覽器中的網域清單。
+
+附註
+
+如果您已將 contoso.com 網域新增至 Azure AD 租用戶，您也可以將子網域 europe.contoso.com 新增至第二個 Azure AD 租用戶。 新增子網域時，系統會提示您在 DNS 主機服務提供者中新增 TXT 記錄。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>如果您變更您的自訂網域名稱的 DNS 註冊機構，該怎麼辦
 
@@ -72,7 +76,7 @@ ms.locfileid: "82582962"
 若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
 
 * 您透過 Office 365 網域訂用帳戶服務購買網域
-* 您是代表另一個客戶組織管理的合作夥伴
+* 您是合作夥伴，代表其他客戶組織進行管理
 
 下列動作為執行 **ForceDelete** 作業的一部分：
 
@@ -90,10 +94,10 @@ ms.locfileid: "82582962"
 **問：為什麼網域刪除失敗時，會收到錯誤訊息，表示我在這個網域名稱中擁有由 Exchange 主控的群組？** <br>
 **答：** 目前，已啟用郵件安全性群組和分散式清單等特定群組由 Exchange 佈建，且需在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 手動清除。 可能會有停留的 ProxyAddresses 仰賴自訂網域名稱，且需要手動更新為其他網域名稱。 
 
-**問：我是以系統管理員\@身分登入 contoso.com，但我無法刪除功能變數名稱 "contoso.com"？**<br>
+**問：我已使用 admin\@contoso.com 身分登入，但為什麼我無法刪除網域名稱 “contoso.com”？**<br>
 **答：** 您不能參考您在使用者帳戶名稱中嘗試刪除的自訂網域名稱。 請確認全域管理員帳戶使用初始預設網域名稱 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全域管理員帳戶 (例如 admin@contoso.onmicrosoft.com) 或其他帳戶是 admin@fabrikam.com 的自訂網域名稱 (例如「fabrikam.com」) 登入。
 
-**問：我已按下 [刪除網域] `In Progress`按鈕，並看到刪除作業的狀態。需要多久的時間？如果失敗，會發生什麼事？**<br>
+**問：我已按下 [刪除網域] 按鈕，並看到刪除作業的`In Progress`狀態。需要多久的時間？如果失敗，會發生什麼事？**<br>
 **答：** 刪除網域作業是非同步的背景工作，會將所有操考重新命名為網域名稱。 此作業應會在數分鐘內完成。 如果網域刪除失敗，請確定您不擁有：
 
 * 使用 appIdentifierURI 設定網域名稱的應用程式
@@ -102,12 +106,12 @@ ms.locfileid: "82582962"
 
 如果您發現任何不符合的條件，請手動清除參考，並再次嘗試刪除網域。
 
-## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft Graph API 來管理功能變數名稱
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft Graph API 來管理網域名稱
 
-在 Azure Active Directory 中，大部分的功能變數名稱管理工作也可以使用 Microsoft PowerShell 來完成，或以程式設計方式使用 Microsoft Graph API。
+在 Azure Active Directory 中，大部分的網域名稱管理工作也都可以使用 Microsoft PowerShell 來完成，或使用 Microsoft Graph API 以程式設計方式來完成。
 
 * [使用 PowerShell 管理 Azure AD 中的網域名稱](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [網域資源類型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
+* [網域資源類型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 

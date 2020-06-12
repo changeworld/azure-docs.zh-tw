@@ -1,15 +1,15 @@
 ---
-title: 教學課程-部署多容器群組-範本
-description: 在本教學課程中，您將瞭解如何使用具有 Azure CLI 的 Azure Resource Manager 範本，在 Azure 容器實例中部署具有多個容器的容器群組。
+title: 教學課程 - 部署多容器群組 - 範本
+description: 在此教學課程中，您將了解如何使用 Azure Resource Manager 範本搭配 Azure CLI，在 Azure 容器執行個體中部署具有多個容器的容器群組。
 ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
-ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b08a974cbbdc9e4bdf1594672f82748bfabe88b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533630"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653523"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教學課程：使用 Resource Manager 範本部署多容器群組
 
@@ -17,16 +17,16 @@ ms.locfileid: "74533630"
 > * [YAML](container-instances-multi-container-yaml.md)
 > * [Resource Manager](container-instances-multi-container-group.md)
 
-Azure 容器執行個體支援使用[容器群組](container-instances-container-groups.md)將多個容器部署至單一主機。 當建立應用程式側車以進行記錄、監視或任何其他設定（其中服務需要第二個附加的進程）時，容器群組會很有用。
+Azure 容器執行個體支援使用[容器群組](container-instances-container-groups.md)將多個容器部署至單一主機。 在建置應用程式 Sidecar 以便記錄、監視或進行服務需要另一個附加程序的任何其他設定時，容器群組非常有用。
 
-在本教學課程中，您會遵循使用 Azure CLI 部署 Azure Resource Manager 範本，以執行簡單的雙容器側車設定的步驟。 您會了解如何：
+在此教學課程中，您要依照步驟，使用 Azure CLI 部署 Azure Resource Manager 範本，以執行簡單的雙容器 Sidecar 組態。 您會了解如何：
 
 > [!div class="checklist"]
 > * 設定多容器群組範本
 > * 部署容器群組
-> * 查看容器的記錄
+> * 檢視容器記錄
 
-當您需要使用容器群組來部署其他 Azure 服務資源（例如，Azure 檔案儲存體共用或虛擬網路）時，可以針對案例輕鬆地調整 Resource Manager 範本。 
+當您需要使用容器群組部署其他 Azure 服務資源 (例如，Azure 檔案共用或虛擬網路) 時，可以隨時調整 Resource Manager 範本以因應各種情況。 
 
 > [!NOTE]
 > 多容器群組目前僅限於 Linux 容器。 
@@ -37,7 +37,7 @@ Azure 容器執行個體支援使用[容器群組](container-instances-container
 
 ## <a name="configure-a-template"></a>設定範本
 
-首先，將下列 JSON 複製到名為`azuredeploy.json`的新檔案中。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code 在您的工作目錄中建立檔案：
+一開始先將下列 JSON 複製到名為 `azuredeploy.json` 的新檔案中。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code，在工作目錄中建立檔案：
 
 ```
 code azuredeploy.json
@@ -111,11 +111,11 @@ code azuredeploy.json
           "ports": [
             {
               "protocol": "tcp",
-              "port": "80"
+              "port": 80
             },
             {
                 "protocol": "tcp",
-                "port": "8080"
+                "port": 8080
             }
           ]
         }
@@ -151,7 +151,7 @@ code azuredeploy.json
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令來部署範本。
+使用 [az group deployment create][az-group-deployment-create] 命令部署範本。
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
@@ -161,7 +161,7 @@ az group deployment create --resource-group myResourceGroup --template-file azur
 
 ## <a name="view-deployment-state"></a>檢視部署狀態
 
-若要檢視部署的狀態，請使用下列 [az container show][az-container-show] 命令：
+若要檢視部署狀態，請使用下列 [az container show][az-container-show] 命令：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
@@ -177,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>檢視容器記錄
 
-使用 [az container logs][az-container-logs] 命令，檢視容器的記錄輸出。 `--container-name` 引數會指定要從中提取記錄的容器。 在此範例中， `aci-tutorial-app`會指定容器。
+使用 [az container logs][az-container-logs] 命令，檢視容器的記錄輸出。 `--container-name` 引數會指定要從中提取記錄的容器。 在此範例中，已指定 `aci-tutorial-app` 容器。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -192,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-若要查看側車容器的記錄，請執行指定`aci-tutorial-sidecar`容器的類似命令。
+若要查看 Sidecar 容器的記錄，請執行類似指定 `aci-tutorial-sidecar` 容器的命令。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -218,20 +218,20 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-如您所見，Sidecar 會透過群組的區域網路定期地向主要 Web 應用程式提出 HTTP 要求，以確保它正在執行。 此側車範例可以擴充，以在收到的 HTTP 回應碼不`200 OK`是時觸發警示。
+如您所見，Sidecar 會透過群組的區域網路定期地向主要 Web 應用程式提出 HTTP 要求，以確保它正在執行。 您可以擴充此 Sidecar 範例，以便在其收到 `200 OK` 以外的 HTTP 回應碼時觸發警示。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已使用 Azure Resource Manager 範本在 Azure 容器實例中部署多容器群組。 您已了解如何︰
+在此教學課程中，您使用 Azure Resource Manager 範本，在 Azure 容器執行個體中部署多容器群組。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 設定多容器群組範本
 > * 部署容器群組
-> * 查看容器的記錄
+> * 檢視容器記錄
 
-如需其他範本範例，請參閱[適用于 Azure 容器實例的 Azure Resource Manager 範本](container-instances-samples-rm.md)。
+如需其他範本範例，請參閱 [Azure 容器執行個體的 Azure Resource Manager 範本](container-instances-samples-rm.md)。
 
-您也可以使用[YAML](container-instances-multi-container-yaml.md)檔案來指定多個容器群組。 由於 YAML 格式的本質較簡潔，當您的部署只包含容器實例時，使用 YAML 檔案進行部署是不錯的選擇。
+您也可以使用 [YAML 檔案](container-instances-multi-container-yaml.md)，指定多容器群組。 YAML 格式的本質較簡潔，因此當您的部署僅包含容器執行個體時，建議您使用 YAML 檔案進行部署。
 
 
 <!-- LINKS - Internal -->

@@ -8,50 +8,50 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628737"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831886"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
-本文說明 Azure 串流分析輸入連線的常見問題、如何針對輸入問題進行疑難排解，以及如何修正這些問題。 許多疑難排解步驟都需要針對您的串流分析作業啟用資源記錄。 如果您沒有啟用資源記錄，請參閱[使用資源記錄針對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
+此文章說明 Azure 串流分析輸入連線的常見問題、如何對輸入問題進行疑難排解，以及如何修正問題。 需要對串流分析作業啟用資源記錄，許多疑難排解步驟才能執行。 如果您未啟用資源記錄，請參閱[使用資源記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="input-events-not-received-by-job"></a>作業未收到輸入事件 
 
-1.  測試您的輸入和輸出連線能力。 針對各個輸入和輸出使用 [測試連線]**** 按鈕，驗證輸入及輸出的連線能力。
+1.  測試輸入和輸出連線能力。 針對各個輸入和輸出使用 [測試連線] 按鈕，驗證輸入及輸出的連線能力。
 
 2.  檢查您的輸入資料。
 
-    1. 針對每個輸入使用 [[**範例資料**](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
+    1. 針對每個輸入使用 [[範例資料](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
         
-    1. 檢查範例資料以瞭解架構和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+    1. 檢查範例資料以了解結構描述和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) \(英文\)。
     
-    1. 檢查[事件中樞計量](../event-hubs/event-hubs-metrics-azure-monitor.md)，以確保正在傳送事件。 如果事件中樞接收訊息，則訊息計量應大於零。
+    1. 檢查[事件中樞計量](../event-hubs/event-hubs-metrics-azure-monitor.md)以確保系統會傳送事件。 如果事件中樞能接收到訊息，則訊息計量應該要大於零。
 
-3.  請確定您已在輸入預覽中選取時間範圍。 選擇 [**選取時間範圍**]，然後在測試查詢之前輸入取樣持續時間。
+3.  確定您已在輸入預覽中選取時間範圍。 在測試查詢之前，請選擇 [選取時間範圍]，然後輸入範例持續時間。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正確的輸入事件導致還原序列化錯誤 
 
-當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如，格式不正確的訊息可能是在 JSON 物件中遺漏括弧或大括弧所造成，或是在時間欄位中有不正確的時間戳記格式。 
+當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如，格式錯誤的訊息可能是在 JSON 物件中遺漏括弧或大括弧所導致，或是由時間欄位中不正確的時間戳記格式所導致。 
  
-當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入]**** 圖格上會顯示警告符號。 只要作業處於執行中狀態，下列警告符號就會存在：
+當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入] 圖格上會顯示警告符號。 只要作業處於執行中狀態，下列警告符號就會存在：
 
 ![Azure 串流分析輸入圖格](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-啟用資源記錄，以查看錯誤的詳細資料，以及導致錯誤的訊息（裝載）。 有許多原因會造成還原序列化錯誤。 如需有關特定還原序列化錯誤的詳細資訊，請參閱[輸入資料錯誤](data-errors.md#input-data-errors)。 如果未啟用資源記錄，Azure 入口網站將會提供簡短通知。
+啟用資源記錄以檢視錯誤及導致該錯誤之訊息 (承載) 的詳細資料。 有許多原因會造成還原序列化錯誤。 如需特定還原序列化錯誤的詳細資訊，請參閱[輸入資料錯誤](data-errors.md#input-data-errors)。 如果未啟用資源記錄，Azure 入口網站中將會提供簡短通知。
 
-![輸入詳細資料警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+![[輸入詳細資料] 警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-如果訊息裝載大於 32 KB 或為二進位格式，請執行[GitHub 範例存放庫](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中提供的 CheckMalformedEvents.cs 程式碼。 此程式碼讀取分割區識別碼、位移，並列印位於該位移的資料。 
+在訊息承載大於 32 KB 或為二進位格式的情況下，請執行 CheckMalformedEvents.cs 程式碼，其於 [GitHub 範例存放庫](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH) \(英文\) 中提供。 此程式碼讀取分割區識別碼、位移，並列印位於該位移的資料。 
 
-## <a name="job-exceeds-maximum-event-hub-receivers"></a>作業超過事件中樞接收器的上限
+## <a name="job-exceeds-maximum-event-hub-receivers"></a>作業超過事件中樞接收器數目上限
 
-使用事件中樞的最佳作法是使用多個取用者群組來進行作業擴充性。 在特定輸入的串流分析作業中，其讀取器數量會影響單一取用者群組中的讀取器數量。 接收器精確數量會以相應放大拓撲邏輯的內部實作詳細資料為基礎，並且不會對外公開。 讀取器數量會在作業開始時或作業升級期間變更。
+使用事件中樞的最佳做法是使用多個取用者群組，以確保作業可擴縮性。 在特定輸入的串流分析作業中，其讀取器數量會影響單一取用者群組中的讀取器數量。 接收器精確數量會以相應放大拓撲邏輯的內部實作詳細資料為基礎，並且不會對外公開。 讀取器數量會在作業開始時或作業升級期間變更。
 
-當接收器數目超過最大值時，會顯示下列錯誤訊息。 錯誤訊息包含在取用者群組下對事件中樞進行的現有連線清單。 此標記`AzureStreamAnalytics`表示連線來自 Azure 串流服務。
+當接收器數目超過上限時，會顯示下列錯誤訊息。 錯誤訊息包含針對取用者群組底下之事件中樞所進行的現有連線清單。 `AzureStreamAnalytics` 標籤會指出連線是來自 Azure 串流服務。
 
 ```
 The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
@@ -73,19 +73,19 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 1. 登入 Azure 入口網站。
 
-2. 找出您的事件中樞。
+2. 找到您的事件中樞。
 
-3. 選取 [實體]**** 標題下方的 [事件中樞]****。
+3. 選取 [實體] 標題下方的 [事件中樞]。
 
 4. 依名稱選取事件中樞。
 
-5. 在 [事件中樞執行個體]**** 頁面上，[實體]**** 標題下方，選取 [取用者群組]****。 隨即列出名為 **$Default** 的取用者群組。
+5. 在 [事件中樞執行個體] 頁面上，[實體] 標題下方，選取 [取用者群組]。 隨即列出名為 **$Default** 的取用者群組。
 
-6. 選取 [+ 取用者群組]**** 以新增取用者群組。 
+6. 選取 [+ 取用者群組] 以新增取用者群組。 
 
    ![在事件中樞新增取用者群組](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. 當您在串流分析作業中建立輸入以指向事件中樞時，您已指定取用者群組。 當未指定任何時，會使用 **$Default** 。 一旦您建立新的取用者群組後，請在串流分析作業中編輯事件中樞輸入，並指定新取用者群組的名稱。
+7. 當您在串流分析作業中建立輸入以指向事件中樞時，您已指定取用者群組。 **$Default** 用於未指定任何項目時。 一旦您建立新的取用者群組後，請在串流分析作業中編輯事件中樞輸入，並指定新取用者群組的名稱。
 
 ## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>每個分割區的讀取器超過事件中樞上限
 
@@ -93,11 +93,11 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 讀取器數量 (每個分割區) 超過事件中樞上限 (5 個) 的情況如下：
 
-* 多個 SELECT 陳述式︰ 如果您使用多個 SELECT 陳述式參照**相同**的事件中樞輸入，則每個 SELECT 陳述式皆會造成新的接收器建立。
+* 多個 SELECT 陳述式：如果您使用多個 SELECT 陳述式參照**相同**的事件中樞輸入，則每個 SELECT 陳述式皆會造成新的接收器建立。
 
-* UNION︰當您使用 UNION 時，就有可能會有多個輸入參照**相同**的事件中樞和取用者群組。
+* UNION：當您使用 UNION 時，就有可能會有多個輸入參照**相同**的事件中樞和取用者群組。
 
-* SELF JOIN︰當您使用 SELF JOIN 作業時，就可能發生參照**相同**事件中樞多次的情形。
+* SELF JOIN：當您使用 SELF JOIN 作業時，就可能發生參照**相同**事件中樞多次的情形。
 
 以下最佳做法可減少讀取器數量 (每個分割區) 超過事件中樞上限 (5 個) 的情況。
 
@@ -141,12 +141,12 @@ FROM data
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77483749"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827160"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 無縫單一登入
 
@@ -31,19 +31,19 @@ ms.locfileid: "77483749"
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-無縫 SSO 可以與[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)或[傳遞驗證](how-to-connect-pta.md)登入方法合併使用。 無縫 SSO 不適用於 Active Directory 同盟服務 (ADFS)__。
+無縫 SSO 可以與[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)或[傳遞驗證](how-to-connect-pta.md)登入方法合併使用。 無縫 SSO 不適用於 Active Directory 同盟服務 (ADFS)。
 
 ![無縫單一登入](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->無縫 SSO 只需要將使用者的裝置**加入網域**，但不會用於已[加入 Azure AD](../devices/concept-azure-ad-join.md)或已[加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md)的裝置。 Azure AD 加入的 SSO，並根據主要的重新整理[權杖](../devices/concept-primary-refresh-token.md)來加入混合式 Azure AD。
+>無縫 SSO 只需要使用者的裝置**已加入網域**，但其不用於[已加入 Azure AD ](../devices/concept-azure-ad-join.md) 或[已加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的裝置上。 已加入 Azure AD、已加入混合式 Azure AD，以及 Azure AD 的已註冊裝置上的 SSO，是以[主要重新整理權杖](../devices/concept-primary-refresh-token.md)為基礎來運作。
 
 ## <a name="key-benefits"></a>主要權益
 
-- 良好的使用者體驗**
+- 良好的使用者體驗
   - 使用者會自動登入內部部署和雲端式應用程式。
   - 使用者不需要重複輸入其密碼。
-- 容易部署和管理**
+- 容易部署和管理
   - 在內部部署上不需要任何其他元件，即可進行這項工作。
   - 與任何雲端驗證方法搭配運作：[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)或[傳遞驗證](how-to-connect-pta.md)。
   - 可以推出給使用群組原則的一部分使用者或所有使用者。
@@ -53,8 +53,8 @@ ms.locfileid: "77483749"
 
 - 登入使用者名稱可以是內部部署的預設使用者名稱 (`userPrincipalName`)，或在 Azure AD Connect 中設定的另一個屬性 (`Alternate ID`)。 兩種使用案例均可行，因為無縫 SSO 在 Kerberos 票證中使用 `securityIdentifier` 宣告在 Azure AD 中查詢對應的使用者物件。
 - 無縫 SSO 是一種靈活變換的功能。 如果因任何原因而失敗，使用者登入體驗會改回其一般行為；亦即，使用者必須在登入頁面上輸入密碼。
-- 如果應用`https://myapps.microsoft.com/contoso.com`程式（例如）轉送`domain_hint` （OpenID connect）或`whr` （SAML）參數來識別您的租使用者，或`login_hint`在其 Azure AD 登入要求中，將使用者識別為參數，則會自動登入使用者，而不需要輸入使用者名稱或密碼。
-- 如果應用`https://contoso.sharepoint.com`程式（例如，）將登入要求傳送至設定為租使用者的 Azure AD 端點（也就是）， `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>`而不是 Azure AD 的通用端點（也就是）， `https://login.microsoftonline.com/common/<...>`使用者也會獲得無訊息登入體驗。
+- 如果應用程式 (例如 `https://myapps.microsoft.com/contoso.com`) 在其 Azure AD 登入要求中轉送 `domain_hint` (OpenID Connect) 或 `whr` (SAML) 參數來識別您的租用戶，或是轉送 `login_hint` 參數來識別使用者，則會自動將使用者登入，而不需要輸入使用者名稱或密碼。
+- 如果應用程式 (例如，`https://contoso.sharepoint.com`) 將登入要求傳送至 Azure AD 之設定為租用戶的端點 (也就是 `https://login.microsoftonline.com/contoso.com/<..>` 或 `https://login.microsoftonline.com/<tenant_ID>/<..>`) 而不是 Azure AD 的一般端點 (也就是 `https://login.microsoftonline.com/common/<...>`)，使用者也可獲得無訊息登入體驗。
 - 支援登出。 這可讓使用者選擇使用另一個 Azure AD 帳戶來進行登入，而不自動使用「無縫 SSO」來自動登入。
 - 使用非互動式流程，來支援 Office 365 Win32 用戶端 (Outlook、Word、Excel 和其他產品) 16.0.8730.xxxx 版和更新版本。 針對 OneDrive，您必須啟用 [OneDrive 無訊息設定功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) \(英文\) 以獲得無訊息登入體驗。
 - 您可以透過 Azure AD Connect 啟用它。
@@ -75,7 +75,7 @@ ms.locfileid: "77483749"
 
 \*\*需要 Internet Explorer 第 10 版或更新版本。 停用增強保護模式
 
-\*\*\*需要[其他](how-to-connect-sso-quick-start.md#browser-considerations)設定
+\*\*\*需要[其他設定](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >對於 Windows 10，建議使用 [Azure AD Join](../devices/concept-azure-ad-join.md) 以獲得 Azure AD 最佳單一登入體驗。
@@ -84,8 +84,8 @@ ms.locfileid: "77483749"
 
 - [**快速入門**](how-to-connect-sso-quick-start.md) - 開始使用 Azure AD 無縫 SSO。
 - [**部署方案**](https://aka.ms/deploymentplans/sso) - 逐步部署方案。
-- [**技術深入探討**](how-to-connect-sso-how-it-works.md)-瞭解這項功能的運作方式。
-- [**常見問題**](how-to-connect-sso-faq.md)-常見問題的解答。
-- [**疑難排解**](tshoot-connect-sso.md)-瞭解如何解決此功能的常見問題。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -用於提出新的功能要求。
+- [**技術性深入探討**](how-to-connect-sso-how-it-works.md) - 了解這項功能的運作方式。
+- [**常見問題集**](how-to-connect-sso-faq.md) - 常見問題集的答案。
+- [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用於提出新的功能要求。
 

@@ -1,24 +1,24 @@
 ---
 title: 元件
-description: Azure 遠端呈現範圍中元件的定義
+description: Azure 遠端轉譯範圍中的元件定義
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb8b38addef736914a8627971e57ea2b173293d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681892"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758736"
 ---
 # <a name="components"></a>元件
 
-Azure 遠端呈現使用[實體元件系統](https://en.wikipedia.org/wiki/Entity_component_system)模式。 雖然[實體](entities.md)代表物件的位置和階層式組合，但元件會負責執行行為。
+Azure 遠端轉譯使用[實體元件系統](https://en.wikipedia.org/wiki/Entity_component_system) \(英文\) 模式。 雖然[實體](entities.md)代表物件的位置和階層式組合，但元件會負責實作行為。
 
-最常用的元件類型是「[網格元件](meshes.md)」，可將網格新增至轉譯管線。 同樣地，使用[light 元件](../overview/features/lights.md)來新增光源和[剪下平面元件](../overview/features/cut-planes.md)，是用來切割開啟的網格。
+最常使用的元件類型是[網狀元件](meshes.md)，可將網格新增至轉譯管線。 同樣地，[光線元件](../overview/features/lights.md)會用來新增光源，而[切割平面元件](../overview/features/cut-planes.md)會用來剪開網格。
 
-所有這些元件都使用其所連接之實體的轉換（位置、旋轉、縮放）做為參考點。
+所有這些元件都使用其所連結實體的轉換 (位置、旋轉、縮放) 作為其參考點。
 
 ## <a name="working-with-components"></a>使用元件
 
@@ -39,15 +39,29 @@ lightComponent.Destroy();
 lightComponent = null;
 ```
 
-元件會在建立時附加至實體。 之後就無法將它移到另一個實體。 當元件的擁有者`Component.Destroy()`實體終結時，會明確地使用或自動刪除元件。
+```cpp
+// create a point light component
+ApiHandle<AzureSession> session = GetCurrentlyConnectedSession();
 
-一次只能將每個元件類型的一個實例加入至實體。
+ApiHandle<PointLightComponent> lightComponent = session->Actions()->CreateComponent(ObjectType::PointLightComponent, ownerEntity)->as<PointLightComponent>();
+
+// ...
+
+// destroy the component
+lightComponent->Destroy();
+lightComponent = nullptr;
+```
+
+
+元件會在建立時連結至實體。 之後就無法將其移動到另一個實體。 當元件的擁有者實體終結時，元件會以 `Component.Destroy()` 明確地刪除或自動刪除。
+
+每個元件類型的執行個體每次只能有一個新增至實體。
 
 ## <a name="unity-specific"></a>Unity 特定
 
-Unity 整合有額外的擴充功能，可與元件互動。 請參閱[Unity 遊戲物件和元件](../how-tos/unity/objects-components.md)。
+Unity 整合有額外的延伸模組功能，可與元件互動。 請參閱 [Unity 遊戲物件和元件](../how-tos/unity/objects-components.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [物件界限](object-bounds.md)
-* [網狀](meshes.md)
+* [網格](meshes.md)

@@ -4,16 +4,19 @@
   items:
     - name: 什麼是 Azure 藍圖？
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: 快速入門
   expanded: true
   items:
     - name: 建立藍圖 - 入口網站
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: 建立藍圖 - PowerShell
+      href: ./create-blueprint-portal.md
+    - name: 建立藍圖 - Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: 建立藍圖 - Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: 建立藍圖 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: 參考
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: 適用於 .NET 的 Azure SDK
@@ -285,7 +290,7 @@
     - name: GitHub - Azure 藍圖範例
       href: 'https://github.com/Azure/azure-blueprints'
     - name: 適用於 Azure 藍圖的 Microsoft 問答集
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: 治理 YouTube 頻道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Azure 藍圖概觀

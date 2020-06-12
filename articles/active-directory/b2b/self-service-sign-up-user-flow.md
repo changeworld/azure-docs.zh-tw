@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594727"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712344"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>將自助式註冊使用者流程新增至應用程式 (預覽)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83594727"
 | 自助式註冊是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
-將您的使用者流程與應用程式建立關聯，可讓您啟用該應用程式的註冊。 您可以選擇多個要與使用者流程建立關聯的應用程式。 當您將使用者流程與一或多個應用程式建立關聯後，瀏覽該應用程式的使用者即可透過使用者流程中設定的選項進行註冊。
+您可以針對由您的組織所建置的應用程式建立使用者流程。 將您的使用者流程與應用程式建立關聯，可讓您啟用該應用程式的註冊。 您可以選擇多個要與使用者流程建立關聯的應用程式。 當您將使用者流程與一或多個應用程式建立關聯後，瀏覽該應用程式的使用者即可透過使用者流程中設定的選項進行註冊並取得來賓帳戶。
+
+> [!NOTE]
+> 您可以將由您的組織所建置的應用程式與使用者流程建立關聯。 使用者流程不能用於 Microsoft 應用程式，例如 SharePoint 或 Teams。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -33,9 +36,12 @@ ms.locfileid: "83594727"
 
 Azure AD 是自助式註冊的預設識別提供者。 這表示使用者依預設可使用 Azure AD 帳戶進行註冊。 社交識別提供者也可以包含在這些註冊流程中，以支援 Google 和 Facebook 帳戶。
 
-- [將 Google 新增至您的社交識別提供者清單](google-federation.md)
 - [將 Facebook 新增至您的社交識別提供者清單](facebook-federation.md)
- 
+- [將 Google 新增至您的社交識別提供者清單](google-federation.md)
+
+> [!NOTE]
+> 在目前的預覽中，如果有自助式註冊使用者流程與應用程式相關聯，且您將該應用程式的邀請傳送給使用者，該使用者將無法使用 Gmail 帳戶來兌換邀請。 因應措施是讓該使用者完成自助式註冊程序。 或者，他們可以透過存取不同的應用程式，或是使用其「我的應用程式」入口網站 (https://myapps.microsoft.com ) 來兌換邀請。
+
 ### <a name="define-custom-attributes-optional"></a>定義自訂屬性 (選擇性)
 
 使用者屬性是在自助式註冊期間向使用者收集的值。 Azure AD 隨附內建的屬性集，但您可以建立自訂屬性，以便在使用者流程中使用。 您也可以使用 Microsoft Graph API 來讀取和寫入這些屬性。 請參閱[定義使用者流程的自訂屬性](user-flow-add-custom-attributes.md)。

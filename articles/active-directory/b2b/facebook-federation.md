@@ -12,16 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92fbd254f223e2c7eb70a4e86bb7e904294395e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595077"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712265"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>將 Facebook 新增為外部身分識別的識別提供者
 
 您可以將 Facebook 新增至您的自助式註冊使用者流程 (預覽)，讓使用者可以使用自己的 Facebook 帳戶來登入您的應用程式。 若要讓使用者能夠使用 Facebook 登入，您必須先[為您的租用戶啟用自助式註冊](self-service-sign-up-user-flow.md)。 將 Facebook 新增為身分識別提供者之後，請設定應用程式的使用者流程，然後選取 Facebook 作為其中一個登入選項。
+
+> [!NOTE]
+> 使用者只能使用其 Facebook 帳戶來透過應用程式使用自助式註冊和使用者流程進行註冊。 使用者無法使用 Facebook 帳戶接受邀請及兌換其邀請。
 
 ## <a name="create-an-app-in-the-facebook-developers-console"></a>在 Facebook 開發人員主控台中建立應用程式
 
@@ -53,7 +56,9 @@ ms.locfileid: "83595077"
 18. 若要讓 Azure AD 能使用您的 Facebook 應用程式，請選取頁面右上方的 [狀態選取器]，然後將其切換至 [開啟]，以將應用程式設為公用，然後選取 [切換模式]。 此時，狀態應該會從 [開發] 變更為 [作用中]。
     
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>將 Facebook 帳戶設為識別提供者
+現在，您會設定 Facebook 用戶端識別碼和用戶端密碼，方法是在 Azure AD 入口網站中加以輸入，或是使用 PowerShell 來輸入。 您可以在已啟用自助式註冊的應用程式上透過使用者流程進行註冊，來測試您的 Facebook 設定。
 
+### <a name="to-configure-facebook-federation-in-the-azure-ad-portal"></a>在 Azure AD 入口網站中設定 Facebook 同盟
 1. 以 Azure AD 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [Azure 服務] 底下，選取 [Azure Active Directory]。
 3. 在左側功能表中，選取 [外部身分識別]。
@@ -64,8 +69,38 @@ ms.locfileid: "83595077"
    ![顯示 [新增社交識別提供者] 頁面的螢幕擷取畫面](media/facebook-federation/add-social-identity-provider-page.png)
 
 7. 選取 [儲存]。
+### <a name="to-configure-facebook-federation-by-using-powershell"></a>使用 PowerShell 設定 Facebook 同盟
+1. 安裝最新版的 Azure AD PowerShell for Graph 模組 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
+2. 執行下列命令：`Connect-AzureAD`。
+3. 在出現登入提示時，使用受控的全域系統管理員帳戶來登入。  
+4. 執行以下命令： 
+   
+   `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
+ 
+   > [!NOTE]
+   > 使用您於上方在 Facebook 開發人員主控台所建立之應用程式中的用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱 [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
+
+## <a name="how-do-i-remove-facebook-federation"></a>要如何移除 Facebook 同盟？
+您可以刪除 Facebook 同盟設定。 如果您這麼做，使用其 Facebook 帳戶透過使用者流程註冊的所有使用者都將無法登入。 
+
+### <a name="to-delete-facebook-federation-in-the-azure-ad-portal"></a>在 Azure AD 入口網站中刪除 Facebook 同盟： 
+1. 移至 [Azure 入口網站](https://portal.azure.com)。 在左窗格中，選取 [Azure Active Directory]。 
+2. 選取 [外部身分識別]。
+3. 選取 [所有識別提供者]。
+4. 在 [Facebook] 行上，選取操作功能表 ( **...** )，然後選取 [刪除]。 
+5. 選取 [是] 以確認要刪除。
+
+### <a name="to-delete-facebook-federation-by-using-powershell"></a>使用 PowerShell 刪除 Facebook 同盟： 
+1. 安裝最新版的 Azure AD PowerShell for Graph 模組 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
+2. 執行 `Connect-AzureAD`。  
+4. 在出現登入提示時，使用受控的全域管理員帳戶來登入。  
+5. 輸入下列命令：
+
+    `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
+
+   > [!NOTE]
+   > 如需詳細資訊，請參閱 [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [邀請外部使用者進行共同作業](add-users-administrator.md)
 - [新增應用程式的自助式註冊](self-service-sign-up-user-flow.md)

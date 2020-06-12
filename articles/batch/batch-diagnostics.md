@@ -1,15 +1,15 @@
 ---
 title: 計量、警示和診斷記錄
 description: 記錄並分析 Azure Batch 帳戶資源 (如集區和工作) 的診斷記錄事件。
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a33f71cd185a327bfe6852b9acd7d7317b94c2c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117296"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726735"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用於診斷評估和監視的 Batch 計量、警示和記錄
 
@@ -34,13 +34,13 @@ ms.locfileid: "82117296"
 
 檢視所有 Batch 帳戶計量： 
 
-1. 在入口網站中，按一下 [**所有服務** > ] [**Batch 帳戶**]，然後按一下您的 Batch 帳戶名稱。
-2. 在 [監視]**** 下，按一下 [計量]****。
-3. 選取一或多個計量。 如有需要，可使用 [訂閱]****、[資源群組]****、[資源類型]**** 和 [資源]**** 下拉式清單，來選取其他資源計量。
-    * 針對以計數為基礎的計量（例如「專用核心計數」或「低優先順序節點計數」），請使用「平均」匯總。 若為以事件為基礎的計量（例如「集區調整大小完成事件」），請使用「計數」匯總。
+1. 在入口網站中，按一下 [所有服務] > [Batch 帳戶]，然後按一下您的 Batch 帳戶名稱。
+2. 在 [監視] 下，按一下 [計量]。
+3. 選取一或多個計量。 如有需要，可使用 [訂閱]、[資源群組]、[資源類型]和 [資源] 下拉式清單，來選取其他資源計量。
+    * 針對以計數為基礎的計量 (例如「專用核心計數」或「低優先順序節點計數」)，請使用「平均」彙總。 針對以事件為基礎的計量 (例如「集區調整大小完成事件」)，請使用「計數」彙總。
 
 > [!WARNING]
-> 請勿使用「總和」匯總，這會加總在圖表期間收到的所有資料點值
+> 請勿使用「總和」彙總，這會將圖表期間收到的所有資料點的值相加
 > 
 > 
 
@@ -56,17 +56,17 @@ ms.locfileid: "82117296"
 
 ## <a name="batch-metric-alerts"></a>Batch 計量警示
 
-(選擇性) 設定幾近即時的「計量警示」**，當指定的計量值超出您指派的閾值時，就會觸發此警示。 當警示為「已啟動」時 (超出閾值且符合警示條件時)，以及當警示為「已解決」時 (再次超出閾值且不再符合條件時)，您選擇的警示會產生[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 不建議使用以單一資料量為基礎的警示，因為計量可能會未按順序傳遞、遺失資料，和/或重複的狀況。 警示應使用臨界值說明這些不一致。
+(選擇性) 設定幾近即時的「計量警示」，當指定的計量值超出您指派的閾值時，就會觸發此警示。 當警示為「已啟動」時 (超出閾值且符合警示條件時)，以及當警示為「已解決」時 (再次超出閾值且不再符合條件時)，您選擇的警示會產生[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 不建議使用以單一資料量為基礎的警示，因為計量可能會未按順序傳遞、遺失資料，和/或重複的狀況。 警示應使用臨界值說明這些不一致。
 
 例如，您可以在低優先順序核心計數降至特定層級時設定計量警示，以便您調整集區的構成要素。 建議設定 10 分鐘以上的期間，在這段期間，如果平均的低優先順序核心計數低於整段期間的臨界值，就會觸發警示。 建議 1-5 分鐘警示，因為仍可能會彙總計量。
 
 在入口網站中設定計量警示：
 
-1. 按一下 [**所有服務** > ] [**Batch 帳戶**]，然後按一下您的 batch 帳戶名稱。
-2. 在 [監視]**** 下方，按一下 [警示規則]**** > [新增計量警示]****。
+1. 按一下 [所有服務] > [Batch 帳戶]，然後按一下您的 Batch 帳戶名稱。
+2. 在 [監視] 下方，按一下 [警示規則] > [新增計量警示]。
 3. 選取計量、警示條件 (例如計量在某個期間超過特定值)，以及一個或多個通知。
 
-您也可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 設定幾近即時的警示。 如需詳細資訊，請參閱[警示總覽](../azure-monitor/platform/alerts-overview.md)。 若要在您的警示中包含作業、工作或集區特定資訊，請參閱[使用 Azure 監視器警示回應事件](../azure-monitor/learn/tutorial-response.md)中的搜尋查詢相關資訊
+您也可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 設定幾近即時的警示。 如需詳細資訊，請參閱[警示概觀](../azure-monitor/platform/alerts-overview.md)。 若要在您的警示中納入作業、工作或集區專屬資訊，請參閱[使用 Azure 監視器警示來回應事件](../azure-monitor/learn/tutorial-response.md)中的搜尋查詢資訊
 
 ## <a name="batch-diagnostics"></a>Batch 診斷
 
@@ -86,7 +86,7 @@ ms.locfileid: "82117296"
 
 * 將 Batch 診斷記錄事件串流至 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
 
-* 將診斷記錄傳送至[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)檔，您可以在其中分析它們，或將它們匯出以在 Power BI 或 Excel 中進行分析。
+* 將診斷記錄傳送至 [Azure 監視器記錄](../log-analytics/log-analytics-overview.md)，您可以在其中分析這些記錄，或將其匯出以便在 Power BI 或 Excel 中進行分析。
 
 > [!NOTE]
 > 使用 Azure 服務儲存或處理診斷記錄資料可能會產生額外費用。 
@@ -94,13 +94,13 @@ ms.locfileid: "82117296"
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>啟用 Batch 診斷記錄的收集
 
-1. 在入口網站中，按一下 [**所有服務** > ] [**Batch 帳戶**]，然後按一下您的 Batch 帳戶名稱。
-2. 在 [監視]**** 下方，按一下 [診斷記錄]**** > [開啟診斷]****。
-3. 在 [**診斷設定**] 中，輸入設定的名稱，然後選擇記錄目的地（現有的儲存體帳戶、事件中樞或 Azure 監視器記錄）。 選取 **ServiceLog** 或/和 **AllMetrics**。
+1. 在入口網站中，按一下 [所有服務] > [Batch 帳戶]，然後按一下您的 Batch 帳戶名稱。
+2. 在 [監視] 下方，按一下 [診斷記錄] > [開啟診斷]。
+3. 在 [診斷設定] 中輸入設定的名稱，然後選擇記錄目的地 (現有儲存體帳戶、事件中樞或 Azure 監視器記錄)。 選取 **ServiceLog** 或/和 **AllMetrics**。
 
     當您選取儲存體帳戶時，可選擇性地設定保留原則。 如果您未指定保留天數，資料的保留期限會是儲存體帳戶的存留期間。
 
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
     ![Batch 診斷](media/batch-diagnostics/diagnostics-portal.png)
 
@@ -125,9 +125,9 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-每`PT1H.json`個 blob 檔案包含 JSON 格式的事件，在 blob URL 中指定的一小時內發生（例如`h=12`）。 在目前的一小時期間，事件會在`PT1H.json`檔案發生時附加至檔案。 分鐘值（`m=00`）一律`00`為，因為診斷記錄事件會分成每小時的個別 blob。 (所有時間都是採用 UTC 格式。)
+每個 `PT1H.json` Blob 檔案都包含 JSON 格式的事件，這是在 Blob URL 指定時數內 (例如 `h=12`) 發生的事件。 在目前這一小時，事件一發生就會附加到 `PT1H.json` 檔案。 分鐘值 (`m=00`) 一律是 `00`，因為診斷記錄事件是分成每小時的個別 Blob。 (所有時間都是採用 UTC 格式。)
 
-以下是`PT1H.json`記錄檔中的`PoolResizeCompleteEvent`專案範例。 其中包含專用和低優先順序節點目前和目標數目的相關資訊，以及作業的開始和結束時間：
+以下是 `PT1H.json` 記錄檔中 `PoolResizeCompleteEvent` 項目的範例。 其中包含專用節點和低優先順序節點目前數目和目標數目的相關資訊，以及作業的開始和結束時間：
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
