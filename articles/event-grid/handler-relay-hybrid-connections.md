@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 0631724e688a71d7e9685f5f0ad738d81e2a8034
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 04fbc7b739fa8ea7b08a3341c2f78244c445e721
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596107"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800874"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>以轉送混合式連線作為 Azure 事件方格事件的事件處理常式
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 轉送**是其中之一。 
@@ -25,6 +25,25 @@ ms.locfileid: "83596107"
 |Title  |描述  |
 |---------|---------|
 | [教學課程：將事件傳送至混合式連線](custom-event-to-hybrid-connection.md) | 將自訂事件傳送至現有的混合式連線，以透過接聽應用程式進行處理。 |
+
+## <a name="rest-example-for-put"></a>REST 範例 (用於 PUT)
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "HybridConnection",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Relay/namespaces/<RELAY NAMESPACE NAME>/hybridconnections/<HYBRID CONNECTION NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

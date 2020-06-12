@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b8fad566b54ab645660011ad3188394b6f8190b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728079"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650096"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>安全性架構︰例外狀況管理 | 風險降低 
+# <a name="security-frame-exception-management--mitigations"></a>安全框架︰例外狀況管理 | 緩和措施 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **WCF** | <ul><li>[WCF-不包含設定檔中的 serviceDebug 節點](#servicedebug)</li><li>[WCF-不包含設定檔中的 serviceMetadata 節點](#servicemetadata)</li></ul> |
-| **Web API** | <ul><li>[確定已在 ASP.NET Web API 中完成適當的例外狀況處理](#exception)</li></ul> |
-| **Web 應用程式** | <ul><li>[不要在錯誤訊息中公開安全性詳細資料](#messages)</li><li>[[執行預設錯誤處理] 頁面](#default)</li><li>[在 IIS 中將部署方法設定為零售](#deployment)</li><li>[例外狀況應安全地失敗](#fail)</li></ul> |
+| **WCF** | <ul><li>[WCF - 請勿在組態檔中包含 serviceDebug 節點](#servicedebug)</li><li>[WCF - 請勿在組態檔中包含 serviceMetadata 節點](#servicemetadata)</li></ul> |
+| **Web API** | <ul><li>[確定有在 ASP.NET Web API 中正確處理例外狀況](#exception)</li></ul> |
+| **Web 應用程式** | <ul><li>[請勿在錯誤訊息中公開安全性詳細資料](#messages)</li><li>[實作預設的錯誤處理頁面](#default)</li><li>[設定要在 IIS 中零售的部署方法](#deployment)</li><li>[例外狀況應安全地失敗](#fail)</li></ul> |
 
 ## <a name="wcf--do-not-include-servicedebug-node-in-configuration-file"></a><a id="servicedebug"></a>WCF - 請勿在組態檔中包含 serviceDebug 節點
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  
@@ -55,7 +55,7 @@ ms.locfileid: "68728079"
 
 ## <a name="wcf--do-not-include-servicemetadata-node-in-configuration-file"></a><a id="servicemetadata"></a>WCF - 請勿在組態檔中包含 serviceMetadata 節點
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  
@@ -66,7 +66,7 @@ ms.locfileid: "68728079"
 
 ## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>確定有在 ASP.NET Web API 中正確處理例外狀況
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
 | **SDL 階段**               | Build |  
@@ -180,11 +180,11 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-請參閱參考一節中的連結，以取得有關中的異常處理和模型驗證的其他詳細資料 ASP.NET Web API 
+請參閱 [參考] 區段中的連結，以取得在 ASP.NET Web API 中處理例外狀況和驗證模型的其他詳細資料 
 
 ## <a name="do-not-expose-security-details-in-error-messages"></a><a id="messages"></a>請勿在錯誤訊息中公開安全性詳細資料
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -195,18 +195,18 @@ public HttpResponseMessage PostProduct(Product item)
 
 ## <a name="implement-default-error-handling-page"></a><a id="default"></a>實作預設的錯誤處理頁面
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [編輯 ASP.NET 錯誤頁面設定對話方塊](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步驟** | <p>當 ASP.NET 應用程式失敗並造成 HTTP/1.x 500 內部伺服器錯誤時，或當功能組態 (例如要求篩選) 避免顯示頁面時，就會產生錯誤訊息。 系統管理員可以選擇應用程式應該對用戶端顯示容易理解的訊息、對用戶端顯示詳細的錯誤訊息，或只對本機主機顯示詳細的錯誤訊息。 web.config 中的 `<customErrors>` 標籤有三種模式︰</p><ul><li>**開啟︰** 指定要啟用自訂錯誤。 如果未指定任何 defaultRedirect 屬性，則使用者會看到泛型錯誤。 自訂錯誤會顯示給遠端用戶端和本機主機</li><li>**關閉︰** 指定要停用自訂錯誤。 詳細的 ASP.NET 錯誤會顯示給遠端用戶端和本機主機</li><li>**RemoteOnly：** 指定自訂錯誤只顯示給遠端用戶端，而將 ASP.NET 錯誤顯示給本機主機。 這是預設值。</li></ul><p>開啟應用程式/網站的 `web.config` 檔案，並確定標籤已定義 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **步驟** | <p>當 ASP.NET 應用程式失敗並造成 HTTP/1.x 500 內部伺服器錯誤時，或當功能組態 (例如要求篩選) 避免顯示頁面時，就會產生錯誤訊息。 系統管理員可以選擇應用程式應該對用戶端顯示容易理解的訊息、對用戶端顯示詳細的錯誤訊息，或只對本機主機顯示詳細的錯誤訊息。 web.config 中的 `<customErrors>` 標籤有三種模式︰</p><ul><li>**開啟：** 指定要啟用自訂錯誤。 如果未指定任何 defaultRedirect 屬性，則使用者會看到泛型錯誤。 自訂錯誤會顯示給遠端用戶端和本機主機</li><li>**關閉︰** 指定要停用自訂錯誤。 詳細的 ASP.NET 錯誤會顯示給遠端用戶端和本機主機</li><li>**RemoteOnly：** 指定自訂錯誤只顯示給遠端用戶端，而將 ASP.NET 錯誤顯示給本機主機。 這是預設值。</li></ul><p>開啟應用程式/網站的 `web.config` 檔案，並確定標籤已定義 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>設定要在 IIS 中零售的部署方法
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | 部署 |  
@@ -217,13 +217,13 @@ public HttpResponseMessage PostProduct(Product item)
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>例外狀況應安全地失敗
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [安全地失敗](https://www.owasp.org/index.php/Fail_securely) |
+| **參考**              | [安全地失敗](https://owasp.org/www-community/Fail_securely) |
 | **步驟** | 應用程式應安全地失敗。 任何會傳回布林值的方法 (根據所做出的特定決策) 皆應小心地建立例外狀況區塊。 若草率撰寫例外狀況區塊，會因為不知不覺潛入的安全性問題而產生許多邏輯錯誤。|
 
 ### <a name="example"></a>範例

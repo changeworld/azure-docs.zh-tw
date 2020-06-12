@@ -1,7 +1,7 @@
 ---
-title: 檢查儲存體帳戶的上次同步處理時間屬性
+title: 檢查儲存體帳戶的 [上次同步時間] 屬性
 titleSuffix: Azure Storage
-description: 瞭解如何檢查異地複寫儲存體帳戶的 [上次同步時間] 屬性。 [上次同步時間] 屬性會指出上次從主要區域寫入到次要區域的時間。
+description: 了解如何檢查異地複寫儲存體帳戶的 [上次同步時間] 屬性。 [上次同步時間] 屬性會指出來自主要區域的所有寫入已成功寫入次要區域的最近時間。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,40 +10,40 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 02f7d7e2735717a7a6e7a56273551197c16b77aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858516"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659259"
 ---
-# <a name="check-the-last-sync-time-property-for-a-storage-account"></a>檢查儲存體帳戶的上次同步處理時間屬性
+# <a name="check-the-last-sync-time-property-for-a-storage-account"></a>檢查儲存體帳戶的 [上次同步時間] 屬性
 
-當您設定儲存體帳戶時，您可以指定將資料複製到與主要區域相距數百英里的次要地區。 異地複寫可在主要區域發生重大中斷（例如自然災害）時，為您的資料提供持久性。 如果您另外啟用次要區域的讀取權限，當主要區域變成無法使用時，您的資料仍可供讀取作業使用。 如果主要區域沒有回應，您可以將應用程式設計成從次要區域順暢地切換，以進行讀取。
+當您設定儲存體帳戶時，可以指定將資料複製到與主要區域相距數百英里的次要區域。 異地複寫可在主要區域發生重大中斷 (例如自然災害) 時，為您的資料提供持久性。 如果您另外啟用次要區域的讀取權限，當主要區域變成無法使用時，您的資料仍可供讀取作業使用。 如果主要區域沒有回應，您可以將應用程式設計成從次要區域順暢地切換，以進行讀取。
 
-異地冗余儲存體（GRS）和異地區域冗余儲存體（切換）都會以非同步方式將您的資料複寫至次要區域。 如需次要區域的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）或讀取權限異地區域-多餘儲存體（RA-切換）。 如需 Azure 儲存體所提供的各種冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
+異地備援儲存體 (GRS) 和異地區域備援儲存體 (GZRS) 都會以非同步方式將您的資料複寫至次要區域。 如需次要區域的讀取存取，請啟用讀取存取異地備援儲存體 (RA-GRS) 或讀取存取異地區域備援儲存體 (RA-GZRS)。 如需 Azure 儲存體所提供的各種備援選項詳細資訊，請參閱 [Azure 儲存體備援](storage-redundancy.md)。
 
-本文說明如何檢查儲存體帳戶的 [**上次同步時間**] 屬性，讓您可以評估主要和次要區域之間的任何差異。
+本文說明如何檢查儲存體帳戶的 [上次同步時間] 屬性，讓您可以評估主要與次要區域之間的任何差異。
 
-## <a name="about-the-last-sync-time-property"></a>關於上次同步時間屬性
+## <a name="about-the-last-sync-time-property"></a>檢查 [上次同步時間] 屬性
 
-由於異地複寫是非同步，因此在發生中斷時，寫入主要區域的資料可能尚未寫入次要區域。 [**上次同步時間**] 屬性指出從主要區域成功寫入次要區域的最後一次資料。 在上次同步處理時間之前對主要區域所進行的所有寫入都可以從次要位置讀取。 在 [上次同步時間] 屬性之後寫入主要區域的作業，可能會或可能無法供讀取之用。
+由於異地複寫為非同步，因此在發生中斷時，寫入主要區域的資料可能尚未寫入次要區域。 [上次同步時間] 屬性會指出來自主要區域的資料已成功寫入次要區域的最近時間。 在上次同步時間之前對主要區域進行的所有寫入都可以從次要位置讀取。 在 [上次同步時間] 屬性之後完成的主要區域寫入可能已可讀取，也可能無法讀取。
 
-[**上次同步時間**] 屬性是 GMT 日期/時間值。
+[上次同步時間] 屬性是 GMT 日期/時間值。
 
-## <a name="get-the-last-sync-time-property"></a>取得上次同步時間屬性
+## <a name="get-the-last-sync-time-property"></a>取得 [上次同步時間] 屬性
 
-您可以使用 PowerShell 或 Azure CLI 來取出 [**上次同步時間**] 屬性的值。
+您可以使用 PowerShell 或 Azure CLI 來擷取 [上次同步時間] 屬性的值。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝支援取得異地複寫統計資料的 Az. Storage 模組版本。例如：
+若要使用 PowerShell 取得儲存體帳戶的上次同步時間，請安裝支援取得異地複寫統計資料的 Az.Storage 模組版本。例如：
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.14.0 –AllowClobber –Force
 ```
 
-然後檢查儲存體帳戶的**GeoReplicationStats. LastSyncTime**屬性。 請記得使用您自己的值來取代預留位置值：
+然後檢查儲存體帳戶的 **GeoReplicationStats.LastSyncTime** 屬性。 請記得以您自己的值取代預留位置值：
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -53,7 +53,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要取得具有 Azure CLI 之儲存體帳戶的上次同步處理時間，請檢查儲存體帳戶的**geoReplicationStats. lastSyncTime**屬性。 使用`--expand`參數來傳回在**geoReplicationStats**底下所嵌套屬性的值。 請記得使用您自己的值來取代預留位置值：
+若要取得具有 Azure CLI 之儲存體帳戶的上次同步時間，請檢查儲存體帳戶的 **geoReplicationStats.lastSyncTime** 屬性。 使用 `--expand` 參數來傳回 **geoReplicationStats** 下巢狀的屬性值。 請記得以您自己的值取代預留位置值：
 
 ```azurecli-interactive
 $lastSyncTime=$(az storage account show \
@@ -66,8 +66,8 @@ $lastSyncTime=$(az storage account show \
 
 ---
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [Azure 儲存體的冗余](storage-redundancy.md)
-- [變更儲存體帳戶的冗余選項](redundancy-migration.md)
-- [使用異地冗余來設計高可用性應用程式](geo-redundant-design.md)
+- [Azure 儲存體複寫](storage-redundancy.md)
+- [變更儲存體帳戶的備援選項](redundancy-migration.md)
+- [使用異地備援來設計高可用性的應用程式](geo-redundant-design.md)

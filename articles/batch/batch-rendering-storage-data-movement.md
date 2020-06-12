@@ -1,24 +1,24 @@
 ---
 title: 用於轉譯的儲存體和資料移動
-description: 瞭解用於轉譯資產和輸出檔案工作負載的各種儲存體和資料移動選項。
+description: 了解用於轉譯資產和輸出檔案工作負載的各種儲存體和資料移動選項。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 497f3b3b42d98c08b06744eaa976ae188443b90d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: dcb9d43b228428379414ca5d7688cff709a9959e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115664"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726412"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>轉譯資產和輸出檔案的儲存體和資料移動選項
 
 有多個選項可讓場景和資產檔案供集區 VM 上的轉譯應用程式使用：
 
-* [Azure blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)：
+* [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)：
   * 場景和資產檔案可從本機檔案系統上傳至 Blob 儲存體。 有工作執行應用程式時，所需的檔案會從 Blob 儲存體複製到 VM 上，使其可供轉譯應用程式存取。 輸出檔案會由轉譯應用程式寫入至 VM 磁碟，然後複製到 Blob 儲存體。  如有必要，可將輸出檔案從 Blob 儲存體下載到本機檔案系統。
   * Azure Blob 儲存體對較小的專案而言是簡單且符合成本效益的選項。  如果每個集區 VM 都需要所有的資產檔案，則在資產檔案的大小與數量增加時，則務必留意以確保檔案傳輸盡可能維持高效率。  
 * 使用 [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) 將 Azure 儲存體作為檔案系統：

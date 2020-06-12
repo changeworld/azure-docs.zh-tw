@@ -1,44 +1,44 @@
 ---
-title: 依區域的支出詳細資料-Microsoft 商業 marketplace
-description: 瞭解傳輸付款的預估時間，以及您可以接收付款的 Microsoft 店面，視您的國家/地區和支出帳戶類型而定。
+title: 依區域的支付詳細資料 - Microsoft 商業市集
+description: 了解付款轉帳的預估時間，以及可供您收取付款的 Microsoft 店面 (視您所在的國家/地區和支付帳戶類型而定)。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 29b6b47a30760887fb01700e50ecdeb5dd307ad4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858173"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745020"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款閾值、方法和時間範圍
 
-預估的付款時間，以及您可以接收付款的店面，可能會根據您的國家/地區和支出帳戶類型而有所不同。 本文概述每個國家/地區和區域中支援的付款方法。
+預估的付款轉帳時間，以及可供您收取付款的店面，可能會根據您所在的國家/地區和支付帳戶類型而有所不同。 本文將概述每個國家/地區和區域支援的付款方式。
 
-針對任何指定的國家和地區，我們會使用 ACH/SEPA 或電匯來支付費用。 某些國家和地區也支援 PayPal 做為付款條件。
+對於任何指定的國家/地區和區域，我們會使用 ACH/SEPA 或電匯來付款。 某些國家/地區和區域也支援以 PayPal 作為付款方式。
 
 > [!NOTE]
-> 如需在交易發生後，Microsoft 何時針對商業 marketplace 發出支出的詳細資訊，請參閱[支出原則詳細資料](./payout-policy-details.md)。
+> 若要進一步了解在交易發生後 Microsoft 將於何時核發商業市集的支付款項，請參閱[支付原則詳細資料](./payout-policy-details.md)。
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>款項進入支付帳戶所需的天數
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>付款匯入支付帳戶的所需天數
 
-我們通常會在當月的15天內，傳送在指定月份到期的任何款項。 不過，付款需要額外的時間才能到達您的帳戶。 天數會根據我們用於您帳戶的付款條件而有所不同，如下所述。
+對於任何在指定月份到期的付款，我們通常會在當月的 15 號以前匯出。 不過，付款還需要額外的時間才能匯入您的帳戶。 所需天數會根據我們對您的帳戶使用的付款方式而有所不同，說明如下。
 
-| 付款方法 | 接近帳戶的大約天數 |
+| 付款方法 | 匯入帳戶所需的約略天數 |
 | --- | --- |
 | PayPal | 1 個工作天 |
 | ACH/SEPA | 2-3 個工作天 |
 | 電匯 | 7-10 個工作天 |
 | | |
 
-## <a name="payment-methods-in-countries-and-regions"></a>國家和地區的付款條件
+## <a name="payment-methods-in-countries-and-regions"></a>國家/地區和區域的付款方式
 
-這些是每個 marketplace 使用上述付款條件的國家和地區。 在所有情況下，付款閾值為 $50 美元。
+以下是對每個市集使用上述付款方式的國家/地區和區域。 在所有的案例中，付款閾值皆為 50 美元。
 
-| Country | Azure Marketplace | 商店、廣告、混音器和 Minecraft | Office | PayPal 付款  |
+| 國家/區域 | Azure Marketplace | 商店、廣告、Mixer 和 Minecraft | Office | PayPal 付款  |
 | --- | --- | --- | --- | --- |
 | 阿富汗 | 是 | 是 | 否 | 否 |
 | 阿爾巴尼亞 | 是 | 是 | 是 | 是 |
@@ -72,10 +72,10 @@ ms.locfileid: "82858173"
 | 中國 | 否 | 是 | 是 | 是 |
 | 哥倫比亞 | 是 | 是 | 是 | 是 |
 | 葛摩 | 是 | 是 | 否 | 否 |
-| 剛果民主共和國 (DRC) | 是 | 是 | 是 | 否 |
 | 剛果民主共和國 | 是 | 是 | 是 | 否 |
+| 剛果共和國 | 是 | 是 | 是 | 否 |
 | 哥斯大黎加 | 是 | 是 | 是 | 是 |
-| 象牙海岸的象牙海岸 | 是 | 是 | 是 | 否 |
+| 象牙海岸 | 是 | 是 | 是 | 否 |
 | 克羅埃西亞 | 是 | 是 | 是 | 否 |
 | 賽浦路斯 | 是 | 是 | 是 | 是 |
 | 捷克共和國 | 是 | 是 | 是 | 是 |
@@ -113,7 +113,7 @@ ms.locfileid: "82858173"
 | 約旦 | 是 | 是 | 是 | 是 |
 | 哈薩克 | 是 | 是 | 是 | 是 |
 | 肯亞 | 是 | 是 | 是 | 是 |
-| 韓國（南部） | 是 | 是 | 是 | 否 |
+| 南韓 | 是 | 是 | 是 | 否 |
 | 科威特 | 是 | 是 | 是 | 是 |
 | 吉爾吉斯 | 否 | 否 | 是 | 否 |
 | 寮國 | 是 | 是 | 是 | 否 |
@@ -137,7 +137,7 @@ ms.locfileid: "82858173"
 | 摩洛哥 | 是 | 是 | 是 | 否 |
 | 莫三比克 | 是 | 是 | 是 | 是 |
 | 尼泊爾 | 是 | 是 | 是 | 否 |
-| 荷蘭， | 是 | 是 | 是 | 是 |
+| 荷蘭 | 是 | 是 | 是 | 是 |
 | 紐西蘭 | 是 | 是 | 是 | 是 |
 | 尼加拉瓜 | 是 | 是 | 是 | 是 |
 | 尼日 | 是 | 是 | 是 | 否 |
@@ -196,4 +196,4 @@ ms.locfileid: "82858173"
 
 ## <a name="next-step"></a>後續步驟
 
-- [支出摘要概觀](./payout-summary-overview.md)
+- [支付摘要概觀](./payout-summary-overview.md)

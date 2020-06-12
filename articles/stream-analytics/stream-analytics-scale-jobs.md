@@ -7,23 +7,23 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257541"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835592"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>調整 Azure 串流分析作業以增加輸送量
 本文示範如何調整串流分析查詢，以增加串流分析作業的輸送量。 您可以使用以下指南來調整作業，進而處理更高的負載及利用更多系統資源 (如更多頻寬、更多 CPU 資源、更多記憶體)。
 依照必要條件的規定，您需要閱讀以下文章：
--   [了解及調整串流單位](stream-analytics-streaming-unit-consumption.md)
+-   [了解及調整串流處理單位](stream-analytics-streaming-unit-consumption.md)
 -   [建立可平行作業](stream-analytics-parallelization.md)
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 查詢在輸入分割區之間原本就完全可平行
 如果您的查詢在輸入分割區之間原本就完全可平行，可以遵循以下步驟：
 1.  使用 **PARTITION BY** 關鍵字撰寫窘迫平行查詢。 如需詳細資料，請參閱[本頁](stream-analytics-parallelization.md)的「窘迫平行作業」一節。
-2.  根據查詢使用的輸出類型，某些輸出可能是不可平行或需要進一步設定才能成為窘迫平行。 例如，PowerBI 輸出不會可並行。 輸出一律會先合併再傳送到輸出接收。 Blob、資料表、ADLS、服務匯流排和 Azure 函式可自動平行化。 SQL 和 SQL DW 輸出有平行處理的選項。 事件中樞必須將 PartitionKey 設定設為與 [**分割區依據**] 欄位相符（通常是 PartitionId）。 另請特別注意，對事件中樞來說，所有輸入和所有輸出的分割區數目應相符，以避免跨越分割區。 
+2.  根據查詢使用的輸出類型，某些輸出可能是不可平行或需要進一步設定才能成為窘迫平行。 例如，PowerBI 輸出是不可平行。 輸出一律會先合併再傳送到輸出接收。 Blob、資料表、ADLS、服務匯流排和 Azure 函式可自動平行化。 SQL 和 SQL DW 輸出有平行處理的選項。 事件中樞需要將 PartitionKey 組態設定為與 **PARTITION BY** 欄位相符 (通常是 PartitionId)。 另請特別注意，對事件中樞來說，所有輸入和所有輸出的分割區數目應相符，以避免跨越分割區。 
 3.  使用 **6 SU** (單一運算節點的完整容量) 來執行查詢，以測量可達成輸送量的最大值；如果您使用 **GROUP BY**，請測量作業可處理的群組數目 (基數)。 達到系統資源限制的作業會出現如下所示的一般徵兆。
     - SU % 使用率計量超過 80%。 這表示記憶體使用量偏高。 若要了解導致這項計量增加的因素，請參閱[這裡](stream-analytics-streaming-unit-consumption.md)的描述。 
     -   輸出時間戳記落後時鐘時間。 根據您的查詢邏輯，輸出時間戳記與時鐘時間之間可能有邏輯位移。 不過，它們的進行的速度大致上應該相同。 如果輸出時間戳記遠遠落後，代表系統過度使用。 這可能是下游輸出接收節流，或 CPU 使用率過高的結果。 目前我們未提供 CPU 使用量度量，因此您可能會很難區分這兩者。
@@ -32,7 +32,7 @@ ms.locfileid: "80257541"
 4.  假設您沒有任何讓某個分割區「過熱」的資料扭曲，一旦判斷出 6 SU 作業能達到的限制後，您可以在新增更多 SU 時利用線性方式推測作業的處理容量。
 
 > [!NOTE]
-> 請選擇正確的串流處理單位數目：串流分析會為每個新增的 6 SU 建立處理節點，因此節點數目最好是輸入分割區數目的除數，這樣分割區才能平均分配到各個節點。
+> 請選擇正確的串流單位數目：串流分析會為每個新增的 6 SU 建立處理節點，因此節點數目最好是輸入分割區數目的除數，這樣分割區才能平均分配到各個節點。
 > 例如，如果您已測量出 6 SU 作業能達成 4 MB/s 的處理速率，那麼您的輸入分割區計數便是 4。 您可以選擇使用 12 SU 來執行作業以達成約 8 MB/s 的處理速率，或使用 24 SU 來達成 16 MB/s 的處理速率。 接著，您可以決定何時要將作業的 SU 數目增加為什麼值，做為輸入速率的函式。
 
 
@@ -78,12 +78,12 @@ ms.locfileid: "80257541"
 
 
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

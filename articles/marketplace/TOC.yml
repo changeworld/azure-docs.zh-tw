@@ -169,7 +169,7 @@
         - name: Azure 應用程式供應項目
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: Prerequisites
+            - name: 必要條件
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: 建立 Azure 應用程式供應項目
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -214,7 +214,7 @@
         - name: Dynamics 365 for Customer Engagement 供應項目
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: Prerequisites
+            - name: 必要條件
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: 建立 Customer Engagement 供應項目
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -236,7 +236,7 @@
         - name: Dynamics 365 for Operations 供應項目
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: Prerequisites
+            - name: 必要條件
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: 發佈方式
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -262,7 +262,7 @@
       items:
         - name: 概觀
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Prerequisites
+        - name: 必要條件
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: 考量
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
@@ -344,7 +344,7 @@
                       href: ./partner-center-portal/common-sas-uri-issues.md
         - name: 諮詢服務
           items:
-            - name: Prerequisites
+            - name: 必要條件
               href: ./partner-center-portal/consulting-service-prerequisites.md
             - name: 建立諮詢服務供應項目
               href: ./partner-center-portal/create-consulting-service-offer.md
@@ -378,8 +378,6 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: 建立 SaaS 供應項目
               href: ./partner-center-portal/create-new-saas-offer.md
-            - name: SaaS 計量帳單
-              href: ./partner-center-portal/saas-metered-billing.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -391,6 +389,8 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS 履行 API - 常見問題集
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+            - name: SaaS 計量帳單
+              href: ./partner-center-portal/saas-metered-billing.md
         - name: 潛在客戶管理概觀
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:

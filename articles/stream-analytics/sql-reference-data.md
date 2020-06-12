@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651943"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021682"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
 
@@ -40,7 +40,7 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
    ![SQL Database 參考設定](./media/sql-reference-data/sql-input-config.png)
 
-3. 在 SQL 查詢編輯器中測試快照集查詢。 如需詳細資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料](../sql-database/sql-database-connect-query-portal.md)
+3. 在 SQL 查詢編輯器中測試快照集查詢。 如需詳細資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>在作業設定中指定儲存體帳戶
 
@@ -69,7 +69,7 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
 ### <a name="create-a-sql-database-table"></a>建立 SQL Database 資料表
 
-使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 請參閱[使用 SSMS 設計您的第一個 Azure SQL 資料庫](../sql-database/sql-database-design-first-database.md)以取得詳細資料。
+使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 請參閱[使用 SSMS 設計您的第一個 Azure SQL 資料庫](../azure-sql/database/design-first-database-tutorial.md)以取得詳細資料。
 
 用於下列範例中的範例資料表是建立自下列陳述式：
 
@@ -129,7 +129,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="delta-query"></a>差異查詢
 
-使用差異查詢時，建議使用 [Azure SQL Database 中的時態表](../sql-database/sql-database-temporal-tables.md)。
+使用差異查詢時，建議使用 [Azure SQL Database 中的時態表](../azure-sql/temporal-tables.md)。
 
 1. 在 Azure SQL Database 中建立時態表。
    
