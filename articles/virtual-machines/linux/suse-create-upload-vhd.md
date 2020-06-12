@@ -8,38 +8,38 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857328"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643421"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
 
 
-本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱[安裝 Hyper-v 角色和設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="sles--opensuse-installation-notes"></a>SLES / openSUSE 安裝注意事項
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。
-* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果慣用，您可以在資料磁片上使用[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
+* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-suse-studio"></a>使用 SUSE Studio
-[SUSE Studio](http://www.susestudio.com) 可讓您輕鬆建立及管理 Azure 和 Hyper-V 的 SLES 與 openSUSE 映像。 這是建議用來自訂您自己的 SLES 和 openSUSE 映像的方法。
+[SUSE Studio](https://studioexpress.opensuse.org/) 可讓您輕鬆建立及管理 Azure 和 Hyper-V 的 SLES 與 openSUSE 映像。 這是建議用來自訂您自己的 SLES 和 openSUSE 映像的方法。
 
 SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)發佈 SLES 的 BYOS (自備訂用帳戶，Bring Your Own Subscription) 映像。
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>準備 SUSE Linux Enterprise Server 11 SP4
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
-2. 按一下 **[連接]** 開啟虛擬機器視窗。
+2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 3. 註冊您的 SUSE Linux Enterprise 系統，以允許下載更新並安裝封裝。
 4. 為系統更新最新的修補程式：
    
         # sudo zypper update
-5. 從 SLES 存放庫安裝 Azure Linux 代理程式（SLE11-公用-雲端模組）：
+5. 從 SLES 存放庫 (SLE11-Public-Cloud-Module) 安裝 Azure Linux 代理程式：
    
         # sudo zypper install python-azure-agent
 6. 檢查 chkconfig 中的 waagent 是否設為「啟用」，若否，請啟用以便自動啟動：
@@ -84,7 +84,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 13. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 14. 請勿在作業系統磁碟上建立交換空間。
     
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是*暫存*磁片，可能會在 VM 取消布建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是 *暫存* 磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
     
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：將此設為任何您需要的項目。
 15. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
@@ -92,12 +92,12 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. 按一下 [動作]-在 [Hyper-v 管理員] 中 **> 關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
+16. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ---
 ## <a name="prepare-opensuse-131"></a>準備執行 openSUSE 13.1+
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
-2. 按一下 **[連接]** 開啟虛擬機器視窗。
+2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 3. 在 Shell 上執行命令 '`zypper lr`'。 如果此命令傳回的輸出與下列類似，則該儲存機制已如預期設定，不需進行調整 (請注意，版本號碼可能會不同)：
    
         # | Alias                 | Name                  | Enabled | Refresh
@@ -135,7 +135,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 7. 建議您編輯檔案 "/etc/sysconfig/network/dhcp"，並將 `DHCLIENT_SET_HOSTNAME` 參數變更如下：
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **重要事項：** 在 "/etc/sudoers" 中，註解化或移除下列程式碼行 (如果存在的話)：
+8. **重要：** 在 "/etc/sudoers" 中，註解化或移除下列程式碼行 (如果存在的話)：
      
      ```
      Defaults targetpw   # ask for the password of the target user i.e. root
@@ -145,7 +145,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 9. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 10. 請勿在作業系統磁碟上建立交換空間。
     
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是*暫存*磁片，可能會在 VM 取消布建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是 *暫存* 磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
     
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：將此設為任何您需要的項目。
 11. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
@@ -156,7 +156,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 12. 確定 Azure Linux 代理程式會在啟動時執行：
     
         # sudo systemctl enable waagent.service
-13. 按一下 [動作]-在 [Hyper-v 管理員] 中 **> 關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
+13. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ## <a name="next-steps"></a>後續步驟
 您現在可以開始使用您的 SUSE Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

@@ -11,16 +11,16 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7f9ac7e6e7049a3b744151bc9cb05115fbac935
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729220"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726055"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中樞的存取權
 
-本文章說明用來保護 Azure IoT 中樞的選項。 IoT 中樞使用「權限」**，授與每個 IoT 中樞端點的存取權。 權限可根據功能限制 IoT 中樞的存取權。
+本文章說明用來保護 Azure IoT 中樞的選項。 IoT 中樞使用「權限」，授與每個 IoT 中樞端點的存取權。 權限可根據功能限制 IoT 中樞的存取權。
 
 本文將介紹：
 
@@ -48,13 +48,13 @@ ms.locfileid: "81729220"
   | registryRead | **RegistryRead** 權限 |
   | registryReadWrite | **RegistryRead** 和 **RegistryWrite** 權限 |
 
-* **每一裝置的安全性認證**。 每個 IoT 中樞均包含[身分識別登錄](iot-hub-devguide-identity-registry.md)。對於此身分識別登錄中的每個裝置，您可以設定安全性認證，以對應的裝置端點為範圍來授與 **DeviceConnect** 權限。
+* **各裝置的安全性認證**。 每個 IoT 中樞均包含[身分識別登錄](iot-hub-devguide-identity-registry.md)。對於此身分識別登錄中的每個裝置，您可以設定安全性認證，以對應的裝置端點為範圍來授與 **DeviceConnect** 權限。
 
 例如，在典型的 IoT 解決方案中︰
 
-* 裝置管理元件使用 registryReadWrite ** 原則。
-* 事件處理器元件使用 service ** 原則。
-* 執行階段裝置商務邏輯元件使用 service** 原則。
+* 裝置管理元件使用 registryReadWrite  原則。
+* 事件處理器元件使用 service  原則。
+* 執行階段裝置商務邏輯元件使用 service 原則。
 * 個別裝置會使用 IoT 中樞身分識別登錄內儲存的認證進行連接。
 
 > [!NOTE]
@@ -67,7 +67,7 @@ Azure IoT 中樞可根據共用存取原則和身分識別登錄安全性認證�
 安全性認證 (例如對稱金鑰) 決不會在網路上傳送。
 
 > [!NOTE]
-> 如同 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 中的所有提供者一樣，Azure IoT 中樞資源提供者也是透過您的 Azure 訂用帳戶而受保護。
+> 如同 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 中的所有提供者，Azure IoT 中樞資源提供者也會透過您的 Azure 訂用帳戶而受到保護。
 
 如需如何建構和使用安全性權杖的詳細資訊，請參閱 [IoT 中樞安全性權杖](iot-hub-devguide-security.md#security-tokens)。
 
@@ -77,7 +77,7 @@ Azure IoT 中樞可根據共用存取原則和身分識別登錄安全性認證�
 
 使用 MQTT 時，CONNECT 封包會有作為 ClientId 的 deviceId、Username 欄位中會有 `{iothubhostname}/{deviceId}`，而 Password 欄位中則會有 SAS 權杖。 `{iothubhostname}` 應該是 IoT 中樞的完整 CName (例如 contoso.azure-devices.net)。
 
-使用 [AMQP](https://www.amqp.org/) 時，IoT 中樞支援 [SASL PLAIN](https://tools.ietf.org/html/rfc4616) 和 [AMQP 宣告式安全性](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)。
+使用 [AMQP](https://www.amqp.org/) \(英文\) 時，IoT 中樞支援 [SASL PLAIN](https://tools.ietf.org/html/rfc4616) \(英文\) 和 [AMQP 宣告式安全性](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) \(英文\)。
 
 如果使用以 AMQP 宣告為基礎的安全性，標準會指定如何傳輸這些權杖。
 
@@ -86,7 +86,7 @@ Azure IoT 中樞可根據共用存取原則和身分識別登錄安全性認證�
 * `{policyName}@sas.root.{iothubName}`，如果使用 IoT 中樞層級權杖。
 * `{deviceId}@sas.{iothubname}`，如果使用裝置範圍權杖。
 
-在這兩種情況下，密碼欄位都會包含 [IoT 中樞安全性權杖](iot-hub-devguide-security.md#security-tokens)中所述的權杖。
+在這兩種情況下，密碼欄位會包含 [IoT 中樞安全性權杖](iot-hub-devguide-security.md#security-tokens)中所述的權杖。
 
 HTTPS 實作驗證的方式是在 **Authorization** 要求標頭中包含有效的權杖。
 
@@ -94,12 +94,12 @@ HTTPS 實作驗證的方式是在 **Authorization** 要求標頭中包含有效�
 
 使用者名稱 (DeviceId 區分大小寫)︰ `iothubname.azure-devices.net/DeviceId`
 
-密碼（您可以使用 CLI 擴充[功能命令 az iot hub 產生-sas 權杖](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)，或[Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)）來產生 SAS 權杖：
+密碼 (您可以使用 CLI 擴充功能命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[適用於 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 來產生 SAS 權杖)：
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 會在連接至服務時自動產生權杖。 在某些情況下，Azure IoT SDK 不支援所有的通訊協定或所有驗證方法。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 會在連線至服務時自動產生權杖。 在某些情況下，Azure IoT SDK 不支援所有的通訊協定或所有驗證方法。
 
 ### <a name="special-considerations-for-sasl-plain"></a>SASL PLAIN 的特殊考量
 
@@ -113,17 +113,17 @@ HTTPS 實作驗證的方式是在 **Authorization** 要求標頭中包含有效�
 
 使用受限制的資源 URI 建立權杖，可以設定 IoT 中樞層級安全性原則的範圍。 例如，要從裝置傳送「裝置到雲端」訊息的端點是 **/devices/{deviceId}/messages/events**。 您也可以使用 IoT 中樞層級的共用存取原則搭配 **DeviceConnect** 權限，簽署 resourceURI 為 **/devices/{deviceId}** 的權杖。 這個做法會建立僅可用來代表裝置 **deviceId** 傳送訊息的權杖。
 
-這個機制類似於[事件中樞發行者原則](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)，讓您可實作自訂驗證方法。
+這個機制類似於[事件中樞發行者原則](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) \(英文\)，讓您可實作自訂驗證方法。
 
 ## <a name="security-tokens"></a>安全性權杖
 
-IoT 中樞使用安全性權杖來驗證裝置和服務，以避免透過線路傳送金鑰。 此外，安全性權杖有時效性和範圍的限制。 [Azure IoT sdk](iot-hub-devguide-sdks.md)會自動產生權杖，而不需要任何特殊設定。 在某些案例中，您必須直接產生及使用安全性權杖。 這類案例包括：
+IoT 中樞使用安全性權杖來驗證裝置和服務，以避免透過線路傳送金鑰。 此外，安全性權杖有時效性和範圍的限制。 [Azure IoT SDK](iot-hub-devguide-sdks.md) 能夠在不需要任何特殊設定的情況下自動產生權杖。 在某些案例中，您必須直接產生及使用安全性權杖。 這類案例包括：
 
 * MQTT、AMQP 或 HTTPS 介面的直接使用。
 
 * 權杖服務模式的實作，如[自訂裝置驗證](iot-hub-devguide-security.md#custom-device-and-module-authentication)中所述。
 
-IoT 中樞也可讓裝置使用[x.509 憑證](iot-hub-devguide-security.md#supported-x509-certificates)向 IoT 中樞進行驗證。
+IoT 中樞也允許裝置使用 [X.509 憑證](iot-hub-devguide-security.md#supported-x509-certificates)來向 IoT 中樞進行驗證。
 
 ### <a name="security-token-structure"></a>安全性權杖結構
 
@@ -139,7 +139,7 @@ IoT 中樞也可讓裝置使用[x.509 憑證](iot-hub-devguide-security.md#suppo
 
 | 值 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。 |
+| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。 |
 | {resourceURI} |可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 中樞的主機名稱 (無通訊協定)。 例如， `myHub.azure-devices.net/devices/device1` |
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
 | {URL-encoded-resourceURI} |小寫資源 URI 的小寫 URL 編碼 |
@@ -280,7 +280,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> 您可以使用 CLI 擴充功能命令[az iot hub 產生-sas 權杖](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)，或[Visual Studio Code 的 AZURE IOT TOOLS](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)來產生 SAS 權杖。
+> 可以使用 CLI 擴充功能命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[適用於 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 來產生 SAS 權杖。
 
 ### <a name="use-a-shared-access-policy"></a>使用共用存取原則
 
@@ -350,7 +350,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>支援的 X.509 憑證
 
-您可以使用任何 X.509 憑證來利用 IoT 中樞驗證裝置，只要將憑證指紋或憑證授權單位 (CA) 上傳至 Azure IoT 中樞即可。 使用憑證指紋進行驗證，會驗證出示的指紋是否符合設定的指紋。 使用憑證授權單位來進行驗證時，則會驗證憑證鏈結。 不論是哪一種情況，TLS 交握都需要裝置具有有效的憑證和私密金鑰。 如需詳細資訊，請參閱 TLS 規格，例如： [RFC 5246-傳輸層安全性（TLS）通訊協定版本 1.2](https://tools.ietf.org/html/rfc5246/)。
+您可以使用任何 X.509 憑證來利用 IoT 中樞驗證裝置，只要將憑證指紋或憑證授權單位 (CA) 上傳至 Azure IoT 中樞即可。 使用憑證指紋來進行驗證時，會驗證提供的憑證指紋與設定的憑證指紋是否相符。 使用憑證授權單位來進行驗證時，則會驗證憑證鏈結。 不論是哪一種情況，TLS 交握都需要裝置具有有效的憑證和私密金鑰。 如需詳細資料，請參閱 TLS 規格，例如：[RFC 5246 - 傳輸層安全性 (TLS) 通訊協定 1.2 版](https://tools.ietf.org/html/rfc5246/)。
 
 支援的憑證包含：
 
@@ -358,7 +358,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 * **CA 簽署的 X.509 憑證**。 若要識別裝置並向 IoT 中樞驗證它，您可以使用「憑證授權單位」(CA) 所產生和簽署的 X.509 憑證。 適用於指紋或 CA 驗證。
 
-* **自我產生及自我簽署的 X-509 憑證**。 裝置製造商或公司內部的部署人員可以產生這些憑證，並將對應的私密金鑰 (和憑證) 存放在裝置上。 您可以使用 [OpenSSL](https://www.openssl.org/) 和 [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 公用程式之類的工具來達到此目的。 只適用於指紋驗證。 
+* **自我產生及自我簽署的 X-509 憑證**。 裝置製造商或公司內部的部署人員可以產生這些憑證，並將對應的私密金鑰 (和憑證) 存放在裝置上。 您可以使用 [OpenSSL](https://www.openssl.org/) \(英文\) 和 [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 公用程式之類的工具來達到此目的。 只適用於指紋驗證。 
 
 裝置可以使用 X.509 憑證或安全性權杖來進行驗證，但不可同時使用兩者。
 
@@ -366,9 +366,9 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>註冊裝置的 X.509 憑證
 
-[適用於 C# 的 Azure IoT 服務 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (版本 1.0.8+) 支援註冊使用 X.509 憑證來進行驗證的裝置。 其他 API (例如匯入/匯出裝置) 也支援 X.509 憑證。
+[適用於 C# 的 Azure IoT 服務 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (版本 1.0.8+) 支援註冊使用 X.509 憑證進行驗證的裝置。 其他 API (例如匯入/匯出裝置) 也支援 X.509 憑證。
 
-您也可以使用 CLI 擴充功能命令 [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 來設定裝置的 X.509 憑證。
+您也可以使用 CLI 擴充功能命令 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) 來設定裝置的 X.509 憑證。
 
 ### <a name="c-support"></a>C\# 支援
 
@@ -409,9 +409,9 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-and-module-authentication"></a>自訂裝置與模組驗證
 
-您可以使用 IoT 中樞[身分識別登錄](iot-hub-devguide-identity-registry.md)，利用[權杖](iot-hub-devguide-security.md#security-tokens)來設定依裝置/模組的安全性認證和存取控制。 如果 IoT 解決方案已經有自訂身分識別登錄及/或驗證配置，請考慮建立「權杖服務」**，將這個基礎結構與 IoT 中樞整合。 如此一來，您可以在解決方案中使用其他 IoT 功能。
+您可以使用 IoT 中樞[身分識別登錄](iot-hub-devguide-identity-registry.md)，利用[權杖](iot-hub-devguide-security.md#security-tokens)來設定每個裝置/模組的安全性認證和存取控制。 如果 IoT 解決方案已經有自訂身分識別登錄及/或驗證配置，請考慮建立「權杖服務」，將這個基礎結構與 IoT 中樞整合。 如此一來，您可以在解決方案中使用其他 IoT 功能。
 
-權杖服務是自訂雲端服務。 建立具備 **DeviceConnect** 或 **ModuleConnect** 權限的 IoT 中樞「共用存取原則」**，以建立「裝置範圍」** 或「模組範圍」** 權杖。 這些權杖可讓裝置與模組連線到 IoT 中樞。
+權杖服務是自訂雲端服務。 建立具備 **DeviceConnect** 或 **ModuleConnect** 權限的 IoT 中樞「共用存取原則」，以建立「裝置範圍」或「模組範圍」權杖。 這些權杖可讓裝置與模組連線到 IoT 中樞。
 
 ![權杖服務模式的步驟](./media/iot-hub-devguide-security/tokenservice.png)
 
@@ -426,15 +426,15 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 4. 裝置/模組直接透過 IoT 中樞使用權杖。
 
 > [!NOTE]
-> 您可以使用 .NET 類別 [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) 或 Java 類別 [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) 在權杖服務中建立權杖。
+> 您可以使用 .NET 類別 [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) 或 Java 類別 [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken)，在權杖服務中建立權杖。
 
 權杖服務可以視需要設定權杖到期日。 權杖到期時，IoT 中樞會切斷裝置/模組連線。 然後，裝置/模組必須向權杖服務要求新權杖。 使用過短的到期時間會增加裝置/模組與權杖服務上的負載。
 
-為了讓裝置/模組連線至中樞，即使其使用權杖而不是金鑰來連線，您仍必須將它新增至 IoT 中樞身分識別登錄。 因此，您可以利用在[身分識別登錄](iot-hub-devguide-identity-registry.md)中啟用或停用裝置/模組身分識別，繼續使用依裝置/依模組存取控制。 此方法可減輕使用較長到期時間權杖的風險。
+為了讓裝置/模組連線至中樞，即使其使用權杖而不是金鑰來連線，您仍必須將它新增至 IoT 中樞身分識別登錄。 因此，您可以藉由在[身分識別登錄](iot-hub-devguide-identity-registry.md)中啟用或停用裝置/模組身分識別，繼續使用每個裝置/每個模組的存取控制。 此方法可減輕使用較長到期時間權杖的風險。
 
 ### <a name="comparison-with-a-custom-gateway"></a>和自訂閘道器的比較
 
-權杖服務模式為使用 IoT 中樞實作自訂身分識別登錄/驗證配置的建議方式。 建議此模式是因為 IoT 中樞會繼續處理大部分的解決方案流量。 不過，如果自訂驗證配置與通訊協定密不可分，您可能需要「自訂閘道」** 來處理所有流量。 使用[傳輸層安全性 (TLS) 和預先共用金鑰 (PSK)](https://tools.ietf.org/html/rfc4279) \(英文\) 是這類案例的範例之一。 如需詳細資訊，請參閱[通訊協定閘道](iot-hub-protocol-gateway.md)一文。
+權杖服務模式為使用 IoT 中樞實作自訂身分識別登錄/驗證配置的建議方式。 建議此模式是因為 IoT 中樞會繼續處理大部分的解決方案流量。 不過，如果自訂驗證配置與通訊協定密不可分，您可能需要「自訂閘道」來處理所有流量。 使用[傳輸層安全性 (TLS) 和預先共用金鑰 (PSK)](https://tools.ietf.org/html/rfc4279) \(英文\) 是這類案例的範例之一。 如需詳細資訊，請參閱[通訊協定閘道](iot-hub-protocol-gateway.md)一文。
 
 ## <a name="reference-topics"></a>參考主題：
 
@@ -444,18 +444,18 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 下表列出可用來控制您的 IoT 中樞存取權的權限。
 
-| 權限 | 備忘錄 |
+| 權限 | 注意 |
 | --- | --- |
-| **RegistryRead** |為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱身分[識別](iot-hub-devguide-identity-registry.md)登錄。 <br/>後端雲端服務會使用此權限。 |
-| **RegistryReadWrite** |為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱身分[識別](iot-hub-devguide-identity-registry.md)登錄。 <br/>後端雲端服務會使用此權限。 |
-| **ServiceConnect** |授與雲端服務面向通訊和監視端點的存取權。 <br/>授與權限以接收裝置到雲端的訊息、傳送雲端到裝置的訊息，以及擷取對應的傳遞通知。 <br/>授與取得檔案上傳傳遞通知的許可權。 <br/>授與權限以存取對應項，以便更新標籤及所需屬性、擷取報告的屬性，以及執行查詢。 <br/>後端雲端服務會使用此權限。 |
+| **RegistryRead** |為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱[身分識別登錄](iot-hub-devguide-identity-registry.md)。 <br/>後端雲端服務會使用此權限。 |
+| **RegistryReadWrite** |為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱[身分識別登錄](iot-hub-devguide-identity-registry.md)。 <br/>後端雲端服務會使用此權限。 |
+| **ServiceConnect** |授與雲端服務面向通訊和監視端點的存取權。 <br/>授與權限以接收裝置到雲端的訊息、傳送雲端到裝置的訊息，以及擷取對應的傳遞通知。 <br/>授與權限以擷取檔案上傳的傳遞認可。 <br/>授與權限以存取對應項，以便更新標籤及所需屬性、擷取報告的屬性，以及執行查詢。 <br/>後端雲端服務會使用此權限。 |
 | **DeviceConnect** |授與裝置面向端點的存取權。 <br/>授與權限以傳送裝置到雲端的訊息和接收雲端到裝置的訊息。 <br/>授與權限以從裝置執行檔案上傳。 <br/>授與權限以接收裝置對應項所需的屬性通知，並更新裝置對應項報告的屬性。 <br/>授與權限以執行檔案上傳。 <br/>裝置會使用此權限。 |
 
 ## <a name="additional-reference-material"></a>其他參考資料
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞針對執行時間和管理作業所公開的各種端點。
+* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞公開給執行階段和管理作業的各種端點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)描述適用於 IoT 中樞服務的配額和節流行為。
 
@@ -465,7 +465,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-* [RFC 5246-傳輸層安全性（TLS）通訊協定版本 1.2](https://tools.ietf.org/html/rfc5246/)提供 TLS 驗證的詳細資訊。
+* [RFC 5246 - 傳輸層安全性 (TLS) 通訊協定 1.2 版](https://tools.ietf.org/html/rfc5246/)提供有關 TLS 驗證的詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
