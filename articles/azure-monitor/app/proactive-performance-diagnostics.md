@@ -4,12 +4,12 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687706"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697167"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -34,12 +34,12 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 ## <a name="how-do-i-fix-it"></a>如何修正問題？
 
-通知會包含診斷資訊。 範例如下：
+通知會包含診斷資訊。 以下是範例：
 
 
 ![以下是伺服器回應時間降低偵測的範例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **Triage**分級。 通知會顯示受影響的使用者人數或作業數。 這可協助您將優先順序指派給此問題。
+1. **分級**。 通知會顯示受影響的使用者人數或作業數。 這可協助您將優先順序指派給此問題。
 2. **範圍**。 此問題是否會影響所有流量，還是只會影響某些頁面？ 它是否限制為特定的瀏覽器或位置？ 可以從通知取得這項資訊。
 3. **診斷**。 通常，通知中的診斷資訊會建議問題的本質。 例如，如果要求率很高時回應時間變慢，表示您的伺服器或相依性已超載。 
 
@@ -49,11 +49,11 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
-預設會啟用智慧型偵測通知，並將其傳送給具有 Application Insights 資源所在之訂用帳戶的[監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)存取權的使用者。 若要變更這種情況，請按一下電子郵件通知中的 [設定]****，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
+預設會啟用智慧偵測通知，並傳送給具有 [監視讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) \(部分機器翻譯\) 和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) \(部分機器翻譯\) 權限可存取 Application Insights 資源所在訂用帳戶的人員。 若要變更這種情況，請按一下電子郵件通知中的 [設定]，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
   
   ![智慧型偵測設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * 您可以使用智慧型偵測電子郵件中的 [取消訂閱]**** 連結，停止接收電子郵件通知。
+  * 您可以使用智慧型偵測電子郵件中的 [取消訂閱] 連結，停止接收電子郵件通知。
 
 每個 Application Insights 資源每天僅限一個關於智慧型偵測效能異常的電子郵件。 只有在當天偵測到至少一個新的問題時，才會傳送電子郵件。 您不會重複收到任何訊息。 
 
@@ -67,22 +67,22 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 * 這適用於哪些類型的應用程式？
   * 會在產生適當遙測的任何應用程式中偵測到這些降低。 如果您在 Web 應用程式中安裝了 Application Insights，就會自動追蹤要求及相依性。 但在後端服務或其他應用程式中，如果您將呼叫插入 [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 或 [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)，則智慧型偵測會以相同的方式運作。
 
-* 我可以建立自己的異常偵測規則或自訂現有的規則嗎？**
+* 我可以建立自己的異常偵測規則或自訂現有的規則嗎？
 
   * 還不行，但是您可以︰
-    * [設定警示](../../azure-monitor/app/alerts.md)，以在計量超出臨界值時通知您。
-    * 將[遙測匯出](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[Power BI](../../azure-monitor/app/export-power-bi.md )，您可以在其中自行分析。
+    * [設定警示](/azure/azure-monitor/platform/alerts-log)，使其在計量超出臨界值時通知您。
+    * [匯出遙測](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 Power BI](../../azure-monitor/app/export-power-bi.md )，您就能自行分析遙測。
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
-* *那麼，這會取代計量[警示](../../azure-monitor/app/alerts.md)嗎？*
+* *那麼，這可以取代[計量警示](/azure/azure-monitor/platform/alerts-log)嗎？*
   * 否。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
-* 如果我完全不回應通知，是否會收到提醒？**
+* 如果我完全不回應通知，是否會收到提醒？
   * 不會，每個問題您只會收到一次訊息。 如果問題仍然存在，就會在 [智慧型偵測摘要] 刀鋒視窗中進行更新。
 * *我遺失了電子郵件。在入口網站中哪裡可以找到通知？*
-  * 在應用程式的 Application Insights 概觀中，按一下 [智慧型偵測]**** 磚。 您可以在這裡找到最多 90 天前的所有通知。
+  * 在應用程式的 Application Insights 概觀中，按一下 [智慧型偵測] 磚。 您可以在這裡找到最多 90 天前的所有通知。
 
 ## <a name="how-can-i-improve-performance"></a>如何改善效能？
 您可從自己的經驗得知，對網站使用者而言，回應緩慢和失敗是最大挫折之一。 因此，請務必解決問題。
@@ -99,10 +99,10 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 開啟 [瀏覽器] 計量刀鋒視窗。 分段顯示的瀏覽器頁面載入時間可顯示時間的進度。 
 
-* 如果 [傳送要求時間] **** 太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](../../azure-monitor/app/web-monitor-performance.md#metrics) 以調查回應時間。
+* 如果 [傳送要求時間]  太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](../../azure-monitor/app/web-monitor-performance.md#metrics) 以調查回應時間。
 * 設定 [相依性追蹤](../../azure-monitor/app/asp-net-dependencies.md) 以查看速度慢是否是外部服務或您的資料庫所造成。
-* 如果 [接收回應] **** 是主導因素，您的頁面和其相依組件 (JavaScript、CSS 及影像等，而非以非同步方式載入的資料) 會很長。 設定 [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)，而且務必設定載入相依組件的選項。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
-* [用戶端處理時間] **** 過長表示指令碼執行速度很慢。 如果原因不明顯，請考慮加入一些時間計時程式碼並在 trackMetric 呼叫中傳送時間。
+* 如果 [接收回應]  是主導因素，您的頁面和其相依組件 (JavaScript、CSS 及影像等，而非以非同步方式載入的資料) 會很長。 設定 [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)，而且務必設定載入相依組件的選項。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
+* [用戶端處理時間]  過長表示指令碼執行速度很慢。 如果原因不明顯，請考慮加入一些時間計時程式碼並在 trackMetric 呼叫中傳送時間。
 
 ### <a name="improve-slow-pages"></a>改善慢速網頁
 Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因此我們不會嘗試這次重複說明。 以下是您可能已知道的一些祕訣，這只是為提醒您：
@@ -125,11 +125,11 @@ Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因�
   * 分析工具追蹤可協助您檢視作業花費時間之處 (如果在偵測期間收集到這項作業的分析工具追蹤範例，則可使用連結)。 
   * 您可以在計量瀏覽器中的效能報告將這項作業的時間範圍/篩選條件進行交叉分析。
   * 搜尋此呼叫可檢視特定的呼叫屬性。
-  * 失敗報告-如果 count > 1，這表示此作業中可能造成效能降低的失敗。
+  * 報告失敗 - 如果計數 > 1，這表示此作業中的失敗可能導致效能降低。
 
 ## <a name="dependency-duration-degradation"></a>相依性持續時間降低
 
-現代化應用程式更多採用微服務設計方法，在許多情況下，會導致外部服務的可靠性高。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
+越來越多新式應用程式採用微服務設計方法，這在許多情況下會導致外部服務的高度可靠性。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
 
 範例相依性降低通知︰
 
@@ -160,7 +160,7 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 ![按一下電子郵件警示中的連結，可在 Azure 中開啟診斷報告](./media/proactive-performance-diagnostics/03.png)
 
 * **時間**顯示偵測到問題的時間。
-* **說明：**
+* [對象] 說明：
 
   * 偵測到的問題；
   * 我們發現的事件集的特性顯示了問題行為。
@@ -174,11 +174,11 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 這些診斷工具可協助您檢查來自您的應用程式的遙測︰
 
 * [分析工具](profiler.md) 
-* [快照偵錯工具](../../azure-monitor/app/snapshot-debugger.md)
+* [快照集偵錯工具](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
 * [分析智慧型診斷](../../azure-monitor/app/analytics.md)
 
 智慧型偵測是完全自動的。 但是，或許您會想要再設定一些警示？
 
-* [手動設定的度量警示](../../azure-monitor/app/alerts.md)
+* [手動設定的度量警示](/azure/azure-monitor/platform/alerts-log)
 * [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)

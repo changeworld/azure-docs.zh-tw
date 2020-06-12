@@ -1,6 +1,6 @@
 ---
-title: 使用驗證搭配公司或學校帳戶登入-Azure AD
-description: 瞭解如何使用各種雙因素驗證方法來登入您的公司或學校帳戶。
+title: 搭配公司或學校帳戶使用驗證來登入 - Azure AD
+description: 了解如何使用各種雙重要素驗證方法來登入您的公司或學校帳戶。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,19 +8,19 @@ ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064082"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742947"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用您的雙因素驗證方法來登入您的公司或學校帳戶
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用雙重要素驗證方法來登入您的公司或學校帳戶
 
 > [!NOTE]
 > 本文的目的逐步解說典型的登入體驗。 如需登入的說明或疑難排解問題，請參閱 [使用 Azure Multi-Factor Authentication 時碰到困難](multi-factor-authentication-end-user-troubleshoot.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "77064082"
 | --- |
 | [透過電話撥打我的行動或辦公室電話](#signing-in-with-a-phone-call) |
 | [傳送簡訊到我的行動電話號碼](#signing-in-with-a-text-message)
-| [從 Microsoft Authenticator 應用程式使用通知](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| [從 Microsoft 驗證器應用程式使用通知](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
 | 從 Microsoft Authenticator 應用程式使用驗證碼 |
 | [使用替代方法，因為現在無法使用我慣用的方法](#signing-in-with-an-alternate-method) |
 
@@ -59,7 +59,7 @@ ms.locfileid: "77064082"
 
    ![Microsoft 傳送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. 在電話上開啟通知，然後選取 [驗證]**** 鍵。 如果貴公司要求 PIN，在此處輸入。
+3. 在電話上開啟通知，然後選取 [驗證] 鍵。 如果貴公司要求 PIN，在此處輸入。
 4. 您現在應已登入。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用驗證碼登入 Microsoft 驗證器應用程式
@@ -77,7 +77,7 @@ ms.locfileid: "77064082"
 有時候您設定做為慣用驗證方法的電話或裝置不在手邊。 這種情況就是為什麼我們建議您為帳戶設定備份方法。 下一節示範當主要方法無法使用時，如何使用替代方法進行登入。
 
 1. 使用您的使用者名稱和密碼登入應用程式或服務，例如 Office 365。
-2. 選取 [使用不同的驗證選項]****。 根據您已設定的驗證選項數量而定，您會看到不同的驗證選項。
+2. 選取 [使用不同的驗證選項]。 根據您已設定的驗證選項數量而定，您會看到不同的驗證選項。
 3. 選擇替代方法並且登入。
 
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)

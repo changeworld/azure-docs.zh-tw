@@ -1,26 +1,27 @@
 ---
-title: 包含 Azure Cosmos DB 查詢語言
-description: 瞭解 Azure Cosmos DB 中的 CONTAINS SQL 系統函數如何傳回布林值，指出第一個字串運算式是否包含第二個
+title: Azure Cosmos DB 查詢語言中的包含函式
+description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系統函數如何傳回布林值，指出第一個字串運算式是否包含第二個字串運算式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302588"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848969"
 ---
-# <a name="contains-azure-cosmos-db"></a>包含（Azure Cosmos DB）
+# <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
+
  傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。  
   
 ## <a name="syntax"></a>語法
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>引數
@@ -30,6 +31,8 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 *str_expr2*  
    這是要尋找的字串運算式。  
+
+*bool_expr* 忽略大小寫的選擇性值 設定為 true 時，CONTAINS 會執行不區分大小寫的搜尋。 若未指定，則此值為 false。
   
 ## <a name="return-types"></a>傳回類型
   
@@ -37,21 +40,41 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會檢查 "abc" 是否包含 "ab"，以及 "abc" 是否包含 "d"。  
+  下列範例會檢查 "abc" 是否包含 "ab" 及 "abc" 是否包含 "A"。  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CONTAINS("abc", "A", true) AS c3
 ```  
   
  以下為結果集。  
   
 ```json
-[{"c1": true, "c2": false}]  
+[
+    {
+        "c1": true,
+        "c2": false,
+        "c3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
+
+「包含」的 RU 耗用量會隨著系統函數中屬性的基數增加而增加。 換句話說，如果您要檢查屬性值是否包含特定字串，則查詢的 RU 費用將取決於該屬性的可能值數目。
+
+例如，假設有兩個屬性：城鎮和國家/地區。 城鎮的基數為 5,000，而國家/地區的基數為 200。 以下是兩個查詢範例：
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.town, "Red", false)
+```
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.country, "States", false)
+```
+
+第一個查詢使用的 RU 可能會比第二個查詢多，因為城鎮的基數高於國家/地區。
 
 ## <a name="next-steps"></a>後續步驟
 

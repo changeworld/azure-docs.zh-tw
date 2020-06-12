@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: 將服務主體新增至伺服器管理員角色
           href: analysis-services-addservprinc-admins.md
+        - name: 在區域間移動
+          href: move-between-regions.md
     - name: 模型
       items:
         - name: 表格式模型

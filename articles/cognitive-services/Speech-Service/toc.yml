@@ -462,6 +462,8 @@
       items:
         - name: 什麼是說話者辨識？
           href: speaker-recognition-overview.md
+        - name: 說話者辨識基本概念
+          href: speaker-recognition-basics.md
     - name: 參考
       items:
         - name: REST API

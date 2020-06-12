@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 384d4ebf211c80ac069889356f269407ba7d3d75
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596527"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676011"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -187,11 +187,15 @@ container.replace(containerProperties).block();
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> 連線至 Synapse 工作區
 
-使用[連線至 Azure Synapse Link]() 中的指示，了解如何使用 Azure Synapse Link 從 Azure Synapse Analytics Studio 存取 Azure Cosmos DB 資料庫。
+使用[連線至 Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) 中的指示，了解如何使用 Azure Synapse Link 從 Azure Synapse Analytics Studio 存取 Azure Cosmos DB 資料庫。
 
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> 使用 Synapse Spark 進行查詢
 
-使用[查詢 Azure Cosmos DB 分析存放區]()一文中的指示，了解如何使用 Synapse Spark 進行查詢。 該文章會提供一些範例，說明如何從 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到這些手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 這些手勢也非常適合透過按一下來探索資料。
+使用[查詢 Azure Cosmos DB 分析存放區](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)一文中的指示，了解如何使用 Synapse Spark 進行查詢。 該文章會提供一些範例，說明如何從 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到這些手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 這些手勢也非常適合透過按一下來探索資料。
+
+## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> 開始使用 Azure Synpase 連結 - 範例
+
+您可以在 [Github](https://aka.ms/cosmosdb-synapselink-samples) 上找到開始使用 Azure Synapse 連結的範例。 這些會展示 IoT 和零售案例的端對端解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 

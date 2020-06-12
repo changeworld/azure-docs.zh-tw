@@ -36,6 +36,12 @@
       href: manage-dhcp.md
     - name: 災害復原
       href: disaster-recovery.md
+    - name: AVS 的 Azure 備份伺服器
+      items:
+        - name: 為 AVS 設定 Azure 備份伺服器
+          href: set-up-mabs-for-avs.md
+        - name: 使用 Azure 備份伺服器來備份 AVS VM
+          href: backup-avs-vms-with-mabs.md
 - name: 參考
   items: null
 - name: 資源

@@ -1,14 +1,14 @@
 ---
-title: 如何設計您的 Application Insights 部署-一種與多項資源？
+title: 如何設計 Application Insights 部署 (一或多個資源)？
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125684"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773704"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
 
@@ -18,25 +18,25 @@ ms.locfileid: "83125684"
 
 ## <a name="about-resources-and-instrumentation-keys"></a>關於資源和檢測金鑰
 
-在為 Web 應用程式設定 Application Insights 監視時，您會在 Microsoft Azure 中建立 Application Insights 資源**。 您可以在 Azure 入口網站開啟此資源，以便查看並分析從應用程式中收集到的遙測資料。 透過「檢測金鑰」**(iKey) 即可識別資源。 當您安裝 Application Insights 套件來監視應用程式時，您必須為它設定檢測金鑰，以便讓它知道要將遙測資料傳送到哪裡。
+在為 Web 應用程式設定 Application Insights 監視時，您會在 Microsoft Azure 中建立 Application Insights 資源。 您可以在 Azure 入口網站開啟此資源，以便查看並分析從應用程式中收集到的遙測資料。 透過「檢測金鑰」(iKey) 即可識別資源。 當您安裝 Application Insights 套件來監視應用程式時，您必須為它設定檢測金鑰，以便讓它知道要將遙測資料傳送到哪裡。
 
-每個 Application Insights 資源都隨附現成可用的計量。 如果完全不同的元件會回報給相同的 Application Insights 資源，這些計量對的儀表板/警示可能沒有意義。
+每個 Application Insights 資源都隨附現成可用的計量。 如果完全不同的元件會回報給相同的 Application Insights 資源，這些計量對儀表板/警示可能沒有意義。
 
 ### <a name="when-to-use-a-single-application-insights-resource"></a>使用單一 Application Insights 資源的時機
 
--   適用于一起部署的應用程式元件。 通常由一組相同的 DevOps/ITOps 使用者所管理的單一小組所開發。
--   如果在預設情況下匯總關鍵效能指標（Kpi）（例如回應持續時間、儀表板中的失敗率等等），則會在所有這些指標（您可以選擇依角色名稱分割計量瀏覽器體驗）。
--   如果不需要在應用程式元件之間以不同的方式管理以角色為基礎的存取控制（RBAC）。
--   如果您不需要不同元件之間的計量警示準則。
+-   適用於一起部署的應用程式元件。 通常由單一小組開發，並由相同一組 DevOps/ITOps 使用者所管理。
+-   如果在預設情況下彙總關鍵效能指標 (KPI) (例如，回應持續時間、儀表板中的失敗率等等) 很合理 (您可以選擇在計量瀏覽器體驗中，依角色名稱細分)。
+-   如果不需要在應用程式元件之間以不同的方式管理角色型存取控制 (RBAC)。
+-   如果您不需要依元件而有所不同的計量警示準則。
 -   如果您不需要在元件之間以不同的方式管理連續匯出。
 -   如果您不需要在元件之間以不同的方式管理計費/配額。
--   如果可以讓 API 金鑰具有與所有元件中的資料相同的存取權。 而10個 API 金鑰就足以滿足其所有需求。
--   如果可以在所有角色之間擁有相同的智慧偵測和工作專案整合設定。
+-   如果可以讓 API 金鑰對所有元件中的資料具有相同的存取權。 此外，10 個 API 金鑰就足以滿足其所有需求。
+-   如果可以在所有角色之間擁有相同的智慧偵測和工作項目整合設定。
 
-### <a name="other-things-to-keep-in-mind"></a>要記住的其他事項
+### <a name="other-things-to-keep-in-mind"></a>要牢記在心的其他事項
 
--   您可能需要加入自訂程式碼，以確保有意義的值會設定為[Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name)屬性。 若未針對此屬性設定有意義的值，則不會有*任何*入口網站體驗可供使用。
-- 針對 Service Fabric 應用程式和傳統雲端服務，SDK 會自動從 Azure 角色環境讀取並設定這些。 對於所有其他類型的應用程式，您可能需要明確地設定。
+-   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
+- SDK 會針對 Service Fabric 應用程式和傳統雲端服務，自動從 Azure 角色環境讀取並進行這些設定。 置於其他所有類型的應用程式，您可能需要明確地進行這個設定。
 -   即時計量體驗不支援依角色名稱分割。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
@@ -58,7 +58,7 @@ ms.locfileid: "83125684"
 在此範例中，不同資源的 ikeys 會放置在不同版本的 Web 組態檔中。 交換 Web 組態檔 (您可以在發行指令碼中進行) 將會交換目標資源。
 
 ### <a name="web-pages"></a>網頁
-IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得到的腳本](../../azure-monitor/app/javascript.md)。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
+iKey 也會用在您的應用程式網頁中，在[您從快速啟動窗格取得的指令碼](../../azure-monitor/app/javascript.md)中。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
 
 *Razor 中的 JavaScript*
 
@@ -75,7 +75,7 @@ IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得�
 
 ## <a name="create-additional-application-insights-resources"></a>建立其他 Application Insights 資源
 
-若要建立 Application Insights 資源，請遵循[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+若要建立 Application Insights 資源，請依照[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) \(部分機器翻譯\) 進行。
 
 ### <a name="getting-the-instrumentation-key"></a>取得檢測金鑰
 檢測金鑰會識別您所建立的資源。
@@ -117,14 +117,14 @@ IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得�
     </PropertyGroup>
     ```
 
-    這會產生名為*yourProjectName*的檔案。Buildinfo.config。發佈程式會將它重新命名為 Buildinfo.config。
+    這會產生一個稱為 *yourProjectName*.BuildInfo.config 的檔案。發佈程序會將這個檔案重新命名為 BuildInfo.config。
 
     當您使用 Visual Studio 建置時，組建標籤會包含預留位置 (AutoGen_...)。 但是當使用 MSBuild 建立時，則會填入正確的版本號碼。
 
     若要允許 MSBuild 產生版本號碼，請在 AssemblyReference.cs 中設定類似 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和版次追蹤
-若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在您的檔案中 `.csproj` ，新增：  
+若要追蹤應用程式版本，請確定您的 Microsoft Build Engine 程序已產生 `buildinfo.config`。 在您的 `.csproj` 檔案中，新增：  
 
 ```XML
 
@@ -135,10 +135,10 @@ IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得�
 
 當它有組建資訊時，Application Insights Web 模組會自動新增 **應用程式版本** ，做為每個遙測項目的屬性。 如此可讓您在執行[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)或在[探索計量](../../azure-monitor/platform/metrics-charts.md)時，依據版本來篩選。
 
-不過，請注意，組建版本號碼只會由 Microsoft Build Engine 產生，而不是由 Visual Studio 的開發人員組建產生。
+但請注意，組建版本號碼只由 Microsoft Build Engine 產生，而不是由 Visual Studio 的開發人員組建產生。
 
 ### <a name="release-annotations"></a>版本註解
-如果您使用 Azure DevOps，您可以[取得註解標記](../../azure-monitor/app/annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 下圖顯示此標記的顯示方式。
+如果您使用 Azure DevOps，您可以[取得註解標記](../../azure-monitor/app/annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 
 
 ## <a name="next-steps"></a>後續步驟
 

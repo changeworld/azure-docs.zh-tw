@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 201d3203d845ce84207d103750709fe2ff93f022
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9e1c9aa664065371595ed34a3af28330bd7e0db
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596317"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798872"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 服務匯流排**是其中之一。 
@@ -69,6 +69,97 @@ az eventgrid event-subscription create \
 將事件傳送至服務匯流排的佇列或主題作為代理訊息時，代理訊息的 `messageid` 會是**事件識別碼**。
 
 事件識別碼會跨事件重新傳遞維護，讓您可以開啟服務匯流排實體上的**重複偵測**，避免重複傳遞。 建議您在服務匯流排實體上啟用重複偵測的持續時間，使其成為事件的存留時間 (TTL) 或最大重試持續時間 (以較長者為準)。
+
+## <a name="rest-examples-for-put"></a>REST 範例 (用於 PUT)
+
+### <a name="service-bus-queue"></a>服務匯流排佇列
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "ServiceBusQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ServiceBus/namespaces/<SERVICE BUS NAMESPACE NAME>/queues/<SERVICE BUS QUEUE NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="service-bus-queue---delivery-with-managed-identity"></a>服務匯流排佇列 - 使用受控識別進行傳遞
+
+```json
+{
+    "properties": {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "ServiceBusQueue",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ServiceBus/namespaces/<SERVICE BUS NAMESPACE NAME>/queues/<SERVICE BUS QUEUE NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="service-bus-topic"></a>服務匯流排主題
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "ServiceBusTopic",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ServiceBus/namespaces/<SERVICE BUS NAMESPACE NAME>/topics/<SERVICE BUS TOPIC NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="service-bus-topic---delivery-with-managed-identity"></a>服務匯流排主題 - 使用受控識別進行傳遞
+
+```json
+{
+    "properties": 
+    {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "ServiceBusTopic",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ServiceBus/namespaces/<SERVICE BUS NAMESPACE NAME>/topics/<SERVICE BUS TOPIC NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

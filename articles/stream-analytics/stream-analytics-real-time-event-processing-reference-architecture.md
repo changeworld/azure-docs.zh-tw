@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 串流分析的即時事件處理
+title: 使用 Azure 串流分析進行即時事件處理
 description: 本文說明使用「Azure 串流分析」來達成即時事件處理和分析的參考架構。
 author: jseb225
 ms.author: jeanb
@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431490"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832974"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>參考架構：使用 Microsoft Azure 串流分析的即時事件處理
 使用 Microsoft Azure 串流分析的即時事件處理之參考架構主要用來提供一般的藍圖，供使用 Microsoft Azure 部署即時的平台即服務 (PaaS) 串流處理解決方案。
@@ -44,12 +44,12 @@ Microsoft Azure 提供分析技術的全面目錄，可以支援一系列不同�
 **下載：** [使用 Microsoft Azure 串流分析的即時事件處理](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請參閱 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

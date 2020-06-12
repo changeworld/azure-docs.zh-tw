@@ -2,14 +2,14 @@
 title: 適用於主控台應用程式的 Azure Application Insights | Microsoft Docs
 description: 監視 Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655424"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774029"
 ---
 # <a name="application-insights-for-net-console-applications"></a>適用於 .NET 主控台應用程式的 Application Insights
 
@@ -18,12 +18,12 @@ ms.locfileid: "77655424"
 您需要 [Microsoft Azure](https://azure.com) 的訂用帳戶。 使用 Microsoft 帳戶登入，此帳戶可能是您針對 Windows、Xbox Live 或其他 Microsoft 雲端服務所擁有的帳戶。 您的小組可能已有 Azuare 組織訂用帳戶：請洽詢擁有者將您的 Microsoft 帳戶新增至其中。
 
 > [!NOTE]
-> 有一個新的 Application Insights SDK，稱為[ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ，可用來為任何主控台應用程式啟用 Application Insights。 建議您在[這裡](../../azure-monitor/app/worker-service.md)使用此封裝和相關聯的指示。 此套件的[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)目標是，因此可在 .net Core 2.0 或更高版本中使用，並 .NET Framework 4.7.2 或更高版本。
+> 有一個稱為 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用來針對任何主控台應用程式啟用 Application Insights。 建議使用此套件，以及[這裡](../../azure-monitor/app/worker-service.md)的相關指示。 此套件的目標是 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可以用於 .NET Core 2.0 或更高版本，以及 .NET Framework 4.7.2 或更高版本。
 
 ## <a name="getting-started"></a>開始使用
 
-* 在 [Azure 入口網站](https://portal.azure.com)中，建立 [Application Insights 資源](../../azure-monitor/app/create-new-resource.md)。 針對應用程式類型，選擇 [一般]****。
-* 取得檢測金鑰的副本。 在您所建立之新資源的 [ **Essentials** ] 下拉式集中尋找金鑰。
+* 在 [Azure 入口網站](https://portal.azure.com)中，建立 [Application Insights 資源](../../azure-monitor/app/create-new-resource.md)。 針對應用程式類型，選擇 [一般]。
+* 取得檢測金鑰的副本。 在您建立之新資源的 [基本資訊] 下拉式清單中尋找金鑰。
 * 安裝最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) \(英文\) 封裝。
 * 在程式碼中設定檢測金鑰，然後再追蹤任何遙測 (或設定 APPINSIGHTS_INSTRUMENTATIONKEY 環境變數)。 在那之後，您應該能夠手動追蹤遙測，並在 Azure 入口網站上看到它
 
@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> 遙測不會立即傳送。 ApplicationInsights SDK 會批次處理並傳送遙測專案。 在呼叫`Track()`方法之後立即結束的主控台應用程式中，除非和`Flush()` `Sleep`在應用程式結束之前完成，否則不會傳送遙測，如本文稍後的[完整範例](#full-example)所示。
+> 遙測不會立即傳送。 遙測項目是由 ApplicationInsights SDK 批次處理並傳送。 在呼叫 `Track()` 方法之後立即結束的主控台應用程式中，除非 `Flush()` 和 `Sleep`/`Delay` 在應用程式結束之前完成，否則無法傳送遙測，如本文稍後的[完整範例](#full-example)所示。 如果您使用的是 `InMemoryChannel`，則不需要 `Sleep`。 有一個關於需要 `Sleep` 的現行問題，會在這裡追蹤：[ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * 安裝最新版的 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) \(英文\) 封裝；它會自動追蹤 HTTP、SQL 或某些其他外部相依性呼叫。
@@ -96,7 +96,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 ### <a name="configuring-telemetry-collection-from-code"></a>從程式碼設定遙測集合
 > [!NOTE]
-> .NET Core 不支援讀取設定檔。 您可以考慮使用[適用于 ASP.NET Core 的 APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net-core.md)
+> .NET Core 上不支援讀取設定檔。 您可以考慮使用 [Application Insights SDK for ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
 * 在應用程式啟動期間，建立並設定 `DependencyTrackingTelemetryModule` 執行個體；它必須是單一的，而且必須針對應用程式存留期加以保留。
 
@@ -125,13 +125,13 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-如果您使用一般`TelemetryConfiguration()`的函式建立了設定，則需要另外啟用相互關聯支援。 如果您從檔案讀取設定（使用`TelemetryConfiguration.CreateDefault()`或`TelemetryConfiguration.Active`），則**不需要此**設定。
+如果您使用純 `TelemetryConfiguration()` 建構函式建立了設定，則需要額外啟用相互關聯支援。 如果您從檔案讀取設定，並使用了 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`，**則不需要啟用**。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* 您可能也會想要安裝並初始化效能計數器收集器模組，如[這裡](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
+* 您可能也想要安裝效能計數器收集器模組並加以初始化，如[這裡](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
 
 
 #### <a name="full-example"></a>完整範例
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

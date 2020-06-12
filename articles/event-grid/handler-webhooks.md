@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: ba67b1cd93bc1c713648f799090e0b2cd77cff1b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d29cf1819d844a8ba5446feeeb725307523fce1b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596377"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800547"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>以 Webhook、自動化 Runbook、Logic Apps 作為 Azure 事件方格事件的事件處理常式
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 許多 Azure 服務都已自動設定為可處理事件。 您也可以使用任何 WebHook 來處理事件。 WebHook 不需要裝載於 Azure 也能處理處理事件。 事件方格僅支援 HTTPS WebHook 端點。
@@ -47,6 +47,27 @@ ms.locfileid: "83596377"
 | [教學課程：使用 Azure Event Grid 和 Logic Apps 監視虛擬機器變更](monitor-virtual-machine-changes-event-grid-logic-app.md) | 邏輯應用程式會監視虛擬機器的變更，並傳送有關這些變更的電子郵件。 |
 | [教學課程：使用 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](publish-iot-hub-events-to-logic-apps.md) | 每當有裝置新增至您的 IoT 中樞時，邏輯應用程式就會傳送電子郵件通知。 |
 | [教學課程：使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件方格會從服務匯流排主題傳送訊息至函式應用程式和邏輯應用程式。 |
+
+## <a name="rest-example-for-put"></a>REST 範例 (用於 PUT)
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "WebHook",
+            "properties": 
+            {
+                "endpointUrl": "<WEB HOOK URL>",
+                "maxEventsPerBatch": 1,
+                "preferredBatchSizeInKilobytes": 64
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

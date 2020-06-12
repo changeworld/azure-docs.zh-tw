@@ -1,56 +1,56 @@
 ---
-title: 啟用和管理 blob 的虛刪除
+title: 啟用及管理 Blob 的虛刪除
 titleSuffix: Azure Storage
-description: 啟用 blob 物件的虛刪除，以在錯誤地修改或刪除您的資料時更容易復原。
+description: 啟用 Blob 物件的虛刪除功能，當錯誤地修改或刪除您的資料時，可更輕鬆地加以復原。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 5d6cbf873ac1b76c24f5907a47038157b22e5680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120091"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634127"
 ---
-# <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用和管理 blob 的虛刪除
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用及管理 Blob 的虛刪除
 
-虛刪除可防止不小心或錯誤地修改或刪除 blob 資料。 針對儲存體帳戶啟用虛刪除時，該儲存體帳戶中的 blob、blob 版本（預覽）和快照集可能會在您指定的保留期限內被刪除之後復原。
+虛刪除可防止不小心或錯誤地修改或刪除 Blob 資料。 針對儲存體帳戶啟用虛刪除時，該儲存體帳戶中的 Blob、Blob 版本 (預覽) 和快照集可在刪除之後加以復原 (在您指定的保留期間內)。
 
-如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議您開啟虛刪除。
+如果您的資料有可能意外遭到應用程式或其他儲存體帳戶使用者修改或刪除，Microsoft 建議您開啟虛刪除。
 
-本文說明如何開始進行虛刪除。
+此文章說明如何開始使用虛刪除。
 
 ## <a name="enable-soft-delete"></a>啟用虛刪除
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站在儲存體帳戶上啟用 blob 的虛刪除：
+使用 Azure 入口網站在儲存體帳戶上啟用 Blob 的虛刪除：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶。 
+1. 在 [Azure 入口網站中](https://portal.azure.com/)，選取您的儲存體帳戶。 
 
-2. 流覽至 [ **Blob 服務**] 底下的 [**資料保護**] 選項。
+2. 瀏覽至 [Blob 服務] 底下的 [資料保護] 選項。
 
-3. 在 Blob 虛**刪除**下按一下 [**已啟用**]
+3. 按一下 [Blob 虛刪除] 底下的 [啟用]
 
-4. 在 [**保留原則**] 下輸入您要*保留*的天數
+4. 在 [保留原則] 底下，輸入您想要「保留」的天數
 
-5. 選擇 [**儲存**] 按鈕以確認您的資料保護設定
+5. 選擇 [儲存] 按鈕以確認您的 [資料保護] 設定
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
-若要檢視已虛刪除的 Blob，請選取 [顯示已刪除的 Blob]**** 核取方塊。
+若要檢視已虛刪除的 Blob，請選取 [顯示已刪除的 Blob] 核取方塊。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
-若要檢視指定 Blob 的虛刪除快照集，請選取 Blob，然後按一下 [檢視快照集]****。
+若要檢視指定 Blob 的虛刪除快照集，請選取 Blob，然後按一下 [檢視快照集]。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
-請確定 [顯示已刪除的快照集]**** 核取方塊已選取。
+請確定 [顯示已刪除的快照集] 核取方塊已選取。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
@@ -58,11 +58,11 @@ ms.locfileid: "83120091"
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
-請記住，取消刪除 Blob 時也會取消刪除所有相關聯的快照集。 若要取消刪除作用中 Blob 的虛刪除快照集，請按一下該 Blob，然後選取 [取消刪除所有快照集]****。
+請記住，取消刪除 Blob 時也會取消刪除所有相關聯的快照集。 若要取消刪除作用中 Blob 的虛刪除快照集，請按一下該 Blob，然後選取 [取消刪除所有快照集]。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
-在您取消刪除 Blob 的快照集後，您可以按一下 [升階]**** 將快照集複製到根 Blob，藉以將 Blob 還原至該快照集。
+在您取消刪除 Blob 的快照集後，您可以按一下 [升階] 將快照集複製到根 Blob，藉以將 Blob 還原至該快照集。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
@@ -137,7 +137,21 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要啟用虛刪除，請更新 Blob 用戶端的服務屬性：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
+
+若要復原意外刪除的 Blob，請對這些 Blob 呼叫「取消刪除」。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫 **Undelete**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會容器中所有已虛刪除和作用中的 Blob 呼叫「取消刪除」：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
+
+若要復原至特定 Blob 版本，請先對 Blob 呼叫「取消刪除」，然後將所需的快照集複製到 Blob。 下列範例會將區塊 Blob 復原至其最近產生的快照集：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要啟用虛刪除，請更新 Blob 用戶端的服務屬性：
 
@@ -153,7 +167,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-若要復原意外刪除的 Blob，請對這些 Blob 呼叫「取消刪除」。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫**取消刪除 Blob**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會容器中所有已虛刪除和作用中的 Blob 呼叫「取消刪除」：
+若要復原意外刪除的 Blob，請對這些 Blob 呼叫「取消刪除」。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫 **Undelete**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會容器中所有已虛刪除和作用中的 Blob 呼叫「取消刪除」：
 
 ```csharp
 // Recover all blobs in a container
@@ -177,11 +191,11 @@ IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
 CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```
+```  
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
 - [Blob 儲存體的虛刪除](soft-delete-overview.md)
-- [Blob 版本設定（預覽）](versioning-overview.md)
+- [Blob 版本設定 (預覽)](versioning-overview.md)

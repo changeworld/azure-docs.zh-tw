@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596407"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744668"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>適用於 Azure Cosmos DB 的 Synapse Link：近即時分析的使用案例
 

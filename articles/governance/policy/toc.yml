@@ -138,6 +138,9 @@
           href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure 監視器整合
       items:
+        - name: 大規模部署 Azure 監視器
+          displayName: 'monitor, diagnostic settings, dependency agent'
+          href: ../../azure-monitor/platform/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: 啟用適用於 VM 的 Azure 監視器 (預覽)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json

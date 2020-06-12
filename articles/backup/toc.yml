@@ -219,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure 備份伺服器 (MABS)
       items:
-        - name: Azure 備份伺服器保護矩陣
-          href: backup-mabs-protection-matrix.md
+        - name: 保護矩陣
+          items:
+            - name: MABS V3 UR1 保護矩陣
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM 保護矩陣
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: 安裝或升級
           items:
             - name: 安裝 Azure 備份伺服器
@@ -229,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: V12 有哪些新功能
               href: backup-mabs-whats-new-mabs.md
-            - name: 版本資訊 MABS V3
+            - name: 版本資訊 MABS
               href: backup-mabs-release-notes-v3.md
             - name: 自動安裝
               href: backup-mabs-unattended-install.md
@@ -284,7 +288,9 @@
         - name: 使用匯入/匯出 (MARS) 進行離線備份
           href: backup-azure-backup-import-export.md
         - name: 使用匯入/匯出 (DPM/MABS) 進行離線備份
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM 和 MABS 的離線備份 (舊版)
+          href: offline-backup-server-previous-versions.md
     - name: 監視和警示
       items:
         - name: 使用備份總管

@@ -1,23 +1,23 @@
 ---
 title: 關於影片索引器的常見問題集 - Azure
 titleSuffix: Azure Media Services
-description: 本文提供 Azure 媒體服務影片索引子的常見問題解答。
+description: 本文提供 Azure 媒體服務影片索引器常見問題集的解答。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767208"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652175"
 ---
-# <a name="video-indexer-frequently-asked-questions"></a>影片索引子的常見問題
+# <a name="video-indexer-frequently-asked-questions"></a>影片索引器常見問題集
 
 本文將回答有關影片索引器的常見問題集。
 
@@ -34,7 +34,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 * 識別並擷取語音，以及識別說話者。
 * 識別並擷取影片中的螢幕上文字。
 * 在影片檔案中偵測物件。
-* 從音訊曲目和影片中的螢幕上文字識別品牌（例如： Microsoft）。
+* 從音訊曲目和視訊中的螢幕上文字識別品牌 (例如：Microsoft)。
 * 根據名人的資料庫和使用者定義的臉部資料庫偵測並辨識臉部。
 * 擷取所討論的主題，但不一定要在音訊和視訊內容中明確提及。
 * 從音訊曲目建立隱藏式輔助字幕或字幕。
@@ -43,7 +43,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>如何開始使用影片索引器？
 
-影片索引器包含免費的試用供應項目，可在 Web 型介面中提供 600 分鐘的試用時間，透過 API 則可取得 2,400 分鐘的試用時間。 您可以[登入影片索引器 Web 型介面](https://www.videoindexer.ai/) \(英文\)，並使用任何 Web 身分識別來試用它，而不需要設定 Azure 訂用帳戶。 遵循[這個簡單的簡介實驗室](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)，更瞭解如何使用影片索引子。
+影片索引器包含免費的試用供應項目，可在 Web 型介面中提供 600 分鐘的試用時間，透過 API 則可取得 2,400 分鐘的試用時間。 您可以[登入影片索引器 Web 型介面](https://www.videoindexer.ai/) \(英文\)，並使用任何 Web 身分識別來試用它，而不需要設定 Azure 訂用帳戶。 遵循[這個簡單的簡介實驗室](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)，以深入了解如何使用影片索引器。
 
 若要大規模編製視訊和音訊檔的索引，您可以將影片索引器連接至付費的 Microsoft Azure 訂用帳戶。 您可以在[定價](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)頁面上找到定價的詳細資訊。
 
@@ -61,7 +61,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 影片索引器支援最常見的媒體格式。 如需詳細資料，請參閱 [Azure 媒體編碼器的標準格式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)清單。
 
-### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>如何? 將媒體檔案上傳到影片索引子中，有哪些限制？
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>如何將媒體檔案上傳到影片索引器，以及有哪些限制？
 
 在影片索引器 Web 入口網站中，您可以使用 [檔案上傳] 對話方塊來上傳媒體檔案，或透過指向直接裝載來源檔案的 URL 來上傳 (請參閱[範例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4))。 所有使用 iFrame 或內嵌程式碼裝載媒體內容的 URL 都將無法運作 (請參閱[範例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) \(英文\))。 
 
@@ -69,10 +69,10 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 #### <a name="limitations"></a>限制
 
-* 影片的名稱不能超過80個字元。
-* 如果您使用位元組陣列上傳影片，則影片大小限制為2GB （使用 URL 時則為30GB）。 
+* 影片的名稱不能超過 80 個字元。
+* 如果您使用位元組陣列上傳影片，則影片大小限制為 2 GB (使用 URL 時則為 30 GB)。 
 
-如需完整清單，請參閱[上傳考慮與限制](upload-index-videos.md#uploading-considerations-and-limitations)。
+如需完整清單，請參閱[上傳考量與限制](upload-index-videos.md#uploading-considerations-and-limitations)。
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>影片索引器從媒體擷取見解需要多長的時間？
 
@@ -80,25 +80,29 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以建立自訂工作流程以將影片索引器的程序自動化？
 
-是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 找到適用於影片索引器的 [Logic App](https://azure.microsoft.com/services/logic-apps/) 和 [Flow](https://flow.microsoft.com/en-us/) 連接器的詳細資料。 您可以在[影片索引子範例](https://github.com/Azure-Samples/media-services-video-indexer)存放庫中看到由合作夥伴完成的一些自動化專案。
+是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 找到適用於影片索引器的 [Logic App](https://azure.microsoft.com/services/logic-apps/) 和 [Flow](https://flow.microsoft.com/en-us/) 連接器的詳細資料。 您可以在[影片索引器範例](https://github.com/Azure-Samples/media-services-video-indexer)存放庫中看到一些由合作夥伴完成的自動化專案。
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>哪些 Azure 區域提供影片索引器？
 
 您可以在[區域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)頁面上查看哪些 Azure 區域提供影片索引器。
 
-### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>我可以針對我的特定使用案例自訂影片索引子模型嗎？ 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>我可以針對我的特定使用案例自訂影片索引器模型嗎？ 
 
-是。 在影片索引子中，您可以自訂一些可用的模型，以更符合您的需求。 
+是。 在影片索引器中，您可以自訂一些可用模型，以更符合您的需求。 
 
-例如，我們的人員模型支援名人辨識的現成1000000臉部，但您也可以將其定型，以辨識不在該資料庫中的其他臉部。 
+例如，我們的人員模型支援現成的 1,000,000 個名人臉部辨識，但您也可以將其定型，以辨識不在該資料庫中的其他臉部。 
 
-如需詳細資訊，請參閱自訂[人員](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[語言](customize-language-model-overview.md)模型的相關文章。 
+如需詳細資訊，請參閱有關自訂[人員](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[語言](customize-language-model-overview.md)模型的文章。 
 
-###  <a name="can-i-edit-the-videos-in-my-library"></a>我可以編輯媒體櫃中的影片嗎？
+###  <a name="can-i-edit-the-videos-in-my-library"></a>我可以編輯媒體庫中的影片嗎？
 
-是。 按下文件庫顯示的 [**編輯影片**] 按鈕，或從播放者顯示的 [**在編輯器中開啟**] 按鈕，進入 [**專案**] 索引標籤。您可以建立新的專案，並從媒體櫃新增更多影片來一起編輯，一旦完成後，您就可以轉譯您的影片並下載。 
+是。 按下媒體庫顯示畫面中的 [編輯影片] 按鈕，或播放器顯示畫面中的 [在編輯器中開啟] 按鈕，以進入 [專案] 索引標籤。您可以建立新的專案，並從媒體庫新增更多影片來一起編輯，一旦完成後，您就可以轉譯您的影片並下載。 
 
-如果您想要取得新影片的深入解析，請使用影片索引子為其編制索引，它會顯示在您的程式庫中與其深入解析。
+如果您想要取得有關新影片的見解，請使用影片索引器為其編製索引，且其會與見解一起出現在您的媒體庫中。
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>我可以為多個音訊串流或頻道編製索引嗎？
+
+如果有多個音訊串流，影片索引器會採用其所遇到的第一個音訊串流，而且只會處理此串流。 在影片索引器處理的任何音訊串流中，其會採用不同的頻道 (如果有的話)，並將它們當作單聲道一起處理。 對於串流/頻道操作，您可以在為檔案編製索引之前，先對該檔案使用 ffmpeg 命令。
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>影片索引器的 SLA 為何？
 
@@ -134,7 +138,7 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 是，內容和其見解都會保留在 Azure 區域內，除非您在 Azure 訂用帳戶中具有使用多個 Azure 區域的手動設定。 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>影片索引子的隱私權原則為何？
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>影片索引器的隱私權原則為何？
 
 影片索引器在 [Microsoft 隱私權聲明](https://privacy.microsoft.com/privacystatement)的涵蓋範圍內。 隱私權聲明會說明 Microsoft 處理的個人資料、Microsoft 處理該資料的方式，以及 Microsoft 處理該資料的目的。 若要深入了解隱私權，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trustcenter)。
 
@@ -142,20 +146,20 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 影片索引器目前有 SOC 認證。 若要檢閱影片索引器的認證，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)。
 
-### <a name="what-is-the-difference-between-private-and-public-videos"></a>私用和公用影片之間有何差異？ 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>私人影片與公用影片之間有何差異？ 
 
-當影片上傳到影片索引子時，您可以從兩種隱私權設定中進行選擇： [私人] 和 [公用]。 所有人都可以存取公用影片，包括匿名和無法識別的使用者。 私人帳戶僅限於帳戶成員。 
+當影片上傳至影片索引器時，您可以從兩個隱私權設定中擇其一：私人與公用。 任何人皆可存取公用影片，包括匿名和未識別的使用者。 私人影片僅限帳戶成員才能存取。 
 
-### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>我嘗試將影片上傳為公用，並標示為不適當或冒犯的內容，這代表什麼意思？ 
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>我已嘗試將影片上傳為公用影片，但其被標示為不當或冒犯的內容，這是什麼意思？ 
 
-將影片上傳到影片索引子時，會透過演算法和模型來進行自動內容分析，以確保不會公開任何不當的內容。 如果找到的影片可疑于包含明確內容，就無法將其設定為公用。 不過，帳戶成員仍然可以將其當做私人影片存取（觀看、下載深入解析和已解壓縮的成品，以及執行其他可供帳戶成員使用的作業）。   
+將影片上傳到影片索引器時，會透過演算法和模型來進行自動內容分析，以確保不會公開任何不當的內容。 如果找到包含明確不當內容的的可疑影片，就無法將其設定為公用。 不過，帳戶成員仍然可以將其當做私人影片存取 (觀看、下載見解和解壓縮的成品，以及執行其他可供帳戶成員使用的作業)。   
 
-為了設定公用存取的影片，您可以： 
+為了設定可公開存取的影片，您可以： 
 
-* 建立您自己的介面層（例如應用程式或網站），並使用它來與影片索引子服務互動。 如此一來，影片會在入口網站中保持私用，而您的使用者可以透過您的介面與它互動。 例如，您仍然可以取得深入解析，或允許在自己的介面中觀看影片。 
-* 要求內容的人工審核，這會導致移除限制，假設內容不是明確的。 
+* 建置您自己的介面層 (例如應用程式或網站)，並使用其與影片索引器服務互動。 如此一來，影片會在我們的入口網站中保持私用狀態，而且您的使用者可以透過您的介面與其互動。 例如，您仍然可以取得見解，或允許在自己的介面中觀看影片。 
+* 要求人工審核內容，這會導致移除假設內容不是明確的限制。 
 
-    如果您的使用者直接使用影片索引子網站做為介面層，以及用於公用（未經驗證）的查看，就可以探索此選項。 
+    如果您的使用者直接使用影片索引器網站做為介面層，並進行公開 (未經驗證) 觀看，就可以探索此選項。 
 
 ## <a name="api-questions"></a>API 問題
 
@@ -191,11 +195,11 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 存取權杖每隔一小時到期，因此您需要每隔一小時產生一個新的存取權杖。 
 
-### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>影片索引子開發人員入口網站的登入選項有哪些？
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>影片索引器開發人員入口網站的登入選項有哪些？
 
 您可以使用 Azure AD、Microsoft 帳戶、Google 帳戶或 Facebook 帳戶來登入。 
 
-當您使用身分識別提供者註冊您的電子郵件帳戶之後，就無法將此電子郵件帳戶與其他身分識別提供者搭配使用。
+一旦使用識別提供者註冊您的電子郵件帳戶之後，您就無法搭配另一個識別提供者使用此電子郵件帳戶。
 
 ## <a name="billing-questions"></a>計費問題
 
@@ -203,9 +207,9 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 影片索引器會使用簡單的隨用隨付定價模型，其以您編製索引之內容輸入的持續時間為基礎。 對於編碼、資料流、儲存體、網路使用量和媒體保留單元，可能須支付額外的費用。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)頁面。
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>使用影片索引子的計費時間為何？
+### <a name="when-am-i-billed-for-using-video-indexer"></a>使用影片索引器何時計費？
 
-傳送要編制索引的影片時，使用者會將索引定義為影片分析、音訊分析或兩者。 這會決定要向哪個 Sku 收費。 如果在處理期間發生嚴重層級錯誤，將會傳回錯誤碼作為回應。 在這種情況下，不會產生任何費用。  嚴重錯誤可能是因為我們的程式碼中的 bug，或服務所擁有的內部相依性嚴重失敗所造成。 錯誤的識別或深入解析解壓縮不會視為關鍵，而且會傳迴響應。 在傳回有效（非錯誤碼）回應的任何情況下，都會進行計費。
+傳送要編製索引的影片時，使用者會將編製索引定義為影片分析、音訊分析或兩者。 這會決定要向哪個 SKU 收費。 如果在處理期間發生嚴重等級錯誤，將會傳回錯誤碼做為回應。 在這種情況下，不會產生任何費用。  造成嚴重錯誤的原因可能是我們的程式碼中發生錯誤 (bug)，或服務具有的內部相依性發生嚴重失敗。 錯誤識別或見解擷取這類的錯誤不會視為嚴重錯誤，並會傳回回應。 在傳回有效 (非錯誤碼) 回應的任何情況下，都會進行計費。
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>影片索引器是否提供免費試用版？
 

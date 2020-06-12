@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: 自助式註冊使用者流程 (預覽)
           href: self-service-sign-up-overview.md
+        - name: 自助式註冊 API 連接器 (預覽)
+          href: api-connectors-overview.md
         - name: Azure AD 權利管理
           href: self-service-portal.md
         - name: 目前的限制
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: 自訂使用者流程語言
               href: user-flow-customize-language.md
+            - name: 新增 API 連接器
+              href: self-service-sign-up-add-api-connector.md
+            - name: 新增自訂核准系統
+              href: self-service-sign-up-add-approvals.md
         - name: 管理來賓帳戶
           items:
             - name: 將 B2B 使用者新增至角色

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2019
-ms.openlocfilehash: 0e91bc9c994a48b335c3ccb7373a9f4f5dc6d1e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/26/2020
+ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605095"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860625"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 建立 Log Analytics 工作區
 
@@ -19,7 +19,7 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 
 * 訂用帳戶中的 Azure 資源  
 * System Center Operations Manager 監視的內部部署電腦  
-* Configuration Manager 的裝置集合  
+* 來自 Configuration Manager 的裝置集合  
 * Azure 儲存體的診斷或記錄資料  
 
 針對其他來源，例如環境中的 Azure VM 和 Windows 或 Linux VM，請參閱下列主題：
@@ -35,9 +35,9 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-workspace"></a>建立工作區
-使用 [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 建立工作區。 下列範例會使用本機電腦上的 Resource Manager 範本，在*eastus*位置中建立工作區。 JSON 範本會設定為只提示您輸入工作區的名稱，並針對您環境中可能作為標準組態使用的其他參數，指定預設值。 或者，您可以將範本儲存在 Azure 儲存體帳戶中，以在組織內共用存取。 如需使用範本的詳細資訊，請參閱 [使用 Resource Manager 範本和 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
+使用 [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 建立工作區。 下列範例會從您的本機電腦使用 Resource Manager 範本，在 eastus 位置建立工作區。 JSON 範本會設定為只提示您輸入工作區的名稱，並針對您環境中可能作為標準組態使用的其他參數，指定預設值。 或者，您可以將範本儲存在 Azure 儲存體帳戶中，以在組織內共用存取。 如需使用範本的詳細資訊，請參閱 [使用 Resource Manager 範本和 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如需所支援區域的詳細資訊，請參閱[中的可用區域 Log Analytics](https://azure.microsoft.com/regions/services/) ，並從 [**搜尋產品**] 欄位搜尋 Azure 監視器。
+如需支援區域的詳細資訊，請參閱[可以使用 Log Analytics 的區域](https://azure.microsoft.com/regions/services/)，並從 [搜尋產品] 欄位搜尋 Azure 監視器。
 
 下列參數會設定預設值：
 
@@ -107,8 +107,8 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
     ```
 
 2. 編輯範本以符合您的需求。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。
-3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json****。   
-4. 您已準備好部署此範本。 從包含範本的資料夾使用下列命令。 當系統提示您輸入工作區名稱時，請提供在所有 Azure 訂用帳戶中都是全域唯一的名稱。
+3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json。   
+4. 您已準備好部署此範本。 從包含範本的資料夾使用下列命令。 當系統提示您輸入工作區名稱時，請提供在所有 Azure 訂用帳戶全域中都是唯一的名稱。
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -117,6 +117,14 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 部署需要幾分鐘的時間才能完成。 完成後，您會看到類似下列包含結果的訊息：
 
 ![部署完成時的範例結果](media/quick-create-workspace-cli/template-output-01.png)
+
+## <a name="troubleshooting"></a>疑難排解
+當您建立在過去 14 天內刪除且處於[虛刪除狀態](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)的工作區時，根據您的工作區設定，此作業可能會有不同的結果：
+1. 如果您提供的工作區名稱、資源群組、訂用帳戶和區域與已刪除工作區中的相同，您的工作區將會復原，包括其資料、設定和連接的代理程式。
+2. 如果您使用相同的工作區名稱，但是不同的資源群組、訂用帳戶或區域，您將會收到錯誤：「工作區名稱 'workspace-name' 不是唯一的，或是有衝突。」 若要覆寫虛刪除並永久刪除您的工作區，並使用相同的名稱建立新的工作區，請遵循下列步驟先復原工作區，然後執行永久刪除：
+   * [復原](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)您的工作區
+   * [永久刪除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)您的工作區
+   * 使用相同工作區名稱建立新的工作區
 
 ## <a name="next-steps"></a>後續步驟
 有了可用的工作區之後，您可以設定監視遙測的集合、執行記錄搜尋以分析該資料，並且新增管理解決方案，以提供額外的資料和分析深入解析。  
