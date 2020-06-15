@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cf00fab14f91b151327b435068d689edab32b2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737719"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014344"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
 雲端應用程式或動作是條件式存取原則中的關鍵訊號。 管理員可利用條件式存取原則，將控制項指派給特定的應用程式或動作。
 
 - 管理員可以從應用程式清單中挑選，內有內建的 Microsoft 應用程式及任何 [Azure AD 整合式應用程式](../manage-apps/what-is-application-management.md) (包括資源庫、非資源庫以及透過[應用程式 Proxy](../manage-apps/what-is-application-proxy.md) 發佈的應用程式)。
-- 管理員可以選擇根據使用者動作來定義原則，而非根據雲端應用程式。 唯一支援的動作是 [註冊安全性資訊](預覽)，可讓條件式存取強制執行[合併的安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)相關的控制項。
+- 管理員可以選擇根據使用者動作來定義原則，而非根據雲端應用程式。 唯一支援的動作是 [註冊安全性資訊]\(預覽)，可讓條件式存取強制執行[合併的安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)相關的控制項。
 
 ![定義條件式存取原則並指定雲端應用程式](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "83737719"
 - [Office 365 (預覽)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Database 和資料倉儲](../../sql-database/sql-database-conditional-access.md)
+- [Azure SQL Database 和資料倉儲](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights 分析
 - [Microsoft Azure 資訊保護](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
