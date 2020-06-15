@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221333"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691708"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) 認知服務中的資料儲存和移除
 LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure 資料存放區中。 此資料會儲存 30 天。 
@@ -28,7 +28,7 @@ LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure
 
 語句可以儲存在兩個不同的位置。 
 
-* 在**撰寫過程**中，會建立語句並儲存在意圖中。 成功 LUIS 的應用程式需要語句的意圖。 一旦應用程式發佈並接收端點上的查詢，端點要求的 querystring， `log=false`會決定是否要儲存端點語句。 如果端點已儲存，它會成為入口網站的 [**組建**] 區段中，位於 [**審核端點語句**] 區段中的主動式學習語句的一部分。 
+* 在**撰寫過程**中，會建立語句並儲存在意圖中。 成功 LUIS 的應用程式需要語句的意圖。 一旦應用程式發佈並接收端點上的查詢，端點要求的 querystring， `log=false` 會決定是否要儲存端點語句。 如果端點已儲存，它會成為入口網站的 [**組建**] 區段中，位於 [**審核端點語句**] 區段中的主動式學習語句的一部分。 
 * 當您**審查端點語句**，並將語句新增至意圖時，語句就不會再儲存為要檢查的端點語句的一部分。 它會加入至應用程式的意圖。 
 
 <a name="utterances-in-an-intent"></a>

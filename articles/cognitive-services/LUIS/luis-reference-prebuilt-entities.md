@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221279"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686625"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>在您 LUIS 模型中，每個文化特性的實體
 
 Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程式中包含預先建置的實體時，LUIS 就會在端點回應中包含對應的實體預測。 所有範例語句也都會標示該實體。 預先建置實體的行為**無法**修改。 除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
 
-|文化特性|次文化特性|備忘錄|
+|文化特性|次文化特性|注意|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 |荷蘭文|[nl-NL](#dutch-entity-support)||
@@ -53,10 +53,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -75,10 +75,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -97,10 +97,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2、V3   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -119,10 +119,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -141,10 +141,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -163,10 +163,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -187,10 +187,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -209,10 +209,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、-   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、-   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、-   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、-   |
@@ -231,10 +231,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    -   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Number](luis-reference-prebuilt-number.md)   |    -   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
+[比例](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    -   |
@@ -253,10 +253,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -275,10 +275,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -297,10 +297,10 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
-[數字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序數](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
+[序列](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
+[比例](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    -   |

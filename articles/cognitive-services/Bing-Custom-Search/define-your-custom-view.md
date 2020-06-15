@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221369"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710162"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>設定 Bing 自訂搜尋體驗
 
@@ -27,7 +27,7 @@ ms.locfileid: "79221369"
 
 | 配量名稱 | 描述                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如： `www.microsoft.com` 。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定`microsoft.com`，Bing 也會傳回來自或`support.microsoft.com` `technet.microsoft.com`的結果。 |
+| 網域     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如： `www.microsoft.com` 。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定 `microsoft.com` ，Bing 也會傳回來自或的結果 `support.microsoft.com` `technet.microsoft.com` 。 |
 | 子頁面    | 子頁面配量包括在子頁面及其下的路徑中找到的所有內容。 您在路徑中最多可以指定兩個子頁面。 例如， `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | 網頁    | 網頁配量在自訂搜尋中只能包括該網頁。 您可以選擇性地指定是否要包括子頁面。                                                                                                                                                                                  |
 
@@ -40,7 +40,7 @@ ms.locfileid: "79221369"
 
 如果您知道要包括在自訂搜尋執行個體中的配量，請在執行個體的 [作用中]**** 清單新增配量。 
 
-如果您不確定要包含哪些配量，可以在 [預覽]**** 窗格中將搜尋查詢傳送至 Bing，然後選取您要的配量。 若要這樣做： 
+如果您不確定要包含哪些配量，可以在 [預覽]**** 窗格中將搜尋查詢傳送至 Bing，然後選取您要的配量。 作法： 
 
 1. 從 [預覽] 窗格中的下拉式清單選取 [Bing]，然後輸入搜尋查詢
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221365"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710553"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing 新聞搜尋 API 支援的語言和區域
 
@@ -31,7 +31,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/地區|Language|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |奧地利|德文|de-AT|
@@ -80,7 +80,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/地區|Language|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |德國|德文|de-DE|
@@ -103,7 +103,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/地區|Language|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |德國|德文|de-DE|
 |澳大利亞|英文|en-AU|
@@ -122,7 +122,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 以下是可以在 `cc` 查詢參數中指定的國家/地區代碼。 清單會隨時變動。  
 
-|國家/地區|國碼 (地區碼)|  
+|國家/區域|國碼 (地區碼)|  
 |---------------------|------------------|  
 |阿根廷|AR|  
 |澳大利亞|AU|  
@@ -137,7 +137,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |德國|DE|  
 |香港特別行政區|HK|  
 |印度|IN|  
-|印尼|識別碼|  
+|印尼|ID|  
 |義大利|IT|  
 |日本|JP|  
 |南韓|KR|  
@@ -159,7 +159,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |台灣|TW|  
 |土耳其|TR|  
 |United Kingdom|GB|  
-|美國|US|
+|美國|美國|
 
 ## <a name="next-steps"></a>後續步驟
 如需 Bing 新聞搜尋端點的詳細資訊，請參閱[新聞搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) \(英文\)。

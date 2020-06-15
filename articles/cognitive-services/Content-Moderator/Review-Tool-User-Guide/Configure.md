@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221353"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689838"
 ---
 # <a name="configure-the-review-tool"></a>設定檢閱工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "79221353"
 
 ## <a name="manage-team-and-subteams"></a>管理小組和子團隊
 
-[**小組**] 索引標籤可讓您管理&mdash;團隊和子小組使用者群組，以便在某些[人為審查](../review-api.md#reviews)開始時收到通知。 您只能有一個小組（當您使用審核工具註冊時建立），但您可以建立多個子小組。 小組系統管理員可以邀請成員、設定其許可權，並將它們指派給不同的子團隊。
+[**小組**] 索引標籤可讓您管理團隊和子小組 &mdash; 使用者群組，以便在[某些人為審查](../review-api.md#reviews)開始時收到通知。 您只能有一個小組（當您使用審核工具註冊時建立），但您可以建立多個子小組。 小組系統管理員可以邀請成員、設定其許可權，並將它們指派給不同的子團隊。
 
 ![審查工具小組設定](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "79221353"
 
 ## <a name="tags"></a>Tags
 
-[**標記**] 索引標籤可讓您定義自訂審核標記，除了兩&mdash;個預設的仲裁標記**isadult** （**a**）和**isracy** （**r**）。 當您建立自訂標籤時，該標籤會在評論中與預設標記一起使用。 您可以切換其可見度設定，以變更要在審查中顯示的標記。
+[**標記**] 索引標籤可讓您定義自訂審核標記，除了兩個預設的仲裁標記 &mdash; **isadult** （**a**）和**isracy** （**r**）。 當您建立自訂標籤時，該標籤會在評論中與預設標記一起使用。 您可以切換其可見度設定，以變更要在審查中顯示的標記。
 
 ![標記視圖，包括 [可見] 核取方塊](images/tags-4-disable.png)
 

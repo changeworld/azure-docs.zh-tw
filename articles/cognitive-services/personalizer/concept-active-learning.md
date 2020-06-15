@@ -4,11 +4,11 @@ description: 學習設定會決定模型定型的*超參數*。 在不同學習�
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221211"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700727"
 ---
 # <a name="learning-policy-and-settings"></a>學習原則和設定
 
@@ -28,7 +28,7 @@ ms.locfileid: "79221211"
 
 個人化工具使用[vowpalwabbit](https://github.com/VowpalWabbit)來定型和評分事件。 如需如何使用 vowpalwabbit 編輯學習設定的相關資訊，請參閱[vowpalwabbit 檔](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments)。 當您有正確的命令列引數之後，請將命令儲存至具有下列格式的檔案（以所需的命令取代 arguments 屬性值），然後上傳檔案，以匯入個人化工具資源之 [**模型與學習設定**] Azure 入口網站窗格中的學習設定。
 
-以下`.json`是學習原則的範例。
+以下 `.json` 是學習原則的範例。
 
 ```json
 {

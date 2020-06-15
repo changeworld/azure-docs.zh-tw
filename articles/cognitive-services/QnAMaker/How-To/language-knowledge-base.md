@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221445"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693085"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 知識庫內容的語言支援
 
@@ -25,7 +25,7 @@ ms.locfileid: "79221445"
 
 ## <a name="one-language-for-all-knowledge-bases-in-resource"></a>資源中所有知識庫的一種語言
 
-QnA Maker 可讓您在建立第一個知識庫時，選取 QnA 服務的語言。 對於 QnA Maker 資源中的所有知識庫而言，全都必須使用相同的語言。 無法變更此語言。
+QnA Maker 可讓您在建立第一個知識庫時選取 QnA 服務的語言。 QnA Maker 資源中的所有知識庫，全都必須使用相同的語言。 此語言無法變更。
 
 在一個資源中以不同的語言建立知識庫，會對使用者查詢所提供之結果 QnA Maker 的相關性造成負面影響。
 

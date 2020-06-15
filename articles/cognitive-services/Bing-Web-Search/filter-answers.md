@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221379"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696706"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>篩選搜尋回應所包含的答案  
 
@@ -53,7 +53,7 @@ ms.locfileid: "79221379"
 
 您可以使用[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter)查詢參數（以逗號分隔的答案清單）來篩選 Bing 在回應中包含的答案類型（例如影像、影片和新聞）。 如果 Bing 找到相關內容，回應就會包含在回應中。 
 
-若要從回應中排除特定答案（例如影像）， `-`請在答案類型前面加上一個字元。 例如：
+若要從回應中排除特定答案（例如影像），請在答案類型前面加上一個 `-` 字元。 例如：
 
 ```
 &responseFilter=-images,-videos
@@ -102,7 +102,7 @@ Host: api.cognitive.microsoft.com
 
 ### <a name="site"></a>網站
 
-若要從特定網域取得搜尋結果，請在`site:`查詢字串中包含查詢參數。  
+若要從特定網域取得搜尋結果，請 `site:` 在查詢字串中包含查詢參數。  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -119,7 +119,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 * `Week`-傳回 Bing 在過去7天內探索到的網頁
 * `Month`-傳回在過去30天內探索到的網頁
 
-您也可以將此參數設定為格式為的自訂日期範圍`YYYY-MM-DD..YYYY-MM-DD`。 
+您也可以將此參數設定為格式為的自訂日期範圍 `YYYY-MM-DD..YYYY-MM-DD` 。 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
@@ -131,7 +131,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>限制回應中的答案數目
 
-Bing 可以在 JSON 回應中傳回多個答案類型。 例如，如果您查詢*sailing + dinghies*，Bing 可能會傳回`webpages`、 `images` `videos`、和`relatedSearches`。
+Bing 可以在 JSON 回應中傳回多個答案類型。 例如，如果您查詢*sailing + dinghies*，Bing 可能會傳回 `webpages` 、 `images` 、 `videos` 和 `relatedSearches` 。
 
 ```json
 {

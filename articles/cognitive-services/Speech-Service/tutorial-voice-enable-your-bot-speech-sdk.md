@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457094"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753191"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -50,7 +50,7 @@ ms.locfileid: "84457094"
 > * 新增自訂關鍵字啟用
 > * 瞭解如何變更可辨識和說話語音的語言
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 以下是完成本教學課程所需的事項：
 
@@ -59,7 +59,7 @@ ms.locfileid: "84457094"
 - [.NET Framework 執行時間 4.6.1](https://dotnet.microsoft.com/download)或更高版本
 - 一個 Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/ai/)。
 - [GitHub](https://github.com/)帳戶
-- [適用于 Windows 的 Git](https://git-scm.com/download/win)
+- [Git for Windows](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -71,7 +71,7 @@ ms.locfileid: "84457094"
    * 輸入**資源群組**的名稱。 我們建議**SpeechEchoBotTutorial-ResourceGroup**。
    * 從 [**區域**] 下拉式選單中，選取 [**美國西部**]。
 1. 按一下 [檢閱及建立]****。 您應該會看到已通過讀取**驗證**的橫幅。
-1. 按一下 [建立]。 可能需要幾分鐘的時間來建立資源群組。
+1. 按一下頁面底部的 [新增] 。 可能需要幾分鐘的時間來建立資源群組。
 1. 就像您稍後在本教學課程中所建立的資源一樣，將此資源群組釘選到儀表板以方便存取，是個不錯的主意。 如果您想要釘選此資源群組，請按一下儀表板右上方的釘選圖示。
 
 ### <a name="choosing-an-azure-region"></a>選擇 Azure 區域
@@ -121,7 +121,7 @@ ms.locfileid: "84457094"
    * 針對 [**地區**]，選取 [**美國西部**]。
    * 針對 [**定價層**]，請確定已選取 [**標準 S1** ]。 這應該是預設值。 如果不是，請確定您已將**作業系統**設定為**Windows** ，如上所述。
 5. 按一下 [檢閱及建立]****。 您應該會看到已通過讀取**驗證**的橫幅。
-6. 按一下 [建立]。 可能需要幾分鐘的時間來建立資源群組。
+6. 按一下頁面底部的 [新增] 。 可能需要幾分鐘的時間來建立資源群組。
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）有兩個資源：
 
@@ -265,7 +265,7 @@ ms.locfileid: "84457094"
 
 1. 在[Azure 入口網站](https://portal.azure.com)中找出並開啟您的**EchoBotTutorial-BotRegistration-# #** # # 資源
 1. 從**Bot 管理**導覽中，選取 [**設定**]。 複製 [ **Microsoft 應用程式識別碼**] 底下的值
-1. 開啟 [Visual Studio EchoBot] 解決方案。 在 [方案瀏覽器] 中，找出並按兩下 [ **appsettings** ]
+1. 開啟 [Visual Studio EchoBot] 解決方案。 在 [方案瀏覽器] 中，找出並按兩下 [ **appsettings.js開啟**]
 1. 以複製的識別碼值取代 JSON 檔案中**MicrosoftAppId**旁的空字串
 1. 回到 Azure 入口網站，在**Bot 管理**導覽中選取 [**設定**]，然後按一下 [ **Microsoft 應用程式識別碼**] 旁邊的 [開啟 **（管理）** ]
 1. 按一下 [**新增用戶端密碼**]。 新增描述（例如「網路聊天」），然後按一下 [**新增**]。 複製新的秘密
@@ -323,13 +323,16 @@ Windows 語音助理用戶端具有簡單的 UI，可讓您設定與 bot 的連�
 
 | 錯誤 | 您應該怎麼做？ |
 |-------|----------------------|
-|錯誤 AuthenticationFailure： WebSocket 升級失敗，發生驗證錯誤（401）。 檢查是否有正確的訂用帳戶金鑰（或授權權杖）和區功能變數名稱稱| 在應用程式的 [設定] 頁面中，請確定您已正確輸入語音訂用帳戶金鑰和其區域。<br>請確定已正確輸入您的語音金鑰和金鑰區域。 |
-|錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：我們無法在傳送訊息之前連線到 bot | 請確定您[已核取 [啟用串流端點]](#register-the-direct-line-speech-channel)方塊及/或已將[ **Web 通訊端**切換](#enable-web-sockets)為 [開啟]。<br>請確定您的 Azure App Service 正在執行。 如果是，請嘗試重新開機您的 App Service。|
-|錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：回應狀態碼未指出成功：500（InternalServerError）| 您的 bot 在其 [[輸出活動]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)欄位中指定了類神經語音，但與語音訂用帳戶金鑰相關聯的 Azure 區域不支援類神經語音。 請參閱[標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
-|錯誤 ConnectionFailure：遠端主機已關閉連接。 錯誤碼：1000。 錯誤詳細資料：超過 web 通訊端連接閒置持續時間上限（> 300000 毫秒）| 當通道的連線保持開啟且非使用中超過五分鐘時，這是預期的錯誤。 |
+|錯誤（AuthenticationFailure）： WebSocket 升級失敗，發生驗證錯誤（401）。 檢查是否有正確的訂用帳戶金鑰（或授權權杖）和區功能變數名稱稱| 在應用程式的 [設定] 頁面中，請確定您已正確輸入語音訂用帳戶金鑰和其區域。<br>請確定已正確輸入您的語音金鑰和金鑰區域。 |
+|錯誤（ConnectionFailure）：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：我們無法在傳送訊息之前連線到 bot | 請確定您[已核取 [啟用串流端點]](#register-the-direct-line-speech-channel)方塊及/或已將[ **Web 通訊端**切換](#enable-web-sockets)為 [開啟]。<br>請確定您的 Azure App Service 正在執行。 如果是，請嘗試重新開機您的 App Service。|
+|錯誤（ConnectionFailure）：遠端主機已關閉連接。 錯誤碼：1002。 錯誤詳細資料：當預期狀態碼 ' 101 ' 時，伺服器傳回狀態碼 ' 503 ' | 請確定您[已核取 [啟用串流端點]](#register-the-direct-line-speech-channel)方塊及/或已將[ **Web 通訊端**切換](#enable-web-sockets)為 [開啟]。<br>請確定您的 Azure App Service 正在執行。 如果是，請嘗試重新開機您的 App Service。|
+|錯誤（ConnectionFailure）：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：回應狀態碼未指出成功：500（InternalServerError）| 您的 bot 在其 [[輸出活動]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)欄位中指定了類神經語音，但與語音訂用帳戶金鑰相關聯的 Azure 區域不支援類神經語音。 請參閱[標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
 
-如果您的問題未在表格中解決，請參閱[語音助理：常見問題](faq-voice-assistants.md)。
+如果您的問題未在表格中解決，請參閱[語音助理：常見問題](faq-voice-assistants.md)。 如果您在遵循本教學課程中的所有步驟之後仍無法解決問題，請在[語音助理 GitHub 頁面](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)中輸入新的問題。
 
+#### <a name="a-note-on-connection-time-out"></a>連接逾時時的注意事項
+
+如果您已連線到 bot，且在過去5分鐘內未發生任何活動，服務將會自動關閉與用戶端和 bot 的 websocket 連線。 這是原廠設定。 下方列中會出現一則訊息：「作用*中的連接已超時，但已準備好視需要重新*連線」。 您不需要按下 [重新連接] 按鈕-只要按下 [麥克風] 按鈕並開始交談、輸入文字訊息，或說關鍵字（如果已啟用的話）。 將會自動重新建立連接。  
 ### <a name="view-bot-activities"></a>查看 bot 活動
 
 每個 bot 都會傳送及接收**活動**訊息。 在 Windows 語音助理用戶端的 [**活動記錄**] 視窗中，您會看到有時間戳記的記錄，其中包含用戶端從 bot 收到的每個活動。 您也可以使用方法，查看用戶端傳送至 bot 的活動 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) 。 當您選取記錄檔專案時，它會將相關聯活動的詳細資料顯示為 JSON。

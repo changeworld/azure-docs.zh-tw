@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927202"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730300"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什麼是語音裝置 SDK？
 
@@ -37,7 +37,11 @@ ms.locfileid: "82927202"
 
 ### <a name="android"></a>Android
 
-若是 Android，裝置會下載最新版的[Android 語音裝置 SDK](https://aka.ms/sdsdk-download-android)。
+適用于 Android 的語音裝置 SDK 支援[Roobo v1](speech-devices-sdk-roobo-v1.md)和對等的裝置，這些會下載最新版的[ANDROID 語音裝置 sdk](https://aka.ms/sdsdk-download-android)。
+
+
+如果您有不同的 Android 裝置（例如手機或行動裝置），請從[Android 語音 SDK](speech-sdk.md)開始
+
 
 ### <a name="windows"></a>Windows
 
