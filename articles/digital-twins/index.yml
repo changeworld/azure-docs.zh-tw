@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Digital Twins 預覽文件
-summary: 了解如何使用 Azure Digital Twins 來建立資產、環境和商務系統的數位呈現，以打造模擬真實世界的新一代的 IoT 解決方案。
+summary: 如 Microsoft Build 2020 所宣佈，Azure Digital Twins 正在準備該服務新的公開預覽版本。 您馬上就會在此找到新服務及其功能的完整文件。 您也可以利用下方連結繼續存取第一版 Azure Digital Twins 的文件。
 metadata:
   title: Azure Digital Twins 預覽文件 - 教學課程和 API 參考 | Microsoft Docs
   description: 了解如何使用 Azure Digital Twins 讓人員、地點及項目相互聯繫，並利用空間智慧建置 IoT 解決方案。
@@ -10,72 +10,16 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 93bfe0db668e3aaa78e7f58b715490dfe26fbe7a
-  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+  ms.openlocfilehash: c6822c319489eedf1ecdd7d1fddcd19456c35dd9
+  ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/09/2020
-  ms.locfileid: "84610027"
+  ms.lasthandoff: 06/12/2020
+  ms.locfileid: "84744012"
 landingContent:
-- title: 關於 Azure Digital Twins
+- title: Azure Digital Twins，第一版
   linkLists:
-  - linkListType: overview
-    links:
-    - text: 什麼是 Azure Digital Twins？
-      url: overview.md
-- title: 開始使用教學課程
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 撰寫用戶端應用程式程式碼
-      url: tutorial-code.md
-  - linkListType: tutorial
-    links:
-    - text: 探索範例用戶端應用程式的基本概念
-      url: tutorial-command-line-app.md
-  - linkListType: tutorial
-    links:
-    - text: 連線端對端解決方案
-      url: tutorial-end-to-end.md
-- title: 學習
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 自訂模型
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: 數位分身和對應項圖形
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: 查詢語言
-      url: concepts-query-language.md
-- title: 開發
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 Azure Digital Twins CLI
-      url: how-to-use-cli.md
-  - linkListType: how-to-guide
-    links:
-    - text: 建立 Azure Digital Twins 執行個體
-      url: how-to-set-up-instance.md
-  - linkListType: how-to-guide
-    links:
-    - text: 驗證用戶端應用程式
-      url: how-to-authenticate-client.md
-- title: API 參考資料
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 Azure Digital Twins API 和 SDK
-      url: how-to-use-apis-sdks.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 AutoRest 建立自訂 SDK
-      url: how-to-create-custom-sdks.md
   - linkListType: reference
     links:
-    - text: REST API
-      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/
+    - text: 舊版文件：Azure Digital Twins
+      url: https://docs.microsoft.com/previous-versions/azure/digital-twins/about-digital-twins

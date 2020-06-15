@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: 合作夥伴的自動化指導方針
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec 原則
-      href: virtual-wan-ipsec.md
+    - name: 網站間
+      items:
+        - name: 關於 IPsec 原則
+          href: virtual-wan-ipsec.md
+        - name: 多個 ISP 連結 - Azure 路徑選擇
+          href: path-selection-multiple-links.md
 - name: 操作指南
   items:
     - name: 將虛擬網路閘道連線到虛擬 WAN
@@ -58,8 +62,6 @@
       items:
         - name: 建立站對站連線
           href: virtual-wan-site-to-site-portal.md
-        - name: 多個 ISP 連結 - Azure 路徑選擇
-          href: path-selection-multiple-links.md
     - name: 使用者 VPN (點對站)
       items:
         - name: 建立使用者 VPN 連線

@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: 啟用 Azure Active Directory 整合
           items:
-            - name: 整合 Azure AD (預覽)
+            - name: AKS 受控 AAD (預覽)
               href: managed-aad.md
             - name: 使用 Azure CLI
               href: azure-ad-integration-cli.md
-            - name: 使用 Azure 入口網站
-              href: azure-ad-integration.md
         - name: 使用 Kubernetes RBAC 搭配 Azure AD 整合
           href: azure-ad-rbac.md
           maintainContext: true

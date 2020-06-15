@@ -12,6 +12,8 @@
       href: language-support.md
     - name: 區域支援
       href: regions.md
+    - name: Docs 有哪些新功能？
+      href: whats-new.md
 - name: 語音轉文字
   items:
     - name: 語音轉文字文件

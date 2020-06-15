@@ -1,14 +1,14 @@
 ---
 title: 原則範例索引
 description: Azure 原則內建的範例索引。 分類標記、法規合規性、Key Vault、Kubernetes、來賓設定等。
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
-ms.openlocfilehash: 6e9c3b92942f24ae0a9972fa61340775262af761
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203897"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736776"
 ---
 # <a name="azure-policy-samples"></a>Azure 原則範例
 
@@ -40,6 +40,7 @@ ms.locfileid: "84203897"
 - [Azure 安全性效能評定](./azure-security-benchmark.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>其他範例
 

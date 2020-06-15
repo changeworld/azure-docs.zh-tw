@@ -35,6 +35,8 @@
           href: temporal-tables.md
         - name: 擴大/縮小
           href: database/scale-resources.md
+        - name: 讀取向外延展
+          href: database/read-scale-out.md
         - name: 安全性
           items:
             - name: 概觀
@@ -282,8 +284,6 @@
           href: database/connectivity-architecture.md
         - name: 連線能力設定
           href: database/connectivity-settings.md
-        - name: 讀取向外延展
-          href: database/read-scale-out.md
         - name: T-SQL 差異
           href: database/transact-sql-tsql-differences-sql-server.md
         - name: Azure 自動化

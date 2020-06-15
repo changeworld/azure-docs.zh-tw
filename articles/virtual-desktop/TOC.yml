@@ -4,6 +4,8 @@
   items:
     - name: 什麼是 Windows 虛擬桌面？
       href: overview.md
+    - name: 新功能
+      href: whats-new.md
     - name: 2019 年秋季版本文件
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教學課程
@@ -82,6 +84,8 @@
       href: teams-on-wvd.md
     - name: 設定 Azure Multi-Factor Authentication
       href: set-up-mfa.md
+    - name: 設定自動更新
+      href: configure-automatic-updates.md
     - name: 安裝語言套件
       href: language-packs.md
 - name: 概念

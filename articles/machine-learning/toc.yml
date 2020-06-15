@@ -93,6 +93,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
+    - name: 企業版與基本版本
+      href: concept-editions.md
     - name: 規劃和管理成本
       href: concept-plan-manage-cost.md
     - name: 設計工具 (拖放 ML)
@@ -365,6 +367,8 @@
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
+            - name: Azue 認知搜尋
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure IoT Edge 裝置
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA 推斷

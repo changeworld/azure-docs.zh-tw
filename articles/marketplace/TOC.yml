@@ -408,6 +408,8 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Marketplace 計量服務
           items:
+            - name: 異常偵測服務
+              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: 驗證策略
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Marketplace 計量服務 API

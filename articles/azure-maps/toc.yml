@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: 涵蓋範圍
       items:
+        - name: 涵蓋範圍
+          href: geographic-coverage.md
         - name: 地理編碼涵蓋範圍
           href: geocoding-coverage.md
         - name: 流量涵蓋範圍

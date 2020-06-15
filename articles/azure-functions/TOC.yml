@@ -22,6 +22,9 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令列
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: 連線至儲存體
       items:
         - name: Visual Studio Code

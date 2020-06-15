@@ -86,6 +86,8 @@
           href: add-custom-domain.md
         - name: 新增公司商標
           href: customize-branding.md
+        - name: 設定「保持登入？」
+          href: keep-me-signed-in.md
         - name: 與 Azure 訂用帳戶建立關聯
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 新增您的隱私權資訊
