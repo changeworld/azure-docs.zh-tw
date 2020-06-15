@@ -97,6 +97,8 @@
           href: budget.md
         - name: 使用私人端點搭配 Batch 帳戶
           href: private-connectivity.md
+        - name: 設定客戶管理的金鑰
+          href: batch-customer-managed-key.md
     - name: 使用 Azure AD 進行驗證
       items:
         - name: 包含 Batch 服務的 Azure AD
