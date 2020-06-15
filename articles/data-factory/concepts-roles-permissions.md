@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418315"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833501"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory 的角色和權限
 
@@ -26,7 +26,7 @@ ms.locfileid: "81418315"
 
 ## <a name="roles-and-requirements"></a>角色和需求
 
-若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」** 或「擁有者」** 角色，或是 Azure 訂用帳戶的「管理員」**。 若要檢視您在訂用帳戶中擁有的權限，請在 Azure 入口網站中選取右上角的使用者名稱，然後選取 [權限]****。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 
+若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。 若要檢視您在訂用帳戶中擁有的權限，請在 Azure 入口網站中選取右上角的使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 
 
 若要建立及管理 Data factory 的子資源 (包括資料集、連結服務、管線、觸發程序和整合執行階段)，必須要符合下列需求：
 - 若要在 Azure 入口網站中建立及管理子資源，您必須屬於資源群組層級或更高層級的 **Data Factory 參與者**角色。
@@ -69,7 +69,7 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
 
 - 讓使用者從 Azure 入口網站在資源群組中建立、編輯或刪除任何資料處理站。
 
-  對使用者指派資源群組層級的內建 **Data Factory 參與者**角色。 如果您想要允許使用者存取訂用帳戶中的任何資料處理站，請指派訂用帳戶層級的角色。
+  對使用者指派資源群組層級的內建 **Data Factory 參與者**角色。 如果您想要允許使用者存取訂閱中的任何資料處理站，請指派訂閱層級的角色。
 
 - 讓使用者檢視 (讀取) 和監視資料處理站，但不能編輯或變更。
 
@@ -84,11 +84,11 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
 
 - 讓使用者只能在連結服務中測試連接
 
-    建立具有下列動作之許可權的自訂角色角色： **DataFactory/factory/getFeatureValue/read**和**DataFactory/factory/getDataPlaneAccess/read**。 為使用者在 data factory 資源上指派此自訂角色。
+    建立具有下列動作權限的自訂角色：**Microsoft.DataFactory/factories/getFeatureValue/read** 和 **Microsoft.DataFactory/factories/getDataPlaneAccess/read**。 對使用者指派資料處理站資源的自訂角色。
 
 - 讓使用者從 PowerShell 或 SDK 更新資料處理站，而不是在 Azure 入口網站中進行。
 
-  對使用者指派資料處理站資源的內建**參與者**角色。 此角色可讓使用者在 Azure 入口網站中查看資源，但使用者無法存取 [發佈]**** 和 [全部發佈]**** 按鈕。
+  對使用者指派資料處理站資源的內建**參與者**角色。 此角色可讓使用者在 Azure 入口網站中查看資源，但使用者無法存取 [發佈] 和 [全部發佈] 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 

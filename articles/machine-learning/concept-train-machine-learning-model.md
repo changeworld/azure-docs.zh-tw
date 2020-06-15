@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592384"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683006"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -111,6 +111,18 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 + [分類：預測流失、購買意願和向上銷售](how-to-designer-sample-classification-churn.md)
 + [使用自訂 R 指令碼進行分類：預測航班誤點](how-to-designer-sample-classification-flight-delay.md)
 + [文字分類：Wikipedia SP 500 資料集](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>多種模型解決方案加速器
+
+[多種模型解決方案加速器](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
+
+例如，在下列情況中，__針對每個執行個體或個人__建置模型可以改善結果：
+
+* 預測個別商店的銷售額
+* 對數百個油井進行預測性維護
+* 為個別使用者量身打造體驗。
+
+如需詳細資訊，請參閱 GitHub 上的 [Many Models Solution Accelerator](https://aka.ms/many-models) \(英文\)。
 
 ## <a name="cli"></a>CLI
 

@@ -1,16 +1,16 @@
 ---
 title: 使用轉譯功能
-description: 如何使用 Azure Batch 轉譯功能。 嘗試直接或從用戶端應用程式外掛程式叫用 Batch Explorer 應用程式。
+description: 如何使用 Azure Batch 轉譯功能。 嘗試直接使用 Batch Explorer 應用程式，或從用戶端應用程式外掛程式叫用。
 author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
-ms.topic: conceptual
-ms.openlocfilehash: 6dd7d73d2b04f6e076794ee63d0a546170782fce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115630"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726395"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 轉譯
 
@@ -46,18 +46,18 @@ Batch Explorer 可搭配使用完整的範本集，讓您能夠針對各種不�
 
 所有存在於 Marketplace 轉譯 VM 映像上的應用程式都有適當的範本可供使用。  每個應用程式都有多個範本，包括適用於 CPU 和 GPU 集區、Windows 和 Linux 集區的集區範本，而作業範本則包含全畫幅或並排顯示 Blender 轉譯和 V-Ray 分散式轉譯。 提供的範本集將隨著時間而擴充，以因應其他 Batch 功能的需求，例如集區自動調整。
 
-您也可以從頭開始或藉由修改提供的範本來產生自訂範本。 在 Batch Explorer 的 [資源庫] 區段中選取 [本機範本] 專案，即可使用自訂範本。
+您也可以從頭開始或藉由修改提供的範本來產生自訂範本。 在 Batch Explorer 的 [資源庫] 區段中選取 [本機範本] 項目，即可使用自訂範本。
 
 ### <a name="file-system-and-data-movement"></a>檔案系統和資料移動
 
-Batch Explorer 中的 [資料] 區段可讓您在本機檔案系統和 Azure 儲存體帳戶之間複製檔案。
+Batch Explorer 中的 [資料] 區段可用來在本機檔案系統與 Azure 儲存體帳戶之間複製檔案。
 
 ## <a name="client-application-plug-ins"></a>用戶端應用程式外掛程式
 
 某些用戶端應用程式有適用的外掛程式。  這些外掛程式可直接從應用程式建立集區和作業，或叫用 Batch Explorer。
 
 * [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
+* [Blender 2.8+](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

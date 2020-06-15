@@ -1,7 +1,7 @@
 ---
 title: 自訂原則的字串宣告轉換範例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的字串宣告轉換範例。
+description: 適用於 Azure Active Directory B2C Identity Experience Framework (IEF) 結構描述的字串宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,30 +11,30 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756787"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739068"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構之字串宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+此文章提供在 Azure Active Directory B2C (Azure AD B2C) 中，使用 Identity Experience Framework 結構描述字串宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
 比較兩個宣告，如果根據指定的比較 inputClaim1、inputClaim2 和 stringComparison 它們並不相等，即會擲回例外狀況。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字串 | 要比較的第一個宣告類型。 |
 | InputClaim | inputClaim2 | 字串 | 要比較的第二個宣告類型。 |
 | InputParameter | stringComparison | 字串 | 字串比較，其中一個值：Ordinal、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual**宣告轉換一律會從[自我判斷技術設定檔](self-asserted-technical-profile.md)或[DisplayConrtol](display-controls.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)執行。 自我`UserMessageIfClaimsTransformationStringsAreNotEqual`判斷技術設定檔的中繼資料會控制呈現給使用者的錯誤訊息。 可以將錯誤訊息[當地語系化](localization-string-ids.md#claims-transformations-error-messages)。
+**AssertStringClaimsAreEqual** 宣告轉換一律會從[驗證技術設定檔](validation-technical-profile.md)執行，該設定檔會透過[自我判斷技術設定檔](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 來呼叫。 自我判斷技術設定檔的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 中繼資料會控制呈現給使用者的錯誤訊息。 錯誤訊息可以[當地語系化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
@@ -90,7 +90,7 @@ ms.locfileid: "81756787"
 
 根據運算子，將所提供宣告的大小寫變更為小寫或大寫字母。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字串 | 要變更的 ClaimType。 |
 | InputParameter | toCase | 字串 | 下列其中一個值：`LOWER` 或 `UPPER`。 |
@@ -115,19 +115,19 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **電子郵件**：SomeOne@contoso.com
+  - **email**：SomeOne@contoso.com
 - 輸入參數：
     - **toCase**：LOWER
 - 輸出宣告：
-  - **電子郵件**：someone@contoso.com
+  - **email**：someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
 從轉換中提供的輸入參數建立字串宣告。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | 字串 | 要設定的字串。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。 |
+| InputParameter | value | 字串 | 要設定的字串。 此輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。 |
 | OutputClaim | createdClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType，並含有輸入參數中指定的值。 |
 
 使用此宣告轉換來設定字串 ClaimType 值。
@@ -154,7 +154,7 @@ ms.locfileid: "81756787"
 
 判斷某個字串宣告是否等於另一個。 結果是新的布林值 ClaimType 且含有 `true` 或 `false` 的值。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字串 | 要比較的第一個宣告類型。 |
 | InputClaim | inputClaim2 | 字串 | 要比較的第二個宣告類型。 |
@@ -186,8 +186,8 @@ ms.locfileid: "81756787"
   - **inputClaim1**：someone@contoso.com
   - **inputClaim2**：someone@outlook.com
 - 輸入參數：
-    - **operator**：NOT EQUAL
-    - **ignoreCase**： true
+    - **運算子**：不等於
+    - **ignoreCase**：true
 - 輸出宣告：
     - **outputClaim**：true
 
@@ -195,7 +195,7 @@ ms.locfileid: "81756787"
 
 判斷宣告值是否等於輸入參數值。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字串 | 要比較的宣告類型。 |
 | InputParameter | ! 運算子之後 | 字串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
@@ -226,7 +226,7 @@ ms.locfileid: "81756787"
     - **inputClaim1**：v1
 - 輸入參數：
     - **compareTo**：V1
-    - **operator**：EQUAL
+    - **運算子**：EQUAL
     - **ignoreCase**：true
 - 輸出宣告：
     - **outputClaim**：true
@@ -235,7 +235,7 @@ ms.locfileid: "81756787"
 
 使用隨機號碼產生器來建立隨機字串。 如果隨機號碼產生器的類型為 `integer`，可能會選擇性地提供種子參數和最大數。 選擇性的字串格式參數允許使用它來將輸出格式化，而選擇性的 base64 參數會指定輸出是否為 base64 編碼的 randomGeneratorType [guid, integer] outputClaim (字串)。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | 字串 | 指定要產生的隨機值：`GUID` (全域唯一識別碼) 或 `INTEGER` (數字)。 |
 | InputParameter | stringFormat | 字串 | [選擇性] 將隨機值格式化。 |
@@ -294,10 +294,10 @@ ms.locfileid: "81756787"
 
 根據提供的格式字串來將宣告格式化。 此轉換會使用 C# `String.Format` 方法。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字串 |做為字串格式 {0} 參數的 ClaimType。 |
-| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 參數。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。  |
+| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 參數。 此輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
 使用此宣告轉換，利用一個參數 {0} 來將任何字串格式化。 下列範例會建立 **userPrincipalName**。 所有社交識別提供者技術設定檔 (例如 `Facebook-OAUTH`) 會呼叫 **CreateUserPrincipalName** 來產生 **userPrincipalName**。
@@ -329,11 +329,11 @@ ms.locfileid: "81756787"
 
 根據提供的格式字串來將兩個宣告格式化。 此轉換會使用 C# `String.Format` 方法。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字串 | 做為字串格式 {0} 參數的 ClaimType。 |
 | InputClaim | inputClaim | 字串 | 做為字串格式 {1} 參數的 ClaimType。 |
-| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 和 {1} 參數。 這個輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。   |
+| InputParameter | stringFormat | 字串 | 字串格式，包括 {0} 和 {1} 參數。 此輸入參數支援[字串宣告轉換運算式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 |
 
 使用此宣告轉換，利用兩個參數 ({0} 和 {1}) 來將任何字串格式化。 下列範例會使用指定的格式來建立 **displayName**：
@@ -359,7 +359,7 @@ ms.locfileid: "81756787"
     - **inputClaim1**：Joe
     - **inputClaim2**：Fernando
 - 輸入參數：
-    - **stringFormat**： {0}{1}
+    - **stringFormat**: {0} {1}
 - 輸出宣告：
     - **outputClaim**：Joe Fernando
 
@@ -367,23 +367,23 @@ ms.locfileid: "81756787"
 
 將當地語系化的字串複製到宣告中。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | 當地語系化字串的名稱。 | 字串 | 叫用此宣告轉換之後所產生的宣告類型清單。 |
+| OutputClaim | 當地語系化字串的名稱 | 字串 | 已叫用此宣告轉換之後產生的宣告類型清單。 |
 
 若要使用 GetLocalizedStringsTransformation 宣告轉換：
 
-1. 定義[當地語系化字串](localization.md)，並將其與[自我判斷技術設定檔](self-asserted-technical-profile.md)產生關聯。
-1. `LocalizedString`元素`ElementType`的必須設定為`GetLocalizedStringsTransformationClaimType`。
-1. `StringId`是您定義的唯一識別碼，稍後在宣告轉換中使用。
-1. 在 [宣告] 轉換中，指定要使用當地語系化字串設定的宣告清單。 `ClaimTypeReferenceId`是已在原則的 ClaimsSchema 區段中定義之 ClaimType 的參考。 `TransformationClaimType`是當地語系化字串的名稱，如`LocalizedString`元素的中`StringId`所定義。
-1. 在[自我判斷技術設定檔](self-asserted-technical-profile.md)中，或[顯示控制項](display-controls.md)輸入或輸出宣告轉換中，請參考您的宣告轉換。
+1. 定義[當地語系化字串](localization.md)，並將它與 [self-asserted-technical-profile](self-asserted-technical-profile.md) 產生關聯。
+1. `LocalizedString` 元素的 `ElementType` 必須設定為 `GetLocalizedStringsTransformationClaimType`。
+1. `StringId` 是您定義的唯一識別碼，稍後會用於宣告轉換中。
+1. 在宣告轉換中，指定要使用當地語系化字串設定的宣告清單。 `ClaimTypeReferenceId` 是對在原則中的 [ClaimsSchema] 區段內已定義 ClaimType 的參考。 `TransformationClaimType` 是在 `LocalizedString` 元素其 `StringId` 中定義的當地語系化字串名稱。
+1. 在[自我判斷技術設定檔](self-asserted-technical-profile.md)，或[顯示控制項](display-controls.md)輸入或輸出宣告轉換中，參考您的宣告轉換。
 
 ![GetLocalizedStringsTransformation](./media/string-transformations/get-localized-strings-transformation.png)
 
-下列範例會從當地語系化的字串查詢電子郵件主旨、本文、您的程式碼訊息，以及電子郵件的簽章。 自訂電子郵件驗證範本稍後會使用這些宣告。
+下列範例會從當地語系化字串查詢電子郵件主旨、本文、您的程式碼訊息，以及電子郵件的簽章。 自訂電子郵件驗證範本稍後會使用這些宣告。
 
-定義英文（預設）和西班牙文的當地語系化字串。
+定義英文 (預設) 和西班牙文的當地語系化字串。
 
 ```XML
 <Localization Enabled="true">
@@ -411,7 +411,7 @@ ms.locfileid: "81756787"
 </Localization>
 ```
 
-宣告轉換*會以* `StringId` *email_subject*的值來設定宣告類型的值。
+宣告轉換會將宣告類型 *subject* 的值，設定為 `StringId` *email_subject* 的值。
 
 ```XML
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
@@ -427,17 +427,17 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸出宣告：
-  - 主旨 **： Contoso**帳戶電子郵件驗證碼
-  - **訊息**：感謝您驗證您的帳戶！
-  - **codeIntro**：您的程式碼為
-  - **簽名**：此致
+  - **subject**：Contoso account email verification code
+  - **message**:Thanks for verifying your account!
+  - **codeIntro**:Your code is
+  - **signature**:Sincerely
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
 從宣告 **Restriction** 集合查詢項目。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | 字串 | 包含要使用 **Restriction** 集合在 **restrictionValueClaim** 宣告中查詢之文字的宣告。  |
 | OutputClaim | restrictionValueClaim | 字串 | 包含 **Restriction** 集合的宣告。 叫用宣告轉換之後，此宣告的值會包含所選取項目的值。 |
@@ -474,18 +474,18 @@ ms.locfileid: "81756787"
 - 輸入宣告：
     - **mapFromClaim**：B2C_V1_90001
 - 輸出宣告：
-    - **restrictionValueClaim**：您無法登入，因為您是次要的。
+    - **restrictionValueClaim**：You cannot sign in because you are a minor.
 
 ## <a name="lookupvalue"></a>LookupValue
 
 根據另一個宣告的值，從值清單中查詢某個宣告值。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | 字串 | 包含查閱值的宣告 |
 | InputParameter | |字串 | InputParameters 的集合。 |
 | InputParameter | errorOnFailedLookup | boolean | 控制沒有相符的查閱時是否要傳回錯誤。 |
-| OutputClaim | inputParameterId | 字串 | 叫用此宣告轉換之後將產生的 ClaimType。 符合`Id`的值。 |
+| OutputClaim | inputParameterId | 字串 | 叫用此宣告轉換之後將產生的 ClaimType。 符合的 `Id` 值。 |
 
 下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查詢識別項中的網域名稱，並傳回其值 (應用程式識別碼)。
 
@@ -516,13 +516,13 @@ ms.locfileid: "81756787"
     - **test.com**：c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**：false
 - 輸出宣告：
-    - **outputClaim**：c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:    c7026f88-4299-4cdb-965d-3f166464b8a9
 
-當`errorOnFailedLookup`輸入參數設定為時`true`，一律會從[自我判斷技術設定檔](self-asserted-technical-profile.md)所呼叫的[驗證技術設定檔](validation-technical-profile.md)或[DisplayConrtol](display-controls.md)來執行**LookupValue**宣告轉換。 自我`LookupNotFound`判斷技術設定檔的中繼資料會控制呈現給使用者的錯誤訊息。
+當 `errorOnFailedLookup` 輸入參數設定為 `true` 時，**LookupValue** 宣告轉換一律會從由[自我判斷技術設定檔 ](self-asserted-technical-profile.md)呼叫的[驗證技術設定檔](validation-technical-profile.md)執行，或從 [DisplayConrtol](display-controls.md) 執行。 自我判斷技術設定檔的 `LookupNotFound` 中繼資料會控制呈現給使用者的錯誤訊息。
 
 ![AssertStringClaimsAreEqual 執行](./media/string-transformations/assert-execution.png)
 
-下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查閱識別碼中的功能變數名稱，並傳回其值（應用程式識別碼），或引發錯誤訊息。
+下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查詢識別項中的網域名稱，並傳回其值 (應用程式識別碼)，或顯示錯誤訊息。
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -544,12 +544,12 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputParameterId**： live.com
+    - **inputParameterId**: live.com
 - 輸入參數：
     - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**：c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**： true
+    - **errorOnFailedLookup**: true
 - 錯誤：
     - 在輸入參數識別碼的清單中找不到符合的輸入宣告值，而且 errorOnFailedLookup 為 true。
 
@@ -558,11 +558,11 @@ ms.locfileid: "81756787"
 
 清除指定宣告的值。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | 字串 | 宣告的值會設定為 Null。 |
+| OutputClaim | claim_to_null | 字串 | 宣告的值設為 NULL。 |
 
-使用此宣告轉換，從宣告屬性包中移除不必要的資料，讓會話 cookie 變小。 下列範例會移除 `TermsOfService` 宣告類型的值。
+使用此宣告轉換將不必要的資料從宣告屬性包中移除，因此工作階段 Cookie 將變小。 下列範例會移除 `TermsOfService` 宣告類型的值。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -581,7 +581,7 @@ ms.locfileid: "81756787"
 
 取得電子郵件地址的網域部分。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | 字串 | 包含電子郵件地址的 ClaimType。 |
 | OutputClaim | 網域 | 字串 | 叫用此宣告轉換之後所產生的 ClaimType - 網域。 |
@@ -608,21 +608,21 @@ ms.locfileid: "81756787"
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
-檢查字串宣告`claimToMatch`和`matchTo`輸入參數是否相等，並使用`outputClaimIfMatched`輸入參數中存在的值來設定輸出宣告，以及比較結果輸出宣告，其會根據比較的結果設定為`true`或。 `false`
+檢查確認字串宣告 `claimToMatch` 和 `matchTo` 輸入參數相等，並使用 `outputClaimIfMatched`  輸入參數中存在的值來設定輸出宣告，以及比較結果輸出宣告，其會根據比較的結果設定為 `true` 或 `false`。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | claimToMatch | 字串 | 要比較的宣告類型。 |
 | InputParameter | matchTo | 字串 | 要比對的規則運算式。 |
 | InputParameter | outputClaimIfMatched | 字串 | 字串相等時要設定的值。 |
-| InputParameter | extractGroups | boolean | 選擇性指定 Regex match 是否應將群組值解壓縮。 可能的值`true`：、 `false`或（預設）。 | 
-| OutputClaim | outputClaim | 字串 | 如果正則運算式相符，此輸出宣告會包含`outputClaimIfMatched`輸入參數的值。 如果沒有相符的，則為 null。 |
-| OutputClaim | RegExCompareResultClaim | boolean | 正則運算式比對結果輸出宣告類型，其會根據比對`true`的`false`結果設定為或。 |
-| OutputClaim| 宣告的名稱| 字串 | 如果 extractGroups 輸入參數設定為 true，則會在叫用此宣告轉換之後所產生的宣告類型清單。 ClaimType 的名稱必須符合 Regex 組名。 | 
+| InputParameter | extractGroups | boolean | [選擇性] 指定 Regex match 是否應擷取群組值。 可能的值為：`true` 或 `false` (預設)。 | 
+| OutputClaim | outputClaim | 字串 | 如果規則運算式相符，則此輸出宣告會包含 `outputClaimIfMatched` 輸入參數的值。 如果不相符，則為 null。 |
+| OutputClaim | regexCompareResultClaim | boolean | 規則運算式會比對結果輸出宣告類型，並根據比對的結果設定為 `true` 或 `false`。 |
+| OutputClaim| 宣告的名稱| 字串 | 如果 extractGroups 輸入參數設為 true，則為已叫用此宣告轉換之後產生的宣告類型清單。 claimType 的名稱必須符合 Regex 群組名稱。 | 
 
 ### <a name="example-1"></a>範例 1
 
-根據電話號碼的正則運算式模式，檢查提供的電話號碼是否有效。
+根據電話號碼的規則運算式模式，檢查提供的電話號碼是否有效。
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
@@ -641,13 +641,13 @@ ms.locfileid: "81756787"
 ```
 
 - 輸入宣告：
-    - **claimToMatch**： "64854114520"
+    - **claimToMatch**："64854114520"
 - 輸入參數：
-    - **matchTo**： "^ [0-9]{4,16}$"
-    - **outputClaimIfMatched**： "isPhone"
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
 - 輸出宣告：
-    - **outputClaim**： "isPhone"
-    - **RegExCompareResultClaim**： true
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
 
 ### <a name="example-2"></a>範例 2
 
@@ -672,21 +672,21 @@ ms.locfileid: "81756787"
 ```
 
 - 輸入宣告：
-    - **claimToMatch**： "emily@contoso.com"
+    - **claimToMatch**: "emily@contoso.com"
 - 輸入參數：
-    - **matchTo**：`(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched**： "isEmail"
-    - **extractGroups**： true
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
 - 輸出宣告：
-    - **outputClaim**： "isEmail"
-    - **RegExCompareResultClaim**： true
-    - **mailAlias**： emily
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 檢查宣告字串和 `matchTo` 輸入參數相等，並使用 `stringMatchMsg` 和 `stringMatchMsgCode` 輸入參數中存在的值來設定輸出宣告，以及比較結果輸出宣告，其會根據比較的結果設定為 `true` 或 `false`。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字串 | 要比較的宣告類型。 |
 | InputParameter | matchTo | 字串 | 要與 `inputClaim` 比較的字串。 |
@@ -723,7 +723,7 @@ ms.locfileid: "81756787"
     - **inputClaim**：v1
 - 輸入參數：
     - **matchTo**：V1
-    - **stringComparison**： ordinalIgnoreCase
+    - **stringComparison**：ordinalIgnoreCase
     - **stringMatchMsg**：B2C_V1_90005
     - **stringMatchMsgCode**：TOS 會升級到 v2
 - 輸出宣告：
@@ -735,7 +735,7 @@ ms.locfileid: "81756787"
 
 檢查宣告字串和 `matchTo` 輸入參數相等，並使用 `outputClaimIfMatched` 輸入參數中存在的值來設定輸出宣告，以及比較結果輸出宣告，其會根據比較的結果設定為 `true` 或 `false`。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | claimToMatch | 字串 | 要比較的宣告類型。 |
 | InputParameter | matchTo | 字串 | 要與 inputClaim 比較的字串。 |
@@ -769,7 +769,7 @@ ms.locfileid: "81756787"
     - **claimToMatch**：Minor
 - 輸入參數：
     - **matchTo**：Minor
-    - **stringComparison**： ordinalIgnoreCase
+    - **stringComparison**：ordinalIgnoreCase
     - **outputClaimIfMatched**：B2C_V1_90001
 - 輸出宣告：
     - **isMinorResponseCode**：B2C_V1_90001
@@ -778,16 +778,16 @@ ms.locfileid: "81756787"
 
 ## <a name="stringcontains"></a>StringContains
 
-判斷指定的子字串是否會出現在輸入宣告中。 結果是新的布林值 ClaimType 且含有 `true` 或 `false` 的值。 `true`如果 value 參數出現在這個字串中，則為`false`，否則為。
+判斷指定的子字串是否會出現在輸入宣告中。 結果是新的布林值 ClaimType 且含有 `true` 或 `false` 的值。 如果值參數出現在此字串中，則為 `true`；否則為 `false`。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字串 | 要搜尋的宣告類型。 |
 |InputParameter|contains|字串|要搜尋的值。|
-|InputParameter|ignoreCase|字串|指定此比較是否應忽略要比較之字串的大小寫。|
+|InputParameter|ignoreCase|字串|指定此比較是否應忽略所要比較字串的大小寫。|
 | OutputClaim | outputClaim | 字串 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果子字串出現在輸入宣告中，則為布林值指標。 |
 
-使用此宣告轉換來檢查字串宣告類型是否包含子字串。 下列範例會檢查`roles`字串宣告類型是否包含**admin**的值。
+使用此宣告轉換來檢查某個字串宣告類型是否包含子字串。 下列範例會檢查 `roles` 字串宣告類型是否包含 **admin** 的值。
 
 ```XML
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
@@ -807,23 +807,23 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**： "Admin，核准者，Editor"
+    - **inputClaim**："Admin, Approver, Editor"
 - 輸入參數：
-    - **包含**： "admin"
-    - **ignoreCase**： true
+    - **contains**: "admin,"
+    - **ignoreCase**：true
 - 輸出宣告：
     - **outputClaim**：true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
-從指定位置的字元開始，解壓縮字串宣告類型的部分，並傳回指定的字元數。
+從指定位置的字元開始擷取部分的字串宣告類型，並傳回指定數目的字元。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字串 | 包含字串的宣告類型。 |
-| InputParameter | startIndex | int | 這個執行個體中子字串之以零為起始的起始字元位置。 |
+| InputParameter | startIndex | int | 這個執行個體中的子字串其以零為基礎的起始字元位置。 |
 | InputParameter | 長度 | int | 子字串中的字元數。 |
-| OutputClaim | outputClaim | boolean | 相當於這個實例中從 startIndex 開始之子字串的字串; 如果 startIndex 等於這個實例的長度且長度為零，則為空白。 |
+| OutputClaim | outputClaim | boolean | 此字串等同於在此執行個體中 startIndex 處開始的長度其子字串，如果 startIndex 等於此執行個體的長度且長度為零，則為空白。 |
 
 例如，取得電話號碼的國家/地區首碼。
 
@@ -845,25 +845,25 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**： "+ 1644114520"
+    - **inputClaim**: "+1644114520"
 - 輸入參數：
-    - **startIndex**：0
-    - **長度**：2
+    - **startIndex**:0
+    - **length**:2
 - 輸出宣告：
-    - **outputClaim**： "+ 1"
+    - **outputClaim**: "+1"
 
 ## <a name="stringreplace"></a>StringReplace
 
-在宣告類型字串中搜尋指定的值，並傳回新的宣告類型字串，其中目前字串中所有出現的指定字串都會以另一個指定的字串取代。
+在宣告類型字串中搜尋指定的值，並傳回新的宣告類型字串，其中在目前字串中出現的所有指定字串都會由另一個指定的字串取代。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字串 | 包含字串的宣告類型。 |
 | InputParameter | oldValue | 字串 | 要搜尋的字串。 |
-| InputParameter | newValue | 字串 | 用來取代所有出現之的字串`oldValue` |
-| OutputClaim | outputClaim | boolean | 相當於目前字串的字串，但是 oldValue 的所有實例都是以 newValue 取代。 如果在目前的實例中找不到 oldValue，則方法會傳回未變更的目前實例。 |
+| InputParameter | newValue | 字串 | 此字串用來取代所有出現的 `oldValue` |
+| OutputClaim | outputClaim | boolean | 相當於目前字串的字串，只是 oldValue 的所有執行個體都會取代成 newValue。 如果在目前的執行個體中找不到 oldValue，則方法會傳回未變更的目前執行個體。 |
 
-例如，藉由移除`-`字元來標準化電話號碼
+例如，藉由移除 `-` 字元來將電話號碼標準化
 
 
 ```XML
@@ -883,24 +883,24 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**： "+ 164-411-452-054"
+    - **inputClaim**: "+164-411-452-054"
 - 輸入參數：
-    - **oldValue**： "-"
-    - **長度**： ""
+    - **oldValue**: "-"
+    - **length**:  ""
 - 輸出宣告：
-    - **outputClaim**： "+ 164411452054"
+    - **outputClaim**: "+164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
-串連指定之字串集合宣告類型的元素，並在每個專案或成員之間使用指定的分隔符號。
+透過在每個元素或成員之間使用指定的分隔符號，串連所指定字串集合宣告類型的元素。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | stringCollection | 包含要串連之字串的集合。 |
-| InputParameter | 分隔符號 | 字串 | 要當做分隔符號使用的字串，例如逗號`,`。 |
-| OutputClaim | outputClaim | 字串 | 由`inputClaim`字串集合的成員所組成的字串，以`delimiter`輸入參數分隔。 |
+| InputClaim | inputClaim | stringCollection | 此集合包含要串連的字串。 |
+| InputParameter | 分隔符號 | 字串 | 做為分隔符號的字串，例如逗號 `,`。 |
+| OutputClaim | outputClaim | 字串 | 此字串包含 `inputClaim` 字串集合的成員，以 `delimiter` 輸入參數分隔。 |
 
-下列範例會採用使用者角色的字串集合，並將它轉換成逗號分隔符號字串。 您可以使用這個方法，將字串集合儲存在 Azure AD 使用者帳戶中。 之後，當您從目錄讀取帳戶時，請使用`StringSplit`將逗號分隔符號字串轉換回字串集合。
+下列範例會採用使用者角色的字串集合，並將它轉換成逗號分隔符號字串。 您可以使用這個方法將字串集合儲存在 Azure AD 使用者帳戶中。 之後，當您從目錄讀取帳戶時，請使用 `StringSplit` 將逗號分隔符號字串轉換回字串集合。
 
 ```XML
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
@@ -919,24 +919,24 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim**： ["Admin"，"Author"，"Reader"]
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
 - 輸入參數：
-  - **分隔符號**： "，"
+  - **delimiter**: ","
 - 輸出宣告：
-  - **outputClaim**：「系統管理員、作者、讀者」
+  - **outputClaim**："Admin,Author,Reader"
 
 
 ## <a name="stringsplit"></a>StringSplit
 
-傳回字串陣列，其中包含這個實例中的子字串，並以指定之字串的元素分隔。
+傳回字串陣列，這個陣列包含在這個執行個體中由所指定字串的元素分隔的子字串。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | 字串 | 包含要分割之子字串的字串宣告類型。 |
-| InputParameter | 分隔符號 | 字串 | 要當做分隔符號使用的字串，例如逗號`,`。 |
-| OutputClaim | outputClaim | stringCollection | 字串集合，其專案包含此字串中以`delimiter`輸入參數分隔的子字串。 |
+| InputClaim | inputClaim | 字串 | 此字串宣告類型包含要分割的子字串。 |
+| InputParameter | 分隔符號 | 字串 | 做為分隔符號的字串，例如逗號 `,`。 |
+| OutputClaim | outputClaim | stringCollection | 此字串集合其元素包含此字串中由 `delimiter` 輸入參數分隔的子字串。 |
 
-下列範例會採用使用者角色的逗號分隔字串，並將其轉換成字串集合。
+下列範例會採用使用者角色的逗號分隔符號字串，並將該字串轉換成字串集合。
 
 ```XML
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
@@ -955,17 +955,17 @@ ms.locfileid: "81756787"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim**：「系統管理員、作者、讀者」
+  - **inputClaim**："Admin,Author,Reader"
 - 輸入參數：
-  - **分隔符號**： "，"
+  - **delimiter**: ","
 - 輸出宣告：
-  - **outputClaim**： ["Admin"，"Author"，"Reader"]
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]
 
 ## <a name="string-claim-transformations-expressions"></a>字串宣告轉換運算式
-Azure AD B2C 自訂原則中的宣告轉換運算式會提供有關租使用者識別碼和技術設定檔識別碼的內容資訊。
+Azure AD B2C 自訂原則中的宣告轉換運算式會提供有關租用戶識別碼和技術設定檔識別碼的內容資訊。
 
   | 運算是 | 描述 | 範例 |
  | ----- | ----------- | --------|
- | `{TechnicalProfileId}` | 技術 profileId 名稱。 | Facebook-OAUTH |
+ | `{TechnicalProfileId}` | 技術設定檔名稱。 | Facebook-OAUTH |
  | `{RelyingPartyTenantId}` | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
  | `{TrustFrameworkTenantId}` | 信任架構的租用戶識別碼。 | your-tenant.onmicrosoft.com |

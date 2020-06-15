@@ -1,91 +1,91 @@
 ---
-title: 建立、開發及維護 Azure Synapse Studio （預覽）筆記本
-description: 在本文中，您將瞭解如何建立及開發 Azure Synapse Studio （預覽）筆記本，以進行資料準備和視覺化。
+title: 建立、開發及維護 Azure Synapse Studio (預覽) 筆記本
+description: 在本文中，您將瞭解如何建立及開發 Azure Synapse Studio (預覽) 筆記本，以進行資料準備和視覺化。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430223"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702107"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>建立、開發及維護 Azure Synapse Studio （預覽）筆記本
+# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>建立、開發及維護 Azure Synapse Studio (預覽) 筆記本
 
-Azure Synapse Studio （預覽）筆記本是一個 web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他海量資料案例。
+Azure Synapse Studio (預覽) 筆記本是一個 Web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
-* 開始使用零設定。
+* 無須設定即可開始使用。
 * 使用內建的企業安全性功能保護資料的安全。
-* 跨原始格式（CSV、txt、JSON 等）分析資料、處理過的檔案格式（parquet、Delta Lake、ORC 等），以及針對 Spark 和 SQL 的 SQL 表格式資料檔案。
+* 分析包括原始格式 (CSV、txt、JSON 等)、經處理的檔案格式 (parquet、Delta Lake、ORC 等)，以及針對 Spark 和 SQL 的 SQL 表格式資料檔案等各種資料。
 * 透過增強的撰寫功能和內建的資料視覺效果，提高生產力。
 
 本文說明如何在 Azure Synapse Studio 中使用筆記本。
 
 ## <a name="create-a-notebook"></a>建立 Notebook
 
-有兩種方式可以建立筆記本。 您可以從**物件總管**建立新的筆記本，或將現有的筆記本匯入到 Azure Synapse 工作區。 Azure Synapse Studio 筆記本可以辨識標準 Jupyter Notebook IPYNB 檔案。
+建立筆記本的方法有兩種。 您可以從**物件總管**建立新的筆記本，也可以將現有的筆記本匯入到 Azure Synapse 工作區。 Azure Synapse Studio 筆記本可以辨識標準 Jupyter Notebook IPYNB 檔案。
 
-![synapse-建立-匯入-筆記本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![synapse-create-import-notebook](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
 ## <a name="develop-notebooks"></a>開發筆記本
 
-筆記本是由儲存格所組成，它們是個別的程式碼區塊，或是可獨立執行或群組的文字。
+筆記本是由儲存格所組成，是可以獨立或以群組方式執行的個別程式碼區塊或文字。
 
-### <a name="add-a-cell"></a>加入儲存格
+### <a name="add-a-cell"></a>新增儲存格
 
-有多種方式可將新的資料格新增至您的筆記本。
+有多種方式可將新的儲存格新增至您的筆記本。
 
-1. 展開左上方的 [**儲存格**] 按鈕，然後選取 [**加入程式碼資料格**] 或 [**加入文字資料格**]。
+1. 展開左上方的 [+ 儲存格] 按鈕，然後選取 [加入程式碼儲存格] 或 [加入文字儲存格]。
 
-    ![[加入儲存格]-[儲存格] 按鈕](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
+    ![add-cell-with-cell-button](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. 將滑鼠停留在兩個數據格之間的空間，然後選取 [**加入程式碼**] 或 [**加入文字**
+2. 將游標停留在兩個儲存格之間的空間，然後選取 [新增程式碼] 或 [新增文字]。
 
-    ![新增-儲存格-空格之間](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
+    ![add-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
-3. 使用[命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按**下以將資料**格插入目前的儲存格上方。 按**B** ，將資料格插入目前的儲存格下方。
+3. 使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 [A]，將儲存格插入目前的儲存格上方。 按下 [B]，將儲存格插入目前的儲存格下方。
 
 ### <a name="set-a-primary-language"></a>設定主要語言
 
-Azure Synapse Studio 筆記本支援四種 spark 語言：
+Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 
-* pyspark （python）
-* spark （Scala）
-* sparkSQL
-* Spark.NET （c #）
+* pySpark (Python)
+* Spark (Scala)
+* SparkSQL
+* 適用於 Apache Spark 的 .NET (C#)
 
-您可以從頂端命令列的下拉式清單中，為新加入的資料格設定主要語言。
+您可以從頂端命令列的下拉式清單中，為新加入的儲存格設定主要語言。
 
-   ![預設-synapse-language](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
+   ![default-synapse-language](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
 
 ### <a name="use-multiple-languages"></a>使用多種語言
 
-您可以在資料格的開頭指定正確的語言魔術命令，以在一個筆記本中使用多種語言。 下表列出用來切換資料格語言的神奇命令。
+您可以在儲存格的開頭指定正確的語言 magic 命令，以便在同個筆記本中使用多種語言。 下表列出用來切換儲存格語言的 magic 命令。
 
-|魔術命令 |Language | 描述 |  
+|Magic 命令 |Language | 描述 |  
 |---|------|-----|
-|%% pyspark| Python | 針對 Spark 內容執行**Python**查詢。  |
-|%% spark| Scala | 針對 Spark 內容執行**Scala**查詢。  |  
-|%% sql| SparkSQL | 針對 Spark 內容執行**SparkSQL**查詢。  |
-|%% csharp | Spark.NET C# | 針對 Spark 內容執行**Spark.NET c #** 查詢。 |
+|%%pyspark| Python | 針對 Spark 內容執行 **Python** 查詢。  |
+|%%spark| Scala | 針對 Spark 內容執行 **Scala** 查詢。  |  
+|%%sql| SparkSQL | 針對 Spark 內容執行 **SparkSQL** 查詢。  |
+|%%csharp | 適用於 Spark C# 的 .NET | 針對 Spark 內容執行**適用於 Spark C# 的 .NET** 查詢。 |
 
-下圖是如何使用 **%% PySpark**魔術命令，或在**Spark （Scala）** 筆記本中具有 **%% sql**神奇命令的 SparkSQL 查詢，來撰寫 PySpark 查詢的範例。 請注意，筆記本的主要語言會設定為 Scala。
+下圖是如何使用 **%%pyspark** magic 命令，或在 **Spark(Scala)** 筆記本中使用 **%%sql** magic 命令的 SparkSQL 查詢，以便撰寫 PySpark 查詢的範例。 請注意，筆記本的主要語言會設定為 pySpark。
 
-   ![synapse-spark-magic](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![synapse-spark-magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>使用臨時表跨語言參考資料
+### <a name="use-temp-tables-to-reference-data-across-languages"></a>使用暫存資料表跨語言參考資料
 
-您無法直接在 Synapse Studio 筆記本中的不同語言之間參考資料或變數。 在 Spark 中，可以跨語言參考臨時表。 以下範例說明如何在中`Scala` `PySpark`讀取資料框架，並`SparkSQL`使用 Spark 臨時表做為因應措施。
+您無法直接在 Synapse Studio 筆記本中的不同語言之間參考資料或變數。 在 Spark 中，可以跨語言參考暫存資料表。 以下範例說明如何使用 Spark 暫存資料表做為因應措施，讀取 `PySpark` 和 `SparkSQL` 中的 `Scala` 資料框架。
 
-1. 在儲存格1中，使用 Scala 從 SQL 集區連接器讀取資料框架，並建立臨時表。
+1. 在儲存格 1 中，使用 Scala 從 SQL 集區連接器讀取資料框架，並建立暫存資料表。
 
    ```scala
    %%scala
@@ -93,128 +93,128 @@ Azure Synapse Studio 筆記本支援四種 spark 語言：
    scalaDataFrame.registerTempTable( "mydataframetable" )
    ```
 
-2. 在儲存格2中，使用 Spark SQL 來查詢資料。
+2. 在儲存格 2 中，使用 Spark SQL 查詢資料。
    
    ```sql
    %%sql
    SELECT * FROM mydataframetable
    ```
 
-3. 在儲存格3中，使用 PySpark 中的資料。
+3. 在儲存格 3 中，使用 PySpark 中的資料。
 
    ```python
    %%pyspark
    myNewPythonDataFrame = spark.sql("SELECT * FROM mydataframetable")
    ```
 
-### <a name="ide-style-intellisense"></a>IDE 樣式的 IntelliSense
+### <a name="ide-style-intellisense"></a>整合式開發環境 (IDE) 樣式的 IntelliSense
 
-Azure Synapse Studio 筆記本與摩納哥編輯器整合，可將 IDE 樣式的 IntelliSense 帶入資料格編輯器。 語法醒目提示、錯誤製作程式和自動程式碼完成可協助您撰寫程式碼並更快速地識別問題。
+Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您撰寫程式碼並更快速地識別問題。
 
-IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查看支援的功能。
+IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢視支援的功能。
 
-|Languages| 語法醒目提示 | 語法錯誤標記  | 語法程式碼完成 | 變數程式碼完成| 系統函數程式碼完成| 使用者函式程式碼完成| 智慧縮排 | 程式碼折迭|
+|Languages| 語法醒目提示 | 語法錯誤標記  | 語法程式碼完成 | 變數程式碼完成| 系統函數程式碼完成| 使用者函式程式碼完成| 智慧縮排 | 程式碼摺疊功能|
 |--|--|--|--|--|--|--|--|--|
-|PySpark （Python）|是|是|是|是|是|是|是|是|
-|Spark （Scala）|是|是|是|是|-|-|-|是|
+|PySpark (Python)|是|是|是|是|是|是|是|是|
+|Spark (Scala)|是|是|是|是|-|-|-|是|
 |SparkSQL|是|是|-|-|-|-|-|-|
-|Spark.NET （c #）|是|-|-|-|-|-|-|-|
+|適用於 Spark (C#) 的 .NET|是|-|-|-|-|-|-|-|
 
-### <a name="format-text-cell-with-toolbar-buttons"></a>使用工具列按鈕格式化文字資料格
+### <a name="format-text-cell-with-toolbar-buttons"></a>使用工具列按鈕格式化文字儲存格
 
-您可以使用 [文字資料格] 工具列中的 [格式] 按鈕來執行常見的 markdown 動作。 其中包含粗體文字、italicizing 文字、插入程式碼片段、插入未排序的清單、插入已排序的清單，以及從 URL 插入影像。
+您可以使用 [文字儲存格] 工具列中的 [格式] 按鈕來執行常見的 Markdown 動作。 其中包含粗體文字、斜體文字、插入程式碼片段、插入未排序的清單、插入已排序的清單，以及從 URL 插入影像。
 
-  ![synapse-文字-資料格-工具列](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![synapse-text-cell-toolbar](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
-### <a name="undo-cell-operations"></a>復原資料格作業
-按一下 [**復原**] 按鈕，或按**Ctrl + Z**撤銷最近的資料格作業。 現在您可以復原到最新的20個歷史資料格動作。 
+### <a name="undo-cell-operations"></a>復原儲存格作業
+按一下 [復原] 按鈕，或按下 **Ctrl + Z** 撤銷最近的儲存格作業。 現在您可以復原最近的 20 個歷史儲存格動作。 
 
-   ![synapse-復原-資料格](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![synapse-undo-cells](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
-### <a name="move-a-cell"></a>移動資料格
+### <a name="move-a-cell"></a>移動儲存格
 
-選取省略號（...），即可存取最右側的其他 [資料格動作] 功能表。 然後選取 [**將資料格上移**] 或 [**下移資料格**]，以移動目前的儲存格。 
+選取省略符號 (...)，即可存取最右側的其他儲存格動作功能表。 然後選取 [向上移動儲存格] 或 [向下移動儲存格] 以移動目前的儲存格。 
 
-您也可以使用[命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按**Ctrl + Alt + ↑**以向上移動目前的儲存格。 按**Ctrl + Alt + ↓** ，將目前的資料格向下移動。
+您也可以使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 **Ctrl+Alt+↑** 上移目前的儲存格。 按下 **Ctrl+Alt+↓** 下移目前的儲存格。
 
-   ![移動-a-cell](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
+   ![move-a-cell](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
 ### <a name="delete-a-cell"></a>刪除儲存格
 
-若要刪除資料格，請選取省略號（...），以存取最右側的其他 [資料格動作] 功能表，然後選取 [**刪除儲存格**]。 
+若要刪除儲存格，請選取省略符號 (...)，以存取最右側的其他儲存格動作功能表，然後選取 [刪除儲存格]。 
 
-您也可以使用[命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按**d，d**可刪除目前的儲存格。
+您也可以使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 **D,D** 以刪除目前的儲存格。
   
-   ![刪除-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
+   ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
-### <a name="collapse-a-cell-input"></a>折迭資料格輸入
-按一下目前資料格底部的箭號按鈕以折迭它。 若要將它展開，請在資料格折迭時按一下箭號按鈕。
+### <a name="collapse-a-cell-input"></a>摺疊儲存格輸入
+按一下目前儲存格底部的箭號按鈕予以摺疊。 若要將它展開，請在儲存格摺疊時按一下箭號按鈕。
 
-   ![折迭-資料格-輸入](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
+   ![collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
-### <a name="collapse-a-cell-output"></a>折迭資料格輸出
+### <a name="collapse-a-cell-output"></a>摺疊儲存格輸出
 
-按一下目前資料格輸出左上方的 [折迭**輸出**] 按鈕，以折迭它。 若要展開它，請按一下 [在資料格輸出折迭時**顯示資料格輸出**]。
+按一下目前儲存格輸出左上方的 [摺疊輸出] 按鈕將其摺疊。 若要將它展開，請在儲存格輸出摺疊時，按一下 [顯示儲存格輸出]。
 
-   ![折迭-資料格-輸出](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+   ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
 ## <a name="run-notebooks"></a>執行筆記本
 
-您可以個別或一次在您的筆記本中執行程式碼資料格。 每個資料格的狀態和進度都會以筆記本表示。
+您可以個別或一次全部在您的筆記本中執行程式碼儲存格。 每個儲存格的狀態和進度都會在筆記本中表示。
 
-### <a name="run-a-cell"></a>執行資料格
+### <a name="run-a-cell"></a>執行儲存格
 
 有數種方式可以在儲存格中執行程式碼。
 
-1. 將滑鼠停留在您想要執行的資料格上，然後選取 [**執行儲存格**] 按鈕或按**Ctrl + Enter**。
+1. 將游標停留在您想要執行的儲存格上，然後選取 [執行儲存格] 按鈕，或按下 **Ctrl+Enter**。
 
-   ![執行-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+   ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. 若要存取最右側的其他 [資料格動作] 功能表，請選取省略號（**...**）。然後，選取 [**執行儲存格**]。
+2. 若要存取最右側的其他儲存格動作功能表，請選取省略符號 ( **...** )。然後，選取 [執行儲存格]。
 
-   ![執行-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
+   ![run-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
-3. 使用[命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按**Shift + enter**以執行目前的儲存格，然後選取下方的資料格。 按**Alt + Enter**以執行目前的儲存格，並在下方插入新的資料格。
+3. 使用 [命令模式下的快速鍵](#shortcut-keys-under-command-mode)。 按下 **Shift+Enter** 以執行目前的儲存格，然後選取下方的儲存格。 按下 **Alt+Enter** 以執行目前的儲存格，並在下方插入新的儲存格。
 
 
-### <a name="run-all-cells"></a>執行所有資料格
-按一下 [**全部執行**] 按鈕，依序執行目前筆記本中的所有儲存格。
+### <a name="run-all-cells"></a>執行所有儲存格
+按一下 [全部執行] 按鈕，依序執行目前筆記本中的所有儲存格。
 
-   ![全部執行-資料格](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+   ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
-### <a name="run-all-cells-above-or-below"></a>執行上方或下方的所有資料格
+### <a name="run-all-cells-above-or-below"></a>執行上方或下方所有儲存格
 
-若要存取最右側的其他 [資料格動作] 功能表，請選取省略號（**...**）。然後，選取 [**執行上方的儲存格**]，依序執行目前的所有資料格。 選取**下方**的 [執行資料格]，依序執行目前的所有資料格。
+若要存取最右側的其他儲存格動作功能表，請選取省略符號 ( **...** )。然後，選取 [執行上方的儲存格]，依序執行目前儲存格上方的所有儲存格。 選取 [執行下方的儲存格]，依序執行目前儲存格下方的所有儲存格。
 
-   ![執行單元-上方-或以下](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
-
-
-### <a name="cell-status-indicator"></a>資料格狀態指標
-
-資料格下方會顯示逐步驟的資料格執行狀態，以協助您查看其目前的進度。 儲存格執行完成之後，會顯示包含總持續時間和結束時間的執行摘要，並保留在該處供日後參考。
-
-![資料格-狀態](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
-
-### <a name="spark-progress-indicator"></a>Spark 進度列指示器
-
-Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼資料格會從遠端在 Spark 集區上執行。 隨即會提供即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
+   ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
-![spark-進度-指標](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
+### <a name="cell-status-indicator"></a>儲存格狀態指標
 
-### <a name="spark-session-config"></a>Spark 會話設定
+儲存格下方會逐步顯示儲存格執行狀態，以協助您檢視目前的進度。 儲存格執行完成之後，會顯示包含總持續時間和結束時間的執行摘要，並保留在該處供日後參考。
 
-您可以指定要提供給 [**設定會話**] 中目前 Spark 會話的超時時間、數目和執行的大小。 重新開機 Spark 會話，設定變更才會生效。 所有快取的筆記本變數都會清除。
+![cell-status](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
 
-![會話-管理](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+### <a name="spark-progress-indicator"></a>Spark 進度指示器
+
+Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼儲存格會從遠端在 Spark 集區上執行。 系統隨即會提供具有即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
+
+
+![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
+
+### <a name="spark-session-config"></a>Spark 工作階段設定
+
+您可以在 [設定工作階段] 中指定要提供給目前 Spark 工作階段的執行程式逾時時間、數目和大小。 重新啟動 Spark 工作階段，設定變更才會生效。 所有快取的筆記本變數都會清除。
+
+![session-mgmt](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
 
 
 ## <a name="bring-data-to-a-notebook"></a>將資料帶入筆記本
 
 您可以從 Azure Blob 儲存體、Azure Data Lake Store Gen 2 和 SQL 集區載入資料，如下列程式碼範例所示。
 
-### <a name="read-a-csv-from-azure-data-lake-store-gen2-as-a-spark-dataframe"></a>從 Azure Data Lake Store Gen2 讀取 CSV 作為 Spark 資料框架
+### <a name="read-a-csv-from-azure-data-lake-store-gen2-as-a-spark-dataframe"></a>從 Azure Data Lake Store Gen2 讀取 CSV 做為 Spark 資料框架
 
 ```python
 from pyspark.sql import SparkSession
@@ -255,32 +255,32 @@ df = spark.read.option("header", "true") \
 
 ```
 
-### <a name="read-data-from-the-primary-storage-account"></a>從主要儲存體帳戶讀取資料
+### <a name="read-data-from-the-primary-storage-account"></a>讀取主要儲存體帳戶中的資料
 
-您可以直接存取主要儲存體帳戶中的資料。 不需要提供秘密金鑰。 在資料總管中，以滑鼠右鍵按一下檔案，然後選取 [**新增筆記本**]，以查看已自動產生資料解壓縮的新筆記本。
+您可以直接存取主要儲存體帳戶中的資料。 不需要提供祕密金鑰。 在 [資料總管] 中，以滑鼠右鍵按一下檔案，然後選取 [新筆記本]，以檢視已自動產生資料解壓縮的新筆記本。
 
-![資料到儲存格](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+![data-to-cell](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>將筆記本中的資料視覺化
+## <a name="visualize-data-in-a-notebook"></a>在筆記本中將資料視覺化
 
-### <a name="display"></a>Display （）
+### <a name="display"></a>Display()
 
-表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在**圖表選項**中自訂圖表。 
+表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在 [圖表選項] 中自訂圖表。 
 
-根據預設， **%% sql**魔術命令的輸出會出現在轉譯的資料表視圖中。 您可以呼叫 Spark 資料框架或復原分散式資料集（RDD）函數上的**display （`<DataFrame name>`）** ，以產生轉譯的資料表視圖。
+預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以呼叫 Spark 資料框架或彈性分散式資料集 (RDD) 函數上的 **display(`<DataFrame name>`)** ，以產生轉譯的資料表檢視。
 
-   ![內建-圖表](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   ![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
 ### <a name="displayhtml"></a>DisplayHTML()
 
-您可以使用**displayHTML （）** 來呈現 HTML 或互動式程式庫，例如**bokeh**。
+您可以使用 **displayHTML()** 來呈現 HTML 或互動式程式庫，例如 **bokeh**。
 
-下圖是使用**bokeh**透過地圖繪製圖像的範例。
+下圖是使用 **bokeh** 在地圖上繪製圖像的範例。
 
-   ![bokeh-範例](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
+   ![bokeh-example](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
 
-執行下列範例程式碼，以繪製上述影像。
+執行下列範例程式碼以繪製上述影像。
 
 ```python
 from bokeh.plotting import figure, output_file
@@ -316,79 +316,82 @@ displayHTML(html)
 
 您可以將單一筆記本或所有筆記本儲存在工作區中。
 
-1. 若要儲存對單一筆記本所做的變更，請選取 [筆記本] 命令列上的 [**發佈**] 按鈕。
+1. 若要儲存對單一筆記本所做的變更，請在筆記本命令列上選取 [發佈] 按鈕。
 
-   ![發佈-筆記本](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
+   ![publish-notebook](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
-2. 若要儲存工作區中的所有筆記本，請選取工作區命令列上的 [**全部發佈**] 按鈕。 
+2. 若要儲存工作區中的所有筆記本，請選取 [工作區] 命令列上的 [全部發佈] 按鈕。 
 
-   ![發行-全部](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
+   ![publish-all](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
 
-在 [筆記本] 屬性中，您可以設定是否要在儲存時包含資料格輸出。
+在筆記本屬性中，您可以設定是否要在儲存時包含儲存格輸出。
 
-   ![筆記本-屬性](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
+   ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
-## <a name="magic-commands"></a>魔術命令
-您可以在 Azure Synapse Studio 筆記本中使用您熟悉的 Jupyter 魔術命令。 請檢查下列清單，以取得目前可用的魔術命令。 請告訴我們您在 GitHub 上的使用案例，讓我們可以繼續建立更多的神奇命令以符合您的需求。
+## <a name="magic-commands"></a>Magic 命令
+您可以在 Azure Synapse Studio 筆記本中使用您熟悉的 Jupyter magic 命令。 請檢查下列清單，以取得目前可用的 magic 命令。 請告訴我們您在 GitHub 上的使用案例，讓我們可以繼續建立更多的 magic 命令以符合您的需求。
 
-可用的行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% timeit.exe](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+可用的行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
-可用的資料格 magic： [%% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [%% timeit.exe](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)， [%% capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)， [%% writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)， [%% sql](#use-multiple-languages)， [%% pyspark](#use-multiple-languages)， [%% spark](#use-multiple-languages)， [%% csharp](#use-multiple-languages)
+可用的儲存格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
 
 ## <a name="shortcut-keys"></a>快速鍵
 
-類似于 Jupyter 筆記本，Azure Synapse Studio 筆記本具有強制回應的使用者介面。 鍵盤會根據筆記本儲存格所在的模式來執行不同的動作。 Synapse Studio 筆記本針對指定的程式碼資料格支援下列兩種模式：命令模式和編輯模式。
+與 Jupyter 筆記本類似，Azure Synapse Studio 筆記本具有強制回應的使用者介面。 鍵盤會根據筆記本儲存格所在的模式來執行不同的動作。 Synapse Studio 筆記本針對指定的程式碼儲存格支援下列兩種模式：命令模式和編輯模式。
 
-1. 當沒有文字游標提示您輸入時，儲存格就會處於命令模式。 當儲存格處於命令模式時，您可以將筆記本當做整體編輯，但不能輸入個別的資料格。 按下`ESC`或使用滑鼠在儲存格的編輯器區域外按一下，進入命令模式。
+1. 沒有文字游標提示您輸入時，儲存格就會處於命令模式。 儲存格處於命令模式時，您可以將筆記本當做整體編輯，但無法輸入個別的儲存格。 按下 `ESC` 或使用滑鼠在儲存格的編輯器區域外按一下，進入命令模式。
 
-   ![命令模式](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您不能在資料格中輸入。 按下`Enter`或使用滑鼠按一下儲存格的編輯器區域，進入編輯模式。
+2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 儲存格處於編輯模式時，您無法在儲存格中輸入。 按下 `Enter` 或使用滑鼠按一下儲存格的編輯器區域，以進入編輯模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>命令模式下的快速鍵
 
-使用下列按鍵快捷方式，您可以更輕鬆地在 Azure Synapse 筆記本中流覽和執行程式碼。
+使用下列按鍵快捷鍵，您可以更輕鬆地在 Azure Synapse 筆記本中瀏覽和執行程式碼。
 
-| 動作 |Synapse Studio 筆記本快捷方式  |
+| 動作 |Synapse Studio 筆記本捷徑  |
 |--|--|
-|執行目前的儲存格，然後選取下方 | Shift+Enter |
-|執行目前的儲存格，並在下方插入 | Alt+Enter |
-|選取上方的儲存格| 上移 |
-|選取下方的資料格| 向下 |
-|插入上方的儲存格| A |
-|在下方插入資料格| B |
-|擴充上方選取的儲存格| Shift + 向上鍵 |
-|擴充下方選取的資料格| Shift + 向下鍵|
-|向上移動儲存格| Ctrl + Alt + ↑ |
-|將資料格向下移動| Ctrl + Alt + ↓ |
-|刪除選取的資料格| D、D |
+|執行目前的儲存格並在下方選取 | Shift+Enter |
+|執行目前的儲存格並在下方插入 | Alt+Enter |
+|選取上方儲存格| 上移 |
+|選取下方儲存格| 向下 |
+|在上方插入儲存格| A |
+|在下方插入儲存格| B |
+|展開上方選取的儲存格| Shift+Up |
+|展開下方選取的儲存格| Shift+Down|
+|向上移動儲存格| Ctrl+Alt+↑ |
+|向下移動儲存格| Ctrl+Alt+↓ |
+|刪除選取的儲存格| D,D |
 |切換至編輯模式| Enter |
 
 ### <a name="shortcut-keys-under-edit-mode"></a>編輯模式下的快速鍵
 
-使用下列按鍵快捷方式，可讓您在編輯模式時，更輕鬆地在 Azure Synapse 筆記本中流覽和執行程式碼。
+在編輯模式中，使用下列按鍵快捷鍵，您可以更輕鬆地在 Azure Synapse 筆記本中瀏覽和執行程式碼。
 
-| 動作 |Synapse Studio 筆記本快捷方式  |
+| 動作 |Synapse Studio 筆記本捷徑  |
 |--|--|
-|將游標向上移動 | 上移 |
-|向下移動游標|向下|
+|向上移動資料指標 | 上移 |
+|向下移動資料指標|向下|
 |復原|Ctrl + Z|
 |取消復原|Ctrl + Y|
-|註解/取消註解|Ctrl +/|
-|刪除前的文字|Ctrl + 倒退鍵|
-|刪除單字之後|Ctrl + Delete|
-|移至儲存格開始|Ctrl + Home|
-|移至資料格結尾 |Ctrl + End|
-|向左移一個字|Ctrl + Left|
-|右移一個單字|Ctrl + Right|
+|註解/取消註解|Ctrl + /|
+|刪除此前的文字|Ctrl + 退格鍵|
+|刪除此後的文字|Ctrl + Delete|
+|移至儲存格開端|Ctrl + Home|
+|移至儲存格末端 |Ctrl + End|
+|往左移一個單字|Ctrl + 向左鍵|
+|往右移一個單字|Ctrl + 向右鍵|
 |全選|Ctrl + A|
-|Indent| Ctrl +]|
+|縮排| Ctrl + ]|
 |Dedent|Ctrl + [|
-|切換至命令模式| Esc |
+|切換到命令類型| Esc |
 
 ## <a name="next-steps"></a>後續步驟
 
+- [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區 (預覽)](../quickstart-apache-spark-notebook.md)
+- [什麼是 Azure Synapse Analytics 中的 Apache Spark](apache-spark-overview.md)
+- [使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics](spark-dotnet.md)
 - [適用於 Apache Spark 的 .NET 文件](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

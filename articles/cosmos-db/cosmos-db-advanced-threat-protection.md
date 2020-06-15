@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 的先進威脅防護
-description: 瞭解 Azure Cosmos DB 如何提供待用資料的加密，以及它的實作為方式。
+title: Azure Cosmos DB 的進階威脅防護
+description: 了解 Azure Cosmos DB 如何提供加密待用資料，以及其實作方式。
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
@@ -8,106 +8,113 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77614840"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845979"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的先進威脅防護（預覽）
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的進階威脅防護 (預覽)
 
-Azure Cosmos DB 的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的嘗試存取或惡意探索 Azure Cosmos DB 帳戶。 這一層保護可讓您處理威脅，即使不是安全性專家，也能將它們與中央安全性監視系統整合。
+Azure Cosmos DB 提供「進階威脅防護」來增加額外的安全智慧層級，用於偵測 Azure Cosmos DB 帳戶中異常且可能有害的存取意圖或攻擊。 這個防護層讓您不需是安全性專家就能解決威脅，並且可使用中央安全性監視系統整合威脅。
 
-當活動發生異常時，就會觸發安全性警示。 這些安全性警示會與[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
+出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，也會透過電子郵件將可疑活動的詳細資料，以及如何調查和修復威脅的建議傳送給訂閱系統管理員。
 
 > [!NOTE]
 >
-> * Azure Cosmos DB 的先進威脅防護目前僅適用于 SQL API。
-> * Azure Cosmos DB 的先進威脅防護目前無法在 Azure 政府和主權雲端區域中使用。
+> * Azure Cosmos DB 的進階威脅防護目前僅適用於 SQL API。
+> * Azure Cosmos DB 進階威脅防護目前不適用於 Azure 政府和主權雲端區域。
 
-如需安全性警示的完整調查體驗，建議您[在 Azure Cosmos DB 中啟用診斷記錄](https://docs.microsoft.com/azure/cosmos-db/logging)，這會記錄資料庫本身的作業，包括對所有檔、容器和資料庫的 CRUD 作業。
+如需安全性警示的完整調查體驗，建議啟用 [Azure Cosmos DB 中的診斷記錄](https://docs.microsoft.com/azure/cosmos-db/logging)，這會記錄資料庫本身的作業，包含所有文件、容器和資料庫上的 CRUD 作業。
 
 ## <a name="threat-types"></a>威脅類型
 
-Azure Cosmos DB 的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。 它目前可以觸發下列警示：
+Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 這些活動目前會觸發下列警示：
 
-- **從不尋常的位置存取**：當 Azure Cosmos 帳戶的存取模式變更時，如果有人從不尋常的地理位置連線到 Azure Cosmos DB 端點，就會觸發此警示。 在某些情況下，警示會偵測合法的動作，這表示新的應用程式或開發人員的維護作業。 在其他情況下，警示會偵測先前員工、外部攻擊者等的惡意動作。
+- **從不尋常的位置存取**：有人從不尋常的地理位置登入 Azure Cosmos DB 端點，而使 Azure Cosmos 帳戶的存取模式有所變更時，會觸發此警示。 在某些情況下，警示會偵測到合法的動作，代表新的應用程式或開發人員維護作業。 在其他情況下，警示則會偵測惡意動作來 (離職員工、外部攻擊者等)。
 
-- 不**尋常的資料解壓縮**：當用戶端從 Azure Cosmos DB 帳戶解壓縮不尋常的資料量時，就會觸發此警示。 這可能是某些資料外泄執行的徵兆，以將帳戶中儲存的所有資料傳輸到外部資料存放區。
+- **不尋常的資料擷取**：當用戶端從 Azure Cosmos DB 帳戶擷取不尋常的資料量時，會觸發此警示。 這可能是部分資料外洩的徵兆，藉此將帳戶中所有儲存資料傳輸到外部資料存放區。
 
-## <a name="set-up-advanced-threat-protection"></a>設定先進的威脅防護
 
-### <a name="set-up-atp-using-the-portal"></a>使用入口網站設定 ATP
 
-1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com/)為。
+## <a name="configure-advanced-threat-protection"></a>設定進階威脅防護
 
-2. 從 [Azure Cosmos DB] 帳戶的 [**設定**] 功能表中，選取 [ **Advanced security**]。
+您可以透過下列各節所述的任一種方式設定進階威脅防護。
+
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1. 在 [https://portal.azure.com](https://portal.azure.com/) 上啟動 Azure 入口網站。
+
+2. 從 [Azure Cosmos DB] 帳戶的 [設定] 功能表中，選取 [進階安全性]。
 
     ![設定 ATP](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. 在 [ **Advanced security** configuration] 分頁中：
+3. 在 [進階安全性] 設定刀鋒視窗：
 
-    * 按一下 [ **Advanced 威脅防護**] 選項，將其設定為 [**開啟**]。
-    * 按一下 [儲存]****，以儲存新的或更新的進階威脅防護原則。   
+    * 按一下 [進階威脅防護] 選項，將其設定為 [開啟]。
+    * 按一下 [儲存]，以儲存新的或更新的進階威脅防護原則。   
 
-### <a name="set-up-atp-using-rest-api"></a>使用 REST API 設定 ATP
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-使用 Rest API 命令來建立、更新或取得特定 Azure Cosmos DB 帳戶的「先進的威脅防護」設定。
+使用 Rest API 命令以建立、更新或取得特定 Azure Cosmos DB 帳戶的「進階威脅防護」設定。
 
-* [先進的威脅防護-建立](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [先進的威脅防護-取得](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [進階威脅防護-建立](https://go.microsoft.com/fwlink/?linkid=2099745) (機器翻譯)
+* [進階威脅防護-取得](https://go.microsoft.com/fwlink/?linkid=2099643) (機器翻譯)
 
-### <a name="set-up-atp-using-azure-powershell"></a>使用 Azure PowerShell 設定 ATP
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用下列 PowerShell Cmdlet：
 
-* [啟用進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [取得先進的威脅防護](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [停用先進的威脅防護](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [啟用進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409) (英文)
+* [取得進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409) (英文)
+* [停用進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409) (英文)
 
-### <a name="using-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
+### <a name="arm-template"></a>[ARM 範本](#tab/arm-template)
 
-使用 Azure Resource Manager 範本來設定已啟用「先進的威脅防護」的 Cosmos DB。
-如需詳細資訊，請參閱[使用 Advanced 威脅防護建立 CosmosDB 帳戶](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
+使用 Azure Resource Manager (ARM) 範本來設定已啟用的 Cosmos DB 與進階威脅防護。
+如需詳細資訊，請參閱[建立具有進階威脅防護的 CosmosDB 帳戶](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/) (英文)。
 
-### <a name="using-azure-policy"></a>使用 Azure 原則
+### <a name="azure-policy"></a>[Azure 原則](#tab/azure-policy)
 
-使用 Azure 原則，為 Cosmos DB 啟用先進的威脅防護。
+使用 Azure 原則，為 Cosmos DB 啟用進階威脅防護。
 
-1. 啟動 [Azure**原則-定義**] 頁面，然後搜尋 Cosmos DB 原則的 [**部署 Advanced 威脅防護**]。
+1. 啟動 [Azure 原則-定義] 頁面，然後搜尋 [部署 Cosmos DB 的進階威脅防護] 原則。
 
     ![搜尋原則](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
 
-1. 按一下 [**為 CosmosDB 部署先進的威脅防護**] 原則，然後按一下 [**指派**]。
+1. 按一下 [為 CosmosDB 部署進階威脅防護] 原則，然後按一下 [指派]。
 
-    ![選取訂用帳戶或群組](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+    ![選取 [訂閱] 或 [群組]](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
 
 
-1. 在 [**範圍**] 欄位中，按一下三個點，選取 [Azure 訂用帳戶] 或 [資源群組]，然後按一下 [**選取**]。
+1. 從 [範圍] 欄位中，按一下三個點，選取 Azure 訂閱或資源群組，然後按一下 [選取] 。
 
     ![原則定義頁面](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
 
 
-1. 輸入其他參數，然後按一下 [**指派**]。
+1. 輸入其他參數，然後按一下 [指派]。
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>管理 ATP 安全性警示
 
-當 Azure Cosmos DB 的活動異常發生時，會觸發安全性警示，並提供可疑安全性事件的相關資訊。 
+當 Azure Cosmos DB 出現異常活動時會觸發安全性警示，並提供可疑安全性事件的相關資訊。 
 
- 從 Azure 資訊安全中心，您可以審查和管理目前的[安全性警示](../security-center/security-center-alerts-overview.md)。  按一下[資訊安全中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)中的特定警示，以查看可能的原因和建議的動作，以調查並減輕潛在威脅。 下圖顯示資訊安全中心中提供的警示詳細資料範例。
+ 您可以從 Azure 資訊安全中心的[安全性警示](../security-center/security-center-alerts-overview.md)，檢閱與管理目前的安全性警示。  按一下 [[資訊安全中心]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)的特定警示，檢視可能原因和建議動作的詳細資料，以協助您調查並減輕潛在威脅。 下圖顯示資訊安全中心所提供的警示詳細資料範例。
 
  ![威脅詳細資料](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
 
-系統也會傳送電子郵件通知，其中包含警示詳細資料和建議的動作。 下圖顯示警示電子郵件的範例。
+系統也會傳送包含警示詳細資料和建議動作的電子郵件通知。 下圖顯示警示電子郵件的範例。
 
  ![警示詳細資料](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警示
 
- 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱 Azure 資訊安全中心檔中的[Cosmos DB 警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)一節。
+ 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱 Azure 資訊安全中心文件中的 [Cosmos DB 警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)一節 (機器翻譯)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure Cosmos DB 中的診斷記錄](cosmosdb-monitor-resource-logs.md)
-* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入了解 [Azure Cosmos DB 中的診斷記錄](cosmosdb-monitor-resource-logs.md) (機器翻譯)
+* 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)

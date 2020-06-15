@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d264b0d35be5114d35713f793b771e42449c9230
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73838308"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745675"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>使用影片索引子自訂語言模型
 
-影片索引子透過與 Microsoft [自訂語音服務](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)的整合支援自動語音辨識。 您可以上傳適應文字 (也就是從您想要引擎適應其詞彙的網域中取得的文字) 自訂語言模型。 您定型模型時，會辨識調適文字中出現的新文字，並假設預設發音，而且語言模型將了解文字可能出現的新序列。 自訂語言模型支援英文、西班牙文、法文、德文、義大利文、中文（簡體）、日文、俄文、巴西葡萄牙文、印度文和韓文。 
+影片索引子透過與 Microsoft [自訂語音服務](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)的整合支援自動語音辨識。 您可以上傳適應文字 (也就是從您想要引擎適應其詞彙的網域中取得的文字) 自訂語言模型。 您定型模型時，會辨識調適文字中出現的新文字，並假設預設發音，而且語言模型將了解文字可能出現的新序列。 支援的自訂語言模型包括英文、西班牙文、法文、德文、義大利文、中文 (簡體)、日文、俄文、葡萄牙文、印度文和韓文。 
 
 以「Kubernetes」(在 Azure Kubernetes 服務的內容中) 之類相當明確的字為例。 由於這對於影片索引子而言是新字，因此會將它辨識為「社群」。 您必須將模型定型，才能將它辨識為「Kubernetes」。 在其他情況下，這些文字確實存在，但是語言模型並未預期這些文字出現在特定內容中。 例如，「容器服務」不是非特製化語言模型視為特定字組的 2 字組序列。
 

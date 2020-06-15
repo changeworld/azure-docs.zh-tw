@@ -1,16 +1,16 @@
 ---
-title: 使用 Application Insights 的 Azure Service Fabric 事件分析
+title: 使用 Application Insights 分析 Azure Service Fabric 事件
 description: 了解如何使用 Application Insights 視覺化及分析事件，來監視和診斷 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464763"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701891"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 進行事件分析和視覺效果
 
@@ -42,7 +42,7 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 按一�
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 設定 Application Insights
 
-如要使用 EventFlow 來彙總事件，請務必匯入 `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet 套件。 eventFlowConfig.json** 的 [輸出]** 區段中必須有以下程式碼：
+如要使用 EventFlow 來彙總事件，請務必匯入 `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet 套件。 eventFlowConfig.json 的 [輸出] 區段中必須有以下程式碼：
 
 ```json
 "outputs": [
@@ -65,13 +65,13 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 按一�
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>在 Azure 入口網站中瀏覽 Application Insights 資源
 
-一旦將 Application Insights 設定為事件和記錄的輸出，資訊就會在幾分鐘內開始出現在 Application Insights 資源中。 瀏覽至 Application Insights 資源，它會帶您到 Application Insights 資源儀表板。 按一下 Application Insights 工作列的 [搜尋]****，可查看它接收到的最新追蹤，並可從中進行篩選。
+一旦將 Application Insights 設定為事件和記錄的輸出，資訊就會在幾分鐘內開始出現在 Application Insights 資源中。 瀏覽至 Application Insights 資源，它會帶您到 Application Insights 資源儀表板。 按一下 Application Insights 工作列的 [搜尋]，可查看它接收到的最新追蹤，並可從中進行篩選。
 
 *計量瀏覽器*是很有用的工具，它可根據應用程式、服務和叢集可能報告的計量，建立自訂的儀表板。 請參閱[在 Application Insights 中探索計量](../azure-monitor/app/metrics-explorer.md)，根據您所收集的資料自行設定幾個圖表。
 
-按一下 [分析]**** 會帶您到 Application Insights 的 Analytics 入口網站中，您可以在這裡查詢更大範圍和選擇性的事件和追蹤。 在 [Application Insights 的 Analytics](../azure-monitor/app/analytics.md) 中了解更多。
+按一下 [分析] 會帶您到 Application Insights 的 Analytics 入口網站中，您可以在這裡查詢更大範圍和選擇性的事件和追蹤。 在 [Application Insights 的 Analytics](../azure-monitor/app/analytics.md) 中了解更多。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在 AI 中設定警示](../azure-monitor/app/alerts.md)以收到效能或使用方式的變更通知
+* [在 AI 中設定警示](/azure/azure-monitor/platform/alerts-log)以收到效能或使用方式的變更通知
 * [Application Insights 的智慧偵測](../azure-monitor/app/proactive-diagnostics.md)會對傳送至 Application Insights 的遙測資料執行主動式分析，對可能的效能問題提出警告

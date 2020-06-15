@@ -1,6 +1,6 @@
 ---
-title: 搜尋類別 |Microsoft Azure 對應
-description: 在本文中，您將瞭解 Microsoft Azure 對應中支援的搜尋類別。
+title: 搜尋類別 | Microsoft Azure 地圖服務
+description: 在本文中，您將了解 Microsoft Azure 地圖服務中支援的搜尋類別。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4975a5842ef23b54444663f653f43bb8dbd1d2c1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988277"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745989"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure 地圖服務支援的類別
 
-執行興趣點的[類別搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)時，有超過一百個支援的類別。 以下是支援類別名稱的類別代碼清單。 類別代碼會針對最上層類別產生。 所有子類別均共用相同的類別代碼。 此類別清單可能會隨著新的資料發行而變更。
+執行興趣點的[類別搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)時，有超過一百個支援的類別。 以下是支援類別名稱的類別代碼清單。 系統會對於最上層類別產生類別代碼。 所有子類別均共用相同的類別代碼。 此類別清單會視新資料版本而可能改變。
 
 <br/>
 
 | **類別代碼** | **類別相符代碼** |
 | --- | --- |
 | ACCESS\_GATEWAY | 航空通道、安全閘門、站台通道、通道閘道 |
-| 行政\_區 | 省、四級行政區、一級行政區、歷史三級行政區、四級行政區的基座、二級行政區的基座、附屬政治實體、聚居地、三級行政區的基座、聚居地、二級行政區、一級行政區的基座、行政區、聚居地區、歷史地區、古蹟、歷史聚居地、以色列殖民地、歷史四級行政區、五級行政區、歷史一級行政區、三級行政區、歷史政治實體、歷史行政區、政治實體政府的基座、歷史二級行政區、政治實體的首都 |
+| 行政\_區 | 省、四級行政區、一級行政區、歷史三級行政區、四級行政區的基座、二級行政區的基座、附屬政治實體、聚居地、三級行政區的基座、聚居地、二級行政區、一級行政區的基座、行政區、聚居地區、歷史地區、古蹟、歷史聚居地、以色列殖民地、歷史四級行政區、五級行政區、歷史一級行政區、三級行政區、歷史政治實體、歷史行政區、政治實體政府的基座、歷史二級行政區、政治實體的首都/主要城市 |
 | ADVENTURE\_SPORTS\_VENUE | 冒險運動場地 |
 | AGRICULTURE | 園藝、初級生產者、農業、農場、農村、農莊、家園、放牧區、公有地、養殖設施、農場、釣魚區域、農田 |
 | AIRPORT | 私人機構、軍事當局、直升機機場、關閉、中型機場、大型機場、小型機場、飛行場、水上飛機基地、公共機構、氣球港口、機場 |
@@ -45,7 +45,7 @@ ms.locfileid: "76988277"
 | COLLEGE\_UNIVERSITY | 專科學校/社區大學、學院/大學、學院、大學先修班、大學 |
 | COMMERCIAL\_BUILDING | 辦公大樓、公園管理處、商業建築 |
 | COMMUNITY\_CENTER | 社區中心 |
-| COMPANY | 電子產品，製造，電腦資料服務，公用健康技術，多樣化財務，動物收容所，航空公司，設備出租，服務，郵件/套件/貨運傳遞，匯流排線路，家庭設備修復，清潔服務，oem，稅務服務，石油天然天然氣，法律服務，建築，電信，運輸，汽車製造，化學用品，殯儀服務太平間，橋樑通道作業，汽車，機械工程服務，投資顧問，廣告/行銷，移動存放裝置，節約機構，保險，電腦軟體，藥物，餐飲，婚禮服務，農業技術，房地產，計程車，禮車往復服務，匯流排章程，，挖掘，發行技術，有線電話，匯入/匯出散發，公司，asylum，煤力地雷，房地產，brewery，黃金型 |
+| COMPANY | 電子、製造業、電腦資料服務、公共衛生技術、多元化金融、動物收容所、航空公司、設備租賃、服務、郵件/包裹/貨運、共汽車線路、家電維修、清潔服務、OEM、稅務服務、石油天然氣、法律服務、建築、遠端通訊、交通運輸、汽車製造、化工、殯葬服務、橋隧工程、汽車、機械工程、服務、投資顧問、廣告/市場行銷、行動儲存、儲蓄機構、保險、電腦軟體、藥品、餐飲、婚慶服務、農業技術、房地產、計程車、豪華轎車接送服務、巴士租賃、採礦、出版技術、有線電話、進出口分銷、公司、庇護、煤礦、房地產、釀酒廠、金礦 |
 | COURTHOUSE | 法院大樓 |
 | CULTURAL\_CENTER | 文化中心 |
 | DENTIST | 牙醫 |
@@ -55,7 +55,7 @@ ms.locfileid: "76988277"
 | EMBASSY | 大使館 |
 | EMERGENCY\_MEDICAL\_SERVICE | 急救服務 |
 | ENTERTAINMENT | 娛樂 |
-| EXCHANGE  | 金幣匯兌、換匯、股票交易、匯兌 |
+| EXCHANGE | 金幣匯兌、換匯、股票交易、匯兌 |
 | EXHIBITION\_CONVENTION\_CENTER | 展覽中心 |
 | FERRY\_TERMINAL | 渡船、渡船碼頭 |
 | FIRE\_STATION\_BRIGADE | 消防站/消防隊 |
@@ -105,7 +105,7 @@ ms.locfileid: "76988277"
 | REPAIR\_FACILITY | 車身車間、輪胎服務、修車廠、汽車玻璃更換商店、一般汽車維修服務、汽車配件銷售安裝、摩托車維修、卡車維修服務、維修設施 |
 | RESEARCH\_FACILITY | 研究設施 |
 | RESIDENTIAL\_ACCOMMODATION | 退休社區、多棟聯建住宅社區、公寓/公寓型社區、連棟公寓、住宅地產、居所 |
-| RESTAURANT | 德文、克裡奧爾文-Cajun、荷蘭文、宴會室、bistro、以色列、斯洛伐克文、牙買加、蔬菜、海鮮、越南文、馬爾他文、Sichuan、威爾士文、中文、日文、阿爾及利亞、Californian、融合、Shandong、沙拉 bar、Savoy an、西班牙文、Ethiopian、繁體中文、doughnuts、伊朗、加拿大、美國、挪威文、法文、Hunan、Polynesian、阿富汗、踏、亞洲、瑞士、erotic、crêperie、Surinamese、埃及、匈牙利文、尼泊爾、烤肉、等熱、漢堡、地中海、拉丁美洲、tapas、英屬、墨西哥、廣東核電集團、亞洲（其他）、buffet、壽司、蒙古文、國際、mussels、泰文、Venezuelan、Rumanian、雞、湯品、kosher、牛排館房屋、yogurt/juice bar、義大利文、韓文、Cypriot、波士尼亞、Bolivian、多明尼加、比利時、Tunisian、蘇格蘭、英文、巴基斯坦、捷克文、夏威夷、Maghrib、藏語、阿拉伯、中東、智利文、上海、波蘭文、菲律賓文、蘇丹、亞美尼亞文、緬甸文、巴西、波蘭文、保加利亞文、靈魂食物、哥倫比亞、Jewish、比薩、Sicilian、有機、希臘文、巴斯克文、烏拉圭、cafeterias、芬蘭、非洲、Corsican-100、敘利亞、加勒比海、Dongbei、俄文，燒烤，take，快速食物，澳大利亞，愛爾蘭，pub 食物，fondue，黎巴嫩，印尼，丹麥文，Provençal，teppanyaki，印度，模裡西斯，西方大陸，秘魯，Cambodian，點心，瑞典文，macrobiotic，霜淇淋店，斯拉夫，土耳其文，Argentinean，奧地利，外來，葡萄牙文，Luxembourgian，摩洛哥，澳大利亞，古巴，餐廳 |
+| RESTAURANT | 德國、克里奧爾、荷蘭、宴會廳、小酒館、以色列、斯洛伐克、牙買加、素食、海鮮、越南、馬爾他、四川、威爾斯、中國、日本、本阿爾及利亞、加州、融合、山東、沙拉吧、薩沃伊、西班牙、衣索比亞、臺灣、甜甜圈、伊朗、加拿大、美國、挪威、法國、湖南、波利尼西亞、阿富汗、路邊、亞洲、瑞士、色情、可麗餅、蘇里南、埃及、匈牙利、尼泊爾、拉丁美洲、小吃、英國、墨西哥、廣東、亞洲 (其他)、自助餐、壽司、蒙古、國際、淡菜、泰國、委內瑞拉、羅馬尼亞、雞肉、湯、猶太、牛排屋、優格/果汁吧、義大利、韓國、賽普勒斯、波士尼亞、玻利維亞、多明尼加、比利時、突尼西亞、蘇格蘭、英格蘭、巴基斯坦、捷克、夏威夷、馬格里布、西藏、阿拉伯、中東、智利、上海、波蘭、菲律賓、蘇丹、亞美尼亞、緬甸、巴西、斯堪的納維亞、保加利亞、心靈食物、哥倫比亞、猶太、比薩、西西里、有機、希臘、巴斯克、烏拉圭、咖啡廳、芬蘭、非洲、科西嘉、敘利亞、加勒比、東北、俄羅斯、燒烤、外帶、速食、澳大利亞、愛爾蘭、酒吧食品、火鍋、黎巴嫩、印度尼西亞、丹麥、普羅旺斯、鐵板燒、印度、模里西斯、西部大陸、秘魯、柬埔寨、小吃、瑞典、長壽飲食法、冰淇淋店、斯拉夫、土耳其、阿根廷、奧地利、異國情調、葡萄牙、盧森堡、摩洛哥、三明治、古巴、餐廳 |
 | RESTAURANT\_AREA | 餐廳區 |
 | REST\_AREA | 休息區、野餐場所 |
 | SCENIC\_PANORAMIC\_VIEW | 風景/全景、觀測點 |

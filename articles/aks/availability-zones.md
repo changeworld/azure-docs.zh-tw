@@ -1,32 +1,32 @@
 ---
-title: 在 Azure Kubernetes Service 中使用可用性區域（AKS）
-description: 瞭解如何建立可在 Azure Kubernetes Service （AKS）中的可用性區域間散發節點的叢集
+title: 使用 Azure Kubernetes Service (AKS) 中的可用性區域
+description: 了解如何建立在 Azure Kubernetes Service (AKS) 中的可用性區域之間散發節點的叢集
 services: container-service
 ms.custom: fasttrack-edit
 ms.topic: article
-ms.date: 06/24/2019
-ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.openlocfilehash: 35aaad31728f4a0cd73913ecf397d8123b3f909a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596805"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725091"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service （AKS）叢集
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
-Azure Kubernetes Service （AKS）叢集會將資源（例如節點和儲存體）分散到基礎 Azure 計算基礎結構的邏輯區段。 此部署模型可確保節點在單一 Azure 資料中心內跨不同的更新和容錯網域執行。 使用此預設行為部署的 AKS 叢集可提供高可用性，以防止硬體故障或預定的維護事件。
+Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區段間散發資源，例如節點和儲存體。 使用可用性區域時，此部署模型會確保在指定可用性區域中的節點實際獨立於另一個可用性區域中定義的節點。 若 AKS 叢集部署了多個可用性區域，且可用性區域的設定是針對整個叢集，就能達到更高一層的可用性，在硬體失敗或計劃性維護時提供防護。
 
-若要為您的應用程式提供更高的可用性層級，可以將 AKS 叢集分散到可用性區域。 這些區域是在指定區域中實體獨立的資料中心。 當叢集元件分散到多個區域時，您的 AKS 叢集就能夠容忍其中一個區域的失敗。 即使一個整個資料中心發生問題，您的應用程式和管理作業仍可繼續使用。
+可在叢集中定義節點集區，如此即使單一區域故障，指定節點集區內的節點仍能繼續運作。 如果您的應用程式已經過協調，能容忍節點子集發生故障，那麼即使單一資料中心發生實體故障，您的應用程式仍可繼續使用。
 
-本文說明如何建立 AKS 叢集，並將節點元件分散到多個可用性區域。
+本文說明如何建立 AKS 叢集，並跨多個可用性區域散發節點元件。
 
 ## <a name="before-you-begin"></a>開始之前
 
-您需要安裝並設定 Azure CLI 版本2.0.76 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您必須安裝並設定 Azure CLI 版本 2.0.76 或以後版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations-and-region-availability"></a>限制和區域可用性
 
-目前可使用下欄區域中的可用性區域來建立 AKS 叢集：
+目前可使用以下區域中的可用性區域來建立 AKS 叢集：
 
 * 美國中部
 * 美國東部 2
@@ -39,42 +39,38 @@ Azure Kubernetes Service （AKS）叢集會將資源（例如節點和儲存體�
 * 西歐
 * 美國西部 2
 
-當您使用「可用性區域」建立 AKS 叢集時，適用下列限制：
+使用可用性區域建立 AKS 叢集時，會受到以下限制：
 
-* 您只能在建立叢集時啟用可用性區域。
-* 建立叢集之後，即無法更新可用性區域設定。 您也無法將現有的非可用性區域叢集更新為使用可用性區域。
-* 建立 AKS 叢集之後，您就無法停用其可用性區域。
-* 選取的節點大小（VM SKU）必須可在所有可用性區域中使用。
-* 啟用可用性區域的叢集需要使用 Azure 標準負載平衡器，以在區域間散發。
-* 您必須使用 Kubernetes version 1.13.5 或更高版本，才能部署標準負載平衡器。
+* 建立叢集或節點集區時，您只能定義可用性區域。
+* 叢集建立之後，便無法更新可用性區域設定。 即使更新現有的非可用性區域叢集，也無法透過此方式使用可用性區域。
+* 所選的可用性區域必須均能使用所選的節點大小 (VM SKU)。
+* 若叢集具有已經啟用的可用性區域，則需要使用 Azure Standard Load Balancer 才能跨區域散發。 此負載平衡器類型只能在叢集建立時定義。 如需標準負載平衡器的詳細資訊和限制，請參閱 [Azure 負載平衡器標準 SKU 限制][standard-lb-limitations]。
 
-使用可用性區域的 AKS 叢集必須使用 Azure 負載平衡器*標準*SKU，這是負載平衡器類型的預設值。 此負載平衡器類型只能在叢集建立時定義。 如需標準負載平衡器的詳細資訊和限制，請參閱[Azure 負載平衡器標準 SKU 限制][standard-lb-limitations]。
+### <a name="azure-disks-limitations"></a>Azure 磁碟限制
 
-### <a name="azure-disks-limitations"></a>Azure 磁片限制
+使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁碟區無法跨區域連結，而且磁碟區共置的區域必須與裝載有目標 Pod 的指定節點相同。
 
-使用 Azure 受控磁片的磁片區目前不是區域性資源。 在不同區域中，從其原始區域重新排定的 pod 無法重新附加其先前的磁片。 建議您執行無狀態工作負載，而不需要持續性儲存區，但可能會遇到跨區域性問題。
+如果必須執行具狀態的工作負載，請使用 Pod 規格中的節點集區污點和容差，將 Pod 排程分類到與磁碟相同的區域中。 或者，使用以網路為基礎的儲存空間 (例如 Azure 檔案儲存體)，以在區域之間排程 Pod 時連結至 Pod。
 
-如果您必須執行可設定狀態的工作負載，請在 pod 規格中使用污點和容差，告訴 Kubernetes 排程器在與您的磁片相同的區域中建立 pod。 或者，使用以網路為基礎的存放裝置（例如 Azure 檔案儲存體），以在區域之間進行排程時連結至 pod。
+## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 叢集的可用性區域概觀
 
-## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 叢集的可用性區域總覽
+可用性區域是高可用性供應項目，可保護您的應用程式和資料不受資料中心故障影響。 區域是在 Azure 區域內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，所有啟用區域的地區中，都至少要有三個獨立的區域。 某個地區內可用性區域的實體區隔可保護應用程式和資料不受資料中心故障影響。
 
-可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 區域是 Azure 區域內的唯一實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，在所有已啟用的地區中都至少要有三個個別的區域。 某個地區內可用性區域的實體區隔可保護應用程式和資料不受資料中心故障影響。 區域冗余服務會跨可用性區域複寫您的應用程式和資料，以防止單一失敗點。
+如需詳細資訊，請參閱 [Azure 中的區域和可用性區域][az-overview]。
 
-如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？][az-overview]。
-
-使用可用性區域部署的 AKS 叢集可以在單一區域內的多個區域間散發節點。 例如， *美國東部 2* 區域中的叢集可以在*美國東部 2*的所有三個可用性區域中建立節點。 這種 AKS 叢集資源的散發可以改善叢集可用性，因為它們可以在特定區域失敗時復原。
+使用可用性區域部署的 AKS 叢集，可在單一地區內的多個區域間散發節點。 例如， **  美國東部 2 區域中的叢集，可以在美國東部 2 的所有三個可用性區域中建立節點。 AKS 叢集資源此種散發方式，可在特定區域故障時復原，而能改善叢集可用性。
 
 ![跨可用性區域的 AKS 節點散發](media/availability-zones/aks-availability-zones.png)
 
-在區域中斷時，可以手動或使用叢集自動調整程式來重新平衡節點。 如果單一區域變得無法使用，您的應用程式會繼續執行。
+如果叢集散佈在多個區域，當單一區域變得無法使用時，您的應用程式仍會繼續執行。
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>在可用性區域之間建立 AKS 叢集
 
-當您使用[az aks create][az-aks-create]命令建立叢集時， `--zones`參數會定義要部署到哪些區域的代理程式節點。 當您在叢集建立時定義`--zones`參數時，叢集的 AKS 控制平面元件也會分散到最高可用設定中的區域。
+當您使用 [az aks create][az-aks-create] 命令建立叢集時，會由 `--zones` 參數定義要在其中部署的區域代理程式節點。 如果在叢集建立階段定義 `--zones` 參數，則控制平面元件 (例如 etcd) 會在三個區域之間散佈。 控制平面元件散佈的特定區域，會獨立於初始節點集區專用的明確區域。
 
-如果您在建立 AKS 叢集時未定義預設代理程式組件區的任何區域，則叢集的 AKS 控制平面元件將不會使用可用性區域。 您可以使用[az aks nodepool add][az-aks-nodepool-add]命令來新增其他節點集區， `--zones`並為這些新節點指定，不過，控制平面元件會維持不使用可用性區域感知。 當節點集區或 AKS 控制平面元件部署完成之後，您就無法變更其區域感知。
+如果您在建立 AKS 叢集時，並未定義預設代理程式集區的任何區域，則不保證控制平面元件會在可用性區域之間散佈。 您可以使用 [az aks nodepool add][az-aks-nodepool-add] 命令來新增其他節點集區，並指定新節點的 `--zones`，但如此並不會變更控制平面在區域間散佈的方式。 僅限叢集或節點集區的建立階段，方能定義可用性區域設定。
 
-下列範例會在名為*myResourceGroup*的資源群組中建立名為*myAKSCluster*的 AKS 叢集。 總共建立*3*個節點-一個是區域*1*中的代理程式，一個在*2*，另一個是*3*。 AKS 控制平面元件也會在最高可用設定的區域間散發，因為它們是在叢集建立程式中定義的。
+下列範例會在名為 myResourceGroup 的資源群組中，建立名為 myAKSCluster 的 AKS 叢集。 總共會建立 3 個節點 - 區域 1、區域 2 和區域 3 各一個代理程式。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -91,23 +87,25 @@ az aks create \
 
 建立 AKS 叢集需要幾分鐘的時間。
 
-## <a name="verify-node-distribution-across-zones"></a>驗證跨區域的節點分佈
+在決定新節點應屬於哪個區域時，指定的 AKS 節點集區會使用[基礎 Azure 虛擬機器擴展集盡可能提供的最佳工作區域平衡][vmss-zone-balancing]。 對擴展集而言，如果每個區域的 VM 數目相同，或是與所有其他區域中的 VM 數目差異為 +\- 1 個，則會將指定 AKS 節點集區視為「平衡」。
 
-當叢集準備就緒時，請列出擴展集中的代理程式節點，以查看其部署所在的可用性區域。
+## <a name="verify-node-distribution-across-zones"></a>驗證跨區域的節點散發
 
-首先，使用[az AKS get-認證][az-aks-get-credentials]命令取得 AKS 叢集認證：
+當叢集準備就緒時，請列出擴展集中的代理程式節點，以查看部署節點的可用性區域。
+
+首先請使用 [az aks get-credentials][az-aks-get-credentials] 命令取得 AKS 叢集的認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下來，使用 [ [kubectl 描述][kubectl-describe]] 命令來列出叢集中的節點。 篩選*failure-domain.Beta.kubernetes.io/zone*值，如下列範例所示：
+接下來使用 [kubectl describe][kubectl-describe] 命令列出叢集中的節點。 篩選 *failure-domain.Beta.kubernetes.io/zone* 值，如以下範例所示：
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
 ```
 
-下列範例輸出顯示分散于指定區域和可用性區域的三個節點，例如第一個可用性區域的*eastus2-1*和第二個可用性區域的*eastus2-2* 。
+下列範例輸出顯示了跨指定區域和可用性區域散發的三個節點，例如第一個可用性區域的 *eastus2-1*，以及第二個可用性區域的 *eastus2-2*：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -118,13 +116,13 @@ Name:       aks-nodepool1-28993262-vmss000002
             failure-domain.beta.kubernetes.io/zone=eastus2-3
 ```
 
-當您將其他節點新增至代理程式組件區時，Azure 平臺會自動將基礎 Vm 分散到指定的可用性區域。
+當您將其他節點新增至代理程式集區時，Azure 平台會自動在指定的可用性區域之間散發基礎 VM。
 
-請注意，在較新的 Kubernetes 版本（1.17.0 或和更新版本）中，AKS `topology.kubernetes.io/zone`會使用較新的`failure-domain.beta.kubernetes.io/zone`標籤（除了已淘汰的）。
+請注意，在較新的 Kubernetes 版本 (1.17.0 和以後版本) 中，除了已淘汰的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 還會使用較新的標籤 `topology.kubernetes.io/zone`。
 
-## <a name="verify-pod-distribution-across-zones"></a>確認跨區域的 pod 散發
+## <a name="verify-pod-distribution-across-zones"></a>驗證跨區域的 Pod 散發
 
-如已知的[標籤、注釋和污點][kubectl-well_known_labels]中所述，Kubernetes 會`failure-domain.beta.kubernetes.io/zone`使用標籤，在不同的可用區域間自動散發複寫控制器或服務中的 pod。 若要進行測試，您可以從3個節點相應增加叢集，以確認正確的 pod 散佈：
+如[已知的標籤、註釋和污點][kubectl-well_known_labels] (英文) 一文中所述，Kubernetes 會使用 `failure-domain.beta.kubernetes.io/zone` 標籤自動將 Pod 散發至不同可用區域中的複寫控制器或服務。 若要進行測試，您可以將叢集從 3 個節點擴大為 5 個節點，以確認 Pod 散佈正確：
 
 ```azurecli-interactive
 az aks scale \
@@ -133,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-當調整作業在幾分鐘後完成後，命令`kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"`應該會提供類似下列範例的輸出：
+當調整作業在幾分鐘後完成後，命令 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` 應該會出現類似下列範例的輸出：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -148,13 +146,13 @@ Name:       aks-nodepool1-28993262-vmss000004
             failure-domain.beta.kubernetes.io/zone=eastus2-2
 ```
 
-如您所見，我們現在在區域1和2中有兩個額外的節點。 您可以部署由三個複本組成的應用程式。 我們將使用 NGINX，例如：
+現在於區域 1 和 2 中有兩個額外的節點。 您可以部署由三個複本組成的應用程式。 本文以 NGINX 為例：
 
 ```console
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-如果您確認 pod 執行所在的節點，您會看到 pod 在對應至三個不同可用性區域的 pod 上執行。 例如，使用命令`kubectl describe pod | grep -e "^Name:" -e "^Node:"`時，您會得到類似下面的輸出：
+檢視 Pod 執行所在的節點，即可發現 Pod 是在對應到三個不同可用性區域的節點上執行。 例如，使用命令 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 會得到類似如下的輸出：
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg
@@ -165,11 +163,11 @@ Name:         nginx-6db489d4b7-xz6wj
 Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 ```
 
-如您在先前的輸出中所見，第一個 pod 會在位於可用性區域`eastus2-1`的節點0上執行。 第二個 pod 在節點2上執行，其對應`eastus2-3`至，而節點4中的第三個`eastus2-2`則在中。 如果沒有任何額外的設定，Kubernetes 會在所有三個可用性區域中正確分配 pod。
+如您在先前的輸出中所見，第一個 Pod 是在節點 0上執行，此節點位於可用性區域 `eastus2-1`。 第二個 Pod 在節點 2 上執行，其對應至 `eastus2-3`，而第三個節點則是在 `eastus2-2` 中的節點 4。 如果沒有任何其他設定，Kubernetes 會在這三個可用性區域中之間正確散佈 Pod。
 
 ## <a name="next-steps"></a>後續步驟
 
-本文詳細說明如何建立使用可用性區域的 AKS 叢集。 如需高可用性叢集的詳細考慮，請參閱[AKS 中商務持續性和嚴重損壞修復的最佳做法][best-practices-bc-dr]。
+本文詳細說明了如何建立使用可用性區域的 AKS 叢集。 如需更多高可用性叢集的相關考量事項，請參閱[因應 AKS 中商務持續性和災害復原的最佳做法][best-practices-bc-dr]。
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
@@ -186,6 +184,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
