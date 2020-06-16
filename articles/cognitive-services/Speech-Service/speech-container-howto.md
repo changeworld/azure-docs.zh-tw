@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1d4fde8dd21911b70d5a1c0f3b23304a3468a2a6
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: b76690cfbe0eb4851bdd1e4316235a7a9092c86e
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816228"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781203"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
@@ -24,9 +24,9 @@ ms.locfileid: "83816228"
 語音容器可讓客戶建立已針對健全的雲端功能和邊緣位置優化的語音應用程式架構。 有四個不同的容器可供使用。 這兩個標準容器是**語音轉換文字**和**文字轉換語音**。 這兩個自訂容器是**自訂的語音轉換文字**和**自訂文字轉換語音**。 語音容器與雲端式 Azure 語音服務具有相同的[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
-> 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
+> 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
 
-| 函式 | 功能 | 最新 |
+| 函式 | 功能 | Latest |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和可將連續即時語音或批次音訊錄製。  | 2.2.0 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.2.0 |

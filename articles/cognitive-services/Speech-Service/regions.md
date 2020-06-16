@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221415"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782529"
 ---
 # <a name="speech-service-supported-regions"></a>語音服務支援的區域
 
@@ -38,7 +38,7 @@ ms.locfileid: "79221415"
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-如果您使用[語音 SDK](speech-sdk.md)，區域會由**區域識別碼**指定（例如，做為的參數`SpeechConfig.FromSubscription`）。 請確定該區域符合您訂用帳戶的區域。
+如果您使用[語音 SDK](speech-sdk.md)，區域會由**區域識別碼**指定（例如，做為的參數 `SpeechConfig.FromSubscription` ）。 請確定該區域符合您訂用帳戶的區域。
 
 ### <a name="intent-recognition"></a>意圖辨識
 
@@ -46,9 +46,9 @@ ms.locfileid: "79221415"
 
 | 全球區域 | 區域           | 區域識別碼 |
 | ------------- | ---------------- | -------------------- |
-| Asia          | 東亞        | `eastasia`           |
+| 亞洲          | 東亞        | `eastasia`           |
 | Asia          | 東南亞   | `southeastasia`      |
-| 澳大利亞     | 澳大利亞東部   | `australiaeast`      |
+| 澳洲     | 澳大利亞東部   | `australiaeast`      |
 | 歐洲        | 北歐     | `northeurope`        |
 | 歐洲        | 西歐      | `westeurope`         |
 | 北美洲 | 美國東部          | `eastus`             |
@@ -75,6 +75,10 @@ ms.locfileid: "79221415"
 | 北歐   | `northeurope`        |
 | 東南亞 | `southeastasia`      |
 
+### <a name="speaker-recognition"></a>說話者辨識
+
+說話者辨識目前僅適用于該 `westus` 區域。
+
 ## <a name="rest-apis"></a>REST API
 
 語音服務也會針對語音轉換文字與文字轉換語音要求公開 REST 端點。
@@ -89,7 +93,7 @@ REST API 的端點具有下列格式：
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-取代`<REGION_IDENTIFIER>`為符合此資料表中訂用帳戶區域的識別碼：
+取代 `<REGION_IDENTIFIER>` 為符合此資料表中訂用帳戶區域的識別碼：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 

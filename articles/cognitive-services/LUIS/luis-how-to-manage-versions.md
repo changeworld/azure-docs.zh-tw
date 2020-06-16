@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b8ed60a1f8ddc98857b0f59aaefb141b3dab64f4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344861"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782835"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本進行編輯和測試而不影響預備或生產應用程式
 
@@ -67,5 +67,5 @@ ms.locfileid: "84344861"
 
 * 若要**刪除**版本，請從清單中選取版本，然後從工具列中選取 [刪除]****。 選取 **[確定]**。
 * 若要**重新命名**版本，請從清單中選取版本，然後從工具列中選取 [重新命名]****。 輸入新的名稱，然後選取 [完成]****。
-* 若要**匯出**版本，請從清單中選取版本，然後從工具列中選取 [匯出應用程式]****。 選擇 [JSON] 匯出以進行備份，選擇 [**匯出容器**] 以[在 LUIS 容器中使用此應用程式](luis-container-howto.md)。
+* 若要**匯出**版本，請從清單中選取版本，然後從工具列中選取 [匯出應用程式]****。 選擇要匯出以進行備份的 JSON 或 LU，或在原始檔控制中儲存，選擇 [**匯出容器**] 以[在 LUIS 容器中使用此應用程式](luis-container-howto.md)。
 
