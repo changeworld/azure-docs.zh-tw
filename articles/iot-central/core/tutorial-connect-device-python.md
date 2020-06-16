@@ -7,12 +7,13 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: tracking-python
+ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758176"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607205"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Python)
 
@@ -20,7 +21,7 @@ ms.locfileid: "81758176"
 
 *本文適用於解決方案建置人員和裝置開發人員。*
 
-本教學課程說明如何以裝置開發人員身分，將 Python 用戶端應用程式與您的 Azure IoT Central 應用程式連線。 Python 應用程式會模擬環境感應器裝置的行為。 您可使用範例「裝置功能模型」  ，在 IoT Central 中建立「裝置範本」  。 您可將檢視新增至裝置範本，讓操作員能與裝置互動。
+本教學課程說明如何以裝置開發人員身分，將 Python 用戶端應用程式與您的 Azure IoT Central 應用程式連線。 Python 應用程式會模擬環境感應器裝置的行為。 您可使用範例「裝置功能模型」，在 IoT Central 中建立「裝置範本」。 您可將檢視新增至裝置範本，讓操作員能與裝置互動。
 
 在本教學課程中，您會了解如何：
 
@@ -33,11 +34,11 @@ ms.locfileid: "81758176"
 > * 使用檢視管理裝置屬性。
 > * 呼叫同步和非同步命令以控制裝置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
-* 使用 [自訂應用程式]  範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
+* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
 * 已安裝 [Python](https://www.python.org/) 3.7 版或更新版本的開發電腦。 您可以在命令列執行 `python3 --version` 來檢查版本。 Python 適用於多種作業系統。 本教學課程中的指示假設您是在 Windows 命令提示字元中執行 **python3** 命令。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -241,7 +242,7 @@ ms.locfileid: "81758176"
             )
     ```
 
-    當操作員在 IoT Central 應用程式中設定可寫入屬性時，應用程式會使用裝置對應項所需的屬性，將值傳送至裝置。 裝置接著會使用裝置對應項報告屬性來回應。 當 IoT Central 收到報告屬性值時，其會以 [已同步]  狀態更新屬性檢視。
+    當操作員在 IoT Central 應用程式中設定可寫入屬性時，應用程式會使用裝置對應項所需的屬性，將值傳送至裝置。 裝置接著會使用裝置對應項報告屬性來回應。 當 IoT Central 收到報告屬性值時，其會以 [已同步] 狀態更新屬性檢視。
 
     屬性的名稱 (`name` 和 `brightness`) 必須符合裝置範本中使用的名稱。
 
@@ -307,8 +308,9 @@ python3 environmental_sensor.py
 
 身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
 
-- 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
-- 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
+* 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
+* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
+* 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
 
 如果您想要繼續進行這套 IoT Central 教學課程並深入了解如何建置 IoT Central 解決方案，請參閱：
 

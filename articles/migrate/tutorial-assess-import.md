@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114559"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342641"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -48,9 +48,9 @@ ms.locfileid: "82114559"
 
 您的 Azure 帳戶必須有建立 Azure Migrate 專案的權限。
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]  。
-2. 在 [檢查存取權]  中，找出相關的帳戶並加以選取，以檢視權限。
-3. 確定您具有「參與者」  或「擁有者」  權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，找出相關的帳戶並加以選取，以檢視權限。
+3. 確定您具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -58,29 +58,29 @@ ms.locfileid: "82114559"
 
 若要設定新的 Azure Migrate 專案：
 
-1. 在 Azure 入口網站的 [所有服務]  中，搜尋 **Azure Migrate**。
-2. 在 [服務]  下，選取 [Azure Migrate]  。
-3. 在 [概觀]  的 [探索、評估和遷移伺服器]  底下，選取 [評估和遷移伺服器]  。
+1. 在 Azure 入口網站的 [所有服務] 中，搜尋 **Azure Migrate**。
+2. 在 [服務] 下，選取 [Azure Migrate]。
+3. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，選取 [評估和遷移伺服器]。
 
     ![探索和評估伺服器](./media/tutorial-assess-import/assess-migrate.png)
 
-4. 在 [開始使用]  中，選取 [新增工具]  。
-5. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 其他資訊：
+4. 在 [開始使用] 中，選取 [新增工具]。
+5. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
+6. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的地理位置。 其他資訊：
 
     - 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
     - 當您執行移轉時，可以選取任何目的地區域。
 
     ![建立 Azure Migrate 專案](./media/tutorial-assess-import/migrate-project.png)
 
-7. 選取 [下一步]  。
-8. 在 [選取評量工具]  中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]  。
+7. 選取 [下一步] 。
+8. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
 
     ![建立 Azure Migrate 評量](./media/tutorial-assess-import/assessment-tool.png)
 
-9. 在 [選取移轉工具]  中，選取 [暫時跳過新增移轉工具]   > [下一步]  。
-10. 在 [檢閱 + 新增工具]  中檢閱設定，然後選取 [新增工具]  。
-11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您隨後會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
+9. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
+10. 在 [檢閱 + 新增工具] 中檢閱設定，然後選取 [新增工具]。
+11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您隨後會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
 
 ## <a name="prepare-the-csv"></a>準備 CSV
 
@@ -88,9 +88,9 @@ ms.locfileid: "82114559"
 
 ### <a name="download-the-template"></a>下載範本
 
-1. 在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]  。
-2. 在 [探索機器]  中，選取 [使用 CSV 匯入]  。
-3. 選取 [下載]  以下載 CSV 範本。 或者，您也可以[直接下載](https://go.microsoft.com/fwlink/?linkid=2109031)。
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
+2. 在 [探索機器] 中，選取 [使用 CSV 匯入]。
+3. 選取 [下載] 以下載 CSV 範本。 或者，您也可以[直接下載](https://go.microsoft.com/fwlink/?linkid=2109031)。
 
     ![下載 CSV 範本](./media/tutorial-assess-import/download-template.png)
 
@@ -111,6 +111,7 @@ ms.locfileid: "82114559"
 **記憶體** | 是 | 配置給伺服器的 RAM 總計 (以 MB 為單位)。
 **作業系統名稱** | 是 | 伺服器作業系統。 <br/> 評估會識別符合或包含[此](#supported-operating-system-names)清單中之名稱的作業系統名稱。
 **作業系統版本** | 否 | 伺服器作業系統版本。
+**OS 架構** | 否 | 伺服器 OS 架構 <br/> 有效值為：x64、x86、amd64、32 位元或 64 位元
 **磁碟數量** | 否 | 如果提供了個別磁碟詳細資料，則不需要。
 **磁碟 1 大小**  | 否 | 磁碟的大小上限 (以 GB 為單位)。<br/>您可以藉由在範本中[新增資料行](#add-multiple-disks)，來新增更多磁碟的詳細資料。 您最多可以新增八個磁碟。
 **磁碟 1 讀取作業數** | 否 | 每秒的磁碟讀取作業數。
@@ -150,29 +151,29 @@ ms.locfileid: "82114559"
 
 將資訊新增至 CSV 範本之後，請將伺服器匯入伺服器評量中。
 
-1. 在 Azure Migrate 的 [探索機器]  中，移至已完成的範本。
-2. 選取 [匯入]  。
+1. 在 Azure Migrate 的 [探索機器] 中，移至已完成的範本。
+2. 選取 [匯入]。
 3. 匯入狀態隨即顯示。
     - 如果狀態中出現警告，您可以修正相關狀況，或繼續作業而不加以處理。
     - 若要提升評量的正確性，請依照警告中的建議改善伺服器資訊。
-    - 若要檢視並修正警告，請選取 [下載警告詳細資料 .CSV]  。 這項作業會下載包含警告的 CSV。 請檢閱警告，並視需要修正問題。
-    - 如果狀態中出現錯誤 (匯入狀態為「失敗」  )，您必須先修正這些錯誤，才能繼續匯入：
+    - 若要檢視並修正警告，請選取 [下載警告詳細資料 .CSV]。 這項作業會下載包含警告的 CSV。 請檢閱警告，並視需要修正問題。
+    - 如果狀態中出現錯誤 (匯入狀態為「失敗」)，您必須先修正這些錯誤，才能繼續匯入：
         1. 下載現在包含錯誤詳細資料的 CSV。
         1. 檢閱錯誤並視需要加以解決。 
         1. 重新上傳修改過的檔案。
-4. 當匯入狀態「完成」  時，表示伺服器資訊已匯入。
+4. 當匯入狀態「完成」時，表示伺服器資訊已匯入。
 
 ## <a name="update-server-information"></a>更新伺服器資訊
 
-您可以使用相同的**伺服器名稱**再次匯入伺服器的資料，以更新伺服器資訊。 您無法修改 [伺服器名稱]  欄位。 目前不支援刪除伺服器。
+您可以使用相同的**伺服器名稱**再次匯入伺服器的資料，以更新伺服器資訊。 您無法修改 [伺服器名稱] 欄位。 目前不支援刪除伺服器。
 
 ## <a name="verify-servers-in-the-portal"></a>在入口網站中驗證伺服器
 
 探索完成後，若要驗證伺服器是否出現在 Azure 入口網站中：
 
 1. 開啟 Azure Migrate 儀表板。
-2. 在 [Azure Migrate - 伺服器]   >  **[Azure Migrate：伺服器評量]** 頁面上，選取顯示 [探索到的伺服器]  計數的圖示。
-3. 選取 [以匯入為基礎]  索引標籤。
+2. 在 [Azure Migrate - 伺服器] >  **[Azure Migrate：伺服器評量]** 頁面上，選取顯示 [探索到的伺服器] 計數的圖示。
+3. 選取 [以匯入為基礎] 索引標籤。
 
 ## <a name="set-up-and-run-an-assessment"></a>設定並執行評量
 
@@ -186,24 +187,24 @@ ms.locfileid: "82114559"
 若要執行評量：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-2. 在 [伺服器]  索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]  。
+2. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]。
 
     ![評定](./media/tutorial-assess-physical/assess.png)
 
-3. 在 [評估伺服器]  中，指定評估的名稱。
-4. 在 [探索來源]  中，選取 [透過匯入至 Azure Migrate 新增的機器]  。
-5. 選取 [檢視全部]  以檢閱評量屬性。
+3. 在 [評估伺服器] 中，指定評估的名稱。
+4. 在 [探索來源] 中，選取 [透過匯入至 Azure Migrate 新增的機器]。
+5. 選取 [檢視全部] 以檢閱評量屬性。
 
     ![評量屬性](./media/tutorial-assess-physical/view-all.png)
 
-6. 在 [選取或建立群組]  中，選取 [新建]  ，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
-7. 在 [將電腦新增至群組]  中，選取要新增至群組的伺服器。
-8. 選取 [建立評量]  以建立群組，然後執行評量。
+6. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+7. 在 [將電腦新增至群組] 中，選取要新增至群組的伺服器。
+8. 選取 [建立評量] 以建立群組，然後執行評量。
 
     ![建立評估](./media/tutorial-assess-physical/assessment-create.png)
 
-9. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]**  > [評量]  中加以檢視。
-10. 選取 [匯出評量]  ，將其下載為 Microsoft Excel 檔案。
+9. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+10. 選取 [匯出評量]，將其下載為 Microsoft Excel 檔案。
 
 ## <a name="review-an-assessment"></a>檢閱評量
 
@@ -215,21 +216,21 @@ ms.locfileid: "82114559"
 
 ### <a name="view-an-assessment"></a>檢視評估
 
-1. 在 [移轉目標]   > [伺服器]  中，選取 [Azure Migrate：伺服器評估]  中的 [評估]  。
-2. 在 [評估]  中，選取評估來加以開啟。
+1. 在 [移轉目標] > [伺服器] 中，選取 [Azure Migrate：伺服器評估] 中的 [評估]。
+2. 在 [評估] 中，選取評估來加以開啟。
 
     ![評量摘要](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
-1. 在 [Azure 移轉整備程度]  中，確認伺服器是否已準備好移轉至 Azure。
+1. 在 [Azure 移轉整備程度] 中，確認伺服器是否已準備好移轉至 Azure。
 2. 檢閱狀態：
     - **可供 Azure 使用**：Azure Migrate 會針對評估中的 VM 建議 VM大小和成本估計值。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：Azure Migrate 因資料可用性問題而無法評估整備程度。
 
-3. 選取 [Azure 移轉整備程度]  狀態。 您可以檢視伺服器的整備程度詳細資料，並向下切入以查看伺服器詳細資料，包括計算、儲存體與網路設定。
+3. 選取 [Azure 移轉整備程度] 狀態。 您可以檢視伺服器的整備程度詳細資料，並向下切入以查看伺服器詳細資料，包括計算、儲存體與網路設定。
 
 ### <a name="review-cost-details"></a>檢閱成本詳細資料
 

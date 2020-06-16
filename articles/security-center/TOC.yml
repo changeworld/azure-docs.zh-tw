@@ -198,8 +198,6 @@
       href: security-center-features-retirement-july2019.md
     - name: 端點保護評量和建議
       href: security-center-endpoint-protection.md
-    - name: 安全分數 (舊版)
-      href: security-center-secure-score.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

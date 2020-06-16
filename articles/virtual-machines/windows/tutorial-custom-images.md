@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791573"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636388"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 Windows VM 映像
 
@@ -33,7 +33,7 @@ ms.locfileid: "82791573"
 
 下列步驟將詳細說明如何將現有 VM 轉換成可重複使用的自訂映像，以便讓您用來建立新的 VM。
 
-若要完成本教學課程中的範例，您目前必須具有虛擬機器。 如有需要，您可以查看 [ 快速入門](quick-create-powershell.md)來建立要用於本教學課程的 VM。 逐步完成教學課程之後，請視需要取代資源名稱。
+若要完成本教學課程中的範例，您目前必須具有虛擬機器。 如有需要，您可以查看 [PowerShell 快速入門](quick-create-powershell.md)來建立要用於本教學課程的 VM。 逐步完成教學課程之後，請視需要取代資源名稱。
 
 ## <a name="overview"></a>概觀
 
@@ -50,11 +50,11 @@ ms.locfileid: "82791573"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="get-the-vm"></a>取得 VM
 
-您可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 來查看資源群組中的可用 VM 清單。 當您知道 VM 名稱和資源群組之後，您可以再次使用 `Get-AzVM` 來取得該 VM 物件，並將其儲存在變數中以供日後使用。 此範例會從 "myResourceGroup" 資源群組取得名為 sourceVM  的VM，然後將其指派至 $vm  變數。 
+您可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 來查看資源群組中的可用 VM 清單。 當您知道 VM 名稱和資源群組之後，您可以再次使用 `Get-AzVM` 來取得該 VM 物件，並將其儲存在變數中以供日後使用。 此範例會從 "myResourceGroup" 資源群組取得名為 sourceVM 的 VM，然後將其指派至 $vm 變數。 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -66,7 +66,7 @@ $sourceVM = Get-AzVM `
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
 
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 在下列範例中，名為 myGalleryRG  的資源群組會建立在 EastUS  區域中：
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 在下列範例中，名為 myGalleryRG 的資源群組會建立在 EastUS 區域中：
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -93,7 +93,7 @@ $gallery = New-AzGallery `
 
 映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，資源庫映像會命名為 myGalleryImage  ，並為特製化映像而建立。 
+使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，資源庫映像會命名為 myGalleryImage，並為特製化映像而建立。 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -115,7 +115,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，映像版本為 1.0.0  ，並且會複寫到「美國東部」  和「美國中南部」  資料中心。 選擇要複寫的目的地區域時，您必須包含作為複寫目標的「來源」  區域。
+在此範例中，映像版本為 1.0.0，並且會複寫到「美國東部」和「美國中南部」資料中心。 選擇要複寫的目的地區域時，您必須包含作為複寫目標的「來源」區域。
 
 若要從 VM 建立映像版本，請使用 `$vm.Id.ToString()` 作為 `-Source`。
 
@@ -140,7 +140,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="create-a-vm"></a>建立 VM 
 
-當您擁有特製化映像之後，您就可以建立一個或多個新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 若要使用映像，請使用 ``Set-AzVMSourceImage``，並將 -Id 設為映像定義識別碼 (在此案例中為 $galleryImage.Id)，以一律使用最新的映像版本。 
+當您擁有特製化映像之後，您就可以建立一個或多個新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 若要使用映像，請使用 `Set-AzVMSourceImage`，並將 `-Id` 設為映像定義識別碼 (在此案例中為 $galleryImage.Id)，以永遠使用最新的映像版本。 
 
 視需要取代此範例中的資源名稱。 
 
