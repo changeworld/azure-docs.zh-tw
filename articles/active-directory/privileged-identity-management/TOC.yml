@@ -107,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: 完成存取權檢閱
               href: pim-resource-roles-complete-access-review.md
+- name: 參考
+  items:
+    - name: 圖形 API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: Azure AD PowerShell for Graph
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Azure AD 服務限制
+      href: ../users-groups-roles/directory-service-limits-restrictions.md
