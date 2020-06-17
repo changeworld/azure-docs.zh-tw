@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267234"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907375"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式讀取器 SDK 參考指南
 
@@ -41,14 +41,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | ---- | ---- |------------ |
 | `token` | 字串 | Azure AD 驗證 token。 |
 | `subdomain` | 字串 | Azure 中您的沉浸式讀取器資源的自訂子域。 |
 | `content` | [內容](#content) | 物件，包含要在沉浸式讀取器中顯示的內容。 |
 | `options` | [選項](#options) | 設定沉浸式讀取器特定行為的選項。 選擇性。 |
 
-### <a name="returns"></a>傳回值
+### <a name="returns"></a>傳回
 
 傳回 `Promise<LaunchResponse>` ，它會在載入沉浸式讀取器時解析。 會 `Promise` 解析為 [`LaunchResponse`](#launchresponse) 物件。
 
@@ -80,13 +80,13 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>參數
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 設定 renderButtons 函數之特定行為的選項。 選擇性。 |
 
 ## <a name="types"></a>類型
 
-### <a name="content"></a>內容
+### <a name="content"></a>Content
 
 包含要顯示在沉浸式讀取器中的內容。
 
@@ -111,7 +111,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-包含呼叫的回應 `ImmersiveReader.launchAsync` 。
+包含呼叫的回應 `ImmersiveReader.launchAsync` 。 請注意，您可以透過 `iframe` 存取包含沉浸式讀取器的參考 `container.firstChild` 。
 
 ```typescript
 {
@@ -130,12 +130,12 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>支援的 MIME 類型
 
-| MIME 類型 | 說明 |
+| MIME 類型 | 描述 |
 | --------- | ----------- |
 | text/plain | 純文字。 |
 | text/html | HTML 內容。 [深入了解](#html-support)|
 | application/mathml + xml | 數學標記語言（MathML）。 [深入了解](./how-to/display-math.md)。
-| 應用程式/application. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml 檔 | Microsoft Word .docx 格式檔。
+| 應用程式/vnd.openxmlformats-officedocument.wordprocessingml.document able | Microsoft Word .docx 格式檔。
 
 ### <a name="html-support"></a>HTML 支援
 
@@ -188,7 +188,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="error-codes"></a>錯誤碼
 
-| 程式碼 | 說明 |
+| 程式碼 | 描述 |
 | ---- | ----------- |
 | BadArgument | 提供的引數無效 `message` 。如需詳細資料，請參閱。 |
 | 逾時 | 沉浸式讀取器無法在指定的超時時間內載入。 |

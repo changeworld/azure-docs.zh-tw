@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718439"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888309"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -186,7 +186,7 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 | Language    | 語言代碼 | 指令碼 | 去/從 | 指令碼|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
-|孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
+| 孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
 | 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
 | 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
@@ -198,7 +198,7 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 | 坎那達文 | `kn` | 坎那達文 `Knda` | --> | 拉丁文 `Latn` |
 | 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | --> | 拉丁文 `Latn` |
 | 馬拉地文 | `mr` | 梵文字母 `Deva` | --> | 拉丁文 `Latn` |
-| 歐利亞文 | `or` | 歐利亞文 `Orya` | <--> | 拉丁文 `Latn` |
+| 歐迪亞文 | `or` | 歐利亞文 `Orya` | <--> | 拉丁文 `Latn` |
 | 旁遮普文 | `pa` | 古木基文 `Guru`  | <--> | 拉丁文 `Latn`  |
 | 塞爾維亞文 (斯拉夫) | `sr-Cyrl` | 斯拉夫文 `Cyrl`  | --> | 拉丁文 `Latn` |
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|

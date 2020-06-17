@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637564"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902707"
 ---
 > [!NOTE]
 > 若要偵測 `PHI` ，請使用 `domain=phi` 參數和模型版本 `2020-04-01` 或更新版本。
 >
-> 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
  
 將要求傳送至端點時，會傳回下列實體類別 `/v3.1-preview.1/entities/recognition/pii` 。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84637564"
 | Datetime | Date | 行事曆日期。 | `2019-10-01` | 也會隨一起傳回 `domain=phi` 。 |
 | 數量 | N/A | 數位和數值數量。 | `2019-10-01` |  |
 | 數量 | Age | 年齡. | `2019-10-01` | | |
-| 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第九個修訂。   | `2020-04-01` | |
+| 疾病的國際分類（ICD-9-CM） | N/A | 與疾病的國際分類相關的實體，第九個修訂。   | `2020-04-01` | |
 | 疾病的國際分類（ICD-10-CM） | N/A | 與疾病的國際分類相關的實體，第十個修訂。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure 資訊
