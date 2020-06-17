@@ -8,18 +8,19 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 61cda5e61d14c4eeaf2d88483603707598b1c911
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d674531a736e3d8f63f9d740758be8447df7d495
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202215"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343416"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>教學課程：使用 Azure PowerShell 建立 NAT 閘道並測試 NAT 服務
 
@@ -37,7 +38,7 @@ ms.locfileid: "79202215"
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT  的資源群組：
+下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT 的資源群組：
 
 
 ```azurepowershell-interactive
@@ -460,13 +461,13 @@ go get -u github.com/rakyll/hey
 
 登入來源 VM 時，您可以使用 **curl** 和 **hey** 來產生目的地 IP 位址的要求。
 
-使用 curl 來擷取 100 KB 的檔案。  以您先前複製的目的地 IP 位址取代下列範例中的 **\<ip-address-destination>** 。  **--output** 參數表示將會捨棄擷取的檔案。
+使用 curl 來擷取 100 KB 的檔案。  將下列範例中的 **\<ip-address-destination>** 取代為您先前複製的目的地 IP 位址。  **--output** 參數表示將會捨棄擷取的檔案。
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-您也可以使用 **hey** 來產生一系列的要求。 同樣地，使用您先前複製的目的地 IP 位址來取代 **\<ip-address-destination>** 。
+您也可以使用 **hey** 來產生一系列的要求。 再次將 **\<ip-address-destination>** 取代為您先前複製的目的地 IP 位址。
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k

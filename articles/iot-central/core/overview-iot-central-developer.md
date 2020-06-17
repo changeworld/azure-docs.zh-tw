@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665789"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417016"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central 裝置開發總覽
 
@@ -85,7 +85,9 @@ Azure IoT Central 會使用 [Azure IoT 中樞裝置佈建服務 (DPS)](../../iot
 - 將裝置與 IoT Central 之間的屬性值進行同步。 裝置範本會指定屬性名稱和資料類型，讓 IoT Central 可以顯示資訊。
 - 針對裝置範本中指定的命令實作命令處理常式。 裝置範本會指定裝置應使用的命令名稱和參數。
 
-如需詳細資訊，請參閱[建立及連線 Node.js 用戶端應用程式](./tutorial-connect-device-nodejs.md)或[建立及連線 Python 用戶端應用程式](./tutorial-connect-device-python.md)。
+如需裝置範本角色的詳細資訊，請參閱 [什麼是裝置範本？](./concepts-device-templates.md)。
+
+如需範例程式碼，請參閱 [建立及連線 Node.js 用戶端應用程式](./tutorial-connect-device-nodejs.md) 或 [建立和連線 Python 用戶端應用程式](./tutorial-connect-device-python.md)。
 
 ### <a name="languages-and-sdks"></a>語言和 SDK
 

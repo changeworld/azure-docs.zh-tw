@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 840c0157713e9758092ca5cc51ee2745428ae568
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169843"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483531"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -43,7 +43,7 @@ ms.locfileid: "84169843"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要註冊您的應用程式，
 > 1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs)窗格。
-> 1. 輸入應用程式的名稱，並選取 [註冊]  。
+> 1. 輸入應用程式的名稱，並選取 [註冊]。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
@@ -52,12 +52,12 @@ ms.locfileid: "84169843"
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://aka.ms/MobileAppReg)頁面。
-> 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
->      - 在 [名稱]  區段中，輸入當應用程式的使用者登入或同意使用您的應用程式時，將向使用者顯示且有意義的應用程式名稱。
+> 1. 選取 [新增註冊]。
+> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+>      - 在 [名稱] 區段中，輸入當應用程式的使用者登入或同意使用您的應用程式時，將向使用者顯示且有意義的應用程式名稱。
 >      - 略過此頁面上的其他設定。
 >      - 選取 `Register`。
-> 1. 在 [管理]  區段中，選取 `Authentication` > `Add Platform` > `iOS`。
+> 1. 在 [管理] 區段中，選取 `Authentication` > `Add Platform` > `iOS`。
 >      - 為您的應用程式輸入***套件組合識別碼***。 套件組合識別碼只是可唯一識別應用程式的唯一字串，例如 `com.<yourname>.identitysample.MSALMacOS`。 記下您所使用的值。
 >      - 請注意，iOS 組態也適用於 macOS 應用程式。
 > 1. 選取 `Configure` 並儲存 [MSAL 組態] 詳細資料，以供稍後在本快速入門中使用。
@@ -70,56 +70,32 @@ ms.locfileid: "84169843"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-ios/green-check.png) 您的應用程式已設定了這些屬性
-
-#### <a name="step-2-download-the-sample-project"></a>步驟 2:下載範例專案
-
-- [下載 iOS 的程式碼範例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [下載 macOS 的程式碼範例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>步驟 2:下載範例專案
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [下載 iOS 的程式碼範例]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [下載 macOS 的程式碼範例]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>步驟 2:下載範例專案
+> 
+> - [下載 iOS 的程式碼範例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [下載 macOS 的程式碼範例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>步驟 3：安裝相依性
 
 在終端視窗中，瀏覽至包含所下載程式碼範例的資料夾，然後執行 `pod install` 來安裝最新的 MSAL 程式庫。
 
-#### <a name="step-4-configure-your-project"></a>步驟 4：設定您的專案
-
-> [!div renderon="docs"]
-> 如果您已選取上面的選項 1，則可以略過這些步驟。
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. 將 ZIP 檔案解壓縮並在 XCode 中開啟專案。
-> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kClientID' 的那一行。 請記得使用您在本快速入門中稍早於入口網站註冊應用程式時所儲存的用戶端識別碼來更新 `kClientID` 的值：
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kAuthority' 的那一行：
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kGraphEndpoint' 的那一行：
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. 開啟專案設定。 在 [身分識別]  區段中，輸入您在入口網站中輸入的 [套件組合識別碼]  。
-> 1. (僅限於 iOS) 以滑鼠右鍵按一下 **Info.plist**，然後選取 [開啟為]   > [原始程式碼]  。
-> 1. (僅限於 iOS) 在 dict 根節點下，使用您在入口網站中輸入的 [套件組合識別碼] 取代 `CFBundleURLSchemes`。
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. 建置並執行應用程式！
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>步驟 4：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。
+> >  [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
->
+>#### <a name="step-4-configure-your-project"></a>步驟 4：設定您的專案
+> 如果您已選取上面的選項 1，則可以略過這些步驟。
 > 1. 將 ZIP 檔案解壓縮並在 XCode 中開啟專案。
 > 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kClientID' 的那一行。 請記得使用您在本快速入門中稍早於入口網站註冊應用程式時所儲存的用戶端識別碼來更新 `kClientID` 的值：
 >    ```swift
@@ -135,9 +111,9 @@ ms.locfileid: "84169843"
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
-> 1. 開啟專案設定。 在 [身分識別]  區段中，輸入您在入口網站中輸入的 [套件組合識別碼]  。
-> 1. (僅限於 iOS) 以滑鼠右鍵按一下 **Info.plist**，然後選取 [開啟為]   > [原始程式碼]  。
-> 1. (僅限於 iOS) 在 dict 根節點下，使用您在入口網站中使用的 [套件組合識別碼] 取代 `Enter_the_bundle_Id_Here`。
+> 1. 開啟專案設定。 在 [身分識別] 區段中，輸入您在入口網站中輸入的 [套件組合識別碼]。
+> 1. 以滑鼠右鍵按一下 [Info.plist]，然後選取 [開啟為] > [原始程式碼]。
+> 1. 在 dict 根節點下，使用您在入口網站中使用的 [套件組合識別碼] 取代 `Enter_the_bundle_Id_Here`。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

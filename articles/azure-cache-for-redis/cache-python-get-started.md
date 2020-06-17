@@ -9,19 +9,20 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
+- tracking-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 120708cc72117495e6200f41f13422e94a58c265
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010846"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556473"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入門：建立可使用 Azure Cache for Redis 的 Python 應用程式
 
 在本文中，您會將 Azure Cache for Redis 納入 Python 應用程式中，以便存取可從 Azure 內任何應用程式存取的安全、專用快取。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Python 2 或3](https://www.python.org/downloads/)
@@ -41,7 +42,7 @@ ms.locfileid: "81010846"
 
 ## <a name="read-and-write-to-the-cache"></a>讀取和寫入快取
 
-從命令列中執行 Python，然後使用下列程式碼來測試您的快取。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱格式為 *\<DNS name>.redis.cache.windows.net*。
+從命令列中執行 Python，然後使用下列程式碼來測試您的快取。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net*。
 
 ```python
 >>> import redis
@@ -58,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>建立 Python 範例應用程式
 
-建立新的文字檔、新增下列指令碼，然後將檔案儲存為 *PythonApplication1.py*。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱格式為 *\<DNS name>.redis.cache.windows.net*。
+建立新的文字檔、新增下列指令碼，然後將檔案儲存為 *PythonApplication1.py*。 將 `<Your Host Name>` 和 `<Your Access Key>` 取代為您 Azure Cache for Redis 執行個體的值。 您的主機名稱的格式 *\<DNS name>.redis.cache.windows.net*。
 
 ```python
 import redis
@@ -93,14 +94,14 @@ for c in result:
 如果您已完成此快速入門中所建立的 Azure 資源群組和資源，則您可刪除它們以避免衍生費用。
 
 > [!IMPORTANT]
-> 刪除資源群組是無法回復的動作，而資源群組及其中的所有資源都會永久刪除。 如果您在想要保留的現有資源群組中建立了 Azure Cache for Redis 執行個體，您可從快取的 [概觀]  頁面中選取 [刪除]  ，只刪除快取。 
+> 刪除資源群組是無法回復的動作，而資源群組及其中的所有資源都會永久刪除。 如果您在想要保留的現有資源群組中建立了 Azure Cache for Redis 執行個體，您可從快取的 [概觀] 頁面中選取 [刪除]，只刪除快取。 
 
 刪除資源群組及其 Azure 執行個體的 Redis 快取：
 
-1. 從 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [資源群組]  。
-1. 在 [依名稱篩選]  文字方塊中，輸入包含您快取執行個體的資源群組名稱，然後從搜尋結果中選取它。 
-1. 在資源群組頁面上，選取 [刪除資源群組]  。
-1. 輸入資源群組名稱，然後選取 [刪除]  。
+1. 從 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [資源群組]。
+1. 在 [依名稱篩選] 文字方塊中，輸入包含您快取執行個體的資源群組名稱，然後從搜尋結果中選取它。 
+1. 在資源群組頁面上，選取 [刪除資源群組]。
+1. 輸入資源群組名稱，然後選取 [刪除]。
    
    ![刪除 Azure Cache for Redis 的資源群組](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 

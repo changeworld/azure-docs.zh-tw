@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758193"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417900"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "81758193"
 
 *本文適用於解決方案建置人員和裝置開發人員。*
 
-本教學課程說明如何以裝置開發人員身分，將 Node.js 用戶端應用程式與您的 Azure IoT Central 應用程式連線。 Node.js 應用程式會模擬環境感應器裝置的行為。 您可使用範例「裝置功能模型」  ，在 IoT Central 中建立「裝置範本」  。 您可將檢視新增至裝置範本，讓操作員能與裝置互動。
+本教學課程說明如何以裝置開發人員身分，將 Node.js 用戶端應用程式與您的 Azure IoT Central 應用程式連線。 Node.js 應用程式會模擬環境感應器裝置的行為。 您可使用範例「裝置功能模型」，在 IoT Central 中建立「裝置範本」。 您可將檢視新增至裝置範本，讓操作員能與裝置互動。
 
 在本教學課程中，您會了解如何：
 
@@ -34,11 +34,11 @@ ms.locfileid: "81758193"
 > * 使用檢視管理裝置屬性。
 > * 呼叫同步和非同步命令以控制裝置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
-* 使用 [自訂應用程式]  範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
+* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
 * 已安裝 [Node.js](https://nodejs.org/) 10.0.0 版或更新版本的開發電腦。 您可以在命令列執行 `node --version` 來檢查版本。 本教學課程中的指示假設您是在 Windows 命令提示字元中執行 **node** 命令。 不過，您可以在許多其他作業系統上使用 Node.js。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -162,7 +162,7 @@ ms.locfileid: "81758193"
     }
     ```
 
-    當操作員在 IoT Central 應用程式中設定可寫入屬性時，應用程式會使用裝置對應項所需的屬性，將值傳送至裝置。 裝置接著會使用裝置對應項報告屬性來回應。 當 IoT Central 收到報告屬性值時，其會以 [已同步]  狀態更新屬性檢視。
+    當操作員在 IoT Central 應用程式中設定可寫入屬性時，應用程式會使用裝置對應項所需的屬性，將值傳送至裝置。 裝置接著會使用裝置對應項報告屬性來回應。 當 IoT Central 收到報告屬性值時，其會以 [已同步] 狀態更新屬性檢視。
 
     屬性的名稱 (`name` 和 `brightness`) 必須符合裝置範本中使用的名稱。
 
@@ -330,8 +330,9 @@ node environmentalSensor.js
 
 身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
 
-- 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
-- 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
+* 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
+* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解您在實作裝置程式碼時的裝置範本角色。
+* 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
 
 如果您想要繼續進行這套 IoT Central 教學課程並深入了解如何建置 IoT Central 解決方案，請參閱：
 

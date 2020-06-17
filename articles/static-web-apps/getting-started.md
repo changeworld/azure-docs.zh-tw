@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714231"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259247"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入門：建置您的第一個靜態 Web 應用程式
 
@@ -20,7 +20,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 如果您沒有 Azure 訂用帳戶，請[建立免費試用帳戶](https://azure.microsoft.com/free)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [GitHub](https://github.com) 帳戶
 - [Azure](https://portal.azure.com) 帳戶
@@ -31,25 +31,25 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- 瀏覽至下列位置以建立新的存放庫
+- 確定您已登入 GitHub，並瀏覽至下列位置以建立新的存放庫
   - https://github.com/staticwebdev/angular-basic/generate
 - 將您的存放庫命名為 **my-first-static-web-app**
 
 # <a name="react"></a>[React](#tab/react)
 
-- 瀏覽至下列位置以建立新的存放庫
+- 確定您已登入 GitHub，並瀏覽至下列位置以建立新的存放庫
   - https://github.com/staticwebdev/react-basic/generate
 - 將您的存放庫命名為 **my-first-static-web-app**
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- 瀏覽至下列位置以建立新的存放庫
+- 確定您已登入 GitHub，並瀏覽至下列位置以建立新的存放庫
   - https://github.com/staticwebdev/vue-basic/generate
 - 將您的存放庫命名為 **my-first-static-web-app**
 
 # <a name="no-framework"></a>[無架構](#tab/vanilla-javascript)
 
-- 瀏覽至下列位置以建立新的存放庫
+- 確定您已登入 GitHub，並瀏覽至下列位置以建立新的存放庫
   - https://github.com/staticwebdev/vanilla-basic/generate
 - 將您的存放庫命名為 **my-first-static-web-app**
 

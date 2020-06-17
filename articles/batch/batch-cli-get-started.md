@@ -1,15 +1,15 @@
 ---
-title: 開始使用 Azure CLI 的批次
+title: 開始使用 Azure CLI for Batch
 description: 取得 Azure CLI 中 Batch 命令的快速簡介，以便管理 Azure Batch 服務資源
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117364"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780218"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
 
@@ -73,7 +73,7 @@ az login
 
 您有兩個對 Batch 帳戶進行驗證的選項︰
 
-- **藉由使用 Azure Active Directory （Azure AD）驗證** 
+- **使用 Azure Active Directory (Azure AD) 驗證** 
 
     當您搭配使用 Azure CLI 與 Batch 時，使用 Azure AD 進行驗證是預設值，建議使用大部分的情況。 
     
@@ -119,7 +119,7 @@ az batch pool create my_batch_pool.json
 
 雖然您只可以使用命令列選項建立大多數 Batch 資源，但有些功能需要您指定 JSON 格式的檔案 (內含資源詳細資料)。 例如，如果您想要指定啟動工作的資源檔，則必須使用 JSON 檔案。
 
-若要查看建立資源所需的 JSON 語法，請參閱 [Batch REST API 參考][rest_api]文件。 REST API 參考中的每個「新增資源類型」** 主題都包含可供建立該資源的範例 JSON 指令碼。 您可以使用這些範例 JSON 指令碼作為 JSON 檔案的範本，以搭配 Azure CLI 使用。 例如，若要查看用於建立集區的 JSON 語法，請參閱[將集區新增至帳戶][rest_add_pool]。
+若要查看建立資源所需的 JSON 語法，請參閱 [Batch REST API 參考][rest_api]文件。 REST API 參考中的每個「新增資源類型」主題都包含可供建立該資源的範例 JSON 指令碼。 您可以使用這些範例 JSON 指令碼作為 JSON 檔案的範本，以搭配 Azure CLI 使用。 例如，若要查看用於建立集區的 JSON 語法，請參閱[將集區新增至帳戶][rest_add_pool]。
 
 如需可指定 JSON 檔案的範例指令碼，請參閱[使用 Batch 執行作業和工作](./scripts/batch-cli-sample-run-job.md)。
 
@@ -162,9 +162,9 @@ az batch task list --job-id job001
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
-* 如需 Batch 資源的詳細資訊，請參閱[適用於開發人員的 Azure Batch 概觀](batch-api-basics.md)。
-* 如需有關使用 Batch 範本，在不需要撰寫程式碼的情況下來建立集區、作業和工作的詳細資訊，請參閱[使用 Azure Batch CLI 範本和檔案傳輸](batch-cli-templates.md)。
+* 請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
+* 若要了解如何使用 Batch 範本來建立集區、作業和工作，而不需要撰寫程式碼，請參閱[使用 Azure Batch CLI 範本和檔案傳輸](batch-cli-templates.md)。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

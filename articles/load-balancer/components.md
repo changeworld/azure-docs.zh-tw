@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 84857315e4b6b4375ed5b78520b4c6ff0d66751a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684977"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448677"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -39,6 +39,8 @@ IP 位址的性質會決定所建立負載平衡器的**類型**。 選取私人
 
 ![分層式負載平衡器範例](./media/load-balancer-overview/load-balancer.png)
 
+Load Balancer 可以有多個前端 Ip。 深入瞭解 [多個前端](load-balancer-multivip-overview.md)。
+
 ## <a name="backend-pool"></a>後端集區
 
 將會為傳入要求提供服務的一組虛擬機器或虛擬機器擴展集中的執行個體。 若要以符合成本效益的方式進行擴充，以滿足大量的傳入流量運算，計算指導方針通常會建議您在後端集區中新增更多執行個體。
@@ -57,7 +59,7 @@ IP 位址的性質會決定所建立負載平衡器的**類型**。 選取私人
 - 發生閒置逾時
 - VM 關機
 
-Load Balancer 會為以下端點提供不同的健康情況探查類型：TCP、HTTP 和 HTTPS。
+Load Balancer 會為以下端點提供不同的健康情況探查類型：TCP、HTTP 和 HTTPS。 [深入瞭解 Load Balancer 健康情況探查](load-balancer-custom-probe-overview.md)。
 
 基本 Load Balancer 不支援 HTTPS 探查。 基本 Load Balancer 會關閉所有 TCP 連線 (包括已建立的連線)。
 
@@ -67,15 +69,32 @@ Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區
 
 例如，如果您想要將前端 IP 連接埠 80 (或另一個連接埠) 上的流量，路由傳送至所有後端執行個體的連接埠 80，則可以使用負載平衡規則來達到此目的。
 
+### <a name="high-availability-ports"></a>高可用性連接埠
+
+以 'protocol - all and port - 0' 設定的 Load Balancer 規則。 這可提供單一規則，讓抵達內部 Standard Load Balancer 所有埠的所有 TCP 和 UDP 流量進行負載平衡。 每次都會針對流量進行負載平衡決策。 此動作是以下列的五元組連線為基礎： 
+1. 來源 IP 位址
+2. 來源連接埠
+3. 目的地 IP 位址
+4. 目的地連接埠
+5. protocol
+
+HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如虛擬網路中網路虛擬裝置 (NVA) 的高可用性和規模調整。 此功能也可以在必須對大量連接埠進行負載平衡時提供協助。
+
+您可以深入瞭解 [HA 連接埠](load-balancer-ha-ports-overview.md)。
+
 ## <a name="inbound-nat-rules"></a>傳入的 NAT 規則
 
 輸入 NAT 規則會將傳送至所選前端 IP 位址和連接埠組合的傳入流量，轉送至後端集區中的**特定**虛擬機器或執行個體。 連接埠轉送作業會使用與負載平衡相同的雜湊式分送來完成。
 
 例如，如果您想要讓遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 工作階段分隔後端集區中的 VM 執行個體。 您可以將多個內部端點對應至相同前端 IP 位址的連接埠。 前端 IP 位址可以從遠端管理 VM，而不需要額外的 jumpbox。
 
+虛擬機器擴展集 (VMSS) 內容中的輸入 NAT 規則是輸入 NAT 集區。 深入瞭解 [Load Balancer 元件和 VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)。
+
 ## <a name="outbound-rules"></a>輸出規則
 
 輸出規則會針對後端集區所識別的所有虛擬機器或執行個體設定輸出網路位址轉譯 (NAT)。 這可讓後端中的執行個體與網際網路或其他端點通訊 (輸出)。
+
+深入瞭解 [輸出連線和規則](load-balancer-outbound-connections.md)。
 
 基本負載平衡器不支援輸出規則。
 
@@ -89,9 +108,6 @@ Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區
 - 了解[標準 Load Balancer 診斷](load-balancer-standard-diagnostics.md)。
 - 深入了解[閒置時重設 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 連接埠負載平衡規則的標準 Load Balancer](load-balancer-ha-ports-overview.md)。
-- 了解如何搭配使用 [Load Balancer 與多個前端 IP 設定](load-balancer-multivip-overview.md)。
 - 深入了解[網路安全性群組](../virtual-network/security-overview.md)。
-- 了解[探查類型](load-balancer-custom-probe-overview.md#types)。
 - 深入了解[負載平衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。
 - 了解如何使用[連接埠轉送](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)。
-- 深入了解[負載平衡器輸出規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。

@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310354"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456518"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Azure 區塊鏈服務成員
 
@@ -61,6 +61,12 @@ ms.locfileid: "84310354"
 1. 選取 [購買] 以部署範本。
 
   Azure 入口網站在此用於部署範本。 您也可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../../azure-resource-manager/templates/deploy-powershell.md)。
+
+## <a name="review-deployed-resources"></a>檢閱已部署的資源
+
+您可以使用 Azure 入口網站來檢視已部署 Azure 區塊鏈服務成員的詳細資料。 在入口網站中，前往包含 Azure 區塊鏈服務成員的資源群組。 選取您建立的區塊鏈成員。
+
+![Azure 入口網站中已部署 Azure 區塊鏈成員的概觀詳細資料](./media/create-member-template/deployed-member.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313751"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021733"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料
 
@@ -28,9 +28,9 @@ ms.locfileid: "81313751"
 > * 在 Azure SQL 資料庫中建立資料表
 > * 使用 Sqoop 將資料匯出至 Azure SQL 資料庫
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* HDInsight 上的互動式查詢叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [互動式查詢]  作為 [叢集類型]  。
+* HDInsight 上的互動式查詢叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [互動式查詢] 作為 [叢集類型]。
 
 * Azure SQL Database。 您會使用 Azure SQL 資料庫做為目的地資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure 入口網站中建立 Azure SQL 資料庫](/azure/sql-database/sql-database-single-database-get-started)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81313751"
    | 篩選期間 |一月 |
    | 欄位 |第 1 課：建立 Windows Azure 儲存體物件`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`。 |
 
-3. 選取 [下載]  。 您會取得含有您所選資料欄位的 .zip 檔案。
+3. 選取 [下載]。 您會取得含有您所選資料欄位的 .zip 檔案。
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>將資料上傳至 HDInsight 叢集
 
@@ -205,7 +205,7 @@ ms.locfileid: "81313751"
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 安裝完成後，請使用下列命令來連線到 SQL Database 伺服器。
+2. 安裝完成後，請使用下列命令連線至 SQL Database。
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD

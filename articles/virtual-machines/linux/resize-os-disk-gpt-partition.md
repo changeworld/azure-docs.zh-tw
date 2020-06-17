@@ -1,6 +1,6 @@
 ---
-title: 使用 GPT 磁碟分割調整 OS 磁片大小 |Microsoft Docs
-description: 本文提供使用 GPT 磁碟分割調整 OS 磁片大小的指示。
+title: 調整具有 GPT 分割區的 OS 磁碟大小 |Microsoft Docs
+description: 本文提供調整具有 GPT 分割區的 OS 磁碟大小的指示。
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651083"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>使用 GPT 磁碟分割調整 OS 磁片大小
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>調整具有 GPT 分割區的 OS 磁碟大小
 
 > [!NOTE]
-> 此案例僅適用于具有 GPT 磁碟分割的 OS 磁片。
+> 此案例僅適用於具有 GUID 磁碟分割表格 (GPT) 分割區的 OS 磁碟。
 
-本文說明如何使用 Linux 中的 GPT 磁碟分割來增加 OS 磁片的大小。
+本文說明如何在 Linux 中增加具有 GPT 分割區的 OS 磁碟大小。 
 
-## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>識別 OS 磁片是否有 MBR 或 GPT 磁碟分割
+## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>識別 OS 磁碟是否有 MBR 或 GPT 磁碟分割
 
-使用**parted**命令來識別是否已使用主開機記錄（MBR）磁碟分割或 GUID 磁碟分割表格（GPT）分割區來建立磁碟分割。
+使用 **parted** 命令來識別磁碟分割區是使用主開機記錄 (MBR) 磁碟分割或 GPT 磁碟分割而建立。
 
-### <a name="mbr-partition"></a>MBR 磁碟分區
+### <a name="mbr-partition"></a>MBR 磁碟分割
 
-在下列輸出中，**分割區資料表**會顯示值為**msdos.sys**，以識別**MBR**磁碟分割。
+在下列輸出中，**Partition Table** 顯示 **msdos.sys** 值。 此值表示 MBR 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT 磁碟分割
 
-在下列輸出中，**磁碟分割資料表**會顯示**gpt**的值，以識別 gpt 磁碟分割。
+在下列輸出中，**Partition Table** 顯示 **gpt** 值。 此值表示 GPT 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -67,25 +67,25 @@ Number  Start   End     Size    File system  Name                  Flags
 4       1052MB  68.7GB  67.7GB                                     lvm
 ```
 
-如果您的虛擬機器（VM）在 OS 磁片上有 GPT 磁碟分割，請增加 OS 磁片的大小。
+如果您的虛擬機器 (VM) 具有 OS 磁碟上的 GPT 分割區，請增加 OS 磁碟的大小。
 
-## <a name="increase-the-size-of-the-os-disk"></a>增加 OS 磁片的大小
+## <a name="increase-the-size-of-the-os-disk"></a>增加 OS 磁碟的大小
 
-下列指示適用于 Linux 背書發行版本。
+下列指示適用於 Linux 背書的發行版本。
 
 > [!NOTE]
-> 繼續進行之前，請先建立 VM 的備份複本，或取得 OS 磁片的快照集。
+> 在繼續之前，請先建立 VM 的備份複本，或製作 OS 磁碟的快照。
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x 和 18. x
+### <a name="ubuntu"></a>Ubuntu
 
-若要增加 Ubuntu 16. x 和 18. x 中的 OS 磁片大小：
+增加 Ubuntu 16. x 和 18. x 中的 OS 磁碟大小：
 
 1. 停止 VM。
-1. 從入口網站增加 OSDisk 的大小。
-1. 重新開機 VM，然後以**根**使用者身分登入 vm。
-1. OSDisk 現在會顯示增加的檔案系統大小。
+1. 從入口網站增加 OS 磁碟的大小。
+1. 重新開機 VM，然後以**根**使用者的身分登入 VM。
+1. 確認 OS 磁碟現在顯示增加的檔案系統大小。
 
-如下列範例所示，OS 磁片已從入口網站調整為 100 GB，因為掛接于**/** 的 **/dev/sda1**檔案系統現在顯示 97 gb。
+如下列範例所示，已從入口網站將 OS 磁碟調整為 100 GB。 / 上掛接的 **/dev/sda1** 檔案系統現在顯示 97 GB。
 
 ```
 user@myvm:~# df -Th
@@ -102,35 +102,35 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4、SUSE SLES 12 for SAP、SUSE SLES 15 和 SUSE SLES 15 for SAP
+### <a name="suse"></a>SUSE
 
-若要增加 SUSE 12 SP4、SUSE SLES 15 和 SUSE SLES 15 for SAP 中的 OS 磁片大小：
+增加 SUSE 12 SP4、SUSE SLES 12 for SAP、SUSE SLES 15、SUSE SLES 15 for SAP 中的 OS 磁碟大小：
 
 1. 停止 VM。
-1. 從入口網站增加 OSDisk 的大小。
+1. 從入口網站增加 OS 磁碟的大小。
 1. 重新啟動 VM。
 
-當 VM 重新開機時，請執行下列步驟：
+當 VM 重新開機後，執行下列步驟：
 
-   1. 使用下列命令，以**根使用者**身分存取您的 VM：
+   1. 使用下列命令，以**根**使用者身分存取您的 VM：
    
       `#sudo su`
 
-   1. 使用下列命令來安裝**gptfdisk**套件，這是增加 OS 磁片大小的必要項：
+   1. 使用下列命令安裝 **gptfdisk** 套件，這是增加 OS 磁碟大小所需的套件：
 
       `#zypper install gptfdisk -y`
 
-   1. 若要查看磁片上可用的最大磁區，請執行下列命令：
+   1. 若要檢視磁碟上可用的最大磁區，請執行下列命令：
 
       `#sgdisk -e /dev/sda`
 
-   1. 使用下列命令來調整磁碟分割的大小，而不將其刪除。 **Parted**命令有一個名為**resizepart**的選項，可調整磁碟分割的大小，而不會刪除它。 Resizepart 後的數位4表示調整第四個（第四個）分割區。
+   1. 使用下列命令來調整分割區的大小，而不將其刪除。 **parted** 命令有一個 **resizepart** 選項，可在不刪除分割區的情況下調整其大小。 **resizepart** 後的數字 4 表示調整第四個分割區的大小。
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. 執行`#lsblk`命令，以檢查分割區是否已增加。
+   1. 執行 **#lsblk** 命令，檢查分割區是否已增加。
 
-      下列輸出顯示 **/dev/sda4**分割區的大小已調整為 98.5 GB。
+      下列輸出顯示 **/dev/sda4** 分割區的大小已調整為 98.5 GB。
 
       ```
       user@myvm:~ # lsblk
@@ -143,7 +143,7 @@ user@myvm:~#
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. 使用下列命令，在 OSDisk 上識別檔案系統的類型：
+   1. 使用下列命令，識別 OS 磁碟上的檔案系統類型：
 
       `blkid`
 
@@ -162,7 +162,7 @@ user@myvm:~#
 
    1. 根據檔案系統類型，使用適當的命令來調整檔案系統的大小。
 
-      針對**xfs**，請使用下列命令：
+      針對 **xfs**，使用下列命令：
 
       ` #xfs_growfs /`
 
@@ -183,11 +183,11 @@ user@myvm:~#
       data blocks changed from 7470331 to 25820172
       ```
 
-      針對**ext4**，請使用下列命令：
+      針對 **ext4**，使用下列命令：
 
       ```#resize2fs /dev/sda4```
 
-   1. 使用下列命令，確認**df-Th**的檔案系統大小增加：
+   1. 使用下列命令，確認 **df -Th** 增加的檔案系統大小：
 
       `#df -Th`
 
@@ -208,37 +208,39 @@ user@myvm:~#
       user@myvm:~ #
       ```
 
-如上述範例所示，我們可以看到 OSDisk 的檔案系統大小已增加。
+在上述範例中，我們可以看到 OS 磁碟的檔案系統大小已增加。
 
-### <a name="rhel-7x-with-lvm"></a>RHEL 7.x 與 LVM
+### <a name="rhel"></a>RHEL
+
+使用 LVM 增加 RHEL 7.x 中的 OS 磁碟大小：
 
 1. 停止 VM。
-1. 從入口網站增加 OSDisk 的大小。
+1. 從入口網站增加 OS 磁碟的大小。
 1. 啟動 VM。
 
-當 VM 重新開機時，請執行下列步驟：
+當 VM 重新開機後，執行下列步驟：
 
-   1. 使用下列命令，以**根使用者**身分存取您的 VM：
+   1. 使用下列命令，以**根**使用者身分存取您的 VM：
    
       `#sudo su`
 
-   1. 安裝**gptfdisk**套件，這是增加 OS 磁片大小的必要項。
+   1. 安裝 **gptfdisk** 套件，這是增加 OS 磁碟大小所需的套件。
 
       `#yum install gdisk -y`
 
-   1. 若要查看磁片上可用的最大磁區，請執行下列命令：
+   1. 若要查看磁碟上可用的最大磁區，請執行下列命令：
 
       `#sgdisk -e /dev/sda`
 
-   1. 使用下列命令來調整磁碟分割的大小，而不將其刪除。 **Parted**命令有一個名為**resizepart**的選項，可調整磁碟分割的大小，而不會刪除它。 Resizepart 後的數位4表示調整第四個（第四個）分割區。
+   1. 使用下列命令來調整分割區的大小，而不將其刪除。 **parted** 命令有一個 **resizepart** 選項，可在不刪除分割區的情況下調整其大小。 **resizepart** 後的數字 4 表示調整第四個分割區的大小。
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
-   1. 執行下列命令，以確認磁碟分割是否已增加：
+   1. 執行下列命令，以確認分割區大小是否已增加：
 
       `#lsblk`
 
-      下列輸出顯示 **/dev/sda4**分割區的大小已調整為 99 GB。
+      下列輸出顯示 **/dev/sda4** 分割區的大小已調整為 99 GB。
 
       ```
       [user@myvm ~]# lsblk
@@ -259,11 +261,11 @@ user@myvm:~#
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. 使用下列命令來調整實體磁片區的大小 **（PV）**：
+   1. 使用下列命令來調整實體磁碟區 (PV) 的大小：
 
       `#pvresize /dev/sda4`
 
-      下列輸出顯示 PV 已調整大小為 99.02 GB。
+      下列輸出顯示 PV 大小已調整為 99.02 GB。
 
       ```
       [user@myvm ~]# pvresize /dev/sda4
@@ -275,7 +277,7 @@ user@myvm:~#
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. 在下列範例中， `/dev/mapper/rootvg-rootlv`會使用下列命令，從2gb 調整為12GB （增加 10 gb），這也會調整檔案系統的大小：
+   1. 在下列範例中，會使用下列命令將 **/dev/mapper/rootvg-rootlv** 的大小從 2 GB 調整到 12 GB (增加 10 GB)。 此命令也會調整檔案系統的大小。
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ user@myvm:~#
       data blocks changed from 524288 to 3145728
       ```
          
-   1. 請確認`/dev/mapper/rootvg-rootlv`是否已增加檔案系統大小，或未使用下列命令：
+   1. 使用下列命令，確認 **/dev/mapper/rootvg-rootlv** 是否具有增加的檔案系統大小：
 
       `#df -Th /`
 
@@ -310,9 +312,9 @@ user@myvm:~#
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > 若要使用相同的程式來調整任何其他邏輯磁片區的大小，請變更步驟7中的**lv**名稱
+   > [!NOTE]
+   > 若要使用相同程序來調整任何其他邏輯磁碟區的大小，請變更步驟 7 中的 **lv** 名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [調整磁片大小](expand-disks.md)
+- [調整磁碟大小](expand-disks.md)

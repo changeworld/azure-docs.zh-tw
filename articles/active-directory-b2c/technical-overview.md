@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140783"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331529"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -166,7 +166,7 @@ Identity Experience Framework 可讓您利用任何步驟組合來建立使用�
 
 ## <a name="localization"></a>當地語系化
 
-Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 36 種語言的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
+Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 36 種語言的翻譯，但您也可以針對任何語言提供自己的的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
 
 ![以不同語言顯示 UI 文字的三個註冊登入頁面](media/technical-overview/localization.png)
 

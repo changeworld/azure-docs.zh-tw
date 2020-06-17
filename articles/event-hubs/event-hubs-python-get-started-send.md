@@ -9,12 +9,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162594"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558959"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入門：使用 Python 以事件中樞傳送和接收事件 (azure-eventhub 第 1 版)
 本快速入門說明如何使用 **azure-eventhub 第 1 版** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
@@ -23,7 +24,7 @@ ms.locfileid: "77162594"
 > 本快速入門會使用舊有的 azure-eventhub 第 1 版套件。 如需如何使用套件最新**第 5 版**的快速入門，請參閱[使用 azure-eventhub 第 5 版傳送和接收事件](get-started-python-send-v2.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure-eventhub 第 1 版遷移至第 5 版的指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
@@ -47,7 +48,7 @@ ms.locfileid: "77162594"
 
 1. 開啟您慣用的 Python 編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 建立名為 *send.py* 的新檔案。 此指令碼會將 100 個事件傳送到事件中樞。
-3. 將下列程式碼貼到 *send.py* 中，並將事件中樞的 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 取代為您的值： 
+3. 將下列程式碼貼入 *send.py*，以您的值取代事件中樞 \<namespace>、\<eventhub>、\<AccessKeyName>和 \<primary key value>： 
    
    ```python
    import sys
@@ -110,7 +111,7 @@ start python send.py
 若要建立可從事件中樞接收事件的 Python 應用程式：
 
 1. 在您的 Python 編輯器中，建立名為 *recv.py* 的檔案。
-2. 將下列程式碼貼到 *recv.py* 中，並將事件中樞的 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 取代為您的值： 
+2. 將下列程式碼貼入 *recv.py*，以您的值取代事件中樞 \<namespace>、\<eventhub>、\<AccessKeyName>和 \<primary key value>： 
    
    ```python
    import os

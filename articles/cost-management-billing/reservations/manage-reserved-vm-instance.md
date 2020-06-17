@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019991"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434192"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 
@@ -20,6 +20,7 @@ ms.locfileid: "84019991"
 
 如果您已購買 Azure 保留的 VM 執行個體，您可以變更保留的最佳化設定。 保留折扣可以套用至相同系列的 VM，或是您可以為特定 VM 大小保留資料中心容量。 而且，您應該嘗試將保留最佳化，使其充分使用。
 
+管理保留所需的權限與訂用帳戶權限不同。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,9 +28,9 @@ ms.locfileid: "84019991"
 
 當您購買保留時，會建立兩個物件：**保留訂單**和**保留**。
 
-在購買時，保留訂單之下有一個保留。 分割、合併、部分退費或交換等動作會在 [保留訂單]  之下建立新的保留。
+在購買時，保留訂單之下有一個保留。 分割、合併、部分退費或交換等動作會在 [保留訂單] 之下建立新的保留。
 
-若要檢視保留訂單，請移至 [保留]  > 選取保留，然後按一下 [保留訂單識別碼]  。
+若要檢視保留訂單，請移至 [保留] > 選取保留，然後按一下 [保留訂單識別碼]。
 
 ![保留訂單詳細資料的範例，其中顯示保留訂單識別碼 ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -42,9 +43,9 @@ ms.locfileid: "84019991"
 更新保留範圍：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]   > [保留]  。
+2. 選取 [所有服務] > [保留]。
 3. 選取保留。
-4. 選取 [設定]   > [組態]  。
+4. 選取 [設定] > [組態]。
 5. 變更範圍。
 
 如果您從共用變更為單一範圍，您只能選取擁有者是您的訂用帳戶。 只能選取與保留屬於相同計費內容的訂用帳戶。
@@ -59,16 +60,15 @@ ms.locfileid: "84019991"
 
 若要執行交換或退費，使用者必須具有保留訂單的存取權。 授與某人權限時，最好將權限授與保留訂單，而不是保留。
 
-
 委派保留的存取管理：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]   >  [保留]  來列出您具有存取權的保留。
+2. 選取 [所有服務] >  [保留] 來列出您具有存取權的保留。
 3. 選取您想要將存取權委派給其他使用者的保留。
-4. 選取 [存取控制 (IAM)]  。
-5. 選取 [新增角色指派]   > [角色]   > [擁有者]  。 或是，如果您想要給予有限的存取權，可選取不同角色。
+4. 選取 [存取控制 (IAM)]。
+5. 選取 [新增角色指派] > [角色] > [擁有者]。 或是，如果您想要給予有限的存取權，可選取不同角色。
 6. 輸入要新增為擁有者之使用者的電子郵件地址。
-7. 選取使用者，然後選取 [儲存]  。
+7. 選取使用者，然後選取 [儲存]。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>將單一保留分割成兩個保留
 
@@ -118,9 +118,9 @@ ms.locfileid: "84019991"
 若要更新保留的最佳化設定：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]   >  [保留]  。
+2. 選取 [所有服務] >  [保留]。
 3. 選取保留。
-4. 選取 [設定]   > [組態]  。  
+4. 選取 [設定] > [組態]。  
   ![顯示組態項目的範例](./media/manage-reserved-vm-instance/add-product03.png)
 5. 變更**最佳化設定**。  
   ![顯示最佳化對象設定的範例](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
@@ -134,7 +134,7 @@ ms.locfileid: "84019991"
 在 Azure 入口網站中，有一種方式可檢視保留使用量。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [所有服務]   > [**保留**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，並記下保留的 [使用率 (%)]  。  
+2. 選取 [所有服務] > [**保留**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，並記下保留的 [使用率 (%)]。  
   ![顯示保留清單的影像](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 選取保留。
 4. 檢閱一段時間的保留使用趨勢。  
@@ -152,7 +152,7 @@ ms.locfileid: "84019991"
 
 - 請確定貴組織建立的虛擬機器符合保留上的 VM 大小。
 - 請確認執行個體大小彈性已開啟。 如需詳細資訊，請參閱[管理保留 - 變更保留的 VM 執行個體的最佳化設定](#change-optimize-setting-for-reserved-vm-instances)。
-- 變更要共用  的保留範圍，使它更廣泛地套用。 如需詳細資訊，請參閱[變更保留的範圍](#change-the-reservation-scope)。
+- 變更要共用的保留範圍，使它更廣泛地套用。 如需詳細資訊，請參閱[變更保留的範圍](#change-the-reservation-scope)。
 - 請考慮交換未使用的數量。 如需詳細資訊，請參閱[取消和交換](#cancel-exchange-or-refund-reservations)。
 
 

@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a2430e29acb83945e9893ca4c6e2e0110ef6e007
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298154"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456550"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -76,7 +76,7 @@ Azure EA 入口網站可協助您管理您的 Azure EA 成本和使用量。 Azu
 
 Azure EA 帳戶是 Azure EA 入口網站中的組織單位。 其可用來管理訂用帳戶，也可用來進行報告。 若要存取及使用 Azure 服務，您需要建立一個帳戶或讓人為您建立一個帳戶。
 
-如需有關 Azure 帳戶的詳細資訊，請參閱＜新增帳戶＞。
+如需有關 Azure 帳戶的詳細資訊，請參閱[新增帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account)。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise 開發/測試供應項目
 

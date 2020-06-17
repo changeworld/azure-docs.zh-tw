@@ -4,22 +4,22 @@ description: 本快速入門提供 Python 程式碼範例，供您在連線至�
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76769074"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560927"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
 在本快速入門中，您會在 macOS、Ubuntu Linux 或 Windows 上搭配 Python 使用適用於 PostgreSQL 的 Azure 資料庫。 快速入門會說明如何連線到資料庫，以及如何使用 SQL 陳述式來查詢、插入、更新和刪除資料。 本文假設您已熟悉 Python，但還不熟悉適用於 PostgreSQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76769074"
 連線到適用於 PostgreSQL 的 Azure 資料庫需要完整的伺服器名稱和登入認證。 您可以從 Azure 入口網站中取得此資訊。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，搜尋並選取適用於 PostgreSQL 的 Azure 資料庫伺服器名稱。 
-1. 在伺服器的 [概觀]  頁面上，複製完整的**伺服器名稱**和**管理使用者名稱**。 完整**伺服器名稱**的格式一律為 *\<my-server-name>.postgres.database.azure.com*，而**管理使用者名稱**的格式一律為 *\<my-admin-username>@\<my-server-name>* 。 
+1. 在伺服器的 [概觀] 頁面上，複製完整的**伺服器名稱**和**管理使用者名稱**。 完整的**伺服器名稱**的格式一律是 *\<my-server-name>. postgres.database.azure.com*，而**管理員使用者名稱**的格式一律是 *\<my-admin-username>@\<my-server-name>* 。 
    
    也需要您的管理員密碼。 如果您忘記密碼，可以在此頁面中重設密碼。 
    
@@ -53,9 +53,9 @@ ms.locfileid: "76769074"
 1. 將程式碼範例新增至檔案。 在程式碼中，取代下列內容：
    - 將 `<server-name>` 和 `<admin-username>` 取代為您從 Azure 入口網站中複製的值。
    - 將 `<admin-password>` 取代為伺服器密碼。
-   - 將 `<database-name>` 取代為「適用於 PostgreSQL 的 Azure 資料庫」的名稱。 當您建立伺服器時，系統已自動建立名為 postgres  的預設資料庫。 您可以使用 SQL 命令來重新命名該資料庫或建立新的資料庫。 
+   - 將 `<database-name>` 取代為「適用於 PostgreSQL 的 Azure 資料庫」的名稱。 當您建立伺服器時，系統已自動建立名為 postgres 的預設資料庫。 您可以使用 SQL 命令來重新命名該資料庫或建立新的資料庫。 
    
-1. 使用 .py  作為副檔名，將檔案儲存在您的專案資料夾中，例如 postgres-insert.py  。 針對 Windows，請務必在儲存檔案時選取 UTF-8 編碼。 
+1. 使用 .py 作為副檔名，將檔案儲存在您的專案資料夾中，例如 postgres-insert.py。 針對 Windows，請務必在儲存檔案時選取 UTF-8 編碼。 
    
 1. 若要執行檔案，請在命令列介面中變更為您的專案資料夾，然後輸入 `python`，並在後方接著檔案名稱，例如 `python postgres-insert.py`。
 

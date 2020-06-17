@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/01/2020
-ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: MT
+ms.openlocfilehash: f6b35551af61c50a3db2d15b47d8f3910024b527
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652734"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773729"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
@@ -19,10 +19,10 @@ ms.locfileid: "82652734"
 > 雖然這些位址是靜態的，但可能隨時需要變更。 除了可用性監視和需要輸入防火牆規則的 Webhook 之外，Application Insights 的所有流量都表示輸出流量。
 
 > [!TIP]
-> 如果您使用 Azure 網路安全性群組，您可以使用 Azure[網路服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
-)標籤來管理存取權。 如果您要管理混合式/內部部署資源的存取權，您可以將對等的 IP 位址清單下載為每週更新的[JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案：。 若要涵蓋本文中的所有例外狀況，您必須使用服務標記： ' ActionGroup '、' ApplicationInsightsAvailability '、' AzureMonitor '。
+> 如果您使用 Azure 網路安全性群組，則可以使用 Azure [網路服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+)來管理存取。 如果您管理混合式/內部部署資源的存取，則可以將對等 IP 位址清單下載為 [JSON 檔案](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)，每週都會更新： 若要涵蓋本文中的所有例外狀況，您必須使用服務標籤：'ActionGroup'、'ApplicationInsightsAvailability'、'AzureMonitor'。
 
-或者，您也可以將此頁面當做 RSS 摘要來訂閱， https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom方法是新增至您最愛的 RSS/ATOM 讀取器，以取得最新變更的通知。
+或者，您可以將 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom 新增至您慣用的 RSS/ATOM 讀取器，以訂閱此頁面的 RSS 摘要，而在最新變更可用時收取通知。
 
 
 ## <a name="outgoing-ports"></a>連出連接埠
@@ -30,47 +30,47 @@ ms.locfileid: "82652734"
 
 | 目的 | URL | IP | 連接埠 |
 | --- | --- | --- | --- |
-| 遙測 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
-| 即時計量資料流（美國東部） |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
-| 即時計量資料流（美國中南部） |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
-| 即時計量資料流（北歐） |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
-| 即時計量資料流（西歐） |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
-| 即時計量資料流（東亞） |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
-| 即時計量資料流（東南亞） |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
+| 遙測 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23 | 443 |
+| 即時計量資料流 (美國東部) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
+| 即時計量資料流 (美國中南部) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
+| 即時計量資料流 (北歐) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
+| 即時計量資料流 (西歐) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
+| 即時計量資料流 (東亞) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
+| 即時計量資料流 (東南亞) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
 
 ## <a name="status-monitor"></a>狀態監視器
 狀態監視器組態 - 只有在進行變更時才需要。
 
 | 目的 | URL | IP | 連接埠 |
 | --- | --- | --- | --- |
-| 設定 |`management.core.windows.net` | |`443` |
-| 設定 |`management.azure.com` | |`443` |
-| 設定 |`login.windows.net` | |`443` |
-| 設定 |`login.microsoftonline.com` | |`443` |
-| 設定 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| 設定 |`auth.gfx.ms` | |`443` |
-| 設定 |`login.live.com` | |`443` |
-| 安裝 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
+| 組態 |`management.core.windows.net` | |`443` |
+| 組態 |`management.azure.com` | |`443` |
+| 組態 |`login.windows.net` | |`443` |
+| 組態 |`login.microsoftonline.com` | |`443` |
+| 組態 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| 組態 |`auth.gfx.ms` | |`443` |
+| 組態 |`login.live.com` | |`443` |
+| 安裝 | `globalcdn.nuget.org`、`packages.nuget.org`、`api.nuget.org/v3/index.json`、`nuget.org`、`api.nuget.org`、`dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性集合
 這是用來執行 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md) 的位址清單。 如果您想要在您的應用程式上執行 Web 測試，但您的 Web 伺服器限於為特定用戶端提供服務，則您必須允許來自我們的可用性測試伺服器的連入流量。
 
-### <a name="service-tag"></a>服務標記
+### <a name="service-tag"></a>服務標籤
 
-如果您使用 Azure 網路安全性群組，請直接新增**輸入連接埠規則**，以允許來自 Application Insights 可用性測試的流量，方法是選取 [**服務**標籤] 做**為來源，** 並**ApplicationInsightsAvailability**作為**來源服務標記**。
-
->[!div class="mx-imgBorder"]
->![在 [設定] 下選取 [輸入安全性規則]，然後選取索引標籤頂端的 [新增]](./media/ip-addresses/add-inbound-security-rule.png)
+如果您使用 Azure 網路安全性群組，只需新增**輸入連接埠規則**，即可允許來自 Application Insights 可用性測試的流量，方法是選取 [服務標籤] 做為 [來源]，並選取 [ApplicationInsightsAvailability] 做為 [來源服務標籤]。
 
 >[!div class="mx-imgBorder"]
->![[新增輸入安全性規則] 索引標籤](./media/ip-addresses/add-inbound-security-rule2.png)
+>![在 [設定] 下，選取 [輸入安全性規則]，然後選取索引標籤頂端的 [新增]](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>![新增輸入安全性規則索引標籤](./media/ip-addresses/add-inbound-security-rule2.png)
 
 為來自這些位址 (IP 位址會依照位置分組) 的連入流量開啟連接埠 80 (http) 和 443 (https)︰
 
 ### <a name="addresses-grouped-by-location"></a>依位置分組的位址
 
 > [!NOTE]
-> 這些位址會使用無類別網域間路由（CIDR）標記法來列出。 這表示類似`51.144.56.112/28`的專案相當於從開始`51.144.56.112`且結束于的16個 ip `51.144.56.127`。
+> 使用無類別網域間路由 (CIDR) 標記法來列出這些位址。 這表示 `51.144.56.112/28` 之類的項目相當於從 `51.144.56.112` 開始，並在 `51.144.56.127` 結束的 16 個 IP。
 
 ```
 Australia East
@@ -187,12 +187,12 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 52.127.49.96/27
 ```  
 
-## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics Api
+## <a name="application-insights--log-analytics-apis"></a>Application Insights 與 Log Analytics API
 
 | 目的 | URI |  IP | 連接埠 |
 | --- | --- | --- | --- |
 | API |`api.applicationinsights.io`<br/>`api1.applicationinsights.io`<br/>`api2.applicationinsights.io`<br/>`api3.applicationinsights.io`<br/>`api4.applicationinsights.io`<br/>`api5.applicationinsights.io`<br/>`dev.applicationinsights.io`<br/>`dev.applicationinsights.microsoft.com`<br/>`dev.aisvc.visualstudio.com`<br/>`www.applicationinsights.io`<br/>`www.applicationinsights.microsoft.com`<br/>`www.aisvc.visualstudio.com`<br/>`api.loganalytics.io`<br/>`*.api.loganalytics.io`<br/>`dev.loganalytics.io`<br>`docs.loganalytics.io`<br/>`www.loganalytics.io` |20.37.52.188 <br/> 20.37.53.231 <br/> 20.36.47.130 <br/> 20.40.124.0 <br/> 20.43.99.158 <br/> 20.43.98.234 <br/> 13.70.127.61 <br/> 40.81.58.225 <br/> 20.40.160.120 <br/> 23.101.225.155 <br/> 52.139.8.32 <br/> 13.88.230.43 <br/> 52.230.224.237 <br/> 52.242.230.209 <br/> 52.173.249.138 <br/> 52.229.218.221 <br/> 52.229.225.6 <br/> 23.100.94.221 <br/> 52.188.179.229 <br/> 52.226.151.250 <br/> 52.150.36.187 <br/> 40.121.135.131 <br/> 20.44.73.196 <br/> 20.41.49.208 <br/> 40.70.23.205 <br/> 20.40.137.91 <br/> 20.40.140.212 <br/> 40.89.189.61 <br/> 52.155.118.97 <br/> 52.156.40.142 <br/> 23.102.66.132 <br/> 52.231.111.52 <br/> 52.231.108.46 <br/> 52.231.64.72 <br/> 52.162.87.50 <br/> 23.100.228.32 <br/> 40.127.144.141 <br/> 52.155.162.238 <br/> 137.116.226.81 <br/> 52.185.215.171 <br/> 40.119.4.128 <br/> 52.171.56.178 <br/> 20.43.152.45 <br/> 20.44.192.217 <br/> 13.67.77.233 <br/> 51.104.255.249 <br/> 51.104.252.13 <br/> 51.143.165.22 <br/> 13.78.151.158 <br/> 51.105.248.23 <br/> 40.74.36.208 <br/> 40.74.59.40 <br/> 13.93.233.49 <br/> 52.247.202.90 |80,443 |
-| Azure 管線注釋延伸模組 |aigs1.aisvc.visualstudio.com |動態|443 | 
+| Azure 管線註釋延伸模組 |aigs1.aisvc.visualstudio.com |動態|443 | 
 
 ## <a name="application-insights-analytics"></a>Application Insights 分析
 
@@ -227,7 +227,7 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 動態 | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | 動態 | 80,443 |
 
-## <a name="action-group-webhooks"></a>動作群組 webhook
+## <a name="action-group-webhooks"></a>動作群組 Webhook
 
 | 目的 | IP | 連接埠
 | --- | --- | --- |

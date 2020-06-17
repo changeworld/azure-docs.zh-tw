@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053241"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324584"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>快速入門：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建立和定型預測模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,11 +51,11 @@ ms.locfileid: "84053241"
 > [!TIP]
 > 如果您需要複習一下線性模型，請參閱下列教學課程，該課程說明使用 rxLinMod 來調整線性模型的程序：[配適線性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-在下列步驟中，您會設定定型資料、建立迴歸模型、使用定型資料進行定型，然後將模型儲存到 SQL 資料表。
+在下列步驟中，您會設定訓練資料、建立迴歸模型、使用訓練資料訓練模型，然後將模型儲存到 SQL 資料表。
 
-1. 開啟 **SQL Server Management Studio**，然後連線至 SQL 資料庫。
+1. 開啟 **SQL Server Management Studio** 並連線至您的資料庫。
 
-   如果您需要連線方面的協助，請參閱[快速入門：使用 SQL Server Management Studio 連線和查詢 Azure SQL Database](connect-query-ssms.md)。
+   如果您需要連線方面的協助，請參閱[快速入門：使用 SQL Server Management Studio 來連線及查詢 Azure SQL Database 中的資料庫](connect-query-ssms.md) (英文)。
 
 1. 建立 **CarSpeed** 資料表以儲存定型資料。
 
@@ -139,7 +139,7 @@ ms.locfileid: "84053241"
 
 一般而言，預存程序 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 的 R 輸出僅限於單一資料框架。 但除了資料框架以外，您也可以傳回其他類型的輸出，例如純量。
 
-例如，假設您想要定型模型，但要立即檢視模型的係數資料表。 若要這麼做，請將係數資料表建立為主要結果集，並以 SQL 變數的形式輸出定型的模型。 您可以藉由呼叫變數立即重複使用該模型，或將模型儲存至資料表，如下所示。
+例如，假設您想要定型模型，但要立即檢視模型的係數資料表。 若要這麼做，請將係數資料表建立為主要結果集，並以 SQL 變數的形式輸出訓練的模型。 您可以藉由呼叫變數立即重複使用該模型，或將模型儲存至資料表，如下所示。
 
 ```sql
 DECLARE @model VARBINARY(max)

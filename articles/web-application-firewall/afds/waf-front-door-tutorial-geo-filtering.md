@@ -1,6 +1,6 @@
 ---
-title: 設定 Azure Front service 的地區篩選 web 應用程式防火牆原則
-description: 在本教學課程中，您將瞭解如何建立地區篩選原則，並將此原則與現有的 Front 前端主機產生關聯
+title: 為 Azure Front Door Service 設定地區篩選 Web 應用程式防火牆原則
+description: 在本教學課程中，您會了解如何建立地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eb97a2d848441a153db47b41644a6226e9d75782
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135865"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747754"
 ---
-# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>為您的前門設定地區篩選 WAF 原則
+# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>為 Front Door 設定地區篩選 WAF 原則
 
 本教學課程會說明如何使用 Azure PowerShell 來建立簡單的地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯。 此範例地區篩選原則範例會封鎖來自美國以外的所有其他國家/地區的要求。
 
 如果您沒有 Azure 訂用帳戶，請立即建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始設定地區篩選原則之前，請先設定您的 PowerShell 環境，並建立 Front Door 設定檔。
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
@@ -29,7 +29,7 @@ Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manage
 
 您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式對話方塊來登入，以連線至 Azure
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式登入對話方塊連線至 Azure
 
 ```
 Install-Module -Name Az
@@ -52,7 +52,7 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="define-geo-filtering-match-condition"></a>定義地區篩選比對條件
 
-建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 在[Azure Front 的網域上](waf-front-door-geo-filtering.md)的地區篩選中，會提供兩個字母的國家/地區對應代碼。
+建立比對條件範例，使其會在建立比對條件時於參數上使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)，而選取並非來自 "US" 的要求。 ＜[什麼是 Azure Front Door 的網域地區篩選？](waf-front-door-geo-filtering.md)＞中會提供國家/地區代碼 (兩個字母) 與國家/地區的對應。
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -79,7 +79,7 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 
 使用 `Get-AzResourceGroup` 尋找包含 Front Door 設定檔的資源群組名稱。 接下來，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)，在包含 Front Door 設定檔的指定資源群組中，建立包含 `nonUSBlockRule` 的 `geoPolicy` 原則物件。 您必須為地區原則提供唯一的名稱。 
 
-下列範例會使用資源組名*myResourceGroupFD1* ，並假設您已使用[快速入門：建立 front 門](../../frontdoor/quickstart-create-front-door.md)文章中提供的指示來建立 front 設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly** 取代為唯一的原則名稱。
+下列範例會使用資源群組名稱 myResourceGroupFD1，並假設您已使用[快速入門：建立 Front Door](../../frontdoor/quickstart-create-front-door.md) 一文中所提供的指示建立 Front Door 設定檔。 在下列範例中，將原則名稱 geoPolicyAllowUSOnly 取代為唯一的原則名稱。
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `

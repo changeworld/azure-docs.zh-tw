@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 工作開始事件
 description: Batch 工作開始事件的參考資訊。 一旦排程器已排程工作在計算節點上執行時，就會發出此事件。
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116395"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725783"
 ---
 # <a name="task-start-event"></a>工作開始事件
 
@@ -41,9 +41,9 @@ ms.locfileid: "82116395"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`jobId`|字串|包含工作之作業的識別碼。|
-|`id`|字串|工作的識別碼。|
-|`taskType`|字串|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。|
+|`jobId`|String|含有工作的作業識別碼。|
+|`id`|String|工作識別碼。|
+|`taskType`|String|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。|
 |`systemTaskVersion`|Int32|這是作業上的內部重試計數器。 Batch 服務可在內部重試工作，以處理暫時性問題。 這些問題包含內部排程錯誤，或嘗試從不正常狀態的計算節點復原。|
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
 |[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  請參閱 [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) (英文) 以取得詳細資訊。|
@@ -54,8 +54,8 @@ ms.locfileid: "82116395"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`poolId`|字串|工作執行所在集區的識別碼。|
-|`nodeId`|字串|工作執行所在節點的識別碼。|
+|`poolId`|String|工作執行所在集區的識別碼。|
+|`nodeId`|String|工作執行所在節點的識別碼。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
@@ -63,13 +63,13 @@ ms.locfileid: "82116395"
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|工作需要的計算節點數目。|
 
-###  <a name="constraints"></a><a name="constraints"></a>條件
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|工作重試次數上限。 如果工作的結束代碼不是零，Batch 服務會重試工作。<br /><br /> 請注意，這個值會特別控制重試次數。 Batch 服務會嘗試工作一次，然後可一直重試直到達此限制。 例如，如果重試計數上限為 3，則 Batch 可嘗試工作最多 4 次 (一次首次嘗試，3 次重試)。<br /><br /> 如果重試計數上限為 0，則 Batch 服務不會重試工作。<br /><br /> 如果重試計數上限為 -1，則 Batch 服務會無限制地重試工作。<br /><br /> 預設值為 0 (不重試)。|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a>executionInfo
+###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|

@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 伺服器名稱別名 | Microsoft Docs
-description: 瞭解如何建立 Azure Analysis Services 伺服器名稱別名。 然後，使用者可以使用較短的別名名稱，而不是伺服器名稱連接到您的伺服器。
+description: 了解如何建立 Azure Analysis Services 伺服器名稱別名。 然後，使用者可以使用較短的別名名稱 (而不是伺服器名稱) 來連線至您的伺服器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572283"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698998"
 ---
 # <a name="alias-server-names"></a>伺服器名稱別名
 

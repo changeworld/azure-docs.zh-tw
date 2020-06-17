@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858791"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651126"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>關於 Azure 儲存體移轉的常見問題集
 
@@ -38,7 +38,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 **有兩個檔案共用，位在相同區域的相同儲存體帳戶上，在這兩者間複製資料是否收取費用？**
 
-不需要。 此流程不會收取費用。
+否。 此流程不會收取費用。
 
 **如何從 Azure 入口網站下載 1-2 TB 的資料？**
 
@@ -64,7 +64,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
  您可以使用 [Blob 移轉指令碼](../scripts/storage-common-transfer-between-storage-accounts.md)來達成。
  
-## <a name="migration-or-backup"></a>遷移或備份
+## <a name="migration-or-backup"></a>移轉或備份
 
 **如何在儲存體容器之間移動資料？**
 
@@ -72,7 +72,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 1.  在目的地 Blob 中建立容器 (資料夾)。
 
-2.  使用[AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/)將原始 blob 容器的內容複寫到不同的 blob 容器。
+2.  請使用 [AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/) 將原始 Blob 容器的內容複製到其他 Blob 容器。
 
 **如何建立 PowerShell 指令碼，以將 Azure 檔案共用的資料移至 Azure 儲存體中的其他檔案共用？**
 
@@ -82,7 +82,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 請使用 AzCopy 將大型 .csv 檔案上傳到 Azure 儲存體。 如需詳細資訊，請參閱[使用 AzCopy on Windows 傳送資料](storage-use-azcopy.md)和[使用 AzCopy on Linux 傳送資料](storage-use-azcopy-linux.md)。
 
-**我必須每天將記錄從 D 磁片磁碟機移到我的 Azure 儲存體帳戶。如何? 自動化了嗎？**
+**我必須每天將記錄從磁碟機 D 移至 Azure 儲存體帳戶。如何自動進行此作業？**
 
 您可以使用 AzCopy，並在工作排程器中建立工作。 請使用 AzCopy 批次指令碼，將檔案上傳到 Azure 儲存體帳戶。 如需詳細資訊，請參閱[如何設定和執行雲端服務的啟動工作](../../cloud-services/cloud-services-startup-tasks.md)。
 
@@ -164,7 +164,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /S
 
-    若只要複製一個磁碟，請在 **Pattern ** 中提供磁碟的名稱：
+    若只要複製一個磁碟，請在 **Pattern**  中提供磁碟的名稱：
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
@@ -194,17 +194,17 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`：提供來源儲存體帳戶的 URI (視容器而定)。  
-    - `/Dest`：提供目標儲存體帳戶的 URI (視容器而定)。  
-    - `/SourceKey`：提供來源儲存體帳戶的主索引鍵。 您可以透過選取儲存體帳戶，從 Azure 入口網站複製這個索引鍵。  
-    - `/DestKey`：提供目標儲存體帳戶的主索引鍵。 您可以透過選取儲存體帳戶，從入口網站複製這個索引鍵。
+    - `/Source`:提供來源儲存體帳戶的 URI (視容器而定)。  
+    - `/Dest`:提供目標儲存體帳戶的 URI (視容器而定)。  
+    - `/SourceKey`:提供來源儲存體帳戶的主索引鍵。 您可以透過選取儲存體帳戶，從 Azure 入口網站複製這個索引鍵。  
+    - `/DestKey`:提供目標儲存體帳戶的主索引鍵。 您可以透過選取儲存體帳戶，從入口網站複製這個索引鍵。
 
 執行此命令之後，容器檔案會移到目標儲存體帳戶。
 
 > [!NOTE]
-> 當您從一個 Azure blob 複製到另一個時，AzCopy CLI 無法與**模式**參數搭配使用。
+> 從某個 Azure Blob 複製到另一個 Azure Blob 時，AzCopy CLI 不能與 **Pattern** 參數一起使用。
 >
-> 您可以直接複製和編輯 AzCopy 命令，並交叉檢查以確定 **Pattern** 符合來源。 另請確認 **/S** 萬用字元有效。 如需詳細資訊，請參閱[AzCopy 參數](storage-use-azcopy.md)。
+> 您可以直接複製和編輯 AzCopy 命令，並交叉檢查以確定 **Pattern** 符合來源。 另請確認 **/S** 萬用字元有效。 如需詳細資訊，請參閱 [AzCopy 參數](storage-use-azcopy.md)。
 
 **如何備份 Azure 檔案儲存體？**
 
@@ -237,13 +237,13 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 **將儲存體帳戶的複寫從異地備援儲存體變更為本地備援儲存體是否有任何必要條件？**
 
-不需要。
+否。
 
 **如何將檔案共用轉換至 Azure 進階儲存體？**
 
 Azure 檔案共用不允許使用進階儲存體。
 
-**如何? 從標準儲存體帳戶升級至 premium 儲存體帳戶嗎？如何? 從 premium 儲存體帳戶降級至標準儲存體帳戶？**
+**如何從標準儲存體帳戶升級至進階儲存體帳戶？如何從進階儲存體帳戶降級至標準儲存體帳戶？**
 
 您必須建立目的地儲存體帳戶，將資料從來源帳戶複製到目的地帳戶，然後刪除來源帳戶。 您可以使用 AzCopy 之類的工具來複製資料。
 
@@ -263,11 +263,11 @@ Azure 檔案共用不允許使用進階儲存體。
 
 -   如果您是從 Microsoft Azure 儲存體命令列存取 AzCopy，請輸入 **AzCopy**。 命令列是與 AzCopy 一同安裝的。
 
--   如果您安裝的是 32 位元版本，則位於：**%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy**。
+-   如果您安裝的是 32 位元版本，則位於： **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy**。
 
--   如果您安裝的是 64 位元版本，則位於：**%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy**。
+-   如果您安裝的是 64 位元版本，則位於： **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy**。
 
-**如何? 將 HTTPS 自訂網域與我的儲存體帳戶搭配使用？例如，我要如何讓 "HTTPs：\//mystorageaccountname.blob.core.windows.net/images/image.gif" 顯示為 "HTTPs：\//www.contoso.com/images/image.gif"？**
+**如何將 HTTPS 自訂網域與我的儲存體帳戶搭配使用？例如，如何讓 "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" 顯示為 "https:\//www.contoso.com/images/image.gif"？**
 
 具有自訂網域的儲存體帳戶目前不支援 TLS/SSL。
 但可以使用非 HTTPS 的自訂網域。 如需詳細資訊，請參閱[針對 Blob 儲存體端點設定自訂網域名稱](../blobs/storage-custom-domain-name.md)。
@@ -284,17 +284,17 @@ Azure 檔案共用不允許使用進階儲存體。
 
 **對於複寫的儲存體帳戶 (例如，區域備援儲存體、異地備援儲存體或讀取權限異地備援儲存體)，如何存取儲存在次要區域的資料？**
 
--   如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程式的詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
+-   如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程序的詳細資訊，請參閱[災害復原和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
 
 -   如果您使用的是讀取權限異地備援儲存體，可以隨時存取次要區域中的資料。 請使用下列其中一個方法：  
 
     - **AzCopy**：將 **-secondary** 附加至 URL 中的儲存體帳戶名稱，即可存取次要端點。 例如：  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS 權杖**︰使用 SAS 權杖以存取來自端點的資料。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
+    - **SAS 權杖**：使用 SAS 權杖以存取來自端點的資料。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
 
-**如何? 使用 FTP 存取儲存體帳戶中的資料嗎？**
+**如何使用 FTP 存取儲存體帳戶中的資料？**
 
 無法使用 FTP 直接存取儲存體帳戶。 不過可以安裝一個 Azure 虛擬機器，然後將 FTP 伺服器安裝在虛擬機器上。 您可以讓 FTP 伺服器將檔案儲存在 Azure 檔案共用中，或是儲存在虛擬機器可用的資料磁碟裡。
 

@@ -1,22 +1,22 @@
 ---
 title: 在 Android 應用程式中取得權杖
 titleSuffix: Azure AD B2C
-description: 如何建立使用 AppAuth 搭配 Azure Active Directory B2C 來管理使用者身分識別和驗證使用者的 Android 應用程式。
+description: 如何建立 Android 應用程式，並使用 AppAuth 和 Azure Active Directory B2C 來管理使用者身分識別和驗證使用者。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183769"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638382"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 應用程式登入
 
@@ -35,11 +35,11 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 
 ## <a name="create-an-application"></a>建立應用程式
 
-接下來，在您的 Azure AD B2C 租使用者中註冊應用程式。 這會提供 Azure AD 與您的應用程式安全地通訊所需的資訊。
+然後，在您的 Azure AD B2C 租用戶中註冊應用程式。 這會為 Azure AD 提供其所需的資訊，使其與應用程式安全地進行通訊。
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-記錄 [應用程式 (用戶端) 識別碼]****，以便在稍後的步驟中使用。
+記錄 [應用程式 (用戶端) 識別碼]，以便在稍後的步驟中使用。
 
 另請記錄您的自訂重新導向 URI，以便在稍後的步驟中使用。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
@@ -47,9 +47,9 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 
 在 Azure AD B2C 中，使用者體驗是由[使用者流程](user-flow-overview.md)所定義，這是一組用來控制 Azure AD 行為的原則。 此應用程式需要登入和註冊使用者流程。 建立使用者流程時，請務必：
 
-* 在使用者流程中選擇 [顯示名稱]**** 作為註冊屬性。
-* 在每個使用者流程中，選擇 [顯示名稱]**** 和 [物件識別碼]**** 應用程式宣告。 您也可以選擇其他宣告。
-* 建立每個使用者流程之後，請複製其 [名稱]****。 其前置詞應該為 `b2c_1_`。  您稍後需要用到此使用者流程名稱。
+* 在使用者流程中選擇 [顯示名稱] 作為註冊屬性。
+* 在每個使用者流程中，選擇 [顯示名稱] 和 [物件識別碼] 應用程式宣告。 您也可以選擇其他宣告。
+* 建立每個使用者流程之後，請複製其 [名稱]。 其前置詞應該為 `b2c_1_`。  您稍後需要用到此使用者流程名稱。
 
 建立您的使用者流程後，就可以開始建置您的應用程式。
 
@@ -65,17 +65,17 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 > AppAuth 支援 Android API 16 (Jellybean) 和更新版本。 我們建議使用 API 23 和更新版本。
 >
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 您可以指定探索 URI，或指定授權端點和權杖端點 URI，以設定與 Azure AD B2C 通訊。 不論何者，您都需要下列資訊：
 
 * 租用戶識別碼 (例如，contoso.onmicrosoft.com)
 * 使用者流程名稱 (例如，B2C\_1\_SignUpIn)
 
-如果您選擇自動探索授權和權杖端點 URI，您必須從探索 URI 擷取資訊。 取代下列 URL 中的 Tenant\_ID 和Policy\_Name，即可產生探索 URI︰
+如果您選擇自動探索授權和權杖端點 URI，您必須從探索 URI 擷取資訊。 取代下列 URL 中的 `<tenant-id>` 和 `<policy-name>`，即可產生探索 URI︰
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 然後，您可以取得授權和權杖端點 URI，並執行下列命令來建立 AuthorizationServiceConfiguration 物件︰
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-除了使用探索來取得授權和權杖端點 URI，您也可以取代下列 URL 中的 Tenant\_ID 和 Policy\_Name，以明確指定它們︰
+除了使用探索來取得授權和權杖端點 URI，您也可以取代下列 URL 中的 `<tenant-id>` 和 `<policy-name>`，明確加以指定︰
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 執行下列程式碼來建立 AuthorizationServiceConfiguration 物件︰
@@ -120,8 +120,8 @@ AuthorizationServiceConfiguration config =
 
 設定或擷取授權服務組態之後，就可以建構授權要求。 若要建立要求，您需要下列資訊︰
 
-* 您先前記錄的用戶端識別碼（應用程式識別碼）。 例如： `00000000-0000-0000-0000-000000000000` 。
-* 您稍早記錄的自訂重新導向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 您先前記錄的用戶端識別碼 (應用程式識別碼)。 例如： `00000000-0000-0000-0000-000000000000` 。
+* 您先前記錄的自訂重新導向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 這兩個項目應該已在您[註冊應用程式](#create-an-application)時儲存。
 

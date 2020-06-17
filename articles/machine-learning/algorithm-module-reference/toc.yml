@@ -155,7 +155,7 @@
     - name: 初始化映像轉換
       href: init-image-transformation.md
     - name: 分割映像目錄
-      href: split-to-image-directory.md
+      href: split-image-directory.md
     - name: DenseNet
       href: densenet.md
     - name: ResNet

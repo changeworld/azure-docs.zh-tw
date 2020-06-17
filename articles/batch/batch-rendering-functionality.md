@@ -1,16 +1,16 @@
 ---
 title: 轉譯功能
-description: 標準 Azure Batch 功能是用來執行轉譯工作負載和應用程式。 Batch 包含支援轉譯工作負載的特定功能。
+description: 標準的 Azure Batch 功能用來執行轉譯工作負載和應用程式。 Batch 包含特定的功能來支援轉譯工作負載。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115749"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726463"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 轉譯功能
 
@@ -28,15 +28,15 @@ ms.locfileid: "82115749"
 
 如需範例集區設定，請參閱 [Azure CLI 轉譯教學課程](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)。  Azure 入口網站和 Batch Explorer 提供 GUI 工具，讓您在建立集區時選取轉譯 VM 映像。  如果使用 Batch API，則在建立集區時指定 [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) 的下列屬性值：
 
-| 發行者 | 產品 | SKU | 版本 |
+| 發行者 | 供應項目 | SKU | 版本 |
 |---------|---------|---------|--------|
 | 批次 | rendering-centos73 | 轉譯 | 最新 |
 | 批次 | rendering-windows2016 | 轉譯 | 最新 |
 
 如果集區 VM 上需要額外的應用程式，則適用其他選項：
 
-* 來自共用映射資源庫的自訂映射：
-  * 使用此選項，可以為您的虛擬機器設定所需要的確切應用程式與特定版本。 如需詳細資訊，請參閱[使用共用映射資源庫建立集](batch-sig-images.md)區。 Autodesk 和 Chaos Group 已分別修改 Arnold 和 V-Ray，以驗證 Azure Batch 授權服務。 請確定您的應用程式版本具有此支援，否則按使用次數付費授權將無法運作。 目前版本的 Maya 或 3ds Max 在執行無周邊 (以批次/命令列模式) 時不需要授權伺服器。 如果您不確定如何繼續使用此選項，請連絡 Azure 支援。
+* 共用映像庫中的自訂映像：
+  * 使用此選項，可以為您的虛擬機器設定所需要的確切應用程式與特定版本。 如需詳細資訊，請參閱[使用共用映像庫建立集區](batch-sig-images.md)。 Autodesk 和 Chaos Group 已分別修改 Arnold 和 V-Ray，以驗證 Azure Batch 授權服務。 請確定您的應用程式版本具有此支援，否則按使用次數付費授權將無法運作。 目前版本的 Maya 或 3ds Max 在執行無周邊 (以批次/命令列模式) 時不需要授權伺服器。 如果您不確定如何繼續使用此選項，請連絡 Azure 支援。
 * [應用程式套件](https://docs.microsoft.com/azure/batch/batch-application-packages)：
   * 將使用一或多個 ZIP 檔案的應用程式檔案封裝、透過 Azure 入口網站上傳，然後在集區設定中指定套件。 建立集區 VM 時，會下載 ZIP 檔案並將檔案解壓縮。
 * 資源檔：

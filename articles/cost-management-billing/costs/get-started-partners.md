@@ -3,17 +3,17 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204880"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554562"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -40,7 +40,7 @@ CSP 合作夥伴可使用成本管理執行下列動作：
 
 Azure 成本管理中提供的所有功能，也都適用於 REST API。 使用這些 API 可將成本管理工作自動化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 就合作夥伴而言，Azure 成本管理依其原生狀態僅適用於 Azure 方案中的訂用帳戶。
 
@@ -48,7 +48,7 @@ Azure 成本管理中提供的所有功能，也都適用於 REST API。 使用�
 
 Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
-如需為計費帳戶啟用 Azure 成本管理及指派其存取權的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。 「全域系統管理員」  和「管理員代理人」  角色可以管理計費帳戶的成本。
+如需為計費帳戶啟用 Azure 成本管理及指派其存取權的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。 「全域系統管理員」和「管理員代理人」角色可以管理計費帳戶的成本。
 
 若要在訂用帳戶範圍存取 Azure 成本管理，任何對訂用帳戶具有 RBAC 存取權的使用者，都可檢視以零售 (隨用隨付) 費率計算的成本。 不過，必須啟用客戶租用戶的成本可見性原則。 若要檢視支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
 
@@ -69,7 +69,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 無論客戶的帳單貨幣為何，合作夥伴在使用計費帳戶範圍對其客戶、訂用帳戶、資源和資源群組設定預算及管理成本時，都會以美元為單位。
 
-合作夥伴在成本分析檢視中也會以特定的帳單貨幣來篩選客戶的成本。 選取 [實際成本]  清單，可用支援的客戶帳單貨幣檢視成本。
+合作夥伴在成本分析檢視中也會以特定的帳單貨幣來篩選客戶的成本。 選取 [實際成本] 清單，可用支援的客戶帳單貨幣檢視成本。
 
 ![此範例顯示為實際成本選取貨幣的情形](./media/get-started-partners/actual-cost-selector.png)
 
@@ -108,7 +108,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>合作夥伴在成本管理中對計費範圍的存取權
 
-只有具備「全域系統管理員」  和「管理員代理人」  角色的使用者，才能直接在合作夥伴的 Azure 租用戶中管理及檢視計費帳戶、帳單設定檔和客戶的成本。 如需合作夥伴中心角色的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。
+只有具備「全域系統管理員」和「管理員代理人」角色的使用者，才能直接在合作夥伴的 Azure 租用戶中管理及檢視計費帳戶、帳單設定檔和客戶的成本。 如需合作夥伴中心角色的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。
 
 ## <a name="enable-cost-management-in-the-customer-tenant"></a>在客戶租用戶中啟用成本管理
 
@@ -122,27 +122,27 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 合作夥伴可使用下列資訊，啟用讓客戶能檢視 Azure 使用費的原則。
 
-在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]  。 選取相關的 Microsoft 合作夥伴合約計費帳戶，然後選取 [客戶]  。 客戶的清單會與計費帳戶產生關聯。
+在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]。 選取相關的 Microsoft 合作夥伴合約計費帳戶，然後選取 [客戶]。 客戶的清單會與計費帳戶產生關聯。
 
 在客戶清單中，選取您要允許他們檢視成本的客戶。
 
 ![在成本管理中選取客戶](./media/get-started-partners/customer-list.png)
 
-在 [設定]  底下，選取 [原則]  。
+在 [設定] 底下，選取 [原則]。
 
-針對與所選客戶的訂用帳戶相關聯的 [Azure 使用情況]  費用，會顯示目前的成本可見性原則。
+針對與所選客戶的訂用帳戶相關聯的 [Azure 使用情況] 費用，會顯示目前的成本可見性原則。
 ![允許客戶檢視隨用隨付費用的原則](./media/get-started-partners/cost-management-billing-policies.png)
 
-當此原則設定為 [否]  時，Azure 成本管理將不適用於與客戶相關聯的訂用帳戶使用者。 依預設會停用所有訂用帳戶使用者的成本可見性原則，除非合作夥伴加以啟用。
+當此原則設定為 [否] 時，Azure 成本管理將不適用於與客戶相關聯的訂用帳戶使用者。 依預設會停用所有訂用帳戶使用者的成本可見性原則，除非合作夥伴加以啟用。
 
-當成本原則設定為 [是]  時，與客戶租用戶相關聯的訂用帳戶使用者將可查看以隨用隨付費率計算的使用費。
+當成本原則設定為 [是] 時，與客戶租用戶相關聯的訂用帳戶使用者將可查看以隨用隨付費率計算的使用費。
 
 成本可見性原則啟用時，所有具有訂用帳戶使用量的服務，都會顯示以隨用隨付費率計算的成本。 保留使用量的實際和攤提成本會將費用顯示為零。 購買和權利不會與特定訂用帳戶相關聯。 因此，購買不會顯示在訂用帳戶範圍中。
 
 
 ### <a name="view-customer-costs"></a>檢視客戶成本
 
-若要檢視客戶租用戶的成本，請開啟 [成本管理 + 計費]  。 選取 [成本分析]  ，然後將範圍變更為客戶租用戶訂用帳戶，以開始審查成本。
+若要檢視客戶租用戶的成本，請開啟 [成本管理 + 計費]。 選取 [成本分析]，然後將範圍變更為客戶租用戶訂用帳戶，以開始審查成本。
 
 ![以客戶的身分檢視成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -152,7 +152,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 
-對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴可在不同客戶的成本分析中，探索及分析特定客戶或發票的發票成本。 在[成本分析](quick-acm-cost-analysis.md)檢視中，您也可以[儲存檢視](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，並將資料匯出至 [CSV 和 PNG 檔案](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
+對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴可在不同客戶的成本分析中，探索及分析特定客戶或發票的發票成本。 在[成本分析](quick-acm-cost-analysis.md)檢視中，您也可以[儲存檢視](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，並將資料匯出至 [CSV 和 PNG 檔案](quick-acm-cost-analysis.md#download-usage-data)。
 
 對客戶租用戶中的訂用帳戶具有存取權的 RBAC 使用者也可以為客戶租用戶中的訂用帳戶分析零售成本、儲存檢視，以及將資料匯出至 CSV 和 PNG 檔案。
 
@@ -234,9 +234,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 在 Azure 成本管理中，合作夥伴可以使用成本分析來檢視獲得 PEC 權益的成本。
 
-在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]  。 在 [成本管理]  底下，選取 [成本分析]  。
+在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]。 在 [成本管理] 底下，選取 [成本分析]。
 
-[成本分析] 檢視會顯示合作夥伴計費帳戶的成本。 視需要針對合作夥伴、特定客戶或帳單設定檔選取 [範圍]  ，以進行發票的對帳。
+[成本分析] 檢視會顯示合作夥伴計費帳戶的成本。 視需要針對合作夥伴、特定客戶或帳單設定檔選取 [範圍]，以進行發票的對帳。
 
 在環圈圖中選取下拉式清單，然後選取 **PartnerEarnedCreditApplied** 以深入探索 PEC 成本。
 
@@ -246,10 +246,10 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 當 **PartnerEarnedCreditApplied** 屬性為 _False_ 時，表示相關聯的成本不符合獲得點數的必要資格。 或者，購買的服務不符合讓合作夥伴取得點數的資格。
 
-服務使用方式資料通常需要 8-24 小時才會出現在成本管理中。 如需詳細資訊，請參閱[使用方式資料更新頻率不相同](understand-cost-mgt-data.md#usage-data-update-frequency-varies)。 PEC 點數會在存取後的 48 小時內出現在 Azure 成本管理中。
+服務使用方式資料通常需要 8-24 小時才會出現在成本管理中。 如需詳細資訊，請參閱[成本和使用量資料更新與保留](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。 PEC 點數會在存取後的 48 小時內出現在 Azure 成本管理中。
 
 
-您也可以使用 [群組依據]  選項，依 **PartnerEarnedCreditApplied** 屬性進行分組和篩選。 請使用這些選項來查看具有和沒有 PEC 的成本。
+您也可以使用 [群組依據] 選項，依 **PartnerEarnedCreditApplied** 屬性進行分組和篩選。 請使用這些選項來查看具有和沒有 PEC 的成本。
 
 ![依合作夥伴獲得的點數進行分組或篩選](./media/get-started-partners/cost-analysis-pec2.png)
 
@@ -261,11 +261,11 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作夥伴租用戶或客戶租用戶中建立匯出
 
-在 Azure 入口網站中，登入合作夥伴租用戶或客戶租用戶，然後選取 [成本管理 + 計費]  。 選取適當的範圍 (例如 Microsoft 合作夥伴合約計費帳戶)，然後選取 [成本分析]  。 在頁面載入後，選取 [匯出]  。 選取 [排程匯出] 底下的 [檢視所有匯出]  。
+在 Azure 入口網站中，登入合作夥伴租用戶或客戶租用戶，然後選取 [成本管理 + 計費]。 選取適當的範圍 (例如 Microsoft 合作夥伴合約計費帳戶)，然後選取 [成本分析]。 在頁面載入後，選取 [匯出]。 選取 [排程匯出] 底下的 [檢視所有匯出]。
 
 ![選取匯出並檢視所有匯出](./media/get-started-partners/export01.png)
 
-接著，選取 [新增]  並輸入名稱，然後選取匯出類型。 選取 [儲存體]  索引標籤，然後輸入必要的資訊。
+接著，選取 [新增] 並輸入名稱，然後選取匯出類型。 選取 [儲存體] 索引標籤，然後輸入必要的資訊。
 
 ![新增匯出並選取儲存體索引標籤](./media/get-started-partners/export02.png)
 
@@ -273,9 +273,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 針對客戶租用戶中的 RBAC 使用者，選取客戶租用戶中的訂用帳戶。 使用該訂用帳戶建立 Azure 儲存體帳戶。
 
-檢查內容，然後選取 [建立]  以排程匯出。
+檢查內容，然後選取 [建立] 以排程匯出。
 
-若要驗證匯出清單中的資料，請選取儲存體帳戶名稱。 在 [儲存體帳戶] 頁面上選取 [容器]  ，然後選取容器。 瀏覽至對應的資料夾，並選取 CSV 檔案。 選取 [下載]  以取得 CSV 檔案，並加以開啟。 匯出的資料會類似於 Azure 入口網站中的成本資料和使用情況詳細資料。
+若要驗證匯出清單中的資料，請選取儲存體帳戶名稱。 在 [儲存體帳戶] 頁面上選取 [容器]，然後選取容器。 瀏覽至對應的資料夾，並選取 CSV 檔案。 選取 [下載] 以取得 CSV 檔案，並加以開啟。 匯出的資料會類似於 Azure 入口網站中的成本資料和使用情況詳細資料。
 
 ![匯出的資料範例](./media/get-started-partners/example-export-data.png)
 
@@ -364,7 +364,7 @@ GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{bi
 GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-呼叫回應中所傳回的 `Location` URI，以檢查作業狀態。 當狀態為「已完成」  時，`downloadUrl` 屬性會包含一個連結，供您用來下載產生的報表。
+呼叫回應中所傳回的 `Location` URI，以檢查作業狀態。 當狀態為「已完成」時，`downloadUrl` 屬性會包含一個連結，供您用來下載產生的報表。
 
 
 #### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>取得或下載所用 Azure 服務的價位表

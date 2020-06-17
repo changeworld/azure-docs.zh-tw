@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure 中 Windows Vm 的 Scheduled Events
+title: Azure 中 Windows VM 的已排定事件
 description: 針對您的 Windows 虛擬機器，使用 Azure 中繼資料服務排定事件。
 author: mimckitt
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099541"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779788"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
 
@@ -37,10 +37,10 @@ ms.locfileid: "82099541"
 使用排程的事件，應用程式就可以探索維護所發生的時間，以及限制其影響的觸發工作。 啟用已排定事件可讓您的虛擬機器在執行維護活動之前有最短的時間。 如需詳細資料，請參閱下面的＜事件排程＞一節。
 
 排程的事件會提供下列使用案例中的事件：
-- [平臺起始的維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新開機、即時移轉或保留主機的記憶體更新）
-- 虛擬機器在降級的[主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行，預測即將失敗
+- [平台起始的維護](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (例如，主機的 VM 重新開機、即時移轉或記憶體保留更新)
+- 虛擬機器正在預期即將失敗的[效能下降主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
-- [找出 VM](spot-vms.md)和[點擴展集](../../virtual-machine-scale-sets/use-spot.md)實例收回
+- [現成 VM](spot-vms.md) 和[現成擴展集](../../virtual-machine-scale-sets/use-spot.md)執行個體收回
 
 ## <a name="the-basics"></a>基本概念  
 
@@ -58,8 +58,8 @@ ms.locfileid: "82099541"
 
 | 版本 | 版本類型 | 區域 | 版本資訊 | 
 | - | - | - | - |
-| 2019-01-01 | 正式運作 | 全部 | <li> 已新增對虛擬機器擴展集「終止」的支援 |
-| 2017-11-01 | 正式運作 | 全部 | <li> 已新增對點 VM 收回事件 ' Preempt ' 的支援<br> | 
+| 2019-01-01 | 正式運作 | 全部 | <li> 已新增支援虛擬機器擴展集 EventType 'Terminate' |
+| 2017-11-01 | 正式運作 | 全部 | <li> 已新增支援現成 VM 收回 EventType 'Preempt'<br> | 
 | 2017-08-01 | 正式運作 | 全部 | <li> 已從 IaaS VM 的資源名稱中移除預留底線<br><li>強制所有要求的中繼資料標頭需求 | 
 | 2017-03-01 | 預覽 | 全部 |<li>初始版本 |
 
@@ -112,10 +112,10 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 |屬性  |  描述 |
 | - | - |
 | EventId | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`：虛擬機器已排程暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或開啟的檔案。 <li>`Reboot`：虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`︰虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`：正在刪除點虛擬機器（暫時磁片會遺失）。 <li> `Terminate`：已排程要刪除虛擬機器。 |
+| EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`:虛擬機器已排定暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或已開啟的檔案。 <li>`Reboot`:虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`:虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`:正在刪除現成虛擬機器 (暫時磁碟會遺失)。 <li> `Terminate`:虛擬機器已排定要刪除。 |
 | ResourceType | 受此事件影響的資源類型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| 事件狀態 | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`︰此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`︰已啟動事件。</ul> 如果未提供任何 `Completed` 或類似的狀態，事件完成時，將不會再傳回事件。
+| 事件狀態 | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 如果未提供任何 `Completed` 或類似的狀態，事件完成時，將不會再傳回事件。
 | NotBefore| 自此之後可能會啟動此事件的時間。 <br><br> 範例： <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>事件排程
@@ -127,17 +127,17 @@ DocumentIncarnation 是 ETag，透過它很容易就能檢查自從上次查詢�
 | 重新啟動 | 15 分鐘 |
 | 重新部署 | 10 分鐘 |
 | Preempt | 30 秒 |
-| 結束 | [可](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)設定的使用者：5到15分鐘 |
+| Terminate | [可由使用者設定](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5 至 15 分鐘 |
 
 > [!NOTE] 
-> 在某些情況下，Azure 會因為硬體降級而預測主機失敗，並會嘗試藉由排程遷移來減輕服務中斷的影響。 受影響的虛擬機器將會收到已排程`NotBefore`的事件，其通常是在未來幾天的時間。 實際的時間會依預測的失敗風險評估而有所不同。 Azure 會在可能的情況下，儘量提供7天的事先通知，但實際的時間會有所不同，如果預測是硬體故障即將的機率很高，可能會較小。 若要將服務的風險降到最低，以免系統起始遷移之前發生硬體故障，建議您儘快自動重新部署虛擬機器。
+> 在某些情況下，Azure 能夠預測主機因為硬體效能下降而失敗，並嘗試排定移轉來減輕服務中斷的影響。 受影響的虛擬機器會收到含有 `NotBefore` (通常是未來幾天) 的已排定事件。 實際時間依預測的失敗風險評量而有所不同。 Azure 會盡可能提前 7 天通知，但實際時間不一定，如果預期硬體很可能即將失敗，則時間可能更短。 萬一硬體在系統起始的移轉之前失敗，為了盡可能降低服務遭受的風險，建議您盡快自行重新部署虛擬機器。
 
 ### <a name="event-scope"></a>事件範圍     
 排程的事件會傳送到：
- - 獨立虛擬機器
- - 雲端服務中的所有虛擬機器      
- - 可用性設定組中的所有虛擬機器      
- - 擴展集放置群組中的所有虛擬機器。         
+ - 獨立虛擬機器。
+ - 雲端服務中的所有虛擬機器。     
+ - 可用性設定組中的所有虛擬機器。     
+ - 擴展集放置群組 (包括 Batch) 中的所有虛擬機器。       
 
 因此，您應該檢查事件中的 `Resources` 欄位以找出哪些 VM 即將受到影響。 
 
@@ -227,6 +227,6 @@ foreach($event in $scheduledEvents.Events)
 ## <a name="next-steps"></a>後續步驟 
 
 - 在 Azure Friday 上觀賞[已排定事件示範](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)。 
-- 請參閱[Azure 實例中繼資料 Scheduled Events GitHub 存放庫](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中的 Scheduled Events 程式碼範例
-- 深入瞭解[實例中繼資料服務](instance-metadata-service.md)中提供的 api。
-- 瞭解[Azure 中的 Windows 虛擬機器預定進行的維修](planned-maintenance.md)。
+- 在 [Azure 執行個體中繼資料已排定事件 GitHub 存放庫](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm) \(英文\) 中檢閱排程的事件程式碼範例
+- 深入了解[執行個體中繼資料服務](instance-metadata-service.md)中提供的 API。
+- 了解 [Azure 中 Windows 虛擬機器預定進行的維修](planned-maintenance.md)。

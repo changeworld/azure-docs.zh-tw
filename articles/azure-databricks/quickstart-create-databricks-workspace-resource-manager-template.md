@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/27/2020
-ms.openlocfilehash: 8435704963e832020ecff27a11d00793ad28890c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c8503aee5cefbe197fd63cd6406006a1cdf8afa9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171033"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463139"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-by-using-the-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本，建立 Azure Databricks 工作區
 
@@ -33,13 +33,13 @@ ms.locfileid: "84171033"
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-databricks-workspace/)。
 
-:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53":::
+:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53" highlight="33-46":::
 
-範本中定義的 Azure 資源為 Microsoft.Databricks/workspaces：建立 Azure Databricks 工作區。 
+範本中定義的 Azure 資源為 [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces)：建立 Azure Databricks 工作區。
 
-## <a name="deploy-the-template"></a>部署範本
+### <a name="deploy-the-template"></a>部署範本
 
 在本節中，您會使用 Azure Resource Manager 範本建立 Azure Databricks 工作區。
 

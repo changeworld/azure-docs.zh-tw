@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585397"
+ms.locfileid: "83647510"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解來自 Azure 串流分析的輸出
 
@@ -80,7 +80,7 @@ Azure 串流分析作業可以輸出至 Azure Synapse Analytics 中的 SQL 集�
 
 SQL 集區資料表必須先存在，您才能將其當做輸出新增至您的串流分析作業。 資料表結構描述必須符合作業輸出中的欄位及其類型。 
 
-若要使用 Azure Synapse 作為輸出，您必須確定已設定儲存體帳戶。 瀏覽到儲存體帳戶設定以設定儲存體帳戶。 僅允許支援資料表的儲存體帳戶類型：一般用途 V2 和一般用途 V1。   
+若要使用 Azure Synapse 作為輸出，您必須確定已設定儲存體帳戶。 瀏覽到儲存體帳戶設定以設定儲存體帳戶。 僅允許支援資料表的儲存體帳戶類型：一般用途 V2 和一般用途 V1。 僅選取標準層。 不支援進階層。   
 
 下表列出屬性名稱及其描述以建立 Azure Synapse Analytics 輸出。
 
@@ -365,7 +365,7 @@ Azure 串流分析針對已成功處理的批次，預期來自 Functions 應用
 您也可以使用您查詢中的 `INTO <partition count>` (請參閱 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) 子句來控制輸出寫入器的數目，有助於達成所需的作業拓撲。 如果您的輸出配接器尚未分割，在某個輸入分割區中缺少資料的情況下，將會導致最多為延遲傳入時間長度的延遲。 在這種情況下，輸出會合併為單一寫入器，這可能會在您的管線中產生瓶頸。 若要深入了解延遲傳入原則，請參閱 [Azure 串流分析事件的順序考量](stream-analytics-out-of-order-and-late-events.md)。
 
 ## <a name="output-batch-size"></a>輸出批次大小
-Azure 串流分析使用可變大小批次來處理事件及寫入至輸出。 串流分析引擎通常不會一次撰寫一個訊息，並會使用批次以提升效率。 當傳入和傳出事件的速率很高時，串流分析會使用較大的批次。 當輸出速率較低時，其會使用較小的批次來降低延遲。
+Azure 串流分析使用可變大小批次來處理事件及寫入至輸出。 串流分析引擎通常不會一次撰寫一個訊息，並會使用批次以提升效率。 當傳入和傳出事件的速率很高時，串流分析會使用較大的批次。 當輸出速率較低時，它會使用較小的批次來降低延遲。
 
 下表說明輸出批次處理的部分考量：
 

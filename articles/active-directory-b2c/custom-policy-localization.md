@@ -1,36 +1,36 @@
 ---
 title: 使用自訂原則將應用程式的使用者介面當地語系化
-description: 瞭解如何在 Azure Active Directory B2C 中使用自訂原則來當地語系化使用者介面。
+description: 深入了解在 Azure Active Directory B2C 中使用自訂原則將使用者介面當地語系化。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545876"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636267"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用中的自訂原則，將應用程式的使用者介面當地語系化 Azure Active Directory B2C
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將應用程式的使用者介面當地語系化
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）中的語言自訂可讓您配合不同的語言，以符合客戶的需求。 Microsoft 提供[36 語言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。 
+Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不同的語言，以符合您客戶的需求。 Microsoft 提供 [36 種語言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。 
 
-本文說明如何在使用者旅程圖的適用原則中，支援多個地區設定或語言。 當地語系化需要三個步驟：設定支援語言的明確清單、提供特定語言的字串和集合，以及編輯頁面的[內容定義](contentdefinitions.md)。 
+本文說明如何在使用者旅程圖的適用原則中，支援多個地區設定或語言。 當地語系化需要三個步驟：設定支援語言的明確清單、提供特定語言的字串與集合，以及編輯頁面的[內容定義](contentdefinitions.md)。 
 
-## <a name="set-up-the-list-of-supported-languages"></a>設定支援的語言清單
+## <a name="set-up-the-list-of-supported-languages"></a>設定支援語言的清單
 
-開啟原則的擴充檔案。 例如， <em> `SocialAndLocalAccounts/` </em>。
+開啟原則的擴充檔案。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
-1. 新增具有`Localization`支援語言的元素：英文（預設）和西班牙文。  
+1. 新增具有支援語言的 `Localization` 元素：英文 (預設值) 和西班牙文。  
 
 
 ```XML
@@ -44,12 +44,12 @@ Azure Active Directory B2C （Azure AD B2C）中的語言自訂可讓您配合�
 
 ## <a name="provide-language-specific-labels"></a>提供特定語言的標籤
 
-元素的 LocalizedResources 包含當地語系化字串的清單。 [LocalizedResources](localization.md#localizedresources) `Localization` 當地語系化的資源元素具有用來唯一識別當地語系化資源的識別碼。 稍後會在[內容定義](contentdefinitions.md)元素中使用此識別碼。
+`Localization` 元素的 [LocalizedResources](localization.md#localizedresources) 包含當地語系化字串的清單。 當地語系化資源元素具有識別碼，可用來唯一識別當地語系化資源。 稍後會在[內容定義](contentdefinitions.md)元素中使用此識別碼。
 
-您可以為內容定義和您想要支援的任何語言設定當地語系化的資源元素。 若要自訂英文和西班牙文的統一註冊或登入頁面，請在專案結束`LocalizedResources` `</SupportedLanguages>`之後加入下列專案。
+為內容定義與您想要支援的語言設定當地語系化資源元素。 若要自訂英文和西班牙文的統一註冊或登入頁面，請在 `</SupportedLanguages>` 元素的結尾後面加入下列 `LocalizedResources` 元素。
 
 > [!NOTE]
-> 在下列範例中，我們已在`#`每一行的乞求新增井字型大小，因此您可以 easly 在螢幕上尋找當地語系化的標籤。
+> 在下列範例中，我們在每一行的開頭新增了井字型 `#` 符號，讓您可以輕鬆地在畫面上尋找當地語系化的標籤。
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -214,9 +214,9 @@ Azure Active Directory B2C （Azure AD B2C）中的語言自訂可讓您配合�
 
 ## <a name="edit-the-content-definition-with-the-localization"></a>使用當地語系化來編輯內容定義
 
-貼上您複製的 ContentDefinitions 元素完整內容，作為 BuildingBlocks 元素的子項目。
+貼上您複製的完整 ContentDefinitions 元素內容，作為 BuildingBlocks 元素的子項目。
 
-在下列範例中，會將英文（en）和西班牙文（es）自訂字串新增至註冊或登入頁面，以及本機帳戶註冊頁面。 每個 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 與其地區設定相同，但可使用任何字串做為識別碼。 針對每個語言和頁面組合，您會指向先前建立的對應**LocalizedResources** 。
+在下列範例中，英文 (en) 和西班牙文 (es) 自訂字串已新增至註冊或登入頁面，也新增到了本機帳戶的註冊頁面。 每個 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 與其地區設定相同，但可使用任何字串做為識別碼。 至於每個語言和頁面組合，請指向先前建立的對應 **LocalizedResources**。
 
 ```XML
 <ContentDefinitions>
@@ -236,30 +236,30 @@ Azure Active Directory B2C （Azure AD B2C）中的語言自訂可讓您配合�
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>上傳並測試您已更新的自訂原則
+##  <a name="upload-and-test-your-updated-custom-policy"></a>上傳並測試更新的自訂原則
 
 ### <a name="upload-the-custom-policy"></a>上傳自訂原則
 
 1. 儲存擴充檔案。
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 搜尋並選取 [ **Azure AD B2C**]。
-1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
-1. 選取 **[上傳自訂原則**]。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 搜尋並選取 [Azure AD B2C]。
+1. 在 [原則] 之下，選取 [Identity Experience Framework]。
+1. 選取 [上傳自訂原則]。
 1. 上傳您先前變更的擴充檔案。
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>使用 [**立即執行**] 測試自訂原則
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用 [立即執行] 測試自訂原則
 
-1. 選取您上傳的原則，然後選取 [**立即執行**]。
+1. 選取您上傳的原則，然後選取 [立即執行]。
 1. 您應該可以看到當地語系化的註冊或登入頁面。
 1. 按一下 [註冊] 連結，您應該就能看到當地語系化的註冊頁面。
-1. 將您的瀏覽器預設語言切換為西班牙文。 或者，您可以將查詢字串參數新增`ui_locales`至授權要求。 例如： 
+1. 將您的瀏覽器預設語言切換為西班牙文。 或者，您也可以將查詢字串參數 `ui_locales` 新增至授權要求。 例如： 
 
 ```http
-https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 IEF 參考中的[當地語系化](localization.md)元素。
-- 請參閱 Azure AD B2C 中可用的[當地語系化字串識別碼](localization-string-ids.md)清單。
+- 深入了解 IEF 參考中的[當地語系化](localization.md)元素。
+- 請參閱 Azure AD B2C 中提供的[當地語系化字串識別碼](localization-string-ids.md)清單。
 

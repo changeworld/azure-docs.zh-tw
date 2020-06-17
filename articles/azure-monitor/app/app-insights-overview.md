@@ -4,18 +4,18 @@ description: 即時 Web 應用程式的應用程式效能管理和使用量追�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996086"
 ---
 # <a name="what-is-application-insights"></a>什麼是 Application Insights？
 Application Insights (一項 [Azure 監視器](../overview.md)功能) 是開發人員和 DevOps 專業人員所適用的可延伸「應用程式效能管理」(APM) 服務。 您可以使用它來監視即時應用程式。 其會自動偵測效能異常，其中包括強大的分析工具可協助診斷問題，並了解使用者實際上如何運用您的應用程式。  它是設計來協助您持續改善效能和可用性。 其適用於各種不同平台上的應用程式，包括裝載在內部部署、混合式或任何公用雲端的 .NET、Node.js 和 JAVA 和 Python。 它可與您的 DevOps 程序整合，並有各種開發工具的連接點。 透過與 Visual Studio App Center 整合，還可以從行動應用程式監視並分析遙測資料。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights 的運作方式
-您可以在您的應用程式中安裝小型檢測套件 (SDK)，或是在[支援](../../azure-monitor/app/platforms.md)時以無程式碼方式啟用 Application Insights。 此檢測會監視您的應用程式，並使用我們稱之為檢測金鑰的唯一 GUID，將遙測資料導向至 Azure Application Insights 資源。
+您可以在您的應用程式中安裝小型檢測套件 (SDK)，或是在[支援](../../azure-monitor/app/platforms.md)時使用 Application Insights 代理程式來啟用 Application Insights。 此檢測會監視您的應用程式，並使用我們稱之為檢測金鑰的唯一 GUID，將遙測資料導向至 Azure Application Insights 資源。
 
 您不僅可以檢測 Web 服務應用程式，也可以檢測任何背景元件以及網頁本身中的 JavaScript。 應用程式及其元件可以在任何地方執行 - 不一定要裝載於 Azure 中。
 

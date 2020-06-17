@@ -7,12 +7,12 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: a8c153094d38d137ce50c6ff4f922b7708bfcb24
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266826"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610146"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 
 如需詳細資訊，請參閱[何謂 Azure Private Link？](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要整合金鑰保存庫與 Azure Private Link，您需要下列各項：
 
@@ -225,13 +225,16 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>限制和設計考量
 
+> [!NOTE]
+> 每個訂閱所啟用私人端點的金鑰保存庫數目屬於可調整的限制。 以下顯示的限制為預設限制。 如果您想要求增加服務的限制，請傳送電子郵件至 akv-privatelink@microsoft.com。 我們會根據個案核准這些要求。
+
 **價格**：如需定價資訊，請參閱 [Azure 私人連結定價](https://azure.microsoft.com/pricing/details/private-link/)。
 
 **限制**：Azure Key Vault 的私人端點僅適用於 Azure 公用區域。
 
 **每個金鑰保存庫的私人端點數目上限**：64。
 
-**每個訂用帳戶具有私人端點的金鑰保存庫數目上限**：64。
+**每個訂閱所具有私人端點的金鑰保存庫預設數目**：400。
 
 如需詳細資訊，請參閱 [Azure Private Link 服務：限制](../../private-link/private-link-service-overview.md#limitations)
 

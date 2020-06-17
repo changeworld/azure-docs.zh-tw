@@ -8,13 +8,13 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 71b22bf9bf040abcdf513a4f8baa916930c8972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 7e17da94ba124c3b20fdede93ad6b4716247c6ba
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76772213"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610112"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>教學課程：為 Linux 裝置開發及部署 Node.js IoT Edge 模組
 
@@ -44,7 +44,7 @@ ms.locfileid: "76772213"
 | **Linux AMD64** | ![在 Linux AMD64 上將 VS Code 使用於 Node.js 模組](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![在 Linux ARM32 上將 VS Code 使用於 Node.js 模組](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在開始本教學課程之前，您應該已經完成先前的教學課程，以針對 Linux 容器開發設定您的開發環境：[開發適用於 Linux 裝置的 IoT Edge 模組](tutorial-develop-for-linux.md)。 完成上述任一教學課程後，您應該會具備下列必要條件：
 
@@ -66,7 +66,7 @@ ms.locfileid: "76772213"
 
 使用 **npm** 來建立 Node.js 解決方案範本，以供作為您的建置基礎。
 
-1. 在 Visual Studio Code 中，選取 [檢視]   > [整合式終端機]  以開啟 VS Code 整合式終端機。
+1. 在 Visual Studio Code 中，選取 [檢視] > [整合式終端機] 以開啟 VS Code 整合式終端機。
 
 2. 在整合式終端機中，輸入下列命令來安裝適用於 Node.js Azure IoT Edge 模組的 **yeoman** 和產生器：
 
@@ -74,7 +74,7 @@ ms.locfileid: "76772213"
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。
+3. 選取 [檢視] > [命令選擇區]，以開啟 VS Code 命令選擇區。
 
 4. 在命令選擇區中，輸入並執行命令 **Azure:Sign in**，然後遵循指示來登入您的 Azure 帳戶。 如果您已登入，則可以略過此步驟。
 
@@ -84,9 +84,9 @@ ms.locfileid: "76772213"
    | ----- | ----- |
    | 選取資料夾 | 選擇開發機器上可供 VS Code 建立解決方案檔案的位置。 |
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
-   | 選取模組範本 | 選擇 [Node.js 模組]  。 |
+   | 選取模組範本 | 選擇 [Node.js 模組]。 |
    | 提供模組名稱 | 將模組命名為 **NodeModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/nodemodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/nodemodule。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-node-module/repository.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "76772213"
 環境檔案會儲存容器存放庫的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將私人映像提取到 IoT Edge 裝置。
 
 1. 在 VS Code 總管中，開啟 **.env** 檔案。
-2. 使用從 Azure Container Registry 複製過來的 [使用者名稱]  和 [密碼]  值來更新欄位。
+2. 使用從 Azure Container Registry 複製過來的 [使用者名稱] 和 [密碼] 值來更新欄位。
 3. 儲存這個檔案。
 
 ### <a name="select-your-target-architecture"></a>選取您的目標架構
@@ -110,7 +110,7 @@ ms.locfileid: "76772213"
 
 每個範本均隨附程式碼範例，會從 **SimulatedTemperatureSensor** 模組擷取模擬感應器資料，再將資料路由傳送到 IoT 中樞。 在本節中，請新增程式碼讓 NodeModule 先分析訊息再傳送。
 
-1. 在 VS Code 總管中，開啟 [modules]   > [NodeModule]   > [app.js]  。
+1. 在 VS Code 總管中，開啟 [modules] > [NodeModule] > [app.js]。
 
 2. 在所需的節點模組下面新增溫度閾值變數。 溫度閾值會設定在將資料傳送至 IoT 中樞之前，測量的溫度必須超過的值。
 
@@ -185,9 +185,9 @@ ms.locfileid: "76772213"
 
 在上一節中，您已建立 IoT Edge 解決方案，並在 NodeModule 中新增了程式碼，以篩選出回報的機器溫度在可接受限制內的訊息。 現在，您需要建置容器映像形式的解決方案，並將它推送到容器登錄。
 
-1. 選取 [檢視]   > [終端機]  ，以開啟 VS Code 整合式終端機。
+1. 選取 [檢視] > [終端機]，以開啟 VS Code 整合式終端機。
 
-1. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
+1. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰] 區段擷取這些值。
 
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -195,7 +195,7 @@ ms.locfileid: "76772213"
 
    您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]。
 
    建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
@@ -205,11 +205,11 @@ ms.locfileid: "76772213"
 
 請確定您的 IoT Edge 裝置已啟動並執行。
 
-1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞裝置]  區段來查看您的 IoT 裝置清單。
+1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞裝置] 區段來查看您的 IoT 裝置清單。
 
-2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]  。
+2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]。
 
-3. 選取 **config** 資料夾中的 **deployment.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]  。 請勿使用 deployment.template.json 檔案。
+3. 選取 **config** 資料夾中的 **deployment.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
 
 4. 按一下 [重新整理] 按鈕。 您應該會看到新的 **NodeModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
 
@@ -217,11 +217,11 @@ ms.locfileid: "76772213"
 
 在您將部署資訊清單套用至 IoT Edge 裝置後，裝置的 IoT Edge 執行階段即會收集新的部署資訊，並開始在裝置上執行。 裝置上任何執行中、但未包含在部署資訊清單中的模組都會停止。 裝置中遺漏的任何模組都會啟動。
 
-您可以使用 Visual Studio Code 總管的 [Azure IoT 中樞裝置]  區段，檢視 IoT Edge 裝置的狀態。 請展開裝置的詳細資料，以查看已部署且執行中的模組清單。
+您可以使用 Visual Studio Code 總管的 [Azure IoT 中樞裝置] 區段，檢視 IoT Edge 裝置的狀態。 請展開裝置的詳細資料，以查看已部署且執行中的模組清單。
 
-1. 在 Visual Studio Code 總管中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]  。
+1. 在 Visual Studio Code 總管中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]。
 
-2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才會送達。 IoT Edge 裝置必須接收其新的部署，並啟動所有模組。 然後，我們對 NodeModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。
+2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才會送達。 IoT Edge 裝置必須接收其新的部署，並啟動所有模組。 然後，我們對 NodeModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示] 訊息類型新增至任何觸達該溫度閾值的訊息。
 
 ## <a name="edit-the-module-twin"></a>編輯模組對應項
 
@@ -229,13 +229,13 @@ ms.locfileid: "76772213"
 
 1. 在 Visual Studio Code 中，展開您 IoT Edge 裝置底下的詳細資料，以查看執行中的模組。
 
-2. 以滑鼠右鍵按一下 **NodeModule** 並選取 [編輯模組對應項]  。
+2. 以滑鼠右鍵按一下 **NodeModule** 並選取 [編輯模組對應項]。
 
 3. 在所需的屬性中尋找 **TemperatureThreshold**。 將其值變更為高於最近報告溫度 5 到 10 度的新溫度。
 
 4. 儲存模組對應項檔案。
 
-5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]  。
+5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]。
 
 6. 監視傳入的裝置到雲端訊息。 在新的溫度閾值送達前，您應該會看到訊息停止。
 

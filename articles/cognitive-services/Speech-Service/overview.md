@@ -10,25 +10,25 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 664b71c56ae63ea73478923171731e343dfa5cbe
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81401030"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417220"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
 語音服務會將語音轉文字、文字轉語音及語音翻譯整合至單一 Azure 訂用帳戶。 藉由[語音 SDK](speech-sdk-reference.md)、[語音裝置 SDK](https://aka.ms/sdsdk-quickstart) 或 [REST API](rest-apis.md)，可輕易地透過語音來啟用您的應用程式、工具和裝置。
 
 > [!IMPORTANT]
-> 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱 [操作指南] > [移轉]  。
+> 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱 [操作指南] > [移轉]。
 
 語音服務由以下功能組成。 請使用此資料表中的連結，深入了解每項功能的常見使用案例，或瀏覽 API 參考。
 
 | 服務 | 功能 | 描述 | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [語音轉文字](speech-to-text.md) | 即時語音轉換文字 | 語音轉文字會即時地將音訊串流或本地檔案轉譯或翻譯成文字，以便您的應用程式、工具或裝置使用或顯示。 若搭配 [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [語音轉文字](speech-to-text.md) | 即時語音轉換文字 | 語音轉換文字可將音訊串流或本機檔案即時轉譯或翻譯為的文字，讓您的應用程式、工具或裝置可以取用或顯示。 若搭配 [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [批次語音轉換文字](batch-transcription.md) | 批次語音轉換文字可針對 Azure Blob 儲存體中的大量語音音訊資料，啟用非同步語音轉換文字轉譯。 除了將語音音訊轉換為文字之外，批次語音轉換文字也可以進行自動分段標記和情感分析。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
 | | [多裝置交談](multi-device-conversation.md) | 透過便利的轉譯和翻譯支援，在一個對話中連接多個裝置或用戶端以傳送以語音或文字為基礎的訊息| 是 | 否 |
 | | [對話轉譯](conversation-transcription-service.md) | 啟用即時語音辨識、說話者識別和自動分段標記功能。 非常適合利用辨識說話者的能力來轉譯面對面會議。 | 是 | 否 |
@@ -37,6 +37,7 @@ ms.locfileid: "81401030"
 | | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 | [語音助理](voice-assistants.md) | 語音助理 | 使用語音服務的語音助理能賦予開發人員建立自然、擬人的對話介面，供其應用程式和體驗之用。 語音助理服務能在裝置和助理實作之間提供迅速且可靠的互動；該助理實作會使用 Bot Framework 的 Direct Line 語音頻道，或是整合的自訂命令 (預覽) 服務來完成工作。 | [是](voice-assistants.md) | 否 |
+| [說話者辨識](speaker-recognition-overview.md) | 說話者驗證與識別 | 說話者辨識服務提供以唯一語音特性驗證和識別說話者的演算法。 說話者辨識是用來回答「誰在說話？」的問題。 | 是 | [是](https://docs.microsoft.com/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]

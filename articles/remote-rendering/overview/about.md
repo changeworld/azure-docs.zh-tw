@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677923"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021429"
 ---
 # <a name="about-azure-remote-rendering"></a>關於 Azure 遠端轉譯
 
@@ -22,13 +22,17 @@ ms.locfileid: "80677923"
 
 ![範例模型](../media/arr-engine.png)
 
-不受控裝置的計算能力有限，無法轉譯複雜的模型。 不過，對於許多應用程式而言，無法接受以任何方式降低視覺精確度。
+不受控裝置的計算能力有限，無法轉譯複雜的模型。 不過，對於許多應用程式而言，無法接受以任何方式降低視覺精確度。 下列螢幕擷取畫面會將模型的完整詳細資料，與已使用一般內容建立工具去除的模型進行比較：
+
+![範例模型](./media/engine-model-decimated.png)
+
+縮減的模型包含大約 20 萬個三角形 (包括詳細的內部組件)，原始模型則有超過 1800 萬個三角形。
 
 *遠端轉譯*會將轉譯工作負載移至雲端中的高階 GPU，藉此解決此問題。 雲端裝載的圖形引擎會轉譯影像、將其編碼為影片串流，然後串流至目標裝置。
 
 ## <a name="hybrid-rendering"></a>混合式轉譯
 
-在大部分的應用程式中，只轉譯複雜的模型並不夠。 您也需要自訂 UI 以提供功能給使用者。 Azure 遠端轉譯不會強制您使用專用的 UI 架構，而會支援「混合式轉譯」  。 這表示您可以使用慣用的方法 (例如 [MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html))，在裝置上轉譯元素。
+在大部分的應用程式中，只轉譯複雜的模型並不夠。 您也需要自訂 UI 以提供功能給使用者。 Azure 遠端轉譯不會強制您使用專用的 UI 架構，而會支援「混合式轉譯」。 這表示您可以使用慣用的方法 (例如 [MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html))，在裝置上轉譯元素。
 
 在畫面結束時，Azure 遠端轉譯會自動合併本機轉譯內容與遠端影像。 甚至能夠使用正確的遮蔽來執行此動作。
 

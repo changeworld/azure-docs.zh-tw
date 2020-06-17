@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267910"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323921"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>教學課程：保護 Azure SQL Database
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在本教學課程中，您將了解如何：
@@ -25,7 +25,7 @@ ms.locfileid: "84267910"
 > [!div class="checklist"]
 >
 > - 建立伺服器層級和資料庫層級防火牆規則
-> - 設定 Azure Active Directory (AD) 管理員
+> - 設定 Azure Active Directory (Azure AD) 管理員
 > - 使用 SQL 驗證、Azure AD 驗證和安全的連接字串來管理使用者存取
 > - 啟用安全性功能，例如進階資料安全性、稽核、資料遮罩和加密
 
@@ -42,7 +42,7 @@ Azure SQL Database 可讓您以下列方式保護資料：
 若要深入了解，請參閱 [Azure SQL Database 安全性概觀](/azure/sql-database/sql-database-security-index)和[功能](security-overview.md)文章。
 
 > [!TIP]
-> 下列 Microsoft Learn 模組可協助您免費學習如何[保護 Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
+> 下列 Microsoft Learn 課程模組可協助您免費學習如何[保護 Azure SQL Database 中的資料庫](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -56,7 +56,7 @@ Azure SQL Database 可讓您以下列方式保護資料：
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-若要取得本教學課程中的所有步驟，請登入 [Azure 入口網站](https://portal.azure.com/)。
+若要取得此教學課程中的所有步驟，請登入 [Azure 入口網站](https://portal.azure.com/)
 
 ## <a name="create-firewall-rules"></a>建立防火牆規則
 
@@ -73,7 +73,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 
 若要設定伺服器層級的防火牆規則：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
     ![伺服器防火牆規則](./media/secure-database-tutorial/server-name.png)
 
@@ -94,7 +94,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 
 資料庫層級的防火牆規則只適用於個別的資料庫。 伺服器容錯移轉期間，資料庫將會保留這些規則。 資料庫層級的防火牆規則只能使用 Transact-SQL (T-SQL) 陳述式設定，且僅可在您設定伺服器層級的防火牆規則之後進行設定。
 
-若要設定資料庫層級的防火牆規則：
+設定資料庫層級防火牆規則：
 
 1. 連線至資料庫，例如使用 [SQL Server Management Studio](connect-query-ssms.md)。
 
@@ -223,7 +223,7 @@ Azure Active Directory 驗證要求將資料庫使用者建立為自主資料庫
 
 若要複製安全的連接字串：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [概觀] 頁面上，選取 [顯示資料庫連接字串]。
 
@@ -244,7 +244,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
 若要啟用進階資料安全性：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [概觀] 頁面上，選取 [伺服器名稱] 連結。 將會開啟伺服器頁面。
 
@@ -270,7 +270,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
 若要啟用稽核：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [安全性] 區段中，選取 [稽核]。
 
@@ -309,7 +309,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
 若要啟用資料遮罩：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [安全性] 區段中，選取 [動態資料遮罩]。
 
@@ -327,7 +327,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
 若要啟用或確認加密：
 
-1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [安全性] 區段中，選取 [透明資料加密]。
 

@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085853"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561112"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教學課程：建置自訂映像，並從私人登錄在 App Service 中執行
 
@@ -31,7 +31,7 @@ ms.locfileid: "82085853"
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要：
 
@@ -139,7 +139,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 </pre>
 
-使用 `docker login` 命令從本機終端機視窗登入 Azure Container Registry，如下列範例所示。 將 *\<azure-container-registry-name>* 和 *\<registry-username>* 取代為您的登錄值。 出現提示時，輸入上一個步驟中的其中一個密碼。
+使用 `docker login` 命令從本機終端機視窗登入 Azure Container Registry，如下列範例所示。 將 *\<azure-container-registry-name>* 和 *\<registry-username>* 取代為登錄的值。 出現提示時，輸入上一個步驟中的其中一個密碼。
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -180,7 +180,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>建立 Web 應用程式
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令，在 `myAppServicePlan` App Service 方案中建立 [Web 應用程式](app-service-linux-intro.md)。 將 _\<app-name>_ 取代為唯一的應用程式名稱，將 _\<azure-container-registry-name>_ 取代為您的登錄名稱。
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令，在 `myAppServicePlan` App Service 方案中建立 [Web 應用程式](app-service-linux-intro.md)。 使用唯一的應用程式名稱取代 _\<app-name>_ ，並將 _\<azure-container-registry-name>_ 取代為您的登錄名稱。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -205,7 +205,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ### <a name="configure-registry-credentials-in-web-app"></a>在 Web 應用程式中設定登錄認證
 
-若要使 App Service 提取私人映像，它需要有關您的登錄和映像的相關資訊。 在 Cloud Shell 中，為他們提供 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令。 取代 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 及 _\<password>_ 。
+若要使 App Service 提取私人映像，它需要有關您的登錄和映像的相關資訊。 在 Cloud Shell 中，為他們提供 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令。 取代 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 和 _\<password>_ 。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -272,7 +272,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 若要啟用與容器的
     > [!NOTE]
     > 此設定不允許容器的外部連線。 SSH 只能透過 Kudu/SCM 站台提供。 Kudu/SCM 站台會向 Azure 帳戶進行驗證。
 
-* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) 會將存放庫中的 [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) 檔案複製到 /etc/ssh/  目錄。
+* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) 會將存放庫中的 [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) 檔案複製到 /etc/ssh/ 目錄。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/

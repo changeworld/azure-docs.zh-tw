@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187298"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561557"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入門：事件中樞擷取逐步解說︰Python (azure-eventhub 第 1 版)
 
@@ -38,7 +38,7 @@ ms.locfileid: "77187298"
 > * 使用 Python 指令碼，將資料傳送至您的事件中樞。
 > * 使用另一個 Python 指令碼，讀取和處理事件中樞「擷取」的檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Python 3.4 或更新版本，且已安裝並更新 `pip`。
   
@@ -50,37 +50,37 @@ ms.locfileid: "77187298"
   > 如果您已有可使用的儲存體容器，您可以在建立事件中樞時啟用「擷取」並選取儲存體容器。 
   > 
   
-- 您的事件中樞共用存取金鑰名稱和主要金鑰值。 請在 [事件中樞] 頁面的 [共用存取原則]  下尋找或建立這些值。 預設的存取金鑰名稱為 **RootManageSharedAccessKey**。 複製存取金鑰名稱和主要金鑰值，以供稍後在此逐步解說中使用。 
+- 您的事件中樞共用存取金鑰名稱和主要金鑰值。 請在 [事件中樞] 頁面的 [共用存取原則] 下尋找或建立這些值。 預設的存取金鑰名稱為 **RootManageSharedAccessKey**。 複製存取金鑰名稱和主要金鑰值，以供稍後在此逐步解說中使用。 
 
 ## <a name="create-an-azure-blob-storage-account-and-container"></a>建立 Azure Blob 儲存體帳戶和容器
 
 建立要用於擷取的儲存體帳戶和容器。 
 
 1. 登入 [Azure 入口網站][Azure portal]。
-2. 在左側導覽中選取 [儲存體帳戶]  ，然後在 [儲存體帳戶]  畫面上選取 [新增]  。
-3. 在儲存體帳戶建立畫面上，選取訂用帳戶和資源群組，並指定儲存體帳戶的名稱。 您可以將其他選項保留為預設值。 選取 [檢閱 + 建立]  ，檢閱設定，然後選取 [建立]  。 
+2. 在左側導覽中選取 [儲存體帳戶]，然後在 [儲存體帳戶] 畫面上選取 [新增]。
+3. 在儲存體帳戶建立畫面上，選取訂用帳戶和資源群組，並指定儲存體帳戶的名稱。 您可以將其他選項保留為預設值。 選取 [檢閱 + 建立]，檢閱設定，然後選取 [建立]。 
    
    ![建立儲存體帳戶][1]
    
-4. 在部署完成後，選取 [前往資源]  ，然後在儲存體帳戶的 [概觀]  畫面上選取 [容器]  。
-5. 在 [容器]  畫面上，選取 [+ 容器]  。 
-6. 在 [新增容器]  畫面上指定容器的名稱，然後選取 [確定]  。 記下容器名稱，以便稍後在此逐步解說中使用。 
-7. 在 [容器]  畫面的左側導覽中，選取 [存取金鑰]  。 複製 [儲存體帳戶名稱]  以及 **key1** 底下的 [金鑰]  值，以供稍後在此逐步解說中使用。
+4. 在部署完成後，選取 [前往資源]，然後在儲存體帳戶的 [概觀] 畫面上選取 [容器]。
+5. 在 [容器] 畫面上，選取 [+ 容器]。 
+6. 在 [新增容器] 畫面上指定容器的名稱，然後選取 [確定]。 記下容器名稱，以便稍後在此逐步解說中使用。 
+7. 在 [容器] 畫面的左側導覽中，選取 [存取金鑰]。 複製 [儲存體帳戶名稱] 以及 **key1** 底下的 [金鑰] 值，以供稍後在此逐步解說中使用。
  
 ## <a name="enable-event-hubs-capture"></a>啟用事件中樞擷取
 
-1. 在 Azure 入口網站中，從 [所有資源]  中選取 [事件中樞命名空間]，選取左側導覽中的 [事件中樞]  ，然後選取您的事件中樞，以瀏覽至您的事件中樞。 
-2. 在事件中樞 [概觀]  畫面上，選取 [擷取事件]  。
-3. 在 [擷取]  畫面上，選取 [開啟]  。 然後，在 [Azure 儲存體容器]  底下，選取 [選取容器]  。 
-4. 在 [容器]  畫面上選取您要使用的儲存體容器，然後選取 [選取]  。 
-5. 在 [擷取]  畫面上，選取 [儲存變更]  。 
+1. 在 Azure 入口網站中，從 [所有資源] 中選取 [事件中樞命名空間]，選取左側導覽中的 [事件中樞]，然後選取您的事件中樞，以瀏覽至您的事件中樞。 
+2. 在事件中樞 [概觀] 畫面上，選取 [擷取事件]。
+3. 在 [擷取] 畫面上，選取 [開啟]。 然後，在 [Azure 儲存體容器] 底下，選取 [選取容器]。 
+4. 在 [容器] 畫面上選取您要使用的儲存體容器，然後選取 [選取]。 
+5. 在 [擷取] 畫面上，選取 [儲存變更]。 
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>建立將事件傳送至事件中樞的 Python 指令碼
 此指令碼會將 200 個事件傳送到事件中樞。 這些事件是以 JSON 格式傳送的簡單環境數據。
 
 1. 開啟您慣用的 Python 編輯器，例如 [Visual Studio 程式碼][Visual Studio Code]。
 2. 建立名為 *sender.py* 的新檔案。 
-3. 將下列程式碼貼到 *sender.py* 中。 請將事件中樞的 \<namespace>、\<AccessKeyName>、\<primary key value> 和 \<eventhub> 取代為您自己的值。
+3. 將下列程式碼貼到 *sender.py* 中。 以您自己的值取代 \<namespace>、\<AccessKeyName>、\<primary key value> 和 \<eventhub> 的事件中樞。
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ ms.locfileid: "77187298"
 此指令碼會讀取擷取檔案，並為每個裝置建立檔案而僅寫入該裝置的資料。
 
 1. 在 Python 編輯器中，建立名為 *capturereader.py* 的新檔案。 
-2. 將下列程式碼貼到 *capturereader.py* 中。 請將 \<storageaccount>、\<storage account access key> 和 \<storagecontainer> 取代為您已儲存的值。
+2. 將下列程式碼貼到 *capturereader.py* 中。 以您的 \<storageaccount>、\<storage account access key> 和 \<storagecontainer> 取代儲存的值。
    
    ```python
    import os

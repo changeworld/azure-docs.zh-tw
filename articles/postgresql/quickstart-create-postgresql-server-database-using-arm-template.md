@@ -7,20 +7,20 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 6273043fc50938961caaf9f5a84273ec93c7521c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801715"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325077"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 ARM 範本建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
-適用於 PostgreSQL 的 Azure 資料庫是一種受控服務，您用來在雲端執行、管理及調整高可用性的 PostgreSQL 資料庫。 在本快速入門中，您會使用 ARM 範本建立適用於 PostgreSQL 的 Azure 資料庫 - Azure 入口網站、PowerShell 或 Azure CLI 中的單一伺服器。
+Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行、管理及調整高可用性的 PostgreSQL 資料庫。 在本快速入門中，您會使用 ARM 範本建立適用於 PostgreSQL 的 Azure 資料庫 - Azure 入口網站、PowerShell 或 Azure CLI 中的單一伺服器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -44,7 +44,7 @@ ms.locfileid: "83801715"
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-postgresql-with-vnet/)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/)。
 
 :::code language="json" source="~/quickstart-templates/101-managed-postgresql-with-vnet/azuredeploy.json" range="001-233" highlight="151,164,178,201,215":::
 
@@ -58,7 +58,7 @@ ms.locfileid: "83801715"
 
 在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql&pageNumber=1&sort=Popular)中，可找到更多「適用於 PostgreSQL 的 Azure 資料庫」範本範例。
 
-## <a name="deploy-the-template"></a>部署範本
+### <a name="deploy-the-template"></a>部署範本
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 

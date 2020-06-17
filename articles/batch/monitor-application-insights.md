@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure 應用程式 Insights 監視 Batch
+title: 使用 Azure Application Insights 來監視 Batch
 description: 了解如何使用 Azure Application Insights 程式庫檢測 Azure Batch .NET 應用程式。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115460"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723607"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 監視 Azure Batch .NET 應用程式並進行偵錯
 
@@ -19,7 +19,7 @@ ms.locfileid: "82115460"
 隨附於本文的 C# 解決方案範例與程式碼可於 [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) 中取得。 此範例會將 Application Insights 檢測程式碼新增至 [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) 範例。 如果您不熟悉該範例，請先嘗試建置及執行 TopNWords。 這麼做可協助您了解在多個計算節點上平行處理一組輸入 Blob 的基本 Batch 工作流程。 
 
 > [!TIP]
-> 或者，將您的 Batch 解決方案設定為顯示 Application Insights 資料，例如 Batch Explorer 中的 VM 效能計數器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 如需在 Batch Explorer 中啟用 Application Insights 資料的快速步驟，請參閱 [batch-insights 存放庫](https://github.com/Azure/batch-insights)。 
+> 或者，將您的 Batch 解決方案設定為顯示 Application Insights 資料，例如 Batch Explorer 中的 VM 效能計數器。 [Batch Explorer](https://github.com/Azure/BatchExplorer)是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用於 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 如需在 Batch Explorer 中啟用 Application Insights 資料的快速步驟，請參閱 [batch-insights 存放庫](https://github.com/Azure/batch-insights)。 
 >
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -29,7 +29,7 @@ ms.locfileid: "82115460"
 
 * [Application Insights 資源](../azure-monitor/app/create-new-resource.md )
   
-   * 使用 Azure 入口網站建立 Application Insights 資源**。 選取「一般」** **應用程式類型**。
+   * 使用 Azure 入口網站建立 Application Insights 資源。 選擇 [一般] 作為 [應用程式類型]。
 
    * 從入口網站複製[檢測金鑰](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。 本文稍後會需要此項目。
   
@@ -257,13 +257,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>檢視即時資料流
 
-若要檢視 Application Insights 資源中的追蹤記錄，請按一下 [即時資料流]****。 下列螢幕擷取畫面說明如何檢視來自集區中計算節點的即時資料，例如每個計算節點的 CPU 使用量。
+若要檢視 Application Insights 資源中的追蹤記錄，請按一下 [即時資料流]。 下列螢幕擷取畫面說明如何檢視來自集區中計算節點的即時資料，例如每個計算節點的 CPU 使用量。
 
 ![即時資料流計算節點資料](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>檢視追蹤記錄
 
-若要檢視 Application Insights 資源中的追蹤記錄，請按一下 [搜尋]****。 此檢視會顯示 Application Insights 所擷取的診斷資料清單，其中包括追蹤、事件和例外狀況。 
+若要檢視 Application Insights 資源中的追蹤記錄，請按一下 [搜尋]。 此檢視會顯示 Application Insights 所擷取的診斷資料清單，其中包括追蹤、事件和例外狀況。 
 
 下列螢幕擷取畫面說明單一工作追蹤的記錄方式，以及之後進行偵錯所需的查詢方式。
 
@@ -280,14 +280,14 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 自訂計量也是入口網站中的實用工具。 例如，您可以顯示每個計算節點下載所處理的必要文字檔案時，所花費的平均時間。
 
 建立範例圖表：
-1. 在您的 Application Insights 資源中，按一下 [**計量瀏覽器** > **新增圖表**]。
-2. 在新增的圖表上按一下 [編輯]****。
+1. 在 Application Insights 資源中，按一下 [計量瀏覽器] > [新增圖表]。
+2. 在新增的圖表上按一下 [編輯]。
 2. 更新圖表的詳細資料，如下所示：
-   * 將 [圖表類型]**** 設定為 [方格]****。
-   * 將 [彙總]**** 設定為 [平均]****。
-   * 將 [分組依據]**** 設定為 [NodeId]****。
-   * 在 [計量]**** 中，選取 [自訂]**** > [Blob 下載 (以秒為單位)]****。
-   * 您可以依喜好調整顯示的 [色彩調色盤]****。 
+   * 將 [圖表類型] 設定為 [方格]。
+   * 將 [彙總] 設定為 [平均]。
+   * 將 [分組依據] 設定為 [NodeId]。
+   * 在 [計量] 中，選取 [自訂] > [Blob 下載 (以秒為單位)]。
+   * 您可以依喜好調整顯示的 [色彩調色盤]。 
 
 ![每個節點的 Blob 下載時間](./media/monitor-application-insights/blobdownloadtime.png)
 

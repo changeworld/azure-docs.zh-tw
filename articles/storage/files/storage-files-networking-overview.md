@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296522"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464805"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 檔案儲存體的網路功能考量 
 您可以透過兩種方式連線至 Azure 檔案共用：
 
 - 直接透過 SMB 或 FileREST 通訊協定來存取共用。 此存取模式主要會在要盡可能減少所用的內部部署伺服器數目時使用。
-- 使用 Azure 檔案同步在內部部署伺服器上建立 Azure 檔案共用的快取，並使用針對使用案例所選擇的通訊協定 (SMB、NFS、FTPS 等)，從內部部署伺服器存取檔案共用的資料。 此存取模式很方便，因為結合了內部部署效能與雲端級、無伺服器可連結服務 (例如 Azure 備份) 的最佳優勢。
+- 使用 Azure 檔案同步在內部部署伺服器 (或 Azure VM) 上建立 Azure 檔案共用的快取，並使用針對您使用案例所選擇的通訊協定 (SMB、NFS、FTPS 等)，從內部部署伺服器存取檔案共用的資料。 此存取模式很方便，因為結合了內部部署效能與雲端級、無伺服器可連結服務 (例如 Azure 備份) 的最佳優勢。
 
-本文會著重在說明當您的使用案例要直接存取 Azure 檔案共用而非使用 Azure 檔案同步時，該如何設定網路功能。如需 Azure 檔案同步部署的網路考量詳細資訊，請參閱[設定 Azure 檔案同步 Proxy 和防火牆設定](storage-sync-files-firewall-and-proxy.md)。
+本文會著重在說明當您的使用案例要直接存取 Azure 檔案共用而非使用 Azure 檔案同步時，該如何設定網路功能。如需有關 Azure 檔案同步部署網路功能考量的詳細資訊，請參閱 [Azure 檔案同步的網路功能考量](storage-sync-files-networking-overview.md)。
 
 Azure 檔案共用的網路功能設定是在 Azure 儲存體帳戶上進行的。 儲存體帳戶是一種管理構造，所代表的是儲存體的共用集區，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 儲存體帳戶會公開多個設定，以協助您保護針對檔案共用的網路存取：網路端點、儲存體帳戶防火牆設定和傳輸中加密。 
 
@@ -137,7 +137,7 @@ IP4Address : 52.239.194.40
 
 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
 - 為儲存體帳戶建立一或多個私人端點，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
-- 將公用端點限制在一或多個虛擬網路內。 其運作方式是使用稱為「服務端點」  的虛擬網路功能。 當您透過服務端點來限制流往儲存體帳戶的流量時，您仍然可以透過公用 IP 位址來存取儲存體帳戶。
+- 將公用端點限制在一或多個虛擬網路內。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制流往儲存體帳戶的流量時，您仍然可以透過公用 IP 位址來存取儲存體帳戶。
 
 若要深入了解如何設定儲存體帳戶防火牆，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 

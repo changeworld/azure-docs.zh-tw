@@ -1,5 +1,5 @@
 ---
-title: 受控識別的常見問題和已知問題-Azure AD
+title: 受控識別的常見問題集與已知問題 - Azure AD
 description: Azure 資源適用受控識別的已知問題。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 84b68e5aecca11fb72f8cacc7e16701eebd0ae1a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197320"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714044"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -39,7 +39,7 @@ ms.locfileid: "83197320"
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure 資源適用受控識別是否可與 Active Directory 驗證程式庫 (ADAL) 或 Microsoft 驗證庫 (MSAL) 一起使用？
 
-否，Azure 資源適用受控識別尚未與 ADAL 或 MSAL 整合。 如需使用 REST 端點為 Azure 資源的受控識別取得權杖的詳細資訊，請參閱[如何在 AZURE VM 上使用適用于 azure 資源的受控識別來取得存取權杖](how-to-use-vm-token.md)。
+否，Azure 資源適用受控識別尚未與 ADAL 或 MSAL 整合。 如需使用 REST 端點取得 Azure 資源適用受控識別權杖的詳細資訊，請參閱[如何在 Azure VM 上使用 Azure 資源適用受控識別取得存取權杖](how-to-use-vm-token.md)。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什麼是 Azure 資源適用受控識別安全性界限？
 
@@ -51,27 +51,7 @@ ms.locfileid: "83197320"
 - 如果未啟用系統指派的受控識別，且只有一個使用者指派的受控識別，IMDS 將會預設為該單一使用者指派的受控識別。 
 - 如果未啟用系統指派的受控識別，且有多個使用者指派的受控識別，則必須在要求中指定受控識別。
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>我應該使用 Azure 資源的受控識別 IMDS 端點或 VM 擴充功能端點嗎？
 
-使用適用于 Azure 資源的受控識別搭配 Vm 時，我們建議使用 IMDS 端點。 Azure 執行個體中繼資料服務是透過 Azure Resource Manager建立之所有 IaaS VM 可存取的 REST 端點。 
-
-透過 IMDS 使用 Azure 資源適用受控識別有許多優點，像是：
-- 所有 Azure IaaS 支援的作業系統皆可透過 IMDS 使用 Azure 資源適用受控識別。
-- 不再需要將擴充功能安裝在虛擬機器上，就能夠啟用 Azure 資源適用受控識別。 
-- 虛擬機器中不再有 Azure 資源適用受控識別使用的憑證。
-- IMDS 端點是眾所周知的非可路由 IP 位址，且只能從 VM 內取得。
-- 1000使用者指派的受控識別可以指派給單一 VM。 
-
-適用于 Azure 資源的受控識別 VM 擴充功能仍可供使用;不過，我們不會再開發新功能。 我們建議切換為使用 IMDS 端點。 
-
-使用 VM 擴充功能端點的一些限制如下：
-- 有限的 Linux 發行版本支援： CoreOS 穩定、CentOS 7.1、Red Hat 7.2、Ubuntu 15.04、Ubuntu 16.04
-- 只有32使用者指派的受控識別可以指派給 VM。
-
-
-注意： Azure 資源的受控識別 VM 擴充功能將在2019年1月不支援。 
-
-如需 Azure Instance Metadata Service 的詳細資訊，請參閱 [IMDS 文件](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我將訂用帳戶移到另一個目錄，系統是否會自動重新建立受控識別？
 
@@ -83,21 +63,12 @@ ms.locfileid: "83197320"
 
 否。 受控識別目前不支援跨目錄案例。 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>資源上的受控識別需要哪些 Azure RBAC 許可權？ 
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>資源上的受控識別需要哪些 Azure RBAC 權限？ 
 
 - 系統指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 此動作包含在資源特定的內建角色中，例如[虛擬機器參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
-- 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 除了透過受控識別的「[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)」角色指派以外。
+- 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 加上透過受控識別的[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色指派。
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>如何重新啟動 Azure 資源適用受控識別擴充功能？
-在特定版本的 Windows 和 Linux 上，擴充功能停止時，可手動用下列 Cmdlet 來重新啟動：
 
-```powershell
-Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
-```
-
-其中： 
-- 適用於 Windows 的擴充功能名稱和類型是：ManagedIdentityExtensionForWindows
-- 適用於 Linux 的擴充功能名稱和類型是：ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>已知問題
 
@@ -133,12 +104,7 @@ Azure 資源適用受控識別 VM 擴充功能 (預計在 2019 年 1 月淘汰) 
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>VM 擴充功能佈建失敗
 
-佈建 VM 擴充功能的作業可能會因為 DNS 查閱失敗而失敗。 重新啟動 VM，然後再試一次。
- 
-> [!NOTE]
-> VM 擴充功能已計劃在 2019 年 1 月淘汰。 我們建議您改為使用 IMDS 端點。
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目錄之間轉移訂用帳戶
 
@@ -151,4 +117,4 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>將使用者指派的受控識別移至不同的資源群組/訂用帳戶
 
-將使用者指派的受控身分識別移至不同的資源群組會導致身分識別中斷。 因此，使用該身分識別的資源（例如 VM）將無法為其要求權杖。 
+不支援將使用者指派的受控識別移至不同的資源群組。

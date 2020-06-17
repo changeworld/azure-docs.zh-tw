@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 .NET在 C# 中建立搜尋索引
+title: 在 .NET 中建立搜尋索引
 titleSuffix: Azure Cognitive Search
 description: 在此 C# 快速入門中，了解如何使用 Azure 認知搜尋 .NET SDK 來建立索引、載入資料以及執行查詢。
 manager: nitinme
@@ -8,15 +8,15 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77589210"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634928"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入門：在 C# 中使用 .NET SDK 建立 Azure 認知搜尋索引
+# <a name="quickstart-create-a-search-index-in-net"></a>快速入門：在 .NET 中建立搜尋索引
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [入口網站](search-get-started-portal.md)
@@ -25,20 +25,22 @@ ms.locfileid: "77589210"
 > * [Postman](search-get-started-postman.md)
 >*
 
-建立 .NET Core C# 主控台應用程式，以使用 Visual Studio 與 [Azure 認知搜尋 .NET SDK](https://aka.ms/search-sdk) 來建立、載入及查詢 Azure 認知搜尋索引。 此文章逐步說明如何建立應用程式。 或者，您可以[下載並執行完整應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart) \(英文\)。
+在 C# 中建立 .NET Core 主控台應用程式 ，以使用 Visual Studio 和 [Azure 認知搜尋 .NET SDK](https://aka.ms/search-sdk) 來建立、載入和查詢 Azure 認知搜尋索引。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+此文章逐步說明如何建立應用程式。 如果想要跳至程式碼，您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)。
 
 > [!NOTE]
 > 為了方便說明，本此文章中的範例程式碼使用 Azure 認知搜尋 .NET SDK 的同步方法。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-此快速入門需要下列服務和工具。
+開始之前，您必須具備下列條件：
+
++ 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
+
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) 的任何版本。 範例程式碼和指示已在免費的 Community 版本上經過測試。
-
-+ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。
 
 <a name="get-service-info"></a>
 
@@ -46,9 +48,9 @@ ms.locfileid: "77589210"
 
 在每個對服務發出呼叫的要求上，都需要 URL 端點和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-2. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+2. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
@@ -66,47 +68,48 @@ ms.locfileid: "77589210"
 
 針對此專案，請使用 `Microsoft.Azure.Search` NuGet 套件第 9 版與最新的 `Microsoft.Extensions.Configuration.Json` NuGet 套件。
 
-1. 在 [工具]   > [NuGet 套件管理員]  中，選取 [管理解決方案的 NuGet 套件]  中。 
+1. 在 [工具] > [NuGet 套件管理員] 中，選取 [管理解決方案的 NuGet 套件] 中。 
 
 1. 按一下 **[瀏覽]** 。
 
-1. 搜尋 `Microsoft.Azure.Search` 並選取 9.0.1 版或更新版本。
+1. 搜尋 `Microsoft.Azure.Search` 並選取 9.0.1 版或更新版本 (最新的穩定版本是10.1.0)。
 
-1. 按一下右邊的 [安裝]  以將組件新增到您的r專案與解決方案。
+1. 按一下右邊的 [安裝] 以將組件新增到您的r專案與解決方案。
 
 1. 針對 `Microsoft.Extensions.Configuration.Json` 重複此程序，但選取 2.2.0 版或更新版本。
 
 
 ### <a name="add-azure-cognitive-search-service-information"></a>新增 Azure 認知搜尋服務資訊
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增]   > [新項目]  。 
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [新項目]。 
 
 1. 在 [新增項目] 中，搜尋 "JSON" 以傳回 JSON 相關項目類型清單。
 
-1. 選擇 [JSON 檔案]  、將該檔案命名為 "appsettings.json"，然後按一下 [新增]  。 
+1. 選擇 [JSON 檔案]、將該檔案命名為 "appsettings.json"，然後按一下 [新增]。 
 
-1. 將檔案新增到您的輸出目錄。 以滑鼠右鍵按一下 appsettings.json，然後選取 [屬性]  。 在 [複製到輸出目錄]  中，選取 [有更新時才複製]  。
+1. 將檔案新增到您的輸出目錄。 以滑鼠右鍵按一下 appsettings.json，然後選取 [屬性]。 在 [複製到輸出目錄] 中，選取 [有更新時才複製]。
 
-1. 將下列 JSON 複製到您的新 JSON 檔案中。 將搜尋服務名稱 (YOUR-SEARCH-SERVICE-NAME) 與系統管理 API 金鑰 (YOUR-ADMIN-API-KEY) 取代為有效的值。 若您的服務端點是 `https://mydemo.search.windows.net`，服務名稱將會是 "mydemo"。
+1. 將下列 JSON 複製到您的新 JSON 檔案中。 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. 將搜尋服務名稱 (YOUR-SEARCH-SERVICE-NAME) 與系統管理 API 金鑰 (YOUR-ADMIN-API-KEY) 取代為有效的值。 若您的服務端點是 `https://mydemo.search.windows.net`，服務名稱將會是 "mydemo"。
 
 ### <a name="add-class-method-files-to-your-project"></a>新增類別 ".Method" 檔案到您的專案
 
-當您將結果列印到主控台視窗時，來自 Hotel 專案的個別欄位必須以字串形式傳回。 您可以實作 [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) 以執行此工作，將必要程式碼複製到兩個新檔案中。
+需要執行此步驟，才能在主控台中產生有意義的輸出。 當您將結果列印到主控台視窗時，來自 Hotel 專案的個別欄位必須以字串形式傳回。 此步驟會執行 [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) 來執行這項工作，您可以將必要的程式碼複製到兩個新的檔案來完成這項工作。
 
 1. 新增兩個空類別定義到您的專案：Address.Methods.cs、Hotel.Methods.cs
 
-1. 在ddress.Methods.cs 中，使用下列程式碼覆寫預設內容：[行 1-32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32) \(英文\)。
+1. 在 Address.Methods.cs 中，藉由下列程式碼來覆寫預設內容，[lines 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25)。
 
-1. 在 Hotel.Methods.cs 中，複製[行 1-66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66) \(英文\)。
-
+1. 在 Hotel.Methods.cs 中，複製 [lines 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68)。
 
 ## <a name="1---create-index"></a>1 - 建立索引
 
@@ -197,7 +200,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
     > [!NOTE]
     > 在 .NET SDK 中，欄位必須明確地屬性化為 [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 與 [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行為與 REST API 形成對比，後者隱含啟用以資料類型為基礎的屬性 (例如，簡單的字串欄位可自動搜尋)。
 
-    只有類型為 `string` 索引中的一個欄位才必須是「索引鍵」  欄位，它會識別每個文件。 在此結構描述中，索引鍵是 `HotelId`。
+    只有類型為 `string` 索引中的一個欄位才必須是「索引鍵」欄位，它會識別每個文件。 在此結構描述中，索引鍵是 `HotelId`。
 
     在此索引中，描述欄位使用選擇性的 [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 屬性，這是在當您想要覆寫預設標準 Lucene 分析器時指定的。 `description_fr` 欄位使用法文 Lucene 分析器 ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因為它會儲存法文文字。 `description` 是使用選擇性的 Microsoft 語言分析器 ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
 
@@ -271,7 +274,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()
@@ -441,7 +444,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
     ```
 1. 按下 F5 以重建應用程式。 
 
-    若專案成功地建置，會開啟主控台視窗並寫入狀態訊息，但這次使用文件上傳相關訊息。 在 Azure 入口網站中的搜尋服務 [概觀]  頁面中，旅館快速入門索引現在應該有 4 個文件。
+    若專案成功地建置，會開啟主控台視窗並寫入狀態訊息，但這次使用文件上傳相關訊息。 在 Azure 入口網站中的搜尋服務 [概觀] 頁面中，旅館快速入門索引現在應該有 4 個文件。
 
 如需有關文件處理的詳細資訊，請參閱[「.NET SDK 如何處理文件」](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)。
 
@@ -552,7 +555,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。 
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448729"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434568"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>什麼是 Bing 自訂搜尋 API？
 
@@ -29,7 +29,7 @@ Bing 自訂搜尋 API 可讓您針對感興趣的主題，建立量身訂做且�
 |[自訂影像搜尋體驗](get-images-from-instance.md)     | 可讓使用者從自訂搜尋執行個體中指定的網域和網站搜尋影像。        |        
 |[自訂影片搜尋體驗](get-videos-from-instance.md)     | 可讓使用者從自訂搜尋執行個體中指定的網域和網站搜尋影片。        |    
 |[共用自訂搜尋執行個體](share-your-custom-search.md)     | 透過與小組成員分享來共同編輯並測試搜尋執行個體。        | 
-|[設定應用程式和網站的 UI](hosted-ui.md)     | 透過與小組成員分享來共同編輯並測試搜尋執行個體。        | 
+|[設定應用程式和網站的 UI](hosted-ui.md)     | 提供主控的 UI，可讓您輕鬆地將其整合在網頁和 Web 應用程式中，做為 JavaScript 程式碼片段。        | 
 ## <a name="workflow"></a>工作流程
 
 您可以使用 [Bing 自訂搜尋入口網站](https://customsearch.ai)建立自訂搜尋執行個體。 此入口網站可讓您建立自訂搜尋執行個體，指定您要 Bing 搜尋的網域、網站和網頁，以及不想要搜尋的網域、網站和網頁。 您也可以使用此入口網站：預覽搜尋體驗、調整 API 所提供的搜尋排名，以及選擇性地設定要在網站和應用程式中呈現的可搜尋使用者介面。

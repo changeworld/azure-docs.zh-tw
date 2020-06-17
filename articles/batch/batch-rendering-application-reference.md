@@ -1,16 +1,16 @@
 ---
 title: 使用轉譯應用程式
-description: 如何使用 Azure Batch 的轉譯應用程式。 本文將簡單說明如何執行每個轉譯應用程式。
+description: 如何搭配 Azure Batch 使用轉譯應用程式。 本文將簡單說明如何執行每個轉譯應用程式。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115800"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726497"
 ---
 # <a name="rendering-applications"></a>轉譯應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "82115800"
 
 注意：
 
-* 請謹慎處理，以確保可以找到資產檔案。  請使用 [資產追蹤]**** 視窗或在命令列上使用 `-bitmapPath` 參數，以確定路徑的正確性和相對性。
+* 請謹慎處理，以確保可以找到資產檔案。  請使用 [資產追蹤] 視窗或在命令列上使用 `-bitmapPath` 參數，以確定路徑的正確性和相對性。
 * 在工作執行時，請檢查 3ds Max 所寫入的 `stdout.txt` 檔案，以確認轉譯是否有任何問題，例如找不到資產。
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 範本

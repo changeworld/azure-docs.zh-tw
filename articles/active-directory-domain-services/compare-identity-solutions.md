@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655518"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555134"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -31,21 +31,25 @@ ms.locfileid: "80655518"
     * 如需 Azure AD 的詳細資訊，請參閱[什麼是Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** - 提供受控網域服務，其中有一小部分能與傳統 AD DS 功能完全相容，例如，網域加入、群組原則、LDAP 和 Kerberos / NTLM 驗證等功能。
     * Azure AD DS 與 Azure AD 整合，其本身可與內部部署 AD DS 環境進行同步處理。 這項功能可將中央身分識別使用案例延伸到在 Azure 中執行的傳統 Web 應用程式，作為隨即轉移策略的一部分。
+    * 若要深入了解 Azure AD 與內部部署的同步處理，請參閱[受控網域中的物件和認證如何同步][synchronization]。
 
 此概觀文章會比較和對比這些身分識別解決方案搭配使用或個別使用的方式 (視組織的需求而定)。
 
-若要開始使用，請[使用 Azure 入口網站建立 Azure AD DS 受控網域][tutorial-create]。
+> [!div class="nextstepaction"]
+> [若要開始使用，請使用 Azure 入口網站建立 Azure AD DS 受控網域][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS 和自我管理 AD DS
 
 如果您有需要存取傳統驗證機制 (例如 Kerberos 或 NTLM) 的應用程式和服務，有兩種方式可以在雲端中提供 Active Directory Domain Services：
 
-* 使用 Azure Active Directory Domain Services (Azure AD DS) 建立的「受控」  網域。 Microsoft 會建立並管理所需的資源。
-* 使用傳統資源 (例如虛擬機器 (VM)、Windows Server 客體 OS 和 Active Directory Domain Services (AD DS)) 建立和設定的「自我管理」  網域。 然後由您繼續管理這些資源。
+* 使用 Azure Active Directory Domain Services (Azure AD DS) 建立的「受控網域」。 Microsoft 會建立並管理所需的資源。
+* 使用傳統資源 (例如虛擬機器 (VM)、Windows Server 客體 OS 和 Active Directory Domain Services (AD DS)) 建立和設定的「自我管理」網域。 然後由您繼續管理這些資源。
 
-有了 Azure AD DS，Microsoft 就會為您部署和維護核心服務元件，如同「受控網域」  體驗。 您不需要針對 VM、Windows Server OS 或網域控制站 (DC) 等元件部署、管理、修補及保護 AD DS 基礎結構。
+有了 Azure AD DS，Microsoft 就會為您部署和維護核心服務元件，如同「受控網域」體驗。 您不需要針對 VM、Windows Server OS 或網域控制站 (DC) 等元件部署、管理、修補及保護 AD DS 基礎結構。
 
-Azure AD DS 為傳統的自我管理 AD DS 環境提供較小的功能子集，可減少部分設計和管理的複雜度。 例如，沒有任何 AD 樹系、網域、站台和複寫連結需要設計和維護。 對於在雲端中執行並需要存取傳統驗證機制 (例如 Kerberos 或 NTLM) 的應用程式和服務，Azure AD DS 會以最少的系統管理負荷來提供受控網域體驗。
+Azure AD DS 為傳統的自我管理 AD DS 環境提供較小的功能子集，可減少部分設計和管理的複雜度。 例如，沒有任何 AD 樹系、網域、站台與複寫連結需要設計及維護。 您仍然可以[在 Azure AD DS 與內部部署環境之間建立樹系信任 (目前處於預覽狀態)][create-forest-trust]。
+
+對於在雲端中執行並需要存取傳統驗證機制 (例如 Kerberos 或 NTLM) 的應用程式和服務，Azure AD DS 會以最少的系統管理負荷來提供受控網域體驗。 如需詳細資訊，請參閱 [Azure AD DS 中使用者帳戶、密碼與系統管理的管理概念][administration-concepts]。
 
 當您部署和執行自我管理 AD DS 環境時，您必須維護所有相關聯的基礎結構和目錄元件。 自我管理 AD DS 環境會有額外的維護負荷，但是您之後可以執行其他工作，例如延伸架構或建立樹系信任。
 
@@ -94,7 +98,7 @@ Azure AD 聯結裝置提供下列優點：
 
 | **裝置類型**                                        | **裝置平台**             | **機制**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| 個人裝置                                          | Windows 10、iOS、Android、Mac OS | 已註冊的 Azure AD    |
+| 個人裝置                                          | Windows 10、iOS、Android、macOS | 已註冊的 Azure AD    |
 | 公司所擁有但未加入內部部署 AD DS 的裝置 | Windows 10                       | 已聯結的 Azure AD        |
 | 公司所擁有且已加入內部部署 AD DS 的裝置  | Windows 10                       | 已聯結的混合式 Azure AD |
 
@@ -115,6 +119,8 @@ Azure AD 聯結裝置提供下列優點：
 
 若要開始使用 Azure AD DS，請[使用 Azure 入口網站建立 Azure AD DS 受控網域][tutorial-create]。
 
+您也可以深入了解 [Azure AD DS 中使用者帳戶、密碼與系統管理的管理概念][administration-concepts]與[受控網域中的物件和認證如何同步][synchronization]。
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Azure AD 聯結裝置提供下列優點：
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

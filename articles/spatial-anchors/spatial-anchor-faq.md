@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004479"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296664"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -72,21 +72,21 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 **問：您是否提供 SLA？**
 
-**答：** 比照 Azure 服務的標準，我們預計提供超過 99.9% 的可用性。 請注意，Azure Spatial Anchors 目前處於預覽階段，因此適用[預覽補充規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)套用。
+**答：** 比照 Azure 服務的標準，我們預計提供超過 99.9% 的可用性。 
 
 **問：我是否可將使用 Azure Spatial Anchors 的應用程式發佈至應用程式市集？是否可將 Azure Spatial Anchors 用於任務關鍵性生產案例？**
 
-**答：** Azure Spatial Anchors 目前處於預覽階段，在此期間，我們邀請您開發應用程式、針對產品[提供意見反應](https://feedback.azure.com/forums/919252-azure-spatial-anchors)，以及規劃您的生產環境部署。
-
-正式運作 (GA) 日期會在近期公布。
+**答：** 是，Azure Spatial Anchors 已正式推出，並具有標準的 Azure 服務 SLA。 邀請您開發適用您生產環境部署的應用程式，並與我們[分享您對產品的相關意見反應](https://feedback.azure.com/forums/919252-azure-spatial-anchors)。
 
 **問：您是否已設置任何節流限制？**
 
-**答**：是，我們設有節流限制。  您的一般應用程式開發和測試應該不會達到這些限制。 針對生產環境部署，我們已有能力支援客戶的高度延展需求。 請[與我們連絡](mailto:azuremrs@microsoft.com)以了解詳情。 在此預覽階段期間，我們尚未發佈分層與定價結構，但預計於近期發佈。
+**答**：是，我們設有節流限制。  您的一般應用程式開發和測試應該不會達到這些限制。 針對生產環境部署，我們已有能力支援客戶的高度延展需求。 請[與我們連絡](mailto:azuremrs@microsoft.com)以了解詳情。 
 
 **問：Azure Spatial Anchors 的適用區域為何？**
 
-**答：** 您可以立即在 Azure 美國東部 2 區域建立 Azure Spatial Anchors 帳戶。 這表示，此區域支援這項服務所需的計算和儲存能力。 不過，用戶端的所在位置並沒有限制。 未來，我們預計將服務的區域可用性擴展至所有主要的 Azure 區域。
+**答：** Azure Spatial Anchors 目前適用於美國西部 2、美國東部、美國東部 2、美國中南部、西歐、北歐、英國南部和澳大利亞東部。 未來將在其他區域提供。
+
+這表示支援這項服務所需的計算和儲存能力位於這些區域。 不過，用戶端的所在位置並沒有限制。 
 
 **問：使用 Azure Spatial Anchors 需要付費嗎？未來是否會收費？**
 

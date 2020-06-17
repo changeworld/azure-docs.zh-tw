@@ -1,6 +1,6 @@
 ---
-title: 快速入門 - 建立工作區
-description: 遵循本指南中的步驟，建立 Azure Synapse Analytics 工作區。
+title: 快速入門 - 建立 Synapse 工作區
+description: 遵循此指南中的步驟建立 Synapse 工作區。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6f72e2ee3b83b693d889e9c43fe42a4677f1666d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112854"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609466"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>快速入門：建立 Azure Synapse Analytics 工作區 (預覽)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84112854"
 
 如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Azure Data Lake Storage Gen2 儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 

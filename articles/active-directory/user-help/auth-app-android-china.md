@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739493"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323020"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>適用於中國公用雲端中 Android 的 Microsoft Authenticator
 
@@ -44,7 +44,7 @@ ms.locfileid: "83739493"
 
 ## <a name="multi-factor-authentication-workaround"></a>多重要素驗證因應措施
 
-使用者不需要使用推播通知來進行多重要素驗證，而是可以設定其 MFA 在其裝置上接收驗證碼，以用來驗證其身分識別。 這些驗證碼的有效時間為 30 秒，而且若要使用，系統管理員必須讓其租用戶使用限時單次密碼 (TOTP) 驗證碼來執行驗證。
+使用者可以[在其可用於 MFA 來驗證其身分識別的裝置上設定其 Authenticator 應用程式以接收驗證碼](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes)，不需要使用推播通知來進行多重要素驗證。 這些驗證碼的有效時間為 30 秒，而且若要使用，系統管理員必須讓其租用戶使用限時單次密碼 (TOTP) 驗證碼來執行驗證。
 
 ## <a name="availability"></a>可用性
 

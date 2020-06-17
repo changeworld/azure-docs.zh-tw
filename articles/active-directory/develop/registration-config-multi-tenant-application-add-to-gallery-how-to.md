@@ -1,5 +1,5 @@
 ---
-title: 將多租使用者應用程式新增至 Azure AD 應用程式庫
+title: 將多租用戶應用程式新增至 Azure AD 應用程式庫
 description: 說明如何在 Azure AD 應用程式庫中列出自訂開發的多租用戶應用程式。
 services: active-directory
 documentationCenter: na
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883248"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680276"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>將多租用戶應用程式新增至 Azure AD 應用程式庫
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什麼是 Azure AD 應用程式庫？
 
-Azure Active Directory (Azure AD) 是雲端式識別服務。 [Azure AD 應用程式庫](https://azure.microsoft.com/marketplace/active-directory/all/)位於 Azure Marketplace 應用程式存放區，所有應用程式連接器都會在此處發佈以供進行單一登入和使用者佈建。 使用 Azure AD 作為識別提供者的客戶可找到在此發佈的不同 SaaS 應用程式連接器。 IT 系統管理員可從應用程式庫新增連接器，然後設定並使用這些連接器進行單一登入和佈建。 Azure AD 支援以所有主要的同盟通訊協定進行單一登入，包括 SAML 2.0、OpenID Connect、OAuth 及 WS-Fed。 
+Azure Active Directory (Azure AD) 是雲端式識別服務。 [Azure AD 應用程式庫](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)位於 Azure Marketplace 應用程式存放區，所有應用程式連接器都會在此處發佈以供進行單一登入和使用者佈建。 使用 Azure AD 作為識別提供者的客戶可找到在此發佈的不同 SaaS 應用程式連接器。 IT 系統管理員可從應用程式庫新增連接器，然後設定並使用這些連接器進行單一登入和佈建。 Azure AD 支援以所有主要的同盟通訊協定進行單一登入，包括 SAML 2.0、OpenID Connect、OAuth 及 WS-Fed。 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>如果您的應用程式支援 SAML 或 OpenIDConnect
 如果您有想要列在 Azure AD 應用程式庫中的多租用戶應用程式，您必須先確定該應用程式支援下列其中一種單一登入技術：

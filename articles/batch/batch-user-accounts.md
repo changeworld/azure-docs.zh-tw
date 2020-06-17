@@ -1,20 +1,20 @@
 ---
-title: 在使用者帳戶下執行工作-Azure Batch
-description: 能夠設定您想要執行工作的使用者帳戶是很有説明的。 瞭解使用者帳戶的類型，以及如何設定它們。
-ms.topic: article
+title: 以使用者帳戶執行工作
+description: 了解使用者帳戶的類型及其設定方式。
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980281"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779503"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在 Batch 中的使用者帳戶執行工作
 
 > [!NOTE] 
-> 本文中討論的使用者帳戶與用於遠端桌面通訊協定（RDP）或安全殼層（SSH）的使用者帳戶不同，基於安全考慮。 
+> 基於安全考量，本文討論的使用者帳戶與用於遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 的使用者帳戶不同。 
 >
 > 若要連線到透過 SSH 執行 Linux 虛擬機器設定的節點，請參閱[在 Azure 中使用 Linux VM 的遠端桌面](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要連線到透過 RDP 執行 Windows 的節點，請參閱[連線到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要連線到透過 RDP 執行雲端服務設定的節點，請參閱[在 Azure 雲端服務中啟用角色的遠端桌面連線](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
@@ -40,14 +40,14 @@ Azure Batch 提供執行工作所需的兩種使用者帳戶類型︰
 
 如果相同帳戶下執行的工作用來執行啟動工作，則工作具有啟動工作目錄的讀寫權限。 同樣地，如果相同帳戶下執行的工作用來執行作業準備工作，則工作具有作業準備工作目錄的讀寫權限。 如果是在與啟動工作或作業準備工作不同的帳戶下執行工作，則工作只有個別目錄的讀取權限。
 
-如需從工作存取檔案和目錄的相關詳細資訊，請參閱[使用 Batch 開發大規模的平行計算解決方案](batch-api-basics.md#files-and-directories)。
+如需從工作存取檔案和目錄的詳細資訊，請參閱[檔案和目錄](files-and-directories.md)。
 
 ## <a name="elevated-access-for-tasks"></a>提高工作的權限 
 
 使用者帳戶的提高權限層級會表示工作是否使用提高權限的存取權來執行。 自動使用者帳戶和具名的使用者帳戶都可以使用提高權限的存取權來執行。 提高權限層級的兩個選項如下︰
 
 - **NonAdmin：** 工作是以標準使用者身分執行，沒有提高權限的存取權。 Batch 使用者帳戶的預設提高權限層級一律為 **NonAdmin**。
-- **系統管理員︰** 工作是以具有提高權限存取權的使用者身分執行，並以完整系統管理員權限運作。 
+- **Admin：** 工作是以具有提高權限存取權的使用者身分執行，並以完整系統管理員權限運作。 
 
 ## <a name="auto-user-accounts"></a>自動使用者帳戶
 
@@ -322,4 +322,5 @@ Batch 服務版本 2017-01-01.4.0 導入重大變更，將舊版中的 **runElev
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Batch 的深入概觀，請參閱[使用 Batch 開發大規模的平行計算解決方案](batch-api-basics.md)。
+* 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
+* 了解 Azure Batch 中的[檔案和目錄](files-and-directories.md)。

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702041"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560860"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何搭配 SQL 隨選使用 (預覽) OPENROWSET
 
@@ -130,7 +130,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 如果您將 unstructured_data_path 指定為資料夾，SQL 隨選查詢將會從該資料夾擷取檔案。 
 
 > [!NOTE]
-> 與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回子資料夾。 此外，與 Hadoop 和 PloyBase 不同的是，SQL 隨選也不會傳回檔案名稱開頭為底線 (_) 或英文句號 (.) 的檔案。
+> 與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回子資料夾； 此外，與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回檔案名稱開頭為底線 (_) 或英文句號 (.) 的檔案。
 
 在下列範例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，SQL 隨選查詢將會傳回 mydata.txt 和 _hidden.txt 中的資料列。 其不會傳回 mydata2.txt 和 mydata3.txt，因為其位於子資料夾中。
 

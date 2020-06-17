@@ -1,6 +1,6 @@
 ---
 title: 建立單一資料庫
-description: 使用 Azure 入口網站、PowerShell 或 Azure CLI 來建立 Azure SQL Database。 在 Azure 入口網站中使用查詢編輯器來查詢資料庫。
+description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，在 Azure SQL Database 中建立單一資料庫。 在 Azure 入口網站中使用查詢編輯器來查詢資料庫。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 8b4e057fe41bdf76612888e9d4715d7cdee0ce29
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1ae3159365e63159b8ed62c09bc20441ba65d8aa
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053208"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343841"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入門：建立 Azure SQL Database 單一資料庫
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本快速入門中，您可以了解如何使用 Azure 入口網站、PowerShell 指令碼或 Azure CLI 指令碼來建立 Azure SQL Database。 接著，您可以使用 Azure 入口網站中的**查詢編輯器**來查詢資料庫。
+在此快速入門中，您可以使用 Azure 入口網站、PowerShell 指令碼或 Azure CLI 指令碼，在 Azure SQL Database 中建立單一資料庫。 接著，您可以使用 Azure 入口網站中的**查詢編輯器**來查詢資料庫。
 
 [單一資料庫](single-database-overview.md)是最快速且最簡單的 Azure SQL Database 選項。 您可以在特定 Azure 區域中的 [Azure 資源群組](../../active-directory-b2c/overview.md)內，管理[伺服器](logical-servers.md)中的單一資料庫。 在本快速入門中，您會為新資料庫建立新的資源群組與伺服器。
 
 您可以在「已佈建」或「無伺服器」的計算層中建立單一資料庫。 已佈建的資料庫會預先配置固定數量的計算資源 (包括 CPU 和記憶體)，並使用兩種[購買模型](purchasing-models.md)的其中一種。 本快速入門會使用[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)來建立已佈建的資料庫，但您也可以選擇[以 DTU 為基礎的模型](service-tiers-dtu.md)。
 
-無伺服器計算層僅適用於以虛擬核心為基礎的購買模型，而且具有自動調整的計算資源範圍，包括 CPU 和記憶體。 若要在無伺服器計算層中建立單一資料庫，請參閱[建立無伺服器資料庫](serverless-tier-overview.md#create-new-database-in-serverless-compute-tier)。
+無伺服器計算層僅適用於以虛擬核心為基礎的購買模型，而且具有自動調整的計算資源 (包括 CPU 與記憶體) 範圍。 若要在無伺服器計算層中建立單一資料庫，請參閱[建立無伺服器資料庫](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier)。
 
 ## <a name="prerequisite"></a>必要條件
 
@@ -68,7 +67,7 @@ ms.locfileid: "84053208"
 
 當您使用完這些資源時，您可以刪除所建立的資源群組，而這也會刪除其中的伺服器和單一資料庫。
 
-### <a name="portal"></a>[入口網站](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[Azure 入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站來刪除 **myResourceGroup** 和其所有資源：
 
@@ -76,7 +75,7 @@ ms.locfileid: "84053208"
 1. 在 [資源群組] 頁面中，選取 [刪除資源群組]。
 1. 在 [輸入資源群組名稱] 底下，輸入 myResourceGroup，然後選取 [刪除]。
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要刪除資源群組及其所有資源，請使用您的資源組名稱來執行下列 Azure CLI 命令：
 
@@ -98,5 +97,7 @@ Remove-AzResourceGroup -Name <your resource group>
 
 使用不同的工具和語言來[連線及查詢](connect-query-content-reference-guide.md)您的資料庫：
 > [!div class="nextstepaction"]
-> [使用 SQL Server Management Studio 來進行連線並查詢](connect-query-ssms.md)
-> [使用 Azure Data Studio 來進行連線並查詢](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+> [使用 SQL Server Management Studio 進行連線和查詢](connect-query-ssms.md)
+>
+> [使用 Azure Data Studio 進行連線及查詢](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+ 

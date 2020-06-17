@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171545"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629612"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -40,7 +40,6 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 
 ## <a name="prerequisites"></a>必要條件
 
-
 * 您要加上標籤的資料，無論是在本機檔案中還是在 Azure Blob 儲存體中。
 * 您要套用的標籤集合。
 * 加上標籤的指示。
@@ -67,6 +66,8 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 
 如果您已建立包含資料的資料集，請從 [選取現有的資料集] 下拉式清單中加以選取。 或者，您也可以選取 [建立資料集] 以使用現有 Azure 資料存放區，或上傳本機檔案。
 
+> [!NOTE]
+> 專案不可包含超過 500,000 個影像。  如果您的資料集有更多，則只會載入前 500,000 個影像。  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>從 Azure 資料存放區建立資料集
 
@@ -85,8 +86,6 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 1. 選取 [下一步] 。
 1. 確認詳細資料。 選取 [上一步] 以修改設定，或選取 [建立] 以建立資料集。
 
-> [!NOTE]
-> 您選擇的資料會載入到您的專案中。  一旦建立專案之後，此專案不會將更多資料新增至資料存放區。  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>從上傳的資料建立資料集
 
@@ -102,6 +101,19 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 1. 確認詳細資料。 選取 [上一步] 以修改設定，或選取 [建立] 以建立資料集。
 
 資料會上傳至 Machine Learning 工作區的預設 Blob 存放區 ("workspaceblobstore")。
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> 設定累加式重新整理
+
+若您打算將新的映像加入至您的資料集，請使用累加式重新整理將這些新影像新增至您的專案。   當**累加式重新整理**啟用時，會根據標籤完成率定期檢查資料集，以尋找要新增至專案的新影像。   當專案包含 500,000 個影像 (此為上限) 時，會停止檢查新資料。
+
+若要將更多影像新增至您的專案，請使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，將影像上傳至 Blob 儲存體中的適當資料夾。 
+
+當您想要讓專案持續監視資料存放區中的新資料時，請選取 [啟用累加式重新整理] 核取方塊。
+
+如果您不想要將資料存放區中出現的新影像新增至專案，請取消選取此方塊。
+
+您可以在專案 [詳細資料] 索引標籤的 [累加式重新整理] 區段中，找到最近重新整理的時間戳記。
+
 
 ## <a name="specify-label-classes"></a>指定標籤類別
 

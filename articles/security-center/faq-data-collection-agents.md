@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心常見問題-資料收集和代理程式
-description: 關於 Azure 資訊安全中心的資料收集、代理程式和工作區的常見問題，這是一種可協助您預防、偵測及回應威脅的產品
+title: Azure 資訊安全中心常見問題集 - 資料收集和代理程式
+description: 關於 Azure 資訊安全中心的資料收集、代理程式和工作區的常見問題，這是一項可協助您預防、偵測及因應威脅的產品
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,49 +13,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436189"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849037"
 ---
-# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題-資料收集、代理程式和工作區的相關問題
+# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
-資訊安全中心會從您的 Azure 虛擬機器（Vm）、虛擬機器擴展集、IaaS 容器和非 Azure 電腦（包括內部部署機器）收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。
+資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure 電腦 (包括內部部署機器) 收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。
 
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>在資訊安全中心所建立的工作區上，我是否需支付 Azure 監視器記錄的費用？
 
-否。 資訊安全中心建立的工作區，而針對每個節點計費的 Azure 監視器記錄設定，則不會產生 Azure 監視器記錄費用。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案：
+否。 資訊安全中心建立的工作區雖然設定為以每個節點的 Azure 監視器記錄計費，但並不會產生 Azure 監視器記錄費用。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案：
 
-- **免費層** – 資訊安全中心在預設工作區啟用 'SecurityCenterFree' 解決方案。 免費層不會向您收費。
+- **免費層** – 資訊安全中心在預設工作區啟用 'SecurityCenterFree' 解決方案。 免費層不需付費。
 
 - **標準層** – 資訊安全中心在預設工作區啟用 'Security' 解決方案。
 
 如需詳細資訊，請參閱[資訊安全中心價格](https://azure.microsoft.com/pricing/details/security-center/)。
 
 > [!NOTE]
-> 資訊安全中心所建立之工作區的 log analytics 定價層不會影響資訊安全中心計費。
+> 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>有哪些合格的 VM 可自動布建 Log Analytics 代理程式安裝？
+## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>要自動佈建 Log Analytics 代理程式安裝的 VM 需符合哪些麼條件？
 
 符合下列條件的 Windows 或 Linux IaaS 虛擬機器：
 
-- VM 上目前未安裝 Log Analytics 代理程式擴充功能。
+- 虛擬機器目前尚未安裝 Log Analytics 代理程式延伸模組。
 - 虛擬機器處於執行狀態。
 - 已安裝 Windows 或 Linux [Azure 虛擬機器代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 - 虛擬機器沒有作為 Web 應用程式防火牆或新一代防火牆等設備使用。
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>預設的 Log Analytics 工作區會在何處建立？
+
+預設工作區的位置取決於您的 Azure 區域：
+
+- 位於美國和巴西的 VM，工作區位置為美國
+- 位於加拿大的 VM，工作區位置為加拿大
+- 位於歐洲的 VM，工作區位置為歐洲
+- 位於英國的 VM，工作區位置為英國
+- 位於東亞和東南亞的 VM，工作區位置為亞洲
+- 位於韓國的 VM，工作區位置為韓國
+- 位於印度的 VM，工作區位置為印度
+- 位於日本的 VM，工作區位置為日本
+- 位於中國的 VM，工作區位置為中國
+- 位於澳大利亞的 VM，工作區位置為澳大利亞
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>我可以刪除資訊安全中心所建立的預設工作區嗎？
 
 **建議您不要刪除預設工作區。** 資訊安全中心會使用預設工作區儲存您虛擬機器傳來的安全性資料。 如果您刪除了工作區，資訊安全中心無法收集此資料，特定安全性建議及警示就無法使用。
 
-若要復原，請在連線到已刪除工作區的 Vm 上移除 Log Analytics 代理程式。 資訊安全中心會重新安裝代理程式，並建立新的預設工作區。
+若要復原，請將連線至已刪除工作區之 VM 上的 Log Analytics 代理程式移除。 資訊安全中心會重新安裝代理程式，並建立新的預設工作區。
 
 ## <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>如何使用我現有的 Log Analytics 工作區？
 
@@ -66,7 +82,7 @@ ms.locfileid: "80436189"
 
 若要選取現有的 Log Analytics 工作區：
 
-1. 在 [安全性原則 - 資料收集]**** 下，選取 [使用其他工作區]****。
+1. 在 [安全性原則 - 資料收集] 下，選取 [使用其他工作區]。
 
     ![使用其他工作區][4]
 
@@ -75,41 +91,41 @@ ms.locfileid: "80436189"
     > [!NOTE]
     > 在下拉式功能表中，只會顯示您可存取，而且在您 Azure 訂用帳戶中的工作區。
 
-1. 選取 [儲存]  。 系統會詢問您是否要重新設定受監視的 Vm。
+1. 選取 [儲存]。 系統會詢問您是否要重新設定受監視的 VM。
 
-    - 如果您希望新的工作區設定**僅套用在新的虛擬機器**，請選取 [否]****。 新的工作區設定僅適用于新的代理程式安裝;未安裝 Log Analytics 代理程式的新探索到的 Vm。
-    - 如果您想要將新的工作區設定套用**在所有 vm 上**，請選取 **[是]** 。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
+    - 如果您希望新的工作區設定**僅套用在新的虛擬機器**，請選取 [否]。 新的工作區設定只會套用在新安裝的代理程式，以及新探索到的未安裝 Log Analytics 代理程式的 VM。
+    - 如果您希望新的工作區設定**套用在所有虛擬機器**，請選取 [是]。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
 
     > [!NOTE]
-    > 如果您選取 **[是]**，則在所有 vm 都已重新連接到新的目標工作區之前，請勿刪除資訊安全中心建立的任何工作區。 如果過早刪除工作區，這項作業將會失敗。
+    > 如果您選取 [是]，在所有 VM 均重新連線至新的目標工作區之前，請不要刪除資訊安全中心所建立的任何工作區。 如果過早刪除工作區，這項作業將會失敗。
 
-    - 若要取消作業，請選取 [**取消**]。
+    - 若要取消作業，請選取 [取消]。
 
-## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Log Analytics 代理程式已安裝為 VM 上的擴充功能，該怎麼辦？<a name="mmaextensioninstalled"></a>
+## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果已在 VM 上將 Log Analytics 代理程式安裝為延伸模組，將會如何？<a name="mmaextensioninstalled"></a>
 
-當監視代理程式安裝為擴充功能時，延伸模組設定只允許報告至單一工作區。 資訊安全中心不會覆寫既存的使用者工作區連線。 如果已安裝「安全性」或「SecurityCenterFree」解決方案，資訊安全中心會將 VM 中的安全性資料儲存在已連線的工作區中。 資訊安全中心可以將延伸模組版本升級為此程式中的最新版本。
+當監視代理程式安裝為延伸模組時，延伸模組設定僅允許報告至單一工作區。 資訊安全中心不會覆寫既存的使用者工作區連線。 如果已連線的工作區中已安裝 "Security" 或 "SecurityCenterFree" 解決方案，資訊安全中心就會將 VM 中的安全性資料儲存到該工作區。 資訊安全中心可在此程序中將延伸模組版本升級至最新版本。
 
-如需詳細資訊，請參閱[在預先存在的代理程式安裝情況下自動布建](security-center-enable-data-collection.md#preexisting)。
+如需詳細資訊，請參閱[在預先存在的代理程式安裝情況下自動佈建](security-center-enable-data-collection.md#preexisting)。
 
 
 
-## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>如果 Log Analytics 代理程式直接安裝在電腦上，而不是延伸模組（直接代理程式），該怎麼辦？<a name="directagentinstalled"></a>
+## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>如果將 Log Analytics 代理程式直接安裝在機器上，而不是安裝為延伸模組 (直接代理程式)，將會如何？<a name="directagentinstalled"></a>
 
-如果 Log Analytics 代理程式是直接安裝在 VM 上（而不是 Azure 擴充功能），資訊安全中心將會安裝 Log Analytics 代理程式延伸模組，並可將 Log Analytics 代理程式升級至最新版本。
+如果 Log Analytics 代理程式直接安裝在 VM 上 (而不是安裝為 Azure 延伸模組)，資訊安全中心將會安裝 Log Analytics 代理程式延伸模組，並且可將 Log Analytics 代理程式升級至最新版本。
 
-安裝的代理程式會繼續向其已設定的工作區報告，此外也會向資訊安全中心中設定的工作區報告（Windows 電腦上支援多路連接）。
+安裝的代理程式會繼續向其已設定的工作區報告，此外也會向資訊安全中心所設定的工作區報告 (Windows 機器上支援多路連接)。
 
-如果設定的工作區是使用者工作區（而不是資訊安全中心的預設工作區），您將需要在其上安裝 "Security/" SecurityCenterFree "解決方案，資訊安全中心才能開始處理向該工作區報告的 Vm 和電腦的事件。
+如果已設定的工作區是使用者工作區 (而不是資訊安全中心的預設工作區)，您就將必須在其上安裝 "Security/"SecurityCenterFree" 解決方案，資訊安全中心才能開始處理向該工作區報告的 VM 和電腦所產生的事件。
 
-針對 Linux 電腦，尚不支援代理程式多路連接-因此，如果偵測到現有的代理程式安裝，將不會進行自動布建，且不會改變電腦的設定。
+對於 Linux 機器尚不支援代理程式多路連接 - 因此，如果偵測到現有的代理程式安裝，將不會進行自動佈建，且不會改變機器的設定。
 
-針對訂用帳戶上架到 17 2019 年3月之前資訊安全中心的現有機器，當偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，且電腦不會受到影響。 如需這些電腦的相關資訊，請參閱「解決電腦上的監視代理程式健康情況問題」的建議，以解決這些電腦上的代理程式安裝問題
+對於在 2019 年 3 月 17 日之前上線到資訊安全中心之訂用帳戶中的現有機器，在偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，且機器將不受影響。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題
 
-如需詳細資訊，請參閱下一節[如果我的 VM 上已安裝 System Center Operations Manager 或 OMS 直接代理程式，會發生什麼情況？](#scomomsinstalled)
+如需詳細資訊，請參閱下一節：[如果我的 VM 上已安裝 System Center Operations Manager 或 OMS 直接代理程式，將會如何？](#scomomsinstalled)
 
-## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>如果我的 VM 上已安裝 System Center Operations Manager 代理程式，該怎麼辦？<a name="scomomsinstalled"></a>
+## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>如果我的 VM 上已安裝 System Center Operations Manager 代理程式，將會如何？<a name="scomomsinstalled"></a>
 
-[安全性中心] 會將 Log Analytics 代理程式延伸模組與現有的 System Center Operations Manager 代理程式並存安裝。 現有的代理程式會繼續正常地向 System Center Operations Manager 伺服器報告。 請注意，Operations Manager agent 和 Log Analytics 代理程式會共用一般的執行時間程式庫，這會在此過程中更新為最新版本。 注意-如果已安裝 Operations Manager 代理程式的2012版，請勿開啟自動布建（當 Operations Manager 伺服器也是2012版）時，管理功能可能會遺失。
+資訊安全性中心會將 Log Analytics 代理程式延伸模組與現有的 System Center Operations Manager 代理程式並存安裝。 現有的代理程式會繼續正常地向 System Center Operations Manager 伺服器報告。 請注意，Operations Manager 代理程式和 Log Analytics 代理程式會共用相同的執行階段程式庫，而該程式庫會在此程序中更新至最新版本。 注意 - 如果已安裝 Operations Manager 代理程式 2012 版，請勿開啟自動佈建 (如果 Operations Manager 伺服器也是2012 版，管理功能可能會遺失)。
 
 
 ## <a name="what-is-the-impact-of-removing-these-extensions"></a>移除這些擴充功能會有什麼影響？
@@ -125,7 +141,7 @@ ms.locfileid: "80436189"
 
    ![定價層][1]
 
-1. 接下來，在 [**安全性原則-資料收集**] 頁面上選取 [**關閉**] 來關閉自動布建。
+1. 接下來，請選取 [安全性原則 – 資料收集] 頁面上的 [關閉]，來停用自動佈建。
    ![資料收集][2]
 
 
@@ -136,26 +152,26 @@ ms.locfileid: "80436189"
 
 如果您符合下列條件，您可以選擇退出自動佈建：
 
-- 資訊安全中心的自動代理程式安裝適用於整個訂用帳戶。 您無法將自動安裝套用到虛擬機器的子集。 如果有重要的 Vm 無法與 Log Analytics 代理程式一起安裝，則您應該選擇不進行自動布建。
-- 安裝 Log Analytics 代理程式擴充功能會更新代理程式的版本。 這適用于直接代理程式和 System Center Operations Manager 代理程式（在後者中，Operations Manager 和 Log Analytics 代理程式會共用通用執行時間程式庫，這會在進程中更新）。 如果安裝的 Operations Manager 代理程式是2012版，而且已升級，當 Operations Manager 伺服器也是2012版時，管理功能可能會遺失。 如果已安裝的 Operations Manager 代理程式為2012版，請考慮退出宣告自動布建。
-- 如果您有訂用帳戶外部的自訂工作區（集中式工作區），則您應該選擇不進行自動布建。 您可以手動安裝 Log Analytics 代理程式擴充功能，並將它連接到您的工作區，而不資訊安全中心覆寫連線。
+- 資訊安全中心的自動代理程式安裝適用於整個訂用帳戶。 您無法將自動安裝套用到虛擬機器的子集。 如果有重要 VM 無法安裝 Log Analytics 代理程式，您即應選擇退出自動佈建。
+- Log Analytics 代理程式延伸模組的安裝程序會更新代理程式的版本。 這適用於直接代理程式和 System Center Operations Manager 代理程式 (在後者中，Operations Manager 和 Log Analytics 代理程式會共用相同的執行階段程式庫，而該程式庫會在此程序中更新)。 如果已安裝的 Operations Manager 代理程式是 2012 版，而且已升級，當 Operations Manager 伺服器也是 2012 版時，管理功能可能會遺失。 如果已安裝的 Operations Manager 代理程式是 2012 版，請考慮退出自動佈建。
+- 如果您在訂用帳戶 (集中式工作區) 之外還有自訂工作區，則您應該退出自動佈建。 您可以手動安裝 Log Analytics 代理程式延伸模組，然後將其連線至您的工作區，而不是由資訊安全中心覆寫連線。
 - 如果您不想在每個訂用帳戶上建立多個工作區，而且訂用帳戶中有您自己的自訂工作區，則您有兩個選項：
 
    1. 您可以退出自動佈建。 移轉之後，依循[我可以如何使用現有 Log Analytics 工作區？](#how-can-i-use-my-existing-log-analytics-workspace)中的說明來設定預設工作區的設定
 
-   1. 或者，您可以讓遷移完成、將 Log Analytics 代理程式安裝在 Vm 上，以及連接到已建立工作區的 Vm。 接著，藉由選擇重新設定已安裝的代理程式，在設定預設工作區的設定上，選取您的自訂工作區。 如需詳細資訊，請參閱[如何使用我現有的 Log Analytics 工作區？](#how-can-i-use-my-existing-log-analytics-workspace)
+   1. 或者，您可以讓移轉程序完成，讓 Log Analytics 代理程式安裝在 VM 上，然後讓 VM 連線至已建立的工作區。 接著，藉由選擇重新設定已安裝的代理程式，在設定預設工作區的設定上，選取您的自訂工作區。 如需詳細資訊，請參閱[如何使用我現有的 Log Analytics 工作區？](#how-can-i-use-my-existing-log-analytics-workspace)
 
 
 ## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>退出自動佈建有什麼影響？
 
-當遷移完成時，資訊安全中心無法從 VM 收集安全性資料，而且某些安全性建議和警示無法使用。 如果您退出宣告，請手動安裝 Log Analytics 代理程式。 請參閱[退出時的建議步驟](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)。
+移轉完成後，資訊安全中心將無法收集 VM 送出的安全性資料，且特定安全性建議及警示將無法使用。 如果您選擇退出，請手動安裝 Log Analytics 代理程式。 請參閱[退出時的建議步驟](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)。
 
 
 ## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>退出自動佈建時的建議步驟是什麼？
 
-手動安裝 Log Analytics 代理程式擴充功能，讓資訊安全中心可以從您的 Vm 收集安全性資料，並提供建議和警示。 關於安裝的指引，請參閱 [Windows 虛擬機器的代理程式安裝](../virtual-machines/extensions/oms-windows.md)或 [Linux 虛擬機器的代理程式安裝](../virtual-machines/extensions/oms-linux.md)。
+請手動安裝 Log Analytics 代理程式延伸模組，讓資訊安全中心能夠收集您的 VM 所傳來的安全性資料，並提供建議和警示。 關於安裝的指引，請參閱 [Windows 虛擬機器的代理程式安裝](../virtual-machines/extensions/oms-windows.md)或 [Linux 虛擬機器的代理程式安裝](../virtual-machines/extensions/oms-linux.md)。
 
-您可以將代理程式連線到任何現有的自訂工作區，或資訊安全中心建立的工作區。 如果自訂工作區未啟用「安全性」或「SecurityCenterFree」解決方案，您就必須套用解決方案。 若要套用，請選取自訂工作區或訂用帳戶，並透過 [**安全性原則-定價層**] 頁面來套用定價層。
+您可以將代理程式連線到任何現有的自訂工作區，或資訊安全中心建立的工作區。 如果自訂工作區並沒有啟用的 'Security' 或 'SecurityCenterFree' 解決方案，則您必須套用解決方案。 若要套用，請選取自訂工作區或訂用帳戶，並透過 [安全性原則 - 定價層] 頁面來套用定價層。
 
    ![定價層][1]
 
@@ -175,41 +191,41 @@ ms.locfileid: "80436189"
 
 1.    在 [Log Analytics] 頁面上，選取工作區：
 
-1.    選取您不想要監視的 Vm，然後選取 **[中斷連線]**。
+1.    選取您不想監視的 VM，然後選取 [中斷連線]。
 
    ![移除代理程式][3]
 
 > [!NOTE]
-> 如果 Linux VM 已經有非擴充功能的 OMS 代理程式，移除延伸模組也會移除代理程式，因此您必須重新安裝它。
+> 如果 Linux VM 已有非延伸模組的 OMS 代理程式，移除該延伸模組的同時也會移除代理程式，且您將必須重新加以安裝。
 
 
 ## <a name="how-do-i-disable-data-collection"></a>我要如何停用資料收集？
 
-預設會關閉自動佈建。 您可以在安全性原則中關閉這項設定，隨時停用資源的自動佈建。 強烈建議使用自動布建，以取得有關系統更新、作業系統弱點和 endpoint protection 的安全性警示和建議。
+預設會關閉自動佈建。 您可以在安全性原則中關閉這項設定，隨時停用資源的自動佈建。 強烈建議進行自動佈建，以便取得安全性警示，以及系統更新、作業系統弱點和端點保護的建議。
 
-若要停用資料收集，請[登入 Azure 入口網站](https://portal.azure.com)，選取 [瀏覽]****，選取 [資訊安全中心]****，然後選取 [選取原則]****。 選取您想要停用自動佈建的訂用帳戶。 當您選取訂用帳戶時，[安全性原則 - 資料收集]**** 隨即開啟。 在 [自動佈建]**** 之下，選取 [關閉]****。
+若要停用資料收集，請[登入 Azure 入口網站](https://portal.azure.com)，選取 [瀏覽]，選取 [資訊安全中心]，然後選取 [選取原則]。 選取您想要停用自動佈建的訂用帳戶。 當您選取訂用帳戶時，[安全性原則 - 資料收集] 隨即開啟。 在 [自動佈建] 之下，選取 [關閉]。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>我要如何啟用資料收集？
 
-您可以在安全性原則中為您的 Azure 訂用帳戶啟用資料收集。 啟用資料收集。 [登入 Azure 入口網站](https://portal.azure.com)，選取 [瀏覽]****，選取 [資訊安全中心]****，然後選取 [安全性原則]****。 選取您想要啟用自動佈建的訂用帳戶。 當您選取訂用帳戶時，[安全性原則 - 資料收集]**** 隨即開啟。 在 [自動佈建]**** 之下，選取 [開啟]****。
+您可以在安全性原則中為您的 Azure 訂用帳戶啟用資料收集。 啟用資料收集。 [登入 Azure 入口網站](https://portal.azure.com)，選取 [瀏覽]，選取 [資訊安全中心]，然後選取 [安全性原則]。 選取您想要啟用自動佈建的訂用帳戶。 當您選取訂用帳戶時，[安全性原則 - 資料收集] 隨即開啟。 在 [自動佈建] 之下，選取 [開啟]。
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>啟用資料收集時會發生什麼情況？
 
-啟用自動布建時，資訊安全中心會在所有支援的 Azure Vm 和任何新建立的虛擬機器上布建 Log Analytics 代理程式。 建議使用自動布建，但也提供手動代理程式安裝。 [瞭解如何安裝 Log Analytics 代理程式擴充](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)功能。 
+啟用自動佈建時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上佈建 Log Analytics 代理程式。 建議使用自動佈建，但是手動代理程式安裝也可行。 [了解如何安裝 Log Analytics 代理程式延伸模組](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
-代理程式支援處理序建立事件 4688，及事件 4688 中的 *CommandLine* 欄位。 在 VM 上建立的新進程會由 EventLog 記錄，並受到資訊安全中心的偵測服務監視。 如需每個新程式所記錄之詳細資料的詳細資訊，請參閱[4688 中的描述欄位](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 代理程式也會收集在 VM 上建立的 4688 事件並將它們儲存在搜尋中。
+代理程式支援處理序建立事件 4688，及事件 4688 中的 *CommandLine* 欄位。 EventLog 會記錄在 VM 上建立的新處理序，並由資訊安全中心的偵測服務監視。 若要進一步了解為每個新程序記錄的詳細資料，請參閱 [4688 中的描述欄位](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 代理程式也會收集在 VM 上建立的 4688 事件並將它們儲存在搜尋中。
 
-代理程式也會啟用[自適性應用程式控制](security-center-adaptive-application.md)的資料收集，資訊安全中心會在稽核模式中設定本機 AppLocker 原則以允許所有應用程式。 此原則會導致 AppLocker 產生事件，然後資訊安全中心加以收集和利用。 請務必注意，在已經設定 AppLocker 原則的機器上不會設定此原則。 
+代理程式也會啟用[自適性應用程式控制](security-center-adaptive-application.md)的資料收集，資訊安全中心會在稽核模式中設定本機 AppLocker 原則以允許所有應用程式。 此原則會導致 AppLocker 產生事件，然後由資訊安全中心收集並利用。 請務必注意，在已經設定 AppLocker 原則的機器上不會設定此原則。 
 
-如果客戶提供[安全性連絡資訊](security-center-provide-security-contact-details.md)，當資訊安全中心在 VM 上偵測到可疑的活動時，客戶就會收到通知電子郵件。 資訊安全中心的 [安全性警示] 儀表板也會顯示警示。
+如果客戶提供[安全性連絡資訊](security-center-provide-security-contact-details.md)，當資訊安全中心在 VM 上偵測到可疑的活動時，客戶就會收到通知電子郵件。 資訊安全中心的安全性警示儀表板也會顯示警示。
 
 
-## <a name="will-security-center-work-using-an-oms-gateway"></a>資訊安全中心使用 OMS 閘道來進行工作嗎？
+## <a name="will-security-center-work-using-an-oms-gateway"></a>資訊安全中心是否會使用 OMS 閘道來運作？
 
-是。 Azure 資訊安全中心使用 Log Analytics 代理程式，利用 Azure 監視器從 Azure Vm 和伺服器收集資料。
-若要收集資料，每部 VM 和伺服器都必須使用 HTTPS 連接到網際網路。 連接可以是 direct、使用 proxy 或透過[OMS 閘道](../azure-monitor/platform/gateway.md)。
+是。 Azure 資訊安全中心使用 Log Analytics 代理程式，利用 Azure 監視器從 Azure VM 和伺服器收集資料。
+為了收集資料，每個 VM 和伺服器都必須使用 HTTPS 連線至網際網路。 此連線可以是直接連線，或是使用 Proxy或透過 [OMS 閘道](../azure-monitor/platform/gateway.md)的連線。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent 是否會影響伺服器的效能？

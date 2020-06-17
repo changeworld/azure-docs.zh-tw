@@ -5,17 +5,17 @@ services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 7ab6aa5f830e335a30502207d3a49a528d03f7fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654321"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417997"
 ---
 1. 選取 [pizza-app-for-luis-v6.json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) 以顯示 `pizza-app-for-luis.json` 檔案的 GitHub 頁面。
 1. 以滑鼠右鍵按一下或長點選 [原始] 按鈕，然後選取 [另存連結] 將 `pizza-app-for-luis.json` 儲存到您的電腦。
@@ -29,7 +29,7 @@ ms.locfileid: "83654321"
 
 應用程式將會匯入。
 
-如果您看到 [如何建立有效的 LUIS 應用程式] 對話方塊，請關閉對話方塊。
+如果您看到對話方塊 [如何建立有效的 LUIS 應用程式]，請關閉對話方塊。
 
 ## <a name="train-and-publish-the-pizza-app"></a>將 Pizza 應用程式定型並發佈
 
@@ -43,7 +43,7 @@ ms.locfileid: "83654321"
 
 ## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>記錄您 Pizza 應用程式的應用程式識別碼、預測金鑰和預測端點
 
-若要使用您的新 Pizza 應用程式，將需要您 Pizza 應用程式的應用程式識別碼、預測金鑰和端點。
+若要使用新 Pizza 應用程式，您將需要自己的 Pizza 應用程式的應用程式識別碼、預測金鑰和預測端點。
 
 若要尋找這些值：
 

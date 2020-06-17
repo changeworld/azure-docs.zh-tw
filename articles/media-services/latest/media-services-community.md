@@ -1,6 +1,6 @@
 ---
-title: Azure 媒體服務 v3 社區總覽
-description: 此 Azure 媒體服務的 [社區] 頁面會討論您可以提出問題、提供意見反應，以及取得媒體服務相關更新的不同方式。
+title: Azure 媒體服務 v3 社群概觀
+description: 此 Azure 媒體服務社群頁面討論您可針對媒體服務，詢問問題、提供意見反應，以及取得相關更新的不同方式。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,16 +13,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76545920"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828487"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure 媒體服務 v3 社區  
+# <a name="azure-media-services-v3-community"></a>Azure 媒體服務 v3 社群  
 
-此 Azure 媒體服務的 [社區] 頁面會討論您可以提出問題、提供意見反應，以及取得媒體服務相關更新的不同方式。
+此 Azure 媒體服務社群頁面討論您可針對媒體服務，詢問問題、提供意見反應，以及取得相關更新的不同方式。
 
 ## <a name="provide-feedback-and-make-suggestions"></a>提供意見反應並提出建議
 
@@ -32,7 +32,7 @@ ms.locfileid: "76545920"
 
 ### <a name="twitter"></a>Twitter
 
-您可以使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 控制碼來聯絡我們，或遵循 twitter 上的更新。 使用[@AzureSupport](https://twitter.com/azuresupport) twitter 控制碼在 twitter 上要求支援。  
+您可以使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 控制代碼，在 Twitter 上與我們連絡或追蹤更新。 使用 [@AzureSupport](https://twitter.com/azuresupport) twitter 控制代碼，以在 Twitter 上要求支援。  
 
 ### <a name="online-forums"></a>線上論壇
 
@@ -40,7 +40,7 @@ ms.locfileid: "76545920"
 
 目前，MSDN 是媒體服務小組的主要社群論壇。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 小組也會監視 Stack Overflow 上標記 'azure-media-services' 的問題。
 

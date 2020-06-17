@@ -12,23 +12,13 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/24/2019
-  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 7ba31270de5a2b81fdfbc61db6bc5f3065f45438
+  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78970022"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84886246"
 landingContent:
-- title: 開發安全的範例應用程式
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Linux 容器中的 Web 應用程式
-      url: secure-web-app.md
-    - text: 包含 Azure Active Directory 的 Web 應用程式
-      url: secure-aad-app.md
-    - text: 支付卡產業
-      url: secure-pci-web-app.md
 - title: 開始使用
   linkLists:
   - linkListType: concept

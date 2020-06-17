@@ -1,6 +1,6 @@
 ---
-title: 將您的電話號碼設定為您的驗證方法-Azure AD
-description: 如何設定您的安全性資訊（預覽）頁面，以使用您的電話號碼和行動裝置做為驗證方法來驗證您的身分識別。
+title: 將電話號碼設定為驗證方法 - Azure AD
+description: 如何設定 [安全性資訊] (預覽) 頁面，以使用電話號碼和行動裝置作為驗證方法來驗證身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,19 +8,19 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 63774f2f6b600b1f60aefea84e1d5ea0abd63cbb
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 7500b6b146a627dcdebacd9d2e2c7c61bc43c105
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628379"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744456"
 ---
-# <a name="set-up-a-phone-number-as-your-verification-method"></a>設定電話號碼作為驗證方法
+# <a name="set-up-a-phone-number-as-your-verification-method"></a>將電話設定為驗證方法
 
-您可以遵循下列步驟來新增雙因素驗證和密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊]**** 頁面來新增、更新或刪除安全性資訊。
+您可以遵循下列步驟來新增雙因素驗證和密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊] 頁面來新增、更新或刪除安全性資訊。
 
 如果系統提示您要在登入公司或學校帳戶之後立即設定此資訊，請參閱[從登入頁面的提示字元中設定安全性資訊](security-info-setup-signin.md)一文中的詳細步驟。
 
@@ -29,7 +29,7 @@ ms.locfileid: "82628379"
 > [!Note]
 > 安全性資訊不支援使用電話分機。 即使您新增適當格式 +1 4255551234X12345，在撥號之前仍會移除該分機號碼。
 >
-> 如果您沒有看到電話選項，可能是您的組織不允許您使用此選項來進行驗證。 在此情況下，您必須選擇其他方法，或洽詢貴組織的技術支援人員以取得更多協助。
+> 如果您未看到電話選項，可能是組織不允許您使用這個選項進行驗證。 在這種情況下，您必須選擇其他方法，或連絡組織的技術支援中心以取得更多協助。
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
@@ -57,15 +57,15 @@ ms.locfileid: "82628379"
 
     ![[我的設定檔] 頁面，顯示醒目提示的 [安全性資訊] 連結](media/security-info/securityinfo-myprofile-page.png)
 
-2. 以左側瀏覽窗格或是 [安全性資訊]**** 區塊中的連結選取 [安全性資訊]****，然後在 [安全性資訊]**** 頁面選取 [新增方法]****。
+2. 以左側瀏覽窗格或是 [安全性資訊] 區塊中的連結選取 [安全性資訊]，然後在 [安全性資訊] 頁面選取 [新增方法]。
 
     ![醒目提示 [新增方法] 選項的 [安全性資訊] 頁面](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在 [新增方法]**** 頁面上，從下拉式清單中選取 [電話]****，然後選取 [新增]****。
+3. 在 [新增方法] 頁面上，從下拉式清單中選取 [電話]，然後選取 [新增]。
 
     ![已選取 [電話] 的 [新增方法] 方塊](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. 在 [電話]**** 頁面上，輸入行動裝置的電話號碼，選擇 [打電話給我]****，然後選取 [下一步]****。
+4. 在 [電話] 頁面上，輸入行動裝置的電話號碼，選擇 [打電話給我]，然後選取 [下一步]。
 
     ![新增電話號碼，然後選擇電話](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
@@ -79,34 +79,34 @@ ms.locfileid: "82628379"
 
 ## <a name="delete-phone-calls-from-your-security-info-methods"></a>從安全性資訊方法中刪除電話
 
-如果您不想再使用電話作為安全性資訊方法，您可以從 [安全性資訊]**** 頁面中予以刪除。
+如果您不想再使用電話作為安全性資訊方法，您可以從 [安全性資訊] 頁面中予以刪除。
 
 >[!Important]
 >若不小心刪除電話，就無法再復原。 您必須依照本文中[設定電話](#set-up-phone-calls-from-the-security-info-page)一節的步驟，再次新增該方法。
 
 ### <a name="to-delete-phone-calls"></a>刪除電話
 
-1. 在 [安全性資訊]**** 頁面上，選取 [電話]**** 選項旁的 [刪除]**** 連結。
+1. 在 [安全性資訊] 頁面上，選取 [電話] 選項旁的 [刪除] 連結。
 
     ![從安全性資訊刪除電話方法的連結](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 從確認方塊中選取 [是]****，以刪除 [電話]**** 號碼。 刪除電話號碼之後，該號碼就會從您的安全性資訊中移除，並且從 [安全性資訊]**** 頁面上消失。 如果 [電話]**** 是預設方法，則預設值將會變更為另一個可用方法。
+2. 從確認方塊中選取 [是]，以刪除 [電話] 號碼。 刪除電話號碼之後，該號碼就會從您的安全性資訊中移除，並且從 [安全性資訊] 頁面上消失。 如果 [電話] 是預設方法，則預設值將會變更為另一個可用方法。
 
 ## <a name="change-your-default-security-info-method"></a>變更預設的安全性資訊方法
 
-如果您想要在使用雙因素驗證登入公司或學校帳戶時，或提出密碼重設要求時，使用電話作為預設方法，您可以從 [安全性資訊]**** 頁面進行設定。
+如果您想要在使用雙因素驗證登入公司或學校帳戶時，或提出密碼重設要求時，使用電話作為預設方法，您可以從 [安全性資訊] 頁面進行設定。
 
 ### <a name="to-change-your-default-security-info-method"></a>變更預設的安全性資訊方法
 
-1. 在 [安全性資訊]**** 頁面上，選取 [預設登入方法]**** 資訊旁的 [變更]**** 連結。
+1. 在 [安全性資訊] 頁面上，選取 [預設登入方法] 資訊旁的 [變更] 連結。
 
     ![變更預設登入方法的連結](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 從可用方法的下拉式清單中選取 [電話 - 撥打 (your_phone_number)]***__***，然後選取 [確認]****。
+2. 從可用方法的下拉式清單中選取 [電話 - 撥打 (your_phone_number)]，然後選取 [確認]。
 
     ![選擇預設登入方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    用於登入的預設方法會變更為 [電話 - 撥打 (your_phone_number)]***__***。
+    用於登入的預設方法會變更為 [電話 - 撥打 (your_phone_number)]。
 
 ## <a name="additional-security-info-methods"></a>其他安全性資訊方法
 
@@ -116,7 +116,7 @@ ms.locfileid: "82628379"
 
 - **行動裝置簡訊。** 輸入您的行動裝置號碼，然後取得將用來進行雙步驟驗證或密碼重設的代碼簡訊。 如需如何透過簡訊 (SMS) 驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用簡訊 (SMS)](security-info-setup-text-msg.md)。
 
-- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰**。 註冊 Microsoft 相容安全性金鑰，並搭配 PIN 一起使用，以進行雙步驟驗證或密碼重設。 如需如何透過安全性金鑰驗證身分識別的逐步指示，請參閱[設定安全性資訊來使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 

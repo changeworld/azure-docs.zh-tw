@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678649"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300584"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>教學課程：從頭開始設定 Unity 專案
 
@@ -25,13 +25,16 @@ ms.locfileid: "80678649"
 > * 將模型載入轉譯工作階段中。
 > * 顯示連線統計資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本教學課程中，您需要：
 
 * 您的帳戶資訊 (帳戶識別碼、帳戶金鑰、訂用帳戶識別碼)。 如果您沒有帳戶，請[建立帳戶](../../how-tos/create-an-account.md)。
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)。 
+* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列*工作負載*：
+  * **具備 C++ 的桌面開發**
+  * **通用 Windows 平台 (UWP) 開發**
 * GIT [(下載)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(下載)](https://unity3d.com/get-unity/download)
   * 在 Unity 中安裝下列模組：
@@ -70,57 +73,57 @@ ms.locfileid: "80678649"
 ```
 
 通用轉譯管線套件是選用項目，但基於效能理由，建議使用。
-在您修改並儲存資訊清單之後，Unity 會自動重新整理。 確認已在 [專案]  視窗中載入此套件：
+在您修改並儲存資訊清單之後，Unity 會自動重新整理。 確認已在 [專案] 視窗中載入此套件：
 
 ![確認套件匯入](media/confirm-packages.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>確定您有最新版的套件。
 
 下列步驟可確保您的專案使用最新版的遠端轉譯套件。
-1. 在 [專案] 視窗中選取套件，然後按一下套件圖示：![選取套件圖示](media/package-icons.png)
+1. 在 [專案] 視窗中選取套件，然後按一下 :::no-loc text="package"::: 圖示：![選取套件圖示](media/package-icons.png)
 1. 在偵測器中，按一下 [在套件管理員中檢視]：![套件偵測器](media/package-properties.png)
 1. 在遠端轉譯套件的套件管理員頁面中，查看更新按鈕是否可用。 如果可用，按一下該按鈕會將套件更新為最新可用的版本：![套件管理員中的 ARR 套件](media/package-manager.png)
 1. 有時候更新套件可能會導致主控台發生錯誤。 如果發生這種情況，請嘗試關閉並重新開啟專案。
 
 ## <a name="configure-the-camera"></a>設定相機
 
-選取 [主要相機]  節點。
+選取 [主要相機] 節點。
 
-1. 重設其 [轉換]  ：
+1. 重設其 [轉換]：
 
     ![重設相機轉換](media/camera-reset-transform.png)
 
-1. 將 [清除旗標]  設定為 [單色] 
+1. 將 **:::no-loc text="Clear flags":::** 設定為 *:::no-loc text="Solid Color":::*
 
-1. 將 [背景]  設定為 [黑色] 
+1. 將 **:::no-loc text="Background":::** 設定為 *:::no-loc text="Black":::*
 
-1. 將 [裁剪平面]  設定為 [近 = 0.3]  和 [遠 = 20]  。 這表示轉譯會裁剪距離小於 30 公分或大於 20 公尺的幾何。
+1. 將 **:::no-loc text="Clipping Planes":::** 設定為 *Near = 0.3* 和 *Far = 20*。 這表示轉譯會裁剪距離小於 30 公分或大於 20 公尺的幾何。
 
     ![Unity 相機屬性](media/camera-properties.png)
 
 ## <a name="adjust-the-project-settings"></a>調整專案設定
 
-1. 開啟 [編輯] > [專案設定...] 
+1. 開啟 [編輯] > [專案設定...]
 1. 在左側的清單中選取 [品質]。
-1. 將 [預設品質等級]  變更為 [低] 
+1. 將 [預設品質等級] 變更為 [低]
 
     ![變更專案品質設定](media/settings-quality.png)
 
-1. 選取左側的 [圖形]  。
-1. 將 [可編寫指令碼的轉譯管線]  設定變更為 [HybridRenderingPipeline]  。 如果未使用通用轉譯管線，請略過此步驟。
+1. 選取左側的 [圖形]。
+1. 將 [可編寫指令碼的轉譯管線] 設定變更為 [HybridRenderingPipeline]。 如果未使用通用轉譯管線，請略過此步驟。
 
     ![變更專案圖形設定](media/settings-graphics-lwrp.png) 有時候 UI 並不會從套件填入可用的管線類型清單，在此情況下，必須手動將 *HybridRenderingPipeline* 資產拖曳到欄位上：![變更專案圖形設定](media/hybrid-rendering-pipeline.png)
-1. 選取左側的 [播放器]  。
-1. 選取 [通用 Windows 平台設定]  索引標籤
-1. 變更 [XR 設定]  以支援 Windows Mixed Reality：![播放器設定](media/xr-player-settings.png)
+1. 選取左側的 [播放器]。
+1. 選取 [通用 Windows 平台設定] 索引標籤
+1. 變更 [XR 設定] 以支援 Windows Mixed Reality：![播放器設定](media/xr-player-settings.png)
 1. 選取上述螢幕擷取畫面中的設定：
-    1. 啟用 [虛擬實境支援] 
-    1. 將 [深度格式]  設定為 [16 位元深度] 
-    1. 啟用 [深度緩衝區共用] 
-    1. 將 [立體聲轉譯模式]  設定為 [單程執行個體] 
+    1. 啟用 [虛擬實境支援]
+    1. 將 [深度格式] 設定為 [16 位元深度]
+    1. 啟用 [深度緩衝區共用]
+    1. 將 [立體聲轉譯模式] 設定為 [單程執行個體]
 
-1. 在相同視窗的 [XR 設定]  之上，展開 [發佈設定] 
-1. 向下捲動至 [功能]  並選取：
+1. 在相同視窗的 [XR 設定] 之上，展開 [發佈設定]
+1. 向下捲動至 [功能] 並選取：
     * **InternetClient**
     * **InternetClientServer**
     * **SpatialPerception**
@@ -128,7 +131,7 @@ ms.locfileid: "80678649"
 
       如果您想要將 Unity 遠端偵錯工具連線到您的裝置，則需要此選項。
 
-1. 在 [支援的裝置系列]  中，啟用 [全像攝影]  和 [桌面] 
+1. 在 [支援的裝置系列] 中，啟用 [全像攝影] 和 [桌面]
 
 1. 如果您想要使用混合實境工具組，請參閱 [MRTK 文件](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview)，以取得建議設定和功能的詳細資訊。
 
@@ -290,22 +293,22 @@ public class RemoteRendering : MonoBehaviour
 }
 ```
 
-此指令碼會初始化 Azure 遠端轉譯，告知哪個相機物件要用於轉譯，然後在啟動 [播放模式]  時，將 [建立工作階段]  按鈕放入檢視區。
+此指令碼會初始化 Azure 遠端轉譯，告知哪個相機物件要用於轉譯，然後在啟動 [播放模式] 時，將 [建立工作階段] 按鈕放入檢視區。
 
 > [!CAUTION]
 > 當播放模式在 Unity 中為作用中時，修改指令碼並加以儲存可能會導致 Unity 凍結，而且您必須透過工作管理員將其關閉。 因此，在編輯 *RemoteRendering* 指令碼之前，一律停止播放模式。
 
 ## <a name="test-azure-remote-rendering-session-creation"></a>測試 Azure 遠端轉譯工作階段建立
 
-在場景中建立新的 GameObject，並在其中新增 *RemoteRendering* 元件。 針對您的遠端轉譯帳戶，填入適當的 [帳戶網域]  、[帳戶識別碼]  和 [帳戶金鑰]  ：
+在場景中建立新的 GameObject，並在其中新增 *RemoteRendering* 元件。 針對您的遠端轉譯帳戶，填入適當的 [帳戶網域]、[帳戶識別碼] 和 [帳戶金鑰]：
 
 ![遠端轉譯元件屬性](media/remote-rendering-component.png)
 
-在編輯器中啟動應用程式 (**按下 [播放]** 或 CTRL+P)。 您應會看到 [建立工作階段]  按鈕出現在檢視區中。 按一下該按鈕以啟動第一個 ARR 工作階段：
+在編輯器中啟動應用程式 (**按下 [播放]** 或 CTRL+P)。 您應會看到 [建立工作階段] 按鈕出現在檢視區中。 按一下該按鈕以啟動第一個 ARR 工作階段：
 
 ![建立第一個工作階段](media/test-create.png)
 
-如果失敗，請確定您已將您的帳戶詳細資料正確輸入到 RemoteRendering 元件屬性中。 否則，主控台視窗中會出現一則訊息，其中顯示指派給您的工作階段識別碼，並指出工作階段目前處於 [啟動中]  狀態：
+如果失敗，請確定您已將您的帳戶詳細資料正確輸入到 RemoteRendering 元件屬性中。 否則，主控台視窗中會出現一則訊息，其中顯示指派給您的工作階段識別碼，並指出工作階段目前處於 [啟動中] 狀態：
 
 ![工作階段開始輸出](media/create-session-output.png)
 
@@ -313,7 +316,7 @@ public class RemoteRendering : MonoBehaviour
 
 ![工作階段準備輸出](media/create-session-output-2.png)
 
-就是這樣！ 目前不會發生任何事。 若要避免產生費用，您應該一律停止不再需要的工作階段。 在此範例中，您可按一下 [停止工作階段]  按鈕或停止 Unity 模擬來這麼做。 由於 *ARRServiceUnity* 元件的 [自動停止工作階段]  屬性 (預設為開啟)，系統將會為您自動停止工作階段。 如果由於當機或連線問題以致一切失敗，您的工作階段在由伺服器關閉以前，其執行時間長度可能為 *MaxLeaseTime*。
+就是這樣！ 目前不會發生任何事。 若要避免產生費用，您應該一律停止不再需要的工作階段。 在此範例中，您可按一下 [停止工作階段] 按鈕或停止 Unity 模擬來這麼做。 由於 *ARRServiceUnity* 元件的 [自動停止工作階段] 屬性 (預設為開啟)，系統將會為您自動停止工作階段。 如果由於當機或連線問題以致一切失敗，您的工作階段在由伺服器關閉以前，其執行時間長度可能為 *MaxLeaseTime*。
 
 > [!NOTE]
 > 停止工作階段將會立即生效且無法復原。 一旦停止，您就必須建立新的工作階段，其具有相同的啟動額外負荷。
@@ -413,9 +416,9 @@ public class RemoteRendering : MonoBehaviour
 ```
 
 > [!CAUTION]
-> 執行此程式碼之前，請務必停用 RemoteRendering 元件中的 [自動停止工作階段]  選項。 否則，您建立的每個工作階段都會在您停止模擬時自動停止，而嘗試重複使用工作階段將會失敗。
+> 執行此程式碼之前，請務必停用 RemoteRendering 元件中的 [自動停止工作階段] 選項。 否則，您建立的每個工作階段都會在您停止模擬時自動停止，而嘗試重複使用工作階段將會失敗。
 
-當您按下 [播放]  時，您現在會在檢視區中取得三個按鈕：[建立工作階段]  、[查詢作用中工作階段]  ，以及 [使用現有的工作階段]  。 第一個按鈕一律會建立新的工作階段。 第二個按鈕會查詢有哪些「作用中」  工作階段存在。 如果您未手動指定要嘗試使用的工作階段識別碼，此動作將會自動選取該工作階段識別碼，以供日後使用。 第三個按鈕會嘗試連線到現有的工作階段。 不是您透過 [工作階段識別碼]  元件屬性手動指定的工作階段，就是 [查詢作用中工作階段]  所找到的工作階段。
+當您按下 [播放] 時，您現在會在檢視區中取得三個按鈕：[建立工作階段]、[查詢作用中工作階段]，以及 [使用現有的工作階段]。 第一個按鈕一律會建立新的工作階段。 第二個按鈕會查詢有哪些「作用中」工作階段存在。 如果您未手動指定要嘗試使用的工作階段識別碼，此動作將會自動選取該工作階段識別碼，以供日後使用。 第三個按鈕會嘗試連線到現有的工作階段。 不是您透過 [工作階段識別碼] 元件屬性手動指定的工作階段，就是 [查詢作用中工作階段] 所找到的工作階段。
 
 **AutoStartSessionAsync** 函式可用來模擬在編輯器之外按下的按鈕。
 
@@ -428,7 +431,7 @@ public class RemoteRendering : MonoBehaviour
 
 ## <a name="connect-to-an-active-session"></a>連接到作用中工作階段
 
-到目前為止，我們已建立或開啟數個工作階段。 下一步是「連線」  到工作階段。 連線之後，轉譯伺服器將會產生影像並將影片串流傳送至我們的應用程式。
+到目前為止，我們已建立或開啟數個工作階段。 下一步是「連線」到工作階段。 連線之後，轉譯伺服器將會產生影像並將影片串流傳送至我們的應用程式。
 
 將下列程式碼插入 *RemoteRendering* 指令碼中，並移除舊版的重複函式：
 
@@ -555,17 +558,17 @@ public class RemoteRendering : MonoBehaviour
 
 若要測試這項功能：
 
-1. 在 Unity 中按下 [播放]  。
+1. 在 Unity 中按下 [播放]。
 1. 開啟工作階段：
-    1. 如果您已經有工作階段，請按 [查詢作用中工作階段]  ，然後按 [使用現有的工作階段]  。
-    1. 否則，請按 [建立工作階段]  。
-1. 按 [連線]  。
+    1. 如果您已經有工作階段，請按 [查詢作用中工作階段]，然後按 [使用現有的工作階段]。
+    1. 否則，請按 [建立工作階段]。
+1. 按 [連線]。
 1. 幾秒後，主控台輸出應該會列出您所連線的項目。
 1. 目前不應發生任何其他情況。
-1. 按 [中斷連線]  或停止 Unity 的播放模式。
+1. 按 [中斷連線] 或停止 Unity 的播放模式。
 
 >[!NOTE]
-> 多位使用者可以「開啟」  一個工作階段來查詢其資訊，但一次只能有一位使用者「連線」  到一個工作階段。 如果另一位使用者已經連線，則連線會失敗並發生**交握錯誤**。
+> 多位使用者可以「開啟」一個工作階段來查詢其資訊，但一次只能有一位使用者「連線」到一個工作階段。 如果另一位使用者已經連線，則連線會失敗並發生**交握錯誤**。
 
 ## <a name="load-a-model"></a>載入模型
 
@@ -724,14 +727,14 @@ public class RemoteRendering : MonoBehaviour
 #endif
 ```
 
-當您現在按下播放、開啟工作階段並加以連線時，[載入模型]  按鈕隨即出現。 按一下之後，主控台輸出將會顯示載入進度，而達到 100% 時，您應會看到引擎的模型出現：
+當您現在按下播放、開啟工作階段並加以連線時，[載入模型] 按鈕隨即出現。 按一下之後，主控台輸出將會顯示載入進度，而達到 100% 時，您應會看到引擎的模型出現：
 
 ![在編輯器中載入的模型](media/model-loaded-replace-me.png)
 
 [WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) 是用於 [全像投影穩定性](https://docs.microsoft.com/windows/mixed-reality/hologram-stability)的重要元件。 不過，其只在部署於混合實境裝置時有效。
 
 > [!TIP]
-> 如果您遵循了[快速入門：轉換模型以進行轉譯](../../quickstarts/convert-model.md)，您就已經知道如何轉換自己的模型。 若要進行轉譯，您現在只需要將已轉換模型的 URI 放入 [模型名稱]  屬性中。
+> 如果您遵循了[快速入門：轉換模型以進行轉譯](../../quickstarts/convert-model.md)，您就已經知道如何轉換自己的模型。 若要進行轉譯，您現在只需要將已轉換模型的 URI 放入 [模型名稱] 屬性中。
 
 ## <a name="display-frame-statistics"></a>顯示畫面統計資料
 
@@ -778,17 +781,17 @@ public class RemoteFrameStats : MonoBehaviour
 }
 ```
 
-建立 GameObject 並將其命名為 *FrameStats*。 將其當作子節點附加至 [主要相機]  物件，並將其位置設定為 **x = 0、y = 0、z = 0.325**。 將 **RemoteFrameStats** 元件新增至物件。
+建立 GameObject 並將其命名為 *FrameStats*。 將其當作子節點附加至 [主要相機] 物件，並將其位置設定為 **x = 0、y = 0、z = 0.325**。 將 **RemoteFrameStats** 元件新增至物件。
 
-將 [UI] > [畫布]  子物件新增至 *FrameStats* 物件並設定其屬性，如下所示：
+將 [UI] > [畫布] 子物件新增至 *FrameStats* 物件並設定其屬性，如下所示：
 
 ![畫布屬性](media/framestats-canvas.png)
 
-將 [UI] > [文字]  物件新增為畫布的子系並設定其屬性，如下所示：
+將 [UI] > [文字] 物件新增為畫布的子系並設定其屬性，如下所示：
 
 ![文字屬性](media/framestats-text.png)
 
-選取 [FrameStats]  物件，然後在 **FrameStats 欄位**中填入資料，做法是按一下圓形圖示，然後選取 [Text]  物件：
+選取 [FrameStats] 物件，然後在 **FrameStats 欄位**中填入資料，做法是按一下圓形圖示，然後選取 [Text] 物件：
 
 ![設定文字屬性](media/framestats-set-text.png)
 

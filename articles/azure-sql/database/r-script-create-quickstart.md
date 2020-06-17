@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053065"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324601"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>快速入門：在 Azure SQL Database 機器學習服務 (預覽) 中建立和執行簡單的 R 指令碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84053065"
 
 若要執行 R 指令碼，請將它當做引數傳遞至系統預存程式，[sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)。
 
-在下列步驟中，您會在 SQL 資料庫中執行此範例 R 指令碼：
+在下列步驟中，您會在自己的資料庫中執行此範例 R 指令碼：
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. 開啟 **SQL Server Management Studio**，然後連線至 SQL 資料庫。
+1. 開啟 **SQL Server Management Studio** 並連線至您的資料庫。
 
-   如果您需要連線方面的協助，請參閱[快速入門：使用 SQL Server Management Studio 連線和查詢 Azure SQL Database](connect-query-ssms.md)。
+   如果您需要連線方面的協助，請參閱[快速入門：使用 SQL Server Management Studio 來連線及查詢 Azure SQL Database 中的資料庫](connect-query-ssms.md) (英文)。
 
 1. 將完整的 R 指令碼傳遞至 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 預存程序。
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   如果發生任何錯誤，有可能是因為您的 SQL 資料庫未啟用公開預覽版的機器學習服務 (搭配 R)。 請參閱上述[必要條件](#prerequisites)。
+   如果發生任何錯誤，有可能是因為您的資料庫未啟用公開預覽版的機器學習服務 (搭配 R)。 請參閱上述[必要條件](#prerequisites)。
 
    > [!NOTE]
    > 如果您是系統管理員，您可以自動執行外部程式碼。 您可以使用以下命令，將權限授予其他使用者：
@@ -196,7 +196,7 @@ GO
 
 ## <a name="check-r-version"></a>檢查 R 版本
 
-如果您想要查看安裝在 SQL 資料庫中的 R 版本，請執行下列指令碼。
+如果您想要查看安裝在資料庫中的 R 版本，請執行下列指令碼。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>列出 R 套件
 
-Microsoft 會在提供多個隨機器學習服務預先安裝在 SQL 資料庫中的 R 套件。
+Microsoft 會在提供多個隨機器學習服務預先安裝在資料庫中的 R 套件。
 
 若要查看已安裝 R 套件的清單 (包括版本、相依性、授權及程式庫路徑資訊)，請執行下列指令碼。
 

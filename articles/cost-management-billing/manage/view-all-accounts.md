@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/29/2020
 ms.author: banders
-ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f571d323a06b64f79c3f97ae8717be7eb8968d3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238001"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434549"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -22,9 +22,9 @@ Azure 入口網站支援下列計費帳戶類型：
 
 - **Microsoft Online Services 方案**：當您透過 Azure 網站註冊 Azure 時，就會建立 Microsoft Online Services 方案的計費帳戶。 例如，當您註冊 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)、[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)，或以 [Visual studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)身分註冊時。
 
-- **Enterprise 合約**：當貴組織簽署 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。
+- **Enterprise 合約**：當貴組織簽署 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。 在 Enterprise 合約中，您最多可以有 500 個訂用帳戶。
 
-- **Microsoft 客戶合約**：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)的客戶，可能也有 Microsoft 客戶合約的計費帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 客戶合約的計費帳戶](../understand/mca-overview.md)。
+- **Microsoft 客戶合約**：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)的客戶，可能也有 Microsoft 客戶合約的計費帳戶。 在 Microsoft 客戶合約中，您最多可以有 20 個訂用帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 客戶合約的計費帳戶](../understand/mca-overview.md)。
 
 - **Microsoft 合作夥伴合約**：Microsoft 合作夥伴合約的計費帳戶是針對雲端解決方案提供者 (CSP) 合作夥伴所建立的，可供其在新的商務體驗中管理客戶。 合作夥伴必須至少有一個客戶具有 [Azure 方案](https://docs.microsoft.com/partner-center/purchase-azure-plan)，才能在 Azure 入口網站中管理其計費帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 合作夥伴合約的計費帳戶](../understand/mpa-overview.md)。
 
@@ -35,7 +35,7 @@ Azure 入口網站支援下列計費帳戶類型：
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services 方案
 
- ![顯示 MOSP 階層的螢幕擷取畫面](./media/view-all-accounts/mosp-hierarchy.png)
+![顯示 MOSP 階層的螢幕擷取畫面](./media/view-all-accounts/mosp-hierarchy.png)
 
 |影響範圍  |定義  |
 |---------|---------|
@@ -77,11 +77,11 @@ Azure 入口網站支援下列計費帳戶類型：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
-3. 在 [概觀] 頁面中，選取 [切換範圍]  。
+3. 在 [概觀] 頁面中，選取 [切換範圍]。
 
    ![顯示計費範圍的螢幕擷取畫面](./media/view-all-accounts/overview-select-scopes.png)
 

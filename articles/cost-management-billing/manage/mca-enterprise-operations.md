@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: b8f588df89429bd08b1c74fbc528801fb45377ed
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ea6dc2a35d4b55c2164e7586684cdaf019e5277d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692297"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299922"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>在您 Microsoft 客戶合約的計費帳戶中完成 Enterprise 合約工作
 
@@ -75,7 +75,7 @@ ms.locfileid: "82692297"
 
 ### <a name="add-an-additional-enterprise-administrator"></a>新增其他企業系統管理員
 
-為使用者授與帳單設定檔的存取權，讓他們能夠檢視及管理組織的帳單。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)]  頁面來授與存取權。  若要深入了解帳單設定檔角色，請參閱[帳單設定檔角色和工作](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+為使用者授與帳單設定檔的存取權，讓他們能夠檢視及管理組織的帳單。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)] 頁面來授與存取權。  若要深入了解帳單設定檔角色，請參閱[帳單設定檔角色和工作](understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 若要了解如何提供帳單設定檔的存取權，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -105,7 +105,7 @@ ms.locfileid: "82692297"
 
 ### <a name="add-an-additional-department-administrator"></a>新增其他部門系統管理員
 
-系統會為您在 Enterprise 合約中的每個部門建立一個發票區段。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)]  頁面，為其他人授與檢視和管理發票區段的存取權。 若要深入了解發票區段角色，請參閱[發票區段角色和工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+系統會為您在 Enterprise 合約中的每個部門建立一個發票區段。 您可以使用 Azure 入口網站中的 [存取控制 (IAM)] 頁面，為其他人授與檢視和管理發票區段的存取權。 若要深入了解發票區段角色，請參閱[發票區段角色和工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 若要了解如何提供發票區段的存取權，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 

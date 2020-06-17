@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181557"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338919"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
 本指南將示範 JavaScript 單頁應用程式 (SPA) 如何執行下列動作：
 - 登入個人帳戶及公司和學校帳戶
 - 取得存取權杖
-- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點  中存取權杖的 API
+- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API
 
 >[!NOTE]
 > 如果您不熟悉 Microsoft 身分識別平台，建議您先參閱[登入使用者並取得 JavaScript SPA 中的存取權杖快速入門](quickstart-v2-javascript.md)。
@@ -50,19 +50,32 @@ ms.locfileid: "82181557"
 >
 > 若要在您執行之前設定程式碼範例，請跳至[設定步驟](#register-your-application)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 若要執行本教學課程，您需要本機網頁伺服器，例如 [Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core) 或與 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 的 IIS Express 整合。
 
 * 本指南中的指示是以內建於 Node.js 的 Web 伺服器作為基礎。 建議您使用 [Visual Studio Code](https://code.visualstudio.com/download) 作為整合式開發環境 (IDE)。
 
+* 新式網頁瀏覽器。 這個 JavaScript 範例會使用 [ES6](http://www.ecma-international.org/ecma-262/6.0/) 慣例，因此**不**支援 **Internet Explorer**。
+
 ## <a name="create-your-project"></a>建立專案
 
 請確定您已安裝 [Node.js](https://nodejs.org/en/download/)，然後建立資料夾來裝載您的應用程式。 我們會在該處實作簡單的 [Express](https://expressjs.com/) Web 伺服器來提供 `index.html` 檔案。
 
-1. 首先，使用 Visual Studio Code 整合式終端機找出專案資料夾，然後使用 NPM 來安裝 Express。
+1. 使用終端 (例如 Visual Studio Code 整合式終端) 找出專案資料夾，然後鍵入：
 
-1. 接下來，建立名為 `server.js` 的 .js 檔案，然後新增下列程式碼：
+   ```console
+   npm init
+   ```
+
+2. 接下來，安裝必要的相依性：
+
+   ```console
+   npm install express --save
+   npm install morgan --save
+   ```
+
+1. 現在，建立名為 `index.js` 的 .js 檔案，然後新增下列程式碼：
 
    ```JavaScript
    const express = require('express');
@@ -258,25 +271,25 @@ ms.locfileid: "82181557"
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
 1. 移至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. [註冊應用程式]  頁面出現時，輸入您應用程式的名稱。
-1. 在 [支援的帳戶類型]  底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  。
-1. 在 [重新導向 URI]  區段中，從下拉式清單中選取 [Web]  平台，然後根據您的網頁伺服器，將值設定為應用程式的 URL。
-1. 選取 [註冊]  。
-1. 在應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
-1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]  。
-1. 在 [進階設定]  的 [隱含授與]  底下，選取 [識別碼權杖]  和 [存取權杖]  核取方塊。 因為此應用程式必須將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
-1. 選取 [儲存]  。
+1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
+1. 在 [重新導向 URI] 區段中，從下拉式清單中選取 [Web] 平台，然後根據您的網頁伺服器，將值設定為應用程式的 URL。
+1. 選取 [註冊]。
+1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
+1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
+1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 因為此應用程式必須將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
+1. 選取 [儲存]。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>設定 Node.js 的重新導向 URL
 >
-> 對於 Node.js，您可以在 server.js  檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 3000，但您可以使用任何其他可用的連接埠。
+> 若是 Node.js，您可以在 *index.js* 檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 3000，但您可以使用任何其他可用的連接埠。
 >
-> 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊]  窗格，並且執行下列其中一項作業：
+> 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊] 窗格，並且執行下列其中一項作業：
 >
-> - 將 `http://localhost:3000/` 設定為 [重新導向 URL]  。
-> - 如果您使用自訂 TCP 連接埠，請使用 `http://localhost:<port>/` (其中 \<port>  是自訂 TCP 連接埠號碼)。
->   1. 複製 [URL]  值。
->   1. 切換回 [應用程式註冊]  窗格，並貼上複製的值作為 [重新導向 URL]  。
+> - 將 `http://localhost:3000/` 設定為 [重新導向 URL]。
+> - 如果您使用自訂 TCP 連接埠，請使用 *`http://localhost:<port>/`* (其中 *\<port>* 是自訂 TCP 連接埠號碼)。
+>   1. 複製 [URL] 值。
+>   1. 切換回 [應用程式註冊] 窗格，並貼上複製的值作為 [重新導向 URL]。
 >
 
 ### <a name="configure-your-javascript-spa"></a>設定您的 JavaScript SPA
@@ -308,12 +321,12 @@ ms.locfileid: "82181557"
 ```
 
  其中：
- - *\<Enter_the_Application_Id_Here>* 是您所註冊之應用程式的**應用程式 (用戶端) 識別碼**。
+ - *\<Enter_the_Application_Id_Here>* 是您所註冊應用程式的**應用程式 (用戶端) 識別碼**。
  - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
  - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
-   - 如果您的應用程式支援「此組織目錄中的帳戶」  ，請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  \(例如 *contoso.microsoft.com*\)。
-   - 如果您的應用程式支援「任何組織目錄中的帳戶」  ，請將此值取代為 [組織]  。
-   - 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」  ，請將此值取代為 [通用]  。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」  ，請將此值取代為 [取用者]  。
+   - 如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] \(例如 *contoso.microsoft.com*\)。
+   - 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。
+   - 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。
 
 
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft Authentication Library (MSAL) 登入使用者
@@ -396,19 +409,19 @@ ms.locfileid: "82181557"
 
 ### <a name="more-information"></a>詳細資訊
 
-在使用者第一次選取 [登入]  按鈕之後，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 這個方法會開啟「Microsoft 身分識別平台端點」  的快顯視窗，以提示及驗證使用者的認證。 成功登入之後，使用者會重新導回到原本的 index.html  頁面。 系統會收到權杖 (由 `msal.js` 進行處理)，並快取權杖中包含的資訊。 此權杖也稱為「ID 權杖」  且包含使用者的基本資訊，例如使用者顯示名稱。 如果您打算將此權杖所提供的任何資料用於任何目的，您必須確定後端伺服器已驗證此權杖，以保證權杖是發給您應用程式的有效使用者。
+在使用者第一次選取 [登入] 按鈕之後，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 這個方法會開啟「Microsoft 身分識別平台端點」的快顯視窗，以提示及驗證使用者的認證。 成功登入之後，使用者會重新導回到原本的 index.html 頁面。 系統會收到權杖 (由 `msal.js` 進行處理)，並快取權杖中包含的資訊。 此權杖也稱為「ID 權杖」且包含使用者的基本資訊，例如使用者顯示名稱。 如果您打算將此權杖所提供的任何資料用於任何目的，您必須確定後端伺服器已驗證此權杖，以保證權杖是發給您應用程式的有效使用者。
 
-本指南所產生的 SPA 會呼叫 `acquireTokenSilent` 和/或 `acquireTokenPopup`，以取得用來查詢 Microsoft Graph API 中使用者設定檔資訊的「存取權杖」  。 如果您需要可驗證 ID 權杖的範例，請參閱 GitHub 中的[這個](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 範例")範例應用程式。 此範例使用 ASP.NET Web API 進行權杖驗證。
+本指南所產生的 SPA 會呼叫 `acquireTokenSilent` 和/或 `acquireTokenPopup`，以取得用來查詢 Microsoft Graph API 中使用者設定檔資訊的「存取權杖」。 如果您需要可驗證 ID 權杖的範例，請參閱 GitHub 中的[這個](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 範例")範例應用程式。 此範例使用 ASP.NET Web API 進行權杖驗證。
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent  以取得權杖。 但是，您有可能必須強制使用者與 Microsoft 身分識別平台端點互動。 範例包括：
+初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent 以取得權杖。 但是，您有可能必須強制使用者與 Microsoft 身分識別平台端點互動。 範例包括：
 
 - 使用者需要重新輸入其認證，因為密碼已過期。
 - 您的應用程式要求資源存取權，而您需要使用者同意。
 - 需要雙因素驗證。
 
-呼叫 acquireTokenPopup  開啟快顯視窗 (或呼叫 acquireTokenRedirect  將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
+呼叫 acquireTokenPopup 開啟快顯視窗 (或呼叫 acquireTokenRedirect 將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
 
 #### <a name="get-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
@@ -460,7 +473,7 @@ ms.locfileid: "82181557"
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>針對受保護 API 進行 REST 呼叫的相關詳細資訊
 
-在使用此指南建立的範例應用程式中，使用 `callMSGraph()` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該要求會將內容傳回給呼叫端。 此方法會在「HTTP 授權標頭」  中加入取得的權杖。 對於本指南建立的範例應用程式，資源為 Microsoft Graph API 的 me  端點，其會顯示使用者的設定檔資訊。
+在使用此指南建立的範例應用程式中，使用 `callMSGraph()` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該要求會將內容傳回給呼叫端。 此方法會在「HTTP 授權標頭」中加入取得的權杖。 對於本指南建立的範例應用程式，資源為 Microsoft Graph API 的 me 端點，其會顯示使用者的設定檔資訊。
 
 ## <a name="test-your-code"></a>測試您的程式碼
 
@@ -470,11 +483,11 @@ ms.locfileid: "82181557"
    npm install
    npm start
    ```
-1. 在瀏覽器中輸入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中 *port* 是 Web 伺服器將會接聽的連接埠。 您應該會看到 index.html  檔案和 [登入]  按鈕。
+1. 在瀏覽器中輸入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中 *port* 是 Web 伺服器將會接聽的連接埠。 您應該會看到 index.html 檔案和 [登入] 按鈕。
 
 ## <a name="test-your-application"></a>測試您的應用程式
 
-在瀏覽器載入您的 index.html  檔案之後，請選取 [登入]  。 系統會提示您使用 Microsoft 身分識別平台端點登入：
+在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
 
 ![JavaScript SPA 帳戶登入視窗](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -492,11 +505,9 @@ ms.locfileid: "82181557"
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 
-Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Mail.Read  範圍才能列出使用者的郵件。
+Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Mail.Read 範圍才能列出使用者的郵件。
 
 > [!NOTE]
 > 系統可能會在您增加範圍數目時，提示使用者同意其他事項。
-
-如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId  作為範圍以取得權杖。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

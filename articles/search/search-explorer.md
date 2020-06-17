@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369686"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488200"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入門：使用搜尋總管在入口網站中執行查詢
 
-**搜尋總管**是內建的查詢工具，可用來對 Azure 認知搜尋中的搜尋索引執行查詢。 這項工具可讓您輕鬆地了解查詢語法、測試查詢或篩選運算式，或藉由確認是否有更新的內容，來確認索引重新整理的結果。
+**搜尋總管**是內建的查詢工具，可用來對 Azure 認知搜尋中的搜尋索引執行查詢。 這項工具可讓您輕鬆學習查詢語法、測試查詢或篩選運算式，或檢查索引中是否有新內容，以確認資料重新整理。
 
-本快速入門會使用 **realestate-us-sample-index**來示範搜尋總管。 要求會使用[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來編寫，並以 JSON 文件的形式傳回回應。
+本快速入門會使用現有的索引來示範搜尋總管。 要求會使用[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來編寫，並以 JSON 文件的形式傳回回應。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-+ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。
+開始之前，您必須具備下列條件：
 
-+ 本快速入門使用 **realestate-us-sample-index**。 逐步執行[**匯入資料**](search-import-data-portal.md)精靈，即可從內建的範例資料來源產生索引。
++ 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
+
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
+
++ 本快速入門會使用 *realestate-us-sample-index*。 使用 [匯入資料][](search-import-data-portal.md) 精靈來建立索引。 在第一個步驟中，當系統要求您輸入資料來源時，請選擇 [樣本] 然後選取 [realestate-us-sample] 資料來源。 接受所有的精靈預設值以建立索引。
 
 ## <a name="start-search-explorer"></a>開啟 [搜尋總管]
 
@@ -35,13 +39,13 @@ ms.locfileid: "80369686"
 
    ![入口網站中的搜尋總管命令](./media/search-explorer/search-explorer-cmd2.png "入口網站中的搜尋總管命令")
 
-    或者，在開啟的索引上使用內嵌的 [搜尋總管]  索引標籤：
+    或者，在開啟的索引上使用內嵌的 [搜尋總管] 索引標籤：
 
    ![搜尋總管索引標籤](./media/search-explorer/search-explorer-tab.png "搜尋總管索引標籤")
 
 ## <a name="unspecified-query"></a>未指定的查詢
 
-若要率先一睹內容，請執行空的搜尋，方法是按一下 [搜尋]  且不提供任何字詞。 空的搜尋作為第一個查詢很有用，因為它會傳回整個文件，以便您可以檢閱文件組合。 在空的搜尋上，沒有任何搜尋排名，而且會以任意順序傳回文件 (`"@search.score": 1` 為所有文件)。 根據預設，會傳回搜尋要求中的 50 份文件。
+若要率先一睹內容，請執行空的搜尋，方法是按一下 [搜尋] 且不提供任何字詞。 空的搜尋作為第一個查詢很有用，因為它會傳回整個文件，以便您可以檢閱文件組合。 在空的搜尋上，沒有任何搜尋排名，而且會以任意順序傳回文件 (`"@search.score": 1` 為所有文件)。 根據預設，會傳回搜尋要求中的 50 份文件。
 
 空的搜尋的對等語法是 `*` 或 `search=*`。
    
@@ -139,7 +143,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
 + 結果會以詳細的 JSON 文件傳回，以便您可以完整地查看文檔構造和內容。 您可以使用範例中顯示的查詢運算式來限制要傳回哪些欄位。
 
-+ 文件是由索引中標記為**可擷取**的所有欄位組成。 若要在入口網站中檢視索引屬性，請在 [搜尋概觀] 頁面上按一下 [索引]  清單中的 realestate-us-sample  。
++ 文件是由索引中標記為**可擷取**的所有欄位組成。 若要在入口網站中檢視索引屬性，請在 [搜尋概觀] 頁面上按一下 [索引] 清單中的 realestate-us-sample。
 
 + 自由格式查詢類似於您在商業 Web 瀏覽器中輸入的內容，適合用於測試使用者體驗。 比方說，假設內建的房地產 範例索引，您可以輸入 "Seattle apartments lake washington"，然後您可以使用 Ctrl-F 在搜尋結果中尋找字詞。 
 
@@ -149,7 +153,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。 
 

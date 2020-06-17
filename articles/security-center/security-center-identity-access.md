@@ -13,58 +13,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481954"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759161"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
 > [!TIP]
-> 自2020年3月起，Azure 資訊安全中心的身分識別和存取建議會包含在免費定價層的所有訂用帳戶中。 如果您擁有免費層的訂用帳戶，其安全分數會受到影響，因為先前並未針對其身分識別和存取安全性進行評估。 
+> 自 2020 年 3 月起，免費定價層的所有訂用帳戶都包含 Azure 資訊安全中心的身分識別和存取建議。 如果您有免費定價層的訂用帳戶，因為先前並未評估這些訂用帳戶的身分識別和存取安全性，其安全分數將受到影響。 
 
 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
 
 安全性周邊已從網路周邊發展到身分識別周邊。 安全性變得較不著重於防禦您的網路，而是較著重於防禦您的資料，以及管理您應用程式和使用者的安全性。 現今有越來越多資料和應用程式移至雲端，身分識別成為新的周邊。
 
-藉由監視身分識別活動，您可以在事件發生前採取主動式動作，或使用被動動作來停止攻擊嘗試。 例如，資訊安全中心可能會標示已淘汰的帳戶（不再需要的帳戶，而且無法由 Azure Active Directory 登入）以進行移除。 
+您可以監視身分識別活動，以便在事件發生前採取主動式動作，或採取被動式動作來阻止攻擊嘗試。 例如，資訊安全中心可能將已取代的帳戶 (不再需要且禁止由 Azure Active Directory 登入的帳戶) 標示為移除。 
 
-您可能會在 Azure 資訊安全中心的身分**識別與存取**資源安全性區段中看到的建議範例包括：
+在 Azure 資訊安全中心的 [身分識別和存取] 資源安全性區段中，您可能看到的建議包括下列範例：
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應針對您的訂用帳戶指定最多 3 位擁有者
 - 具有讀取權限的外部帳戶應該從您的訂用帳戶中移除
 - 已取代帳戶應該從您的訂用帳戶中移除
 
-如需這些建議的詳細資訊，以及您可能會在這裡看到的建議完整清單，請參閱身分[識別和存取建議](recommendations-reference.md#recs-identity)。
+如需這些建議的詳細資訊，以及您在這裡可能看到的完整建議清單，請參閱[身分識別和存取建議](recommendations-reference.md#recs-identity)。
 
 > [!NOTE]
-> 如果訂用帳戶內含超過 600 個帳戶，資訊安全中心就無法針對訂用帳戶執行身分識別建議。 未執行的建議會列在下方的 [無法使用的評量] 底下。
+> 如果訂用帳戶內含超過 600 個帳戶，資訊安全中心就無法針對訂用帳戶執行身分識別建議。 未執行的建議會列在下方的「無法使用的評量」下。
 資訊安全中心無法針對雲端解決方案提供者 (CSP) 合作夥伴的管理專員執行身分識別建議。
 >
 
 
-所有的身分識別和存取建議都可在 [**建議**] 頁面中的兩個安全性控制項中取得：
+所有身分識別和存取建議劃分為 [建議] 頁面中的兩個安全性控制：
 
-- 管理存取權和許可權 
+- 管理存取權和權限 
 - 啟用 MFA
 
-![這兩個安全性控制與身分識別和存取相關的建議](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
+![劃分身分識別和存取相關建議的兩個安全性控制](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
 
-## <a name="enable-multi-factor-authentication-mfa"></a>啟用多重要素驗證（MFA）
+## <a name="enable-multi-factor-authentication-mfa"></a>啟用多重要素驗證 (MFA)
 
-啟用 MFA 需要[Azure Active Directory （AD）租使用者許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
+需要有 [Azure Active Directory (AD) 租用戶權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)才能啟用 MFA。 
 
-- 如果您有 premium 版本的 AD，請使用條件式[存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)來啟用 MFA。
+- 如果您有進階版的 AD，請使用[條件式存取](../active-directory/conditional-access/concept-conditional-access-policy-common.md)來啟用 MFA。
 
-- AD 免費版的使用者可以在 Azure Active Directory 中啟用**安全性預設值**（如[AD 檔](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中所述），但仍會顯示啟用 MFA 的資訊安全中心建議。
+- AD 免費版的使用者可以在 Azure Active Directory 中啟用 **安全性預設值**，如 [AD 文件](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)所述，但仍然會看到資訊安全中心建議啟用 MFA。
 
 
 ## <a name="next-steps"></a>後續步驟
-若要深入瞭解適用于其他 Azure 資源類型的建議，請參閱下列文章：
+若要深入了解適用於其他 Azure 資源類型的建議，請參閱下列文章︰
 
 - [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
 - [保護 Azure 資訊安全中心內的網路](security-center-network-recommendations.md)

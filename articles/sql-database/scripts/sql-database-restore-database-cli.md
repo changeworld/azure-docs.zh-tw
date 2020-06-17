@@ -1,6 +1,6 @@
 ---
-title: CLI 範例 - 還原 - 備份 - Azure SQL 資料庫
-description: 可將 Azure SQL 單一資料庫還原到自動備份中較早時間點的 Azure CLI 範例指令碼
+title: Azure CLI：還原備份
+description: 可將 Azure SQL Database 中的資料庫還原到自動備份中較早時間點的 Azure CLI 範例指令碼。
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774267"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022619"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>使用 CLI 將單一 Azure SQL 資料庫還原到較早的時間點
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>使用 CLI 將 Azure SQL Database 中的單一資料庫還原到較早的時間點
 
-此 Azure CLI 指令碼範例會將 Azure SQL 資料庫還原至特定時間點。  
+此 Azure CLI 指令碼範例會將 Azure SQL Database 中的單一資料庫還原至特定時間點。  
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -60,4 +60,4 @@ az group delete --name $resource
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。
+其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

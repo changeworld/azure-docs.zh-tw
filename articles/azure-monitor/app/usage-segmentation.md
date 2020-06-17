@@ -1,17 +1,17 @@
 ---
-title: Azure 應用程式 Insights 中的使用者、會話和事件分析
+title: Azure Application Insights 中的使用者、工作階段和事件分析
 description: 您 Web 應用程式的使用者人口統計分析。
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 56059304026b060e2215ce73e0e94e3200573a14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670979"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797708"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights 中的使用者、工作階段和事件分析
 
@@ -47,13 +47,13 @@ ms.locfileid: "77670979"
 ## <a name="saving-and-sharing-reports"></a>儲存和共用報告 
 您可以透過下列方式來儲存使用者報告：儲存在 [我的報告] 區段中，僅供您自己私人使用；或儲存在 [共用的報告] 區段中，與擁有 Application Insights 資源存取權的其他所有人共用。
 
-若要共用使用者、工作階段或事件報告的連結，請按一下工具列中的 [共用]****，然後複製連結。
+若要共用使用者、工作階段或事件報告的連結，請按一下工具列中的 [共用]，然後複製連結。
 
-若要共用使用者、工作階段或事件報告的資料複本，請按一下工具列中的 [共用]****，然後按一下 [Word] 圖示**** 以建立具有該資料的 Word 文件。 或者，按一下主要圖表上方的 [Word] 圖示****。
+若要共用使用者、工作階段或事件報告的資料複本，請按一下工具列中的 [共用]，然後按一下 [Word] 圖示以建立具有該資料的 Word 文件。 或者，按一下主要圖表上方的 [Word] 圖示。
 
 ## <a name="meet-your-users"></a>會見使用者
 
-[會見使用者]**** 區段會顯示目前查詢所比對出之五位範例使用者的相關資訊。 除了彙總之外，考量並瀏覽個人行為可深入解析使用者實際使用您應用程式的方式。
+[會見使用者] 區段會顯示目前查詢所比對出之五位範例使用者的相關資訊。 除了彙總之外，考量並瀏覽個人行為可深入解析使用者實際使用您應用程式的方式。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -62,5 +62,5 @@ ms.locfileid: "77670979"
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)

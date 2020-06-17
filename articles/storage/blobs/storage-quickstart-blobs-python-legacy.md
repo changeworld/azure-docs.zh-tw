@@ -7,19 +7,19 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76906432"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561348"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入門：使用 Python v2.1 SDK 來管理 Blob
 
 在本快速入門中，您將了解如何使用 Python 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載及列出 Blob，且將建立和刪除容器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
@@ -59,7 +59,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 
 ## <a name="run-the-sample"></a>執行範例
 
-範例程式會在您的 Documents  資料夾中建立測試檔案，將該檔案上傳至 Blob 儲存體、列出檔案中的 Blob，並下載具有新名稱的檔案。
+範例程式會在您的 Documents 資料夾中建立測試檔案，將該檔案上傳至 Blob 儲存體、列出檔案中的 Blob，並下載具有新名稱的檔案。
 
 1. 安裝相依性：
 
@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
     Downloading blob to     C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
     ```
 
-1. 在繼續之前，請移至您的 Documents  資料夾，找出這兩個檔案。
+1. 在繼續之前，請移至您的 Documents 資料夾，找出這兩個檔案。
 
     * *QuickStart_\<universally-unique-identifier\>*
     * *QuickStart_\<universally-unique-identifier\>_DOWNLOADED*
@@ -142,7 +142,7 @@ Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 區塊 Blob 可�
 
 若要將檔案上傳至 Blob，請聯結本機磁碟機上的目錄名稱和檔案名稱，以取得完整檔案路徑。 然後，您可以使用 `create_blob_from_path` 方法將檔案上傳至指定的路徑。 
 
-範例程式碼會建立系統用於上傳和下載的本機檔案，並將要系統上傳的檔案儲存為 full_path_to_file  ，並將 Blob 的名稱儲存為 local_file_name  。 下列範例會將檔案上傳到名為 `quickstartblobs` 的容器：
+範例程式碼會建立系統用於上傳和下載的本機檔案，並將要系統上傳的檔案儲存為 full_path_to_file，並將 Blob 的名稱儲存為 local_file_name。 下列範例會將檔案上傳到名為 `quickstartblobs` 的容器：
 
 ```python
 # Create a file in Documents to test the upload and download.

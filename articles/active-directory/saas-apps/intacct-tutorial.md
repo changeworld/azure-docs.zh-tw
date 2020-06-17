@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201341"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509367"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -33,7 +33,7 @@ ms.locfileid: "82201341"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -51,11 +51,11 @@ ms.locfileid: "82201341"
 若要設定將 Sage Intacct 整合到 Azure AD 中，您需要從資源庫將 Sage Intacct 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Sage Intacct**。
-1. 從結果面板選取 [Sage Intacct]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sage Intacct**。
+1. 從結果面板選取 [Sage Intacct]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>設定及測試 Sage Intacct 的 Azure AD 單一登入
 
@@ -74,47 +74,46 @@ ms.locfileid: "82201341"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Sage Intacct]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Sage Intacct] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [選取單一登入方法] 頁面上，選取 [SAML]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
+1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    在 [回覆 URL]  文字方塊中，輸入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml`
+    在 [回覆 URL] 文字方塊中，輸入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml`
 
-1. Sage Intacct 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示，以開啟 [使用者屬性] 對話方塊。
+1. Sage Intacct 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯] 圖示，以開啟 [使用者屬性] 對話方塊。
 
     ![image](common/edit-attribute.png)
 
-1. 除了以上屬性外，Sage Intacct 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
+1. 除了以上屬性外，Sage Intacct 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性與宣告] 對話方塊中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
-    | 名稱  |  來源屬性|
+    | 屬性名稱  |  來源屬性|
     | ---------------| --------------- |
     | 公司名稱 | **Sage Intacct 公司識別碼** |
-    | NAME | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]  區段中輸入的值)，本教學課程稍後會說明 |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 此值應等同 Sage Intacct 的**同盟 SSO 使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]**區段中輸入的值)** ，本教學課程稍後會說明 |
+    | NAME | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者] 區段中輸入的值)，本教學課程稍後會說明 |
 
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
+    a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
+    b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
-    c. 讓 [命名空間]  保持空白。
+    c. 讓 [命名空間] 保持空白。
 
-    d. 選取 [來源] 作為 [屬性]  。
+    d. 選取 [來源] 作為 [屬性]。
 
-    e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
+    e. 在 [來源屬性] 清單中，輸入或選取該資料列所顯示的屬性值。
 
-    f. 按一下 [確定]  。
+    f. 按一下 [確定]。
 
-    g. 按一下 [檔案]  。
+    g. 按一下 [檔案] 。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-1. 在 [設定 Sage Intacct]  區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Sage Intacct] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -122,41 +121,41 @@ ms.locfileid: "82201341"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Sage Intacct 的存取權授與 B.Simon，使其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Sage Intacct]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [Sage Intacct]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-sage-intacct-sso"></a>設定 Sage Intacct SSO
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Sage Intacct 公司網站。
 
-1. 按一下 [公司]  索引標籤，然後按一下 [公司資訊]  。
+1. 按一下 [公司] 索引標籤，然後按一下 [公司資訊]。
 
     ![公司](./media/intacct-tutorial/ic790037.png "公司")
 
-1. 按一下 [安全性]  索引標籤，然後按一下 [編輯]  。
+1. 按一下 [安全性] 索引標籤，然後按一下 [編輯]。
 
     ![安全性](./media/intacct-tutorial/ic790038.png "安全性")
 
@@ -164,17 +163,17 @@ ms.locfileid: "82201341"
 
     ![單一登入](./media/intacct-tutorial/ic790039.png "單一登入")
 
-    a. 選取 [啟用單一登入]  。
+    a. 選取 [啟用單一登入] 。
 
-    b. 在 [身分識別提供者類型]  ，選取 **SAML 2.0**。
+    b. 在 [身分識別提供者類型]，選取 **SAML 2.0**。
 
-    c. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
+    c. 在 [簽發者 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
-    d. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
+    d. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    e. 在記事本中開啟您的 **base-64** 編碼的憑證，將其內容複製到您的剪貼簿，然後貼到 [憑證]  方塊中。
+    e. 在記事本中開啟您的 **base-64** 編碼的憑證，將其內容複製到您的剪貼簿，然後貼到 [憑證] 方塊中。
 
-    f. 按一下 [檔案]  。
+    f. 按一下 [檔案] 。
 
 ### <a name="create-sage-intacct-test-user"></a>建立 Sage Intacct 測試使用者
 
@@ -184,11 +183,11 @@ ms.locfileid: "82201341"
 
 1. 登入您的 **Sage Intacct** 租用戶。
 
-1. 按一下 [公司]  索引標籤，然後按一下 [使用者]  。
+1. 按一下 [公司] 索引標籤，然後按一下 [使用者]。
 
     ![使用者](./media/intacct-tutorial/ic790041.png "使用者")
 
-1. 按一下 [新增]  索引標籤。
+1. 按一下 [新增] 索引標籤。
 
     ![加入](./media/intacct-tutorial/ic790042.png "加")
 
@@ -196,18 +195,18 @@ ms.locfileid: "82201341"
 
     ![使用者資訊](./media/intacct-tutorial/ic790043.png "使用者資訊")
 
-    a. 在 [使用者資訊]  區段中，為您要佈建的 Azure AD 帳戶輸入 [使用者識別碼]  、[姓氏]  、[名字]  、[電子郵件地址]  、[職稱]  和 [電話]  。
+    a. 在 [使用者資訊] 區段中，為您要佈建的 Azure AD 帳戶輸入 [使用者識別碼]、[姓氏]、[名字]、[電子郵件地址]、[職稱] 和 [電話]。
 
     > [!NOTE]
-    > 請確定上面螢幕擷取畫面中的**使用者識別碼**等同**來源屬性**值，也就是在 Azure 入口網站的 [使用者屬性]  區段中，與**名稱**屬性相對應的值。
+    > 請確定上面螢幕擷取畫面中的**使用者識別碼**等同**來源屬性**值，也就是在 Azure 入口網站的 [使用者屬性] 區段中，與**名稱**屬性相對應的值。
 
-    b. 選取您要佈建之 Azure AD 帳戶的 [系統管理員權限]  。
+    b. 選取您要佈建之 Azure AD 帳戶的 [系統管理員權限]。
 
-    c. 按一下 [檔案]  。 
+    c. 按一下 [檔案] 。 
     
     d. Azure AD 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。
 
-1. 按一下 [單一登入]  索引標籤，並確定下方螢幕擷取畫面中的**同盟 SSO 使用者識別碼**等同 Azure 入口網站中 [使用者屬性]  區段中與 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 對應的**來源屬性**值。
+1. 按一下 [單一登入] 索引標籤，並確定下方螢幕擷取畫面中的**同盟 SSO 使用者識別碼**等同 Azure 入口網站中 [使用者屬性] 區段中與 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 對應的**來源屬性**值。
 
     ![使用者資訊](./media/intacct-tutorial/ic790044.png "使用者資訊")
 

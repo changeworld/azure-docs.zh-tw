@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721875"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656556"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常偵測 API
 
 > [!NOTE]
-> 此專案正在進行維護。 我們鼓勵您使用異常偵測器[API 服務](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)，其由 Azure 認知服務的 Machine Learning 演算法資源庫提供，以偵測商業、營運和 IoT 計量的異常狀況。
+> 此項目維護中。 建議您使用 Azure 認知服務下基於一套機器學習演算法的 [Anomaly Detector API 服務](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)，以偵測商業、營運和 IoT 計量的異常狀況。
 
 ## <a name="overview"></a>概觀
-[異常偵測 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 是一個搭配 Azure Machine Learning 建置的範例，此 API 使用固定時間間隔的數值，偵測時間序列資料中的異常狀況。
+[異常偵測 API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) 是一個搭配 Azure Machine Learning 建置的範例，此 API 使用固定時間間隔的數值，偵測時間序列資料中的異常狀況。
 
 此 API 可偵測時間序列資料的下列異常模式類型︰
 
-* **正向和負向趨勢**：例如，在監視運算中所使用的記憶體數量時，趨勢向上可能會引起您的注意，因為這可能表示有記憶體流失。
-* **動態範圍值有所變更**：例如，在監視雲端服務所擲回的例外狀況時，若動態範圍值有任何變更，可能表示服務的健康狀態不穩定。
+* **正面和負面趨勢**：例如，在監視運算中所使用的記憶體數量時，趨勢向上可能會引起您的注意，因為這可能表示有記憶體流失。
+* **動態範圍值中的變更**：例如，在監視雲端服務所擲回的例外狀況時，若動態範圍值有任何變更，可能表示服務的健康情況不穩定。
 * **尖峰和下降**：例如，在監視服務的登入失敗數目或電子商務網站的結帳數目時，若有尖峰或下降可能表示發生異常行為。
 
 這些 Machine Learning 偵測器會追蹤數值在不同時間所發生的這一類變化，並以異常分數的形式報告數值正在進行的變化。 它們不需要臨機操作調整臨界值，而且其分數可用來控制偽陽性率。 異常偵測 API 可用在許多案例，例如追蹤不同時間的 KPI 以監視服務、透過搜尋次數、點擊次數等度量來監視使用量、透過不同時間的記憶體、CPU、檔案讀取數等計數器來監視效能。
@@ -39,26 +39,26 @@ ms.locfileid: "76721875"
 * [Web 應用程式](https://anomalydetection-aml.azurewebsites.net/) 可協助您評估和視覺化將異常偵測 API 套用在您的資料後所產生的結果。
 
 > [!NOTE]
-> 請嘗試採用[這個 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 的 **IT 異常洞察解決方案**
+> 請嘗試採用[這個 API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) 的 **IT 異常洞察解決方案**
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API 部署
-若要使用 API，您必須將它部署到 Azure 訂用帳戶，以在其中裝載成 Azure Machine Learning Web 服務。  您可以從 [Azure AI 資源庫](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).\(英文\) 執行此動作。  這會將兩個 Azure Machine Learning Studio （傳統） Web 服務（及其相關資源）部署到您的 Azure 訂用帳戶-一個用於具有季節性偵測的異常偵測，另一個則不進行季節性偵測。  部署完成之後，您就可以從 [ [Azure Machine Learning Studio （傳統） web 服務](https://services.azureml.net/webservices/)] 頁面管理您的 api。  從這個頁面，您可以找到您的端點位置、API 金鑰，以及用於呼叫 API 的範例程式碼。  在[這裡](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)可取得更詳細的指示。
+若要使用 API，您必須將它部署到 Azure 訂用帳戶，以在其中裝載成 Azure Machine Learning Web 服務。  您可以從 [Azure AI 資源庫](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).\(英文\) 執行此動作。  這會將兩個 Azure Machine Learning Studio (傳統版) Web 服務 (及其相關的資源)，部署到您的 Azure 訂用帳戶 - 一個用於異常偵測且含有季節性偵測，另一個不含季節性偵測。  部署完成後，您就能夠從 [Azure Machine Learning Studio (傳統版) Web 服務](https://services.azureml.net/webservices/)頁面管理您的 API。  從這個頁面，您可以找到您的端點位置、API 金鑰，以及用於呼叫 API 的範例程式碼。  在[這裡](/azure/machine-learning/studio/manage-new-webservice)可取得更詳細的指示。
 
 ## <a name="scaling-the-api"></a>調整 API
-根據預設，您的部署將會擁有免費的開發/測試計費方案，其中包含每月1000筆交易和2個計算時數/月。  根據您的需求，您可以升級到另一個方案。  在[這裡](https://azure.microsoft.com/pricing/details/machine-learning/) (「生產 Web API 價格」之下) 可取得不同方案的價格詳細資料。
+根據預設，部署將有免費的開發/測試計費方案，其中包括 1,000 筆交易/月和 2 個計算時數/月。  根據您的需求，您可以升級到另一個方案。  在[這裡](https://azure.microsoft.com/pricing/details/machine-learning/) (「生產 Web API 價格」之下) 可取得不同方案的價格詳細資料。
 
 ## <a name="managing-aml-plans"></a>管理 AML 方案
-您可以在[這裡](https://services.azureml.net/plans/)管理您的計費方案。  方案名稱會以您在部署 API 時選擇的資源群組名稱為主，加上您的訂用帳戶中的唯一字串。  在[這裡](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) (「管理計費方案」一節之下) 可取得有關如何升級方案的指示。
+您可以在[這裡](https://services.azureml.net/plans/)管理您的計費方案。  方案名稱會以您在部署 API 時選擇的資源群組名稱為主，加上您的訂用帳戶中的唯一字串。  在[這裡](/azure/machine-learning/studio/manage-new-webservice) (「管理計費方案」一節之下) 可取得有關如何升級方案的指示。
 
 ## <a name="api-definition"></a>API 定義
-Web 服務提供透過 HTTPS 的 REST 型 API，可透過不同的方式使用，包括 web 或行動應用程式、R、Python、Excel 等等。 您會透過 REST API 呼叫將時間序列資料傳送到此服務，並執行下列三種異常類型的組合：
+Web 服務提供透過 HTTPS 的 REST 型 API，可以各種不同方式使用，包括 Web 或行動應用程式、R、Python、Excel 等等。您可以透過 REST API 呼叫將您的時間序列資料傳送到此服務，它會執行上述三個異常類型的組合。
 
 ## <a name="calling-the-api"></a>呼叫 API
-若要呼叫 API，您必須知道端點位置和 API 金鑰。  您可以從[Azure Machine Learning Studio （傳統） web 服務](https://services.azureml.net/webservices/)頁面取得這兩項需求，以及呼叫 API 的範例程式碼。  瀏覽至所需的 API，然後按一下 [取用] 索引標籤以找出它們。  您可以呼叫 API 做為 Swagger API （也就是使用 URL 參數`format=swagger`）或做為非 Swagger api （也就是沒有`format` url 參數）。  範例程式碼會使用 Swagger 格式。  以下是非 Swagger 格式的範例要求和回應。  這些範例適用於季節性端點。  非季節性端點很類似。
+若要呼叫 API，您必須知道端點位置和 API 金鑰。  您可以從 [Azure Machine Learning Studio (傳統版) Web 服務](https://services.azureml.net/webservices/)頁面中，取得這兩項需求及 API 呼叫程式碼範例。  瀏覽至所需的 API，然後按一下 [取用] 索引標籤以找出它們。  您可以將 API 當作 Swagger API (即包含 URL 參數 `format=swagger`) 或非 Swagger API (即不含 `format` URL 參數) 來呼叫。  範例程式碼會使用 Swagger 格式。  以下是非 Swagger 格式的範例要求和回應。  這些範例適用於季節性端點。  非季節性端點很類似。
 
 ### <a name="sample-request-body"></a>範例要求本文
 要求包含兩個物件︰`Inputs` 和 `GlobalParameters`。  在下列範例要求中，某些參數會明確傳送，有些則不會 (向下捲動以取得每個端點的完整參數清單)。  不會在要求中明確傳送的參數會使用下面所列的預設值。
@@ -83,7 +83,7 @@ Web 服務提供透過 HTTPS 的 REST 型 API，可透過不同的方式使用�
     }
 
 ### <a name="sample-response"></a>範例回應
-若要查看此`ColumnNames`欄位，您必須在要求`details=true`中包含作為 URL 參數。  請參閱下表，以了解每個欄位背後的意義。
+您的要求中必須包含 `details=true` 作為 URL 參數，您才能看到 `ColumnNames` 欄位。  請參閱下表，以了解每個欄位背後的意義。
 
     {
         "Results": {
@@ -105,18 +105,18 @@ Web 服務提供透過 HTTPS 的 REST 型 API，可透過不同的方式使用�
 
 ## <a name="score-api"></a>分數 API
 分數 API 可用來對非季節性的時間序列資料執行異常偵測。 API 會對此資料執行許多異常偵測器，並傳回其異常分數。
-下圖顯示分數 API 可偵測到的異常範例。 此時間序列有兩個不同層級的變更，以及三個尖峰。 紅點顯示偵測到層級變更時的時間，黑點則顯示偵測到的尖峰。
+下圖顯示分數 API 可偵測到的異常範例。 此時間序列有兩個明顯的水平變更和三個尖峰。 紅點顯示偵測到層級變更時的時間，黑點則顯示偵測到的尖峰。
 ![分數 API][1]
 
 ### <a name="detectors"></a>偵測器
-異常偵測 API 支援三個廣泛的類別中的偵測器。 下表中可以找到每個偵測器的特定輸入參數和輸出的詳細資料。
+異常偵測 API 支援三大類別的偵測器。 下表中可以找到每個偵測器的特定輸入參數和輸出的詳細資料。
 
 | 偵測器類別 | 偵測器 | 描述 | 輸入參數 | 輸出 |
 | --- | --- | --- | --- | --- |
-| 尖峰偵測器 |TSpike 偵測器 |偵測尖峰和下降是根據值與第一個和第三個四分位數的差距 |*tspikedetector.sensitivity*：接受範圍 1 - 10 的整數值，預設值︰3；值愈高，會捕捉到愈極端的值，因此降低敏感度 |TSpike︰二進位值 - 如果偵測到尖峰/下降則為 ‘1’，否則為 ‘0’ |
-| 尖峰偵測器 | ZSpike 偵測器 |偵測尖峰和下降是根據資料點與平均數的差距 |*zspikedetector.sensitivity*：接受範圍 1 - 10 的整數值，預設值︰3；值愈高，會捕捉到愈極端的值，而降低敏感度 |ZSpike︰二進位值 - 如果偵測到尖峰/下降則為 ‘1’，否則為 ‘0’ |
-| 緩慢趨勢偵測器 |緩慢趨勢偵測器 |根據所設定的敏感度偵測緩慢的正向趨勢 |*trenddetector：* 偵測器分數的閾值（預設值：3.25、3.25 –5是合理的範圍，可供選取;較不敏感的 |tscore︰代表趨勢異常分數的浮動數字 |
-| 層級變更偵測器 | 雙向層級變更偵測器 |根據所設定的敏感度偵測向上和向下層級變更 |*bileveldetector：* 偵測器分數的閾值（預設值：3.25、3.25 –5是合理的範圍，可供選取;較不敏感的 |rpscore︰代表向上和向下層級變更異常分數的浮動數字 |
+| 尖峰偵測器 |TSpike 偵測器 |偵測尖峰和下降是根據值與第一個和第三個四分位數的差距 |*tspikedetector.sensitivity:* 接受範圍 1 - 10 的整數值，預設值︰3；較高的值將會攔截愈極端的值，因而讓敏感度變低 |TSpike︰二進位值 - 如果偵測到尖峰/下降則為 ‘1’，否則為 ‘0’ |
+| 尖峰偵測器 | ZSpike 偵測器 |偵測尖峰和下降是根據資料點與平均數的差距 |*zspikedetector.sensitivity:* 接受範圍 1 - 10 的整數值，預設值︰3；較高的值將會攔截愈極端的值，讓敏感度變低 |ZSpike︰二進位值 - 如果偵測到尖峰/下降則為 ‘1’，否則為 ‘0’ |
+| 緩慢趨勢偵測器 |緩慢趨勢偵測器 |根據所設定的敏感度偵測緩慢的正向趨勢 |*trenddetector.sensitivity:* 偵測器分數上的閾值 (預設值：3.25，3.25 – 5 是可供選取的合理範圍；值愈高，敏感度就愈低) |tscore︰代表趨勢異常分數的浮動數字 |
+| 層級變更偵測器 | 雙向層級變更偵測器 |根據所設定的敏感度偵測向上和向下層級變更 |*trenddetector.sensitivity:* 偵測器分數上的閾值 (預設值：3.25，3.25 – 5 是可供選取的合理範圍；值愈高，敏感度就愈低) |rpscore︰代表向上和向下層級變更異常分數的浮動數字 |
 
 ### <a name="parameters"></a>參數
 下表列出這些輸入參數的詳細資訊：
@@ -125,8 +125,8 @@ Web 服務提供透過 HTTPS 的 REST 型 API，可透過不同的方式使用�
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |用於計算異常分數的歷程記錄 (以資料點數目為單位) |500 |integer |10 - 2000 |取決於時間序列 |
 | detectors.spikesdips | 是否偵測只有尖峰、只有下降，或兩者 |兩者 |列舉 |兩者、尖峰、下降 |兩者 |
-| bileveldetector.sensitivity |雙向層級變更偵測器的敏感度。 |3.25 |double |無 |3.25-5 (值愈低代表敏感度越高) |
-| trenddetector.sensitivity |正向趨勢偵測器的敏感度。 |3.25 |double |無 |3.25-5 (值愈低代表敏感度越高) |
+| bileveldetector.sensitivity |雙向層級變更偵測器的敏感度。 |3.25 |double |None |3.25-5 (值愈低代表敏感度越高) |
+| trenddetector.sensitivity |正向趨勢偵測器的敏感度。 |3.25 |double |None |3.25-5 (值愈低代表敏感度越高) |
 | tspikedetector.sensitivity |TSpike 偵測器的敏感度 |3 |integer |1 - 10 |3-5 (值愈低代表敏感度越高) |
 | zspikedetector.sensitivity |ZSpike 偵測器的敏感度 |3 |integer |1 - 10 |3-5 (值愈低代表敏感度越高) |
 | postprocess.tailRows |輸出結果中要保留的最新資料點數目 |0 |integer |0 (保留所有資料點)，或指定要在結果中保留的資料點數目 |N/A |
@@ -136,7 +136,7 @@ API 會對您的時間序列資料執行所有偵測器，然後傳回每個時�
 
 | 輸出 | 描述 |
 | --- | --- |
-| 時間 |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的時間戳記 |
+| Time |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的時間戳記 |
 | 資料 |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的值 |
 | TSpike |指出 TSpike 偵測器是否要偵測尖峰的二進位指示器 |
 | ZSpike |指出 Zspike 偵測器是否要偵測尖峰的二進位指示器 |
@@ -147,7 +147,7 @@ API 會對您的時間序列資料執行所有偵測器，然後傳回每個時�
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality API
 ScoreWithSeasonality API 可用來對具有季節性模式的時間序列執行異常偵測。 這個 API 適用於偵測季節性模式的偏差。
-下圖顯示季節性時間序列中所偵測到的異常範例。 時間序列有一個尖峰（第一個黑點）、兩個 dip （第二個黑點和終點一個），以及一個層級變更（紅點）。 時間序列中間的 dip 和層級變更只會在從數列中移除季節性元件之後明顯。
+下圖顯示季節性時間序列中所偵測到的異常範例。 時間序列有一個尖峰 (第一個黑點)、兩個下降 (第二個黑點和尾端的黑點)，以及一個水平變更 (紅點)。 只有在從時間序列中去除季節性因素後，才能看出序列中間的兩個下降和水平變更。
 ![季節性 API][2]
 
 ### <a name="detectors"></a>偵測器
@@ -164,9 +164,9 @@ ScoreWithSeasonality API 可用來對具有季節性模式的時間序列執行�
 | preprocess.replaceMissing |用來插補遺漏資料的值 |lkv (上一個已知值) |列舉 |零、lkv、平均值 |N/A |
 | detectors.historywindow |用於計算異常分數的歷程記錄 (以資料點數目為單位) |500 |integer |10 - 2000 |取決於時間序列 |
 | detectors.spikesdips | 是否偵測只有尖峰、只有下降，或兩者 |兩者 |列舉 |兩者、尖峰、下降 |兩者 |
-| bileveldetector.sensitivity |雙向層級變更偵測器的敏感度。 |3.25 |double |無 |3.25-5 (值愈低代表敏感度越高) |
-| postrenddetector.sensitivity |正向趨勢偵測器的敏感度。 |3.25 |double |無 |3.25-5 (值愈低代表敏感度越高) |
-| negtrenddetector.sensitivity |負向趨勢偵測器的敏感度。 |3.25 |double |無 |3.25-5 (值愈低代表敏感度越高) |
+| bileveldetector.sensitivity |雙向層級變更偵測器的敏感度。 |3.25 |double |None |3.25-5 (值愈低代表敏感度越高) |
+| postrenddetector.sensitivity |正向趨勢偵測器的敏感度。 |3.25 |double |None |3.25-5 (值愈低代表敏感度越高) |
+| negtrenddetector.sensitivity |負向趨勢偵測器的敏感度。 |3.25 |double |None |3.25-5 (值愈低代表敏感度越高) |
 | tspikedetector.sensitivity |TSpike 偵測器的敏感度 |3 |integer |1 - 10 |3-5 (值愈低代表敏感度越高) |
 | zspikedetector.sensitivity |ZSpike 偵測器的敏感度 |3 |integer |1 - 10 |3-5 (值愈低代表敏感度越高) |
 | seasonality.enable |是否要執行季節性分析 |true |boolean |true、false |取決於時間序列 |
@@ -179,9 +179,9 @@ API 會對您的時間序列資料執行所有偵測器，然後傳回每個時�
 
 | 輸出 | 描述 |
 | --- | --- |
-| 時間 |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的時間戳記 |
+| Time |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的時間戳記 |
 | OriginalData |未經處理資料或彙總 (和/或) 插補資料 (如果套用彙總 (和/或) 遺漏資料插補) 的值 |
-| ProcessedData |下列其中一個選項： <ul><li>已進行季節性調整的時間序列 (在已偵測到明顯季節性並選取了 deseason 選項的前提下)</li><li>已進行季節性調整並去趨勢化的時間序列 (在已偵測到明顯季節性並選取了 deseasontrend 選項的前提下)</li><li>否則，這個選項會與 OriginalData 相同</li> |
+| ProcessedData |下列其中一個選項： <ul><li>已進行季節性調整的時間序列 (在已偵測到明顯季節性並選取了 deseason 選項的前提下)</li><li>已進行季節性調整並去趨勢化的時間序列 (在已偵測到明顯季節性並選取了 deseasontrend 選項的前提下)</li><li>否則，這個選項與 OriginalData 相同</li> |
 | TSpike |指出 TSpike 偵測器是否要偵測尖峰的二進位指示器 |
 | ZSpike |指出 Zspike 偵測器是否要偵測尖峰的二進位指示器 |
 | BiLevelChangeScore |代表層級變更異常分數的浮動數字 |

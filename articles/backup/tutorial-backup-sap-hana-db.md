@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248238"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417288"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "84248238"
 
 * 允許從 VM 到網際網路的連線，使其可連線到 Azure，如下方的[設定網路連線](#set-up-network-connectivity)程序所說明。
 * **hdbuserstore** 中應該會有一個金鑰符合下列準則：
-  * 此金鑰應位於預設的 **hdbuserstore** 中
+  * 此金鑰應位於預設的 **hdbuserstore** 中。 預設值是已安裝之 SAP HANA 下的 `<sid>adm` 帳戶。
   * 針對 MDC，此金鑰應指向 **NAMESERVER**的 SQL 連接埠。 在 SDC 的案例中，則應指向 **INDEXSERVER** 的 SQL 連接埠
   * 此金鑰應具有新增和刪除使用者的認證
 * 以根使用者身分，在安裝 HANA 的虛擬機器中執行 SAP HANA 備份設定指令碼 (預先註冊指令碼)。 [此指令碼](https://aka.ms/scriptforpermsonhana)會為 HANA 系統做好備份的準備。 請參閱[預先註冊指令碼的功能](#what-the-pre-registration-script-does)一節，以深入了解預先註冊指令碼。
@@ -100,7 +100,7 @@ ms.locfileid: "84248238"
 
 執行預先註冊指令碼時，會執行下列功能：
 
-* 會在您的發行版本上安裝或更新 Azure 備份代理程式所需的任何必要套件。
+* 根據您的 Linux 發行版本，指令碼會安裝或更新 Azure 備份代理程式所需的任何必要套件。
 * 會對 Azure 備份伺服器和相依服務 (如 Azure Active Directory 和 Azure 儲存體) 執行輸出網路連線檢查。
 * 會使用列為[必要條件](#prerequisites)之一的使用者金鑰登入您的 HANA 系統。 使用者金鑰可用來在 HANA 系統中建立備份使用者 (AZUREWLBACKUPHANAUSER)，且使用者金鑰可在預先註冊指令碼成功執行之後刪除。
 * AZUREWLBACKUPHANAUSER 會被指派下列必要的角色和權限：

@@ -1,14 +1,14 @@
 ---
 title: 監視 Azure Batch
 description: 了解 Azure 監視服務、計量、診斷記錄，以及 Azure Batch 的其他監視功能。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: c8b11d0b7187d6c4b5b3ccff1e19eb533ff3f0da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113885"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723522"
 ---
 # <a name="monitor-batch-solutions"></a>監視 Batch 解決方案
 
@@ -22,7 +22,7 @@ Azure 與 Batch 服務提供一系列服務、工具和 API 來監視您的 Batc
 
 具體針對 Batch 帳戶來說，活動記錄會收集關於帳戶建立和刪除及金鑰管理的事件。
 
-從活動記錄擷取事件的方法之一是使用 Azure 入口網站。 按一下 [**所有服務** > ] [**活動記錄**]。 或是，使用 Azure CLI、PowerShell Cmdlet 或 Azure Monitor REST API 來查詢事件。 您也可以匯出活動記錄，或設定[活動記錄警示](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
+從活動記錄擷取事件的方法之一是使用 Azure 入口網站。 按一下 [所有服務] > [活動記錄]。 或是，使用 Azure CLI、PowerShell Cmdlet 或 Azure Monitor REST API 來查詢事件。 您也可以匯出活動記錄，或設定[活動記錄警示](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
 
 ## <a name="batch-account-level-monitoring"></a>Batch 帳戶層級監視
 
@@ -55,7 +55,7 @@ Azure 與 Batch 服務提供一系列服務、工具和 API 來監視您的 Batc
   > 使用 Application Insights 可能會產生額外費用。 請參閱[定價選項](https://azure.microsoft.com/pricing/details/application-insights/)。 
   >
 
-* [Batch Explorer](https://github.com/Azure/BatchExplorer) 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 (選擇性) 將您的 Batch 解決方案設定為[顯示 Application Insights 資料](https://github.com/Azure/batch-insights)，例如 Batch Explorer 中的 VM 效能計數器。
+* [Batch Explorer](https://github.com/Azure/BatchExplorer)是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用於 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 (選擇性) 將您的 Batch 解決方案設定為[顯示 Application Insights 資料](https://github.com/Azure/batch-insights)，例如 Batch Explorer 中的 VM 效能計數器。
 
 
 ## <a name="next-steps"></a>後續步驟

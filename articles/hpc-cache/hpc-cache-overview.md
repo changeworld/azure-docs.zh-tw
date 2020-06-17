@@ -4,20 +4,26 @@ description: 說明 Azure HPC Cache，這是高效能運算的檔案存取加速
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106452"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433676"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什麼是 Azure HPC Cache？
 
 Azure HPC Cache 可加快資料存取速度，以進行高效能運算 (HPC) 工作。 藉由在 Azure 中快取檔案，Azure HPC Cache 會將雲端運算的延展性帶入您現有的工作流程。 這項服務甚至可用於透過 WAN 連結儲存資料的工作流程，例如在您的本機資料中心網路連接儲存裝置 (NAS) 環境中。
 
 Azure HPC Cache 可輕鬆地從 Azure 入口網站啟動並進行監視。 現有的 NFS 儲存體或新的 Blob 容器可以成為其匯總命名空間的一部分，這會讓用戶端存取變得簡單，即使您變更後端儲存體目標也是如此。
+
+## <a name="overview-video"></a>概觀影片
+
+[![影片縮圖：Azure HPC 快取概觀 - 按一下以造訪影片頁面](media/video-1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+
+按一下上方的影像以觀看 [簡短的 Azure HPC 快取概觀](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)。
 
 ## <a name="use-cases"></a>使用案例
 

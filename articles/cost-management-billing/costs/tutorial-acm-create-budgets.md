@@ -3,17 +3,17 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101751"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559313"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -36,7 +36,7 @@ ms.locfileid: "82101751"
 > * 使用 PowerShell 建立和編輯預算
 > * 使用 Azure Resource Manager 範本建立預算
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 預算受下列類型的 Azure 帳戶類型和範圍支援：
 
@@ -81,19 +81,19 @@ ms.locfileid: "82101751"
 
 您可以針對每月、每季或每年期間建立 Azure 訂用帳戶預算。
 
-若要建立或檢視預算，請在 Azure 入口網站中開啟所需的範圍，然後在功能表中選取 [預算]  。 例如，瀏覽至 [訂用帳戶]  、從清單中選取訂用帳戶，然後在功能表中選取 [預算]  。 使用 [範圍]  框切換至 [預算] 中的不同範圍，例如管理群組。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
+若要建立或檢視預算，請在 Azure 入口網站中開啟所需的範圍，然後在功能表中選取 [預算]。 例如，瀏覽至 [訂用帳戶]、從清單中選取訂用帳戶，然後在功能表中選取 [預算]。 使用 [範圍] 框切換至 [預算] 中的不同範圍，例如管理群組。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
 建立預算之後，會針對它們顯示您目前費用的簡單檢視。
 
-選取 [新增]  。
+選取 [新增]。
 
 ![此範例顯示已建立的預算清單](./media/tutorial-acm-create-budgets/budgets01.png)
 
-在 [建立預算]  視窗中，確認顯示的範圍是正確的。 選擇您要新增的任何篩選條件。 篩選條件可讓您針對特定成本建立預算，例如訂用帳戶中的資源群組，或虛擬機器之類的服務。 任何可在成本分析中使用的篩選條件，也都可以套用至預算。
+在 [建立預算] 視窗中，確認顯示的範圍是正確的。 選擇您要新增的任何篩選條件。 篩選條件可讓您針對特定成本建立預算，例如訂用帳戶中的資源群組，或虛擬機器之類的服務。 任何可在成本分析中使用的篩選條件，也都可以套用至預算。
 
 在識別範圍和篩選條件後，請輸入預算名稱。 然後，選擇每月、每季或每年的預算重設期間。 這個重設期間會決定預算所分析的時間範圍。 預算所評估的成本會在每個新期間開始時從零起算。 當您建立每季預算時，它的運作方式與與每月預算相同。 差異在於當季預算金額會平均分配於當季的三個月。 每年預算金額會平均分配於該日曆年度的 12 個月間。
 
-如果您有隨用隨付、MSDN 或 Visual Studio 訂用帳戶，則您發票的計費期間可能與行事曆月份不同。 對於這些類型的訂用帳戶和資源群組，您可以建立與發票期間或行事曆月份一致的預算。 若要建立與發票期間一致的預算，請選取 [帳單月份]  、[帳單季]  或 [帳單年份]  的重設期間。 若要建立與行事曆月份一致的預算，請選取 [每月]  、[每季]  或 [每年]  的重設期間。
+如果您有隨用隨付、MSDN 或 Visual Studio 訂用帳戶，則您發票的計費期間可能與行事曆月份不同。 對於這些類型的訂用帳戶和資源群組，您可以建立與發票期間或行事曆月份一致的預算。 若要建立與發票期間一致的預算，請選取 [帳單月份]、[帳單季] 或 [帳單年份] 的重設期間。 若要建立與行事曆月份一致的預算，請選取 [每月]、[每季] 或 [每年] 的重設期間。
 
 接下來，請識別預算失效並停止評估成本的到期日。
 
@@ -101,7 +101,7 @@ ms.locfileid: "82101751"
 
 ![此範例顯示以每月成本資料建立的預算 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-設定預算金額之後，請選取 [下一步]  以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算閾值時，通常會在 20 小時內收到電子郵件通知。
+設定預算金額之後，請選取 [下一步] 以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算閾值時，通常會在 20 小時內收到電子郵件通知。
 
 如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
 
@@ -113,7 +113,16 @@ ms.locfileid: "82101751"
 
 ![成本分析中顯示的預算和支出範例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上述範例中，您已針對訂用帳戶建立預算。 您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]  &gt;[訂用帳戶]  &gt; 選取訂用帳戶 > [資源群組]  > 選取資源群組 > [預算]  > 然後**新增**預算。
+在上述範例中，您已針對訂用帳戶建立預算。 您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]&gt;[訂用帳戶]&gt; 選取訂用帳戶 > [資源群組] > 選取資源群組 > [預算] > 然後**新增**預算。
+
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>針對合併的 Azure 與 AWS 成本建立預算
+
+您可以透過指派管理群組給您的連接器和其合併和連結的帳戶，將您的 Azure 與 AWS 成本組成群組。 將您的 Azure 訂用帳戶指派給同一個管理群組。 然後為合併的成本建立預算。
+
+1. 在成本管理中，選取 [預算]。
+1. 選取 [新增]。
+1. 選取 [變更範圍]，然後選取管理群組。
+1. 繼續建立預算，直到完成為止。
 
 ## <a name="costs-in-budget-evaluations"></a>預算中的成本評估
 
@@ -124,18 +133,17 @@ ms.locfileid: "82101751"
 - 發行者類型：Azure
 - 費用類型：使用量
 
-預算成本評估以實際成本為基礎。 其中不包含攤提。 如需預算中可用篩選選項的詳細資訊，請參閱[了解群組和篩選選項](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)。
-
+預算成本評估以實際成本為基礎。 其中不包含攤提。 如需預算中可用篩選選項的詳細資訊，請參閱[了解群組和篩選選項](group-filter.md)。
 
 ## <a name="trigger-an-action-group"></a>觸發動作群組
 
 當您針對訂用帳戶或資源群組範圍建立或編輯預算時，您可以設定該預算以呼叫動作群組。 動作群組可在達到預算閾值時執行各種動作。 目前僅支援將動作群組用於訂用帳戶和資源群組範圍。 如需動作群組的詳細資訊，請參閱[在 Azure 入口網站中建立和管理動作群組](../../azure-monitor/platform/action-groups.md)。 如需以預算為基礎的自動化與動作群組搭配使用的詳細資訊，請參閱[使用 Azure 預算來管理成本](../manage/cost-management-budget-scenario.md)。
 
-若要建立或更新動作群組，請在建立或編輯預算時選取 [管理動作群組]  。
+若要建立或更新動作群組，請在建立或編輯預算時選取 [管理動作群組]。
 
 ![建立預算以顯示管理動作群組的範例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-接著，選取 [新增動作群組]  ，並建立動作群組。
+接著，選取 [新增動作群組]，並建立動作群組。
 
 ![新增動作群組方塊的影像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

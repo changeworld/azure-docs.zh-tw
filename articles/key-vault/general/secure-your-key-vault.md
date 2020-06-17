@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121145"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827485"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -25,7 +25,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 ## <a name="access-model-overview"></a>存取模型概觀
 
-金鑰保存庫的存取權可透過兩個介面來控制︰管理平面**** 和資料平面****。 管理平面可讓您管理 Key Vault 本身。 此平面中的作業包括建立和刪除金鑰保存庫、擷取 Key Vault 屬性，以及更新存取原則。 資料平面則可讓您處理金鑰保存庫中儲存的資料。 您可以新增、刪除和修改金鑰、祕密和憑證。
+金鑰保存庫的存取權可透過兩個介面來控制︰管理平面和資料平面。 管理平面可讓您管理 Key Vault 本身。 此平面中的作業包括建立和刪除金鑰保存庫、擷取 Key Vault 屬性，以及更新存取原則。 資料平面則可讓您處理金鑰保存庫中儲存的資料。 您可以新增、刪除和修改金鑰、祕密和憑證。
 
 若要在任一平面存取金鑰保存庫，所有呼叫者 (使用者或應用程式) 都必須有適當的驗證和授權。 驗證會建立呼叫者的身分識別。 授權則會判斷呼叫者可以執行哪些作業。
 
@@ -35,8 +35,8 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 這兩個平面中的所有呼叫者都必須在此租用戶中註冊，並經過驗證才能存取金鑰保存庫。 在這兩種情況中，應用程式均可透過兩種方式存取 Key Vault︰
 
-- **使用者加上應用程式存取**：應用程式會代表已登入的使用者存取 Key Vault。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 使用者存取的授與則是透過兩種方式來完成。 使用者可以從任何應用程式存取 Key Vault，或者必須使用特定應用程式來進行 (稱為「複合身分識別」__)。
-- **僅限應用程式存取**：應用程式會以 daemon 服務或背景作業的形式執行。 系統會將金鑰保存庫的存取權授與給該應用程式識別碼。
+- **使用者加上應用程式的存取**：應用程式會代表登入的使用者存取 Key Vault。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 使用者存取的授與則是透過兩種方式來完成。 使用者可以從任何應用程式存取 Key Vault，或者必須使用特定應用程式來進行 (稱為「複合身分識別」)。
+- **只有應用程式的存取**：應用程式會以精靈服務或背景作業的形式來執行。 系統會將金鑰保存庫的存取權授與給該應用程式識別碼。
 
 對於這兩種類型的存取權，應用程式都會向 Azure AD 進行驗證。 應用程式會根據應用程式類型使用任何[支援的驗證方法](../../active-directory/develop/authentication-scenarios.md)。 應用程式會取得平面中資源的權杖以便授與存取權。 視 Azure 環境而定，資源會是管理或資料平面中的端點。 應用程式會使用此權杖，對 Key Vault 傳送 REST API 要求。 若要深入了解，請參閱[整個驗證流程](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -54,18 +54,18 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 | 存取&nbsp;平面 | 存取端點 | 作業 | 存取&nbsp;控制機制 |
 | --- | --- | --- | --- |
-| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure 中國世紀：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure Resource Manager RBAC |
-| 資料平面 | **全域：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中國世紀：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Gov︰**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 金鑰︰解密、加密、<br> 解除包裝、包裝、驗證、登入、<br> 取得、列出、更新、建立、<br> 匯入、刪除、備份、還原<br><br> 祕密︰取得、列出、設定、刪除 | Key Vault 存取原則 |
+| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure China 21Vianet：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure Resource Manager RBAC |
+| 資料平面 | **全域：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Gov︰**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 金鑰︰解密、加密、<br> 解除包裝、包裝、驗證、登入、<br> 取得、列出、更新、建立、<br> 匯入、刪除、備份、還原<br><br> 祕密︰取得、列出、設定、刪除 | Key Vault 存取原則 |
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 
-在管理平面中，您可以使用 RBAC （以角色為基礎的存取控制）來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都會有一個 Azure AD 執行個體。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+在管理平面中，您可以使用 RBAC (角色型存取控制) 來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都會有一個 Azure AD 執行個體。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
 您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 RBAC 角色，來授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以對 RBAC 角色指派下列範圍層級：
 
-- **訂**用帳戶：在訂用帳戶層級指派的 RBAC 角色會套用至該訂用帳戶內的所有資源群組和資源。
-- **資源群組**：在資源群組層級指派的 RBAC 角色會套用至該資源群組中的所有資源。
-- **特定資源**：指派給特定資源的 RBAC 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- 訂用帳戶：在訂用帳戶層級指派的 RBAC 角色，會套用至該訂用帳戶內的所有資源群組和資源。
+- **資源群組**：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
+- **特定資源**：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -86,22 +86,22 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 > Key Vault 存取原則會套用在保存庫層級。 對使用者授與金鑰的建立和刪除權限時，其便可對該金鑰保存庫的所有金鑰執行這些作業。
 >
 
-您可以使用[Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)）來限制資料平面存取。 您可以設定[防火牆和虛擬網路規則](network-security.md)來額外加上一層安全性。
+您可以使用 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)來限制資料平面的存取)。 您可以設定[防火牆和虛擬網路規則](network-security.md)來額外加上一層安全性。
 
 ## <a name="example"></a>範例
 
-在此範例中，我們開發的應用程式會使用 TLS/SSL 的憑證、Azure 儲存體來儲存資料，以及用於簽署作業的 RSA 2048 位金鑰。 我們的應用程式會在 Azure 虛擬機器 (VM) (或虛擬機器擴展集) 中執行。 我們可以使用金鑰保存庫來儲存應用程式祕密。 我們可以儲存供應用程式用來向 Azure AD 進行驗證的啟動程序憑證。
+在此範例中，我們要開發一個應用程式，其會針對 TLS/SSL 使用憑證、使用 Azure 儲存體來儲存資料，並使用 RSA 2,048 位元金鑰來進行簽署作業。 我們的應用程式會在 Azure 虛擬機器 (VM) (或虛擬機器擴展集) 中執行。 我們可以使用金鑰保存庫來儲存應用程式祕密。 我們可以儲存供應用程式用來向 Azure AD 進行驗證的啟動程序憑證。
 
 我們需要存取下列預存金鑰和祕密：
-- **Tls/ssl 憑證**：用於 TLS/ssl。
+- **TLS/SSL 憑證**：用於 TLS/SSL。
 - **儲存體金鑰**：用來存取儲存體帳戶。
-- **RSA 2048 位金鑰**：用於簽署作業。
-- **啟動程式憑證**：用來驗證 Azure AD。 獲得存取權後，我們就可以擷取儲存體金鑰，以及使用 RSA 金鑰進行簽署。
+- **RSA 2,048 位元金鑰**：用於簽署作業。
+- **啟動程序憑證**：用於向 Azure AD 進行驗證。 獲得存取權後，我們就可以擷取儲存體金鑰，以及使用 RSA 金鑰進行簽署。
 
 我們必須定義下列角色，以指定誰可以管理、部署及稽核我們的應用程式：
-- **安全性小組**：來自于 CSO （首席安全性長）或類似參與者的 IT 人員。 安全性小組負責妥善保管祕密。 秘密可以包含 TLS/SSL 憑證、用於簽署的 RSA 金鑰、連接字串和儲存體帳戶金鑰。
-- **開發人員和操作員**：開發應用程式並將它部署在 Azure 中的員工。 此小組的成員不屬於安全性工作人員。 他們不應該存取敏感性資料，例如 TLS/SSL 憑證和 RSA 金鑰。 其所部署的應用程式才應具備敏感性資料的存取權。
-- **審計員**：此角色適用于不屬於開發或一般 IT 人員成員的參與者。 其會檢閱憑證、金鑰和祕密的使用與維護情形，以確保各項作業符合安全性標準。
+- **安全性小組**：CSO (首席安全官) 辦公室的 IT 人員或類似的參與者。 安全性小組負責妥善保管祕密。 祕密可包含 TLS/SSL 憑證、用於簽署作業的 RSA 金鑰、連接字串和儲存體帳戶金鑰。
+- **開發人員和操作員**：這些人負責開發應用程式，並將其部署在 Azure 中。 此小組的成員不屬於安全性工作人員。 這些人不應具備敏感性資料 (例如 TLS/SSL 憑證與 RSA 金鑰) 的存取權。 其所部署的應用程式才應具備敏感性資料的存取權。
+- **稽核員**：此角色適用於不是開發小組成員或一般 IT 人員的參與者。 其會檢閱憑證、金鑰和祕密的使用與維護情形，以確保各項作業符合安全性標準。
 
 另外還有一個不在我們應用程式範圍內的角色：訂用帳戶 (或資源群組) 系統管理員。 訂用帳戶管理員會設定安全性小組的初始存取權限。 其會使用資源群組 (具有此應用程式所需的資源)，將存取權授與安全性小組。
 
@@ -116,7 +116,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 - 定期輪替金鑰和祕密。
 
 **開發人員和操作員**
-- 從安全性小組取得啟動程式和 TLS/SSL 憑證（指紋）、儲存體金鑰（密碼 URI）和 RSA 金鑰（金鑰 URI）的參考以進行簽署。
+- 從安全性小組取得啟動程序和簽署所需 TLS/SSL 憑證 (指紋)、儲存體金鑰 (密碼 URI) 和 RSA 金鑰 (金鑰 URI) 的參考。
 - 開發和部署以程式設計方式存取金鑰和密碼的應用程式。
 
 **稽核員**
@@ -127,20 +127,20 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 | 角色 | 管理平面權限 | 資料平面權限 |
 | --- | --- | --- |
 | 安全性小組 | Key Vault 參與者 | 金鑰︰備份、建立、刪除、取得、匯入、列出、還原<br>祕密：所有作業 |
-| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此許可權可讓已部署的 vm 從金鑰保存庫提取秘密。 | 無 |
-| 稽核員 | 無 | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此許可權可讓審計員檢查未在記錄中發出之金鑰和密碼的屬性（標記、啟用日期、到期日）。 |
-| 應用程式 | 無 | 金鑰︰簽署<br>密碼︰取得 |
+| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None |
+| 稽核員 | None | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 |
+| Application | None | 金鑰︰簽署<br>密碼︰取得 |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 VM (或 Azure App Service 的 Web Apps 功能)，開發人員和操作員需要這些資源類型的 `Contributor` 存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。
 
 如需如何以程式設計方式部署憑證、存取金鑰和祕密的詳細資訊，請參閱下列資源：
 - 了解如何[將憑證從客戶管理的金鑰保存庫部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (部落格文章)。
-- 查看[Azure Key Vault 用戶端範例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此內容會示範如何使用啟動程序憑證，向 Azure AD 驗證以存取金鑰保存庫。
+- 檢視 [Azure Key Vault 用戶端範例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此內容會示範如何使用啟動程序憑證，向 Azure AD 驗證以存取金鑰保存庫。
 
 您可以使用 Azure 入口網站授與大部分的存取權限。 若要授與細微權限，您可以使用 Azure PowerShell 或 Azure CLI。
 
 本節中的 PowerShell 程式碼片段是使用下列假設來建置的︰
-- Azure AD 系統管理員已建立安全性群組來代表三個角色： Contoso Security Team、Contoso App DevOps 和 Contoso App 審計員。 系統管理員已將使用者新增到其各自的群組。
+- Azure AD 系統管理員已建立安全性群組來代表三個角色：Contoso Security Team、Contoso App DevOps 和 Contoso App Auditors。 系統管理員已將使用者新增到其各自的群組。
 - 所有資源都位於 **ContosoAppRG** 資源群組。
 - Key Vault 記錄會儲存在 **contosologstorage** 儲存體帳戶。
 - **ContosoKeyVault** 金鑰保存庫和 **contosologstorage** 儲存體帳戶位於相同的 Azure 位置。
@@ -184,7 +184,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 我們定義的自訂角色只能指派給 **ContosoAppRG** 資源群組建立所在的訂用帳戶。 若要針對其他訂用帳戶中的其他專案使用自訂角色，請新增其他訂用帳戶至該角色的範圍中。
 
-針對我們的 DevOps 人員，金鑰保存庫 `deploy/action` 權限的自訂角色指派僅限於該資源群組範圍內。 只有在**ContosoAppRG**資源群組中建立的 vm 才允許存取秘密（TLS/SSL 和啟動程式憑證）。 由 DevOps 成員在其他資源群組中建立的 VM 即使有祕密的 URI，也無法存取這些祕密。
+針對我們的 DevOps 人員，金鑰保存庫 `deploy/action` 權限的自訂角色指派僅限於該資源群組範圍內。 只有在資源群組 **ContosoAppRG** 中建立的 VM 才能存取祕密 (TLS/SSL 和啟動程序憑證)。 由 DevOps 成員在其他資源群組中建立的 VM 即使有祕密的 URI，也無法存取這些祕密。
 
 我們的範例會說明一個簡單的案例。 真實案例可能會更複雜。 您可以根據需求調整金鑰保存庫的權限。 我們假設該安全性小組會提供 DevOps 人員在其應用程式中所使用的金鑰和密碼參考 (URI 和指紋)。 開發人員和操作員不需要任何資料平面存取權。 我們的重點放在如何保護您的金鑰保存庫。 在保護[您的 VM](https://azure.microsoft.com/services/virtual-machines/security/)、[儲存體帳戶](../../storage/blobs/security-recommendations.md)和其他 Azure 資源時，請做出類似的考量。
 
@@ -211,11 +211,11 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 * [使用 OAuth 2.0 和 Azure AD 授權存取 Web 應用程式](../../active-directory/develop/v2-oauth2-auth-code-flow.md)
 
-* [Key Vault 管理 REST Api](https://msdn.microsoft.com/library/azure/mt620024.aspx)
+* [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)
 
     本文件是可供以程式設計方式管理金鑰保存庫 (包括設定 Key Vault 存取原則) 的 REST API 參考。
 
-* [Key Vault REST Api](https://msdn.microsoft.com/library/azure/dn903609.aspx)
+* [Key Vault REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)
 
 * [金鑰存取控制](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
 
@@ -227,10 +227,10 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 設定 [Key Vault 防火牆和虛擬網路](network-security.md)。
 
-如需系統管理員的快速入門教學課程，請參閱[什麼是 Azure Key Vault？](overview.md)）。
+如需適用於系統管理員的開始使用教學課程，請參閱[什麼是 Azure Key Vault？](overview.md))。
 
-如需 Key Vault 使用方式記錄的詳細資訊，請參閱[Azure Key Vault 記錄](logging.md)）。
+如需 Key Vault 使用記錄的詳細資訊，請參閱 [Azure Key Vault 記錄](logging.md))。
 
-如需搭配 Azure Key Vault 使用金鑰和密碼的詳細資訊，請參閱[關於金鑰和密碼](https://msdn.microsoft.com/library/azure/dn903623.aspx)。
+如需搭配 Azure Key Vault 使用金鑰和密碼的詳細資訊，請參閱[關於金鑰和祕密](https://msdn.microsoft.com/library/azure/dn903623.aspx)。
 
-如果您有關於 Key Vault 的問題，請造訪[論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。
+如果您對 Key Vault 有任何疑問，請造訪 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。

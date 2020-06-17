@@ -1,19 +1,19 @@
 ---
-title: 管理 Azure Service Fabric 叢集中的憑證
+title: 管理 Azure Service Fabric 叢集上的憑證
 description: 說明如何在 Service Fabric 叢集新增新的憑證、變換憑證及移除憑證。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458361"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658380"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>新增或移除 Azure 中 Service Fabric 叢集的憑證
 建議您熟悉 Service Fabric 使用 X.509 憑證的方式，以及熟悉[叢集安全性案例](service-fabric-cluster-security.md)。 您必須瞭解什麼是叢集憑證及其用途，方可繼續進行後續作業。
 
-Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定義的憑證，其到期日最晚于未來;不論其主要或次要設定定義為何。 回到傳統行為是不建議的先進動作，而且需要在您`Fabric.Code`的設定中將 "UseSecondaryIfNewer" 設定參數值設為 false。
+Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日最晚的已定義憑證，而不論其主要或次要設定定義為何。 回復為傳統行為是不建議採取的進階動作，而且需要在 `Fabric.Code` 設定內將 "UseSecondaryIfNewer" 設定參數值設為 false。
 
 當您在叢集建立期間設定憑證安全性時，除了用戶端憑證之外，Service Fabric 還可讓您指定兩個叢集憑證：主要與次要。 請參閱[透過入口網站建立 Azure 叢集](service-fabric-cluster-creation-via-portal.md)或[透過 Azure Resource Manager 建立 Azure 叢集](service-fabric-cluster-creation-via-arm.md)，以詳細了解如何在建立這些叢集時進行叢集設定。 如果您在建立時僅指定一個叢集憑證，該憑證就會作為主要憑證。 在叢集建立完成後，您可新增憑證做為次要憑證。
 
@@ -29,26 +29,24 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
 您無法透過 Azure 入口網站使用 Azure PowerShell 新增次要叢集憑證。 本文件稍後會簡要說明此程序。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用入口網站來移除叢集憑證
-針對安全叢集，您一律必須至少有一個有效 (未撤銷或過期) 的憑證。 以最晚到未來到期日部署的憑證將會使用，並將它移除，讓您的叢集停止運作;請確定只移除過期的憑證，或過期 soonest 的未使用憑證。
+針對安全叢集，您一律必須至少有一個有效 (未撤銷或過期) 的憑證。 以最晚到期日部署的憑證一定在使用中，如果移除，叢集會停止運作；請確保只移除過期的憑證，或未使用且最快到期的憑證。
 
 若要移除未使用的叢集安全性憑證，請瀏覽至 [安全性] 區段，然後在未使用的憑證上，從快顯功能表中選取 [刪除] 選項。
 
 如果您的目的是要移除標記為主要的憑證，則必須部署到期日比主要憑證還久的次要憑證，以啟用自動變換行為；再於自動變換完成後刪除主要憑證。
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 來新增次要憑證
-> [!TIP]
-> 現在有更好的方法可以使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) Cmdlet 來新增次要憑證。 您不需要遵循本節中的其餘步驟。  此外，使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) Cmdlet 時，您不需要原本用來建立和部署叢集的範本。
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>使用 Azure Resource Manager 新增次要憑證
 
 這些步驟是假設您已熟悉 Resource Manager 的運作方式，並已使用 Resource Manager 範本至少部署一個 Service Fabric 叢集，而且已讓您使用的範本將叢集設定妥當。 此外亦假設您可輕鬆自如地使用 JSON。
 
 > [!NOTE]
-> 如果您要尋找範例範本和參數，讓您可以用來遵循或作為起點，請從這個[git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)存放庫下載。 
+> 如果您正在尋找可用來依循或作為起點的範例範本和參數，可從這個 [git 存放庫](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)下載。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>編輯您的 Resource Manager 範本
 
-為了便於跟著操作，範例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我們將進行的所有編輯。 此範例可在[git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)存放庫中取得。
+為了便於跟著操作，範例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我們將進行的所有編輯。 您可以從 [git 存放庫](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)取得該範例。
 
 **務必依照所有步驟操作**
 
@@ -95,7 +93,7 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
          }
     ``` 
 
-    如果您想要「變換憑證」****，請將新憑證指定為主要憑證，並將目前的主要憑證移轉為次要憑證。 這可讓您透過單一部署步驟，就將目前的主要憑證變換成新憑證。
+    如果您想要「變換憑證」，請將新憑證指定為主要憑證，並將目前的主要憑證移轉為次要憑證。 這可讓您透過單一部署步驟，就將目前的主要憑證變換成新憑證。
     
     ```JSON
           "properties": {
@@ -106,7 +104,7 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
          }
     ``` 
 
-4. 對**所有**的**microsoft. compute/virtualMachineScaleSets**資源定義進行變更-找出 virtualMachineScaleSets 資源定義。 捲動到 "virtualMachineProfile" 底下的 "publisher": "Microsoft.Azure.ServiceFabric"。
+4. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動至 "publisher":"Microsoft.Azure.ServiceFabric" (在 "virtualMachineProfile" 下)。
 
     在 Service Fabric 發行者設定中，您應該會看到像這樣的畫面。
     
@@ -127,7 +125,7 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    如果您想要「變換憑證」****，請將新憑證指定為主要憑證，並將目前的主要憑證移轉為次要憑證。 這可讓您在單一部署步驟中，將目前的憑證變換為新憑證。     
+    如果您想要「變換憑證」，請將新憑證指定為主要憑證，並將目前的主要憑證移轉為次要憑證。 這可讓您在單一部署步驟中，將目前的憑證變換為新憑證。     
 
     ```json
                    "certificate": {
@@ -144,7 +142,7 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
     屬性現在應該看起來像這樣    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. 對**所有****Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動到 "OSProfile" 底下的 "vaultCertificates":。 您應該會看到類似下面的畫面。
+5. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動到 "OSProfile" 底下的 "vaultCertificates":。 您應該會看到類似下面的畫面。
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -184,7 +182,7 @@ Azure 服務網狀架構 SDK 的預設憑證載入行為是部署並使用已定
 ### <a name="deploy-the-template-to-azure"></a>將範本部署到 Azure
 
 - 您現在已可將範本部署至 Azure。 開啟 Azure PS 版本 1+ 命令提示字元。
-- 登入您的 Azure 帳戶，並選取特定的 azure 訂用帳戶。 對於擁有多個 Azure 訂用帳戶存取權的使用者而言，這是一個重要步驟。
+- 登入您的 Azure 帳戶，並選取特定的 Azure 訂用帳戶。 對於擁有多個 Azure 訂用帳戶存取權的使用者而言，這是一個重要步驟。
 
 ```powershell
 Connect-AzAccount
@@ -199,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-將範本部署至您的資源群組。 使用您目前在其中部署叢集的同一個資源群組。 執行 New-azresourcegroupdeployment 命令。 您無須指定模式，因為預設值為 **增量**。
+將範本部署至您的資源群組。 使用您目前在其中部署叢集的同一個資源群組。 執行 New-AzResourceGroupDeployment 命令。 您無須指定模式，因為預設值為 **增量**。
 
 > [!NOTE]
 > 若您將 [模式] 設為 [完整]，您可能會無意間刪除不在您範本中的資源。 因此請勿在此案例中使用該模式。
@@ -279,7 +277,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>將應用程式憑證新增至虛擬機器擴展集
 
-若要將您用於應用程式的憑證部署至您的叢集，請參閱[此範例 Powershell 腳本](scripts/service-fabric-powershell-add-application-certificate.md)。
+若要將您用於應用程式的憑證部署到叢集，請參閱[此範例 Powershell 指令碼](scripts/service-fabric-powershell-add-application-certificate.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需有關叢集管理的詳細資訊，請參閱下列文件︰

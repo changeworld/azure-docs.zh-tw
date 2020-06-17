@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585890"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826089"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 共同作業邀請兌換
 
@@ -42,9 +42,9 @@ ms.locfileid: "83585890"
 
 > [!IMPORTANT]
 > 直接連結必須是租用戶專用的。 換句話說，其必須包含租用戶識別碼或已驗證的網域，才能在您的租用戶 (共用應用程式所在的位置) 中驗證來賓。 一般 URL (例如 https://myapps.microsoft.com ) 不適用於來賓，因為其會重新導向至其主租用戶進行驗證。 以下是一些具有租用戶內容的直接連結範例：
- > - 應用程式存取面板： https://myapps.microsoft.com/?tenantid=&lt;租用戶識別碼&gt; 
- > - 已驗證網域的應用程式存取面板： https://myapps.microsoft.com/&lt; 已驗證的網域&gt;
- > - Azure 入口網站： https://portal.azure.com/&lt;租用戶識別碼&gt;
+ > - 應用程式存取面板：`https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - 已驗證網域的應用程式存取面板：`https://myapps.microsoft.com/<;verified domain>`
+ > - Azure 入口網站：`https://portal.azure.com/<tenant id>`
  > - 個別應用程式：請參閱如何使用[直接登入連結](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
 在某些情況下，建議您透過直接連結來使用邀請電子郵件。 如果這些特殊情況對您的組織很重要，建議您使用仍會傳送邀請電子郵件的方法來邀請使用者：

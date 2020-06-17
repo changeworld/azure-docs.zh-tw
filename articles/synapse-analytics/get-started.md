@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605403"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>開始使用 Azure Synapse Analytics
 
@@ -164,7 +164,7 @@ SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫
 
 1. 瀏覽至 [資料] 中樞，以滑鼠右鍵按一下 [資料庫]，然後選取 [重新整理]。
 1. 現在您應該會看到這些資料庫：
-    - SQLDB (SQL 集區)
+    - SQLDB1 (SQL 集區)
     - nyctaxi (Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和筆記本來分析 NYC 計程車資料
@@ -190,10 +190,10 @@ SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. 在資料格結果中，選取 [圖表] 可查看視覺化的資料
  
@@ -282,7 +282,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 選取 [使用者 (主要)]
 1. 您應會看到名為 `NYCTaxi` 的資料夾。 您應該會在其內看到 `PassengerCountStats.csv` 及 `PassengerCountStats.parquet` 這兩個資料夾。
 1. 瀏覽至 `PassengerCountStats.parquet` 資料夾。
-1. 在 Parquet 檔案內以滑鼠右鍵按一下，然後選取 [新增筆記本]，隨即會建立具有如下儲存格的筆記本：
+1. 在 `.parquet` 檔案內以滑鼠右鍵按一下，然後選取 [新增筆記本]，隨即會建立具有如下儲存格的筆記本：
 
     ```py
     %%pyspark

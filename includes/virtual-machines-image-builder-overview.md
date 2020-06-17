@@ -1,40 +1,40 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343332"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821495"
 ---
-標準化的虛擬機器（VM）映射可讓組織遷移至雲端，並確保部署的一致性。 映射通常包含預先定義的安全性和設定，以及必要的軟體。 設定您自己的映射處理管線需要時間、基礎結構和設定，但使用 Azure VM 映射產生器時，只需提供簡單的設定來描述您的映射、將它提交至服務，然後建立映射並加以散發。
+標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。
  
-Azure VM 映射產生器（Azure 映射產生器）可讓您從以 Windows 或 Linux 為基礎的 Azure Marketplace 映射、現有的自訂映射或 Red Hat Enterprise Linux （RHEL） ISO 開始，並開始新增您自己的自訂專案。 因為映射產生器是建立在[HashiCorp Packer](https://packer.io/)上，您也可以匯入現有的 Packer shell 布建程式腳本。 您也可以在[Azure 共用映射資源庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中，指定您想要裝載映射的位置，做為受控映射或 VHD。
+Azure VM Image Builder (Azure Image Builder) 可讓您從以 Windows 或 Linux 為基礎的 Azure Marketplace 映像、現有的自訂映像或 Red Hat Enterprise Linux (RHEL) ISO 著手，並開始新增自己的自訂項目。 因為 Image Builder 建置在 [HashiCorp Packer](https://packer.io/) 上，所以您也可匯入現有的 Packer Shell 佈建工具指令碼。 您也可以在 [Azure 共用映像庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中，指定您要裝載映像的位置，作為受控映像或 VHD。
 
 > [!IMPORTANT]
-> Azure 映射產生器目前為公開預覽版。
+> Azure Image Builder 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="preview-features"></a>預覽功能
 
-針對預覽版本，支援下列功能：
+在預覽版中，支援下列功能：
 
-- 建立黃金基準影像，其中包括您的最低安全性和公司設定，並允許部門根據其需求進一步進行自訂。
-- 修補現有的映射，映射產生器可讓您持續修補現有的自訂映射。
-- 將映射產生器連接到現有的虛擬網路，以便連接到現有的設定伺服器（DSC、Chef、Puppet 等）、檔案共用，或任何其他可路由傳送的伺服器/服務。
-- 與 Azure 共用映射資源庫整合，可讓您全域散發、版本及調整影像，並提供映射管理系統。
-- 與現有的映射組建管線整合，只需從管線呼叫影像產生器，或使用簡單的預覽影像產生器 Azure DevOps 工作。
-- 將現有的映射自訂管線遷移至 Azure。 使用您現有的腳本、命令和進程來自訂映射。
-- 建立 VHD 格式的映射以支援 Azure Stack。
+- 建立金級基準映像 (包括您的最小安全性和公司組態)，並允許部門根據其需求進一步加以自訂。
+- 修補現有的映像，Image Builder 可讓您持續修補現有的自訂映像。
+- 將 Image Builder 連線到現有的虛擬網路，您便可連線到現有的設定伺服器 (DSC、Chef、Puppet 等)、檔案共用，或任何其他路由式伺服器/服務。
+- 與 Azure 共用映像庫整合，可讓您全域散發、設定版本及調整映像，並為您提供映像管理系統。
+- 與現有的映像建置管線整合，只要從管線呼叫 Image Builder，或使用簡單的預覽 Image Builder Azure DevOps 工作即可。
+- 將現有的映像自訂管線遷移至 Azure。 使用您現有的指令碼、命令和程序來自訂映像。
+- 建立 VHD 格式的映像以支援 Azure Stack。
  
 
 ## <a name="regions"></a>區域
-Azure 映射產生器服務會在這些區域中提供預覽。 映射可以散佈在這些區域之外。
+Azure Image Builder 服務會在下列區域中提供預覽。 映像可以在這些區域之外散發。
 - 美國東部
 - 美國東部 2
 - 美國中西部
@@ -44,60 +44,61 @@ Azure 映射產生器服務會在這些區域中提供預覽。 映射可以散�
 - 西歐
 
 ## <a name="os-support"></a>OS 支援
-AIB 將支援 Azure Marketplace 基本 OS 映射：
+AIB 將支援 Azure Marketplace 基底 OS 映像：
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6、7。7
-- CentOS 7.6、7。7
+- RHEL 7.6、7.7
+- CentOS 7.6、7.7
 - SLES 12 SP4
 - SLES 15、SLES 15 SP1
-- Windows 10 RS5 Enterprise/Enterprise 多會話/專業版
+- Windows 10 RS5 Enterprise/Enterprise 多工作階段/專業版
 - Windows 2016
 - Windows 2019
 
-不支援 RHEL Iso 支援。
+不再提供 RHEL ISO 支援。
 ## <a name="how-it-works"></a>運作方式
 
 
-![Azure 映射產生器的概念圖](./media/virtual-machines-image-builder-overview/image-builder.png)
+![Azure Image Builder 的概念圖](./media/virtual-machines-image-builder-overview/image-builder.png)
 
-Azure 映射產生器是完全受控的 Azure 服務，可供 Azure 資源提供者存取。 Azure 映射產生器流程有三個主要部分：來源、自訂和散發，這些都是以範本表示。 下圖顯示元件及其部分屬性。 
+Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供者存取。 Azure Image Builder 程序有三個主要部分：來源、自訂和散發，這些都會在範本中表現。 下圖顯示元件及其部分屬性。 
  
 
 
-**影像產生器進程** 
+**Image Builder 程序** 
 
-![Azure 映射產生器進程的概念繪圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
+![Azure Image Builder 程序的概念圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
-1. 建立映射範本作為 json 檔案。 此 json 檔案包含映射來源、自訂和散發的相關資訊。 [Azure 映射](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)產生器 GitHub 存放庫中有多個範例。
-1. 將它提交給服務，這會在您指定的資源群組中建立映射範本成品。 在背景中，映射產生器會視需要下載來源映射或 ISO 和腳本。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式為： IT_ \< DestinationResourceGroup>_ \< TemplateName>。 
-1. 建立映射範本之後，您就可以建立映射。 在背景影像產生器中，會使用範本和來源檔案來建立 VM （預設大小： Standard_D1_v2）、網路、公用 IP、NSG，以及 IT_ \< DestinationResourceGroup>_ \< TemplateName> 資源群組中的儲存體。
-1. 作為映射建立的一部分，映射產生器會根據範本散發映射，然後刪除 IT_ DestinationResourceGroup 中的其他資源， \<>_ \< TemplateName 為該進程建立的> 資源群組。
+1. 以 .json 檔案形式建立映像範本。 此 .json 檔案包含映像來源、自訂和散發相關資訊。 [Azure Image Builder GitHub 存放庫](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中有多個範例。
+1. 將其提交給服務，將會在您指定的資源群組中建立映像範本成品。 在背景中，Image Builder 會下載來源映像或 ISO，並視需要下載指令碼。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式如下：IT_\<DestinationResourceGroup>_\<TemplateName>。 
+1. 建立映像範本後，您就可以建置映像。 在背景中，Image Builder 會使用範本和來源檔案，在 IT_\<DestinationResourceGroup>_\<TemplateName> 資源群組中建立 VM (預設大小：Standard_D1_v2)、網路、公用 IP、NSG 和儲存體。
+1. 在映像建立過程中，Image Builder 會根據範本散發映像，然後刪除為此程序建立的 IT_\<DestinationResourceGroup>_\<TemplateName> 資源群組中的其他資源。
 
 
 ## <a name="permissions"></a>權限
-當您註冊（AIB）時，這會授與 AIB 服務許可權，以建立、管理和刪除暫存資源群組（IT_ *），並具有將資源新增至映射組建所需的許可權。 這是由在成功註冊期間，在您的訂用帳戶中提供的 AIB 服務主體名稱（SPN）所完成。
+當您註冊 (AIB) 時，這會授與建立、管理和刪除暫存資源群組 (IT_*) 的 AIB 服務權限，並具有在該群組中新增資源的權利，這些都是映像建置的必要項目。 這是在成功註冊期間，由您的訂用帳戶中提供的 AIB 服務主體名稱 (SPN) 所完成。
 
-若要允許 Azure VM 映射產生器將映射發佈至受控映射或共用映射資源庫，您必須建立 Azure 使用者指派的身分識別，其具有讀取和寫入映射的許可權。 如果您要存取 Azure 儲存體，則這將需要讀取私人容器的許可權。
+若要允許 Azure VM Image Builder 將映像散發至受控映像或共用映像庫，您必須建立 Azure 使用者指派的身分識別，其具有讀取和寫入映像的權限。 如果您要存取 Azure 儲存體，則需要讀取私人容器的權限。
 
-一開始，您必須[建立 Azure 使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)檔，以瞭解如何建立身分識別。
+一開始，您必須遵循[建立 Azure 使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)文件，以了解如何建立身分識別。
 
-一旦您擁有要授與許可權的身分識別，若要這麼做，您可以使用 Azure 自訂角色定義，然後將使用者指派的受控識別指派為使用自訂角色定義。
+一旦擁有您需要授與權限的身分識別，若要這麼做，您可使用 Azure 自訂角色定義，然後指派使用者所指派的受控識別以使用自訂角色定義。
 
-[這裡](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)會詳細說明許可權，而範例會示範如何執行此操作。
+[這裡](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)會詳細說明權限，而範例會示範其實作方式。
 
-> [注意！]先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 許可權授與映射資源群組。 我們即將離開此模型，以允許未來的功能。 從2020年6月1日開始，映射產生器將不會接受沒有使用者指派之身分識別的範本，現有的範本將必須以使用者身分[識別](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)重新提交至服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。
+> [!Note]
+> 先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 權限授予映像資源群組。 我們即將脫離此模型，以允許使用未來的功能。 從 2020 年 5 月 26 日起，Image Builder 不會接受沒有使用者所指派身分識別的範本，必須將現有的範本重新提交至具有[使用者身分識別](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)的服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。 如需詳細資訊，請檢閱這份有關這項變動和版本更新的[文件](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)。
 
 ## <a name="costs"></a>費用
-建立、建立和儲存映射時，您將會產生一些計算、網路和儲存體成本。 這些成本類似于手動建立自訂映射所產生的成本。 對於資源，您將以 Azure 費率向您收費。 
+使用 Azure Image Builder 建立、建置和儲存映像時，您會產生一些計算、網路和儲存成本。 這些成本類似於手動建立自訂映像所產生的成本。 對於各項資源，系統會以您的 Azure 費率向您收費。 
 
-在映射建立過程中，會下載檔案並 `IT_<DestinationResourceGroup>_<TemplateName>` 將其儲存在資源群組中，這將會產生少量的儲存成本。 如果您不想要保留這些，請在映射組建之後刪除**映射範本**。
+在映像建立過程中，檔案會下載並儲存在 `IT_<DestinationResourceGroup>_<TemplateName>` 資源群組中，這會產生少許的儲存成本。 如果您不想保留這些檔案，請在映像建置之後，刪除 [映像範本]。
  
-映射產生器會使用 D1v2 VM 大小、儲存體，以及 VM 所需的網路功能，來建立 VM。 這些資源會在建立程式期間持續，而且一旦影像產生器完成影像的建立後，就會刪除。 
+Image Builder 會建立使用 D1v2 VM 大小的 VM，以及該 VM 所需的儲存體和網路功能。 這些資源將會在建置期間持續存在，而一旦 Image Builder 完成映像建立，就會遭到刪除。 
  
-Azure 映射產生器會將映射散發至您選擇的區域，這可能會產生網路輸出費用。
+Azure Image Builder 會將映像散發至您選擇的區域，這可能會產生網路輸出費用。
  
 ## <a name="next-steps"></a>後續步驟 
  
-若要試用 Azure 映射產生器，請參閱建立[Linux](../articles/virtual-machines/linux/image-builder.md)或[Windows](../articles/virtual-machines/windows/image-builder.md)映射的文章。
+若要試用 Azure Image Builder，請參閱建置 [Linux](../articles/virtual-machines/linux/image-builder.md) 或 [Windows](../articles/virtual-machines/windows/image-builder.md) 映像的文章。
  

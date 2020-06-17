@@ -946,14 +946,14 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: 針對現有的 AKS 叢集啟用
               href: insights/container-insights-enable-existing-clusters.md
+            - name: 啟用已啟用 Arc 的叢集
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: 針對混合式叢集啟用
               href: insights/container-insights-hybrid-setup.md
             - name: 針對 Azure Red Hat OpenShift v3 啟用
               href: insights/container-insights-azure-redhat-setup.md
             - name: 針對 Azure Red Hat OpenShift v4 啟用
               href: insights/container-insights-azure-redhat4-setup.md
-            - name: 啟用已啟用 Arc 的叢集
-              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: 區域對應
               href: insights/container-insights-region-mapping.md
         - name: 監視效能

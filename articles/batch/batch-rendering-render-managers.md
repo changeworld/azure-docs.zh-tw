@@ -1,16 +1,16 @@
 ---
 title: 轉譯管理員支援
-description: 使用 Azure Batch render manager 整合。 瞭解適用于熱門轉譯管理員的內建支援或附加元件。
+description: 使用 Azure Batch 轉譯管理員整合。 了解熱門轉譯管理員的內建支援或附加元件。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 9921c68bf6ebe44d6d2a6b7b74afbe3fa98e0803
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: c44cbf86d8bf2fe83a6dc91dee1c4f58eec156c0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115732"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726446"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>使用 Azure Batch 搭配轉譯伺服陣列管理員
 
@@ -24,15 +24,15 @@ Azure 會為受歡迎的轉譯管理員提供內建支援或附加元件。 您�
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure Render 中樞
+## <a name="azure-render-hub"></a>Azure 轉譯中樞
 
-Azure 轉譯中樞可簡化 Azure render 伺服器陣列的建立和管理。  呈現中樞具有 PipelineFx Qube 和期限10的原生支援。  如需詳細資訊和詳細指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 轉譯中樞可簡化 Azure render 轉譯伺服器陣列的建立和管理。  轉譯中樞具有 PipelineFx Qube 和 Deadline 10 的原生支援。  如需相關資訊及詳細指示，請參閱 [GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>使用 Azure 搭配 PipelineFX Qube
 
-Azure Render Hub 支援熱門的轉譯管理員，包括期限。  如需部署和使用轉譯中樞的指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 轉譯中樞支援熱門轉譯管理員，包括 Deadline。  如需部署和使用轉譯中樞的相關指示，請參閱 [GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
 
-[GitHub 存放庫](https://github.com/Azure/azure-qube)中也提供啟用 Azure Batch 集區 Vm 作為 Qube 背景工作的腳本和指示。
+在 [GitHub 存放庫](https://github.com/Azure/azure-qube)中，也會提供可讓 Azure Batch 集區 VM 作為 Qube 背景工作角色的指令碼和指示。
 
 ## <a name="using-azure-with-royal-render"></a>使用 Azure 搭配 Royal Render
 
@@ -42,7 +42,7 @@ Royal Render 已內建 Azure 和 Azure Batch 整合功能，可讓您使用以 A
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>使用 Azure 搭配 Thinkbox Deadline
 
-Azure Render Hub 支援熱門的轉譯管理員，包括期限。  如需部署和使用轉譯中樞的指示，請參閱[GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
+Azure 轉譯中樞支援熱門轉譯管理員，包括 Deadline。  如需部署和使用轉譯中樞的相關指示，請參閱 [GitHub 存放庫](https://github.com/Azure/azure-render-hub)。
 
 ## <a name="next-steps"></a>後續步驟
 

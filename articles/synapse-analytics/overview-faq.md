@@ -1,6 +1,6 @@
 ---
-title: 常見問題集 - Azure Synapse Analytics
-description: Azure Synapse Analytics 的常見問題集
+title: 常見問題集 - Azure Synapse Analytics (工作區預覽)
+description: Azure Synapse Analytics (工作區預覽) 常見問題集
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118378"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609143"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
 您將在本指南中找到 Synapse Analytics 最常遇到的問題。
 

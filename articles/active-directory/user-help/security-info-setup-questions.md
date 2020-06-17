@@ -1,6 +1,6 @@
 ---
-title: 將安全性問題設定為您的驗證方法-Azure AD
-description: 如何設定您的安全性資訊（預覽）頁面，以使用預先定義的安全性問題做為驗證方法來驗證您的身分識別。
+title: 設定安全性問題作為驗證方法 - Azure AD
+description: 如何設定 [安全性資訊] (預覽) 頁面，以使用預先定義的問題性問題作為驗證方法來驗證身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,24 +8,24 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: d4714a78ed03a9b861f3a266cfd0d7bca456b3c4
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628345"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744443"
 ---
-# <a name="set-up-security-questions-as-your-verification-method"></a>將安全性問題設定為您的驗證方法
+# <a name="set-up-security-questions-as-your-verification-method"></a>設定安全性問題作為驗證方法
 
-您可以遵循下列步驟來新增密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊]**** 頁面來新增、更新或刪除安全性資訊。
+您可以遵循下列步驟來新增密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊] 頁面來新增、更新或刪除安全性資訊。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->如果您沒有看到 [安全性問題] 選項，可能是您的組織不允許您將此選項用於您的密碼重設方法。 在此情況下，您必須選擇其他方法，或洽詢貴組織的技術支援人員以取得更多協助。
+>如果您未看到安全性問題選項，可能是組織不允許您使用這個選項作為密碼重設方法。 在這種情況下，您必須選擇其他方法，或連絡組織的技術支援中心以取得更多協助。
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
@@ -51,7 +51,7 @@ ms.locfileid: "82628345"
 >
 > 如果您未看到安全性問題選項，可能是因為您的組織不允許您使用安全性問題進行驗證。 如果發生這種情況，您將必須選擇其他方法，或連絡您的系統管理員以取得更多協助。
 >
-> 系統管理員帳戶不允許使用安全性問題做為密碼重設方法。 如果您以系統管理員層級帳戶登入，將不會看到這些選項。
+> 不允許管理帳戶使用安全性問題作為密碼重設方法。 如果您以管理員層級帳戶登入，則看不到這些選項。
 
 ### <a name="to-set-up-your-security-questions"></a>設定安全性問題
 
@@ -59,15 +59,15 @@ ms.locfileid: "82628345"
 
     ![[我的設定檔] 頁面，顯示醒目提示的 [安全性資訊] 連結](media/security-info/securityinfo-myprofile-page.png)
 
-2. 以左側瀏覽窗格或是 [安全性資訊]**** 區塊中的連結選取 [安全性資訊]****，然後在 [安全性資訊]**** 頁面選取 [新增方法]****。
+2. 以左側瀏覽窗格或是 [安全性資訊] 區塊中的連結選取 [安全性資訊]，然後在 [安全性資訊] 頁面選取 [新增方法]。
 
     ![醒目提示 [新增方法] 選項的 [安全性資訊] 頁面](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在 [新增方法]**** 頁面上，從下拉式清單中選取 [安全性問題]****，然後選取 [新增]****。
+3. 在 [新增方法] 頁面上，從下拉式清單中選取 [安全性問題]，然後選取 [新增]。
 
     ![[新增方法] 方塊，已選取 [安全性問題]](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. 在 [安全性問題]**** 頁面上，選擇並回答安全性問題，然後選取 [儲存]****。
+4. 在 [安全性問題] 頁面上，選擇並回答安全性問題，然後選取 [儲存]。
 
     ![新增電話號碼，然後選擇電話](media/security-info/securityinfo-myprofile-securityquestions.png)
 
@@ -75,18 +75,18 @@ ms.locfileid: "82628345"
 
 ## <a name="delete-security-questions-from-your-security-info-methods"></a>從安全性資訊方法刪除安全性問題
 
-如果您不想再使用安全性問題來作為安全性資訊方法，您可以從 [安全性資訊]**** 頁面中刪除安全性問題。
+如果您不想再使用安全性問題來作為安全性資訊方法，您可以從 [安全性資訊] 頁面中刪除安全性問題。
 
 >[!Important]
 >若不小心刪除安全性問題，就無法再復原。 您必須依照本文中[設定安全性問題](#set-up-your-security-questions-from-the-security-info-page)一節的步驟，再次新增該方法。
 
 ### <a name="to-delete-your-security-questions"></a>刪除安全性問題
 
-1. 在 [安全性資訊]**** 頁面上，選取 [安全性問題]**** 選項旁的 [刪除]**** 連結。
+1. 在 [安全性資訊] 頁面上，選取 [安全性問題] 選項旁的 [刪除] 連結。
 
     ![從安全性資訊刪除電話方法的連結](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. 從確認方塊中選取 [是]****，以刪除 [安全性問題]****。 刪除安全性問題之後，該方法就會從安全性資訊中移除，並且從 [安全性資訊]**** 頁面上消失。
+2. 從確認方塊中選取 [是]，以刪除 [安全性問題]。 刪除安全性問題之後，該方法就會從安全性資訊中移除，並且從 [安全性資訊] 頁面上消失。
 
 ## <a name="additional-security-info-methods"></a>其他安全性資訊方法
 
@@ -98,7 +98,7 @@ ms.locfileid: "82628345"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰**。 註冊 Microsoft 相容安全性金鑰，並搭配 PIN 一起使用，以進行雙步驟驗證或密碼重設。 如需如何透過安全性金鑰驗證身分識別的逐步指示，請參閱[設定安全性資訊來使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 

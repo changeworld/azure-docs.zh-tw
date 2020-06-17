@@ -3,16 +3,16 @@ title: 快速入門：在 QnA Maker 入口網站中新增問題和答案
 description: 本快速入門說明如何利用中繼資料新增成對的問與答，讓使用者可以找到其問題的正確答案。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266571"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331384"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入門：使用 QnA Maker 入口網站新增問題和答案
 
-建立知識庫之後，請使用中繼資料新增成對的問與答 (QnA)，以篩選出答案。 下表中的問題與 Azure 服務限制有關，但每個問題都與不同的 Azure 服務有關。
+建立知識庫之後，請使用中繼資料新增成對的問與答 (QnA)，以篩選出答案。 下表中的問題與 Azure 服務限制有關，但每個問題都與不同的 Azure 搜尋服務有關。
 
 <a name="qna-table"></a>
 

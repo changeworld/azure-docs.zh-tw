@@ -2,14 +2,14 @@
 title: Azure 轉譯參考架構
 description: 使用 Azure Batch 和其他 Azure 服務，藉由高載至雲端來擴充內部部署轉譯伺服器陣列的架構
 ms.date: 02/07/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: bbdb5eb39805ac87bf90216e5fbeedae91b423f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115766"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726514"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 轉譯的參考架構
 
@@ -23,7 +23,7 @@ ms.locfileid: "82115766"
 
 * **網路** - 內部部署：Azure ExpressRoute 或 VPN。 Azure：Azure VNet。
 
-* **儲存體** - 輸入和輸出檔案：使用 Azure VM 的 NFS 或 CFS，可透過「Azure 檔案同步」或 RSync 與內部部署儲存體同步處理。 或者： Avere vFXT 使用 NFS 從內部部署 NAS 裝置輸入或輸出檔案。
+* **儲存體** - 輸入和輸出檔案：使用 Azure VM 的 NFS 或 CFS，可透過 Azure 檔案同步或 RSync 來與內部部署儲存體同步處理。 或者：用 Avere vFXT 從使用 NFS 的內部部署 NAS 裝置輸入或輸出檔案。
 
   ![雲端高載 - 混合使用 NFS 或 CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 

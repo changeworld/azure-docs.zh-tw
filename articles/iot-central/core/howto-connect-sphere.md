@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: cd583b79d6c73ff8da1c9770bf72b3e6990c3140
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594357"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715050"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>將 Azure Sphere 裝置連線到 Azure IoT Central 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "83594357"
 
 本文說明如何將 Azure Sphere (DevKit) 裝置連線到 Azure IoT Central 應用程式。
 
-Azure Sphere 是安全且高階應用程式平台，搭配可供連網裝置使用的內建通訊及安全性功能。 其包含一個安全、已連線的交叉微控制器單元 (MCU)、一個以 Linux 為基礎的自訂高層級作業系統 (OS)，以及一個可提供持續、可更新的安全性的雲端式安全性服務。 如需詳細資訊，請參閱[什麼是 Azure Sphere？](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)。
+Azure Sphere 是安全且高階應用程式平台，搭配可供連網裝置使用的內建通訊及安全性功能。 其包含一個安全、已連線的交叉微控制器單元 (MCU)、一個以 Linux 為基礎的自訂高層級作業系統 (OS)，以及一個可提供持續、可更新的安全性的雲端式安全性服務。 如需詳細資訊，請參閱[何謂 Azure Sphere？](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)。
 
 [Azure Sphere 開發套件](https://azure.microsoft.com/services/azure-sphere/get-started/)會提供一切所需供您開始設計和開發 Azure Sphere 應用程式。 Azure IoT Central 搭配 Azure Sphere 可實現 IoT 解決方案的端對端堆疊。 Azure Sphere 會以零程式碼、受控 IoT 應用程式平台的形式提供裝置支援和 IoT Central。
 

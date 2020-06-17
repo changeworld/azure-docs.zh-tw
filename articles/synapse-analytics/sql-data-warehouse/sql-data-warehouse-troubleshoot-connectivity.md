@@ -1,6 +1,6 @@
 ---
 title: 連線能力疑難排解
-description: 疑難排解 Synapse SQL 集區中的連線能力。
+description: Synapse SQL 集區連線疑難排解。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,56 +11,56 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408162"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650496"
 ---
-# <a name="troubleshooting-connectivity-issues"></a>對連線問題進行疑難排解
+# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL 集區連線問題疑難排解
 
-本文列出連接到 SQL 分析資料庫的常見疑難排解技巧。
+本文列出連線至 SQL 集區資料庫的常見疑難排解技巧。
 
 ## <a name="check-service-availability"></a>檢查服務可用性
 
-查看服務是否可用。 在 [Azure 入口網站中，移至您嘗試連接的 Synapse SQL 集區。 在左側目錄面板中，按一下 [**診斷並解決問題**]。
+檢查以了解服務是否可供使用。 在 Azure 入口網站中，移至您嘗試連線的 SQL 集區。 在左側 TOC 窗格中，按一下 [診斷並解決問題]。
 
 ![選取資源健康狀態](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-您 Synapse SQL 集區的狀態將會顯示在這裡。 如果服務未顯示為 [**可用**]，請查看進一步的步驟。
+您的 SQL 集區狀態會顯示在這裡。 如果服務未顯示為**可用**，請查看更進一步的步驟。
 
 ![可用的服務](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果您的資源健康狀態顯示您的 Synapse SQL 集區實例已暫停或調整規模，請遵循指引來繼續您的實例。
+如果資源健康狀態顯示您的 SQL 集區執行個體已暫停或正在調整，請遵循指引來繼續您的執行個體。
 
-![服務已](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)暫停有關資源健康狀態的其他資訊，可在這裡找到。
+![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) 您可以在這裡找到資源健康狀態的其他相關資訊。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>檢查已暫停或正在調整的作業
 
-檢查入口網站，以查看您的 Synapse SQL 集區實例是否已暫停或調整。
+請檢查入口網站，以查看您的 SQL 集區執行個體是否已暫停或正在調整。
 
 ![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果您看到您的服務已暫停或調整，請檢查它是否不在維護排程期間。 在 Synapse *SQL 集區*的入口網站上，您會看到已選擇的維護排程。
+如果您看到服務已暫停或正在調整，請檢查服務是否不在維護排程期間。 在 SQL 集區的入口網站「概觀」中，您會看到已選擇的維護排程。
 
-![總覽維護排程](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
+![維護排程概觀](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否則，請洽詢您的 IT 系統管理員，確認此維護不是已排程的事件。 若要繼續 SQL 分析實例，請遵循下列[步驟](pause-and-resume-compute-portal.md)。
+否則，請洽詢您的 IT 管理員，確認此維護不是已排定事件。 若要繼續 SQL 集區執行個體，請遵循[這些步驟](pause-and-resume-compute-portal.md)。
 
 ## <a name="check-your-firewall-settings"></a>檢查防火牆設定
 
-SQL 分析資料庫會透過埠1433進行通訊。如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。 如需防火牆設定的詳細資訊，請參閱[這裡](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)。
+SQL 集區資料庫會透過連接埠 1433 通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。 您可以在[這裡](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>檢查 VNet/服務端點設定
 
-如果您收到錯誤40914和40615，請參閱[這裡的錯誤描述和解決](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)方式。
+如果您收到錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="check-for-the-latest-drivers"></a>檢查最新的驅動程式
 
 ### <a name="software"></a>軟體
 
-請檢查並確定您使用的是最新的工具，以連線至您的 Synapse SQL 集區：
+請檢查以確定您是使用最新的工具來連線至 SQL 集區：
 
 - SSMS
 - Azure Data Studio
@@ -68,7 +68,7 @@ SQL 分析資料庫會透過埠1433進行通訊。如果您嘗試從公司網路
 
 ### <a name="drivers"></a>驅動程式
 
-請檢查以確定您使用的是最新的驅動程式版本。使用較舊版本的驅動程式可能會導致非預期的行為，因為較舊的驅動程式可能不支援新的功能。
+請檢查以確定您使用的是最新版的驅動程式。  使用較舊的驅動程式版本可能會導致非預期的行為，因為較舊的驅動程式可能不支援新的功能。
 
 - [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -103,14 +103,14 @@ JDBC 連接字串
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
-## <a name="intermittent-connection-issues"></a>間歇性連線問題
+## <a name="intermittent-connection-issues"></a>連線斷續的問題
 
-進行檢查以了解伺服器上是否因為有大量已排入佇列的要求而讓負載太高。 您可能需要相應增加您的 Synapse SQL 集區，以取得其他資源。
+進行檢查以了解伺服器上是否因為有大量已排入佇列的要求而讓負載太高。 您可能需要擴大 SQL 集區以獲得額外資源。
 
 ## <a name="common-error-messages"></a>常見的錯誤訊息
 
-錯誤40914和40615，請參閱[這裡的錯誤描述和解決方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
+錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="still-having-connectivity-issues"></a>仍然有連線問題嗎？
 
-建立[支援票證](sql-data-warehouse-get-started-create-support-ticket.md)，讓工程小組能夠支援您。
+建立[支援票證](sql-data-warehouse-get-started-create-support-ticket.md)，讓工程小組可以提供支援。

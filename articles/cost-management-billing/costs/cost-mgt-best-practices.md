@@ -3,17 +3,17 @@ title: 透過 Azure 成本管理將雲端投資最佳化
 description: 本文有助於從雲端投資中獲得最大價值、降低成本並評估您的資金支出。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791607"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142413"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -131,14 +131,39 @@ Azure Migrate 是一種服務，可評估貴組織在內部部署資料中心內
 
 隨時了解貴組織成本如何變化。 使用下列技術正確了解並管理您的費用。
 
-### <a name="organize-and-tag-your-resources"></a>組織和標記資源
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>組織資源以最大化成本深入解析和責任
 
-使用成本用心組織您的資源。 當您建立訂用帳戶和資源群組時，請思考負責相關聯成本的小組。 請確定您的報告會牢記您的組織。 訂用帳戶和資源群組提供良好的值區，以整理並歸納整個組織的費用。 標記提供良好的歸納成本方式。 您可以使用標記作為篩選條件。 此外，當您分析資料以及調查成本時，您可以使用標記來分組。 Enterprise 合約客戶也可以建立部門，並將訂用帳戶放在其下。 在 Azure 中，以成本為基礎的組織有助於將負責減少其小組費用的相關人員保留在您組織中。
+針對您的 Azure 計費和資源階層規劃完善的組織結構，可協助您在建立雲端基礎結構時，對成本有良好的了解和控制。 觀看[設定實體階層](https://www.youtube.com/watch?v=n3TLRaYJ1NY)影片，以深入了解可用的組織工具，以及如何利用它們。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
-觀看[如何使用 Azure 成本管理檢閱標記原則](https://www.youtube.com/watch?v=nHQYcYGKuyw)影片，以了解您在組織中可用來強制執行可調整資源標記的工具。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+評估並建立符合您需求的階層時，請詢問自己下列問題。
+
+*有哪些計費階層可供我使用，以及我可以使用哪些不同的範圍？*
+
+判斷您的 Azure 供應項目類型，以找出組織的計費方式。 每個 Azure 計費方式的可用範圍記載於[了解並使用範圍](understand-work-scopes.md)。
+
+*如果我有多個小組，應該如何組織我的訂用帳戶和資源群組？*
+
+為每個小組建立訂用帳戶或資源群組是常見的作法。 這麼做可協助您區分成本，並讓小組承擔責任。 不過，成本會繫結至訂用帳戶或資源群組。
+
+如果您已經有具有多個訂用帳戶的小組，請考慮將訂用帳戶群組到管理群組中，以一同分析成本。 管理群組、訂用帳戶和資源群組全都是 Azure RBAC 階層的一部分。 統整使用它們，以在小組中進行存取控制。
+
+資源可以跨越多個範圍，特別是在由多個小組或工作負載共用時。 考慮使用標記來找出資源。 下一節會進一步討論標記。
+
+*我有開發和生產環境嗎？*
+
+考慮為您的開發環境建立開發/測試訂用帳戶，以利用降價的優點。 如果工作負載跨多個小組或 Azure 範圍，請考慮使用標記來識別它們。
+
+### <a name="tag-shared-resources"></a>標記共用的資源
+
+標籤是了解跨多個小組和 Azure 範圍成本的有效方式。 例如，您可能有許多小組使用的資源，例如電子郵件伺服器。 您可以將共用資源 (例如電子郵件伺服器) 放在共用資源專用的訂用帳戶中，或放在現有的訂用帳戶中。 如果您將它放在現有的訂用帳戶中，訂用帳戶擁有者可能不會想要每個月對其小組產生成本。 針對此範例，您可以使用標記來將資源識別為共用。
+
+同樣地，您可能也會有會跨不同小組所擁有的多個訂用帳戶使用資源的 Web 應用程式或環境 (例如測試或生產)。 若要進一步了解工作負載的完整成本，請標記其所使用的資源。 正確套用標記時，您可以將它們套用為成本分析中的篩選，以進一步了解趨勢。
+
+規劃資源標記之後，您可以設定 Azure 原則來強制對資源進行標記。 觀看[如何使用 Azure 成本管理檢閱標記原則](https://www.youtube.com/watch?v=nHQYcYGKuyw)影片，以了解可協助您強制執行可調整資源標記的工具。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>使用成本分析
 

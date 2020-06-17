@@ -1,20 +1,6 @@
 - name: 安全開發文件
   href: index.yml
-- name: 範例應用程式
-  expanded: true
-  items:
-    - name: 安全開發的新手
-      items:
-        - name: Linux 容器中的 Web 應用程式
-          href: secure-web-app.md
-        - name: 包含 Azure Active Directory 的 Web 應用程式
-          href: secure-aad-app.md
-    - name: 符合產業規範的解決方案
-      items:
-        - name: 支付卡產業
-          href: secure-pci-web-app.md
 - name: 概念
-  expanded: true
   items:
     - name: 最佳作法
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: 部署安全的應用程式
           href: secure-deploy.md
-- name: 資源
   expanded: true
+- name: 資源
   items:
     - name: Microsoft 安全性程式碼分析
       items:
@@ -95,3 +81,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: 工作階段管理
               href: threat-modeling-tool-session-management.md
+  expanded: true

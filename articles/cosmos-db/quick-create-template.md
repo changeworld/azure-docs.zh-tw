@@ -6,14 +6,14 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605455"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324026"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本來建立 Azure Cosmos DB 和容器
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
@@ -35,9 +35,9 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)。
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 範本中定義了三個 Azure 資源：
 
@@ -53,7 +53,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Azure Cosmos 帳戶、資料庫和容器。
 
-   [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 選取或輸入下列值。
 
@@ -62,18 +62,21 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
     除非有指定，否則請使用預設值來建立 Azure Cosmos 資源。
 
     * **訂用帳戶**：選取 Azure 訂用帳戶。
-    * [資源群組]  選取 [新建]  ，輸入資源群組的唯一名稱，然後按一下 [確認]  。
+    * [資源群組]選取 [新建]，輸入資源群組的唯一名稱，然後按一下 [確認]。
     * **位置**：選取位置。  例如，**美國中部**。
     * **帳戶名稱**：輸入 Azure Cosmos 帳戶的名稱。 此名稱必須是全域唯一的。
     * **位置**：輸入您想要在其中建立 Azure Cosmos 帳戶的位置。 Azure Cosmos 帳戶可以位於和資源群組相同的位置。
     * **主要區域**：Azure Cosmos 帳戶的主要複本區域。
     * **次要區域**：Azure Cosmos 帳戶的次要複本區域。
+    * **預設一致性等級**：Azure Cosmos 帳戶的預設一致性等級。
+    * **過期前置詞的上限**：過期要求的上限。 需要 BoundedStaleness。
+    * **最大間隔 (秒)** ：延隔時間上限。 需要 BoundedStaleness。
     * **資料庫名稱**：Azure Cosmos 資料庫的名稱。
     * **容器名稱**：Azure Cosmos 容器的名稱。
     * **輸送量**：容器的輸送量，輸送量的最小值為 400 RU/秒。
     * **我同意上方所述的條款及條件**：選取。
 
-3. 選取 [購買]  。 成功部署 Azure Cosmos 帳戶之後，您會收到通知：
+3. 選取 [購買]。 成功部署 Azure Cosmos 帳戶之後，您會收到通知：
 
    ![Resource Manager 範本、Cosmos DB 整合、部署入口網站通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -106,7 +109,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您打算繼續進行後續的教學課程，您可以讓這些資源留在原處。
-如果不再需要，請刪除資源群組，這會刪除 Azure Cosmos 帳戶和相關資源。 若要使用 Azure CLI 或 Azure Powershell 刪除資源群組：
+如果不再需要，請刪除資源群組，這會刪除 Azure Cosmos 帳戶和相關資源。 若要使用 Azure CLI 或 Azure PowerShell 刪除資源群組：
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 

@@ -7,20 +7,20 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: ef3813840b1ecb3ad091a5b420ff8cfff9f6059a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9f38ba439a5f2facbc1c80493b802b5205a54691
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800204"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323581"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mysql-server"></a>快速入門：使用 Resource Manager 範本來建立適用於 MySQL 的 Azure 資料庫伺服器
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入門：使用 ARM 範本來建立適用於 MySQL 伺服器的 Azure 資料庫
 
 適用於 MySQL 的 Azure 資料庫是一個受控服務，您可用來在雲端執行、管理及調整高可用性 MySQL 資料庫。 在本快速入門中，您會使用 ARM 範本來建立具有虛擬網路整合的適用於 MySQL 的 Azure 資料庫伺服器。 您可以在 Azure 入口網站、Azure CLI 或 Azure PowerShell 中建立伺服器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -44,7 +44,7 @@ ms.locfileid: "83800204"
 
 ### <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)。
 
 :::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 

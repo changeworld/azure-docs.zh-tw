@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652688"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560529"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -44,7 +44,7 @@ ms.locfileid: "83652688"
 > * 使用 Azure Functions 部署無伺服器程式碼
 > * 在 Event Grid 中建立 Blob 儲存體事件訂閱
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -75,14 +75,19 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. 針對 Azure Functions 所需新儲存體帳戶的名稱來設定變數。
+2. 設定一個變數，用以保存您要建立的資源位置。 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. 針對 Azure Functions 所需新儲存體帳戶的名稱來設定變數。
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. 建立 Azure 函式的儲存體帳戶。
+4. 建立 Azure 函式的儲存體帳戶。
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -211,6 +213,7 @@ az functionapp deployment source config --name $functionapp \
     | **訂用帳戶** | 您的 Azure 訂用帳戶 | 預設會選取您目前的 Azure 訂用帳戶。 |
     | **資源群組** | myResourceGroup | 選取 [使用現有]，並選擇您在本教學課程中一直使用的資源群組。 |
     | **Resource** | 您的 Blob 儲存體帳戶 | 選擇您建立的 Blob 儲存體帳戶。 |
+    | **系統主題名稱** | imagestoragesystopic | 指定系統主題的名稱。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。 |    
     | **事件類型** | 已建立 Blob | 取消勾選 [已建立 Blob] 以外的所有類型。 只有 `Microsoft.Storage.BlobCreated` 的事件類型會傳遞至函式。 |
     | **端點類型** | 自動產生 | 預先定義為 **Azure 函式**。 |
     | **端點** | 自動產生 | 函數的名稱。 在此案例中，此名稱為**縮圖**。 |

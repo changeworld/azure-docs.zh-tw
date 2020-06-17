@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Active Directory 驗證 Azure Batch 服務
-description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 瞭解如何以兩種方式的其中一種進行驗證。
-ms.topic: article
+description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種驗證方式。
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608467"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757580"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
-Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗證。 Azure AD 是 Microsoft 的多租用戶雲端型目錄和身分識別管理服務。 Azure 本身會使用 Azure AD 來驗證其客戶、服務管理員和組織的使用者。
+Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行驗證。 Azure AD 是 Microsoft 的多租用戶雲端型目錄和身分識別管理服務。 Azure 本身會使用 Azure AD 來驗證其客戶、服務管理員和組織的使用者。
 
 搭配 Azure Batch 使用 Azure AD 驗證時，您可以使用下列其中一種方式進行驗證：
 
@@ -53,11 +53,11 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 
 ## <a name="register-your-application-with-a-tenant"></a>向租用戶註冊您的應用程式
 
-使用 Azure AD 進行驗證的第一個步驟是在 Azure AD 租用戶中註冊您的應用程式。 註冊您的應用程式，可讓您從程式碼中呼叫 Azure [Active Directory Authentication Library][aad_adal] (ADAL)。 ADAL 提供 API，從您的應用程式使用 Azure AD 進行驗證。 不論您是否計劃使用整合式驗證或服務主體，都需要註冊您的應用程式。
+使用 Azure AD 進行驗證的第一個步驟是在 Azure AD 租用戶中註冊您的應用程式。 註冊您的應用程式，可讓您從程式碼中呼叫 [Azure Active Directory Authentication Library][aad_adal] (ADAL)。 ADAL 提供 API，從您的應用程式使用 Azure AD 進行驗證。 不論您是否計劃使用整合式驗證或服務主體，都需要註冊您的應用程式。
 
-當您註冊應用程式時，會向 Azure AD 提供應用程式的相關資訊。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的應用程式識別碼 (也稱為「用戶端識別碼」**)。 若要深入了解應用程式識別碼，請參閱[Azure Active Directory 中的應用程式物件和服務主體物件之間的關聯性討論](../active-directory/develop/app-objects-and-service-principals.md)。
+當您註冊應用程式時，會向 Azure AD 提供應用程式的相關資訊。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的應用程式識別碼 (也稱為「用戶端識別碼」)。 若要深入了解應用程式識別碼，請參閱[Azure Active Directory 中的應用程式物件和服務主體物件之間的關聯性討論](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要註冊 Batch 應用程式，遵循[整合應用程式與 Azure Active Directory][aad_integrate] 之[新增應用程式](../active-directory/develop/quickstart-register-app.md)一節中的步驟。 如果您將應用程式註冊為原生應用程式，就能為**重新導向 URI** 指定任何有效的 URI。 它不需要是實際的端點。
+若要註冊 Batch 應用程式，請遵循[整合應用程式與 Azure Active Directory][aad_integrate] 中[新增應用程式](../active-directory/develop/quickstart-register-app.md)一節的步驟。 如果您將應用程式註冊為原生應用程式，就能為**重新導向 URI** 指定任何有效的 URI。 它不需要是實際的端點。
 
 註冊應用程式之後，您將會看到應用程式識別碼：
 
@@ -70,7 +70,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 租用戶識別碼會識別可為您的應用程式提供驗證服務的 Azure AD 租用戶。 若要取得租用戶識別碼，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，選取您的 Active Directory。
-1. 選取 [屬性]  。
+1. 選取 [屬性] 。
 1. 複製針對**目錄識別碼**提供的 GUID 值。 此值也稱為租用戶識別碼。
 
 ![複製目錄識別碼](./media/batch-aad-auth/aad-directory-id.png)
@@ -81,20 +81,20 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 
 一旦註冊您的應用程式之後，請在 Azure 入口網站中遵循下列步驟，以授與它存取 Batch 服務的權限：
 
-1. 在 Azure 入口網站的左側導覽窗格中，選擇 [所有服務]****。 選取 [**應用程式註冊**]。
+1. 在 Azure 入口網站的左側導覽窗格中，選擇 [所有服務]。 選取 [應用程式註冊]。
 1. 在應用程式註冊清單中搜尋您應用程式的名稱︰
 
     ![搜尋您的應用程式名稱](./media/batch-aad-auth/search-app-registration.png)
 
-1. 選取應用程式，然後選取 [ **API 許可權**]。
-1. 在 [ **API 許可權**] 區段中，選取 [**新增許可權**]。
-1. 在 [選取 API]**** 中，搜尋 Batch API。 搜尋這些字串，直到您找到 API 為止：
+1. 選取應用程式，然後選取 [API 權限]。
+1. 在 [API 權限] 區段中，選取 [新增權限]。
+1. 在 [選取 API] 中，搜尋 Batch API。 搜尋這些字串，直到您找到 API 為止：
     1. **Microsoft Azure Batch**
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** 是 Batch API 的識別碼。
-1. 一旦您找到 Batch API，請選取它，然後選取 [**選取**]。
-1. 在 [**選取許可權**] 中，選取 [**存取 Azure Batch 服務**] 旁的核取方塊，然後選取 [**新增許可權**]。
+1. 找到 Batch API 之後，選取 API，然後選取 [儲存]。
+1. 在 [選取權限] 中，選取 [存取 Azure Batch 服務] 旁的核取方塊，然後選取 [新增權限]。
 
-[ **API 許可權**] 區段現在會顯示您的 Azure AD 應用程式可同時存取 Microsoft Graph 和 BATCH 服務 API。 當您第一次向 Azure AD 註冊應用程式時，系統會將許可權授與 Microsoft Graph。
+[API 權限] 區段現在顯示您的 Azure AD 應用程式具有 Microsoft Graph 和 Batch 服務 API 的存取權。 當您第一次向 Azure AD 註冊應用程式時，系統會自動將權限授與 Microsoft Graph。
 
 ![授與 API 權限](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -102,33 +102,33 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 
 若要驗證自動執行的應用程式，您可以使用服務主體。 註冊您的應用程式之後，請在 Azure 入口網站中遵循下列步驟來設定服務主體：
 
-1. 要求應用程式的密碼。
-1. 將角色型存取控制（RBAC）指派給您的應用程式。
+1. 要求應用程式的祕密。
+1. 將角色型存取控制 (RBAC) 指派給應用程式。
 
-### <a name="request-a-secret-for-your-application"></a>要求應用程式的密碼
+### <a name="request-a-secret-for-your-application"></a>要求應用程式的祕密
 
-當您的應用程式使用服務主體進行驗證時，它會將應用程式識別碼和密碼傳送至 Azure AD。 您必須建立並複製祕密金鑰，以便從程式碼中使用。
+當應用程式使用服務主體進行驗證時，該應用程式會將應用程式識別碼和祕密傳送至 Azure AD。 您必須建立並複製祕密金鑰，以便從程式碼中使用。
 
 在 Azure 入口網站中遵循下列步驟：
 
-1. 在 Azure 入口網站的左側導覽窗格中，選擇 [所有服務]****。 選取 [**應用程式註冊**]。
-1. 從應用程式註冊清單中選取您的應用程式。
-1. 選取應用程式，然後選取 [**憑證 & 密碼**]。 在 [**用戶端密碼**] 區段中，選取 [**新增用戶端密碼**]。
-1. 若要建立密碼，請輸入密碼的描述。 然後選取 [一年]、[兩年] 或 [沒有到期日] 的密碼過期。
-1. 選取 [**新增**] 以建立並顯示密碼。 將 [秘密] 值複製到安全的位置，因為您在離開頁面之後將無法再存取它。
+1. 在 Azure 入口網站的左側導覽窗格中，選擇 [所有服務]。 選取 [應用程式註冊]。
+1. 從應用程式註冊清單中，選取您的應用程式。
+1. 選取應用程式，然後選取 [憑證和祕密]。 在 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。
+1. 若要建立祕密，請輸入祕密的描述。 然後，選取祕密期限為一年、兩年或不到期。
+1. 選取 [新增] 以建立和顯示秘密。 將祕密值複製到安全的地方，因為離開此頁面後就無法再存取秘密值。
 
     ![建立祕密金鑰](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-rbac-to-your-application"></a>將 RBAC 指派給您的應用程式
+### <a name="assign-rbac-to-your-application"></a>將 RBAC 指派給應用程式
 
-若要向服務主體進行驗證，您必須將 RBAC 指派給您的應用程式。 請遵循下列步驟：
+若要使用服務主體進行驗證，您需要將 RBAC 指派給應用程式。 請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至應用程式所使用的 Batch 帳戶。
-1. 在 Batch 帳戶的 [**設定**] 區段中，選取 [**存取控制（IAM）**]。
-1. 選取 [角色指派]**** 索引標籤。
-1. 選取 [**新增角色指派**]。
-1. 從 [角色]**** 下拉式清單中，選擇應用程式的 [參與者]** 或 [讀者]** 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
-1. 在 [選取]**** 欄位中，輸入應用程式的名稱。 從清單中選取您的應用程式，然後選取 [**儲存**]。
+1. 在 Batch 帳戶的 [設定] 區段中，選取 [存取控制 (IAM)]。
+1. 選取 [角色指派] 索引標籤。
+1. 選取 [新增角色指派]。
+1. 從 [角色] 下拉式清單中，選擇應用程式的 [參與者] 或 [讀者] 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
+1. 在 [選取] 欄位中，輸入應用程式的名稱。 從清單中選取您的應用程式，然後選取 [儲存]。
 
 您的應用程式現在應該會以您指派的 RBAC 角色，出現在您的存取控制設定中。
 
@@ -136,26 +136,26 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 
 ### <a name="assign-a-custom-role"></a>指派自訂角色
 
-自訂角色會授與使用者更細微的許可權，以提交作業、工作等等。 這可防止使用者執行會影響成本的作業，例如建立集區或修改節點。
+自訂角色將細微權限授與使用者，以提交作業、工作等等。 這樣可以防止使用者執行的作業影響成本，例如建立集區或修改節點。
 
-您可以使用自訂角色，將許可權授與下列 RBAC 作業的 Azure AD 使用者、群組或服務主體：
+您可以使用自訂角色，將下列 RBAC 作業的權限授與 Azure AD 使用者、群組或服務主體：
 
 - Microsoft.Batch/batchAccounts/pools/write
 - Microsoft.Batch/batchAccounts/pools/delete
 - Microsoft.Batch/batchAccounts/pools/read
-- BatchAccounts/jobSchedules/write
-- BatchAccounts/jobSchedules/delete
-- BatchAccounts/jobSchedules/read
-- Microsoft。 Batch/batchAccounts/作業/寫入
-- Microsoft Batch/batchAccounts/job/delete
-- Microsoft。 Batch/batchAccounts/作業/讀取
+- Microsoft.Batch/batchAccounts/jobSchedules/write
+- Microsoft.Batch/batchAccounts/jobSchedules/delete
+- Microsoft.Batch/batchAccounts/jobSchedules/read
+- Microsoft.Batch/batchAccounts/jobs/write
+- Microsoft.Batch/batchAccounts/jobs/delete
+- Microsoft.Batch/batchAccounts/jobs/read
 - Microsoft.Batch/batchAccounts/certificates/write
 - Microsoft.Batch/batchAccounts/certificates/delete
 - Microsoft.Batch/batchAccounts/certificates/read
-- BatchAccounts/read （適用于任何讀取作業）
-- BatchAccounts/listKeys/action （適用于任何作業）
+- Microsoft.Batch/batchAccounts/read (適用於任何讀取作業)
+- Microsoft.Batch/batchAccounts/listKeys/action (適用於任何作業)
 
-自訂角色適用于 Azure AD 驗證的使用者，而不是 Batch 帳號憑證（共用金鑰）。 請注意，Batch 帳號憑證會授與 Batch 帳戶的完整許可權。 另請注意，使用 autopool 的作業需要集區層級許可權。
+自訂角色適用於由 Azure AD 驗證的使用者，不適用於 Batch 帳戶認證 (共用金鑰)。 請注意，Batch 帳戶認證會將完整權限授與 Batch 帳戶。 另請注意，使用 autopool 的作業需要集區層級權限。
 
 以下是自訂角色定義的範例：
 
@@ -193,14 +193,14 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 }
 ```
 
-如需有關建立自訂角色的一般資訊，請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
+如需建立自訂角色的更完整資訊，請參閱[適用於 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>取得 Azure Active Directory 的租用戶識別碼
 
 租用戶識別碼會識別可為您的應用程式提供驗證服務的 Azure AD 租用戶。 若要取得租用戶識別碼，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，選取您的 Active Directory。
-1. 選取 [屬性]  。
+1. 選取 [屬性] 。
 1. 複製針對**目錄識別碼**提供的 GUID 值。 此值也稱為租用戶識別碼。
 
 ![複製目錄識別碼](./media/batch-aad-auth/aad-directory-id.png)
@@ -213,11 +213,11 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 > Azure AD 驗證權杖會在一小時後過期。 使用長時間執行 **BatchClient** 物件時，我們建議您在每個要求從 ADAL 擷取權杖，以確保您一律擁有有效的權杖。
 >
 >
-> 若要在 .NET 中達到此目的，撰寫可從 Azure AD 中擷取權杖的方法，並傳遞該方法至 **BatchTokenCredentials** 物件做為委派。 每個要求都會對 Batch 服務呼叫委派方法，以確保已提供有效的權杖。 根據預設，ADAL 會快取權杖，因此只在必要時才會從 Azure AD 擷取新的權杖。 如需關於 Azure AD 中的權杖資訊，請參閱 [Azure AD 的驗證案例][aad_auth_scenarios]。
+> 若要在 .NET 中達到此目的，撰寫可從 Azure AD 中擷取權杖的方法，並傳遞該方法至 **BatchTokenCredentials** 物件做為委派。 每個要求都會對 Batch 服務呼叫委派方法，以確保已提供有效的權杖。 根據預設，ADAL 會快取權杖，因此只在必要時才會從 Azure AD 擷取新的權杖。 關於 Azure AD 中的權杖，如需詳細資訊，請參閱 [Azure AD 的驗證案例][aad_auth_scenarios]。
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>程式碼範例︰搭配 Batch .NET 使用 Azure AD 整合式驗證
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>程式碼範例：搭配 Batch .NET 使用 Azure AD 整合式驗證
 
 若要從 Batch .NET 使用整合式驗證進行驗證，請參考 [Azure Batch .NET (英文)](https://www.nuget.org/packages/Microsoft.Azure.Batch/) 封裝和 [ADAL (英文)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 封裝。
 
@@ -290,7 +290,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>程式碼範例︰搭配 Batch .NET 使用 Azure AD 服務主體
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>程式碼範例：搭配 Batch .NET 使用 Azure AD 服務主體
 
 若要從 Batch .NET 使用服務主體進行驗證，請參考 [Azure Batch .NET (英文)](https://www.nuget.org/packages/Azure.Batch/) 封裝和 [ADAL (英文)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 封裝。
 
@@ -358,7 +358,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>程式碼範例︰搭配 Batch Python 使用 Azure AD 服務主體
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>程式碼範例：搭配 Batch Python 使用 Azure AD 服務主體
 
 若要從 Batch Python 向服務主體進行驗證，請安裝並參考 [azure-batch](https://pypi.org/project/azure-batch/) 和 [azure-common](https://pypi.org/project/azure-common/) 模組。
 
@@ -413,7 +413,7 @@ credentials = ServicePrincipalCredentials(
 ```python
     batch_client = BatchServiceClient(
     credentials,
-    base_url=BATCH_ACCOUNT_URL
+    batch_url=BATCH_ACCOUNT_URL
 )
 ```
 

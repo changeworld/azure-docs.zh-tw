@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310447"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457043"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由傳送至 Web 端點
 
@@ -92,12 +92,9 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
    ![選取 Web Hook](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. 在 [建立事件訂用帳戶] 頁面上，執行下列步驟： 
     1. 輸入事件訂閱的 [名稱]。
-    2. 輸入**系統主題**的**名稱**。 
+    2. 輸入**系統主題**的**名稱**。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。
 
        ![輸入事件訂閱與系統主題的名稱](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > 稍早，當您為 Azure 來源所引發的事件建立訂閱時，事件方格服務已自動建立了具有隨機產生之名稱的系統主題。 現在，您可以使用此文字方塊，為系統主題指定名稱。 您可以使用此系統主題資源，來探索計量和診斷記錄。
     2. 選取 [WebHook] 作為 [端點類型]。 
 
        ![選取 WebHook 端點類型](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

@@ -8,27 +8,27 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bd2440ecf04bb4481b5497317e0acd2641710ccf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133318"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836867"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
 
 本文說明開發串流分析查詢的常見問題，以及對其進行疑難排解的方式。
 
-本文說明開發 Azure 串流分析查詢、如何針對查詢問題進行疑難排解，以及如何修正問題的常見問題。 許多疑難排解步驟都需要針對您的串流分析作業啟用資源記錄。 如果您沒有啟用資源記錄，請參閱[使用資源記錄針對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
+本文說明開發 Azure 串流分析查詢時的常見問題、如何對查詢問題進行疑難排解，以及如何修正問題。 需要對串流分析作業啟用資源記錄，許多疑難排解步驟才能執行。 如果您未啟用資源記錄，請參閱[使用資源記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="query-is-not-producing-expected-output"></a>查詢未產生預期的輸出
 
 1.  在本機執行測試以檢查錯誤：
 
-    - 在 Azure 入口網站的 [**查詢**] 索引標籤上，選取 [**測試**]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
-    - 您也可以使用適用于 Visual Studio 或[Visual Studio Code](visual-studio-code-local-run-live-input.md)的 Azure 串流分析工具，在[本機測試您的查詢](stream-analytics-live-data-local-testing.md)。 
+    - 在 Azure 入口網站的 [查詢] 索引標籤上，選取 [測試]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
+    - 您也可以使用適用於 Visual Studio 的 Azure 串流分析工具或 [Visual Studio Code](visual-studio-code-local-run-live-input.md)，[在本機測試查詢](stream-analytics-live-data-local-testing.md)。 
 
-2.  在適用于 Visual Studio 的 Azure 串流分析工具中，[使用工作圖表在本機逐步執行 Debug 查詢](debug-locally-using-job-diagram.md)。 作業圖表會顯示資料如何透過多個查詢步驟和最後到輸出接收，從輸入來源（事件中樞、IoT 中樞等）流動。 每個查詢步驟都會使用 WITH 語句對應到腳本中定義的暫存結果集。 您可以在每個中繼結果集中查看資料和計量，以尋找問題的來源。
+2.  在適用於 Visual Studio 的 Azure 串流分析工具中，[使用作業圖表在本機逐步偵錯查詢](debug-locally-using-job-diagram.md)。 作業圖表顯示資料如何從輸入來源 (事件中樞、IoT 中樞等)，經過多個查詢步驟，最後流向輸出接收。 每個查詢步驟都使用 WITH 陳述式，對應到指令碼中定義的暫存結果集。 您可以在每個中繼結果集檢視資料和計量，以找出問題的來源。
 
     ![作業圖表預覽結果](./media/debug-locally-using-job-diagram/preview-result.png)
 
@@ -38,14 +38,14 @@ ms.locfileid: "82133318"
     - 查詢中的 [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 子句篩選出所有事件，造成無法產生任何輸出作業。
     - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 函式失敗，導致作業失敗。 若要避免 cast 類型的失敗，請改為使用 [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics)。
     - 當您使用視窗函式時，請等候完整的視窗運作時間，以查看查詢的輸出。
-    - 事件的時間戳記會在工作開始時間之前，並捨棄事件。
-    - [**聯結**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)條件不相符。 如果沒有相符專案，則會有零個輸出。
+    - 事件的時間戳記早於作業開始時間，因此會捨棄事件。
+    - [**JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 條件不相符。 如果沒有相符項目，則不會有輸出。
 
-5.  確定事件排序原則已如預期設定。 移至 [**設定**]，然後選取 [[**事件排序**](stream-analytics-out-of-order-and-late-events.md)]。 如果您使用 [測試]**** 按鈕測試查詢，則不會** 套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
+5.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取 [事件排序][](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
 
-6. 使用活動和資源記錄進行偵錯工具：
-    - 使用[活動記錄](../azure-resource-manager/resource-group-audit.md)，並進行篩選以識別錯誤和進行偵錯工具。
-    - 使用[作業資源記錄](stream-analytics-job-diagnostic-logs.md)來識別和偵測錯誤。
+6. 使用活動和資源記錄來偵錯：
+    - 使用[活動記錄](../azure-resource-manager/resource-group-audit.md)，篩選找出錯誤並進行偵錯。
+    - 使用[作業資源記錄](stream-analytics-job-diagnostic-logs.md)找出錯誤並進行偵錯。
 
 ## <a name="resource-utilization-is-high"></a>資源使用率偏高
 
@@ -53,7 +53,7 @@ ms.locfileid: "82133318"
 
 ## <a name="debug-queries-progressively"></a>以漸進方式對查詢偵錯
 
-在即時的資料處理中，了解資料在查詢進行中所呈現的樣子將會相當有幫助。 您可以使用 Visual Studio 中的作業圖表來查看這項功能。 如果您沒有 Visual Studio，您可以採取額外的步驟來輸出中繼資料。
+在即時的資料處理中，了解資料在查詢進行中所呈現的樣子將會相當有幫助。 您可以在 Visual Studio 中使用作業圖表來看到資料。 如果您沒有 Visual Studio，您可以採取額外的步驟來輸出中間資料。
 
 由於 Azure 串流分析作業的輸入或步驟可以讀取多次，因此您可以寫入額外的 SELECT INTO 陳述式。 這種方式會將中繼資料輸出到儲存體，讓您可以檢查資料的正確性，就像您對程式進行偵錯時*監看變數*的動作一樣。
 
@@ -61,7 +61,7 @@ ms.locfileid: "82133318"
 
 ![範例串流分析 SELECT INTO 查詢](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]**** 圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個**聯結**步驟會造成所有資料遭到捨棄。
+請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個**聯結**步驟會造成所有資料遭到捨棄。
 
 ![串流分析監視圖格](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 
@@ -103,12 +103,12 @@ ms.locfileid: "82133318"
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

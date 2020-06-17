@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge 中設定 IoT Edge 模組
 description: 在此 Azure SQL Edge 教學課程三部曲的第二部分中，若要預測鐵礦中的雜質含量，請設定 IoT Edge 模組和連線。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593496"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235028"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>設定 IoT Edge 模組和連線
 
@@ -25,7 +25,7 @@ ms.locfileid: "83593496"
 
 ## <a name="create-azure-stream-analytics-module"></a>建立 Azure 串流分析模組
 
-建立將在本教學課程中使用的 Azure 串流分析模組。 若要深入了解如何搭配使用串流作業與 SQL Edge，請參閱[使用串流作業搭配 SQL Database Edge](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
+建立將在本教學課程中使用的 Azure 串流分析模組。 若要深入了解如何搭配使用串流作業與 SQL Edge，請參閱[使用串流作業搭配 SQL Edge](stream-analytics.md)。
 
 建立 Azure 串流分析作業，並將裝載環境設定為 Edge 後，請設定教學課程的輸入和輸出。
 
@@ -101,7 +101,7 @@ ms.locfileid: "83593496"
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>部署 Azure SQL Edge 模組
 
-1. 遵循[部署 Azure SQL Database Edge 預覽](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge)中列出的步驟來部署 Azure SQL Edge 模組。
+1. 遵循[部署 Azure SQL Edge (預覽)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal) 中列出的步驟來部署 Azure SQL Edge 模組。
 
 2. 在**設定模組**的**指定路由**頁面上，指定模組要與 IoT Edge 中樞通訊的路由，如下所示。 
 

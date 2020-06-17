@@ -3,13 +3,14 @@ title: 在 Azure 中建立可回應 HTTP 要求的函式
 description: 了解如何從命令列建立函式，然後將本機專案發佈至 Azure Functions 中的無伺服器裝載。
 ms.date: 03/30/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8b720a34268a1a43b65ef8a7b8afbf61b753f79a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 890dc2f7560faa6df302212aebb2fbe006894d3f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195038"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559884"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -53,7 +54,7 @@ ms.locfileid: "84195038"
 在 Azure Functions 中，函式專案是包含一或多個個別函式的容器，而每個函式分別會回應特定的觸發程序。 專案中的所有函式會共用相同的本機和裝載設定。 在本節中，您將建立包含單一函式的函式專案。
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-執行 `func init` 命令，以使用指定的執行階段在名為 LocalFunctionProj  的資料夾中建立函式專案：  
+執行 `func init` 命令，以使用指定的執行階段在名為 LocalFunctionProj 的資料夾中建立函式專案：  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 ```
@@ -143,7 +144,7 @@ cd fabrikam-functions
 
 ::: zone pivot="programming-language-java"
 #### <a name="functionjava"></a>Function.java
-Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資料，而該變數是一個以 [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) 註釋裝飾的 [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)，可定義觸發程序行為。 
+Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料，而該變數是一個以 [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) 註釋裝飾的 [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)，可定義觸發程序行為。 
 
 :::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
@@ -159,7 +160,7 @@ Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資�
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
-原型也會產生函式的單元測試。 變更函式以新增繫結或將新函式新增至專案時，也需要修改 FunctionTest.java  檔案中的測試。
+原型也會產生函式的單元測試。 變更函式以新增繫結或將新函式新增至專案時，也需要修改 FunctionTest.java 檔案中的測試。
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init\_\_.py
@@ -168,7 +169,7 @@ Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資�
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 `req` 是 [azure.functions.HttpRequest 類別](/python/api/azure-functions/azure.functions.httprequest)的執行個體。 傳回物件 (在 function.json  中定義為 `$return`)，是 [azure.functions.HttpResponse 類別](/python/api/azure-functions/azure.functions.httpresponse)的執行個體。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)。
+針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 `req` 是 [azure.functions.HttpRequest 類別](/python/api/azure-functions/azure.functions.httprequest)的執行個體。 傳回物件 (在 function.json 中定義為 `$return`)，是 [azure.functions.HttpResponse 類別](/python/api/azure-functions/azure.functions.httpresponse)的執行個體。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)。
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -363,10 +364,10 @@ mvn azure-functions:deploy
 
 這會在 Azure 中建立下列資源：
 
-+ 資源群組。 命名為 java-functions-group  。
++ 資源群組。 命名為 java-functions-group。
 + 儲存體帳戶。 Functions 所需。 此名稱會根據儲存體帳戶名稱需求隨機產生。
-+ 主控方案。 在 westus  中以無伺服器方式主控您的函式應用程式。 名稱為 java-functions-app-service-plan  。
-+ 函式應用程式。 函式應用程式是您函式的部署和執行單位。 系統會根據您的 artifactId  隨機產生名稱，此名稱會附加隨機產生的號碼。 
++ 主控方案。 在 westus 中以無伺服器方式主控您的函式應用程式。 名稱為 java-functions-app-service-plan。
++ 函式應用程式。 函式應用程式是您函式的部署和執行單位。 系統會根據您的 artifactId 隨機產生名稱，此名稱會附加隨機產生的號碼。 
 
 部署會封裝專案檔案，並使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 將其部署至新的函式應用程式， 且程式碼會從 Azure 中的部署套件執行。
 ::: zone-end
@@ -408,6 +409,9 @@ az group delete --name AzureFunctionsQuickstart-rg
 ```azurecli
 az group delete --name java-functions-group
 ```
+::: zone-end
+::: zone pivot="programming-language-python"
+若要退出虛擬環境，請執行 `deactivate`。
 ::: zone-end
 
 ## <a name="next-steps"></a>後續步驟

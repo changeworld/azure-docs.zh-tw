@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 安裝適用于 Linux VM 容錯回復的主要目標伺服器
+title: 安裝以 Azure Site Recovery 進行 Linux VM 容錯回復所需的主要目標伺服器
 description: 了解如何使用 Azure Site Recovery 在從 VMware VM 至 Azure 的災害復原期間，將 Linux 主要目標伺服器設定為容錯回復至內部部署網站。
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954368"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829778"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安裝 Linux 主要目標伺服器以便進行容錯回復
 您可以在將虛擬機器容錯移轉至 Azure 之後，將虛擬機器容錯回復至內部部署網站。 若要進行容錯回復，您需要在從 Azure 到內部部署網站的過程中重新保護虛擬機器。 針對此程序，您需要內部部署的主要目標伺服器以接收流量。 
@@ -27,7 +27,7 @@ ms.locfileid: "73954368"
 ## <a name="overview"></a>概觀
 本文提供如何安裝 Linux 主要目標的指示。
 
-在本文末尾或 [Azure Recovery Services Forum (Azure 復原服務論壇)](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) 中張貼意見或問題。
+請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中張貼留言或問題。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -44,7 +44,7 @@ ms.locfileid: "73954368"
 - **RAM**：6 GB 或更多
 - **OS 磁碟大小**：100 GB 或更多 (以安裝 OS)
 - **用於保留磁碟機的額外磁碟大小**：1 TB
-- **CPU 核心**：4 核心或更多
+- **CPU 核心**：4 個核心或更多
 
 支援下列 Ubuntu 核心。
 
@@ -62,75 +62,75 @@ ms.locfileid: "73954368"
 
 請依循下列步驟以安裝 Ubuntu 16.04.2 64 位元作業系統。
 
-1.   移至[下載連結](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，選擇最接近的鏡像，並下載 Ubuntu 16.04.2 極簡版最少64位 ISO。
+1.   前往[下載連結](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso) ，選擇最接近的鏡像，然後下載 Ubuntu 16.04.2 極簡版 64 位元 ISO。
 將 Ubuntu 16.04.2 極簡版 64 位元 ISO 放在 DVD 光碟機中，並啟動系統。
 
-1.  選取 [English]**** \(英文\) 作為慣用語言，然後選取 **Enter**。
+1.  選取 [English] \(英文\) 作為慣用語言，然後選取 **Enter**。
     
     ![選取語言](./media/vmware-azure-install-linux-master-target/image1.png)
-1. 選取 [Install Ubuntu Server]**** \(安裝 Ubuntu 伺服器\)，然後選取 **Enter**。
+1. 選取 [Install Ubuntu Server] \(安裝 Ubuntu 伺服器\)，然後選取 **Enter**。
 
     ![選取安裝 Ubuntu Server](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  選取 [English]**** \(英文\) 作為慣用語言，然後選取 **Enter**。
+1.  選取 [English] \(英文\) 作為慣用語言，然後選取 **Enter**。
 
     ![選取 English 作為慣用語言](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. 從 [Time Zone]**** \(時區\) 選項清單中選取適當的選項，然後選取 **Enter**。
+1. 從 [Time Zone] \(時區\) 選項清單中選取適當的選項，然後選取 **Enter**。
 
     ![選取正確的時區](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. 選取 [No]**** \(否\) (預設選項)，然後選取 **Enter**。
+1. 選取 [No] \(否\) (預設選項)，然後選取 **Enter**。
 
      ![設定鍵盤](./media/vmware-azure-install-linux-master-target/image5.png)
-1. 選取 [**英文（美國）** ] 做為鍵盤的來源國家/地區，然後選取**Enter 鍵**。
+1. 選取 [中文 (繁體)] 作為鍵盤的出產國家/地區，然後選取 **Enter**。
 
-1. 選取 [English (US)]**** \(英文 (美國)\) 作為鍵盤配置，然後選取 **Enter**。
+1. 選取 [English (US)] \(英文 (美國)\) 作為鍵盤配置，然後選取 **Enter**。
 
-1. 在 [Hostname]**** \(主機名稱\) 方塊中輸入伺服器的主機名稱，然後選取 [Continue]**** \(繼續\)。
+1. 在 [Hostname] \(主機名稱\) 方塊中輸入伺服器的主機名稱，然後選取 [Continue] \(繼續\)。
 
-1. 若要建立使用者帳戶，請輸入使用者名稱，然後選取 [Continue]**** \(繼續\)。
+1. 若要建立使用者帳戶，請輸入使用者名稱，然後選取 [Continue] \(繼續\)。
 
       ![建立使用者帳戶](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. 輸入新使用者帳戶的密碼，然後選取 [Continue]**** \(繼續\)。
+1. 輸入新使用者帳戶的密碼，然後選取 [Continue] \(繼續\)。
 
-1.  確認新使用者的密碼，然後選取 [Continue]**** \(繼續\)。
+1.  確認新使用者的密碼，然後選取 [Continue] \(繼續\)。
 
     ![確認密碼](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  在下一個用來加密主目錄的選取項目中，選取 [No]**** \(否\) (預設選項)，然後選取 **Enter**。
+1.  在下一個用來加密主目錄的選取項目中，選取 [No] \(否\) (預設選項)，然後選取 **Enter**。
 
-1. 如果顯示的是正確時區，選取 [Yes]**** \(是\) (預設選項)，然後選取 **Enter**。 若要重新設定您的時區，選取 [No]\(否\)****。
+1. 如果顯示的是正確時區，選取 [Yes] \(是\) (預設選項)，然後選取 **Enter**。 若要重新設定您的時區，選取 [No]\(否\)。
 
-1. 從磁碟分割方法選項中，選取 [Guided - Use entire disk]**** \(引導式 - 使用整個磁碟\)，然後選取 **Enter**。
+1. 從磁碟分割方法選項中，選取 [Guided - Use entire disk] \(引導式 - 使用整個磁碟\)，然後選取 **Enter**。
 
      ![選取資料分割方法選項](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  從 [Select disk to partition]**** \(選取要分割的磁碟\) 選項中選擇適當的磁碟，然後選取 **Enter**。
+1.  從 [Select disk to partition] \(選取要分割的磁碟\) 選項中選擇適當的磁碟，然後選取 **Enter**。
 
     ![選取磁碟](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  選取 [Yes]**** \(是\) 以將變更寫入至磁碟，然後選取 **Enter**。
+1.  選取 [Yes] \(是\) 以將變更寫入至磁碟，然後選取 **Enter**。
 
     ![選取預設選項](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  在設定 Proxy 選取項目中，選取預設選項，選取 [Continue]**** \(繼續\)，然後選取 **Enter**。
+1.  在設定 Proxy 選取項目中，選取預設選項，選取 [Continue] \(繼續\)，然後選取 **Enter**。
      
      ![選取如何管理升級](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  在管理系統上升級的選取項目中，選取 [No automatic updates]**** \(沒有自動更新\) 選項，然後選取 **Enter**。
+1.  在管理系統上升級的選取項目中，選取 [No automatic updates] \(沒有自動更新\) 選項，然後選取 **Enter**。
 
      ![選取如何管理升級](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
-    > 由於 Azure Site Recovery 主要目標伺服器需要非常特定版本的 Ubuntu，因此您需要確認已停用虛擬機器核心升級。 如果啟用，任何一般升級都將導致主要目標伺服器故障。 請確定您選取 [No automatic updates]\(不自動更新\)**** 選項。
+    > 由於 Azure Site Recovery 主要目標伺服器需要非常特定版本的 Ubuntu，因此您需要確認已停用虛擬機器核心升級。 如果啟用，任何一般升級都將導致主要目標伺服器故障。 請確定您選取 [No automatic updates]\(不自動更新\) 選項。
 
-1.  選取預設選項。 如果您想要使用 openSSH 進行 SSH 連線，請選取 [OpenSSH server]\(OpenSSH 伺服器\)**** 選項，然後選取 [Continue]\(繼續\)****。
+1.  選取預設選項。 如果您想要使用 openSSH 進行 SSH 連線，請選取 [OpenSSH server]\(OpenSSH 伺服器\) 選項，然後選取 [Continue]\(繼續\)。
 
     ![選取軟體](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. 在安裝 GRUB 開機載入器的選取項目中，選取 [Yes]**** \(是\)，然後選取 **Enter**。
+1. 在安裝 GRUB 開機載入器的選取項目中，選取 [Yes] \(是\)，然後選取 **Enter**。
      
     ![GRUB 開機安裝程式](./media/vmware-azure-install-linux-master-target/image20.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "73954368"
      
     ![選取適當的裝置](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. 選取 [Continue]**** \(繼續\)，然後選取 **Enter** 以完成安裝。
+1. 選取 [Continue] \(繼續\)，然後選取 **Enter** 以完成安裝。
 
     ![完成安裝](./media/vmware-azure-install-linux-master-target/image22.png)
 
@@ -156,25 +156,25 @@ ms.locfileid: "73954368"
 
 1. 關閉虛擬機器。
 
-2. 以滑鼠右鍵按一下左窗格中的虛擬機器項目，然後選取 [Edit Settings]**** /(編輯設定/)。
+2. 以滑鼠右鍵按一下左窗格中的虛擬機器項目，然後選取 [Edit Settings] /(編輯設定/)。
 
-3. 選取 [選項]**** 索引標籤。
+3. 選取 [選項] 索引標籤。
 
-4. 在左窗格中選取 [ **Advanced** > **General**]，然後選取畫面右下方的 [設定**參數**] 按鈕。
+4. 在左窗格中，選取 [進階]  >  [一般]，然後選取畫面右下方的 [組態參數] 按鈕。
 
     ![開啟組態參數](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
-    [組態參數]**** 選項在機器執行時無法使用。 若要啟用此索引標籤，請關閉虛擬機器。
+    [組態參數] 選項在機器執行時無法使用。 若要啟用此索引標籤，請關閉虛擬機器。
 
-5. 查看含有 [disk.EnableUUID]**** 的資料列是否已經存在。
+5. 查看含有 [disk.EnableUUID] 的資料列是否已經存在。
 
-   - 如果該值存在，而且設定為 [False]****，請將該值變更為 [True]****。 (值不區分大小寫。)
+   - 如果該值存在，而且設定為 [False]，請將該值變更為 [True]。 (值不區分大小寫。)
 
-   - 如果該值存在，而且設定為 [True]****，請按一下 [取消]****。
+   - 如果該值存在，而且設定為 [True]，請按一下 [取消]。
 
-   - 如果該值不存在，請選取 [新增資料列]****。
+   - 如果該值不存在，請選取 [新增資料列]。
 
-   - 在名稱欄位中新增 **disk.EnableUUID**，然後將值設定為 [TRUE]****。
+   - 在名稱欄位中新增 **disk.EnableUUID**，然後將值設定為 [TRUE]。
 
      ![檢查 disk.EnableUUID 是否已存在](./media/vmware-azure-install-linux-master-target/image25.png)
 
@@ -195,7 +195,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 #### <a name="download-the-master-target-installation-packages"></a>下載主要目標安裝套件
 
-[下載最新的 Linux 主要目標安裝位](https://aka.ms/latestlinuxmobsvc)。
+[下載最新的 Linux 主要目標安裝位元](https://aka.ms/latestlinuxmobsvc)。
 
 若要使用 Linux 下載它，請輸入：
 
@@ -209,12 +209,12 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 1. 在處理序伺服器上，移至 **C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**。
 
-2. 從進程伺服器複製所需的安裝程式檔案，然後將它儲存為 latestlinuxmobsvc.tar.gz，並在您的主目錄中**gz** 。
+2. 從處理序伺服器複製必要的安裝程式檔案，並在主目錄中將其儲存為 **latestlinuxmobsvc.tar.gz**。
 
 
 ### <a name="apply-custom-configuration-changes"></a>套用自訂組態變更
 
-若要套用自訂設定變更，請使用下列步驟做為根使用者：
+若要套用自訂設定變更，請以 ROOT 使用者身分使用下列步驟︰
 
 1. 執行下列命令來解壓縮二進位檔。
 
@@ -244,7 +244,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
     ![多重路徑識別碼](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 將磁片磁碟機格式化，然後在新磁片磁碟機上建立檔案系統： **mkfs. ext4/Dev/mapper/\<保留磁片的多重路徑識別碼>**。
+3. 格式化磁碟機，然後在新的磁碟機上建立檔案系統：**mkfs.ext4 /dev/mapper/\<保留磁碟的多重路徑識別碼>** 。
     
     ![檔案系統](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     
     按 **Insert** 鍵來開始編輯檔案。 建立新的一行，並插入下列文字。 根據前一個命令中醒目提示的多重路徑識別碼，編輯磁碟多重路徑識別碼。
 
-    **/dev/mapper/\<保留磁片多重路徑識別碼>/mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<保留磁碟多重路徑識別碼>/mnt/retention ext4 rw 0 0**
 
     按 **Esc** 鍵，然後輸入 **:wq** (寫入和結束)，以關閉編輯器視窗。
 
@@ -272,7 +272,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 
 > [!NOTE]
-> 在安裝主要目標伺服器之前，請先檢查虛擬機器上的 **/etc/hosts**檔案是否包含將本機主機名稱對應到所有網路介面卡相關聯之 IP 位址的專案。
+> 在安裝主要目標伺服器之前，請確認虛擬機器上的 **/etc/hosts** 檔案包含會將本機主機名稱對應到所有網路介面卡相關 IP 位址的項目。
 
 1. 在組態伺服器上從 **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** 複製複雜密碼。 然後執行下列命令，將其儲存在同個本機目錄中的 **passphrase.txt**：
 
@@ -295,12 +295,12 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-等候指令碼完成。 如果主要目標注冊成功，主要目標會列在入口網站的 [ **Site Recovery 基礎結構**] 頁面上。
+等候指令碼完成。 如果主要目標註冊成功，主要目標就會列在入口網站的 [Site Recovery 基礎結構] 頁面上。
 
 
 #### <a name="install-the-master-target-by-using-interactive-installation"></a>使用互動式安裝來安裝主要目標
 
-1. 執行下列命令來安裝主要目標。 針對 [代理程式] 角色，選擇 [**主要目標**]。
+1. 執行下列命令來安裝主要目標。 選擇 [主要目標] 作為代理程式角色。
 
     ```
     ./install
@@ -326,7 +326,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-     等候指令碼完成。 如果主要目標註冊成功，主要目標會列在入口網站的 [Site Recovery 基礎結構]**** 頁面上。
+     等候指令碼完成。 如果主要目標註冊成功，主要目標會列在入口網站的 [Site Recovery 基礎結構] 頁面上。
 
 
 ### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>在主要目標伺服器上安裝 VMware 工具 / open-vm-tools
@@ -335,12 +335,12 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 ### <a name="upgrade-the-master-target-server"></a>升級主要目標伺服器
 
-執行安裝程式。 它會自動偵測主要目標上是否已安裝代理程式。 若要升級，請選取 [ **Y**]。 完成安裝之後，請使用下列命令來檢查所安裝的主要目標版本：
+執行安裝程式。 它會自動偵測主要目標上是否已安裝代理程式。 選取 [Y]\(是\) 進行升級。安裝完成之後，您可以使用下列命令來檢查所安裝的主要目標版本：
 
 `cat /usr/local/.vx_version`
 
 
-您將會看到 [Version]**** \(版本\) 欄位提供主要目標的版本號碼。
+您將會看到 [Version] \(版本\) 欄位提供主要目標的版本號碼。
 
 ## <a name="common-issues"></a>常見問題
 
@@ -354,7 +354,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 
 ## <a name="next-steps"></a>後續步驟
-完成主要目標的安裝和註冊之後，您可以看到主要目標出現在 [設定伺服器總覽] 底下的 [ **Site Recovery 基礎結構**] 的 [**主要目標**] 區段中。
+在主要目標完成安裝和註冊之後，您可以看到主要目標出現在 [Site Recovery 基礎結構] 中的 [主要目標] 區段上 (位於設定伺服器概觀下)。
 
-您現在可以繼續進行[重新保護](vmware-azure-reprotect.md)，然後再進行容錯回復。
+您現在可以繼續[重新保護](vmware-azure-reprotect.md)，接著進行容錯回復。
 

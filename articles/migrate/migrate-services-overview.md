@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服務。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: fe6386346282cf182397f6420c541d629ba0aab3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768392"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193584"
 ---
 # <a name="about-azure-migrate"></a>關於 Azure Migrate
 
@@ -23,7 +23,7 @@ Azure Migrate 提供下列功能：
 - **各種工具**：用於評量和遷移的各種工具。 工具包括 Azure Migrate：伺服器評量和 Azure Migrate：伺服器移轉。 Azure Migrate 可與其他 Azure 服務整合，也可與其他工具和獨立軟體廠商 (ISV) 供應項目整合。
 - **評量及移轉**：在 Azure Migrate 中樞，您可以評估和遷移：
     - **伺服器**：評估內部部署伺服器，並將其遷移至 Azure 虛擬機器。
-    - **資料庫**：評估內部部署資料庫，並將其遷移至 Azure SQL Database 或 Azure SQL Database 受控執行個體。
+    - **資料庫**：評估內部部署資料庫，並將其遷移至 Azure SQL Database 或 SQL 受控執行個體。
     - **Web 應用程式**：評估內部部署 Web 應用程式，並使用 Azure App Service 移轉小幫手將其遷移至 Azure App Service。
     - **虛擬桌面**：評估您的內部部署虛擬桌面基礎結構 (VDI)，並將其遷移至 Azure 中的 Windows 虛擬桌面。
     - **Data**︰使用 Azure 資料箱產品，以快速且符合成本效益的方式將大量資料遷移至 Azure。
@@ -36,8 +36,8 @@ Azure Migrate 中樞包含這些工具：
 --- | --- | ---
 **Azure Migrate：伺服器評量** | 評估伺服器。 | 探索及評估內部部署 VMware VM、Hyper-V VM 和實體伺服器，使其準備好遷移至 Azure。
 **Azure Migrate：伺服器移轉** | 遷移伺服器。 | 將 VMware VM、Hyper-V VM、實體伺服器以及其他虛擬化機器和公用雲端 VM 遷移至 Azure。
-**資料移轉小幫手** | 評估內部部署 SQL Server 資料庫，以遷移至 Azure SQL Database、Azure SQL Database 受控執行個體，或執行 SQL Server 的 Azure VM。 | Data Migration Assistant 有助於找出阻礙移轉的潛在問題。 此功能可識別不支援的功能、在移轉後可供您利用的新功能，以及資料庫移轉的正確路徑。 [深入了解](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
-**Azure Database Migration Service** | 將內部部署資料庫遷移至執行 SQL Server、Azure SQL Database 或 Azure SQL Database 受控執行個體的 Azure VM。 | [深入了解](https://docs.microsoft.com/azure/dms/dms-overview)資料庫移轉服務。
+**資料移轉小幫手** | 評估 SQL Server 資料庫，以遷移至 Azure SQL Database、Azure SQL 受控執行個體，或執行 SQL Server 的 Azure VM。 | Data Migration Assistant 有助於找出阻礙移轉的潛在問題。 此功能可識別不支援的功能、在移轉後可供您利用的新功能，以及資料庫移轉的正確路徑。 [深入了解](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
+**Azure Database Migration Service** | 將內部部署資料庫遷移至執行 SQL Server、Azure SQL Database 或 SQL 受控執行個體的 Azure VM。 | [深入了解](https://docs.microsoft.com/azure/dms/dms-overview)資料庫移轉服務。
 **Movere** | 評估伺服器。 | [深入了解](#movere) Movere。
 **Web 應用程式移轉小幫手** | 評估內部部署 Web 應用程式並將其遷移至 Azure。 |  使用 Azure App Service 移轉小幫手來評量內部部署網站，以移轉至 Azure App Service。<br/><br/> 使用移轉小幫手將 .NET 和 PHP Web 應用程式遷移至 Azure。 [深入了解](https://appmigration.microsoft.com/) Azure App Service 移轉小幫手。
 **Azure 資料箱** | 遷移離線資料。 | 使用 Azure 資料箱產品將大量離線資料移至 Azure。 [深入了解](https://docs.microsoft.com/azure/databox/)。
@@ -125,7 +125,7 @@ Azure Migrate 服務有兩個版本。
 - **目前的版本**：使用此版本來建立 Azure Migrate 專案、探索內部部署電腦，以及協調評量與移轉。 [深入了解](whats-new.md)此版本的新功能。
 - **先前版本**：舊版的 Azure Migrate 僅支援內部部署 VMware VM 的評量。 如果您使用舊版，您現在應改用目前的版本。 您無法再使用舊版建立 Azure Migrate 專案。 我們建議您不要用舊版執行新的探索。
 
-    若要存取現有專案，請在 Azure 入口網站中搜尋並選取 [Azure Migrate]  。 [Azure Migrate]  儀表板具有通知以及可存取舊有 Azure Migrate 專案的連結。
+    若要存取現有專案，請在 Azure 入口網站中搜尋並選取 [Azure Migrate]。 [Azure Migrate] 儀表板具有通知以及可存取舊有 Azure Migrate 專案的連結。
 
 ## <a name="next-steps"></a>後續步驟
 
