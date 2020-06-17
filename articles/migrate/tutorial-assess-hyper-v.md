@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 來評估 Hyper-V VM 是否可移轉至 Azure | Microsoft Docs
 description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 Hyper-V VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535446"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331758"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "81535446"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [完成](tutorial-prepare-hyper-v.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
@@ -41,29 +41,29 @@ ms.locfileid: "81535446"
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
 
-1. 在 Azure 入口網站 > [所有服務]  中，搜尋 **Azure Migrate**。
-2. 在搜尋結果中，選取 [Azure Migrate]  。
-3. 在 [概觀]  的 [探索、評估和遷移伺服器]  底下，按一下 [評估和遷移伺服器]  。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
+2. 在搜尋結果中，選取 [Azure Migrate]。
+3. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，按一下 [評估和遷移伺服器]。
 
     ![探索和評估伺服器](./media/tutorial-assess-hyper-v/assess-migrate.png)
 
-4. 在 [開始使用]  中，按一下 [新增工具]  。
-5. 在 [遷移專案]  索引標籤中，選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有資源群組的話)。
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的區域。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
+4. 在 [開始使用] 中，按一下 [新增工具]。
+5. 在 [遷移專案] 索引標籤中，選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有資源群組的話)。
+6. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的區域。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     - 專案區域只會用來儲存從內部部署 VM 收集到的中繼資料。
     - 遷移 VM 時可選取不同的 Azure 目標區域。 所有 Azure 區域都支援作為移轉目標。
 
     ![建立 Azure Migrate 專案](./media/tutorial-assess-hyper-v/migrate-project.png)
 
-7. 按 [下一步]  。
-8. 在 [選取評量工具]  中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]  。
+7. 按 [下一步] 。
+8. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
 
     ![建立 Azure Migrate 專案](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
-9. 在 [選取移轉工具]  中，選取 [暫時跳過新增移轉工具]   > [下一步]  。
-10. 在 [檢閱 + 新增工具]  中檢閱設定，然後按一下 [新增工具]  。
-11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
+9. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
+10. 在 [檢閱 + 新增工具] 中檢閱設定，然後按一下 [新增工具]。
+11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
@@ -79,9 +79,9 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
 下載設備的已壓縮 VHD 範本。
 
-1. 在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2. 在 [探索機器]   > [機器是否已虛擬化?]  中，按一下 [是，使用 Hyper-V]  。
-3. 按一下 [下載]  以下載 VHD 檔案。
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 Hyper-V]。
+3. 按一下 [下載] 以下載 VHD 檔案。
 
     ![下載 VM](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
 
@@ -96,12 +96,20 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - 使用方式範例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  若為 2.19.07.30 版的設備，產生的雜湊應符合這些設定。
+3.  確認最新的設備版本與下列雜湊值：
 
-  **演算法** | **雜湊值**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - 對於 Azure 公用雲端：
+
+        **案例** | **下載** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8.93 MB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - 對於 Azure Government：
+
+        **案例*** | **下載** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>建立設備 VM
 
@@ -112,19 +120,19 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
     - 此資料夾包含子資料夾，其名稱也是 **AzureMigrateAppliance_VersionNumber**。
     - 這個子資料夾也包含三個子資料夾 - **快照集**、**虛擬硬碟**和**虛擬機器**。
 
-2. 開啟 Hyper-V 管理員。 在 [動作]  中，按一下 [匯入虛擬機器]  。
+2. 開啟 Hyper-V 管理員。 在 [動作] 中，按一下 [匯入虛擬機器]。
 
     ![部署 VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
-2. 在 [匯入虛擬機器精靈] > [開始之前]  ，按 [下一步]  。
-3. 在 [尋找資料夾]  中，選取 [虛擬機器]  資料夾。 然後按一下 [下一步]  。
-1. 在 [選取虛擬機器]  中，按 [下一步]  。
-2. 在 [選擇匯入類型]  中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]  。 然後按一下 [下一步]  。
-3. 在 [選擇目的地]  中，保留預設設定。 按 [下一步]  。
-4. 在 [儲存資料夾]  中，保留預設設定。 按 [下一步]  。
-5. 在 [選擇網路]  中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
-6. 在 [摘要]  中檢閱設定。 然後按一下 [ **完成**]。
-7. 在 [Hyper-V 管理員] > [虛擬機器]  中，啟動 VM。
+2. 在 [匯入虛擬機器精靈] > [開始之前]，按 [下一步]。
+3. 在 [尋找資料夾] 中，選取 [虛擬機器] 資料夾。 然後按一下 [下一步]。
+1. 在 [選取虛擬機器] 中，按 [下一步]。
+2. 在 [選擇匯入類型] 中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]。 然後按一下 [下一步]。
+3. 在 [選擇目的地] 中，保留預設設定。 按 [下一步] 。
+4. 在 [儲存資料夾] 中，保留預設設定。 按 [下一步] 。
+5. 在 [選擇網路] 中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
+6. 在 [摘要] 中檢閱設定。 然後按一下 [ **完成**]。
+7. 在 [Hyper-V 管理員] > [虛擬機器] 中，啟動 VM。
 
 
 ## <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
@@ -138,15 +146,15 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 > [!NOTE]
 > 如果您使用 [PowerShell 指令碼](deploy-appliance-script.md)來設定設備 (而非使用下載的 VHD)，則此程序中的前兩個步驟將與之無關。
 
-1. 在 [Hyper-V 管理員] > [虛擬機器]  中，以滑鼠右鍵按一下 [VM] > [連線]  。
+1. 在 [Hyper-V 管理員] > [虛擬機器] 中，以滑鼠右鍵按一下 [VM] > [連線]。
 2. 提供設備的語言、時區和密碼。
-3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址  :44368**。
+3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以按一下應用程式捷徑，從設備桌面開啟應用程式。
-1. 在 [Web 應用程式] > [設定必要條件]  中，執行下列動作：
+1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
     - **授權**：接受授權條款，並閱讀第三方資訊。
     - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
-      - 按一下 [Proxy 設定]  ，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+      - 按一下 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
       - 如果 Proxy 需要驗證，請指定認證。
       - 僅支援 HTTP Proxy。
     - **時間同步**：系統會確認時間。 設備上的時間應該與網際網路時間同步，VM 探索才能正常運作。
@@ -154,14 +162,14 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 按一下 [登入]  。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 按一下 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 2. 在新的索引標籤上，使用您的 Azure 認證登入。
     - 以您的使用者名稱和密碼登入。
     - 不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。
 4. 選取 Azure Migrate 專案建立所在的訂用帳戶。 然後選取專案。
 5. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-6. 按一下 [註冊]  。
+6. 按一下 [註冊] 。
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>委派 SMB VHD 的認證
@@ -187,23 +195,23 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 或者，也可以在設備上的本機群組原則編輯器中執行此動作：
 
-1. 在 [本機電腦原則]   > [電腦設定]  中，按一下 [系統管理範本]   > [系統]   > [認證委派]  。
-2. 按兩下 [允許委派全新認證]  ，然後選取 [已啟用]  。
-3. 在 [選項]  中，按一下 [顯示]  ，然後以 **wsman/** 作為前置詞將您想要探索的每一部 Hyper-V 主機新增至清單中。
-4. 然後，在 [認證委派]  中，按兩下 [允許委派僅具有 NTLM 伺服器驗證的全新認證]  。 再次以 **wsman/** 作為前置詞將您想要探索的每一部 Hyper-V 主機新增至清單中。
+1. 在 [本機電腦原則] > [電腦設定] 中，按一下 [系統管理範本] > [系統] > [認證委派]。
+2. 按兩下 [允許委派全新認證]，然後選取 [已啟用]。
+3. 在 [選項] 中，按一下 [顯示]，然後以 **wsman/** 作為前置詞將您想要探索的每一部 Hyper-V 主機新增至清單中。
+4. 然後，在 [認證委派] 中，按兩下 [允許委派僅具有 NTLM 伺服器驗證的全新認證]。 再次以 **wsman/** 作為前置詞將您想要探索的每一部 Hyper-V 主機新增至清單中。
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
 
 從設備連線至 Hyper-V 主機或叢集，然後開始探索 VM。
 
-1. 在 [使用者名稱]  和 [密碼]  中，指定設備會用來探索 VM 的帳戶認證。 為認證指定自訂名稱，然後按一下 [儲存詳細資料]  。
-2. 按一下 [新增主機]  ，然後指定 Hyper-V 主機/叢集詳細資料。
+1. 在 [使用者名稱] 和 [密碼] 中，指定設備會用來探索 VM 的帳戶認證。 為認證指定自訂名稱，然後按一下 [儲存詳細資料]。
+2. 按一下 [新增主機]，然後指定 Hyper-V 主機/叢集詳細資料。
 3. 按一下 **[驗證]** 。 通過驗證後，系統就會顯示每個主機/叢集上可探索的 VM 數目。
-    - 如果主機驗證失敗，請將滑鼠停留在 [狀態  ] 資料行中的圖示上，以檢閱錯誤。 修正問題，然後再次驗證。
-    - 若要移除主機或叢集，請選取 [刪除]  。
+    - 如果主機驗證失敗，請將滑鼠停留在 [狀態 ] 資料行中的圖示上，以檢閱錯誤。 修正問題，然後再次驗證。
+    - 若要移除主機或叢集，請選取 [刪除]。
     - 您無法從叢集中移除特定主機。 您只能移除整個叢集。
     - 即使叢集中的特定主機有問題，您還是可以新增叢集。
-4. 驗證之後，按一下 [儲存並開始探索]  來開始探索程序。
+4. 驗證之後，按一下 [儲存並開始探索] 來開始探索程序。
 
 這會開始探索。 每部主機大約耗用 1.5 分鐘，讓所探索到伺服器的中繼資料出現在 Azure 入口網站中。
 
@@ -212,7 +220,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 探索完成後，便可以確認 VM 是否出現在入口網站中。
 
 1. 開啟 Azure Migrate 儀表板。
-2. 在 Azure Migrate - 伺服器   >  **Azure Migrate：伺服器評量** 頁面中，按一下圖示以顯示 探索到的伺服器  計數。
+2. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評量** 頁面中，按一下圖示以顯示 探索到的伺服器 計數。
 
 ## <a name="set-up-an-assessment"></a>設定評估
 
@@ -230,23 +238,23 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 執行評估，如下所示：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-2. 在 [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [評估]  。
+2. 在 [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [評估]。
 
     ![評定](./media/tutorial-assess-hyper-v/assess.png)
 
-3. 在 [評估伺服器]  中，指定評估的名稱。
-4. 按一下 [檢視全部]  來檢閱評估屬性。
+3. 在 [評估伺服器] 中，指定評估的名稱。
+4. 按一下 [檢視全部] 來檢閱評估屬性。
 
     ![評量屬性](./media/tutorial-assess-hyper-v/assessment-properties.png)
 
-3. 在 [選取或建立群組]  中，選取 [新建]  ，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
-4. 在 [將機器新增至群組]  中，選取要新增至群組的 VM。
-5. 按一下 [建立評估]  以建立群組，然後執行評估。
+3. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+4. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
+5. 按一下 [建立評估] 以建立群組，然後執行評估。
 
     ![建立評估](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 評量建立好之後，可在 伺服器   > **Azure Migrate：** 。
-7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
+6. 評量建立好之後，可在 伺服器 > **Azure Migrate：** 。
+7. 按一下 [匯出評估]，將其下載為 Excel 檔案。
 
 
 ## <a name="review-an-assessment"></a>檢閱評量
@@ -260,22 +268,22 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 ### <a name="view-an-assessment"></a>檢視評估
 
-1. 在 [移轉目標]   >  [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [評量]  。
-2. 在 [評量]  中，按一下評量來加以開啟。
+1. 在 [移轉目標] >  [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [評量]。
+2. 在 [評量] 中，按一下評量來加以開啟。
 
     ![評量摘要](./media/tutorial-assess-hyper-v/assessment-summary.png)
 
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
-1. 在 [Azure 移轉整備程度]  中，確認 VM 是否已準備好移轉至 Azure。
+1. 在 [Azure 移轉整備程度] 中，確認 VM 是否已準備好移轉至 Azure。
 2. 檢查 VM 狀態：
     - **可供 Azure 使用**：Azure Migrate 會針對評估中的 VM 建議 VM大小和成本估計值。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：當 Azure Migrate 因資料可用性問題而無法評估整備程度時，便會使用此狀態。
 
-2. 按一下 [Azure 移轉整備程度]  狀態。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
+2. 按一下 [Azure 移轉整備程度] 狀態。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 
 ### <a name="review-cost-details"></a>檢閱成本詳細資料
 

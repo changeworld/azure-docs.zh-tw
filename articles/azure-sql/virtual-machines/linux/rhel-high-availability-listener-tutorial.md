@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式 - Linux 虛擬機器 | Microsoft Docs
+title: 為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式 - Linux 虛擬機器 | Microsoft Docs
 description: 了解在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式的相關資訊
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025062"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343756"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > 本教學課程將以**公開預覽**講解。 
 >
-> 我們在本教學課程中使用 SQL Server 2017 和 RHEL 7.6，但在 RHEL 7 或 RHEL 8 中使用 SQL Server 2019 設定 HA，也是可行的。 用來設定可用性群組資源的命令在 RHEL 8 中已有所變更，您可以參考[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文和 RHEL 8 資源，以取得正確命令的詳細資訊。
+> 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
 
-本教學課程將逐步說明如何在 Azure 中為 RHEL 虛擬機器上的 SQL Server 建立可用性群組接聽程式。 您將了解如何：
+本教學課程將逐步說明如何為 Azure 中 RHEL 虛擬機器 (VM) 上的 SQL Server 建立可用性群組接聽程式。 您將了解如何：
 
 > [!div class="checklist"]
 > - 在 Azure 入口網站中建立負載平衡器
@@ -37,7 +37,7 @@ ms.locfileid: "84025062"
 
 ## <a name="prerequisite"></a>必要條件
 
-已完成[**教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組**](rhel-high-availability-stonith-tutorial.md)
+已完成[教學課程：為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>在 Azure 入口網站中建立負載平衡器
 
@@ -59,7 +59,7 @@ ms.locfileid: "84025062"
    | --- | --- |
    | **名稱** |代表負載平衡器的文字名稱。 例如 **sqlLB**。 |
    | **型別** |**內部** |
-   | **虛擬網路** |建立的預設 VNet 應該命名為 **VM1VNET**。 |
+   | **虛擬網路** |建立的預設虛擬網路應命名為 **VM1VNET**。 |
    | **子網路** |選取 SQL Server 執行個體所在的子網路。 預設值應為 **VM1Subnet**。|
    | **IP 位址指派** |**靜態** |
    | **私人 IP 位址** |使用在叢集中建立的 `virtualip` IP 位址。 |
@@ -117,13 +117,13 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
 
 ### <a name="set-the-load-balancing-rules"></a>設定負載平衡規則
 
-負載平衡規則會設定負載平衡器將流量路由傳送至 SQL Server 執行個體的方式。 對此負載平衡器，您會啟用伺服器直接回傳，因為三個 SQL Server 執行個體中一次只有一個會擁有可用性群組接聽程式資源。
+負載平衡規則會設定負載平衡器如何將流量路由到 SQL Server 執行個體。 對此負載平衡器，您會啟用伺服器直接回傳，因為三個 SQL Server 執行個體中一次只有一個會擁有可用性群組接聽程式資源。
 
 1. 在負載平衡器的 [設定] 刀鋒視窗上，按一下 [負載平衡規則]。 
 
 2. 在 [負載平衡規則] 刀鋒視窗上，按一下 [新增]。
 
-3. 在 [新增負載平衡規則] 刀鋒視窗上，設定負載平衡規則。 套用下列設定： 
+3. 在 [新增負載平衡規則] 刀鋒視窗中，設定負載平衡規則。 套用下列設定： 
 
    | 設定 | 值 |
    | --- | --- |
@@ -220,9 +220,9 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
 
 ## <a name="test-the-listener-and-a-failover"></a>測試接聽程式和容錯移轉
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>使用可用性群組接聽程式測試登入 SQL Server
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>使用可用性群組接聽程式，測試登入 SQL Server
 
-1. 使用 SQLCMD，以可用性群組接聽程式名稱登入 SQL Server 的主要節點：
+1. 使用 SQLCMD，登入使用可用性群組接聽程式名稱的 SQL Server 主要節點：
 
     - 使用先前建立的登入，並將 `<YourPassword>` 取代為正確的密碼。 下列範例會使用以 SQL Server 建立的 `sa` 登入。
 
@@ -238,11 +238,11 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
 
     您的輸出應該會顯示目前的主要節點。 如果您從未測試過容錯移轉，應該會顯示 `VM1`。
 
-    輸入 `exit` 命令結束 SQL 工作階段。
+    鍵入 `exit` 命令，以結束 SQL Server 工作階段。
 
 ### <a name="test-a-failover"></a>測試容錯移轉
 
-1. 執行下列命令，將主要複本手動容錯移轉至 `<VM2>` 或另一個複本。 將 `<VM2>` 取代為您伺服器名稱的值。
+1. 執行下列命令，手動將主要複本容錯移轉至 `<VM2>` 或另一個複本。 將 `<VM2>` 取代為您伺服器名稱的值。
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -274,13 +274,13 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. 使用 SQLCMD 及接聽程式名稱登入主要複本：
+1. 使用 SQLCMD 登入使用接聽程式名稱的主要複本：
 
     - 使用先前建立的登入，並將 `<YourPassword>` 取代為正確的密碼。 下列範例會使用以 SQL Server 建立的 `sa` 登入。
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. 檢查您已連線的伺服器。 在 SQLCMD 中執行下列命令︰
 
@@ -292,7 +292,7 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需關於 Azure 中負載平衡器的詳細資訊，請參閱：
+如需 Azure 中負載平衡器的詳細資訊，請參閱：
 
 > [!div class="nextstepaction"]
-> [在 Azure SQL Server VM 中設定可用性群組的負載平衡器](../windows/availability-group-load-balancer-portal-configure.md)
+> [設定 Azure VM 上，SQL Server 之可用性群組的負載平衡](../windows/availability-group-load-balancer-portal-configure.md)

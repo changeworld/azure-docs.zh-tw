@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644864"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608752"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>教學課程：使用 Azure Toolkit for IntelliJ 來建立適用於 Spark 集區 (預覽) 的 Apache Spark 應用程式
+# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>教學課程：使用 Synapse Synapse Analytics 建立包含 IntelliJ 的 Apache Spark 應用程式 (工作區預覽)
 
 本教學課程示範如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至 Spark 集區 (預覽)。 您可以利用數個方式來使用此外掛程式：
 
@@ -30,7 +30,7 @@ ms.locfileid: "83644864"
 > - 開發 Apache Spark 應用程式
 > - 將應用程式提交至 Spark 集區
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [IntelliJ IDEA 社群版本](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
 - Azure 工具組外掛程式 3.27.0-2019.2 - 從 [IntelliJ 外掛程式存放庫](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)來安裝

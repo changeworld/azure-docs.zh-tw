@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196525"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628397"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 (預覽) 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,12 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
     1. 選取清單中資料集名稱旁邊的圓形，例如 **images-for-tutorial**。
 
 1. 選取 [下一步] 以繼續建立專案。
+
+### <a name="incremental-refresh"></a>累加式重新整理
+
+若計劃在您的資料集中新增影像，增量累加式重新整理將會尋找這些新影像，然後將其新增至您的專案。  如有啟用此功能，專案將會定期檢查有無新的影像。  在本教學課程中，您將不會新增影像 到資料存放區，所以請勿核取此功能。
+
+選取 [下一步] 以繼續操作。
 
 ### <a name="label-classes"></a>標籤類別
 

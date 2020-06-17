@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 - Linux 虛擬機器 | Microsoft Docs
-description: 了解如何在 RHEL 叢集環境中設定高可用性並設定 STONITH
+title: 為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組 - Linux 虛擬機器 | Microsoft Docs
+description: 了解如何在 RHEL 叢集環境中設定高可用性及設定 STONITH
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024633"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343767"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84024633"
 > [!NOTE]
 > 本教學課程將以**公開預覽**講解。 
 >
-> 我們在本教學課程中使用 SQL Server 2017 和 RHEL 7.6，但在 RHEL 7 或 RHEL 8 中使用 SQL Server 2019 設定 HA，也是可行的。 用來設定可用性群組資源的命令在 RHEL 8 中已有所變更，您可以參考[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文和 RHEL 8 資源，以取得正確命令的詳細資訊。
+> 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> - 建立新的資源群組、可用性設定組和 Azure Linux 虛擬機器 (VM)
+> - 建立新的資源群組、可用性設定組及 Azure Linux 虛擬機器 (VM)
 > - 啟用高可用性 (HA)
 > - 建立 Pacemaker 叢集
 > - 藉由建立 STONITH 裝置來設定隔離代理程式
@@ -35,7 +35,7 @@ ms.locfileid: "84024633"
 > - 在 Pacemaker 叢集中設定可用性群組 (AG) 資源
 > - 測試容錯移轉和隔離代理程式
 
-本教學課程將使用 Azure 命令列介面 (CLI) 在 Azure 中部署資源。
+本教學課程將使用 Azure CLI 在 Azure 中部署資源。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84024633"
 
 如果您有多個訂用帳戶，請[設定要部署這些資源的訂用帳戶](/cli/azure/manage-azure-subscriptions-azure-cli)。
 
-使用下列命令在區域中建立資源群組 `<resourceGroupName>`。 請將 `<resourceGroupName>` 取代為您選擇的名稱。 在本教學課程中，我們將使用 `East US 2`。 如需詳細資訊，請參閱下列[快速入門](../../../application-gateway/quick-create-cli.md)。
+使用下列命令，在區域中建立資源群組 `<resourceGroupName>`。 請將 `<resourceGroupName>` 取代為您選擇的名稱。 在本教學課程中，我們將使用 `East US 2`。 如需詳細資訊，請參閱下列[快速入門](../../../application-gateway/quick-create-cli.md)。
 
 ```azurecli-interactive
 az group create --name <resourceGroupName> --location eastus2
@@ -55,7 +55,7 @@ az group create --name <resourceGroupName> --location eastus2
 
 ## <a name="create-an-availability-set"></a>建立可用性設定組
 
-下一個步驟是建立可用性設定組。 請在 Azure Cloud Shell 中執行下列命令，並將 `<resourceGroupName>` 取代為您的資源群組名稱。 選擇 `<availabilitySetName>` 的名稱。
+接下來要建立可用性設定組。 請在 Azure Cloud Shell 中執行下列命令，並以您的資源群組名稱取代 `<resourceGroupName>`。 選擇 `<availabilitySetName>` 的名稱。
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -88,14 +88,14 @@ az vm availability-set create \
 }
 ```
 
-## <a name="create-rhel-vms-inside-the-availability-set"></a>在可用性設定組內建立 RHEL VM
+## <a name="create-rhel-vms-inside-the-availability-set"></a>在可用性設定組中建立 RHEL VM
 
 > [!WARNING]
-> 如果您選擇隨用隨付 (PAYG) RHEL 映像，並設定高可用性 (HA)，則可能需要註冊您的訂用帳戶。 這可能會導致您為訂用帳戶支付兩次費用，因為 VM 的 Microsoft Azure RHEL 訂用帳戶和 Red Hat 的訂用帳戶都會收費。 如需詳細資訊，請參閱 https://access.redhat.com/solutions/2458541 。
+> 若選擇隨用隨付 (PAYG) RHEL 映像，並設定高可用性 (HA)，必須註冊您的訂閱。 這可能會導致您為訂用帳戶支付兩次費用，因為 VM 的 Microsoft Azure RHEL 訂用帳戶和 Red Hat 的訂用帳戶都會收費。 如需詳細資訊，請參閱 https://access.redhat.com/solutions/2458541 。
 >
 > 若要避免「重複計費」，在建立 Azure VM 時請使用 RHEL HA 映像。 以 RHEL-HA 映像的形式提供的映像，也是已預先啟用 HA 存放庫的 PAYG 映像。
 
-1. 取得提供高可用性 RHEL 的虛擬機器 (VM) 映像清單：
+1. 取得提供含 A 之 RHEL 的虛擬機器映像清單：
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -132,9 +132,9 @@ az vm availability-set create \
     在本教學課程中，我們將選擇映像 `RedHat:RHEL-HA:7.6:7.6.2019062019`。
 
     > [!IMPORTANT]
-    > 機器名稱必須少於 15 個字元，才能設定可用性群組。 使用者名稱不可包含大寫字元，且密碼必須有 12 個以上的字元。
+    > 機器名稱不得超過 15 個字元，才能設定可用性群組。 使用者名稱不可包含大寫字元，且密碼必須有 12 個以上的字元。
 
-1. 我們想要在可用性設定組中建立 3 個 VM。 請取代下列命令中的以下內容：
+1. 我們要在可用性設定組中建立 3 部 M。 請取代下列命令中的以下內容：
 
     - `<resourceGroupName>`
     - `<VM-basename>`
@@ -452,7 +452,7 @@ az role definition create --role-definition "<filename>.json"
 
 - 將 `<ApplicationID>` 取代為您的應用程式註冊中的識別碼值。
 - 將 `<servicePrincipalPassword>` 取代為用戶端密碼中的值。
-- 將 `<resourceGroupName>` 取代為您在本教學課程中使用的訂用帳戶中的資源群組。
+- 以本教學課程中所用之訂閱的資源群組取代 `<resourceGroupName>`。
 - 取代您 Azure 訂用帳戶中的 `<tenantID>` 和 `<subscriptionId>`。
 
 ```bash
@@ -531,13 +531,13 @@ systemctl status mssql-server --no-pager
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>設定 SQL Server Always On 可用性群組
+## <a name="configure-an-availability-group"></a>設定可用性群組
 
-使用下列步驟為您的 VM 設定 SQL Server Always On 可用性群組。 如需詳細資訊，請參閱[設定 SQL Server Always On 可用性群組以確保 Linux 上的高可用性](/sql/linux/sql-server-linux-availability-group-configure-ha)
+使用下列步驟，為您的 VM 設定 SQL Server Always On 可用性群組。 如需詳細資訊，請參閱[在 Linux 上設定 SQL Server Always On 可用性群組，以達高可用性](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>啟用 AlwaysOn 可用性群組並重新啟動 mssql-server
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>啟用 AlwaysOn 可用性群組並重新啟動 mssql-server
 
-在每個裝載 SQL Server 執行個體的節點上啟用 AlwaysOn 可用性群組。 然後，重新啟動 mssql-server。 執行下列指令碼：
+在每部裝載 SQL Server 執行個體的節點上，啟用 AlwaysOn 可用性群組。 然後，重新啟動 mssql-server。 執行下列指令碼：
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -548,7 +548,7 @@ sudo systemctl restart mssql-server
 
 我們目前不支援對 AG 端點進行 AD 驗證。 因此，我們必須使用憑證為 AG 端點加密。
 
-1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至**所有節點**。 執行下列命令，以啟用 AlwaysOn_health 工作階段並建立主要金鑰：
+1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至**所有節點**。 執行下列命令，以啟用 AlwaysOn_health 工作階段，並建立主要金鑰：
 
     > [!IMPORTANT]
     > 如果您是從遠端連線至 SQL Server 執行個體，則必須在防火牆上開啟連接埠 1433。 您也必須在每個 VM 的 NSG 中，允許對連接埠 1433 的輸入連線。 如需詳細資訊，請參閱[建立安全性規則](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)，以了解如何建立輸入安全性規則。
@@ -566,19 +566,19 @@ sudo systemctl restart mssql-server
 1. 使用 SSMS 或 SQL CMD 連線至主要複本。 下列命令會在您主要 SQL Server 複本的 `/var/opt/mssql/data/dbm_certificate.cer` 上建立憑證，並在 `var/opt/mssql/data/dbm_certificate.pvk` 上建立私密金鑰：
 
     - 將 `<Private_Key_Password>` 取代為您自己的密碼。
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 執行 `exit` 命令以結束 SQL CMD 工作階段，然後回到您的 SSH 工作階段。
  
@@ -631,7 +631,7 @@ GO
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>在所有複本上建立資料庫鏡像端點
 
-使用 SQL CMD 或 SSMS 在所有 SQL 執行個體上執行下列指令碼：
+使用 SQL CMD 或 SSMS，在所有 SQL Server 執行個體上，執行下列指令碼：
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -647,9 +647,9 @@ ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
 GO
 ```
 
-### <a name="create-the-availability-group"></a>建立可用性群組。
+### <a name="create-the-availability-group"></a>建立可用性群組
 
-使用 SQL CMD 或 SSMS，連線至裝載主要複本的 SQL Server 執行個體。 執行下列命令以建立可用性群組：
+使用 SQL CMD 或 SSMS，連線至裝載主要複本的 SQL Server 執行個體。 執行下列命令，以建立可用性群組：
 
 - 將 `ag1` 取代為您所需的可用性群組名稱。
 - 將 `<VM1>`、`<VM2>` 和 `<VM3>` 值取代為裝載複本的 SQL Server 執行個體的名稱。
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>為 Pacemaker 建立 SQL Server 登入
 
-在所有 SQL Server 上，為 Pacemaker 建立 SQL 登入。 下列 Transact-SQL 會建立登入。
+在所有 SQL Server 執行個體上，建立 Pacemaker 的 SQL Server 登入。 下列 Transact-SQL 會建立登入。
 
 - 將 `<password>` 取代為您自己的複雜密碼。
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-在所有 SQL Server 上，儲存用於 SQL Server 登入的認證。 
+在所有 SQL Server 執行個體上，儲存 SQL Server 登入所使用的認證。 
 
 1. 建立檔案：
 
@@ -745,7 +745,7 @@ GO
     GO
     ```
 
-1. 在主要複本和每個次要複本上，執行下列 Transact-SQL 指令碼：
+1. 對主要複本與每個次要複本，執行下列 Transact-SQL 指令碼：
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-如果 `db1` 的 `synchronization_state_desc` 列示為 SYNCHRONIZED，表示複本已同步處理。 次要複本會在主要複本中顯示 `db1`。
+若 `db1` 的 `synchronization_state_desc` 列示 [已同步]，表示複本已同步。 次要複本會在主要複本中顯示 `db1`。
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>在 Pacemaker 叢集中建立可用性群組資源
 
@@ -917,7 +917,7 @@ Daemon Status:
 
 為了確保設定到目前為止均順利進行，我們將測試容錯移轉。 如需詳細資訊，請參閱 [Linux 上的 Always On 可用性群組容錯移轉](/sql/linux/sql-server-linux-availability-group-failover-ha)。
 
-1. 執行下列命令，將主要複本手動容錯移轉至 `<VM2>`。 將 `<VM2>` 取代為您伺服器名稱的值。
+1. 執行下列命令，手動將主要複本容錯移轉至 `<VM2>`。 將 `<VM2>` 取代為您伺服器名稱的值。
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -985,7 +985,7 @@ Node: <VM3> fenced
 
 ## <a name="next-steps"></a>後續步驟
 
-若要將可用性群組接聽程式用於 SQL Server，您必須建立並設定負載平衡器。
+若要對您的 SQL Server 執行個體使用可用性群組接聽程式，必須建立及設定負載平衡器。
 
 > [!div class="nextstepaction"]
-> [教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式](rhel-high-availability-listener-tutorial.md)
+> [教學課程：為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式](rhel-high-availability-listener-tutorial.md)

@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535429"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331792"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用「Azure Migrate：伺服器評定」來評定實體伺服器
 
@@ -30,7 +30,7 @@ ms.locfileid: "81535429"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [完成](tutorial-prepare-physical.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
@@ -44,15 +44,15 @@ ms.locfileid: "81535429"
 
 設定新的 Azure Migrate 專案，如下所示。
 
-1. 在 Azure 入口網站 > [所有服務]  中，搜尋 **Azure Migrate**。
-2. 在 [服務]  下，選取 [Azure Migrate]  。
-3. 在 [概觀]  的 [探索、評估和遷移伺服器]  底下，按一下 [評估和遷移伺服器]  。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
+2. 在 [服務] 下，選取 [Azure Migrate]。
+3. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，按一下 [評估和遷移伺服器]。
 
     ![探索和評估伺服器](./media/tutorial-assess-physical/assess-migrate.png)
 
-4. 在 [開始使用]  中，按一下 [新增工具]  。
-5. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。  
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
+4. 在 [開始使用] 中，按一下 [新增工具]。
+5. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。  
+6. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     - 專案地理區域只會用來儲存從內部部署伺服器收集到的中繼資料。
     - 當您執行移轉時，可以選取任何目的地區域。
@@ -60,14 +60,14 @@ ms.locfileid: "81535429"
     ![建立 Azure Migrate 專案](./media/tutorial-assess-physical/migrate-project.png)
 
 
-7. 按 [下一步]  。
-8. 在 [選取評量工具]  中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]  。
+7. 按 [下一步] 。
+8. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
 
     ![建立 Azure Migrate 專案](./media/tutorial-assess-physical/assessment-tool.png)
 
-9. 在 [選取移轉工具]  中，選取 [暫時跳過新增移轉工具]   > [下一步]  。
-10. 在 [檢閱 + 新增工具]  中檢閱設定，然後按一下 [新增工具]  。
-11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
+9. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
+10. 在 [檢閱 + 新增工具] 中檢閱設定，然後按一下 [新增工具]。
+11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
 
 
 ## <a name="set-up-the-appliance"></a>設定設備
@@ -86,9 +86,9 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 
 下載設備的 ZIP 壓縮檔案。
 
-1. 在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2. 在 [探索機器]   > [機器是否已虛擬化?]  中，按一下 [未虛擬化/其他]  。
-3. 按一下 [下載]  以下載 ZIP 壓縮檔案。
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [未虛擬化/其他]。
+3. 按一下 [下載] 以下載 ZIP 壓縮檔案。
 
     ![下載安裝程式](./media/tutorial-assess-physical/download-appliance.png)
 
@@ -102,20 +102,18 @@ Azure Migrate：伺服器評定會執行輕量型設備。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公用雲端的使用範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - 政府雲端的使用範例：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  驗證雜湊值：
- 
-    - 對於公用雲端 (適用於最新的設備版本)：
+3.  確認最新的設備版本與雜湊值：
+    - 對於公用雲端：
 
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **案例** | **下載*** | **雜湊值**
+        --- | --- | ---
+        實體 (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - 對於 Azure Government (適用於最新的設備版本)：
+    - 對於 Azure Government：
 
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **案例** | **下載*** | **雜湊值**
+        --- | --- | ---
+        實體 (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 ### <a name="run-the-azure-migrate-installer-script"></a>執行 Azure Migrate 安裝程式指令碼
 
@@ -152,13 +150,13 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 
 第一次設定設備。
 
-1. 在任何可連線至設備的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址  :44368**。
+1. 在任何可連線至設備的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以按一下應用程式捷徑，從桌面開啟應用程式。
-2. 在 [Web 應用程式] > [設定必要條件]  中，執行下列動作：
+2. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
     - **授權**：接受授權條款，並閱讀第三方資訊。
     - **連線能力**：應用程式會確認伺服器是否能夠存取網際網路。 如果伺服器使用 Proxy：
-        - 按一下 [Proxy 設定]  ，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+        - 按一下 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
         - 如果 Proxy 需要驗證，請指定認證。
         - 僅支援 HTTP Proxy。
     - **時間同步**：系統會確認時間。 設備上的時間應該與網際網路時間同步，伺服器探索才能正常運作。
@@ -166,28 +164,28 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 按一下 [登入]  。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 按一下 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 2. 在新的索引標籤上，使用您的 Azure 認證登入。
     - 以您的使用者名稱和密碼登入。
     - 不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。
 4. 選取 Azure Migrate 專案建立所在的訂用帳戶。 然後選取專案。
 5. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-6. 按一下 [註冊]  。
+6. 按一下 [註冊] 。
 
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
 
 現在，從設備連線至要探索的實體伺服器，然後開始探索。
 
-1. 按一下 [新增認證]  以指定設備會用來探索伺服器的帳戶認證。  
-2. 指定 [作業系統]  、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
+1. 按一下 [新增認證] 以指定設備會用來探索伺服器的帳戶認證。  
+2. 指定 [作業系統]、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
 您可以新增一組適用於 Windows 與 Linux 伺服器的認證。
-4. 按一下 [新增伺服器]  ，然後指定伺服器詳細資料 - FQDN/IP 位址與認證的易記名稱 (每列一筆輸入) 以連線至伺服器。
+4. 按一下 [新增伺服器]，然後指定伺服器詳細資料 - FQDN/IP 位址與認證的易記名稱 (每列一筆輸入) 以連線至伺服器。
 3. 按一下 **[驗證]** 。 驗證之後，就會顯示可探索的伺服器清單。
-    - 如果伺服器驗證失敗，請將滑鼠停留在 [狀態]  欄中的圖示上以檢閱錯誤。 修正問題，然後再次驗證。
-    - 若要移除伺服器，請選取 > [刪除]  。
-4. 驗證之後，按一下 [儲存並開始探索]  來開始探索程序。
+    - 如果伺服器驗證失敗，請將滑鼠停留在 [狀態] 欄中的圖示上以檢閱錯誤。 修正問題，然後再次驗證。
+    - 若要移除伺服器，請選取 > [刪除]。
+4. 驗證之後，按一下 [儲存並開始探索] 來開始探索程序。
 
 這會開始探索。 每部伺服器大約耗用 1.5 分鐘，讓所探索到伺服器的中繼資料出現在 Azure 入口網站中。
 
@@ -196,7 +194,7 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 探索完成後，便可以驗證伺服器是否出現在 Azure 入口網站中。
 
 1. 開啟 Azure Migrate 儀表板。
-2. 在 Azure Migrate - 伺服器   >  **Azure Migrate：伺服器評量** 頁面中，按一下圖示以顯示 探索到的伺服器  計數。
+2. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評量** 頁面中，按一下圖示以顯示 探索到的伺服器 計數。
 
 ## <a name="set-up-an-assessment"></a>設定評估
 
@@ -213,23 +211,23 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 執行評估，如下所示：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-2. 在 [伺服器]  索引標籤的 **[Azure Migrate：伺服器評量]** 磚中，按一下 [評估]  。
+2. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評量]** 磚中，按一下 [評估]。
 
     ![評定](./media/tutorial-assess-physical/assess.png)
 
-2. 在 [評估伺服器]  中，指定評估的名稱。
-3. 按一下 [檢視全部]  來檢閱評估屬性。
+2. 在 [評估伺服器] 中，指定評估的名稱。
+3. 按一下 [檢視全部] 來檢閱評估屬性。
 
     ![評量屬性](./media/tutorial-assess-physical/view-all.png)
 
-3. 在 [選取或建立群組]  中，選取 [新建]  ，然後指定群組名稱。 群組會將一或多部伺服器收集在一起以進行評量。
-4. 在 [將電腦新增至群組]  中，選取要新增至群組的伺服器。
-5. 按一下 [建立評估]  以建立群組，然後執行評估。
+3. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多部伺服器收集在一起以進行評量。
+4. 在 [將電腦新增至群組] 中，選取要新增至群組的伺服器。
+5. 按一下 [建立評估] 以建立群組，然後執行評估。
 
     ![建立評估](./media/tutorial-assess-physical/assessment-create.png)
 
-6. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]**  > [評量]  中加以檢視。
-7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
+6. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+7. 按一下 [匯出評估]，將其下載為 Excel 檔案。
 
 
 
@@ -243,21 +241,21 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 
 ### <a name="view-an-assessment"></a>檢視評估
 
-1. 在 [移轉目標]   >  [伺服器]  中，按一下 [Azure Migrate：伺服器評量]  中的 [評量]  。
-2. 在 [評量]  中，按一下評量來加以開啟。
+1. 在 [移轉目標] >  [伺服器] 中，按一下 [Azure Migrate：伺服器評量] 中的 [評量]。
+2. 在 [評量] 中，按一下評量來加以開啟。
 
     ![評量摘要](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
-1. 在 [Azure 移轉整備程度]  中，確認伺服器是否已準備好移轉至 Azure。
+1. 在 [Azure 移轉整備程度] 中，確認伺服器是否已準備好移轉至 Azure。
 2. 檢閱狀態：
     - **可供 Azure 使用**：Azure Migrate 會針對評估中的 VM 建議 VM大小和成本估計值。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：當 Azure Migrate 因資料可用性問題而無法評估整備程度時，便會使用此狀態。
 
-2. 按一下 [Azure 移轉整備程度]  狀態。 您可以檢視伺服器的整備程度詳細資料，並向下切入以查看伺服器詳細資料，包括計算、儲存體與網路設定。
+2. 按一下 [Azure 移轉整備程度] 狀態。 您可以檢視伺服器的整備程度詳細資料，並向下切入以查看伺服器詳細資料，包括計算、儲存體與網路設定。
 
 
 

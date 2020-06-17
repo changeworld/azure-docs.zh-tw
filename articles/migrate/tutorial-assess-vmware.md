@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 伺服器評估來評估 VMware VM
 description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 VMware VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535361"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331877"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
@@ -29,7 +29,7 @@ ms.locfileid: "81535361"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [完成](tutorial-prepare-vmware.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
@@ -41,26 +41,26 @@ ms.locfileid: "81535361"
 
 設定新的 Azure Migrate 專案，如下所示：
 
-1. 在 Azure 入口網站 > [所有服務]  中，搜尋 **Azure Migrate**。
-1. 在 [服務]  下，選取 [Azure Migrate]  。
-1. 在 [概觀]  的 [探索、評估和遷移伺服器]  底下，選取 [評估和遷移伺服器]  。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
+1. 在 [服務] 下，選取 [Azure Migrate]。
+1. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，選取 [評估和遷移伺服器]。
 
    ![用來評估和遷移伺服器的按鈕](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. 在 [開始使用]  中，選取 [新增工具]  。
-1. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
-1. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
+1. 在 [開始使用] 中，選取 [新增工具]。
+1. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
+1. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
    ![專案名稱和區域的方塊](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. 選取 [下一步]  。
-1. 在 [選取評量工具]  中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]  。
+1. 選取 [下一步] 。
+1. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
 
    ![伺服器評估工具的選取](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. 在 [選取移轉工具]  中，選取 [暫時跳過新增移轉工具]   > [下一步]  。
-1. 在 [檢閱 + 新增工具]  中檢閱設定，然後選取 [新增工具]  。
-1. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
+1. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
+1. 在 [檢閱 + 新增工具] 中檢閱設定，然後選取 [新增工具]。
+1. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
@@ -74,9 +74,9 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
 
-1. 在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]  。
-1. 在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 VMWare vSphere Hypervisor]  。
-1. 選取 [下載]  以下載 OVA 範本檔案。
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
+1. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMWare vSphere Hypervisor]。
+1. 選取 [下載] 以下載 OVA 範本檔案。
 
    ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -85,34 +85,42 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 請先確認 OVA 檔案是安全的，再進行部署：
 
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
-1. 執行下列命令以產生 OVA 檔案的雜湊：
+2. 執行下列命令以產生 OVA 檔案的雜湊：
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
    使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-針對版本 2.19.07.30，產生的雜湊應符合這些值：
+3. 確認最新的設備版本與雜湊值：
 
-**演算法** | **雜湊值**
---- | ---
-MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+    - 對於 Azure 公用雲端：
+    
+        **演算法** | **下載** | **SHA256**
+        --- | --- | ---
+        VMware (10.9 GB) | [最新版本](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+
+    - 對於 Azure Goverment：
+    
+        **演算法** | **下載** | **SHA256**
+        --- | --- | ---
+        VMware (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="create-the-appliance-vm"></a>建立設備 VM
 
 匯入所下載的檔案，並建立 VM：
 
-1. 在 vSphere 用戶端主控台中，選取 [檔案]   > [部署 OVF 範本]  。
+1. 在 vSphere 用戶端主控台中，選取 [檔案] > [部署 OVF 範本]。
 
    ![用於部署 OVF 範本的功能表命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. 在 [部署 OVF 範本精靈] > [來源]  中，指定 OVA 檔案的位置。
-1. 在 [名稱]   和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
-1. 在 [主機/叢集]  中，指定 VM 的執行所在主機或叢集。
+1. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
+1. 在 [名稱]  和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
+1. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
 1. 在**儲存體**中，指定 VM 的儲存目的地。
-1. 在 [磁碟格式]  中，指定磁碟類型和大小。
-1. 在 [網路對應]  中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評估。
-1. 檢閱並確認設定，然後選取 [完成]  。
+1. 在 [磁碟格式] 中，指定磁碟類型和大小。
+1. 在 [網路對應] 中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評估。
+1. 檢閱並確認設定，然後選取 [完成]。
 
 ## <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
@@ -125,15 +133,15 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 > [!NOTE]
 > 如果您使用 [PowerShell 指令碼](deploy-appliance-script.md)來設定設備 (而非使用下載的 OVA)，則此程序中的前兩個步驟將與之無關。
 
-1. 在 vSphere 用戶端主控台中，以滑鼠右鍵按一下 VM，然後選取 [開啟主控台]  。
+1. 在 vSphere 用戶端主控台中，以滑鼠右鍵按一下 VM，然後選取 [開啟主控台]。
 1. 提供設備的語言、時區和密碼。
-1. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址  :44368**。
+1. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以選取應用程式捷徑，從設備桌面開啟應用程式。
-1. 在 [Web 應用程式] > [設定必要條件]  中，執行下列動作：
+1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
    - **授權**：接受授權條款，並閱讀第三方資訊。
    - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
-     - 選取 [Proxy 設定]  ，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+     - 選取 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
      - 如果 Proxy 需要驗證，請指定認證。
      - 僅支援 HTTP Proxy。
    - **時間同步**：設備上的時間應該與網際網路時間同步，探索才能正常運作。
@@ -144,14 +152,14 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 選取 [登入]  。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 選取 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
    
    不支援使用 PIN 登入。
 1. 成功登入後，返回 Web 應用程式。
 1. 選取 Azure Migrate 專案建立所在的訂用帳戶，然後選取專案。
 1. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-1. 選取 [註冊]  。
+1. 選取 [註冊]。
 
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
@@ -159,14 +167,14 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 設備必須連線到 vCenter Server，才能探索 VM 的設定與效能資料。
 
 ### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 詳細資料
-1. 在 [指定 vCenter Server 詳細資料]  中，指定 vCenter Server 執行個體的名稱 (FQDN) 或 IP 位址。 您可以保留預設的連接埠，或指定 vCenter Server 接聽的自訂連接埠。
-2. 在 [使用者名稱]  和 [密碼]  中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
+1. 在 [指定 vCenter Server 詳細資料] 中，指定 vCenter Server 執行個體的名稱 (FQDN) 或 IP 位址。 您可以保留預設的連接埠，或指定 vCenter Server 接聽的自訂連接埠。
+2. 在 [使用者名稱] 和 [密碼] 中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
 
     - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)中設定具有必要權限的帳戶。
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
 
-3. 選取 [驗證連線]  以確定設備可以連線到 vCenter Server。
-4. 在 [探索 VM 上的應用程式和相依性]  中，選擇性地按一下 [新增認證]  ，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [ **新增**]。
+3. 選取 [驗證連線] 以確定設備可以連線到 vCenter Server。
+4. 在 [探索 VM 上的應用程式和相依性] 中，選擇性地按一下 [新增認證]，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [ **新增**]。
 
     - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
     - 如果您不使用這些功能，則可以略過這項設定。
@@ -183,7 +191,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 探索完成後，便可以確認 VM 是否出現在 Azure 入口網站中：
 
 1. 開啟 Azure Migrate 儀表板。
-1. 在 Azure Migrate - 伺服器   >  **Azure Migrate：伺服器評估** 中，選取圖示以顯示 探索到的伺服器  計數。
+1. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評估** 中，選取圖示以顯示 探索到的伺服器 計數。
 
 ## <a name="set-up-an-assessment"></a>設定評估
 
@@ -199,23 +207,23 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 執行評估，如下所示：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-1. 在 [伺服器]  索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]  。
+1. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]。
 
    ![[評估] 按鈕的位置](./media/tutorial-assess-vmware/assess.png)
 
-1. 在 [評估伺服器]  中，指定評估的名稱。
-1. 選取 [檢視全部]  ，然後檢閱評估屬性。
+1. 在 [評估伺服器] 中，指定評估的名稱。
+1. 選取 [檢視全部]，然後檢閱評估屬性。
 
    ![評量屬性](./media/tutorial-assess-vmware/view-all.png)
 
-1. 在 [選取或建立群組]  中，選取 [新建]  ，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
-1. 在 [將機器新增至群組]  中，選取要新增至群組的 VM。
-1. 選取 [建立評估]  以建立群組，然後執行評估。
+1. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+1. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
+1. 選取 [建立評估] 以建立群組，然後執行評估。
 
    ![評定伺服器](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]**  > [評量]  中加以檢視。
-1. 選取 [匯出評估]  ，將其下載為 Excel 檔案。
+1. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+1. 選取 [匯出評估]，將其下載為 Excel 檔案。
 
 ## <a name="review-an-assessment"></a>檢閱評量
 
@@ -227,21 +235,21 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 若要檢視評估：
 
-1. 在 [移轉目標]   > [伺服器]  中，選取 [Azure Migrate：伺服器評估]  中的 [評估]  。
-1. 在 [評估]  中，選取評估來加以開啟。
+1. 在 [移轉目標] > [伺服器] 中，選取 [Azure Migrate：伺服器評估] 中的 [評估]。
+1. 在 [評估] 中，選取評估來加以開啟。
 
    ![評量摘要](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
-1. 在 [Azure 移轉整備程度]  中，確認 VM 是否已準備好移轉至 Azure。
+1. 在 [Azure 移轉整備程度] 中，確認 VM 是否已準備好移轉至 Azure。
 1. 檢查 VM 狀態：
     - **可供 Azure 使用**：當 Azure Migrate 針對評估中的 VM 建議 VM 大小和成本估計值時會用到。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：當 Azure Migrate 因資料可用性問題而無法評估整備程度時，便會使用此狀態。
 
-1. 選取 [Azure 移轉整備程度]  狀態。 您可以檢視 VM 移轉整備程度的詳細資料。 您也可以向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
+1. 選取 [Azure 移轉整備程度] 狀態。 您可以檢視 VM 移轉整備程度的詳細資料。 您也可以向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 
 ### <a name="review-cost-details"></a>檢閱成本詳細資料
 
