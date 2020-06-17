@@ -4,19 +4,19 @@ description: 建立自訂的條件式存取原則，以針對 Azure 管理工作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54ec1392dab19491ba8c041d0342f0fe82e671fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 09d07717895c6faa506d692becb261e834e44890
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758192"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995348"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>條件式存取：需要 Azure 管理的 MFA
 
@@ -45,7 +45,7 @@ ms.locfileid: "83758192"
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
-1. 在 [指派] 下，選取 [使用者和群組]
+1. 在 [指派] 底下，選取 [使用者和群組]
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
@@ -57,7 +57,7 @@ ms.locfileid: "83758192"
 
 ## <a name="next-steps"></a>後續步驟
 
-[條件式存取的一般原則](concept-conditional-access-policy-common.md)
+[條件式存取一般原則](concept-conditional-access-policy-common.md)
 
 [使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
 

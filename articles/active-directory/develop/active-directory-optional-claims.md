@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737549"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993690"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供選擇性宣告給 Azure AD 應用程式
 
@@ -85,7 +85,6 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `pwd_exp`     | 密碼到期時間        | 密碼到時的日期時間。 |       |
 | `pwd_url`     | 變更密碼 URL             | 使用者可以瀏覽來變更其密碼的 URL。   |   |
 | `in_corp`     | 公司網路內部        | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含此宣告。   |  根據 MFA 中的[可信任 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 設定。    |
-| `nickname`    | 暱稱                        | 使用者的其他名稱。 暱稱有別於名字或姓氏。 需要 `profile` 範圍。|
 | `family_name` | 姓氏                       | 提供使用者物件中定義的使用者姓氏。 <br>"family_name":"Miller" | MSA 和 Azure AD 支援。 需要 `profile` 範圍。   |
 | `given_name`  | 名字                      | 提供使用者物件上設定的使用者名字。<br>"given_name"："Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
 | `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久識別碼，且不應該用於金鑰資料。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|

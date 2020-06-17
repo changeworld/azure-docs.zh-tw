@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409061"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739820"
 ---
 # <a name="managing-access-to-apps"></a>管理應用程式的存取
 
@@ -37,34 +37,34 @@ Azure AD 的應用程式指派著重於兩種主要的指派模式：
 
 * **個別指派** ：具備目錄全域管理員權限的 IT 系統管理員可以選取個別使用者帳戶，並授與它們應用程式存取權限。
 
-* 以**群組為基礎的指派（需要 Azure AD Premium P1 或 P2）** 具有目錄全域管理員許可權的 IT 系統管理員可以將群組指派給應用程式。 特定使用者的存取權決於在使用者嘗試存取應用程式時，使用者是否為群組的成員。 換句話說，系統管理員可以有效地建立指派規則，說明「獲指派群組的任何現有成員可存取應用程式」。 使用這個指派選項，系統管理員可以受益於 Azure AD 群組管理選項，包括 [屬性型動態群組](../fundamentals/active-directory-groups-create-azure-portal.md)、外部系統群組 (例如：內部部署 Active Directory 或工作日)、系統管理員管理或自助管理的群組。 單一群組可以輕鬆地指派給多個應用程式，確保與指派同質性的應用程式可以共用指派規則，降低整體管理複雜度。 請注意，目前對應用程式的群組式指派並不支援巢狀群組成員資格。
+* **以群組為基礎的指派 (需要 Azure AD Premium P1 或 P2)** ：具備目錄全域管理員權限的 IT 管理員可以將群組指派給應用程式。 特定使用者的存取權決於在使用者嘗試存取應用程式時，使用者是否為群組的成員。 換句話說，系統管理員可以有效地建立指派規則，說明「獲指派群組的任何現有成員可存取應用程式」。 使用這個指派選項，系統管理員可以受益於 Azure AD 群組管理選項，包括 [屬性型動態群組](../fundamentals/active-directory-groups-create-azure-portal.md)、外部系統群組 (例如：內部部署 Active Directory 或工作日)、系統管理員管理或自助管理的群組。 單一群組可以輕鬆地指派給多個應用程式，確保與指派同質性的應用程式可以共用指派規則，降低整體管理複雜度。 請注意，目前對應用程式的群組式指派並不支援巢狀群組成員資格。
 
 系統管理員可以使用這些兩種指派模式，達成任何需要的指派管理方法。
 
-### <a name="requiring-user-assignment-for-an-app"></a>需要應用程式的使用者指派
+### <a name="requiring-user-assignment-for-an-app"></a>需要將使用者指派給應用程式
 
-使用特定類型的應用程式時，您可以選擇[要求使用者指派給應用程式](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 如此一來，您就可以防止每個人登入，但您明確指派給應用程式的使用者除外。 下列類型的應用程式支援此選項：
+在某些類型的應用程式中，您可以選擇 [[需要將使用者指派給應用程式]](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment) 選項。 如此一來，除了您明確指派給應用程式的使用者，其他使用者一概禁止登入。 下列類型的應用程式支援此選項：
 
-* 針對同盟單一登入（SSO）使用 SAML 型驗證設定的應用程式
+* 已設定同盟單一登入 (SSO) 與 SAML 型驗證的應用程式
 * 使用 Azure Active Directory 預先驗證的應用程式 Proxy 應用程式
-* 在使用者或系統管理員同意該應用程式之後，建置於使用 OAuth 2.0/OpenID Connect 驗證之 Azure AD 應用程式平臺上的應用程式。某些企業應用程式可對允許登入的人員提供額外的控制。
+* 在 Azure AD 應用程式平台上建置的應用程式，在使用者或管理員同意應用程式之後，應用程式將使用 OAuth 2.0/OpenID Connect 驗證。
 
-當*不需要*使用者指派時，未指派的使用者在其我的應用程式存取面板上看不到應用程式，但仍可登入應用程式本身（也稱為 SP 起始登入），或可以使用應用程式**內容頁面（** 也稱為 IDP 起始登入）中的**使用者存取 URL** 。
+「不需要」指派使用者時，未指派的使用者在 [我的應用程式] 存取面板上看不到該應用程式，但仍可登入應用程式本身 (也稱為 SP 起始的登入)，或在應用程式的 [屬性] 頁面中使用 [使用者存取 URL] (也稱為 IDP 起始的登入)。
 
-針對某些應用程式，應用程式的屬性中不提供要求使用者指派的選項。 在這些情況下，您可以使用 PowerShell 來設定服務主體上的 appRoleAssignmentRequired 屬性。
+在某些應用程式中，應用程式的屬性中不提供需要指派使用者的選項。 在這些情況下，您可以使用 PowerShell 在服務主體上設定 appRoleAssignmentRequired 屬性。
 
-### <a name="determining-the-user-experience-for-accessing-apps"></a>判斷存取應用程式的使用者體驗
+### <a name="determining-the-user-experience-for-accessing-apps"></a>決定使用者存取應用程式的體驗
 
-Azure AD 提供[幾種可自訂的方式，將應用程式部署](end-user-experiences.md)到組織中的使用者：
+Azure AD 為組織中的終端使用者提供[幾種可自訂的應用程式部署方式](end-user-experiences.md)：
 
 * Azure AD 我的應用程式存取面板
 * Office 365 應用程式啟動程式
-* 直接登入同盟應用程式（服務 pr）
+* 直接登入同盟應用程式 (service-pr)
 * 同盟、密碼或現有應用程式的深層連結
 
-您可以判斷指派給企業應用程式的使用者是否可以在存取面板和 Office 365 應用程式啟動器中看到它。
+您可以決定指派給企業應用程式的使用者，是否可以在存取面板和 Office 365 應用程式啟動器中看到此應用程式。
 
-## <a name="example-complex-application-assignment-with-azure-ad"></a>範例：具有 Azure AD 的複雜應用程式指派
+## <a name="example-complex-application-assignment-with-azure-ad"></a>範例：Azure AD 的複雜應用程式指派
 考慮 Salesforce 之類的應用程式。 在許多組織中，Salesforce 主要是供行銷和銷售團隊使用。 通常，行銷小組的成員對 Salesforce 具有高特殊權限存取權，而銷售小組的成員具有限制存取權。 在許多情況下，為數眾多的資訊工作者對應用程式的存取都會受到限制。 這些規則的例外狀況會使情況更加複雜。 它通常是行銷或銷售領導小組的特權，用來授與使用者存取或在這些一般規則以外個別變更其角色。
 
 利用 Azure AD，可以預先設定 Salesforce 之類的應用程式使用單一登入 (SSO) 和自動化佈建。 一旦設定了應用程式，系統管理員可以採取一次性動作來建立及指派適當的群組。 在此範例中，系統管理員可以執行下列指派：
@@ -78,7 +78,7 @@ Azure AD 提供[幾種可自訂的方式，將應用程式部署](end-user-exper
 
 在此情況下，所有指派的使用者會自動佈建至 Salesforce，因為當他們加入至不同群組時，他們的角色指派會在 Salesforce 中更新。 使用者就能夠透過 Microsoft 應用程式存取面板、Office Web 用戶端或甚至是藉由瀏覽至其組織的 Salesforce 登入頁面來探索及存取 Salesforce。 系統管理員能夠使用 Azure AD 報告輕鬆檢視使用方式和指派狀態。
 
-系統管理員可以運用[Azure AD 條件式存取](../active-directory-conditional-access-azure-portal.md)來設定特定角色的存取原則。 這些原則可以包括是否允許公司環境外部的存取，甚至是 Multi-Factor Authentication 或裝置需求，以在各種情況下達成存取。
+管理員可以利用 [Azure AD 條件式存取](../conditional-access/concept-conditional-access-users-groups.md)，為特定角色設定存取原則。 這些原則可以包括是否允許公司環境外部的存取，甚至是 Multi-Factor Authentication 或裝置需求，以在各種情況下達成存取。
 
 ## <a name="access-to-microsoft-applications"></a>存取 Microsoft 應用程式
 
@@ -87,15 +87,15 @@ Microsoft 應用程式 (如 Office 365 Exchange、SharePoint、Yammer 等) 在�
 使用者有三種方式可取得 Microsoft 所發佈應用程式的存取權。
 
 - 對於 Office 365 或其他付費套件中的應用程式，會透過**指派授權**直接指派至使用者帳戶，或使用我們的群組授權指派功能來透過群組，將存取權授與使用者。
-- 對於 Microsoft 或協力廠商免費發佈給任何人使用的應用程式，可能會透過[使用者同意](configure-user-consent.md)來授與使用者存取權。 這表示他們會使用其 Azure AD 的工作或學校帳戶來登入應用程式，並允許它在其帳戶上存取一些有限的資料集。
-- 對於 Microsoft 或協力廠商免費發佈給任何人使用的應用程式，也可以透過[系統管理員同意](manage-consent-requests.md)來授與使用者存取權。 這表示系統管理員已決定組織中的每個人都能使用該應用程式，因此系統管理員使用全域管理員帳戶身分登入應用程式，並將存取權授與組織中的每個人。
+- 對於 Microsoft 或第三方發佈給任何人免費使用的應用程式，使用者可能透過[使用者同意](configure-user-consent.md)而取得存取權。 這表示使用者可透過 Azure AD 公司或學校帳戶登入應用程式，並允許應用程式存取其帳戶中一組有限的資料。
+- 對於 Microsoft 或第三方發佈給任何人免費使用的應用程式，使用者也可能透過[管理員同意](manage-consent-requests.md)而取得存取權。 這表示系統管理員已決定組織中的每個人都能使用該應用程式，因此系統管理員使用全域管理員帳戶身分登入應用程式，並將存取權授與組織中的每個人。
 
-有些應用程式會結合這些方法。 例如，某些 Microsoft 應用程式是 Office 365 訂閱的一部分，但仍需要同意。
+有些應用程式會結合這些方法。 例如，某些 Microsoft 應用程式雖然是 Office 365 訂用帳戶的一部分，但仍需要同意。
 
-使用者可以透過其 Office 365 入口網站存取 Office 365 應用程式。 您也可以在 [我的應用程式存取面板] 中顯示或隱藏 Office 365 應用程式，並在目錄的 [**使用者設定**] 中使用[office 365 可見度切換](hide-application-from-user-portal.md)。 
+使用者可以透過 Office 365 入口網站存取 Office 365 應用程式。 您也可以在目錄的 [使用者設定] 中使用 [[Office 365 可見性切換]](hide-application-from-user-portal.md)，以決定在 **[我的應用程式]** 存取面板中顯示或隱藏 Office 365 應用程式。 
 
-如同企業應用程式，您可以透過 Azure 入口網站[將使用者指派](assign-user-or-group-access-portal.md)給特定的 Microsoft 應用程式，或者，如果入口網站選項無法使用，則可透過 PowerShell 將其指派給。
+對於企業應用程式，您可以透過 Azure 入口網站，[指派使用者](assign-user-or-group-access-portal.md)給特定的 Microsoft 應用程式，或者，如果無法使用入口網站選項，您也可以透過 PowerShell 來指派。
 
 ## <a name="next-steps"></a>後續步驟
-* [使用條件式存取保護應用程式](../active-directory-conditional-access-azure-portal.md)
+* [使用條件式存取來保護應用程式](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [自助式群組管理/SSAA](../users-groups-roles/groups-self-service-management.md)

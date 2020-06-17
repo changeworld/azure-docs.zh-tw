@@ -1,6 +1,6 @@
 ---
-title: 在管理單位中加入、移除和列出群組（預覽）-Azure Active Directory |Microsoft Docs
-description: 在 Azure Active Directory 的管理單位中管理群組及其角色許可權
+title: 在管理單位中新增、移除和列出群組 (預覽) - Azure Active Directory | Microsoft Docs
+description: 在 Azure Active Directory 的管理單位中管理群組及其角色權限
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2547a0fdbfbcc143ff822de333b41198f469375c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683264"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649331"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中以管理單位新增和管理群組
+# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中的管理單位新增和管理群組
 
-在 Azure Active Directory （Azure AD）中，您可以將群組新增至管理單位（AU），以取得更細微的控制管理範圍。
+在 Azure Active Directory (Azure AD) 中，您可以將群組新增至管理單位 (AU)，以取得更細微的控制管理範圍。
 
-如需準備將 PowerShell 和 Microsoft Graph 用於管理單位管理的步驟，請參閱[開始](roles-admin-units-manage.md#get-started)使用。
+如需準備使用 PowerShell 和 Microsoft Graph 進行管理單位管理的步驟，請參閱[快速入門](roles-admin-units-manage.md#get-started)。
 
 ## <a name="add-groups-to-an-au"></a>將群組新增至 AU
 
@@ -33,17 +33,17 @@ ms.locfileid: "81683264"
 
 在預覽中，您只能將群組個別指派給管理單位。 沒有將群組大量指派給管理單位的選項。 您可以使用入口網站中的兩種方式之一，將群組指派給管理單位：
 
-1. 從 [ **Azure AD > 群組**] 頁面
+1. 從 **Azure AD > 群組**頁面
 
-    開啟 Azure AD 中的 [群組總覽] 頁面，然後選取需要指派給管理單位的群組。 在左側選取 [**管理單位**]，以列出群組指派的系統管理單位。 在頂端，您會發現 [指派給管理單位] 選項，按一下它會在右側提供一個面板來選擇管理單位。
+    開啟 Azure AD 中的群組概觀頁面，然後選取需要指派給管理單位的群組。 在左側，選取 [管理單位] 以列出群組指派目的地的管理單位。 在頂端，您會發現 [指派給管理單位] 選項，按一下系統會在右側提供一個面板來選擇管理單位。
 
     ![將群組個別指派給管理單位](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
 
-1. 從 [ **Azure AD > 管理單位 > [所有群組**] 頁面
+1. 從 **Azure AD > 群組單位 > 所有群組** 頁面
 
-    在 [Azure AD > 管理單位] 中開啟 [所有群組] 分頁。 如果有已指派給管理單位的群組，就會顯示在右側。 選取頂端的 [**新增**]，右面板就會列出您的 Azure AD 組織中可用的群組。 選取要指派給管理單位的一或多個群組。
+    在 Azure AD > 管理單位中開啟 [所有群組] 刀鋒視窗。 如果有已指派給管理單位的群組，則會顯示在右側。 選取頂端的 [新增]，右側面板會列出您 Azure AD 組織中可用的群組。 選取要指派給管理單位的一或多個群組。
 
-    ![選取管理單位，然後選取 [新增成員]](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
+    ![選取管理單位，然後選取新增成員](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -51,7 +51,7 @@ ms.locfileid: "81683264"
     $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 
-在此範例中，會使用 Cmdlet AzureADAdministrativeUnitMember 將群組新增至管理單位。 系統管理單位的物件識別碼，以及要加入之群組的物件識別碼會做為引數。 反白顯示的區段可能會視特定環境的需要而變更。
+在此範例中，會使用 Cmdlet Add-AzureADAdministrativeUnitMember 將群組新增至管理單位。 管理單位的物件識別碼，以及要新增的群組物件識別碼會作為引數。 反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -73,16 +73,16 @@ ms.locfileid: "81683264"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-在入口網站中移至**Azure AD > 管理單位**。 選取您要列出使用者的系統管理單位。 根據預設，已在左面板上選取 [**所有使用者**]。 選取 [**所有群組**]，您會在右側找到所選管理單位成員的群組清單。
+在入口網站中，移至 **Azure AD > 管理單位**。 選取您要列出使用者的管理單位。 根據預設，左側面板上已選取 [所有使用者]。 選取 [所有群組]，然後您會在右側找到屬於所選管理單位成員的群組清單。
 
-![選取要刪除的管理單位](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![列出管理單位中的群組](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 
-這可協助您取得管理單位的所有成員。 如果您想要顯示屬於管理單位成員的所有群組，可以使用下列程式碼片段：
+這可協助您取得管理單位的所有成員。 如果您要顯示屬於管理單位成員的所有群組，可以使用下列程式碼片段：
 
     foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
     {
@@ -99,11 +99,11 @@ ms.locfileid: "81683264"
     Request body
     {}
 
-## <a name="list-aus-for-a-group"></a>列出群組的 au
+## <a name="list-aus-for-a-group"></a>列出群組的 AU
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-在 Azure AD 入口網站中，您可以藉由**開啟群組來**開啟群組的詳細資料。 選取群組以開啟群組的設定檔。 選取 [**管理單位**] 以列出群組為成員的所有管理單位。
+在 Azure AD 入口網站中，您可以透過開啟**群組**，開啟群組的詳細資料。 選取群組以開啟群組的設定檔。 選取 [管理單位] 以列出群組為所屬成員的所有管理單位。
 
 ![列出群組的管理單位](./media/roles-admin-units-add-manage-groups/list-group-au.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "81683264"
 
 有兩種方式可從 Azure 入口網站中的管理單位移除群組。
 
-開啟**Azure AD** > **群組**]，然後開啟您想要從管理單位移除之群組的設定檔。 在左面板中選取 [**管理單位**]，以列出群組為成員的所有管理單位。 選取您想要移除群組的系統管理單位，然後選取 [**從管理單位移除**]。
+開啟 **Azure AD** > **群組**，然後開啟您要從管理單位移除之群組的設定檔。 選取左側窗格中的 [管理單位]，以列出群組為所屬成員的所有管理單位。 選取您要移除群組的管理單位，然後選取 [從管理單位移除]。
 
 ![從管理單位移除群組](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-或者，您可以移至**Azure AD** > **管理單位**，並選取群組所屬的管理單位。 選取左面板中的 [**群組**] 來列出成員群組。 選取要從管理單位移除的群組，然後選取 [**移除群組**]。
+或者，您可以移至 **Azure AD** > **管理單位** 並選取群組為所屬成員的管理單位。 選取左側面板中的 [群組] 以列出成員群組。 選取要從管理單位移除的群組，然後選取 [移除群組]。
 
 ![列出管理單位中的群組](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
@@ -139,5 +139,5 @@ ms.locfileid: "81683264"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將角色指派給管理單位](roles-admin-units-assign-roles.md)
-- [管理單位中的使用者](roles-admin-units-add-manage-users.md)
+- [將角色指派至管理單位](roles-admin-units-assign-roles.md)
+- [管理管理單位中的使用者](roles-admin-units-add-manage-users.md)

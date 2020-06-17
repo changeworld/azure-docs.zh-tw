@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 82fbc144b9b2dffdddc09900bf6ed9424b445100
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9894bb2c6ead38b2770f572f7f5000c770d555e7
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701452"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267744"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>對應資料流程中的資料轉換運算式
 
@@ -153,9 +153,7 @@ ___
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 取得資料流的所有輸出資料行。 您可以傳遞選擇性資料流名稱作為第二個引數。   
 * ``columns()``
-* ````
 * ``columns('DeriveStream')``
-* ````
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
