@@ -222,6 +222,9 @@
               href: http-application-routing.md
             - name: 使用內部網路
               href: ingress-internal-ip.md
+            - name: 為現有 AKS 叢集啟用 AGIC 附加元件
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: 使用 TLS 搭配自己的憑證
               href: ingress-own-tls.md
             - name: 使用 TLS 搭配 Let's Encrypt
@@ -416,7 +419,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python

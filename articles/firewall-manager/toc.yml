@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: 一般部署程序
       href: deployment-overview.md
-    - name: 信任的安全性合作夥伴
+    - name: 安全性合作夥伴提供者
       href: trusted-security-partners.md
     - name: 規則處理邏輯
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: 操作指南
   items:
-    - name: 部署信任的安全性合作夥伴
+    - name: 部署安全性合作夥伴提供者
       href: deploy-trusted-security-partner.md
     - name: 遷移至防火牆原則 - PowerShell
       href: migrate-to-policy.md

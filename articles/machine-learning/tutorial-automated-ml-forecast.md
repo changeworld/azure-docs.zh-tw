@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 05/19/2020
-ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118902"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433710"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "84118902"
 > * 探索實驗結果。
 > * 部署最佳模型。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Enterprise 版 Azure Machine Learning 工作區。 如果您沒有工作區，請[建立 Enterprise 版工作區](how-to-manage-workspace.md)。 
     * Azure Machine Learning Studio 中的自動化機器學習僅適用於 Enterprise 版工作區。 
@@ -73,12 +73,12 @@ ms.locfileid: "84118902"
 
        上傳完成時，系統會根據檔案類型，預先填入 [設定與預覽] 表單。 
        
-    1. 確認 [設定與預覽] 表單的填入方式如下，然後選取 [下一步]。 
+    1. 確認 **[設定與預覽]** 表單的填入方式如下，然後選取 **[下一步]** 。
         
         欄位|描述| 教學課程的值
         ---|---|---
         檔案格式|定義檔案中所儲存資料的版面配置和類型。| Delimited (分隔檔)
-        分隔符號|一或多個字元，用來指定純文字或其他資料流程中個別&nbsp;獨立區域之間的界限。 |Comma (逗號)
+        分隔符號|一或多個字元，用來指定純文字或其他資料流程中個別獨立區域之間的界限。 |Comma (逗號)
         編碼|識別要用來讀取資料集之字元結構描述資料表的位元。| UTF-8
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。| 使用第一個檔案中的標頭
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。| None
@@ -124,7 +124,7 @@ ms.locfileid: "84118902"
 
     1. 選取 [下一步] 。
 
-## <a name="select-task-type-and-settings"></a>選取工作類型和設定
+## <a name="select-forecast-settings"></a>選取預測設定
 
 藉由指定機器學習工作類型和組態設定，來完成自動化 ML 實驗的設定。
 

@@ -10,5 +10,7 @@
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure 混合實境資源管理 REST API
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
-- name: 'C# API 文件'
+- name: C# API 文件
   href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'
+- name: C++ API 文件
+  href: 'https://docs.microsoft.com/cpp/api/remote-rendering'

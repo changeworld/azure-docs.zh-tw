@@ -66,6 +66,8 @@
   items:
     - name: Authenticate
       items:
+        - name: 驗證 Key Vault
+          href: authentication.md
         - name: 使用 App Service 受控識別
           href: managed-identity.md
         - name: 使用存取控制原則
@@ -123,7 +125,7 @@
     - name: 通用參數和標頭
       href: common-parameters-and-headers.md
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
