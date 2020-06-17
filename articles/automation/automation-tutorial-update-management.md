@@ -6,163 +6,190 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829149"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204883"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修補程式
 
-本文說明如何使用 Azure 自動化的[更新管理](automation-update-management.md)功能來管理 Azure VM 的更新和修補程式。 
+本文說明如何使用 Azure 自動化的[更新管理](automation-update-management.md)功能來管理 Azure VM 的更新和修補程式。 如需價格資訊，請參閱[更新管理的自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
 
-如需價格資訊，請參閱[更新管理的自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
+> [!NOTE]
+> 更新管理支援部署第一方更新及預先下載修補程式。 這種支援需要在修補的系統上進行變更。 如需了解如何在系統上設定這些設定，請參閱[設定 Windows Update 設定以進行 Azure 自動化更新管理](automation-configure-windows-update.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+使用本文中的程序之前，請確定您已使用下列其中一種技術，在您的虛擬機器上啟用更新管理：
 
-* 已為一或多個 VM 啟用[更新管理](automation-update-management.md)功能。 
-* 已啟用更新管理的[虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
+* [從自動化帳戶啟用更新管理](automation-onboard-solutions-from-automation-account.md)
+* [藉由瀏覽 Azure 入口網站來啟用更新管理](automation-onboard-solutions-from-browse.md)
+* [從 Runbook 啟用更新管理](automation-onboard-solutions.md)
+* [從 Azure VM 啟用更新管理](automation-onboard-solutions-from-vm.md)
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>限制部署的範圍
 
-在 https://portal.azure.com 登入 Azure 入口網站。
+更新管理會使用工作區中的範圍設定，來鎖定要接收更新的電腦。 如需詳細資訊，請參閱[限制更新管理部署範圍](automation-scope-configurations-update-management.md)。
 
 ## <a name="view-update-assessment"></a>檢視更新評量
 
-啟用更新管理之後，更新管理頁面隨即開啟。 如果發現遺失了任何更新，[遺失更新] 索引標籤上會顯示遺失的更新清單。
+若要檢視更新評估：
 
-在 [資訊連結] 底下選取更新連結，以開啟更新的支援文章。 您可以了解關於更新的重要資訊。
+1. 在您的自動化帳戶中，選取 [更新管理] 之下的 [更新管理]。 
 
-![檢視更新狀態](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+2. [更新管理] 頁面上會列出您環境的更新。 如果發現遺失了任何更新，[遺失更新] 索引標籤上會顯示遺失的更新清單。
 
-按一下更新的任何其他地方，即可開啟所選更新的 [記錄搜尋] 窗格。 記錄搜尋的查詢已針對該特定更新預先定義。 您可以修改此查詢或建立自己的查詢，來檢視部署的更新或您環境中遺失項目的詳細資訊。
+3. 在 [資訊連結] 下，選取某項更新的連結可開啟支援文章，其中提供有關更新的重要資訊。
 
-![檢視更新狀態](./media/automation-tutorial-update-management/logsearch.png)
+    ![檢視更新狀態](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+
+4. 按一下更新的任何其他地方，即可開啟 [記錄搜尋] 窗格。 記錄搜尋的查詢已針對該特定更新預先定義。 您可以修改此查詢或建立您自己的查詢，以檢視詳細資訊。
+
+    ![檢視更新狀態](./media/automation-tutorial-update-management/logsearch.png)
 
 ## <a name="configure-alerts"></a>設定警示
 
-在此步驟中，您會了解如何設定一個可讓您得知更新部署狀態的警示。
+遵循下列步驟來設定警示，以讓您得知更新部署的狀態：
 
-### <a name="alert-conditions"></a>警示條件
+1. 在自動化帳戶的 [監視] 下，移至 [警示]，然後按一下 [新增警示規則]。
 
-在自動化帳戶的 [監視] 下，移至 [警示]，然後按一下 [新增警示規則]。
+2. 在 [建立警示規則] 頁面上，已選取您的自動化帳戶作為資源。 如果想變更此值，請按一下 [編輯資源]。 
 
-系統已經選取您的自動化帳戶作為資源。 如果想變更此值，請按一下 [選取]。 在 [選取資源] 頁面上，從 [依資源類型篩選] 下拉式功能表中選取 [自動化帳戶]。 選取您的自動化帳戶，然後按一下 [完成]。
+3. 在 [選取資源] 頁面上，從 [依資源類型篩選] 下拉式功能表中選取 [自動化帳戶]。 
 
-按一下 [新增條件] 以選取您更新部署適用的訊號。 下表顯示兩個可用訊號的詳細資料。
+4. 選取您想要使用的自動化帳戶，然後按一下 [完成]。
 
-|訊號名稱|維度|描述|
-|---|---|---|
-|`Total Update Deployment Runs`|- 更新部署名稱<br>- 狀態|此訊號可針對整體更新部署狀態發出警示。|
-|`Total Update Deployment Machine Runs`|- 更新部署名稱</br>- 狀態</br>- 目標電腦</br>- 更新部署執行識別碼|此訊號可針對以特定機器為目標的更新部署狀態發出警示。|
+5. 按一下 [新增條件] 以選取您更新部署適用的訊號。 下表顯示兩個可用訊號的詳細資料。
 
-針對維度，請從清單中選取有效的值。 如果清單中沒有您希望的值，請按一下維度旁邊的 [\+] 符號，然後輸入自訂名稱。 然後選取要尋找的值。 如果想要針對維度選取所有值，請按一下 [選取 \*] 按鈕。 如果您沒有為維度選取值，則更新管理會忽略該維度。
+    |訊號名稱|維度|描述
+    |---|---|---|
+    |`Total Update Deployment Runs`|- 更新部署名稱<br>- 狀態    |針對更新部署的整體狀態發出警示。|
+    |`Total Update Deployment Machine Runs`|- 更新部署名稱</br>- 狀態</br>- 目標電腦</br>- 更新部署執行識別碼    |針對鎖定特定機器的更新部署狀態發出警示。|
 
-![設定訊號邏輯](./media/automation-tutorial-update-management/signal-logic.png)
+6. 針對維度，請從清單中選取有效的值。 如果清單中沒有您希望的值，請按一下維度旁邊的 **\+** ，然後輸入自訂名稱。 然後選取要尋找的值。 如果想要針對維度選取所有值，請按一下 [選取 \*] 按鈕。 如果您沒有為維度選取值，則更新管理會忽略該維度。
 
-在 [警示邏輯] 之下，針對 [閾值]，輸入 **1**。 完成之後，選取 [完成]。
+    ![設定訊號邏輯](./media/automation-tutorial-update-management/signal-logic.png)
 
-### <a name="alert-details"></a>警示詳細資料
+7. 在 [警示邏輯] 下，於 [時間彙總] 和 [閾值] 欄位中輸入值，然後按一下 [完成]。
 
-在 **2.** 定義警示詳細資料 之下，輸入警示的名稱和描述。 將執行成功的 [嚴重性] 設定為 [資訊 (嚴重性 2)]，或將執行失敗的嚴重性設定為 [資訊 (嚴重性 1)]。
+8. 在下一個窗格中，輸入警示的名稱和描述。
 
-![設定訊號邏輯](./media/automation-tutorial-update-management/define-alert-details.png)
+9. 將執行成功的 [嚴重性] 欄位設定為 [資訊 (嚴重性 2)]，或將執行失敗的嚴重性設定為 [資訊 (嚴重性 1)]。
 
-在 [動作群組] 底下，選取 [新建]。 動作群組是一組可讓您跨多個警示使用的動作。 這些動作可包括電子郵件通知、Runbook、Webhook 和等多種項目。 若要深入了解動作群組，請參閱[建立及管理動作群組](../azure-monitor/platform/action-groups.md)。
+    ![設定訊號邏輯](./media/automation-tutorial-update-management/define-alert-details.png)
 
-在 [動作群組名稱] 欄位中，輸入警示名稱和簡短名稱。 當使用指定的群組傳送通知時，更新管理會使用簡短名稱來取代完整的動作群組名稱。
+10. 視您想要啟用警示規則的方式而定，按一下 [是] 或 [否]。
 
-在 [動作] 下輸入動作的名稱，例如**電子郵件通知**。 針對 [動作類型]，選取 [電子郵件/簡訊/推播/語音]。 針對 [詳細資料] 底下，選取 [編輯詳細資料]。
+11. 如果您不想要有此規則的警示，請選取 [隱藏警示]。
 
-在 [電子郵件/簡訊/推播/語音] 窗格中，輸入名稱。 選取 [電子郵件] 核取方塊，然後輸入有效的電子郵件地址。
+## <a name="configure-action-groups-for-your-alerts"></a>設定警示的動作群組
 
-![設定電子郵件動作群組](./media/automation-tutorial-update-management/configure-email-action-group.png)
+設定好警示之後，您就可以設定動作群組，這是可跨多個警示使用的一組動作。 這些動作可包括電子郵件通知、Runbook、Webhook 和等多種項目。 若要深入了解動作群組，請參閱[建立及管理動作群組](../azure-monitor/platform/action-groups.md)。
 
-在 [電子郵件/簡訊/推播/語音] 窗格中，按一下 [確定]。 在 [新增動作群組] 窗格中，按一下 [確定]。
+1. 選取警示，然後選取 [動作群組] 下的 [新建]。 
 
-若要自訂警示電子郵件的主旨，請在 [建立規則] 的 [自訂動作] 底下，選取 [電子郵件主旨]。 當您完成時，選取 [建立警示規則]。 警示會在更新部署成功時，告知您有哪些機器包含在該更新部署執行中。
+2. 輸入動作群組的完整名稱和簡短名稱。 當使用指定的群組傳送通知時，更新管理會使用簡短名稱。
+
+3. 在 [動作] 中，輸入指定動作的名稱，例如**電子郵件通知**。 
+
+4. 針對 [動作類型]，選取適當的類型，例如 [電子郵件/簡訊/推送/語音]。 
+
+5. 按一下 [編輯詳細資料]。
+
+6. 在窗格中填入動作類型。 例如，如果是使用 [電子郵件/簡訊/推送/語音]，請輸入動作名稱，選取 [電子郵件] 核取方塊，輸入有效的電子郵件地址，然後按一下 [確定]。
+
+    ![設定電子郵件動作群組](./media/automation-tutorial-update-management/configure-email-action-group.png)
+
+7. 在 [新增動作群組] 窗格中，按一下 [確定]。
+
+8. 如需警示電子郵件，您可以自訂電子郵件主旨。 選取 [建立規則] 下的 [自訂動作]，然後選取 [電子郵件主旨]。 
+
+9. 當您完成時，按一下 [建立警示規則]。 
 
 ## <a name="schedule-an-update-deployment"></a>排定更新部署
 
-將部署安排在發行排程和服務時間範圍之後，以便安裝更新。 您可以選擇要在部署中包含的更新類型。 例如，您可以包含重大更新或安全性更新，並排除更新彙總套件。
+排程更新部署時，將會建立一個連結至 **Patch-MicrosoftOMSComputers** Runbook 的[排程](shared-resources/schedules.md)資源，以處理目標電腦上的更新部署。 您必須將部署安排在發行排程和服務時間範圍之後，以便安裝更新。 您可以選擇要在部署中包含的更新類型。 例如，您可以包含重大更新或安全性更新，並排除更新彙總套件。
 
 >[!NOTE]
->排程更新部署時，將會建立一個連結至 **Patch-MicrosoftOMSComputers** Runbook 的[排程](shared-resources/schedules.md)資源，以處理目標電腦上的更新部署。 如果您在建立部署後從 Azure 入口網站或使用 PowerShell 刪除了排程資源，將會中斷已排程的更新部署，並在您嘗試從入口網站重新設定排程資源時顯示錯誤。 您只能藉由刪除對應的部署排程來刪除排程資源。  
+>如果您在建立部署後從 Azure 入口網站或使用 PowerShell 刪除了排程資源，將會中斷已排程的更新部署，並在您嘗試從入口網站重新設定排程資源時顯示錯誤。 您只能藉由刪除對應的部署排程來刪除排程資源。  
 
-若要為 VM 安排新的更新部署，請移至 [更新管理]，然後選取 [排程更新部署]。
+若要排程新的更新部署：
 
-在 [新增更新部署] 之下，指定下列資訊：
+1. 在您的自動化帳戶中，移至 [更新管理] 底下的 [更新管理]，然後選取 [排程更新部署]。
 
-* **Name**：輸入更新部署的唯一名稱。
+2. 在 [新增更新部署] 下，使用 [名稱] 欄位來輸入部署的唯一名稱。
 
-* **作業系統**：為更新部署選取要作為目標的 OS。
+3. 選取要進行更新部署的目標作業系統。
 
-* **要更新的群組 (預覽)** ：根據訂用帳戶、資源群組、位置及標記的組合來定義查詢，以建置要包含在您部署中的動態 Azure VM 群組。 若要深入了解，請參閱[動態群組](automation-update-management-groups.md)。
+4. 在 [要更新的群組 (預覽)] 區域中，結合訂用帳戶、資源群組、位置及標記來定義查詢，以建立要包含在您部署中的動態 Azure VM 群組。 若要進一步了解，請參閱[搭配更新管理使用動態群組](automation-update-management-groups.md)。
 
-* **要更新的機器**：選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 如果您選擇 [機器]，每台機器的整備程度會顯示於 [更新代理程式整備程度] 資料行中。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../azure-monitor/platform/computer-groups.md)。
+5. 在 [要更新的電腦] 中，選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 利用此選項，您可以查看每一部機器的 Log Analytics 代理程式的整備狀態。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../azure-monitor/platform/computer-groups.md)。
 
-* **更新分類**：針對每個產品，取消選取所有支援的更新分類，但不要取消選取要納入您更新部署中的項目。 如需分類類型的說明，請參閱[更新分類](automation-view-update-assessments.md#work-with-update-classifications)。
+6. 使用 [更新分類] 區域來指定產品的[[更新分類]](automation-view-update-assessments.md#work-with-update-classifications)。 針對每個產品，取消選取所有支援的更新分類，但不要取消選取要納入您更新部署中的項目。
 
-* **要包含/排除的更新** - 這會開啟包含/排除頁面。 要包含或排除的更新會依指定知識庫文章識別碼編號位於不同的索引標籤。 指定一或多個識別碼編號時，必須移除或取消勾選更新部署的所有分類。 這可確保在您指定更新識別碼時，更新套件中不會包含任何其他更新。
+7. 使用 [包含/排除更新] 區域來選取要部署的特定更新。 [包含/排除] 頁面會依知識庫文章識別碼顯示要包含或排除的更新。 
+    
+   > [!IMPORTANT]
+   > 請記得，排除項目會覆寫包含項目。 例如，如果您定義排除規則 `*`，更新管理即會將所有修補程式或套件從安裝中排除。 排除的修補程式仍然會顯示為從機器中遺漏。 若使用 Linux 電腦，如果您納入已排除之相依套件的套件，更新管理不會安裝主要套件。
 
-> [!NOTE]
-> 請務必了解，排除項目會覆寫納入的項目。 例如，如果您定義 `*` 排除規則，更新管理便不會安裝任何修補程式或套件，因為已將其全部排除。 排除的修補程式仍然會顯示為從機器中遺漏。 若使用 Linux 電腦，如果您納入已排除之相依套件的套件，更新管理不會安裝主要套件。
+   > [!NOTE]
+   > 您無法指定將已取代的更新納入更新部署中。
 
-> [!NOTE]
-> 您無法指定將已取代的更新納入更新部署中。
->
-* **排程設定**：[排程設定] 窗格將會開啟。 預設開始時間為目前時間之後的 30 分鐘。 您可以將開始時間設為 10 分鐘以後的任何時間。
+8. 選取 [排程設定]。 預設開始時間為目前時間之後的 30 分鐘。 您可以將開始時間設為 10 分鐘以後的任何時間。
 
-   您也可以指定部署是否為發生一次，或設定週期性排程。 在 [週期性] 下選取 [一次]。 將預設值保留為 1 天，然後按一下 [確定]。 這些項目會設定週期性排程。
+9. 使用 [週期性] 欄位來指定部署是否應發生一次或使用週期性排程，然後按一下 [確定]。
 
-* **前置指令碼 + 後置指令碼**：選取要在部署前和部署後執行的指令碼。 若要深入了解，請參閱[管理前置和後置指令碼](pre-post-scripts.md)。
+10. 在 [前置指令碼 + 後置指令碼 (預覽)] 區域，選取在部署前和部署後要執行的指令碼。 若要深入了解，請參閱[管理前指令碼和後指令碼](pre-post-scripts.md)。
+    
+11. 使用 [維護時間範圍 (分鐘)] 欄位，指定允許安裝更新的時間長度。 在指定維護時間範圍時，請考慮下列詳細資料：
 
-* **維護時間範圍 (分鐘)** ：保留預設值。 維護時間範圍可控制允許安裝更新的時間長度。 在指定維護時間範圍時，請考慮下列詳細資料：
+    * 維護時間範圍可控制要安裝的更新數目。
+    * 如果維護時間範圍即將結束，更新管理並不會停止安裝新的更新。
+    * 如果超出維護時間範圍，更新管理並不會終止進行中的更新。
+    * 如果在 Windows 上超出維護時間範圍，通常是因為 Service Pack 更新需要很長的時間才能安裝完成。
 
-  * 維護時間範圍可控制要安裝的更新數目。
-  * 如果維護時間範圍即將結束，更新管理並不會停止安裝新的更新。
-  * 如果超出維護時間範圍，更新管理並不會終止進行中的更新。
-  * 如果在 Windows 上超出維護時間範圍，通常是因為 Service Pack 更新需要很長的時間才能安裝完成。
+    > [!NOTE]
+    > 若要避免在 Ubuntu 維護時間範圍以外套用更新，請重新設定 `Unattended-Upgrade` 套件以停用自動更新。 如需有關如何設定套件的資訊，請參閱 [Ubuntu Server 指南中的自動更新主題](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
 
-  > [!NOTE]
-  > 若要避免在 Ubuntu 維護時間範圍以外套用更新，請重新設定自動安裝升級套件以停用自動更新。 如需有關如何設定套件的資訊，請參閱 [Ubuntu Server 指南中的自動更新主題](https://help.ubuntu.com/lts/serverguide/automatic-updates.html) \(英文\)。
+12. 使用 [重新開機選項] 欄位，指定在部署期間處理重新開機的方式。 有下列選項可供使用： 
+    * 必要時重新開機 (預設值)
+    * 一律重新開機
+    * 永不重新開機
+    * 僅重新開機；此選項不會安裝更新
 
-* **重新開機選項**：用來指定處理重新開機的選項。 有下列選項可供使用：
-  * 必要時重新開機 (預設值)
-  * 一律重新開機
-  * 永不重新開機
-  * 僅重新開機 - 不會安裝更新
+    > [!NOTE]
+    > 如果 [重新開機選項] 已設定為 [永不重新開機]，在[用來管理重新啟動的登錄機碼](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)底下所列的登錄機碼可能會造成重新開機事件。
 
-> [!NOTE]
-> 如果 [重新開機選項] 已設定為 [永不重新開機]，在[用來管理重新啟動的登錄機碼](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)底下所列的登錄機碼可能會造成重新開機事件。
+13. 部署排程設定完成後，請按一下 [建立]。
 
-排程設定完成後，請按一下 [建立]。
+    ![更新排程設定窗格](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-![更新排程設定窗格](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
+14. 您會回到狀態儀表板。 選取 [排程更新部署] 可顯示您所建立的部署排程。
 
-您會回到狀態儀表板。 選取 [排程更新部署] 可顯示剛才建立的部署排程。
+## <a name="schedule-an-update-deployment-programmatically"></a>以程式設計方式排程更新部署
 
-> [!NOTE]
-> 「更新管理」支援部署第一方更新及預先下載修補程式。 這種支援需要在修補的系統上進行變更。 請參閱[第一方和預先下載支援](automation-configure-windows-update.md)，以了解如何在系統上進行這些設定。
+若要了解如何使用 REST API 來建立更新部署，請參閱[軟體更新設定 - 建立](/rest/api/automation/softwareupdateconfigurations/create)。 
 
-您也可以透過程式設計方式建立更新部署。 若要了解如何使用 REST API 來建立更新部署，請參閱[軟體更新設定 - 建立](/rest/api/automation/softwareupdateconfigurations/create)。 此外，您也可以使用 Runbook 範例來建立每週更新部署。 若要深入了解此 Runbook，請參閱[為資源群組中的一或多個 VM 建立每週更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1) \(英文\)。
+您也可以使用 Runbook 範例來建立每週更新部署。 若要深入了解此 Runbook，請參閱[為資源群組中的一或多個 VM 建立每週更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1) \(英文\)。
 
-## <a name="view-results-of-an-update-deployment"></a>檢視更新部署的結果
+## <a name="check-deployment-status"></a>檢查部署狀態
 
-已排程的部署開始之後，您就可以在 [更新管理] 之下的 [更新部署] 索引標籤上看到該部署的狀態。 目前正在執行部署時，其狀態會是 [進行中]。 部署順利完成後，狀態會變更為**已成功**。 若部署中發生一或多個更新失敗時，狀態就會是**部分失敗**。
+排定的部署開始之後，您可以在 [更新管理] 底下的 [更新部署] 索引標籤上查看其狀態。 目前正在執行部署時，其狀態會是 [進行中]。 部署順利完成後，狀態會變更為**已成功**。 若部署中發生一或多個更新失敗時，狀態就會是**部分失敗**。
 
-選取已完成的更新部署，查看該部署的儀表板。
+## <a name="view-results-of-a-completed-update-deployment"></a>檢視已完成更新部署的結果
+
+當部署完成時，您可以選取它來查看其儀表板。
 
 ![特定部署的更新部署狀態儀表板](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
-在 [更新結果] 之下，會有摘要提供 VM 上的更新總數和部署結果。 右邊的表格會顯示每個更新的詳細明細及安裝結果。
+在 [更新結果] 之下，會有摘要提供目標虛擬機器上的更新總數和部署結果。 右邊的表格會顯示每個更新的詳細明細及安裝結果。
 
 可用的值為：
 
-* **未嘗試**：未安裝更新，因為根據所定義的維護時間範圍持續時間，可用的時間不足。
-* **成功**：更新成功。
-* **失敗**：更新失敗。
+* **未嘗試** - 未安裝更新，因為根據所定義的維護時間範圍持續時間，可用的時間不足。
+* **未選取** - 未選取該更新來進行部署。
+* **成功** - 更新已順利完成。
+* **失敗** - 更新失敗。
 
 若要查看部署已建立的所有記錄項目，請選取 [所有記錄]。
 
@@ -170,10 +197,18 @@ ms.locfileid: "83829149"
 
 若要查看部署所傳回的任何錯誤詳細資訊，請選取 [錯誤]。
 
-更新部署成功時，您會收到如下所示的確認電子郵件：
+## <a name="view-the-deployment-alert"></a>檢視部署警示
+
+當您的更新部署完成時，您會收到您在部署設定期間所指定的警示。 例如，以下是確認修補程式的電子郵件。
 
 ![設定電子郵件動作群組](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需更新管理的詳細資訊，請參閱[更新管理概觀](automation-update-management.md)。
+* 如需範圍設定的詳細資訊，請參閱[限制更新管理部署範圍](automation-scope-configurations-update-management.md)。
+* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
+* 如果已完成部署，請參閱[取消工作區與自動化帳戶的連結以進行更新管理部署](automation-unlink-workspace-update-management.md)。
+* 若要從更新管理中刪除您的 VM，請參閱[從更新管理中移除 VM](automation-remove-vms-from-update-management.md)。
+* 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](troubleshoot/update-management.md)。
+* 若要針對 Windows 更新代理程式的問題進行疑難排解，請參閱[針對 Windows 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues.md)。
+* 若要針對 Linux 更新代理程式的問題進行疑難排解，請參閱[針對 Linux 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues-linux.md)。
