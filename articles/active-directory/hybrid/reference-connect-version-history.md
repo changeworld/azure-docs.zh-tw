@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect︰版本發行歷程記錄 | Microsoft Docs
+title: Azure AD Connect：版本發行歷程記錄 | Microsoft Docs
 description: 本文章列出 Azure AD Connect 和 Azure AD Sync 的所有版本
 services: active-directory
 author: billmath
@@ -8,19 +8,18 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200965"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725290"
 ---
-# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
+# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
 
 本文旨在協助您追蹤已發行的版本，以及了解最新版本中的變更。
@@ -30,243 +29,246 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 主題 |  詳細資料
 --------- | --------- |
 從 Azure AD Connect 升級的步驟 | [從舊版升級到最新版本](how-to-upgrade-previous-version.md) Azure AD Connect 的多種方法。
-所需的權限 | 如需套用更新所需的許可權，請參閱[帳戶和許可權](reference-connect-accounts-permissions.md#upgrade)。
+所需的權限 | 如需套用更新所需權限的詳細資訊，請參閱[帳戶和權限](reference-connect-accounts-permissions.md#upgrade)。
 下載| [下載 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 >[!NOTE]
->發行新版本的 Azure AD Connect 是需要數個品質控制步驟的程式，以確保服務的作業功能，而當我們進行此程式時，新版本的版本號碼以及發行狀態將會更新，以反映最近的狀態。
-當我們進行此程式時，版本號碼會以 "X" 顯示在次要版本號碼位置中，如 "1.3. X. 0"-這表示本檔中的版本資訊對開頭為 "1.3" 的所有版本都是有效的。 一旦完成發行程式，發行版本號碼就會更新為最近發行的版本，而發行狀態將更新為「已發行，可供下載及自動升級」。
+>發行新版 Azure AD Connect 是需要數個品質控制步驟來確保服務作業功能的程序，而當進行此程序時，新版本的版本號碼及發行狀態將會更新，以反映最新狀態。
+當進行此程序時，發行版本號碼將會以 "X" 顯示在次要版本號碼位置，如 "1.3.X.0" 中所示 - 這表示此文件中版本資訊適用於開頭為 "1.3." 的所有版本。 完成發行程序之後，發行版本號碼將會更新為最近發行的版本，而發行狀態將會更新為「已發行，可供下載和自動升級」。
 並非所有版本的 Azure AD Connect 都可自動升級。 發行狀態會指出版本是否可自動升級或僅供下載。 如果您的 Azure AD Connect 伺服器上已啟用自動升級，則該伺服器將會自動升級為可自動升級的最新版 Azure AD Connect。 請注意，並非所有 Azure AD Connect 組態都符合自動升級的資格。 請遵循下列連結來深入了解[自動升級](how-to-connect-install-automatic-upgrade.md)
 
 >[!IMPORTANT]
-> 自2020年11月1日起，我們將開始執行淘汰程式，而在超過18個月前發行的 Azure AD Connect 版本將會被取代。 此時，我們將開始進行此程式，方法是淘汰版本1.3.20.0 （發行于4/24/2019）和較舊版本的所有 Azure AD Connect 版本，我們將會繼續評估舊版的 Azure AD Connect 是否已淘汰，每次有新版本發行。
+> 自 2020 年 11 月 1 日起，將開始實作淘汰程序。根據此程序，超過 18 個月前發行的 Azure AD Connect 版本將會被淘汰。 屆時，我們將開始此程序，淘汰版本為 1.3.20.0 (於 2019 年 4 月 24 日發行) 及更舊版本的所有 Azure AD Connect 版本，然後我們會繼續在每次有新版本發行時，評估是否要淘汰舊版的 Azure AD Connect。
 >
-> 您必須確定您正在執行最新版本的 Azure AD Connect，才能獲得最佳的支援體驗。 
+> 您必須確定執行的是最新版的 Azure AD Connect，以便獲得最佳的支援體驗。 
 >
->如果您執行的是已淘汰版本的 Azure AD Connect 您可能沒有最新的安全性修正、效能改進、疑難排解和診斷工具和服務增強功能，而且如果您需要支援，我們可能無法為您提供貴組織所需的服務層級。
+>如果執行的是已淘汰的 Azure AD Connect 版本，您可能沒有最新的安全性修正、效能提升、疑難排解和診斷工具，以及服務增強功能，且如果需要支援，我們可能無法提供組織所需的服務等級。
 >
->如果您已啟用同步 Azure AD Connect，您很快就會開始收到健康情況通知，在您執行其中一個較舊版本時警告您即將進行的棄用功能。
+>如果啟用了 Azure AD Connect 進行同步，您將會立即自動開始收到 Health 通知，以在執行其中一個舊版時，警告該版本即將淘汰。
 >
->請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入瞭解如何將 Azure AD Connect 升級至最新版本。
+>請參閱[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入了解如何將 Azure AD Connect 升級至最新版本。
 
 ## <a name="15300"></a>1.5.30.0
 
 ### <a name="release-status"></a>發行狀態
-05/07/2020：已發行以供下載
+05/07/2020：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
-- 已修正未選取的網域從 wizard UI 中不正確地選取的問題。
-- 已修正 ADSyncConfig PowerShell 模組中的問題，其中在所有 ADSync * 許可權 Cmdlet 中使用的叫用 DSACLS 命令會導致下列其中一個錯誤：
-     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
-     - `GrantAcls : No GUID Found for computer …`
+此 Hotfix 組建會修正如果只選取孫系容器，從精靈 UI 中不正確選取了未選取網域的問題。
+
+
+>[!NOTE]
+>此版本包含新的 Azure AD Connect 同步 V2 端點 API。  這個新的 V2 端點目前為公開預覽狀態。  需要此版本或更新版本才能使用新的 V2 端點 API。  不過，只安裝此版本並不會啟用 V2 端點。 除非啟用 V2 端點，否則您會繼續使用 V1 端點。  您必須遵循 [Azure AD Connect 同步 V2 端點 API (公開預覽)](how-to-connect-sync-endpoint-api-v2.md) (英文) 下的步驟執行，才能將其啟用並加入公開預覽。  
 
 ## <a name="15290"></a>1.5.29.0
 
 ### <a name="release-status"></a>發行狀態
-04/23/2020：已發行以供下載
+2020/04/23：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
-此修補程式組建修正了組建1.5.20.0 中引進的問題，其中 MFA 的租使用者系統管理員無法啟用 DSSO。
+此 Hotfix 組建會修正組建 1.5.20.0 中引進的問題，其中使用 MFA 的租用戶系統管理員無法啟用 DSSO。
 
 ## <a name="15220"></a>1.5.22.0
 
 ### <a name="release-status"></a>發行狀態
-04/20/2020：已發行以供下載
+04/20/2020：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
-如果您已**從 Ad 群組聯結**規則複製 in，而且尚未**從 Ad 群組的一般**規則複製 in，則此修正程式組建會修正組建1.5.20.0 中的問題。
+此 Hotfix 組建會修正如果已複製 **In from AD - Group Join** 規則且尚未複製 **In from AD - Group Common** 規則，組建 1.5.20.0 中的問題。
 
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>發行狀態
-04/09/2020：已發行以供下載
+2020/04/09：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
-如果您已啟用群組篩選功能，並使用 ConsistencyGuid 做為來源錨點，此修正程式組建會修正組建1.5.18.0 的問題。
+- 此 Hotfix 組建會修正如果已啟用 [群組篩選] 功能並使用 mS-DS-ConsistencyGuid 作為來源錨點，組建 1.5.18.0 的相關問題。
+- 已修正 ADSyncConfig PowerShell 模組中的問題，其中用於所有 Set-ADSync* 權限 Cmdlet 的叫用 DSACLS 命令會導致下列其中一個錯誤：
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
-> 如果您已**從 Ad 群組聯結**同步處理規則複製 in，而且尚未**從 Ad 群組的一般**同步處理規則複製到，並打算升級，請在升級過程中完成下列步驟：
-> 1. 在升級期間，取消核取 [設定**完成時啟動同步處理**程式] 選項。
-> 2. 編輯複製的聯結同步處理規則，並新增下列兩個轉換：
->     - 將 [直接流程] 設定 `objectGUID` 為 `sourceAnchorBinary` 。
->     - 將 [運算式流程] 設定 `ConvertToBase64([objectGUID])` 為 `sourceAnchor` 。     
-> 3. 使用來啟用排程器 `Set-ADSyncScheduler -SyncCycleEnabled $true` 。
+> 如果已複製 **In from AD - Group Join** 同步規則且尚未複製 **In from AD - Group Common** 同步規則，並想要進行升級，請在升級過程中完成下列步驟：
+> 1. 在升級期間，取消核取 [在設定完成時開始同步處理程序] 選項。
+> 2. 編輯複製的聯結同步規則，然後新增下列兩個轉換：
+>     - 將直接流程 `objectGUID` 設定為 `sourceAnchorBinary`。
+>     - 將運算式流程 `ConvertToBase64([objectGUID])` 設定為 `sourceAnchor`。     
+> 3. 使用 `Set-ADSyncScheduler -SyncCycleEnabled $true` 啟用排程器。
 
 
 
 ## <a name="15180"></a>1.5.18.0
 
 ### <a name="release-status"></a>發行狀態
-04/02/2020：已發行以供下載
+2020/04/02：已發行可供下載
 
-### <a name="functional-changes-adsyncautoupgrade"></a>功能變更 Set-adsyncautoupgrade 
+### <a name="functional-changes-adsyncautoupgrade"></a>ADSyncAutoUpgrade 功能性變更 
 
-- 已新增群組物件的 ConsistencyGuid 功能支援。 這可讓您在樹系之間移動群組，或將 AD 中的群組重新連線到 ad 群組 objectID 已變更的 Azure AD，例如在遭遇災難之後重建 AD 伺服器。 如需詳細資訊，請參閱在樹系[之間移動群組](how-to-connect-migrate-groups.md)。
-- ConsistencyGuid 屬性會自動設定在所有已同步處理的群組上，您不需要執行任何動作即可啟用此功能。 
-- 已移除 ADSyncRunProfile，因為它已不再使用。 
-- 已變更您嘗試使用企業系統管理員或網域系統管理員帳戶來執行 AD DS 連接器帳戶時所看到的警告，以提供更多內容。 
-- 已新增新的 Cmdlet，以從連接器空間移除舊的 CSDelete 工具，並將其取代為新的 ADSyncCSObject Cmdlet。 ADSyncCSObject Cmdlet 會接受 CsObject 做為輸入。 您可以使用 ADSyncCSObject Cmdlet 來抓取這個物件。
+- 已新增群組物件的 mS-DS-ConsistencyGuid 功能支援。 這可供在樹系之間移動群組，或將 AD 中的群組重新連線到 AD 群組 objectID 已變更的 Azure AD，例如災害後重建 AD 伺服器時。 如需詳細資訊，請參閱[在樹系之間移動群組](how-to-connect-migrate-groups.md)。
+- 所有同步的群組上都會自動設定 mS-DS-ConsistencyGuid 屬性，您不需要執行任何動作即可啟用此功能。 
+- 已移除 Get-ADSyncRunProfile，因為已不再使用。 
+- 已變更在嘗試使用企業管理員或網域管理員帳戶作為 AD DS 連接器帳戶時所看到的警告，以提供更多內容。 
+- 已新增 Cmdlet 來從連接器空間移除物件，舊的 CSDelete.exe 工具會使用新的 Remove-ADSyncCSObject Cmdlet 來移除和取代。 Remove-ADSyncCSObject Cmdlet 接受 CsObject 作為輸入。 可使用 Get-ADSyncCSObject Cmdlet 擷取這個物件。
 
 >[!NOTE]
->舊的 CSDelete 工具已移除，並取代為新的 ADSyncCSObject Cmdlet 
+>舊 CSDelete.exe 工具已使用新 Remove-ADSyncCSObject Cmdlet 來移除和取代 
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-- 已修正在停用此功能之後，重新執行 Azure AD Connect wizard 時，[群組回寫樹系/OU 選取器] 中的錯誤。 
-- 引進新的錯誤頁面，如果有新的 [說明] 連結遺漏必要的 DCOM 登錄值，就會顯示此頁面。 資訊也會寫入記錄檔。 
-- 已修正建立 Azure Active Directory 同步處理帳戶的問題，在此情況下，啟用目錄擴充功能或 PHS 可能會失敗，因為在嘗試使用之前，帳戶尚未傳播到所有服務複本。 
-- 已修正未正確處理代理字元的同步錯誤壓縮公用程式中的 bug。 
-- 已修正自動升級中的錯誤，這會將伺服器保留在排程器暫停狀態。 
-- 已修正 [網域/OU 篩選] 頁面中的錯誤，這會移除網域的執行設定檔，而不需進行任何變更。
+- 已修正在停用群組回寫樹系/OU 選擇器之後，重新執行 Azure AD Connect 精靈時出現在此功能的 Bug。 
+- 已引進包含新說明連結的新錯誤頁面，如果遺漏必要的 DCOM 登錄值，就會顯示此頁面。 資訊也會寫入記錄檔。 
+- 已修正建立 Azure Active Directory 同步處理帳戶時的問題，其中啟用目錄延伸模組或 PHS 可能會失敗，因為帳戶尚未傳播到所有服務複本就嘗試使用。 
+- 已修正未正確處理 Surrogate 字元的同步錯誤壓縮公用程式中 Bug。 
+- 已修正自動升級時讓伺服器處於排程器暫停狀態的 Bug。 
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>發行狀態
-12/9/2019：發行以供下載。 無法透過自動升級來使用。
+2019/12/9：已發行，可供下載。 無法透過自動升級取得。
 ### <a name="new-features-and-improvements"></a>新功能和改進
-- 我們已更新 Azure AD Domain Services 的密碼雜湊同步處理，以適當地在 Kerberos 雜湊中考慮填補。  這會在從 AAD 到 Azure AD Domain Services 的密碼同步處理期間，提供效能改進。
-- 我們已新增驗證代理程式與服務匯流排之間可靠會話的支援。
-- 此版本會強制執行 TLS 1.2，以進行驗證代理程式與雲端服務之間的通訊。
-- 我們已在驗證代理程式與雲端服務之間新增 websocket 連線的 DNS 快取。
-- 我們新增了以雲端為目標的特定代理程式的功能，以測試代理程式連線能力。
+- 我們已更新 Azure AD Domain Services 的密碼雜湊同步，以在 Kerberos 雜湊中適當考慮填補。  這會提升從 AAD 到 Azure AD Domain Services 的密碼同步處理期間效能。
+- 我們已新增對驗證代理程式與服務匯流排之間可靠工作階段的支援。
+- 此版本會實施 TLS 1.2，以在驗證代理程式與雲端服務之間進行通訊。
+- 我們已新增驗證代理程式與雲端服務之間 WebSocket 連線的 DNS 快取。
+- 我們已新增從雲端指定特定代理程式目標的功能，以測試代理程式連線。
 
 ### <a name="fixed-issues"></a>已修正的問題
-- Release 1.4.18.0 有一個 bug，其中適用于 DSSO 的 PowerShell Cmdlet 使用登入 windows 認證，而不是執行 ps 時提供的系統管理員認證。 因此，無法透過 AADConnect 使用者介面在多個樹系中啟用 DSSO。 
-- 已修正透過 AADConnect 使用者介面在所有樹系中同時啟用 DSSO
+- 1\.4.18.0 版有一個 Bug，其中 DSSO 的 PowerShell Cmdlet 使用登入視窗認證，而不是執行 ps 時所提供的管理員認證。 因此，無法透過 AADConnect 使用者介面在多個樹系中啟用 DSSO。 
+- 已修正為可透過 AADConnect 使用者介面在所有樹系中同時啟用 DSSO
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>發行狀態
-11/08/2019：已發行以供下載。 無法透過自動升級來使用。
+2019/11/08：已發行，可供下載。 無法透過自動升級取得。
 
 >[!IMPORTANT]
->由於此 Azure AD Connect 版本中的內部架構變更，如果您使用 MSOnline PowerShell 管理 AD FS 信任關係設定，則必須將您的 MSOnline PowerShell 模組更新為版本1.1.183.57 或更高版本
+>由於此版本 Azure AD Connect 中的內部架構變更，如果您使用 MSOnline PowerShell 管理 AD FS 信任關係設定，則必須將 MSOnline PowerShell 模組更新為 1.1.183.57 版或更高版本
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-此版本修正了現有混合式 Azure AD 加入裝置的問題。 此版本包含可更正此問題的新裝置同步處理規則。
-請注意，這項規則變更可能會導致從 Azure AD 刪除過時的裝置。 這不是問題的原因，因為在條件式存取授權期間，Azure AD 不會使用這些裝置物件。 對於某些客戶，將透過此規則變更刪除的裝置數目可能會超過刪除閾值。 如果您看到刪除裝置物件的 Azure AD 超過匯出的刪除閾值，建議您允許刪除作業進行。 [如何允許刪除超過刪除閾值時的流程](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+此版本會修正已使用混合式 Azure AD 加入的現有裝置問題。 此版本包含可更正此問題的新裝置同步規則。
+請注意，這項規則變更可能會導致從 Azure AD 刪除淘汰的裝置。 這不會造成問題，因為 Azure AD 不會在條件式存取授權期間使用這些裝置物件。 對於某些客戶，透過此規則變更刪除的裝置數目可能會超過刪除閾值。 如果您看到在 Azure AD 中刪除的裝置物件數目超過匯出刪除閾值，則建議允許刪除作業進行。 [如何在超過刪除閾值時允許刪除作業進行](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
 
 ### <a name="release-status"></a>發行狀態
-9/28/2019：已發行，可自動升級為選取租使用者。 未提供下載。
+2019/9/28：已發行，可供自動升級來選取租用戶。 未提供下載。
 
-這個版本會修正某些伺服器從舊版自動升級到1.4.18.0 的錯誤，併發生自助式密碼重設（SSPR）和密碼回寫的問題。
+此版本會修正一個 Bug，其中從舊版自動升級至 1.4.18.0 的某些伺服器會遇到自助式密碼重設 (SSPR) 和密碼回寫問題。
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-在某些情況下，已自動升級至版本1.4.18.0 的伺服器不會在升級完成之後重新啟用自助式密碼重設和密碼回寫。 這個自動升級版本會修正該問題，並重新啟用自助式密碼重設和密碼回寫。
+在某些情況下，自動升級至 1.4.18.0 版的伺服器在完成升級之後並未啟用自助式密碼重設和密碼回寫。 此自動升級版本會修正該問題，並重新啟用自助式密碼重設和密碼回寫。
 
-我們已修正未正確處理代理字元的同步錯誤壓縮公用程式中的 bug。
+我們已修正未正確處理 Surrogate 字元的同步錯誤壓縮公用程式中 Bug。
 
 ## <a name="14180"></a>1.4.18.0
 
 >[!WARNING]
->我們正在調查事件，其中有些客戶在升級到此版本的 Azure AD Connect 之後，遇到現有混合式 Azure AD 加入的裝置問題。 我們建議已部署混合式 Azure AD join 的客戶，將升級為此版本的延遲，直到這些問題的根本原因完全瞭解並緩和為止。 系統會儘快提供詳細資訊。
+>我們正在對一個事件展開調查，其中某些客戶在升級至此版本的 Azure AD Connect 之後，其現有的混合式 Azure AD 聯結裝置發生問題。 建議已部署混合式 Azure AD Join 的客戶延遲升級至此版本，直到我們完全了解這些問題的根本原因並降低風險為止。 我們將盡快提供詳細資訊。
 
 >[!IMPORTANT]
->使用此版本的 Azure AD Connect 某些客戶可能會看到部分或所有的 Windows 裝置從 Azure AD 消失。 這不是問題的原因，因為在條件式存取授權期間，Azure AD 不會使用這些裝置身分識別。 如需詳細資訊，請參閱[瞭解 Azure AD Connect 1.4. x 裝置 disappearnce](reference-connect-device-disappearance.md)
+>使用此版本的 Azure AD Connect 時，某些客戶可能會看到部分或所有的 Windows 裝置從 Azure AD 消失。 這不會造成問題，因為 Azure AD 不會在條件式存取授權期間使用這些裝置身分識別。 如需詳細資訊，請參閱[了解 Azure AD Connect 1.4.xx.x 裝置消失](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>發行狀態
-9/25/2019：僅針對自動升級發行。
+2019/9/25：已發行，僅供自動升級。
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
-- 新的疑難排解工具有助於疑難排解「使用者未同步」、「群組未同步」或「群組成員未同步」案例。
-- 在 AAD Connect 疑難排解腳本中新增國家雲端支援 
-- 客戶應該會收到通知，表示已淘汰 MIIS_Service 已被取代的 WMI 端點。 所有 WMI 作業現在都應該透過 PS Cmdlet 來完成。
-- 在 AZUREADSSOACC 物件上重設限制委派以改善安全性
-- 新增/編輯同步處理規則時，如果規則中有任何屬性用於連接器架構中，但未新增至連接器，則會自動將屬性新增至連接器。 這也適用于規則所影響的物件類型。 如果有任何專案新增至連接器，連接器將會標示為在下一個同步處理週期進行完整匯入。
-- 新的 Azure AD Connect 部署不再支援使用企業或網域系統管理員做為連接器帳戶。 使用企業或網域系統管理員做為連接器帳戶的目前 AAD Connect 部署，將不會受到此版本的影響。
-- 在同步處理管理員中，會在建立/編輯/刪除規則時執行完整同步處理。 任何規則變更都會出現一個快顯視窗，通知使用者是否即將執行完整匯入或完整同步處理。
-- 已將密碼錯誤的緩和步驟新增至 [連接器 > 屬性 > 連線] 頁面
-- 已在 [連接器屬性] 頁面上新增 [同步處理服務管理員] 的取代警告。 此警告會通知使用者應該透過 Azure AD Connect wizard 進行變更。
-- 已新增使用者密碼原則問題的新錯誤。
-- 防止網域和 OU 篩選器進行群組篩選的設定不正確。 群組篩選會在所輸入群組的網域/OU 已篩選掉時顯示錯誤，並在問題解決之前，讓使用者無法繼續進行。
-- 使用者無法再于 Synchronization Service Manager UI 中建立 Active Directory Domain Services 或 Windows Azure Active Directory 的連接器。
+- 新的疑難排解工具可協助針對「使用者未同步」、「群組未同步」或「群組成員未同步」案例進行疑難排解。
+- 在 AAD Connect 疑難排解指令碼中新增國家雲端的支援 
+- 客戶應該會收到通知，指出現已移除 MIIS_Service 的已淘汰 WMI 端點。 所有 WMI 作業現在都應透過 PS Cmdlet 來完成。
+- 藉由重設 AZUREADSSOACC 物件上的限制委派來改善安全性
+- 新增/編輯同步處理規則時，如果規則中使用了連接器架構中未新增至連接器的任何屬性，則會自動將這些屬性新增至連接器。 這也適用於規則所影響的物件類型。 如有任何項目新增至連接器，則連接器將會標示為在下一個同步週期完整匯入。
+- 新的 Azure AD Connect 部署不再支援使用企業或網域管理員作為連接器帳戶。 使用企業或網域管理員作為連接器帳戶的目前 AAD Connect 部署，將不會受到此版本的影響。
+- 在同步處理管理員中，會在建立/編輯/刪除規則時執行完整同步。 任何規則變更都會出現一個快顯視窗來通知使用者是否要執行完整匯入或完整同步。
+- 已在 [連接器] > [屬性] > [連線] 頁面中新增密碼錯誤的風險降低步驟
+- 已在連接器屬性頁面中新增同步服務管理員的淘汰警告。 此警告會通知使用者應透過 Azure AD Connect 精靈進行變更。
+- 已在使用者的密碼原則問題中新增錯誤。
+- 防止錯誤設定依網域和 OU 篩選進行群組篩選。 若已篩選出所輸入群組的網域/OU，則群組篩選會顯示錯誤，讓使用者無法繼續進行，直到問題解決為止。
+- 使用者無法再於 Synchronization Service Manager UI 中建立 Active Directory Domain Services 或 Windows Azure Active Directory 的連接器。
 - 已修正 Synchronization Service Manager 中自訂 UI 控制項的可存取性。
-- 已針對 Azure AD Connect 中的所有登入方法啟用六個同盟管理工作。  （先前只有「更新 AD FS TLS/SSL 憑證」工作可用於所有登入）。
-- 已在將登入方法從同盟變更為 PHS 或 PTA 時新增警告，所有 Azure AD 網域和使用者都會轉換成受控驗證。
-- 已從「重設 Azure AD 和 AD FS 信任」工作移除權杖簽署憑證，並新增個別的子工作以更新這些憑證。
-- 新增名為「管理憑證」的同盟管理工作，其具有子工作可更新 AD FS 伺服器陣列的 TLS 或權杖簽署憑證。
-- 已新增名為「指定主伺服器」的新同盟管理子工作，可讓系統管理員為 AD FS 伺服器陣列指定新的主伺服器。
-- 新增名為「管理伺服器」的新同盟管理工作，其中包含可部署 AD FS 伺服器、部署 Web 應用程式 Proxy 伺服器，以及指定主伺服器的子工作。
-- 新增名為 "View federation configuration" 的同盟管理工作，以顯示目前的 AD FS 設定。  （因為這項新增，已從 [審查您的解決方案] 頁面中移除 AD FS 設定）。
+- 已針對 Azure AD Connect 中的所有登入方法啟用六個同盟管理工作  (先前只有「更新 AD FS TLS/SSL 憑證」工作可用於所有登入)。
+- 已新增警告，指出當登入方法從同盟變更為 PHS 或 PTA 時，所有 Azure AD 網域和使用者都會轉換成受控驗證。
+- 已從「重設 Azure AD 和 AD FS 信任」工作中移除權杖簽署憑證，並新增個別的子工作來更新這些憑證。
+- 已新增稱為「管理憑證」的新同盟管理工作，其中包含為 AD FS 伺服器陣列更新 TLS 或權杖簽署憑證的子工作。
+- 已新增稱為「指定主要伺服器」的新同盟管理子工作，其可讓系統管理員為 AD FS 伺服器陣列指定新的主要伺服器。
+- 已新增稱為「管理伺服器」的新同盟管理工作，其中包含部署 AD FS 伺服器、部署 Web 應用程式 Proxy 伺服器和指定主要伺服器的子工作。
+- 已新增稱為「檢視同盟設定」的新同盟管理工作來顯示目前 AD FS 設定  (由於這項新增，AD FS 設定已從 [檢閱方案] 頁面中移除)。
 
 ### <a name="fixed-issues"></a>已修正的問題
-- 針對接管其對應 contact 物件的使用者物件具有自我參考（例如，使用者是自己的管理員）的案例，已解決同步處理錯誤的問題。
-- [說明] 快顯視窗現在會顯示鍵盤焦點。
-- 若為自動升級，如果有任何衝突的應用程式從6小時執行，請將其終止並繼續升級。
-- 選取目錄延伸時，限制客戶可以為每個物件選取100的屬性數目。 這會防止在匯出期間發生錯誤，因為 Azure 的每個物件最多可有100個延伸模組屬性。
-- 已修正讓 AD 連線腳本更健全的錯誤（bug）
-- 已修正使用現有的具名管道 WCF 服務，讓 AADConnect 安裝在電腦上的錯誤（bug）更健全。
-- 針對不允許 ADSync 服務在一開始安裝時啟動的群組原則，改善診斷和疑難排解。
-- 已修正未正確寫入 Windows 電腦顯示名稱的錯誤（bug）。
-- 修正 Windows 電腦的 OS 類型寫入錯誤的錯誤（bug）。
-- 修正非 Windows 10 電腦意外同步的錯誤。 請注意，這項變更的影響是先前已同步處理的非 Windows 10 電腦現在將會刪除。 這不會影響任何功能，因為 Windows 電腦的同步處理僅用於混合式 Azure AD 網域加入，這僅適用于 Windows 10 裝置。
-- 已將數個新的（內部） Cmdlet 新增至 ADSync PowerShell 模組。
+- 已解決當接管其對應連絡人物件的使用者物件具有自我參考時 (例如使用者是自己的管理員)，所發生的同步錯誤問題。
+- 說明快顯視窗現在會在鍵盤焦點上顯示。
+- 針對自動升級，如有任何衝突的應用程式執行 6 小時，請將其終止並繼續升級。
+- 選取目錄延伸模組時，將客戶可選取的屬性數目限制為每個物件 100 個。 這會防止在匯出期間發生錯誤，因為 Azure 的每個物件最多可有 100 個延伸模組屬性。
+- 已修正 Bug，讓 AD 連線指令碼更健全
+- 已修正 Bug，讓電腦上使用現有具名管道 WCF 服務的 AADConnect 安裝更健全。
+- 針對不允許 ADSync 服務在一開始安裝時啟動的群組原則，已改善其診斷和疑難排解。
+- 已修正未正確寫入 Windows 電腦顯示名稱的 Bug。
+- 修正未正確寫入 Windows 電腦 OS 類型的 Bug。
+- 已修正非 Windows 10 電腦意外同步的 Bug。 請注意，這項變更的影響是現在會刪除先前已同步非 Windows 10 電腦。 這不會影響任何功能，因為 Windows 電腦的同步只會用於混合式 Azure AD 網域加入，而這僅適用於 Windows 10 裝置。
+- 已在 ADSync PowerShell 模組中新增數個新的 (內部) Cmdlet。
 
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->將 Azure AD Connect 從舊版升級至1.3.21.0 的已知問題，在此情況下，即使 Azure AD Connect 升級成功，O365 入口網站也不會反映更新的版本。
+>將 Azure AD Connect 從舊版升級至 1.3.21.0 已知有問題，其中即使 Azure AD Connect 升級成功，O365 入口網站也不會反映更新的版本。
 >
-> 若要解決此問題，您必須匯入**AdSync**模組，然後 `Set-ADSyncDirSyncConfiguration` 在 Azure AD Connect 伺服器上執行 PowerShell Cmdlet。  您可以使用下列步驟：
+> 若要解決此問題，則必須匯入 **AdSync** 模組，然後在 Azure AD Connect 伺服器上執行 `Set-ADSyncDirSyncConfiguration` PowerShell Cmdlet。  您可使用下列步驟：
 >
->1. 在系統管理員身分模式中開啟 PowerShell。
+>1. 在系統管理員模式下開啟 PowerShell。
 >2. 執行 `Import-Module "ADSync"`。
 >3. 執行 `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`。
  
 ### <a name="release-status"></a>發行狀態 
 
-05/14/2019：已發行以供下載
+2019/05/14：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題 
 
-- 已修正 Microsoft Azure Active Directory Connect 組建1.3.20.0 中存在的權限提高弱點。  在某些情況下，此弱點可能會讓攻擊者在特殊許可權帳戶的內容中執行兩個 PowerShell Cmdlet，並執行特殊許可權的動作。  此安全性更新會藉由停用這些 Cmdlet 來解決此問題。 如需詳細資訊，請參閱[安全性更新](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)。
+- 已修正 Microsoft Azure Active Directory Connect 組建 1.3.20.0 中存在的權限提高弱點。  在某些情況下，此弱點可能會讓攻擊者在特殊權限帳戶內容中執行兩個 PowerShell Cmdlet，並執行特殊權限動作。  此安全性更新會藉由停用這些 Cmdlet 來解決此問題。 如需詳細資訊，請參閱[安全性更新](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)。
 
 ## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>發行狀態 
 
-04/24/2019：已發行以供下載
+2019/04/24：已發行可供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進 
 
 - 新增網域重新整理的支援 
-- Exchange Mail 公用資料夾功能正式推出 
-- 改善服務失敗的 wizard 錯誤處理 
-- 已在 [連接器屬性] 頁面的 Synchronization Service Manager UI 上新增警告連結。 
+- Exchange 郵件公用資料夾功能已正式推出 
+- 改善服務失敗的精靈錯誤處理 
+- 已在連接器屬性頁面中新增 Synchronization Service Manager UI 的警告連結。 
 - 整合群組回寫功能現已正式推出 
-- 已改善 DC 缺少 LDAP 控制時的 SSPR 錯誤訊息 
-- 已在安裝期間新增 DCOM 登錄錯誤的診斷  
-- 改善 PHS RPC 錯誤的追蹤 
-- 允許來自子域的 EA 認證 
-- 允許在安裝期間輸入資料庫名稱（預設名稱為 ADSync）
-- 升級至 ADAL 3.19.8 以取得 Ping 的 WS-TRUST 修正，並新增新 Azure 實例的支援 
-- 修改群組同步處理規則，以將 samAccountName、DomainNetbios 和 DomainFQDN 傳送至雲端-宣告所需 
-- 已修改預設同步處理規則處理-請[在這裡](how-to-connect-fix-default-rules.md)閱讀更多資訊。
-- 已新增執行的新代理程式做為 windows 服務。 此代理程式名為「管理代理程式」，可讓 Azure AD Connect 伺服器更深入地進行遠端診斷，以協助 Microsoft 工程師在您開啟支援案例時進行疑難排解。 預設不會安裝和啟用此代理程式。  如需有關如何安裝和啟用代理程式的詳細資訊，請參閱[什麼是 Azure AD Connect 系統管理員代理程式？](whatis-aadc-admin-agent.md)。 
-- 已更新使用者授權合約（EULA） 
-- 已針對使用 AD FS 做為其登入類型的部署，新增自動升級支援。  這也會在升級過程中移除更新 AD FS Azure AD 信賴憑證者信任的需求。 
-- 新增了 Azure AD 信任管理工作，其中提供兩個選項： [分析/更新信任] 和 [重設信任]。 
-- 已將 AD FS 變更 Azure AD 信賴憑證者信任行為，使其一律使用-SupportMultipleDomain 參數（包括信任和 Azure AD 網域更新）。 
-- 已變更安裝新的 AD FS 伺服器陣列行為，使其需要 .pfx 憑證，方法是移除使用預先安裝憑證的選項。
-- 已更新安裝新的 AD FS 伺服器陣列工作流程，使其只允許部署 1 AD FS 和1個 WAP 伺服器。  在初始安裝之後，將會完成所有額外的伺服器。 
+- 已改善 DC 遺漏 LDAP 控制項時的 SSPR 錯誤訊息 
+- 已新增針對安裝期間 DCOM 登錄錯誤的診斷  
+- 已改善 PHS RPC 錯誤的追蹤 
+- 允許來自子網域的 EA 認證 
+- 允許在安裝期間輸入資料庫名稱 (預設名稱為 ADSync)
+- 升級至 ADAL 3.19.8 以取得 WS-Trust 的 Ping 修正，並為新的 Azure 執行個體新增支援 
+- 修改群組同步處理規則，以將 samAccountName、DomainNetbios 和 DomainFQDN 傳送至雲端 (宣告時需要) 
+- 已修改預設同步規則處理 (請在[這裡](how-to-connect-fix-default-rules.md)閱讀更多資訊)。
+- 已新增以 Windows 服務形式執行的新代理程式。 此代理程式稱為「管理代理程式」，可對 Azure AD Connect 伺服器進行更深入的遠端診斷，以協助 Microsoft 工程師在您開啟支援案例時進行疑難排解。 預設不會安裝和啟用此代理程式。  如需如何安裝和啟用此代理程式的詳細資訊，請參閱[什麼是 Azure AD Connect 管理代理程式](whatis-aadc-admin-agent.md)。 
+- 已更新使用者授權合約 (EULA) 
+- 已針對使用 AD FS 作為其登入類型的部署，新增自動升級支援。  這也會移除在升級程序中更新 AD FS Azure AD 信賴憑證者信任的需求。 
+- 已新增 Azure AD 信任管理工作，其中提供兩個選項：分析/更新信任和重設信任。 
+- 已變更 AD FS Azure AD 信賴憑證者信任行為，使其一律使用 -SupportMultipleDomain 參數 (包括信任和 Azure AD 網域更新)。 
+- 已變更安裝新的 AD FS 伺服器陣列行為，藉由移除使用預先安裝憑證的選項，使其需要 .pfx 憑證。
+- 已更新安裝新的 AD FS 伺服器陣列工作流程，使其只允許部署 1 個 AD FS 和 1 部 WAP 伺服器。  在初始安裝之後，將會完成所有額外的伺服器。 
 
 ### <a name="fixed-issues"></a>已修正的問題 
 
 - 修正 ADSync 服務的 SQL 重新連線邏輯 
-- 修正以允許使用空白的 SQL AOA DB 進行全新安裝 
-- 修正 PS 許可權腳本以精簡 GWB 許可權 
+- 修正以允許使用空的 SQL AOA DB 進行全新安裝 
+- 修正 PS 權限指令碼以精簡 GWB 權限 
 - 修正 LocalDB 的 VSS 錯誤  
-- 修正物件類型不在範圍中時的誤導錯誤訊息 
-- 已更正在伺服器上安裝 Azure AD PowerShell 可能會導致元件與 Azure AD Connect 發生衝突的問題。 
-- 已修正在 Synchronization Service Manager UI 中更新連接器認證時，預備伺服器上的 PHS 錯誤。 
+- 修正物件類型不在範圍內時讓人誤解的錯誤訊息 
+- 已更正在伺服器上安裝 Azure AD PowerShell 可能會導致組件與 Azure AD Connect 發生衝突的問題。 
+- 已修正在 Synchronization Service Manager UI 中更新連接器認證時，預備伺服器上的 PHS Bug。 
 - 已修正一些記憶體流失 
-- 其他 Autoupgrade 修正 
+- 其他自動升級修正 
 - 匯出和未確認匯入處理的其他修正 
-- 已修正在網域和 OU 篩選中處理反斜線的錯誤（bug） 
-- 已修正 ADSync 服務需要2分鐘以上的時間才會停止，並在升級時造成問題的問題。 
+- 已修正處理網域和 OU 篩選中反斜線的 Bug 
+- 已修正 ADSync 服務需要 2 分鐘以上的時間才會停止，並在升級時造成問題的問題。 
 
 
 
@@ -275,7 +277,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="release-status"></a>發行狀態
 
-12/18/2018：已發行以供下載
+2018/12/18：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
 
@@ -285,7 +287,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 ## <a name="12690"></a>1.2.69.0
 
 ### <a name="release-status"></a>發行狀態
-12/11/2018：已發行以供下載
+12/11/2018:已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
 此 Hotfix 組建讓使用者在啟用裝置回寫時，能為 RegisteredDevices 容器選取目標網域 (在指定的樹系內)。  在包含新的 [裝置選項] 功能的先前版本中 (1.1.819.0 – 1.2.68.0)，RegisteredDevices 容器被位置限制在樹系根，而不允許子網域。  此限制只在新部署中出現 (就地升級不受影響)。  
@@ -298,7 +300,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="release-status"></a>發行狀態 
 
-11/30/2018：已發行以供下載
+11/30/2018：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
 
@@ -310,7 +312,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="release-status"></a>發行狀態 
 
-2018/11/19：已發行，可供下載
+11/19/2018：已發行可供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
 
@@ -327,8 +329,8 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 
 - 變更屬性回寫的功能，確保裝載的語音信箱如預期般運作。  在某些情況下，Azure AD 會在回寫期間以 Null 值覆寫 msExchUcVoicemailSettings 屬性。  如果未設定雲端值，Azure AD 現在不會再清除此屬性的內部部署值。
-- 在 Azure AD Connect 精靈中新增診斷功能，可調查和識別 Azure AD 的連線能力問題。 您也可以使用 AdSyncAzureServiceConnectivity Cmdlet，直接透過 PowerShell 來執行這些相同的診斷。 
-- 在 Azure AD Connect 精靈中新增診斷功能，可調查和識別 AD 的連線能力問題。 您也可以使用 ADConnectivityTools PowerShell 模組中的 ConnectivityValidation 函式，直接透過 PowerShell 執行這些相同的診斷。  如需詳細資訊，請參閱[什麼是 ADConnectivityTool PowerShell 模組？](how-to-connect-adconnectivitytools.md)
+- 在 Azure AD Connect 精靈中新增診斷功能，可調查和識別 Azure AD 的連線能力問題。 使用 Test-AdSyncAzureServiceConnectivity Cmdlet 透過 PowerShell ，也可以直接執行這些相同的診斷。 
+- 在 Azure AD Connect 精靈中新增診斷功能，可調查和識別 AD 的連線能力問題。 使用 ADConnectivityTools PowerShell 模組中的 Start-ConnectivityValidation 函式透過 PowerShell，也可以直接執行這些相同的診斷。  如需詳細資訊，請參閱[什麼是 ADConnectivityTool PowerShell 模組？](how-to-connect-adconnectivitytools.md)
 - 針對混合式 Azure Active Directory Join 和裝置回寫，新增 AD 結構描述版本前置檢查 
 - 目錄擴充頁面屬性搜尋已變更為不區分大小寫。
 -   新增對 TLS 1.2 的完整支援。 這個版本支援在安裝 Azure AD Connect 的電腦上，停用所有其他通訊協定，而僅啟用 TLS 1.2。  如需詳細資訊，請參閱[針對 Azure AD Connect 強制執行 TLS 1.2](reference-connect-tls-enforcement.md)
@@ -365,7 +367,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
 - Azure AD Connect 中的 Ping Federate 整合現已正式運作。 [深入了解如何將 Azure AD 與 Ping Federate 同盟](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
-- 現在，每當進行更新時，Azure AD Connect 都會在 AD FS 中建立 Azure AD 信任的備份，並將其儲存在個別的檔案中，以備必要時可輕易還原。 [深入瞭解 Azure AD Connect 中的新功能和 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
+- 現在，每當進行更新時，Azure AD Connect 都會在 AD FS 中建立 Azure AD 信任的備份，並將其儲存在個別的檔案中，以備必要時可輕易還原。 [深入了解 Azure AD Connect 中的新功能與 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
 - 新的疑難排解工具可協助您進行變更主要電子郵件地址和在全域通訊清單中隱藏帳戶方面的疑難排解
 - Azure AD Connect 已更新，而包含最新的 SQL Server 2012 Native Client
 - 當您在「變更使用者登入」工作中將使用者登入切換為 [密碼雜湊同步處理] 或 [傳遞驗證] 時，依預設會啟用 [無縫單一登入] 核取方塊。
@@ -379,12 +381,12 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="fixed-issues"></a>已修正的問題 
 
-- 已修正 AAD Connect 伺服器在升級至 .NET 4.7.2 後會顯示高 CPU 使用率的錯誤
+- 已修正 AAD Connect 伺服器在升級至 .NET 4.7.2 之後會出現 CPU 使用率偏高狀況的 Bug
 - 已修正會間歇性對自動解決的 SQL 死結問題產生錯誤訊息的 Bug
 - 已修正 Sync Rules Editor 和 Sync Service Manager 的數個協助工具問題  
 - 已修正 Azure AD Connect 無法取得登錄設定資訊的 Bug
 - 已修正在使用者繼續使用/返回精靈時會產生問題的 Bug
-- 已修正 bug，以避免因為 wizard 中的多執行緒處理不正確而發生錯誤
+- 已修正因在精靈中不當處理多執行緒而發生錯誤的 Bug
 - 現在，[群組同步篩選] 頁面若在解析安全性群組時發生 LDAP 錯誤，Azure AD Connect 已會傳回完整的例外狀況。  轉介例外狀況的根本原因仍未知，且將視同個別的 Bug 來解決。
 -  已修正 SDK 和 NGC 金鑰 (WHfB 使用者/裝置物件的 ms-DS-KeyCredentialLink 屬性) 的權限未正確設定的 Bug。     
 - 已修正 'Set-ADSyncRestrictedPermissions’ 未正確呼叫的 Bug
@@ -410,8 +412,8 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 - 現在只會在 Azure AD Connect 精靈中管理裝置回寫組態。
 - 已新增稱為 ADSyncTools.psm1 的新 PowerShell 模組，其可針對 SQL 連線問題和各種其他疑難排解公用程式進行疑難排解。 [在此](tshoot-connect-tshoot-sql-connectivity.md)深入了解 ADSyncTools 模組。 
 - 已新增其他新工作「設定裝置選項」。 您可以使用此工作來設定下列兩項作業： 
-  - **加入混合式 Azure AD**：如果您的環境具有內部部署 AD 使用量，而且您也想要從 Azure Active Directory 所提供的功能受益，您可以實作已加入混合式 Azure AD 的裝置。 這些裝置既可以加入您的內部部署 Active Directory，也可以加入 Azure Active Directory。
-  - **裝置回寫**：裝置回寫是用來啟用以裝置為基礎的條件式存取，以 AD FS （2012 R2 或更高版本）的受保護裝置
+  - **混合式 Azure AD Join**：如果您的環境具有內部部署 AD 使用量，而且您也想要從 Azure Active Directory 所提供的功能受益，您可以實作混合式 Azure AD 已加入裝置。 這些裝置既可以加入您的內部部署 Active Directory，也可以加入 Azure Active Directory。
+  - **裝置回寫**：裝置回寫用於對 AD FS (2012 R2 或更高版本) 保護的裝置啟用裝置型條件式存取
 
     >[!NOTE] 
     > - 從自訂同步處理選項啟用裝置回寫的選項會呈現灰色。 
@@ -424,37 +426,37 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 - 這個版本會將 SQL Server Express 安裝更新為 SQL Server 2012 SP4，這個版本相較於其他版本，會提供數個安全性弱點的修正。  如需 SQL Server 2012 SP4 的詳細資訊，請參閱[這裡](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information)。
 - 同步規則處理：如果父系同步規則不再適用，就應取消套用沒有聯結條件的輸出聯結同步規則
 - 數個協助工具修正已套用至 Synchronization Service Manager UI 和 Sync Rules Editor
-- Azure AD Connect 精靈：如果 Azure AD Connect 位於工作群組中，則建立 AD 連接器帳戶時會發生錯誤
+- Azure AD Connect 精靈：當 Azure AD Connect 在工作群組中時，建立 AD 連接器帳戶發生錯誤
 - Azure AD Connect 精靈：每當 AD 網域與 Azure AD 已驗證網域有任何不符情形，就會在 Azure AD 登入頁面上顯示驗證核取方塊
 - 自動升級 PowerShell 修正程式，以在嘗試自動升級之後，在某些情況下正確設定自動升級狀態。
-- Azure AD Connect 精靈：已將遙測更新為擷取先前遺漏的資訊
-- Azure AD Connect 精靈：當您使用**變更使用者登入**工作以從 AD FS 切換至傳遞驗證時，已進行下列變更：
+- Azure AD Connect 精靈：已更新遙測，以擷取先前遺失的資訊
+- Azure AD Connect 精靈：當您使用**變更使用者登入**工作從 AD FS 切換至傳遞驗證時，已進行下列變更：
     - 在我們將網域從同盟轉換為受控之前，傳遞驗證代理程式是安裝在 Azure AD Connect 伺服器上，且已啟用傳遞驗證功能。
     - 使用者無法再從同盟轉換為受控。 只會轉換網域。
 - Azure AD Connect 精靈：當使用者 UPN 有 ' 特殊字元 Regex 更新可支援特殊字元時，AD FS 多網域 Regex 不正確
-- Azure AD Connect 精靈：若沒有變更，則會移除偽造的「設定來源錨點屬性」訊息 
-- Azure AD Connect 精靈：AD FS 支援雙重同盟案例
+- Azure AD Connect 精靈：移除沒有變更時的假性「設定來源錨點屬性」訊息 
+- Azure AD Connect 精靈：雙重同盟情節的 AD FS 支援
 - Azure AD Connect 精靈：將受控網域轉換為同盟網域時，不會針對新增的網域更新 AD FS 宣告
-- Azure AD Connect 精靈：在偵測已安裝的套件期間，我們找到過時的 Dirsync/Azure AD Sync/Azure AD Connect 相關產品。 我們現在將嘗試解除安裝過時的產品。
+- Azure AD Connect 精靈：在偵測已安裝的套件期間，我們找到過時的 Dirsync/Azure AD 同步/Azure AD Connect 相關產品。 我們現在將嘗試解除安裝過時的產品。
 - Azure AD Connect 精靈：當傳遞驗證代理程式安裝失敗，更正錯誤訊息對應
-- Azure AD Connect 精靈：已從 [網域 OU 篩選] 頁面中移除「組態」容器
+- Azure AD Connect 精靈：從 [網域 OU 篩選] 頁面移除 [組態] 容器
 - 同步處理引擎安裝：從同步處理引擎安裝 msi 移除偶爾會失敗的不必要舊版邏輯
-- Azure AD Connect 精靈：修正密碼雜湊同步處理的 [選擇性功能] 頁面上的快顯說明文字
-- 同步處理引擎執行階段：修正 CS 物件具有已匯入刪除和同步處理規則嘗試的案例，以重新佈建此物件。
+- Azure AD Connect 精靈：修正 [選用功能] 頁面上 [密碼雜湊同步] 的快顯說明文字
+- 同步處理引擎執行階段：修正 CS 物件具有匯入的刪除和同步處理規則嘗試重新佈建物件的情節。
 - 同步處理引擎執行階段：將線上連線疑難排解指南的說明連結，新增至匯入錯誤的事件記錄
-- 同步處理引擎執行階段：已減少同步處理排程器在列舉連接器時的記憶體使用量
-- Azure AD Connect 精靈：修正問題，以解決沒有 AD 讀取權限的自訂同步處理服務帳戶
-- Azure AD Connect 精靈：已改善網域和 OU 篩選選取項目的記錄功能
-- Azure AD Connect 精靈：AD FS 會將預設宣告新增至為 MFA 案例建立的同盟信任
-- Azure AD Connect 精靈：AD FS 部署 WAP：新增伺服器無法使用新的憑證
-- Azure AD Connect 精靈：未針對網域初始化 onPremCredentials 時的 DSSO 例外狀況 
+- 同步處理引擎執行階段：減少同步排程器在列舉連接器時的記憶體使用量
+- Azure AD Connect 精靈：修正解析自訂同步處理服務帳戶 (沒有 AD 讀取權限) 的問題
+- Azure AD Connect 精靈：改善網域登入和 OU 篩選選取項目
+- Azure AD Connect 精靈：AD FS 新增預設宣告至為 MFA 情節建立的同盟信任
+- Azure AD Connect 精靈：AD FS 部署 WAP：新增伺服器時無法使用新的憑證
+- Azure AD Connect 精靈：當 onPremCredentials 不是針對網域初始化時，發生 DSSO 例外狀況 
 - 優先從作用中使用者物件傳送 AD distinguishedName 屬性。
 - 已修正將第一個 OOB 同步規則的優先順序設定為 99 (而非 100) 時的外觀錯誤
 
 
 
 ## <a name="117510"></a>1.1.751.0
-4/12/2018 狀態：已發行，僅可供下載
+狀態 4/12/2018：已發行，僅供下載
 
 >[!NOTE]
 >這個版本是適用於 Azure AD Connect 的 Hotfix
@@ -469,19 +471,19 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 組態重試邏輯有問題，該問題會造成表示「已新增具有相同索引鍵的項目」的 ArgumentException。  這會導致所有重試作業失敗。
 
 ## <a name="117500"></a>1.1.750.0
-2018/3/22 狀態：已發行，可供自動升級和下載。
+狀態 3/22/2018：已發行，可供自動升級和下載。
 >[!NOTE]
 >當這個新的版本的升級完成時，會自動觸發 Azure AD 連接器的完整同步處理和完整匯入，以及 AD 連接器的完整同步處理。 由於這可能需要一些時間，視您的 Azure AD Connect 環境大小而定，所以請確定您已採取支援這項作業的必要步驟，否則請暫緩升級直到您找到方便執行這項作業的時間。
 
 >[!NOTE]
->有部分部署晚於 1.1.524.0 組建的租用戶，其自動升級功能遭錯誤停用。 若要確定 Azure AD Connect 執行個體是否仍可自動升級，請執行下列 PowerShell Cmdlet：“Set-ADSyncAutoUpgrade -AutoupGradeState Enabled”
+>有部分部署晚於 1.1.524.0 組建的租用戶，其自動升級功能遭錯誤停用。 若要確保您的 Azure AD Connect 執行個體仍符合 AutoUpgrade 的資格，請執行下列 PowerShell Cmdlet："Set-ADSyncAutoUpgrade -AutoupGradeState Enabled"
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>已修正的問題
 
 * 先前，自動升級狀態設為 [暫止]，則 Set-ADSyncAutoUpgrade Cmdlet 會封鎖自動升級。 此功能現在已變更，因此不會封鎖未來組建的自動升級。
-* 已將**使用者登入**頁面選項「密碼同步處理 」變更為「密碼雜湊同步處理 」。  Azure AD Connect 同步處理密碼雜湊，而不是密碼，以便與實際發生事件對應。  如需詳細資訊，請參閱[使用 Azure AD Connect 同步來執行密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)
+* 已將**使用者登入**頁面選項「密碼同步處理 」變更為「密碼雜湊同步處理 」。  Azure AD Connect 同步處理密碼雜湊，而不是密碼，以便與實際發生事件對應。  如需詳細資訊，請參閱[使用 Azure AD Connect 同步實作密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)
 
 ## <a name="117490"></a>1.1.749.0
 狀態：已發行給選定的客戶
@@ -567,18 +569,18 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 *   將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。 關於 SELF，我們需要將預設權限維持不變。
 *   指派這些特定權限：
 
-類型     | 名稱                          | 存取權               | 套用至
+類型     | 名稱                          | 存取               | 套用至
 ---------|-------------------------------|----------------------|--------------|
-允許    | 系統                        | 完全控制         | 此物件  |
-允許    | Enterprise Admins             | 完全控制         | 此物件  |
-允許    | Domain Admins                 | 完全控制         | 此物件  |
-允許    | Administrators                | 完全控制         | 此物件  |
-允許    | 企業網域控制站 | 清單內容        | 此物件  |
-允許    | 企業網域控制站 | 讀取所有屬性  | 此物件  |
-允許    | 企業網域控制站 | 讀取權限     | 此物件  |
-允許    | 驗證的使用者           | 清單內容        | 此物件  |
-允許    | 驗證的使用者           | 讀取所有屬性  | 此物件  |
-允許    | 驗證的使用者           | 讀取權限     | 此物件  |
+Allow    | 系統                        | 完全控制         | 此物件  |
+Allow    | 企業系統管理員             | 完全控制         | 此物件  |
+Allow    | 網域管理員                 | 完全控制         | 此物件  |
+Allow    | 系統管理員                | 完全控制         | 此物件  |
+Allow    | 企業網域控制站 | 清單內容        | 此物件  |
+Allow    | 企業網域控制站 | 讀取所有屬性  | 此物件  |
+Allow    | 企業網域控制站 | 讀取權限     | 此物件  |
+Allow    | 驗證的使用者           | 清單內容        | 此物件  |
+Allow    | 驗證的使用者           | 讀取所有屬性  | 此物件  |
+Allow    | 驗證的使用者           | 讀取權限     | 此物件  |
 
 若要加強 AD DS 帳戶的設定，您可以執行[這個 PowerShell 指令碼](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)。 PowerShell 指令碼會將上述權限指派給 AD DS 帳戶。
 
@@ -627,35 +629,35 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 狀態：2017 年 10 月 19 日
 
 > [!IMPORTANT]
-> Azure AD Connect 1.1.647.0 版與 Azure AD Connect Health Agent (for sync) 3.0.127.0 版之間有一個已知的相容性問題。 此問題會阻止 Health Agent 將有關 Azure AD Connect Synchronization Service 的健康情況資料 (包括物件同步處理錯誤和執行歷程記錄) 傳送至 Azure AD Health Service。 在手動將 Azure AD Connect 部署升級至 1.1.647.0 版之前，請驗證目前安裝在 Azure AD Connect 伺服器上的 Azure AD Connect Health Agent 版本。 若要這麼做，請移至 [控制台] → [新增] [*移除程式*]，並尋找 [應用程式*Microsoft Azure AD Connect Health 代理程式進行同步處理]*。如果它的版本是3.0.127.0，建議您等待下一個 Azure AD Connect 版本，然後再升級。 如果 Health Agent 版本不是 3.0.127.0，則可繼續進行手動、就地升級。 請注意，此問題並不會影響轉移升級或全新安裝 Azure AD Connect 的客戶。
+> Azure AD Connect 1.1.647.0 版與 Azure AD Connect Health Agent (for sync) 3.0.127.0 版之間有一個已知的相容性問題。 此問題會阻止 Health Agent 將有關 Azure AD Connect Synchronization Service 的健康情況資料 (包括物件同步處理錯誤和執行歷程記錄) 傳送至 Azure AD Health Service。 在手動將 Azure AD Connect 部署升級至 1.1.647.0 版之前，請驗證目前安裝在 Azure AD Connect 伺服器上的 Azure AD Connect Health Agent 版本。 作法為移至 [控制台] → [新增或移除程式]，然後尋找應用程式 [Microsoft Azure AD Connect Health Agent for Sync]。若其版本為 3.0.127.0，建議您先等待下一個 Azure AD Connect 版本可用時，再進行升級。 如果 Health Agent 版本不是 3.0.127.0，則可繼續進行手動、就地升級。 請注意，此問題並不會影響轉移升級或全新安裝 Azure AD Connect 的客戶。
 >
 >
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>已修正的問題
-* 已修正 Azure AD Connect 精靈中「變更使用者登入」** 工作發生的問題：
+* 已修正 Azure AD Connect 精靈中「變更使用者登入」工作發生的問題：
 
-  * 當現有的 Azure AD Connect 部署**已啟用**密碼同步化，而且您正要嘗試將使用者登入方法設定為「傳遞驗證」** 時，就會發生此問題。 在套用變更之前，精靈不正確地顯示「停用密碼同步化」** 提示。 不過，在套用變更之後，密碼同步化仍維持啟用狀態。 透過此修正，精靈不再顯示此提示。
+  * 當現有的 Azure AD Connect 部署**已啟用**密碼同步化，而且您正要嘗試將使用者登入方法設定為「傳遞驗證」時，就會發生此問題。 在套用變更之前，精靈不正確地顯示「停用密碼同步化」提示。 不過，在套用變更之後，密碼同步化仍維持啟用狀態。 透過此修正，精靈不再顯示此提示。
 
-  * 根據設計，當您使用「變更使用者登入」** 工作，更新使用者登入方法時，精靈不會停用密碼同步化。 這是為了避免中斷想要保留密碼同步化的客戶，因為他們即使將啟用傳遞驗證或同盟作為其主要使用者登入方法，也想要保留密碼同步化。
+  * 根據設計，當您使用「變更使用者登入」工作，更新使用者登入方法時，精靈不會停用密碼同步化。 這是為了避免中斷想要保留密碼同步化的客戶，因為他們即使將啟用傳遞驗證或同盟作為其主要使用者登入方法，也想要保留密碼同步化。
   
-  * 如果想要在更新使用者登入方法之後停用密碼同步化，您必須在精靈中執行「自訂同步處理設定」** 工作。 當瀏覽至 [選用功能]** 頁面時，請取消核取 [密碼同步化]** 選項。
+  * 如果想要在更新使用者登入方法之後停用密碼同步化，您必須在精靈中執行「自訂同步處理設定」工作。 當瀏覽至 [選用功能] 頁面時，請取消核取 [密碼同步化] 選項。
   
-  * 請注意，如果您嘗試啟用/停用無縫單一登入，也會發生相同的問題。 尤其，現有的 Azure AD Connect 部署已啟用密碼同步化，而且已將使用者登入方法設定為「傳遞驗證」**。 當使用者登入方法仍設定為 [傳遞驗證]** 時，您嘗試使用「變更使用者登入」** 工作，核取/取消核取 [啟用無縫單一登入] 選項。 在套用變更之前，精靈不正確地顯示「停用密碼同步化」** 提示。 不過，在套用變更之後，密碼同步化仍維持啟用狀態。 透過此修正，精靈不再顯示此提示。
+  * 請注意，如果您嘗試啟用/停用無縫單一登入，也會發生相同的問題。 尤其，現有的 Azure AD Connect 部署已啟用密碼同步化，而且已將使用者登入方法設定為「傳遞驗證」。 當使用者登入方法仍設定為 [傳遞驗證] 時，您嘗試使用「變更使用者登入」工作，核取/取消核取 [啟用無縫單一登入] 選項。 在套用變更之前，精靈不正確地顯示「停用密碼同步化」提示。 不過，在套用變更之後，密碼同步化仍維持啟用狀態。 透過此修正，精靈不再顯示此提示。
 
-* 已修正 Azure AD Connect 精靈中「變更使用者登入」** 工作發生的問題：
+* 已修正 Azure AD Connect 精靈中「變更使用者登入」工作發生的問題：
 
-  * 當現有的 Azure AD Connect 部署**已停用**密碼同步化，而且您正要嘗試將使用者登入方法設定為「傳遞驗證」** 時，就會發生此問題。 套用變更時，精靈會同時啟用傳遞驗證和密碼同步化。 透過此修正，精靈不再啟用密碼同步化。
+  * 當現有的 Azure AD Connect 部署**已停用**密碼同步化，而且您正要嘗試將使用者登入方法設定為「傳遞驗證」時，就會發生此問題。 套用變更時，精靈會同時啟用傳遞驗證和密碼同步化。 透過此修正，精靈不再啟用密碼同步化。
 
-  * 以前，密碼同步化是啟用傳遞驗證的必要條件。 當您將使用者登入方法設定為「傳遞驗證」** 時，精靈會同時啟用傳遞驗證和密碼同步化。 最近，已移除密碼同步化作為必要條件。 在 Azure AD Connect 1.1.557.0 版中，已變更 Azure AD Connect ，以便在您將使用者登入方法設定為「傳遞驗證」** 時不啟用密碼同步化。 不過，此變更僅適用於 Azure AD Connect 安裝。 透過此修正，相同的變更也適用於「變更使用者登入」** 工作。
+  * 以前，密碼同步化是啟用傳遞驗證的必要條件。 當您將使用者登入方法設定為「傳遞驗證」時，精靈會同時啟用傳遞驗證和密碼同步化。 最近，已移除密碼同步化作為必要條件。 在 Azure AD Connect 1.1.557.0 版中，已變更 Azure AD Connect ，以便在您將使用者登入方法設定為「傳遞驗證」時不啟用密碼同步化。 不過，此變更僅適用於 Azure AD Connect 安裝。 透過此修正，相同的變更也適用於「變更使用者登入」工作。
   
-  * 請注意，如果您嘗試啟用/停用無縫單一登入，也會發生相同的問題。 尤其，現有的 Azure AD Connect 部署已停用密碼同步化，而且已將使用者登入方法設定為「傳遞驗證」**。 當使用者登入方法仍設定為 [傳遞驗證]** 時，您嘗試使用「變更使用者登入」** 工作，核取/取消核取 [啟用無縫單一登入] 選項。 套用變更時，精靈會啟用密碼同步化。 透過此修正，精靈不再啟用密碼同步化。 
+  * 請注意，如果您嘗試啟用/停用無縫單一登入，也會發生相同的問題。 尤其，現有的 Azure AD Connect 部署已停用密碼同步化，而且已將使用者登入方法設定為「傳遞驗證」。 當使用者登入方法仍設定為 [傳遞驗證] 時，您嘗試使用「變更使用者登入」工作，核取/取消核取 [啟用無縫單一登入] 選項。 套用變更時，精靈會啟用密碼同步化。 透過此修正，精靈不再啟用密碼同步化。 
 
-* 已修正導致 Azure AD Connect 升級失敗的問題，錯誤為「無法升級同步處理服務」**。 此外，啟動同步處理服務時，不再出現事件錯誤「服務無法啟動，因為資料庫的版本比已安裝的二進位檔版本還新」**。 當執行升級的系統管理員對 Azure AD Connect 正在使用的 SQL Server 沒有 sysadmin 權限，就會發生此問題。 透過此修正，Azure AD Connect 只需要系統管理員在升級期間對 ADSync 資料庫具有 db_owner 權限。
+* 已修正導致 Azure AD Connect 升級失敗的問題，錯誤為「無法升級同步處理服務」。 此外，啟動同步處理服務時，不再出現事件錯誤「服務無法啟動，因為資料庫的版本比已安裝的二進位檔版本還新」。 當執行升級的系統管理員對 Azure AD Connect 正在使用的 SQL Server 沒有 sysadmin 權限，就會發生此問題。 透過此修正，Azure AD Connect 只需要系統管理員在升級期間對 ADSync 資料庫具有 db_owner 權限。
 
 * 已修正 Azure AD Connect 升級問題，此問題影響了已啟用[無縫單一登入](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)的客戶。 在 Azure AD Connect 升級之後，無縫單一登入在 Azure AD Connect 精靈中不正確地顯示為已停用，即使功能仍保持啟用狀態且完全正常運作。 透過此修正，現在功能在精靈中正確地顯示為已啟用。
 
-* 已修正下列問題：導致 Azure AD Connect 精靈在 [準備好設定]** 頁面上永遠顯示「設定來源錨點」** 提示，即使未進行任何與來源錨點相關的變更。
+* 已修正下列問題：導致 Azure AD Connect 精靈在 [準備好設定] 頁面上永遠顯示「設定來源錨點」提示，即使未進行任何與來源錨點相關的變更。
 
 * 在執行 Azure AD connect 的手動就地升級時，需要客戶提供對應 Azure AD 租用戶的全域管理員認證。 以前，即使全域管理員的認證屬於不同的 Azure AD 租用戶，升級仍能繼續進行。 雖然升級似乎完全成功，但是某些設定由於升級而未正確地保存。 透過這項變更，如果提供的認證與 Azure AD 租用戶不符，精靈就會阻止升級繼續進行。
 
@@ -667,7 +669,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同步處理
 > [!NOTE]
-> 注意：同步處理服務具有 WMI 介面，可讓您開發專屬的自訂排程器。 此介面現在已被取代，而且將從 2018 年 6 月 30 日之後提供的 Azure AD Connect 版本中移除。 想要自訂同步處理排程的客戶應該使用[內建](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)的排程器。
+> 注意:同步處理服務具有 WMI 介面，可讓您開發專屬的自訂排程器。 此介面現在已被取代，而且將從 2018 年 6 月 30 日之後提供的 Azure AD Connect 版本中移除。 想要自訂同步處理排程的客戶應使用[內建排程器](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)。
 
 #### <a name="fixed-issues"></a>已修正的問題
 * 當 Azure AD Connect 精靈建立從內部部署 Active Directory 同步處理變更所需的 AD 連接器帳戶時，它不會正確地將讀取 PublicFolder 物件所需的權限指派給帳戶。 此問題會同時影響快速安裝和自訂安裝。 這項變更會修正此問題。
@@ -681,7 +683,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS 管理
 #### <a name="fixed-issue"></a>已修正的問題
-* 已修正與使用 [ms-DS-ConsistencyGuid 作為來源錨點](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能相關的問題。 此問題會影響已將「與 AD FS 同盟」** 設定為使用者登入方法的客戶。 當您在精靈中執行「設定來源錨點」** 工作時，Azure AD Connect 會切換成使用 * ms-DS-ConsistencyGuid 作為 immutableId 的來源屬性。 進行這項變更時，Azure AD Connect 會嘗試更新 AD FS 中 ImmutableId 的宣告規則。 不過，這個步驟失敗，因為 Azure AD Connect 沒有設定 AD FS 所需的系統管理員認證。 透過此修正，現在當您執行「設定來源錨點」** 工作時，Azure AD Connect 會提示您輸入 AD FS 的系統管理員認證。
+* 已修正與使用 [ms-DS-ConsistencyGuid 作為來源錨點](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能相關的問題。 此問題會影響已將「與 AD FS 同盟」設定為使用者登入方法的客戶。 當您在精靈中執行「設定來源錨點」工作時，Azure AD Connect 會切換成使用 * ms-DS-ConsistencyGuid 作為 immutableId 的來源屬性。 進行這項變更時，Azure AD Connect 會嘗試更新 AD FS 中 ImmutableId 的宣告規則。 不過，這個步驟失敗，因為 Azure AD Connect 沒有設定 AD FS 所需的系統管理員認證。 透過此修正，現在當您執行「設定來源錨點」工作時，Azure AD Connect 會提示您輸入 AD FS 的系統管理員認證。
 
 
 
@@ -691,7 +693,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>已知問題
-* 有一個已知題，導致 Azure AD Connect 升級失敗，錯誤為「無法升級同步處理服務」**。 此外，啟動同步處理服務時，不再出現事件錯誤「服務無法啟動，因為資料庫的版本比已安裝的二進位檔版本還新」**。 當執行升級的系統管理員對 Azure AD Connect 正在使用的 SQL Server 沒有 sysadmin 權限，就會發生此問題。 Dbo 權限還不夠。
+* 有一個已知題，導致 Azure AD Connect 升級失敗，錯誤為「無法升級同步處理服務」。 此外，啟動同步處理服務時，不再出現事件錯誤「服務無法啟動，因為資料庫的版本比已安裝的二進位檔版本還新」。 當執行升級的系統管理員對 Azure AD Connect 正在使用的 SQL Server 沒有 sysadmin 權限，就會發生此問題。 Dbo 權限還不夠。
 
 * Azure AD Connect 升級有個已知問題，會影響已啟用[無縫單一登入](how-to-connect-sso.md)的客戶。 Azure AD Connect 升級之後，即使該功能維持啟用，在精靈中也會呈現為停用。 未來的版本將提供此問題的修正。 若客戶擔憂該顯示問題，可在精靈中啟用無縫單一登入，手動修正問題。
 
@@ -723,7 +725,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS 管理
 #### <a name="fixed-issues"></a>已修正的問題
-* AD 準備 PowerShell 模組中的 ADSyncNGCKeysWriteBack Cmdlet 不正確地將 Acl 套用至裝置註冊容器，因此只會繼承現有的許可權。  已經過更新，因此同步服務帳戶會有正確的權限。
+* AD prep PowerShell 模組中的 Initialize-ADSyncNGCKeysWriteBack Cmdlet 並未正確地將 ACL 套用至裝置註冊容器，因此僅會繼承現有的權限。  已經過更新，因此同步服務帳戶會有正確的權限。
 
 #### <a name="new-features-and-improvements"></a>新功能和改進
 * AAD Connect 驗證 ADFS 登入工作已更新，因此會依照 Microsoft Online 驗證登入，而非僅從 ADFS 擷取權杖。
@@ -744,7 +746,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 已修正導致現成同步處理規則 “Out to AD - User ImmutableId” 遭到移除的問題：
 
-  * 升級 Azure AD Connect 時，或是使用 Azure AD Connect 精靈中的工作選項 [更新同步處理設定]** 來更新Azure AD Connect 同步處理設定時，即會發生此問題。
+  * 升級 Azure AD Connect 時，或是使用 Azure AD Connect 精靈中的工作選項 [更新同步處理設定] 來更新Azure AD Connect 同步處理設定時，即會發生此問題。
   
   * 此同步處理規則適用於已啟用 [ms-DS-ConsistencyGuid 作為來源錨點功能](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)的客戶。 此功能已在版本 1.1.524.0 和之後版本中引入。 移除同步處理規則之後，Azure AD Connect 就不再使用 ObjectGuid 屬性值填入內部部署 AD ms-DS-ConsistencyGuid 屬性。 它無法防止將新的使用者佈建至 Azure AD。
   
@@ -756,9 +758,9 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   
   * 此修正可防止在升級期間發生此問題。 不過，它不會針對已受到此問題影響的現有客戶還原優先順序值。 未來將提供個別的修正，以協助進行還原。
 
-* 已修正即使已啟用 OU 型篩選，Azure AD Connect 精靈中的 [[網域和 OU 篩選] 畫面](how-to-connect-install-custom.md#domain-and-ou-filtering)還是會顯示已選取 [同步所有網域及 OU]** 選項的問題。
+* 已修正即使已啟用 OU 型篩選，Azure AD Connect 精靈中的 [[網域和 OU 篩選] 畫面](how-to-connect-install-custom.md#domain-and-ou-filtering)還是會顯示已選取 [同步所有網域及 OU] 選項的問題。
 
-*   已修正導致 Synchronization Service Manager 中的 [[設定目錄分割] 畫面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)在按一下 [重新整理]** 按鈕時傳回錯誤的問題。 錯誤訊息是「重新整理網域時發生錯誤：無法將物件從 'System.Collections.ArrayList' 類型轉換為 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' 類型。」** 將新的 AD 網域新增至現有的 AD 樹系，而且您嘗試使用 [重新整理] 按鈕更新 Azure AD Connect 時，就會發生此錯誤。
+*   已修正導致 Synchronization Service Manager 中的 [[設定目錄分割] 畫面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)在按一下 [重新整理] 按鈕時傳回錯誤的問題。 錯誤訊息是 [重新整理網域時發生錯誤:無法將型別 'System.Collections.ArrayList' 的物件轉換為型別 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject']。 將新的 AD 網域新增至現有的 AD 樹系，而且您嘗試使用 [重新整理] 按鈕更新 Azure AD Connect 時，就會發生此錯誤。
 
 #### <a name="new-features-and-improvements"></a>新功能和改進
 
@@ -776,7 +778,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   >[自動升級] 功能的範圍擴充會影響使用 Azure AD Connect 組建 1.1.105.0 和之後版本的客戶。 如果您不想讓 Azure AD Connect 伺服器自動升級，則必須在 Azure AD Connect 伺服器上執行下列 Cmdlet：`Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`。 如需啟用/停用自動升級的詳細資訊，請參閱 [Azure AD Connect︰自動升級](how-to-connect-install-automatic-upgrade.md)一文。
 
 ## <a name="115580"></a>1.1.558.0
-狀態：將不會發行。 這個組建中的變更隨附於版本 1.1.561.0 中。
+狀態：不會發行。 這個組建中的變更隨附於版本 1.1.561.0 中。
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -784,9 +786,9 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 已修正導致在更新 OU 型篩選設定時，讓現成同步處理規則 “Out to AD - User ImmutableId” 遭到移除的問題。 需要有此同步處理規則，才能將 [ms-DS-ConsistencyGuid 作為來源錨點功能](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。
 
-* 已修正即使已啟用 OU 型篩選，Azure AD Connect 精靈中的 [[網域和 OU 篩選] 畫面](how-to-connect-install-custom.md#domain-and-ou-filtering)還是會顯示已選取 [同步所有網域及 OU]** 選項的問題。
+* 已修正即使已啟用 OU 型篩選，Azure AD Connect 精靈中的 [[網域和 OU 篩選] 畫面](how-to-connect-install-custom.md#domain-and-ou-filtering)還是會顯示已選取 [同步所有網域及 OU] 選項的問題。
 
-*   已修正導致 Synchronization Service Manager 中的 [[設定目錄分割] 畫面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)在按一下 [重新整理]** 按鈕時傳回錯誤的問題。 錯誤訊息是「重新整理網域時發生錯誤：無法將物件從 'System.Collections.ArrayList' 類型轉換為 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' 類型。」** 將新的 AD 網域新增至現有的 AD 樹系，而且您嘗試使用 [重新整理] 按鈕更新 Azure AD Connect 時，就會發生此錯誤。
+*   已修正導致 Synchronization Service Manager 中的 [[設定目錄分割] 畫面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)在按一下 [重新整理] 按鈕時傳回錯誤的問題。 錯誤訊息是 [重新整理網域時發生錯誤:無法將型別 'System.Collections.ArrayList' 的物件轉換為型別 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject']。 將新的 AD 網域新增至現有的 AD 樹系，而且您嘗試使用 [重新整理] 按鈕更新 Azure AD Connect 時，就會發生此錯誤。
 
 #### <a name="new-features-and-improvements"></a>新功能和改進
 
@@ -815,14 +817,14 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * 已修正 Initialize-ADSyncDomainJoinedComputerSync Cmdlet 的問題，此問題會導致現有服務連接點物件上設定的驗證網域遭到變更，即使它仍是有效網域也一樣。 當您的 Azure AD 租用戶具有多個驗證網域可用來設定服務連接點時，就會發生此問題。
 
 #### <a name="new-features-and-improvements"></a>新功能和改進
-* 密碼回寫現在適用於透過 Microsoft Azure Government 雲端和 Microsoft Cloud Germany 進行預覽。 如需 Azure AD Connect 支援不同服務執行個體的詳細資訊，請參閱 [Azure AD Connect：執行個體的特殊考量](reference-connect-instances.md)。
+* 密碼回寫現在適用於透過 Microsoft Azure Government 雲端和 Microsoft Cloud Germany 進行預覽。 如需 Azure AD Connect 對不同服務執行個體之支援的詳細資訊，請參閱 [Azure AD Connect：執行個體的特殊考量](reference-connect-instances.md)一文。
 
 * Initialize-ADSyncDomainJoinedComputerSync Cmdlet 現在有一個名為 AzureADDomain 的新選擇性參數。 這個參數可讓您指定要使用哪一個驗證網域來設定服務連接點。
 
 ### <a name="pass-through-authentication"></a>傳遞驗證
 
 #### <a name="new-features-and-improvements"></a>新功能和改進
-* 傳遞驗證所需的代理程式名稱已從 Microsoft Azure AD 應用程式 Proxy 連接器** 變更為 Microsoft Azure AD Connect 驗證代理程式**。
+* 傳遞驗證所需的代理程式名稱已從 Microsoft Azure AD 應用程式 Proxy 連接器變更為 Microsoft Azure AD Connect 驗證代理程式。
 
 * 啟用傳遞驗證預設不再啟用密碼雜湊同步處理。
 
@@ -838,9 +840,9 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同步處理
 
 #### <a name="known-issue"></a>已知問題
-* 有一個問題會影響使用[OU 型篩選](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)與 Azure AD Connect 同步處理的客戶。當您流覽至 Azure AD Connect wizard 中的 [[網域和 OU 篩選] 頁面](how-to-connect-install-custom.md#domain-and-ou-filtering)時，預期會有下列行為：
+* 有個問題會影響搭配 Azure AD Connect 同步處理使用 [OU 型篩選](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)的客戶。當您在 Azure AD Connect 精靈中瀏覽至 [[網域和 OU 篩選] 頁面](how-to-connect-install-custom.md#domain-and-ou-filtering)時，預期會有下列行為：
   * 如果已啟用 OU 型篩選，即會選取 **[同步所選取的網域及 OU] 選項**。
-  * 否則，會選取 [同步所有網域及 OU]**** 選項。
+  * 否則，會選取 [同步所有網域及 OU] 選項。
 
 發生的問題是當您執行精靈時，一律會選取 **[同步所有網域及 OU] 選項**。  即使先前已設定 OU 型篩選，還是會發生此問題。 在儲存任何 AAD Connect 設定變更之前，請確定**已選取 [同步所選取的網域及 OU] 選項**，並確認已重新啟用所有需要同步處理的 OU。 否則，將會停用 OU 型篩選。
 
@@ -864,7 +866,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="new-features-and-improvements"></a>新功能和改進
 
 * 在過去，[ms-DS-ConsistencyGuid 作為來源錨點](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能僅適用於新的部署。 現在，它適用於現有的部署。 具體而言：
-  * 若要存取此功能，請開啟 Azure AD Connect 精靈，然後選擇 [更新來源錨點]** 選項。
+  * 若要存取此功能，請開啟 Azure AD Connect 精靈，然後選擇 [更新來源錨點] 選項。
   * 只有使用 objectGuid 作為 sourceAnchor 屬性的現有部署才能看見此選項。
   * 設定此選項時，精靈會驗證內部部署 Active Directory 中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中沒有任何使用者物件設定了此屬性，精靈就會使用 ms-DS-ConsistencyGuid 作為 sourceAnchor 屬性。 如果目錄中有一或多個使用者物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，因此，不適合將其作為 sourceAnchor 屬性，並且不允許來源錨點變更繼續執行。 如果您確定現有應用程式並沒有使用此屬性，則請連絡支援人員，以了解該如何隱藏此錯誤。
 
@@ -941,8 +943,8 @@ CBool(
 #### <a name="issues-fixed"></a>已修正的問題
 
 * 下列 URL 是由 Azure AD 所引進的新 WS-同盟端點，可改善驗證中斷的復原，而且將會新增至內部部署 AD FS 信賴憑證者信任設定中：
-  * HTTPs： \/ /ests.login.microsoftonline.com/login.srf
-  * HTTPs： \/ /stamp2.login.microsoftonline.com/login.srf
+  * https:\//ests.login.microsoftonline.com/login.srf
+  * https:\//stamp2.login.microsoftonline.com/login.srf
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   
@@ -964,16 +966,16 @@ CBool(
 Azure AD Connect 同步處理
 
 * 已修正導致下列情況的問題：即使客戶已使用 Set-ADSyncAutoUpgrade Cmdlet 停用此功能，Azure AD Connect 伺服器仍發生自動升級。 透過此修正，伺服器上的自動升級程序仍會定期檢查升級，但下載的安裝程式會接受自動升級組態。
-* 在 DirSync 就地升級期間，Azure AD Connect 會建立 Azure AD 服務帳戶，以供 Azure AD 連接器用來與 Azure AD 同步處理。 建立帳戶之後，Azure AD Connect 會使用此帳戶向 Azure AD 進行驗證。 有時候，驗證會因為暫時性問題而失敗，這會導致 DirSync 就地升級失敗，並出錯「實行設定 AAD 同步工作時發生錯誤︰AADSTS50034︰若要登入此應用程式，必須將帳戶新增至 xxx.onmicrosoft.com 目錄」錯誤。** 為了改善 DirSync 升級的彈性，Azure AD Connect 現在會重試驗證步驟。
+* 在 DirSync 就地升級期間，Azure AD Connect 會建立 Azure AD 服務帳戶，以供 Azure AD 連接器用來與 Azure AD 同步處理。 建立帳戶之後，Azure AD Connect 會使用此帳戶向 Azure AD 進行驗證。 有時候，驗證會因為暫時性問題而失敗，這又導致 DirSync 就地升級失敗，發生錯誤 [執行設定 AAD 同步工作時發生錯誤:*AADSTS50034:* 若要登入此應用程式，該帳戶必須新增至 xxx.onmicrosoft.com 目錄]。 為了改善 DirSync 升級的彈性，Azure AD Connect 現在會重試驗證步驟。
 * 組建 443 發生問題，其導致 DirSync 就地升級成功，但未建立目錄同步作業所需的執行設定檔。 修復邏輯已包含在 Azure AD Connect 的此組建中。 當客戶升級到此組建時，Azure AD Connect 會偵測遺漏的執行設定檔並加以建立。
-* 已修正導致下列情況的問題：密碼同步處理程序無法啟動，出現事件識別碼 6900 和「已新增具有相同索引鍵的項目」** 錯誤。 如果您將 OU 篩選組態更新為包含 AD 組態分割，就會發生此問題。 若要修正此問題，密碼同步處理程序現在只會從 AD 網域分割同步處理密碼變更。 系統會略過非網域分割，例如組態分割。
+* 已修正導致下列情況的問題：密碼同步處理程序無法啟動，出現事件識別碼 6900 和「已新增具有相同索引鍵的項目」錯誤。 如果您將 OU 篩選組態更新為包含 AD 組態分割，就會發生此問題。 若要修正此問題，密碼同步處理程序現在只會從 AD 網域分割同步處理密碼變更。 系統會略過非網域分割，例如組態分割。
 * 在快速安裝期間，Azure AD Connect 會建立內部部署 AD DS 帳戶，以供 AD 連接器用來與內部部署 AD 通訊。 先前建立此帳戶時，PASSWD_NOTREQD 旗標設定於 user-Account-Control 屬性上，而隨機密碼會設定於此帳戶上。 現在，Azure AD Connect 會在密碼設定於帳戶之後，明確地移除 PASSWD_NOTREQD 旗標。
-* 已修正導致下列情況的問題：在內部部署 AD 結構描述中找到 mailNickname 屬性，但該屬性並未繫結至 AD 使用者物件類別時，DirSync 升級失敗，並出現「嘗試取得應用程式鎖定的 SQL Server 發生死結」** 錯誤。
+* 已修正導致下列情況的問題：在內部部署 AD 結構描述中找到 mailNickname 屬性，但該屬性並未繫結至 AD 使用者物件類別時，DirSync 升級失敗，並出現「嘗試取得應用程式鎖定的 SQL Server 發生死結」錯誤。
 * 已修正導致下列情況的問題：當系統管理員使用 Azure AD Connect 精靈更新 Azure AD Connect 同步處理組態時，裝置回寫功能自動停用。 這個問題是由針對內部部署 AD 中現有裝置回寫設定執行先決條件檢查的精靈所造成，而且檢查會失敗。 如果先前已啟用裝置回寫，此修正就會略過檢查。
 * 若要設定 OU 篩選，您可以使用 Azure AD Connect 精靈或 Synchronization Service Manager。 先前，如果您使用 Azure AD Connect 精靈來設定 OU 篩選，則會包含後來建立的新 OU 以便進行目錄同步作業。 如果您不想要包含新的 OU，您必須使用 Synchronization Service Manager 設定 OU 篩選。 現在，您可以使用 Azure AD Connect 精靈達成相同的行為。
 * 已修正導致下列情況的問題：Azure AD Connect 所需的預存程序建立於安裝系統管理員的結構描述之下，而不是建立於 dbo 結構描述之下。
 * 已修正導致下列情況的問題：AAD Connect 伺服器事件記錄中省略 Azure AD 所傳回的 TrackingId 屬性。 如果 Azure AD Connect 收到來自 Azure AD 的重新導向訊息，且 Azure AD Connect 無法連線到所提供的端點，就會發生此問題。 在疑難排解期間，支援工程師可以使用 TrackingId 與服務端記錄相互關聯。
-* 當 Azure AD Connect 從 Azure AD 收到 LargeObject 錯誤時，Azure AD Connect 會產生具有 EventID 6941 和訊息「布*建的物件太大」的事件。修剪此物件上的屬性值數目。* 」 在此同時，Azure AD Connect 也會產生誤導事件 (EventID 6900) 並出現「Microsoft.Online.Coexistence.ProvisionRetryException︰無法與 Windows Azure Active Directory 服務通訊」** 訊息。 為了避免混淆，Azure AD Connect 不再於收到 LargeObject 錯誤時產生後面的事件。
+* 當 Azure AD Connect 從 Azure AD 收到 LargeObject 錯誤時，Azure AD Connect 會產生一個事件 (EventID 6941) 並出現「佈建的物件是太大。請修剪此物件的屬性值數量」訊息。 同時，Azure AD Connect 也產生誤導性事件 (事件 ID 6900) 和訊息 [Microsoft.Online.Coexistence.ProvisionRetryException:無法與 Windows Azure Active Directory 服務通訊]。 為了避免混淆，Azure AD Connect 不再於收到 LargeObject 錯誤時產生後面的事件。
 * 已修正導致下列情況的問題：Synchronization Service Manager 在嘗試更新「一般 LDAP 連接器」的組態時變得沒有反應。
 
 **新功能/改進︰**
@@ -986,12 +988,12 @@ Azure AD Connect 同步處理
   * 已將 **preferredDataLocation** 新增至 Metaverse 結構描述和 AAD 連接器結構描述。 想要在 Azure AD 中更新任一屬性的客戶若要這樣做，可以實作自訂同步處理規則。 
   * 已將 **userType** 新增至 Metaverse 結構描述和 AAD 連接器結構描述。 想要在 Azure AD 中更新任一屬性的客戶若要這樣做，可以實作自訂同步處理規則。
 
-* Azure AD Connect 現在會自動啟用 ConsistencyGuid 屬性的使用，以作為內部部署 AD 物件的來源錨點屬性。 此外，如果 ConsistencyGuid 屬性為空，Azure AD Connect 就會使用 objectGuid 屬性值加以填入。 這項功能僅適用於新的部署。 若要深入了解此功能，請參閱 [Azure AD Connect︰設計概念 - 使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 文章章節。
+* Azure AD Connect 現在會自動啟用 ConsistencyGuid 屬性的使用，以作為內部部署 AD 物件的來源錨點屬性。 此外，如果 ConsistencyGuid 屬性為空，Azure AD Connect 就會使用 objectGuid 屬性值加以填入。 這項功能僅適用於新的部署。 若要深入了解此功能，請參閱文章小節 [Azure AD Connect：設計概念 - 使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。
 * 已新增疑難排解 Cmdlet Invoke-ADSyncDiagnostics，可協助診斷密碼雜湊同步處理相關問題。 如需使用此 Cmdlet 的相關資訊，請參閱[針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解](tshoot-connect-password-hash-synchronization.md)一文。
 * Azure AD Connect 現在支援將擁有郵件功能的公用資料夾物件從內部部署 AD 同步處理到 Azure AD。 您可以在 [選用功能] 之下使用 Azure AD Connect 精靈啟用此功能。 若要瞭解有關此功能的詳細資訊，請參閱 [Office 365 目錄架構邊緣封鎖支援內部部署中擁有郵件功能的公用資料夾](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders) \(英文\) 一文。
 * Azure AD Connect 要求 AD DS 帳戶從內部部署 AD 進行同步處理。 在過去，如果您使用快速模式安裝 Azure AD Connect，就可以提供企業系統管理員帳戶的認證，且 Azure AD Connect 會建立所需的 AD DS 帳戶。 不過，針對自訂安裝以及將樹系新增至現有的部署，會要求您改為提供 AD DS 帳戶。 現在，您也可以選擇在自訂安裝期間提供企業系統管理員帳戶的認證，讓 Azure AD Connect 能夠建立所需的 AD DS 帳戶。
 * Azure AD Connect 現在支援 SQL AOA。 您必須在安裝 Azure AD Connect 之前啟用 SQL AOA。 在安裝期間，Azure AD Connect 會偵測所提供的 SQL 執行個體是否已啟用 SQL AOA。 如果已啟用 SQL AOA，Azure AD Connect 會進一步指出 SQL AOA 已設定為使用同步複寫或非同步複寫。 設定可用性群組接聽程式時，建議將 RegisterAllProvidersIP 屬性設定為 0。 這個建議是因為 Azure AD Connect 目前使用 SQL Native Client 來連線至 SQL，且 SQL Native Client 不支援使用 MultiSubNetFailover 屬性。
-* 如果您使用 LocalDB 作為 Azure AD Connect 伺服器的資料庫，而且已達到其 10 GB 大小的限制，同步處理服務便無法再啟動。 先前，您需要在 LocalDB 上執行 ShrinkDatabase 作業，以收回足夠的 DB 空間以供同步處理服務啟動。 在那之後，您可以使用 Synchronization Service Manager 來刪除執行歷程記錄，以回收更多的 DB 空間。 現在，您可以使用 Start-ADSyncPurgeRunHistory Cmdlet 來清除 LocalDB 中的執行歷程記錄資料，以回收 DB 空間。 此外，此 Cmdlet 支援可在同步處理服務未執行時使用的離線模式 (藉由指定 -offline 參數)。 注意︰只有在同步處理服務未執行且使用的資料庫是 LocalDB 時，才能使用離線模式。
+* 如果您使用 LocalDB 作為 Azure AD Connect 伺服器的資料庫，而且已達到其 10 GB 大小的限制，同步處理服務便無法再啟動。 先前，您需要在 LocalDB 上執行 ShrinkDatabase 作業，以收回足夠的 DB 空間以供同步處理服務啟動。 在那之後，您可以使用 Synchronization Service Manager 來刪除執行歷程記錄，以回收更多的 DB 空間。 現在，您可以使用 Start-ADSyncPurgeRunHistory Cmdlet 來清除 LocalDB 中的執行歷程記錄資料，以回收 DB 空間。 此外，此 Cmdlet 支援可在同步處理服務未執行時使用的離線模式 (藉由指定 -offline 參數)。 注意:只有在同步處理服務未執行且使用的資料庫是 LocalDB 時，才能使用離線模式。
 * 為了減少所需的儲存體空間，Azure AD Connect 現在會在 LocalDB/SQL 資料庫中儲存同步處理錯誤詳細資料前加以壓縮。 從舊版 Azure AD Connect 升級到此版本時，Azure AD Connect 會對現有的同步處理錯誤詳細資料執行一次性壓縮。
 * 先前，在更新 OU 篩選組態之後，您必須手動執行完整匯入，以確保目錄同步作業正確包含/排除現有的物件。 現在，Azure AD Connect 會在下一個同步處理週期內自動觸發完整匯入。 此外，完整匯入只會套用至受到更新影響的 AD 連接器。 注意︰這項改進只適用於使用 Azure AD Connect 精靈進行的 OU 篩選更新。 不適用於使用 Synchronization Service Manager 進行的 OU 篩選更新。
 * 先前，以群組為基礎的篩選僅支援使用者、群組和連絡人物件。 現在，以群組為基礎的篩選也支援電腦物件。
@@ -1001,15 +1003,15 @@ Azure AD Connect 同步處理
 
 
 ## <a name="114860"></a>1.1.486.0
-發行日期︰2017 年 4 月
+發行日期：2017 年 4 月
 
 **已修正的問題：**
 * 修正 Azure AD Connect 無法在已當地語系化的 Windows Server 版本上成功安裝的問題。
 
 ## <a name="114840"></a>1.1.484.0
-發行日期︰2017 年 4 月
+發行日期：2017 年 4 月
 
-**已知問題：**
+**已知問題**
 
 * 如果下列條件都成立，此 Azure AD Connect 版本將無法成功安裝：
    1. 您執行 DirSync 就地升級或全新的 Azure AD Connect 安裝。
@@ -1056,14 +1058,14 @@ Azure AD Connect 同步處理
 * 設定「傳遞驗證」和「傳統型 SSO」時，Azure AD Connect 精靈已不再需要於網路上開啟連接埠 9090。 只需要開啟連接埠 443。 
 
 ## <a name="114430"></a>1.1.443.0
-發行日期︰2017 年 3 月
+發行日期：2017 年 3 月
 
 **已修正的問題：**
 
 Azure AD Connect 同步處理
 * 修正當「Azure AD 連接器」的顯示名稱不包含指派給 Azure AD 租用戶的初始 onmicrosoft.com 網域時，會造成 Azure AD Connect 精靈發生失敗的問題。
 * 修正當「同步處理服務帳戶」的密碼包含特殊字元 (例如單引號、冒號及空格) 時，會造成 Azure AD Connect 精靈在連線到 SQL Database 時發生失敗的問題。
-* 已修正在您暫時將內部部署 AD 物件從同步處理中排除，然後再次包含以進行同步處理時，會造成「映射具有與映射不同的錨點」在執行模式下于 Azure AD Connect 伺服器上發生錯誤的問題。
+* 已修正在暫時將內部部署 AD 物件從同步作業中排除又再重新包含在同步作業之後，會造成處於預備模式的 Azure AD Connect 伺服器上發生「映像具有與映像不同錨點」錯誤的問題。
 * 修正在您暫時將內部部署 AD 物件從同步處理作業中排除又再重新包含在同步處理作業中之後，會造成在處於預備模式的 Azure AD Connect 伺服器上發生「DN 所定位的物件是虛設項目」錯誤的問題。
 
 AD FS 管理
@@ -1084,7 +1086,7 @@ Azure AD Connect 同步處理
 * 用來儲存 Azure AD Connect 安裝和設定記錄的目的地資料夾已經從 %localappdata%\AADConnect 移到 %programdata%\AADConnect，以提升記錄的存取便利性。
 
 AD FS 管理
-* 已新增更新 AD FS 伺服器陣列 TLS/SSL 憑證的支援。
+* 已新增對更新 AD FS 伺服器陣列 TLS/SSL 憑證的支援。
 * 新增對管理 AD FS 2016 的支援。
 * 您現在可以在安裝 AD FS 時指定現有的 gMSA (群組受控服務帳戶)。
 * 您現在可以為 Azure AD 信賴憑證者信任設定 SHA-256 作為簽章雜湊演算法。
@@ -1094,9 +1096,9 @@ AD FS 管理
 * 已改良對 Azure 服務匯流排的連線可靠性。
 
 ## <a name="113800"></a>1.1.380.0
-發行日期︰2016 年 12 月
+發行日期：2016 年 12 月
 
-**已修正問題：**
+**修正的問題︰**
 
 * 修正此組建中遺漏 Active Directory Federation Services (AD FS) 之 issuerid 宣告規則的問題。
 
@@ -1104,13 +1106,13 @@ AD FS 管理
 >此組建無法透過 Azure AD Connect 自動升級功能提供客戶使用。
 
 ## <a name="113710"></a>1.1.371.0
-發行日期︰2016 年 12 月
+發行日期：2016 年 12 月
 
-**已知問題：**
+**已知問題︰**
 
 * 此組建中遺漏 ADFS 的 issuerid 宣告規則。 如果您要讓多個網域與 Azure Active Directory (Azure AD) 同盟，就必須要有此 issuerid 宣告規則。 如果您使用 Azure AD Connect 來管理您的內部部署 ADFS 部署，則升級至此組建將會從 ADFS 組態中移除現有的 issuerid 宣告規則。 您可以在安裝/升級之後新增 issuerid 宣告規則來解決此問題。 如需有關新增 issuerid 宣告規則的詳細資料，請參閱[與 Azure AD 同盟的多網域支援](how-to-connect-install-multiple-domains.md)上的此文章。
 
-**已修正問題：**
+**修正的問題︰**
 
 * 如果未開啟連接埠 9090 供輸出連線，Azure AD Connect 安裝或升級就會失敗。
 
@@ -1118,14 +1120,14 @@ AD FS 管理
 >此組建無法透過 Azure AD Connect 自動升級功能提供客戶使用。
 
 ## <a name="113700"></a>1.1.370.0
-發行日期︰2016 年 12 月
+發行日期：2016 年 12 月
 
-**已知問題：**
+**已知問題**
 
 * 此組建中遺漏 ADFS 的 issuerid 宣告規則。 如果您要讓多個網域與 Azure AD 同盟，就必須要有此 issuerid 宣告規則。 如果您使用 Azure AD Connect 來管理您的內部部署 ADFS 部署，則升級至此組建將會從 ADFS 組態中移除現有的 issuerid 宣告規則。 您可以在安裝/升級之後新增 issuerid 宣告規則來解決此問題。 如需有關新增 issuerid 宣告規則的詳細資料，請參閱[與 Azure AD 同盟的多網域支援](how-to-connect-install-multiple-domains.md)上的此文章。
 * 連接埠 9090 必須開啟輸出以完成安裝。
 
-**新功能：**
+**新功能︰**
 
 * 傳遞驗證 (預覽)。
 
@@ -1135,7 +1137,7 @@ AD FS 管理
 ## <a name="113430"></a>1.1.343.0
 發行日期：2016 年 11 月
 
-**已知問題：**
+**已知問題︰**
 
 * 此組建中遺漏 ADFS 的 issuerid 宣告規則。 如果您要讓多個網域與 Azure AD 同盟，就必須要有此 issuerid 宣告規則。 如果您使用 Azure AD Connect 來管理您的內部部署 ADFS 部署，則升級至此組建將會從 ADFS 組態中移除現有的 issuerid 宣告規則。 您可以在安裝/升級之後新增 issuerid 宣告規則來解決此問題。 如需有關新增 issuerid 宣告規則的詳細資料，請參閱[與 Azure AD 同盟的多網域支援](how-to-connect-install-multiple-domains.md)上的此文章。
 
@@ -1145,7 +1147,7 @@ AD FS 管理
 * 已修正以下問題：當連接器空間中的物件同時落在某個聯結規則的範圍外以及另一個聯結規則的範圍內時，不會重新評估聯結規則。 如果有兩個或多個聯結規則的聯結條件互斥，也可能發生此問題。
 * 已修正以下問題：相較於包含聯結規則的輸入同步處理規則，如果未包含聯結規則的輸入同步處理規則 (來自 Azure AD) 具有較低的優先順序值，則不會處理未包含聯結規則的輸入同步處理規則。
 
-**措施**
+**改進：**
 
 * 新增了在 Windows Server 2016 標準版或更新版本上安裝 Azure AD Connect 的支援。
 * 新增了使用 SQL Server 2016 做為 Azure AD Connect 之遠端資料庫的支援。
@@ -1164,7 +1166,7 @@ AD FS 管理
 * 當伺服器處於預備模式時，Azure AD Connect 精靈不會顯示實際的密碼同步處理和密碼回寫組態。 這些一律會顯示為停用。
 * 伺服器處於預備模式時，Azure AD Connect 精靈不會保存密碼同步處理和密碼回寫的組態變更。
 
-**措施**
+**改進：**
 
 * 已更新 Start-ADSyncSyncCycle Cmdlet，可指出是否能夠順利啟動新的同步處理週期。
 * 已新增 Stop-ADSyncSyncCycle Cmdlet，可終止目前正在進行中的同步處理週期和作業。
@@ -1183,7 +1185,7 @@ AD FS 管理
 ## <a name="111800"></a>1.1.180.0
 發行日期：2016 年 5 月
 
-**新功能：**
+**新功能︰**
 
 * 如果您未先驗證網域就執行 Azure AD Connect，系統將會發出警告並協助您驗證網域。
 * 已新增對 [Microsoft Cloud Germany](reference-connect-instances.md#microsoft-cloud-germany)的支援。
@@ -1197,16 +1199,16 @@ AD FS 管理
 * 已停用的同步處理規則不會在升級或目錄結構描述重新整理時，再重新啟用包含的物件和屬性。
 
 ## <a name="111300"></a>1.1.130.0
-發行日期︰2016 年 4 月
+發行日期：2016 年 4 月
 
-**新功能：**
+**新功能︰**
 
-* 已將多重值屬性的支援新增至[目錄擴充](how-to-connect-sync-feature-directory-extensions.md)功能。
+* [目錄擴充](how-to-connect-sync-feature-directory-extensions.md)已新增支援多重值屬性。
 * [自動升級](how-to-connect-install-automatic-upgrade.md) 已新增支援更多組態變化，以符合升級資格。
 * 已新增一些適用於 [自訂排程器](how-to-connect-sync-feature-scheduler.md#custom-scheduler)的 Cmdlet。
 
 ## <a name="111190"></a>1.1.119.0
-發行日期︰2016 年 3 月
+發行日期：2016 年 3 月
 
 **已修正的問題：**
 
@@ -1215,19 +1217,19 @@ AD FS 管理
 * 升級至較新版本且沒有進行任何組態變更時，不應排程完整匯入/同步處理。
 
 ## <a name="111100"></a>1.1.110.0
-發行日期︰2016 年 2 月
+發行日期：2016 年 2 月
 
 **已修正的問題：**
 
 * 如果安裝不是位於預設的 C:\Program Files 資料夾中，則無法從舊版升級。
-* 如果您安裝並在結束安裝精靈時清除 [啟動同步處理程序]****，再次執行安裝精靈將不會啟用排程器。
+* 如果您安裝並在結束安裝精靈時清除 [啟動同步處理程序]，再次執行安裝精靈將不會啟用排程器。
 * 在日期/時間格式並非美國英文的伺服器上，排程器將無法正常運作。 並且會封鎖 `Get-ADSyncScheduler` 傳回正確的時間。
 * 如果您是以 ADFS 做為登入選項和升級，來安裝舊版 Azure AD Connect，便無法再次執行安裝精靈。
 
 ## <a name="111050"></a>1.1.105.0
-發行日期︰2016 年 2 月
+發行日期：2016 年 2 月
 
-**新功能：**
+**新功能︰**
 
 * [Automatic upgrade](how-to-connect-install-automatic-upgrade.md) 功能。
 * 使用 Azure Multi-Factor Authentication 和 Privileged Identity Management 安裝精靈，支援全域管理。
@@ -1240,7 +1242,7 @@ AD FS 管理
 **從預覽版升級到 GA 的功能：**
 
 * [裝置回寫](how-to-connect-device-writeback.md)。
-* [目錄擴充](how-to-connect-sync-feature-directory-extensions.md)功能。
+* [目錄擴充](how-to-connect-sync-feature-directory-extensions.md)。
 
 **新的預覽功能：**
 
@@ -1253,7 +1255,7 @@ AD FS 管理
 * 當內部部署 AD 帳戶所在網域的 DNS 樹狀目錄與根網域不同時，安裝精靈即無法辨識這些帳戶。
 
 ## <a name="1091310"></a>1.0.9131.0
-發行日期︰2015 年 12 月
+發行日期：2015 年 12 月
 
 **已修正的問題：**
 
@@ -1265,7 +1267,7 @@ AD FS 管理
 ## <a name="1091250"></a>1.0.9125.0
 發行日期：2015 年 11 月
 
-**新功能：**
+**新功能︰**
 
 * 可以將 ADFS 重新設定為 Azure AD 信任。
 * 可以重新整理 Active Directory 結構描述並重新產生同步處理規則。
@@ -1274,7 +1276,7 @@ AD FS 管理
 
 **新的預覽功能：**
 
-* [Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。
+* [適用於同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。
 * 支援 [Azure AD 網域服務](../user-help/active-directory-passwords-update-your-own-password.md) 密碼同步處理。
 
 **新的支援案例：**
@@ -1297,7 +1299,7 @@ AD FS 管理
 ## <a name="1086670"></a>1.0.8667.0
 發行日期：2015 年 8 月
 
-**新功能：**
+**新功能︰**
 
 * Azure AD Connect 安裝精靈現在已進行所有 Windows Server 語言的當地語系化。
 * 新增在使用 Azure AD 密碼管理時的帳戶解除鎖定支援。
@@ -1326,7 +1328,7 @@ AD FS 管理
 
 名稱從 Azure AD Sync 變更為 Azure AD Connect。
 
-**新功能：**
+**新功能︰**
 
 * [快速設定](how-to-connect-install-express.md)安裝
 * 可以[設定 AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
@@ -1337,7 +1339,6 @@ AD FS 管理
 **新的預覽功能：**
 
 * [使用者回寫](how-to-connect-preview.md#user-writeback)
-* [群組回寫](how-to-connect-preview.md#group-writeback)
 * [裝置回寫](how-to-connect-device-writeback.md)
 * [目錄擴充](how-to-connect-preview.md)
 
@@ -1353,7 +1354,7 @@ AD FS 管理
 * Azure AD 密碼回寫出現 Azure 服務匯流排連線錯誤。
 
 ## <a name="104910413"></a>1.0.491.0413
-發行日期︰2015 年 4 月
+發行日期：2015 年 4 月
 
 **已修正的問題和改進︰**
 
@@ -1365,14 +1366,14 @@ AD FS 管理
 * 強制執行密碼同步也會移除慣用的 DC 清單。
 * CSExportAnalyzer 有一些物件狀態的問題。
 
-**新功能：**
+**新功能︰**
 
 * 聯結現在可以連接到 MV 中的「任何」物件類型。
 
 ## <a name="104850222"></a>1.0.485.0222
-發行日期︰2015 年 2 月
+發行日期：2015 年 2 月
 
-**措施**
+**改進：**
 
 * 改進匯入效能。
 
@@ -1384,12 +1385,12 @@ AD FS 管理
 * 從相同樹系中的多個網域加入外部安全性主體 (FSP) 會造成模稜兩可的加入錯誤。
 
 ## <a name="104751202"></a>1.0.475.1202
-發行日期︰2014 年 12 月
+發行日期：2014 年 12 月
 
-**新功能：**
+**新功能︰**
 
 * 現在支援透過以屬性為基礎的篩選進行密碼同步處理。 如需詳細資訊，請參閱[透過篩選進行密碼同步處理](how-to-connect-sync-configure-filtering.md)。
-* ms-DS-ExternalDirectoryObjectID 屬性會寫回至 Active Directory。 這項功能會新增適用於 Office 365 應用程式的支援。 它會使用 OAuth2 來存取混合式 Exchange 部署中的線上和內部部署信箱。
+* ms-DS-ExternalDirectoryObjectID 屬性會寫回至 Active Directory。 這項功能會新增適用於 Office 365 應用程式的支援。 其使用 OAuth2 來存取 Exchange 混合式部署的線上和內部部署信箱。
 
 **已修正的升級問題︰**
 
@@ -1405,9 +1406,9 @@ AD FS 管理
 * 已修正密碼同步處理的 ETW 追蹤。
 
 ## <a name="104701023"></a>1.0.470.1023
-發行日期︰2014 年 10 月
+發行日期：2014 年 10 月
 
-**新功能：**
+**新功能︰**
 
 * 從多個內部部署 Active Directory 至 Azure AD 的密碼同步處理。
 * 所有 Windows Server 語言的當地語系化安裝 UI。
@@ -1425,7 +1426,7 @@ AD FS 管理
 Active Directory 帳戶必須獲得其他權限，才能讀取來自 Active Directory 的密碼雜湊。 要授與的權限名為「複寫目錄變更」和「複寫所有目錄變更」。 需要有這兩個權限才能讀取密碼雜湊。
 
 ## <a name="104190911"></a>1.0.419.0911
-發行日期︰2014 年 9 月
+發行日期：2014 年 9 月
 
 **Azure AD Sync 的最初發行版本。**
 
