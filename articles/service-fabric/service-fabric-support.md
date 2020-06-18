@@ -1,16 +1,16 @@
 ---
-title: 瞭解 Azure Service Fabric 支援選項
+title: 了解 Azure Service Fabric 支援選項
 description: 支援的 Azure Service Fabric 叢集版本和檔案支援票證連結
 author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282090"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834589"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
 
@@ -26,9 +26,9 @@ ms.locfileid: "79282090"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在銅級可靠性層或單一節點叢集上執行的叢集將可讓您僅執行測試工作負載。 如果您遇到在銅可靠性或單一節點叢集上執行之叢集的問題，Microsoft 支援小組會協助您減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱叢集[的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
+> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) (機器翻譯)。
 >
-> 如需適用于生產環境就緒叢集的詳細資訊，請參閱[生產環境就緒檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 如需生產環境就緒叢集必要條件的詳細資訊，請參閱[生產整備檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist) (機器翻譯)。
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -51,11 +51,11 @@ ms.locfileid: "79282090"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 論壇
 
-[StackOverflow 上的 Service Fabric 標籤][stackoverflow]和 [MSDN 上的 Service Fabric 論壇][msdn-forum]最適合用來詢問關於平台如何運作以及您如何使用它來完成特定工作的問題。
+[StackOverflow 上 Service Fabric 標籤][stackoverflow]和 [MSDN 上 Service Fabric 論壇][msdn-forum] 最適合用來詢問關於平台如何運作以及如何使用它來完成特定工作的問題。
 
 ### <a name="azure-feedback-forum"></a>Azure 意見反應論壇
 
-[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]是您用來提交對於產品的大功能構想的最佳位置，因為檢閱最受歡迎的要求是我們中程至長程規劃的一部分。 我們希望您在社群中集結您的建議的支援。
+[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]是用來提交對於產品的大功能構想的最佳位置，因為檢閱最受歡迎要求是中程至長程規劃的一部分。 我們希望您在社群中集結您的建議的支援。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 預覽版本 - 不支援用於生產環境
 
@@ -67,7 +67,7 @@ ms.locfileid: "79282090"
 [支援的 Service Fabric 版本](service-fabric-versions.md)
 
 <!--references-->
-[msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
+[Microsoft Q&A question page]: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs

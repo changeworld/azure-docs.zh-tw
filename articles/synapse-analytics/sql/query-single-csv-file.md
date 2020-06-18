@@ -1,42 +1,39 @@
 ---
-title: 使用隨選 SQL 查詢 CSV 檔案（預覽）
-description: 在本文中，您將瞭解如何使用 SQL 隨選（預覽）來查詢具有不同檔案格式的單一 CSV 檔案。
+title: 使用 SQL 隨選 (預覽) 查詢 CSV 檔案
+description: 在本文中，您將了解如何使用 SQL 隨選 (預覽) 來查詢具有不同檔案格式的單一 CSV 檔案。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 41c4a8940cc49a3859a2511f0de65d0019817078
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431588"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836544"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
-在本文中，您將瞭解如何使用 Azure Synapse 分析中的 SQL 隨選（預覽）來查詢單一 CSV 檔案。 CSV 檔案可能會有不同的格式： 
+在本文中，您將了解如何在 Azure Synapse Analytics 使用 SQL 隨選 (預覽) 來查詢單一 CSV 檔案。 CSV 檔案可能會有不同的格式： 
 
-- 包含和不含標頭資料列
+- 包含和不包含標頭資料列
 - 逗號和定位字元分隔值
-- Windows 和 Unix 樣式行尾結束符號
-- 非引號和引號的值，以及逸出字元
+- Windows 和 UNIX 樣式行尾結束符號
+- 未加上引號和加上引號的值，以及逸出字元
 
 以下將涵蓋上述所有變化。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-閱讀本文的其餘部分之前，請先參閱下列文章：
+第一個步驟是**建立將在其中建立資料表的資料庫**。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
-- [第一次設定](query-data-storage.md#first-time-setup)
-- [先決條件](query-data-storage.md#prerequisites)
+## <a name="windows-style-new-line"></a>Windows 樣式新行
 
-## <a name="windows-style-new-line"></a>Windows 樣式的新行
-
-下列查詢顯示如何讀取沒有標頭資料列的 CSV 檔案、Windows 樣式的新行，以及逗號分隔的資料行。
+下列查詢顯示如何讀取一個 CSV 檔案，其不包含標頭資料列、採用 Windows 樣式新行，且以逗號分隔資料行。
 
 檔案預覽：
 
@@ -45,8 +42,9 @@ ms.locfileid: "81431588"
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -61,18 +59,19 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix 樣式的新行
+## <a name="unix-style-new-line"></a>UNIX 樣式新行
 
-下列查詢顯示如何讀取沒有標頭資料列的檔案、具有 Unix 樣式的新行，以及逗號分隔的資料行。 請注意，與其他範例相比，檔案的不同位置。
+下列查詢顯示如何讀取一個檔案，其不包含標頭資料列、採用 UNIX 樣式新行，且以逗號分隔資料行。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![CSV 檔案中的前10個數據列，不含標頭列，且具有 Unix 樣式的新行。](./media/query-single-csv-file/population-unix.png)
+![不包含標頭資料列且採用 UNIX 樣式新行的 CSV 檔案中，其前 10 個資料列。](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
@@ -90,16 +89,17 @@ WHERE
 
 ## <a name="header-row"></a>標頭資料列
 
-下列查詢示範如何使用標頭資料列、以 Unix 樣式的新行和以逗號分隔的資料行來讀取檔案。 請注意，與其他範例相比，檔案的不同位置。
+下列查詢顯示如何讀取一個檔案，其包含標頭資料列、採用 UNIX 樣式新行，且以逗號分隔資料行。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![CSV 檔案的前10個數據列，其中包含標頭列，以及 Unix 樣式的新行。](./media/query-single-csv-file/population-unix-hdr.png)
+![包含標頭資料列且採用 UNIX 樣式新行的 CSV 檔案中，其前 10 個資料列。](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr/population.csv',
+        BULK 'csv/population-unix-hdr/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
@@ -117,16 +117,17 @@ WHERE
 
 ## <a name="custom-quote-character"></a>自訂引號字元
 
-下列查詢顯示如何讀取具有標頭資料列的檔案，以及 Unix 樣式的新行、以逗號分隔的資料行，以及加上引號的值。 請注意，與其他範例相比，檔案的不同位置。
+下列查詢顯示如何讀取一個檔案，其包含標頭資料列、採用 UNIX 樣式新行、以逗號分隔資料行，以及其具有加上引號的值。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![CSV 檔案的前10個數據列，其中包含標頭列，以及 Unix 樣式的新行和引號值。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![包含標頭資料列及採用 UNIX 樣式新行且具有加上引號值的 CSV 檔案中，其前 10 個資料列。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-quoted/population.csv',
+        BULK 'csv/population-unix-hdr-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -145,20 +146,21 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果您省略 FIELDQUOTE 參數，則此查詢會傳回相同的結果，因為 FIELDQUOTE 的預設值是雙引號。
+> 如果省略 FIELDQUOTE 參數，則此查詢會傳回相同的結果，因為 FIELDQUOTE 的預設值是雙引號。
 
 ## <a name="escaping-characters"></a>逸出字元
 
-下列查詢顯示如何讀取具有標頭資料列的檔案，其中包含 Unix 樣式的新行、逗號分隔的資料行，以及用於值內欄位分隔符號（逗號）的 escape 字元。 請注意，與其他範例相比，檔案的不同位置。
+下列查詢顯示如何讀取一個檔案，其包含標頭資料列、採用 UNIX 樣式新行、以逗號分隔資料行，且針對值內的欄位分隔符號 (逗號) 使用逸出字元。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![CSV 檔案中的前10個數據列，其中包含標頭列，以及用於欄位分隔符號的 Unix 樣式新行和 escape 字元。](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![包含標頭資料列及採用 UNIX 樣式新行且針對欄位分隔符號使用逸出字元的 CSV 檔案中，其前 10 個資料列。](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-escape/population.csv',
+        BULK 'csv/population-unix-hdr-escape/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -176,20 +178,21 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果未指定 ESCAPECHAR，此查詢將會失敗，因為 "之外，enia" 中的逗號會被視為欄位分隔符號，而不是國家/地區名稱的一部分。 "之外，enia" 會視為兩個數據行。 因此，特定資料列會有一個以上的資料行，而不是在 WITH 子句中定義的資料行。
+> 如果未指定 ESCAPECHAR，此查詢將會失敗，因為在 "Slov,enia" 中的逗號會視為欄位分隔符號，而不是國家/地區名稱的一部分。 "Slov,enia" 會視為兩個資料行。 因此，特定資料列會比其他資料列多出一個的資料行，且比您在 WITH 子句中的定義多一個資料行。
 
-## <a name="tab-delimited-files"></a>Tab 鍵分隔檔案
+## <a name="tab-delimited-files"></a>Tab 字元分隔檔案
 
-下列查詢會示範如何使用標頭資料列、以 Unix 樣式的新行，以及 tab 鍵分隔的資料行來讀取檔案。 請注意，與其他範例相比，檔案的不同位置。
+下列查詢顯示如何讀取一個檔案，其包含標頭資料列、採用 UNIX 樣式新行，且以 Tab 字元分隔資料行。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![CSV 檔案的前10個數據列，含有標題列，以及 Unix 樣式的新行和定位字元分隔符號。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![包含標頭資料列且採用 UNIX 樣式新行和 Tab 分隔符號的 CSV 檔案中，其前 10 個資料列。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-tsv/population.csv',
+        BULK 'csv/population-unix-hdr-tsv/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
@@ -208,25 +211,26 @@ WHERE
 
 ## <a name="returning-subset-of-columns"></a>傳回資料行的子集
 
-到目前為止，您已使用搭配來指定 CSV 檔案架構，並列出所有資料行。 在查詢中，您只能針對所需的每個資料行使用序數來指定您實際需要的資料行。 您也會省略不感的資料行。
+到目前為止，您已使用 WITH 來指定 CSV 檔案結構描述，並列出所有資料行。 在查詢中，您只能針對每個必要資料行使用序數來指定實際需要的資料行。 您也會省略不感興趣的資料行。
 
 下列查詢會傳回檔案中不同國家/地區名稱的數目，僅指定所需的資料行：
 
 > [!NOTE]
-> 請查看下方查詢中的 WITH 子句，並注意在您定義 *[country_name]* 資料行的資料列結尾有 "2" （不含引號）。 這表示 *[country_name]* 資料行是檔案中的第二個數據行。 此查詢會忽略檔案中的所有資料行，但不包括第二個。
+> 請查看下方查詢中的 WITH 子句，並請注意，在您定義 *[country_name]* 資料行的資料列結尾有 "2" (不含引號)。 這表示 *[country_name]* 資料行是檔案中的第二個資料行。 查詢會忽略檔案中的所有資料行，但第二個除外。
 
 ```sql
 SELECT
     COUNT(DISTINCT country_name) AS countries
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
 WITH (
-    --[country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2 2
+    --[country_code] VARCHAR (5),
+    [country_name] VARCHAR (100) 2
     --[year] smallint,
     --[population] bigint
 ) AS [r]
@@ -234,7 +238,7 @@ WITH (
 
 ## <a name="next-steps"></a>後續步驟
 
-下一篇文章將為您示範如何：
+接下來的文章將會示範如何：
 
 - [查詢 Parquet 檔案](query-parquet-files.md)
 - [查詢資料夾和多個檔案](query-folders-multiple-csv-files.md)

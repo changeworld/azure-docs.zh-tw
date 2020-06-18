@@ -1,32 +1,33 @@
 ---
-title: 以 Azure 防火牆威脅情報為基礎的篩選
+title: 以 Azure 防火牆威脅情報為主的篩選
 description: 您可為防火牆啟用威脅情報型篩選，以警示並拒絕來自/傳向已知惡意 IP 位址和網域的流量。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74168666"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655083"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering"></a>以 Azure 防火牆威脅情報為基礎的篩選
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>以 Azure 防火牆威脅情報為主的篩選
 
-您可為防火牆啟用威脅情報型篩選，以警示並拒絕來自/傳向已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。 [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence)支援 Microsoft 威脅情報，並由多項服務所使用，包括 Azure 資訊安全中心。
+您可為防火牆啟用威脅情報型篩選，以警示並拒絕來自/傳向已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。 包括 Azure 資訊安全中心在內的多項服務皆使用 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence)，其同時也支援 Microsoft 威脅情報的運作。<br>
+<br>
 
-![防火牆威脅情報](media/threat-intel/firewall-threat.png)
+:::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="防火牆威脅情報" border="false":::
 
-如果您已啟用以威脅情報為基礎的篩選，則會在任何 NAT 規則、網路規則或應用程式規則之前處理相關聯的規則。
+如已啟用威脅情報篩選，則會先處理相關聯的規則，再處理任何 NAT 規則、網路規則或應用程式規則。
 
-您可以選擇只在觸發規則時記錄警示，也可以選擇 [警示] 和 [拒絕] 模式。
+您可選擇只在觸發規則時記錄警示，也可選擇警示並拒絕模式。
 
-根據預設，會在警示模式中啟用以威脅情報為基礎的篩選。 您無法關閉此功能或變更模式，直到您的區域中的入口網站介面變成可用為止。
+根據預設，警示模式下會啟用威脅情報篩選。 在區域中的入口網站介面變成可用為止之前，您都無法關閉此功能或變更模式。
 
-![以威脅情報為基礎的篩選入口網站介面](media/threat-intel/threat-intel-ui.png)
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="威脅情報篩選的入口網站介面":::
 
 ## <a name="logs"></a>記錄
 
@@ -46,12 +47,12 @@ ms.locfileid: "74168666"
 
 ## <a name="testing"></a>測試
 
-- **輸出測試**-輸出流量警示應該很罕見發生，因為這表示您的環境已遭入侵。 為了協助測試輸出警示運作，已建立測試 FQDN 來觸發警示。 針對您的輸出測試使用**testmaliciousdomain.eastus.cloudapp.azure.com** 。
+- **輸出測試**：輸出流量警示極為罕見，因為這表示環境已遭入侵。 已建立可觸發警示的測試 FQDN，以協助測試輸出警示能否正常運作。 對輸出測試使用 **testmaliciousdomain.eastus.cloudapp.azure.com**。
 
-- **輸入測試**-如果防火牆上已設定 DNAT 規則，您可以預期會看到連入流量的警示。 即使 DNAT 規則上僅允許特定來源，且流量遭到拒絕，也是如此。 Azure 防火牆不會在所有已知的埠掃描器上發出警示;僅適用于已知也會參與惡意活動的掃描器。
+- **輸入測試**：如果防火牆中已設定 DNAT 規則，則應該會看到連入流量的警示。 即使 DNAT 規則僅允許特定來源也一樣，流量還是會被拒絕。 Azure 防火牆不會對所有已知的埠掃描器發出警示，僅對已知也會參與惡意活動的掃描器發出警示。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure 防火牆 Log Analytics 範例](log-analytics-samples.md)
-- 瞭解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)
-- 審查[Microsoft 安全性情報報告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- 請參閱 [Azure 防火牆 Log Analytics 範例](log-analytics-samples.md)
+- 了解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)
+- 檢閱 [Microsoft 安全情報報告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

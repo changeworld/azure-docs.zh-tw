@@ -5,21 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3d0bd5d6403264ae6c71b43468b61930bcf6b86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ef961fe37b9906d3b7be44a8ee99876394104455
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79504376"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651062"
 ---
-針對 premium Ssd、standard Ssd 和 standard Hdd，只有下欄區域目前支援客戶管理的金鑰：
+針對進階 SSD、標準 SSD 和標準 HDD，只有下列區域目前支援客戶管理的金鑰：
 
-- 可在公用區域和 Azure Government 地區以 GA 供應專案形式提供。
+- 提供作為公用區域和 Azure Government 區域中的 GA 供應項目。
 
-針對 ultra 磁片，只有下欄區域支援客戶管理的金鑰做為 GA 供應專案：
+針對 Ultra 磁碟，只有下列區域支援客戶管理的金鑰作為 GA 供應項目：
 
 - 美國東部
 - 美國西部 2
+- 美國中南部 
+- US Gov 維吉尼亞州 

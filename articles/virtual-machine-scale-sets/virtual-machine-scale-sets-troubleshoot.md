@@ -1,5 +1,5 @@
 ---
-title: 使用虛擬機器擴展集進行自動調整疑難排解
+title: 針對使用虛擬機器擴展集的自動調整進行疑難排解
 description: 針對使用虛擬機器擴展集的自動調整進行疑難排解。 了解所遇到的一般問題和解決方式。
 author: avirishuv
 ms.author: avverma
@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 11/16/2017
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125140"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837224"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
-**問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
+**問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 要考量的事項包括：
@@ -29,24 +29,24 @@ ms.locfileid: "83125140"
     相應放大只會在擴展集中**所有** VM 的平均 CPU，經過自動調整規則中定義的內部時間之後超過臨界值時發生。
 * 您是否遺漏任何調整事件？
   
-    在 Azure 入口網站中檢查調整事件的稽核記錄。 或許遺漏相應增加和相應減少。 您可以依「調整」進行篩選。
+    在 Azure 入口網站中檢查調整事件的稽核記錄。 或許遺漏擴大和縮小。 您可以依「調整」進行篩選。
   
     ![稽核記錄][audit]
 * 您的相應縮小和相應放大的臨界值是否有足夠的差異？
   
-    假設您在平均 CPU 於五分鐘後大於 50% 時將規則設為相應放大，而在平均 CPU 小於 50% 時將規則設為相應縮小。 當 CPU 使用量很接近此臨界值時，且調整動作經常增加和減少集合的大小，此設定會導致「flapping」問題。 因為這個設定，自動調整服務會嘗試防止「flapping」，可以表示為未調整。 因此請確定您的相應放大和相應縮小的臨界值有足夠的差異，以便在調整之間容許一些空間。
+    假設您在平均 CPU 於五分鐘後大於 50% 時將規則設為擴增，而在平均 CPU 小於 50% 時將規則設為縮減。 當 CPU 使用量很接近此臨界值時，且調整動作經常增加和減少集合的大小，此設定會導致「flapping」問題。 因為這個設定，自動調整服務會嘗試防止「flapping」，可以表示為未調整。 因此請確定您的相應放大和相應縮小的臨界值有足夠的差異，以便在調整之間容許一些空間。
 * 您是否撰寫自己的 JSON 範本？
   
     很容易發生錯誤，所以請從如上所述已經過證明可以運作的範本開始，並且進行小的增量變更。 
-* 是否可以手動相應縮小或相應放大？
+* 是否可以手動縮減或擴增？
   
-    請嘗試使用不同的「容量」設定重新部署虛擬機器擴展集資源，以手動變更 VM 數目。 範例範本如下：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing - 您可能需要編輯範本以確定它有與您的擴展集所使用的相同機器大小。 如果您可以成功手動變更 VM 數目，則您知道問題與自動調整無關。
+    請嘗試使用不同的「容量」設定重新部署虛擬機器擴展集資源，以手動變更 VM 數目。 範例範本如下： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing - 您可能需要編輯範本以確定它有與您的擴展集所使用的相同機器大小。 如果您可以成功手動變更 VM 數目，則您知道問題與自動調整無關。
 * 請在 [Azure 資源總管](https://resources.azure.com/)中檢查您的 Microsoft.Compute/virtualMachineScaleSet 和 Microsoft.Insights 資源。
   
     Azure 資源總管是向您顯示 Azure Resource Manager 資源的狀態不可或缺的疑難排解工具。 按一下您的訂用帳戶，查看您正在進行疑難排解的資源群組。 在「計算」資源提供者下查看您建立的虛擬機器擴展集，並且檢查執行個體檢視，它會顯示部署的狀態。 也請檢查虛擬機器擴展集中的 VM 執行個體檢視。 然後進入 Microsoft.Insights 資源提供者，並且檢查自動調整規則看起來是否沒有問題。
 * 診斷擴充是否正常運作，而且發出效能資料？
   
-    **更新︰** 已增強 Azure 自動調整，以使用不再需要安裝診斷擴充功能的主機型度量管線。 如果您使用新的管線建立自動調整應用程式，則不再適用於後續幾個段落。 已經轉換為使用主機管線的 Azure 範本範例位於：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale。 
+    **更新：** 已增強 Azure 自動調整，以使用不再需要安裝診斷延伸模組的主機型度量管線。 如果您使用新的管線建立自動調整應用程式，則不再適用於後續幾個段落。 已經轉換為使用主機管線的 Azure 範本範例位於： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
   
     使用主機型度量進行自動調整較佳，原因如下︰
   
@@ -64,7 +64,7 @@ ms.locfileid: "83125140"
     
     您也可以自行查看資料。 使用雲端總管查看 Azure 儲存體帳戶。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)、登入，然後挑選您使用的 Azure 訂用帳戶。 然後，查看您的部署範本中診斷擴充功能定義中參考的診斷儲存體帳戶名稱。
     
-    ![Cloud Explorer][explorer]
+    ![雲端總管][explorer]
     
     您會看到許多資料表，在其中儲存每個 VM 的資料。 以 Linux 和 CPU 度量為例，查看最新的資料列。 Visual Studio Cloud Explorer 支援查詢語言，因此您可以執行查詢。 例如，您可以執行 “Timestamp gt datetime’2016-02-02T21:20:00Z’” 的查詢，以確保取得最新的事件。 時區會對應至 UTC。 您在那裡看到的資料是否對應您設定的調整規則？ 在下列範例中，機器 20 的 CPU 在過去五分鐘開始增加到 100%。
     
@@ -73,7 +73,7 @@ ms.locfileid: "83125140"
     如果資料不存在，則表示問題是出在 VM 中執行的診斷擴充。 如果有資料，則表示您的調整規則或 Insights 服務有問題。 檢查 [Azure 狀態](https://azure.microsoft.com/status/)。
     
     完成這些步驟之後，如果您仍有自動調整規模問題，可以嘗試下列資源： 
-    * 閱讀 [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) 上的論壇，或[堆疊溢位](https://stackoverflow.com/questions/tagged/azure) 
+    * 閱讀 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 上的論壇 
     * 記錄支援通話。 請準備共用範本和效能資料的檢視。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
