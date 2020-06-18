@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730317"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783090"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -312,6 +312,27 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | 越南文              | `vi`          |
 | 威爾斯文                   | `cy`          |
 | 猶加敦馬雅文            | `yua`         |
+
+## <a name="speaker-recognition"></a>說話者辨識
+
+請參閱下表以了解各種說話者辨識 API 支援的語言。 如需說話者辨識的其他詳細資訊，請參閱 [概觀](speaker-recognition-overview.md)。
+
+| Locale | Language | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
+|----|----|----|----|----|
+| zh-TW | 英文 (美國) | 是 | 是 | 是 |
+|zh-CN  |中文 (普通話，簡體)|    n/a|    是|    是|
+|de-DE  |德文 (德國)   |n/a    |是    |是|
+|en-GB  |英文 (英國)   |n/a    |是    |是|
+|fr-FR  |法文 (法國)    |n/a    |是    |是|
+|en-AU  |英文 (澳大利亞)    |n/a    |是    |是|
+|en-CA  |英文 (加拿大)   |n/a|   是|    是|
+|fr-CA  |法文 (加拿大)    |n/a    |是|   是|
+|it-IT  |義大利文|   n/a |是|   是|
+|es-ES| 西班牙文 (西班牙) |n/a    |是|   是|
+|es-MX  |西班牙文 (墨西哥)   |n/a|   是|    是|
+|ja-JP| 日文    |n/a    |是    |是|
+|pt-BR| 葡萄牙文 (巴西)|    n/a|    是|    是|
+|ko-KR| 韓文  |n/a    |是|   是|
 
 ## <a name="next-steps"></a>後續步驟
 

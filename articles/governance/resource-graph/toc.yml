@@ -10,19 +10,22 @@
   items:
     - name: 執行您的第一個查詢 - Azure 入口網站
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: 執行您的第一個查詢 - Azure CLI
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: 執行您的第一個查詢 - PowerShell
+      href: ./first-query-azurecli.md
+    - name: 執行您的第一個查詢 - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: 執行您的第一個查詢 - Go
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: 執行您的第一個查詢 - Python
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: 部署共用查詢 - ARM 範本
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: 教學課程
   items:
     - name: 在 Azure 入口網站中建立和共用查詢

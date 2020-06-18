@@ -357,6 +357,20 @@
               href: relyingparty.md
             - name: 宣告解析程式
               href: claim-resolver-overview.md
+    - name: 夥伴整合
+      items:
+        - name: Azure AD B2C 合作夥伴資源庫
+          href: partner-gallery.md
+        - name: Arkose 實驗室
+          href: partner-arkose-labs.md
+        - name: IDology
+          href: partner-idology.md
+        - name: itsme
+          href: partner-itsme.md
+        - name: Trusona
+          href: partner-trusona.md
+        - name: Twilio
+          href: partner-twilio.md
     - name: 使用 b2clogin.com
       items:
         - name: b2clogin.com 概觀

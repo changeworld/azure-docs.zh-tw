@@ -6,6 +6,8 @@
       href: overview.md
     - name: 支援的版本和功能
       href: features.md
+    - name: 版本資訊
+      href: release-notes.md
 - name: 快速入門
   expanded: true
   items:

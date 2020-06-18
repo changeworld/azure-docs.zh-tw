@@ -1,0 +1,97 @@
+- name: 適用於 FHIR 的 Azure API
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於適用於 FHIR 的 Azure API
+      href: overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 部署適用於 FHIR 的 Azure API - 入口網站
+      href: fhir-paas-portal-quickstart.md
+    - name: 部署適用於 FHIR 的 Azure API - PowerShell
+      href: fhir-paas-powershell-quickstart.md
+    - name: 部署適用於 FHIR 的 Azure API - CLI
+      href: fhir-paas-cli-quickstart.md
+    - name: 部署適用於 Azure 的 FHIR Server - 入口網站
+      href: fhir-oss-portal-quickstart.md
+    - name: 部署適用於 Azure 的 FHIR Server - PowerShell
+      href: fhir-oss-powershell-quickstart.md
+    - name: 部署適用於 Azure 的 FHIR Server - CLI
+      href: fhir-oss-cli-quickstart.md
+- name: 教學課程
+  expanded: false
+  items:
+    - name: 部署 JavaScript 應用程式
+      expanded: false
+      items:
+        - name: 1. 初始設定和 FHIR 部署
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. 註冊公用用戶端應用程式
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. 使用 Postman 測試設定
+          href: tutorial-web-app-test-postman.md
+        - name: 4. 寫入 Web 應用程式
+          href: tutorial-web-app-write-web-app.md
+    - name: 使用 Postman 存取 FHIR API
+      href: access-fhir-postman-tutorial.md
+    - name: 在 FHIR Proxy 上使用 SMART
+      href: use-smart-on-fhir-proxy.md
+- name: 操作指南
+  expanded: false
+  items:
+    - name: 註冊應用程式
+      expanded: false
+      items:
+        - name: 註冊應用程式以進行 Azure API for FHIR 概觀
+          href: fhir-app-registration.md
+        - name: 資源應用程式
+          href: register-resource-azure-ad-client-app.md
+        - name: 機密用戶端應用程式
+          href: register-confidential-azure-ad-client-app.md
+        - name: 公用用戶端應用程式
+          href: register-public-azure-ad-client-app.md
+        - name: 服務用戶端應用程式
+          href: register-service-azure-ad-client-app.md
+    - name: 進行設定
+      expanded: false
+      items:
+        - name: 設定其他 Azure API for FHIR 設定
+          href: azure-api-for-fhir-additional-settings.md
+        - name: 設定 Azure RBAC
+          href: configure-azure-rbac.md
+        - name: 設定本機 RBAC
+          href: configure-local-rbac.md
+        - name: 設定資料庫設定
+          href: configure-database.md
+        - name: 設定 CORS
+          href: configure-cross-origin-resource-sharing.md
+        - name: 設定匯出
+          href: configure-export-data.md
+    - name: 尋找識別物件識別碼
+      href: find-identity-object-ids.md
+    - name: 在 Azure API for FHIR® 中啟用診斷記錄
+      href: enable-diagnostic-logging.md
+    - name: 取得適用於 FHIR 的 Azure API 權杖 - CLI
+      href: get-healthcare-apis-access-token-cli.md
+- name: 概念
+  expanded: false
+  items:
+    - name: Azure AD 和 Azure API for FHIR 概觀
+      href: azure-ad-hcapi.md
+    - name: 存取權杖驗證
+      href: azure-ad-hcapi-token-validation.md
+    - name: 使用自訂 HTTP 標頭將資料新增至稽核記錄
+      href: use-custom-headers.md
+- name: 資源
+  items:
+    - name: 常見問題集
+      href: fhir-faq.md
+    - name: 支援的功能
+      href: fhir-features-supported.md
+    - name: 合作夥伴生態系統
+      href: partner-ecosystem.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis

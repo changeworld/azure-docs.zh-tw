@@ -6,7 +6,7 @@
     - name: 什麼是 Azure Machine Learning？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning 與 Studio
+    - name: Azure Machine Learning 與 Studio (傳統)
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: 架構和條款

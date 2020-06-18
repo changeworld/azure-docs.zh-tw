@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: 範例
       items:
+        - name: 自助式註冊的範例
+          href: code-samples-self-service-sign-up.md
         - name: 程式碼和 Azure PowerShell 範例
           href: code-samples.md
     - name: 概念
