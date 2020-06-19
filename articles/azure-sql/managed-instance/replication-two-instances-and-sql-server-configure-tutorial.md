@@ -2,7 +2,7 @@
 title: 設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 description: 在發行者受控執行個體、散發者受控執行個體、Azure VM 上的 SQL Server 訂閱者，以及必要的網路元件 (例如私人 DNS 區域和 VPN 對等互連) 之間設定複寫的教學課程。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: a34ac27459a84048ac5fc9ef10f6f55def6cec78
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221329"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708513"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教學課程：設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
