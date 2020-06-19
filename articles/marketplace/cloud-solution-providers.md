@@ -1,198 +1,198 @@
 ---
-title: 雲端解決方案提供者 |Azure Marketplace
-description: 發行者現在可以透過 Microsoft Cloud 解決方案提供者（CSP）合作夥伴通道來銷售其供應專案。
+title: 雲端解決方案提供者 - Microsoft 商業市集
+description: 了解如何透過商業市集中的 Microsoft 雲端解決方案提供者 (CSP) 計畫合作夥伴通道來銷售您的供應項目。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160642"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798141"
 ---
-# <a name="cloud-solution-providers"></a>雲端解決方案提供者
+# <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
-軟體供應專案可與雲端解決方案提供者（CSP）方案中的合作夥伴提供的數百萬個合格 Microsoft 客戶聯繫，以及透過[Microsoft web 店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)公開提供的供應專案。
+本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過[商業市集網路店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)發佈供應項目外，您也可以透過 CSP 計畫來銷售，以觸及該計畫所服務的數百萬個合格 Microsoft 客戶。
 
-發行者會以選擇性的方式，針對新的供應專案或現有的產品，在 CSP 方案中設定可用性，讓合作夥伴能夠銷售您的產品，並為客戶建立配套的解決方案。
+您可以設定新的或現有的供應項目來選擇讓供應項目加入 CSP 計畫，這可讓 CSP 合作夥伴銷售您的產品，並為客戶建立配套的解決方案。
 
-發行者會負責為客戶提供協助修正支援，並為 CSP 計畫中的合作夥伴和/或客戶提供一套機制，以與您聯繫以取得支援。 最佳做法是在 CSP 計畫中提供合作夥伴與使用者檔、訓練及服務健康狀態/中斷通知（如適用），讓 CSP 計畫中的合作夥伴能夠處理來自客戶的第1層支援要求。  
+發行者要負責為終端客戶提供協助修正支援，並為 CSP 計畫中的合作夥伴和/或客戶提供一套機制，使其可與您連絡以取得支援。 最佳做法是為 CSP 計畫中的合作夥伴提供使用者文件、訓練及服務健康狀態/中斷通知 (如適用)，讓 CSP 計畫中的合作夥伴有能力處理來自客戶的第 1 層支援要求。  
 
-下列供應專案有資格在 CSP 方案中加入宣告以由合作夥伴銷售：
+下列供應項目有資格選擇加入由 CSP 計畫的合作夥伴進行銷售的行列：
 
-- 軟體即服務（SaaS）交易提供
+- 軟體即服務 (SaaS) 交易供應項目
 - 虛擬機器 (VM)
 - 解決方案範本
 - 受控應用程式
 
 > [!NOTE]
-> 根據預設，容器和自備授權（BYOL） VM Sku 已選擇要由 CSP 方案中的合作夥伴銷售。
+> 根據預設，容器和自備授權 (BYOL) VM SKU 已選擇加入由 CSP 計畫的合作夥伴進行銷售的行列。
 
-## <a name="how-to-configure-an-offering"></a>如何設定供應專案
+## <a name="how-to-configure-an-offering"></a>如何設定供應項目
 
-[CSP 方案加入宣告] 設定是在合作夥伴中心或 Cloud Partner 入口網站供應專案建立體驗中設定。 [深入瞭解變更的發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+CSP 計畫選擇加入設定會在合作夥伴中心或 Cloud Partner 入口網站的供應項目建立體驗中設定。 [深入了解如何變更發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
-### <a name="partner-center-opt-in"></a>合作夥伴中心加入宣告
+### <a name="partner-center-opt-in"></a>合作夥伴中心選擇加入
 
-在合作夥伴中心，您可以在 CSP 轉銷商物件課程模組底下找到加入宣告體驗。
+在合作夥伴中心，您可以在 CSP 轉銷商的對象模組底下找到選擇加入體驗。
 
-![CSP 轉銷商物件](media/marketplace-publishers-guide/csp-reseller-audience.png)
+![CSP 轉銷商對象](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-在 CSP 轉銷商的觀眾課程模組中，您有三個選項可供選擇：
+CSP 轉銷商的對象模組中有三個選項可供您選擇：
 
-- 選項一： CSP 計畫中的任何合作夥伴
-- 選項二：我選取 CSP 方案中的特定合作夥伴
-- 選項3： CSP 計畫中沒有合作夥伴
+- 選項一：CSP 計畫中的任何合作夥伴
+- 選項二：CSP 計畫中我選定的特定合作夥伴
+- 選項三：不提供給 CSP 計畫中的任何合作夥伴
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>選項一： CSP 計畫中的任何合作夥伴
+#### <a name="option-one-any-partner-in-the-csp-program"></a>選項一：CSP 計畫中的任何合作夥伴
 
 ![CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
- 藉由選擇此選項，CSP 方案中的所有合作夥伴都有資格將您的供應專案轉售給客戶。
+ 若選擇此選項，CSP 計畫中的所有合作夥伴都有資格將您的供應項目轉銷給其客戶。
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>選項二：我選取 CSP 方案中的特定合作夥伴
+#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>選項二：CSP 計畫中我選定的特定合作夥伴
 
-![我選取的 CSP 方案中的特定合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
+![CSP 計畫中我選定的特定合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
-藉由選擇此選項，您可以授權 CSP 方案中的哪些合作夥伴有資格轉售您的供應專案。
+若選擇此選項，您會授權 CSP 計畫中有哪些合作夥伴有資格轉銷您的供應項目。
 
-若要授權合作夥伴，請按一下 [**選取 CSP 合作夥伴**]，此時會出現一個功能表，可讓您依合作夥伴名稱或 CSP AZURE ACTIVE DIRECTORY （AAD）租使用者識別碼進行搜尋。
+若要授權合作夥伴，請按一下 [選取 CSP 合作夥伴]，隨即會出現功能表讓您依合作夥伴名稱或 CSP Azure Active Directory (AAD) 租用戶識別碼進行搜尋。
 
 ![選取 CSP 功能表](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-您可以套用搜尋篩選準則，例如**國家/地區**、專長**認證**或**技能**。
+您可以套用搜尋篩選條件，例如**國家**、**專長認證**或**技能**。
 
-![合作夥伴搜尋的國家/地區、專長認證和技能篩選](media/marketplace-publishers-guide/csp-add-resellers.png)
+![用來搜尋合作夥伴的國家/地區、專長認證和技能篩選條件](media/marketplace-publishers-guide/csp-add-resellers.png)
 
-選擇夥伴清單之後，請選取 [**新增**]。
+選擇好合作夥伴清單後，請選取 [新增]。
 
-![CSP 計畫中授權合作夥伴的範例清單](media/marketplace-publishers-guide/csp-add-resellers-details.png)
+![CSP 計畫中的授權合作夥伴清單範例](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
-顯示您所選合作夥伴清單的表格會出現在 CSP 轉銷商的 [觀眾] 頁面上。
+CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所選的合作夥伴清單。
 
-![具有 CSP 轉銷商物件頁面上合作夥伴清單的表格](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
+![CSP 轉銷商對象頁面上有合作夥伴清單的資料表](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
 
-選取 [**儲存草稿**] 以註冊您的變更。
+選取 [儲存草稿] 以註冊您的變更。
 
-如果這是未發行的供應專案，您將需要發佈您的供應專案，讓您選取的合作夥伴可以使用。
+如果此供應項目尚未發行，則必須發佈供應項目才能將其提供給選取的合作夥伴。
 
 >[!NOTE]
->如果您在指定的區域中授權某個合作夥伴在 CSP 計畫中，他們可以向屬於該特定區域的任何客戶銷售供應專案。 如需有關 CSP 供應專案如何分類于區域的詳細資訊，請參閱[雲端解決方案提供者方案的區域市場和貨幣](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
+>如果您在某個指定區域授權 CSP 計畫中的某個合作夥伴，其便可將供應項目銷售給屬於該特定區域的任何客戶。 如需 CSP 供應項目如何在區域底下分類的詳細資訊，請參閱[雲端解決方案提供者計畫的區域市場和貨幣](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
 
-如果您要更新已發佈供應專案的 CSP 清單，請新增其他合作夥伴，然後選取 [**同步 CSP 物件**]。
+如果您要更新已發佈供應項目的 CSP 清單，請新增其他合作夥伴，然後選取 [同步 CSP 對象]。
 
-如果您的供應專案已有授權合作夥伴的清單，而您想要對其他供應專案使用相同的清單，請使用匯**入/匯出**。 流覽至具有 CSP 清單的供應專案，然後選取 [**匯出 csp**]。 函式會開發可匯入至另一個供應專案的 .csv 檔案。
+如果您的供應項目已有授權合作夥伴清單，而您想要讓其他供應項目使用同一份清單，請使用**匯入/匯出**。 瀏覽至具有 CSP 清單的供應項目，然後選取 [匯出 CSP]。 此功能會開發可供匯入至其他供應項目的 .csv 檔案。
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>選項3： CSP 計畫中沒有合作夥伴
+#### <a name="option-three-no-partners-in-the-csp-program"></a>選項三：不提供給 CSP 計畫中的任何合作夥伴
 
-![CSP 計畫中沒有任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
+![不提供給 CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
-選擇此選項，即會將您的供應專案從 CSP 計畫中退出。 您可以隨時變更此選取範圍。
+若選擇此選項，即表示您選擇不要讓供應項目加入 CSP 計畫。 您可以隨時變更此選擇。
 
-### <a name="cloud-partner-portal-opt-in"></a>Cloud Partner 入口網站加入宣告
+### <a name="cloud-partner-portal-opt-in"></a>Cloud Partner 入口網站選擇加入
 
-在 Cloud Partner 入口網站中，[Marketplace] 或 [店面] 索引標籤上會設定加入宣告。只有在合作夥伴中心才提供選擇 CSP 方案中特定合作夥伴的功能。
+在 Cloud Partner 入口網站中，可於 [市集] 或 [店面] 索引標籤上設定選擇加入。只有在合作夥伴中心才能選擇 CSP 計畫中的特定合作夥伴。
 
-![CPP 中的 CSP 加入宣告體驗](media/marketplace-publishers-guide/csp-opt-in.png)
+![CPP 中的 CSP 選擇加入體驗](media/marketplace-publishers-guide/csp-opt-in.png)
 
-## <a name="deauthorize-partners-in-the-csp-program"></a>Deauthorize CSP 計畫中的合作夥伴
+## <a name="deauthorize-partners-in-the-csp-program"></a>將 CSP 計畫中的合作夥伴取消授權
 
-如果您已在 CSP 計畫中授權合作夥伴，且該合作夥伴已將產品轉售給客戶，則不允許您 deauthorize 該合作夥伴。
+如果您已授權 CSP 計畫中的合作夥伴，且該合作夥伴已將產品轉銷給客戶，您就不能將該合作夥伴取消授權。
 
-如果 CSP 方案中的合作夥伴尚未將您的產品銷售給客戶，而您想要在發佈供應專案之後移除 CSP，請使用下列指示：
+如果 CSP 計畫中的合作夥伴尚未將您的產品銷售給客戶，而您想要在已將供應項目發佈後移除 CSP，請使用下列指示：
 
-1. 移至 [[支援要求] 頁面](https://partner.microsoft.com/support/v2/?stage=1)。 系統會自動為您填入前幾個下拉式功能表。
-
-   > [!NOTE]
-   > 請勿變更預先填入的下拉式功能表選取專案。
-
-2. 針對 **[選取產品版本**]，選取 [ **Live 供應專案管理**]。
-3. 針對 [**選取最能描述問題的類別**]，選擇參照您供應專案的類別。
-4. 針對 **[選取最能描述問題的問題**]，選取 [**更新現有的供應**專案]。
-5. 選取 **[下一步]** 以導向至 [**問題詳細資料] 頁面**，以輸入有關問題的更多詳細資料。
-6. 使用**DEAUTHORIZE CSP**作為問題標題，並填寫其餘必要區段。
-
-
-
-
-## <a name="navigate-between-options"></a>在選項之間流覽
-
-使用此區段可在三個 CSP 轉銷商選項之間流覽。
-
-### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>流覽選項一： CSP 計畫中的任何合作夥伴
-
-如果您的供應專案目前為**選項1： CSP 計畫中的任何合作夥伴**，而您想要流覽至其他兩個選項的其中一個，請使用下列指示來建立要求：
-
-1. 移至 [[支援要求] 頁面](https://partner.microsoft.com/support/v2/?stage=1)。 系統會自動為您填入前幾個下拉式功能表。
+1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
    > [!NOTE]
-   > 請勿變更預先填入的下拉式功能表選取專案。
+   > 請勿變更預先填入的下拉式功能表選取項目。
 
-2. 針對 **[選取產品版本**]，選取 [ **Live 供應專案管理**]。
-3. 針對 [**選取最能描述問題的類別**]，選擇參照您供應專案的類別。
-4. 針對 **[選取最能描述問題的問題**]，選取 [**更新現有的供應**專案]。
-5. 選取 **[下一步]** 以導向至 [**問題詳細資料] 頁面**，以輸入有關問題的更多詳細資料。
-6. 使用**DEAUTHORIZE CSP**作為問題標題，並填寫其餘必要區段。
+2. 針對 [選取產品版本]，請選取 [上線供應項目管理]。
+3. 針對 [選取最能說明問題的類別]，請選擇與您供應項目相關的類別。
+4. 針對 [選取最能說明問題的問題]，請選取 [更新現有供應項目]。
+5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
+6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
+
+
+
+
+## <a name="navigate-between-options"></a>在選項之間瀏覽
+
+使用此區段可在這三個 CSP 轉銷商選項之間瀏覽。
+
+### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>從選項一瀏覽：CSP 計畫中的任何合作夥伴
+
+如果您的供應項目目前為**選項 1：CSP 計畫中的任何合作夥伴**，而您想要瀏覽至其他兩個選項的其中一個，請使用下列指示來建立要求：
+
+1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
+
+   > [!NOTE]
+   > 請勿變更預先填入的下拉式功能表選取項目。
+
+2. 針對 [選取產品版本]，請選取 [上線供應項目管理]。
+3. 針對 [選取最能說明問題的類別]，請選擇與您供應項目相關的類別。
+4. 針對 [選取最能說明問題的問題]，請選取 [更新現有供應項目]。
+5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
+6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
 
 > [!NOTE]
-> 如果您嘗試流覽至第二個選項，且 CSP 方案中的合作夥伴已轉售其客戶的供應專案，則該合作夥伴預設已在您的授權合作夥伴清單中。  
+> 如果您嘗試瀏覽至選項二，而且 CSP 計畫中已有合作夥伴將該供應項目轉銷給其客戶，則該合作夥伴依預設已在您的授權合作夥伴清單中。  
 
-### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>流覽第二個選項：我選取的 CSP 方案中的特定合作夥伴
+### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>從選項二瀏覽：CSP 計畫中我選定的特定合作夥伴
 
-如果您的供應專案目前為**選項2：我選取 csp 方案中的特定合作夥伴**，而您想要流覽至**選項1： csp 方案中的任何合作夥伴**，請使用下列指示來建立要求：
+如果您的供應項目目前為**選項 2：CSP 計畫中我選定的特定合作夥伴**，而您想要瀏覽至**選項一：CSP 計畫中的任何合作夥伴**，請使用下列指示來建立要求：
 
-1. 移至 [[支援要求] 頁面](https://partner.microsoft.com/support/v2/?stage=1)。 系統會自動為您填入前幾個下拉式功能表。
-
-   > [!NOTE]
-   > 請勿變更預先填入的下拉式功能表選取專案。
-
-2. 針對 **[選取產品版本**]，選取 [ **Live 供應專案管理**]。
-3. 針對 [**選取最能描述問題的類別**]，選擇參照您供應專案的類別。
-4. 針對 **[選取最能描述問題的問題**]，選取 [**更新現有的供應**專案]。
-5. 選取 **[下一步]** 以導向至 [**問題詳細資料] 頁面**，以輸入有關問題的更多詳細資料。
-6. 使用**DEAUTHORIZE CSP**作為問題標題，並填寫其餘必要區段。
-
- 如果您的供應專案目前為**選項2：我選擇 csp 方案中的特定合作夥伴**，而您想要流覽至 [**選項3： Csp 計畫中沒有合作夥伴**]，只有在您先前授權的 csp 計畫中，您的合作夥伴未轉售您的供應專案給終端客戶時，才能夠流覽至該選項。 請使用下列指示來建立要求：
-
-1. 移至 [[支援要求] 頁面](https://partner.microsoft.com/support/v2/?stage=1)。 系統會自動為您填入前幾個下拉式功能表。
+1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
    > [!NOTE]
-   > 請勿變更預先填入的下拉式功能表選取專案。
+   > 請勿變更預先填入的下拉式功能表選取項目。
 
-2. 針對 **[選取產品版本**]，選取 [ **Live 供應專案管理**]。
-3. 針對 [**選取最能描述問題的類別**]，選擇參照您供應專案的類別。
-4. 針對 **[選取最能描述問題的問題**]，選取 [**更新現有的供應**專案]。
-5. 選取 **[下一步]** 以導向至 [**問題詳細資料] 頁面**，以輸入有關問題的更多詳細資料。
-6. 使用**DEAUTHORIZE CSP**作為問題標題，並填寫其餘必要區段。
+2. 針對 [選取產品版本]，請選取 [上線供應項目管理]。
+3. 針對 [選取最能說明問題的類別]，請選擇與您供應項目相關的類別。
+4. 針對 [選取最能說明問題的問題]，請選取 [更新現有供應項目]。
+5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
+6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
 
-### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>流覽選項3： CSP 計畫中沒有合作夥伴
+ 如果您的供應項目目前為**選項 2：CSP 計畫中我選定的特定合作夥伴**，而您想要瀏覽至**選項 3：不提供給 CSP 計畫中的任何合作夥伴**，則必須在您先前授權的 CSP 計畫合作夥伴尚未轉銷您的供應項目給終端客戶時，才能瀏覽至該選項。 請使用下列指示來建立要求：
 
-如果您的供應專案目前為**選項3： CSP 方案中沒有合作夥伴**，您可以隨時流覽至其他兩個選項的其中一個。
+1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
-## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>在 CSP 計畫中與合作夥伴共用銷售和支援資料
+   > [!NOTE]
+   > 請勿變更預先填入的下拉式功能表選取項目。
 
-為了協助雲端解決方案提供者方案中的合作夥伴最有效地代表您的供應專案，並與您的組織互動，您必須提交可供轉銷商使用的銷售和支援材料。 這些資源不會公開給 marketplace 店面中的客戶。
+2. 針對 [選取產品版本]，請選取 [上線供應項目管理]。
+3. 針對 [選取最能說明問題的類別]，請選擇與您供應項目相關的類別。
+4. 針對 [選取最能說明問題的問題]，請選取 [更新現有供應項目]。
+5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
+6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
 
-### <a name="partner-center-csp-channel"></a>合作夥伴中心 CSP 頻道
+### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>從選項 3 瀏覽：不提供給 CSP 計畫中的任何合作夥伴
 
-如果您已加入宣告合作夥伴中心內的 CSP 通道，發行者必須在供應專案清單模組底下，輸入將相關行銷資料和通道連絡人資訊裝載于 CSP 通道的 URL：
+如果您的供應項目目前為**選項 3：不提供給 CSP 計畫中的任何合作夥伴**，則您可以隨時瀏覽至其他兩個選項的其中一個。
 
-![合作夥伴中心 CSP 的宣傳材料資訊](media/marketplace-publishers-guide/pc-csp-channel.png)
+## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>與 CSP 計畫合作夥伴共用銷售和支援材料
+
+為了協助雲端解決方案提供者計畫中的合作夥伴，使其能夠最有效地展現您的供應項目，並與您的組織合作，您必須提交可供轉銷商使用的銷售和支援材料。 這些資源不會向市集店面中的客戶公開。
+
+### <a name="partner-center-csp-channel"></a>合作夥伴中心 CSP 通道
+
+如果您已選擇加入合作夥伴中心內的 CSP 通道，發行者必須在供應項目清單模組底下的 CSP 通道中，輸入裝載了相關行銷材料和通道連絡資訊的 URL：
+
+![合作夥伴中心 CSP 宣傳材料資訊](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ### <a name="cloud-partner-portal-csp-channel"></a>Cloud Partner 入口網站 CSP 通道
 
-如果您已選擇 Cloud Partner 入口網站中的 CSP 通道，發行者必須輸入 URL，以將相關的行銷資料和通道連絡人資訊裝載至 CSP 通道：
+如果您已選擇加入 Cloud Partner 入口網站內的 CSP 通道，發行者必須在 CSP 通道中輸入裝載了相關行銷材料和通道連絡資訊的 URL：
 
-![Cloud Partner 入口網站 CSP 的宣傳材料資訊](media/marketplace-publishers-guide/cpp-csp-information.png)
+![Cloud Partner 入口網站 CSP 宣傳材料資訊](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-請造訪[Azure Marketplace 和 AppSource 發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
 
-若要深入瞭解 marketplace 轉型服務，請參閱[進入市場服務](https://partner.microsoft.com/reach-customers/gtm)。
+若要深入了解市集 GTM 服務，請參閱[進入市場服務](https://partner.microsoft.com/reach-customers/gtm)。
 
-登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以建立及設定您的供應專案。
+請登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立及設定您的供應項目。

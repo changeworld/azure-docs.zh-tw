@@ -1,6 +1,6 @@
 ---
-title: Azure Front 的網域上的地區篩選 |Microsoft Docs
-description: 在本文中，您會瞭解 Azure Front 的地區篩選原則
+title: 在 Azure Front Door 的網域上進行地區篩選 | Microsoft Docs
+description: 在本文中，您會了解 Azure Front Door 的地區篩選原則
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -13,24 +13,24 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411173"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739306"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
 
-根據預設，Azure Front 門板會回應使用者要求，而不論提出要求的使用者位置為何。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
+根據預設，不論使用者是在什麼位置提出要求，Azure Front Door 都會回應使用者的要求。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
 
-WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
+WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
 您可以藉由使用 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，來針對 Front Door 設定地區篩選原則。
 
-## <a name="country-code-reference"></a>國家/地區代碼參考
+## <a name="countryregion-code-reference"></a>國家/地區碼參考
 
-|國碼 (地區碼) | 國家/地區名稱 |
+|國家/地區碼 | 國家/地區名稱 |
 | ----- | ----- |
 | AD | 安道爾 |
 | AE | 阿拉伯聯合大公國|
@@ -94,16 +94,16 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | GF | 法屬圭亞那|
 | GH | 迦納|
 | GN | 幾內亞|
-| GP | 哥德普洛|
+| GP | 哥德洛普|
 | GR | 希臘|
 | GT | 瓜地馬拉|
-| GY | 蓋亞納|
+| GY | 蓋亞那|
 | HK | 香港特別行政區|
 | HN | 宏都拉斯|
 | HR | 克羅埃西亞|
 | HT | 海地|
 | HU | 匈牙利|
-| 識別碼 | 印尼|
+| ID | 印尼|
 | IE | 愛爾蘭|
 | IL | 以色列|
 | IN | 印度|

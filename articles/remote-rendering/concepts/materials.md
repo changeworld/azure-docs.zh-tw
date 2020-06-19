@@ -5,41 +5,45 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2bc356060bacd1c04ecb3d3dd10b8322ae40b8ba
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681840"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758668"
 ---
 # <a name="materials"></a>材質
 
-材質是定義如何呈現[網格](meshes.md)的[共用資源](../concepts/lifetime.md)。 材質用來指定要套用的[材質](textures.md)、是否讓物件變成透明，以及如何計算光線。
+材質是[共用資源](../concepts/lifetime.md)，定義如何轉譯[網格](meshes.md)。 材質是用來指定要套用哪一個[紋理](textures.md)、是否要讓物件透明化，以及如何計算光線。
 
-材質會在[模型轉換](../how-tos/conversion/model-conversion.md)期間自動建立，並可在執行時間存取。 您也可以從程式碼建立自訂材料，並取代現有的資料。 如果您想要跨多個網格共用相同的資料，這種情況特別合理。 因為資料的修改會顯示在參考它的每個網格上，所以這個方法可以用來輕鬆地套用變更。
+材質會在[模型轉換](../how-tos/conversion/model-conversion.md)期間自動建立，而且可在執行階段存取。 您也可以從程式碼建立自訂材質，並取代現有的材質。 如果您想要跨多個網格共用相同的材質，這種案例特別合理。 因為材質的修改會顯示在參考材質的每個網格上，所以這個方法可以用來輕鬆地套用變更。
 
 > [!NOTE]
-> 某些使用案例（例如反白顯示的物件）可以藉由修改材質來完成，但更容易透過[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)來達成。
+> 某些使用案例 (例如醒目提示挑選的物件) 可以藉由修改材質來完成，但是透過 [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) 更容易達成。
 
 ## <a name="material-types"></a>材質類型
 
 Azure 遠端呈現有兩種不同的材質類型：
 
-* [.Pbr 材質](../overview/features/pbr-materials.md)會用於應該盡可能呈現為實際正確的表面。 實際的光源會使用*實際*的轉譯（.pbr）來計算這些材質。 若要充分利用此材質類型，請務必提供高品質的輸入資料，例如粗糙度和一般地圖。
+* [PBR 材質](../overview/features/pbr-materials.md)用於應該盡可能實際上正確轉譯的表面。 使用「實際型轉譯」(PBR) 來計算這些材質的真實感光源。 若要充分利用此材質類型，請務必提供高品質的輸入資料，例如粗糙度和一般地圖。
 
-* [色彩材質](../overview/features/color-materials.md)用於不需要其他光源的情況。 這些資料永遠都是完整的，並且更容易設定。 色彩材質適用于不應該有任何光源的資料，或已經合併靜態光源（例如透過[攝影測量](https://en.wikipedia.org/wiki/Photogrammetry)取得的模型）。
+* [色彩材質](../overview/features/color-materials.md)用於不需要其他光源的情況。 這些材質永遠都是全亮的，並且更容易設定。 色彩材質用於應該完全沒有光源的資料，或已經合併靜態光源的資料，例如透過[攝影測量](https://en.wikipedia.org/wiki/Photogrammetry)取得的模型。
 
-## <a name="mesh-vs-meshcomponent-material-assignment"></a>網格與 MeshComponent 材質指派
+## <a name="mesh-vs-meshcomponent-material-assignment"></a>網格與MeshComponent 材質指派
 
-[網格](meshes.md)有一或多個 submeshes。 每個 submesh 都會參考一個材質。 您可以將資料變更為直接在網格上使用，也可以覆寫要用於[MeshComponent](meshes.md#meshcomponent)上之 submesh 的材質。
+[網格](meshes.md)有一或多個子網格。 每個子網格都會參考一個材質。 您可以將材質變更為直接在網格上使用，或者您可以覆寫要在 [MeshComponent](meshes.md#meshcomponent) 上用於子網格的材質。
 
-當您直接在網格資源上修改材質時，這項變更會影響該網格的所有實例。 不過，在 MeshComponent 上進行變更時，只會影響一個網格實例。 哪一個方法比較合適，取決於所需的行為，但修改 MeshComponent 是較常見的方法。
+當您直接在網格資源上修改材質時，這項變更會影響該網格的所有執行個體。 不過，在 MeshComponent 上進行變更時，只會影響一個網格執行個體。 哪一個方法比較合適，取決於所需的行為，但是修改 MeshComponent 是較常見的方法。
+
+## <a name="material-de-duplication"></a>材質重複資料刪除
+
+在轉換期間，具有相同屬性和紋理的多個材質會自動重複資料刪除成單一材質。 您可以在[轉換設定](../how-tos/conversion/configure-model-conversion.md)中停用這項功能，但是建議您將其保持開啟以獲得最佳效能。
 
 ## <a name="material-classes"></a>材質類別
 
-API 所提供的所有資料都是衍生自基類`Material`。 您可以透過`Material.MaterialSubType`來查詢其類型，或直接將其轉換：
+API 所提供的所有材質都是衍生自基底類別 `Material`。 您可以透過 `Material.MaterialSubType` 或直接將其轉換來查詢其類型：
 
-``` cs
+```cs
 void SetMaterialColorToGreen(Material material)
 {
     if (material.MaterialSubType == MaterialType.Color)
@@ -50,14 +54,33 @@ void SetMaterialColorToGreen(Material material)
     }
 
     PbrMaterial pbrMat = material as PbrMaterial;
-    if( pbrMat!= null )
+    if (pbrMat != null)
     {
-        PbrMaterial pbrMaterial = material.PbrMaterial.Value;
-        pbrMaterial.AlbedoColor = new Color4(0, 1, 0, 1);
+        pbrMat.AlbedoColor = new Color4(0, 1, 0, 1);
         return;
     }
 }
 ```
+
+```cpp
+void SetMaterialColorToGreen(ApiHandle<Material> material)
+{
+    if (*material->MaterialSubType() == MaterialType::Color)
+    {
+        ApiHandle<ColorMaterial> colorMaterial = material.as<ColorMaterial>();
+        colorMaterial->AlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+
+    if (*material->MaterialSubType() == MaterialType::Pbr)
+    {
+        ApiHandle<PbrMaterial> pbrMat = material.as<PbrMaterial>();
+        pbrMat->AlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+}
+```
+
 
 ## <a name="next-steps"></a>後續步驟
 

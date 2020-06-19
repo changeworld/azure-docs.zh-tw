@@ -1,77 +1,92 @@
 ---
-title: 用於驗證的 Azure 前端 Api
-description: '說明如何使用 c # 前端 API 來進行驗證'
+title: 適用於驗證的 Azure Frontend API
+description: 說明如何使用 C# 前端 API 進行驗證
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 68d94a3bdf7914f762774686fa0b0fa0d0fd37cc
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681346"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759059"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 進行驗證
 
-在本節中，我們將說明如何使用 c # API 來進行驗證。
+在本節中，我們將說明如何使用 C# API 來進行驗證。
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
-AzureFrontendAccountInfo 是用來設定 SDK 中```AzureFrontend```實例的驗證資訊。
+AzureFrontendAccountInfo 是用來針對 SDK 中的 ```AzureFrontend``` 執行個體設定驗證資訊。
 
 重要欄位如下：
 
 ```cs
 
-    public class AzureFrontendAccountInfo
-    {
-        // Something akin to "<region>.mixedreality.azure.com"
-        public string AccountDomain;
+public class AzureFrontendAccountInfo
+{
+    // Something akin to "<region>.mixedreality.azure.com"
+    public string AccountDomain;
 
-        // Can use one of:
-        // 1) ID and Key.
-        // 2) AuthenticationToken.
-        // 3) AccessToken.
-        public string AccountId = Guid.Empty.ToString();
-        public string AccountKey = string.Empty;
-        public string AuthenticationToken = string.Empty;
-        public string AccessToken = string.Empty;
-    }
+    // Can use one of:
+    // 1) ID and Key.
+    // 2) AuthenticationToken.
+    // 3) AccessToken.
+    public string AccountId = Guid.Empty.ToString();
+    public string AccountKey = string.Empty;
+    public string AuthenticationToken = string.Empty;
+    public string AccessToken = string.Empty;
+}
+```
+
+C++ 對應項目如下所示：
+
+```cpp
+struct AzureFrontendAccountInfo
+{
+    std::string AccountDomain{};
+    std::string AccountId{};
+    std::string AccountKey{};
+    std::string AuthenticationToken{};
+    std::string AccessToken{};
+};
 
 ```
 
-針對網域中的_區域_部分，請使用[您附近的區域](../reference/regions.md)。
+針對網域中的_區域_部分，使用[您附近的區域](../reference/regions.md)。
 
-您可以從入口網站取得帳戶資訊，如[取得帳戶資訊](create-an-account.md#retrieve-the-account-information)段落中所述。
+您可以從入口網站取得帳戶資訊，如[擷取帳戶資訊](create-an-account.md#retrieve-the-account-information)段落中所述。
 
-## <a name="azure-frontend"></a>Azure 前端
+## <a name="azure-frontend"></a>Azure Frontend
 
-相關的類別為```AzureFrontend```和```AzureSession```。 ```AzureFrontend```用於帳戶管理和帳戶層級功能，其中包括：資產轉換和轉譯會話的建立。 ```AzureSession```用於工作階段層級功能，其中包括：會話更新、查詢、更新和解除委任。
+相關的類別為 ```AzureFrontend``` 和 ```AzureSession```。 ```AzureFrontend``` 用於帳戶管理和帳戶層級功能，其中包括：資產轉換和轉譯工作階段建立。 ```AzureSession``` 用於工作階段層級功能，其中包括：工作階段更新、查詢、更新和解除委任。
 
-每個已開啟```AzureSession``` /已建立的會保留所建立之前端的參考。 若要完全關閉，必須先解除配置所有會話，然後才會解除配置前端。
+每個已開啟/已建立 ```AzureSession``` 都會保留對於前端 (建立工作階段) 的參考。 若要完全關閉，必須先解除配置所有工作階段，然後才會解除配置前端。
 
-解除配置會話並不會停止 Azure 上的 VM `AzureSession.StopAsync` ，必須明確地呼叫。
+解除配置工作階段並不會停止 Azure 上的 VM，`AzureSession.StopAsync` 必須明確地呼叫。
 
-一旦建立會話且其狀態已標示為 [就緒]，就可以使用`AzureSession.ConnectToRuntime`連接到遠端轉譯執行時間。
+一旦建立工作階段且其狀態已標示為就緒，就可以使用 `AzureSession.ConnectToRuntime` 連線到遠端轉譯執行階段。
 
 ### <a name="threading"></a>執行緒
 
-所有的 AzureSession 和 AzureFrontend 非同步呼叫都是在背景執行緒中完成，而不是主應用程式執行緒。
+所有 AzureSession 和 AzureFrontend 非同步呼叫都是在背景執行緒中完成，而不是主要應用程式執行緒。
 
-### <a name="conversion-apis"></a>轉換 Api
+### <a name="conversion-apis"></a>轉換 API
 
 如需轉換服務的詳細資訊，請參閱[模型轉換 REST API](conversion/conversion-rest-api.md)。
 
 #### <a name="start-asset-conversion"></a>開始資產轉換
 
-``` cs
+```cs
 private StartConversionAsync _pendingAsync = null;
 
-void StartAssetConversion(AzureFrontend frontend, string modelName, string modelUrl, string assetContainerUrl)
+void StartAssetConversion(AzureFrontend frontend, string storageContainer, string blobinputpath, string bloboutpath, string modelName, string outputName)
 {
     _pendingAsync = frontend.StartConversionAsync(
-        new AssetConversionParams(modelName, modelUrl, assetContainerUrl));
+        new AssetConversionInputParams(storageContainer, blobinputpath, "", modelName),
+        new AssetConversionOutputParams(storageContainer, bloboutpath, "", outputName)
+        );
     _pendingAsync.Completed +=
         (StartConversionAsync res) =>
         {
@@ -89,13 +104,45 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
+```cpp
+void StartAssetConversion(ApiHandle<AzureFrontend> frontend, std::string storageContainer, std::string blobinputpath, std::string bloboutpath, std::string modelName, std::string outputName)
+{
+    AssetConversionInputParams input;
+    input.BlobContainerInformation.BlobContainerName = blobinputpath;
+    input.BlobContainerInformation.StorageAccountName = storageContainer;
+    input.BlobContainerInformation.FolderPath = "";
+    input.InputAssetPath = modelName;
+
+    AssetConversionOutputParams output;
+    output.BlobContainerInformation.BlobContainerName = blobinputpath;
+    output.BlobContainerInformation.StorageAccountName = storageContainer;
+    output.BlobContainerInformation.FolderPath = "";
+    output.OutputAssetPath = outputName;
+
+    ApiHandle<StartAssetConversionAsync> conversionAsync = *frontend->StartAssetConversionAsync(input, output);
+    conversionAsync->Completed([](ApiHandle<StartAssetConversionAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            //use res.Result
+        }
+        else
+        {
+            printf("Failed to start asset conversion!");
+        }
+    }
+    );
+}
+```
+
+
 #### <a name="get-conversion-status"></a>取得轉換狀態
 
-``` cs
+```cs
 private ConversionStatusAsync _pendingAsync = null
 void GetConversionStatus(AzureFrontend frontend, string assetId)
 {
-    _pendingAsync = frontend.GetConversionStatusAsync(assetId);
+    _pendingAsync = frontend.GetAssetConversionStatusAsync(assetId);
     _pendingAsync.Completed +=
         (ConversionStatusAsync res) =>
         {
@@ -113,15 +160,35 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>轉譯 Api
+```cpp
+void GetConversionStatus(ApiHandle<AzureFrontend> frontend, std::string assetId)
+{
+    ApiHandle<ConversionStatusAsync> pendingAsync = *frontend->GetAssetConversionStatusAsync(assetId);
+    pendingAsync->Completed([](ApiHandle<ConversionStatusAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            // use res->Result
+        }
+        else
+        {
+            printf("Failed to get status of asset conversion!");
+        }
 
-如需會話管理的詳細資訊，請參閱[會話管理 REST API](session-rest-api.md) 。
+    });
+}
+```
 
-您可以在服務上動態建立轉譯會話，或已經存在的會話識別碼可以「開啟」至 AzureSession 物件。
 
-#### <a name="create-rendering-session"></a>建立轉譯會話
+### <a name="rendering-apis"></a>轉譯 API
 
-``` cs
+如需工作階段管理的詳細資訊，請參閱[工作階段管理 REST API](session-rest-api.md)。
+
+您可以在服務上動態建立轉譯工作階段，或已經存在的工作階段識別碼可以「開啟」至 AzureSession 物件。
+
+#### <a name="create-rendering-session"></a>建立轉譯工作階段
+
+```cs
 private CreateSessionAsync _pendingAsync = null;
 void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSize, ARRTimeSpan maxLease)
 {
@@ -144,11 +211,33 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 }
 ```
 
-#### <a name="open-an-existing-rendering-session"></a>開啟現有的轉譯會話
+```cpp
+void CreateRenderingSession(ApiHandle<AzureFrontend> frontend, RenderingSessionVmSize vmSize, const ARRTimeSpan& maxLease)
+{
+    RenderingSessionCreationParams params;
+    params.MaxLease = maxLease;
+    params.Size = vmSize;
+    ApiHandle<CreateSessionAsync> pendingAsync = *frontend->CreateNewRenderingSessionAsync(params);
 
-開啟現有的會話是同步呼叫。
+    pendingAsync->Completed([] (ApiHandle<CreateSessionAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            //use res->Result
+        }
+        else
+        {
+            printf("Failed to create session!");
+        }
+    });
+}
+```
 
-``` cs
+#### <a name="open-an-existing-rendering-session"></a>開啟現有的轉譯工作階段
+
+開啟現有的工作階段是同步呼叫。
+
+```cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 {
     AzureSession session = frontend.OpenRenderingSession(sessionId);
@@ -156,9 +245,18 @@ void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 }
 ```
 
-#### <a name="get-current-rendering-sessions"></a>取得目前的轉譯會話
+```cpp
+void CreateRenderingSession(ApiHandle<AzureFrontend> frontend, std::string sessionId)
+{
+    ApiHandle<AzureSession> session = *frontend->OpenRenderingSession(sessionId);
+    // Query session status, etc.
+}
+```
 
-``` cs
+
+#### <a name="get-current-rendering-sessions"></a>取得目前的轉譯工作階段
+
+```cs
 private SessionPropertiesArrayAsync _pendingAsync = null;
 void GetCurrentRenderingSessions(AzureFrontend frontend)
 {
@@ -179,11 +277,29 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>會話 Api
+```cpp
+void GetCurrentRenderingSessions(ApiHandle<AzureFrontend> frontend)
+{
+    ApiHandle<SessionPropertiesArrayAsync> pendingAsync = *frontend->GetCurrentRenderingSessionsAsync();
+    pendingAsync->Completed([](ApiHandle<SessionPropertiesArrayAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            // use res.Result
+        }
+        else
+        {
+            printf("Failed to get current rendering sessions!");
+        }
+    });
+}
+```
 
-#### <a name="get-rendering-session-properties"></a>取得轉譯會話屬性
+### <a name="session-apis"></a>工作階段 API
 
-``` cs
+#### <a name="get-rendering-session-properties"></a>取得轉譯工作階段屬性
+
+```cs
 private SessionPropertiesAsync _pendingAsync = null;
 void GetRenderingSessionProperties(AzureSession session)
 {
@@ -204,9 +320,27 @@ void GetRenderingSessionProperties(AzureSession session)
 }
 ```
 
-#### <a name="update-rendering-session"></a>更新轉譯會話
+```cpp
+void GetRenderingSessionProperties(ApiHandle<AzureSession> session)
+{
+    ApiHandle<SessionPropertiesAsync> pendingAsync = *session->GetPropertiesAsync();
+    pendingAsync->Completed([](ApiHandle<SessionPropertiesAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            //use res.Result
+        }
+        else
+        {
+            printf("Failed to get properties of session!");
+        }
+    });
+}
+```
 
-``` cs
+#### <a name="update-rendering-session"></a>更新轉譯工作階段
+
+```cs
 private SessionAsync _pendingAsync;
 void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 {
@@ -228,9 +362,29 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>停止轉譯會話
+```cpp
+void UpdateRenderingSession(ApiHandle<AzureSession> session, const ARRTimeSpan& updatedLease)
+{
+    RenderingSessionUpdateParams params;
+    params.MaxLease = updatedLease;
+    ApiHandle<SessionAsync> pendingAsync = *session->RenewAsync(params);
+    pendingAsync->Completed([](ApiHandle<SessionAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            printf("Rendering session renewed succeeded!");
+        }
+        else
+        {
+            printf("Failed to renew rendering session!");
+        }
+    });
+}
+```
 
-``` cs
+#### <a name="stop-rendering-session"></a>停止轉譯工作階段
+
+```cs
 private SessionAsync _pendingAsync;
 void StopRenderingSession(AzureSession session)
 {
@@ -251,9 +405,27 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>連接到 ARR inspector
+```cpp
+void StopRenderingSession(ApiHandle<AzureSession> session)
+{
+    ApiHandle<SessionAsync> pendingAsync = *session->StopAsync();
+    pendingAsync->Completed([](ApiHandle<SessionAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            printf("Rendering session stopped successfully!");
+        }
+        else
+        {
+            printf("Failed to stop rendering session!");
+        }
+    });
+}
+```
 
-``` cs
+#### <a name="connect-to-arr-inspector"></a>連線到 ARR 偵測器
+
+```cs
 private ArrInspectorAsync _pendingAsync = null;
 void ConnectToArrInspector(AzureSession session, string hostname)
 {
@@ -283,6 +455,26 @@ void ConnectToArrInspector(AzureSession session, string hostname)
                 Console.WriteLine("Failed to connect to ARR inspector!");
             }
         };
+}
+```
+
+```cpp
+void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname)
+{
+    ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync(hostname);
+    pendingAsync->Completed([](ApiHandle<ArrInspectorAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            // Launch the html file with default browser
+            std::string htmlPath = "file:///" + *res->Result();
+            ShellExecuteA(NULL, "open", htmlPath.c_str(), NULL, NULL, SW_SHOWDEFAULT);
+        }
+        else
+        {
+            printf("Failed to connect to ARR inspector!");
+        }
+    });
 }
 ```
 

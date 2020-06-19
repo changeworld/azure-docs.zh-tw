@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: 認知服務的自訂子網域
       href: cognitive-services-custom-subdomains.md
-    - name: 認知服務控制流程
-      href: cognitive-services-gating-process.md
     - name: 語言支援
       href: language-support.md
 - name: 快速入門
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: 診斷記錄
       href: diagnostic-logging.md
+    - name: ARM 範本
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      href: ./policy-samples.md
 - name: 安全性
   items:
     - name: 認知服務安全性
