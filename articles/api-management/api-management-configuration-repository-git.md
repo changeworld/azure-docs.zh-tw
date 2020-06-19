@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259165"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649229"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
 
@@ -47,12 +47,12 @@ ms.locfileid: "81259165"
 
 ## <a name="access-git-configuration-in-your-service"></a>存取服務中的 Git 組態
 
-若要檢視並設定您的 Git 組態設定，您可以按一下 [安全性]**** 功能表，然後瀏覽至 [設定存放庫]**** 索引標籤。
+若要檢視並設定您的 Git 組態設定，您可以按一下 [安全性] 功能表，然後瀏覽至 [設定存放庫] 索引標籤。
 
 ![啟用 GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> 未定義為指名值的任何秘密都會儲存在存放庫中，並且會保留在其歷程記錄中，直到您停用再重新啟用 Git 存取為止。 「命名值」提供一個安全的地方來管理所有 API 設定和原則中的常數位串值（包括秘密），因此您不需要直接在原則語句中儲存它們。 如需詳細資訊，請參閱[如何使用 Azure API 管理原則中的具名值](api-management-howto-properties.md)。
+> 任何未定義為「具名值」的祕密，都儲存在存放庫中，並保留在其歷程記錄中，直到您停用又重新啟用 Git 存取為止。 「具名值」提供安全的地方來管理所有 API 設定和原則的常數字串值，包括祕密，因此，不需要直接儲存在原則陳述式中。 如需詳細資訊，請參閱[如何在 Azure API 管理原則中使用具名值](api-management-howto-properties.md)。
 >
 >
 
@@ -60,9 +60,9 @@ ms.locfileid: "81259165"
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>將服務組態儲存至 Git 儲存機制
 
-複製儲存機制之前的第一個步驟是將服務組態的目前狀態儲存至儲存機制。 按一下 [儲存到存放庫]****。
+複製儲存機制之前的第一個步驟是將服務組態的目前狀態儲存至儲存機制。 按一下 [儲存到存放庫]。
 
-在 [確認] 畫面上進行任何所需的變更，然後按一下 [確定] **** 以儲存。
+在 [確認] 畫面上進行任何所需的變更，然後按一下 [確定]  以儲存。
 
 儲存組態一段時間後，儲存機制的組態狀態隨即顯示，包括最後組態變更和上次同步處理服務組態和儲存機制的日期與時間。
 
@@ -72,9 +72,9 @@ ms.locfileid: "81259165"
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>將儲存機制複製到本機電腦
 
-若要複製儲存機制，您需要儲存機制的 URL、使用者名稱和密碼。 若要取得使用者名稱和其他認證，按一下靠近頁面頂端的 [存取認證]****。
+若要複製儲存機制，您需要儲存機制的 URL、使用者名稱和密碼。 若要取得使用者名稱和其他認證，按一下靠近頁面頂端的 [存取認證]。
 
-若要產生密碼，請先確定已將 [到期]**** 設為所需的到期日期和時間，然後按一下 [產生]****。
+若要產生密碼，請先確定已將 [到期] 設為所需的到期日期和時間，然後按一下 [產生]。
 
 > [!IMPORTANT]
 > 記下此密碼。 一旦您離開此頁面，就不會再次顯示密碼。
@@ -96,7 +96,7 @@ git clone https://{name}.scm.azure-api.net/
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-如果發生錯誤，請嘗試 URL 編碼命令的密碼部分。 完成這項操作的其中一個快速方法是開啟 Visual Studio，並且在 [即時運算視窗] **** 發出下列命令。 若要開啟 [即時運算視窗]****，請在 Visual Studio 中開啟任何解決方案或專案 (或建立新的空白主控台應用程式)，然後從 [偵錯]**** 功能表選擇 [視窗]****、[即時運算]****。
+如果發生錯誤，請嘗試 URL 編碼命令的密碼部分。 完成這項操作的其中一個快速方法是開啟 Visual Studio，並且在 [即時運算視窗] 發出下列命令。 若要開啟 [即時運算視窗]，請在 Visual Studio 中開啟任何解決方案或專案 (或建立新的空白主控台應用程式)，然後從 [偵錯] 功能表選擇 [視窗]、[即時運算]。
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")
@@ -112,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新的服務執行個體組態更新本機儲存機制
 
-如果您在 Azure 入口網站中或使用 REST API 變更您的 API 管理服務執行個體，您必須先將這些變更儲存至存放庫，才能使用最新的變更來更新本機存放庫。 若要這樣做，請按一下 Azure 入口網站中 [設定存放庫]**** 索引標籤上的 [將設定儲存到存放庫]****，然後在本機存放庫中發出下列命令。
+如果您在 Azure 入口網站中或使用 REST API 變更您的 API 管理服務執行個體，您必須先將這些變更儲存至存放庫，才能使用最新的變更來更新本機存放庫。 若要這樣做，請按一下 Azure 入口網站中 [設定存放庫] 索引標籤上的 [將設定儲存到存放庫]，然後在本機存放庫中發出下列命令。
 
 ```
 git pull
@@ -148,7 +148,7 @@ git push
 
 本機 git 儲存機制中的檔案和資料夾包含服務執行個體的相關組態資訊。
 
-| 項目 | 描述 |
+| Item | 描述 |
 | --- | --- |
 | 根 api 管理資料夾 |包含服務執行個體的最上層組態 |
 | apis 資料夾 |包含服務執行個體中 apis 的組態 |
@@ -173,8 +173,8 @@ git push
 > 下列實體不包含在 Git 儲存機制，因此無法使用 Git 來設定。
 >
 > * [使用者](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
-> * [訂閱](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
-> * [命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
+> * [訂用帳戶](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * 具名值
 > * 樣式以外的開發人員入口網站實體
 >
 
@@ -198,24 +198,24 @@ git push
 }
 ```
 
-前四個設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`) 對應至 [安全性]**** 區段的 [身分識別]**** 索引標籤中的下列設定。
+前四個設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`) 對應至 [安全性] 區段的 [身分識別] 索引標籤中的下列設定。
 
 | 身分識別設定 | 對應至 |
 | --- | --- |
 | RegistrationEnabled |出現**使用者名稱和密碼**的身分識別提供者 |
-| UserRegistrationTerms |**** 文字方塊 |
-| UserRegistrationTermsEnabled |**** 核取方塊 |
-| UserRegistrationTermsConsentRequired |**** 核取方塊 |
-| RequireUserSigninEnabled |**** 核取方塊 |
+| UserRegistrationTerms | 文字方塊 |
+| UserRegistrationTermsEnabled | 核取方塊 |
+| UserRegistrationTermsConsentRequired | 核取方塊 |
+| RequireUserSigninEnabled | 核取方塊 |
 
-接下來四個設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 對應至 [安全性]**** 區段的 [委派]**** 索引標籤中的下列設定。
+接下來四個設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 對應至 [安全性] 區段的 [委派] 索引標籤中的下列設定。
 
 | 委派設定 | 對應至 |
 | --- | --- |
-| DelegationEnabled |[委派登入和註冊]**** 核取方塊 |
-| DelegationUrl |**** 文字方塊 |
-| DelegatedSubscriptionEnabled |**** 核取方塊 |
-| DelegationValidationKey |**** 文字方塊 |
+| DelegationEnabled |[委派登入和註冊] 核取方塊 |
+| DelegationUrl | 文字方塊 |
+| DelegatedSubscriptionEnabled | 核取方塊 |
+| DelegationValidationKey | 文字方塊 |
 
 最後的設定 ( `$ref-policy`) 會對應至服務執行個體的全域原則陳述式檔案。
 

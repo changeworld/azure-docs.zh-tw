@@ -1,6 +1,6 @@
 ---
 title: 複寫資料表的設計指引
-description: 在 Synapse SQL 中設計複寫資料表的建議
+description: 設計 Synapse SQL 集區中複寫資料表的建議
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,38 +11,38 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990781"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660030"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>在 SQL 分析中使用複寫資料表的設計指引
+# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用複寫資料表的設計指引
 
-本文提供在 SQL 分析架構中設計複寫資料表的建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
+本文針對在 Synapse SQL 集區結構描述中設計複寫資料表提供建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-本文假設您已熟悉 SQL 分析中的資料散發和資料移動概念。如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。
+本文假設您已熟悉 SQL 集區中的資料散發和資料移動概念。  如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。
 
-在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。例如，請思考一下下列問題：
+在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。  例如，請思考一下下列問題：
 
 - 資料表的大小為何？
 - 資料表的重新整理頻率為何？
-- 我在 SQL 分析資料庫中有事實和維度資料表嗎？
+- 我是否在 SQL 集區資料庫中有事實資料表和維度資料表？
 
 ## <a name="what-is-a-replicated-table"></a>什麼是複寫資料表？
 
 複寫資料表在每個計算節點上都有一份可存取的完整資料表複本。 複寫資料表可使在進行聯結或彙總之前，不需要在計算節點之間傳輸資料。 由於資料表有多個複本，因此當資料表大小在壓縮後小於 2 GB 時，複寫資料表的運作效能最佳。  2 GB 不是固定限制。  如果資料是靜態的，而且不會變更，您可以複寫較大的資料表。
 
-下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 分析中，複寫資料表會完整複製到每個計算節點上的散發資料庫。
+下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 集區中，會將複寫資料表完整複製到每個計算節點上的散發資料庫。
 
-![複寫的資料表](./media/design-guidance-for-replicated-tables/replicated-table.png "複寫的資料表")  
+![複寫資料表](./media/design-guidance-for-replicated-tables/replicated-table.png "複寫的資料表")  
 
-複寫資料表適用于星型架構中的維度資料表。 維度資料表通常會聯結到與維度資料表不同的事實資料表。  維度通常是一種大小，可讓您儲存及維護多個複本。 維度會儲存變更緩慢的描述性資料，例如客戶名稱和地址，以及產品詳細資料。 資料的緩時變本質導致複寫資料表的維護變得較少。
+複寫資料表適用於星型結構描述中的維度資料表。 維度資料表通常會聯結到與維度資料表不同的事實資料表。  維度的大小通常是適合儲存及維護多個複本的大小。 維度會儲存變更緩慢的描述性資料，例如客戶名稱和地址，以及產品詳細資料。 資料的變更緩慢特性導致複寫資料表的維護變得較少。
 
 在下列情況下，請考慮使用複寫資料表：
 
@@ -51,9 +51,9 @@ ms.locfileid: "80990781"
 
 在下列情況下，複寫資料表可能無法產生最佳查詢效能：
 
-- 資料表有頻繁的插入、更新及刪除作業。資料操作語言（DML）作業需要重建複寫資料表。經常重建會導致效能變差。
-- SQL 分析資料庫會頻繁地進行調整。 調整 SQL 分析資料庫會變更計算節點的數目，這會導致重建複寫資料表。
-- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要進行資料移動時，SQL 分析只會移動所要求資料行的資料。
+- 資料表有頻繁的插入、更新及刪除作業。 資料操作語言 (DML) 作業需要重建複寫資料表。 經常重建會導致效能變差。
+- SQL 集區資料庫的調整頻率很高。 調整 SQL 集區資料庫會變更計算節點的數目，而這會導致重建複寫資料表。
+- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要進行資料移動時，SQL 集區只會移動所要求資料行中的資料。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>使用複寫資料表搭配簡單查詢述詞
 
@@ -64,7 +64,7 @@ ms.locfileid: "80990781"
 
 需要大量 CPU 的查詢在工作分散於所有計算節點時效能最佳。 例如，以在資料表的每個資料列上執行計算的查詢來說，在複寫資料表上執行會比在分散式資料表上執行效能更佳。 由於複寫資料表是完整儲存在每個計算節點上，因此對複寫資料表執行需要大量 CPU 的查詢時，執行對象會是每個計算節點上的整個資料表。 額外的計算會降低查詢效能。
 
-例如，此查詢含有複雜的述詞。  當資料位於分散式資料表而不是複寫資料表時，它的執行速度會更快。 在此範例中，資料可以是迴圈配置資源散發。
+例如，此查詢含有複雜的述詞。  當資料位於分散式資料表而不是複寫資料表時，其執行速度較快。 在此範例中，資料可以是循環配置資源分散式資料表。
 
 ```sql
 
@@ -76,7 +76,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>將現有的循環配置資源資料表轉換成分散式資料表
 
-如果您已經有迴圈配置資源資料表，建議您將它們轉換成複寫資料表（如果它們符合本文中所述的準則）。 複寫資料表可提升循環配置資源資料表的效能，因為它們不需進行資料移動。  循環配置資源資料表針對聯結一律需要進行資料移動。
+如果您已經有循環配置資源資料表，而且符合本文中所述的準則，建議您將其轉換成複寫資料表。 複寫資料表可提升循環配置資源資料表的效能，因為它們不需進行資料移動。  循環配置資源資料表針對聯結一律需要進行資料移動。
 
 此範例使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 將 DimSalesTerritory 資料表變更為複寫資料表。 不論 DimSalesTerritory 是雜湊分散式還是循環配置資源資料表，此範例都有效。
 
@@ -124,12 +124,12 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改複寫資料表時的效能考量
 
-SQL 分析會藉由維護資料表的主要版本來執行複寫資料表。 它會將主要版本複製到每個計算節點上的第一個散發資料庫。 當變更時，SQL 分析會先更新主要版本，然後重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW2000c 上的複寫資料表有5個數據複本。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL 分析會使用此模型來支援更快速的資料修改語句和彈性的調整作業。
+SQL 集區是透過維護資料表的主要版本來實作複寫資料表。 會將主要版本複製到每個計算節點上的第一個散發資料庫。 當有變更時，會先更新主要版本，然後再重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW2000c 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL 集區會使用這個模型支援更快的資料修改陳述式和彈性調整作業。
 
 在執行下列動作之後，必須進行重建：
 
 - 載入或修改資料
-- Synapse SQL 實例會調整為不同的層級
+- Synapse SQL 執行個體會調整為不同的層級
 - 更新資料表定義
 
 在執行下列動作之後，不須進行重建：
@@ -141,7 +141,7 @@ SQL 分析會藉由維護資料表的主要版本來執行複寫資料表。 它
 
 ### <a name="use-indexes-conservatively"></a>謹慎地使用索引
 
-標準索引編製做法適用於複寫資料表。 SQL 分析會在重建過程中重建每個複寫的資料表索引。 請只有在效能的提升超過重建索引的代價時，才使用索引。
+標準索引編製做法適用於複寫資料表。 SQL 集區會在重建時，一併重建每個複寫資料表索引。 請只有在效能的提升超過重建索引的代價時，才使用索引。
 
 ### <a name="batch-data-load"></a>批次資料載入
 
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 若要建立複寫資料表，請使用下列其中一個陳述式：
 
-- [CREATE TABLE （SQL 分析）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT （SQL 分析）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL 集區)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT (SQL 集區)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 如需分散式資料表的概觀，請參閱[分散式資料表](sql-data-warehouse-tables-distribute.md)。

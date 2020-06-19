@@ -2,7 +2,7 @@
 title: PowerShell：還原 Azure SQL 受控執行個體的異地備份
 description: 可從異地備援備份還原 Azure SQL 受控執行個體資料庫的 Azure PowerShell 範例指令碼。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: eeb20f51b22805775ed491267b69d0ba60c90bc3
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 658bedad3b74bf30ba23562ebf025af4781f1034
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220856"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687526"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>使用 PowerShell 將 Azure SQL 受控執行個體資料庫還原到另一個地理區域
 

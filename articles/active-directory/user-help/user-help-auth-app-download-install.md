@@ -1,6 +1,6 @@
 ---
-title: 下載並安裝 Microsoft Authenticator 應用程式 Azure AD
-description: 下載並安裝 Microsoft Authenticator 應用程式，以在使用雙因素驗證時驗證您的身分識別。
+title: 下載及安裝 Microsoft Authenticator 應用程式 - Azure AD
+description: 下載及安裝 Microsoft Authenticator 應用程式來在使用雙要素驗證時驗證身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,16 +8,16 @@ ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063895"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741377"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下載並安裝 Microsoft Authenticator 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "77063895"
 
 - **手機登入。** 雙因素驗證的其中一個版本，可讓您以使用者名稱和行動裝置加上指紋、臉部或 PIN 來進行登入，而不必輸入密碼。
 
-- **程式碼產生。** 為任何支援驗證器應用程式的其他帳戶產生程式碼。
+- **產生程式碼。** 為任何支援驗證器應用程式的其他帳戶產生程式碼。
 
 > [!Important]
 > Microsoft Authenticator 應用程式適用於任何使用雙因素驗證且支援限時單次密碼 (TOTP) 標準的帳戶。
@@ -51,11 +51,11 @@ ms.locfileid: "77063895"
 - **Apple iOS。** 在 Apple iOS 裝置上，移至 App Store 以[下載並安裝 Microsoft Authenticator 應用程式](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
 >[!Important]
->如果您目前不在行動裝置上，您仍然可以從 [ [Microsoft Authenticator] 頁面](https://www.microsoft.com/en-us/account/authenticator)傳送下載連結給自己，以取得 Microsoft Authenticator 應用程式。
+>如果您目前不在行動裝置上，則仍可透過 [Microsoft Authenticator 頁面](https://www.microsoft.com/en-us/account/authenticator)來傳送下載連結給自己，以取得 Microsoft Authenticator 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-下載並安裝應用程式之後，您必須新增各種帳戶。 如需詳細資訊，請參閱：
+下載並安裝應用程式之後，您必須新增各種帳戶。 如需詳細資訊，請參閱
 
 - **驗證器應用程式。** 下載並使用驗證器應用程式，以取得核准通知或隨機產生的核准代碼來進行雙步驟驗證或密碼重設。 如需如何設定和使用 Microsoft Authenticator 應用程式的逐步指示，請參閱[將安全性資訊設定為使用驗證器應用程式](security-info-setup-auth-app.md)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77063895"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並搭配 PIN 使用以便進行雙步驟驗證或密碼重設。 如需如何透過安全性金鑰驗證身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 

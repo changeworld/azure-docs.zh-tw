@@ -1,35 +1,35 @@
 ---
 title: 在 Azure Cosmos DB 中使用 JSON
-description: 瞭解如何查詢和存取嵌套的 JSON 屬性，並在 Azure Cosmos DB 中使用特殊字元
+description: 了解如何在 Azure Cosmos DB 中查詢和存取巢狀 JSON 屬性，以及使用特殊字元
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117014"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699133"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用 JSON
 
-在 Azure Cosmos DB 的 SQL （核心） API 中，專案會儲存為 JSON。 類型系統和運算式僅限於處理 JSON 類型。 如需詳細資訊，請參閱[JSON 規格](https://www.json.org/)。
+在 Azure Cosmos DB 的 SQL (核心) API 中，會將項目儲存為 JSON。 類型系統和運算式僅限於處理 JSON 類型。 如需詳細資訊，請參閱 [JSON 規格](https://www.json.org/) \(英文\)。
 
 我們將摘要說明使用 JSON 的一些重要層面：
 
-- JSON 物件一律以 `{` 左大括弧開頭，並以 `}` 右大括弧結尾
-- 您可以讓 JSON 屬性彼此[嵌套](#nested-properties)
+- JSON 物件一律會以 `{` 的左大括弧開頭，並以 `}` 的右大括弧結束
+- 您可以讓 JSON 屬性彼此以[巢狀](#nested-properties)形式放在一起
 - JSON 屬性值可以是陣列
 - JSON 屬性名稱會區分大小寫
-- JSON 屬性名稱可以是任何字串值（包括空格或不是字母的字元）
+- JSON 屬性名稱可以是任何字串值 (包括空格或非字母的字元)
 
 ## <a name="nested-properties"></a>巢狀屬性
 
-您可以使用點存取子來存取嵌套 JSON。 您可以在查詢中使用嵌套的 JSON 屬性，方法與使用任何其他屬性的方式相同。
+您可以使用點存取子來存取巢狀 JSON。 您可以在查詢中，利用與使用任何其他屬性相同的方式來使用巢狀 JSON 屬性。
 
-以下是具有 nested JSON 的檔：
+以下是具有巢狀 JSON 的文件：
 
 ```JSON
 {
@@ -45,9 +45,9 @@ ms.locfileid: "83117014"
 }
 ```
 
-在此情況下， `state` 、 `country` 和 `city` 屬性全都嵌套在 `address` 屬性內。
+在此案例中，`state`、`country` 和 `city` 屬性全都以巢狀形式放在 `address` 屬性內。
 
-下列範例會投射兩個嵌套的屬性： `f.address.state` 和 `f.address.city` 。
+下列範例會投影兩個巢狀屬性：`f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -66,9 +66,9 @@ ms.locfileid: "83117014"
 
 ## <a name="working-with-arrays"></a>使用陣列
 
-除了嵌套屬性之外，JSON 也支援陣列。
+除了巢狀屬性，JSON 也支援陣列。
 
-以下是具有陣列的範例檔：
+以下是具有陣列的範例文件：
 
 ```json
 {
@@ -98,9 +98,9 @@ FROM Families f
 WHERE f.children[0].givenName = "Jesse"
 ```
 
-不過，在大多數情況下，當您使用陣列時，您會使用[子查詢](sql-query-subquery.md)或[自我聯結](sql-query-join.md)。
+不過，在大多數案例中，您將在使用陣列時，使用[子查詢](sql-query-subquery.md)或[自我聯結](sql-query-join.md)。
 
-例如，以下是顯示客戶的銀行帳戶每日餘額的檔。
+例如，以下是顯示客戶銀行帳戶每日餘額的文件。
 
 ```json
 {
@@ -127,7 +127,7 @@ WHERE f.children[0].givenName = "Jesse"
 }
 ```
 
-如果您想要執行一個查詢，以顯示某個時間點有負餘額的所有客戶，您可以使用[EXISTS](sql-query-subquery.md#exists-expression)搭配子查詢：
+如果您想要執行查詢來顯示在某個時間點餘額為負數的所有客戶，您可以搭配子查詢使用 [EXISTS](sql-query-subquery.md#exists-expression)：
 
 ```sql
 SELECT c.id
@@ -141,26 +141,24 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 中的保留關鍵字和特殊字元
 
-您可以使用加上引號的屬性運算子來存取屬性 `[]` 。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 此語法適用于將包含空格、特殊字元或名稱與 SQL 關鍵字或保留字相同的屬性加以轉義。
+您可以使用加上引號的屬性運算子 `[]` 來存取屬性。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 在逸出包含空格、特殊字元的屬性，或具有和 SQL 關鍵字或保留字相同的名稱時，此語法很有用。
 
-例如，以下是具有名為之屬性的檔 `order` ，以及 `price($)` 包含特殊字元的屬性：
+例如，下列文件具有名為 `order` 的屬性，以及包含特殊字元的屬性 `price($)`：
 
 ```json
 {
   "id": "AndersenFamily",
-  "order": [
-     {
+  "order": {
          "orderId": "12345",
          "productId": "A17849",
          "price($)": 59.33
-     }
-  ],
+   },
   "creationDate": 1431620472,
   "isRegistered": true
 }
 ```
 
-如果您執行包含 `order` 屬性或屬性的查詢 `price($)` ，將會收到語法錯誤。
+如果您執行包含 `order` 屬性或 `price($)` 屬性的查詢，將會收到語法錯誤。
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -176,7 +174,7 @@ SELECT * FROM c where c.order.price($) > 50
 Syntax error, incorrect syntax near 'order'
 `
 
-您應該重寫相同的查詢，如下所示：
+您應該重新撰寫相同查詢，如下所示：
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -188,7 +186,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="json-expressions"></a>JSON 運算式
 
-投射也支援 JSON 運算式，如下列範例所示：
+投影也支援 JSON 運算式，如下列範例所示：
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -208,7 +206,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
     }]
 ```
 
-在上述範例中， `SELECT` 子句需要建立 JSON 物件，而且由於此範例不會提供索引鍵，因此子句會使用隱含引數變數名稱 `$1` 。 下列查詢會傳回兩個隱含引數變數： `$1` 和 `$2` 。
+在上述範例中，`SELECT` 子句需要建立 JSON 物件，而且由於此範例不會提供索引鍵，因此，子句會使用隱含引數變數名稱 `$1`。 下列查詢會傳回兩個隱含引數變數：`$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -233,11 +231,11 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="aliasing"></a>別名
 
-您可以在查詢中明確地別名值。 如果查詢有兩個具有相同名稱的屬性，請使用別名來重新命名其中一個或兩個屬性，以便在預測的結果中加以區分。
+您可以在查詢中明確使用值的別名。 如果查詢具有兩個同名的屬性，請使用別名來為這其中一個或兩個屬性重新命名，使其在投影的結果中變得更為明確。
 
 ### <a name="examples"></a>範例
 
-`AS`用於別名的關鍵字是選擇性的，如下列範例所示，將第二個值投射為 `NameInfo` ：
+將第二個值投影為 `NameInfo` 時，用於別名的 `AS` 關鍵字是選擇性的，如下列範例所示：
 
 ```sql
     SELECT
@@ -263,7 +261,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ### <a name="aliasing-with-reserved-keywords-or-special-characters"></a>使用保留關鍵字或特殊字元的別名
 
-您無法使用別名將值投影為具有空格、特殊字元或保留字的屬性名稱。 比方說，如果您想要將值的投影變更為，例如，有一個具有空格的屬性名稱，您可以使用[JSON 運算式](#json-expressions)。
+您無法使用別名，將值投影為具有空格、特殊字元或保留字的屬性名稱。 例如，如果您想要將值的投影變更為具有空格的屬性名稱，您可以使用 [JSON 運算式](#json-expressions)。
 
 以下是範例：
 
@@ -277,6 +275,6 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [SELECT 子句](sql-query-select.md)
 - [WHERE 子句](sql-query-where.md)

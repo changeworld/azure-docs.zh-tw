@@ -5,19 +5,21 @@ author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fcac7e47570cf10388891f2e9b81da896acc5c02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587794"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699339"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics
 
-[適用於 Apache Spark 的 .NET](https://dot.net/spark) 是 Spark 的免費開放原始碼和跨平台 .NET 支援。 適用於 Apache Spark 的 .NET 會為 Spark 提供 .NET 繫結，讓您可透過 C# 和 F# 存取 Spark API。 有了適用於 Apache Spark 的 .NET，您就能夠使用 .NET 來撰寫和執行 Spark 的使用者定義函式。 適用於 Spark 的 .NET API 可讓您存取所有可協助您分析資料的 Spark 層面，包括 Spark SQL 和結構化串流。
+[適用於 Apache Spark 的 .NET](https://dot.net/spark) 提供 Spark 的免費開放原始碼和跨平台 .NET 支援。 
+
+會為 Spark 提供 .NET 繫結，讓您可透過 C# 和 F# 存取 Spark API。 有了適用於 Apache Spark 的 .NET，您也能夠使用 .NET 來撰寫和執行 Spark 的使用者定義函式。 適用於 Spark 的 .NET API 可讓您存取所有可協助您分析資料的 Spark DataFrames 層面，包括 Spark SQL、Delta Lake 和結構化串流。
 
 您可以透過 Spark 批次工作定義或互動式 Azure Synapse Analytics 筆記本，使用適用於 Apache Spark 的 .NET 來分析資料。 在本文中，您將了解如何使用這兩種技術來搭配 Azure Synapse 使用適用於 Apache Spark 的 .NET。
 
@@ -31,16 +33,10 @@ ms.locfileid: "83587794"
 
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.0 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
    **在 Linux 上：**
-
-### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 筆記本中適用於 Apache Spark 的 .NET
-
-建立新的筆記本時，您可以選擇想要表達商務邏輯的語言核心。 我們有數種語言的核心支援，包括 C#。
-
-若要在您的 Azure Synapse Analytics 筆記本中使用適用於Apache Spark 的 .NET，請選取 [.NET Spark (C#)] 作為核心，然後將筆記本連結到現有的 Spark 集區。
 
    ```bash
    zip -r publish.zip
@@ -50,7 +46,7 @@ ms.locfileid: "83587794"
 
 筆記本是為適用於 Apache Spark 的 .NET 管線和案例建立原型的絕佳選項。 您可以快速且有效率地開始使用、了解、篩選、顯示及視覺化您的資料。 資料工程師、資料科學家、商務分析師和機器學習工程師都能夠透過共用的互動式文件共同作業。 您會看到資料探索的立即結果，而且可以在相同的筆記本中視覺化您的資料。
 
-### <a name="how-to-use-notebooks"></a>如何使用筆記本
+### <a name="how-to-use-net-for-apache-spark-notebooks"></a>如何使用適用於 Apache Spark 的 .NET 筆記本
 
 當您建立新的筆記本時，您可以選擇想要表達商務邏輯的語言核心。 我們有數種語言的核心支援，包括 C#。
 
@@ -58,7 +54,7 @@ ms.locfileid: "83587794"
 
 .NET Spark 筆記本會以 .NET 互動體驗為基礎，提供互動式的 C# 體驗，讓您能夠使用預先定義的 Spark 工作階段變數 `spark` 來直接使用適用於 Spark 的 .NET。
 
-### <a name="sparknet-c-kernel-features"></a>Spark.NET C# 核心功能
+### <a name="net-for-apache-spark-c-kernel-features"></a>適用於 Apache Spark 的 .NET C# 核心功能
 
 當您在 Azure Synapse Analytics 筆記本中使用適用於 Apache Spark 的 .NET 時，您可以使用下列功能：
 

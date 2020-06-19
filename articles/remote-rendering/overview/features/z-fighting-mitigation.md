@@ -1,32 +1,32 @@
 ---
 title: Z-fighting 緩和措施
-description: 說明用來減輕 z 對抗成品的技術
+description: 說明用來緩和 Z-fighting 成品的技術
 author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: bc06deafe3f589fce9a9178fefdb22388254929d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680449"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758804"
 ---
 # <a name="z-fighting-mitigation"></a>Z-fighting 緩和措施
 
-當兩個表面重迭時，不清楚哪一個呈現在另一個介面上。 結果甚至會因為每個圖元而有所不同，因而產生了視圖相依的成品。 因此，當相機或網格移動時，這些模式會明顯閃爍。 此成品稱為「 *z 對抗*」。 對於 AR 和 VR 應用程式，問題是更的，因為 head 掛接的裝置自然地會移動。 若要防止檢視器 discomfort 的 z 對抗緩和功能，可在 Azure 遠端轉譯中取得。
+當兩個表面重疊時，會不確定應將哪個表面轉譯在另一個表面上。 甚至每個像素的結果都有所差異，導致產生依賴視角的成品。 因此當相機或網格移動時，圖樣會明顯閃爍。 這樣的成品稱為「Z-fighting」。 AR 和 VR 應用程式會加重這種問題，這是因為頭戴式裝置會原本就會持續移動。 為了預防檢視人員身體不適，Azure 遠端轉譯提供 Z-fighting 緩和功能。
 
-## <a name="z-fighting-mitigation-modes"></a>Z 對抗風險降低模式
+## <a name="z-fighting-mitigation-modes"></a>Z-fighting 緩和措施模式
 
-|實際                        | 結果                               |
+|情況                        | 結果                               |
 |---------------------------------|:-------------------------------------|
-|一般的 z 對抗               |![Z-對抗](./media/zfighting-0.png)|
-|已啟用 Z 對抗緩和措施    |![Z-對抗](./media/zfighting-1.png)|
-|已啟用棋盤反白顯示|![Z-對抗](./media/zfighting-2.png)|
+|一般 Z-fighting               |![Z-fighting](./media/zfighting-0.png)|
+|啟用 Z-fighting 緩和措施    |![Z-fighting](./media/zfighting-1.png)|
+|啟用棋盤式反白顯示|![Z-fighting](./media/zfighting-2.png)|
 
-下列程式碼可啟用 z 對抗緩和措施：
+下列程式碼可啟用 Z-fighting 緩和措施：
 
-``` cs
+```cs
 void EnableZFightingMitigation(AzureSession session, bool highlight)
 {
     ZFightingMitigationSettings settings = session.Actions.ZFightingMitigationSettings;
@@ -39,28 +39,42 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
 }
 ```
 
+```cpp
+void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
+{
+    ApiHandle<ZFightingMitigationSettings> settings = *session->Actions()->ZFightingMitigationSettings();
+
+    // enabling z-fighting mitigation
+    settings->Enabled(true);
+
+    // enabling checkerboard highlighting of z-fighting potential
+    settings->Highlighting(highlight);
+}
+```
+
+
 > [!NOTE]
-> Z 對抗緩和是一種全域設定，會影響所有呈現的網格。
+> Z-fighting 緩和措施是一種全域設定，會影響所有轉譯的網格。
 
-## <a name="reasons-for-z-fighting"></a>Z 對抗的原因
+## <a name="reasons-for-z-fighting"></a>Z-fighting 的原因
 
-Z 進行操作主要有兩個原因：
+Z-fighting 主要有兩種發生原因：
 
-1. 當表面距離相機非常遠時，其深度值的精確度會降低，且值會變得無法區分
-1. 當網格中的表面實際重迭時
+1. 當表面距離相機非常遠時，其深度值的精確度會降低，且數值會變得無法區分
+1. 當網格中的表面實際重疊時
 
-第一個問題總是可能發生，而且很容易消除。 如果在您的應用程式中發生這種情況，請確定*近平面*距離到最接近平面距離的比率低於實際*程度*。 例如，距離0.01 的近平面和距離1000的遠平面，會更早地建立此問題，而不會有接近的平面位於0.1，而最遠的平面在距離20。
+第一個問題經常發生，而且難以完全解決。 如果您的應用程式發生這種情況，請盡可能減少「接近平面」距離到「遠離平面」距離的比例。 舉例來說，相較於接近平面距離為 0.1、遠離平面距離為 20，接近平面距離為 0.01、遠離平面距離為 1000 時，此問題會更快發生。
 
-第二個問題是錯誤撰寫內容的指標。 在真實世界中，兩個物件不能同時位於相同的位置。 視應用程式而定，使用者可能想要知道重迭的表面是否存在，以及它們的所在位置。 例如，建築物的 CAD 場景是真實世界結構的基礎，不應包含實體不可能的表面交集。 若要允許視覺效果檢查，可使用醒目提示模式，這會以動畫棋盤模式顯示可能的 z 對抗。
+第二個問題則代表內容製作不良。 在真實世界中，兩個物件不能同時位於相同位置。 視應用程式而定，使用者可能會想知道是否有重疊表面存在，以及重疊表面的所在位置。 例如，建築物的 CAD 場景以真實世界的建物為基礎，所以不應含有實際不可能ˊ在的表面交集。 若要允許進行視覺效果檢查，有醒目提示模式可供使用，此模式會以動畫棋盤圖樣顯示可能的 Z-fighting。
 
 ## <a name="limitations"></a>限制
 
-所提供的 z 對抗風險降低是最佳的工作。 並不保證會移除所有的 z 對抗。 此外，它也會自動偏好一個表面。 因此，當您的表面太接近彼此時，可能會發生「錯誤」的表面結束。 常見的問題是當文字和其他 decals 套用至介面時。 啟用「z 對抗」緩和功能之後，就可以輕鬆地消失這些詳細資料。
+所提供的 Z-fighting 緩和措施是盡量達到目標的做法， 不保證能解決所有 Z-fighting 的情況。 此外，這種措施會自動偏好其中一個表面。 因此當表面彼此過於接近時，可能會發生「錯誤」的表面疊在上方的情況。 常見的問題案例之一，是發生在文字和其他裝置材質套用到表面時。 啟用 Z-fighting 緩和措施之後，這類細節可能很容易消失不見。
 
 ## <a name="performance-considerations"></a>效能考量
 
-* 啟用 z 對抗緩和措施，幾乎不會產生任何效能負擔。
-* 此外，啟用 z 操作重迭也會產生非一般的效能額外負荷，不過這可能會因場景而異。
+* 啟用 Z-fighting 幾乎不會產生任何額外的效能負擔。
+* 額外啟用 Z-fighting 重疊確實會對效能產生不小的額外負擔，不過會因場景而異。
 
 ## <a name="next-steps"></a>後續步驟
 

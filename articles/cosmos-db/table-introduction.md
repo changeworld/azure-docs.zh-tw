@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214906"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695244"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 簡介：資料表 API
 

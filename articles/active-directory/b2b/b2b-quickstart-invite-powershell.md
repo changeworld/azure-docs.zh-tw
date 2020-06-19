@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216006"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690943"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入門：使用 PowerShell 新增來賓使用者
 

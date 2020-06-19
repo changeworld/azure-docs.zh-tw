@@ -94,12 +94,6 @@
           href: logic-apps-handle-large-messages.md
         - name: 處理節流問題或 429 錯誤
           href: handle-throttling-problems-429-errors.md
-        - name: 安全
-          items:
-            - name: 改善邏輯應用程式的安全性
-              href: logic-apps-securing-a-logic-app.md
-            - name: 使用受控識別進行驗證
-              href: create-managed-service-identity.md
         - name: 開發自訂連接器
           href: custom-connector-overview.md
         - name: 開發自訂 API
@@ -316,6 +310,14 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: 安全
+      items:
+        - name: 增強邏輯應用程式的安全性
+          href: logic-apps-securing-a-logic-app.md
+        - name: 使用受控識別進行驗證
+          href: create-managed-service-identity.md
+        - name: 封鎖邏輯應用程式中的連線
+          href: block-connections-connectors.md
     - name: 管理
       items:
         - name: 管理邏輯應用程式 - Azure 入口網站

@@ -14,11 +14,11 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215206"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690195"
 ---
 # <a name="about-api-management"></a>關於 API 管理
 

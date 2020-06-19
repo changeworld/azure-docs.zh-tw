@@ -1,6 +1,6 @@
 ---
-title: 使用具體化檢視進行效能微調
-description: 當您使用具體化視圖來改善查詢效能時，應該知道的建議和考慮。
+title: 使用具體化檢視進行效能調整
+description: 使用具體化檢視改善查詢效能時須知的建議和考量事項。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,100 +10,98 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417033"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747538"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能微調
+# <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能調整
 
-Synapse SQL 集區中的具體化 views 為複雜的分析查詢提供了一種低維護方法，可在沒有任何查詢變更的情況下取得快速效能。 本文討論使用具體化視圖的一般指引。
+Synapse SQL 集區中的具體化檢視提供低維護方法，可以在不變更任何查詢的情況下，讓複雜的分析查詢有快速的效能。 本文討論使用具體化檢視的一般指引。
 
-SQL 集區中的具體化視圖會針對複雜的分析查詢提供低維護方法，以在沒有任何查詢變更的情況下取得快速效能。 本文討論使用具體化視圖的一般指引。
+## <a name="materialized-views-vs-standard-views"></a>具體化檢視與標準檢視的比較
 
-## <a name="materialized-views-vs-standard-views"></a>具體化視圖與標準視圖的比較
+SQL 集區支援標準和具體化檢視。  兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現至查詢。  檢視會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重新撰寫查詢。  
 
-SQL 集區支援標準和具體化的視圖。  兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現給查詢。  Views 會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重寫查詢。  
+標準檢視會在每次使用檢視時計算其資料。  磁碟上沒有儲存任何資料。 人們通常會使用標準檢視作為協助整理資料庫中邏輯物件和查詢的工具。  若要使用標準檢視，查詢必須與其建立直接參考。
 
-每次使用 view 時，標準視圖都會計算其資料。  磁片上不會儲存任何資料。 人們通常會使用標準視圖作為工具，以協助組織資料庫中的邏輯物件和查詢。  若要使用標準視圖，查詢必須直接參考它。
+具體化檢視會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。  每次使用具體化檢視時，都不需要重新計算。  這就是為什麼在具體化檢視中使用全部資料或資料子集的查詢其效能會加速的原因。  更棒的是，查詢可以使用具體化檢視，而無需建立直接參考，因此不需要變更應用程式程式碼。  
 
-具體化視圖會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。  每次使用具體化視圖時，都不需要重新計算。  這就是為什麼在具體化視圖中使用全部或子集資料的查詢，可能會得到更快的效能。  更棒的是，查詢可以使用具體化視圖，而不需要直接參考它，因此不需要變更應用程式程式碼。  
-
-標準視圖的大部分需求仍然適用于具體化視圖。 如需具體化視圖語法和其他需求的詳細資訊，請參閱[CREATE 具體化 view AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+標準檢視的大部分需求仍適用於具體化檢視。 如需具體化檢視語法和其他需求的詳細資料，請參閱 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | 比較                     | 檢視                                         | 具體化檢視
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|檢視定義                 | 儲存在 SQL 集區中。              | 儲存在 SQL 集區中。
-|檢視內容                    | 每次使用 view 時就會產生。   | 在建立視圖期間，預先處理並儲存在 SQL 集區中。 已更新，因為資料已加入基礎資料表中。
+|檢視定義                 | 儲存於 SQL 集區。              | 儲存於 SQL 集區。
+|檢視內容                    | 每次使用檢視時產生。   | 在建立視圖期間預先處理並儲存在 SQL 集區中。 當資料新增至基礎資料表時更新。
 |資料重新整理                    | 一律更新                               | 一律更新
-|從複雜查詢取得視圖資料的速度     | 緩慢                                         | 快速  
+|加快從複雜查詢擷取檢視資料的速度     | 慢速                                         | 快速  
 |額外儲存空間                   | 否                                           | 是
-|語法                          | CREATE VIEW                                  | 建立具體化視圖做為選取
+|語法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>使用具體化 views 的優點
+## <a name="benefits-of-using-materialized-views"></a>使用具體化檢視的優點
 
-設計正確的具體化視圖可提供下列優點：
+設計正確的具體化檢視有以下優點：
 
-- 使用聯結和彙總函式，縮短複雜查詢的執行時間。 查詢越複雜，執行時間儲存的可能性就越高。 當查詢的計算成本很高，而產生的資料集很小時，就會獲得最大效益。  
-- SQL 集區中的優化工具可以自動使用已部署的具體化視圖來改善查詢執行計畫。  這個程式對於提供較快速查詢效能的使用者而言是透明的，不需要查詢就能直接參考具體化的視圖。
-- 需要在 views 上進行低維護。  基表的所有累加資料變更都會以同步方式自動新增至具體化 views。  這種設計可讓查詢具體化視圖傳回與直接查詢基表相同的資料。
-- 具體化視圖中的資料可以用不同于基表的方式散發。  
-- 具體化視圖中的資料會與一般資料表中的資料取得相同的高可用性和復原優勢。  
+- 使用聯結和彙總函式縮短複雜查詢的執行時間。 查詢越複雜，越有可能節省執行時間。 對於計算成本高但所產生資料集很小的查詢，就能獲得最大效益。  
+- SQL 集區中的最佳化工具會自動使用已部署的具體化檢視來改善查詢執行計畫。  對於使用者而言，此流程是透明的，因此能加速查詢效能，而且不需要查詢就能直接參考具體化檢視。
+- 只需對檢視進行低度維護。  基底資料表中的所有增量資料變更都會同步自動新增至具體化檢視。  這種設計可讓查詢具體化檢視傳回與直接查詢基底資料相同的資料。
+- 可以使用不同的方式從基底資料表散發具體化檢視中的資料。  
+- 具體化檢視的資料會與一般資料表的資料具備相同的高可用性和復原優點。  
 
-在 SQL 集區中執行的具體化視圖也提供下列額外優點：
+在 SQL 集區中實作的具體化檢視還有下列額外優點：
 
-相較于其他資料倉儲提供者，在 Azure SQL 資料倉儲中執行的具體化視圖也提供下列額外的優點：
+相較於其他資料倉儲提供者，在 Azure SQL 資料倉儲中實作的具體化檢視還有下列額外優點：
 
-- 資料表中的資料變更，自動和同步資料重新整理。 使用者不必採取任何動作。
-- 廣泛的彙總函式支援。 請參閱[CREATE 具體化 VIEW AS SELECT （transact-sql）](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
-- 支援查詢特定的具體化視圖建議。  請參閱[說明（transact-sql）](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 當基底資料表中有資料變更時，系統能自動並同步進行資料重新整理。 使用者不必採取任何動作。
+- 支援廣泛彙總涵式。 請參閱 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 支援查詢特定的具體化檢視建議。  請參閱 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-## <a name="common-scenarios"></a>常見案例  
+## <a name="common-scenarios"></a>常見的案例  
 
-在下列案例中，通常會使用具體化視圖：
+具體化檢視通常用於下列情況中：
 
-**需要針對大小龐大的資料，改善複雜分析查詢的效能**
+**需要對龐大資料量改善複雜分析查詢時的效能**
 
-複雜的分析查詢通常會使用更多的彙總函式和資料表聯結，導致在查詢執行中進行更大量的計算作業，例如洗牌和聯結。  這就是為什麼這些查詢需要較長的時間才能完成，特別是在大型資料表上。  
+複雜分析查詢通常會使用較多的彙總函式和資料表聯結，導致在查詢執行中進行更大量的重型計算作業，例如重組和聯結。  這就是為什麼這些查詢需要較長的時間才能完成，尤其是大型資料表。  
 
-使用者可以針對從一般查詢計算傳回的資料建立具體化的視圖，因此當查詢需要此資料時，不需要進行任何重新計算，這可讓計算成本較低，而且查詢回應更快。
+使用者可以為從一般查詢計算傳回的資料建立具體化檢視，因此當查詢需要此資料時，不需進行任何的重新計算，這可降低計算成本，並加速查詢回應。
 
-**無需或最少查詢變更，需要更快的效能**
+**需要在不變更或小幅變更查詢的情況下取得更快的效能**
 
-SQL 集區中的架構和查詢變更通常會保持最低，以支援一般的 ETL 作業和報告。  如果視圖所產生的成本可能會因查詢效能的提升而位移，人員可以使用具體化視圖進行查詢效能微調。
+SQL 集區中結構描述和查詢變更通常保持在最低的狀況下，以支援一般的 ETL 作業和報告。  如果查詢效能的好處能夠抵銷檢視所產生的成本，使用者就可以使用具體化檢視調整查詢效能。
 
-相較于其他調整選項（例如縮放和統計資料管理），建立和維護具體化視圖的影響力生產變更比較少，而且其潛在效能提升也會更高。
+相較於其他調整選項 (例如縮放和統計資料管理)，具體化檢視在建立和維護上所造成的生產變更影響較小，且其潛在效能增益也較高。
 
-- 建立或維護具體化視圖並不會影響對基表執行的查詢。
-- 查詢最佳化工具可以自動使用已部署的具體化視圖，而不需要查詢中的直接 view 參考。 這項功能可減少對效能調整進行查詢變更的需求。
+- 建立或維護具體化檢視並不會影響對基底資料表執行的查詢。
+- 查詢最佳化工具會自動使用已部署的具體化檢視，而不需要在查詢中直接檢視參考。 這項功能可減少在效能調整時進行查詢變更的需求。
 
 **需要不同的資料散發策略，以提供更快的查詢效能**
 
-SQL 集區是分散式大量平行處理（MPP）系統。   SQL 集區資料表中的資料會使用三種[散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（雜湊、round_robin 或複寫）中的其中一種散發到60節點。  
+SQL 集區是分散式大量平行處理 (MPP) 系統。   SQL 集區資料表中的資料會使用三個[散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (雜湊、round_robin 或複寫) 中的其中一種，散發在 60 個節點之間。  
 
-資料散發是在資料表建立時指定的，而且會維持不變，直到卸載資料表為止。 具體化 view 是磁片上的虛擬資料表支援雜湊和 round_robin 資料散發。  使用者可以選擇與基表不同的資料散發，但最佳的是使用最多視圖之查詢的效能。  
+資料散發是在資料表建立時指定的，並保持不變，直到卸載資料表為止。 具體化檢視在磁碟上是虛擬資料表，支援雜湊和 round_robin 資料散發。  使用者可以選擇與基底資料表不同但已針對使用檢視最多的查詢效能最佳化的資料散發。  
 
 ## <a name="design-guidance"></a>設計指引
 
-以下是使用具體化視圖來改善查詢效能的一般指引：
+以下是使用具體化檢視來改善查詢效能的一般指引：
 
-**針對您的工作負載設計**
+**設計您的工作負載**
 
-在您開始建立具體化視圖之前，請務必先深入瞭解查詢模式、重要性、頻率和產生的資料大小等方面的工作負載。  
+在您開始建立具體化檢視之前，請務必先深入了解查詢模式、重要性、頻率和所產生資料大小等方面的工作負載。  
 
-使用者可以針對查詢最佳化工具建議的具體化視圖，執行說明 WITH_RECOMMENDATIONS <SQL_statement>。  由於這些建議是查詢專屬的，因此，針對相同工作負載中的其他查詢，受益于單一查詢的具體化視圖可能不是最理想的。  
+使用者可以針對查詢最佳化工具建議的具體化檢視，執行說明 EXPLAIN WITH_RECOMMENDATIONS <SQL_statement>。  由於這些建議是針對查詢，因此對單一查詢有益的具體化檢視，對於位於相同工作負載中的其他查詢可能不會是最理想的。  
 
-請考慮您的工作負載需求來評估這些建議。  理想的具體化視圖是可受益于工作負載效能的瀏覽器。  
+在評估這些建議時，請考量您的工作負載需求。  理想的具體化檢視是有助於工作負載效能的檢視。  
 
-**請留意速度較快的查詢與成本之間的取捨**
+**請留意在查詢速度加快與成本之間的取捨**
 
-針對每個具體化視圖，會有資料儲存成本，以及維護此視圖的成本。  當基表中的資料變更時，具體化視圖的大小會增加，而且其實體結構也會變更。  為了避免查詢效能降低，每個具體化的視圖都會由 SQL 集區引擎分別維護。  
+每個具體化檢視都會有資料儲存成本，以及檢視維護成本。  當基底資料表中的資料改變時，具體化檢視的大小會增加，其實體結構也會改變。  為了避免查詢效能降低，每個具體化檢視都由 SQL 集區引擎分別維護。  
 
-當具體化視圖和基表變更的數目增加時，維護工作負載會變高。   使用者應該檢查所有具體化視圖所產生的成本是否可以由查詢效能提升來位移。  
+當具體化檢視和基底資料表變更的數目增加時，維護工作負載會增加。   使用者應該檢查所有具體化檢視所產生的成本是否可以透過提升查詢效能來抵銷。  
 
-您可以針對資料庫中的具體化視圖清單執行此查詢：
+您可以針對資料庫中的具體化檢視清單執行此查詢：
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -111,13 +109,13 @@ FROM sys.views V
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 ```
 
-減少具體化視圖數的選項：
+減少具體化檢視數的選項：
 
-- 識別工作負載中複雜查詢經常使用的一般資料集。  建立具體化視圖以儲存這些資料集，讓優化工具可以在建立執行計畫時，將它們當做建立區塊使用。  
+- 在工作負載中找出複雜查詢會頻繁使用的一般資料集。  建立具體化檢視以儲存這些資料集，讓最佳化工具在建立執行計畫時，可以將這些檢視當做建置組塊使用。  
 
-- 捨棄具有低使用量或不再需要的具體化視圖。  已停用的具體化視圖不會維護，但仍會產生儲存體成本。  
+- 捨棄使用率低或不再需要的具體化檢視。  已停用的具體化檢視不再進行維護，但仍會產生儲存成本。  
 
-- 結合在相同或相似基表上建立的具體化 views，即使其資料不重迭也一樣。  合併具體化視圖可能會導致大小大於個別視圖的總和，但視圖維護成本應該會減少。  例如：
+- 結合在相同或相似基底資料表上建立的具體化檢視，即使其資料並未重疊。  合併後的具體化檢視會大於個別檢視的總和，但檢視維護成本應該會減少。  例如：
 
 ```sql
 
@@ -141,27 +139,27 @@ GROUP BY A, C
 
 ```
 
-**並非所有效能微調都需要查詢變更**
+**並非所有效能調整都需要查詢變更**
 
-SQL 集區優化工具可以自動使用已部署的具體化視圖來改善查詢效能。  這項支援是以透明的方式套用至查詢，而不會參考在建立具體化視圖時不支援的匯總視圖和查詢。  不需要變更任何查詢。 您可以檢查查詢的估計執行計畫，以確認是否使用具體化視圖。  
+SQL 集區最佳化工具會自動使用已部署的具體化檢視來改善查詢效能。  這項支援是以透明的方式套用至不會參考檢視的查詢及使用彙總值 (在具體化檢視建立時不支援) 的查詢。  不需進行任何查詢變更。 您可以檢查查詢的估計執行計畫，以確認是否有使用具體化檢視。  
 
-**監視具體化視圖**
+**監視具體化檢視**
 
-具體化視圖會儲存在 SQL 集區中，就像具有叢集資料行存放區索引（CCI）的資料表一樣。  從具體化視圖讀取資料包括掃描 CCI 索引區段，以及套用基表的任何累加式變更。 當累加變更的數目過高時，從具體化視圖解析查詢可能需要比直接查詢基表更長的時間。  
+具體化檢視會儲存在 SQL 集區中，就如同具有叢集資料行存放區索引 (CCI) 的資料表一樣。  從具體化檢視讀取資料包括了掃描 CCI 索引區段，及套用基底資料表中的任何增量變更。 當增量變更的數目過高時，從具體化檢視解析查詢所需的時間會比直接查詢基底資料表更長。  
 
-為了避免查詢效能降低，最好是執行[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)來監視視圖的 overhead_ratio （total_rows/max （1，base_view_row））。  如果使用者的 overhead_ratio 太高，則應該重建具體化視圖。
+為了避免查詢效能降低，最好是執行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 來監視檢視的 overhead_ratio (total_rows / max(1, base_view_row))。  如果具體化檢視的 overhead_ratio 過高，使用者可以重建具體化檢視。
 
-**具體化視圖和結果集快取**
+**具體化檢視和結果集快取**
 
-這兩個功能會在 SQL 集區中引進，以供查詢效能微調之用。  結果集快取是用來針對靜態資料，從重複的查詢取得高並行性和快速回應。  
+這兩個功能導入至 SQL 集區的時間幾乎與查詢效能調整同時。  結果集快取用於從對靜態資料進行的重複查詢中取得高度並行與快速的回應。  
 
 若要使用快取的結果，要求查詢的快取形式必須符合產生快取的查詢。  此外，快取的結果必須套用至整個查詢。  
 
-具體化 views 允許基表中的資料變更。  具體化視圖中的資料可以套用至查詢的某個片段。  這項支援可讓共用一些計算的不同查詢使用相同的具體化視圖，以提高效能。
+具體化檢視允許在基底資料表中變更資料。  具體化檢視中的資料可以套用至查詢的某個片段。  此支援可讓共用部分計算的不同查詢使用相同的具體化檢視，而使效能加速。
 
 ## <a name="example"></a>範例
 
-這個範例會使用類似 TPCDS 的查詢，尋找在目錄中花費更多成本的客戶，而不是在商店中，識別慣用的客戶及其來源國家/地區。   查詢牽涉到從包含 SUM （）和 GROUP BY 的三個子 SELECT 語句的聯集內選取前100筆記錄。
+這個範例會使用類似 TPCDS 的查詢來找出透過目錄的消費金額比到店消費金額高的客戶，以找出首選客戶及其來源國家/地區。   查詢會牽涉從三個與 SUM() 和 GROUP BY 相關的 sub-SELECT 陳述式中選取前 100 筆記錄。
 
 ```sql
 WITH year_total AS (
@@ -279,7 +277,7 @@ ORDER BY t_s_secyear.customer_id
 OPTION ( LABEL = 'Query04-af359846-253-3');
 ```
 
-檢查查詢的估計執行計畫。  有18個洗牌和17個聯結作業，這需要更多時間來執行。 現在，讓我們為三個子 SELECT 語句的每個建立一個具體化視圖。
+檢查該查詢的估計執行計畫。  共有 18 個重組作業和 17 個聯結作業，會需要更多的執行時間。 現在讓我們一一為這三個 sub-SELECT 陳述式建立一個具體化檢視。
 
 ```sql
 CREATE materialized view nbViewSS WITH (DISTRIBUTION=HASH(customer_id)) AS
@@ -360,12 +358,12 @@ GROUP BY c_customer_id
 
 ```
 
-再次檢查原始查詢的執行計畫。  現在，聯結的數目會從17變更為5，且不會再播放。  按一下計畫中的篩選作業圖示，其 [輸出] 清單會顯示從具體化視圖中讀取的資料，而不是基表。  
+再次檢查原始查詢的執行計畫。  現在，聯結的數目會從 17 變更為 5，且不會再重組。  按一下計畫中的 [篩選] 作業圖示，其 [輸出清單] 會顯示從具體化檢視中讀取的資料，而不是從基底資料表。  
 
  ![Plan_Output_List_with_Materialized_Views](./media/performance-tuning-materialized-views/output-list.png)
 
-使用具體化視圖，相同的查詢執行速度會更快，而且不會變更任何程式碼。  
+有了具體化檢視，同一個查詢的執行速度會更快，而且不需要變更任何程式碼。  
 
 ## <a name="next-steps"></a>後續步驟
 
-如需更多開發秘訣，請參閱[SYNAPSE SQL 集區開發總覽](sql-data-warehouse-overview-develop.md)。
+如需更多開發秘訣，請參閱 [Synapse SQL 集區開發概觀](sql-data-warehouse-overview-develop.md)。

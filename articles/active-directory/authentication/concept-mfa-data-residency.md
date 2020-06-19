@@ -1,6 +1,6 @@
 ---
-title: Azure 多因素驗證資料常駐
-description: 瞭解 Azure 多因素驗證對您和您的使用者所儲存的個人和組織資料，以及哪些資料會保留在原始國家/地區。
+title: Azure Multi-Factor Authentication 資料落地
+description: 了解 Azure Multi-Factor Authentication 會儲存哪些有關您與您使用者的個人與組織資料，以及哪些資料會保存在來源的國家/地區。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,100 +11,100 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ce7631c0ce8ab83edc7b9cd31dfe0db3be5d7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2a75e9d5c8501274553edef36b475b2bd21b7875
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309806"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738796"
 ---
-# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>適用于 Azure 多因素驗證的資料常駐和客戶資料
+# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 的資料落地與客戶資料
 
-客戶資料是根據貴組織在訂閱 Microsoft 線上服務（例如 Office 365 和 Azure）時所提供的位址，Azure AD 儲存在地理位置。 如需您的客戶資料儲存位置的資訊，您可以使用 Microsoft 信任中心的[資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
+Azure AD 的客戶資料會儲存在您組織訂閱 Microsoft 線上服務 (例如 Office 365 與 Azure) 時所提供地址的地理位置。 如需客戶資料儲存位置的相關資訊，請參閱 Microsoft 信任中心的[資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
 
-以雲端為基礎的 Azure 多因素驗證和 Azure 多因素驗證服務器處理，並儲存一些個人資料和組織資料。 本文概述資料的儲存和位置。
+雲端式 Azure Multi-Factor Authentication 與 Azure Multi-Factor Authentication Server 會處理及儲存一些個人資料與組織資料。 本文概述儲存的資料內容與位置。
 
-下列多重要素驗證活動目前源自于美國資料中心，但另有注明：
+若未特別註明，下列 Multi-Factor Authentication 活動目前皆源自於美國資料中心：
 
-* 使用電話或 SMS 的雙因素驗證通常源自于美國資料中心，並由全域提供者路由傳送。
-    * 來自其他地區（例如歐洲或澳大利亞）的一般用途使用者驗證要求目前由該區域中的資料中心處理。 使用 NPS 擴充功能或 AD FS 介面卡的其他事件（例如，自助式密碼重設、Azure B2C 事件或混合式案例）目前由美國資料中心處理。
-* 使用 Microsoft Authenticator 應用程式的推播通知源自于美國資料中心。 此外，裝置廠商特定的服務也可能會從不同的區域中播放。
-* OATH 代碼目前的驗證方式通常是在美國
-    * 同樣地，源自其他地區（例如歐洲或澳大利亞）的一般用途使用者驗證事件，會由該區域中的資料中心處理。 美國資料中心目前正在處理其他事件。
+* 使用通話或 SMS 的雙因素驗證通常源自於美國資料中心，並透過全域提供者路由。
+    * 來自歐洲或澳大利亞等其他地區的一般用途使用者驗證要求，目前由該地區的資料中心負責處理。 其他事件，例如自助式密碼重設、Azure B2C 事件，或使用 NPS 延伸模組或 AD FS 配接器的混合式案例，目前全由美國資料中心處理。
+* 使用 Microsoft Authenticator 應用程式的推播通知源自美國資料中心。 此外，不同的地區也可能出現裝置廠商特定服務。
+* 美國目前常以 OATH 程式碼驗證。
+    * 再次重申，來自歐洲或澳大利亞等其他地區的一般用途使用者驗證事件，由該地區的資料中心負責處理。 其他事件目前則由美國資料中心處理。
 
-## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure 多因素驗證所儲存的個人資料
+## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 儲存的個人資料
 
-個人資料是與特定人員相關聯的使用者層級資訊。 下列資料存放區包含個人資訊：
+個人資料是與特定人員相關的使用者層級資訊。 下列資料存放區包含個人資訊：
 
 * 封鎖的使用者
 * 略過的使用者
 * Microsoft Authenticator 裝置權杖變更要求
-* 多重要素驗證活動報告
+* Multi-Factor Authentication 活動報告
 * Microsoft Authenticator 啟用
 
-此資訊會保留90天。
+此資訊會保留 90 天。
 
-Azure 多因素驗證不會記錄個人資料（例如使用者名稱、電話號碼或 IP 位址），但會有一個*userobjectid 為*來識別對使用者的多重要素驗證嘗試。 記錄資料會儲存30天。
+Azure Multi-Factor Authentication 不會記錄個人資料 (例如使用者名稱、電話號碼或 IP 位址)，但會有用以識別使用者 Multi-Factor Authentication 嘗試的 *UserObjectId*。 此資料會儲存 30 天。
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-針對 Azure 公用雲端（不包括 Azure B2C 驗證、NPS 擴充功能和 Windows Server 2016 或 2019 AD FS 介面卡），會儲存下列個人資料：
+Azure 公用雲端 (不含 Azure B2C 驗證、NPS 延伸模組與 Windows Server 2016 或 2019 AD FS 配接器) 會儲存下列個人資料：
 
 | 事件類型                           | 資料存放區類型 |
 |--------------------------------------|-----------------|
-| OATH 權杖                           | 在多因素驗證記錄中     |
-| 單向 SMS                          | 在多因素驗證記錄中     |
-| 語音通話                           | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙 |
-| Microsoft Authenticator 通知 | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙<br />Microsoft Authenticator 裝置權杖變更時變更要求 |
+| OATH 權杖                           | 在 Multi-Factor Authentication 記錄中     |
+| 單向 SMS                          | 在 Multi-Factor Authentication 記錄中     |
+| 語音通話                           | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者 |
+| Microsoft Authenticator 通知 | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者<br />當 Microsoft Authenticator 裝置權杖變更時，變更要求 |
 
 > [!NOTE]
-> 無論處理驗證要求的區域為何，多重要素驗證活動報告資料存放區都會儲存在美國供所有雲端之用。 Microsoft Azure 德國，由世紀營運的 Microsoft Azure，而 Microsoft 政府雲端有各自獨立的資料存放區，與公用雲端區域資料存放區分開，不過這項資料一律儲存在美國。
+> 無論處理驗證要求的區域為何，所有雲端的 Multi-Factor Authentication 活動報告資料存放區都會儲存在美國。 Microsoft Azure 德國、21Vianet 所操作的 Microsoft Azure，以及 Microsoft Government Cloud 有各自獨立的資料存放區，與公用雲端區域資料存放區分開，而這些資料一律儲存在美國。
 
-針對 Microsoft Azure Government、Microsoft Azure 德國、由世紀、Azure B2C 驗證、NPS 擴充功能、Windows Server 2016 或 2019 AD FS 介面卡操作的 Microsoft Azure，會儲存下列個人資料：
+Microsoft Azure Government、Microsoft Azure 德國、21Vianet 所操作的 Microsoft Azure、Azure B2C 驗證、NPS 延伸模組，以及 Windows Server 2016 或 2019 AD FS 配接器，會儲存下列個人資料：
 
 | 事件類型                           | 資料存放區類型 |
 |--------------------------------------|-----------------|
-| OATH 權杖                           | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區 |
-| 單向 SMS                          | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區 |
-| 語音通話                           | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙 |
-| Microsoft Authenticator 通知 | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙<br />Microsoft Authenticator 裝置權杖變更時變更要求 |
+| OATH 權杖                           | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區 |
+| 單向 SMS                          | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區 |
+| 語音通話                           | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者 |
+| Microsoft Authenticator 通知 | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者<br />當 Microsoft Authenticator 裝置權杖變更時，變更要求 |
 
 ### <a name="multi-factor-authentication-server"></a>Multi-Factor Authentication Server
 
-如果您部署並執行 Azure 多因素驗證服務器，將會儲存下列個人資料：
+若您部署並執行 Azure Multi-Factor Authentication Server，則會儲存下列個人資料：
 
 > [!IMPORTANT]
-> 自2019年7月1日起，Microsoft 將不再為新的部署提供多重要素驗證服務器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟用多重要素驗證服務器的現有客戶，將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 Multi-Factor Authentication Server。 新客戶應依據雲端式 Azure Multi-Factor Authentication，要求其使用者使用多重要素驗證。 7 月 1 日前啟用 Multi-Factor Authentication Server 伺服器的現有客戶，將能夠下載最新版本及未來更新，並如常產生啟用認證。
 
 | 事件類型                           | 資料存放區類型 |
 |--------------------------------------|-----------------|
-| OATH 權杖                           | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區 |
-| 單向 SMS                          | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區 |
-| 語音通話                           | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙 |
-| Microsoft Authenticator 通知 | 在多因素驗證記錄中<br />多重要素驗證活動報表資料存放區<br />已封鎖的使用者是否已回報詐騙<br />Microsoft Authenticator 裝置權杖變更時變更要求 |
+| OATH 權杖                           | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區 |
+| 單向 SMS                          | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區 |
+| 語音通話                           | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者 |
+| Microsoft Authenticator 通知 | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者<br />當 Microsoft Authenticator 裝置權杖變更時，變更要求 |
 
-## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Azure 多因素驗證所儲存的組織資料
+## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 儲存的組織資料
 
-組織資料是租使用者層級的資訊，可能會公開設定或環境設定。 來自下列 Azure 入口網站多重要素驗證頁面的租使用者設定可能會儲存組織資料，例如鎖定閾值或傳入電話驗證要求的呼叫者識別碼資訊：
+組織資料是租用戶層級的資訊，其可能會公開設定或環境設定。 下列 Azure 入口網站 Multi-Factor Authentication 各頁面中的租用戶設定，可能會儲存組織資料，例如來電驗證要求的鎖定閾值或來電顯示資訊：
 
 * 帳戶鎖定
 * 詐騙警示
 * 通知
 * 通話設定
 
-而對於 Azure 多因素驗證服務器，下列 Azure 入口網站頁面可能包含組織資料：
+而對於 Azure Multi-Factor Authentication Server，下列 Azure 入口網站頁面可能包含組織資料：
 
 * 伺服器設定
 * 一次性略過
 * 快取規則
-* 多重要素驗證服務器狀態
+* Multi-Factor Authentication Server 狀態
 
 ## <a name="log-data-location"></a>記錄資料位置
 
-記錄資訊的儲存位置取決於要處理的區域。 大部分的地理位置都具有原生的 Azure 多因素驗證功能，因此記錄資料會儲存在處理多因素驗證要求的相同區域中。 在沒有原生 Azure 多因素驗證支援的地理位置中，它們是由美國或歐洲地理位置提供服務，而記錄資料則儲存在處理多因素驗證要求的相同區域中。
+記錄資訊的儲存位置取決於處理區域。 大部分地理位置都具有原生 Azure Multi-Factor Authentication 功能，因此記錄資料會儲存在處理 Multi-Factor Authentication 要求的相同區域中。 沒有原生 Azure Multi-Factor Authentication 支援的地理位置，會由美國或歐洲地理位置提供服務，而記錄資料會儲存在處理 Multi-Factor Authentication 要求的相同區域中。
 
-某些核心驗證記錄資料只會儲存在美國。 由世紀營運的 Microsoft Azure 德國和 Microsoft Azure 一律會儲存在其各自的雲端中。 Microsoft 政府雲端記錄資料一律儲存在美國。
+某些核心驗證記錄資料只會儲存在美國。 Microsoft Azure 德國與 21Vianet 所操作的 Microsoft Azure 一律儲存各自的雲端中。 Microsoft Government Cloud 記錄資料一律儲存在美國。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需雲端式 Azure 多因素驗證和 Azure 多因素驗證服務器所收集的使用者資訊的詳細資訊，請參閱[Azure 多重要素驗證使用者資料收集](howto-mfa-reporting-datacollection.md)。
+如需雲端式 Azure Multi-Factor Authentication 與 Azure Multi-Factor Authentication Server 所收集之使用者資訊的詳細資訊，請參閱 [Azure Multi-Factor Authentication 使用者資料收集](howto-mfa-reporting-datacollection.md)。

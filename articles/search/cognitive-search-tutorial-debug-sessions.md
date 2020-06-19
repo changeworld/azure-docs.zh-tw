@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662230"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886799"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教學課程：診斷、修復及認可技能集的變更
 
@@ -173,12 +173,12 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 ## <a name="fix-missing-skill-output-values"></a>修正遺漏的技能輸出值
 
 > [!div class="mx-imgBorder"]
-> ![錯誤和警告](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![錯誤和警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 技能有遺漏的輸出值。 若要識別發生錯誤的技能，請移至 [豐富型資料結構]，尋找值名稱，並查看其原始來源。 在遺漏組織和位置值的案例中，這些值是技能 #1 的輸出。 對每個路徑開啟運算式評估工具 </>，將會顯示分別列為 '/document/content/organizations' 和 '/document/content/locations' 的運算式。
 
 > [!div class="mx-imgBorder"]
-> ![運算式評估工具組織實體](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![運算式評估工具組織實體](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 這些實體的輸出是空的，但預期不應空白。 哪些輸入產生了此結果？
 
@@ -187,7 +187,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 對 INPUT "text" 開啟運算式評估工具 **</>** 。
 
 > [!div class="mx-imgBorder"]
-> ![文字技能的輸入](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![文字技能的輸入](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 此輸入的顯示結果看起來不像是文字輸入。 看起來像是以新行圍繞的影像。 缺少文字表示無法識別實體。 查看技能集的階層時，會發現內容先由 #6 (OCR) 技能處理，然後再傳至 #5 (合併) 技能。 
 
@@ -195,7 +195,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 在右側的 [技能詳細資料] 窗格中選取 [執行] 索引標籤，然後對 OUTPUTS "mergedText" 開啟運算式評估工具 **</>** 。
 
 > [!div class="mx-imgBorder"]
-> ![合併技能的輸出](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![合併技能的輸出](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 這裡的文字會與影像成對顯示。 查看運算式 '/document/merged_content' 時，可看到 #1 技能的 "organizations" 和 "locations" 路徑中的錯誤。 不應使用 '/document/content'，而應使用 '/document/merged_content' 作為 "text" 輸入。
 
@@ -216,7 +216,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 對 "organizations" 實體開啟運算式評估工具 **</>** 。
 
 > [!div class="mx-imgBorder"]
-> ![組織實體的輸出](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![組織實體的輸出](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 評估運算式的結果後，得到了正確的結果。 技能有效識別出實體 "organizations" 的正確值。 不過，實體路徑中的輸出對應仍擲回錯誤。 將技能中的輸出路徑與錯誤中的輸出路徑進行比較時，作為輸出、組織和位置父代的技能位於 /document/content 節點下。 但輸出欄位對應預期結果會在 /document/merged_content 節點下成為父代。 在上一個步驟中，輸入已從 '/document/content' 變更為 '/document/merged_content'。 您必須變更技能設定中的內容，以確保輸出會以正確的內容產生。
 
@@ -228,7 +228,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 在工作階段視窗功能表中，按一下 [執行]。 如此即會使用文件再次執行技能集。
 
 > [!div class="mx-imgBorder"]
-> ![技能設定中的內容更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![技能設定中的內容更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 所有的錯誤都已解決。
 

@@ -1,21 +1,21 @@
 ---
-title: 管理已簽署的映射
-description: 瞭解如何啟用 Azure container registry 的內容信任，以及推送和提取已簽署的映射。
+title: 管理已簽署的映像
+description: 了解如何為您的 Azure 容器登錄啟用內容信任，並推送及提取已簽署的映像。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 72d45301e1d8a5f29eda941bd39217082f5dc6ba
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78249933"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680486"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry 中的內容信任
 
 Azure Container Registry 會實作 Docker 的[內容信任][docker-content-trust]模型，以便能夠推送和提取已簽署的映像。 本文可讓您開始在容器登錄中啟用內容信任。
 
 > [!NOTE]
-> 內容信任是 Azure Container Registry [進階 SKU](container-registry-skus.md) 的功能。
+> 內容信任是 Azure 容器登錄的[進階服務層](container-registry-skus.md)功能。
 
 ## <a name="how-content-trust-works"></a>內容信任的運作方式
 
@@ -38,7 +38,7 @@ Azure Container Registry 會實作 Docker 的[內容信任][docker-content-trust
 
 首要步驟是在登錄層級啟用內容信任。 啟用內容信任後，用戶端 (使用者或服務) 即可將已簽署的映像推送至您的登錄。 在您的登錄上啟用內容信任時，並不會限定只有已啟用內容信任的取用者才能使用登錄。 未啟用內容信任的取用者仍可繼續如常使用您的登錄。 不過，已在其用戶端中啟用內容信任的取用者，將*只能*在您的登錄中看到已簽署的映像。
 
-若要為您的登錄啟用內容信任，請先瀏覽至 Azure 入口網站中的登錄。 在 [原則]**** 下方，選取 [內容信任]**** > [已啟用]**** > [儲存]****。 您也可以使用 Azure CLI 中的[az acr config content-trust update][az-acr-config-content-trust-update]命令。
+若要為您的登錄啟用內容信任，請先瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任] > [已啟用] > [儲存]。 您也可以使用 Azure CLI 中的 [az acr config content-trust update][az-acr-config-content-trust-update] 命令。
 
 ![在 Azure 入口網站中為登錄啟用內容信任][content-trust-01-portal]
 
@@ -72,13 +72,13 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 只有您已授與權限的使用者或系統，才可將信任的映像推送至您的登錄。 若要為使用者 (或使用服務主體的系統) 授與信任的映像推送權限，請為其 Azure Active Directory 身分識別授與 `AcrImageSigner` 角色。 除了 `AcrPush` (或對等項目) 以外，還需要此角色才能將映像推送至登錄。 如需詳細資訊，請參閱 [Azure Container Registry 角色和權限](container-registry-roles.md)。
 
 > [!NOTE]
-> 您無法將受信任的映射推播許可權授與 Azure container registry 的系統[管理員帳戶](container-registry-authentication.md#admin-account)。
+> 您無法將受信任的映像推送權限授與 Azure 容器登錄的[管理帳戶](container-registry-authentication.md#admin-account)。
 
 下文會詳細說明如何在 Azure 入口網站和 Azure CLI 中授與 `AcrImageSigner` 角色。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-在 Azure 入口網站中流覽至您的登錄，然後選取 [**存取控制（IAM）** > ] [**新增角色指派**]。 在 [新增角色指派]**** 下方，選取 [角色]**** 下的 `AcrImageSigner`，然後**選取**一或多個使用者或服務主體，再按一下 [儲存]****。
+在 Azure 入口網站中瀏覽至您的登錄，然後選取 [存取控制 (IAM)] > [新增角色指派]。 在 [新增角色指派] 下方，選取 [角色] 下的 `AcrImageSigner`，然後**選取**一或多個使用者或服務主體，再按一下 [儲存]。
 
 在此範例中，有兩個實體已被指派 `AcrImageSigner` 角色：名為 "service-principal" 的服務主體，以及名為 "Azure User" 的使用者。
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服務主體的 **appId**、**objectId**，或其 **servicePrincipalNames** 之一。 如需使用服務主體與 Azure Container Registry 的詳細資訊，請參閱[使用服務主體進行 Azure Container Registry 驗證](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需驗證身分識別角色的詳細資訊，請參閱[使用 rbac 來管理 azure 資源的存取權和 Azure CLI](../role-based-access-control/role-assignments-cli.md)和[針對 AZURE 資源的 RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
+> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需驗證身分識別角色的相關資訊，請參閱[使用 RBAC 與 Azure CLI 管理對 Azure 資源的存取權](../role-based-access-control/role-assignments-cli.md)以及[針對適用於 Azure 資源的 RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送信任的映像
 
@@ -190,7 +190,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 > [!WARNING]
 > 在您的登錄中停用並重新啟用內容信任，**會把該登錄中各存放庫裡所有已簽署標記的信任資料全都刪除**。 此動作無法復原--Azure Container Registry 無法復原已刪除的信任資料。 停用內容信任並不會刪除映像本身。
 
-若要為您的登錄停用內容信任，請瀏覽至 Azure 入口網站中的登錄。 在 [原則]**** 下方，選取 [內容信任]**** > [已停用]**** > [儲存]****。 系統會警告您登錄中的所有簽章都將遺失。 選取 [確定]**** 會永久刪除您登錄中的所有簽章。
+若要為您的登錄停用內容信任，請瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任] > [已停用] > [儲存]。 系統會警告您登錄中的所有簽章都將遺失。 選取 [確定] 會永久刪除您登錄中的所有簽章。
 
 ![在 Azure 入口網站中為登錄停用內容信任][content-trust-03-portal]
 

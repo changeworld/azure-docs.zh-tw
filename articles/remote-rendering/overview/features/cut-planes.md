@@ -1,37 +1,37 @@
 ---
 title: 切割平面
-description: 說明什麼是剪下的平面以及如何使用它們
+description: 說明什麼是切割平面以及如何使用
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 8075d9cd4530bafb12a338830baf0fe22eb03bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681021"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759076"
 ---
 # <a name="cut-planes"></a>切割平面
 
-「*剪下平面*」是一種視覺化功能，可在虛擬平面的一端裁剪圖元，並在[網格](../../concepts/meshes.md)內部展現。
-下圖示范效果。 左邊顯示的是原始的網格，在右邊可以在網格內查看：
+「切割平面」是一種視覺化功能，可以在虛擬平面的一端裁剪像素，並在[網格](../../concepts/meshes.md)內顯示。
+下圖示範效果。 左邊顯示的是原始網格，在右邊可以查看網格內部：
 
-![剪下平面](./media/cutplane-1.png)
+![切割平面](./media/cutplane-1.png)
 
 ## <a name="limitations"></a>限制
 
-* 在這段時間內，Azure 遠端轉譯**最多支援八個作用中的剪下平面**。 您可以建立更多剪下平面元件，但如果您嘗試同時啟用更多，則會忽略啟用。 如果您想要切換哪個元件應該影響場景，請先停用其他平面。
-* 每個剪下平面都會影響所有遠端呈現的物件。 目前沒有任何方法可以排除特定物件或網格元件。
-* 剪下平面純粹是一項視覺功能，不會影響[空間查詢](spatial-queries.md)的結果。 如果您想要將光線轉換成剪下的網格，可以將光線的起點調整為切割平面上的頂點。 如此一來，光線就只能叫用可見的部分。
+* 從現在起，Azure 遠端轉譯支援**最多八個使用中的切割平面**。 您可以建立更多切割平面元件，但是如果您嘗試同時啟用更多，則會忽略啟用。 如果您想要切換哪個元件應該影響場景，請先停用其他平面。
+* 每個切割平面都會影響所有遠端轉譯物件。 目前沒有任何方法可以排除特定物件或網格部分。
+* 切割平面純粹是一項視覺效果功能，不會影響[空間查詢](spatial-queries.md)的結果。 如果您想要將光線轉換成切開的網格，可以將光線的起點調整為在切割平面上。 如此一來，光線就只能接觸可見的部分。
 
 ## <a name="performance-considerations"></a>效能考量
 
-每個作用中的剪下平面在轉譯期間都會產生較小的成本。 不需要時停用或刪除切割飛機。
+每個使用中的切割平面在轉譯期間都會產生小額成本。 在不需要時停用或刪除切割平面。
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-藉由建立*CutPlaneComponent*，您可以將剪下平面加入場景中。 平面的位置和方向取決於元件的擁有者[實體](../../concepts/entities.md)。
+藉由建立 *CutPlaneComponent*，將切割平面新增至場景中。 平面的位置和方向是由元件的擁有者[實體](../../concepts/entities.md)決定。
 
 ```cs
 void CreateCutPlane(AzureSession session, Entity ownerEntity)
@@ -43,17 +43,30 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 }
 ```
 
+```cpp
+void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+{
+    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    cutPlane->Normal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
+    Color4Ub fadeColor;
+    fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
+    cutPlane->FadeColor(fadeColor);
+    cutPlane->FadeLength(0.05f); // gradient width: 5cm
+}
+```
+
+
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent 屬性
 
-下列屬性會在剪下的平面元件上公開：
+下列屬性會在切割平面元件上公開：
 
-* **已啟用：** 您可以藉由停用元件，暫時關閉剪下飛機。 停用的剪下平面不會產生轉譯額外負荷，也不會計算全域剪下的限制。
+* **已啟用：** 您可以藉由停用元件，暫時關閉切割平面。 停用的切割平面不會產生轉譯額外負荷，也不會計入全域切割平面限制。
 
-* **一般：** 指定要使用哪一個方向（+ X，-X，+ Y，-Y，+ Z，-Z）作為平面的法線。 這個方向相對於擁有者實體的方向。 移動和旋轉擁有者實體以取得確切的位置。
+* **一般：** 指定要使用哪個方向 (+X、-X、+Y、-Y、+Z、-Z) 作為一般平面。 這個方向相對於擁有者實體的方向。 移動和旋轉擁有者實體以取得確切的位置。
 
-* **FadeColor**和**FadeLength：**
+* **FadeColor** 和 **FadeLength：**
 
-  如果*FadeColor*的 Alpha 值為非零，接近切割平面的圖元會淡入 FADECOLOR 的 RGB 部分。 Alpha 色板的強度會決定是否要完全淡入淡出色彩或僅部分。 *FadeLength*會定義此淡入進行的距離。
+  如果 FadeColor 的 Alpha 值為非零，接近切割平面的像素會淡入 FadeColor 的 RGB 部分。 Alpha 色板的強度會決定是否要完全淡入淡出色彩或僅部分。 *FadeLength* 會定義此淡入發生的距離。
 
 ## <a name="next-steps"></a>後續步驟
 
