@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310592"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080640"
 ---
 # <a name="long-audio-api-preview"></a>長音訊 API （預覽）
 
@@ -66,7 +66,7 @@ ms.locfileid: "84310592"
 |        | 400 | 語音合成僅支援使用位元組順序標記之 UTF-8 編碼的文字檔。 | 請確定輸入檔的格式為 utf-8 編碼，並包含位元組順序標記。 |
 |        | 400 | 語音合成要求中僅允許有效的 SSML 輸入。 | 請確定輸入 SSML 運算式正確。 |
 |        | 400 | 在輸入檔中找不到語音名稱 {voiceName}。 | 輸入 SSML 語音名稱與模型識別碼不一致。 |
-|        | 400 | 輸入檔中的段落數量應小於10000。 | 請確定檔案中的段落小於10000。 |
+|        | 400 | 輸入檔中的段落數應小於10000。 | 請確定檔案中的段落數目小於10000。 |
 |        | 400 | 輸入檔應超過400個字元。 | 請確定您的輸入檔超過400個字元。 |
 |        | 404 | 找不到在語音合成定義中宣告的模型： {modelID}。 | 請確定 {modelID} 正確。 |
 |        | 429 | 超過使用中的語音合成限制。 請等候一些要求完成。 | 允許伺服器執行，並針對每個 Azure 帳戶佇列最多120個要求。 請等候並避免提交新的要求，直到部分要求完成為止。 |

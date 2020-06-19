@@ -5,27 +5,27 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189091"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827959"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>建立在 Windows Server 上執行的獨立叢集
-您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric](./service-fabric-deploy-anywhere.md)叢集。
+您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric 叢集](./service-fabric-deploy-anywhere.md)。
 
 本文將逐步引導您完成建立 Service Fabric 獨立叢集的步驟。
 
 > [!NOTE]
-> 這個獨立的 Windows Server 套件是以商業的形式提供，可用於生產環境部署。 此套件包含處於「預覽」狀態的新 Service Fabric 功能。 向下流覽至「[此封裝中包含的預覽功能](#previewfeatures_anchor)」。 區段，以取得預覽功能的清單。 您可以立即[下載一份 EULA](https://go.microsoft.com/fwlink/?LinkID=733084)。
+> 此獨立 Windows Server 套件已免費正式上市，可使用於生產部署。 此套件包含處於「預覽」狀態的新 Service Fabric 功能。 捲動至「[此封裝包含的預覽功能](#previewfeatures_anchor)」。 區段，以取得預覽功能的清單。 您可以立即[下載一份 EULA](https://go.microsoft.com/fwlink/?LinkID=733084)。
 > 
 > 
 
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>取得 Windows Server 套件的 Service Fabric 支援
-* 請至 [Azure Service Fabric 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)，向社群發問有關 Windows Server 的 Service Fabric 獨立封裝。
+* 請至 [Azure Service Fabric 的 Microsoft 問與答問題頁面](https://docs.microsoft.com/answers/topics/azure-service-fabric.html) \(英文\)，向社群發問有關 Windows Server 的 Service Fabric 獨立套件。
 * 向 [Service Fabric 的專業支援](https://support.microsoft.com/oas/default.aspx?prid=16146)開立票證。  [在這裡](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)深入了解 Microsoft 的專業支援。
 * 您也可以取得此封裝的支援做為 [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)的一部分。
 * 如需詳細資訊，請參閱 [Azure Service Fabric 支援選項](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)。
@@ -43,7 +43,7 @@ ms.locfileid: "82189091"
 [下載連結 - Service Fabric 執行階段 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
 獨立叢集組態範例在此︰ <br>
-[獨立叢集設定範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+[獨立叢集組態範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 <a id="createcluster"></a>
 
@@ -52,12 +52,12 @@ ms.locfileid: "82189091"
 
 本文所建立的叢集並不安全。  任何人都可以匿名方式連線並執行管理作業，所以一律要使用 X.509 憑證或 Windows 安全性來保護生產叢集。  只有在建立叢集時才會設定安全性，而且不可能在叢集建立之後啟用安全性。 更新設定檔會啟用[憑證安全性](service-fabric-windows-cluster-x509-security.md)或 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)。 若要深入了解 Service Fabric 叢集安全性，請閱讀[保護叢集](service-fabric-cluster-security.md)。
 
-### <a name="step-1-create-the-cluster"></a>步驟1：建立叢集
+### <a name="step-1-create-the-cluster"></a>步驟 1:建立叢集
 
-#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>案例 A：建立不安全的本機開發叢集
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>狀況 A：建立不安全的本機開發叢集
 Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中所含的 *ClusterConfig.Unsecure.DevCluster.json* 檔案，部署到一個電腦開發叢集。
 
-將獨立封裝解壓縮至您的電腦，將範例配置檔案複製到本機電腦，然後從獨立封裝資料夾，透過系統管理員 PowerShell 會話執行*CreateServiceFabricCluster 腳本。*
+將獨立封裝解除封裝到電腦，將範例組態檔複製到本機電腦，然後從獨立套件資料夾，透過系統管理員 PowerShell 工作階段，執行 *CreateServiceFabricCluster.ps1* 指令碼。
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
@@ -67,7 +67,7 @@ Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fab
 
 如果您完成執行開發案例，您可以參閱「[移除叢集](#removecluster_anchor)」一節中的步驟，從電腦中移除 Service Fabric 叢集。 
 
-#### <a name="scenario-b-create-a-multi-machine-cluster"></a>案例 B：建立多電腦叢集
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>狀況 B：建立多部電腦的叢集
 在您完成[規劃及準備叢集部署](service-fabric-cluster-standalone-deployment-preparation.md)中詳述的規劃和準備步驟之後，就可以開始使用您的叢集設定檔，建立生產叢集。
 
 部署和設定叢集的叢集系統管理員必須具有電腦的系統管理員權限。 您無法在網域控制站上安裝 Service Fabric。
@@ -107,7 +107,7 @@ Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fab
 > 
 > 
 
-#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>案例 C：建立離線（網際網路中斷連線）叢集
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>情節 C：建立離線 (網際網路中斷連線的) 叢集
 叢集建立時會自動下載 Service Fabric 執行階段套件。 將叢集部署到未連線到網際網路的電腦時，您必須另外下載 Service Fabric 執行階段套件，並在建立叢集時提供指向它的路徑。
 可以從另一部有連線到網際網路電腦，到[下載連結 - Service Fabric 執行階段 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 另外下載執行階段套件。 將執行階段套件複製到您要部署離線叢集之處，然後執行 `CreateServiceFabricCluster.ps1` 搭配 `-FabricRuntimePackagePath` 參數建立叢集，如下列範例所示： 
 
@@ -115,9 +115,9 @@ Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fab
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-.\ClusterConfig.json** 和 .\MicrosoftAzureServiceFabric.cab** 分別為叢集設定與執行階段 .cab 檔案的路徑。
+.\ClusterConfig.json 和 .\MicrosoftAzureServiceFabric.cab 分別為叢集設定與執行階段 .cab 檔案的路徑。
 
-### <a name="step-2-connect-to-the-cluster"></a>步驟 2：連接到叢集
+### <a name="step-2-connect-to-the-cluster"></a>步驟 2:連線至叢集
 連線到叢集，以確認叢集正在執行且可用。 ServiceFabric PowerShell 模組會隨著執行階段套件一起安裝。  您可以從其中一個叢集節點，或透過 Service Fabric 執行階段從遠端電腦來連線到叢集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) Cmdlet 會建立叢集連線。
 
 若要連線到不安全的叢集，請執行下列 PowerShell 命令：
@@ -131,7 +131,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 
-如需連線到叢集的其他範例，請參閱[連線到安全的叢集](service-fabric-connect-to-secure-cluster.md)。 連線到叢集之後，使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet 來顯示叢集中的節點清單以及每個節點的狀態資訊。 每個節點的 **HealthState** 應該為「正常」**。
+如需連線到叢集的其他範例，請參閱[連線到安全的叢集](service-fabric-connect-to-secure-cluster.md)。 連線到叢集之後，使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet 來顯示叢集中的節點清單以及每個節點的狀態資訊。 每個節點的 **HealthState** 應該為「正常」。
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>步驟 3：使用 Service Fabric Explorer 將叢集視覺化
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一個理想的工具，可將叢集視覺化及管理應用程式。  Service Fabric Explorer 是在叢集中執行的一項服務，您可以使用瀏覽器瀏覽至 `http://localhost:19080/Explorer` 來存取該服務。
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一個理想的工具，可將叢集視覺化及管理應用程式。  Service Fabric Explorer 是在叢集中執行的一個服務，您可以使用瀏覽器瀏覽至 `http://localhost:19080/Explorer` 來存取該服務。
 
 叢集儀表板會提供您叢集的概觀，包括應用程式和節點健康情況的摘要。 節點檢視會顯示叢集的實體配置。 對於指定的節點，您可以檢查已經在該節點上部署程式碼的應用程式。
 
@@ -172,9 +172,9 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>收集的遙測資料及如何選擇退出
-根據預設，產品會收集 Service Fabric 使用情形的遙測來改善產品。 在安裝過程中執行的最佳做法分析程式會檢查的連線能力[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 如果無法連線，則安裝會失敗，除非您選擇退出遙測。
+根據預設，產品會收集 Service Fabric 使用情形的遙測來改善產品。 安裝過程執行的最佳做法分析會檢查能否連線到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 如果無法連線，則安裝會失敗，除非您選擇退出遙測。
 
-1. 遙測管線會嘗試將下列資料每天上傳[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)一次。 這只是儘可能上傳，不會影響叢集功能。 只有執行主要容錯移轉管理員的節點才會傳送遙測。 沒有其他節點會傳送遙測。
+1. 遙測管線會嘗試將下列資料每天上傳一次到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 這只是儘可能上傳，不會影響叢集功能。 只有執行主要容錯移轉管理員的節點才會傳送遙測。 沒有其他節點會傳送遙測。
 2. 遙測是由下列項目所組成：
 
 * 服務數
@@ -193,8 +193,8 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 * FailoverUnitQueueLength
 * CommitQueueLength
 * Nodes 的數目
-* IsContextComplete: True/False
-* ClusterId︰這是針對每個叢集隨機產生的 GUID。
+* IsContextComplete：True/False
+* ClusterId：這是針對每個叢集隨機產生的 GUID。
 * ServiceFabricVersion
 * 遙測上傳來源虛擬機器的 IP 位址
 

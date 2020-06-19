@@ -3,12 +3,12 @@ title: 限制-LUIS
 description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的已知限制。 LUIS 有數個限制區域。 模型限制會控制 LUIS 中的意圖、實體和功能。 以金鑰類型為基礎的配額限制。 鍵盤組合可控制 LUIS 網站。
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449493"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976977"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的[鍵盤組合](#keyboard-controls)。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -27,7 +27,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 | 明確清單 | 每個應用程式 50 個|
 | 外部實體 | 無限制 |
 | [對應方式][intents]|每個應用程式500：499個自訂意圖，以及必要的_None_意圖。<br>[分派式](https://aka.ms/dispatch-tool)應用程式具有對應的500分派來源。|
-| [清單實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
+| [列出實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
 | [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複<br>單個<br>實體角色|100父實體或330實體的限制，以一開始的限制為准。 角色會針對此限制的目的，計算為實體。 其中一個範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 簡單 + 2 個角色 = 4 個330實體。<br>子實體可以嵌套最多5個層級。|
 |模型即功能| 可做為特定模型之功能的模型數目上限為10個模型。 用來做為特定模型之功能的片語清單數目上限為10個片語清單。|
 | [預覽-動態清單實體](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2個每個查詢預測端點要求的清單|
@@ -37,7 +37,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 | [預先建置的實體](./luis-prebuilt-entities.md) | 沒有限制|
 | [規則運算式實體](./luis-concept-entity-types.md)|20 個實體<br>每個規則運算式實體模式 具有 500 個字元的上限|
 | [角色](luis-concept-roles.md)|每個應用程式 300 個角色。 每個實體 10 個角色|
-| [語句][utterances] | 500 個字元<br><br>如果您的文字長度超過此字元限制，您必須在輸入 LUIS 之前先分割語句，並據以合併回應。 您可以使用明顯的分隔符號號，例如語音中的標點符號和長時間暫停。|
+| [語句][utterances] | 500 個字元<br><br>如果您的文字長度超過此字元限制，您必須在輸入至 LUIS 之前先分割語句，而且您會收到每個區段的個別意圖回應。 您可以使用明顯的分隔符號號，例如語音中的標點符號和長時間暫停。|
 | [語句範例][utterances] | 每個應用程式 15000-每個意圖的語句數目沒有限制<br><br>如果您需要以更多範例來訓練應用程式，請使用[分派](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)模型方法。 您可以使用一或多個意圖，將個別的 LUIS 應用程式（稱為子應用程式）定型至父分派應用程式，然後將來自每個子 LUIS 應用程式語句的分派應用程式定型，以將預測要求導向至正確的子應用程式。 |
 | [版本](luis-concept-version.md)| 100每個應用程式的版本 |
 | [版本名稱][luis-how-to-manage-versions] | 128 個字元 |
@@ -61,7 +61,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 
 請不要在下列名稱中使用下列字元。
 
-|物件|排除字元|
+|Object|排除字元|
 |--|--|
 |意圖、實體和角色名稱|`:`<br>`$` <br> `&`|
 |版本名稱|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|

@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ceab81f4dd9089acc2d902f80e7acc95e9f9cb11
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231586"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676449"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入門：使用 Visual Studio 在 Azure 中建立第一個函式
 
@@ -40,7 +40,7 @@ Visual Studio 會建立一個專案，其中的類別包含 HTTP 觸發程序函
 
 1. 在程式碼中，將 Function1 類別重新命名為 'HttpExample'。
 
-1. 在名為 `run` 的 `HttpTrigger` 方法中，將 `FunctionName` 方法屬性重新命名為 `HttpExample`。
+1. 在名為 `Run` 的 `HttpTrigger` 方法中，將 `FunctionName` 方法屬性重新命名為 `HttpExample`。
 
 您現在已重新命名函式，可以在本機電腦上進行測試。
 

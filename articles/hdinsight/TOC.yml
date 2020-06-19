@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: 適用於 VSCode 的 Spark 和 Hive 工具
               href: ./hdinsight-for-vscode.md
-            - name: 適用於 Hortonworks 沙箱的 HDInsight Tools for IntelliJ
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake 工具與 Hortonworks 沙箱
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: 監視
           items:
             - name: 使用 Azure 監視器記錄
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: 執行自訂 Apache Hadoop MapReduce 程式
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: '開發 C# 串流 MapReduce 程式'
+                - name: 開發 C# 串流 MapReduce 程式
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: 開發 Java MapReduce 程式
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: 處理並分析 JSON 文件
               href: ./hadoop/using-json-in-hive.md
-            - name: '使用 C# 使用者定義函式'
+            - name: 使用 C# 使用者定義函式
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: 使用 Python with Peache Hive 和 Apache Pig
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: 使用 Python 開發拓撲
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: '使用 C# 開發拓撲'
+                - name: 使用 C# 開發拓撲
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET 程式設計指南
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: 串流管線
               items:
-                - name: '事件中樞與 Apache Storm (C# 和 Java)'
+                - name: 事件中樞與 Apache Storm (C# 和 Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理
           items:

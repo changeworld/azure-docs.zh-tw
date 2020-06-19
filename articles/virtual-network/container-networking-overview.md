@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2a0a0527ffaedacbabcf19435fbc1772b632816
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75647436"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707492"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>讓容器使用 Azure 虛擬網路功能
 

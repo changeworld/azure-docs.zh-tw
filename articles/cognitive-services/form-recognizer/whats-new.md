@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996817"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099324"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -22,6 +22,17 @@ ms.locfileid: "83996817"
 
 > [!NOTE]
 > 表單辨識器的快速入門和指南一律會使用 API 的最新版本，除非有指定。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="new-features"></a>新功能
+* **COPYMODEL API 已新增至用戶端 sdk**您現在可以使用用戶端 Sdk，將模型從一個訂用帳戶複製到另一個。 如需這項功能的一般資訊，請參閱[備份和復原模型](./disaster-recovery.md)。
+* **Azure Active Directory 整合**您現在可以使用 AAD 認證來驗證 Sdk 中的表單辨識器用戶端物件。
+* **SDK 特定的變更**這包括次要功能新增和重大變更。 如需詳細資訊，請參閱 SDK releases。
+  * [C # SDK Preview 3 變更記錄](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK Preview 3 變更記錄](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JAVA SDK Preview 3 變更記錄](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JavaScript SDK Preview 3 變更記錄](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
 
 ## <a name="april-2020"></a>2020 年 4 月
 

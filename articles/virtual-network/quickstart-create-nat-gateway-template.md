@@ -1,5 +1,5 @@
 ---
-title: 快速入門：建立 NAT 閘道 - Resource Manager 範本
+title: 教學課程：建立 NAT 閘道 - Resource Manager 範本
 titleSuffix: Azure Virtual Network NAT
 description: 本快速入門說明如何使用 Azure Resource Manager 範本建立 NAT 閘道。
 services: load-balancer
@@ -10,20 +10,20 @@ Customer intent: I want to create a NAT gateway by using an Azure Resource Manag
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 5e0d62885598aea6f1656d0cdcef5f0c3406e7dd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341026"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703565"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>快速入門：建立 NAT 閘道 - Resource Manager 範本
+# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>教學課程：建立 NAT 閘道 - Resource Manager 範本
 
 使用 Azure Resource Manager 範本開始使用虛擬網路 NAT。  此範本會部署虛擬網路、NAT 閘道資源和 Ubuntu 虛擬機器。 Ubuntu 虛擬機器會部署到與 NAT 閘道資源相關聯的子網路。
 
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取左側面板中的 [資源群組]  。
+2. 選取左側面板中的 [資源群組]。
 
 3. 選取您在上一節中建立的資源群組。 預設的資源組名為 **myResourceGroupNAT**
 
@@ -138,7 +138,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure 入口網站**
 
-若不再需要，可刪除資源群組、NAT 閘道和所有相關資源。 選取包含 NAT 閘道的資源群組 **myResourceGroupNAT**，然後選取 [刪除]  。
+若不再需要，可刪除資源群組、NAT 閘道和所有相關資源。 選取包含 NAT 閘道的資源群組 **myResourceGroupNAT**，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

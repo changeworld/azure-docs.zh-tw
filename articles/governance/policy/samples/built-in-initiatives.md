@@ -1,21 +1,25 @@
 ---
 title: 內建原則方案的清單
 description: 列出 Azure 原則的內建原則方案。 類別包括法規合規性、客體設定等。
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b3b0826e2121e7d609bd4091a162fa1820c1be53
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 41e19426daeaee799f9ad008c820a689fe552ec4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234028"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709117"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure 原則內建方案定義
 
 此頁面是 Azure 原則內建方案定義的索引。
 
 在 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上，每個內建連結的名稱都與方案定義來源相關。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+
+## <a name="cosmos-db"></a>Cosmos DB
+
+[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>來賓組態
 

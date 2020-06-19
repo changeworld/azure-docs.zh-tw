@@ -3,7 +3,7 @@ title: PowerShell：將受控執行個體新增到自動容錯移轉群組
 titleSuffix: Azure SQL Managed Instance
 description: Azure PowerShell 範例指令碼，用以建立受控執行個體、將其新增至自動容錯移轉群組，以及測試容錯移轉。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 27179f217d370a5ae4b9a4e87eaebc7659b66930
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b6ad060939af0d79f93e15672af45e0224c1ca5c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220947"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708545"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>使用 PowerShell 將受控執行個體新增至容錯移轉群組 
 
