@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure Active Directory 來啟用 Microsoft AppSource 和 Azure Marketplace 清單 | Azure
-description: 使用 Azure Active Directory 在 Azure Marketplace 和 AppSource 中為應用程式和服務發行者啟用清單類型。
+title: 整合您的 Microsoft 商業市集供應項目與 Azure Active Directory
+description: 使用 Azure Active Directory 來驗證您的 Microsoft AppSource 和 Azure Marketplace 供應項目。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160608"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658037"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 來啟用 AppSource 和 Marketplace 清單
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>整合您的商業市集清單與 Azure Active Directory
 
- Azure Active Directory (Azure AD) 是一種雲端身分識別服務，可以 Microsoft 帳戶進行驗證。 Azure AD 使用業界標準架構。 [深入瞭解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
+ 本文說明整合商業市集清單或供應項目與 Azure Active Directory (Azure AD) 的需求。 Azure AD 是一種雲端身分識別服務，採用業界標準架構來啟用 Microsoft 帳戶的驗證。 [深入了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD 的優點
 
-Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜尋清單目錄。 這些動作需要客戶登入產品。 Azure DNS 整合提供下列優點：
+Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜尋店面清單目錄。 這些動作需要客戶登入產品。 Azure DNS 整合提供下列優點：
 
 - 更快速的業務開發和最佳化客戶體驗
 - 數百萬企業使用者適用的單一登入 (SSO)
@@ -29,17 +29,17 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 ## <a name="offers-that-require-azure-ad"></a>要求 Azure AD 的供應項目
 
-適用於 AppSource 及 Azure Marketplace 的各種[列出選項和供應項目類型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)對於 Azure AD 實作有不同的需求。 如需詳細資訊，請參閱下表︰
+各種商業市集[清單選項和供應項目類型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)對於 Azure AD 實作有不同的需求。 如需詳細資訊，請參閱下表。
 
-| **供應專案類型**    | **是否需要 Azure AD SSO？**  |  |   |  |
+| **供應項目類型**    | **是否需要 Azure AD SSO？**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 與我連絡 | 試用版 | 試用產品 | 交易 |
-| 虛擬機器 | 不適用 | 否 | 否 | 否 |
-| Azure 應用程式 (解決方案範本)  | 不適用 | 不適用 | 不適用 | 不適用 |
-| 受管理的應用程式  | 不適用 | 不適用 | 不適用 | 否 |
+| 虛擬機器 | N/A | 否 | 否 | 否 |
+| Azure 應用程式 (解決方案範本)  | N/A | N/A | N/A | N/A |
+| 受管理的應用程式  | N/A | N/A | N/A | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不適用 | 不適用 | 不適用 | 否 |
-| 諮詢服務  | 否 | 不適用 | 不適用 | 不適用 |
+| 容器  | N/A | N/A | N/A | 否 |
+| 諮詢服務  | 否 | N/A | N/A | N/A |
 
 如需有關 Saas 技術需求的詳細資訊，請參閱 [SaaS 應用程式供應項目發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
@@ -73,7 +73,7 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 如果您不熟悉 Azure AD 同盟單一登入的用法，請採取下列步驟：
 
 1. 在 Marketplace 中註冊您的應用程式。
-1. 使用[OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)或[OpenID connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)，透過 Azure AD 來開發 SSO。
+1. 使用 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 或 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 來開發搭配 Azure AD 的 SSO。
 1. 在 Azure AD 中啟用多租用戶支援功能，以提供單鍵試用體驗。
 
 ### <a name="single-tenant-solutions"></a>單一租用戶解決方案
@@ -81,7 +81,7 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 使用 Azure AD 來支援下列其中一個動作：
 
 - 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 將來賓使用者新增至目錄。
-- 使用 [與我連絡]**** 發佈選項，為客戶手動設定試用版。
+- 使用 [與我連絡] 發佈選項，為客戶手動設定試用版。
 - 開發每個客戶的「試用產品」。
 - 建置使用 SSO 的多租用戶範例示範應用程式。
 
@@ -89,8 +89,8 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 如果您還沒有這麼做，請 
 
-- [瞭解](https://azuremarketplace.microsoft.com/sell)marketplace。
+- [了解](https://azuremarketplace.microsoft.com/sell)市集。
 
-若要在合作夥伴中心註冊，請開始建立新的供應專案，或使用現有的供應專案：
+若要在合作夥伴中心註冊，請開始建立新供應項目或使用現有供應項目：
 
-- 登[入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以建立或完成您的供應專案。
+- [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。

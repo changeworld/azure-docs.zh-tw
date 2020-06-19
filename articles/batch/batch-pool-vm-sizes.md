@@ -1,16 +1,15 @@
 ---
 title: 選擇集區的 VM 大小
 description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM 大小
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d33b97790d2ce9a276a552fd02fe28c796234b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115851"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779157"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -18,27 +17,27 @@ ms.locfileid: "82115851"
 
 選擇 VM 大小時有幾個例外狀況和限制：
 
-* Batch 中不支援某些 VM 系列或 VM 大小。
+* Batch 不支援某些 VM 系列或 VM 大小。
 * 有些 VM 大小會有限制，而且必須特別啟用後才能配置。
 
 ## <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虛擬機器組態中的集區
 
-虛擬機器設定中的 Batch 集區支援幾乎所有的 VM 大小（[Linux](../virtual-machines/linux/sizes.md)、 [Windows](../virtual-machines/windows/sizes.md)）。 若要深入瞭解支援的大小和限制，請參閱下表。
+虛擬機器設定中的 Batch 集區支援幾乎所有 VM 大小 ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md))。 請參閱下表，以深入了解支援的大小和限制。
 
 | VM 系列  | 支援的大小 |
 |------------|---------|
-| 基本 A | 除了 Basic_A0 （A0）*以外*的所有大小 |
-| A | 除了 Standard_A0*以外*的所有大小 |
+| 基本 A | Basic_A0 (A0)「以外」的所有大小 |
+| A | Standard_A0「以外」的所有大小 |
 | Av2 | 所有大小 |
-| B | 無 |
-| DC | 無 |
+| B | None |
+| DC | None |
 | Dv2、DSv2 | 所有大小 |
 | Dv3、Dsv3 | 所有大小 |
-| Dav4, Dasv4 | 無-尚未提供 |
-| Ev3、Esv3 | 除了 E64is_v3 和 E64i_v3 以外的所有大小 |
-| Eav4, Easv4 | 無-尚未提供 |
+| Dav4、Dasv4 | 無 - 尚未提供 |
+| Ev3、Esv3 | E64is_v3 和 E64i_v3 以外的所有大小 |
+| Eav4、Easv4 | 無 - 尚未提供 |
 | F、Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G、Gs | 所有大小 |
@@ -47,24 +46,24 @@ ms.locfileid: "82115851"
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
 | Ls | 所有大小 |
-| Lsv2 | 無-尚未提供 |
-| M<sup>1</sup> | 除了 M64、M64m、M128、M128m 以外的所有大小 |
-| Mv2 | 無-尚未提供 |
+| Lsv2 | 無 - 尚未提供 |
+| M<sup>1</sup> | M64、M64m、M128、M128m 以外的所有大小 |
+| Mv2 | 無 - 尚未提供 |
 | NC | 所有大小 |
 | NCv2<sup>1</sup> | 所有大小 |
 | NCv3<sup>1</sup> | 所有大小 |
 | ND<sup>1</sup> | 所有大小 |
-| NDv2<sup>1</sup> | 無-尚未提供 |
+| NDv2<sup>1</sup> | 無 - 尚未提供 |
 | NV | 所有大小 |
 | NVv3<sup>1</sup> | 所有大小 |
-| NVv4 | 無 |
-| SAP HANA | 無 |
+| NVv4 | None |
+| SAP HANA | None |
 
-<sup>1</sup>這些 VM 大小可以在虛擬機器設定的 batch 集區中配置，但您必須建立新的 Batch 帳戶，並要求[增加](batch-quota-limit.md#increase-a-quota)特定的配額。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
+<sup>1</sup> 這些 VM 大小可在虛擬機器設定的 Batch 集區中配置，但必須建立新的 Batch 帳戶，並要求[增加特定配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
 
 ### <a name="pools-in-cloud-service-configuration"></a>雲端服務組態中的集區
 
-雲端服務組態中的 Batch 集區支援所有[適用於雲端服務的 VM 大小，「除了」](../cloud-services/cloud-services-sizes-specs.md) **** 下列幾個：
+雲端服務設定中的 Batch 集區支援[雲端服務的所有 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但「不包括」下列各項：
 
 | VM 系列  | 不支援的大小 |
 |------------|-------------------|
@@ -79,7 +78,7 @@ ms.locfileid: "82115851"
 
 * **不同工作的負載層級** - 集區中的所有節點都是相同大小。 如果您打算執行具有不同系統需求和/或負載層級的應用程式，建議使用不同的集區。
 
-* **區域可用性**-在您建立 Batch 帳戶的區域中，可能無法使用 VM 系列或大小。 若要確認是否有提供某個大小，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
+* **區域可用性** - 在用來建立 Batch 帳戶的區域中，可能不會提供某個 VM 系列或大小。 若要確認是否有提供某個大小，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 
 * **配額** - Batch 帳戶中的[核心配額](batch-quota-limit.md#resource-quotas)可能會限制您可以新增至 Batch 集區的指定大小節點數目。 若要要求增加配額，請參閱[本文](batch-quota-limit.md#increase-a-quota)。 
 
@@ -87,5 +86,5 @@ ms.locfileid: "82115851"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Batch 的深入概觀，請參閱[使用 Batch 開發大規模的平行計算解決方案](batch-api-basics.md)。
+* 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 * 如需使用計算密集型 VM 大小的相關資訊，請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。

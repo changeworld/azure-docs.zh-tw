@@ -4,7 +4,7 @@ description: 了解可供您用來部署 Azure 虛擬網路的不同 Azure Resou
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6e759fa75e1957e726dc9f6f3d0035869f35e3f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75975357"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707815"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>虛擬網路的 Azure Resource Manager 範本範例
 

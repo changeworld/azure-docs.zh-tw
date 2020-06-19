@@ -1,183 +1,182 @@
 ---
-title: 管理 Azure 自動化中的變更追蹤和清查
-description: 本文說明如何使用變更追蹤和清查來追蹤軟體，以及在您的環境中發生的 Microsoft 服務變更。
+title: 在 Azure 自動化中管理變更追蹤和清查
+description: 本文說明如何使用變更追蹤和清查，來追蹤軟體和 Microsoft 服務在您環境中的變更。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779292"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830475"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理變更追蹤和清查
 
-當您新增要追蹤的新檔案或登錄機碼時，Azure 自動化將它啟用[變更追蹤和清查](change-tracking.md)功能。 本文包含使用這項功能的程式。
+Azure 自動化會為您環境中的機器啟用[變更追蹤和清查](change-tracking.md)功能。 此功能會追蹤登錄機碼、檔案、內容等項目，並進行適用的變更。 本文包含使用這項功能的程序。
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>啟用完整的變更追蹤和清查功能
 
-如果您已啟用[Azure 資訊安全中心檔案完整性監視（FIM）](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，您可以使用完整的變更追蹤和清查功能，如下所述。 此處理程式不會移除您的設定。
+如果您已啟用 [Azure 資訊安全中心檔案完整性監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，則可以對您的機器使用完整的變更追蹤和清查功能，如下所述。 此程序不會移除您的設定。
 
 > [!NOTE]
-> 啟用完整的變更追蹤和清查功能可能會導致額外的費用。 請參閱[自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
+> 啟用完整的變更追蹤和清查功能，可能會產生額外的費用。 請參閱 [Automation 定價](https://azure.microsoft.com/pricing/details/automation/)。
 
-1. 流覽至工作區，然後在[已安裝的監視解決方案清單](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中尋找，以移除監視解決方案。
-2. 按一下解決方案的名稱以開啟其 [摘要] 頁面，然後按一下 [**刪除**]，如[移除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
-3. 若要重新啟用變更追蹤和清查，請流覽至自動化帳戶，然後選取 [設定**管理**] 底下的 [**變更追蹤**]。
-4. 選擇 Log Analytics 工作區和自動化帳戶，確認您的工作區設定，然後按一下 [**啟用**]。
+1. 瀏覽至工作區，並在[已安裝的監視解決方案清單](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中找出監視解決方案，以將其移除。
+2. 按一下解決方案名稱，以開啟其摘要頁面，然後按一下 [刪除]，如[移除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)所說明。
+3. 若要重新啟用變更追蹤和清查，請瀏覽至 [自動化帳戶]，然後在 [組態管理] 底下選取 [變更追蹤] 或 [清查]。
+4. 選擇 Log Analytics 工作區和自動化帳戶，確認您的工作區設定，然後按一下 [啟用]。
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>將機器上架到變更追蹤和清查
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>為機器啟用變更追蹤和清查
 
-若要開始追蹤變更，您必須在 Azure 自動化中啟用變更追蹤和清查。 以下是將電腦上架到這項功能的建議和支援方式： 
+若要開始追蹤變更，您必須在 Azure 自動化中啟用變更追蹤和清查。 以下是為您的機器啟用這項功能的建議和支援方式： 
 
-* [從虛擬機器上架](automation-onboard-solutions-from-vm.md)
-* [從流覽多部電腦上架](automation-onboard-solutions-from-browse.md)
-* [從您的自動化帳戶上架](automation-onboard-solutions-from-automation-account.md)
-* [在 Azure 自動化 runbook 中上架](automation-onboard-solutions.md)
+* [從虛擬機器啟用](automation-onboard-solutions-from-vm.md)
+* [藉由瀏覽多個機器來啟用](automation-onboard-solutions-from-browse.md)
+* [從您的自動化帳戶啟用](automation-onboard-solutions-from-automation-account.md)
+* [在 Azure 自動化 Runbook 中啟用](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>追蹤檔案
 
 ### <a name="configure-file-tracking-on-windows"></a>在 Windows 上設定檔案追蹤
 
-使用下列步驟，在 Windows 電腦上設定檔案追蹤：
+使用下列步驟，設定要在 Windows 電腦上追蹤的檔案：
 
-1. 在您的自動化帳戶中，選取 [設定**管理**] 底下的 [**變更追蹤**]。 
-2. 按一下 [編輯設定]**** \(齒輪符號)。
-3. 在 [工作區設定] 頁面上，選取 [ **Windows**檔案]，然後按一下 [ **+ 新增**] 以新增要追蹤的新檔案。
-4. 在 [加入變更追蹤的 Windows 檔案] 窗格中，輸入要追蹤之檔案的資訊，然後按一下 [**儲存**]。 下表定義您可以用於資訊的屬性。
+1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 
+2. 按一下 [編輯設定] \(齒輪符號)。
+3. 在 [工作區設定] 頁面上選取 [Windows 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
+4. 在 [為變更追蹤新增 Windows 檔案] 窗格上，輸入要追蹤之檔案的資訊，然後按一下 [儲存]。 下表定義可用於資訊的屬性。
 
     |屬性  |描述  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
     |群組     | 以邏輯方式分組檔案的群組名稱。        |
-    |輸入路徑     | 要檢查檔案的路徑，例如**c：\temp\\\*。** 您也可以使用環境變數，例如`%winDir%\System32\\\*.*`。       |
-    |路徑類型     | 路徑的類型。 可能的值為 File 和 Directory。        |    
-    |遞迴     | 如果在尋找要追蹤的專案時使用遞迴，則為 True，否則為 False。        |    
-    |上傳檔案內容 | True 表示在追蹤的變更上傳檔案內容，否則為 False。|
+    |輸入路徑     | 要檢查檔案的路徑，例如 **c:\temp\\\*.txt**。 您也可以使用環境變數，例如 `%winDir%\System32\\\*.*`。       |
+    |路徑類型     | 路徑的類型。 可能值為「檔案」和「目錄」。        |    
+    |遞迴     | 如果在尋找要追蹤的項目時使用遞迴，則為 True，否則為 False。        |    
+    |上傳檔案內容 | True 會針對追蹤的變更上傳檔案內容，False 則不會。|
 
-5. 請確定您為 **[上傳檔案內容**] 指定 [True]。 此設定會針對指定的檔案路徑啟用檔案內容追蹤。
+5. 請確實將 [上傳檔案內容] 指定為 True。 此設定會針對指定的檔案路徑啟用檔案內容追蹤。
 
 ### <a name="configure-file-tracking-on-linux"></a>在 Linux 上設定檔案追蹤
 
 使用下列步驟，設定要在 Linux 電腦上追蹤的檔案：
 
-1. 在您的自動化帳戶中，選取 [設定**管理**] 底下的 [**變更追蹤**]。 
-2. 按一下 [編輯設定]**** \(齒輪符號)。
-3. 在 [工作區設定] 頁面上，選取 [ **Linux**檔案]，然後按一下 [ **+ 新增**] 以新增要追蹤的新檔案。
-4. 在 [為變更追蹤新增 Linux 檔案] 窗格中，輸入要追蹤的檔案或目錄資訊，然後按一下 [**儲存**]。 下表定義您可以用於資訊的屬性。
+1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 
+2. 按一下 [編輯設定] \(齒輪符號)。
+3. 在 [工作區設定] 頁面上選取 [Linux 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
+4. 在 [為變更追蹤新增 Linux 檔案] 窗格上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存]。 下表定義可用於資訊的屬性。
 
     |屬性  |描述  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
     |群組     | 以邏輯方式分組檔案的群組名稱。        |
-    |輸入路徑     | 要檢查檔案的路徑，例如， **/etc/*. 會議**。       |
-    |路徑類型     | 路徑的類型。 可能的值為 File 和 Directory。        |
-    |遞迴     | 如果在尋找要追蹤的專案時使用遞迴，則為 True，否則為 False。        |
-    |使用 Sudo     | 如果要在檢查項目時使用 sudo，則為 True，否則為 False。         |
-    |連結     | 設定，決定在遍歷目錄時如何處理符號連結。 可能的值包括：<br> 忽略 - 忽略符號連結，而不包含參考的檔案/目錄。<br>跟隨-在遞迴期間遵循符號連結，並同時包含參考的檔案/目錄。<br>管理 - 遵循符號連結並允許變更傳回的內容。 **注意**-不建議使用此選項，因為它不支援檔案內容抓取。    |
-    |上傳檔案內容 | True 表示在追蹤的變更上傳檔案內容，否則為 False。 |
+    |輸入路徑     | 要檢查檔案的路徑，例如， **/etc/*.conf**。       |
+    |路徑類型     | 路徑的類型。 可能值為「檔案」和「目錄」。        |
+    |遞迴     | 如果在尋找要追蹤的項目時使用遞迴，則為 True，否則為 False。        |
+    |使用 Sudo     | True 會在檢查項目時使用 sudo，False 否不會。         |
+    |連結     | 此設定會決定在周遊目錄時處理符號連結的方式。 可能的值包括：<br> 忽略 - 忽略符號連結，而不包含參考的檔案/目錄。<br>遵循 - 在遞迴期間遵循符號連結，並且包含參考的檔案/目錄。<br>管理 - 遵循符號連結並允許變更傳回的內容。 **注意** - 此選項不支援檔案內容擷取，因此不建議使用。    |
+    |上傳檔案內容 | True 會針對追蹤的變更上傳檔案內容，False 則不會。 |
 
-5. 請確定您為 **[上傳檔案內容**] 指定 [True]。 此設定會針對指定的檔案路徑啟用檔案內容追蹤。
+5. 請確實將 [上傳檔案內容] 指定為 True。 此設定會針對指定的檔案路徑啟用檔案內容追蹤。
 
    ![新增 Linux 檔案](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="track-file-contents"></a>追蹤檔案內容
 
-檔案內容追蹤可讓您在追蹤的變更前後，查看檔案的內容。 功能會在每次變更之後，將檔案內容儲存至儲存體帳戶。 以下是追蹤檔案內容時要遵循的一些規則：
+檔案內容追蹤可讓您在追蹤變更前後，檢視檔案的內容。 此功能可在每次變更發生後，將檔案內容儲存到儲存體帳戶。 以下是追蹤檔案內容時需遵循的一些規則：
 
 * 儲存檔案內容需要有使用 Resource Manager 部署模型的標準儲存體帳戶。 
 
-* 請勿使用 premium 和傳統部署模型儲存體帳戶。 請參閱[關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* 請勿使用進階和傳統的部署模型儲存體帳戶。 請參閱[關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
-* 您所使用的儲存體帳戶只能連接到一個自動化帳戶。
+* 您所使用的儲存體帳戶只能連線至一個自動化帳戶。
 
-* 您的自動化帳戶中已啟用[變更追蹤和清查](change-tracking.md)。
+* 您的自動化帳戶已啟用[變更追蹤和清查](change-tracking.md)。
 
-### <a name="enable-tracking-for-file-content-changes"></a>啟用追蹤檔案內容變更
+### <a name="enable-tracking-for-file-content-changes"></a>啟用檔案內容變更的追蹤
 
-1. 在 [Azure 入口網站中，開啟您的自動化帳戶，然後選取 [設定**管理**] 底下的 [**變更追蹤**]。
-2. 按一下 [編輯設定]**** \(齒輪符號)。
-3. 選取 [檔案內容]****，然後按一下 [連結]****。 此選項會開啟 [加入內容位置以供變更追蹤] 窗格。
+1. 在 Azure 入口網站中開啟您的自動化帳戶，然後選取 [組態管理] 底下的 [變更追蹤]。
+2. 按一下 [編輯設定] \(齒輪符號)。
+3. 選取 [檔案內容]，然後按一下 [連結]。 進行此選取後，會開啟 [新增變更追蹤的內容位置] 窗格。
 
    ![啟用內容位置](./media/change-tracking-file-contents/enable.png)
 
 4. 選取要用來儲存檔案內容的訂用帳戶和儲存體帳戶。 
 
-5. 如果您想要啟用所有現有已追蹤檔案的檔案內容追蹤，請針對 [上傳所有設定的檔案內容]**** 選取 [開啓]****。 您稍後可以變更每個檔案路徑的這項設定。
+5. 如果您想要啟用所有現有已追蹤檔案的檔案內容追蹤，請針對 [上傳所有設定的檔案內容] 選取 [開啓]。 您後續可為各個檔案路徑變更此設定。
 
    ![設定儲存體帳戶](./media/change-tracking-file-contents/storage-account.png)
 
-6. 變更追蹤和清查在啟用檔案內容變更追蹤時，會顯示儲存體帳戶和共用存取簽章（SAS） Uri。 簽章會在365天后到期，您可以按一下 [**重新**產生] 來重新建立。
+6. 變更追蹤和清查在啟用檔案內容變更追蹤後，會顯示儲存體帳戶和共用存取簽章 (SAS) URI。 簽章會在 365 天後到期，您可以按一下 [重新產生] 重新加以建立。
 
    ![列出帳戶金鑰](./media/change-tracking-file-contents/account-keys.png)
 
-### <a name="view-the-contents-of-a-tracked-file"></a>查看追蹤檔案的內容
+### <a name="view-the-contents-of-a-tracked-file"></a>檢視追蹤的檔案內容
 
-變更追蹤和清查偵測到已追蹤檔案的變更後，您就可以在 [變更詳細資料] 窗格中查看檔案內容。  
+變更追蹤和清查驗偵測到追蹤的檔案有所變更時，您可以在 [變更詳細資料] 窗格中檢視檔案內容。  
 
-![清單變更](./media/change-tracking-file-contents/change-list.png)
+![列出變更](./media/change-tracking-file-contents/change-list.png)
 
-1. 在 [Azure 入口網站中，開啟您的自動化帳戶，然後選取 [設定**管理**] 底下的 [**變更追蹤**]。
+1. 在 Azure 入口網站中開啟您的自動化帳戶，然後選取 [組態管理] 底下的 [變更追蹤]。
 
-2. 在變更清單中選擇檔案，然後選取 [**查看檔案內容變更**] 以查看檔案的內容。 [變更詳細資料] 窗格會顯示檔案資訊前後的標準。
+2. 在變更清單中選擇檔案，然後選取 [檢視檔案內容變更]，以查看檔案的內容。 [變更詳細資料] 窗格會顯示檔案資訊在變更前後的標準。
 
    ![變更詳細資料](./media/change-tracking-file-contents/change-details.png)
 
-3. 您正在並排查看檔案的內容。 您可以選取 [**內嵌**]，以查看變更的內嵌視圖。
+3. 您在並排檢視中檢視檔案內容。 您可以選取 [內嵌] 查看變更的內嵌檢視。
 
 ## <a name="track-registry-keys"></a>追蹤登錄機碼
 
 使用下列步驟，設定要在 Windows 電腦上追蹤的登錄機碼：
 
-1. 在您的自動化帳戶中，選取 [設定**管理**] 底下的 [**變更追蹤**]。 
-2. 按一下 [編輯設定]**** \(齒輪符號)。
-3. 在 [工作區設定] 頁面上，選取 [ **Windows**登錄]。
-4. 按一下 [ **+ 新增**] 以新增要追蹤的新登錄機碼。
-5. 在 [新增變更追蹤的 Windows 登錄] 窗格上，輸入要追蹤之金鑰的資訊，然後按一下 [**儲存**]。 下表定義您可以用於資訊的屬性。
+1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 
+2. 按一下 [編輯設定] \(齒輪符號)。
+3. 在 [工作區設定] 頁面上，選取 [Windows 登錄]。
+4. 按一下 [+ 新增]，以新增要追蹤的新登錄機碼。
+5. 在 [為變更追蹤新增 Windows 登錄] 窗格上，輸入要追蹤的機碼資訊，然後按一下 [儲存]。 下表定義可用於資訊的屬性。
 
     |屬性  |描述  |
     |---------|---------|
-    |啟用     | 如果套用了設定，則為 True，否則為 False。        |
+    |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之登錄機碼的易記名稱。        |
-    |群組     | 以邏輯方式分組登錄機碼的組名。        |
-    |Windows 登錄機碼   | 具有路徑的索引鍵名稱，例如， **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\explorer\user Shell Folders\Common 啟動**。      |
+    |群組     | 以邏輯方式分組登錄機碼的群組名稱。        |
+    |Windows 登錄機碼   | 包含路徑的機碼名稱，例如 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup**。      |
 
 ## <a name="search-logs-for-change-records"></a>搜尋記錄中的變更記錄
 
-您可以針對變更記錄，針對 Azure 監視器記錄進行各種搜尋。 在 [變更追蹤] 頁面開啟的情況下，按一下 [ **Log Analytics** ] 以開啟 [記錄] 頁面。 下表提供變更記錄的記錄搜尋範例。
+您可以對 Azure 監視器記錄進行各種搜尋，以找出變更記錄。 在 [變更追蹤] 頁面開啟後，按一下 [Log Analytics] 以開啟 [記錄] 頁面。 下表提供變更記錄的記錄搜尋範例。
 
 |查詢  |描述  |
 |---------|---------|
-|ConfigurationData<br>&#124;，其中 ConfigDataType = = "Microsoft services" 和 SvcStartupType = = "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 顯示已設定為 [自動] 但回報為 [已停止] 之 Microsoft 服務最近的清查記錄。 結果會限制為指定軟體名稱和電腦的最新記錄。    |
-|ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|顯示已移除軟體的變更記錄。|
+|ConfigurationData<br>&#124; where   ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 針對已設為 [自動]、但回報為 [正在停止] 的 Microsoft 服務顯示最新的清查記錄。 結果會限定為指定的軟體名稱和電腦的最新記錄。    |
+|ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|顯示已移除之軟體的變更記錄。|
 
 ## <a name="create-alerts-on-changes"></a>建立變更的警示
 
-下列範例顯示已在機器上修改檔案**C:\windows\system32\drivers\etc\hosts** 。 這個檔案很重要，因為 Windows 會使用它來將主機名稱解析為 IP 位址。 這項作業的優先順序高於 DNS，而且可能會導致連線問題。 它也可能會導致流量重新導向至惡意或危險的網站。
+下列範例顯示已在機器上修改檔案 **C:\windows\system32\drivers\etc\hosts**。 這個檔案很重要，因為 Windows 會使用此檔案將主機名稱解析為 IP 位址。 這項作業的優先順序高於 DNS，且可能會導致連線問題。 此外也可能會導致流量重新導向至惡意或危險的網站。
 
 ![顯示 hosts 檔案變更的圖表](./media/change-tracking-file-contents/changes.png)
 
-讓我們使用此範例來討論針對變更建立警示的步驟。
+我們將使用此範例來討論建立變更警示的步驟。
 
-1. 在您的自動化帳戶中，選取 [設定**管理**] 底下的 [**變更追蹤**]，然後選取 [ **Log Analytics**]。 
-2. 在記錄搜尋中，使用查詢`ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`尋找**hosts**檔案的內容變更。 此查詢會尋找包含「主機」這個字之完整路徑的檔案內容變更。 您也可以要求特定檔案，方法是將路徑部分變更為其完整格式，例如使用`FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`。
+1. 在您的自動化帳戶中，選取 [組態管理]下的 [變更追蹤]，然後選取 [Log Analytics]。 
+2. 在 [記錄] 搜尋中，使用查詢 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 尋找 **hosts** 檔案的內容變更。 此查詢會尋找包含 "hosts" 這個字之完整路徑的檔案內容變更。 您也可以將路徑部分變更為其完整形式以要求特定檔案，例如使用 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`。
 
-3. 查詢傳回所需的結果之後，請按一下記錄搜尋中的 [**新增警示規則**]，以開啟 [警示建立] 頁面。 您也可以透過 Azure 入口網站中的**Azure 監視器**流覽至此頁面。 
+3. 在查詢傳回所需的結果之後，按一下記錄搜尋中的 [新增警示規則]，以開啟警示建立頁面。 您也可以在 Azure 入口網站中透過 [Azure 監視器] 瀏覽至此頁面。 
 
-4. 再次檢查您的查詢，並修改警示邏輯。 在此情況下，即使在環境中的所有電腦上偵測到一項變更，也要觸發警示。
+4. 再次檢查我們的查詢並修改警示邏輯。 在此情況下，即使在環境中的所有電腦上偵測到一項變更，也要觸發警示。
 
-    ![變更為查詢以追蹤主機檔案的變更](./media/change-tracking-file-contents/change-query.png)
+    ![變更查詢以追蹤 hosts 檔案的變更](./media/change-tracking-file-contents/change-query.png)
 
-5. 設定警示邏輯之後，請指派動作群組來執行動作，以回應所觸發的警示。 在此情況下，我們會設定要傳送的電子郵件，以及要建立的 IT 服務管理（ITSM）票證。 
+5. 設定警示邏輯之後，指派動作群組來執行動作以回應正在觸發的警示。 在此案例中，我們設定要傳送的電子郵件，以及要建立的 IT 服務管理 (ITSM) 票證。 
 
-    ![正在設定動作群組以在變更時發出警示](./media/change-tracking/action-groups.png)
+    ![設定在變更時發出警示的動作群組](./media/change-tracking/action-groups.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需變更追蹤和清查的基本概念，請參閱[變更追蹤和清查的總覽](change-tracking.md)。
-* 若要對 Azure VM 的變更進行疑難排解，請參閱針對[變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。
-* 使用[Azure 監視器記錄檔中的記錄檔搜尋](../log-analytics/log-analytics-log-searches.md)，以查看詳細的變更追蹤資料。
+* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
+* 若要針對功能錯誤進行疑難排解，請參閱[針對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

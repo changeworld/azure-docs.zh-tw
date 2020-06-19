@@ -1,6 +1,6 @@
 ---
 title: 大規模將混合式機器連線至 Azure
-description: 在本文中，您將瞭解如何使用服務主體，將機器連接到 Azure 的 Azure Arc （預覽）。
+description: 在本文中，您將了解如何使用服務主體，使用適用於伺服器的 Azure Arc (預覽) 將機器連線至 Azure。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -8,36 +8,36 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77192268"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648066"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
-您可以根據您的需求，為您環境中的多部 Windows 或 Linux 電腦啟用 Azure Arc （預覽）。 使用我們提供的範本腳本，您可以將安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須使用在目的電腦和 Azure 中具有較高許可權的帳戶，以互動方式執行此腳本。 若要將電腦連線到 Azure Arc 以進行伺服器，您可以使用 Azure Active Directory[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)，而不是使用您的特殊許可權身分識別，以[互動方式連接電腦](onboard-portal.md)。 服務主體是特殊的有限管理身分識別，僅授與使用`azcmagent`命令將機器連線至 Azure 所需的最低許可權。 這比使用較高許可權的帳戶（例如租用戶系統管理員）更安全，並遵循我們的存取控制安全性最佳作法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
+您可以根據您的需求，使用數個彈性選項，針對您環境中的多部 Windows 或 Linux 機器，啟用適用於伺服器的 Azure Arc (預覽)。 使用我們提供的範本指令碼，您可以讓安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須與目標機器和 Azure 中具有提升權限的帳戶，以互動方式執行此指令碼。 若要將電腦連線到 Azure Arc 伺服器，您可以使用 Azure Active Directory [服務主體](../../active-directory/develop/app-objects-and-service-principals.md)，而不是使用您的特殊權限身分識別[以互動方式連線機器](onboard-portal.md)。 服務主體是特殊的有限管理身分識別，僅可獲得使用 `azcmagent` 命令將機器連線至 Azure 所需的最小權限。 這是比使用較高權限帳戶 (例如租用戶系統管理員) 更安全的做法，並且遵循我們的存取控制安全性最佳做法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
 
-安裝和設定連線的電腦代理程式的安裝方法，需要您使用的自動化方法具有電腦的系統管理員許可權。 在 Linux 上，使用根帳號和 Windows，做為本機系統管理員群組的成員。
+用來安裝和設定 Connected Machine 代理程式的安裝方法，需要您使用的自動化方法具有機器的系統管理員權限。 在 Linux 上請使用根帳戶，在 Windows 上則必須是本機系統管理員群組的成員。
 
-開始之前，請務必檢閱[必要條件](overview.md#prerequisites)並確認訂用帳戶和資源已符合需求。
+開始之前，請務必檢閱[必要條件](agent-overview.md#prerequisites)並確認訂用帳戶和資源已符合需求。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-在此程式結束時，您已成功將混合式機器連線到適用于伺服器的 Azure Arc。
+在此程序結束時，您已成功將混合式機器連線到適用於伺服器的 Azure Arc。
 
-## <a name="create-a-service-principal-for-onboarding-at-scale"></a>建立服務主體以進行大規模上架
+## <a name="create-a-service-principal-for-onboarding-at-scale"></a>建立服務主體以進行大規模上線
 
-您可以使用[Azure PowerShell](/powershell/azure/install-az-ps) ，利用[new-azadserviceprincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) Cmdlet 來建立服務主體。 或者，您可以遵循[使用 Azure 入口網站 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)] 底下所列的步驟來完成這項工作。
+您可以使用 [Azure PowerShell](/powershell/azure/install-az-ps)，透過 [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) Cmdlet 建立服務主體。 或者您可以遵循[使用 Azure 入口網站來建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)之下所列的步驟，來完成此工作。
 
 > [!NOTE]
-> 當您建立服務主體時，您的帳戶必須是您想要用於上架之訂用帳戶中的擁有者或使用者存取系統管理員。 如果您沒有足夠的權限可建立角色指派，服務主體仍可建立，但將無法使機器上線。
+> 在建立服務主體時，您的帳戶在要用於上線的訂用帳戶上必須是擁有者或使用者存取系統管理員。 如果您沒有足夠的權限可建立角色指派，服務主體仍可建立，但將無法使機器上線。
 >
 
-若要使用 PowerShell 建立服務主體，請執行下列動作。
+若要使用 PowerShell 建立服務主體，請執行下列命令。
 
-1. 執行下列命令。 您必須將[`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) Cmdlet 的輸出儲存在變數中，否則您將無法在稍後的步驟中取得所需的密碼。
+1. 執行下列命令。 您必須在變數中儲存 [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) Cmdlet 的輸出，否則將無法擷取稍後步驟中所需的密碼。
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -54,43 +54,43 @@ ms.locfileid: "77192268"
     Type                  :
     ```
 
-2. 若要取得儲存在`$sp`變數中的密碼，請執行下列命令：
+2. 若要擷取儲存在 `$sp` 變數中的密碼，請執行下列命令：
 
     ```azurepowershell-interactive
     $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
     $credential.GetNetworkCredential().password
     ```
 
-3. 在輸出中，尋找 [**密碼**] 欄位底下的 [密碼] 值，然後將它複製。 同時在 [ **ApplicationId** ] 欄位底下尋找值，並複製它。 儲存以供稍後在安全的地方使用。 如果您忘記或遺失服務主體的密碼，您可以使用[`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) Cmdlet 來重設它。
+3. 在輸出中，尋找 [密碼] 欄位下的密碼值，並且進行複製。 另外請在 [ApplicationId] 欄位下尋找值，並且進行複製。 儲存在安全的地方以供稍後使用。 如果忘記或遺失服務主體密碼，您可使用 [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) Cmdlet 加以重設。
 
-下列屬性的值會與傳遞給的`azcmagent`參數搭配使用：
+下列屬性的值會與傳遞給 `azcmagent` 的參數搭配使用：
 
-* **ApplicationId**屬性的值會用於`--service-principal-id`參數值
-* **Password**屬性的值是用於連接代理程式的`--service-principal-secret`參數。
+* **ApplicationId** 屬性的值是用於 `--service-principal-id` 參數值
+* **password** 屬性的值是用於用來連線代理程式的 `--service-principal-secret` 參數。
 
 > [!NOTE]
-> 請務必使用服務主體**ApplicationId**屬性，而不是**Id**屬性。
+> 請務必使用服務主體的 **ApplicationId** 屬性，而非使用 **Id** 屬性。
 >
 
-**Azure 連線的電腦**上線角色僅包含將電腦上架所需的許可權。 您可以指派服務主體許可權，以允許其範圍包含資源群組或訂用帳戶。 若要新增角色指派，請參閱[使用 AZURE rbac 來新增或移除角色指派和 Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)，或[使用 azure Rbac 和 Azure CLI 新增或移除角色指派](../../role-based-access-control/role-assignments-cli.md)。
+**Azure Connected Machine 上線**角色只會包含讓機器上線所需的權限。 您可以指派服務主體權限，以允許其範圍包含資源群組或訂用帳戶。 若要新增角色指派，請參閱[使用 Azure RBAC 和 Azure 入口網站來新增或移除角色指派](../../role-based-access-control/role-assignments-portal.md)或[使用 Azure RBAC 和 Azure CLI 來新增或移除角色指派](../../role-based-access-control/role-assignments-cli.md)。
 
-## <a name="install-the-agent-and-connect-to-azure"></a>安裝代理程式並連接到 Azure
+## <a name="install-the-agent-and-connect-to-azure"></a>安裝代理程式並連線至 Azure
 
-下列步驟會使用腳本範本，在您的混合式電腦上安裝及設定已連線的電腦代理程式，其會執行將[混合式機器從 Azure 入口網站一文連接到 Azure](onboard-portal.md)中所述的類似步驟。 其差異在於最後一個步驟中，您會使用此`azcmagent`命令來建立與 Azure Arc 的連線。 
+下列步驟會藉由使用指令碼範本，在您的混合式機器上安裝及設定 Connected Machine 代理程式，該指令碼範本會執行如同[從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文所述的類似步驟。 其差異在於最後一個步驟，您使用服務主題，透過 `azcmagent` 命令建立與 Azure Arc 的連線。 
 
-下列是您設定`azcmagent`命令以用於服務主體的設定。
+以下是您設定 `azcmagent` 命令以用於服務主體的設定。
 
-* `tenant-id`：唯一識別碼（GUID），代表 Azure AD 的專用實例。
-* `subscription-id`：您要讓機器在其中的 Azure 訂用帳戶的訂用帳戶識別碼（GUID）。
-* `resource-group`：您要讓連線電腦所屬的資源組名。
-* `location`：請參閱[支援的 Azure 區域](overview.md#supported-regions)。 這個位置可以與資源群組的位置相同或不同。
-* `resource-name`：（*選擇性*）用於內部部署機器的 Azure 資源標記法。 如果您未指定此值，則會使用電腦主機名稱。
+* `tenant-id`：唯一識別碼 (GUID)，表示 Azure AD 的專用執行個體。
+* `subscription-id`：您想要讓機器在其中的 Azure 訂用帳戶訂用帳戶識別碼 (GUID)。
+* `resource-group`：您想要連線機器隸屬的資源群組名稱。
+* `location`：請參閱[支援的 Azure 區域](overview.md#supported-regions)。 此位置可與資源群組的位置相同或不同。
+* `resource-name`：(*選擇性*) 用於內部部署機器的 Azure 資源表示法。 如果您未指定此值，將會使用電腦主機名稱。
 
-您可以藉由查看`azcmagent` [Azcmagent 參考](azcmagent-reference.md)，深入瞭解命令列工具。
+您可以藉由檢閱 [Azcmagent 參考](azcmagent-reference.md)，深入了解 `azcmagent` 命令列工具。
 
-### <a name="windows-installation-script"></a>Windows 安裝腳本
+### <a name="windows-installation-script"></a>Windows 安裝指令碼
 
-以下是已修改為使用服務主體來支援代理程式之完全自動化、非互動式安裝的已連線電腦代理程式 for Windows 安裝腳本範例。
+以下是適用於 Windows 的 Connected Machine 代理程式安裝指令碼範例，該指令碼已修改為使用服務主體，以支援完全自動化、非互動式的代理程式安裝。
 
 ```
  # Download the package
@@ -110,9 +110,9 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
-### <a name="linux-installation-script"></a>Linux 安裝腳本
+### <a name="linux-installation-script"></a>Linux 安裝指令碼
 
-以下是連線的 Linux 安裝腳本範例，其已修改為使用服務主體來支援代理程式的完全自動化、非互動式安裝。
+以下是適用於 Linux 的 Connected Machine 代理程式安裝指令碼範例，該指令碼已修改為使用服務主體，以支援完全自動化、非互動式的代理程式安裝。
 
 ```
 # Download the installation package
@@ -137,6 +137,6 @@ azcmagent connect \
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用[Azure 原則](../../governance/policy/overview.md)來管理您的機器，例如 VM[來賓](../../governance/policy/concepts/guest-configuration.md)設定、確認機器回報至預期的 Log Analytics 工作區、使用[vm 的 Azure 監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)來啟用監視等功能。
+- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 啟用監視等等項目，管理您的機器。
 
-- 深入瞭解[Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+- 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

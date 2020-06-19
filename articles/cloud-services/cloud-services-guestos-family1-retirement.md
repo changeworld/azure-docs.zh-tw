@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359593"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835626"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>客體作業系統系列 1 淘汰通知
 我們早在 2013 年 6 月 1 日宣佈客體作業系統系列 1 的淘汰資訊。
@@ -23,7 +23,7 @@ ms.locfileid: "68359593"
 
 **2014 年 11 月 3 日** 客體 OS 系列 1 的延伸支援已結束，並且已完全淘汰。 所有仍以系列 1 為基礎的服務都將受到影響。 我們可能會隨時停止這些服務。 除非您以手動方式自行升級服務，否則我們不保證您的服務能繼續運作。
 
-如果您有其他問題，請前往[雲端服務論壇](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)或[連絡 Azure 支援](https://azure.microsoft.com/support/options/)。
+如果您有其他問題，請參閱 [Microsoft 雲端服務問與答頁面](https://docs.microsoft.com/answers/topics/azure-cloud-services.html)或[連絡 Azure 支援](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>您受到影響了嗎？
 如果以下任一情況成立，表示您的雲端服務已受到影響：
@@ -32,7 +32,7 @@ ms.locfileid: "68359593"
 2. 雲端服務之 ServiceConfiguration.cscfg 檔案未明確指定 osFamily 的值。 在本案例中，系統目前使用預設值 "1" 。
 3. Azure 入口網站會將您的客體作業系統系列值列為 "Windows Server 2008"。
 
-若要找出每個雲端服務執行的作業系統系列，您可以在 Azure PowerShell 中執行下列程式碼，但請先[設定 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 如需指令碼的詳細資訊，請參閱 [Azure Guest OS Family 1 End of Life: June 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx) (Azure 客體 OS 系列 1 生命週期結束：2014 年 6 月)。
+若要找出每個雲端服務執行的作業系統系列，您可以在 Azure PowerShell 中執行下列程式碼，但請先[設定 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 如需指令碼的詳細資訊，請參閱 [Azure Guest OS Family 1 End of Life: June 2014 (Azure 客體 OS 系列 1 生命週期結束：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

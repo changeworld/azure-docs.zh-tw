@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120805"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986661"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>將您的臉部資料移轉至其他臉部訂用帳戶
 
-本指南說明如何將臉部資料（例如具有臉部的已儲存 PersonGroup 物件）移至不同的 Azure 認知服務臉部訂用帳戶。 若要移動資料，您可以使用快照集功能。 如此一來，您就不需要在移動或擴充作業時，重複建立和定型 PersonGroup 或 FaceList 物件。 例如，您可能是使用免費試用訂用帳戶建立了 PersonGroup 物件，而現在想要將它遷移至您的付費訂用帳戶。 或者，您可能需要針對大型企業作業，跨不同區域中的訂用帳戶同步處理臉部資料。
+本指南說明如何將臉部資料（例如具有臉部的已儲存 PersonGroup 物件）移至不同的 Azure 認知服務臉部訂用帳戶。 若要移動資料，您可以使用快照集功能。 如此一來，您就不需要在移動或擴充作業時，重複建立和定型 PersonGroup 或 FaceList 物件。 例如，您可能建立了具有免費訂用帳戶的 PersonGroup 物件，而現在想要將它遷移至您的付費訂用帳戶。 或者，您可能需要針對大型企業作業，跨不同區域中的訂用帳戶同步處理臉部資料。
 
 相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱[臉部辨識概念](../concepts/face-recognition.md)指南中的定義。 本指南使用具有 c # 的臉部 .NET 用戶端程式庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要下列專案：
 

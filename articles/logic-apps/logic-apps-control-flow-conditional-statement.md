@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793261"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831495"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>建立條件陳述式以控制 Azure Logic Apps 中的工作流程動作
 
@@ -26,7 +26,7 @@ ms.locfileid: "74793261"
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 若要依循本文中的範例，請使用 Outlook.com 或 Office 365 Outlook 帳戶來[建立此範例邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -36,17 +36,17 @@ ms.locfileid: "74793261"
 
 1. 在您想要的位置上新增條件。 
 
-   若要在步驟之間新增條件，請將指標移至您要新增條件的箭號上。 選擇顯示的**加號**（**+**），然後選擇 [**新增動作**]。 例如：
+   若要在步驟之間新增條件，請將指標移至您要新增條件的箭號上。 選擇顯示的**加號** ( **+** )，然後選擇 [新增動作]。 例如：
 
    ![在步驟間新增動作](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   如果想要在工作流程結尾新增條件，請在邏輯應用程式底部，選擇 [新增步驟]** [新增動作]** > ****。
+   當您想要在工作流程結尾新增條件時，請在邏輯應用程式最下方，選擇 [新增步驟] > [新增動作]。
 
-1. 在搜尋方塊中，輸入「條件」作為篩選條件。 選取此動作：**條件 - 控制**
+1. 在搜尋方塊中，輸入「條件」作為篩選條件。 選取此動作：**條件 - 控制項**
 
    ![新增條件](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
-1. 在 [條件]**** 方塊中，建置您的條件。 
+1. 在 [條件] 方塊中，建置您的條件。 
 
    1. 在左側的方塊中，指定您要比較的資料或欄位。
 
@@ -59,15 +59,15 @@ ms.locfileid: "74793261"
    在此範例中，請選取 "**contains**"。 
 
    1. 在右邊的方塊中，指定作為準則的值或欄位。 
-   在此範例中，指定此字串：**Microsoft**
+   在此範例中，指定下列字串：**Microsoft**
 
    以下是完整的條件：
 
    ![完整條件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   若要在條件中加入另一個資料列，請選擇 [**加入** > **加入資料列**]。 
-   若要使用 subconditions 新增群組，請選擇 [**新增** > ] [**新增群組**]。 
-   若要將現有的資料列組成群組，請選取那些資料列的核取方塊、選擇任一資料列的省略符號 (...)，然後選擇 [將群組設為]****。
+   若要為您的條件新增另一個資料列，請選擇 [新增] > [新增資料列]。 
+   若要新增含有子條件的群組，請選擇 [新增] > [新增群組]。 
+   若要將現有的資料列組成群組，請選取那些資料列的核取方塊、選擇任一資料列的省略符號 (...)，然後選擇 [將群組設為]。
 
 1. 在 **If true** 和 **If false** 之下，以是否符合條件為基礎，新增要執行的步驟。 例如：
 
@@ -110,7 +110,7 @@ ms.locfileid: "74793261"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Microsoft 問答集的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) \(英文\)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,70 +1,80 @@
 ---
-title: 相似性和計分總覽
+title: 相似性與評分概觀
 titleSuffix: Azure Cognitive Search
-description: 說明相似性和計分的概念，以及開發人員可自訂評分結果的功能。
+description: 說明相似性和評分概念，以及開發人員可執行哪些動作來自訂評分結果。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890135"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679665"
 ---
-# <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性和計分
+# <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性與評分
 
-計分是指在全文檢索搜尋查詢的搜尋結果中傳回的每個專案的搜尋分數計算。 分數是某個項目在目前搜尋作業的內容中有何相關性的指標。 分數越高，該項目的相關性就愈高。 在搜尋結果中，項目會根據為每個項目計算的搜尋分數由高至低排序。 
+評分是指對全文檢索搜尋查詢的搜尋結果中傳回的每個項目所做的搜尋分數計算。 分數是某個項目在目前搜尋作業的內容中有何相關性的指標。 分數越高，該項目的相關性就愈高。 在搜尋結果中，項目會根據為每個項目計算的搜尋分數由高至低排序。 
 
-根據預設，回應中會傳回前50，但您可以使用 **$top**參數，在單一回應中傳回較小或較大數目的專案（最多1000個），然後 **$skip**以取得下一組結果。
+根據預設，會將回應中的前 50 個項目傳回，但您可以使用 **$top** 參數，以傳回較少或更多的項目數目 (單一回應中最多 1000 個)，並可使用 **$skip** 以取得下一組結果。
 
-搜尋分數會根據資料和查詢的統計屬性來計算。 Azure 認知搜尋會尋找符合搜尋詞彙的檔（部分或全部，視[searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents#searchmodeany--all-optional)而定），優先列出包含多個搜尋詞彙實例的檔。 如果詞彙在資料索引中很罕見，但在檔中是常見的，搜尋分數會更高。 這種計算相關性的方法基礎稱為*TF-IDF 或*「詞彙頻率-反向檔頻率」。
+搜尋分數會根據資料和查詢的統計屬性來計算。 Azure 認知搜尋會尋找符合搜尋字詞的文件 (部分或全部，視 [searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents#searchmodeany--all-optional) 而定)，優先列出包含多個搜尋字詞例項的文件。 如果字詞在資料索引間很少見，但在文件內很常見，搜尋分數會更高。 這種計算相關性的方法基礎稱為 *TF-IDF* (或 term frequency-inverse document frequency)。
 
-搜尋分數值可以在整個結果集內重複。 當多個叫用相同的搜尋分數時，將不會定義相同計分專案的順序，而且也不穩定。 再次執行查詢，您可能會看到專案移位位置，特別是當您使用免費服務或具有多個複本的可計費服務時。 若有兩個項目的分數完全相同，則無法保證哪個項目先出現。
+搜尋分數值可以在整個結果集內重複。 有多個命中具有相同的搜尋分數時，分數相同的項目並未定義順序，因此順序是不穩定的。 再次執行查詢，您可能會看到項目的位置移位，特別是當您使用免費服務或使用多個複本的可計費服務時。 若有兩個項目的分數完全相同，則無法保證哪個項目先出現。
 
-如果您想要中斷重複分數之間的系結，您可以依分數加入 **$orderby**子句，然後依另一個可排序的欄位排序（例如`$orderby=search.score() desc,Rating desc`）。 如需詳細資訊，請參閱[$orderby](https://docs.microsoft.com/azure/search/search-query-odata-orderby)。
+如果您想要打破重複分數之間的僵局，您可以新增 **$orderby** 子句，首先依分數排序，然後再依另一個可排序欄位排序 (例如 `$orderby=search.score() desc,Rating desc`)。 如需詳細資訊，請參閱 [$orderby](https://docs.microsoft.com/azure/search/search-query-odata-orderby) \(部分機器翻譯\)。
 
 > [!NOTE]
-> `@search.score = 1.00`表示未評分或未排序的結果集。 分數在所有結果中都是一致的。 當查詢表單為模糊搜尋、萬用字元或 RegEx 查詢，或 **$filter**運算式時，就會發生未計分的結果。 
+> `@search.score = 1.00` 表示未評分或未排序的結果集。 所有結果的分數都是一致的。 當查詢形式為模糊搜尋、萬用字元或 regex 查詢，或是 **$filter** 運算式時，就會出現未評分的結果。 
 
 ## <a name="scoring-profiles"></a>評分設定檔
 
-您可以定義自訂*評分設定檔*，來自訂不同欄位的排名方式。 評分設定檔可讓您更佳地控制搜尋結果中的項目排名。 舉例來說，您可能想根據營收潛力提升某些項目、亦或是提升新項目或庫存過久的項目。 
+您可以透過定義自訂的「評分設定檔」，來自訂不同欄位的排名方式。 評分設定檔可讓您更佳地控制搜尋結果中的項目排名。 舉例來說，您可能想根據營收潛力提升某些項目、亦或是提升新項目或庫存過久的項目。 
 
-評分設定檔是索引定義的一部分，由加權欄位、函數和參數組成。 如需定義它的詳細資訊，請參閱[評分設定檔](index-add-scoring-profiles.md)。
+評分設定檔是索引定義的一部分，由加權欄位、函數和參數組成。 如需定義該設定檔的詳細資訊，請參閱[評分設定檔](index-add-scoring-profiles.md)。
 
-## <a name="scoring-statistics"></a>計分統計資料
+<a name="scoring-statistics"></a>
 
-針對擴充性，Azure 認知搜尋會透過分區化程式水準散發每個索引，這表示索引的某些部分會實際分開。
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>評分統計資料和黏性工作階段 (預覽)
 
-根據預設，檔的分數是依據*分區內*資料的統計屬性計算而得。 這種方法通常不是大型資料主體的問題，而且比起根據所有分區的資訊來計算分數，它提供的效能較佳。 話雖如此，使用這項效能優化可能會導致兩個非常相似的檔（或甚至相同的檔）在不同的分區中最後有不同的相關性分數。
+針對可擴縮性，Azure 認知搜尋會透過分區化程序水平散發每個索引，這表示會實際分開索引的各部分。
 
-如果您想要根據所有分區的統計屬性來計算分數，您可以新增*scoringStatistics = global*做為[查詢參數](https://docs.microsoft.com/rest/api/searchservice/search-documents)（或新增 *"scoringStatistics"： "global"* 做為[查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)的主體參數）。
+預設會根據「分區內資料」的統計屬性來計算文件的分數。 這種方法對大型資料主體通常不是問題，而且與根據所有分區的資訊來計算分數相比，可提供更佳的效能。 儘管如此，使用此效能最佳化會導致最終分屬不同分區中的兩份非常類似的文件 (或甚至是完全相同的文件) 最後得到不同的相關性分數。
+
+如果您偏好根據所有分區的統計屬性來計算分數，您可以將 *scoringStatistics=global* 加入為[查詢參數](https://docs.microsoft.com/rest/api/searchservice/search-documents) (或將 *"scoringStatistics": "global"* 加入為[查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)的主體參數)。
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+使用 scoringStatistics，可確保相同複本中的所有分區都提供相同的結果。 也就是說，因為不同的複本一律以最新的索引變更進行更新，所以彼此之間可能會稍有不同。 在某些情況下，您可能會想讓使用者在「查詢工作階段」期間取得更一致的結果。 在這種情況下，您可以提供 `sessionId` 作為查詢的一部分。 `sessionId` 是您建立的唯一字串，可參考唯一的使用者工作階段。
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+只要使用相同的 `sessionId`，就會儘可能嘗試以相同的複本為目標，增加使用者所見結果的一致性。 
 
 > [!NOTE]
-> `scoringStatistics`參數需要管理 api 金鑰。
+> 不斷重複使用相同的 `sessionId` 值可能會干擾複本間的要求負載平衡，並對搜尋服務的效能造成負面影響。 作為 sessionId 使用的值不能以 ' _ ' 字元開頭。
 
 ## <a name="similarity-ranking-algorithms"></a>相似性排名演算法
 
-Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相似性*演算法和*Okapi BM25*演算法的官方實作為（目前處於預覽階段）。 傳統相似性演算法是預設演算法，但從7月15日開始，任何在該日期之後建立的新服務都會使用新的 BM25 演算法。 這會是新服務上唯一可用的演算法。
+Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相似性*演算法，以及 *Okapi BM25* 演算法正式實作 (目前處於預覽階段)。 傳統相似性演算法是預設演算法，但從 7 月 15 日開始，該日期之後建立的任何新服務都會使用新的 BM25 演算法。 這是新服務上唯一可用的演算法。
 
-目前，您可以指定想要使用的相似性排序演算法。 如需詳細資訊，請參閱[排名演算法](index-ranking-similarity.md)。
+目前，您可以指定想要使用哪個相似性排序演算法。 如需詳細資訊，請參閱[排名演算法](index-ranking-similarity.md)。
 
-下列影片區段會快速轉寄至 Azure 認知搜尋中使用的排名演算法說明。 您可以觀看完整的影片，以取得更多背景資訊。
+下列影片區段快轉至 Azure 認知搜尋中使用的排名演算法說明。 您可以觀看整段影片，以取得更多背景資訊。
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>另請參閱
 
- [計分設定檔](index-add-scoring-profiles.md) [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
- [搜尋檔 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   
+ [評分設定檔](index-add-scoring-profiles.md) [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)  \(部分機器翻譯\)  
+ [搜尋文件 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)  \(部分機器翻譯\)  
  [Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

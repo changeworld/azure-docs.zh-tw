@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tagore
-ms.openlocfilehash: b86e0d784d26e9e483dd12e20d45189ae8bfb9bd
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: MT
+ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866198"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778248"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
 
-* *管理/控制平面*描述進入管理/控制平面或用於修改資源的 API 的調用。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
-* **「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
+* 「管理/控制平面」說明進入管理/控制平面或 API 以便修改資源的呼叫。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
+* 「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
 
 傳統部署模型與 Resource Manager 堆疊之間的資料平面相同。 差異在於移轉過程中，Microsoft 會將資源的表示法從傳統部署模型轉譯為 Resource Manager 堆疊中的表示法。 因此，您必須使用新的工具、API 和 SDK 來管理 Resource Manager 堆疊中資源。
 
@@ -121,7 +121,7 @@ ms.locfileid: "81866198"
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果繼續失敗,請建立支援票證或在[Microsoft Q 上創建一](https://docs.microsoft.com/answers/index.html)個論壇&A
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 [Microsoft 問與答](https://docs.microsoft.com/answers/index.html)上建立論壇
 >
 >
 
@@ -151,11 +151,11 @@ ms.locfileid: "81866198"
 | 傳入的 NAT 規則 |傳入的 NAT 規則 |在移轉期間，VM 上定義的輸入端點會轉換成負載平衡器下的輸入網路位址轉譯規則。 |
 | VIP 位址 |具 DNS 名稱的公用 IP 位址 |虛擬 IP 位址會變成公用 IP 位址並與負載平衡器產生關聯。 有指派給虛擬 IP 的輸入端點時，才可移轉該虛擬 IP。 |
 | 虛擬網路 |虛擬網路 |虛擬網路會與其所有屬性一起移轉至 Resource Manager 部署模型。 將會建立名為 `-migrated`的新資源群組。 |
-| 保留的 IP |搭配靜態配置方法的公用 IP 位址 |與負載平衡器關聯的保留 IP 會隨著雲端服務或虛擬機器的移轉一併移轉。 目前不支援移轉未關聯的保留 IP。 |
+| 保留的 IP |搭配靜態配置方法的公用 IP 位址 |與負載平衡器關聯的保留 IP 會隨著雲端服務或虛擬機器的移轉一併移轉。 未關聯的保留 IP 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) 進行遷移。  |
 | 每一個 VM 的公用 IP 位址 |搭配動態配置方法的公用 IP 位址 |與 VM 關聯的公用 IP 位址會轉換成公用 IP 位址資源，且配置方法會設定為靜態。 |
-| NSG |NSG |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的網路安全性群組。 在移轉期間不會移除傳統部署模型中的 NSG。 不過，在移轉進行時，會封鎖 NSG 的管理平面作業。 |
+| NSG |NSG |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的網路安全性群組。 在移轉期間不會移除傳統部署模型中的 NSG。 不過，在移轉進行時，會封鎖 NSG 的管理平面作業。 未關聯的 NSG 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 進行遷移。|
 | DNS 伺服器 |DNS 伺服器 |與虛擬網路或 VM 關聯的 DNS 伺服器，會在對應的資源移轉過程中，與其所有屬性一起移轉。 |
-| UDR |UDR |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的使用者定義路由。 在移轉期間不會移除傳統部署模型中的 UDR。 不過，移轉進行時，會封鎖 UDR 的管理平面作業。 |
+| UDR |UDR |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的使用者定義路由。 在移轉期間不會移除傳統部署模型中的 UDR。 不過，移轉進行時，會封鎖 UDR 的管理平面作業。 未關聯的 UDR 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) 進行遷移。 |
 | VM 網路組態上的 IP 轉送屬性 |NIC 上的 IP 轉送屬性 |在移轉期間，VM 上的 IP 轉送屬性會轉換成網路介面上的屬性。 |
 | 具有多個 IP 的負載平衡器 |具有多個公用 IP 資源的負載平衡器 |與負載平衡器關聯的每個公用 IP 在移轉後都會轉換成公用 IP 資源，並與負載平衡器產生關聯。 |
 | VM 上的內部 DNS 名稱 |NIC 上的內部 DNS 名稱 |在移轉期間，VM 的內部 DNS 尾碼會移轉至 NIC 上名為 "InternalDomainNameSuffix" 的唯讀屬性。 尾碼在移轉後保持不變，VM 解析應該會像之前一樣繼續運作。 |

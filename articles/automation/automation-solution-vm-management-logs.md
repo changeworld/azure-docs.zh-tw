@@ -1,20 +1,20 @@
 ---
-title: 如何在離峰時間從啟動/停止 Vm 查詢記錄
-description: 本文說明如何查詢從 Azure 監視器在離峰期間啟動/停止 Vm 解決方案所產生的記錄資料。
+title: 從 Azure 自動化停機期間啟動/停止 VM 查詢記錄
+description: 本文說明如何使用 Azure 監視器來查詢停機期間啟動/停止 VM 所產生的記錄資料。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864227"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827551"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>如何在離峰時間從啟動/停止 Vm 查詢記錄
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>從停機期間啟動/停止 VM 查詢記錄
 
-Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作區：作業記錄和作業串流。 本文會回顧 Azure 監視器中可供[查詢](../azure-monitor/log-query/log-query-overview.md)的資料。
+Azure 自動化會將兩種類型的記錄轉送至連結的 Log Analytics 工作區：作業記錄和作業串流。 本文會針對 Azure 監視器中的[查詢](../azure-monitor/log-query/log-query-overview.md)，檢閱可用的資料。
 
 ## <a name="job-logs"></a>作業記錄
 
@@ -35,7 +35,7 @@ Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作�
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager|
 |StreamType | 指定事件的類型。 可能的值包括：<br>- Verbose<br>- Output<br>- Error (錯誤)<br>- Warning (警告)|
 |SubscriptionId | 指定作業的訂用帳戶 ID。
-|時間 | Runbook 作業的執行日期和時間。|
+|Time | Runbook 作業的執行日期和時間。|
 
 ## <a name="job-streams"></a>作業串流
 
@@ -54,21 +54,23 @@ Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作�
 |RunbookName | Runbook 的名稱。|
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager。|
 |StreamType | 作業串流的類型。 可能的值包括：<br>- Progress (進度)<br>- Output<br>- Warning (警告)<br>- Error (錯誤)<br>- Debug (偵錯)<br>- Verbose|
-|時間 | Runbook 作業的執行日期和時間。|
+|Time | Runbook 作業的執行日期和時間。|
 
 當您執行的記錄搜尋傳回 **JobLogs** 或 **JobStreams** 的類別記錄時，您可以選取 **JobLogs** 或 **JobStreams** 檢視，其中會顯示一組彙總搜尋所傳回更新的圖格。
 
 ## <a name="sample-log-searches"></a>記錄搜尋範例
 
-下表提供此方案所收集之作業記錄的記錄檔搜尋範例。
+下表提供停機期間啟動/停止 VM 所收集作業記錄的記錄搜尋範例。
 
 |查詢 | 描述|
 |----------|----------|
 |尋找 ScheduledStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|尋找尚未成功完成之 runbook ScheduledStartStop_Parent 的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|尋找 ScheduledStartStop_Parent Runbook 未順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |尋找 SequencedStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|尋找尚未成功完成之 runbook SequencedStartStop_Parent 的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|尋找 SequencedStartStop_Parent Runbook 未順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="next-steps"></a>後續步驟
 
-**「停機期間啟動/停止 Vm」** 解決方案不包含預先定義的一組警示。 請參閱使用 Azure 監視器[建立記錄警示](../azure-monitor/platform/alerts-log.md)，以瞭解如何建立作業失敗的警示，以支援您的 DevOps 或操作進程和程式。
+* 若要設定功能，請參閱[設定停機期間啟動/停止 VM](automation-solution-vm-management-config.md)。
+* 如需功能部署期間記錄警示的詳細資訊，請參閱[使用 Azure 監視器建立記錄警示](../azure-monitor/platform/alerts-log.md)。
+* 若要解決功能錯誤，請參閱[針對停機期間啟動/停止 VM 問題進行疑難排解](troubleshoot/start-stop-vm.md)。

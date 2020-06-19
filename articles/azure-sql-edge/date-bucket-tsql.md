@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: dda292909b7b90579666cd83d460fc4051c9456c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595677"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682741"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -248,10 +248,10 @@ SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where Geo
   
 #### <a name="specifying-numeric-expressions-and-scalar-system-functions-as-number-and-date"></a>指定數值運算式和純量系統函數成為 number 和 date
 
-此範例會使用數值運算式 (-`(10/2))` 和純量系統函式 (`SYSDATETIME`) 作為 *number* 和 *date* 的引數。
+此範例使用數值運算式 ((10/2))，和純量系統函數 (SYSDATETIME)，做為 number 和 date 的引數。
   
 ```sql
-SELECT Date_Bucket(week,-(10/2), SYSDATETIME());
+SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 ```
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>指定彙總視窗函數成為 number

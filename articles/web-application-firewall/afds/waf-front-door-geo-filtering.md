@@ -1,5 +1,5 @@
 ---
-title: Azure Front Service 的網域上的地區篩選
+title: Azure Front Door 服務的網域地區篩選
 description: 在本文中，您會了解 Azure Front Door Service 的地區篩選原則
 services: web-application-firewall
 author: vhorne
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472600"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747779"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
 
 根據預設，不論使用者是在什麼位置提出要求，Azure Front Door Service 都會回應使用者的要求。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
 
-WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
+WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
 您可以藉由使用 [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) 或[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，來針對 Front Door 設定地區篩選原則。
 
-## <a name="country-code-reference"></a>國家/地區代碼參考
+## <a name="countryregion-code-reference"></a>國家/地區碼參考
 
-|國碼 (地區碼) | 國家/地區名稱 |
+|國家/地區碼 | 國家/區域名稱 |
 | ----- | ----- |
 | AD | 安道爾 |
 | AE | 阿拉伯聯合大公國|
@@ -89,16 +89,16 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | GF | 法屬圭亞那|
 | GH | 迦納|
 | GN | 幾內亞|
-| GP | 哥德普洛|
+| GP | 哥德洛普|
 | GR | 希臘|
 | GT | 瓜地馬拉|
-| GY | 蓋亞納|
+| GY | 蓋亞那|
 | HK | 香港特別行政區|
 | HN | 宏都拉斯|
 | HR | 克羅埃西亞|
 | HT | 海地|
 | HU | 匈牙利|
-| 識別碼 | 印尼|
+| ID | 印尼|
 | IE | 愛爾蘭|
 | IL | 以色列|
 | IN | 印度|

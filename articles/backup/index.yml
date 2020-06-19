@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 0060cc16378ca006e975f4f55da5099179778753
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.openlocfilehash: 719fb5891fff560ba621b7af88f27387a4f7fce2
+  ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83835671"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84906950"
 landingContent:
 - title: 了解 Azure 備份
   linkLists:
@@ -144,8 +144,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure 備份定價計算機
-      url: https://azure.microsoft.com/pricing/details/backup/
+    - text: Azure 備份定價
+      url: azure-backup-pricing.md
     - text: Azure 備份服務更新
       url: https://azure.microsoft.com/updates/?product=backup
     - text: Azure 備份 Microsoft 問與答頁面

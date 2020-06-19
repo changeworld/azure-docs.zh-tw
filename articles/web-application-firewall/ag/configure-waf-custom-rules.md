@@ -1,33 +1,33 @@
 ---
 title: 使用 PowerShell 設定 v2 自訂規則
 titleSuffix: Azure Web Application Firewall
-description: 瞭解如何使用 Azure PowerShell 設定 WAF v2 自訂規則。 您可以針對通過防火牆的每個要求，建立自己的規則評估。
+description: 了解如何使用 Azure PowerShell 來設定 Web 應用程式防火牆 (WAF) v2 自訂規則。 您可建立自己的規則，以針對每個通過防火牆的要求進行評估。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471630"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758957"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用 Azure PowerShell 以自訂規則在應用程式閘道上設定 Web 應用程式防火牆 v2
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自訂規則可讓您建立自己的規則，以針對通過 Web 應用程式防火牆（WAF） v2 的每個要求進行評估。 這些規則的優先順序會高於受控規則集中的其餘規則。 自訂規則具有動作（允許或封鎖）、比對條件，以及允許完整自訂的運算子。
+自訂規則可讓您建立自己的規則，以針對每個通過 Web 應用程式防火牆 (WAF) v2 的要求進行評估。 這些規則的優先順序會高於受控規則集中的其餘規則。 自訂規則具有動作 (允許或封鎖)、比對條件，以及允許完整自訂的運算子。
 
-本文會建立使用自訂規則應用程式閘道 WAF v2。 如果要求標頭包含使用者代理程式 *evilbot*，則自訂規則會封鎖流量。
+本文會建立使用自訂規則的應用程式閘道 WAF v2。 如果要求標頭包含使用者代理程式 *evilbot*，則自訂規則會封鎖流量。
 
-若要查看更多自訂規則範例，請參閱[建立和使用自訂 web 應用程式防火牆規則](create-custom-waf-rules.md)
+若要查看更多自訂規則範例，請參閱[建立和使用自訂 Web 應用程式防火牆規則](create-custom-waf-rules.md)
 
-如果您想要在可複製、貼上及執行的一個連續腳本中執行本文中的 Azure PowerShell，請參閱[Azure 應用程式閘道 PowerShell 範例](powershell-samples.md)。
+如果您想要在可複製、貼上及執行的一個連續指令碼中執行本文中的 Azure PowerShell，請參閱 [Azure 應用程式閘道 PowerShell 範例](powershell-samples.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模組
 
@@ -74,7 +74,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>建立集區和前端埠
+### <a name="create-pool-and-frontend-port"></a>建立集區和前端連接埠
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -106,7 +106,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>建立兩個自訂規則，並將它套用至 WAF 原則
+### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>建立兩個自訂規則並將其套用至 WAF 原則
 
 ```azurepowershell
 # Create WAF config
@@ -138,6 +138,19 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -FirewallPolicy $wafPolicy
 ```
 
+## <a name="update-your-waf"></a>更新您的 WAF
+
+建立 WAF 之後，您可使用類似下列程式碼的程序來加以更新：
+
+```azurepowershell
+# Get the existing policy
+$policy = Get-AzApplicationGatewayFirewallPolicy -Name $policyName -ResourceGroupName $RGname
+# Add an existing rule named $rule
+$policy.CustomRules.Add($rule)
+# Update the policy
+Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-[深入瞭解應用程式閘道上的 Web 應用程式防火牆](ag-overview.md)
+[深入了解應用程式閘道上的 Web 應用程式防火牆](ag-overview.md)

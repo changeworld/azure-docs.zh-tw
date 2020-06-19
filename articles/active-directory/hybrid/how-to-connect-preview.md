@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261277"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680194"
 ---
 # <a name="more-details-about-features-in-preview"></a>有關預覽中之功能的其他詳細資料
 本主題描述如何使用預覽中目前的功能。
 
-## <a name="group-writeback"></a>群組回寫
-選用功能中的群組回寫選項可讓您將「Office 365 群組」**** 回寫至已安裝 Exchange 的樹系。 這是一律在雲端中控制的群組。 如果您有 Exchange 內部部署，則可以將這些群組回寫到內部部署，讓具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
 
-如需有關 Office 365 群組及其使用方式的詳細資訊，可在 [這裡](https://aka.ms/O365g)找到。
-
-Office 365 群組將會在內部部署 AD DS 中顯示為通訊群組。 您的內部部署 Exchange 伺服器必須是 Exchange 2013 累積更新 8 (2015 年 3 月發行) 或 Exchange 2016，才能辨識這個新的群組類型。
-
-**預覽期間的注意事項**
-
-* 目前在預覽中不會填入通訊錄屬性。 若沒有此屬性，群組就不會顯示在 GAL 中。 若要填入此屬性，最簡單的方法是使用 Exchange PowerShell Cmdlet `update-recipient`。
-* 只有使用 Exchange 結構描述的樹系才是群組的有效目標。 如果沒有偵測到 Exchange，則會無法啟用群組回寫功能。
-* 目前只支援單一樹系 Exchange 組織部署。 如果您的內部部署環境中有多個 Exchange 組織，則需要擁有內部部署 GALSync 解決方案才能讓這些群組出現在其他樹系中。
-* 群組回寫功能無法處理安全性群組或通訊群組。
-
-> [!NOTE]
-> 需要 Azure AD Premium 的訂用帳戶才能使用群組回寫功能。
-> 
->
+我們已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，經歷顯著的效能提升。 此新端點也支援同步具有最多 25 萬名成員的群組。 使用此端點也可供在啟用群組回寫時，將 O365 整合群組寫回至內部部署 Active Directory，而沒有成員資格上限。   如需詳細資訊，請參閱 [Azure AD Connect sync V2 端點 API (公開預覽)](how-to-connect-sync-endpoint-api-v2.md)。
 
 ## <a name="user-writeback"></a>使用者回寫
 > [!IMPORTANT]

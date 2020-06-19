@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9b6589d2045d9bb7bdfb38f9872acd8366481106
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425367"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790464"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -216,13 +216,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>解譯金鑰保存庫記錄
 
-各個 blob 皆會儲存為文字，並格式化為 JSON blob。 讓我們看看記錄項目範例。 請執行這個命令：
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-這會傳回與下列類似的記錄項目：
+各個 blob 皆會儲存為文字，並格式化為 JSON blob。 讓我們看看記錄項目範例。 
 
 ```json
     {
