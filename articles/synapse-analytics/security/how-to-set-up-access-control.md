@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660077"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015823"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽)
 
@@ -130,7 +130,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 ## <a name="step-8-network-security"></a>步驟 8：網路安全性
 
-設定工作區防火牆、虛擬網路和 [Private Link](../../sql-database/sql-database-private-endpoint-overview.md)。
+設定工作區防火牆、虛擬網路和 [Private Link](../../azure-sql/database/private-endpoint-overview.md)。
 
 ## <a name="step-9-completion"></a>步驟 9：Completion
 

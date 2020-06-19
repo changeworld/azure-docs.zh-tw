@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643349"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266350"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -65,7 +65,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 - Exchange 系統管理員
 - 條件式存取系統管理員
 - 安全性系統管理員
-- 服務台系統管理員或密碼系統管理員
+- 服務台管理員
 - 計費管理員
 - 使用者管理員
 - 驗證系統管理員

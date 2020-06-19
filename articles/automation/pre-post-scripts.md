@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835167"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148271"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前指令碼和後指令碼
 
@@ -115,7 +115,6 @@ ms.locfileid: "83835167"
 
 ![部署執行的結果](./media/pre-post-scripts/deployment-run.png)
 
-在您的指令碼中。
 
 ## <a name="stop-a-deployment"></a>停止部署
 
