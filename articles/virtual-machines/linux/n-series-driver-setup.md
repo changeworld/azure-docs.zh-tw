@@ -1,26 +1,25 @@
 ---
-title: 適用于 Linux 的 Azure N 系列 GPU 驅動程式設定
+title: 適用於 Linux 的 Azure N 系列 GPU 驅動程式設定
 description: 如何針對 Azure 中執行 Linux 的 N 系列 VM 設定 NVIDIA GPU 驅動程式
 services: virtual-machines-linux
-author: cynthn
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.openlocfilehash: cb2d5c43b8c04829dd6830126b7bc01bee07133b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.author: vikancha
+ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628187"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779366"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
-若要利用 NVIDIA Gpu 支援的 Azure N 系列 Vm 的 GPU 功能，您必須安裝 NVIDIA GPU 驅動程式。 [NVIDIA GPU 驅動程式擴充功能](../extensions/hpccompute-gpu-linux.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure CLI 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的發佈和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](../extensions/hpccompute-gpu-linux.md)。
+若要利用 NVIDIA GPU 所支援 Azure N 系列 VM 的 GPU 功能，則必須安裝 NVIDIA GPU 驅動程式。 [NVIDIA GPU 驅動程式擴充功能](../extensions/hpccompute-gpu-linux.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure CLI 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的發佈和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](../extensions/hpccompute-gpu-linux.md)。
 
-如果您選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的發佈、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的發行版本、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 如需 N 系列 VM 規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Linux VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 
@@ -145,13 +144,13 @@ sudo reboot
 
 若要查詢 GPU 裝置狀態，請透過 SSH 連線至 VM 並執行與驅動程式一起安裝的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令列公用程式。 
 
-如果已安裝驅動程式，您會看到類似以下的輸出。 請注意，除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util]**** 會顯示 0%。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
+如果已安裝驅動程式，您會看到類似以下的輸出。 請注意，除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util] 會顯示 0%。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
 
 ![NVIDIA 裝置狀態](./media/n-series-driver-setup/smi.png)
 
 ## <a name="rdma-network-connectivity"></a>RDMA 網路連線
 
-可以在支援 RDMA 的 N 系列 Vm （例如部署在相同可用性設定組或虛擬 machiine （VM）擴展集的單一放置群組中的 NC24r）上啟用 RDMA 網路連線能力。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
+可在支援 RDMA 的 N 系列 VM (例如部署在同一個可用性設定組或虛擬機器 (VM) 擴展集的單一放置群組中 NC24r) 上啟用 RDMA 網路連線能力。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
 
 ### <a name="distributions"></a>散發
 
@@ -163,9 +162,9 @@ sudo reboot
 
 * **CentOS 型 7.4 HPC** - 已在 VM 上安裝 RDMA 驅動程式和 Intel MPI 5.1。
 
-## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 Vm 上安裝 GRID 驅動程式
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安裝 GRID 驅動程式
 
-若要在 NV 或 NVv3 系列 Vm 上安裝 NVIDIA GRID 驅動程式，請建立每個 VM 的 SSH 連線，並遵循 Linux 散發套件的步驟。 
+若要在 NV 或 NVv3 系列 VM 上安裝 NVIDIA GRID 驅動程式，請以 SSH 連線至每部 VM，並遵循 Linux 發行版本的步驟。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -184,7 +183,7 @@ sudo reboot
    
    sudo apt-get install linux-azure -y
    ```
-3. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 （僅在 NV 或 NVv2 Vm 上使用 NVIDIA 驅動程式。）若要這麼做，請使用下列`/etc/modprobe.d`內容`nouveau.conf` ，在名為的中建立檔案：
+3. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NVv2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請使用下列內容以在名為 `nouveau.conf` 的 `/etc/modprobe.d` 中建立檔案：
 
    ```
    blacklist nouveau
@@ -209,7 +208,7 @@ sudo reboot
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. 當系統詢問您是否要執行 nvidia-xconfig 公用程式來更新您的 X 組態檔時，選取 [是]****。
+6. 當系統詢問您是否要執行 nvidia-xconfig 公用程式來更新您的 X 組態檔時，選取 [是]。
 
 7. 安裝完成後，請將 /etc/nvidia/gridd.conf.template 複製到位於 /etc/nvidia/ 的新檔案 gridd.conf
 
@@ -224,7 +223,7 @@ sudo reboot
    EnableUI=FALSE
    ```
    
-9. 從中`/etc/nvidia/gridd.conf`移除下列內容（如果有的話）：
+9. 從 `/etc/nvidia/gridd.conf` 移除下列內容 (如果有的話)：
  
    ```
    FeatureType=0
@@ -248,7 +247,7 @@ sudo reboot
    sudo yum install hyperv-daemons
    ```
 
-2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 （僅在 NV 或 NV2 Vm 上使用 NVIDIA 驅動程式。）若要這麼做，請使用下列`/etc/modprobe.d`內容`nouveau.conf` ，在名為的中建立檔案：
+2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NV2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請使用下列內容以在名為 `nouveau.conf` 的 `/etc/modprobe.d` 中建立檔案：
 
    ```
    blacklist nouveau
@@ -282,7 +281,7 @@ sudo reboot
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. 當系統詢問您是否要執行 nvidia-xconfig 公用程式來更新您的 X 組態檔時，選取 [是]****。
+6. 當系統詢問您是否要執行 nvidia-xconfig 公用程式來更新您的 X 組態檔時，選取 [是]。
 
 7. 安裝完成後，請將 /etc/nvidia/gridd.conf.template 複製到位於 /etc/nvidia/ 的新檔案 gridd.conf
   
@@ -296,7 +295,7 @@ sudo reboot
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. 從中`/etc/nvidia/gridd.conf`移除下列內容（如果有的話）：
+9. 從 `/etc/nvidia/gridd.conf` 移除下列內容 (如果有的話)：
  
    ```
    FeatureType=0
@@ -309,7 +308,7 @@ sudo reboot
 
 若要查詢 GPU 裝置狀態，請透過 SSH 連線至 VM 並執行與驅動程式一起安裝的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令列公用程式。 
 
-如果已安裝驅動程式，您會看到類似以下的輸出。 請注意，除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util]**** 會顯示 0%。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
+如果已安裝驅動程式，您會看到類似以下的輸出。 請注意，除非您正在 VM 上執行 GPU 工作負載，否則 [GPU-Util] 會顯示 0%。 您的驅動程式版本和 GPU 詳細資料可能會與顯示的不同。
 
 ![NVIDIA 裝置狀態](./media/n-series-driver-setup/smi-nv.png)
  
@@ -356,7 +355,7 @@ fi
 ## <a name="troubleshooting"></a>疑難排解
 
 * 您可以使用 `nvidia-smi` 設定持續性模式，如此當您需要查詢卡片時，命令的輸出更快。 若要設定持續性模式，請執行 `nvidia-smi -pm 1`。 請注意，如果重新啟動 VM，模式設定就會消失。 您一律可以編寫指令碼在啟動時執行模式設定。
-* 如果您已將 NVIDIA CUDA 驅動程式更新為最新版本，而且找不到 RDMA 連線能力，請[重新安裝 rdma 驅動程式以重新](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)建立該連接。 
+* 如果已將 NVIDIA CUDA 驅動程式更新為最新版本，且發現 RDMA 連線不再有效，請[重新安裝 RDMA 驅動程式](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)以重新建立該連線。 
 
 ## <a name="next-steps"></a>後續步驟
 

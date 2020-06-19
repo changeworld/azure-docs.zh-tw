@@ -17,7 +17,7 @@
           href: prepare-buy-reservation.md
         - name: App Service 方案
           href: prepay-app-service-isolated-stamp.md
-        - name: Azure Cache for Redis 保留
+        - name: Azure Cache for Redis
           href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Cosmos DB
           href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -52,7 +52,7 @@
         - name: 管理保留項目
           href: manage-reserved-vm-instance.md
         - name: 變更最佳化設定
-          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
         - name: 交換和退款保留項目
           href: exchange-and-refund-azure-reservations.md
     - name: 報告成本

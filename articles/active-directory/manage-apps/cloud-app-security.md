@@ -2,21 +2,21 @@
 title: Microsoft Cloud App Security 的應用程式可見性和控制
 description: 了解如何識別應用程式風險層級、即時阻止缺口和流失，以及使用應用程式連接器來利用提供者 API，以達到可見性和治理。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206e1a06acddae0973d5dbc7e64212026149f217
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77069704"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763647"
 ---
 # <a name="cloud-app-visibility-and-control"></a>雲端應用程式的可見性和控制
 

@@ -2,7 +2,7 @@
 title: 使用 T-SQL 將 SQL Server Windows 使用者和群組遷移至 SQL 受控執行個體
 description: 了解如何將 SQL Server 執行個體中的 Windows 使用者和群組遷移至 Azure SQL 受控執行個體
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310218"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708640"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>教學課程：使用 T-SQL DDL 語法，將 SQL Server 執行個體中的 Windows 使用者和群組遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

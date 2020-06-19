@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873583"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 檔案的共用快照集概觀 
 Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照集能擷取該時間點的共用狀態。 在本文中，我們說明共用快照集提供哪些功能，以及如何在您的自訂使用案例中運用這些功能。
@@ -37,7 +37,7 @@ Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照�
 
 共用快照集功能會於檔案共用層級提供。 擷取會於個別的檔案層級提供，以允許還原個別檔案。 您可以使用 SMB、REST API、入口網站、用戶端程式庫或 PowerShell/CLI 工具來還原完整的檔案共用。
 
-檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 是 HTTP：\//storagesample.core.file.windows.net/myshare，共用快照集 uri 類似于：
+檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 是 http:\//storagesample.core.file.Windows.net/myshare，共用快照集 URI 將類似於：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -71,7 +71,7 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 
 複製過後共用快照集會保持不變，不過系統會將先前共用快照集提供的資料複本覆寫到基底檔案共用。 所有還原的檔案都算是「變更內容」。
 
-您可以使用不同的名稱，將共用快照集內的檔案複製到不同的目的地。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。 在此情況下，您的基底檔案共用會保持不變。
+您可以將共用快照集內的檔案複製到不同名稱的不同目的地。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。 在此情況下，您的基底檔案共用會保持不變。
 
 使用某個複本覆寫目的地檔案時，與原始目的地檔案相關聯的所有共用快照集都會保持不變。
 
@@ -80,7 +80,7 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 
 在部署共用快照集排程器之前，請審慎考慮共用快照集頻率和保留設定，以避免產生不必要的共用快照集費用。
 
-共用快照集只提供檔案層級的保護。 共用快照集無法避免檔案共用或儲存體帳戶的誤刪情況。 為了預防儲存體帳戶遭到意外刪除，您可以鎖定儲存體帳戶或資源群組。
+共用快照集只提供檔案層級的保護。 共用快照集無法避免檔案共用或儲存體帳戶的誤刪情況。 為了預防儲存體帳戶遭到意外刪除，您可以[啟用虛刪除](storage-files-prevent-file-share-deletion.md)，也可以鎖定儲存體帳戶或資源群組。
 
 ## <a name="next-steps"></a>後續步驟
 - 在下列位置使用共用快照集：

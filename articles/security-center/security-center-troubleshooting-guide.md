@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心疑難排解指南 | Microsoft Docs
-description: 本指南適用于需要針對 Azure 資訊安全中心相關問題進行疑難排解的 IT 專業人員、安全性分析師和雲端系統管理員。
+description: 本指南適用於需要針對 Azure 資訊安全中心相關問題進行疑難排解的 IT 專業人員、安全性分析師和雲端系統管理員。
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585332"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836000"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
 本指南適用於組織目前採用 Azure 資訊安全中心，且需要針對資訊安全中心相關問題進行疑難排解的資訊技術 (IT) 專業人員、資訊安全性分析師和雲端系統管理員。
 
-資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。 本文中的資訊代表轉換至 Log Analytics 代理程式後資訊安全中心功能。
+資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。 本文中的資訊說明轉換至 Monitoring Agent 後的資訊安全中心功能。
 
 ## <a name="troubleshooting-guide"></a>疑難排解指南
 
@@ -36,9 +36,9 @@ ms.locfileid: "80585332"
 
 * Windows 中的虛擬機器 (VM) 事件檢視器內的安全性記錄
 * Linux 中的 AuditD
-* Azure 活動記錄，和攻擊資源的啟用診斷記錄。
+* Azure 活動記錄，以及有關攻擊資源的啟用診斷記錄。
 
-客戶可以針對警示描述和相關資訊分享意見反應。 瀏覽至警示本身，選取 [這有幫助嗎]**** 按鈕並選取原因，然後輸入註解來說明意見反應。 我們會持續監視此意見反應通道，以改善我們的警示功能。
+客戶可以針對警示描述和相關資訊分享意見反應。 瀏覽至警示本身，選取 [這有幫助嗎] 按鈕並選取原因，然後輸入註解來說明意見反應。 我們會持續監視此意見反應通道，以改善我們的警示功能。
 
 ## <a name="audit-log"></a>稽核記錄檔
 
@@ -54,47 +54,47 @@ ms.locfileid: "80585332"
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理程式
 
-資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視器服務所使用的相同代理程式–用來從您的 Azure 虛擬機器收集安全性資料。 啟用資料收集且代理程式已正確安裝在目標電腦之後，以下處理序應在執行中︰
+資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監視器服務所使用的同一個代理程式) 從 Azure 虛擬機器收集安全性資料。 啟用資料收集且代理程式已正確安裝在目標電腦之後，以下處理序應在執行中︰
 
 * HealthService.exe
 
-如果您開啟服務管理主控台（services.msc），您也會看到 Log Analytics 代理程式服務正在執行，如下所示：
+如果您開啟服務管理主控台 (services.msc)，您也會看到執行中的 Log Analytics 代理程式服務，如下所示：
 
 ![服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-若要查看您擁有的代理程式版本，請開啟 [**工作管理員**]，然後在 [**進程**] 索引標籤中找到**Log Analytics 代理程式服務**，以滑鼠右鍵按一下它，再按一下 [**屬性**]。 在 [詳細資料]**** 索引標籤上，查看如下所示的檔案版本：
+若要查看您擁有的代理程式版本，請開啟 [工作管理員]，在 [處理序] 索引標籤中找出 [Log Analytics 代理程式服務]，以滑鼠右鍵按一下並按一下 [屬性]。 在 [詳細資料] 索引標籤上，查看如下所示的檔案版本：
 
 ![檔案](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics 代理程式安裝案例
+## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics 代理程式安裝問題
 
-在您的電腦上安裝 Log Analytics 代理程式時，有兩種安裝案例可能會產生不同的結果。 支援的案例如下：
+在電腦上安裝 Log Analytics 代理程式時，有兩個可產生不同結果的安裝案例。 支援的案例如下：
 
-* **資訊安全中心自動安裝的代理程式**：在此案例中，您能夠在兩個位置 (資訊安全中心和記錄搜尋) 檢視警示。 您會收到電子郵件通知，指向資源所屬訂用帳戶的安全性原則中所設定的電子郵件地址。
+* **資訊安全中心自動安裝的代理程式**：在此案例中，您能夠在兩個位置 (資訊安全中心和記錄搜尋) 檢視警示。 您會收到電子郵件通知，這些通知會寄送至在資源所屬訂用帳戶的安全性原則中設定的電子郵件地址。
 
-* **手動安裝在位於 Azure 中的 VM 上的代理程式**：在此案例中，如果您使用在2017年2月之前下載並手動安裝的代理程式，只有在您篩選工作區所屬的訂用帳戶時，才可以在資訊安全中心入口網站中查看警示。 如果您篩選資源所屬的訂用帳戶，您將不會看到任何警示。 您會收到電子郵件通知，指向工作區所屬之訂用帳戶的安全性原則中所設定的電子郵件地址。
+* **手動安裝於 Azure 中 VM 上的代理程式**：在此案例中，如果您使用在 2017 年 2 月之前下載並手動安裝的代理程式，唯有依據工作區所屬的訂用帳戶篩選，您才可以在資訊安全中心入口網站中檢視警示。 如果您依據資源所屬的訂用帳戶篩選，將看不到任何警示。 您會收到電子郵件通知，這些通知會寄送至安全性原則中針對工作區所屬訂用帳戶設定的電子郵件地址。
 
 > [!NOTE]
 > 若要避免第二個案例中說明的行為，務必下載最新版的代理程式。
 
 ## <a name="monitoring-agent-health-issues"></a>監視代理程式健康情況問題<a name="mon-agent"></a>
 
-[監視狀態]**** 可定義資訊安全中心無法成功監視為了自動佈建而初始化之 VM 和電腦的原因。 下表顯示 [監視狀態]**** 值、描述和解決步驟。
+[監視狀態] 可定義資訊安全中心無法成功監視為了自動佈建而初始化之 VM 和電腦的原因。 下表顯示 [監視狀態] 值、描述和解決步驟。
 
 | 監視狀態 | 描述 | 解決步驟 |
 |---|---|---|
 | 擱置代理程式安裝 | Log Analytics 代理程式安裝仍在執行中。  安裝作業可能需要多達數小時的時間。 | 等到自動安裝完成為止。 |
-| 電源為關閉狀態 | VM 已停止。  Log Analytics 代理程式只能安裝在正在執行的 VM 上。 | 重新啟動 VM。 |
+| 電源為關閉狀態 | VM 已停止。  Log Analytics 代理程式只能安裝於執行中的 VM。 | 重新啟動 VM。 |
 | Azure VM 代理程式遺漏或無效 | 尚未安裝 Log Analytics 代理程式。  資訊安全中心需要有效的 Azure VM 代理程式，才能安裝擴充功能。 | 在 VM 上安裝、重新安裝或升級 Azure VM 代理程式。 |
-| VM 尚未處於安裝就緒的狀態  | 尚未安裝 Log Analytics 代理程式，因為 VM 尚未備妥可供安裝。 因為 VM 代理程式或 VM 佈建有問題，所以 VM 尚未處於安裝就緒的狀態。 | 檢查 VM 的狀態。 返回入口網站中的 [虛擬機器]**** 並選取 VM，以取得狀態資訊。 |
+| VM 尚未處於安裝就緒的狀態  | 因為 VM 尚未處於安裝就緒的狀態，所以尚未安裝 Log Analytics 代理程式。 因為 VM 代理程式或 VM 佈建有問題，所以 VM 尚未處於安裝就緒的狀態。 | 檢查 VM 的狀態。 返回入口網站中的 [虛擬機器] 並選取 VM，以取得狀態資訊。 |
 |安裝失敗 - 一般錯誤 | 已安裝 Log Analytics 代理程式，但因為發生錯誤而失敗。 | [手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)或將擴充功能解除安裝，資訊安全中心就會嘗試再次安裝。 |
-| 安裝失敗 - 已安裝本機代理程式 | Log Analytics 代理程式安裝失敗。 資訊安全中心識別已安裝在 VM 上的本機代理程式（Log Analytics 或 System Center Operations Manager）。 為了避免多路連接設定，其中 VM 會向兩個不同的工作區報告，Log Analytics 代理程式安裝已停止。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
-| 代理程式無法連線到工作區 | 已安裝 Log Analytics 代理程式，但因為網路連線失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
-| 代理程式已連線到遺漏或未知的工作區 | 資訊安全中心發現安裝在 VM 上的 Log Analytics 代理程式已連線到其無法存取的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀]**** 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
-| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式正在報告資料，但遺漏了 Azure 資源識別碼，因此無法將資料與 Azure VM 進行比對。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
+| 安裝失敗 - 已安裝本機代理程式 | Log Analytics 代理程式安裝失敗。 資訊安全中心發現本機代理程式 (Log Analytics 或 System Center Operations Manager) 已安裝在 VM 上。 為了避免多路連接的設定 (在此設定中，VM 會向兩個不同的工作區回報)，已停止安裝 Log Analytics 代理程式。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
+| 代理程式無法連線到工作區 | 已安裝 Log Analytics 代理程式，但因為網路連線問題而失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
+| 代理程式已連線到遺漏或未知的工作區 | 資訊安全中心發現安裝於 VM 上的 Log Analytics 代理程式已連線到其無權存取的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀] 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
+| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式雖回報資料，但遺漏 Azure 資源識別碼，因此無法比對資料與 Azure VM。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
 | 未安裝代理程式 | 資料收集已啟用。 | 在安全性原則中開啟資料收集，或手動安裝 Log Analytics 代理程式。 |
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>針對監視代理程式網路需求進行疑難排解<a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>對監視代理程式網路需求進行疑難排解<a name="mon-network-req"></a>
 
 代理程式若要連線到資訊安全中心並向其註冊，就必須能夠存取網路資源，包括連接埠號碼和網域 URL。
 
@@ -128,27 +128,27 @@ ms.locfileid: "80585332"
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>針對載入儀表板的問題進行疑難排解
 
-如果您遇到載入資訊安全中心儀表板的問題，請確定向資訊安全中心註冊訂用帳戶的使用者 (也就是第一位使用訂用帳戶開啟資訊安全中心的使用者) 以及想要開啟資料收集的使用者，應該是訂用帳戶的「擁有者」** 或「參與者」**。 另外，從那時起，訂用帳戶上具有「讀取者」** 身分的使用者就可以看到儀表板/警示/建議/原則。
+如果您遇到載入資訊安全中心儀表板的問題，請確定向資訊安全中心註冊訂用帳戶的使用者 (也就是第一位使用訂用帳戶開啟資訊安全中心的使用者) 以及想要開啟資料收集的使用者，應該是訂用帳戶的「擁有者」或「參與者」。 另外，從那時起，訂用帳戶上具有「讀取者」身分的使用者就可以看到儀表板/警示/建議/原則。
 
 ## <a name="contacting-microsoft-support"></a>連絡 Microsoft 支援服務
 
-使用本文提供的指導方針可識別一些問題，您也可能發現的其他問題則記載於資訊安全中心的公開 [論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站**開啟新的支援要求，如下所示︰
+使用本文提供的指導方針可識別一些問題，您也可能發現的其他問題則記載於資訊安全中心的公開 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-security-center.html)。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站**開啟新的支援要求，如下所示︰
 
 ![Microsoft 支援服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 在本文件中，您已了解如何在「Azure 資訊安全中心」設定安全性原則。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
-* [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)—瞭解如何規劃及瞭解採用 Azure 資訊安全中心的設計考慮。
-* [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)—瞭解如何監視 Azure 資源的健康情況
-* [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md)—瞭解如何管理和回應安全性警示
-* [瞭解 Azure 資訊安全中心中的安全性警示](security-center-alerts-type.md)
+* [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md) — 了解如何規劃及了解採用 Azure 資訊安全中心的設計考量。
+* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
+* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) — 了解如何管理與回應安全性警示。
+* [了解 Azure 資訊安全中心的安全性警示](security-center-alerts-type.md)
 * [教學課程：回應安全性事件](tutorial-security-incident.md)
 * [Azure 資訊安全中心的警示驗證](security-center-alert-validation.md)
 * [Azure 資訊安全中心的電子郵件通知](security-center-provide-security-contact-details.md)
 * [在 Azure 資訊安全中心處理安全性事件](security-center-incident.md)
 * [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)—瞭解如何監視合作夥伴解決方案的健康狀態。
-* [AZURE 資訊安全中心常見問題](faq-general.md)—尋找有關使用服務的常見問題
-* [Azure 安全性 blog](https://blogs.msdn.com/b/azuresecurity/) -尋找有關 Azure 安全性與合規性的 Blog 文章
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
+* [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
+* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

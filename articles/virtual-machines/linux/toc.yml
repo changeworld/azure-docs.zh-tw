@@ -56,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d - 具有 Azure Pipelines 的 CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a - 建立 LAMP 堆疊
+    - name: 16 - 建立 LAMP 堆疊
       href: tutorial-lamp-stack.md
-    - name: 16b - 建立 LEMP 堆疊
-      href: tutorial-lemp-stack.md
-    - name: 16c - 建立 MEAN 堆疊
-      href: tutorial-mean-stack.md
     - name: 17 - 使用 SSL 保護網頁伺服器
       href: tutorial-secure-web-server.md
 - name: 範例

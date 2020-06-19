@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d33c2bef1cd0f7bfab4ec3c09f16c049881d1cd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594617"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684378"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 支援的功能 (預覽) 
 
@@ -34,7 +34,7 @@ Azure SQL Edge 提供兩種不同的版本或軟體方案。 這些版本具有�
 
 ## <a name="operating-system"></a>作業系統
 
-Azure SQL Edge 容器目前是以 Ubuntu (16.04 和 18.04) 為基礎，因此僅支援在執行 Ubuntu 16.04 和 18.04 的 Docker 主機上執行。 Azure SQL Edge 也可以在其他作業系統主機上執行，例如其他 Linux 發行版本或 Windows (使用 Docker CE 或 Docker EE)，不過 Microsoft 並不會廣泛地測試這些設定。
+Azure SQL Edge 容器目前是以 Ubuntu 16.04 為基礎，因此僅支援在執行 Ubuntu 16.04 (建議使用) 或 Ubuntu 18.04 的 Docker 主機上執行。 Azure SQL Edge 也可以在其他作業系統主機上執行，例如其他 Linux 發行版本或 Windows (使用 Docker CE 或 Docker EE)，不過 Microsoft 並不會廣泛地測試這些設定。
 
 Azure SQL Edge 目前僅支援透過 Azure IoT Edge 進行部署。 如需 Azure IoT Edge 支援系統的詳細資訊，請參閱 [Azure IoT Edge 支援的系統](https://docs.microsoft.com/azure/iot-edge/support)。
 

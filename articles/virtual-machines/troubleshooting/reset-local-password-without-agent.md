@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921618"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021257"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>重設離線 Azure VM 的本機 Windows 密碼
 您可以使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 在 Azure 中重設 VM 的本機 Windows 密碼 (假設已安裝 Azure 客體代理程式)。 這個方法是為 Azure VM 重設密碼的主要方式。 如果您遇到 Azure 客體代理程式沒有回應，或無法在上傳自訂映像後進行安裝等問題，您可以手動重設 Windows 密碼。 本文將詳細說明如何將來源 OS 虛擬磁碟連接至另一部 VM，以重設本機帳戶密碼。 本文中所述的步驟不適用於 Windows 網域控制站。 
@@ -30,20 +30,20 @@ ms.locfileid: "77921618"
 無法存取 Azure 客體代理程式時，在 Azure 中為 Windows VM 執行本機密碼重設的核心步驟如下所示︰
 
 1. 停止受影響的 VM。
-1. 為 VM 的 OS 磁片建立快照集。
-1. 從快照集建立 OS 磁片的複本。
-1. 將複製的 OS 磁片連結並掛接至另一個 Windows VM，然後在磁片上建立一些設定檔。 這些檔案可協助您重設密碼。
-1. 從疑難排解 VM 卸載和卸離複製的 OS 磁片。
-1. 交換受影響 VM 的 OS 磁片。
+1. 建立 VM 的 OS 磁碟快照集。
+1. 從快照集建立 OS 磁碟複本。
+1. 將複製的 OS 磁碟連結並掛接至另一個 Windows VM，然後在磁碟上建立一些設定檔。 這些檔案將可協助您重設密碼。
+1. 從疑難排解 VM 將複製的 OS 磁碟卸載並中斷連結。
+1. 交換受影響 VM 的 OS 磁碟。
 
-## <a name="detailed-steps-for-the-vm-with-resource-manager-deployment"></a>具有 Resource Manager 部署之 VM 的詳細步驟
+## <a name="detailed-steps-for-the-vm-with-resource-manager-deployment"></a>使用 Resource Manager 部署之 VM 的詳細步驟
 
 > [!NOTE]
 > 這些步驟不適用於 Windows 網域控制站。 僅適用於獨立伺服器或網域成員伺服器。
 
 一律先嘗試使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重設密碼，再嘗試下列步驟。 在開始之前，確定您有 VM 的備份。
 
-1. 取得受影響 VM 的 OS 磁片快照集、從快照集建立磁片，然後將磁片連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁片連接至復原 VM，以針對 WINDOWS VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。
+1. 建立受影響 VM 的 OS 磁碟快照集、從快照集建立磁碟，然後將磁碟連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用遠端桌面連線到疑難排解 VM。
 3. 在來源 VM 磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` (如果存在 gpt.ini，請將它重新命名為 gpt.ini.bak)︰
    
@@ -61,7 +61,7 @@ ms.locfileid: "77921618"
      
      ![建立 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
+4. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
    
    * 將下列幾行新增至您建立的 `scripts.ini` 檔案：
      
@@ -85,9 +85,9 @@ ms.locfileid: "77921618"
    
     定義新的密碼時，必須符合針對 VM 設定的密碼複雜性需求。
 
-6. 在 Azure 入口網站中，從疑難排解 VM 卸離磁片。
+6. 在 Azure 入口網站中，將磁碟從從疑難排解 VM 中斷連結。
 
-7. [變更受影響 VM 的 OS 磁片](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。
+7. [變更受影響 VM 的 OS 磁碟](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。
 
 8. 執行新的 VM 後，使用您在 `FixAzureVM.cmd` 指令碼指定中的新密碼，透過遠端桌面連接到 VM。
 
@@ -95,7 +95,7 @@ ms.locfileid: "77921618"
     
     * 從 %windir%\System32
       * 移除 FixAzureVM.cmd
-    * 從%windir%\System32\GroupPolicy\Machine\Scripts
+    * 從 %windir%\System32\GroupPolicy\Machine\Scripts
       * 移除 scripts.ini
     * 從 %windir%\System32\GroupPolicy
       * 移除 gpt.ini (如果 gpt.ini 早已存在，且您已將它重新命名為 gpt.ini.bak，請將此 .bak 檔案重新命名為 gpt.ini)
@@ -111,37 +111,37 @@ ms.locfileid: "77921618"
 
 1. 在 Azure 入口網站中刪除受影響的 VM。 刪除 VM 只會刪除中繼資料 (Azure 內 VM 的參考)。 刪除 VM 時會保留虛擬磁碟：
    
-   * 在 [Azure 入口網站中選取 VM，然後按一下 [*刪除*]：
+   * 在 Azure 入口網站中選取 VM，然後按一下 [刪除]：
      
      ![刪除現有的 VM](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
 2. 將來源 VM 的 OS 磁碟連接到疑難排解 VM。 疑難排解 VM 必須位於與來源 VM 的作業系統磁碟相同的區域 (例如 `West US`)：
    
-   1. 在 Azure 入口網站中選取疑難排解 VM。 按一下 [*磁片* | ] [*連接現有*的]：
+   1. 在 Azure 入口網站中選取疑難排解 VM。 按一下 [磁碟] | [連接現有項目]：
      
       ![連接現有磁碟](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
-   2. 選取 [VHD 檔案]**，然後選取包含來源 VM 的儲存體帳戶：
+   2. 選取 [VHD 檔案]，然後選取包含來源 VM 的儲存體帳戶：
      
       ![選取儲存體帳戶](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
      
-   3. 核取標示為 [*顯示傳統儲存體帳戶*] 的方塊，然後選取來源容器。 來源容器通常是 vhd**：
+   3. 選取標示為 [顯示傳統儲存體帳戶] 的方塊，然後選取來源容器。 來源容器通常是 vhd：
      
       ![選取儲存體容器](./media/reset-local-password-without-agent/disks-select-container-classic.png)
 
       ![選取儲存體容器](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
      
-   4. 選取要連接的 OS vhd。 按一下 [選取]**，完成此程序：
+   4. 選取要連接的 OS vhd。 按一下 [選取]，完成此程序：
      
       ![選取來源虛擬磁碟](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
 
-   5. 按一下 [確定] 以連接磁片
+   5. 按一下 [確定] 以連結磁碟
 
       ![連接現有磁碟](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
 
 3. 使用遠端桌面連接到疑難排解 VM，並確定看得見來源 VM 的 OS 磁碟︰
 
-   1. 在 Azure 入口網站中選取疑難排解 VM，然後按一下 [連接]**。
+   1. 在 Azure 入口網站中選取疑難排解 VM，然後按一下 [連接]。
 
    2. 開啟下載的 RDP 檔案。 輸入疑難排解 VM 的使用者名稱和密碼。
 
@@ -149,10 +149,10 @@ ms.locfileid: "77921618"
      
       ![檢視連接的資料磁碟](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. 在`gpt.ini`來源`\Windows\System32\GroupPolicy` VM 磁片磁碟機的中建立（如果`gpt.ini`存在，請將`gpt.ini.bak`其重新命名為）：
+4. 在來源 VM 磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` (如果 `gpt.ini` 存在，請將其重新命名為 `gpt.ini.bak`)︰
    
    > [!WARNING]
-   > 請確定您不會意外地在中`C:\Windows`建立下列檔案，也就是疑難排解 VM 的 OS 磁片磁碟機。 在連接成為資料磁碟的來源 VM OS 磁碟機中建立下列檔案。
+   > 確保您不會在 `C:\Windows` (疑難排解 VM 的 OS 磁碟機) 中不小心建立下列檔案。 在連接成為資料磁碟的來源 VM OS 磁碟機中建立下列檔案。
    
    * 將下列幾行新增至您建立的 `gpt.ini` 檔案：
      
@@ -191,9 +191,9 @@ ms.locfileid: "77921618"
 
 7. 在 Azure 入口網站中，從疑難排解 VM 卸離磁碟：
    
-   1. 在 Azure 入口網站中選取疑難排解 VM，按一下 [磁碟]**。
+   1. 在 Azure 入口網站中選取疑難排解 VM，按一下 [磁碟]。
    
-   2. 選取在步驟2中連接的資料磁片，按一下 [卸**離**]，然後按一下 **[確定]**。
+   2. 選取在步驟 2 中連結的資料磁碟、按一下 [中斷連結]，然後按一下 [確定]。
 
      ![卸離磁碟](./media/reset-local-password-without-agent/data-disks-classic.png)
      
@@ -214,11 +214,11 @@ ms.locfileid: "77921618"
 2. 從新 VM 的遠端工作階段，移除下列檔案以清理環境︰
     
     * 從 `%windir%\System32`
-      * 取消`FixAzureVM.cmd`
+      * 移除 `FixAzureVM.cmd`
     * 從 `%windir%\System32\GroupPolicy\Machine\Scripts`
-      * 取消`scripts.ini`
+      * 移除 `scripts.ini`
     * 從 `%windir%\System32\GroupPolicy`
-      * 移除`gpt.ini` （如果`gpt.ini`之前已存在，而且您將它`gpt.ini.bak`重新命名為`.bak` ，請將`gpt.ini`檔案重新命名為）
+      * 移除 `gpt.ini` (如果 `gpt.ini` 之前已存在，而您將其重新命名為 `gpt.ini.bak`，請將 `.bak` 檔案重新命名回 `gpt.ini`)
 
 ## <a name="next-steps"></a>後續步驟
 如果您仍然無法使用遠端桌面進行連接，請參閱 [RDP 疑難排解指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 [詳細的 RDP 疑難排解指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)會探討疑難排解方法，而不是特定的步驟。 您也可以[開啟 Azure 支援要求](https://azure.microsoft.com/support/options/)，以取得實際操作協助。

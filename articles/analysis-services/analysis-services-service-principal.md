@@ -1,32 +1,32 @@
 ---
-title: 使用服務主體將 Azure Analysis Services 工作自動化 |Microsoft Docs
-description: 瞭解如何建立服務主體，以將 Azure Analysis Services 管理工作自動化。
+title: 使用服務主體讓 Azure Analysis Services 工作自動化 | Microsoft Docs
+description: 了解如何建立服務主體來自動化 Azure Analysis Services 管理工作。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266139"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871165"
 ---
 # <a name="automation-with-service-principals"></a>使用服務主體進行自動化
 
-服務主體是您在租用戶內建立的 Azure Active Directory 應用程式資源，用來執行自動資源和服務層級作業。 它們是種唯一的「使用者身分識別**」，具有應用程式識別碼和密碼或憑證。 服務主體只有執行角色所定義工作所需的權限，以及為此所指派給服務主體的權限。 
+服務主體是您在租用戶內建立的 Azure Active Directory 應用程式資源，用來執行自動資源和服務層級作業。 它們是種唯一的「使用者身分識別」，具有應用程式識別碼和密碼或憑證。 服務主體只有執行角色所定義工作所需的權限，以及為此所指派給服務主體的權限。 
 
-在 Analysis Services 中，服務主體會與 Azure 自動化、PowerShell 自動模式、自訂用戶端應用程式和 Web 應用程式搭配使用，讓一般工作自動化。 例如，佈建伺服器、部署模型、資料重新整理、相應增加/相應減少，以及暫停/繼續都可以藉由使用服務主體來進行自動化。 權限會透過角色成員資格指派給服務主體；這與一般 Azure AD UPN 帳戶的做法很像。
+在 Analysis Services 中，服務主體會與 Azure 自動化、PowerShell 自動模式、自訂用戶端應用程式和 Web 應用程式搭配使用，讓一般工作自動化。 例如，佈建伺服器、部署模型、資料重新整理、擴大/縮減，以及暫停/繼續都可以藉由使用服務主體來進行自動化。 權限會透過角色成員資格指派給服務主體；這與一般 Azure AD UPN 帳戶的做法很像。
 
-Analysis Services 也支援使用服務主體的受控識別所執行的作業。 若要深入瞭解，請參閱[適用于 azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別和[支援 Azure AD 驗證的 azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。  
+Analysis Services 也支援使用服務主體的受控識別所執行的作業。 若要深入了解，請參閱[適用於 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)和[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。  
 
 ## <a name="create-service-principals"></a>建立服務主體
  
 服務主體可以在 Azure 入口網站中建立，或是使用 PowerShell 建立。 若要深入了解，請參閱：
 
-[建立服務主體-Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)   
+[建立服務主體 - Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)   
 [建立服務主體 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>在 Azure 自動化中儲存認證和憑證資產
@@ -48,11 +48,11 @@ Analysis Services 也支援使用服務主體的受控識別所執行的作業�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />使用 Az. Microsoft.analysisservices 模組
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />使用 Az.AnalysisServices 模組
 
-使用服務主體搭配[microsoft.analysisservices](/powershell/module/az.analysisservices)模組進行資源管理作業時，請使用`Connect-AzAccount` Cmdlet。 
+透過 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模組針對資源管理作業使用服務主體時，請使用 `Connect-AzAccount` Cmdlet。 
 
-在下列範例中，會使用 appID 和密碼來執行控制平面作業，以同步處理唯讀複本並相應增加/放大：
+在下列範例中，會使用 appID 和密碼來執行控制平面作業，以同步處理唯讀複本並擴大/擴增：
 
 ```powershell
 Param (
@@ -110,4 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>後續步驟
 [使用 Azure PowerShell 登入](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)   
+[使用 Logic Apps 重新整理](analysis-services-refresh-logic-app.md)  
+[使用 Azure 自動化重新整理](analysis-services-refresh-azure-automation.md)  
+[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)  
+[使用服務主體將 Power BI Premium 工作區和資料集工作自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

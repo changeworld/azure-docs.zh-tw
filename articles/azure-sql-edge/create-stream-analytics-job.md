@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685171"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge (預覽) 中建立串流分析作業 
 
@@ -22,6 +22,9 @@ ms.locfileid: "83595387"
 
 1. 建立外部串流的輸入和輸出物件
 2. 將串流作業查詢定義為串流作業建立程序的一部分。
+
+> [!NOTE]
+> 若要在 Azure SQL Edge 中啟用 T-SQL 串流功能，請啟用 TF 11515 作為啟動選項，或使用 [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) 命令。 如需如何使用 mssql.conf 檔案啟用追蹤旗標的詳細資訊，請參閱[使用 mssql.conf 檔案進行設定](configure.md#configure-using-mssqlconf-file)。 在 Azure SQL Edge (預覽) 的未來更新中將會移除此需求。
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>設定外部串流的輸入和輸出物件
 

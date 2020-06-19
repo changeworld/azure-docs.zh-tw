@@ -1,17 +1,17 @@
 ---
-title: 針對查詢效能進行疑難排解-適用於 MySQL 的 Azure 資料庫
-description: 瞭解如何使用說明，針對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解。
+title: 對查詢效能進行疑難排解 - 適用於 MySQL 的 Azure 資料庫
+description: 了解如何使用 EXPLAIN 對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067830"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836119"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 剖析適用於 MySQL 的 Azure 資料庫中的查詢效能
 **EXPLAIN** 是可最佳化查詢的便利工具。 EXPLAIN 陳述式可用來取得關於 SQL 陳述式如何執行的資訊。 下列輸出顯示 EXPLAIN 陳述式的執行範例。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-在此範例中您可以看到，*key* 的值為 NULL。 此輸出表示 MySQL 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼]**** 資料行上新增索引，以最佳化此查詢。
+在此範例中您可以看到，*key* 的值為 NULL。 此輸出表示 MySQL 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼] 資料行上新增索引，以最佳化此查詢。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -120,7 +120,7 @@ possible_keys: covered
 如上述 EXPLAIN 所示，MySQL 此時會使用涵蓋性索引，而避免建立暫存資料表。 
 
 ## <a name="combined-index"></a>結合的索引
-結合的索引包含多個資料行的值，可被視為依串連的索引資料行值排序的資料列陣列。此方法適用於 **GROUP BY** 陳述式。
+結合的索引包含多個資料行的值，可被視為依串連的索引資料行值排序的資料列陣列。 此方法適用於 **GROUP BY** 陳述式。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -163,8 +163,8 @@ possible_keys: NULL
  
 ## <a name="conclusion"></a>結論
  
-使用 EXPLAIN 和不同類型的索引可大幅提升效能。 在資料表上擁有索引不一定表示 MySQL 可以將它用於您的查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
+使用 EXPLAIN 和不同類型的索引可大幅提升效能。 擁有資料表的索引，不一定表示 MySQL 就可以將其用於您的查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
 
 
 ## <a name="next-steps"></a>後續步驟
-- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [MSDN 論壇](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)或[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

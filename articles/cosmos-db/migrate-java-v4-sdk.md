@@ -1,94 +1,94 @@
 ---
-title: 遷移您的應用程式，以使用 Azure Cosmos DB JAVA SDK v4 （Cosmos）
-description: 瞭解如何使用舊版的 Azure Cosmos DB JAVA Sdk，將您現有的 JAVA 應用程式升級為適用于 Core （SQL） API 的較新 JAVA SDK 4.0 （Cosmos 套件）。
+title: 遷移您的應用程式，以使用 Azure Cosmos DB Java SDK v4 (com.azure.cosmos)
+description: 瞭解如何使用舊版的 Azure Cosmos DB JAVA SDK，將您現有的 JAVA 應用程式升級為適用於 Core (SQL) API 的較新 JAVA SDK 4.0 (com.azure.cosmos 套件)。
 author: anfeldma-ms
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/26/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 929fa936cdb864fd9b84f8feba55ef01ae6fed9c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: d7028018501c5e6580d7345938a739ccc983ff48
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984703"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873264"
 ---
-# <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>遷移應用程式以使用 JAVA SDK v4 Azure Cosmos DB
+# <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>遷移您的應用程式，以使用 Azure Cosmos DB Java SDK v4
 
 > [!IMPORTANT]  
-> 如需此 SDK 的詳細資訊，請參閱 Azure Cosmos DB JAVA SDK v4 版本資訊、 [Maven 存放庫](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、AZURE COSMOS DB java sdk v4[效能秘訣](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB java sdk v4[疑難排解指南](troubleshoot-java-sdk-v4-sql.md)。
+> 如需此 SDK 的詳細資訊，請檢視 Azure Cosmos DB Java SDK v4 [版本資訊](sql-api-sdk-java-v4.md)、[Maven 存放庫](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [效能秘訣](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB Java SDK v4 [疑難排解指南](troubleshoot-java-sdk-v4-sql.md)。
 >
 
-本文說明如何將使用舊版 Azure Cosmos DB JAVA SDK 的現有 JAVA 應用程式升級至較新的 Azure Cosmos DB JAVA SDK 4.0 for Core （SQL） API。 Azure Cosmos DB JAVA SDK v4 會對應到`com.azure.cosmos`封裝。 如果您要從下列任一 Azure Cosmos DB JAVA Sdk 遷移應用程式，您可以使用本檔中的指示： 
+本文說明如何將使用舊版 Azure Cosmos DB JAVA SDK 的現有 JAVA 應用程式升級至較新的 Azure Cosmos DB Java SDK 4.0 for Core (SQL) API。 Azure Cosmos DB JAVA SDK v4 會對應到 `com.azure.cosmos` 套件。 如果您要從下列任何一個 Azure Cosmos DB JAVA SDK 移轉應用程式，您可以使用本文件中的指示： 
 
-* 同步處理 JAVA SDK 2.x. x
-* Async JAVA SDK 2.x. x
-* JAVA SDK 3.x. x
+* 同步 Java SDK 2.x.x
+* 非同步 Java SDK 2.x.x
+* Java SDK 3.x.x
 
-## <a name="azure-cosmos-db-java-sdks-and-package-mappings"></a>Azure Cosmos DB JAVA SDK 的和封裝對應
+## <a name="azure-cosmos-db-java-sdks-and-package-mappings"></a>Azure Cosmos DB JAVA SDK 和封裝對應
 
-下表列出不同的 Azure Cosmos DB JAVA Sdk、套件名稱和版本資訊：
+下表列出不同的 Azure Cosmos DB JAVA SDK、套件名稱和版本資訊：
 
-| Java SDK| 發行日期 | 配套的 Api   | Maven Jar  | JAVA 封裝名稱  |API 參考   | 版本資訊  |
+| Java SDK| 發行日期 | 搭售方案 API   | Maven Jar  | Java 封裝名稱  |API 參考   | 版本資訊  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
-| Async 2.x. x  | 2018 年 6 月    | 非同步（RxJAVA）  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [版本資訊](sql-api-sdk-async-java.md) |
-| Sync 2.x. x     | 2018年9月    | 同步   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [版本資訊](sql-api-sdk-java.md)  |
-| 3.x. x    | 2019 年 7 月    | Async （Reactor）/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
-| 4.0   | 2020 年 4 月   | Async （Reactor）/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | -  |
+| 非同步 2.x.x  | 2018 年 6 月    | 非同步 (RxJAVA)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [版本資訊](sql-api-sdk-async-java.md) |
+| 同步 2.x.x     | 2018 年 9 月    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [版本資訊](sql-api-sdk-java.md)  |
+| 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
+| 4.0   | 2020 年 4 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | -  |
 
 ## <a name="sdk-level-implementation-changes"></a>SDK 層級的執行變更
 
-以下是不同 Sdk 之間的主要執行差異：
+以下是不同 SDK 之間的主要執行差異：
 
-### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJAVA 會在 Azure Cosmos DB JAVA SDK 3.x 版和4.0 中取代為 reactor
+### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJAVA 會在 Azure Cosmos DB JAVA SDK 3.x.x 和 4.0 版中取代為 Reactor
 
-如果您不熟悉非同步程式設計或回應式程式設計，請參閱[Reactor 模式指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)，以取得非同步程式設計和專案 Reactor 的簡介。 如果您一直在使用 Azure Cosmos DB 同步處理 JAVA SDK 2.x 或 Azure Cosmos DB JAVA SDK 3.x 同步 API，本指南可能會很有用。
+如果您不熟悉非同步程式設計或回應式程式設計，請參閱 [Reactor 模式指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)，以取得非同步程式設計和專案 Reactor 的簡介。 如果您一直在使用 Azure Cosmos DB 同步 JAVA SDK 2.x.x 或 Azure Cosmos DB JAVA SDK 3.x.x 同步 API，本指南可能會很有用。
 
-如果您已使用 Azure Cosmos DB 非同步 JAVA SDK 2.x，並打算遷移至 4.0 SDK，請參閱[Reactor Vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)，以取得將 RxJAVA 程式碼轉換為使用 Reactor 的指引。
+如果您一直在使用 Azure Cosmos DB 非同步 JAVA SDK 2.x.x，並打算移轉至 4.0 SDK，請參閱 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)，以取得將 RxJAVA 程式碼轉換為使用 Reactor 的指引。
 
-### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB JAVA SDK v4 在非同步和同步 Api 中都具有直接連線模式
+### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB JAVA SDK v4 在非同步和同步 API 中都有直接連線模式
 
-如果您已使用 Azure Cosmos DB 同步處理 JAVA SDK 2.x，請注意以 TCP 為基礎的直接連線模式（相對於 HTTP），會在適用于非同步和同步 Api 的 Azure Cosmos DB JAVA SDK 4.0 中執行。
+如果您已使用 Azure Cosmos DB 同步 JAVA SDK 2.x.x，請注意以 TCP 為基礎的直接連線模式 (相對於 HTTP)，會在適用於非同步和同步 API 的 Azure Cosmos DB JAVA SDK 4.0 中執行。
 
 ## <a name="api-level-changes"></a>API 層級變更
 
-相較于先前的 Sdk，以下是 Azure Cosmos DB JAVA SDK 4.x 中的 API 層級變更（JAVA SDK 3.x、Async JAVA SDK 2.x 和 Sync JAVA SDK 2.x）：。
+相較於先前的 SDK，以下是 Azure Cosmos DB JAVA SDK 4.x 中的 API 層級變更 (JAVA SDK 3.x.x、Async JAVA SDK 2.x.x 和 Sync JAVA SDK 2.x.x)：
 
 ![Azure Cosmos DB JAVA SDK 命名慣例](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
 
-* Azure Cosmos DB 的 JAVA SDK 3.x 和4.0 會將用戶端資源參考為`Cosmos<resourceName>`。 例如，`CosmosClient`、`CosmosDatabase`、`CosmosContainer`。 而在2.x 版中，Azure Cosmos DB JAVA Sdk 並沒有統一的命名配置。
+* Azure Cosmos DB JAVA SDK 3.x.x 和4.0 會將用戶端資源稱為 `Cosmos<resourceName>`。 例如，`CosmosClient`、`CosmosDatabase`、`CosmosContainer`。 而在2.x.x 版中，Azure Cosmos DB JAVA SDK 並沒有統一的命名配置。
 
-* Azure Cosmos DB JAVA SDK 3.x 和4.0 提供同步和非同步 Api。
+* Azure Cosmos DB JAVA SDK 3.x.x 和4.0 提供同步和非同步 API。
 
-  * **JAVA SDK 4.0** ：除非在`Async`後面`Cosmos`附加類別名稱，否則所有類別都屬於同步 API。
+  * **Java SDK 4.0**：所有類別都屬於同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
 
-  * **JAVA SDK**3.X：所有類別都屬於非同步 API，除非類別名稱附加`Async`在之後。 `Cosmos`
+  * **Java SDK 3.x.x**：所有的類別都屬於非同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
 
-  * **Async JAVA sdk**2.x：類別名稱類似于同步 java sdk 2.x，不過名稱是以*Async*開頭。
+  * **非同步 Java SDK 2.x.x**：類別名稱類似於同步 JAVA SDK 2.x.x，但名稱開頭為*非同步*。
 
 ### <a name="hierarchical-api-structure"></a>階層式 API 結構
 
-Azure Cosmos DB JAVA SDK 4.0 和3.x 引進階層式 API 結構，以嵌套的方式組織用戶端、資料庫和容器，如下列 4.0 SDK 程式碼片段所示：
+Azure Cosmos DB JAVA SDK 4.0 和 3.x.x 引進階層式 API 結構，以嵌套的方式組織用戶端、資料庫和容器，如下列 4.0 SDK 程式碼片段所示：
 
 ```java
 CosmosContainer = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
 ```
 
-在2.x 版的 Azure Cosmos DB JAVA SDK 中，資源和檔上的所有作業都是透過用戶端實例執行。
+在2.x.x 版的 Azure Cosmos DB JAVA SDK 中，資源和文件上的所有作業都是透過用戶端執行個體執行。
 
-### <a name="representing-documents"></a>代表檔
+### <a name="representing-documents"></a>代表文件
 
-在 Azure Cosmos DB JAVA SDK 4.0 中，自訂 POJO `JsonNodes`的和是從 Azure Cosmos DB 讀取和寫入檔的兩個選項。
+在 Azure Cosmos DB JAVA SDK 4.0 中，自訂 POJO 的和 `JsonNodes` 是從 Azure Cosmos DB 讀取和寫入文件的兩個選項。
 
-在 Azure Cosmos DB JAVA SDK 3.x 中， `CosmosItemProperties`物件是由公用 API 公開，並以檔標記法的形式提供。 此類別不再公開于4.0 版。
+在 Azure Cosmos DB JAVA SDK 3.x.x 中，`CosmosItemProperties` 物件是由公用 API 公開，並以文件標記法的形式提供。 此類別不再公開於4.0 版。
 
 ### <a name="imports"></a>匯入
 
-* Azure Cosmos DB 的 JAVA SDK 4.0 套件開頭為`com.azure.cosmos`
-  * Azure Cosmos DB JAVA SDK 3.x 套件開頭為`com.azure.data.cosmos`
+* Azure Cosmos DB 的 JAVA SDK 4.0 套件開頭為 `com.azure.cosmos`
+  * Azure Cosmos DB JAVA SDK 3.x.x 套件開頭為 `com.azure.data.cosmos`
 
-* Azure Cosmos DB JAVA SDK 4.0 會將數個類別放在`com.azure.cosmos.models`一個嵌套的封裝中。 其中一些封裝包括：
+* Azure Cosmos DB JAVA SDK 4.0 會將數個類別放在嵌套封裝 `com.azure.cosmos.models`中。 這些封裝有些包括：
 
   * `CosmosContainerResponse`
   * `CosmosDatabaseResponse`
@@ -98,19 +98,19 @@ CosmosContainer = client.getDatabase("MyDatabaseName").getContainer("MyContainer
   * `FeedOptions`
   * `PartitionKey`
   * `IndexingPolicy`
-  * `IndexingMode`...等.
+  * `IndexingMode` ...等事項
 
 ### <a name="accessors"></a>存取子
 
-Azure Cosmos DB JAVA SDK 4.0 會`get`公開`set`和方法，以存取實例成員。 例如， `CosmosContainer`實例具有`container.getId()`和`container.setId()`方法。
+Azure Cosmos DB JAVA SDK 4.0 會公開用來存取執行個體成員的 `get` 和 `set` 方法。 例如，`CosmosContainer` 執行個體具有 `container.getId()` 和 `container.setId()` 方法。
 
-這不同于會公開流暢介面的 Azure Cosmos DB JAVA SDK 3.x. x。 例如， `CosmosSyncContainer`實例已`container.id()`多載，以取得或設定`id`值。
+這不同於會公開流暢介面的 Azure Cosmos DB JAVA SDK 3.x.x。 例如，`CosmosSyncContainer` 執行個體具有多載的 `container.id()`，以取得或設定 `id` 值。
 
 ## <a name="code-snippet-comparisons"></a>程式碼片段比較
 
 ### <a name="create-resources"></a>建立資源
 
-下列程式碼片段顯示如何在4.0 和3.x 非同步 Api 之間建立資源的差異：
+下列程式碼片段顯示如何在 4.0 和 3.x.x 非同步 API 之間建立資源的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -145,7 +145,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
 }).subscribe();
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 ConnectionPolicy defaultPolicy = ConnectionPolicy.defaultPo"ic"();
@@ -177,9 +177,9 @@ client.createDatabaseIfNotExists("YourDatabaseName")
 ```
 ---
 
-### <a name="item-operations"></a>專案作業
+### <a name="item-operations"></a>項目操作
 
-下列程式碼片段顯示如何在4.0 和3.x 非同步 Api 之間執行專案作業的差異：
+下列程式碼片段顯示如何在 4.0 和 3.x.x 非同步 API 之間執行項目作業的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -194,7 +194,7 @@ Flux.fromIterable(docs)
     .subscribe(); // ...Subscribing triggers stream execution.
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 // Container is created. Generate many docs to insert.
@@ -210,7 +210,7 @@ Flux.fromIterable(docs)
 
 ### <a name="indexing"></a>編製索引
 
-下列程式碼片段顯示如何在4.0 和3.x 非同步 Api 之間建立索引的差異：
+下列程式碼片段顯示如何在4.0 和 3.x.x 非同步 API 之間建立索引的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -242,7 +242,7 @@ CosmosAsyncContainer containerIfNotExists = database.createContainerIfNotExists(
                                                     .getContainer();
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 CosmosContainerProperties containerProperties = new CosmosContainerProperties(containerName, "/lastName");
@@ -275,7 +275,7 @@ CosmosContainer containerIfNotExists = database.createContainerIfNotExists(conta
 
 ### <a name="stored-procedures"></a>預存程序
 
-下列程式碼片段顯示如何在4.0 和3.x 非同步 Api 之間建立預存程式的差異：
+下列程式碼片段顯示如何在4.0 和 3.x.x 非同步 API 之間建立預存程序的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -319,7 +319,7 @@ container.getScripts()
         }).block();
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 logger.info("Creating stored procedure...\n");
@@ -364,7 +364,7 @@ container.getScripts()
 
 ### <a name="change-feed"></a>變更摘要
 
-下列程式碼片段顯示如何在4.0 和3.x 非同步 Api 之間執行變更摘要作業的差異：
+下列程式碼片段顯示如何在4.0 和 3.x.x 非同步 API 之間執行變更摘要作業的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -407,7 +407,7 @@ ChangeFeedProcessor.changeFeedProcessorBuilder()
                             .subscribe();
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 ChangeFeedProcessor changeFeedProcessorInstance = 
@@ -443,9 +443,9 @@ ChangeFeedProcessor.Builder()
 ```
 ---
 
-### <a name="container-level-time-to-livettl"></a>容器層級存留時間（TTL）
+### <a name="container-level-time-to-livettl"></a>容器層級存留時間 (TTL)
 
-下列程式碼片段顯示如何使用4.0 和3.x 非同步 Api，為容器中的資料建立存留時間的差異：
+下列程式碼片段顯示如何使用 4.0 和 3.x.x 非同步 API 為容器中的資料建立存留時間的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -458,7 +458,7 @@ containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 CosmosContainer container;
@@ -470,9 +470,9 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 ```
 ---
 
-### <a name="item-level-time-to-livettl"></a>專案層級存留時間（TTL）
+### <a name="item-level-time-to-livettl"></a>項目層級存留時間 (TTL)
 
-下列程式碼片段顯示如何使用4.0 和3.x 非同步 Api，為專案建立存留時間的差異：
+下列程式碼片段顯示如何使用 4.0 和 3.x.x 非同步 API 為項目建立存留時間的差異：
 
 # <a name="java-sdk-40-async-api"></a>[JAVA SDK 4.0 非同步 API](#tab/java-v4-async)
 
@@ -508,7 +508,7 @@ SalesOrder salesOrder = new SalesOrder(
 );
 ```
 
-# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x-x 非同步 API](#tab/java-v3-async)
+# <a name="java-sdk-3xx-async-api"></a>[JAVA SDK 3.x.x 非同步 API](#tab/java-v3-async)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -545,6 +545,6 @@ SalesOrder salesOrder = new SalesOrder(
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立 JAVA 應用程式](create-sql-api-java.md)，以使用 V4 SDK 來管理 AZURE COSMOS DB SQL API 資料
-* 瞭解以[Reactor 為基礎的 JAVA sdk](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
-* 瞭解如何使用[Reactor Vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)將 RxJAVA 非同步程式碼轉換成 Reactor 非同步程式碼
+* [建置 JAVA 應用程式](create-sql-api-java.md)來使用 V4 SDK 管理 Azure Cosmos DB SQL API 資料
+* 瞭解[以 Reactor 為基礎的 JAVA SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
+* 瞭解如何使用 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)將 RxJAVA 非同步程式碼轉換成 Reactor 非同步程式碼

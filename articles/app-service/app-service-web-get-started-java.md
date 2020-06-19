@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ed46859184dd17141892373943ac43e407b21eb6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300938"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817676"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入門：在 Windows 上的 Azure App Service 中建立 Java 應用程式
 
@@ -48,6 +48,8 @@ cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>設定 Maven 外掛程式
+
+部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)的詳細資料。
 
 您可以在命令提示字元處，執行下列 maven 命令來設定部署，為第一個步驟中的 **Windows** OS 選擇 ['2']，然後按 **ENTER** 鍵接受預設設定，直到出現 [確認 (是/否)] 提示，然後按 ['y'] 完成設定。 
 

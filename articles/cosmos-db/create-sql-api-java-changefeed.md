@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 34341e39f2db78d8f0d3355d180a2781229f232f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8357c10ad8a623a0c9cfc90c236ea28d89cc332a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651146"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738459"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何建立 Java 應用程式，以使用 Azure Cosmos DB SQL API 和變更摘要處理器
 
@@ -91,17 +91,7 @@ mvn clean package
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
-    changeFeedProcessorInstance.start()
-        .subscribeOn(Schedulers.elastic())
-        .doOnSuccess(aVoid -> {
-            isProcessorRunning.set(true);
-        })
-        .subscribe();
-
-    while (!isProcessorRunning.get()); //Wait for change feed processor start
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=InitializeCFP)]
 
     ```"SampleHost_1"``` 是變更摘要處理器背景工作角色的名稱。 ```changeFeedProcessorInstance.start()``` 實際上會啟動變更摘要處理器。
 
@@ -113,30 +103,7 @@ mvn clean package
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
-        ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
-        cfOptions.setFeedPollDelay(Duration.ofMillis(100));
-        cfOptions.setStartFromBeginning(true);
-        return ChangeFeedProcessor.changeFeedProcessorBuilder()
-            .setOptions(cfOptions)
-            .setHostName(hostName)
-            .setFeedContainer(feedContainer)
-            .setLeaseContainer(leaseContainer)
-            .setHandleChanges((List<JsonNode> docs) -> {
-                for (JsonNode document : docs) {
-                        //Duplicate each document update from the feed container into the materialized view container
-                        updateInventoryTypeMaterializedView(document);
-                }
-
-            })
-            .build();
-    }
-
-    private static void updateInventoryTypeMaterializedView(JsonNode document) {
-        typeContainer.upsertItem(document).subscribe();
-    }
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=CFPCallback)]
 
 1. 允許程式碼執行 5-10 秒。 然後返回 Azure 入口網站資料總管，並巡覽至 **InventoryContainer > items**。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
 
@@ -154,32 +121,7 @@ mvn clean package
     
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    public static void deleteDocument() {
-
-        String jsonString =    "{\"id\" : \"" + idToDelete + "\""
-                + ","
-                + "\"brand\" : \"Jerry's\""
-                + ","
-                + "\"type\" : \"plums\""
-                + ","
-                + "\"quantity\" : \"50\""
-                + ","
-                + "\"ttl\" : 5"
-                + "}";
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode document = null;
-
-        try {
-            document = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
-    }    
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=DeleteWithTTL)]
 
     變更摘要 ```feedPollDelay``` 已設定為 100 毫秒；因此，變更摘要幾乎會立即回應此更新，並呼叫如上所示的 ```updateInventoryTypeMaterializedView()```。 最後一個函式呼叫會將 TTL 為 5 秒的新文件 upsert 到 **InventoryContainer-pktype** 中。
 

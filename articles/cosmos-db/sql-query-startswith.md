@@ -1,35 +1,38 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 STARTSWITH
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 STARTSWITH。
+title: Azure Cosmos DB 查詢語言中的 StartsWith
+description: 深入了解 Azure Cosmos DB 中的 SQL 系統函數 STARTSWITH。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295703"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847109"
 ---
-# <a name="startswith-azure-cosmos-db"></a>STARTSWITH （Azure Cosmos DB）
+# <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+
  傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。  
   
 ## <a name="syntax"></a>語法
   
 ```sql
-STARTSWITH(<str_expr1>, <str_expr2>)  
+STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>引數
   
 *str_expr1*  
-   這是字串運算式。
+   是字串運算式。
   
 *str_expr2*  
-   這是要與*str_expr1*開頭比較的字串運算式。
+   是要與 *str_expr1* 的開頭進行比較的字串運算式。
+
+*bool_expr* 忽略大小寫的選擇性值。 設定為 True 時，STARTSWITH 將執行不區分大小寫的搜尋。 若未指定，則此值為 False。
 
 ## <a name="return-types"></a>傳回類型
   
@@ -37,21 +40,27 @@ STARTSWITH(<str_expr1>, <str_expr2>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會檢查字串 "abc" 是否以 "b" 和 "a" 開頭。  
+下列範例會檢查字串 "abc" 是否以 "b" 和 "A" 開頭。  
   
 ```sql
-SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
+SELECT STARTSWITH("abc", "b", false) AS s1, STARTSWITH("abc", "A", false) AS s2, STARTSWITH("abc", "A", true) AS s3
 ```  
   
  以下為結果集。  
   
 ```json
-[{"s1": false, "s2": true}]  
+[
+    {
+        "s1": false,
+        "s2": false,
+        "s3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

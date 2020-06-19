@@ -12,14 +12,14 @@ ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 717a9e9d3cc1dec350d0b4ace54687590f741768
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340975"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737286"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教學課程：使用 Azure CLI 建立 NAT 閘道並測試 NAT 服務
 
@@ -43,6 +43,7 @@ ms.locfileid: "84340975"
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>建立 NAT 閘道
@@ -56,6 +57,7 @@ ms.locfileid: "84340975"
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>建立公用 IP 前置詞
@@ -67,6 +69,7 @@ ms.locfileid: "84340975"
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>建立 NAT 閘道資源
@@ -84,6 +87,7 @@ ms.locfileid: "84340975"
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 此時，NAT 閘道可正常運作，而現在唯一缺少的就是設定虛擬網路的哪些子網路應使用此閘道。
@@ -101,11 +105,11 @@ ms.locfileid: "84340975"
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>設定來源子網路的 NAT 服務
@@ -118,6 +122,7 @@ ms.locfileid: "84340975"
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 所有連結到網際網路目的地的輸出流量現在都會使用 NAT 服務。  您不需要設定 UDR。
@@ -135,6 +140,7 @@ ms.locfileid: "84340975"
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>建立來源 VM 的 NSG
@@ -145,6 +151,7 @@ ms.locfileid: "84340975"
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>公開來源 VM 上的 SSH 端點
@@ -162,6 +169,7 @@ ms.locfileid: "84340975"
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>建立來源 VM 的 NIC
@@ -176,6 +184,7 @@ ms.locfileid: "84340975"
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>建立來源 VM
@@ -190,6 +199,7 @@ ms.locfileid: "84340975"
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 雖然命令會立即傳回，但可能需要幾分鐘的時間來部署 VM。
@@ -207,11 +217,11 @@ ms.locfileid: "84340975"
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>建立目的地 VM 的公用 IP
@@ -222,8 +232,8 @@ ms.locfileid: "84340975"
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>建立目的地 VM 的 NSG
@@ -233,8 +243,8 @@ ms.locfileid: "84340975"
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>公開目的地 VM 上的 SSH 端點
@@ -252,6 +262,7 @@ ms.locfileid: "84340975"
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>公開目的地 VM 上的 HTTP 端點
@@ -269,6 +280,7 @@ ms.locfileid: "84340975"
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>建立目的地 VM 的 NIC
@@ -282,8 +294,8 @@ ms.locfileid: "84340975"
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>建立目的地 VM
@@ -297,8 +309,8 @@ ms.locfileid: "84340975"
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 雖然命令會立即傳回，但可能需要幾分鐘的時間來部署 VM。
 
@@ -312,6 +324,7 @@ ms.locfileid: "84340975"
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -328,16 +341,14 @@ ssh <ip-address-destination>
 當您登入之後，請複製並貼上下列命令。  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 這些命令會更新您的虛擬機器、安裝 nginx，並建立 100 Kb 的檔案。 系統會使用 NAT 服務從來源 VM 擷取此檔案。
@@ -354,6 +365,7 @@ sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -370,12 +382,9 @@ ssh <ip-address-source>
 複製並貼上下列命令，以準備測試 NAT 服務。
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -411,6 +420,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>後續步驟

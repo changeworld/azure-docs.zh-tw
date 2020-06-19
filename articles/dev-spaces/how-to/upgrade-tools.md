@@ -5,12 +5,12 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 description: 瞭解如何升級 Azure Dev Spaces 命令列工具、Visual Studio Code 延伸模組，以及 Visual Studio 擴充功能
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
-ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1dad455b834bbef046b295b2cba040831a74f757
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265229"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873491"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升級 Azure Dev Spaces 工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "79265229"
 
 ## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>更新 Dev Spaces CLI 擴充功能和命令列工具
 
-執行下列命令：
+執行以下命令：
 
 ```azurecli
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update
@@ -33,13 +33,11 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 ## <a name="update-the-vs-code-extension"></a>更新 VS Code 擴充功能
 
-安裝之後，會自動更新擴充功能。 您可能需要重新載入擴充功能以使用新功能。 在 VS Code 中，開啟 [擴充功能]**** 窗格，選擇 [Azure Dev Spaces]**** 擴充功能，然後選擇 [重新載入]****。
+安裝之後，會自動更新擴充功能。 您可能需要重新載入擴充功能以使用新功能。 在 VS Code 中，開啟 [擴充功能] 窗格，選擇 [Azure Dev Spaces] 擴充功能，然後選擇 [重新載入]。
 
-## <a name="update-the-visual-studio-extension"></a>更新 Visual Studio 擴充功能
+## <a name="update-visual-studio"></a>更新 Visual Studio
 
-正如其他擴充功能和更新一樣，當適用於 Kubernetes 的 Visual Studio Tools 有可用的更新時 (包括 Azure Dev Spaces)，Visual Studio 會通知您。 在畫面右上角尋找旗標圖示。
-
-若要更新 Visual Studio 中的工具，請選擇 [工具] > [擴充功能和更新]**** 功能表項目，然後在左側選擇 [更新]****。 尋找 [適用於 Kubernetes 的 Visual Studio Tools]**** ，然後選擇 [更新]**** 按鈕。
+Azure Dev Spaces 是 Azure 開發工作負載的一部份，而且包含在所有 Visual Studio 更新中。
 
 ## <a name="next-steps"></a>後續步驟
 

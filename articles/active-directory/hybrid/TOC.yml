@@ -188,6 +188,8 @@
       items:
         - name: 啟用裝置回寫
           href: how-to-connect-device-writeback.md
+        - name: 啟用群組回寫
+          href: how-to-connect-group-writeback.md
         - name: 裝置選項
           href: how-to-connect-device-options.md
         - name: Azure AD Connect 的其他功能

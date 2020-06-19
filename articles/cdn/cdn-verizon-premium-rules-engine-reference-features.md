@@ -1,171 +1,30 @@
 ---
-title: 來自 Verizon 的 Azure CDN Premium 規則引擎功能 |Microsoft Docs
-description: 來自 Verizon 的 Azure CDN Premium 規則引擎功能的參考檔。
+title: 來自 Verizon Premium 的 Azure CDN 規則引擎功能 | Microsoft Docs
+description: 來自 Verizon Premium 的 Azure CDN 規則引擎功能的參考文件。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253487"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872723"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>來自 Verizon 的 Azure CDN Premium 規則引擎功能
+# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>來自 Verizon Premium 的 Azure CDN 規則引擎功能
 
 本本會針對 Azure 內容傳遞網路 (CDN) [規則引擎](cdn-verizon-premium-rules-engine.md)列出可用功能的詳細說明。
 
 規則的第三個部分是功能。 功能會定義動作類型，以套用到透過一組比對條件來識別的要求類型。
 
-## <a name="access-features"></a>存取功能
 
-這些功能是設計來控制內容的存取權。
-
-名稱 | 目的
------|--------
-[拒絕存取 (403)](#deny-access-403) | 判斷所有要求是否已遭拒絕且含有 [403 禁止] 回應。
-[權杖驗證](#token-auth) | 判斷是否將權杖型驗證套用到要求。
-[權杖驗證拒絕代碼](#token-auth-denial-code) | 判斷在要求因權杖型驗證而遭到拒絕時傳回給使用者的回應類型。
-[權杖驗證會忽略 URL 的大小寫](#token-auth-ignore-url-case) | 判斷透過權杖型驗證所做的 URL 比較是否區分大小寫。
-[權杖驗證參數](#token-auth-parameter) | 判斷是否應將權杖型驗證查詢字串參數重新命名。
-
-## <a name="caching-features"></a>快取功能
-
-這些功能是設計來自訂快取內容的時機和方法。
-
-名稱 | 目的
------|--------
-[頻寬參數](#bandwidth-parameters) | 判斷是否使用頻寬節流設定參數 (例如 ec_rate 和 ec_prebuf)。
-[頻寬節流設定](#bandwidth-throttling) | 針對存在點 (POP) 所提供的回應進行頻寬節流。
-[略過快取](#bypass-cache) | 判斷要求是否應略過快取。
-[Cache-Control 標頭處理](#cache-control-header-treatment) | 當 [外部最大壽命] 功能為作用中時，透過 POP 來控制 `Cache-Control` 標頭的產生。
-[快取索引鍵查詢字串](#cache-key-query-string) | 判斷快取索引鍵會包含或排除與要求相關聯的佇列字串參數。
-[快取索引鍵重寫](#cache-key-rewrite) | 重寫與要求相關聯的快取索引鍵。
-[完成快取填滿](#complete-cache-fill) | 決定當要求導致在 POP 上發生部分快取遺失時要執行的動作。
-[壓縮檔案類型](#compress-file-types) | 定義將在伺服器上壓縮的檔案之檔案格式。
-[預設的內部最大壽命](#default-internal-max-age) | 決定 POP 向原始伺服器重新驗證快取之前的預設最大壽命間隔。
-[Expires 標頭處理](#expires-header-treatment) | 當 [外部最大壽命] 功能為作用中時，透過 POP 來控制 `Expires` 標頭的產生。
-[外部最大壽命](#external-max-age) | 決定瀏覽器向 POP 重新驗證快取之前的最大壽命間隔。
-[強制執行內部最大壽命](#force-internal-max-age) | 決定 POP 向原始伺服器重新驗證快取之前的最大壽命間隔。
-[H.264 支援 (HTTP 漸進式下載)](#h264-support-http-progressive-download) | 判斷可能用於串流處理內容的 H.264 檔案格式類型。
-[接受無快取要求](#honor-no-cache-request) | 判斷是否要將 HTTP 用戶端的 no-cache 要求轉送到原始伺服器。
-[忽略原始的 No-Cache](#ignore-origin-no-cache) | 判斷 CDN 是否忽略原始伺服器所提供的特定指示詞。
-[忽略無法滿足的範圍](#ignore-unsatisfiable-ranges) | 判斷在要求產生「416 無法滿足的要求範圍」狀態代碼時傳回給用戶端的要求。
-[內部最大過時](#internal-max-stale) | 控制當 POP 無法向原始伺服器重新驗證所快取的資產時，在過了標準到期時間多久之後仍可從 POP 提供所快取的資產。
-[部分快取共用](#partial-cache-sharing) | 判斷要求是否可以產生部分快取的內容。
-[預先驗證快取的內容](#prevalidate-cached-content) | 在快取內容的 TTL 到期之前，判斷其是否適合進行早期重新驗證。
-[重新整理零位元組的快取檔案](#refresh-zero-byte-cache-files) | 決定 POP 如何處理 HTTP 用戶端的 0 位元組快取資產要求。
-[設定可快取的狀態碼](#set-cacheable-status-codes) | 定義一組可產生快取內容的狀態碼。
-[發生錯誤時傳遞過時的內容](#stale-content-delivery-on-error) | 判斷在快取重新驗證期間發生錯誤時，或者在接收到來自客戶原始伺服器的要求內容時，是否要傳遞到期的快取內容。
-[在重新驗證時過期](#stale-while-revalidate) | 藉由允許 POP 在進行重新驗證時提供過時的用戶端給要求者來改善效能。
-
-## <a name="comment-feature"></a>註解功能
-
-這項功能設計用來提供規則內的其他資訊。
-
-名稱 | 目的
------|--------
-[註解](#comment) | 能夠在規則中新增附註。
-
-## <a name="header-features"></a>標題功能
-
-這些功能是設計來新增、修改或刪除要求或回應的標頭。
-
-名稱 | 目的
------|--------
-[Age 回應標頭](#age-response-header) | 判斷 Age 回應標頭是否包含於傳送給要求者的回應中。
-[偵錯快取回應標頭](#debug-cache-response-headers) | 判斷回應是否會包含於 X-EC-Debug 回應標頭中，其會在快取原則上提供要求資產的相關資訊。
-[修改用戶端要求標頭](#modify-client-request-header) | 覆寫、附加或刪除要求的標頭。
-[修改用戶端回應標頭](#modify-client-response-header) | 覆寫、附加或刪除回應的標頭。
-[設定用戶端 IP 自訂標頭](#set-client-ip-custom-header) | 允許將要新增到要求的要求用戶端 IP 位址做為自訂要求標頭。
-
-## <a name="logging-features"></a>記錄功能
-
-這些功能是設計來自訂儲存於原始記錄檔中的資料。
-
-名稱 | 目的
------|--------
-[自訂記錄欄位 1](#custom-log-field-1) | 判斷要指派給原始記錄檔中自訂記錄欄位的格式和內容。
-[記錄查詢字串](#log-query-string) | 判斷查詢字串以及 URL 是否會一起儲存於存取記錄中。
+如需最新功能，請參閱 [Verizon 規則引擎文件](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions) \(英文\)。
 
 
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>原始功能
-
-這些功能是設計來控制 CDN 與原始伺服器通訊的方式。
-
-名稱 | 目的
------|--------
-[最大 Keep-Alive 要求數目](#maximum-keep-alive-requests) | 判斷在關閉 Keep-Alive 連線之前，適用於該連線的最大要求數目。
-[Proxy 特定的標頭](#proxy-special-headers) | 定義從 POP 轉送到原始伺服器的一組 CDN 特定要求標頭。
-
-## <a name="specialty-features"></a>特性功能
-
-這些功能可為進階使用者提供進階功能。
-
-名稱 | 目的
------|--------
-[可快取的 HTTP 方法](#cacheable-http-methods) | 判斷可在網路上快取的其他 HTTP 方法組。
-[可快取的要求主體大小](#cacheable-request-body-size) | 定義用以判斷是否可快取 POST 回應的臨界值。
-[User 變數](#user-variable) | 僅供內部使用。
-
-## <a name="url-features"></a>URL 功能
-
-這些功能可讓要求重新導向至不同的 URL 或重寫為不同的 URL。
-
-名稱 | 目的
------|--------
-[遵循重新導向](#follow-redirects) | 判斷要求是否可以重新導向至定義於客戶原始伺服器所傳回之位置標頭中的主機名稱。
-[URL 重新導向](#url-redirect) | 透過位置標頭將要求重新導向。
-[URL 重寫](#url-rewrite)  | 重寫要求 URL。
-
-## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>來自 Verizon 的 Azure CDN Premium 規則引擎功能參考
+## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>來自 Verizon Premium 的 Azure CDN 規則引擎功能參考
 
 ---
 
@@ -176,7 +35,7 @@ If the desired site does not appear in the list, then you should edit its config
 值|結果
 --|--
 啟用 | Age 回應標頭會包含於傳送給要求者的回應中。
-停用 | Age 回應標頭會從傳送給要求者的回應中排除。
+已停用 | Age 回應標頭會從傳送給要求者的回應中排除。
 
 **預設行為**：已停用。
 
@@ -188,14 +47,14 @@ If the desired site does not appear in the list, then you should edit its config
 
 ### <a name="bandwidth-parameters"></a>頻寬參數
 
-**目的：** 判斷是否使用頻寬節流參數 (例如 ec_rate 和 ec_prebuf)。
+**目的：** 判斷是否使用頻寬節流設定參數 (例如 ec_rate 和 ec_prebuf)。
 
 頻寬節流參數會判斷是否要將用戶端要求的資料傳輸速率限制為自訂的速率。
 
 值|結果
 --|--
 啟用|允許 POP 接受頻寬節流設定要求。
-停用|導致 POP 忽略頻寬節流設定參數。 通常會提供要求的內容 (亦即，不需頻寬節流)。
+已停用|導致 POP 忽略頻寬節流設定參數。 通常會提供要求的內容 (亦即，不需頻寬節流)。
 
 **預設行為：** 已啟用。
 
@@ -216,7 +75,7 @@ If the desired site does not appear in the list, then you should edit its config
 每秒 KB 數|將此選項設定為可能用來傳遞回應的最大頻寬 (每秒 KB 數)。
 Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數。 這段不受頻寬限制之期間的用意是防止媒體播放器因為頻寬節流設定而遇到間斷或緩衝處理問題。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -231,11 +90,11 @@ Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數�
 值|結果
 --|--
 啟用|導致將所有要求都直接導向至原始伺服器，即使先前已將內容快取在 POP 上也一樣。
-停用|導致 POP 根據其回應標頭中所定義的快取原則來快取資產。
+已停用|導致 POP 根據其回應標頭中所定義的快取原則來快取資產。
 
 **預設行為：**
 
-- **HTTP 大型︰** 已停用
+- **HTTP 大型：** 已停用
 
 <!---
 - **ADN:** Enabled
@@ -250,7 +109,7 @@ Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數�
 
 ### <a name="cacheable-http-methods"></a>可快取的 HTTP 方法
 
-**目的：** 判斷一組可在網路上快取的其他 HTTP 方法。
+**目的：** 判斷可在網路上快取的其他 HTTP 方法組。
 
 重要資訊：
 
@@ -258,7 +117,7 @@ Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數�
 - 此功能僅支援 POST HTTP 方法。 將此功能設定為 `POST`，以啟用 POST 回應快取。
 - 根據預設，只會快取主體小於 14 Kb 的要求。 使用 [可快取的要求主體大小] 功能來設定要求主體大小上限。
 
-**預設行為︰** 只會快取 GET 回應。
+**預設行為：** 只會快取 GET 回應。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -279,10 +138,10 @@ Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數�
     - x-www-form-urlencoded 值
     - 確保唯一的快取索引鍵
 - 定義大型的要求主體大小上限可能會影響資料傳遞效能。
-    - **建議值：** 14 Kb
-    - **最小值︰** 1 Kb
+    - **建議值：** 14 KB
+    - **最小值：** 1 KB
 
-**預設行為︰** 14 Kb
+**預設行為：** 14 KB
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -292,7 +151,7 @@ Prebuf 秒|將此選項設定為 POP 在頻寬進行節流前所等候的秒數�
 
 ### <a name="cache-control-header-treatment"></a>Cache-Control 標頭處理
 
-**目的：** 當 [外部最大壽命] 功能為作用中時，透過 POP 來控制 `Cache-Control` 標頭的產生。
+**目的：** 當外部最大壽命功能為作用中時，透過 POP 來控制 `Cache-Control` 標頭的產生。
 
 完成這類型組態的最簡單方式是將 [外部最大壽命] 和 [Cache-Control 標頭處理] 功能放在同一個陳述式中。
 
@@ -303,7 +162,7 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 如果遺失則加入|如果 `Cache-Control` 標頭不是接收自原始伺服器，則此選項會新增 [外部最大壽命] 功能所產生的 `Cache-Control` 標頭。 若要確保為所有資產指派 `Cache-Control` 標頭，此選項非常有用。
 移除| 此選項可確保標頭回應中不會包含 `Cache-Control` 標頭。 如果已經指派 `Cache-Control` 標頭，則會從標頭回應中移除它。
 
-**預設行為：** 改寫.
+**預設行為：** 覆寫。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -320,7 +179,7 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 - 指定一或多個查詢字串參數名稱，然後以單一空格分隔每個參數名稱。
 - 此功能會判斷要在快取索引鍵中包含查詢字串參數或從中排除。 下表提供每個選項的其他資訊。
 
-類型|說明
+類型|描述
 --|--
  包含|  指出應該在快取索引鍵中包含每個指定的參數。 系統會針對每個要求產生唯一的快取索引鍵，其中包含此功能中所定義之查詢字串參數的唯一值。
  全部包含  |指出會針對每個包含唯一查詢字串的資產要求建立唯一的快取索引鍵。 通常不建議使用此類型的設定，因為它可能會導致一小部分的快取命中數。 快取命中數過低會使原始伺服器的負載增加，因為它必須提供更多的要求。 這個組態會複製 [查詢字串快取] 頁面上名為「unique-cache」的快取行為。
@@ -338,14 +197,14 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 
 下列範例是這項功能的使用方式，會提供範例要求和預設快取金鑰：
 
-- **範例要求：** http://wpc.0001.&lt;D omain&gt;/800001/Origin/folder/asset.htm？ sessionid = 1234&language = EN&userid = 01
-- **預設的快取索引鍵︰**/800001/Origin/folder/asset.htm
+- **要求範例︰** http://wpc.0001.&lt;Domain&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **預設的快取索引鍵︰** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>包含
 
 範例組態：
 
-- **類型︰** 包括
+- **類型：** 包含
 - **參數︰** 語言
 
 這類型的組態會產生下列查詢字串參數快取索引鍵：
@@ -356,7 +215,7 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 
 範例組態：
 
-- **類型︰** 全部包括
+- **類型：** 全部包含
 
 這類型的組態會產生下列查詢字串參數快取索引鍵：
 
@@ -366,8 +225,8 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 
 範例組態：
 
-- **類型︰** 排除
-- **參數：** sessioned userid
+- **類型：** 排除
+- **參數︰** 工作階段的使用者識別碼
 
 這類型的組態會產生下列查詢字串參數快取索引鍵：
 
@@ -377,7 +236,7 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 
 範例組態：
 
-- **類型︰** 全部排除
+- **類型：** 全部排除
 
 這類型的組態會產生下列查詢字串參數快取索引鍵：
 
@@ -400,9 +259,9 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 選項|描述
 --|--
 原始路徑| 定義將重寫快取索引鍵之要求類型的相對路徑。 相對路徑可藉由選取基底原始路徑，然後定義規則運算式模式來定義。
-新路徑|定義新快取索引鍵的相對路徑。 相對路徑可藉由選取基底原始路徑，然後定義規則運算式模式來定義。 此相對路徑可以透過使用[HTTP 變數](cdn-http-variables.md)來動態地進行。
+新路徑|定義新快取索引鍵的相對路徑。 相對路徑可藉由選取基底原始路徑，然後定義規則運算式模式來定義。 此相對路徑可使用 [HTTP 變數](cdn-http-variables.md)來動態建構。
 
-**預設行為︰** 要求的快取索引鍵是依要求 URI 來判斷。
+**預設行為：** 要求的快取索引鍵會依要求 URI 來判斷。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -412,7 +271,7 @@ Overwrite|確保會進行下列動作：<br/> - 覆寫原始伺服器所產生�
 
 ### <a name="comment"></a>註解
 
-**目的：** 能夠在規則中加入附註。
+**目的：** 能夠在規則中新增附註。
 
 此功能的用途之一是提供一般用途的規則，或是為何要將特定比對條件或功能加入至規則的其他相關資訊。
 
@@ -444,7 +303,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 值|結果
 --|--
 啟用|還原預設行為。 預設行為是強制 POP 在背景從原始伺服器起始資產擷取。 之後，資產就會在 POP 的本機快取中。
-停用|防止 POP 在背景執行資產擷取。 結果是從該區域對該資產發出下一個要求時，會導致 POP 向客戶原始伺服器要求該資產。
+已停用|防止 POP 在背景執行資產擷取。 結果是從該區域對該資產發出下一個要求時，會導致 POP 向客戶原始伺服器要求該資產。
 
 **預設行為：** 已啟用。
 
@@ -463,7 +322,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 - 要求標頭常值
 - 要求標頭 Regex
 - 要求標頭萬用字元
-- Request 方法
+- 要求方法
 - 要求配置
 - URL 查詢常值
 - URL 查詢 Regex
@@ -487,8 +346,8 @@ This feature is not available for the ADN platform. The typical traffic on this 
 text/plain|純文字檔案
 text/html| HTML 檔案
 text/css|階層式樣式表 (CSS)
-application/x-javascript|Javascript
-application/javascript|Javascript
+application/x-javascript|JavaScript
+application/javascript|JavaScript
 
 重要資訊：
 
@@ -514,9 +373,9 @@ application/javascript|Javascript
 
 用於指定要求和回應標頭的格式定義如下：
 
-標頭類型|格式|範例
+標頭類型|[格式]|範例
 -|-|-
-要求標頭|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {訪客} i <br/> %{Authorization}i
+要求標頭|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
 回應標頭|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 重要資訊：
@@ -527,7 +386,7 @@ application/javascript|Javascript
 - 如果您需要指定多個標頭，請使用分隔符號來表示每個標頭。 例如，您可以針對每個標頭使用縮寫：
     - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o
 
-**預設值：** -
+**預設值：**  -
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -547,16 +406,16 @@ application/javascript|Javascript
 
 `X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
-**範例：**
+**範例︰**
 
 X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 值|結果
 -|-
 啟用|偵錯快取回應標頭的要求將傳回包含 X-EC-Debug 標頭的回應。
-停用|X-EC-Debug 回應標頭將會從回應中排除。
+已停用|X-EC-Debug 回應標頭將會從回應中排除。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -595,7 +454,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 - 要求標頭常值
 - 要求標頭 Regex
 - 要求標頭萬用字元
-- Request 方法
+- 要求方法
 - 要求配置
 - URL 查詢常值
 - URL 查詢 Regex
@@ -610,12 +469,12 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ### <a name="deny-access-403"></a>拒絕存取 (403)
 
-**目的**：判斷所有要求是否已遭拒且含有 [403 禁止] 回應。
+**目的**：判斷所有要求是否已遭拒絕且含有 [403 禁止] 回應。
 
 值 | 結果
 ------|-------
 啟用| 導致所有滿足比對準則的要求遭拒，且具有 [403 禁止] 回應。
-停用| 還原預設行為。 預設行為是讓原始伺服器能夠判斷將傳回的回應類型。
+已停用| 還原預設行為。 預設行為是讓原始伺服器能夠判斷將傳回的回應類型。
 
 **預設行為**：已停用
 
@@ -641,7 +500,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 如果遺失則加入| 如果 `Expires` 標頭不是接收自原始伺服器，則此選項會新增 [外部最大壽命] 功能所產生的 `Expires` 標頭。 若要確保會為所有資產指派 `Expires` 標頭，此選項非常有用。
 移除| 確保標頭回應中不會包含 `Expires` 標頭。 如果已經指派 `Expires` 標頭，則會從標頭回應中移除它。
 
-**預設行為：** 覆寫
+**預設行為：** Overwrite
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -672,7 +531,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 
 ### <a name="follow-redirects"></a>遵循重新導向
 
-**目的：** 判斷是否可將要求重新導向至定義於客戶原始伺服器所傳回之位置標頭中的主機名稱。
+**目的：** 判斷要求是否可以重新導向至定義於客戶原始伺服器所傳回之位置標頭中的主機名稱。
 
 重要資訊：
 
@@ -681,9 +540,9 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 值|結果
 -|-
 啟用|要求可重新導向。
-停用|要求將不會重新導向。
+已停用|要求將不會重新導向。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -722,7 +581,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 - 要求標頭常值
 - 要求標頭 Regex
 - 要求標頭萬用字元
-- Request 方法
+- 要求方法
 - 要求配置
 - URL 查詢常值
 - URL 查詢 Regex
@@ -742,9 +601,9 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 重要資訊：
 
 - 在 [副檔名] 選項中，定義一組允許的 H.264 副檔名 (以空格分隔)。 [副檔名] 選項將會覆寫預設行為。 在設定此選項時包括這些副檔名，藉以保有 MP4 和 F4V 支援。
-- 指定每個副檔名 (例如 _.mp4_、_.f4v_) 時，請包含一個句點。
+- 指定每個副檔名 (例如 _.mp4_、 _.f4v_) 時，請包含一個句點。
 
-**預設行為︰** HTTP 漸進式下載預設支援 MP4 和 F4V 媒體。
+**預設行為：** HTTP 漸進式下載預設支援 MP4 和 F4V 媒體。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -761,13 +620,13 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 值|結果
 --|--
 啟用|允許將 HTTP 用戶端的 no-cache 要求轉送給原始伺服器，而原始伺服器則會透過 POP 將回應標頭和主體傳回給 HTTP 用戶端。
-停用|還原預設行為。 預設行為是防止將 no-cache 要求轉送到原始伺服器。
+已停用|還原預設行為。 預設行為是防止將 no-cache 要求轉送到原始伺服器。
 
 針對所有生產環境的流量，強烈建議將此功能保留為其預設的停用狀態。 否則，將無法為原始伺服器提供防護，來防範可能在重新整理網頁時不小心觸發許多 no-cache 要求的使用者，或防範許多已編碼成要隨著每個視訊要求傳送 no-cache 標題的熱門媒體播放器。 不過，此功能非常適合用來套用至特定的非生產環境暫存或測試目錄，以便隨時從原始伺服器提取隨最新內容。
 
 針對因此功能而得以轉送至原始伺服器的要求，報告的快取狀態為 `TCP_Client_Refresh_Miss`。 快取狀態報表 (可在 [核心報告] 模組中取得) 會依快取狀態提供統計資訊。 這份報告讓您能夠追蹤因此功能而轉送至原始伺服器的要求數目和百分比。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -777,7 +636,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 
 ### <a name="ignore-origin-no-cache"></a>忽略原始的 No-Cache
 
-**目的：** 判斷 CDN 是否將忽略原始伺服器所提供的特定指示詞：
+**目的：** 判斷 CDN 是否將忽略原始伺服器所提供的下列指示詞：
 
 - `Cache-Control: private`
 - `Cache-Control: no-store`
@@ -787,10 +646,10 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 重要資訊：
 
 - 定義將忽略上述指示詞的狀態碼清單 (以空格分隔)，藉以設定此功能。
-- 以下是此功能的有效狀態碼集合︰200、203、300、301、302、305、307、400、401、402、403、404、405、406、407、408、409、410、411、412、413、414、415、416、417、500、501、502、503、504 和 505。
+- 以下是此功能的有效狀態碼集合：200、203、300、301、302、305、307、400、401、402、403、404、405、406、407、408、409、410、411、412、413、414、415、416、417、500、501、502、503、504 及 505。
 - 藉由將其設為空白值來停用此功能。
 
-**預設行為︰** 預設行為是採用上述指示詞。
+**預設行為：** 預設行為是採用上述指示詞。
 
 #### <a name="compatibility"></a>相容性
 
@@ -806,7 +665,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 - 要求標頭常值
 - 要求標頭 Regex
 - 要求標頭萬用字元
-- Request 方法
+- 要求方法
 - 要求配置
 - URL 查詢常值
 - URL 查詢 Regex
@@ -821,16 +680,16 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 
 ### <a name="ignore-unsatisfiable-ranges"></a>忽略無法滿足的範圍
 
-**目的：** 判斷在要求產生 [416 無法滿足的要求範圍] 狀態代碼時將傳回用戶端的要求。
+**目的：** 判斷在要求產生「416 無法滿足的要求範圍」狀態代碼時將傳回用戶端的要求。
 
 根據預設，當 POP 無法滿足指定的位元組範圍要求，且未指定 If-Range 要求標頭欄位時，即會傳回此狀態碼。
 
 值|結果
 -|-
 啟用|防止 POP 使用「416 無法滿足的要求範圍」狀態碼來回應無效的位元組範圍要求。 伺服器將改為傳遞要求的資產，並將 [200 確定] 傳回用戶端。
-停用|還原預設行為。 預設行為是接受 [416 無法滿足的要求範圍] 狀態碼。
+已停用|還原預設行為。 預設行為是接受 [416 無法滿足的要求範圍] 狀態碼。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -874,7 +733,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 - 要求標頭常值
 - 要求標頭 Regex
 - 要求標頭萬用字元
-- Request 方法
+- 要求方法
 - 要求配置
 - URL 查詢常值
 - URL 查詢 Regex
@@ -889,14 +748,14 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 
 ### <a name="log-query-string"></a>記錄查詢字串
 
-**目的：** 判斷查詢字串是否將與 URL 一起儲存於存取記錄中。
+**目的：** 判斷查詢字串以及 URL 是否將一起儲存於存取記錄中。
 
 值|結果
 -|-
 啟用|在存取記錄中記錄 URL 時，允許儲存查詢字串。 如果 URL 未包含查詢字串，則此選項將不會有任何作用。
-停用|還原預設行為。 預設行為是在存取記錄中記錄 URL 時忽略查詢字串。
+已停用|還原預設行為。 預設行為是在存取記錄中記錄 URL 時忽略查詢字串。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -915,7 +774,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 - 將此值指定為整數。
 - 請勿在指定的值中包含逗號或句號。
 
-**預設值︰** 10,000 個要求
+**預設值：** 10,000 個要求
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -925,7 +784,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 
 ### <a name="modify-client-request-header"></a>修改用戶端要求標頭
 
-**目的︰** 每個要求都會包含一組說明其本身的 要求標頭。 此功能可以：
+**目的：** 每個要求都包含一組說明其本身的要求標頭。 此功能可以：
 
 - 附加或覆寫指派給要求標頭的值。 如果指定的要求標頭不存在，則此功能會將其加入至要求。
 - 刪除要求的要求標頭。
@@ -938,7 +797,7 @@ Overwrite|確保將會進行下列動作：<br/>- 覆寫原始伺服器所產生
 -|-|-
 附加|指定的值會新增至現有要求標頭值的結尾。|**要求標頭值 (用戶端)：**<br/>Value1<br/>**要求標頭值 (規則引擎)：**<br/>Value2 <br/>**新的要求標頭值：** <br/>Value1Value2
 Overwrite|要求標頭值將會設定為指定的值。|**要求標頭值 (用戶端)：**<br/>Value1<br/>**要求標頭值 (規則引擎)：**<br/>Value2<br/>**新的要求標頭值：**<br/> Value2 <br/>
-刪除|刪除指定的要求標頭。|**要求標頭值 (用戶端)：**<br/>Value1<br/>**修改用戶端要求標頭設定：**<br/>刪除指定的要求標頭。<br/>**結果：**<br/>指定的要求標頭將不會轉送到原始伺服器。
+刪除|刪除指定的要求標頭。|**要求標頭值 (用戶端)：**<br/>Value1<br/>**修改用戶端要求標頭設定：**<br/>刪除指定的要求標頭。<br/>**結果︰**<br/>指定的要求標頭將不會轉送到原始伺服器。
 
 重要資訊：
 
@@ -978,7 +837,7 @@ Overwrite|要求標頭值將會設定為指定的值。|**要求標頭值 (用�
 -|-|-
 附加|指定的值會新增至現有回應標頭值的結尾。|**回應標頭值 (用戶端)：**<br />Value1<br/>**回應標頭值 (規則引擎)：**<br/>Value2<br/>**新的回應標頭值：**<br/>Value1Value2
 Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用戶端)：**<br/>Value1<br/>**回應標頭值 (規則引擎)：**<br/>Value2 <br/>**新的回應標頭值：**<br/>Value2 <br/>
-刪除|刪除指定的回應標頭。|**回應標頭值 (用戶端)：**<br/>Value1<br/>**修改用戶端回應標頭設定：**<br/>刪除指定的回應標頭。<br/>**結果：**<br/>指定的回應標頭將不會轉送給要求者。
+刪除|刪除指定的回應標頭。|**回應標頭值 (用戶端)：**<br/>Value1<br/>**修改用戶端回應標頭設定：**<br/>刪除指定的回應標頭。<br/>**結果︰**<br/>指定的回應標頭將不會轉送給要求者。
 
 重要資訊：
 
@@ -991,7 +850,7 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 - 以下為保留的標頭，且此功能無法加以修改：
     - accept-encoding
     - age
-    - connection
+    - 連接
     - content-encoding
     - content-length
     - content-range
@@ -1020,9 +879,9 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 值|結果
 -|-
 啟用|要求可以產生部分快取的內容。
-停用|要求只能產生所要求內容的完整快取版本。
+已停用|要求只能產生所要求內容的完整快取版本。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1040,7 +899,7 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 
 - 選取「關閉」做為時間單位，需要在快取內容的 TTL 到期之後進行重新驗證。 不應指定時間，且將會予以忽略。
 
-**預設行為：** 停止. 重新驗證可能只會在快取內容的 TTL 到期之後進行。
+**預設行為：** 關閉。 重新驗證可能只會在快取內容的 TTL 到期之後進行。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1065,9 +924,9 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 - X-Midgress
 - X-Gateway-List
 - X-EC-Name
-- 主機
+- Host
 
-**預設行為︰** 所有 CDN 特定的要求標頭 都將轉送到原始伺服器。
+**預設行為：** 所有 CDN 特定的要求標頭都將轉送到原始伺服器。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1084,11 +943,11 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 值|結果
 --|--
 啟用|導致 POP 從原始伺服器重新擷取資產。
-停用|還原預設行為。 預設行為是根據要求提供有效的快取資產。
+已停用|還原預設行為。 預設行為是根據要求提供有效的快取資產。
 
-不需要此功能即可進行正確的快取和內容傳遞，但此功能可能有助於解決這個問題。 例如，原始伺服器上的動態內容產生器可能會不小心導致將 0 位元組回應傳送給 POP。 POP 通常會快取這些類型的回應。 如果您知道0個位元組的回應永遠不是對這類內容有效的回應，此功能可以防止這些類型的資產提供給您的用戶端。
+不需要此功能即可進行正確的快取和內容傳遞，但此功能可能有助於解決這個問題。 例如，原始伺服器上的動態內容產生器可能會不小心導致將 0 位元組回應傳送給 POP。 POP 通常會快取這些類型的回應。 如果您知道 0 位元組的回應絕對不是此類內容的有效回應，則此功能可防止將這些類型的資產提供給用戶端。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1107,10 +966,10 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 重要資訊：
 
 - 啟用 [忽略原始的 No-Cache] 功能。 如果未啟用此功能，可能不會快取非 [200 確定] 的回應。
-- 以下是此功能的有效狀態碼集合︰203、300、301、302、305、307、400、401、402、403、404、405、406、407、408、409、410、411、412、413、414、415、416、417、500、501、502、503、504 和 505。
+- 以下是此功能的有效狀態碼集合：203、300、301、302、305、307、400、401、402、403、404、405、406、407、408、409、410、411、412、413、414、415、416、417、500、501、502、503、504 及 505。
 - 此功能無法用來針對產生 [200 確定] 狀態碼的回應停用快取。
 
-**預設行為︰** 只會針對產生 [200 確定] 狀態碼的回應啟用快取。
+**預設行為：** 只會針對產生 [200 確定] 狀態碼的回應啟用快取。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1120,7 +979,7 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 
 ### <a name="set-client-ip-custom-header"></a>設定用戶端 IP 自訂標頭
 
-**目的︰** 依 IP 位址識別要求用戶端的自訂標頭加入至要求。
+**目的：** 將依 IP 位址識別要求用戶端的自訂標頭加入至要求。
 
 [標頭名稱] 選項會定義儲存用戶端 IP 位址的自訂要求標頭名稱。
 
@@ -1151,9 +1010,9 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 值|結果
 -|-
 啟用|與原始伺服器連接期間發生錯誤時，即會將過時的內容提供給要求者。
-停用|系統會將原始伺服器的錯誤轉送給要求者。
+已停用|系統會將原始伺服器的錯誤轉送給要求者。
 
-**預設行為：** 禁止
+**預設行為：** 已停用
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1168,11 +1027,11 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 重要資訊：
 
 - 此功能的行為會根據選取的時間單位而不同。
-    - **時間單位︰** 指定的時間長度，然後選取允許過時內容傳遞的時間單位 (例如，秒、分鐘、小時等)。 此類型的安裝程式可讓 CDN 根據下列公式，延長可能傳遞內容的時間長度： **TTL** + **在重新驗證時間過時**
-    - **關閉：** 選取「關閉」，以便在可能提供過時內容的要求之前，要求重新驗證。
+    - **時間單位：** 指定的時間長度，然後選取允許過時內容傳遞的時間單位 (例如，秒、分鐘、小時等)。 此類型的設定可讓 CDN 根據下列公式，延長在要求驗證之前可傳遞內容的時間長度：**TTL** + **在重新驗證時間過時**
+    - **關閉︰** 選取 [關閉]，以便在可能提供過時內容的要求之前，要求重新驗證。
         - 請勿指定時間長度，因為它不適用且將會遭到忽略。
 
-**預設行為：** 停止. 重新驗證必須在可提供要求的內容之前進行。
+**預設行為：** 關閉。 重新驗證必須在可提供要求的內容之前進行。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1182,20 +1041,20 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 
 ### <a name="token-auth"></a>權杖驗證
 
-**目的**：判斷是否要將權杖型驗證套用到要求。
+**目的：** 判斷是否要將權杖型驗證套用到要求。
 
 如果啟用權杖型驗證，則只會接受提供加密權杖且符合該權杖所指定需求的要求。
 
 用於加密和解密權杖值的加密金鑰，是根據 [權杖驗證] 頁面上的 [主要金鑰] 和 [備份金鑰] 選項來決定。 請記住，加密金鑰是特定平台的。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 這項功能的優先順序高於大部分功能 (URL 重寫功能除外)。
 
 值 | 結果
 ------|---------
 啟用 | 使用權杖型驗證保護要求的內容。 只接受來自用戶端且可提供有效權杖並符合其需求的要求。 FTP 交易會從權杖型驗證中排除。
-停用| 還原預設行為。 預設行為是讓您的權杖型驗證組態能夠判斷要求是否將會受到保護。
+已停用| 還原預設行為。 預設行為是讓您的權杖型驗證組態能夠判斷要求是否將會受到保護。
 
 #### <a name="compatibility"></a>相容性
 
@@ -1209,7 +1068,7 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 
 ### <a name="token-auth-denial-code"></a>權杖驗證拒絕代碼
 
-**目的：** 判斷在要求因權杖型驗證而遭到拒絕時，將傳回給使用者的回應類型。
+**目的：** 判斷在要求因權杖型驗證而遭到拒絕時將傳回給使用者的回應類型。
 
 下表中列出可用的回應碼。
 
@@ -1224,7 +1083,7 @@ Overwrite|回應標頭值將會設定為指定的值。|**回應標頭值 (用�
 
 #### <a name="compatibility"></a>相容性
 
-請勿使用權杖驗證拒絕程式碼搭配一律比對條件。 請改用 [管理]**** 入口網站中 [權杖驗證]**** 頁面的 [自訂拒絕處理]**** 區段。 如需詳細資訊，請參閱[使用權杖驗證來保護 Azure CDN 資產](cdn-token-auth.md)。
+請勿使用權杖驗證拒絕程式碼搭配一律比對條件。 請改用 [管理] 入口網站中 [權杖驗證] 頁面的 [自訂拒絕處理] 區段。 如需詳細資訊，請參閱[使用權杖驗證來保護 Azure CDN 資產](cdn-token-auth.md)。
 
 #### <a name="url-redirection"></a>URL 重新導向
 
@@ -1273,9 +1132,9 @@ WWW-Authenticate 標頭只適用於 401 回應碼。
 值|結果
 ---|----
 啟用|導致 POP 在比較「權杖型驗證」參數的 URL 時忽略大小寫。
-停用|還原預設行為。 預設行為是在進行權杖型驗證的 URL 比較時會區分大小寫。
+已停用|還原預設行為。 預設行為是在進行權杖型驗證的 URL 比較時會區分大小寫。
 
-**預設行為：** 禁止.
+**預設行為：** 已停用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1296,9 +1155,9 @@ WWW-Authenticate 標頭只適用於 401 回應碼。
 值|結果
 ----|----
 啟用|[值] 選項會定義應透過其定義權杖的查詢字串參數名稱。
-停用|您可以指定權杖做為要求 URL 中未定義的查詢字串參數。
+已停用|您可以指定權杖做為要求 URL 中未定義的查詢字串參數。
 
-**預設行為：** 禁止. 您可以指定權杖做為要求 URL 中未定義的查詢字串參數。
+**預設行為：** 已停用。 您可以指定權杖做為要求 URL 中未定義的查詢字串參數。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1308,14 +1167,14 @@ WWW-Authenticate 標頭只適用於 401 回應碼。
 
 ### <a name="url-redirect"></a>[URL 重新導向]
 
-**目的：** 透過位置標頭來將要求重新導向。
+**目的：** 透過位置標頭將要求重新導向。
 
 此功能的組態必須設定下列選項：
 
 選項|描述
 -|-
 程式碼|選取將傳回給要求者的回應碼。
-來源與模式| 這些設定會定義要求 URI 模式，此模式會識別可能要重新導向的要求類型。 只會重新導向 URL 符合下列這兩個準則的要求： <br/> <br/> **來源 (或內容存取點)：** 選取識別原始伺服器的相對路徑。 此路徑是 /XXXX/__ 區段和您的端點名稱。 <br/><br/> **來源 (模式)︰** 必須定義依相對路徑識別要求的模式。 這個規則運算式模式必須定義一個路徑，該路徑會在先前選取的內容存取點 (請參閱上述內容) 之後直接啟動。 <br/> - 確定先前定義的要求 URI 準則 (亦即，[來源與模式]) 不會與針對此功能所定義的任何比對條件相衝突。 <br/> - 指定模式；如果您是使用空白值作為模式，所有字串都會相符。
+來源與模式| 這些設定會定義要求 URI 模式，此模式會識別可能要重新導向的要求類型。 只會重新導向 URL 符合下列這兩個準則的要求： <br/> <br/> **來源 (或內容存取點)：** 選取識別原始伺服器的相對路徑。 此路徑是 /XXXX/ 區段和您的端點名稱。 <br/><br/> **來源 (模式)：** 必須定義依相對路徑識別要求的模式。 這個規則運算式模式必須定義一個路徑，該路徑會在先前選取的內容存取點 (請參閱上述內容) 之後直接啟動。 <br/> - 確定先前定義的要求 URI 準則 (亦即，[來源與模式]) 不會與針對此功能所定義的任何比對條件相衝突。 <br/> - 指定模式；如果您是使用空白值作為模式，所有字串都會相符。
 Destination| 定義要將上述要求重新導向至其中的 URL。 <br/><br/> 使用下列方式來動態建構此 URL： <br/> - 規則運算式模式 <br/>- [HTTP 變數](cdn-http-variables.md) <br/><br/> 使用 $_n_，將擷取自來源模式的值替代至目的地模式，其中_n_ 可依擷取的順序來識別值。 例如，$1 表示擷取自來源模式的第一個值，而 $2 代表第二個值。 <br/>
 
 強烈建議使用絕對 URL。 使用相對 URL 可能會將 CDN URL 重新導向至不正確的路徑。
@@ -1326,9 +1185,9 @@ Destination| 定義要將上述要求重新導向至其中的 URL。 <br/><br/> 
 
 符合資格的要求將會被重新導向至此基底邊緣 CNAME URL：http:\//cdn.mydomain.com/resources
 
-此 URL 重新導向可透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+此 URL 重新導向可能會透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
-**重點：**
+**重點︰**
 
 - [URL 重新導向] 功能會定義將重新導向的要求 URL。 如此一來，就不需要額外的比對條件。 雖然將比對條件定義為 [一律]，但只會重新導向指向 [marketing] 客戶原始伺服器上 [brochures] 資料夾的要求。
 - 所有相符的要求都將重新導向到 [目的地] 選項中所定義的 Edge CNAME URL。
@@ -1360,8 +1219,8 @@ Destination| 定義要將上述要求重新導向至其中的 URL。 <br/><br/> 
 
 選項|描述
 -|-
- 來源與模式 | 這些設定會定義要求 URI 模式，此模式會識別可能要重寫的要求類型。 只會重寫 URL 符合下列這兩個準則的要求： <br/><br/>  - **來源（或內容存取點）：** 選取識別源伺服器的相對路徑。 此路徑是 /XXXX/__ 區段和您的端點名稱。 <br/><br/> - **來源 (模式)︰** 必須定義依相對路徑識別要求的模式。 這個規則運算式模式必須定義一個路徑，該路徑會在先前選取的內容存取點 (請參閱上述內容) 之後直接啟動。 <br/> - 確認先前定義的要求 URI 準則 (亦即，[來源與模式]) 不會與針對此功能所定義的任何比對條件相衝突。 指定模式；如果您是使用空白值作為模式，所有字串都會相符。
- Destination  |使用下列方式來定義要將上述要求重寫至其中的相對 URL： <br/>    1. 選取識別源伺服器的內容存取點。 <br/>    2. 使用下列方法定義相對路徑： <br/>        - 規則運算式模式 <br/>        - [HTTP 變數](cdn-http-variables.md) <br/> <br/> 使用 $_n_，將擷取自來源模式的值替代至目的地模式，其中_n_ 可依擷取的順序來識別值。 例如，$1 表示擷取自來源模式的第一個值，而 $2 代表第二個值。
+ 來源與模式 | 這些設定會定義要求 URI 模式，此模式會識別可能要重寫的要求類型。 只會重寫 URL 符合下列這兩個準則的要求： <br/><br/>  - **來源 (或內容存取點)：** 選取識別原始伺服器的相對路徑。 此路徑是 /XXXX/ 區段和您的端點名稱。 <br/><br/> - **來源 (模式)：** 必須定義依相對路徑識別要求的模式。 這個規則運算式模式必須定義一個路徑，該路徑會在先前選取的內容存取點 (請參閱上述內容) 之後直接啟動。 <br/> \- 確認先前定義的要求 URI 準則 (亦即，[來源與模式]) 不會與針對此功能所定義的任何比對條件相衝突。 指定模式；如果您是使用空白值作為模式，所有字串都會相符。
+ Destination  |使用下列方式來定義要將上述要求重寫至其中的相對 URL： <br/>    1.選取可識別原始伺服器的內容存取點。 <br/>    2.使用下列方式來定義相對路徑： <br/>        - 規則運算式模式 <br/>        - [HTTP 變數](cdn-http-variables.md) <br/> <br/> 使用 $_n_，將擷取自來源模式的值替代至目的地模式，其中_n_ 可依擷取的順序來識別值。 例如，$1 表示擷取自來源模式的第一個值，而 $2 代表第二個值。
 
  此功能可讓 POP 不需執行傳統的重新導向就能重寫 URL。 也就是，如果收到重寫 URL 的要求，要求者會收到相同的回應碼。
 
@@ -1371,15 +1230,15 @@ Destination| 定義要將上述要求重新導向至其中的 URL。 <br/><br/> 
 
 符合資格的要求將會重新導向至此基底邊緣 CNAME URL：http:\//MyOrigin.azureedge.net/resources/
 
-此 URL 重新導向可透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+此 URL 重新導向可能會透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **範例案例 2**
 
 此範例示範如何使用規則運算式，將邊緣 CNAME URL 從「大寫」重新導向到小寫。
 
-此 URL 重新導向可透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+此 URL 重新導向可能會透過下列設定來達成：![URL 重新導向](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
-**重點：**
+**重點︰**
 
 - [URL 重寫] 功能會定義將要重寫的要求 URL。 如此一來，就不需要額外的比對條件。 雖然將比對條件定義為 [一律]，但只會重寫指向 [marketing] 客戶原始伺服器上 [brochures] 資料夾的要求。
 
@@ -1416,9 +1275,6 @@ Destination| 定義要將上述要求重新導向至其中的 URL。 <br/><br/> 
 **目的：** 僅供內部使用。
 
 [回到頁首](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>後續步驟
 
 - [規則引擎參考](cdn-verizon-premium-rules-engine-reference.md)
