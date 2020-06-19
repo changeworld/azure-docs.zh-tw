@@ -1,48 +1,81 @@
 ---
-title: 註冊單一頁面應用程式-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立單一頁面應用程式（應用程式註冊）
+title: 註冊單頁應用程式 (SPA) | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何建置單頁應用程式 (應用程式註冊)
 services: active-directory
-author: navyasric
+author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 05/19/2020
+ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6f690a8b3436a45d434ccad2bbaa7d2a1b0b76aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882143"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682389"
 ---
-# <a name="single-page-application-app-registration"></a>單一頁面應用程式：應用程式註冊
+# <a name="single-page-application-app-registration"></a>單頁應用程式：應用程式註冊
 
-本頁面說明單一頁面應用程式（SPA）的應用程式註冊細節。
+若要在 Microsoft 身分識別平台中註冊單頁應用程式 (SPA)，請完成下列步驟。 註冊步驟在 MSAL.js 1.0 (支援隱含授與流程) 和 MSAL.js 2.0 (支援使用 PKCE 的授權碼流程) 之間有所不同。
 
-遵循下列步驟，向[Microsoft 身分識別平臺註冊新的應用程式](quickstart-register-app.md)，並為您的應用程式選取支援的帳戶。 SPA 案例可支援貴組織中的帳戶或任何組織和個人 Microsoft 帳戶的驗證。
+## <a name="create-the-app-registration"></a>建立應用程式註冊
 
-接下來，請瞭解適用于單一頁面應用程式之應用程式註冊的特定層面。
+針對以 MSAL.js 1.0 和 2.0 為基礎的應用程式，請先完成下列步驟，以建立初始應用程式註冊。
 
-## <a name="register-a-redirect-uri"></a>註冊重新導向 URI
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您的帳戶可存取多個租用戶，請選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選條件，然後選取應包含您即將建立之應用程式註冊的租用戶。
+1. 搜尋並選取 [Azure Active Directory]。
+1. 在 [管理] 底下選取 [應用程式註冊]。
+1. 選取 [新增註冊]，輸入應用程式的 [名稱]，然後選擇應用程式 [支援的帳戶類型]。 請**不要**輸入**重新導向 URI**。 如需不同帳戶類型的說明，請參閱[使用 Azure 入口網站註冊新的應用程式](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)。
+1. 選取 [註冊] 以建立應用程式註冊。
 
-隱含流程會將重新導向中的權杖傳送至在網頁瀏覽器上執行的單一頁面應用程式。 因此，請務必註冊應用程式可以接收權杖的重新導向 URI。 確定重新導向 URI 完全符合您應用程式的 URI。
+接下來，使用**重新導向 URI** 設定應用程式註冊，以指定 Microsoft 身分識別平台應將用戶端與任何安全性權杖一起重新導向的目標位置。 使用適用於您應用程式中所使用之 MSAL.js 版本的步驟：
 
-在[Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)中，移至您已註冊的應用程式。 在應用程式的 [**驗證**] 頁面上，選取**Web**平臺。 在 [重新**導向 uri** ] 欄位中，輸入您應用程式的重新導向 uri 值。
+- [具有驗證碼流程的 MSAL.js 2.0](#redirect-uri-msaljs-20-with-auth-code-flow) \(建議\)
+- [具有隱含流程的 MSAL.js 1.0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="enable-the-implicit-flow"></a>啟用隱含流程
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>重新導向 URI：具有驗證碼流程的 MSAL.js 2.0
 
-在同一個 [**驗證**] 頁面的 [ **Advanced settings**] 底下，您也必須啟用 **[隱含授**與]。 如果您的應用程式只會登入使用者並取得識別碼權杖，就足以選取 [**識別碼權杖**] 核取方塊。
+請遵循這些步驟，為使用 MSAL.js 2.0 或更新版本的應用程式新增重新導向 URI。 MSAL.js 2.0+ 支援使用 PKCE 和 CORS 的授權碼流程，以回應[瀏覽器協力廠商 Cookie 限制](reference-third-party-cookies-spas.md)。 MSAL.js 2.0+ 不支援隱含授與流程。
 
-如果您的應用程式也需要取得存取權杖來呼叫 Api，請務必同時選取 [**存取權杖**] 核取方塊。 如需詳細資訊，請參閱[識別碼權杖](./id-tokens.md)和[存取權杖](./access-tokens.md)。
+1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
+1. 在 [管理] 底下，選取 [驗證]，然後選取 [新增平台]。
+1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
+1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。 請**不要**選取 [隱含授與] 底下的任一核取方塊。
+1. 選取 [設定] 以完成新增重新導向 URI。
 
-## <a name="api-permissions"></a>API 權限
+您現在已完成單頁應用程式 (SPA) 的註冊，並已設定重新導向 URI；系統會將用戶端重新導向到該 URI，也會將任何安全性權杖傳送到該 URI。 透過使用 [新增平台] 窗格中的 [單頁應用程式] 圖格來設定您的重新導向 URI，您的應用程式註冊已設定為支援使用 PKCE 和 CORS 的授權碼流程。
 
-單頁應用程式可以代表已登入的使用者呼叫 Api。 他們需要要求委派的許可權。 如需詳細資訊，請參閱[新增存取 Web api 的許可權](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重新導向 URI：具有隱含流程的 MSAL.js 1.0
+
+請遵循這些步驟，針對使用 MSAL.js 1.3 或更早版本及隱含授與流程的單頁應用程式新增重新導向 URI。 使用 MSAL.js 1.3 或更早版本的應用程式不支援驗證碼流程。
+
+1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
+1. 在 [管理] 底下，選取 [驗證]，然後選取 [新增平台]。
+1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
+1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。
+1. 啟用**隱含流程**：
+    - 如果您的應用程式會登入使用者，請選取 [識別碼權杖]。
+    - 如果您的應用程式也需要呼叫受保護的 Web API，請選取 [存取權杖]。 如需有關這些權杖類型的詳細資訊，請參閱[識別碼權杖](id-tokens.md)與[存取權杖](access-tokens.md)。
+1. 選取 [設定] 以完成新增重新導向 URI。
+
+您現在已完成單頁應用程式 (SPA) 的註冊，並已設定重新導向 URI；系統會將用戶端重新導向到該 URI，也會將任何安全性權杖傳送到該 URI。 藉由個別或同時選取 [識別碼權杖] 和 [存取權杖]，您已啟用隱含授與流程。
+
+## <a name="note-about-authorization-flows"></a>授權流程的相關注意事項
+
+根據預設，使用單頁應用程式平台設定所建立的應用程式註冊，會啟用授權碼流程。 若要利用此流程，應用程式必須使用 MSAL.js 2.0 或更新版本。
+
+如先前所述，使用 MSAL.js 1.3 的單頁應用程式僅限使用隱含授與流程。 目前的 [OAuth 2.0 最佳做法](v2-oauth2-auth-code-flow.md)建議針對 SPA 使用授權碼流程，而不是隱含流程。 具備有限存留期的重新整理權杖也可協助您的應用程式適應[新式瀏覽器 Cookie 隱私權限制](reference-third-party-cookies-spas.md)，例如 Safari ITP。
+
+當應用程式註冊所代表的所有生產單頁應用程式都使用 MSAL.js 2.0 和授權碼流程時，請取消選取 Azure 入口網站中應用程式註冊之 [驗證] 窗格的隱含授與設定。 不過，如果您保持啟用隱含流程 (已核取)，使用 MSAL.js 1.x 和隱含流程的應用程式仍可繼續運作。
 
 ## <a name="next-steps"></a>後續步驟
+
+接下來，設定應用程式的程式碼，以使用您在先前步驟中建立的應用程式註冊：
 
 > [!div class="nextstepaction"]
 > [應用程式的程式碼設定](scenario-spa-app-configuration.md)

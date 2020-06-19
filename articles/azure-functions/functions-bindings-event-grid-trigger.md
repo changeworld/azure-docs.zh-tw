@@ -1,31 +1,31 @@
 ---
-title: 適用于 Azure Functions 的 Azure 事件方格觸發程式
-description: 瞭解如何在分派 Azure Functions 中的事件方格事件時執行程式碼。
+title: Azure Functions 的 Azure 事件方格觸發程序
+description: 了解如何在分派 Azure Functions 中的事件方格事件時執行程式碼。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891285"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648341"
 ---
-# <a name="azure-event-grid-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格觸發程式
+# <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件方格觸發程序
 
-使用函數觸發程式來回應傳送至事件方格主題的事件。
+使用函式觸發程序以回應傳送至事件方格主題的事件。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-event-grid.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-event-grid.md)。
 
 ## <a name="example"></a>範例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-如需 HTTP 觸發程式範例，請參閱[將事件接收到 HTTP 端點](../event-grid/receive-events.md)。
+如需 HTTP 觸發程序範例，請參閱[接收 HTTP 端點的事件](../event-grid/receive-events.md)。
 
-### <a name="c-2x-and-higher"></a>C # （2.x 和更新版本）
+### <a name="c-2x-and-higher"></a>C# (2.x 和更新版本)
 
 下列範例顯示繫結至 `EventGridEvent` 的 [C# 函式](functions-dotnet-class-library.md)：
 
@@ -49,9 +49,9 @@ namespace Company.Function
 }
 ```
 
-如需詳細資訊，請參閱套件、[屬性](#attributes-and-annotations) [、設定](#configuration)和[使用](#usage)方式。
+如需詳細資訊，請參閱套件、[屬性](#attributes-and-annotations)、[設定](#configuration)和[用法](#usage)。
 
-### <a name="version-1x"></a>1.x 版
+### <a name="version-1x"></a>1\.x 版
 
 下列範例顯示繫結至 `JObject` 的 Functions 1.x [C# 函式](functions-dotnet-class-library.md)：
 
@@ -76,9 +76,9 @@ namespace Company.Function
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。
+下列範例示範 function.json 檔案中的觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -95,9 +95,9 @@ namespace Company.Function
 }
 ```
 
-### <a name="version-2x-and-higher"></a>2.x 版和更新版本
+### <a name="version-2x-and-higher"></a>2\.x 版和更新版本
 
-以下是系結至`EventGridEvent`的範例：
+以下是繫結至 `EventGridEvent` 的範例：
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -110,9 +110,9 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-如需詳細資訊，請參閱套件、[屬性](#attributes-and-annotations) [、設定](#configuration)和[使用](#usage)方式。
+如需詳細資訊，請參閱套件、[屬性](#attributes-and-annotations)、[設定](#configuration)和[用法](#usage)。
 
-### <a name="version-1x"></a>1.x 版
+### <a name="version-1x"></a>1\.x 版
 
 以下是繫結至 `JObject` 的 Functions 1.x C# 指令碼：
 
@@ -130,7 +130,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範的是使用繫結之 function.json** 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。
+下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -207,9 +207,9 @@ def main(event: func.EventGridEvent):
 * [事件格線觸發程序，字串參數](#event-grid-trigger-string-parameter)
 * [事件格線觸發程序，POJO 參數](#event-grid-trigger-pojo-parameter)
 
-下列範例顯示[JAVA](functions-reference-java.md)中使用系結並印出事件的觸發程式系結，第一次以 POJO `String`的方式接收事件，並以秒為例。
+下列範例會在 [Java](functions-reference-java.md) 中顯示觸發程序繫結，其使用繫結並印出事件，會將第一次接收事件當作 `String`，並將第二次當作 POJO。
 
-### <a name="event-grid-trigger-string-parameter"></a>事件格線觸發程序，字串參數
+### <a name="event-grid-trigger-string-parameter"></a>事件方格觸發程序，字串參數
 
 ```java
   @FunctionName("eventGridMonitorString")
@@ -223,7 +223,7 @@ def main(event: func.EventGridEvent):
   }
 ```
 
-### <a name="event-grid-trigger-pojo-parameter"></a>事件格線觸發程序，POJO 參數
+### <a name="event-grid-trigger-pojo-parameter"></a>事件方格觸發程序，POJO 參數
 
 此範例會使用下列 POJO 來代表事件格線事件的最上層屬性：
 
@@ -245,7 +245,7 @@ public class EventSchema {
 }
 ```
 
-抵達時，會將事件的 JSON 承載還原序列化為 ```EventSchema``` POJO，以供函式使用。 此程式可讓函數以物件導向的方式存取事件的屬性。
+抵達時，會將事件的 JSON 承載還原序列化為 ```EventSchema``` POJO，以供函式使用。 此程序可讓函式以物件導向方式存取事件的屬性。
 
 ```java
   @FunctionName("eventGridMonitor")
@@ -267,7 +267,7 @@ public class EventSchema {
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -285,9 +285,9 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 如需完整範例，請參閱 C# 範例。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -295,48 +295,48 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)注釋可讓您藉由提供設定值，以宣告方式設定事件方格系結。 如需詳細資訊，請參閱[範例](#example)[和設定](#configuration)章節。
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 註釋可讓您藉由提供設定值，以宣告方式設定事件方格繫結。 如需詳細資訊，請參閱[範例](#example)和[設定](#configuration)區段。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在 function.json** 檔案中設定的繫結設定屬性。 沒有要在 `EventGridTrigger` 屬性中設定的建構函式參數或屬性。
+下表說明您在 function.json 檔案中設定的繫結設定屬性。 沒有要在 `EventGridTrigger` 屬性中設定的建構函式參數或屬性。
 
 |function.json 屬性 |描述|
 |---------|---------|
 | **type** | 必要項目 - 必須設定為 `eventGridTrigger`。 |
-| **方向** | 必要項目 - 必須設定為 `in`。 |
+| **direction** | 必要項目 - 必須設定為 `in`。 |
 | **name** | 必要項目 - 函式程式碼中用於接收事件資料之參數的變數名稱。 |
 
-## <a name="usage"></a>使用狀況
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 Azure Functions 1.x 中，您可以針對事件方格觸發程式使用下列參數類型：
+在 Azure Functions 1.x 中，可以在事件方格觸發程序使用下列參數類型：
 
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 和更新版本中，您也可以選擇為 Event Grid 觸發程式使用下列參數類型：
+在 Azure Functions 2.x 和更新版本中，您也可以為事件方格觸發程序使用下列參數類型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定義所有事件類型通用之欄位的屬性。
 
 > [!NOTE]
 > 在 Functions v1 中，如果您嘗試繫結至 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，編譯器將會顯示「已淘汰」訊息，並建議您改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用較新的類型，請參考 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 套件，並且為 `EventGridEvent` 類型名稱加上 `Microsoft.Azure.EventGrid.Models` 首碼，加以完整限定。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-在 Azure Functions 1.x 中，您可以針對事件方格觸發程式使用下列參數類型：
+在 Azure Functions 1.x 中，可以在事件方格觸發程序使用下列參數類型：
 
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 和更新版本中，您也可以選擇為 Event Grid 觸發程式使用下列參數類型：
+在 Azure Functions 2.x 和更新版本中，您也可以為事件方格觸發程序使用下列參數類型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定義所有事件類型通用之欄位的屬性。
 
@@ -345,15 +345,15 @@ Python 不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-透過在函式*json*檔案的`name`屬性中設定的參數，即可使用事件方格實例。
+您可以透過在 function.json 檔案 `name` 屬性中設定的參數，取得事件方格執行個體。
 
 # <a name="python"></a>[Python](#tab/python)
 
-您可以透過在函式*json*檔案的`name`屬性中設定的參數來使用事件方格實例，其`func.EventGridEvent`型別為。
+您可以透過在 function.json 檔案 `name` 屬性中設定的參數取得事件方格執行個體，輸入為 `func.EventGridEvent`。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件方格事件實例可透過與`EventGridTrigger`屬性相關聯的參數（類型為）來取得`EventSchema`。 如需詳細資訊，請參閱[範例](#example)。
+您可以透過關聯至 `EventGridTrigger` 屬性的參數取得事件方格事件執行個體，輸入為 `EventSchema`。 如需詳細資訊，請參閱[範例](#example)。
 
 ---
 
@@ -401,13 +401,13 @@ Python 不支援屬性。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-對於您在 Azure 入口網站中使用 Event Grid 觸發程序開發的函式，選取**新增 Event Grid 訂用帳戶**。
+對於您在 Azure 入口網站中使用事件方格觸發程序開發的函式，選取 [整合]，選擇 [事件方格觸發程序]，然後選取 [建立事件方格訂用帳戶]。
 
-![在入口網站中建立訂用帳戶](media/functions-bindings-event-grid/portal-sub-create.png)
+:::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="將新的事件訂用帳戶連線至入口網站中的觸發程序。":::
 
-當您選取此連結時，入口網站會開啟預先填入端點 URL 的**建立事件訂用帳戶**頁面。
+當您選取此連結時，入口網站會開啟**建立事件訂用帳戶**頁面，其中已定義目前的觸發程序端點。
 
-![預先填入的端點 URL](media/functions-bindings-event-grid/endpoint-url.png)
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="使用已定義的函式端點建立事件訂用帳戶" :::
 
 如需如何使用 Azure 入口網站建立訂用帳戶的詳細資訊，請參閱 Event Grid 文件中的[建立自訂事件 - Azure 入口網站](../event-grid/custom-event-quickstart-portal.md)。
 
@@ -417,11 +417,11 @@ Python 不支援屬性。
 
 此命令需要叫用函式的端點 URL。 下列範例顯示特定版本的 URL 模式：
 
-#### <a name="version-2x-and-higher-runtime"></a>2.x 版（及更新版本）執行時間
+#### <a name="version-2x-and-higher-runtime"></a>2\.x 版 (和更新版本) 執行階段
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
-#### <a name="version-1x-runtime"></a>1.x 版執行階段
+#### <a name="version-1x-runtime"></a>1\.x 版執行階段
 
     https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
@@ -429,7 +429,7 @@ Python 不支援屬性。
 
 以下是訂閱 Blob 儲存體帳戶的範例 (以預留位置表示系統金鑰)：
 
-#### <a name="version-2x-and-higher-runtime"></a>2.x 版（及更新版本）執行時間
+#### <a name="version-2x-and-higher-runtime"></a>2\.x 版 (和更新版本) 執行階段
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -440,7 +440,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
 ```
 
-#### <a name="version-1x-runtime"></a>1.x 版執行階段
+#### <a name="version-1x-runtime"></a>1\.x 版執行階段
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -457,13 +457,13 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 您可以使用下列 API (HTTP GET) 來取得系統金鑰：
 
-#### <a name="version-2x-and-higher-runtime"></a>2.x 版（及更新版本）執行時間
+#### <a name="version-2x-and-higher-runtime"></a>2\.x 版 (和更新版本) 執行階段
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
 ```
 
-#### <a name="version-1x-runtime"></a>1.x 版執行階段
+#### <a name="version-1x-runtime"></a>1\.x 版執行階段
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
@@ -486,7 +486,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 }
 ```
 
-您可以從入口網站中的 [函數應用程式設定]**** 索引標籤取得函數應用程式主要金鑰。
+您可以從入口網站中的 [函數應用程式設定] 索引標籤取得函數應用程式主要金鑰。
 
 > [!IMPORTANT]
 > 主要金鑰為系統管理員提供對函數應用程式的存取權。 請勿與第三方共用此金鑰或將其散發於原生用戶端應用程式。
@@ -510,7 +510,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 若要簡化擷取事件訊息，您可以部署[預先建置的 Web 應用程式](https://github.com/Azure-Samples/azure-event-grid-viewer)，以顯示事件訊息。 已部署的解決方案包含 App Service 方案、App Service Web 應用程式，以及 GitHub 中的原始程式碼。
 
-選取 [部署至 Azure]  ，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
+選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -543,14 +543,14 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 設定 `Content-Type: application/json` 標頭。
 * 設定 `aeg-event-type: Notification` 標頭。
 * 將 RequestBin 資料貼到要求本文中。
-* 張貼至事件方格觸發程式函式的 URL。
-  * 若為2.x 和更高版本，請使用下列模式：
+* 發佈到事件方格觸發程序函式的 URL。
+  * 針對 2.x 和更新版本，請使用下列模式：
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 若為1.x，請使用：
+  * 針對 1.x，請使用：
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}

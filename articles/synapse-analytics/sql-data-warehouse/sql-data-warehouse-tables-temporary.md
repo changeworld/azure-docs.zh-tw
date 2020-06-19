@@ -1,6 +1,6 @@
 ---
 title: 暫存資料表
-description: 在 Synapse SQL 集區中使用臨時表的基本指引，其中反白顯示工作階段層級臨時表的原則。
+description: 在 Synapse SQL 集區中使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,30 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408035"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650486"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 集區中的臨時表
+# <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 集區中的暫存資料表
 本文包含使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。 
 
-使用本文中的資訊可協助您模組化程式碼，同時提升重複使用性和輕鬆維護的便利性。
+使用本文中的資訊可協助您將程式碼模組化，以提高重複使用性且維護起來更簡單。
 
 ## <a name="what-are-temporary-tables"></a>什麼是暫存資料表？
-臨時表在處理資料時很有用，尤其是在轉換期間，中繼結果是暫時性的。 在 SQL 集區中，臨時表存在於工作階段層級。  
+暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 在 SQL 集區中，暫存資料表存在於工作階段層級。  
 
-只有在建立臨時表時，才看得到它們，並會在該會話登出時自動卸載。  
+暫存資料表只會出現在建立所在的工作階段中，工作階段登出時就會自動將其卸除。  
 
 暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是它的效能優點。
 
-臨時表在處理資料時很有用，尤其是在轉換期間，中繼結果是暫時性的。 使用 SQL 分析時，臨時表存在於工作階段層級。  只有在建立它們的會話才會看到它們。 如此一來，當該會話登出時，就會自動卸載它們。 
+暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 使用 SQL 集區，暫存資料表存在於工作階段層級。  只有出現在其建立所在的工作階段。 如此一來，當該工作階段登出時，就會自動將其卸除。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL 集區中的臨時表
+## <a name="temporary-tables-in-sql-pool"></a>SQL 集區中的暫存資料表
 
-在 SQL 集區資源中，臨時表會提供效能優勢，因為它們的結果會寫入本機而不是遠端儲存體。
+在 SQL 集區資源中，暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是其效能優點。
 
 ### <a name="create-a-temporary-table"></a>建立暫存資料表
 
@@ -105,7 +105,7 @@ GROUP BY
 ## <a name="dropping-temporary-tables"></a>捨棄暫存資料表
 建立新的工作階段時，不應該存在任何暫存資料表。  
 
-如果您要呼叫相同的預存程式，這會建立具有相同名稱的暫存，為了確保`CREATE TABLE`語句成功，使用的簡單預先存在檢查`DROP`可如下列範例所示：
+如果您呼叫同一個預存程序來建立具有相同名稱的暫存資料表，為了確保 `CREATE TABLE` 陳述式成功執行，可使用 `DROP` 進行簡單的預先存在性檢查，如下列範例所示︰
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,18 +114,18 @@ BEGIN
 END
 ```
 
-針對程式碼一致性，將此模式用於資料表和臨時表是很好的作法。  當您在程式碼中完成使用`DROP TABLE`臨時表時，也最好使用來移除它們。  
+為了維持編寫程式碼的一致性，資料表和暫存資料表最好都採用此模式。  當您在程式碼中完成使用暫存資料表之後，使用 `DROP TABLE` 加以移除也是一個很好的做法。  
 
-在預存程式開發中，通常會在程式結束時看到連結在一起的 drop 命令，以確保清除這些物件。
+在預存程序開發期間，在程序結尾一併搭配 drop 命令以確保會清除這些物件，也是常見的做法。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>模組化程式碼
-因為臨時表可以在使用者會話中的任何位置看到，所以可以利用這項功能來協助您模組化應用程式程式碼。  
+因為在使用者工作階段中的任何位置均可看見暫存資料表，這個功能可用來協助您將應用程式程式碼模組化。  
 
-例如，下列預存程式會產生 DDL，以依據統計資料名稱來更新資料庫中的所有統計資料：
+例如，下列預存程序會產生 DDL，根據統計資料名稱來更新資料庫中的所有統計資料：
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -199,13 +199,13 @@ FROM    t1
 GO
 ```
 
-在這個階段，唯一發生的動作是建立使用 DDL 語句來產生臨時表（#stats_ddl）的預存程式。  
+在這個階段中，唯一進行的動作是建立預存程序，以 DDL 陳述式產生暫存資料表 #stats_ddl。  
 
-這個預存程式會卸載現有的 #stats_ddl，以確保在會話中執行一次以上時，它不會失敗。  
+這個預存程序會卸除現有 #stats_ddl，以確保在工作階段中執行一次以上時不會失敗。  
 
 不過，因為預存程序結尾沒有任何 `DROP TABLE`，當預存程序完成時，它會保留建立的資料表，以便能夠從預存程序之外讀取。  
 
-在 SQL 集區中，與其他 SQL Server 資料庫不同的是，可以在建立它的程式之外使用臨時表。  SQL 集區臨時表可以在會話內的**任何位置**使用。 這項功能可能會導致更多模組化且可管理的程式碼，如下列範例所示：
+不同於其他 SQL Server 資料庫，在 SQL 集區中，從建立暫存資料表的程序之外能夠使用此暫存資料表。  工作階段內的**任何位置**都可以使用 SQL 集區暫存資料表。 這個功能可以產生更具模組化和更易於管理的程式碼，如下列範例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +227,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>暫存資料表限制
-SQL 集區在執行臨時表時，會強制執行幾項限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域臨時表。  
+SQL 集區在實作暫存資料表時的確有一些限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域暫存資料表。  
 
-此外，您也無法在臨時表上建立 views。  只能使用雜湊或迴圈配置資源散發來建立臨時表。  不支援複寫的臨時表散發。 
+此外，也無法在暫存資料表上建立檢視。  只能使用雜湊或循環配置資源散發來建立暫存資料表。  不支援複寫的暫存資料表散發。 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何開發資料表，請參閱[使用 SQL 分析資源設計資料表](sql-data-warehouse-tables-overview.md)一文。
+若要深入了解如何開發資料表，請參閱[使用 Synapse SQL 資源設計資料表](sql-data-warehouse-tables-overview.md)一文。
 

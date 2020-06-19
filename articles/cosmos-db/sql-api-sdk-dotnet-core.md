@@ -1,40 +1,41 @@
 ---
-title: Azure Cosmos DB： SQL .NET Core API、SDK & 資源
+title: Azure Cosmos DB：SQL .NET Core API、SDK 與資源
 description: 全面了解 SQL .NET Core API 和 SDK，包括發行日期、停用日期及 Azure Cosmos DB .NET Core SDK 每個版本之間的變更。
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/22/2018
-ms.author: sngun
-ms.openlocfilehash: 35c81f023726803fb2346d68ae783fdfe124143f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 3738af6349a6f71f6100c601858b39c6329d0295
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177695"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660390"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK for SQL API：版本資訊與資源
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB .NET SDK：版本資訊和資源
 > [!div class="op_single_selector"]
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 變更摘要](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [非同步 Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
+> * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大量執行程式-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [大量執行程式-JAVA](sql-api-sdk-bulk-executor-java.md)
+> * [大量執行工具 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [大量執行工具 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK 下載**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
-|**API 檔**|[.NET API 參考文件](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**API 文件**|[.NET API 參考文件](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**範例**|[.NET 程式碼範例](sql-api-dotnet-samples.md)|
 |**開始使用**|[開始使用 Azure Cosmos DB .NET](sql-api-sdk-dotnet.md)|
 |**Web 應用程式教學課程**|[使用 Azure Cosmos DB 進行 Web 應用程式開發](sql-api-dotnet-application.md)|
@@ -43,7 +44,7 @@ ms.locfileid: "72177695"
 ## <a name="release-notes"></a>版本資訊
 
 > [!NOTE]
-> 如果您使用的是 .NET Core，請參閱最新版本3.x 的[.NET SDK](sql-api-sdk-dotnet-standard.md)，其目標為 .NET Standard。 
+> 如果您使用 .NET Core，請參閱以 .NET Standard 為目標的最新 3.x 版 [.NET SDK](sql-api-sdk-dotnet-standard.md)。 
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 

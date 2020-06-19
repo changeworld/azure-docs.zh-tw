@@ -1,6 +1,6 @@
 ---
 title: 教學課程從 Azure Data Lake Storage 載入資料
-description: 使用 PolyBase 外部資料表，從 Synapse SQL 的 Azure Data Lake Storage 載入資料。
+description: 使用 PolyBase 外部資料表針對 Synapse SQL 從 Azure Data Lake Store 載入資料。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,25 +11,25 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626712"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654515"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>從 Azure Data Lake Storage 載入 SQL 分析的資料
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>針對 Synapse SQL 從 Azure Data Lake Storage 載入資料
 
-本指南概述如何使用 PolyBase 外部資料表從 Azure Data Lake Storage 載入資料。 雖然您可以對儲存在 Data Lake Storage 中的資料執行臨機操作查詢，但建議您匯入資料以獲得最佳效能。
+本指南概述如何使用 PolyBase 外部資料表從 Azure Data Lake Store 載入資料。 雖然您可以對儲存在 Data Lake Storage 的資料執行臨機操作查詢，但是建議您匯入資料以獲得最佳效能。
 
 > [!NOTE]  
-> 載入的替代方案是目前處於公開預覽狀態的[COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  COPY 語句提供最大的彈性。 若要提供有關 COPY 語句的意見反應，請將電子郵件傳送至下列sqldwcopypreview@service.microsoft.com通訊群組清單：。
+> 載入的替代方法是 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，目前處於公開預覽狀態。  COPY 陳述式提供最大的彈性。 若要提供有關 COPY 陳述式的意見反應，請將電子郵件傳送至下列通訊群組清單：sqldwcopypreview@service.microsoft.com。
 >
 > [!div class="checklist"]
 >
-> * 建立從 Data Lake Storage 載入所需的資料庫物件。
-> * 連接到 Data Lake Storage 目錄。
-> * 將資料載入資料倉儲。
+> * 建立所需的資料庫物件以從 Data Lake Storage 載入。
+> * 連線至 Data Lake Storage 目錄。
+> * 將資料載入至資料倉儲。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -39,18 +39,18 @@ ms.locfileid: "82626712"
 
 若要執行此教學課程，您需要：
 
-* SQL 集區。 請參閱[建立 SQL 集區和查詢資料](create-data-warehouse-portal.md)。
-* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您必須設定或指定下列其中一個要載入的認證：儲存體帳戶金鑰、Azure 目錄應用程式使用者，或對儲存體帳戶具有適當 RBAC 角色的 AAD 使用者。
+* SQL 集區。 請參閱[建立 SQL 集區及查詢資料](create-data-warehouse-portal.md)。
+* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您將需要設定或指定下列其中一個要載入的認證：儲存體帳戶金鑰、Azure 目錄應用程式使用者，或對儲存體帳戶具有適當 RBAC 角色的 AAD 使用者。
 
 ## <a name="create-a-credential"></a>建立認證
 
-使用 AAD 傳遞進行驗證時，您可以略過本節並繼續進行「建立外部資料源」。 使用 AAD 傳遞時，不需要建立或指定資料庫範圍認證，但請確定您的 AAD 使用者具有儲存體帳戶的適當 RBAC 角色（儲存體 Blob 資料讀取者、參與者或擁有者角色）。 [這裡](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)會概述更多詳細資料。
+使用 AAD 傳遞進行驗證時，您可以略過本節並繼續進行「建立外部資料來源」。 使用 AAD 傳遞時，不需要建立或指定資料庫範圍認證，但是請確定您的 AAD 使用者具有儲存體帳戶的適當 RBAC 角色 (儲存體 Blob 資料讀者、參與者或擁有者角色)。 更多的詳細資料在[這裡](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)概述。
 
-若要存取您的 Data Lake Storage 帳戶，您必須建立資料庫主要金鑰來加密您的認證密碼。 接著，您要建立資料庫範圍認證來儲存您的秘密。 使用服務主體（Azure 目錄應用程式使用者）進行驗證時，資料庫範圍認證會儲存 AAD 中設定的服務主體認證。 您也可以使用資料庫範圍認證來儲存 Gen2 的儲存體帳戶金鑰。
+若要存取您的 Data Lake Storage 帳戶，您將需要建立一個資料庫主要金鑰，以加密認證密碼。 然後您可以建立資料庫範圍認證以儲存您的密碼。 使用服務主體 (Azure 目錄應用程式使用者) 進行驗證時，資料庫範圍認證會儲存在 AAD 中設定的服務主體認證。 您也可以使用資料庫範圍認證來儲存 Gen2 的儲存體帳戶金鑰。
 
-若要使用服務主體連接到 Data Lake Storage，您必須**先**建立 Azure Active Directory 應用程式、建立存取金鑰，並將該應用程式的存取權授與 Data Lake Storage 帳戶。 如需指示，請參閱[使用 Active Directory 向 Azure Data Lake Storage 進行驗證](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+若要使用服務主體連線到 Data Lake Storage，您必須**先**建立 Azure Active Directory 應用程式、建立存取金鑰，並對應用程式授與 Data Lake Storage 帳戶的存取權。 如需相關指示，請參閱[使用 Active Directory 向 Azure Data Lake Storage 進行驗證](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-以擁有控制層級許可權的使用者登入您的 SQL 集區，並針對您的資料庫執行下列 SQL 語句：
+以擁有控制層級權限的使用者身分登入您的 SQL 集區，並針對您的資料庫執行下列 SQL 陳述式：
 
 ```sql
 -- A: Create a Database Master Key.
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>建立外部資料來源
 
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果您要使用 AAD 傳遞進行驗證，則不需要 CREDENTIAL 參數。 如果您要使用服務端點的受控識別進行驗證，請遵循此[檔](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)來設定外部資料源。
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果您使用 AAD 傳遞進行驗證，則不需要 CREDENTIAL 參數。 如果您使用服務端點的受控識別來進行驗證，請遵循此[文件](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)以設定外部資料來源。
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -123,8 +123,8 @@ WITH (
 
 ## <a name="configure-data-format"></a>設定資料格式
 
-若要從 Data Lake Storage 匯入資料，您需要指定外部檔案格式。 此物件會定義檔案在 Data Lake Storage 中的寫入方式。
-如需完整清單，請查閱我們的 T-SQL 文件＜[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)＞
+若要從 Data Lake Storage 匯入資料，您需要指定外部檔案格式。 此物件會定義在 Data Lake Storage 中寫入檔案的方式。
+如需完整清單，請查閱我們的 T-SQL 文件：[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- D: Create an external file format
@@ -187,7 +187,7 @@ Data Lake Storage Gen1 使用角色型存取控制 (RBAC) 來控制資料存取�
 
 ## <a name="load-the-data"></a>載入資料
 
-若要從 Data Lake Storage 載入資料，請使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句。
+若要從 Data Lake Storage 載入資料，請使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式。
 
 CTAS 建立新的資料表，並將選取陳述式的結果填入該資料表。 CTAS 定義新資料表，以使它擁有和選取陳述式之結果相同的資料行和資料類型。 如果您選取外部資料表上的所有資料行，則新資料表會是外部資料表中資料行和資料類型的複本。
 
@@ -218,13 +218,13 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 您最好在載入後立刻建立單一資料行統計資料。 針對統計資料，您將會有一些選項。 例如，如果您在每個資料行上建立單一資料行統計資料，可能會需要很長的時間才能重建所有統計資料。 如果您知道某些資料行不會被包含在查詢述詞中，您可以略過為那些資料行建立統計資料。
 
-如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，您可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
+如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
 
 下列範例為建立統計資料的好起點。 它會在維度資料表中的每個資料行上，以及在事實資料表中的每個聯結資料行上建立單一資料行統計資料。 您之後隨時可以將單一或多個資料行統計資料新增到其他事實資料表資料行上。
 
 ## <a name="achievement-unlocked"></a>成就解鎖！
 
-您已成功將資料載入資料倉儲。 太棒了！
+您已成功將資料載入到您的資料倉儲。 太棒了！
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -233,12 +233,12 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 您進行了下列事項：
 > [!div class="checklist"]
 >
-> * 已建立從 Data Lake Storage 載入所需的資料庫物件。
-> * 已連接到 Data Lake Storage 目錄。
-> * 已將資料載入資料倉儲。
+> * 已建立所需的資料庫物件以從 Data Lake Storage 載入。
+> * 連線至 Data Lake Storage 目錄。
+> * 將資料載入至資料倉儲。
 >
 
-載入資料是使用 Azure Synapse 分析來開發資料倉儲解決方案的第一個步驟。 請參閱我們的開發資源。
+載入資料是開發使用 Azure Synapse Analytics 的資料倉儲解決方案第一步。 請參閱我們的開發資源。
 
 > [!div class="nextstepaction"]
-> [瞭解如何開發資料倉儲的資料表](sql-data-warehouse-tables-overview.md)
+> [了解如何開發適用於資料倉儲的資料表](sql-data-warehouse-tables-overview.md)

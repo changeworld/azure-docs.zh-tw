@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344011"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669897"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -133,9 +133,9 @@ ms.locfileid: "84344011"
 
 1. 按 [下一步：組建 >] 按鈕，以編輯組建組態
 
-1. 將 [應用程式位置] 設定為 [公用]。
+1. 將 [應用程式位置] 設定為 **/** 。
 
-1. 將 [應用程式成品位置] 保留為空白。
+1. 將 [應用程式成品位置] 設定為 [公用]。
 
    [API 位置] 的值並非必要值，因為您此時不會部署 API。
 

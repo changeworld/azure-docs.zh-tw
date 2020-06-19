@@ -1,6 +1,6 @@
 ---
-title: 記憶體和平行存取限制
-description: 在 Azure Synapse 分析中，查看配置給各種效能層級和資源類別的記憶體和平行存取限制。
+title: 記憶體與並行限制
+description: 檢視在 Azure Synapse Analytics 中配置給不同效能等級與資源類別的記憶體和並行存取限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632672"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636399"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse 分析的記憶體和平行存取限制
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的記憶體和並行存取限制
 
-在 Azure Synapse 分析中，查看配置給各種效能層級和資源類別的記憶體和平行存取限制。  
+檢視在 Azure Synapse Analytics 中配置給不同效能等級與資源類別的記憶體和並行存取限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>資料倉儲容量設定
 
@@ -49,13 +49,13 @@ ms.locfileid: "80632672"
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-服務層級的最大值為 DW30000c，其具有60計算節點和每個計算節點一個散發。 例如，DW30000c 上 600 TB 的資料倉儲大約可針對每個節點處理 10 TB。
+最大的服務等級是 DW30000c，其中具有 60 個計算節點，而且每個計算節點上都有一個散發。 例如，DW30000c 上 600 TB 的資料倉儲大約可針對每個節點處理 10 TB。
 
-## <a name="concurrency-maximums-for-workload-groups"></a>工作負載群組的平行存取上限
+## <a name="concurrency-maximums-for-workload-groups"></a>工作負載群組的並行存取上限
 
-隨著[工作負載群組](sql-data-warehouse-workload-isolation.md)的引進，平行存取插槽的概念不再適用。  每個要求的資源會以百分比為單位配置，並在工作負載群組定義中指定。  不過，即使移除平行存取插槽，根據服務等級，每個查詢都需要最少的資源數量。  下表定義每個查詢在服務層級上所需的最低資源數量，以及可以達成的相關聯並行。
+隨著[工作負載群組](sql-data-warehouse-workload-isolation.md)引進，並行位置的概念不再適用。  每個要求的資源會以百分比基準配置，並且在工作負載群組定義中指定。  不過，即使移除並行位置，根據服務等級，每個查詢都需要最低的資源數量。  下表定義每個查詢在服務層級與可以達成的相關聯並行之間，所需的最低資源數量。
 
-|服務等級|並行查詢數目上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支援的最低%|
+|服務等級|並行查詢數目上限|針對 REQUEST_MIN_RESOURCE_GRANT_PERCENT 支援的最低 %|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12.5%|
@@ -75,15 +75,15 @@ ms.locfileid: "80632672"
 |DW30000c|128|0.75%|
 ||||
 
-## <a name="concurrency-maximums-for-resource-classes"></a>資源類別的平行存取上限
+## <a name="concurrency-maximums-for-resource-classes"></a>資源類別的並行存取上限
 
-為了確保每個查詢都有足夠的資源可以有效率地執行，Azure Synapse 中的 SQL 分析會藉由將並行位置指派給每個查詢來追蹤資源使用率。 系統會根據重要性和平行存取插槽，將查詢放入佇列中。 查詢會在佇列中等候，直到有足夠的平行存取插槽可用為止。 [重要性](sql-data-warehouse-workload-importance.md)和平行存取插槽會決定 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
+為了確保每個查詢都有足夠的資源可以有效率地執行，Synapse SQL 會藉由將並行位置指派給每個查詢，來追蹤資源使用量。 系統會根據重要性和並行位置，將查詢放入佇列中。 查詢會在佇列中等候，直到有足夠的並行位置可用為止。 [重要性](sql-data-warehouse-workload-importance.md)和並行位置會決定 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
 
 **靜態資源類別**
 
 下表針對每個[靜態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。  
 
-| 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | Staticrc10 所使用的插槽 | Staticrc20 所使用的插槽 | Staticrc30 所使用的插槽 | Staticrc40 所使用的插槽 | Staticrc50 所使用的插槽 | Staticrc60 所使用的插槽 | Staticrc70 所使用的插槽 | Staticrc80 所使用的插槽 |
+| 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | staticrc10 所使用的位置 | staticrc20 所使用的位置 | staticrc30 所使用的位置 | staticrc40 所使用的位置 | staticrc50 所使用的位置 | staticrc60 所使用的位置 | staticrc70 所使用的位置 | staticrc80 所使用的位置 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -104,7 +104,7 @@ ms.locfileid: "80632672"
 
 **動態資源類別**
 
-下表針對每個[動態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。 動態資源類別會針對跨所有服務等級的小型中型 m3.xlarge 資源類別使用3-10-22-70 記憶體百分比配置。
+下表針對每個[動態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。 動態資源類別會針對所有服務等級的小型-中型-大型-超大型資源類別使用 3-10-22-70 記憶體百分比。
 
 | 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | Smallrc 所使用的插槽 | Mediumrc 所使用的插槽 | Largerc 所使用的插槽 | Xlargerc 所使用的插槽 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
@@ -125,7 +125,7 @@ ms.locfileid: "80632672"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-當沒有足夠的平行存取插槽可用來啟動查詢執行時，查詢會根據重要性排入佇列並執行。  如果有相當的重要性，查詢會以先進先出的方式執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。
+當沒有足夠的並行位置可用來啟動查詢執行時，查詢會根據重要性排入佇列並執行。  如果有相等的重要性，查詢會以先進先出的基準執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。
 
 ## <a name="next-steps"></a>後續步驟
 

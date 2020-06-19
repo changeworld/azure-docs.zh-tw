@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e824641f261fc920dd234ba8d4787fbd8ddffe48
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611514"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737269"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 若要設定由環境即時資料驅動的完整端對端解決方案，您可以將 Azure Digital Twins 執行個體連線到其他 Azure 服務，以管理裝置和資料。
 

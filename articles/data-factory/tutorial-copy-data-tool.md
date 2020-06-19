@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022056"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660983"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用複製資料工具將資料從 Azure Blob 儲存體複製到 SQL Database
 
@@ -156,11 +156,13 @@ ms.locfileid: "84022056"
     ![資料行對應頁面](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. 在 [設定] 頁面上，選取 [下一步]。
-1. 在 [摘要] 頁面上檢閱設定，然後選取 [下一步]。
-1. 在**部署頁面**上選取 [監視] 來監視管線 (工作)。
- 
-    ![監視管線](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. 在 [摘要] 頁面上檢閱設定，然後選取 [下一步]。
+
+1. 在**部署頁面**上選取 [監視] 來監視管線 (工作)。
+
+    ![監視管線](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. 在管線執行頁面上，選取 [重新整理] 以重新整理清單。 按一下 [管線名稱] 下方的連結，以檢視活動執行詳細資料，或重新執行管線。 
     ![管線執行](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,9 +170,7 @@ ms.locfileid: "84022056"
 
     ![監視活動回合](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. 確認資料已插入 SQL Database 中的 **dbo.emp** 資料表。
-
 
 1. 選取左側的 [作者] 索引標籤以切換至編輯器模式。 您可以使用編輯器更新透過此工具建立的連結服務、資料集和管線。 如需在 Data Factory 使用者介面中編輯這些實體的詳細資訊，請參閱[本教學課程的 Azure 入口網站版本](tutorial-copy-data-portal.md)。
 

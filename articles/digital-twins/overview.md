@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 11ec9a4294cb1d5895d1bbc4e75c6b1a9b071f65
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613313"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737116"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** 屬於 IoT 平台，可讓您建立整個環境的完整數位模型。 這些環境可能是大樓、工廠、農場、能源網路、鐵路、運動場等，甚至是整個城市。 這些數位模型可用來取得深入解析以推動更優秀的產品、優化作業、降低成本，以及突破性的客戶體驗。
 

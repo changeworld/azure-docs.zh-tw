@@ -1,36 +1,36 @@
 ---
-title: 診斷和疑難排解 Azure Cosmos DB 非同步 JAVA SDK v2
-description: 使用用戶端記錄和其他協力廠商工具等功能，來識別、診斷和疑難排解非同步 JAVA SDK v2 中的 Azure Cosmos DB 問題。
+title: 診斷 Azure Cosmos DB 非同步 Java SDK v2 並進行疑難排解
+description: 使用像是用戶端記錄的功能及其他協力廠商工具，在非同步 Java SDK v2 中，針對 Azure Cosmos DB 問題進行識別、診斷及疑難排解。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982610"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651883"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>針對使用 Azure Cosmos DB 非同步 JAVA SDK v2 搭配 SQL API 帳戶的問題進行疑難排解
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>針對搭配使用 Azure Cosmos DB 非同步 Java SDK v2 和 SQL API 帳戶時所發生的問題進行疑難排解
 
 > [!div class="op_single_selector"]
-> * [JAVA SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
 > * [非同步 Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
 
 > [!IMPORTANT]
-> 這*不*是最新的 JAVA SDK for Azure Cosmos DB！ 請考慮為您的專案使用 Azure Cosmos DB JAVA SDK v4。 遵循[遷移至 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[Reactor vs RxJAVA](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的指示進行升級。 
+> 這「不是」適用於 Azure Cosmos DB 的最新 Java SDK！ 您應該將專案升級到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然後閱讀 Azure Cosmos DB Java SDK v4 [疑難排解指南](troubleshoot-java-sdk-v4-sql.md)。 遵循[移轉到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南及 [Reactor 與 RxJava 之間的比較](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) \(英文\) 指南來升級。 
 >
-> 本文僅涵蓋 Azure Cosmos DB 非同步 JAVA SDK v2 的疑難排解。 如需詳細資訊，請參閱 Azure Cosmos DB 非同步 JAVA SDK v2[版本](sql-api-sdk-async-java.md)資訊、 [Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[效能秘訣](performance-tips-async-java.md)。
+> 本文只涵蓋適用於 Azure Cosmos DB 非同步 Java SDK v2 的疑難排解。 如需詳細資訊，請參閱 Azure Cosmos DB 非同步 Java SDK v2 [版本資訊](sql-api-sdk-async-java.md)、[Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)，以及[效能提示](performance-tips-async-java.md)。
 >
 
-本文涵蓋當您搭配 Azure Cosmos DB SQL API 帳戶使用[JAVA ASYNC SDK](sql-api-sdk-async-java.md)時的常見問題、因應措施、診斷步驟和工具。
+此文章涵蓋搭配 Azure Cosmos DB SQL API 帳戶使用 [Java Async SDK](sql-api-sdk-async-java.md) 時的常見問題、因應措施、診斷步驟與工具。
 Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 
 從此清單開始：
@@ -71,15 +71,15 @@ ulimit -a
     啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
 * 將公用 IP 指派給您的 Azure VM。
 
-##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法連線到服務-防火牆
-``ConnectTimeoutException``指出 SDK 無法連線到服務。
-使用 direct 模式時，您可能會收到與下列類似的錯誤：
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法連線服務 - 防火牆
+``ConnectTimeoutException`` 表示 SDK 無法連線服務。
+使用直接模式時，您可能會收到如下所示的錯誤：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果您的應用程式電腦上有執行防火牆，請開啟直接模式所使用的埠範圍10000到20000。
-也請遵循[主機電腦上](#connection-limit-on-host)的連線限制。
+如果在應用程式機器上已執行防火牆，請開啟直接模式使用的連接埠範圍 10,000 到 20,000。
+另請遵循[主機電腦的連線限制](#connection-limit-on-host)。
 
 #### <a name="http-proxy"></a>HTTP Proxy
 
@@ -94,7 +94,7 @@ Netty IO 執行緒僅適用於非封鎖的 Netty IO 工作。 SDK 會將其中�
 
 例如，讓我們看看下列程式碼片段。 您可能在 Netty 執行緒上執行需要超過幾毫秒的長時間持續性工作。 若是如此，您最終會進入以下狀態：沒有任何可處理 IO 工作的 Netty IO 執行緒。 因此，您會收到 ReadTimeoutException 失敗。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>非同步 Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 @Test
@@ -149,7 +149,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ```
 因應措施是變更要在其上執行費時工作的執行緒。 為您的應用程式定義排程器的單一執行個體。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>非同步 Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Have a singleton instance of an executor and a scheduler.
@@ -158,7 +158,7 @@ Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
 ```
 您可能需要執行費時的工作，比方說，耗用大量運算資源的工作或封鎖 IO。 在此情況下，使用 `.observeOn(customScheduler)` API，將執行緒切換至 `customScheduler` 所提供的背景工作角色。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>非同步 Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
@@ -189,17 +189,17 @@ Azure Cosmos DB 模擬器的 HTTPS 憑證是自我簽署的。 針對要與模�
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述例外狀況會建議您相依于舊版的 RxJAVA lib （例如1.2.2）。 我們的 SDK 依賴 RxJAVA 1.3.8，其具有舊版 RxJAVA 無法使用的 Api。 
+上述例外狀況意味著您相依於舊版的 RxJava 程式庫 (例如 1.2.2)。 我們的 SDK 依賴 RxJava 1.3.8，其具有舊版 RxJava 未提供的 API。 
 
-這類問題的因應措施是識別哪些其他相依性會帶入 RxJAVA-1.2.2，並在 RxJAVA 1.2.2 上排除可轉移的相依性，並允許 CosmosDB SDK 引進較新的版本。
+這類問題的因應措施是識別哪些其他相依性會帶入 RxJava-1.2.2，並在 RxJava-1.2.2 上排除可轉移的相依性，然後允許 CosmosDB SDK 引進較新的版本。
 
-若要識別哪一個程式庫會帶入 RxJAVA-1.2.2，請在您的專案 pom .xml 檔案旁執行下列命令：
+若要識別哪一個程式庫會帶入 RxJava-1.2.2，請在您的專案 pom.xml 檔案旁執行下列命令：
 ```bash
 mvn dependency:tree
 ```
-如需詳細資訊，請參閱 maven 相依性[樹狀結構指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+如需詳細資訊，請參閱 [maven 相依性樹狀結構指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-一旦您識別出 RxJAVA 1.2.2 是您專案其他相依性的可轉移相依性，您可以在 pom 檔案中修改該 lib 的相依性，並排除 RxJAVA 可轉移相依性：
+一旦您識別出 RxJava-1.2.2 是您專案哪個其他相依性的可轉移相依性，您就可以在 pom 檔案中修改該程式庫的相依性，並排除 RxJava 可轉移相依性：
 
 ```xml
 <dependency>
@@ -215,7 +215,7 @@ mvn dependency:tree
 </dependency>
 ```
 
-如需詳細資訊，請參閱[排除可轉移](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)的相依性指南。
+如需詳細資訊，請參閱[排除可轉移相依性指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
 ## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>啟用用戶端 SDK 記錄
@@ -274,6 +274,6 @@ netstat -nap
 [常見問題和因應措施]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
 [主機電腦上的連線限制]: #connection-limit-on-host
-[Azure SNAT （PAT）埠耗盡]: #snat
+[Azure SNAT (PAT) 連接埠耗盡]: #snat
 
 

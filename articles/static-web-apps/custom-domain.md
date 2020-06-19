@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594937"
+ms.locfileid: "83655231"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽中設定自訂網域
 
@@ -80,7 +80,7 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 
 1. 按一下 [驗證] 按鈕。
 
-現在已設定自訂網域，DNS 提供者可能需要數小時的時間才能全球傳播變更。 您可以前往 [dnspropagation.net](https://dnspropagation.net) 來檢查傳播的狀態。 輸入您的網域自訂網域 (包括 `www`)，從下拉式選單中選取 CNAME，然後選取 [開始]。
+現在已設定自訂網域，DNS 提供者可能需要數小時的時間才能全球傳播變更。 您可以前往 [dnspropagation.net](https://dnspropagation.net) 來檢查傳播的狀態。 輸入您的自訂網域 (包括 `www`)，從下拉式選單中選取 CNAME，然後選取 [開始]。
 
 如果您的 DNS 變更已填入，則網站會傳回您靜態 Web 應用程式的自動產生 URL (例如，_random-name-123456789c.azurestaticapps.net_)。
 
@@ -92,7 +92,7 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 
 ## <a name="map-a-wildcard-domain"></a>對應萬用字元網域
 
-有時候，您希望傳送至子網域的所有流量路由至另一個網域。 常見的範例是將所有子網域流量對應到 `www.example.com`。 如此一來，即使有人輸入 `ww.example.com` 而不是 `www.example.com`，要求還是會傳送至 `www.example.com`。
+有時候，您希望傳送至子網域的所有流量路由至另一個網域。 常見的範例是將所有子網域流量對應到 `www.example.com`。 如此一來，即使有人輸入 `w.example.com` 而不是 `www.example.com`，要求還是會傳送至 `www.example.com`。
 
 ### <a name="configure-dns-provider"></a>設定 DNS 提供者
 
@@ -124,4 +124,4 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [進行應用程式設定](application-settings.md)
+> [設定應用程式設定](application-settings.md)

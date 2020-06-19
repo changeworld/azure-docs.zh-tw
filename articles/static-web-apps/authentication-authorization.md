@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594957"
+ms.locfileid: "83655258"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版的驗證和授權
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 若要避免平台在未來對個別應用程式提出要求時提供這項資訊，請將要求提交至下列 URL：
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>系統資料夾
@@ -154,6 +154,11 @@ Azure 靜態 Web Apps 會使用 `/.auth` 系統資料夾來提供授權相關 AP
 }
 ```
 
+### <a name="post-login-redirect"></a>登入後重新導向
+
+如果您希望使用者在登入之後返回特定頁面，請在 `post_login_redirect_uri` 查詢字串參數中提供 URL。
+
+
 ## <a name="logout"></a>Logout
 
 `/.auth/logout` 路由會將使用者從網站登出。 您可以新增網站導覽的連結來讓使用者登出，如下列範例所示。
@@ -170,6 +175,10 @@ Azure 靜態 Web Apps 會使用 `/.auth` 系統資料夾來提供授權相關 AP
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>登出後重新導向
+
+如果您希望使用者在登出之後返回特定頁面，請在 `post_logout_redirect_uri` 查詢字串參數中提供 URL。
 
 ## <a name="block-an-authorization-provider"></a>封鎖授權提供者
 

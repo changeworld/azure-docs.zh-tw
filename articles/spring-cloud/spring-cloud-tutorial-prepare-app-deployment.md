@@ -1,21 +1,21 @@
 ---
-title: 如何準備 JAVA 春季應用程式以在 Azure 中部署雲端
-description: 在本主題中，您會準備 JAVA 春季應用程式，以部署至 Azure 春季雲端。
+title: 作法 - 準備 Java Spring 應用程式以部署到 Azure Spring Cloud
+description: 在本主題中，您會準備 Java Spring 應用程式來部署至 Azure Spring Cloud。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731170"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657136"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
-本主題說明如何準備現有的 JAVA 春季應用程式，以部署至 Azure 春季雲端。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
+本主題會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [使用 Azure 入口網站啟動應用程式](spring-cloud-quickstart-launch-app-portal.md)
@@ -129,11 +129,24 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>其他必要的相依性
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>啟用 Azure Spring Cloud 功能的其他建議相依性
 
-若要啟用 Azure Spring Cloud 的內建功能，您的應用程式必須包含下列相依性。 如果有包含，便能確保您的應用程式能針對每個元件正確自我設定。
+若要啟用從容器登錄到分散式追蹤的 Azure Spring Cloud 內建功能，您也需要在應用程式中包含下列相依性。 如果您不需要特定應用程式的對應功能，可以捨棄其中一些相依性。
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 註釋
+### <a name="service-registry"></a>服務登錄
+
+若要使用受控的 Azure Service Registry 服務，請在 pom.xml 檔案中包含 `spring-cloud-starter-netflix-eureka-client` 相依性，如下所示：
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+Service Registry 伺服器的端點會自動搭配您的應用程式插入為環境變數。 應用程式接著可以向 Service Registry 伺服器註冊自己，並探索其他相依的微服務。
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 註釋
 
 將下列註釋新增至應用程式原始程式碼。
 ```java
@@ -159,20 +172,7 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Service Registry 相依性
-
-若要使用受控的 Azure Service Registry 服務，請在 pom.xml 檔案中包含 `spring-cloud-starter-netflix-eureka-client` 相依性，如下所示：
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-Service Registry 伺服器的端點會自動搭配您的應用程式插入為環境變數。 應用程式接著可以向 Service Registry 伺服器註冊自己，並探索其他相依的微服務。
-
-### <a name="distributed-configuration-dependency"></a>分散式設定相依性
+### <a name="distributed-configuration"></a>分散式設定
 
 若要啟用分散式設定，請在 pom.xml 檔案的 [相依性] 區段中包含下列 `spring-cloud-config-client` 相依性：
 
@@ -186,7 +186,7 @@ Service Registry 伺服器的端點會自動搭配您的應用程式插入為環
 > [!WARNING]
 > 請勿在啟動程序設定中指定 `spring.cloud.config.enabled=false`。 否則，應用程式會停止使用 Config Server。
 
-### <a name="metrics-dependency"></a>計量相關性
+### <a name="metrics"></a>計量
 
 請在 pom.xml 檔案的 [相依性] 區段中包含 `spring-boot-starter-actuator` 相依性，如下所示：
 
@@ -199,7 +199,7 @@ Service Registry 伺服器的端點會自動搭配您的應用程式插入為環
 
  系統會定期從 JMX 端點提取計量。 您可以使用 Azure 入口網站將計量視覺化。
 
-### <a name="distributed-tracing-dependency"></a>分散式追蹤相依性
+### <a name="distributed-tracing"></a>分散式追蹤
 
 請在 pom.xml 檔案的 [相依性] 區段中包含下列 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 相依性：
 
@@ -225,7 +225,7 @@ Service Registry 伺服器的端點會自動搭配您的應用程式插入為環
 
 ## <a name="next-steps"></a>後續步驟
 
-在本主題中，您已瞭解如何設定您的 JAVA 春季應用程式，以部署至 Azure 春季雲端。 若要瞭解如何設定 Config Server 實例，請參閱下列文章。
+在此主題中，您已了解如何設定 Java Spring 應用程式以部署至 Azure Spring Cloud。 若要了解如何設定 Config Server 執行個體，請參閱下一篇文章。
 
 > [!div class="nextstepaction"]
 > [了解如何設定 Config Server 執行個體](spring-cloud-tutorial-config-server.md)

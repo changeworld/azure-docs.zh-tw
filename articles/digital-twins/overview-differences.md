@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8a69e0bfe172d2cc7a291ee51ffa73ae7b484731
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 30a4e375bc05d939358b54b279228e1696b17e66
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613291"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729331"
 ---
 # <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新版 Azure Digital Twins 與先前版本 (2018) 有何不同？
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行。 雖然先前版本的核心概念已在公開預覽中傳遞至新的服務，但許多介面與實作詳細資料都已經變更，讓服務更具彈性且更容易存取。 這些變更都是受到客戶的意見反應啟發所形成的。
 
