@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604449"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782852"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教學課程：改善法規合規性
 ---
@@ -103,4 +103,4 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 
 -   [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)了解如何使用 Azure 資訊安全中心的建議來協助您保護 Azure 資源。
 
--   [改善 Azure 資訊安全中心的安全分數](security-center-secure-score.md) - 了解要如何設定弱點與安全性建議的優先順序，才最能改善安全性狀況。
+-   [改善 Azure 資訊安全中心的安全分數](secure-score-security-controls.md) - 了解要如何設定弱點與安全性建議的優先順序，才最能改善安全性狀況。

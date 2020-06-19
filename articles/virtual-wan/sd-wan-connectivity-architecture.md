@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 17db9d615dcdd78ca50f88b5dad72d596bf29276
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402467"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860574"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>使用 Azure 虛擬 WAN 的 SD-WAN 連線架構
 
@@ -39,7 +39,7 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
 
 在此模型中，因為與虛擬 WAN 的連線是透過 IPsec 進行，且 IPsec VPN 是終止於虛擬 WAN VPN 閘道上，所以可能不支援某些廠商以即時流量特性為基礎的專屬流量最佳化。 例如，在分支 CPE 的動態路徑選擇是可行的，因為分支裝置會與另一個 SD WAN 節點交換各種網路封包資訊，因此，可於分支中動態識別最佳連結，以用於各種已排定優先順序的流量。 此功能在最後關鍵最佳化的所在區域中 (分支到最接近的 Microsoft POP) 可能會很有幫助。
 
-透過虛擬 WAN，使用者可以取得 Azure 路徑選擇，這是跨多個 ISP 連結 (從分支 CPE 到虛擬 WAN VPN 閘道) 的原則式路徑選則。 虛擬 WAN 可讓您從相同的 SD-WAN 分支 CPE 設定多個連結 (路徑)；每個連結代表從 SD-WAN CPE 的唯一公用 IP 到兩個不同的 Azure 虛擬 WAN VPN 閘道執行個體的雙通道連線。 SD-WAN 廠商可以根據其原則引擎在 CPE 連結上設定的流量原則，對 Azure 實作最佳路徑。
+透過虛擬 WAN，使用者可以取得 Azure 路徑選擇，這是跨多個 ISP 連結 (從分支 CPE 到虛擬 WAN VPN 閘道) 的原則式路徑選則。 虛擬 WAN 可讓您從相同的 SD-WAN 分支 CPE 設定多個連結 (路徑)；每個連結代表從 SD-WAN CPE 的唯一公用 IP 到兩個不同的 Azure 虛擬 WAN VPN 閘道執行個體的雙通道連線。 SD-WAN 廠商可以根據其原則引擎在 CPE 連結上設定的流量原則，對 Azure 實作最佳路徑。 在 Azure 端，所有傳入的連線都會受到同等對待。
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>間接互連模型
 

@@ -1,46 +1,46 @@
 ---
 title: Azure 藍圖函式
 description: 描述可用於 Azure 藍圖定義和指派中藍圖成品的函式。
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280673"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834776"
 ---
-# <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函數
+# <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函式
 
-Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可與藍圖定義和藍圖成品搭配使用。 除了透過藍圖參數取得動態值之外，Resource Manager 範本成品也支援 Resource Manager 函數的完整使用。
+Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可與藍圖定義和藍圖成品搭配使用。 除了透過藍圖參數取得動態值之外，Resource Manager 範本成品也支援完整使用 Resource Manager 函式。
 
-支援下列功能：
+支援下列函式：
 
-- [成品](#artifacts)
+- [artifacts](#artifacts)
 - [concat](#concat)
-- [參數](#parameters)
+- [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [預定](#subscription)
+- [訂用帳戶](#subscription)
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>artifacts
 
 `artifacts(artifactName)`
 
-傳回已填入藍圖成品輸出之屬性的物件。
+傳回已填入藍圖成品輸出的屬性物件。
 
 > [!NOTE]
-> `artifacts()`無法從 Resource Manager 範本內部使用函式。 在使用 Azure PowerShell 或 REST API 作為[藍圖即程式碼](https://github.com/Azure/azure-blueprints/blob/master/README.md)的一部分來管理藍圖時，函數只能用於藍圖定義 JSON 或成品 JSON 中。
+> `artifacts()` 函式無法從 Resource Manager 範本中使用。 在使用 Azure PowerShell 或 REST API 作為 [藍圖即程式碼 (Blueprints-as-code)](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分來管理藍圖時，函式只能用於藍圖定義 JSON 或成品 JSON 中。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | artifactName |是 |字串 |藍圖成品的名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
-輸出屬性的物件。 **輸出**屬性取決於所參考的藍圖成品類型。 所有類型都遵循以下格式：
+輸出屬性的物件。 **輸出**屬性取決於所參考的藍圖成品類型。 所有類型都會遵循以下格式：
 
 ```json
 {
@@ -62,7 +62,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 #### <a name="resource-manager-template-artifact"></a>Resource Manager 範本成品
 
-傳回之物件的**輸出**屬性會定義在 Resource Manager 範本內，並由部署傳回。
+所傳回物件的**輸出**屬性會定義在 Resource Manager 範本內，並由部署傳回。
 
 #### <a name="role-assignment-artifact"></a>角色指派成品
 
@@ -78,7 +78,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="example"></a>範例
 
-具有識別碼_myTemplateArtifact_的 Resource Manager 範本成品，其中包含下列範例輸出屬性：
+識別碼為 myTemplateArtifact 的 Resource Manager 範本成品，其中包含下列出屬性範例輸：
 
 ```json
 {
@@ -104,15 +104,15 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 }
 ```
 
-從_myTemplateArtifact_範例中取出資料的一些範例包括：
+從 myTemplateArtifact 範例擷取資料的一些範例如下：
 
 | 運算是 | 類型 | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[「第一個」、「第二個」\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | 字串 | 頭 |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | 字串 | 「我的字串值」 |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty"： "my value"，"anotherProperty"： true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | 字串 | 「我的價值」 |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "my string value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
@@ -123,10 +123,10 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |字串 |串連的第一個值。 |
-| 其他引數 |否 |字串 |串連的順序中的其他值 |
+| 其他引數 |否 |字串 |串連的其他值 (循序順序) |
 
 ### <a name="return-value"></a>傳回值
 
@@ -134,7 +134,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，它只適用于字串。
+Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在於，其只能使用字串。
 
 ### <a name="example"></a>範例
 
@@ -148,21 +148,21 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字串 |要傳回的參數名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
-指定之藍圖或藍圖成品參數的值。
+指定藍圖或藍圖成品參數的值。
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，它只適用于藍圖參數。
+Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在於，其只能使用藍圖參數。
 
 ### <a name="example"></a>範例
 
-在藍圖定義中定義參數_principalIds_ ：
+在藍圖定義中定義 principalIds 參數：
 
 ```json
 {
@@ -184,7 +184,7 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 }
 ```
 
-然後使用_principalIds_作為藍圖成品`parameters()`中的引數：
+然後使用 principalIds 作為藍圖成品中 `parameters()` 的引數：
 
 ```json
 {
@@ -218,13 +218,13 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resourceGroup()`在訂用帳戶層級成品或藍圖定義中使用函數。 它只能用於屬於資源群組成品一部分的藍圖成品。
+Azure 藍圖函式與 Azure Resource Manager 範本函式不同。 `resourceGroup()` 函式不能用在訂用帳戶層級成品或藍圖定義中。 其只能用於屬於資源群組成品一部分的藍圖成品。
 
-`resourceGroup()`函數的常見用法是在與資源群組成品相同的位置中建立資源。
+`resourceGroup()` 函式的常見用法是在和資源群組成品相同的位置中建立資源。
 
 ### <a name="example"></a>範例
 
-若要使用資源群組的位置，請在藍圖定義或指派期間設定為另一個成品的位置，並在藍圖定義中宣告資源群組預留位置物件。 在此範例中， _NetworkingPlaceholder_是資源群組預留位置的名稱。
+若要將藍圖定義中或指派期間設定的資源群組位置當作另一個成品的位置使用，請在藍圖定義中宣告資源群組的預留位置物件。 在此範例中，NetworkingPlaceholder 是資源群組預留位置的名稱。
 
 ```json
 {
@@ -240,7 +240,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 }
 ```
 
-然後在以`resourceGroup()`資源群組預留位置物件為目標之藍圖成品的內容中使用函式。 在此範例中，會將範本成品部署至_NetworkingPlaceholder_資源群組，並將_NetworkingPlaceholder_資源群組位置動態填入的參數_resourceLocation_提供給範本。 _NetworkingPlaceholder_資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用它將資源部署到正確的位置。
+然後在以資源群組預留位置物件為目標的藍圖成品內容中，使用 `resourceGroup()` 函式。 在此範例中，範本成品會部署到 NetworkingPlaceholder 資源群組中，並將以動態方式填入 NetworkingPlaceholder 資源群組位置的 resourceLocation 參數提供給範本。 NetworkingPlaceholder 資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用其將資源部署到正確的位置。
 
 ```json
 {
@@ -265,13 +265,13 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 
 `resourceGroups(placeholderName)`
 
-傳回物件，表示指定的資源群組成品。 不同`resourceGroup()`于需要成品內容的，此函式是在不在該資源群組的內容中時，用來取得特定資源群組預留位置的屬性。
+傳回表示指定資源群組成品的物件。 不同於需要成品內容的 `resourceGroup()`，不在該資源群組的內容中時，可使用此函式來取得特定資源群組預留位置的屬性。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| placeholderName |是 |字串 |要傳回之資源群組成品的預留位置名稱。 |
+| placeholderName |是 |字串 |要傳回的資源群組成品的預留位置名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -286,7 +286,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 
 ### <a name="example"></a>範例
 
-若要使用資源群組的位置，請在藍圖定義或指派期間設定為另一個成品的位置，並在藍圖定義中宣告資源群組預留位置物件。 在此範例中， _NetworkingPlaceholder_是資源群組預留位置的名稱。
+若要將藍圖定義中或指派期間設定的資源群組位置當作另一個成品的位置使用，請在藍圖定義中宣告資源群組的預留位置物件。 在此範例中，NetworkingPlaceholder 是資源群組預留位置的名稱。
 
 ```json
 {
@@ -302,7 +302,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 }
 ```
 
-然後從任何`resourceGroups()`藍圖成品的內容使用函式，以取得資源群組預留位置物件的參考。 在此範例中，範本成品會部署在_NetworkingPlaceholder_資源群組之外，並提供在範本中以_NetworkingPlaceholder_資源群組位置動態填入的參數_artifactLocation_ 。 _NetworkingPlaceholder_資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用它將資源部署到正確的位置。
+然後，從任何藍圖成品的內容使用 `resourceGroups()` 函式，以取得資源群組預留位置物件的參考。 在此範例中，範本成品會部署到 NetworkingPlaceholder 資源群組外，並將以動態方式填入 NetworkingPlaceholder 資源群組位置的 artifactLocation 參數提供給範本。 NetworkingPlaceholder 資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用其將資源部署到正確的位置。
 
 ```json
 {
@@ -327,7 +327,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 
 `subscription()`
 
-傳回目前藍圖指派之訂用帳戶的詳細資料。
+傳回目前藍圖指派的訂用帳戶詳細資料。
 
 ### <a name="return-value"></a>傳回值
 
@@ -344,7 +344,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 無法`resour
 
 ### <a name="example"></a>範例
 
-使用訂用帳戶的顯示名稱和`concat()`函式 _，來建立當做參數名稱_傳遞至範本成品的命名慣例。
+使用訂用帳戶的顯示名稱和 `concat()` 函式，建立作為 resourceName 參數傳遞至範本成品的命名慣例。
 
 ```json
 {

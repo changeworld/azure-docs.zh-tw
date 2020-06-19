@@ -1,250 +1,225 @@
 ---
-title: 在 Azure Marketplace 中建立 Azure 虛擬機器供應專案
-description: 瞭解如何在 Azure Marketplace 中使用所需的 SKU 建立虛擬機器供應專案。
+title: 在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
+description: 了解如何使用所需的 SKU，在 Azure Marketplace 上建立虛擬機器供應項目。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745013"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847917"
 ---
-# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 虛擬機器供應專案
+# <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
-> [!IMPORTANT]
-> 我們正在將您 Azure VM 供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請繼續遵循在 Cloud Partner 入口網站中[建立虛擬機器供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)專案中的指示來管理供應專案。
+此文章描述如何建立 Azure 虛擬機器供應項目，並將其發佈至 [Azure Marketplace](https://azuremarketplace.microsoft.com/)。 其將同時處理 Windows 型和 Linux 型虛擬機器，其中包含作業系統、虛擬硬碟 (VHD)，以及多達 16 個資料磁碟。 
 
-本文說明如何建立 Azure 虛擬機器供應專案，並將其發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它會處理以 Windows 和 Linux 為基礎的虛擬機器，其中包含作業系統、虛擬硬碟（VHD）和最多16個數據磁片。 開始之前，請先[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果您尚未這麼做）。 請確定您的帳戶已在商業 marketplace 方案中註冊。
+在開始之前，請[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) \(部分機器翻譯\)。 請確定您的帳戶已在商業 Marketplace 計畫中註冊。
 
 ## <a name="introduction"></a>簡介
 
-### <a name="publishing-benefits"></a>發佈的優點
+### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>發佈至 Azure Marketplace 的優點
 
-發行至 Azure Marketplace 具有下列優點：
+當您在 Azure Marketplace 上發佈供應項目時，可以：
 
-- 使用 Microsoft 品牌推廣您的公司
-- 透過 Azure Marketplace，觸及超過100000000的 Office 365 和 Dynamics 365 使用者及超過200000的組織
-- 從這些市場取得高品質的潛在客戶
-- 取得由 Microsoft 現場和電話銷售團隊推廣的服務
+- 利用 Microsoft 品牌來推廣您的公司。
+- 接觸超過 1 億個 Office 365 和 Dynamics 365 使用者以及超過 20 萬個組織。
+- 從這些市集取得高品質潛在客戶。
+- 讓 Microsoft 現場銷售和電話銷售團隊推廣您的服務。
 
 ### <a name="before-you-begin"></a>開始之前
 
-如果您尚未這麼做，請參閱[虛擬機器供應專案發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虛擬機器材料：
+如果您還未這麼做，請檢閱[虛擬機器供應項目發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) \(部分機器翻譯\) 和此 Azure 虛擬機器資料：
 
-- 快速入門手冊
+- 快速入門指南
   - [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)
-  - [GitHub Azure 快速入門範例](https://github.com/azure/azure-quickstart-templates) \(英文\)
+  - [GitHub Azure 快速入門範本](https://github.com/azure/azure-quickstart-templates) \(英文\)
 - 教學課程
   - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - 範例
-  - [適用于 Linux Vm 的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [適用于 Linux Vm 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [適用于 Windows Vm 的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [適用于 Windows Vm 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [適用於 Linux 虛擬機器的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples) \(部分機器翻譯\)
+  - [適用於 Linux 虛擬機器的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技術知識的基本概念
 
-設計、建立及測試這些資產需要一些時間，而且需要 Azure 平臺和用來建立供應專案之技術的技術知識。
+設計、建置和測試供應項目的程序需要一些時間，而且同時需要建置供應項目所使用之 Azure 平台和技術方面的專業知識。
 
-您的工程小組應該瞭解下列 Microsoft 技術：
+您的工程小組應具備下列 Microsoft 技術的基本了解和運用知識：
 
-- 對於 [Azure 服務](https://azure.microsoft.com/services/)的基本了解
-- 如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
-- [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、 [Azure 儲存體](https://azure.microsoft.com/services/?filter=storage#storage)和[azure 網路](https://azure.microsoft.com/services/?filter=networking#networking)的使用知識
+- [Azure 服務](https://azure.microsoft.com/services/)
+- [Azure 應用程式的設計和架構](https://azure.microsoft.com/solutions/architecture/)
+- [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、[Azure 儲存體](https://azure.microsoft.com/services/?filter=storage#storage)和 [Azure 網路](https://azure.microsoft.com/services/?filter=networking#networking)
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左側導覽功能表中，選取 [**商用 Marketplace** > **總覽**]。
-3. 在 [總覽] 頁面上，選取 [ **+ 新增供應** > 專案] [**Azure 虛擬機器**]。
+2. 在左窗格上，選取 [商業 Marketplace] > [概觀]。
+3. 在 [概觀] 頁面上，選取 [新增供應項目] > [Azure 虛擬機器]。
 
-    ![說明左側導覽功能表。](./media/new-offer-azure-vm.png)
+    ![顯示左窗格功能表選項和 [新增供應項目] 按鈕的螢幕擷取畫面。](./media/new-offer-azure-vm.png)
 
 > [!NOTE]
-> 發行供應專案之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應專案後出現在店面中。 請務必在進行變更之後，一律重新發佈。
+> 供應項目發佈之後，您在合作夥伴中心對其進行的任何編輯，只有在您重新發佈供應項目之後，才會出現在 Azure Marketplace 上。 變更供應項目之後，請務必一律重新發佈該供應項目。
 
 ## <a name="new-offer"></a>新增供應項目
 
-輸入**供應專案識別碼**。 這是您帳戶中每個供應專案的唯一識別碼。
+輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
 
-- 在 marketplace 供應專案的網址中，客戶可以看到此識別碼，如果適用，則會顯示在 Azure PowerShell 和 Azure CLI 中。
-- 請一律使用小寫字母和數字。 它可以包含連字號和底線，但不能有空格，而且限制為50個字元。 例如，如果您在這裡輸入 [**測試-供應專案-1** ]，則供應專案`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`web 位址會是。
-- 選取 [**建立**] 之後，即無法變更供應專案識別碼。
+- 客戶可以在 Azure Marketplace 供應項目和 Azure PowerShell 與 Azure CLI 的網址中看到此識別碼 (如果適用)。
+- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 選取 [建立] 之後，即無法變更供應項目識別碼。
 
-輸入**供應專案別名**。 這是在合作夥伴中心使用供應專案的名稱。
+輸入**供應項目別名**。 供應項目別名是用於合作夥伴中心內供應項目的名稱。
 
-- 此名稱不會在 marketplace 中使用，而且與向客戶顯示的供應專案名稱和其他值不同。
+- Azure Marketplace 上不使用此名稱。 其與向客戶顯示的供應項目名稱和其他值不同。
 
-選取 [**建立**] 以產生供應專案並繼續。
+選取 [建立] 以產生供應項目並繼續。
 
-## <a name="offer-setup"></a>供應專案設定
+## <a name="offer-setup"></a>供應項目設定
 
 ### <a name="test-drive"></a>試用產品
 
-試用產品是向潛在客戶展示供應專案的絕佳方式，方法是讓他們選擇「在購買前試用」，進而提升轉換並產生高度合格的潛在客戶。 [深入瞭解試用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)產品。
+*試用產品*是向潛在客戶展示供應項目的絕佳方式。 其可讓潛在客戶選擇「購買前先試用」，這有助於增加轉換並產生最適合的潛在客戶。 如需詳細資訊，請參閱[什麼是試用產品？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)\(部分機器翻譯\)。
 
-若要啟用一段固定時間的試用產品，請選取 [**啟用試用**產品] 核取方塊。 若要從您的供應專案中移除試用產品，請清除此核取方塊。
+若要在固定時間啟用試用產品，請選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 其他試用產品資源：
 
 - [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [試用產品總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （請確定您的快顯封鎖程式已關閉）
+- [下載試用產品概觀](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF 檔案 (請確定您的快顯封鎖程式已關閉)。
 
-### <a name="lead-management"></a>潛在客戶管理
+### <a name="customer-leads"></a>潛在客戶
 
-將您的供應專案發佈至具有合作夥伴中心的商用 marketplace 時，請將其連接到您的客戶關係管理（CRM）系統。 這可讓您在有人對您的產品感興趣或使用時，立即收到客戶連絡人資訊。 如果您將啟用**試用**產品（請參閱前一節），則需要連接到 CRM，否則它是選擇性的。
+當您使用合作夥伴中心將供應項目發佈到商業 Marketplace 時，將其連線到客戶關係管理 (CRM) 系統。 這可讓您在有人對您的產品感興趣或使用您的產品時，立即收到客戶連絡人資訊。 如果您想要啟用試用產品 (請參閱上一節)，則需要連線到 CRM。 否則，可以選擇連線到 CRM。
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 合作夥伴中心支援下列 CRM 系統：
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for customer engagement
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果您的 CRM 系統未列于上方，請使用[Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在客戶資料。 然後將資料匯出至您的 CRM 系統。
+    > 如果此處未列出您的 CRM 系統，請使用 [Azure 資料表儲存體](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [HTTPS 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)儲存您的潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
 
-2. 在合作夥伴中心發佈時，將您的供應專案連接到潛在客戶目的地。
-3. 確認已正確設定與潛在客戶目的地的連接。 在合作夥伴中心發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 當您在供應專案上線前進行預覽時，您也可以嘗試在預覽環境中自行部署供應專案，藉此測試您的潛在客戶連線。
-4. 請確定與潛在客戶目的地的連線持續更新，讓您不會遺失任何潛在客戶。
+1. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
+1. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心發佈之後，Microsoft 會驗證連線並將測試潛在客戶傳送給您。 在上架前預覽供應項目時，您也可以嘗試在預覽環境中自行部署供應項目，藉此測試您的潛在客戶連線。
+1. 確認潛在客戶目的地的連線保持在最新狀態，您就不會失去任何潛在客戶。
 
-選取 [**儲存草稿**] 再繼續。
+1. 選取 [儲存草稿]，然後再繼續。
 
 ## <a name="properties"></a>屬性
 
-此頁面可讓您定義用來在 marketplace、應用程式版本，以及支援供應專案之法律合約上分組供應專案的類別和產業。
+在 [屬性] 頁面上，您要定義用來在 Azure Marketplace 上將供應項目分組的類別和產業、應用程式版本以及支援供應項目的法律合約。
 
 ### <a name="categories"></a>類別
 
-選取最少1個，最多五個類別。 這些類別是用來將您的供應專案放在適當的 marketplace 搜尋區域中。 在 [供應專案描述] 中，說明您的供應專案如何支援這些類別。 虛擬機器供應專案會出現在 Azure Marketplace 的 [**計算**] 類別之下。
+選取最少一個，最多五個類別。 您要使用這些類別，將您的供應項目放入適當的 Azure Marketplace 搜尋區域。 在供應項目描述中，說明您的供應項目如何支援這些類別。 虛擬機器供應項目會出現在 Azure Marketplace 上的 [計算] 類別之下。
 
 ### <a name="legal"></a>法律
 
-您必須提供供應專案的條款及條件。 您有兩個選擇：
+您必須為您的客戶提供供應項目條款及條件。 您有兩個選擇：
 
-- 使用您自己的條款及條件
-- 使用 Microsoft 商業 marketplace 的標準合約
+- **使用您自己的條款及條件**
 
-#### <a name="use-your-own-terms-and-conditions"></a>使用您自己的條款及條件
+   若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中輸入最多 10,000 個字元的文字。 如果您需要更長的描述，請針對您的條款及條件輸入單一網址。 這將會向客戶顯示為作用中連結。
 
-若要提供您自己的自訂條款及條件，請在 [**條款及條件**] 方塊中輸入最多10000個字元的文字。 如果您需要較長的描述，請輸入單一網址，以指向您的條款及條件可以在何處找到。 它會向客戶顯示為作用中連結。
+   客戶必須先接受這些條款，才能試用您的供應項目。
 
-客戶必須接受這些條款，才能試用您的供應專案。
+- **使用 Microsoft 商業 Marketplace 的標準合約**
 
-#### <a name="use-the-standard-contract-for-the-microsoft-commercial-marketplace"></a>使用 Microsoft 商業 marketplace 的標準合約
+   為了簡化客戶的採購程序，並降低軟體廠商的法律複雜度，Microsoft 為商業 Marketplace 提供了標準合約。 當您根據標準合約提供軟體時，客戶只需要閱讀並接受一次，而且您不需要建立自訂的條款及條件。
 
-為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 為商業市場提供了標準合約。 當您以標準合約提供軟體時，客戶只需閱讀並接受一次，您就不需要建立自訂的條款及條件。
+   若要使用標準合約，請選取 [使用 Microsoft 商業 Marketplace 的標準合約] 核取方塊，然後在快顯視窗中選取 [接受] (您可能必須向上捲動才能加以檢視)。
 
-若要使用標準合約，請選取 [**使用 Microsoft 的商業 Marketplace 標準合約**] 核取方塊，然後在快顯視窗上 [**接受**] （您可能必須向上滾動才能看到它）。
+   ![顯示 [合作夥伴中心] 內 [法律] 窗格，以及 [使用 Microsoft 商業 Marketplace 的標準合約] 核取方塊的螢幕擷取畫面。](media/use-standard-contract.png)
 
-![說明合作夥伴中心的 [總覽] 頁面，其中已選取 [新增供應專案] 按鈕和諮詢服務供應專案。](media/use-standard-contract.png)
+  > [!NOTE]
+  > 當您使用商業 Marketplace 的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 您可以根據標準合約或您自己的條款及條件來提供解決方案。
+
+  如需詳細資訊，請參閱 [Microsoft 商業 Marketplace 的標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract) \(部分機器翻譯\)。 下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF 檔案 (請確定您的快顯封鎖程式已關閉)。
+
+  **標準合約增修條款**
+
+  為簡單起見，標準合約增修條款可讓您選取標準合約條款，並為您的產品或企業建立條款。 只有在客戶已經檢閱並接受 Microsoft 標準合約之後，才需要檢閱合約的增修條款。 增修條款有兩種類型：
+
+  * **通用增修條款**：這些增修條款可普遍適用於所有客戶的標準合約。 在購買流程中，供應項目的每個客戶都會看到通用增修。 客戶必須先接受標準合約和增修條款，然後才能使用您的供應項目。 您可以為每個供應項目提供一個通用增修。 您可以在此方塊中輸入不限數目的字元。 客戶會在探索和購買流程期間，於 AppSource、Azure Marketplace 和/或 Azure 入口網站看到這些條款。
+
+  * **自訂增修條款**：標準合約的這些特殊增修條款是透過 Azure 租用戶識別碼，以特定客戶作為目標。 您可以選擇想要設定為目標的租用戶。 只有租用戶的客戶才會在供應項目的購買流程中看到自訂增修條款。 客戶必須先接受標準合約和增修條款，然後才能使用您的供應項目。
+
+    1. 從選取 [新增自訂增修條款 (最多 10 個)] 開始。 您可以為每個供應項目最多提供 10 個自訂增修條款。 執行下列動作：
+
+       a. 在 [自訂增修條款] 方塊中，輸入您自己的增修條款。 您可以輸入不限數目的字元。 只有來自您為這些自訂條款指定之租用戶識別碼的客戶，才會在 Azure 入口網站的供應項目購買流程中看到這些條款。
+
+       b. (必要) 提供**租用戶識別碼**。 每個自訂增修的目標最多可達 20 個租用戶識別碼。 如果您新增自訂增修，必須至少提供一個租用戶識別碼，以便在 Azure 中識別您的客戶。 您的客戶可以在 Azure 中選取 [Azure Active Directory] > [屬性]，以便為您找到此功能。 目錄識別碼值是租用戶識別碼 (例如，50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在[我的 Microsoft Azure 和 Office 365 租用戶識別碼是什麼？](https://www.whatismytenantid.com/) \(英文\) 中，使用其網域名稱網址，尋找客戶的組織租用戶識別碼。
+
+       c. (選用) 為租用戶識別碼提供易記的**描述**，其可協助您識別您設定為增修目標的客戶。
+
+        > [!NOTE]
+        > 這兩種類型的增修條款會彼此配對。 以自訂增修條款為目標的客戶也會在購買期間取得標準合約的通用增修條款。
+
+    1. 選取 [儲存草稿]，然後再繼續。
+
+## <a name="offer-listing"></a>供應項目清單
+
+在 [供應項目清單] 頁面上，您可以定義供應項目詳細資料，例如供應項目名稱、描述、連結和連絡人。
 
 > [!NOTE]
-> 當您使用商業 marketplace 的標準合約發佈供應專案之後，就無法使用自己的自訂條款及條件。 請根據標準合約**或**您自己的條款及條件來提供您的解決方案。
-
-若要深入瞭解標準合約，請參閱 Microsoft[商業 marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract)的標準合約。 您可以將[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178)下載為 PDF （請確定您的快顯封鎖程式已關閉）。
-
-##### <a name="standard-contract-amendments"></a>標準合約修訂
-
-標準合約修訂可讓您選取標準合約條款以求簡單，並為您的產品或企業建立條款。 只有當客戶已審查並接受 Microsoft 標準合約時，才需要審查合約的修訂。 有兩種可用的改正：「通用」和「自訂」。
-
-**通用**修訂–這些適用于所有客戶的標準合約。 這些專案會顯示在購買流程中供應專案的每個客戶。 客戶必須先接受標準合約和修訂條款，才能使用您的供應專案。 您可以提供每個供應專案的單一通用修訂。 您可以在此方塊中輸入不限數目的字元。 這些條款會向客戶顯示在探索和購買流程期間的 AppSource、Azure Marketplace 和/或 Azure 入口網站。
-
-**自訂**修訂–這些是標準合約的特殊修訂，透過 Azure 租使用者識別碼以特定客戶為目標。 您可以選擇您想要設為目標的租使用者。 只有租使用者的客戶才會看到供應專案購買流程中的自訂修訂條款。 客戶必須先接受標準合約和修訂條款，才能使用您的供應專案。
-
-從選取 **[新增自訂修訂條款（最多10個）**] 開始。 每個供應專案最多可提供10個自訂修訂條款。
-
-- **自訂修訂條款**–在 [自訂修訂條款] 方塊中輸入您自己的修訂條款。 您可以輸入不限數目的字元。 只有來自您為這些自訂條款指定之租使用者識別碼的客戶，才會在 Azure 入口網站的供應專案購買流程中看到這些專案。
-- **租使用者識別碼**（必要）–每個自訂修訂的目標最多可達20個租使用者識別碼。 如果您新增自訂修訂，您必須至少提供一個租使用者識別碼，以在 Azure 中識別您的客戶。 您的客戶可以在 Azure 中的下找到您，然後按 [屬性]。 目錄識別碼值是租使用者識別碼（例如，50c464d3-4930-494c-963c-1e951d15360e）。 您也可以使用其 [[我的 Microsoft Azure 和 Office 365 租使用者識別碼？](https://www.whatismytenantid.com/)] 的功能變數名稱網址，尋找客戶的組織租使用者識別碼。
-- **描述**（選擇性）–提供租使用者識別碼的易記描述，可協助您識別目標為修訂的客戶。
-
-> [!NOTE]
-> 這兩種類型的改正堆疊在彼此之上。 以自訂修訂為目標的客戶，也會在購買期間取得標準合約的通用修訂。
-
-選取 [**儲存草稿**] 再繼續。
-
-## <a name="offer-listing"></a>供應專案清單
-
-此頁面可讓您定義供應專案的詳細資料，例如供應專案名稱、描述、連結和連絡人。
-
-> [!NOTE]
-> 供應專案清單內容（例如描述、檔、螢幕擷取畫面和使用規定）不需要英文，只要供應專案的描述開頭為片語，「此應用程式僅適用于 [非英文語言]。」 您也可以提供_有用的連結網址_來提供內容，而不是供應專案清單內容所使用的語言。
+> 您的供應項目清單內容 (例如描述、文件、螢幕擷取畫面和使用規定) 不一定要使用英文，只要供應項目描述用以下句子開頭即可：「此應用程式僅適用於 \<非英文語言>」。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
 
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
 #### <a name="name"></a>名稱
 
-您在此處輸入的名稱會向客戶顯示，做為供應專案清單的標題。 當您建立供應專案時，此欄位會預先填入您在 [**供應專案別名**] 方塊中輸入的文字。 您可以稍後變更此名稱。
+您在此處輸入的名稱會當作供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會自動填入您在 [供應項目別名] 方塊中輸入的名稱。 您稍後可以變更此名稱。 名稱：
 
-名稱：
-
-- 可以是商標（也可以包含商標和著作權符號）
-- 長度不能超過50個字元
-- 不能包含 emoji。
+- 可以是商標。 您可以包含商標和著作權符號。
+- 不得包含超過 50 個字元。
+- 不可包含表情圖示。
 
 #### <a name="search-results-summary"></a>搜尋結果摘要
 
-您的供應專案簡短描述。 最多可有100個字元，並用於 marketplace 搜尋結果。
+提供供應項目的簡短描述，以顯示在 Azure Marketplace 搜尋結果中。 簡短描述最多可以包含 100 個字元。
 
 #### <a name="long-summary"></a>完整摘要
 
-提供供應專案的較長描述。 最多可有256個字元，並用於 marketplace 搜尋結果。
+提供供應項目的完整描述，以顯示在 Azure Marketplace 搜尋結果中。 完整描述最多可以包含 256 個字元。
 
 #### <a name="description"></a>描述
 
-提供供應專案的詳細描述，最多3000個字元。 這會在商業 marketplace 清單總覽中向客戶顯示。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-在您的描述中包含下列一或多項：
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- 供應專案的價值與主要優點
-- 類別或產業關聯，或兩者
-- 應用程式內購買機會
-- 任何必要的公開
-
-以下是撰寫描述的一些秘訣：
-
-- 在您的描述中的前幾個句子清楚描述您供應項目的價值主張。 包含下列專案：
-  - 供應專案的描述。
-  - 從您的供應專案獲益的使用者類型。
-  - 供應專案所解決的客戶需求或問題。
-- 請記住，前幾個句子可能會顯示在搜尋引擎結果中。
-- 請勿依賴特性和功能來銷售您的供應專案。 相反地，請專注于您的供應專案提供的值。
-- 使用產業特定或以優點為基礎的單字。
-
-若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來套用格式設定。
-
-![使用 rich 文字編輯器](./media/rich-text-editor.png)
-
-| <center>變更文字格式 | <center>新增專案符號或編號 | <center>新增或移除文字縮排 |
-| --- | --- | --- |
-| <center>![使用 rich 文字編輯器來變更文字格式](./media/text-editor3.png) |  <center>![使用 rich 文字編輯器加入清單](./media/text-editor4.png) |  <center>![使用 rich 文字編輯器縮排](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>隱私權原則連結
 
-輸入您組織隱私權原則的網址（URL）。 請確定您的供應專案符合隱私權法規。 您也必須在您的網站上張貼有效的隱私權原則。
+輸入貴組織隱私權原則的網址 (URL)。 確保您的供應項目符合隱私權法律及規定。 您也必須在網站上張貼有效的隱私權原則。
 
 ### <a name="useful-links"></a>實用的連結
 
-提供有關您供應專案的補充線上檔。 若要新增連結，請選取 [ **+ 新增連結**]，然後完成下欄欄位：
+提供有關您供應項目的補充線上文件。 若要新增連結，請選取 [新增連結]，然後完成下列欄位：
 
-- **名稱**–客戶會在 [詳細資料] 頁面上看到名稱。
-- **連結（URL）** –輸入客戶的連結以查看您的線上檔。
+- **Name**：客戶將會在 [詳細資料] 頁面上看到名稱。
+- **連結 (URL)** ：輸入可讓客戶檢視線上文件的連結。
 
 ### <a name="customer-support-links"></a>客戶支援連結
 
-提供支援網站，讓客戶可以觸達您的支援小組。
+提供支援網站，讓客戶可以連絡您的支援小組。
 
 - Azure 全球支援網站
 - Azure Government 支援網站
 
 ### <a name="partner-support-contact"></a>合作夥伴支援連絡人
 
-提供連絡人資訊，讓 Microsoft 合作夥伴在您的客戶開啟支援票證時使用。 這不會列在 marketplace 中。
+提供連絡人資訊，讓 Microsoft 合作夥伴在您的客戶開立支援票證時使用。 Azure Marketplace 上不會列出此資訊。
 
 - 名稱
 - 電子郵件
@@ -252,316 +227,319 @@ ms.locfileid: "82745013"
 
 ### <a name="engineering-contact"></a>工程連絡人
 
-提供您的供應專案問題時，Microsoft 所要使用的連絡人資訊，包括認證的問題。 這不會列在 marketplace 中。
+提供當您的供應項目有問題 (包括認證的問題) 時，Microsoft 所要使用的連絡人資訊。 Azure Marketplace 上不會列出此資訊。
 
 - 名稱
 - 電子郵件
 - 電話
 
-### <a name="marketplace-media"></a>Marketplace 媒體
+### <a name="azure-marketplace-media"></a>Azure Marketplace 媒體
 
-提供要與您的供應專案搭配使用的標誌和影像。 所有影像都必須是 PNG 格式。 模糊影像會導致您的提交遭到拒絕。
+提供要搭配您供應項目使用的標誌和影像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
 >[!Note]
->如果您在上傳檔案時發生問題，請確定您的區域網路不https://upload.xboxlive.com會封鎖合作夥伴中心所使用的服務。
+>如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 *https://upload.xboxlive.com* 服務。
 
-#### <a name="marketplace-logos"></a>Marketplace 標誌
+#### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
 
-以下列四個圖元大小，提供供應專案標誌的 PNG 檔案：
+請以下列四個影像尺寸，提供供應項目標誌的 PNG 檔案：
 
-- **小型**（48 x 48）
-- **中**（90 x 90）
-- **大型**（216 x 216）
-- **寬**（255 x 115）
+- **小** (48 &times; 48 像素)
+- **中** (90 &times; 90 像素)
+- **大** (216 &times; 216 像素)
+- **寬** (255 &times; 115 像素)
 
-這四個標誌都是必要的，並且用於 marketplace 清單中的不同位置。
+全部四個標誌都是必要的，而且會顯示在各種 Azure Marketplace 清單中。
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
-新增最多五個螢幕擷取畫面，以顯示供應專案的運作方式。 每個螢幕擷取畫面的大小都必須是 1280 x 720 圖元，而且採用 PNG 格式。 每個螢幕擷取畫面都必須包含標題。
+新增最多五個顯示供應項目運作方式的螢幕擷取畫面。 每個螢幕擷取畫面的大小都必須為 1280 &times; 720 像素且採用 PNG 格式。 每個螢幕擷取畫面都必須包含標題。
 
 #### <a name="videos"></a>影片
 
-新增最多五個示範您供應專案的影片。 這些應該裝載于外部影片服務。 輸入每部影片的名稱、網址，以及影片 1280 x 720 圖元的縮圖 PNG 影像。
+新增最多五個示範您供應項目的影片。 影片應該在外部影片服務上託管。 輸入影片的名稱、網址，以及影片的縮圖 PNG 影像 (大小為 1280 &times; 720 像素)。
 
-如需其他 marketplace 清單資源，請參閱[marketplace 供應專案清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+如需其他 Marketplace 清單資源，請參閱 [Marketplace 供應項目清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) \(部分機器翻譯\)。
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
 ## <a name="preview"></a>預覽
 
-在 [預覽] 索引標籤上，選擇有限的**預覽物件**來驗證您的供應專案，再將其上線發佈到更廣泛的 marketplace 物件。
+選取 [預覽] 索引標籤，然後選取有限的 [預覽對象] 來驗證您的供應項目，再將其即時發佈給更廣泛的商用 Marketplace 對象。
 
 > [!IMPORTANT]
-> 在預覽您的供應專案之後，**請選取 [上線]** ，將您的供應專案發佈給商業 marketplace 公用物件。
+> 在 [預覽] 窗格上檢查供應項目之後，選取 [上線]，為商業 Marketplace 公開對象發佈您的供應項目。
 
-您的預覽物件是由 Azure 訂用帳戶識別碼 Guid 所識別，以及各自的選擇性描述。 客戶無法看到這兩個欄位。 您**可以在 Azure 入口網站的 [** 訂用帳戶] 頁面上找到您的 Azure 訂用帳戶識別碼。
+您的預覽對象是以 Azure 訂用帳戶識別碼 GUID 識別，且每個都有一個選擇性描述。 客戶無法看到這些欄位。 您可以在 Azure 入口網站的 [訂用帳戶] 頁面上找到 Azure 訂用帳戶識別碼。
 
-新增至少一個 Azure 訂用帳戶識別碼，分別是（最多10個）或上傳 CSV 檔案（最多100個）。 藉由新增這些訂用帳戶識別碼，您可以定義誰可以在現場發佈之前預覽您的供應專案。 如果您的供應專案已上線，您仍然可以定義預覽物件來測試供應專案的變更或更新。
+分別 (最多 10 個識別碼) 或藉由上傳 CSV 檔案 (最多 100 個識別碼)，新增至少一個 Azure 訂用帳戶識別碼。 您可以藉由新增這些訂用帳戶識別碼，定義哪些人員可以在即時發佈之前預覽您的供應項目。 如果您的供應項目已上線，您仍然可以定義預覽對象，以測試您供應項目的變更或更新。
 
 > [!NOTE]
-> 預覽物件與私用物件不同。 預覽物件可以存取您的供應專案，_然後_才能在 marketplace 中即時發佈。 他們可以查看並驗證所有方案，包括當您的供應專案完全發佈至 marketplace 之後，僅供私用物件使用的計畫。 私用物件（在 [方案**價格與可用性**] 索引標籤中定義）具有特定方案的獨佔存取權。
+> 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Azure Marketplace 上_之前_先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Azure Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 窗格上定義) 對特定方案具有獨佔式存取權。
 
-選取 [**儲存草稿**]，然後繼續進行下一節 [計畫總覽]。
+選取 [儲存草稿]，再繼續進行下一節。
 
-## <a name="plan-overview"></a>計畫總覽
+## <a name="plan-overview"></a>方案概觀
 
-您可以在合作夥伴中心的相同供應專案中提供不同的方案選項。 這些方案先前稱為 Sku。 供應專案需要至少一個方案，在營收物件、Azure 區域、功能或 VM 映射方面可能有所不同。
+您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 這些方案先前稱為 SKU。 一個供應項目至少需要一個方案，這可能會因為營收對象、Azure 區域、功能或 VM 映像而異。
 
-建立計畫之後，[**計畫總覽**] 索引標籤會顯示：
+建立方案之後，選取 [方案概觀] 索引標籤以顯示：
 
-- 計畫名稱
+- 方案名稱
 - 授權模型
-- 物件（公用或私用）
-- 目前的發行狀態
-- 可執行的動作
+- 對象 (公開或私人)
+- 目前的發佈狀態
+- 可用動作
 
-計畫總覽中的可用動作會根據方案的目前狀態而有所不同。 其中包括：
+[方案概觀] 窗格上可用的動作會根據方案的目前狀態而有所不同。
 
-- **刪除草稿**–如果計畫狀態為草稿
-- **停止銷售方案**或**同步私用物件**–如果計畫狀態是即時發行
+- 如果方案狀態為 [草稿]，選取 [刪除草稿]。
+- 如果方案狀態是 [即時發佈]，選取 [停止銷售方案] 或 [同步私人對象]。
 
-### <a name="create-new-plan"></a>建立新的方案
+### <a name="create-a-new-plan"></a>建立新的方案
 
-選取頂端的 [ **+ 建立新方案**]。 [**新增方案**] 對話方塊隨即出現。
+選取最上方的 [建立新方案]。 [新增方案] 對話方塊隨即出現。
 
-在 [**方案識別碼**] 方塊中，為此供應專案中的每個方案建立唯一的方案識別碼。 此識別碼將會顯示在產品網址中的客戶。 僅使用小寫字母和數位、連字號或底線，以及最多50個字元。
-
-> [!NOTE]
-> 選取 [**建立**] 之後，就無法變更方案識別碼。
-
-在 [**方案名稱**] 方塊中，輸入此計畫的名稱。 客戶在決定要在您的供應專案內選取哪一個方案時，會看到此名稱。 建立唯一的名稱，以清楚指出每個方案的差異。 例如，您可以使用具有方案隨用隨**付**、 **BYOL**、 **Advanced**和**Enterprise**的**Windows Server** 。
-
-選取 [建立]  。
-
-### <a name="plan-setup"></a>規劃設定
-
-設定方案類型的高階設定、是否重複使用來自另一個方案的技術設定，以及應提供方案的 Azure 區域。 您在此處選取的專案會決定要在相同方案的其他索引標籤上顯示哪些欄位。
-
-#### <a name="re-use-technical-configuration"></a>重複使用技術設定
-
-如果您有多個相同類型的方案，而且它們之間的封裝相同，則可以選取**此計畫重複使用另一個方案的技術**設定。 此選項可讓您為此供應專案選取另一個相同類型的方案，並重複使用其技術設定。
+在 [方案識別碼] 方塊中，為此供應項目中的每個方案建立唯一的方案識別碼。 客戶將可在產品網址中看到此識別碼。 僅使用小寫字母和數字、連字號或底線，以及最多 50 個字元。
 
 > [!NOTE]
-> 當您重複使用另一個方案的技術設定時，整個 [**技術**設定] 索引標籤就會從這個計畫中消失。 另一個方案中的技術設定詳細資料，包括您在未來所做的任何更新，也會用於此計畫。 發行此計畫之後，即無法變更此設定。
+> 選取 [建立] 之後，即無法變更方案識別碼。
+
+在 [方案名稱] 方塊中，輸入此方案的名稱。 當客戶決定要在您的供應項目內選取哪一個方案時，會看到此名稱。 建立可清楚指出方案之間差異的唯一名稱。 例如，您可以使用 [隨用隨付]、[BYOL]、[進階] 和 [企業] 方案，進入 **Windows Server**。
+
+選取 [建立]。
+
+### <a name="plan-setup"></a>方案設定
+
+設定方案類型的高階設定、指定是否重複使用另一個方案中的技術設定，以及識別應該提供方案的 Azure 區域。 您在這裡所做的選擇會決定要在相同方案的其他窗格上顯示哪些欄位。
+
+#### <a name="reuse-a-technical-configuration"></a>重複使用技術設定
+
+如果您有多個相同類型的方案，而且這些方案之間的套件相同，則可以選取 [此方案重複使用另一個方案的技術設定]。 此選項可讓您為此供應項目選取另一個相同類型方案，並可讓您重複使用其技術設定。
+
+> [!NOTE]
+> 當您重複使用另一個方案的技術設定時，整個 [技術設定] 索引標籤都會從此方案中消失。 另一個方案中的技術設定詳細資料 (包括您在之後所做的任何更新) 也會用於此方案。 方案發佈之後即無法變更此設定。
 
 #### <a name="azure-regions"></a>Azure 區域
 
 您的方案必須至少在一個 Azure 區域中提供。
 
-選取 [ **Azure 全域**] 選項，讓您的方案可供所有具有商業 marketplace 整合之 Azure 全球區域中的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+選取 [Azure Global] 選項，讓您的方案可供所有 Azure 全球區域中具有商業 Marketplace 整合的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies) \(部分機器翻譯\)。
 
-選取 [ **Azure Government** ] 選項，讓您的方案可在[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)區域中使用。 此區域為美國聯邦、州、地方或部落的實體，以及符合資格服務的合作夥伴提供受控存取權。 身為發行者的您，會負責任何合規性控制、安全性措施和最佳作法。 Azure Government 會使用實際隔離的資料中心和網路（僅限美國地區）。
+選取 [Azure Government] 選項，讓您的方案可用於 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) \(英文\) 區域。 此區域為美國聯邦、州、地方或部落實體的客戶，以及符合資格可以為這些實體提供服務的合作夥伴，提供控管權限。 身為發行者的您必須負責任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。
 
-發行至[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，請在環境中測試並驗證您的方案，因為某些端點可能會有所不同。 若要設定及測試您的方案，請從[Microsoft Azure Government 試用](https://azure.microsoft.com/global-infrastructure/government/request/)版要求試用帳戶。
+在您發佈至 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) 之前，請先在環境中測試並驗證您的方案，因為部分某些可能會有所不同。 若要設定並測試您的方案，請從 [Microsoft Azure 政府機構試用版](https://azure.microsoft.com/global-infrastructure/government/request/)網頁要求試用帳戶。
 
 > [!NOTE]
-> 當您的方案發佈並可在特定的 Azure 區域中使用之後，您就無法移除該區域。
+> 在您的方案發佈並可在特定 Azure 區域中使用之後，您就無法移除該區域。
 
 #### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有當您選取 [ **Azure Government**] 時，才會顯示此選項。
+只有當您在上一節中選取 [Azure Government] 作為 [Azure 區域] 時，才會看到此選項。
 
-Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 若要讓您知道這些程式的認證，您可以提供最多100個描述的連結。 這些可以是直接連結到您在程式上的清單，或連結至您自己網站上的合規性描述。 只有 Azure Government 客戶可以看到這些連結。
+Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要告知這些程式的認證，您可以提供最多 100 個描述這些認證的連結。 這些可以是直接指向程式清單的連結，或是指向您自己網站上相關合規性描述的連結。 只有 Azure Government 客戶可以看到這些連結。
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
-### <a name="plan-listing"></a>計畫清單
+### <a name="plan-listing"></a>方案清單
 
-這是您設定方案清單詳細資料的位置。 此索引標籤會顯示相同供應專案中的方案可能不同的特定資訊。
+在此節中，您要設定方案的清單詳細資料。 此窗格會顯示特定的資訊，這可能會與相同供應項目中的其他方案不同。
 
-#### <a name="plan-name"></a>計畫名稱
+#### <a name="plan-name"></a>方案名稱
 
-這會預先填入您在建立方案時所提供的名稱。 此名稱會在 marketplace 中顯示為此方案的標題，而且限制為100個字元。
+此欄位會自動填入您在建立方案時提供給您方案的名稱。 這個名稱在 Azure Marketplace 上會顯示為此方案的標題。 其限制為 100 個字元。
 
-#### <a name="plan-summary"></a>計畫摘要
+#### <a name="plan-summary"></a>方案摘要
 
-提供您方案的簡短摘要（不是供應專案）。 此摘要的限制為100個字元。
+提供您方案 (非供應項目) 的簡短摘要。 此摘要限制為 100 個字元。
 
-#### <a name="plan-description"></a>計畫描述
+#### <a name="plan-description"></a>方案描述
 
-描述此軟體方案的獨特之處，以及供應專案內方案之間的差異。 請不要描述供應專案，只是計畫。 計畫描述最多可包含2000個字元。
+描述此軟體方案獨一無二之處，以及供應項目內方案之間的任何差異。 僅描述方案，而非供應項目。 方案描述最多可包含 2,000 個字元。
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
 ### <a name="pricing-and-availability"></a>價格與可用性
 
-在此索引標籤上，您將設定下列各項：
+在此窗格上，您可以設定：
 
-- 此方案將于推出的市場
-- 每小時的價格
-- 是否要讓所有人都能看到此計畫，或僅供特定客戶使用（私用物件）
+- 此方案可供使用的市場。
+- 每小時的價格。
+- 是否要讓每個人都能看到此方案，或僅特定客戶 (私人對象) 看得到。
 
 #### <a name="markets"></a>市場
 
-必須至少有一個市場提供每個方案。 選取此方案應可供購買的每個市場位置的核取方塊（這些市場中的使用者仍然可以將供應專案部署至 [**[規劃設定](#plan-setup)**] 中所選取的所有 Azure 區域）。 [**稅金已匯款**] 按鈕會顯示 Microsoft 免除銷售並代表您使用稅金的國家/地區。 發行至中國僅限於**免費**或自備**授權**（BYOL）的方案。
+每個方案必須至少可用於一個市場。 選取此方案應可供購買所在每個市場位置的核取方塊 (這些市場中的使用者仍然可以將供應項目部署到您在[「方案設定」](#plan-setup)一節中所選取的所有 Azure 區域)。[已繳交稅金] 按鈕會顯示 Microsoft 代您繳納銷售與使用稅的國家/地區。 「發佈至中國」僅限於*免費*或*自備授權* (BYOL) 的方案。
 
-如果您已經在美國美元（USD）設定方案的價格，並新增另一個市場位置，新市場的價格將會根據目前的匯率計算。 在發佈之前，請務必先檢查每個市場的價格。 儲存變更之後，請使用**匯出價格（.xlsx）** 連結來檢查價格。
+如果您已經用美元 (USD) 貨幣設定方案價格，並新增另一個市場位置，則新市場的價格會根據目前的匯率計算。 在您發佈之前，請務必先檢閱每個市場的價格。 在儲存變更之後，選取 [匯出價格 (xlsx)] 以檢閱您的定價。
 
-當您移除市場時，使用作用中部署的市場客戶將無法建立新的部署或擴充其現有部署。 現有的部署將不會受到影響。
+當您移除市場時，該市場中使用作用中部署的客戶將無法建立新的部署，或擴大其現有的部署。 現有的部署不會受到影響。
 
 #### <a name="pricing"></a>定價
 
-**授權模型**–選取 [以**使用量為基礎的每月計費方案**]，以設定此方案的定價或自備**授權**，讓客戶將此方案與現有的授權搭配使用。
+針對 [授權模型]，選取 [依使用量計算的每月計費方案]，以設定此方案的定價，或選取 [自備授權]，讓客戶搭配其現有的授權使用此方案。
 
-針對以使用量為基礎的每月計費方案，請使用下列三個價格輸入選項的其中一個：
+針對依使用量計算的每月計費方案，請使用下列三個定價輸入選項之一：
 
-- **每個核心**–提供美國美元（USD）中每個核心的價格。 我們會計算每個核心大小的定價，並使用目前的匯率轉換成當地貨幣。
-- **每個核心大小**-提供每個核心大小的價格，以美元為單位。 我們會使用目前的匯率，將價格轉換成當地貨幣。
-- **每個市場和核心大小**-為所有市場提供每個核心大小的價格。 您可以從試算表匯入價格。
+- **每個核心**：提供每個核心的定價 (美元)。 Microsoft 會計算每個核心大小的定價，並使用目前的匯率，將其轉換為當地貨幣。
+- **每個核心大小**：提供每個核心大小的定價 (美元)。 Microsoft 會計算定價，並使用目前的匯率，將其轉換為當地貨幣。
+- **每個市場和核心大小**：為所有市場提供每個核心大小的定價。 您可以從試算表匯入價格。
 
 > [!NOTE]
-> 儲存定價變更以啟用匯出定價資料。 在您的方案中發佈市場價格之後，就無法再進行變更。 藉由匯出定價表並在每個市場中查看價格，確保這些價格在發行前都是正確的。
+> 儲存定價變更，以啟用匯出的定價資料。 在您的方案中發佈市場價格之後，之後就無法進行變更。 若要在發佈之前確保價格正確，請匯出定價試算表，並檢閱每個市場的價格。
 
 #### <a name="free-trial"></a>免費試用
 
-您可以為您的客戶提供一個月或三個月的免費試用版。
+您可以為您的客戶提供一個月或三個月的*免費試用*。
 
 #### <a name="visibility"></a>可見性
 
-您可以設計每個計畫，讓每個人都能看見，或僅針對預先選取的物件。 使用 Azure 訂用帳戶識別碼指派此限制物件中的成員資格。
+您可以設計每個方案，讓每個人都可以看到，或只有預先選取的對象看得到。 使用 Azure 訂用帳戶識別碼指派此有限對象中的成員資格。
 
-**公用**–所有人都可以看到您的方案。
+**公用**：每個人都可以看到您的方案。
 
-**私用物件**–讓您的計畫只對預先選取的物件顯示。 將其發佈為私用方案之後，您可以更新物件或將其變更為 [公用]。 在您將方案設為公用之後，它必須保持公用;您無法將它變更回 [私人]。
+**私人對象**：讓您的方案變成只有預先選取的對象看得到。 將其發佈為私人方案之後，您可以更新對象或將其變更為公用。 在您將方案設定為公用之後，就必須保持公用。 無法將其變更回私人方案。
 
-**限制的物件（Azure 訂用帳戶識別碼）** –使用 Azure 訂用帳戶識別碼指派可存取此私人方案的物件。 （選擇性）包含您指派的每個 Azure 訂用帳戶識別碼的描述。 手動新增最多10個訂用帳戶識別碼，如果匯入 CSV 試算表，則為20000。 Azure 訂用帳戶識別碼會以 Guid 表示，而字母必須是小寫。
+**有限對象 (Azure 訂用帳戶識別碼)** ：使用 Azure 訂用帳戶識別碼指派可存取此私人方案的對象。 選擇性地加上您已指派的每個 Azure 訂用帳戶識別碼的描述。 如果您要匯入 CSV 試算表，請手動新增最多 10 個訂用帳戶識別碼，或最多 20,000 個識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且所有字母都必須是小寫。
 
 > [!NOTE]
-> 私用或限制的物件與您在 [**預覽**] 索引標籤上定義的預覽物件不同。預覽物件可以先存取您的供應專案，_再_將其發佈到 marketplace 中。 雖然私用物件選擇僅適用于特定方案，但預覽物件可以針對驗證目的來查看所有計劃（私用或非）。
+> 私人對象或有限對象不同於您在 [預覽] 窗格上定義的預覽對象。 預覽對象可以在供應項目即時發佈到 Azure Marketplace 上_之前_先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有私人和公用方案。
 
-#### <a name="hide-plan"></a>隱藏方案
+#### <a name="hide-a-plan"></a>隱藏方案
 
-如果您的虛擬機器僅在透過另一個解決方案範本或受控應用程式參考時間接使用，請選取此方塊以發佈虛擬機器，但將其從直接搜尋和流覽的客戶隱藏起來。
+如果您的虛擬機器只會在透過另一個解決方案範本或受控應用程式參考時間接使用，請選取此核取方塊以發佈虛擬機器，但對可能直接加以搜尋或瀏覽的客戶則隱藏。
 
 > [!NOTE]
 > 隱藏的方案不支援預覽連結。
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
 ### <a name="technical-configuration"></a>技術設定
 
-提供與此方案相關聯的影像和其他技術屬性。 如需詳細資訊，請參閱[建立 AZURE VM 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+提供與此方案相關聯的影像和其他技術屬性。 如需詳細資訊，請參閱[建立 Azure VM 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets) \(部分機器翻譯\)。
 
 > [!NOTE]
-> 如果您已設定此計畫在 [**計畫設定**] 索引標籤上重複使用另一個方案的封裝，則不會顯示此索引標籤
+> 如果您已將此方案設定為重複使用 [方案設定] 索引標籤上另一個方案的套件，則不會顯示 [技術設定] 索引標籤。
 
 #### <a name="operating-system"></a>作業系統
 
-- **作業系統系列**–從**Windows**或**Linux**作業系統選取
-- **發行**或**廠商**–選擇 Windows 版本或 Linux 廠商
-- **OS 易記名稱**–選擇易記的作業系統名稱。 客戶可以看到此名稱
+在 [作業系統] 窗格上，執行下列動作：
+
+- 針對 [作業系統系列]，選取 **Windows** 或 **Linux** 作業系統。
+- 針對 [版本] 或 [廠商]，選取 [Windows 版本] 或 [Linux 廠商]。
+- 針對 [作業系統易記名稱]，輸入易記的作業系統名稱。 客戶可以看到此名稱。
 
 #### <a name="recommended-vm-sizes"></a>建議的 VM 大小
 
-選取最多六個建議的虛擬機器大小，以顯示在 Azure Marketplace 中。
+最多選取六個要顯示在 Azure Marketplace 上的建議虛擬機器大小。
 
 #### <a name="open-ports"></a>開啟連接埠
 
-在已部署的虛擬機器上開啟公用或私用埠。
+在已部署的虛擬機器上開啟公用或私用連接埠。
 
-#### <a name="storage-option-for-deployment"></a>部署的儲存選項
+#### <a name="storage-option-for-deployment"></a>用於部署的儲存選項
 
-**磁片部署選項**–選取使用者在使用虛擬機器時可使用的磁片部署類型。 Microsoft 建議將部署限制為僅限受控磁片部署。
+針對 [磁碟部署選項]，選取您客戶可以用於虛擬機器的磁碟部署類型。 Microsoft 建議將部署限制為僅 [受控磁碟部署]。
 
 #### <a name="properties"></a>屬性
 
-**支援加速網路**–如果您的 VM 支援[加速網路](https://go.microsoft.com/fwlink/?linkid=2124513)，請選取此功能。
+針對 [支援加速網路]，選取您的 VM 是否支援[加速網路](https://go.microsoft.com/fwlink/?linkid=2124513)。
 
 #### <a name="vm-images"></a>VM 映像
 
-提供虛擬機器映射的磁片版本和 SAS URI。 為每個 VM 映射新增最多16個數據磁片。 在給定的提交中，每個方案只提供一個新的映射版本。 在發佈映射之後，您就無法進行編輯，但可以將它刪除。 刪除版本將會使新的和現有的使用者無法部署已刪除版本的新實例。
+提供虛擬機器映像的磁碟版本和共用存取簽章 (SAS) URI。 為每個 VM 映像新增最多 16 個資料磁碟。 在指定的提交項目中，每個方案只提供一個新的映像版本。 映像發佈之後，您就無法進行編輯，但可以將其刪除。 刪除版本可防止新的和現有的使用者部署已刪除版本的新執行個體。
 
-- **光碟版本**是您所提供的映射版本。
-- [ **SAS URI** ] 是您儲存作業系統 VHD Azure 儲存體中的位置。
-- 資料磁片映射也是儲存在其 Azure 儲存體中的 VHD SAS Uri。
-- 在方案中每次提交時僅新增一個影像。
+- **光碟版本**：您所提供之映像的版本。
+- **SAS URI**：您的 Azure 儲存體帳戶中儲存作業系統 VHD 的位置。
+- 資料磁碟映像也是儲存在其 Azure 儲存體帳戶中的 VHD 共用存取簽章 URI。
+- 在一個方案中每次提交時僅加入一個映像。
 
-無論您使用哪一種作業系統，請只新增解決方案所需的最小資料磁片數目。 客戶無法在部署時移除屬於映射一部分的磁片，但它們一律可在部署期間或之後新增磁片。
+無論您使用哪一種作業系統，只能加入解決方案所需的最少數目資料磁碟。 在部署期間，客戶無法移除屬於映像一部分的磁碟，但在部署期間或之後可隨時加入磁碟。
 
-選取 [**儲存草稿**] 再繼續，然後返回 **[計畫總覽**]。
+在繼續前，選取 [儲存草稿]，然後返回 [方案概觀]。
 
-## <a name="resell-through-csps"></a>透過 Csp 轉售
+## <a name="resell-through-csps"></a>透過 CSP 轉售
 
-將供應專案提供給[雲端解決方案提供者](https://azure.microsoft.com/offers/ms-azr-0145p/)（CSP）方案中的合作夥伴，以擴大其範圍。 所有自備授權（BYOL）方案都會自動加入宣告;您可以加入宣告您的非 BYOL 計畫。
+在[雲端解決方案提供者 (CSP)](https://azure.microsoft.com/offers/ms-azr-0145p/) 方案中，將供應項目提供給合作夥伴，以延伸您供應項目的觸角。 所有自備授權 (BYOL) 方案都會自動加入方案中。 您也可以選擇加入非 BYOL 方案。
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
 ## <a name="test-drive"></a>試用產品
 
-設定示範（試用產品），讓客戶在購買之前先試用您的供應專案。 若要建立示範環境，讓客戶可以在一段固定時間內試用您的供應專案，請參閱在[商業 marketplace 中測試您的供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)專案。
+設定示範或*試用產品*，讓客戶在購買之前，先試用您的供應項目一段固定的時間。 若要為您的客戶建立示範環境，請參閱[商用 Marketplace 中的試用產品供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive) \(部分機器翻譯\)。
 
-若要啟用試用產品，請在 [[供應專案設定](#test-drive)] 索引標籤上選取 [啟用試用磁片] 核取方塊。若要從您的供應專案中移除試用產品，請清除此核取方塊。
+若要啟用試用產品，請在 [供應項目設定] 窗格上，選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 其他試用產品資源：
 
 - [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF; 請確定您的快顯封鎖程式已關閉）
+- [試用產品概觀](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF 檔案 (請確定您的快顯封鎖程式已關閉)
 
-選取 [**儲存草稿**] 再繼續。
+選取 [儲存草稿]，然後再繼續。
 
-## <a name="review-and-publish"></a>審查和發行
+## <a name="review-and-publish"></a>檢閱並發佈
 
-當您完成供應專案的所有必要區段之後，您可以提交它來進行審查和發佈。
+完成供應項目的所有必要區段之後，您可加以提交以檢閱並發佈。
 
-在入口網站的右上角，選取 [**審查併發布**]。
+在右上方，選取 [檢閱並發佈]。
 
-在此頁面上，您可以：
+在此窗格上，您可以：
 
-- 請參閱供應專案每個區段的完成狀態。
-  - **未啟動**–區段尚未啟動，需要完成。
-  - **不完整**–區段包含必須修正的錯誤，或需要您提供詳細資訊。 如需如何更新本節的指引，請參閱本檔稍早的章節。
-  - **Complete** –區段完成，而且沒有任何錯誤。 供應專案的所有區段都必須完成，您才能提交供應專案。
-- **認證注意事項**-提供測試指示給認證小組，以確保您的應用程式已正確測試。 提供有助於瞭解應用程式的任何補充附注。
+- 檢視供應項目每個區段的完成狀態：
 
-若要提交供應專案以供發佈，請選取 [**審查併發布**]。
+  - **未啟動**：區段尚未啟動且必須完成。
+  - **不完整**：區段中有必須修正的錯誤，或是需要您提供詳細資訊。 如需更新不完整資訊的相關指導方針，請參閱此文章稍早的小節。
+  - **完整**︰區段已經完成，而且沒有任何錯誤。 您必須完成供應項目的所有區段，才能提交供應項目。
+- 為認證小組提供**認證注意事項**，以協助確保您的應用程式已正確測試。 加上可協助小組了解應用程式的測試指示和任何補充注意事項。
 
-我們會傳送一封電子郵件給您，讓您知道供應專案的預覽版本何時可供審查和核准。 若要將您的供應專案發佈到公開（或如果私人供應專案為私人物件），請移至合作夥伴中心，找出供應專案的 **[總覽**] 頁面，然後選取 [**上線**]。 當發佈正在進行時，您的供應專案狀態會顯示在頁面頂端。
+若要提交供應項目進行發佈，請選取 [檢閱並發佈]。
+
+Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應項目發佈至公用 (或者，如果是私人供應項目，則將其發佈給私人對象)，請依序移至 [合作夥伴中心] 和供應項目的 [概觀] 頁面，然後選取 [上線]。 當發佈正在進行時，您的供應項目狀態會出現在頁面最上方。
 
 ### <a name="errors-and-review-feedback"></a>錯誤和審核意見反應
 
-發佈程式中的**手動驗證**步驟代表您的供應專案和其相關技術資產的廣泛審查。 如果此程式發現您的供應專案發生錯誤，您將會收到詳細說明問題的認證報告。 只要進行必要的修正，然後重新發佈您的供應專案即可。
+發佈程序中的**手動驗證**步驟代表您的供應項目及其相關聯技術資產的廣泛檢閱。 如果此程序發現您的供應項目發生錯誤，您將會收到詳細說明問題的認證報告。 只要進行必要的修正，然後重新發佈您的供應項目即可。
 
 ## <a name="offer-overview"></a>供應項目概觀
 
-[**供應專案總覽**] 頁面會顯示發佈此供應專案所需步驟的視覺標記法（已完成和進行中），以及每個步驟應完成幾段時間。
+[供應項目概觀] 頁面會顯示發佈供應項目 (已完成和進行中) 所需步驟的視覺表示法，以及完成每個步驟所需的時間長度。
 
-此頁面包含根據您所做的選擇，在此供應專案上執行作業的連結。 例如：
+此頁面也包含可協助您處理供應項目的連結，端視其狀態而定：
 
-- 如果供應專案為草稿-[刪除草稿供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)專案
-- 如果供應專案已上線，則會[停止銷售供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)專案
-- 如果供應專案處於預覽[狀態-上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果您尚未完成發行者簽核-[取消發行](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果供應項目為草稿：[刪除草稿供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) \(部分機器翻譯\)
+- 如果供應項目已上線：[停止銷售供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
+- 如果供應項目處於預覽階段：[上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) \(部分機器翻譯\)
+- 如果您尚未完成發行者登出：[取消發佈](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) \(部分機器翻譯\)
 
 ## <a name="marketplace-examples"></a>Marketplace 範例
 
-這些範例會顯示供應專案在 Azure Marketplace 中的顯示方式。
+下列範例說明供應項目如何出現在 Azure Marketplace 上。
 
-### <a name="azure-marketplace-offer-details"></a>Azure Marketplace 供應專案詳細資料
+### <a name="azure-marketplace-offer-details"></a>Azure Marketplace 供應項目詳細資料
 
-![Azure Marketplace 供應專案詳細資料畫面範例](media/avm-create1.png)
+![Azure Marketplace 供應項目詳細資料頁面範例](media/avm-create1.png)
 
 ### <a name="azure-marketplace-search-results"></a>Azure Marketplace 搜尋結果
 
-![Azure Marketplace 搜尋詳細資料畫面範例](media/avm-create2.png)
+![Azure Marketplace 搜尋詳細資料頁面範例](media/avm-create2.png)
 
 ### <a name="azure-marketplace-plan-details"></a>Azure Marketplace 方案詳細資料
 
-![Azure Marketplace 方案詳細資料畫面範例](media/avm-create3.png)
+![Azure Marketplace 方案詳細資料頁面範例](media/avm-create3.png)
 
-### <a name="azure-portal-offer-details"></a>Azure 入口網站供應專案詳細資料
+### <a name="azure-portal-offer-details"></a>Azure 入口網站供應項目詳細資料
 
-![Azure 入口網站供應專案詳細資料畫面範例](media/avm-create4.png)
+![Azure 入口網站供應項目詳細資料頁面範例](media/avm-create4.png)
 
 ### <a name="azure-portal-search-results"></a>Azure 入口網站搜尋結果
 
-![Azure 入口網站搜尋結果畫面範例](media/avm-create5.png)
+![Azure 入口網站搜尋結果頁面範例](media/avm-create5.png)
 
 ### <a name="azure-portal-plan-details"></a>Azure 入口網站方案詳細資料
 
-![Azure 入口網站方案詳細資料畫面範例](media/avm-create6.png)
+![Azure 入口網站方案詳細資料頁面範例](media/avm-create6.png)
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
-- [更新商用 marketplace 中的現有供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商業 Marketplace 中的現有供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) \(部分機器翻譯\)

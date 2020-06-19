@@ -1,5 +1,5 @@
 ---
-title: 垂直調整 Azure 虛擬機器擴展集
+title: 垂直縮放 Azure 虛擬機器擴展集
 description: 如何垂直調整虛擬機器大小以回應 Azure 自動化的監視警示
 author: ju-shim
 ms.author: jushiman
@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 69c613de02b9601966cae2d36c13428ca6c7becc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120992"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827261"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虛擬機器擴展集垂直自動調整
 
 這篇文章描述如何使用或不使用重新佈建以垂直調整 Azure [虛擬機器擴充集](https://azure.microsoft.com/services/virtual-machine-scale-sets/) 。 
 
-垂直調整也稱為向相應增加** 和相應減少**，意味增加或減少虛擬機器 (VM) 大小以回應工作負載。 將此行為與[水平調整](virtual-machine-scale-sets-autoscale-overview.md) (也稱為相應放大** 和相應縮小**) 做比較，後者會根據工作負載改變虛擬機器數目。
+垂直調整也稱為向擴大和縮小，意味增加或縮小虛擬機器 (VM) 大小以回應工作負載。 將此行為與[水平調整](virtual-machine-scale-sets-autoscale-overview.md) (也稱為擴增和縮減) 做比較，後者會根據工作負載改變虛擬機器數目。
 
 重新佈建表示移除現有的 VM，並以新的 VM 取代它。 當您增加或減少虛擬機器擴展集中的虛擬機器大小時，在某些情況下您想要調整現有虛擬機器的大小並保留資料，而在其他情況下您需要部署具有新大小的新虛擬機器。 本文件涵蓋這兩種情況。
 
@@ -37,7 +37,7 @@ ms.locfileid: "83120992"
 4. 使用 Webhook 通知將警示加入至您的虛擬機器擴展集。
 
 > [!NOTE]
-> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 也不支援限制的虛擬機器大小相應增加/減少。 您可以在以下大小配對之間選擇調整︰
+> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 也不支援限制的虛擬機器大小擴大/縮小。 您可以在以下大小配對之間選擇調整︰
 > 
 > | 成對的調整 VM 大小 |  |
 > | --- | --- |
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 如需如何建立警示的詳細資訊，請參閱下列文章：
 
-* [Azure 監視器 PowerShell 快速入門範例](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Azure 監視器跨平台 CLI 快速入門範例](../azure-monitor/platform/cli-samples.md)
+* [Azure 監視器 PowerShell 範例](../azure-monitor/samples/powershell-samples.md)
+* [Azure 監視器跨平台 CLI 範例](../azure-monitor/samples/cli-samples.md)
 
 ## <a name="summary"></a>摘要
 

@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331877"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771303"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
@@ -34,7 +34,7 @@ ms.locfileid: "84331877"
 - [完成](tutorial-prepare-vmware.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
     - [準備 Azure](tutorial-prepare-vmware.md#prepare-azure) 以使用 Azure Migrate。
-    - [準備VMware 以進行評量](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 這包括檢查 VMware 設定、設定 Azure Migrate 可用來存取 vCenter Server 的帳戶。
+    - [準備VMware 以進行評量](tutorial-prepare-vmware.md#prepare-for-assessment)。 這包括檢查 VMware 設定、設定 Azure Migrate 可用來存取 vCenter Server 的帳戶。
     - [確認](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)您需要哪些內容，才能部署 VMware 評量所需的 Azure Migrate 設備。
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
@@ -99,7 +99,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
         --- | --- | ---
         VMware (10.9 GB) | [最新版本](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - 對於 Azure Goverment：
+    - 對於 Azure Government：
     
         **演算法** | **下載** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 1. 在 [指定 vCenter Server 詳細資料] 中，指定 vCenter Server 執行個體的名稱 (FQDN) 或 IP 位址。 您可以保留預設的連接埠，或指定 vCenter Server 接聽的自訂連接埠。
 2. 在 [使用者名稱] 和 [密碼] 中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
 
-    - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)中設定具有必要權限的帳戶。
+    - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中設定具有必要權限的帳戶。
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
 
 3. 選取 [驗證連線] 以確定設備可以連線到 vCenter Server。
@@ -178,7 +178,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
     - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
     - 如果您不使用這些功能，則可以略過這項設定。
-    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery)或[無代理程式分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)所需的認證。
+    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery-requirements)或[無代理程式分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的認證。
 
 5. **儲存並啟動探索**，即可啟動 VM 探索。
 

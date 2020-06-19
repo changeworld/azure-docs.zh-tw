@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535364"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797491"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
@@ -19,7 +19,7 @@ ms.locfileid: "79535364"
 圖表影像等視覺效果可協助分析監視資料，以深入鑽研問題，並找出其中的模式。 根據您所使用的工具，還可以選擇是否要與組織內外的其他使用者共用視覺效果。
 
 ## <a name="workbooks"></a>活頁簿
-[活頁簿](../azure-monitor/app/usage-workbooks.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
+[活頁簿](../azure-monitor/platform/workbooks-overview.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
 
 ![活頁簿](media/visualizations/workbook.png)
 
@@ -42,11 +42,11 @@ ms.locfileid: "79535364"
 ![儀表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>優點
-- 深入整合至 Azure。 視覺效果可以釘選到多個 Azure 頁面的儀表板，包括計量瀏覽器、Log Analytics 和 Application Insights。
+- 深入整合至 Azure。 可將各種視覺效果釘選到多個 Azure 頁面的儀表板，包括計量瀏覽器、Log Analytics 和 Application Insights。
 - 支援計量和記錄。
-- 可結合來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)以及 Application Insights 中[對應](app/app-map.md)和可用性的輸出結果。
+- 合併來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)，以及 Application Insights 中[對應](app/app-map.md)和可用性的輸出。
 - 個人或共用儀表板的選項。 與 Azure [角色型驗證 (RBAC)](../role-based-access-control/overview.md) 整合。
-- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 記錄會每小時重新整理一次，並在指定的視覺效果上按一下 [重新整理] 圖示，或重新整理完整的儀表板，視需要手動重新整理選項。
+- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 記錄每小時都會重新整理一次，並藉由在指定的視覺效果上按一下 [重新整理] 圖示，或重新整理整個儀表板，依需求提供手動重新整理的選項。
 - 使用時間戳記和自訂參數以參數化計量儀表板。
 - 彈性的版面配置選項。
 - 全螢幕模式。
@@ -111,7 +111,7 @@ ms.locfileid: "79535364"
 ## <a name="azure-monitor-views"></a>Azure 監視器檢視
 
 > [!IMPORTANT]
-> Views 正在被取代。 如需將視圖轉換為活頁簿的指引，請參閱[Azure 監視器 view designer to 活頁簿轉換指南](platform/view-designer-conversion-overview.md)。
+> 檢視正逐漸被取代。 如需將檢視轉換至活頁簿的指引，請參閱 [Azure 監視器檢視設計工具至活頁簿轉換指南](platform/view-designer-conversion-overview.md)。
 
 [Azure 監視器中的檢視](platform/view-designer.md)可讓您使用記錄資料建立自訂視覺效果。 [監視解決方案](insights/solutions.md)會使用這些視覺效果呈現收集到的資料。
 
@@ -137,7 +137,7 @@ ms.locfileid: "79535364"
 - 了解 [ Azure 監視器收集的資料](platform/data-platform.md)。
 - 了解 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
-- 瞭解活頁[簿](../azure-monitor/app/usage-workbooks.md)。
+- 了解[活頁簿](../azure-monitor/platform/workbooks-overview.md)。
 - 了解[將記錄資料匯入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure 監視器資料來源外掛程式](../azure-monitor/platform/grafana-plugin.md)。
 

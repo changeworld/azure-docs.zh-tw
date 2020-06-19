@@ -1,6 +1,6 @@
 ---
-title: 圖形系結
-description: 圖形系結和使用案例的設定
+title: 圖形繫結
+description: 圖形繫結設定和使用案例
 author: florianborn71
 manager: jlyons
 services: azure-remote-rendering
@@ -9,34 +9,34 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 8b5db0532f3dcc8b6dfb024238d0cacff2e6d2a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681879"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758702"
 ---
-# <a name="graphics-binding"></a>圖形系結
+# <a name="graphics-binding"></a>圖形繫結
 
-若要能夠在自訂應用程式中使用 Azure 遠端轉譯，它必須整合到應用程式的轉譯管線中。 這項整合是圖形系結的責任。
+若要能在自訂應用程式中使用 Azure 遠端轉譯，就必須將其整合到應用程式的轉譯管線中。 這項整合作業屬於圖形繫結的範疇。
 
-設定好之後，圖形系結可存取影響轉譯影像的各種功能。 這些函式可以分成兩個類別：一律可用的一般函式，以及僅與所選`Microsoft.Azure.RemoteRendering.GraphicsApiType`的相關的特定功能。
+設定完成後，圖形繫結會將存取權授予會影響轉譯影像的不同函式。 這類函式可以分成兩種類別：隨時可供使用的一般函式，以及只與所選 `Microsoft.Azure.RemoteRendering.GraphicsApiType` 相關的特定函式。
 
-## <a name="graphics-binding-in-unity"></a>Unity 中的圖形系結
+## <a name="graphics-binding-in-unity"></a>Unity 中的圖形繫結
 
-在 Unity 中，整個系結是由傳入`RemoteUnityClientInit`的結構所`RemoteManagerUnity.InitializeManager`處理。 若要設定圖形模式，必須`GraphicsApiType`將欄位設定為所選的系結。 系統會根據 XRDevice 是否存在，自動填入欄位。 您可以使用下列行為來手動覆寫行為：
+在 Unity 中，整個繫結程序是由傳遞至 `RemoteManagerUnity.InitializeManager` 的 `RemoteUnityClientInit` 結構處理。 若要設定圖形模式，`GraphicsApiType` 欄位必須設定為所選的繫結。 系統會依據 XRDevice 是否存在而自動填入欄位。 您可以使用下列行為來手動覆寫行為：
 
-* **HoloLens 2**：一律會使用[Windows Mixed Reality](#windows-mixed-reality)圖形系結。
-* **平面 UWP 桌面應用程式**：一律會使用[模擬](#simulation)。 若要使用此模式，請務必依照[教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)中的步驟進行。
-* **Unity 編輯器**：一律會使用[模擬](#simulation)，除非已連接 WMR VR 頭戴式裝置，在此情況下會停用 ARR，讓能夠對應用程式的非 ARR 相關部分進行偵測。 另請參閱全像攝影[遠端](../how-tos/unity/holographic-remoting.md)。
+* **HoloLens 2**：一律使用 [Windows Mixed Reality](#windows-mixed-reality) 圖形繫結。
+* **平面 UWP 傳統型應用程式**：一律使用[模擬](#simulation)。 若要使用此模式，請務必遵循[教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)。
+* **Unity 編輯器**：除非連接 WMR VR 頭戴式裝置，否則一律使用[模擬](#simulation)。在前述情況下會停用 ARR，以允許對應用程式的非 ARR 相關部分進行偵錯。 並請參閱[全像攝影遠端處理](../how-tos/unity/holographic-remoting.md)。
 
-Unity 唯一的另一個相關部分是存取[基本](#access)系結，而且可以略過下列所有其他區段。
+Unity 另外唯一相關的部分是存取[基本繫結](#access)，至於以下所有其他章節則可略過。
 
-## <a name="graphics-binding-setup-in-custom-applications"></a>自訂應用程式中的圖形系結設定
+## <a name="graphics-binding-setup-in-custom-applications"></a>自訂應用程式中的圖形繫結設定
 
-若要選取圖形系結，請執行下列兩個步驟：第一，在初始化程式時，必須以靜態方式初始化圖形系結：
+若要選取圖形繫結，請進行以下兩個步驟：首先在初始化程式時，必須以靜態方式將圖形繫結初始化：
 
-``` cs
+```cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
 managerInit.graphicsApi = GraphicsApiType.WmrD3D11;
 managerInit.connectionType = ConnectionType.General;
@@ -44,70 +44,107 @@ managerInit.right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
-需要上述呼叫，才能將 Azure 遠端呈現初始化為全像攝影 Api。 您必須先呼叫此函式，才能呼叫任何全像攝影 API，並在存取其他任何遠端轉譯 Api 之前。 同樣地，在不再呼叫任何全息`RemoteManagerStatic.ShutdownRemoteRendering();`型 api 之後，應該呼叫對應的取消初始化函式。
+```cpp
+RemoteRenderingInitialization managerInit;
+managerInit.graphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.connectionType = ConnectionType::General;
+managerInit.right = ///...
+StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
+```
 
-## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">存取圖形系結
+需要上述呼叫，才能將 Azure 遠端轉譯初始化為全像攝影 API。 您必須先呼叫此函式，再呼叫任何全像攝影 API 及存取其他任何遠端轉譯 API。 同樣地，不再呼叫任何全像攝影 API 之後，則應呼叫對應的取消初始化函式 `RemoteManagerStatic.ShutdownRemoteRendering();`。
 
-設定好用戶端之後，就可以使用`AzureSession.GraphicsBinding` getter 來存取基本的圖形系結。 例如，您可以如下所示抓取最後一個畫面格統計資料：
+## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">存取圖形繫結
 
-``` cs
-AzureSession currentSesson = ...;
-if (currentSesson.GraphicsBinding)
+設定好用戶端之後，即可使用 `AzureSession.GraphicsBinding` getter 存取基本圖形繫結。 例如可擷取最後一個畫面的統計資料：
+
+```cs
+AzureSession currentSession = ...;
+if (currentSession.GraphicsBinding)
 {
     FrameStatistics frameStatistics;
-    if (session.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
+    if (currentSession.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
     {
         ...
     }
 }
 ```
 
-## <a name="graphic-apis"></a>圖形 Api
+```cpp
+ApiHandle<AzureSession> currentSession = ...;
+if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
+{
+    FrameStatistics frameStatistics;
+    if (*binding->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        ...
+    }
+}
+```
 
-目前有兩個可選取的圖形 Api： `WmrD3D11`和。 `SimD3D11` 第三個`Headless`存在，但用戶端尚未支援。
+## <a name="graphic-apis"></a>圖形 API
+
+目前有兩個圖形 API 可供選取，即 `WmrD3D11` 和 `SimD3D11`。 雖然有第三個 API `Headless`，但用戶端尚未支援。
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
-`GraphicsApiType.WmrD3D11`是要在 HoloLens 2 上執行的預設系結。 它會建立`GraphicsBindingWmrD3d11`系結。 在此模式中，Azure 遠端轉譯會直接攔截到全像攝影 Api。
+`GraphicsApiType.WmrD3D11` 是要在 HoloLens 2 上執行的預設繫結。 其會建立 `GraphicsBindingWmrD3d11` 繫結。 在此模式中，Azure 遠端轉譯會直接在全像攝影 API 內攔截。
 
-若要存取衍生的圖形系結， `GraphicsBinding`必須轉換基底。
-若要使用 WMR 系結，必須執行兩件事：
+若要存取衍生的圖形繫結，就必須轉換基底 `GraphicsBinding`。
+若要使用 WMR 繫結，必須先執行兩件事：
 
-#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>通知遠端呈現已使用的座標系統
+#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>將所使用的座標系統告知遠端轉譯
 
-``` cs
-AzureSession currentSesson = ...;
+```cs
+AzureSession currentSession = ...;
 IntPtr ptr = ...; // native pointer to ISpatialCoordinateSystem
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
-if (binding.UpdateUserCoordinateSystem(ptr) == Result.Success)
+if (wmrBinding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 {
     ...
 }
 ```
 
-其中，上述`ptr`必須是原生`ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem`物件的指標，其中定義了在中用來表示 API 座標的世界空間座標系統。
+```cpp
+ApiHandle<AzureSession> currentSession = ...;
+void* ptr = ...; // native pointer to ISpatialCoordinateSystem
+ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
+if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
+{
+    //...
+}
+```
 
-#### <a name="render-remote-image"></a>呈現遠端影像
 
-在每個框架的開頭，必須將遠端框架轉譯成背景的緩衝區。 這是藉由呼叫`BlitRemoteFrame`來完成，這會在目前系結的呈現目標中填滿色彩和深度資訊。 因此，在將後置緩衝區系結為轉譯目標之後，請務必這麼做。
+上面的 `ptr` 必須是原生 `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` 物件的指標，以其定義世界空間的座標系統，API 中的座標即是用此系統表示。
 
-``` cs
-AzureSession currentSesson = ...;
+#### <a name="render-remote-image"></a>轉譯遠端影像
+
+在每個畫面的開始，需將遠端畫面轉譯成背景緩衝區。 這可藉由呼叫 `BlitRemoteFrame` 來完成，其會在目前繫結的轉譯目標中填入色彩和深度資訊。 因此，將背景緩衝區繫結為轉譯目標後，請務必完成此項作業。
+
+```cs
+AzureSession currentSession = ...;
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
-binding.BlitRemoteFrame();
+wmrBinding.BlitRemoteFrame();
+```
+
+```cpp
+ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
+wmrBinding->BlitRemoteFrame();
 ```
 
 ### <a name="simulation"></a>模擬
 
-`GraphicsApiType.SimD3D11`是模擬系結，如果已選取，則`GraphicsBindingSimD3d11`會建立圖形系結。 此介面可用來模擬前端移動，例如在桌面應用程式中，並轉譯 monoscopic 的影像。
-安裝程式比較複雜，且運作方式如下：
+`GraphicsApiType.SimD3D11` 是模擬繫結，如果將之選取，則會建立 `GraphicsBindingSimD3d11` 圖形繫結。 此介面可用來模擬頭部移動，例如在傳統型應用程式中轉譯平面視覺影像的情況。
+這種設定方式較為複雜，運作方式如下：
 
-#### <a name="create-proxy-render-target"></a>建立 proxy 呈現目標
+#### <a name="create-proxy-render-target"></a>建立 Proxy 轉譯目標
 
-您必須使用函式所提供`GraphicsBindingSimD3d11.Update`的 proxy 攝影機資料，將遠端和本機內容轉譯成稱為「proxy」的螢幕幕後色彩/深度轉譯目標。 Proxy 必須符合後端緩衝區的解析。 會話準備就緒後，必須`GraphicsBindingSimD3d11.InitSimulation`先呼叫，才能連接到它：
+必須使用 `GraphicsBindingSimD3d11.Update` 函式提供的 Proxy 相機資料，將遠端和本機內容轉譯成螢幕上不可見的色彩/深度轉譯目標，稱為「Proxy」。 Proxy 必須符合背景緩衝區的解析度。 工作階段準備就緒後，需先呼叫 `GraphicsBindingSimD3d11.InitSimulation`，才能與其連線：
 
-``` cs
-AzureSession currentSesson = ...;
+```cs
+AzureSession currentSession = ...;
 IntPtr d3dDevice = ...; // native pointer to ID3D11Device
 IntPtr color = ...; // native pointer to ID3D11Texture2D
 IntPtr depth = ...; // native pointer to ID3D11Texture2D
@@ -118,19 +155,31 @@ GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as Graphics
 simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
 ```
 
-Init 函式必須提供原生 d3d 裝置的指標，以及 proxy 呈現目標的色彩和深度材質。 一旦初始化之後`AzureSession.ConnectToRuntime` ， `DisconnectFromRuntime`您可以呼叫多次，但切換至不同的會話時， `GraphicsBindingSimD3d11.DeinitSimulation`必須先在舊的會話`GraphicsBindingSimD3d11.InitSimulation`上呼叫，然後才能在另一個會話上呼叫。
+```cpp
+ApiHandle<AzureSession> currentSession = ...;
+void* d3dDevice = ...; // native pointer to ID3D11Device
+void* color = ...; // native pointer to ID3D11Texture2D
+void* depth = ...; // native pointer to ID3D11Texture2D
+float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
+bool flipBlitRemoteFrameTextureVertically = false;
+bool flipReprojectTextureVertically = false;
+ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
+simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+```
+
+需要搭配指標將 init 函式提供給原生 D3D 裝置，以及 Proxy 轉譯目標的色彩及深度紋理。 初始化之後可以呼叫多次 `AzureSession.ConnectToRuntime` 和 `DisconnectFromRuntime`，但切換至不同的工作階段時，需先在舊的工作階段上呼叫 `GraphicsBindingSimD3d11.DeinitSimulation`，然後才能在另一個工作階段上呼叫 `GraphicsBindingSimD3d11.InitSimulation`。
 
 #### <a name="render-loop-update"></a>轉譯迴圈更新
 
-「轉譯迴圈更新」是由多個步驟所組成：
+轉譯迴圈更新是由多個步驟組成：
 
-1. 在進行任何轉譯之前，每個框架`GraphicsBindingSimD3d11.Update`都會使用目前傳送至要呈現之伺服器的相機轉換來呼叫。 同時，傳回的 proxy 轉換應該套用至 proxy 攝影機，以轉譯成 proxy 呈現目標。
-如果傳回的 proxy 更新`SimulationUpdate.frameId`是 null，則尚未有遠端資料。 在此情況下，您應該使用目前的相機資料直接將任何本機內容轉譯為後緩衝區，並略過接下來的兩個步驟，而不是轉譯成 proxy 呈現目標。
-1. 應用程式現在應該系結 proxy 轉譯目標並呼叫`GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`。 這會將遠端色彩和深度資訊填入 proxy 呈現目標。 現在可以使用 proxy 相機轉換，將任何本機內容轉譯到 proxy 上。
-1. 接下來，後端緩衝區必須系結為轉譯目標，並`GraphicsBindingSimD3d11.ReprojectProxy`呼叫該位置，此時可以呈現後端緩衝區。
+1. 在進行任何轉譯之前，每個畫面都會使用目前要傳送至伺服器轉譯的相機轉換來呼叫 `GraphicsBindingSimD3d11.Update`。 同時，應將傳回的 Proxy 轉換套用到 Proxy 相機，以轉譯成 Proxy 轉譯目標。
+如果傳回的 proxy 更新 `SimulationUpdate.frameId` 是 Null，代表尚未有遠端資料。 在此情況下，請使用目前的相機資料，直接將任何本機內容轉譯為背景緩衝區，並略過接下來的兩個步驟，而不是轉譯成 Proxy 轉譯目標。
+1. 應用程式現在應該已繫結 Proxy 轉譯目標，並呼叫 `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`。 如此會將遠端色彩和深度資訊填入 Proxy 轉譯目標。 現在可以使用 Proxy 相機轉換，將任何本機內容轉譯到 Proxy 上。
+1. 接下來，需將背景緩衝區繫結為轉譯目標，並呼叫 `GraphicsBindingSimD3d11.ReprojectProxy`，此時可以呈現背景緩衝區。
 
-``` cs
-AzureSession currentSesson = ...;
+```cs
+AzureSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
 SimulationUpdate update = new SimulationUpdate();
 // Fill out camera data with current camera data
@@ -146,6 +195,33 @@ if (proxyUpdate.frameId != 0)
     ...
     // Bind back buffer
     simBinding.ReprojectProxy();
+}
+else
+{
+    // Bind back buffer
+    // Use current camera data to render local content
+    ...
+}
+```
+
+```cpp
+ApiHandle<AzureSession> currentSession;
+ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
+
+SimulationUpdate update;
+// Fill out camera data with current camera data
+...
+SimulationUpdate proxyUpdate;
+simBinding->Update(update, &proxyUpdate);
+// Is the frame data valid?
+if (proxyUpdate.frameId != 0)
+{
+    // Bind proxy render target
+    simBinding->BlitRemoteFrameToProxy();
+    // Use proxy camera data to render local content
+    ...
+    // Bind back buffer
+    simBinding->ReprojectProxy();
 }
 else
 {

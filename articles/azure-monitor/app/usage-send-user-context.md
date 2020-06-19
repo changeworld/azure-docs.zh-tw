@@ -1,17 +1,17 @@
 ---
-title: 用來追蹤活動 Azure 應用程式深入解析的使用者內容識別碼
+title: 用來追蹤活動的使用者內容識別碼 - Azure Application Insights
 description: 追蹤使用者如何在您的服務移動，方法是為每個使用者指派 Application Insights 中唯一的持續性識別碼字串。
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670928"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797689"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>傳送使用者內容識別碼以啟用 Azure Application Insights 中的使用體驗
 
@@ -22,11 +22,11 @@ Application Insights 可讓您透過一組產品使用量工具來監控並追�
 - [使用者、工作階段、事件](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [漏斗圖](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [保留](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)世代
-- [活頁簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 若要追蹤使用者在一段時間內所做的行為，Application Insights 需要每個使用者或工作階段的識別碼。 包括下列每個自訂事件或頁面檢視畫面中的識別碼。
 
-- 使用者、漏斗圖、保留期和同群使用者：包含使用者識別碼。
+- 使用者、漏斗圖、保留期和世代：包含使用者識別碼。
 - 工作階段：包含工作階段識別碼。
 
 > [!NOTE]
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [使用者、工作階段和事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)

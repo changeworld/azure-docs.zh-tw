@@ -1,5 +1,5 @@
 ---
-title: 商用 marketplace 的潛在客戶管理 |Azure Marketplace 和 AppSource
+title: 商業市集的潛在客戶管理 | Azure Marketplace 和 AppSource
 description: 向 Azure Marketplace 和 AppSource 發佈供應項目和技術成品的各種相關主題概觀
 author: dsindona
 ms.service: marketplace
@@ -7,76 +7,76 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789839"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798579"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>商用 marketplace 的潛在客戶管理
+# <a name="lead-management-for-commercial-marketplace"></a>商業市集的潛在客戶管理
 
-客戶是所有優秀企業的核心。 在今日產品收購的轉換中，行銷人員必須專注于直接與客戶聯繫，並建立關聯性。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在[合作夥伴中心](https://partner.microsoft.com/)列出您的供應專案之後，有一些工具可讓您在客戶提出興趣或在 marketplace 中部署您的產品之後，以程式設計方式立即接收客戶連絡人資訊。 
+客戶是所有優秀企業的核心。 在現今的產品併購變革中，行銷人員需要著重在直接與客戶連結，建立關係。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在 [合作夥伴中心](https://partner.microsoft.com/)中列出您的供應項目後，系統會為您啟用工具，讓您在客戶對您市集中的產品表達興趣，或部署您的產品後，能以程式化方式，立即收到客戶連絡資訊。 
 
 ## <a name="what-are-leads-in-the-marketplace"></a>什麼是市集中的潛在客戶？
 
-潛在客戶是對您在 Marketplace 中的產品有興趣，或從 Marketplace 部署您產品的客戶。 無論您的產品是列在 Azure Marketplace 或 AppSource 上，當客戶從您的 CRM 正確設定為合作夥伴中心的清單之後，您就可以收到潛在客戶。 
+潛在客戶是對您在 Marketplace 中的產品有興趣，或從 Marketplace 部署您產品的客戶。 無論您的產品是列在 Azure Marketplace 或 AppSource 上，只要將產品從您的 CRM 正確地設定到合作夥伴中心的清單中，您就能夠從客戶端接收到潛在客戶。 
 
-## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何將您的 CRM 系統與合作夥伴中心連線
+## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何將 CRM 系統與合作夥伴中心連線
 
-為了開始獲得潛在客戶，合作夥伴中心內的潛在客戶管理連接器已設計成可輕鬆地將您的 CRM 資訊插入您的 crm 系統清單。 現在您無須耗費浩大的工程心力來整合外部系統，便可以輕鬆地運用由 Marketplace 產生的潛在客戶。
+為了能開始取得潛在客戶，我們在合作夥伴中心上設計了潛在客戶管理連接器，可讓您輕鬆地將可用 CRM 系統清單的 CRM 資訊插入合作夥伴中心。 現在您無須耗費浩大的工程心力來整合外部系統，便可以輕鬆地運用由 Marketplace 產生的潛在客戶。
 
 以下逐步指示將說明如何連線每個潛在客戶目的地：
 
-**DYNAMICS Crm online** -如需如何設定 Dynamics CRM online 以取得潛在客戶的指示，請參閱[設定 Dynamics 365 for Customer Engagement 的潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)。
+**Dynamics CRM Online** - 如需如何設定 Dynamics CRM Online 來獲得潛在客戶的說明，請參閱[為 Dynamics 365 Customer Engagement 設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)。
 
-**Marketo** -請參閱[在 Marketo 中設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md)，以取得設定 Marketo 潛在客戶設定以獲得潛在客戶的指示。
+**Marketo** - 如需如何設定 Marketo 潛在客戶設定來獲得潛在客戶的說明，請參閱[設定 Marketo 的潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md)。
 
-**Salesforce** -如需設定 salesforce 實例以取得潛在客戶的指示，請參閱設定[salesforce 的潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md)。
+**Salesforce** - 如需如何設定 Salesforce 執行個體來取得潛在客戶的說明，請參閱[為 Salesforce 設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md)。
 
-**Azure 資料表**-請參閱[使用 azure 資料表設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)，以取得在 azure 資料表中建立潛在客戶的 azure 儲存體帳戶的相關指示。
+**Azure 資料表** - 如需如何在 Azure 資料表中設定 Azure 儲存體帳戶來取得潛在客戶的說明，請參閱[使用 Azure 資料表設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)。
 
-**Https 端點**-如需有關設定 HTTPs 端點以取得潛在客戶的指示，請參閱[使用 Https 端點來設定潛在客戶管理](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md)。
+**HTTPS 端點** - 如需如何設定 HTTPS 端點以取得潛在客戶的說明，請參閱[使用 HTTPS 端點來管理商業市集潛在客戶](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md)。
 
 您妥善設定您的潛在客戶目的地，並按下您供應項目上的 [發佈] 後，我們將驗證連接，並傳送測試用潛在客戶給您。 在上架前檢視供應項目時，您也可以試著在預覽環境中自行取得供應項目，藉此測試您的潛在客戶連線。 關鍵是，請務必確定您的潛在客戶設定保持在最新狀態，如此您將不會流失潛在客戶；因此您的商務若有變更，請記得更新這些連接。
 
 ### <a name="what-are-the-next-steps"></a>後續步驟是什麼？
 
-技術設定就緒之後，您應該將這些潛在客戶納入目前的銷售 & 行銷策略和營運程式中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 請讓我們知道您是否有興趣提供意見反應和建議，讓您的銷售小組能夠更成功地使用 Marketplace 潛在客戶。
+技術設定完成後，您應該將這些潛在客戶整合至您目前的銷售與行銷策略，以及營運流程當中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣提供意見反應及建議，讓我們的銷售團隊能推出更成功的 Marketplace 潛在客戶，請告訴我們。
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>在合作夥伴中心發佈期間常見的潛在客戶設定錯誤
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>在合作夥伴中心發佈時的常見潛在客戶設定錯誤
 
-**無法將潛在客戶儲存至 Dynamics CRM。檢查 Dynamics CRM 帳戶設定。LastCRMError：無法登入 Dynamics CRM，LastCRMException：** 
+**無法將潛在客戶儲存至 Dynamics CRM。請檢查 Dynamics CRM 帳戶設定。LastCRMError：無法登入 Dynamics CRM、LastCRMException：** 
 
-> 如果已選取 O365 驗證，請檢查使用者帳戶和密碼是否有效。 如果已選取 AAD，請檢查租用戶識別碼、應用程式識別碼和應用程式祕密金鑰是否符合 AAD 上已設定的項目。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定它可以存取 Dynamics 365，並已指派授權11-15 （如果使用 Office 使用者，請使用 Azure Active Directory 或安全性設定）。 
+> 如果已選取 O365 驗證，請檢查使用者帳戶和密碼是否有效。 如果已選取 AAD，請檢查租用戶識別碼、應用程式識別碼和應用程式祕密金鑰是否符合 AAD 上已設定的項目。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定其可以存取 Dynamics 365，並已指派授權 (如果是使用 Azure Active Directory，請參考步驟 11-15，如果使用 Office 使用者，請參考安全性設定)。 
 
-**無法將潛在客戶儲存至 Dynamics CRM。在潛在客戶實體中，使用者沒有 leadsourcecode 屬性的 create 許可權** 
+**無法將潛在客戶儲存至 Dynamics CRM。使用者沒有在潛在客戶實體中建立 leadsourcecode 屬性的權限** 
 
 > 應用程式/使用者遺失 Microsoft Marketplace 潛在客戶寫入器的安全性角色。 請參閱[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)，如果使用 Azure Active Directory，請遵循步驟 11 至 15，如果是使用 Office 使用者，請遵循安全性設定。
 
-**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：：找不到租使用者。如果沒有作用中的租使用者訂用帳戶，可能會發生這個實例。**  
+**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：找不到租用戶。如果沒有任何作用中的租用戶訂用帳戶，可能會發生這個情況。**  
 
-> 潛在客戶管理一節中提供的目錄識別碼不是有效的目錄。 請根據步驟 2[中的指示](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)取得目錄識別碼（在 Azure Active Directory 底下）。
+> 潛在客戶管理一節中提供的目錄識別碼不是有效的目錄。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 2 中的指示取得目錄識別碼 (在 Azure Active Directory 下)。
 
-**無法將潛在客戶儲存至 Dynamics CRM。LastCRMError： SecLib：： RetrievePrivilegeForUser failed-沒有指派任何角色給使用者。**  
+**無法將潛在客戶儲存至 Dynamics CRM。LastCRMError：SecLib::RetrievePrivilegeForUser 失敗 - 沒有指派任何角色給使用者。**  
 
-> 解決方式：將安全性角色指派給 Microsoft Marketplace 潛在客戶寫入器。 依照 [安全性設定] 底下[的指示進行](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)。
+> 解決方案：將安全性角色指派給 Microsoft Marketplace 潛在客戶寫入器。 請依照[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)安全性設定下的指示。
 
-**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：：在目錄中找不到識別碼為的應用程式** 
+**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：在目錄中找不到包含識別碼的應用程式** 
 
 > 潛在客戶管理一節中提供的應用程式識別碼不是有效的目錄。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 8 的指示取得目錄識別碼 (在 Azure Active Directory 下)。 
 
-**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：：要求的租使用者識別碼無效，且不是有效的外部網域格式** 
+**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：所要求的租用戶識別碼無效，且不是有效的外部網域格式** 
 
 > 潛在客戶管理一節中提供的目錄識別碼不是有效的目錄。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 2 中的指示取得目錄識別碼 (在 Azure Active Directory 下)。 
 
-**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：驗證認證時發生錯誤。：提供了不正確用戶端密碼。** 
+**無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：驗證認證時發生錯誤：提供的用戶端祕密無效。** 
 
-> 解決方式：登入 Azure 入口網站，檢查應用程式金鑰是否符合合作夥伴中心內的內容。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 10 中的指示產生密碼 (在 Azure Active Directory 下)。 
+> 解決方案：登入 Azure 入口網站，檢查應用程式金鑰是否符合合作夥伴中心的內容。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 10 中的指示產生密碼 (在 Azure Active Directory 下)。 
 
-**無法將潛在客戶儲存至 Dynamics CRM。LastCRMError：要求通道在00:02:00 之後等候回復時發生超時。將傳遞給呼叫的超時值增加至 Request，或增加系結上的 SendTimeout 值。分配給此作業的時間可能是較長時間的一部分。**  
+**無法將潛在客戶儲存至 Dynamics CRM。LastCRMError：等待回覆至 00:02:00 之後，要求通道逾時。提高傳遞至呼叫要求的逾時值，或增加繫結上的 SendTimeout 值。分配給此作業的時間可能是較長逾時的一部分。**  
 
-> 解決方式：登入合作夥伴中心，檢查店面詳細資料 >> [潛在客戶目的地 >> URL]，檢查它是否為有效的動態 CRM 實例。
+> 解決方案：登入合作夥伴中心，查看店面詳細資料 >> 潛在客戶目的地 >> URL，檢查是否為有效的 Dynamics CRM 執行個體。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -86,7 +86,7 @@ ms.locfileid: "82789839"
 
 **可以在哪裡取得設定我潛在客戶目的地的說明？** 
 
-您可以在「說明[及支援](https://partner.microsoft.com/support/v2/?stage=1)」中找到「[取得客戶負責人](./partner-center-portal/commercial-marketplace-get-customer-leads.md)」或「提交支援票證」的檔。 選取 [供應專案類型] 和 [潛在客戶管理]。 
+您可以取得[潛在客戶](./partner-center-portal/commercial-marketplace-get-customer-leads.md)的相關文件，或在[說明及支援](https://aka.ms/marketplacepublishersupport)中提交支援票證。 請選取您的供應項目類型和 在客戶管理。 
 
 **我是否必須設定潛在客戶目的地，才能在 Marketplace 上發佈供應項目？**
 
@@ -116,7 +116,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<供應專案名稱> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
 oid = 00Do0000000ZHog 
 
@@ -124,18 +124,18 @@ phone = 1234567890
 
 title = MSFT_TEST_636573304831318844 
 
-**我有上線的供應專案，但我沒看到任何潛在客戶嗎？**
+**我有上線的供應項目，但我沒看到任何潛在客戶？**
 
 每位潛在客戶都會將資料傳入所選潛在客戶目的地中的欄位，潛在客戶會以下列格式顯示：**來源動作|供應項目** 
 
-  *根源*
+  來源：
 
     "AzureMarketplace", 
     "AzurePortal", 
     "TestDrive",  
     "SPZA" (acronym for AppSource) 
 
-  *活動*
+  動作：
 
     "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -147,7 +147,7 @@ title = MSFT_TEST_636573304831318844
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  *提高*
+  供應項目：
 
     "checkpoint.check-point-r77-10sg-byol", 
     "bitnami.openedxcypress", 
@@ -179,27 +179,27 @@ title = MSFT_TEST_636573304831318844
 
 **我已將 Azure BLOB 設定為我的潛在客戶目的地，為何沒有看到潛在客戶？** 
 
-只有當您選取 Azure BLOB 儲存體作為您的潛在客戶目的地時，才會寫入潛在客戶。 切換至 Azure 資料表以即時收到潛在客戶。
+只有當您選取 Azure BLOB 儲存體作為您的潛在客戶目的地時，才會寫入潛在客戶。 切換至 Azure 資料表以即時接收潛在客戶。
 
 **我已從 Marketplace 收到一封電子郵件，為什麼在我的 CRM 中找不到潛在客戶？**  
 
-終端使用者的電子郵件網域可能來自 .edu。 基於隱私權理由，我們不會從 edu 網域傳遞個人標識的資料。 請在 [說明[及支援](https://partner.microsoft.com/support/v2/?stage=1)] 中提交支援票證。
+終端使用者的電子郵件網域可能來自 .edu。 基於隱私原因，我們不會從 .edu 網域傳遞個人識別資料。 在[說明及支援](https://aka.ms/marketplacepublishersupport)中提交支援票證。
 
 **我已將 Azure 表格/Azure BLOB 設定為我的潛在客戶目的地，該如何檢視潛在客戶？** 
 
-您可以從 Azure 入口網站存取 blob 或資料表，也可以免費下載並安裝[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，以查看您的 Azure 儲存體帳戶的資料表/blob。 
+您可以從 Azure 入口網站存取 Blob 或資料表，或是免費下載及安裝 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，來檢視您 Azure 儲存體帳戶的資料表/Blob。 
 
 **我已設定 Azure 資料表作為我的潛在客戶目的地，是否可以在 Marketplace 傳送新的潛在客戶時隨時收到通知？** 
 
 是，請依照[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)文件上的指示來設定 Azure 資料表 + 函式。 
 
-**我已設定 Salesforce 作為我的潛在客戶目的地，為什麼找不到潛在客戶？** 
+**我已設定 Salesforce 作為我的潛在客戶目的地，為什麼找不到潛在客戶？**
 
 根據挑選清單檢查潛在客戶表單的 Web 是否為必要欄位。 如果是，請將欄位切換為非必要文字欄位。  
  
-**我的潛在客戶目的地發生問題，而我錯過了一些潛在客戶。我可以在電子郵件中傳送給我嗎？** 
+**我的潛在客戶目的地發生問題，而我遺漏了一些潛在客戶。是否可以在電子郵件中將這些潛在客戶傳送給我？** 
 
-由於隱私權原則的緣故，我們無法透過不安全的電子郵件共用潛在客戶資訊。 
+由於隱私權原則的緣故，我們無法透過不安全的電子郵件分享潛在客戶資訊。 
 
 **我已將 Azure 儲存體 (BLOB/資料表) 設定為我的潛在客戶目的地，它的售價如何？** 
 

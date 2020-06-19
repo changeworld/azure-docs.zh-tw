@@ -1,6 +1,6 @@
 ---
 title: 停用 Azure VM 中的客體 OS 防火牆 | Microsoft Docs
-description: 瞭解解決方法，以疑難排解客體作業系統防火牆篩選 VM 的部分或完整流量的情況。
+description: 了解在客體作業系統防火牆會篩選 VM 部分或完整流量的情況下，可進行疑難排解的因應方法。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422371"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774345"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
 
@@ -27,13 +27,13 @@ ms.locfileid: "80422371"
 
 ## <a name="solution"></a>解決方法
 
-本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 Microsoft 的最佳作法是啟用 Windows 防火牆元件。 設定防火牆規則的方式取決於所需的 VM 存取層級。
+本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 此為啟用 Windows 防火牆元件的 Microsoft 最佳做法。 設定防火牆規則的方式取決於虛擬機器所需的存取權層級而定。
 
 ### <a name="online-solutions"></a>線上解決方案 
 
 如果 VM 為連線狀態，並可透過相同虛擬網路上的其他 VM 來存取，您即可使用另一部 VM 來進行這些緩解措施。
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>緩解措施 1：自訂指令碼延伸模組或執行命令功能
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>降低風險 1：自訂指令碼延伸模組或執行命令功能
 
 如果您具備使用中的 Azure 代理程式，即可使用[自訂指令碼延伸模組](../extensions/custom-script-windows.md)或[執行命令](../windows/run-command.md)功能 (僅限 Resource Manager VM)，從遠端執行下列指令碼。
 
@@ -49,12 +49,12 @@ ms.locfileid: "80422371"
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   不過，只要套用此原則，您就會被移出遠端工作階段。 這個問題的永久解決之道是修改套用至此電腦的原則。
 
-#### <a name="mitigation-2-remote-powershell"></a>緩解措施 2：遠端 PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>降低風險 2：遠端 Powershell
 
 1.  針對您無法使用 RDP 連線來連接的 VM，連線到與此 VM 相同虛擬網路的某部 VM。
 
@@ -72,7 +72,7 @@ ms.locfileid: "80422371"
 > [!Note]
 > 如果防火牆是透過群組原則物件設定，此方法可能無效，因為這個命令只會變更本機登錄項目。 如果已備有原則，該原則會覆寫這項變更。 
 
-#### <a name="mitigation-3-pstools-commands"></a>緩解措施 3：PSTools 命令
+#### <a name="mitigation-3-pstools-commands"></a>降低風險 3：PSTools 命令
 
 1.  在要對其進行疑難排解的 VM 上，下載 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
 
@@ -86,13 +86,13 @@ ms.locfileid: "80422371"
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>緩解措施 4：遠端登錄 
+#### <a name="mitigation-4-remote-registry"></a>降低風險 4：遠端登錄 
 
 請遵循下列步驟使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在疑難排解 VM 上，啟動 [登錄編輯程式]，然後移**至** > **[檔案] [連線] [網路登入]**。
+1.  在要對其進行疑難排解的 VM 上，啟動登錄編輯程式 ，然後前往 [檔案] > [連線網路登錄]。
 
-2.  開啟*目的電腦*\SYSTEM 分支，然後指定下列值：
+2.  開啟 *TARGET MACHINE*\SYSTEM 分支，然後指定下列值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ ms.locfileid: "80422371"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重新啟動服務。 因為您無法使用遠端登入來執行此動作，所以您必須使用遠端服務主控台。
+3.  重新啟動服務。 由於您無法使用遠端登錄來執行上述作業，因此必須使用 [移除服務主控台]。
 
-4.  開啟**services.msc**的實例。
+4.  開啟 **Services.msc** 的執行個體。
 
-5.  按一下 [服務 (本機)]****。
+5.  按一下 [服務 (本機)]。
 
-6.  選取 [連線到另一部電腦]****。
+6.  選取 [連線到另一部電腦]。
 
-7.  輸入問題 VM 的**私人 IP 位址（DIP）** 。
+7.  輸入問題 VM 的 [私人 IP 位址 (DIP)]。
 
 8.  重新啟動本機防火牆原則。
 

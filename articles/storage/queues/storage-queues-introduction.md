@@ -7,13 +7,13 @@ ms.date: 03/18/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: overview
-ms.reviewer: cbrooks
-ms.openlocfilehash: 4a2bea77578282d68d86bc1a8cea765aa2cbd555
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: dineshm
+ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060860"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805134"
 ---
 # <a name="what-are-azure-queues"></a>什麼是 Azure 佇列？
 

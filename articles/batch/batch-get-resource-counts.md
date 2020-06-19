@@ -1,25 +1,25 @@
 ---
-title: 計算工作和節點的狀態
+title: 計算工作和節點的狀態數目
 description: 計算 Azure Batch 作業和計算節點狀態的數目，以利管理及監視 Batch 解決方案。
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116089"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780163"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>依狀態計算作業和節點數目以監視 Batch 解決方案
 
 若要監視及管理大規模的 Azure Batch 解決方案，處於各種狀態的資源必須要有精準的計數。 Azure Batch 提供有效的作業，可取得 Batch *作業*和*計算節點*的這些計數。 請使用這些作業，而非可能很耗時的清單查詢 (會傳回大型工作或節點集合的相關詳細資訊)。
 
-* [取得作業計數][rest_get_task_counts]可取得作業中的作用中、執行中和已完成工作的彙總計數，以及成功或失敗的工作計數。 
+* [取得工作計數][rest_get_task_counts]可取得作業中的作用中、執行中和已完成工作的彙總計數，以及成功或失敗的工作計數。 
 
   藉由計算處於各個狀態的工作數目，您可以更輕鬆地向使用者顯示作業進度，或偵測可能會影響作業的非預期延遲或失敗。 「取得工作計數」適用於 Batch 服務 API 2017-06-01.5.1 起的版本，以及相關 SDK 和工具。
 
-* [列出集區節點計數][rest_get_node_counts]可取得每個集區中處於各種狀態的專用和低優先順序計算節點的數目：建立中、閒置、離線、先佔、重新開機中、重新安裝映像中、啟動中和其他狀態。 
+* [列出集區節點計數][rest_get_node_counts]可取得每個集區中處於各種狀態的專用和低優先順序計算節點數目：正在建立、閒置、離線、已先佔、正在重新開機、正在重新安裝映像、正在啟動和其他狀態。 
 
   藉由計算各個狀態的節點數目，您將可判斷是否有足夠的計算資源可執行作業，並找出集區的潛在問題。 「列出集區節點計數」適用於 Batch 服務 API 2018-03-01.6.1 起的版本，以及相關 SDK 和工具。
 
@@ -66,7 +66,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 - **重新安裝映像中** - 正在重新安裝作業系統的節點。
 - **執行中** - 正在執行一或多個工作 (非啟動工作) 的節點。
 - **啟動中** - 正在啟動 Batch 服務的節點。 
-- **StartTaskFailed** - [啟動工作][rest_start_task]失敗並且已耗盡所有重試次數，且其啟動工作設定了 `waitForSuccess` 的節點。 此類節點無法用來執行工作。
+- **StartTaskFailed** - [啟動工作][rest_start_task]失敗並已耗盡所有重試次數，且其啟動工作設定了 `waitForSuccess` 的節點。 此類節點無法用來執行工作。
 - **不明** - 失去與 Batch 服務的聯繫、且狀態不明的節點。
 - **無法使用** - 因發生錯誤而無法用來執行工作的節點。
 - **WaitingForStartTask** - 啟動工作已開始執行、但設定了 `waitForSuccess`且啟動工作未完成的節點。
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 您可以將類似的模式用於 REST 和其他支援的語言，以取得集區的節點計數。
  
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解 Batch 服務概念和功能，請參閱 [Batch 功能概觀](batch-api-basics.md) 。 本文討論主要 Batch 資源 (例如集區、計算節點、作業和工作)，並提供服務功能的概觀。
-
+* 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 * 如需對列出 Batch 資源的查詢套用篩選條件的相關資訊，請參閱[建立查詢以便有效率地列出 Batch 資源](batch-efficient-list-queries.md)。
 
 
