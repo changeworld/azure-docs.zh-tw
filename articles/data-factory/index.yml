@@ -11,12 +11,12 @@ metadata:
   author: markingmyname
   ms.author: maghan
   ms.date: 10/02/2019
-  ms.openlocfilehash: 5ab646f80296352bce30eedcbf9b0de670011118
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.openlocfilehash: fa9decd8a0b7424d040cab9dcd46b919bb4d7df5
+  ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84118740"
+  ms.lasthandoff: 06/20/2020
+  ms.locfileid: "85116225"
 landingContent:
 - title: 關於 Azure Data Factory
   linkLists:
@@ -75,9 +75,9 @@ landingContent:
     - text: 將內部部署資料複製到雲端
       url: /azure/data-factory/tutorial-hybrid-copy-data-tool
     - text: 複製大量資料
-      url: /azure/data-factory/
+      url: /azure/data-factory/tutorial-bulk-copy-portal
     - text: 以累加方式複製資料
-      url: /azure/data-factory/tutorial-create-azure-ssis-runtime-portal
+      url: /azure/data-factory/tutorial-incremental-copy-overview
     - text: 載入 ADLS Gen2
       url: /azure/data-factory/load-azure-data-lake-storage-gen2
     - text: 載入 SQL DW
