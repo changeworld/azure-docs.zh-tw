@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833926"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020875"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>在虛擬機器上搭配使用 Azure 進階儲存體和 SQL Server
 
@@ -41,7 +41,7 @@ ms.locfileid: "83833926"
 * 可能的移轉方法。
 * 完整的端對端範例，示範適用於移轉現有 AlwaysOn 實作的 Azure、Windows 及 SQL Server 步驟。
 
-如需更多關於 Azure 虛擬機器中 SQL Server 的背景資訊，請參閱 [Azure 虛擬機器中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+如需更多關於 Azure 虛擬機器中 SQL Server 的背景資訊，請參閱 [Azure 虛擬機器中的 SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
 **作者：** Daniel Sol **技術審稿人員：** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步驟 2:提高資源上允許發生的失敗數 \<選擇性>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步驟 2:提高資源上允許發生的失敗數 \<Optional>
 
 在隸屬於 Always On 可用性群組的特定資源上有下列限制：可以在一段期間內發生的失敗次數，而叢集服務會嘗試在其中重新啟動資源群組。 建議您在逐步執行此程序時放寬此限制，因為如果您不手動進行容錯移轉，並透過將電腦關機來觸發容錯移轉，便可能會接近這個限制。
 
@@ -691,7 +691,7 @@ New-AzureService $destcloudsvc -Location $location
 
 將 [最大失敗數目] 變更為 6。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步驟 3：新增叢集群組的 IP 位址資源 \<選擇性>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步驟 3：新增叢集群組的 IP 位址資源 \<Optional>
 
 如果您只有一個適用於叢集群組的 IP 位址且已將此位址指派給雲端子網路，請注意，如果您不小心在該網路上使雲端中的所有叢集節點離線，則叢集 IP 資源和叢集網路名稱無法變成上線狀態。 在此情況下，它會阻止更新其他叢集資源。
 
@@ -1250,7 +1250,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 * [Azure 進階儲存體](../disks-types.md)
 * [虛擬機器](https://azure.microsoft.com/services/virtual-machines/)
-* [Azure 虛擬機器中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Azure 虛擬機器中的 SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

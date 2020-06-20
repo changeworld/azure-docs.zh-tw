@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 瞭解如何在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873509"
+ms.locfileid: "83996256"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具
 
@@ -60,24 +60,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 上述命令會從 *MyResourceGroup*中的 *MyAKS* 叢集移除 Azure Dev Spaces。 以 Azure Dev Spaces 建立的所有命名空間，都會保留在其工作負載中，但這些命名空間中的新工作負載將不會使用 Azure Dev Spaces 進行檢測。 此外，如果您重新啟動任何以 Azure Dev Spaces 檢測的現有 Pod，可能會看到錯誤。 必須在不使用 Azure Dev Spaces 工具處理的情況下，重新部署這些 Pod。 若要從您的叢集中完全移除 Azure Dev Spaces，請在所有啟用 Azure Dev Spaces 的命名空間中，刪除所有 Pod。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>使用 Azure 入口網站啟用或移除 Azure Dev Spaces
-
-需先達成以下條件，方能使用 Azure 入口網站啟用 Dev Spaces：
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶][az-portal-create-account]。
-* [支援的區域][supported-regions]中的 [AKS 叢集][create-aks-portal]。
-
-使用 Azure 入口網站啟用 Azure Dev Spaces：
-1. 登入 [Azure 入口網站][az-portal]。
-1. 瀏覽至您的 AKS 叢集。
-1. 選取 [Dev Spaces] 功能表項目。
-1. 將 [啟用 Dev Spaces] 變更為 [是]，然後按一下 [儲存]。
-
-![在 Azure 入口網站中啟用 Dev Spaces](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
-
-使用 Azure 入口網站啟用 Azure Dev Spaces，**不會** 安裝任何 Azure Dev Spaces 的用戶端工具。
-
-若要從 AKS 叢集移除 Azure Dev Spaces，請將 [啟用 Dev Spaces] 變更為 [否]，然後按一下 [儲存]。 以 Azure Dev Spaces 建立的所有命名空間，都會保留在其工作負載中，但這些命名空間中的新工作負載將不會使用 Azure Dev Spaces 進行檢測。 此外，如果您重新啟動任何以 Azure Dev Spaces 檢測的現有 Pod，可能會看到錯誤。 必須在不使用 Azure Dev Spaces 工具處理的情況下，重新部署這些 Pod。 若要從您的叢集中完全移除 Azure Dev Spaces，請在所有啟用 Azure Dev Spaces 的命名空間中，刪除所有 Pod。
-
 ## <a name="install-the-client-side-tools"></a>安裝用戶端工具
 
 您可以使用 Azure Dev Spaces 的用戶端工具，從您的本機電腦與 AKS 叢集上的開發空間互動。 有幾種方式可以安裝用戶端工具：
@@ -94,7 +76,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 > [在 Azure Dev Spaces 中進行小組開發][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
-[create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md

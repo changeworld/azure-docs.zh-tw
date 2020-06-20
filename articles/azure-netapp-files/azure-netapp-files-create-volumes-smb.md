@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef54eddd52d67f595fe78cd8bba9f308a4f19a94
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832808"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235231"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -175,9 +175,6 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量
     隨即顯示您建立的 Active Directory 連線。
 
     ![Active Directory 連線](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> 儲存 Active Directory 連線之後，您可以編輯 [使用者名稱] 和 [密碼] 欄位。 儲存連線之後，就無法編輯其他值。 如果您需要變更任何其他值，則必須先刪除任何部署的 SMB 磁碟區，然後刪除並重新建立 Active Directory 連線。
 
 ## <a name="add-an-smb-volume"></a>新增 SMB 磁碟區
 

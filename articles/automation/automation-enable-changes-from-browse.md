@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826820"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171067"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure 入口網站的 [啟用變更追蹤和清查]
 
@@ -21,7 +21,7 @@ ms.locfileid: "83826820"
 > [!NOTE]
 > 啟用「變更追蹤和清查」時，僅支援特定區域連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](automation-offering-get-started.md)，以管理電腦。
@@ -61,8 +61,4 @@ ms.locfileid: "83826820"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需使用此功能的詳細資訊，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
-* 如需範圍設定的相關資訊，請參閱[使用變更追蹤和清查的範圍設定](automation-scope-configurations-change-tracking.md)。
-* 若要了解如何使用此功能來識別安裝在環境中的軟體，請參閱[探索您的 VM 上安裝的軟體](automation-tutorial-installed-software.md)。
-* 如果您在啟用此功能時不要將自動化帳戶與 Log Analytics 工作區整合，請參閱[從自動化帳戶取消連結工作區](automation-unlink-workspace-change-tracking.md)。
-* VM 的變更部署完成後，您可以將 VM 移除，如[從變更追蹤和清查中移除 VM](automation-remove-vms-from-change-tracking.md) 所說明。
 * 若要對此功能的一般問題進行疑難排解，請參閱[對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

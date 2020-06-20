@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759076"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021359"
 ---
 # <a name="cut-planes"></a>切割平面
 
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 下列屬性會在切割平面元件上公開：
 
-* **已啟用：** 您可以藉由停用元件，暫時關閉切割平面。 停用的切割平面不會產生轉譯額外負荷，也不會計入全域切割平面限制。
+* `Enabled`:您可以藉由停用元件，暫時關閉切割平面。 停用的切割平面不會產生轉譯額外負荷，也不會計入全域切割平面限制。
 
-* **一般：** 指定要使用哪個方向 (+X、-X、+Y、-Y、+Z、-Z) 作為一般平面。 這個方向相對於擁有者實體的方向。 移動和旋轉擁有者實體以取得確切的位置。
+* `Normal`:指定要使用哪個方向 (+X、-X、+Y、-Y、+Z、-Z) 作為一般平面。 這個方向相對於擁有者實體的方向。 移動和旋轉擁有者實體以取得確切的位置。
 
-* **FadeColor** 和 **FadeLength：**
+* `FadeColor` 和 `FadeLength`：
 
   如果 FadeColor 的 Alpha 值為非零，接近切割平面的像素會淡入 FadeColor 的 RGB 部分。 Alpha 色板的強度會決定是否要完全淡入淡出色彩或僅部分。 *FadeLength* 會定義此淡入發生的距離。
 

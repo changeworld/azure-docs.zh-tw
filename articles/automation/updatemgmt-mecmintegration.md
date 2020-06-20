@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836306"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013192"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>整合更新管理與 Windows Endpoint Configuration Manager
 
@@ -20,7 +20,7 @@ ms.locfileid: "83836306"
 
 您可以透過在 Windows Endpoint Configuration Manager 中建置並預先暫存軟體更新部署，並使用[更新管理](automation-update-management.md)取得所完成更新部署的詳細狀態，藉此報告及更新受控 Windows 伺服器。 如果您將 Windows Endpoint Configuration Manager 用於更新合規性報告，而不是用於管理 Windows 伺服器的更新部署，您可以繼續向 Configuration Manager 報告，同時安全性更新則是使用 Azure 自動化更新管理來進行管理。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您必須已將 [Azure 自動化更新管理](automation-update-management.md)新增至您的自動化帳戶。
 * 目前由 Windows Endpoint Configuration Manager 環境所管理的 Windows 伺服器，也需要向也已啟用更新管理的 Log Analytics 工作區報告。
@@ -38,7 +38,7 @@ ms.locfileid: "83836306"
 1. 在 Azure 自動化中，選取 [更新管理]。 遵循[建立更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)中所述的步驟來建立新的部署，然後在 [類型] 下拉式清單中選取 [已匯入的群組]，以選取適當的 Windows Endpoint Configuration Manager 集合。 請記住下列重點：a. 如果已在所選的 Windows Endpoint Configuration Manager 裝置集合上定義維護時段，該集合的成員會接受，而不是排程部署中定義的 [持續時間] 設定。
     b. 目標集合的成員必須具有網際網路連線 (不論是直接、透過 Proxy 伺服器，還是透過 Log Analytics 閘道)。
 
-透過 Azure 自動化完成更新部署之後，屬於所選電腦群組成員的目標電腦會在排定的時間，從其本機用戶端快取安裝更新。 您可以[檢視更新部署狀態](automation-tutorial-update-management.md#view-results-of-an-update-deployment)，以監視您的部署結果。
+透過 Azure 自動化完成更新部署之後，屬於所選電腦群組成員的目標電腦會在排定的時間，從其本機用戶端快取安裝更新。 您可以[檢視更新部署狀態](automation-tutorial-update-management.md#check-deployment-status)，以監視您的部署結果。
 
 ## <a name="manage-software-updates-from-azure-automation"></a>從 Azure 自動化管理軟體更新
 
