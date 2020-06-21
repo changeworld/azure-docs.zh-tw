@@ -19,6 +19,10 @@
       items:
         - name: 整合 Azure Key Vault 與 Kubernetes
           href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: 使用 Azure Databricks 和 Azure Key Vault 存取 Azure Blob 儲存體
+          href: integrate-databricks-blob-storage.md
     - name: 使用受控識別和 .NET 將 Key Vault 連線至 Web 應用程式
       href: tutorial-net-create-vault-azure-web-app.md
 - name: 範例
@@ -129,13 +133,13 @@
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
-      href: /python/api/overview/azure/key-vault?view=azure-python
+      href: /python/api/overview/azure/keyvault/management?view=azure-python
     - name: REST
       href: /rest/api/keyvault
     - name: Resource Manager 範本

@@ -71,6 +71,8 @@
           href: how-to-custom-speech-train-model.md
         - name: 部署自訂模型
           href: how-to-custom-speech-deploy-model.md
+        - name: 自訂語音的 CI/CD
+          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: 建立人為標記的轉譯
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: 參考
@@ -80,7 +82,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -105,9 +107,9 @@
     - name: 資源
       items:
         - name: 語言支援
-          href: 'language-support.md#speech-to-text'
+          href: language-support.md#speech-to-text
         - name: 區域支援
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: 語音轉換文字常見問題集
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
           href: faq-stt.md
@@ -177,7 +179,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -202,11 +204,11 @@
     - name: 資源
       items:
         - name: 標準語音支援
-          href: 'language-support.md#standard-voices'
+          href: language-support.md#standard-voices
         - name: 類神經語音支援
-          href: 'language-support.md#neural-voices'
+          href: language-support.md#neural-voices
         - name: 區域支援
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: SSML 注音集合
           href: speech-ssml-phonetic-sets.md
         - name: 文字轉換語音常見問題集
@@ -241,7 +243,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -262,9 +264,9 @@
     - name: 資源
       items:
         - name: 語言支援
-          href: 'language-support.md#speech-translation'
+          href: language-support.md#speech-translation
         - name: 區域支援
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: 語音翻譯常見問題集
           href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: 意圖辨識
@@ -278,7 +280,7 @@
           href: quickstarts/intent-recognition.md
     - name: 操作指南
       items:
-        - name: '以 LUIS 辨識語音意圖 (C#)'
+        - name: 以 LUIS 辨識語音意圖 (C#)
           href: how-to-recognize-intents-from-speech-csharp.md
     - name: 參考
       items:
@@ -287,7 +289,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -314,7 +316,7 @@
         - name: 語言支援
           href: ../luis/luis-language-support.md
         - name: 區域支援
-          href: 'regions.md#intent-recognition'
+          href: regions.md#intent-recognition
 - name: 對話情節
   items:
     - name: 對話情節文件
@@ -342,7 +344,7 @@
                 - name: C++
                   displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/cppref'
-                - name: 'C#'
+                - name: C#
                   displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/csharpref'
                 - name: Java
@@ -380,7 +382,7 @@
               items:
                 - name: C++
                   href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: 'C#'
+                - name: C#
                   href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
                 - name: Java
                   href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
@@ -531,7 +533,7 @@
       items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
-        - name: 'C#'
+        - name: C#
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'

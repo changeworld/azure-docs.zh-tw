@@ -51,6 +51,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: 適用於 Azure Functions 的 SignalR Service 繫結參考
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: 上游設定
+          href: concept-upstream.md
     - name: 高可用性
       items:
         - name: 復原和災害復原
@@ -81,6 +83,8 @@
           href: howto-private-endpoints.md
         - name: 管理網路存取控制
           href: howto-network-access-control.md
+        - name: 使用受控識別
+          href: howto-use-managed-identity.md
     - name: 整合
       items:
         - name: Azure Functions 繫結

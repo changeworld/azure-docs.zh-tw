@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure 防火牆功能
+      href: features.md
     - name: FQDN 標記
       href: fqdn-tags.md
     - name: 基礎結構 FQDN

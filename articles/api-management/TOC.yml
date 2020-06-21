@@ -38,9 +38,11 @@
 - name: 範例
   items:
     - name: 原則
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure 原則內建
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 詞彙

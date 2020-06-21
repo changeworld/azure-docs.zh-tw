@@ -36,6 +36,8 @@
       href: manage-dhcp.md
     - name: 災害復原
       href: disaster-recovery.md
+    - name: 取得 AVS 部署或佈建失敗的協助
+      href: fix-deployment-provisioning-failures.md
     - name: AVS 的 Azure 備份伺服器
       items:
         - name: 為 AVS 設定 Azure 備份伺服器

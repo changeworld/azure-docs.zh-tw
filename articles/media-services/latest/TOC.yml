@@ -18,6 +18,11 @@
     - name: 入口網站和 OBS 的即時活動
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 使用入口網站上傳、編碼和串流內容
+      href: manage-assets-quickstart.md
+    - name: 使用入口網站加密內容
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: 教學課程
   items:
     - name: 編碼遠端檔案和串流影片
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: 標準編碼器格式結構描述
       items:
+        - name: 輸入中繼資料
+          href: input-metadata-schema.md
         - name: 輸出中繼資料
           href: output-metadata-schema.md
 - name: 資源

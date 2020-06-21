@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure 容器服務文件 | Microsoft Docs
   description: 了解如何使用 Azure 容器服務來管理和開發以雲端為基礎的容器應用程式。
   ms.topic: hub-page
-  ms.openlocfilehash: f4d76c0f2ddbecd386a3e3b9d3de370f19b86fee
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.openlocfilehash: 8cfbe066a0e52615b6312ff49d0af268d1acf610
+  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81259012"
+  ms.lasthandoff: 06/18/2020
+  ms.locfileid: "84981586"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,18 +41,15 @@ conceptualContent:
       text: 查看更多
   - title: 測試和開發 AKS 應用程式
     links:
-    - url: /azure/dev-spaces/about
-      itemType: overview
-      text: 什麼是 Azure Dev Spaces？
-    - url: /azure/dev-spaces/quickstart-netcore
-      itemType: quickstart
-      text: 執行和偵錯微服務
-    - url: /azure/dev-spaces/quickstart-team-development
-      itemType: quickstart
-      text: 在一組微服務中與小組共同作業
-    footerLink:
-      url: /azure/dev-spaces/
-      text: 查看更多
+    - url: /azure/dev-spaces/how-dev-spaces-works-local-process-kubernetes
+      itemType: concept
+      text: 本機處理序與 Kubernetes 搭配使用的方式
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-vs-code
+      itemType: how-to-guide
+      text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-visual-studio
+      itemType: how-to-guide
+      text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用
   - title: 建立 Web 和行動裝置的雲端應用程式
     links:
     - url: /azure/app-service/overview
