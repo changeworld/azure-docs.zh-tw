@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745125"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020076"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模擷取、轉換和載入 (ETL)
 
@@ -106,9 +106,9 @@ HBase 適應性取決於 HDInsight 叢集中的節點數目。
 
 Azure 提供三個 PaaS 關聯式資料庫：
 
-- [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 是 Microsoft SQL Server 的實作。 如需有關效能的詳細資訊，請參閱[調整 Azure SQL Database 中的資料庫效能](../../sql-database/sql-database-performance-guidance.md)。
-- [適用於 MySQL 的 Azure 資料庫](../../mysql/overview.md)是 Oracle MySQL 的實作。
-- [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/quickstart-create-server-database-portal.md) 是 PostgreSQL 的實作。
+* [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) 是 Microsoft SQL Server 的實作。 如需有關效能的詳細資訊，請參閱[微調 Azure SQL Database 中的資料庫效能](../../azure-sql/database/performance-guidance.md)。
+* [適用於 MySQL 的 Azure 資料庫](../../mysql/overview.md) 是 Oracle MySQL 的實作。
+* [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/quickstart-create-server-database-portal.md) 是 PostgreSQL 的實作。
 
 新增更多 CPU 和記憶體，以擴大這些產品。  您也可以選擇使用進階磁碟搭配這些產品來獲得較佳的 I/O 效能。
 
