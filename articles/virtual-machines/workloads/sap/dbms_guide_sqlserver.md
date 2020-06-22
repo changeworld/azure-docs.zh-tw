@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645798"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014514"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645798"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/eresources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -341,7 +341,7 @@ ms.locfileid: "75645798"
 這些組態讓 tempdb 所耗用的空間比系統磁碟機能夠提供的還多。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 若要判斷正確的 tempdb 大小，您可以在現有的系統上檢查 tempdb 大小。 
 
 >[!NOTE]
-> 如果您將 tempdb 資料檔案和記錄檔儲存至您在 D:\ 磁碟機上建立的資料夾，您必須確定 VM 重新啟動後，這個資料夾依然存在。 自 D:\ 起磁片磁碟機已在 VM 重新開機後初始化，所有檔案和目錄結構都會被清除。在 D:\ 上重新建立最終目錄結構的可能性SQL Server 服務開始之前的磁片磁碟機記載于[這篇文章](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)中。
+> 如果您將 tempdb 資料檔案和記錄檔儲存至您在 D:\ 磁碟機上建立的資料夾，您必須確定 VM 重新啟動後，這個資料夾依然存在。 因為 VM 重新開機之後，D:\ 磁碟機會重新初始化，所有的檔案和目錄結構都會被會抹除。至於什麼情況下必須在 SQL Server 服務啟動前，先在 D:\ 磁碟機上重新建立目錄結構，請參閱[這篇文章](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)。
 
 執行含有 SAP 資料庫的 SQL Server 且 tempdb 資料和 tempdb 記錄檔放置於 D:\ 磁碟機的 VM 組態應該像這樣︰
 
@@ -361,7 +361,7 @@ ms.locfileid: "75645798"
 ### <a name="formatting-the-disks"></a>將磁碟格式化
 針對 SQL Server，適用於含有 SQL Server 資料和記錄檔之磁碟的 NTFS 區塊大小應該是 64 KB。 不需要將 D:\ 磁碟機格式化。 此磁碟機已預先格式化。
 
-若要確定還原或建立資料庫不會藉由清空檔案的內容來初始化資料檔，您應該確定 SQL Server 服務執行所在的使用者內容具有特定的權限。 通常，Windows 系統管理員群組中的使用者會擁有這些權限。 如果 SQL Server 服務是在非 Windows 系統管理員使用者的使用者內容中執行，您必須為該使用者指派使用者權限來**執行磁片區維護**工作。  詳細資料請參閱這篇 Microsoft 知識庫文章︰<https://support.microsoft.com/kb/2574695>
+若要確定還原或建立資料庫不會藉由清空檔案的內容來初始化資料檔，您應該確定 SQL Server 服務執行所在的使用者內容具有特定的權限。 通常，Windows 系統管理員群組中的使用者會擁有這些權限。 在非 Windows 系統管理員使用者的使用者內容中執行 SQL Server 服務時，您需要為該使用者指派**執行磁碟區維護工作**的使用者權限。  詳細資料請參閱這篇 Microsoft 知識庫文章︰<https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>資料庫壓縮的影響
 在 I/O 頻寬可能變成限制因素的組態中，減少 IOPS 的每個量值可能都有助於延展您可以在類似 Azure 的 IaaS 案例中執行的工作負載。 因此，如果尚未這麼做，SAP 和 Microsoft 建議您套用 SQL Server 頁面壓縮，然後再將現有的 SAP 資料庫上傳至 Azure。
@@ -391,7 +391,7 @@ SQL Server 2014 及更新版本可以直接在 Azure Blob Store上儲存資料�
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 緩衝集區延伸
-SQL Server 2014 引進了一項新功能，稱為[緩衝集區延伸](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017)模組。 此功能會擴充 SQL Server 的緩衝集區，使用第二層快取將其保留於記憶體中，此快取是透過伺服器或 VM 的本機 SSD 來支援。 緩衝集區擴充模組可以將較大的資料工作集放入「記憶體內」。 相較於存取 Azure 標準儲存體，基於許多因素，存取儲存於 Azure VM 之本機 SSD 上的緩衝集區延伸的速度更快。 比較「緩衝集區擴充」和「Azure 進階儲存體讀取快取」後，和給出的 SQL Server 資料檔建議一樣，「緩衝集區擴充」沒有顯著的優勢。 原因在於這兩個快取 (SQL Server 緩衝集區延伸和進階儲存體讀取快取) 都是使用 Azure 計算節點的本機磁碟。
+SQL Server 2014 引進的新功能，稱為 [緩衝集區擴充](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017) \(機器翻譯\)。 此功能會擴充 SQL Server 的緩衝集區，使用第二層快取將其保留於記憶體中，此快取是透過伺服器或 VM 的本機 SSD 來支援。 緩衝集區擴充模組可以將較大的資料工作集放入「記憶體內」。 相較於存取 Azure 標準儲存體，基於許多因素，存取儲存於 Azure VM 之本機 SSD 上的緩衝集區延伸的速度更快。 比較「緩衝集區擴充」和「Azure 進階儲存體讀取快取」後，和給出的 SQL Server 資料檔建議一樣，「緩衝集區擴充」沒有顯著的優勢。 原因在於這兩個快取 (SQL Server 緩衝集區延伸和進階儲存體讀取快取) 都是使用 Azure 計算節點的本機磁碟。
 
 SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好有壞，而且仍然無法明確建議是否所有的情況下皆適用。 理想的情況是：SAP 應用程式所需的工作集，剛好能放入主記憶體中。 利用 Azure 再加上提供的 VM 又有高達 4 TB 的記憶體，這樣應該能將工作集放入記憶體中了。 因此緩衝集區擴充只能在某些罕見的情況下使用，而且不是主流案例。  
 
@@ -407,7 +407,7 @@ SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好�
 2.  SQL Server 2012 CU4 和更新版本可以將資料庫備份至 Azure 儲存體 URL。
 3.  Azure Blob 儲存體中資料庫檔案的檔案快照集備份。 只有您的 SQL Server 資料檔和記錄檔都位於 Azure blob 儲存體，這個方法才管用。
 
-第一種方法是已知的，而且在內部部署世界的許多情況下也適用。 不過，您要自己解決長期的備份位置。 因為您希望備份保留在本機外接 Azure 儲存體上的時間不要超過 30 天，因此您必須使用 Azure 備份服務或其他協力廠商備份/復原工具 (能管理備份的存取和保留)。 或者您可以使用 Windows 儲存體空間，在 Azure 中建立一個大型的檔案伺服器。
+第一種方法廣為人知，而且在內部部署環境的很案例中都曾用過。 不過，您要自己解決長期的備份位置。 因為您希望備份保留在本機外接 Azure 儲存體上的時間不要超過 30 天，因此您必須使用 Azure 備份服務或其他協力廠商備份/復原工具 (能管理備份的存取和保留)。 或者您可以使用 Windows 儲存體空間，在 Azure 中建立一個大型的檔案伺服器。
 
 [SQL Server 備份至 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) \(機器翻譯\) 文章會詳細描述第二種方法。 這個功能在不同的 SQL Server 版本中會出現變異。 因此，您應該參閱這個文件，檢查您的 SQL Server 究竟是哪一個版本。 請注意，這篇文章會列出很多限制。 您可能會針對以下各項來執行備份：
 
@@ -420,8 +420,8 @@ SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好�
 
 如需進一步了解這個方法的功能，請參閱下列文章：
 
-- SQL Server 2014：[SQL Server 2014 虛擬機器的自動備份 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup) \(機器翻譯\)
-- SQL Server 2016/2017：[Azure 虛擬機器的自動備份 v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2) \(機器翻譯\)
+- SQL Server 2014：[SQL Server 2014 虛擬機器的自動備份 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2016/2017：[Azure 虛擬機器的自動備份 v2 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 仔細看這份文件，您會發現 SQL Server 最新版本的功能已得到改善。 如需進一步了解 SQL Server 的自動備份功能，請參閱 [SQL Server Managed Backup to Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017) \(機器翻譯\) 這篇文章。 理論上的備份大小限制為 12 TB。  自動備份可以讓大小達到 12 TB，是一種好方法。 由於多個 blob 會以平行方式寫入，因此輸送量每秒會超過 100 MB。 
  
@@ -461,7 +461,7 @@ Microsoft 在 Azure Marketplace 中提供已經包含 SQL Server 版本的 VM。
 
     Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
-如果這不是想要的結果，請停止部署 SAP，並調查為什麼安裝命令並未如預期般運作。 「不」 **** 支援將 SAP NetWeaver 應用程式部署到 SQL Server 字碼頁與上述提及之字碼頁不同的 SQL Server 執行個體。
+如果這不是想要的結果，請停止部署 SAP，並調查為什麼安裝命令並未如預期般運作。 「不」  支援將 SAP NetWeaver 應用程式部署到 SQL Server 字碼頁與上述提及之字碼頁不同的 SQL Server 執行個體。
 
 ## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server 在 Azure 中適用於 SAP 的高可用性
 您在適用於 SAP 的 Azure IaaS 部署中使用 SQL Server 時，是有幾種不同的可能性來部署高可用性的 DBMS 層。 如同[針對 SAP 工作負載而部署 Azure 虛擬機器 DBMS 時的考量](dbms_guide_general.md)所述，Azure 會針對單一 VM 以及 Azure 可用性集中部署的一對 VM，提供不同的運作時間 SLA。 我們假設您傾向為您的生產部署取得運作時間 SLA，以便在 Azure 可用性集中進行部署。 在這種情況下，您需要在這種可用性集中至少部署兩個 VM。 其中一個 VM 會執行運作中的 SQL Server 執行個體。 另一個 VM 會執行被動的執行個體
@@ -475,8 +475,8 @@ Microsoft 在 Azure Marketplace 中提供已經包含 SQL Server 版本的 VM。
 SQL Server 記錄傳送功能根本很難用於 Azure 中來實現單一 Azure 區域中的高可用性。 不過在下列情況中，SAP 客戶已成功將記錄傳送與 Azure 搭配使用：
 
 - 從一個 Azure 區域到另一個 Azure 區域的嚴重損壞修復案例
-- 從內部部署到 Azure 區域的嚴重損壞修復設定
-- 從內部部署到 Azure 的剪下案例。 在這些情況下，會使用記錄傳送來同步處理 Azure 中的新 DBMS 部署與進行中的生產系統內部部署。 在切換時，會停止產生記錄並確定最後而且是最新的交易記錄備份已傳輸至 Azure DBMS 部署。 然後 Azure DBMS 部署會開啟來進行產生記錄。  
+- 從內部部署到 Azure 區域的災害復原設定
+- 從內部部署至 Azure 的切換案例。 在這些情況下，記錄傳送是用來與進行中的生產系統內部部署，同步處理 Azure 中的新 DBMS 部署。 在切換時，會停止產生記錄並確定最後而且是最新的交易記錄備份已傳輸至 Azure DBMS 部署。 然後 Azure DBMS 部署會開啟來進行產生記錄。  
 
 
 
@@ -503,8 +503,8 @@ SAP 支援的「資料庫鏡像」(請參閱 SAP 附註 [965908]) 有賴於在 S
 
 至於如何使用 Azure VM 中的 SQL Server 部署 Always On，請參閱以下文章：
 
-- [介紹 Azure 虛擬機器上的 SQL Server Always On 可用性群組](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。
-- [在不同區域中的 Azure 虛擬機器上設定 Always On 可用性群組](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)。
+- [Azure 虛擬機器上的 SQL Server Always On 可用性群組簡介](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview) \(機器翻譯\)。
+- [在不同區域的 Azure 虛擬機器上設定 Always On 可用性群組](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr) \(機器翻譯\)。
 - [在 Azure 中設定 Always On 可用性群組的負載平衡器](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener) \(機器翻譯\)。
 
 >[!NOTE]
@@ -521,24 +521,24 @@ SQL Server Always On 是 Azure for SAP 工作負載部署中，最常使用的�
 目前有一些客戶在 Azure 中部署 SAP SQL Server 資料庫時，使用 SQL Server [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。 SAP 完全支援 SQL Server TDE 功能 (請參閱 SAP 附註[編號 1380493](https://launchpad.support.sap.com/#/notes/1380493))。 
 
 ### <a name="applying-sql-server-tde"></a>套用 SQL Server TDE
-如果您是從另一個 DBMS 執行內部部署的異類遷移到在 Azure 中執行的 Windows/SQL Server，您應該在 SQL Server 預先建立空的目標資料庫。 下一個步驟中，您可以套用 SQL Server TDE 功能。 當您仍在執行內部部署生產系統時。 您之所以會按照這種順序來執行，原因是空資料庫的加密程序會消耗相當長的時間。 然後在停機階段，SAP 匯入程序會將資料匯入加密的資料庫。 一個是產生額外負荷來匯入至加密的資料庫，另一個是在停機階段的匯出階段之後進行資料庫的加密，前者的影響時間沒有後者來得長。 在嘗試將資料庫上執行的 SAP 工作負載套用至 TDE 時，產生負面的體驗。 因此，建議完成 TDE 的部署時，不需要特殊資料庫上的 SAP 工作負載。
+將另一個在內部部署上執行的 DBMS，往 Azure 中執行的 Windows/SQL Server，進行異質移轉時，您應該事先在 SQL Server 建立空白的目標資料庫。 下一個步驟中，您可以套用 SQL Server TDE 功能。 雖然您仍然是在執行內部部署的生產系統。 您之所以會按照這種順序來執行，原因是空資料庫的加密程序會消耗相當長的時間。 然後在停機階段，SAP 匯入程序會將資料匯入加密的資料庫。 一個是產生額外負荷來匯入至加密的資料庫，另一個是在停機階段的匯出階段之後進行資料庫的加密，前者的影響時間沒有後者來得長。 在嘗試將資料庫上執行的 SAP 工作負載套用至 TDE 時，產生負面的體驗。 因此，建議完成 TDE 的部署時，不需要特殊資料庫上的 SAP 工作負載。
 
-在您將 SAP SQL Server 資料庫從內部部署移至 Azure 的情況下，我們建議您測試可讓加密套用到最快的基礎結構。 請記住以下事實：
+將 SAP SQL Server 資料庫從內部部署移至 Azure 時，我們建議在您可以最快速套用加密的基礎結構進行測試。 請記住以下事實：
 
 - 您無法定義當您將資料加密套用至資料庫時，會用到多少個執行緒。 執行緒數目主要是取決於 SQL Server 資料和記錄檔分佈的磁碟區數目。 也就是說不同的磁碟區越多 (磁碟機代號)，平行介入加密的緒行緒就越多。 這種組態與先前的磁碟組態建議衝突，也就是指為 Azure VM 中的 SQL Server 資料庫檔案，建立一或少數幾個儲存體空間。 具有少量磁碟區的組態，會導致執行加密的執行緒很少。 單一執行緒加密會讀取 64 KB 範圍，在加密之後並在交易記錄檔中寫入一筆記錄，告知已加密的範圍。 如此一來，交易記錄檔上的負載就比較適中。
-- 在舊版的 SQL Server 版本中，當您加密自己的 SQL Server 資料庫時，備份壓縮的效率會變差。 當您的計畫要加密內部部署的 SQL Server 資料庫，然後將備份複製到 Azure 以還原 Azure 中的資料庫時，此行為可能會造成問題。 SQL Server 備份壓縮通常可達到因子 4 的壓縮比。
+- 在舊版的 SQL Server 版本中，當您加密自己的 SQL Server 資料庫時，備份壓縮的效率會變差。 當您的計劃是加密現場部署的 SQL Server 資料庫，然後將備份複製到 Azure，以便在 Azure 中還原資料庫時，這種行為會演變成一種問題。 SQL Server 備份壓縮通常可達到因子 4 的壓縮比。
 - 從 SQL Server 2016 開始，SQL Server 引進了新的功能，可讓您以有效率的方式壓縮加密的資料庫。 如需詳細資訊，請參閱[這篇部落格文章](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) \(英文\)。
  
-將 TDE 加密的應用程式視為不只是 SAP 工作負載，您應該在您的特定設定中進行測試，以瞭解是否要將 TDE 套用至內部部署的 SAP 資料庫，或在 Azure 中執行此動作。 在 Azure 中，套用 TDE 之後，您當然有更多彈性決定是要過度佈建或縮減基礎結構。
+讓 TDE 加密套用無到少量 SAP 工作負載，您應該在自己的具體組態中進行測試，以便判斷最好是將 TDE 套用至您的內部部署 SAP 資料庫，還是在 Azure 中這麼做。 在 Azure 中，套用 TDE 之後，您當然有更多彈性決定是要過度佈建或縮減基礎結構。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 Azure 提供的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服務，可以儲存加密金鑰。 另一方面，SQL Server 提供連接器，可將 Azure Key Vault 當作是 TDE 憑證的存放區。
 
 以下是 SQL Server TDE 詳細的 Azure Key Vault 用途：
 
-- [使用 Azure Key Vault （SQL Server）](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server?view=sql-server-2017)進行可延伸金鑰管理。
+- [使用 Azure Key Vault 進行可延伸金鑰管理 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server?view=sql-server-2017) \(機器翻譯\)。
 - [使用 Azure Key Vault 進行 SQL Server TDE 可延伸金鑰管理 - 設定步驟](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?view=sql-server-2017) \(機器翻譯\)。
-- [SQL Server 連接器維護 & 疑難排解](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?view=sql-server-2017)。
+- [SQL Server 連接器維護和疑難排解](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?view=sql-server-2017) \(機器翻譯\)。
 - [更多關於 SQL Server 透明資料加密的問題 – TDE + Azure Key Vault](https://blogs.msdn.microsoft.com/saponsqlserver/2017/04/04/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault/) \(英文\)。
 
 
@@ -546,7 +546,7 @@ Azure 提供的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服
 >使用 SQL Server TDE 時，尤其是 Azure 密鑰保管庫，建議使用 SQL Server 2014、SQL Server 2016 和 SQL Server 2017 的最新修補程序。 原因是根據客戶意見反應，會將程式碼最佳化並修正其中的錯誤。 相關範例，請參閱 [KBA 編號 4058175](https://support.microsoft.com/help/4058175/tde-enabled-backup-and-restore-slow-if-encryption-key-is-stored-in-ekm)。
 >  
 
-## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure 上的 SAP 摘要的一般 SQL Server
+## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>適用於 Azure 上 SAP 的一般 SQL Server 摘要
 本指南中提供許多建議，而我們建議您在規劃 Azure 部署之前，多次閱讀本指南。 但是，一般而言，請務必遵循 Azure 具體建議前幾個一般 DBMS︰
 
 1. 使用最新的 DBMS 版本 (例如 SQL Server 2017) ，其在 Azure 中最具優勢。 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中建立和使用 Linux Vm 的 SSH 金鑰組
+title: 在 Azure 中建立和使用 Linux VM 的 SSH 金鑰組
 description: 如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組，以改善驗證程序的安全性。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969048"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141733"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步驟：在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組
 
@@ -21,7 +21,7 @@ ms.locfileid: "78969048"
 > [!NOTE]
 > 使用 SSH 金鑰建立的 VM 預設會設定為停用密碼，這會大幅增加暴力密碼破解猜測嘗試的困難度。 
 
-如需更多背景和範例，請參閱[建立 SSH 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
+如需詳細的背景和範例，請參閱[建立 SSH 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
 
 如需在 Windows 電腦上產生及使用 SSH 金鑰的其他方式，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
 
@@ -29,9 +29,9 @@ ms.locfileid: "78969048"
 
 ## <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
 
-使用 `ssh-keygen` 命令來產生 SSH 公開和私密金鑰檔案。 根據預設，這些檔案會建立在 ~/.ssh 目錄中。 您可以指定不同位置和選擇性密碼 (「複雜密碼」**) 來存取私密金鑰檔案。 如果指定位置中存在相同名稱的 SSH 金鑰組，則系統會覆寫那些檔案。
+使用 `ssh-keygen` 命令來產生 SSH 公開和私密金鑰檔案。 根據預設，這些檔案會建立在 ~/.ssh 目錄中。 您可以指定不同位置和選擇性密碼 (「複雜密碼」) 來存取私密金鑰檔案。 如果指定位置中存在相同名稱的 SSH 金鑰組，則系統會覆寫那些檔案。
 
-下列命令會使用 RSA 加密建立 SSH 金鑰組，而位長度為4096：
+下列命令會使用 RSA 加密建立 SSH 金鑰組，位元長度為 4096：
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
@@ -63,15 +63,21 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-如果您在 Azure 入口網站或 Resource Manager 範本中複製和貼上要使用之公開金鑰檔案的內容，請確定您並未複製任何結尾空白字元。 若要複製 macOS 中的公開金鑰，您可以使用管線將公用金鑰檔案`pbcopy`傳送到。 同樣地，在 Linux 中，您可以透過管道將公用金鑰檔案`xclip`傳送至之類的程式。
+如果您在 Azure 入口網站或 Resource Manager 範本中複製和貼上要使用之公開金鑰檔案的內容，請確定您並未複製任何結尾空白字元。 若要在 macOS 中複製公開金鑰，您可以透過管道將公開金鑰檔案傳送至 `pbcopy`。 同樣地，在 Linux 中，您可以將公開金鑰檔案透過管道傳送至 `xclip` 等程式。
 
-您放置在 Azure 中 Linux VM 上的公開金鑰預設會儲存在 ~/.ssh/id_rsa.pub 中，除非您在建立金鑰組時指定不同的位置。 若要使用 [Azure CLI 2.0](/cli/azure) 搭配現有公開金鑰來建立 VM，可以使用 [az vm create](/cli/azure/vm#az-vm-create) 命令加上 `--ssh-key-values` 選項，來指定這個公開金鑰的值並選擇性地指定位置。 在下列命令中，將 *VMname*、*RGname* 和 *keyFile* 取代為您自己的值：
+您放置在 Azure 中 Linux VM 上的公開金鑰預設會儲存在 ~/.ssh/id_rsa.pub 中，除非您在建立金鑰組時指定不同的位置。 若要使用 [Azure CLI 2.0](/cli/azure) 搭配現有公開金鑰來建立 VM，可以使用 [az vm create](/cli/azure/vm#az-vm-create) 命令加上 `--ssh-key-values` 選項，來指定這個公開金鑰的值並選擇性地指定位置。 在下列命令中，以您自己的值取代 *myVM*、*myResourceGroup*、*UbuntuLTS*、*azureuser* 和 *mysshkey.pub*：
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
-如果您想要搭配 VM 使用多個 SSH 金鑰，您可以在以空格分隔的清單中輸入它們，如下`--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`所示。
+如果您想要搭配 VM 使用多個 SSH 金鑰，則可以在空格分隔清單中輸入這些金鑰，如 `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`。
 
 
 ## <a name="ssh-into-your-vm"></a>透過 SSH 連線到您的 VM

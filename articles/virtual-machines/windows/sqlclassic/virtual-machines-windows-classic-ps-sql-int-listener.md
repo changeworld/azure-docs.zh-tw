@@ -1,6 +1,6 @@
 ---
-title: 設定可用性群組的 ILB 接聽程式（傳統）
-description: 本教學課程使用以傳統部署模型建立的資源，而且它會在 Azure 中使用內部負載平衡器的 SQL Server VM 建立 Always On 可用性群組接聽程式。
+title: 設定可用性群組 (傳統版) 的 ILB 接聽程式
+description: 本教學課程使用以傳統部署模型建立的資源，並在 Azure 中為 SQL Server VM 建立使用內部負載平衡器的 Always On 可用性群組接聽程式。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978159"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014805"
 ---
-# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>針對 Azure SQL Server Vm 上的可用性群組設定 ILB 接聽程式
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>設定 Azure SQL Server VM 中可用性群組的 ILB 接聽程式
 > [!div class="op_single_selector"]
 > * [內部接聽程式](../classic/ps-sql-int-listener.md)
 > * [外部接聽程式](../classic/ps-sql-ext-listener.md)
@@ -32,9 +32,9 @@ ms.locfileid: "75978159"
 ## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
-> Azure 有兩種不同的部署模型可用於建立及使用資源： [Azure Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋傳統部署模型的使用。 我們建議讓大部分的新部署使用 Resource Manager 模型。
+> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Azure Resource Manager 和傳統模型](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋傳統部署模型的使用。 我們建議讓大部分的新部署使用 Resource Manager 模型。
 
-若要在 Resource Manager 模型中設定 Always On 可用性群組的接聽程式，請參閱[在 Azure 中設定 Always On 可用性群組的負載平衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
+若要在 Resource Manager 模型中設定 Always On 可用性群組的接聽程式，請參閱[在 Azure 中設定 Always On 可用性群組的負載平衡器](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md)。
 
 您的可用性群組可包含的複本為僅限內部部署或僅限 Azure，或同時跨內部部署和 Azure 的混合式組態。 Azure 複本可位於相同區域內，或跨越使用多個虛擬網路的多個區域。 本文中的程序假設您已經[設定可用性群組](../classic/portal-sql-alwayson-availability-groups.md)，但尚未設定接聽程式。
 
@@ -56,9 +56,9 @@ ms.locfileid: "75978159"
 
 1. 在 Azure 入口網站中，移至每部主控複本的 VM 以檢視詳細資料。
 
-2. 按一下每部 VM 的 [端點]**** 索引標籤。
+2. 按一下每部 VM 的 [端點] 索引標籤。
 
-3. 對於您想要使用的接聽程式端點，確認其 [名稱]**** 和 [公用連接埠]**** 並未使用中。 在本節的範例中，名稱是 MyEndpoint**，而通訊埠為 1433**。
+3. 對於您想要使用的接聽程式端點，確認其 [名稱] 和 [公用連接埠] 並未使用中。 在本節的範例中，名稱是 MyEndpoint，而通訊埠為 1433。
 
 4. 在您的本機用戶端上，下載並安裝最新的 [PowerShell 模組](https://azure.microsoft.com/downloads/)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "75978159"
         (Get-AzureVNetConfig).XMLConfiguration
 9. 請記下子網路 (其中包含主控複本的 VM) 的 *Subnet* 名稱。 此名稱使用於指令碼中的 $SubnetName 參數。
 
-10. 記下子網路 (其中包含主控複本的 VM) 的 VirtualNetworkSite** 名稱和起始的 AddressPrefix**。 將這兩個值傳遞至 `Test-AzureStaticVNetIP` 命令並檢查 AvailableAddresses** 以尋找可用的 IP 位址。 例如，如果虛擬網路被命名為 MyVNet** 且具有以 172.16.0.128** 開始的子網路位址範圍，下列命令便會列出可用的位址：
+10. 記下子網路 (其中包含主控複本的 VM) 的 VirtualNetworkSite 名稱和起始的 AddressPrefix。 將這兩個值傳遞至 `Test-AzureStaticVNetIP` 命令並檢查 AvailableAddresses 以尋找可用的 IP 位址。 例如，如果虛擬網路被命名為 MyVNet 且具有以 172.16.0.128 開始的子網路位址範圍，下列命令便會列出可用的位址：
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 選取其中一個可用的位址，並將其用於下一個步驟中指令碼的 $ILBStaticIP 參數。
@@ -105,7 +105,7 @@ ms.locfileid: "75978159"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 設定變數之後，請從文字編輯器將指令碼複製到您的 PowerShell 工作階段來執行它。 如果提示仍然顯示**>>**，請再次按 enter 鍵以確定腳本開始執行。
+13. 設定變數之後，請從文字編輯器將指令碼複製到您的 PowerShell 工作階段來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>必要時，請確認已安裝 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ ms.locfileid: "75978159"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 設定變數之後，開啟提升權限的 Windows PowerShell 視窗，然後將指令碼從文字編輯器貼到您的 PowerShell 工作階段中來執行它。 如果提示仍然顯示**>>**，請再次按 enter 鍵以確定腳本開始執行。
+3. 設定變數之後，開啟提升權限的 Windows PowerShell 視窗，然後將指令碼從文字編輯器貼到您的 PowerShell 工作階段中來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
 
 4. 對每部 VM 重複上述步驟。  
     此指令碼會使用雲端服務的 IP 位址來設定 IP 位址資源，並設定其他參數 (例如探查連接埠)。 當 IP 位址資源處於線上時，它會從您稍早所建立的負載平衡端點，回應探查連接埠上的輪詢。

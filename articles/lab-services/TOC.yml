@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: 案例
       items:
-        - name: 使用實驗室教授課程
+        - name: 使用實驗室服務進行教授課程
           href: classroom-labs-scenarios.md
+        - name: 使用實驗室服務進行 Hackathon
+          href: hackathon-labs.md
         - name: 教室實驗室 - 類別類型
           items:
             - name: 課程類型概觀

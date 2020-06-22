@@ -860,14 +860,14 @@
             - name: 模型推斷範例
               href: /azure/databricks/applications/deep-learning/inference/model-inference-examples
               maintainContext: true
-            - name: 使用 Keras 的模型推斷
+            - name: 使用 TensorFlow Keras 的模型推斷
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-keras
               maintainContext: true
             - name: 使用 PyTorch 的模型推斷
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-pytorch
               maintainContext: true
-            - name: 使用 TensorFlow 的模型推斷
-              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
+            - name: 使用 TensorFlow 和 TensorRT 的模型推斷
+              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorrt
               maintainContext: true
             - name: 模型推斷的效能微調
               href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
@@ -1072,14 +1072,22 @@
               maintainContext: true
         - name: GDPR 最佳做法
           href: /azure/databricks/security/privacy/gdpr-delta
+          maintainContext: true
+        - name: 資料治理最佳做法
+          href: /azure/databricks/security/data-governance
+          maintainContext: true
         - name: IP 存取清單
           href: /azure/databricks/security/network/ip-access-list
+          maintainContext: true
         - name: 加密叢集背景工作節點之間的流量
           href: /azure/databricks/security/encryption/encrypt-otw
+          maintainContext: true
         - name: 為 Notebooks 啟用客戶管理的金鑰
           href: /azure/databricks/security/keys/customer-managed-key-notebook
+          maintainContext: true
         - name: 為 DBFS 啟用客戶管理的金鑰
           href: /azure/databricks/security/keys/customer-managed-keys-dbfs
+          maintainContext: true
     - name: 系統管理
       items:
         - name: 系統管理概觀
@@ -1196,6 +1204,8 @@
             - name: 使用者定義路由的設定
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP 位址
+              href: mysql-ip-address.md
     - name: 疑難排解
       items:
         - name: 常見問題
@@ -1886,13 +1896,13 @@
                 - name: 執行階段版本
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
-                - name: Databricks Runtime 7.0 (Beta)
+                - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
                 - name: Databricks Runtime 7.0 ML (Beta)
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
-                - name: Databricks Runtime 7.0 Genomics (Beta)
+                - name: Databricks Runtime 7.0 Genomics
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.6

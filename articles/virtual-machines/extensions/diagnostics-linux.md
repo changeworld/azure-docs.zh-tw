@@ -1,5 +1,5 @@
 ---
-title: Azure 計算-Linux 診斷擴充功能
+title: Azure 計算 - Linux 診斷擴充功能
 description: 如何設定 Azure Linux 診斷擴充功能 (LAD) 從 Azure 中執行的 Linux VM 中收集計量並記錄事件。
 services: virtual-machines-linux
 author: axayjo
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289170"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118561"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -49,17 +49,32 @@ Linux 診斷擴充功能可協助使用者監視在 Microsoft Azure 上執行的
 
 可下載組態只是範例，可修改以符合您的需求。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="supported-linux-distributions"></a>支援的 Linux 散發套件
+
+Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版本的清單僅適用於 Azure 背書的 Linux 廠商映像。 Linux 診斷擴充功能通常不支援第三方 BYOL 和 BYOS 映像，例如設備。
+
+所有次要版本也都支援只列出主要版本 (例如 Debian 7) 的散發套件。 如果指定了特定次要版本，則只支援該特定版本；如果附加 "+"，則支援等於或大於指定版本的次要版本。
+
+支援的發佈和版本：
+
+- Ubuntu 18.04、16.04、14.04
+- CentOS 7、6.5+
+- Oracle Linux 7、6.4+
+- OpenSUSE 13.1+
+- SUSE Linux Enterprise Server 12
+- Debian 9、8、7
+- RHEL 7、6.7+
+
+### <a name="prerequisites"></a>必要條件
 
 * **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新。
 * **Azure CLI**。 在您的電腦上[設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 環境。
-* Wget 命令，如果您沒有：請執行 `sudo apt-get install wget`。
+* Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
 * 現有的 Azure 訂用帳戶與其中現有的儲存體帳戶以儲存資料。
-* 支援的 Linux 散發套件清單位於 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
 ### <a name="sample-installation"></a>範例安裝
 
-在執行之前，為第一節中的變數填入正確的值：
+在執行之前，請為第一個區段中的變數填入正確的值：
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -89,7 +104,7 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-在這些範例中下載的範例設定會收集一組標準資料，並將它們傳送到資料表儲存體。 範例設定和其內容的 URL 可能會變更。 在大部分情況下，您應該下載一份入口網站設定 JSON 檔案，並依據您的需求進行自訂，然後讓您所建立的任何範本或自動化都使用您自己的設定檔版本，而不是每次下載該 URL。
+在這些範例中下載的範例設定會收集一組標準資料，並將資料傳送到資料表儲存體。 範例組態的 URL 及其內容可能會變更。 在大部分情況下，請下載一份入口網站設定 JSON 檔案，並依據您的需求進行自訂，然後讓您建構的任何範本或自動化使用您自己的設定檔版本，而不是每次都下載該 URL。
 
 #### <a name="powershell-sample"></a>PowerShell 範例
 
@@ -163,7 +178,7 @@ storageAccountSasToken | Blob 與資料表服務 (`ss='bt'`) 的 [帳戶 SAS 權
 mdsdHttpProxy | (選擇性) 啟用擴充功能以連線所指定儲存體帳戶和端點時所需的 HTTP proxy 資訊。
 sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細資料。 以下各節包含擴充功能所支援每個資料接收的特定詳細資料。
 
-若要取得 Resource Manager 範本內的 SAS 權杖，請使用**listAccountSas**函數。 如需範例範本，請參閱[List function 範例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
+若要取得 Resource Manager 範本內的 SAS 權杖，請使用 **listAccountSas** 函式。 如需範例範本，請參閱[列出函式範例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
 
 您可以輕鬆地透過 Azure 入口網站建構所需的 SAS 權杖。
 
@@ -198,7 +213,7 @@ sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細
 NAME | 用來在擴充功能組態中的其他位置參考此接收的字串。
 type | 正在定義的接收類型。 決定此類型執行個體中的其他值 (若有的話)。
 
-3.0 版的 Linux 診斷擴充功能支援兩種接收類型：EventHub 與 JsonBlob。
+3\.0 版的 Linux 診斷擴充功能支援兩種接收類型：EventHub 與 JsonBlob。
 
 #### <a name="the-eventhub-sink"></a>EventHub 接收
 
@@ -225,7 +240,7 @@ type | 正在定義的接收類型。 決定此類型執行個體中的其他值
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-如需有關在事件中樞的 SAS 權杖上產生和取得資訊的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
+如需如何在事件中樞的 SAS 權杖上產生和擷取資訊的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob 接收
 
@@ -339,7 +354,7 @@ scheduledTransferPeriod | 系統會計算彙總計量的頻率並傳輸至 Azure
 ------- | -----
 sinks | (選擇性) 以逗號分隔的接收名稱清單，LAD 會將彙總的計量結果傳送至此清單。 系統會將所有彙總的計量發佈至每個列出的接收。 請參閱 [sinksConfig](#sinksconfig)。 範例： `"EHsink1, myjsonsink"`.
 type | 識別計量的實際提供者。
-Class - 類別 | 與 "counter" 一起使用，可識別提供者命名空間內的特定計量。
+class | 與 "counter" 一起使用，可識別提供者命名空間內的特定計量。
 counter | 與 "class" 一起使用，可識別提供者命名空間內的特定計量。
 counterSpecifier | 可識別 Azure 計量命名空間內的特定計量。
 condition (條件) | (選擇性) 選取會套用計量之物件的特定執行個體，或選取該物件所有執行個體的彙總。 如需詳細資訊，請參閱 `builtin` 計量定義。
@@ -412,7 +427,7 @@ minSeverity | Syslog 嚴重性層級 (例如 "LOG\_ERR" 或 "LOG\_INFO")。 請�
 
 元素 | 值
 ------- | -----
-namespace | (選擇性) 應執行查詢的 OMI 命名空間。 如果未指定，則預設值為 "root/scx"，此值由[系統中心跨平台提供者](https://github.com/Microsoft/SCXcore) (英文) 實作。
+命名空間 | (選擇性) 應執行查詢的 OMI 命名空間。 如果未指定，則預設值為 "root/scx"，此值由[系統中心跨平台提供者](https://github.com/Microsoft/SCXcore) (英文) 實作。
 查詢 | 欲執行的 OMI 查詢。
 資料表 | (選擇性) 所指定儲存體帳戶中的 Azure 儲存體資料表 (請參閱[受保護的設定](#protected-settings))。
 frequency | (選擇性) 執行查詢之間的秒數。 預設值為 300 秒 (5 分鐘)；最小值為 15 秒。
@@ -528,7 +543,7 @@ TransfersPerSecond | 每秒的讀取或寫入作業數
 
 可透過設定 `"condition": "IsAggregate=True"` 取得的所有檔案系統彙總值。 可透過設定 `"condition": 'Name="/mnt"'` 取得的特定已掛接檔案系統 (例如 "/mnt") 的值。 
 
-**注意**：如果使用 Azure 入口網站，而不是 JSON，正確的條件欄位表單就是 Name = '/mnt '
+**注意**：如果使用 Azure 入口網站而非 JSON，則正確的條件欄位形式為 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁碟類別的內建計量
 

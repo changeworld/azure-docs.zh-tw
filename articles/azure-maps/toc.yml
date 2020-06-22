@@ -238,8 +238,10 @@
   items:
     - name: API 和參數擴充功能
       items:
-        - name: 繪製套件需求
+        - name: 繪圖套件需求
           href: drawing-requirements.md
+        - name: 動態對應 StylesObject
+          href: schema-stateset-stylesobject.md
         - name: 車輛耗用模型
           href: consumption-model.md
         - name: 擴充 GeoJSON 格式

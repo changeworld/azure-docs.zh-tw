@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660535"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299837"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概觀
 
@@ -29,7 +29,9 @@ ms.locfileid: "83660535"
 
 * Oracle Database 12.1、12.2 和 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2 和 18.3 Standard Edition 
+* Oracle Database 12.1、12.2 和 18.3 Standard Edition
+
+* Oracle 資料庫 19.3
 
 您也可以選擇在 Azure 提供的非 Oracle Linux 映像上設定 Oracle Database，在 Azure 內從頭建立的自訂映像做為解決方案的基礎，或從您的內部部署環境上傳自訂映像。
 
@@ -45,7 +47,7 @@ ms.locfileid: "83660535"
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (含 Unbreakable Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3、7.4、7.5 及 7.6 版) 
+* Oracle Linux (含 Unbreakable Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3 至 7.7、8.0 及 8.1 版)。 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性和災害復原選項
 
@@ -72,8 +74,7 @@ ms.locfileid: "83660535"
 
 使用 Terraform 範本設定 Azure 基礎結構並安裝 Oracle 應用程式。 
 
-> [!IMPORTANT]
-> 在 2020 年 5 月前使用 Azure/Oracle 雲端互連解決方案，Oracle 即會認證下列應用程式可在 Azure 中執行。
+自 2020 年 5 月起，使用 Azure/Oracle 雲端互連解決方案時，以下 Oracle 應用程式將獲得認證，可在 Azure 中執行：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
