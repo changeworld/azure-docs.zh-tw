@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021291"
 ---
 # <a name="spatial-queries"></a>空間查詢
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 有三種接觸收集模式：
 
-* **最接近：** 在此模式中，只會報告最接近的接觸。
-* **任何：** 當您只想知道光線「是否」會接觸到任何東西時，請偏好使用此模式，但是請不要在意真正的情況。 此查詢的評估成本會大幅降低，但是也只有少數應用程式。
-* **全部：** 在此模式中，會報告光線的所有接觸，並以距離進行排序。 除非您真的需要比第一次接觸更多的資訊，否則請勿使用此模式。 使用 `MaxHits` 選項來限制回報的接觸次數。
+* **`Closest`：** 在此模式中，只會報告最接近的接觸。
+* **`Any`：** 當您只想知道光線「是否」會接觸到任何東西時，請偏好使用此模式，但是請不要在意真正的情況。 此查詢的評估成本會大幅降低，但是也只有少數應用程式。
+* **`All`：** 在此模式中，會報告光線的所有接觸，並以距離進行排序。 除非您真的需要比第一次接觸更多的資訊，否則請勿使用此模式。 使用 `MaxHits` 選項來限制回報的接觸次數。
 
 若要選擇性地排除物件，使其不考慮進行光線轉換，可以使用 [HierarchicalStateOverrideComponent](override-hierarchical-state.md) 元件。
 
@@ -106,11 +106,11 @@ TODO : Add an API to make that possible.
 
 接觸具有下列屬性：
 
-* **HitEntity：** 接觸到哪一個[實體](../../concepts/entities.md)。
-* **SubPartId：** 在 [MeshComponent](../../concepts/meshes.md) 中接觸到哪一個「子網格」。 可以用來為 `MeshComponent.UsedMaterials` 編製索引，並在該時間點查詢[材質](../../concepts/materials.md)。
-* **HitPosition：** 光線與物件有交集的世界空間位置。
-* **HitNormal：** 位於交集位置的網格一般世界空間表面。
-* **DistanceToHit：** 從光線開始位置到接觸位置的距離。
+* **`HitEntity`：** 接觸到哪一個[實體](../../concepts/entities.md)。
+* **`SubPartId`：** 在 [MeshComponent](../../concepts/meshes.md) 中接觸到哪一個「子網格」。 可以用來為 `MeshComponent.UsedMaterials` 編製索引，並在該時間點查詢[材質](../../concepts/materials.md)。
+* **`HitPosition`：** 光線與物件有交集的世界空間位置。
+* **`HitNormal`：** 位於交集位置的網格一般世界空間表面。
+* **`DistanceToHit`：** 從光線開始位置到接觸位置的距離。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870037"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232980"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>在 Azure 中使用 JAVA 建立並管理 Windows VM
 
@@ -33,7 +33,7 @@ ms.locfileid: "81870037"
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
 1. 如果尚未這麼做，請先安裝 [JAVA](https://aka.ms/azure-jdks)。
-2. 安裝[Maven](https://maven.apache.org/download.cgi)。
+2. 安裝 [Maven](https://maven.apache.org/download.cgi)。
 3. 建立新的資料夾和專案：
     
     ```
@@ -127,7 +127,7 @@ ms.locfileid: "81870037"
     graphURL=https://graph.microsoft.com/
     ```
 
-    將** &lt; &gt;訂**用帳戶識別碼取代為您的訂用帳戶識別碼、 ** &lt; &gt; ** ** &lt; &gt; ** ** &lt; &gt; **具有 Active Directory 應用程式識別碼的應用程式 id、具有應用程式金鑰的驗證金鑰，以及具有租使用者識別碼的租使用者 id。
+    以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。
 
 2. 儲存檔案。
 3. 使用驗證檔案的完整路徑，在殼層中設定名稱為 AZURE_AUTH_LOCATION 的環境變數。
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-需要[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
+必須要有[公用 IP 位址](../../virtual-network/public-ip-addresses.md)才能與虛擬機器進行通訊。
 
 若要為虛擬機器建立公用 IP 位址，請將以下程式碼新增到 Main 方法中的 try 區塊：
 
