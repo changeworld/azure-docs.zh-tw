@@ -25,10 +25,6 @@
   items:
     - name: 建置含驗證功能的無伺服器即時應用程式
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: 監視
-      items:
-        - name: 使用診斷記錄來監視 SignalR Service
-          href: signalr-tutorial-diagnostic-logs.md
 - name: 範例
   items:
     - name: 程式碼範例
@@ -91,6 +87,12 @@
           href: signalr-concept-azure-functions.md
         - name: 事件方格整合
           href: signalr-howto-event-grid-integration.md
+    - name: 監視
+      items:
+        - name: 使用診斷記錄來監視 SignalR Service
+          href: signalr-howto-diagnostic-logs.md
+        - name: 使用 Azure 原則來稽核合規性
+          href: signalr-howto-azure-policy.md
 - name: 參考
   items:
     - name: Azure CLI
