@@ -6,18 +6,18 @@ metadata:
   description: Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。
   services: synapse-analytics
   ms.service: synapse-analytics
-  ms.subservice: 
+  ms.subservice: sql-dw
   ms.topic: landing-page
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 04/15/2020
-  ms.openlocfilehash: 23dfa368ae94cada2cd2150fb05a7a294b190860
-  ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+  ms.openlocfilehash: 178ae3234eb5ed41d008aa438e628937c0c53dcb
+  ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/09/2020
-  ms.locfileid: "82996842"
+  ms.lasthandoff: 06/23/2020
+  ms.locfileid: "85209499"
 landingContent:
 - title: 關於 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
   linkLists:

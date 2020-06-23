@@ -193,6 +193,8 @@
           items:
             - name: 設定選項
               href: concepts-hyperscale-configuration-options.md
+            - name: 預付保留容量
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作指南
   items:
     - name: 單一伺服器
