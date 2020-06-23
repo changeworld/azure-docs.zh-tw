@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402187"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130410"
 ---
 # <a name="deploy-a-custom-model"></a>部署自訂模型
 
@@ -39,6 +39,8 @@ ms.locfileid: "81402187"
 ## <a name="view-logging-data"></a>查看記錄資料
 
 您可以在 [**端點 > 詳細**資料] 底下下載記錄資料。
+> [!NOTE]
+>記錄資料可在 Microsoft 擁有的儲存體30天內使用，之後將會移除。 如果客戶擁有的儲存體帳戶已連結到認知服務訂用帳戶，則不會自動刪除記錄資料。
 
 ## <a name="next-steps"></a>後續步驟
 
