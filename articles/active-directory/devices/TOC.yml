@@ -35,6 +35,8 @@
 - name: 操作指南
   expanded: false
   items:
+    - Name: 規劃 Azure AD 裝置部署
+      href: plan-device-deployment.md
     - name: 規劃 Azure AD 聯結實作
       href: azureadjoin-plan.md
     - name: 將本機系統管理員指派給已加入 Azure AD 的裝置
