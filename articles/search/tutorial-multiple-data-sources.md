@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780516"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262203"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教學課程：使用 .NET SDK 從多個資料來源編製索引
 
@@ -21,7 +21,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 此教學課程說明如何為來自 Azure Cosmos DB 資料來源的旅館資料編製索引，並將該資料與從 Azure Blob 儲存體文件繪製的旅館房間詳細資料合併。 結果將會產生一個已合併的旅館搜尋索引，其中包含複雜資料類型。
 
-本教學課程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk)。 在本教學課程中，您將執行下列工作：
+本教學課程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 在本教學課程中，您將執行下列工作：
 
 > [!div class="checklist"]
 > * 上傳範例資料並建立資料來源

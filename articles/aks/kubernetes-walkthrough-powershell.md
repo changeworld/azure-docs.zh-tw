@@ -4,12 +4,12 @@ description: 了解如何使用 PowerShell 快速建立 Kubernetes 叢集、部�
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a89f76344e48d5af8c71c5a674a94767795b41a9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871480"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207136"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入門：使用 PowerShell 部署 Azure Kubernetes Service 叢集
 
@@ -47,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 下列範例輸出顯示已成功建立的資源群組：
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -92,7 +92,7 @@ Import-AzAksCredential -ResourceGroupName myResourceGroup -Name myAKSCluster
 
 下列輸出範例會顯示上一個步驟中建立的單一節點。 請確定節點的狀態為 **Ready**：
 
-```Output
+```plaintext
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ```
@@ -200,7 +200,7 @@ spec:
 
 下列範例輸出會顯示已成功建立的部署和服務：
 
-```Output
+```plaintext
 deployment.apps/azure-vote-back created
 service/azure-vote-back created
 deployment.apps/azure-vote-front created
@@ -220,14 +220,14 @@ service/azure-vote-front created
 
 一開始，**azure-vote-front** 服務的 **EXTERNAL-IP** 會顯示為 **pending**。
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 當 **EXTERNAL-IP** 位址從 **pending** 變成實際的公用 IP 位址時，請使用 `CTRL-C` 停止 `kubectl` 監看式流程。 下列範例輸出會顯示已指派給服務的有效公用 IP 位址：
 
-```Output
+```plaintext
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

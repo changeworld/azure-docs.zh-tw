@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 8fe179cb3bc965112ece9e2be4b98d758c4db28f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d798b3b35bbe051700c44ee362f8f517adb4a7a3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606253"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209125"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取收據資料
 
@@ -38,7 +38,7 @@ ms.locfileid: "84606253"
 
 ## <a name="analyze-a-receipt"></a>分析收據
 
-若要開始分析收據，請使用下列 Python 指令碼呼叫 **[分析收據](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API。 執行指令碼之前，請進行下列變更：
+若要開始分析收據，請使用下列 Python 指令碼呼叫 **[分析收據](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** API。 執行指令碼之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
 1. 將 `<your receipt URL>` 取代為收據影像的 URL 位址。
@@ -54,7 +54,7 @@ ms.locfileid: "84606253"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -89,12 +89,12 @@ ms.locfileid: "84606253"
 您會收到包含 **Operation-Location** 標頭的 `202 (Success)` 回應，而指令碼會將其輸出至主控台。 此標頭包含可用來查詢非同步作業狀態並取得結果的作業識別碼。 在下列範例值中，`operations/` 之後的字串就是作業識別碼。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>取得收據結果
 
-呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -466,4 +466,4 @@ while n_try < n_tries:
 在本快速入門中，您使用表單辨識器 REST API 搭配 Python 來擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)

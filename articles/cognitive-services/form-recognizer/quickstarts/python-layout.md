@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 7600efef943f5e38b8187474e82e36590d576a17
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 8893ebf1288e592131938f39b10e204f98471fa8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610860"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208139"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 與 Python 來擷取文字和版面配置資訊
 
@@ -39,7 +39,7 @@ ms.locfileid: "84610860"
 
 ## <a name="analyze-the-form-layout"></a>分析表單版面配置
 
-若要開始分析版面配置，請使用下列 Python 指令碼呼叫 **[分析版面配置](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API。 執行指令碼之前，請進行下列變更：
+若要開始分析版面配置，請使用下列 Python 指令碼呼叫 **[分析版面配置](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API。 執行指令碼之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
 1. 將 `<path to your form>` 取代為本機表單文件的路徑。
@@ -55,7 +55,7 @@ ms.locfileid: "84610860"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.0/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -85,12 +85,12 @@ ms.locfileid: "84610860"
 您會收到包含 **Operation-Location** 標頭的 `202 (Success)` 回應，而指令碼會將其輸出至主控台。 此標頭包含可用來查詢非同步作業狀態並取得結果的作業識別碼。 在下列範例值中，`operations/` 之後的字串就是作業識別碼。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-layout-results"></a>取得版面配置結果
 
-呼叫**分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 此資料會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫**分析版面配置** API 之後，您可以呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 此資料會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -283,4 +283,4 @@ while n_try < n_tries:
 在本快速入門中，您已搭配使用表單辨識器 REST API 與 Python 來擷取發票上的文字版面配置。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)

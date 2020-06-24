@@ -8,12 +8,12 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 2534b2ef2eec0ca993ee2506dcc285d750ba38ce
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737187"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262326"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用範例用戶端應用程式探索 Azure Digital Twins
 
@@ -81,7 +81,7 @@ ms.locfileid: "84737187"
 > 若您想要嘗試建立自己的模型，您可以將 *Room* 模型的程式碼貼到您在 *AdtSampleApp\SampleClientApp\Models* 資料夾中使用 *.json* 副檔名儲存的新檔案。 然後，試著新增屬性和關聯性，以代表您想要的項目。 您也可以查看此資料夾中的其他範例模型來獲得靈感。
 
 > [!TIP] 
-> 有一種適用各種語言的 [DTDL 驗證程式範例](https://github.com/Azure-Samples/DTDL-Validator)，可讓您用於檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析與驗證模型](how-to-use-parser.md)。
+> 有一種適用各種語言的 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，可讓您用於檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析與驗證模型](how-to-use-parser.md)。
 
 ### <a name="get-started-with-the-command-line-app"></a>開始使用命令列應用程式
 

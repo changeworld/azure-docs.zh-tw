@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: fd240abee3bb19b3c54650756a3329d4d1ef8ae5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ea38b7351d2ba512261de94ac00a06eec9ba9946
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113529"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206240"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入門：搭配使用 REST API 與 cURL 將表單辨識器模型定型並擷取表單資料
 
@@ -39,34 +39,34 @@ ms.locfileid: "84113529"
 > [!NOTE]
 > 您可以使用標記資料功能，事先手動為部分或所有定型資料加上標籤。 這是更複雜的程序，但可產生較佳的定型模型。 若要深入了解此功能，請參閱概觀的[以標籤定型](../overview.md#train-with-labels)一節。
 
-若要使用 Azure Blob 容器中的文件來定型表單辨識器模型，請執行下列 cURL 命令以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API。 執行命令之前，請進行下列變更：
+若要使用 Azure Blob 容器中的文件來定型表單辨識器模型，請執行下列 cURL 命令以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** API。 執行命令之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
 1. 將 `<subscription key>` 取代為您在先前的步驟中複製的訂用帳戶金鑰。
 1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]  。 確定 [讀取]  和 [列出]  權限均已勾選，再按一下 [建立]  。 然後，複製 [URL]  區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
 您會收到含有**位置**標頭的 `201 (Success)` 回應。 此標頭的值是要定型之新模型的識別碼。 
 
 ## <a name="get-training-results"></a>取得定型結果
 
-哀使進行定型作業後，您可以使用新的作業 ( **[取得自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** ) 來檢查定型狀態。 請將模型識別碼傳入此 API 呼叫以檢查定型狀態：
+哀使進行定型作業後，您可以使用新的作業 ( **[取得自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetCustomModel)** ) 來檢查定型狀態。 請將模型識別碼傳入此 API 呼叫以檢查定型狀態：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰
 1. 將 `<model ID>` 取代為您在先前的步驟中取得的模型識別碼
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 您將會收到 `200 (Success)` 回應，內含下列格式的 JSON 本文。 請留意 `"status"` 欄位。 定型完成後，其值將是 `"ready"`。 如果模型未完成定型，您必須重新執行命令，以重新查詢服務。 我們建議您在每個呼叫之前間隔一秒以上的時間。
 
 `"modelId"` 欄位包含您要定型之模型的識別碼。 下一個步驟將需要這項資料。
-
+    
 ```json
 { 
   "modelInfo":{ 
@@ -135,7 +135,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model
 
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析索引鍵/值組和資料表的表單
 
-接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 執行下列 cURL 命令，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API。 執行命令之前，請進行下列變更：
+接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 執行下列 cURL 命令，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)** API。 執行命令之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您從表單辨識器訂用帳戶金鑰中取得的端點。 您可以在表單辨識器的資源 [概觀]  索引標籤上找到此項目。
 1. 將 `<model ID>` 取代為您在上一節中取得的模型識別碼。
@@ -143,7 +143,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
 
 ```bash
-curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
+curl -v "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
 您會收到 `202 (Success)` 回應，其中包含 **Operation-Location** 標頭。 此標頭的值會包含您用來追蹤分析作業結果的結果識別碼。 請儲存此結果識別碼以供下一個步驟使用。
@@ -157,7 +157,7 @@ curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 您將會收到 `200 (Success)` 回應，內含下列格式的 JSON 本文。 為了簡單起見，我們已將輸出內容縮短。 請留意底部附近的 `"status"` 欄位。 當分析作業完成時，其值將是 `"succeeded"`。 如果分析作業未完成，您必須重新執行命令，以重新查詢服務。 我們建議您在每個呼叫之前間隔一秒以上的時間。
@@ -422,4 +422,4 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model
 在本快速入門中，您已搭配使用表單辨識器 REST API 和 cURL 來定型模型，並在範例案例中加以執行。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)
