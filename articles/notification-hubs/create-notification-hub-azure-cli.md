@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485153"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208258"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 通知中樞
 
@@ -79,7 +79,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
    ```output
    {
    "id": "/subscriptions/yourSubscriptionID/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
-   "isAvailiable": true,
+   "isAvailable": true,
    "location": null,
    "name": "spnhubns",
    "properties": false,

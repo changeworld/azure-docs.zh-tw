@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79499638"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130750"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入門：如何註冊及上傳您的第一支影片
 
@@ -25,7 +25,7 @@ ms.locfileid: "79499638"
 
 ## <a name="sign-up-for-video-indexer"></a>註冊 Video Indexer
 
-若要開始使用 Video Indexer 進行開發，請瀏覽至 [Video Indexer](https://www.videoindexer.com) 網站並註冊。
+若要開始使用 Video Indexer 進行開發，請瀏覽至 [Video Indexer](https://www.videoindexer.ai/) 網站並註冊。
 
 > [!NOTE]
 > 一旦您開始使用影片索引子，所有儲存的資料和上傳的內容都會使用 Microsoft 管理的金鑰進行待用加密。
