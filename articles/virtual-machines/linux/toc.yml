@@ -157,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
-    - name: 影像
-      href: shared-image-galleries.md
+    - name: 建立映像
+      items:
+        - name: 概觀
+          href: imaging.md
+        - name: 佈建
+          href: provisioning.md
+        - name: 共用映像資源庫
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 區域
@@ -394,7 +402,7 @@
               displayName: Azure Resource Manager
             - name: 錯誤碼
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
-    - name: 從傳統服務移轉至 Azure Resource Manager
+    - name: 從傳統移轉至 Azure Resource Manager
       items:
         - name: 自 2023 年 3 月 1 日起淘汰
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -415,6 +423,50 @@
     - name: 使用映像
       displayName: 'SIG, AMI, image'
       items:
+        - name: 散發特定需求
+          items:
+            - name: 一般步驟
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: 使用 Cloud-init
+          items:
+            - name: Cloud-Init 概觀
+              href: using-cloud-init.md
+            - name: 深入探討
+              href: cloud-init-deep-dive.md
+            - name: 疑難排解
+              href: cloud-init-troubleshooting.md
+            - name: 設定 VM 主機名稱
+              href: cloudinit-update-vm-hostname.md
+            - name: 在 VM 中更新套件
+              href: cloudinit-update-vm.md
+            - name: 在 VM 中新增使用者
+              href: cloudinit-add-user.md
+            - name: 設定交換檔
+              href: cloudinit-configure-swapfile.md
+            - name: 執行現有的 Bash 指令碼
+              href: cloudinit-bash-script.md
+            - name: 為 Cloud-init 準備現有的 VM
+              href: cloudinit-prepare-custom-image.md
+        - name: 建立映射而不包含
+          href: no-agent.md
+        - name: 停用 Linux 代理程式佈建
+          href: disable-provisioning.md
         - name: 共用映像資源庫
           items:
             - name: CLI
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: 映像產生器 (預覽)
           items:
-            - name: 概觀
-              href: image-builder-overview.md
             - name: 使用 Azure CLI
               href: image-builder.md
             - name: ARM 範本參考
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 尋找及使用映像
           href: cli-ps-findimage.md
-        - name: 建立自訂影像
-          items:
-            - name: 一般步驟
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: 擷取 VM 映像
+        - name: 將 VM 擷取至受控映像
           href: capture-image.md
         - name: 使用 Packer 建置映像
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: 建立完整 VM
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: Cloud-Init 概觀
-              href: using-cloud-init.md
-            - name: 設定 VM 主機名稱
-              href: cloudinit-update-vm-hostname.md
-            - name: 在 VM 中更新套件
-              href: cloudinit-update-vm.md
-            - name: 在 VM 中新增使用者
-              href: cloudinit-add-user.md
-            - name: 設定交換檔
-              href: cloudinit-configure-swapfile.md
-            - name: 執行現有的 Bash 指令碼
-              href: cloudinit-bash-script.md
-            - name: 為 Cloud-init 準備現有的 VM
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

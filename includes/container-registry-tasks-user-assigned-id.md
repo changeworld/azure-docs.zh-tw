@@ -10,14 +10,14 @@ ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 012800806aeff81939baa2cee88e78191e4fb6c5
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82195259"
 ---
 ### <a name="create-a-user-assigned-identity"></a>建立使用者指派的身分識別
 
-使用[az identity create][az-identity-create]命令，在您的訂用帳戶中建立名為*myACRTasksId*的身分識別。 您可以使用先前用來建立容器登錄或不同的資源群組。
+使用 [az identity create][az-identity-create] 命令，在您的訂用帳戶中建立名為 myACRTasksId 的身分識別。 您可以使用先前用來建立容器登錄的相同資源群組，或使用不同的資源群組。
 
 ```azurecli
 az identity create \
@@ -25,7 +25,7 @@ az identity create \
   --name myACRTasksId
 ```
 
-若要在下列步驟中設定使用者指派的身分識別，請使用[az identity show][az-identity-show]命令，將身分識別的資源識別碼、主體識別碼和用戶端識別碼儲存在變數中。
+若要在下列步驟中設定使用者指派的身分識別，請使用 [az identity show][az-identity-show] 命令，以將身分識別的資源識別碼、主體識別碼與用戶端識別碼儲存在變數中。
 
 ```azurecli
 # Get resource ID of the user-assigned identity

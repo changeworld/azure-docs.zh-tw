@@ -10,12 +10,12 @@ ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77112351"
 ---
-在命令輸出中， `identity`區段會顯示在工作中設定`SystemAssigned`類型的身分識別。 `principalId`是工作身分識別的主體識別碼：
+在命令輸出中，`identity` 區段會顯示 `SystemAssigned` 類型的身分識別已在工作中設定。 `principalId` 是工作身分識別的主體識別碼：
 
 ```console
 [...]
@@ -28,7 +28,7 @@ ms.locfileid: "77112351"
   "location": "eastus",
 [...]
 ``` 
-使用[az acr task show][az-acr-task-show]命令將 principalId 儲存在變數中，以便在稍後的命令中使用。 在下列命令中，以您的工作名稱取代您的登錄：
+使用 [az acr task show][az-acr-task-show] 命令將 principalId 儲存在變數中，以便在稍後的命令中使用。 在下列命令中，取代您的工作名稱和登錄：
 
 ```azurecli
 principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)

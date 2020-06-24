@@ -3,12 +3,12 @@ title: 設定 QnA Maker 服務-QnA Maker
 description: 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235526"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214123"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -51,7 +51,7 @@ ms.locfileid: "84235526"
     * 選擇將部署 Application Insights 資源的**App insights 位置**。
     * 如需節省成本的方法，您可以[共用](#configure-qna-maker-to-use-different-cognitive-search-resource)一些 (不是全部) 為 QnA Maker 建立的 Azure 資源。
 
-1. 驗證所有欄位之後，請選取 [**建立**]。 此程式可能需要幾分鐘的時間才能完成。
+1. 驗證所有欄位之後，請選取 [**建立**]。 此程序需要數分鐘的時間完成。
 
 1. 部署完成之後，您將會看到在您的訂用帳戶中建立的下列資源：
 
@@ -60,9 +60,9 @@ ms.locfileid: "84235526"
     具有_認知服務_類型的資源具有您的_訂_用帳戶金鑰。
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>尋找 Azure 入口網站中的訂用帳戶金鑰
+## <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 入口網站中尋找撰寫金鑰
 
-您可以從建立 QnA Maker 資源的 Azure 入口網站中，查看和重設您的訂用帳戶金鑰。
+您可以從建立 QnA Maker 資源的 Azure 入口網站，來查看和重設您的撰寫金鑰。 這些金鑰可能稱為「訂用帳戶金鑰」。 
 
 1. 移至 Azure 入口網站中的 QnA Maker 資源，然後選取具有_認知服務_類型的資源：
 
@@ -72,7 +72,7 @@ ms.locfileid: "84235526"
 
     ![訂用帳戶金鑰](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 入口網站中尋找端點金鑰
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 入口網站中尋找查詢端點金鑰
 
 端點與資源位於相同的區域，因為端點金鑰是用來呼叫知識庫。
 
@@ -118,7 +118,7 @@ ms.locfileid: "84235526"
 
 如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請執行下列步驟：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
@@ -206,8 +206,8 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
     > [!div class="mx-imgBorder"]
     > ![在 [設定] 窗格中，選取 [一般設定]，然後尋找 * * [永遠開啟]，並選取 * * On * * 作為值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
-1. 選取 [儲存]**** 以儲存組態。
-1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]  。
+1. 選取 [**儲存**] 以儲存設定。
+1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]。
 
 深入瞭解如何設定 App Service[一般設定](../../../app-service/configure-common.md#configure-general-settings)。
 ## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>設定 App Service 環境以裝載 Qna Maker App Service

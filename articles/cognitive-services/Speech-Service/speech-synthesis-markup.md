@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 855feaf9b5b47b7b725ee7927418a2b3a9e25393
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8772607c7f43f2a06f5c9f12ee5efd603a1e324f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017761"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212644"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -118,7 +118,7 @@ speechConfig.SetProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="c"></a>[C + +](#tab/cpp)
+# <a name="c"></a>[C++](#tab/cpp)
 
 如需詳細資訊， <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
@@ -266,7 +266,7 @@ speechConfig!.setPropertyTo(
 | 程度                      | 描述 |
 |-------------------------------|-------------|
 | 無; 如果未提供任何值，則為 | 0毫秒        |
-| x-弱式                        | 250毫秒      |
+| x-弱式                        | 250 毫秒      |
 | 不足                          | 500 毫秒      |
 | 中                        | 750 毫秒      |
 | 強式                        | 1000毫秒     |
@@ -378,7 +378,7 @@ speechConfig!.setPropertyTo(
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部另外檔的位址。 | 必要。           |
 
-**使用方式**
+**使用量**
 
 若要定義多個實體的讀取方式，您可以建立自訂的詞典，它會儲存為 .xml 或. 另外檔案。 以下是範例 .xml 檔案。
 
@@ -403,7 +403,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon`元素至少包含一個 `lexeme` 元素。 每個 `lexeme` 元素都包含至少一個專案， `grapheme` 以及一個或多個 `grapheme` 、 `alias` 和 `phoneme` 元素。 `grapheme`元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的文字。 `alias`元素可用來指示縮略字或縮寫詞彙的發音。 `phoneme`元素會提供描述如何發音的文字 `lexeme` 。
 
-請務必注意，您無法使用自訂字典直接設定單字的發音。 如果您需要設定的發音，請先提供 `alias` ，然後將與產生關聯 `phoneme` `alias` 。 例如：
+請務必注意，您無法使用自訂字典直接設定單字的發音。 如果您需要設定縮寫或縮寫詞彙的發音，請先提供 `alias` ，然後將與產生關聯 `phoneme` `alias` 。 例如：
 
 ```xml
   <lexeme>
@@ -594,7 +594,7 @@ speechConfig!.setPropertyTo(
 | `telephone` | | 文字會以電話號碼的形式讀出。 `format`屬性可以包含代表國家/地區代碼的數位。 例如，美國的 "1" 或義大利的 "39"。 語音合成引擎可能會使用這項資訊來引導其電話號碼的發音。 電話號碼也可能包含國家/地區代碼，若是如此，則會優先于中的國家（地區）代碼 `format` 。 語音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As 「我的數位是區功能變數代碼 8 8 8 5 5 5 1 2 1 2」。 |
 | `time` | hms12, hms24 | 文字會以一段時間讀出。 `format`屬性會指定是否使用12小時制（hms12）或24小時制（hms24）來指定時間。 使用冒號來分隔代表小時、分鐘和秒數的數位。 以下是有效的時間範例：12:35、1:14:32、08:15 和02:50:45。 語音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />「訓練離開在四個 M」。 |
 
-**使用方式**
+**使用量**
 
 `say-as`元素只能包含文字。
 

@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
+  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82106197"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85299376"
 landingContent:
 - title: 關於語音助理
   linkLists:
@@ -42,24 +42,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 建立自訂命令應用程式
-      url: quickstart-custom-speech-commands-create-new.md
-    - text: 使用參數建立自訂命令
-      url: quickstart-custom-speech-commands-create-parameters.md
-    - text: 使用自訂命令搭配自訂語音
-      url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: 使用自訂命令搭配語音 SDK
-      url: quickstart-custom-speech-commands-speech-sdk.md
+    - text: 使用自訂命令建立語音助理
+      url: quickstart-custom-commands-application.md
   - linkListType: how-to-guide
     links:
-    - text: 從用戶端執行命令
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: 新增參數驗證
-      url: how-to-custom-speech-commands-validations.md
-    - text: 新增確認
-      url: how-to-custom-speech-commands-confirmations.md
-    - text: 新增單一步驟的更正
-      url: how-to-custom-speech-commands-one-step-correction.md
+    - text: 使用簡單的命令建立應用程式
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: 將參數新增至您的命令
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: 將驗證新增至參數，並提示更正
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: 使用語音 SDK 進行整合
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: 使用 Azure DevOps 設定自訂命令應用程式的持續部署
+      url: how-to-custom-commands-deploy-cicd.md
 - title: 使用 Direct Line Speech 進行開發
   linkLists:
   - linkListType: quickstart

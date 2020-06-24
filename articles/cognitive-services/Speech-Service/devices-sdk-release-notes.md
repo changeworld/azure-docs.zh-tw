@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780907"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212491"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>版本資訊：語音裝置 SDK
 
@@ -39,10 +39,10 @@ ms.locfileid: "82780907"
 
 - 現在支援 Linux ARM。
 - 系統會提供[Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)的初始二進位檔（Linux ARM64）。
-- Windows 使用者可以使用`AudioConfig.fromDefaultMicrophoneInput()`或`AudioConfig.fromMicrophoneInput(deviceName)`來指定要使用的麥克風。
+- Windows 使用者可以使用 `AudioConfig.fromDefaultMicrophoneInput()` 或 `AudioConfig.fromMicrophoneInput(deviceName)` 來指定要使用的麥克風。
 - 程式庫大小已經過優化。
 - 支援使用相同的語音/意圖辨識器物件進行多重回合辨識。
-- 修正停止辨識時偶爾會發生的暫止。
+- 修正在停止辨識時，進程會停止回應的偶爾問題。
 - 範例應用程式現在包含範例參與者. properties 檔案，以示範檔案的格式。
 - 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.7.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
 

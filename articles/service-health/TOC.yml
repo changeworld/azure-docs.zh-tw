@@ -30,7 +30,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 將警示傳送至 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: 設定適用於資源健康狀態事件的警示
+    - name: 使用 Azure 入口網站設定資源健康情況警示
+      href: resource-health-alert-monitor-guide.md
+    - name: 使用 Resource Manager 範本設定資源健康狀態警示
       href: resource-health-alert-arm-template-guide.md
 - name: 參考
   items:
