@@ -59,6 +59,8 @@
           href: automation-config-aws-account.md
         - name: 使用 Azure AD 設定驗證
           href: automation-use-azure-ad.md
+        - name: 管理自動化使用的 DNS 記錄
+          href: how-to/automation-region-dns-records.md
         - name: 管理自動化執行身分帳戶
           href: manage-runas-account.md
         - name: 管理角色權限與安全性
@@ -282,7 +284,7 @@
         - name: 與事件方格和 Microsoft Teams 整合
           href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md
         - name: 自動啟動/停止 Azure-SSIS IR
-          href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
+          href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: 參考
   items:
     - name: Azure PowerShell Az

@@ -12,7 +12,7 @@
     - name: ServiceNow
       href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: Amazon Web Services (AWS) - 角色佈建
-      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+      href: /azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: Workday
       href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: SAP SuccessFactors
@@ -45,6 +45,8 @@
           href: define-conditional-rules-for-provisioning-user-accounts.md
         - name: 跳過且不刪除範圍外使用者
           href: skip-out-of-scope-deletions.md
+    - name: 隨選佈建
+      href: provision-on-demand.md
     - name: 監視和報告佈建
       items:
         - name: 監視佈建狀態和效能
