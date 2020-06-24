@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/23/2020
+ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780754"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261013"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
 設定[索引子](search-indexer-overview.md)，以從 Azure SQL 資料庫中擷取可搜尋的資料，並將其傳送至 Azure 認知搜尋中的搜尋索引。 
 
-本教學課程將使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 執行下列工作：
+本教學課程將使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 執行下列工作：
 
 > [!div class="checklist"]
 > * 建立會連線到 Azure SQL Database 的資料來源
