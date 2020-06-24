@@ -6,24 +6,22 @@ documentationcenter: android
 keywords: 推播通知,推播通知,android 推播通知,fcm,firebase 雲端通訊
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/11/2019
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 244e9d9136705eeef27680d2fa590d283abb6467
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170438"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255461"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教學課程：使用 Firebase SDK 0.6 版將推播通知傳送至 Android 裝置
 
@@ -556,11 +554,13 @@ ms.locfileid: "84170438"
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>在模擬器上執行行動應用程式
+
 在模擬器內測試推播通知之前，請先確定您的模擬器映像支援您為應用程式選擇的 Google API 層級。 如果您的映像不支援原生 Google API，您可能會遇到 **SERVICE\_NOT\_AVAILABLE** 例外狀況。
 
 此外，請確定已將 Google 帳戶新增至執行中模擬器的 [設定] > [帳戶] 下方。 否則，嘗試向 FCM 註冊可能會導致 **AUTHENTICATION\_FAILED** 例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
+
 在本教學課程中，您已使用 Firebase 雲端通訊將通知廣播至所有向服務註冊的 Android 裝置。 若想了解如何將通知推送至特定裝置，請繼續進行下列教學課程：
 
 > [!div class="nextstepaction"]

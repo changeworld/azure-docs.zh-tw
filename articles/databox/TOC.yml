@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: 了解限制
               href: data-box-limits.md
-            - name: 檢閱安全性
-              href: data-box-security.md
+            - name: 安全性
+              items:
+                - name: 安全性基準
+                  href: security-baseline.md
+                - name: 檢閱安全性
+                  href: data-box-security.md
             - name: 常見問題集
               href: data-box-faq.md
         - name: 如何

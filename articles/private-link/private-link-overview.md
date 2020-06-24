@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/02/2020
+ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e46f9dabe2b6f38a08b8e14bae845e0fee22457
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673406"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081019"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -43,6 +43,7 @@ Azure Private Link 提供下列優點：
 |支援的服務  |可用區域 | 狀態  |
 |:-------------------|:-----------------|:--------|
 |標準 Azure Load Balancer 後方的 Private Link 服務 | 所有公用區域  | GA <br/> [深入了解](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure 自動化  | 所有公用區域 | 預覽 | |
 | Azure 儲存體        |  所有公用區域       | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  所有公用區域      | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | 所有公用區域      |   GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
