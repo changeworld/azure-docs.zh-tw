@@ -35,7 +35,7 @@ ms.locfileid: "84974648"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用語音容器之前的必要條件如下：
 
