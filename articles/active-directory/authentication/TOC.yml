@@ -36,6 +36,8 @@
       items:
         - name: MFA 的運作方式
           href: concept-mfa-howitworks.md
+        - name: 提示和工作階段存留期
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: 資料存留處
           href: concept-mfa-data-residency.md
         - name: 授權
