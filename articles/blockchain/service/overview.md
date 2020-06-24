@@ -4,12 +4,12 @@ description: Azure 區塊鏈服務的概觀
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 8a73ed45279ce224441ea9c021b565e63bc4fc63
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432234"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214072"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -59,7 +59,7 @@ Azure 區塊鏈服務是一個受控服務，可確保您的區塊鏈成員節�
 
 ## <a name="develop-using-familiar-development-tools"></a>使用熟悉的開發工具進行開發
 
-根據開放原始碼的 Quorum Ethereum 總帳，您可以使用與現有 Ethereum 應用程式相同的方式，來開發適用於 Azure 區塊鏈服務的應用程式。 透過與領先業界的夥伴合作，Azure 區塊鏈開發套件 Visual Studio Code 擴充功能可讓開發人員運用熟悉的工具 (例如 Truffle Suite) 來建置智慧型合約。 開發人員可以使用 Azure 區塊鏈開發套件擴充功能，來建立或連線到現有的聯盟，讓您可以從一個 IDE 建置和部署智慧型合約。 您可以使用 Azure 區塊鏈 Visual Studio Code 擴充功能，來建立或連線到現有的聯盟，讓您可以從一個 IDE 建置和部署智慧型合約。 如需詳細資訊，請參閱 [VS Code Marketplace 中的 Azure 區塊鏈開發套件](https://aka.ms/vscodebcextension) \(英文\) 和 [Azure 區塊鏈開發套件使用者指南](https://aka.ms/vscodebcextensionwiki) \(英文\)。
+根據開放原始碼的 Quorum Ethereum 總帳，您可以使用與現有 Ethereum 應用程式相同的方式，來開發適用於 Azure 區塊鏈服務的應用程式。 透過與領先業界的夥伴合作，Azure 區塊鏈開發套件 Visual Studio Code 擴充功能可讓開發人員運用熟悉的工具 (例如 Truffle Suite) 來建置智慧型合約。 您可以使用 Azure 區塊鏈 Visual Studio Code 擴充功能，來建立或連線到現有的聯盟，讓您可以從一個 IDE 建置和部署智慧型合約。 如需詳細資訊，請參閱 [VS Code Marketplace 中的 Azure 區塊鏈開發套件](https://aka.ms/vscodebcextension) \(英文\) 和 [Azure 區塊鏈開發套件使用者指南](https://aka.ms/vscodebcextensionwiki) \(英文\)。
 
 ## <a name="publish-blockchain-data"></a>發佈區塊鏈資料
 
