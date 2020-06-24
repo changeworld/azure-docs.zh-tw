@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783090"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210723"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -332,7 +332,6 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 |es-MX  |西班牙文 (墨西哥)   |n/a|   是|    是|
 |ja-JP| 日文    |n/a    |是    |是|
 |pt-BR| 葡萄牙文 (巴西)|    n/a|    是|    是|
-|ko-KR| 韓文  |n/a    |是|   是|
 
 ## <a name="next-steps"></a>後續步驟
 
