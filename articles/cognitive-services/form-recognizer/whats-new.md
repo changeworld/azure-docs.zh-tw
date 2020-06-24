@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7898fcf9b149f50f8478576d18cd3c3b984eb937
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099324"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209091"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -38,16 +38,16 @@ ms.locfileid: "85099324"
 
 ### <a name="new-features"></a>新功能
 * **表單辨識器 API V2.0 公開預覽的 SDK 支援**本月份我們已擴充服務支援，以包含適用于表單辨識器 v2.0 （預覽）版本的預覽 SDK。 使用下列連結以開始使用您選擇的語言： 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)
-   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-previewr)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
 
   新的 SDK 支援適用于表單辨識器的 v2.0 REST API 的所有功能。 例如，您可以將具有或不含標籤的模型定型，並從表單中解壓縮文字、索引鍵值組和資料表、使用預先建立的回條服務從回條解壓縮資料，以及使用您的檔中的版面佈建服務來解壓縮文字和資料表。 您可以透過[Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  
 * **複製自訂模型**您現在可以使用新的「複製自訂模型」功能，在區域與訂用帳戶之間複製模型。 叫用複製自訂模型 API 之前，您必須先針對目標資源端點呼叫複製授權作業，以取得要複製到目標資源的授權。
-   * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
-   * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
+   * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/CopyCustomFormModelAuthorization)REST API
+   * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/CopyCustomFormModel)REST API 
 
 ### <a name="security-improvements"></a>安全性改善
 
@@ -137,4 +137,4 @@ ms.locfileid: "85099324"
 
 ## <a name="next-steps"></a>後續步驟
 
-請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。
+請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)。
