@@ -70,8 +70,6 @@
           href: redirect-overview.md
         - name: 重新撰寫 HTTP 標頭
           href: rewrite-http-headers.md
-        - name: 自訂錯誤頁面
-          href: custom-error.md
     - name: SSL
       items:
         - name: SSL 終止和端對端 SSL
@@ -240,6 +238,8 @@
           href: log-analytics.md
         - name: 後端健康情況問題
           href: application-gateway-backend-health-troubleshooting.md
+    - name: 自訂錯誤頁面
+      href: custom-error.md
     - name: 從 v1 遷移至 v2
       href: migrate-v1-v2.md
 - name: 參考

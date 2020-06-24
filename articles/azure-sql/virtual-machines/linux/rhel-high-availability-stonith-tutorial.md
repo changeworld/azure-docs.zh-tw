@@ -7,20 +7,18 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343767"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079381"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 本教學課程將以**公開預覽**講解。 
->
 > 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
 
 在本教學課程中，您會了解如何：

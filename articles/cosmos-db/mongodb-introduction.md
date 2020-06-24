@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72754985"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113308"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 實作 Cassandra、MongoDB、Gremlin 和 Azure 表格儲存體�
 
 根據預設，如果新帳戶是使用適用於 MongoDB 的 Azure Cosmos DB API 來建立，則可以與 MongoDB 的 Wire Protocol 3.6 版相容。 任何了解此通訊協定版本的 MongoDB 用戶端驅動程式，應該都能原生地連線到 Cosmos DB。
 
-![適用於 MongoDB 的 Azure Cosmos DB API](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="適用於 MongoDB 的 Azure Cosmos DB API" border="false":::
 
 ## <a name="key-benefits"></a>主要權益
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634928"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079396"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>快速入門：在 .NET 中建立搜尋索引
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634928"
 > * [Postman](search-get-started-postman.md)
 >*
 
-在 C# 中建立 .NET Core 主控台應用程式 ，以使用 Visual Studio 和 [Azure 認知搜尋 .NET SDK](https://aka.ms/search-sdk) 來建立、載入和查詢 Azure 認知搜尋索引。 
+在 C# 中建立 .NET Core 主控台應用程式 ，以使用 Visual Studio 和 [Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 來建立、載入和查詢 Azure 認知搜尋索引。 
 
 此文章逐步說明如何建立應用程式。 如果想要跳至程式碼，您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "84634928"
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-[Azure 認知搜尋 .NET SDK](https://aka.ms/search-sdk) 是由一些用戶端程式碼 (以 NuGet 套件方式散發) 所組成的。
+[Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 是由一些用戶端程式碼 (以 NuGet 套件方式散發) 所組成的。
 
 針對此專案，請使用 `Microsoft.Azure.Search` NuGet 套件第 9 版與最新的 `Microsoft.Extensions.Configuration.Json` NuGet 套件。
 

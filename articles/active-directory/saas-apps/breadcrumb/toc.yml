@@ -1,0 +1,15 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Active Directory
+      tocHref: /azure/azure-databricks/
+      topicHref: /azure/active-directory/
+      items:
+        - name: 應用程式管理
+          tocHref: /azure/azure-databricks/administration-guide/
+          topicHref: /azure/active-directory/manage-apps/
+          items:
+            - name: Saas 應用程式教學課程
+              tocHref: /azure/azure-databricks/administration-guide/users-groups/scim/
+              topicHref: /azure/active-directory/saas-apps/tutorial-list/
