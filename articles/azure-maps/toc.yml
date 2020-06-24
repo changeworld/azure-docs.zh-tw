@@ -244,7 +244,7 @@
           href: schema-stateset-stylesobject.md
         - name: 車輛耗用模型
           href: consumption-model.md
-        - name: 擴充 GeoJSON 格式
+        - name: 擴充的 GeoJSON 格式
           href: extend-geojson.md
         - name: 地理柵欄 GEOJSON 格式
           href: geofence-geojson.md

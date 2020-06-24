@@ -69,6 +69,8 @@
         - name: 部署可補救的原則
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel 整合
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: 客戶動作
       items:
         - name: 檢視和管理服務提供者

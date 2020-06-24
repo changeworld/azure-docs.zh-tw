@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117262"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212440"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署範例標籤工具
 
@@ -42,11 +42,11 @@ ms.locfileid: "82117262"
 請遵循下列步驟，使用 Azure 入口網站建立新的資源： 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/signin/index/)。
-2. 選取 [建立資源]  。 
+2. 選取 [建立資源]。 
 3. 接下來，選取 [ **Web 應用程式**]。 
 
    > [!div class="mx-imgBorder"]
-   > ![選取 Web 應用程式](./media/quickstarts/formre-create-web-app.png)
+   > ![選取 web 應用程式](./media/quickstarts/formre-create-web-app.png)
    
 4. 首先，請確定已選取 [**基本**] 索引標籤。 現在，您需要提供一些資訊： 
 
@@ -82,20 +82,20 @@ ms.locfileid: "82117262"
    > [!div class="mx-imgBorder"]
    > ![設定 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 就這麼簡單。 接下來，選取 [**審查 + 建立**]，然後選取 [**建立**] 以部署您的 web 應用程式。 完成時，您可以在資源的**總覽**中提供的 URL 存取您的 web 應用程式。
+7. 這樣就大功告成了！ 接下來，選取 [**審查 + 建立**]，然後選取 [**建立**] 以部署您的 web 應用程式。 完成時，您可以在資源的**總覽**中提供的 URL 存取您的 web 應用程式。
 
 > [!NOTE]
 > 建立 web 應用程式時，您也可以設定授權/驗證。 這不是開始使用的必要條件。 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-除了使用 Azure 入口網站，您也可以使用 Azure CLI 來建立資源。 在繼續之前，您必須安裝[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 如果您已經在使用 Azure CLI，可以略過此步驟。 
+除了使用 Azure 入口網站，您也可以使用 Azure CLI 來建立資源。 在繼續之前，您必須安裝[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果您已經在使用 Azure CLI，可以略過此步驟。 
 
 關於此命令，您需要瞭解幾件事：
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM`產生隨機 DNS 名稱。 
-* 此範例假設您有可用來建立資源的資源群組。 取代`<resource_group_name>`為與您的訂用帳戶相關聯的有效資源群組。 
-* 您必須指定要建立資源的位置。 將`<region name>`取代為您想要的 web 應用程式區域。 
+* 此範例假設您有可用來建立資源的資源群組。 取代為 `<resource_group_name>` 與您的訂用帳戶相關聯的有效資源群組。 
+* 您必須指定要建立資源的位置。 將取代為 `<region name>` 您想要的 web 應用程式區域。 
 * 此命令會自動接受 EULA。
 
 從 Azure CLI 中，執行此命令以建立範例標籤工具的 web 應用程式資源： 
