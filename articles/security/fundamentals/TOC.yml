@@ -58,6 +58,10 @@
       href: network-best-practices.md
     - name: DDoS保護
       href: ddos-best-practices.md
+    - name: 懸空 DNS 和子網域接管
+      href: subdomain-takeover.md
+    - name: DDoS 保護安全性基準
+      href: ddos-protection-security-baseline.md
     - name: 安全混合式網路架構
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS 安全性
@@ -94,6 +98,8 @@
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: 客戶加密箱
       href: customer-lockbox-overview.md
+    - name: 客戶加密箱的安全性基準
+      href: customer-lockbox-security-baseline.md
 - name: Application
   items:
     - name: PaaS
@@ -139,3 +145,5 @@
       href: event-support-ticket.md
     - name: 滲透測試
       href: pen-testing.md
+    - name: Azure 網域
+      href: azure-domains.md

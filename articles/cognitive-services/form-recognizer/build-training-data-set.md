@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873299"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212661"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>建立自訂模型的訓練資料集
 
@@ -26,7 +26,7 @@ ms.locfileid: "83873299"
 
 ## <a name="training-data-tips"></a>定型資料提示
 
-請務必使用已針對定型優化的資料集。 使用下列秘訣，確保您可以從[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)作業取得最佳結果：
+請務必使用已針對定型優化的資料集。 使用下列秘訣，確保您可以從[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)作業取得最佳結果：
 
 * 可能的話，請使用以文字為基礎的 PDF 檔，而不是以影像為基礎的檔。 掃描的 Pdf 會當做影像來處理。
 * 針對填寫的表單，使用已填入其所有欄位的範例。
@@ -44,11 +44,11 @@ ms.locfileid: "83873299"
 
 當您將用於定型的一組表單檔放在一起時，您需要將它上傳至 Azure blob 儲存體容器。 如果您不知道如何建立具有容器的 Azure 儲存體帳戶，請遵循 Azure 入口網站的[Azure 儲存體快速入門](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
 
-如果您想要使用手動加上標籤的資料，您也必須上傳對應至定型檔的 *... json*和 *.* 您可以使用[範例標籤工具](./quickstarts/label-tool.md)（或您自己的 UI）來產生這些檔案。
+如果您想要使用手動加上標籤的資料，您也必須上傳 *.labels.js* ，並在與訓練檔對應的檔案*上.ocr.js* 。 您可以使用[範例標籤工具](./quickstarts/label-tool.md)（或您自己的 UI）來產生這些檔案。
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>在子資料夾中組織資料（選擇性）
 
-根據預設，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)API 只會使用位於儲存體容器根目錄的表單檔。 不過，如果您在 API 呼叫中指定，您可以使用子資料夾中的資料進行定型。 一般來說，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
+根據預設，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)API 只會使用位於儲存體容器根目錄的表單檔。 不過，如果您在 API 呼叫中指定，您可以使用子資料夾中的資料進行定型。 一般來說，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
 
 ```json
 {
