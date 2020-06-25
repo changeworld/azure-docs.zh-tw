@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 581c3a035ab5b9e573f153361b41eedcd759baa1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853080"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TextExpander 整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "83853080"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -43,7 +43,7 @@ ms.locfileid: "83853080"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* TextExpander 支援由 **SP 和 IDP** 起始的 SSO
+* TextExpander 支援由 **IDP** 起始的 SSO
 * TextExpander 支援 **Just In Time** 使用者佈建
 * 設定 TextExpander 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
@@ -88,10 +88,6 @@ ms.locfileid: "83853080"
 
     b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://app.textexpander.com/acs/<ORGID>`
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
-
-    在 [登入 URL] 文字方塊中，輸入 URL：`https://app.textexpander.com/ssoSignin`
-
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [TextExpander 用戶端支援小組](mailto:support@smilesoftware.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
@@ -125,7 +121,7 @@ ms.locfileid: "83853080"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

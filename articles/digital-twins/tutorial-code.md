@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611481"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737133"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure Digital Twins API 撰寫程式碼
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 開發人員使用 Azure Digital Twins 撰寫用戶端應用程式，與其 Azure Digital Twins 服務執行個體互動，是很常見的情況。 這項以開發人員為主的教學課程，會介紹使用[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文) 設計 Azure Digital Twins 服務的程式。 逐步引導您從頭開始撰寫 C# 主控台用戶端應用程式。
 
@@ -99,8 +102,8 @@ using Azure.Identity;
 
 您必須有三段資訊才能驗證︰
 * 訂用帳戶的「目錄 (租用戶) 識別碼」
-* 稍早設定服務執行個體時所建立的「應用程式 (用戶端) 識別碼」
-* 服務執行個體的「主機名稱」
+* 稍早設定 Azure Digital Twins 執行個體時所建立的「應用程式 (用戶端) 識別碼」
+* Azure Digital Twins 執行個體的 *hostName*
 
 >[!TIP]
 > 如果不知道自己的「目錄 (租用戶) 識別碼」，您可以在 [Azure Cloud Shell](https://shell.azure.com) 中執行下列命令以取得：
@@ -174,7 +177,7 @@ Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure D
 > 如果在本教學課程中使用 Visual Studio，建議您選取新建立的 JSON 檔案，並將屬性偵測器的「複製到輸出目錄」屬性設定為「有更新時才複製」或「永遠複製」。 當您在本教學課程的其餘部分，使用 **F5** 執行程式時，這可讓 Visual Studio 找到具有預設路徑的 JSON 檔案。
 
 > [!TIP] 
-> 有一種適用各種語言的 [DTDL 驗證程式範例](https://github.com/Azure-Samples/DTDL-Validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作方式：剖析和驗證模型](how-to-use-parser.md)。
+> 有一種適用各種語言的 [DTDL 驗證程式範例](https://github.com/Azure-Samples/DTDL-Validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析和驗證模型](how-to-use-parser.md)。
 
 接下來，在 *Program.cs* 中新增更多程式碼，以將您剛才建立的模型上傳至您的 Azure Digital Twins 執行個體。
 
@@ -544,12 +547,12 @@ namespace minimal
  
 當您不再需要於本教學課程中建立的資源時，請遵循這些步驟加以刪除。
 
-使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組和 Azure Digital Twins 執行個體。
+使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組及 Azure Digital Twins 執行個體。
 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
-開啟 Azure Cloud Shell 並執行下列命令，以刪除資源群組及其包含的所有內容。
+開啟 Azure Cloud Shell 並執行以下命令，以刪除資源群組及其包含的所有內容。
 
 ```azurecli-interactive
 az group delete --name <your-resource-group>

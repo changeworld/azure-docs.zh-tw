@@ -6,17 +6,17 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837263"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945285"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure 監視器 CLI 範例
 本文說明可協助您存取 Azure 監視器 功能的命令列介面 (CLI) 命令範例。 Azure 監視器可讓您根據設定的遙測資料值、自動調整雲端服務、虛擬機器和 Web Apps，以及傳送警示通知，或呼叫 Web URL。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您尚未安裝 Azure CLI，請遵循[安裝 Azure CLI](/cli/azure/install-azure-cli) 中的指示。 您也可以使用 [Azure Cloud Shell](/azure/cloud-shell) 執行 CLI，作為您瀏覽器中的互動式體驗。 請在 [Azure 監視器 CLI 參考](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) \(英文\) 中查看所有可用命令的完整參考。 
 
@@ -29,51 +29,51 @@ az login
 
 執行此命令之後，您必須透過螢幕上的指示來登入。 所有命令都會在您的預設訂用帳戶內容中運作。
 
-若要列出目前訂用帳戶的詳細資料，使用下列命令。
+列出目前訂用帳戶的詳細資料。
 
 ```azurecli
 az account show
 ```
 
-若要將使用中的內容變更為其他訂用帳戶，請使用下列命令。
+將使用中的內容變更為其他訂用帳戶。
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-若要檢視所有支援的 Azure 監視器命令清單，執行下列命令。
+檢視所有支援的 Azure 監視器命令清單。
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>檢視訂用帳戶的活動記錄檔
+## <a name="view-activity-log"></a>檢視活動記錄
 
-若要檢視活動記錄檔事件的清單，請執行下列命令。
+檢視活動記錄事件的清單。
 
 ```azurecli
 az monitor activity-log list
 ```
 
-嘗試下列命令以檢視所有可用的選項。
+檢視所有可用的選項。
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-以下是依 resourceGroup 列出記錄清單的範例
+依 resourceGroup 列出記錄。
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-依 caller 列出記錄的範例
+依呼叫者列出記錄。
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-依 caller 列出日期範圍內在資源類型上的記錄之範例
+列出呼叫者在某個日期範圍內的資源類型記錄。
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

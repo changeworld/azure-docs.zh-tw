@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例
-description: 協助您建立及管理 Azure SQL Database 和 Azure SQL 受控執行個體資源的 Azure PowerShell 指令碼範例
+description: 使用 Azure PowerShell 指令碼範例協助您建立及管理 Azure SQL Database 和 Azure SQL 受控執行個體資源。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 93fac2e3ae8d83f0fa49f94a3ba7880a2ecc2b4c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193896"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718541"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>用於 Azure SQL Database 和 Azure SQL 受控執行個體的 Azure PowerShell 範例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您使用 Azure PowerSh
 | [將資料庫複製到新伺服器](scripts/copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 指令碼會在新伺服器中建立現有資料庫的複本。 |
 | [從 bacpac 檔案匯入資料庫](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 指令碼會從 bacpac 檔案將資料庫匯入 Azure SQL Database。 |
 | **同步處理資料庫之間的資料**||
-| [同步處理 SQL Database 之間的資料](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會設定「資料同步」在 Azure SQL Database 的多個資料庫之間進行同步處理。 |
-| [在 SQL Database 與 SQL Server 之間同步資料](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會設定「資料同步」在 Azure SQL Database 與 SQL Server 之間進行同步處理。 |
+| [同步處理資料庫之間的資料](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會設定「資料同步」在 Azure SQL Database 的多個資料庫之間進行同步處理。 |
+| [內部部署 SQL Database 與 SQL Server 之間的同步資料](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會設定「資料同步」，以在 Azure SQL 資料庫中的資料庫及 SQL Server 內部部署資料庫之間進行同步。 |
 | [更新 SQL 資料同步的同步結構描述](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 這個 PowerShell 指令碼會從資料同步的同步結構描述新增或移除項目。 |
 |||
 
@@ -67,16 +67,16 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您使用 Azure PowerSh
 | |  |
 |---|---|
 |**建立及設定受控執行個體**||
-| [建立和管理受控執行個體](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 指令碼說明如何使用 Azure PowerShell 建立和管理受控執行個體 |
+| [建立和管理受控執行個體](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 指令碼說明如何使用 Azure PowerShell 建立和管理受控執行個體。 |
 | [使用 Azure Resource Manager 範本建立及管理受控執行個體](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼說明如何使用 Azure PowerShell 和 Azure Resource Manager 範本建立及管理受控執行個體。|
-| [將資料庫還原到另一個地理區域中的受控執行個體](../managed-instance/scripts/restore-geo-backup.md) | 此 PowerShell 指令碼會製作一個資料庫的備份，並將它還原到另一個區域。 這稱為異地還原災害復原案例。 |
-| **設定透明資料加密 (TDE)**||
-| [從 Azure Key Vault 使用自己的金鑰管理受控執行個體中的透明資料加密](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 指令碼會使用來自 Azure Key Vault 的金鑰，在Azure SQL 受控執行個體的「攜帶您自己的金鑰」案例中設定透明資料加密 (TDE)。|
+| [將資料庫還原到另一個地理區域中的受控執行個體](../managed-instance/scripts/restore-geo-backup.md) | 此 PowerShell 指令碼會製作一個資料庫的備份，並將其還原到另一個區域。 這稱為異地還原災害復原案例。 |
+| **設定透明資料加密**||
+| [從 Azure Key Vault 使用自己的金鑰管理受控執行個體中的透明資料加密](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 指令碼會使用來自 Azure Key Vault 的金鑰，在Azure SQL 受控執行個體的「攜帶您自己的金鑰」案例中設定透明資料加密。|
 |**設定容錯移轉群組**||
 | [設定受控執行個體的容錯移轉群組](../managed-instance/scripts/add-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會建立兩個受控執行個體，並將其新增至容錯移轉群組，然後測試是否能從主要受控執行個體容錯移轉到次要受控執行個體。 |
 |||
 
-深入了解[適用於 Azure SQL 受控執行個體的 PowerShell Cmdlet](../managed-instance/api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances)。
+深入了解[適用於 Azure SQL 受控執行個體的 PowerShell Cmdlet](../managed-instance/api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)。
 
 ---
 

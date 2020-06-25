@@ -9,18 +9,18 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 30c024aafc1cf8f479de77107b7f0aaaa262d47c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235085"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887447"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>安裝軟體並設定教學課程的資源
 
 在此教學課程三部曲中，您會建立機器學習模型以預測鐵礦中的雜質含量 (以二氧化硅的百分比表示)，然後在 Azure SQL Edge 中部署模型。 在第一個部分中，您會安裝必要軟體和部署 Azure 資源。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 1. 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. 安裝 [Python 3.6.8](https://www.python.org/downloads/release/python-368/)。
@@ -30,6 +30,7 @@ ms.locfileid: "84235085"
 4. 安裝 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/)
 5. 開啟 Azure Data Studio，並設定適用於 Notebooks 的 Python。 如需詳細資訊，請參閱[設定適用於 Notebooks 的 Python](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks)。此步驟可能需要幾分鐘的時間。
 6. 安裝最新版的 [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)。 下列指令碼需要最新版本的 AZ PowerShell  (3.5.0，2020年 2 月)。
+7. 下載將在本教學課程中使用的 [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) 及 [AMD/ARM Docker 映像檔](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files)。
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>使用 PowerShell 指令碼部署 Azure 資源
 

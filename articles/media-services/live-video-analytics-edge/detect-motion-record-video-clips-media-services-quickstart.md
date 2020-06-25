@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261617"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817308"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -21,9 +21,9 @@ ms.locfileid: "84261617"
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 您電腦上的 [Visual Studio Code](https://code.visualstudio.com/)，搭配 [Azure IoT Tools 延伸模組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * 如果您先前未完成[開始使用快速入門](get-started-detect-motion-emit-events-quickstart.md)，請完成下列步驟：
-    * 完成[設定 Azure 資源](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+    * [設定 Azure 資源](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [部署模組](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [設定 Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [設定 Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>檢閱範例影片
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611789"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737186"
 ---
 ## <a name="configure-the-sample-project"></a>設定範例專案
 
@@ -22,7 +22,7 @@ ms.locfileid: "84611789"
 
 在 Visual Studio 中，使用 [方案總管] 窗格來建立 _SampleClientApp > **serviceConfig.json.TEMPLATE**_ 檔案的複本 (您可以使用滑鼠右鍵選取的功能表來複製和貼上)。 將複本重新命名為 *serviceConfig.json*。 這會作為預先設定的 JSON 檔案，其中具備執行專案所需的設定變數。
 
-選取新的檔案以在編輯視窗中開啟。 將 `tenantId` 變更為您的「目錄識別碼」，將 `clientId` 變更為您的「應用程式識別碼」，並將 `instanceUrl` 變更為您的 Azure Digital Twins 執行個體 *hostName* URL (開頭包含 *https://* ，如下所示)。
+選取 *serviceConfig.json* 檔案，以在編輯視窗中將其開啟。 將 `tenantId` 變更為您的「目錄識別碼」，將 `clientId` 變更為您的「應用程式識別碼」，並將 `instanceUrl` 變更為您的 Azure Digital Twins 執行個體 *hostName* URL (開頭包含 *https://* ，如下所示)。
 
 ```json
 {

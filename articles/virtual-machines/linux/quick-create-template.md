@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 0e9ce74d62bb45c84f8bca2d71579b05c0ba656a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485707"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677945"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 範本建立 Ubuntu Linux 虛擬機器
 
@@ -23,8 +23,13 @@ ms.locfileid: "84485707"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="prerequisites"></a>必要條件
 
-## <a name="review-the-template"></a>檢閱範本
+無。
+
+## <a name="create-an-ubuntu-linux-virtual-machine"></a>建立 Ubuntu Linux 虛擬機器
+
+### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)。
 
@@ -35,19 +40,17 @@ ms.locfileid: "84485707"
 
 - [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets)：建立子網路。
 - [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)：建立儲存體帳戶。
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses)：建立公用 IP 位址。
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces)：建立 NIC。
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups)：建立網路安全性群組。
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks)：建立虛擬網路。
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces)：建立 NIC。
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses)：建立公用 IP 位址。
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines)：建立虛擬機器。
 
-
-
-## <a name="deploy-the-template"></a>部署範本
+### <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立金鑰保存庫和祕密。
 
-    [![部署至 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 1. 選取或輸入下列值。 使用預設值 (如果有的話)。
 

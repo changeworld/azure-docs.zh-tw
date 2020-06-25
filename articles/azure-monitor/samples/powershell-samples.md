@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837241"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945245"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure 監視器 PowerShell 範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>擷取訂用帳戶的活動記錄檔
+## <a name="retrieve-activity-log"></a>取出活動記錄
 使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet。  以下是一些常見的範例。 活動記錄會保存過去 90 天的作業。 若使用此時間之前的日期，將會產生錯誤訊息。  
 
 請查看目前的日期/時間，以確認要在下列命令中使用的時間：
