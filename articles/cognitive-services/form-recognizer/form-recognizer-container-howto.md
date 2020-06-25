@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: fe6e0a0f3ffd3680c75c086222a4a390ce15d4df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213188"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355602"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝和執行表單辨識器容器（預覽）
 
@@ -138,6 +138,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 [Examples](form-recognizer-container-configuration.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ### <a name="form-recognizer"></a>表單辨識器
+
+> [!NOTE]
+> `--mount`在這些範例中使用的目錄是 Windows 目錄路徑。 如果您使用的是 Linux 或 macOS，請變更您環境的參數。 
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -325,7 +328,7 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本文中，您已了解下載、安裝及執行表單辨識器容器的概念和工作流程。 摘要說明：
 
