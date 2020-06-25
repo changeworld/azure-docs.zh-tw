@@ -30,9 +30,9 @@
     - name: 使用服務主體進行自動化
       href: analysis-services-service-principal.md
     - name: 用戶端程式庫
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: 相容性層級
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: 連線至內部部署資料來源
       href: analysis-services-gateway.md
     - name: 連線至伺服器
