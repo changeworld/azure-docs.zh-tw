@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307977"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362137"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
@@ -24,7 +24,7 @@ ms.locfileid: "85307977"
 ## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">建立 Azure 語音資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * 下載範例[智慧室 Lite](https://aka.ms/speech/cc-quickstart) json 檔案。
 > * 下載最新版本的[Windows 語音助理用戶端](https://aka.ms/speech/va-samples-wvac)。
 
@@ -82,7 +82,8 @@ ms.locfileid: "85307977"
     - 開啟電視
     - 將溫度設定為80度
     - 關掉
-    - 設定鬧鐘
+    - 電視
+    - 將鬧鐘設定為下午5點
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>在助理中整合自訂命令應用程式
 您必須先發佈應用程式，才可以從語音 Studio 外部存取此應用程式。 若要發行應用程式，您必須設定預測 LUIS 資源。  
@@ -110,7 +111,7 @@ ms.locfileid: "85307977"
 
 在本文的討論範圍內，我們將使用您在必要條件中下載的 Windows 語音助理用戶端。 將資料夾解壓縮。
 1. 啟動**VoiceAssistantClient.exe**。
-1. 建立新的發行設定檔，並輸入**連接設定檔**的值。 在 [**一般設定**] 區段中，輸入值**訂**用帳戶金鑰、訂用帳戶**金鑰區域**和**自訂命令應用程式識別碼**。
+1. 建立新的發行設定檔，並輸入**連接設定檔**的值。 在 [**一般設定**] 區段中，輸入值訂用帳戶**金鑰**（這與您發佈應用程式時儲存的**語音資源金鑰**值相同）、訂用帳戶**金鑰區域**和**自訂命令應用程式識別碼**。
     > [!div class="mx-imgBorder"]
     > ![WVAC 建立設定檔](media/custom-commands/create-profile.png)
 1. 選取 [**儲存並套用設定檔**]。

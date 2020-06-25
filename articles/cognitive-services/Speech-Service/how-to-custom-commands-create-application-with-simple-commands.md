@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307989"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362402"
 ---
 # <a name="create-application-with-simple-commands"></a>使用簡單的命令建立應用程式
 
@@ -27,6 +27,10 @@ ms.locfileid: "85307989"
 ## <a name="create-empty-application"></a>建立空的應用程式
 建立空白的自訂命令應用程式。 如需詳細資訊，請參閱[快速入門](quickstart-custom-commands-application.md)。 這次，您不需要匯入專案，而是建立空白專案。
 
+1. 在 [**名稱**] 方塊中，輸入 [專案名稱] 做為 `Smart-Room-Lite` （或您選擇的其他內容）。
+1. 在 [**語言**] 清單中，選取 [**英文（美國）**]。
+1. 選取或建立您選擇的 LUIS 資源。
+
    > [!div class="mx-imgBorder"]
    > ![建立專案](media/custom-commands/create-new-project.png)
 
@@ -36,11 +40,11 @@ ms.locfileid: "85307989"
 
 ## <a name="add-turnon-command"></a>新增 Homeautomation.turnon 命令
 
-在**智慧室 lite**的自訂命令應用程式中，新增一個簡單的命令來處理語句、 `turn on the tv` ，並以訊息回應 `Ok, turning the tv on` 。
+在您剛建立的空白「**智慧室 Lite** 」自訂命令應用程式中，新增一個簡單的命令來處理語句、 `turn on the tv` ，並以訊息回應 `Ok, turning the tv on` 。
 
 1. 選取左窗格頂端的 [**新增命令**] 來建立新的命令。 [**新增命令**] 視窗隨即開啟。
 1. 提供 [**名稱**] 欄位的值做為**homeautomation.turnon**。
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 中間窗格會列出命令的不同屬性。 您可以設定命令的下列屬性。 如需命令所有設定屬性的說明，請移至 [[參考](./custom-commands-references.md)]。
 
@@ -74,23 +78,17 @@ ms.locfileid: "85307989"
 
 接下來，命令必須要有完成規則。 此規則會告訴使用者正在採取履行動作。 若要閱讀有關規則和完成規則的詳細資訊，請移至[參考](./custom-commands-references.md)。
 
-1. 選取 [**完成**預設完成規則] 並加以編輯，如下所示： 
+1. 選取 [**完成**預設完成規則] 並加以編輯，如下所示：
 
     
     | 設定    | 建議的值                          | 描述                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **名稱**       | ConfirmationResponse                  | 描述規則用途的名稱          |
-    | **條件** | None                                     | 判斷規則何時可執行檔條件    |
+    | **條件** | 無                                     | 判斷規則何時可執行檔條件    |
     | **動作**    | 傳送語音回應 > 簡單編輯器 > 第一次變化 >`Ok, turning the tv on` | 規則條件為 true 時要採取的動作 |
     
 
-1. 或者，您也可以選取中間窗格頂端的 [**新增**]，來刪除現有的預設完成規則，並建立新的。
-1. 在 [**名稱**] 區段中提供值。
-1. 新增動作。
-   1. 選取 [**動作**] 區段中的 [**新增動作**] 來建立動作。
-   1. 在 [**新增動作**] 視窗的 [**類型**] 清單中，選取 [**傳送語音回應**]。
-   1. 在 [**回應**] 底下，選取 [**簡單編輯器**]。
-   1. 在**第一個 [變化**] 欄位中，提供回應的值為 `Ok, turning the tv on` 。
+
 
    > [!div class="mx-imgBorder"]
    > ![建立語音回應](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ ms.locfileid: "85307989"
 1. 選取 [**儲存**] 以儲存動作。
 1. 回到 [**完成規則**] 區段中，選取 [**儲存**] 以儲存所有變更。 
 
+
+ > [!NOTE]
+    > 不需要使用命令隨附的預設完成規則。 如有需要，您可以刪除現有的預設完成規則，並新增您自己的規則。
 
 ### <a name="try-it-out"></a>試試看
 
@@ -124,8 +125,8 @@ ms.locfileid: "85307989"
 
 | 設定    | 建議的值                          |
 | ---------- | ---------------------------------------- |
-| 名稱  | ConfirmationResponse                  |
-| 條件 | None                                     |
+| Name  | ConfirmationResponse                  |
+| 條件 | 無                                     |
 | 動作    | 傳送語音回應 > 簡單編輯器 > 第一次變化 >`Ok, setting temperature to 40 degrees` |
 
 選取 [**儲存**] 以儲存對命令所做的所有變更。
@@ -136,7 +137,7 @@ ms.locfileid: "85307989"
 | 設定    | 建議的值                          |
 | ---------- | ---------------------------------------- |
 | 規則名稱  | ConfirmationResponse                  |
-| 條件 | None                                     |
+| 條件 | 無                                     |
 | 動作    | 傳送語音回應 > 簡單編輯器 > 第一次變化 >`Ok, setting an alarm for 9 am tomorrow` |
 
 選取 [**儲存**] 以儲存對命令所做的所有變更。

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299104"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362154"
 ---
 # <a name="what-is-custom-commands"></a>什麼是自訂命令？
 
-聲音應用程式（例如[語音助理](voice-assistants.md)）會接聽使用者並採取動作來回應，通常會說回來。 他們使用[語音轉換文字](speech-to-text.md)來轉譯使用者的語音，然後對文字的自然語言理解採取行動。 此動作通常包含以[文字轉換語音](text-to-speech.md)所產生的小幫手的語音輸出。 裝置會使用語音 SDK 的物件連接到助理 `DialogServiceConnector` 。
+[語音助理](voice-assistants.md)之類的應用程式會聆聽使用者，並採取動作來回應，通常會說回來。 他們使用[語音轉換文字](speech-to-text.md)來轉譯使用者的語音，然後對文字的自然語言理解採取行動。 此動作通常包含以[文字轉換語音](text-to-speech.md)所產生的小幫手的語音輸出。 裝置會使用語音 SDK 的物件連接到助理 `DialogServiceConnector` 。
 
 **自訂命令**可讓您輕鬆地建立針對語音優先互動體驗優化的豐富語音命令應用程式。 它提供統一的撰寫體驗、自動裝載模型，以及相對較低的複雜性，協助您專注于為語音命令案例建立最佳解決方案。
 
