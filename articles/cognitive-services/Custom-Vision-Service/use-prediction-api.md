@@ -3,19 +3,19 @@ title: 使用預測端點以程式設計方式利用分類器測試影像 - 自�
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 API，以程式設計方式利用您的自訂視覺服務分類器來測試影像。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129865"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391684"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>搭配預測 API 使用您的模型
 
@@ -109,9 +109,9 @@ ms.locfileid: "82129865"
     ```
 
 1. 變更下列資訊：
-   * 將`namespace`欄位設定為專案的名稱。
-   * 以您稍`<Your prediction key>`早取得的金鑰值取代預留位置。
-   * 將預留位置`<Your prediction URL>`取代為您稍早取得的 URL。
+   * 將 `namespace` 欄位設定為專案的名稱。
+   * `<Your prediction key>`以您稍早取得的金鑰值取代預留位置。
+   * 將預留位置取代為 `<Your prediction URL>` 您稍早取得的 URL。
 
 ## <a name="run-the-application"></a>執行應用程式
 
@@ -130,7 +130,7 @@ ms.locfileid: "82129865"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本指南中，您已瞭解如何使用 c # SDK，以程式設計方式將影像提交至您的自訂影像分類器/偵測器，並接收回應。 接下來，瞭解如何使用 c # 完成端對端案例，或開始使用不同的語言 SDK。
 

@@ -3,19 +3,19 @@ title: 版本資訊 - 自訂視覺服務
 titleSuffix: Azure Cognitive Services
 description: 取得自訂視覺小組新發行的最新資訊。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: anroth
-ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647566"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391701"
 ---
 # <a name="custom-vision-service-release-notes"></a>自訂視覺服務版本資訊
 
@@ -23,7 +23,7 @@ ms.locfileid: "73647566"
 
 - 錯誤修正和後端改良功能
 
-## <a name="may-23-2019"></a>2019 5 月23日
+## <a name="may-23-2019"></a>2019 年 5 月 23 日
 
 - 改善與 Azure 訂用帳戶相關的入口網站 UX 體驗，讓您更輕鬆地選取 Azure 目錄。
 
@@ -62,7 +62,7 @@ ms.locfileid: "73647566"
 - 已修正一些協助工具問題，改善螢幕閱讀程式和鍵盤瀏覽支援。
 - 影像檢視器的 UX 更新，改善物件偵測標記體驗，以便更快速標記。  
 - 更新物件偵測網域的基底模型，以獲得更佳品質的物體偵測。
-- 其他 Bug 修正。
+- 錯誤修正。
 
 ## <a name="november-6-2018"></a>2018 年 11 月 6 日
 

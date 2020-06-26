@@ -3,19 +3,19 @@ title: 將模型匯出至行動裝置 - 自訂視覺服務
 titleSuffix: Azure Cognitive Services
 description: 本文將說明如何匯出您的模型，以用於建立行動應用程式，或在本機執行以進行即時分類。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.author: anroth
-ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718946"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391752"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>匯出您的模型以用於行動裝置
 
@@ -73,7 +73,7 @@ ms.locfileid: "73718946"
 
 1. 選取您想要的匯出格式，然後選取 [__匯出__] 以下載模型。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 藉由流覽下列其中一個文章或範例，將您匯出的模型整合到應用程式：
 
