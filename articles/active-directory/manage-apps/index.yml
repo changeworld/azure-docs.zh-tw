@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: 應用程式管理文件
-summary: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Office 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
+summary: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Microsoft 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
 metadata:
   title: 應用程式管理文件
-  description: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Office 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
+  description: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Microsoft 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063467"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339192"
 landingContent:
 - title: 關於應用程式管理
   linkLists:

@@ -6,17 +6,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 8ee1d9747c048a7a7669cb31a389ed9093af7a6d
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 3729e0e0831319b42615c11db1ea9ba20f0a0e74
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906389"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207255"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Node.js 和 MongoDB 應用程式
 
 > [!NOTE]
-> 本文會將應用程式部署至 Linux 上的 App Service。 若要在 Windows__ 上部署至 App Service，請參閱[在 Azure 中建置 Node.js 和 MongoDB 應用程式](../app-service-web-tutorial-nodejs-mongodb-app.md)。
+> 本文會將應用程式部署至 Linux 上的 App Service。 若要在 Windows 上部署至 App Service，請參閱[在 Azure 中建置 Node.js 和 MongoDB 應用程式](../app-service-web-tutorial-nodejs-mongodb-app.md)。
 >
 
 [Linux 上的 App Service](app-service-linux-intro.md) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本教學課程說明如何建立 Node.js 應用程式，將其連線至本機 MongoDB 資料庫，然後在 Azure Cosmos DB 的 MongoDB 版 API 中將其部署至資料庫。 完成之後，您的 MEAN 應用程式 (MongoDB、Express、AngularJS 及 Node.js) 將會在 Linux 上的 App Service 中執行。 為了簡單起見，範例應用程式會使用 [MEAN.js web 架構](https://meanjs.org/)。
@@ -98,13 +98,13 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-在瀏覽器中，瀏覽至 `http://localhost:3000` 。 按一下上層功能表中的 [註冊]****，然後建立測試使用者。 
+在瀏覽器中，瀏覽至 `http://localhost:3000` 。 按一下上層功能表中的 [註冊]，然後建立測試使用者。 
 
 MEAN.js 範例應用程式會將使用者資料儲存於資料庫中。 如果您成功建立使用者並且登入，則您的應用程式正在將資料寫入本機 MongoDB 資料庫。
 
 ![MEAN.js 成功連線至 MongoDB](./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-選取 [系統管理員] > [管理文章]**** 來新增一些文章。
+選取 [系統管理員] > [管理文章] 來新增一些文章。
 
 如需隨時停止 Node.js，請在終端機上按下 `Ctrl+C`。
 
@@ -128,7 +128,7 @@ MEAN.js 範例應用程式會將使用者資料儲存於資料庫中。 如果�
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
---kind MongoDB** 參數會啟用 MongoDB 用戶端連線。
+--kind MongoDB 參數會啟用 MongoDB 用戶端連線。
 
 建立 Cosmos DB 帳戶之後，Azure CLI 會顯示類似下列範例的資訊：
 
@@ -222,7 +222,7 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-在瀏覽器中，瀏覽至 `http://localhost:8443` 。 按一下上層功能表中的 [註冊]****，然後建立測試使用者。 如果您成功建立使用者並且登入，則您的應用程式正在將資料寫入 Azure 中的 Cosmos DB 資料庫。
+在瀏覽器中，瀏覽至 `http://localhost:8443` 。 按一下上層功能表中的 [註冊]，然後建立測試使用者。 如果您成功建立使用者並且登入，則您的應用程式正在將資料寫入 Azure 中的 Cosmos DB 資料庫。
 
 在終端機中，輸入 `Ctrl+C` 以停止 Node.js。
 
@@ -306,13 +306,13 @@ To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
 http://<app-name>.azurewebsites.net
 ```
 
-按一下上層功能表中的 [註冊]****，然後建立一位虛擬使用者。
+按一下上層功能表中的 [註冊]，然後建立一位虛擬使用者。
 
 如果作業成功，且應用程式自動登入已建立的使用者，則您在 Azure 中的 MEAN.js 應用程式就已連線到 Azure Cosmos DB 的 MongoDB 版 API。
 
 ![在 Azure App Service 中執行的 MEAN.js 應用程式](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-選取 [系統管理員] > [管理文章]**** 來新增一些文章。
+選取 [系統管理員] > [管理文章] 來新增一些文章。
 
 **恭喜！** 您正在 Linux 上的 Azure App Service 中執行資料驅動的 Node.js 應用程式。
 
@@ -367,7 +367,7 @@ exports.update = function (req, res) {
 
 就在結尾 `</section>` 標記的正上方，新增下列程式碼行來顯示 `comment` 以及剩餘的文章資料：
 
-```HTML
+```html
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
@@ -375,7 +375,7 @@ exports.update = function (req, res) {
 
 就在結尾 `</a>` 標記的正上方，新增下列程式碼行來顯示 `comment` 以及剩餘的文章資料：
 
-```HTML
+```html
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
@@ -383,7 +383,7 @@ exports.update = function (req, res) {
 
 在 `<div class="list-group">` 元素內部且就在結尾 `comment` 標記的正上方，新增下列程式碼行來顯示 `</a>` 以及剩餘的文章資料：
 
-```HTML
+```html
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
@@ -391,7 +391,7 @@ exports.update = function (req, res) {
 
 找到包含提交按鈕的 `<div class="form-group">` 元素，如下所示：
 
-```HTML
+```html
 <div class="form-group">
   <button type="submit" class="btn btn-default">{{vm.article._id ? 'Update' : 'Create'}}</button>
 </div>
@@ -399,7 +399,7 @@ exports.update = function (req, res) {
 
 就在此標記的正上方，新增另一個 `<div class="form-group">` 元素，讓使用者能夠編輯 `comment` 欄位。 新的元素應該如下所示：
 
-```HTML
+```html
 <div class="form-group">
   <label class="control-label" for="comment">Comment</label>
   <textarea name="comment" data-ng-model="vm.article.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
@@ -419,7 +419,7 @@ NODE_ENV=production node server.js
 
 在瀏覽器中，瀏覽至 `http://localhost:8443`，並確定您已登入。
 
-選取 [系統管理員] > [管理文章]****，然後選取 [+]**** 按鈕來新增文章。
+選取 [系統管理員] > [管理文章]，然後選取 [+] 按鈕來新增文章。
 
 您現在會看到新的 `Comment` 文字方塊。
 
@@ -450,11 +450,11 @@ git push azure master
 
 移至 [Azure 入口網站](https://portal.azure.com)，以查看您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]****，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
-根據預設，入口網站會顯示應用程式的 [概觀]**** 頁面。 此頁面可讓您檢視應用程式的執行方式。 您也可以在這裡執行基本管理工作，像是瀏覽、停止、啟動、重新啟動及刪除。 分頁左側的索引標籤會顯示您可開啟的各種設定分頁。
+根據預設，入口網站會顯示應用程式的 [概觀] 頁面。 此頁面可讓您檢視應用程式的執行方式。 您也可以在這裡執行基本管理工作，像是瀏覽、停止、啟動、重新啟動及刪除。 分頁左側的索引標籤會顯示您可開啟的各種設定分頁。
 
 ![Azure 入口網站中的 App Service 頁面](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 

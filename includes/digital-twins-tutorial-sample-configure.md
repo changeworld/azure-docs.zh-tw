@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737186"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262328"
 ---
 ## <a name="configure-the-sample-project"></a>設定範例專案
 
-接下來，請設定將和您 Azure Digital Twins 執行個體互動的範例用戶端應用程式。 若您尚未下載範例專案，請立即[將 Azure Digital Twins 範例存放庫下載為 ZIP 檔案](https://github.com/Azure-Samples/digital-twins-samples/archive/master.zip)，來取得該專案。 
+接下來，請設定將和您 Azure Digital Twins 執行個體互動的範例用戶端應用程式。 如果您尚未下載範例專案，請立即從 [Azure Digital Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) 登陸頁面下載該專案，方法是選取標題底下的 [下載 ZIP] 按鈕。
 
 巡覽至下載到您電腦上的檔案並解壓縮。
 
-在解壓縮後的資料夾內，巡覽至 _digital-twins-samples-master/AdtSampleApp/_ 。 在 Visual Studio 2019 中開啟 _**AdtE2ESample.sln**_。 
+在解壓縮後的資料夾內，瀏覽至 _AdtSampleApp/_ 。 在 Visual Studio 2019 中開啟 _**AdtE2ESample.sln**_。 
 
 在 Visual Studio 中，使用 [方案總管] 窗格來建立 _SampleClientApp > **serviceConfig.json.TEMPLATE**_ 檔案的複本 (您可以使用滑鼠右鍵選取的功能表來複製和貼上)。 將複本重新命名為 *serviceConfig.json*。 這會作為預先設定的 JSON 檔案，其中具備執行專案所需的設定變數。
 

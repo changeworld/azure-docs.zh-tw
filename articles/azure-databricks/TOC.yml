@@ -581,6 +581,9 @@
         - name: 筆記本簡介
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: 將資料內嵌到 Data Lake
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: 資料表批次讀取和寫入
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: 資料表公用程式命令
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Delta Lake API 參考
+        - name: API 參考資料
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: 並行控制
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: 最佳化
-          items:
-            - name: 最佳化概觀
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: 透過檔案管理最佳化效能
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: 自動最佳化
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: 透過快取最佳化效能
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: 隔離層級
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: 將 MySQL 資料表複寫至 Delta Lake 資料表
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: 最佳化聯結效能
-              items:
-                - name: 最佳化聯結效能概觀
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: 範圍聯結最佳化
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: 傾斜聯結最佳化
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: 最佳化的資料轉換
-              items:
-                - name: 最佳化的資料轉換概觀
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: 高階函式
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: 轉換複雜的資料類型
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: 最佳作法
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: 資料表版本控制
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: 最佳化範例
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: 最佳作法
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: 常見問題集
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: 其他差異資源 Delta 資源
+        - name: 資源
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Engine
+      items:
+        - name: Delta Engine 概觀
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: 透過檔案管理最佳化效能
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: 自動最佳化
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: 透過快取最佳化效能
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: 隔離層級
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: 最佳化聯結效能
+          items:
+            - name: 最佳化聯結效能概觀
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: 範圍聯結最佳化
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: 傾斜聯結最佳化
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: 最佳化的資料轉換
+          items:
+            - name: 最佳化的資料轉換概觀
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: 高階函式
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: 轉換複雜的資料類型
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: 資料表版本控制
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: 最佳化範例
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: DataFrame 和資料集
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (Beta)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics

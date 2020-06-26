@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備內部部署電腦以進行�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: a5314e3f06c54921b12c242f884e02073edc773b
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769636"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106364"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>準備內部部署電腦以移轉至 Azure
 
@@ -33,7 +33,7 @@ ms.locfileid: "84769636"
 
 **案例** | **專案** | **探索/評估** | **移轉**
 --- | --- | --- | ---
-**VMware VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在 VMware 的單一 [Azure Migrate 設備](common-questions-appliance.md)上，最多可探索 10,000 個 VMware VM。 | **無代理程式移轉**：您可以同時複寫最多 300 個 VM。 為了達到最佳效能，建議您在數量超過 50 個時建立多個批次的 VM。<br/><br/> **以代理程式為基礎的移轉**：您可以[擴增](/agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的 VM。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
+**VMware VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在 VMware 的單一 [Azure Migrate 設備](common-questions-appliance.md)上，最多可探索 10,000 個 VMware VM。 | **無代理程式移轉**：您可以同時複寫最多 300 個 VM。 為了達到最佳效能，建議您在數量超過 50 個時建立多個批次的 VM。<br/><br/> **以代理程式為基礎的移轉**：您可以[擴增](./agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的 VM。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 **Hyper-V VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在單一 Azure Migrate 設備上探索多達 5,000 個 Hyper-V VM | 設備不會用於 Hyper-V 移轉。 Hyper-V 複寫提供者會在每個 Hyper-V 主機上執行。<br/><br/> 複寫容量會受到效能因素的影響，例如 VM 變換量，以及複寫資料的上傳頻寬。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 **實體機器** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個機器。 | 在實體伺服器的單一 Azure Migrate 設備上，探索多達 250 個實體伺服器。 | 您可以[擴增](/agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的伺服器。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 
@@ -100,7 +100,7 @@ ms.locfileid: "84769636"
 
 1. 在內部部署電腦 (而非主機伺服器) 上，開啟提升權限的命令提示字元。
 2. 輸入 **diskpart**。
-3. 輸入 **SAN**。 如果未維持客體作業系統的磁碟機代號，則會傳回 [全部離線]**** 或 [共用離線]****。
+3. 輸入 **SAN**。 如果未維持客體作業系統的磁碟機代號，則會傳回 [全部離線] 或 [共用離線]。
 4. 在 **DISKPART** 提示字元中，輸入 **SAN Policy=OnlineAll**。 此設定可確保磁碟上線，您也可以讀取和寫入這兩個磁碟。
 5. 在測試移轉期間，您可以確認是否保留磁碟機代號。
 

@@ -167,6 +167,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: 將 Apache Pig 最佳化
                   href: ./optimize-pig-ambari.md
+            - name: 重新啟動叢集節點
+              href: ./cluster-reboot-vm.md
             - name: 使用 Apache Ambari REST API
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: 刪除叢集
@@ -410,7 +412,7 @@
               items:
                 - name: 使用 Data Lake Storage
                   href: ./spark/apache-spark-use-with-data-lake-store.md
-                - name: 連線到 Azure SQL 資料庫
+                - name: 連線到 Azure SQL Database
                   href: ./spark/apache-spark-connect-to-sql-database.md
                 - name: 使用 Apache Spark 和 Cosmos DB 實作 Lambda 架構
                   href: ../cosmos-db/lambda-architecture.md

@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: 已停用企業成本檢視
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: 找不到計費帳戶
+      href: troubleshoot-account-not-found.md
     - name: 請連絡支援人員
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: 範例

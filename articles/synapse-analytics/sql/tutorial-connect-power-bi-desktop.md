@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3f32dc14163df6694c69258be365fcbb1390c926
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660226"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213222"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選搭配 Power BI Desktop 並建立報告
 
@@ -109,15 +109,15 @@ FROM
 
 使用下列步驟建立 Power BI Desktop 的報告：
 
-1. 開啟 Power BI Desktop 應用程式，然後選取 [取得資料]****。
+1. 開啟 Power BI Desktop 應用程式，然後選取 [取得資料]。
 
    ![開啟 Power BI Desktop 應用程式並選取 [取得資料]。](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. 選取 [Azure]**** > [Azure SQL Database]****。 
+2. 選取 [Azure] > [Azure SQL Database]。 
 
    ![選取資料來源。](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. 在 [伺服器]**** 欄位中，輸入資料庫所在伺服器的名稱，然後在資料庫名稱中輸入 `Demo`。 選取 [匯入]**** 選項，然後選取 [確定]****。 
+3. 在 [伺服器] 欄位中，輸入資料庫所在伺服器的名稱，然後在資料庫名稱中輸入 `Demo`。 選取 [匯入] 選項，然後選取 [確定]。 
 
    ![選取端點上的資料庫。](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -132,15 +132,15 @@ FROM
         ![使用 SQL 登入。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. 選取 `usPopulationView` 檢視，然後選取 [載入]****。 
+5. 選取 `usPopulationView` 檢視，然後選取 [載入]。 
 
    ![在所選資料庫上選取一個檢視。](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. 等候作業完成，然後會出現快顯視窗指出 `There are pending changes in your queries that haven't been applied`。 選取 [套用變更]****。 
+6. 等候作業完成，然後會出現快顯視窗指出 `There are pending changes in your queries that haven't been applied`。 選取 [套用變更]。 
 
    ![按一下 [套用變更]。](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
-7. 等待 [套用查詢變更]**** 對話方塊消失，這可能需要幾分鐘的時間。 
+7. 等待 [套用查詢變更] 對話方塊消失，這可能需要幾分鐘的時間。 
 
    ![等待查詢完成。](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
 

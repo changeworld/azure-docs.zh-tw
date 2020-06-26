@@ -1,23 +1,25 @@
 ---
 title: CIS Microsoft Azure 基礎基準測試的法規合規性詳細資料
 description: CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料。 每個控制項都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1e3c2baec1186e29da45c6395123e2f5aab9165a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 214d50c790f9976b96bf29906d4db64a111e859f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736827"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299019"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料
 
-下列文章詳細說明 Azure 原則法規合規性內建方案定義如何將**合規性網域**和**控制項**對應至 CIS Microsoft Azure 基礎基準測試。
+下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 對應至 CIS Microsoft Azure 基礎基準測試中的**合規性網域**和**控制項**。
 如需關於此合規性標準的詳細資訊，請參閱 [CIS Microsoft Azure基礎基準測試](https://www.cisecurity.org/benchmark/azure/)。 若要了解_擁有權_，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)和[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
 
 以下是 **CIS Microsoft Azure 基礎基準測試**控制項的對應。 使用右側的導覽區可直接跳到特定的**合規性網域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
 然後，尋找並選取 **CIS Microsoft Azure 基礎基準 1.1.0** 法規合規性內建方案的定義。
+
+此內建方案會部署為 [CIS Microsoft Azure 基礎基準測試藍圖範例](../../blueprints/samples/cis-azure-1-1-0.md)的一部分。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../overview.md)定義相關聯。
@@ -606,7 +608,6 @@ ms.locfileid: "84736827"
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[應選取資訊安全中心標準定價層](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |標準定價層會為網路及虛擬機器啟用威脅偵測，在 Azure 資訊安全中心提供威脅情報、異常偵測及行為分析 |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
 
 ## <a name="storage-accounts"></a>儲存體帳戶
 

@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737133"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298390"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure Digital Twins API 撰寫程式碼
 
@@ -177,7 +177,7 @@ Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure D
 > 如果在本教學課程中使用 Visual Studio，建議您選取新建立的 JSON 檔案，並將屬性偵測器的「複製到輸出目錄」屬性設定為「有更新時才複製」或「永遠複製」。 當您在本教學課程的其餘部分，使用 **F5** 執行程式時，這可讓 Visual Studio 找到具有預設路徑的 JSON 檔案。
 
 > [!TIP] 
-> 有一種適用各種語言的 [DTDL 驗證程式範例](https://github.com/Azure-Samples/DTDL-Validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析和驗證模型](how-to-use-parser.md)。
+> 有一種適用各種語言的 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析和驗證模型](how-to-use-parser.md)。
 
 接下來，在 *Program.cs* 中新增更多程式碼，以將您剛才建立的模型上傳至您的 Azure Digital Twins 執行個體。
 
@@ -219,8 +219,7 @@ await client.CreateModelsAsync(typeList);
 ```cmd/sh
 dotnet run
 ```
-
-您會發現，到目前為止都沒有指出呼叫成功的輸出。 
+「上傳模型」將會列印在輸出中，但還沒有輸出可指出是否已成功上傳模型。
 
 若要新增指出模型是否確實上傳成功的列印陳述式，請在上一段的程式碼後面直接新增下列程式碼：
 
@@ -294,24 +293,19 @@ using System.Text.Json;
 然後，將下列程式碼新增至 `Main` 方法的結尾，根據此模型建立並初始化三個數位分身。
 
 ```csharp
-// Initialize twin metadata
-var meta = new Dictionary<string, object>
-{
-    { "$model", "dtmi:com:contoso:SampleModel;1" },
-};
-// Initialize the twin properties
-var initData = new Dictionary<string, object>
-{
-    { "$metadata", meta },
-    { "data", "Hello World!" }
-};
+// Initialize twin data
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+twinData.CustomProperties.Add("data", $"Hello World!");
+
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+        twinData.Id = $"{prefix}{i}";
+        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin: {rex.Status}:{rex.Message}");  
+        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
     }
 }
 ```
@@ -452,6 +446,7 @@ namespace minimal
             var typeList = new List<string>();
             string dtdl = File.ReadAllText("SampleModel.json");
             typeList.Add(dtdl);
+
             // Upload the model to the service
             try {
                 await client.CreateModelsAsync(typeList);
@@ -465,21 +460,16 @@ namespace minimal
                 Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
             }
 
-            // Initialize twin metadata
-            var meta = new Dictionary<string, object>
-            {
-                { "$model", "dtmi:com:contoso:SampleModel;1" },
-            };
-            // Initialize the twin properties
-            var initData = new Dictionary<string, object>
-            {
-                { "$metadata", meta },
-                { "data", "Hello World!" }
-            };
+            // Initialize twin data
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+            twinData.CustomProperties.Add("data", $"Hello World!");
+    
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  

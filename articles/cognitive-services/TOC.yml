@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: 使用 Azure CLI 建立新的資源
       href: cognitive-services-apis-create-account-cli.md
-    - name: 診斷記錄
-      href: diagnostic-logging.md
-    - name: ARM 範本
+    - name: 使用 ARM 範本建立新的資源
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: 診斷記錄
+      href: diagnostic-logging.md
 - name: 範例
   items:
     - name: Azure 原則內建
