@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556824"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738289"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -124,16 +124,11 @@ Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也�
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>基本版和 Enterprise 版
 
 Azure Machine Learning 提供兩個針對您的機器學習需求量身打造的版本：
-+ 基本 (正式推出)
-+ Enterprise (預覽)
++ **基本**：適用於透過程式碼優先體驗的雲端規模開放原始碼開發。
 
-這些版本會決定開發人員和資料科學家可在其工作區中使用哪些機器學習工具。   
++ **企業**：所有基本功能和 Web 介面 (Studio)，以及安全、完整且適用於所有技能等級的 ML 生命週期管理。
 
-基本工作區可讓您繼續使用 Azure Machine Learning，且只針對機器學習過程中所用的 Azure 資源付費。 當 Enterprise 版處於預覽狀態時，該版工作區只會針對其 Azure 使用量計費。 深入了解 Azure Machine Learning [版本概觀和定價頁面](https://azure.microsoft.com/pricing/details/machine-learning/)中提供的內容。 
-
-您會在建立工作區時指派此版本。 而且，系統已為您將預先存在的工作區轉換為基本版。 基本版包含從 2019 年 10 月起正式推出的所有功能。 在您升級至 Enterprise 版之前，這些工作區中使用 Enterprise 版功能所建立的任何實驗，都將繼續以唯讀方式提供給您。 了解如何[將基本工作區升級為 Enterprise 版](how-to-manage-workspace.md#upgrade)。 
-
-客戶須負責支付計算和其他 Azure 資源在這段期間所產生的成本。
+若要深入了解這些版本及其解除鎖定的功能，請閱讀 [「Azure Machine Learning 版本」一文](concept-editions.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
