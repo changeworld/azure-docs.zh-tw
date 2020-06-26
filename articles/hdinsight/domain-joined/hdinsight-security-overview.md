@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996307"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771116"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
-Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，這些解決方案大多未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能。 並協助您避免支付不想要的功能。 此彈性也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
+Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，這些解決方案大多未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能，並協助您避免對不想要的功能付費。 此彈性也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
 
 本文藉由將安全性解決方案劃分為四個傳統安全性要素，來探討安全性解決方案：周邊安全性、驗證、授權和加密。
 
@@ -53,7 +53,7 @@ Hadoop 系統管理員可以設定角色型存取控制 (RBAC)。 這些設定�
 
 系統管理員可以檢視和報告所有對於 HDInsight 叢集資源和資料的存取。 系統管理員可檢視和報告存取控制原則的變更。
 
-若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，[請啟用 Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)。 並檢視提供稽核記錄的資料表。
+若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，請啟用 [Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)，並檢視提供稽核記錄的資料表。
 
 ### <a name="encryption"></a>加密
 

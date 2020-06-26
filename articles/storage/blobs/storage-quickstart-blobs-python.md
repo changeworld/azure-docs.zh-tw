@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: c5ab718fdccfebe852c1522a0cb07303a541a3dd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c24b934af17dab4f263de504da81d5ccd22d7fb9
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554251"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975307"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入門：使用 Python v12 SDK 來管理 Blob
 
@@ -21,7 +21,7 @@ ms.locfileid: "84554251"
 
 [API 參考文件](/python/api/azure-storage-blob) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [套件 (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
@@ -290,5 +290,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure Blob 儲存體 SDK v12 Python 範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* 若要深入了解，請參閱[適用於 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md) \(英文\)。
+* 若要深入了解，請參閱[適用於 Python 的 Azure 儲存體用戶端程式庫](/azure/developer/python/sdk/storage/overview?view=storage-py-v12)。
 * 如需教學課程、範例、快速入門及其他文件，請瀏覽[適用於 Python 開發人員的 Azure](/azure/python/)。

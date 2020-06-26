@@ -1,14 +1,14 @@
 ---
 title: 教學課程：建立自訂原則定義
 description: 在本教學課程中，針對 Azure 原則製作自訂原則定義，以在您的 Azure 資源上強制執行自訂商務規則。
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683251"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888148"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
@@ -31,7 +31,7 @@ ms.locfileid: "83683251"
 > - 決定要使用的效果
 > - 撰寫原則定義
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "83683251"
 #### <a name="existing-resource-in-the-portal"></a>入口網站中的現有資源
 
 若要尋找屬性，最簡單的方式是查看相同類型的現有資源。 已使用所要強制執行的設定進行設定的資源，也會提供可用來比較的值。
-在 Azure 入口網站中，查看該項資源的 [匯出範本] 頁面 (在 [設定] 下方)。
+在 Azure 入口網站中，查看該項資源的 [匯出範本]**** 頁面 (在 [設定]**** 下方)。
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="現有資源上的 [匯出範本] 頁面" border="false":::
 
@@ -119,13 +119,13 @@ ms.locfileid: "83683251"
 ...
 ```
 
-[屬性] 底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的**類型**是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
+[屬性]**** 底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的**類型**是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在入口網站建立資源
 
-另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階] 索引標籤下有 [需要安全性傳輸] 選項。 此屬性具有 [停用] 和 [啟用] 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
+另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階]**** 索引標籤下有 [需要安全性傳輸]**** 選項。 此屬性具有 [停用]__ 和 [啟用]__ 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
 
-在 [檢閱 + 建立] 索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
+在 [檢閱 + 建立]**** 索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
 
 ```json
 ...
@@ -155,7 +155,7 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 
 另一種瀏覽 Azure 資源的方式是透過 [Azure 資源總管](https://resources.azure.com) (預覽)。 此工具會使用您訂用帳戶的內容，因此您必須使用 Azure 認證向該網站進行驗證。 通過驗證後，即可依提供者、訂用帳戶、資源群組和資源來進行瀏覽。
 
-找出儲存體帳戶資源，並查看其屬性。 我們在這裡也看到 **supportsHttpsTrafficOnly** 屬性。 選取 [文件] 索引標籤，我們會看到屬性描述符合我們稍早在參考文件中找到的資訊。
+找出儲存體帳戶資源，並查看其屬性。 我們在這裡也看到 **supportsHttpsTrafficOnly** 屬性。 選取 [文件]**** 索引標籤，我們會看到屬性描述符合我們稍早在參考文件中找到的資訊。
 
 ## <a name="find-the-property-alias"></a>尋找屬性別名
 
@@ -171,6 +171,9 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 ### <a name="get-aliases-in-vs-code-extension"></a>取得 VS Code 擴充功能中的別名
 
 VS Code 擴充功能的 Azure 原則擴充功能，可讓您輕鬆地瀏覽資源及[探索別名](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)。
+
+> [!NOTE]
+> VS Code 擴充功能只會公開 Resource Manager 模式屬性，而不會顯示任何[資源提供者模式](../concepts/definition-structure.md#mode)屬性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -350,7 +353,7 @@ Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用�
 
 ### <a name="metadata"></a>中繼資料
 
-前三個元件是原則的中繼資料。 由於我們知道為何要建立規則，所以為這些元件提供值並不難。 [模式](../concepts/definition-structure.md#mode)主要是和標記與資源位置有關。 我們並不需要限制只對支援標記的資源進行評估，因此會對 **mode** 使用 all 這個值。
+前三個元件是原則的中繼資料。 由於我們知道為何要建立規則，所以為這些元件提供值並不難。 [模式](../concepts/definition-structure.md#mode)主要是和標記與資源位置有關。 我們並不需要限制只對支援標記的資源進行評估，因此會對 **mode** 使用 all__ 這個值。
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -457,11 +460,11 @@ Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用�
 
 如果您已完成使用本教學課程中的資源，請使用下列步驟來刪除前面建立的任何指派或定義：
 
-1. 選取 Azure 原則頁面左側 [製作] 下的 [定義] (如果您嘗試刪除指派，則選取 [指派])。
+1. 選取 Azure 原則頁面左側 [製作]**** 下的 [定義]**** (如果您嘗試刪除指派，則選取 [指派]****)。
 
 1. 搜尋您要移除的新計畫或原則定義 (或指派)。
 
-1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義] (或 [刪除指派])。
+1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義]**** (或 [刪除指派]****)。
 
 ## <a name="review"></a>檢閱
 

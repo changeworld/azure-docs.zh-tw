@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78942923"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673304"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 簡介
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 建置於 Blob 儲存體，並以下列方式增強效能
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 
--   **Hadoop 相容存取**：Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用 [Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一樣。 全新 [ABFS 驅動程式](data-lake-storage-abfs-driver.md)可在所有 Apache Hadoop 環境中使用，包括 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [SQL 資料倉儲](https://docs.microsoft.com/azure/sql-data-warehouse/)，以存取儲存在 Data Lake Storage Gen2 中的資料。
+-   **Hadoop 相容存取**：Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用 [Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一樣。 全新 [ABFS 驅動程式](data-lake-storage-abfs-driver.md)可在所有 Apache Hadoop 環境中使用，包括 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)，以存取 Data Lake Storage Gen2 中儲存的資料。
 
 -   **POSIX 權限的超集合**：Data Lake Gen2 的安全性模型可支援 ACL 和 POSIX 權限，以及一些 Data Lake Storage Gen2 特有的額外細微性。 這些設定可透過儲存體總管或 Hive 和 Spark 這類架構來配置。
 

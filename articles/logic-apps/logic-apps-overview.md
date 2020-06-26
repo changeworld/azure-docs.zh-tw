@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290546"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659606"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概觀 - 什麼是 Azure Logic Apps？
 
@@ -102,15 +102,15 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 
 ### <a name="access-resources-inside-azure-virtual-networks"></a>存取 Azure 虛擬網路內的資源
 
-當您建立[整合服務環境  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 時，邏輯應用程式可以存取 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中的受保護資源，例如虛擬機器 (VM) 和其他系統或服務。 ISE 是 Logic Apps 服務的獨立執行個體，其使用專用資源，並與「全域」多租用戶 Logic Apps 服務分開執行。
+當您建立[整合服務環境** (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 時，邏輯應用程式可以存取 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中的受保護資源，例如虛擬機器 (VM) 和其他系統或服務。 ISE 是 Logic Apps 服務的專用執行個體，其使用專用資源，並與「全域」多租用戶 Logic Apps 服務分開執行。
 
-在您自己的個別獨立執行個體中執行邏輯應用程式，有助於減少其他 Azure 租用戶對您應用程式效能可能造成的影響，也就是 ["noisy neighbors" effect](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors) (相鄰干擾效應)。 ISE 也提供下列優點：
+在您自己的個別專用執行個體中執行邏輯應用程式，有助於減少其他 Azure 租用戶對您應用程式效能可能造成的影響，也就是 ["noisy neighbors" effect](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors) (相鄰干擾效應)。 ISE 也提供下列優點：
 
 * 您自己的靜態 IP 位址，這與邏輯應用程式在多租用戶服務中所共用的靜態 IP 位址不同。 您也可以設定公用、靜態且可預測的單一輸出 IP 位址，以便與目的地系統進行通訊。 如此一來，您就不需要在每個 ISE 的目的地系統上設定額外的開放式防火牆。
 
 * 增加執行期間、儲存體保留期、輸送量、HTTP 要求和回應逾時、訊息大小及自訂連接器要求的限制。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md)。
 
-當您建立 ISE 時，Azure 會在您的 Azure 虛擬網路中「插入」  或部署 ISE。 接著，您可以針對邏輯應用程式和需要存取的整合帳戶，使用此 ISE 作為其位置。 如需有關建立 ISE 的詳細資訊，請參閱[從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+當您建立 ISE 時，Azure 會在您的 Azure 虛擬網路中「插入」** 或部署 ISE。 接著，您可以針對邏輯應用程式和需要存取的整合帳戶，使用此 ISE 作為其位置。 如需有關建立 ISE 的詳細資訊，請參閱[從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
 ### <a name="built-in-extensibility"></a>內建擴充性
 

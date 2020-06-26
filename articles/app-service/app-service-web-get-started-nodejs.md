@@ -5,12 +5,12 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4f08068e0920eb8a9e93fbbf91cb352bb8860fe3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "82690784"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905913"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式 
 
@@ -60,11 +60,11 @@ ms.locfileid: "82690784"
     code .
     ```
 
-1. 在 VS Code 活動列中，選取 Azure 標誌以顯示 [AZURE APP SERVICE] 總管。 選取 [登入 Azure...] 並遵循指示進行。 (如果遇到錯誤，請參閱 [Azure 登入疑難排解](#troubleshooting-azure-sign-in)。)登入之後，總管應會顯示您的 Azure 訂用帳戶名稱。
+1. 在 VS Code 活動列中，選取 Azure 標誌以顯示 [AZURE APP SERVICE]**** 總管。 選取 [登入 Azure...]**** 並遵循指示進行。 (如果遇到錯誤，請參閱 [Azure 登入疑難排解](#troubleshooting-azure-sign-in)。)登入之後，總管應會顯示您的 Azure 訂用帳戶名稱。
 
     ![登入 Azure](containers/media/quickstart-nodejs/sign-in.png)
 
-1. 在 VS Code 的 [AZURE APP SERVICE] 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區] \(**Ctrl**+**Shift**+**P**\) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:部署到 Web 應用程式])。
+1. 在 VS Code 的 [AZURE APP SERVICE]**** 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區]**** \(**Ctrl**+**Shift**+**P**\) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:**** 部署到 Web 應用程式])。
 
     ![部署到 Web 應用程式](containers/media/quickstart-nodejs/deploy.png)
         
@@ -72,43 +72,43 @@ ms.locfileid: "82690784"
 
 1. 根據您要部署的作業系統，選擇一個建立選項：
 
-    - Linux：選擇 [建立新的 Web 應用程式]
-    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+    - Linux：選擇 [建立新的 Web 應用程式]****
+    - Windows：選擇 [建立新的 Web 應用程式]...****[進階]
 
 1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
 1. 如果以 Windows 為目標，請遵循其他提示：
-    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
-    1. 針對作業系統選取 [Windows]。
-    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
-    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選取 [建立新的資源群組]****，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]****。
+    1. 選取 [建立新的 App Service 方案]****，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]****。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]****。
     1. 選擇您想要存取且接近您或接近資源的區域。
 
 1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
 
-    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]****。
 
     ![提示您要在目標 Linux 伺服器上更新組態](containers/media/quickstart-nodejs/server-build.png)
 
-1. 請在出現 [一律將工作區 "nodejs-docs-hello-world" 部署至 \應用程式名稱\] 提示時，選取 [是]。 選取 [是] 會指示 VS Code 自動讓後續部署使用相同的 App Service Web 應用程式作為目標。
+1. 請在出現 [一律將工作區 "nodejs-docs-hello-world" 部署至 \應用程式名稱\]**** 提示時，選取 [是]****。 選取 [是]**** 會指示 VS Code 自動讓後續部署使用相同的 App Service Web 應用程式作為目標。
 
-1. 如果是部署至 Linux，請在部署完成時，選取提示中的 [瀏覽網站]，以檢視您剛才部署的 Web 應用程式。 瀏覽器應該會顯示「Hello World!」
+1. 如果是部署至 Linux，請在部署完成時，選取提示中的 [瀏覽網站]****，以檢視您剛才部署的 Web 應用程式。 瀏覽器應該會顯示「Hello World!」
 
 1. 如果是部署至 Windows，您必須先設定 Web 應用程式的 Node.js 版本號碼：
 
-    1. 在 VS Code 中展開新 App Service 的節點、以滑鼠右鍵按一下 [應用程式設定]，然後選取 [新增設定...]：
+    1. 在 VS Code 中展開新 App Service 的節點、以滑鼠右鍵按一下 [應用程式設定]****，然後選取 [新增設定...]****：
 
         ![新增應用程式設定命令](containers/media/quickstart-nodejs/add-setting.png)
 
     1. 輸入設定金鑰的 `WEBSITE_NODE_DEFAULT_VERSION`。
     1. 輸入設定值的 `10.15.2`。
-    1. 以滑鼠右鍵按一 應用程式服務的節點，並選取 [重新啟動]
+    1. 以滑鼠右鍵按一 應用程式服務的節點，並選取 [重新啟動]****
 
         ![重新啟動應用程式服務命令](containers/media/quickstart-nodejs/restart.png)
 
-    1. 以滑鼠右鍵再按一下應用程式服務的節點，然後選取 [瀏覽網站]。
+    1. 以滑鼠右鍵再按一下應用程式服務的節點，然後選取 [瀏覽網站]****。
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
@@ -122,7 +122,7 @@ export HTTPS_PROXY=https://username:password@proxy:8080
 export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-如果設定環境變數無法更正問題，請選取上方的 [我遇到問題] 按鈕來聯繫我們。
+如果設定環境變數無法更正問題，請選取上方的 [我遇到問題]**** 按鈕來聯繫我們。
 
 ### <a name="update-the-app"></a>更新應用程式
 
@@ -132,7 +132,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 您可以直接在 VS Code 輸出視窗中，從應用程式中檢視記錄輸出 (`console.log`的呼叫)。
 
-1. 在 **AZURE APP SERVICE** 總管中，以滑鼠右鍵按一下應用程式，然後選擇 [開始串流記錄]。
+1. 在 **AZURE APP SERVICE** 總管中，以滑鼠右鍵按一下應用程式，然後選擇 [開始串流記錄]****。
 
     ![啟動串流記錄](containers/media/quickstart-nodejs/view-logs.png)
 
@@ -155,7 +155,13 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 恭喜，您已成功完成本快速入門！
 
-接下來，請參閱其他 Azure 擴充功能。
+> [!div class="nextstepaction"]
+> [教學課程：使用 MongoDB 的 Node.js 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [設定 Node.js 應用程式](configure-language-nodejs.md)
+
+查看其他 Azure 擴充功能。
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
@@ -164,3 +170,4 @@ export HTTP_PROXY=http://username:password@proxy:8080
 * [Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) \(英文\)
 
 或藉由安裝[適用於 Azure 的 Node Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 擴充功能來取得這所有項目。
+

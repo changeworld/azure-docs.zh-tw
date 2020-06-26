@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561161"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661060"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
@@ -108,13 +108,16 @@ ms.locfileid: "84561161"
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>建立來源 Azure SQL Database 連結服務
 在此步驟中，您會建立連結服務來將 Azure SQL 資料庫連結到資料處理站。 
 
-1. 按一下視窗底部的 [連線]，然後按一下工具列上的 [+ 新增] ([連線] 按鈕位於左側資料行底部的 [處理站資源] 底下)。 
+1. 從左窗格中開啟 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
+1. 在 [連結的服務] 頁面上，選取 [+ 新增] 以建立新的連結服務。
+
+   ![新增連結服務](./media/doc-common-process/new-linked-service.png)
 1. 在 [新增連結服務] 視窗中，選取 [Azure SQL Database]，然後按一下 [繼續]。 
 1. 在 [新增連結服務 (Azure SQL Database)] 視窗中，執行下列步驟： 
 
     a. 輸入 **AzureSqlDatabaseLinkedService** 作為 [名稱]。
-    
+
     b. 在 [伺服器名稱] 選取您的伺服器
     
     c. 在 [資料庫名稱] 選取您的 Azure SQL 資料庫。 
@@ -159,7 +162,6 @@ ms.locfileid: "84561161"
     b. 在 [儲存體帳戶名稱] 選取您的 **Azure 儲存體帳戶**。
     
     c. 按一下 [建立]。
-
 
 ## <a name="create-datasets"></a>建立資料集
 在本教學課程中，您會建立來源和接收資料集，其指定儲存資料的位置。 

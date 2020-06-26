@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: b95d5d6eb52806e5b43a495b875d30846297c465
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 05cad67290b7f89c127d4417e7b89c48279605d9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592429"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886164"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權
 
@@ -40,7 +40,7 @@ ms.locfileid: "82592429"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -79,7 +79,7 @@ dotnet run
 
 ### <a name="create-azure-resources"></a>建立 Azure 資源
 
-在 Cloud Shell 中執行下列命令，以建立兩個 Web 應用程式。 將 _\<front-end-app-name>_ 和 _\<back-end-app-name>_ 取代為兩個全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9`和 `-`)。 如需各個命令的詳細資訊，請參閱 [Azure App Service 中具有 CORS 支援的 RESTful API](app-service-web-tutorial-rest-api.md)。
+在 Cloud Shell 中執行下列命令，以建立兩個 Web 應用程式。 以兩個全域唯一的應用程式名稱取代 _\<front-end-app-name>_ 和 _\<back-end-app-name>_ (有效的字元為 `a-z`、`0-9` 和 `-`)。 如需各個命令的詳細資訊，請參閱 [Azure App Service 中具有 CORS 支援的 RESTful API](app-service-web-tutorial-rest-api.md)。
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -94,14 +94,14 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>從 Git 推送至 Azure
 
-回到 _本機終端機視窗_ ，執行下列 Git 命令，以部署至後端應用程式。 將 _\<deploymentLocalGitUrl-of-back-end-app>_ 取代為您從[建立 Azure 資源](#create-azure-resources)儲存之 Git 遠端的 URL。 當 Git 認證管理員提示您輸入認證時，請務必輸入[您的部署認證](deploy-configure-credentials.md)，而不是您用來登入 Azure 入口網站的認證。
+回到 _本機終端機視窗_ ，執行下列 Git 命令，以部署至後端應用程式。 以您從[建立 Azure 資源](#create-azure-resources)儲存的 Git 遠端 URL 取代 _\<deploymentLocalGitUrl-of-back-end-app>_ 。 當 Git 認證管理員提示您輸入認證時，請務必輸入[您的部署認證](deploy-configure-credentials.md)，而不是您用來登入 Azure 入口網站的認證。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-在本機終端機視窗中執行下列 Git 命令，以將相同的程式碼部署至前端應用程式。 將 _\<deploymentLocalGitUrl-of-front-end-app>_ 取代為您從[建立 Azure 資源](#create-azure-resources)儲存之 Git 遠端的 URL。
+在本機終端機視窗中執行下列 Git 命令，以將相同的程式碼部署至前端應用程式。 以您從[建立 Web 應用程式](#create-azure-resources)儲存的 Git 遠端 URL 取代 _\<deploymentLocalGitUrl-of-front-end-app>_ 。
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -207,27 +207,27 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>為後端應用程式啟用驗證和授權
 
-在 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [資源群組]  ，或從任何頁面搜尋並選取 [資源群組]  。
+在 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [資源群組]****，或從任何頁面搜尋並選取 [資源群組]**。
 
-在 [資源群組]  中，尋找並選取資源群組。 在 [概觀]  中，選取後端應用程式的管理頁面。
+在 [資源群組]**** 中，尋找並選取資源群組。 在 [概觀]**** 中，選取後端應用程式的管理頁面。
 
 ![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
-在後端應用程式的左側功能表中，按一下 [驗證/授權]  ，然後選取 [開啟]  以啟用 App Service 驗證。
+在後端應用程式的左側功能表中，按一下 [驗證/授權]****，然後選取 [開啟]**** 以啟用 App Service 驗證。
 
-在 [當要求未經驗證時所要採取的動作]  中，選取 [使用 Azure Active Directory 登入]  。
+在 [當要求未經驗證時所要採取的動作]**** 中，選取 [使用 Azure Active Directory 登入]****。
 
-在 [驗證提供者]  底下，選取 [Azure Active Directory]  。
+在 [驗證提供者]**** 底下，選取 [Azure Active Directory]****。
 
 ![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
 
-選取 [快速]  ，然後接受預設設定以建立新的 AD 應用程式，並選取 [確定]  。
+選取 [快速]****，然後接受預設設定以建立新的 AD 應用程式，並選取 [確定]****。
 
-在 [驗證/授權]  頁面中，選取 [儲存]  。
+在 [驗證/授權]**** 頁面中，選取 [儲存]****。
 
 當您看到通知中的 `Successfully saved the Auth Settings for <back-end-app-name> App` 訊息後，請重新整理入口網站頁面。
 
-再次選取 [Azure Active Directory]  ，然後選取 [Azure AD 應用程式]  。
+再次選取 [Azure Active Directory]****，然後選取 [Azure AD 應用程式]****。
 
 將 Azure AD 應用程式的**用戶端識別碼**複製到記事本。 您後續會用到此值。
 
@@ -239,7 +239,7 @@ git push frontend master
 
 請遵循前端應用程式的相同步驟，但略過最後一個步驟。 您的前端應用程式不需要用戶端識別碼。
 
-如果您想要，瀏覽至 `http://<front-end-app-name>.azurewebsites.net`。 它此時應會將您導向至安全的登入頁面。 登入之後，「您仍然無法從後端應用程式存取資料」  ，因為後端應用程式現在需要來自前端應用程式的 Azure Active Directory 登入。 需要執行三個步驟：
+如果您想要，瀏覽至 `http://<front-end-app-name>.azurewebsites.net`。 它此時應會將您導向至安全的登入頁面。 登入之後，「您仍然無法從後端應用程式存取資料」**，因為後端應用程式現在需要來自前端應用程式的 Azure Active Directory 登入。 需要執行三個步驟：
 
 - 授與前端對後端的存取權
 - 設定 App Service，以傳回可使用的權杖
@@ -252,15 +252,15 @@ git push frontend master
 
 現在，您已為這兩個應用程式啟用驗證和授權，兩者皆受到 AD 應用程式的支援。 在此步驟中，您會為前端應用程式提供代表使用者存取後端的權限。 (技術上，您會為前端的 _AD 應用程式_ 提供代表使用者存取後端 _AD 應用程式_ 的權限。)
 
-在 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [Azure Active Directory]  ，或從任何頁面搜尋並選取 [Azure Active Directory]  。
+在 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [Azure Active Directory]****，或從任何頁面搜尋並選取 [Azure Active Directory]**。
 
-選取 [應用程式註冊]   > [擁有的應用程式]   > [檢視此目錄中的所有應用程式]  。 選取您的前端應用程式名稱，然後選取 [API 權限]  。
+選取 [應用程式註冊]**** > [擁有的應用程式]**** > [檢視此目錄中的所有應用程式]****。 選取您的前端應用程式名稱，然後選取 [API 權限]****。
 
 ![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-選取 [新增權限]  ，然後選取 [我組織使用的 API]   > [\<後端應用程式名稱>]  。
+選取 [新增權限]****，然後選取 [我的組織使用的 API]**** >  **\<back-end-app-name>** 。
 
-在後端應用程式的 [要求 API 權限]  頁面中，選取 [委派的權限]  和 [user_impersonation]  ，然後選取 [新增權限]  。
+在後端應用程式的 [要求 API 權限]**** 頁面中，選取 [委派的權限]**** 和 [user_impersonation]****，然後選取 [新增權限]****。
 
 ![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
@@ -268,15 +268,15 @@ git push frontend master
 
 前端應用程式現在具有必要權限，能夠以登入使用者的身分存取後端應用程式。 在此步驟中，您會設定 App Service 驗證和授權，讓自己取得可用來存取後端的存取權杖。 此步驟中，您需要後端的用戶端識別碼，也就是您從[為後端應用程式啟用驗證和授權](#enable-authentication-and-authorization-for-back-end-app)中複製的識別碼。
 
-在前端應用程式的左側功能表中，選取 [開發工具]  底下的 [資源總管]  ，然後選取 [前往]  。
+瀏覽至 [Azure 資源總管](https://resources.azure.com)並使用資源樹狀結構，找出您的前端 Web 應用程式。
 
-現在，在資源樹狀結構中選取您的前端應用程式，以開啟 [Azure 資源總管](https://resources.azure.com)。 在頁面頂端按一下 [讀取/寫入]  ，以啟用 Azure 資源的編輯。
+現在，在資源樹狀結構中選取您的前端應用程式，以開啟 [Azure 資源總管](https://resources.azure.com)。 在頁面頂端按一下 [讀取/寫入]****，以啟用 Azure 資源的編輯。
 
 ![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-在左側瀏覽器中，向下切入至 [config]   > [authsettings]  。
+在左側瀏覽器中，向下切入至 [config]**** > [authsettings]****。
 
-在 **authsettings** 檢視中，按一下 [編輯]  。 使用您複製的用戶端識別碼，將 `additionalLoginParams` 設為下列 JSON 字串。 
+在 **authsettings** 檢視中，按一下 [編輯]****。 使用您複製的用戶端識別碼，將 `additionalLoginParams` 設為下列 JSON 字串。 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
@@ -322,7 +322,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-再次登入 `https://<front-end-app-name>.azurewebsites.net`。 在 [使用者資料使用合約] 頁面上，按一下 [接受]  。
+再次登入 `https://<front-end-app-name>.azurewebsites.net`。 在 [使用者資料使用合約] 頁面上，按一下 [接受]****。
 
 現在，您應該能夠和之前一樣從後端應用程式建立、讀取、更新和刪除資料。 唯一的差別在於，現在這兩個應用程式都受到 App Service 驗證和授權的保護，包括服務對服務呼叫。
 
@@ -350,9 +350,9 @@ az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-nam
 
 ### <a name="point-angularjs-app-to-back-end-api"></a>將 Angular.js 應用程式指向後端 API
 
-在本機存放庫中，開啟 wwwroot/index.html  。
+在本機存放庫中，開啟 wwwroot/index.html__。
 
-在第 51 行中，將 `apiEndpoint` 變數設為後端應用程式的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 將 _\<back-end-app-name>_ 取代為您在 App Service 中的應用程式名稱。
+在第 51 行中，將 `apiEndpoint` 變數設為後端應用程式的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 以您在 App Service 中的應用程式名稱取代 _\<back-end-app-name>_ 。
 
 在本機存放庫中開啟 _wwwroot/app/scripts/todoListSvc.js_，並確認所有 API 呼叫前面都加上了 `apiEndpoint`。 您的 Angular.js 應用程式現在會呼叫後端 API。 
 

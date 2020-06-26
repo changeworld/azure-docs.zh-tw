@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560860"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051806"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何搭配 SQL 隨選使用 (預覽) OPENROWSET
 
@@ -49,7 +49,7 @@ Synapse SQL 中的 OPENROWSET 函式會從資料來源讀取檔案的內容。 �
     此選項可讓您在資料來源中設定儲存體帳戶的位置，並指定應該用來存取儲存體的驗證方法。 
     
     > [!IMPORTANT]
-    > 沒有 `DATA_SOURCE`的 `OPENROWSET` 會提供快速且輕鬆的方式來存取儲存體檔案，但其提供的驗證選項有限。 例如，Azure AD 主體只能使用其 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through)來存取檔案，而且無法存取公用檔案。 如果您需要更強大的驗證選項，請使用 `DATA_SOURCE` 選項，並定義您要用來存取儲存體的認證。
+    > 沒有 `DATA_SOURCE`的 `OPENROWSET` 會提供快速且輕鬆的方式來存取儲存體檔案，但其提供的驗證選項有限。 例如，Azure AD 主體只能使用其 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity)來存取檔案，或只能存取公用檔案。 如果您需要更強大的驗證選項，請使用 `DATA_SOURCE` 選項，並定義您要用來存取儲存體的認證。
 
 
 ## <a name="security"></a>安全性
@@ -60,7 +60,8 @@ Synapse SQL 中的 OPENROWSET 函式會從資料來源讀取檔案的內容。 �
 
 `OPENROWSET` 會使用下列規則來決定如何向儲存體進行驗證：
 - 在沒有 `DATA_SOURCE` 的 `OPENROWSET` 中，驗證機制會視呼叫者類型而定。
-  - 如果 Azure 儲存體允許 Azure AD 使用者存取基礎檔案 (例如，如果呼叫者具有儲存體的儲存體讀者權限)，以及如果您在Synapse SQL 服務上[啟用 Azure AD 傳遞驗證](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)，則 Azure AD 登入只能使用自己的 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)來存取檔案。
+  - 任何使用者都可使用 `OPENROWSET` 讀取 Azure 儲存體上的公用檔案，而不需要 `DATA_SOURCE`。
+  - 如果 Azure 儲存體允許 Azure AD 使用者存取基礎檔案 (例如，如果呼叫者具有 Azure 儲存體的 `Storage Reader` 權限)，則 Azure AD 登入可使用其本身的 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)來存取受保護的檔案。
   - SQL 登入也可以使用沒有 `DATA_SOURCE` 的 `OPENROWSET` 來存取公用檔案、使用 SAS 權杖保護的檔案或 Synapse 工作區的受控識別。 您需要[建立伺服器範圍的認證](develop-storage-files-storage-access-control.md#examples)，以允許存取儲存體檔案。 
 - 在具有 `DATA_SOURCE` 的 `OPENROWSET` 中，驗證機制會在指派給參考資料來源的資料庫範圍認證中定義。 此選項可讓您存取公用儲存體，或使用 SAS 權杖、工作區的受控識別或[呼叫者的 Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (如果呼叫者是 Azure AD 主體) 來存取儲存體。 如果 `DATA_SOURCE` 參照非公用的 Azure 儲存體，您就必須[建立資料庫範圍的認證](develop-storage-files-storage-access-control.md#examples)，並在 `DATA SOURCE` 中加以參考，才能允許存取儲存體檔案。
 
@@ -238,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-如果您收到無法列出檔案的錯誤訊息，您需要在 Synapse SQL 隨選中啟用公用儲存體的存取權：
-- 如果您使用 SQL 登入，您需要[建立伺服器範圍的認證，以允許存取公用儲存體](develop-storage-files-storage-access-control.md#examples)。
-- 如果您使用 Azure AD 主體來存取公用儲存體，則必須[建立伺服器範圍的認證，以允許存取公用儲存體](develop-storage-files-storage-access-control.md#examples)，並停用 [Azure AD 傳遞驗證](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)。
-
 ## <a name="next-steps"></a>後續步驟
 
-如需更多範例，請參閱[查詢資料儲存體快速入門](query-data-storage.md)，以了解如何使用 `OPENROWSET 來讀取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 檔案格式。 您也可以了解如何使用 [CETAS](develop-tables-cetas.md)，將查詢結果儲存到 Azure 儲存體。
+如需更多範例，請參閱[查詢資料儲存體快速入門](query-data-storage.md)，以了解如何使用 `OPENROWSET` 來讀取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 檔案格式。 您也可以了解如何使用 [CETAS](develop-tables-cetas.md)，將查詢結果儲存到 Azure 儲存體。

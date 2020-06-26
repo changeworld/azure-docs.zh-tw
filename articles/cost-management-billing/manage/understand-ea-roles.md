@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295298"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678013"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
@@ -27,6 +27,10 @@ ms.locfileid: "84295298"
 <sup>1</sup> EA 合約的帳單連絡人屬於此角色。
 
 <sup>2</sup> 無法在 Azure EA 入口網站中新增或變更帳單連絡人，這些資訊會依合約層級上設定為帳單連絡人的使用者，新增至 EA 註冊。 若要變更帳單連絡人，必須透過合作夥伴/軟體顧問向區域營運中心 (ROC) 提出要求。
+
+註冊佈建期間所設定的第一個註冊管理員，會決定帳單連絡人帳戶的驗證類型。 帳單連絡人以唯讀管理員的身分新增至 EA 入口網站時，系統會為其指定 Microsoft 帳戶驗證。 
+
+例如，如果初始驗證類型設定為「混合」，則 EA 會新增為 Microsoft 帳戶，而帳單與連絡人將會擁有唯讀 EA 管理員權限。 如果 EA 管理員未核准現有帳單連絡人的 Microsoft 帳戶授權，EA 管理員可刪除有問題的使用者，並要求客戶將使用者重新新增為唯讀管理員，並且在 EA 入口網站的註冊層級設定其僅限公司或學校的帳戶。
 
 這些角色專門用來管理 Azure Enterprise 合約，而 Azure 必須控制資源存取權的內建角色除外。 如需詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
 

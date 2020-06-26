@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403675"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987865"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教學課程：辨識相機圖片中的 Azure 服務標誌
 
@@ -28,9 +28,9 @@ ms.locfileid: "81403675"
 > - 將應用程式連線到 Azure 電腦視覺和自訂視覺。
 > - 建立 Azure 服務主體帳戶以從應用程式部署 Azure 服務。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)
 - 適用於 Visual Studio 的 Xamarin 工作負載 (請參閱[安裝 Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
@@ -49,7 +49,7 @@ ms.locfileid: "81403675"
 
 ## <a name="upload-and-tag-images"></a>上傳和標記影像
 
-接著，請上傳 Azure 服務標誌的影像並手動加以標記，以訓練標誌偵測演算法。 AIVisualProvision 存放庫中包含一組可供使用的訓練影像。 在網站上，選取 [訓練影像]  索引標籤上的 [新增影像]  按鈕。然後，移至存放庫的 **Documents/Images/Training_DataSet** 資料夾。 您將手動標記每個影像中的標誌，因此如果您只要測試此專案，您可以僅上傳一部分的影像。 對於您預計要使用的每個標記，至少須分別上傳 15 個執行個體。
+接著，請上傳 Azure 服務標誌的影像並手動加以標記，以訓練標誌偵測演算法。 AIVisualProvision 存放庫中包含一組可供使用的訓練影像。 在網站上，選取 [訓練影像]**** 索引標籤上的 [新增影像]**** 按鈕。然後，移至存放庫的 **Documents/Images/Training_DataSet** 資料夾。 您將手動標記每個影像中的標誌，因此如果您只要測試此專案，您可以僅上傳一部分的影像。 對於您預計要使用的每個標記，至少須分別上傳 15 個執行個體。
 
 上傳訓練影像之後，請選取顯示畫面上的第一個影像。 隨即會出現標記視窗。 為每個影像中的各個標誌繪製方塊並指派標記。 
 
@@ -63,13 +63,13 @@ ms.locfileid: "81403675"
 
 ## <a name="train-the-object-detector"></a>訓練物件偵測器
 
-在左窗格中，將 [標記]  參數設為 [已標記]  ，以顯示您的影像。 然後，選取頁面頂端的綠色按鈕，以訓練模型。 此演算法會訓練辨識新影像中的相同標記。 此外也會以您現有的一些影像測試模型，以產生精確度分數。
+在左窗格中，將 [標記]**** 參數設為 [已標記]****，以顯示您的影像。 然後，選取頁面頂端的綠色按鈕，以訓練模型。 此演算法會訓練辨識新影像中的相同標記。 此外也會以您現有的一些影像測試模型，以產生精確度分數。
 
 ![自訂視覺網站的 [訓練影像] 索引標籤。此螢幕擷取畫面標示出訓練按鈕的部分](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>取得預測 URL
 
-模型已定型後，即可將其整合到應用程式中。 您必須取得端點 URL (應用程式將查詢的模型位址) 和預測金鑰 (為應用程式授與預測要求的存取權)。 在 [效能]  索引標籤上，選取頁面頂端的 [預測 URL]  按鈕。
+模型已定型後，即可將其整合到應用程式中。 您必須取得端點 URL (應用程式將查詢的模型位址) 和預測金鑰 (為應用程式授與預測要求的存取權)。 在 [效能]**** 索引標籤上，選取頁面頂端的 [預測 URL]**** 按鈕。
 
 ![自訂視覺網站的預測 API 視窗，顯示 URL 位址和 API 金鑰](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -150,17 +150,17 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
     > [!NOTE]
     > 您必須以 MacOS 裝置執行 iOS 模擬器。
 
-1. 在第一個畫面中，輸入您的服務主體用戶端識別碼、租用戶識別碼和密碼。 選取 [登入]  按鈕。
+1. 在第一個畫面中，輸入您的服務主體用戶端識別碼、租用戶識別碼和密碼。 選取 [登入]**** 按鈕。
 
     > [!NOTE]
-    > 在某些模擬器上執行此步驟時，[登入]  按鈕可能並未啟動。 若是如此，請停止應用程式、開啟 *Source/VisualProvision/Pages/LoginPage.xaml* 檔案、找出標示為 **LOGIN BUTTON** 的 `Button` 元素，並移除以下這一行，然後重新執行應用程式。
+    > 在某些模擬器上執行此步驟時，[登入]**** 按鈕可能並未啟動。 若是如此，請停止應用程式、開啟 *Source/VisualProvision/Pages/LoginPage.xaml* 檔案、找出標示為 **LOGIN BUTTON** 的 `Button` 元素，並移除以下這一行，然後重新執行應用程式。
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
     
     ![顯示服務主體認證欄位的應用程式畫面](media/azure-logo-tutorial/app-credentials.png)
 
-1. 在下一個畫面上，從下拉式功能表中選取您的 Azure 訂用帳戶。 (此功能表應包含您的服務主體可存取的所有訂用帳戶。)選取 [繼續]  按鈕。 此時應用程式可能會提示您授與裝置相機和相片儲存體的存取權。 授與存取權限。
+1. 在下一個畫面上，從下拉式功能表中選取您的 Azure 訂用帳戶。 (此功能表應包含您的服務主體可存取的所有訂用帳戶。)選取 [繼續]**** 按鈕。 此時應用程式可能會提示您授與裝置相機和相片儲存體的存取權。 授與存取權限。
 
     ![顯示目標 Azure 訂用帳戶下拉式欄位的應用程式畫面](media/azure-logo-tutorial/app-az-subscription.png)
 
@@ -175,7 +175,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 如果您依照此案例的所有步驟操作，並使用應用程式將 Azure 服務部署到您的帳戶，請移至 [Azure 入口網站](https://ms.portal.azure.com/)。 在該處取消您不想要使用的服務。
 
-如果您預計要使用自訂視覺自行建立物件偵測專案，您可以刪除在本教學課程中建立的標誌偵測專案。 自訂視覺的免費試用只能建立兩個專案。 若要刪除標誌偵測專案，請在[自訂視覺網站](https://customvision.ai)上開啟 [專案]  ，然後選取 [我的新專案]  下方的垃圾桶圖示。
+如果您預計要使用自訂視覺自行建立物件偵測專案，您可以刪除在本教學課程中建立的標誌偵測專案。 自訂視覺的免費訂用帳戶只能建立兩個專案。 若要刪除標誌偵測專案，請在[自訂視覺網站](https://customvision.ai)上開啟 [專案]****，然後選取 [我的新專案]**** 下方的垃圾桶圖示。
 
 ## <a name="next-steps"></a>後續步驟
 

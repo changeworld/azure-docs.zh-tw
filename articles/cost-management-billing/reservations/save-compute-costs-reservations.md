@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f124e94398e53e3ab8ff7eb4b054d252129128b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015976"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987000"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -127,6 +127,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 - 深入了解服務方案的保留：
     - [具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [具有 Azure Cosmos DB 保留容量的 Azure Cosmos DB 資源](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [具有 Azure SQL Database 保留容量的 SQL Database 計算資源](../../azure-sql/database/reserved-capacity-overview.md) 深入了解軟體方案的保留：
+    - [具有 Azure SQL Database 保留容量的 SQL Database 計算資源](../../azure-sql/database/reserved-capacity-overview.md)
+    - [具有 Azure Cache for Redis 保留容量的Azure Cache for Redis 資源](../../azure-cache-for-redis/cache-reserved-pricing.md) 深入了解軟體方案的保留：
     - [Azure 保留中的 Red Hat 軟體方案](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [Azure 保留中的 SUSE 軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)

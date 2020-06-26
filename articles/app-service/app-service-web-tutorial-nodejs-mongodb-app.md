@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36d6e9ce2ab180c49737230de1f8b528f8da8b40
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085583"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905930"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -127,7 +127,7 @@ MEAN.js 範例應用程式會將使用者資料儲存於資料庫中。 如果�
 
 在 Cloud Shell 中，使用 [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) 命令來建立 Cosmos DB 帳戶。
 
-在下列命令中，以唯一的 Cosmos DB 名稱取代 \<cosmosdb_name> 預留位置。 這個名稱會用來作為 Cosmos DB 端點 `https://<cosmosdb_name>.documents.azure.com/` 的一部分，因此，這個名稱在 Azure 中的所有 Cosmos DB 帳戶上必須是唯一的。 名稱只能包含小寫字母、數字及連字號 (-) 字元，且長度必須為 3 到 50 個字元。
+在下列命令中，以唯一的 Cosmos DB 名稱替代 *\<cosmosdb_name>* 預留位置。 這個名稱會用來作為 Cosmos DB 端點 `https://<cosmosdb_name>.documents.azure.com/` 的一部分，因此，這個名稱在 Azure 中的所有 Cosmos DB 帳戶上必須是唯一的。 名稱只能包含小寫字母、數字及連字號 (-) 字元，且長度必須為 3 到 50 個字元。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
@@ -183,7 +183,7 @@ Azure CLI 會顯示類似下列範例的資訊：
 
 在本機 MEAN.js 存放庫的 _config/env/_ 資料夾中，建立名為 _local-production.js_ 的檔案。 _.gitignore_ 預設會設定為將此檔案保存在存放庫外。 
 
-請將下列程式碼複製到其中。 務必要將這兩個 \<cosmosdb_name> 預留位置取代為您的 Cosmos DB 資料庫名稱，並將 \<primary_master_key> 預留位置取代為您在上一個步驟中複製的金鑰。
+請將下列程式碼複製到其中。 務必以您的 Cosmos DB 資料庫名稱取代這兩個 *\<cosmosdb_name>* 預留位置，並以您在前一個步驟中複製的索引鍵取代 *\<primary_master_key>* 預留位置。
 
 ```javascript
 module.exports = {
@@ -254,7 +254,7 @@ MEAN.JS
 
 若要設定應用程式的設定，請在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 
 
-下列範例會在 Azure 應用程式中設定 `MONGODB_URI` 應用程式設定。 取代 \<app_name>、\<cosmosdb_name> 和 \<primary_master_key> 預留位置。
+下列範例會在 Azure 應用程式中設定 `MONGODB_URI` 應用程式設定。 取代 *\<app_name>* 、 *\<cosmosdb_name>* 和 *\<primary_master_key>* 預留位置。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -497,3 +497,8 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 > [!div class="nextstepaction"] 
 > [將現有的自訂 DNS 名稱對應至 Azure App Service](app-service-web-tutorial-custom-domain.md)
+
+其他資源：
+
+> [!div class="nextstepaction"]
+> [設定 Node.js 應用程式](configure-language-nodejs.md)

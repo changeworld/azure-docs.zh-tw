@@ -2,23 +2,22 @@
 title: 使用 Azure AD 應用程式 Proxy 來發佈內部部署應用程式
 description: 了解為何要使用應用程式 Proxy 來將內部部署 Web 應用程式對外發佈給遠端使用者。 了解應用程式 Proxy 的架構、連接器、驗證方法和安全性優點。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196457"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976501"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -89,7 +88,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 * Web 應用程式
 * 您想要公開給不同裝置上豐富應用程式的 Web API
 * 裝載在遠端桌面閘道之後的應用程式
-* 與 Active Directory Authentication Library (ADAL) 整合的豐富型用戶端應用程式
+* 與 [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) 整合的豐富型用戶端應用程式
 
 應用程式 Proxy 適用於使用下列原生驗證通訊協定的應用程式：
 
@@ -133,7 +132,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 2. 成功登入之後，Azure AD 會向使用者的用戶端裝置傳送權杖。
 3. 用戶端會將權杖傳送至應用程式 Proxy 服務，該服務會取出權杖的使用者主體名稱 (UPN) 和安全性主體名稱 (SPN)。
 4. 應用程式 Proxy 會轉送要求 (要求會由應用程式 Proxy [連接器](application-proxy-connectors.md)接收)。
-5. 連接器會代表使用者執行任何額外的必要驗證 (選擇性功能，視驗證方法而定  )、要求應用程式伺服器的內部端點，並將要求傳送至內部部署應用程式。
+5. 連接器會代表使用者執行任何額外的必要驗證 (選擇性功能，視驗證方法而定**)、要求應用程式伺服器的內部端點，並將要求傳送至內部部署應用程式。
 6. 來自該應用程式伺服器的回應會透過連接器傳送給應用程式 Proxy 服務。
 7. 回應會從應用程式 Proxy 服務傳送給使用者。
 

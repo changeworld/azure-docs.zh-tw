@@ -11,27 +11,28 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0904f8689019e57ff830265dfe50007f0aaa75b4
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171730"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987523"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>快速入門：使用電腦視覺 3.0 REST API 和 C# 擷取印刷及手寫文字
 
-在本快速入門中，您將使用電腦視覺 REST API，擷取影像中的印刷及手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) (英文) 和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) (英文) 方法，來偵測影像中的文字，然後將可辨識的字元擷取至機器可讀取的字元串流。 
+在本快速入門中，您將使用電腦視覺 REST API，擷取影像中的印刷及手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。 
 
 > [!IMPORTANT]
-> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) (英文) 方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫此 URI，其代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) (英文) API，來檢查狀態並傳回「讀取」方法呼叫的結果。
+> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
-
-- 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
-- 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 
-- 為金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (機器翻譯)，名稱分別為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ## <a name="create-and-run-the-sample-application"></a>建立並執行範例應用程式
 
@@ -39,9 +40,9 @@ ms.locfileid: "84171730"
 
 1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式範本建立新的 Visual Studio 解決方案。
 2. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]，選取 [NuGet 套件管理員]，然後選取 [管理解決方案的 NuGet 套件]。
-    2. 按一下 [瀏覽] 索引標籤，然後在 [搜尋] 方塊中鍵入 "Newtonsoft.Json"。
-    3. 顯示時選取 [Newtonsoft.Json]，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]。
+    1. 在功能表中，按一下 [工具]****，選取 [NuGet 套件管理員]****，然後選取 [管理解決方案的 NuGet 套件]****。
+    2. 按一下 [瀏覽]**** 索引標籤，然後在 [搜尋]**** 方塊中鍵入 "Newtonsoft.Json"。
+    3. 顯示時選取 [Newtonsoft.Json]****，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]****。
 3. 將下列程式碼複製並貼到解決方案中的 Program.cs 檔案內。
 4. 執行程式。
 

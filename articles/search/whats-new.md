@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/08/2020
+ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344198"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736079"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
 了解該服務的新功能。 將此頁面加入書籤，以掌握服務的最新狀態。
 
 ## <a name="feature-announcements"></a>功能公告
+
+### <a name="june-2020"></a>2020 年 6 月
+
+Azure Machine Learning 技能是一個新的技能類型，可從 Azure Machine Learning 整合推斷端點。 入口網站體驗支援在認知搜尋技能集中探索和整合您的 Azure Machine Learning 端點。 若要進行探索，必須在相同的訂用帳戶中部署您的認知搜尋和 Azure ML 服務。 若要註冊 AML 技能預覽，請[填寫表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u)。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。
 
 ### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft 組建)
 

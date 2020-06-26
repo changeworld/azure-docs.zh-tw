@@ -1,5 +1,5 @@
 ---
-title: 快速入門：建立 NAT 閘道 - Azure Powershell
+title: 教學課程：建立 NAT 閘道 - Azure Powershell
 titlesuffix: Azure Virtual Network NAT
 description: 本快速入門說明如何使用 Azure PowerShell 建立 NAT 閘道。
 services: virtual-network
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 4878707524c7c7083035163ae2709334cc83e039
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 1c6a9fff7b3bafc927b0d032dc7345c262f6037c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342199"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707475"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 NAT 閘道
+# <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 NAT 閘道
 
-本快速入門說明如何使用 Azure 虛擬網路 NAT 服務。 您將建立 NAT 閘道，為 Azure 中的虛擬機器提供輸出連線能力。 
+本教學課程說明如何使用 Azure 虛擬網路 NAT 服務。 您將建立 NAT 閘道，為 Azure 中的虛擬機器提供輸出連線能力。 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "84342199"
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT  的資源群組：
+下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT**** 的資源群組：
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

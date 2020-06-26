@@ -3,12 +3,12 @@ title: 快速入門 - 建置和執行容器映像
 description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的 Docker 容器映像。
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680588"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753696"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -37,20 +37,21 @@ az group create --name myResourceGroup --location eastus
 使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008*。 請將此更新為唯一的值。
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
 此範例會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
-## <a name="build-an-image-from-a-dockerfile"></a>從 Dockerfile 建置映像
+## <a name="build-and-push-image-from-a-dockerfile"></a>從 Dockerfile 建置和推送映像
 
-現在，請使用 Azure Container Registry 建置映像。 首先請建立工作目錄，然後使用下列內容建立名為 *Dockerfile* 的 Dockerfile。 這是建置 Linux 容器映像的簡單範例，但您可以自行建立標準 Dockerfile，並建置適用於其他平台的映像。 本文中的命令範例會針對 Bash 殼層進行格式化。
+現在，請使用 Azure Container Registry 建置和推送映像。 首先建立工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM hello-world`。 這是從 Docker Hub 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-執行 [az acr build][az-acr-build] 命令以建置映像。 成功建置後，映像會推送至您的登錄。 下列範例會推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
+執行 [az acr build][az-acr-build] 命令來建置映射，並在成功建置映像後，將其推送至您的登錄。 下列範例會建置和推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \

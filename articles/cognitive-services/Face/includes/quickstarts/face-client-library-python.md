@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7270d05fa7668278db285336c45b5d5c1fb39c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b4cc6e046b3d6442526df40cad574dbdb9159d5f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148430"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073386"
 ---
 開始使用適用於 Python 的臉部用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -29,22 +29,20 @@ ms.locfileid: "82148430"
 
 [參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要所建立之資源的金鑰和端點，以將應用程式連線至臉部 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 取得金鑰和端點後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-face-azure-resource"></a>建立臉部 Azure 資源
-
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立臉部資源。 您也可以取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
-
-從試用版訂用帳戶或資源取得金鑰後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
  
 ### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-建立新的 Python 指令碼&mdash;例如，quickstart-file.py  。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
+建立新的 Python 指令碼&mdash;例如，quickstart-file.py**。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -173,7 +171,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ### <a name="get-a-test-image"></a>取得測試影像
 
-下列程式碼會在專案的根目錄中尋找 test-image-person-group.jpg  影像，並偵測該影像中的臉部。 若要尋找此影像，您可以利用下列在管理 **PersonGroup** 時所使用的影像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+下列程式碼會在專案的根目錄中尋找 test-image-person-group.jpg__ 影像，並偵測該影像中的臉部。 若要尋找此影像，您可以利用下列在管理 **PersonGroup** 時所使用的影像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -211,7 +209,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="take-a-snapshot-for-data-migration"></a>取得用於移轉資料的快照集
 
-快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費試用版訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 在此範例中，您會遷移在[建立並訓練人員群組](#create-and-train-a-person-group)中所建立的 **PersonGroup**。 您可以先完成該區段，也可以使用您自己的臉部資料建構。
 

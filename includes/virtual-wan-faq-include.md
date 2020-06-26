@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006458"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977930"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -212,9 +212,14 @@ Azure 虛擬 WAN 中樞最多可同時支援 1,000 個 S2S 連線、10,000 個 P
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虛擬 WAN 中的虛擬中樞如何從多個中樞選取路由的最佳路徑
 
 如果虛擬中樞從多個遠端中樞學習相同的路由，其所決定的順序如下所示
-1) 路由來源 a) 網路路由 - 從虛擬中樞閘道所直接學到的 VNET 前置碼 b) 中樞 RouteTable (靜態設定的路由) c) BGP d) InterHub 路由
-2)  路由計量：虛擬 WAN 偏好透過 VPN 的 ExpressRoute。 相較於 VPN 同儕節點，ExpressRoute 同儕節點具有更高的權重
-3)  AS 路徑長度
+1. 最長前置詞比對
+2. 透過 interhub 的本機路由
+3. 透過 BGP 的靜態路由
+4. 透過 VPN 的 ExpressRoute (ER)
+5. AS 路徑長度
+
+在 ER 到 ER 之間的傳輸一律會透過 Global Reach，因為如果要求透過單一中樞的 ER 傳入，而遠端中樞有 VPN 和 ER，則 VPN 會偏好透過遠端中樞的 ER 來觸達透過遠端中樞的 VPN 或 ER 連線的端點
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
 

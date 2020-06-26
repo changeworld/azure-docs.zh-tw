@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331792"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052214"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用「Azure Migrate：伺服器評定」來評定實體伺服器
 
@@ -101,7 +101,7 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 2. 執行下列命令以產生 ZIP 檔案的雜湊：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公用雲端的使用範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - 政府雲端的使用範例：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - 政府雲端的使用範例：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  確認最新的設備版本與雜湊值：
     - 對於公用雲端：
 
@@ -180,7 +180,7 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 
 1. 按一下 [新增認證] 以指定設備會用來探索伺服器的帳戶認證。  
 2. 指定 [作業系統]、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
-您可以新增一組適用於 Windows 與 Linux 伺服器的認證。
+您可以為 Windows 和 Linux 伺服器新增多個認證。
 4. 按一下 [新增伺服器]，然後指定伺服器詳細資料 - FQDN/IP 位址與認證的易記名稱 (每列一筆輸入) 以連線至伺服器。
 3. 按一下 **[驗證]** 。 驗證之後，就會顯示可探索的伺服器清單。
     - 如果伺服器驗證失敗，請將滑鼠停留在 [狀態] 欄中的圖示上以檢閱錯誤。 修正問題，然後再次驗證。

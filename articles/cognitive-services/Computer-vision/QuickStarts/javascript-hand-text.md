@@ -11,28 +11,26 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7cf0d2cb27425010e1f6831bb7f75e35a670be24
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 25b60a414278f0bba6358524ec1c4aa1e7d27567
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171713"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986809"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷和手寫文字
 
-在本快速入門中，您將使用電腦視覺 REST API 來擷取影像中的印刷和手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識的字元擷取到電腦可讀取的字元資料流中。 
-
-
+在本快速入門中，您將使用電腦視覺 REST API 來擷取影像中的印刷和手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。 
 
 > [!IMPORTANT]
-> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方式執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫此 URI (其代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API)，來檢查狀態並傳回讀取方法呼叫的結果。
+> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
-
-- 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 
-
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="create-and-run-the-sample"></a>建立並執行範例
 
@@ -43,7 +41,7 @@ ms.locfileid: "84171713"
 1. (選擇性) 將 `inputImage` 控制項的 `value` 屬性值取代為您要從中擷取文字之不同影像的 URL。
 1. 將程式碼儲存為副檔名為 `.html` 的檔案。 例如： `get-text.html` 。
 1. 開啟瀏覽器視窗。
-1. 當網頁顯示在瀏覽器中時，請填入必要參數，然後選擇 [讀取影像] 按鈕。
+1. 當網頁顯示在瀏覽器中時，請填入必要參數，然後選擇 [讀取影像]**** 按鈕。
 
 ```html
 <!DOCTYPE html>

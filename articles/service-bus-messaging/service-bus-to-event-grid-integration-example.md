@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 548a51fef693aae6e9b9068f9731b82aaa85dfe3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5e25e6c9efd7cf06f9d8e20f6cbc8c4b413ca67c
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610352"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670302"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教學課程：使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件
 在本教學課程中，您將了解如何使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件。 
@@ -28,11 +28,11 @@ ms.locfileid: "84610352"
 > [!div class="checklist"]
 > * 建立服務匯流排命名空間
 > * 準備用來傳送訊息的應用程式範例
+> * 對服務匯流排主題傳送訊息
+> * 使用 Logic Apps 接收訊息
 > * 在 Azure 上設定測試函式
 > * 透過 Event Grid 連線函式和命名空間
-> * 對服務匯流排主題傳送訊息
 > * 使用 Azure Functions 接收訊息
-> * 使用 Logic Apps 接收訊息
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -53,7 +53,7 @@ ms.locfileid: "84610352"
 您可以使用任何方法，將訊息傳送至服務匯流排主題。 此程序結尾的範例程式碼假設您目前使用 Visual Studio 2017。
 
 1. 複製 [GitHub azure-service-bus 存放庫](https://github.com/Azure/azure-service-bus/)。
-2. 在 Visual Studio 中，移至 \samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration 資料夾，然後開啟 SBEventGridIntegration.sln 檔案。
+2. 在 Visual Studio 中，移至 \samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration** 資料夾，然後開啟 SBEventGridIntegration.sln** 檔案。
 3. 移至 **MessageSender** 專案，然後選取 **Program.cs**。
 4. 填入您從上一個步驟獲得的服務匯流排主題名稱和連接字串：
 
@@ -61,7 +61,62 @@ ms.locfileid: "84610352"
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
+5. 將 `numberOfMessages` 值更新為 **5**。 
 5. 建置並執行程式，以將測試訊息傳送至服務匯流排主題。 
+
+## <a name="receive-messages-by-using-logic-apps"></a>使用 Logic Apps 接收訊息
+請遵循下列步驟，來連接邏輯應用程式與 Azure 服務匯流排和 Azure 事件方格：
+
+1. 在 Azure 入口網站中建立邏輯應用程式。
+    1. 依序選取 [+ 建立資源]****、[整合]**** 和 [邏輯應用程式]****。 
+    2. 在 [邏輯應用程式 - 建立]**** 頁面上，輸入邏輯應用程式的**名稱**。
+    3. 選取您的 Azure **訂用帳戶**。 
+    4. 在 [資源群組]**** 中選取 [使用現有項目]****，然後選取要用於稍早所建立其他資源 (例如 Azure 函式、服務匯流排命名空間) 的資源群組。 
+    5. 選取邏輯應用程式的 [位置]****。 
+    6. 選取 [建立]**** 以建立邏輯應用程式。 
+2. 在 [Logic Apps 設計工具]**** 頁面上，選取 [範本]**** 底下的 [空白邏輯應用程式]****。 
+3. 在設計工具上執行下列步驟：
+    1. 搜尋**事件方格**。 
+    2. 選取 [發生資源事件時 - Azure 事件方格]****。 
+
+        ![Logic Apps 設計工具 - 選取事件方格觸發程序](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. 選取 [登入]****、輸入 Azure 認證，然後選取 [允許存取]****。 
+5. 在 [發生資源事件時]**** 頁面上，執行下列步驟：
+    1. 選取 Azure 訂用帳戶。 
+    2. 在 [資源類型]**** 中，選取 [Microsoft.ServiceBus.Namespaces]****。 
+    3. 在 [資源名稱]**** 中，選取您的服務匯流排命名空間。 
+    4. 選取 [新增參數]****，然後選取 [尾碼篩選]****。 
+    5. 在 [尾碼篩選]**** 中，輸入第二個服務匯流排主題訂用帳戶的名稱。 
+        ![Logic Apps 設計工具 - 設定事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. 在設計工具中選取 [+ 新增步驟]****，然後執行下列步驟：
+    1. 搜尋**服務匯流排**。
+    2. 在清單中選取 [服務匯流排]****。 
+    3. 在 [動作]**** 清單中針對 [取得訊息]**** 進行選取。 
+    4. 選取 [從主題訂用帳戶取得訊息 (查看鎖定)]****。 
+
+        ![Logic Apps 設計工具 - 取得訊息動作](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. 輸入**連線的名稱**。 例如：**從主題訂用帳戶取得訊息**，然後選取服務匯流排命名空間。 
+
+        ![Logic Apps 設計工具 - 選取服務匯流排命名空間](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. 選取 [RootManageSharedAccessKey]****，然後選取 [建立]****。
+
+        ![Logic Apps 設計工具 - 選取共用存取金鑰](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+    8. 選取您的**主題**和**訂用帳戶**。 
+    
+        ![Logic Apps 設計工具 - 選取您的服務匯流排主題和訂用帳戶](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. 選取 [+ 新增步驟]****，然後執行下列步驟： 
+    1. 選取 [服務匯流排]****。
+    2. 從動作清單中，選取 [完成主題訂用帳戶中的訊息]****。 
+    3. 選取您的服務匯流排**主題**。
+    4. 選取主題的第二個**訂用帳戶**。
+    5. 在 [訊息的鎖定權杖]**** 中，從 [動態內容]**** 選取 [鎖定權杖]****。 
+
+        ![Logic Apps 設計工具 - 選取您的服務匯流排主題和訂用帳戶](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. 在 Logic Apps 設計工具的工具列上選取 [儲存]****，以儲存邏輯應用程式。 
+9. 遵循[對服務匯流排主題傳送訊息](#send-messages-to-the-service-bus-topic)一節中的指示，來對主題傳送訊息。 
+10. 切換至邏輯應用程式的 [概觀]**** 頁面。 您便會在所傳送訊息的 [執行歷程記錄]**** 中看到邏輯應用程式在執行。
+
+    ![Logic Apps 設計工具 - 邏輯應用程式執行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="set-up-a-test-function-on-azure"></a>在 Azure 上設定測試函式 
 在處理整個案例之前，至少設定一個小型測試函式，以便用來偵錯及觀察正在流動的事件。 請遵循[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)一文中的指示，以執行下列工作： 
@@ -74,7 +129,7 @@ ms.locfileid: "84610352"
 
 # <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
-1. 在樹狀檢視中展開 [Functions]，然後選取您的函式。 使用下列程式碼取代該函式的程式碼： 
+1. 在樹狀檢視中展開 [Functions]****，然後選取您的函式。 使用下列程式碼取代該函式的程式碼： 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -99,9 +154,10 @@ ms.locfileid: "84610352"
             var validationHeaderValue = headerValues.FirstOrDefault();
             if(validationHeaderValue == "SubscriptionValidation")
             {
+                log.LogInformation("Validating the subscription");            
                 var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
                 var code = events[0].Data["validationCode"];
-                log.LogInformation("Validation code: {code}");
+                log.LogInformation($"Validation code: {code}");
                 return (ActionResult) new OkObjectResult(new { validationResponse = code });
             }
         }
@@ -119,30 +175,48 @@ ms.locfileid: "84610352"
         public DateTime EventTime { get; set; }
         public Dictionary<string, string> Data { get; set; }
         public string Topic { get; set; }
-    }
-    
+    }    
     ```
-2. 選取工具列上的 [儲存] 來儲存函式程式碼。
+2. 選取工具列上的 [儲存]**** 來儲存函式程式碼。
 
     ![儲存函式程式碼](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
-3. 選取工具列上的 [測試/執行]，在主體中輸入名稱，然後選取 [執行]。 
+3. 在工具列上選取 [測試/執行]****，然後執行下列步驟： 
+    1. 在 **body** 中輸入下列 JSON。
 
-    ![測試執行](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
-4. 確認您有看到如下圖所示的輸出和記錄。 
+        ```json
+        [{
+          "id": "64ba80ae-9f8e-425f-8bd7-d88d2c0ba3e3",
+          "topic": "/subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/spegridsbusrg/providers/Microsoft.ServiceBus/namespaces/spegridsbusns",
+          "subject": "",
+          "data": {
+            "validationCode": "D7D825D4-BD04-4F73-BDE3-70666B149857",
+            "validationUrl": "https://rp-eastus.eventgrid.azure.net:553/eventsubscriptions/spsbusegridsubscription/validate?id=D7D825D4-BD04-4F73-BDE3-70666B149857&t=2020-06-09T18:28:51.5724615Z&apiVersion=2020-04-01-preview&[Hidden Credential]"
+          },
+          "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
+          "eventTime": "2020-06-09T18:28:51.5724615Z",
+          "metadataVersion": "1",
+          "dataVersion": "2"
+        }]
+        ```    
+    2. 按一下 [新增標頭]****，然後新增名稱為 `aeg-event-type` 且值為 `SubscriptionValidation` 的標頭。 
+    3. 選取 [執行]****。 
 
-    ![測試執行 - 輸出](./media/service-bus-to-event-grid-integration-example/test-run-output.png)
-3. 選取 [取得函式 URL]，然後記下該 URL。 
+        ![測試執行](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+    4. 確認您在回應本文中看到傳回狀態碼 [沒問題]**** 和驗證碼。 此外，請參閱函式所記錄的資訊。 
+
+        ![測試回合 - 回應](./media/service-bus-to-event-grid-integration-example/test-function-response.png)        
+3. 選取 [取得函式 URL]****，然後記下該 URL。 
 
     ![取得函式 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
-5. 選取 URL 文字旁的 [複製] 按鈕。    
+5. 選取 URL 文字旁的 [複製]**** 按鈕。    
     ![複製函式 URL](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 # <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. 將函式設定為使用 **V1** 版本： 
-    1. 在樹狀檢視中選取您的函式應用程式，然後選取 [函式應用程式設定]。 
-    2. 選取 [~1] 作為 [執行階段版本]。 
-2. 在樹狀檢視中展開 [Functions]，然後選取您的函式。 使用下列程式碼取代該函式的程式碼： 
+    1. 在樹狀檢視中選取您的函式應用程式，然後選取 [函式應用程式設定]****。 
+    2. 選取 [~1]**** 作為 [執行階段版本]****。 
+2. 在樹狀檢視中展開 [Functions]****，然後選取您的函式。 使用下列程式碼取代該函式的程式碼： 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -187,13 +261,13 @@ ms.locfileid: "84610352"
         public string Topic { get; set; }
     }
     ```
-4. 選取 [儲存並執行]。
+4. 選取 [儲存並執行]****。
 
     ![函式應用程式輸出](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. 選取工具列上的 [取得函式 URL]。 
+4. 選取工具列上的 [取得函式 URL]****。 
 
     ![取得函式 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
-5. 選取 URL 文字旁的 [複製] 按鈕。    
+5. 選取 URL 文字旁的 [複製]**** 按鈕。    
     ![複製函式 URL](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
@@ -203,26 +277,26 @@ ms.locfileid: "84610352"
 
 若要建立 Azure 事件方格訂用帳戶，請遵循下列步驟：
 
-1. 在 Azure 入口網站中移至您的命名空間，然後在左窗格中選取 [事件]。 您的命名空間視窗隨即開啟，其右窗格中顯示兩個 Event Grid 訂用帳戶。 
+1. 在 Azure 入口網站中移至您的命名空間，然後在左窗格中選取 [事件]****。 您的命名空間視窗隨即開啟，其右窗格中顯示兩個 Event Grid 訂用帳戶。 
     
     ![服務匯流排 - 事件頁面](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
-2. 選取工具列上的 [+ 事件訂用帳戶]。 
-3. 在 [建立事件訂用帳戶] 頁面上，執行下列步驟：
+2. 選取工具列上的 [+ 事件訂用帳戶]****。 
+3. 在 [建立事件訂用帳戶]**** 頁面上，執行下列步驟：
     1. 輸入訂用帳戶的**名稱**。 
     2. 輸入**系統主題**的**名稱**。 系統主題是針對 Azure 資源所建立的主題，例如 Azure 儲存體帳戶和 Azure 服務匯流排。 若要深入了解系統主題，請參閱[系統主題概觀](../event-grid/system-topics.md)。
-    2. 選取 [Web Hook] 作為 [端點類型]。 
+    2. 選取 [Web Hook]**** 作為 [端點類型]****。 
 
         ![服務匯流排 - 事件方格訂用帳戶](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. 選擇 [選取端點]、貼上函式 URL，然後選取 [確認選取項目]。 
+    3. 選擇 [選取端點]****、貼上函式 URL，然後選取 [確認選取項目]****。 
 
         ![函式 - 選取端點](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. 切換至 [篩選條件] 索引標籤，並執行下列工作：
-        1. 選取 [啟用主旨篩選]
+    4. 切換至 [篩選條件]**** 索引標籤，並執行下列工作：
+        1. 選取 [啟用主旨篩選]****
         2. 針對您稍早建立的服務匯流排主題，輸入**第一個訂閱**的名稱。
-        3. 選取 [建立] 按鈕。 
+        3. 選取 [建立]**** 按鈕。 
 
             ![事件訂用帳戶篩選條件](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. 切換至 [事件] 頁面的 [事件訂閱] 索引標籤，並確認您有在清單中看到所需的事件訂閱。
+4. 切換至 [事件]**** 頁面的 [事件訂閱]**** 索引標籤，並確認您有在清單中看到所需的事件訂閱。
 
     ![清單中的事件訂用帳戶](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
@@ -230,9 +304,11 @@ ms.locfileid: "84610352"
 1. 執行 .NET C# 應用程式，以將訊息傳送至服務匯流排主題。 
 
     ![主控台應用程式輸出](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
-1. 在 Azure 函式應用程式的頁面上，依序展開 [Functions] 和您的 [函式]，然後選取 [監視]。 
+1. 在 Azure 函式應用程式的頁面上，從 [程式碼 + 測試]**** 索引標籤切換為 [監視器]**** 索引標籤。對於張貼至服務匯流排主題的每則訊息，您應會看到一個項目。 如果您看不到，請在等候幾分鐘後重新整理頁面。 
 
     ![監視函式](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
+
+    您也可以使用 [監視器]**** 頁面的 [記錄]**** 索引標籤，在訊息傳送後查看記錄資訊。 可能會有一些延遲，所以幾分鐘後再查看記錄的訊息。 
 
 ## <a name="receive-messages-by-using-azure-functions"></a>使用 Azure Functions 接收訊息
 在前一節中，您已觀察到簡單測試和偵錯案例，並確定事件正在流動。 
@@ -248,22 +324,22 @@ ms.locfileid: "84610352"
     ```
 3. 下載函式的**發行設定檔**：
     1. 選取您的函式應用程式。 
-    2. 選取 [概觀] 索引標籤 (如果尚未選取)。 
-    3. 選取工具列上的 [取得發行設定檔]。 
+    2. 選取 [概觀]**** 索引標籤 (如果尚未選取)。 
+    3. 選取工具列上的 [取得發行設定檔]****。 
 
         ![取得函式的發行設定檔](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. 將該檔案儲存到您專案的資料夾中。 
-4. 在 Visual Studio 中，以滑鼠右鍵按一下 [SBEventGridIntegration]，然後選取 [發佈]。 
-5. 在 [發行] 中，執行下列步驟： 
-    1. 在 [發行] 頁面上選取 [開始] 
-    2. 在 [目標] 中選取 [匯入設定檔]。 
-    3. 選取 [下一步] 。 
+4. 在 Visual Studio 中，以滑鼠右鍵按一下 [SBEventGridIntegration]****，然後選取 [發佈]****。 
+5. 在 [發行]**** 中，執行下列步驟： 
+    1. 在 [發行]**** 頁面上選取 [開始]**** 
+    2. 在 [目標]**** 中選取 [匯入設定檔]****。 
+    3. 選取 [下一步] ****。 
 
         ![Visual Studio - [匯入設定檔] 按鈕](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. 選取您稍早下載的 [發行設定檔]，並選取 [完成]。
+7. 選取您稍早下載的 [發行設定檔]****，並選取 [完成]****。
 
     ![選取發行設定檔](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
-8. 選取 [發佈] 頁面上的 [發佈]。 
+8. 選取 [發佈]**** 頁面上的 [發佈]****。 
 
     ![Visual Studio - 發佈](./media/service-bus-to-event-grid-integration-example/select-publish.png)
 9. 確認您有看到新的 Azure 函式 **ReceiveMessagesOnEvent**。 請視需要重新整理頁面。 
@@ -274,66 +350,16 @@ ms.locfileid: "84610352"
 ### <a name="event-grid-subscription"></a>事件方格訂用帳戶
 
 1. 刪除現有的事件方格訂用帳戶：
-    1. 在 [服務匯流排命名空間] 頁面上，選取左側功能表上的 [事件]。 
+    1. 在 [服務匯流排命名空間]**** 頁面上，選取左側功能表上的 [事件]****。 
+    2. 切換至 [事件訂用帳戶]**** 索引標籤。 
     2. 選取現有的事件訂用帳戶。 
-    3. 在 [事件訂用帳戶] 頁面上，選取 [刪除]。
+
+        ![選取事件訂用帳戶](./media/service-bus-to-event-grid-integration-example/select-event-subscription.png)
+    3. 在 [事件訂用帳戶]**** 頁面上，選取 [刪除]****。 選取 [是]**** 以確認要刪除。 
+        ![刪除事件訂用帳戶按鈕](./media/service-bus-to-event-grid-integration-example/delete-subscription-button.png)
 2. 遵循[透過事件方格連接函式和命名空間](#connect-the-function-and-namespace-via-event-grid)一節中的指示，以使用新的函式 URL 建立事件方格訂用帳戶。
 3. 遵循[對服務匯流排主題傳送訊息](#send-messages-to-the-service-bus-topic)一節中的指示，來對主題傳送訊息並監視函式。 
 
-## <a name="receive-messages-by-using-logic-apps"></a>使用 Logic Apps 接收訊息
-請遵循下列步驟，來連接邏輯應用程式與 Azure 服務匯流排和 Azure 事件方格：
-
-1. 在 Azure 入口網站中建立邏輯應用程式。
-    1. 依序選取 [+ 建立資源]、[整合] 和 [邏輯應用程式]。 
-    2. 在 [邏輯應用程式 - 建立] 頁面上，輸入邏輯應用程式的**名稱**。
-    3. 選取您的 Azure **訂用帳戶**。 
-    4. 在 [資源群組] 中選取 [使用現有項目]，然後選取要用於稍早所建立其他資源 (例如 Azure 函式、服務匯流排命名空間) 的資源群組。 
-    5. 選取邏輯應用程式的 [位置]。 
-    6. 選取 [建立] 以建立邏輯應用程式。 
-2. 在 [Logic Apps 設計工具] 頁面上，選取 [範本] 底下的 [空白邏輯應用程式]。 
-3. 在設計工具上執行下列步驟：
-    1. 搜尋**事件方格**。 
-    2. 選取 [發生資源事件時 (預覽) - Azure 事件方格]。 
-
-        ![Logic Apps 設計工具 - 選取事件方格觸發程序](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. 選取 [登入]、輸入 Azure 認證，然後選取 [允許存取]。 
-5. 在 [發生資源事件時] 頁面上，執行下列步驟：
-    1. 選取 Azure 訂用帳戶。 
-    2. 在 [資源類型] 中，選取 [Microsoft.ServiceBus.Namespaces]。 
-    3. 在 [資源名稱] 中，選取您的服務匯流排命名空間。 
-    4. 選取 [新增參數]，然後選取 [尾碼篩選]。 
-    5. 在 [尾碼篩選] 中，輸入第二個服務匯流排主題訂用帳戶的名稱。 
-        ![Logic Apps 設計工具 - 設定事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
-6. 在設計工具中選取 [+ 新增步驟]，然後執行下列步驟：
-    1. 搜尋**服務匯流排**。
-    2. 在清單中選取 [服務匯流排]。 
-    3. 在 [動作] 清單中針對 [取得訊息] 進行選取。 
-    4. 選取 [從主題訂用帳戶取得訊息 (查看鎖定)]。 
-
-        ![Logic Apps 設計工具 - 取得訊息動作](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. 輸入**連線的名稱**。 例如：**從主題訂用帳戶取得訊息**，然後選取服務匯流排命名空間。 
-
-        ![Logic Apps 設計工具 - 選取服務匯流排命名空間](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. 選取 [RootManageSharedAccessKey]。
-
-        ![Logic Apps 設計工具 - 選取共用存取金鑰](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. 選取 [建立]。 
-    8. 選取您的主題和訂用帳戶。 
-    
-        ![Logic Apps 設計工具 - 選取您的服務匯流排主題和訂用帳戶](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. 選取 [+ 新增步驟]，然後執行下列步驟： 
-    1. 選取 [服務匯流排]。
-    2. 從動作清單中，選取 [完成主題訂用帳戶中的訊息]。 
-    3. 選取您的服務匯流排**主題**。
-    4. 選取主題的第二個**訂用帳戶**。
-    5. 在 [訊息的鎖定權杖] 中，從 [動態內容] 選取 [鎖定權杖]。 
-
-        ![Logic Apps 設計工具 - 選取您的服務匯流排主題和訂用帳戶](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
-8. 在 Logic Apps 設計工具的工具列上選取 [儲存]，以儲存邏輯應用程式。 
-9. 遵循[對服務匯流排主題傳送訊息](#send-messages-to-the-service-bus-topic)一節中的指示，來對主題傳送訊息。 
-10. 切換至邏輯應用程式的 [概觀] 頁面。 您便會在所傳送訊息的 [執行歷程記錄] 中看到邏輯應用程式在執行。
-
-    ![Logic Apps 設計工具 - 邏輯應用程式執行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>後續步驟
 

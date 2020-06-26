@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827230"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659611"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT 支援和協助選項
 
@@ -29,35 +29,43 @@ ms.locfileid: "83827230"
 * [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [美國政府的 Azure 入口網站](https://portal.azure.us)
 
+## <a name="post-a-question-on-microsoft-qa"></a>在 Microsoft 問與答頁面上張貼問題
+
+若要讓 Microsoft 工程師、Azure 最有價值專家 (MVP) 或我們的專家社群為您的技術產品問題提供快速可靠的解答，請透過 [Microsoft 問與答頁面](https://aka.ms/azureqa)與我們聯繫，這是最廣為使用的 Azure 社群支援點。 
+
+如果您使用搜尋找不到問題的解答，請將新問題提交至 Microsoft 問與答頁面。 當您提出問題時，請使用下列其中一個標籤：
+
+- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
+- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure IoT 中心](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Azure IoT 中樞裝置佈建服務 (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
+- [Azure IoT SDK](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
+- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
+- [Azure 時間序列深入解析](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+- [Azure 地圖服務](https://docs.microsoft.com/answers/topics/azure-maps.html)
+
 ## <a name="post-a-question-on-stack-overflow"></a>在 Stack Overflow 張貼問題
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-如需來自社群的即時解答，請參閱 Stack Overflow。 Stack Overflow 是適用於**開發相關問題**的常用管道。 社群成員和 Microsoft 小組成員會在這裡直接參與以協助您解決問題。
+若要讓最大的社群開發人員生態系統為您解答開發人員問題，請在 Stack Overflow 提出您的問題。
 
-若無法透過搜尋找到問題的解答，請將新問題提交至 Stack Overflow。 制訂問題時，請使用下列其中一個標記：
+如果您將新問題提交至 Stack Overflow，請在建立問題時使用下列一或多個標籤：
 
- - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure IoT Central](https://stackoverflow.com/questions/tagged/azure-iot-central)
  - [Azure IoT Edge](https://stackoverflow.com/questions/tagged/azure-iot-edge)
  - [Azure IoT 中心](https://stackoverflow.com/questions/tagged/azure-iot-hub)
- - [Azure 地圖服務](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure IoT SDK](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
+ - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
+ - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
  - [Azure 時間序列深入解析](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
-
-## <a name="start-a-conversation-on-the-msdn-forums"></a>在 MSDN 論壇上開始交談
-
-討論用來建立 IoT 解決方案的 Azure 技術和服務。 MSDN 是適用於**解決方案相關問題**的常用管道。 社群成員和 Microsoft 小組成員會在這裡直接參與，以協助您選擇適用於專案的解決方案。
-
-若無法透過搜尋找到問題的解答，請在服務相關的論壇上，將新問題提交至 MSDN：
-
-- [Azure Digital Twins 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Azure IoT 中樞的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Azure IoT Edge 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Azure 地圖服務的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-maps.html)
-- [Azure 時間序列深入解析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+ - [Azure 地圖服務](https://stackoverflow.com/questions/tagged/azure-maps)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 意見反應上提交意見反應
 
@@ -77,6 +85,7 @@ ms.locfileid: "83827230"
 | Azure 地圖服務                 | https://feedback.azure.com/forums/909172-azure-maps |
 | Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
+| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>隨時掌握更新和新版本
 

@@ -1,24 +1,24 @@
 ---
 title: 適用於 Azure 資訊安全中心的內建原則定義
 description: 列出適用於 Azure 資訊安全中心的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 0014625fbc09c6fbf37ea206cb3ce9aadaa0087e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c2ec97bb07eeabf23fe4a2c9a0f453976226efab
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234729"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888480"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-security-center"></a>適用於 Azure 資訊安全中心的 Azure 原則內建原則定義
+# <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>適用於 Azure 資訊安全中心的 Azure 原則內建定義
 
 此頁面是適用於 Azure 資訊安全中心的 [Azure 原則](../governance/policy/overview.md)內建原則定義索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 
-連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [GitHub] 資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
+連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本]**** 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
 
 ## <a name="azure-security-center"></a>Azure 資訊安全中心
 

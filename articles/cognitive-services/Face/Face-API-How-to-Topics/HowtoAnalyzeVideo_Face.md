@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76169892"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986726"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>範例：如何即時分析影片
 
@@ -201,13 +201,12 @@ namespace VideoFrameConsoleApplication
 
 若要開始使用此範例，請按照以下步驟執行：
 
-1. 從[訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)取得「視覺 API」的 API 金鑰。 若要進行影片畫面分析，適用的 API 包括：
-    - [電腦視覺 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [臉部 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. 複製 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) \(英文\) GitHub 存放庫
-
-3. 在 Visual Studio 2015 中開啟範例，然後建置並執行範例應用程式：
+1. 建立 [Azure 帳戶](https://azure.microsoft.com/free/cognitive-services/)。 如果您已經有 Azure 帳戶，您可以跳到下一個步驟。
+2. 在 Azure 入口網站中建立電腦視覺和 Face 的資源，以取得您的金鑰和端點。 請務必在設定期間選取免費層 (F0)。
+   - [電腦視覺](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Face](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) 部署資源之後，按一下 [移至資源]，以收集每個資源的金鑰和端點。 
+3. 複製 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) \(英文\) GitHub 存放庫。
+4. 在 Visual Studio 中開啟範例，然後建置並執行範例應用程式：
     - 就 BasicConsoleSample 而言，臉部金鑰會直接以硬式編碼編寫在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中。
     - 就 LiveCameraSample 而言，應該在應用程式的 [設定] 窗格中輸入金鑰。 這些金鑰會以使用者資料的形式跨工作階段保存。
         
@@ -216,7 +215,7 @@ namespace VideoFrameConsoleApplication
 
 ## <a name="summary"></a>摘要
 
-在本指南中，您已了解如何使用「臉部」、「電腦視覺」和「表情」API，在即時視訊資料流上執行近乎即時的分析，以及如何使用我們的範例程式碼來開始設計程式。 您可以使用 [Azure 認知服務註冊頁面](https://azure.microsoft.com/try/cognitive-services/)的免費 API 金鑰來開始建置應用程式。 
+在本指南中，您已了解如何使用「臉部」、「電腦視覺」和「表情」API，在即時視訊資料流上執行近乎即時的分析，以及如何使用我們的範例程式碼來開始設計程式。
 
 歡迎您在 [GitHub 存放庫](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) 中提供意見反應和建議。若要提供更廣泛的 API 意見反應，請到我們的  [UserVoice 網站](https://cognitive.uservoice.com/)。
 

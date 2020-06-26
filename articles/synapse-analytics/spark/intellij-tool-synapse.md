@@ -2,20 +2,20 @@
 title: 教學課程 - Azure Toolkit for IntelliJ (Spark 應用程式)
 description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至 Apache Spark 集區 (預覽)。
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6f71b9ecc5dc0279d2053f6212f685968309284e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608752"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976790"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>教學課程：使用 Synapse Synapse Analytics 建立包含 IntelliJ 的 Apache Spark 應用程式 (工作區預覽)
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區建立具有 IntelliJ 的 Apache Spark 應用程式
 
 本教學課程示範如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至 Spark 集區 (預覽)。 您可以利用數個方式來使用此外掛程式：
 
@@ -146,7 +146,7 @@ ms.locfileid: "84608752"
     |命令列引數|如有需要，您可以為主類別輸入以空格隔開的引數。|
     |參考的 Jar 和參考的檔案|如果有任何要參考的 Jar 或檔案，您可以輸入其路徑。 您也可以在 Azure 虛擬檔案系統中瀏覽檔案；此系統目前僅支援 ADLS Gen2 叢集。 其他資訊：[Apache Spark 設定](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)和[如何將資源上傳至叢集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
     |作業上傳儲存體|展開以顯示其他選項。|
-    |儲存類型|從下拉式清單選取 [使用 Azure Blob 上傳]。|
+    |儲存類型|從下拉式清單中選取 [使用 Azure Blob 上傳] 或 [使用叢集預設儲存體帳戶上傳]。|
     |儲存體帳戶|輸入儲存體帳戶。|
     |儲存體金鑰|輸入儲存體金鑰。|
     |儲存體容器|輸入**儲存體帳戶**和**儲存體金鑰**後，從下拉式清單中選取您的儲存體容器。|
@@ -250,6 +250,7 @@ ms.locfileid: "84608752"
 
     |屬性 |值 |
     |----|----|
+    |Main class name (主要類別名稱)| 選取主要類別名稱。| 
     |Spark 集區|選取您要在其上執行應用程式的 Spark 集區。|
     ||
 

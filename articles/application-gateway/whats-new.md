@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
-ms.date: 03/24/2020
+ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: 70014b5ab37a07e01eaa2db3d729b7d8af520842
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81311768"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669727"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 應用程式閘道的新功能為何？
 
@@ -27,6 +27,7 @@ Azure 應用程式閘道會持續更新。 為了讓您隨時掌握最新的開�
 
 |功能  |描述  |新增日期  |
 |---------|---------|---------|
+| 應用程式閘道輸入控制器 (AGIC) AKS 附加元件 (預覽) |應用程式閘道輸入控制器現在可以透過 Azure CLI 在一行中部署為原生 AKS 附加元件。 AKS 附加元件可讓 AGIC 成為完全受控的服務，同時仍在客戶的 AKS 叢集中執行。 如需詳細資訊，請參閱 [AGIC 附加元件差異](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |
 | v2 上的使用者定義路由 (UDR) (預覽) |應用程式閘道 v2 SKU 的某些案例現在可支援使用者定義的路由。 如需詳細資訊，請參閱[應用程式閘道設定概觀](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。 |2020 年 3 月 |
 |親和性 Cookie 變更 |啟用以 Cookie 為基礎的親和性時，除了現有的 ApplicationGatewayAffinity Cookie 以外，應用程式閘道也會插入另一個名為 *ApplicationGatewayAffinityCORS* 的相同 Cookie。 *ApplicationGatewayAffinityCORS* 已對其新增兩個屬性 (*SameSite=None; Secure*)，因此即使是跨原始來源的要求，仍會維護黏性工作階段。 如需詳細資訊，請參閱[應用程式閘道以 Cookie 為依據的親和性](configuration-overview.md#cookie-based-affinity)。 |2020 年 2 月 |
 |探查增強功能 |透過應用程式閘道 v2 SKU 中的自訂探查增強功能，我們簡化了[探查設定](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)、加快了[隨選後端健康情況測試](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe)的執行速度，並新增了[更多診斷資訊](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages)，以協助您對後端健康情況問題進行疑難排解。  |2019 年 10 月 |

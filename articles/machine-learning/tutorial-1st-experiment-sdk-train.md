@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558372"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667079"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -32,11 +32,11 @@ ms.locfileid: "84558372"
 > * 在工作室中查看訓練結果
 > * 擷取最佳模型
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 唯一的必要條件是執行本教學課程的第一個部分：[設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
-在本教學課程的這個部分中，您會執行第一部分結尾處所開啟範例 Jupyter 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  中的程式碼。 本文會逐步解說此 Notebook 中的相同程式碼。
+在本教學課程的這個部分中，您會執行第一部分結尾處所開啟範例 Jupyter 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 中的程式碼。 本文會逐步解說此 Notebook 中的相同程式碼。
 
 ## <a name="open-the-notebook"></a>開啟 Notebook
 
@@ -46,7 +46,7 @@ ms.locfileid: "84558372"
 
 
 > [!Warning]
-> 請**不要**在 Jupyter 介面中建立新的  Notebook！ 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  包含本教學課程**所需的所有程式碼和資料**。
+> 請**不要**在 Jupyter 介面中建立新的 Notebook！ 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 包含本教學課程**所需的所有程式碼和資料**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>連結工作區並建立實驗
 
@@ -54,7 +54,7 @@ ms.locfileid: "84558372"
 > 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
 >
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]  ，以執行整個 Notebook。
+> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
 
 使用 `from_config().` 函式匯入 `Workspace` 類別，並從 `config.json` 檔案載入您的訂用帳戶資訊。根據預設，此功能會在目前的目錄中尋找 JSON 檔案，但您也可以使用 `from_config(path="your/file/path")` 指定路徑參數來指向檔案。 在雲端 Notebook 伺服器中，檔案會自動位於根目錄中。
 
@@ -138,14 +138,14 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>在工作室中檢視訓練結果
 
-遵循 **Azure Machine Learning 工作室的連結**，即可前往主要實驗頁面。 在這裡，您會看到實驗中的所有個別執行。 任何自訂記錄的值 (在此案例中為 `alpha_value` 和 `rmse`) 都會變成每項執行的欄位，而且也會提供給實驗頁面頂端的圖表和圖格使用。 若要將記錄的計量新增至圖表或圖格，請將滑鼠停留在其上方，按一下 [編輯] 按鈕，然後尋找您的自訂記錄計量。
+遵循 **Azure Machine Learning 工作室的連結**，即可前往主要實驗頁面。 在這裡，您會看到實驗中的所有個別執行。 任何自訂記錄的值 (在此案例中為 `alpha_value` 和 `rmse`) 都會變成每項執行的欄位，而且也會提供給圖表使用。 若要使用已記錄的計量繪製新的圖表，請按一下 [新增圖表]，然後選取您要繪製的計量。
 
 當您針對數百個或數千個不同的執行來訓練模型時，此頁面可讓您輕鬆查看所定型的每個模型，特別是定型方式，以及您獨特的計量如何隨著時間變更。
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="工作室中的主要實驗頁面。":::
 
 
-選取 `RUN NUMBER` 資料行中的執行編號連結，以查看個別執行的頁面。 預設的 [詳細資料]  索引標籤會顯示每項執行的詳細資訊。 瀏覽至 [輸出+記錄]  索引標籤，您會看到每次訓練反覆項目時，針對模型上傳至執行的 `.pkl` 檔案。 您可以在這裡下載模型檔案，而不必以手動方式重新進行定型。
+選取 `RUN NUMBER` 資料行中的執行編號連結，以查看個別執行的頁面。 預設的 [詳細資料] 索引標籤會顯示每項執行的詳細資訊。 瀏覽至 [輸出+記錄] 索引標籤，您會看到每次訓練反覆項目時，針對模型上傳至執行的 `.pkl` 檔案。 您可以在這裡下載模型檔案，而不必以手動方式重新進行定型。
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="在工作室中執行詳細資料頁面。":::
 
@@ -207,7 +207,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]  。
+您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

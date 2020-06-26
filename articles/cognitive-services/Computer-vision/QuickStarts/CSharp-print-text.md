@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2afec329204e6ae3eb0f04fbc51acd8b4c7ca7f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f91c472184df88c14a9642837e10ee67a8f82539
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405121"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987874"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>快速入門：使用電腦視覺 REST API 和 C# 擷取印刷文字 (OCR)
 
@@ -25,12 +25,14 @@ ms.locfileid: "81405121"
 
 在此快速入門中，您將使用電腦視覺 REST API，利用光學字元辨識 (OCR) 來擷取影像中的印刷文字。 使用 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，您可以偵測影像中的印刷文字，然後將辨識出的字元擷取到電腦可使用的字元資料流中。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+## <a name="prerequisites"></a>必要條件
 
-## <a name="prerequisites"></a>Prerequisites
-
-- 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
-- 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 然後，分別為名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ## <a name="create-and-run-the-sample-application"></a>建立並執行範例應用程式
 
@@ -38,9 +40,9 @@ ms.locfileid: "81405121"
 
 1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式範本建立新的 Visual Studio 解決方案。
 1. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]  ，選取 [NuGet 套件管理員]  ，然後選取 [管理解決方案的 NuGet 套件]  。
-    1. 按一下 [瀏覽]  索引標籤，然後在 [搜尋]  方塊中鍵入 "Newtonsoft.Json"。
-    1. 顯示時選取 [Newtonsoft.Json]  ，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]  。
+    1. 在功能表中，按一下 [工具]****，選取 [NuGet 套件管理員]****，然後選取 [管理解決方案的 NuGet 套件]****。
+    1. 按一下 [瀏覽]**** 索引標籤，然後在 [搜尋]**** 方塊中鍵入 "Newtonsoft.Json"。
+    1. 顯示時選取 [Newtonsoft.Json]****，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]****。
 1. 執行程式。
 1. 在系統提示時，輸入本機影像的路徑。
 

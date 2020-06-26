@@ -6,15 +6,15 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4e717de82c289aacfba2372e77dc932becaf9a5c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835830"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764174"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -29,7 +29,18 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 已登入 SQL 隨選資源的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 您可以使用三種授權類型來存取非公用儲存體：[使用者身分識別](?tabs=user-identity)、[共用存取簽章](?tabs=shared-access-signature)以及[受控識別](?tabs=managed-identity)。
 
 > [!NOTE]
-> 當您建立工作區時，[Azure AD 傳遞](#force-azure-ad-pass-through)是預設的行為。 如果您使用此行為，則不需要為使用 Azure AD 登入來存取的每個儲存體帳戶建立認證。 您可以[停用此行為](#disable-forcing-azure-ad-pass-through)。
+> 當您建立工作區時，**Azure AD 傳遞**是預設的行為。
+
+### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
+
+**使用者身分識別** (也稱為「Azure AD 傳遞」) 是一種授權類型，其使用登入 SQL 隨選的 Azure AD 使用者身分識別來授與資料存取權。 存取資料之前，Azure 儲存體管理員必須將權限授與 Azure AD 使用者。 如下表所示，SQL 使用者類型不支援此方式。
+
+> [!IMPORTANT]
+> 您必須具有儲存體 Blob 資料擁有者/參與者/讀者角色，才能使用您的身分識別來存取資料。
+> 即使您是儲存體帳戶的擁有者，仍然需要將自己新增至其中一個儲存體 Blob 資料角色。
+>
+> 若要深入了解 Azure Data Lake Store Gen2 中的存取控制，請參閱 [Azure Data Lake Storage Gen2 文章中的存取控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
+>
 
 ### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
@@ -43,49 +54,6 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 > SAS 權杖：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
 您必須建立資料庫範圍或伺服器範圍的認證，才能使用 SAS 權杖來啟用存取。
-
-### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
-
-**使用者身分識別** (也稱為「傳遞」) 是一種授權類型，其使用登入 SQL 隨選的 Azure AD 使用者身分識別來授與資料存取權。 存取資料之前，Azure 儲存體管理員必須將權限授與 Azure AD 使用者。 如上表所示，SQL 使用者類型不支援此方式。
-
-> [!IMPORTANT]
-> 您必須具有儲存體 Blob 資料擁有者/參與者/讀者角色，才能使用您的身分識別來存取資料。
-> 即使您是儲存體帳戶的擁有者，仍然需要將自己新增至其中一個儲存體 Blob 資料角色。
->
-> 若要深入了解 Azure Data Lake Store Gen2 中的存取控制，請參閱 [Azure Data Lake Storage Gen2 文章中的存取控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
->
-
-您必須明確地啟用 Azure AD 傳遞驗證，才能讓 Azure AD 使用者使用其身分識別來存取儲存體。
-
-#### <a name="force-azure-ad-pass-through"></a>強制執行 Azure AD 傳遞
-
-強制執行 Azure AD 傳遞是使用特殊 CREDENTIAL NAME `UserIdentity` 時的預設行為，這會在佈建 Azure Synapse 工作區期間自動建立。 其會針對每個 Azure AD 登入的每個查詢強制使用 Azure AD 傳遞，而且不論是否有其他認證存在，都會發生此情形。
-
-> [!NOTE]
-> Azure AD 傳遞是預設行為。 您不需要為以 AD 登入來存取的每個儲存體帳戶建立認證。
-
-如果您[對每個查詢停用強制執行 Azure AD 傳遞](#disable-forcing-azure-ad-pass-through)，然後想再次啟用，請執行：
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
-若要為特定使用者啟用強制執行 Azure AD 傳遞，您可以將認證 `UserIdentity` 的 EFERENCE 權限授與該特定使用者。 下列範例會為 user_name 啟用強制執行 Azure AD 傳遞：
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
-```
-
-#### <a name="disable-forcing-azure-ad-pass-through"></a>停用強制執行 Azure AD 傳遞
-
-您可以[對每個查詢停用強制執行 Azure AD 傳遞](#force-azure-ad-pass-through)。 若要將其停用，請使用下列方式卸載 `Userdentity` 認證：
-
-```sql
-DROP CREDENTIAL [UserIdentity];
-```
-
-如果您想要重新啟用，請參閱[強制執行 Azure AD 傳遞](#force-azure-ad-pass-through)一節。
 
 ### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
 
@@ -152,7 +120,7 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱**必須**符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
 
 > [!NOTE]
-> 不支援 FOR CRYPTOGRAPHIC PROVIDER 引數。
+> 不支援 `FOR CRYPTOGRAPHIC PROVIDER` 引數。
 
 伺服器層級的 CREDENTIAL 名稱必須符合儲存體帳戶 (和選擇性容器) 的完整路徑，其格式如下：`<prefix>://<storage_account_path>/<storage_path>`。 下表說明儲存體帳戶路徑：
 
@@ -162,10 +130,13 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 | Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
 
-> [!NOTE]
-> 特殊的伺服器層級 CREDENTIAL `UserIdentity` 會[強制執行 Azure AD 傳遞](?tabs=user-identity#force-azure-ad-pass-through)。
-
 伺服器範圍的認證可讓您使用下列驗證類型來存取 Azure 儲存體：
+
+### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
+
+Azure AD 使用者若具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，即可存取 Azure 儲存體上的任何檔案。 Azure AD 使用者不需要認證即可存取儲存體。 
+
+SQL 使用者無法使用 Azure AD 驗證來存取儲存體。
 
 ### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
@@ -180,15 +151,6 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
-
-下列指令碼會建立伺服器層級的認證，讓使用者可以使用 Azure AD 身分識別進行模擬。
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
 ### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
 
 下列指令碼會建立伺服器層級的認證，讓 `OPENROWSET` 函式可以使用工作區受控識別來存取 Azure 儲存體上的任何檔案。
@@ -200,16 +162,8 @@ WITH IDENTITY='Managed Identity'
 
 ### <a name="public-access"></a>[公用存取權](#tab/public-access)
 
-下列指令碼會建立伺服器層級的認證，以便 `OPENROWSET` 函式用來存取公用 Azure 儲存體上的任何檔案。 建立此認證可讓 SQL 主體執行 `OPENROWSET` 函式，在符合認證名稱中 URL 的 Azure 儲存體上讀取公用檔案。
+存取公用檔案不需要資料庫範圍認證。 建立[不含資料庫範圍認證的資料來源](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)，以存取 Azure 儲存體上的公用檔案。
 
-您必須將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='SHARED ACCESS SIGNATURE'
-, SECRET = '';
-GO
-```
 ---
 
 ## <a name="database-scoped-credential"></a>資料庫範圍認證
@@ -218,23 +172,20 @@ GO
 
 資料庫範圍的認證可讓您使用下列驗證類型來存取 Azure 儲存體：
 
+### <a name="azure-ad-identity"></a>[Azure AD 身分識別](#tab/user-identity)
+
+Azure AD 使用者若至少具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，即可存取 Azure 儲存體上的任何檔案。 Azure AD 使用者不需要認證即可存取儲存體。
+
+SQL 使用者無法使用 Azure AD 驗證來存取儲存體。
+
 ### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
 下列指令碼會建立認證，以使用認證中指定的 SAS 權杖來存取儲存體上的檔案。
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
-GO
-```
-
-### <a name="azure-ad-identity"></a>[Azure AD 身分識別](#tab/user-identity)
-
-下列指令碼會建立資料庫範圍認證給[外部資料表](develop-tables-external-tables.md)和搭配認證使用資料來源的 `OPENROWSET` 使用，讓其能夠使用自己的 Azure AD 身分識別來存取儲存體檔案。
-
-```sql
-CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
-WITH IDENTITY = 'User Identity';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
 
@@ -272,14 +223,17 @@ WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
 使用下列指令碼建立可存取可公用資料來源的資料表。
 
 ```sql
-CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
+       WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
 WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [publicData],
+       FILE_FORMAT = [SynapseParquetFormat] )
 ```
 
 資料庫使用者可以使用參考資料源的外部資料表或 [OPENROWSET](develop-openrowset.md) 函式，從資料來源讀取檔案內容：
@@ -287,7 +241,9 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FIL
 ```sql
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
+                                DATA_SOURCE = [mysample],
+                                FORMAT=PARQUET) as rows;
 GO
 ```
 
@@ -300,13 +256,13 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
 
-CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity'
 GO
-CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
-GO
-CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+CREATE DATABASE SCOPED CREDENTIAL SasCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
 
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
@@ -316,13 +272,14 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
---,CREDENTIAL = MyIdentity 
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [mysample],
+       FILE_FORMAT = [SynapseParquetFormat] );
 
 ```
 

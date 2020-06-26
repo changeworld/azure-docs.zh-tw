@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76169905"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986716"
 ---
 # <a name="example-identify-faces-in-images"></a>範例：識別影像中的臉部
 
@@ -50,7 +50,11 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-若要取得訂用帳戶金鑰，請從 Azure 入口網站移至 Azure Marketplace。 如需詳細資訊，請參閱[訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)。
+請遵循這些指示來取得金鑰。
+
+1. 建立 [Azure 帳戶](https://azure.microsoft.com/free/cognitive-services/)。 如果您已經有 Azure 帳戶，您可以跳到下一個步驟。
+2. 在 Azure 入口網站中建立 [Face 資源](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)以取得金鑰。 請務必在設定期間選取免費層 (F0)。 
+3. 部署資源之後，按一下 [移至資源]****，以收集您的金鑰。 
 
 ## <a name="step-2-create-the-persongroup"></a>步驟 2:建立 PersonGroup
 

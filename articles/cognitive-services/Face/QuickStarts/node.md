@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: acb198cb727c8a6871bb329be9178f100c0bf6ed
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81402929"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986539"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入門：使用 Face REST API 和 Node.js 偵測影像中的臉部
 
@@ -23,14 +23,17 @@ ms.locfileid: "81402929"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 - 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="set-up-the-node-environment"></a>設定 Node 環境
 
-移至您想要建立專案的資料夾，並建立新的檔案 (facedetection.js)  。 然後將 `requests` 模組安裝至這個專案。 這可讓您的指令碼發出 HTTP 要求。
+移至您想要建立專案的資料夾，並建立新的檔案 (facedetection.js)。 然後將 `requests` 模組安裝至這個專案。 這可讓您的指令碼發出 HTTP 要求。
 
 ```shell
 npm install request --save
@@ -38,7 +41,7 @@ npm install request --save
 
 ## <a name="write-the-nodejs-script"></a>撰寫 Node.js 指令碼
 
-將下列程式碼貼入 facedetection.js  。 這些欄位會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰值更新 `subscriptionKey` 欄位，且您必須變更 `uriBase` 字串，使它包含正確的端點字串。 您可以變更 `imageUrl` 欄位以指向您自己的輸入影像。
+將下列程式碼貼入 facedetection.js。 這些欄位會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰值更新 `subscriptionKey` 欄位，且您必須變更 `uriBase` 字串，使它包含正確的端點字串。 您可以變更 `imageUrl` 欄位以指向您自己的輸入影像。
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

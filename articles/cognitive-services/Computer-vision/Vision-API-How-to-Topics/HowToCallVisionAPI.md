@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72177054"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983465"
 ---
 # <a name="call-the-computer-vision-api"></a>呼叫電腦視覺 API
 
@@ -25,14 +25,6 @@ ms.locfileid: "72177054"
 - 取得標籤、描述與類別
 - 取得特定領域資訊或「名人」
 
-## <a name="prerequisites"></a>Prerequisites
-
-- 本機儲存影像的影像 URL 或路徑
-- 支援的輸入方法：應用程式/八位元資料流或影像 URL 形式的原始影像二進位檔
-- 支援的影像檔案格式：JPEG、PNG、GIF 和 BMP
-- 影像檔大小：4MB 或更少
-- 影像尺寸：50 &times; 50 像素或更高
-  
 本文的範例會示範下列功能：
 
 * 分析影像以傳回標籤陣列與描述
@@ -42,14 +34,22 @@ ms.locfileid: "72177054"
 
 - **選項 1**：特定範圍分析 - 只分析指定的模型
 - **選項 2**：強化分析 - 使用 [86 個類別的分類法](../Category-Taxonomy.md)分析，以提供其他詳細資料
+
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 本機儲存影像的影像 URL 或路徑
+* 支援的輸入方法：應用程式/八位元資料流或影像 URL 形式的原始影像二進位檔
+* 支援的影像檔案格式：JPEG、PNG、GIF 和 BMP
+* 影像檔大小：4MB 或更少
+* 影像尺寸：50 &times; 50 像素或更高
   
 ## <a name="authorize-the-api-call"></a>授權 API 呼叫
 
 每次呼叫電腦視覺 API 時，都需要訂用帳戶金鑰。 此金鑰必須透過查詢字串參數來傳遞，或在要求標頭中指定。
-
-若要取得免費試用金鑰，請執行下列其中一項動作：
-* 前往[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)頁面。 
-* 前往[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)頁面訂閱電腦視覺。
 
 您可以執行下列任一動作來傳遞訂用帳戶金鑰：
 
@@ -180,12 +180,12 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=cele
 欄位 | 類型 | 內容
 ------|------|------|
 Tags  | `object` | 標籤陣列的最上層物件。
-tags[].Name | `string`  | 標籤分類器的關鍵字。
-tags[].Score    | `number`  | 信賴分數，介於 0 到 1 之間。
-description  | `object` | 描述的最上層物件。
+tags[].Name | `string`    | 標籤分類器的關鍵字。
+tags[].Score    | `number`    | 信賴分數，介於 0 到 1 之間。
+description     | `object`    | 描述的最上層物件。
 description.tags[] |    `string`    | 標籤清單。  如果能否產生標題的信賴度不足，呼叫者可能僅有標籤的資訊可用。
-description.captions[].text | `string`  | 描述影像的片語。
-description.captions[].confidence   | `number`  | 片語的信賴分數。
+description.captions[].text    | `string`    | 描述影像的片語。
+description.captions[].confidence    | `number`    | 片語的信賴分數。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>擷取和了解特定領域模型的 JSON 輸出
 
@@ -239,12 +239,12 @@ description.captions[].confidence   | `number`  | 片語的信賴分數。
 
 類別欄位是原始分類法中 [86 個類別](../Category-Taxonomy.md)的一或多個類別。 以底線結尾的類別會符合該類別與其子項 (例如，名人模型的 "people_" 或 "people_group")。
 
-欄位   | 類型  | 內容
+欄位    | 類型    | 內容
 ------|------|------|
-categories | `object`   | 最上層物件。
-categories[].name    | `string` | 86 個類別分類法清單中的名稱。
-categories[].score  | `number`  | 信賴分數，介於 0 到 1 之間。
-categories[].detail  | `object?`      | (選擇性) 詳細資料物件。
+categories | `object`    | 最上層物件。
+categories[].name     | `string`    | 86 個類別分類法清單中的名稱。
+categories[].score    | `number`    | 信賴分數，介於 0 到 1 之間。
+categories[].detail     | `object?`      | (選擇性) 詳細資料物件。
 
 如果多個類別皆符合 (例如，當 model=celebrities 時，86 個類型分類器傳回 "people_" 與 "people_young" 兩者的分數)，以附加在最一般層級的詳細資料為符合者 (在該範例中為 "people_")。
 

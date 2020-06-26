@@ -3,16 +3,16 @@ title: 使用 Power BI 應用程式分析 Azure 成本
 description: 本文將說明如何安裝及使用 Azure 成本管理 Power BI 應用程式。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461594"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888195"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用適用於 Enterprise 合約 (EA) 的 Azure 成本管理 Power BI 應用程式來分析成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "81461594"
 
 Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)的客戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 安裝和使用應用程式所需的 [Power BI Pro 授權](/power-bi/service-self-service-signup-for-power-bi)
 - 若要連結資料，您必須使用[企業系統管理員](../manage/understand-ea-roles.md)帳戶
@@ -32,23 +32,23 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 若要安裝應用程式：
 
 1. 開啟 [Azure 成本管理 Power BI 應用程式](https://aka.ms/costmgmt/ACMApp)。
-2. 在 [Power BI AppSource] 頁面上選取 [立即取得]  。
-3. 選取 [繼續]  以同意使用規定與隱私權原則。
-4. 在 [安裝此 Power BI 應用程式]  方塊中，選取 [安裝]  。
-5. 如有需要，請建立工作區，然後選取 [繼續]  。
+2. 在 [Power BI AppSource] 頁面上選取 [立即取得]。
+3. 選取 [繼續] 以同意使用規定與隱私權原則。
+4. 在 [安裝此 Power BI 應用程式] 方塊中，選取 [安裝]。
+5. 如有需要，請建立工作區，然後選取 [繼續]。
 6. 安裝完成時，即會顯示新應用程式已就緒的通知。
-7. 選取 [移至應用程式]  。
-8. 在 [開始使用您的新應用程式]  中，從 [連結您的資料]  底下，選取 [連結]  。  
+7. 選取 [移至應用程式]。
+8. 在 [開始使用您的新應用程式] 中，從 [連結您的資料] 底下，選取 [連結]。  
   ![開始使用您的新應用程式 - 連結](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留**註冊號碼**的預設**範圍**值，然後選取 [下一步]  。  
+9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留**註冊號碼**的預設**範圍**值，然後選取 [下一步]。  
   ![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值*，然後選取 [登入]  。  
+10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值*，然後選取 [登入]。  
   ![連接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. 最後的安裝步驟會連結到您的 EA 註冊，而且需要[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 選取 [登入]  ，以向您的 EA 註冊進行驗證。 此步驟也會在 Power BI 中啟動資料重新整理動作。  
+11. 最後的安裝步驟會連結到您的 EA 註冊，而且需要[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 選取 [登入]，以向您的 EA 註冊進行驗證。 此步驟也會在 Power BI 中啟動資料重新整理動作。  
   ![連結到 EA 註冊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
     > 資料重新整理程序可能需要相當長的時間才能完成。 時間長度取決於指定的月份數，以及需要同步的資料量。
-12. 若要檢查資料重新整理狀態，請在工作區中選取 [資料集]  索引標籤。 在重新整理後的時間戳記旁查看。 如果狀態仍在更新中，您會看到顯示重新整理正在進行中的指示。  
+12. 若要檢查資料重新整理狀態，請在工作區中選取 [資料集] 索引標籤。 在重新整理後的時間戳記旁查看。 如果狀態仍在更新中，您會看到顯示重新整理正在進行中的指示。  
   ![重新整理資料](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 資料重新整理完成之後，請選取 [Azure 成本管理應用程式] 來查看預先建立的報表。
@@ -76,13 +76,13 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 
 ![Azure Hybrid Benefit 完整報表](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-此報表也會識別已啟用 **Hybrid Benefit**，但「少於」  8 個 vCPU 的 Windows VM。 此外，有 8 個「或以上」  的 vCPU，卻**未啟用** Hybrid Benefit 的情形也會顯示。 這項資訊可協助您充分運用 Hybrid Benefit。 將權益套用至您最耗費資源的虛擬機器，以最大化可省下的成本。
+此報表也會識別已啟用 **Hybrid Benefit**，但「少於」 8 個 vCPU 的 Windows VM。 此外，有 8 個「或以上」的 vCPU，卻**未啟用** Hybrid Benefit 的情形也會顯示。 這項資訊可協助您充分運用 Hybrid Benefit。 將權益套用至您最耗費資源的虛擬機器，以最大化可省下的成本。
 
 ![Azure Hybrid Benefit – 少於 8 個 vCPU 及未啟用 vCPU](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
 **RI 退款** - 此報表可協助您了解每個區域、訂用帳戶、資源群組或資源所套用的保留執行個體 (RI) 權益在何處，以及有多少數量。 此報表會使用分攤的使用量資料來顯示此檢視。
 
-您可以在 chargetype  上套用篩選，以檢視 RI 使用量過低的資料。
+您可以在 chargetype 上套用篩選，以檢視 RI 使用量過低的資料。
 
 如需有關分攤資料的詳細資訊，請參閱[取得 Enterprise 合約保留成本和使用量](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)。
 
@@ -112,7 +112,7 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 
 建議資料表會根據使用的 VM 大小，提供購買保留的建議。
 
-「正規化後的大小」  和「正規化後的建議數量」  值可協助您將購買正規化為執行個體大小彈性群組的大小下限。 如果您打算只購買一個保留來用於執行個體大小彈性群組中的所有大小，則這項資訊會很實用。
+「正規化後的大小」和「正規化後的建議數量」值可協助您將購買正規化為執行個體大小彈性群組的大小下限。 如果您打算只購買一個保留來用於執行個體大小彈性群組中的所有大小，則這項資訊會很實用。
 
 ![RI 建議](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
 
@@ -127,6 +127,27 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 ## <a name="troubleshoot-problems"></a>問題疑難排解
 
 如果您在 Power BI 應用程式中遇到問題，下列疑難排解資訊可能會有幫助。
+
+### <a name="error-processing-the-data-in-the-dataset"></a>處理資料集中的資料時發生錯誤
+
+您可能會收到錯誤訊息，內容為：
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+此時會出現資料表名稱，而不是 `<TableName>`。
+
+#### <a name="cause"></a>原因
+
+預設**範圍**值 `Enrollment Number` 已在成本管理的連線中變更。
+
+#### <a name="solution"></a>解決方法
+
+重新連線至成本管理，並將**範圍**值設定為 `Enrollment Number`。 請勿輸入組織的註冊號碼，而應輸入與下圖所示完全相同的 `Enrollment Number`。
+
+![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>BudgetAmount 錯誤
 

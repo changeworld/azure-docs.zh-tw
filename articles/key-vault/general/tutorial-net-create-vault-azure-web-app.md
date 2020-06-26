@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997010"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051895"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教學課程：使用受控識別透過 .NET 將 Key Vault 連線至 Azure Web 應用程式
 
@@ -22,7 +22,7 @@ Azure Key Vault 可安全地儲存認證和其他祕密，但是您的程式碼�
 
 本教學課程會使用受控識別來向 Azure Key Vault 驗證 Azure Web 應用程式。 雖然這些步驟使用[適用於 .NET 的 Azure Key Vault v4 用戶端程式庫](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)和 [Azure CLI](/cli/azure/get-started-with-azure-cli)，但使用自選的開發語言、Azure PowerShell 和 (或) Azure 入口網站時，適用的基本原則是一樣的。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本快速入門：
 
@@ -147,7 +147,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 在 `myAppServicePlan` App Service 方案中建立 [Azure Web 應用程式](../../app-service/containers/app-service-linux-intro.md)。 
 
 > [!Important]
-> 和 Key Vault 一樣，Azure Web 應用程式必須有唯一名稱。 在下列範例中，請以您的 Web 應用程式名稱取代 \<your-webapp-name\>。
+> 和 Key Vault 一樣，Azure Web 應用程式必須有唯一名稱。 在下列範例中，請將 \<your-webapp-name\> 取代為您的 Web 應用程式名稱。
 
 
 ```azurecli-interactive
@@ -186,7 +186,7 @@ https://<your-webapp-name>.azurewebsites.net
 
 ### <a name="deploy-your-local-app"></a>部署您的本機應用程式
 
-回到本機終端機視窗，將 Azure 遠端新增至本機 Git 存放庫，並以您從[建立遠端 Web 應用程式](#create-a-remote-web-app)步驟所儲存的 Git 遠端 URL 取代 *\<deploymentLocalGitUrl-from-create-step>* 。
+回到本機終端機視窗，將 Azure 遠端新增至本機 Git 存放庫，並以您從[建立遠端 Web 應用程式](#create-a-remote-web-app)步驟中儲存的 Git 遠端 URL 取代 *\<deploymentLocalGitUrl-from-create-step>* 。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
@@ -279,6 +279,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 ```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 ```
 
 在 `app.UseEndpoints` 呼叫前新增這兩行，並更新 URI 以反映金鑰保存庫的 `vaultUri`。 以下程式碼使用 ['DefaultAzureCredential()'](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) 來向金鑰保存庫進行驗證，這會使用來自應用程式受控識別的權杖進行驗證。 如果金鑰保存庫遭到節流，其也會使用指數輪詢來進行重試。

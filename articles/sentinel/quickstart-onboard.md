@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488115"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771167"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
@@ -43,11 +43,11 @@ ms.locfileid: "84488115"
 
 1. 登入 Azure 入口網站。 請確定已選取 Azure Sentinel 建立所在的訂用帳戶。
 
-1. 搜尋並選取 [Azure Sentinel]。
+1. 搜尋並選取 [Azure Sentinel]****。
 
    ![搜尋](./media/quickstart-onboard/search-product.png)
 
-1. 選取 [新增]。
+1. 選取 [新增]****。
 
 1. 選取您想要使用的工作區，或建立一個新的工作區。 您可以在一個以上的工作區上執行 Azure Sentinel，但資料會隔離到單一工作區。
 
@@ -58,18 +58,18 @@ ms.locfileid: "84488115"
    > - Azure Sentinel 可以在任何 [Log Analytics 的 GA 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作區上執行，中國和德國 (主權) 區域除外。 Azure Sentinel 所產生的資料 (例如事件、書籤和警示規則，其中可能包含來自這些工作區的一些客戶資料) 會儲存在歐洲 (適用於位於歐洲的工作區)、澳洲 (適用於位於澳洲的工作區) 或美國東部 (適用於位於任何其他區域的工作區)。
 
    >[!IMPORTANT]
-   > - 在工作區上啟用 Azure Sentinel 之後，即不支援將該工作區移至其他資源群組或訂用帳戶。 如果您需要移動工作區，請連絡支援服務以取得指導方針。
+   > - 在工作區上啟用 Azure Sentinel 之後，即不支援將該工作區移至其他資源群組或訂用帳戶。 如果您需要移動工作區，請連絡 [Azure Sentinel](mailto:AzureSentinel@microsoft.com)。
 
-1. 選取 [新增 Azure Sentinel]。
+1. 選取 [新增 Azure Sentinel]****。
   
 
 ## <a name="connect-data-sources"></a>連線資料來源
 
 Azure Sentinel 藉由連線到服務並將事件和記錄轉送至 Azure Sentinel，來建立與服務和應用程式的連線。 針對電腦和虛擬機器，您可以安裝 Azure Sentinel 代理程式，代理程式會收集記錄然後轉送至 Azure Sentinel。 對於防火牆和 Proxy，Azure Sentinel 利用 Linux Syslog 伺服器。 代理程式會安裝在伺服器上、從該伺服器收集記錄檔，並將其轉送至 Azure Sentinel。 
  
-1. 按一下 [資料連接器]。
+1. 按一下 [資料連接器]****。
 1. 您可以連線的每個資料來源都有一個圖格。<br>
-例如，按一下 [Azure Active Directory]。 如果與此資料來源連線，您可以將 Azure AD 的所有記錄串流至 Azure Sentinel。 您可以選取想要取得的記錄類型 - 登入記錄及/或稽核記錄。 <br>
+例如，按一下 [Azure Active Directory]****。 如果與此資料來源連線，您可以將 Azure AD 的所有記錄串流至 Azure Sentinel。 您可以選取想要取得的記錄類型 - 登入記錄及/或稽核記錄。 <br>
 在底部，Azure Sentinel 會建議您應該為每個連接器安裝哪些活頁簿，讓您可以立即取得資料的相關深入解析。 <br> 依照安裝指示或[參閱相關的連線指南](connect-data-sources.md)以取得詳細資訊。 如需資料連接器的詳細資訊，請參閱[連線 Microsoft 服務](connect-data-sources.md)。
 
 與資料來源連線之後，您的資料就會開始串流至 Azure Sentinel，並準備好讓您開始使用。 您可以在[內建儀表板](quickstart-get-visibility.md)中檢視記錄，並且開始在 Log Analytics 中建置查詢以[調查資料](tutorial-investigate-cases.md)。

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300584"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659910"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>教學課程：從頭開始設定 Unity 專案
 
@@ -32,8 +32,8 @@ ms.locfileid: "84300584"
 * 您的帳戶資訊 (帳戶識別碼、帳戶金鑰、訂用帳戶識別碼)。 如果您沒有帳戶，請[建立帳戶](../../how-tos/create-an-account.md)。
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)。 
-* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列*工作負載*：
-  * **具備 C++ 的桌面開發**
+* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
+  * **使用 C++ 開發桌面**
   * **通用 Windows 平台 (UWP) 開發**
 * GIT [(下載)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(下載)](https://unity3d.com/get-unity/download)
@@ -105,6 +105,7 @@ ms.locfileid: "84300584"
 
 1. 開啟 [編輯] > [專案設定...]
 1. 在左側的清單中選取 [品質]。
+1. 藉由選取將 [作用中品質等級] 變更為 [低]
 1. 將 [預設品質等級] 變更為 [低]
 
     ![變更專案品質設定](media/settings-quality.png)

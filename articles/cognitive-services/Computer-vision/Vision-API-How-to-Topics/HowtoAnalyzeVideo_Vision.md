@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76166837"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983514"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>近乎即時地分析影片
 
@@ -230,14 +230,14 @@ namespace BasicConsoleSample
 
 若要開始使用此範例，請執行下列動作：
 
-1. 從[訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)取得「視覺 API」的 API 金鑰。 若要進行影片畫面分析，適用的服務包括：
-    - [電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [臉部](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. 複製 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) \(英文\) GitHub 存放庫。
-
-3. 在 Visual Studio 2015 或更新版本中開啟範例，然後建置並執行範例應用程式：
+1. 建立 [Azure 帳戶](https://azure.microsoft.com/free/cognitive-services/)。 如果您已經有 Azure 帳戶，您可以跳到下一個步驟。
+2. 在 Azure 入口網站中建立電腦視覺和 Face 的資源，以取得您的金鑰和端點。 請務必在設定期間選取免費層 (F0)。
+   - [電腦視覺](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Face](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) 部署資源之後，按一下 [移至資源]，以收集每個資源的金鑰和端點。 
+3. 複製 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) \(英文\) GitHub 存放庫。
+4. 在 Visual Studio 2015 或更新版本中開啟範例，然後建置並執行範例應用程式：
     - 就 BasicConsoleSample 而言，臉部金鑰會直接以硬式編碼編寫在 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中。
-    - 針對 LiveCameraSample，在應用程式的 [設定]  窗格中輸入金鑰。 這些金鑰會以使用者資料的形式跨工作階段保存。
+    - 針對 LiveCameraSample，在應用程式的 [設定] 窗格中輸入金鑰。 這些金鑰會以使用者資料的形式跨工作階段保存。
 
 當您做好整合範例的準備時，請從自己的專案參考 VideoFrameAnalyzer 程式庫。
 
@@ -245,7 +245,7 @@ VideoFrameAnalyzer 的影像、語音、影片和文字理解功能會使用「A
 
 ## <a name="summary"></a>摘要
 
-在本文中，您已了解如何使用臉部辨識和電腦視覺服務，對即時影片串流執行近乎即時的分析。 您也了解如何使用我們的範例程式碼來開始著手。 若要使用免費 API 金鑰來開始建置應用程式，請前往 [Azure 認知服務註冊頁面](https://azure.microsoft.com/try/cognitive-services/)。
+在本文中，您已了解如何使用臉部辨識和電腦視覺服務，對即時影片串流執行近乎即時的分析。 您也了解如何使用我們的範例程式碼來開始著手。
 
 歡迎您在 [GitHub 存放庫](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供意見反應和建議。 若要提供更廣泛的 API 意見反應，請前往我們的 [UserVoice 網站](https://cognitive.uservoice.com/)。
 

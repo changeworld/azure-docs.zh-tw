@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234337"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737830"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -111,7 +111,7 @@ ms.locfileid: "84234337"
 
     - 如果您選擇**資源庫**，請從下拉式功能表中選取其中一個建議的映像：
 
-      - Windows 10 企業版的多重工作階段 (1909 版) + Office 365 專業增強版 – Gen 1
+      - Windows 10 企業版的多重工作階段 (1909 版) + Microsoft 365 Apps 企業版 – Gen 1
       - Windows 10 企業版的多重工作階段 (1909 版) – Gen 1
       - Windows Server 2019 Datacenter - Gen1
 

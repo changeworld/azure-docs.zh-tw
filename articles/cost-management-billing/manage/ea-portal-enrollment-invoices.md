@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16f89fa99c9619e3956a089763ece1b96aff4480
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298120"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807802"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
@@ -24,25 +24,25 @@ ms.locfileid: "84298120"
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>若要更新 Azure 服務採購單號碼：
 
-1. 從 Azure 企業版入口網站中，選取 [報表] > [使用量摘要]。
-1. 選取右上角的 [編輯 PO 號碼]。
-1. 選取 [Azure 服務] 選項按鈕。
-1. 從日期範圍下拉式功能表中選取 [發票期間]。
+1. 從 Azure 企業版入口網站中，選取 [報表]**** > [使用量摘要]****。
+1. 選取右上角的 [編輯 PO 號碼]****。
+1. 選取 [Azure 服務]**** 選項按鈕。
+1. 從日期範圍下拉式功能表中選取 [發票期間]****。
 
    您可以在收到發票通知後的七天內編輯 PO 號碼，但必須在支付發票費用之前。
-1. 在[PO 號碼] 欄位中輸入新的 PO 號碼。
-1. 選取 [儲存] 以提交變更。
+1. 在[PO 號碼]**** 欄位中輸入新的 PO 號碼。
+1. 選取 [儲存]**** 以提交變更。
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>若要更新 Azure Marketplace 採購單號碼：
 
-1. 從 Azure 企業版入口網站中，選取 [報表] > [使用量摘要]。
-1. 選取右上角的 [編輯 PO 號碼]。
-1. 選取 [Marketplace] 選項按鈕。
-1. 從日期範圍下拉式功能表中選取 [發票期間]。
+1. 從 Azure 企業版入口網站中，選取 [報表]**** > [使用量摘要]****。
+1. 選取右上角的 [編輯 PO 號碼]****。
+1. 選取 [Marketplace]**** 選項按鈕。
+1. 從日期範圍下拉式功能表中選取 [發票期間]****。
 
    您可以在收到發票通知後的七天內編輯 PO 號碼，但必須在支付發票費用之前。
-1. 在[PO 號碼] 欄位中輸入新的 PO 號碼。
-1. 選取 [儲存] 以提交變更。
+1. 在[PO 號碼]**** 欄位中輸入新的 PO 號碼。
+1. 選取 [儲存]**** 以提交變更。
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure 企業帳單週期
 
@@ -123,12 +123,12 @@ ms.locfileid: "84298120"
 
 ## <a name="credits-and-adjustments"></a>信用額度和調整
 
-您可以在 [Azure 企業版入口網站](https://ea.azure.com)的 [報表] 區段中，查看套用至註冊的所有信用額度或調整項目。
+您可以在 [Azure 企業版入口網站](https://ea.azure.com)的 [報表]**** 區段中，查看套用至註冊的所有信用額度或調整項目。
 
 若要檢視信用額度：
 
-1. 在 [Azure 企業版入口網站](https://ea.azure.com)中，選取 [報表] 階段。
-1. 選取 [使用量摘要]。
+1. 在 [Azure 企業版入口網站](https://ea.azure.com)中，選取 [報表]**** 階段。
+1. 選取 [使用量摘要]****。
 1. 在右上角，將 **M** 變更為 **C** 檢視。
 1. 擴大 Azure 服務承諾用量表格中的調整欄位。
 1. 您會看到套用至您註冊的信用額度和簡短說明。 例如：服務等級協定點數。
@@ -224,7 +224,7 @@ Enterprise 合約定價目前不包含分級定價 (在分級定價中，每單�
 | 區域 2 | 亞太地區東部 <br> 亞太地區東南部 <br> 日本東部 <br> 日本西部 <br> 澳大利亞東部 <br> 澳大利亞東南部 | 亞太地區 <br> 日本 <br> 拉丁美洲 <br> 中東/非洲 <br> 澳大利亞東部 <br> 澳大利亞東南部 |
 | 區域 3 | 巴西南部 |   |
 
-在位於相同資料中心內的服務之間，資料輸出不會產生任何費用。 例如，Office 365 和 Azure。
+在位於相同資料中心內的服務之間，資料輸出不會產生任何費用。 例如，Microsoft 365 和 Azure。
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>預付金和未開立帳單的使用量
 

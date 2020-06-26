@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: c8a29f95e7b987af2b408ec24bc390a7fd162263
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554859"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734549"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什麼是 Azure Active Directory Domain Services？
 
-Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如，網域加入、群組原則、輕量型目錄存取通訊協定 (LDAP) 與 Kerberos / NTLM 驗證。 您可以使用這些網域服務，而不需要在雲端部署、管理及修補網域控制站。
+Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如，網域加入、群組原則、輕量型目錄存取通訊協定 (LDAP) 與 Kerberos / NTLM 驗證。 您可以使用這些網域服務，而不需要在雲端部署、管理及修補網域控制站 (DC)。
+
+受控網域是 DNS 命名空間和相符目錄。 此受控網域會與您現有的 Azure AD 租用戶整合，讓使用者能夠使用其現有認證登入。 您也可以使用現有的群組與使用者帳戶，安全地存取資源，這樣能更順暢地將內部部署資源隨即轉移至 Azure。
 
 Azure AD DS 會與您現有的 Azure AD 租用戶整合。 此整合可讓使用者使用其現有的認證，登入已與受控網域連線的服務與應用程式。 您也可以使用現有的群組與使用者帳戶安全地存取資源。 這些功能可讓您更順暢地將內部部署資源隨即轉移至 Azure。
 
@@ -61,9 +63,9 @@ Azure AD DS 提供的替代方案適用於建立連線回內部部署 AD DS 環�
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS 如何運作？
 
-為了提供識別服務，Azure 會在您選擇的虛擬網路上建立 AD DS 執行個體。 在幕後會建立一對在 Azure VM 上執行的 Windows Server 網域控制站。 您不需要管理、設定或更新這些網域控制站。 Azure 平台會管理網域控制站，作為 Azure AD DS 服務的一部分。
+為了提供識別服務，Azure 會在您所選的虛擬網路上建立 AD DS 受控網域。 在幕後會建立一對在 Azure VM 上執行的 Windows Server 網域控制站。 您不需要管理、設定或更新這些網域控制站。 Azure 平台會管理網域控制站，作為 Azure AD DS 服務的一部分。
 
-Azure AD DS 受控網域已設定為從 Azure AD 執行單向同步，以提供對一組集中式使用者、群組與認證的存取權。 您可以直接在 Azure AD DS 受控網域中建立資源，但系統不會將它們同步回 Azure AD。 Azure 中連線到此虛擬網路的應用程式、服務與 VM 接著可以使用常見的 AD DS 功能，例如，網域加入、群組原則、LDAP 與 Kerberos / NTLM 驗證。
+此受控網域已設定為從 Azure AD 執行單向同步，以提供對一組集中式使用者、群組與認證的存取權。 您可以直接在此受控網域中建立資源，但系統不會將其同步處理回到 Azure AD。 Azure 中連線到此虛擬網路的應用程式、服務與 VM 接著可以使用常見的 AD DS 功能，例如，網域加入、群組原則、LDAP 與 Kerberos / NTLM 驗證。
 
 在具有內部部署 AD DS 環境的混合式環境中，[Azure AD Connect][azure-ad-connect] 會與 Azure AD 同步身分識別資訊，該資訊會接著同步至 Azure AD DS。
 
@@ -90,7 +92,7 @@ Azure AD DS 受控網域已設定為從 Azure AD 執行單向同步，以提供�
 * 部署在 Azure 虛擬網路中的應用程式與 VM 之後可以使用網域加入、LDAP 讀取、LDAP 繫結、NTLM 與 Kerberos 驗證，以及群組原則等 Azure AD DS 功能。
 
 > [!IMPORTANT]
-> Azure AD Connect 應該只會為了與內部部署 AD DS 環境同步處理而安裝和設定。 不支援在 Azure AD DS 受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
+> Azure AD Connect 應該只會為了與內部部署 AD DS 環境同步處理而安裝和設定。 不支援在此受控網域中安裝 Azure AD Connect，以將物件同步處理回 Azure AD。
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>僅限雲端的組織的 Azure AD DS
 
@@ -136,7 +138,7 @@ Azure AD DS 受控網域的一些關鍵層面如下：
 * [比較 Azure AD DS 與 Azure AD、Azure VM 上的 Active Directory Domain Services，以及 Active Directory Domain Services 內部部署][compare] \(英文\)
 * [了解 Azure AD Domain Services 如何與 Azure AD 目錄同步處理][synchronization]
 
-若要開始使用，請[使用 Azure 入口網站建立 Azure AD DS 受控網域][tutorial-create]。
+若要開始使用，請[使用 Azure 入口網站建立受控網域][tutorial-create]。
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md

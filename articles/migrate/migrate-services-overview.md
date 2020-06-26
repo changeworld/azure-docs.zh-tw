@@ -4,23 +4,21 @@ description: 了解 Azure Migrate 服務。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193584"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771252"
 ---
 # <a name="about-azure-migrate"></a>關於 Azure Migrate
 
 本文提供 Azure Migrate 服務的快速概觀。
 
-Azure Migrate 提供集中式的中樞，可評估內部部署伺服器、基礎結構、應用程式與資料，並將其遷移至 Azure。
-
-Azure Migrate 提供下列功能：
+Azure Migrate 提供集中式的中樞，可評估內部部署伺服器、基礎結構、應用程式與資料，並將其遷移至 Azure。 其提供下列各項：
 
 - **整合式移轉平台**：單一入口網站，用來啟動、執行及追蹤您遷移至 Azure 的工作。
-- **各種工具**：用於評量和遷移的各種工具。 工具包括 Azure Migrate：伺服器評量和 Azure Migrate：伺服器移轉。 Azure Migrate 可與其他 Azure 服務整合，也可與其他工具和獨立軟體廠商 (ISV) 供應項目整合。
+- **各種工具**：用於評量和遷移的各種工具。 Azure Migrate 工具包括伺服器評量和 Azure Migrate：伺服器移轉。 Azure Migrate 也可與其他 Azure 服務整合，以及與獨立軟體廠商 (ISV) 供應項目整合。
 - **評量及移轉**：在 Azure Migrate 中樞，您可以評估和遷移：
     - **伺服器**：評估內部部署伺服器，並將其遷移至 Azure 虛擬機器。
     - **資料庫**：評估內部部署資料庫，並將其遷移至 Azure SQL Database 或 SQL 受控執行個體。
@@ -82,15 +80,12 @@ Azure Migrate：伺服器評量工具可探索並評估內部部署 VMware VM、
 
 Azure Migrate：伺服器移轉工具可協助您遷移至 Azure：
 
-- 內部部署 VMware VM
-- Hyper-V VM
-- 實體伺服器
-- 其他虛擬化機器
-- 公用雲端 VM
+**移轉** | **詳細資料**
+--- | ---
+內部部署 VMware VM | 使用無代理程式或代理程式型移轉，將 VM 遷移至 Azure。<br/><br/> 針對無代理程式移轉，伺服器移轉會使用您在內部部署環境中部署的 Azure Migrate 設備。 其與您用於伺服器評量的設備類型相同。<br/><br/> 針對代理程式型移轉，伺服器評量會使用複寫設備。
+內部部署 Hyper-V VM | 將 VM 遷移至 Azure。<br/><br/> 伺服器評量會使用 Hyper-V 主機上安裝的提供者代理程式進行移轉。
+內部部署實體伺服器 | 您可以將實體機器遷移至 Azure。 您也可以為了移轉目的，將其他虛擬化機器及其他公用雲端中的 VM 視為虛擬機器，以便進行移轉。 | 伺服器評量會使用複寫設備來進行移轉。
 
-您可以先對機器進行評估再加以遷移，或直接遷移而不進行評估。
-
-針對 VMware VM 的無代理程式移轉和 Hyper-V VM 的移轉，伺服器移轉會使用您在內部部署環境中部署的 Azure Migrate 設備。 您設定伺服器評量時也會用到該設備。 其相關說明請見上一節。
 
 ## <a name="selecting-assessment-and-migration-tools"></a>選取評量和移轉工具
 
@@ -125,7 +120,7 @@ Azure Migrate 服務有兩個版本。
 - **目前的版本**：使用此版本來建立 Azure Migrate 專案、探索內部部署電腦，以及協調評量與移轉。 [深入了解](whats-new.md)此版本的新功能。
 - **先前版本**：舊版的 Azure Migrate 僅支援內部部署 VMware VM 的評量。 如果您使用舊版，您現在應改用目前的版本。 您無法再使用舊版建立 Azure Migrate 專案。 我們建議您不要用舊版執行新的探索。
 
-    若要存取現有專案，請在 Azure 入口網站中搜尋並選取 [Azure Migrate]。 [Azure Migrate] 儀表板具有通知以及可存取舊有 Azure Migrate 專案的連結。
+    若要存取現有專案，請在 Azure 入口網站中搜尋並選取 [Azure Migrate]****。 [Azure Migrate]**** 儀表板具有通知以及可存取舊有 Azure Migrate 專案的連結。
 
 ## <a name="next-steps"></a>後續步驟
 

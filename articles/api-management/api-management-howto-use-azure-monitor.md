@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128850"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982045"
 ---
 # <a name="monitor-published-apis"></a>監視發佈的 API
 
@@ -33,7 +33,7 @@ ms.locfileid: "82128850"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
 + 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
@@ -43,26 +43,25 @@ ms.locfileid: "82128850"
 
 ## <a name="view-metrics-of-your-apis"></a>檢視 API 的計量
 
-API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是一些可用計量的摘要：
+API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)。
 
 * 容量：協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
-* 閘道要求總數︰該期間內的 API 要求數目。 
-* 成功的閘道要求︰收到 HTTP 成功回應碼的 API 要求數目，這些回應碼包括 304、307 和任何小於 301 的代碼 (例如 200)。
-* 失敗的閘道要求︰收到 HTTP 錯誤回應碼的 API 要求數目，這些回應碼包括 400 和任何大於 500 的代碼。
-* 未經授權閘道器要求︰收到 401、403 和 429 HTTP 回應碼的 API 要求數目。
-* 其他閘道要求︰所收到的 HTTP 回應碼不屬於上述任何類別 (例如 418) 的 API 要求數目。
+* 要求：協助您分析通過 APIM 服務的 API 流量。 計量會每分鐘發出，並回報具有維度的閘道要求數目，包括回應碼、位置、主機名稱和錯誤。 
+
+> [!IMPORTANT]
+> 下列計量已於 2019 年 5 月被取代，將於 2023 日 8 月淘汰：閘道要求總數、成功的閘道要求、未經授權的閘道要求、失敗的閘道要求、其他閘道要求。 請遷移至可提供對等功能的要求計量。
 
 ![計量圖表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 存取計量：
 
-1. 從靠近頁面底部的功能表中，選取 [計量]  。
+1. 從靠近頁面底部的功能表中，選取 [計量]****。
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. 從下拉式清單中，選取您想了解的計量。 例如， **要求**。 
-1. 該圖表會顯示 API 呼叫的總數。
-1. 您可以使用 [要求]  計量的維度來篩選圖表。 例如，按一下 [新增篩選]  ，選擇 [後端回應碼]  ，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
+2. 從下拉式清單中，選取您想了解的計量。 例如， **要求**。 
+3. 該圖表會顯示 API 呼叫的總數。
+4. 您可以使用 [要求]**** 計量的維度來篩選圖表。 例如，按一下 [新增篩選]****，選擇 [後端回應碼]****，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>針對未經授權的要求設定警示規則
 
@@ -74,18 +73,18 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 設定警示：
 
-1. 從靠近頁面底部的功能表列中選取 [警示]  。
+1. 從靠近頁面底部的功能表列中選取 [警示]****。
 
     ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 按一下此警示的 [新警示規則]  。
-3. 按一下 [新增條件]  。
-4. 在 [訊號類型] 下拉式清單中選取 [計量]  。
-5. 選取 [未經授權的閘道要求]  作為要監視的訊號。
+2. 按一下此警示的 [新警示規則]****。
+3. 按一下 [新增條件]****。
+4. 在 [訊號類型] 下拉式清單中選取 [計量]****。
+5. 選取 [未經授權的閘道要求]**** 作為要監視的訊號。
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. 在 [設定訊號邏輯]  檢視中，指定應觸發警示的閾值，然後按一下 [完成]  。
+6. 在 [設定訊號邏輯]**** 檢視中，指定應觸發警示的閾值，然後按一下 [完成]****。
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -94,7 +93,7 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. 提供警示規則的名稱和描述，並選擇嚴重性層級。 
-9. 按 [建立警示規則]  。
+9. 按 [建立警示規則]****。
 10. 現在，嘗試呼叫沒有 API 金鑰的會議 API。 系統會觸發警示並傳送電子郵件送給系統管理員。 
 
 ## <a name="activity-logs"></a>活動記錄
@@ -111,11 +110,11 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 檢視活動記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [活動記錄]  。
+2. 按一下 [活動記錄]****。
 
     ![活動記錄](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 選取所需的篩選範圍，然後按一下 [套用]  。
+3. 選取所需的篩選範圍，然後按一下 [套用]****。
 
 ## <a name="resource-logs"></a>資源記錄
 
@@ -124,11 +123,11 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 若要設定資源記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [診斷設定]  。
+2. 按一下 [診斷設定]****。
 
     ![資源記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 按一下 [開啟診斷]  。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
+3. 按一下 [開啟診斷]****。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
 
 APIM 目前提供關於個別 API 要求的資源記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
 

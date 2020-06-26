@@ -10,25 +10,28 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3cb583502f1ccf3d88cf8307bb62ab5ed261ce03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403372"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986621"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入門：使用 REST API 和 JavaScript 偵測影像中的人臉
 
 在本快速入門中，您將使用 Azure Face REST API 搭配 JavaScript 來偵測影像中的人臉。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。
-- 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 檔案
 
-建立新的 HTML 檔案 (detectFaces.html)  ，並新增下列程式碼。
+建立新的 HTML 檔案 (detectFaces.html)**，並新增下列程式碼。
 
 ```html
 <!DOCTYPE html>
@@ -41,7 +44,7 @@ ms.locfileid: "81403372"
 </html>
 ```
 
-然後，在文件的 `body` 元素內新增下列程式碼。 此程式碼會設定基本的使用者介面，內有 URL 欄位、[分析臉部]  按鈕、[回應] 窗格和 [影像顯示] 窗格。
+然後，在文件的 `body` 元素內新增下列程式碼。 此程式碼會設定基本的使用者介面，內有 URL 欄位、[分析臉部]**** 按鈕、[回應] 窗格和 [影像顯示] 窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -130,7 +133,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="run-the-script"></a>執行指令碼
 
-在瀏覽器中開啟 detectFaces.html  。 當您按一下 [分析臉部]  按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
+在瀏覽器中開啟 detectFaces.html**。 當您按一下 [分析臉部]**** 按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 

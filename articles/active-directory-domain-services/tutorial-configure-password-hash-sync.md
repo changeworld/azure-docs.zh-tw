@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ee0c6e67dcf0cf5f85734be3ac53a0417e398654
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676599"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733699"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教學課程：在混合式環境的 Azure Active Directory Domain Services 中啟用密碼同步處理
 
@@ -32,7 +32,7 @@ ms.locfileid: "80676599"
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)再開始。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源：
 
@@ -42,7 +42,7 @@ ms.locfileid: "80676599"
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
     * 如有需要，請[啟用 Azure AD Connect 以進行密碼雜湊同步處理][enable-azure-ad-connect]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
+    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>使用 Azure AD Connect 的密碼雜湊同步處理
 
@@ -59,10 +59,10 @@ Azure AD Connect 可以設定成會同步處理 Azure AD DS 所需的 NTLM 或 K
 
 現在，Azure AD Connect 已安裝並設定為與 Azure AD 同步處理，接下來請設定 NTLM 和 Kerberos 的舊版密碼雜湊同步。 PowerShell 指令碼可用來設定必要的設定，然後開始對 Azure AD 進行完整的密碼同步處理。 當 Azure AD Connect 密碼雜湊同步處理程序完成後，使用者將可透過使用舊版 NTLM 或 Kerberos 密碼雜湊的 Azure AD DS 來登入應用程式。
 
-1. 在已安裝 Azure AD Connect 的電腦上，從 [開始] 功能表開啟 [Azure AD Connect] > [同步處理服務]  。
-1. 選取 [連接器]  索引標籤。此時會列出用來在內部部署 AD DS 環境與 Azure AD 之間建立同步處理的連線資訊。
+1. 在已安裝 Azure AD Connect 的電腦上，從 [開始] 功能表開啟 [Azure AD Connect] > [同步處理服務]。
+1. 選取 [連接器] 索引標籤。此時會列出用來在內部部署 AD DS 環境與 Azure AD 之間建立同步處理的連線資訊。
 
-    [類型]  會顯示為 [Windows Azure Active Directory (Microsoft)]  (用於 Azure AD 連接器) 或 [Active Directory Domain Services]  (用於內部部署 AD DS 連接器)。 請記下連接器名稱，以便在下一個步驟的 PowerShell 指令碼中使用。
+    [類型] 會顯示為 [Windows Azure Active Directory (Microsoft)] (用於 Azure AD 連接器) 或 [Active Directory Domain Services] (用於內部部署 AD DS 連接器)。 請記下連接器名稱，以便在下一個步驟的 PowerShell 指令碼中使用。
 
     ![在 Sync Service Manager 中列出連接器名稱](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
@@ -97,7 +97,7 @@ Azure AD Connect 可以設定成會同步處理 Azure AD DS 所需的 NTLM 或 K
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    將舊版密碼雜湊同步處理至 Azure AD 可能需要一些時間，視您的目錄大小而定 (取決於帳戶和群組的數目)。 密碼在同步處理至 Azure AD 之後，就會同步處理至 Azure AD DS 受控網域。
+    將舊版密碼雜湊同步處理至 Azure AD 可能需要一些時間，視您的目錄大小而定 (取決於帳戶和群組的數目)。 密碼在同步至 Azure AD 之後，就會同步至受控網域。
 
 ## <a name="next-steps"></a>後續步驟
 

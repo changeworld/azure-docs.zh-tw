@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616537"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783345"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何使用 Key Vault 虛刪除與 PowerShell
 
@@ -23,7 +23,7 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 - 可復原的 Key Vault 刪除支援
 - 支援可復原的金鑰保存庫物件刪除；金鑰、密碼和憑證
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -106,9 +106,9 @@ Remove-AzKeyVault -VaultName 'ContosoVault'
 Get-AzKeyVault -InRemovedState 
 ```
 
-- 「識別碼」  可以用來在復原或清除時識別資源。 
-- 「資源識別碼」  是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
-- 如果不採取任何動作，「排定清除日期」  就是永久刪除保存庫的時間。 用來計算「排定清除日期」  的預設保留期間為 90 天。
+- 「識別碼」可以用來在復原或清除時識別資源。 
+- 「資源識別碼」是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
+- 如果不採取任何動作，「排定清除日期」就是永久刪除保存庫的時間。 用來計算「排定清除日期」的預設保留期間為 90 天。
 
 ## <a name="recovering-a-key-vault"></a>復原金鑰保存庫
 
@@ -258,14 +258,14 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 ### <a name="scheduled-purge"></a>排定的清除
 
-列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」  指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
+列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
 
 >[!IMPORTANT]
->已清除的保存庫物件，由其「排定清除日期」  欄位觸發，會永久刪除。 它無法復原！
+>已清除的保存庫物件，由其「排定清除日期」欄位觸發，會永久刪除。 它無法復原！
 
 ## <a name="enabling-purge-protection"></a>啟用清除保護
 
-開啟清除保護時，必須等到 90 天的保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這類保存庫或物件仍可復原。 此功能可加強確保在保留期間已過之前，一律無法永久刪除保存庫或物件。
+開啟清除保護時，必須等到保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這類保存庫或物件仍可復原。 此功能可加強確保在保留期間已過之前，一律無法永久刪除保存庫或物件。 預設的保留期間為 90 天，但在建立金鑰保存庫期間，您可以將保留原則間隔設定為 7 到 90 天的值。 清除保護保留原則會使用相同的間隔。 保留原則間隔一經設定即無法變更。
 
 只有在已啟用虛刪除功能的情況下，才可以啟用清除保護。 
 

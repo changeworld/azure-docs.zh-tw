@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: banders
-ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5b0d30d31fbe65360c246282eb2dc2109a541a3f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194157"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888312"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教學課程：檢閱個別 Azure 帳單
 
@@ -31,7 +31,7 @@ ms.locfileid: "84194157"
 
 ## <a name="prerequisites"></a>必要條件
 
-您必須擁有付費的「Microsoft Online Services 方案」計費帳戶。 當您透過 Azure 網站註冊 Azure 時所建立的帳戶。 例如，如果您有[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或如果您是 [Visual Studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
+您必須擁有付費的「Microsoft Online Services 方案」** 計費帳戶。 當您透過 Azure 網站註冊 Azure 時所建立的帳戶。 例如，如果您有[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或如果您是 [Visual Studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
 
 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)的發票只會在您超過每月信用額度時建立。
 
@@ -47,19 +47,19 @@ ms.locfileid: "84194157"
 
 比較使用量和成本的第一個步驟是下載發票和使用量檔案。 詳細使用量 CSV 檔案會顯示依計費期間和每日使用量的費用。 其不會包含任何稅務資訊。 您必須是帳戶管理員或具有擁有者角色，才能下載檔案。
 
-在 Azure 入口網站的搜尋方塊中輸入「訂用帳戶」，然後按一下[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+在 Azure 入口網站的搜尋方塊中輸入「訂用帳戶」**，然後按一下[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
 [![瀏覽至訂用帳戶](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 在訂用帳戶清單中按一下訂用帳戶。
 
-在 [帳單] 底下，按一下 [發票]。
+在 [帳單]**** 底下，按一下 [發票]****。
 
 在發票清單中，尋找您想要下載的發票，然後按一下下載符號。 您可能需要變更時間範圍來查看較舊的發票。 產生使用量詳細資料檔案和發票可能需要幾分鐘的時間。
 
 ![顯示計費期間、下載發票和每個計費期間總費用的螢幕擷取畫面](./media/review-individual-bill/download-invoice.png)
 
-在 [下載使用量 + 費用] 視窗中依序按一下 [下載 csv] 和 [下載發票]。
+在 [下載使用量 + 費用] 視窗中依序按一下 [下載 csv]**** 和 [下載發票]****。
 
 ![顯示 [下載發票和使用 量] 的螢幕擷取畫面](./media/review-individual-bill/usageandinvoice.png)
 
@@ -75,11 +75,11 @@ ms.locfileid: "84194157"
 
 ![Azure 發票範例](./media/review-individual-bill/invoice-usage-charge.png)
 
-開啟您所下載的 CSV 使用量檔案。 在檔案結尾，加總 [成本] 資料行中所有項目的值。
+開啟您所下載的 CSV 使用量檔案。 在檔案結尾，加總 [成本]** 資料行中所有項目的值。
 
 ![具有加總成本的使用量檔案範例](./media/review-individual-bill/usage-file-usage-charges.png)
 
- 加總的「成本」值應該會精確地符合發票上的「使用費用」成本。
+ 加總的「成本」** 值應該會精確地符合發票上的「使用費用」** 成本。
 
 使用量費用會顯示在計量等級中。 下列字詞在發票和詳細使用量檔案代表相同意義。 例如，發票上的計費週期與詳細使用量檔案中所顯示的計費期間相同。
 
@@ -96,21 +96,21 @@ ms.locfileid: "84194157"
 |費率 | EffectivePrice|
 | 值 | 成本 |
 
-您發票的 [使用費用] 區段會顯示您計費週期內所取用的每個計量總計值 (成本)。 例如，下列影像顯示 P10 Disks 資源的 Azure 儲存體服務使用費用。
+您發票的 [使用費用]**** 區段會顯示您計費週期內所取用的每個計量總計值 (成本)。 例如，下列影像顯示 P10 Disks** 資源的 Azure 儲存體服務使用費用。
 
 ![發票使用量費用](./media/review-individual-bill/invoice-usage-charges.png)
 
-在您的 CSV 使用量檔案中，根據發票上顯示的相對應資源篩選 MeterName。 然後，加總資料行項目的「成本」值。 範例如下。
+在您的 CSV 使用量檔案中，根據發票上顯示的相對應資源篩選 MeterName**。 然後，加總資料行項目的「成本」** 值。 以下範例著重於與發票上的相同明細相對應的計量名稱 (P10 磁碟)。
 
 ![MeterName 的使用量檔案加總值](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 
-加總的「成本」值應該會精確地符合發票上對個別資源收取的「使用費用」成本。
+加總的「成本」** 值應該會精確地符合發票上對個別資源收取的「使用費用」** 成本。
 
 如需詳細資訊，請參閱[了解您的 Azure 發票](understand-invoice.md)及[了解您的 Azure 詳細使用量](understand-usage.md)。
 
 ## <a name="compare-charges-and-usage-in-cost-analysis"></a>比較成本分析中的費用和使用量
 
-Azure 入口網站中的成本分析也可協助您確認費用。 若要快速瀏覽已開立發票的使用量和費用，請從 Azure 入口網站的[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)頁面中選取您的訂用帳戶。 接下來，按一下 [成本分析]，然後在檢視清單中按一下 [發票詳細資料]。
+Azure 入口網站中的成本分析也可協助您確認費用。 若要快速瀏覽已開立發票的使用量和費用，請從 Azure 入口網站的[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)頁面中選取您的訂用帳戶。 接下來，按一下 [成本分析]****，然後在檢視清單中按一下 [發票詳細資料]****。
 
 ![顯示發票詳細資料選取項目的範例](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -118,7 +118,7 @@ Azure 入口網站中的成本分析也可協助您確認費用。 若要快速�
 
 ![在成本分析中針對已開立發票項目顯示成本詳細資料的範例](./media/review-individual-bill/cost-analysis-service-usage-charges.png)
 
-成本分析中顯示的成本值，應該會精確地符合發票上對個別資源收取的「使用費用」成本。
+成本分析中顯示的成本值，應該會精確地符合發票上對個別資源收取的「使用費用」** 成本。
 
 ![發票使用量費用](./media/review-individual-bill/invoice-usage-charges.png)
 

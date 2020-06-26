@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: d87e0d54a62736623483f1929b1979af8efb3a58
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331758"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052428"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -36,7 +36,7 @@ ms.locfileid: "84331758"
 - [完成](tutorial-prepare-hyper-v.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
     - [準備 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以使用 Azure Migrate。
-    - [準備 Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) 主機和 VM 評量。
+    - [準備 Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-assessment) 主機和 VM 評量。
     - [確認](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)您需要哪些內容，才能部署 Hyper-V 評量所需的 Azure Migrate 設備。
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
@@ -102,7 +102,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
         **案例** | **下載** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.93 MB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8.93 GB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - 對於 Azure Government：
 
@@ -174,10 +174,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>委派 SMB VHD 的認證
 
-如果您要在 SMB 上執行 VHD，就必須將認證從設備委派到 Hyper-V 主機。 這需要下列各項：
-
-- 您可以讓每部主機成為設備的委派。 如果您依序進行教學課程，當您準備好 Hyper-V 以進行評估和移轉時，您應該已在上一個教學課程中完成這項作業。 您應該以[手動方式](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)或藉由[執行相關指令碼](tutorial-prepare-hyper-v.md#prepare-with-a-script)，來為主機設定 CredSSP。
-- 啟用 CredSSP 委派，讓 Azure Migrate 設備可作為用戶端，並將認證委派給主機。
+如果您要在 SMB 上執行 VHD，就必須將認證從設備委派到 Hyper-V 主機。 若要這麼做，您可以讓每部主機成為設備的委派。 如果您依序進行教學課程，當您準備好 Hyper-V 以進行評估和移轉時，您應該已在上一個教學課程中完成這項作業。 您應該以[手動方式](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials)或藉由[執行相關指令碼](tutorial-prepare-hyper-v.md#run-the-script)，來為主機設定 CredSSP。
 
 在設備上啟用，如下所示：
 
@@ -186,7 +183,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 在設備 VM 上，執行此命令。 HyperVHost1/HyperVHost2 是主機名稱範例。
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 範例： ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `

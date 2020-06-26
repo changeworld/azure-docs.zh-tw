@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561112"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906831"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教學課程：建置自訂映像，並從私人登錄在 App Service 中執行
 
@@ -236,23 +236,33 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 ## <a name="change-web-app-and-redeploy"></a>變更 Web 應用程式並重新部署
 
-在您的本機 Git 存放庫中，開啟 app/templates/app/index.html。 找出第一個 HTML 元素，並將它加以變更。
+在您的本機 Git 存放庫中，開啟 app/templates/app/index.html。 變更第一個 HTML 元素以符合下列程式碼。
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-一旦您修改了 Python 檔案並加以儲存後，必須重建並推送新的 Docker 映像。 接著，重新啟動 Web 應用程式，變更才會生效。 使用您先前已在本教學課程中使用的相同命令。 您可以參考[從 Docker 檔案建立映像](#build-the-image-from-the-docker-file)和[將映像推送至 Azure Container Registry](#push-image-to-azure-container-registry)。 遵循[測試 Web 應用程式](#test-the-web-app)中的指示來測試 web 應用程式。
+儲存變更之後，請使用您稍早在本教學課程中使用的相同命令來重建和推送新的 Docker 映像。 您可以參考[從 Docker 檔案建立映像](#build-the-image-from-the-docker-file)和[將映像推送至 Azure Container Registry](#push-image-to-azure-container-registry)。
+
+推送新的映像之後，請使用下列命令重新啟動 Web 應用程式，讓變更生效：
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+以稍早所使用的特定名稱取代 `<app_name>`。
+
+重新啟動應用程式後，請遵循[測試 Web 應用程式](#test-the-web-app)中的指示進行測試。
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>啟用 SSH 連線
 

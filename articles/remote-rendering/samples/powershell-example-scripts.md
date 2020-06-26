@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891487"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052297"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 指令碼範例
 
@@ -21,7 +21,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 [ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering)的 *Scripts* 資料夾中包含範例指令碼，可供與服務的 REST API 互動。 本文說明其使用方式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行範例指令碼，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 的功能設定。
 
@@ -76,6 +76,9 @@ Azure 遠端轉譯提供下列兩個 REST API：
 > [!CAUTION]
 > 請務必使用雙反斜線，在 LocalAssetDirectoryPath 路徑中正確地逸出反斜線："\\\\"，並在所有其他路徑 (例如 inputFolderPath 和 inputAssetPath) 中使用正斜線 "/"。
 
+> [!CAUTION]
+> 選擇性的值必須填寫，否則就必須完全移除索引鍵和值。 例如，如果您未使用 `"outputAssetFileName"` 參數，則必須將 `arrconfig.json` 內的一整行刪除。
+
 ### <a name="accountsettings"></a>accountSettings
 
 對於 `arrAccountId` 和 `arrAccountKey`，請參閱[建立 Azure 遠端轉譯帳戶](../how-tos/create-an-account.md)。
@@ -85,7 +88,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 如果您想要執行 **RenderingSession.ps1**，就必須填妥此結構。
 
-- **vmSize：** 選取虛擬機器的大小。 選取「標準」  或「進階」  。 當您不再需要轉譯工作階段時，請將其關閉。
+- **vmSize：** 選取虛擬機器的大小。 選取「標準」或「進階」。 當您不再需要轉譯工作階段時，請將其關閉。
 - **maxLeaseTime：** 您要租用 VM 的持續時間。 當租用到期時，工作階段就會關閉。 稍後可以延長的租用時間 (請參閱下文)。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -99,7 +102,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 此指令碼用來建立、查詢和停止轉譯工作階段。
 
 > [!IMPORTANT]
-> 請確定您已填妥 arrconfig.json 中的 accountSettings  和 renderingSessionSettings  區段。
+> 請確定您已填妥 arrconfig.json 中的 accountSettings 和 renderingSessionSettings 區段。
 
 ### <a name="create-a-rendering-session"></a>建立轉譯工作階段
 
@@ -139,7 +142,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-使用 `-Poll` 以等到工作階段已「準備就緒」  或發生錯誤。
+使用 `-Poll` 以等到工作階段已「準備就緒」或發生錯誤。
 
 ### <a name="list-active-sessions"></a>列出作用中的工作階段
 
@@ -169,7 +172,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 此指令碼用於將輸入模型轉換成 Azure 遠端轉譯的特定執行階段格式。
 
 > [!IMPORTANT]
-> 請確定您已填妥 arrconfig.json 中的 accountSettings  和 assetConversionSettings  區段。
+> 請確定您已填妥 arrconfig.json 中的 accountSettings 和 assetConversionSettings 區段。
 
 此指令碼示範使用儲存體帳戶搭配服務的兩個選項：
 

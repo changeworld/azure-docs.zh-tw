@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640559"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904757"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
@@ -46,9 +46,9 @@ ms.locfileid: "83640559"
 
 本教學課程適用於 iOS 和 macOS 應用程式。 請注意，這兩個平台間有一些的不同步驟。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 您需要 XCode 11.x 版或更高版本，才能在本指南中建置應用程式。 您可以從 [iTunes 網站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下載 URL") 下載 XCode。
+- 您需要 XCode 11.x 版或更高版本，才能在本指南中建置應用程式。 您可以從 [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下載 URL") 下載 XCode。
 - Microsoft 驗證程式庫 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 您可以使用相依性管理員或以手動方式新增程式庫。 以下指示會示範作法。
 
 此教學課程會建立新的專案。 如果您想改為下載完整的教學課程，請下載程式碼：

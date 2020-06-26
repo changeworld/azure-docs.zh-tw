@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587898"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073258"
 ---
 開始使用適用於 Go 的臉部用戶端程式庫。 請遵循下列步驟來安裝程式庫，並試用我們的基本工作範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -28,68 +28,16 @@ ms.locfileid: "82587898"
 
 [參考文件](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK 下載](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Go](https://golang.org/dl/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要所建立之資源的金鑰和端點，以將應用程式連線至臉部 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 取得金鑰和端點後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
-## <a name="set-up"></a>設定
-
-### <a name="create-a-face-azure-resource"></a>建立臉部 Azure 資源 
-
-藉由建立 Azure 資源，開始使用臉部服務。 選擇適合您的資源類型：
-
-* [試用資源](https://azure.microsoft.com/try/cognitive-services/#decision) (不需要 Azure 訂用帳戶)： 
-    * 可免費使用 7 天。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得試用金鑰與端點。 
-    * 如果您想要試用臉部服務，但沒有 Azure 訂用帳戶，這是很好的選擇。
-* [臉部服務資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)：
-    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。
-    * 使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
-* [多服務資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)：
-    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。  
-    * 針對您的應用程式，跨多個認知服務使用相同的金鑰和端點。
-
-### <a name="create-an-environment-variable"></a>建立環境變數
-
->[!NOTE]
-> 在 2019 年 7 月 1 日之後為非試用資源建立的端點會使用自訂的子網域格式，如下所示。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
-
-在您建立的資源中，使用金鑰和端點來建立兩個環境變數以進行驗證：
-* `FACE_SUBSCRIPTION_KEY` - 用於驗證您要求的資源金鑰。
-* `FACE_ENDPOINT` -用來傳送 API 要求的資源端點。 它看起來像下面這樣： 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-請使用適合您作業系統的指示。
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-新增環境變數之後，請重新啟動主控台視窗。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-編輯 `.bash_profile`，然後新增環境變數：
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
-***
+## <a name="setting-up"></a>設定
 
 ### <a name="create-a-go-project-directory"></a>建立 Go 專案目錄
 
@@ -251,7 +199,7 @@ touch sample-app.go
 
 ### <a name="get-a-test-image"></a>取得測試影像
 
-下列程式碼會在專案的根目錄中尋找 test-image-person-group.jpg  影像，並將其載入到程式記憶體中。 您可以在與[建立並訓練人員群組](#create-and-train-a-person-group)中所用影像相同的存放庫中找到此影像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+下列程式碼會在專案的根目錄中尋找 test-image-person-group.jpg__ 影像，並將其載入到程式記憶體中。 您可以在與[建立並訓練人員群組](#create-and-train-a-person-group)中所用影像相同的存放庫中找到此影像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -301,13 +249,13 @@ touch sample-app.go
 
 ## <a name="take-a-snapshot-for-data-migration"></a>取得用於移轉資料的快照集
 
-快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費試用版訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 在此範例中，您會遷移在[建立並訓練人員群組](#create-and-train-a-person-group)中所建立的 **PersonGroup**。 您可以先完成該區段，也可以使用您自己的臉部資料建構。
 
 ### <a name="set-up-target-subscription"></a>設定目標訂用帳戶
 
-首先，您必須擁有第二個臉部資源 Azure 訂用帳戶；若要這麼做，請重複[設定](#set-up)一節中的步驟。 
+首先，您必須擁有第二個臉部資源 Azure 訂用帳戶；若要這麼做，請重複[設定](#setting-up)一節中的步驟。 
 
 接著，在 **main**方法頂端附近建立下列變數。 您還需要為 Azure 帳戶的訂用帳戶識別碼建立新的環境變數，以及為新的 (目標) 帳戶建立金鑰、端點和訂用帳戶識別碼。
 

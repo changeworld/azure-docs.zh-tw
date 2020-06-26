@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 804e6d562322eff20de8eb7e33caae98418ea3fe
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046332"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905675"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>為於 Azure App Service 設定 Linux Ruby 應用程式
 
@@ -55,7 +55,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>存取環境變數
 
-在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然後，您可以使用標準的 [ENV['\<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式來存取這些設定。 例如，若要存取稱為 `WEBSITE_SITE_NAME` 的應用程式設定，請使用下列程式碼：
+在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然後，您可以使用標準 [ENV['\<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式來存取這些設定。 例如，若要存取稱為 `WEBSITE_SITE_NAME` 的應用程式設定，請使用下列程式碼：
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -141,7 +141,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在瀏覽器中開啟 SSH 工作階段
 

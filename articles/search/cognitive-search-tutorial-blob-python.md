@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/26/2020
+ms.date: 06/12/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2f650681742b2d91396ad41aeb69505c703cd3ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608786"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753047"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -32,7 +32,7 @@ ms.locfileid: "84608786"
 
 如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + [Azure 儲存體](https://azure.microsoft.com/services/storage/)
 + [Anaconda 3.7](https://www.anaconda.com/distribution/#download-section)
@@ -43,9 +43,9 @@ ms.locfileid: "84608786"
 
 ## <a name="download-files"></a>下載檔案
 
-1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]  ，將檔案複製到您的電腦。 
+1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]****，將檔案複製到您的電腦。 
 
-1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]  。 其中有 14 個不同類型的檔案。 在此練習中，您將使用 7 個檔案。
+1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]****。 其中有 14 個不同類型的檔案。 在此練習中，您將使用 7 個檔案。
 
 ## <a name="1---create-services"></a>1 - 建立服務
 
@@ -55,9 +55,9 @@ ms.locfileid: "84608786"
 
 ### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]  。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]****。
 
-1. 搜尋「儲存體帳戶」  ，然後選取 Microsoft 的儲存體帳戶供應項目。
+1. 搜尋「儲存體帳戶」**，然後選取 Microsoft 的儲存體帳戶供應項目。
 
    ![建立儲存體帳戶](media/cognitive-search-tutorial-blob/storage-account.png "建立儲存體帳戶")
 
@@ -65,34 +65,34 @@ ms.locfileid: "84608786"
 
    + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
+   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus**。 
 
    + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]  。
+   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]**。
 
-1. 按一下 [檢閱 + 建立]  以建立服務。
+1. 按一下 [檢閱 + 建立]**** 以建立服務。
 
-1. 建立後，按一下 [移至資源]  以開啟 [概觀] 頁面。
+1. 建立後，按一下 [移至資源]**** 以開啟 [概觀] 頁面。
 
-1. 按一下 [Blob]  服務。
+1. 按一下 [Blob]**** 服務。
 
-1. 按一下 [+ 容器]  來建立容器，並將其命名為 cog-search-demo  。
+1. 按一下 [+ 容器]**** 來建立容器，並將其命名為 cog-search-demo**。
 
-1. 選取 [cog-search-demo]  ，然後按一下 [上傳]  以開啟其中儲存下載檔案的資料夾。 選取所有非影像檔案。 您應該會有 7 個檔案。 按一下 [確定]  來上傳。
+1. 選取 [cog-search-demo]**，然後按一下 [上傳]**** 以開啟其中儲存下載檔案的資料夾。 選取所有非影像檔案。 您應該會有 7 個檔案。 按一下 [確定]**** 來上傳。
 
    ![上傳範例檔案](media/cognitive-search-tutorial-blob/sample-files.png "上傳範例檔案")
 
 1. 在您離開 Azure 儲存體之前，請取得連接字串，以便在 Azure 認知搜尋中制定連線。 
 
-   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus  作為範例)。 
+   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus** 作為範例)。 
    
-   1. 在左側導覽窗格中，選取 [存取金鑰]  並複製其中一個連接字串。 
+   1. 在左側導覽窗格中，選取 [存取金鑰]**** 並複製其中一個連接字串。 
 
    連接字串應為類似於下列範例的 URL：
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. 將連接字串儲存到記事本。 您稍後設定資料來源連線時會用到該字串。
@@ -101,7 +101,7 @@ ms.locfileid: "84608786"
 
 AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的文字分析和電腦視覺。 如果您的目標是要完成實際的原型或專案，您應在此時佈建認知服務 (位於 Azure 認知搜尋所在的區域)，以便將其連結至索引作業。
 
-不過，在此練習中，您可以略過資源佈建，因為 Azure 認知搜尋可以在幕後連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 由於本教學課程會使用 7 筆交易，因此使用免費配置就已足夠。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。
+由於本教學課程僅使用 7 筆交易，您可略過資源佈建，因為 Azure 認知搜尋可以連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 免費配置就已足夠。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。
 
 ### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
@@ -111,9 +111,9 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]**** 頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
 
-2. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+2. 在 [設定]**** >  [金鑰]**** 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
@@ -188,7 +188,7 @@ print(r.status_code)
 
 此要求應該會傳回確認成功的狀態碼 201。
 
-在 Azure 入口網站的搜尋服務儀表板頁面上，確認 cogsrch-py-datasource 出現在 [資料來源]  清單中。 按一下 [重新整理]  來更新頁面。
+在 Azure 入口網站的搜尋服務儀表板頁面上，確認 cogsrch-py-datasource 出現在 [資料來源]**** 清單中。 按一下 [重新整理]**** 來更新頁面。
 
 ![入口網站中的資料來源圖格](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "入口網站中的資料來源圖格")
 
@@ -220,12 +220,14 @@ skillset_payload = {
             "defaultLanguageCode": "en",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
                 {
-                    "name": "organizations", "targetName": "organizations"
+                    "name": "organizations", 
+                    "targetName": "organizations"
                 }
             ]
         },
@@ -233,7 +235,8 @@ skillset_payload = {
             "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
@@ -269,10 +272,12 @@ skillset_payload = {
             "context": "/document/pages/*",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/pages/*"
+                    "name": "text", 
+                    "source": "/document/pages/*"
                 },
                 {
-                    "name": "languageCode", "source": "/document/languageCode"
+                    "name": "languageCode", 
+                    "source": "/document/languageCode"
                 }
             ],
             "outputs": [
@@ -378,9 +383,9 @@ print(r.status_code)
 
 若要在索引子中結合這些物件，您必須定義欄位對應。
 
-+ fieldMappings 會在技能集之前進行處理，用來將資料來源中的來源欄位對應到索引中的目標欄位。 如果兩端上的欄位名稱和類型都相同，則不需要任何對應。
++ `"fieldMappings"` 會在技能集之前進行處理，用來將資料來源中的來源欄位對應到索引中的目標欄位。 如果兩端上的欄位名稱和類型都相同，則不需要任何對應。
 
-+ outputFieldMappings 會在技能集之後進行處理，用來參考文件萃取或擴充後才建立的 sourceFieldNames。 targetFieldName 是索引中的欄位。
++ `"outputFieldMappings"` 會在技能集之後進行處理，用來參考文件萃取或擴充後才建立的 `"sourceFieldNames"`。 `"targetFieldName"` 是索引中的欄位。
 
 除了將輸入連結至輸出外，您也可以使用欄位對應來壓平合併資料結構。 如需詳細資訊，請參閱[如何將擴充的欄位對應至可搜尋的索引](cognitive-search-output-field-mapping.md)。
 
@@ -465,7 +470,7 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-在回應中，監視 "lastResult" 中是否有 "status" 和 "endTime" 的值。 定期執行指令碼以檢查狀態。 完成索引子之後，狀態將會設為 "success"、將會指定 "endTime"，而且回應將會包含擴充期間發生的所有錯誤和警告。
+在回應中，監視 `"lastResult"` 的 `"status"` 和 `"endTime"` 值。 定期執行指令碼以檢查狀態。 完成索引子之後，狀態將會設為 "success"、將會指定 "endTime"，而且回應將會包含擴充期間發生的所有錯誤和警告。
 
 ![建立索引子](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "建立索引子")
 
@@ -505,7 +510,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ![查詢組織內容的索引](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "查詢索引以傳回組織的內容")
 
-對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 `$select` 傳回多個欄位。
+針對其他欄位重複執行：此練習中的 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 您可以透過使用逗號分隔清單的 `$select` 傳回多個欄位。
 
 您可以使用 GET 或 POST，視查詢字串的複雜度和長度而定。 如需詳細資訊，請參閱[使用 REST API 進行查詢](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 

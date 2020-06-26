@@ -9,33 +9,28 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: dbe986145a223f1958f1945abfa189de90952f4a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52e83aa574dcd506270dc8e2f244a9f96add53
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80272683"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073240"
 ---
 <a name="HOLTop"></a>
 
 [參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [成品 (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版的 [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 建置工具](https://gradle.org/install/)，或其他相依性管理員。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要所建立之資源的金鑰和端點，以將應用程式連線至電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 為金鑰和端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，名稱分別為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-computer-vision-azure-resource"></a>建立電腦視覺 Azure 資源
-
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立電腦視覺的資源。 您也可以：
-
-* 取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
-* 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源。
-
-然後，分別為名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ### <a name="create-a-new-gradle-project"></a>建立新的 Gradle 專案
 
@@ -51,9 +46,9 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-出現選擇 **DSL** 的提示時，請選取 [Kotlin]  。
+出現選擇 **DSL** 的提示時，請選取 [Kotlin]****。
 
-找出 build.gradle.kts  ，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ComputerVisionQuickstarts** 類別的 Java 應用程式。 這會匯入電腦視覺程式庫。
+找出 build.gradle.kts**，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ComputerVisionQuickstarts** 類別的 Java 應用程式。 這會匯入電腦視覺程式庫。
 
 ```kotlin
 plugins {
@@ -74,7 +69,7 @@ repositories {
 mkdir -p src/main/java
 ```
 
-流覽至新的資料夾，並建立名為 ComputerVisionQuickstarts.java  的檔案。 在您慣用的編輯器或 IDE 中開啟該檔案，並新增下列 `import` 陳述式：
+流覽至新的資料夾，並建立名為 ComputerVisionQuickstarts.java** 的檔案。 在您慣用的編輯器或 IDE 中開啟該檔案，並新增下列 `import` 陳述式：
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
@@ -84,7 +79,7 @@ mkdir -p src/main/java
 
 本快速入門會使用 Gradle 相依性管理員。 您可以在 [Maven 中央存放庫](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)中找到用戶端程式庫和其他相依性管理員的資訊。
 
-在您專案的 build.gradle.kts  檔案中，將電腦視覺用戶端程式庫納入為相依性。
+在您專案的 build.gradle.kts** 檔案中，將電腦視覺用戶端程式庫納入為相依性。
 
 ```kotlin
 dependencies {
@@ -115,7 +110,7 @@ dependencies {
 > [!NOTE]
 > 本快速入門假設您已針對名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 的電腦視覺金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
-下列程式碼會將 `main` 方法新增至您的類別，並為您資源的 Azure 端點和金鑰建立變數。 您必須輸入自己的端點字串，該字串位在 Azure 入口網站的 [概觀]  區段中。 
+下列程式碼會將 `main` 方法新增至您的類別，並為您資源的 Azure 端點和金鑰建立變數。 您必須輸入自己的端點字串，該字串位在 Azure 入口網站的 [概觀]**** 區段中。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747685"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944962"
 ---
 ::: zone target="docs"
 
@@ -28,7 +28,7 @@ ms.locfileid: "83747685"
 > * 將資料箱磁碟寄送給 Microsoft
 > * 在不同區域中取回資料箱磁碟
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您已完成[教學課程：將資料複製到 Azure 資料箱磁碟並確認](data-box-disk-deploy-copy-data.md)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "83747685"
 如果在美國或加拿大退回裝置，請執行下列步驟。
 
 1. 使用黏貼在外盒上，透明塑膠套裡面的退貨標籤。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]，然後下載寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]****，然後下載寄回的出貨標籤。
     - 將標籤黏貼在裝置上。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
@@ -72,13 +72,13 @@ ms.locfileid: "83747685"
 如果在歐洲退回裝置，請執行下列步驟。
 
 1. 使用黏貼在外盒上，透明塑膠套裡面的退貨標籤。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]，然後下載寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]****，然後下載寄回的出貨標籤。
     - 將標籤黏貼在裝置上。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
 3. 如果是在歐洲經由 DHL 辦理裝置退貨，請造訪 DHL 的網站並且指定空運提單號碼，要求他們取貨。
-4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)。    
-3. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨) 以安排取貨。
+4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)****。    
+3. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨)**** 以安排取貨。
 
 ### <a name="in-australia"></a>[澳大利亞](#tab/in-australia)
 
@@ -133,7 +133,7 @@ ms.locfileid: "83747685"
 ### <a name="in-singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 列印出貨標籤並黏貼在紙箱上。 如果標籤受損或遺失：
-    - 移至 [概觀] > [下載出貨標籤]，並取得寄回的出貨標籤。
+    - 移至 [概觀] > [下載出貨標籤]****，並取得寄回的出貨標籤。
     - 將標籤黏貼在裝置上。 請確定標籤清楚可見。
 
 2. 若要要求取貨，請使用下列範本搭配追蹤號碼 (您可以在傳遞套件中提供的傳回標籤上找到追蹤號碼)，傳送電子郵件給 SingPost 客戶服務。
@@ -159,9 +159,9 @@ ms.locfileid: "83747685"
 
 ### <a name="in-self-managed"></a>[自我管理中](#tab/in-selfmanaged)
 
-如果您在日本、新加坡、韓國和西歐使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
+如果您在日本、新加坡、韓國、西歐或印度使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
 
-1. 在 Azure 入口網站中，移至您訂單的 [概觀] 刀鋒視窗。 請遵循您在選取 [排程取貨] 時顯示的指示。 您應會看到托運訂單時所使用的授權碼。
+1. 在 Azure 入口網站中，移至您訂單的 [概觀]**** 刀鋒視窗。 請遵循您在選取 [排程取貨]**** 時顯示的指示。 您應會看到托運訂單時所使用的授權碼。
 
 2. 當您準備好傳回裝置時，請使用下列範本將電子郵件傳送給 Azure 資料箱作業小組。
 

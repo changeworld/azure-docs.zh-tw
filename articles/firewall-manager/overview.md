@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/13/2020
+ms.date: 06/11/2020
 ms.author: victorh
-ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79366269"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792147"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什麼是 Azure 防火牆管理員預覽？
 
@@ -22,16 +22,16 @@ Azure 防火牆管理員預覽是一種安全性管理服務，能為雲端式�
 
 防火牆管理員可針對兩種網路架構類型提供安全性管理：
 
-- **安全虛擬中樞**
+- **安全的虛擬中樞**
 
    [Azure 虛擬 WAN 中樞](../virtual-wan/virtual-wan-about.md#resources)是一項由 Microsoft 管理的資源，可讓您輕鬆建立中樞和輪輻架構。 當安全性和路由原則與這類中樞相關聯時，我們即稱之為 *[安全虛擬中樞](secured-virtual-hub.md)* 。 
 - **中樞虛擬網路**
 
-   這是您自行建立和管理的標準 Azure 虛擬網路。 當安全性原則與這類中樞相關聯時，我們即稱之為「安全虛擬網路」  。 目前僅支援 Azure 防火牆原則。 您可以將包含工作負載伺服器和服務的輪輻虛擬網路對等互連。 您也可以在獨立虛擬網路中管理未對等互連到任何輪輻的防火牆。
+   這是您自行建立和管理的標準 Azure 虛擬網路。 當安全性原則與這類中樞相關聯時，我們即稱之為「安全虛擬網路」**。 目前僅支援 Azure 防火牆原則。 您可以將包含工作負載伺服器和服務的輪輻虛擬網路對等互連。 您也可以在獨立虛擬網路中管理未對等互連到任何輪輻的防火牆。
 
-如需「安全虛擬中樞」  和「中樞虛擬網路」  架構的詳細比較，請參閱[Azure 防火牆管理員架構選項為何？](vhubs-and-vnets.md)。
+如需「安全虛擬中樞」** 和「中樞虛擬網路」** 架構的詳細比較，請參閱[Azure 防火牆管理員架構選項為何？](vhubs-and-vnets.md)。
 
-![防火牆管理員](media/overview/firewallmanagerv5.png)
+![防火牆管理員](media/overview/trusted-security-partners.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure 防火牆管理員預覽功能
 

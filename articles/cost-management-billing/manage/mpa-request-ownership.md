@@ -5,78 +5,61 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437869"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752119"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
 若要為受控服務和 Azure 使用量提供單一合併發票，雲端解決方案提供者 (CSP) 可從具有直接 Enterprise 合約 (EA) 的客戶接管 Azure 訂用帳戶的帳單擁有權。
 
-這項功能僅適用於已認證為 [Azure 專家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 的 CSP 直接帳單合作夥伴。 它受限於 Microsoft 控管和原則，而且可能需要對特定客戶進行審查與核准。
+這項功能僅適用於已認證為 [Azure 專家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 的 CSP 直接帳單合作夥伴。 這受限於 Microsoft 控管和原則，而且可能需要對特定客戶進行檢閱與核准。
 
-若要要求帳單擁有權，您必須擁有 [全域管理員]  或 [管理員代理人]  角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要要求帳單擁有權，您必須擁有 [全域管理員]**** 或 [管理員代理人]**** 角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 本文適用於 Microsoft 合作夥伴合約的計費帳戶。 針對雲端解決方案提供者 (CSP) 建立這些帳戶，以便在新的商務體驗中管理其客戶的帳單。 新的體驗僅適用於下列合作夥伴：至少有一個客戶已接受 Microsoft 客戶合約 (MCA) 且具有 Azure 方案。 [檢查您是否有 Microsoft 合作夥伴合約的存取權](#check-access-to-a-microsoft-partner-agreement)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-1. 與客戶建立[經銷商關係](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 檢查 [CSP 地區授權概觀](https://docs.microsoft.com/partner-center/regional-authorization-overview)，以確保客戶和合作夥伴租用戶都位於相同的授權區域中。  
-
-2. [確認客戶已接受 Microsoft 客戶合約](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。
-
-3. 為客戶設定 [Azure 方案](https://docs.microsoft.com/partner-center/purchase-azure-plan)。 如果客戶透過多個轉銷商購買，您必須為每個客戶與轉銷商組合設定 Azure 方案。
+1. 與客戶建立[經銷商關係](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 檢查 [CSP 地區授權概觀](https://docs.microsoft.com/partner-center/regional-authorization-overview)，以確保客戶和合作夥伴租用戶都位於相同的授權區域中。
+1. [確認客戶已接受 Microsoft 客戶合約](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。
+1. 為客戶設定 [Azure 方案](https://docs.microsoft.com/partner-center/purchase-azure-plan)。 如果客戶透過多個轉銷商購買，您必須為每個客戶與轉銷商組合設定 Azure 方案。
 
 ## <a name="request-billing-ownership"></a>要求帳單擁有權
 
-1. 使用 CSP 管理員代理人認證登入 [Azure 入口網站](https://portal.azure.com)。
-
-2. 搜尋 [成本管理 + 帳單]  。
-
-   ![顯示在 Azure 入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mpa-request-ownership/search-cmb.png)
-
-3. 從左側選取 [客戶]  ，然後從清單中選取客戶。
-
-   ![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)        
-
-4. 從左下方選取 [轉移要求]  ，然後選取 [新增要求]  。
-
-   ![顯示選取轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
-
-5. 輸入客戶組織中將接受轉移要求之使用者的電子郵件地址。 此使用者必須是 Enterprise 合約上的帳戶擁有者。 選取 [傳送轉移要求]  。
-
-   ![顯示傳送轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
-
-6. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。
-
-   ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
-
-7. 若要核准轉移要求，使用者須選取電子郵件中的連結，並遵循相關指示。
-
-    ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mpa-request-ownership/mpa-review-transfer-request.png)
+1. 使用 CSP 租用戶中的 CSP 管理代理程式認證登入 [Azure 入口網站](https://portal.azure.com)。
+1. 搜尋 [成本管理 + 帳單]****。  
+    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/search-cmb.png)
+1. 從左側選取 [客戶]****，然後從清單中選取客戶。  
+    [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. 從左下方選取 [轉移要求]****，然後選取 [新增要求]****。  
+    [![顯示選取轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
+1. 輸入客戶組織中將接受轉移要求之使用者的電子郵件地址。 此使用者必須是 Enterprise 合約上的帳戶擁有者。 選取 [傳送轉移要求]****。  
+    [![顯示傳送轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
+1. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。  
+    ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
+1. 若要核准轉移要求，使用者須選取電子郵件中的連結，並遵循相關指示。  
+    [![顯示檢閱轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) 使用者可選取他們要從中轉移 Azure 產品的計費帳戶。 選取之後，會顯示可轉移的合格產品。 **注意：** 已停用的訂用帳戶無法轉移，且會顯示在「無法轉移的 Azure 產品」清單中 (如果適用)。 選取要轉移的 Azure 產品之後，請選取 [驗證]****。
+1. [傳輸驗證結果]**** 區域會顯示即將轉移的 Azure 產品所產生的影響。 以下是可能的狀態：
+    * **通過** - 此 Azure 產品的驗證已通過，可進行轉移。
+    * **警告** - 選取的 Azure 產品出現警告。 雖然產品仍可轉移，但轉移時會造成使用者在想要採取緩和動作時應注意的影響。 例如，假設要轉移的 Azure 訂用帳戶受益於 RI。 轉移之後，訂用帳戶將不再享有該權益。 若要盡可能節省成本，請確定 RI 已與可使用其權益的另一個訂用帳戶相關聯。 實際上，使用者也可選擇返回選取頁面，並取消選取此 Azure 訂用帳戶。
+    * **失敗** - 選取的 Azure 產品因錯誤而無法轉移。 使用者必須回到選取頁面並取消選取此產品，以轉移其他已選取的 Azure 產品。  
+    ![顯示驗證體驗的螢幕擷取畫面](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>查看轉移要求狀態
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-
-2. 搜尋 [成本管理 + 帳單]  。
-
-   ![顯示在 Azure 入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-
-3. 從左側選取 [客戶]  。
-
-   ![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)
-
-4. 從清單中選取您為其傳送轉移要求的客戶。
-
-5. 從左下方選取 [轉移要求]  。 [轉移要求] 頁面會顯示下列資訊：
-
-    ![顯示轉移要求清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
+1. 搜尋 [成本管理 + 帳單]****。  
+    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+1. 從左側選取 [客戶]****。  
+    [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. 從清單中選取您為其傳送轉移要求的客戶。
+1. 從左下方選取 [轉移要求]****。 [轉移要求] 頁面會顯示下列資訊：[![顯示轉移要求清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |資料行|定義|
    |---------|---------|
@@ -97,7 +80,7 @@ ms.locfileid: "80437869"
    |已取消|具有轉移要求存取權的人員已取消要求|
    |已拒絕|使用者已拒絕轉移要求|
 
-6. 選取轉移要求以檢視詳細資料。 [轉移詳細資料] 頁面會顯示下列資訊：![顯示已轉移訂用帳戶清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-transfer-completed.png)
+1. 選取轉移要求以檢視詳細資料。 [轉移詳細資料] 頁面會顯示下列資訊：[![顯示已轉移訂用帳戶清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-transfer-completed.png)](./media/mpa-request-ownership/mpa-transfer-completed.png#lightbox)
 
    |資料行  |定義|
    |---------|---------|
@@ -112,10 +95,10 @@ ms.locfileid: "80437869"
 
 您可以要求下列訂用帳戶類型的帳單擁有權。
 
-- [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
-- [Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/) \(英文\)
+* [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
+* [Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/) \(英文\)
 
-\* 開發/測試訂用帳戶必須先透過支援票證轉換成 EA Enterprise 供應項目。 企業開發/測試訂用帳戶會在移轉後以隨用隨付費率計費。 CSP 合作夥伴將無法使用依據客戶的 EA 透過 Enterprise 開發/測試供應項目所提供的任何折扣。
+\* 您必須透過支援票證將開發/測試訂用帳戶轉換為 EA Enterprise 供應項目。 企業開發/測試訂用帳戶會在移轉後以隨用隨付費率計費。 CSP 合作夥伴將無法使用依據客戶的 EA 透過 Enterprise 開發/測試供應項目所提供的任何折扣。
 
 ## <a name="additional-information"></a>其他資訊
 
@@ -135,17 +118,17 @@ ms.locfileid: "80437869"
 
 ### <a name="azure-marketplace-products-transfer"></a>Azure Marketplace 產品轉移
 
-可供雲端解決方案提供者 (CSP) 所管理訂用帳戶使用的 Azure Marketplace 產品會連同其各自的訂用帳戶一起移轉。 無法移轉具有未針對 CSP 啟用之 Azure Marketplace 產品的訂用帳戶。
+可供雲端解決方案提供者 (CSP) 所管理訂用帳戶使用的 Azure Marketplace 產品會連同其各自的訂用帳戶一起轉移。 訂用帳戶若具有未針對 CSP 啟用的 Azure Marketplace 產品，則無法轉移。
 
 ### <a name="azure-reservations-transfer"></a>Azure 保留轉移
 
-Azure 保留不會自動隨著訂用帳戶轉移。 您可以保有 EA 中的保留以用於其他訂用帳戶，或[取消保留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，讓合作夥伴可在 CSP 中重新購買。 
+Azure 保留不會自動隨著訂用帳戶轉移。 您可以保有 EA 中的保留以用於其他訂用帳戶，或[取消保留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，讓合作夥伴可在 CSP 中重新購買。
 
 ### <a name="access-to-azure-services"></a>對 Azure 服務的存取
 
-使用 [Azure RBAC (角色型存取控制)](../../role-based-access-control/overview.md) 為現有使用者、群組或服務主體指派的存取權，在轉換期間不受影響。 合作夥伴不會取得訂用帳戶的任何新 RBAC 存取權。  
+使用 [Azure RBAC (角色型存取控制)](../../role-based-access-control/overview.md) 為現有使用者、群組或服務主體指派的存取權，在轉換期間不受影響。 合作夥伴不會取得訂用帳戶的任何新 RBAC 存取權。
 
-合作夥伴應該與客戶合作，以取得訂用帳戶的存取權。  合作夥伴必須取得[管理員代理者 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 存取權才能開啟支援票證。
+合作夥伴應該與客戶合作，以取得訂用帳戶的存取權。 合作夥伴必須取得[代表的管理員 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 存取權才能開啟支援票證。
 
 ### <a name="azure-support-plan"></a>Azure 支援方案
 
@@ -165,15 +148,16 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 
 ### <a name="additional-approval-for-certain-customers"></a>額外核准特定客戶
 
-由於客戶目前的企業註冊結構本質，所以某些客戶轉換要求可能需要與 Microsoft 進行額外的審查程序。 合作夥伴嘗試傳送邀請給客戶時，將會收到這類要求的通知。 合作夥伴需要與其合作夥伴開發經理和客戶的帳戶小組合作，以完成此審查程序。
+由於客戶目前的企業註冊結構本質，所以某些客戶轉換要求可能需要與 Microsoft 進行額外的檢閱程序。 合作夥伴嘗試傳送邀請給客戶時，將會收到這類要求的通知。 合作夥伴需要與其合作夥伴開發經理和客戶的帳戶小組合作，以完成此審查程序。
 
 ### <a name="azure-subscription-directory"></a>Azure 訂用帳戶目錄
+
 所移轉 Azure 訂用帳戶的目錄必須符合在建立 CSP 關聯性時所選取的客戶目錄。
 
 如果這兩個目錄不相符，就無法移轉訂用帳戶。 您必須藉由選取 Azure 訂用帳戶的目錄來與客戶建立新的 CSP 轉銷商關係，或變更 Azure 訂用帳戶的目錄以符合客戶 CSP 關聯性目錄。 如需詳細資訊，請參閱[將現有的訂用帳戶關聯至您的 Azure AD 目錄](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
 
-
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>檢查 Microsoft 合作夥伴合約的存取權
+
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
@@ -182,6 +166,5 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 
 ## <a name="next-steps"></a>後續步驟
 
-- Azure 訂用帳戶的帳單擁有權已轉移給您。 請在 [Azure入口網站](https://portal.azure.com)中追蹤這些訂用帳戶的費用。
-
-- 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 RBAC 管理 Azure 資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+* Azure 訂用帳戶的帳單擁有權已轉移給您。 請在 [Azure入口網站](https://portal.azure.com)中追蹤這些訂用帳戶的費用。
+* 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 RBAC 管理 Azure 資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。

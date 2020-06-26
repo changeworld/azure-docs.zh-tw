@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745843"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052147"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -100,7 +100,7 @@ Visual Studio 和 Microsoft 合作夥伴網路訂用帳戶都有相關聯的每�
 
 ## <a name="supported-subscription-types"></a>支援的訂用帳戶類型
 
-Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶類型。 [免費試用](https://azure.microsoft.com/offers/ms-azr-0044p/) 或 [Azure in Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 訂用帳戶目前不支援轉移。 如需因應措施，請參閱[將資源移動到新的資源群組或訂用帳戶](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 若要轉移[贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支援方案等其他訂用帳戶，[請連絡 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶類型。 [免費試用](https://azure.microsoft.com/offers/ms-azr-0044p/) 或 [Azure in Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 訂用帳戶目前不支援轉移。 如需因應措施，請參閱[將資源移動到新的資源群組或訂用帳戶](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 若要轉移支援方案等其他訂用帳戶，請[連絡 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 - [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft 合作夥伴網路](https://azure.microsoft.com/offers/ms-azr-0025p/)  

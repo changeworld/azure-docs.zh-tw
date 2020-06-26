@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830305"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686404"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立預算
 
@@ -21,7 +21,7 @@ ms.locfileid: "83830305"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure Resource Manager 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本不支援其他訂用帳戶類型。
 
@@ -74,7 +74,7 @@ Azure Resource Manager 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用�
     * **閾值**：輸入通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
     * **連絡人電子郵件**：輸入超出閾值時，預算通知要傳送至的電子郵件地址清單。 預期的格式為 `["user1@domain.com","user2@domain.com"]`。
     * **連絡人角色**：輸入超出閾值時，預算通知要傳送至的連絡人角色清單。 預設值為「擁有者」、「參與者」和「讀者」。 預期的格式為 `["Owner","Contributor","Reader"]`。
-    * **連絡人群組**：輸入超出閾值時，預算通知要傳送至的動作群組清單。 其接受字串陣列。 預期的格式為 `["Action Group Name1","Action Group Name2"]`。 如果不想要使用動作群組，請輸入 `[]`。
+    * **連絡人群組**：輸入在超出閾值時，預算通知要傳送到的動作群組資源識別碼清單 (以完整資源 URI 的形式)。 其接受字串陣列。 預期的格式為 `["action group resource ID1","action group resource ID2"]`。 如果不想要使用動作群組，請輸入 `[]`。
     * **資源篩選**：輸入資源的篩選條件清單。 預期的格式為 `["Resource Filter Name1","Resource Filter Name2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。 如果您輸入資源篩選條件，您也必須輸入 [計量篩選條件] 值。
     * **計量篩選條件**：輸入計量的篩選條件清單，這是具有 [使用量] 預算類別的預算所必備。 預期的格式為 `["Meter Filter Name1","Meter Filter Name2"]`。 如果您未輸入**資源篩選條件**，請輸入 `[]`。
     * **我同意上方所述的條款及條件**：選取。

@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061315"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945642"
 ---
 # <a name="secure-access-to-application-data"></a>應用程式資料的安全存取
 
@@ -31,7 +31,7 @@ ms.locfileid: "80061315"
 
 [Azure Blob 儲存體](../common/storage-introduction.md#blob-storage)提供強固的服務來儲存應用程式的檔案。 本教學課程延伸[上一個主題][previous-tutorial]，說明如何從 Web 應用程式安全存取您的儲存體帳戶。 當您完成時，影像會經過加密，而 Web 應用程式會使用安全的 SAS 權杖來存取縮圖影像。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要進行本教學課程，您必須已完成先前的儲存體教學課程︰[使用事件方格自動調整已上傳映像的大小][previous-tutorial]。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80061315"
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -135,11 +135,13 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 |[UriBuilder](/dotnet/api/system.uribuilder) | [查詢](/dotnet/api/system.uribuilder.query) |  |
 |[清單](/dotnet/api/system.collections.generic.list-1) | | [加入](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>伺服器端加密
+## <a name="azure-storage-encryption"></a>Azure 儲存體加密
 
-[Azure 儲存體服務加密 (SSE)](../common/storage-service-encryption.md) 可協助您保護及防護資料。 SSE 會加密待用資料，並處理加密、解密和金鑰管理。 所有資料都使用 256 位元 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊加密方式之一) 進行加密。
+[Azure 儲存體加密](../common/storage-service-encryption.md)可藉由加密待用資料及處理加密和解密，協助您防護和保護您的資料。 所有資料都使用 256 位元 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊加密方式之一) 進行加密。
 
-SSE 會自動將所有效能層 (標準和進階)、所有部署模型 (Azure Resource Manager 和傳統) 以及所有「Azure 儲存體」服務 (Blob、佇列、資料表和檔案) 中的資料加密。 
+您可以選擇讓 Microsoft 管理加密金鑰，也可以透過 Azure Key Vault 自備金鑰與客戶管理的金鑰。 如需詳細資訊，請參閱[使用客戶管理的金鑰搭配 Azure Key Vault 來管理 Azure 儲存體加密](../common/encryption-customer-managed-keys.md)。
+
+Azure 儲存體加密會自動將所有效能層 (標準和進階)、所有部署模型 (Azure Resource Manager 和傳統) 以及所有「Azure 儲存體」服務 (Blob、佇列、資料表和檔案) 中的資料加密。
 
 ## <a name="enable-https-only"></a>只啟用 HTTPS
 

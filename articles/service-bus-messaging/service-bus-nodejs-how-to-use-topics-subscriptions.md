@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91fae982f53af8da359baaff685996c0d1cb57c2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330441"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976552"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入門：如何透過 Node.js 和 azure-sb 套件使用服務匯流排主題和訂用帳戶
 在本教學課程中，您將了解如何建立 Node.js 應用程式，以使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件將訊息傳送至服務匯流排主題，以及接收來自服務匯流排訂用帳戶的訊息。 範例均以 JavaScript 撰寫，並使用在內部使用 `azure-sb` 套件的 Node.js [Azure 模組](https://www.npmjs.com/package/azure)。
@@ -39,7 +39,7 @@ ms.locfileid: "78330441"
 
 如需主題和訂用帳戶的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以建立服務匯流排**命名空間**及取得**連接字串**。
 
@@ -80,7 +80,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>設定服務匯流排連接
-Azure 模組會讀取環境變數 `AZURE_SERVICEBUS_CONNECTION_STRING`，以取得您從先前步驟＜取得認證＞所取得的連接字串。 如未設定此環境變數，必須在呼叫 `createServiceBusService` 時指定帳戶資訊。
+Azure 模組會讀取環境變數 `AZURE_SERVICEBUS_CONNECTION_STRING`，以獲得您在[必要條件](#prerequisites)中取得的連接字串。 如果您需要再次取得連接字串的指示，請參閱[取得連接字串](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)。 如未設定此環境變數，必須在呼叫 `createServiceBusService` 時指定帳戶資訊。
 
 如需在 Azure 雲端服務的環境變數設定範例，請參閱[設定環境變數](../container-instances/container-instances-environment-variables.md#azure-cli-example)。
 

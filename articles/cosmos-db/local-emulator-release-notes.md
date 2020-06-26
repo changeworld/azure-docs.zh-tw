@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746995"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687169"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模擬器 - 版本資訊和下載資訊
 
@@ -25,6 +25,10 @@ ms.locfileid: "83746995"
 |**開始使用**|[使用 Azure Cosmos 模擬器在本機開發](local-emulator.md)|
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="2111"></a>2.11.1
+
+- 此版本修正了與模擬器資料總管相關的幾個錯誤 (bug)。 在某些情況下，若透過網頁瀏覽器使用模擬器資料總管，便無法連線至 Cosmos 模擬器端點，而且所有相關動作 (例如建立資料庫或容器) 都會發生錯誤。 已修正的第二個問題與使用資料總管上傳動作從 JSON 檔案建立項目有關。
 
 ### <a name="2110"></a>2.11.0
 

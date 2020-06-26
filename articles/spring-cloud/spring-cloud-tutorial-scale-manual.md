@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277486"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792059"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中調整應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "76277486"
 
 完成之後，您將了解如何以手動方式快速變更服務中的每個應用程式。 調整能在數秒內生效，且不需要進行任何程式碼變更或重新部署。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要：
 
@@ -33,15 +33,15 @@ ms.locfileid: "76277486"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 移至 Azure Spring Cloud 的 [概觀]  頁面。
+1. 移至 Azure Spring Cloud 的 [概觀]**** 頁面。
 
 1. 選取包含服務的資源群組。
 
-1. 在頁面左側的功能表中，選取 [設定]  底下的 [應用程式]  索引標籤。
+1. 在頁面左側的功能表中，選取 [設定]**** 底下的 [應用程式]**** 索引標籤。
 
-1. 選取您要調整的應用程式。 在此範例中，請選取名為 **account-service** 的應用程式。 接著，您應該會看到應用程式的 [概觀]  頁面。
+1. 選取您要調整的應用程式。 在此範例中，請選取名為 **account-service** 的應用程式。 接著，您應該會看到應用程式的 [概觀]**** 頁面。
 
-1. 在頁面左側的功能表中，移至 [設定]  底下的 [調整]  索引標籤。 您應該會看到調整屬性的選項，如下一節所示。
+1. 在頁面左側的功能表中，移至 [設定]**** 底下的 [調整]**** 索引標籤。 您應該會看到調整屬性的選項，如下一節所示。
 
 ## <a name="scale-your-application"></a>調整您的應用程式
 
@@ -53,11 +53,14 @@ ms.locfileid: "76277486"
 
 * **應用程式執行個體計數**：在標準層中，您可以擴增到最多 20 個執行個體。 此值會變更微服務應用程式個別執行中執行個體的數目。
 
-請務必選取 [儲存]  以套用調整設定。
+請務必選取 [儲存]**** 以套用調整設定。
 
 ![Azure 入口網站中的調整服務](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-幾秒鐘之後，您所做的變更便會顯示在 [概觀]  頁面上，並在 [應用程式執行個體]  索引標籤中提供更多詳細資料。調整不需要進行任何程式碼變更或重新部署。
+幾秒鐘之後，您所做的變更便會顯示在 [概觀]**** 頁面上，並在 [應用程式執行個體]**** 索引標籤中提供更多詳細資料。調整不需要進行任何程式碼變更或重新部署。
+
+## <a name="upgrade-to-the-standard-tier"></a>升級至標準層
+如果您是在基本層，且受限於其中一或多項[限制](spring-cloud-quotas.md)，您可以升級至標準層。 若要這麼做，請移至 [定價層] 功能表，方法是先選取 [標準層] 資料行，然後按一下 [升級]**** 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 

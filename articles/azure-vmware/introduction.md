@@ -3,16 +3,16 @@ title: 簡介
 description: 了解 Azure VMware 解決方案 (AVS) 在 Azure 中部署和管理 VMware 工作負載的功能和優點。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740989"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749681"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>什麼是 Azure VMware 解決方案 (AVS) 預覽？
 
-Azure VMware 解決方案 (AVS) 可在 Azure 為您提供私人雲端。 私人雲端包含 vSphere 叢集，從專用的裸機 Azure 基礎結構加以建置。 由於單一私人雲端中可擁有多個叢集，您可以將私人雲端叢集從 3 個主機調整為 16 個。 所有私人雲端都會以 vCenter Server、VSAN、vSphere 和 NSX-T 佈建。 您可以從內部部署環境遷移工作負載、建立或部署新的虛擬機器，以及從您的私人雲端使用 Azure 服務。
+Azure VMware 解決方案 (AVS) 可在 Azure 為您提供私人雲端。 私人雲端包含 vSphere 叢集，從專用的裸機 Azure 基礎結構加以建置。 由於單一私人雲端中可擁有多個叢集，您可以將私人雲端叢集從 3 個主機調整為 16 個。 所有私人雲端都會以 vCenter Server、vSAN、vSphere 和 NSX-T 佈建。 您可以從內部部署環境遷移工作負載、建立或部署新的虛擬機器，以及從您的私人雲端使用 Azure 服務。
 
 AVS 是一項 VMware 驗證解決方案，其中包含進行中的增強功能與升級驗證和測試。 私人雲端基礎結構和軟體由 Microsoft 所管理和維護，可讓您專注於在私人雲端中開發及執行工作負載。
 

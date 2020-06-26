@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248527"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655846"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站
 
@@ -42,8 +42,6 @@ ms.locfileid: "84248527"
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 
 1. 從 Azure 入口網站功能表選取 [建立資源]。
-   
-   ![從 Azure 入口網站功能表選取 [建立資源]](./media/doc-common-process/create-a-resource.png)
 1. 選取 [Analytics]，然後選取 [Data Factory]。 
    
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ ms.locfileid: "84248527"
 ## <a name="create-a-linked-service"></a>建立連結的服務
 在此程序中，您會建立連結服務，將 Azure 儲存體帳戶連結至資料處理站。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
 
-1. 選取 [連線]，然後選取工具列上的 [新增] 按鈕 ([連線] 按鈕位於 [Factory 資源] 下方的左側資料行底部)。 
+1. 從左窗格中開啟 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
+1. 在 [連結的服務] 頁面上，選取 [+ 新增] 以建立新的連結服務。
+
+   ![新增連結服務](./media/doc-common-process/new-linked-service.png)
+   
 1. 在 [新增連結服務] 頁面上，選取 [Azure Blob 儲存體]，然後選取 [繼續]。 
 
 1. 在 [新增連結服務 (Azure Blob 儲存體)] 頁面上，完成下列步驟： 

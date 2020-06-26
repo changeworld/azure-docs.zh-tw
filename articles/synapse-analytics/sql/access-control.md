@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310252"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765075"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理工作區、資料和管線的存取權
 
@@ -50,7 +50,7 @@ ms.locfileid: "84310252"
 1. 開啟 [Azure 入口網站](https://portal.azure.com)
 2. 巡覽至 Azure Data Lake Storage Gen2 帳戶
 3. 瀏覽至您為 Azure Synapse 工作區挑選的容器 (檔案系統)
-4. 按一下 [存取控制 (IAM)]
+4. 按一下 [存取控制 (IAM)]****
 5. 指派下列角色：
    1. 將**讀者**角色指派給：  `Synapse_WORKSPACENAME_Users`
    2. 將**儲存體 Blob 資料擁有者**角色指派給：  `Synapse_WORKSPACENAME_Admins`
@@ -63,18 +63,18 @@ ms.locfileid: "84310252"
 ### <a name="step-3-configure-the-workspace-admin-list"></a>步驟 3：設定工作區系統管理員清單
 
 1. 移至 [**Azure Synapse Web UI**](https://web.azuresynapse.net)
-2. 移至 [管理]  > [安全性] > [存取控制]
-3. 按一下 [新增系統管理員]，然後選取 `Synapse_WORKSPACENAME_Admins`
+2. 移至 [管理]****  > [安全性]**** > [存取控制]****
+3. 按一下 [新增系統管理員]****，然後選取 `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>步驟 4：設定工作區的 SQL 系統管理員存取權
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)
 2. 瀏覽至您的工作區
-3. 移至 [設定] > [Active Directory 系統管理員]
-4. 按一下 [設定系統管理員]
+3. 移至 [設定]**** > [Active Directory 系統管理員]****
+4. 按一下 [設定系統管理員]****
 5. 選取 `Synapse_WORKSPACENAME_Admins`
-6. 按一下 [選取]
-7. 按一下 [儲存]
+6. 按一下 [選取]****
+7. 按一下 [儲存]****
 
 > [!NOTE]
 > WORKSPACENAME - 此部分應使用實際的工作區名稱。
@@ -169,14 +169,7 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > 如果您不想要授與 *db_owner* 權限，則 *db_datareader* 和 *db_datawriter* 可適用於讀取/寫入權限。
 > 若要讓 Spark 使用者能夠直接從 Spark 讀取和寫入至 SQL 集區 (反之亦然)，則需要有 *db_owner* 權限。
 
-在建立使用者後，請驗證 SQL 隨選是否可查詢儲存體帳戶：
-
-- 執行下列以 SQL 隨選 **master** 資料庫為目標的命令：
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+在建立使用者後，請驗證 SQL 隨選是否可查詢儲存體帳戶。
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>工作區管線執行的存取控制
 
