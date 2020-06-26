@@ -141,7 +141,9 @@
 - name: 資源
   items:
     - name: PowerShell
-      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API 參考資料
+      href: /rest/api/desktopvirtualization/
     - name: 體驗估算工具
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 定價計算機
