@@ -14,7 +14,7 @@ ms.locfileid: "84340584"
 
 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -150,7 +150,7 @@ ms.locfileid: "84340584"
 > [!div class="nextstepaction"]
 > [新增具有中繼資料的問題](add-question-metadata-portal.md)
 
-如需詳細資訊：
+其他資訊：
 
 * [ Markdown 格式](../reference-markdown-format.md)
 * QnA Maker [資料來源](../concepts/knowledge-base.md)。

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6fe075d2679ec13217200bc8b0da132e8f4d9b57
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660433"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171645"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 大量執行程式程式庫：下載資訊
 
@@ -43,23 +43,23 @@ ms.locfileid: "83660433"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="2100"></a><a name="2.10.0"/>2.10.0
+### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
 * 修正 DocumentAnalyzer.java，以便正確地從 json 解壓縮巢狀分割區索引鍵值。
 
-### <a name="294"></a><a name="2.9.4"/>2.9.4
+### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
 * 新增 BulkDelete 作業中的功能，以在特定失敗時重試，同時也會將失敗清單傳回給可重試的使用者。
 
-### <a name="293"></a><a name="2.9.3"/>2.9.3
+### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
 * Cosmos SDK 2.4.7 版的更新。
 
-### <a name="292"></a><a name="2.9.2"/>2.9.2
+### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
 * 修正 'mergeAll' 以繼續處理 'id' 和分割區索引鍵值，如此一來，就能將放置於 'id' 和資料分割索引鍵值之後的任何已修補文件屬性新增至更新的項目清單。
 
-### <a name="291"></a><a name="2.9.1"/>2.9.1
+### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * 將並行處理的開始程度更新為 1，並為迷你批次新增了偵錯工具記錄。
 

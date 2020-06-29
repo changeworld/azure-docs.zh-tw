@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650731"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171594"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Node.js SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "83650731"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大量執行程式 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [大量執行工具 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |資源  |連結  |
@@ -44,23 +44,23 @@ ms.locfileid: "83650731"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name=""></a><a name="3.1.0"/>3.1.0</a>
+### <a name="310"></a><a name="3.1.0"></a>3.1.0
 * 將預設 ResponseContinuationTokenLimitInKB 設定為 1 KB。 根據預設，我們會將此值限定為 1 KB，以避免長標頭 (Node.js 具有全域標頭大小限制)。 使用者可將此欄位設定為允許較長的標頭，這有助於後端將查詢執行最佳化。
 * 移除 disableSSLVerification。 此選項具有新的替代方案，如 [#388](https://github.com/Azure/azure-cosmos-js/pull/388) 中所述
 
-### <a name=""></a><a name="3.0.4"/>3.0.4</a>
+### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * 允許 initialHeaders 明確設定分割區索引鍵標頭
 * 使用 package.json#files 以防止發佈多餘的檔案
 * 修正舊版 node+v8 的路由對應排序錯誤
 * 修正使用者提供部份重試選項時的 Bug
 
-### <a name=""></a><a name="3.0.3"/>3.0.3</a>
+### <a name="303"></a><a name="3.0.3"></a>3.0.3
 * 防止 Webpack 解析以 require 呼叫的模組
 
-### <a name=""></a><a name="3.0.2"/>3.0.2</a>
+### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * 修正長時間未處理的 Bug，其中 RU 一律會回報為 0 以進行彙總查詢
 
-### <a name=""></a><a name="3.0.0"/>3.0.0</a>
+### <a name="300"></a><a name="3.0.0"></a>3.0.0
 
 🎉 v3 版本！ 🎉 許多新功能、Bug 修正和一些中斷性變更。 此版本的主要目標：
 
@@ -211,30 +211,30 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 啟用 noUnusedLocals 和 noUnusedParameters (#275)
 * 適用於 CI 組建的 Azure Pipelines YAML (#298)
 
-### <a name=""></a><a name="2.1.5"/>2.1.5</a>
+### <a name="215"></a><a name="2.1.5"></a>2.1.5
 * 無程式碼變更。 修正 2.1.4 套件中包含一些額外檔案的問題。
 
-### <a name=""></a><a name="2.1.4"/>2.1.4</a>
+### <a name="214"></a><a name="2.1.4"></a>2.1.4
 * 修正重試原則內的區域容錯移轉
 * 修正 ChangeFeed hasMoreResults 屬性
 * 開發相依性更新
 * 新增 PolicheckExclusions.txt
 
-### <a name=""></a><a name="2.1.3"/>2.1.3</a>
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * 將 _ts type 從字串切換至數字
 * 修正預設索引測試
 * 將 uniqueKeyPolicy 向後移植為 v2
 * 示範和示範偵錯修正
 
-### <a name=""></a><a name="2.1.2"/>2.1.2</a>
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * 從 v3 分支向後移植供應項目修正
 * 修正 executeNext() 類型簽章中的 Bug
 * 錯字修正
 
-### <a name=""></a><a name="2.1.1"/>2.1.1</a>
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * 組建重建。 允許在建置階段提取 SDK 版本。
 
-### <a name=""></a><a name="2.1.0"/>2.1.0</a>
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 #### <a name="new-features"></a>新功能
 * 已新增 ChangeFeed 支援 (#196)
 * 已新增用於編製索引的 MultiPolygon 資料類型 (#191)
@@ -247,76 +247,76 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 新增用於 TypeScript 的整合測試 (#199)
 * 允許直接從 GitHub 安裝 (#194)
 
-### <a name=""></a><a name="2.0.5"/>2.0.5</a>
+### <a name="205"></a><a name="2.0.5"></a>2.0.5
 * 已新增適用於節點代理程式類型的介面。 Typescript 使用者不再需要安裝 @types/node 作為相依性
 * 現在會正確接受慣用位置
 * 提供開發人員文件的改進
 * 各種錯字修正
 
-### <a name=""></a><a name="2.0.4"/>2.0.4</a>
+### <a name="204"></a><a name="2.0.4"></a>2.0.4
 * 修正 2.0.3 中所導入的類型定義問題
 
-### <a name=""></a><a name="2.0.3"/>2.0.3</a>
+### <a name="203"></a><a name="2.0.3"></a>2.0.3
 * 移除 `big-integer` 相依性
 * 切換為適用於 AsyncIterable 類型的參考指示詞。 Typescript 使用者不再需要自訂他們的 "lib" 設定。
 * 錯字修正
 
-### <a name=""></a><a name="2.0.2"/>2.0.2</a>
+### <a name="202"></a><a name="2.0.2"></a>2.0.2
 * 修正讀我檔案連結
 
-### <a name=""></a><a name="2.0.1"/>2.0.1</a>
+### <a name="201"></a><a name="2.0.1"></a>2.0.1
 * 修正重試介面實作
 
-### <a name=""></a><a name="2.0.0"/>2.0.0</a>
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * JavaScript SDK 2.0.0 版的公開推出
 * 已新增對多重區域寫入的支援。
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0-3</a>
+### <a name="200-3"></a><a name="2.0.0-3"></a>2.0.0-3
 * JavaScript SDK 2.0.0 版的 RC1 (用於公開預覽)。
 * 新的物件模型，具有最上層 CosmosClient，且方法分成相關的資料庫、容器和項目類別。 
 * 支援 [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)。 
 * SDK 轉換成 TypeScript。
 
-### <a name=""></a><a name="1.14.4"/>1.14.4</a>
+### <a name="1144"></a><a name="1.14.4"></a>1.14.4
 * 修正的 npm 文件。
 
-### <a name=""></a><a name="1.14.3"/>1.14.3</a>
+### <a name="1143"></a><a name="1.14.3"></a>1.14.3
 * 已新增對連線問題預設重試次數的支援。
 * 已新增對讀取集合變更摘要的支援。
 * 已修正間歇造成「無法讀取工作階段」的工作階段一致性錯誤。
 * 已新增對查詢度量資訊的支援。
 * 已修正 http 代理程式的最大連接數目。
 
-### <a name=""></a><a name="1.14.2"/>1.14.2</a>
+### <a name="1142"></a><a name="1.14.2"></a>1.14.2
 * 更新參考 Azure Cosmos DB 而非 Azure DocumentDB 的文件。
 * 在 ConnectionPolicy 加入對 proxyUrl 設定的支援。
 
-### <a name=""></a><a name="1.14.1"/>1.14.1</a>
+### <a name="1141"></a><a name="1.14.1"></a>1.14.1
 * 區分大小寫的檔案系統的次要修正。
 
-### <a name=""></a><a name="1.14.0"/>1.14.0</a>
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * 新增工作階段一致性的支援。
 * 此 SDK 版本需要使用最新版本的 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)。
 
-### <a name=""></a><a name="1.13.0"/>1.13.0</a>
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * 分割已經過證明的跨分割區查詢。
 * 新增對資源連結開頭和尾端斜線 (和對應的測試) 的支援。
 
-### <a name=""></a><a name="1.12.2"/>1.12.2</a>
+### <a name="1122"></a><a name="1.12.2"></a>1.12.2
 *    修正的 npm 文件。
 
-### <a name=""></a><a name="1.12.1"/>1.12.1</a>
+### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * 已修正 executeStoredProcedure 中的錯誤，其中涉及的文件有特殊 Unicode 字元 (LS、PS)。
 * 已修正在分割區索引鍵中使用 Unicode 字元處理文件的錯誤。
 * 已修正使用名稱媒體建立集合的支援。 GitHub 問題 #114。
 * 已修正權限授權權杖的支援。 GitHub 問題 #178。
 
-### <a name=""></a><a name="1.12.0"/>1.12.0</a>
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * 新增對新[一致性層級](consistency-levels.md) ConsistentPrefix 的支援。
 * 新增 UriFactory 的支援。
 * 已修正 Unicode 支援錯誤。 GitHub 問題 #171。
 
-### <a name=""></a><a name="1.11.0"/>1.11.0</a>
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * 新增彙總查詢的支援 (COUNT、MIN、MAX、SUM 和 AVG)。
 * 新增控制跨分割區查詢平行處理程度的選項。
 * 新增針對 Azure Cosmos DB 模擬器執行時停用 TLS 驗證的選項。
@@ -324,87 +324,87 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 已修正單一資料分割集合的接續權杖錯誤。 GitHub 問題 #107。
 * 已修正將 0 做為單一參數處理的 executeStoredProcedure 錯誤。 GitHub 問題 #155。
 
-### <a name=""></a><a name="1.10.2"/>1.10.2</a>
+### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * 修正使用者-代理程式標頭以包含 SDK 版本。
 * 次要程式碼清除。
 
-### <a name=""></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1101"></a><a name="1.10.1"></a>1.10.1
 * 當使用 SDK 以模擬器 (hostname=localhost) 為目標時，停用 TLS 驗證。
 * 在預存程序執行期間，加入支援指令碼記錄功能。
 
-### <a name=""></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * 新增對跨資料分割平行查詢的支援。
 * 新增對已分割集合的 TOP/ORDER BY 查詢支援。
 
-### <a name=""></a><a name="1.9.0"/>1.9.0</a>
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * 新加入已節流處理要求的重試原則支援。 (已節流處理的要求會收到要求率太大的例外狀況，即錯誤碼 429。)根據預設，發生錯誤碼 429 時，Azure Cosmos DB 會遵守回應標頭中的 retryAfter 時間，並針對每個要求重試九次。 如果您想要忽略伺服器在多次重試之間傳回的 retryAfter 時間，現在可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中設定固定的重試間隔時間。 Azure Cosmos DB 現在會針對每個要進行節流處理的要求等候最多 30 秒 (不論重試計數為何)，並傳回包含錯誤碼 429 的回應。 您也可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中覆寫該時間。
 * Cosmos DB 現在會傳回 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 做為每個要求的回應標頭，其代表節流重試計數和要求歷經多次重試的累積時間。
 * 新增 RetryOptions 類別，以及公開 ConnectionPolicy 類別上的 RetryOptions 屬性，使其能用來覆寫某些預設的重試選項。
 
-### <a name=""></a><a name="1.8.0"/>1.8.0</a>
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * 新增對多重區域資料庫帳戶的支援。
 
-### <a name=""></a><a name="1.7.0"/>1.7.0</a>
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * 新加入文件的存留時間 (TTL) 功能支援。
 
-### <a name=""></a><a name="1.6.0"/>1.6.0</a>
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * 實作[已分割的集合](partition-data.md)和[使用者定義的效能等級](performance-levels.md)。
 
-### <a name=""></a><a name="1.5.6"/>1.5.6</a>
+### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * 已修正 RangePartitionResolver.resolveForRead 錯誤，其因錯誤的結果 CONCAT 而無法傳回連結。
 
-### <a name=""></a><a name="1.5.5"/>1.5.5</a>
+### <a name="155"></a><a name="1.5.5"></a>1.5.5
 * 修正 hashPartitionResolver resolveForRead()：所提供的資料分割索引鍵都未擲回例外狀況時，而不會傳回所有已註冊連結的清單。
 
-### <a name=""></a><a name="1.5.4"/>1.5.4</a>
+### <a name="154"></a><a name="1.5.4"></a>1.5.4
 * 修正問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - HTTPS 專用代理程式：避免基於 Azure Cosmos DB 用途而修改全域代理程式。 針對所有 lib 要求使用專用的代理程式。
 
-### <a name=""></a><a name="1.5.3"/>1.5.3</a>
+### <a name="153"></a><a name="1.5.3"></a>1.5.3
 * 修正問題 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正確處理媒體識別碼中的連字號。
 
-### <a name=""></a><a name="1.5.2"/>1.5.2</a>
+### <a name="152"></a><a name="1.5.2"></a>1.5.2
 * 修正問題 [#95](https://github.com/Azure/azure-documentdb-node/issues/95) - EventEmitter 接聽程式洩漏警告。
 
-### <a name=""></a><a name="1.5.1"/>1.5.1</a>
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * 修正問題 [#92](https://github.com/Azure/azure-documentdb-node/issues/90) - 針對區分大小寫的系統，將資料夾 Hash 重新命名為 hash。
 
-### <a name=""></a><a name="1.5.0"/>1.5.0</a>
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * 藉由新增雜湊和範圍分割解析程式來實作分區化支援。
 
-### <a name=""></a><a name="1.4.0"/>1.4.0</a>
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * 實作 Upsert。 documentClient 上新的 upsertXXX 方法。
 
-### <a name=""></a><a name="1.3.0"/>1.3.0</a>
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * 已略過以配合其他 SDK 的版本號碼。
 
-### <a name=""></a><a name="1.2.2"/>1.2.2</a>
+### <a name="122"></a><a name="1.2.2"></a>1.2.2
 * 將 Q Pomise 包裝函式分割至新的儲存機制。
 * 更新至 npm 登錄的封裝檔案。
 
-### <a name=""></a><a name="1.2.1"/>1.2.1</a>
+### <a name="121"></a><a name="1.2.1"></a>1.2.1
 * 實作以識別碼為基礎的路由。
 * 修正問題 [#49](https://github.com/Azure/azure-documentdb-node/issues/49) - 目前屬性與 current() 方法衝突。
 
-### <a name=""></a><a name="1.2.0"/>1.2.0</a>
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * 新增對地理空間索引的支援。
 * 驗證所有資源的識別碼屬性。 資源的識別碼不能包含 ?、/、#、&#47;&#47; 等字元，或在結尾處使用空格。
 * 將新標頭「索引轉換進度」加至 ResourceResponse。
 
-### <a name=""></a><a name="1.1.0"/>1.1.0</a>
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * 實作 V2 索引原則。
 
-### <a name=""></a><a name="1.0.3"/>1.0.3</a>
+### <a name="103"></a><a name="1.0.3"></a>1.0.3
 * 問題 [#40](https://github.com/Azure/azure-documentdb-node/issues/40) - 核心與 Promise SDK 中實作的 eslint 和 grunt 組態。
 
-### <a name=""></a><a name="1.0.2"/>1.0.2</a>
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 * 問題 [#45](https://github.com/Azure/azure-documentdb-node/issues/45) - Promise 包裝函式不包括標頭並發生錯誤。
 
-### <a name=""></a><a name="1.0.1"/>1.0.1</a>
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * 已實作透過新增 readConflicts、readConflictAsync 及 queryConflicts 來查詢衝突的功能。
 * 已更新 API 文件。
 * 問題 [#41](https://github.com/Azure/azure-documentdb-node/issues/41) - client.createDocumentAsync 錯誤。
 
-### <a name=""></a><a name="1.0.0"/>1.0.0</a>
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>發行和停用日期
