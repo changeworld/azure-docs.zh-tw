@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 6edc39bc9923d53732775c68c9b7fe4f2d35b055
-  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+  ms.openlocfilehash: 5f9dbc120b301100364da61f7d8c19fa58beb5c9
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85414380"
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482916"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -1042,12 +1042,12 @@ productDirectory:
     - media
     url: media-services/latest/index.yml
   - title: 資料箱
-    summary: 將資料傳輸到 Azure 及 Edge 計算的設備與解決方案
+    summary: 將資料傳輸到 Azure 的設備與解決方案
     imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
     azureCategories:
     - migration
     - storage
-    url: databox-family/index.md
+    url: databox/index.yml
   - title: Spatial Anchors (預覽)
     summary: 建立多使用者的空間感知混合實境體驗
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
