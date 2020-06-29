@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 建立共用的自我裝載整合執行時間
+title: 使用 PowerShell 建立共用的自我裝載整合執行階段
 description: 了解如何在 Azure Data Factory 中建立共用的自我裝載整合執行階段，讓多個資料處理站都能存取該整合執行階段。
 services: data-factory
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.custom: seo-lt-2019
 ms.date: 10/31/2018
 ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106605"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行時間
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本指南說明如何在 Azure Data Factory 中建立共用的自我裝載整合執行時間。 然後您可以在其他資料處理站中，使用該共用的自我裝載整合執行階段。
+本指南說明如何在 Azure Data Factory 中建立共用的自我裝載整合執行階段。 然後您可以在其他資料處理站中，使用該共用的自我裝載整合執行階段。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure Data Factory UI 建立共用的自我裝載 IR
 
-若要使用 Azure Data Factory UI 建立共用的自我裝載 IR，您可以採取下列步驟：
+若要使用 Azure Data Factory UI 建立共用的自我裝載 IR，您可採取下列步驟：
 
 1. 在要共用的自我裝載 IR 中，將權限授與您要建立連結 IR 的資料處理站。
       
@@ -46,20 +46,20 @@ ms.locfileid: "82106605"
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>使用 Azure PowerShell 建立共用的自我裝載 IR
 
-若要使用 Azure PowerShell 建立共用的自我裝載 IR，您可以採取下列步驟： 
+若要使用 Azure PowerShell 建立共用的自我裝載 IR，您可採取下列步驟： 
 1. 建立資料處理站。 
 1. 建立自我裝載整合執行階段。
 1. 與其他資料處理站共用該自我裝載整合執行階段。
 1. 建立連結的整合執行階段。
 1. 撤銷共用。
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必要條件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 
 
-- **Azure PowerShell**。 請依照[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的指示操作。 您會使用 PowerShell 來執行指令碼，以建立可與其他資料處理站共用的自我裝載整合執行階段。 
+- **Azure PowerShell**(英文)。 請依照[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的指示操作。 您會使用 PowerShell 來執行指令碼，以建立可與其他資料處理站共用的自我裝載整合執行階段。 
 
 > [!NOTE]  
 > 如需目前可取得 Data Factory 的 Azure 區域，請在 [依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory) 上選取您感興趣的區域。
@@ -99,7 +99,7 @@ ms.locfileid: "82106605"
 1. 建立資源群組和資料處理站。
 
     > [!NOTE]  
-    > 這是選擇性步驟。 如果您已經有資料處理站，請略過此步驟。 
+    > 此為選用步驟。 如果您已經有資料處理站，請略過此步驟。 
 
     使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 下列範例會在 WestEurope 位置建立名為 `myResourceGroup` 的資源群組： 
 
@@ -118,7 +118,7 @@ ms.locfileid: "82106605"
 ### <a name="create-a-self-hosted-integration-runtime"></a>建立自我裝載整合執行階段
 
 > [!NOTE]  
-> 這是選擇性步驟。 如果您已經有要與其他資料處理站共用的自我裝載整合執行階段，請略過此步驟。
+> 此為選用步驟。 如果您已經有要與其他資料處理站共用的自我裝載整合執行階段，請略過此步驟。
 
 執行下列命令來建立自我裝載整合執行階段：
 
@@ -157,7 +157,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>建立另一個資料處理站
 
 > [!NOTE]  
-> 這是選擇性步驟。 如果您已有要共用的資料處理站，請略過此步驟。
+> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

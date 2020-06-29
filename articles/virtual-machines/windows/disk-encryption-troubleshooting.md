@@ -1,6 +1,6 @@
 ---
 title: Azure 磁碟加密疑難排解指南
-description: 本文提供適用于 Windows Vm Microsoft Azure 磁片加密的疑難排解秘訣。
+description: 本文提供 Windows VM 所適用 Microsoft Azure 磁碟加密的疑難排解祕訣。
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -10,7 +10,7 @@ ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085683"
@@ -19,11 +19,11 @@ ms.locfileid: "82085683"
 
 本指南適用於組織採用 Azure 磁碟加密的 IT 專業人員、資訊安全性分析師和雲端系統管理員。 本文旨在協助磁碟加密相關問題的疑難排解。
 
-在採取下列任何步驟之前，請先確定您嘗試加密的 Vm 是在[支援的 VM 大小和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)中，而且您已符合所有必要條件：
+在採取以下任何步驟之前，請先確定想要加密的 VM 是[支援的 VM 大小與作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)，且已符合所有先決條件：
 
 - [網路需求](disk-encryption-overview.md#networking-requirements)
 - [群組原則需求](disk-encryption-overview.md#group-policy-requirements)
-- [加密金鑰儲存需求](disk-encryption-overview.md#encryption-key-storage-requirements)
+- [加密金鑰儲存體需求](disk-encryption-overview.md#encryption-key-storage-requirements)
 
  
 
@@ -39,7 +39,7 @@ ms.locfileid: "82085683"
 使用 [Azure AD 認證](disk-encryption-windows-aad.md#)啟用加密時，目標 VM 必須允許連線到 Azure Active Directory 端點和金鑰保存庫端點。 目前的 Azure Active Directory 驗證端點列在 [Office 365 URL 與 IP 位址範圍](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文件的第 56 和 59 節。 如需金鑰保存庫的指示，請參閱文件中的如何[在防火牆後存取 Azure 金鑰保存庫](../../key-vault/general/access-behind-firewall.md)。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務 
-VM 必須能夠存取 [Azure 執行個體中繼資料服務](../windows/instance-metadata-service.md)端點；此端點會使用只能從 VM 內存取且無法路由的已知 IP 位址 (`169.254.169.254`)。  不支援將本機 HTTP 流量更改為此位址的 Proxy 設定（例如，新增 X 轉送的標頭）。
+VM 必須能夠存取 [Azure 執行個體中繼資料服務](../windows/instance-metadata-service.md)端點；此端點會使用只能從 VM 內存取且無法路由的已知 IP 位址 (`169.254.169.254`)。  不支援將本機 HTTP 流量更改為此位址的 Proxy 設定 (例如，新增 X-Forwarded-For 標頭)。
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>針對 Windows Server 2016 Server Core 進行疑難排解
 
@@ -78,11 +78,11 @@ DISKPART> list vol
 
 ## <a name="troubleshooting-encryption-status"></a>針對加密狀態進行疑難排解 
 
-即使在 VM 內未加密，入口網站也可能會將磁片顯示為已加密。  當使用低層級命令直接從 VM 內解密磁片，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁片，而是在 VM 外部，它們也會更新與 VM 相關聯的重要平台層級加密設定和延伸模組設定。  如果這些未保持一致，平臺將無法報告加密狀態或適當地布建 VM。   
+即使已在 VM 內解密磁碟，入口網站也可能會將其顯示為加密。  當使用低層級命令直接從 VM 內解密磁碟，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁碟，也會在 VM 外部更新與 VM 建立關聯的重要平台層級加密設定和延伸模組設定。  如果內外未保持一致，則平台將無法回報加密狀態或適當地佈建 VM。   
 
-若要停用 PowerShell 的 Azure 磁碟加密，請使用[AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) ，後面接著[Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 在停用加密之前執行 AzVMDiskEncryptionExtension 將會失敗。
+若要停用 PowerShell 的 Azure 磁碟加密，請於 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) 後接著使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)。 若在停用加密之前執行 Remove-AzVMDiskEncryptionExtension 將會導致失敗。
 
-若要停用 CLI 的 Azure 磁碟加密，請使用[az vm Encryption disable](/cli/azure/vm/encryption)。 
+若要停用 CLI 的 Azure 磁碟加密，請使用 [az vm encryption disable](/cli/azure/vm/encryption)。 
 
 ## <a name="next-steps"></a>後續步驟
 

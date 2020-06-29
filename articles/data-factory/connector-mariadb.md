@@ -13,7 +13,7 @@ ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414987"
@@ -25,9 +25,9 @@ ms.locfileid: "81414987"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此適用于 mariadb 連接器：
+此 MariaDB 連接器支援下列活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 MariaDB 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
@@ -36,7 +36,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 此連接器目前支援 10.0 到 10.2 版的 MariaDB。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -52,11 +52,11 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為：**MariaDB** | 是 |
+| type | 類型屬性必須設定為：**MariaDB** | 是 |
 | connectionString | 連線到 MariaDB 的 ODBC 連接字串。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `pwd` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -129,14 +129,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ### <a name="mariadb-as-source"></a>以 MariaDB 作為來源
 
-若要從 MariaDB 複製資料，請將複製活動中的來源類型設定為 **MariaDBSource**。 複製活動的 [**來源**] 區段支援下列屬性：
+若要從 MariaDB 複製資料，請將複製活動中的來源類型設定為 **MariaDBSource**。 複製活動的 **source** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 type 屬性必須設定為：**MariaDBSource** | 是 |
+| type | 複製活動來源的類型屬性必須設定為：**MariaDBSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -170,7 +170,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

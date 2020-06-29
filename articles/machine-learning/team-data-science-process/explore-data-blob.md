@@ -13,7 +13,7 @@ ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685961"
@@ -24,7 +24,7 @@ ms.locfileid: "81685961"
 
 此工作是 [Team Data Science Process](overview.md) 中的一個步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
@@ -33,7 +33,7 @@ ms.locfileid: "81685961"
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>將資料載入 Pandas 資料框架
 若要探索和操作資料集，必須先從 Blob 來源將資料集下載至本機檔案，然後將其載入 Pandas 資料框架。 以下是此程序的遵循步驟：
 
-1. 使用 Blob 服務的下列 Python 程式碼範例，從 Azure blob 下載資料。 使用您的特定值來取代下列程式碼中的變數：
+1. 使用 Blob 服務，透過下列 Python 程式碼範例，從 Azure Blob 下載資料。 使用您的特定值來取代下列程式碼中的變數：
 
     ```python
     from azure.storage.blob import BlockBlobService
@@ -63,7 +63,7 @@ ms.locfileid: "81685961"
 
 現在您已經準備好探索資料並在此資料集上產生功能。
 
-## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用 pandas 的資料探索範例
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用 Pandas 的資料探索範例
 以下是數個可使用 Pandas 探索資料的範例方式：
 
 1. 檢查 **資料列和資料行的數目**

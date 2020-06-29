@@ -1,5 +1,5 @@
 ---
-title: 將資料載入 Azure Data Lake Storage Gen1
+title: 將資料載入至 Azure Data Lake Storage Gen1
 description: 使用 Azure Data Factory 將資料複製到 Azure Data Lake Storage Gen1
 services: data-factory
 ms.author: jingwang
@@ -13,7 +13,7 @@ ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415854"
@@ -28,115 +28,115 @@ Azure Data Factory 是完全受控的雲端式資料整合服務。 您可以使
 
 Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業提供下列優勢：
 
-* **容易設定**：不需要編寫指令碼的直覺式 5 步驟精靈。
-* **豐富的資料存放區支援**：一組豐富的內部部署和雲端式資料存放區的內建支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
-* **安全且符合規範**：資料會透過 HTTPS 或 ExpressRoute 來傳送。 具有全域服務，可確保資料絕不會離開地理界限。
+* **容易設定**：直覺式的 5 步驟精靈，無須任何指令碼。
+* **支援豐富的資料存放區**：內建各種內部部署和雲端式資料存放區的支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
+* **安全且符合規範**：資料會透過 HTTPS 或 ExpressRoute 傳輸。 具有全域服務，可確保資料絕不會離開地理界限。
 * **高效能**：將資料載入到 Data Lake Storage Gen1 的速度高達 1 GB/s。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
 
-此文章將示範如何使用 Data Factory 資料複製工具，將資料從 Amazon S3 載入到 Data Lake Storage Gen1__。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。
+此文章將示範如何使用 Data Factory 資料複製工具，將資料從 Amazon S3 載入到 Data Lake Storage Gen1。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。
 
 > [!NOTE]
 > 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Data Lake Storage Gen1 或從該處複製資料](connector-azure-data-lake-store.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-* Data Lake Storage Gen1 帳戶：如果您沒有 Data Lake Storage Gen1 帳戶，請參閱[建立 Data Lake Storage Gen1 帳戶](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的指示。
+* Data Lake Storage Gen1 帳戶：如果沒有 Data Lake Storage Gen1 帳戶，請參閱[建立 Data Lake Storage Gen1 帳戶](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的指示。
 * Amazon S3：本文示範如何從 Amazon S3 複製資料。 您可以依照類似的步驟來使用其他資料存放區。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表上，選取 [**建立資源** > **分析** > ]**Data Factory**：
+1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]：
    
    ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. 在 [新增資料處理站]**** 頁面中，為下圖所示的欄位提供值： 
+2. 在 [新增資料處理站] 頁面中，為下圖所示的欄位提供值： 
       
    ![新增資料處理站頁面](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **名稱**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
-    * **訂用帳戶**：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
-    * **資源群組**：從下拉式清單中選取現有資源群組，或選取 [新建]**** 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：選取 [V2]****。
+    * **Name**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    * 訂用帳戶：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
+    * **資源群組**：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：選取 [V2]。
     * **位置**：選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區可位於其他位置和區域。 這些資料存放區包含 Azure Data Lake Storage Gen1、Azure 儲存體、Azure SQL Database 等等。
 
-3. 選取 [建立]  。
-4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory]**** 首頁： 
+3. 選取 [建立]。
+4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory] 首頁： 
    
    ![Data Factory 首頁](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   選取 [編寫與監視]**** 圖格，以在另一個索引標籤中啟動資料整合應用程式。
+   選取 [編寫與監視] 圖格，以在另一個索引標籤中啟動資料整合應用程式。
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>將資料載入到 Data Lake Storage Gen1
 
-1. 在 [開始使用]**** 頁面中，選取 [複製資料]**** 圖格以啟動複製資料工具： 
+1. 在 [開始使用] 頁面中，選取 [複製資料] 圖格以啟動複製資料工具： 
 
    ![複製資料工具圖格](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
-2. 在 [屬性]**** 頁面中，對 [工作名稱]**** 欄位指定 [CopyFromAmazonS3ToADLS]****，然後選取 [下一步]****：
+2. 在 [屬性] 頁面中，對 [工作名稱] 欄位指定 [CopyFromAmazonS3ToADLS]，然後選取 [下一步]：
 
     ![屬性頁面](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. 在 [來源資料存放區]**** 頁面中，按一下 [+ Create new connection] \(+ 建立新連線\)****：
+3. 在 [來源資料存放區] 頁面中，按一下 [+ Create new connection] \(+ 建立新連線\)：
 
     ![來源資料存放區頁面](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
     
-    選取 [Amazon S3]****，然後選取 [繼續]****
+    選取 [Amazon S3]，然後選取 [繼續]
     
     ![來源資料存放區 s3 頁面](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
-4. 在 [指定 Amazon S3 連線]**** 頁面中，執行下列步驟： 
-   1. 指定 [存取金鑰識別碼]**** 值。
-   2. 指定 [祕密存取金鑰]**** 值。
-   3. 選取 [完成]  。
+4. 在 [指定 Amazon S3 連線] 頁面中，執行下列步驟： 
+   1. 指定 [存取金鑰識別碼] 值。
+   2. 指定 [祕密存取金鑰] 值。
+   3. 選取 [完成]。
    
       ![指定 Amazon S3 帳戶](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. 您會看到新的連線。 選取 [下一步]  。
+   4. 您會看到新的連線。 選取 [下一步] 。
    
    ![指定 Amazon S3 帳戶](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. 在 [選擇輸入檔案或資料夾]**** 頁面中，瀏覽至您要複製過去的資料夾和檔案。 選取資料夾/檔案，選取 [選擇]****，然後選取 [下一步]****：
+5. 在 [選擇輸入檔案或資料夾] 頁面中，瀏覽至您要複製過去的資料夾和檔案。 選取資料夾/檔案，選取 [選擇]，然後選取 [下一步]：
 
     ![選擇輸入檔案或資料夾](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. 選取 [以遞迴方式複製檔案]**** 和 [二進位複製]**** (依原樣複製檔案) 選項來選擇複製行為。 選取 **[下一步]**：
+6. 選取 [以遞迴方式複製檔案] 和 [二進位複製] (依原樣複製檔案) 選項來選擇複製行為。 選取 [下一步]：
 
     ![指定輸出資料夾](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
-7. 在 [目的地資料存放區]**** 頁面中，按一下 [+ 建立新連線]****，然後選取 [Azure Data Lake Storage Gen1]****，並選取 [繼續]****：
+7. 在 [目的地資料存放區] 頁面中，按一下 [+ 建立新連線]，然後選取 [Azure Data Lake Storage Gen1]，並選取 [繼續]：
 
     ![目的地資料存放區頁面](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
-8. 在 [新增連結的服務 (Azure Data Lake Storage Gen1)]**** 頁面中，執行下列步驟： 
+8. 在 [新增連結的服務 (Azure Data Lake Storage Gen1)] 頁面中，執行下列步驟： 
 
    1. 選取您的 Data Lake Storage Gen1 帳戶作為 **Data Lake Store 帳戶名稱**。
-   2. 指定 [租用戶]****，然後選取 [完成]。
-   3. 選取 [下一步]  。
+   2. 指定 [租用戶]，然後選取 [完成]。
+   3. 選取 [下一步] 。
    
    > [!IMPORTANT]
    > 在此逐步解說中，您會使用 Azure 資源的受控識別來驗證 Data Lake Storage Gen1 帳戶。 請務必依照[這些指示](connector-azure-data-lake-store.md#managed-identity)執行，以對 MSI 授與 Data Lake Storage Gen1 中的適當權限。
    
    ![指定 Data Lake Storage Gen1 帳戶](./media/load-data-into-azure-data-lake-store/specify-adls.png)
-9. 在 [選擇輸出檔案或資料夾]**** 頁面中，輸入 [copyfroms3]**** 作為輸出資料夾名稱，然後選取 [下一步]****： 
+9. 在 [選擇輸出檔案或資料夾] 頁面中，輸入 [copyfroms3] 作為輸出資料夾名稱，然後選取 [下一步]： 
 
     ![指定輸出資料夾](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
-10. 在 [設定]**** 頁面中，選取 [下一步]****：
+10. 在 [設定] 頁面中，選取 [下一步]：
 
     ![設定頁面](./media/load-data-into-azure-data-lake-store/copy-settings.png)
-11. 在 [摘要]**** 頁面中檢閱設定，然後選取 [下一步]****：
+11. 在 [摘要] 頁面中檢閱設定，然後選取 [下一步]：
 
     ![摘要頁面](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. 在**部署頁面**上選取 [監視]**** 來監視管線 (工作)：
+12. 在**部署頁面**上選取 [監視] 來監視管線 (工作)：
 
     ![部署頁面](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 [**動作**] 資料行包含可查看活動執行詳細資料，以及重新執行管線的連結：
+13. 請注意，系統會自動選取左側的 [監視] 索引標籤。 [動作] 資料行中會有連結可供檢視活動執行詳細資料，以及重新執行管線：
 
     ![監視管線回合](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. 若要檢視與此管線執行相關聯的活動執行，請選取 [動作]**** 資料行中的 [檢視活動執行]**** 連結。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線執行] 檢視，請選取頂端的 [管線]**** 連結。 選取 [重新整理]**** 可重新整理清單。 
+14. 若要檢視與此管線執行相關聯的活動執行，請選取 [動作] 資料行中的 [檢視活動執行] 連結。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線執行] 檢視，請選取頂端的 [管線] 連結。 選取 [重新整理] 即可重新整理清單。 
 
     ![監視活動回合](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-15. 若要監視每個複製活動的執行詳細資料，請選取活動監控檢視中 [動作]**** 底下的 [詳細資料]**** 連結。 您可以監視的詳細資料包括從來源複製到接收的資料量、資料輸送量、執行步驟與對應的持續期間，以及所使用的設定：
+15. 若要監視每個複製活動的執行詳細資料，請選取活動監控檢視中 [動作] 底下的 [詳細資料] 連結。 您可以監視的詳細資料包括從來源複製到接收的資料量、資料輸送量、執行步驟與對應的持續期間，以及所使用的設定：
 
     ![監視活動執行詳細資料](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
 

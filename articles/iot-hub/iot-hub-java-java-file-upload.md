@@ -14,22 +14,22 @@ ms.custom:
 - mqtt
 ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732473"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中樞將檔案從裝置上傳至雲端（JAVA）
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中樞將檔案從裝置上傳至雲端 (Java)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教學課程是以[IoT 中樞的傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)教學課程中的程式碼為基礎，說明如何使用 IoT 中樞的檔案[上傳功能](iot-hub-devguide-file-upload.md)，將檔案上傳到[Azure blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
+本教學課程是以[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)教學課程中的程式碼來建置，其示範如何使用 [IoT 中樞的檔案上傳功能](iot-hub-devguide-file-upload.md)將檔案上傳至 [Azure Blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
 
 * 安全地將 Azure Blob URI 提供給裝置，以便上傳檔案。
 
 * 您可以使用 IoT 中樞檔案上傳通知來觸發在您的應用程式後端中處理此檔案。
 
-將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)快速入門和[使用 IoT 中樞來傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)的教學課程會示範 IoT 中樞的基本裝置到雲端和雲端到裝置的訊息功能。 [使用 IoT 中樞設定訊息路由](tutorial-routing.md)教學課程說明了能在 Azure Blob 儲存體中，可靠地儲存裝置到雲端訊息的方法。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 例如：
+[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)快速入門和[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)教學課程，會示範 IoT 中樞的基本裝置到雲端和雲端到裝置傳訊功能。 [使用 IoT 中樞設定訊息路由](tutorial-routing.md)教學課程說明了能在 Azure Blob 儲存體中，可靠地儲存裝置到雲端訊息的方法。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 例如：
 
 * 包含映像的大型檔案
 * 影片
@@ -40,28 +40,28 @@ ms.locfileid: "81732473"
 
 在本教學課程結尾，您將執行兩個 Java 主控台應用程式：
 
-* **模擬-裝置**，這是在 [使用 IoT 中樞傳送雲端到裝置訊息] 教學課程中建立之應用程式的修改版本。 此應用程式可以使用 IoT 中樞提供的 SAS URI，將檔案上傳到儲存體。
+* **simulated-device** 是在 [使用 IoT 中樞傳送雲端到裝置訊息] 教學課程內建立的應用程式修改版本。 此應用程式可以使用 IoT 中樞提供的 SAS URI，將檔案上傳到儲存體。
 
-* **讀取-檔案-上傳通知**，它會接收來自 IoT 中樞的檔案上傳通知。
+* **read-file-upload-notification**，它會接收來自 IoT 中樞的檔案上傳通知。
 
 > [!NOTE]
 > IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET 及 Javascript)。 如需如何將您的裝置連接到 Azure IoT 中樞的逐步指示，請參閱 [Azure IoT 開發人員中心](https://azure.microsoft.com/develop/iot)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* [JAVA SE 開發套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 請務必選取 [長期支援]**** 下的 [Java 8]****，以取得 JDK 8 的下載。
+* [Java SE 開發套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 請務必選取 [長期支援] 下的 [Java 8]，以取得 JDK 8 的下載。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>從裝置應用程式上傳檔案
 
-在本節中，您會修改在[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)中建立的裝置應用程式，以將檔案上傳到 IoT 中樞。
+在本節中，您會修改在[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-java-java-c2d.md)內建立的裝置應用程式，以將檔案上傳到 IoT 中樞。
 
 1. 將映像檔複製到 `simulated-device` 資料夾，並重新命名為 `myimage.png`。
 
@@ -127,7 +127,7 @@ ms.locfileid: "81732473"
 
 ## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中，您會建立後端服務，從您在[將遙測從裝置傳送至 iot 中樞](quickstart-send-telemetry-java.md)中建立的 IoT 中樞接收檔案上傳通知訊息。 若要接收檔案上傳通知訊息，您的服務需要**服務連接**許可權。 根據預設，每個 IoT 中樞都會使用名為**服務**的共用存取原則來建立，以授與此許可權。
+在本文中，您會建立後端服務，從在[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)內建立的 IoT 中樞來接收檔案上傳通知訊息。 若要接收檔案上傳通知訊息，則服務需要**服務連線**權限。 根據預設，每個 IoT 中樞都是透過授與此權限且名為**服務**的共用存取原則所建立。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -143,7 +143,7 @@ ms.locfileid: "81732473"
 
 2. 在命令提示字元中，巡覽至新的 `read-file-upload-notification` 資料夾。
 
-3. 使用文字編輯器，開啟 `read-file-upload-notification` 資料夾中的 `pom.xml` 檔案，並在 [相依性]**** 節點中新增下列相依性。 新增相依性可讓您在應用程式中使用 **iothub-java-service-client** 套件與 IoT 中樞服務進行通訊：
+3. 使用文字編輯器，開啟 `read-file-upload-notification` 資料夾中的 `pom.xml` 檔案，並在 [相依性] 節點中新增下列相依性。 新增相依性可讓您在應用程式中使用 **iothub-java-service-client** 套件與 IoT 中樞服務進行通訊：
 
     ```xml
     <dependency>
@@ -170,7 +170,7 @@ ms.locfileid: "81732473"
     import java.util.concurrent.Executors;
     ```
 
-7. 將下列類別層級變數新增至**App**類別。 將`{Your IoT Hub connection string}`預留位置值取代為您先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串：
+7. 將下列類別層級變數新增到 **App** 類別中。 將 `{Your IoT Hub connection string}` 預留位置值取代為先前在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)內複製的 IoT 中樞連接字串：
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -257,7 +257,7 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-下列螢幕擷取畫面顯示**模擬裝置**應用程式的輸出：
+下列螢幕擷取畫面顯示 **simulated-device** 應用程式的輸出：
 
 ![simulated-device 應用程式的輸出](media/iot-hub-java-java-upload/simulated-device.png)
 

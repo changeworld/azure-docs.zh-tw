@@ -9,10 +9,10 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67173949"
 ---
 您可以透過在子網路或 VM 網路介面上建立網路篩選，對 Azure 中的虛擬機器 (VM) 開啟連接埠或建立端點。 您可將控制輸入與輸出流量的這些篩選器放在可接收流量的資源所附加的網路安全性群組上。
@@ -29,7 +29,7 @@ ms.locfileid: "67173949"
 
    - **來源連接埠範圍**: * (允許任何來源連接埠)
 
-   - **優先順序值**：輸入小於 65,500 且優先順序大於預設捕捉所有流量拒絕連入規則的值。
+   - **優先順序值**：輸入小於 65,500 且優先順序高於預設捕捉所有流量拒絕連入規則的值。
 
 3. 讓網路安全性群組與 VM 網路介面或子網路產生關聯。
 

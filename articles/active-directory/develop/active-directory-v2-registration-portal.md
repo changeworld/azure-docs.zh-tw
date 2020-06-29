@@ -1,7 +1,7 @@
 ---
-title: 應用程式註冊入口網站參考 |Azure
+title: 應用程式註冊入口網站參考 | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft 應用程式註冊入口網站中的功能說明。
+description: 描述 Microsoft 應用程式註冊入口網站中的功能。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,26 +15,26 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885628"
 ---
 # <a name="app-registration-reference"></a>App 註冊參考
 
-本檔提供在 Azure 入口網站的[應用程式註冊](https://aka.ms/appregistrations)體驗中找到的各種功能的內容和說明。
+本文件提供可在 Azure 入口網站[應用程式註冊](https://aka.ms/appregistrations)體驗中找到各種功能的內容及描述。
 
 ## <a name="my-applications-or-converged-applications"></a>我的應用程式或交集的應用程式
 
-此清單包含所有已註冊的應用程式，可與 Microsoft 身分識別平臺（v2.0）端點搭配使用。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入瞭解身分識別平臺端點，請參閱 v2.0[總覽](active-directory-appmodel-v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
+此清單包含所有為搭配 Microsoft 身分識別平台 (v2.0) 端點使用而註冊的應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入了解身分識別平台端點，請參閱 [v2.0 概觀](active-directory-appmodel-v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
 
 ## <a name="azure-ad-only-applications"></a>僅限 Azure AD 的應用程式
 
-此清單包含所有已註冊且可與 Azure AD v1.0 端點搭配使用的應用程式。 這些應用程式只能使用 Azure Active Directory 中的工作/學校帳戶來登入使用者。 這份清單包含使用[Azure 入口網站](https://portal.azure.com)中的**應用程式註冊**體驗所註冊的應用程式。
+此清單包含所有已註冊且可與 Azure AD v1.0 端點搭配使用的應用程式。 這些應用程式只能使用 Azure Active Directory 中的工作/學校帳戶來登入使用者。 這份清單包含已在 [Azure 入口網站](https://portal.azure.com)中使用**應用程式註冊**體驗來註冊的應用程式。
 
 ## <a name="live-sdk-applications"></a>Live SDK 應用程式
 
-此清單包含所有已註冊且只能與 Microsoft 帳戶搭配使用的應用程式。 它們都不會啟用來與 Azure Active Directory 搭配使用。 您可以在此處找到任何先前已於 MSA 開發人員入口網站`https://account.live.com/developers/applications`註冊的應用程式。 您先前執行的所有功能現在`https://account.live.com/developers/applications`都可以在[應用程式註冊](https://aka.ms/appregistrations)中執行。
+此清單包含所有已註冊且只能與 Microsoft 帳戶搭配使用的應用程式。 它們都不會啟用來與 Azure Active Directory 搭配使用。 您可以在此處找到任何先前已於 MSA 開發人員入口網站`https://account.live.com/developers/applications`註冊的應用程式。 先前曾在 `https://account.live.com/developers/applications` 執行的所有功能現在可在[應用程式註冊](https://aka.ms/appregistrations)中執行。
 
 ## <a name="application-secrets"></a>應用程式密碼
 
@@ -42,7 +42,7 @@ ms.locfileid: "80885628"
 
 每個應用程式最後都能在任何時間點包含兩個有效的應用程式密碼。 藉由維護兩個密碼，您就能夠在應用程式的整個環境中執行定期的金鑰變換。 一旦將應用程式的全部內容移轉至新的密碼之後，您可能會刪除舊的密碼，並佈建一個新密碼。
 
-此時，App 註冊入口網站中只允許兩種類型的應用程式密碼。 選擇 [產生新密碼] **** 將會在各自的資料存放區中產生並儲存共用的密碼，讓您可以在應用程式中加以使用。 選擇 [產生新的金鑰組] **** 會建立新的公開/私密金鑰組，可下載並用來向 Azure AD 進行用戶端驗證。 選擇 [上傳公開金鑰] **** 可讓您使用自己的公開/私密金鑰組。
+此時，App 註冊入口網站中只允許兩種類型的應用程式密碼。 選擇 [產生新密碼]  將會在各自的資料存放區中產生並儲存共用的密碼，讓您可以在應用程式中加以使用。 選擇 [產生新的金鑰組]  會建立新的公開/私密金鑰組，可下載並用來向 Azure AD 進行用戶端驗證。 選擇 [上傳公開金鑰] 可讓您使用自己的公開/私密金鑰組。
 您必須上傳含有公開金鑰的憑證。
 
 ## <a name="profile"></a>設定檔
@@ -51,8 +51,8 @@ ms.locfileid: "80885628"
 
 ## <a name="live-sdk-support"></a>Live SDK 支援
 
-當您啟用「Live SDK 支援」時，即會將您建立的任何應用程式密碼佈建到 Azure AD 與 Microsoft 帳戶資料存放區。 這讓您的應用程式能夠直接與 Microsoft 帳戶服務 (login.live.com) 整合。 如果您想要直接使用 Microsoft 帳戶來建立應用程式（而不是使用 v2.0 端點），則應確定已啟用 Live SDK 支援。
+當您啟用「Live SDK 支援」時，即會將您建立的任何應用程式密碼佈建到 Azure AD 與 Microsoft 帳戶資料存放區。 這讓您的應用程式能夠直接與 Microsoft 帳戶服務 (login.live.com) 整合。 如果想要使用 Microsoft 帳戶直接建置應用程式 (而不使用 v2.0 端點)，則應確定已啟用 Live SDK 支援。
 
 停用 Live SDK 支援可確保系統只會將應用程式密碼寫入 Azure AD 資料存放區。 Azure AD 資料存放區包含企業級法規，使其符合特定的標準，例如 FISMA 相容性。 如果您啟用 Live SDK 支援，您的應用程式可能不會遵守這其中的部分標準。
 
-如果您只打算使用 v2.0 端點，您可以安全地停用 Live SDK 支援。
+如果只打算使用 v2.0 端點，您可安全地停用 Live SDK 支援。

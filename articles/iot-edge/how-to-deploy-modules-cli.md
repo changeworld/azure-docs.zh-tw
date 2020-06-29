@@ -1,6 +1,6 @@
 ---
-title: 從 Azure CLI 命令列部署模組-Azure IoT Edge
-description: 使用 Azure CLI 搭配 Azure IoT 擴充功能，將 IoT Edge 模組從您的 IoT 中樞推送至 IoT Edge 裝置，如部署資訊清單所設定。
+title: 從 Azure CLI 命令列部署模組 - Azure IoT Edge
+description: 搭配 Azure IoT 延伸模組使用 Azure CLI，將 IoT Edge 模組如部署資訊清單所設定，從 IoT 中樞推送至 IoT Edge 裝置。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -11,7 +11,7 @@ ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133934"
@@ -24,12 +24,12 @@ ms.locfileid: "82133934"
 
 本文說明如何建立 JSON 部署資訊清單，然後使用該檔案將部署發送到 IoT Edge 裝置。 如需根據裝置共用標籤，建立目標為多個裝置的部署資訊，請參閱[大規模部署和監視 IoT Edge 模組](how-to-deploy-cli-at-scale.md) (英文)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶中的[IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
+* Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
 * 已安裝 IoT Edge 執行階段的 [IoT Edge 裝置](how-to-register-device.md#register-with-the-azure-cli)。
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
-* [Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能。
+* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
 ## <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
 

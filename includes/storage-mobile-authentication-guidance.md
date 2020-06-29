@@ -6,7 +6,7 @@ ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673263"
@@ -14,14 +14,14 @@ ms.locfileid: "67673263"
 ## <a name="configure-your-application-to-access-azure-storage"></a>設定您的應用程式以存取 Azure 儲存體
 有兩種方式可驗證您的應用程式對儲存體服務的存取權：
 
-* 共用金鑰：使用僅供測試用途的共用金鑰
-* 共用存取簽章 (SAS)：使用適用於生產應用程式的 SAS
+* 共用金鑰：僅為測試用途使用共用金鑰
+* 共用存取簽章 (SAS)：請為生產應用程式使用 SAS
 
 ### <a name="shared-key"></a>共用金鑰
 共用金鑰驗證表示您的應用程式會使用您的帳戶名稱和帳戶金鑰來存取儲存體服務。 為了快速示範如何使用此程式庫，我們將在此快速入門中使用共用金鑰驗證。
 
 > [!WARNING] 
-> **共用金鑰驗證請只限於測試目的之用！** 您的帳戶名稱和帳戶金鑰 (會提供對相關儲存體帳戶的完整讀取/寫入權限) 將會分送給下載您的應用程式的每個人。 這並「不是」 **** 的實作方式，因為您的金鑰有可能遭到不受信任的用戶端破壞。
+> **共用金鑰驗證請只限於測試目的之用！** 您的帳戶名稱和帳戶金鑰 (會提供對相關儲存體帳戶的完整讀取/寫入權限) 將會分送給下載您的應用程式的每個人。 這並「不是」  的實作方式，因為您的金鑰有可能遭到不受信任的用戶端破壞。
 > 
 > 
 
@@ -29,7 +29,7 @@ ms.locfileid: "67673263"
 
 * **DefaultEndpointsProtocol** - 您可以選擇 HTTP 或 HTTPS。 不過，強烈建議您使用 HTTPS。
 * **帳戶名稱** - 您儲存體帳戶的名稱。
-* **帳戶金鑰** - 在 [Azure 入口網站](https://portal.azure.com)上，瀏覽至儲存體帳戶並按一下 [金鑰]**** 圖示來找出這項資訊。
+* **帳戶金鑰** - 在 [Azure 入口網站](https://portal.azure.com)上，瀏覽至儲存體帳戶並按一下 [金鑰] 圖示來找出這項資訊。
 * (選擇性) **EndpointSuffix** - 這用於具有不同端點尾碼的儲存體服務，例如 Azure China 或 Azure 控管的區域。
 
 使用共用金鑰驗證的連接字串的範例如下︰
@@ -49,5 +49,5 @@ ms.locfileid: "67673263"
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-如您所見，使用 SAS 時，您並不會在應用程式中公開您的帳戶金鑰。 您可以參閱 [共用存取簽章：了解 SAS 模型](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)，以進一步了解 SAS 與使用 SAS 的最佳做法。
+如您所見，使用 SAS 時，您並不會在應用程式中公開您的帳戶金鑰。 若要了解 SAS 與使用 SAS 的最佳做法，請參閱[共用存取簽章：了解 SAS 模型](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 

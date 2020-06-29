@@ -10,7 +10,7 @@ ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2514325c93f0f72aa979f871e86e465093479402
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "69558738"
@@ -27,6 +27,6 @@ ms.locfileid: "69558738"
 
 在本教學課程中，您已使用直接方法在裝置上觸發遠端重新開機。 您已使用報告屬性來從裝置回報上次重新開機時間，以及查詢裝置對應項來從雲端探索裝置的上次重新開機時間。
 
-若要繼續開始使用 IoT 中樞和裝置管理模式（例如遠端透過空中固件更新），請參閱[如何執行固件更新](../articles/iot-hub/tutorial-firmware-update.md)。
+若要繼續開始使用 IoT 中樞和裝置管理模式，例如遠端無線韌體更新，請參閱[如何更新韌體](../articles/iot-hub/tutorial-firmware-update.md)。
 
-若要瞭解如何擴充您的 IoT 解決方案，以及在多個裝置上排程方法呼叫，請參閱[排程和廣播作業](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)。
+若要了解如何擴充 IoT 解決方案，以及在多部裝置上排程方法呼叫，請參閱[排程及廣播作業](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)。

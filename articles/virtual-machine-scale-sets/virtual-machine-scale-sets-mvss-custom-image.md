@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 擴展集範本中參考自訂映射
+title: 在 Azure 擴展集範本中參考自訂映像
 description: 了解如何將自訂映像新增到現有的「Azure 虛擬機器擴展集」範本
 author: cynthn
 ms.author: cynthn
@@ -11,17 +11,17 @@ ms.reviewer: akjosh
 ms.custom: akjosh
 ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124902"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>新增自訂映像至 Azure 擴展集範本
 
-本文說明如何修改[基本擴展集範本](virtual-machine-scale-sets-mvss-start.md)，以從自訂映射進行部署。
+本文說明如何修改[基本擴展集範本](virtual-machine-scale-sets-mvss-start.md)，以透過自訂映像進行部署。
 
 ## <a name="change-the-template-definition"></a>變更範本定義
-在[前一篇文章](virtual-machine-scale-sets-mvss-start.md)中，我們已建立基本的擴展集範本。 我們現在會使用先前的範本並加以修改，以建立可從自訂映射部署擴展集的範本。  
+在[上一篇文章中](virtual-machine-scale-sets-mvss-start.md)，我們建立了基本的擴展集範本。 我們現在會使用先前的範本並加以修改，以建立可透過自訂映像部署擴展集的範本。  
 
 ### <a name="creating-a-managed-disk-image"></a>建立受控磁碟映像
 

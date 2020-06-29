@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中擴充 Windows VM 的 OS 磁片磁碟機
+title: 在 Azure 中擴充 Windows VM 的 OS 磁碟機
 description: 使用 Resource Manager 部署模型中的 Azure PowerShell，擴充虛擬機器的 OS 磁碟機大小。
 author: mimckitt
 manager: vashan
@@ -11,7 +11,7 @@ ms.author: mimckitt
 ms.subservice: disks
 ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869696"
@@ -25,7 +25,7 @@ ms.locfileid: "81869696"
 
 
 > [!IMPORTANT]
-> 調整 Azure 虛擬機器的 OS 磁片大小需要解除配置虛擬機器。
+> 必須將虛擬機器解除配置，才能調整 Azure 虛擬機器的 OS 磁碟大小。
 >
 > 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 > 
@@ -129,7 +129,7 @@ ms.locfileid: "81869696"
 以下為受控和非受控磁碟的完整指令碼，供您參考：
 
 
-**受控磁片**
+**受控磁碟**
 
 ```Powershell
 Connect-AzAccount
@@ -170,7 +170,7 @@ $disk.DiskSizeGB = 1023
 ```
 
 
-**非受控磁片**
+**非受控磁碟**
 
 ```powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -187,7 +187,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 (Get-AzDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
-**非受控磁片**
+**非受控磁碟**
 
 ```powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
@@ -201,11 +201,11 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 2.  開啟命令提示字元，然後鍵入 **diskpart**。
 
-2.  在 **DISKPART** 提示中鍵入 `list volume`。 記下您想要擴充的磁碟區。
+2.  在 **DISKPART** 提示處，鍵入 `list volume`。 記下您想要擴充的磁碟區。
 
-3.  在 **DISKPART** 提示中鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
+3.  在 **DISKPART** 提示處，鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
 
-4.  在 **DISKPART** 提示中鍵入 `extend [size=<size>]`。 如此會以 *size* (MB) 為單位，擴充選取的磁碟區。
+4.  在 **DISKPART** 提示處，鍵入 `extend [size=<size>]`。 如此會以 *size* (MB) 為單位，擴充選取的磁碟區。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: 驗證 Azure SignalR Service 用戶端的指南
-description: 藉由遵循 e2e 範例，瞭解如何執行自己的驗證，並將其與 Azure SignalR Service 整合。
+title: Azure SignalR 服務用戶端驗證指引
+description: 了解如何實作自己的驗證，並使用下列 E2E 範例整合驗證與 Azure SignalR 服務。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
@@ -8,7 +8,7 @@ ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82194596"
@@ -40,32 +40,32 @@ ms.locfileid: "82194596"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您必須具備下列先決條件：
 
 * 已在 [GitHub](https://github.com/) 建立帳戶
 * [Git](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Azure Cloud Shell 設定](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [已設定 Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
 * 下載或複製 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) \(英文\) GitHub 存放庫。
 
 ## <a name="create-an-oauth-app"></a>建立 OAuth 應用程式
 
 1. 開啟網頁瀏覽器並瀏覽至 `https://github.com`，然後登入您的帳戶。
 
-2. 針對您的帳戶，流覽至 [**設定** > ] [**開發人員設定**]，然後按一下 [**註冊新的應用程式**] 或 [ *oauth 應用*程式] 下的**新 OAuth**
+2. 在您的帳戶中，瀏覽至 [設定] > [開發人員設定]，然後按一下 [註冊新的應用程式]，或 [OAuth 應用程式] 底下的 [新增 OAuth 應用程式]。
 
-3. 對新的 OAuth 應用程式使用下列設定，然後按一下 [註冊應用程式]****：
+3. 對新的 OAuth 應用程式使用下列設定，然後按一下 [註冊應用程式]：
 
     | 設定名稱 | 建議的值 | 描述 |
     | ------------ | --------------- | ----------- |
-    | 應用程式名稱 | Azure SignalR Chat** | GitHub 使用者應該要能夠辨識並信任他們用來進行驗證的應用程式。   |
+    | 應用程式名稱 | Azure SignalR Chat | GitHub 使用者應該要能夠辨識並信任他們用來進行驗證的應用程式。   |
     | 首頁 URL | `http://localhost:5000/home` | |
-    | 應用程式說明 | *使用 Azure SignalR Service 搭配 GitHub 驗證的聊天室範例* | 應用程式的實用說明，會協助您的應用程式使用者了解所使用驗證的內容。 |
-    | 授權回呼 URL | `http://localhost:5000/signin-github` | 這項設定是 OAuth 應用程式最重要的設定。 GitHub 會在驗證成功後讓使用者返回此回呼 URL。 在本教學課程中，您必須針對 AspNet.Security.OAuth.GitHub** 套件 (/signin-github)** 使用預設的回呼 URL。  |
+    | 應用程式說明 | 搭配使用 Azure SignalR 服務與 GitHub 驗證的聊天室範例 | 應用程式的實用說明，會協助您的應用程式使用者了解所使用驗證的內容。 |
+    | 授權回呼 URL | `http://localhost:5000/signin-github` | 這項設定是 OAuth 應用程式最重要的設定。 GitHub 會在驗證成功後讓使用者返回此回呼 URL。 在本教學課程中，您必須針對 AspNet.Security.OAuth.GitHub 套件 (/signin-github) 使用預設的回呼 URL。  |
 
-4. 新的 OAuth 應用程式註冊完成之後，請使用下列命令在祕密管理員中新增「用戶端識別碼」** 和「用戶端密碼」**。 將 Your_GitHub_Client_Id** 和 Your_GitHub_Client_Secret** 取代為您的 OAuth 應用程式所具有的值。
+4. 新的 OAuth 應用程式註冊完成之後，請使用下列命令在祕密管理員中新增「用戶端識別碼」和「用戶端密碼」。 將 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 取代為您的 OAuth 應用程式所具有的值。
 
         dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
         dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
@@ -74,13 +74,13 @@ ms.locfileid: "82194596"
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>更新啟動類別以支援 GitHub 驗證
 
-1. 新增最新 Microsoft.AspNetCore.Authentication.Cookies** 和 AspNet.Security.OAuth.GitHub** 套件的參考，並還原所有套件。
+1. 新增最新 Microsoft.AspNetCore.Authentication.Cookies 和 AspNet.Security.OAuth.GitHub 套件的參考，並還原所有套件。
 
         dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
         dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
-1. 開啟 Startup.cs**，然後對下列命名空間新增 `using` 陳述式︰
+1. 開啟 Startup.cs，然後對下列命名空間新增 `using` 陳述式︰
 
     ```csharp
     using System.Net.Http;
@@ -150,9 +150,9 @@ ms.locfileid: "82194596"
 
 在本節中，您會實作 `Login` API 以使用 GitHub OAuth 應用程式驗證用戶端。 經過驗證之後，API 會在 Web 用戶端回應中新增 Cookie，然後才將用戶端重新導向回到聊天應用程式。 該 Cookie 之後會用來識別用戶端。
 
-1. 在 chattest\Controllers** 目錄中新增控制器程式碼檔案。 將檔案命名為 AuthController.cs**。
+1. 在 chattest\Controllers 目錄中新增控制器程式碼檔案。 將檔案命名為 AuthController.cs。
 
-2. 對驗證控制器新增下列程式碼。 如果您的專案目錄不是 chattest**，請務必更新命名空間：
+2. 對驗證控制器新增下列程式碼。 如果您的專案目錄不是 chattest，請務必更新命名空間：
 
     ```csharp
     using AspNet.Security.OAuth.GitHub;
@@ -188,7 +188,7 @@ ms.locfileid: "82194596"
 
 在本節中，您會開啟實際的驗證，方法是在中樞類別中新增 `Authorize` 屬性，並將中樞方法更新為從已驗證使用者的宣告讀取使用者名稱。
 
-1. 開啟 Hub\Chat.cs**，並新增這些命名空間的參考：
+1. 開啟 Hub\Chat.cs，並新增這些命名空間的參考：
 
     ```csharp
     using System.Threading.Tasks;
@@ -225,9 +225,9 @@ ms.locfileid: "82194596"
 
 ### <a name="update-the-web-client-code"></a>更新 Web 用戶端程式碼
 
-1. 開啟 wwwroot\index.html**，並將會提示輸入使用者名稱的程式碼，取代為會使用驗證控制器所傳回 Cookie 的程式碼。
+1. 開啟 wwwroot\index.html，並將會提示輸入使用者名稱的程式碼，取代為會使用驗證控制器所傳回 Cookie 的程式碼。
 
-    從 index.html** 移除下列程式碼：
+    從 index.html 移除下列程式碼：
 
     ```javascript
     // Get the user name and store it to prepend to messages.
@@ -318,7 +318,7 @@ ms.locfileid: "82194596"
     }
     ```
 
-4. 在 index.html** 底部，如下所示地更新 `connection.start()` 的錯誤處理常式，以提示使用者登入。
+4. 在 index.html 底部，如下所示地更新 `connection.start()` 的錯誤處理常式，以提示使用者登入。
 
     ```javascript
     connection.start()
@@ -363,7 +363,7 @@ ms.locfileid: "82194596"
 
     ![OAuth 已在 Azure 中完成裝載](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    系統會提示您授權聊天應用程式存取您的 GitHub 帳戶。 按一下 [授權]**** 按鈕。
+    系統會提示您授權聊天應用程式存取您的 GitHub 帳戶。 按一下 [授權] 按鈕。
 
     ![授權 OAuth 應用程式](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -377,15 +377,15 @@ ms.locfileid: "82194596"
 
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
-在本節中，您將使用來自 Azure Cloud Shell 的 Azure 命令列介面（CLI），在[Azure App Service](https://docs.microsoft.com/azure/app-service/)中建立新的 web 應用程式，以在 Azure 中裝載您的 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
+在本區段中，您將從 Azure Cloud Shell 使用 Azure 命令列介面 (CLI)，在 [Azure App Service](https://docs.microsoft.com/azure/app-service/) 中建立新的 Web 應用程式，以在 Azure 中裝載 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
 
-本節中的步驟會使用適用於 Azure CLI 的 signalr** 擴充功能。 執行下列命令以安裝適用於 Azure CLI 的 signalr** 擴充功能：
+本節中的步驟會使用適用於 Azure CLI 的 signalr 擴充功能。 執行下列命令以安裝適用於 Azure CLI 的 signalr 擴充功能：
 
 ```azurecli-interactive
 az extension add -n signalr
 ```
 
-在建立下列資源時，請務必使用 SignalR 服務資源所在的相同資源群組。 當您之後想要移除所有資源時，這種方法會讓清除作業變得更容易。 所提供的範例假設您使用先前教學課程中所建議的群組名稱 SignalRTestResources**。
+在建立下列資源時，請務必使用 SignalR 服務資源所在的相同資源群組。 當您之後想要移除所有資源時，這種方法會讓清除作業變得更容易。 所提供的範例假設您使用先前教學課程中所建議的群組名稱 SignalRTestResources。
 
 ### <a name="create-the-web-app-and-plan"></a>建立 Web 應用程式和方案
 
@@ -539,7 +539,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 您需要執行的最後一件事是將 GitHub OAuth 應用程式的**首頁 URL** 和**授權回呼 URL** 更新為指向新裝載的應用程式。
 
-1. 在[https://github.com](https://github.com)瀏覽器中開啟並流覽至您帳戶的 [**設定** > ] [**開發人員設定** > ] [**Oauth 應用程式**]。
+1. 在瀏覽器中開啟 [https://github.com](https://github.com)，然後瀏覽至您帳戶的 [設定] >  [開發人員設定] >  [Oauth應用程式]。
 
 2. 按一下您的驗證應用程式，然後更新**首頁 URL** 和**授權回呼 URL**，如下所示：
 
@@ -561,13 +561,13 @@ az webapp deployment source config-local-git --name $WebAppName \
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作，資源群組和其內的所有資源將會永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 如果您是在包含有需要保留之資源的現有資源群組內，建立用來裝載此範例的資源，則可以從每個資源各自的刀鋒視窗中個別刪除每個資源，而不必刪除正個資源群組。
 
-登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]****。
+登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
 
-在 [**依名稱篩選 ...** ] 文字方塊中，輸入資源群組的名稱。 本文的指示是使用名為 SignalRTestResources** 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]****。
+在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 SignalRTestResources 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]。
 
 ![刪除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]****。
+系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]。
 
 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 

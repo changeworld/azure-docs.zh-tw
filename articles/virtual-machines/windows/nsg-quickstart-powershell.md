@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 開啟 VM 的埠
+title: 使用 Azure PowerShell 對 VM 開啟連接埠
 description: 了解如何使用 Azure Resource Manager 部署模式和 Azure PowerShell 對 Windows VM 開啟連接埠 / 建立端點
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,7 +9,7 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869404"
@@ -18,7 +18,7 @@ ms.locfileid: "81869404"
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
-若要建立網路安全性群組和 ACL 規則，您需要 [安裝最新版的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 您也可以[使用 Azure 入口網站來執行這些步驟](nsg-quickstart-portal.md)。
+若要建立網路安全性群組和 ACL 規則，您需要 [安裝最新版的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 您也可以 [使用 Azure 入口網站來執行這些步驟](nsg-quickstart-portal.md)。
 
 登入您的 Azure 帳戶：
 
@@ -26,9 +26,9 @@ ms.locfileid: "81869404"
 Connect-AzAccount
 ```
 
-在下列範例中，請以您自己的值取代參數名稱。 範例參數名稱包括 myResourceGroup**、myNetworkSecurityGroup** 和 myVnet**。
+在下列範例中，請以您自己的值取代參數名稱。 範例參數名稱包括 myResourceGroup、myNetworkSecurityGroup 和 myVnet。
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立規則。 下列範例會建立名為*myNetworkSecurityGroupRule*的規則，以允許埠*80*上的*tcp*流量：
+使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立規則。 下列範例會建立名為 myNetworkSecurityGroupRule 的規則，以允許連接埠 80  上的 tcp 流量︰
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -44,7 +44,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-接著，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組，並依下列方式指派您剛才建立的 HTTP 規則。 下列範例會建立名為*myNetworkSecurityGroup*的網路安全性群組：
+接著，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組，並依下列方式指派您剛才建立的 HTTP 規則。 下列範例建立名為 myNetworkSecurityGroup 的網路安全性群組：
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -54,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-現在，讓我們將「網路安全性群組」指派給子網路。 下列範例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 將名為 myVnet** 的現有虛擬網路指派至變數 $vnet**：
+現在，讓我們將「網路安全性群組」指派給子網路。 下列範例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 將名為 myVnet 的現有虛擬網路指派至變數 $vnet：
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -62,7 +62,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 將網路安全性群組與子網路建立關聯。 下列範例會將名為 mySubnet** 的子網路與您的網路安全性群組建立關聯：
+使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 將網路安全性群組與子網路建立關聯。 下列範例會將名為 mySubnet 的子網路與您的網路安全性群組建立關聯：
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -89,7 +89,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 ## <a name="next-steps"></a>後續步驟
 在此範例中，您建立了簡單的規則來允許 HTTP 流量。 您可以從下列文章中，找到有關建立更詳細環境的資訊︰
 
-* [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)
+* [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)
 * [什麼是網路安全性群組？](../../virtual-network/security-overview.md)
-* [Azure Load Balancer 總覽](../../load-balancer/load-balancer-overview.md)
+* [Azure 負載平衡器概觀](../../load-balancer/load-balancer-overview.md)
 

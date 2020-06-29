@@ -1,5 +1,5 @@
 ---
-title: 將資料從/複製到 SAP Cloud for Customer
+title: 從 SAP Cloud for Customer 來回複製資料
 description: 了解如何使用 Data Factory，將資料從 SAP Cloud for Customer 複製到支援的接收資料存放區，(或) 從支援的來源資料存放區複製到 SAP Cloud for Customer。
 services: data-factory
 documentationcenter: ''
@@ -14,7 +14,7 @@ ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418043"
@@ -25,13 +25,13 @@ ms.locfileid: "81418043"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Cloud for Customer (C4C) 來回複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含詳細的簡介、comparsion 和指引。
+>若要了解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 的 SAP 資料整合技術白皮書](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中提供詳細的簡介、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-適用于客戶連接器的 SAP 雲端支援下列活動：
+此 SAP Cloud for Customer 連接器支援下列活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 SAP Cloud for Customer 複製到任何支援的接收資料存放區，或將資料從任何支援的來源資料存放區複製到 SAP Cloud for Customer。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
@@ -50,16 +50,16 @@ ms.locfileid: "81418043"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | type 屬性必須設定為：**SapCloudForCustomer**。 | 是 |
+| type | 類型屬性必須設定為：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服務的 URL。 | 是 |
 | username | 指定要連線到 SAP C4C 的使用者名稱。 | 是 |
-| password | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 否 (來源)；是 (接收) |
 
 >[!IMPORTANT]
 >若要將資料複製到 SAP Cloud for Customer，請以您 SAP Cloud for Customer 附近的位置明確[建立 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，並在已連結的服務中產生關聯，如下列範例所示：
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -90,10 +90,10 @@ ms.locfileid: "81418043"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的 type 屬性必須設定為：**SapCloudForCustomerResource** |是 |
-| 路徑 | 指定 SAP C4C OData 實體的路徑。 |是 |
+| type | 資料集的類型屬性必須設定為：**SapCloudForCustomerResource** |是 |
+| path | 指定 SAP C4C OData 實體的路徑。 |是 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -118,16 +118,16 @@ ms.locfileid: "81418043"
 
 ### <a name="sap-c4c-as-source"></a>將 SAP C4C 作為來源
 
-若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動的 [**來源**] 區段支援下列屬性：
+若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動的 **source** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | type 屬性必須設定為：**SapCloudForCustomerSource**  | 是 |
+| type | 類型屬性必須設定為：**SapCloudForCustomerSource**  | 是 |
 | 查詢 | 指定自訂 OData 查詢來讀取資料。 | 否 |
 
 取得特定日之資料的範例查詢：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -161,15 +161,15 @@ ms.locfileid: "81418043"
 
 ### <a name="sap-c4c-as-sink"></a>將 SAP C4C 作為接收器
 
-若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動的 [**接收**] 區段支援下列屬性：
+若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動的 **sink** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | type 屬性必須設定為：**SapCloudForCustomerSink**  | 是 |
+| type | 類型屬性必須設定為：**SapCloudForCustomerSink**  | 是 |
 | writeBehavior | 作業的寫入行為。 可能是 “Insert”、“Update”。 | 否。 預設值為 “Insert”。 |
 | writeBatchSize | 寫入作業的批次大小。 要取得最佳效能的批次大小可能會隨著資料表或伺服器而有所不同。 | 否。 預設值為 10。 |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -226,14 +226,14 @@ ms.locfileid: "81418043"
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | 字串 |
+| Edm.String | String |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

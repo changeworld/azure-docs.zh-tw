@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中樞作業監視（已淘汰） |Microsoft Docs
+title: Azure IoT 中樞作業監視 (已淘汰) | Microsoft Docs
 description: 如何使用 Azure IoT 中樞作業監視來即時監視 IoT 中樞上的作業狀態。
 author: nberdy
 manager: briz
@@ -11,17 +11,17 @@ ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732226"
 ---
-# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中樞作業監視（已淘汰）
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中樞作業監視 (已淘汰)
 
 IoT 中樞的作業監視可讓您即時監視其 IoT 中樞上的作業狀態。 IoT 中樞可追蹤橫跨數個作業類別的事件。 您可以選擇將一或多個類別的事件傳送至 IoT 中樞的端點進行處理。 您可以監視資料中是否有錯誤，或根據資料模式設定更複雜的處理行為。
 
 >[!NOTE]
->IoT 中樞**作業監視已被取代，並已從2019年3月10日的 IoT 中樞移除**。 如需監視 IoT 中樞的作業及健康情況，請參閱[監視 Azure IoT 中樞的健康情況並快速診斷問題](iot-hub-monitor-resource-health.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
+>IoT 中樞**作業監視已淘汰，並已於 2019 年 3 月 10 日自 IoT 中樞移除**。 如需監視 IoT 中樞的作業及健康狀態，請參閱[監視 Azure IoT 中樞的健康狀態並快速診斷問題](iot-hub-monitor-resource-health.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
 
 IoT 中樞會監視六個類別的事件：
 
@@ -37,18 +37,18 @@ IoT 中樞會監視六個類別的事件：
 
 ## <a name="how-to-enable-operations-monitoring"></a>如何啟用作業監視
 
-1. 建立 IoT 中樞。 您可以在[開始使用](quickstart-send-telemetry-dotnet.md)指南中找到如何建立 IoT 中樞的指示。
+1. 建立 IoT 中樞。 您可在[開始使用](quickstart-send-telemetry-dotnet.md)指南中找到如何建立 IoT 中樞的指示。
 
-2. 開啟 IoT 中樞的刀鋒視窗。 按一下其中的 [作業監視] ****。
+2. 開啟 IoT 中樞的刀鋒視窗。 按一下其中的 [作業監視] 。
 
     ![在入口網站中存取作業監視組態](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. 選取您要監視的監視類別，然後按一下 [儲存]****。 您可以從 [監視設定] **** 中所列出的事件中樞相容端點讀取事件。 IoT 中樞端點稱為 `messages/operationsmonitoringevents`。
+3. 選取您要監視的監視類別，然後按一下 [儲存]。 您可以從 [監視設定] 中所列出的事件中樞相容端點讀取事件。 IoT 中樞端點稱為 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中樞上設定作業監視](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> [連線]**** 類別若選取 [Verbose]**** 監視，會導致 IoT 中樞產生額外的診斷訊息。 對於所有其他類別，[Verbose]**** 設定會變更 IoT 中樞在每個錯誤訊息中包含的資訊量。
+> [連線] 類別若選取 [Verbose] 監視，會導致 IoT 中樞產生額外的診斷訊息。 對於所有其他類別，[Verbose] 設定會變更 IoT 中樞在每個錯誤訊息中包含的資訊量。
 
 ## <a name="event-categories-and-how-to-use-them"></a>事件類別和其使用方式
 
@@ -197,11 +197,11 @@ IoT 中樞上的監視端點是相容於事件中樞的端點。 您可以使用
 
 1. 在入口網站中，瀏覽至您的 IoT 中樞資源刀鋒視窗。
 
-2. 選擇 [作業監視]****，並記下 [事件中樞相容名稱]**** 和 [事件中樞相容端點]**** 值：
+2. 選擇 [作業監視]，並記下 [事件中樞相容名稱]和 [事件中樞相容端點]值：
 
     ![事件中樞相容端點值](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. 選擇 [共用存取原則]****，然後選擇 [服務]****。 記下**主要金鑰**值：
+3. 選擇 [共用存取原則]，然後選擇 [服務]。 記下**主要金鑰**值：
 
     ![服務共用存取原則主要金鑰](./media/iot-hub-operations-monitoring/service-key.png)
 

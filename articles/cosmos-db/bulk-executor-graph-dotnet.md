@@ -1,5 +1,5 @@
 ---
-title: 搭配 Azure Cosmos DB Gremlin API 使用圖形大量執行程式 .NET 程式庫
+title: 搭配 Azure Cosmos DB Gremlin API 使用圖形大量執行工具 .NET 程式庫
 description: 了解如何使用大量執行程式程式庫將圖形資料大量匯入 Azure Cosmos DB Gremlin API 容器中。
 author: luisbosquez
 ms.service: cosmos-db
@@ -10,7 +10,7 @@ ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982698"
@@ -113,9 +113,9 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>範例應用程式
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 * 啟用 Azure 開發工作負載的 Visual Studio 2019。 您可以使用免費的 [Visual Studio 2019 Community 版本](https://visualstudio.microsoft.com/downloads/)展開工作。
-* Azure 訂用帳戶。 您可以在[這裡建立免費的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
+* Azure 訂用帳戶。 您可以[在這裡建立免費的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
 * 透過**無限制集合**建立 Azure Cosmos DB Gremlin API 資料庫。 本指南將說明如何開始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 如需詳細資訊，請參閱 [Git 下載頁面](https://git-scm.com/downloads)。
 

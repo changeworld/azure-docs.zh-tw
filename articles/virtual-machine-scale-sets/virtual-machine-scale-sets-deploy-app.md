@@ -11,7 +11,7 @@ ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124919"
@@ -31,7 +31,7 @@ ms.locfileid: "83124919"
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>安裝包含自訂指令碼延伸模組的應用程式
-自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 如需有關如何使用自訂腳本擴充功能安裝應用程式的詳細資訊，請參閱下列教學課程：
+自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 如需如何使用自訂指令碼延伸模組安裝應用程式的詳細資訊，請參閱下列教學課程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -43,7 +43,7 @@ ms.locfileid: "83124919"
 
 PowerShell DSC 延伸模組可讓您在擴展集中使用 PowerShell 來自訂 VM 執行個體。 下列範例將：
 
-- 指示 VM 實例從 GitHub 下載 DSC 套件-*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- 指示 VM 執行個體從 GitHub 下載 DSC 套件 - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - 設定延伸模組來執行安裝指令碼 - `configure-http.ps1`
 - 使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 取得擴展集的相關資訊
 - 使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 將延伸模組套用到 VM 執行個體

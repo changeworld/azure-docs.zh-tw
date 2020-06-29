@@ -7,7 +7,7 @@ ms.date: 11/20/2017
 ms.author: suhuruli
 ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82193321"
@@ -16,7 +16,7 @@ ms.locfileid: "82193321"
 
 本文件涵蓋如何在 Windows 開發電腦上設定本機 Linux Service Fabric。 設定本機 Linux 叢集，對快速測試以 Linux 叢集為目標但在 Windows 電腦上開發的應用程式而言，會很有用。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 以 Linux 為基礎的 Service Fabric 叢集無法在 Windows 上原生執行。 為執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM
@@ -64,7 +64,7 @@ ms.locfileid: "82193321"
     >例如，新增 `RUN apt-get install nodejs -y` 將允許以客體可執行檔形式支援 `nodejs` 應用程式。
     
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特別修訂，請造訪[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定版本，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
 
 3. 若要從 `Dockerfile` 建置可重複使用的映像，請開啟終端機並 `cd` 到直接保留的 `Dockerfile`，然後執行：
 
@@ -89,7 +89,7 @@ ms.locfileid: "82193321"
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 叢集會在短時間內啟動，您可以使用下列命令來檢視記錄，或跳到儀表板檢視叢集健康情況 `http://localhost:19080`：
+5. 叢集會在短時間內啟動，您可使用下列命令來檢視記錄，或跳至儀表板來檢視叢集健康狀態 `http://localhost:19080`：
 
     ```powershell 
     docker logs sftestcluster

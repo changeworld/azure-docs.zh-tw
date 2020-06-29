@@ -11,7 +11,7 @@ ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
 ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/30/2020
 ms.locfileid: "82612940"
@@ -22,11 +22,11 @@ ms.locfileid: "82612940"
 
 ## <a name="default-settings"></a>預設設定
 
-當您第一次部署遠端監視解決方案時，有兩個角色：**管理員**和**唯讀**。
+當第一次部署遠端監視解決方案時，有兩個角色：**系統管理員**和**唯讀**。
 
-擁有 [管理員]**** 角色的任何使用者具有解決方案的完整存取權，包括下列權限。 具備 [唯讀]**** 角色的使用者只能夠檢視解決方案。
+擁有 [管理員] 角色的任何使用者具有解決方案的完整存取權，包括下列權限。 具備 [唯讀] 角色的使用者只能夠檢視解決方案。
 
-| 權限            | 系統管理員 | 唯讀 |
+| 權限            | 管理 | 唯讀 |
 |----------------       |-------|-----------|
 | 檢視解決方案         | 是   | 是       |
 | 更新警示         | 是   | 否        |
@@ -43,7 +43,7 @@ ms.locfileid: "82612940"
 | 建立作業           | 是   | 否        |
 | 更新 SIM 管理 | 是   | 否        |
 
-根據預設，部署解決方案的使用者會自動指派給 [管理員]**** 角色，而且是 Azure Active Directory 應用程式擁有者。 應用程式擁有者可以透過 Azure 入口網站將角色指派給其他使用者。 如果您希望另一位使用者在解決方案中指派角色，他們也必須設定為 Azure 入口網站中的應用程式擁有者。
+根據預設，部署解決方案的使用者會自動指派給 [管理員] 角色，而且是 Azure Active Directory 應用程式擁有者。 應用程式擁有者可以透過 Azure 入口網站將角色指派給其他使用者。 如果您希望另一位使用者在解決方案中指派角色，他們也必須設定為 Azure 入口網站中的應用程式擁有者。
 
 > [!NOTE]
 > 部署解決方案的使用者是**唯一**可以在解決方案建立後立即加以檢視的人員。 若要授與其他人存取權，讓他們能以「唯讀」、「系統管理員」或「自訂」角色檢視應用程式，請參閱下列關於新增或移除使用者的指示。
@@ -56,31 +56,31 @@ Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，�
 
 1. 請檢查[使用者是否在您所用的目錄中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 當您登入 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators)網站時，您會選擇要使用的目錄。 目錄名稱會顯示在[頁面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 
-1. 在 Azure 入口網站中為您的解決方案尋找**企業應用程式**。 到達該處後，藉由將 [應用程式類型]**** 設定為 [所有應用程式]**** 來篩選清單。 依應用程式名稱搜尋應用程式。 應用程式名稱是遠端監視解決方案的名稱。 在下列螢幕擷取畫面中，解決方案和應用程式顯示名稱為 **contoso-rm4**。
+1. 在 Azure 入口網站中為您的解決方案尋找**企業應用程式**。 到達該處後，藉由將 [應用程式類型] 設定為 [所有應用程式] 來篩選清單。 依應用程式名稱搜尋應用程式。 應用程式名稱是遠端監視解決方案的名稱。 在下列螢幕擷取畫面中，解決方案和應用程式顯示名稱為 **contoso-rm4**。
 
     ![企業應用程式](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. 檢查應用程式，然後按一下 [擁有者]****，確認您是應用程式的擁有者。 在下列螢幕擷取畫面中，[Contoso 管理員]**** 是 **contoso-rm4** 應用程式的擁有者：
+1. 檢查應用程式，然後按一下 [擁有者]，確認您是應用程式的擁有者。 在下列螢幕擷取畫面中，[Contoso 管理員] 是 **contoso-rm4** 應用程式的擁有者：
 
     ![擁有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     如果您不是擁有者，您必須要求現有擁有者將您新增至清單。 只有擁有者可以將應用程式角色 (例如**管理員**或**唯讀**) 指派給其他使用者。
 
-1. 若要查看指派給應用程式中角色的使用者清單，請按一下 [使用者和群組]****。
+1. 若要查看指派給應用程式中角色的使用者清單，請按一下 [使用者和群組]。
 
-1. 若要新增使用者，請按一下 [+ 新增使用者]****，然後按一下 [使用者和群組，未選取任何項目]**** 以從目錄中選取使用者。
+1. 若要新增使用者，請按一下 [+ 新增使用者]，然後按一下 [使用者和群組，未選取任何項目] 以從目錄中選取使用者。
 
-1. 若要將使用者指派給角色，請按一下 [選取角色，未選取任何項目]****，並且為使用者選擇 [管理員]**** 或 [唯讀]**** 角色。 按一下 [選取]****，然後按一下 [指派]****。
+1. 若要將使用者指派給角色，請按一下 [選取角色，未選取任何項目]，並且為使用者選擇 [管理員] 或 [唯讀] 角色。 按一下 [選取]，然後按一下 [指派]。
 
     ![選取角色](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
 1. 使用者現在可以使用角色所定義的權限來存取遠端監視解決方案。
 
-1. 您可以在入口網站中的 [使用者和群組]**** 頁面上，從應用程式刪除使用者。
+1. 您可以在入口網站中的 [使用者和群組] 頁面上，從應用程式刪除使用者。
 
 ## <a name="create-a-custom-role"></a>建立自訂角色
 
-遠端監視解決方案在第一次部署時包含 [管理員]**** 和 [唯讀]**** 角色。 您可以新增具有不同權限集的自訂角色。 若要定義自訂角色，您需要：
+遠端監視解決方案在第一次部署時包含 [管理員] 和 [唯讀] 角色。 您可以新增具有不同權限集的自訂角色。 若要定義自訂角色，您需要：
 
 - 在 Azure 入口網站中將角色新增至應用程式。
 - 在驗證和授權微服務中定義新角色的原則。
@@ -94,7 +94,7 @@ Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，�
 
     ![應用程式註冊](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. 選取您的應用程式，然後按一下 [資訊清單]****。 您可以看到兩個針對應用程式定義的現有[應用程式角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
+1. 選取您的應用程式，然後按一下 [資訊清單]。 您可以看到兩個針對應用程式定義的現有[應用程式角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
 
     ![檢視資訊清單](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
@@ -143,7 +143,7 @@ Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，�
 
 1. 從 GitHub 將[遠端監視微服務](https://github.com/Azure/remote-monitoring-services-dotnet)存放庫複製到本機電腦。
 
-1. 編輯 **auth/Services/data/policies/roles.json** 檔案，以新增 **ManageDevices** 角色的原則，如下列程式碼片段所示。 [識別碼]**** 和 [角色]**** 值必須符合上一節應用程式資訊清單中的角色定義。 允許的動作清單可讓擁有 **ManageDevices** 角色的人員建立、更新和刪除已連線至解決方案的裝置：
+1. 編輯 **auth/Services/data/policies/roles.json** 檔案，以新增 **ManageDevices** 角色的原則，如下列程式碼片段所示。 [識別碼] 和 [角色] 值必須符合上一節應用程式資訊清單中的角色定義。 允許的動作清單可讓擁有 **ManageDevices** 角色的人員建立、更新和刪除已連線至解決方案的裝置：
 
     ```json
     {
@@ -248,7 +248,7 @@ public async Task DeleteAsync(string id)
 
 如需有關在遠端監視解決方案加速器中管理時間序列深入解析總管之存取權的資訊，請參閱[設定時間序列深入解析總館的存取控制](iot-accelerators-remote-monitoring-rbac-tsi.md)。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+如需關於遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 如需關於自訂遠端監視解決方案的詳細資訊，請參閱[自訂和重新部署微服務](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

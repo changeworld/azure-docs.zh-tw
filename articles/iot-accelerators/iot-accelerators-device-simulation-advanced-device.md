@@ -14,7 +14,7 @@ ms.custom:
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683834"
@@ -25,7 +25,7 @@ ms.locfileid: "81683834"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要依照本操作指南中的步驟進行，您在 Azure 訂用帳戶中必須要有一個已部署的裝置模擬執行個體。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81683834"
 
 系統可能會要求您使用 Azure 訂用帳戶認證來登入。
 
-接著，請針對[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中所部署的裝置模擬，按一下其圖格上的 [啟動]****。
+接著，請針對[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中所部署的裝置模擬，按一下其圖格上的 [啟動]。
 
 ## <a name="device-models"></a>裝置型號
 
@@ -59,7 +59,7 @@ ms.locfileid: "81683834"
 每個裝置定義檔案包含模擬裝置型號的詳細資訊，包括下列資訊：
 
 * 裝置型號名稱：字串。
-* 通訊協定：AMQP |MQTT |HTTP。
+* 通訊協定：AMQP | MQTT | HTTP。
 * 初始裝置狀態。
 * 重新整理裝置狀態的頻率。
 * 要用來重新整理裝置狀態的 JavaScript 檔案。
@@ -152,7 +152,7 @@ IoT 裝置可以使用不同的通訊協定來連線。 模擬可讓您使用 **
 ],
 ```
 
-預留位置使用特殊語法 **${NAME}**，其中 **NAME** 是 JavaScript **main** 函式所傳回裝置狀態物件的金鑰。 字串應該加上引號，而數字則不應該。
+預留位置使用特殊語法 **${NAME}** ，其中 **NAME** 是 JavaScript **main** 函式所傳回裝置狀態物件的金鑰。 字串應該加上引號，而數字則不應該。
 
 #### <a name="message-schema"></a>訊息結構描述
 
@@ -165,7 +165,7 @@ IoT 裝置可以使用不同的通訊協定來連線。 模擬可讓您使用 **
 * 物件 - 使用 JSON 序列化
 * 二進位 - 使用 base64 序列化
 * Text
-* 布林值
+* Boolean
 * 整數
 * Double
 * Datetime
@@ -259,7 +259,7 @@ JavaScript 檔案必須要有 **elevation** 函式，接受以下兩個參數：
 * **context** 物件，其包含下列三個屬性：
     * **currentTime**，其為 **yyyy-MM-dd'T'HH:mm:sszzz** 格式的字串。
     * **deviceId**。 例如，**Simulated.Elevator.123**。
-    * **devicemodel 傳遞**。 例如，**電梯**。
+    * **deviceModel**。 例如，**電梯**。
 * **state** 物件，其為先前呼叫中的函式所傳回的值。 模擬服務會維護此裝置狀態，並用來產生遙測訊息。
 
 **main** 函式傳回新的裝置狀態。 例如：
@@ -497,23 +497,23 @@ function main(context, state) {
 
 若要部署進階裝置型號，您可將檔案上傳到裝置模擬執行個體：
 
-選取功能表列中的 [裝置型號]****。 [裝置型號]**** 頁面會列出此裝置模擬執行個體中可用的裝置型號：
+選取功能表列中的 [裝置型號]。 [裝置型號] 頁面會列出此裝置模擬執行個體中可用的裝置型號：
 
 ![裝置型號](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
-按一下頁面右上角的 [+ 新增裝置型號]****：
+按一下頁面右上角的 [+ 新增裝置型號]：
 
 ![新增裝置型號](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
-按一下 [進階]****，開啟進階裝置型號索引標籤：
+按一下 [進階]，開啟進階裝置型號索引標籤：
 
 ![進階索引標籤](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
-按一下 [瀏覽]****，然後選取您建立的 JSON 與 JavaScript 檔案。 請務必三個檔案全選。 如果遺漏任一個檔案，驗證都會失敗：
+按一下 [瀏覽]，然後選取您建立的 JSON 與 JavaScript 檔案。 請務必三個檔案全選。 如果遺漏任一個檔案，驗證都會失敗：
 
 ![瀏覽檔案](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-如果檔案通過驗證，按一下 [儲存]****，即準備好可在模擬中使用您的裝置型號。 否則，請修正任何錯誤，然後重新上傳檔案：
+如果檔案通過驗證，按一下 [儲存]，即準備好可在模擬中使用您的裝置型號。 否則，請修正任何錯誤，然後重新上傳檔案：
 
 ![儲存](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 

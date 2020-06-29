@@ -6,7 +6,7 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "69558854"
@@ -17,7 +17,7 @@ ms.locfileid: "69558854"
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-後端應用程式可以使用 Azure IoT 中樞基元 (例如[裝置對應項][lnk-devtwin]和[直接方法][lnk-c2dmethod])，從遠端啟動並監視裝置上的裝置管理動作。 本教學課程會示範後端應用程式和裝置應用程式如何共同運作，以使用 IoT 中樞初始化和監視遠端裝置重新啟動。
+後端應用程式可使用 Azure IoT 中樞基元 (例如[裝置對應項][lnk-devtwin]和[直接方法][lnk-c2dmethod])，從遠端啟動並監視裝置上的裝置管理動作。 本教學課程會示範後端應用程式和裝置應用程式如何共同運作，以使用 IoT 中樞初始化和監視遠端裝置重新啟動。
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 使用部署資訊清單部署模組 & 路由-Azure IoT Edge
+title: 部署具有部署資訊清單的模組和路由 - Azure IoT Edge
 description: 了解部署資訊清單如何宣告要部署哪些模組、如何加以部署，以及如何在其間建立訊息路由。
 author: kgremban
 manager: philmea
@@ -10,23 +10,23 @@ ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545635"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模組及建立路由
 
-每個 IoT Edge 裝置會至少執行兩個模組：$edgeAgent 和 $edgeHub；這兩個模組都是 IoT Edge 執行階段的一部分。 IoT Edge 裝置可以針對任何數量的進程執行多個額外的模組。 使用部署資訊清單來告訴您的裝置要安裝哪些模組，以及如何將它們設定為搭配使用。
+每個 IoT Edge 裝置會至少執行兩個模組：$edgeAgent 和 $edgeHub；這兩個模組都是 IoT Edge 執行階段的一部分。 IoT Edge 裝置可執行多個其他模組的任意數處理序。 使用部署資訊清單來告知裝置要安裝哪些模組，以及如何設定這些模組共同作業。
 
-部署資訊清單** 是 JSON 文件，描述：
+部署資訊清單是 JSON 文件，描述：
 
-* **IoT Edge 代理程式**模組對應項，其中包含三個元件：
-  * 在裝置上執行之每個模組的容器映射。
-  * 用來存取私人容器登錄的認證，其中包含模組映射。
-  * 如何建立和管理每個模組的指示。
+* **IoT Edge 代理程式**模組對應項，其包含三個元件：
+  * 在裝置上執行的每個模組其容器映像。
+  * 存取私人容器登錄的認證，其包含模組映像。
+  * 如何建立及管理每個模組的指示。
 * **IoT Edge 中樞**模組對應項，包括訊息如何在模組之間流動，以及最後如何到達 IoT 中樞。
-* 任何其他模組 twins 的所需屬性（選擇性）。
+* 任何其他模組對應項的所需屬性 (選擇性)。
 
 所有 IoT Edge 裝置都必須使用部署資訊清單來設定。 新安裝的 IoT Edge 執行階段會報告錯誤碼，直到使用有效的資訊清單進行設定。
 
@@ -34,7 +34,7 @@ ms.locfileid: "80545635"
 
 ## <a name="create-a-deployment-manifest"></a>建立部署資訊清單
 
-概括而言，部署資訊清單是以其所需屬性設定的模組對應項清單。 部署資訊清單會告知 IoT Edge 裝置 (或裝置群組) 要安裝哪些模組，以及如何設定它們。 部署資訊清單包含每個模組對應項的「所需屬性」**。 IoT Edge 裝置會回報每個模組的「報告屬性」**。
+概括而言，部署資訊清單是以其所需屬性設定的模組對應項清單。 部署資訊清單會告知 IoT Edge 裝置 (或裝置群組) 要安裝哪些模組，以及如何設定它們。 部署資訊清單包含每個模組對應項的「所需屬性」。 IoT Edge 裝置會回報每個模組的「報告屬性」。
 
 每個部署資訊清單中都必須要有兩個模組：`$edgeAgent` 及 `$edgeHub`。 這些模組是 IoT Edge 執行階段的一部分，負責管理 IoT Edge 裝置與其上執行的模組。 如需這些模組的詳細資訊，請參閱[了解 IoT Edge 執行階段及其架構](iot-edge-runtime.md)。
 
@@ -77,9 +77,9 @@ ms.locfileid: "80545635"
 
 ## <a name="configure-modules"></a>設定模組
 
-定義 IoT Edge 執行階段在您部署中安裝模組的方式。 IoT Edge 代理程式是一項執行階段元件，負責管理 IoT Edge 裝置的安裝、更新及狀態回報。 因此，$edgeAgent 模組對應項會包含所有模組的設定和管理資訊。 此資訊包括 IoT Edge 代理程式本身的設定參數。
+定義 IoT Edge 執行階段在您部署中安裝模組的方式。 IoT Edge 代理程式是一項執行階段元件，負責管理 IoT Edge 裝置的安裝、更新及狀態回報。 因此，$edgeAgent 模組對應項包含所有模組的設定及管理資訊。 這項資訊也包括 IoT Edge 代理程式本身的設定參數。
 
-如需可以或必須包含之屬性的完整清單，請參閱[IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
+如需可包含或必須包含的屬性完整清單，請參閱 [IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
 
 $EdgeAgent 屬性遵循此結構：
 
@@ -135,9 +135,9 @@ IoT Edge 中樞會管理模組、IoT 中樞和任何分葉裝置間的通訊。 
 
 ### <a name="source"></a>來源
 
-來源會指定訊息來自於何處。 IoT Edge 可以從模組或分葉裝置路由傳送訊息。
+來源會指定訊息來自於何處。 IoT Edge 可路由來自模組或分葉裝置的訊息。
 
-使用 IoT Sdk，模組可以使用 ModuleClient 類別來宣告其訊息的特定輸出佇列。 輸出佇列並不是必要的，但對管理多個路由很有説明。 分葉裝置可以使用 IoT Sdk 的 DeviceClient 類別，以傳送訊息至 IoT 中樞的相同方式，將訊息傳送到 IoT Edge 閘道裝置。 如需詳細資訊，請參閱[瞭解及使用 Azure IoT 中樞 sdk](../iot-hub/iot-hub-devguide-sdks.md)。
+使用 IoT SDK，模組可使用 ModuleClient 類別來宣告其訊息的特定輸出佇列。 輸出佇列非必要，但對管理多個路由很有幫助。 分葉裝置可使用 IoT SDK 的 DeviceClient 類別，以將訊息傳送至 IoT 中樞的相同方式將訊息傳送到 IoT Edge 閘道裝置。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞 SDK](../iot-hub/iot-hub-devguide-sdks.md)。
 
 來源屬性可以是下列其中任何一個值：
 
@@ -145,15 +145,15 @@ IoT Edge 中樞會管理模組、IoT 中樞和任何分葉裝置間的通訊。 
 | ------ | ----------- |
 | `/*` | 所有來自任何模組或分葉裝置的裝置到雲端訊息或對應項變更通知 |
 | `/twinChangeNotifications` | 任何來自任何模組或分葉裝置的對應項變更 (報告屬性) |
-| `/messages/*` | 由模組透過部分或無輸出傳送的任何裝置到雲端訊息，或分葉裝置 |
+| `/messages/*` | 任何由模組或分葉裝置透過部分或無輸出傳送的裝置到雲端訊息 |
 | `/messages/modules/*` | 由模組透過部分或無輸出傳送的任何裝置到雲端訊息 |
 | `/messages/modules/<moduleId>/*` | 任何由特定模組透過部分或無輸出傳送的裝置到雲端訊息 |
 | `/messages/modules/<moduleId>/outputs/*` | 任何由特定模組透過部分輸出傳送的裝置到雲端訊息 |
 | `/messages/modules/<moduleId>/outputs/<output>` | 任何由特定模組透過特定輸出傳送的裝置到雲端訊息 |
 
-### <a name="condition"></a>狀況
+### <a name="condition"></a>條件
 
-條件在路由宣告中是選擇性項目。 如果您想要將所有訊息從來源傳遞到接收端，只要完全省略**WHERE**子句就可以了。 您可以使用 [IoT 中樞查詢語言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)來篩選特定訊息或符合條件的訊息類型。 IoT Edge 路由不支援根據對應項標籤或屬性來篩選訊息。
+條件在路由宣告中是選擇性項目。 如果想要將所有訊息從來源傳遞至接收器，請直接省略整個 **WHERE** 子句。 您可以使用 [IoT 中樞查詢語言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)來篩選特定訊息或符合條件的訊息類型。 IoT Edge 路由不支援根據對應項標籤或屬性來篩選訊息。
 
 在 IoT Edge 的模組之間傳遞的訊息所用的格式，和您的裝置與 Azure IoT 中樞傳遞訊息時所用的格式相同。 所有訊息均採用 JSON 格式，且含 **systemProperties**、**appProperties** 和 **body** 參數。
 
@@ -182,9 +182,9 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 | `$upstream` | 將訊息傳送到 IoT 中樞 |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 將訊息傳送到特定模組的特定輸入 |
 
-IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本機，以免路由無法將訊息傳遞至其接收。 例如，如果 IoT Edge 中樞無法連接到 IoT 中樞，或目的模組未連線。
+IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本機，以備路由無法將訊息傳遞至其接收器時使用。 例如，如果 IoT Edge 中樞無法連線至 IoT 中樞，或目標模組未連線。
 
-IoT Edge 中樞會將訊息儲存在`storeAndForwardConfiguration.timeToLiveSecs` [IoT Edge 中樞所需屬性](module-edgeagent-edgehub.md)的屬性中指定的時間為止。
+[IoT Edge 中樞所需屬性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 屬性會指定訊息能在 IoT Edge 中樞內儲存多久。
 
 ## <a name="define-or-update-desired-properties"></a>定義或更新所需屬性
 
@@ -281,6 +281,6 @@ IoT Edge 中樞會將訊息儲存在`storeAndForwardConfiguration.timeToLiveSecs
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 $edgeAgent 和 $edgeHub 中可以或必須包含之屬性的完整清單，請參閱[IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
+* 如需 $edgeAgent 和 $edgeHub 中可包含或必須包含的屬性完整清單，請參閱 [IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
 
 * 您現在知道如何使用 IoT Edge 模組，[了解開發 IoT Edge 模組的需求和工具](module-development.md)。

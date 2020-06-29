@@ -3,12 +3,12 @@ title: 使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
 description: 使用 Azure 備份伺服器來備份和還原 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657281"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234796"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "83657281"
 
 * MABS 不支援備份向外延展檔案伺服器 (SOFS) 上託管的 SharePoint SQL Server 資料庫。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定您符合使用 Microsoft Azure 備份來保護工作負載的所有[必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 關於必要條件的一些工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 Azure 備份伺服器。
 
@@ -68,10 +68,9 @@ ms.locfileid: "83657281"
 
     * 輸入伺服器陣列系統管理員認證。 這個帳戶應該是 WFE 伺服器上本機 Administrator 群組的成員。 如果伺服器陣列管理員不是本機系統管理員，請在 WFE 伺服器上授與下列權限：
 
-        * 授與 WSS\_Admin\_WPG 群組完全控制 MABS 資料夾 \(%Program Files%\\Data Protection Manager\\DPM\)。
-            -A
+        * 授與 **WSS_Admin_WPG** 群組對 MABS 資料夾的完整控制 (`%Program Files%\Data Protection Manager\DPM\`)。
 
-        * 授與 WSS\_Admin\_WPG 群組讀取存取 MABS 登錄機碼 \(HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager\)。
+        * 授與 **WSS_Admin_WPG** 群組對 MABS 登錄機碼 (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`) 的讀取權限。
 
         執行 ConfigureSharePoint.exe 之後，如果 SharePoint 伺服器陣列管理員認證有所有變更，您必須重新執行此程式。
 

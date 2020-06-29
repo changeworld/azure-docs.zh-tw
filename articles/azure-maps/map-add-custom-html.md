@@ -1,6 +1,6 @@
 ---
-title: 將 HTML 標籤新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，將 HTML 標籤新增至地圖。
+title: 在地圖中新增 HTML 標記 | Microsoft Azure 地圖服務
+description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK，以將 HTML 標記新增至地圖。
 author: Philmea
 ms.author: philmea
 ms.date: 07/29/2019
@@ -11,7 +11,7 @@ manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83119285"
@@ -24,13 +24,13 @@ ms.locfileid: "83119285"
 > HTML 標記不會連線至資料來源。 相反地，位置資訊會直接新增至標記中，標記則會新增至地圖的 `markers` 屬性，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)。
 
 > [!IMPORTANT]
-> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增至頁面的 HTML 標籤越多，就會有更多的 DOM 元素。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
+> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增至頁面的 HTML 標記越多，其中的 DOM 項目就會越多。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
 
 ## <a name="add-an-html-marker"></a>新增 HTML 標記
 
-[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)類別具有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HTML 標籤類別的預設樣式是具有和預留位置的 SVG 範本 `{color}` `{text}` 。 設定 HTML 標籤選項中快速自訂的 color 和 text 屬性。 
+[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) 類別具有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HTML 標記類別的預設樣式是 SVG 範本，其具有 `{color}` 和 `{text}` 預留位置。 若要快速自訂，請在 HTML 標記選項中設定 color 和 text 屬性。 
 
-下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並 `click` 使用事件來切換快顯視窗的可見度。
+下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並使用 `click` 事件來切換快顯視窗的可見度。
 
 ```javascript
 //Create an HTML marker and add it to the map.
@@ -69,7 +69,7 @@ HTML 標記的預設 `htmlContent` 是內含預留位置 `{color}` 和 `{text}` 
 </iframe>
 
 > [!TIP]
-> Azure 地圖服務 web SDK 提供數個 SVG 影像範本，可用於 HTML 標籤。 如需詳細資訊，請參閱[如何使用影像範本](how-to-use-image-templates-web-sdk.md)檔。
+> Azure 地圖服務 Web SDK 提供數個 SVG 影像範本，其可與 HTML 標籤搭配使用。 如需詳細資訊，請參閱[如何使用影像範本](how-to-use-image-templates-web-sdk.md)文件。
 
 ## <a name="add-a-css-styled-html-marker"></a>新增 CSS 樣式的 HTML 標記
 
@@ -82,7 +82,7 @@ HTML 標記的好處之一是您可以使用 CSS 來實現許多完美的自訂�
 
 ## <a name="draggable-html-markers"></a>可拖曳的 HTML 標記
 
-此範例說明如何建立可拖曳的 HTML 標記。 HTML 標籤支援 `drag` 、 `dragstart` 和 `dragend` 事件。
+此範例說明如何建立可拖曳的 HTML 標記。 HTML 標記支援 `drag`、`dragstart` 和 `dragend` 事件。
 
 <br/>
 
@@ -114,10 +114,10 @@ HTML 標記的好處之一是您可以使用 CSS 來實現許多完美的自訂�
 如需更多可新增至地圖的程式碼範例，請參閱下列文章：
 
 > [!div class="nextstepaction"]
-> [如何使用映像範本](how-to-use-image-templates-web-sdk.md)
+> [如何使用影像範本](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [新增符號圖層](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [新增氣泡圖層](./map-add-bubble-layer.md)
+> [新增泡泡圖層](./map-add-bubble-layer.md)
