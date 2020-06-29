@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 35c37f5b2b307bb1a3d90b9876f148b5a1120490
-  ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+  ms.openlocfilehash: 3f2feec02efebbf6b3736b01151098cbe2bf02ae
+  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83713625"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85413785"
 landingContent:
 - title: 關於電腦視覺
   linkLists:
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: 使用視覺 API 在您的應用程式中納入智慧功能
       url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: 辨識印刷和手寫文字
+- title: 讀取影像和文件中的文字
   linkLists:
   - linkListType: concept
     links:
-    - text: 印刷和手寫文字辨識
+    - text: 文字辨識
       url: concept-recognizing-text.md
   - linkListType: quickstart
     links:

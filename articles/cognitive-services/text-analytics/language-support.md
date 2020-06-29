@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465587"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413326"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文字分析 API v3 語言支援 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465587"
 #### <a name="named-entity-recognition-ner"></a>[具名實體辨識 (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 目前僅支援英文語言。 如果您使用不同的語言呼叫 NER v3，則 API 會傳回2.1 版的結果，前提是版本2.1 中支援該語言。
+> * NER v3 目前僅支援英文和西班牙文語言。 如果您使用不同的語言呼叫 NER v3，則 API 會傳回2.1 版的結果，前提是版本2.1 中支援該語言。
 > * v 2.1 只會針對英文、簡體中文、法文、德文和西班牙文等語言，傳回一組完整的可用實體。  針對其他支援的語言，會傳回「人員」、「位置」和「組織」實體。
 
 | Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       注意        |
@@ -72,7 +72,7 @@ ms.locfileid: "84465587"
 | 芬蘭文               |     `fi`      |     ✓      |            |                                 |                    |
 | 法文                 |     `fr`      |     ✓      |            |                                 |                    |
 | 德文                 |     `de`      |     ✓      |            |                                 |                    |
-| 希伯來文                |     `he`      |     ✓      |            |                                 |                    |
+| Hebrew                |     `he`      |     ✓      |            |                                 |                    |
 | 匈牙利文             |     `hu`      |     ✓      |            |                                 |                    |
 | 義大利文               |     `it`      |     ✓      |            |                                 |                    |
 | 日文              |     `ja`      |     ✓      |            |                                 |                    |
@@ -82,7 +82,7 @@ ms.locfileid: "84465587"
 | 葡萄牙文 (葡萄牙) |    `pt-PT`    |     ✓      |            |                                 | 也接受 `pt` |
 | 葡萄牙文 (巴西)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | 俄文              |     `ru`      |     ✓      |            |                                 |                    |
-| 西班牙文               |     `es`      |     ✓      |            |                                 |                    |
+| 西班牙文               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | 瑞典文               |     `sv`      |     ✓      |            |                                 |                    |
 | 土耳其文               |     `tr`      |     ✓      |            |                                 |                    |
 

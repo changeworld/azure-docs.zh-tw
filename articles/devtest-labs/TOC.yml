@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: 教學課程
   items:
-    - name: 1. 設定實驗室
-      href: tutorial-create-custom-lab.md
-    - name: 2. 存取實驗室
+    - name: 設定實驗室
+      items:
+        - name: 使用 Azure 入口網站
+          href: tutorial-create-custom-lab.md
+        - name: 使用 Resource Manager 範本
+          href: create-lab-windows-vm-template.md
+    - name: 存取實驗室
       href: tutorial-use-custom-lab.md
 - name: 範例
   items:

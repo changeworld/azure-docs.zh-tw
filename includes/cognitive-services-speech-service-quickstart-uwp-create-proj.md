@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609270"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414348"
 ---
 若要建立適用於通用 Windows 平台 (UWP) 開發的 Visual Studio 專案，您必須設定 Visual Studio 開發選項、建立專案、選取目標架構、設定音訊擷取，以及安裝語音 SDK。
 
@@ -70,7 +70,7 @@ ms.locfileid: "84609270"
 
 ### <a name="set-up-audio-capture"></a>設定音訊擷取
 
-然後允許專案擷取音訊輸入：
+允許專案捕獲音訊輸入：
 
 1. 在 [方案總管]  中，按兩下 [Package.appxmanifest]  以開啟套件應用程式資訊清單。
 

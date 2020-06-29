@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308015"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414278"
 ---
-# <a name="set-up-web-endpoints"></a>設定 web 端點
+# <a name="set-up-web-endpoints"></a>設定 Web 端點
 
-在本文中，您將瞭解如何在自訂命令應用程式中設定 web 端點，讓您可以從用戶端應用程式提出 HTTP 要求。 您會完成下列工作：
+在本文中，您將瞭解如何在自訂命令應用程式中設定 web 端點，讓您可以從用戶端應用程式提出 HTTP 要求。 您將完成下列工作：
 
 - 在自訂命令應用程式中設定 web 端點
 - 在自訂命令應用程式中呼叫 web 端點
@@ -46,14 +46,14 @@ ms.locfileid: "85308015"
    | 名稱 | UpdateDeviceState | Web 端點的名稱。 |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | 您想要自訂命令應用程式進行通訊之端點的 URL。 |
    | 方法 | POST | 允許的互動（例如 GET、POST）與您的端點。|
-   | 標題 | 金鑰：應用程式、值：應用程式的唯一名稱 | 要包含在要求標頭中的標頭參數。|
+   | headers | 金鑰：應用程式、值：應用程式的唯一名稱 | 要包含在要求標頭中的標頭參數。|
 
     > [!NOTE]
     > - 使用[Azure Function](https://docs.microsoft.com/azure/azure-functions/)建立的範例 web 端點，會與儲存電視和風扇裝置狀態的資料庫連結
     > - 只有範例端點才需要建議的標頭
     > - 在真實世界中，web 端點可以是管理您裝置之[IOT 中樞](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)的端點
 
-1. 按一下 [檔案] 。
+1. 按一下 [檔案] ****。
 
 ## <a name="call-web-endpoints"></a>呼叫 web 端點
 
@@ -83,7 +83,7 @@ ms.locfileid: "85308015"
    | 要執行的動作 | 傳送語音回應 | 如果 web 端點的要求成功，要執行的動作 |
    
    > [!NOTE]
-   > - 您也可以使用，直接存取 HTTP 回應中的欄位 `{YourWebEndpointName.FieldName}` 。 例如： `{UpdateDeviceState.TV}`
+   > - 您也可以使用，直接存取 HTTP 回應中的欄位 `{YourWebEndpointName.FieldName}` 。 例如：`{UpdateDeviceState.TV}`
 
 1. 在 [**失敗時]-要執行的動作**，選取 [**傳送語音回應**]
    > [!div class="mx-imgBorder"]

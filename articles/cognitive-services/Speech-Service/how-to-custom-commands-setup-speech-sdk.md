@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: d87301f09665062a1b56fa33443f1178b42fb42f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307999"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414349"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
 
@@ -38,7 +38,7 @@ ms.locfileid: "85307999"
 
 ## <a name="step-1-publish-custom-commands-application"></a>步驟1：發行自訂命令應用程式
 
-1. 開啟您先前建立的自訂命令應用程式（預覽），然後選取 [**發佈**]
+1. 開啟您先前建立的自訂命令應用程式，然後選取 [**發佈**]
 
    > [!div class="mx-imgBorder"]
    > ![發佈應用程式](media/custom-commands/setup-speech-sdk-publish-application.png)

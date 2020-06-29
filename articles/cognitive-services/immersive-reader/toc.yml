@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: 快取驗證權杖
       href: how-to-cache-token.md
+    - name: 設定大聲朗讀
+      href: how-to-configure-read-aloud.md
+    - name: 設定翻譯
+      href: how-to-configure-translation.md
+    - name: 儲存使用者喜好設定
+      href: how-to-store-user-preferences.md
 - name: 參考
   items:
-    - name: SDK 參考
+    - name: JavaScript SDK
       href: reference.md
 - name: 資源
   items:
