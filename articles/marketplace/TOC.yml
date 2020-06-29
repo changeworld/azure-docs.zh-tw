@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 虛擬機器供應項目
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API 參考
-      items:
-        - name: 概觀
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 必要條件
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: 考量
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: 並行控制
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: 擷取供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: 擷取特定供應項目
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: 新增或修改供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: 擷取供應項目狀態
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: 發佈供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: 擷取作業
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: 取消作業
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: 上線
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: 虛擬機器供應項目定價
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: 針對驗證錯誤進行疑難排解
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 取得支援
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: 合作夥伴中心中的商業市集
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: 啟動權益
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: 支援選項
-      href: ./partner-center-portal/support.md
     - name: 合作夥伴中心分析
       items:
         - name: 商業市集的分析
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: 稅賦詳細資訊
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API 參考
+      items:
+        - name: 概觀
+          href: ./cloud-partner-portal-api-overview.md
+        - name: 必要條件
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: 考量
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: 並行控制
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: 擷取供應項目
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: 擷取特定供應項目
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: 新增或修改供應項目
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: 擷取供應項目狀態
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: 發佈供應項目
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: 擷取作業
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: 取消作業
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: 上線
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: 虛擬機器供應項目定價
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: 針對驗證錯誤進行疑難排解
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: 支援選項
+      href: ./partner-center-portal/support.md

@@ -151,6 +151,10 @@
               href: howto-manage-preferences.md
             - name: 切換即時聊天
               href: howto-show-hide-chat.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: 資源
   items:
     - name: 支援和協助選項

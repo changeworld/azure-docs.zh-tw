@@ -441,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: 資料箱系列
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: 儲存體
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: 資料箱離線傳輸
           tocHref: /azure/databox/

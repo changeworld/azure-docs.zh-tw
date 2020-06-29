@@ -10,12 +10,12 @@ metadata:
   author: marleva
   ms.author: maevan
   ms.date: 04/02/2020
-  ms.openlocfilehash: 694dd8e2e856c997def8b6af000322d63477d3e4
-  ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+  ms.openlocfilehash: 89c1aba70d6a9cc5b3b7e262b1dda7d5401c4583
+  ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/03/2020
-  ms.locfileid: "84340516"
+  ms.lasthandoff: 06/28/2020
+  ms.locfileid: "85513229"
 landingContent:
 - title: 使用商業市集
   linkLists:
@@ -118,17 +118,17 @@ landingContent:
     - text: Marketplace 計量服務 API
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
     - text: Cloud Partner 入口網站 API 參考
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+      url: ./cloud-partner-portal-api-overview.md
     - text: API 必要條件
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+      url: ./cloud-partner-portal-api-prerequisites.md
     - text: 擷取供應項目
-      url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+      url: ./cloud-partner-portal-api-retrieve-offers.md
     - text: 建立或修改供應項目
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+      url: ./cloud-partner-portal-api-creating-offer.md
     - text: 虛擬機器供應項目定價
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+      url: ./cloud-partner-portal-api-setting-price.md
     - text: 上線
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+      url: ./cloud-partner-portal-api-go-live.md
 - title: 取得支援
   linkLists:
   - linkListType: get-started
@@ -136,6 +136,6 @@ landingContent:
     - text: 支援選項
       url: ./partner-center-portal/support.md
     - text: 針對驗證錯誤進行疑難排解
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+      url: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - text: 各地區上市情況和貨幣
       url: ./marketplace-geo-availability-currencies.md
