@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 部署和管理通知中樞
+title: 使用 PowerShell 來部署和管理通知中樞
 description: 如何使用 PowerShell 來建立和管理通知中樞以進行自動化
 services: notification-hubs
 documentationcenter: ''
@@ -18,14 +18,14 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
 ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/07/2020
 ms.locfileid: "82891189"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 來部署和管理通知中樞
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文將說明如何使用 PowerShell 來建立和管理 Azure 通知中樞。 本文示範下列一般自動化工作。
 
@@ -36,10 +36,10 @@ ms.locfileid: "82891189"
 
 Azure PowerShell 隨附的 Cmdlet 無法直接支援「管理通知中樞」。 從 PowerShell 進行的最佳方法，是參考 Microsoft.Azure.NotificationHubs.dll 組件。 組件隨附於 [Microsoft Azure 通知中樞 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 Azure 是訂閱型平台。 如需取得訂用帳戶的詳細資訊，請參閱[購買選項]、[成員供應項目]或[免費試用版]。
-- 具備 Azure PowerShell 的電腦。 如需指示，請參閱[安裝和設定 Azure PowerShell]。
+- 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [安裝並設定 Azure PowerShell]。
 - 大致了解 PowerShell 指令碼、NuGet 封裝和 .NET Framework。
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包括對服務匯流排之 .NET 組件的參考
@@ -94,10 +94,10 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 您會在指令碼的這個部分設定四個區域變數。
 
-1. `$Namespace`：將此變數設定為要在其中建立通知中樞的命名空間名稱。
-2. `$Path`：將此路徑設定為新的通知中樞名稱。  例如，"MyHub"。
-3. `$WnsPackageSid`：從 [Windows 開發人員中心](https://developer.microsoft.com/en-us/windows)，將此變數設定為 Windows 應用程式的套件 SID。
-4. `$WnsSecretkey`：從 [Windows 開發人員中心](https://developer.microsoft.com/en-us/windows)，將此變數設定為 Windows 應用程式的祕密金鑰。
+1. `$Namespace`:將此變數設定為要在其中建立通知中樞的命名空間名稱。
+2. `$Path`:將此路徑設定為新的通知中樞名稱。  例如，"MyHub"。
+3. `$WnsPackageSid`:從 [Windows 開發人員中心](https://developer.microsoft.com/en-us/windows)，將此變數設定為 Windows 應用程式的套件 SID。
+4. `$WnsSecretkey`:從 [Windows 開發人員中心](https://developer.microsoft.com/en-us/windows)，將此變數設定為 Windows 應用程式的祕密金鑰。
 
 這些變數可用以連接命名空間，以及建立新的通知中樞，並將其設定為利用 WNS 認證，為 Windows 應用程式處理 Windows Notification Services (WNS) 通知。 如需取得封裝 SID 與祕密金鑰的相關資訊，請參閱 [開始使用通知中樞](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 教學課程。
 
@@ -158,8 +158,8 @@ else
 
 [購買選項]: https://azure.microsoft.com/pricing/purchase-options/
 [成員供應項目]: https://azure.microsoft.com/pricing/member-offers/
-[免費試用]: https://azure.microsoft.com/pricing/free-trial/
-[安裝和設定 Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[免費試用版]: https://azure.microsoft.com/pricing/free-trial/
+[安裝並設定 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中樞的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace

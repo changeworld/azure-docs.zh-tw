@@ -367,9 +367,9 @@
     - name: 備份與復原
       href: backup-recovery.md
     - name: 雲端採用架構
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
     - name: 架構中心
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: 基礎結構方針
       href: infrastructure-example.md
 - name: 操作指南

@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: 針對錯誤進行疑難排解
           href: troubleshoot-errors.md
+        - name: 針對網路連線問題進行疑難排解
+          href: troubleshoot-network-connectivity.md
         - name: 針對訂用帳戶驗證進行疑難排解
           href: troubleshoot-subscription-validation.md
-        - name: 檢視計量並建立警示
+        - name: 檢視計量
           href: monitor-event-delivery.md
+        - name: 建立警示
+          href: set-alerts.md
 - name: 參考
   items:
     - name: Azure CLI

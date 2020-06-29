@@ -8,6 +8,12 @@
       href: azure-portal-quickstart-center.md
     - name: 支援的瀏覽器和裝置
       href: azure-portal-supported-browsers-devices.md
+- name: 快速入門
+  items:
+    - name: 在入口網站中建立 VM
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: 建立儀表板 - ARM 範本
+      href: quick-create-template.md
 - name: 概念
   items:
     - name: 使用角色型存取控制來共用儀表板

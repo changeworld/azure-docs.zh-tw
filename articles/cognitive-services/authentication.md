@@ -9,21 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587675"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445537"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>驗證 Azure 認知服務要求
 
 Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂用帳戶金鑰或存取權杖一起傳遞，用來驗證您的服務或服務群組訂閱。 在本文中，您將了解驗證要求的三種方式及各自的需求。
 
-* [使用單一服務訂用帳戶金鑰進行驗證](#authenticate-with-a-single-service-subscription-key)
-* [使用多服務訂用帳戶金鑰進行驗證](#authenticate-with-a-multi-service-subscription-key)
-* [使用權杖進行驗證](#authenticate-with-an-authentication-token)
-* [使用 Azure Active Directory （AAD）進行驗證](#authenticate-with-azure-active-directory)
+* 使用[單一服務](#authenticate-with-a-single-service-subscription-key)或[多服務](#authenticate-with-a-multi-service-subscription-key)訂用帳戶金鑰進行驗證
+* 使用[權杖](#authenticate-with-an-authentication-token)進行驗證
+* 使用[Azure Active Directory （AAD）](#authenticate-with-azure-active-directory)進行驗證
 
 ## <a name="prerequisites"></a>必要條件
 

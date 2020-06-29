@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143321"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412578"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>遷移至2.x 版的文字分析 API
 
@@ -44,7 +44,7 @@ ms.locfileid: "84143321"
 ## <a name="feature-changes"></a>功能變更
 
 > [!NOTE] 
-> 目前， [v3 實體類別](named-entity-types.md)只會以英文文字傳回。 API 會傳回其他語言中要求的2.1 版結果，前提是版本2.1 中支援它們。
+> 目前， [v3 實體類別](named-entity-types.md)只會傳回英文和西班牙文的文字。 API 會傳回其他語言中要求的2.1 版結果，前提是版本2.1 中支援它們。
 
 在2.1 版中，文字分析 API 會使用一個端點來命名實體識別（NER）和實體連結。 第3版提供擴充的命名實體偵測，並針對 NER 和實體連結要求使用不同的端點。 從 3.1-preview. 1 開始，NER 可以額外偵測個人 `pii` 和健康狀態 `phi` 資訊。 
 

@@ -1,5 +1,5 @@
 ---
-title: 從已上傳的一般化 VHD 建立 VM
+title: 從已上傳的一般 VHD 建立 VM
 description: 在 Resource Manager 部署模型中，將一般化 VHD 上傳至 Azure 並使用它來建立新 VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,7 +9,7 @@ ms.date: 12/12/2019
 ms.author: cynthn
 ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82096402"
@@ -28,7 +28,7 @@ ms.locfileid: "82096402"
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 將來源 VM 一般化
 
-如果您還沒有這麼做，您必須先 Sysprep VM，再將 VHD 上傳至 Azure。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+如果還沒有這麼做，則必須先對 VM 執行 Sysprep，再將 VHD 上傳至 Azure。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
 請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
@@ -39,9 +39,9 @@ ms.locfileid: "82096402"
 
 1. 登入 Windows 虛擬機器。
 2. 以系統管理員身分開啟 [命令提示字元] 視窗。 將目錄變更到 %windir%\system32\sysprep，然後執行 `sysprep.exe`。
-3. 在 [系統準備工具]**** 對話方塊中，選取 [進入系統全新體驗 (OOBE)]****，並確認已啟用 [一般化]**** 核取方塊。
-4. 針對 [關機選項]****，選取 [關機]****。
-5. 選取 [確定]  。
+3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已啟用 [一般化] 核取方塊。
+4. 針對 [關機選項]，選取 [關機]。
+5. 選取 [確定]。
    
     ![啟動 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 完成時，會關閉虛擬機器。 不要重新啟動 VM。
@@ -49,18 +49,18 @@ ms.locfileid: "82096402"
 
 ## <a name="upload-the-vhd"></a>上傳 VHD 
 
-您現在可以將 VHD 直接上傳至受控磁片。 如需指示，請參閱[使用 Azure PowerShell 將 VHD 上傳至 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
+您現在可以直接將 VHD 上傳至受控磁碟。 如需相關指示，請參閱[使用 Azure PowerShell 將 VHD 上傳至 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
 
 
-將 VHD 上傳至受控磁片之後，您必須使用[new-azdisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)來取得受控磁片。
+將 VHD 上傳至受控磁碟之後，即必須使用 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) 來取得該受控磁碟。
 
 ```azurepowershell-interactive
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
 ## <a name="create-the-image"></a>建立映像
-從一般化 OS 受控磁片建立受控映射。 使用您自己的資訊取代下列值。
+從一般 OS 受控磁碟建立受控映像。 使用您自己的資訊取代下列值。
 
 首先，設定一些變數：
 
@@ -70,7 +70,7 @@ $imageName = 'myImage'
 $rgName = 'myResourceGroup'
 ```
 
-使用您的受控磁片建立映射。
+使用受控磁碟建立映像。
 
 ```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `

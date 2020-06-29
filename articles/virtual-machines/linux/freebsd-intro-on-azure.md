@@ -9,7 +9,7 @@ ms.date: 09/13/2017
 ms.author: mimckitt
 ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261630"
@@ -17,14 +17,14 @@ ms.locfileid: "81261630"
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 簡介
 本文提供在 Azure 中執行 FreeBSD 虛擬機器的概觀。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 適用於 Microsoft Azure 的 FreeBSD 是一套先進的電腦作業系統，可用來為新式伺服器、桌上型電腦及內嵌平台提供技術支援。
 
 Microsoft Corporation 目前在 Azure 上提供已預先設定 [Azure VM 客體代理程式](https://github.com/Azure/WALinuxAgent/)的 FreeBSD 映像。 目前，Microsoft 以映像形式提供下列 FreeBSD 版本：
 
 - [Azure Marketplace 上的 FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 - [Azure Marketplace 上的 FreeBSD 11.2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [Azure Marketplace 上的 FreeBSD 12。0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- [Azure Marketplace 上的 FreeBSD 12.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
 
 此代理程式會負責 FreeBSD VM 與 Azure 網狀架構之間作業的通訊，例如在第一次使用 VM 時佈建 VM (使用者名稱、密碼或 SSH 金鑰、主機名稱等)，以及啟用選擇性 VM 延伸模組的功能。
 
