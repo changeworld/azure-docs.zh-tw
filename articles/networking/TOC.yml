@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: 架構
       items:
+        - name: 適用於網路工程師的 Azure
+          href: azure-for-network-engineers.md
         - name: 虛擬資料中心
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: 非對稱式路由與多個網路路徑

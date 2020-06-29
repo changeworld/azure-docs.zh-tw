@@ -12,6 +12,12 @@
   items:
     - name: 監視 Azure 資源
       href: learn/quick-monitor-azure-resource.md
+    - name: 將活動記錄傳送至工作區
+      items:
+        - name: Azure 入口網站
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM 範本
+          href: learn/quick-collect-activity-log-arm.md
     - name: 監視虛擬機器
       items:
         - name: Azure VM
@@ -455,7 +461,7 @@
             - name: Webhook 動作
               href: platform/alerts-log-webhook.md
             - name: 對記錄警示進行疑難排解
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: 活動記錄警示規則
           items:
             - name: 活動記錄事件警示
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: 疑難排解警示
           href: platform/alerts-troubleshoot.md
+        - name: 警示和區域移動
+          href: platform/alerts-resource-move.md
         - name: IT 服務管理
           items:
             - name: IT 服務管理連接器
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: ASP.NET 主控台
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: 非 Http 應用程式/背景應用程式
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET 主控台
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Web 應用程式
