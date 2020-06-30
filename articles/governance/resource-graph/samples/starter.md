@@ -39,7 +39,7 @@ ms.locfileid: "84231060"
 
 Azure CLI (透過擴充功能) 與 Azure PowerShell (透過模組) 支援 Azure Resource Graph。 在執行下列任何查詢之前，請檢查您的環境已準備就緒。 請參閱 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 與 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)，以了解安裝及驗證所選殼層環境的步驟。
 
-## <a name="count-azure-resources"></a><a name="count-resources">計算的 Azure 資源計數</a>
+## <a name="count-azure-resources"></a><a name="count-resources"></a>計算的 Azure 資源計數
 
 此查詢會傳回您具有存取權之訂用帳戶中存在的 Azure 資源的數目。 這也是很好的查詢，可驗證您選擇的殼層是否已安裝適當的 Azure Resource Graph 元件，並處於正常運作狀態。
 
