@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677548"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105944"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache Kafka 原則 (預覽)
 
@@ -117,8 +117,8 @@ ms.locfileid: "83677548"
 1. 執行下列命令：
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>測試 Ranger 原則
@@ -131,13 +131,7 @@ ms.locfileid: "83677548"
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. 執行下列命令：
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. 上一節中的訊息代理程式名稱可用來設定下列環境變數：
+2. 上一節中的訊息代理程式名稱可用來設定下列環境變數：
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,48 +139,80 @@ ms.locfileid: "83677548"
 
    範例： `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. 依照**建置並部署範例**底下的步驟 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user**使用。
+3. 依照**建置並部署範例**底下的步驟 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user**使用。
 
-> [!NOTE]  
-> 在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。
+   > [!NOTE]  
+   > 在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。
 
-5. 藉由執行下列命令，確認 **sales_user1** 可產生至主題 `salesevents`：
+4. 藉由執行下列命令，確認 **sales_user1** 可產生至主題 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. 下列命令可用來取用主題 `salesevents`：
+5. 下列命令可用來取用主題 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    請確認您能夠讀取訊息。
 
-7. 藉由在相同 ssh 視窗中執行下列命令，確認 **sales_user1** 無法產生至主題 `marketingspend`：
+6. 藉由在相同 ssh 視窗中執行下列命令，確認 **sales_user1** 無法產生至主題 `marketingspend`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    發生授權錯誤，可予以忽略。
 
-8. 請注意，無法從主題 `salesevents` 取用 **marketing_user1**。
+7. 請注意，無法從主題 `salesevents` 取用 **marketing_user1**。
 
-   重複執行上述步驟 1-4，不過這次是以 **marketing_user1** 身分執行。
+   重複執行上述步驟 1-3，不過這次是以 **marketing_user1** 身分執行。
 
    下列命令可用來取用主題 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    先前的訊息不會出現。
 
-9. 從 Ranger UI 檢視稽核存取事件。
+8. 從 Ranger UI 檢視稽核存取事件。
 
    ![Ranger UI 原則稽核存取事件 ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>使用主控台產生和取用 ESP Kafka 中的主題
+
+> [!NOTE]
+> 您無法使用主控台命令來建立主題。 相反地，您必須使用上一節示範的 Java 程式碼。 如需詳細資訊，請參閱[在 Kafka 叢集中使用 ESP 建立主題](#create-topics-in-a-kafka-cluster-with-esp)。
+
+若要使用主控台產生和取用 ESP Kafka 中的主題：
+
+1. 使用 `kinit` 與使用者的使用者名稱。 請在系統提示時輸入密碼。
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. 設定環境變數：
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. 產生訊息至主題 `salesevents`：
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. 取用主題 `salesevents` 中的訊息：
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>清除資源
 

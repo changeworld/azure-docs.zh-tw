@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258740"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100356"
 ---
 # <a name="transform-and-protect-your-api"></a>轉換及保護您的 API
 
@@ -37,7 +37,7 @@ ms.locfileid: "81258740"
 
 ![原則](./media/transform-api/api-management-management-console.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 -   了解 [Azure API 管理術語](api-management-terminology.md)。
 -   了解 [Azure API 管理的原則概念](api-management-howto-policies.md)。
@@ -57,11 +57,11 @@ ms.locfileid: "81258740"
 
 查看原始回應：
 
-1. 在 APIM 服務執行個體中，選取 [API]  (位於 [API 管理]  下方)。
-2. 按一下 API 清單中的 [示範會議 API]  。
-3. 按一下畫面頂端的 [測試]  索引標籤。
+1. 在 APIM 服務執行個體中，選取 [API] (位於 [API 管理] 下方)。
+2. 按一下 API 清單中的 [示範會議 API]。
+3. 按一下畫面頂端的 [測試] 索引標籤。
 4. 選取 **GetSpeakers** 作業。
-5. 按畫面底部的 [傳送]  按鈕。
+5. 按畫面底部的 [傳送] 按鈕。
 
 原始回應應如下所示：
 
@@ -71,12 +71,12 @@ ms.locfileid: "81258740"
 
 ![設定輸出原則](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1. 選取 [Demo Conference API]  。
-2. 選取畫面頂端的 [設計]  索引標籤。
-3. 選取 [所有作業]  。
-4. 在 [輸出處理]  區段中，按一下 **</>** 圖示。
+1. 選取 [Demo Conference API]。
+2. 選取畫面頂端的 [設計] 索引標籤。
+3. 選取 [所有作業]。
+4. 在 [輸出處理] 區段中，按一下 **</>** 圖示。
 5. 將游標放在 **&lt;outbound&gt;** 元素內部。
-6. 在右側視窗的 [轉換原則]  下方，按兩次 [+ 設定 HTTP 標頭]  \(以插入兩個原則程式碼片段)。
+6. 在右側視窗的 [轉換原則] 下方，按兩次 [+ 設定 HTTP 標頭] \(以插入兩個原則程式碼片段)。
 
    ![原則](./media/transform-api/transform-api.png)
 
@@ -97,10 +97,10 @@ ms.locfileid: "81258740"
 
 查看原始回應：
 
-1. 選取 [Demo Conference API]  。
-2. 按一下畫面頂端的 [測試]  索引標籤。
+1. 選取 [Demo Conference API]。
+2. 按一下畫面頂端的 [測試] 索引標籤。
 3. 選取 **GetSpeakers** 作業。
-4. 按畫面底部的 [傳送]  按鈕。
+4. 按畫面底部的 [傳送] 按鈕。
 
     此時，您會看見如下的原始回應：
 
@@ -108,15 +108,12 @@ ms.locfileid: "81258740"
 
 ### <a name="set-the-transformation-policy"></a>設定轉換原則
 
-1.  選取 [Demo Conference API]  。
-2.  選取 [所有作業]  。
-3.  選取畫面頂端的 [設計]  索引標籤。
-4.  在 [輸出處理]  區段中，按一下 **</>** 圖示。
-5.  將游標放在 **&lt;輸出&gt;** 元素中，然後按一下右上角的 [插入原則]  按鈕。
-6.  在右側視窗的 [轉換原則]  下方，按一下 [+ 尋找並取代主體中的字串]  。
-7.  修改您的 **find-and-replace** 程式碼 (位於 **\<outbound\>** 元素中)，並用來取代 URL，以符合您的 APIM 閘道。 例如：
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+1.  選取 [Demo Conference API]。
+2.  選取 [所有作業]。
+3.  選取畫面頂端的 [設計] 索引標籤。
+4.  在 [輸出處理] 區段中，按一下 **</>** 圖示。
+5.  將游標放在 **&lt;outbound&gt;** 元素中，然後按一下右上角的 [顯示程式碼片段] 按鈕。
+6.  在右側視窗的 [轉換原則] 底下，按一下 [遮罩內容中的 URL]。
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>新增速率限制原則 (節流) 來保護 API
 
@@ -124,12 +121,12 @@ ms.locfileid: "81258740"
 
 ![設定輸入原則](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1.  選取 [Demo Conference API]  。
-2.  選取 [所有作業]  。
-3.  選取畫面頂端的 [設計]  索引標籤。
-4.  在 [輸入處理]  區段中，按一下 **</>** 圖示。
+1.  選取 [Demo Conference API]。
+2.  選取 [所有作業]。
+3.  選取畫面頂端的 [設計] 索引標籤。
+4.  在 [輸入處理] 區段中，按一下 **</>** 圖示。
 5.  將游標放在 **&lt;inbound&gt;** 元素內部。
-6.  在右側視窗的 [存取限制原則]  下方，按一下 [+ 限制每個金鑰的呼叫速率]  。
+6.  在右側視窗的 [存取限制原則] 下方，按一下 [+ 限制每個金鑰的呼叫速率]。
 7.  將您的 **rate-limit-by-key** 程式碼 (位於 **\<inbound\>** 元素中) 修改為下列程式碼：
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
@@ -162,10 +159,10 @@ ms.locfileid: "81258740"
 
 ### <a name="test-the-stripped-response-headers"></a>測試已刪除的回應標頭
 
-1. 選取 [Demo Conference API]  。
-2. 選取 [測試]  索引標籤。
-3. 按一下 [GetSpeakers]  作業。
-4. 按 [傳送]  。
+1. 選取 [Demo Conference API]。
+2. 選取 [測試] 索引標籤。
+3. 按一下 [GetSpeakers] 作業。
+4. 按 [傳送]。
 
     此時，您可以看到已刪除標頭：
 
@@ -173,10 +170,10 @@ ms.locfileid: "81258740"
 
 ### <a name="test-the-replaced-url"></a>測試已取代的 URL
 
-1. 選取 [Demo Conference API]  。
-2. 選取 [測試]  索引標籤。
-3. 按一下 [GetSpeakers]  作業。
-4. 按 [傳送]  。
+1. 選取 [Demo Conference API]。
+2. 選取 [測試] 索引標籤。
+3. 按一下 [GetSpeakers] 作業。
+4. 按 [傳送]。
 
     此時，您可以看到已取代 URL。
 
@@ -184,14 +181,14 @@ ms.locfileid: "81258740"
 
 ### <a name="test-the-rate-limit-throttling"></a>測試速率限制 (節流)
 
-1. 選取 [Demo Conference API]  。
-2. 選取 [測試]  索引標籤。
-3. 按一下 [GetSpeakers]  作業。
-4. 連續按三次 [傳送]  。
+1. 選取 [Demo Conference API]。
+2. 選取 [測試] 索引標籤。
+3. 按一下 [GetSpeakers] 作業。
+4. 連續按三次 [傳送]。
 
     傳送要求 3 次之後，您會收到 **429 太多要求**的回應。
 
-5. 大約等候 15 秒之後，再按一次 [傳送]  。 此時，您應該得到 **200 確定**的回應。
+5. 大約等候 15 秒之後，再按一次 [傳送]。 此時，您應該得到 **200 確定**的回應。
 
     ![節流](./media/transform-api/test-throttling.png)
 

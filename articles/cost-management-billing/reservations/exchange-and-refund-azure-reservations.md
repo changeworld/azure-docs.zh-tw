@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: e924c46632e37c6d196fae2db729c17a99bbae3b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765109"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101022"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
 
@@ -20,9 +20,6 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 自助式交換和取消功能不適用於美國政府 Enterprise 合約客戶。 可支援其他美國政府訂用帳戶類型，包括隨用隨付和雲端解決方案提供者雲端解決方案提供者 (CSP)。
 
 您必須擁有保留訂單的擁有者存取權，才能對現有的保留進行交換和退款。 您可以[新增或變更可以管理保留的使用者](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)。
-
-> [!NOTE]
-> Microsoft 目前不收取保留退款的提早終止費用。 對於未來的退款，我們可能會收取費用。 我們目前尚未訂定啟用此費用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何交換現有的保留或將其退款
 
@@ -75,7 +72,7 @@ Azure 有下列取消、交換和退款原則。
 
 **退款原則**
 
-- 我們目前不收取提前終止費用，但未來可能會針對取消收取 12% 的費用。
+- 取消時可能會有 12% 的提前終止費用。
 - 取消的承諾用量總額在 12 個月的滾動期間內不可超過 50,000 美元。 範例：針對每個月 100 美元，並在第 18 個月退款的三年保留期，取消的承諾用量為 1,800 美元。 退款之後，您新的可用退款限制將是 48,200 美元。 自此退款日起算的 365 天後，48,200 美元的限制將會增加 1,800 美元，而您的新額度將會是 50,000 美元。 任何其他保留取消都將會使用相同的額度，且適用相同的補充邏輯。
 - 退款會根據您購買價格或目前保留價格的最低價格來計算。
 - 只有保留訂單擁有者可以處理退款。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。

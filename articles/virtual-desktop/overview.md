@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61162a0e2e95a08547848f286f2db489f4b9d963
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737014"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125799"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -113,7 +113,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 |*.events.data.microsoft.com|443|遙測服務|None|
 |www.msftconnecttest.com|443|偵測 OS 是否已連線到網際網路|None|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
-|login.windows.net|443|登入 Microsoft Online Services、Office 365|None|
+|login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|None|
 |*.sfx.ms|443|OneDrive 用戶端軟體的更新|None|
 |*.digicert.com|443|憑證撤銷檢查|None|
 
@@ -126,7 +126,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [事件檢視器]****，並瀏覽至 [Windows 記錄]**** > [應用程式]**** > [WVD-Agent]****，然後尋找事件識別碼 3702。
+>2. 開啟 [事件檢視器]，並瀏覽至 [Windows 記錄] > [應用程式] > [WVD-Agent]，然後尋找事件識別碼 3702。
 >3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對要在其中部署虛擬機器的每個區域，重複執行相關 URL 的白名單程序。
 
 Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式，以及由 Microsoft 在 Azure 上裝載為服務的管理解決方案。 桌面和應用程式都可以部署在任何 Azure 區域的虛擬機器 (VM) 中，而這些 VM 的管理解決方案和資料都會位於美國。 這可能會導致資料轉送到美國。

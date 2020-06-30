@@ -4,12 +4,12 @@ description: 使用 Azure CLI 在可調整的進階方案中建立函式應用�
 ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
-ms.openlocfilehash: dd31dbadce4f0a55853607504b4322277784f27f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3587e5b5e46867ff3abe97b3593c9732be3afa22
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74534585"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117213"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>在進階方案中建立函式應用程式 - Azure CLI
 
@@ -37,7 +37,7 @@ ms.locfileid: "74534585"
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 建立 Azure 儲存體帳戶。 |
-| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 建立進階方案。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 在[特定 SKU](../functions-premium-plan.md#available-instance-skus) 中建立進階方案。 |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在 App Service 方案中建立函式應用程式。 |
 
 ## <a name="next-steps"></a>後續步驟

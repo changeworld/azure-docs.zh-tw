@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560999"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251503"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 以 Azure Data Factory 大量複製多份資料表
 
@@ -59,7 +59,7 @@ ms.locfileid: "84560999"
 
 **準備來源 Azure SQL Database**：
 
-遵循[建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) 文章來建立具有 Adventure Works LT 範例資料的 Azure SQL Database。 本教學課程會將所有資料表從這個範例資料庫中複製到 SQL 資料倉儲。
+遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將所有資料表從這個範例資料庫中複製到 SQL 資料倉儲。
 
 **準備接收 Azure SQL 資料倉儲**：
 
@@ -334,7 +334,7 @@ ms.locfileid: "84560999"
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

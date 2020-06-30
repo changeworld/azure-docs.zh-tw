@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532420"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254475"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service 的 PowerShell 範例
 
@@ -32,7 +32,7 @@ ms.locfileid: "81532420"
 | [手動調整應用程式](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立 App Service 應用程式，並跨 2 個執行個體調整它。 |
 | [透過高可用性架構將應用程式調整為全球可用](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 在兩個不同的地理區域中建立兩個 App Service 應用程式，並使用 Azure 流量管理員讓它們可透過單一端點來使用。 |
 |**將應用程式連線至資源**||
-| [將應用程式連線至 SQL 資料庫](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式和 SQL Database，然後將資料庫連接字串新增至應用程式設定。 |
+| [將應用程式連線至 SQL 資料庫](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式和 Azure SQL Database 中的資料庫，然後將資料庫連接字串新增至應用程式設定。 |
 | [將應用程式連線至儲存體帳戶](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式和儲存體帳戶，然後將儲存體連接字串新增至應用程式設定。 |
 |**備份與還原應用程式**||
 | [備份應用程式](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立 App Service 應用程式，並為其建立一次性備份。 |

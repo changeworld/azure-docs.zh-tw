@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf3f454296acafcff6fe775b07abeb7a253749b5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78299307"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253523"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教學課程：檢閱 Microsoft 合作夥伴合約發票
 
@@ -30,7 +30,7 @@ ms.locfileid: "78299307"
 > * 檢閱待決費用以預估您的下一張發票
 > * 分析您的 Azure 使用量費用
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須可以存取 Microsoft 合作夥伴合約的計費帳戶。
 
@@ -44,21 +44,21 @@ ms.locfileid: "78299307"
 
 檢查合約類型，以判斷您是否有權存取 Microsoft 合作夥伴合約的計費帳戶。
 
-在 Azure 入口網站的搜尋方塊中輸入 [成本管理 + 計費]  ，然後選取 [成本管理 + 計費]  。
+在 Azure 入口網站的搜尋方塊中輸入 [成本管理 + 計費]，然後選取 [成本管理 + 計費]。
 
 ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
-如果您只能存取一個計費範圍，請選取左側的 [屬性]  。 如果計費帳戶類型為 [Microsoft 合作夥伴合約]  ，您可以存取 Microsoft 合作夥伴合約的計費帳戶。
+如果您只能存取一個計費範圍，請選取左側的 [屬性]。 如果計費帳戶類型為 [Microsoft 合作夥伴合約]，您可以存取 Microsoft 合作夥伴合約的計費帳戶。
 
 ![在 [屬性] 頁面中顯示 Microsoft 合作夥伴合約的螢幕擷取畫面](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
-如果您有多個計費範圍的存取權，請檢查 [計費帳戶] 資料行中的類型。 如果任何範圍的計費帳戶類型為 [Microsoft 合作夥伴合約]  ，您就可以存取 Microsoft 合作夥伴合約的計費帳戶。
+如果您有多個計費範圍的存取權，請檢查 [計費帳戶] 資料行中的類型。 如果任何範圍的計費帳戶類型為 [Microsoft 合作夥伴合約]，您就可以存取 Microsoft 合作夥伴合約的計費帳戶。
 
 ![在 [計費帳戶清單] 頁面中顯示 Microsoft 合作夥伴合約的螢幕擷取畫面](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
 ## <a name="review-invoiced-transactions-in-the-azure-portal"></a>檢閱 Azure 入口網站中已開立發票的交易
 
-在 [成本管理 + 計費] 中，選取頁面左側的 [所有交易]  。 根據您的存取權，您可能必須選取計費帳戶、帳單設定檔或客戶，然後選取 [所有交易]  。
+在 [成本管理 + 計費] 中，選取頁面左側的 [所有交易]。 根據您的存取權，您可能必須選取計費帳戶、帳單設定檔或客戶，然後選取 [所有交易]。
 
 [所有交易] 頁面會顯示下列資訊：
 
@@ -84,19 +84,19 @@ ms.locfileid: "78299307"
 
 當您識別出待決費用時，您可以藉由分析在費用中有佔比的個別交易來了解費用。 此時，待決的使用量費用不會顯示在 [所有交易] 頁面上。 您可以在 Azure 訂用帳戶頁面上檢視待決的使用量費用。
 
-在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]  ，然後選取帳單設定檔。
+在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]，然後選取帳單設定檔。
 
-從頁面左側選取 [所有交易]  。
+從頁面左側選取 [所有交易]。
 
-搜尋「擱置」  。 使用 [時間範圍]  篩選器來檢視當月或上個月的待決費用。
+搜尋「擱置」。 使用 [時間範圍] 篩選器來檢視當月或上個月的待決費用。
 
 <!-- ![Screenshot that shows the pending transactions list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-pending-transactions.png) -->
 
 ### <a name="view-pending-charges-by-customer"></a>檢視各客戶的擱置費用
 
-在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]  ，然後選取帳單設定檔。
+在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]，然後選取帳單設定檔。
 
-選取頁面左側的 [客戶]  。
+選取頁面左側的 [客戶]。
 
 <!-- ![screenshot of billing profile customers list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-customers.png) -->
 
@@ -104,9 +104,9 @@ ms.locfileid: "78299307"
 
 ### <a name="view-pending-usage-charges"></a>檢視待決的使用量費用
 
-在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]  ，然後選取帳單設定檔。
+在 [成本管理 + 計費] 中，選取帳單設定檔。 視存取權之不同，您可能必須選取計費帳戶。 從計費帳戶中選取 [帳單設定檔]，然後選取帳單設定檔。
 
-選取頁面左側的 [Azure 訂用帳戶]  。 [Azure 訂用帳戶] 頁面會顯示帳單設定檔中每個訂用帳戶當月和上個月的費用。 當月費用是當月的待決費用，會在當月的發票產生時計費。 如果上個月的發票尚未產生，則上個月的費用也會列為待決。
+選取頁面左側的 [Azure 訂用帳戶]。 [Azure 訂用帳戶] 頁面會顯示帳單設定檔中每個訂用帳戶當月和上個月的費用。 當月費用是當月的待決費用，會在當月的發票產生時計費。 如果上個月的發票尚未產生，則上個月的費用也會列為待決。
 
 <!--     ![Screenshot that shows the Azure subscriptions list for MPA billing profile](./media/billing-mpa-understand-your-bill/mpa-billing-profile-subscriptions-list.png) -->
 

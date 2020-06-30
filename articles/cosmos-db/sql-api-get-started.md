@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78274019"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118809"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
@@ -44,7 +44,7 @@ ms.locfileid: "78274019"
 
 讓我們開始吧！
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -60,16 +60,16 @@ ms.locfileid: "78274019"
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>步驟 2：設定 Visual Studio 專案
 
-1. 開啟 Visual Studio，然後選取 [建立新專案]  。
-1. 在 [建立新專案]  中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  。
-1. 將您的專案命名為 *CosmosGettingStartedTutorial*，然後選取 [建立]  。
+1. 開啟 Visual Studio，然後選取 [建立新專案]。
+1. 在 [建立新專案] 中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
+1. 將您的專案命名為 *CosmosGettingStartedTutorial*，然後選取 [建立]。
 
-    ![設定您的專案](./media/sql-api-get-started/configure-cosmos-getting-started-2019.png)
+    :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="設定您的專案":::
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下 Visual Studio 解決方案底下的新主控台應用程式，然後選取 [管理 NuGet 套件]  。
-1. 在 [NuGet 套件管理員]  中，選取 [瀏覽]  並搜尋 *Microsoft.Azure.Cosmos*。 選擇 [Microsoft.Azure.Cosmos]  ，然後選取 [安裝]  。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 Visual Studio 解決方案底下的新主控台應用程式，然後選取 [管理 NuGet 套件]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]並搜尋 *Microsoft.Azure.Cosmos*。 選擇 [Microsoft.Azure.Cosmos]，然後選取 [安裝]。
 
-   ![安裝適用於 Azure Cosmos DB 用戶端 SDK 的 NuGet](./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png)
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="安裝適用於 Azure Cosmos DB 用戶端 SDK 的 NuGet":::
 
    「Azure Cosmos DB SQL API 用戶端程式庫」的套件識別碼是 [Microsoft Azure Cosmos DB 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) \(英文\)。
 
@@ -116,13 +116,13 @@ ms.locfileid: "78274019"
     ```
 
    > [!NOTE]
-   > 如果您熟悉舊版 .NET SDK，則可能已熟悉「集合」  和「文件」  等詞彙。 Azure Cosmos DB 支援多個 API 模型，因此 3.0+ 版的 .NET SDK 會使用「容器」  和「項目」  這些泛用詞彙。 「容器」  可以是集合、圖形或資料表。 「項目」  可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](databases-containers-items.md)。
+   > 如果您熟悉舊版 .NET SDK，則可能已熟悉「集合」和「文件」等詞彙。 Azure Cosmos DB 支援多個 API 模型，因此 3.0+ 版的 .NET SDK 會使用「容器」和「項目」這些泛用詞彙。 「容器」可以是集合、圖形或資料表。 「項目」可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](databases-containers-items.md)。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)。 尋找 Azure Cosmos DB 帳戶，然後選取 [金鑰]  。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。 尋找 Azure Cosmos DB 帳戶，然後選取 [金鑰]。
 
-   ![從 Azure 入口網站取得 Azure Cosmos DB 金鑰](./media/sql-api-get-started/cosmos-getting-started-portal-keys.png)
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="從 Azure 入口網站取得 Azure Cosmos DB 金鑰":::
 
-1. 在 *Program.cs* 中，以 [URI]  的值取代 `<your endpoint URL>`。 以 [主要金鑰]  的值取代 `<your primary key>`。
+1. 在 *Program.cs* 中，以 [URI] 的值取代 `<your endpoint URL>`。 以 [主要金鑰] 的值取代 `<your primary key>`。
 
 1. 在 **Main** 方法底下，新增名為 **GetStartedDemoAsync** 的新非同步工作，以將新的 `CosmosClient` 具現化。
 
@@ -307,9 +307,9 @@ ms.locfileid: "78274019"
 
 首先，我們來建立 `Family` 類別，以代表此範例中儲存在 Azure Cosmos DB 內的物件。 我們也會建立 `Family` 內使用的 `Parent`、`Child`、`Pet`、`Address` 子類別。 項目必須將 `Id` 屬性序列化為 JSON 中的 `id`。
 
-1. 選取 Ctrl+Shift+A 以開啟 [新增項目]  。 將新的類別 `Family.cs` 新增至您的專案。
+1. 選取 Ctrl+Shift+A 以開啟 [新增項目]。 將新的類別 `Family.cs` 新增至您的專案。
 
-    ![將新的 Family.cs 類別新增至專案的螢幕擷取畫面](./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png)
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="將新的 Family.cs 類別新增至專案的螢幕擷取畫面":::
 
 1. 將 `Family`、`Parent`、`Child`、`Pet` 和 `Address` 類別複製並貼到 `Family.cs` 中。
 
@@ -321,7 +321,7 @@ ms.locfileid: "78274019"
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
-    程式碼會先檢查，確認沒有使用相同識別碼的項目存在。 我們會插入兩個項目，一個給「Andersen 家族」  ，另一個給「Wakefield 家族」  。
+    程式碼會先檢查，確認沒有使用相同識別碼的項目存在。 我們會插入兩個項目，一個給「Andersen 家族」，另一個給「Wakefield 家族」。
 
 1. 在 `GetStartedDemoAsync` 方法中新增對 `AddItemsToContainerAsync` 的呼叫。
 
@@ -488,7 +488,7 @@ End of demo, press any key to exit.
 * [Azure Cosmos DB 帳戶][cosmos-db-create-account]。
 * 您可以在 GitHub 上找到 [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) 方案。
 
-若要在 Visual Studio 中還原 Azure Cosmos DB .NET SDK 的參考，請在 [方案總管]  中的解決方案上按一下滑鼠右鍵，然後選取 [還原 NuGet 套件]  。 接下來，在 *App.config* 檔案中，更新 `EndPointUri` 和 `PrimaryKey` 值，如[步驟 3：連線至 Azure Cosmos DB 帳戶](#Connect)所述。
+若要在 Visual Studio 中還原 Azure Cosmos DB .NET SDK 的參考，請在 [方案總管] 中的解決方案上按一下滑鼠右鍵，然後選取 [還原 NuGet 套件]。 接下來，在 *App.config* 檔案中，更新 `EndPointUri` 和 `PrimaryKey` 值，如[步驟 3：連線至 Azure Cosmos DB 帳戶](#Connect)所述。
 
 建置就這麼容易，繼續努力！
 

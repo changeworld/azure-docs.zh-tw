@@ -1,6 +1,6 @@
 ---
 title: '教學課程：使用 REST API 建立 Azure Data Factory 管線 '
-description: 在本教學課程中，您會使用 REST API 建立具有複製活動的 Azure Data Factory 管線，以將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。
+description: 在本教學課程中，您會使用 REST API 建立具有複製活動的 Azure Data Factory 管線，以將資料從 Azure Blob 儲存體複製到 Azure SQL Database。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119239"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248576"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教學課程：使用 REST API 建立 Azure Data Factory 管線來複製資料 
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "84119239"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-rest-api.md)。 
 
-在本文中，您會了解如何使用 REST API 建立資料處理站，其中有管線可將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。 如果您不熟悉 Azure Data Factory，請先詳閱 [Azure Data Factory 簡介](data-factory-introduction.md)一文，再進行本教學課程。   
+在本文中，您會了解如何使用 REST API 建立資料處理站，其中有管線可將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 如果您不熟悉 Azure Data Factory，請先詳閱 [Azure Data Factory 簡介](data-factory-introduction.md)一文，再進行本教學課程。   
 
 在本教學課程中，您可以建立包含一個活動的管線：複製活動。 複製活動會將資料從支援的資料存放區複製到支援的接收資料存放區。 如需作為來源和接收區支援的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 此活動是由全域可用的服務所提供，可以使用安全、可靠及可調整的方式，在各種不同的資料存放區之間複製資料。 如需複製活動的詳細資訊，請參閱[資料移動活動](data-factory-data-movement-activities.md)。
 
@@ -222,7 +222,7 @@ ms.locfileid: "84119239"
 
 | 屬性 | 描述 |
 |:--- |:--- |
-| type | type 屬性會設為 **AzureSqlTable**，因為資料已複製到 Azure SQL 資料庫中的資料表。 |
+| type | type 屬性會設為 **AzureSqlTable**，因為資料已複製到 Azure SQL Database 中的資料表。 |
 | linkedServiceName | 表示您稍早建立的 **AzureSqlLinkedService**。 |
 | tableName | 指定作為資料複製目的地的**資料表**。 | 
 | frequency/interval | frequency 會設為**Hour** 且 interval 為**1**，這表示會在管線開始和結束時間之間 (而非這些時間之前或之後) **每小時**產生輸出配量。  |
@@ -241,7 +241,7 @@ ms.locfileid: "84119239"
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
-        "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+        "description": "Push Regional Effectiveness Campaign data to Azure SQL Database",
         "type": "Copy",
         "inputs": [
           {
@@ -381,7 +381,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站。 此儲存體帳戶是您在其中建立容器並將資料上傳為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一部分的帳戶。   
 
-AzureSqlLinkedService 會將 Azure SQL 資料庫連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。  
+AzureSqlLinkedService 會將 Azure SQL Database 連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。  
 
 ### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 在此步驟中，您會將您的 Azure 儲存體帳戶連結到您的資料處理站。 在此區段中指定您 Azure 儲存體帳戶的名稱和金鑰。 如需用來定義 Azure 儲存體連結服務之 JSON 屬性的詳細資料，請參閱 [Azure 儲存體連結服務](data-factory-azure-blob-connector.md#azure-storage-linked-service)。  
@@ -403,7 +403,7 @@ AzureSqlLinkedService 會將 Azure SQL 資料庫連結至資料處理站。 從 
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>建立 Azure SQL 連結服務
-在此步驟中，您會將您的 Azure SQL 資料庫連結到您的 Data Factory。 在此區段中指定邏輯 SQL 伺服器名稱、資料庫名稱、使用者名稱和使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。
+在此步驟中，您會將 Azure SQL Database 連結到您的 Data Factory。 在此區段中指定邏輯 SQL 伺服器名稱、資料庫名稱、使用者名稱與使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。
 
 1. 將命令指派給名為 **cmd**的變數。 
    
@@ -422,11 +422,11 @@ AzureSqlLinkedService 會將 Azure SQL 資料庫連結至資料處理站。 從 
     ```
 
 ## <a name="create-datasets"></a>建立資料集
-在上一個步驟中，您已建立可將 Azure 儲存體帳戶和 Azure SQL 資料庫連結至資料處理站的連結服務。 在此步驟中，您會定義名為 AzureBlobInput 和 AzureSqlOutput 的兩個資料集，它們分別代表 AzureStorageLinkedService 和 AzureSqlLinkedService 所參照資料存放區中儲存的輸入和輸出資料。
+在上一個步驟中，您已建立可將 Azure 儲存體帳戶和 Azure SQL Database 連結至資料處理站的連結服務。 在此步驟中，您會定義名為 AzureBlobInput 和 AzureSqlOutput 的兩個資料集，它們分別代表 AzureStorageLinkedService 和 AzureSqlLinkedService 所參照資料存放區中儲存的輸入和輸出資料。
 
 Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連線到 Azure 儲存體帳戶的連接字串。 而且，輸入 Blob 資料集 (AzureBlobInput) 會指定包含輸入資料的容器和資料夾。  
 
-同樣地，Azure SQL Database 連結服務會指定 Data Factory 在執行階段用來連線到 Azure SQL 資料庫的連接字串。 而且，輸出 SQL 資料表資料集 (OututDataset) 會指定資料庫中作為 Blob 儲存體資料複製目的地的資料表。 
+同樣地，Azure SQL Database 連結服務會指定 Data Factory 在執行階段用來連線到 Azure SQL Database 的連接字串。 而且，輸出 SQL 資料表資料集 (OututDataset) 會指定資料庫中作為 Blob 儲存體資料複製目的地的資料表。 
 
 ### <a name="create-input-dataset"></a>建立輸入資料集
 在此步驟中，您將在 AzureStorageLinkedService 連結服務所代表的 Azure 儲存體中，建立名為 AzureBlobInput 的資料集，該資料集會指向 Blob 容器 (adftutorial) 根資料夾中的 Blob 檔案 (emp.txt)。 如果您未指定 (或跳過) fileName 的值，則輸入資料夾中所有 Blob 資料都會複製到目的地。 在本教學課程中，您可指定 fileName 的值。 
@@ -448,7 +448,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
     ```
 
 ### <a name="create-output-dataset"></a>建立輸出資料集
-Azure SQL Database 連結服務會指定 Data Factory 在執行階段用來連線到 Azure SQL 資料庫的連接字串。 您在此步驟中建立的輸出 SQL 資料表資料集 (OututDataset) 會指定資料庫中作為 Blob 儲存體資料複製目的地的資料表。
+Azure SQL Database 連結服務會指定 Data Factory 在執行階段用來連線到 Azure SQL Database 的連接字串。 您在此步驟中建立的輸出 SQL 資料表資料集 (OututDataset) 會指定資料庫中作為 Blob 儲存體資料複製目的地的資料表。
 
 1. 將命令指派給名為 **cmd**的變數。
 
@@ -487,7 +487,7 @@ Azure SQL Database 連結服務會指定 Data Factory 在執行階段用來連�
     Write-Host $results
     ```
 
-**恭喜！** 您已成功建立 Azure Data Factory，其中有管線可將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。
+**恭喜！** 您已成功建立 Azure Data Factory，其中有管線可將資料從 Azure Blob 儲存體複製到 Azure SQL Database。
 
 ## <a name="monitor-pipeline"></a>監視管線
 在此步驟中，您會使用 Data Factory REST API 來監視管線所產生的配量。
@@ -515,22 +515,22 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒] 狀態或 [失敗] 狀態。 當配量處於 [就緒] 狀態時，請檢查您的 Azure SQL 資料庫的 **emp** 資料表中的輸出資料。 
+執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒] 狀態或 [失敗] 狀態。 當配量處於 [就緒] 狀態時，請檢查 Azure SQL Database 的 **emp** 資料表中的輸出資料。 
 
-對於每個配量，來源檔案中有兩個資料列會複製到 Azure SQL 資料庫中的 emp 資料表。 因此，成功處理所有配量 (處於 [就緒] 狀態) 後，您會在 emp 資料表中看到 24 筆新記錄。 
+對於每個配量，來源檔案中有兩個資料列會複製到 Azure SQL Database 中的 emp 資料表。 因此，成功處理所有配量 (處於 [就緒] 狀態) 後，您會在 emp 資料表中看到 24 筆新記錄。 
 
 ## <a name="summary"></a>摘要
-在本教學課程中，您已使用 REST API 建立要將資料從 Azure Blob 複製到 Azure SQL 資料庫的 Azure Data Factory。 以下是您在本教學課程中執行的高階步驟：  
+在本教學課程中，您已使用 REST API 建立要將資料從 Azure Blob 複製到 Azure SQL Database 的 Azure Data Factory。 以下是您在本教學課程中執行的高階步驟：  
 
 1. 建立 Azure **Data Factory**。
 2. 建立 **連結服務**：
    1. Azure 儲存體連結服務可連結保留輸入資料的 Azure 儲存體帳戶。     
-   2. Azure SQL 連結服務可連結保留輸出資料的 Azure SQL 資料庫。 
+   2. Azure SQL 連結服務可連結保留輸出資料的資料庫。 
 3. 建立可描述管線輸入資料和輸出資料的 **資料集**。
 4. 建立具有複製活動的 **管線** ，以 BlobSource 做為來源並以 SqlSink 做為接收器。 
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL 資料庫作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
+在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL Database 作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

@@ -2,21 +2,23 @@
 title: 快速入門：適用於 .NET 的 QnA Maker 用戶端程式庫
 description: 本快速入門示範如何開始使用適用於 .NET 的 QnA Maker 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 ms.topic: quickstart
-ms.date: 06/11/2020
-ms.openlocfilehash: e487783e506d16006231b07b9a86f93864f51903
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.date: 06/18/2020
+ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765129"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114510"
 ---
 使用適用於 .NET 的 QnA Maker 用戶端程式庫來：
 
  * 建立知識庫
  * 更新知識庫
- * 發佈知識庫，等待發佈完成
+ * 發佈知識庫
  * 取得預測執行階段端點金鑰
+ * 等候長時間執行的工作
  * 下載知識庫
+ * 取得答案
  * 刪除知識庫
 
 [參考文件](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [C# 範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart)
@@ -27,16 +29,15 @@ ms.locfileid: "84765129"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中建立 [QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以取得您的撰寫金鑰和端點。 在其部署後，選取 [前往資源]。
-    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 QnA Maker API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中建立 [QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以取得您的撰寫金鑰和資源名稱。 在其部署後，選取 [前往資源]。
+    * 您需要來自所建立資源的金鑰和資源名稱，以將應用程式連線至 QnA Maker API。 您稍後會在快速入門中將金鑰和資源名稱貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 
-
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-使用 Visual Studio 建立 .NET Core 應用程式，並以滑鼠右鍵按一下 [方案總管] 中的解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `(package-name)`。 選取版本 `(version)`，然後 **安裝**。
+使用 Visual Studio 建立 .NET Core 應用程式，並以滑鼠右鍵按一下 [方案總管] 中的解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker`。 選取版本 `2.0.0-preview.1`，然後 **安裝**。
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -65,7 +66,7 @@ Build succeeded.
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 QnA Maker 用戶端程式庫：
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 1.1.0
+dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 2.0.0-preview.1
 ```
 
 
@@ -80,12 +81,21 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 在應用程式的 `Main` 方法中新增變數和程式碼 (如下列各節所示)，以使用本快速入門中的一般工作。
 
+> [!IMPORTANT]
+> 移至 Azure 入口網站，並尋找在必要條件中建立用於 QnA Maker 資源的金鑰和端點。 您可以透過資源的 [金鑰和端點] 頁面，在 [資源管理] 下找到這些項目。
+> 您必須要有完整的金鑰以建立您的知識庫。 您只需要來自端點的資源名稱。 格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 可提供安全的金鑰儲存。
+
+[!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
+
+
 ## <a name="object-models"></a>物件模型
 
 QnA Maker 使用兩種不同的物件模型：
 * **[QnAMakerClient](#qnamakerclient-object-model)** 是用來建立、管理、發佈和下載知識庫的物件。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 是可讓您透過 GenerateAnswer API 查詢知識庫，並使用定型 API 傳送新的建議問題 (作為[主動式學習](../concepts/active-learning-suggestions.md)的一部分) 的物件。
 
+[!INCLUDE [Get KBinformation](./quickstart-sdk-cognitive-model.md)]
 
 ### <a name="qnamakerclient-object-model"></a>QnAMakerClient 物件模型
 
@@ -98,6 +108,8 @@ QnA Maker 使用兩種不同的物件模型：
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient 物件模型
 
 預測 QnA Maker 用戶端是一種 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 物件，會使用 Microsoft.Rest.ServiceClientCredentials 向 Azure 進行驗證，其中包含您的預測執行階段金鑰，這是在發佈知識庫後由製作用戶端呼叫 `client.EndpointKeys.GetKeys` 傳回的金鑰。
+
+使用 [GenerateAnswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) 方法從查詢執行階段取得答案。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -114,33 +126,11 @@ QnA Maker 使用兩種不同的物件模型：
 * [驗證查詢執行階段用戶端](#authenticate-the-runtime-for-generating-an-answer)
 * [從知識庫產生答案](#generate-an-answer-from-the-knowledge-base)
 
-## <a name="using-this-example-knowledge-base"></a>使用此範例知識庫
 
-本快速入門中的知識庫起始於 2 個對話式 QnA 配對 (這是為了簡化範例，且在更新方法中有高度可預測的識別碼可供使用)，且會將問題的後續提示與新的配對產生關聯。 這是本快速入門中的規劃作業，會依特定順序實作。
-
-如果您日後要依據相依於現有 QnA 配對的後續提示來開發知識庫，您可以選擇：
-* 針對較大的知識庫，在支援自動化的文字編輯器或 TSV 工具中管理知識庫，然後立即將知識庫完全取代為更新。
-* 對於較小的知識庫，則完全在 QnA Maker 入口網站中管理後續提示。
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>驗證用戶端以撰寫知識庫
 
-在 **Main** 方法中，為資源的 Azure 金鑰和資源名稱建立變數。 製作和預測 URL 都會使用資源名稱作為子網域。
-
-[!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
-
-
-> [!IMPORTANT]
-> 移至 Azure 入口網站，並尋找在必要條件中建立用於 QnA Maker 資源的金鑰和端點。 您可以透過資源的 [金鑰和端點] 頁面，在 [資源管理] 下找到這些項目。
-> 您必須要有完整的金鑰以建立您的知識庫。 您只需要來自端點的資源名稱。 其格式為 ``。
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 可提供安全的金鑰儲存。
-
-接下來，使用金鑰建立 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) 物件，並使用該物件與您的端點來建立 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) 物件。
-
-|變動|範例|
-|--|--|
-|`authoringKey`|金鑰是 32 字元字串，且可在 Azure 入口網站中從 [金鑰和端點] 頁面的 [QnA Maker 資源] 上取得。 此金鑰與預測執行階段金鑰不同。|
-|`resourceName`| 您的資源名稱會採用 `https://{resourceName}.cognitiveservices.azure.com` 格式。 這與用來查詢預測執行階段的 URL 不同。|
-||||
+使用您的金鑰將用戶端物件具現化，並將其與您的資源搭配使用以建構端點，繼而使用您的端點和金鑰建立 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet)。 建立 [ServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.rest.serviceclientcredentials?view=azure-dotnet) 物件。
 
 [!code-csharp[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=AuthorizationAuthor)]
 
@@ -150,14 +140,19 @@ QnA Maker 使用兩種不同的物件模型：
 
 * 針對**編輯內容**，請使用 [QnADTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadto?view=azure-dotnet) 物件。
     * 若要使用中繼資料和後續提示，請使用編輯內容，因為這項資料會在個別的 QnA 配對層級上新增。
-* 針對**檔案**，請使用 [FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) 物件。
-* 針對 **URL**，請使用字串清單。
+* 針對**檔案**，請使用 [FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) 物件。 FileDTO 包含檔案名稱，以及用來連接檔案的公用 URL。
+* 針對 **URL**，請使用字串清單來代表公開可用的 URL。
+
+建立步驟也包含知識庫的屬性：
+* `defaultAnswerUsedForExtraction` - 找不到答案時會傳回的內容
+* `enableHierarchicalExtraction` - 自動在已擷取的 QnA 配對之間建立提示關聯性
+* `language` - 會在建立資源的第一個知識庫時，設定要在 Azure 搜尋服務索引中使用的語言。
 
 請呼叫 [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet) 方法，然後將傳回的作業識別碼傳遞至 [MonitorOperation](#get-status-of-an-operation) 方法以輪詢狀態。
 
 下列程式碼的最後一行會傳回來自 MonitorOperation 回應的知識庫識別碼。
 
-[!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=CreateKBMethod&highlight=37-38)]
+[!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=CreateKBMethod&highlight=31)]
 
 務必包含上述程式碼中參考的 [`MonitorOperation`](#get-status-of-an-operation) 函式，才能成功建立知識庫。
 
@@ -171,15 +166,17 @@ QnA Maker 使用兩種不同的物件模型：
 
 ## <a name="download-a-knowledge-base"></a>下載知識庫
 
-使用 [DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) 方法將資料庫下載為 [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) 的清單。 此做法不等同於 QnA Maker 入口網站從 [設定] 頁面進行的匯出作業，原因是此方法的結果並非 TSV 檔案。
+使用 [DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) 方法將資料庫下載為 [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) 的清單。 此做法不等同於 QnA Maker 入口網站從 [設定] 頁面進行的匯出作業，原因是此方法的結果並非檔案。
 
-[!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DownloadKB&highlight=3,4)]
+[!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DownloadKB&highlight=3)]
 
 ## <a name="publish-a-knowledge-base"></a>發佈知識庫
 
-使用 [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) 方法來發佈知識庫。 這會採用目前已儲存且已定型的模型 (可透過知識庫識別碼加以參考)，並在端點加以發佈。
+使用 [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) 方法來發佈知識庫。 這會採用目前已儲存且已定型的模型 (可透過知識庫識別碼加以參考)，並在端點加以發佈。 若要查詢您的知識庫，這將是必要步驟。
 
 [!code-csharp[Publish a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=PublishKB&highlight=3)]
+
+
 
 ## <a name="get-query-runtime-key"></a>取得查詢執行階段金鑰
 
@@ -191,13 +188,17 @@ QnA Maker 使用兩種不同的物件模型：
 
 [!code-csharp[Get query runtime key](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=GetQueryEndpointKey&highlight=3)]
 
+必須要有執行階段金鑰才能查詢您的知識庫。
+
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>驗證執行階段以產生解答
 
 建立 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 來查詢知識庫，以產生解答，或從主動式學習進行訓練。
 
 [!code-csharp[Authenticate the runtime](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=AuthorizationQuery)]
 
-使用 QnAMakerRuntimeClient 從知識取得解答，或將新的建議問題傳送至[主動式學習](../concepts/active-learning-suggestions.md)的知識庫。
+使用 QnAMakerRuntimeClient 進行下列動作：
+* 從知識庫取得答案
+* 將新的建議問題傳送至[主動式學習](../concepts/active-learning-suggestions.md)的知識庫。
 
 ## <a name="generate-an-answer-from-the-knowledge-base"></a>從知識庫產生答案
 
@@ -225,10 +226,8 @@ QnA Maker 使用兩種不同的物件模型：
 
 使用 `dotnet run` 命令，從您的應用程式目錄執行應用程式。
 
-本文中的所有程式碼片段都是[可用](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)的，並可以單一檔案的形式執行。
-
 ```dotnetcli
 dotnet run
 ```
 
-* 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart) 上找到。
+此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart) 上找到。

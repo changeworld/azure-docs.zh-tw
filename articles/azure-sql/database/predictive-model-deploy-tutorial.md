@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023973"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253812"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署預測模型
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在這個三部分教學課程的第三部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署以 R 開發的預測模型。
+在這個三部分教學課程的第三部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 Azure SQL Database 內的資料庫中部署以 R 開發的預測模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-您將使用內嵌的 R 指令碼建立預存程序，以使用模型進行預測。 您的模型執行於 Azure SQL 資料庫中，因此能夠根據儲存在資料庫中的資料輕易定型。
+您將使用內嵌的 R 指令碼建立預存程序，以使用模型進行預測。 因為您的模型是在資料庫中執行，所以可以輕鬆地針對儲存在資料庫中的資料進行定型。
 
 在本文中，藉由使用您在第一和第二部分中所開發的 R 指令碼，您會了解如何：
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-您已在 Azure SQL 資料庫中成功建立、定型和部署模型。 接著您在預存程序中使用該模型根據新資料來預測值。
+您已在 Azure SQL Database 內的資料庫中成功建立、定型和部署模型。 接著您在預存程序中使用該模型根據新資料來預測值。
 
 ## <a name="clean-up-resources"></a>清除資源
 

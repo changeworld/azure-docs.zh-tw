@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324026"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117993"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本來建立 Azure Cosmos DB 和容器
 
@@ -53,11 +53,11 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Azure Cosmos 帳戶、資料庫和容器。
 
-   [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 選取或輸入下列值。
 
-   ![Resource Manager 範本、Azure Cosmos DB 整合、部署入口網站](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Resource Manager 範本、Azure Cosmos DB 整合、部署入口網站":::
 
     除非有指定，否則請使用預設值來建立 Azure Cosmos 資源。
 
@@ -78,7 +78,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 3. 選取 [購買]。 成功部署 Azure Cosmos 帳戶之後，您會收到通知：
 
-   ![Resource Manager 範本、Cosmos DB 整合、部署入口網站通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Resource Manager 範本、Cosmos DB 整合、部署入口網站通知":::
 
 Azure 入口網站用於部署範本。 除了 Azure 入口網站以外，您也可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您打算繼續進行後續的教學課程，您可以讓這些資源留在原處。
+如果您打算繼續進行後續的快速入門和教學課程，您可以讓這些資源留在原處。
 如果不再需要，請刪除資源群組，這會刪除 Azure Cosmos 帳戶和相關資源。 若要使用 Azure CLI 或 Azure PowerShell 刪除資源群組：
 
 # <a name="cli"></a>[CLI](#tab/CLI)

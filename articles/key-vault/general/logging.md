@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b6589d2045d9bb7bdfb38f9872acd8366481106
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790464"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211386"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -33,12 +33,12 @@ ms.locfileid: "84790464"
 > [!NOTE]
 > 本教學課程不會指示如何建立金鑰保存庫、金鑰或密碼。 如需此資訊，請參閱[什麼是 Azure Key Vault？](overview.md))。 或者，如需跨平台 Azure CLI 的指示，請參閱[這個對等的教學課程](manage-with-cli2.md))。
 >
-> 本文提供適用於更新診斷記錄的 Azure PowerShell 指示。 您也可以使用 Azure 監視器，在Azure 入口網站的 [診斷記錄]  區段中更新診斷記錄。 
+> 本文提供適用於更新診斷記錄的 Azure PowerShell 指示。 您也可以使用 Azure 監視器，在Azure 入口網站的 [診斷記錄] 區段中更新診斷記錄。 
 >
 
 如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md))。 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，必須具備下列項目：
 
@@ -95,7 +95,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>啟用記錄
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>使用 Azure Powershell 啟用記錄
 
 為了啟用 Key Vault 記錄，我們將使用 **Set-AzDiagnosticSetting** Cmdlet，並搭配針對新儲存體帳戶和金鑰保存庫所建立的變數。 我們也會將 **-Enabled** 旗標設定為 **$true**，並將類別設定為 **AuditEvent** (Key Vault 記錄唯一適用的類別)：
 
@@ -131,6 +131,25 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * 建立、修改或刪除這些金鑰或祕密。
   * 簽署、驗證、加密、解密、包裝和解除包裝金鑰、取得秘密，以及列出金鑰和祕密 (及其版本)。
 * 產生 401 回應的未經驗證要求。 例如，沒有持有人權杖的要求、格式不正確或已過期的要求，或具有無效權杖的要求。  
+
+## <a name="enable-logging-using-azure-cli"></a>使用 Azure CLI 啟用記錄
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>存取記錄
 
@@ -213,6 +232,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 * 若要查詢金鑰保存庫資源的診斷設定狀態：`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * 若要停用金鑰保存庫資源記錄： `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
+
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>解譯金鑰保存庫記錄
 

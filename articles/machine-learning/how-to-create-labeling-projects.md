@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629612"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211999"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -176,7 +176,10 @@ Azure Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列
 
 ## <a name="initialize-the-labeling-project"></a>初始化加上標籤專案
 
-在標籤專案初始化後，專案的某些層面將是不可變的。 您無法變更工作類型或資料集。 您*可以*修改標籤，以及工作描述的 URL。 在建立專案之前，請仔細檢閱設定。 提交專案之後，您就會回到 [資料標記] 首頁，此處會將專案顯示為 [正在初始化]。 此頁面不會自動重新整理。 因此，在暫停之後，請手動重新整理頁面，以確認專案的狀態是否為 [已建立]。
+在標籤專案初始化後，專案的某些層面將是不可變的。 您無法變更工作類型或資料集。 您*可以*修改標籤，以及工作描述的 URL。 在建立專案之前，請仔細檢閱設定。 提交專案之後，您就會回到 [資料標記] 首頁，此處會將專案顯示為 [正在初始化]。
+
+> [!NOTE]
+> 此頁面可能不會自動重新整理。 因此，在暫停之後，請手動重新整理頁面，以確認專案的狀態是否為 [已建立]。
 
 ## <a name="run-and-monitor-the-project"></a>執行和監視專案
 

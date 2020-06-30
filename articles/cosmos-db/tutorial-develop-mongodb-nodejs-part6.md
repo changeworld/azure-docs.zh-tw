@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184770"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118962"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 將 CRUD 函式新增至應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "82184770"
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始本教學課程的這個部分之前，請確定您已完成本教學課程[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)中的步驟。
 
@@ -36,11 +36,11 @@ ms.locfileid: "82184770"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>將 Post 函式新增至 Hero 服務
 
-1. 在 Visual Studio Code 中，按 [分割編輯器]  按鈕![Visual Studio 中的分割編輯器按鈕](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，並排開啟 **routes.js** 和 **hero.service.js**。
+1. 在 Visual Studio Code 中，按 [分割編輯器] 按鈕![Visual Studio 中的分割編輯器按鈕](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，並排開啟 **routes.js** 和 **hero.service.js**。
 
     您會看到 routes.js 第 7 行正在呼叫 **hero.service.js** 中第 5 行上的 `getHeroes` 函式。  我們需要針對 post、put 和 delete 函式建立此相同配對。 
 
-    ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js":::
     
     讓我們開始撰寫 Hero 服務的程式碼。 
 
@@ -84,15 +84,15 @@ ms.locfileid: "82184770"
     });
     ```
 
-5. 執行應用程式，檢查一切是否運作正常。 在 Visual Studio Code 中儲存您所有的變更，選取左側的 [偵錯]  按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然後選取 [開始偵錯]  按鈕 ![Visual Studio Code 中的開始偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 執行應用程式，檢查一切是否運作正常。 在 Visual Studio Code 中儲存您所有的變更，選取左側的 [偵錯] 按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然後選取 [開始偵錯] 按鈕 ![Visual Studio Code 中的開始偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
 6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 `http://localhost:3000` 以監看透過網路撥打的電話。
 
-    ![Chrome 中的 [網路] 索引標籤會顯示網路活動](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示網路活動":::
 
-7. 選取 [新增主圖]  按鈕以新增主圖。 輸入識別碼 "999"、名稱 "Fred" 和招呼語 "Hello"，然後選取 [儲存]  。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
+7. 選取 [新增主圖] 按鈕以新增主圖。 輸入識別碼 "999"、名稱 "Fred" 和招呼語 "Hello"，然後選取 [儲存]。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
 
-    ![Chrome 中的 [網路] 索引標籤會顯示 Get 和 Post 函式的網路活動](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示 Get 和 Post 函式的網路活動":::
 
     現在返回，並將 Post 和 Delete 函式新增至應用程式。
 
@@ -169,19 +169,19 @@ ms.locfileid: "82184770"
     };
     ```
 
-4. 我們現已更新程式碼，請選取 Visual Studio Code 中的 [重新啟動]  按鈕 ![Visual Studio Code 中的重新啟動按鈕](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 我們現已更新程式碼，請選取 Visual Studio Code 中的 [重新啟動] 按鈕 ![Visual Studio Code 中的重新啟動按鈕](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
 
-5. 重新整理網際網路瀏覽器中的頁面，然後選取 [新增主圖]  按鈕。 新增識別碼為 "9"、名稱為 "Starlord" 的 Hero，且招呼語為 "Hi"。 選取 [儲存]  按鈕以儲存新的主圖。
+5. 重新整理網際網路瀏覽器中的頁面，然後選取 [新增主圖] 按鈕。 新增識別碼為 "9"、名稱為 "Starlord" 的 Hero，且招呼語為 "Hi"。 選取 [儲存] 按鈕以儲存新的主圖。
 
-6. 現在，選取 **Starlord** 主圖，並將招呼語從 "Hi" 變更為 "Bye"，然後選取 [儲存]  按鈕。 
+6. 現在，選取 **Starlord** 主圖，並將招呼語從 "Hi" 變更為 "Bye"，然後選取 [儲存] 按鈕。 
 
     您現在可以在 [網路] 索引標籤中選取識別碼來顯示承載。 您可以在承載中看到招呼語現在已設定為 "Bye"。
 
-    ![顯示承載的 Hero 應用程式和網路索引標籤](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="顯示承載的 Hero 應用程式和網路索引標籤"::: 
 
     您也可以在 UI 中刪除其中一個 Hero，並查看完成刪除作業所需的時間。 試著針對名為 "Fred" 的主圖選取 [刪除] 按鈕。
 
-    ![顯示完成函式所需時間的 Hero 應用程式和網路索引標籤](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="顯示完成函式所需時間的 Hero 應用程式和網路索引標籤"::: 
 
     如果您重新整理頁面，[網路] 索引標籤會顯示取得 Hero 所需的時間。 雖然時間迅速，但大部分取決於您的資料所在的地理位置，以及在接近使用者的區域中異動複寫資料的能力。 您可以在接下來 (即將發行) 的教學課程中，進一步了解異地複寫。
 

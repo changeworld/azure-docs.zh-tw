@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560494"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253659"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure Data Factory 管線中為活動建立分支並進行鏈結
 
@@ -44,7 +44,7 @@ ms.locfileid: "84560494"
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為**來源**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。
-* **Azure SQL Database**。 您會使用資料庫作為**接收**資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
+* **Azure SQL Database**。 您會使用資料庫作為**接收**資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
 
 ### <a name="create-blob-table"></a>建立 Blob 資料表
 
@@ -206,6 +206,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 13. 切換至 [管線] 索引標籤 (或) 按一下樹狀檢視中的 [管線]。 確認已為 [來源資料集] 選取 [SourceBlobDataset]。
 
     ![來源資料集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. 在 [屬性] 視窗中，切換至 [接收] 索引標籤，然後為 [接收資料集] 按一下 [+ 新增]。 您在此步驟中為複製活動建立的接收資料集與您建立來源資料集的方式類似。
 
     ![新增接收資料集按鈕](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

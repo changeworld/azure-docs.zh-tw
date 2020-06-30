@@ -1,6 +1,6 @@
 ---
-title: 教學課程：建立第一個 ML 實驗
-titleSuffix: Azure Machine Learning
+title: 教學課程：在 Jupyter 筆記本中進行實驗 (Python)
+titleSuffix: Machine Learning - Azure
 description: 在本教學課程中，您會開始使用在 Jupyter 筆記本中執行的 Azure Machine Learning Python SDK。  在第一部分中，您會建立一個可在其中管理實驗和 ML 模型的工作區。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c0df2459b09eca472c833be2865232c0247210dd
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558381"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106611"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,15 +60,15 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 選取訂用帳戶與您建立的工作區。
 
-1. 選取左側的 [筆記本]  。
+1. 選取左側的 [筆記本]。
 
-1. 選取頂端的 [範例]  索引標籤。
+1. 選取頂端的 [範例] 索引標籤。
 
 1. 開啟 **Python** 資料夾。
 
 1. 開啟其上有版本號碼的資料夾。  此號碼代表 Python SDK 的目前版本。
 
-1. 選取 **tutorials** 資料夾右側的 **"..."** ，然後選取 [複製]  。
+1. 選取 **tutorials** 資料夾右側的 **"..."** ，然後選取 [複製]。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="複製教學課程資料夾":::
 
@@ -76,19 +76,19 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a>開啟複製的筆記本
 
-1. 在 [使用者檔案]  區段中開啟剛才關閉的 **tutorials** 資料夾。
+1. 在 [使用者檔案] 區段中開啟剛才關閉的 **tutorials** 資料夾。
 
     > [!IMPORTANT]
-    > 您可以查看 **samples** 資料夾中的 Notebook，但無法從該處執行 Notebook。  若要執行 Notebook，請務必在 [使用者檔案]  區段中開啟複製的 Notebook 版本。
+    > 您可以查看 **samples** 資料夾中的 Notebook，但無法從該處執行 Notebook。  若要執行 Notebook，請務必在 [使用者檔案] 區段中開啟複製的 Notebook 版本。
     
-1. 在 tutorials/create-first-ml-experiment  資料夾中選取 tutorial-1st-experiment-sdk-train.ipynb  檔案。
+1. 在 tutorials/create-first-ml-experiment 資料夾中選取 tutorial-1st-experiment-sdk-train.ipynb 檔案。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="開啟教學課程資料夾":::
 
 
 1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些 VM 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。 
 
-1. 如果找不到任何 VM，請選取 [+ 新增]  以建立計算執行個體 VM。 
+1. 如果找不到任何 VM，請選取 [+ 新增] 以建立計算執行個體 VM。 
 
     1. 當您建立 VM 時，請遵循下列規則：  
         + 名稱是必要的，而且不可以空白。
@@ -100,11 +100,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
     1.  從可用的選項中選取虛擬機器大小。
 
-    1. 然後選取 [建立]  。 設定 VM 大約需要 5 分鐘的時間。
+    1. 然後選取 [建立]。 設定 VM 大約需要 5 分鐘的時間。
 
-1. VM 可供使用後，會顯示在頂端工具列中。  您現在可以使用工具列中的 [全部執行]  來執行 Notebook，或在 Notebook 的程式碼資料格中使用 **Shift+Enter** 來執行。
+1. VM 可供使用後，會顯示在頂端工具列中。  您現在可以使用工具列中的 [全部執行] 來執行 Notebook，或在 Notebook 的程式碼資料格中使用 **Shift+Enter** 來執行。
 
-如果您有自訂小工具，或是您偏好使用 Jupyter/JupyterLab，請選取最右側的 [Jupyter]  下拉式清單，然後選取 [Jupyter]  或 [JupyterLab]  。 新的瀏覽器視窗隨即開啟。
+如果您有自訂小工具，或是您偏好使用 Jupyter/JupyterLab，請選取最右側的 [Jupyter] 下拉式清單，然後選取 [Jupyter] 或 [JupyterLab]。 新的瀏覽器視窗隨即開啟。
 
 ## <a name="next-steps"></a>後續步驟
 

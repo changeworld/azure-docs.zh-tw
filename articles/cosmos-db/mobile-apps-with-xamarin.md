@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fbcbf1be29031596201774ae5ebb40cb1a3b89a2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985553"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113444"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教學課程：使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "80985553"
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>適用於行動應用程式的 Azure Cosmos DB 功能
 Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
-![適用於行動應用程式的 Azure Cosmos DB 功能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="適用於行動應用程式的 Azure Cosmos DB 功能":::
 
 * 豐富的無結構描述資料查詢。 Azure Cosmos DB 會將資料以無結構描述 JSON 文件的形式儲存在異質集合中。 它提供[豐富且快速的查詢](how-to-sql-query.md)，不需要擔心結構描述或索引。
 * 快速的輸送量。 只需要幾毫秒就能使用 Azure Cosmos DB 讀取和寫入文件。 開發人員可以指定他們需要的輸送量，Azure Cosmos DB 則以 99.99% 可用性的 SLA 加以實現，適用於一致性很寬鬆的所有單一區域帳戶和所有多重區域帳戶，而所有多重區域資料庫帳戶則有 99.999% 的讀取可用性。
@@ -45,9 +45,9 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 下列教學課程示範如何使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式。 您可以在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到本教學課程的完整原始程式碼。
 
 ### <a name="get-started"></a>開始使用
-您可以輕鬆地開始使用 Azure Cosmos DB。 移至 Azure 入口網站，然後建立新的 Azure Cosmos DB 帳戶。 按一下 [快速入門]  索引標籤。下載已連接至您 Azure Cosmos DB 帳戶的 Xamarin 表單待辦事項清單範例。 
+您可以輕鬆地開始使用 Azure Cosmos DB。 移至 Azure 入口網站，然後建立新的 Azure Cosmos DB 帳戶。 按一下 [快速入門] 索引標籤。下載已連接至您 Azure Cosmos DB 帳戶的 Xamarin 表單待辦事項清單範例。 
 
-![適用於行動應用程式的 Azure Cosmos DB 快速入門](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="適用於行動應用程式的 Azure Cosmos DB 快速入門":::
 
 或者，如果您有現有的 Xamarin 應用程式，您可以新增 [Azure Cosmos DB NuGet 套件](sql-api-sdk-dotnet-core.md)。 Azure Cosmos DB 支援 Xamarin.IOS、Xamarin.Android 和 Xamarin Forms 共用程式庫。
 
@@ -85,19 +85,19 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
 您可以在 [GitHub 上的資源權杖訊息代理程式](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)中找到此模式的完整程式碼範例。 下圖可說明解決方案︰
 
-![Azure Cosmos DB 使用者和權限訊息代理程式](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure Cosmos DB 使用者和權限訊息代理程式" border="false":::
 
 如果您想讓兩位使用者存取同一份待辦事項清單，您可以在資源權杖訊息代理程式的存取權杖中新增額外的權限。
 
 ### <a name="scale-on-demand"></a>依需求進行調整
-Azure Cosmos DB 是受控資料庫即服務。 隨著使用者人數成長，您不必為佈建 VM 或增加核心而煩惱。 您只需告訴 Azure Cosmos DB 您的應用程式每秒需要多少作業數 (輸送量)。 您可以透過入口網站的 [調整]  索引標籤，使用稱為每秒要求單位數 (RU) 的量值來指定輸送量。 例如，對 1-KB 文件進行的讀取作業需要 1 RU。 您也可以為 [輸送量]  計量新增警示來監視流量成長，並以設計程式方式在引發警示時變更輸送量。
+Azure Cosmos DB 是受控資料庫即服務。 隨著使用者人數成長，您不必為佈建 VM 或增加核心而煩惱。 您只需告訴 Azure Cosmos DB 您的應用程式每秒需要多少作業數 (輸送量)。 您可以透過入口網站的 [調整] 索引標籤，使用稱為每秒要求單位數 (RU) 的量值來指定輸送量。 例如，對 1-KB 文件進行的讀取作業需要 1 RU。 您也可以為 [輸送量] 計量新增警示來監視流量成長，並以設計程式方式在引發警示時變更輸送量。
 
-![Azure Cosmos DB 依需求調整輸送量](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Azure Cosmos DB 依需求調整輸送量":::
 
 ### <a name="go-planet-scale"></a>進入全球級別
 隨著您的應用程式日益受到歡迎，您可能會吸引全球各地的使用者。 或者，您或許想要針對無法預見的事件做準備。 移至 Azure 入口網站，然後開啟您的 Azure Cosmos DB 帳戶。 按一下地圖，讓您的資料持續複寫到世界各地任意數目的區域。 這項功能可讓您的使用者隨時隨地使用您的資料。 您也可以新增容錯移轉原則來因應偶發狀況。
 
-![跨地理區域的 Azure Cosmos DB 調整](media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="跨地理區域的 Azure Cosmos DB 調整" border="false":::
 
 恭喜！ 您已完成解決方案，並使用 Xamarin 和 Azure Cosmos DB 建置了行動應用程式。 請遵循類似的步驟，使用 Azure Cosmos DB JavaScript SDK 來建置 Cordova 應用程式，以及使用 Azure Cosmos DB REST API 來建置原生 iOS/Android 應用程式。
 

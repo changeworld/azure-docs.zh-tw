@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: fb0e08c9d85f4472a2fa13001e71edd12149d430
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858725"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114277"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "82858725"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在開始本教學課程之前，請完成[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)的步驟。
 
@@ -126,7 +126,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 ## <a name="create-a-hero-model"></a>建立 Hero 模型
 
-接下來，您需要定義模型檔案，以定義要儲存在 Azure Cosmos DB 中的資料結構描述。 使用下列步驟來建立「Hero 模型」  ，該模型可定義資料的結構描述：
+接下來，您需要定義模型檔案，以定義要儲存在 Azure Cosmos DB 中的資料結構描述。 使用下列步驟來建立「Hero 模型」，該模型可定義資料的結構描述：
 
 1. 在 [總管] 窗格中，於 **server** 資料夾之下建立名為 **hero.model.js** 的檔案。
 
@@ -161,7 +161,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 ## <a name="create-a-hero-service"></a>建立 Hero 服務
 
-建立 Hero 模型之後，您必須定義可讀取資料的服務，並執行 list、create、delete 和 update 作業。 使用下列步驟來建立「Hero 服務」  ，該服務可查詢 Azure Cosmos DB 的資料：
+建立 Hero 模型之後，您必須定義可讀取資料的服務，並執行 list、create、delete 和 update 作業。 使用下列步驟來建立「Hero 服務」，該服務可查詢 Azure Cosmos DB 的資料：
 
 1. 在 [總管] 窗格中，於 **server** 資料夾之下建立名為 **hero.service.js** 的檔案。
 
@@ -199,7 +199,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 ## <a name="configure-routes"></a>設定路由
 
-接下來，您需要設定路由，以處理 get、create、read 和 delete 要求的 URL。 路由方法可指定回呼函式 (也稱為「處理常式函式」  )。 當應用程式收到對所指定端點和 HTTP 方法的要求時，就會呼叫這些函式。 使用下列步驟來新增 Hero 服務及定義路由：
+接下來，您需要設定路由，以處理 get、create、read 和 delete 要求的 URL。 路由方法可指定回呼函式 (也稱為「處理常式函式」)。 當應用程式收到對所指定端點和 HTTP 方法的要求時，就會呼叫這些函式。 使用下列步驟來新增 Hero 服務及定義路由：
 
 1. 在 Visual Studio Code 中，於 **routes.js** 檔案中註解排除可傳送範例 Hero 資料的 `res.send` 函式。 改為新增一行來呼叫 `heroService.getHeroes` 函式。
 
@@ -230,11 +230,11 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 接著，使用下列步驟來執行應用程式：
 
-1. 在 Visual Studio Code 中，儲存所有變更。 選取左側的 [偵錯]  按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然後選取 [開始偵錯]  按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
+1. 在 Visual Studio Code 中，儲存所有變更。 選取左側的 [偵錯] 按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然後選取 [開始偵錯] 按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
 
-1. 現在切換至瀏覽器。 開啟 [開發人員工具]  和 [網路]  索引標籤。移至 `http://localhost:3000`，您會看到我們的應用程式。
+1. 現在切換至瀏覽器。 開啟 [開發人員工具] 和 [網路] 索引標籤。移至 `http://localhost:3000`，您會看到我們的應用程式。
 
-    ![Azure 入口網站中的新 Azure Cosmos DB 帳戶](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
 
 應用程式中尚未儲存任何 Hero。 在本教學課程的下一個部分，我們會新增 put、push 和 delete 功能。 然後我們可以使用 Azure Cosmos 資料庫的 Mongoose 連線，在 UI 中新增、更新和刪除 Hero。 
 
@@ -243,8 +243,8 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 使用下列步驟來刪除資源群組：
 
  1. 移至您在其中建立 Azure Cosmos DB 帳戶的資源群組。
- 1. 選取 [刪除資源群組]  。
- 1. 確認要刪除的資源群組名稱，然後選取 [刪除]  。
+ 1. 選取 [刪除資源群組]。
+ 1. 確認要刪除的資源群組名稱，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

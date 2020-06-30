@@ -6,17 +6,17 @@ author: Antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96c3c05fea912433731dc7a6a8ab705ab76d3058
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232218"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212933"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站調整 Synapse SQL 集區的計算
 
@@ -37,13 +37,13 @@ ms.locfileid: "82232218"
 
 ## <a name="scale-compute"></a>調整計算
 
-您可以藉由增加或減少資料倉儲單位來調整 SQL 集區計算資源。 [快速入門：建立和連線-入口網站](create-data-warehouse-portal.md)已建立**mySampleDataWarehouse** ，並使用 400 dwu 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
+您可以藉由增加或減少資料倉儲單位來調整 SQL 集區計算資源。 [快速入門：建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 個 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
 
 若要變更資料倉儲單位：
 
-1. 按一下 Azure 入口網站左側頁面中的 [Azure Synapse Analytics (先前為 SQL DW)]  。
-2. 從 [Azure Synapse Analytics (先前為 SQL DW)]  頁面中選取 [mySampleDataWarehouse]  。 SQL 集區隨即開啟。
-3. 按一下 [調整]  。
+1. 按一下 Azure 入口網站左側頁面中的 [Azure Synapse Analytics (先前為 SQL DW)]。
+2. 從 [Azure Synapse Analytics (先前為 SQL DW)] 頁面中選取 [mySampleDataWarehouse]。 SQL 集區隨即開啟。
+3. 按一下 [調整] 。
 
     ![按一下 [調整]](./media/quickstart-scale-compute-portal/click-scale.png)
 

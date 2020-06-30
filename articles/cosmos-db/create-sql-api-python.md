@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - tracking-python
-ms.openlocfilehash: b140371c42fffd55b271fa0215db89ea9d07da0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559822"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116565"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "84559822"
 
 在本快速入門中，您會從 Azure 入口網站以及從 Visual Studio Code 搭配從 GitHub 複製的 Python 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 - [Python 3.6+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可執行檔。
@@ -52,7 +52,7 @@ ms.locfileid: "84559822"
     
     [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
 
-    ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
 
 2. 在 [新增容器] 頁面上，輸入新容器的設定。
 
@@ -108,7 +108,7 @@ ms.locfileid: "84559822"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 cosmos_get_started.py 檔案中。
 
-    ![在 Azure 入口網站的 [金鑰] 設定中取得存取金鑰和 URI](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="在 Azure 入口網站的 [金鑰] 設定中取得存取金鑰和 URI":::
 
 2. 在 Visual Studio Code 中，開啟 \git-samples\azure-cosmos-db-python-getting-started 中的 cosmos_get_started.py 檔案。
 

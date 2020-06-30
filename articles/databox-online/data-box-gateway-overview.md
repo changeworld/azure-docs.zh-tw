@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8911c1099db36b7e4e6d568ea64ae4afa3cc826e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561070"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100761"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什麼是 Azure Data Box Gateway？
 
@@ -69,7 +69,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 | 虛擬處理器 (核心)   | 最少 4 個 |
 | 記憶體  |最少 8 GB|
 | 可用性|單一節點|
-| 磁碟|作業系統磁碟：250 GB <br> 資料磁碟：最少 2 TB，精簡佈建且必須以 SSD 支援|
+| 磁碟|OS 磁碟：250 GB <br> 資料磁碟：最少 2 TB、精簡佈建且必須以 SSD 為後盾|
 | 網路介面 |1 或多個虛擬網路介面|
 | 原生的檔案共用通訊協定|SMB 和 NFS  |
 | 安全性|驗證以解除存取裝置和資料的鎖定 <br> 資料傳輸使用 AES-256 位元加密|
@@ -89,7 +89,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 Data Box Gateway 實體裝置、Azure 資源，以及您要將資料轉送至其中的目標儲存體帳戶，並不需要全都位於相同的區域。
 
-- **資源可用性**：如需 Azure Stack Edge 適用區域的完整清單，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
+- **資源可用性** - 如需 Azure 資料箱閘道資源適用區域的完整清單，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
 
 - **目的地儲存體帳戶** - 儲存資料的儲存體帳戶在所有 Azure 區域都可用。
 

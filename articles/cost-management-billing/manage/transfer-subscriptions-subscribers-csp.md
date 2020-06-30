@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791148"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106442"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
-本文概述在雲端解決方案提供者 (CSP) 合作夥伴及其客戶之間轉移 Azure 訂用帳戶的步驟。
+本文概述在雲端解決方案提供者 (CSP) 合作夥伴及其客戶往返轉移 Azure 訂用帳戶的步驟。
 
-## <a name="transfer-ea-subscriptions"></a>轉移 EA 訂用帳戶
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>將 EA 訂用帳戶轉移給 CSP 合作夥伴
 
 已認證為 [Azure Expert 受控服務提供者 (MSP) 的](https://partner.microsoft.com/membership/azure-expert-msp)可以要求為具有直接 Enterprise 合約 (EA) 的客戶轉移 Azure 訂用帳戶。 只有已接受 Microsoft 客戶合約 (MCA) 並購買 Azure 方案的客戶才能轉移訂用帳戶。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82791148"
     > [!IMPORTANT]
     >  - 在訂用帳戶之間移動 Azure 資源可能會導致服務停機 (取決於訂用帳戶中的資源)。
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>從 CSP 合作夥伴轉移至所有訂用帳戶
+## <a name="transfer-csp-subscription-to-other-offer"></a>將 CSP 訂用帳戶轉移給其他供應項目
 
 若要將 CSP 合作夥伴中的任何其他訂用帳戶轉移至任何其他 Azure 供應項目，訂閱者必須在來源 CSP 訂用帳戶和目標訂用帳戶之間移動資源。
 

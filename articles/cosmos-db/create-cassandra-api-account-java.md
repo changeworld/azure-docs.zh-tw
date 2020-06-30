@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4122e575fc7823fd2e79a26f210f06e5c1b0a835
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857981"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118401"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教學課程：使用 Java 應用程式在 Azure Cosmos DB 中建立 Cassandra API 帳戶，用以儲存索引鍵/值資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "82857981"
 > * 新增資料庫和資料表
 > * 執行應用程式
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
@@ -42,21 +42,21 @@ ms.locfileid: "82857981"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。 
 
-2. 選取 [建立資源]   > [資料庫]   > [Azure Cosmos DB]  。 
+2. 選取 [建立資源] > [資料庫] > [Azure Cosmos DB]。 
 
-3. 在 [新增帳戶]  窗格中，輸入新 Azure Cosmos 帳戶的設定。 
+3. 在 [新增帳戶] 窗格中，輸入新 Azure Cosmos 帳戶的設定。 
 
    |設定   |建議的值  |描述  |
    |---------|---------|---------|
    |ID   |   輸入唯一名稱    | 輸入唯一名稱來識別此 Azure Cosmos 帳戶。 <br/><br/>因為 cassandra.cosmosdb.azure.com 會附加到您所提供的識別碼以建立接觸點，所以請使用可供辨識的唯一識別碼。         |
-   |API    |  Cassandra   |  API 會決定要建立的帳戶類型。 <br/> 選取 [Cassandra]  ，因為在本文中您將建立可以使用 Cassandra 查詢語言 (CQL) 語法來查詢的寬欄資料庫。  |
+   |API    |  Cassandra   |  API 會決定要建立的帳戶類型。 <br/> 選取 [Cassandra]，因為在本文中您將建立可以使用 Cassandra 查詢語言 (CQL) 語法來查詢的寬欄資料庫。  |
    |訂用帳戶    |  您的訂用帳戶        |  選取您要用於此 Azure Cosmos 帳戶的 Azure 訂用帳戶。        |
-   |資源群組   | 輸入名稱    |  選取 [新建]  ，然後為您的帳戶輸入新的資源群組名稱。 為求簡化，您可以使用和識別碼相同的名稱。    |
+   |資源群組   | 輸入名稱    |  選取 [新建]，然後為您的帳戶輸入新的資源群組名稱。 為求簡化，您可以使用和識別碼相同的名稱。    |
    |Location    |  選取最接近使用者的區域    |  選取用來裝載 Azure Cosmos 帳戶的地理位置。 使用最接近使用者的位置，讓他們能以最快速度存取資料。    |
 
-   ![使用入口網站建立帳戶](./media/create-cassandra-api-account-java/create-account.png)
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="使用入口網站建立帳戶":::
 
-4. 選取 [建立]  。 <br/>建立帳戶需要幾分鐘的時間。 建立資源之後，您可以在入口網站的右側看到**部署成功**通知。
+4. 選取 [建立]。 <br/>建立帳戶需要幾分鐘的時間。 建立資源之後，您可以在入口網站的右側看到**部署成功**通知。
 
 ## <a name="get-the-connection-details-of-your-account"></a>取得您帳戶的連線詳細資料  
 
@@ -64,7 +64,7 @@ ms.locfileid: "82857981"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，移至您的 Azure Cosmos 帳戶。 
 
-2. 開啟 [連接字串]  窗格。  
+2. 開啟 [連接字串] 窗格。  
 
 3. 複製**接觸點**、**連接埠**、**使用者名稱**以及**主要密碼**的值，以用於後續步驟。
 
@@ -219,7 +219,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 
    終端機視窗會顯示 keyspace 和資料表已建立的通知。 
    
-2. 現在，在 Azure 入口網站中開啟 [資料總管]  ，確認已建立 Keyspace 和資料表。
+2. 現在，在 Azure 入口網站中開啟 [資料總管]，確認已建立 Keyspace 和資料表。
 
 ## <a name="next-steps"></a>後續步驟
 

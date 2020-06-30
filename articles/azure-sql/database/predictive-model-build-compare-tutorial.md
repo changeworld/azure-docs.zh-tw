@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023984"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253829"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建立預測模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在這個三部分教學課程系列的第二部分中，您將在 R 中建立兩個預測模型，然後選取最精確的模型。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署此模型。
+在這個三部分教學課程系列的第二部分中，您將在 R 中建立兩個預測模型，然後選取最精確的模型。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 Azure SQL Database 內的資料庫中部署此模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "84023984"
 
 在[第一部分](predictive-model-prepare-data-tutorial.md)中，您已了解如何匯入資料庫範例，然後準備要用來在 R 中定型預測模型的資料。
 
-在[第三部分](predictive-model-deploy-tutorial.md)中，您會了解如何將模型儲存在資料庫中，然後從您在第一和第二部分中開發的 R 指令碼建立預存程序。 預存程序會在 SQL 資料庫中執行，以根據新資料做出預測。
+在[第三部分](predictive-model-deploy-tutorial.md)中，您會了解如何將模型儲存在資料庫中，然後從您在第一和第二部分中開發的 R 指令碼建立預存程序。 預存程序會在資料庫中執行，以根據新資料做出預測。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -113,7 +113,7 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不打算繼續進行本教學課程，請從您的伺服器刪除 TutorialDB 資料庫。
+如果您不打算繼續進行此教學課程，請從您的伺服器刪除 TutorialDB 資料庫。
 
 在 Azure 入口網站中執行下列步驟：
 

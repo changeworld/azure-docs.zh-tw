@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c2e18919b287713f59ba8785006c952134994be0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258363"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204934"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案
 
@@ -90,7 +90,7 @@ AS table_alias(column_alias,...n)
 ```
 
 - ESCAPE_CHAR = 'char' 會指定檔案中用來將本身和所有分隔符號值逸出的字元。 如果逸出字元後面接著本身或任何分隔符號值以外的值，讀取值時就會捨棄逸出字元。
-無論 FIELDQUOTE 已啟用或未啟用，都會套用 ESCAPE_CHAR 參數。 其不會用來逸出引號字元。 為配合 Excel CSV 的行為，引號字元會以雙引號來逸出。
+無論 FIELDQUOTE 已啟用或未啟用，都會套用 ESCAPE_CHAR 參數。 其不會用來逸出引號字元。 引號字元必須以另一個引號字元來逸出。 只有在以引號字元封住值時，引號字元才能在資料行值中出現。
 - FIELDTERMINATOR ='field_terminator' 會指定要使用的欄位結束字元。 預設的欄位結束字元為逗號 (" **,** ")
 - ROWTERMINATOR ='row_terminator' 會指定要使用的資料列結束字元。 預設的資料列結束字元是新行字元： **\r\n**。
 

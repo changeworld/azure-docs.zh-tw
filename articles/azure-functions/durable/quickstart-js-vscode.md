@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4ac33a01f574f537d64c706842c7d867f387c804
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889660"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194462"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 建立第一個耐久函式
 
@@ -20,7 +20,7 @@ ms.locfileid: "82889660"
 
 ![在 Azure 中執行耐久函式](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -44,7 +44,7 @@ ms.locfileid: "82889660"
 
     ![建立函式](media/quickstart-js-vscode/functions-create-project.png)
 
-1. 為您的專案選擇空白資料夾位置，然後選擇 [選取]  。
+1. 為您的專案選擇空白資料夾位置，然後選擇 [選取]。
 
 1. 按照提示提供下列資訊：
 
@@ -59,30 +59,11 @@ ms.locfileid: "82889660"
 
 此外，也會在根資料夾中建立 package.json 檔案。
 
-### <a name="enable-compatibility-mode"></a>啟用相容性模式
-
-目前，JavaScript Durable Functions 需要啟用 Azure Functions V2 相容性模式。
-
-1. 開啟 local.settings.json  ，以編輯在本機執行應用程式時所使用的設定。
-
-1. 新增名為 `FUNCTIONS_V2_COMPATIBILITY_MODE` 的設定，並將其值設為 `true`。
-
-    ```json
-    {
-        "IsEncrypted": false,
-        "Values": {
-            "AzureWebJobsStorage": "",
-            "FUNCTIONS_WORKER_RUNTIME": "node",
-            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
-        }
-    }
-    ```
-
 ## <a name="install-the-durable-functions-npm-package"></a>安裝 Durable Functions npm 套件
 
 若要在 Node.js 函式應用程式中使用 Durable Functions，您可以使用名為 `durable-functions` 的程式庫。
 
-1. 使用 [檢視]  功能表或 Ctrl+Shift+`，在 VS Code 中開啟新的終端機。
+1. 使用 [檢視] 功能表或 Ctrl+Shift+`，在 VS Code 中開啟新的終端機。
 
 1. 在函式應用程式的根目錄中執行 `durable-functions`，以安裝 `npm install durable-functions` npm 套件。
 
@@ -90,9 +71,9 @@ ms.locfileid: "82889660"
 
 最基本的 Durable Functions 應用程式會包含三個函式：
 
-* 協調器函式  - 描述用於協調其他函式的工作流程。
-* 活動函式  - 由協調器函式呼叫，可執行工作並選擇性地傳回值。
-* 用戶端函式  - 可啟動協調器函式的一般 Azure 函式。 此範例會使用 HTTP 觸發的函式。
+* 協調器函式 - 描述用於協調其他函式的工作流程。
+* 活動函式 - 由協調器函式呼叫，可執行工作並選擇性地傳回值。
+* 用戶端函式 - 可啟動協調器函式的一般 Azure 函式。 此範例會使用 HTTP 觸發的函式。
 
 ### <a name="orchestrator-function"></a>協調器函式
 
@@ -107,7 +88,7 @@ ms.locfileid: "82889660"
     | 選取函式的範本 | Durable Functions orchestrator | 建立 Durable Functions 協調流程 |
     | 提供函式名稱 | HelloOrchestrator | 耐久函式的名稱 |
 
-您已新增協調器來協調活動函式。 開啟 HelloOrchestrator/index.js  以查看協調器函式。 `context.df.callActivity` 的每個呼叫都會叫用名為 `Hello` 的活動函式。
+您已新增協調器來協調活動函式。 開啟 HelloOrchestrator/index.js 以查看協調器函式。 `context.df.callActivity` 的每個呼叫都會叫用名為 `Hello` 的活動函式。
 
 接下來，您將新增參考的 `Hello` 活動函式。
 
@@ -122,7 +103,7 @@ ms.locfileid: "82889660"
     | 選取函式的範本 | Durable Functions 活動 | 建立活動函式 |
     | 提供函式名稱 | 您好 | 活動函式的名稱 |
 
-您已新增協調器所叫用的 `Hello` 活動函式。 開啟 Hello/index.js  ，以查看其是否接受名稱作為輸入並傳回問候語。 活動函式是您將執行動作的地方，例如進行資料庫呼叫或執行計算。
+您已新增協調器所叫用的 `Hello` 活動函式。 開啟 Hello/index.js，以查看其是否接受名稱作為輸入並傳回問候語。 活動函式是您將執行動作的地方，例如進行資料庫呼叫或執行計算。
 
 最後，您會新增一個啟動協調流程的 HTTP 觸發函式。
 
@@ -138,7 +119,7 @@ ms.locfileid: "82889660"
     | 提供函式名稱 | DurableFunctionsHttpStart | 活動函式的名稱 |
     | 授權層級 | 匿名 | 基於示範目的，我們允許在沒有驗證的情況下呼叫函式 |
 
-您已新增可啟動協調流程的 HTTP 觸發函式。 開啟 DurableFunctionsHttpStart/index.js  ，以查看其是否使用 `client.startNew` 來啟動新的協調流程。 然後，該函式會使用 `client.createCheckStatusResponse` 傳回 HTTP 回應，其中包含可用於監視和管理新協調流程的 URL。
+您已新增可啟動協調流程的 HTTP 觸發函式。 開啟 DurableFunctionsHttpStart/index.js，以查看其是否使用 `client.startNew` 來啟動新的協調流程。 然後，該函式會使用 `client.createCheckStatusResponse` 傳回 HTTP 回應，其中包含可用於監視和管理新協調流程的 URL。
 
 您現在有一個可在本機執行並部署至 Azure 的 Durable Functions 應用程式。
 
@@ -146,12 +127,12 @@ ms.locfileid: "82889660"
 
 Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functions 專案。 第一次從 Visual Studio Code 啟動函式時，系統會提示您安裝這些工具。
 
-1. 若要測試您的函式，請在 `Hello` 活動函式程式碼 (Hello/index.js  ) 中設定中斷點。 按 F5 鍵，或從命令選擇區選取 `Debug: Start Debugging`，以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
+1. 若要測試您的函式，請在 `Hello` 活動函式程式碼 (Hello/index.js) 中設定中斷點。 按 F5 鍵，或從命令選擇區選取 `Debug: Start Debugging`，以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
 
     > [!NOTE]
     > 如需有關偵錯的詳細資訊，請參閱 [Durable Functions 診斷](durable-functions-diagnostics.md#debugging)。
 
-1. Durable Functions 需要執行 Azure 儲存體帳戶。 當 VS Code 提示您選取儲存體帳戶時，請選擇 [選取儲存體帳戶]  。
+1. Durable Functions 需要執行 Azure 儲存體帳戶。 當 VS Code 提示您選取儲存體帳戶時，請選擇 [選取儲存體帳戶]。
 
     ![建立儲存體帳戶](media/quickstart-js-vscode/functions-select-storage.png)
 
@@ -159,17 +140,17 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
     | Prompt | 值 | 描述 |
     | ------ | ----- | ----------- |
-    | 選取訂閱 | 您的訂用帳戶名稱  | 選取您的 Azure 訂用帳戶 |
+    | 選取訂閱 | 您的訂用帳戶名稱 | 選取您的 Azure 訂用帳戶 |
     | 選取儲存體帳戶 | 建立新的儲存體帳戶 |  |
-    | 輸入新儲存體帳戶的名稱 | 唯一名稱  | 要建立的儲存體帳戶名稱 |
-    | 選取資源群組 | 唯一名稱  | 要建立的資源群組名稱 |
+    | 輸入新儲存體帳戶的名稱 | 唯一名稱 | 要建立的儲存體帳戶名稱 |
+    | 選取資源群組 | 唯一名稱 | 要建立的資源群組名稱 |
     | 選取位置 | *region* | 選取您附近的區域 |
 
 1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
 
     ![Azure 本機輸出](media/quickstart-js-vscode/functions-f5.png)
 
-1. 使用 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之類的工具，將 HTTP POST 要求傳送至 URL 端點。 將最後一個區段取代為協調器函式的名稱 (`HelloOrchestrator`)。 此 URL 應類似於 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
+1. 使用瀏覽器或 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之類的工具，將 HTTP POST 要求傳送至 URL 端點。 將最後一個區段取代為協調器函式的名稱 (`HelloOrchestrator`)。 此 URL 應類似於 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
 
    回應是 HTTP 函式的初始結果，讓您知道耐久協調流程已成功啟動。 這還不是協調流程的最終結果。 回應包含一些實用的 URL。 讓現在我們查詢協調流程的狀態。
 
@@ -202,23 +183,9 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-compatibility-mode"></a>啟用相容性模式
-
-您必須在 Azure 中的應用程式中，啟用您在本機啟用的相同 Azure Functions V2 相容性。
-
-1. 使用命令選擇區中來搜尋並選取 `Azure Functions: Edit Setting...`。
-
-1. 遵循提示，在您的 Azure 訂用帳戶中尋找您的函式應用程式。
-
-1. 選取 `Create new App Setting...`。
-
-1. 輸入新的設定金鑰：`FUNCTIONS_V2_COMPATIBILITY_MODE`。
-
-1. 輸入設定值：`true`。
-
 ## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
 
-1. 從 [輸出]  面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 從 [輸出] 面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 在使用已發佈的應用程式之前，您應會取得如同以往的相同狀態回應。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以累加方式複製多個資料表
-description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database。
+description: 在本教學課程中，您將建立 Azure Data Factory 管線，並以累加方式，將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database 中的資料庫。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 18f004b88a2b79f057ce3bf2fcc4cbe73e2b46da
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736609"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250956"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-powershell"></a>使用 PowerShell 以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從 SQL Server 資料庫中的多個資料表載入到 Azure SQL Database。    
+在本教學課程中，您將建立 Azure Data Factory 與管線，以將差異資料從 SQL Server 資料庫中的多個資料表載入 Azure SQL Database。    
 
 您會在本教學課程中執行下列步驟：
 
@@ -69,8 +69,8 @@ ms.locfileid: "84736609"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **SQL Server**。 在本教學課程中，您會使用 SQL 資料庫作為來源資料存放區。 
-* **Azure SQL Database**。 您會使用 SQL 資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
+* **SQL Server**。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
+* **Azure SQL Database**。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 資料庫中建立來源資料表
 
@@ -117,7 +117,7 @@ ms.locfileid: "84736609"
 
 2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
-3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的 SQL 資料表：  
+3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的資料表：  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ ms.locfileid: "84736609"
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL Database 中建立另一個資料表來儲存高水位線值
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL Database 中建立另一個資料表來儲存高水位線值
 
-1. 對 SQL 資料庫執行下列 SQL 命令，以建立名為 `watermarktable` 的資料表來儲存水位線值： 
+1. 對資料庫執行下列 SQL 命令，以建立名為 `watermarktable` 的資料表來儲存水位線值： 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ ms.locfileid: "84736609"
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>在 Azure SQL Database 中建立預存程序 
 
-執行下列命令，在您的 SQL 資料庫中建立預存程序。 這個預存程序會在每次管線執行之後更新水位線值。 
+執行下列命令，在您的資料庫中建立預存程序。 這個預存程序會在每次管線執行之後更新水位線值。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>在 Azure SQL Database 中建立資料類型和其他預存程序
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料類型和其他預存程序
 
-執行下列查詢，在您的 SQL 資料庫中建立兩個預存程序和兩個資料類型。 它們用來將來源資料表的資料合併到目的地資料表。 
+執行下列查詢，在您的資料庫中建立兩個預存程序和兩個資料類型。 它們用來將來源資料表的資料合併到目的地資料表。 
 
 為了能輕鬆地開始這趟教學旅程，我們會直接使用這些預存程序，以透過資料表變數來傳入差異資料，然後再將這些資料合併到目的地存放區。 請注意，資料表變數中不適合存放「大量」的差異資料列 (超過 100 列)。  
 
@@ -283,13 +283,13 @@ END
 
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為參與者或擁有者角色，或是 Azure 訂用帳戶的管理員。
 
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、SQL Database、SQL 受控執行個體等) 和計算 (Azure HDInsight 等) 可位於其他區域。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對 SQL Server 資料庫和 Azure SQL Database 建立連結服務。 
+您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您將對 SQL Server 資料庫與 Azure SQL Database 中的資料庫建立連結服務。 
 
 ### <a name="create-the-sql-server-linked-service"></a>建立 SQL Server 連結服務
 
@@ -372,7 +372,7 @@ END
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>建立 SQL 資料庫連結服務
+### <a name="create-the-sql-database-linked-service"></a>建立 SQL Database 連結服務
 
 1. 使用下列內容，在 C:\ADFTutorials\IncCopyMultiTableTutorial 資料夾中建立名為 **AzureSQLDatabaseLinkedService.json** 的 JSON 檔案。 (建立資料夾 ADF (如果尚未存在)。)儲存檔案之前，以您的 SQL Server 資料庫名稱、資料庫名稱、使用者名稱和密碼，取代 &lt;servername&gt;、&lt;database name&gt;、&lt;user name&gt; 和 &lt;password&gt;。 
 

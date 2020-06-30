@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020025"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248270"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>將 App Service 應用程式連線至 SQL 資料庫
+# <a name="connect-an-app-service-app-to-sql-database"></a>將 App Service 應用程式連線至 SQL Database
 
-在此案例中，您會學習如何建立 Azure SQL 資料庫和 App Service 應用程式。 然後，您會使用應用程式設定將 SQL Database 連結到應用程式。
+在此案例中，您會學習如何建立 Azure SQL Database 內的資料庫和 App Service 應用程式。 然後，您會使用應用程式設定將資料庫連結到應用程式。
 
 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
 
@@ -23,7 +23,7 @@ ms.locfileid: "84020025"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清除部署 
 

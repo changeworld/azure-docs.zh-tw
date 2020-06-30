@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052214"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080764"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用「Azure Migrate：伺服器評定」來評定實體伺服器
 
@@ -80,7 +80,7 @@ Azure Migrate：伺服器評定會執行輕量型設備。
     - 從 ZIP 壓縮檔案解壓縮內容。 以系統管理權限啟動 PowerShell 主控台。
     - 執行 PowerShell 指令碼以啟動設備 Web 應用程式。
     - 第一次設定設備，並向 Azure Migrate 專案進行註冊。
-- 您可以為單一 Azure Migrate 專案設定多個設備。 在所有設備上，您可以探索任何數目的實體伺服器。 每個設備最多可探索 250 部伺服器。
+- 您可以為單一 Azure Migrate 專案設定多個設備。 在所有設備上，您可以探索任何數目的實體伺服器。 每個設備最多可探索 1000 部伺服器。
 
 ### <a name="download-the-installer-script"></a>下載安裝程式指令碼
 

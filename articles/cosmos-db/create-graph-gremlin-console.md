@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25ad14ac8922a4284833cab28dc3e4aa8b478397
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81450202"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118331"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入門：使用 Gremlin 主控台建立、查詢和周遊 Azure Cosmos DB 圖形資料庫
 
@@ -29,11 +29,11 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 本快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帳戶、資料庫和圖表 (容器)，然後從 [Apache TinkerPop](https://tinkerpop.apache.org) (英文) 使用 [Gremlin 主控台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) (英文) 來處理Gremlin API 資料。 在本教學課程中，您將建立和查詢頂點和邊緣、更新頂點屬性、查詢頂點、周遊該圖形，以及刪除頂點。
 
-![Apache Gremlin 主控台中的 Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
+:::image type="content" source="./media/create-graph-gremlin-console/gremlin-console.png" alt-text="Apache Gremlin 主控台中的 Azure Cosmos DB":::
 
 Gremlin 主控台是以 Groovy/Java 為基礎並且在 Linux、Mac 和 Windows 上執行。 您可以從 [Apache TinkerPop 網站](https://tinkerpop.apache.org/downloads.html)進行下載。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須擁有 Azure 訂用帳戶，才能針對本快速入門建立 Azure Cosmos DB 帳戶。
 
@@ -52,37 +52,42 @@ Gremlin 主控台是以 Groovy/Java 為基礎並且在 Linux、Mac 和 Windows �
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>連線到您的應用程式服務/Graph
 
 1. 啟動 Gremlin 主控台之前，請建立或修改 `apache-tinkerpop-gremlin-console-3.2.5/conf` 目錄中的 remote-secure.yaml 組態檔。
-2. 填入如下表中定義的 host  、port  、username  、password  、connectionPool  和 serializer  組態︰
+2. 填入如下表中定義的 host、port、username、password、connectionPool 和 serializer 組態︰
 
     設定|建議的值|描述
     ---|---|---
     主機|[*account-name*.**gremlin**.cosmos.azure.com]|請參閱下列螢幕擷取畫面。 這是 Azure 入口網站的 [概觀] 頁面上的 **Gremlin URI** 值，此值以方括號括住，並已移除尾端的 :443/。 注意:請務必使用 Gremlin 值，而**不要**使用以 [*account-name*.documents.azure.com] 結尾的 URI，因為這樣可能會導致後續在嘗試執行 Gremlin 查詢時發生「主機未及時回應」的例外狀況。 
     連接埠|443|設為 443。
-    username|您的使用者名稱 |`/dbs/<db>/colls/<coll>` 表單的資源，其中 `<db>` 是您的資料庫名稱，而 `<coll>` 是您的集合名稱。
-    密碼|您的主要金鑰 | 請看下方的第二個螢幕擷取畫面。 這是您的主要金鑰，可以從 Azure 入口網站 [金鑰] 頁面的 [主鑰金鑰] 方塊中擷取。 使用方塊左側的 [複製] 按鈕來複製此值。
+    username|您的使用者名稱|`/dbs/<db>/colls/<coll>` 表單的資源，其中 `<db>` 是您的資料庫名稱，而 `<coll>` 是您的集合名稱。
+    密碼|您的主要金鑰| 請看下方的第二個螢幕擷取畫面。 這是您的主要金鑰，可以從 Azure 入口網站 [金鑰] 頁面的 [主鑰金鑰] 方塊中擷取。 使用方塊左側的 [複製] 按鈕來複製此值。
     connectionPool|{enableSsl: true}|您的 TLS 連線集區設定。
     序列化程式|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|設定此值，並在貼入此值時刪除任何 `\n` 分行符號。
 
-    對於主機值，從 [概觀]  頁面複製 [Gremlin URI]  值：![在 Azure 入口網站的 [概觀] 頁面上檢視和複製 Gremlin URI 值](./media/create-graph-gremlin-console/gremlin-uri.png)
+   對於主機值，從 [概觀] 頁面複製 [Gremlin URI] 值：
 
-    對於密碼值，從 [金鑰]  頁面複製 [主要金鑰]  ：![在 Azure 入口網站的 [金鑰] 頁面中檢視並複製主要金鑰](./media/create-graph-gremlin-console/keys.png)
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="在 Azure 入口網站的 [概觀] 頁面上檢視和複製 Gremlin URI 值":::
 
-remote-secure.yaml 檔案看起來應該像這樣：
+   對於密碼值，從 [金鑰] 頁面複製 [主要金鑰]：
 
-```
-hosts: [your_database_server.gremlin.cosmos.azure.com] 
-port: 443
-username: /dbs/your_database_account/colls/your_collection
-password: your_primary_key
-connectionPool: {
-  enableSsl: true
-}
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
-```
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中檢視並複製主要金鑰":::
 
-請務必將主機參數的值放在括號 [] 內。 
+   remote-secure.yaml 檔案看起來應該像這樣：
+
+   ```
+   hosts: [your_database_server.gremlin.cosmos.azure.com] 
+   port: 443
+   username: /dbs/your_database_account/colls/your_collection
+   password: your_primary_key
+   connectionPool: {
+     enableSsl: true
+   }
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   ```
+
+   請務必將主機參數的值放在括號 [] 內。 
 
 1. 在您的終端機執行 `bin/gremlin.bat` 或 `bin/gremlin.sh`，以啟動 [Gremlin 主控台](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
+
 1. 在您的終端機執行 `:remote connect tinkerpop.server conf/remote-secure.yaml`，以連線到您的應用程式服務。
 
     > [!TIP]
@@ -103,7 +108,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>建立頂點和邊緣
 
-首先我們會新增五個人員頂點 Thomas  、Mary Kay  、Robin  、Ben  和 Jack  。
+首先我們會新增五個人員頂點 Thomas、Mary Kay、Robin、Ben 和 Jack。
 
 輸入 (Thomas)：
 
@@ -208,7 +213,7 @@ g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLab
 
 ## <a name="update-a-vertex"></a>更新頂點
 
-我們會以新的年齡 45  更新 Thomas  頂點。
+我們會以新的年齡 45 更新 Thomas 頂點。
 
 輸入：
 ```

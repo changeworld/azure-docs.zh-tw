@@ -8,12 +8,12 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737269"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296979"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
 
@@ -136,6 +136,8 @@ Query
 > [!NOTE]
 > 您可能會看到如下的快顯畫面：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中發佈 Azure 函式：發佈認證" border="false":::
 > 若是如此，請選取 [嘗試從 Azure 擷取認證] 和 [儲存]。
+>
+> 如果您看到*您的函式執行階段版本不符合 Azure 中執行的版本*的警告，請遵循提示以升級至最新的 Azure Functions 執行階段版本。 如果您使用的 Visual Studio 版本比本教學課程開頭的*必要條件*一節中所建議的版本還舊，就可能會發生此問題。
 
 ### <a name="assign-permissions-to-the-function-app"></a>將權限指派給函數應用程式
 

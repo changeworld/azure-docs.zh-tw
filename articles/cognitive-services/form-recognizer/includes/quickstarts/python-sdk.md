@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/07/2020
+ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 1a2c5bfb2866e2cc28c013be60dbe791edeb9ac1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c150d60b05ccd306f055c60d180ee9421b356feb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997555"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242120"
 ---
-[參考文件](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [套件 (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[參考文件](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [套件 (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -58,7 +58,7 @@ key = os.environ["FORM_RECOGNIZER_KEY"]
 安裝 Python 之後，您可以透過以下項目安裝用戶端程式庫：
 
 ```console
-pip install azure-ai-formrecognizer
+pip install azure_ai_formrecognizer
 ```
 
 <!-- 
@@ -90,7 +90,7 @@ form_training_client = FormTrainingClient(self.endpoint, AzureKeyCredential(self
 ## <a name="define-variables"></a>定義變數
 
 > [!NOTE]
-> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview)和[範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)中的相關方法。
+> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)和[範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)中的相關方法。
 
 您也需要為訓練和測試資料新增 URL 的參考。
 * 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
@@ -161,14 +161,20 @@ poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
 receipts = poller.result()
 ```
 
-傳回的值會是 **USReceipt** 物件的集合：提交的文件每頁各一個。 下列程式碼區塊會將基本收據資訊列印至主控台。
+傳回的值會是 **RecognizedReceipt** 物件的集合：提交的文件每頁各一個。 下列程式碼區塊會將基本收據資訊列印至主控台。
 
 ```python
 for idx, receipt in enumerate(receipts):
     print("--------Recognizing receipt #{}--------".format(idx))
-    print("Receipt Type: {} has confidence: {}".format(receipt.receipt_type.type, receipt.receipt_type.confidence))
-    print("Merchant Name: {} has confidence: {}".format(receipt.merchant_name.value, receipt.merchant_name.confidence))
-    print("Transaction Date: {} has confidence: {}".format(receipt.transaction_date.value, receipt.transaction_date.confidence))
+    receipt_type = receipt.fields.get("ReceiptType")
+    if receipt_type:
+        print("Receipt Type: {} has confidence: {}".format(receipt_type.value, receipt_type.confidence))
+    merchant_name = receipt.fields.get("MerchantName")
+    if merchant_name:
+        print("Merchant Name: {} has confidence: {}".format(merchant_name.value, merchant_name.confidence))
+    transaction_date = receipt.fields.get("TransactionDate")
+    if transaction_date:
+        print("Transaction Date: {} has confidence: {}".format(transaction_date.value, transaction_date.confidence))
 ```
 
 下一個程式碼區塊會逐一查看在收據上偵測到的個別項目，並將其詳細資料列印至主控台。
@@ -176,20 +182,37 @@ for idx, receipt in enumerate(receipts):
 
 ```python
     print("Receipt items:")
-    for item in receipt.receipt_items:
-        print("...Item Name: {} has confidence: {}".format(item.name.value, item.name.confidence))
-        print("...Item Quantity: {} has confidence: {}".format(item.quantity.value, item.quantity.confidence))
-        print("...Individual Item Price: {} has confidence: {}".format(item.price.value, item.price.confidence))
-        print("...Total Item Price: {} has confidence: {}".format(item.total_price.value, item.total_price.confidence))
+    for idx, item in enumerate(receipt.fields.get("Items").value):
+        print("...Item #{}".format(idx))
+        item_name = item.value.get("Name")
+        if item_name:
+            print("......Item Name: {} has confidence: {}".format(item_name.value, item_name.confidence))
+        item_quantity = item.value.get("Quantity")
+        if item_quantity:
+            print("......Item Quantity: {} has confidence: {}".format(item_quantity.value, item_quantity.confidence))
+        item_price = item.value.get("Price")
+        if item_price:
+            print("......Individual Item Price: {} has confidence: {}".format(item_price.value, item_price.confidence))
+        item_total_price = item.value.get("TotalPrice")
+        if item_total_price:
+            print("......Total Item Price: {} has confidence: {}".format(item_total_price.value, item_total_price.confidence))
 ```
 
 最後，最後一個程式碼區塊會列印其餘的主要收據詳細資料。
 
 ```python
-    print("Subtotal: {} has confidence: {}".format(receipt.subtotal.value, receipt.subtotal.confidence))
-    print("Tax: {} has confidence: {}".format(receipt.tax.value, receipt.tax.confidence))
-    print("Tip: {} has confidence: {}".format(receipt.tip.value, receipt.tip.confidence))
-    print("Total: {} has confidence: {}".format(receipt.total.value, receipt.total.confidence))
+    subtotal = receipt.fields.get("Subtotal")
+    if subtotal:
+        print("Subtotal: {} has confidence: {}".format(subtotal.value, subtotal.confidence))
+    tax = receipt.fields.get("Tax")
+    if tax:
+        print("Tax: {} has confidence: {}".format(tax.value, tax.confidence))
+    tip = receipt.fields.get("Tip")
+    if tip:
+        print("Tip: {} has confidence: {}".format(tip.value, tip.confidence))
+    total = receipt.fields.get("Total")
+    if total:
+        print("Total: {} has confidence: {}".format(total.value, total.confidence))
     print("--------------------------------------")
 ```
 
@@ -205,25 +228,25 @@ for idx, receipt in enumerate(receipts):
 
 訓練自訂模型，以辨識在自訂表單中找到的所有欄位和值，而不需要手動標記訓練文件。
 
-下列程式碼會將訓練用戶端和 **begin_train_model** 函式搭配使用，在指定的文件集上訓練模型。
+下列程式碼會將訓練用戶端和 **begin_training** 函式搭配使用，在指定的文件集上訓練模型。
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=False)
 model = poller.result()
 ```
 
-傳回的 **CustomFormModel** 物件包含模型可辨識的表單類型資訊，及其可從每個表單類型中擷取的欄位。 下列程式碼區塊會將此資訊列印至主控台。
+傳回的 **CustomFormSubmodel** 物件包含模型可辨識的表單類型資訊，及其可從每個表單類型中擷取的欄位。 下列程式碼區塊會將此資訊列印至主控台。
 
 ```python
 # Custom model information
 print("Model ID: {}".format(model.model_id))
 print("Status: {}".format(model.status))
-print("Created on: {}".format(model.created_on))
-print("Last modified: {}".format(model.last_modified))
+print("Created on: {}".format(model.requested_on))
+print("Last modified: {}".format(model.completed_on))
 
 print("Recognized fields:")
 # Looping through the submodels, which contains the fields they were trained on
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel has form type '{}'".format(submodel.form_type))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have label '{}'".format(
@@ -236,14 +259,14 @@ for submodel in model.models:
 您也可以手動標記訓練文件來訓練自訂模型。 在某些情況下，使用標籤來訓練會讓效能更佳。 
 
 > [!IMPORTANT]
-> 若要使用標籤來訓練，您的 Blob 儲存體容器中除了訓練文件以外，還必須要有特殊的標籤資訊檔案 ( *\<filename\>.pdf.labels.json*)。 [表單辨識器範例標籤工具](../../quickstarts/label-tool.md)提供可協助您建立這些標籤檔案的 UI。 只要有了這些檔案，即可呼叫 **begin_train_model** 方法，且將 *use_labels* 參數設為 `true`。
+> 若要使用標籤來訓練，您的 Blob 儲存體容器中除了訓練文件以外，還必須要有特殊的標籤資訊檔案 ( *\<filename\>.pdf.labels.json*)。 [表單辨識器範例標籤工具](../../quickstarts/label-tool.md)提供可協助您建立這些標籤檔案的 UI。 只要有了這些檔案，即可呼叫 **begin_training** 方法，且將 *use_training_labels* 參數設為 `true`。
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl, use_labels=True)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=True)
 model = poller.result()
 ```
 
-傳回的 **CustomFormModel** 會指出模型可擷取的欄位，及其在每個欄位中的預估正確性。 下列程式碼區塊會將此資訊列印至主控台。
+傳回的 **CustomFormSubmodel** 會指出模型可擷取的欄位，及其在每個欄位中的預估正確性。 下列程式碼區塊會將此資訊列印至主控台。
 
 ```python
 # Custom model information
@@ -255,7 +278,7 @@ print("Last modified: {}".format(model.last_modified))
 print("Recognized fields:")
 # looping through the submodels, which contains the fields they were trained on
 # The labels are based on the ones you gave the training document.
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel with form type {} has accuracy '{}'".format(submodel.form_type, submodel.accuracy))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have name '{}' with an accuracy of {}".format(
@@ -275,7 +298,7 @@ for submodel in model.models:
 ```python
 # Make sure your form's type is included in the list of form types the custom model can recognize
 poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model.model_id, url=formUrl)
+    model_id=model.model_id, form_url=formUrl)
 forms = poller.result()
 ```
 
@@ -325,7 +348,7 @@ print("Our account has {} custom models, and we can have at most {} custom model
 
 ```python
 # Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_model_infos()
+custom_models = form_training_client.list_custom_models()
 
 print("We have models with the following ids:")
 
@@ -345,8 +368,8 @@ for model in custom_models:
 custom_model = form_training_client.get_custom_model(model_id=first_model.model_id)
 print("Model ID: {}".format(custom_model.model_id))
 print("Status: {}".format(custom_model.status))
-print("Created on: {}".format(custom_model.created_on))
-print("Last modified: {}".format(custom_model.last_modified))
+print("Created on: {}".format(custom_model.requested_on))
+print("Last modified: {}".format(custom_model.completed_on))
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>從資源帳戶中刪除模型

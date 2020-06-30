@@ -2,16 +2,16 @@
 title: 使用 Azure Cosmos 模擬器在本機開發
 description: 您可以免費使用 Azure Cosmos 模擬器在本機開發及測試應用程式，不需建立 Azure 訂用帳戶。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849003"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262424"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -76,7 +76,7 @@ Azure Cosmos 模擬器預設會安裝到 `C:\Program Files\Azure Cosmos DB Emula
 
 當 Azure Cosmos 模擬器啟動時，會自動在瀏覽器中開啟 Azure Cosmos 資料總管。 位址會顯示為 `https://localhost:8081/_explorer/index.html`。 如果您關閉資料總管且想要稍後重新開啟，可以在瀏覽器中開啟 URL，或從 Windows 系統匣圖示中的 Azure Cosmos 模擬器啟動它，如下所示。
 
-![Azure Cosmos 本機模擬器的資料總管啟動程式](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos 本機模擬器的資料總管啟動程式":::
 
 ## <a name="checking-for-updates"></a>檢查更新
 
@@ -243,38 +243,38 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 |[說明] |顯示支援的命令列引數清單。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
 | GetStatus |取得 Azure Cosmos 模擬器的狀態。 狀態會以結束代碼表示：1 = 啟動，2 = 執行中，3 = 已停止。 負數的結束代碼表示發生錯誤。 不會產生其他輸出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
 | Shutdown| 關閉 Azure Cosmos 模擬器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
-|資料路徑 | 指定用來儲存資料檔案的路徑。 預設值為 %LocalAppdata%\CosmosDBEmulator。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<資料路徑\>：可存取的路徑 |
-|連接埠 | 指定用於模擬器的連接埠號碼。 預設值為 8081。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<連接埠\>：單一連接埠號碼 |
-| ComputePort | 指定用於計算 Interop 閘道服務的連接埠號碼。 閘道 HTTP 端點探查連接埠的計算方式為 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必須開啟且可供使用。 預設值為 8900。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>：單一連接埠號碼 |
+|資料路徑 | 指定用來儲存資料檔案的路徑。 預設值為 %LocalAppdata%\CosmosDBEmulator。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:可存取的路徑 |
+|連接埠 | 指定用於模擬器的連接埠號碼。 預設值為 8081。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<port\>:單一連接埠號碼 |
+| ComputePort | 指定用於計算 Interop 閘道服務的連接埠號碼。 閘道 HTTP 端點探查連接埠的計算方式為 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必須開啟且可供使用。 預設值為 8900。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>:單一連接埠號碼 |
 | EnableMongoDbEndpoint=3.2 | 啟用 MongoDB API 3.2 | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.2 | |
 | EnableMongoDbEndpoint=3.6 | 啟用 MongoDB API 3.6 | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.6 | |
-| MongoPort | 指定要用於 MongoDB 相容性 API 的連接埠號碼。 預設值為 10255。 |Microsoft.Azure.Cosmos.Emulator.exe /MongoPort=\<mongoport\>|\<mongoport\>：單一連接埠號碼|
+| MongoPort | 指定要用於 MongoDB 相容性 API 的連接埠號碼。 預設值為 10255。 |Microsoft.Azure.Cosmos.Emulator.exe /MongoPort=\<mongoport\>|\<mongoport\>:單一連接埠號碼|
 | EnableCassandraEndpoint | 啟用 Cassandra API | Microsoft.Azure.Cosmos.Emulator.exe /EnableCassandraEndpoint | |
-| CassandraPort | 指定用於 Cassandra 端點的連接埠號碼。 預設值為 10350。 | Microsoft.Azure.Cosmos.Emulator.exe /CassandraPort=\<cassandraport\> | \<cassandraport\>：單一連接埠號碼 |
+| CassandraPort | 指定用於 Cassandra 端點的連接埠號碼。 預設值為 10350。 | Microsoft.Azure.Cosmos.Emulator.exe /CassandraPort=\<cassandraport\> | \<cassandraport\>:單一連接埠號碼 |
 | EnableGremlinEndpoint | 啟用 Gremlin API | Microsoft.Azure.Cosmos.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | 用於 Gremlin 端點的連接埠號碼。 預設值為 8901。 | Microsoft.Azure.Cosmos.Emulator.exe /GremlinPort=\<port\> | \<連接埠\>：單一連接埠號碼 |
+| GremlinPort | 用於 Gremlin 端點的連接埠號碼。 預設值為 8901。 | Microsoft.Azure.Cosmos.Emulator.exe /GremlinPort=\<port\> | \<port\>:單一連接埠號碼 |
 |EnableTableEndpoint | 啟用 Azure 資料表 API | Microsoft.Azure.Cosmos.Emulator.exe /EnableTableEndpoint | |
-|TablePort | 用於 Azure 資料表端點的連接埠號碼。 預設值為 8902。 | Microsoft.Azure.Cosmos.Emulator.exe /TablePort=\<port\> | \<連接埠\>：單一連接埠號碼|
-| KeyFile | 從指定的檔案中讀取授權金鑰。 使用 /GenKeyFile 選項來產生金鑰檔 | Microsoft.Azure.Cosmos.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>：檔案的路徑 |
-| ResetDataPath | 以遞迴方式移除指定路徑中的所有檔案。 如果您未指定路徑，則會預設為 %LOCALAPPDATA%\CosmosDbEmulator | Microsoft.Azure.Cosmos.Emulator.exe /ResetDataPath=\<path> | \<path\>：檔案路徑  |
+|TablePort | 用於 Azure 資料表端點的連接埠號碼。 預設值為 8902。 | Microsoft.Azure.Cosmos.Emulator.exe /TablePort=\<port\> | \<port\>:單一連接埠號碼|
+| KeyFile | 從指定的檔案中讀取授權金鑰。 使用 /GenKeyFile 選項來產生金鑰檔 | Microsoft.Azure.Cosmos.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:檔案的路徑 |
+| ResetDataPath | 以遞迴方式移除指定路徑中的所有檔案。 如果您未指定路徑，則會預設為 %LOCALAPPDATA%\CosmosDbEmulator | Microsoft.Azure.Cosmos.Emulator.exe /ResetDataPath=\<path> | \<path\>:檔案路徑  |
 | StartTraces  |  使用 LOGMAN 開始收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StartTraces | |
 | StopTraces     | 使用 LOGMAN 停止收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  使用 Windows 效能記錄工具開始收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | 使用 Windows 效能記錄工具停止收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
 |FailOnSslCertificateNameMismatch | 根據預設，如果憑證的 SAN 不包含模擬器主機的網域名稱、本機 IPv4 位址、'localhost' 及 '127.0.0.1'，模擬器就會重新產生其自我簽署的 TLS/SSL 憑證。 使用此選項，模擬器反而將在啟動時失敗。 您接著應該使用 /GenCert 選項，來建立並安裝新的自我簽署 TLS/SSL 憑證。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | 產生並安裝新的自我簽署 TLS/SSL 憑證。 選擇性地包括其他 DNS 名稱的逗號分隔清單，以透過網路來存取模擬器。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>:其他 dns 名稱的選擇性逗號分隔清單  |
-| DirectPorts |指定要用於直接連線的連接埠。 預設值為 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗號分隔的 4 個連接埠清單 |
-| Key |模擬器的授權金鑰。 金鑰必須是 64 位元組向量的 base-64 編碼方式。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<金鑰\>：金鑰必須是 64 位元組向量的 base-64 編碼方式|
+| DirectPorts |指定要用於直接連線的連接埠。 預設值為 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:以逗號分隔的 4 個連接埠清單 |
+| Key |模擬器的授權金鑰。 金鑰必須是 64 位元組向量的 base-64 編碼方式。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>:金鑰必須是 64 位元組向量的 base-64 編碼方式|
 | EnableRateLimiting | 指定要啟用要求率限制行為。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |指定要停用要求率限制行為。 |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
 | NoUI | 不要顯示模擬器使用者介面。 | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
 | NoExplorer | 啟動時不要顯示資料總管。 |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
-| PartitionCount | 指定已分割容器的數目上限。 如需詳細資訊，請參閱[變更容器的數目](#set-partitioncount)。 | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>：允許的單一分割區容器數目上限。 預設值為 25。 允許的上限為 250。|
+| PartitionCount | 指定已分割容器的數目上限。 如需詳細資訊，請參閱[變更容器的數目](#set-partitioncount)。 | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>:允許的單一分割區容器數目上限。 預設值為 25。 允許的上限為 250。|
 | DefaultPartitionCount| 指定已分割容器之分割區數目的預設值。 | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 預設值為 25。|
-| AllowNetworkAccess | 讓模擬器可以透過網路存取。 您也必須傳遞 /Key=\<key_string\> 或 /KeyFile=\<file_name\> 以啟用網路存取。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> 或 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| AllowNetworkAccess | 讓模擬器可以透過網路存取。 您也必須傳遞 /Key=\<key_string\> 或 /KeyFile=\<file_name\> 才能啟用網路存取。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> 或 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
 | NoFirewall | 不要在使用 /AllowNetworkAccess 選項時調整防火牆規則。 |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
-| GenKeyFile | 產生新的授權金鑰並儲存到指定的檔案。 產生的金鑰可以搭配 /Key 或 /KeyFile 選項使用。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<金鑰檔案路徑\> | |
-| 一致性 | 設定帳戶的預設一致性層級。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<一致性\>：值必須屬於下列其中一個[一致性層級](consistency-levels.md)：Session、Strong、Eventual 或 BoundedStaleness。 預設值為 Session。 |
+| GenKeyFile | 產生新的授權金鑰並儲存到指定的檔案。 產生的金鑰可以搭配 /Key 或 /KeyFile 選項使用。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<path to key file\> | |
+| 一致性 | 設定帳戶的預設一致性層級。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:值必須屬於下列其中一個[一致性層級](consistency-levels.md)：Session、Strong、Eventual 或 BoundedStaleness。 預設值為 Session。 |
 | ? | 顯示說明訊息。| | |
 
 ## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>變更容器數目
@@ -482,7 +482,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 1. 開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任] > [使用此憑證時] 選項底下，選取 [永遠信任]。 
 
-   ![開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任 - 使用此憑證時] 選項底下，選取 [永遠信任]](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任 - 使用此憑證時] 選項底下，選取 [永遠信任]":::
 
 執行這些步驟後，您的環境在連線至 `/AllowNetworkAccess` 所公開的 IP 位址時，將會信任模擬器所使用的憑證。
 

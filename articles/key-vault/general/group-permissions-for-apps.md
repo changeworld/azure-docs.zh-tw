@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652214"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126224"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用存取控制原則提供 Key Vault 驗證
 
@@ -33,7 +33,7 @@ ms.locfileid: "83652214"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 一個金鑰保存庫。 您可以使用現有的金鑰保存庫，或依照下列其中一個快速入門中的步驟建立新的金鑰保存庫：
    - [使用 Azure CLI 建立金鑰保存庫](../secrets/quick-create-cli.md)
@@ -60,10 +60,10 @@ ms.locfileid: "83652214"
 
 有兩種方式可取得應用程式的 objectId。  第一種方式是向 Azure Active Directory 註冊您的應用程式。 若要這麼做，請依照[使用 Microsoft 身分識別平台來註冊應用程式](../../active-directory/develop/quickstart-register-app.md)快速入門中的步驟操作。 註冊完成時，objectID 會列示為「應用程式 (用戶端) 識別碼」。
 
-第二種方式是在終端機視窗中建立服務主體。 在 Azure CLI 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，並提供唯一的服務主體名稱給 -n 旗標，且格式為 "http://&lt;my-unique-service-principle-name&gt;"。
+第二種方式是在終端機視窗中建立服務主體。 在 Azure CLI 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，並提供唯一的服務主體名稱給 -n 旗標，且格式為 "http://&lt;my-unique-service-principal-name&gt;"。
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 objectId 會在輸出中列示為 `clientID`。
@@ -72,7 +72,7 @@ objectId 會在輸出中列示為 `clientID`。
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 objectId 會在輸出中列示為 `Id` (而非 `ApplicationId`)。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022107"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253455"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
@@ -44,17 +44,17 @@ ms.locfileid: "84022107"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 儲存體帳戶。 您會使用 Blob 儲存體作為來源資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../storage/common/storage-account-create.md)。
 * Azure 儲存體總管。 若要安裝此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。
-* Azure SQL Database。 您會使用資料庫作為接收資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)。
+* Azure SQL Database。 您會使用資料庫作為接收資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)。
 * Visual Studio。 本文使用 Visual Studio 2019。
 * Azure .NET SDK。 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
 如需目前可使用 Data Factory 的 Azure 區域，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料存放區和計算可位於其他區域。 這些存放區包含 Azure 儲存體和 Azure SQL Database。 計算包含 Data Factory 所使用的 HDInsight。
 
-依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」  角色。 您在本教學課程的後續部分將需要數個值，例如**應用程式 (用戶端) 識別碼**和**目錄 (租用戶) 識別碼**。
+依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。 您在本教學課程的後續部分將需要數個值，例如**應用程式 (用戶端) 識別碼**和**目錄 (租用戶) 識別碼**。
 
 ### <a name="create-a-blob-table"></a>建立 Blob 資料表
 
@@ -65,22 +65,22 @@ ms.locfileid: "84022107"
    Tamika|Walsh
    ```
 
-1. 開啟 [Azure 儲存體總管]。 展開您的儲存體帳戶。 以滑鼠右鍵按一下 [Blob 容器]  ，然後選取 [建立 Blob 容器]  。
-1. 將新容器命名為 *adfv2branch*，然後選取 [上傳]  將您的 *input.txt* 檔案新增至該容器。
+1. 開啟 [Azure 儲存體總管]。 展開您的儲存體帳戶。 以滑鼠右鍵按一下 [Blob 容器]，然後選取 [建立 Blob 容器]。
+1. 將新容器命名為 *adfv2branch*，然後選取 [上傳] 將您的 *input.txt* 檔案新增至該容器。
 
 ## <a name="create-visual-studio-project"></a>建立 Visual Studio 專案<a name="create-visual-studio-project"></a>
 
 建立 C# .NET 主控台應用程式：
 
-1. 啟動 Visual Studio，然後選取 [建立新專案]  。
-1. 在 [建立新專案]  中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  。
+1. 啟動 Visual Studio，然後選取 [建立新專案]。
+1. 在 [建立新專案] 中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
 1. 將專案命名為 *ADFv2BranchTutorial*。
-1. 選取 [.NET 4.5.2 版]  或更新版本，然後選取 [建立]  。
+1. 選取 [.NET 4.5.2 版] 或更新版本，然後選取 [建立]。
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-1. 選取 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。
-1. 在 [套件管理員主控台]  中執行下列命令，以安裝套件。 如需詳細資訊，請參閱 [Microsoft.Azure.Management.DataFactory Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+1. 選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。
+1. 在 [套件管理員主控台] 中執行下列命令，以安裝套件。 如需詳細資訊，請參閱 [Microsoft.Azure.Management.DataFactory Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory

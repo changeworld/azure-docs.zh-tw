@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
-ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687577"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118758"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教學課程：使用資料移轉工具將您的資料移轉至 Azure Cosmos DB
 
@@ -84,14 +84,14 @@ ms.locfileid: "84687577"
 
 JSON 檔案來源匯入工具選項可讓您匯入一或多個單一文件 JSON 檔案或具有 JSON 文件陣列的每個 JSON 檔案。 新增具有要匯入之 JSON 檔案的資料夾時，您可以選擇是否要以遞迴方式搜尋子資料夾中的檔案。
 
-![JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具](./media/import-data/jsonsource.png)
+:::image type="content" source="./media/import-data/jsonsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
 連接字串採用下列格式：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` 是端點 URI。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [概觀]  窗格，並複製 **URI** 值。
-* `<AccountKey>` 是「密碼」或**主要金鑰**。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [連接字串]  或 [金鑰]  窗格，並複製 [密碼] 或 [主要金鑰]  值。
+* `<CosmosDB Endpoint>` 是端點 URI。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [概觀] 窗格，並複製 **URI** 值。
+* `<AccountKey>` 是「密碼」或**主要金鑰**。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [連接字串] 或 [金鑰] 窗格，並複製 [密碼] 或 [主要金鑰] 值。
 * `<CosmosDB Database>` 是 CosmosDB 資料庫名稱。
 
 範例： `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -125,7 +125,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 
 透過 MongoDB 來源匯入工具選項，您可以從單一 MongoDB 集合匯入，使用查詢來選擇性地篩選文件，以及使用投影來修改文件結構。  
 
-![MongoDB 來源選項的螢幕擷取畫面](./media/import-data/mongodbsource.png)
+:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="MongoDB 來源選項的螢幕擷取畫面":::
 
 連接字串會採用標準的 MongoDB 格式：
 
@@ -153,7 +153,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 
 MongoDB 匯出 JSON 檔案來源匯入工具選項可讓您匯入從 mongoexport 公用程式產生的一或多個 JSON 檔案。  
 
-![MongoDB 匯出來源選項的螢幕擷取畫面](./media/import-data/mongodbexportsource.png)
+:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="MongoDB 匯出來源選項的螢幕擷取畫面":::
 
 新增具有要匯入之 MongoDB 匯出 JSON 檔案的資料夾，您可以選擇是否要以遞迴方式搜尋子資料夾中的檔案。
 
@@ -167,7 +167,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 SQL 來源匯入工具選項可讓您從個別的 SQL Server 資料庫匯入，並使用查詢來選擇性地篩選要匯入的記錄。 此外，您可以藉由指定巢狀分隔符號 (稍後將有更詳細的說明) 來修改文件結構。  
 
-![SQL 來源選項的螢幕擷取畫面 - 資料庫移轉工具](./media/import-data/sqlexportsource.png)
+:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="SQL 來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
 連接字串的格式會採用標準的 SQL 連接字串格式。
 
@@ -180,7 +180,7 @@ SQL 來源匯入工具選項可讓您從個別的 SQL Server 資料庫匯入，�
 
 它會傳回下列 (部分) 結果：
 
-![SQL 查詢結果的螢幕擷取畫面](./media/import-data/sqlqueryresults.png)
+:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="SQL 查詢結果的螢幕擷取畫面":::
 
 注意別名，例如 Address.AddressType 和 Address.Location.StateProvinceName。 藉由指定巢狀分隔符號 '.'，匯入工具會在匯入期間建立 Address 和 Address.Location 子文件。 在 Azure Cosmos DB 中產生的文件範例如下：
 
@@ -200,11 +200,11 @@ dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=Adventur
 
 CSV 檔案來源匯入工具選項可讓您匯入一或多個 CSV 檔案。 新增具有要匯入之 CSV 檔案的資料夾時，您可以選擇是否要以遞迴方式搜尋子資料夾中的檔案。
 
-![CSV 來源選項的螢幕擷取畫面 - CSV 轉換成 JSON](media/import-data/csvsource.png)
+:::image type="content" source="media/import-data/csvsource.png" alt-text="CSV 來源選項的螢幕擷取畫面 - CSV 轉換成 JSON":::
 
 與 SQL 來源類似，巢狀分隔符號屬性可用來在匯入期間建立階層式關聯性 (子文件)。 請考慮下列 CSV 標頭資料列和資料資料列：
 
-![CSV 範例記錄的螢幕擷取畫面 - CSV 轉換成 JSON](./media/import-data/csvsample.png)
+:::image type="content" source="./media/import-data/csvsample.png" alt-text="CSV 範例記錄的螢幕擷取畫面 - CSV 轉換成 JSON":::
 
 注意別名，例如 DomainInfo.Domain_Name 和 RedirectInfo.Redirecting。 藉由指定巢狀分隔符號 '.'，匯入工具將會在匯入期間建立 DomainInfo 和 RedirectInfo 子文件。 在 Azure Cosmos DB 中產生的文件範例如下：
 
@@ -229,7 +229,7 @@ Azure 資料表儲存體來源匯入工具選項可讓您從個別的 Azure 資�
 
 您可以將從 Azure 資料表儲存體匯入的資料，輸出到 Azure Cosmos DB 資料表和實體以用於資料表 API。 也可以將匯入的資料輸出到集合和文件以用於 SQL API。 不過，資料表 API 只能作為命令列公用程式中的目標。 您無法使用資料移轉工具使用者介面來匯出到資料表 API。 如需詳細資訊，請參閱[匯入資料以用於 Azure Cosmos DB 資料表 API](table-import.md)。
 
-![Azure 資料表儲存體來源選項的螢幕擷取畫面](./media/import-data/azuretablesource.png)
+:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Azure 資料表儲存體來源選項的螢幕擷取畫面":::
 
 Azure 資料表儲存體連接字串的格式如下：
 
@@ -259,9 +259,9 @@ dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;Account
 
 Amazon DynamoDB 來源匯入工具選項可讓您從單一 Amazon DynamoDB 資料表匯入。 還可選擇性地篩選要匯入的實體。 會提供數個範本，讓設定匯入盡量簡化。
 
-![Amazon DynamoDB 來源選項的螢幕擷取畫面 - 資料庫移轉工具](./media/import-data/dynamodbsource1.png)
+:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="Amazon DynamoDB 來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
-![Amazon DynamoDB 來源選項的螢幕擷取畫面 - 資料庫移轉工具](./media/import-data/dynamodbsource2.png)
+:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="Amazon DynamoDB 來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
 Amazon DynamoDB 連接字串的格式如下：
 
@@ -280,7 +280,7 @@ dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.ama
 
 JSON 檔案、MongoDB 匯出檔案和 CSV 檔案來源匯入工具選項可讓您從 Azure Blob 儲存體匯入一或多個檔案。 在指定 Blob 容器 URL 和帳戶金鑰之後，請提供規則運算式來選取要匯入的檔案。
 
-![Blob 檔案來源選項的螢幕擷取畫面](./media/import-data/blobsource.png)
+:::image type="content" source="./media/import-data/blobsource.png" alt-text="Blob 檔案來源選項的螢幕擷取畫面":::
 
 以下是從 Azure Blob 儲存體匯入 JSON 檔案的命令列範例：
 
@@ -292,7 +292,7 @@ dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net
 
 Azure Cosmos DB 來源匯入工具選項可讓您從一或多個 Azure Cosmos 容器匯入資料，並選擇性地使用查詢來篩選文件。  
 
-![Azure Cosmos DB 來源選項的螢幕擷取畫面](./media/import-data/documentdbsource.png)
+:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="Azure Cosmos DB 來源選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
@@ -317,7 +317,7 @@ Azure Cosmos DB 來源匯入工具選項具有下列進階選項：
 3. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 4. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-![Azure Cosmos DB 來源進階選項的螢幕擷取畫面](./media/import-data/documentdbsourceoptions.png)
+:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="Azure Cosmos DB 來源進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -342,9 +342,9 @@ dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;Ac
 
 HBase 來源匯入工具選項可讓您從 HBase 資料表匯入資料，並選擇性地篩選資料。 會提供數個範本，讓設定匯入盡量簡化。
 
-![HBase 檔案來源選項的螢幕擷取畫面](./media/import-data/hbasesource1.png)
+:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="HBase 檔案來源選項的螢幕擷取畫面":::
 
-![HBase 檔案來源選項的螢幕擷取畫面](./media/import-data/hbasesource2.png)
+:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="HBase 檔案來源選項的螢幕擷取畫面":::
 
 HBase Stargate 連接字串的格式如下：
 
@@ -363,7 +363,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 為了提高效率，Azure Cosmos DB 大量匯入工具可讓您使用 Azure Cosmos DB 預存程序，從任何可用的來源選項匯入。 此工具支援匯入到一個單一分割的 Azure Cosmos 容器。 也支援跨多個單一分割 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。 此工具會建立並執行預存程序，然後從目標集合中將它刪除。  
 
-![Azure Cosmos DB 大量選項的螢幕擷取畫面](./media/import-data/documentdbbulk.png)
+:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Azure Cosmos DB 大量選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
@@ -376,7 +376,7 @@ Azure Cosmos DB 連接字串的格式如下：
 > [!NOTE]
 > 若要確定可以存取連接字串欄位中指定的 Azure Cosmos DB 執行個體，請使用 Verify 命令。
 
-若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。 若要匯入到多個集合，請分別輸入每個集合的名稱，或使用下列語法來指定多個集合：collection_prefix  [開始索引 - 結束索引]。 使用上述語法指定多個集合時，請記住下列指導方針：
+若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。 若要匯入到多個集合，請分別輸入每個集合的名稱，或使用下列語法來指定多個集合：collection_prefix[開始索引 - 結束索引]。 使用上述語法指定多個集合時，請記住下列指導方針：
 
 1. 僅支援整數範圍的名稱模式。 例如，指定 collection[0-3] 會建立下列集合：collection0、collection1、collection2、collection3。
 2. 您可以使用縮寫的語法：collection[3] 會建立一組與步驟 1 中所述相同的集合。
@@ -393,11 +393,11 @@ Azure Cosmos DB 連接字串的格式如下：
 
 匯入期間有數個可用的進階選項。 首先，雖然此工具包含預設的大量匯入預存程序 (BulkInsert.js)，但您可以選擇指定自己的匯入預存程序：
 
- ![Azure Cosmos DB 大量插入 sproc 選項的螢幕擷取畫面](./media/import-data/bulkinsertsp.png)
+ :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="Azure Cosmos DB 大量插入 sproc 選項的螢幕擷取畫面":::
 
 此外，匯入日期類型時 (例如從 SQL Server 或 MongoDB)，有三種匯入選項可供選擇：
 
- ![Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面](./media/import-data/datetimeoptions.png)
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面":::
 
 * String (字串)：保存為字串值
 * Epoch：保存為 Epoch 數值
@@ -413,7 +413,7 @@ Azure Cosmos DB 大量匯入工具含有下列其他進階選項：
 6. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 7. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-![Azure Cosmos DB 大量匯入進階選項的螢幕擷取畫面](./media/import-data/docdbbulkoptions.png)
+:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="Azure Cosmos DB 大量匯入進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -422,7 +422,7 @@ Azure Cosmos DB 大量匯入工具含有下列其他進階選項：
 
 Azure Cosmos DB 循序記錄匯入工具可讓您從可用的來源選項逐筆匯入記錄。 如果您打算匯入至已達到預存程序配額的現有集合，您可以選擇此選項。 此工具支援匯入到單一 (單一分割區和多個分割區) Azure Cosmos 容器。 也支援跨多個單一分割區或多重分割區 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。
 
-![Azure Cosmos DB 循序記錄匯入選項的螢幕擷取畫面](./media/import-data/documentdbsequential.png)
+:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Azure Cosmos DB 循序記錄匯入選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
@@ -435,7 +435,7 @@ Azure Cosmos DB 連接字串的格式如下：
 > [!NOTE]
 > 若要確定可以存取連接字串欄位中指定的 Azure Cosmos DB 執行個體，請使用 Verify 命令。
 
-若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。 若要匯入到多個集合，請個別地輸入每個集合名稱。 您也可以使用下列語法來指定多個集合：collection_prefix  [開始索引 - 結束索引]。 透過上述語法指定多個集合時，請記住下列指導方針：
+若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。 若要匯入到多個集合，請個別地輸入每個集合名稱。 您也可以使用下列語法來指定多個集合：collection_prefix[開始索引 - 結束索引]。 透過上述語法指定多個集合時，請記住下列指導方針：
 
 1. 僅支援整數範圍的名稱模式。 例如，指定 collection[0-3] 會建立下列集合：collection0、collection1、collection2、collection3。
 2. 您可以使用縮寫的語法：collection[3] 會建立一組與步驟 1 中所述相同的集合。
@@ -452,7 +452,7 @@ Azure Cosmos DB 連接字串的格式如下：
 
 匯入期間有數個可用的進階選項。 首先，匯入日期類型時 (例如從 SQL Server 或 MongoDB)，有三種匯入選項可供選擇：
 
- ![Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面](./media/import-data/datetimeoptions.png)
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面":::
 
 * String (字串)：保存為字串值
 * Epoch：保存為 Epoch 數值
@@ -467,7 +467,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 5. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 6. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-![Azure Cosmos DB 循序記錄匯入進階選項的螢幕擷取畫面](./media/import-data/documentdbsequentialoptions.png)
+:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="Azure Cosmos DB 循序記錄匯入進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -476,7 +476,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 
 當您允許移轉工具在匯入期間建立 Azure Cosmos DB SQL API 集合時，您可以指定集合的索引編製原則。 在 Azure Cosmos DB 大量匯入和 Azure Cosmos DB 循序記錄選項的進階選項區段中，瀏覽至 [編製索引原則] 區段。
 
-![Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面](./media/import-data/indexingpolicy1.png)
+:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面":::
 
 使用索引編製原則進階選項，您可以選取索引編製原則檔案，以手動方式輸入索引編製原則，或從一組預設範本中選取 (以滑鼠右鍵按一下索引編製原則文字方塊)。
 
@@ -485,7 +485,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 * 預設值。 當您對字串執行相等查詢時，這是最佳的原則。 最適合您使用 ORDER BY、範圍及數字的等號查詢時。 這個原則的索引儲存空間負擔比範圍低。
 * 範圍。 當您在數字和字串上使用 ORDER BY、範圍及相等查詢時，這是最佳的原則。 這個原則的索引儲存空間負擔比預設或雜湊高。
 
-![Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面](./media/import-data/indexingpolicy2.png)
+:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面":::
 
 > [!NOTE]
 > 如果未指定索引編製原則，則會套用預設原則。 如需編製索引原則的詳細資訊，請參閱 [Azure Cosmos DB 編製索引原則](index-policy.md)。
@@ -494,9 +494,9 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 
 Azure Cosmos DB JSON 匯出工具可讓您將任何可用的來源選項匯出至具有 JSON 文件陣列的 JSON 檔案。 此工具會為您處理匯出作業。 或者，您可以選擇檢視產生的移轉命令，然後自己執行命令。 產生的 JSON 檔案可能會儲存在本機或 Azure Blob 儲存體中。
 
-![Azure Cosmos DB JSON 本機檔案匯出選項的螢幕擷取畫面](./media/import-data/jsontarget.png)
+:::image type="content" source="./media/import-data/jsontarget.png" alt-text="Azure Cosmos DB JSON 本機檔案匯出選項的螢幕擷取畫面":::
 
-![Azure Cosmos DB JSON Azure Blob 儲存體匯出選項的螢幕擷取畫面](./media/import-data/jsontarget2.png)
+:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="Azure Cosmos DB JSON Azure Blob 儲存體匯出選項的螢幕擷取畫面":::
 
 您可以選擇性地選擇美化產生的 JSON。 這個動作會增加產生文件的大小，但會使內容更容易閱讀。
 
@@ -553,23 +553,23 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 3. 如果選取了現有的檔案，則會覆寫該檔案，沒有任何附加選項。
 4. 然後，選擇是要記錄所有錯誤訊息、嚴重錯誤訊息，還是不記錄任何錯誤訊息。 最後，決定螢幕上傳輸訊息更新其進度的頻率。
 
-   ![進階設定畫面的螢幕擷取畫面](./media/import-data/AdvancedConfiguration.png)
+   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="進階設定畫面的螢幕擷取畫面":::
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>確認匯入設定及檢視命令列
 
 1. 指定來源資訊、目標資訊與進階組態之後，請檢閱移轉摘要，以及檢視或複製所產生的移轉命令。 (複製命令對於自動匯入作業非常有用。)
 
-    ![摘要畫面的螢幕擷取畫面](./media/import-data/summary.png)
+    :::image type="content" source="./media/import-data/summary.png" alt-text="摘要畫面的螢幕擷取畫面":::
 
-    ![摘要畫面的螢幕擷取畫面](./media/import-data/summarycommand.png)
+    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="摘要畫面的螢幕擷取畫面":::
 
-2. 在您滿意來源和目標選項之後，請按一下 [匯入]  。 隨著匯入的處理，已耗用時間、傳送的計數，以及失敗的資訊 (如果您未在 [進階組態] 中提供檔案名稱) 都會隨之更新。 完成後，您可以匯出結果 (例如處理任何匯入失敗)。
+2. 在您滿意來源和目標選項之後，請按一下 [匯入] 。 隨著匯入的處理，已耗用時間、傳送的計數，以及失敗的資訊 (如果您未在 [進階組態] 中提供檔案名稱) 都會隨之更新。 完成後，您可以匯出結果 (例如處理任何匯入失敗)。
 
-    ![Azure Cosmos DB JSON 匯出選項的螢幕擷取畫面](./media/import-data/viewresults.png)
+    :::image type="content" source="./media/import-data/viewresults.png" alt-text="Azure Cosmos DB JSON 匯出選項的螢幕擷取畫面":::
 
 3. 重設所有的值或保留現有設定，也可以開始新的匯入。 (例如，您可以選擇保留連接字串資訊、來源和目標選擇等等。)
 
-    ![Azure Cosmos DB JSON 匯出選項的螢幕擷取畫面](./media/import-data/newimport.png)
+    :::image type="content" source="./media/import-data/newimport.png" alt-text="Azure Cosmos DB JSON 匯出選項的螢幕擷取畫面":::
 
 ## <a name="next-steps"></a>後續步驟
 

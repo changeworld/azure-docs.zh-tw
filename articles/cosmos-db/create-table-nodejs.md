@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: bbb6ac60c28635371760987b7a55ae7344dd73fb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217932"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115027"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入門：使用 Node.js 與 Azure Cosmos DB 建置資料表 API 應用程式
 
@@ -138,7 +138,7 @@ ms.locfileid: "84217932"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
-    ![在 [連接字串] 窗格中檢視及複製所需的連接字串資訊](./media/create-table-nodejs/connection-string.png)
+    :::image type="content" source="./media/create-table-nodejs/connection-string.png" alt-text="在 [連接字串] 窗格中檢視及複製所需的連接字串資訊":::
 
 2. 使用右側的複製按鈕複製 PRIMARY CONNECTION STRING。
 

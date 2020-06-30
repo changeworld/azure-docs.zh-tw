@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5555c176adfb5be78ea73f17bfa01ba87766acc1
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607205"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100406"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Python)
 
@@ -306,7 +306,7 @@ python3 environmental_sensor.py
 
 ## <a name="next-steps"></a>後續步驟
 
-身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
+身為裝置開發人員，您現在已了解如何使用 Python 建立裝置的基本概念，以下是一些建議的後續步驟：
 
 * 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
 * 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。

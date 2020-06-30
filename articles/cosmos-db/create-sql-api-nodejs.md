@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e40dc59cf1e8fe3302c59f1067c285bc37141465
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655351"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115198"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Node.js 連線至 Azure Cosmos DB SQL API 帳戶並從中查詢資料
 
@@ -33,7 +33,7 @@ ms.locfileid: "83655351"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Quickstart-Use-Nodejs-to-connect-and-query-data-from-Azure-Cosmos-DB-SQL-API-account/player]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 - [Node.js 6.0.0+](https://nodejs.org/)。
@@ -59,7 +59,7 @@ ms.locfileid: "83655351"
 
    [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
 
-   ![Azure 入口網站資料總管，[新增容器] 窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
 
 2. 在 [新增容器] 頁面上，輸入新容器的設定。
 
@@ -175,7 +175,7 @@ npm install @azure/cosmos
 
 1. 在您於 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，從左側瀏覽區選取 [金鑰]，然後選取 [讀寫金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 URI 和主要金鑰複製到 app.js 檔案。
 
-   ![在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/create-sql-api-dotnet/keys.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰":::
 
 2. 開啟 config.js 檔案。
 

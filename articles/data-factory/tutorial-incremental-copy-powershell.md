@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: bb2679d0f681ae82bbe1a50671bd2ff70a239dfb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194513"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254441"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以累加方式將資料從 Azure SQL 資料庫載入到 Azure Blob 儲存體
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從 Azure SQL 資料庫中的資料表載入到 Azure Blob 儲存體。
+在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從 Azure SQL Database 中的資料表載入至 Azure Blob 儲存體。
 
 您會在本教學課程中執行下列步驟：
 
@@ -63,7 +63,7 @@ ms.locfileid: "84194513"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**。 您需要使用資料庫作為來源資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。
+* **Azure SQL Database**。 您需要使用資料庫作為來源資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟建立資料庫。
 * **Azure 儲存體**。 您需要使用 Blob 儲存體作為接收資料存放區。 如果您沒有儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟來建立儲存體帳戶。 建立名為 adftutorial 的容器。 
 * **Azure PowerShell**(英文)。 遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
 
@@ -192,11 +192,11 @@ END
     ```
 
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為參與者或擁有者角色，或是 Azure 訂用帳戶的管理員。
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (儲存體、SQL Database 等) 和計算 (Azure HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (儲存體、SQL Database、Azure SQL 受控執行個體等) 和計算 (Azure HDInsight 等) 可位於其他區域。
 
 
 ## <a name="create-linked-services"></a>建立連結的服務
-您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對儲存體帳戶和 SQL 資料庫建立連結服務。
+您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對儲存體帳戶和 SQL Database 建立連結服務。
 
 ### <a name="create-a-storage-linked-service"></a>建立儲存體連結服務
 1. 使用下列內容，在 C:\ADF 資料夾中建立名為 AzureStorageLinkedService.json 的 JSON 檔案。 (建立資料夾 ADF (如果尚未存在)。)儲存檔案之前，以您的儲存體帳戶名稱和金鑰取代 `<accountName>` 和 `<accountKey>`。
@@ -732,7 +732,7 @@ END
 > * 執行管道。
 > * 監視管道執行。
 
-在本教學課程中，管線已從 SQL 資料庫中的單一資料表將資料複製到 Blob 儲存體。 請前進到下列教學課程，了解如何將資料從 SQL Server 資料庫中的多個資料表複製到 SQL 資料庫。
+在本教學課程中，管線已從 Azure SQL Database 中的單一資料表將資料複製到 Blob 儲存體。 請前進到下列教學課程，了解如何將資料從 SQL Server 資料庫中的多個資料表複製到 SQL 資料庫。
 
 > [!div class="nextstepaction"]
 >[以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b87c4c0beec2b3b10c81355fc51ded870d7d1d9e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 59ea78fed27b41199699d5413f605288bbf1a608
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310915"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118384"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB Cassandra API 資料 (v4 驅動程式)
 
@@ -153,7 +153,7 @@ ms.locfileid: "84310915"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
-    ![從 Azure 入口網站 [連接字串] 頁面檢視及複製使用者名稱](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
+    :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="從 Azure 入口網站 [連接字串] 頁面檢視及複製使用者名稱":::
 
 2. 使用 ![[複製] 按鈕](./media/create-cassandra-java/copy-button-azure-portal.png) 來複製 [連絡點] 值。
 
@@ -215,7 +215,7 @@ ms.locfileid: "84310915"
 
 4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
-    ![在資料總管中檢視資料 - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="在資料總管中檢視資料 - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

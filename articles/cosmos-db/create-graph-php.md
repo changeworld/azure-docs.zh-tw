@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68736638"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118274"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>快速入門：使用 PHP 和 Azure 入口網站在 Azure Cosmos DB 中建立圖形資料庫
 
@@ -30,7 +30,7 @@ ms.locfileid: "68736638"
 
 Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、資料表、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
 
@@ -102,11 +102,12 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連線資訊，並將其複製到應用程式中。 這些設定可讓您的應用程式與託管資料庫進行通訊。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [金鑰]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [金鑰]。 
 
     複製 URI 值的第一個部分。
 
-    ![在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰](./media/create-graph-php/keys.png)
+    :::image type="content" source="./media/create-graph-php/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰":::
+
 2. 開啟 `connect.php` 檔案，並在第 8 行將 URI 值貼至 `your_server_address` 上。
 
     連線物件初始化現在看起來應該類似下列程式碼：
@@ -190,21 +191,21 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 您現在可以移回 [資料總管] 並查看已新增到圖行的頂點，然後新增額外的資料點。
 
-1. 按一下 [資料總管]  ，展開 **sample-graph**，按一下 [圖形]  ，然後再按一下 [套用篩選條件]  。 
+1. 按一下 [資料總管]，展開 **sample-graph**，按一下 [圖形]，然後再按一下 [套用篩選條件]。 
 
-   ![在 Azure 入口網站的 [資料總管] 中建立新文件](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 入口網站的 [資料總管] 中建立新文件":::
 
-2. 在 [結果]  清單中，請注意已新增到圖形的新使用者。 選取 **ben**，請注意，其已連線到 robin。 您可以拖放移動周圍的頂點、捲動滑鼠滾輪執行縮放、使用雙箭號展開圖形大小。 
+2. 在 [結果] 清單中，請注意已新增到圖形的新使用者。 選取 **ben**，請注意，其已連線到 robin。 您可以拖放移動周圍的頂點、捲動滑鼠滾輪執行縮放、使用雙箭號展開圖形大小。 
 
-   ![Azure 入口網站的資料總管之圖形中的新頂點](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure 入口網站的資料總管之圖形中的新頂點":::
 
-3. 現在來加入一些新使用者。 按一下 [新增頂點]  按鈕，將資料新增至您的圖形。
+3. 現在來加入一些新使用者。 按一下 [新增頂點] 按鈕，將資料新增至您的圖形。
 
-   ![在 Azure 入口網站的 [資料總管] 中建立新文件](./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 入口網站的 [資料總管] 中建立新文件":::
 
 4. 輸入*人員*的標籤。
 
-5. 按一下 [新增屬性]  ，以新增以下各項屬性。 請注意，您可以在圖形中為每個人建立獨特的屬性。 只需要**識別碼**索引鍵。
+5. 按一下 [新增屬性]，以新增以下各項屬性。 請注意，您可以在圖形中為每個人建立獨特的屬性。 只需要**識別碼**索引鍵。
 
     Key | 值 | 注意
     ----|----|----
@@ -215,13 +216,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     > [!NOTE]
     > 在本快速入門中，您會建立非資料分割集合。 不過，如果您藉由在集合建立期間指定資料分割索引鍵來建立資料分割集合，您就必須包含資料分割索引鍵作為每個新頂點的索引鍵。 
 
-6. 按一下 [確定]  。 您可能需要展開畫面，才能在螢幕底部看到 [確定]  。
+6. 按一下 [確定]。 您可能需要展開畫面，才能在螢幕底部看到 [確定]。
 
-7. 再次按一下 [新增頂點]  並新增額外的新使用者。 
+7. 再次按一下 [新增頂點] 並新增額外的新使用者。 
 
 8. 輸入*人員*的標籤。
 
-9. 按一下 [新增屬性]  ，以新增以下各項屬性：
+9. 按一下 [新增屬性]，以新增以下各項屬性：
     
     Key | 值 | 注意
     ----|----|----
@@ -229,23 +230,23 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     **gender** | male | 
     **school** | MIT | 
 
-10. 按一下 [確定]  。 
+10. 按一下 [確定]。 
 
-11. 按一下 [套用篩選條件]  按鈕，預設的 `g.V()` 篩選條件會顯示圖形中的所有值。 所有使用者現在會顯示在 [結果]  清單中。 
+11. 按一下 [套用篩選條件] 按鈕，預設的 `g.V()` 篩選條件會顯示圖形中的所有值。 所有使用者現在會顯示在 [結果] 清單中。 
 
-    隨著您新增更多的資料，您可以使用篩選條件來限制您的結果。 依預設，[資料總管] 會使用 `g.V()` 擷取圖形中的所有頂點。 您可將其變更為不同的[圖形查詢](tutorial-query-graph.md) (例如 `g.V().count()`)，以使用 JSON 格式傳回圖形中所有頂點的計數。 若您變更篩選條件，請將篩選條件變更回 `g.V()`，然後按一下 [套用篩選條件]  ，即可再次顯示所有的結果。
+    隨著您新增更多的資料，您可以使用篩選條件來限制您的結果。 依預設，[資料總管] 會使用 `g.V()` 擷取圖形中的所有頂點。 您可將其變更為不同的[圖形查詢](tutorial-query-graph.md) (例如 `g.V().count()`)，以使用 JSON 格式傳回圖形中所有頂點的計數。 若您變更篩選條件，請將篩選條件變更回 `g.V()`，然後按一下 [套用篩選條件]，即可再次顯示所有的結果。
 
-12. 現在您可以將 rakesh 和 ashley 連線。 請確定已在 [結果]  清單中選取 **ashley**，然後按一下右下方 [目標]  旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性]  區域。
+12. 現在您可以將 rakesh 和 ashley 連線。 請確定已在 [結果] 清單中選取 **ashley**，然後按一下右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
 
-    ![變更圖形中頂點的目標](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="變更圖形中頂點的目標":::
 
-13. 在 [目標]  方塊中輸入 rakesh  ，並在 [邊緣標籤]  方塊中輸入 knows  ，然後按一下核取方塊。
+13. 在 [目標] 方塊中輸入 rakesh，並在 [邊緣標籤] 方塊中輸入 knows，然後按一下核取方塊。
 
-    ![在 [資料總管] 中新增 ashley 與 rakesh 之間的連線](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="在 [資料總管] 中新增 ashley 與 rakesh 之間的連線":::
 
 14. 現在從 [結果] 清單中選取 **rakesh** 並查看 ashley 與 rakesh 是否已連線。 
 
-    ![[資料總管] 中連線的兩個頂點](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="[資料總管] 中連線的兩個頂點":::
 
     這會完成本快速入門中的資源建立部分。 您可以繼續將頂點新增至圖形、修改現有的頂點，或是變更查詢。 現在讓我們檢閱 Azure Cosmos DB 提供的計量，然後再清除資源。 
 

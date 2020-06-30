@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站建立資料處理站管線
-description: 本教學課程提供逐步指示，說明如何使用 Azure 入口網站建立具有管線的資料處理站。 管線會使用複製活動將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。
+description: 本教學課程提供逐步指示，說明如何使用 Azure 入口網站建立具有管線的資料處理站。 管線會使用複製活動將資料從 Azure Blob 儲存體複製到 Azure SQL Database。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248612"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253957"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 儲存體複製到 SQL 資料庫
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 儲存體複製到 Azure SQL Database 中的資料庫
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
+在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體複製到 Azure SQL Database 中的資料庫。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 > [!NOTE]
 > - 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](introduction.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "84248612"
 ## <a name="prerequisites"></a>必要條件
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為*來源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
-* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。
+* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟建立資料庫。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
@@ -61,7 +61,7 @@ ms.locfileid: "84248612"
 
 #### <a name="create-a-sink-sql-table"></a>建立接收 SQL 資料表
 
-1. 使用下列 SQL 指令碼，在您的 SQL 資料庫中建立 **dbo.emp** 資料表：
+1. 使用下列 SQL 指令碼，在您的資料庫中建立 **dbo.emp** 資料表：
 
     ```sql
     CREATE TABLE dbo.emp
@@ -154,7 +154,7 @@ ms.locfileid: "84248612"
 
 1. 在 [新增資料集] 對話方塊中，於搜尋方塊中輸入 "SQL" 以篩選連接器，並選取 [Azure SQL Database]，然後選取 [繼續]。 在本教學課程中，您會將資料複製到 SQL 資料庫。
 
-1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為 [名稱]。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
+1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為 [名稱]。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL Database。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
 
 1. 在 [新增連結服務 (Azure SQL Database)] 對話方塊中，執行下列步驟：
 
@@ -162,7 +162,7 @@ ms.locfileid: "84248612"
 
     b. 在 [伺服器名稱] 下，選取您的 SQL Server 執行個體。
 
-    c. 在 [資料庫名稱] 下，選取您的 SQL 資料庫。
+    c. 在 [資料庫名稱] 下，選取您的資料庫。
 
     d. 在 [使用者名稱] 下，輸入使用者名稱。
 
@@ -209,7 +209,7 @@ ms.locfileid: "84248612"
 
     [![監視活動執行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. 確認有兩個以上的資料列新增至 SQL 資料庫中的 **emp** 資料表。
+1. 確認有兩個以上的資料列新增至資料庫中的 **emp** 資料表。
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>觸發排程上的管線
 在此排程中，您會建立管線的排程器觸發程序。 此觸發程序會依照指定的排程 (例如每小時或每天) 執行管線。 在這裡，您會建立每分鐘執行一次的觸發程序，並讓其在指定的結束日期時間停止。

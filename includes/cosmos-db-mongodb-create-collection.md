@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 0f471c5aefdb39396ea189984d32a9e8f5419182
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200443"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121341"
 ---
 您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立適用於 MongoDB 資料庫和容器的 Azure Cosmos DB API。 
 
@@ -21,7 +21,7 @@ ms.locfileid: "84200443"
     
     [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
 
-    ![Azure 入口網站資料總管，[新增容器] 窗格](./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png)
+    :::image type="content" source="./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
 
 2. 在 [新增容器] 頁面上，輸入新容器的設定。
 

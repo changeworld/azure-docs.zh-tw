@@ -4,14 +4,14 @@ description: 取得 Azure PowerShell 範例，以在 Azure Cosmos DB SQL API 帳
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/13/2020
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713534"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126088"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例 - SQL (Core) API
 
@@ -35,4 +35,5 @@ ms.locfileid: "83713534"
 |[變更容錯移轉優先順序或觸發容錯移轉](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 變更 Azure Cosmos 帳戶的區域容錯移轉優先順序或觸發手動容錯移轉。 |
 |[帳戶金鑰或連接字串](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得主要和次要金鑰、連接字串，或重新產生 Azure Cosmos DB 帳戶的帳戶金鑰。 |
 |[建立具有 IP 防火牆的 Cosmos 帳戶](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立已啟用 IP 防火牆的 Azure Cosmos DB 帳戶。 |
+|[鎖定資源避免刪除](scripts/powershell/sql/powershell-sql-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||

@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024127"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251432"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建置群集模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在這三部分教學課程系列的第二部分中，您將使用 R 建立 K-Means 模型來執行群集。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署此模型。
+在這三部分教學課程系列的第二部分中，您將使用 R 建立 K-Means 模型來執行群集。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 Azure SQL Database 內的資料庫中部署此模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ ms.locfileid: "84024127"
 > * 執行叢集
 > * 分析結果
 
-在[第一部分](clustering-model-prepare-data-tutorial.md)中，您已了解如何在 Azure SQL 資料庫中準備執行群集所需的資料。
+在[第一部分](clustering-model-prepare-data-tutorial.md)，您已了解如何準備資料庫中的資料，以執行群集。
 
-在[第三部分](clustering-model-deploy-tutorial.md)中，您將了解如何使用 R 在 Azure SQL 資料庫中建立可根據新資料執行群集的預存程序。
+在[第三部分](clustering-model-deploy-tutorial.md)中，您將了解如何使用 R 建立可根據新資料執行群集的預存程序。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -140,7 +140,7 @@ Within cluster sum of squares by cluster:
 
 ## <a name="clean-up-resources"></a>清除資源
 
-***如果您不打算繼續進行本教學課程***，請從您的伺服器刪除 tpcxbb_1gb 資料庫。
+***如果您不打算繼續進行此教學課程***，請從您的伺服器刪除 tpcxbb_1gb 資料庫。
 
 在 Azure 入口網站中執行下列步驟：
 

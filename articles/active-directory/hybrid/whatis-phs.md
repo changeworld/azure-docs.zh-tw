@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 568f284a22f170c2a6a0d60d9e2cfed0645937ba
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "66253849"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261370"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什麼是 Azure AD 的密碼雜湊同步處理？
 密碼雜湊同步處理是其中一種用來完成混合式身分識別的登入方法。 Azure AD Connect 可將使用者密碼的雜湊從內部部署 Active Directory 執行個體，同步到雲端式 Azure AD 執行個體。

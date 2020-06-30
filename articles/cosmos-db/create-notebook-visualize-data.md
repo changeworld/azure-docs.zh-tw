@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743583"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115273"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教學課程：在 Azure Cosmos DB 中建立筆記本來分析資料並將其視覺化
 
 本文說明如何使用內建 Jupyter 筆記本，將範例零售資料匯入 Azure Cosmos DB。 您將了解如何使用 SQL 和 Azure Cosmos DB magic 命令來執行查詢、分析資料，以及將結果視覺化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [在建立 Azure Cosmos 帳戶時啟用筆記本支援](enable-notebooks.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "83743583"
 
 1. 移至 [筆記本] 索引標籤，選取 [我的筆記本] 旁邊的 `…`，然後建立 [新筆記本]。 選取 [Python 3]作為預設核心。
 
-   ![建立新的 Notebook](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="建立新的筆記本":::
 
 1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
 
@@ -49,7 +49,7 @@ ms.locfileid: "83743583"
 
    若要執行儲存格，請選取 `Shift + Enter` 或選取儲存格，然後選擇資料總管瀏覽列上的 [執行作用儲存格] 選項。
 
-   ![執行作用儲存格](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="執行作用儲存格":::
 
    系統會在您目前的 Azure Cosmos 帳戶中建立資料庫和容器。 此容器會以每秒 400 RU的速率佈建。 建立資料庫和容器之後，您將會看到下列輸出。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "83743583"
 
    您也可以重新整理 [資料] 索引標籤，並查看新建立的資源：
 
-   ![重新整理 [資料] 索引標籤以查看新容器](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="重新整理 [資料] 索引標籤以查看新容器":::
 
 1. 接下來，您會將範例零售資料匯入 Azure Cosmos 容器中。 以下是來自零售資料的項目格式：
 
@@ -135,7 +135,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-![執行查詢以取得前 10 個項目](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="執行查詢以取得前 10 個項目":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>執行查詢及分析您的資料
 
@@ -148,7 +148,7 @@ df_cosmos.head(10)
    display(df_revenue.head(5))
    ```
 
-   ![總銷售收益輸出](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="總銷售收益輸出":::
 
 * **查詢 2：** 若要取得前五個購買項目的清單，請開啟新的筆記本儲存格，然後執行下列程式碼：
 
@@ -159,7 +159,7 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![前五個購買項目](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="前五個購買項目":::
 
 ## <a name="visualize-your-data"></a>將您的資料視覺化  
 
@@ -286,7 +286,7 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   ![將購買轉換率視覺化](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="將購買轉換率視覺化":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,19 +3,19 @@ title: Durable Functions 概觀 - Azure
 description: Azure Functions 的 Durable Functions 擴充簡介。
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697873"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193425"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式  ](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式  ](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支援的語言
 
@@ -23,6 +23,7 @@ Durable Functions 目前支援下列語言：
 
 * **C#** ：[預先編譯的類別庫](../functions-dotnet-class-library.md)和 [C# 指令碼](../functions-reference-csharp.md)。
 * **JavaScript**：只有 2.x 版的 Azure Functions 執行階段才支援。 需要 1.7.0 版的 Durable Functions 擴充功能，或更新版本。 
+* **Python**：需要 1.8.5 版的 Durable Functions 擴充功能，或更新版本。 
 * **F#** ：預先編譯的類別庫和 F# 指令碼。 只有 1.x 版的 Azure Functions 執行階段才支援 F# 指令碼。
 
 Durable Functions 的目標是支援所有的 [Azure Functions 語言](../supported-languages.md)。 請參閱 [Durable Functions 問題清單](https://github.com/Azure/azure-functions-durable-extension/issues)，以取得最新工作狀態來支援其他語言。
@@ -95,6 +96,29 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > JavaScript 中的 `context` 物件代表整個[函式內容](../functions-reference-node.md#context-object)。 請使用主要內容上的 `df` 屬性來存取 Durable Functions 內容。
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+您可以使用 `context` 物件依名稱叫用其他函式、傳遞參數，以及傳回函式輸出。 每當程式碼呼叫 `yield` 時，Durable Functions 架構便會對目前函式執行個體的進度設定檢查點。 如果處理序或虛擬機器在執行途中回收，函式執行個體便會從先前的 `yield` 呼叫繼續執行。 如需詳細資訊，請參閱下一節，模式 #2：展開傳送/收合傳送。
+
+> [!NOTE]
+> Python 中的 `context` 物件代表協調流程內容。 使用協調流程內容上的 `function_context` 屬性，存取主要的 Azure Functions 內容。
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：展開傳送/收合傳送。
@@ -161,6 +185,36 @@ module.exports = df.orchestrator(function*(context) {
 展開傳送工作會散發至 `F2` 函式的多個執行個體。 此工作是使用動態的工作清單進行追蹤。 系統會呼叫 `context.df.Task.all` API 以等候所有已呼叫的函式完成。 然後，`F2` 函式的輸出會從動態工作清單彙總起來並傳遞給 `F3` 函式。
 
 在 `context.df.Task.all` 的 `yield` 呼叫發生的自動檢查點作業，可確保可能的中途當機或重新開機不需要重新啟動已完成的工作。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+展開傳送工作會散發至 `F2` 函式的多個執行個體。 此工作是使用動態的工作清單進行追蹤。 系統會呼叫 `context.task_all` API 以等候所有已呼叫的函式完成。 然後，`F2` 函式的輸出會從動態工作清單彙總起來並傳遞給 `F3` 函式。
+
+在 `context.task_all` 的 `yield` 呼叫發生的自動檢查點作業，可確保可能的中途當機或重新開機不需要重新啟動已完成的工作。
 
 ---
 
@@ -276,6 +330,38 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 收到要求時，系統會針對該作業識別碼建立新的協調流程執行個體。 執行個體會輪詢狀態，直到符合條件且迴圈結束為止。 長期計時器可控制輪詢間隔。 接著可執行更多工作，否則協調流程可能會結束。 當 `nextCheck` 超過 `expiryTime` 時，監視器就會結束。
@@ -345,6 +431,36 @@ module.exports = df.orchestrator(function*(context) {
 
 若要建立長期計時器，請呼叫 `context.df.createTimer`。 通知則由 `context.df.waitForExternalEvent` 接收。 接著會呼叫 `context.df.Task.any`，以決定是要向上呈報 (先發生逾時) 還是處理核准 (逾時前收到核准)。
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+若要建立長期計時器，請呼叫 `context.create_timer`。 通知則由 `context.wait_for_external_event` 接收。 接著會呼叫 `context.task_any`，以決定是要向上呈報 (先發生逾時) 還是處理核准 (逾時前收到核准)。
+
 ---
 
 外部用戶端可以使用[內建的 HTTP API](durable-functions-http-api.md#raise-event)，將事件通知傳遞至等候中的協調器函式：
@@ -380,11 +496,23 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
+```
+
 ---
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：彙總工具 (具狀態實體)
 
-第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」  。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
+第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
 
 ![彙總工具圖表](./media/durable-functions-concepts/aggregator.png)
 
@@ -457,9 +585,13 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Python 目前不支援耐久性實體。
+
 ---
 
-用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」  排入佇列 (也稱為「訊號處理」)。
+用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」排入佇列 (也稱為「訊號處理」)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Python 目前不支援耐久性實體。
+
 ---
 
-實體函式可在 [Durable Functions 2.0](durable-functions-versions.md) 和更新版本中取得。
+實體函式可在 C# 和 JavaScript 的 [Durable Functions 2.0](durable-functions-versions.md) 和更新版本中取得。
 
 ## <a name="the-technology"></a>技術
 
@@ -515,6 +651,7 @@ Durable Functions 的收費方式與 Azure Functions 相同。 如需詳細資�
 
 * [使用 Visual Studio 2019 的 C#](durable-functions-create-first-csharp.md)
 * [使用 Visual Studio Code 的 JavaScript](quickstart-js-vscode.md)
+* [使用 Visual Studio Code 的 Python](quickstart-python-vscode.md)
 
 在這兩個快速入門中，您會在本機建立及測試 "hello world" 耐久函式。 接著會將函式程式碼發佈至 Azure。 您建立的函式會協調對其他函式的呼叫並鏈結在一起。
 

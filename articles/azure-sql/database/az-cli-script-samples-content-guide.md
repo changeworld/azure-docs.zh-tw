@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658175"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251501"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>用於 Azure SQL Database 和 SQL 受控執行個體的 Azure CLI 範例 
  
@@ -39,15 +39,15 @@ ms.locfileid: "84658175"
 |---|---|
 |**在 Azure SQL Database 中建立資料庫**||
 | [建立單一資料庫並設定防火牆規則](scripts/create-and-configure-database-cli.md) | 建立 SQL Database 並設定伺服器層級防火牆規則。 |
-| [建立彈性集區並移動集區資料庫](scripts/move-database-between-elastic-pools-cli.md) | 建立彈性集區、移動集區 SQL 資料庫，然後變更計算大小。 |
+| [建立彈性集區並移動集區資料庫](scripts/move-database-between-elastic-pools-cli.md) | 建立彈性集區、移動集區資料庫，然後變更計算大小。 |
 |**在 Azure SQL Database 中調整資料庫**||
 | [調整單一資料庫](scripts/monitor-and-scale-database-cli.md) | 在查詢 SQL Database 中資料庫的大小資訊之後，將其擴縮為不同的計算大小。 |
 | [調整彈性集區](scripts/scale-pool-cli.md) | 將 SQL 彈性集區擴縮為不同的計算大小。 |
 |**設定異地複寫和容錯移轉**||
 | [將單一資料庫新增至容錯移轉群組](scripts/add-database-to-failover-group-cli.md)| 建立資料庫和容錯移轉群組、將資料庫新增至容錯移轉群組，然後測試容錯移轉至次要伺服器。 |
 | [設定彈性集區的容錯移轉群組](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | 建立資料庫、將其新增至彈性集區、將彈性集區新增至容錯移轉群組，然後測試是否能容錯移轉至次要伺服器。 |
-| [使用作用中異地複寫設定單一資料庫並進行容錯移轉](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| 為 Azure SQL 資料庫設定作用中異地複寫，並將其容錯移轉到次要複本。 |
-| [使用作用中異地複寫設定集區資料庫並進行容錯移轉](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| 為 SQL 彈性集區中的 Azure SQL 資料庫設定作用中異地複寫，然後將其容錯移轉到次要複本。 |
+| [使用作用中異地複寫設定單一資料庫並進行容錯移轉](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| 為單一 Azure SQL Database 內的資料庫設定作用中異地複寫，並將其容錯移轉到次要複本。 |
+| [使用作用中異地複寫設定集區資料庫並進行容錯移轉](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| 為彈性集區中的資料庫設定作用中異地複寫，然後將其容錯移轉到次要複本。 |
 | **稽核與威脅偵測** |
 | [設定稽核與威脅偵測](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| 設定 Azure SQL Database 的稽核與威脅偵測原則。 |
 | **備份、還原、複製和匯入資料庫**||

@@ -1,7 +1,7 @@
 ---
 title: 教學課程：準備在 R 中定型預測模型所需的資料
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 在這個三部分教學課程系列的第一部分中，您將準備 Azure SQL 資料庫中的資料，以供您透過 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型預測模型。
+description: 在這個三部分教學課程系列的第一部分中，您將準備 Azure SQL Database 內資料庫中的資料，以供您透過 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型預測模型。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,36 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a82467a097c50314e8f26f4a5cc4507f867ad504
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 698cc089f770d60b6399864c9832fbc8d104c16f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024787"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253795"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：準備使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型預測模型所需的資料
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在這個三部分教學課程系列的第一部分中，您會使用 R 來匯入和準備來自 Azure SQL 資料庫中的資料。在本系列稍後的內容中，您則會使用此資料透過 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型和部署預測性的機器學習模型。
+在這個三部分教學課程系列的第一部分中，您會使用 R 來匯入和準備來自 Azure SQL Database 內資料庫中的資料。在本系列稍後的內容中，您則會使用此資料透過 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型和部署預測性的機器學習模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
 在本教學課程系列中，我們假設您是滑雪設備的出租業者，且您想要預測未來某個日期的出租數目。 此資訊可協助您準備好庫存、員工和設備。
 
-在本系列的第一和第二部分中，您會在 RStudio 中開發一些 R 指令碼，以便準備資料並定型機器學習模型。 然後，在第三部分中，則會使用預存程序在 SQL 資料庫內執行這些 R 指令碼。
+在本系列的第一和第二部分中，您會在 RStudio 中開發一些 R 指令碼，以便準備資料並定型機器學習模型。 然後，在第三部分中，則會使用預存程序在資料庫內執行這些 R 指令碼。
 
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
-> * 使用 R 將資料庫範例匯入到 Azure SQL 資料庫
-> * 將 Azure SQL 資料庫中的資料載入到 R 資料框架中
+> * 使用 R 將資料庫範例匯入到 Azure SQL Database 中的資料庫
+> * 將資料庫中的資料載入到 R 資料框架中
 > * 藉由依某些資料行分類來以 R 準備資料
 
 在[第二部分](predictive-model-build-compare-tutorial.md)中，您將了解如何在 R 中建立及定型多個機器學習模型，然後選擇最精確的模型。
 
-在[第三部分](predictive-model-deploy-tutorial.md)中，您會了解如何將模型儲存在資料庫中，然後從您在第一和第二部分中開發的 R 指令碼建立預存程序。 預存程序會在 SQL 資料庫中執行，以根據新資料做出預測。
+在[第三部分](predictive-model-deploy-tutorial.md)中，您會了解如何將模型儲存在資料庫中，然後從您在第一和第二部分中開發的 R 指令碼建立預存程序。 預存程序會在資料庫中執行，以根據新資料做出預測。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -66,7 +67,7 @@ ms.locfileid: "84024787"
 
 1. 下載檔案 [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac)。
 
-1. 請依照[匯入 BACPAC 檔案以建立 Azure SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-import)中的指示，並使用下列詳細資料：
+1. 使用下列詳細資料，遵循[將 BACPAC 檔案匯入至 Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫](../../azure-sql/database/database-import.md)：
 
    * 從您下載的 **TutorialDB.bacpac** 檔案匯入
    * 在公開預覽期間，請為新資料庫選擇 **Gen5/虛擬核心**組態
@@ -74,7 +75,7 @@ ms.locfileid: "84024787"
 
 ## <a name="load-the-data-into-a-data-frame"></a>將資料載入資料框架
 
-若要在 R 中使用資料，請將 Azure SQL 資料庫中的資料載入資料框架 (`rentaldata`) 中。
+若要在 R 中使用資料，請將資料庫中的資料載入資料框架 (`rentaldata`) 中。
 
 在 RStudio 中建立新的 RScript 檔案，並執行下列指令碼。 將 **Server**、**UID** 和 **PWD** 取代為您自己的連線資訊。
 
@@ -163,8 +164,8 @@ $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 
 在本教學課程系列的第一部分中，您已完成下列步驟：
 
-* 使用 R 將資料庫範例匯入到 Azure SQL 資料庫
-* 將 Azure SQL 資料庫中的資料載入到 R 資料框架中
+* 使用 R 將資料庫範例匯入到 Azure SQL Database 中的資料庫
+* 將資料庫中的資料載入到 R 資料框架中
 * 藉由依某些資料行分類來以 R 準備資料
 
 若要建立會使用 TutorialDB 資料庫中所含資料的機器學習模型，請遵循本教學課程系列的第二部分：

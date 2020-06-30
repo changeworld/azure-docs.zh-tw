@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383175"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253701"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>適用於企業客戶的報告 API 概觀
+
+> [!Note]
+> Microsoft 不會再更新 Azure 計費 - 企業報告 API。 相反地，請改為使用 [Azure 使用量](/rest/api/consumption) API。
+
 報告 API 可讓企業 Azure 客戶以程式設計方式提取使用情況和帳單資料，以使用慣用的資料分析工具進行分析。 企業客戶已經與 Azure 簽署一份 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以便進行綁約金協商，並獲得 Azure 資源的自訂價格。
 
 API 所需的所有日期和時間參數都必須以混合的國際標準時間 (UTC) 值表示。 API 所傳回的值會以 UTC 格式顯示。
@@ -27,7 +31,7 @@ API 所需的所有日期和時間參數都必須以混合的國際標準時間 
 |-|-|
 |授權| 以此格式指定值：**bearer {API_KEY}** <br/> 範例：bearer eyr....09|
 
-## <a name="consumption-apis"></a>使用情況 API
+## <a name="consumption-based-apis"></a>以使用量為基礎的 API
 下述 API 的 Swagger 端點可在[這裡](https://consumption.azure.com/swagger/ui/index)取得，它可讓使用者輕鬆進行 API 自我檢查，並且能使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](https://swagger.io/swagger-codegen/) 產生用戶端 SDK。 自 2014 年 5 月 1 日起的資料可透過此 API 取得。
 
 * **餘額與摘要** - [餘額與摘要 API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 可提供餘額、新購買、Azure Marketplace 服務費用、調整，以及超額部分費用的每月摘要資訊。

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650335"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299189"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入門：將 Go 應用程式連線至適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢�
 
 範例應用程式是以命令列為基礎的 `todo` 管理工具，以 Go 撰寫。 適用於 MongoDB 的 Azure Cosmos DB API [與 MongoDB 有線通訊協定](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility)相容，因此任何 MongoDB 用戶端驅動程式都可以與其連線。 此應用程式使用 [MongoDB 的 Go 驅動程式](https://github.com/mongodb/mongo-go-driver)，且其運作方式對於資料儲存在 Azure Cosmos DB 資料庫中的應用程式而言是透明的。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)搭配連接字串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`。
 - 在您的電腦上安裝 [Go](https://golang.org/)，且具備 Go 的運用知識。
 - [Git](https://git-scm.com/downloads)。
@@ -422,7 +422,7 @@ Azure Cosmos DB 中儲存的資料可在 Azure 入口網站中進行檢視和查
 
 在頂端的 [搜尋] 方塊中，輸入 **Azure Cosmos DB**。 當您的 Cosmos 帳戶刀鋒視窗開啟時，選取您的 Cosmos 帳戶。 在左側導覽中，選取 [資料總管]。 在 [集合] 窗格中展開您的集合，然後您可以檢視集合中的文件、查詢資料，甚至是建立及執行預存程序、觸發程序和 UDF。 
 
-![顯示新建文件的資料總管](./media/create-mongodb-go/go-cosmos-db-data-explorer.jpg)
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="顯示新建文件的資料總管":::
 
 
 使用識別碼刪除 `todo`

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2caaadd0da9d62128d04962fa1f2ff7eade907b0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637913"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254424"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager 的 App Service 範本
 
@@ -29,7 +29,6 @@ ms.locfileid: "80637913"
 | [具有自訂部署位置的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots) \(英文\)| 部署具有自訂部署位置/環境的 App Service 應用程式。 |
 |**設定應用程式**||
 | [來自金鑰保存庫的應用程式憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault) \(英文\)| 部署來自 Azure Key Vault 祕密的 App Service 應用程式憑證，並使用它來進行 TLS/SSL 繫結。 |
-| [具有自訂網域的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain) \(英文\)| 部署具有自訂主機名稱的 App Service 應用程式。 |
 | [具有自訂網域和 SSL 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl) \(英文\)| 部署具有自訂主機名稱的 App Service 應用程式，並從 Key Vault 取得應用程式憑證來進行 TLS/SSL 繫結。 |
 | [具有 GoLang 延伸模組的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang) \(英文\)| 部署具有 Golang 網站延伸模組的 App Service 應用程式。 然後，您可以在 Azure 上執行以 Golang 開發的 Web 應用程式。 |
 | [採用 Java 8 和 Tomcat 8 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat) \(英文\)| 部署已啟用 Java 8 和 Tomcat 8 的 App Service 應用程式。 然後，您可以在 Azure 中執行 Java 應用程式。 |
@@ -42,7 +41,7 @@ ms.locfileid: "80637913"
 |**具有已連線資源的應用程式**||
 | [搭配 MySQL 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql) \(英文\)| 在具有「適用於 MySQL 的 Azure 資料庫」的 Windows 上部署 App Service 應用程式。 |
 | [搭配 PostgreSQL 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql) \(英文\)| 在具有「適用於 PostgreSQL 的 Azure 資料庫」的 Windows 上部署 App Service 應用程式。 |
-| [搭配 SQL 資料庫的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) \(英文\)| 在「基本」服務層級部署 App Service 應用程式與 SQL 資料庫。 |
+| [在 Azure SQL Database 中具有資料庫的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| 在「基本」服務層級部署 App Service 應用程式與 Azure SQL Database 中的資料庫。 |
 | [具有 Blob 儲存體連線的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection) \(英文\)| 使用 Azure Blob 儲存體連接字串來部署 App Service 應用程式。 如此，您便可以從該應用程式使用 Blob 儲存體。 |
 | [具有 Azure Redis 快取的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache) \(英文\)| 部署具有「Azure Redis 快取」的 App Service 應用程式。 |
 |**App Service 環境**||

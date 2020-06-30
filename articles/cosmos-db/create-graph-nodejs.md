@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 852c48d03b3cce785fa87a40afebe37818d91fa6
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80244421"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118231"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶建置 Node.js 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "80244421"
 
 在本快速入門中，您會從 Azure 入口網站建立和管理 Azure Cosmos DB Gremlin (圖形) API 帳戶，並使用從 GitHub 複製的 Node.js 應用程式來新增資料。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 - [Node.js 0.10.29+](https://nodejs.org/)。
 - [Git](https://git-scm.com/downloads)。
@@ -94,7 +94,7 @@ ms.locfileid: "80244421"
 
     ```
 
-  這些設定都位於我們在[下一節](#update-your-connection-string)要編輯的 config.js  中。
+  這些設定都位於我們在[下一節](#update-your-connection-string)要編輯的 config.js中。
 
 * 定義了一系列的函式來執行不同的 Gremlin 作業。 這是其中一個：
 
@@ -148,15 +148,15 @@ ms.locfileid: "80244421"
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 
-1. 開啟 config.xml  檔案。 
+1. 開啟 config.xml 檔案。 
 
-2. 在 config.js  中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [概觀]  頁面中的 [Gremlin 端點]  值填入 `config.endpoint` 金鑰。 
+2. 在 config.js 中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [概觀] 頁面中的 [Gremlin 端點] 值填入 `config.endpoint` 金鑰。 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![在 Azure 入口網站的 [概觀] 頁面中檢視並複製存取金鑰](./media/create-graph-nodejs/gremlin-uri.png)
+    :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="在 Azure 入口網站的 [概觀] 頁面中檢視並複製存取金鑰":::
 
-3. 在 config.js  中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [金鑰]  頁面中的 [主要金鑰]  值填入 config.primaryKey 值。 
+3. 在 config.js 中，使用 Azure 入口網站中您 Cosmos DB 帳戶的 [金鑰] 頁面中的 [主要金鑰] 值填入 config.primaryKey 值。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -164,7 +164,7 @@ ms.locfileid: "80244421"
 
 4. 針對 config.database 和 config.collection 的值，輸入資料庫名稱和圖形 (容器) 名稱。 
 
-您完成的 config.js  檔案範例應如下所示︰
+您完成的 config.js 檔案範例應如下所示︰
 
 ```javascript
 var config = {}
@@ -180,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>執行主控台應用程式
 
-1. 開啟終端機視窗並變更 (透過 `cd` 命令) 至專案內含 package.json  檔案的安裝目錄。
+1. 開啟終端機視窗並變更 (透過 `cd` 命令) 至專案內含 package.json 檔案的安裝目錄。
 
 2. 執行 `npm install` 以安裝必要的 npm 模組，包括 `gremlin`。
 
@@ -190,9 +190,9 @@ module.exports = config;
 
 您現在可以回到 Azure 入口網站中的 [資料總管]，檢視、查詢、修改並使用新的圖形資料。
 
-在 [資料總管] 中，新的資料庫會出現在 [圖形]  窗格中。 展開資料庫，後面接著該容器，然後選取 [圖形]  。
+在 [資料總管] 中，新的資料庫會出現在 [圖形] 窗格中。 展開資料庫，後面接著該容器，然後選取 [圖形]。
 
-當您選取 [套用篩選條件]  時，範例應用程式所產生的資料會顯示在 [圖形]  索引標籤內的下一個窗格中。
+當您選取 [套用篩選條件] 時，範例應用程式所產生的資料會顯示在 [圖形] 索引標籤內的下一個窗格中。
 
 試著使用 `.has('firstName', 'Thomas')` 完成 `g.V()` 以測試篩選條件。 請注意此值會區分大小寫。
 

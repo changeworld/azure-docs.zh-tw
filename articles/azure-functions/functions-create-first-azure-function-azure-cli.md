@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 890dc2f7560faa6df302212aebb2fbe006894d3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559884"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100032"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -393,6 +393,11 @@ mvn azure-functions:deploy
 
 > [!TIP]
 > 若要針對已發佈的函式應用程式檢視近乎即時的記錄，請使用 [Application Insights 即時計量資料流](functions-monitoring.md#streaming-logs)。
+>
+> 執行下列命令，以在瀏覽器中開啟即時計量串流。
+>   ```
+>   func azure functionapp logstream <APP_NAME> --browser
+>   ```
 
 ## <a name="clean-up-resources"></a>清除資源
 

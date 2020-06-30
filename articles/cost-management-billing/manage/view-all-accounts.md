@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 6f571d323a06b64f79c3f97ae8717be7eb8968d3
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 75529d03435e92dfff26dac81f4f7e59585b6fe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434549"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255240"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -22,7 +22,7 @@ Azure 入口網站支援下列計費帳戶類型：
 
 - **Microsoft Online Services 方案**：當您透過 Azure 網站註冊 Azure 時，就會建立 Microsoft Online Services 方案的計費帳戶。 例如，當您註冊 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)、[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)，或以 [Visual studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)身分註冊時。
 
-- **Enterprise 合約**：當貴組織簽署 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。 在 Enterprise 合約中，您最多可以有 500 個訂用帳戶。
+- **Enterprise 合約**：當貴組織簽署 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。 在 Enterprise 合約中，您最多可以有 2000 個訂用帳戶。
 
 - **Microsoft 客戶合約**：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)的客戶，可能也有 Microsoft 客戶合約的計費帳戶。 在 Microsoft 客戶合約中，您最多可以有 20 個訂用帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 客戶合約的計費帳戶](../understand/mca-overview.md)。
 

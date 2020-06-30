@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 399aa00be3d585b1d37bab95d8108ee8a09a8791
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700197"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195006"
 ---
 # <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區 (預覽)
 
-本文會提供一些範例，說明如何透過 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 按一下以探索資料時，也非常適合使用手勢。
+本文會提供範例來說明如何透過 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 按一下以探索資料時，也非常適合使用手勢。
 
 ## <a name="load-to-dataframe"></a>載入至 DataFrame
 

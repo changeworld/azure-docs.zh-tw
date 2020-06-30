@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82105568"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100926"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教學課程：在 Azure Key Vault 中匯入憑證
 
@@ -26,8 +26,9 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 > [!div class="checklist"]
 > * 建立金鑰保存庫。
-> * 使用入口網站在金鑰保存庫中匯入憑證。
-> * 使用 CLI 在金鑰保存庫中匯入憑證。
+> * 使用入口網站在 Key Vault 中匯入憑證。
+> * 使用 CLI 在 Key Vault 中匯入憑證。
+> * 使用 PowerShell 在 Key Vault 中匯入憑證。
 
 
 在開始之前，請先閱讀 [Key Vault 基本概念](../general/basic-concepts.md)。 
@@ -40,17 +41,17 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]。
 2. 在 [搜尋] 方塊中輸入 **Key Vault**。
-3. 從結果清單中，選擇 [Key Vault]  。
-4. 在 [金鑰保存庫] 區段上選擇 [建立]  。
-5. 在 [建立金鑰保存庫]  區段上提供下列資訊：
+3. 從結果清單中，選擇 [Key Vault]。
+4. 在 [金鑰保存庫] 區段上選擇 [建立]。
+5. 在 [建立金鑰保存庫] 區段上提供下列資訊：
     - **Name**：唯一名稱是必要項。 在本快速入門中，我們會使用 **Example-Vault**。 
-    - 訂用帳戶  ：選擇訂用帳戶。
-    - 在 [資源群組]  底下，選擇 [新建]  ，然後輸入資源群組名稱。
-    - 在 [位置]  下拉式功能表中選擇位置。
+    - 訂用帳戶：選擇訂用帳戶。
+    - 在 [資源群組] 底下，選擇 [新建]，然後輸入資源群組名稱。
+    - 在 [位置] 下拉式功能表中選擇位置。
     - 將其他的選項保留預設值。
-6. 提供上述資訊之後，請選取 [建立]  。
+6. 提供上述資訊之後，請選取 [建立]。
 
 請記下下列兩個屬性：
 
@@ -70,14 +71,14 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 > - .pem 檔案格式包含一或多個 X509 憑證檔案。
 > - .pfx 檔案格式則是一種封存檔案格式，可將數個密碼編譯物件儲存在單一檔案中，亦即伺服器憑證 (針對網域所核發)、相匹配的私密金鑰，而且可選擇性地包含中繼 CA。  
 
-1. 在 Key Vault 屬性頁面上，選取 [憑證]  。
-2. 按一下 [產生/匯入]  。
-3. 在 [建立憑證]  畫面上，選擇下列值：
+1. 在 Key Vault 屬性頁面上，選取 [憑證]。
+2. 按一下 [產生/匯入]。
+3. 在 [建立憑證] 畫面上，選擇下列值：
     - **憑證建立方法**：匯入。
     - **憑證名稱**：ExampleCertificate。
     - **上傳憑證檔案**：從磁碟選取憑證檔案
     - **密碼**：如果您要上傳受密碼保護的憑證檔案，請在這裡提供該密碼。 否則請留白。 成功匯入憑證檔案之後，金鑰保存庫就會移除該密碼。
-4. 按一下頁面底部的 [新增]  。
+4. 按一下 [建立]。
 
 ![憑證屬性](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -102,7 +103,8 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-在[這裡](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)深入了解參數
+
+深入了解[參數](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)。
 
 匯入憑證之後，您可以使用[憑證顯示](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show)來檢視憑證
 
@@ -116,9 +118,25 @@ az keyvault certificate show [--id]
                              [--version]
 ```
 
-
-
 現在，您已建立金鑰保存庫、匯入憑證，並已檢視憑證的屬性。
+
+## <a name="import-a-certificate-using-azure-powershell"></a>使用 Azure PowerShell 匯入憑證
+
+```
+Import-AzureKeyVaultCertificate
+      [-VaultName] <String>
+      [-Name] <String>
+      -FilePath <String>
+      [-Password <SecureString>]
+      [-Tag <Hashtable>]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
+```
+
+深入了解[參數](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)。
+
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -126,8 +144,8 @@ az keyvault certificate show [--id]
 如果不再需要，請刪除資源群組，這會刪除 Key Vault 和相關資源。 若要透過入口網站刪除資源群組：
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入資源群組的名稱。 當您在搜尋結果中看到本快速入門中使用的資源群組時，請加以選取。
-2. 選取 [刪除資源群組]  。
-3. 在 [輸入資源群組名稱:]  方塊中輸入資源群組的名稱，然後選取 [刪除]  。
+2. 選取 [刪除資源群組]。
+3. 在 [輸入資源群組名稱:] 方塊中輸入資源群組的名稱，然後選取 [刪除]。
 
 
 ## <a name="next-steps"></a>後續步驟

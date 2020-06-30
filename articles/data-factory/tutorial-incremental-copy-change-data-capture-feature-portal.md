@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325222"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249478"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用異動資料擷取 (CDC)，以累加方式從 Azure SQL 受控執行個體將資料載入 Azure 儲存體
 
@@ -55,7 +55,8 @@ ms.locfileid: "84325222"
 * **Azure SQL Database 受控執行個體**。 您需要使用資料庫作為**來源**資料存放區。 如果您沒有 Azure SQL Database 受控執行個體，請參閱 [建立 Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) 一文，以瞭解建立的步驟。
 * **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為**接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **raw** 的容器。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 資料庫中建立資料來源資料表
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料來源資料表
+
 1. 啟動 **SQL Server Management Studio**，並連線到您的 Azure SQL 受控執行個體伺服器。
 2. 在**伺服器總管**中，以滑鼠右鍵按一下您的**資料庫**，然後選擇 [新增查詢]。
 3. 針對您的 Azure SQL 受控執行個體資料庫執行下列 SQL 命令，藉此建立名為 `customers` 的資料表做為資料來源存放區。  

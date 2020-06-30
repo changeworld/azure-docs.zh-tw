@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235055"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255427"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教學課程：使用 Azure Data Factory 將 SQL Edge 中的資料同步至 Azure Blob 儲存體
 
@@ -25,7 +25,7 @@ ms.locfileid: "84235055"
 如果您尚未在 Azure SQL Edge 部署中建立資料庫或資料表，請使用下列其中一種方法建立：
 
 * 使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) 或 [Azure Data Studio](/sql/azure-data-studio/download/) 連線到 SQL Edge。 執行 SQL 指令碼來建立資料庫和資料表。
-* 透過直接連線至 SQL Edge 模組，使用 [SQLCMD](/sql/tools/sqlcmd-utility/) 建立 SQL 資料庫和資料表。 如需詳細資訊，請參閱[使用 sqlcmd 連線至資料庫引擎](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/)。
+* 透過直接連線至 SQL Edge 模組，使用 [SQLCMD](/sql/tools/sqlcmd-utility/) 建立資料庫和資料表。 如需詳細資訊，請參閱[使用 sqlcmd 連線至資料庫引擎](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/)。
 * 使用 SQLPackage.exe 將 DAC 封裝檔案部署至 SQL Edge 容器。 若要將此程序自動化，您可以將 SqlPackage 檔案 URI 指定為模組所需屬性設定的一部分。 您也可以直接使用 SqlPackage.exe 用戶端工具，將 DAC 封裝部署至 SQL Edge。
 
     如需有關如何下載 SqlPackage.exe 的資訊，請參閱[下載並安裝 sqlpackage](/sql/tools/sqlpackage-download/)。 以下是 SqlPackage.exe 的一些範例命令。 如需詳細資訊，請參閱 SqlPackage.exe 文件。

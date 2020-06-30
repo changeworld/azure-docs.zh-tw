@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535616"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254492"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service 的 CLI 範例
 
@@ -35,7 +35,7 @@ ms.locfileid: "81535616"
 |**保護應用程式**||
 | [與 Azure 應用程式閘道整合](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式，並使用服務端點和存取限制將其與應用程式閘道整合。 |
 |**將應用程式連線至資源**||
-| [將應用程式連線至 SQL 資料庫](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式和 SQL Database，然後將資料庫連接字串新增至應用程式設定。 |
+| [將應用程式連線至 SQL 資料庫](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式和 Azure SQL Database 中的資料庫，然後將資料庫連接字串新增至應用程式設定。 |
 | [將應用程式連線至儲存體帳戶](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式和儲存體帳戶，然後將儲存體連接字串新增至應用程式設定。 |
 | [將應用程式連線至 Azure Cache for Redis](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式和 Azure Cache for Redis，然後將 Redis 連線詳細資料新增至應用程式設定。 |
 | [將應用程式連線至 Cosmos DB](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式和 Cosmos DB，然後將 Cosmos DB 連線詳細資料新增至應用程式設定。 |

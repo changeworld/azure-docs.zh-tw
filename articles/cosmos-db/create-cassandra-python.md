@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559855"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118267"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入門：使用 Python SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
@@ -137,31 +137,31 @@ ms.locfileid: "84559855"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
-    使用 ![[複製] 按鈕](./media/create-cassandra-python/copy.png) 按鈕 (畫面右方) 來複製最高值 ([連絡點])。
+1. 使用 ![[複製] 按鈕](./media/create-cassandra-python/copy.png) 按鈕 (畫面右方) 來複製最高值 ([連絡點])。
 
-    ![在 Azure 入口網站的 [連接字串] 刀鋒視窗檢視及複製存取使用者名稱、密碼及連絡點](./media/create-cassandra-python/keys.png)
+    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="在 Azure 入口網站的 [連接字串] 刀鋒視窗檢視及複製存取使用者名稱、密碼及連絡點":::
 
-2. 開啟 config.py 檔案。 
+1. 開啟 config.py 檔案。 
 
-3. 從入口網站將 [連絡點] 值貼到 `<FILLME>` 的行 10。
+1. 從入口網站將 [連絡點] 值貼到 `<FILLME>` 的行 10。
 
     行 10 現在看起來應該會類似 
 
     `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350'`
 
-4. 從入口網站複製 [使用者名稱] 值，並將它貼到 `<FILLME>` 的行 6。
+1. 從入口網站複製 [使用者名稱] 值，並將它貼到 `<FILLME>` 的行 6。
 
     行 6 現在看起來應該會類似 
 
     `'username': 'cosmos-db-quickstart',`
     
-5. 從入口網站複製 [密碼] 值，並將它貼到 `<FILLME>` 的行 8。
+1. 從入口網站複製 [密碼] 值，並將它貼到 `<FILLME>` 的行 8。
 
     行 8 現在看起來應該會類似
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. 儲存 config.py 檔案。
+1. 儲存 config.py 檔案。
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 憑證
 
@@ -196,11 +196,11 @@ ms.locfileid: "84559855"
 
     按 CTRL+C 來停止執行程式，並關閉主控台視窗。 
 
-    ![檢視並確認輸出](./media/create-cassandra-python/output.png)
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="檢視並確認輸出":::
     
 4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
-    ![在資料總管中檢視資料](./media/create-cassandra-python/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="在資料總管中檢視資料":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018373"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250327"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
@@ -45,7 +45,7 @@ ms.locfileid: "84018373"
 
 ## <a name="prepare-a-bacpac-file"></a>準備 BACPAC 檔案
 
-已在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中分享 BACPAC 檔案。 若要自行建立，請參閱[將 Azure SQL 資料庫匯出到 BACPAC 檔案](../../azure-sql/database/database-export.md)。 如果您選擇將檔案發佈到自己的位置，您稍後必須在本教學課程中更新範本。
+已在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中分享 BACPAC 檔案。 若要自行建立，請參閱[將 Azure SQL Database 中的資料庫匯出到 BACPAC 檔案](../../azure-sql/database/database-export.md)。 如果您選擇將檔案發佈到自己的位置，您稍後必須在本教學課程中更新範本。
 
 BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範本進行匯入。 下列 PowerShell 指令碼會使用這些步驟來準備 BACPAC 檔案：
 
@@ -196,7 +196,7 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 
         若要了解資源定義，請參閱 [SQL Database 擴充功能參考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)。 以下是部分重要元素：
 
-        * **dependsOn**：在 SQL 資料庫建立後，才可建立擴充功能資源。
+        * **dependsOn**：在資料庫建立後，才可建立擴充功能資源。
         * **storageKeyType**：指定要使用的儲存體金鑰類型。 這個值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教學課程中使用 `StorageAccessKey`。
         * **storageKey**：為 BACPAC 檔案儲存所在的儲存體帳戶指定金鑰。 如果儲存體金鑰類型為 `SharedAccessKey`，則前面必須加上 "?"。
         * **storageUri**：指定儲存體帳戶中所儲存 BACPAC 檔案的 URL。
@@ -241,7 +241,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 若要從您的用戶端電腦存取伺服器，您需要新增額外的防火牆規則。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)。
 
-在 Azure 入口網站中，請從新部署的資源群組中選取 SQL 資料庫。 選取 [查詢編輯器 (預覽)]，然後輸入系統管理員認證。 您應該會看到兩個已匯入資料庫中的資料表。
+在 Azure 入口網站中，請從新部署的資源群組中選取資料庫。 選取 [查詢編輯器 (預覽)]，然後輸入系統管理員認證。 您應該會看到兩個已匯入資料庫中的資料表。
 
 ![查詢編輯器 (預覽)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 6abfeb1601c85f9202611b914f9dfd47ac50ea1a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: de1d548be7f426f42b369ae7607bd6f798b42317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560968"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296163"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
@@ -40,28 +40,30 @@ ms.locfileid: "84560968"
 
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請完成[設定教學課程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  筆記本。
+* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 筆記本。
 
-如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` 以取得必要套件。
+如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` 以取得必要套件。
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>設定工作區和建立資料存放區
 
 從現有的 Azure Machine Learning 工作區建立工作區物件。
-
-- [工作區](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是會接受您 Azure 訂用帳戶和資源資訊的類別。 工作區也會建立可用來監視及追蹤模型執行的雲端資源。 
-- `Workspace.from_config()` 會讀取 `config.json` 檔案，然後將驗證詳細資料載入至名為 `ws` 的物件中。 本教學課程的程式碼中都會使用 `ws` 物件。
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
+> [!IMPORTANT]
+> 此程式碼片段預期工作區組態會儲存在目前目錄或其父系目錄中。 如需建立工作區的詳細資訊，請參閱[建立和管理 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 如需將組態儲存至檔案的詳細資訊，請參閱[建立工作區組態檔](how-to-configure-environment.md#workspace)。
+
 ## <a name="create-a-datastore-for-sample-images"></a>建立影像範例的資料存放區
 
 在 `pipelinedata` 帳戶上，從 `sampledata` 公用 Blob 容器取得 ImageNet 評估的公用資料範例。 呼叫 `register_azure_blob_container()`，讓資料可供名為 `images_datastore` 的工作區使用。 然後，將工作區預設資料存放區設定為輸出資料存放區。 使用輸出資料存放區對管線中的輸出評分。
+
+如需如何存取資料的詳細資訊，請參閱[如何存取資料](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk)。
 
 ```python
 from azureml.core.datastore import Datastore
@@ -93,7 +95,7 @@ from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
-label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
@@ -168,7 +170,7 @@ except ComputeTargetException:
 `batch_scoring.py` 指令碼會採用下列參數，而這些參數從您稍後建立的 `ParallelRunStep` 傳入：
 
 - `--model_name`:所用模型的名稱。
-- `--labels_name`:保存 `labels.txt` 檔案的 `Dataset` 名稱。
+- `--labels_dir`:`labels.txt` 檔案的位置。
 
 管線基礎結構會使用 `ArgumentParser` 類別將參數傳遞至管線步驟。 例如，在下列程式碼中，會對第一個引數 `--model_name` 指定屬性識別碼 `model_name`。 在 `init()` 函式中，會使用 `Model.get_model_path(args.model_name)` 來存取此屬性。
 
@@ -196,9 +198,10 @@ image_size = 299
 num_channel = 3
 
 
-def get_class_label_dict():
+def get_class_label_dict(labels_dir):
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
+    labels_path = os.path.join(labels_dir, 'labels.txt')
+    proto_as_ascii_lines = tf.gfile.GFile(labels_path).readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
@@ -209,14 +212,10 @@ def init():
 
     parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
     parser.add_argument('--model_name', dest="model_name", required=True)
-    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    parser.add_argument('--labels_dir', dest="labels_dir", required=True)
     args, _ = parser.parse_known_args()
 
-    workspace = Run.get_context(allow_offline=False).experiment.workspace
-    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
-    label_ds.download(target_path='.', overwrite=True)
-
-    label_dict = get_class_label_dict()
+    label_dict = get_class_label_dict(args.labels_dir)
     classes_num = len(label_dict)
 
     with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
@@ -263,14 +262,15 @@ def run(mini_batch):
 
 ## <a name="build-the-pipeline"></a>建置管線
 
-在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會安裝 `azureml-defaults` 以供背景程序使用。 使用相依性建立 `RunConfiguration` 物件。 此外，請指定 Docker 和 Docker-GPU 支援。
+在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會安裝 ParallelRunStep 所需的 `azureml-core` 和 `azureml-dataprep[fuse]`。 此外，請指定 Docker 和 Docker-GPU 支援。
 
 ```python
 from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
+cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.15.2",
+                                            "azureml-core", "azureml-dataprep[fuse]"])
 env = Environment(name="parallelenv")
 env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
@@ -281,12 +281,12 @@ env.docker.base_image = DEFAULT_GPU_IMAGE
 使用指令碼、環境設定和參數來建立管線步驟。 指定您已連結至工作區的計算目標。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     environment=env,
     entry_script="batch_scoring.py",
-    source_directory=".",
+    source_directory="scripts",
     output_action="append_row",
     mini_batch_size="20",
     error_threshold=1,
@@ -310,15 +310,20 @@ parallel_run_config = ParallelRunConfig(
 在有多個步驟的案例中，`outputs` 陣列中的物件參考將可以作為後續管線步驟的*輸入*。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
+from datetime import datetime
+
+parallel_step_name = "batchscoring-" + datetime.now().strftime("%Y%m%d%H%M")
+
+label_config = label_ds.as_named_input("labels_input")
 
 batch_score_step = ParallelRunStep(
-    name="parallel-step-test",
+    name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],
     output=output_dir,
-    models=[model],
     arguments=["--model_name", "inception",
-               "--labels_name", "label_ds"],
+               "--labels_dir", label_config],
+    side_inputs=[label_config],
     parallel_run_config=parallel_run_config,
     allow_reuse=False
 )
@@ -330,7 +335,7 @@ batch_score_step = ParallelRunStep(
 
 現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 `Pipeline` 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次評分只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
 
-接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。 您也可以指定自訂參數 `param_batch_size`。 `wait_for_completion` 函式會在管線建置程序中輸出記錄。 您可以使用記錄來查看目前的進度。
+接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。 `wait_for_completion` 函式會在管線建置程序中輸出記錄。 您可以使用記錄來查看目前的進度。
 
 > [!IMPORTANT]
 > 第一次執行管線大約需要 *15 分鐘*。 因為過程中必須下載所有相依性、建立 Docker 映像，並佈建和建立 Python 環境。 再次執行管線所需的時間會大幅縮短，因為過程中會重複使用這些資源，而不會再次建立。 不過，管線的總執行時間取決於每個管線步驟中執行的指令碼和程序的工作負載。
@@ -394,7 +399,7 @@ auth_header = interactive_auth.get_authentication_header()
 
 從已發佈管線物件的 `endpoint` 屬性取得 REST URL。 您也可以在 Azure Machine Learning Studio 的工作區中找到 REST URL。 
 
-建置對端點的 HTTP POST 要求。 請在要求中指定您的驗證標頭。 新增具有實驗名稱和批次大小參數的 JSON 承載物件。 本教學課程先前曾提到，`param_batch_size` 會傳遞至 `batch_scoring.py` 指令碼，因為您已將其定義為步驟設定中的 `PipelineParameter` 物件。
+建置對端點的 HTTP POST 要求。 請在要求中指定您的驗證標頭。 新增具有實驗名稱的 JSON 承載物件。
 
 提出要求以觸發執行。 加入程式碼以從回應字典中存取 `Id` 金鑰，進而取得執行識別碼的值。
 
@@ -405,7 +410,7 @@ rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
                          json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
+                               "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
 
@@ -433,12 +438,12 @@ RunDetails(published_pipeline_run).show()
 
 如果您不打算使用您建立的資源，請刪除它們，以免產生任何費用：
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
 1. 在資源群組清單中，選取您所建立的資源群組。
-1. 選取 [刪除資源群組]  。
-1. 輸入資源群組名稱。 然後，選取 [刪除]  。
+1. 選取 [刪除資源群組]。
+1. 輸入資源群組名稱。 然後，選取 [刪除]。
 
-您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]  。
+您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

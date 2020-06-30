@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e56040f5e17ee33da6b21ab42d2deddf5dd7064
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447793"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099125"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教學課程：啟用目的地為內部部署環境的 Azure Active Directory 自助式密碼重設回寫
 
@@ -30,11 +30,11 @@ ms.locfileid: "84447793"
 > * 在 Azure AD Connect 中啟用密碼回寫選項
 > * 在 Azure AD SSPR 中啟用密碼回寫
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 至少已啟用 Azure AD Premium P2 試用版授權的有效 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P1 或 P2 試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 如需詳細資訊，請參閱 [Azure AD SSPR 的授權需求](concept-sspr-licensing.md)。
 * 具有「全域系統管理員」權限的帳戶。

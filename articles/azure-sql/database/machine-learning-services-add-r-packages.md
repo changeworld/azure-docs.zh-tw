@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b42dba59e061eee0472d39f324b7474d7d829310
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324227"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250702"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>將 R 套件新增至 Azure SQL Database 機器學習服務 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "84324227"
 
 ## <a name="list-r-packages"></a>列出 R 套件
 
-Microsoft 會在提供多個隨機器學習服務預先安裝在 Azure SQL 資料庫中的 R 套件。
+Microsoft 會在提供多個隨機器學習服務預先安裝在 Azure SQL Database 中的 R 套件。
 您可以在 Azure Data Studio 或 SSMS 中執行下列命令，以查看已安裝的 R 套件清單。
 
 1. 開啟 Azure Data Studio 或 SSMS，並連線至您的 Azure SQL Database。
@@ -166,7 +166,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> 將 R 套件安裝到 Azure SQL 資料庫的另一個方法，是使用 **CREATE EXTERNAL LIBRARY** T-SQL 陳述式從位元組資料流上傳 R 套件。 請參閱 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 參考文件中的[從位元組資料流建立程式庫](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)。
+> 將 R 套件安裝到 Azure SQL Database 的另一個方法，是使用 **CREATE EXTERNAL LIBRARY** T-SQL 陳述式從位元組資料流上傳 R 套件。 請參閱 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 參考文件中的[從位元組資料流建立程式庫](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)。
 
 ## <a name="next-steps"></a>後續步驟
 

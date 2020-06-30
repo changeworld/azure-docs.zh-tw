@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682958"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教學課程：Azure Active Directory 與 Palo Alto Networks - Admin UI 整合
 
@@ -34,7 +34,7 @@ ms.locfileid: "83682958"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Palo Alto 網路 - 系統管理 UI 整合，您需要下列項目：
 
@@ -53,11 +53,11 @@ ms.locfileid: "83682958"
 若要設定將 Palo Alto 網路 - 系統管理 UI 整合到 Azure AD 中，您需要從資源庫將 Palo Alto 網路 - 系統管理 UI 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Palo Alto Networks - Admin UI**。
-1. 從結果面板中選取 [Palo Alto Networks - Admin UI]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Admin UI**。
+1. 從結果面板中選取 [Palo Alto Networks - Admin UI]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -79,11 +79,11 @@ ms.locfileid: "83682958"
 
 若要搭配 Palo Alto Networks - Admin UI 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中的 [Palo Alto Networks - Admin UI]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 [Palo Alto Networks - Admin UI] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
-1. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+1. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
@@ -91,29 +91,29 @@ ms.locfileid: "83682958"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，執行下列步驟：
+1. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
-    a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<Customer Firewall FQDN>/php/login.php`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<Customer Firewall FQDN>/php/login.php`
 
-    b. 在 [識別碼]  方塊中，使用下列模式輸入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
+    b. 在 [識別碼] 方塊中，使用下列模式輸入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
 
-    c. 在 [回覆 URL]  文字方塊中，以下列格式輸入判斷提示取用者服務 (ACS) URL：`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    c. 在 [回覆 URL] 文字方塊中，以下列格式輸入判斷提示取用者服務 (ACS) URL：`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Palo Alto 網路 - 系統管理 UI 用戶端支援小組](https://support.paloaltonetworks.com/support) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
     >
-    > [識別碼]  和 [回覆 URL]  上都需要連接埠 443，因為這些值已硬式編碼至 Palo Alto 防火牆。 移除連接埠號碼會在登入期間產生錯誤 (如果已移除)。
+    > [識別碼] 和 [回覆 URL] 上都需要連接埠 443，因為這些值已硬式編碼至 Palo Alto 防火牆。 移除連接埠號碼會在登入期間產生錯誤 (如果已移除)。
 
-    > [識別碼]  和 [回覆 URL]  上都需要連接埠 443，因為這些值已硬式編碼至 Palo Alto 防火牆。 移除連接埠號碼會在登入期間產生錯誤 (如果已移除)。
+    > [識別碼] 和 [回覆 URL] 上都需要連接埠 443，因為這些值已硬式編碼至 Palo Alto 防火牆。 移除連接埠號碼會在登入期間產生錯誤 (如果已移除)。
 
-1. PureCloud by Genesys 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性 組態中。 以下螢幕擷取畫面顯示預設屬性清單。
+1. Palo Alto Networks - Admin UI 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > 這些屬性值只是範例，因此您必須對應 *username* 和 *adminrole* 的適當值。 此外還有另一個選用屬性 *accessdomain*，可用來限制管理員對防火牆上特定虛擬系統的存取。
 
-1. 除了上述屬性外，PureCloud by Genesys 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+1. 除了上述屬性外，Palo Alto Networks - Admin UI 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
     | 名稱 |  來源屬性|
     | --- | --- |
@@ -126,11 +126,11 @@ ms.locfileid: "83682958"
     > * [系統管理 UI (adminrole) 的系統管理角色設定檔](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
     > * [系統管理 UI (accessdomain) 的裝置存取網域](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-web-interface-help/device/device-access-domain.html)
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Palo Alto Networks - Admin UI]  區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 Palo Alto Networks - Admin UI] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -144,106 +144,106 @@ ms.locfileid: "83682958"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會把 Palo Alto Networks - Admin UI 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Palo Alto 網路 - 系統管理 UI]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [Palo Alto 網路 - 系統管理 UI]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="configure-palo-alto-networks---admin-ui-sso"></a>設定 Palo Alto Networks - Admin UI SSO
 
 1. 以系統管理員的身分，在新視窗中開啟 Palo Alto 網路防火牆的系統管理 UI。
 
-2. 選取 [裝置]  索引標籤。
+2. 選取 [裝置] 索引標籤。
 
     ![[裝置] 索引標籤](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. 在左窗格中選取 [SAML 身分識別提供者]  ，然後選取 [匯入]  以匯入中繼資料檔案。
+3. 在左窗格中選取 [SAML 身分識別提供者]，然後選取 [匯入] 以匯入中繼資料檔案。
 
     ![匯入中繼資料檔案按鈕](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-4. 在 [SAML 身分識別提供者伺服器設定檔匯入]  視窗中，執行下列動作：
+4. 在 [SAML 身分識別提供者伺服器設定檔匯入] 視窗中，執行下列動作：
 
     ![[SAML 身分識別提供者伺服器設定檔匯入] 視窗](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. 在 [設定檔名稱]  方塊中提供名稱，例如 **AzureAD 系統管理 UI**。
+    a. 在 [設定檔名稱] 方塊中提供名稱，例如 **AzureAD 系統管理 UI**。
 
-    b. 在 [身分識別提供者中繼資料]  下選取 [瀏覽]  ，然後選取您先前從 Azure 入口網站下載的 metadata.xml 檔案。
+    b. 在 [身分識別提供者中繼資料] 下選取 [瀏覽]，然後選取您先前從 Azure 入口網站下載的 metadata.xml 檔案。
 
-    c. 清除 [驗證身分識別提供者憑證]  核取方塊。
+    c. 清除 [驗證身分識別提供者憑證] 核取方塊。
 
-    d. 選取 [確定]  。
+    d. 選取 [確定]。
 
-    e. 若要認可防火牆的組態，請選取 [認可]  。
+    e. 若要認可防火牆的組態，請選取 [認可]。
 
-5. 在左窗格中選取 [SAML 身分識別提供者]  ，然後選取您在先前的步驟中建立的 SAML 身分識別提供者設定檔 (例如 **AzureAD 系統管理 UI**)。
+5. 在左窗格中選取 [SAML 身分識別提供者]，然後選取您在先前的步驟中建立的 SAML 身分識別提供者設定檔 (例如 **AzureAD 系統管理 UI**)。
 
     ![SAML 身分識別提供者設定檔](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
-6. 在 [SAML 身分識別提供者伺服器設定檔]  視窗中，執行下列動作：
+6. 在 [SAML 身分識別提供者伺服器設定檔] 視窗中，執行下列動作：
 
     ![[SAML 身分識別提供者伺服器設定檔] 視窗](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. 在 [身分識別提供者 SLO URL]  方塊中，將先前匯入的 SLO URL 取代為下列 URL：`https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+    a. 在 [身分識別提供者 SLO URL] 方塊中，將先前匯入的 SLO URL 取代為下列 URL：`https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
-    b. 選取 [確定]  。
+    b. 選取 [確定]。
 
-7. 在 Palo Alto 網路防火牆的系統管理 UI 中選取 [裝置]  ，然後選取 [管理員角色] 
+7. 在 Palo Alto 網路防火牆的系統管理 UI 中選取 [裝置]，然後選取 [管理員角色]
 
-8. 選取 [新增]  按鈕。
+8. 選取 [新增] 按鈕。
 
-9. 在 [管理員角色設定檔]  視窗的 [名稱]  方塊中，提供管理員角色的名稱 (例如 **fwadmin**)。 管理員角色名稱應符合身分識別提供者所傳送的 SAML 管理員角色屬性名稱。 在 Azure 入口網站的 [使用者屬性]  中已建立管理員角色名稱和值。
+9. 在 [管理員角色設定檔] 視窗的 [名稱] 方塊中，提供管理員角色的名稱 (例如 **fwadmin**)。 管理員角色名稱應符合身分識別提供者所傳送的 SAML 管理員角色屬性名稱。 在 Azure 入口網站的 [使用者屬性] 中已建立管理員角色名稱和值。
 
     ![設定 Palo Alto 網路管理員角色](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-10. 在防火牆的系統管理 UI 上選取 [裝置]  ，然後選取 [驗證設定檔]  。
+10. 在防火牆的系統管理 UI 上選取 [裝置]，然後選取 [驗證設定檔]。
 
-11. 選取 [新增]  按鈕。
+11. 選取 [新增] 按鈕。
 
-12. 在 [驗證設定檔]  視窗中，執行下列動作： 
+12. 在 [驗證設定檔] 視窗中，執行下列動作： 
 
     ![[驗證設定檔] 視窗](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
-    a. 在 [名稱]  方塊中提供名稱，例如 **AzureSAML_Admin_AuthProfile**。
+    a. 在 [名稱] 方塊中提供名稱，例如 **AzureSAML_Admin_AuthProfile**。
 
-    b. 選取 [類型]  下拉式清單中，選取 [SAML]  。 
+    b. 選取 [類型] 下拉式清單中，選取 [SAML]。 
 
-    c. 在 [IdP 伺服器設定檔]  下拉式清單中，選取適當的 SAML 身分識別提供者伺服器設定檔 (例如 **AzureAD 系統管理 UI**)。
+    c. 在 [IdP 伺服器設定檔] 下拉式清單中，選取適當的 SAML 身分識別提供者伺服器設定檔 (例如 **AzureAD 系統管理 UI**)。
 
-    c. 選取 [啟用單一登出]  核取方塊。
+    c. 選取 [啟用單一登出] 核取方塊。
 
-    d. 在 [管理員角色屬性]  方塊中輸入屬性名稱，例如 **adminrole**。
+    d. 在 [管理員角色屬性] 方塊中輸入屬性名稱，例如 **adminrole**。
 
-    e. 選取 [進階]  索引標籤，然後在 [允許清單]  下選取 [新增]  。
+    e. 選取 [進階] 索引標籤，然後在 [允許清單] 下選取 [新增]。
 
     ![[進階] 索引標籤上的 [新增] 按鈕](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
 
-    f. 選取 [全部]  核取方塊，或選取可以使用此設定檔進行驗證的特定使用者和群組。  
+    f. 選取 [全部] 核取方塊，或選取可以使用此設定檔進行驗證的特定使用者和群組。  
     當使用者進行驗證時，防火牆會針對此清單中的項目比對相關聯的使用者名稱或群組。 如果您未新增項目，則無法驗證任何使用者。
 
-    g. 選取 [確定]  。
+    g. 選取 [確定]。
 
-13. 若要使用 Azure 讓管理員能夠使用 SAML SSO，請選取 [裝置]   > [設定]  。 在 [設定]  窗格中選取 [管理]  索引標籤，然後選取 [驗證設定]  下的 [設定]  (「齒輪」) 按鈕。
+13. 若要使用 Azure 讓管理員能夠使用 SAML SSO，請選取 [裝置] > [設定]。 在 [設定] 窗格中選取 [管理] 索引標籤，然後選取 [驗證設定] 下的 [設定] (「齒輪」) 按鈕。
 
     ![[設定] 按鈕](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
@@ -251,9 +251,9 @@ ms.locfileid: "83682958"
 
     ![[驗證設定檔] 欄位](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-15. 選取 [確定]  。
+15. 選取 [確定]。
 
-16. 若要認可組態，請選取 [認可]  。
+16. 若要認可組態，請選取 [認可]。
 
 ### <a name="create-palo-alto-networks---admin-ui-test-user"></a>建立 Palo Alto Networks - Admin UI 測試使用者
 

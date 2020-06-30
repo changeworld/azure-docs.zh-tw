@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6f8431bfd3be75651f3a08fe9b07fc3902436331
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d29f97bf421804fb234ce8d86c66c12b01854681
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657304"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113787"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "83657304"
 
 本 Java 應用程式教學課程會示範如何建立以 Web 為基礎的工作管理應用程式，方便您建立、抓取以及將工作標示為完成，如下圖所示。 在 Azure Cosmos DB 中，[待辦事項] 清單中的每項工作都會以 JSON 文件的形式儲存。
 
-![我的待辦事項清單 Java 應用程式](./media/sql-api-java-application/image1.png)
+:::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="我的待辦事項清單 Java 應用程式":::
 
 > [!TIP]
 > 本應用程式開發教學課程假設您先前已有使用 Java 的經驗。 如果您不熟悉 Java 或[必備工具](#Prerequisites)，我們建議您從 GitHub 下載完整的[待辦事項](https://github.com/Azure-Samples/documentdb-java-todo-app)專案，並使用[本文結尾的指示](#GetProject)開始建置。 建置完成後，您可以檢閱文件，以加深對專案內容中程式碼的了解。  
@@ -66,7 +66,7 @@ ms.locfileid: "83657304"
 
 1. 首先，我們將從建立 Java 專案開始。 啟動 Eclipse，依序按一下 [檔案]、[新增] 和 [動態 Web 專案]。 如果您在可用專案中沒有看到 [動態 Web 專案]，請執行下列動作：依序按一下 [檔案]、[新增]、[專案]，展開 [Web]，按一下 [動態 Web 專案]，然後按 [下一步]。
    
-    ![JSP Java 應用程式開發](./media/sql-api-java-application/image10.png)
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java 應用程式開發":::
 
 1. 在 [專案名稱] 方塊中輸入專案名稱，然後在 [目標執行階段] 下拉式選單中，選擇性地選取值 (例如 Apache Tomcat v7.0)，然後按一下 [完成]。 選取目標執行階段可讓您透過 Eclipse 在本機執行專案。
 
@@ -74,7 +74,7 @@ ms.locfileid: "83657304"
 
 1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp**。 將上層資料夾保持為 **WebContent**，如下圖所示，然後按 [下一步]。
    
-    ![建立新的 JSP 檔案 - Java Web 應用程式教學課程](./media/sql-api-java-application/image11.png)
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="建立新的 JSP 檔案 - Java Web 應用程式教學課程":::
 
 1. 在 [選取 JSP 範本] 對話方塊中，基於本教學課程的目的，選取 [新增 JSP 檔案 (html)]，然後按一下 [完成]。
 

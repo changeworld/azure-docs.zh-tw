@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323921"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252911"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -301,7 +301,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
     ![稽核記錄](./media/secure-database-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> 請參閱 [SQL 資料庫稽核](../../azure-sql/database/auditing-overview.md)，了解如何使用 PowerShell 或 REST API 進一步自訂稽核事件。
+> 請參閱 [SQL Database 稽核](../../azure-sql/database/auditing-overview.md)，了解如何使用 PowerShell 或 REST API 進一步自訂稽核事件。
 
 ### <a name="dynamic-data-masking"></a>動態資料遮罩
 

@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267302"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253608"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：使用 SSMS 連線到 Azure SQL Database 或 Azure SQL 受控執行個體並進行查詢
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "84267302"
   > [!IMPORTANT]
   > 本文中已撰寫的指令碼會使用 Adventure Works 資料庫。 對於受控執行個體，您必須將 Adventure Works 資料庫匯入執行個體資料庫中，或將本文中的指令碼修改為使用 Wide World Importers 資料庫。
 
-如果您只想要執行一些特定查詢，而不安裝 SSMS，請參閱 [快速入門：使用 Azure 入口網站的查詢編輯器來查詢 SQL 資料庫](connect-query-portal.md)。
+如果您只想要執行一些特定查詢，而不安裝 SSMS，請參閱 [快速入門：使用 Azure 入口網站的查詢編輯器來查詢 Azure SQL Database 中的資料庫](connect-query-portal.md)。
 
 ## <a name="get-server-connection-information"></a>取得伺服器連線資訊
 

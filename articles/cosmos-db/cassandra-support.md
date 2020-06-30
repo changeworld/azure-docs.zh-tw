@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 978dbf3d8e6a92242c0a984b26bb35cf911a3369
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590415"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118979"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -108,7 +108,7 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
 
-![CQLSH](./media/cassandra-support/cqlsh.png)
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
 
 您也可以使用本機電腦上安裝的 CQLSH 連線至 Azure Cosmos DB 中的 Cassandra API。 其中隨附 Apache Cassandra 3.1.1，且只需設定環境變數即可立即運作。 以下幾節包含相關指示，可引導您在 Windows 或 Linux 上使用 CQLSH 安裝、設定及連線至 Azure Cosmos DB 中的 Cassandra API。
 

@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024105"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251415"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署群集模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在這個三部分教學課程系列的第三部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署以 R 開發的群集模型。
+在這個三部分教學課程系列的第三部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 Azure SQL Database 內的資料庫中部署以 R 開發的群集模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-您將使用內嵌的 R 指令碼建立預存程序，以執行群集。 您的模型執行於 Azure SQL 資料庫中，因此能夠根據儲存在資料庫中的資料輕易定型。
+您將使用內嵌的 R 指令碼建立預存程序，以執行群集。 您的模型執行於 Azure SQL Database 中，因此能夠根據儲存在資料庫中的資料輕易定型。
 
 在本文中，您將學會如何：
 
@@ -38,7 +38,7 @@ ms.locfileid: "84024105"
 > * 在 SQL Database 中執行群集
 > * 使用群集資訊
 
-在[第一部分](clustering-model-prepare-data-tutorial.md)中，您已了解如何在 Azure SQL 資料庫中準備執行群集所需的資料。
+在[第一部分](clustering-model-prepare-data-tutorial.md)，您已了解如何準備資料庫中的資料，以執行群集。
 
 在[第二部分](clustering-model-build-tutorial.md)中，您已了解如何使用 R 建立和定型 K-Means 群集模型。
 

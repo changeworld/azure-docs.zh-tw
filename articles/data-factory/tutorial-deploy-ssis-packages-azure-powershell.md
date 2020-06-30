@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194637"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253914"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure Data Factory 中設定 Azure SSIS IR
 
@@ -55,7 +55,7 @@ ms.locfileid: "84194637"
     - 根據選取的資料庫伺服器，SSISDB 可代表您在 SQL Database 或 SQL 受控執行個體中建立為單一資料庫、彈性集區的一部分，或建立在受控執行個體中，並可在公用網路中或透過加入虛擬網路來存取。 如需選擇適當資料庫伺服器類型來裝載 SSISDB 的指導方針，請參閱[比較 SQL Database 與 SQL 受控執行個體](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。
     
       如果您使用具有 IP 防火牆或虛擬網路服務端點的 SQL Database 或具有私人端點的 SQL 受控執行個體來裝載 SSISDB，或您需要在不設定自我裝載 IR 的情況下存取內部部署資料，請將您的 Azure-SSIS IR 加入虛擬網路。 如需詳細資訊，請參閱[在虛擬網路中建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
-    - 確認 SQL Database 的 [允許存取 Azure 服務] 設定已啟用。 如果您使用具有 IP 防火牆規則或虛擬網路服務端點的 SQL Database 或具有私人端點的 SQL 受控執行個體來裝載 SSISDB，則不適用此設定。 如需詳細資訊，請參閱[保護 Azure SQL 資料庫資料庫](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)。 若要使用 PowerShell 來啟用此設定，請參閱 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)。
+    - 確認 SQL Database 的 [允許存取 Azure 服務] 設定已啟用。 如果您使用具有 IP 防火牆規則或虛擬網路服務端點的 SQL Database 或具有私人端點的 SQL 受控執行個體來裝載 SSISDB，則不適用此設定。 如需詳細資訊，請參閱[保護 Azure SQL Database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)。 若要使用 PowerShell 來啟用此設定，請參閱 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)。
     - 在 SQL Database 的防火牆設定中，將用戶端電腦的 IP 位址或包括用戶端電腦 IP 位址的 IP 位址範圍新增至用戶端 IP 位址清單。 如需詳細資訊，請參閱[伺服器層級和資料庫層級防火牆規則](../azure-sql/database/firewall-configure.md)。
     - 若要連線至 SQL Database 或 SQL 受控執行個體，您可以使用伺服器系統管理員認證來執行 SQL 驗證，或使用資料處理站的受控識別來執行 Azure Active Directory (Azure AD) 驗證。 針對 Azure AD 驗證，若要將資料處理站的受控識別新增到具有資料庫伺服器存取權的 Azure AD 群組，請參閱[使用 Azure AD 驗證建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
     - 確認 SQL Database 或 SQL 受控執行個體還沒有 SSISDB。 設定 Azure-SSIS IR 不支援使用現有的 SSISDB。

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858161"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114685"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教學課程：使用 JavaScript SDK 建置 Node.js Web 應用程式來管理 Azure Cosmos DB 中的 SQL API 帳戶 
 
@@ -84,7 +84,7 @@ ms.locfileid: "82858161"
 
 1. 您可以檢視新的應用程式，請導覽瀏覽器至 `http://localhost:3000`。
    
-   ![了解 Node.js - Hello World 應用程式在瀏覽器視窗中的螢幕擷取畫面](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="了解 Node.js - Hello World 應用程式在瀏覽器視窗中的螢幕擷取畫面":::
 
    在終端機視窗中使用 CTRL+C 停止應用程式，然後選取 **y** 以終止批次作業。
 
@@ -438,18 +438,18 @@ ms.locfileid: "82858161"
 
 1. 若要在本機電腦上測試應用程式，請在終端機中執行 `npm start` 以啟動應用程式，然後重新整理 `http://localhost:3000` 瀏覽器頁面。 頁面此時應如下列螢幕擷取畫面所示：
    
-    ![[我的待辦事項清單] 應用程式在瀏覽器視窗中的螢幕擷取畫面](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="[我的待辦事項清單] 應用程式在瀏覽器視窗中的螢幕擷取畫面":::
 
     > [!TIP]
     > 如果您收到有關 layout.jade 檔案或 index.jade 檔案縮排的錯誤，請確定這兩個檔案的前兩行靠左對齊 (沒有空格)。 如果前兩行之前有空格，請將空格移除，儲存這兩個檔案，然後重新整理瀏覽器視窗。 
 
-2. 使用 [項目]、[項目名稱] 和 [類別] 欄位來輸入新工作，然後選取 [新增項目]  。 它會使用這些屬性在 Azure Cosmos DB 中建立文件。 
+2. 使用 [項目]、[項目名稱] 和 [類別] 欄位來輸入新工作，然後選取 [新增項目]。 它會使用這些屬性在 Azure Cosmos DB 中建立文件。 
 
 3. 系統應該會更新此頁面，以在 [待辦事項] 清單中顯示新建立的項目。
    
-    ![[待辦事項] 清單中包含一個新項目的應用程式螢幕擷取畫面](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="[待辦事項] 清單中包含一個新項目的應用程式螢幕擷取畫面":::
 
-4. 若要完成工作，請選取 [已完成] 資料行中的核取方塊，然後選取 [更新工作]  。 它會更新您已建立的文件，並從檢視中加以移除。
+4. 若要完成工作，請選取 [已完成] 資料行中的核取方塊，然後選取 [更新工作]。 它會更新您已建立的文件，並從檢視中加以移除。
 
 5. 若要停止應用程式，請在終端機視窗中按 CTRL+C，然後選取 **Y** 以終止批次作業。
 
@@ -475,7 +475,7 @@ ms.locfileid: "82858161"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 請選取用於 Azure Cosmos DB 帳戶的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱，即可刪除資源。
+若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 請選取用於 Azure Cosmos DB 帳戶的資源群組，選取 [刪除]，然後確認要刪除的資源群組名稱，即可刪除資源。
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>後續步驟
 

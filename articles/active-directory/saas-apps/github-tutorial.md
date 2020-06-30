@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1da910cbf700845bdb6d5c07a6ee375a73579e75
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456856"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253729"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -58,7 +58,6 @@ ms.locfileid: "84456856"
 1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **GitHub**。
 1. 從結果面板中選取 [GitHub]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>設定及測試 GitHub 的 Azure AD 單一登入
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 GitHub 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 GitHub 中相關使用者之間的連結關聯性。
@@ -84,14 +83,17 @@ ms.locfileid: "84456856"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-   a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://github.com/orgs/<entity-id>/sso`
+   a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://github.com/orgs/<Organization ID>/sso`
 
-    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://github.com/orgs/<entity-id>`
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://github.com/orgs/<Organization ID>`
+
+    c. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
+
 
     > [!NOTE]
-    > 請注意這些不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 移至 [GitHub 管理] 區段來擷取這些值。
+    > 請注意這些不是真正的值。 您必須使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 移至 [GitHub 管理] 區段來擷取這些值。
 
-5. GitHub 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML Token 屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 GitHub 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
+5. GitHub 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML Token 屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的**唯一的使用者識別碼 (名稱識別碼)** 與 **user.userprincipalname** 相對應。 GitHub 應用程式要求**唯一的使用者識別碼 (名稱識別碼)** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
 
     ![image](common/edit-attribute.png)
 
@@ -147,9 +149,13 @@ ms.locfileid: "84456856"
 
     ![設定](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. 勾選 [啟用 SAML 驗證]方塊，以顯示單一登入設定欄位。 然後，使用單一登入 URL 值來更新 Azure AD 組態上的單一登入 URL。
+3. 勾選 [啟用 SAML 驗證]方塊，以顯示單一登入設定欄位。 執行下列步驟：
 
     ![設定](./media/github-tutorial/tutorial_github_config_github_13.png)
+
+    a. 複製 [單一登入 URL] 值，並將此值貼到 Azure 入口網站的 [基本 SAML 組態] 中的 [登入 URL] 文字方塊內。
+    
+    b. 複製 [判斷提示取用者服務 URL] 值，並將此值貼至 Azure 入口網站中 [基本 SAML 組態] 中的 [回覆 URL] 文字方塊內。
 
 4. 設定下列欄位：
 

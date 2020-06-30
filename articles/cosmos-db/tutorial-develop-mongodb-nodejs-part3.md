@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444732"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114379"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 使用 Angular 建置 UI
 
@@ -32,7 +32,7 @@ ms.locfileid: "75444732"
 
 > [!VIDEO https://www.youtube.com/embed/MnxHuqcJVoM]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始本教學課程的這個部分之前，請確定您已完成本教學課程[第 2 部分](tutorial-develop-mongodb-nodejs-part2.md)中的步驟。
 
@@ -51,18 +51,18 @@ ms.locfileid: "75444732"
 
     終端機視窗會顯示新元件的確認。
 
-    ![正在安裝 hero 元件](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="正在安裝 hero 元件":::
 
     讓我們查看已建立和更新的檔案。 
 
-3. 在 Visual Studio Code 的 [總管]  窗格中，瀏覽至新的 **src\app** 資料夾，然後開啟 app 資料夾內所產生的新 **heroes.component.ts** 檔案。 前一個命令會建立這個 TypeScript 元件檔案。
+3. 在 Visual Studio Code 的 [總管] 窗格中，瀏覽至新的 **src\app** 資料夾，然後開啟 app 資料夾內所產生的新 **heroes.component.ts** 檔案。 前一個命令會建立這個 TypeScript 元件檔案。
 
     > [!TIP]
-    > 如果應用程式資料夾未顯示在 Visual Studio Code 中，在 Mac 上輸入 CMD + SHIFT P 或在 Windows 上輸入 Ctrl + Shift + P 以開啟 [命令選擇區]，然後進入 [重新載入視窗]  以挑選系統變更。
+    > 如果應用程式資料夾未顯示在 Visual Studio Code 中，在 Mac 上輸入 CMD + SHIFT P 或在 Windows 上輸入 Ctrl + Shift + P 以開啟 [命令選擇區]，然後進入 [重新載入視窗] 以挑選系統變更。
 
 4. 在相同的資料夾中，開啟 **app.module.ts** 檔案，並請注意它已將 `HeroesComponent` 新增至第 5 行上的宣告，並且也在第 10 行上匯入它。
 
-    ![開啟 app-module.ts 檔案](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="開啟 app-module.ts 檔案":::
 
 5. 請回到 **heroes.component.html** 檔案並在此程式碼中複製。 `<div>` 是整個頁面的容器。 容器內部有我們需要建立的 Hero 清單，因此當您按一下其中一個 Hero 時，您可以在 UI 中選取您、編輯或刪除它。 然後在 HTML 中，我們已取得一些樣式，因此您知道已選取哪一個 Hero。 另外還有一個編輯區域，以便您新增 Hero 或編輯現有的 Hero。 
 
@@ -171,7 +171,7 @@ ms.locfileid: "75444732"
     }
     ```
 
-8. 在 [總管]  中，開啟 **app/app.module.ts** 檔案，並更新 import 區段，以針對 `FormsModule` 新增 import。 import 區段現在應該如下所示︰
+8. 在 [總管] 中，開啟 **app/app.module.ts** 檔案，並更新 import 區段，以針對 `FormsModule` 新增 import。 import 區段現在應該如下所示︰
 
     ```
     imports: [
@@ -394,9 +394,9 @@ ms.locfileid: "75444732"
 
 5. 以滑鼠左鍵按一下 `Hero` 一詞，而 Visual Studio 會在程式碼區塊的左側顯示燈泡圖示。 
 
-    ![Visual Studio Code 中的燈泡](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code 中的燈泡":::
 
-6. 按一下燈泡，然後按一下 [從 "app/hero" 匯入 Hero]  。 或 [從 "./hero" 匯入 Hero]  。 (此訊息會根據您的設定而變更)
+6. 按一下燈泡，然後按一下 [從 "app/hero" 匯入 Hero]。 或 [從 "./hero" 匯入 Hero]。 (此訊息會根據您的設定而變更)
 
     第 2 行上會出現一行新程式碼。 如果第 2 行參照 /app/hero，請加以修改，讓它從本機資料夾 (./hero) 參照 Hero 檔案。 第 2 行看起來應該如下所示：
 
@@ -414,7 +414,7 @@ ms.locfileid: "75444732"
     ng g s hero -m app.module
     ```
 
-2. 在 Visual Studio Code 中，回到 **heroes.components.ts**。 請注意 `constructor(private heroService: HeroService) {}` 行 (第 13 行) 上的 `HeroService` 底下有紅線。 按一下 `HeroService`，您將會在程式碼區塊的左側取得燈泡。 按一下燈泡，然後按一下 [從 "./hero.service 匯入 HeroService]  。 或 [從 "app/hero.service" 匯入 HeroService]  。
+2. 在 Visual Studio Code 中，回到 **heroes.components.ts**。 請注意 `constructor(private heroService: HeroService) {}` 行 (第 13 行) 上的 `HeroService` 底下有紅線。 按一下 `HeroService`，您將會在程式碼區塊的左側取得燈泡。 按一下燈泡，然後按一下 [從 "./hero.service 匯入 HeroService]。 或 [從 "app/hero.service" 匯入 HeroService]。
 
     按一下燈泡會在第 2 行上插入一行新程式碼。 如果第 2 行參考 /app/hero.service 資料夾，請加以修改，讓它從本機資料夾 (./hero.service) 參考 Hero 檔案。 第 2 行看起來應該如下所示：
     
@@ -486,11 +486,11 @@ ms.locfileid: "75444732"
 
     現在可以執行應用程式。
 
-2. 在 Visual Studio Code 中，按一下左側的 [偵錯]  按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然後按一下 [開始偵錯]  按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
+2. 在 Visual Studio Code 中，按一下左側的 [偵錯] 按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然後按一下 [開始偵錯] 按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
 
 3. 現在開啟網際網路瀏覽器並瀏覽至 **localhost:3000**，以查看在本機執行的應用程式。
 
-     ![在本機執行的 Hero 應用程式](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="在本機執行的 Hero 應用程式":::
 
 ## <a name="next-steps"></a>後續步驟
 

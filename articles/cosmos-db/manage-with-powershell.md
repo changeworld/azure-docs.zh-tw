@@ -1,18 +1,18 @@
 ---
 title: 使用 PowerShell 建立和管理 Azure Cosmos DB
-description: 使用 Azure Powershell 來管理 Azure Cosmos 帳戶、資料庫、容器和輸送量。
+description: 使用 Azure PowerShell 來管理 Azure Cosmos 帳戶、資料庫、容器和輸送量。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 0ae3ff54e1060255913d8155b297c5d412ce345f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 494c5f0c3d7d0a4c8a388ce06143795fe5f12f20
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656297"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262254"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 來管理 Azure Cosmos DB SQL API 資源
 
@@ -21,7 +21,7 @@ ms.locfileid: "83656297"
 > [!NOTE]
 > 本文中的範例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 如需有關最新變更的相關資訊，請參閱 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API 參考頁面。
 
-針對 Azure Cosmos DB 的跨平台管理，您可以使用 `Az` 和 `Az.CosmosDB` Cmdlet 來搭配 [跨平台 Powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)，也可使用 [Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api] 或 [Azure 入口網站](create-sql-api-dotnet.md#create-account)。
+針對 Azure Cosmos DB 的跨平台管理，您可以使用 `Az` 和 `Az.CosmosDB` Cmdlet 來搭配 [跨平台 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)，也可使用 [Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api] 或 [Azure 入口網站](create-sql-api-dotnet.md#create-account)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,6 +44,7 @@ ms.locfileid: "83656297"
 * [列出 Azure Cosmos 帳戶的連接字串](#list-connection-strings)
 * [修改 Azure Cosmos 帳戶的容錯移轉優先順序](#modify-failover-priority)
 * [觸發 Azure Cosmos 帳戶的手動容錯移轉](#trigger-manual-failover)
+* [列出 Azure Cosmos DB 帳戶上的資源鎖定](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> 建立 Azure Cosmos 帳戶
 
@@ -327,6 +328,21 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a> 列出 Azure Cosmos DB 帳戶上的資源鎖定
+
+資源鎖定可以放在 Azure Cosmos DB 資源上，包括資料庫和集合。 下列範例顯示如何列出 Azure Cosmos DB 帳戶上的所有 Azure 資源鎖定。
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB 資料庫
 
 下列各節會示範如何管理 Azure Cosmos DB 資料庫，包括：
@@ -337,6 +353,8 @@ Update-AzCosmosDBAccountFailoverPriority `
 * [列出帳戶中的所有 Azure Cosmos DB 資料庫](#list-db)
 * [取得單一的 Azure Cosmos DB 資料庫](#get-db)
 * [刪除 Azure Cosmos DB 資料庫](#delete-db)
+* [在 Azure Cosmos DB 資料庫上建立資源鎖定以防止刪除](#create-db-lock)
+* [移除 Azure Cosmos DB 資料庫上的資源鎖定](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>建立 Azure Cosmos DB 資料庫
 
@@ -416,6 +434,42 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>在 Azure Cosmos DB 資料庫上建立資源鎖定以防止刪除
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>移除 Azure Cosmos DB 資料庫上的資源鎖定
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB 容器
 
 下列各節會示範如何管理 Azure Cosmos DB 容器，包括：
@@ -430,6 +484,8 @@ Remove-AzCosmosDBSqlDatabase `
 * [列出資料庫中的所有 Azure Cosmos DB 容器](#list-containers)
 * [取得資料庫中的單一 Azure Cosmos DB 容器](#get-container)
 * [刪除 Azure Cosmos DB 容器](#delete-container)
+* [在 Azure Cosmos DB 容器上建立資源鎖定以防止刪除](#create-container-lock)
+* [移除 Azure Cosmos DB 容器上的資源鎖定](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>建立 Azure Cosmos DB 容器
 
@@ -667,6 +723,43 @@ Remove-AzCosmosDBSqlContainer `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>在 Azure Cosmos DB 容器上建立資源鎖定以防止刪除
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>移除 Azure Cosmos DB 容器上的資源鎖定
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
 ```
 
 ## <a name="next-steps"></a>後續步驟

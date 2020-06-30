@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 979f93ef19a2c2aec96c51f81f412468070f7b1d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 88a98c05b09d8e76159199fd5035a15d62bc293b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218002"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115110"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB 資料表 API 資料
 
@@ -77,9 +77,9 @@ ms.locfileid: "84218002"
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
-此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或者，您可以跳至本文件的[更新連接字串](#update-your-connection-string)一節。
+此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或是，您可以跳至本文件的[更新您的連接字串](#update-your-connection-string)一節。
 
-* 下列程式碼示範如何在 Azure 儲存體內建立資料表：
+* 下列程式碼會示範如何在 Azure 儲存體內建立資料表：
 
   ```java
   private static CloudTable createTable(CloudTableClient tableClient, String tableName) throws StorageException, RuntimeException, IOException, InvalidKeyException,   IllegalArgumentException, URISyntaxException, IllegalStateException {
@@ -102,7 +102,7 @@ ms.locfileid: "84218002"
   }
   ```
 
-* 下列程式碼示範如何在資料表中插入資料：
+* 下列程式碼會示範如何在資料表中插入資料：
 
   ```javascript
   private static void batchInsertOfCustomerEntities(CloudTable table) throws StorageException {
@@ -122,7 +122,7 @@ ms.locfileid: "84218002"
   }
   ```
 
-* 下列程式碼示範如何查詢資料表中的資料：
+* 下列程式碼會示範如何查詢資料表中的資料：
 
   ```java
   private static void partitionScan(CloudTable table, String partitionKey) throws StorageException {
@@ -138,7 +138,7 @@ ms.locfileid: "84218002"
   }
   ```
 
-* 下列程式碼示範如何刪除資料表中的資料：
+* 下列程式碼會示範如何刪除資料表中的資料：
 
   ```java
   
@@ -159,7 +159,7 @@ ms.locfileid: "84218002"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
-   ![在 [連接字串] 窗格中檢視連接字串資訊](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
+   :::image type="content" source="./media/create-table-java/cosmos-db-quickstart-connection-string.png" alt-text="在 [連接字串] 窗格中檢視連接字串資訊":::
 
 2. 使用右側的複製按鈕複製 PRIMARY CONNECTION STRING。
 

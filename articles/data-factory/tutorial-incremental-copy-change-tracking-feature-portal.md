@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站使用變更追蹤以累加方式複製資料
-description: 在本教學課程中，您會建立 Azure Data Factory 管線，透過累加方式將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL 資料庫。
+description: 在本教學課程中，您將建立 Azure Data Factory 管線，並以累加方式，將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database 中的資料庫。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 51d8d1c7405622ea8fd3bb847937abcb0e748523
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: cb8d03b853e4e0f4f5f60a144e7a05ef19de1071
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559801"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251821"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 入口網站使用變更追蹤資訊，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會建立一個 Azure Data Factory 並讓其具有管線，以根據來源 Azure SQL 資料庫中的**變更追蹤**資訊，將差異資料載入到 Azure Blob 儲存體。  
+在本教學課程中，您會建立一個 Azure Data Factory 並讓其具有管線，以根據 Azure SQL Database 來源資料庫中的**變更追蹤**資訊，將差異資料載入到 Azure Blob 儲存體。  
 
 您會在本教學課程中執行下列步驟：
 
@@ -45,9 +45,9 @@ ms.locfileid: "84559801"
 > Azure SQL Database 和 SQL Server 都支援變更追蹤技術。 本教學課程會使用 Azure SQL Database 作為來源資料存放區。 您也可以使用 SQL Server 執行個體。
 
 1. **初始載入歷史資料** (執行一次)：
-    1. 在來源 Azure SQL 資料庫中啟用變更追蹤技術。
-    2. 取得 Azure SQL 資料庫中的 SYS_CHANGE_VERSION 初始值作為基準，以擷取變更的資料。
-    3. 將完整資料從 Azure SQL 資料庫載入到 Azure Blob 儲存體。
+    1. 在 Azure SQL Database 的來源資料庫中啟用變更追蹤技術。
+    2. 取得資料庫中的 SYS_CHANGE_VERSION 初始值作為基準，以擷取變更的資料。
+    3. 將完整資料從來源資料庫載入到 Azure Blob 儲存體。
 2. **依排程累加載入差異資料** (在初始載入資料後定期執行)：
     1. 取得 SYS_CHANGE_VERSION 的舊值和新值。
     3. 藉由將 **sys.change_tracking_tables** 中有所變更資料列 (介於兩個 SYS_CHANGE_VERSION 值之間) 的主索引鍵，聯結到**來源資料表**中的資料來載入差異資料，然後將差異資料移動到目的地。
@@ -70,13 +70,14 @@ ms.locfileid: "84559801"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure SQL Database**。 您需要使用資料庫作為**來源**資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
+* **Azure SQL Database**。 您需要使用資料庫作為**來源**資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
 * **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為**接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **adftutorial** 的容器。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 資料庫中建立資料來源資料表
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料來源資料表
+
 1. 啟動 **SQL Server Management Studio**，然後連線至 SQL Database。
 2. 在**伺服器總管**中，以滑鼠右鍵按一下您的**資料庫**，然後選擇 [新增查詢]。
-3. 對 Azure SQL 資料庫執行下列 SQL 命令，以建立名為 `data_source_table` 的資料表作為資料來源存放區。  
+3. 對資料庫執行下列 SQL 命令，以建立名為 `data_source_table` 的資料表作為資料來源存放區。  
 
     ```sql
     create table data_source_table
@@ -97,10 +98,11 @@ ms.locfileid: "84559801"
         (5, 'eeee', 22);
 
     ```
+
 4. 執行下列 SQL 查詢，在您的資料庫和來源資料表 (data_source_table) 啟用**變更追蹤**機制：
 
     > [!NOTE]
-    > - 將 &lt;your database name&gt; 替換為具有 data_source_table 的 Azure SQL 資料庫名稱。
+    > - 將 &lt;your database name&gt; 替換為 Azure SQL Database 中具有 data_source_table 的資料庫名稱。
     > - 在目前的範例中，有變更的資料會保留兩天。 如果您每隔三天以上才會載入變更的資料，則裡面可能不會包含某些已變更的資料。  您必須將 CHANGE_RETENTION 的值變更為更大的數字。 或者，請確保您用來載入已變更資料的期間是在兩天內。 如需詳細資訊，請參閱[啟用資料庫的變更追蹤](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)
 
     ```sql
@@ -130,7 +132,7 @@ ms.locfileid: "84559801"
 
     > [!NOTE]
     > 如果在您啟用 SQL Database 的變更追蹤後，資料並未變更，變更追蹤版本的值會是 0。
-6. 執行下列查詢，在您的 Azure SQL 資料庫中建立預存程序。 該管線會叫用此預存程序，以更新您在上一個步驟建立的資料表變更追蹤版本。
+6. 執行下列查詢，在您的資料庫中建立預存程序。 該管線會叫用此預存程序，以更新您在上一個步驟建立的資料表變更追蹤版本。
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -188,7 +190,7 @@ ms.locfileid: "84559801"
     ![建立管線按鈕](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>建立連結的服務
-您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對 Azure 儲存體帳戶和 Azure SQL 資料庫建立連結服務。
+您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您會對 Azure 儲存體帳戶和 Azure SQL Database 中的資料庫建立連結服務。
 
 ### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務。
 在此步驟中，您會將您的 Azure 儲存體帳戶連結到 Data Factory。
@@ -209,7 +211,7 @@ ms.locfileid: "84559801"
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務。
-在此步驟中，您會將您的 Azure SQL 資料庫連結到您的 Data Factory。
+在此步驟中，您要將資料庫連結至資料處理站。
 
 1. 按一下 [連線]，然後按一下 [+ 新增]。
 2. 在 [新增連結服務] 視窗中，選取 [Azure SQL Database]，然後按一下 [繼續]。
@@ -217,11 +219,11 @@ ms.locfileid: "84559801"
 
     1. 在 [名稱] 欄位輸入 **AzureSqlDatabaseLinkedService**。
     2. 在 [伺服器名稱] 欄位選取您的伺服器。
-    4. 在 [資料庫名稱] 欄位選取您的資料庫。
-    5. 在 [使用者名稱] 欄位輸入使用者的名稱。
-    6. 在 [密碼] 欄位輸入使用者的密碼。
-    7. 按一下 [測試連線] 以測試連線。
-    8. 按一下 [儲存] 以儲存連結服務。
+    3. 在 [資料庫名稱] 欄位選取您的資料庫。
+    4. 在 [使用者名稱] 欄位輸入使用者的名稱。
+    5. 在 [密碼] 欄位輸入使用者的密碼。
+    6. 按一下 [測試連線] 以測試連線。
+    7. 按一下 [儲存] 以儲存連結服務。
 
        ![Azure SQL Database 連結服務設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -329,7 +331,7 @@ ms.locfileid: "84559801"
 
 ![完整複製的輸出檔案](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-此檔案應該會有 Azure SQL 資料庫中的資料：
+檔案應該有您資料庫中的資料：
 
 ```
 1,aaaa,21
@@ -341,7 +343,7 @@ ms.locfileid: "84559801"
 
 ## <a name="add-more-data-to-the-source-table"></a>新增更多資料至來源資料表
 
-對 Azure SQL 資料庫執行下列查詢，以新增資料列並加以更新。
+對您的資料庫執行下列查詢，以新增資料列並加以更新。
 
 ```sql
 INSERT INTO data_source_table
@@ -452,7 +454,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
 ![累加複製的輸出檔案](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-此檔案應該只會有 Azure SQL 資料庫中的差異資料。 具有 `U` 的記錄是資料庫中更新的資料列，具有 `I` 的記錄則是一個新增的資料列。
+此檔案應該只會有您資料庫中的差異資料。 具有 `U` 的記錄是資料庫中更新的資料列，具有 `I` 的記錄則是一個新增的資料列。
 
 ```
 1,update,10,2,U

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/22/2020
+ms.openlocfilehash: d7f6da930f797912ef0e91666082aa5654b7f1ab
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661060"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251716"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
@@ -58,7 +58,7 @@ ms.locfileid: "84661060"
 
 **準備來源 Azure SQL Database**：
 
-遵循[建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) 文章來建立具有 Adventure Works LT 範例資料的 Azure SQL Database。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics (先前為 SQL DW)。
+遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics (先前為 SQL DW)。
 
 **準備接收 Azure Synapse Analytics (先前為 SQL DW)** ：
 
@@ -106,7 +106,7 @@ ms.locfileid: "84661060"
 在本教學課程中，您會將 Azure SQL Database、Azure Synapse Analytics (先前為 SQL DW)、Azure Blob 儲存體資料存放區連結至您的資料處理站。 Azure SQL Database 是來源資料存放區。 Azure Synapse Analytics (先前為 SQL DW) 是接收/目的地資料存放區。 而在使用 PolyBase 將資料載入 Azure Synapse Analytics (先前為 SQL DW) 之前，會使用 Azure Blob 儲存體暫存資料。 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>建立來源 Azure SQL Database 連結服務
-在此步驟中，您會建立連結服務來將 Azure SQL 資料庫連結到資料處理站。 
+在此步驟中，您會建立連結服務，將 Azure SQL Database 中的資料庫連結至資料處理站。 
 
 1. 從左窗格中開啟 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
@@ -120,13 +120,13 @@ ms.locfileid: "84661060"
 
     b. 在 [伺服器名稱] 選取您的伺服器
     
-    c. 在 [資料庫名稱] 選取您的 Azure SQL 資料庫。 
+    c. 針對 [資料庫名稱]，選取您的資料庫。 
     
-    d. 輸入 [使用者名稱] 以連線到 Azure SQL 資料庫。 
+    d. 輸入 [使用者名稱] 以連線至您的資料庫。 
     
     e. 輸入使用者的 [密碼]。 
 
-    f. 若要使用指定資訊測試與 Azure SQL 資料庫的連線，按一下 [測試連線]。
+    f. 若要使用指定資訊測試您的資料庫連線，按一下 [測試連線]。
   
     g. 按一下 [建立] 以儲存連結服務。
 
@@ -141,13 +141,13 @@ ms.locfileid: "84661060"
      
     b. 在 [伺服器名稱] 選取您的伺服器
      
-    c. 在 [資料庫名稱] 選取您的 Azure SQL 資料庫。 
+    c. 針對 [資料庫名稱]，選取您的資料庫。 
      
-    d. 輸入 [使用者名稱] 以連線至 Azure SQL 資料庫。 
+    d. 輸入 [使用者名稱] 以連線至您的資料庫。 
      
     e. 輸入使用者的 [密碼]。 
      
-    f. 若要使用指定資訊測試與 Azure SQL 資料庫的連線，按一下 [測試連線]。
+    f. 若要使用指定資訊測試您的資料庫連線，按一下 [測試連線]。
      
     g. 按一下 [建立]。
 
@@ -181,7 +181,7 @@ ms.locfileid: "84661060"
     
 1. 在 [設定屬性] 視窗中，於 [名稱] 底下輸入 **AzureSqlDatabaseDataset**。 於 [連結服務] 底下，選取 [AzureSqlDatabaseLinkedService]。 然後按一下 [確定] 。
 
-1. 切換至 [連線] 索引標籤，然後針對 [資料表] 選取任何資料表。 此資料表是空的資料表。 建立管線時，您可以指定來源資料集的查詢。 查詢是用來從 Azure SQL 資料庫擷取資料。 或者，您可以按一下 [編輯] 核取方塊，然後輸入 **dbo.dummyName** 作為資料表名稱。 
+1. 切換至 [連線] 索引標籤，然後針對 [資料表] 選取任何資料表。 此資料表是空的資料表。 建立管線時，您可以指定來源資料集的查詢。 查詢可用來從您的資料庫擷取資料。 或者，您可以按一下 [編輯] 核取方塊，然後輸入 **dbo.dummyName** 作為資料表名稱。 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>建立接收 Azure Synapse Analytics (先前為 SQL DW) 的資料集
@@ -189,17 +189,18 @@ ms.locfileid: "84661060"
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [資料集]。 
 1. 在 [新增資料集] 視窗中，選取 [Azure Synapse Analytics (先前為 SQL DW)]，然後按一下 [繼續]。
 1. 在 [設定屬性] 視窗中，於 [名稱] 底部輸入 **AzureSqlDWDataset**。 於 [連結服務] 底下，選取 [AzureSqlDWLinkedService]。 然後按一下 [確定] 。
-1. 切換至 [參數] 索引標籤，按一下 [+ 新增]，並輸入 **DWTableName** 作為參數名稱。 如果您從頁面複製/貼上此名稱，請確定 **DWTableName** 的結尾處沒有**尾端空白字元**。
+1. 切換至 [參數] 索引標籤，按一下 [+ 新增]，並輸入 **DWTableName** 作為參數名稱。 再按一下 [+ 新增]，然後輸入 **DWSchema** 作為參數名稱。 如果您從頁面複製/貼上此名稱，請確定 *DWTableName* 和 *DWSchema* 的結尾處沒有**尾端空白字元**。 
 1. 切換至 [連線] 索引標籤， 
 
-    a. 針對 [資料表]，核取 [編輯] 選項。 在第一個資料表名稱輸入方塊中，輸入 **dbo**。 然後，選取第二個輸入方塊，並按一下下方的 [新增動態內容] 連結。 
+    1. 針對 [資料表]，核取 [編輯] 選項。 選取第一個輸入方塊，並按一下下方的 [新增動態內容] 連結。 在 [新增動態內容] 頁面中，在 [參數] 下方按一下將會自動填入 Top 運算式文字方塊 `@dataset().DWSchema` 的 **DWSchema**，然後按一下 [完成]。  
+    
+        ![資料集連線資料表名稱](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![資料集連線資料表名稱](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. 選取第二個輸入方塊，並按一下下方的 [新增動態內容] 連結。 在 [新增動態內容] 頁面中，在 [參數] 下方按一下將會自動填入 Top 運算式文字方塊 `@dataset().DWTableName` 的 **DWTAbleName**，然後按一下 [完成]。 
+    
+    1. 為資料集的 **tableName** 屬性設定的值，會作為引數傳遞給 **DWSchema** 和 **DWTableName** 參數。 ForEach 活動會逐一查看資料表清單，並逐一傳遞給複製活動。 
+    
 
-    b. 在 [新增動態內容] 頁面中，在 [參數] 下方按一下將會自動填入 Top 運算式文字方塊 `@dataset().DWTableName` 的 **DWTAbleName**，然後按一下 [完成]。 為資料集的 **tableName** 屬性設定的這個值，會作為引數傳遞給 **DWTableName** 參數。 ForEach 活動會逐一查看資料表清單，並逐一傳遞給複製活動。 
-
-    ![資料集參數產生器](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>建立管線
 在本教學課程中，您將建立兩個管線：**IterateAndCopySQLTables** 和 **GetTableListAndTriggerCopyData**。 
 
@@ -257,7 +258,8 @@ ms.locfileid: "84661060"
 1. 切換至 [接收] 索引標籤，執行下列步驟： 
 
     1. 選取 [AzureSqlDWDataset] 作為 [接收資料集]。
-    1. 按一下 DWTableName 參數的 [值] 輸入方塊 -> 選取下方的 [新增動態內容]，輸入 `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 運算式作為指令碼 -> 選取 [完成]。
+    1. 按一下 DWTableName 參數的 [值] 輸入方塊 -> 選取下方的 [新增動態內容]，輸入 `@item().TABLE_NAME` 運算式作為指令碼 -> 選取 [完成]。
+    1. 按一下 DWSchema 參數的 [值] 輸入方塊 -> 選取下方的 [新增動態內容]，輸入 `@item().TABLE_SCHEMA` 運算式作為指令碼 -> 選取 [完成]。
     1. 針對 [複製方法]，選取 [PolyBase]。 
     1. 清除 [使用類型預設值] 選項。 
     1. 按一下 [預先複製指令碼] 輸入方塊 -> 選取下方的 [新增動態內容] -> 輸入下列運算式作為指令碼 -> 選取 [完成]。 
@@ -282,12 +284,12 @@ ms.locfileid: "84661060"
 * 觸發管線 "IterateAndCopySQLTables" 以進行實際的資料複製。
 
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
-1. 在 [一般] 索引標籤中，將管線的名稱變更為 **GetTableListAndTriggerCopyData**。 
+1. 在 [一般] 面板中的 [屬性] 底下，將管線的名稱變更為 **GetTableListAndTriggerCopyData**。 
 
 1. 在 [活動] 工具箱中展開 [一般]，並將 [查閱] 活動拖放至管線設計工具介面，然後執行下列步驟：
 
     1. 輸入 [LookupTableList] 作為 [名稱]。 
-    1. 在 [描述] 中輸入**從 Azure SQL 資料庫擷取資料表清單**。
+    1. 針對 [描述]，輸入**從我的資料庫擷取資料表清單**。
 
 1. 切換至 [設定] 索引標籤，並執行下列步驟：
 
@@ -310,10 +312,8 @@ ms.locfileid: "84661060"
 1. 切換至 [執行管線] 活動的 [設定] 索引標籤，並執行下列步驟： 
 
     1. 選取 [IterateAndCopySQLTables] 作為 [叫用的管線]。 
-    1. 展開 [進階] 區段，然後清除 [等待完成] 核取方塊。
-    1. 按一下 [參數] 區段中的 [+ 新增]。 
-    1. 輸入 **tableList** 作為參數的 [名稱]。
-    1. 按一下 [值] 輸入方塊 -> 選取下方的 [新增動態內容] -> 輸入 `@activity('LookupTableList').output.value` 作為資料表名稱值 -> 選取 [完成]。 您正在將查閱活動的結果清單設定為第二個管線的輸入。 結果清單包含資料表清單，這些資料表中的資料必須複製到目的地。 
+    1. 清除 [等待完成] 核取方塊。
+    1. 在 [參數] 區段中按一下 [值] 下方的輸入方塊 -> 選取下方的 [新增動態內容] -> 輸入 `@activity('LookupTableList').output.value` 作為資料表名稱值 -> 選取 [完成]。 您正在將查閱活動的結果清單設定為第二個管線的輸入。 結果清單包含資料表清單，這些資料表中的資料必須複製到目的地。 
 
         ![執行管線活動 - 設定頁面](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 
