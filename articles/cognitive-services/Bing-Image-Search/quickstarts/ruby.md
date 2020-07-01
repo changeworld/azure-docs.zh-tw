@@ -27,7 +27,7 @@ ms.locfileid: "83118716"
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb) 上有此範例的原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [最新版的 Ruby](https://www.ruby-lang.org/en/downloads/)。
 

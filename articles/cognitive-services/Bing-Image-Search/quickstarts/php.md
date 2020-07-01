@@ -27,7 +27,7 @@ ms.locfileid: "83118869"
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php) 上有此範例的原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [PHP 5.6.x 或更新版本](https://php.net/downloads.php)
 

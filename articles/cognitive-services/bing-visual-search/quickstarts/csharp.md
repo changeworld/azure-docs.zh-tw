@@ -21,7 +21,7 @@ ms.locfileid: "83872768"
 
 本快速入門示範如何將影像上傳給 Bing 圖像式搜尋 API，以及如何檢視其所傳回的見解。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * [Json.NET 架構](https://www.newtonsoft.com/json) (以 NuGet 套件形式提供)。

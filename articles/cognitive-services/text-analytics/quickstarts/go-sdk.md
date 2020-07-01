@@ -24,7 +24,7 @@ ms.locfileid: "83701622"
 > [!NOTE]
 > 本快速入門僅適用於文字分析 2.1 版。 目前無法使用適用於 Go 的 v3 用戶端程式庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Go](https://golang.org/dl/)

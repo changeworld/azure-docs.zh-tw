@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2020
 ms.locfileid: "82980361"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
