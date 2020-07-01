@@ -24,7 +24,7 @@ ms.locfileid: "84604128"
 
 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Python](https://www.python.org/downloads/) 2.x 或 3.x
 
