@@ -57,7 +57,7 @@ Bing 圖像式搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任
 首先，觀看 Bing 圖像式搜尋 API 的[互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)。
 此示範將說明如何快速地自訂搜尋查詢，並翻找出 Web 上的影像。
 
-若要快速開始使用您的第一個要求，請參閱 [C#](quickstarts/csharp.md) | [JAVA](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+若要快速開始使用您的第一個要求，請參閱快速入門：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
 
 ## <a name="see-also"></a>另請參閱
 
