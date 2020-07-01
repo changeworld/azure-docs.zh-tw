@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 12af4c57fd906d687eedfe7c865d36abaa0da18e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209142"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563100"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 以標籤定型表單辨識器模型
 
@@ -65,8 +65,8 @@ ms.locfileid: "85209142"
 
 您需要有 OCR 結果檔案，服務才會考慮將對應的輸入檔用於加上標籤的定型。 若要取得指定來源表單的 OCR 結果，請遵循下列步驟：
 
-1. 在讀取的版面配置容器上，讓輸入檔作為要求本文的一部分來呼叫 **[分析版面配置](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API。 儲存在回應的 **Operation-Location** 標頭中找到的識別碼。
-1. 使用上一個步驟中的作業識別碼，呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** API。
+1. 在讀取的版面配置容器上，讓輸入檔作為要求本文的一部分來呼叫 **[分析版面配置](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API。 儲存在回應的 **Operation-Location** 標頭中找到的識別碼。
+1. 使用上一個步驟中的作業識別碼，呼叫 **[取得分析版面配置結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API。
 1. 取得回應並將內容寫入檔案中。 針對每個來源表單，相對應的 OCR 檔案應該在原始檔案名稱後面附加 `.ocr.json`。 OCR JSON 輸出應具有下列格式。 如需完整範例，請參閱[範例 OCR 檔案](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)。 
 
     ```json
@@ -197,7 +197,7 @@ ms.locfileid: "85209142"
 
 ## <a name="train-a-model-using-labeled-data"></a>使用加上標籤的資料來定型模型
 
-若要使用加上標籤的資料來定型模型，請執行下列 Python 程式碼，以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** API。 執行程式碼之前，請進行下列變更：
+若要使用加上標籤的資料來定型模型，請執行下列 Python 程式碼，以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API。 執行程式碼之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您表單辨識器資源的端點 URL。
 1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
@@ -561,4 +561,4 @@ print("Train operation did not complete within the allocated time.")
 在本快速入門中，您已了解如何搭配使用表單辨識器 REST API 與 Python，來以手動加上標籤的資料定型模型。 接下來，請參閱 API 參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

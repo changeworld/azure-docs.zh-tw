@@ -13,6 +13,7 @@
     - name: 建立設定檔和端點
       href: cdn-create-new-endpoint.md
     - name: 建立設定檔和端點 - ARM 範本
+      displayName: Resource Manager
       href: create-profile-endpoint-template.md
 - name: 教學課程
   items:

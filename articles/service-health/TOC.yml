@@ -7,7 +7,11 @@
 - name: 快速入門
   items:
     - name: 設定適用於服務健康狀態事件的警示
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure 入口網站
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM 範本
+          href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:
     - name: Azure 狀態頁面

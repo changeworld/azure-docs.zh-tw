@@ -13,6 +13,7 @@
     - name: 在入口網站中建立 VM
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
     - name: 建立儀表板 - ARM 範本
+      displayName: Resource Manager
       href: quick-create-template.md
 - name: 概念
   items:

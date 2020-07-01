@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206405"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563243"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -81,7 +81,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 | **分析收據** |分析單一收據文件，以擷取索引鍵資訊和其他收據文字。|
 | **分析版面配置** |分析表單的版面配置以擷取文字和資料表結構。|
 
-若要了解更多，請瀏覽 [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)。 如果您熟悉舊版的 API，請參閱[新功能](./whats-new.md)一文，以了解最近的變更。
+若要了解更多，請瀏覽 [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。 如果您熟悉舊版的 API，請參閱[新功能](./whats-new.md)一文，以了解最近的變更。
 
 ## <a name="input-requirements"></a>輸入需求
 ### <a name="custom-model"></a>自訂模型
@@ -104,4 +104,4 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 ## <a name="next-steps"></a>後續步驟
 
-請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)。
+請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。

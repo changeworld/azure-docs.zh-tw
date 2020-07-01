@@ -11,25 +11,24 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 65e1613eb8fda934899afe692f45a38fca04bff2
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414001"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560802"
 ---
-# <a name="read-text-from-images-and-documents"></a>讀取影像和檔中的文字
+# <a name="read-text-from-images-and-documents"></a>讀取影像和文件中的文字
 
 電腦視覺包括以深度學習為基礎的新光學字元辨識（OCR）功能，可從影像和 PDF 檔中解壓縮列印或手寫文字。 電腦視覺會從類比檔（影像、掃描的檔）和數位檔中解壓縮文字。 您可以從真實影像中取出文字，例如授權盤子的相片或具有序號的容器，以及檔-發票、帳單、財務報告、文章等等。 此 OCR 功能可作為雲端或內部部署（容器）中受控服務的一部分。 此外，它也支援虛擬網路和私人端點，以符合您的企業級合規性和隱私權需求。
 
 ## <a name="read-api"></a>讀取 API 
 
-電腦視覺的[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技術，可從影像和 PDF 檔中抽取印刷文字、手寫文字（僅限英文）、數位和貨幣符號。 它已優化，可將影像中的文字解壓縮、具有視覺雜訊的影像、數位或掃描的 PDF 檔，以及文字密集影像。 它支援印刷和手寫文字（英文），以及相同影像或檔中的混合語言。 如需完整的支援語言清單，請參閱[電腦視覺的語言支援](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)頁面。
-
+電腦視覺的[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技術，可從影像和多頁 PDF 檔中，將印刷文字（七種語言）、手寫文字（僅限英文）、數位和貨幣符號解壓縮。 它已優化，可從具有混合語言的內部文字大量影像和多頁 PDF 檔中解壓縮文字。 它支援在相同的影像或檔中偵測列印和手寫文字（僅限英文）。 如需完整的支援語言清單，請參閱[電腦視覺的語言支援](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)頁面。
 
 ### <a name="how-it-works"></a>運作方式
 
-[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是非同步。 第一個步驟是呼叫讀取作業。 讀取作業會採用影像或 PDF 檔做為輸入，並傳回作業識別碼。 
+[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支援高達2000頁的大量文字檔，因此會以非同步方式執行。 第一個步驟是呼叫讀取作業。 讀取作業會採用影像或 PDF 檔做為輸入，並傳回作業識別碼。 
 
 第二個步驟是呼叫[取得結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)作業。 這項作業會採用讀取作業所建立的作業識別碼。 然後，它會從您的影像或檔以 JSON 格式傳回已解壓縮的文字內容。 JSON 回應會維護已辨識單字的原始行分組。 其中包含已解壓縮的文字行及其周框方塊座標。 每一行都包含所有已解壓縮的文字及其座標和信賴分數。
 
@@ -90,7 +89,7 @@ ms.locfileid: "85414001"
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)會使用較舊的辨識模型。 它僅支援單一映射，而非 Pdf，並會傳回立即回應。 它支援比讀取 API[更多的語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)會使用較舊的辨識模型、僅支援影像，並以同步方式執行，並立即傳回偵測到的文字。 它支援比讀取 API[更多的語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
 
 ## <a name="next-steps"></a>後續步驟
 

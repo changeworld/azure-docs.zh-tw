@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995780"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561471"
 ---
 # <a name="request-limits-for-translator"></a>Translator 的要求限制
 
@@ -66,14 +66,13 @@ ms.locfileid: "83995780"
 
 | Language | 程式碼 | 字元限制 |
 |----------|------|-----------------|
-| 中文 | zh | 132 |
-| 德文 | de | 290 |
-| 義大利文 | it | 280 |
-| 日文 | ja | 150 |
-| 葡萄牙文 | pt | 290 |
-| 西班牙文 | es | 280 |
-| 義大利文 | it | 280 |
-| 泰文 | th | 258 |
+| 中文 | zh | 166 |
+| 德文 | de | 800 |
+| 義大利文 | it | 800 |
+| 日文 | ja | 166 |
+| 葡萄牙文 | pt | 800 |
+| 西班牙文 | es | 800 |
+| 泰文 | th | 180 |
 
 > [!NOTE]
 > 這項限制不適用於翻譯。

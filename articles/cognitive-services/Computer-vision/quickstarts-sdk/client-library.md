@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/12/2020
+ms.date: 06/29/2020
 ms.author: pafarley
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: b76c986007a5df017bbadab62de239b319230ab5
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c08b733a3ecfaa3ce6204654cf01c1bac6f8bb20
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609959"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560215"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>快速入門：使用電腦視覺用戶端程式庫
 
-開始使用電腦視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 電腦視覺可供您存取進階演算法，以處理影像及傳回資訊
+開始使用電腦視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 電腦視覺可供您存取進階演算法，以處理影像及傳回資訊。
 
 使用電腦視覺用戶端程式庫可執行下列作業：
 

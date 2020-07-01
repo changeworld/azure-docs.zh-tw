@@ -10,22 +10,22 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589188"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560178"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
 電腦視覺的部分功能支援多種語言;此處未提及的任何功能僅支援英文。
 
-## <a name="text-recognition"></a>文字辨識
+## <a name="text-detection-ocr"></a>文字偵測（OCR）
 
-電腦視覺可以辨識許多語言的文字。 OCR 和讀取 Api 不會要求您指定語言代碼。 如需這項功能的詳細資訊和每個 API 的優點，請參閱[辨識印刷和手寫文字](concept-recognizing-text.md)。
+電腦視覺可以偵測許多語言的文字。 讀取和 OCR Api 不會要求您指定語言代碼。 如需這項功能的詳細資訊和每個 API 的優點，請參閱[從影像和檔讀取文字](concept-recognizing-text.md)。
 
-|語言| 語言代碼 | OCR API | 讀取 API |
+|Language| 語言代碼 | OCR API | 讀取 API |
 |:-----|:----:|:-----:|:---:|
 |阿拉伯文 | `ar`|✔ | |
 |簡體中文 | `zh-Hans`|✔ | |
@@ -58,7 +58,7 @@ ms.locfileid: "83589188"
 
 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以 `language` 查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數所指定; 請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
 
-|語言 | 語言代碼 | 類別 | 標籤 | 描述 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | Tags | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

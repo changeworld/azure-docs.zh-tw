@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168452"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561568"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
@@ -100,7 +100,7 @@ ms.locfileid: "77168452"
   - 登入（如有必要）、
   - 選取您的專案和部署，
   - 選取您需要並行增加的端點，
-  - 複製`Endpoint ID`。
+  - 複製 `Endpoint ID` 。
 
 若要增加***基底模型***的平行存取，我們需要下列資訊：
 
@@ -114,10 +114,13 @@ ms.locfileid: "77168452"
 
 - 您的訂用帳戶的資源識別碼：
   - 前往[Azure 入口網站](https://portal.azure.com)，
-  - 在`Cognitive Services`搜尋方塊中選取，
+  - `Cognitive Services`在搜尋方塊中選取，
   - 從顯示的服務挑選您想要增加並行的語音服務，
-  - 顯示此`Properties`服務的。
-  - 複製 [完成`Resource ID`]。
+  - 顯示 `Properties` 此服務的。
+  - 複製 [完成] `Resource ID` 。
+  
+>[!NOTE]
+>[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加並行限制，因為容器僅受到其裝載所在硬體的 cpu 所限制。
 
 ## <a name="importing-data"></a>匯入資料
 
