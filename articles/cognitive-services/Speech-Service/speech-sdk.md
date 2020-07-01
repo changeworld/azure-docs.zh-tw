@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399951"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610756"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
@@ -37,7 +37,7 @@ ms.locfileid: "81399951"
 
 ### <a name="voice-assistants"></a>語音助理
 
-語音助理使用語音 SDK，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。 語音助理服務可提供裝置與助理之間快速可靠的互動。 執行作業會使用 Bot Framework 的 Direct Line 語音通道或整合式自訂命令（預覽）服務來完成工作。 此外，您也可以使用[自訂語音入口網站](https://aka.ms/customvoice)建立語音助理，以建立獨特的語音體驗。
+[語音助理](voice-assistants.md)使用語音 SDK，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。 語音助理服務可提供裝置與助理之間快速可靠的互動。 執行作業會使用 Bot Framework 的 Direct Line 語音通道或整合式自訂命令（預覽）服務來完成工作。 此外，語音助理可以使用[自訂語音入口網站](https://aka.ms/customvoice)中所建立的自訂語音，來新增唯一的語音輸出體驗。
 
 #### <a name="keyword-spotting"></a>關鍵字找出
 
@@ -65,7 +65,7 @@ ms.locfileid: "81399951"
 
 ### <a name="codec-compressed-audio-input"></a>編解碼器壓縮的音訊輸入
 
-有數個語音 SDK 程式設計語言支援編解碼器壓縮的音訊輸入資料流程。 如需詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用壓縮的<span class="docon docon-navigate-external x-hidden-focus"></span>音訊輸入格式</a>。
+有數個語音 SDK 程式設計語言支援編解碼器壓縮的音訊輸入資料流程。 如需詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用壓縮的 <span class="docon docon-navigate-external x-hidden-focus"></span> 音訊輸入格式</a>。
 
 ## <a name="rest-api"></a>REST API
 

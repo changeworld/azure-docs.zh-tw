@@ -3,12 +3,12 @@ title: 標記實體範例語句
 description: 瞭解如何在 LUIS 入口網站的意圖詳細資料頁面中的範例語句中，以子實體標示機器學習實體。
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722638"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610484"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>在範例語句中標示機器學習服務實體
 
@@ -16,13 +16,13 @@ ms.locfileid: "83722638"
 
 您可以為機器學習的實體和子實體加上標籤。
 
-因為您無法將正則運算式、清單或預先建立的實體加上標籤，所以請建立一個實體或列，然後將這些實體加入至實體或列的功能（如果適用的話）。
+因為您無法標記正則運算式、清單或預先建立的實體，請建立實體或列，然後將這些實體加入至實體或列的特徵（如果適用的話）。
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>從意圖詳細資料頁面語句標籤範例
 
 若要在語句內標記實體的範例，請選取語句的意圖。
 
-1. 登入[LUIS 入口網站](https://www.luis.ai)，並選取您的**訂**用帳戶和**撰寫資源**，以查看指派給該撰寫資源的應用程式。
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
 1. 選取具有您想要加上標籤以供與實體進行提取之範例語句的意圖。
 1. 選取您要加上標籤的文字，然後選取 [實體]。
