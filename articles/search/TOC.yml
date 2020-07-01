@@ -1,13 +1,13 @@
 - name: Azure 認知搜尋文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是 Azue 認知搜尋？
       href: search-what-is-azure-search.md
     - name: 新功能
       href: whats-new.md
 - name: 快速入門
-  expanded: true
   items:
     - name: 入口網站
       items:
@@ -85,7 +85,7 @@
     - name: Python 範例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 範例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -388,10 +388,10 @@
           href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: REST
       items:
-        - name: 搜尋 2019-05-06
+        - name: 搜尋 2020-06-30
           href: /rest/api/searchservice
-        - name: 搜尋 2019-05-06-預覽
-          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: 搜尋 2020-06-30-預覽
+          href: /rest/api/searchservice/index-preview
         - name: 管理 2020-03-13
           href: /rest/api/searchmanagement
         - name: 管理 2019-10-01-預覽

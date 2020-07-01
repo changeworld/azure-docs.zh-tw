@@ -3,20 +3,14 @@
 - name: 概觀
   expanded: true
   items:
-    - name: 什麼是雲端應用程式管理和單一登入？
+    - name: 什麼是應用程式管理？
       href: what-is-application-management.md
-    - name: 什麼是內部部署應用程式的應用程式 Proxy？
-      href: what-is-application-proxy.md
-    - name: 常見應用程式管理案例
-      href: common-scenarios.md
-    - name: 什麼是應用程式佈建？
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: 快速入門
   items:
-    - name: 從資源庫新增雲端應用程式
-      href: add-application-portal.md
     - name: 檢視您的企業應用程式
       href: view-applications-portal.md
+    - name: 從資源庫新增雲端應用程式
+      href: add-application-portal.md
 - name: 教學課程
   items:
     - name: 整合式資源庫應用程式 (例如 ServiceNow、Salesforce、Dropbox)
@@ -32,6 +26,8 @@
   items:
     - name: 應用程式管理最佳做法
       href: application-management-fundamentals.md
+    - name: 應用程式管理常見案例
+      href: common-scenarios.md
     - name: 雲端應用程式和單一登入
       items:
         - name: 規劃雲端應用程式整合
@@ -80,6 +76,8 @@
       items:
         - name: 應用程式 Proxy
           href: application-proxy.md
+        - name: 什麼是內部部署應用程式的應用程式 Proxy？
+          href: what-is-application-proxy.md
         - name: 規劃應用程式 Proxy 部署
           href: application-proxy-deployment-plan.md
         - name: 連接器

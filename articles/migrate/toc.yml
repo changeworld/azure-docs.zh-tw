@@ -86,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: VMware 代理程式型移轉架構
       href: agent-based-migration-architecture.md
-    - name: 評量概觀
+    - name: Azure VM 評量概觀
       href: concepts-assessment-calculation.md
+    - name: AVS 評量概觀
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: 評量的最佳做法
       href: best-practices-assessment.md
     - name: 相依性分析概觀
@@ -124,8 +126,10 @@
       href: how-to-create-group-machine-dependencies.md
     - name: 分析機器相依性 (無代理程式)
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: 建立評估
+    - name: 建立 Azure VM 評量
       href: how-to-create-assessment.md
+    - name: 建立 AVS 評量
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: 評估 SQL Server 資料庫
       href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: 自訂評量

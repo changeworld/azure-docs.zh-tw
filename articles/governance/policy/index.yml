@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/16/2020
-  ms.openlocfilehash: d3a25af9f7d8e16fbb008fd84aff6e29c57680da
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.date: 06/29/2020
+  ms.openlocfilehash: c066c3a7cc5b8208a61962ce4f51f7eef4be192b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85321951"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85549938"
 landingContent:
 - title: 關於 Azure 原則
   linkLists:
@@ -39,11 +39,11 @@ landingContent:
     links:
     - text: 指派原則 (入口網站)
       url: ./assign-policy-portal.md
-    - text: 指派原則 (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: 指派原則 (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: 指派原則 (範本)
+    - text: 指派原則 (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: 指派原則 (ARM 範本)
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:

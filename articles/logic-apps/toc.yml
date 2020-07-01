@@ -7,12 +7,15 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立邏輯應用程式 - Azure 入口網站
+    - name: 建立邏輯應用程式 - 入口網站
       href: quickstart-create-first-logic-app-workflow.md
     - name: 建立邏輯應用程式 - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: 建立邏輯應用程式 - Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: 建立邏輯應用程式 - ARM 範本
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: 教學課程
   items:
     - name: 建立以排程為基礎的工作流程

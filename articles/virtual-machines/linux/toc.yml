@@ -947,6 +947,8 @@
           items:
             - name: 使用 Azure Site Recovery 移轉到進階儲存體
               href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: 轉換至伺服器端加密
+              href: disks-ade-sse-conversion-cli.md
             - name: 轉換為受控磁碟
               href: convert-unmanaged-to-managed-disks.md
             - name: 在標準和進階間轉換磁碟

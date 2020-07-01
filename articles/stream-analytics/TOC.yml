@@ -30,7 +30,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - 在 Aure Pipelines 中使用 CI/CD 部署
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - 執行 C# UDF'
+    - name: 4 - 執行 C# UDF
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 - 建立自訂 .NET 還原序列化程式
       href: custom-deserializer.md
@@ -82,10 +82,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: 機器學習 UDF
           href: machine-learning-udf.md
+        - name: 偵錯 UDF 和更新
+          href: debug-user-defined-functions.md
     - name: 最佳化您的串流分析作業
       items:
         - name: 了解及調整串流單位
@@ -228,6 +230,8 @@
           href: visual-studio-code-local-run.md
         - name: 使用即時資料在本機測試
           href: visual-studio-code-local-run-live-input.md
+        - name: 使用作業圖表偵錯查詢
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: 設定 CI/CD 管線
           href: setup-cicd-vs-code.md
         - name: 探索作業

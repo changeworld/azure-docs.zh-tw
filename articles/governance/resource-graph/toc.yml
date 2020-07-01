@@ -8,7 +8,7 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 執行您的第一個查詢 - Azure 入口網站
+    - name: 執行您的第一個查詢 - 入口網站
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: 執行您的第一個查詢 - Azure CLI
@@ -26,6 +26,9 @@
     - name: 執行您的第一個查詢 - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 建立共用查詢 - Azure CLI
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: 部署共用查詢 - ARM 範本
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 5f9dbc120b301100364da61f7d8c19fa58beb5c9
-  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.openlocfilehash: 525d39eb4170927ebbf2fdee9298921093ee2aef
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/27/2020
-  ms.locfileid: "85482916"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565596"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -68,7 +68,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     - analytics
-    url: /azure/databricks/index.yml
+    url: /azure/databricks/
   - title: Azure Machine Learning
     summary: 以包含測試和模型管理的端對端、可擴充且受信任的平台，將 AI 功能提供給所有人
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -682,7 +682,7 @@ productDirectory:
     azureCategories:
     - developer-tools
     url: https://code.visualstudio.com/docs
-  - title: Visual Studio Online (預覽)
+  - title: Visual Studio 程式碼空間 (預覽)
     summary: 可從所有位置存取且具雲端支援的開發環境
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:

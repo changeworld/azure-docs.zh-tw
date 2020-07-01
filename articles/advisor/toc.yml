@@ -4,6 +4,14 @@
   items:
     - name: 何謂 Azure 建議程式？
       href: advisor-overview.md
+- name: 快速入門
+  items:
+    - name: 設定新建議的警示
+      items:
+        - name: Azure 入口網站
+          href: advisor-alerts-portal.md
+        - name: ARM 範本
+          href: advisor-alerts-arm.md
 - name: 教學課程
   items:
     - name: 開始使用 Advisor
@@ -25,7 +33,7 @@
     - name: 權限和封鎖動作
       href: permissions.md
     - name: 設定建議警示
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: 建議的大量補救
       href: advisor-quick-fix.md
     - name: Azure Resource Graph 中的 Advisor 資料
