@@ -19,7 +19,7 @@ ms.locfileid: "82188843"
 ---
 [參考文件](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [範例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -29,7 +29,7 @@ ms.locfileid: "82188843"
 使用本快速入門有幾個步驟：
 
 * 在 Azure 入口網站中，建立個人化工具資源
-* 在 Azure 入口網站中，於個人化工具資源的 [設定]  頁面上，將模型更新頻率變更為非常短的間隔
+* 在 Azure 入口網站中，於個人化工具資源的 [設定] 頁面上，將模型更新頻率變更為非常短的間隔
 * 在程式碼編輯器中，建立程式碼檔案並編輯程式碼檔案
 * 在命令列或終端機中，從命令列安裝 SDK
 * 在命令列或終端機中，執行程式碼檔案
@@ -100,7 +100,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 ## <a name="add-personalizer-resource-information"></a>新增個人化工具資源資訊
 
-在 [程式]  類別中，針對從環境變數中提取的資源 Azure 金鑰和端點 (名稱為 `PERSONALIZER_RESOURCE_KEY` 和 `PERSONALIZER_RESOURCE_ENDPOINT`) 建立變數。 如果您在應用程式啟動後才建立環境變數，則執行該應用程式的編輯器、IDE 或殼層必須先關閉再重新載入後，才能存取該變數。 這些方法稍後會在本快速入門中建立。
+在 [程式] 類別中，針對從環境變數中提取的資源 Azure 金鑰和端點 (名稱為 `PERSONALIZER_RESOURCE_KEY` 和 `PERSONALIZER_RESOURCE_ENDPOINT`) 建立變數。 如果您在應用程式啟動後才建立環境變數，則執行該應用程式的編輯器、IDE 或殼層必須先關閉再重新載入後，才能存取該變數。 這些方法稍後會在本快速入門中建立。
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 

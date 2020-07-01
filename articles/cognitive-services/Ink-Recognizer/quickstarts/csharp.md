@@ -29,13 +29,13 @@ ms.locfileid: "80371385"
 
 此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 任何一版的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - 若要在 Visual Studio 中安裝 Newtonsoft.Json 作為 NuGet 套件：
-        1. 以滑鼠右鍵按一下 [Solution Manager] 
-        2. 按一下 [管理 NuGet 套件...] 
+        1. 以滑鼠右鍵按一下 [Solution Manager]
+        2. 按一下 [管理 NuGet 套件...]
         3. 然後搜尋 `Newtonsoft.Json` 並安裝該套件。
 - 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 

@@ -52,11 +52,11 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 1. 取得有效的 Anomaly Detector API 訂用帳戶金鑰和 API 端點。 下一節有註冊指示。
 1. 登入，然後按一下右上角的 [複製]。
 1. 在完成複製作業之前，請先取消核取對話方塊中的 [公用] 選項，否則您的 Notebook (包括任何訂用帳戶金鑰) 將會是公用的。
-1. 按一下 [在免費 Compute 上執行] 
+1. 按一下 [在免費 Compute 上執行]
 1. 選取其中一個 Notebook。
 1. 將有效的 Anomaly Detector API 訂用帳戶金鑰新增至 `subscription_key` 變數。
 1. 將 `endpoint` 變數變更為您的端點。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 在頂端功能表列上，依序按一下 [儲存格]  和 [全部執行]  。
+1. 在頂端功能表列上，依序按一下 [儲存格] 和 [全部執行]。
 
 ## <a name="workflow"></a>工作流程
 

@@ -11,7 +11,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671296"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -40,7 +40,7 @@ ms.locfileid: "80671296"
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
-1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案]   > [新增]   > [類別]  。
+1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案] > [新增] > [類別]。
 
 1. 在 [新增 Java 類別] 視窗中，於 [套件] 欄位中輸入 _speechsdk.quickstart_，並在 [名稱] 欄位中輸入 _Main_。
 
@@ -185,9 +185,9 @@ ms.locfileid: "80671296"
 
 1. 將變更儲存到 `Main` 檔案。
 
-1. 若要支援回應播放，請在 Java inputStream 中新增額外的類別以轉換從 getAudio() API 傳回的 PullAudioOutputStream 物件，以便輕鬆處理。 此 `ActivityAudioStream` 是特殊的類別，可處理來自 Direct Line Speech 頻道的語音回應。 也會提供處理播放所需的存取子，以擷取音訊格式資訊。 如需此功能，請選取 [檔案]   >  [新建]   >  [類別]  。
+1. 若要支援回應播放，請在 Java inputStream 中新增額外的類別以轉換從 getAudio() API 傳回的 PullAudioOutputStream 物件，以便輕鬆處理。 此 `ActivityAudioStream` 是特殊的類別，可處理來自 Direct Line Speech 頻道的語音回應。 也會提供處理播放所需的存取子，以擷取音訊格式資訊。 如需此功能，請選取 [檔案] >  [新建] >  [類別]。
 
-1. 在 [新建 Java 類別]  視窗中，將 _speechsdk.quickstart_ 輸入 [套件]  欄位，並將 _ActivityAudioStream_ 輸入 [名稱]  欄位。
+1. 在 [新建 Java 類別] 視窗中，將 _speechsdk.quickstart_ 輸入 [套件] 欄位，並將 _ActivityAudioStream_ 輸入 [名稱] 欄位。
 
 1. 開啟新建的 `ActivityAudioStream` 類別，並將內容取代為下列程式碼：
 
@@ -434,7 +434,7 @@ ms.locfileid: "80671296"
 
 ## <a name="build-and-run-the-app"></a>建置並執行應用程式
 
-選取 F11 鍵，或選取 [執行]   > [偵錯]  。
+選取 F11 鍵，或選取 [執行] > [偵錯]。
 主控台會顯示訊息：「請開始說話」。
 此時，請說出您 Bot 可了解的英文片語或句子。 您的語音會透過您 Bot 可辨識及處理的 Direct Line 語音頻道來傳輸至您的 Bot。 回應會以活動形式傳回。 如果您的 Bot 傳回語音作為回應，則會使用 `AudioPlayer` 類別播放音訊。
 

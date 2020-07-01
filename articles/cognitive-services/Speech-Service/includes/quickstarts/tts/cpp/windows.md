@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
 ms.openlocfilehash: 298d70b4f01da221ca469aaf49d68ed0b91325d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274801"
 ---
 ## <a name="prerequisites"></a>Prerequisites
@@ -27,7 +27,7 @@ ms.locfileid: "81274801"
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
-1. 開啟來源檔案 helloworld.cpp  。
+1. 開啟來源檔案 helloworld.cpp。
 
 1. 使用下列程式碼片段取代所有程式碼：
 
@@ -41,7 +41,7 @@ ms.locfileid: "81274801"
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
 1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
 

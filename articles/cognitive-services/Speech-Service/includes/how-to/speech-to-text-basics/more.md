@@ -20,7 +20,7 @@ ms.locfileid: "81399560"
 | C#          | [.NET Framework][csharp-netframework]、[.NET Core][csharp-netcore]、[UWP][csharp-uwp]、[Unity][csharp-unity]、[Xamarin][csharp-xamarin] |
 | C++         | [快速入門][cpp-quickstarts]，[範例][cpp-samples]                                                                                  |
 | Java        | [Android][java-android]、[JRE][java-jre]                                                                                                |
-| JavaScript  | [[瀏覽器]][js-browser]                                                                                                                   |
+| JavaScript  | [瀏覽器][js-browser]                                                                                                                   |
 | Node.js     | [Windows、Linux、macOS][node-js]                                                                                                        |
 | Objective-C | [iOS][objective-c-ios]、[macOS][objective-c-macos]                                                                                      |
 | Python      | [Windows、Linux、macOS][python]                                                                                                         |

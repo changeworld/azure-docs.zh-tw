@@ -19,7 +19,7 @@ ms.locfileid: "82188845"
 ---
 [參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [套件 (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [範例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
@@ -30,7 +30,7 @@ ms.locfileid: "82188845"
 使用本快速入門有幾個步驟：
 
 * 在 Azure 入口網站中，建立個人化工具資源
-* 在 Azure 入口網站中，於個人化工具資源的 [設定]  頁面上，將模型更新頻率變更為非常短的間隔
+* 在 Azure 入口網站中，於個人化工具資源的 [設定] 頁面上，將模型更新頻率變更為非常短的間隔
 * 在程式碼編輯器中，建立程式碼檔案並編輯程式碼檔案
 * 在命令列或終端機中，從命令列安裝 SDK
 * 在命令列或終端機中，執行程式碼檔案

@@ -14,7 +14,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671136"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -203,13 +203,13 @@ ms.locfileid: "80671136"
 
 1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
 
-1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
+1. 從功能表列中，選擇 [檔案] > [全部儲存]。
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>建置並執行應用程式以建立新的交談
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
+1. 選擇 [偵錯] > [開始偵錯] (或按 **F5**) 以啟動 **helloworld** 應用程式。
 
 1. 一旦看到 `Started transcribing` 訊息出現，您就可以開始說話。 當您說話時，您會看到文字記錄出現。
     - 如果您與其他人共用交談程式碼，而且這些人加入交談，您也會看到他們的文字記錄。
@@ -305,9 +305,9 @@ ms.locfileid: "80671136"
 
 4. 返回 Visual Studio，並將字串 `YourConversationId` 取代為您在上一個步驟中建立的交談識別碼。
 
-5. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+5. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-6. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
+6. 選擇 [偵錯] > [開始偵錯] (或按 **F5**) 以啟動 **helloworld** 應用程式。
 
 7. 一旦看到 `Started transcribing` 訊息出現，您就可以開始說話。 當您說話時，您會看到文字記錄出現。
     - 如果您返回瀏覽器，則應該也會在說話時看到文字記錄出現在該處。
