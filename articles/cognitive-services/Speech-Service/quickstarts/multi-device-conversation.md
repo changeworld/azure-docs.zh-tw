@@ -8,15 +8,15 @@ manager: cpoulain
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/16/2020
+ms.date: 06/25/2020
 ms.author: ralphe
 zone_pivot_groups: programming-languages-set-nine
-ms.openlocfilehash: 7276b790b3fdb56308c6af9a047a7c290c01b253
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1b3995c60d8518be0bdc66f7758d1993a92606fc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76268108"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391582"
 ---
 # <a name="quickstart-multi-device-conversation"></a>快速入門：多裝置交談
 

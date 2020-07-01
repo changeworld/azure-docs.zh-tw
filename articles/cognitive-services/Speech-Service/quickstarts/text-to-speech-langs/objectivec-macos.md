@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 37eed03ed839411f1acf5d963d4118a3c6d2c379
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c859965c951ad271b1b9e272ce60de64aa3d3d5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975919"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391361"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入門：使用語音 SDK 在 macOS 上以 Objective-C 合成語音
 

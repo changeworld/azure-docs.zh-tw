@@ -26,7 +26,7 @@
     - name: 建立資料處理站 - Resource Manager 範本
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 啟用客戶管理的金鑰加密
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: 建立資料流程
       href: data-flow-create.md
 - name: 教學課程
@@ -576,7 +576,7 @@
         - name: 適用於 Data Factory 的受控身分識別
           href: data-factory-service-identity.md
         - name: 客戶管理的金鑰加密
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: 監視及管理
       items:
         - name: 以視覺化方式監視

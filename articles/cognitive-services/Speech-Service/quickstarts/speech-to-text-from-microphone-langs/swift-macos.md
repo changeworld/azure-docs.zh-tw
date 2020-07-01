@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 7c5611a142087cff06eefb0277b12ff786074e1a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 440addd017e7a819d9d3d02a8b77b9432b68b9af
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75446838"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391412"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入門：使用語音 SDK 在 macOS 上以 Swift 辨識語音
 
@@ -23,7 +23,7 @@ ms.locfileid: "75446838"
 
 在本文中，您將了解如何使用認知服務語音 SDK 以 Swift 建立 macOS 應用程式，以將麥克風錄製的語音轉譯成文字。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，以下為必要條件清單：
 
@@ -41,7 +41,7 @@ ms.locfileid: "75446838"
 
 ## <a name="create-an-xcode-project"></a>建立 Xcode 專案
 
-啟動 Xcode，然後按一下 [檔案]   > [新增]   > [專案]  以啟動新專案。
+啟動 Xcode，然後按一下 [檔案] > [新增] > [專案] 以啟動新專案。
 在範本選取對話方塊中，選擇「Cocoa 應用程式」範本。
 
 在後續的對話方塊中，進行下列選取：
@@ -68,7 +68,7 @@ ms.locfileid: "75446838"
 1. 在 helloworld 專案內的 `helloworld` 目錄中放入名為 `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 的新標頭檔，並貼入下列程式碼：
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/from-microphone/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. 在 [Objective-C 橋接標頭]  欄位中，將橋接標頭的相對路徑 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 新增至 helloworld 目標的 Swift 的專案設定。![標頭屬性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)
+1. 在 [Objective-C 橋接標頭] 欄位中，將橋接標頭的相對路徑 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 新增至 helloworld 目標的 Swift 的專案設定。![標頭屬性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)
 1. 將自動產生的 `AppDelegate.swift` 檔案內容取代為：
 
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/from-microphone/helloworld/helloworld/AppDelegate.swift#code)]
@@ -86,8 +86,8 @@ ms.locfileid: "75446838"
 ## <a name="build-and-run-the-sample"></a>建置並執行範例
 
 1. 在 XCode 中開啟 `helloworld.xcworkspace` 工作區。
-1. 顯示偵錯輸出 ([檢視]   > [偵錯區域]   > [啟動主控台]  )。
-1. 建置範例程式碼，然後從功能表中選取 [產品]   > [執行]  或按一下 [播放]  按鈕，以執行該程式碼。
+1. 顯示偵錯輸出 ([檢視] > [偵錯區域] > [啟動主控台])。
+1. 建置範例程式碼，然後從功能表中選取 [產品] > [執行] 或按一下 [播放] 按鈕，以執行該程式碼。
 1. 按一下應用程式中的 [辨識] 按鈕，並說出幾個字後，您應該會在應用程式視窗的下半部看到說出的文字。
 
 ## <a name="next-steps"></a>後續步驟

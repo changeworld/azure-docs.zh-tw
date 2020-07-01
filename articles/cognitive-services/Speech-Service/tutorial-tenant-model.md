@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77469012"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391208"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教學課程：建立租用戶模型 (預覽)
 
@@ -24,7 +24,7 @@ ms.locfileid: "77469012"
 > [!IMPORTANT]
 > 如果貴組織使用租用戶模型服務進行註冊，則語音服務可存取貴組織的語言模型。 此模型是從 Office 365 公用群組電子郵件和文件產生而來，貴組織中的任何人都可以看到該模型。 貴組織的 Office 365 系統管理員可以從 Office 365 系統管理入口網站，開啟/關閉全組織語言模型的使用。
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 使用 Microsoft 365 系統管理中心在租用戶模型中註冊
@@ -39,39 +39,39 @@ ms.locfileid: "77469012"
 
 1. 登入 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 
-1. 在左側窗格中選取 [設定]  ，然後從巢狀功能表中選取 [設定]  ，最後從主視窗中選取 [Azure 語音服務]  。
+1. 在左側窗格中選取 [設定]，然後從巢狀功能表中選取 [設定]，最後從主視窗中選取 [Azure 語音服務]。
 
    ![服務與增益集窗格](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. 選取 [允許全組織的語言模型]  核取方塊，然後選取 [儲存變更]  。
+1. 選取 [允許全組織的語言模型] 核取方塊，然後選取 [儲存變更]。
 
    ![Azure 語音服務窗格](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 若要關閉租用戶模型執行個體：
 1. 重複上述步驟 1 和 2。
-1. 清除 [允許全組織的語言模型]  核取方塊，然後選取 [儲存變更]  。
+1. 清除 [允許全組織的語言模型] 核取方塊，然後選取 [儲存變更]。
 
 ## <a name="get-a-speech-subscription-key"></a>取得語音訂用帳戶金鑰
 
 若要使用租用戶模型搭配語音 SDK，您會需要語音資源及其相關聯的訂用帳戶金鑰。
 
 1. 登入 [Azure 入口網站](https://aka.ms/azureportal)。
-1. 選取 [建立資源]  。
-1. 在 [搜尋]  方塊中，輸入**語音**。
-1. 在結果清單中，選取 [語音]  ，然後選取 [建立]  。
+1. 選取 [建立資源]。
+1. 在 [搜尋] 方塊中，輸入**語音**。
+1. 在結果清單中，選取 [語音]，然後選取 [建立]。
 1. 遵循畫面上的指示來建立資源。 請確認：
-   * [位置]  設定為 [eastus]  或 [westus]  。
-   * [定價層]  設定為 [S0]  。
-1. 選取 [建立]  。
+   * [位置] 設定為 [eastus] 或 [westus]。
+   * [定價層] 設定為 [S0]。
+1. 選取 [建立]。
 
-   幾分鐘後，就會建立您的資源。 您可以在資源的 [概觀]  區段中找到訂用帳戶金鑰。
+   幾分鐘後，就會建立您的資源。 您可以在資源的 [概觀] 區段中找到訂用帳戶金鑰。
 
 ## <a name="create-a-language-model"></a>建立語言模型
 
 當您的管理員已為組織啟用租用戶模型之後，您就可以建立以您的 Office365 資料為基礎的語言模型。
 
 1. 登入 [Speech Studio](https://speech.microsoft.com/)。
-1. 在右上方，選取 [設定]  (齒輪圖示)，然後選取 [租用戶模型設定]  。
+1. 在右上方，選取 [設定] (齒輪圖示)，然後選取 [租用戶模型設定]。
 
    ![[租用戶模型設定] 連結](media/tenant-language-model/tenant-language-settings.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "77469012"
    > * [客戶金鑰](/microsoft-365/compliance/customer-key-overview) \(部分機器翻譯\)
    > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
 
-1. 選取 [加入]  。
+1. 選取 [加入]。
 
    當您的租用戶模型準備就緒時，您會收到確認電子郵件訊息，其中包含進一步的指示。
 
@@ -91,14 +91,14 @@ ms.locfileid: "77469012"
 
 當您的租用戶模型執行個體準備就緒時，請執行下列動作加以部署：
 
-1. 在您的確認電子郵件訊息中，選取 [檢視模型]  按鈕。 或登入 [Speech Studio](https://speech.microsoft.com/)。
-1. 在右上方，選取 [設定]  (齒輪圖示)，然後選取 [租用戶模型設定]  。
+1. 在您的確認電子郵件訊息中，選取 [檢視模型] 按鈕。 或登入 [Speech Studio](https://speech.microsoft.com/)。
+1. 在右上方，選取 [設定] (齒輪圖示)，然後選取 [租用戶模型設定]。
 
    ![[租用戶模型設定] 連結](media/tenant-language-model/tenant-language-settings.png)
 
-1. 選取 [部署]  。
+1. 選取 [部署]。
 
-   當您的模型已部署時，狀態會變更為 [已部署]  。
+   當您的模型已部署時，狀態會變更為 [已部署]。
 
 ## <a name="use-your-tenant-model-with-the-speech-sdk"></a>使用租用戶模型搭配語音 SDK
 
@@ -290,8 +290,8 @@ namespace PrincetonSROnly.FrontEnd.Samples
 接下來，您必須從命令列重建並執行專案。 在執行命令之前，請執行下列動作來更新幾個參數：
 
 1. 將 `<Username>` 和 `<Password>` 取代為有效租用戶使用者的值。
-1. 將 `<Subscription-Key>` 取代為您語音資源的訂用帳戶金鑰。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中，於您語音資源的 [概觀]  區段中找到此值。
-1. 以下列端點取代 `<Endpoint-Uri>`。 請務必將 `{your region}` 取代為您語音資源所建立在的區域。 支援這些區域：`westus`、`westus2` 和 `eastus`。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中，於您語音資源的 [概觀]  區段中找到您的區域資訊。
+1. 將 `<Subscription-Key>` 取代為您語音資源的訂用帳戶金鑰。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中，於您語音資源的 [概觀] 區段中找到此值。
+1. 以下列端點取代 `<Endpoint-Uri>`。 請務必將 `{your region}` 取代為您語音資源所建立在的區域。 支援這些區域：`westus`、`westus2` 和 `eastus`。 您可以在 [Azure 入口網站](https://aka.ms/azureportal)中，於您語音資源的 [概觀] 區段中找到您的區域資訊。
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```

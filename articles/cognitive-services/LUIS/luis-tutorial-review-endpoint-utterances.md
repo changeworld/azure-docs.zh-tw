@@ -3,13 +3,13 @@ title: 教學課程：檢閱端點語句 - LUIS
 description: 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTP 端點所收到的語句來改善應用程式的預測。 有些語句可能會針對意圖進行驗證，而其他語句則可能需要針對實體進行驗證。
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/22/2020
+ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592571"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445914"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教學課程：檢閱端點語句以修正不確定的預測
 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTPS 端點所收到的語句來改善應用程式的預測。 您應該在排定的 LUIS 維護中定期檢閱端點語句。
