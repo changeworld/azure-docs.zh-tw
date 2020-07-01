@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943152"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603157"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>教學課程：取得網頁上的搜尋建議
 
@@ -29,7 +29,7 @@ ms.locfileid: "78943152"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要依照本教學課程，您需要 Bing 自動建議 API 的訂用帳戶金鑰。 如果您沒有金鑰，請在 Azure 入口網站中[建立 Bing 自動建議資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/)。
+若要依照本教學課程，您需要 Bing 自動建議 API 的訂用帳戶金鑰。 如果您沒有金鑰，請在 Azure 入口網站中[建立 Bing 自動建議資源](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)。
 
 ## <a name="create-a-new-web-page"></a>建立新的網頁
 

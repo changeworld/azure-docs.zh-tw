@@ -3,12 +3,12 @@ title: 開發人員資源-Language Understanding
 description: Sdk、REST Api、CLI 可協助您以程式設計語言開發 Language Understanding （LUIS）應用程式。 管理您的 Azure 資源和 LUIS 預測。
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758056"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610776"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>適用于 Language Understanding 的 SDK、REST 和 CLI 開發人員資源（LUIS）
 
@@ -73,13 +73,17 @@ LUIS 目前有2種類型的端點：
 |`version`|10個字元版本名稱|
 |`slot`| `production` 或 `staging`|
 
+### <a name="rest-query-string-parameters"></a>REST 查詢字串參數
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
+
 ## <a name="app-schema"></a>應用程式結構描述
 
 [應用程式架構](app-schema-definition.md)是以或格式匯入和匯出 `.json` `.lu` 。
 
 ### <a name="language-based-sdks"></a>以語言為基礎的 Sdk
 
-|語言 |參考文件|套件|範例|快速入門|
+|Language |參考文件|套件|範例|快速入門|
 |--|--|--|--|--|
 |C#|[編寫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[翻](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 製作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 預測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK 範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[建立和管理應用程式](sdk-authoring.md?pivots=programming-language-csharp)<br>[查詢預測端點](sdk-query-prediction-endpoint.md)|
 |Go|[撰寫和預測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[編寫](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[翻](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 撰寫和預測](luis-get-started-get-intent-from-rest.md)|

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2f374e29f4dc5406956cd56d1bb0bd1466e65773
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384514"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604806"
 ---
 # <a name="what-is-bing-entity-search-api"></a>什麼是 Bing 實體搜尋 API？
 
@@ -31,7 +31,7 @@ Bing 實體搜尋 API 會將搜尋查詢傳送至 Bing，並取得包含實體�
 
 Bing 實體搜尋 API 是一種 RESTful Web 服務，可讓您輕鬆地從任何可發出 HTTP 要求及剖析 JSON 的程式設計語言進行呼叫。 您可以透過 REST API 或 SDK 來使用此服務。
 
-1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜尋查詢，將要求傳送至 API。
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 

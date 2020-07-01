@@ -4,20 +4,16 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/08/2020
-ms.openlocfilehash: b99b012cfe4ce7ace1bd4e179fd6c8baf89bc854
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 230f1b51d0c2aae18c0fa002d6fa348d392adb5e
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118723"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603261"
 ---
 ## <a name="create-an-azure-resource"></a>建立 Azure 資源
 
 藉由建立下列其中一項 Azure 資源，開始使用 Bing 影像搜尋 API。
-
-### <a name="trial-resource"></a>[試用資源](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * 不需要 Azure 訂用帳戶。
-   * 可免費使用 7 天。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得試用金鑰與端點。
 
 ### <a name="bing-search-v7-resource"></a>[Bing 搜尋 v7 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。

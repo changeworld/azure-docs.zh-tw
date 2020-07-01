@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882790"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609464"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>將分析新增至 Bing 搜尋 Api
 
 Bing 統計資料可為 Bing 搜尋 Api 提供分析。 這些分析包括呼叫量、熱門查詢字串、地理分佈等等。 您可以流覽至您的 Azure 資源，然後按一下 [**啟用 Bing 統計資料]**，以在[Azure 入口網站](https://ms.portal.azure.com)中啟用 Bing 統計資料。
 
 > [!IMPORTANT]
-> * Bing 統計資料不適用於免費試用訂用帳戶，或免費`F0`定價層的資源。
+> * 「免費」定價層上的資源無法使用 Bing 統計資料 `F0` 。
 > * 您可能無法使用透過 Bing 統計資料儀表板提供的任何資料，來建立向第三方散發的應用程式。
 > * 啟用 Bing 統計資料會稍微增加您的訂用帳戶速率。 如需詳細資訊，請參閱[定價](https://aka.ms/bingstatisticspricing)。
 
@@ -94,7 +94,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 - **安全搜尋分佈**：安全搜尋值的分佈。 例如，關閉、中等或嚴格。 `safeSearch` 查詢參數會包含值 (如果指定的話)。 否則，Bing 會預設該值為中等。  
 
-- **要求的散發**套件：您在`responseFilter`查詢參數中要求的 Web 搜尋 API 答案。  
+- **要求的散發**套件：您在查詢參數中要求的 WEB 搜尋 API 答案 `responseFilter` 。  
 
 - **傳回的答案分佈**：Web 搜尋 API 在回應中傳回的答案。
 

@@ -2,14 +2,14 @@
 title: V3 API 中的預測端點變更
 description: 查詢預測端點 V3 Api 已變更。 使用本指南來瞭解如何遷移至第3版端點 Api。
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338187"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610875"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的預測端點變更
 
@@ -86,17 +86,7 @@ V3 預測端點中不支援此 API-繼續使用 V2 API 預測端點進行拼寫�
 
 ### <a name="query-string-changes"></a>查詢字串變更
 
-V3 API 有不同的查詢字串參數。
-
-|參數名稱|類型|版本|預設|目的|
-|--|--|--|--|--|
-|`log`|boolean|V2 & V3|false|將查詢儲存在記錄檔中。 預設值為 false。|
-|`query`|字串|僅限第 3 版|無預設值-GET 要求中需要它|**在 V2 中**，要預測的語句是在 `q` 參數中。 <br><br>**在 V3**中，此功能會在參數中傳遞 `query` 。|
-|`show-all-intents`|boolean|僅限第 3 版|false|傳回在**預測. 意圖**物件中具有對應分數的所有意圖。 意圖會以物件的形式傳回父 `intents` 物件。 這可讓您以程式設計方式存取，而不需要在陣列中尋找意圖： `prediction.intents.give` 。 在 V2 中，這些會在陣列中傳回。 |
-|`verbose`|boolean|V2 & V3|false|**在第2版中**，當設定為 true 時，會傳回所有預測意圖。 如果您需要所有預測的意圖，請使用的 V3 參數 `show-all-intents` 。<br><br>**在 V3 中**，這個參數只提供實體預測的實體中繼資料詳細資料。  |
-|`timezoneOffset`|字串|V2|-|適用于 datetimeV2 實體的時區。|
-|`datetimeReference`|字串|V3|-|適用于 datetimeV2 實體的[時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 取代為 `timezoneOffset` V2。|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 張貼內容
 

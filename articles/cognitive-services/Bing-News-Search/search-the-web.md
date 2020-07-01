@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75448437"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602749"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>什麼是 Bing 新聞搜尋 API？
 
@@ -40,10 +40,8 @@ Bing 新聞搜尋 API 主要用於尋找及傳回相關的新聞文章，同時�
 
 Bing 新聞搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任何可發出 HTTP 要求及剖析 JSON 的程式設計語言呼叫。 您可以透過 REST API 或 SDK 來使用此服務。
 
-1. 建立具備 Bing 搜尋 API 存取權的認知服務 API 帳戶。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api)。
-
+1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜尋查詢，將要求傳送至 API。
-
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 
 ## <a name="next-steps"></a>後續步驟

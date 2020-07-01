@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873951"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611317"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>快速入門：使用 Bing Web 搜尋 REST API 和 Node.js 來搜尋 Web
 
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>設定訂用帳戶金鑰
 
-此程式碼片段會使用 `AZURE_SUBSCRIPTION_KEY` 環境變數來儲存您的訂用帳戶金鑰，此做法可有效避免在部署程式碼時意外洩露您的金鑰。 若要查閱您的訂用帳戶金鑰，請參閱[您的 API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)。
+此程式碼片段會使用 `AZURE_SUBSCRIPTION_KEY` 環境變數來儲存您的訂用帳戶金鑰，此做法可有效避免在部署程式碼時意外洩露您的金鑰。
 
 如果您不熟悉環境變數的使用方式，或想要盡快執行此應用程式，請將 `process.env['AZURE_SUBSCRIPTION_KEY']` 取代為您設為字串的訂用帳戶金鑰。
 

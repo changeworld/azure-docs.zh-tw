@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308014"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604687"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>撰寫自訂命令應用程式時的 Debug 錯誤
 
@@ -26,7 +26,7 @@ ms.locfileid: "85308014"
 
 [LUIS 會限制每個撰寫資源的500應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits)。 如果您使用的撰寫資源已經有500應用程式，則建立 LUIS 應用程式可能會失敗。 
 
-請確定選取的 LUIS 撰寫資源小於500。 如果沒有，您可以新增 LUIS 撰寫資源、切換至另一個，或嘗試清除 LUIS 應用程式。  
+請確定選取的 LUIS 撰寫資源少於500個應用程式。 如果不是，您可以建立新的 LUIS 撰寫資源、切換至另一個資源，或嘗試清除 LUIS 應用程式。  
 
 ## <a name="errors-when-deleting-an-application"></a>刪除應用程式時發生錯誤
 ### <a name="cant-delete-luis-application"></a>無法刪除 LUIS 應用程式
@@ -48,13 +48,13 @@ ms.locfileid: "85308014"
 當 Web 端點正在使用時，不允許您刪除它。 移除 Web 端點之前，請先移除使用此 Web 端點的任何**呼叫 web**端點動作。
 
 ## <a name="errors-when-training-an-application"></a>定型應用程式時發生錯誤
-### <a name="build-in-intents"></a>以意圖建立
-LUIS 具有「是/否」意圖。 具有只有 "yes"、"no" 的範例句子將無法進行定型。 
+### <a name="built-in-intents"></a>內建意圖
+LUIS 具有內建的「是/否」意圖。 具有只有 "yes"、"no" 的範例句子將無法進行定型。 
 
 | 關鍵字 | 變化 | 
 | ------- | --------- | 
-| Yes | 確定，確定 |
-| No | 不對，Not | 
+| 是 | 確定，確定 |
+| 否 | 不對，Not | 
 
 ### <a name="common-sample-sentences"></a>常見的範例句子
 自訂命令不允許在不同命令之間共用的常見範例句子。 如果某個命令中的一些範例句子已在另一個命令中定義，則應用程式的定型可能會失敗。 
@@ -72,7 +72,7 @@ LUIS 具有「是/否」意圖。 具有只有 "yes"、"no" 的範例句子將�
 ### <a name="training-takes-too-long"></a>定型花費的時間太長
 LUIS 訓練的目的是要以較少的範例快速學習。 不要加入太多範例句子。 
 
-如果您有許多範例句子類似，請定義參數，將其抽象化為模式，並將它新增至範例句子。
+如果您有許多類似的範例句子，請定義參數，將其抽象化為模式，並將它新增至範例句子。
 
 例如，您可以為下列範例句子定義參數 {車輛}，並只將 "Book a {車輛}" 加入至範例句子。
 
