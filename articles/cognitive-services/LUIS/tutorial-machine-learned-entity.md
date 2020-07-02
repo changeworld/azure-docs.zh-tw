@@ -3,12 +3,12 @@ title: 教學課程：使用機器學習實體擷取結構化資料 - LUIS
 description: 使用機器學習實體從語句中擷取結構化資料。 若要提高擷取的正確性，請新增具有特徵的子實體。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676180"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611011"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -98,7 +98,7 @@ ms.locfileid: "83676180"
 
 1. 在下拉式功能表中選取 [建立新片語清單]。
 
-1. 在 [建立新的片語清單] 方塊中輸入名稱 `SizePhraselist`，然後依序輸入 `small`、`medium` 和 `large` 的值。 在填入 [建議] 方塊後，選取 `extra large` 和 `xl`。 選取 [儲存] 以建立新的片語清單。
+1. 在 [建立新的片語清單] 方塊中輸入名稱 `SizePhraselist`，然後依序輸入 `small`、`medium` 和 `large` 的值。 在填入 [建議] 方塊後，選取 `extra large` 和 `xl`。 選取 [建立] 以建立新的片語清單。
 
     此片語清單特徵可為 `Size` 子實體提供範例文字，以利該子實體尋找與大小相關的文字。 此片語清單不需要包含每個大小文字，但應包含預期會指出大小的文字。
 
@@ -131,7 +131,7 @@ ms.locfileid: "83676180"
 
 1. 在 [結構描述和特徵] 索引標籤上，選取 [大小] 實體，然後選取 [+新增特徵]。
 
-1. 從下拉式清單中選取 [@ SizeList]。
+1. 從下拉式清單中選取 [@ SizeListentity]。
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 
