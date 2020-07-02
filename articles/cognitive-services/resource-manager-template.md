@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299478"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513535"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>快速入門：使用 ARM 範本建立認知服務資源
 
-在本文中使用 Azure Resource Manager (ARM) 範本來建立和部署認知服務資源。 此多服務資源可讓您：
+在本文中使用 Azure Resource Manager 範本 (ARM 範本) 來建立和部署認知服務資源。 此多服務資源可讓您：
 * 使用單一金鑰和端點存取多個 Azure 認知服務。
 * 合併您所使用服務的帳單。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 5aac12f4da6304e8e14f0b4f1e33ef6257f50c11
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78943108"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602783"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教學課程：建立單頁 Web 應用程式
 
@@ -41,10 +41,12 @@ Bing 新聞搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 本教學課程頁完全獨立，不會使用任何外部架構、樣式表或影像檔。 它使用唯一且廣泛支援的 JavaScript 語言功能，適用於所有主要網頁瀏覽器的目前版本。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要依照本教學課程，您需要 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有此金鑰，可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+若要依照本教學課程，您需要 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有金鑰，則必須加以建立：
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
 
 ## <a name="app-components"></a>應用程式元件
 如同任何單頁 Web 應用程式，本教學課程應用程式包含三個部分：
@@ -273,7 +275,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 要求「不」  一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 新聞搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
+> 成功的 HTTP 要求「不」一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 新聞搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
 
 上述兩個函式中的大部分程式碼都是專用於錯誤處理。 下列階段可能會發生錯誤：
 
@@ -352,7 +354,7 @@ searchItemRenderers = {
 
 `index` 和 `count` 參數可用來編號結果、為集合開頭或結尾產生特殊 HTML、在特定數量的項目之後插入分行符號等。 若轉譯器不需要此功能，則不需要接受這兩個參數。
 
-`news` 轉譯器會顯示在下列 Javascript 摘錄中：
+`news` 轉譯器會顯示在下列 JavaScript 摘錄中：
 ```javascript
     // render news story
     news: function (item) {

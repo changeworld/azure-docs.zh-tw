@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 53572f4c5cce3ecd0c2e1dec90826e620841a852
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee1308f08b5ca2192bb429acbb5bdaec199fb26f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118716"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603262"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入門：使用 Bing 影像搜尋 REST API 和 Ruby 來搜尋影像
 
@@ -146,7 +146,6 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ## <a name="see-also"></a>另請參閱
 
 * [什麼是 Bing 影像搜尋 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。  
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。  
-* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)。
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。
+* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
+* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

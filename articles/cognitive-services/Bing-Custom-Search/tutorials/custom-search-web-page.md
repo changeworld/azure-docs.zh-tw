@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78943918"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603344"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
@@ -32,9 +32,9 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 > - 加入已釘選的項目
 > - 將自訂搜尋整合到網頁
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請在 Azure 入口網站中[建立 Bing 自訂搜尋資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services)。
+- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請在 Azure 入口網站中[建立 Bing 自訂搜尋資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。
 - 如果尚未安裝 Visual Studio 2017 或更新版本，您可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>建立自訂搜尋執行個體
@@ -45,9 +45,9 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
 2. 瀏覽至自訂搜尋[入口網站](https://customsearch.ai)。  
   
-3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]  。 如果這是您第一次使用入口網站，其會要求您提供存取資料的權限。 按一下 [是]  。  
+3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]。 如果這是您第一次使用入口網站，其會要求您提供存取資料的權限。 按一下 [是] 。  
   
-4. 登入之後，按一下 [新增自訂搜尋]  。 在 [建立新的自訂搜尋執行個體]  視窗中，輸入有意義的名稱且名稱能夠描述搜尋傳回的內容類型。 您可以隨時變更名稱。  
+4. 登入之後，按一下 [新增自訂搜尋]。 在 [建立新的自訂搜尋執行個體] 視窗中，輸入有意義的名稱且名稱能夠描述搜尋傳回的內容類型。 您可以隨時變更名稱。  
   
    ![[建立新的自訂搜尋執行個體] 方塊的螢幕擷取畫面](../media/newCustomSrch.png)  
   
@@ -58,9 +58,9 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 ## <a name="add-active-entries"></a>加入使用中的項目
 
-若要包括來自特定網站或 URL 的結果，請將它們加入到 [使用中]  索引標籤。
+若要包括來自特定網站或 URL 的結果，請將它們加入到 [使用中] 索引標籤。
 
-1.       在 [設定]  頁面上，按一下 [使用中]  索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
+1.       在 [設定] 頁面上，按一下 [使用中] 索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
 
     ![定義編輯器 [使用中] 索引標籤的螢幕擷取畫面](../media/customSrchEditor.png)
 
@@ -68,9 +68,9 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 ## <a name="add-blocked-entries"></a>加入已封鎖的項目
 
-若要排除來自特定網站或 URL 的結果，請將它們加入到 [已封鎖]  索引標籤。
+若要排除來自特定網站或 URL 的結果，請將它們加入到 [已封鎖] 索引標籤。
 
-1. 在 [設定]  頁面上，按一下 [已封鎖]  索引標籤，並輸入要從搜尋中排除的一或多個網站的 URL。
+1. 在 [設定] 頁面上，按一下 [已封鎖] 索引標籤，並輸入要從搜尋中排除的一或多個網站的 URL。
 
     ![定義編輯器 [已封鎖] 索引標籤的螢幕擷取畫面](../media/blockedCustomSrch.png)
 
@@ -79,11 +79,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 ## <a name="add-pinned-entries"></a>加入已釘選的項目
 
-若要將特定網頁釘選到搜尋結果的頂端，請將網頁和查詢字詞加入到 [已釘選]  索引標籤。[已釘選]  索引標籤包含一份網頁與查詢字詞配對的清單，指定對於特定查詢要顯示為第一個結果的網頁。 只有當使用者的查詢字串符合釘選的查詢字串 (以釘選的比對狀況為基礎) 時，才會釘選網頁。 只有已編製索引的網頁才會顯示在搜尋中。 如需詳細資訊，請參閱[定義您的自訂檢視](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)。
+若要將特定網頁釘選到搜尋結果的頂端，請將網頁和查詢字詞加入到 [已釘選] 索引標籤。[已釘選] 索引標籤包含一份網頁與查詢字詞配對的清單，指定對於特定查詢要顯示為第一個結果的網頁。 只有當使用者的查詢字串符合釘選的查詢字串 (以釘選的比對狀況為基礎) 時，才會釘選網頁。 只有已編製索引的網頁才會顯示在搜尋中。 如需詳細資訊，請參閱[定義您的自訂檢視](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)。
 
-1. 在 [設定]  頁面上，按一下 [已釘選]  索引標籤，並輸入網頁與應可傳回為第一個結果的查詢字詞。  
+1. 在 [設定] 頁面上，按一下 [已釘選] 索引標籤，並輸入網頁與應可傳回為第一個結果的查詢字詞。  
   
-2. 根據預設，使用者的查詢字串必須完全符合您釘選的查詢字串，Bing 才能傳回網頁做為第一個結果。 若要變更比對條件，請編輯釘選 (按一下鉛筆圖示) 並按一下 [查詢比對條件]  欄中的 [精確]，然後選取適合您應用程式的比對條件。  
+2. 根據預設，使用者的查詢字串必須完全符合您釘選的查詢字串，Bing 才能傳回網頁做為第一個結果。 若要變更比對條件，請編輯釘選 (按一下鉛筆圖示) 並按一下 [查詢比對條件] 欄中的 [精確]，然後選取適合您應用程式的比對條件。  
   
     ![定義編輯器 [已釘選] 索引標籤的螢幕擷取畫面](../media/pinnedCustomSrch.png)
   
@@ -93,7 +93,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 自訂搜尋提供一個託管的 UI 來呈現自訂搜尋執行個體的 JSON 回應。 定義您的 UI 體驗：
 
-1. 按一下 [託管的 UI]  索引標籤。  
+1. 按一下 [託管的 UI] 索引標籤。  
   
 2. 選取配置。  
   
@@ -103,7 +103,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
    ![[託管的 UI] 選取色彩佈景主題的螢幕擷取畫面](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-   若需要微調色彩佈景主題來與您的 Web 應用程式完美整合，請按一下 [自訂佈景主題]  。 並非所有色彩設定都會套用到所有版面配置佈景主題。 若要變更色彩，請在對應的文字方塊中輸入色彩的 RGB HEX 值 (例如 #366eb8)。 或者，按一下色彩按鈕並按一下適合您的陰影。 選取色彩時務必考慮可存取性。
+   若需要微調色彩佈景主題來與您的 Web 應用程式完美整合，請按一下 [自訂佈景主題]。 並非所有色彩設定都會套用到所有版面配置佈景主題。 若要變更色彩，請在對應的文字方塊中輸入色彩的 RGB HEX 值 (例如 #366eb8)。 或者，按一下色彩按鈕並按一下適合您的陰影。 選取色彩時務必考慮可存取性。
   
    ![[託管的 UI] 自訂色彩佈景主題的螢幕擷取畫面](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
@@ -112,11 +112,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
    ![[託管的 UI] 其他設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-   若要取得進階設定，請按一下 [顯示進階設定]  。 此會新增設定，例如新增*連結目標*到 Web 搜尋選項、新增*啟用篩選*到影像與影片選項，並新增 [搜尋方塊文字預留位置]  到 [雜項] 選項。
+   若要取得進階設定，請按一下 [顯示進階設定]。 此會新增設定，例如新增*連結目標*到 Web 搜尋選項、新增*啟用篩選*到影像與影片選項，並新增 [搜尋方塊文字預留位置] 到 [雜項] 選項。
 
    ![[託管的 UI] 進階設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. 從下拉式清單選取您的訂用帳戶金鑰。 或者，您可以手動輸入訂用帳戶金鑰。 如需有關取得金鑰的詳細資訊，請參閱[嘗試認知服務](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)。  
+5. 從下拉式清單選取您的訂用帳戶金鑰。 或者，您可以手動輸入訂用帳戶金鑰。
   
    ![[託管的 UI] 其他設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-subscription-key.png)
 
@@ -130,25 +130,25 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 - 選項 1：將提供的 JavaScript 程式碼片段整合到您的應用程式中。
 - 選項 2：使用提供的 HTML 端點。
 
-本教學課程的其餘部分說明**選項 1：Javascript 程式碼片段**。  
+本教學課程的其餘部分說明**選項 1：JavaScript 程式碼片段**。  
 
 ## <a name="set-up-your-visual-studio-solution"></a>設定您的 Visual Studio 方案
 
 1. 在電腦上開啟 **Visual Studio**。  
   
-2. 從 [檔案]  功能表中，選取 [新增]  ，然後選擇 [專案]  。  
+2. 從 [檔案] 功能表中，選取 [新增]，然後選擇 [專案]。  
   
-3. 在 [新增專案]  視窗中，選取 [Visual C# / Web / ASP.NET Core Web 應用程式]  ，命名您的專案，然後按一下 [確定]  。  
+3. 在 [新增專案] 視窗中，選取 [Visual C# / Web / ASP.NET Core Web 應用程式]，命名您的專案，然後按一下 [確定]。  
   
    ![[新增專案] 視窗的螢幕擷取畫面](./media/custom-search-new-project.png)  
   
-4. 在 [新增 ASP.NET Core Web 應用程式]  視窗中，選取 [Web 應用程式]  ，然後按一下 [確定]  。  
+4. 在 [新增 ASP.NET Core Web 應用程式] 視窗中，選取 [Web 應用程式]，然後按一下 [確定]。  
   
    ![[新增專案] 視窗的螢幕擷取畫面](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>編輯 Index.cshtml
 
-1. 在 [方案總管]  中，展開 [頁面]  ，然後按兩下 [index.cshtml]  以開啟該檔案。  
+1. 在 [方案總管] 中，展開 [頁面]，然後按兩下 [index.cshtml] 以開啟該檔案。  
   
    ![方案總管中展開頁面並選取了 index.cshtml 的螢幕擷取畫面](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
@@ -174,7 +174,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
    <div id="customSearch"></div>
    ```  
   
-4. 在 [託管的 UI]  頁面中，向下捲動到名為 [取用 UI]  的區段。 按一下 [端點]  以存取 JavaScript 片段。 您也可以按一下 [生產]  並按一下 [託管的 UI]  索引標籤。
+4. 在 [託管的 UI] 頁面中，向下捲動到名為 [取用 UI] 的區段。 按一下 [端點] 以存取 JavaScript 片段。 您也可以按一下 [生產] 並按一下 [託管的 UI] 索引標籤。
   
    <!-- Get new screenshot after prod gets new bits
    ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
@@ -197,7 +197,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
    </div>
    ```  
   
-6. 在 [方案總管]  中，以滑鼠右鍵按一下 [wwwroot]  ，然後按一下 [在瀏覽器中檢視]  。  
+6. 在 [方案總管] 中，以滑鼠右鍵按一下 [wwwroot]，然後按一下 [在瀏覽器中檢視]。  
   
    ![從方案總管的 [wwwroot] 快顯功能表選取 [在瀏覽器中檢視] 的螢幕擷取畫面](./media/custom-search-webapp-view-in-browser.png)  
 

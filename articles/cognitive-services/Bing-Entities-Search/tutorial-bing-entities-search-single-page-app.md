@@ -10,21 +10,21 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78943126"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608563"
 ---
-# <a name="tutorial-single-page-web-app"></a>教學課程：單頁 Web 應用程式
+# <a name="tutorial-single-page-web-app"></a>教學課程：單一頁面 Web 應用程式
 
-Bing 實體搜尋 API 可讓您搜尋網路上的「實體」  和「地點」  相關資訊。 您可以在指定查詢中要求任何一種結果，或兩者都要求。 以下提供地點和實體的定義。
+Bing 實體搜尋 API 可讓您搜尋網路上的「實體」和「地點」相關資訊。 您可以在指定查詢中要求任何一種結果，或兩者都要求。 以下提供地點和實體的定義。
 
 |||
 |-|-|
 |實體|您可以依名稱尋找的已知人物、地點和事項|
-|地點|您可以依名稱「或」  類型 (義大利餐廳) 尋找的餐廳、旅館及其他本地商家|
+|地點|您可以依名稱「或」類型 (義大利餐廳) 尋找的餐廳、旅館及其他本地商家|
 
 在本教學課程中，我們會建置單頁 Web 應用程式，以使用 Bing 實體搜尋 API 直接在頁面中顯示搜尋結果。 該應用程式包含 HTML、CSS 和 JavaScript 元件。
 
@@ -56,9 +56,14 @@ Bing 實體搜尋 API 可讓您搜尋網路上的「實體」  和「地點」  
 > [!NOTE]
 > 本教學課程與[單頁 Bing Web 搜尋應用程式教學課程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)非常類似，但只會處理實體搜尋結果。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要依照本教學課程，您需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 如果您沒有此金鑰，可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+若要依照本教學課程，您需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 
+
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後：
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">在 Azure 入口網站中建立 Bing 搜尋資源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+  * 在 Azure 入口網站中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="建立電腦視覺資源"  target="_blank">建立 Azure 地圖服務資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
 
 ## <a name="app-components"></a>應用程式元件
 
@@ -86,7 +91,7 @@ HTML 也包含顯示搜尋結果的區域 (HTML `<div>` 標籤)。
 ## <a name="managing-subscription-keys"></a>管理訂用帳戶金鑰
 
 > [!NOTE]
-> 此應用程式同時需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 您可以使用[試用版的 Bing 搜尋金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+> 此應用程式同時需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。
 
 為了避免必須在程式碼中包含 Bing 搜尋和 Bing 地圖服務 API 訂用帳戶金鑰，我們使用瀏覽器的永續性儲存體來儲存這些金鑰。 若尚未儲存任何一個金鑰，則會出現提示要求儲存以供稍後使用。 若 API 稍後拒絕金鑰，我們會讓儲存的金鑰失效，以便在使用者下次搜尋時，要求使用者提供金鑰。
 
@@ -251,7 +256,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-除了緯度和經度，Bing 實體搜尋查詢還需要「半徑範圍」  ，以指出位置資訊的精確度。 我們使用 Bing 地圖服務回應中提供的「週框方塊」  來計算半徑範圍。 週框方塊是圍繞整個位置的矩形。 例如，若使用者輸入 `NYC`，結果會大致包含紐約市的中心座標及圍繞城市的週框方塊。 
+除了緯度和經度，Bing 實體搜尋查詢還需要「半徑範圍」，以指出位置資訊的精確度。 我們使用 Bing 地圖服務回應中提供的「週框方塊」來計算半徑範圍。 週框方塊是圍繞整個位置的矩形。 例如，若使用者輸入 `NYC`，結果會大致包含紐約市的中心座標及圍繞城市的週框方塊。 
 
 我們會先使用函式 `haversineDistance()` (未顯示)，計算從主要座標到週框方塊四個邊角的距離。 我們使用四個距離中的最大值作為半徑範圍。 最小半徑範圍為一公里。 若回應中未提供週框方塊，此值也會作為預設值。
 
@@ -380,7 +385,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 要求「不」  一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 實體搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
+> 成功的 HTTP 要求「不」一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 實體搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
 
 上述兩個函式中的大部分程式碼都是專用於錯誤處理。 下列階段可能會發生錯誤：
 
@@ -408,7 +413,7 @@ Bing 實體搜尋 API [要求您依指定順序顯示結果](use-display-require
 
 | | |
 |-|-|
-|`id`|`id` 看起來像是 URL，但不應該用於連結。 排名結果的 `id` 類型符合回應集合中任一搜尋結果項目的 `id`，「或」  整個回應集合 (例如`Entities`)。
+|`id`|`id` 看起來像是 URL，但不應該用於連結。 排名結果的 `id` 類型符合回應集合中任一搜尋結果項目的 `id`，「或」整個回應集合 (例如`Entities`)。
 |`answerType`<br>`resultIndex`|`answerType` 會參照包含結果的最上層答案集合 (例如 `Entities`)。 `resultIndex` 會參照該集合內的結果索引。 若省略 `resultIndex`，排名結果是指整個集合。
 
 > [!NOTE]
@@ -531,7 +536,7 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生產 Web 應用程式中，無論如何都應該執行要求伺服器端。 否則，您的 Bing 搜尋 API 金鑰必須包含在網頁中，以提供給檢視來源的任何人。 您會根據 API 訂用帳戶金鑰的所有使用量付費，即使是未經授權的合作對象所提出的要求，因此請務必不要公開您的金鑰。
 
-若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
+若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可列出回應標頭並提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓我們的教學課程應用程式存取用戶端識別碼標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 然後在命令視窗中發出下列命令：
 

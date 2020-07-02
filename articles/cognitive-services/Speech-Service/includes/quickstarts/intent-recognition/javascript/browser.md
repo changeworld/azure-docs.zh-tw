@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979646"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85570189"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>從重複使用程式碼開始著手
 
@@ -159,7 +159,7 @@ ms.locfileid: "82979646"
 
 ## <a name="create-an-audio-configuration"></a>建立音訊設定
 
-現在，您必須建立指向輸入 devic3 的 `AudioConfig` 物件。 將此程式碼插入您的語音設定下方的 `startIntentRecognizeAsyncButton.addEventListener()` 方法中。
+現在，您必須建立指向輸入裝置的 `AudioConfig` 物件。 將此程式碼插入您的語音設定下方的 `startIntentRecognizeAsyncButton.addEventListener()` 方法中。
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();

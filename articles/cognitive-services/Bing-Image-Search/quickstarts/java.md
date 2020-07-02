@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 6032478dfc45d3d4ca1488913356718ab188e057
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a41a448a344325c2e3820a891017a078ae1532c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872045"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603412"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>快速入門：使用 Bing 影像搜尋 API 和 Java 來搜尋影像 
 
@@ -25,7 +25,7 @@ ms.locfileid: "83872045"
 
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) 取得，其中含有其他錯誤處理和註釋。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Java 開發套件 (JDK)](https://aka.ms/azure-jdks)
 
@@ -162,8 +162,7 @@ connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 ## <a name="see-also"></a>另請參閱
 
 * [什麼是 Bing 影像搜尋 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。
-* Bing 搜尋 API 的[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。
-* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)。
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。
+* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Bing 搜尋 API 的定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

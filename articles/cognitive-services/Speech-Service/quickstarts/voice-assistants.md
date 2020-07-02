@@ -1,22 +1,22 @@
 ---
 title: 快速入門：建立自訂語音助理 - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將使用語音 SDK 建立自訂語音助理。
+description: 在本文中，您會使用語音 SDK 建立自訂語音助理。
 services: cognitive-services
 author: trrwilson
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: travisw
 zone_pivot_groups: programming-languages-set-fifteen
-ms.openlocfilehash: be5ee988484f8e1f3e4ed6826e9bfabf2a63b47f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c7bb7acf2f9dd282deb9008ac6eb4d96e37c3452
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979079"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391293"
 ---
 # <a name="quickstart-create-a-custom-voice-assistant"></a>快速入門：建立自訂語音助理
 

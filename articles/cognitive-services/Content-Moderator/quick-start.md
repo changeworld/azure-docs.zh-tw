@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/13/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203543"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563293"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
 在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。 如果您想要將此服務更快整合至您的應用程式，請參閱[後續步驟](#next-steps)一節中的其他快速入門。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 網頁瀏覽器
 
@@ -32,15 +32,15 @@ ms.locfileid: "79203543"
 
 ## <a name="create-a-review-team"></a>建立檢閱小組
 
-接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]  ，並提供 [小組名稱]  和 [小組識別碼]  。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
+接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]，並提供 [小組名稱] 和 [小組識別碼]。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
 
 > [!NOTE]
-> [小組名稱]  是檢閱小組的易記名稱。 這是顯示在 Azure 入口網站中的名稱。 [小組識別碼]  是用來以程式設計方式識別檢閱小組的項目。
+> [小組名稱] 是檢閱小組的易記名稱。 這是顯示在 Azure 入口網站中的名稱。 [小組識別碼] 是用來以程式設計方式識別檢閱小組的項目。
 
 > [!div class="mx-imgBorder"]
 > ![邀請小組成員](images/create-team.png)
 
-如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]  。 您提供的資源必須是新的。 
+如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]。 您提供的資源必須是新的。 
 
 > [!div class="mx-imgBorder"]
 > ![使用 CMK 邀請小組成員](images/create-team-cmk.png)
@@ -52,7 +52,7 @@ ms.locfileid: "79203543"
 
 ## <a name="upload-sample-content"></a>上傳範例內容
 
-現在，您已做好上傳範例內容的準備。 選取 [試用] > [影像]  、[試用] > [文字]  或 [試用] > [影片]  。
+現在，您已做好上傳範例內容的準備。 選取 [試用] > [影像]、[試用] > [文字] 或 [試用] > [影片]。
 
 ![嘗試影像或文字審核](images/tryimagesortext.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "79203543"
 
 ![檢閱結果](images/reviewresults_text.png)
 
-在專案中，您或審核小組可以視需要變更這些標記或新增更多標記。 您將透過 [下一步]  按鈕來提交這些變更。 當您的商務應用程式呼叫 Moderator API 時，已加上標記的內容會在這裡排入佇列，準備供人工審核小組進行審核。 您可以使用此方法快速審核大量內容。
+在專案中，您或審核小組可以視需要變更這些標記或新增更多標記。 您將透過 [下一步] 按鈕來提交這些變更。 當您的商務應用程式呼叫 Moderator API 時，已加上標記的內容會在這裡排入佇列，準備供人工審核小組進行審核。 您可以使用此方法快速審核大量內容。
 
 到目前為止，您已使用「Content Moderator 審核工具」來查看 Content Moderator 服務的功能範例。 接著，您可以深入了解審核工具及如何使用「審核 API」將其整合至軟體專案，或是跳到[後續步驟](#next-steps)一節，以了解如何在您的應用程式中使用「仲裁 API」本身。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: 664b71c56ae63ea73478923171731e343dfa5cbe
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 43efc770f3a3b29a1b0fc214d2927c8c153dff96
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417220"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391633"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -55,7 +55,7 @@ ms.locfileid: "84417220"
 > [!NOTE]
 > 語音轉換文字和文字轉換語音也都具備 REST 端點和相關聯的快速入門。
 
-當您有機會使用語音服務後，請嘗試使用我們的教學課程，其中會教導您如何使用語音 SDK 和 LUIS 從語音辨識意圖。
+在您有機會使用語音服務之後，請嘗試我們的教學課程，其可告訴您如何解決各種案例。
 
 - [教學課程：使用語音 SDK 和 LUIS 從語音辨識意圖 (C#)](how-to-recognize-intents-from-speech-csharp.md)
 - [教學課程：使用語音 SDK 和 C# 透過聲音啟用 Bot](tutorial-voice-enable-your-bot-speech-sdk.md)

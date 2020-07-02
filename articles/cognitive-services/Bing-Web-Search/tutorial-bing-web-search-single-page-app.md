@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78943885"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603582"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教學課程：使用 Bing Web 搜尋 API 建立單頁應用程式
 
@@ -30,15 +30,16 @@ ms.locfileid: "78943885"
 > * 管理訂用帳戶金鑰
 > * 處理錯誤
 
-若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)來取得訂用帳戶金鑰。
+若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是數個您執行應用程式所需的項目：
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+
 * Node.js 8 或更新版本
-* 適用於 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有金鑰，請 [建立 Bing 搜尋 v7 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 您也可以使用[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
-## <a name="get-the-source-code-and-install-dependencies"></a>取得原始程式碼並安裝相依性
 
 第一個步驟是使用範例應用程式的原始程式碼來複製存放庫。
 
@@ -129,9 +130,9 @@ function bingSearchOptions(form) {
 
 您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊：`strict` 或 `moderate`。
 
-如果選取了任何 [升階]  核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `promote` 參數，則必須使用 `answerCount`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
+如果選取了任何 [升階] 核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `promote` 參數，則必須使用 `answerCount`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
 > [!NOTE]
-> 將結果類型升階，不「保證」  它將包含於搜尋結果中。 實際情況是，升階會提高此類結果相對於其正常狀態下的排名。 若要將搜尋限定於特定類型的結果，請使用 `responseFilter` 查詢參數，或呼叫更明確的端點，例如 Bing 影像搜尋或 Bing 新聞搜尋。
+> 將結果類型升階，不「保證」它將包含於搜尋結果中。 實際情況是，升階會提高此類結果相對於其正常狀態下的排名。 若要將搜尋限定於特定類型的結果，請使用 `responseFilter` 查詢參數，或呼叫更明確的端點，例如 Bing 影像搜尋或 Bing 新聞搜尋。
 
 `textDecoration` 和 `textFormat` 查詢參數都會硬式編碼於指令碼中，並使搜尋字詞在搜尋結果中以粗體顯示。 這些都不是必要參數。
 
@@ -282,7 +283,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 要求「不」  代表搜尋本身成功。 如果搜尋作業中發生錯誤，Bing Web 搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 若要求速率受到限制，API 會傳回空白回應。
+> 成功的 HTTP 要求「不」代表搜尋本身成功。 如果搜尋作業中發生錯誤，Bing Web 搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 若要求速率受到限制，API 會傳回空白回應。
 
 上述兩個函式中的大部分程式碼都是專用於錯誤處理。 下列階段可能會發生錯誤：
 

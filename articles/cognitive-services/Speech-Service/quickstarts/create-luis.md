@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: df12b51020083489d431d0ebcd7eb506ef97caa2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400842"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391599"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入門：取得 LUIS 端點金鑰
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，請務必準備好下列項目：
 
@@ -41,18 +41,18 @@ LUIS 會使用三種金鑰：
 
 當您建立 LUIS 應用程式時，LUIS 會自動產生入門金鑰，讓您可以使用文字查詢來測試應用程式。 此金鑰不會啟用語音服務整合，且無法用於本教學課程。 在 Azure 儀表板中建立 LUIS 資源，並將它指派給 LUIS 應用程式。 在本教學課程中，您可以使用免費訂用帳戶層。
 
-在 Azure 儀表板中建立 LUIS 資源之後，登入 [LUIS 入口網站](https://www.luis.ai/home)，在 [我的應用程式]  頁面上選擇您的應用程式，然後切換至應用程式的 [管理]  頁面。 最後，選取提要欄位中的 [金鑰和端點]  。
+在 Azure 儀表板中建立 LUIS 資源之後，登入 [LUIS 入口網站](https://www.luis.ai/home)，在 [我的應用程式] 頁面上選擇您的應用程式，然後切換至應用程式的 [管理] 頁面。 最後，選取提要欄位中的 [金鑰和端點]。
 
 ![LUIS 入口網站的金鑰和端點設定](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-endpoints-page.png)
 
-在 [金鑰和端點設定]  頁面上：
+在 [金鑰和端點設定] 頁面上：
 
-1. 向下捲動至 [資源與金鑰]  區段，然後選取 [指派資源]  。
-1. 在 [對應用程式指派金鑰]  對話方塊中，進行下列變更：
+1. 向下捲動至 [資源與金鑰] 區段，然後選取 [指派資源]。
+1. 在 [對應用程式指派金鑰] 對話方塊中，進行下列變更：
 
-   * 在 [租用戶]  下，選擇 [Microsoft]  。
-   * 在 [訂用帳戶名稱]  下，選擇包含所要使用 LUIS 資源的 Azure 訂用帳戶。
-   * 在 [金鑰]  下，選擇要與應用程式搭配使用的 LUIS 資源。
+   * 在 [租用戶] 下，選擇 [Microsoft]。
+   * 在 [訂用帳戶名稱] 下，選擇包含所要使用 LUIS 資源的 Azure 訂用帳戶。
+   * 在 [金鑰] 下，選擇要與應用程式搭配使用的 LUIS 資源。
 
    稍等一會兒，新的訂用帳戶就會出現在頁面底部的資料表中。
 
