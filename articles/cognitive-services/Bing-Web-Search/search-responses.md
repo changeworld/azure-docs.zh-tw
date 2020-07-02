@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110625"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800523"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web 搜尋 API 回應結構和回應類型  
 
-當您傳送 Bing Web 搜尋搜尋要求時，它會在[`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse)回應主體中傳回物件。 物件中包含每項回答 (Bing 判斷與查詢有關) 的欄位。 此範例說明如果 Bing 傳回所有回答時的回應物件：
+當您傳送 Bing Web 搜尋搜尋要求時，它會 [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 在回應主體中傳回物件。 物件中包含每項回答 (Bing 判斷與查詢有關) 的欄位。 此範例說明如果 Bing 傳回所有回答時的回應物件：
 
 ```json
 {
@@ -38,7 +38,7 @@ ms.locfileid: "74110625"
 }, ...
 ```
 
-一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢字詞是*sailing dinghies*，則回應可能包括`webPages`、 `images`和。 `rankingResponse` 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
+一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢字詞是*sailing dinghies*，則回應可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -292,10 +292,10 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 |符號|描述|
 |------------|-----------------|
-|+|加|
+|+|加法|
 |-|減|
-|/|除|
-|*|乘|
+|/|部門|
+|*|乘法|
 |^|電源|
 |!|階乘|
 |.|Decimal|
@@ -332,7 +332,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 `timeZone` 回答可提供位置的名稱、指定位置目前的 UTC 日期和時間，以及 UTC 時差。 如果位置的界限在多個時區內，則回答會包含目前的 UTC 日期和時間以及界限內的所有時區。 例如，因為佛羅里達州位於兩個時區內，回應會包含兩個時區的當地日期和時間。  
 
-如果查詢要求的是州或國家/地區的時間，Bing 會判斷位置地理界限內的主要城市，並在`primaryCityTime`欄位中傳回。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
+如果查詢要求的是州或國家/地區的時間，Bing 會判斷位置地理界限內的主要城市，並在欄位中傳回 `primaryCityTime` 。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
 
 以下顯示查詢傳回 `timeZone` 回答的範例。
 
@@ -449,15 +449,18 @@ Query: What time is it in the U.S.
 
 您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-web-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋 API 端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋 API 端點變更為： \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 
@@ -477,6 +480,6 @@ Query: What time is it in the U.S.
 
 * 檢閱[要求節流](throttling-requests.md)文件。  
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 * [Bing Web 搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

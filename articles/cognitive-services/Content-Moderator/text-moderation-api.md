@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561036"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800086"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
 
@@ -30,19 +30,21 @@ ms.locfileid: "84561036"
 - 個人資料
 - 自動校正的文字
 - 原始文字
-- 語言
+- Language
 
 ## <a name="profanity"></a>粗話
 
 如果 API 偵測到以任何[支援的語言](Text-Moderation-API-Languages.md)表達的任何粗話字詞，這些字詞就會包含在回應中。 此回應也會包含它們在原始文字中的位置 (`Index`)。 以下範例 JSON 中的 `ListId` 係指在 [自訂字詞清單](try-terms-list-api.md) \(如果有的話\) 中找到的字詞。
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > 針對 **language** 參數，請指派 `eng` 或將其保留空白，以查看電腦輔助**分類** 回應 (預覽版功能)。 **此功能僅支援英文**。
@@ -55,18 +57,20 @@ ms.locfileid: "84561036"
 
 以下 JSON 擷取內容顯示一個範例輸出︰
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>說明
 
@@ -127,11 +131,11 @@ ms.locfileid: "84561036"
 
 假設輸入文字是（「lzay」和「f0x」是故意的）：
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> Qu！ ck 棕色 f0x 會跳過 lzay 狗。
 
 如果您要求自動校正，回應就會包含該文字的校正版：
 
-    The quick brown fox jumps over the lazy dog.
+> 快速棕色 fox 會跳過延遲狗。
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>建立及管理您的自訂字詞清單
 
@@ -143,13 +147,15 @@ ms.locfileid: "84561036"
 
 以下範例顯示相符的「清單識別碼」：
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 Content Moderator 有提供一個[字詞清單 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)，其中含有可管理自訂字詞清單的作業。 請從[字詞清單 API 主控台](try-terms-list-api.md)開始著手，然後使用 REST API 程式碼範例。 此外，如果您已熟悉 Visual Studio 和 C#，請一併參閱[字詞清單 .NET 快速入門](term-lists-quickstart-dotnet.md)。
 

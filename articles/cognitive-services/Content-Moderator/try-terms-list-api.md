@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75382118"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800035"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>使用 API 主控台中的自訂字詞清單進行審核
 
@@ -77,19 +77,21 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
 5. 使用機碼值組預留位置來為清單指派更多描述性中繼資料。
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
-             "Category": "Competitors",
-             "Type": "Exclude"
-          }
-       }
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
+            "Category": "Competitors",
+            "Type": "Exclude"
+        }
+    }
+    ```
 
    請以機碼值組形式新增清單中繼資料，而不要新增實際的字詞。
  
-6. 選取 [**傳送**]。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他字詞清單管理功能。
+6. 選取 [傳送]。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他字詞清單管理功能。
 
    ![[Term Lists - Create] \(字詞清單 - 建立\) 主控台的 [Response content] \(回應內容\) 方塊顯示清單識別碼](images/try-terms-list-create-2.png)
  
@@ -111,7 +113,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
     [字詞 - 取得所有字詞]**** API 主控台隨即開啟。
 
-11. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選取 [**傳送**]。
+11. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選取 [傳送]。
 
 12. 在 [回應內容]**** 方塊中，確認您輸入的文字。
 
