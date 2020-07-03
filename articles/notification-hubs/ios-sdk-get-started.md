@@ -115,7 +115,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 1. 向下瀏覽至已核取的 **[推播通知]**  選項，然後選取 **[設定]**  來建立憑證。
 
-   應用程式識別碼:::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="應用程式識別碼":::
 
 2.  **[Apple Push Notification Service SSL 憑證]**  視窗隨即出現。 選取 **[開發 SSL 憑證]**  區段中的 **[建立憑證]**  按鈕。
 

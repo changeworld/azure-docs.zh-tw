@@ -7,12 +7,13 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
-ms.openlocfilehash: be6d2fb590dfefb170b3f23378c507b4d6b2295d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: references_regions
+ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194325"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>業務持續性和災害復原 (BCDR)：Azure 配對的區域
 
@@ -50,7 +51,7 @@ Azure 地理位置會定義一個世界中至少包含一個 Azure 區域的區�
 |:--- |:--- |:--- |
 | 亞太地區 |東亞（香港特別行政區） | 東南亞（新加坡） |
 | 澳大利亞 |澳大利亞東部 |澳大利亞東南部 |
-| 澳大利亞 |澳大利亞中部 |澳大利亞中部 2 |
+| 澳洲 |澳大利亞中部 |澳大利亞中部 2 |
 | 巴西 |巴西南部 |美國中南部 |
 | Canada |加拿大中部 |加拿大東部 |
 | 中國 |中國北部 |中國東部|
