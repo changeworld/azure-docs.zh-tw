@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61448389"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>建立自訂的裝置模擬 Docker 映像
@@ -27,7 +27,7 @@ ms.locfileid: "61448389"
 1. 設定裝置模擬以使用新的 Docker 映像
 1. 使用新的映像執行模擬
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作指南中的步驟，您需要：
 

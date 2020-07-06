@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60789632"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Virtual Array Update 1.1 版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
@@ -48,7 +48,7 @@ Update 1.1 與軟體版本 **10.0.10307.0** 對應。
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |備份| 此版本經過變更，透過提升雲端失敗的恢復能力與高 CPU 耗用量來改善備份失敗。|
 | 2 |記錄| 此版本經過變更，改善在詳細資訊模式下，處於支援工作階段的裝置記錄功能。|
@@ -58,7 +58,7 @@ Update 1.1 與軟體版本 **10.0.10307.0** 對應。
 
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬陣列無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬陣列。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple Virtual Array 之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -75,7 +75,7 @@ Update 1.1 與軟體版本 **10.0.10307.0** 對應。
 | **十三.** |iSCSI 伺服器 |針對 iSCSI 磁碟區顯示的 [已使用的儲存體] 在 StorSimple Device Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器 |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 | **次.** |檔案伺服器 |不支援符號連結。 | |
-| **16.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
+| **1600.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
 | **17.** |更新 |如果透過本機 UI 嘗試安裝 Hotfix 時看到錯誤代碼：2359302 (十六進位 0x240006)，表示您的裝置上已安裝了 Hotfix。   | |
 | **18.** |更新 |如果您使用本機 Web UI 在虛擬陣列上安裝 Update 1，您必須確定正在執行 Update 0.6。 如果您執行的是 Update 0.6 以下版本，您必須先安裝 Update 0.6，然後再套用 Update 1。 如果您直接從 Update 0.6 之前的版本安裝 Update 1.0，則會遺失部分更新，而且監視圖表將無法運作。   | |
 
@@ -83,7 +83,7 @@ Update 1.1 與軟體版本 **10.0.10307.0** 對應。
 ## <a name="next-steps"></a>後續步驟
 在 StorSimple Virtual Array 上[安裝更新 1.1](storsimple-virtual-array-install-update-11.md) 。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至：
 * [StorSimple Virtual Array Update 1.0 版本資訊](storsimple-virtual-array-update-1-release-notes.md)
 * [StorSimple Virtual Array 更新0.6 版本資訊](storsimple-virtual-array-update-06-release-notes.md)

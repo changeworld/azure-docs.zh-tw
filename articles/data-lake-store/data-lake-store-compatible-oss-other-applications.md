@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 37bf26db5f7ae08734410d36a892aaeb2380bd9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60878880"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>適用於 Azure Data Lake Storage Gen1 的開放原始碼巨量資料應用程式

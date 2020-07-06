@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60318436"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 設定 IoT 中樞檔案上傳
@@ -25,7 +25,7 @@ ms.locfileid: "60318436"
 
 若要完成此教學課程，您需要下列項目：
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
 * [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
@@ -130,7 +130,7 @@ Set-AzIotHub `
 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [大量管理 IoT 裝置](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中樞度量](iot-hub-metrics.md)
+* [IoT 中樞計量](iot-hub-metrics.md)
 * [作業監視](iot-hub-operations-monitoring.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65827251"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>設定時間序列深入解析遙測總管的存取控制
@@ -58,7 +58,7 @@ ms.locfileid: "65827251"
 
 在此文章中，您已了解如何在遠端監視解決方案加速器中授與時間序列深入解析總管的存取控制。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+如需關於遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 如需關於自訂遠端監視解決方案的詳細資訊，請參閱[自訂和重新部署微服務](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60628654"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>什麼是適用於雲端解決方案提供者的 StorSimple 方案？
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft Azure StorSimple 是企業儲存體的獨特作法，具備真正的混合式雲端儲存體功能。 它可讓客戶利用符合經濟效益的雲端儲存體來存放非使用中的資料，同時將關鍵任務資料保留在內部部署，達到最高層級的效能。 
 

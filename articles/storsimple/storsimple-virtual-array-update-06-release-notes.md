@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60870701"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0.6 版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
@@ -42,7 +42,7 @@ Update 0.6 是重大更新，應該立即部署。 此更新包含下列修正�
 
 - **Windows 安全性問題修正** - 此版本有 **Windows 重大安全性問題修正**。 檢閱下列安全性更新，以取得有關安全性問題和相關修正的詳細資訊：
     - [2016 年 12 月適用於 Windows 8.1 和 Windows Server 2012 R2 的僅限安全性品質更新](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
-    - [March 2017 年 3 月適用於 Windows 8.1 和 Windows Server 2012 R2 的僅限安全性品質更新](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
+    - [適用於 Windows 8.1 和 Windows Server 2012 R2 的 2017 年 3 月僅安全性品質更新](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [2017 年 5 月 9 日—KB4019213 (僅限安全性更新)](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
 
 - **還原修正** - 舊版中有個錯誤，讓還原作業無法完成。 此版本已經修正這個錯誤。
@@ -52,7 +52,7 @@ Update 0.6 是重大更新，應該立即部署。 此更新包含下列修正�
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |安全性| 此版本包含重大的 Windows 安全性更新。 我們建議您立即安裝此更新。|
 | 2 |還原| 在還原期間發生競爭情形，讓還原作業無法完成。 BUG 修正會解決此競爭情形。|
@@ -62,7 +62,7 @@ Update 0.6 是重大更新，應該立即部署。 此更新包含下列修正�
 
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -79,13 +79,13 @@ Update 0.6 是重大更新，應該立即部署。 此更新包含下列修正�
 | **十三.** |iSCSI 伺服器 |針對 iSCSI 磁碟區顯示的 [已使用的儲存體] 在 StorSimple Device Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器 |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 | **次.** |檔案伺服器 |不支援符號連結。 | |
-| **16.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
+| **1600.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
 | **17.** |更新 |如果透過本機 UI 嘗試安裝 Hotfix 時看到錯誤代碼：2359302 (十六進位 0x240006)，表示您的裝置上已安裝了 Hotfix。   | |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 在 StorSimple Virtual Array 上[安裝 Update 0.6](storsimple-virtual-array-install-update-06.md)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至：
 
 * [StorSimple Virtual Array Update 0.5 版本資訊](storsimple-virtual-array-update-05-release-notes.md)

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61442206"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>在遠端監視解決方案中整合 SIM 資料
@@ -29,7 +29,7 @@ IoT 裝置通常會使用 SIM 卡連線到雲端，讓裝置能從任何地方�
 
 ## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT 整合設定
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 這項額外的遠端監視功能目前為預覽狀態。 若要將連線資料同步處理到 Azure 遠端監視解決方案，請遵循下列步驟：
 

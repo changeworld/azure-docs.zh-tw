@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60457245"
 ---
 # <a name="storage-explorer-accessibility"></a>儲存體總管協助工具
@@ -55,7 +55,7 @@ Linux    | （Linux 上不支援螢幕讀取器）
 
 ### <a name="window-commands"></a>視窗命令
 
-Command       | 鍵盤快速鍵
+命令       | 鍵盤快速鍵
 --------------|--------------------
 開新視窗    | **Control+Shift+N**
 關閉編輯器  | **Control+F4**
@@ -63,7 +63,7 @@ Command       | 鍵盤快速鍵
 
 ### <a name="navigation-commands"></a>導覽命令
 
-Command                | 鍵盤快速鍵
+命令                | 鍵盤快速鍵
 -----------------------|----------------------
 焦點移至下一個窗格       | **F6**
 焦點移至上一個窗格   | **Shift+F6**
@@ -78,31 +78,31 @@ Command                | 鍵盤快速鍵
 
 ### <a name="zoom-commands"></a>縮放命令
 
-Command  | 鍵盤快速鍵
+命令  | 鍵盤快速鍵
 ---------|------------------
 放大  | **Control + =**
 縮小 | **Control +-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和檔案共用編輯器命令
 
-Command | 鍵盤快速鍵
+命令 | 鍵盤快速鍵
 --------|--------------------
-Back    | **Alt+向左箭**
+上一步    | **Alt+向左箭**
 下一頁 | **Alt + 向右鍵**
-上移      | **Alt+向上箭**
+Up      | **Alt+向上箭**
 
 ### <a name="editor-commands"></a>編輯器命令
 
-Command | 鍵盤快速鍵
+命令 | 鍵盤快速鍵
 --------|------------------
-[複製]    | **Control+C**
+複製    | **Control+C**
 剪下     | **Control+X**
 貼上   | **Control+V**
-Refresh  | **Control+R**
+重新整理  | **Control+R**
 
 ### <a name="other-commands"></a>其他命令
 
-Command                | 鍵盤快速鍵
+命令                | 鍵盤快速鍵
 -----------------------|------------------
 切換開發人員工具 | **F12**
 重新載入                 | **Alt + Ctrl + R**

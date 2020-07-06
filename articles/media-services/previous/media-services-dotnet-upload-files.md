@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64869477"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 將檔案上傳至媒體服務帳戶 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 檔案上傳之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。
 
@@ -34,10 +34,10 @@ ms.locfileid: "64869477"
 
 您必須考量下列事項：
  
- * 媒體服務在建立串流內容的 Url 時，會使用 IAssetFile.Name 屬性的值（例如，HTTP：//{AMSAccount}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 **Name**屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：！ * ' （）;： @ &= + $，/？% # [] "。 而且，副檔名只能有一個 '.'。
+ * 媒體服務在建立串流內容的 Url 時，會使用 IAssetFile.Name 屬性的值（例如，HTTP：//{AMSAccount}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
 * 名稱長度不應超過 260 個字元。
 * 對於在媒體服務處理檔案，支援的檔案大小有上限。 請參閱[這篇](media-services-quotas-and-limitations.md)文章，以取得有關檔案大小限制的詳細資料。
-* 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[這](media-services-dotnet-manage-entities.md#limit-access-policies)篇文章。
+* 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
 建立資產時，您可以指定下列加密選項：
 
@@ -311,7 +311,7 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 您已將資產上傳至媒體服務，現在請移至 [如何取得媒體處理器][How to Get a Media Processor]一文。
 
 [How to Get a Media Processor]: media-services-get-media-processor.md

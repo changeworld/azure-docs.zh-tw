@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60456606"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>搭配使用儲存體總管與 Azure 檔案儲存體
 
 Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，在雲端中提供檔案共用功能的服務。 SMB 2.1 和 SMB 3.0 皆受到支援。 使用 Azure 檔案儲存體時，您可以快速地將依賴檔案共用功能的舊式應用程式移轉至 Azure，而不必浪費成本來重新撰寫程式。 您可以使用檔案儲存體向全球公開資料，或私下儲存應用程式資料。 在本文中，您將學習如何使用儲存體總管來使用檔案共用和檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
@@ -207,7 +207,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
         ![新增檔案](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. 選取 [上傳]****。
+        c. 選取 [上傳] 。
 
     - **將資料夾上傳至檔案共用**
         
@@ -219,7 +219,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
         c. 選擇性地指定選取的資料夾的內容將會上傳至其中的目標資料夾。 如果目標資料夾不存在，系統就會加以建立。
 
-        d. 選取 [上傳]****。
+        d. 選取 [上傳] 。
 
     - **將檔案下載到本機電腦**
         
@@ -229,7 +229,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
         
         c. 在 [指定儲存下載的檔案的位置]**** 對話方塊中，指定要下載檔案的位置，和您想要給予它的名稱。
 
-        d. 選取 [儲存]  。
+        d. 選取 [儲存]。
 
     - **在您的本機電腦上開啟檔案**
         

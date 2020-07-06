@@ -15,15 +15,15 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60733312"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自動產生的位元速率階梯進行編碼
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何使用媒體服務的標準編碼器並根據輸入解析度和位元速率，以自動產生的位元速率階梯，進行視訊的編碼。 這種內建的編碼器設定或預設，永遠不能超過輸入解析度和位元速率。 例如，如果輸入是 720p 3 Mbps，則輸出會維持在最多 720p，且速率啟動低於 3 Mbps。
 

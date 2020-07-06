@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "62111438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>教學課程：Azure Active Directory 與 Printix 整合
@@ -34,7 +34,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
 如果您想要瞭解有關 SaaS 應用程式與 Azure AD 整合的更多詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定與 Printix 的 Azure AD 整合，您需要下列項目：
 
@@ -60,7 +60,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
 **若要從資源庫新增 Printix，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。 
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。 
 
     ![Active Directory][1]
 
@@ -68,7 +68,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
     ![應用程式][2]
     
-1. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+1. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![應用程式][3]
 
@@ -184,7 +184,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
     c. 選取 [顯示密碼]**** 並記下 [密碼]**** 的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
  
 ### <a name="creating-a-printix-test-user"></a>建立 Printix 測試使用者
 
@@ -216,7 +216,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
     ![指派使用者][202] 
 
-1. 按一下 [新增]**** 按鈕。 然後選取 [新增指派]**** 對話方塊上的 [使用者和群組]****。
+1. 按一下 [新增] 按鈕。 然後選取 [新增指派]**** 對話方塊上的 [使用者和群組]****。
 
     ![指派使用者][203]
 

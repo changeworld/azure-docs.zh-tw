@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60870667"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple Virtual Array Update 0.5 版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
@@ -47,7 +47,7 @@ Update 0.5 主要是錯誤修正組建。 主要加強功能錯誤修正如下�
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |備份復原功能| 在舊版中，只會針對特定的例外狀況重試備份。 此版本包含會重試所有備份例外狀況來讓備份更有彈性的修正。|
 | 2 |監視| 從 2017 年 6 月 30 日開始，將會取代「StorSimple 虛擬裝置系列」的儲存體使用情況監視。 此動作會影響在 StorSimple Virtual Array (1200 型號) 上執行之 StorSimple Device Manager 服務上的監視圖表。 此版本包含可讓使用者在 2017 年 6 月 30 日後繼續在虛擬陣列上使用儲存體使用情況監視的更新。|
@@ -58,7 +58,7 @@ Update 0.5 主要是錯誤修正組建。 主要加強功能錯誤修正如下�
 
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -75,12 +75,12 @@ Update 0.5 主要是錯誤修正組建。 主要加強功能錯誤修正如下�
 | **十三.** |iSCSI 伺服器 |針對 iSCSI 磁碟區顯示的 [已使用的儲存體] 在 StorSimple Device Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器 |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 | **次.** |檔案伺服器 |不支援符號連結。 | |
-| **16.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
+| **1600.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 在您的 StorSimple Virtual Array 上[安裝 Update 0.5](storsimple-virtual-array-install-update-05.md)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至：
 
 * [StorSimple Virtual Array Update 0.4 版本資訊](storsimple-virtual-array-update-04-release-notes.md)

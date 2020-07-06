@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65761802"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
@@ -39,7 +39,7 @@ ms.locfileid: "65761802"
 
 下列範例會定義新轉換的要求主體。 我們會定義一組我們想要在使用此轉換時產生的輸出。 
 
-在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用`{Label}`或`{Bitrate}`宏，此範例會顯示前者。
+在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用 `{Label}` 或 `{Bitrate}` 宏，此範例會顯示前者。
 
 ```json
 {
@@ -135,7 +135,7 @@ ms.locfileid: "65761802"
 
 在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先使用[Get](https://docs.microsoft.com/rest/api/media/transforms/get)來檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 
 
-在您下載的 Postman 集合中，選取 [**轉換和作業**->] [**建立或更新轉換**]。
+在您下載的 Postman 集合中，選取 [**轉換和作業**] [ -> **建立或更新轉換**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -145,7 +145,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 選取 [**主體**] 索引標籤，並以您稍[早定義](#define-a-custom-preset)的 json 程式碼取代本文。 若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。
 
-選取 [**傳送**]。 
+選取 [傳送]。 
 
 若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱[教學課程：串流影片檔案-REST](stream-files-tutorial-with-rest.md)。
 

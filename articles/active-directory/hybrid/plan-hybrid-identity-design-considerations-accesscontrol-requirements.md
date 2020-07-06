@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60295138"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的存取控制需求
@@ -39,7 +39,7 @@ ms.locfileid: "60295138"
 > 
 > 
 
-## <a name="authentication-and-authorization"></a>驗證和授權
+## <a name="authentication-and-authorization"></a>驗證與授權
 有各種適用於驗證和授權的不同案例，這些案例將具備特殊需求，必須透過公司即將採用的混合式身分識別解決方案來滿足。 涉及企業對企業 (B2B) 通訊的案例會對 IT 系統管理員造成額外的挑戰，因為他們需要確定組織所使用的驗證和授權方法可以和他們的商務合作夥伴進行通訊。 在設計驗證和授權需求的過程中，請確定會回答下列問題：
 
 * 您的組織只會驗證和授權位於其身分識別管理系統中的使用者嗎？

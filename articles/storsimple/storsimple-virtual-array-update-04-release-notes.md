@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60334789"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
@@ -53,11 +53,11 @@ Update 0.4 是主要的錯誤修正組建，而且包含一些加強功能。 �
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |備份效能|在舊版中，牽涉到大量檔案的備份可能需要非常長的時間才能完成 (數以天計)。 在此版本中，完整與增量備份的完成時間將會大幅縮短。 |
 | 2 |支援封裝|磁碟、CPU、記憶體、網路與雲端統計資料現在會記錄到支援記錄，讓支援套件在支援人員針對任何裝置問題進行疑難排解時發揮效用。|
-| 3 |Backup |在舊版中，長時間執行的備份會導致裝置空間耗盡，進而造成備份失敗。 此版本已解決此錯誤，因為現在會將一次可排入佇列的備份數目限制為 5 個。|
+| 3 |備份 |在舊版中，長時間執行的備份會導致裝置空間耗盡，進而造成備份失敗。 此版本已解決此錯誤，因為現在會將一次可排入佇列的備份數目限制為 5 個。|
 | 4 |iSCSI | 在舊版中，分層或本機固定磁碟區的保留是已佈建磁碟區大小的 10%。 在此版本中，所有 iSCSI 磁碟區 (本機固定或分層) 的本機保留限制為 10 %，且上限為 200 GB (對於大於 2 TB 的分層磁碟區)，因此可讓本機磁碟有更多空間。 建議您在此版本中將本機固定磁碟區限制為 200 GB。|
 
 
@@ -65,7 +65,7 @@ Update 0.4 是主要的錯誤修正組建，而且包含一些加強功能。 �
 
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。 
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -82,12 +82,12 @@ Update 0.4 是主要的錯誤修正組建，而且包含一些加強功能。 �
 | **十三.** |iSCSI 伺服器 |顯示在 iSCSI 磁碟區的 [使用的儲存體] 在 StorSimple Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器 |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 | **次.** |檔案伺服器 |不支援符號連結。 | |
-| **16.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
+| **1600.** |檔案伺服器 |如果將 Windows 加密檔案系統 (EFS) 保護的檔案複製或儲存到 StorSimple 虛擬陣列檔案伺服器，將會導致不支援的組態。  | |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 在您的 StorSimple Virtual Array 上[安裝 Update 0.4](storsimple-virtual-array-install-update-04.md)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至： 
 
 * [StorSimple Virtual Array Update 0.3 版本資訊](storsimple-ova-update-03-release-notes.md)

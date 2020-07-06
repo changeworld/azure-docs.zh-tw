@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64685314"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>將 HDInsight 應用程式發佈到 Azure Marketplace
@@ -25,7 +25,7 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」** 模型。 在 BYOL �
 * [安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)。 了解如何在您的叢集上安裝 HDInsight 應用程式。
 * [安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)。 了解如何安裝和測試自訂 HDInsight 應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要將自訂應用程式提交至 Marketplace，首先，[建立並測試您的自訂應用程式](hdinsight-apps-install-custom-applications.md)。
 
 您還必須註冊開發人員帳戶。 如需詳細資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/marketplace-publishers-guide.md) 和[建立 Microsoft 開發人員帳戶](../marketplace/marketplace-publishers-guide.md)。
@@ -91,8 +91,8 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」** 模型。 在 BYOL �
 3. 輸入標題，然後選取 [建立新的解決方案範本]****。
 4. 如果您尚未註冊您的組織，請選取 [建立開發人員中心帳戶並加入 Azure 方案]****。  如需詳細資訊，請參閱 [建立 Microsoft 開發人員帳戶](../marketplace/marketplace-publishers-guide.md)。
 5. 選取 [定義一些拓撲以便開始使用] ****。 方案範本是所有其拓撲的「父項」。 您可以在一個供應項目或解決方案範本中定義多個拓撲。 當供應項目推送到預備環境時，它的所有拓撲也會一起推入。 
-6. 輸入拓撲名稱，然後選取**+**。
-7. 輸入新的版本，然後選取**+**[]。
+6. 輸入拓撲名稱，然後選取 **+** 。
+7. 輸入新的版本，然後選取 [] **+** 。
 8. 上傳您在封裝應用程式時建立的 .zip 檔案。  
 9. 選取 [要求認證]****。 Microsoft 認證團隊會檢閱檔案並認證拓撲。
 

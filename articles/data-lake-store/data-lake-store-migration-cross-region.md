@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60518475"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨區域移轉 Azure Data Lake Storage Gen1
 
 隨著 Azure Data Lake Storage Gen1 在新區域開放使用，您可能會選擇進行一次性移轉，以利用某個新區域。 了解在規劃和完成移轉時的一些考量。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂**用帳戶。 如需詳細資訊，請參閱[立即建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 如需詳細資訊，請參閱[立即建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * **兩個不同區域中的 Data Lake Storage Gen1 帳戶**。 如需詳細資訊，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 * **Azure Data Factory**。 如需詳細資訊，請參閱 [Azure Data Factory 簡介](../data-factory/introduction.md)。
 

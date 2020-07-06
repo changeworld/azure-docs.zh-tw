@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381173"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升級 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
@@ -44,7 +44,7 @@ Azure AD Connect 是 DirSync 和 Azure AD 同步的後續版本。它會結合�
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何轉換為 Azure AD Connect
 如果您正在執行 DirSync，有兩種方式可以升級︰就地升級和平行部署。 對大多數的客戶，以及如果您擁有最新的作業系統和少於 50,000 個物件，建議採用就地升級。 在其他情況下，建議執行平行部署，DirSync 組態會移至執行 Azure AD Connect 的新伺服器。
 
-| 解決方法 | 案例 |
+| 解決方案 | 案例 |
 | --- | --- |
 | [從 DirSync 升級](how-to-dirsync-upgrade-get-started.md) |<li>如果您有已在執行中的現有 DirSync 伺服器。</li> |
 | [從 Azure AD Sync 升級](how-to-upgrade-previous-version.md) |<li>如果您要從 Azure AD Sync 移動。</li> |

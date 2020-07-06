@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61465655"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>如何：透過下載傳遞資產  
@@ -27,7 +27,7 @@ ms.locfileid: "61465655"
 這個範例示範如何從媒體服務下載媒體資產到本機電腦。 程式碼會以工作 ID 查詢與媒體服務帳戶相關聯的工作，並存取其 **OutputMediaAssets** 集合 (這是執行工作後所產生的一或多個輸出媒體資產)。 此範例將說明如何從工作下載輸出媒體資產，但您也可以用相同的方式來下載其他資產。
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[這](media-services-dotnet-manage-entities.md#limit-access-policies)篇文章。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
 ```csharp
     // Download the output asset of the specified job to a local folder.

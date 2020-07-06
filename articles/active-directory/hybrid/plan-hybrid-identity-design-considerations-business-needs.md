@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65950906"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的身分識別需求
@@ -29,7 +29,7 @@ ms.locfileid: "65950906"
 
 我們必須通盤審視企業的各個主要層面，以了解其目前的需求，以及公司對未來的規劃。 如果您不清楚混合式身分識別設計的長期策略，您的解決方案在未來有可能無法隨著企業的成長和變化而進行調整。 下圖顯示混合式身分識別架構的範例，以及為使用者解除鎖定的工作負載。 此範例只是為了說明所有可透過健全的整合式身分識別策略釋出及提供的新可能性。 
 
-屬於混合式身分識別架構![混合式身分識別架構的部分元件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+屬於混合式身分識別架構混合式身分識別架構的部分元件 ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>判斷商務需求
 每家公司都會有不同的需求，即使這些公司屬於相同產業，實際的商務需求仍可能有所不同。 您仍然可以採用業界的最佳作法，但最終引導您定義混合式身分識別設計需求的，仍將是公司的商務需求。 
@@ -68,7 +68,7 @@ ms.locfileid: "65950906"
 
 * 您的組織是否會使用同盟和 (或) 標準驗證？
 * 同盟是必要條件嗎？  原因如下：
-  * Kerberos 型 SSO
+  * 以 Kerberos 為基礎的 SSO
   * 您的公司有使用 SAML 或類似同盟功能的內部部署應用程式 (內建或協力廠商)。
   * 透過智慧卡的 MFA。 RSA SecurID 等等。
   * 可解決下列問題的用戶端存取規則：

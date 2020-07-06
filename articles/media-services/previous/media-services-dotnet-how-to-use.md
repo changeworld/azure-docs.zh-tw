@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64724112"
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 進行媒體服務開發 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本文章討論如何使用 .NET 開始開發媒體服務應用程式。
 
 **Azure Media Services .NET SDK 程式庫** 可讓您使用 .NET 對媒體服務進行程式設計。 為了讓使用 .NET 進行開發更為簡單，會提供 **Azure Media Services .NET SDK 延伸模組** 程式庫。 此程式庫包含一組延伸方法和協助程式函數，以簡化 .NET 程式碼。 這兩個程式庫都是透過 **NuGet** 和 **GitHub** 取得。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 新的或現有 Azure 訂用帳戶中的媒體服務帳戶。 請參閱文章[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 作業系統：Windows 10、Windows 7、Windows 2008 R2 或 Windows 8。
 * .NET Framework 4.5 或更新版本。
@@ -57,7 +57,7 @@ ms.locfileid: "64724112"
    
     4. 會修改專案，並新增 Media Services .NET SDK 延伸模組、Media Services .NET SDK 和其他相依組件的參考。
 4. 若要提升更乾淨的開發環境，請考慮啟用 [NuGet 封裝還原]。 如需詳細資訊，請參閱 [NuGet 封裝還原](https://docs.nuget.org/consume/package-restore)。
-5. 加入 **System.Configuration** 組件的參考。 此元件包含 System. Configuration。用來存取設定檔案（例如 App.config）的**ConfigurationManager**類別。
+5. 加入 **System.Configuration** 組件的參考。 此元件包含 System.Configuration。用來存取設定檔的**ConfigurationManager**類別（例如 App.config）。
    
     1. 若要使用 [管理參考] 對話方塊新增參考，請以滑鼠右鍵按一下 [方案總管] 中的專案名稱。 接著，按一下 [新增]****，然後按一下 [參考]****。
    

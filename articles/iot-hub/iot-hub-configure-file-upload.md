@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60735004"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 入口網站設定 IoT 中樞檔案上傳
@@ -46,7 +46,7 @@ ms.locfileid: "60735004"
 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [大量管理 IoT 裝置](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中樞度量](iot-hub-metrics.md)
+* [IoT 中樞計量](iot-hub-metrics.md)
 * [作業監視](iot-hub-operations-monitoring.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰

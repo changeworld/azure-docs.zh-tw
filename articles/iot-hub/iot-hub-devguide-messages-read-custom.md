@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61244339"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>針對裝置對雲端訊息使用訊息路由和自訂端點
@@ -25,7 +25,7 @@ IoT 中樞[訊息路由](iot-hub-devguide-routing-query-syntax.md)讓使用者�
 | ------------- | ----------- |
 | **名稱**      | 可識別查詢的唯一名稱。 |
 | **來源**    | 要據以處理的資料串流來源。 例如裝置遙測。 |
-| **狀況** | 適用於路由查詢的查詢運算式，會針對訊息應用程式屬性、系統屬性、訊息內文、裝置對應項標記和裝置對應項屬性來執行，以判斷它是否符合端點。 如需如何建構查詢的詳細資訊，請參閱[訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md) |
+| **條件** | 適用於路由查詢的查詢運算式，會針對訊息應用程式屬性、系統屬性、訊息內文、裝置對應項標記和裝置對應項屬性來執行，以判斷它是否符合端點。 如需如何建構查詢的詳細資訊，請參閱[訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md) |
 | **端點**  | IoT 中樞傳送符合查詢之訊息的目的地端點名稱。 我們建議選擇與您 IoT 中樞位於相同區域的端點。 |
 
 單一訊息可能符合多個路由查詢的條件，在這種情況下，IoT 中樞會將訊息傳遞至與每個相符查詢相關聯的端點。 IoT 中樞也會自動刪除重複的訊息傳遞，因此，如果訊息符合多個具有相同目的地的查詢，該訊息就只會寫入到該目的地一次。

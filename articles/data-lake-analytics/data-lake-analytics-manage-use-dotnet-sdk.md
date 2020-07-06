@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60617702"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>管理 Azure Data Lake Analytics .NET 應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "60617702"
 
 本文說明如何使用以 Azure .NET SDK 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **已安裝 Visual Studio 2015、Visual Studio 2013 更新 4，或具有 Visual C++ 的 Visual Studio 2012**。
 * **Microsoft Azure SDK for .NET 2.5 版或更新版本**。  使用 [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)來進行安裝。
@@ -219,7 +219,7 @@ if (adlaClient.Account.Exists(rg, adla))
 
 Data Lake Analytics 目前支援下列資料來源：
 
-* [Azure Data Lake 存放區](../data-lake-store/data-lake-store-overview.md)
+* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure 儲存體帳戶](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>連結至 Azure 儲存體帳戶

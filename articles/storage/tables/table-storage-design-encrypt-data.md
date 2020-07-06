@@ -9,10 +9,10 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60325998"
 ---
 # <a name="encrypt-table-data"></a>加密資料表資料
@@ -24,7 +24,7 @@ ms.locfileid: "60325998"
 
 目前不支援合併。 因為屬性子集先前可能是使用不同的金鑰加密，直接合併新的屬性並更新中繼資料會導致資料遺失。 合併可能需要額外的服務呼叫來從服務讀取預先存在的實體，或在每個屬性上都使用新的金鑰，兩者都不利用於效能。     
 
-如需加密資料表資料的相關資訊，請參閱 [Microsoft Azure 儲存體的用戶端加密和 Azure 金鑰保存庫](../common/storage-client-side-encryption.md)。  
+如需加密資料表資料的詳細資訊，請參閱[Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault](../common/storage-client-side-encryption.md)。  
 
 ## <a name="next-steps"></a>後續步驟
 

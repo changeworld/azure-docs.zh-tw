@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245511"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步處理：了解宣告式佈建運算式
@@ -41,7 +41,7 @@ Azure AD Connect 同步處理是以 Forefront Identity Manager 2010 中最先引
 * 布林值以兩個常數表示：True、False。
 * 內建常數和常值只以其名稱表示：NULL、CRLF、IgnoreThisFlow
 
-### <a name="functions"></a>函式
+### <a name="functions"></a>函數
 宣告式佈建會使用許多函式，來啟用轉換屬性值的可能性。 這些函式可以是巢狀的，因此，來自某一個函式的結果會傳遞到另一個函式。
 
 `Function1(Function2(Function3()))`
@@ -94,7 +94,7 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 
 **概觀主題**
 
-* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 
 **參考主題**
