@@ -8,17 +8,17 @@ ms.locfileid: "67338229"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure 文件
 
-歡迎使用 [Microsoft Azure](https://azure.microsoft.com) 的開放原始碼[文件](https://docs.microsoft.com/azure)。 請檢閱這份讀我檔案，以了解您可以如何為 Microsoft Azure 文件增色。
+歡迎使用 [Microsoft Azure](https://azure.microsoft.com) 的開放原始碼[文件](https://docs.microsoft.com/azure)。請檢閱這份讀我檔案，以了解您可以如何為 Microsoft Azure 文件增色。
 
 ## <a name="getting-started"></a>開始使用
 
-參與開放原始碼內容並不只提供更新，同時也能讓我們在第一時間知道發生了問題。 閱讀我們的[參與指引](CONTRIBUTING.md)以深入了解。
+參與開放原始碼內容並不只提供更新，同時也能讓我們在第一時間知道發生了問題。閱讀我們的[參與指引](CONTRIBUTING.md)以深入了解。
 
 ### <a name="prerequisites"></a>必要條件
 
-您已經決定要參與，太棒了！ 若要參與文件內容，您需要一些工具。
+您已經決定要參與，太棒了！若要參與文件內容，您需要一些工具。
 
-參與文件內容需要 GitHub 帳戶。 如果您還沒有帳戶，請依照下列參與者指南的 [GitHub 帳戶設定](https://docs.microsoft.com/contribute/get-started-setup-github)的指示進行。
+參與文件內容需要 GitHub 帳戶。如果您還沒有帳戶，請依照下列參與者指南的 [GitHub 帳戶設定](https://docs.microsoft.com/contribute/get-started-setup-github)的指示進行。
 
 #### <a name="download"></a>下載
 
