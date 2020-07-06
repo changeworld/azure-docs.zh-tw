@@ -34,7 +34,7 @@ ms.locfileid: "67338229"
 
 ## <a name="license"></a>授權
 
-請參閱 [LICENSE](LICENSE)、[LICENSE-CODE](LICENSE-CODE)和 [ThirdPartyNotices](ThirdPartyNotices.md) 以取得所有授權資訊。
+請參閱 [LICENSE](LICENSE)、[LICENSE-CODE](LICENSE-CODE) 和 [ThirdPartyNotices](ThirdPartyNotices.md) 以取得所有授權資訊。
 
 ## <a name="code-of-conduct"></a>管理辦法
 
