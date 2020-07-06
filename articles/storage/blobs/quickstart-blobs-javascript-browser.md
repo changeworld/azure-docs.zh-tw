@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634078"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833412"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -25,7 +25,7 @@ Azure Blob 儲存體經過最佳化，能妥善儲存大量的非結構化資料
 > [!NOTE]
 > 若要開始使用舊版 SDK，請參閱[快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob](storage-quickstart-blobs-nodejs-legacy.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [具有有效訂用帳戶的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Azure 儲存體帳戶](../common/storage-account-create.md)
@@ -65,7 +65,7 @@ Blob 儲存體提供三種類型資源：
 
 您必須先設定帳戶以啟用[跨原始資源共用](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (或簡稱為 CORS)，Web 應用程式才可從用戶端存取 Blob 儲存體。
 
-在 Azure 入口網站中，選取您的儲存體帳戶。 若要定義新的 CORS 規則，請瀏覽至 [設定]  區段，然後選取 [CORS]  。 在此快速入門中，您會建立開啟的 CORS 規則：
+在 Azure 入口網站中，選取您的儲存體帳戶。 若要定義新的 CORS 規則，請瀏覽至 [設定] 區段，然後選取 [CORS]。 在此快速入門中，您會建立開啟的 CORS 規則：
 
 ![Azure Blob 儲存體帳戶 CORS 設定](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
 
@@ -79,7 +79,7 @@ Blob 儲存體提供三種類型資源：
 | **公開的標頭** | **\*** | 列出帳戶允許的回應標頭。 將值設為 `*`，會允許帳戶傳送任何標頭。 |
 | **存留期上限** | **86400** | 瀏覽器快取預檢 OPTIONS 要求的時間量上限 (以秒為單位)。 值為 *86400* 時，會允許快取保留一天。 |
 
-在您使用此表格中的值填入欄位之後，請按一下 [儲存]  按鈕。
+在您使用此表格中的值填入欄位之後，請按一下 [儲存] 按鈕。
 
 > [!IMPORTANT]
 > 請確定您在生產環境中使用的任何設定，都只會公開對您的儲存體帳戶所需的最低存取數量，以維護安全存取。 此處所說明的 CORS 設定定義的是寬鬆的安全性原則，適用於快速入門。 不過，不建議將這些設定用於實際的環境中。
@@ -91,17 +91,17 @@ Blob 儲存體提供三種類型資源：
 請遵循下列步驟來取得 Blob 服務 SAS URL：
 
 1. 在 Azure 入口網站中，選取您的儲存體帳戶。
-2. 瀏覽至 [設定]  區段，然後選取 [共用存取簽章]  。
-3. 向下捲動，然後按一下 [產生 SAS 與連接字串]  按鈕。
-4. 進一步向下捲動並找出 [Blob 服務 SAS URL]  欄位
-5. 按一下 [Blob 服務 SAS URL]  欄位最右側的 [複製到剪貼簿]  按鈕。
+2. 瀏覽至 [設定] 區段，然後選取 [共用存取簽章]。
+3. 向下捲動，然後按一下 [產生 SAS 與連接字串] 按鈕。
+4. 進一步向下捲動並找出 [Blob 服務 SAS URL] 欄位
+5. 按一下 [Blob 服務 SAS URL] 欄位最右側的 [複製到剪貼簿] 按鈕。
 6. 將複製的 URL 儲存在某處，以便在後續的步驟中使用。
 
 ### <a name="add-the-azure-blob-storage-client-library"></a>新增 Azure Blob 儲存體用戶端程式庫
 
 在您的本機電腦上，建立名為 *azure-blobs-js-browser* 的新資料夾，然後在 Visual Studio Code 中加以開啟。
 
-選取 [檢視] > [終端]  ，以在 Visual Studio Code 中開啟主控台視窗。 在終端視窗中執行下列 Node.js 套件管理員 (npm) 命令，以建立 [package.json](https://docs.npmjs.com/files/package.json) 檔案。
+選取 [檢視] > [終端]，以在 Visual Studio Code 中開啟主控台視窗。 在終端視窗中執行下列 Node.js 套件管理員 (npm) 命令，以建立 [package.json](https://docs.npmjs.com/files/package.json) 檔案。
 
 ```console
 npm init -y
@@ -123,11 +123,11 @@ npm install --save @azure/storage-blob
 npm install -g parcel-bundler
 ```
 
-在 Visual Studio Code 中，開啟 package.json  檔案，然後在 `license` 與 `dependencies` 項目之間新增 `browserlist`。 此 `browserlist` 會以最新版的三個熱門瀏覽器為目標。 完整 package.json  檔案現在應如下所示：
+在 Visual Studio Code 中，開啟 package.json 檔案，然後在 `license` 與 `dependencies` 項目之間新增 `browserlist`。 此 `browserlist` 會以最新版的三個熱門瀏覽器為目標。 完整 package.json 檔案現在應如下所示：
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 
-儲存 package.json  檔案。
+儲存 package.json 檔案。
 
 ### <a name="import-the-azure-blob-storage-client-library"></a>匯入 Azure Blob 儲存體用戶端程式庫
 
@@ -135,7 +135,7 @@ npm install -g parcel-bundler
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ImportLibrary":::
 
-將檔案儲存為 azure-blobs-js-browser  目錄中的 index.js  。
+將檔案儲存為 azure-blobs-js-browser 目錄中的 index.js。
 
 ### <a name="implement-the-html-page"></a>實作 HTML 網頁
 
@@ -143,7 +143,7 @@ npm install -g parcel-bundler
 
 :::code language="html" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.html":::
 
-將檔案儲存為 azure-blobs-js-browser  資料夾中的 index.html  。
+將檔案儲存為 azure-blobs-js-browser 資料夾中的 index.html。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -157,15 +157,15 @@ npm install -g parcel-bundler
 * [上傳 Blob](#upload-blobs)
 * [刪除 Blob](#delete-blobs)
 
-將所有程式碼片段新增至 index.js  檔案之後，您將會執行程式碼。
+將所有程式碼片段新增至 index.js 檔案之後，您將會執行程式碼。
 
 ### <a name="declare-fields-for-ui-elements"></a>宣告 UI 元素的欄位
 
-在 index.js  檔案的結尾加入下列程式碼。
+在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="JavaScript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_DeclareVariables":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
 此程式碼會宣告每個 HTML 元素的欄位，並實作 `reportStatus` 函式來顯示輸出。
 
@@ -173,92 +173,92 @@ npm install -g parcel-bundler
 
 ### <a name="add-your-storage-account-info"></a>新增您的儲存體帳戶資訊
 
-新增程式碼以存取您的儲存體帳戶。 將預留位置取代為您稍早產生的 Blob 服務 SAS URL。 在 index.js  檔案的結尾加入下列程式碼。
+新增程式碼以存取您的儲存體帳戶。 將預留位置取代為您稍早產生的 Blob 服務 SAS URL。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_StorageAcctInfo":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
 ### <a name="create-client-objects"></a>建立用戶端物件
 
-建立 [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) 和 [ContainerClient](/javascript/api/@azure/storage-blob/containerclient) 物件，以便與 Azure Blob 儲存體服務互動。 在 index.js  檔案的結尾加入下列程式碼。
+建立 [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) 和 [ContainerClient](/javascript/api/@azure/storage-blob/containerclient) 物件，以便與 Azure Blob 儲存體服務互動。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_CreateClientObjects":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
 ### <a name="create-and-delete-a-storage-container"></a>建立及刪除儲存體容器
 
-在您按一下網頁上對應的按鈕時，建立和刪除儲存體容器。 在 index.js  檔案的結尾加入下列程式碼。
+在您按一下網頁上對應的按鈕時，建立和刪除儲存體容器。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_CreateDeleteContainer":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
 ### <a name="list-blobs"></a>列出 Blob
 
-在您按一下 [列出檔案]  按鈕時，列出儲存體容器的內容。 在 index.js  檔案的結尾加入下列程式碼。
+在您按一下 [列出檔案] 按鈕時，列出儲存體容器的內容。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ListBlobs":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
-此程式碼會呼叫 [ContainerClient.listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，然後使用迭代器來擷取每個傳回的 [BlobItem](/javascript/api/@azure/storage-blob/blobitem) 名稱。 對於每個 `BlobItem`，其會使用 [name](/javascript/api/@azure/storage-blob/blobitem#name) 屬性值來更新 [檔案]  清單。
+此程式碼會呼叫 [ContainerClient.listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，然後使用迭代器來擷取每個傳回的 [BlobItem](/javascript/api/@azure/storage-blob/blobitem) 名稱。 對於每個 `BlobItem`，其會使用 [name](/javascript/api/@azure/storage-blob/blobitem#name) 屬性值來更新 [檔案] 清單。
 
 ### <a name="upload-blobs"></a>上傳 Blob
 
-在您按一下 [選取並上傳檔案]  按鈕時，將檔案上傳至儲存體容器。 在 index.js  檔案的結尾加入下列程式碼。
+在您按一下 [選取並上傳檔案] 按鈕時，將檔案上傳至儲存體容器。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_UploadBlobs":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
-此程式碼會將 [選取並上傳檔案]  按鈕連結到隱藏的 `file-input` 元素。 `click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會建立 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 物件，然後針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每次呼叫都會傳回 `Promise`。 每個 `Promise` 都會新增至一份清單，使其能夠全部一起等候，這麼一來，檔案就能平行地上傳。
+此程式碼會將 [選取並上傳檔案] 按鈕連結到隱藏的 `file-input` 元素。 `click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會建立 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 物件，然後針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每次呼叫都會傳回 `Promise`。 每個 `Promise` 都會新增至一份清單，使其能夠全部一起等候，這麼一來，檔案就能平行地上傳。
 
 ### <a name="delete-blobs"></a>刪除 Blob
 
-在您按一下 [刪除選取的檔案]  按鈕時，從儲存體容器中刪除檔案。 在 index.js  檔案的結尾加入下列程式碼。
+在您按一下 [刪除選取的檔案] 按鈕時，從儲存體容器中刪除檔案。 在 index.js 檔案的結尾加入下列程式碼。
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_DeleteBlobs":::
 
-儲存 index.js  檔案。
+儲存 index.js 檔案。
 
 此程式碼會呼叫 [ContainerClient.deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-)函式來移除清單中選定的每個檔案。 然後呼叫稍早說明的 `listFiles` 函式，來重新整理**檔案**清單的內容。
 
 ## <a name="run-the-code"></a>執行程式碼
 
-若要在 Visual Studio Code 偵錯工具內執行程式碼，請為您的瀏覽器設定 launch.json  檔案。
+若要在 Visual Studio Code 偵錯工具內執行程式碼，請為您的瀏覽器設定 launch.json 檔案。
 
 ### <a name="configure-the-debugger"></a>設定偵錯工具
 
 若要在 Visual Studio Code 中設定偵錯工具擴充功能：
 
-1. 選取 [執行] > [新增組態]  。
-2. 視您稍早在[必要條件](#prerequisites)一節中安裝的擴充功能而定，選取 [Edge]  、[Chrome]  或 [Firefox]  。
+1. 選取 [執行] > [新增組態]。
+2. 視您稍早在[必要條件](#prerequisites)一節中安裝的擴充功能而定，選取 [Edge]、[Chrome] 或 [Firefox]。
 
-新增組態就會建立 launch.json  檔案並在編輯器中加以開啟。 修改 launch.json  檔案，讓 `url` 值成為 `http://localhost:1234/index.html`，如下所示：
+新增組態就會建立 launch.json 檔案並在編輯器中加以開啟。 修改 launch.json 檔案，讓 `url` 值成為 `http://localhost:1234/index.html`，如下所示：
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/.vscode/launch.json" highlight="11":::
 
-更新之後，儲存 launch.json  檔案。 此組態會告訴 Visual Studio Code 要開啟哪一個瀏覽器和要載入哪一個 URL。
+更新之後，儲存 launch.json 檔案。 此組態會告訴 Visual Studio Code 要開啟哪一個瀏覽器和要載入哪一個 URL。
 
 ### <a name="launch-the-web-server"></a>啟動 Web 伺服器
 
-若要啟動本機開發 Web 伺服器，請選取 [檢視] > [終端]  以在 Visual Studio Code 內開啟主控台視窗，然後輸入下列命令。
+若要啟動本機開發 Web 伺服器，請選取 [檢視] > [終端]以在 Visual Studio Code 內開啟主控台視窗，然後輸入下列命令。
 
 ```console
 parcel index.html
 ```
 
-Parcel 會搭配您的程式碼，並且在 `http://localhost:1234/index.html` 為您的網頁啟動本機開發伺服器。 每當您儲存檔案時，您對 index.js  所做的變更將會自動建立並反映在開發伺服器上。
+Parcel 會搭配您的程式碼，並且在 `http://localhost:1234/index.html` 為您的網頁啟動本機開發伺服器。 每當您儲存檔案時，您對 index.js 所做的變更將會自動建立並反映在開發伺服器上。
 
-如果您收到一則訊息，指出**無法使用已設定的連接埠 1234**，您可執行 `parcel -p <port#> index.html` 命令來變更連接埠。 在 launch.json  檔案中，更新 URL 路徑中要符合的連接埠。
+如果您收到一則訊息，指出**無法使用已設定的連接埠 1234**，您可執行 `parcel -p <port#> index.html` 命令來變更連接埠。 在 launch.json 檔案中，更新 URL 路徑中要符合的連接埠。
 
 ### <a name="start-debugging"></a>開始偵錯
 
-在偵錯工具中執行頁面並了解 Blob 儲存體的運作方式。 如果發生任何錯誤，網頁上的 [狀態]  窗格會顯示所收到的錯誤訊息。
+在偵錯工具中執行頁面並了解 Blob 儲存體的運作方式。 如果發生任何錯誤，網頁上的 [狀態] 窗格會顯示所收到的錯誤訊息。
 
-若要在已連結 Visual Studio Code 偵錯工具的瀏覽器中開啟 index.html  ，請選取 [執行] > [開始偵錯]  ，或在 Visual Studio Code 中按 F5。
+若要在已連結 Visual Studio Code 偵錯工具的瀏覽器中開啟 index.html，請選取 [執行] > [開始偵錯]，或在 Visual Studio Code 中按 F5。
 
 ### <a name="use-the-web-app"></a>執行 Web 應用程式
 
@@ -266,32 +266,32 @@ Parcel 會搭配您的程式碼，並且在 `http://localhost:1234/index.html` �
 
 #### <a name="step-1---create-a-container"></a>步驟 1 - 建立容器
 
-1. 在 Web 應用程式中，選取 [建立容器]  。 狀態指出已建立容器。
-2. 若要在 Azure 入口網站中確認，請選取您的儲存體帳戶。 在 [Blob 服務]  之下，選取 [容器]  。 確認新的容器是否出現。 (您可能需要選取 [重新整理]  。)
+1. 在 Web 應用程式中，選取 [建立容器]。 狀態指出已建立容器。
+2. 若要在 Azure 入口網站中確認，請選取您的儲存體帳戶。 在 [Blob 服務] 之下，選取 [容器]。 確認新的容器是否出現。 (您可能需要選取 [重新整理]。)
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>步驟 2 - 將 Blob 上傳至容器
 
-1. 在您的本機電腦上，建立並儲存測試檔案，例如 test.txt  。
-2. 在 Web 應用程式中，按一下 [選取並上傳檔案]  。
-3. 瀏覽至您的測試檔案，然後選取 [開啟]  。 狀態指出檔案已上傳，並已擷取檔案清單。
+1. 在您的本機電腦上，建立並儲存測試檔案，例如 test.txt。
+2. 在 Web 應用程式中，按一下 [選取並上傳檔案]。
+3. 瀏覽至您的測試檔案，然後選取 [開啟]。 狀態指出檔案已上傳，並已擷取檔案清單。
 4. 在 Azure 入口網站中，選取您稍早建立的新容器名稱。 確認測試檔案是否出現。
 
 #### <a name="step-3---delete-the-blob"></a>步驟 3 - 刪除 Blob
 
-1. 在 Web 應用程式的 [檔案]  之下，選取測試檔案。
-2. 選取 [刪除選取的檔案]  。 狀態指出檔案已刪除，且容器未包含任何檔案。
-3. 在 Azure 入口網站中，選取 [重新整理]  。 確認您看到 [找不到任何 Blob]  。
+1. 在 Web 應用程式的 [檔案] 之下，選取測試檔案。
+2. 選取 [刪除選取的檔案]。 狀態指出檔案已刪除，且容器未包含任何檔案。
+3. 在 Azure 入口網站中，選取 [重新整理]。 確認您看到 [找不到任何 Blob]。
 
 #### <a name="step-4---delete-the-container"></a>步驟 4 - 刪除容器
 
-1. 在 Web 應用程式中，選取 [刪除容器]  。 狀態指出容器已刪除。
-2. 在 Azure 入口網站中，選取入口網站窗格左上角的 [\<account-name\> | 容器]  連結。
-3. 選取 [重新整理]  。 新的容器隨即消失。
+1. 在 Web 應用程式中，選取 [刪除容器]。 狀態指出容器已刪除。
+2. 在 Azure 入口網站中，選取入口網站窗格左上角的 [ **\<account-name\> | 容器**] 連結。
+3. 選取 [重新整理]。 新的容器隨即消失。
 4. 關閉 Web 應用程式。
 
 ### <a name="clean-up-resources"></a>清除資源
 
-按一下 Visual Studio Code 中的 [終端]  主控台，然後按 CTRL + C 來停止網頁伺服器。
+按一下 Visual Studio Code 中的 [終端] 主控台，然後按 CTRL + C 來停止網頁伺服器。
 
 若要清除本快速入門建立的資源，請移至 [Azure 入口網站](https://portal.azure.com)並刪除您在[必要條件](#prerequisites)一節中建立的資源群組。
 
@@ -302,7 +302,7 @@ Parcel 會搭配您的程式碼，並且在 `http://localhost:1234/index.html` �
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文件](/azure/javascript/)
+> [Azure for JavaScript 文件](/azure/developer/javascript/)
 
 * 若要深入了解，請參閱[適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
 * 若要查看 Blob 儲存體範例應用程式，請繼續執行 [Azure Blob 儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
