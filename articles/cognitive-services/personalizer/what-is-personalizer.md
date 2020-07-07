@@ -5,7 +5,6 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83586213"
@@ -69,7 +68,7 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 
 ## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>如何針對用戶端應用程式設計和實作個人化工具
 
-1. 針對內容、**_動作_** 及**_關係_** 進行[設計](concepts-features.md)與規劃。 決定**獎勵**分數的獎勵演算法。
+1. 針對內容、**_動作_** 及**_關係_** 進行[設計](concepts-features.md)與規劃。 決定 **獎勵** 分數的獎勵演算法。
 1. 您所建立的每個[個人化工具資源](how-to-settings.md)都會被視為 1 個學習迴圈。 迴圈將會接收該內容或使用者體驗的排名和獎勵呼叫。
 
     |資源類型| 目的|

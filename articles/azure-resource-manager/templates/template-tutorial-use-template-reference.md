@@ -8,7 +8,6 @@ ms.author: jgao
 ms.custom: seodec18
 ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82185042"
@@ -42,15 +41,15 @@ ms.locfileid: "82185042"
 
 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本快速入門中使用的範本名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 此範本會定義 Azure 儲存體帳戶資源。
 
-1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
-1. 在 [檔案名稱]  中，貼上下列 URL：
+1. 在 Visual Studio Code 中，選取 [檔案]>[開啟檔案]。
+1. 在 [檔案名稱] 中，貼上下列 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-1. 選取 [開啟]  以開啟檔案。
-1. 選取 [檔案]  >[另存新檔]  ，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+1. 選取 [開啟] 以開啟檔案。
+1. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
 
 ## <a name="understand-the-schema"></a>了解結構描述
 
@@ -76,7 +75,7 @@ ms.locfileid: "82185042"
 ## <a name="find-the-template-reference"></a>尋找範本參考
 
 1. 瀏覽至[Azure 範本參考](https://docs.microsoft.com/azure/templates/)。
-1. 在 [依標題篩選]  方塊中，輸入**儲存體帳戶**，然後選取 [參考] > [儲存體] ****底下的第一個 [儲存體帳戶]**** 。
+1. 在 [依標題篩選] 方塊中，輸入**儲存體帳戶**，然後選取 [參考] > [儲存體] 底下的第一個 [儲存體帳戶]。
 
     ![Resource Manager 範本參考儲存體帳戶](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 
@@ -84,7 +83,7 @@ ms.locfileid: "82185042"
 
     ![Resource Manager 範本參考儲存體帳戶版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
 
-1. 在左窗格中，選取 [儲存體]  底下的 [所有資源]  。 此頁面會列出儲存體資源提供者的資源類型和版本。 建議您針對範本中定義的資源類型使用最新的 API 版本。
+1. 在左窗格中，選取 [儲存體] 底下的 [所有資源]。 此頁面會列出儲存體資源提供者的資源類型和版本。 建議您針對範本中定義的資源類型使用最新的 API 版本。
 
     ![Resource Manager 範本參考儲存體帳戶類型版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
@@ -108,7 +107,7 @@ ms.locfileid: "82185042"
 
     ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
+1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
 1. 從 Cloud Shell 執行下列命令。 選取要顯示 PowerShell 程式碼或 CLI 程式碼的索引標籤。
 
@@ -143,10 +142,10 @@ ms.locfileid: "82185042"
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
-4. 從頂端功能表中選取 [刪除資源群組]  。
+4. 從頂端功能表中選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 
