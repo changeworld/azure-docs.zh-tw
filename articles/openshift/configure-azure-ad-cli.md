@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
-keywords: aro、openshift、az aro、red hat、cli
+keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204997"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證（CLI）
@@ -24,7 +24,7 @@ ms.locfileid: "82204997"
 建立叢集的 OAuth 回呼 URL，並將它儲存在變數**oauthCallbackURL**中。 請務必以您的資源群組名稱取代**aro-rg** ，並以您的叢集名稱取代**aro-cluster** 。
 
 > [!NOTE]
-> OAuth `AAD`回呼 URL 中的區段應符合您稍後將會設定的 oauth 身分識別提供者名稱。
+> `AAD`Oauth 回呼 URL 中的區段應符合您稍後將會設定的 oauth 身分識別提供者名稱。
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -36,7 +36,7 @@ oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>建立用於驗證的 Azure Active Directory 應用程式
 
-建立 Azure Active Directory 應用程式，並取出已建立的應用程式識別碼。 以安全密碼取代** \<ClientSecret>** 。
+建立 Azure Active Directory 應用程式，並取出已建立的應用程式識別碼。 **\<ClientSecret>** 以安全密碼取代。
 
 ```azurecli-interactive
 az ad app create \
@@ -74,9 +74,9 @@ az account show --query tenantId -o tsv
 - 變更 Azure AD 在權杖中傳回之特定宣告的行為。
 - 新增和存取應用程式的自訂宣告。
 
-我們會將 OpenShift 設定為使用`email`宣告，並藉由`upn`將新增`upn`為 Azure Active Directory 所傳回之識別碼權杖的一部分，來切換回以設定慣用的使用者名稱。
+我們會將 OpenShift 設定為使用宣告 `email` ，並藉 `upn` 由將新增 `upn` 為 Azure Active Directory 所傳回之識別碼權杖的一部分，來切換回以設定慣用的使用者名稱。
 
-建立**資訊清單 json**檔案來設定 Azure Active Directory 應用程式。
+在檔案**上建立manifest.js** ，以設定 Azure Active Directory 應用程式。
 
 ```bash
 cat > manifest.json<< EOF
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>使用資訊清單更新 Azure Active Directory 應用程式的 optionalClaims
 
-以您稍早所擁有的識別碼取代** \<AppID>** 。
+**\<AppID>** 將取代為您稍早所提供的識別碼。
 
 ```azurecli-interactive
 az ad app update \
@@ -109,7 +109,7 @@ az ad app update \
 
 為了能夠從 Azure Active Directory 讀取使用者資訊，我們必須定義適當的範圍。
 
-以您稍早所擁有的識別碼取代** \<AppID>** 。
+**\<AppID>** 將取代為您稍早所提供的識別碼。
 
 Azure Active Directory Graph 的 [新增] 許可權。 [**使用者]** 的 [讀取範圍]，以啟用登入和讀取使用者設定檔。
 
@@ -131,7 +131,7 @@ az ad app permission add \
 
 ## <a name="configure-openshift-openid-authentication"></a>設定 OpenShift OpenID 驗證
 
-取出`kubeadmin`認證。 執行下列命令來尋找`kubeadmin`使用者的密碼。
+取出 `kubeadmin` 認證。 執行以下命令來尋找 `kubeadmin` 使用者的密碼。
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -139,7 +139,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-下列範例輸出顯示密碼將在中`kubeadminPassword`。
+以下範例輸出顯示密碼將位於 `kubeadminPassword` 中。
 
 ```json
 {
@@ -148,13 +148,13 @@ az aro list-credentials \
 }
 ```
 
-使用下列命令登入 OpenShift 叢集的 API 伺服器。 `$apiServer`變數[先前]()已設定。 以您所抓取的密碼取代** \<kubeadmin password>** 。
+使用下列命令登入 OpenShift 叢集的 API 伺服器。 `$apiServer`變數[先前]()已設定。 **\<kubeadmin password>** 以您所抓取的密碼取代。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-建立 OpenShift 秘密來儲存 Azure Active Directory 應用程式密碼，將** \<ClientSecret>** 取代為您稍早取得的密碼。
+建立 OpenShift 秘密來儲存 Azure Active Directory 應用程式密碼， **\<ClientSecret>** 並將取代為您稍早取得的密碼。
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
@@ -162,7 +162,7 @@ oc create secret generic openid-client-secret-azuread \
   --from-literal=clientSecret=<ClientSecret>
 ```    
 
-建立**oidc yaml**檔案，針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 以您稍早取得的值取代** \<AppID>** 和** \<TenantId>** 。
+建立**oidc yaml**檔案，針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 **\<AppID>** 將和取代 **\<TenantId>** 為您稍早取得的值。
 
 ```bash
 cat > oidc.yaml<< EOF

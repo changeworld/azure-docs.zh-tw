@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793241"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 認知搜尋的 OData 運算式語法參考
 
-Azure 認知搜尋會使用[OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)做為整個 API 中的參數。 最常見的是，OData 運算式是用於`$orderby`和`$filter`參數。 這些運算式可能很複雜，其中包含多個子句、函數和運算子。 不過，即使是屬性路徑之類的簡單 OData 運算式，也會用於 Azure 認知搜尋 REST API 的許多部分。 例如，路徑運算式是用來參考 API 中的所有複雜欄位的子欄位，例如在[建議工具](index-add-suggesters.md)中列出子欄位、[計分函數](index-add-scoring-profiles.md)、 `$select`參數，或甚至是[在 Lucene 查詢中回復搜尋](query-lucene-syntax.md)。
+Azure 認知搜尋會使用[OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)做為整個 API 中的參數。 最常見的是，OData 運算式是用於 `$orderby` 和 `$filter` 參數。 這些運算式可能很複雜，其中包含多個子句、函數和運算子。 不過，即使是屬性路徑之類的簡單 OData 運算式，也會用於 Azure 認知搜尋 REST API 的許多部分。 例如，路徑運算式是用來參考 API 中的所有複雜欄位的子欄位，例如在[建議工具](index-add-suggesters.md)中列出子欄位、[計分函數](index-add-scoring-profiles.md)、 `$select` 參數，或甚至是[在 Lucene 查詢中回復搜尋](query-lucene-syntax.md)。
 
 本文說明所有使用正式文法的 OData 運算式形式。 另外還有一個[互動式圖表](#syntax-diagram)，可協助您以視覺化方式流覽文法。
 
@@ -36,10 +36,10 @@ Azure 認知搜尋會使用[OData 運算式](https://docs.oasis-open.org/odata/o
 
 我們可以使用 EBNF （[延伸巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）文法來描述 Azure 認知搜尋所支援的 OData 語言子集。 規則會以「由上而下」列出，從最複雜的運算式開始，再將其細分為更基本的運算式。 最上方是對應至 Azure 認知搜尋之特定參數的文法規則 REST API：
 
-- [`$filter`](search-query-odata-filter.md)，由`filter_expression`規則定義。
-- [`$orderby`](search-query-odata-orderby.md)，由`order_by_expression`規則定義。
-- [`$select`](search-query-odata-select.md)，由`select_expression`規則定義。
-- 欄位路徑，由`field_path`規則定義。 在整個 API 中都會使用欄位路徑。 它們可以參考索引的最上層欄位，或是具有一或多個[複雜欄位](search-howto-complex-data-types.md)祖系的子欄位。
+- [`$filter`](search-query-odata-filter.md)，由規則定義 `filter_expression` 。
+- [`$orderby`](search-query-odata-orderby.md)，由規則定義 `order_by_expression` 。
+- [`$select`](search-query-odata-select.md)，由規則定義 `select_expression` 。
+- 欄位路徑，由規則定義 `field_path` 。 在整個 API 中都會使用欄位路徑。 它們可以參考索引的最上層欄位，或是具有一或多個[複雜欄位](search-howto-complex-data-types.md)祖系的子欄位。
 
 在 EBNF 是可流覽的[語法圖表](https://en.wikipedia.org/wiki/Syntax_diagram)之後，可讓您以互動方式流覽文法和其規則之間的關聯性。
 

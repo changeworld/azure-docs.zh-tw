@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430886"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可能用來取得要求存取權杖之 OAuth2 授權服務的位址。  
 
--   資源：要在授權要求中使用`https://vault.azure.net`的資源名稱（）。  
+-   資源： `https://vault.azure.net` 要在授權要求中使用的資源名稱（）。  
 

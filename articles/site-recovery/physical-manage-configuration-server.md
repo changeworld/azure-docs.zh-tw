@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478975"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>管理實體伺服器災害復原的組態伺服器
@@ -20,7 +20,7 @@ ms.locfileid: "80478975"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 下表摘要說明部署內部部署組態伺服器機器的必要條件。
 
@@ -47,7 +47,7 @@ ms.locfileid: "80478975"
 Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。 此外，您可以從 [Microsoft 下載中心](https://aka.ms/unifiedsetup)下載。
 
 1. 登入 Azure 入口網站並瀏覽至您的復原服務保存庫。
-2. 流覽至**Site Recovery 的基礎結構** > 設定**伺服器**（適用于 VMware & 實體機器）。
+2. 流覽至**Site Recovery 的基礎結構**設定  >  **伺服器**（適用于 VMware & 實體機器）。
 3. 按一下 [+伺服器]**** 按鈕。
 4. 在 [新增伺服器]**** 頁面上，按一下 [下載] 按鈕，下載註冊金鑰。 在組態伺服器安裝期間，您需要使用此金鑰向 Azure Site Recovery 服務註冊它。
 5. 按一下 [下載 Microsoft Azure Site Recovery 整合安裝]**** 連結，以下載最新版本的組態伺服器。
@@ -58,7 +58,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 ## <a name="install-and-register-the-server"></a>安裝和註冊伺服器
 
 1. 執行統一安裝的安裝檔案。
-2. 在 [開始之前]**** 選取 [安裝設定伺服器和處理序伺服器]****。
+2. 在 [開始之前] 選取 [安裝設定伺服器和處理序伺服器]。
 
     ![在您開始使用 Intune 之前](./media/physical-manage-configuration-server/combined-wiz1.png)
 
@@ -71,11 +71,11 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
      ![防火牆](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. 在 [**必要條件檢查**] 中，安裝程式會執行檢查，以確定可以執行安裝。 如果出現有關「**通用時間同步檢查**」的警告，請確認系統時鐘的時間（[**日期和時間**] 設定）與時區相同。
 
-    ![先決條件](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![必要條件](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. 在 [MySQL 組態]**** 中，建立認證來登入已安裝的 MySQL 伺服器執行個體。
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
-8. 在 [環境詳細資料]**** 中，選取您是否要複寫 VMware VM。 如果是的話，安裝程式就會檢查是否已安裝 PowerCLI 6.0。
+8. 在 [環境詳細資料] 中，選取您是否要複寫 VMware VM。 如果是的話，安裝程式就會檢查是否已安裝 PowerCLI 6.0。
 9. 在 [安裝位置]**** 中，選取您要安裝二進位檔及儲存快取的位置。 您選取的磁碟機至少必須有 5 GB 的可用磁碟空間，但我們建議快取磁碟機至少有 600 GB 的可用空間。
 
     ![安裝位置](./media/physical-manage-configuration-server/combined-wiz8.png)
@@ -87,7 +87,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 11. 在 [摘要]**** 中檢閱資訊，然後按一下 [安裝]****。 安裝完成時，會產生複雜密碼。 在您啟用複寫時會需要它，所以請將它複製並保存在安全的位置。
 
 
-註冊完成後，伺服器會顯示在保存庫的 [**設定** > ] [**伺服器**] 分頁上。
+註冊完成後，伺服器會顯示在保存庫的 [**設定**] [伺服器] 分頁上  >  **Servers** 。
 
 
 ## <a name="install-from-the-command-line"></a>從命令列安裝
@@ -158,7 +158,7 @@ ProxyPassword="Password"
    ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. 提供新的 Proxy 詳細資料，然後按一下 [註冊]**** 按鈕。
 6. 開啟系統管理 PowerShell 命令視窗。
-7. 執行下列命令：
+7. 執行以下命令：
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -242,7 +242,7 @@ ProxyPassword="Password"
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>從 Azure 入口網站刪除組態伺服器
-1. 在 Azure 入口網站中，流覽至 [保存庫] 功能表中的 [ **Site Recovery 基礎結構** > 設定**伺服器**]。
+1. 在 Azure 入口網站中，流覽至 [保存庫] 功能表中的 [ **Site Recovery 基礎結構**設定  >  **伺服器**]。
 2. 按一下您需要解除委任的組態伺服器。
 3. 在組態伺服器的詳細資料頁面上，按一下 [刪除]**** 按鈕。
 4. 按一下 [是]**** 以確認刪除伺服器。
@@ -267,7 +267,7 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>將組態伺服器刪除或取消註冊 (PowerShell)
 
-1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell 模組
+1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps)Azure PowerShell 模組
 2. 使用命令登入您的 Azure 帳戶
     
     `Connect-AzAccount`
@@ -303,7 +303,7 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>更新憑證
 
-1. 在保存庫中，開啟**Site Recovery 基礎結構** > 設定**伺服器**]，然後按一下所需的設定伺服器。
+1. 在保存庫中，開啟**Site Recovery 基礎結構**設定  >  **伺服器**]，然後按一下所需的設定伺服器。
 2. 到期日會顯示在 [設定**伺服器健全狀況**] 底下
 3. 按一下 [更新憑證]****。 
 

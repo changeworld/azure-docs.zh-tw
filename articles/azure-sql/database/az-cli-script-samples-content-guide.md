@@ -3,7 +3,7 @@ title: Azure CLI 指令碼範例
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 用來建立及管理 Azure SQL Database 和 Azure SQL 受控執行個體的 Azure CLI 指令碼範例
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251501"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982741"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>用於 Azure SQL Database 和 SQL 受控執行個體的 Azure CLI 範例 
  
@@ -35,7 +35,7 @@ ms.locfileid: "85251501"
 
 下表包含用來管理 Azure SQL Database 中單一和集區資料庫的 Azure CLI 指令碼範例連結。 
 
-| | |
+|區域|描述|
 |---|---|
 |**在 Azure SQL Database 中建立資料庫**||
 | [建立單一資料庫並設定防火牆規則](scripts/create-and-configure-database-cli.md) | 建立 SQL Database 並設定伺服器層級防火牆規則。 |
@@ -63,7 +63,7 @@ ms.locfileid: "85251501"
 
 下表包含適用於 Azure SQL 受控執行個體的 Azure CLI 指令碼範例連結。
 
-| | |
+|區域|描述|
 |---|---|
 | **建立 SQL 受控執行個體**||
 | [建立 SQL 受控執行個體](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| 建立 SQL 受控執行個體。 |

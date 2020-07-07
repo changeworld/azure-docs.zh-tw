@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535701"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>針對 Azure App Service 購買自訂網域名稱
@@ -18,7 +18,7 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 若為 Azure VM 或 Azure 儲存體，請參閱[將 App Service 網域指派給 Azure VM 或 Azure 儲存體](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage)。 若為雲端服務，請參閱[設定 Azure 雲端服務的自訂網域名稱](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -140,7 +140,7 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 > 您自訂網域的「**不安全**」標籤表示它尚未系結至 TLS/SSL 憑證，而從瀏覽器到您自訂網域的任何 HTTPS 要求都會收到錯誤或警告（視瀏覽器而定）。 若要設定 TLS 系結，請參閱[Azure App Service 中的使用 tls/SSL 系結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
 >
 
-若要測試主機名稱，請在瀏覽器中瀏覽至列出的主機名稱。 在上述螢幕擷取畫面的範例中，請嘗試流覽至_kontoso.net_和_www\.kontoso.net_。
+若要測試主機名稱，請在瀏覽器中瀏覽至列出的主機名稱。 在上述螢幕擷取畫面的範例中，請嘗試流覽至_kontoso.net_和_www \. kontoso.net_。
 
 ## <a name="assign-hostnames-to-app"></a>將主機名稱指派給應用程式
 
@@ -165,18 +165,18 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 >
 >
 
-選取 [新增主機名稱]****。
+選取 [新增主機名稱]  。
 
 ### <a name="configure-hostname"></a>設定主機名稱
 在 [新增主機名稱]**** 對話方塊中，輸入 App Service 網域或任何子網域的完整網域名稱。 例如：
 
 - kontoso.net
-- www\.kontoso.net
+- www \. kontoso.net
 - abc.kontoso.net
 
 完成之後，請選取 [驗證]****。 系統會自動為您選取主機名稱記錄類型。
 
-選取 [新增主機名稱]****。
+選取 [新增主機名稱]  。
 
 作業完成之後，您會看到成功指派主機名稱的通知。  
 
@@ -235,7 +235,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 ### <a name="open-app-service-domain"></a>開啟 App Service 網域
 
-在 Azure 入口網站中，從左側功能表中選取 [**所有服務** > ] [**App Service 網域**]。
+在 Azure 入口網站中，從左側功能表中選取 [**所有服務**] [  >  **App Service 網域**]。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 ### <a name="open-app-service-domain"></a>開啟 App Service 網域
 
-在 Azure 入口網站中，從左側功能表中選取 [**所有服務** > ] [**App Service 網域**]。
+在 Azure 入口網站中，從左側功能表中選取 [**所有服務**] [  >  **App Service 網域**]。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -269,7 +269,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 您必須先刪除所有主機名稱繫結，才能刪除 App Service 網域。
 
-選取 [ **...** ]，以刪除每個主機名稱的系結 > **刪除**。 刪除所有繫結之後，請選取 [儲存]****。
+選取 [ **...**  >  ]，以刪除每個主機名稱的系結**刪除**。 刪除所有繫結之後，請選取 [儲存]****。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 

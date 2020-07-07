@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792036"
 ---
 # <a name="conditional-cognitive-skill"></a>條件式認知技能
@@ -72,7 +72,7 @@ Microsoft.Skills.Util.ConditionalSkill
         "= !true"
     ```
 
--   使用數值運算子（+、-、 \*、/、%）的運算式 <br/>
+-   使用數值運算子（+、-、 \* 、/、%）的運算式 <br/>
     範例： 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -87,9 +87,9 @@ Microsoft.Skills.Util.ConditionalSkill
 
 | 輸入   | 描述 |
 |-------------|-------------|
-| condition (條件)   | 此輸入是一個[評估的欄位](#evaluated-fields)，代表要評估的條件。 此條件應評估為布林值（*true*或*false*）。   <br/>  範例： <br/> "= true" <br/> "= $ （/document/language） = = ' fr '" <br/> "= $ （/document/pages/\*/language） = = $ （/document/expectedLanguage）" <br/> |
-| whenTrue    | 如果條件評估為*true*，則此輸入是一個已[評估的欄位](#evaluated-fields)，代表要傳回的值。 常數位符串應該以單引號（' 和 '）來傳回。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/\*）" <br/> |
-| whenFalse   | 如果條件評估為*false*，則此輸入是一個[評估的欄位](#evaluated-fields)，代表要傳回的值。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/\*）" <br/>
+| condition (條件)   | 此輸入是一個[評估的欄位](#evaluated-fields)，代表要評估的條件。 此條件應評估為布林值（*true*或*false*）。   <br/>  範例： <br/> "= true" <br/> "= $ （/document/language） = = ' fr '" <br/> "= $ （/document/pages/ \* /language） = = $ （/document/expectedLanguage）" <br/> |
+| whenTrue    | 如果條件評估為*true*，則此輸入是一個已[評估的欄位](#evaluated-fields)，代表要傳回的值。 常數位符串應該以單引號（' 和 '）來傳回。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/ \* ）" <br/> |
+| whenFalse   | 如果條件評估為*false*，則此輸入是一個[評估的欄位](#evaluated-fields)，代表要傳回的值。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/ \* ）" <br/>
 
 ## <a name="skill-outputs"></a>技能輸出
 有一個簡單的輸出，就是所謂的「輸出」。 如果條件為 false，則會傳回*whenFalse*值，如果條件為 true，則傳回*whenTrue* 。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: c5f01a00d70869882d3d3398607ecfebbfd54417
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82209072"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上 Apache Hadoop 服務所使用的連接埠
@@ -34,7 +34,7 @@ HDInsight 是由在 Azure 虛擬網路上執行的數個 Azure 虛擬機器（�
 
 HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法直接從網際網路存取。 公用閘道提供下列連接埠 (常見於所有的 HDInsight 叢集類型) 的網際網路存取。
 
-| Service | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |將用戶端連接到主要前端節點上的 sshd。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
 | sshd |22 |SSH |將用戶端連接至邊緣節點上的 sshd。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
@@ -47,7 +47,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 下列各項適用於特定叢集類型︰
 
-| Service | 連接埠 | 通訊協定 | 叢集類型 | 描述 |
+| 服務 | 連接埠 | 通訊協定 | 叢集類型 | 描述 |
 | --- | --- | --- | --- | --- |
 | `Stargate` |443 |HTTPS |hbase |HBase REST API。 請參閱[開始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API。 請參閱[使用 Apache Livy 從遠端提交 Apache Spark 作業](spark/apache-spark-livy-rest-interface.md) |
@@ -59,7 +59,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 在網際網路上公開的所有服務都必須經過驗證︰
 
-| 連接埠 | 認證 |
+| Port | 認證 |
 | --- | --- |
 | 22 或 23 |在叢集建立期間指定的 SSH 使用者認證 |
 | 443 |在叢集建立期間設定的登入名稱 (預設值：admin) 和密碼 |
@@ -74,7 +74,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="ambari"></a>Ambari
 
-| Service | 節點 | 連接埠 | URL 路徑 | 通訊協定 |
+| 服務 | 節點 | Port | URL 路徑 | 通訊協定 |
 | --- | --- | --- | --- | --- |
 | Ambari Web UI | 前端節點 | 8080 | / | HTTP |
 | Ambari REST API | 前端節點 | 8080 | /api/v1 | HTTP |
@@ -85,7 +85,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="hdfs-ports"></a>HDFS 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |前端節點 |30070 |HTTPS |用以檢視狀態的 Web UI |
 | NameNode 中繼資料服務 |前端節點 |8020 |IPC |檔案系統中繼資料 |
@@ -96,7 +96,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="yarn-ports"></a>YARN 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | Resource Manager |前端節點 |8088 |HTTP |適用於 Resource Manager 的 Web UI |
 | Resource Manager |前端節點 |8090 |HTTPS |適用於 Resource Manager 的 Web UI |
@@ -110,20 +110,20 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="hive-ports"></a>Hive 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |前端節點 |10001 |Thrift |要連接到 Hive 的服務 (Thrift/JDBC) |
 | Hive 中繼存放區 |前端節點 |9083 |Thrift |要連接到 Hive 中繼資料的服務 (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | WebHCat 伺服器 |前端節點 |30111 |HTTP |以 HCatalog 和其他 Hadoop 服務為基礎的 Web API |
 
 ### <a name="mapreduce-ports"></a>MapReduce 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | JobHistory |前端節點 |19888 |HTTP |MapReduce JobHistory Web UI |
 | JobHistory |前端節點 |10020 |&nbsp; |MapReduce JobHistory 伺服器 |
@@ -131,21 +131,21 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="oozie"></a>Oozie
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | Oozie 伺服器 |前端節點 |11000 |HTTP |Oozie 服務的 URL |
 | Oozie 伺服器 |前端節點 |11001 |HTTP |Oozie 系統管理的連接埠 |
 
 ### <a name="ambari-metrics"></a>Ambari 度量
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | TimeLine (應用程式歷程記錄) |前端節點 |6188 |HTTP |Timeline 服務 Web UI |
 | TimeLine (應用程式歷程記錄) |前端節點 |30200 |RPC |Timeline 服務 Web UI |
 
 ### <a name="hbase-ports"></a>HBase 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | HMaster |前端節點 |16000 |&nbsp; |&nbsp; |
 | HMaster 資訊 Web UI |前端節點 |16010 |HTTP |HBase 主要 Web UI 的連接埠 |
@@ -154,7 +154,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="kafka-ports"></a>Kafka 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- | --- |
 | Broker |背景工作節點 |9092 |Kafka Wire Protocol (Kafka 有線通訊協定) |用於用戶端通訊 |
 | &nbsp; |Zookeeper 節點 |2181 |&nbsp; |用戶端用於連接至 ZooKeeper 的連接埠 |
@@ -162,7 +162,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路。 節點無法�
 
 ### <a name="spark-ports"></a>Spark 連接埠
 
-| Service | 節點 | 連接埠 | 通訊協定 | URL 路徑 | 描述 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | URL 路徑 | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 伺服器 |前端節點 |10002 |Thrift | &nbsp; | 要連接到 Spark SQL 的服務 (Thrift/JDBC) |
 | Livy 伺服器 | 前端節點 | 8998 | HTTP | &nbsp; | 要執行陳述式、作業和應用程式的服務 |

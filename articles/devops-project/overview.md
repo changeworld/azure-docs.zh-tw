@@ -15,15 +15,15 @@ ms.workload: ''
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233681"
 ---
 # <a name="overview-of-azure-devops-starter"></a>Azure DevOps Starter 的總覽
 
- Azure DevOps Starter 可以讓您輕鬆地開始使用 Azure。 其可協助您只透過幾個快速步驟，就能從 Azure 入口網站中，在所選擇的 Azure 服務上啟動您最喜愛的 app。 
+ Azure DevOps 入門版可供輕鬆地開始使用 Azure。 其可協助您只透過幾個快速步驟，就能從 Azure 入口網站中，在所選擇的 Azure 服務上啟動您最喜愛的 app。 
 
  DevOps Starter 設定了開發、部署和監視應用程式所需的所有專案。 您可以使用 DevOps 入門儀表板來監視程式碼認可、組建和部署，全都是從 Azure 入口網站中的單一視圖來進行。
 

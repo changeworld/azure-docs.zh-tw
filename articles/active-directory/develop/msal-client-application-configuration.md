@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534460"
 ---
 # <a name="application-configuration-options"></a>應用程式設定選項
 
-在您的程式碼中，您會初始化新的公用或機密用戶端應用程式（或 MSAL 的使用者代理程式）來驗證和取得權杖。 當您在 Microsoft 驗證程式庫（MSAL）中初始化用戶端應用程式時，可以設定數個設定選項。 這些選項分成兩個群組：
+在您的程式碼中，您會初始化新的公用或機密用戶端應用程式（或 MSAL.js 的使用者代理程式）來驗證和取得權杖。 當您在 Microsoft 驗證程式庫（MSAL）中初始化用戶端應用程式時，可以設定數個設定選項。 這些選項分成兩個群組：
 
 - 註冊選項，包括：
     - [授權](#authority)單位（包含應用程式的身分識別提供者[實例](#cloud-instance)和登入物件，可能是租[使用者](#application-audience)識別碼）。
@@ -35,10 +35,10 @@ ms.locfileid: "81534460"
 
 授權單位是一個 URL，表示 MSAL 可以向其要求權杖的目錄。 常見的授權：
 
-- HTTPs\://login.microsoftonline.com/\<租\>使用者/， &lt;其中&gt;租使用者是 Azure Active Directory （Azure AD）租使用者的租使用者識別碼，或與此 Azure AD 租使用者相關聯的網域。 僅用於登入特定組織的使用者。
-- HTTPs\://login.microsoftonline.com/common/。 用來登入具有公司和學校帳戶或個人 Microsoft 帳戶的使用者。
-- HTTPs\://login.microsoftonline.com/organizations/。 用來以公司和學校帳戶登入使用者。
-- HTTPs\://login.microsoftonline.com/consumers/。 用來僅使用個人 Microsoft 帳戶（先前稱為 Windows Live ID 帳戶）登入使用者。
+- HTTPs \: //login.microsoftonline.com/ \<tenant\> /，其中 &lt; 租使用者 &gt; 是 Azure Active Directory （Azure AD）租使用者的租使用者識別碼，或與此 Azure AD 租使用者相關聯的網域。 僅用於登入特定組織的使用者。
+- HTTPs \: //login.microsoftonline.com/common/。 用來登入具有公司和學校帳戶或個人 Microsoft 帳戶的使用者。
+- HTTPs \: //login.microsoftonline.com/organizations/。 用來以公司和學校帳戶登入使用者。
+- HTTPs \: //login.microsoftonline.com/consumers/。 用來僅使用個人 Microsoft 帳戶（先前稱為 Windows Live ID 帳戶）登入使用者。
 
 授權設定必須與應用程式註冊入口網站中宣告的內容一致。
 
@@ -59,11 +59,11 @@ Azure AD 的雲端授權單位有兩個部分：
 
 ## <a name="cloud-instance"></a>雲端實例
 
-*實例*是用來指定您的應用程式是從 Azure 公用雲端或國家雲端簽署使用者。 在您的程式碼中使用 MSAL，您可以使用列舉來設定 Azure 雲端實例，或以`Instance`成員的身分傳遞「[國家/地區」雲端實例](authentication-national-cloud.md#azure-ad-authentication-endpoints)的 URL （如果您知道的話）。
+*實例*是用來指定您的應用程式是從 Azure 公用雲端或國家雲端簽署使用者。 在您的程式碼中使用 MSAL，您可以使用列舉來設定 Azure 雲端實例，或以成員的身分傳遞「[國家/地區」雲端實例](authentication-national-cloud.md#azure-ad-authentication-endpoints)的 URL `Instance` （如果您知道的話）。
 
-如果同時`Instance`指定和， `AzureCloudInstance`則 MSAL.NET 會擲回明確的例外狀況。
+如果同時指定和，則 MSAL.NET 會擲回明確的例外狀況 `Instance` `AzureCloudInstance` 。
 
-如果您未指定實例，您的應用程式將會以 Azure 公用雲端實例（URL `https://login.onmicrosoftonline.com`的實例）為目標。
+如果您未指定實例，您的應用程式將會以 Azure 公用雲端實例（URL 的實例 `https://login.onmicrosoftonline.com` ）為目標。
 
 ## <a name="application-audience"></a>應用程式物件
 
@@ -85,15 +85,15 @@ Azure AD 的雲端授權單位有兩個部分：
 
 如果您同時指定 Azure AD 授權物件和租使用者識別碼，則 MSAL 會擲回有意義的例外狀況。
 
-如果您未指定物件，您的應用程式將以 Azure AD 和個人 Microsoft 帳戶作為目標物件。 （也就是，它的行為就`common`如同指定了）。
+如果您未指定物件，您的應用程式將以 Azure AD 和個人 Microsoft 帳戶作為目標物件。 （也就是，它的行為就如同 `common` 指定了）。
 
 ### <a name="effective-audience"></a>有效物件
 
 您的應用程式的有效物件將是您在應用程式中設定之物件的最小值（如果有交集），以及應用程式註冊中指定的物件。 事實上，[應用程式註冊](https://aka.ms/appregistrations)體驗可讓您指定應用程式的物件（支援的帳戶類型）。 如需詳細資訊，請參閱[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](quickstart-register-app.md)。
 
 目前，只有個人 Microsoft 帳戶才能取得應用程式登入使用者的唯一方式，就是設定這兩項設定：
-- 將應用程式註冊物件設定`Work and school accounts and personal accounts`為。
-- 將程式碼/設定中的物件設`AadAuthorityAudience.PersonalMicrosoftAccount`為（ `TenantID`或 = 「取用者」）。
+- 將應用程式註冊物件設定為 `Work and school accounts and personal accounts` 。
+- 將程式碼/設定中的物件設為 `AadAuthorityAudience.PersonalMicrosoftAccount` （或 = 「取用 `TenantID` 者」）。
 
 ## <a name="client-id"></a>用戶端識別碼
 
@@ -106,21 +106,21 @@ Azure AD 的雲端授權單位有兩個部分：
 ### <a name="redirect-uri-for-public-client-apps"></a>公用用戶端應用程式的重新導向 URI
 
 如果您是使用 MSAL 的公用用戶端應用程式開發人員：
-- 您想要在桌面`.WithDefaultRedirectUri()`或 UWP 應用程式中使用（MSAL.NET 4.1 +）。 這個方法會將公用用戶端應用程式的 [重新導向 uri] 屬性設定為公用用戶端應用程式的預設建議重新導向 uri。
+- 您想要 `.WithDefaultRedirectUri()` 在桌面或 UWP 應用程式中使用（MSAL.NET 4.1 +）。 這個方法會將公用用戶端應用程式的 [重新導向 uri] 屬性設定為公用用戶端應用程式的預設建議重新導向 uri。
 
   平台  | 重新導向 URI
   ---------  | --------------
   桌面應用程式（.NET FW） | `https://login.microsoftonline.com/common/oauth2/nativeclient`
-  UWP | 的`WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`值。 這會將值設定為您需要註冊的 WebAuthenticationBroker GetCurrentApplicationCallbackUri （）結果，以啟用瀏覽器的 SSO
+  UWP | 的值 `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 。 這會將值設定為您需要註冊的 WebAuthenticationBroker GetCurrentApplicationCallbackUri （）結果，以啟用瀏覽器的 SSO
   .NET Core | `https://localhost`. 這可讓使用者使用系統瀏覽器進行互動式驗證，因為 .NET Core 目前沒有內嵌 web 視圖的 UI。
 
-- 如果您要建立不支援 broker 的 Xamarin Android 和 iOS 應用程式，則不需要新增重新導向 URI （在 Xamarin Android 和 iOS 的重新`msal{ClientId}://auth`導向 uri 會自動設定為
+- 如果您要建立不支援 broker 的 Xamarin Android 和 iOS 應用程式，則不需要新增重新導向 URI （在 `msal{ClientId}://auth` Xamarin android 和 ios 的重新導向 uri 會自動設定為
 
 - 您必須在[應用程式註冊](https://aka.ms/appregistrations)中設定重新導向 URI：
 
    ![應用程式註冊中的重新導向 URI](media/msal-client-application-configuration/redirect-uri.png)
 
-您可以使用`RedirectUri`屬性（例如，如果您使用訊息代理程式）來覆寫重新導向 URI。 以下是該案例的一些重新導向 Uri 範例：
+您可以使用 `RedirectUri` 屬性（例如，如果您使用訊息代理程式）來覆寫重新導向 URI。 以下是該案例的一些重新導向 Uri 範例：
 
 - `RedirectUriOnAndroid`= "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc：//com.microsoft.identity.client.sample";
 - `RedirectUriOnIos`= $ "msauth。{配套識別碼}：//auth ";
@@ -145,4 +145,4 @@ Azure AD 的雲端授權單位有兩個部分：
 ## <a name="next-steps"></a>後續步驟
 
 瞭解如何[使用 MSAL.NET 來具現化用戶端應用程式](msal-net-initializing-client-applications.md)。
-瞭解如何[使用 MSAL 來具現化用戶端應用程式](msal-js-initializing-client-applications.md)。
+瞭解如何[使用 MSAL.js來具現化用戶端應用程式](msal-js-initializing-client-applications.md)。

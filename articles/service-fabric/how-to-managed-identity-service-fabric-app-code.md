@@ -4,10 +4,10 @@ description: 如何在 Azure 中使用受控識別 Service Fabric 應用程式�
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461560"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 應用程式的受控識別來存取 Azure 服務
@@ -52,8 +52,8 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 | ------- | ----------- |
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | 透過 IDENTITY_ENDPOINT 環境變數提供 Service Fabric 應用程式的受控識別端點。 |
-| `api-version` | 查詢字串參數，指定受控識別權杖服務的 API 版本;目前唯一接受的值是`2019-07-01-preview`，而且可能會變更。 |
-| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 這會反映為所發行`aud`權杖的（物件）宣告。 此範例會要求權杖來存取 Azure Key Vault，其應用程式識別碼 URI 為 HTTPs：\//vault.azure.net/。 |
+| `api-version` | 查詢字串參數，指定受控識別權杖服務的 API 版本;目前唯一接受的值是 `2019-07-01-preview` ，而且可能會變更。 |
+| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 這會反映為 `aud` 所發行權杖的（物件）宣告。 此範例會要求權杖來存取 Azure Key Vault，其應用程式識別碼 URI 為 HTTPs： \/ /vault.azure.net/。 |
 | `Secret` | Service Fabric 服務的 Service Fabric 受控識別權杖服務所需的 HTTP 要求標頭欄位，用來驗證呼叫者。 此值是由 SF 執行時間透過 IDENTITY_HEADER 環境變數提供。 |
 
 
@@ -73,9 +73,9 @@ Content-Type: application/json
 | 元素 | 描述 |
 | ------- | ----------- |
 | `token_type` | Token 的類型;在此情況下，就是「持有人」存取權杖，這表示此權杖的展示者（「持有人」）是權杖的預定主旨。 |
-| `access_token` | 要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
-| `expires_on` | 存取權杖的到期時間戳記;以 "1970-01-01T0：0： 0Z UTC" 的秒數表示，並對應至權杖的`exp`宣告。 在此情況下，此權杖會在 2019-08-08T06：10： 11 + 00：00（在 RFC 3339 中）到期|
-| `resource` | 發出存取權杖的資源（透過要求的`resource`查詢字串參數指定）;對應至權杖的 ' aud ' 宣告。 |
+| `access_token` | 所要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
+| `expires_on` | 存取權杖的到期時間戳記;以 "1970-01-01T0：0： 0Z UTC" 的秒數表示，並對應至權杖的宣告 `exp` 。 在此情況下，此權杖會在 2019-08-08T06：10： 11 + 00：00（在 RFC 3339 中）到期|
+| `resource` | 發出存取權杖的資源（透過 `resource` 要求的查詢字串參數指定）; 對應至權杖的 ' aud ' 宣告。 |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>使用 C 取得存取權杖#
@@ -336,7 +336,7 @@ HTTP 回應標頭的 [狀態碼] 欄位會指出要求的成功狀態。「200�
 | ------- | ----------- |
 | code | 錯誤碼。 |
 | correlationId | 可用於進行偵錯工具的相互關聯識別碼。 |
-| 訊息 | 錯誤的詳細資訊描述。 **錯誤描述可以隨時變更。不依賴錯誤訊息本身。**|
+| message | 錯誤的詳細資訊描述。 **錯誤描述可以隨時變更。不依賴錯誤訊息本身。**|
 
 範例錯誤：
 ```json

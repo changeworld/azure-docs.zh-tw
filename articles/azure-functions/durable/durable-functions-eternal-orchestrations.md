@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478813"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的永久性協調流程
@@ -22,7 +22,7 @@ ms.locfileid: "80478813"
 
 ## <a name="resetting-and-restarting"></a>重設和重新啟動
 
-協調器函式會藉由呼叫[協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結`ContinueAsNew`的（.Net） `continueAsNew`或（JavaScript）方法來重設其狀態，而不是使用無限迴圈。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
+協調器函式會藉由呼叫協調流程觸發程式系結的 `ContinueAsNew` （.net）或 `continueAsNew` （JavaScript）方法[orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)來重設其狀態，而不是使用無限迴圈。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
 
 呼叫 `ContinueAsNew` 時，執行個體在結束之前會將訊息加入其本身的佇列。 此訊息會以新的輸入值來重新啟動執行個體。 相同的執行個體識別碼會保留下來，但協調器函式的記錄實際上會截斷。
 
@@ -51,7 +51,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -76,10 +76,10 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="starting-an-eternal-orchestration"></a>啟動永久性協調流程
 
-使用`StartNewAsync` （.net）或`startNew` （JavaScript）方法來啟動永久性協調流程，就像任何其他協調流程函數一樣。  
+使用 `StartNewAsync` （.net）或 `startNew` （JavaScript）方法來啟動永久性協調流程，就像任何其他協調流程函數一樣。  
 
 > [!NOTE]
-> 如果您需要確保單一永久性協調流程正在執行，請務必在啟動協調流程時維護相同`id`的實例。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+> 如果您需要確保單一永久性協調流程正在執行，請務必在 `id` 啟動協調流程時維護相同的實例。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -97,7 +97,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> 先前的程式碼適用于 Durable Functions 2.x。 針對 Durable Functions `OrchestrationClient` 1.x，您必須使用屬性，而不是`DurableClient`屬性，而且您必須使用`DurableOrchestrationClient`參數類型，而不是`IDurableOrchestrationClient`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `OrchestrationClient` 屬性，而不是 `DurableClient` 屬性，而且您必須使用 `DurableOrchestrationClient` 參數類型，而不是 `IDurableOrchestrationClient` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -122,7 +122,7 @@ module.exports = async function (context, req) {
 
 如果協調器函式最終一定要完成，則您完全「不」** 需要呼叫 `ContinueAsNew`，讓函式自然結束即可。
 
-如果協調器函式是無限迴圈，而且需要停止，請使用`TerminateAsync` [協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結`terminate`的（.net）或（JavaScript）方法來停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+如果協調器函式是無限迴圈，而且需要停止，請使用 `TerminateAsync` 協調流程用戶端系結的（.net）或 `terminate` （ [orchestration client binding](durable-functions-bindings.md#orchestration-client) JavaScript）方法來停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

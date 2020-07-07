@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6aaaa24535c95e0a0d3f2b67709374c083ab738
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: bc8a416ac930de24e694107bec4f7ac287e15437
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725212"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608886"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AlertMedia 整合
 
@@ -96,12 +96,12 @@ ms.locfileid: "81725212"
     ![image](common/default-attributes.png)
 
 1. 除了上述屬性外，AlertMedia 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
-    
-    | 名稱 |   |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | 電子郵件 |  | user.userprincipalname |
-    | firstname |  | user.givenname |
-    | lastname |  | user.surname |
+
+| 名稱 | 來源屬性|
+| ---- | --------------- |
+| 電子郵件 | user.userprincipalname |
+| firstname | user.givenname |
+| lastname | user.surname |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將資料儲存在您的電腦上。
 

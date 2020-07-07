@@ -4,10 +4,10 @@ description: 取得有關 Azure Migrate 服務常見問題的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81530312"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常見的問題
@@ -53,7 +53,7 @@ Azure Migrate：伺服器遷移工具會使用一些後端 Site Recovery 功能�
 
 ## <a name="which-geographies-are-supported"></a>支援哪些地理位置？
 
-審查適用于[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府](migrate-support-matrix.md#supported-geographies-azure-government)雲端的支援地理位置。
+請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
 ## <a name="how-do-i-get-started"></a>如何開始？
 

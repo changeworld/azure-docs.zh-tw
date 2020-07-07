@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431913"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 金鑰保存庫 .NET 2.0 - 版本資訊和移轉指南
@@ -49,12 +49,12 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 * *Secret* 已變更為 *SecretBundle*
 * *Dictionary* 已變更為 *IDictionary*
-* *List\<t>，string []* 已變更*為\<IList T>*
+* *List\<T>, string []* 已變更為 *IList\<T>*
 * *NextList* 已變更為 *NextPageLink*
 
 ## <a name="return-types"></a>傳回類型
 
-* **KeyList**和**SecretList**現在會*傳回\<IPage T>* ，而不是*非 listkeysresponsemessage*
+* **KeyList** 和 **SecretList** 現在會傳回 IPage\<T>**，而非 ListKeysResponseMessage**
 * 產生的 **BackupKeyAsync** 現在會傳回 BackupKeyResult**，其包含 Value** (備份 Blob)。 此方法在過去會進行包裝並只傳回值。
 
 ## <a name="exceptions"></a>例外狀況

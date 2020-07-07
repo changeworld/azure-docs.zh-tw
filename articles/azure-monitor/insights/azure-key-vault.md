@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455439"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure 監視器中的 Azure Key Vault 分析解決方案
@@ -40,17 +40,17 @@ ms.locfileid: "81455439"
 2. 選取 [*診斷設定*] 以開啟下列頁面
 
    ![Azure 金鑰保存庫圖格的影像](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
-3. 按一下 [開啟診斷]** 以開啟下列頁面
+3. 按一下 [開啟診斷] 以開啟下列頁面
 
    ![Azure 金鑰保存庫圖格的影像](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. 提供診斷設定的名稱。
-5. 按一下 [傳送到 Log Analytics]** 核取方塊
+5. 按一下 [傳送到 Log Analytics] 核取方塊
 6. 選取現有的 Log Analytics 工作區，或建立工作區
 7. 若要啟用 *AuditEvent* 記錄，請按一下 [記錄] 下的核取方塊
 8. 按一下 [*儲存*]，以啟用 Log Analytics 工作區的診斷記錄。
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>使用 PowerShell 啟用 Key Vault 診斷
-下列 PowerShell 腳本提供如何使用`Set-AzDiagnosticSetting`來啟用 Key Vault 資源記錄的範例：
+下列 PowerShell 腳本提供如何使用 `Set-AzDiagnosticSetting` 來啟用 Key Vault 資源記錄的範例：
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -114,7 +114,7 @@ Azure 金鑰保存庫解決方案會分析從 Azure 診斷的 [AuditEvent 記錄
 | `ResourceGroup` |金鑰保存庫的資源群組 |
 | `ResourceId` |Azure 資源管理員資源識別碼。 對於 Key Vault 記錄來說，這是 Key Vault 的資源識別碼。 |
 | `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceType` | *庫* |
 | `ResultSignature` |HTTP 狀態 (例如 *OK*) |
 | `ResultType` |REST API 要求的結果 (例如 *Success*) |
 | `SubscriptionId` |包含金鑰保存庫的訂用帳戶的 Azure 訂用帳戶識別碼 |

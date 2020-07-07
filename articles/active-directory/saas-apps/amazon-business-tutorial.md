@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772982"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608937"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教學課程：整合 Amazon Business 與 Azure Active Directory
 
@@ -33,7 +33,7 @@ ms.locfileid: "83772982"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -85,7 +85,7 @@ ms.locfileid: "83772982"
 
     1. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列其中一個模式輸入 URL：
     
-       | | |
+       | URL | 區域 |
        |-|-|
        | `https://www.amazon.com`| 北美洲 |
        | `https://www.amazon.co.jp`| 東亞 |
@@ -93,7 +93,7 @@ ms.locfileid: "83772982"
 
     1. 在 [回覆 URL] 文字方塊中，以下列其中一個模式輸入 URL：
     
-       | | |
+       | URL | 區域 |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 北美洲 |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 東亞 |
@@ -217,7 +217,7 @@ ms.locfileid: "83772982"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下 [建立]。
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 入口網站中建立 Azure AD 安全性群組
 

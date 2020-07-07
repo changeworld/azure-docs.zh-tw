@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793358"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 認知搜尋中的 OData 全文檢索搜尋功能- `search.ismatch`和`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 認知搜尋中的 OData 全文檢索搜尋功能- `search.ismatch` 和`search.ismatchscoring`
 
-Azure 認知搜尋支援透過`search.ismatch`和`search.ismatchscoring`函式，在[OData 篩選運算式](query-odata-filter-orderby-syntax.md)的內容中進行全文檢索搜尋。 這些函數可讓您使用`search` [搜尋 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)的最上層參數，以不可能的方式，將全文檢索搜尋與嚴格的布林值篩選結合。
+Azure 認知搜尋支援透過和函式，在[OData 篩選運算式](query-odata-filter-orderby-syntax.md)的內容中進行全文檢索搜尋 `search.ismatch` `search.ismatchscoring` 。 這些函數可讓您使用 `search` [搜尋 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)的最上層參數，以不可能的方式，將全文檢索搜尋與嚴格的布林值篩選結合。
 
 > [!NOTE]
-> 只有`search.ismatch`在`search.ismatchscoring` [搜尋 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)的篩選中才支援和函數。 [建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)或[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)api 不支援它們。
+> `search.ismatch`只有在 `search.ismatchscoring` [搜尋 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)的篩選中才支援和函數。 [建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)或[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)api 不支援它們。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義`search.ismatch`和`search.ismatchscoring`函式的文法：
+下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義和函式的 `search.ismatch` 文法 `search.ismatchscoring` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,7 +61,7 @@ search_mode ::= "'any'" | "'all'"
 
 ### <a name="searchismatch"></a>搜尋. ismatch
 
-`search.ismatch`函數會將全文檢索搜尋查詢評估為篩選運算式的一部分。 符合搜尋查詢的文件將會在結果集中傳回。 此函式有下列多載可供使用：
+函數會將 `search.ismatch` 全文檢索搜尋查詢評估為篩選運算式的一部分。 符合搜尋查詢的文件將會在結果集中傳回。 此函式有下列多載可供使用：
 
 - `search.ismatch(search)`
 - `search.ismatch(search, searchFields)`
@@ -72,27 +72,27 @@ search_mode ::= "'any'" | "'all'"
 | 參數名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 搜尋查詢（[簡單](query-simple-syntax.md)或[完整](query-lucene-syntax.md)的 Lucene 查詢語法）。 |
-| `searchFields` | `Edm.String` | 以逗號分隔的清單，其中列出要搜尋的可搜尋欄位;預設為索引中所有可搜尋的欄位。 在`search`參數中使用[回復搜尋](query-lucene-syntax.md#bkmk_fields)時，Lucene 查詢中的欄位規範會覆寫此參數中指定的任何欄位。 |
-| `queryType` | `Edm.String` | `'simple'`或`'full'`;預設為`'simple'`。 指定 `search` 參數中使用的查詢語言。 |
-| `searchMode` | `Edm.String` | `'any'`或者`'all'`，預設為`'any'`。 指出是否必須符合`search`參數中的任何或所有搜尋詞彙，才能將檔計為相符的。 在`search`參數中使用[Lucene 布林運算子](query-lucene-syntax.md#bkmk_boolean)時，它們的優先順序高於此參數。 |
+| `searchFields` | `Edm.String` | 以逗號分隔的清單，其中列出要搜尋的可搜尋欄位;預設為索引中所有可搜尋的欄位。 在參數中使用[回復搜尋](query-lucene-syntax.md#bkmk_fields)時 `search` ，Lucene 查詢中的欄位規範會覆寫此參數中指定的任何欄位。 |
+| `queryType` | `Edm.String` | `'simple'`或 `'full'` ; 預設為 `'simple'` 。 指定 `search` 參數中使用的查詢語言。 |
+| `searchMode` | `Edm.String` | `'any'`或者 `'all'` ，預設為 `'any'` 。 指出是否必須符合參數中的任何或所有搜尋詞彙，才能將 `search` 檔計為相符的。 在參數中使用[Lucene 布林運算子](query-lucene-syntax.md#bkmk_boolean)時 `search` ，它們的優先順序高於此參數。 |
 
 上述所有參數都相當於[搜尋 API 中對應的搜尋要求參數](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
-`search.ismatch`函式會傳回類型`Edm.Boolean`的值，這可讓您使用布林[邏輯運算子](search-query-odata-logical-operators.md)，以其他篩選子運算式來撰寫它。
+函式 `search.ismatch` 會傳回類型的值 `Edm.Boolean` ，這可讓您使用布林[邏輯運算子](search-query-odata-logical-operators.md)，以其他篩選子運算式來撰寫它。
 
 > [!NOTE]
-> Azure 認知搜尋不支援在 lambda `search.ismatch`運算式`search.ismatchscoring`中使用或。 這表示您無法對物件集合寫入篩選器，以便將全文檢索搜尋相符專案與相同物件上的嚴格篩選準則相符相互關聯。 如需這項限制和範例的詳細資訊，請參閱針對[Azure 認知搜尋中的集合篩選進行疑難排解](search-query-troubleshoot-collection-filters.md)。 如需這項限制的原因更深入的資訊，請參閱[瞭解 Azure 認知搜尋中的集合篩選](search-query-understand-collection-filters.md)。
+> Azure 認知搜尋不支援 `search.ismatch` `search.ismatchscoring` 在 lambda 運算式中使用或。 這表示您無法對物件集合寫入篩選器，以便將全文檢索搜尋相符專案與相同物件上的嚴格篩選準則相符相互關聯。 如需這項限制和範例的詳細資訊，請參閱針對[Azure 認知搜尋中的集合篩選進行疑難排解](search-query-troubleshoot-collection-filters.md)。 如需這項限制的原因更深入的資訊，請參閱[瞭解 Azure 認知搜尋中的集合篩選](search-query-understand-collection-filters.md)。
 
 
 ### <a name="searchismatchscoring"></a>搜尋. ismatchscoring
 
-`search.ismatchscoring`函式（例如`search.ismatch`函式）會`true`針對符合當做參數傳遞之全文檢索搜尋查詢的檔傳回。 兩者的差別在於，符合 `search.ismatchscoring` 查詢的文件所得到的相關性分數將對整體的文件分數產生貢獻，而 `search.ismatch` 則不會變更文件分數。 此函式的下列多載可與等同於 `search.ismatch` 參數的參數搭配使用：
+函式（例如函式 `search.ismatchscoring` `search.ismatch` ） `true` 會針對符合當做參數傳遞之全文檢索搜尋查詢的檔傳回。 兩者的差別在於，符合 `search.ismatchscoring` 查詢的文件所得到的相關性分數將對整體的文件分數產生貢獻，而 `search.ismatch` 則不會變更文件分數。 此函式的下列多載可與等同於 `search.ismatch` 參數的參數搭配使用：
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-`search.ismatch`和`search.ismatchscoring`函數都可以在相同的篩選條件運算式中使用。
+`search.ismatch`和函數都 `search.ismatchscoring` 可以在相同的篩選條件運算式中使用。
 
 ## <a name="examples"></a>範例
 
@@ -110,7 +110,7 @@ search_mode ::= "'any'" | "'all'"
 
 尋找含有「海景」一詞或評分為 5 的文件。 `search.ismatchscoring` 查詢只會對欄位 `HotelName` 和 `Rooms/Description` 執行。
 
-只會傳回比對之第二個子句相符的檔，也會傳回`Rating`等於5的飯店。 為了清楚說明這些檔不符合運算式的任何計分部分，它們會傳回，分數等於零。
+只會傳回比對之第二個子句相符的檔，也會傳回 `Rating` 等於5的飯店。 為了清楚說明這些檔不符合運算式的任何計分部分，它們會傳回，分數等於零。
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 

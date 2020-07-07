@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72886996"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 的使用者體驗
@@ -67,7 +67,7 @@ IT 人員可以遵循[解除封鎖使用者](howto-identity-protection-remediate
 
 1. 使用者獲知其帳戶安全性因為可疑活動或認證外洩而有風險。
    
-    ![補救](./media/concept-identity-protection-user-experience/101.png)
+    ![修復](./media/concept-identity-protection-user-experience/101.png)
 
 1. 使用者必須使用其先前註冊的其中一個方法來完成 Azure MFA，以證明其身分識別。 
 1. 最後，使用者會被迫使用自助式密碼重設來變更其密碼，因為其他人可能有其帳戶的存取權。
@@ -80,7 +80,7 @@ IT 人員可以遵循[解除封鎖使用者](howto-identity-protection-remediate
 
 IT 人員可以遵循[解除封鎖使用者](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk)，讓使用者重新登入一節中的指示。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [補救風險並解除封鎖使用者](howto-identity-protection-remediate-unblock.md)
 

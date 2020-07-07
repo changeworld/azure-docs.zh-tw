@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1184129783b448cb2d6dc22e488ffe38401a1218
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0dddb07d394dfd3ec15b6377d283420112233a5e
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72264121"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608903"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ADP Globalview 整合
 
@@ -85,11 +85,11 @@ ms.locfileid: "72264121"
     
     在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.globalview.adp.com/federate`|
-    | `https://<subdomain>.globalview.adp.com/federate2`|
-    | |
+    ```https
+    https://<subdomain>.globalview.adp.com/federate
+    https://<subdomain>.globalview.adp.com/federate2
+    ```
+
 
     > [!NOTE]
     > 這不是真實的值。 請使用實際的「識別碼」來更新此值。 請連絡 [ADP Globalview 用戶端支援小組](https://www.adp.com/contact-us/overview.aspx)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

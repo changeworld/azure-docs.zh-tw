@@ -8,22 +8,22 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454232"
 ---
 # <a name="manage-server-administrators"></a>管理伺服器管理員
 
 對於伺服器所在的租用戶，伺服器管理員必須是 Azure Active Directory (Azure AD) 中有效的使用者或安全性群組。 在 Azure 入口網站、SSMS 的 [伺服器屬性]、PowerShell 或 REST API 中，您可以使用伺服器的 **Analysis Services 管理員**來管理伺服器管理員。 
 
-新增**安全性群組**時，請使用`obj:groupid@tenantid`。
+新增**安全性群組**時，請使用 `obj:groupid@tenantid` 。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 入口網站來新增伺服器管理員
 
 1. 在入口網站中，針對您的伺服器按一下 [Analysis Services 管理員]****。
-2. 在 [ ** \<servername>-Analysis Services Admins**] 中，按一下 [**新增**]。
+2. 在** \<servername> Analysis Services**的系統管理員中，按一下 [**新增**]。
 3. 在 [新增伺服器管理員]**** 中，選取 Azure AD 中的使用者帳戶，或透過電子郵件地址邀請外部使用者。
 
     ![Azure 入口網站的伺服器管理員](./media/analysis-services-server-admins/aas-manage-users-admins.png)

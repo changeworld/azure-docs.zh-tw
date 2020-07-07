@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437003"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>將 Apache Kafka 工作負載遷移至 Azure HDInsight 4。0
@@ -54,7 +54,7 @@ HDInsight 3.6 支援兩種版本的 Kafka：1.0.0 和1.1.0。 HDInsight 4.0 支�
 
 ## <a name="kafka-client-compatibility"></a>Kafka 用戶端相容性
 
-新的 Kafka 訊息代理程式支援較舊的用戶端。 [略過 k-35-正在取得通訊協定版本](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version)引進了動態判斷 Kafka 訊息代理[程式和略過 k-97 功能的機制：改良的 KAFKA 用戶端 RPC 相容性原則](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy)引進了新的相容性原則，並保證 JAVA 用戶端。 在過去，Kafka 用戶端必須與相同版本或更新版本的 broker 進行互動。 現在，較新版本的 JAVA 用戶端和其他支援略過 K-35 （例如） `librdkafka`的用戶端會切換回舊版的要求類型，如果無法使用功能，則會擲回適當的錯誤。
+新的 Kafka 訊息代理程式支援較舊的用戶端。 [略過 k-35-正在取得通訊協定版本](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version)引進了動態判斷 Kafka 訊息代理[程式和略過 k-97 功能的機制：改良的 KAFKA 用戶端 RPC 相容性原則](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy)引進了新的相容性原則，並保證 JAVA 用戶端。 在過去，Kafka 用戶端必須與相同版本或更新版本的 broker 進行互動。 現在，較新版本的 JAVA 用戶端和其他支援略過 K-35 （例如）的用戶端 `librdkafka` 會切換回舊版的要求類型，如果無法使用功能，則會擲回適當的錯誤。
 
 ![升級 Kafka 用戶端相容性](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 
@@ -85,4 +85,4 @@ HDInsight 3.6 支援兩種版本的 Kafka：1.0.0 和1.1.0。 HDInsight 4.0 支�
 ## <a name="next-steps"></a>後續步驟
 
 * [Apache Kafka HDInsight 叢集的效能最佳化](apache-kafka-performance-tuning.md)
-* [快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Kafka 叢集](apache-kafka-get-started.md)
+* [快速入門：在 Azure HDInsight 中使用 Azure 入口網站建立 Apache Kafka 叢集](apache-kafka-get-started.md)

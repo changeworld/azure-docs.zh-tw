@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460115"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>在隔離的網路上 Azure 磁碟加密
@@ -47,7 +47,7 @@ Azure 磁碟加密取決於許多元件，通常會在啟用 ADE 的過程中安
 
 ### <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務 
 
-虛擬機器必須能夠存取[Azure 實例中繼資料服務](instance-metadata-service.md)端點，其使用的是已知且無法路由傳送的 IP 位址（`169.254.169.254`），且只能從 VM 記憶體取。  不支援將本機 HTTP 流量更改為此位址的 Proxy 設定（例如，新增 X 轉送的標頭）。
+虛擬機器必須能夠存取[Azure 實例中繼資料服務](instance-metadata-service.md)端點，其使用的是已知且無法路由傳送的 IP 位址（）， `169.254.169.254` 且只能從 VM 記憶體取。  不支援將本機 HTTP 流量更改為此位址的 Proxy 設定 (例如，新增 X-Forwarded-For 標頭)。
 
 ## <a name="next-steps"></a>後續步驟
 

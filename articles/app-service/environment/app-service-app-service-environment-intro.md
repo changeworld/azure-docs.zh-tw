@@ -1,6 +1,6 @@
 ---
 title: ASE v1 簡介
-description: 瞭解 App Service 環境 v1 功能。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 瞭解 App Service 環境 v1 功能。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478739"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service 環境 v1 簡介
@@ -19,7 +19,7 @@ ms.locfileid: "80478739"
 > [!NOTE]
 > 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 App Service 環境是[Azure App Service](../overview.md)的[高階服務方案][PremiumTier]選項，可提供完全隔離且專用的環境，以便安全地大規模執行 Azure App Service 應用程式，包括 Web Apps、Mobile Apps 和 API Apps。  
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901406"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565834"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教學課程：從 Power Apps 查詢認知搜尋索引
 
@@ -74,7 +74,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
    * 選取動詞 `GET`
 
-   * 在 [URL] 中輸入搜尋索引的範例查詢 (`search=*` 會傳回所有文件，`$select=` 則可讓您選擇欄位)。 需要 API 版本。 完整指定的 URL 可能如下所示：`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * 在 [URL] 中輸入搜尋索引的範例查詢 (`search=*` 會傳回所有文件，`$select=` 則可讓您選擇欄位)。 需要 API 版本。 完整指定的 URL 可能如下所示：`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * 在 [標頭] 中輸入 `Content-Type`。 
 
@@ -94,7 +94,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="版本參數中繼資料" border="true":::
 
-1. 針對 [api-version]：將 `2019-05-06` 設定為 [預設值]、將 [必要] 設定為 [True]，並將 [可見性] 設定為 [內部]。  
+1. 針對 [api-version]：將 `2020-06-30` 設定為 [預設值]、將 [必要] 設定為 [True]，並將 [可見性] 設定為 [內部]。  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="版本參數中繼資料" border="true":::
 
@@ -106,7 +106,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```

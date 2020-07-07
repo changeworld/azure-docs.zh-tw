@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535684"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>將作用中的 DNS 名稱移轉至 Azure App Service
@@ -21,7 +21,7 @@ ms.locfileid: "81535684"
 
 如果您不擔心 DNS 解析發生停機，請參閱[將現有的自訂 DNS 名稱對應至 Azure App Service](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明：
 
@@ -71,13 +71,13 @@ ms.locfileid: "81535684"
 
 鍵入您新增 TXT 記錄的完整網域名稱，例如 `www.contoso.com`。 針對萬用字元網域 (例如 \*.contoso.com)，您可以使用符合萬用字元網域的任何 DNS 名稱。 
 
-選取 [驗證]  。
+選取 [驗證]。
 
 [新增主機名稱]**** 按鈕會啟用。 
 
 確定將 [主機名稱記錄類型]**** 設定為您要移轉的 DNS 記錄類型。
 
-選取 [新增主機名稱]****。
+選取 [新增主機名稱]  。
 
 ![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "81535684"
 | FQDN 範例 | 記錄類型 | Host | 值 |
 | - | - | - | - |
 | contoso.com (根網域) | A | `@` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 |
-| www\.contoso.com （sub） | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
+| www \. contoso.com （sub） | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
 | \*.contoso.com (萬用字元) | CNAME | _\*_ | _&lt;appname>. azurewebsites.net_ |
 
 儲存您的設定。
@@ -125,7 +125,7 @@ DNS 查詢應該會在 DNS 散佈發生後立即開始解析為 App Service 應�
 
 您可以在 Azure 中的訂用帳戶之間，或在相同的訂用帳戶內遷移作用中的自訂網域。 不過，這類不需停機的遷移需要來源應用程式和目標應用程式在特定時間指派相同的自訂網域。 因此，您必須確定兩個應用程式不會部署到相同的部署單位（在內部稱為網路空間）。 功能變數名稱只能指派給每個部署單位中的一個應用程式。
 
-您可以藉由查看 FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net`的功能變數名稱，尋找應用程式的部署單位。 請檢查並確認來源應用程式與目標應用程式之間的部署單位不同。 應用程式的部署單位取決於其所在的[App Service 方案](overview-hosting-plans.md)。 當您建立方案時，Azure 會隨機選取它，而且無法變更。 只有當您[在相同的資源群組*和*相同的區域中建立](app-service-plan-manage.md#create-an-app-service-plan)兩個方案時，Azure 才會確保兩者在相同的部署單位中，但它不會有任何邏輯可確保方案處於不同的部署單位。 若要在不同的部署單位中建立計畫，唯一的方法是在您取得不同的部署單位之前，在新的資源群組或區域中繼續建立計畫。
+您可以藉由查看 FTP/S URL 的功能變數名稱，尋找應用程式的部署單位 `<deployment-unit>.ftp.azurewebsites.windows.net` 。 請檢查並確認來源應用程式與目標應用程式之間的部署單位不同。 應用程式的部署單位取決於其所在的[App Service 方案](overview-hosting-plans.md)。 當您建立方案時，Azure 會隨機選取它，而且無法變更。 只有當您[在相同的資源群組*和*相同的區域中建立](app-service-plan-manage.md#create-an-app-service-plan)兩個方案時，Azure 才會確保兩者在相同的部署單位中，但它不會有任何邏輯可確保方案處於不同的部署單位。 若要在不同的部署單位中建立計畫，唯一的方法是在您取得不同的部署單位之前，在新的資源群組或區域中繼續建立計畫。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 6784c69c049945f3bd4977ecd647d57ec59bf9f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232627"
 ---
 # <a name="configure-dns-forwarding-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 叢集上設定 DNS 轉送
@@ -23,7 +23,7 @@ ms.locfileid: "82232627"
 oc edit dns.operator/default
 ```
  
-這會啟動編輯器，您可以將取代`spec: {}`為：
+這會啟動編輯器，您可以將取代 `spec: {}` 為：
  
  ```yaml
 spec:

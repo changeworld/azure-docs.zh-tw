@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431471"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>診斷 PowerShell 腳本的 Azure Synapse Studio （預覽）連線問題
@@ -29,7 +29,7 @@ Azure Synapse Studio （預覽）相依于一組 Web API 端點，才能正常�
 
 以滑鼠右鍵按一下下列連結，然後按一下 [另存目標]：
 
-- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 或者，您可以直接開啟連結，然後儲存已開啟的腳本檔案。 請不要儲存上述連結的位址，因為未來可能會有所變更。
 
@@ -49,12 +49,12 @@ Azure Synapse Studio （預覽）相依于一組 Web API 端點，才能正常�
 
 ![審查診斷摘要](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-此外，此會話的診斷記錄檔將會在與疑難排解腳本相同的資料夾中產生。 其位置會顯示在「一般秘訣」區段（`D:\TestAzureSynapse_2020....log`）。 如有需要，您可以將此檔案傳送給技術支援人員。
+此外，此會話的診斷記錄檔將會在與疑難排解腳本相同的資料夾中產生。 其位置會顯示在「一般秘訣」區段（ `D:\TestAzureSynapse_2020....log` ）。 如有需要，您可以將此檔案傳送給技術支援人員。
 
 如果您是網路系統管理員並調整 Azure Synapse Studio 的防火牆設定，則 [摘要] 區段上方顯示的技術詳細資料可能會有説明。
 
 * 所有標示為「已通過」的測試專案（要求）表示它們已通過連線測試，不論 HTTP 狀態碼為何。
- 對於失敗的要求，原因會以黃色顯示，例如`NamedResolutionFailure`或。 `ConnectFailure` 這些原因可協助您找出網路環境是否有錯誤的錯誤。
+ 對於失敗的要求，原因會以黃色顯示，例如 `NamedResolutionFailure` 或 `ConnectFailure` 。 這些原因可協助您找出網路環境是否有錯誤的錯誤。
 
 
 ## <a name="next-steps"></a>後續步驟

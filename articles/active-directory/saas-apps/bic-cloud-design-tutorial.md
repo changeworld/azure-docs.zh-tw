@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13f6de35400280d68227af1dd7e3a981494d9e61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: de3ebba84a56a0dd997a2d0309bbc203cd606fa1
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77088282"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BIC Cloud Design 整合
 
@@ -97,10 +97,10 @@ ms.locfileid: "77088282"
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
 
-    |||
-    |-|-|
-    | `https://<customer-specific-name/tenant>.biccloud.com`|
-    | `https://<customer-specific-name/tenant>.biccloud.de` |
+    ```https
+    https://<customer-specific-name/tenant>.biccloud.com
+    https://<customer-specific-name/tenant>.biccloud.de
+    ```
 
     > [!Note]
     > 如果 [識別碼]  值未自動填入，請根據您的需求手動填入這些值。 [登入 URL] 的值不是真正的值。 使用實際的「登入 URL」來更新此值。 請連絡 [BIC Cloud Design 用戶端支援小組](mailto:bicsupport@gbtec.de)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

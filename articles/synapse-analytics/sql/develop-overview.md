@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429014"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 Synapse SQL 功能的設計決策和程式碼撰寫技術
@@ -28,12 +28,12 @@ ms.locfileid: "81429014"
 |                                                          |   SQL 集區   | SQL 隨選 |
 | -----------------------------------------------------    | ---- | ---- |
 | [連線](connect-overview.md)                    | 是 | 是 |
-| [資源類別和並行](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
-| [異動](develop-transactions.md)              | 是 | 否 |
+| [資源類別和並行處理](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
+| [交易](develop-transactions.md)              | 是 | 否 |
 | [使用者定義的結構描述](develop-user-defined-schemas.md) | 是 | 是 |
 | [資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | 是 | 否 |
 | [資料表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | 是 | 否 |
-| [資料表資料分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | 是 | 否 |
+| [資料表的資料分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | 是 | 否 |
 | [統計資料](develop-tables-statistics.md)            | 是 | 是 |
 | [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | 是 | 否 |
 | [外部資料表](develop-tables-external-tables.md) | 是 | 是 |
@@ -51,7 +51,7 @@ ms.locfileid: "81429014"
 | [檢視](develop-views.md)                             | 是                | 是                     |
 | [暫存資料表](develop-tables-temporary.md)       | 是                | 是                     |
 | [動態 SQL](develop-dynamic-sql.md)                 | 是                | 是                     |
-| [遍歷](develop-loops.md)                         | 是                | 是                     |
+| [迴圈](develop-loops.md)                         | 是                | 是                     |
 | [依據選項分組](develop-group-by-options.md)       | 是                | 否                      |
 | [變數指派](develop-variable-assignment.md) | 是                | 是                     |
 

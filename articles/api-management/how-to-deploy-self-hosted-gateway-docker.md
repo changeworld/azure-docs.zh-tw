@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205088"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>將 Azure API 管理自我裝載閘道部署至 Docker
@@ -24,9 +24,9 @@ ms.locfileid: "82205088"
 > [!NOTE]
 > 在 Docker 中裝載自我裝載閘道最適合用於評估和開發使用案例。 建議使用 Kubernetes 來進行生產環境。 請參閱[這](how-to-deploy-self-hosted-gateway-kubernetes.md)份檔，以瞭解如何將自我裝載閘道部署至 Kubernetes。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 完成下列快速入門：[建立 AZURE API 管理實例](get-started-create-service-instance.md)
+- 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 - 建立 Docker 環境。 [Docker For Desktop](https://www.docker.com/products/docker-desktop)是適用于開發和評估用途的絕佳選項。 如需有關 docker 的所有版本、其功能，以及 Docker 本身的完整檔，請參閱[docker 檔](https://docs.docker.com)。
 - [在您的 API 管理實例中布建閘道資源](api-management-howto-provision-self-hosted-gateway.md)
 
@@ -58,9 +58,9 @@ CONTAINER ID        IMAGE                                                 COMMAN
 ![閘道狀態](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
-> 使用<code>console docker container logs <gateway-name></code>命令來查看自我裝載閘道記錄的快照集。
+> 使用 <code>console docker container logs <gateway-name></code> 命令來查看自我裝載閘道記錄的快照集。
 >
-> 使用<code>docker container logs --help</code>命令來查看所有記錄檔的查看選項。
+> 使用 <code>docker container logs --help</code> 命令來查看所有記錄檔的查看選項。
 
 ## <a name="next-steps"></a>後續步驟
 

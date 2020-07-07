@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450933"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>疑難排解結合的安全性資訊註冊
@@ -60,7 +60,7 @@ ms.locfileid: "81450933"
 
 如果系統管理員啟用預覽功能，使用者會透過新的體驗進行註冊，然後系統管理員停用預覽，也可能會在不知情的情況下註冊使用者進行多重要素驗證。
 
-如果已完成合併註冊的使用者前往目前的自助式密碼重設（SSPR）註冊頁面[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)，則會提示使用者執行多重要素驗證，然後才能存取該頁面。 從技術觀點來看，這是預期的步驟，但這對先前只註冊 SSPR 的使用者而言是新的。 雖然這個額外步驟會藉由提供另一層安全性來改善使用者的安全性狀態，但系統管理員可能會想要回復其使用者，使其無法再執行多重要素驗證。  
+如果已完成合併註冊的使用者前往目前的自助式密碼重設（SSPR）註冊頁面 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) ，則會提示使用者執行多重要素驗證，然後才能存取該頁面。 從技術觀點來看，這是預期的步驟，但這對先前只註冊 SSPR 的使用者而言是新的。 雖然這個額外步驟會藉由提供另一層安全性來改善使用者的安全性狀態，但系統管理員可能會想要回復其使用者，使其無法再執行多重要素驗證。  
 
 ### <a name="how-to-roll-back-users"></a>如何復原使用者
 
@@ -68,7 +68,7 @@ ms.locfileid: "81450933"
 
 接下來的步驟將協助您復原使用者或使用者群組。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 1. 安裝適當的 Azure AD PowerShell 模組。 在 PowerShell 視窗中，執行下列命令來安裝模組：
 
@@ -150,7 +150,7 @@ ms.locfileid: "81450933"
 若要停用使用者的更新體驗，請完成下列步驟：
 
 1. 以使用者系統管理員身分登入 Azure 入口網站。
-2. 移至 [ **Azure Active Directory** > **使用者設定** > ] [**管理存取面板預覽功能的設定**]。
+2. 移至 [ **Azure Active Directory**  >  **使用者設定**] [  >  **管理存取面板預覽功能的設定**]。
 3. 在 [**使用者可以使用預覽功能來註冊及管理安全性資訊**] 底下，將選取器設定為 [**無**]，然後選取 [**儲存**]。
 
 系統不會再提示使用者使用更新的體驗進行註冊。
