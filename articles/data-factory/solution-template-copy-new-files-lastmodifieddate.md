@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629060"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure Data Factory 複製新的和已變更的檔案
@@ -49,7 +49,7 @@ ms.locfileid: "82629060"
 
     ![建立與目的地的新連線](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-3. 選取 [**使用此範本**]。
+3. 選取 [使用此範本]。
 
     ![使用此範本](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -84,16 +84,16 @@ ms.locfileid: "82629060"
     ![建立觸發程序](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 10. 設定**觸發程式執行參數**的值，如下所示，然後選取 **[完成]**。
-    - **FolderPath_Source** = **sourcefolder**。  您可以將取代為您在來源資料存放區中的資料夾。
-    - **Directory_Source** = **子資料夾**。  您可以將取代為來源資料存放區中的子資料夾。
-    - **FolderPath_Destination** = **destinationfolder**。  您可以將取代為目的地資料存放區中的資料夾。
-    - **Directory_Destination** = **子資料夾**。  您可以將取代為目的地資料存放區中的子資料夾。
-    - **LastModified_From**  =   **LastModified_From\@觸發程式（）。 windowStartTime**。  它是來自觸發程式的系統變數，用以判斷上次觸發管線的時間。
-    - **LastModified_To**  =  **LastModified_To\@觸發程式（）。 .windowendtime**。  這是來自觸發程式的系統變數，可決定這次觸發管線的時間。
+    - **FolderPath_Source**  = **sourcefolder**。  您可以將取代為您在來源資料存放區中的資料夾。
+    - **Directory_Source**  = **子資料夾**。  您可以將取代為來源資料存放區中的子資料夾。
+    - **FolderPath_Destination**  = **destinationfolder**。  您可以將取代為目的地資料存放區中的資料夾。
+    - **Directory_Destination**  = **子資料夾**。  您可以將取代為目的地資料存放區中的子資料夾。
+    - **LastModified_From**  =  ** \@ trigger （）. 輸出. windowStartTime**。  它是來自觸發程式的系統變數，用以判斷上次觸發管線的時間。
+    - **LastModified_To**  = ** \@ trigger （）. 輸出. .windowendtime**。  這是來自觸發程式的系統變數，可決定這次觸發管線的時間。
     
     ![輸入參數](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
-11. 選取 [全部發佈]****。
+11. 選取 [全部發佈]。
     
     ![全部發佈](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 

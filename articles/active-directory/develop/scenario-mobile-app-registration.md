@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652632"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>註冊呼叫 web Api 的行動應用程式
@@ -50,7 +50,7 @@ ms.locfileid: "82652632"
 
 應用程式註冊入口網站會提供預覽體驗，以協助您計算適用于 iOS 和 Android 應用程式的代理回復 URI：
 
-1. 在應用程式註冊入口網站中，選取 [**驗證** > ]**試用新的體驗**。
+1. 在應用程式註冊入口網站中，選取 [**驗證**]  >  **試用新的體驗**。
 
    ![[驗證] 分頁，您可以在其中選擇新的體驗](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 

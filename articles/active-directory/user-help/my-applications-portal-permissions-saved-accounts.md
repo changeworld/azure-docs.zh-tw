@@ -13,10 +13,10 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744019"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在我的應用程式入口網站中編輯或撤銷應用程式權限

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628975"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure Data Factory 中加密內部部署資料存放區的認證
@@ -50,7 +50,7 @@ ms.locfileid: "82628975"
 ```
 
 ## <a name="encrypt-credentials"></a>加密認證
-若要從內部部署自我裝載整合執行時間的 JSON 承載加密機密資料，請執行**AzDataFactoryV2LinkedServiceEncryptedCredential**，並傳遞 json 承載。 這個 Cmdlet 確保使用 DPAPI 來加密認證，並將其本機儲存在自我裝載整合執行階段節點上。 包含認證之加密參考的輸出裝載可以重新導向至另一個 JSON 檔案（在此案例中為 ' 是 encryptedlinkedservice.json. JSON '）。
+若要從內部部署自我裝載整合執行時間的 JSON 承載加密機密資料，請執行**AzDataFactoryV2LinkedServiceEncryptedCredential**，並傳遞 json 承載。 這個 Cmdlet 確保使用 DPAPI 來加密認證，並將其本機儲存在自我裝載整合執行階段節點上。 包含認證之加密參考的輸出裝載可以重新導向至另一個 JSON 檔案（在此案例中為 ' encryptedLinkedService.json '）。
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629026"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>從具有控制資料表的資料庫進行差異複製
@@ -104,7 +104,7 @@ ms.locfileid: "82629026"
 
     ![建立與控制資料表資料存放區的新連線](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. 選取 [**使用此範本**]。
+7. 選取 [使用此範本]。
     
 8. 您會看到可用的管線，如下列範例所示：
   
@@ -114,11 +114,11 @@ ms.locfileid: "82629026"
 
     ![設定預存程式活動](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. 寫入內容** \@{activity （' LookupCurrentWaterMark '）. firstRow. NewWatermarkValue}**，然後選取 **[完成]**。  
+10. 寫入內容** \@ {activity （' LookupCurrentWaterMark '）. FirstRow. NewWatermarkValue}**，然後選取 **[完成]**。  
 
     ![撰寫預存程式之參數的內容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. 選取 [ **Debug**]，輸入**參數**，然後選取 **[完成]**。
+11. 選取 [偵錯]，輸入 [參數]，然後選取 [完成]。
 
     ![選取 * * Debug * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 

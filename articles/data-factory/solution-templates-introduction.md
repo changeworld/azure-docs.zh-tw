@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628941"
 ---
 # <a name="templates"></a>範本
@@ -32,7 +32,7 @@ ms.locfileid: "82628941"
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在資源總管的 [作者] 索引卷**+** 標上，依序選取 [] 和 [**來自範本的管線**] 以開啟範本庫。
+1.  在資源總管的 [作者] 索引標籤上，依序選取 [] **+** 和 [**來自範本的管線**] 以開啟範本庫。
 
     ![從 [撰寫] 索引標籤開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +56,7 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
     -   [資料庫中的差異複本](solution-template-delta-copy-with-control-table.md)
 
-    -   從 \<來源\> 複製到 \<目的地\>
+    -   從複製 \<source\> 到\<destination\>
 
         -   [從 Amazon S3 複製到 Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 

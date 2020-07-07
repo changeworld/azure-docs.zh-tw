@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629349"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>適用於 C 的 Azure IoT 裝置 SDK
@@ -114,7 +114,7 @@ Azure IoT 裝置 SDK (適用於 C) 是以 ANSI C (C99) 撰寫，以獲得最大�
 
 1. 如果您選擇 [複製所選裝置的連接字串]****，裝置連接字串就會複製到剪貼簿。 請保留一份裝置連接字串。 在執行後續各節中所述的範例應用程式時，您會需要它。
 
-完成上述步驟後，您就可以開始執行一些程式碼。 大部分範例在主要原始程式檔頂端都有一個常數，此常數可讓您輸入連接字串。 例如， ** \_iothub_client 範例\_iothub_convenience_sample**應用程式中的對應行，會如下所示。
+完成上述步驟後，您就可以開始執行一些程式碼。 大部分範例在主要原始程式檔頂端都有一個常數，此常數可讓您輸入連接字串。 例如， **iothub_client \_ 範例 \_ iothub_convenience_sample**應用程式中的對應行，會如下所示。
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -124,7 +124,7 @@ static const char* connectionString = "[device connection string]";
 
 在 [azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) 儲存機制的 **iothub\_client** 資料夾中，有一個 [samples]**** 資料夾，當中包含名為 **iothub\_client\_sample\_mqtt** 的應用程式。
 
-Windows 版本的**\_iothub_client 範例\_iothub_convenience_sample**應用程式包含下列 Visual Studio 解決方案：
+Windows 版本的**iothub_client \_ 範例 \_ iothub_convenience_sample**應用程式包含下列 Visual Studio 解決方案：
 
   ![Visual Studio 方案總管](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -140,7 +140,7 @@ Windows 版本的**\_iothub_client 範例\_iothub_convenience_sample**應用程�
 
 使用 SDK 時，您永遠需要 **Microsoft.Azure.C.SharedUtility** 封裝。 此範例使用 MQTT 通訊協定，因此您必須納入 **Microsoft.Azure.umqtt** 和 **Microsoft.Azure.IoTHub.MqttTransport** 套件 (有 AMQP 和 HTTPS 的對等套件)。 由於此範例使用 **IoTHubClient** 程式庫，因此您也必須在方案中納入 **Microsoft.Azure.IoTHub.IoTHubClient** 套件。
 
-您可以在**\_iothub_client 範例\_iothub_convenience_sample**來源檔案中找到範例應用程式的執行。
+您可以在**iothub_client \_ 範例 \_ iothub_convenience_sample**來源檔案中找到範例應用程式的執行。
 
 下列步驟使用此應用程式範例來逐步解說使用 **IoTHubClient** 程式庫時所需的項目。
 
@@ -227,7 +227,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 }
 ```
 
-當您完成訊息時，請注意呼叫**IoTHubMessage\_摧毀**函式。 此函式會釋放在建立訊息時配置的資源。
+當您完成訊息時，請注意呼叫**IoTHubMessage \_ 摧毀**函式。 此函式會釋放在建立訊息時配置的資源。
 
 ### <a name="receive-messages"></a>接收訊息
 
@@ -354,7 +354,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 您已在先前的範例中看過上述大多數的套件，但 **Microsoft.Azure.IoTHub.Serializer** 是新的。 當您使用 **serializer** 程式庫時必須使用此套件。
 
-您可以在**\_iothub_client 範例\_iothub_convenience_sample**檔案中找到範例應用程式的執行。
+您可以在**iothub_client \_ 範例 \_ iothub_convenience_sample**檔案中找到範例應用程式的執行。
 
 下列各節將逐步解說此範例的重要部分。
 
@@ -395,7 +395,7 @@ else
 
 ### <a name="define-the-model"></a>定義模型
 
-**serializer** 程式庫中的模型會定義您的裝置可傳送至 IoT 中樞的訊息以及其可接收的訊息 (在模組化語言中稱為*動作*)。 您可以使用一組 C 宏來定義模型，如**\_iothub_client 範例\_iothub_convenience_sample**範例應用程式所示：
+**serializer** 程式庫中的模型會定義您的裝置可傳送至 IoT 中樞的訊息以及其可接收的訊息 (在模組化語言中稱為*動作*)。 您可以使用一組 C 宏來定義模型，如**iothub_client \_ 範例 \_ iothub_convenience_sample**範例應用程式所示：
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);

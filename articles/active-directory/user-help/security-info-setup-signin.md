@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747277"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>經由登入提示設定安全性資訊

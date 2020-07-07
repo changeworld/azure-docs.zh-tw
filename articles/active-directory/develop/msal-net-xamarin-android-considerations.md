@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652678"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>使用 Xamarin Android 搭配 MSAL.NET 的考慮
@@ -33,7 +33,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-在 MSAL 4.2 和更新版本中，您也可以在層級設定這`PublicClientApplication`項功能。 若要這麼做，請使用回呼：
+在 MSAL 4.2 和更新版本中，您也可以在層級設定這項功能 `PublicClientApplication` 。 若要這麼做，請使用回呼：
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -43,7 +43,7 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-如果您使用[CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)，則產生`PublicClientApplication`器程式碼看起來如下列範例所示。
+如果您使用[CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)，則產生器程式 `PublicClientApplication` 代碼看起來如下列範例所示。
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -54,7 +54,7 @@ var pca = PublicClientApplicationBuilder
 ```
 
 ## <a name="ensure-that-control-returns-to-msal"></a>確定控制項返回 MSAL 
-當驗證流程的互動部分結束時，請確定該控制項會回到 MSAL。 在 Android 上，覆`OnActivityResult`寫的`Activity`方法。 然後呼叫`AuthenticationContinuationHelper` MSAL `SetAuthenticationContinuationEventArgs`類別的方法。 
+當驗證流程的互動部分結束時，請確定該控制項會回到 MSAL。 在 Android 上，覆寫的 `OnActivityResult` 方法 `Activity` 。 然後呼叫 `SetAuthenticationContinuationEventArgs` MSAL 類別的方法 `AuthenticationContinuationHelper` 。 
 
 以下是範例：
 
@@ -73,7 +73,7 @@ protected override void OnActivityResult(int requestCode,
 這一行可確保控制項在驗證流程的互動部分結束時，會回到 MSAL。
 
 ## <a name="update-the-android-manifest"></a>更新 Android 資訊清單
-*Androidmanifest.xml*應該包含下列值：
+*AndroidManifest.xml*檔案應該包含下列值：
 
 <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
 ```
@@ -90,9 +90,9 @@ protected override void OnActivityResult(int requestCode,
  </activity>
 ```
 
-以您在 Azure 入口網站中註冊的封裝名稱取代`android:host=`值。 以您在 Azure 入口網站中註冊的金鑰雜湊取代`android:path=`值。 簽章雜湊*不*應以 URL 編碼。 確定前置正斜線（`/`）出現在簽章雜湊的開頭。
+以您在 Azure 入口網站中註冊的封裝名稱取代 `android:host=` 值。 以您在 Azure 入口網站中註冊的金鑰雜湊取代 `android:path=` 值。 簽章雜湊*不*應以 URL 編碼。 確定前置正斜線（ `/` ）出現在簽章雜湊的開頭。
 
-或者，[在程式碼中建立活動](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而不是手動編輯*androidmanifest.xml*。 若要在程式碼中建立活動，請先建立包含`Activity`屬性和`IntentFilter`屬性的類別。 
+或者，[在程式碼中建立活動](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而不是手動編輯*AndroidManifest.xml*。 若要在程式碼中建立活動，請先建立包含 `Activity` 屬性和屬性的類別 `IntentFilter` 。 
 
 以下是代表 XML 檔案值的類別範例：
 
@@ -109,7 +109,7 @@ protected override void OnActivityResult(int requestCode,
 
 ### <a name="xamarinforms-43x-manifest"></a>如表單 4.3. X 資訊清單
 
-Androidmanifest.xml 會產生程式碼，將`package`屬性設定為`com.companyname.{appName}` 。 *AndroidManifest.xml* 如果您使用`DataScheme` as `msal{client_id}`，則您可能會想要變更值，使其符合`MainActivity.cs`命名空間的值。
+[Xamarin] 會產生程式碼， `package` `com.companyname.{appName}` 在*AndroidManifest.xml*中將屬性設定為。 如果您使用 `DataScheme` as `msal{client_id}` ，則您可能會想要變更值，使其符合 `MainActivity.cs` 命名空間的值。
 
 ## <a name="use-the-embedded-web-view-optional"></a>使用內嵌的 web view （選擇性）
 
@@ -140,12 +140,12 @@ var authResult = AcquireTokenInteractive(scopes)
 - 檢查是否已自動將支援更新為版本25.4.0.2。 如有必要，請更新至版本25.4.0.2。
 - 確定所有的25.4.0.2 支援套件都以版本為目標。
 - 清除或重建應用程式。
-- 在 Visual Studio 中，嘗試將 [平行專案組建的最大數目] 設定為1。 若要這麼做，請選取 [**選項** > ] [**專案和方案** > ] [**組建和執行** > **最大平行專案組建數目**]。
-- 如果您是從命令列建立，而且您的命令`/m`使用，請嘗試從命令中移除此元素。
+- 在 Visual Studio 中，嘗試將 [平行專案組建的最大數目] 設定為1。 若要這麼做，請選取 [**選項**] [  >  **專案和方案**] [  >  **組建和執行**  >  **最大平行專案組建數目**]。
+- 如果您是從命令列建立，而且您的命令使用 `/m` ，請嘗試從命令中移除此元素。
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>錯誤：名稱 AuthenticationContinuationHelper 不存在於目前的內容中
 
-如果錯誤指出目前的`AuthenticationContinuationHelper`內容中並不存在，Visual Studio 可能會不正確地更新 Android .csproj * 檔案。 有時候， * \<HintPath>* 檔案路徑不正確地包含*netstandard13* ，而不是*monoandroid90*。
+如果錯誤指出 `AuthenticationContinuationHelper` 目前的內容中並不存在，Visual Studio 可能會不正確地更新 Android .csproj * 檔案。 有時檔案 *\<HintPath>* 路徑不正確地包含*netstandard13* ，而不是*monoandroid90*。
 
 這個範例包含正確的檔案路徑：
 
