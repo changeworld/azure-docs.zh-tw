@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74111863"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的處理變更摘要（預覽）
@@ -26,13 +25,13 @@ ms.locfileid: "74111863"
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>取得 blob 變更摘要處理器程式庫
 
-1. 在 Visual Studio 中，將 URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json`新增至您的 NuGet 套件來源。 
+1. 在 Visual Studio 中，將 URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` 新增至您的 NuGet 套件來源。 
 
-   若要瞭解作法，請參閱[套件來源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
+   若要了解作法，請參閱[套件來源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
 
 2. 在 NuGet 套件管理員中，尋找**changefeed program.cs**套件，並將它安裝到您的專案。 
 
-   若要瞭解作法，請參閱[尋找及安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
+   若要了解作法，請參閱[尋找並安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
 ## <a name="connect-to-the-storage-account"></a>連接到儲存體帳戶
 
@@ -60,7 +59,7 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 
 ## <a name="initialize-the-change-feed"></a>初始化變更摘要
 
-將下列 using 語句新增至程式碼檔案的頂端。 
+在程式碼檔案頂端新增以下 using 陳述式。 
 
 ```csharp
 using Avro.Generic;

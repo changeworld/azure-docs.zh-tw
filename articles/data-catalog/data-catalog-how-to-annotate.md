@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68950251"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>如何標註 Azure 資料目錄中的資料來源
@@ -34,10 +33,10 @@ ms.locfileid: "68950251"
 ## <a name="different-types-of-annotations"></a>不同類型的註解
 資料目錄支援下列類型的註解：
 
-| Annotation | 注意 |
+| Annotation | 備註 |
 | --- | --- |
 | 易記名稱 |易記名稱可在資料資產層級提供，讓資料資產更易於了解。 當基礎物件的名稱難以理解、以縮寫表示或對使用者不具意義時，易記名稱會非常有幫助。 |
-| 描述 |說明可以在資料資產和屬性 / 資料行層級提供。 說明是自由格式的簡短文字註解，描述使用者對於資料資產的觀點或其用途。 |
+| Description |說明可以在資料資產和屬性 / 資料行層級提供。 說明是自由格式的簡短文字註解，描述使用者對於資料資產的觀點或其用途。 |
 | 標籤 (使用者標籤) |標記可以在資料資產和屬性 / 資料行層級提供。 使用者標籤是使用者定義的標籤，可用來分類資料資產或屬性。 |
 | 標籤 (詞彙標籤) |標記可以在資料資產和屬性 / 資料行層級提供。 詞彙標籤是集中定義的詞彙，可用於分類資料資產或使用通用的商務分類法的屬性。 如需詳細資訊，請參閱[如何設定控管標記的商務詞彙](data-catalog-how-to-business-glossary.md) |
 | 專家 |專家可以在資料資產層級提供。 專家可識別對資料具備專業觀點的使用者或群組，探索已註冊之資料來源的使用者若有現有註解無法解答的問題，專家即可做為其連絡點。 |

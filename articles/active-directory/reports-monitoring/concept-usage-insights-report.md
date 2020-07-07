@@ -17,10 +17,9 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74008271"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的使用量和見解報告
@@ -31,7 +30,7 @@ ms.locfileid: "74008271"
 *   哪些應用程式的登入失敗？ 
 *   每個應用程式的最上層登入錯誤為何？
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 若要從 usage 和 insights 報表存取資料，您需要：
 
@@ -41,7 +40,7 @@ ms.locfileid: "74008271"
 
 ## <a name="access-the-usage-and-insights-report"></a>存取使用量和見解報告
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 選取正確的目錄，然後選取 [ **Azure Active Directory** ]，然後選擇 [**企業應用程式**]。
 3. 從 [**活動**] 區段中，選取 [**使用量 & 深入**解析] 以開啟報表。 
 

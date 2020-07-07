@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74038097"
 ---
 # <a name="azcopy"></a>azcopy
@@ -21,9 +20,9 @@ AzCopy 是一種命令列工具，可將資料移入和移出 Azure 儲存體。
 
 ## <a name="synopsis"></a>概要
 
-命令的一般格式為： `azcopy [command] [arguments] --[flag-name]=[flag-value]`。
+命令的一般格式為： `azcopy [command] [arguments] --[flag-name]=[flag-value]` 。
 
-若要報告問題或深入瞭解此工具，請參閱[https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)。
+若要報告問題或深入瞭解此工具，請參閱 [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) 。
 
 ## <a name="related-conceptual-articles"></a>相關的概念性文章
 

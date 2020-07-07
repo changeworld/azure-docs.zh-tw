@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74196354"
 ---
 # <a name="scale-migration-of-vms"></a>Vm 的規模遷移 
@@ -25,7 +24,7 @@ ms.locfileid: "74196354"
 
 ## <a name="how-does-it-work"></a>運作方式
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 開始之前，您需要執行下列步驟：
 - 確定 Site Recovery 保存庫是在 Azure 訂用帳戶中建立
 - 確定組態伺服器和處理序伺服器安裝在來源環境，且保存庫可以探索環境
@@ -52,7 +51,7 @@ ms.locfileid: "74196354"
 ### <a name="script-execution"></a>指令碼執行
 CSV 準備就緒之後，您可以執行下列步驟來執行內部部署 VM 的移轉：
 
-**步驟 #** | **指令碼名稱** | **說明**
+**步驟 #** | **腳本名稱** | **描述**
 --- | --- | ---
 1 | asr_startmigration.ps1 | 針對 CSV 中列出的所有 VM 啟用複寫，指令碼會建立 CSV 輸出，其中具有每部 VM 的作業詳細資料
 2 | asr_replicationstatus.ps1 | 檢查複寫的狀態，指令碼會建立 CSV，其中具有每部 VM 的狀態

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74186459"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>準備行動代理程式的推入安裝的來源機器
@@ -53,7 +52,7 @@ ms.locfileid: "74186459"
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
-8. 重新開機**sshd**服務。
+8. 重新啟動 **sshd** 服務。
 9. 新增您在 CSPSConfigtool 中建立的帳戶。 若要這樣做，請登入您的設定伺服器。
 10. 開啟 **cspsconfigtool.exe**。 它會是桌面上可用的捷徑，位於 %ProgramData%\home\svsystems\bin 資料夾中。
 11. 在 [管理帳戶]**** 索引標籤上，選取 [新增帳戶]****。

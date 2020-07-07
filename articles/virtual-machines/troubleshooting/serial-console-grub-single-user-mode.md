@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70883920"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
@@ -53,8 +52,8 @@ ms.locfileid: "70883920"
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>使用單一使用者模式來重設或新增密碼
 在您處於單一使用者模式之後，請執行下列動作，以新增具有 sudo 許可權的使用者：
-1. 執行`useradd <username>`以新增使用者。
-1. 執行`sudo usermod -a -G sudo <username>`以授與新使用者的根許可權。
+1. 執行 `useradd <username>` 以新增使用者。
+1. 執行 `sudo usermod -a -G sudo <username>` 以授與新使用者的根許可權。
 1. 使用 `passwd <username>` 來為新使用者設定密碼。 接著，您可以用新的使用者身分登入。
 
 
@@ -62,7 +61,7 @@ ms.locfileid: "70883920"
 如果 RHEL 無法正常開機，則會自動將您帶到單一使用者模式。 不過，如果您尚未設定單一使用者模式的根存取，就不會有根密碼，也無法登入。 有因應措施（請參閱「在 RHEL 中手動輸入單一使用者模式」一節），但我們建議您一開始先設定 root 存取權。
 
 ### <a name="grub-access-in-rhel"></a>RHEL 中的 GRUB 存取
-RHEL 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新`sudo reboot`啟動您的 VM，然後按任意鍵。 應該會顯示 [GRUB] 窗格。 如果不是，請確定您的 GRUB 檔案（`/etc/default/grub`）中有下列幾行：
+RHEL 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新開機您的 VM `sudo reboot` ，然後按任意鍵。 應該會顯示 [GRUB] 窗格。 如果不是，請確定您的 GRUB 檔案（）中有下列幾行 `/etc/default/grub` ：
 
 **適用于 RHEL 8**
 
@@ -89,10 +88,10 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 透過 SSH 登入 Red Hat 系統。
 1. 切換至 [根]。
 1. 執行下列動作，以啟用根使用者的密碼：
-    * 執行`passwd root` （設定強式根密碼）。
+    * 執行 `passwd root` （設定強式根密碼）。
 1. 執行下列動作，確保根使用者只能透過 ttyS0 登入：  
-    a. 執行`edit /etc/ssh/sshd_config`，並確定 PermitRootLogIn 設定為`no`。  
-    b. 執行`edit /etc/securetty file`以只允許透過 ttyS0 登入。
+    a. 執行 `edit /etc/ssh/sshd_config` ，並確定 PermitRootLogIn 設定為 `no` 。  
+    b. 執行 `edit /etc/securetty file` 以只允許透過 ttyS0 登入。
 
 現在，如果系統開機進入單一使用者模式，您就可以使用根密碼進行登入。
 
@@ -127,26 +126,26 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 尋找核心線。 在 Azure 中，它會以*linux16*開頭。
 1. 在行的結尾，將*rd. break*新增至行尾。 在核心線路和*rd*之間保留一個空格。
 
-    此動作會在將控制權從`initramfs`傳遞至`systemd`之前中斷啟動程式，如[Red Hat 檔](https://aka.ms/rhel7rootpassword)中所述。
+    此動作會在將控制權從傳遞至之前中斷啟動程式 `initramfs` `systemd` ，如[Red Hat 檔](https://aka.ms/rhel7rootpassword)中所述。
 1. 按 Ctrl + X 以結束並以套用的設定重新開機。
 
    重新開機之後，您就可以使用唯讀檔案系統進入緊急模式。 
    
-1. 在 shell 中，輸入`mount -o remount,rw /sysroot`以重新掛接具有讀取/寫入權限的根檔案系統。
-1. 當您開機進入單一使用者模式之後，請`chroot /sysroot`輸入以切換到`sysroot` jb。
-1. 您現在是在根目錄。 您可以輸入`passwd` ，然後使用上述指示來進入單一使用者模式，以重設您的根密碼。 
-1. 完成之後，請輸入`reboot -f`以重新開機。
+1. 在 shell 中，輸入 `mount -o remount,rw /sysroot` 以重新掛接具有讀取/寫入權限的根檔案系統。
+1. 當您開機進入單一使用者模式之後，請輸入 `chroot /sysroot` 以切換到 `sysroot` jb。
+1. 您現在是在根目錄。 您可以輸入 `passwd` ，然後使用上述指示來進入單一使用者模式，以重設您的根密碼。 
+1. 完成之後，請輸入 `reboot -f` 以重新開機。
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
-> 透過上述指示執行時，會將您帶到緊急 shell，讓您也可以執行編輯`fstab`之類的工作。 不過，我們通常會建議您重設根密碼，並使用它來進入單一使用者模式。
+> 透過上述指示執行時，會將您帶到緊急 shell，讓您也可以執行編輯之類的工作 `fstab` 。 不過，我們通常會建議您重設根密碼，並使用它來進入單一使用者模式。
 
 ## <a name="access-for-centos"></a>CentOS 的存取
 就像 Red Hat Enterprise Linux，CentOS 中的單一使用者模式要求必須啟用 GRUB 和根使用者。
 
 ### <a name="grub-access-in-centos"></a>CentOS 中的 GRUB 存取
-CentOS 預設會啟用 GRUB。 若要進入 GRUB，請輸入`sudo reboot`，然後按任意鍵來重新開機您的 VM。 此動作會顯示 [GRUB] 窗格。
+CentOS 預設會啟用 GRUB。 若要進入 GRUB，請輸入，然後 `sudo reboot` 按任意鍵來重新開機您的 VM。 此動作會顯示 [GRUB] 窗格。
 
 ### <a name="single-user-mode-in-centos"></a>CentOS 中的單一使用者模式
 若要在 CentOS 中啟用單一使用者模式，請遵循 RHEL 的先前指示。
@@ -160,10 +159,10 @@ Ubuntu 映射不需要根密碼。 如果系統開機進入單一使用者模式
 根據預設，Ubuntu 映射可能不會自動顯示 GRUB 窗格。 您可以執行下列動作來變更設定：
 1. 在文字編輯器中，開啟 */etc/default/grub.d/50-cloudimg-settings.cfg*檔案。
 
-1. 將`GRUB_TIMEOUT`值變更為非零值。
+1. 將 `GRUB_TIMEOUT` 值變更為非零值。
 1. 在文字編輯器中，開啟 */etc/default/grub*。
-1. 將該行標記`GRUB_HIDDEN_TIMEOUT=1`為批註。
-1. 請確定有`GRUB_TIMEOUT_STYLE=menu`一行。
+1. 將該行標記為批註 `GRUB_HIDDEN_TIMEOUT=1` 。
+1. 請確定有 `GRUB_TIMEOUT_STYLE=menu` 一行。
 1. 執行 `sudo update-grub`。
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的單一使用者模式
@@ -175,14 +174,14 @@ Ubuntu 映射不需要根密碼。 如果系統開機進入單一使用者模式
 1. 按 Ctrl + X 以使用這些設定重新開機，然後進入單一使用者模式。
 
 ### <a name="use-grub-to-invoke-bash-in-ubuntu"></a>使用 GRUB 在 Ubuntu 中叫用 bash
-在您嘗試上述指示之後，可能會發生一種情況（例如忘記密碼的根密碼），您仍無法存取 Ubuntu VM 中的單一使用者模式。 您也可以告訴核心以 init 的`/bin/bash`形式執行，而不是系統初始化。 此動作會為您提供 bash shell，並允許進行系統維護。 使用下列指示：
+在您嘗試上述指示之後，可能會發生一種情況（例如忘記密碼的根密碼），您仍無法存取 Ubuntu VM 中的單一使用者模式。 您也可以告訴核心以 init 的 `/bin/bash` 形式執行，而不是系統初始化。 此動作會為您提供 bash shell，並允許進行系統維護。 使用下列指示：
 
 1. 在 GRUB 中，按 E 以編輯您的開機專案（Ubuntu 專案）。
 
 1. 尋找以*linux*為開頭的行，然後尋找*ro*。
 1. 將*ro*取代為*rw init =/bin/bash*。
 
-    此動作會將您的檔案系統掛接為讀寫`/bin/bash` ，並使用做為 init 進程。
+    此動作會將您的檔案系統掛接為讀寫，並使用 `/bin/bash` 做為 init 進程。
 1. 按 Ctrl + X 以使用這些設定重新開機。
 
 ## <a name="access-for-coreos"></a>CoreOS 的存取
@@ -206,14 +205,14 @@ SLES 12 SP3 的較新映射 + 允許在系統開機進入緊急模式時，透�
 ### <a name="grub-access-in-suse-sles"></a>SUSE SLES 中的 GRUB 存取
 SLES 中的 GRUB 存取需要透過 YaST 的開機載入器設定。 若要建立設定，請執行下列動作：
 
-1. 使用 SSH 登入您的 SLES VM，然後執行`sudo yast bootloader`。 按下 Tab 鍵，按 Enter，然後使用方向鍵來流覽功能表。
+1. 使用 SSH 登入您的 SLES VM，然後執行 `sudo yast bootloader` 。 按下 Tab 鍵，按 Enter，然後使用方向鍵來流覽功能表。
 
 1. 移至**核心參數**，然後選取 [**使用序列主控台**] 核取方塊。
-1. 將`serial --unit=0 --speed=9600 --parity=no`新增至**主控台**引數。
+1. 將新增 `serial --unit=0 --speed=9600 --parity=no` 至**主控台**引數。
 1. 按 F10 來儲存您的設定並結束。
 1. 若要進入 GRUB，請重新開機您的 VM，然後在開機順序期間按任意鍵，以保持 GRUB 窗格的顯示。
 
-    GRUB 的預設 timeout 為**1**。 您可以藉由變更 */etc/default/grub*檔案中`GRUB_TIMEOUT`的變數來修改這項設定。
+    GRUB 的預設 timeout 為**1**。 您可以藉由變更/etc/default/grub 檔案中的變數來修改這 `GRUB_TIMEOUT` 項設定。 */etc/default/grub*
 
 ![初始化開機載入器設定](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
@@ -227,13 +226,13 @@ SLES 中的 GRUB 存取需要透過 YaST 的開機載入器設定。 若要建�
 1. 按 Ctrl + X 以使用這些設定重新開機，然後進入緊急 shell。
 
    > [!NOTE]
-   > 此動作會將您帶到具有唯讀檔案系統的緊急 shell。 若要編輯任何檔案，請以讀寫許可權重新掛接檔案系統。 若要這麼做， `mount -o remount,rw /`請在 shell 中輸入。
+   > 此動作會將您帶到具有唯讀檔案系統的緊急 shell。 若要編輯任何檔案，請以讀寫許可權重新掛接檔案系統。 若要這麼做，請 `mount -o remount,rw /` 在 shell 中輸入。
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux 的存取
 就像 Red Hat Enterprise Linux，Oracle Linux 中的單一使用者模式需要啟用 GRUB 和根使用者。
 
 ### <a name="grub-access-in-oracle-linux"></a>Oracle Linux 中的 GRUB 存取
-Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新`sudo reboot`啟動您的 VM，然後按下 Esc 鍵。此動作會顯示 [GRUB] 窗格。 如果未顯示 GRUB 窗格，請確定`GRUB_TERMINAL`行的值包含*序列主控台*（也就是`GRUB_TERMINAL="serial console"`）。 使用`grub2-mkconfig -o /boot/grub/grub.cfg`重建 GRUB。
+Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新開機您的 VM `sudo reboot` ，然後按下 Esc 鍵。此動作會顯示 [GRUB] 窗格。 如果未顯示 GRUB 窗格，請確定行的值 `GRUB_TERMINAL` 包含*序列主控台*（也就是 `GRUB_TERMINAL="serial console"` ）。 使用重建 GRUB `grub2-mkconfig -o /boot/grub/grub.cfg` 。
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux 中的單一使用者模式
 若要在 Oracle Linux 中啟用單一使用者模式，請遵循 RHEL 的先前指示。

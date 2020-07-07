@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827421"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>預測性維護解決方案加速器概觀
@@ -53,7 +52,7 @@ ms.locfileid: "73827421"
 
 模擬的裝置可以處理從解決方案中 IoT 中樞傳送的下列命令：
 
-| Command | 描述 |
+| Command | 說明 |
 | --- | --- |
 | StartTelemetry |控制模擬的狀態。<br/>傳送遙測以啟動裝置 |
 | StopTelemetry |控制模擬的狀態。<br/>傳送遙測以停止裝置 |
@@ -77,7 +76,7 @@ Azure Machine Learning 模型可以作為範本，示範如何運用透過 IoT �
 
 Azure IoT 預測性維護解決方案加速器會利用從這個範本建立的迴歸模型。 此模型會部署到您的 Azure 訂用帳戶，並透過自動產生的 API 提供。 此解決方案包含 4 部 (全部共 100 部) 引擎測試資料與 4 個 (全部共 21 個) 感應器資料流的子集。 此資料足以從定型的模型提供精確的結果。
 
-*\[1\] . Saxena 和 K. Goebel （2008）。「Turbofan 引擎降低模擬資料集」，NASA Ames Prognostics 資料存放庫https://c3.nasa.gov/dashlink/resources/139/)（，NASA Ames Research 中心，moffett field 欄位，CA*
+*\[1 \] . Saxena 和 K. Goebel （2008）。「Turbofan 引擎降低模擬資料集」，NASA Ames Prognostics 資料存放庫（ https://c3.nasa.gov/dashlink/resources/139/) ，NASA Ames Research 中心，Moffett field 欄位，CA*
 
 ## <a name="next-steps"></a>後續步驟
 您現在已看到預測性維護解決方案加速器的主要元件，您可加以自訂。

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74084545"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>設定多層式 Citrix XenApp 和 XenDesktop 部署的災害復原
@@ -26,7 +25,7 @@ Citrix XenDesktop 是桌面虛擬化解決方案，能夠為任何地方的任�
 對於為 Hyper-V 和 VMware vSphere 平台上的內部部署 Citrix XenApp 部署建置災害復原方案，本文提供逐步指引。 本文同時也會說明如何使用復原計劃、支援的組態和必要條件，執行測試容錯移轉 (災害復原訓練) 和未計劃的 Azure 容錯移轉。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您瞭解下列項目︰
 
@@ -56,9 +55,9 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
-**Hyper-V** | 不在範圍中 | 是
-**VMware** | 不在範圍中 | 是
-**實體伺服器** | 不在範圍中 | 是
+**Hyper-V** | 不在範圍中 | Yes
+**VMware** | 不在範圍中 | Yes
+**實體伺服器** | 不在範圍中 | Yes
 
 ### <a name="versions"></a>版本
 客戶可以部署 XenApp 元件成為 Hyper-V 或 VMware 上執行的虛擬機器，或成為實體伺服器。 Azure Site Recovery 可以保護 Azure 的實體與虛擬部署。

@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
 ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74072967"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虛擬機器擴充功能和功能
@@ -63,7 +62,7 @@ Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和�
 | customscriptextension | [適用于 Windows 的自訂腳本](custom-script-windows.md#troubleshoot-and-support) |
 | microsoft.ostcextensions.customscriptforlinux. customscriptforlinux | [適用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
 | microsoft. powershell. dsc | [適用于 Windows 的 Desired State Configuration](dsc-windows.md#troubleshoot-and-support) |
-| hpccompute. nvidiagpudriverlinux | [適用于 Linux 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| hpccompute. nvidiagpudriverlinux | [適用於 Linux 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-linux.md#troubleshoot-and-support) |
 | hpccompute. nvidiagpudriverwindows | [適用于 Windows 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-windows.md#troubleshoot-and-support) |
 | iaasantimalware。 | [Windows 的反惡意程式碼擴充功能](iaas-antimalware-windows.md#troubleshoot-and-support) |
 | microsoft.enterprisecloud.monitoring. monitoring. omsagentforlinux | [適用于 Linux 的 Azure 監視器](oms-linux.md#troubleshoot-and-support)

@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70882244"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 專用 HSM 高可用性
@@ -39,7 +38,7 @@ Azure 專用 HSM 的基礎是由 Microsoft 高可用性資料中心所構成。 
 * [部署架構](deployment-architecture.md)
 * [實體安全性](physical-security.md)
 * [網路功能](networking.md)
-* [可支援性](supportability.md)
+* [支援能力](supportability.md)
 * [監視](monitoring.md)
 
 如需 HSM 裝置高可用性設定方面的詳細資訓，請參閱《系統管理員指南》的〈Gemalto 客戶支援入口網站〉第 6 節。

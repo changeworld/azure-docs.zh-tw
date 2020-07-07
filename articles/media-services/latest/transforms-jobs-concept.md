@@ -13,17 +13,16 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73571228"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
 
 本主題提供有關[轉換](https://docs.microsoft.com/rest/api/media/transforms)和[作業](https://docs.microsoft.com/rest/api/media/jobs)的詳細資料，並說明這些實體之間的關聯性。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 ### <a name="transformsjobs-workflow"></a>轉換/作業工作流程
 

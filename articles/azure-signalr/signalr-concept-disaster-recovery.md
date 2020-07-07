@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73747639"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
@@ -51,7 +50,7 @@ ms.locfileid: "73747639"
 
 ### <a name="through-config"></a>透過 config
 
-您應該已經知道如何透過環境變數/應用程式設定/cofig，在名為`Azure:SignalR:ConnectionString`的 config 專案中設定 SignalR 服務連接字串。
+您應該已經知道如何透過環境變數/應用程式設定/cofig，在名為的 config 專案中設定 SignalR 服務連接字串 `Azure:SignalR:ConnectionString` 。
 如果您有多個端點，您可以使用下列格式在多個 config 項目中設定每個連接字串：
 
 ```
@@ -63,7 +62,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 
 ### <a name="through-code"></a>透過程式碼
 
-如果您想要將連接字串儲存在其他位置，您也可以在程式碼中讀取它們，並在呼叫`AddAzureSignalR()` （ASP.NET Core）或`MapAzureSignalR()` （在 ASP.NET 中）時，將它們當做參數使用。
+如果您想要將連接字串儲存在其他位置，您也可以在程式碼中讀取它們，並在呼叫 `AddAzureSignalR()` （ASP.NET Core）或 `MapAzureSignalR()` （在 ASP.NET 中）時，將它們當做參數使用。
 
 此為範例程式碼：
 

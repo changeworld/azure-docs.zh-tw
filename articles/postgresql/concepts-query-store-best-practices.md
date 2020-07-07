@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70764225"
 ---
 # <a name="best-practices-for-query-store"></a>查詢存放區的最佳做法
@@ -24,8 +23,8 @@ ms.locfileid: "70764225"
 
 |**pg_qs.query_capture_mode** | **案例**|
 |---|---|
-|_這_  |根據您的所有查詢與其執行頻率與其他統計資料徹底分析您的工作負載。 識別您工作負載中的新查詢。 偵測特定查詢是否用來識別使用者或自動參數化的機會。 _全都_有增加的資源耗用成本。 |
-|_返回頁首_  |專注在前幾個查詢 - 那些由客戶發出的查詢。
+|_全部_  |根據您的所有查詢與其執行頻率與其他統計資料徹底分析您的工作負載。 識別您工作負載中的新查詢。 偵測特定查詢是否用來識別使用者或自動參數化的機會。 _全都_有增加的資源耗用成本。 |
+|_頁首_  |專注在前幾個查詢 - 那些由客戶發出的查詢。
 |_None_ |您已擷取查詢集與一段時間，您想要在這段時間內調查並減少其他查詢可能會產生之令人困惑之事。 _無_適用於測試及效能評定環境。 _無_應該謹慎使用，因為您可能可能會錯過追蹤及最佳化重要新查詢的機會。 我們無法復原過去時段內的資料。 |
 
 查詢存放區也包含等候統計資料的存放區。 有一個額外的擷取模式查詢，此查詢規範等候統計資料：**pgms_wait_sampling.query_capture_mode** 可設定為 _none_ 或 _all_。 

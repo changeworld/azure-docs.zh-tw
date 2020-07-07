@@ -9,17 +9,16 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083960"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中設定容錯回復的處理序伺服器
 
 使用 [Site Recovery](site-recovery-overview.md) 將 VMware VM 或實體伺服器容錯移轉到 Azure 後，當它們又恢復運作時，可以再容錯回復到內部部署網站。 為了容錯回復，您必須在 Azure 中設定暫時處理序伺服器，以處理從 Azure 到內部部署的複寫。 容錯回復完成後，便可以刪除此 VM。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 深入了解[重新保護](vmware-azure-reprotect.md)和[容錯回復](vmware-azure-failback.md)程序。
 
@@ -28,7 +27,7 @@ ms.locfileid: "74083960"
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署處理序伺服器
 
-1. 在保存庫 > **Site Recovery 基礎結構**> ] [**管理** > 設定**伺服器**] 中，選取設定伺服器。
+1. 在保存庫 > **Site Recovery 基礎結構**] [管理設定伺服器] 中 >  **Manage**  >  ** **，選取設定伺服器。
 2. 在伺服器頁面中，按一下 [+ 處理序伺服器]****。
 3. 在 [新增處理序伺服器]**** 頁面中，選取在 Azure 中部署處理序伺服器。
 4. 指定 Azure 的設定，包括用於容錯移轉的訂用帳戶、資源群組、用於容錯移轉的 Azure 區域、Azure VM 所在的虛擬網路。 如果您使用多個 Azure 網路，每個網路中都要有一個處理序伺服器。

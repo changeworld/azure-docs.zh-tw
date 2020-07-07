@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74186641"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>使用 Azure PowerShell 設定 Web 應用程式防火牆原則
@@ -21,7 +20,7 @@ Azure Web 應用程式防火牆（WAF）原則會定義當要求到達 Front 時
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始設定速率限制原則之前，請先設定您的 PowerShell 環境，並建立 Front profile。
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70913950"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>測試 Azure Data Lake Analytics 程式碼
@@ -41,7 +40,7 @@ Azure Data Lake Tools for Visual Studio 可讓您建立 U-SQL 指令碼測試案
 
 ![Data Lake Tools for Visual Studio -- 設定專案測試資料來源](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-當您呼叫 U `Initialize()` -SQL 測試 SDK 中的介面時，系統會在測試專案的工作目錄下建立暫存本機資料根資料夾。 測試資料來源資料夾中的所有檔案和資料夾都會先複製到暫存本機資料根資料夾，然後再執行 U-SQL 腳本測試案例。 您可以利用分號分隔測試資料資料夾路徑，以新增其他測試資料來源資料夾。
+當您呼叫 `Initialize()` U-SQL 測試 SDK 中的介面時，系統會在測試專案的工作目錄下建立暫存本機資料根資料夾。 測試資料來源資料夾中的所有檔案和資料夾都會先複製到暫存本機資料根資料夾，然後再執行 U-SQL 腳本測試案例。 您可以利用分號分隔測試資料資料夾路徑，以新增其他測試資料來源資料夾。
 
 ### <a name="manage-the-database-environment-for-testing"></a>管理測試的資料庫環境
 
@@ -55,7 +54,7 @@ Azure Data Lake Tools for Visual Studio 可讓您建立 U-SQL 指令碼測試案
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中執行測試案例
 
-U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 建立專案之後，請選取 [**測試** > ] [**Windows** > **test Explorer**]。 您可以從 [**測試瀏覽器**] 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [**執行測試**]。
+U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 建立專案之後，請選取 [**測試**] [  >  **Windows**  >  **test Explorer**]。 您可以從 [**測試瀏覽器**] 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [**執行測試**]。
 
 ## <a name="test-c-udos"></a>測試 C# UDO
 
@@ -108,7 +107,7 @@ U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 建立專案
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中執行測試案例
 
-建立專案之後，請選取 [**測試** > ] [**Windows** > **test Explorer**]。 您可以從 [**測試瀏覽器**] 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [**執行測試**]。
+建立專案之後，請選取 [**測試**] [  >  **Windows**  >  **test Explorer**]。 您可以從 [**測試瀏覽器**] 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [**執行測試**]。
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中執行測試案例<a name="run-test-cases-in-azure-devops"></a>
 
@@ -116,7 +115,7 @@ U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 建立專案
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中執行 U-SQL 測試案例
 
-若為 U-SQL 測試，請確定您已`CPPSDK`在組建電腦上載入，然後將`CPPSDK`路徑傳遞至`USqlScriptTestRunner(cppSdkFolderFullPath: @"")`。
+若為 U-SQL 測試，請確定您已 `CPPSDK` 在組建電腦上載入，然後將 `CPPSDK` 路徑傳遞至 `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` 。
 
 #### <a name="what-is-cppsdk"></a>什麼是 CPPSDK？
 
@@ -132,11 +131,11 @@ CPPSDK 是包含 Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 的套件�
 
 1. 將包含 CPPSDK 程式庫的資料夾壓縮。
 
-1. 將 .zip 檔案簽入您的來源控制系統中。 .Zip 檔案可確保您簽入 CPPSDK 資料夾下的所有程式庫，因此檔案不會被忽略`.gitignore` 。
+1. 將 .zip 檔案簽入您的來源控制系統中。 .Zip 檔案可確保您簽入 CPPSDK 資料夾下的所有程式庫，因此檔案不會被忽略 `.gitignore` 。
 
 1. 在組建管線中解壓縮 .zip 檔案。
 
-1. 指向`USqlScriptTestRunner`組建電腦上這個解壓縮的資料夾。
+1. 指向 `USqlScriptTestRunner` 組建電腦上這個解壓縮的資料夾。
 
 ### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中執行 c # UDO 測試案例
 

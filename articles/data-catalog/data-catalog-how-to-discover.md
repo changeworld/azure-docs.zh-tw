@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736366"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何探索 Azure 資料目錄中的資料資產
@@ -33,7 +32,7 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料來源�
 
 雖然預設的任意文字搜尋既簡單又直覺，但您也可以使用資料目錄搜尋語法，更充分地掌控搜尋結果。 資料目錄搜尋支援下列技巧：
 
-| 技巧 | 使用 | 範例 |
+| 技巧 | 用法 | 範例 |
 | --- | --- | --- |
 | 基本搜尋 |使用一或多個搜尋字詞的基本搜尋。 結果包含了任何屬性與一或多個指定字詞相符的所有資產。 |`sales data` |
 | 屬性範圍 |只會傳回搜尋字詞與指定屬性相符的資料來源。 |`name:finance` |

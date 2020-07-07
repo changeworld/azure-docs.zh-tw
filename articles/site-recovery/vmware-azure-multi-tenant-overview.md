@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083998"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>概述多租用戶如何支援使用 CSP 將 VMware 災害復原至 Azure
@@ -89,7 +88,7 @@ ms.locfileid: "74083998"
 
 3. 針對不同物件，指派存取層級給 vCenter 帳戶 (在租用戶組態伺服器中使用)：
 
->| Object | [角色] | 備註 |
+>| Object | 角色 | 備註 |
 >| --- | --- | --- |
 >| vCenter | 唯讀 | 只用以允許 vCenter 存取以管理其他物件。 如果帳戶不會提供給租用戶，或用於任何 vCenter 上的管理作業，則可以移除此權限。 |
 >| 資料中心 | Azure_Site_Recovery |  |
@@ -120,7 +119,7 @@ ms.locfileid: "74083998"
 
 1. 在 Azure 入口網站您稍早建立的保存庫中，使用您建立的 vCenter 帳戶，向組態伺服器註冊 vCenter 伺服器。
 2. 針對每個一般程序的 Site Recovery 完成「準備基礎結構」程序。
-3. 現在可以開始複寫 VM。 確認只有租使用者的 vm 會**顯示在 [** > 複寫] [**選取虛擬機器**] 中。
+3. 現在可以開始複寫 VM。 確認只有租使用者的 vm 會**顯示在 [** 複寫] [  >  **選取虛擬機器**] 中。
 
 ## <a name="dedicated-hosting-solution"></a>專用主機解決方案
 

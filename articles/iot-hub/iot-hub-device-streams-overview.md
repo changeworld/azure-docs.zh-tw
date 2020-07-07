@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890461"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中樞裝置串流 (預覽)
@@ -82,7 +81,7 @@ IoT 中樞裝置串流提供下列優點：
 
 ![「裝置串流端點」](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-或者，您也可以使用中樞的 properties 區段下的 Azure CLI 來抓取端點資訊，特別`property.hostname`是`property.deviceStreams`和金鑰。
+或者，您也可以使用中樞的 properties 區段下的 Azure CLI 來抓取端點資訊，特別是 `property.hostname` 和 `property.deviceStreams` 金鑰。
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -106,7 +105,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 如同本文開頭所述，您的裝置會在裝置串流初始化程式期間，建立 IoT 中樞串流端點的輸出連線。 您裝置或其網路上的防火牆必須允許透過連接埠 443 對串流閘道進行傳出連線 (請注意，通訊會透過以 TLS 加密的 WebSocket 連線進行)。
 
-在 Azure IoT 中樞入口網站的 [總覽] 索引標籤底下，可以找到裝置串流端點![的主機名稱。](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+您可以在 Azure IoT 中樞入口網站的 [總覽] 索引標籤底下找到裝置串流端點的主機 ![ 名。裝置串流端點 "](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 或者，您也可以使用 Azure CLI 找到此資訊：
 
@@ -190,7 +189,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 4. 服務本機 Proxy 會在等候來自使用者之新 SSH 連線的指定連接埠上進行接聽 (範例中使用連接埠 2222，但可以設定成任何其他可用的連接埠)。 使用者將 SSH 用戶端指向 localhost 上的服務本機 Proxy 連接埠。
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>備註
 
 * 上述步驟會完成 SSH 用戶端 (右側) 到 SSH 精靈 (左側) 之間的端對端通道。 這個端對端連線能力中有部分牽涉到將流量透過裝置資料流傳送給「IoT 中樞」。
 

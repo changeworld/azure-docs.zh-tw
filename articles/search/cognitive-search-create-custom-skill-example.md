@@ -9,17 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113810"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>範例：使用 Bing 實體搜尋 API 建立自訂技能
 
 在此範例中，您將瞭解如何建立 Web API 的自訂技能。 這項技能將接受位置、公用圖表和組織，並傳回其描述。 此範例會使用[Azure](https://azure.microsoft.com/services/functions/)函式來包裝[Bing 實體搜尋 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) ，使其可執行自訂技能介面。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 如果您不熟悉自訂技能應實行的輸入/輸出介面，請閱讀[自訂技能介面](cognitive-search-custom-skill-interface.md)一文。
 
@@ -33,7 +32,7 @@ ms.locfileid: "74113810"
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-1. 在 Visual Studio 中，從 [檔案] 功能表選取 [**新增** > **專案**]。
+1. 在 Visual Studio 中，從 [檔案] 功能表選取 [**新增**  >  **專案**]。
 
 1. 在 [新增專案] 對話方塊中，選取 [已安裝]****，展開 [Visual C#]**** > [雲端]****，選取 [Azure Functions]****，輸入專案的 [名稱]，然後選取 [確定]****。 函數應用程式名稱必須是有效的 c # 命名空間，因此請勿使用底線、連字號或任何其他非英數位元。
 
@@ -311,11 +310,11 @@ namespace SampleSkills
 }
 ```
 
-請務必根據您註冊 Bing *key*實體搜尋 API 時`key`所取得的金鑰，在常數中輸入您自己的金鑰值。
+請務必*key* `key` 根據您註冊 BING 實體搜尋 API 時所取得的金鑰，在常數中輸入您自己的金鑰值。
 
 這個範例會在單一檔案中包含所有必要的程式碼，以方便您使用。 您可以在[power 技能存放庫](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)中找到該相同技能的更結構化版本。
 
-當然，您可以將檔案從`Function1.cs`重新命名為`BingEntitySearch.cs`。
+當然，您可以將檔案從重新命名 `Function1.cs` 為 `BingEntitySearch.cs` 。
 
 ## <a name="test-the-function-from-visual-studio"></a>從 Visual Studio 測試函式
 
@@ -325,7 +324,7 @@ namespace SampleSkills
 POST https://localhost:7071/api/EntitySearch
 ```
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 ```json
 {
     "values": [
@@ -375,7 +374,7 @@ POST https://localhost:7071/api/EntitySearch
 
 當您對函式行為感到滿意時，就可以發行它。
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下專案並選取 [發佈]  。 選擇 [**建立新** > **發行**]。
+1. 在 [方案總管]**** 中，以滑鼠右鍵按一下專案並選取 [發佈]****。 選擇 [**建立新**  >  **發行**]。
 
 1. 如果您尚未將 Visual Studio 連線到您的 Azure 帳戶，請選取 [新增帳戶...]****。
 
@@ -383,7 +382,7 @@ POST https://localhost:7071/api/EntitySearch
 
 1. 部署完成之後，請注意網站 URL。 這是 Azure 中的函數應用程式的位址。 
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [資源群組]，然後尋找`EntitySearch`您發佈的函式。 在 [管理]**** 區段下，應該會看到主機金鑰。 選取 [預設]** 主機金鑰的 [複製]**** 圖示。  
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [資源群組]，然後尋找 `EntitySearch` 您發佈的函式。 在 [管理]**** 區段下，應該會看到主機金鑰。 選取 [預設]** 主機金鑰的 [複製]**** 圖示。  
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 測試函式
 
@@ -418,7 +417,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 在本機環境中執行此函式時，此範例應該會產生與您先前看到的相同結果。
 
 ## <a name="connect-to-your-pipeline"></a>連線到您的管線
-有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例示範如何呼叫技能，以將描述新增至檔中的組織（這可能會擴充為也可在位置和人員上工作）。 將`[your-entity-search-app-name]`取代為您的應用程式名稱。
+有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例示範如何呼叫技能，以將描述新增至檔中的組織（這可能會擴充為也可在位置和人員上工作）。 將取代 `[your-entity-search-app-name]` 為您的應用程式名稱。
 
 ```json
 {

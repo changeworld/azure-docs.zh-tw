@@ -9,10 +9,9 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954412"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>將 Windows Server Server/System Center 2012 R2 VMM 升級至 Windows Server/VMM 2016 
@@ -42,10 +41,10 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 - 如果您使用的是 System Center 2012 R2 VMM， 
 
-    - 檢查 vmm 上的資料庫資訊： **vmm 主控台** -> **設定** -> **一般** -> **資料庫**連線
+    - 檢查 vmm 上的資料庫資訊： **vmm 主控台**  ->  **設定**  ->  **一般**  ->  **資料庫**連線
     - 檢查用於 System Center Virtual Machine Manager 代理程式服務的服務帳戶
     - 請確定您有 VMM 資料庫的備份。
-    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 這可以透過流覽至**VMM 主控台** -> **設定** -> **一般** -> **資料庫**連線來完成。
+    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 這可以透過流覽至**VMM 主控台**  ->  **設定**  ->  **一般**  ->  **資料庫**連線來完成。
     - 請記下 2012R2 主要 VMM 伺服器和復原 VMM 伺服器的 VMM ID。 可以從「HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup」此登錄找到 VMM ID。
     - 請確認您要新增至叢集的新 SCVMM 的名稱與之前的相同。 
 

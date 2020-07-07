@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113063"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>瞭解 Azure 認知搜尋中的 OData 集合篩選
 
-若要[篩選](query-odata-filter-orderby-syntax.md)Azure 認知搜尋中的[ `any` `all` ](search-query-odata-collection-operators.md)集合欄位，您可以使用和運算子搭配**lambda 運算式**。 Lambda 運算式是參考**範圍變數**的布林運算式。 和運算子類似于大部分程式設計`for`語言中的迴圈，其中的範圍變數接受迴圈變數的角色，而 lambda 運算式則是迴圈的主體。 `all` `any` 在迴圈反覆運算期間，範圍變數會採用集合的「目前」值。
+若要[篩選](query-odata-filter-orderby-syntax.md)Azure 認知搜尋中的集合欄位，您可以使用[ `any` 和 `all` 運算子](search-query-odata-collection-operators.md)搭配**lambda 運算式**。 Lambda 運算式是參考**範圍變數**的布林運算式。 `any`和 `all` 運算子類似于大部分程式 `for` 設計語言中的迴圈，其中的範圍變數接受迴圈變數的角色，而 lambda 運算式則是迴圈的主體。 在迴圈反覆運算期間，範圍變數會採用集合的「目前」值。
 
-至少這就是它在概念上的運作方式。 實際上，Azure 認知搜尋會以非常不同的方式來執行篩選， `for`以因應迴圈的工作方式。 在理想的情況下，您不會看到這項差異，但在某些情況下則不會。 最終結果是您在撰寫 lambda 運算式時必須遵循的規則。
+至少這就是它在概念上的運作方式。 實際上，Azure 認知搜尋會以非常不同的方式來執行篩選，以因應 `for` 迴圈的工作方式。 在理想的情況下，您不會看到這項差異，但在某些情況下則不會。 最終結果是您在撰寫 lambda 運算式時必須遵循的規則。
 
 本文說明如何藉由探索 Azure 認知搜尋如何執行這些篩選器，來提供集合篩選器的規則。 如果您使用複雜的 lambda 運算式來撰寫「高級篩選」，您可能會發現這篇文章有助您瞭解篩選準則和原因。
 
@@ -40,8 +39,8 @@ ms.locfileid: "74113063"
 
 並非所有類型的集合都支援所有篩選功能的基本原因有三個：
 
-1. 某些資料類型只支援特定的運算子。 例如，比較布林`true`值和`false`使用`lt`、 `gt`等等並不合理。
-1. Azure 認知搜尋不支援**correlated search**在類型`Collection(Edm.ComplexType)`的欄位上進行相互關聯的搜尋。
+1. 某些資料類型只支援特定的運算子。 例如，比較布林值 `true` 和 `false` 使用 `lt` 、等等並不合理 `gt` 。
+1. Azure 認知搜尋不支援在類型的欄位上進行相互**關聯的搜尋** `Collection(Edm.ComplexType)` 。
 1. Azure 認知搜尋會使用反向索引來執行所有資料類型（包括集合）的篩選。
 
 第一個原因只是定義 OData 語言和 EDM 型別系統的結果。 本文的其餘部分將更詳細地說明最後兩個。
@@ -52,13 +51,13 @@ ms.locfileid: "74113063"
 
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
 
-如果無法與篩選相關，則上述篩選可能會傳回一個會議室已*deluxe，而*不同房間的基本費率低於100的飯店。 這沒什麼意義，因為 lambda 運算式的兩個子句都適用于相同的範圍變數，亦`room`即。 這就是這類篩選器相互關聯的原因。
+如果無法與篩選相關，則上述篩選可能會傳回一個會議室已*deluxe，而*不同房間的基本費率低於100的飯店。 這沒什麼意義，因為 lambda 運算式的兩個子句都適用于相同的範圍變數，亦即 `room` 。 這就是這類篩選器相互關聯的原因。
 
 不過，如果是全文檢索搜尋，就無法參考特定的範圍變數。 如果您使用回復搜尋來發出如下列的[完整 Lucene 查詢](query-lucene-syntax.md)：
 
     Rooms/Type:deluxe AND Rooms/Description:"city view"
 
-您可能會在 deluxe 某個房間時取得飯店，而不同的房間在描述中提及「城市視圖」。 例如，下列與`Id`的`1`檔會符合查詢：
+您可能會在 deluxe 某個房間時取得飯店，而不同的房間在描述中提及「城市視圖」。 例如，下列與 `Id` 的檔 `1` 會符合查詢：
 
 ```json
 {
@@ -80,16 +79,16 @@ ms.locfileid: "74113063"
 }
 ```
 
-這`Rooms/Type`是指在整份檔中參考`Rooms/Type`欄位的所有已分析詞彙，類似于`Rooms/Description`，如下表所示。
+這是指在 `Rooms/Type` 整份檔中參考欄位的所有已分析詞彙 `Rooms/Type` ，類似于 `Rooms/Description` ，如下表所示。
 
-如何`Rooms/Type`儲存以供全文檢索搜尋之用：
+如何 `Rooms/Type` 儲存以供全文檢索搜尋之用：
 
 | 中的詞彙`Rooms/Type` | 檔識別碼 |
 | --- | --- |
 | deluxe | 1, 2 |
 | 標準 | 1 |
 
-如何`Rooms/Description`儲存以供全文檢索搜尋之用：
+如何 `Rooms/Description` 儲存以供全文檢索搜尋之用：
 
 | 中的詞彙`Rooms/Description` | 檔識別碼 |
 | --- | --- |
@@ -98,21 +97,21 @@ ms.locfileid: "74113063"
 | 園 | 1 |
 | 大型 | 1 |
 | 汽車旅館 | 2 |
-| 聊天室 | 1, 2 |
+| 房間 | 1, 2 |
 | 標準 | 1 |
 | 整套 | 1 |
 | 檢視 | 1 |
 
-因此，與上方的篩選器不同的是，基本上會顯示「比`Type`對房間等於 ' Deluxe 室 ' 的檔，且**相同的房間** `BaseRate`小於100」，搜尋查詢會顯示「比`Rooms/Type`對具有「Deluxe」詞彙的`Rooms/Description`檔，並具有「城市視圖」片語。 不會有個別房間的概念，其欄位可以在後者的情況下相互關聯。
+因此，與上方的篩選器不同的是，基本上會顯示「比對房間 `Type` 等於 ' Deluxe 室 ' 的檔，且**相同的房間** `BaseRate` 小於100」，搜尋查詢會顯示「比對具有「Deluxe」詞彙的檔 `Rooms/Type` ，並 `Rooms/Description` 具有「城市視圖」片語。 不會有個別房間的概念，其欄位可以在後者的情況下相互關聯。
 
 > [!NOTE]
 > 如果您想要查看已新增至 Azure 認知搜尋的相互關聯搜尋支援，請投票[此使用者的語音專案](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)。
 
 ## <a name="inverted-indexes-and-collections"></a>反向索引和集合
 
-您可能已經注意到`Collection(Edm.Int32)`，在複雜集合上，lambda 運算式的限制遠低於簡單集合（例如、等等） `Collection(Edm.GeographyPoint)`。 這是因為 Azure 認知搜尋會將複雜的集合儲存為子檔的實際集合，而簡單的集合則不會儲存成集合。
+您可能已經注意到，在複雜集合上，lambda 運算式的限制遠低於簡單集合（例如 `Collection(Edm.Int32)` 、等等） `Collection(Edm.GeographyPoint)` 。 這是因為 Azure 認知搜尋會將複雜的集合儲存為子檔的實際集合，而簡單的集合則不會儲存成集合。
 
-例如，假設有一個可篩選的字串集合`seasons`欄位，像是在線上零售商的索引中。 上傳到此索引的某些檔可能如下所示：
+例如，假設有一個可篩選的字串集合欄位，像是 `seasons` 在線上零售商的索引中。 上傳到此索引的某些檔可能如下所示：
 
 ```json
 {
@@ -136,18 +135,18 @@ ms.locfileid: "74113063"
 }
 ```
 
-`seasons`欄位的值會儲存在稱為**反向索引**的結構中，如下所示：
+欄位的值 `seasons` 會儲存在稱為**反向索引**的結構中，如下所示：
 
 | 詞彙 | 檔識別碼 |
 | --- | --- |
-| 裝有 | 1, 2 |
+| spring | 1, 2 |
 | 夏令時 | 1 |
 | 屬於 | 1, 2 |
 | 冬季 | 2、3 |
 
-此資料結構的設計目的是要以絕佳的速度回答一個問題：在哪個檔中出現指定的詞彙？ 要回答這個問題，其運作方式比在集合上迴圈的一般相等檢查更類似。 事實上，這就是字串集合的原因，Azure 認知搜尋只允許`eq`在的 lambda 運算式內做為比較運算子`any`。
+此資料結構的設計目的是要以絕佳的速度回答一個問題：在哪個檔中出現指定的詞彙？ 要回答這個問題，其運作方式比在集合上迴圈的一般相等檢查更類似。 事實上，這就是字串集合的原因，Azure 認知搜尋只允許在的 `eq` lambda 運算式內做為比較運算子 `any` 。
 
-以相等的方式建立，接下來我們將探討如何將相同範圍變數上的多個相等檢查與結合在`or`一起。 這是因為代數和數量詞的分配[屬性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此運算式：
+以相等的方式建立，接下來我們將探討如何將相同範圍變數上的多個相等檢查與結合在一起 `or` 。 這是因為代數和數量詞的分配[屬性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此運算式：
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
@@ -155,7 +154,7 @@ ms.locfileid: "74113063"
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
-而這兩`any`個子運算式的每一個都可以使用反向索引來有效率地執行。 此外，感謝數量詞的[負法則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此運算式：
+而這兩個子運算式的每一個都 `any` 可以使用反向索引來有效率地執行。 此外，感謝數量詞的[負法則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此運算式：
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
@@ -163,24 +162,24 @@ ms.locfileid: "74113063"
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 
-這就是為何可以與`all` `ne`和`and`搭配使用的原因。
+這就是為何可以與和搭配使用的原因 `all` `ne` `and` 。
 
 > [!NOTE]
-> 雖然詳細資料已超出本檔的範圍，但這些相同的原則也會延伸到[地理空間點集合的距離和交集測試](search-query-odata-geo-spatial-functions.md)。 這就是為什麼`any`：
+> 雖然詳細資料已超出本檔的範圍，但這些相同的原則也會延伸到[地理空間點集合的距離和交集測試](search-query-odata-geo-spatial-functions.md)。 這就是為什麼 `any` ：
 >
 > - `geo.intersects`不可以是否定的
-> - `geo.distance`必須使用`lt`或進行比較`le`
-> - 運算式必須結合`or`，而不是`and`
+> - `geo.distance`必須使用或進行比較 `lt``le`
+> - 運算式必須結合，而 `or` 不是`and`
 >
-> 反向規則適用于`all`。
+> 反向規則適用于 `all` 。
 
-`lt`在支援、 `gt`、 `le`和`ge`運算子的資料類型集合上進行篩選時，允許使用更廣泛的運算式， `Collection(Edm.Int32)`例如。 具體而言，您可以`and` `or`使用和`any`中的，只要基礎比較運算式結合成使用`and`的`or`**範圍比較**，然後使用進一步結合。 此布林運算式的結構稱為[Disjunctive 一般格式（DNF）](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也稱為 "Or of and"。 相反地， `all`針對這些資料類型的 lambda 運算式必須是[組成 NORMAL 格式（my.cnf）](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，亦稱為「and of or」。 Azure 認知搜尋允許這類的範圍比較，因為它可以有效率地使用反向索引來執行它們，就像可以針對字串進行快速的詞彙查閱一樣。
+在支援 `lt` 、 `gt` 、 `le` 和 `ge` 運算子的資料類型集合上進行篩選時，允許使用更廣泛的運算式，例如 `Collection(Edm.Int32)` 。 具體而言，您可以使用和 `and` `or` 中的 `any` ，只要基礎比較運算式結合成使用的**範圍比較** `and` ，然後使用進一步結合 `or` 。 此布林運算式的結構稱為[Disjunctive 一般格式（DNF）](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也稱為 "Or of and"。 相反 `all` 地，針對這些資料類型的 lambda 運算式必須是[組成 Normal 格式（my.cnf）](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，亦稱為「and of or」。 Azure 認知搜尋允許這類的範圍比較，因為它可以有效率地使用反向索引來執行它們，就像可以針對字串進行快速的詞彙查閱一樣。
 
 總而言之，以下是 lambda 運算式中允許之功能的經驗法則：
 
-- 在`any`內部，一律允許*正面檢查*，例如相等、範圍比較， `geo.intersects`或`geo.distance`與`lt`或`le`比較（將 "接近程度" 視為類似檢查距離的相等）。
-- 在`any`中`or` ，一律允許使用。 只有在您`and`使用 Or of AND （DNF）時，才可以使用資料類型來表示範圍檢查。
-- 在`all`中，規則會反轉--只允許*負的檢查*，您可以使用`and` Always，而且`or`只能用於以 or （my.cnf）的 and 表示的範圍檢查。
+- 在內部 `any` ，一律允許*正面檢查*，例如相等、範圍比較， `geo.intersects` 或與 `geo.distance` 或比較 `lt` `le` （將 "接近程度" 視為類似檢查距離的相等）。
+- 在中 `any` ， `or` 一律允許使用。 只有在 `and` 您使用 or Of and （DNF）時，才可以使用資料類型來表示範圍檢查。
+- 在中 `all` ，規則會反轉--只允許*負的檢查*，您可以使用 `and` always，而且只能 `or` 用於以 Or （my.cnf）的 and 表示的範圍檢查。
 
 實際上，這些是您最可能使用的篩選器類型。 不過，瞭解可能的界限仍然很有説明。
 

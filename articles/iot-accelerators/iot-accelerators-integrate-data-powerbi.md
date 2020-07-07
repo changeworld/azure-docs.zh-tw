@@ -9,17 +9,16 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74184247"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 將遠端監視資料視覺化
 
 本教學課程會逐步引導您了解如何將來自 CosmosDB 的遠端監視解決方案資料插入 Power BI。 藉由建立此連線，您就能建立自己的自訂儀表板，並將其新增回遠端監視解決方案儀表板。 這個工作流能讓您建立更多現成圖表之外的特製化圖形。 您接著可以使用本教學課程來整合其他資料流，或建置自訂的儀表板以在遠端監視解決方案外部加以取用。 在 Power BI 中建置儀表板，表示您也可以選取特定部分來讓每個面板彼此互動。 例如，您可以有一個篩選條件只會顯示與模擬卡車有關的資訊，而儀表板的每個部分都會互動來只顯示模擬的卡車資訊。 如果您想要使用 Power BI 以外的工具，也可以擴充這些步驟來使用您偏好的視覺效果工具並連結至 Cosmos 資料庫，或是使用您已設定的自訂資料庫。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 您必須具有正在執行中的遠端監視解決方案
 - 您必須能夠存取執行 IoT 中樞和解決方案的[Azure 入口網站](https://portal.azure.com)和訂用帳戶

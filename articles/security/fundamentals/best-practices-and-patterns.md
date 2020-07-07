@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889847"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全性最佳作法與模式
@@ -30,9 +29,9 @@ ms.locfileid: "73889847"
 
 * [Azure 界限安全性最佳作法](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure 資料庫安全性最佳做法](database-best-practices.md)
-* [Azure 資料安全性和加密最佳作法](data-encryption-best-practices.md)
-* [Azure 身分識別管理和存取控制安全性最佳作法](identity-management-best-practices.md)
-* [Azure 網路安全性最佳作法](network-best-practices.md)
+* [Azure 資料安全性和加密最佳做法](data-encryption-best-practices.md)
+* [Azure 身分識別管理和存取控制安全性最佳做法](identity-management-best-practices.md)
+* [Azure 網路安全性最佳做法](network-best-practices.md)
 * [Azure 作業安全性最佳做法](operational-best-practices.md)
 * [Azure PaaS 最佳做法](paas-deployments.md)
 * [Azure Service Fabric 安全性最佳做法](service-fabric-best-practices.md)

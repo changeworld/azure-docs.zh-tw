@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953188"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 中樞裝置
@@ -22,7 +21,7 @@ ms.locfileid: "73953188"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理選項          | 工作                    |
+| 管理選項          | Task                    |
 |----------------------------|--------------------------------|
 | 直接方法             | 使裝置執行動作，例如啟動或停止傳送訊息，或是將裝置重新開機。                                        |
 | 讀取裝置對應項           | 取得裝置的報告狀態。 例如，裝置會回報 LED 現在正閃爍不停。                                    |
@@ -31,7 +30,7 @@ ms.locfileid: "73953188"
 
 如需差異的詳細說明和使用這些選項的相關指引，請參閱[裝置對雲端通訊指引](iot-hub-devguide-d2c-guidance.md)和[雲端對裝置通訊指引](iot-hub-devguide-c2d-guidance.md)。
 
-裝置對應項是存放裝置狀態資訊的 JSON 文件，包括中繼資料、設定和條件。 IoT 中樞會為其連線的每個裝置保存裝置對應項。 如需裝置對應項的詳細資訊，請參閱[開始使用裝置對應項](iot-hub-node-node-twin-getstarted.md)。
+裝置對應項是存放包括中繼資料、設定和條件此類裝置狀態資訊的 JSON 文件。 IoT 中樞會為其連線的每個裝置保存裝置對應項。 如需裝置對應項的詳細資訊，請參閱[開始使用裝置對應項](iot-hub-node-node-twin-getstarted.md)。
 
 ## <a name="what-you-learn"></a>您學到什麼
 
@@ -59,7 +58,7 @@ ms.locfileid: "73953188"
 
 ## <a name="sign-in-to-access-your-hub"></a>登入以存取您的中樞
 
-1. 在 Visual Studio 中，選取 [ **View** > **Cloud Explorer** ] 以開啟 Cloud Explorer。
+1. 在 Visual Studio 中，選取 [ **View**  >  **Cloud Explorer** ] 以開啟 Cloud Explorer。
 
 1. 選取 [帳戶管理] 圖示，以顯示您的訂閱。
 
@@ -89,9 +88,9 @@ ms.locfileid: "73953188"
 
 1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]****。
 
-   **Azure iot 裝置**對應項的 json 檔案隨即開啟，其中包含裝置對應項的內容。
+   檔案**上的azure-iot-device-twin.js**隨即開啟，其中包含裝置對應項的內容。
 
-1. 對**標記**或屬性進行一些編輯 **。所需**的欄位為**azure-iot-裝置**對應項 json 檔案。
+1. 對**標記**或屬性進行一些編輯 **。所需**的欄位會**在檔案上azure-iot-device-twin.js** 。
 
 1. 按 **Ctrl+S** 來更新裝置對應項。
 

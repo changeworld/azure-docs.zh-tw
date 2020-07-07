@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73749632"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 啟動在 Azure 中停滯在「Windows 正在就緒。 請勿關閉電腦」的狀態
@@ -26,7 +25,7 @@ ms.locfileid: "73749632"
 
  
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 Windows VM 不會開機。 當您使用 [**開機診斷**] 取得 VM 的螢幕擷取畫面時，您可能會看到 vm 顯示「準備就緒」或「正在取得 Windows 就緒」訊息。
 

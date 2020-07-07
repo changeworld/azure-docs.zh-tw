@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74091245"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>針對 vCenter Server 探索失敗進行疑難排解
@@ -20,7 +19,7 @@ ms.locfileid: "74091245"
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 屬性中的非數位值
 
-在9.20 之前的版本中，vCenter 會在針對 VM 上的屬性`snapshot.maxSnapShots`屬性抓取非數值時中斷連線。
+在9.20 之前的版本中，vCenter 會在針對 VM 上的屬性屬性抓取非數值時中斷連線 `snapshot.maxSnapShots` 。
 
 此問題是由錯誤識別碼95126所識別。
 
@@ -46,13 +45,13 @@ vCenter 探索會接受系統使用者所設定的系統預設 proxy 設定。 D
 
 遇到此問題時，會發生下列情況：
 
-- 因為發生錯誤\<，所以無法連線到 vcenter server vcenter>：遠端伺服器傳回錯誤：（503）伺服器無法使用
-- 因為發生錯誤\<，所以無法連線到 vcenter server vcenter>：遠端伺服器傳回錯誤：無法連接到遠端伺服器。
+- \<vCenter>因為發生錯誤，所以無法連線到 vCenter server：遠端伺服器傳回錯誤：（503）伺服器無法使用
+- \<vCenter>因為發生錯誤，所以無法連線到 vCenter server：遠端伺服器傳回錯誤：無法連接到遠端伺服器。
 - 無法連線到 vCenter/ESXi 伺服器。
 
 若要解決此問題：
 
-下載[PsExec 工具](https://aka.ms/PsExec)。 
+下載 [PsExec 工具](https://aka.ms/PsExec)。 
 
 使用 PsExec 工具來存取系統使用者內容，並判斷是否已設定 proxy 位址。 接著，您可以使用下列程式，將 vCenter 新增至略過清單。
 
@@ -60,7 +59,7 @@ vCenter 探索會接受系統使用者所設定的系統預設 proxy 設定。 D
 
 1. 使用 PsExec 工具在系統使用者內容中開啟 IE。
     
-    psexec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
+    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 
 2. 修改 Internet Explorer 中的 proxy 設定，以略過 vCenter IP 位址。
 3. 重新開機 tmanssvc 服務。
@@ -73,7 +72,7 @@ vCenter 探索會接受系統使用者所設定的系統預設 proxy 設定。 D
 
 3. 從命令提示字元中，執行下列命令。
    
-   **DRCONFIGURATOR.EXE.EXE/configure/AddBypassUrls [在新增 vCenter 時提供的 vCenter Server 的 IP 位址/FQDN]**
+   **DRCONFIGURATOR.EXE/configure/AddBypassUrls [新增 vCenter 時提供的 vCenter Server 的 IP 位址/FQDN]**
 
 4. 重新開機 DRA 提供者服務。
 

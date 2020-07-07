@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70860315"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 視窗
@@ -47,8 +46,8 @@ ms.locfileid: "70860315"
 ## <a name="upload-and-download-files"></a>上傳及下載檔案
 按一下視窗左上角的 [上傳/下載檔案] 圖示，然後選取 [上傳] 或 [下載]。  
 ![上傳/下載檔案](media/using-the-shell-window/uploaddownload.png)
-* 若要上傳檔案，請使用快顯視窗流覽至本機電腦上的檔案、選取所需的檔案，然後按一下 [開啟] 按鈕。  檔案將會上傳到`/home/user`目錄中。
-* 若要下載檔案，請在快顯視窗中輸入完整的檔案路徑（亦即，基本上是`/home/user`目錄底下預設會顯示的路徑），然後選取 [下載] 按鈕。  
+* 若要上傳檔案，請使用快顯視窗流覽至本機電腦上的檔案、選取所需的檔案，然後按一下 [開啟] 按鈕。  檔案將會上傳到目錄中 `/home/user` 。
+* 若要下載檔案，請在快顯視窗中輸入完整的檔案路徑（亦即，基本上是目錄底下預設會 `/home/user` 顯示的路徑），然後選取 [下載] 按鈕。  
 > [!NOTE] 
 > 檔案和檔案路徑在 Cloud Shell 中區分大小寫。 在檔案路徑中，再次檢查您的大小寫。
 

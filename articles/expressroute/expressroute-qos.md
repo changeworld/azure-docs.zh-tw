@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74080090"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 需求
@@ -29,9 +28,9 @@ ms.locfileid: "74080090"
 | **傳輸類別** | **處理方式 (DSCP 標示)** | **Microsoft 團隊和商務用 Skype 工作負載** |
 | --- | --- | --- |
 | **語音** |EF (46) |Skype/Microsoft 團隊/Lync voice |
-| **Interactive (互動式)** |AF41 (34) |影片、VBSS |
+| **互動式** |AF41 (34) |影片、VBSS |
 | |AF21 (18) |APP 共用 | 
-| **預設** |AF11 (10) |檔案傳輸 |
+| **預設值** |AF11 (10) |檔案傳輸 |
 | |CS0 (0) |任何其他項目 |
 
 * 您應將工作負載分類，並標記正確的 DSCP 值。 遵循 [這裡](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) 所提供的指引，以了解如何在您的網路中設定 DSCP 標示。

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74076695"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
@@ -84,7 +83,7 @@ ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的�
 
 下圖說明使用做為路徑前面的來影響 ExpressRoute 路徑選取專案。 在圖表中，透過 ExpressRoute 1 的路由通告會指出 eBGP 的預設行為。 在透過 ExpressRoute 2 的路由通告上，內部部署網路的 ASN 會在路由的 AS 路徑前面加上。 透過多個 ExpressRoute 線路接收相同的路由時，根據 eBGP 路由選取程式，VNet 會偏好具有最短路徑的路由。 
 
-[![5]][5]
+[![第]][5]
 
 如果 ExpressRoute 1 的兩個連線都已關閉，則 VNet 只會透過 ExpressRoute 2 查看 10.1.11.0/24 路由通告。 Consequentially，path 較長的路徑會變得不相關。 因此，待命線路會在此失敗狀態下使用。
 
@@ -110,7 +109,7 @@ ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的�
 
 下圖說明案例1。 在圖表中，綠色線條表示 VNet1 與內部部署網路之間流量的路徑。 藍色線表示 VNet2 與內部部署網路之間流量的路徑。 實線表示在穩定狀態中所需的路徑，而虛線表示在具有穩定狀態流量流量的對應 ExpressRoute 電路失敗時的流量路徑。 
 
-[![7]][7]
+[![utf-7]][7]
 
 您可以使用連線權數來架構案例，以影響 Vnet，以將內部部署網路系結流量連線到本機對等互連位置 ExpressRoute。 若要完成此解決方案，您必須確定對稱的反向流量流程。 您可以將本機喜好設定用於 BGP 路由器（在內部部署端上已終止 ExpressRoute 線路）上的 iBGP 會話，以偏好使用 ExpressRoute 線路。 下圖說明此解決方案。 
 

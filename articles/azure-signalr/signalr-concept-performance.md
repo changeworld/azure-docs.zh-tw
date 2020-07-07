@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74157661"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR Service 的效能指南
@@ -31,7 +30,7 @@ ms.locfileid: "74157661"
 
 *無伺服器模式*： Azure SignalR Service 只接受用戶端連接的模式。 不允許任何伺服器連接。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure SignalR Service 會針對不同的效能容量定義七個標準層。 本指南會回答下列問題：
 
@@ -168,7 +167,7 @@ WebSocket 是透過單一 TCP 連線的雙向和全雙工通訊協定。 伺服�
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-針對 Unit100，上一個表格中的輸出頻寬上限是 400 MB。 若為 20 KB 的訊息大小，輸出連線的最大值應為\* 400 MB 5/20 KB = 100000，符合實際值。
+針對 Unit100，上一個表格中的輸出頻寬上限是 400 MB。 若為 20 KB 的訊息大小，輸出連線的最大值應為 400 MB \* 5/20 KB = 100000，符合實際值。
 
 ##### <a name="mixed-use-cases"></a>混合使用案例
 

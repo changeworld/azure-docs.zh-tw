@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113862"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何參考 Azure 認知搜尋技能集中的批註
@@ -95,7 +94,7 @@ ms.locfileid: "74113862"
 
 有時候，您必須將特定類型的所有註解分組在一起，以將其傳遞至特定技能。 請考慮建立假設性的自訂技能，以從擷取自範例 2 的所有姓氏中識別出最常見的姓氏。 若只要將姓氏提供給自訂技能，請將內容指定為 `"/document"`，並將輸入指定為 `"/document/people/*/lastname"`。
 
-請注意，的基數`"/document/people/*/lastname"`大於檔的基數。 姓氏節點可能有 10 個，而此文件只有一個文件節點。 在此情況下，系統會自動建立一個 `"/document/people/*/lastname"` 陣列，其中包含文件中的所有元素。
+請注意，的基數大於檔的基數 `"/document/people/*/lastname"` 。 姓氏節點可能有 10 個，而此文件只有一個文件節點。 在此情況下，系統會自動建立一個 `"/document/people/*/lastname"` 陣列，其中包含文件中的所有元素。
 
 ```json
   {

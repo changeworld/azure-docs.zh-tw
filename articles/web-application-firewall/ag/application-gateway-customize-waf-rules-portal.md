@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74048369"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>使用 Azure 入口網站自訂 Web 應用程式防火牆規則
@@ -44,7 +43,7 @@ Azure 應用程式閘道 Web 應用程式防火牆（WAF）提供 Web 應用程�
    1. 搜尋您要停用的規則或規則群組。
    2. 選取您想要停用之規則的核取方塊。 
    3. 針對選取的規則選取頁面頂端的 [動作] （[啟用/停用]）。
-   2. 選取 [儲存]  。 
+   2. 選取 [儲存]。 
 
 ![儲存變更][3]
 

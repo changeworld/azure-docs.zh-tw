@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113093"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $select 語法
 
  您可以使用[OData **$select**參數](query-odata-filter-orderby-syntax.md)，從 Azure 認知搜尋選擇要包含在搜尋結果中的欄位。 本文會詳細說明 **$select**的語法。 如需有關如何在呈現搜尋結果時使用 **$select**的一般資訊，請參閱[如何在 Azure 認知搜尋中使用搜尋結果](search-pagination-page-layout.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 **$Select**參數會決定要在查詢結果集中傳回每份檔的哪些欄位。 下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義 **$select**參數的文法：
 
@@ -52,16 +51,16 @@ field_path ::= identifier('/'identifier)*
 
 **$Select**參數的形式有兩種：
 
-1. 單一星形（`*`），表示應該傳回所有可抓取的欄位，或
+1. 單一星形（ `*` ），表示應該傳回所有可抓取的欄位，或
 1. 以逗號分隔的欄位路徑清單，可識別應傳回的欄位。
 
 使用第二個表單時，您只能在清單中指定可抓取的欄位。
 
-如果您在不明確指定子欄位的情況下列出複雜欄位，所有可抓取的子欄位都會包含在查詢結果集中。 例如，假設您的索引有一個`Address`欄位， `Street`其中`City`包含、 `Country`和子欄位全都可供取得。 如果您在`Address` **$select**中指定，則查詢結果會包含三個子欄位。
+如果您在不明確指定子欄位的情況下列出複雜欄位，所有可抓取的子欄位都會包含在查詢結果集中。 例如，假設您的索引有一個 `Address` 欄位，其中包含 `Street` 、 `City` 和 `Country` 子欄位全都可供取得。 如果您 `Address` 在 **$select**中指定，則查詢結果會包含三個子欄位。
 
 ## <a name="examples"></a>範例
 
-在結果`HotelId`中`HotelName`包含、 `Rating`和最上層欄位，以及的`City`子欄位： `Address`
+在結果中包含 `HotelId` 、 `HotelName` 和 `Rating` 最上層欄位，以及的 `City` 子欄位 `Address` ：
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +77,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-將`HotelName` `Address`最上層欄位包含在結果中，以及的所有子欄位，以及`Type` `BaseRate` `Rooms`集合中每個物件的和子欄位：
+`HotelName`將最上層欄位包含在結果中，以及的所有子欄位 `Address` ，以及 `Type` `BaseRate` 集合中每個物件的和子欄位 `Rooms` ：
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

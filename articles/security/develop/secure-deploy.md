@@ -14,16 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68934877"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>在 Azure 上部署安全的應用程式
 在本文中，我們會提供部署雲端應用程式時應考慮的安全性活動和控制項。 在 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的發行和回應階段，涵蓋了要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，您可以用來部署更安全的應用程式。
 
-本文涵蓋下列 SDL 階段：
+本文章涵蓋下列 SDL 階段：
 
 - 版本
 - 回應

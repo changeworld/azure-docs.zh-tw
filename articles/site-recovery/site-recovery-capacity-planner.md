@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73936051"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>規劃 Hyper-V VM 災害復原的容量 
@@ -36,7 +35,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 * **快速規劃**：以 VM、磁碟、儲存體及變更率的平均數作為基礎，提供網路與伺服器的預測。
 * **詳細的規劃**：提供在 VM 層級上每個工作負載的詳細資料。 分析 VM 相容性，並取得網路和伺服器預測。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * 收集您的環境的資訊，包括 VM、每個 VM 的磁碟、每個磁碟的儲存體。
 * 識別複寫資料的每日變更 (流失) 率。 請下載 [Hyper-V 容量規劃工具](https://www.microsoft.com/download/details.aspx?id=39057)來取得變更率。 [深入了解](site-recovery-capacity-planning-for-hyper-v-replication.md) 此工具。 我們建議您執行此工具一週以上的時間來擷取平均值。
@@ -101,7 +100,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
    f. 在 [磁碟容量使用率 (%)]**** 中，指定平均使用率。
 
-   g. 在 [每日資料變更率 (%)]**** 中，指定來源伺服器的每日資料變更率。
+   如 在 [每日資料變更率 (%)]**** 中，指定來源伺服器的每日資料變更率。
 
    h. 在 [對應 Azure VM 大小]**** 中，輸入您想要對應的 Azure VM 大小。 如果您不想要手動執行此動作，則選取 [計算 IaaS VM]****。 如果您輸入手動設定，然後選取 [計算 IaaS VM]****，則手動設定可能會遭到覆寫。 計算程序會自動識別最符合的 Azure VM 大小。
 

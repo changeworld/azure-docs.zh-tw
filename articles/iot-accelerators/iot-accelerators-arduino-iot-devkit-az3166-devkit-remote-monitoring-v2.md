@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888872"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>將 IoT DevKit 裝置連線到遠端監視解決方案加速器
@@ -36,7 +35,7 @@ ms.locfileid: "73888872"
 
 1. 確定 IoT DevKit 未連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
 
-1. 按一下`F1`以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：開啟範例**...]。然後選取 [ **IoT DevKit** ] 作為 [面板]。
+1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [Azure IoT Device Workbench：**開啟範例...]** 。然後選取 [IoT DevKit] 作為面板。
 
 1. 找出 [遠端監視]****，並按一下 [開啟範例]****。 新的 VS Code 視窗隨即開啟，其中顯示專案資料夾：
 
@@ -63,7 +62,7 @@ ms.locfileid: "73888872"
 
 若要建置並上傳裝置程式碼：
 
-1. 按`F1`以開啟命令選擇區，輸入並選取 **[Azure IoT 裝置工作臺：上傳裝置程式碼**]：
+1. 按 `F1` 以開啟命令選擇區，輸入並選取 **[Azure IoT 裝置工作臺：上傳裝置程式碼**]：
 
 1. VS Code 會編譯程式碼並上傳到您的 DevKit 裝置：
 

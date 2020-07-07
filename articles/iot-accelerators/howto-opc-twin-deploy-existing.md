@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73824126"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>將 OPC 對應項部署至現有的專案
@@ -28,7 +27,7 @@ OPC UA 裝置登錄微服務可讓您存取已註冊的 OPC UA 應用程式及�
 > [!NOTE]
 > 如需部署詳細資料和指示的詳細資訊，請參閱 GitHub 存放[庫](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 請確定您已安裝 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)擴充功能。 如果您尚未這麼做，請複製此 GitHub 存放庫。 在 PowerShell 中執行下列命令：
 
@@ -52,7 +51,7 @@ cd azure-iiot-components
 
    輸出會包含公用端點的 URL。 
 
-3. 腳本順利完成後，請選取您是否要儲存`.env`盤案。  如果您想`.env`要使用主控台之類的工具連接到雲端端點，或部署模組以進行開發和偵測，則需要環境檔案。
+3. 腳本順利完成後，請選取您是否要儲存檔案 `.env` 。  `.env`如果您想要使用主控台之類的工具連接到雲端端點，或部署模組以進行開發和偵測，則需要環境檔案。
 
 ## <a name="troubleshooting-deployment-failures"></a>針對部署失敗進行疑難排解
 

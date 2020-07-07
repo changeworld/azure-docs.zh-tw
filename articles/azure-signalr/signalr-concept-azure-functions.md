@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74157615"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR Service 建立即時應用程式
@@ -27,7 +26,7 @@ Azure Functions 可讓您以[數種語言](../azure-functions/supported-language
 * HTTP 與 Webhook 要求
 * 定期計時器
 * 來自 Azure 服務的事件，例如：
-    - Event Grid
+    - 事件方格
     - 事件中樞
     - 服務匯流排
     - Cosmos DB 變更摘要

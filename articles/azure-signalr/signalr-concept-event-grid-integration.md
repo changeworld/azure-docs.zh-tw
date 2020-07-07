@@ -9,10 +9,9 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158202"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>回應 Azure SignalR Service 事件
@@ -29,7 +28,7 @@ Azure SignalR Service 事件會可靠地傳送到 Event Grid 服務，透過豐�
 ## <a name="available-azure-signalr-service-events"></a>可用的 Azure SignalR Service 事件
 Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 Azure SignalR Service 事件訂閱支援兩種類型的事件：  
 
-|活動名稱|描述|
+|事件名稱|Description|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|連接用戶端連接時引發。|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|當用戶端連接中斷連線時引發。|
@@ -63,5 +62,5 @@ Azure SignalR Service 事件包含回應資料變更所需的所有資訊。 您
 深入瞭解 Event Grid 並提供 Azure SignalR Service 的事件嘗試：
 
 > [!div class="nextstepaction"]
-> [嘗試與 Azure SignalR Service](./signalr-howto-event-grid-integration.md)
-> [關於 event grid](../event-grid/overview.md)的範例事件方格整合
+> [嘗試與 Azure SignalR Service](./signalr-howto-event-grid-integration.md) 
+>  的事件格線整合範例[關於事件方格](../event-grid/overview.md)

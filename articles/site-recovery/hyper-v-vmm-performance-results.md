@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73663180"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>將 Hyper-V 複寫至次要網站的測試結果
@@ -96,7 +95,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ## <a name="test-environment-details"></a>測試環境詳細資料
 
-### <a name="primary-site"></a>主要站台
+### <a name="primary-site"></a>主要網站
 
 * 主要網站所具備的叢集內含五部執行 470 個虛擬機器的 Hyper-V 伺服器。
 * VM 執行不同的工作負載，而且全都有啟用 Site Recovery 保護。
@@ -106,7 +105,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體需求](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Server (伺服器) | RAM | 模型 | 處理器 | 處理器數目 | NIC | 軟體 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 伺服器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
@@ -118,7 +117,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體規格](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Server (伺服器) | RAM | 模型 | 處理器 | 處理器數目 | NIC | 軟體 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
@@ -175,10 +174,10 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 | CPU |\Processor(_Total)\% Processor Time |
 | 可用的記憶體 |\記憶體\可用的 MB |
 | IOPS |\PhysicalDisk(_Total)\每秒的磁碟傳輸數 |
-| 每秒的 VM 讀取 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置（\<VHD>） \Read 作業數/秒 |
-| 每秒的 VM 寫入 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置（\<VHD>） \Write 作業/秒 |
-| VM 讀取輸送量 |\Hyper-V 虛擬存放裝置（\<VHD>） \Read Bytes/sec |
-| VM 寫入輸送量 |\Hyper-V 虛擬存放裝置（\<VHD>） \Write Bytes/sec |
+| 每秒的 VM 讀取 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置 (\<VHD>) \每秒的讀取作業數 |
+| 每秒的 VM 寫入 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的寫入作業數 |
+| VM 讀取輸送量 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的讀取位元組數 |
+| VM 寫入輸送量 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的寫入位元組數 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841383"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中設定由應用程式開發人員控制的散發（ADCD）
@@ -27,7 +26,7 @@ ms.locfileid: "68841383"
 
 如同 zD&T，ADCDs 僅供 IBM 客戶和合作夥伴使用，而且僅供開發和測試之用。 它們不會用於生產環境。 許多 IBM 安裝套件都可透過[Passport 優勢](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html)或[IBM PartnerWorld](https://www.ibm.com/partnerworld/public)下載。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -83,7 +82,7 @@ ms.locfileid: "68841383"
 6. 起始上傳至您建立的 Azure VM 目錄，這會成為 zD&T 的映射儲存體。
 
     > [!NOTE]
-    > 請確定該**ADCDTOOLS。XML**包含在上傳至**Home/MYUSERID/ZDT/adcd/nov2017**目錄中。 稍後您將會用到此資訊。
+    > 請確定上傳至**home/MyUserID/ZDT/adcd/nov2017**目錄中包含**ADCDTOOLS.XML** 。 稍後您將會用到此資訊。
 
 7. 等候檔案上傳，這可能需要一些時間，視您的 Azure 連線而定。
 
@@ -105,7 +104,7 @@ ms.locfileid: "68841383"
         /opt/ibm/zDT/bin/startServer
     ```
 2. 請記下命令所輸出的 URL，並使用此 URL 來存取 web 伺服器。 看起來像這樣：
-     > HTTPs：//（您的 VM 名稱或 IP 位址）： 9443/ZDTMC/index .html
+     > HTTPs：//（您的 VM 名稱或 IP 位址）： 9443/ZDTMC/index.html
      >
      > 請記住，您的 web 存取會使用埠9443。 使用此來登入 web 伺服器。 ZD&T 的使用者識別碼是**zdtadmin** ，密碼則是**password**。
 

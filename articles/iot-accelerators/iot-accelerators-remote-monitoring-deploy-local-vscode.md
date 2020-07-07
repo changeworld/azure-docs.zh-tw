@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890948"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>本機部署遠端監視解決方案加速器 - Visual Studio Code
@@ -21,11 +20,11 @@ ms.locfileid: "73890948"
 
 本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何在 Visual Studio Code 中執行微服務。 本機微服務部署會使用下列雲端服務： IoT 中樞、Cosmos DB、Azure 串流分析，以及 Azure 時間序列深入解析。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
-如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>電腦設定
 
@@ -64,7 +63,7 @@ dotnet build -c Release
 1. 啟動 Visual Studio Code。
 1. 在 VS Code 中，開啟 [ **azure-iot-電腦-遠端監視-dotnet** ] 資料夾。
 1. 在 [ **azure-iot-電腦-遠端監視-dotnet** ] 資料夾中，建立名為**vscode**的新資料夾。
-1. 將**services\scripts\local\launch\idesettings\vscode 中的**檔案 vscode**資料夾，複製**到您剛才建立的 **.vscode**資料夾。
+1. 將 services\scripts\local\launch\idesettings\vscode 上的檔案和**tasks.js**的**launch.js**複製到您剛才建立的**vscode**資料夾。
 1. 在 VS Code 中開啟 [**調試] 面板**，並執行 [**執行所有微服務**] 設定。 此組態會在 Docker 中執行裝置模擬微服務，並且在偵錯工具中執行其他微服務。
 
 在偵錯主控台中**執行 [執行所有 microsoervices** ] 的輸出看起來如下所示：
@@ -80,7 +79,7 @@ npm install
 npm start
 ```
 
-當開始完成時，您的瀏覽器會顯示**HTTP：\//localhost： 3000/儀表板**頁面。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
+當開始完成時，您的瀏覽器會顯示**HTTP： \/ /localhost： 3000/儀表板**頁面。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
 
 ### <a name="configure-and-run-nginx"></a>設定和執行 NGINX
 
@@ -93,7 +92,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 
-若要存取遠端監視解決方案儀表板，請在流覽\/器中流覽至 HTTP：/localhost：9000。
+若要存取遠端監視解決方案儀表板，請 \/ 在瀏覽器中流覽至 HTTP：/localhost：9000。
 
 ## <a name="clean-up"></a>清除
 

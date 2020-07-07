@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953290"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>執行 VMware 嚴重損壞修復的部署規劃工具
@@ -95,7 +94,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-使用預設設定，來分析假設 1500 個 VM，建立兩個 VMList.txt 檔案。 其中一個包含 1000 個 VM 和另一個包含 500 個 VM 的清單。 執行 Azure Site Recovery 部署規劃工具的兩個實例，一個使用 VMList1，另一個使用一個包含 vmlist2.txt。 您可以使用相同的目錄路徑來儲存兩個 VMList VM 的已分析資料。
+使用預設設定，來分析假設 1500 個 VM，建立兩個 VMList.txt 檔案。 其中一個包含 1000 個 VM 和另一個包含 500 個 VM 的清單。 執行 Azure Site Recovery 部署規劃工具的兩個實例，一個具有 VMList1.txt，另一個則使用 VMList2.txt。 您可以使用相同的目錄路徑來儲存兩個 VMList VM 的已分析資料。
 
 我們已經看到，作業會以硬體設定 (特別是執行工具從而產生報告之伺服器的 RAM 大小) 作為基礎，可能會因記憶體不足而發生失敗。 如果您的硬體良好，可以將 MaxVMsSupported 變更為任何較高的值。  
 
@@ -136,7 +135,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>產生報告
-此工具會產生啟用巨集的 Microsoft Excel 檔案 (XLSM) 做為報告輸出，其中摘要說明所有的部署建議。 報表會命名`DeploymentPlannerReport_<unique numeric identifier>.xlsm`並放在指定的目錄中。
+此工具會產生啟用巨集的 Microsoft Excel 檔案 (XLSM) 做為報告輸出，其中摘要說明所有的部署建議。 報表會命名 `DeploymentPlannerReport_<unique numeric identifier>.xlsm` 並放在指定的目錄中。
 
 >[!NOTE]
 >產生報告需要 Windows 電腦或具有 Excel 2013 或更新版本的 Windows Server。 這部電腦上的十進位符號應設定為 "."，以產生成本預估值。 如果您已將 "，" 設定為十進位符號，請移至 [控制台] 中的 [變更日期、時間或數位格式]，然後移至 [其他設定]，將小數點符號變更為 "."。

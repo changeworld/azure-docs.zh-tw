@@ -14,10 +14,9 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
 ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73620569"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>透過 Azure CLI 將 OS 磁碟連結到復原 VM，以對 Linux VM 進行疑難排解
@@ -39,7 +38,7 @@ ms.locfileid: "73620569"
 > [!Important]
 > 本文中的指令碼只適用於使用[受控磁碟](../linux/managed-disks-overview.md)的 VM。 
 
-在下列範例中，將參數名稱取代為您自己的值， `myResourceGroup`例如`myVM`和。
+在下列範例中，將參數名稱取代為您自己的值，例如 `myResourceGroup` 和 `myVM` 。
 
 ## <a name="determine-boot-issues"></a>判斷開機問題
 檢查序列輸出來判斷 VM 為何無法正常開機。 常見的例子是 `/etc/fstab` 中的項目無效，或因為刪除或移動基礎虛擬硬碟。
@@ -105,14 +104,14 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-如果資源群組和來源快照集不在相同的區域中，當您執行`az disk create`時，您會收到「找不到資源」錯誤。 在此情況下，您必須`--location <region>`指定，將磁片建立到與來源快照集相同的區域中。
+如果資源群組和來源快照集不在相同的區域中，當您執行時，您會收到「找不到資源」錯誤 `az disk create` 。 在此情況下，您必須指定， `--location <region>` 將磁片建立到與來源快照集相同的區域中。
 
 您現在有原始 OS 磁碟的複本。 您可以將這個新的磁片掛接至另一個 Windows VM，以進行疑難排解。
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>將新的虛擬硬碟連結至另一個 VM
 在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 您會將磁片連結到此疑難排解 VM，以流覽和編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或檢查其他應用程式或系統記錄檔。
 
-此腳本會將磁片`myNewOSDisk`連結至 VM `MyTroubleshootVM`：
+此腳本會將磁片連結 `myNewOSDisk` 至 VM `MyTroubleshootVM` ：
 
 ```azurecli
 # Get ID of the OS disk that you just created.

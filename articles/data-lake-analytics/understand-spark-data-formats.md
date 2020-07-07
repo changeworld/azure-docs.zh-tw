@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648437"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>瞭解 U-SQL 與 Spark 資料格式之間的差異
@@ -43,7 +42,7 @@ Spark 不了解 U-SQL 資料表。 如果您將資料儲存在 U-SQL 資料表�
 - 資料語義複製檔案時，複製將會發生在位元組層級。 因此，相同的資料應該會出現在[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)帳戶中。 不過，請注意，Spark 可能會以不同的方式來解讀某些字元。 例如，它可能會針對 CSV 檔案中的資料列分隔符號使用不同的預設值。
     此外，如果您要複製具類型的資料（從資料表），則 Parquet 和 Spark 對於某些類型的值（例如 float）可能會有不同的有效位數和小數位數，而且可能會以不同的方式來處理 null 值。 例如，U-SQL 具有 null 值的 c # 語義，而 Spark 有三個值的邏輯用於 null 值。
 
-- 資料組織（分割）： U-SQL 資料表提供兩個層級的分割。 外部層級（`PARTITIONED BY`）是藉由值和對應，大部分都是使用資料夾階層的 Hive/Spark 資料分割配置。 您必須確定 null 值會對應到正確的資料夾。 U-SQL 中`DISTRIBUTED BY`的內部層級（）提供4個散發配置：迴圈配置資源、範圍、雜湊和直接雜湊。
+- 資料組織（分割）： U-SQL 資料表提供兩個層級的分割。 外部層級（ `PARTITIONED BY` ）是藉由值和對應，大部分都是使用資料夾階層的 Hive/Spark 資料分割配置。 您必須確定 null 值會對應到正確的資料夾。 U-SQL 中的內部層級（ `DISTRIBUTED BY` ）提供4個散發配置：迴圈配置資源、範圍、雜湊和直接雜湊。
     Hive/Spark 資料表只支援使用與 U-SQL 不同的雜湊函數來進行值分割或雜湊資料分割。 當您輸出您的 U-SQL 資料表資料時，您可能只能夠對應到 Spark 的值分割，而且可能需要根據您的最終 Spark 查詢進一步調整資料配置。
 
 ## <a name="next-steps"></a>後續步驟

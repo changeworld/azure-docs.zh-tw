@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820168"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用連線處理站儀表板的功能
@@ -66,7 +65,7 @@ ms.locfileid: "73820168"
 
 1. 瀏覽至 OPC UA 伺服器瀏覽器樹狀目錄中您想要發佈的節點。
 
-1. 以滑鼠右鍵按一下節點。 按一下 [發佈]****：
+1. 以滑鼠右鍵按一下節點。 按一下 [**發佈**]：
 
     [![連線的處理站解決方案加速器發佈節點](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 

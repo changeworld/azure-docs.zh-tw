@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122197"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的容錯移轉和修補
@@ -59,13 +58,13 @@ Azure Cache for Redis 服務會使用最新的平臺功能和修正，定期更�
 
 ## <a name="additional-cache-load"></a>額外的快取負載
 
-發生容錯移轉時，Standard 和 Premium 快取必須將資料從一個節點複寫到另一個。 這項複寫會導致伺服器記憶體和 CPU 的負載增加。 如果快取實例已經過大量載入，用戶端應用程式可能會遇到延遲增加的情況。 在極端情況下，用戶端應用程式可能會收到超時例外狀況。 若要協助減輕這項額外負載的影響[，請設定](cache-configure.md#memory-policies)快`maxmemory-reserved`取的設定。
+發生容錯移轉時，Standard 和 Premium 快取必須將資料從一個節點複寫到另一個。 這項複寫會導致伺服器記憶體和 CPU 的負載增加。 如果快取實例已經過大量載入，用戶端應用程式可能會遇到延遲增加的情況。 在極端情況下，用戶端應用程式可能會收到超時例外狀況。 若要協助減輕這項額外負載的影響[，請](cache-configure.md#memory-policies)設定快取的 `maxmemory-reserved` 設定。
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>容錯移轉如何影響我的用戶端應用程式？
 
 用戶端應用程式所看到的錯誤數目，取決於在容錯移轉時，該連線上等待的作業數。 透過關閉其連線的節點路由傳送的任何連接都會看到錯誤。 當連接中斷時，許多用戶端程式庫可能會擲回不同類型的錯誤，包括超時例外狀況、連接例外狀況或通訊端例外狀況。 例外狀況的數目和類型取決於當快取關閉其連接時，要求的程式碼路徑中的位置。 例如，在容錯移轉發生時傳送要求但未收到回應的作業，可能會收到超時例外狀況。 已關閉連線物件上的新要求會收到連接例外狀況，直到重新連線成功為止。
 
-大部分的用戶端程式庫會嘗試重新連線至快取（如果已設定）。 不過，未預期的 bug 有時可能會將程式庫物件變成無法復原的狀態。 如果錯誤保存超過預先設定的時間長度，則應該重新建立連線物件。 在 Microsoft.NET 和其他物件導向的語言中，您可以使用[\<延遲 T\>模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)來重新建立連接，而不需要重新開機應用程式。
+大部分的用戶端程式庫會嘗試重新連線至快取（如果已設定）。 不過，未預期的 bug 有時可能會將程式庫物件變成無法復原的狀態。 如果錯誤保存超過預先設定的時間長度，則應該重新建立連線物件。 在 Microsoft.NET 和其他物件導向的語言中，在不重新開機應用程式的情況下建立連接，可以使用[延遲 \<T\> 模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)來完成。
 
 ### <a name="how-do-i-make-my-application-resilient"></a>如何? 讓應用程式具有彈性嗎？
 

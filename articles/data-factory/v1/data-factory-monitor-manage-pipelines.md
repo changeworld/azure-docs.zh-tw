@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73666972"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 入口網站和 PowerShell 監視和管理 Azure Data Factory 管線
@@ -87,7 +86,7 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">子狀態</th><th align="left">描述</th>
+    <th align="left">State</th><th align="left">子狀態</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">等候</td><td>ScheduleTime</td><td>尚未到達執行配量的時間。</td>
@@ -121,7 +120,7 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 <td>正在處理配量。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
 </tr>
 <tr>
 <td>已取消</td><td>配量已由使用者動作取消。</td>
@@ -290,7 +289,7 @@ Azure Data Factory 提供了許多功能供您使用 Azure 入口網站和 Azure
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 您可以使用**AzDataFactorySliceStatus** Cmdlet 來重新執行失敗。 如需 Cmdlet 的語法和其他詳細資料，請參閱[AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)主題。
 
-**範例：**
+**範例︰**
 
 下列範例把 Azure Data Factory 'WikiADF' 中 'DAWikiAggregatedData' 資料表的所有配量狀態都設為 'Waiting'。
 
