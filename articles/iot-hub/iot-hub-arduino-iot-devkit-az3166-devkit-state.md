@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73483951"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -106,7 +106,7 @@ ms.locfileid: "73483951"
 ![範例測試程序](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 您可以在 Azure 入口網站： IoT 中樞\> IoT 裝置（您的\> * \<裝置\> *  - \>裝置對應項）中查看裝置對應項的原始資料。
+> 您可以在 Azure 入口網站中查看裝置對應項的原始資料： [IoT 中樞]-[ \> IoT 裝置]-[裝置對應項] \> *\<your device\>*  - \> 。
 
 ## <a name="next-steps"></a>後續步驟
 

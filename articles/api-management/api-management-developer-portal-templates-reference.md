@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176800"
 ---
 # <a name="developer-portal-templates"></a>開發人員入口網站範本
@@ -46,7 +46,7 @@ ms.locfileid: "73176800"
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [產品](api-management-product-templates.md)  
     -   [產品清單](api-management-product-templates.md#ProductList)  
-    -   [基礎](api-management-product-templates.md#Product)  
+    -   [產品](api-management-product-templates.md#Product)  
 -   [應用程式](api-management-application-templates.md)  
     -   [應用程式清單](api-management-application-templates.md#ProductList)  
     -   [應用程式](api-management-application-templates.md#Application)  
@@ -54,12 +54,12 @@ ms.locfileid: "73176800"
     -   [問題清單](api-management-issue-templates.md#IssueList)  
 -   [使用者設定檔](api-management-user-profile-templates.md)  
     -   [設定檔](api-management-user-profile-templates.md#Profile)  
-    -   [訂閱](api-management-user-profile-templates.md#Subscriptions)  
+    -   [訂用帳戶](api-management-user-profile-templates.md#Subscriptions)  
     -   [應用程式](api-management-user-profile-templates.md#Applications)  
     -   [更新帳戶資訊](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [頁面](api-management-page-templates.md)  
     -   [登入](api-management-page-templates.md#SignIn)  
-    -   [註冊](api-management-page-templates.md#SignUp)  
+    -   [登記](api-management-page-templates.md#SignUp)  
     -   [找不到頁面](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>後續步驟  

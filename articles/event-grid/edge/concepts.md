@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992544"
 ---
 # <a name="event-grid-concepts"></a>Event Grid 概念
@@ -50,7 +50,7 @@ Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event G
 
 ## <a name="event-handlers"></a>事件處理常式
 
-從 Event Grid 的觀點而言，事件處理常式是傳送事件的位置。 處理常式會採取進一步的動作來處理事件。 事件方格支援數個處理常式類型。 您可以使用支援的 Azure 服務或您自己的 web 攔截作為處理常式。 視處理常式類型而定，Event Grid 依照不同的機制來保證事件的傳遞。 如果目的地事件處理常式是 HTTP web 攔截，當處理常式傳回的狀態碼時，就會重試`200 – OK`事件。 針對 edge 中樞，如果傳遞事件但未發生任何例外狀況，則會將它視為成功。
+從 Event Grid 的觀點而言，事件處理常式是傳送事件的位置。 處理常式會採取進一步的動作來處理事件。 事件方格支援數個處理常式類型。 您可以使用支援的 Azure 服務或您自己的 web 攔截作為處理常式。 視處理常式類型而定，Event Grid 依照不同的機制來保證事件的傳遞。 如果目的地事件處理常式是 HTTP web 攔截，當處理常式傳回的狀態碼時，就會重試事件 `200 – OK` 。 針對 edge 中樞，如果傳遞事件但未發生任何例外狀況，則會將它視為成功。
 
 ## <a name="security"></a>安全性
 

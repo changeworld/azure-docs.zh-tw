@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057552"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>適用於 Windows 的 Azure 效能診斷 VM 擴充功能
@@ -27,7 +27,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 > [!NOTE]
 > 如果您想要從 Azure 入口網站在您的 VM 上針對非傳統 VM 執行診斷，建議使用新體驗。 如需詳細資訊，請參閱 [Azure 虛擬機器的效能診斷](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此擴充功能可安裝於 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。 它也可以安裝於 Windows 8.1 和 Windows 10。
 
@@ -66,11 +66,11 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 
 ### <a name="property-values"></a>屬性值
 
-|   **名稱**   |**值 / 範例**|       **說明**      |
+|   **名稱**   |**值 / 範例**|       **描述**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|擴充功能的發行者命名空間。
-|type|AzurePerformanceDiagnostics|VM 擴充功能的類型。
+|類型|AzurePerformanceDiagnostics|VM 擴充功能的類型。
 |typeHandlerVersion|1.0|擴充功能處理常式的版本。
 |performanceScenario|basic|要對其擷取資料的效能案例。 有效值為：**basic**、**vmslow**、**azurefiles** 及 **custom**。
 |traceDurationInSeconds|300|追蹤的持續時間 (若有選取任何追蹤選項)。
@@ -233,7 +233,7 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
 
 ## <a name="view-and-share-the-results"></a>檢視並共用結果
 
-在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 連結至輸出 zip 檔案的 SAS 連結，可以在 **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** 資料夾底下名為 zipfilename**_saslink.txt 的文字檔中找到。 任何具有此連結的人員都能夠下載該 zip 檔案。
+在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 輸出 zip 檔案的 SAS 連結可以在名為*zipfilename*的文字檔中找到，_saslink.txt 在**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **資料夾底下。 任何具有此連結的人員都能夠下載該 zip 檔案。
 
 若要協助支援工程師處理支援票證，Microsoft 可能會使用此 SAS 連結來下載診斷資料。
 
@@ -255,4 +255,4 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。

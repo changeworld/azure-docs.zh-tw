@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72794027"
 ---
 # <a name="dead-letter-and-retry-policies"></a>無效信件與重試原則
@@ -26,7 +26,7 @@ ms.locfileid: "72794027"
 
 > [!NOTE]
 > - 在執行本文中的命令之前，請先在儲存體中建立儲存體帳戶和 blob 容器。
-> - 事件方格服務會在此容器中建立 blob。 Blob 的名稱會有事件方格訂用帳戶的名稱，並以大寫顯示所有字母。 例如，如果訂用帳戶的名稱是「我的 Blob 訂閱」，則無效信件 blob 的名稱會有「我的 BLOB 訂閱」（myblobcontainer/MY-BLOB-訂用帳戶/2019/8/8/5/111111111-1111-1111-111111111111）。 此行為是為了防止在 Azure 服務之間進行處理時的差異。
+> - 事件方格服務會在此容器中建立 blob。 Blob 的名稱會有事件方格訂用帳戶的名稱，並以大寫顯示所有字母。 例如，如果訂用帳戶的名稱是「我的 Blob 訂閱」，則無效信件 blob 的名稱將會有「我的 BLOB 訂閱」（myblobcontainer/「我的 BLOB-訂用帳戶/2019/8/8/5/111111111-1111-1111-1111-111111111111.json）。 此行為是為了防止在 Azure 服務之間進行處理時的差異。
 
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -133,5 +133,5 @@ New-AzEventGridSubscription `
 
 * 如需使用 Azure 函式應用程式來處理無效信件事件的範例應用程式，請參閱[適用於 .NET 的 Azure 事件方格無效信件範例](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/) \(英文\)。
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
+* 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

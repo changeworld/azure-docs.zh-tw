@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057995"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>因為 netvsc.sys 而無法從遠端連線到 Azure 中的 Windows 10 或 Windows Server 2016 VM
 
 此文章說明如何針對當您連線到 Hyper-V Server 2016 上的 Windows 10 或 Windows Server 2016 Datacenter 虛擬機器 (VM) 時沒有網路連線的問題進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您無法使用遠端桌面通訊協定（RDP）來連接到 Azure Windows 10 或 Windows Server 2016 VM。 在 [開機診斷](boot-diagnostics.md) 中，畫面中的網路介面卡 (NIC) 上方顯示紅色打叉符號。 這表示 VM 在作業系統完全載入之後沒有連線。
 
@@ -34,7 +34,7 @@ ms.locfileid: "71057995"
 若安裝之 netvsc.sys 系統檔案的版本是 **10.0.14393.594** 或 **10.0.15063.0**，則可能會發生此問題。 這些版本的 netvsc.sys 可能會使得系統無法與 Azure 平台互動。
 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在您遵循這些步驟之前，請將受影響 VM[的系統磁片快照](../windows/snapshot-copy-managed-disk.md)集作為備份。 若要針對此問題進行疑難排解，請使用「序列主控台」，或是將 VM 系統磁碟連結至復原 VM，藉以[修復離線的 VM](#repair-the-vm-offline)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "71057995"
 
 5. 在救援 VM 上，啟動 [登錄編輯程式] \(regedit.exe\)。
 
-6. 選取 [ **HKEY_LOCAL_MACHINE** ] 索引鍵，然後從功能表**中選取** > [檔案] [**載入 Hive** ]。
+6. 選取 [ **HKEY_LOCAL_MACHINE** ] 索引鍵，然後**File**  >  從功能表中選取 [檔案] [**載入 Hive** ]。
 
 7. 在 **\Windows\System32\config** 資料夾中尋找 SYSTEM 檔案。
 

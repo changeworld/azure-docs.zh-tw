@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057278"
 ---
 # <a name="troubleshoot-rdp-issues"></a>疑難排解 RDP 問題
@@ -41,7 +41,7 @@ ms.locfileid: "71057278"
 - [針對靜態 IP 而在 VM 中導致的 RDP 錯誤進行疑難排解](troubleshoot-rdp-static-ip.md)
 - [針對停用 NIC 而在 VM 中導致的 RDP 錯誤進行疑難排解](troubleshoot-rdp-nic-disabled.md)
 - [針對由安全模式所造成的 RDP 錯誤進行疑難排解](troubleshoot-rdp-safe-mode.md)
-- [停用 Azure VM 中的客體 OS 防火牆](disable-guest-os-firewall-windows.md)
+- [停用 Azure VM 中的客體作業系統防火牆](disable-guest-os-firewall-windows.md)
 - [啟用或停用客體 OS 上的防火牆規則](enable-disable-firewall-rule-guest-os.md)
 - [客體 OS 防火牆封鎖輸入流量](guest-os-firewall-blocking-inbound-traffic.md)
 - [客體 OS 防火牆設定不正確](guest-os-firewall-misconfigured.md) 

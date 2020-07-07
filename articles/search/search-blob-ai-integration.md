@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73496438"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 來瞭解 Blob 儲存體資料
@@ -34,7 +34,7 @@ AI 擴充會建立儲存在欄位中的新資訊，以文字形式加以捕捉�
 
 *AI 擴充*是 Azure 認知搜尋的編制索引架構的一部分，可整合來自 Microsoft 的內建 ai 或您提供的自訂 ai。 它可協助您執行端對端案例，您必須在其中處理 blob （現有的和新的 blob，或更新時）、「開啟所有檔案格式」以解壓縮影像和文字、使用各種 AI 功能來解壓縮所需的資訊，並在搜尋索引中編制它們的索引，以便快速搜尋、抓取和探索。 
 
-輸入是您在單一容器中的 blob，位於 Azure Blob 儲存體中。 Blob 幾乎可以是任何類型的文字或影像資料。 
+輸入是您在 Azure Blob 儲存體中的 Blob (在單一容器中)。 Blob 幾乎可以是任何類型的文字或影像資料。 
 
 輸出一律是搜尋索引，用於在用戶端應用程式中進行快速文字搜尋、抓取和探索。 此外，輸出也可以是將擴充的檔投射到 Azure blob 或 Azure 資料表的*知識存放區*，以便在 Power BI 或資料科學工作負載之類的工具中進行下游分析。
 
@@ -42,9 +42,9 @@ AI 擴充會建立儲存在欄位中的新資訊，以文字形式加以捕捉�
 
 ## <a name="start-with-services"></a>開始使用服務
 
-您需要「Azure 認知搜尋」和「Azure Blob 儲存體」。 在 Blob 儲存體中，您需要提供來源內容的容器。
+您需要 Azure 認知搜尋和 Azure Blob 儲存體。 在 Blob 儲存體中，您需要提供來源內容的容器。
 
-您可以直接在儲存體帳戶入口網站頁面中啟動。 在左側導覽頁面的 [ **Blob 服務**] 底下，按一下 [**新增 Azure 認知搜尋**] 以建立新的服務，或選取現有的服務。 
+您可以在您的儲存體帳戶入口網站頁面中直接開始。 在左側導覽頁面的 [Blob 服務] 底下，按一下 [新增 Azure 認知搜尋] 以建立新服務，或選取現有服務。 
 
 將 Azure 認知搜尋新增至您的儲存體帳戶之後，您可以遵循標準程式來擴充任何 Azure 資料來源中的資料。 我們建議您在 Azure 認知搜尋中使用「匯**入資料**」 wizard，以取得 AI 擴充的初始簡介。 本快速入門會逐步引導您進行步驟：[在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)。 
 
@@ -52,15 +52,15 @@ AI 擴充會建立儲存在欄位中的新資訊，以文字形式加以捕捉�
 
 ## <a name="use-a-blob-indexer"></a>使用 Blob 索引子
 
-AI 擴充是索引管線的附加元件，而在 Azure 認知搜尋中，這些管線是建置於*索引子*之上。 索引子是一種資料來源感知的子服務，具備用來取樣資料、讀取中繼資料、抓取資料，以及將資料從原生格式序列化為 JSON 檔以供後續匯入的內部邏輯。 索引子通常會用於匯入，與 AI 分開，但如果您想要建立 AI 擴充管線，則需要索引子和技能集來與它搭配使用。 本節將重點放在索引子;下一節著重于技能集。
+AI 擴充是索引管線的附加元件，而在 Azure 認知搜尋中，這些管線是建置於*索引子*之上。 「索引子」是資料來源感知的子服務，其具備內部邏輯，可用來取樣資料、讀取中繼資料、擷取資料，以及將資料從原生格式序列化為 JSON 文件以供後續匯入。 索引子通常會用於匯入，與 AI 分開，但如果您想要建立 AI 擴充管線，則需要索引子和技能集來與它搭配使用。 本節將重點放在索引子;下一節著重于技能集。
 
-Azure 儲存體中的 blob 會使用[Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)來編制索引。 您可以使用 [匯**入資料**]、[REST API] 或 [.net SDK] 來叫用此索引子。 在程式碼中，您可以藉由設定型別，以及提供包含 Azure 儲存體帳戶和 blob 容器的連接資訊，來使用此索引子。 您可以藉由建立虛擬目錄來將 blob 子集化，然後將它當做參數傳遞，或藉由篩選檔案類型副檔名來進行。
+Azure 儲存體中的 Blob 是使用 [Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)來編製索引。 您可以使用**匯入資料**精靈、REST API 或 .NET SDK 來叫用此索引子。 在程式碼中，您可以藉由設定類型，以及提供包含 Azure 儲存體帳戶和 Blob 容器的連線資訊，來使用此索引子。 您可以藉由建立虛擬目錄來將 Blob 子集化，然後將其當作參數傳遞，或藉由篩選檔案類型副檔名來進行。
 
-索引子會執行「檔破解」，開啟 blob 以檢查內容。 連接到資料來源之後，就是管線中的第一個步驟。 若是 blob 資料，則會偵測到 PDF、office 檔、影像和其他內容類型。 使用文字解壓縮的檔破解是免費的。 使用影像解壓縮的檔破解是以您可以在[定價頁面](https://azure.microsoft.com/pricing/details/search/)上找到的費率收費。
+索引子會執行「文件破解」(開啟 Blob 以檢查內容)。 連線到資料來源之後，其就是管線中的第一個步驟。 若是 blob 資料，則會偵測到 PDF、office 檔、影像和其他內容類型。 使用文字擷取的文件破解是免費的。 使用影像解壓縮的檔破解是以您可以在[定價頁面](https://azure.microsoft.com/pricing/details/search/)上找到的費率收費。
 
 雖然所有檔都會被破解，但只有在您明確提供技能來執行此動作時，才會發生擴充。 例如，如果您的管線僅包含影像分析，則會忽略容器或檔中的文字。
 
-Blob 索引子隨附設定參數，如果基礎資料提供足夠的資訊，則支援變更追蹤。 您可以在[Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)中深入瞭解核心功能。
+Blob 索引子隨附設定參數，如果底層資料提供足夠的資訊，則支援變更追蹤。 您可以在 [Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)中深入了解核心功能。
 
 ## <a name="add-ai-components"></a>新增 AI 元件
 
@@ -112,8 +112,8 @@ AI 擴充的輸出是 Azure 認知搜尋上的搜尋索引，或 Azure 儲存體
 
 您還可以利用 AI 擴充來充分運用您在 Azure 儲存體中的資料，包括以不同的方式結合認知服務，以及在沒有任何現有認知服務的情況下，撰寫自訂技能。 您可以遵循下列連結深入瞭解。
 
-+ [使用 Azure 入口網站（Azure Blob 儲存體）上傳、下載及列出 blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [設定 blob 索引子（Azure 認知搜尋）](search-howto-indexing-azure-blob-storage.md) 
++ [使用 Azure 入口網站上傳、下載及列出 Blob (Azure Blob 儲存體)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [設定 Blob 索引子 (Azure 認知搜尋)](search-howto-indexing-azure-blob-storage.md) 
 + [AI 擴充總覽（Azure 認知搜尋）](cognitive-search-concept-intro.md) 
 + [建立技能集（Azure 認知搜尋）](cognitive-search-defining-skillset.md)
 + [對應注釋樹狀結構中的節點（Azure 認知搜尋）](cognitive-search-output-field-mapping.md)

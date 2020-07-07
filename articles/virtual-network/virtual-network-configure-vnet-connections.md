@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71099065"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>設定及驗證虛擬網路或 VPN 連線
@@ -252,13 +252,13 @@ BGP 也可以藉由將 BGP 閘道從一個 BGP 對等互連學習到的所有其
 
 檢查 SKU 會導致20到30分鐘的停機時間。 一旦閘道具有正確的 SKU，您就可以使用[Reset-azurermvirtualnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell commandlet 來新增 as 號碼。 在您設定 AS 號碼之後，將會自動提供閘道的 BGP 對等 IP。
 
-您必須使用 AS `LocalNetworkGateway`號碼和 BGP 對等位址來手動提供。 您可以使用[set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0)或`-BgpPeeringAddress` [set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell commandlet 來設定`ASN`和值。 有些 AS 數位會保留給 Azure，而且您無法如[關於 BGP 與 Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)中所述使用它們。
+您必須 `LocalNetworkGateway` 使用 AS 號碼和 BGP 對等位址來手動提供。 您可以 `ASN` `-BgpPeeringAddress` 使用[Set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0)或[set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell commandlet 來設定和值。 有些 AS 數位會保留給 Azure，而且您無法如[關於 BGP 與 Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)中所述使用它們。
 
-連線物件必須啟用 BGP。 您可以透過`-EnableBGP` [get-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)或 get-azurermvirtualnetworkgatewayconnection 將值設定為。 [Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) `$True`
+連線物件必須啟用 BGP。 您可以 `-EnableBGP` `$True` 透過[get-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)或[get-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)將值設定為。
 
 ### <a name="validate-the-bgp-configuration"></a>驗證 BGP 設定
 
-若要檢查是否已正確設定 BGP，您可以執行`get-AzureRmVirtualNetworkGateway`和`get-AzureRmLocalNetworkGateway` commandlet。 然後您會注意到部分中的`BgpSettingsText` BGP 相關輸出。 例如：
+若要檢查是否已正確設定 BGP，您可以執行 `get-AzureRmVirtualNetworkGateway` 和 `get-AzureRmLocalNetworkGateway` commandlet。 然後您會注意到部分中的 BGP 相關輸出 `BgpSettingsText` 。 例如：
 
 ```
 {

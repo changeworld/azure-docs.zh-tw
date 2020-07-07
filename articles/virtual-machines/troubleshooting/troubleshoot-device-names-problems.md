@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058212"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>針對 Linux VM 裝置名稱變更進行疑難排解
 
 本文章說明在您重新啟動 Linux VM 或重新連接資料磁碟之後，裝置名稱會變更的原因。 本文章也提供此問題的解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 在 Microsoft Azure 中執行 Linux VM 時，您可能會遇到下列問題：
 
 - VM 在重新啟動之後無法開機。
@@ -38,7 +38,7 @@ Linux 中的裝置路徑不保證會在重新啟動之間保持一致。 裝置�
 
 問題發生的原因是因為 Linux 中由 SCSI 子系統所排定的裝置掃描是以非同步方式執行。 因此，裝置路徑名稱可能會在重新啟動之間有所不同。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決這個問題，請使用永續性命名。 有四種方式可使用永續性命名：依檔案系統標籤、依 UUID、依識別碼，或依路徑。 我們建議針對 Azure Linux VM 使用檔案系統標籤或 UUID。
 
@@ -148,7 +148,7 @@ Azure Linux 代理程式 Udev 規則會在 /dev/disk/azure 路徑下方建構一
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 如需詳細資訊，請參閱下列文章：
 

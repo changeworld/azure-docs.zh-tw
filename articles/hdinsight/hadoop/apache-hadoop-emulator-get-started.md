@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73044759"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>開始使用 Apache Hadoop 沙箱，也就是虛擬機器上的模擬器
 
 了解如何在虛擬機器上從 Hortonworks 安裝 Apache Hadoop 沙箱，以了解 Hadoop 生態系統。 沙箱提供本機開發環境，讓您了解 Hadoop、Hadoop 分散式檔案系統 (HDFS)，以及作業提交。 熟悉 Hadoop 之後，您就可以開始在 Azure 中使用 Hadoop 建立 HDInsight 叢集。 有關如何開始使用的詳細資訊，請參閱 [開始在 HDInsight 中使用 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Oracle VirtualBox](https://www.virtualbox.org/)。 請從[這裡](https://www.virtualbox.org/wiki/Downloads)下載並安裝。
 
@@ -44,14 +44,14 @@ ms.locfileid: "73044759"
 
     ![virtualbox 管理員正常啟動](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. 開啟網頁瀏覽器，並流覽至顯示的 URL （ `http://127.0.0.1:8888`通常是）。
+1. 開啟網頁瀏覽器，並流覽至顯示的 URL （通常是 `http://127.0.0.1:8888` ）。
 
 ## <a name="set-sandbox-passwords"></a>設定沙箱密碼
 
 1. 從 [Hortonworks 沙箱] 頁面的 [入門]**** 步驟選取 [檢視進階選項]****。 在此頁面上使用該資訊，以透過 SSH 登入沙箱。 使用提供的名稱和密碼。
 
    > [!NOTE]
-   > 如果您未安裝 SSH 用戶端，您可以使用在虛擬機器所提供的 web 型 SSH **http://localhost:4200/**。
+   > 如果您未安裝 SSH 用戶端，您可以使用在虛擬機器所提供的 web 型 SSH **http://localhost:4200/** 。
 
     第一次使用 SSH 連線時，系統會提示您變更根帳戶的密碼。 輸入新密碼，這是您在使用 SSH 登入時使用的密碼。
 

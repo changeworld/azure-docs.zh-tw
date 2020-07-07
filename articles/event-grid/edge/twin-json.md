@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992141"
 ---
 # <a name="module-twin-json-schema"></a>模組對應項 JSON 架構
@@ -21,13 +21,13 @@ ms.locfileid: "72992141"
 IoT Edge 上的事件方格會與 IoT Edge 生態系統整合，並支援透過模組對應項建立主題和訂用帳戶。 它也會將所有主題和事件訂閱的目前狀態報表到模組對應項上的報告屬性。
 
 > [!WARNING]
-> 由於 IoT Edge 生態系統中的限制，下列 json 範例中的所有陣列元素都已編碼為 json 字串。 請`EventSubscription.Filter.EventTypes`參閱`EventSubscription.Filter.AdvancedFilters`下列範例中的和索引鍵。
+> 由於 IoT Edge 生態系統中的限制，下列 json 範例中的所有陣列元素都已編碼為 json 字串。 請 `EventSubscription.Filter.EventTypes` 參閱 `EventSubscription.Filter.AdvancedFilters` 下列範例中的和索引鍵。
 
 ## <a name="desired-properties-json"></a>所需屬性 JSON
 
-* [主題] 區段中每個索引鍵/值組的值，在建立主題時，會與`Topic.Properties`用於 API 的 JSON 架構完全相同。
-* 在建立主題時， **EventSubscriptions**區段中每個索引鍵/值組的值都與用於`EventSubscription.Properties` API 的 json 架構完全相同。
-* 若要刪除主題，請在所需`null`的屬性中將其值設定為。
+* [主題] 區段中每個索引鍵/值組的值，在建立主題時，會與用於 API 的 JSON 架構完全相同 `Topic.Properties` 。
+* 在建立主題時， **EventSubscriptions**區段中每個索引鍵/值組的值都與用於 API 的 json 架構完全相同 `EventSubscription.Properties` 。
+* 若要刪除主題，請 `null` 在所需的屬性中將其值設定為。
 * 不支援透過所需的屬性刪除事件訂閱。
 
 ```json

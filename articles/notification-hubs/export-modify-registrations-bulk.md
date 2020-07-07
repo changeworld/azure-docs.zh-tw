@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212394"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>匯出和匯入大量 Azure 通知中樞註冊
@@ -115,7 +115,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-除了輸入和輸出 Url，此範例會建立`NotificationHubJob`物件，其中包含`JobType`物件，它可以是下列其中一種類型：
+除了輸入和輸出 Url，此範例會建立 `NotificationHubJob` 物件，其中包含 `JobType` 物件，它可以是下列其中一種類型：
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
@@ -128,7 +128,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-這些檔案會列出批次作業中的成功和失敗作業。 檔案格式為`.cvs`，其中每個資料列都有原始輸入檔的行號，以及作業的輸出（通常是已建立或已更新的註冊描述）。
+這些檔案會列出批次作業中的成功和失敗作業。 檔案格式為 `.cvs` ，其中每個資料列都有原始輸入檔的行號，以及作業的輸出（通常是已建立或已更新的註冊描述）。
 
 ### <a name="full-sample-code"></a>完整範例程式碼
 下列範例程式碼會將註冊匯入通知中樞。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71066759"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>以 Azure API 管理進行進階要求節流
@@ -30,7 +30,7 @@ ms.locfileid: "71066759"
 ## <a name="custom-key-based-throttling"></a>依自訂索引鍵節流
 
 > [!NOTE]
-> 在`rate-limit-by-key` Azure `quota-by-key` API 管理的取用層中，無法使用和原則。 
+> `rate-limit-by-key` `quota-by-key` 在 Azure API 管理的取用層中，無法使用和原則。 
 
 新的 [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) 和 [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) 原則能提供更有彈性的流量控制解決方案。 這些新原則可讓您定義運算式，以識別要用來追蹤流量使用量的索引鍵。 其運作的方式用範例來說明最簡單。 
 

@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71203662"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>管理 OPC 保存庫憑證服務
@@ -25,17 +25,17 @@ ms.locfileid: "71203662"
 > [!IMPORTANT]
 > 必須要有系統管理員角色，才能建立或更新簽發者 CA 憑證。
 
-1. 在`https://myResourceGroup-app.azurewebsites.net`中開啟您的憑證服務，然後登入。
+1. 在中開啟您的憑證服務 `https://myResourceGroup-app.azurewebsites.net` ，然後登入。
 2. 前往 [**憑證群組**]。
-3. 有一個預設的憑證群組列出。 選取 [編輯]  。
+3. 有一個預設的憑證群組列出。 選取 [編輯]。
 4. 在 [**編輯憑證群組詳細資料**] 中，您可以修改 CA 和應用程式憑證的主體名稱和存留期。 只有在發行第一個 CA 憑證之前，應該只設定一次主體和存留期。 作業期間的存留期變更可能會導致所發行憑證和 Crl 的存留時間不一致。
-5. 輸入有效的主旨（例如， `CN=My CA Root, O=MyCompany, OU=MyDepartment`）。<br>
+5. 輸入有效的主旨（例如， `CN=My CA Root, O=MyCompany, OU=MyDepartment` ）。<br>
    > [!IMPORTANT]
    > 如果您變更主旨，則必須更新簽發者憑證，否則服務將無法簽署應用程式憑證。 設定的主旨會針對作用中簽發者憑證的主旨進行檢查。 如果主體不相符，憑證簽署會遭到拒絕。
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 7. 如果此時遇到「禁止」的錯誤，表示您的使用者認證沒有系統管理員許可權，無法修改或建立新的根憑證。 根據預設，部署服務的使用者具有服務的系統管理員和簽署角色。 其他使用者必須在 Azure Active Directory （Azure AD）應用程式註冊中，視需要新增至核准者、作者或系統管理員角色。
-8. 選取 [**詳細資料**]。 這應該會顯示更新的資訊。
-9. 選取 [**更新 CA 憑證**] 以發行第一個簽發者 CA 憑證，或更新簽發者憑證。 然後選取 [確定]  。
+8. 選取 [詳細資料]。 這應該會顯示更新的資訊。
+9. 選取 [**更新 CA 憑證**] 以發行第一個簽發者 CA 憑證，或更新簽發者憑證。 然後選取 [確定]。
 10. 幾秒鐘後，您會看到**憑證詳細資料**。 若要下載最新的 CA 憑證和 CRL 以散發至您的 OPC UA 應用程式，請選取 [**簽發者**或**crl**]。
 
 現在，OPC UA 憑證管理服務已準備好發行 OPC UA 應用程式的憑證。
@@ -51,9 +51,9 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 > [!IMPORTANT]
 > 必須要有系統管理員角色，才能更新簽發者 CRL。
 
-1. 在`https://myResourceGroup.azurewebsites.net`中開啟您的憑證服務，然後登入。
+1. 在中開啟您的憑證服務 `https://myResourceGroup.azurewebsites.net` ，然後登入。
 2. 移至 [**憑證群組**] 頁面。
-3. 選取 [**詳細資料**]。 這應該會顯示目前的憑證和 CRL 資訊。
+3. 選取 [詳細資料]。 這應該會顯示目前的憑證和 CRL 資訊。
 4. 選取 [**更新 Crl 撤銷清單（CRL）** ]，為 OPC 保存庫儲存體中所有作用中的簽發者憑證發出更新的 crl。
 5. 幾秒鐘後，您會看到**憑證詳細資料**。 若要下載最新的 CA 憑證和 CRL 以散發至您的 OPC UA 應用程式，請選取 [**簽發者**或**crl**]。
 
@@ -66,8 +66,8 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 ### <a name="add-user"></a>新增使用者
 
 1. 開啟 Azure 入口網站。
-2. 前往**Azure Active Directory** > **企業應用程式**。
-3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設， `resourceGroupName-service`您的）。
+2. 前往**Azure Active Directory**  >  **企業應用程式**。
+3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設，您的 `resourceGroupName-service` ）。
 4. 移至 [**使用者和群組**]。
 5. 選取 [**新增使用者**]。
 6. 選取或邀請使用者指派給特定角色。
@@ -78,8 +78,8 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 ### <a name="remove-user"></a>移除使用者
 
 1. 開啟 Azure 入口網站。
-2. 前往**Azure Active Directory** > **企業應用程式**。
-3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設， `resourceGroupName-service`您的）。
+2. 前往**Azure Active Directory**  >  **企業應用程式**。
+3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設，您的 `resourceGroupName-service` ）。
 4. 移至 [**使用者和群組**]。
 5. 選取要移除角色的使用者，然後選取 [**移除**]。
 6. 若為 [系統管理員] 或 [核准者] 角色中移除的使用者，請同時從 Azure Key Vault 原則中移除它們。
@@ -93,8 +93,8 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>若為核准者角色，必須將下列許可權新增至 Key Vault
 
 1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
+2. 移至您的 OPC 保存庫 `resourceGroupName` ，在部署期間使用。
+3. 移至 [Key Vault] `resourceGroupName-xxxxx` 。
 4. 移至 [**存取原則**]。
 5. 選取 [新增]****。
 6. 略過範本。 沒有符合需求的範本。
@@ -107,8 +107,8 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>對於系統管理員角色，必須將下列許可權新增至 Key Vault
 
 1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
+2. 移至您的 OPC 保存庫 `resourceGroupName` ，在部署期間使用。
+3. 移至 [Key Vault] `resourceGroupName-xxxxx` 。
 4. 移至 [**存取原則**]。
 5. 選取 [新增]****。
 6. 略過範本。 沒有符合需求的範本。
@@ -121,8 +121,8 @@ CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>從 Azure Key Vault 移除使用者存取原則
 
 1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
+2. 移至您的 OPC 保存庫 `resourceGroupName` ，在部署期間使用。
+3. 移至 [Key Vault] `resourceGroupName-xxxxx` 。
 4. 移至 [**存取原則**]。
 5. 尋找要移除的使用者，然後選取 [**刪除**]。
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672898"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 對 U-SQL 作業進行排程
 
 在本文件中，您會了解如何使用 SQL Server Integration Services (SSIS) 來協調及建立 U-SQL 作業。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [適用於 Integration Services 的 Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) 能提供 [Azure Data Lake Analytics 工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)和 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)，以協助連線至 Azure Data Lake Analytics 服務。 若要使用此工作，請務必安裝：
 
@@ -93,7 +93,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
     
     若要建立此檔案連線：
 
-   1. 選擇 [[fileconnection] 設定] 中的 [ ** \<新增連接 ...] >** 。
+   1. 選擇 [ **\<New Connection...>** [fileconnection] 設定]。
    2. 將 [使用類型]**** 設定為 [現有檔案]****，並將 [檔案]**** 設定為任何現有檔案的檔案路徑。
 
        ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
@@ -106,7 +106,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 3. 將 [AzureDataLakeAnalyticsConnection]**** 設定為您想要提交作業的 Azure Data Lake Analytics 帳戶。 深入了解 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)。
 
-4. 設定其他作業組態。 [深入瞭解](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
+4. 設定其他作業組態。 [深入了解](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
 
 5. 使用**運算式**來以動態方式設定 U-SQL 作業：
 

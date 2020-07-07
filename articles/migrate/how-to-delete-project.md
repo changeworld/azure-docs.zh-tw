@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73512726"
 ---
 # <a name="delete-an-azure-migrate-project"></a>刪除 Azure Migrate 專案
@@ -18,7 +18,7 @@ ms.locfileid: "73512726"
 本文說明如何刪除[Azure Migrate](migrate-overview.md)專案。
 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 刪除專案之前：
 
@@ -26,7 +26,7 @@ ms.locfileid: "73512726"
 - 如果您已將 Log Analytics 工作區附加至伺服器評估工具以進行相依性分析，請決定是否要刪除工作區。 
     - 不會自動刪除工作區。 請手動將其刪除。
     - 請先確認工作區的用途，再將其刪除。 相同的 Log Analytics 工作區可以用於多個案例。
-    - 刪除專案之前，您可以在 [ **OMS 工作區**] 下的 [ **Azure Migrate-** > 伺服器**Azure Migrate-伺服器評估**] 中找到工作區的連結。
+    - 刪除專案之前，您可以在 [OMS 工作區] 下的 [ **Azure Migrate-** 伺服器  >  **Azure Migrate-伺服器評估**] 中**OMS Workspace**找到工作區的連結。
     - 若要在刪除專案之後刪除工作區，請尋找相關資源群組中的工作區，並遵循[這些指示](../azure-monitor/platform/delete-workspace.md)。
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "73512726"
 
 ### <a name="vmwarephysical-server"></a>VMware/實體伺服器
 
-**Resource** | **類型**
+**Resource** | **型別**
 --- | ---
 "Appliancename" kv | 金鑰保存庫
 "Appliancename" 網站 | OffAzure/VMwareSites
@@ -67,7 +67,7 @@ migrateapplisbns16041 | 服務匯流排 命名空間
 
 ### <a name="hyper-v-vm"></a>Hyper-V VM 
 
-**Resource** | **類型**
+**Resource** | **型別**
 --- | ---
 名 | Microsoft. 遷移/migrateprojects
 「專案名稱」專案 | Microsoft. 遷移/assessmentProjects
