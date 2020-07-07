@@ -3,12 +3,12 @@ title: Azure CLI 指令碼範例 - 執行 Batch 作業
 description: 此指令碼會建立 Batch 工作，並將一系列作業加入至工作。 它也示範如何監視工作和其作業。
 ms.topic: sample
 ms.date: 12/12/2019
-ms.openlocfilehash: ce3c06b4631095df54371ca2417dc45d493a437d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: eefc6cfdc01ddf4b8fe05b3b52360994e5763013
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681837"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957252"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI 範例：使用 Azure Batch 執行作業和工作
 
@@ -39,12 +39,12 @@ az group delete --name myResourceGroup
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 建立 Batch 帳戶。 |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 對指定的 Batch 帳戶驗證以進行進一步的 CLI 互動。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | 建立計算節點的集區。  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-create) | 建立 Batch 工作。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-create) | 將作業加入至指定的 Batch 工作。  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-set) | 更新 Batch 工作的屬性。  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-show) | 擷取指定的 Batch 工作的詳細資料。  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | 從指定的 Batch 工作擷取作業的詳細資料。  |
+| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | 建立計算節點的集區。  |
+| [az batch job create](/cli/azure/batch/job#az-batch-job-create) | 建立 Batch 工作。  |
+| [az batch task create](/cli/azure/batch/task#az-batch-task-create) | 將作業加入至指定的 Batch 工作。  |
+| [az batch job set](/cli/azure/batch/job#az-batch-job-set) | 更新 Batch 工作的屬性。  |
+| [az batch job show](/cli/azure/batch/job#az-batch-job-show) | 擷取指定的 Batch 工作的詳細資料。  |
+| [az batch task show](/cli/azure/batch/task#az-batch-task-show) | 從指定的 Batch 工作擷取作業的詳細資料。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟

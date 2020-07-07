@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921935"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
@@ -60,11 +60,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 若要包括來自特定網站或 URL 的結果，請將它們加入到 [使用中] 索引標籤。
 
-1.       在 [設定] 頁面上，按一下 [使用中] 索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
+1. 在 [設定] 頁面上，按一下 [使用中] 索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
 
     ![定義編輯器 [使用中] 索引標籤的螢幕擷取畫面](../media/customSrchEditor.png)
 
-2.       若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
+2. 若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
 
 ## <a name="add-blocked-entries"></a>加入已封鎖的項目
 

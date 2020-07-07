@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856764"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>與 CI/CD 管線整合
 
@@ -69,23 +69,33 @@ ms.locfileid: "82790757"
 1. 設定名為 **ConnectionString** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 
     如果您使用 Windows 命令提示字元，請執行下列命令，然後重新啟動命令提示字元以讓變更生效：
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果您使用 Windows PowerShell，請執行下列命令：
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     如果您使用 macOS 或 Linux，請執行下列命令：
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. 若要使用 .NET Core CLI 來建置應用程式，請在命令殼層中執行下列命令：
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. 建置成功完成後，請執行下列命令以在本機執行 Web 應用程式：
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
 4. 開啟瀏覽器視窗，並前往 `http://localhost:5000` (這是本機所裝載 Web 應用程式的預設 URL)。
 
