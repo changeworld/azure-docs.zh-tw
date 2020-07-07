@@ -3,16 +3,16 @@ title: 設定站對站 (S2S) VPN 以用於 Azure 檔案儲存體 | Microsoft Doc
 description: 如何設定站對站 (S2S) VPN 以用於 Azure 檔案儲存體
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515340"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>設定站對站 VPN 以用於 Azure 檔案儲存體
 您可以使用站對站 (S2S) VPN 連線，從內部部署網路透過 SMB 掛接 Azure 檔案共用，而不需要開啟連接埠 445。 您可以使用 [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)來設定站對站 VPN，這是一個 Azure 資源供應項目 VPN 服務，會與儲存體帳戶或其他 Azure 資源一起部署在資源群組中。

@@ -10,17 +10,17 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598159"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>管理 Azure 入口網站中的邏輯應用程式
 
 您可以使用[Azure 入口網站](https://portal.azure.com)或[Visual Studio](manage-logic-apps-with-visual-studio.md)來管理邏輯應用程式。 本文說明如何編輯、停用、啟用或刪除 Azure 入口網站中的邏輯應用程式。 如果您不熟悉 Azure Logic Apps，請參閱[什麼是 Azure Logic Apps](logic-apps-overview.md)？
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "82598159"
 
 1. 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
 
-1. 在 Azure 搜尋服務列中， `logic apps`輸入，然後選取 [ **Logic Apps**]。
+1. 在 Azure 搜尋服務列中，輸入 `logic apps` ，然後選取 [ **Logic Apps**]。
 
    ![尋找並選取「邏輯應用程式」](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "82598159"
 
    ![刪除多個邏輯應用程式](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. 當確認方塊出現時，請`yes`輸入，然後選取 [**刪除**]。
+1. 當確認方塊出現時，請輸入 `yes` ，然後選取 [**刪除**]。
 
    ![確認刪除您的邏輯應用程式](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
@@ -224,4 +224,4 @@ ms.locfileid: "82598159"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [監視邏輯應用程式](monitor-logic-apps.md)
+* [監視 Logic Apps](monitor-logic-apps.md)

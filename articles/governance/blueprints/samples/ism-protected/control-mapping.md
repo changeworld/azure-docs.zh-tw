@@ -3,12 +3,12 @@ title: 澳大利亞政府 ISM 受保護藍圖範例概觀
 description: 澳大利亞政府 ISM 受保護藍圖範例概觀。 此藍圖範例可協助客戶評定特定 ISO 受保護控制措施。
 ms.date: 03/10/2020
 ms.topic: sample
-ms.openlocfilehash: e2f64943e9db207feb3f59a905cad994553a6cd6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595353"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517094"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亞政府 ISM 受保護藍圖範例控制措施對應
 

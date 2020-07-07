@@ -9,10 +9,10 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
 ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598510"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
@@ -40,7 +40,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 建立新的金鑰保存庫時，預設會開啟虛刪除。 您可以建立金鑰保存庫，而不需要透過[Azure CLI](soft-delete-cli.md)或[Azure PowerShell](soft-delete-powershell.md)進行虛刪除。 一旦在金鑰保存庫上啟用虛刪除，即無法停用
 
-預設的保留期限為90天，但在建立金鑰保存庫期間，您可以透過 Azure 入口網站，將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 設定之後，就無法變更保留原則間隔。
+預設的保留期限為90天，但在建立金鑰保存庫期間，您可以透過 Azure 入口網站，將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 保留原則間隔一經設定即無法變更。
 
 在達到保留期限之前，您無法重複使用已虛刪除的金鑰保存庫名稱。
 
@@ -58,7 +58,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 例外狀況為：
 - 當 Azure 訂用帳戶已標示為*undeletable*時。 在此情況下，只有此服務可接著執行實際的刪除作業，而且會以排程的程序執行。 
-- `--enable-purge-protection flag`在保存庫本身上啟用時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
+- 在保存 `--enable-purge-protection flag` 庫本身上啟用時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
 
 ### <a name="key-vault-recovery"></a>Key Vault 復原
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253931"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513268"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 複製到 Azure SQL Database
 
@@ -44,7 +44,7 @@ ms.locfileid: "85253931"
 * *Azure SQL Database*。 您會使用資料庫作為*接收*資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)。
 * *Visual Studio*。 本文中的逐步解說是使用 Visual Studio 2019。
 * *[適用於 .NET 的 Azure SDK](/dotnet/azure/dotnet-tools)* 。
-* *Azure Active Directory 應用程式*。 如果您沒有 Azure Active Directory 應用程式，請參閱[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)一節 ([如何：使用入口網站來建立 Azure AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md))。 複製下列值，以便在後續步驟中使用：**應用程式 (用戶端) 識別碼**、**驗證金鑰**，以及**目錄 (租用戶) 識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。
+* *Azure Active Directory 應用程式*。 如果您沒有 Azure Active Directory 應用程式，請參閱[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)一節 ([如何：使用入口網站來建立 Azure AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md))。 複製下列值，以便在後續步驟中使用：**應用程式 (用戶端) 識別碼**、**驗證金鑰**，以及**目錄 (租用戶) 識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 

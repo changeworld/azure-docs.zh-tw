@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371385"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986069"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入門：使用筆跡辨識器 REST API 與 C# 來辨識數位筆跡
 

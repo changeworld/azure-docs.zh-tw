@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82608910"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>修補 Service Fabric 叢集中的 Windows 作業系統
@@ -63,7 +63,7 @@ POA 是由下列子元件所組成：
 > [!NOTE]
 > POA 會使用 Service Fabric 修復管理員服務來停用或啟用節點，並執行健康情況檢查。 POA 所建立的修復工作會追蹤每個節點的 Windows Update 進度。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!NOTE]
 > 所需的最小 .NET Framework 版本為4.6。
@@ -86,7 +86,7 @@ POA 需要在叢集上啟用修復管理員服務。
 
 若要使用[Azure Resource Manager 部署模型範本](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)來啟用修復管理員服務，請執行下列動作：
 
-1. 檢查以確定`apiVersion` *ServiceFabric/* 叢集資源已設定為*2017-07-01-preview* 。 如果不同，您必須更新`apiVersion`至*2017-07-01-preview*或更新版本：
+1. 檢查以確定 `apiVersion` *ServiceFabric/* 叢集資源已設定為*2017-07-01-preview* 。 如果不同，您必須更新 `apiVersion` 至*2017-07-01-preview*或更新版本：
 
     ```json
     {
@@ -98,7 +98,7 @@ POA 需要在叢集上啟用修復管理員服務。
     }
     ```
 
-1. 藉由在`addonFeatures` `fabricSettings`區段之後新增下列區段來啟用修復管理員服務：
+1. 藉由在區段之後新增下列區段來啟用修復管理員服務 `addonFeatures` `fabricSettings` ：
 
     ```json
     "fabricSettings": [
@@ -117,7 +117,7 @@ POA 需要在叢集上啟用修復管理員服務。
 
 若要啟用修復管理員服務：
 
-1. 檢查以確定`apiVersion`在[[一般](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations)叢集設定] 中，已設為*04-2017*或更新版本，如下所示：
+1. 檢查以確定 `apiVersion` 在[[一般](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations)叢集設定] 中，已設為*04-2017*或更新版本，如下所示：
 
     ```json
     {
@@ -128,7 +128,7 @@ POA 需要在叢集上啟用修復管理員服務。
     }
     ```
 
-1. 藉由在`addonFeatures` `fabricSettings`區段之後新增下列區段來啟用修復管理員服務，如下所示：
+1. 藉由在區段之後新增下列區段來啟用修復管理員服務 `addonFeatures` `fabricSettings` ，如下所示：
 
     ```json
     "fabricSettings": [
@@ -153,15 +153,15 @@ POA 需要在叢集上啟用修復管理員服務。
 
 ## <a name="configure-poa-behavior"></a>設定 POA 行為
 
-您可以設定 POA 行為，以符合您的需求。 當您建立或更新應用程式時，藉由傳入應用程式參數來覆寫預設值。 您可以藉由指定`ApplicationParameter` `Start-ServiceFabricApplicationUpgrade`或`New-ServiceFabricApplication` Cmdlet 來提供應用程式參數。
+您可以設定 POA 行為，以符合您的需求。 當您建立或更新應用程式時，藉由傳入應用程式參數來覆寫預設值。 您可以藉由指定 `ApplicationParameter` 或 Cmdlet 來提供應用程式參數 `Start-ServiceFabricApplicationUpgrade` `New-ServiceFabricApplication` 。
 
 | 參數        | 類型                          | 詳細資料 |
 |:-|-|-|
 |MaxResultsToCache    |long                              | 應快取的 Windows Update 結果數目上限。 <br><br>預設值為3000，假設： <br> &nbsp;&nbsp;-節點數目為20。 <br> &nbsp;&nbsp;-每個月對節點的更新數目為5。 <br> &nbsp;&nbsp;-每個作業的結果數目可以是10。 <br> &nbsp;&nbsp;-應該儲存過去三個月的結果。 |
-|TaskApprovalPolicy   |例舉 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 會指出協調器服務在 Service Fabric 叢集節點中用來安裝 Windows 更新的原則。<br><br>允許的值包括： <br>*NodeWise*： Windows 更新會一次安裝一個節點。 <br> *UpgradeDomainWise*： Windows 更新會一次安裝一個更新網域。 （最多，屬於更新網域的所有節點都可以進行 Windows update）。<br><br> 若要協助決定哪一個原則最適合您的叢集，請參閱[常見問題](#frequently-asked-questions)一節。
+|TaskApprovalPolicy   |列舉 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 會指出協調器服務在 Service Fabric 叢集節點中用來安裝 Windows 更新的原則。<br><br>允許的值包括： <br>*NodeWise*： Windows 更新會一次安裝一個節點。 <br> *UpgradeDomainWise*： Windows 更新會一次安裝一個更新網域。 （最多，屬於更新網域的所有節點都可以進行 Windows update）。<br><br> 若要協助決定哪一個原則最適合您的叢集，請參閱[常見問題](#frequently-asked-questions)一節。
 |LogsDiskQuotaInMB   |long  <br> （預設值： *1024*）               | 修補程式協調流程應用程式記錄檔的大小上限（以 MB 為單位），可以在本機節點上保存。
 | WUQuery               | 字串<br>（預設值： *IsInstalled = 0*）                | 用以取得 Windows 更新的查詢。 如需詳細資訊，請參閱 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | *Boolean* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
+| InstallWindowsOSOnlyUpdates | *True* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
 | WUOperationTimeOutInMinutes | Int <br>（預設值： *90*）                   | 指定任何 Windows Update 作業的逾時 (搜尋或下載或安裝)。 如果作業未在指定的逾時內完成，它就會中止。       |
 | WURescheduleCount     | Int <br> （預設值： *5*）                  | 如果作業持續失敗，服務會將 Windows update 重新排程的次數上限。          |
 | WURescheduleTimeInMinutes | Int <br>（預設值： *30*） | 如果失敗持續發生，服務重新排定 Windows 更新的間隔。 |
@@ -169,7 +169,7 @@ POA 需要在叢集上啟用修復管理員服務。
 | AcceptWindowsUpdateEula | Boolean <br>（預設值： *true*） | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
 
 > [!TIP]
-> 如果您想要讓 Windows update 立即發生， `WUFrequency`請設定 [相對於應用程式部署時間]。 例如，假設您的測試叢集有五個節點，計劃於大約下午 5:00 UTC 部署應用程式。 如果您假設應用程式升級或部署最多需要30分鐘的時間，請將 Wufrequency 設定設定為*每日，17:30:00*。
+> 如果您想要讓 Windows update 立即發生，請設定 `WUFrequency` [相對於應用程式部署時間]。 例如，假設您的測試叢集有五個節點，計劃於大約下午 5:00 UTC 部署應用程式。 如果您假設應用程式升級或部署最多需要30分鐘的時間，請將 Wufrequency 設定設定為*每日，17:30:00*。
 
 ## <a name="deploy-poa"></a>部署 POA
 
@@ -191,7 +191,7 @@ POA 需要在叢集上啟用修復管理員服務。
 
 若要移除應用程式，請遵循[使用 PowerShell 部署和移除應用程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)中的指示。
 
-為了方便起見，我們提供瞭解除部署的 ps1 腳本以及應用程式。 若要使用指令碼：
+為了方便起見，我們提供了 Undeploy.ps1 腳本以及應用程式。 若要使用指令碼：
 
   - 使用 ```Connect-ServiceFabricCluster``` 連線至 Service Fabric 叢集。
   - 執行 Powershell 指令碼 Undeploy.ps1。
@@ -248,15 +248,15 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
 如果尚未排程更新，JSON 結果會是空的。
 
-登入叢集以查詢 Windows Update 結果。 找出協調員服務主要位址的複本 IP 位址，並從瀏覽器開啟下列&lt;URL： HTTP://replica-IP&gt;：&lt;ApplicationPort/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.&gt;
+登入叢集以查詢 Windows Update 結果。 找出協調員服務主要位址的複本 IP 位址，並從瀏覽器開啟下列 URL： HTTP:// &lt; replica-IP &gt; ： &lt; ApplicationPort &gt; /PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
 
-協調器服務的 REST 端點具有動態連接埠。 若要檢查確切的 URL，請參閱 Service Fabric Explorer。 例如，您可以從*http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*取得結果。
+協調器服務的 REST 端點具有動態連接埠。 若要檢查確切的 URL，請參閱 Service Fabric Explorer。 例如，您可以從取得結果 *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* 。
 
 ![REST 端點的影像](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 如果在叢集上啟用反向 proxy，您也可以從叢集外部存取 URL。
 
-您需要叫用的端點是*HTTP://&lt;SERVERURL&gt;：&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*。
+您需要叫用的端點是*Http:// &lt; SERVERURL &gt; ： &lt; REVERSEPROXYPORT &gt; /PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*。
 
 若要在叢集上啟用反向 proxy，請遵循[Azure 中的反向 proxy Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)中的指示。 
 
@@ -277,7 +277,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
 1. 在每個節點上執行的 NodeAgentNTService，會在排程的時間尋找可用的 Windows 更新。 如果有可用的更新，它會將它們下載到節點上。
 
-1. 下載更新之後，節點代理程式 NTService 會為名稱為*\<POS___ unique_id>* 的節點建立對應的修復工作。 您可以使用[ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) Cmdlet 或在 [節點詳細資料] 區段中使用 SFX 來查看這些修復工作。 建立修復工作之後，它很快就會移至[*宣告*的狀態](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)。
+1. 下載更新之後，節點代理程式 NTService 會為名稱為*POS___ \<unique_id> *的節點建立對應的修復工作。 您可以使用[ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) Cmdlet 或在 [節點詳細資料] 區段中使用 SFX 來查看這些修復工作。 建立修復工作之後，它很快就會移至[*宣告*的狀態](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)。
 
 1. 協調器服務會定期尋找已*宣告*狀態的修復工作，然後更新它們以根據 taskapprovalpolicy 會*準備*狀態。 如果 Taskapprovalpolicy 會設定為 NodeWise，則只有在沒有其他修復工作正在*準備*、*核准*、*執行*或*還原*狀態時，才會備妥對應至節點的修復工作。 
 
@@ -294,7 +294,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
 1. 當修復工作處於 [*執行*中] 狀態時，該節點上的修補程式安裝就會開始。 安裝修補程式之後，節點可能會或可能不會重新開機，視修補程式而定。 接下來，修復工作會移至*還原*狀態，以 reenables 節點。 然後，修復工作會標示為已完成。
 
-   在 POA 版本1.4.0 和更新版本中，您可以使用 WUOperationStatus-\<NodeName> 屬性來查看 NodeAgentService 的健康情況事件，以尋找更新的狀態。 下圖中反白顯示的區段會顯示*poanode_0*和*poanode_2*節點上的 Windows 更新狀態：
+   在 POA 版本1.4.0 和更新版本中，您可以使用 WUOperationStatus 屬性來查看 NodeAgentService 上的健全狀況事件，以尋找更新的狀態 \<NodeName> 。 下圖中反白顯示的區段會顯示*poanode_0*和*poanode_2*節點上的 Windows 更新狀態：
 
    [![Windows Update 作業狀態的影像](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190717"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984006"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 REST 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -140,7 +140,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **POST** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. 在要求**本文**中，複製下列 JSON 定義，並將 `connectionString` 取代為您儲存體帳戶的實際連接字串。 
@@ -161,7 +161,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
     ```
 1. 傳送要求。 您應該會看到確認成功的狀態碼 201。 
 
-如果發生 403 或 404 錯誤，請檢查要求建構：`api-version=2019-05-06` 位於端點上，`api-key` 應位於標頭中的 `Content-Type` 後面，且其值必須是適用於搜尋服務的值。 您可以透過線上 JSON 驗證程式執行 JSON 文件，以確定語法正確無誤。 
+如果發生 403 或 404 錯誤，請檢查要求建構：`api-version=2020-06-30` 位於端點上，`api-key` 應位於標頭中的 `Content-Type` 後面，且其值必須是適用於搜尋服務的值。 您可以透過線上 JSON 驗證程式執行 JSON 文件，以確定語法正確無誤。 
 
 ### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
@@ -170,7 +170,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱。
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
 1. 在要求**本文**中，複製下列 JSON 定義。 此技能集包含下列內建技能。
@@ -255,7 +255,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱，以命名您的索引。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
 1. 在要求**本文**中，複製下列 JSON 定義。 `content` 欄位會儲存文件本身。 `languageCode`、`keyPhrases` 和 `organizations` 的其他欄位代表技能集所建立的新資訊 (欄位和值)。
@@ -339,7 +339,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱，以命名您的索引子。
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. 在要求**本文**中，複製下列 JSON 定義。 請注意欄位對應元素；這些對應會定義資料流程，所以很重要。 
@@ -432,7 +432,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **GET** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱，以命名您的索引子。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. 請檢查回應以了解索引子是否正在執行，或查看錯誤和警告資訊。  
@@ -451,7 +451,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **GET** 和下列 URL，將 YOUR-SERVICE-NAME 取代為服務的實際名稱，以搜尋詞彙或片語的實例，並傳回 `content` 欄位和相符文件的計數。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    此查詢的結果會傳回文件內容，如果您在沒有認知搜尋管線的情況下使用 Blob 索引子，也會得到相同的結果。 此欄位是可搜尋的，但無法使用 Facet、篩選或自動完成。
@@ -461,7 +461,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 第二個查詢會傳回管線所建立的一些新欄位 (人員、組織、位置、languageCode)。 為了簡潔起見，我們會省略 keyPhrases，但如果您想要查看這些值，就要將其包含在內。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $Select 陳述式中的欄位會包含新資訊，也就是從認知服務的自然語言處理功能建立的資訊。 如您所預期，結果中有一些非必要資訊，而文件之間會有些變異，但在許多情況下，分析模型會產生精確的結果。
 
@@ -472,7 +472,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 若要了解您可以如何利用這些欄位，請新增 Facet 參數，以依據位置傳回相符文件的彙總。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    在此範例中，每個位置都有 2 或 3 個相符項目。
@@ -483,7 +483,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 在最後一個範例中，將篩選套用至組織集合，以根據 NASDAQ 傳回符合篩選準則的兩個項目。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。 如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。
@@ -501,7 +501,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 或者，使用 **DELETE** 並提供每個物件的 URL。 下列命令會刪除索引子。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 成功刪除時會傳回狀態碼 204。

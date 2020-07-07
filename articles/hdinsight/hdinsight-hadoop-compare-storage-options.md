@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610695"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比較與 Azure HDInsight 叢集搭配使用的儲存體選項
@@ -31,11 +31,11 @@ ms.locfileid: "82610695"
 
 | 儲存體服務 | 帳戶類型 | 命名空間類型 | 支援的服務 | 支援的效能層級 | 支援的存取層 | HDInsight 版本 | 叢集類型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
-|Azure 儲存體| 一般用途 V2 | Object | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 全部 |
-|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | N/A | 全部 | 全部 |
-|Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取、非經常性存取、封存 | 全部 | 全部 |
-|Azure Data Lake Storage Gen1| N/A | 階層式（filesystem） | N/A | N/A | N/A | 僅限3。6 | HBase 以外的所有 |
+|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
+|Azure 儲存體| 一般用途 V2 | Object | Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 3.6+ | 全部 |
+|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | 不適用 | 全部 | 全部 |
+|Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 全部 | 全部 |
+|Azure Data Lake Storage Gen1| 不適用 | 階層式（filesystem） | 不適用 | 不適用 | 不適用 | 僅限3。6 | HBase 以外的所有 |
 
 * * 對於 HDInsight 叢集，只有次要儲存體帳戶可以屬於類型 BlobStorage，而分頁 Blob 則不是支援的儲存體選項。
 

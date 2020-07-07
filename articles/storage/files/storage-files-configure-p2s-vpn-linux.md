@@ -3,16 +3,16 @@ title: 在 Linux 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體 | 
 description: 如何在 Linux 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515300"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體
 您可以使用點對站 (P2S) VPN 連線，從 Azure 外部透過 SMB 掛接 Azure 檔案共用，而不需要開啟連接埠 445。 點對站 VPN 連線是 Azure 與個別用戶端之間的 VPN 連線。 若要將 P2S VPN 連線用於 Azure 檔案儲存體，必須為每個要連線的用戶端設定 P2S VPN 連線。 如果您有許多用戶端需要從內部部署網路連線至 Azure 檔案共用，您可以對每個用戶端使用站對站 (S2S) VPN 連線，而不使用點對站連線。 若要深入了解，請參閱[設定站對站 VPN 以用於 Azure 檔案儲存體](storage-files-configure-s2s-vpn.md)。
@@ -117,7 +117,9 @@ Azure 虛擬網路閘道是您的內部部署 Linux 機器所將連線到的服�
 請記得將 `<desired-vpn-name-here>` 取代為您要用於這些資源的名稱。
 
 > [!Note]  
-> 部署 Azure 虛擬網路閘道最多可能需要 45 分鐘的時間。 在此資源部署期間，此 Bash 指令碼將會進行封鎖，以讓部署完成。 這是預期行為。
+> 部署 Azure 虛擬網路閘道最多可能需要 45 分鐘的時間。 在此資源部署期間，此 Bash 指令碼將會進行封鎖，以讓部署完成。
+>
+> **基本**SKU 不支援 P2S IKEv2/OpenVPN 連接。 此腳本會據以使用虛擬網路閘道的**VpnGw1** SKU。
 
 ```bash
 vpnName="<desired-vpn-name-here>"

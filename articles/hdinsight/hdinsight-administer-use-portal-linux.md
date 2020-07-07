@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598493"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
@@ -21,7 +21,7 @@ ms.locfileid: "82598493"
 
 使用[Azure 入口網站](https://portal.azure.com)，您可以在 Azure HDInsight 中管理[Apache Hadoop](https://hadoop.apache.org/)叢集。 使用上述的索引標籤選取器，以取得使用其他工具管理 HDInsight 中 Hadoop 叢集的詳細資訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎的叢集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -55,10 +55,10 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
     | 項目| 描述 |
     |---|---|
-    |總覽|提供您叢集的一般資訊。|
+    |概觀|提供您叢集的一般資訊。|
     |活動記錄檔|顯示和查詢活動記錄。|
     |存取控制 (IAM)|使用角色指派。  請參閱[使用角色指派來管理 Azure 訂用帳戶資源的存取權](../role-based-access-control/role-assignments-portal.md)。|
-    |Tags|可讓您設定索引鍵/值組，以定義自訂的雲端服務分類法。 例如，您可建立名為 **project**的索引鍵，然後使用與特定專案相關聯之所有服務的通用值。|
+    |標籤|可讓您設定索引鍵/值組，以定義自訂的雲端服務分類法。 例如，您可建立名為 **project**的索引鍵，然後使用與特定專案相關聯之所有服務的通用值。|
     |診斷並解決問題|顯示疑難排解資訊。|
     |快速入門|顯示可協助您開始使用 HDInsight 的資訊。|
     |工具|HDInsight 相關工具的說明資訊。|
@@ -196,7 +196,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 1. 在 [設定]**** 底下，選取 [SSH + 叢集登入]****。
 2. 選取 [重設認證]****。
 3. 在文字方塊中輸入新密碼並加以確認。
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
 系統會在叢集中的所有節點上變更密碼。
 

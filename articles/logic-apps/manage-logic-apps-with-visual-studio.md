@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598431"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理邏輯應用程式
@@ -25,7 +25,7 @@ ms.locfileid: "82598431"
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -92,7 +92,7 @@ ms.locfileid: "82598431"
 
    ![從 Azure 入口網站開啟已部署的邏輯應用程式](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   在 Logic Apps 設計工具中開啟邏輯應用程式之後，您可以在設計工具的底部選取 [程式**代碼視圖**]，讓您可以查看基礎邏輯應用程式定義結構。 如果您想要為邏輯應用程式建立部署範本，請了解針對該邏輯應用程式要[如何下載 Azure Resource Manager 範本](#download-logic-app)。 深入了解 [Resource Manager 範本](../azure-resource-manager/templates/overview.md)。
+   在 Logic Apps 設計工具中開啟邏輯應用程式之後，您可以在設計工具的底部選取 [程式**代碼視圖**]，讓您可以查看基礎邏輯應用程式定義結構。 如果您想要為邏輯應用程式建立部署範本，請了解針對該邏輯應用程式要[如何下載 Azure Resource Manager 範本](#download-logic-app)。 深入瞭解[Resource Manager 範本](../azure-resource-manager/templates/overview.md)。
 
 <a name="download-logic-app"></a>
 
@@ -125,7 +125,7 @@ ms.locfileid: "82598431"
 
 1. 在 Visual Studio 中，開啟包含邏輯應用程式的 Azure 資源群組專案。
 
-1. 在方案總管中，開啟 [ **<邏輯-應用程式名稱]> json**檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
+1. 在方案總管中，開啟檔案快捷方式功能表**上的<邏輯-應用程式名稱 # C1.js** ，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
 
    ![使用邏輯應用程式設計工具開啟邏輯應用程式的 json 檔案](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "82598431"
 
 1. 在 Visual Studio 中，開啟包含邏輯應用程式的 Azure 資源群組專案。
 
-1. 在方案總管中，開啟`<logic-app-name>.json`檔案的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
+1. 在方案總管中，開啟檔案 `<logic-app-name>.json` 的快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。 （鍵盤： Ctrl + L）
 
    ![使用邏輯應用程式設計工具開啟邏輯應用程式的 json 檔案](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

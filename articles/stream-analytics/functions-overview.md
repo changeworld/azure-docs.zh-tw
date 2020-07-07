@@ -7,15 +7,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598363"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的使用者定義函數
 
-Azure 串流分析中類似 SQL 的查詢語言，可讓您輕鬆地對串流資料執行即時分析邏輯。 串流分析透過在查詢中叫用的自訂函式，提供額外的彈性。 下列程式碼範例是一個名`sampleFunction`為的 UDF，它會接受一個參數、該工作接收的每個輸入記錄，並將結果`sampleResult`當做寫入輸出。
+Azure 串流分析中類似 SQL 的查詢語言，可讓您輕鬆地對串流資料執行即時分析邏輯。 串流分析透過在查詢中叫用的自訂函式，提供額外的彈性。 下列程式碼範例是一個名為 `sampleFunction` 的 UDF，它會接受一個參數、該工作接收的每個輸入記錄，並將結果當做寫入輸出 `sampleResult` 。
 
 ```sql
 SELECT 
@@ -41,7 +41,7 @@ Azure 串流分析支援下列四種函數類型：
 
 使用者定義函數是無狀態的，而且傳回值只能是純量值。 您無法從這些使用者定義的函式呼叫外部 REST 端點，因為這可能會影響作業的效能。 
 
-Azure 串流分析不會保留所有函式呼叫和傳回結果的記錄。 為保證可重複性-例如，從較舊的時間戳記重新執行您的作業會再次產生相同的結果-請勿使用如`Date.GetData()`或`Math.random()`之類的函數，因為這些函式不會針對每個調用傳回相同的結果。  
+Azure 串流分析不會保留所有函式呼叫和傳回結果的記錄。 為保證可重複性-例如，從較舊的時間戳記重新執行您的作業會再次產生相同的結果-請勿使用如 `Date.GetData()` 或之類 `Math.random()` 的函數，因為這些函式不會針對每個調用傳回相同的結果。  
 
 ## <a name="resource-logs"></a>資源記錄
 
@@ -54,6 +54,6 @@ Azure 串流分析不會保留所有函式呼叫和傳回結果的記錄。 為�
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure 串流分析中的 JavaScript 使用者定義函式](stream-analytics-javascript-user-defined-functions.md)
-* [Azure 串流分析 JavaScript 使用者定義匯總](stream-analytics-javascript-user-defined-aggregates.md)
+* [Azure 串流分析 JavaScript 使用者定義彙總](stream-analytics-javascript-user-defined-aggregates.md)
 * [為 Azure 串流分析作業開發 .NET Standard 的使用者定義函數](stream-analytics-edge-csharp-udf-methods.md)
-* [將 Azure 串流分析與 Azure Machine Learning 整合](machine-learning-udf.md)
+* [整合 Azure 串流分析與 Azure Machine Learning](machine-learning-udf.md)

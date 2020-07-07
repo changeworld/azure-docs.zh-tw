@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610236"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>在 Azure App Service 中使用流量管理員整合來設定自訂功能變數名稱
@@ -19,7 +19,7 @@ ms.locfileid: "82610236"
 > [!NOTE]
 > 若為雲端服務，請參閱[設定 Azure 雲端服務的自訂網域名稱](../cloud-services/cloud-services-custom-domain-name.md)。
 
-當您使用[Azure 流量管理員](/azure/traffic-manager/)對[Azure App Service](overview.md)的流量進行負載平衡時，可以使用** \<流量管理員-端點>** 來存取 App Service 應用程式。 您可以使用 App Service 應用程式來指派自訂功能變數名稱\.（例如 www contoso.com），以便為您的使用者提供更容易辨識的功能變數名稱。
+當您使用[Azure 流量管理員](/azure/traffic-manager/)對[Azure App Service](overview.md)的流量進行負載平衡時，可以使用** \<traffic-manager-endpoint> trafficmanager.net**來存取 App Service 應用程式。 您可以使用 App Service 應用程式來指派自訂功能變數名稱（例如 www contoso.com），以便為 \. 您的使用者提供更容易辨識的功能變數名稱。
 
 本文說明如何使用與[流量管理員](../traffic-manager/traffic-manager-overview.md)整合的 App Service 應用程式來設定自訂功能變數名稱。
 
@@ -35,7 +35,7 @@ ms.locfileid: "82610236"
 
 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [**應用程式服務**]。
 
-在 [應用程式服務]  頁面上，選取您的 Azure 應用程式名稱。
+在 [應用程式服務]**** 頁面上，選取您的 Azure 應用程式名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "82610236"
 雖然每個網域提供者的細節不同，但您會*從*[非根自訂功能變數名稱](#what-about-root-domains)（例如**www.contoso.com**）對應*到*與您的應用程式整合的流量管理員功能變數名稱（**contoso.trafficmanager.net**）。 
 
 > [!NOTE]
-> 如果記錄已在使用中，而您需要事先將您的應用程式繫結到該記錄，您可以建立其他的 CNAME 記錄。 例如，若要事先將**www\.contoso.com**系結至您的應用程式，請建立從**awverify**到**contoso.trafficmanager.net**的 CNAME 記錄。 然後您可以將「www\.contoso.com」新增至您的應用程式，而不需要變更「WWW」 CNAME 記錄。 如需詳細資訊，請參閱將[ACTIVE DNS 名稱遷移至 Azure App Service](manage-custom-dns-migrate-domain.md)。
+> 如果記錄已在使用中，而您需要事先將您的應用程式繫結到該記錄，您可以建立其他的 CNAME 記錄。 例如，若要事先將**www \. contoso.com**系結至您的應用程式，請建立從**AWVERIFY**到**contoso.trafficmanager.net**的 CNAME 記錄。 然後您可以將「www \. contoso.com」新增至您的應用程式，而不需要變更「www」 CNAME 記錄。 如需詳細資訊，請參閱將[ACTIVE DNS 名稱遷移至 Azure App Service](manage-custom-dns-migrate-domain.md)。
 
 在網域提供者處完成 DNS 記錄的新增或修改後，請儲存變更。
 
@@ -83,12 +83,12 @@ ms.locfileid: "82610236"
 在您的功能變數名稱的記錄傳播完成之後，請使用瀏覽器來確認您的自訂功能變數名稱會解析為您的 App Service 應用程式。
 
 > [!NOTE]
-> 需要一些時間，CNAME 才能傳播至整個 DNS 系統。 您可以使用之類的服務<a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a>來確認 CNAME 是否可用。
+> 需要一些時間，CNAME 才能傳播至整個 DNS 系統。 您可以使用之類的服務 <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> 來確認 CNAME 是否可用。
 > 
 > 
 
 1. 在網域解析成功之後，回到[Azure 入口網站](https://portal.azure.com)中的應用程式頁面
-2. 從左側導覽中，選取 [**自訂網域** > ] [**新增主機名稱**]。
+2. 從左側導覽中，選取 [**自訂網域**] [  >  **新增主機名稱**]。
 4. 輸入您稍早對應的自訂功能變數名稱，然後選取 [**驗證**]。
 5. 確定 [主機名稱記錄類型]  已設定為 [CNAME (www\.example.com 或任何子網域)]  。
 

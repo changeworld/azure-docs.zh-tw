@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594945"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>影片索引器所在的 Azure 區域
@@ -23,7 +23,7 @@ ms.locfileid: "82594945"
 
 ## <a name="locations"></a>位置
 
-必須`location`將 Azure 區功能變數代碼名稱指定為參數的值。 如果您在預覽模式中使用影片索引子，您應該`"trial"`將設為值。 `trial`這是`location`參數的預設值。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
+`location`必須將 Azure 區功能變數代碼名稱指定為參數的值。 如果您在預覽模式中使用影片索引子，您應該將設 `"trial"` 為值。 `trial`這是參數的預設值 `location` 。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
 
 ```azurecli-interactive
 az account list-locations

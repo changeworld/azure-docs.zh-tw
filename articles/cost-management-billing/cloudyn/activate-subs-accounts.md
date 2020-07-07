@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 24ff2d2b5855c2624f12c2a1523611933a426ebe
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474657"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513864"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 啟動 Azure 訂用帳戶與帳戶
 
@@ -65,7 +65,7 @@ ms.locfileid: "79474657"
     2. 在 Azure 入口網站中，選取 [Azure Active Directory]  。
     3. 若要取得租用戶識別碼，請選取 Azure AD 租用戶的 [屬性]  。
     4. 複製目錄識別碼 GUID。 這個值是您的租用戶識別碼。
-    如需詳細資訊，請參閱 [取得租用戶識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+    如需詳細資訊，請參閱 [取得租用戶識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 3. 如有必要，請選取您的費率識別碼。 如果您不知道您的費率識別碼，請使用下列步驟來尋找它。
     1. 在 Azure 入口網站的右上方，按一下使用者資訊，然後按一下 [檢視我的帳單]  。
     2. 在 [計費帳戶]  下，按一下 [訂用帳戶]  。

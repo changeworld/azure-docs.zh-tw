@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594843"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
@@ -31,12 +31,12 @@ ms.locfileid: "82594843"
 
 |名稱|定義|描述|
 |---|---|---|
-|`widgets` | 以逗號分隔的字串 | 可讓您控制要呈現的見解。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`只呈現人員和關鍵字 UI 深入解析。<br/>可用的選項：人員、animatedCharacters、關鍵字、標籤、情緒、表情、主題、主要畫面格、文字記錄、ocr、喇叭、場景和 namedEntities。|
-|`controls`|以逗號分隔的字串|可讓您控制要呈現的控制項。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`只呈現搜尋選項和下載按鈕。<br/>可用選項： [搜尋]、[下載]、[預設]、[語言]。|
+|`widgets` | 以逗號分隔的字串 | 可讓您控制要呈現的見解。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 只呈現人員和關鍵字 UI 深入解析。<br/>可用的選項：人員、animatedCharacters、關鍵字、標籤、情緒、表情、主題、主要畫面格、文字記錄、ocr、喇叭、場景和 namedEntities。|
+|`controls`|以逗號分隔的字串|可讓您控制要呈現的控制項。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 只呈現搜尋選項和下載按鈕。<br/>可用選項： [搜尋]、[下載]、[預設]、[語言]。|
 |`language`|簡短的語言代碼（語言名稱）|控制 insights 語言。<br/>範例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 簡短的語言代碼 | 控制 UI 的語言。 預設值為 `en`。 <br/>範例： `locale=de`.|
-|`tab` | 預設選取的索引標籤 | 控制預設呈現的 [**深入**解析] 索引標籤。 <br/>範例： `tab=timeline`使用已選取的 [**時間軸**] 索引標籤呈現見解。|
-|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location`參數的預設值。| 
+|`tab` | 預設選取的索引標籤 | 控制預設呈現的 [**深入**解析] 索引標籤。 <br/>範例： `tab=timeline` 使用已選取的 [**時間軸**] 索引標籤呈現見解。|
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。| 
 
 ### <a name="player-widget"></a>播放器小工具
 
@@ -50,7 +50,7 @@ ms.locfileid: "82594843"
 |`type`| | 啟動音訊播放機面板（影片部分已移除）。<br/> 範例： `type=audio`. |
 |`autoplay` | 布林值 | 表示播放者是否應該在載入時開始播放影片。 預設值為 `true`。<br/> 範例： `autoplay=false`. |
 |`language`/`locale` | 語言代碼 | 控制播放機語言。 預設值為 `en-US`。<br/>範例： `language=de-DE`.|
-|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location`參數的預設值。| 
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。| 
 
 ### <a name="editor-widget"></a>編輯器 widget
 
@@ -58,18 +58,18 @@ ms.locfileid: "82594843"
 
 |名稱|定義|描述|
 |---|---|---|
-|`accessToken`<sup>*</sup> | String | 提供只在用來內嵌 widget 之帳戶中的影片存取。<br> 編輯器 widget 需要`accessToken`參數。 |
+|`accessToken`<sup>*</sup> | String | 提供只在用來內嵌 widget 之帳戶中的影片存取。<br> 編輯器 widget 需要 `accessToken` 參數。 |
 |`language` | 語言代碼 | 控制播放機語言。 預設值為 `en-US`。<br/>範例： `language=de-DE`. |
 |`locale` | 簡短的語言代碼 | 控制 insights 語言。 預設值為 `en`。<br/>範例： `language=de`. |
-|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location` paramete 的預設值。| 
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是 paramete 的預設值 `location` 。| 
 
-<sup>*</sup>擁有者應該小心`accessToken`提供。
+<sup>*</sup>擁有者應該 `accessToken` 小心提供。
 
 ## <a name="embedding-videos"></a>內嵌影片
 
 本節討論如何將公開和私人內容內嵌至應用程式。
 
-`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location` paramete 的預設值。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是 paramete 的預設值 `location` 。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
 
 > [!IMPORTANT]
 > 共用**播放**程式或**深入**解析 widget 的連結將會包含存取權杖，並將唯讀許可權授與您的帳戶。
@@ -79,22 +79,22 @@ ms.locfileid: "82594843"
 1. 登入[影片索引子](https://www.videoindexer.ai/)網站。
 1. 選取您想要使用的影片，然後按 [**播放**]。
 1. 選取您想要的 widget 類型（[**認知深入**解析]、[**播放**程式] 或 [**編輯器**]）。
-1. ** &lt;按一下/ [ &gt;內嵌**]。
+1. 按一下 [ ** &lt; / &gt; 內嵌**]。
 5. 複製內嵌程式碼（會出現在 [複製**共用 & 嵌入**] 對話方塊中**的內嵌程式碼**）。
 6. 將程式碼新增至您的應用程式。
 
 ### <a name="private-content"></a>私人內容
 
-若要內嵌私用影片，您必須在 iframe 的`src`屬性中傳遞存取權杖：
+若要內嵌私用影片，您必須在 iframe 的屬性中傳遞存取權杖 `src` ：
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 若要取得認知深入解析小工具內容，請使用下列其中一種方法：
 
 - [取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API。<br/>
-- [取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 將它當做查詢參數新增至 URL。 將此 URL 指定為`src` iframe 的值，如先前所示。
+- [取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 將它當做查詢參數新增至 URL。 將此 URL 指定為 `src` iframe 的值，如先前所示。
 
-若要在內嵌 widget 中提供編輯見解功能，您必須傳遞包含編輯許可權的存取權杖。 使用[取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)或[取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true`。
+若要在內嵌 widget 中提供編輯見解功能，您必須傳遞包含編輯許可權的存取權杖。 使用[取得深入解析 Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)或[取得影片存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` 。
 
 ## <a name="widgets-interaction"></a>小工具互動
 
@@ -106,7 +106,7 @@ ms.locfileid: "82594843"
 
 若要讓影片索引子 widget 與其他元件通訊，影片索引子服務：
 
-- 使用跨原始來源通訊 HTML5 方法`postMessage`。
+- 使用跨原始來源通訊 HTML5 方法 `postMessage` 。
 - 驗證 VideoIndexer.ai 來源之間的訊息。
 
 如果您執行自己的播放機程式碼，並與認知深入解析小工具整合，您必須負責驗證來自 VideoIndexer.ai 的訊息來源。
@@ -228,21 +228,21 @@ ms.locfileid: "82594843"
 
 ## <a name="adding-subtitles"></a>新增字幕
 
-如果您使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)內嵌影片索引子深入解析，您可以`GetVttUrl`使用方法來取得隱藏式輔助字幕（字幕）。 您也可以從影片索引子 AMP 外掛程式呼叫 JavaScript 方法`getSubtitlesUrl` （如先前所示）。
+如果您使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)內嵌影片索引子深入解析，您可以使用 `GetVttUrl` 方法來取得隱藏式輔助字幕（字幕）。 您也可以從影片索引子 AMP 外掛程式呼叫 JavaScript 方法 `getSubtitlesUrl` （如先前所示）。
 
 ## <a name="customizing-embeddable-widgets"></a>自訂可內嵌的小工具
 
 ### <a name="cognitive-insights-widget"></a>認知深入解析小工具
 
-您可以選擇您想要的深入解析類型。 若要執行這項操作，請將其指定為下列 URL 參數的值，此參數會新增至您取得的內嵌程式碼（從 API 或 web 應用`&widgets=<list of wanted widgets>`程式）：。
+您可以選擇您想要的深入解析類型。 若要執行這項操作，請將其指定為下列 URL 參數的值，此參數會新增至您取得的內嵌程式碼（從 API 或 web 應用程式）： `&widgets=<list of wanted widgets>` 。
 
-可能的值為： `people`、 `animatedCharacters` 、 `keywords`、 `labels` `sentiments` `emotions` `topics` `keyframes` `transcript` `ocr`、、、、、、、、和`namedEntities` `speakers` `scenes`
+可能的值為：、、、、、、、、、、、 `people` `animatedCharacters` `keywords` `labels` `sentiments` `emotions` `topics` `keyframes` `transcript` `ocr` `speakers` `scenes` 和 `namedEntities` 。
 
 例如，如果您想要內嵌僅包含人員和關鍵字深入解析的 widget，iframe 內嵌 URL 看起來會像這樣：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它會自訂`<title>` HTML 值）。
+iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它會自訂 HTML `<title>` 值）。
    
 例如，若您想要為您的 iframe 視窗指定標題 "MyInsights"，URL w看起來會像這樣：
 
@@ -260,7 +260,7 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 根據預設，影片索引子播放程式會自動產生以影片文字記錄為基礎的隱藏式輔助字幕。 文字記錄是從影片中，使用影片上傳時所選取的來源語言進行解壓縮。
 
-如果您想要使用不同的語言來內嵌，可以將`&captions=<Language Code>`新增至內嵌播放機 URL。 如果您想要依預設顯示標題，您可以傳遞 &showCaptions = true。
+如果您想要使用不同的語言來內嵌，可以將新增 `&captions=<Language Code>` 至內嵌播放機 URL。 如果您想要依預設顯示標題，您可以傳遞 &showCaptions = true。
 
 內嵌 URL 將顯示如下︰
 
@@ -268,7 +268,7 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 #### <a name="autoplay"></a>自動播放
 
-根據預設，播放程式會開始播放影片。 您可以將傳遞`&autoplay=false`至先前的內嵌 URL，以選擇不進行。
+根據預設，播放程式會開始播放影片。 您可以將傳遞 `&autoplay=false` 至先前的內嵌 URL，以選擇不進行。
 
 ## <a name="code-samples"></a>程式碼範例
 

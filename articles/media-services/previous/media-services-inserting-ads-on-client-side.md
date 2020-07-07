@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594860"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在用戶端插入廣告
@@ -160,7 +160,7 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
     </Creative>
 ```
 
-<**NonLinearAds**> 元素可以包含一或多個 <**NonLinear**> 元素，其中每一個元素都可說明一個非線性廣告。 <**NonLinear**> 元素會指定非線性廣告的資源。 資源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**> 說明非 HTML 資源，並且定義 creativeType 屬性，該屬性會指定資源的顯示方式：
+<**NonLinearAds**> 元素可以包含一或多個 <**NonLinear**> 元素，其中每一個元素都可說明一個非線性廣告。 <**NonLinear**> 元素會指定非線性廣告的資源。 資源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**>描述非 HTML 資源，並定義 creativeType 屬性來指定資源的顯示方式：
 
 image/gif、image/jpeg、image/png – 資源在 HTML <**img**> 標記中顯示。
 

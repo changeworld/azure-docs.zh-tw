@@ -8,17 +8,17 @@ ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
 ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82609039"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 MySQL 的 Azure 資料庫伺服器
 
 適用於 MySQL 的 Azure 資料庫伺服器會定期備份，以啟用還原功能。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -26,8 +26,8 @@ ms.locfileid: "82609039"
 - [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> 當 Az MySql PowerShell 模組處於預覽狀態時，您必須使用下列命令，將它與 Az PowerShell 模組分開安裝： `Install-Module -Name Az.MySql -AllowPrerelease`。
-> 在 Az MySql PowerShell 模組正式推出之後，它會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
+> 雖然 Az.MySql PowerShell 模組處於預覽狀態，但您仍必須使用下列命令，將其與 Az PowerShell 模組分開安裝：`Install-Module -Name Az.MySql -AllowPrerelease`。
+> 在 Az.MySql PowerShell 模組正式推出後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
 
 如果您選擇在本機使用 PowerShell，請使用[disconnect-azaccount](/powershell/module/az.accounts/Connect-AzAccount) Cmdlet 連接到您的 Azure 帳戶。
 
@@ -40,7 +40,7 @@ ms.locfileid: "82609039"
 > [!NOTE]
 > 建立伺服器之後，就無法變更它所擁有的冗余類型（地理位置多餘的與本機冗余）。
 
-透過`New-AzMySqlServer`命令建立伺服器時， **GeoRedundantBackup**參數會決定您的備份冗余選項。 **啟用**時，會採用異地多餘備份。 或者，如果**已停用**，則會採用本機的重複備份。
+透過命令建立伺服器時 `New-AzMySqlServer` ， **GeoRedundantBackup**參數會決定您的備份冗余選項。 **啟用**時，會採用異地多餘備份。 或者，如果**已停用**，則會採用本機的重複備份。
 
 備份保留期限是由**BackupRetentionDay**參數所設定。
 
@@ -58,9 +58,9 @@ Update-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Back
 
 ## <a name="server-point-in-time-restore"></a>時間點還原
 
-您可以將伺服器還原至先前的時間點。 還原的資料會複製到新的伺服器，而現有的伺服器則保持不變。 例如，如果不小心卸載資料表，您可以還原至只發生卸載的時間。 然後，您可從伺服器的還原複本擷取遺失的資料表和資料。
+您可以將伺服器還原至先前的時間點。 還原的資料會複製到新的伺服器，而現有的伺服器則不會變更。 例如，如果資料表意外卸除，您可以還原到卸除之前的時間。 然後，您可從伺服器的還原複本擷取遺失的資料表和資料。
 
-若要還原伺服器，請使用`Restore-AzMySqlServer` PowerShell Cmdlet。
+若要還原伺服器，請使用 `Restore-AzMySqlServer` PowerShell Cmdlet。
 
 ### <a name="run-the-restore-command"></a>執行 restore 命令
 
@@ -72,7 +72,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-restored -ResourceGroupName myresourcegroup -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
 
-Cmdlet 的 PointInTimeRestore 參數集需要下列參數： **PointInTimeRestore** `Restore-AzMySqlServer`
+Cmdlet 的**PointInTimeRestore**參數集 `Restore-AzMySqlServer` 需要下列參數：
 
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
@@ -81,19 +81,19 @@ Cmdlet 的 PointInTimeRestore 參數集需要下列參數： **PointInTimeRestor
 | RestorePointInTime | 2020-03-13T13：59：00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如**2020-03-13T05：59： 00-08： 00**。 您也可以使用 UTC 祖魯文格式，例如**2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用還原時間點模式。 |
 
-當您將伺服器還原至較早的時間點時，會建立新的伺服器。 來自指定時間點的源伺服器及其資料庫會複製到新的伺服器。
+當您將伺服器還原到之前的時間點時，會建立新的伺服器。 指定時間點的原始伺服器及其資料庫會複製到新的伺服器。
 
 已還原伺服器的位置與定價層值與原始伺服器相同。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在啟動還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的 VNet 服務端點。 這些規則必須針對新的伺服器分別設定。 系統會還原來自源伺服器的防火牆規則。
+在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 
 ## <a name="geo-restore"></a>異地還原
 
 如果您將伺服器設定為地理位置多餘的備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 MySQL 的 Azure 資料庫」的區域中建立這個新伺服器。
 
-若要使用異地多餘備份來建立伺服器，請使用`Restore-AzMySqlServer`命令搭配**UseGeoRestore**參數。
+若要使用異地多餘備份來建立伺服器，請使用 `Restore-AzMySqlServer` 命令搭配**UseGeoRestore**參數。
 
 > [!NOTE]
 > 第一次建立伺服器時，可能無法立即用來進行異地還原。 必要的中繼資料可能需要幾小時才會填入。
@@ -114,20 +114,20 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Cmdlet 的 Dr 參數集需要下列參數： **GeoRestore** `Restore-AzMySqlServer`
+Cmdlet 的**dr**參數集 `Restore-AzMySqlServer` 需要下列參數：
 
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
 |名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
-|Location | eastus | 新伺服器的位置。 |
+|位置 | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用異地模式來進行還原。 |
 
 使用異地還原建立新的伺服器時，除非指定了**Sku**參數，否則它會繼承與來源伺服器相同的儲存體大小和定價層。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在啟動還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的 VNet 服務端點。 這些規則必須針對這個新伺服器分別設定。 系統會還原來自源伺服器的防火牆規則。
+在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 這些規則必須針對這個新伺服器分別設定。 系統會還原原始伺服器的防火牆規則。
 
 ## <a name="next-steps"></a>後續步驟
 

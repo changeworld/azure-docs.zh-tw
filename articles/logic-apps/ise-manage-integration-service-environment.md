@@ -7,13 +7,13 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598414"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中管理您的整合服務環境（ISE）
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中管理您的整合服務環境 (ISE)
 
 本文說明如何針對您的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)執行管理工作，例如：
 
@@ -132,7 +132,7 @@ Premium ISE 基礎單位具有固定容量，因此如果您需要更多輸送�
 
    ![選取您想要的縮放類型](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
-1. 完成時，選取 [儲存]****。
+1. 完成時，選取 [儲存]。
 
 <a name="custom-autoscale"></a>
 
@@ -166,7 +166,7 @@ Premium ISE 基礎單位具有固定容量，因此如果您需要更多輸送�
 
 ## <a name="restart-ise"></a>重新開機 ISE
 
-如果您變更 DNS 伺服器或 DNS 伺服器設定，就必須重新開機 ISE，讓 ISE 能夠收取這些變更。 重新開機 Premium SKU ISE 不會導致停機，因為回收期間一次重新開機一個的冗余和元件。 不過，開發人員 SKU ISE 會遇到停機時間，因為沒有任何重複的複本存在。 如需詳細資訊，請參閱[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
+如果您變更 DNS 伺服器或 DNS 伺服器設定，則必須重新啟動您的 ISE，讓 ISE 能夠收取這些變更。 重新開機 Premium SKU ISE 不會導致停機，因為回收期間一次重新開機一個的冗余和元件。 不過，開發人員 SKU ISE 會遇到停機時間，因為沒有任何重複的複本存在。 如需詳細資訊，請參閱[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 ISE。
 

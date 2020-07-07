@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610497"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>針對使用條件式存取的登入問題進行疑難排解
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>對使用條件式存取的登入問題進行疑難排解
 
 本文中的資訊可用來針對使用錯誤訊息和 Azure AD 登入記錄檔的條件式存取相關的非預期登入結果進行疑難排解。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82610497"
 找出已套用的條件式存取原則或原則，以及為何要執行下列動作。
 
 1. 以全域管理員、安全性系統管理員或全域讀取者身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > 登**入**。
+1. 流覽至**Azure Active Directory**登  >  **入**。
 1. 尋找要供登入審查的事件。 新增或移除篩選器和資料行，以篩選掉不必要的資訊。
    1. 新增篩選器以縮小範圍：
       1. 當您有要調查的特定事件時的相互**關聯識別碼**。
@@ -80,5 +80,5 @@ ms.locfileid: "82610497"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 入口網站中的登入活動報告](../reports-monitoring/concept-sign-ins.md)
-- [使用 What If 工具進行條件式存取的疑難排解](troubleshoot-conditional-access-what-if.md)
+- [使用 What If 工具對條件式存取進行疑難排解](troubleshoot-conditional-access-what-if.md)
 - [Azure Active Directory 中的條件式存取](best-practices.md)最佳做法

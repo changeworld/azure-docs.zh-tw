@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253455"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513315"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
@@ -54,7 +54,7 @@ ms.locfileid: "85253455"
 
 如需目前可使用 Data Factory 的 Azure 區域，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料存放區和計算可位於其他區域。 這些存放區包含 Azure 儲存體和 Azure SQL Database。 計算包含 Data Factory 所使用的 HDInsight。
 
-依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。 您在本教學課程的後續部分將需要數個值，例如**應用程式 (用戶端) 識別碼**和**目錄 (租用戶) 識別碼**。
+依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。 您在本教學課程的後續部分將需要數個值，例如**應用程式 (用戶端) 識別碼**和**目錄 (租用戶) 識別碼**。
 
 ### <a name="create-a-blob-table"></a>建立 Blob 資料表
 

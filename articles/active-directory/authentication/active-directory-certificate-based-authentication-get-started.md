@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610644"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
@@ -112,7 +112,7 @@ ms.locfileid: "82610644"
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>加
+### <a name="add"></a>新增
 
 若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
 

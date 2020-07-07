@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598006"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務（MARS）代理程式進行疑難排解
@@ -44,7 +44,7 @@ ms.locfileid: "82598006"
 | ---     | ---    |
 | **保存庫認證無效** <br/> <br/> 保存庫認證檔案可能已損毀或可能已過期。 （例如，在註冊時間之前，可能已下載超過48小時）。| 從 Azure 入口網站上的復原服務保存庫下載新的認證。 （請參閱[下載 MARS 代理程式](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)一節中的步驟6）。然後適當地採取下列步驟： <ul><li> 如果您已經安裝並註冊 MARS，請開啟 Microsoft Azure 備份代理程式 MMC 主控台，然後選取 [**動作**] 窗格中的 [**註冊伺服器**]，以新的認證完成註冊。 <br/> <li> 如果新安裝失敗，請嘗試使用新的認證重新安裝。</ul> **注意**：如果已下載多個保存庫認證檔案，則在接下來的48小時內只有最新的檔案有效。 我們建議您下載新的保存庫認證檔。
 | **Proxy 伺服器/防火牆封鎖註冊** <br/>或 <br/>**沒有網際網路連線能力** <br/><br/> 如果您的電腦或 proxy 伺服器具有有限的網際網路連線能力，而且您不確定存取所需的 Url 時，註冊將會失敗。| 請執行下列步驟：<br/> <ul><li> 與您的 IT 小組合作，以確保系統具有網際網路連線能力。<li> 如果您沒有 proxy 伺服器，請確定您在註冊代理程式時未選取 [proxy] 選項。 [檢查您的 proxy 設定](#verifying-proxy-settings-for-windows)。<li> 如果您有防火牆/proxy 伺服器，請與您的網路小組合作，以確保這些 Url 和 IP 位址有存取權：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 位址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述的疑難排解步驟之後，請嘗試再次註冊。<br></br> 如果您透過 Azure ExpressRoute 連線，請確定設定已依照[Azure expressroute 支援](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的說明進行設定。
-| **防毒軟體正在封鎖註冊** | 如果您已在伺服器上安裝防毒軟體，請在下列檔案和資料夾的防毒程式掃描中新增必要的排除規則： <br/><ul> <li> CBengine.exe <li> CSC .exe<li> 暫存檔案夾。 其預設位置為 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
+| **防毒軟體正在封鎖註冊** | 如果您已在伺服器上安裝防毒軟體，請在下列檔案和資料夾的防毒程式掃描中新增必要的排除規則： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> 暫存檔案夾。 其預設位置為 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
 
 ### <a name="additional-recommendations"></a>其他建議
 
@@ -55,10 +55,10 @@ ms.locfileid: "82598006"
 ### <a name="verifying-proxy-settings-for-windows"></a>正在驗證 Windows 的 proxy 設定
 
 1. 從 [ [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) ] 頁面下載 PsExec。
-1. 從`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`提高許可權的命令提示字元執行。
+1. `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`從提高許可權的命令提示字元執行。
 
    此命令將會開啟 Internet Explorer。
-1. 移至 [**工具** > ] [**網際網路選項** > **Connections** > ] [連線] [**LAN 設定**]。
+1. 移至 [**工具**] [網際網路選項] [連線] [  >  **Internet options**  >  **Connections**  >  **LAN 設定**]。
 1. 檢查系統帳戶的 proxy 設定。
 1. 如果未設定 proxy，並提供 proxy 詳細資料，請移除詳細資料。
 1. 如果已設定 proxy，而 proxy 詳細資料不正確，請確定**PROXY IP**和**埠**詳細資料正確。
@@ -74,7 +74,7 @@ ms.locfileid: "82598006"
 
 | 錯誤  | 可能的原因 | 建議動作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 復原服務代理程式無法連接到 Microsoft Azure 備份。 （識別碼：100050）檢查您的網路設定，並確定您能夠連線到網際網路。<li>(407) 需要 Proxy 驗證。 |Proxy 正在封鎖連接。 |  <ul><li>在 Internet Explorer 中，移至 [**工具** > ] [**Internet options** > **Security** > **Internet**]。 選取 [**自訂層級**]，並向下卷到 [檔案**下載**] 區段。 選取 [啟用]****。<p>您也可能需要在 Internet Explorer 中將[url 和 IP 位址](install-mars-agent.md#verify-internet-access)新增至信任的網站。<li>變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<li> 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url 和 IP 位址](install-mars-agent.md#verify-internet-access)。 <li>如果您已在伺服器上安裝防毒軟體，請將這些檔案從防毒軟體掃描中排除： <ul><li>CBEngine.exe (而不是 dpmra.exe)。<li>CSC.exe (與 .NET Framework 相關)。 伺服器上安裝的每個 .NET Framework 版本都有一個 CSC .exe。 在受影響的伺服器上排除所有 .NET Framework 版本的 CSC .exe 檔案。 <li>暫存檔案夾或快取位置。 <br>暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
+| <br /><ul><li>Microsoft Azure 復原服務代理程式無法連接到 Microsoft Azure 備份。 （識別碼：100050）檢查您的網路設定，並確定您能夠連線到網際網路。<li>(407) 需要 Proxy 驗證。 |Proxy 正在封鎖連接。 |  <ul><li>在 Internet Explorer 中，移至 [**工具**] [  >  **Internet options**  >  **Security**  >  **Internet**]。 選取 [**自訂層級**]，並向下卷到 [檔案**下載**] 區段。 選取 [啟用]。<p>您也可能需要在 Internet Explorer 中將[url 和 IP 位址](install-mars-agent.md#verify-internet-access)新增至信任的網站。<li>變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<li> 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url 和 IP 位址](install-mars-agent.md#verify-internet-access)。 <li>如果您已在伺服器上安裝防毒軟體，請將這些檔案從防毒軟體掃描中排除： <ul><li>CBEngine.exe (而不是 dpmra.exe)。<li>CSC.exe (與 .NET Framework 相關)。 伺服器上安裝的每個 .NET Framework 版本都有一個 CSC.exe。 在受影響的伺服器上排除所有 .NET Framework 版本的 CSC.exe 檔案。 <li>暫存檔案夾或快取位置。 <br>暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
 
 ## <a name="backup-jobs-completed-with-warning"></a>備份作業已完成，但出現警告
 
@@ -88,7 +88,7 @@ ms.locfileid: "82598006"
   - 另一個發生干擾的進程（例如：保存檔案控制碼的防毒軟體可能會阻止 MARS 代理程式存取檔案）
   - 應用程式鎖定的檔案  
 
-- 備份服務會將記錄檔中的這些檔案標記為失敗，其命名慣例如下： *LastBackupFailedFilesxxxx* *C:\Program Files\Microsoft Azure Recovery service Agent\temp*資料夾底下。
+- 備份服務會將記錄檔中的這些檔案標記為失敗，並具有下列命名慣例： *LastBackupFailedFilesxxxx.txt*在*C:\Program Files\Microsoft Azure Recovery service Agent\temp*資料夾底下。
 - 若要解決此問題，請檢查記錄檔以瞭解問題的本質：
 
   | 錯誤碼             | 描述                                             | 建議                                              |
@@ -134,15 +134,15 @@ ms.locfileid: "82598006"
 
 - 請確定選取要執行此工作的使用者帳戶是伺服器上的**系統**或**本機系統管理員群組**。 若要確認使用者帳戶，請移至 [**一般**] 索引標籤，並檢查**安全性**選項。
 
-- 請確定伺服器上已安裝 PowerShell 3.0 或更新版本。 若要檢查 PowerShell 版本，請執行此命令，並確認`Major`版本號碼為3或之後：
+- 請確定伺服器上已安裝 PowerShell 3.0 或更新版本。 若要檢查 PowerShell 版本，請執行此命令，並確認 `Major` 版本號碼為3或之後：
 
   `$PSVersionTable.PSVersion`
 
-- 請確定此路徑是`PSMODULEPATH`環境變數的一部分：
+- 請確定此路徑是 `PSMODULEPATH` 環境變數的一部分：
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- 如果的 PowerShell 執行原則`LocalMachine`設定為`restricted`，則觸發備份工作的 powershell Cmdlet 可能會失敗。 在提高許可權的模式中執行這些命令，以檢查執行原則， `Unrestricted`並`RemoteSigned`將其設定為或：
+- 如果的 PowerShell 執行原則 `LocalMachine` 設定為 `restricted` ，則觸發備份工作的 powershell Cmdlet 可能會失敗。 在提高許可權的模式中執行這些命令，以檢查執行原則，並將其設定為 `Unrestricted` 或 `RemoteSigned` ：
 
  ```PowerShell
  Get-ExecutionPolicy -List
@@ -174,9 +174,9 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 2. 檢查您是否有最新版本的備份代理程式。 若要檢查版本，請在 MARS 主控台的 [**動作**] 窗格中，選取 [**關於 Microsoft Azure 復原服務代理程式**]。 確認 [版本]**** 號碼等於或高於[這篇文章](https://go.microsoft.com/fwlink/?linkid=229525)中提到的版本。 選取此連結以[下載最新版本](https://go.microsoft.com/fwLink/?LinkID=288905)。
 
-3. 移至**Device Manager** > **存放裝置控制器**，並找出**Microsoft iSCSI 啟動器**。 如果您找到它，請直接移至步驟7。
+3. 移至**Device Manager**  >  **存放裝置控制器**，並找出**Microsoft iSCSI 啟動器**。 如果您找到它，請直接移至步驟7。
 
-4. 如果找不到 Microsoft iSCSI 啟動器服務，請嘗試在 [具有硬體識別碼**ROOT\ISCSIPRT**的**未知裝置**] **Device Manager** > 的 [**存放控制器**] 底下尋找專案。
+4. 如果找不到 Microsoft iSCSI 啟動器服務，請嘗試在 [ **Device Manager**  >  具有硬體識別碼**ROOT\ISCSIPRT**的**未知裝置**] Device Manager 的 [**存放控制器**] 底下尋找專案。
 
 5. 以滑鼠右鍵按一下 [**未知的裝置**]，然後選取 [**更新驅動程式軟體**]。
 
@@ -184,7 +184,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
     ![Azure 備份裝置管理員的螢幕擷取畫面，已反白顯示儲存體控制器](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. 移至 [**工作管理員** > **服務（本機）** > ] [**Microsoft iSCSI 啟動器服務**]：
+7. 移至 [**工作管理員**  >  **服務（本機）] [**  >  **Microsoft iSCSI 啟動器服務**]：
 
     ![Azure 備份工作管理員的螢幕擷取畫面，已反白顯示服務 (本機)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
@@ -198,7 +198,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 如果快取資料夾（也稱為「暫存檔案夾」）的設定不正確、缺少必要條件或限制存取，則備份作業可能會失敗。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 若要讓 MARS 代理程式作業成功，快取資料夾必須符合下列需求：
 
@@ -224,7 +224,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 - 暫存檔案夾。 其預設位置為 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
 - C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 的 bin 資料夾
 - CBengine.exe
-- CSC .exe
+- CSC.exe
 
 ## <a name="common-issues"></a>常見問題
 
@@ -246,13 +246,13 @@ Microsoft Azure 復原服務代理程式無法存取臨時位置以初始化 VHD
 
 錯誤訊息 | 建議的動作
 -- | --
-備份失敗，因為暫存資料夾所在的磁片區中的儲存空間不足 | 若要解決此問題，請確認下列步驟，然後重試此作業：<br/>- [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [確認並解決影響備份臨時空間的存放裝置問題](#prerequisites)
+備份失敗，因為暫存資料夾所在的磁片區中的儲存空間不足 | 若要解決此問題，請驗證下列步驟，然後重試作業：<br/>- [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [確認並解決影響備份臨時空間的存放裝置問題](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 錯誤訊息 | 建議的動作
 -- | --
-找不到檔案中的變更。 這可能是由各種原因所造成。 請重試該作業 | 若要解決此問題，請確認下列步驟，然後重試此作業：<br/> - [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [確認並解決影響備份臨時空間的存放裝置問題](#prerequisites)
+找不到檔案中的變更。 這可能是由各種原因所造成。 請重試該作業 | 若要解決此問題，請驗證下列步驟，然後重試作業：<br/> - [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [確認並解決影響備份臨時空間的存放裝置問題](#prerequisites)
 
 ## <a name="next-steps"></a>後續步驟
 
