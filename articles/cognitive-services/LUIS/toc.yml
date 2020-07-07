@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
+    - name: 人工智慧
+      href: artificial-intelligence.md
     - name: 開發生命週期
       href: luis-concept-app-iteration.md
     - name: 規劃您的應用程式

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46a421ca9ab8efc69775966504fa393be9efba04
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158998"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>教學課程：Azure Active Directory 與 Huddle 整合
 
@@ -111,20 +111,18 @@ Huddle 與 Azure AD 整合提供下列優點：
 
     a. 在 [識別碼]  文字方塊中，鍵入 URL：
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net`|
-    | `https://login.huddle.com`|
-    | |
+    ```http
+    https://login.huddle.net
+    https://login.huddle.com
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，鍵入 URL：
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net/saml/browser-sso`|
-    | `https://login.huddle.com/saml/browser-sso`|
-    | `https://login.huddle.com/saml/idp-initiated-sso`|
-    | |
+    ```http
+    https://login.huddle.net/saml/browser-sso
+    https://login.huddle.com/saml/browser-sso
+    https://login.huddle.com/saml/idp-initiated-sso
+    ```
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
@@ -132,128 +130,127 @@ Huddle 與 Azure AD 整合提供下列優點：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
 
-    | | |
-    |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
-    | |
+    ```http
+    https://<customsubdomain>.huddle.com
+    https://us.huddle.com
+        ```
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 請使用實際的登入 URL 來更新此值。 請連絡 [Huddle 用戶端支援小組](https://huddle.zendesk.com)以取得此值。
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Huddle Client support team](https://huddle.zendesk.com) to get this value.
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
+6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![憑證下載連結](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-7. 在 [安裝 Huddle]  區段上，依據您的需求複製適當的 URL。
+7. On the **Set up Huddle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![複製組態 URL](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. 登入 URL
+    a. Login URL
 
-    b. Azure AD 識別碼
+    b. Azure Ad Identifier
 
-    c. 登出 URL
+    c. Logout URL
 
-### <a name="configure-huddle-single-sign-on"></a>設定 Huddle 單一登入
+### Configure Huddle Single Sign-On
 
-若要設定 **Huddle** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 [ 支援小組](https://huddle.zendesk.com/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+To configure single sign-on on **Huddle** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Huddle support team](https://huddle.zendesk.com/). They set this setting to have the SAML SSO connection set properly on both sides.
 
 > [!NOTE]
-> 單一登入必須由 Huddle 支援小組啟用。 設定完成後，您將會收到通知。
+> Single sign-on needs to be enabled by the Huddle support team. You get a notification when the configuration has been completed.
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
+### Create an Azure AD test user
 
-本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. Select **New user** at the top of the screen.
 
-    ![[新增使用者] 按鈕](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. 在 [使用者] 屬性中，執行下列步驟。
+3. In the User properties, perform the following steps.
 
-    ![[使用者] 對話方塊](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
-    例如， BrittaSimon@contoso.com
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    For example, BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. 按一下頁面底部的 [新增]  。
+    d. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
+### Assign the Azure AD test user
 
-在本節中，您會將 Huddle 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Huddle.
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Huddle]  。
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Huddle**.
 
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取[Huddle]  。
+2. In the applications list, select **Huddle**.
 
-    ![應用程式清單中的 Huddle 連結](common/all-applications.png)
+    ![The Huddle link in the Applications list](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. In the menu on the left, select **Users and groups**.
 
-    ![[使用者和群組] 連結](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![[新增指派] 窗格](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-huddle-test-user"></a>建立 Huddle 測試使用者
+### Create Huddle test user
 
-若要讓 Azure AD 使用者可以登入 Huddle，則必須將他們佈建至 Huddle。 在 Huddle 的情況下，需以手動的方式佈建。
+To enable Azure AD users to log in to Huddle, they must be provisioned into Huddle. In the case of Huddle, provisioning is a manual task.
 
-**若要設定使用者佈建，請執行下列步驟：**
+**To configure user provisioning, perform the following steps:**
 
-1. 以系統管理員身分登入您的 **Huddle** 公司網站。
+1. Log in to your **Huddle** company site as administrator.
 
-2. 按一下 [工作區]  。
+2. Click **Workspace**.
 
-3. 按一下 [人員] \> [邀請人員]。
+3. Click **People \> Invite People**.
 
-    ![人員](./media/huddle-tutorial/ic787838.png "人員")
+    ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. 在 [建立新的邀請]  區段中，執行下列步驟：
+4. In the **Create a new invitation** section, perform the following steps:
   
-    ![新的邀請](./media/huddle-tutorial/ic787839.png "新的邀請")
+    ![New Invitation](./media/huddle-tutorial/ic787839.png "New Invitation")
   
-    a. 在 [選擇要邀請人員加入的小組]  清單中，選取 [小組]  。
+    a. In the **Choose a team to invite people to join** list, select **team**.
 
-    b. 在 [輸入您想要邀請之人員的電子郵件地址] 文字方塊中，輸入您想要在其中佈建之有效 Azure AD 帳戶的**電子郵件地址**。
+    b. Type the **Email Address** of a valid Azure AD account you want to provision in to **Enter email address for people you'd like to invite** textbox.
 
-    c. 按一下 [邀請]  。
+    c. Click **Invite**.
 
     > [!NOTE]
-    > Azure AD 帳戶的持有者會收到一封包含連結的電子郵件，以在啟用帳戶前進行確認。
+    > The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> 您可以使用任何其他的 Huddle 使用者帳戶建立工具或 Huddle 提供的 API 來佈建 Azure AD 使用者帳戶。
+> You can use any other Huddle user account creation tools or APIs provided by Huddle to provision Azure AD user accounts.
 
-### <a name="test-single-sign-on"></a>測試單一登入
+### Test single sign-on
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-當您在存取面板中按一下 Huddle 圖格時，應該會自動登入您已設定 SSO 的 Huddle。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>其他資源
+## Additional Resources
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

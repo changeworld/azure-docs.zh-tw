@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 47f3885d9bd71abeb2a1bffe27b3ca1b2aa611ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100030"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教學課程：Azure Active Directory 與 Insignia SAML SSO 整合
 
@@ -107,12 +107,11 @@ Insignia SAML SSO 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
     
-    | |
-    |--|
-    | `https://<customername>.insigniails.com/ils`|
-    | `https://<customername>.insigniails.com/`|
-    | `https://<customername>.insigniailsusa.com/`|
-    | |
+    ```http
+    https://<customername>.insigniails.com/ils
+    https://<customername>.insigniails.com/
+    https://<customername>.insigniailsusa.com/
+    ```
     
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<customername>.insigniailsusa.com/<uniqueid>`
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0433b7287fc00da09fcf303fbcb8d74bf4e3b196
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897773"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800105"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PureCloud by Genesys 整合
 
@@ -87,35 +87,35 @@ ms.locfileid: "78897773"
 
     a. 在 [識別碼]  方塊中，輸入對應至您所在區域的 URL：
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.au/saml` |
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.au/saml
+    ```
 
     b. 在 [回覆 URL]  方塊中，輸入對應至您所在區域的 URL：
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.com.au/saml`|
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.com.au/saml
+    ```
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請選取 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  方塊中，輸入對應至您所在區域的 URL：
     
-    | |
-    |--|
-    | `https://login.mypurecloud.com` |
-    | `https://login.mypurecloud.de` |
-    | `https://login.mypurecloud.jp` |
-    | `https://login.mypurecloud.ie` |
-    | `https://login.mypurecloud.com.au` |
+    ```http
+    https://login.mypurecloud.com
+    https://login.mypurecloud.de
+    https://login.mypurecloud.jp
+    https://login.mypurecloud.ie
+    https://login.mypurecloud.com.au
+    ```
 
 1. PureCloud by Genesys 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性 組態中。 以下螢幕擷取畫面顯示預設屬性清單：
 

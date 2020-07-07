@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: b48d11e15d452b72426c5b83d387f9e004e95dc7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: a1563cc9baff0be844f7a654f8b028356c285b40
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80293934"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教學課程：Azure Active Directory 與 ProMaster (by Inlogik) 整合
 
@@ -94,29 +94,26 @@ ms.locfileid: "80293934"
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>
+    https://<CUSTOMDOMAIN>/SAMLBASE
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>/saml/acs
+    https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs
+    ```
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>
+    https://<CUSTOMDOMAIN>/SAMLBASE
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [ProMaster (by Inlogik) 用戶端支援小組](https://www.inlogik.com/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

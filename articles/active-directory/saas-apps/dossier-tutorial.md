@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8b9e65ed634243e60808e91d621cfe8c912b914e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67103942"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799950"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>教學課程：Azure Active Directory 與 Dossier 整合
 
@@ -107,11 +107,10 @@ Dossier 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |-|-|
-    | `https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn`|
-    | |
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
+    https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
+    ```
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`Dossier/<CLIENTNAME>`
 
@@ -120,11 +119,10 @@ Dossier 與 Azure AD 整合提供下列優點：
 
     c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
     
-    | |
-    |-|-|
-    |  `https://<SUBDOMAIN>.dossiersystems.com/azuresso`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso`|
-    | |
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso
+    https://dossier.<CLIENTDOMAINNAME>/azuresso
+    ```
 
 
     > [!NOTE]

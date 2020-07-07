@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 服務匯流排傳訊的內建原則定義
 description: 列出適用於 Azure 服務匯流排傳訊的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: c67d78a668118b8e8db00b7680956214042150e6
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 7170a6ad7a69e54e34dfd15be1b4165d4e3b59ac
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888191"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321270"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>適用於 Azure 服務匯流排傳訊的 Azure 原則內建定義
 

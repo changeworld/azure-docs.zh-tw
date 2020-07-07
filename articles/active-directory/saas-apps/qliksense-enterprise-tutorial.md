@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a2d4799966e070f7c50c39c350456b594664c9a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79136443"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800661"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>教學課程：整合 Qlik Sense Enterprise 與 Azure Active Directory
 
@@ -87,11 +87,10 @@ ms.locfileid: "79136443"
 
     b. 在 [識別碼]  文字方塊中，使用下列其中一種模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
     c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
 

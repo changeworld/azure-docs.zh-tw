@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 83efecea84073020e87b25a83a3a26c6d25ea08c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159646"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>教學課程：Azure Active Directory 與 Korn Ferry ALP 整合
 
@@ -108,19 +108,19 @@ Korn Ferry ALP 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
     
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Korn Ferry ALP 用戶端支援小組](mailto:noreply@kornferry.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

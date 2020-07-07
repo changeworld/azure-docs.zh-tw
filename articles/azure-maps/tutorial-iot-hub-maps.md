@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333968"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318921"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -36,7 +36,7 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 此解決方案將示範下列案例：某家汽車出租公司計劃要監視和記錄其出租車輛的事件。 車輛出租公司通常會將車輛出租到特定的地理區域。 他們必須在出租時追蹤汽車的行蹤。 汽車離開所選地理區域的實例，必須加以記錄。 記錄資料可確保原則、費用和其他商務層面會受到適當的處理。
 
-在我們的使用案例中，出租車輛配備了 IoT 裝置，會定期將遙測資料傳送至 Azure IoT 中樞。 這些遙測資料包括目前的位置，且會指出車輛的引擎是否運轉中。 裝置位置結構描述會符合[地理空間資料的 IoT 隨插即用結構描述](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)。 出租車輛的裝置遙測結構描述顯示如下：
+在我們的使用案例中，出租車輛配備了 IoT 裝置，會定期將遙測資料傳送至 Azure IoT 中樞。 這些遙測資料包括目前的位置，且會指出車輛的引擎是否運轉中。 裝置位置結構描述會符合[地理空間資料的 IoT 隨插即用結構描述](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md)。 出租車輛的裝置遙測結構描述顯示如下：
 
 ```JSON
 {

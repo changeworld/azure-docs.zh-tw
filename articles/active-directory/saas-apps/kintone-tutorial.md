@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b473502f740717fb0426d09261c1f1107144d047
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227589"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>教學課程：Azure Active Directory 與 Kintone 整合
 
@@ -109,10 +109,10 @@ Kintone 與 Azure AD 整合提供下列優點：
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
     
-    | |
-    |--|
-    | `https://<companyname>.cybozu.com` |
-    | `https://<companyname>.kintone.com` |
+    ```http
+    https://<companyname>.cybozu.com
+    https://<companyname>.kintone.com
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Kintone 用戶端支援小組](https://www.kintone.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

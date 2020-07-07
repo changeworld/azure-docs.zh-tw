@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e8ad669f092fac0cc2e737d93ccc9d225ef57adf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68823707"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799542"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>教學課程：整合 dmarcian 與 Azure Active Directory
 
@@ -85,29 +85,29 @@ ms.locfileid: "68823707"
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    | -- |
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    ```http
+    https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/
+    ```
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
     
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
-    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>
+    https://dmarciam-ap.com/login/<ACCOUNT_ID>
+    ```
      
     > [!NOTE] 
     > 這些都不是真正的值。 您將會使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新值，稍後會在本教學課程中說明。

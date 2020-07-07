@@ -1,24 +1,14 @@
 ---
 title: Azure 事件中樞 - 處理 Apache Kafka 事件
 description: 教學課程：本文說明如何使用 Azure 串流分析，處理透過事件中樞擷取的 Kafka 事件。
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 04/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 06/23/2020
+ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632794"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313277"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教學課程：使用串流分析處理適用於事件中樞的 Apache Kafka 
 本文說明如何將資料串流至事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 

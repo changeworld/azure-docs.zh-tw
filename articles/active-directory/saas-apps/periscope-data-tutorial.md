@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 128c4d1699e6e243a5c1c1573892efa516adade1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160205"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教學課程：Azure Active Directory 與 Periscope Data 整合
 
@@ -107,10 +107,10 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，輸入任何 URL：
     
-    | |
-    |--|
-    | `https://app.periscopedata.com/` |
-    | `https://app.periscopedata.com/app/<SITENAME>` |
+    ```https
+    https://app.periscopedata.com/
+    https://app.periscopedata.com/app/<SITENAME>
+    ```
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://app.periscopedata.com/<SITENAME>/sso`
 

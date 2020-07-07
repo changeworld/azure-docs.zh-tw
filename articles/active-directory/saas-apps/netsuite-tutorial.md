@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 97448bb99af3a451fbb59e446fa47aa7f871b845
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732779"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800214"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -89,14 +89,14 @@ NetSuite 支援：
 
 1. 在 [基本 SAML 組態]  區段的 [回覆 URL]  文字方塊中，以下列其中一種格式輸入 URL：
 
-    ||
-    |-|
-    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    ```https
+    https://<Instance ID>.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.NetSuite.com/saml2/acs
+    https://<Instance ID>.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs
+    ```
 
     * 您將會在 Netsuite 組態區段中取得 **<`Instance ID`>** 值，本教學課程稍後會在 [Netsuite 組態] 下的步驟 8 中加以說明。 您會發現確切的網域 (例如在此案例中為 system.na0.netsuite.com)。
 

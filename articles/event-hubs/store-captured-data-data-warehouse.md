@@ -2,19 +2,14 @@
 title: 教學課程：將事件資料遷移至 SQL 資料倉儲 - Azure 事件中樞
 description: 教學課程：本教學課程說明如何使用由事件格線觸發的 Azure 函式，將資料從事件中樞擷取到 SQL 資料倉儲中。
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: ''
-ms.author: shvija
-ms.custom: seodec18
-ms.date: 01/15/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: event-hubs
-ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015993"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322500"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
 

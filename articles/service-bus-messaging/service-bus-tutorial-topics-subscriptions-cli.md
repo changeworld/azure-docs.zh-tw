@@ -1,20 +1,16 @@
 ---
 title: 教學課程：透過 Azure CLI 使用發佈/訂閱通道和主題篩選來更新零售庫存商品
 description: 教學課程：在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 Azure CLI 新增和使用篩選規則
-services: service-bus-messaging
-author: spelluru
-manager: timlt
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+author: spelluru
+ms.author: spelluru
+ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73718919"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341008"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教學課程：使用 CLI 和主題/訂用帳戶來更新庫存
 

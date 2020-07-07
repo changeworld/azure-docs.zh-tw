@@ -1,18 +1,18 @@
 ---
 title: 適用於 MySQL 的 Azure 資料庫的內建原則定義
 description: 列出「適用於 MySQL 的 Azure 資料庫」的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: cf88bc39c09d53506ca777d0c7cd3c8fc359752b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 22d01007ac4e8e221393991555e3b91c1f9d8782
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887786"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322818"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」的 Azure 原則內建定義
 

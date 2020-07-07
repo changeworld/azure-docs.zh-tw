@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484678"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391888"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教學課程：使用資料表 API 查詢 Azure Cosmos DB
 
-Azure Cosmos DB [資料表 API](table-introduction.md) 支援對索引鍵/值 (資料表) 資料進行 OData 和 [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查詢。  
+Azure Cosmos DB [資料表 API](table-introduction.md) 支援對索引鍵/值 (資料表) 資料進行 OData 和 [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查詢。  
 
 本文涵蓋下列工作：
 
@@ -32,7 +32,7 @@ Azure Cosmos DB [資料表 API](table-introduction.md) 支援對索引鍵/值 (�
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-如需怎樣使用資料表 API 進行查詢的詳細資料，請參閱[查詢資料表和實體](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities)。
+如需怎樣使用資料表 API 進行查詢的詳細資料，請參閱[查詢資料表和實體](/rest/api/storageservices/fileservices/querying-tables-and-entities)。
 
 如需 Azure Cosmos DB 所提供之進階功能的詳細資訊，請參閱 [Azure Cosmos DB：資料表 API](table-introduction.md) 和[在 .NET 中使用資料表 API 進行開發](tutorial-develop-table-dotnet.md)。
 
@@ -65,7 +65,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 * 使用「OData 通訊協定規格」所定義的邏輯運算子來比較屬性與值。 請注意，您無法比較屬性與動態值。 運算式的一端必須是常數。
 * 屬性名稱、運算子及常數值必須以 URL 編碼的空格分隔。 空格經 URL 編碼後會變成 `%20`。
 * 篩選字串的所有部分都區分大小寫。
-* 常數和屬性必須是相同的資料類型，篩選才能傳回有效的結果。 如需支援的屬性類型的詳細資訊，請參閱 [了解表格服務資料模型](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model)。
+* 常數和屬性必須是相同的資料類型，篩選才能傳回有效的結果。 如需支援的屬性類型的詳細資訊，請參閱 [了解表格服務資料模型](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 以下是一個範例查詢，說明如如何使用 OData `$filter` 依 PartitionKey 和 Email 屬性進行篩選。
 
@@ -75,7 +75,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-如需如何針對各種資料類型建構篩選條件運算式的詳細資訊，請參閱[查詢資料表和實體](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities)。
+如需如何針對各種資料類型建構篩選條件運算式的詳細資訊，請參閱[查詢資料表和實體](/rest/api/storageservices/querying-tables-and-entities)。
 
 **結果**
 

@@ -1,25 +1,14 @@
 ---
 title: 存取 Azure 實驗室服務中的教室實驗室 | Microsoft Docs
 description: 在本教學課程中，您會在由教師設定的教室實驗室中存取虛擬機器。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 241e20bdaf68c8660f4d78891c2167b56bbbfca0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: dacfa34c0d3ab637ef513342bc5ce5fe81038e11
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889451"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443463"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教學課程：存取 Azure 實驗室服務中的教室實驗室
 在本教學課程中，您會以學生的身分連線到教室實驗室中的虛擬機器 (VM)。 

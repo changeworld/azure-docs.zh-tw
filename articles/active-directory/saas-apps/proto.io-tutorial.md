@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b499c8311e3b8acb1a239acc196ae158692b8716
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: db770e513599aa5da43ffa25463994d887536494
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765299"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800125"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Proto.io 整合
 
@@ -101,11 +101,11 @@ ms.locfileid: "84765299"
 
 1. 除了上述屬性外，Proto.io 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
-    | 名稱 |  |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | 電子郵件 | | user.mail |
-    | fname | | user.givenname |
-    | lname | | user.surname |
+    | 名稱 | 來源屬性|
+    | --------------- | --------- |
+    | 電子郵件 | user.mail |
+    | fname | user.givenname |
+    | lname | user.surname |
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 

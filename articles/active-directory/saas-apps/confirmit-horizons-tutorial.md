@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04d6d79000b38116cbda6de960f078608964b6ca
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67105043"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>教學課程：Azure Active Directory 與 Confirmit Horizons 整合
 
@@ -109,25 +109,23 @@ Confirmit Horizons 與 Azure AD 整合提供下列優點：
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | |
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>
+    https://sso.us.confirmit.com/<UNIQUEID>
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://sso.us.confirmit.com/<UNIQUEID>/saml/acs` |
-    | |
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs
+    https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs
+    https://sso.us.confirmit.com/<UNIQUEID>/saml/acs
+    ```
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
@@ -135,14 +133,13 @@ Confirmit Horizons 與 Azure AD 整合提供下列優點：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | | 
+    ```http
+    https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>
+    https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>
+    https://sso.us.confirmit.com/<UNIQUEID>
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Confirmit Horizons 用戶端支援小組](mailto:support@confirmit.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

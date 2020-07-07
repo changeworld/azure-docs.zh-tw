@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 852cd728f17902a83f5efeb3ccfb596f67ba37e5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2bceac127645717947d1da712d1e3699a04bee0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158118"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>教學課程：Azure Active Directory 與 FreshGrade 整合
 
@@ -107,17 +107,17 @@ FreshGrade 與 Azure AD 整合提供下列優點：
 
      a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL︰
 
-      | |
-      |--|
-      | `https://<subdomain>.freshgrade.com/login` |
-      | `https://<subdomain>.onboarding.freshgrade.com/login` |
+    ```http       
+    https://<subdomain>.freshgrade.com/login
+    https://<subdomain>.onboarding.freshgrade.com/login
+    ```
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
     
-      | |
-      |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
-      | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
+    ```http
+    https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+    https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [FreshGrade 用戶端支援小組](mailto:support@freshgrade.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

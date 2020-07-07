@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 7a502a8273aef3df3488764ea7b01c21c512ba43
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024506"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800203"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 MongoDB Cloud 整合
 
@@ -101,11 +101,11 @@ ms.locfileid: "82024506"
 
 1. 除了以上屬性外，MongoDB Cloud 應用程式還需要在 SAML 回應中傳回更多屬性。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
-    | 名稱 | |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | 電子郵件 | | user.userprincipalname |
-    | firstName | | user.givenname |
-    | lastName | | user.surname |
+    | 名稱 | 來源屬性|
+    | ---------------| --------- |
+    | 電子郵件 | user.userprincipalname |
+    | firstName | user.givenname |
+    | lastName | user.surname |
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找**同盟中繼資料 XML**。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
@@ -166,7 +166,7 @@ MongoDB Cloud 支援預設啟用的 Just-In-Time 使用者佈建。 沒有您需
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [在 Azure 上註冊 MongoDB Atlas](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
+- [在 Azure 上註冊 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
 
 - [嘗試搭配 Azure AD 使用 MongoDB Cloud](https://aad.portal.azure.com/)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e3931baa8bab6f21d0edfefd17b95f7ecf3f7be
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72791643"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 KnowledgeOwl 整合
 
@@ -86,34 +86,34 @@ ms.locfileid: "72791643"
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
     
-    | | |
-    |-|-|
-    | `https://app.knowledgeowl.com/sp`|
-    | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
+    ```http
+    https://app.knowledgeowl.com/sp
+    https://app.knowledgeowl.com/sp/id/<unique ID>
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 您將需要從實際的識別碼、回覆 URL 及登入 URL 更新這些值，本教學課程稍後會說明這些值。

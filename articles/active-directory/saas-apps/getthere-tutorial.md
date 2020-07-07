@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6dfe4a81a86ff6eb36f3b5eb164b3183193c86d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 45fc683bb894fdafae7f88e112971d1c8378e50b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70163430"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-getthere"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GetThere 整合
 
@@ -87,19 +87,19 @@ ms.locfileid: "70163430"
 
     a. 在 [識別碼]  文字方塊中，鍵入 URL：
 
-    | |
-    |--|
-    | `getthere.com` |
-    | `http://idp.getthere.com` |
+    ```http
+    getthere.com
+    http://idp.getthere.com
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，輸入以下任何一個 URL：
 
-    | |
-    |--|
-    | `https://wx1.getthere.net/login/saml/post.act` |
-    | `https://gtx2-gcte2.getthere.net/login/saml/post.act` |
-    | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
-    | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
+    ```http
+    https://wx1.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act
+    https://wx1.getthere.net/login/saml/ssoaavalidate.act
+    ```
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

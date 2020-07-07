@@ -1,25 +1,14 @@
 ---
 title: 使用 Azure 轉送對用戶端公開內部部署 WCF REST 服務
 description: 本教學課程說明如何使用 Azure WCF 轉送向外部用戶端公開內部部署 WCF REST 服務。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83203096"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322700"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教學課程：使用 Azure WCF 轉送向外部用戶端公開內部部署 WCF REST 服務
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 173fab91681943576f9a4afeba8d38a99e22996f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74229284"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>教學課程：Azure Active Directory 與 Learningpool Act 整合
 
@@ -110,11 +110,10 @@ Learningpool Act 與 Azure AD 整合提供下列優點：
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
     
-    | |
-    |--|
-    | `https://<subdomain>.Learningpool.com/shibboleth` |
-    | `https://<subdomain>.preview.Learningpool.com/shibboleth` |
-    | | |
+    ```http
+    https://<subdomain>.Learningpool.com/shibboleth
+    https://<subdomain>.preview.Learningpool.com/shibboleth
+    ```
 
     > [!NOTE]
     > 識別碼值不是實際值。 請使用實際的「識別碼」來更新此值。 請連絡 [Learningpool Act 客戶支援小組](https://www.learningpool.com/support)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

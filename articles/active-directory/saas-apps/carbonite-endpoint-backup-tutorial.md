@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3c8062bf40e8c97e93f237237dcd7c6923d59dd
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68879691"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799635"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教學課程：整合 Carbonite Endpoint Backup 與 Azure Active Directory
 
@@ -84,36 +84,33 @@ ms.locfileid: "68879691"
 
     a. 在 [識別碼]  文字方塊中，輸入下列其中一個 URL：
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com`|
-    | `https://red-apac.mysecuredatavault.com`|
-    | `https://red-fr.mysecuredatavault.com`|
-    | `https://red-emea.mysecuredatavault.com`|
-    | `https://kamino.mysecuredatavault.com`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com
+    https://red-apac.mysecuredatavault.com
+    https://red-fr.mysecuredatavault.com
+    https://red-emea.mysecuredatavault.com
+    https://kamino.mysecuredatavault.com
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，輸入下列其中一個 URL：
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
+    ```
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  文字方塊中，輸入下列其中一個 URL：
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/`|
-    | `https://red-apac.mysecuredatavault.com/`|
-    | `https://red-fr.mysecuredatavault.com/`|
-    | `https://red-emea.mysecuredatavault.com/`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com/
+    https://red-apac.mysecuredatavault.com/
+    https://red-fr.mysecuredatavault.com/
+    https://red-emea.mysecuredatavault.com/
+    ```
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

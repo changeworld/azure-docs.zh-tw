@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: HT
+ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806008"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -29,16 +29,33 @@ az account set --subscription <your-Azure-subscription-ID>
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-接下來，您會將 [**Azure CLI 的 Microsoft Azure IoT 擴充功能**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)新增至您的 Cloud Shell，以啟用可與 Azure Digital Twins 和其他 IoT 服務互動的命令。 使用此命令來新增擴充功能：
+接下來，您會將 [**Azure CLI 的 Microsoft Azure IoT 擴充功能**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)新增至您的 Cloud Shell，以啟用可與 Azure Digital Twins 和其他 IoT 服務互動的命令。 
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+首先，執行此命令來查看已安裝的所有延伸模組清單。
 
-如果您過去已安裝了此擴充功能，輸出可能會顯示「已安裝擴充功能 'azure-iot'」。 如果發生這種情況，請執行下列動作以確定您有最新的更新： 
+```azurecli-interactive
+az extension list
+```
+
+在輸出中，尋找 `"name"` 每個清單專案的欄位，以查看擴充功能的名稱。
+
+使用輸出來判斷要針對延伸模組安裝執行的下列命令（您可以執行多個）。
+* 如果清單包含 `azure-iot` ：您已有此延伸模組。 執行此命令以確定您有最新的更新：
 
    ```azurecli-interactive
    az extension update --name azure-iot
+   ```
+
+* 如果清單**不包含** `azure-iot` ：您必須安裝延伸模組。 使用此命令：
+
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+* 如果清單包含 `azure-iot-cli-ext` ：這是延伸模組的舊版版本。 一次只能安裝一個延伸模組版本，因此您應該卸載舊版的延伸模組。 使用此命令：
+
+   ```azurecli-interactive
+   az extension remove --name azure-cli-iot-ext
    ```
 
 現在，您已準備好在 Cloud Shell 中使用 Azure Digital Twins。

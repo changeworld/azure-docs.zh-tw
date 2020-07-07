@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e73a1f80e9fbca66bd58c65c45b299950315309d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5447222be9e60c5f8c38ceeafe6f8cc0eb3679e6
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161250"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>教學課程：Azure Active Directory 與 Cloud Management Portal for Microsoft Azure 整合
 
@@ -108,25 +108,25 @@ ms.locfileid: "73161250"
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
 
-    | |
-    |--|
-    | `https://portal.newsignature.com/<instancename>` |   
-    | `https://portal.igcm.com/<instancename>` |
+    ```http
+    https://portal.newsignature.com/<instancename>
+    https://portal.igcm.com/<instancename>
+    ```
 
     b. 在 [識別碼]  方塊中，使用下列模式輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.igcm.com` |
-    | `https://<subdomain>.newsignature.com` |
+    ```http
+    https://<subdomain>.igcm.com
+    https://<subdomain>.newsignature.com
+    ```
 
     c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.igcm.com/<instancename>` |
-    | `https://<subdomain>.newsignature.com` |
-    | `https://<subdomain>.newsignature.com/<instancename>` |
+    ```http
+    https://<subdomain>.igcm.com/<instancename>
+    https://<subdomain>.newsignature.com
+    https://<subdomain>.newsignature.com/<instancename>
+    ```
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Cloud Management Portal for Microsoft Azure 用戶端支援小組](mailto:jczernuszka@newsignature.com)，以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

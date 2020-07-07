@@ -1,15 +1,15 @@
 ---
-author: sptramer
-ms.service: azure-powershell
 ms.topic: include
 ms.date: 06/05/2019
-ms.author: sttramer
-ms.openlocfilehash: e769bfaab66cf1072bee192331c3bbc839a0488b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+author: mikefrobbins
+ms.author: mirobb
+manager: barbkess
+ms.openlocfilehash: 32a725f6f84a1a79df9b1211d95ecb2ac530aa07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67133654"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378383"
 ---
 此範例需要 Azure PowerShell。 執行 `Get-Module -ListAvailable Az` 以尋找版本。
 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 
