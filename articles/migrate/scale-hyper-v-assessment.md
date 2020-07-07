@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70279445"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>評估大量的 Hyper-v Vm 以遷移至 Azure
@@ -47,9 +46,9 @@ ms.locfileid: "70279445"
 **規劃** | **限制**
 --- | --- 
 **Azure Migrate 專案** | 在專案中評估最多35000個 Vm。
-**Azure Migrate 設備** | 設備可以探索最多5000部 Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/> 任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
-**群組** | 您最多可以在單一群組中新增35000個 Vm。
-**Azure Migrate 評量** | 您可以在單一評估中評估多達35000個 Vm。
+**Azure Migrate 設備** | 設備可以探索最多5000部 Vm。<br/> 設備最多可以連線到 300 部 Hyper-V 主機。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/> 任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
+**小組** | 您最多可以在單一群組中新增35000個 Vm。
+**Azure Migrate 評量** | 您最多可以在單一評估中評估 35,000 個 VM。
 
 
 
