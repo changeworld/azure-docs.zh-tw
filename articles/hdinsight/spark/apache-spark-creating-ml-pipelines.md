@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494658"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>建立 Apache Spark 機器學習服務管線
 
-Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 套件[`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html)是以資料框架為基礎的一組高階 api。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
+Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 套件 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是以資料框架為基礎的一組高階 api。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
 
 機器學習服務 (ML) 管線是將多個機器學習服務演算法結合在一起的完整工作流程。 需要許多步驟以進行處理並從資料學習，需要一連串的演算法。 管線定義機器學習服務流程的階段和順序。 在 MLlib 中，管線階段會以 PipelineStages 的特定順序表示，其中 Transformer 和 Estimator 會各自執行工作。
 

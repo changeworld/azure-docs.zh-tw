@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
 ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117041"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>使用 Azure NetApp Files 搭配 Oracle Database 的優點
@@ -62,4 +62,4 @@ dNFS 是 Oracle 18c 中的預設選項。
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure NetApp Files 的方案架構](azure-netapp-files-solution-architectures.md)
-- [Azure 上的 Oracle 應用程式和解決方案總覽](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Azure 上的 Oracle 應用程式和解決方案概觀](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)

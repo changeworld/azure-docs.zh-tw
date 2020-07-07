@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133491"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 串流分析功能比較
@@ -43,7 +43,7 @@ ms.locfileid: "82133491"
 |自訂訊息屬性     |是         |是         |否       |
 |C # 自訂程式碼函數和還原序列化程式|唯讀模式|是|否|
 |JavaScript UDF 和 UDA     |是         |是         |僅限 Windows         |
-|機器學習服務     |是        |是         |否         |
+|Machine Learning 服務     |是        |是         |否         |
 |Machine Learning Studio     |是，但無法測試查詢        |是 |否         |
 |相容性層級     |1.0</br>1.1</br>1.2 （預設值）         |1.0</br>1.1</br>1.2 （預設值）           |1.0</br>1.1</br>1.2 （預設值）           |
 |內建以 ML 為基礎的異常偵測函式     |是         |是         |是         |

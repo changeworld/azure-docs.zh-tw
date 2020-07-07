@@ -14,16 +14,16 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652664"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>使用 Xamarin iOS 搭配 MSAL.NET 的考慮
 當您在 Xamarin iOS 上使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，您應該： 
 
-- 在中`AppDelegate`覆寫`OpenUrl`並執行函數。
+- 在中覆寫並執行 `OpenUrl` 函數 `AppDelegate` 。
 - 啟用 keychain 群組。
 - 啟用權杖快取共用。
 - 啟用 keychain 存取。
@@ -31,7 +31,7 @@ ms.locfileid: "82652664"
 
 ## <a name="implement-openurl"></a>執行 OpenUrl
 
-覆寫`OpenUrl` `FormsApplicationDelegate`衍生類別的方法，並呼叫`AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`。 以下是範例：
+覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下是範例：
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -49,7 +49,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 
 ### <a name="enable-keychain-access"></a>啟用 keychain 存取
 
-若要啟用 keychain 存取，請確定您的應用程式具有 keychain 存取群組。 當您使用`WithIosKeychainSecurityGroup()` API 建立應用程式時，可以設定 keychain 存取群組。
+若要啟用 keychain 存取，請確定您的應用程式具有 keychain 存取群組。 當您使用 API 建立應用程式時，可以設定 keychain 存取群組 `WithIosKeychainSecurityGroup()` 。
 
 若要受益于快取和單一登入（SSO），請在您的所有應用程式中，將 keychain 存取群組設定為相同的值。
 
@@ -61,7 +61,7 @@ var builder = PublicClientApplicationBuilder
      .Build();
 ```
 
-也請在檔案中`Entitlements.plist`啟用 keychain 存取。 請使用下列存取群組或您自己的存取群組。
+也請在檔案中啟用 keychain 存取 `Entitlements.plist` 。 請使用下列存取群組或您自己的存取群組。
 
 ```xml
 <dict>
@@ -72,7 +72,7 @@ var builder = PublicClientApplicationBuilder
 </dict>
 ```
 
-當您使用`WithIosKeychainSecurityGroup()` API 時，MSAL 會自動將您的安全性群組附加至應用程式*小組識別碼*（`AppIdentifierPrefix`）的結尾。 MSAL 會新增您的安全性群組，因為當您在 Xcode 中建立應用程式時，它會執行相同的動作。 這就是為什麼檔案中`Entitlements.plist`的權利必須包含`$(AppIdentifierPrefix)`在 keychain 存取群組之前的原因。
+當您使用 `WithIosKeychainSecurityGroup()` API 時，MSAL 會自動將您的安全性群組附加至應用程式*小組識別碼*（）的結尾 `AppIdentifierPrefix` 。 MSAL 會新增您的安全性群組，因為當您在 Xcode 中建立應用程式時，它會執行相同的動作。 這就是為什麼檔案中的權利 `Entitlements.plist` 必須包含在 `$(AppIdentifierPrefix)` keychain 存取群組之前的原因。
 
 如需詳細資訊，請參閱[iOS 權利檔](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 
 
@@ -82,16 +82,16 @@ var builder = PublicClientApplicationBuilder
 
 藉由共用權杖快取，您可以在所有使用相同 keychain 存取群組的應用程式之間，允許單一登入（SSO）。
 
-若要啟用此快取共用， `WithIosKeychainSecurityGroup()`請使用方法，在共用相同快取的所有應用程式中，將 keychain 存取群組設定為相同的值。 本文中的第一個程式碼範例會示範如何使用方法。
+若要啟用此快取共用，請使用 `WithIosKeychainSecurityGroup()` 方法，在共用相同快取的所有應用程式中，將 keychain 存取群組設定為相同的值。 本文中的第一個程式碼範例會示範如何使用方法。
 
-稍早在本文中，您已瞭解 MSAL `$(AppIdentifierPrefix)`會在您每`WithIosKeychainSecurityGroup()`次使用 API 時新增。 MSAL 會新增此元素，因為小組`AppIdentifierPrefix`識別碼可確保只有相同發行者所建立的應用程式可以共用 keychain 存取權。
+稍早在本文中，您已瞭解 MSAL 會在 `$(AppIdentifierPrefix)` 您每次使用 API 時新增 `WithIosKeychainSecurityGroup()` 。 MSAL 會新增此元素，因為小組識別碼 `AppIdentifierPrefix` 可確保只有相同發行者所建立的應用程式可以共用 keychain 存取權。
 
 > [!NOTE]
 > `KeychainSecurityGroup`屬性已被取代。
 > 
-> 從 MSAL 2.x 開始，開發人員在使用`TeamId` `KeychainSecurityGroup`屬性時，會強制包含前置詞。 但從 MSAL 2.7. x 開始，當您使用新`iOSKeychainSecurityGroup`的屬性時，MSAL 會`TeamId`在執行時間解析前置詞。 當您使用此屬性時，請不要`TeamId`在值中包含前置詞。 不需要前置詞。
+> 從 MSAL 2.x 開始，開發人員在 `TeamId` 使用屬性時，會強制包含前置詞 `KeychainSecurityGroup` 。 但從 MSAL 2.7. x 開始，當您使用新的 `iOSKeychainSecurityGroup` 屬性時，MSAL 會在執行時間解析 `TeamId` 前置詞。 當您使用此屬性時，請不要在 `TeamId` 值中包含前置詞。 不需要前置詞。
 >
-> 因為`KeychainSecurityGroup`屬性已過時，請使用`iOSKeychainSecurityGroup`屬性。
+> 因為 `KeychainSecurityGroup` 屬性已過時，請使用 `iOSKeychainSecurityGroup` 屬性。
 
 ### <a name="use-microsoft-authenticator"></a>使用 Microsoft Authenticator
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73162756"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
@@ -32,7 +32,7 @@ ms.locfileid: "73162756"
 深入了解：
 
 * [有關 RBAC 的 Active Directory 小組部落格](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)
+* [以 Azure 角色為基礎的存取控制](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反惡意程式碼
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066768"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>非背書的發行版本相關資訊
@@ -24,11 +24,11 @@ ms.locfileid: "80066768"
 
 建議您從其中一個 [Azure 上的 Linux 背書發行版本](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)開始。 下列文章將示範如何準備 Azure 上所支援之各種背書的 Linux 發行版本：
 
-* **[CentOS 為基礎的散發套件](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[CentOS 型散發套件](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 本文將著重於在 Azure 上執行 Linux 發行版本時的一般指導。
@@ -64,7 +64,7 @@ Azure 會在 Hyper-V Hypervisor 上執行，因此 Linux 要求在 Azure 中執�
 ### <a name="resizing-vhds"></a>調整 VHD 的大小
 Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而言，使用 Hyper-V 建立的 VHD 均會正確地對應儲存。  如果 VHD 並未正確地對應儲存，則當您嘗試從 VHD 建立映像時，可能會收到類似下面的錯誤訊息。
 
-* VHD HTTP：\//\<mystorageaccount>. blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不支援的虛擬大小21475270656個位元組。 大小必須是整數 (以 MB 為單位)。
+* VHD HTTP： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不支援的虛擬大小21475270656個位元組。 大小必須是整數 (以 MB 為單位)。
 
 在此案例中，您可以使用 Hyper-V 管理員主控台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) \(英文\) PowerShell Cmdlet 來調整 VM 的大小。  如果您不是在 Windows 環境中執行，建議使用 `qemu-img` 來轉換 VHD (如果需要) 並調整其大小。
 

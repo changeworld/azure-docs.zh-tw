@@ -11,14 +11,14 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176035"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>瞭解 Azure AD Connect 1.4. x 和裝置消失
-在 1.4. x 版的 Azure AD Connect 中，有些客戶可能會看到部分或所有的 Windows 裝置從 Azure AD 消失。 這不是問題的原因，因為在條件式存取授權期間，Azure AD 不會使用這些裝置身分識別。 這種變更不會刪除所有已正確向 Azure AD 註冊混合式 Azure AD Join 的 Windows 裝置。
+在 1.4. x 版的 Azure AD Connect 中，有些客戶可能會看到部分或所有的 Windows 裝置從 Azure AD 消失。 這不會造成問題，因為 Azure AD 不會在條件式存取授權期間使用這些裝置身分識別。 這種變更不會刪除所有已正確向 Azure AD 註冊混合式 Azure AD Join 的 Windows 裝置。
 
 如果您在中看到刪除裝置物件的 Azure AD 超過匯出的刪除閾值，建議客戶允許刪除作業繼續進行。 [如何：允許刪除超過刪除閾值的流程](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82778255"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
@@ -32,7 +32,7 @@ ms.locfileid: "82778255"
 
 允許來自下列 IP 位址的流量，以進行 Azure HDInsight 健康狀態和管理服務（適用于所有 Azure 區域）：
 
-| 來源 IP 位址 | Destination  | 方向 |
+| 來源 IP 位址 | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*：443 | 輸入 |
 | 23.99.5.239 | \*：443 | 輸入 |
@@ -46,7 +46,7 @@ ms.locfileid: "82778255"
 > [!IMPORTANT]  
 > 如果未列出您使用的 Azure 區域，請使用網路安全性群組的[服務](hdinsight-service-tags.md)標籤功能。
 
-| Country | 區域 | 允許的來源 IP 位址 | 允許的目的地 | 方向 |
+| 國家/地區 | 區域 | 允許的來源 IP 位址 | 允許的目的地 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
 | Asia | 東亞 | 23.102.235.122</br>52.175.38.134 | \*：443 | 輸入 |
 | &nbsp; | 東南亞 | 13.76.245.160</br>13.76.136.249 | \*：443 | 輸入 |
@@ -70,7 +70,7 @@ ms.locfileid: "82778255"
 | &nbsp; | 日本西部 | 40.74.125.69</br>138.91.29.150 | \*：443 | 輸入 |
 | 南韓 | 南韓中部 | 52.231.39.142</br>52.231.36.209 | \*：443 | 輸入 |
 | &nbsp; | 南韓南部 | 52.231.203.16</br>52.231.205.214 | \*：443 | 輸入
-| United Kingdom | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 輸入 |
+| 英國 | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 輸入 |
 | &nbsp; | 英國南部 | 51.140.47.39</br>51.140.52.16 | \*：443 | 輸入 |
 | 美國 | 美國中部 | 13.89.171.122</br>13.89.171.124 | \*：443 | 輸入 |
 | &nbsp; | 美國東部 | 13.82.225.233</br>40.71.175.99 | \*：443 | 輸入 |

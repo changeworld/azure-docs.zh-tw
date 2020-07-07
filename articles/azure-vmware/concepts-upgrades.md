@@ -4,10 +4,10 @@ description: 瞭解 Azure VMware 解決方案（AVS）中的重要升級程式�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: c5c79625ef661f220a0ba88d6d24ab59e7228195
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740365"
 ---
 # <a name="azure-vmware-solution-avs-upgrade-concepts"></a>Azure VMware 解決方案（AVS）升級概念

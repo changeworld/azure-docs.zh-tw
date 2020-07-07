@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786609"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
@@ -71,7 +71,7 @@ ms.locfileid: "82786609"
 
     * 網路安全性群組
 
-        將`RESOURCEGROUP`取代為包含虛擬網路的資源組名，然後輸入命令：
+        將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ ms.locfileid: "82786609"
 
     * 使用者定義的路由
 
-        將`RESOURCEGROUP`取代為包含虛擬網路的資源組名，然後輸入命令：
+        將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -174,7 +174,7 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 1. 若要探索 HDInsight 叢集節點的內部完整網域名稱 (FQDN)，請使用下列其中一種方法：
 
-    將`RESOURCEGROUP`取代為包含虛擬網路的資源組名，然後輸入命令：
+    將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -211,5 +211,5 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 * 如需設定 HDInsight 連線至內部部署網路的端對端範例，請參閱[將 HDInsight 連線至內部部署網路](./connect-on-premises-network.md)。
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
-* 如需使用者定義路由的詳細資訊，請參閱[使用者定義的路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
+* 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
 * 如需控制流量的詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。

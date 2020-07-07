@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311523"
 ---
 # <a name="security-agent-authentication-methods"></a>安全性代理程式驗證方法
@@ -57,7 +57,7 @@ AzureIoTSecurity 代理程式執行驗證的兩種方法：
 [部署安全性代理程式](how-to-deploy-agent.md)時，必須提供驗證詳細資料做為引數。
 這些引數記載于下表。
 
-|Linux 參數名稱 | Windows 參數名稱 | 速記參數 |描述|選項|
+|Linux 參數名稱 | Windows 參數名稱 | 速記參數 |描述|選項。|
 |---------------------|---------------|---------|---------------|---------------|
 |驗證-身分識別|AuthenticationIdentity|aui|驗證身分識別| **SecurityModule**或**裝置**|
 |authentication-method|AuthenticationMethod|aum|驗證方法|**SymmetricKey**或**SelfSignedCertificate**|
@@ -77,7 +77,7 @@ AzureIoTSecurity 代理程式執行驗證的兩種方法：
 
 ### <a name="c-based-security-agent"></a>以 c # 為基礎的安全性代理程式
 
-使用下列參數編輯_Authentication_ ：
+使用下列參數編輯_Authentication.config_ ：
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ AzureIoTSecurity 代理程式執行驗證的兩種方法：
 
 ### <a name="c-based-security-agent"></a>以 C 為基礎的安全性代理程式
 
-使用下列參數編輯_LocalConfiguration_ ：
+使用下列參數編輯_的LocalConfiguration.js_ ：
 
 ```json
 "Authentication" : {
@@ -104,7 +104,7 @@ AzureIoTSecurity 代理程式執行驗證的兩種方法：
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [安全性代理程式總覽](security-agent-architecture.md)
 - [部署安全性代理程式](how-to-deploy-agent.md)

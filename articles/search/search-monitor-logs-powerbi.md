@@ -8,10 +8,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127876"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>使用 Power BI 將 Azure 認知搜尋記錄和計量視覺化
@@ -33,7 +33,7 @@ ms.locfileid: "82127876"
     1. 勾選 [封存**至儲存體帳戶**]，提供您的儲存體帳戶資訊，並檢查**insights-logs-operationlogs**和**AllMetrics**
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. 選取 [儲存]  。
+    1. 選取 [儲存]
 
 1. 啟用記錄之後，請使用您的搜尋服務開始產生記錄和計量。 最多需要一小時的時間，容器才會出現在使用這些記錄的 Blob 儲存體中。 您會看到搜尋流量記錄的深入解析-**記錄-insights-logs-operationlogs**容器，以及計量的**見解-計量 pt1m**容器。
 

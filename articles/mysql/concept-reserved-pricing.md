@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731878"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>預付以保留容量適用於 MySQL 的 Azure 資料庫計算資源
@@ -38,7 +38,7 @@ ms.locfileid: "82731878"
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>購買適用於 MySQL 的 Azure 資料庫保留容量
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [**所有服務** > ] [**保留**]。
+2. 選取 [所有服務] > [保留]。
 3. 選取 [**新增**]，然後在 [購買保留] 窗格中選取 [**適用於 MySQL 的 Azure 資料庫**]，為您的 MySQL 資料庫購買新的保留。
 4. 填寫必要欄位。 符合您所選屬性的現有或新資料庫，可以取得保留容量折扣。 取得折扣的適用於 MySQL 的 Azure 資料庫伺服器實際數目，取決於選取的範圍和數量。
 
@@ -60,7 +60,7 @@ ms.locfileid: "82731878"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 

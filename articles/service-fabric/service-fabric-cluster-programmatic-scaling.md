@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787102"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以程式設計方式調整 Service Fabric 叢集 
@@ -24,12 +24,12 @@ ms.locfileid: "82787102"
 
 您可以透過下列步驟來建立服務主體︰
 
-1. 以具有虛擬機器擴展集`az login`存取權的使用者身分登入 Azure CLI （）
+1. 以 `az login` 具有虛擬機器擴展集存取權的使用者身分登入 Azure CLI （）
 2. 使用 `az ad sp create-for-rbac` 建立服務主體
     1. 記下 appId (在其他地方稱為「用戶端識別碼」)、名稱、密碼及租用戶，以供稍後使用。
     2. 您還需要訂用帳戶識別碼，若要檢視此識別碼，請使用 `az account list`
 
-流暢的計算程式庫可以使用這些認證來登入，如下所示（請注意， `IAzure` [azure 中](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)的核心流暢 Azure 類型位於中，如：
+流暢的計算程式庫可以使用這些認證來登入，如下所示（請注意，azure 中的核心流暢 Azure 類型 `IAzure` 位於中，如： [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)可以取得虛擬機器擴展集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量變更為所需的值之後，就可以使用[`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)命令來更新 Azure 中的虛擬機器擴展集。
+或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)可以取得虛擬機器擴展集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量變更為所需的值之後，就可以使用命令來更新 Azure 中的虛擬機器擴展集 [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 。
 
 和手動新增節點時一樣，若要啟動新的 Service Fabric 節點，您只需要新增擴展集執行個體，因為擴展集範本所含有的擴充功能可自動將新的執行個體加入 Service Fabric 叢集。 
 

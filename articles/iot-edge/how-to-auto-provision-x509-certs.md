@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131314"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證建立和布建 IoT Edge 裝置
@@ -28,7 +28,7 @@ ms.locfileid: "82131314"
 
 使用 X.509 憑證作為證明機制是調整生產環境並簡化裝置佈建的絕佳方式。 一般來說，x.509 憑證會以信任鏈的方式排列。 從自我簽署或受信任的根憑證開始，連鎖中的每個憑證都會簽署下一個較低的憑證。 此模式會從根憑證向下到裝置上安裝的最終「分葉」憑證，建立委派的信任鏈。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 使用中的 IoT 中樞。
 * 做為 IoT Edge 裝置的實體或虛擬裝置。
@@ -67,7 +67,7 @@ Windows：
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-您在 IoT Edge 裝置上需要這兩個憑證。 如果您要在 DPS 中使用個別的註冊，則您將上傳 cert pem 檔案。 如果您要在 DPS 中使用群組註冊，則您也需要相同憑證信任鏈中的中繼或根 CA 憑證，才能上傳。 如果您使用的是示範憑證，請`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`使用適用于群組註冊的憑證。
+您在 IoT Edge 裝置上需要這兩個憑證。 如果您要在 DPS 中使用個別的註冊，則您將上傳 cert pem 檔案。 如果您要在 DPS 中使用群組註冊，則您也需要相同憑證信任鏈中的中繼或根 CA 憑證，才能上傳。 如果您使用的是示範憑證，請使用 `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` 適用于群組註冊的憑證。
 
 ## <a name="create-a-dps-individual-enrollment"></a>建立 DPS 個別註冊
 
@@ -113,7 +113,7 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行[安裝 IoT Edge 運行](#install-the-iot-edge-runtime)時間一節，以設定您的 IoT Edge 裝置。
 
@@ -137,9 +137,9 @@ Windows：
 
 1. 為您的憑證輸入易記的名稱，然後流覽至代表 x.509 憑證公開部分的 .cer 或 pem 檔案。
 
-   如果您使用的是示範憑證，請上`<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem`傳憑證。
+   如果您使用的是示範憑證，請上傳 `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` 憑證。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 1. 您的憑證現在應該會列在 [**憑證**] 頁面上。 選取它以開啟憑證詳細資料。
 
@@ -198,7 +198,7 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行下一節，以設定您的 IoT Edge 裝置。
 
@@ -219,7 +219,7 @@ X.509 使用 DPS 布建，只有在 IoT Edge 版本1.0.9 或更新版本中才�
 
 使用下列連結，在您的裝置上安裝 Azure IoT Edge 執行時間，並使用適用于您裝置架構的命令。 當您進入設定安全性守護程式的一節時，請針對 x.509 自動（而非手動）布建，設定 IoT Edge 執行時間。 完成本文的前幾節之後，您應該會擁有所有需要的資訊和憑證檔案。
 
-[在 Linux 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-linux.md)
+[在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
 
 當您將 x.509 憑證和金鑰資訊新增至 yaml 檔案時，應該將路徑提供為檔案 Uri。 例如：
 
@@ -241,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-將、 `identity_cert`、 `identity_pk`的預留位置`scope_id`值取代為您的 DPS 實例中的範圍識別碼，以及您裝置上的憑證鏈和金鑰檔案位置的 uri。 如有`registration_id`需要，請為裝置提供，或將這一行標示為批註，以向身分識別憑證的 CN 名稱註冊裝置。
+將、、的預留位置值取代為 `scope_id` `identity_cert` 您的 `identity_pk` DPS 實例中的範圍識別碼，以及您裝置上的憑證鏈和金鑰檔案位置的 uri。 如有 `registration_id` 需要，請為裝置提供，或將這一行標示為批註，以向身分識別憑證的 CN 名稱註冊裝置。
 
 更新 yaml 檔案之後，請一律重新開機安全性守護程式。
 
@@ -266,9 +266,9 @@ sudo systemctl restart iotedge
 
 1. 此時，IoT 核心版裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 一旦您的裝置準備就緒，請再次以系統管理員身分執行 PowerShell。
 
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用`-Dps`旗標來使用自動布建，否則命令會預設為手動布建。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用 `-Dps` 旗標來使用自動布建，否則命令會預設為手動布建。
 
-   將`{scope_id}`、 `{identity cert chain path}`和`{identity key path}`的預留位置值取代為您的 DPS 實例中的適當值和裝置上的檔案路徑。 如果您想要指定註冊識別碼，請同時`-RegistrationId {registration_id}`包含，並視情況取代預留位置。
+   將、和的預留位置值取代為 `{scope_id}` `{identity cert chain path}` `{identity key path}` 您的 DPS 實例中的適當值和裝置上的檔案路徑。 如果您想要指定註冊識別碼，請同時包含 `-RegistrationId {registration_id}` ，並視情況取代預留位置。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

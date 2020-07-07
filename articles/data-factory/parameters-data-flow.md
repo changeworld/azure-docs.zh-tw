@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780365"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>將已對應的資料流參數化
@@ -64,14 +64,14 @@ ms.locfileid: "82780365"
 
 ![設定資料流程參數](media/data-flow/string-parameter.png "設定資料流程參數")
 
-如果資料流程參數`stringParam`參考具有值`upper(column1)`的管線參數，則為。 
+如果資料流程參數 `stringParam` 參考具有值的管線參數，則為 `upper(column1)` 。 
 
-- 如果已核取 [ `$stringParam`運算式]，會評估為 column1 全部大寫的值。
-- 如果未核取 [運算式] （預設行為`$stringParam` ），則會評估為`'upper(column1)'`
+- 如果已核取 [運算式]，會 `$stringParam` 評估為 column1 全部大寫的值。
+- 如果未核取 [運算式] （預設行為），則會 `$stringParam` 評估為`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>傳入時間戳記
 
-在管線`pipeline().TriggerTime`運算式語言中，像是之類的系統變數和`utcNow()`函式，會將時間戳記當做字串傳回，格式\'為\'' yyyy-mm-dd T HH： MM： ss。SSSSSSZ'. 若要將這些轉換成 timestamp 類型的資料流程參數，請使用字串內插補點，在`toTimestamp()`函式中包含所需的時間戳記。 例如，若要將管線觸發程式時間轉換成資料流程參數，您可以使用`toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`。 
+在管線運算式語言中，像是之類的系統變數和函式，會將 `pipeline().TriggerTime` `utcNow()` 時間戳記當做字串傳回，格式為 ' Yyyy-mm-dd \' T \' HH： MM： ss。SSSSSSZ'. 若要將這些轉換成 timestamp 類型的資料流程參數，請使用字串內插補點，在函式中包含所需的時間戳記 `toTimestamp()` 。 例如，若要將管線觸發程式時間轉換成資料流程參數，您可以使用 `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` 。 
 
 ![設定資料流程參數](media/data-flow/parameter-timestamp.png "設定資料流程參數")
 
@@ -80,15 +80,15 @@ ms.locfileid: "82780365"
 
 #### <a name="pipeline-parameter-example"></a>管線參數範例
 
-假設您有一個整數參數`intParam` ，它參考了 String 類型的管線參數`@pipeline.parameters.pipelineParam`。 
+假設您有一個整數參數， `intParam` 它參考了 String 類型的管線參數 `@pipeline.parameters.pipelineParam` 。 
 
 ![設定資料流程參數](media/data-flow/parameter-pipeline-2.png "設定資料流程參數")
 
-`@pipeline.parameters.pipelineParam`會在執行時間指派`abs(1)`的值。
+`@pipeline.parameters.pipelineParam`會 `abs(1)` 在執行時間指派的值。
 
 ![設定資料流程參數](media/data-flow/parameter-pipeline-4.png "設定資料流程參數")
 
-當`$intParam`在運算式（例如衍生的資料行）中參考時，它`abs(1)`會`1`評估 return。 
+當 `$intParam` 在運算式（例如衍生的資料行）中參考時，它會評估 `abs(1)` return `1` 。 
 
 ![設定資料流程參數](media/data-flow/parameter-pipeline-3.png "設定資料流程參數")
 
@@ -102,9 +102,9 @@ ms.locfileid: "82780365"
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>傳入資料行名稱做為參數
 
-常見的模式是將資料行名稱傳入做為參數值。 如果資料行定義于資料流程架構中，您可以直接將它參考為字串運算式。 如果未在架構中定義資料行，請使用`byName()`函數。 請記得使用轉換函數（例如） `toString()`，將資料行轉換成其適當的類型。
+常見的模式是將資料行名稱傳入做為參數值。 如果資料行定義于資料流程架構中，您可以直接將它參考為字串運算式。 如果未在架構中定義資料行，請使用 `byName()` 函數。 請記得使用轉換函數（例如），將資料行轉換成其適當的類型 `toString()` 。
 
-例如，如果您想要根據參數`columnName`來對應字串資料行，您可以加入等於的「衍生的資料行」 `toString(byName($columnName))`轉換。
+例如，如果您想要根據參數來對應字串資料行 `columnName` ，您可以加入等於的「衍生的資料行」轉換 `toString(byName($columnName))` 。
 
 ![傳入資料行名稱做為參數](media/data-flow/parameterize-column-name.png "傳入資料行名稱做為參數")
 

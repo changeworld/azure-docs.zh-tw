@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382532"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
@@ -28,10 +28,10 @@ Azure Functions 部署通常包含下列資源：
 
 | 資源                                                                           | 需求 | 語法和屬性參考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函數應用程式                                                                     | 必要    | [Microsoft Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |   |
-| [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup>只有當您選擇在高階[方案](./functions-premium-plan.md)或[App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
 
@@ -96,7 +96,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
         },
 ```
 
-此外，您必須使用`APPINSIGHTS_INSTRUMENTATIONKEY`應用程式設定，將檢測金鑰提供給函式應用程式。 此屬性是在`appSettings` `siteConfig`物件的集合中指定：
+此外，您必須使用應用程式設定，將檢測金鑰提供給函式應用程式 `APPINSIGHTS_INSTRUMENTATIONKEY` 。 此屬性是在物件的 `appSettings` 集合中指定 `siteConfig` ：
 
 ```json
 "appSettings": [
@@ -142,9 +142,9 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 | AzureWebJobsStorage          | 函式執行時間用來進行內部佇列之儲存體帳戶的連接字串 | 請參閱[儲存體帳戶](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | 要用於此應用程式中函式的語言堆疊                                   | `dotnet`、`node`、`java`、`python` 或 `powershell` |
-| WEBSITE_NODE_DEFAULT_VERSION | 只有在使用`node`語言堆疊時，才需要指定要使用的版本              | `10.14.1`                             |
+| WEBSITE_NODE_DEFAULT_VERSION | 只有在使用 `node` 語言堆疊時，才需要指定要使用的版本              | `10.14.1`                             |
 
-這些屬性是在`appSettings` `siteConfig`屬性的集合中指定：
+這些屬性是在屬性的 `appSettings` 集合中指定 `siteConfig` ：
 
 ```json
 "properties": {
@@ -183,7 +183,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 不需要定義耗用量方案。 當您建立函式應用程式資源本身時，每個區域會自動建立或選取一個。
 
-取用方案是一種特殊類型的「伺服器陣列」資源。 針對 Windows，您可以使用`Dynamic` `computeMode`和`sku`屬性的值來指定它：
+取用方案是一種特殊類型的「伺服器陣列」資源。 針對 Windows，您可以使用 `Dynamic` 和屬性的值來指定它 `computeMode` `sku` ：
 
 ```json
 {  
@@ -208,13 +208,13 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 > [!NOTE]
 > 無法為 Linux 明確定義取用方案。 它會自動建立。
 
-如果您明確定義取用方案，您將需要在應用程式上設定`serverFarmId`屬性，使其指向方案的資源識別碼。 您應該確定函式應用程式也有`dependsOn`方案的設定。
+如果您明確定義取用方案，您將需要在 `serverFarmId` 應用程式上設定屬性，使其指向方案的資源識別碼。 您應該確定函式應用程式也有 `dependsOn` 方案的設定。
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
 #### <a name="windows"></a>Windows
 
-在 Windows 上，取用方案在網站設定中需要兩個額外的`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`設定`WEBSITE_CONTENTSHARE`：和。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+在 Windows 上，取用方案在網站設定中需要兩個額外的設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
 
 ```json
 {
@@ -261,7 +261,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函數應用程式必須將`kind`其設定`functionapp,linux`為，而且其`reserved`屬性必須設定為： `true`
+在 Linux 上，函數應用程式必須將其 `kind` 設定為 `functionapp,linux` ，而且其屬性必須 `reserved` 設定為 `true` ：
 
 ```json
 {
@@ -309,7 +309,7 @@ Premium 方案提供與取用方案相同的調整，但包含專用的資源和
 
 ### <a name="create-a-premium-plan"></a>建立進階方案
 
-Premium 方案是一種特殊類型的「伺服器陣列」資源。 您`EP1`可以使用、 `EP2`或`EP3` ，針對`Name` `sku` [description 物件](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值來指定它。
+Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 針對 `Name` `sku` [description 物件](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值來指定它。
 
 ```json
 {
@@ -334,7 +334,7 @@ Premium 方案是一種特殊類型的「伺服器陣列」資源。 您`EP1`可
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-高階方案上的函式應用程式必須將`serverFarmId`屬性設定為稍早建立之方案的資源識別碼。 此外，Premium 方案在網站設定中需要另外兩項設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`和。 `WEBSITE_CONTENTSHARE` 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+高階方案上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。 此外，Premium 方案在網站設定中需要另外兩項設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
 
 ```json
 {
@@ -410,7 +410,7 @@ App Service 計畫是由 "伺服器陣列" 資源所定義。
 }
 ```
 
-若要在 Linux 上執行您的應用程式，您`kind`也`Linux`必須將設定為：
+若要在 Linux 上執行您的應用程式，您也必須將設定 `kind` 為 `Linux` ：
 
 ```json
 {
@@ -431,7 +431,7 @@ App Service 計畫是由 "伺服器陣列" 資源所定義。
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-App Service 計畫上的函式應用程式必須將`serverFarmId`屬性設定為稍早建立之方案的資源識別碼。
+App Service 計畫上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。
 
 ```json
 {
@@ -470,7 +470,7 @@ App Service 計畫上的函式應用程式必須將`serverFarmId`屬性設定為
 }
 ```
 
-Linux 應用程式也應該在`linuxFxVersion` `siteConfig`底下包含屬性。 如果您只是部署程式碼，則此值取決於您所需的執行時間堆疊：
+Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 。 如果您只是部署程式碼，則此值取決於您所需的執行時間堆疊：
 
 | Stack            | 範例值                                         |
 |------------------|-------------------------------------------------------|
@@ -516,7 +516,7 @@ Linux 應用程式也應該在`linuxFxVersion` `siteConfig`底下包含屬性。
 }
 ```
 
-如果您要[部署自訂容器映射](./functions-create-function-linux-custom-image.md)，您必須使用`linuxFxVersion`來指定它，並且包含可讓您的映射提取的設定，如同[用於容器的 Web App](/azure/app-service/containers)。 此外，請`WEBSITES_ENABLE_APP_SERVICE_STORAGE`將`false`設定為，因為容器本身會提供您的應用程式內容：
+如果您要[部署自訂容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來指定它， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如同[用於容器的 Web App](/azure/app-service/containers)。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
 
 ```json
 {
@@ -670,7 +670,7 @@ Linux 應用程式也應該在`linuxFxVersion` `siteConfig`底下包含屬性。
 
 ### <a name="deploy-using-powershell"></a>使用 PowerShell 進行部署
 
-下列 PowerShell 命令會建立資源群組，並部署範本來建立具有所需資源的函式應用程式。 若要在本機執行，您必須安裝[Azure PowerShell](/powershell/azure/install-az-ps) 。 執行[`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount)以登入。
+下列 PowerShell 命令會建立資源群組，並部署範本來建立具有所需資源的函式應用程式。 若要在本機執行，您必須安裝[Azure PowerShell](/powershell/azure/install-az-ps) 。 執行 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) 以登入。
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -687,7 +687,7 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-若要測試此部署，您可以使用[像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)，在取用方案中于 Windows 上建立函數應用程式。 以`<function-app-name>`函式應用程式的唯一名稱取代。
+若要測試此部署，您可以使用[像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)，在取用方案中于 Windows 上建立函數應用程式。 以函式 `<function-app-name>` 應用程式的唯一名稱取代。
 
 ## <a name="next-steps"></a>後續步驟
 

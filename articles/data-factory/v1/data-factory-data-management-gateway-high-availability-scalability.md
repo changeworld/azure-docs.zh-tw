@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80065199"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>資料管理閘道 - 高可用性和延展性 (預覽)
@@ -192,7 +192,7 @@ ms.locfileid: "80065199"
 CPU 使用率 | 閘道節點的 CPU 使用率。 這個值是近乎即時的快照集。 
 網路功能 (輸入/輸出) | 閘道節點的網路使用率。 這個值是近乎即時的快照集。 
 並行作業 (執行中/限制) | 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以增加在高階案例中擴充並行作業執行的限制，其中 CPU/記憶體/網路使用量過低，但活動會計時。這項功能也適用于單一節點閘道（即使未啟用擴充性和可用性功能）。 如需詳細資訊，請參閱[調整考量](#scale-considerations)一節。 
-[角色] | 有兩種角色 – 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點 (包括發送器節點本身)。 
+角色 | 有兩種角色 – 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點 (包括發送器節點本身)。 
 
 ![資料管理閘道 - 進階的多節點監視](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
 
@@ -211,7 +211,7 @@ CPU 使用率 | 閘道節點的 CPU 使用率。 這個值是近乎即時的快�
 
 下表提供**邏輯閘道**的可能狀態。 閘道的狀態取決於閘道節點的狀態。 
 
-狀態 | 評價
+狀態 | 註解
 :----- | :-------
 需要註冊 | 此邏輯閘道還沒有已註冊的節點
 線上 | 閘道節點已連線
@@ -227,7 +227,7 @@ Azure 入口網站可為管線監視提供細微的節點層級詳細資料。 �
 
 ## <a name="scale-considerations"></a>調整考量
 
-### <a name="scale-out"></a>相應放大
+### <a name="scale-out"></a>擴增
 當**可用記憶體偏低**而 **CPU 使用率偏高**時，新增節點有助於相應放大機器所能承受的負載。 如果活動因為逾時或閘道節點離線而失敗，對閘道新增節點將有所助益。
  
 ### <a name="scale-up"></a>相應增加
@@ -238,9 +238,9 @@ Azure 入口網站可為管線監視提供細微的節點層級詳細資料。 �
 
 ## <a name="known-issuesbreaking-changes"></a>已知問題/重大變更
 
-- 單一邏輯閘道目前最多可以有四個實體閘道節點。 如果您基於效能考慮，需要四個以上的節點，請將[DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)電子郵件傳送至。
+- 單一邏輯閘道目前最多可以有四個實體閘道節點。 如果您基於效能考慮，需要四個以上的節點，請將電子郵件傳送至 [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com) 。
 - 您無法從另一個邏輯閘道使用驗證金鑰來重新註冊閘道節點，以跳脫目前的邏輯閘道。 若要重新註冊，請從節點解除安裝閘道、重新安裝閘道，然後使用驗證金鑰向其他邏輯閘道進行註冊。 
-- 如果您的所有閘道節點都需要 HTTP proxy，請在 diahost.exe.config 和 diawp.exe.config 中設定 proxy，並使用伺服器管理員，以確定所有節點都具有相同的 diahost.exe.config 和 diawip。如需詳細資訊，請參閱[設定 proxy 設定](data-factory-data-management-gateway.md#configure-proxy-server-settings)一節。 
+- 如果您的所有閘道節點都需要 HTTP proxy，請在 diahost.exe.config 和 diawp.exe.config 中設定 proxy，並使用伺服器管理員確認所有節點都具有相同的 diahost.exe.config 和 diawip.exe.config。如需詳細資訊，請參閱[設定 proxy 設定](data-factory-data-management-gateway.md#configure-proxy-server-settings)一節。 
 - 若要在閘道組態管理員中變更節點間通訊的加密模式，請在入口網站中只留下一個節點而刪除其他所有節點。 然後，於加密模式變更後重新新增節點。
 - 如果您選擇加密節點對節點的通道，請使用正式的 TLS 憑證。 自我簽署憑證可能會造成連線問題，因為相同的憑證可能不會受到其他機器上的憑證授權單位清單所信任。 
 - 當節點版本低於邏輯閘道版本時，您就無法向邏輯閘道註冊閘道節點。 請從入口網站中刪除邏輯閘道的所有節點，以便您可以註冊比它的版本還低的節點 (降級)。 如果您刪除邏輯閘道的所有節點，請以手動方式對該邏輯閘道安裝並註冊新的節點。 在此情況下不支援快速設定。

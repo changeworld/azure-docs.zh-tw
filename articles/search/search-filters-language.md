@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116276"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何使用 Azure 認知搜尋中的語言進行篩選 
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > 雖然查詢上沒有 $filter 引數，但此使用案例與篩選概念有強烈的關聯，因此會以篩選案例的形式呈現。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Azure 認知搜尋中的篩選](search-filters.md)
 + [語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)

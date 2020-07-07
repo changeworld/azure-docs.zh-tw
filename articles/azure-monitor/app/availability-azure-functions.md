@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
 ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791099"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立及執行自訂可用性測試
@@ -45,7 +45,7 @@ ms.locfileid: "82791099"
 >![Azure 入口網站中的 Azure 函式 .csx](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> 針對您要使用的端點位址： `EndpointAddress= https://dc.services.visualstudio.com/v2/track`。 除非您的資源位於 Azure Government 或 Azure 中國之類的區域，否則請參閱這篇文章，以瞭解如何覆[寫預設端點](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification)，並為您的區域選取適當的遙測通道端點。
+> 針對您要使用的端點位址： `EndpointAddress= https://dc.services.visualstudio.com/v2/track` 。 除非您的資源位於 Azure Government 或 Azure 中國之類的區域，否則請參閱這篇文章，以瞭解如何覆[寫預設端點](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification)，並為您的區域選取適當的遙測通道端點。
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -160,7 +160,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 為確保所有專案都正常運作，您可以在 Application Insights 資源的 [可用性] 索引標籤中查看圖形。
 
 > [!NOTE]
-> 如果您在 runAvailabilityTest 中執行自己的商務邏輯，則會看到如下列螢幕擷取畫面所示的成功結果，如果您沒有這樣做，就會看到失敗的結果。 以`TrackAvailability()`建立的測試會以**自訂**方式出現在測試名稱旁邊。
+> 如果您在 runAvailabilityTest 中執行自己的商務邏輯，則會看到如下列螢幕擷取畫面所示的成功結果，如果您沒有這樣做，就會看到失敗的結果。 以建立的測試 `TrackAvailability()` 會以**自訂**方式出現在測試名稱旁邊。
 
 >[!div class="mx-imgBorder"]
 >![成功結果的 [可用性] 索引標籤](media/availability-azure-functions/availability-custom.png)

@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100901"
 ---
 # <a name="troubleshooting-guide"></a>疑難排解指南
@@ -81,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查 standardoutput 的內容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查 standardoutput.txt 的內容 
 找出有問題之工作流程的輸出容器。 MSGEN 會在每個工作流程執行之後建立 `[workflowfilename].logs.zip` 資料夾。 將資料夾解壓縮以檢視其內容：
 
 * outputFileList.txt - 工作流程期間所產生輸出檔案的清單

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: e017e082472e7a4a2fab6a2845e52d3dc7acc460
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80123358"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虛擬機器上安裝 SAP Hana
@@ -29,7 +29,7 @@ ms.locfileid: "80123358"
 > [!NOTE]
 > 本指南說明如何將 SAP HANA 部署到 Azure VM。 如需如何將 SAP Hana 部署到 HANA 大型實例的相關資訊，請參閱[如何在 Azure 上安裝和設定 SAP Hana （大型實例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本指南也假設您已經熟悉：
 * SAP HANA 與 SAP NetWeaver，以及如何加以內部部署安裝。
 * 如何在 Azure 上安裝和操作 SAP Hana 和 SAP 應用程式實例。
@@ -84,7 +84,7 @@ ms.locfileid: "80123358"
 -  [Sap Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E)討論使用 Azure 上的 Linux VM 進行 SAP 增強監視 
 -  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E)討論 Linux 上的 SAPOSCOL 相關資訊 
 -  [Sap Note 2178632](https://launchpad.support.sap.com/#/notes/2178632/E)討論 sap on Microsoft Azure 的主要監視計量
--  [SAP NetWeaver 的 Azure 虛擬機器部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
+-  [適用於 SAP NetWeaver 的 Azure 虛擬機器部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA 安裝
 部署 Azure 虛擬機器並註冊並設定作業系統之後，您就可以根據 SAP 安裝來安裝 SAP Hana。 若要開始使用此檔集，請從這個 SAP 網站[HANA 資源](https://www.sap.com/products/hana/implementation/resources.html)開始著手
@@ -94,13 +94,13 @@ ms.locfileid: "80123358"
 
 ## <a name="additional-resources-for-sap-hana-backup"></a>SAP Hana 備份的其他資源
 如需如何備份 Azure Vm 上 SAP Hana 資料庫的相關資訊，請參閱：
-* [Azure 虛擬機器上的 SAP HANA 備份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+* [Azure 虛擬機器上 SAP Hana 的備份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 * [檔案層級的 SAP HANA Azure 備份](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
 
 ## <a name="next-steps"></a>後續步驟
 閱讀檔：
 
-- [SAP HANA 在 Azure 上的基礎結構設定和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [SAP HANA 在 Azure 上的基礎結構組態和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [SAP HANA Azure 虛擬機器儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 
 

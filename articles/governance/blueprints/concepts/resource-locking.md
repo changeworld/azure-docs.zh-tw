@@ -4,10 +4,10 @@ description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383599"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
@@ -47,7 +47,7 @@ ms.locfileid: "81383599"
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-定義的管理群組`{assignmentMG}`必須在管理群組階層內，或是與藍圖定義儲存所在的相同管理群組。
+定義的管理群組 `{assignmentMG}` 必須在管理群組階層內，或是與藍圖定義儲存所在的相同管理群組。
 
 藍圖指派的要求主體看起來像這樣：
 
@@ -85,7 +85,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 }
 ```
 
-此要求主體中的主要差異，以及指派給訂用帳戶的索引`properties.scope`鍵，都是屬性。 此必要屬性必須設定為要套用藍圖指派的訂用帳戶。 訂用帳戶必須是儲存藍圖指派所在的管理群組階層的直接子系。
+此要求主體中的主要差異，以及指派給訂用帳戶的索引鍵，都是 `properties.scope` 屬性。 此必要屬性必須設定為要套用藍圖指派的訂用帳戶。 訂用帳戶必須是儲存藍圖指派所在的管理群組階層的直接子系。
 
 > [!NOTE]
 > 指派給管理群組範圍的藍圖仍會以訂用帳戶層級藍圖指派的方式運作。 唯一的差異在於藍圖指派的儲存位置，讓訂用帳戶擁有者無法移除指派和相關聯的鎖定。
@@ -177,7 +177,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 },
 ```
 
-雖然**excludedPrincipals**必須是明確的，但**excludedActions**專案可以利用`*`來進行 RBAC 作業的萬用字元比對。
+雖然**excludedPrincipals**必須是明確的，但**excludedActions**專案可以利用 `*` 來進行 RBAC 作業的萬用字元比對。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115494"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 AS2 訊息
@@ -20,7 +20,7 @@ ms.locfileid: "82115494"
 > [!IMPORTANT]
 > 原始的 AS2 連接器即將淘汰，因此請確定您改用**AS2 （v2）** 連接器。 這個版本提供的功能與原始版本相同，是 Logic Apps 執行時間的原生，而且可在輸送量和訊息大小方面提供顯著的效能改進。 此外，原生 v2 連接器不會要求您建立與整合帳戶的連線。 相反地，如必要條件中所述，請務必將整合帳戶連結至您打算使用連接器的邏輯應用程式。
 
-若要在 Azure Logic Apps 中使用 AS2 訊息，您可以使用 AS2 連接器，它會提供用於管理 AS2 通訊的觸發程式和動作。 例如，若要在傳輸訊息時建立安全性和可靠性，您可以使用下列動作：
+若要使用 Azure Logic Apps 中的 AS2 訊息，您可使用 AS2 連接器，其提供用來管理 AS2 通訊的觸發程序和動作。 例如，若要在傳輸訊息時建立安全性和可靠性，您可以使用下列動作：
 
 * [ **AS2 編碼**動作](#encode)，可透過訊息處置通知（MDN）提供加密、數位簽章和通知，以協助支援不可否認性。 例如，此動作會套用 AS2/HTTP 標頭，並在設定時執行下列工作：
 
@@ -49,13 +49,13 @@ ms.locfileid: "82115494"
 
 本文說明如何將 AS2 編碼和解碼動作新增至現有的邏輯應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 您想要使用 AS2 連接器的邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 AS2 連接器只會提供動作，而非觸發程式。 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 您想要使用 AS2 連接器的邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 AS2 連接器只會提供動作，而非觸發程式。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 與您的 Azure 訂用帳戶相關聯的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，並連結至您打算使用 AS2 連接器的邏輯應用程式。 您的邏輯應用程式和整合帳戶必須存在於相同的位置或 Azure 區域中。
+* 與您的 Azure 訂用帳戶相關聯的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，並連結至您打算使用 AS2 連接器的邏輯應用程式。 邏輯應用程式與整合帳戶必須位於相同位置或相同的 Azure 區域中。
 
 * 至少有兩個您已在整合帳戶中使用 AS2 身分識別辨識符號定義的[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
@@ -122,7 +122,7 @@ ms.locfileid: "82115494"
 如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/as2/)。 
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[適用于 ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
+> 針對[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的邏輯應用程式，此連接器其 ISE 標籤版本使用 [ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 
