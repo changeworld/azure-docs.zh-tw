@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154418"
 ---
 # <a name="web-api"></a>Web API
@@ -56,7 +56,7 @@ Web API 應用程式是必須從 Web API 取得資源的 Web 應用程式。 在
 
 1. 使用者已經登入 Web 應用程式，其驗證機制與 Azure AD 無關。
 1. Web 應用程式需要授權碼才能取得存取權杖，因此它會透過瀏覽器發出要求以 Azure AD 的授權端點，以在驗證成功後提供 web 應用程式的應用程式識別碼和重新導向 URI。 使用者登入 Azure AD。
-1. 如果 Web 應用程式的使用者尚未同意允許 Web 應用程式代表他來呼叫 Web API，使用者必須同意。 應用程式會顯示它需要的權限，如果其中任何一項是系統管理員層級權限，則目錄中的一般使用者將無法同意。 此同意適用於單一和多租用戶應用程式。 在單一租用戶案例中，管理員可以代表其使用者執行要同意的管理員同意。 您可以使用[Azure 入口網站](https://portal.azure.com)中的`Grant Permissions`按鈕來完成這項作業。 
+1. 如果 Web 應用程式的使用者尚未同意允許 Web 應用程式代表他來呼叫 Web API，使用者必須同意。 應用程式會顯示它需要的權限，如果其中任何一項是系統管理員層級權限，則目錄中的一般使用者將無法同意。 此同意適用於單一和多租用戶應用程式。 在單一租用戶案例中，管理員可以代表其使用者執行要同意的管理員同意。 您可以使用 `Grant Permissions` [Azure 入口網站](https://portal.azure.com)中的按鈕來完成這項作業。 
 1. 使用者同意之後，Web 應用程式會收到它取得存取權杖所需的授權碼。
 1. Web 應用程式會使用 Azure AD 發行的授權碼，將要求傳送至 Azure AD 的權杖端點，其中包含授權碼、用戶端應用程式的詳細資料（應用程式識別碼和重新導向 URI），以及所需的資源（Web API 的應用程式識別碼 URI）。
 1. Azure AD 驗證授權碼及 Web 應用程式和 Web API 的相關資訊。 成功驗證後，Azure AD 會傳回兩個權杖：JWT 存取權杖和 JWT 重新整理權杖。

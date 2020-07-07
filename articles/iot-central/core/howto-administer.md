@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158671"
 ---
 # <a name="change-iot-central-application-settings"></a>變更 IoT Central 應用程式設定
@@ -45,7 +45,7 @@ ms.locfileid: "80158671"
 
 IoT Central 的 Azure Resource Manager SDK 套件適用於 Node、Python、C#、Ruby、Java 與 Go。 您可以使用這些封裝來建立、列出、更新或刪除 IoT Central 應用程式。 這些套件包含管理驗證和錯誤處理的協助程式。
 
-您可以在[https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples)中找到如何使用 Azure Resource Manager sdk 的範例。
+您可以在中找到如何使用 Azure Resource Manager Sdk 的範例 [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples) 。
 
 若要深入瞭解，請參閱下列 GitHub 存放庫和套件：
 

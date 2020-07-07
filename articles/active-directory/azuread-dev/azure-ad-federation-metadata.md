@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154894"
 ---
 # <a name="federation-metadata"></a>同盟中繼資料
@@ -43,7 +43,7 @@ Azure AD 會在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 若為**租用戶獨立端點**，`TenantDomainName` 是 `common`。 本文件只列出通用於所有 Azure AD 租用戶 (裝載於 login.microsoftonline.com) 的同盟中繼資料項目。
 
-例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 租使用者獨立端點是[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
+例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 租使用者獨立端點是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml) 。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
 
 ## <a name="contents-of-federation-metadata"></a>同盟中繼資料內容
 以下小節提供使用 Azure AD 所簽發之權杖的服務所需的資訊。

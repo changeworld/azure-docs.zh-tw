@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235033"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
@@ -27,7 +27,7 @@ ms.locfileid: "80235033"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
 
 ```azurecli

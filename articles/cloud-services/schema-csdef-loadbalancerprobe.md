@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537341"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 雲端服務定義 LoadBalancerProbe 結構描述
@@ -59,7 +59,7 @@ Azure Load Balancer 會負責將連入流量路由至角色執行個體。 負�
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必要。 負載平衡器探查的名稱。 名稱必須是唯一的。|
 | `protocol`          | `string` | 必要。 指定端點的通訊協定。 可能的值為 `http` 或 `tcp`。 如果已指定 `tcp`，則需要接收到的 ACK，探查才會成功。 如果已指定 `http`，則需要來自指定 URI 的「200 確定」回應，探查才會成功。|
-| `path`              | `string` | 用來從 VM 要求健康情況狀態的 URI。 如果將 `protocol` 設為 `http`，則需要 `path`。 否則不允許。<br /><br /> 沒有預設值。|
+| `path`              | `string` | 用來從 VM 要求健康情況狀態的 URI。 如果將 `protocol` 設為 `http`，則需要 `path`。 否則不允許。<br /><br /> 沒有任何預設值。|
 | `port`              | `integer` | 選擇性。 用來與探查通訊的連接埠。 這對於任何端點都是選擇性的，因為接著會針對探查使用相同的連接埠。 您也可以針對其探查設定不同的通訊埠。 可能的值範圍從 1 到 65535 (含)。<br /><br /> 預設值是由端點設定。|
 | `intervalInSeconds` | `integer` | 選擇性。 探查端點健康情況狀態的頻率間隔 (以秒為單位)。 一般而言，間隔略小於配置逾時期間 (以秒為單位) 的一半，可允許在執行個體退出循環之前進行兩個完整探查。<br /><br /> 預設值是 15，最小值是 5。|
 | `timeoutInSeconds`  | `integer` | 選擇性。 逾時期間 (以秒為單位) 會套用至若無回應將會導致停止更多流量傳遞至端點的探查。 此值可以讓端點退出循環的速度比在 Azure 中使用的一般時間 (此為預設值) 更快或更慢。<br /><br /> 預設值是 31，最小值是 11。|

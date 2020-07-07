@@ -17,15 +17,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062301"
 ---
 # <a name="routing-and-tag-expressions"></a>路由與標記運算式
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 標記運算式可讓您在透過通知中樞傳送推播通知時，指定特定的目標裝置或更明確的註冊。
 
@@ -37,9 +37,9 @@ ms.locfileid: "80062301"
 2. **標記**：所有包含指定標記的註冊都會收到通知。
 3. **標記運算式**：所有標記設定符合指定運算式的註冊都會收到通知。
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>標籤
 
-標記可以是任何字串，最多120個字元，其中包含英數位元及下列非英數位元`_`： ' '`@`、' '`#`、' '`.`、' '`:`、' '`-`、' '。 下列範例示範的應用程式可以讓您從中接收有關特定音樂群組的快顯通知。 在此案例中，路由通知的簡單方式是使用代表不同群組的標記來標示註冊，如下圖所示：
+標記可以是任何字串，最多120個字元，其中包含英數位元及下列非英數位元： ' `_` '、' `@` '、' `#` '、' `.` '、' `:` '、' `-` '。 下列範例示範的應用程式可以讓您從中接收有關特定音樂群組的快顯通知。 在此案例中，路由通知的簡單方式是使用代表不同群組的標記來標示註冊，如下圖所示：
 
 ![標記總覽](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
@@ -69,7 +69,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 在此範例中，Alice 會對 Beatles 的更新感興趣，而 Bob 會對 Wailers 的更新感興趣。 Bob 也對 Charlie 的意見感興趣，Charlie 對 Wailers 感興趣。 傳送通知給 Charlie 在 Beatles 上的批註時，通知中樞會將它傳送給 Alice 和 Bob。
 
-雖然您可以編碼標記中的多個考慮（例如`band_Beatles` ， `follows_Charlie`或），但標記是簡單字串，而不是具有值的屬性。 註冊只會符合特定標記的存在與否。
+雖然您可以編碼標記中的多個考慮（例如， `band_Beatles` 或 `follows_Charlie` ），但標記是簡單字串，而不是具有值的屬性。 註冊只會符合特定標記的存在與否。
 
 如何使用標記傳送到您所關注之群組的完整逐步教學課程，請參閱 [即時新聞](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)。
 
@@ -82,7 +82,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ![標記使用者](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-在圖中，標記`user_Alice`為的訊息會到達所有標記`user_Alice`為的裝置。
+在圖中，標記為的訊息會 `user_Alice` 到達所有標記為的裝置 `user_Alice` 。
 
 ## <a name="tag-expressions"></a>標記運算式
 
@@ -96,7 +96,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ![標記運算式](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-標記運算式支援一般布林運算子，例如`AND` （`&&`）、 `OR` （`||`）和`NOT` （`!`）;它們也可以包含括弧。 僅`OR`使用運算子的標記運算式可以參考20個標記;具有運算子`AND`的運算式， `OR`但沒有運算子可以參考10個標記;否則，標記運算式的限制為6個標記。
+標記運算式支援一般布林運算子，例如 `AND` （ `&&` ）、 `OR` （ `||` ）和 `NOT` （ `!` ）; 它們也可以包含括弧。 僅使用 `OR` 運算子的標記運算式可以參考20個標記; 具有運算子的運算式， `AND` 但沒有 `OR` 運算子可以參考10個標記; 否則，標記運算式的限制為6個標記。
 
 以下是使用 SDK 搭配標記運算式來傳送通知的範例：
 

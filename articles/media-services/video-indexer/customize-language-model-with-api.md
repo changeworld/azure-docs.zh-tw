@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127986"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用影片索引子 API 自訂語言模型
@@ -105,7 +105,7 @@ ms.locfileid: "80127986"
 }
 ```
 
-`id`傳回的`languageModelId`是用來區別語言模型的唯一識別碼，而則是用來[上傳影片來編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)並重新[編制影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （也稱為`linguisticModelId`在影片索引子上傳/重新編制 api）。
+傳回的 `id` 是用來區別語言模型的唯一識別碼，而 `languageModelId` 則是用來[上傳影片來編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)並重新[編制影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)Api （也稱為 `linguisticModelId` 在影片索引子上傳/重新編制 api）。
 
 ## <a name="delete-a-language-model"></a>刪除語言模型
 
@@ -157,11 +157,11 @@ ms.locfileid: "80127986"
 }
 ```
 
-`id`使用回應中所傳回檔案的來下載檔案的內容。
+使用 `id` 回應中所傳回檔案的來下載檔案的內容。
 
 ## <a name="update-a-file-from-a-language-model"></a>從語言模型更新檔案
 
-[[更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)檔案] 可讓您在指定的帳號`enable`中，更新自訂語言模型中檔案的名稱和狀態。
+[[更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)檔案] 可讓您 `enable` 在指定的帳號中，更新自訂語言模型中檔案的名稱和狀態。
 
 ### <a name="response"></a>回應
 
@@ -177,7 +177,7 @@ ms.locfileid: "80127986"
 }
 ```
 
-使用回應`id`中所傳回之檔案的來下載檔案的內容。
+使用 `id` 回應中所傳回之檔案的來下載檔案的內容。
 
 ## <a name="get-a-specific-language-model"></a>取得特定的語言模型
 
@@ -213,7 +213,7 @@ ms.locfileid: "80127986"
 }
 ```
 
-使用回應`id`中所傳回之檔案的來下載檔案的內容。
+使用 `id` 回應中所傳回之檔案的來下載檔案的內容。
 
 ## <a name="get-all-the-language-models"></a>取得所有語言模型
 

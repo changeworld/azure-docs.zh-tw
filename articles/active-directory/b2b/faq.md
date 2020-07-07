@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050810"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 共同作業常見問題集
@@ -24,7 +24,7 @@ ms.locfileid: "80050810"
 這些有關 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業的常見問題集 (FAQ) 會定期更新來包含新的主題。
 
    > [!IMPORTANT]
-   > 自**2021 年3月31日起**，Microsoft 將不再支援兌換邀請，方法是建立適用于 B2B 共同作業案例的非受控 Azure AD 帳戶和租使用者。 在準備過程中，我們鼓勵客戶選擇[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且很高興能建立更多共同作業的方式。
+   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>是否可以自訂登入頁面，讓我們的 B2B 共同作業來賓使用者感到更直覺式？
 當然！ 請參閱我們[有關這項功能的部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 如需有關如何自訂組織登入頁面的詳細資訊，請參閱[將公司商標新增至登入和存取面板頁面](../fundamentals/customize-branding.md)。
@@ -61,16 +61,16 @@ ms.locfileid: "80050810"
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我可以封鎖來賓使用者存取 Azure 入口網站嗎？
 
-可以！ 您可以建立條件式存取原則，以封鎖所有來賓和外部使用者存取 Azure 入口網站。 當您設定此原則時，請小心避免不慎封鎖成員和管理員的存取權。
+是的！ 您可以建立條件式存取原則，以封鎖所有來賓和外部使用者存取 Azure 入口網站。 當您設定此原則時，請小心避免不慎封鎖成員和管理員的存取權。
 
 1. 以安全性系統管理員或條件式存取系統管理員的身分，登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [Azure 入口網站中，選取 [ **Azure Active Directory**]。 
 3. 在 [**管理**] 下，選取 [**安全性**]。
-4. 在 [**保護**] 底下，選取 [**條件式存取**]。 選取 [新增原則]****。
+4. 在 [**保護**] 底下，選取 [**條件式存取**]。 選取 [新增原則]。
 5. 在 [**新增**] 頁面的 [**名稱**] 文字方塊中，輸入原則的名稱（例如「封鎖來賓存取入口網站」）。
-6. 在 [指派]  底下，選取 [使用者和群組]  。
+6. 在 [指派] 底下選取 [使用者和群組]。
 7. 在 [**包含**] 索引標籤上，選擇 [**選取使用者和群組**]，然後選取 [**所有來賓和外部使用者（預覽）**]。
-9. 選取 [完成]  。
+9. 選取 [完成] 。
 10. 在 [**新增**] 頁面的 [**指派**] 區段中，選取 [**雲端應用程式] 或 [動作**]。
 11. 在 [**雲端應用程式] 或 [動作**] 頁面上，選擇 [**選取應用程式**]，然後選擇 [**選取**]。
 12. 在 [選取]**** 頁面上，選擇 [Microsoft Azure 管理]****，然後選擇 [選取]****。

@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154469"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 端點中的權限和同意
@@ -61,7 +61,7 @@ Azure AD 中的權限有許多屬性，可協助使用者、系統管理員或�
 | --- | --- | --- |
 | `ID` | 是可唯一識別此權限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | 指出此權限是否可供使用。 | true |
-| `Type` | 指出此權限需要使用者同意還是系統管理員同意。 | User |
+| `Type` | 指出此權限需要使用者同意還是系統管理員同意。 | 使用者 |
 | `AdminConsentDescription` | 是在系統管理員同意體驗期間，向系統管理員顯示的說明 | 允許應用程式讀取使用者信箱中的電子郵件。 |
 | `AdminConsentDisplayName` | 是在系統管理員同意體驗期間，向系統管理員顯示的易記名稱。 | 讀取使用者的郵件 |
 | `UserConsentDescription` | 是在使用者同意體驗期間，向使用者顯示的說明。 |  允許應用程式讀取您信箱中的電子郵件。 |

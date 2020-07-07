@@ -4,10 +4,10 @@ description: 藉由使用 Azure API 將容器映像匯入到 Azure 容器登錄�
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051930"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>將容器映像匯入到容器登錄
@@ -34,7 +34,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 > 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 藉由異地複寫登錄（所需的 Premium 服務層級），您可以從單一登入服務多個具有相同映射和標籤名稱的區域。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如果您還沒有 Azure 容器登錄，請建立登錄。 如需相關步驟，請參閱[快速入門：使用 Azure CLI 建立私人容器](container-registry-get-started-azure-cli.md)登錄。
 
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>從不同的訂用帳戶匯入登錄
 
-在下列範例中，mysourceregistry** 位於與 myregistry** 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source`參數只會指定來源存放庫和標記，而不是登錄登入伺服器名稱。
+在下列範例中，mysourceregistry** 位於與 myregistry** 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意， `--source` 參數只會指定來源存放庫和標記，而不是登錄登入伺服器名稱。
 
 ```azurecli
 az acr import \

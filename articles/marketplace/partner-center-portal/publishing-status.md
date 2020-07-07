@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80275674"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>檢查您的商業 Marketplace 供應專案的發佈狀態
@@ -20,13 +20,13 @@ ms.locfileid: "80275674"
 
 每個供應項目應該都會顯示下列狀態指標的其中一個。
 
-| **狀態**    | **說明**  |
+| **狀態**    | **描述**  |
 | :---------- | :-------------------|
-| **Draft**(英文\) | 已建立供應專案，但尚未發佈。 |
+| **草稿** | 已建立供應專案，但尚未發佈。 |
 | **正在發行** | 供應專案/方案會透過發佈程式的步驟來運作。 |
 | **需要注意** | Microsoft 或任何發佈步驟在認證期間發現重大問題。 |
 | **預覽** | 供應專案已由 Microsoft 認證，現在會等待發行者進行最終驗證。 選取 [上線]，讓供應專案上線。 |
-| **即時** | 供應專案會在 marketplace 中上線，並可供客戶查看和取得。 |
+| **直播** | 供應專案會在 marketplace 中上線，並可供客戶查看和取得。 |
 | **暫止停止銷售** | 發行者已選取 [停止銷售] 供應專案或方案，但該動作尚未完成。 |
 | **Marketplace 中未提供** | 已移除 marketplace 中先前發佈的供應專案/方案。 |
 
@@ -116,7 +116,7 @@ ms.locfileid: "80275674"
 
 登入合作夥伴中心，並存取供應專案。 系統會將您重新導向至供應專案的 **[總覽**] 頁面。 在此頁面的頂端，您會看到 [上線] 的**選項。** 選取 [**上線]，** 確認之後，供應專案就會開始發佈至 [公開]。 當供應專案上線時，您會收到電子郵件通知。
 
-## <a name="publish"></a>發行
+## <a name="publish"></a>發佈
 
 現在您已選擇要與您的供應專案**上線**，使其可在 marketplace 中使用，有一系列最終的驗證檢查會逐步執行，以確保即時供應專案的設定就如同供應專案的預覽版本。
 

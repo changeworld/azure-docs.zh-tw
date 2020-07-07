@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79533227"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>將資料複寫至適用於 MySQL 的 Azure 資料庫
@@ -25,7 +25,7 @@ ms.locfileid: "79533227"
  
 針對遷移案例，請使用[Azure 資料庫移轉服務](https://azure.microsoft.com/services/database-migration/)（DMS）。
 
-## <a name="limitations-and-considerations"></a>限制與注意事項
+## <a name="limitations-and-considerations"></a>限制與考量
 
 ### <a name="data-not-replicated"></a>不會複寫資料
 不會複寫主要伺服器上的 [mysql 系統資料庫**](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) \(英文\)。 不會複寫主要伺服器上對於帳戶和權限的變更。 如果您在主要伺服器上建立帳戶且此帳戶需要存取複本伺服器，請在複本伺服器端手動建立相同的帳戶。 若要了解系統資料庫中包含哪些資料表，請參閱 [MySQL 手冊](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) \(英文\)。
@@ -36,7 +36,7 @@ ms.locfileid: "79533227"
 - 每個資料表都必須有主索引鍵。
 - 主要伺服器應該使用 MySQL InnoDB 引擎。
 - 使用者必須有權設定二進位記錄，以及在主要伺服器上建立新的使用者。
-- 如果主伺服器已啟用 SSL，請確定已在`mysql.az_replication_change_master`預存程式中包含為該網域提供的 ssl CA 憑證。 請參閱下列[範例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`參數。
+- 如果主伺服器已啟用 SSL，請確定已在預存程式中包含為該網域提供的 SSL CA 憑證 `mysql.az_replication_change_master` 。 請參閱下列[範例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 參數。
 - 請確定主要伺服器的 IP 位址已新增至「適用於 MySQL 的 Azure 資料庫」複本伺服器的防火牆規則。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) 更新防火牆規則。
 - 確定裝載主要伺服器的機器允許連接埠 3306 上的輸入和輸出流量。
 - 確定主伺服器具有**公用 IP 位址**、DNS 可公開存取，或具有完整功能變數名稱（FQDN）。

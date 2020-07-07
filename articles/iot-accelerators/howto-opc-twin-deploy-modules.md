@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241064"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>從頭開始部署 OPC 對應項模組和相依性
@@ -109,11 +109,11 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 將模組部署到 Azure IoT Edge 閘道裝置的最簡單方式是透過 Azure 入口網站。  
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
-1. 部署 OPC 對應[項](howto-opc-twin-deploy-dependencies.md)相依性，並取得`.env`產生的檔案。 請注意， `hub name`所產生`PCS_IOTHUBREACT_HUB_NAME` `.env`檔案中的變數已部署。
+1. 部署 OPC 對應[項](howto-opc-twin-deploy-dependencies.md)相依性，並取得產生的檔案 `.env` 。 請注意，所產生檔案中的變數已部署 `hub name` `PCS_IOTHUBREACT_HUB_NAME` `.env` 。
 
-2. 註冊並啟動[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 閘道，並記`device id`下其。
+2. 註冊並啟動[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 閘道，並記下其 `device id` 。
 
 ### <a name="deploy-to-an-edge-device"></a>部署至 edge 裝置
 
@@ -127,7 +127,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 5. 在頁面的 [**部署模組**] 區段中，選取 [**新增**]，然後**IoT Edge 模組]。**
 
-6. 在 [ **IoT Edge 自訂模組**] `opctwin`對話方塊中，使用作為模組的名稱，然後將容器*映射 URI*指定為
+6. 在 [ **IoT Edge 自訂模組**] 對話方塊中 `opctwin` ，使用作為模組的名稱，然後將容器*映射 URI*指定為
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
@@ -143,7 +143,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 7. 選取 [**儲存**] 並重複步驟**5**。  
 
-8. 在 [IoT Edge 自訂模組] 對話方塊`opcpublisher`中，使用作為模組的 [名稱]，並將 [容器*映射 URI* ] 當做 
+8. 在 [IoT Edge 自訂模組] 對話方塊中，使用 `opcpublisher` 作為模組的 [名稱]，並將 [容器*映射 URI* ] 當做 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
@@ -170,19 +170,19 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
     然後選取 **[下一步]**
 
-11. 檢查您的部署資訊和資訊清單。  它看起來應該像上述部署資訊清單。  選取 [提交]  。
+11. 檢查您的部署資訊和資訊清單。  它看起來應該像上述部署資訊清單。  選取 [提交]。
 
 12. 一旦您將模組部署到您的裝置，就可以在入口網站的 [裝置詳細資料]**** 頁面中檢視所有項目。 此頁面會顯示每個已部署模組的名稱，以及像是部署狀態和結束代碼的實用資訊。
 
 ## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 進行部署
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 1. 從[這裡](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安裝最新版本的[Azure 命令列介面（AZ）](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
 
 ### <a name="quickstart"></a>快速入門
 
-1. 將上述部署資訊清單儲存至`deployment.json`檔案。  
+1. 將上述部署資訊清單儲存至檔案 `deployment.json` 。  
 
 2. 使用下列命令，將組態套用至 IoT Edge 裝置：
 

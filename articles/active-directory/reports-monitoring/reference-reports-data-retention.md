@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239553"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報告資料多久？
@@ -67,7 +67,7 @@ ms.locfileid: "80239553"
 
 **活動報告**    
 
-| Report                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 報表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | 7 天        | 30 天             | 30 天             |
@@ -77,7 +77,7 @@ ms.locfileid: "80239553"
 
 **安全性信號**
 
-| Report         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 報表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
 | 有風險的使用者  | 7 天        | 30 天             | 90 天             |
 | 有風險的登入 | 7 天        | 30 天             | 90 天             |

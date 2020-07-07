@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154911"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平台 (v2.0)？
@@ -33,7 +33,7 @@ ms.locfileid: "80154911"
 
 * v1.0 端點只允許使用公司和學校帳戶登入您的應用程式 (Azure AD)
 * Microsoft 身分識別平臺端點可讓 Azure AD 和個人 Microsoft 帳戶（MSA）（例如 hotmail.com、outlook.com 和 msn.com）的公司和學校帳戶登入。
-* 這兩個端點也會針對設定為*[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點`https://login.microsoftonline.com/{TenantId_or_Name}`（）的*多租*使用者應用程式，接受 Azure AD 目錄的*[來賓使用者](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 登入。
+* 這兩個端點也會針對設定為*[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點（）的*多租*使用者應用程式，接受 Azure AD 目錄的*[來賓使用者](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 登入 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
 
 Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶及公司和學校帳戶的登入。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
 
@@ -92,11 +92,11 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 
 ### <a name="offline-access"></a>離線存取
 
-使用 Microsoft 身分識別平臺端點的應用程式可能需要使用適用于應用程式的新知名許可權- `offline_access`範圍。 如果應用程式需要長期代表使用者存取資源，則所有應用程式都需要要求此權限，即使使用者可能不會主動使用此應用程式亦然。 在同意對話方塊中， `offline_access` 範圍會對使用者顯示為 [隨時存取您的資料]****，而使用者必須加以同意。 要求`offline_access`許可權可讓您的 web 應用程式從 Microsoft 身分識別平臺端點接收 OAuth 2.0 refresh_tokens。 重新整理權杖屬於長效權杖，可用來交換新的 OAuth 2.0 存取權杖以延長存取期間。
+使用 Microsoft 身分識別平臺端點的應用程式可能需要使用適用于應用程式的新知名許可權- `offline_access` 範圍。 如果應用程式需要長期代表使用者存取資源，則所有應用程式都需要要求此權限，即使使用者可能不會主動使用此應用程式亦然。 在同意對話方塊中， `offline_access` 範圍會對使用者顯示為 [隨時存取您的資料]****，而使用者必須加以同意。 要求 `offline_access` 許可權可讓您的 web 應用程式從 Microsoft 身分識別平臺端點接收 OAuth 2.0 refresh_tokens。 重新整理權杖屬於長效權杖，可用來交換新的 OAuth 2.0 存取權杖以延長存取期間。
 
-如果您的`offline_access`應用程式未要求範圍，則不會收到重新整理權杖。 這表示當您在 OAuth 2.0 授權碼流程中兌換授權碼時，只會從 `/token` 端點接收一個存取權杖。 該存取權杖會短時間維持有效 (通常是一小時)，但最後終將過期。 屆時，您的應用程式必須將使用者重新導向回到 `/authorize` 端點以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者或許不需要再次輸入其認證或重新同意使用權限。
+如果您的應用程式未要求 `offline_access` 範圍，則不會收到重新整理權杖。 這表示當您在 OAuth 2.0 授權碼流程中兌換授權碼時，只會從 `/token` 端點接收一個存取權杖。 該存取權杖會短時間維持有效 (通常是一小時)，但最後終將過期。 屆時，您的應用程式必須將使用者重新導向回到 `/authorize` 端點以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者或許不需要再次輸入其認證或重新同意使用權限。
 
-若要深入瞭解 OAuth 2.0、 `refresh_tokens`和`access_tokens`，請參閱 Microsoft 身分[識別平臺通訊協定參考](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+若要深入瞭解 OAuth 2.0、 `refresh_tokens` 和 `access_tokens` ，請參閱 Microsoft 身分[識別平臺通訊協定參考](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 ### <a name="openid-profile-and-email"></a>OpenID、設定檔和電子郵件
 
@@ -104,7 +104,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 
 現在會限制 `openid` 範圍可提供應用程式存取權的資訊。 `openid` 範圍只允許您的應用程式將使用者登入，並接收使用者的應用程式特定識別碼。 如果您想要取得有關應用程式中使用者的個人資料，您的應用程式便需要向使用者要求其他使用權限。 兩個新範圍 (`email` 和 `profile`) 可讓您要求其他使用權限。
 
-* `email`範圍可讓您的應用程式透過 id_token 中的`email`宣告存取使用者的主要電子郵件地址，假設使用者有可定址的電子郵件地址。
+* `email`範圍可讓您的應用程式透過 id_token 中的宣告存取使用者的主要電子郵件地址 `email` ，假設使用者有可定址的電子郵件地址。
 * `profile`範圍可讓您的應用程式存取使用者的所有其他基本資訊，例如其名稱、慣用的使用者名稱、物件識別碼等等，id_token。
 
 這可讓您以最低洩漏的方式撰寫應用程式，所以您只可以向使用者要求應用程式執行其作業所需的資訊集。 如需這些範圍的詳細資訊，請參閱[Microsoft 身分識別平臺範圍參考](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
@@ -180,7 +180,7 @@ Microsoft 身分識別平臺端點將演進以排除此處所列的限制，因�
 * 如果您要建立桌上型電腦或行動應用程式，您可以使用其中一個 Microsoft 驗證程式庫（MSAL）。 這些程式庫已正式運作，或在生產環境支援的預覽中，因此在生產應用程式中使用它們是安全的。 您可以在[驗證程式庫參考](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)中，閱讀更多和預覽條款與可用程式庫相關的詳細資訊。
 * 針對 Microsoft 程式庫未涵蓋的平臺，您可以直接在應用程式代碼中傳送和接收通訊協定訊息，以與 Microsoft 身分識別平臺端點整合。 OpenID Connect 和 OAuth 通訊協定[會明確記載](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以協助您進行這類整合。
 * 最後，您可以使用開放原始碼 OpenID Connect 和 OAuth 程式庫來與 Microsoft 身分識別平臺端點整合。 Microsoft 身分識別平臺端點應該與許多開放原始碼通訊協定程式庫相容，而不需要變更。 這類的程式庫的可用性會依語言和平台而有所不同。 [OpenID Connect](https://openid.net/connect/) \(英文\) 和 [OAuth 2.0](https://oauth.net/2/) \(英文\) 網站保有一份常用的實作清單。 如需詳細資訊，請參閱[microsoft 身分識別平臺和驗證程式庫](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以及已使用 Microsoft 身分識別平臺端點測試的開放原始碼用戶端程式庫和範例清單。
-* 如需參考， `.well-known` Microsoft 身分識別平臺通用端點的端點為`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`。 使用您的租用戶識別碼來取代 `common`，以取得您租用戶特有的資料。  
+* 如需參考， `.well-known` Microsoft 身分識別平臺通用端點的端點為 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 。 使用您的租用戶識別碼來取代 `common`，以取得您租用戶特有的資料。  
 
 ### <a name="protocol-changes"></a>通訊協定變更
 

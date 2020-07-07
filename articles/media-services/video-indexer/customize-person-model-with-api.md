@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127898"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用影片索引器 API 自訂人員模型
@@ -75,7 +75,7 @@ ms.locfileid: "80127898"
 ]
 ```
 
-您可以在[上傳影片來編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或重新索引[影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)時， `id`使用`personModelId`參數的人員模型值，選擇要用於影片的模型。
+您可以在 `id` `personModelId` [上傳影片來編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或重新索引[影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)時，使用參數的人員模型值，選擇要用於影片的模型。
 
 ## <a name="update-a-face"></a>更新人臉
 
@@ -87,7 +87,7 @@ ms.locfileid: "80127898"
 
 若要更新臉部，請使用[更新影片臉部](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)API。
 
-人員模型的名稱是唯一的，因此，如果您在相同的人員模型中提供兩個`name`不同的臉部相同的參數值，影片索引子會將臉部視為相同的人員，並在您重新編制影片索引後加以聚合。
+人員模型的名稱是唯一的，因此，如果您在相同的人員模型中提供兩個不同的臉部相同的 `name` 參數值，影片索引子會將臉部視為相同的人員，並在您重新編制影片索引後加以聚合。
 
 ## <a name="next-steps"></a>後續步驟
 

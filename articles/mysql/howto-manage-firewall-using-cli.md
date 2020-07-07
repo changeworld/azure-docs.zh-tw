@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063520"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
@@ -19,7 +19,7 @@ ms.locfileid: "80063520"
 
 虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure CLI 建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * [適用於 MySQL 的 Azure 資料庫伺服器和資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80063520"
     ```
    此命令會輸出下一個步驟中要使用的代碼。
 
-2. 使用網頁瀏覽器開啟頁面[https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然後輸入程式碼。
+2. 使用網頁瀏覽器開啟頁面 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ，然後輸入程式碼。
 
 3. 在提示字元中，使用您的 Azure 認證登入。
 

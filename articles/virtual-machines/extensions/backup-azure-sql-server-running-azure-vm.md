@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247379"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中執行 SQL Server 的 Azure 備份
@@ -20,7 +20,7 @@ ms.locfileid: "80247379"
 在其他供應專案之間 Azure 備份，可支援備份工作負載，例如在 Azure Vm 中執行 SQL Server。 由於 SQL 應用程式是在 Azure VM 中執行，因此備份服務需要存取應用程式的許可權，並提取必要的詳細資料。
 若要這樣做，Azure 備份會在使用者所觸發的註冊程式期間，在執行 SQL Server 的 VM 上安裝**AzureBackupWindowsWorkload**擴充功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如需支援的案例清單，請參閱 Azure 備份支援的支援[矩陣](../../backup/sql-support-matrix.md#scenario-support)。
 
@@ -85,7 +85,7 @@ Azure 備份支援 NSG 標記、部署 proxy 伺服器或列出的 IP 範圍;如
 
 ### <a name="property-values"></a>屬性值
 
-Name | 值/範例 | 資料類型
+名稱 | 值/範例 | 資料類型
  --- | --- | ---
 地區設定 | zh-tw  |  字串
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | 字串

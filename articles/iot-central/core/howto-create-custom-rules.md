@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158141"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
@@ -30,7 +30,7 @@ ms.locfileid: "80158141"
 * 建立串流分析查詢，以偵測裝置停止傳送資料的時間。
 * 使用 Azure Functions 和 SendGrid 服務來傳送電子郵件通知。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80158141"
 
 | 設定 | 值 |
 | ------- | ----- |
-| 定價方案 | Standard |
+| 定價方案 | 標準 |
 | 應用程式範本 | 存放區內分析-條件監視 |
 | 應用程式名稱 | 接受預設值，或選擇您自己的名稱 |
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
@@ -81,7 +81,7 @@ ms.locfileid: "80158141"
 | 訂用帳戶 | 您的訂用帳戶 |
 | 資源群組 | DetectStoppedDevices |
 | 位置 | 美國東部 |
-| 裝載環境 | 雲端 |
+| 裝載環境 | Cloud |
 | 串流單位 | 3 |
 
 ### <a name="function-app"></a>函式應用程式
@@ -144,7 +144,7 @@ ms.locfileid: "80158141"
 此解決方案會使用 Azure Functions 應用程式，在串流分析作業偵測到已停止的裝置時傳送電子郵件通知。 若要建立您的函數應用程式：
 
 1. 在 [Azure 入口網站中，流覽至**DetectStoppedDevices**資源群組中的**App Service**實例。
-1. 選取**+** 以建立新的函式。
+1. 選取 **+** 以建立新的函式。
 1. 在 [**選擇開發環境**] 頁面上，選擇 [**入口網站內**]，然後選取 [**繼續**]。
 1. 在 [**建立**函式] 頁面上，選擇 [ **Webhook + API** ]，然後選取 [**建立**]。
 
@@ -159,7 +159,7 @@ ms.locfileid: "80158141"
 1. 選取 [**整合**]，選擇 [輸出**HTTP （$return）**]，然後選取 [**刪除**]。
 1. 選擇 [ **+ 新增輸出**]，然後選擇 [ **SendGrid**]，再選擇 [**選取**]。 選擇 [**安裝**] 以安裝 SendGrid 擴充功能。
 1. 當安裝完成時，請選取 [使用函式傳回**值**]。 新增有效的**至位址**以接收電子郵件通知。  新增有效**的 [發**件人] 位址，做為電子郵件傳送者使用。
-1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入**SendGridAPIKey**做為金鑰，以及您先前記下的 SendGrid API 金鑰做為值。 然後選取 [建立]  。
+1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入**SendGridAPIKey**做為金鑰，以及您先前記下的 SendGrid API 金鑰做為值。 然後選取 [建立]。
 1. 選擇 [**儲存**] 以儲存函式的 SendGrid 系結。
 
 整合設定看起來如下列螢幕擷取畫面所示：
@@ -302,7 +302,7 @@ test-device-3    2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要啟動串流分析作業，請依序選擇 **[總覽**]、[**開始**]、[**現在**]，然後**啟動**：
 
     ![串流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -317,12 +317,12 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 設定 | 值 |
     | ------- | ----- |
     | 顯示名稱 | 匯出至事件中樞 |
-    | 啟用 | 另一 |
+    | 已啟用 | 開啟 |
     | 事件中樞命名空間 | 您的事件中樞命名空間名稱 |
     | 事件中樞 | centralexport |
-    | 量測 | 另一 |
-    | 裝置 | Off |
-    | 裝置範本 | Off |
+    | 量測 | 開啟 |
+    | 裝置 | 關閉 |
+    | 裝置範本 | 關閉 |
 
 ![連續資料匯出設定](media/howto-create-custom-rules/cde-configuration.png)
 

@@ -4,27 +4,27 @@ description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azur
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 0199495e3b0eb002e58c096ed9abf05d46f43f97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80054120"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
 您可以使用 System Center Data Protection Manager (DPM)，將 SharePoint 伺服器陣列備份到 Microsoft Azure，其方法與備份其他資料來源極為類似。 Azure 備份提供靈活的備份排程來建立每日、每週、每月或每年備份點，並可讓您針對各種備份點執行保留原則選項。 DPM 可讓您儲存本機磁碟複本來快速達成復原時間目標 (RTO)，也可以將複本儲存到 Azure 來進行經濟實惠的長期保留。
 
-使用 DPM 將 SharePoint 備份至 Azure，是將 SharePoint 備份至本機 DPM 的類似程式。 這篇文章會說明 Azure 的特定考慮。
+使用 DPM 將 SharePoint 備份至 Azure，是將 SharePoint 備份至本機 DPM 的類似程式。 本文說明 Azure 的特定考量。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支援的版本與相關保護案例
 
 如需支援的 SharePoint 版本清單以及備份所需的 DPM 版本清單，請參閱 [What can DPM back up?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup) (DPM 可以備份的內容)。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
@@ -53,18 +53,18 @@ ms.locfileid: "80054120"
    > 由於 SharePoint 伺服器陣列在 Azure 中受長期保留保護，因此 DPM 伺服器上沒有可用的目錄資訊 (元資料)。 如此一來，每當需要復原時間點 SharePoint 內容資料庫，您就需要重新編目 SharePoint 伺服器陣列。
    >
    >
-3. 按一下 [重新編目] ****。
+3. 按一下 [重新編目] 。
 
     ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    [雲端重新編目] **** 狀態視窗隨即會開啟。
+    [雲端重新編目]  狀態視窗隨即會開啟。
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功] **。 按一下 **關閉**。
+    完成編目後，狀態會變更為 [成功] 。 按一下 [關閉] 。
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. 按一下 DPM [復原] **** 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原] ****。
+4. 按一下 DPM [復原] **** 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原] 。
 
     ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此時，依照本文前述的復原步驟，從磁碟復原 SharePoint 內容資料庫。

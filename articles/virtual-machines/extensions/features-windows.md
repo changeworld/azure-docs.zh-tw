@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066846"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>適用於 Windows 的虛擬機器擴充功能和功能
@@ -42,7 +42,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Windows 的自訂指令碼擴充功能允許在 VM 上執行任何 PowerShell 指令碼。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Windows VM 自訂指令碼擴充功能](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要處理虛擬機器上的擴充功能，您必須安裝 Azure Windows 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -54,11 +54,11 @@ Azure 虛擬機器代理程式可管理 Azure 虛擬機器與 Azure 網狀架構
 
 #### <a name="supported-agent-versions"></a>支援的代理程式版本
 
-為了提供最佳使用體驗，代理程式的版本數量盡可能精簡。 如需詳細資訊，請參閱 [本篇文章](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+為了提供最佳使用體驗，代理程式的版本數量盡可能精簡。 如需詳細資訊，請參閱[這篇文章](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 #### <a name="supported-oses"></a>支援的作業系統
 
-Windows 客體代理程式可在多種 OS 上執行，但具有擴充功能的 OS 在擴充功能方面有所限制。 如需詳細資訊，請參閱 [本篇文章](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
+Windows 客體代理程式可在多種 OS 上執行，但具有擴充功能的 OS 在擴充功能方面有所限制。 如需詳細資訊，請參閱[這篇文章](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )。
 
 某些擴充功能並非所有作業系統都可支援，可能會發出錯誤碼 51：「不支援的 OS」**。 請查看個別的擴充功能文件以了解支援度。
@@ -355,7 +355,7 @@ AutoUpgradeMinorVersion     : True
 
 1. 若要檢查 Windows 來賓代理程式記錄檔，請在*C:\WindowsAzure\Logs\WaAppAgent.log*中布建延伸模組時查看活動
 
-2. 若要查看實際的擴充功能記錄，請在 *C:\WindowsAzure\Logs\Plugins\<extensionName>* 中取得詳細資訊。
+2. 檢查實際的擴充記錄，以取得*C:\WindowsAzure\Logs\Plugins \<extensionName> *中的詳細資料
 
 3. 在擴充功能專用文件的疑難排解章節中，查看錯誤碼、已知問題等。
 

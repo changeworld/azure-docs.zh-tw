@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80047736"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 位址
@@ -61,7 +61,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 如果您的 API 管理服務位於虛擬網路中，則會有兩種類型的 IP 位址-「公用」和「私用」。
 
-公用 IP 位址會用於埠`3443`上的內部通訊，以管理設定（例如，透過 Azure Resource Manager）。 在外部 VNet 設定中，它們也會用於執行時間 API 流量。 從 API 管理將要求傳送至公開（網際網路面向）後端時，公用 IP 位址會顯示為要求的來源。
+公用 IP 位址會用於埠上的內部通訊 `3443` ，以管理設定（例如，透過 Azure Resource Manager）。 在外部 VNet 設定中，它們也會用於執行時間 API 流量。 從 API 管理將要求傳送至公開（網際網路面向）後端時，公用 IP 位址會顯示為要求的來源。
 
 私人虛擬 IP （VIP）位址（**僅**適用于[內部 VNet 模式](api-management-using-with-internal-vnet.md)）是用來從網路內部連線至 api 管理端點-閘道、開發人員入口網站，以及直接存取 api 的管理平面。 您可以使用它們來設定網路內的 DNS 記錄。
 

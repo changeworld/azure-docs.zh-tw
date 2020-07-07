@@ -6,17 +6,17 @@ ms.topic: conceptual
 description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 NGINX 輸入控制器，並使用該輸入控制器來設定 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155442"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自訂 NGINX 輸入控制器並設定 HTTPS
 
 本文說明如何將 Azure Dev Spaces 設定為使用自訂 NGINX 輸入控制器。 本文也會說明如何將該自訂輸入控制器設定為使用 HTTPS。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶][azure-account-create]。
 * [已安裝 Azure CLI][az-cli]。
@@ -47,7 +47,7 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-為 NGINX 輸入控制器建立 Kubernetes 命名空間，並使用`helm`安裝它。
+為 NGINX 輸入控制器建立 Kubernetes 命名空間，並使用安裝它 `helm` 。
 
 ```console
 kubectl create ns nginx
@@ -55,7 +55,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> 上述範例會建立輸入控制器的公用端點。 如果您需要改用輸入控制器的私用端點，請新增 *--設定控制器。\\kubernetes. io/azure-load-平衡器-internal "= true 參數至 helm install 命令。\\ \\ * *helm install* 例如：
+> 上述範例會建立輸入控制器的公用端點。 如果您需要改用輸入控制器的私用端點，請新增 *--設定控制器。\\ \\ kubernetes \\ . io/azure-load-平衡器-internal "= true*參數至*helm install*命令。 例如：
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -100,7 +100,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 * 將 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有實例取代為*nginx。MY_CUSTOM_DOMAIN*使用您的網域進行*MY_CUSTOM_DOMAIN*。 
 * 以*kubernetes.io/ingress.class： nginx # 自訂*輸入取代*kubernetes.io/ingress.class： traefik-Azds # Dev Spaces 特有*。 
 
-以下是已更新`values.yaml`檔案的範例：
+以下是已更新檔案的範例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -123,13 +123,13 @@ gateway:
 
 儲存變更並關閉該檔案。
 
-使用`azds space select`，透過您的範例應用程式建立*開發人員*空間。
+使用，透過您的範例應用程式建立*開發人員*空間 `azds space select` 。
 
 ```console
 azds space select -n dev -y
 ```
 
-使用`helm install`部署範例應用程式。
+使用部署範例應用程式 `helm install` 。
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -137,13 +137,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 上述範例會將範例應用程式部署至*dev*命名空間。
 
-使用`azds list-uris`來顯示要存取範例應用程式的 url。
+使用來顯示要存取範例應用程式的 Url `azds list-uris` 。
 
 ```console
 azds list-uris
 ```
 
-下列輸出顯示來自`azds list-uris`的範例 url。
+下列輸出顯示來自的範例 Url `azds list-uris` 。
 
 ```console
 Uri                                                  Status
@@ -157,14 +157,14 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 > [!NOTE]
 > 如果您看到錯誤頁面，而不是*bikesharingweb*服務，請確認您已在*yaml*檔案**中更新** *kubernetes.io/ingress.class*注釋和主機。
 
-使用`azds space select`命令在*dev*底下建立子空間，並列出 url 以存取子開發人員空間。
+使用 `azds space select` 命令在*dev*底下建立子空間，並列出 url 以存取子開發人員空間。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-下列輸出顯示來自`azds list-uris`的範例 url，以存取*azureuser1*子開發人員空間中的範例應用程式。
+下列輸出顯示來自的範例 Url `azds list-uris` ，以存取*azureuser1*子開發人員空間中的範例應用程式。
 
 ```console
 Uri                                                  Status
@@ -173,11 +173,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-從`azds list-uris`命令開啟公用 URL，以流覽至*azureuser1*子開發人員空間中的*bikesharingweb*服務。 在上述範例中， *azureuser1*子開發人員空間中`http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` *bikesharingweb*服務的公用 URL 是。
+從命令開啟公用 URL，以流覽至*azureuser1*子開發人員空間中的*bikesharingweb*服務 `azds list-uris` 。 在上述範例中， *azureuser1*子開發人員空間中*bikesharingweb*服務的公用 URL 是 `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` 。
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>將 NGINX 輸入控制器設定為使用 HTTPS
 
-將 NGINX 輸入控制器設定為使用 HTTPS 時，請使用[cert 管理員][cert-manager]來自動化 TLS 憑證的管理。 使用`helm`來安裝*certmanager*圖表。
+將 NGINX 輸入控制器設定為使用 HTTPS 時，請使用[cert 管理員][cert-manager]來自動化 TLS 憑證的管理。 使用 `helm` 來安裝*certmanager*圖表。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -187,7 +187,7 @@ helm repo update
 helm install cert-manager --namespace nginx --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-`letsencrypt-clusterissuer.yaml`建立檔案，並使用您的電子郵件地址更新 [電子郵件] 欄位。
+建立檔案 `letsencrypt-clusterissuer.yaml` ，並使用您的電子郵件地址更新 [電子郵件] 欄位。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -209,13 +209,13 @@ spec:
 > [!NOTE]
 > 若要進行測試，您也可以使用*ClusterIssuer*的[預備伺服器][letsencrypt-staging-issuer]。
 
-使用`kubectl`來套用`letsencrypt-clusterissuer.yaml`。
+使用 `kubectl` 來套用 `letsencrypt-clusterissuer.yaml` 。
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-更新[值。 yaml][values-yaml]以包含使用*cert-管理員*和 HTTPS 的詳細資料。 以下是已更新`values.yaml`檔案的範例：
+更新[值。 yaml][values-yaml]以包含使用*cert-管理員*和 HTTPS 的詳細資料。 以下是已更新檔案的範例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -246,7 +246,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-使用`helm`下列內容升級範例應用程式：
+使用下列內容升級範例應用程式 `helm` ：
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -276,7 +276,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-以*url*套件的相依性更新[BikeSharingWeb/package. json][package-json] 。
+以*url*套件的相依性更新[BikeSharingWeb/package.json][package-json] 。
 
 ```json
 {
@@ -288,7 +288,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-將[BikeSharingWeb/lib/][helpers-js] helper 中的*getApiHostAsync*方法更新為使用 HTTPS：
+更新[BikeSharingWeb/lib/helpers.js][helpers-js]中的*getApiHostAsync*方法，以使用 HTTPS：
 
 ```javascript
 ...
@@ -305,7 +305,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-流覽至`BikeSharingWeb`目錄，並使用`azds up`來執行更新的*BikeSharingWeb*服務。
+流覽至 `BikeSharingWeb` 目錄，並使用 `azds up` 來執行更新的*BikeSharingWeb*服務。
 
 ```console
 cd ../BikeSharingWeb/

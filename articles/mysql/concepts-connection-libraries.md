@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537188"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的連線庫
@@ -35,5 +35,5 @@ MySQL 提供標準的資料庫驅動程式連線，以搭配應用程式和工�
 ## <a name="next-steps"></a>後續步驟
 請閱讀這些快速入門，以了解如何使用您選擇的語言來連線及查詢適用於 MySQL 的 Azure 資料庫：
 
-[PHP](./connect-php.md) | [JAVA](./connect-java.md)  |  [ ](./connect-nodejs.md)  |  [ ](./connect-ruby.md)  |  [ ](./connect-go.md) [ ](./connect-python.md)  |  [ ](./connect-csharp.md)  |  [ ](connect-cpp.md).net （c #） Python node.js Ruby c + + Go |  
+[PHP](./connect-php.md)  | [JAVA](./connect-java.md)  |  [.NET （C #）](./connect-csharp.md)  | [Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [Ruby](./connect-ruby.md)  | [C + +](connect-cpp.md)  | [Go](./connect-go.md)
 

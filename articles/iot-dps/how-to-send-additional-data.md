@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246682"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在裝置與 DPS 之間傳輸承載
@@ -54,7 +54,7 @@ ms.locfileid: "80246682"
    ```
 
 ## <a name="sdk-support"></a>SDK 支援
-這項功能適用于 C、c #、JAVA 和 node.js[用戶端 sdk](https://docs.microsoft.com/azure/iot-dps/)。  
+這項功能適用于 C、c #、JAVA 和 Node.js[用戶端 sdk](https://docs.microsoft.com/azure/iot-dps/)。  
 
 ## <a name="next-steps"></a>後續步驟
 * 針對 Azure IoT 中樞和 Azure IoT 中樞裝置佈建服務，使用 [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) \(英文\) 進行開發

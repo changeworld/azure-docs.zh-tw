@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: aac2641913331095550c0e19cc587257a996fcce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537018"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫安全性
@@ -23,7 +23,7 @@ ms.locfileid: "79537018"
 適用於 MySQL 的 Azure 資料庫透過傳輸層安全性將傳輸中的資料加密來保護您的資料。 預設會強制執行加密（SSL/TLS）。
 
 ### <a name="at-rest"></a>待用
-適用於 MySQL 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 包含備份在內的資料會在磁片上進行加密，但執行查詢時所建立的暫存檔案除外。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
+適用於 MySQL 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 資料 (包含備份) 會在磁碟上加密，但不包括執行查詢時所建立的暫存檔案。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
 
 
 ## <a name="network-security"></a>網路安全性
@@ -38,7 +38,7 @@ IP 防火牆規則會根據每個要求的原始 IP 位址來授與伺服器的�
 虛擬網路服務端點會透過 Azure 骨幹擴充您的虛擬網路連線能力。 您可以使用虛擬網路規則，讓您的適用於 MySQL 的 Azure 資料庫伺服器允許來自虛擬網路中所選子網的連線。 如需詳細資訊，請參閱[虛擬網路服務端點總覽](concepts-data-access-and-security-vnet.md)。
 
 ### <a name="private-ip"></a>私人 IP
-私人連結可讓您透過私人端點連接到您在 Azure 中的適用於 MySQL 的 Azure 資料庫。 Azure 私用連結基本上會將 Azure 服務帶入您的私用虛擬網路（VNet）內。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。 如需詳細資訊，請參閱[私用連結總覽](concepts-data-access-security-private-link.md)
+私人連結可讓您透過私人端點連接到您在 Azure 中的適用於 MySQL 的 Azure 資料庫。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。 如需詳細資訊，請參閱[私用連結總覽](concepts-data-access-security-private-link.md)
 
 ## <a name="access-management"></a>存取管理
 

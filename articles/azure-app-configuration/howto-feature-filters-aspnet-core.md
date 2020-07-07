@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80057005"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>使用功能篩選器為使用者子集啟用功能
@@ -20,7 +20,7 @@ ms.locfileid: "80057005"
 
 相反地，_條件式功能旗_標可讓您以動態方式啟用或停用功能旗標。 根據功能旗標準則，應用程式可能會有不同的行為。 假設您想要一開始就為一小部分的使用者顯示您的新功能。 條件式功能旗標可讓您啟用某些使用者的功能旗標，並將其停用給其他使用者。 _功能篩選準則_會在每次評估時決定功能旗標的狀態。
 
-此`Microsoft.FeatureManagement`程式庫包含兩個功能篩選：
+此連結 `Microsoft.FeatureManagement` 庫包含兩個功能篩選：
 
 - `PercentageFilter`啟用以百分比為基礎的功能旗標。
 - `TimeWindowFilter`在指定的時間範圍內啟用功能旗標。
@@ -29,7 +29,7 @@ ms.locfileid: "80057005"
 
 ## <a name="registering-a-feature-filter"></a>註冊功能篩選
 
-您可以藉由呼叫`AddFeatureFilter`方法來註冊功能篩選，並指定功能篩選器的名稱。 例如，下列程式碼會註冊`PercentageFilter`：
+您可以藉由呼叫方法來註冊功能篩選 `AddFeatureFilter` ，並指定功能篩選器的名稱。 例如，下列程式碼會註冊 `PercentageFilter` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -41,15 +41,15 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>在 Azure 應用程式組態中設定功能篩選
 
-某些功能篩選器具有其他設定。 例如， `PercentageFilter`會根據百分比來啟動功能。 它有一個設定可定義要使用的百分比。
+某些功能篩選器具有其他設定。 例如，會根據百分比來啟動 `PercentageFilter` 功能。 它有一個設定可定義要使用的百分比。
 
-您可以針對 Azure 應用程式組態中定義的功能旗標，設定這些設定。 例如，遵循下列步驟來使用`PercentageFilter` ，針對 web 應用程式的50% 要求啟用功能旗標：
+您可以針對 Azure 應用程式組態中定義的功能旗標，設定這些設定。 例如，遵循下列步驟來使用 `PercentageFilter` ，針對 web 應用程式的50% 要求啟用功能旗標：
 
 1. 遵循[快速入門：將功能旗標新增至 ASP.NET Core 應用程式](./quickstart-feature-flag-aspnet-core.md)中的指示，建立具有功能旗標的 web 應用程式。
 
 1. 在 [Azure 入口網站中，移至您的設定存放區，然後按一下 [**功能管理員**]。
 
-1. 針對您在快速入門中建立的搶鮮*版（Beta* ）功能旗標，按一下內容功能表。 按一下 **[編輯]**。
+1. 針對您在快速入門中建立的搶鮮*版（Beta* ）功能旗標，按一下內容功能表。 按一下 **[編輯]** 。
 
     > [!div class="mx-imgBorder"]
     > ![編輯 Beta 功能旗標](./media/edit-beta-feature-flag.png)
@@ -80,7 +80,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="feature-filters-in-action"></a>功能篩選作用中
 
-若要查看此功能旗標的效果，請啟動應用程式，並多次點擊瀏覽器中**的 [重新**整理] 按鈕。 您會看到*Beta*專案出現在工具列上，大約有50% 的時間。 它會隱藏在其餘時間，因為會`PercentageFilter`停用要求子集的*Beta 版*功能。 下列影片顯示此行為的實際運作方式。
+若要查看此功能旗標的效果，請啟動應用程式，並多次點擊瀏覽器中**的 [重新**整理] 按鈕。 您會看到*Beta*專案出現在工具列上，大約有50% 的時間。 它會隱藏在其餘時間，因為會 `PercentageFilter` 停用要求子集的*Beta 版*功能。 下列影片顯示此行為的實際運作方式。
 
 > [!div class="mx-imgBorder"]
 > ![PercentageFilter 實際操作](./media/feature-flags-percentagefilter.gif)

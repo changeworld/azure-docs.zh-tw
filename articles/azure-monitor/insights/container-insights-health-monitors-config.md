@@ -4,10 +4,10 @@ description: 本文提供的內容說明容器 Azure 監視器中健全狀況監
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055707"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>適用于容器的 Azure 監視器健全狀況監視設定指南
@@ -54,7 +54,7 @@ ms.locfileid: "80055707"
 
 ### <a name="unit-monitors"></a>單位監視
 
-|**監視名稱** | 監視類型 | **說明** | **參數** | **ReplTest1** |
+|**監視名稱** | 監視類型 | **描述** | **參數** | **ReplTest1** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |節點記憶體使用率 |單位監視 |此監視會使用 cadvisor 報告的資料，每分鐘評估節點的記憶體使用量。 |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |節點 CPU 使用率 |單位監視 |此監視會使用 cadvisor 報告的資料，每分鐘檢查節點的 CPU 使用率。 | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
@@ -66,7 +66,7 @@ ms.locfileid: "80055707"
 
 ### <a name="aggregate-monitors"></a>匯總監視
 
-|**監視名稱** | **說明** | **演算法** |
+|**監視名稱** | **描述** | **演算法** |
 |-----------------|-----------------|---------------|
 |節點 |此監視器是所有節點監視的匯總。 其符合健全狀況狀態最差的子系監視狀態：<br> 節點 CPU 使用率<br> 節點記憶體使用率<br> 節點狀態 | 最差|
 |節點集區 |此監視會報告節點集區*agentpool*中所有節點的結合健全狀況狀態。 這是三個狀態監視器，其狀態是根據節點集區中節點80% 的最差狀態，以節點狀態的嚴重性遞減順序排序（也就是「重大」、「警告」、「狀況良好」）。|百分比 |

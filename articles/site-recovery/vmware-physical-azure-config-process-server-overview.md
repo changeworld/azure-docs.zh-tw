@@ -4,10 +4,10 @@ description: 本文概述使用 Azure Site Recovery 設定內部部署 VMware Vm
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062080"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>關於 Site Recovery 元件（設定、處理、主要目標）
@@ -20,7 +20,7 @@ ms.locfileid: "80062080"
 
 **設定** | **詳細資料** | **連結**
 --- | --- | ---
-**元件**  | 設定伺服器電腦會執行所有內部部署 Site Recovery 元件，包括設定伺服器、進程伺服器和主要目標伺服器。<br/><br/> 設定伺服器時，會自動安裝所有元件。 | [閱讀](vmware-azure-common-questions.md#configuration-server)設定伺服器常見問題。
+**Components**  | 設定伺服器電腦會執行所有內部部署 Site Recovery 元件，包括設定伺服器、進程伺服器和主要目標伺服器。<br/><br/> 設定伺服器時，會自動安裝所有元件。 | [閱讀](vmware-azure-common-questions.md#configuration-server)設定伺服器常見問題。
 **角色** | 組態伺服器會協調內部部署與 Azure 之間的通訊，以及管理資料複寫。 | 深入瞭解[VMware](vmware-azure-architecture.md)和[實體伺服器](physical-azure-architecture.md)嚴重損壞修復至 Azure 的架構。
 **VMware 需求** | 針對內部部署 VMware Vm 的嚴重損壞修復，您必須安裝並執行設定伺服器做為內部部署、高可用性 VMware VM。 | [瞭解](vmware-azure-deploy-configuration-server.md#prerequisites)必要條件。
 **VMware 部署** | 建議您使用下載的 OVA 範本來部署設定伺服器。 此方法可讓您直接設定符合所有需求和必要條件的設定伺服器。<br/><br/> 如果基於某些原因而無法使用 OVA 範本部署 VMware VM，您可以手動設定伺服器電腦，如下所述進行實體機器嚴重損壞修復。 | 使用 OVA 範本進行[部署](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)。

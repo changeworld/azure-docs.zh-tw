@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062846"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 webhook 設定問題管理系統的健康情況通知
@@ -33,7 +33,7 @@ ms.locfileid: "80062846"
 
 請參閱[範例](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` webhook 承載。
 
-您可以藉由查看來確認它是服務健康狀態警示`context.eventSource == "ServiceHealth"`。 以下是最相關的屬性：
+您可以藉由查看來確認它是服務健康狀態警示 `context.eventSource == "ServiceHealth"` 。 以下是最相關的屬性：
 - **activityLog。狀態**
 - **activityLog. level**
 - **activityLog. subscriptionId**
@@ -46,17 +46,17 @@ ms.locfileid: "80062846"
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>建立事件服務健康狀態儀表板的連結
 您可以藉由產生特殊的 URL，在桌上型電腦或行動裝置上建立服務健康狀態儀表板的直接連結。 使用*trackingId*和您的*subscriptionId*的前三個和最後三個數字，格式如下：
 
-HTTPs<i></i>：//*&lt;app.azure.com/h/&gt;trackingId*/*&lt;subscriptionId&gt;的前三個和最後三個數字*
+HTTPs：/ <i></i> /app.azure.com/h/* &lt; &gt; trackingId* / * &lt; subscriptionId &gt; 的前三個和最後三個數字*
 
 例如，如果您的*subscriptionId*是 bba14129-e895-429b-8809-278e836ecdb3，而您的*trackingId*是 0DET-URB，則您的服務健康狀態 URL 為：
 
-HTTPs<i></i>：//app.azure.com/h/0DET-URB/bbadb3
+HTTPs：/ <i></i> /app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>使用層級來偵測問題的嚴重性
 從最低到最高嚴重性，裝載中的**level**屬性可以是*資訊*、*警告*、*錯誤*或*重大*。
 
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>剖析受影響的服務以判斷事件範圍
-服務健康狀態警示可以通知您跨多個區域和服務的問題。 若要取得完整的詳細資料，您必須剖析的`impactedServices`值。
+服務健康狀態警示可以通知您跨多個區域和服務的問題。 若要取得完整的詳細資料，您必須剖析的值 `impactedServices` 。
 
 內的內容是一個已轉義的[json](https://json.org/)字串，如果未經過轉義，則會包含可定期剖析的另一個 json 物件。 例如：
 
@@ -96,7 +96,7 @@ HTTPs<i></i>：//app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>透過 HTTP POST 要求測試 webhook 整合
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 建立您想要傳送的服務健康情況承載。 如需[Azure 活動記錄警示](../azure-monitor/platform/activity-log-alerts-webhook.md)，請參閱 webhook 上的服務健康情況 webhook 承載範例。
 
@@ -115,5 +115,5 @@ HTTPs<i></i>：//app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="next-steps"></a>後續步驟
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 瞭解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
-- 深入瞭解[動作群組](../azure-monitor/platform/action-groups.md)。
+- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128060"
 ---
 # <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
@@ -35,7 +35,7 @@ CDN 會針對每個編解碼器、每個串流處理通訊協定、每一位容�
 
 ## <a name="considerations"></a>考量
 
-* 無論您是否啟用 CDN，[串流端點](streaming-endpoint-concept.md) `hostname`和串流 URL 都保持不變。
+* [streaming endpoint](streaming-endpoint-concept.md) `hostname` 無論您是否啟用 CDN，串流端點和串流 URL 都保持不變。
 * 如果您需要能夠在不使用 CDN 的情況下測試內容，請建立另一個未啟用 CDN 的串流端點。
 
 ## <a name="enable-azure-cdn-integration"></a>啟用 Azure CDN 整合
@@ -58,7 +58,7 @@ CDN 會針對每個編解碼器、每個串流處理通訊協定、每一位容�
 
 ## <a name="determine-if-a-dns-change-was-made"></a>判斷是否已進行 DNS 變更
 
-您可以使用<https://www.digwebinterface.com>，判斷是否已在串流端點上進行 DNS 變更（流量會導向至 Azure CDN）。 如果您在結果中看到 azureedge.net 的功能變數名稱，則流量現在會指向 CDN。
+您可以使用，判斷是否已在串流端點上進行 DNS 變更（流量會導向至 Azure CDN） <https://www.digwebinterface.com> 。 如果您在結果中看到 azureedge.net 的功能變數名稱，則流量現在會指向 CDN。
 
 ## <a name="origin-assist-cdn-prefetch"></a>原始-協助 CDN-預先提取
 
@@ -84,22 +84,22 @@ CDN 快取是一種被動的程式。 如果 CDN 可以預測下一個物件的�
 
 ### <a name="how-it-works"></a>運作方式
 
-具有 Akamai CDN 直接`Origin-Assist CDN-Prefetch`合約的客戶可以使用對標頭的 CDN 支援（適用于即時和影片隨選串流）。 此功能牽涉到 Akamai CDN 與媒體服務來源之間的下列 HTTP 標頭交換：
+`Origin-Assist CDN-Prefetch`具有 AKAMAI cdn 直接合約的客戶可以使用對標頭的 CDN 支援（適用于即時和影片隨選串流）。 此功能牽涉到 Akamai CDN 與媒體服務來源之間的下列 HTTP 標頭交換：
 
 |HTTP 標頭|值|傳送者|接收者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1（預設值）或0 |CDN|來源|表示 CDN 已啟用預先提取。|
-|`CDN-Origin-Assist-Prefetch-Path`| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|來源|CDN|提供 CDN 的預先提取路徑。|
-|`CDN-Origin-Assist-Prefetch-Request`|1（預先提取要求）或0（一般要求）|CDN|來源|若要指出來自 CDN 的要求是預先提取。|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 0 (預設) 或 1 |CDN|來源|表示 CDN 已啟用預先提取。|
+|`CDN-Origin-Assist-Prefetch-Path`| 範例： <br/>Fragments(video=1400000000,format=mpd-time-cmaf)|來源|CDN|提供 CDN 的預先提取路徑。|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (預先提取要求) 或0 (一般要求)|CDN|來源|若要指出來自 CDN 的要求是預先提取。|
 
-若要查看作用中的部分標頭交換，您可以嘗試下列步驟：
+若想看部分標頭交換的實際情況，您可以嘗試下列步驟：
 
-1. 使用 Postman 或捲曲對音訊或影片區段或片段的媒體服務原點發出要求。 請務必在要求中新增`CDN-Origin-Assist-Prefetch-Enabled: 1`標頭。
-2. 在回應中，您應該會看到具有`CDN-Origin-Assist-Prefetch-Path`相對路徑的標頭作為其值。
+1. 使用 Postman 或捲曲對音訊或影片區段或片段的媒體服務原點發出要求。 請務必 `CDN-Origin-Assist-Prefetch-Enabled: 1` 在要求中新增標頭。
+2. 在回應中，您應該會看到 `CDN-Origin-Assist-Prefetch-Path` 具有相對路徑的標頭作為其值。
 
 ### <a name="supported-streaming-protocols"></a>支援的串流通訊協定
 
-此`Origin-Assist CDN-Prefetch`功能支援下列串流通訊協定來進行即時和隨選串流處理：
+此 `Origin-Assist CDN-Prefetch` 功能支援下列串流通訊協定來進行即時和隨選串流處理：
 
 * HLS v3
 * HLS v4
@@ -124,9 +124,9 @@ CDN 快取是一種被動的程式。 如果 CDN 可以預測下一個物件的�
 
 * 針對即時串流，如果下一個區段或片段尚未提供，原點會有何説明？
 
-    在此情況下，媒體服務原始來源不`CDN-Origin-Assist-Prefetch-Path`會提供標頭，且不會進行 CDN 預先提取。
+    在此情況下，媒體服務原始來源不會提供 `CDN-Origin-Assist-Prefetch-Path` 標頭，且不會進行 CDN 預先提取。
 
-* `Origin-Assist CDN-Prefetch`如何使用動態資訊清單篩選？
+* 如何 `Origin-Assist CDN-Prefetch` 使用動態資訊清單篩選？
 
     這項功能的運作方式與資訊清單篩選器無關。 當下一個片段超出篩選視窗時，其 URL 仍然會藉由查看原始用戶端資訊清單，然後以 CDN 預先提取回應標頭的形式傳回。 因此，CDN 會取得從破折號/HLS/平滑資訊清單篩選出之片段的 URL。 不過，播放程式永遠不會向 CDN 提出 GET 要求來提取該片段，因為該片段不會包含在播放程式所持有的虛線/HLS/平滑資訊清單中（播放程式不知道片段是否存在）。
 

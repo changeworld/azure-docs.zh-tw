@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Container Instances 來執行工作，該�
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80131502"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重新啟動原則執行容器化工作
@@ -42,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>執行至完成範例
 
-若要查看作用中的重新開機原則，請從 Microsoft [aci-wordcount][aci-wordcount-image]映射建立容器實例，然後指定`OnFailure`重新開機原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
+若要查看作用中的重新開機原則，請從 Microsoft [aci-wordcount][aci-wordcount-image]映射建立容器實例，然後指定 `OnFailure` 重新開機原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
 
 使用下列 [az container create][az-container-create] 命令執行範例容器：
 

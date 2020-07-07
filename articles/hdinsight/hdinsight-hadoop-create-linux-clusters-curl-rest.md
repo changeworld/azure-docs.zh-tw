@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239927"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
@@ -30,7 +30,7 @@ Azure REST API 可讓您對裝載於 Azure 平台的服務執行管理作業，�
 
 Azure Resource Manager 範本是描述**資源群組**和其中所有資源（例如 HDInsight）的 JSON 檔。這個以範本為基礎的方法可讓您在一個範本中定義 HDInsight 所需的資源。
 
-下列 JSON 檔是來自[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)的範本和參數檔案的合併，會使用密碼來建立以 Linux 為基礎的叢集，以保護 SSH 使用者帳戶。
+下列 JSON 檔是來自的範本和參數檔案的合併，會 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 使用密碼來建立以 Linux 為基礎的叢集，以保護 SSH 使用者帳戶。
 
    ```json
    {

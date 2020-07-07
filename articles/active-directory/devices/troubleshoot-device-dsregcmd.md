@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128767"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令針對裝置進行疑難排解
@@ -54,7 +54,7 @@ Dsregcmd.exe/status 公用程式必須以網域使用者帳戶的身分執行。
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>裝置詳細資料
+## <a name="device-details"></a>裝置詳細資訊
 
 只有在裝置已加入 Azure AD 或混合式 Azure AD （未 Azure AD 註冊）時，才會顯示。 本節列出雲端中儲存的裝置識別詳細資料。
 
@@ -136,7 +136,7 @@ Dsregcmd.exe/status 公用程式必須以網域使用者帳戶的身分執行。
 - **WorkplaceJoined：** 如果已在目前的 ntuser.dat 內容中，將 Azure AD 已註冊的帳戶新增至裝置，請設定為 [是]。
 - **WamDefaultSet：** 如果已針對登入的使用者建立 WAM 預設 WebAccount，則設定為 [是]。 如果從提高許可權的命令提示字元執行 dsreg/status，此欄位可能會顯示錯誤。 
 - **WamDefaultAuthority：** 設定為 Azure AD 的 [組織]。
-- Azure AD 的**WamDefaultId：** -https://login.microsoft.comAlways ""。
+- Azure AD 的**WamDefaultId：** -Always " https://login.microsoft.com "。
 - **WamDefaultGUID：** -預設 WAM WEBACCOUNT 的 WAM 提供者（Azure AD/MICROSOFT 帳戶） GUID。 
 
 ### <a name="sample-user-state-output"></a>範例使用者狀態輸出

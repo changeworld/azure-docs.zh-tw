@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239370"
 ---
 # <a name="throttling-resource-manager-requests"></a>對 Resource Manager 要求進行節流
@@ -25,7 +25,7 @@ ms.locfileid: "80239370"
 
 下表顯示每小時的預設節流限制。
 
-| 影響範圍 | 作業 | 限制 |
+| 影響範圍 | Operations | 限制 |
 | ----- | ---------- | ------- |
 | 訂用帳戶 | reads | 12000 |
 | 訂用帳戶 | deletes | 15000 |
@@ -51,7 +51,7 @@ ms.locfileid: "80239370"
 
 Microsoft 網路資源提供者會套用下列節流限制：
 
-| 作業 | 限制 |
+| 操作 | 限制 |
 | --------- | ----- |
 | 寫入/刪除（PUT） | 每5分鐘1000 |
 | 讀取 (GET) | 每5分鐘10000 |

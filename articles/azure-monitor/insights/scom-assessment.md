@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055420"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 健康情況檢查 (預覽) 解決方案進行環境最佳化
@@ -82,7 +82,7 @@ Log Analytics 會建立工作負載的管理套件以提供加值服務。 每�
 4. 在 [一般屬性]**** 頁面上，於 [執行身分帳戶類型:]**** 清單中選取 [Windows]****。
 5. 在 [顯示名稱]**** 文字方塊中輸入顯示名稱，在 [說明]**** 方塊中選擇性地輸入說明，然後按 [下一步]****。
 6. 在 [散發安全性]**** 頁面上，選取 [較安全]****。
-7. 按一下頁面底部的 [新增]  。  
+7. 按一下 [建立]。  
 
 您現已建立執行身分帳戶，接下來您必須將其鎖定在管理群組中的管理伺服器，並與預先定義的執行身分設定檔相關聯，如此一來，工作流程才會使用認證來執行。  
 
@@ -147,13 +147,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 健全狀況檢查解決方案的管理元件包含名為*Microsoft System Center Operations Manager 執行健康情況檢查規則*的規則。 此規則負責執行健康情況檢查。 若要啟用規則和設定頻率，請使用下列程序。
 
-根據預設，Microsoft System Center Operations Manager 執行健全狀況檢查規則已停用。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 使用下列步驟。
+根據預設，Microsoft System Center Operations Manager 執行健全狀況檢查規則已停用。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 請使用下列步驟。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>針對特定的管理伺服器啟用此規則
 
 1. 在 Operations Manager Operations 主控台的 [**撰寫**] 工作區中，搜尋 [**規則**] 窗格中的 [ *Microsoft System Center Operations Manager 執行健康情況檢查規則*] 規則。
 2. 在搜尋結果中，選取包含文字「類型︰管理伺服器」** 的規則。
-3. 在規則上按一下滑鼠右鍵，然後按一下 [**覆寫** > ]，**針對 [類別：管理伺服器] 的特定物件**。
+3. 在規則上按一下滑鼠右鍵，然後按一下 [**覆寫**]，  >  **針對 [類別：管理伺服器] 的特定物件**。
 4.  在可用的管理伺服器清單中，選取應該執行此規則的管理伺服器。  這應該是您先前所設定，要將執行身分帳戶與其產生關聯的同一個管理伺服器。
 5.  針對 [已啟用]**** 參數值，務必將覆寫值變更為 [True]****。<br><br> ![override parameter](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 1. 在 Operations Manager 主控台的 [**撰寫**] 工作區中，搜尋 [**規則**] 區段中的 [ *Microsoft System Center Operations Manager 執行健康情況檢查規則*] 規則。
 2. 在搜尋結果中，選取包含文字「類型︰管理伺服器」** 的規則。
-3. 在規則上按一下滑鼠右鍵，然後按一下 [覆**寫** > **類別的所有物件的規則：管理伺服器**]。
+3. 在規則上按一下滑鼠右鍵，然後按一下 [覆**寫**  >  **類別的所有物件的規則：管理伺服器**]。
 4. 將 [間隔]**** 參數值變更為您想要的間隔值。 在下列範例中，此值設為 1440 分鐘 (一天)。<br><br> ![interval parameter](./media/scom-assessment/interval.png)<br>  
 
     如果此值設為 1440 分鐘內，則規則會每天執行一次。 在此範例中，此規則會忽略間隔值，且每天執行一次。
@@ -180,8 +180,8 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 加權是彙集以下三個重要因素的值：
 
 - 識別的問題會造成問題的*機率*。 機率較高等同於建議的整體分數較高。
-- 如果確實發生問題，則問題對您組織的*影響*。 影響力較高等同於建議的整體分數較高。
-- 實作建議需要付出的*努力*。 勞力較高等同於建議的整體分數較低。
+- 疑難對組織的 *影響力* (如果確實引發問題)。 影響力較高等同於建議的整體分數較高。
+- 實作建議所需的 *勞力* 。 勞力較高等同於建議的整體分數較低。
 
 每項建議之加權的表示採用每個焦點區域之總分的百分比。 例如，如果 [可用性與商務持續性] 焦點區域中的建議得分 5%，則實作該建議可讓整個「可用性與商務持續性」分數增加 5%。
 
@@ -208,13 +208,13 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 檢視基礎結構的總結法務遵循評估結果，然後再深入鑽研建議事項。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>檢視的焦點區域的建議並採取更正措施
-1. 登入位於的 Azure 入口網站[https://portal.azure.com](https://portal.azure.com)。
-2. 在 Azure 入口網站中，按一下左下角的 [更多服務]****。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [ **Log Analytics**]。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 上登入 Azure 入口網站。
+2. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]。
 3. 在 [Log Analytics 訂用帳戶] 窗格中，選取工作區，然後按一下 [工作區摘要]**** 功能表項目。  
 4. 在 [概觀]**** 頁面上，按一下 [System Center Operations Manager 健康情況檢查]**** 圖格。
 5. 在 [System Center Operations Manager 健康情況檢查]**** 頁面上，檢閱其中一個焦點區域刀鋒視窗中的摘要資訊，然後按一下一個刀鋒視窗來檢視該焦點區域的建議。
-6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件] **** 下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![focus area](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. 您可以採取 [建議動作]**** 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 已修正的項目將顯示為 [傳遞的物件]****。
+6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件]  下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![focus area](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 更正後的項目將以**通過的物件**呈現。
 
 ## <a name="ignore-recommendations"></a>忽略建議
 
@@ -282,7 +282,7 @@ AdvisorAssessment.exe 程序在哪裡執行？** AdvisorAssessment.exe 會在啟
 
 如何知道是否未通過必要條件？** 如果健康情況檢查已執行，但您沒有看到結果，很可能是健康情況檢查的某些必要條件未通過。 您可以在記錄檔搜尋中執行查詢︰`Operation Solution=SCOMAssessment` 和 `SCOMAssessmentRecommendation FocusArea=Prerequisites`，以查看未通過的必要條件。
 
-*先決條件失敗中`Failed to connect to the SQL Instance (….).`出現訊息。問題是什麼？* 用來收集資料的處理序 AdvisorAssessment.exe 會在管理伺服器的 HealthService 處理序下執行。 在健康情況檢查過程中，此處理序會嘗試連接至 Operations Manager 資料庫所在的 SQL Server。 當防火牆規則封鎖 SQL Server 執行個體的連接時，就會發生此錯誤。
+*`Failed to connect to the SQL Instance (….).`先決條件失敗中出現訊息。問題是什麼？* 用來收集資料的處理序 AdvisorAssessment.exe 會在管理伺服器的 HealthService 處理序下執行。 在健康情況檢查過程中，此處理序會嘗試連接至 Operations Manager 資料庫所在的 SQL Server。 當防火牆規則封鎖 SQL Server 執行個體的連接時，就會發生此錯誤。
 
 *收集的資料類型為何？* 透過 Windows PowerShell、SQL 查詢和檔案資訊收集器收集的資料類型如下︰WMI 資料 - 登錄資料 - 事件記錄檔資料 - Operations Manager 資料。
 

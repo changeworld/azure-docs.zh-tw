@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050298"
 ---
 # <a name="confidential-client-assertions"></a>機密用戶端判斷提示
@@ -35,7 +35,7 @@ MSAL.NET 有四種方法可將認證或判斷提示提供給機密用戶端應�
 - `.WithClientClaims()`
 
 > [!NOTE]
-> 雖然您可以使用`WithClientAssertion()` API 來取得機密用戶端的權杖，但我們不建議預設使用它，因為它更先進，而且是設計用來處理不常見的非常特定案例。 使用`.WithCertificate()` API 可讓 MSAL.NET 為您處理這種情況。 此 api 可讓您在需要時自訂驗證要求，但所建立的預設判斷`.WithCertificate()`提示將足以滿足大部分的驗證案例。 在某些情況下，如果 MSAL.NET 無法在內部執行簽署作業，此 API 也可作為因應措施。
+> 雖然您可以使用 `WithClientAssertion()` API 來取得機密用戶端的權杖，但我們不建議預設使用它，因為它更先進，而且是設計用來處理不常見的非常特定案例。 使用 `.WithCertificate()` API 可讓 MSAL.NET 為您處理這種情況。 此 api 可讓您在需要時自訂驗證要求，但所建立的預設判斷提示 `.WithCertificate()` 將足以滿足大部分的驗證案例。 在某些情況下，如果 MSAL.NET 無法在內部執行簽署作業，此 API 也可作為因應措施。
 
 ### <a name="signed-assertions"></a>帶正負號的判斷提示
 
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>替代方法
 
-您也可以選擇使用[Microsoft.identitymodel jsonwebtoken](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/)來為您建立判斷提示。 這段程式碼會更簡潔，如下列範例所示：
+您也可以選擇使用[Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/)來為您建立判斷提示。 這段程式碼會更簡潔，如下列範例所示：
 
 ```csharp
         string GetSignedClientAssertion()
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 如果您傳入字典中的其中一個宣告與其中一個強制宣告相同，則會將額外的宣告值納入考慮。 它會覆寫 MSAL.NET 所計算的宣告。
 
-如果您想要提供自己的宣告，包括 Azure AD 所預期的必要宣告，請傳入`false` `mergeWithDefaultClaims`參數。
+如果您想要提供自己的宣告，包括 Azure AD 所預期的必要宣告，請傳入 `false` `mergeWithDefaultClaims` 參數。

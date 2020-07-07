@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066622"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>針對具有 Azure CLI 的 VM 開啟埠和端點
@@ -46,7 +46,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule)新增規則以允許流向您 Web 伺服器的 HTTP 流量 (或針對自己的案例 (例如 SSH 存取或資料庫連接) 進行調整)。 下列範例會建立名為 myNetworkSecurityGroupRule** 的規則以允許連接埠 80 上的 TCP 流量︰
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule)新增規則以允許流向您 Web 伺服器的 HTTP 流量 (或針對自己的案例 (例如 SSH 存取或資料庫連接) 進行調整)。 下列範例會建立名為*myNetworkSecurityGroupRule*的規則，以允許埠80上的 TCP 流量：
 
 ```azurecli
 az network nsg rule create \
@@ -87,5 +87,5 @@ az network vnet subnet update \
 ## <a name="next-steps"></a>後續步驟
 在此範例中，您建立了簡單的規則來允許 HTTP 流量。 您可以從下列文章中，找到有關建立更詳細環境的資訊︰
 
-* [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)
+* [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)
 * [什麼是網路安全性群組 (NSG)？](../../virtual-network/security-overview.md)

@@ -9,10 +9,10 @@ description: 使用 Azure 開發人員空間中的私用 Helm 存放庫。
 keywords: Docker，Kubernetes，Azure，AKS，Azure Container Service，容器，Helm
 manager: gwallace
 ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240461"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用私用 Helm 存放庫
@@ -30,7 +30,7 @@ helm repo update
 
 ## <a name="add-the-chart-to-your-application"></a>將圖表新增至您的應用程式
 
-流覽至您專案的目錄，然後`azds prep`執行。
+流覽至您專案的目錄，然後執行 `azds prep` 。
 
 ```cmd
 azds prep --enable-ingress
@@ -60,7 +60,7 @@ helm dependency update
 
 ## <a name="run-your-application"></a>執行您的應用程式
 
-流覽至專案的根目錄並執行`azds up` ，以確認您的應用程式在您的開發人員空間中成功執行。
+流覽至專案的根目錄並執行， `azds up` 以確認您的應用程式在您的開發人員空間中成功執行。
 
 ```cmd
 $ azds up

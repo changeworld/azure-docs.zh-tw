@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128050"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>使用影片索引器網站自訂品牌模型
@@ -33,7 +33,7 @@ ms.locfileid: "80128050"
 
 ## <a name="edit-brands-model-settings"></a>編輯品牌模型設定
 
-您可以選擇設定是否要從 Bing 品牌資料庫偵測品牌。 若要設定此選項，您必須編輯品牌模型的設定。 請遵循下列步驟：
+您可以選擇設定是否要從 Bing 品牌資料庫偵測品牌。 若要設定此選項，您必須編輯品牌模型的設定。 遵循下列步驟：
 
 1. 移至[影片索引子](https://www.videoindexer.ai/)網站並登入。
 2. 若要在您的帳戶中自訂模型，請選取頁面右上角的 [**內容模型自訂**] 按鈕。

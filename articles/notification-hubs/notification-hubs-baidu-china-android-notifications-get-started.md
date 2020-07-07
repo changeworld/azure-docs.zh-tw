@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79536984"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
@@ -29,7 +29,7 @@ ms.locfileid: "79536984"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程需要：
 
@@ -37,7 +37,7 @@ ms.locfileid: "79536984"
 * [百度推播 Android SDK]
 
 > [!NOTE]
-> 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
+> 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
 若要開始，請執行下列動作：
 
@@ -68,7 +68,7 @@ ms.locfileid: "79536984"
 
 2. 輸入 [應用程式名稱]，並確定 [最低必要 SDK] 版本已設定為 [API 16: Android 4.1]。 **此外，請確定您的套件名稱 (应用包名) 與百度雲推送入口網站中的名稱相同**
 
-    ![Azure 通知中樞-百度 min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![azure 通知中樞-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure 通知中樞-百度 Min SDK1 ](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![ azure 通知中樞-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. 按 [下一步] 並繼續遵循精靈的指示進行，直到出現 [建立活動] 視窗為止。 請確定已選取 [空的活動]，最後選取 [完成] 以建立新的 Android 應用程式。
 

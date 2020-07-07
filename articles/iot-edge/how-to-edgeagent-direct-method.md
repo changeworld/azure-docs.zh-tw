@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240352"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用內建的直接方法與 edgeAgent 通訊
@@ -34,7 +34,7 @@ ms.locfileid: "80240352"
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-在 Azure 入口網站中，使用方法名稱`ping`和空的 JSON 承載來叫用方法`{}`。
+在 Azure 入口網站中，使用方法名稱 `ping` 和空的 JSON 承載來叫用方法 `{}` 。
 
 ![叫用 Azure 入口網站中的直接方法 ' ping '](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-在 Azure 入口網站中，使用方法名稱`RestartModule`和下列 JSON 承載來叫用方法：
+在 Azure 入口網站中，使用方法名稱和下列 JSON 承載來叫用方法 `RestartModule` ：
 
 ```json
 {

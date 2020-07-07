@@ -8,15 +8,15 @@ ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80257405"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>應用程式閘道多站台裝載
 
-多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 此功能可讓您將最多 100 個網站新增到一個應用程式閘道，為您的部署設定更有效率的拓撲。 每個網站都可以導向到自己的後端集區。 在下列範例中，應用程式閘道會`contoso.com`提供`fabrikam.com`來自兩個後端伺服器集區（稱為 ContosoServerPool 和 FabrikamServerPool）的流量。
+多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 此功能可讓您將最多 100 個網站新增到一個應用程式閘道，為您的部署設定更有效率的拓撲。 每個網站都可以導向到自己的後端集區。 在下列範例中，應用程式閘道會 `contoso.com` 提供 `fabrikam.com` 來自兩個後端伺服器集區（稱為 ContosoServerPool 和 FabrikamServerPool）的流量。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -25,7 +25,7 @@ ms.locfileid: "80257405"
 
 對 `http://contoso.com` 的要求會路由傳送至 ContosoServerPool，而對 `http://fabrikam.com` 的要求則會路由傳送至 FabrikamServerPool。
 
-同樣地，您可以在相同的應用程式閘道部署上裝載相同父系網域的多個子域。 例如，您可以在單一`http://blog.contoso.com`應用`http://app.contoso.com`程式閘道部署上裝載和。
+同樣地，您可以在相同的應用程式閘道部署上裝載相同父系網域的多個子域。 例如，您可以 `http://blog.contoso.com` `http://app.contoso.com` 在單一應用程式閘道部署上裝載和。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主機標頭和伺服器名稱指示 (SNI)
 

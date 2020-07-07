@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235284"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>線上遷移會使用 Azure 資料庫移轉服務，針對適用于 MySQL 的 Azure DB & 限制問題
@@ -35,7 +35,7 @@ ms.locfileid: "80235284"
 - 相同版本移轉。 不支援將 MySQL 5.6 移轉到適用於 MySQL 5.7 的 Azure 資料庫。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中啟用二進位記錄
   - 將 Server_id 設為大於或等於 1 的任何數字，例如，Server_id=1 (僅適用於 MySQL 5.6)
-  - 設定記錄檔-bin \<= 路徑> （僅適用于 MySQL 5.6）
+  - 設定 log-bin = \<path> (僅適用於 MySQL 5.6)
   - 設定 binlog_format = row
   - Expire_logs_days = 5 (建議 - 僅適用於 MySQL 5.6)
 - 使用者必須擁有 ReplicationAdmin 角色。
@@ -93,7 +93,7 @@ ms.locfileid: "80235284"
 
 當您嘗試從 AWS RDS MySQL 執行線上遷移到適用於 MySQL 的 Azure 資料庫時，可能會遇到下列錯誤。
 
-- **錯誤：** 資料庫 '{0}' 在目標上有外鍵。 修正目標，然後啟動新的資料移轉活動。 在目標上執行下列腳本，以列出外鍵
+- **錯誤：** 資料庫 ' {0} ' 在目標上有外鍵。 修正目標，然後啟動新的資料移轉活動。 在目標上執行下列腳本，以列出外鍵
 
   **限制**：如果您的架構中有外鍵，則遷移的初始載入和持續同步將會失敗。
   因應**措施：在**MySQL 工作臺中執行下列腳本，以解壓縮「外鍵腳本」和「新增外鍵腳本」：
@@ -102,7 +102,7 @@ ms.locfileid: "80235284"
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **錯誤：** 資料庫 '{0}' 不存在於伺服器上。 所提供的 MySQL 來源伺服器會區分大小寫。 請檢查資料庫名稱。
+- **錯誤：** 資料庫 ' {0} ' 不存在於伺服器上。 所提供的 MySQL 來源伺服器會區分大小寫。 請檢查資料庫名稱。
 
   **限制**：使用命令列介面（CLI）將 MySQL 資料庫遷移至 Azure 時，使用者可能會遇到此錯誤。 服務在來源伺服器上找不到資料庫，這可能是因為您可能提供了不正確的資料庫名稱，或資料庫不存在於列出的伺服器上。 請注意，資料庫名稱會區分大小寫。
 

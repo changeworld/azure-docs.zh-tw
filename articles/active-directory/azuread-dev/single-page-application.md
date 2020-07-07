@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154741"
 ---
 # <a name="single-page-applications"></a>單頁應用程式
@@ -61,7 +61,7 @@ ms.locfileid: "80154741"
 * 重新整理過期的權杖
 * 要求存取權杖以呼叫 Web API 資源
 
-成功驗證之後，Azure AD 會將 Cookie 寫入使用者的瀏覽器以建立工作階段。 請注意，工作階段存在於使用者與 Azure AD 之間，而不是在使用者與 Web 應用程式之間。 當權杖過期時，ADAL.js 會使用此工作階段來自動取得另一個權杖。 ADAL.js 會使用隱藏的 iFrame 並透過 OAuth 隱含授權通訊協定，來傳送和接收要求。 ADAL 也可以使用這個相同的機制，以無訊息方式取得應用程式所呼叫之其他 Web API 資源的存取權杖，只要這些資源支援跨原始來源資源分享（CORS）、已在使用者的目錄中註冊，而且使用者在登入期間提供任何必要的同意。
+成功驗證之後，Azure AD 會將 Cookie 寫入使用者的瀏覽器以建立工作階段。 請注意，工作階段存在於使用者與 Azure AD 之間，而不是在使用者與 Web 應用程式之間。 當權杖過期時，ADAL.js 會使用此工作階段來自動取得另一個權杖。 ADAL.js 會使用隱藏的 iFrame 並透過 OAuth 隱含授權通訊協定，來傳送和接收要求。 ADAL.js 也可以使用這個相同的機制，以無訊息方式取得應用程式所呼叫之其他 Web API 資源的存取權杖，只要這些資源支援跨原始來源資源分享（CORS）、已在使用者的目錄中註冊，而且使用者在登入期間提供任何必要的同意。
 
 ## <a name="next-steps"></a>後續步驟
 
