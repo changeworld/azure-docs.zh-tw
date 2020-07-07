@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71213012"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>作法：傳送排定通知
@@ -30,7 +30,7 @@ ms.locfileid: "71213012"
 
 
 ## <a name="schedule-your-notifications"></a>排程通知
-傳送通知時，只要使用通知中樞 SDK 中的[ `ScheduledNotification`類別](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)，如下列範例所示：
+傳送通知時，只要使用通知中樞 SDK 中的[ `ScheduledNotification` 類別](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)，如下列範例所示：
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
@@ -51,7 +51,7 @@ await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 請參閱下列教學課程：
 
  - [將推播通知傳送到所有已註冊的裝置](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
- - [將推播通知傳送至特定裝置](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
+ - [將通知推送至特定裝置](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
  - [推送當地語系化的通知](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
  - [將推播通知傳送給特定使用者](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 
  - [推送以位置為基礎的通知](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

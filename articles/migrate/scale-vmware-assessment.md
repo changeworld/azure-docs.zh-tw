@@ -4,10 +4,10 @@ description: 說明如何使用 Azure Migrate 服務，評估大量的 VMware Vm
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336862"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>評估大量的 VMware Vm 以遷移至 Azure
@@ -46,12 +46,12 @@ ms.locfileid: "80336862"
 **Azure Migrate 專案** | 在專案中評估最多35000個 Vm。
 **Azure Migrate 設備** | 設備可以在 vCenter Server 上探索最多10000部 Vm。<br/> 設備只能連接到單一 vCenter Server。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/>  任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
 **群組** | 您最多可以在單一群組中新增35000個 Vm。
-**Azure Migrate 評量** | 您可以在單一評估中評估多達35000個 Vm。
+**Azure Migrate 評量** | 您最多可以在單一評估中評估 35,000 個 VM。
 
 考慮這些限制之後，以下是一些部署範例：
 
 
-**vCenter 伺服器** | **伺服器上的 Vm** | **建議** | **動作**
+**vCenter server** | **伺服器上的 Vm** | **建議** | **動作**
 ---|---|---
 一個 | < 10000 | 一個 Azure Migrate 專案。<br/> 一個設備。<br/> 一個用於探索的 vCenter 帳戶。 | 設定設備，使用帳戶連接到 vCenter Server。
 一個 | > 10000 | 一個 Azure Migrate 專案。<br/> 多個設備。<br/> 多個 vCenter 帳戶。 | 為每個 10000 Vm 設定設備。<br/><br/> 設定 vCenter 帳戶，並劃分清查以將帳戶的存取許可權制為少於10000個 Vm。<br/> 使用帳戶將每個設備連接到 vCenter server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。

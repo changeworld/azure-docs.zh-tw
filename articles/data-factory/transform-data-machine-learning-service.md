@@ -11,10 +11,10 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418995"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure Data Factory 中執行 Azure Machine Learning 管線
@@ -52,7 +52,7 @@ ms.locfileid: "81418995"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | 管線中的活動名稱 | String | 是
+NAME | 管線中的活動名稱 | String | 是
 type | 活動類型為「AzureMLExecutePipeline」 | String | 是
 linkedServiceName | Azure Machine Learning 的連結服務 | 連結服務參考 | 是
 mlPipelineId | 已發佈 Azure Machine Learning 管線的識別碼 | 字串 (或含有字串之 resultType 的運算式) | 是
@@ -72,4 +72,4 @@ continueOnStepFailure | 當步驟失敗時，是否要繼續執行 Machine Learn
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [預存程式活動](transform-data-using-stored-procedure.md)
+* [預存程序活動](transform-data-using-stored-procedure.md)

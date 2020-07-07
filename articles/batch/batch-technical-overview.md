@@ -3,12 +3,12 @@ title: Azure Batch 在雲端中執行大規模平行作業
 description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779555"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965071"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -18,7 +18,7 @@ ms.locfileid: "83779555"
 
 使用 Batch 不會額外收費。 您只須針對取用的基礎資源付費，例如虛擬機器、儲存體和網路。
 
-如需 Batch 與 Azure 中其他 HPC 解決方案選項的比較，請參閱 [Azure 上的高效能運算 (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) \(英文\)。
+如需 Batch 與 Azure 中其他 HPC 解決方案選項的比較，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/) \(英文\)。
 
 ## <a name="run-parallel-workloads"></a>執行平行工作負載
 Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負載。 本質平行的工作負載是指應用程式可獨立執行，且每個執行個體各自完成一部分的工作。 應用程式可能會在執行時存取一些通用資料，但不會與應用程式的其他執行個體進行通訊。 因此，本質平行的工作負載可大規模執行，而這是由可用來同時執行應用程式的計算資源數量所決定。
@@ -34,7 +34,7 @@ Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負�
 * 資料擷取、處理和 ETL 作業
 * 軟體測試執行
 
-您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/linux/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/linux/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
+您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](/message-passing-interface/microsoft-mpi) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/linux/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/linux/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
 
 一些緊密結合的工作負載範例：
 * 有限元素分析

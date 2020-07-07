@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188530"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
@@ -36,7 +36,7 @@ Azure Desired State Configuration （DSC）延伸模組的主要使用案例是�
 
 本文提供兩種案例的相關資訊：使用 DSC 延伸模組來進行「自動化」上線，以及藉由使用 Azure SDK 來使用 DSC 延伸模組作為工具，以將設定指派給 VM。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - **本機電腦**：若要與 Azure VM 延伸模組互動，您必須使用 Azure 入口網站或 Azure PowerShell SDK。
 - **客體代理程式**：DSC 設定所設定的 Azure VM 必須是支援 Windows Management Framework (WMF) 4.0 或更新版本的 OS。 如需所支援 OS 版本的完整清單，請參閱 [DSC 延伸模組版本歷程記錄](../../automation/automation-dsc-extension-history.md) \(英文\)。
@@ -82,7 +82,7 @@ Azure DSC 延伸模組包含預設設定指令碼，可在將 VM 上線至 Azure
 
 針對節點設定名稱，請確定 Azure 狀態設定中有節點設定。  如果不存在，延伸模組部署將會傳回失敗。  也請確定您使用的是*節點*設定的名稱，而不是設定。
 設定會定義在用[來編譯節點設定（MOF 檔案）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的腳本中。
-名稱一律會是設定，後面接著句點`.`和`localhost`或特定電腦名稱稱。
+名稱一律會是設定，後面接著句點 `.` 和 `localhost` 或特定電腦名稱稱。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager 範本中的 DSC 延伸模組
 
@@ -115,7 +115,7 @@ Resource Manager DSC 延伸模組 Cmdlet 相關的重要資訊：
 
 Azure DSC 延伸模組可以使用 DSC 設定文件，在部署期間直接設定 Azure VM。 此步驟不會向「自動化」註冊節點。 該節點「不會」** 受到集中管理。
 
-下列範例說明一個簡單的設定範例。 在本機將設定儲存為 iisInstall。
+下列範例說明一個簡單的設定範例。 在本機將設定儲存為 iisInstall.ps1。
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-下列命令會將 iisInstall 腳本放在指定的 VM 上。 這些命令也會執行設定，然後回報狀態。
+下列命令會將 iisInstall.ps1 腳本放在指定的 VM 上。 這些命令也會執行設定，然後回報狀態。
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -190,7 +190,7 @@ az vm extension set \
 
 - 設定**資料 .psd1**檔：您的設定需要 .psd1 中的設定資料檔案。請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
 
-- **WMF 版本**指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 [**最新**]。
+- **WMF 版本**指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 **latest**。
 
 - **資料收集**：決定延伸模組是否會收集遙測資料。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。
 

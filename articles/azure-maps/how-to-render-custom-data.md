@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335508"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在點陣地圖上轉譯自訂資料
@@ -37,13 +37,13 @@ ms.locfileid: "80335508"
 > [!Note]
 > 本節中的程式需要定價層 S0 或 S1 中的 Azure 地圖服務帳戶。
 
-Azure 地圖服務帳戶 S0 層僅支援`pins`參數的單一實例。 它可讓您使用自訂映射，轉譯最多五個在 URL 要求中指定的圖釘。
+Azure 地圖服務帳戶 S0 層僅支援參數的單一實例 `pins` 。 它可讓您使用自訂映射，轉譯最多五個在 URL 要求中指定的圖釘。
 
 若要呈現具有標籤和自訂影像的圖釘，請完成下列步驟：
 
-1. 建立要在其中儲存要求的集合。 在 Postman 應用程式中，選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**集合**]。 將集合命名為，然後選取 [**建立**] 按鈕。 
+1. 建立要在其中儲存要求的集合。 在 Postman 應用程式中，選取 [**新增**]。 在 [新建] 視窗中，選取 [集合]。 為集合命名，然後選取 [建立] 按鈕。 
 
-2. 若要建立要求，請再次選取 [**新增**]。 在 [**建立新**視窗] 中，選取 [**要求**]。 輸入圖釘的 [**要求名稱**]。 選取您在上一個步驟中建立的集合，做為儲存要求的位置。 然後選取 [**儲存**]。
+2. 若要建立要求，請再次選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入圖釘的 [**要求名稱**]。 選取您在上一個步驟中建立的集合，做為儲存要求的位置。 然後選取 [儲存]。
     
     ![在 Postman 中建立要求](./media/how-to-render-custom-data/postman-new.png)
 
@@ -70,7 +70,7 @@ Azure 地圖服務帳戶 S0 層僅支援`pins`參數的單一實例。 它可讓
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. 在 [**參數**] 索引標籤上，輸入下列索引鍵/值組，用於 POST 要求 URL。 將`subscription-key`值取代為您的 Azure 地圖服務訂用帳戶金鑰。
+2. 在 [**參數**] 索引標籤上，輸入下列索引鍵/值組，用於 POST 要求 URL。 將 `subscription-key` 值取代為您的 Azure 地圖服務訂用帳戶金鑰。
     
     ![Postman 中的索引鍵/值參數](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -156,7 +156,7 @@ Azure 地圖服務帳戶 S0 層僅支援`pins`參數的單一實例。 它可讓
    }
    ```
 
-7. 使用從`udId`資料上傳 API 收到的值來轉譯地圖上的功能。 若要這麼做，請在您于上一節中建立的集合中開啟新的索引標籤。 在 [建立器] 索引標籤上選取 [取得 HTTP] 方法，以您的值取代 {訂用帳戶金鑰} 和 {udId}，然後輸入此 URL 來提出 GET 要求：
+7. 使用 `udId` 從資料上傳 API 收到的值來轉譯地圖上的功能。 若要這麼做，請在您于上一節中建立的集合中開啟新的索引標籤。 在 [建立器] 索引標籤上選取 [取得 HTTP] 方法，以您的值取代 {訂用帳戶金鑰} 和 {udId}，然後輸入此 URL 來提出 GET 要求：
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ Azure 地圖服務帳戶 S0 層僅支援`pins`參數的單一實例。 它可讓
 > 本節中的程式需要定價層 S1 中的 Azure 地圖服務帳戶。
 
 
-您可以藉由加入樣式修飾詞來修改釘選的外觀。 例如，若要讓圖釘和其標籤變大或變小`sc` ，請使用「縮放樣式」修飾詞。 這個修飾詞會採用大於零的值。 1 的值是標準比例。 大於 1 的值會使圖釘變大，小於 1 的值會使它們變小。 如需樣式修飾詞的詳細資訊，請參閱[靜態映射服務路徑參數](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)。
+您可以藉由加入樣式修飾詞來修改釘選的外觀。 例如，若要讓圖釘和其標籤變大或變小，請使用「 `sc` 縮放樣式」修飾詞。 這個修飾詞會採用大於零的值。 1 的值是標準比例。 大於 1 的值會使圖釘變大，小於 1 的值會使它們變小。 如需樣式修飾詞的詳細資訊，請參閱[靜態映射服務路徑參數](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)。
 
 
 遵循下列步驟，使用自訂標籤來轉譯圓形和圖釘：
@@ -207,7 +207,7 @@ Azure 地圖服務帳戶 S0 層僅支援`pins`參數的單一實例。 它可讓
 
     ![使用自訂圖釘呈現圓形](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-2. 若要變更上一個步驟中圖釘的色彩，請變更「co」樣式修飾詞。 查看`pins=default|la15+50|al0.66|lc003C62|co002D62|`，目前的色彩會在 CSS 中指定為 #002D62。 假設您想要將它變更為 #41d42a。 在 "co" 規範後面寫入新的色彩值，如下所示`pins=default|la15+50|al0.66|lc003C62|co41D42A|`：。 提出新的 GET 要求：
+2. 若要變更上一個步驟中圖釘的色彩，請變更「co」樣式修飾詞。 查看 `pins=default|la15+50|al0.66|lc003C62|co002D62|` ，目前的色彩會在 CSS 中指定為 #002D62。 假設您想要將它變更為 #41d42a。 在 "co" 規範後面寫入新的色彩值，如下所示： `pins=default|la15+50|al0.66|lc003C62|co41D42A|` 。 提出新的 GET 要求：
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}

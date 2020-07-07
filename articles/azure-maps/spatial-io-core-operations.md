@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371449"
 ---
 # <a name="core-io-operations"></a>核心 IO 作業
@@ -25,10 +25,10 @@ ms.locfileid: "80371449"
 
 `atlas.io.core.CsvReader`類別會讀取包含分隔資料集的字串。 此類別提供兩種讀取資料的方法：
 
-- `read`函式會讀取完整的資料集，並傳回字串的二維陣列，代表分隔資料集的所有儲存格。
-- `getNextRow`函式會讀取分隔資料集中的每一行文字，並傳回字串陣列，代表該行資料集內的所有儲存格。 在處理下一個資料列之前，使用者可以處理資料列，並處置該資料列中任何不需要的記憶體。 因此，函式的記憶體效率較高。
+- 函式 `read` 會讀取完整的資料集，並傳回字串的二維陣列，代表分隔資料集的所有儲存格。
+- 函 `getNextRow` 式會讀取分隔資料集中的每一行文字，並傳回字串陣列，代表該行資料集內的所有儲存格。 在處理下一個資料列之前，使用者可以處理資料列，並處置該資料列中任何不需要的記憶體。 因此，函式的記憶體效率較高。
 
-根據預設，讀取器會使用逗號字元做為分隔符號。 不過，分隔符號可以變更為任何單一字元，或設為`'auto'`。 當設定為`'auto'`時，讀取器會分析字串中的第一行文字。 然後，它會從下表中選取最常見的字元來當做分隔符號使用。
+根據預設，讀取器會使用逗號字元做為分隔符號。 不過，分隔符號可以變更為任何單一字元，或設為 `'auto'` 。 當設定為時 `'auto'` ，讀取器會分析字串中的第一行文字。 然後，它會從下表中選取最常見的字元來當做分隔符號使用。
 
 | | |
 | :-- | :-- |
@@ -36,27 +36,27 @@ ms.locfileid: "80371449"
 | 索引標籤 | `\t` |
 | Pipe | `|` |
 
-此讀取器也支援文字限定詞，這些辨識符號是用來處理包含分隔符號的資料格。 引號（`'"'`）字元是預設的文字辨識符號，但可以變更為任何單一字元。
+此讀取器也支援文字限定詞，這些辨識符號是用來處理包含分隔符號的資料格。 引號（ `'"'` ）字元是預設的文字辨識符號，但可以變更為任何單一字元。
 
 ## <a name="write-delimited-files"></a>寫入分隔的檔案
 
-會`atlas.io.core.CsvWriter`以分隔字串的形式寫入物件的陣列。 任何單一字元都可以用來做為分隔符號或文字辨識符號。 預設的分隔符號是逗號（`','`），而預設的文字辨識符號是引號`'"'`（）字元。
+會 `atlas.io.core.CsvWriter` 以分隔字串的形式寫入物件的陣列。 任何單一字元都可以用來做為分隔符號或文字辨識符號。 預設的分隔符號是逗號（ `','` ），而預設的文字辨識符號是引號（ `'"'` ）字元。
 
 若要使用此類別，請遵循下列步驟：
 
 - 建立類別的實例，並選擇性地設定自訂分隔符號或文字辨識符號。
-- 使用`write`函數或`writeRow`函式將資料寫入類別。 `write`針對函式，傳遞代表多個資料列和資料格的二維物件陣列。 若要使用`writeRow`函數，請傳遞物件的陣列，代表具有多個資料行的資料列。
-- `toString`呼叫函式以取出分隔字串。 
-- （選擇性）呼叫`clear`方法，讓寫入器可重複使用並減少其資源配置，或`delete`呼叫方法來處置寫入器實例。
+- 使用函數或函式將資料寫入類別 `write` `writeRow` 。 針對函 `write` 式，傳遞代表多個資料列和資料格的二維物件陣列。 若要使用 `writeRow` 函數，請傳遞物件的陣列，代表具有多個資料行的資料列。
+- 呼叫函式 `toString` 以取出分隔字串。 
+- （選擇性）呼叫 `clear` 方法，讓寫入器可重複使用並減少其資源配置，或呼叫 `delete` 方法來處置寫入器實例。
 
 > [!Note]
 > 寫入的資料行數目會限制為傳遞給寫入器之資料的第一列中的儲存格數目。
 
 ## <a name="read-xml-files"></a>讀取 XML 檔案
 
-在`atlas.io.core.SimpleXmlReader`剖析 XML 檔案時，類別的速度`DOMParser`比更快。 不過， `atlas.io.core.SimpleXmlReader`類別需要 XML 檔案的格式正確。 格式不正確的 XML 檔案（例如遺漏結束記號）可能會導致錯誤。
+在 `atlas.io.core.SimpleXmlReader` 剖析 XML 檔案時，類別的速度比更快 `DOMParser` 。 不過， `atlas.io.core.SimpleXmlReader` 類別需要 XML 檔案的格式正確。 格式不正確的 XML 檔案（例如遺漏結束記號）可能會導致錯誤。
 
-下列程式碼示範如何使用`SimpleXmlReader`類別，將 XML 字串剖析為 JSON 物件，並將它序列化為所需的格式。
+下列程式碼示範如何使用類別，將 `SimpleXmlReader` XML 字串剖析為 JSON 物件，並將它序列化為所需的格式。
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -82,7 +82,7 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 `atlas.io.core.SimpleXmlWriter`類別會以記憶體有效率的方式寫入格式正確的 XML。
 
-下列程式碼示範如何使用`SimpleXmlWriter`類別來產生格式正確的 XML 字串。
+下列程式碼示範如何使用 `SimpleXmlWriter` 類別來產生格式正確的 XML 字串。
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.

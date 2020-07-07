@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117075"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964799"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教學課程：使用 Batch Explorer 轉譯 Blender 場景
 
@@ -27,9 +27,9 @@ ms.locfileid: "82117075"
 
 您需要隨用隨付訂用帳戶或其他 Azure 購買選項，以按使用量付費的方式，在 Batch 中使用轉譯應用程式。 如果您使用提供信用額度金額的免費 Azure 方案，則不支援按使用量付費授權。
 
-您需要具有關聯之儲存體帳戶的 Azure Batch 帳戶。  請參閱任何 Batch 快速入門文章以建立 Batch 帳戶，例如 [CLI 文章](https://docs.microsoft.com/azure/batch/quick-create-cli)。
+您需要具有關聯之儲存體帳戶的 Azure Batch 帳戶。  請參閱任何 Batch 快速入門文章以建立 Batch 帳戶，例如 [CLI 文章](./quick-create-cli.md)。
 
-本教學課程中指定的 VM 大小和 VM 數目至少需要 50 個核心的低優先順序核心配額；您可以使用預設配額，但將須使用較小的 VM 大小，而這意味著影像轉譯會較為耗時。 要求增加核心配額的程序詳述於[這篇文章](https://docs.microsoft.com/azure/batch/batch-quota-limit)中。
+本教學課程中指定的 VM 大小和 VM 數目至少需要 50 個核心的低優先順序核心配額；您可以使用預設配額，但將須使用較小的 VM 大小，而這意味著影像轉譯會較為耗時。 要求增加核心配額的程序詳述於[這篇文章](./batch-quota-limit.md)中。
 
 最後，必須要安裝 [Batch Explorer](https://azure.github.io/BatchExplorer/)；它適用於 Windows、OSX 和 Linux。 它是選擇性的，但若安裝了 [Blender](https://www.blender.org/download/)，則可以檢視範例模型檔案。
 
@@ -139,4 +139,4 @@ ms.locfileid: "82117075"
 ## <a name="next-steps"></a>後續步驟
 * 在 [資源庫] 區段中，透過 Batch Explorer 瀏覽可用的轉譯應用程式。
 * 每個應用程式會有數個可用的範本，且數量會隨著時間而增加。  例如，其中會有 Blender 範本，可將單一影像分割為圖格，因而能夠以平行方式轉譯影像的某些部分。
-* 如需轉譯功能的完整說明，請參閱[此處](https://docs.microsoft.com/azure/batch/batch-rendering-service)的系列文章。
+* 如需轉譯功能的完整說明，請參閱[此處](./batch-rendering-service.md)的系列文章。

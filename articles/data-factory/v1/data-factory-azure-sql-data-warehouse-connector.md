@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419318"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL 資料倉儲來回複製資料
@@ -68,7 +68,7 @@ Azure SQL 資料倉儲連接器支援基本驗證。
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 Azure SQL 資料倉儲連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |Type 屬性必須設定為： **AzureSqlDW** |是 |
 | connectionString |針對 connectionString 屬性指定連線到 Azure SQL 資料倉儲執行個體所需的資訊。 僅支援基本驗證。 |是 |
@@ -81,7 +81,7 @@ Azure SQL 資料倉儲連接器支援基本驗證。
 
 每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 **AzureSqlDWTable** 類型資料集的 **typeProperties** 區段具有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Azure SQL 資料倉儲資料庫中連結服務所參照的資料表名稱或檢視名稱。 |是 |
 
@@ -152,7 +152,7 @@ GO
 | rejectSampleValue |決定在 PolyBase 重新計算已拒絕的資料列百分比之前，所要擷取的資料列數目。 |1、2、… |是，如果 **rejectType** 是 **percentage** |
 | useTypeDefault |指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。<br/><br/>從 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 的＜引數＞一節深入了解這個屬性。 |True/False (預設值為 False) |否 |
 | writeBatchSize |當緩衝區大小達到 writeBatchSize 時，將資料插入 SQL 資料表中 |整數 (資料列數目) |否 (預設值：10000) |
-| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |時間範圍<br/><br/> 範例："00:30:00" (30 分鐘)。 |否 |
+| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |時間範圍<br/><br/> 範例：「00:30:00」(30 分鐘)。 |否 |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink 範例
 
@@ -200,7 +200,7 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob 和 Azure Data Lake Store (使
    2. `nullValue` 設定為「空字串」**** ("") 或將 `treatEmptyAsNull` 設定為 **true**。
    3. `encodingName` 設定為 **utf-8**，也就是「預設」**** 值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
-   5. `compression`不可以是**壓縮**、 **GZip**或**Deflate**。
+   5. `compression` 可以是「無壓縮」、**GZip** 或 **Deflate**。
 
       ```JSON
       "typeProperties": {
@@ -314,7 +314,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 | SmallMoney | SmallMoney |
 | Binary | Binary |
 | Varbinary | Varbinary (最多 8000) |
-| Date | Date |
+| 日期 | 日期 |
 | Datetime | Datetime |
 | DateTime2 | DateTime2 |
 | 時間 | 時間 |
@@ -393,7 +393,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 
 此範例會每小時將時間序列 (每小時、每日等等) 資料從 Azure SQL 資料倉儲資料庫中的資料表複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
-**Azure SQL 資料倉儲連結服務：**
+**Azure SQL 資料倉儲連結的服務：**
 
 ```JSON
 {
@@ -579,7 +579,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 
 此範例會每小時將時間序列資料 (每小時、每日等等) 從 Azure Blob 複製到 Azure SQL 資料倉儲資料庫中的資料表。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
-**Azure SQL 資料倉儲連結服務：**
+**Azure SQL 資料倉儲連結的服務：**
 
 ```JSON
 {

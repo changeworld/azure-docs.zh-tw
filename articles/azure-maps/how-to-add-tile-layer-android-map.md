@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335569"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
@@ -37,7 +37,7 @@ ms.locfileid: "80335569"
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
 * `{subdomain}`-如果已指定子域值，則為子域值的預留位置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80335569"
 
 您可以遵循下列步驟，將圖格圖層新增至地圖。
 
-1. 編輯**res > layout > activity_main .xml** ，使其看起來如下所示：
+1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "80335569"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您`MainActivity.java`類別的**onCreate （）** 方法中。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "80335569"
     });
     ```
     
-    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會`TileLayer`建立物件，並將格式化的**xyz**磚 URL `tileUrl`傳遞到選項中。 圖層的不透明度設定為`0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到`tileSize`選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
+    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會建立 `TileLayer` 物件，並將格式化的**XYZ**磚 URL 傳遞到 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到 `tileSize` 選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
 
-    新增上述程式碼片段之後，您`MainActivity.java`的看起來應該如下所示：
+    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     
     ```Java
     package com.example.myapplication;

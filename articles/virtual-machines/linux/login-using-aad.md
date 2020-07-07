@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366493"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
@@ -69,10 +69,10 @@ ms.locfileid: "80366493"
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* HTTPs：\//device.login.microsoftonline.com
-* HTTPs：\//pas.windows.net
+* HTTPs： \/ /device.login.microsoftonline.com
+* HTTPs： \/ /pas.windows.net
 * https:\//management.azure.com
-* HTTPs：\//packages.microsoft.com
+* HTTPs： \/ /packages.microsoft.com
 
 > [!NOTE]
 > 目前，您無法針對以 Azure AD authentication 啟用的 Vm 設定 Azure 網路安全性群組。
@@ -154,7 +154,7 @@ az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o 
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-系統會提示您使用中的一次性程式碼登入 Azure AD [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)。 將一次性使用程式碼複製並貼到裝置登入頁面。
+系統會提示您使用中的一次性程式碼登入 Azure AD [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) 。 將一次性使用程式碼複製並貼到裝置登入頁面。
 
 出現提示時，請在登入頁面上輸入您的 Azure AD 登入認證。 
 
@@ -162,7 +162,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 關閉瀏覽器視窗，返回 SSH 提示字元，然後按 **Enter** 鍵。 
 
-您此時會已使用指派的角色權限 (例如 [VM 使用者]** 或 [VM 系統管理員]**) 登入 Azure Linux 虛擬機器。 如果您的使用者帳戶已獲指派*虛擬機器系統管理員登*入角色， `sudo`您可以使用來執行需要根許可權的命令。
+您此時會已使用指派的角色權限 (例如 [VM 使用者]** 或 [VM 系統管理員]**) 登入 Azure Linux 虛擬機器。 如果您的使用者帳戶已獲指派*虛擬機器系統管理員登*入角色，您可以使用 `sudo` 來執行需要根許可權的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登入
 
@@ -200,7 +200,7 @@ Access denied
 
 如果您已在網頁瀏覽器中成功完成驗證步驟，系統可能會立即提示您再次登入以全新的使用碼登入。 之所以發生此錯誤，通常是因為您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 若要更正此問題：
 
-- 確認在 SSH 提示字元中指定的登入名稱正確無誤。 登入名稱若有拼字錯誤，即可能導致您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 例如，您輸入*azuresuer\@contoso.onmicrosoft.com* ，而不*是\@azureuser contoso.onmicrosoft.com*。
+- 確認在 SSH 提示字元中指定的登入名稱正確無誤。 登入名稱若有拼字錯誤，即可能導致您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 例如，您輸入*azuresuer \@ contoso.onmicrosoft.com* ，而不是*azureuser \@ contoso.onmicrosoft.com*。
 - 如果您有多個使用者帳戶，請確定您在登入 Azure AD 時，並未在瀏覽器視窗中提供不同的使用者帳戶。
 - Linux 是區分大小寫的作業系統。 'Azureuser@contoso.onmicrosoft.com' 和 'azureuser@contoso.onmicrosoft.com' 之間的差異可能會導致不相符。 請確定您在 SSH 提示字元中指定 UPN 時使用的是正確的大小寫設定。
 

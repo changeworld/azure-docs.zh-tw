@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371111"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure Logic Apps 和 IBM 3270 連接器，整合 IBM 大型主機上的3270螢幕驅動應用程式與 Azure
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure Logic Apps 和 IBM 3270 連接器，整合 IBM 大型主機上的 3270 螢幕驅動應用程式與 Azure
 
 > [!NOTE]
 > 此連接器處於[*公開預覽*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。 
 
-使用 Azure Logic Apps 和 IBM 3270 連接器，您可以透過流覽3270模擬器畫面，來存取及執行通常會驅動的 IBM 大型主機應用程式。 如此一來，您就可以使用 Azure Logic Apps 建立自動化工作流程，將您的 IBM 大型主機應用程式與 Azure、Microsoft 和其他應用程式、服務和系統整合在一起。 連接器會使用 TN3270 通訊協定與 IBM 大型主機通訊，並在 Azure Government 和 Azure 中國世紀以外的所有 Azure Logic Apps 區域中提供。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+使用 Azure Logic Apps 和 IBM 3270 連接器，您可以透過瀏覽 3270 模擬器畫面，來存取及執行通常會驅動的 IBM 大型主機應用程式。 如此一來，您就可以使用 Azure Logic Apps 建立自動化工作流程，將您的 IBM 大型主機應用程式與 Azure、Microsoft 和其他應用程式、服務和系統整合在一起。 連接器會使用 TN3270 通訊協定與 IBM 大型主機通訊，此通訊協定在 Azure Government 和 Azure China 21Vianet 以外的所有 Azure Logic Apps 區域中均有提供。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 本文說明使用3270連接器的下列各方面： 
 
@@ -39,11 +39,11 @@ ms.locfileid: "80371111"
 
 從設計工具產生中繼資料檔案之後，您可以將該檔案新增至 Azure 中的整合帳戶。 如此一來，當您新增3270連接器動作時，邏輯應用程式就可以存取您應用程式的中繼資料。 連接器會從您的整合帳戶讀取中繼資料檔案、處理3270畫面的流覽，並動態呈現3270連接器動作的參數。 接著，您可以將資料提供給主應用程式，連接器會將結果傳回您的邏輯應用程式。 如此一來，您就可以將繼承應用程式與 Azure、Microsoft 以及 Azure Logic Apps 支援的其他應用程式、服務和系統整合在一起。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 建議：[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
@@ -81,7 +81,7 @@ ms.locfileid: "80371111"
 
 * **導覽**：在此模式中，您可以針對特定工作，指定如何流覽大型主機應用程式畫面的計畫或路徑。
 
-* **方法**：在此模式中，您會定義方法（例如`GetBalance`，），以描述螢幕導覽路徑。 您也可以選擇每個畫面上的欄位，以成為方法的輸入和輸出參數。
+* **方法**：在此模式中，您會定義方法（例如，），以 `GetBalance` 描述螢幕導覽路徑。 您也可以選擇每個畫面上的欄位，以成為方法的輸入和輸出參數。
 
 ### <a name="unsupported-elements"></a>不支援的元素
 
@@ -151,7 +151,7 @@ ms.locfileid: "80371111"
 
 ## <a name="define-navigation-plans"></a>定義導覽計畫
 
-在此模式中，您會定義流程或步驟，以流覽您的特定工作的大型主機應用程式畫面。 例如，有時候您可能會有一個以上的路徑，讓您的應用程式可以在其中一個路徑產生正確的結果時採取，而另一個路徑則會產生錯誤。 針對每個畫面，指定移到下一個畫面所需的按鍵，例如`CICSPROD <enter>`。
+在此模式中，您會定義流程或步驟，以流覽您的特定工作的大型主機應用程式畫面。 例如，有時候您可能會有一個以上的路徑，讓您的應用程式可以在其中一個路徑產生正確的結果時採取，而另一個路徑則會產生錯誤。 針對每個畫面，指定移到下一個畫面所需的按鍵，例如 `CICSPROD <enter>` 。
 
 > [!TIP]
 > 如果您要自動化數個使用相同 [連接] 和 [中斷連線] 畫面的工作，設計工具會提供特殊的 [連接] 和 [中斷連接] 計畫類型。 當您定義這些計畫時，可以將它們加入導覽計畫的開始和結束。
@@ -292,7 +292,7 @@ ms.locfileid: "80371111"
    |---------------|-----------------|
    | **資料類型** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **欄位填滿技術** | 參數支援這些填滿類型，如有必要，請填妥空白： <p><p>- **類型**：在欄位中依序輸入字元。 <p>- **Fill**：以字元取代欄位的內容，如有必要，請以空格填滿。 <p>- **EraseEofType**：清除欄位，然後在欄位中依序輸入字元。 |
-   | **格式字串** | 某些參數資料類型使用格式字串，它會通知3270連接器如何將畫面中的文字轉換成 .NET 資料類型： <p><p>- **Datetime**： datetime 格式字串會遵循[.net 自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期`06/30/2019`會使用格式字串`MM/dd/yyyy`。 <p>- **Decimal**： decimal 格式字串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，數位`100.35`會使用格式字串`999V99`。 |
+   | **格式字串** | 某些參數資料類型使用格式字串，它會通知3270連接器如何將畫面中的文字轉換成 .NET 資料類型： <p><p>- **Datetime**： datetime 格式字串會遵循[.net 自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期會 `06/30/2019` 使用格式字串 `MM/dd/yyyy` 。 <p>- **Decimal**： decimal 格式字串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，數位會 `100.35` 使用格式字串 `999V99` 。 |
    |||
 
 ## <a name="save-and-view-metadata"></a>儲存及查看中繼資料
@@ -354,19 +354,19 @@ ms.locfileid: "80371111"
    ![選取3270動作](./media/connectors-create-api-3270/select-3270-action.png)
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號（**+**），然後選取 [**新增動作**]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 如果尚無連線存在，請提供連線所需的資訊，然後選擇 [**建立**]。
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **連線名稱** | 是 | <*連接名稱*> | 您連線的名稱 |
+   | **連接名稱** | 是 | <*連接名稱*> | 您連線的名稱 |
    | **整合帳戶識別碼** | 是 | <*整合-帳戶-名稱*> | 您的整合帳戶名稱 |
    | **整合帳戶 SAS URL** | 是 | <*整合-帳戶-SAS-URL*> | 您的整合帳戶的共用存取簽章（SAS） URL，您可以從 Azure 入口網站中整合帳戶的設定產生。 <p>1. 在您的整合帳戶功能表的 [**設定**] 底下，選取 [**回呼 URL**]。 <br>2. 在右側窗格中，複製產生的 [**回呼 URL** ] 值。 |
-   | **伺服器** | 是 | <*TN3270-伺服器-名稱*> | TN3270 服務的伺服器名稱 |
-   | **通訊埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用`23`做為預設值。 |
+   | **Server** | 是 | <*TN3270-伺服器-名稱*> | TN3270 服務的伺服器名稱 |
+   | **通訊埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用 `23` 做為預設值。 |
    | **裝置類型** | 否 | <*IBM-終端機模型*> | 要模擬之 IBM 終端機的型號名稱或編號。 如果保留空白，連接器會使用預設值。 |
-   | **字碼頁** | 否 | <*字碼頁-編號*> | 主機的字碼頁編號。 如果保留空白，連接器會使用`37`做為預設值。 |
+   | **字碼頁** | 否 | <*字碼頁-編號*> | 主機的字碼頁編號。 如果保留空白，連接器會使用 `37` 做為預設值。 |
    | **邏輯單元名稱** | 否 | <*邏輯單位-名稱*> | 要向主機要求的特定邏輯單元名稱 |
    | **要啟用 SSL 嗎？** | 否 | 開啟或關閉 | 開啟或關閉 TLS 加密。 |
    | **要驗證主機 ssl 憑證嗎？** | 否 | 開啟或關閉 | 開啟或關閉伺服器憑證的驗證。 |
@@ -392,7 +392,7 @@ ms.locfileid: "80371111"
 
    **選取方法**
 
-   ![Select 方法](./media/connectors-create-api-3270/select-method.png)
+   ![選取方法](./media/connectors-create-api-3270/select-method.png)
 
    **選取參數**
 

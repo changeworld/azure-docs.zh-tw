@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336087"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用適用于 Azure Front 的 Web 應用程式防火牆來設定 IP 限制規則
@@ -24,14 +24,14 @@ ms.locfileid: "80336087"
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>使用 Azure 入口網站設定 WAF 原則
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 遵循[快速入門：建立高可用性全域 web 應用程式的 Front 門](../../frontdoor/quickstart-create-front-door.md)中所述的指示，建立 Azure Front 門板設定檔。
 
 ### <a name="create-a-waf-policy"></a>建立 WAF 原則
 
 1. 在 [Azure 入口網站上，選取 [**建立資源**]，在搜尋方塊中輸入**web 應用程式防火牆**，然後選取 [ **WEB 應用程式防火牆（WAF）**]。
-2. 選取 [建立]  。
+2. 選取 [建立]。
 3. 在 [**建立 WAF 原則**] 頁面上，使用下列值來完成 [**基本**] 索引標籤：
    
    |設定  |值  |
@@ -40,7 +40,7 @@ ms.locfileid: "80336087"
    |訂用帳戶     |選取您的訂用帳戶|
    |資源群組     |選取您的前門所在的資源群組。|
    |原則名稱     |輸入原則的名稱|
-   |原則狀態     |啟用|
+   |原則狀態     |已啟用|
 
    選取**下一步：原則設定**
 
@@ -53,22 +53,22 @@ ms.locfileid: "80336087"
    |設定  |值  |
    |---------|---------|
    |自訂規則名稱     |FdWafCustRule|
-   |狀態     |啟用|
+   |狀態     |已啟用|
    |規則型別     |比對|
    |優先順序    |100|
    |相符類型     |IP 位址|
    |Match 變數|RemoteAddr|
-   |作業|不包含|
+   |操作|不包含|
    |IP 位址或範圍|10.10.10.0/24|
    |結果為|拒絕流量|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自訂規則":::
 
-   選取 [新增]  。
+   選取 [新增]。
 6. 選取 **[下一步：關聯]**。
 7. 選取 [**新增前端主機**]。
 8. 針對 [**前端主機**]，選取您的前端主機，然後選取 [**新增**]。
-9. 選取 [檢閱 + 建立]  。
+9. 選取 [檢閱 + 建立]。
 10. 通過原則驗證之後，請選取 [**建立**]。
 
 ### <a name="test-your-waf-policy"></a>測試您的 WAF 原則
@@ -83,12 +83,12 @@ ms.locfileid: "80336087"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 設定 WAF 原則
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 在您開始設定 IP 限制原則之前，請先設定您的 CLI 環境，並建立 Azure Front profile。
 
 #### <a name="set-up-the-azure-cli-environment"></a>設定 Azure CLI 環境
-1. 安裝[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中選取 [**試試看**] 按鈕，然後在開啟的 Cloud Shell 會話中登入您的 Azure 帳戶。 會話啟動之後，請輸入`az extension add --name front-door`以新增 Azure Front 門板擴充功能。
- 2. 如果您是在 Bash 中于本機使用 CLI，請使用`az login`登入 Azure。
+1. 安裝[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中選取 [**試試看**] 按鈕，然後在開啟的 Cloud Shell 會話中登入您的 Azure 帳戶。 會話啟動之後，請輸入 `az extension add --name front-door` 以新增 Azure Front 門板擴充功能。
+ 2. 如果您是在 Bash 中于本機使用 CLI，請使用登入 Azure `az login` 。
 
 #### <a name="create-an-azure-front-door-profile"></a>建立 Azure Front 門板設定檔
 遵循[快速入門：建立高可用性全域 web 應用程式的 Front 門](../../frontdoor/quickstart-create-front-door.md)中所述的指示，建立 Azure Front 門板設定檔。
@@ -162,7 +162,7 @@ az network front-door waf-policy rule match-condition add \
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 設定 WAF 原則
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 在您開始設定 IP 限制原則之前，請先設定您的 PowerShell 環境，並建立 Azure Front 門板設定檔。
 
 #### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>設定 WAF 原則
-使用`Get-AzResourceGroup`來尋找包含 Azure Front 設定檔的資源組名。 接下來，使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)來設定具有 IP 規則的 WAF 原則。
+使用來尋找包含 Azure Front 設定檔的資源組名 `Get-AzResourceGroup` 。 接下來，使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)來設定具有 IP 規則的 WAF 原則。
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `

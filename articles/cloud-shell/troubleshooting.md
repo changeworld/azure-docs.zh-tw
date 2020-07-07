@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189457"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
@@ -31,8 +31,8 @@ ms.locfileid: "82189457"
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中執行 AzureAD Cmdlet 時發生錯誤
 
-- **詳細資料**：當您執行如`Get-AzureADUser` Cloud Shell 中的 AzureAD Cmdlet 時，您可能會`You must call the Connect-AzureAD cmdlet before calling any other cmdlets`看到錯誤：。 
-- **解決**方式：執行`Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以在 PowerShell 中新增`Connect-AzureAD`至 $PROFILE 檔案，以選擇還原先前的行為。
+- **詳細資料**：當您執行如 Cloud Shell 中的 AzureAD Cmdlet 時 `Get-AzureADUser` ，您可能會看到錯誤： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
+- **解決**方式：執行 `Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以 `Connect-AzureAD` 在 PowerShell 中新增至 $PROFILE 檔案，以選擇還原先前的行為。
 
 ### <a name="early-timeouts-in-firefox"></a>在 FireFox 中提前逾時
 
@@ -41,8 +41,8 @@ ms.locfileid: "82189457"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在鎖定的網路環境中停用 Cloud Shell
 
-- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用`ux.console.azure.com`網域的存取權，這可能會遭到拒絕，並停止對 Cloud Shell 的 e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是`ux.console.azure.us`;沒有對應的 shell.azure.us。
-- **解決**方式：透過網路`ux.console.azure.com`設定`ux.console.azure.us`限制對您環境的存取權。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
+- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用網域的存取權， `ux.console.azure.com` 這可能會遭到拒絕，並停止對 Cloud Shell 的 e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是 `ux.console.azure.us` ; 沒有對應的 shell.azure.us。
+- **解決**方式：透過 `ux.console.azure.com` 網路設定限制對您環境的存取權 `ux.console.azure.us` 。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>儲存體對話方塊 - 錯誤：403 RequestDisallowedByPolicy
 

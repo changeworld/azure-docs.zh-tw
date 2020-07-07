@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335677"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
 
-對應支援數種不同的[樣式選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)，可在對應初始化或稍後使用 maps `setStyle`函式時設定。 本文說明如何使用這些樣式選項來自訂地圖的外觀。 瞭解如何在載入對應時設定樣式，並瞭解如何使用樣式選擇器控制項來設定新的地圖樣式。
+對應支援數種不同的[樣式選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)，可在對應初始化或稍後使用 maps 函式時設定 `setStyle` 。 本文說明如何使用這些樣式選項來自訂地圖的外觀。 瞭解如何在載入對應時設定樣式，並瞭解如何使用樣式選擇器控制項來設定新的地圖樣式。
 
 ## <a name="set-the-style-options"></a>設定樣式選項 
 
-樣式選項在使用`setStyle` map 函式進行初始化或更新時，可以傳遞至對應。
+樣式選項在使用 map 函式進行初始化或更新時，可以傳遞至對應 `setStyle` 。
 
 ```javascript
 //Set the style options when creating the map.
@@ -44,7 +44,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地圖樣式選項" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地圖樣式選項</a>。
+請參閱 CodePen 上 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地圖樣式選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 ## <a name="choose-a-base-map-style"></a>選擇基底地圖樣式
@@ -54,7 +54,7 @@ map.setStyle({
 ### <a name="set-base-map-style-on-map-load"></a>設定地圖負載上的基底地圖樣式
 
 
-藉由設定`style`選項來初始化對應時，可以指定地圖樣式。 在下列程式碼中， `style`對應的選項會在初始化時`grayscale_dark`設定為。
+藉由設定選項來初始化對應時，可以指定地圖樣式 `style` 。 在下列程式碼中， `style` 對應的選項會在初始化時設定為 `grayscale_dark` 。
 
 ```javascript
 var map = new atlas.Map('map', {
@@ -71,13 +71,13 @@ var map = new atlas.Map('map', {
 
 ### <a name="update-the-base-map-style"></a>更新基底地圖樣式
 
- 您可以使用`setStyle`函式來更新地圖樣式，並將`style`選項設定為所需的地圖樣式。
+ 您可以使用函式來更新地圖樣式 `setStyle` ，並將 `style` 選項設定為所需的地圖樣式。
 
 ```javascript
 map.setStyle({ style: 'satellite' });
 ```
 
-在下列程式碼中，載入對應實例之後，地圖樣式會從`road`更新為`satellite`使用[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-)函數。
+在下列程式碼中，載入對應實例之後，地圖樣式會從更新 `road` 為 `satellite` 使用[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-)函數。
 
 <br/>
 
@@ -86,13 +86,13 @@ map.setStyle({ style: 'satellite' });
 
 ### <a name="add-the-style-picker"></a>新增樣式選擇器
 
-樣式選擇器控制項提供一個便於使用的按鈕，具有 [飛出視窗] 面板，可供使用者用來變更地圖樣式。 樣式選擇器有兩個不同的版面配置選項。 根據預設，樣式選擇器會`icons`使用版面配置，並將所有地圖樣式顯示為圖示的水準列。 
+樣式選擇器控制項提供一個便於使用的按鈕，具有 [飛出視窗] 面板，可供使用者用來變更地圖樣式。 樣式選擇器有兩個不同的版面配置選項。 根據預設，樣式選擇器會使用 `icons` 版面配置，並將所有地圖樣式顯示為圖示的水準列。 
 
 <center>
 
 ![樣式選擇器圖示版面配置](media/choose-map-style/style-picker-icon-layout.png)</center>
 
-第二個版面配置選項`list`稱為，並顯示地圖樣式的可滾動清單。  
+第二個版面配置選項稱為 `list` ，並顯示地圖樣式的可滾動清單。  
 
 <center>
 
@@ -119,7 +119,7 @@ map.controls.add(new atlas.control.StyleControl({
 </iframe>
 
 > [!TIP]
-> 根據預設，使用 Azure 地圖服務的 S0 定價層時，樣式選擇器控制項會列出所有可用的樣式。 如果您想要減少此清單中的樣式數目，請將您想要顯示在清單中的樣式陣列，傳遞至樣式`mapStyle`選擇器的選項。 如果您使用 S1，而且想要顯示所有可用的樣式，請將`mapStyles`樣式選擇器的選項設定`"all"`為。
+> 根據預設，使用 Azure 地圖服務的 S0 定價層時，樣式選擇器控制項會列出所有可用的樣式。 如果您想要減少此清單中的樣式數目，請將您想要顯示在清單中的樣式陣列，傳遞至 `mapStyle` 樣式選擇器的選項。 如果您使用 S1，而且想要顯示所有可用的樣式，請將 `mapStyles` 樣式選擇器的選項設定為 `"all"` 。
 
 ## <a name="next-steps"></a>後續步驟
 

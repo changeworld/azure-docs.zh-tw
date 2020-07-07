@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80349809"
 ---
 # <a name="query-ingested-telemetry-data"></a>查詢內嵌的遙測資料
@@ -115,7 +115,7 @@ FarmBeats 利用[Azure 時間序列深入解析（TSI）](https://azure.microsof
 
 依照下列步驟將 TSI 上的資料視覺化：
 
-1. 移至**Azure 入口網站** > **FarmBeats DataHub 資源群組**> 選取 [**時間序列深入解析**環境（tsi）] > [**資料存取原則**]。 新增具有讀取者或參與者存取權的使用者。
+1. 移至**Azure 入口網站**  >  **FarmBeats DataHub 資源群組**> 選取 [**時間序列深入解析**環境（tsi）] > [**資料存取原則**]。 新增具有讀取者或參與者存取權的使用者。
 2. 移至**時間序列深入解析**環境的 [**總覽**] 頁面（tsi-xxxx），然後選取 [**時間序列深入解析總管 URL**]。 您現在將能夠以視覺化方式呈現內嵌遙測。
 
 除了儲存、查詢和視覺效果的遙測之外，TSI 也能夠整合到 Power BI 的儀表板。 如需詳細資訊，請參閱[這裡]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
