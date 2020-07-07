@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245815"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
@@ -32,8 +32,8 @@ ms.locfileid: "80245815"
 
 | Stack           | 預期的值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用來啟動 JAR 應用程式的命令（例如， `java -jar /home/site/wwwroot/app.jar --server.port=80`） |
-| Tomcat          | 執行任何必要設定的腳本位置（例如， `/home/site/deployments/tools/startup_script.sh`）          |
+| Java SE         | 用來啟動 JAR 應用程式的命令（例如， `java -jar /home/site/wwwroot/app.jar --server.port=80` ） |
+| Tomcat          | 執行任何必要設定的腳本位置（例如， `/home/site/deployments/tools/startup_script.sh` ）          |
 | Node.js         | PM2 設定檔或您的腳本檔案                                |
 | .NET Core       | 已編譯的 DLL 名稱，形式為`dotnet <myapp>.dll`                                 |
 | Ruby            | 您想要用來初始化應用程式的 Ruby 腳本                     |
@@ -108,9 +108,9 @@ const io = require('socket.io')(server,{
 
 ## <a name="custom-containers"></a>自訂容器
 
-**我使用自己的自訂容器。我希望平臺將 SMB 共用掛接至`/home/`目錄。**
+**我使用自己的自訂容器。我希望平臺將 SMB 共用掛接至 `/home/` 目錄。**
 
-如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**設定，或將*true*設定為 true `/home/` ，則會在所有規模的實例間**共用**目錄，而寫入的檔案會在重新開機時**保存**。 將明確`WEBSITES_ENABLE_APP_SERVICE_STORAGE`設定為*false*將會停用掛接。
+如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**設定，或將設定為*true*，則會在 `/home/` 所有規模的實例間**共用**目錄，而寫入的檔案**會**在重新開機時保存。 將明確設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為*false*將會停用掛接。
 
 **我的自訂容器需要很長時間才能啟動，而平台會在它完成啟動之前將容器重新啟動。**
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **私人登錄選項中的映像名稱格式為何？**
 
-新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要`docker-custom-image-name`設定，請使用[ `az`命令列工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要設定 `docker-custom-image-name` ，請使用[ `az` 命令列工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
 
 **我可以在我的自訂容器映像上公開多個連接埠嗎？**
 
@@ -153,7 +153,7 @@ SCM 網站是在個別的容器中執行。 您無法檢查應用程式容器的
 建立下列應用程式設定：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io`）
+- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io` ）
 - DOCKER_REGISTRY_SERVER_PASSWORD (啟用 ACR 設定中的系統管理員存取權)
 
 在組態檔中，參考您的 ACR 映像，如下列範例所示：

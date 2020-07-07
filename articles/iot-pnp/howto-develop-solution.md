@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159212"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>連線至 IoT 隨插即用預覽版裝置並與其互動
@@ -91,7 +91,7 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 1. 在 [路由]**** 索引標籤上，選取 [新增]****。
 1. 在 [名稱]**** 欄位中輸入值，然後選擇 [端點]****。 如果您尚未設定端點，請選取 [新增端點]****。
 1. 在 [資料來源]**** 下拉式清單中，選取 [數位對應項變更事件]****。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 下列 JSON 顯示數位對應項變更事件的範例：
 

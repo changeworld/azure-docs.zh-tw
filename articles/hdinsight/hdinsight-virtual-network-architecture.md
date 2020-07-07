@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81390212"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虛擬網路架構
@@ -36,9 +36,9 @@ Azure HDInsight 叢集具有不同類型的虛擬機器或節點。 每種節點
 
 定址叢集中的節點時，請使用完整功能變數名稱（Fqdn）。 您可以使用[AMBARI API](hdinsight-hadoop-manage-ambari-rest-api.md)，取得叢集中各種節點類型的 fqdn。
 
-這些 Fqdn 的形式`<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`會是。
+這些 Fqdn 的形式會是 `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` 。
 
-適用`<node-type-prefix>`于前端節點的*hn* 、背景工作角色節點的*w)* ，以及 zookeeper 節點的*zn* 。
+適用于 `<node-type-prefix>` 前端節點的*hn* 、背景工作角色節點的*w)* ，以及 zookeeper 節點的*zn* 。
 
 如果您只需要主機名稱，請只使用 FQDN 的第一個部分：`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
@@ -46,7 +46,7 @@ Azure HDInsight 叢集具有不同類型的虛擬機器或節點。 每種節點
 
 下圖顯示 HDInsight 節點和網路資源在 Azure 中的位置。
 
-![在 Azure 自訂 VNET 中建立的 HDInsight 實體圖表](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+![圖表：在 Azure 自訂 VNET 中建立的 HDInsight 實體](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
 Azure 虛擬網路中的預設資源包括上表中所述的叢集節點類型。 和網路裝置，可支援虛擬網路與外部網路之間的通訊。
 
@@ -71,16 +71,16 @@ Azure 虛擬網路中的預設資源包括上表中所述的叢集節點類型�
 
 您可以透過三種方式存取您的 HDInsight 叢集：
 
-- 位於`CLUSTERNAME.azurehdinsight.net`虛擬網路外部的 HTTPS 端點。
-- 用來直接連接到前端節點的 SSH 端點`CLUSTERNAME-ssh.azurehdinsight.net`。
-- 虛擬網路`CLUSTERNAME-int.azurehdinsight.net`內的 HTTPS 端點。 請注意此`-int`URL 中的 ""。 此端點會解析為該虛擬網路中的私人 IP，而且無法從公用網際網路存取。
+- 位於虛擬網路外部的 HTTPS 端點 `CLUSTERNAME.azurehdinsight.net` 。
+- 用來直接連接到前端節點的 SSH 端點 `CLUSTERNAME-ssh.azurehdinsight.net` 。
+- 虛擬網路內的 HTTPS 端點 `CLUSTERNAME-int.azurehdinsight.net` 。 請注意 `-int` 此 URL 中的 ""。 此端點會解析為該虛擬網路中的私人 IP，而且無法從公用網際網路存取。
 
 這三個端點會分別指派負載平衡器。
 
 公用 IP 位址也會提供給允許從虛擬網路外部連線的兩個端點。
 
-1. 從網際網路連線`CLUSTERNAME.azurehdinsight.net`到叢集時，會將一個公用 IP 指派給負載平衡器，以使用完整功能變數名稱（FQDN）。
-1. 第二個公用 IP 位址僅用於 SSH 的功能變數名稱`CLUSTERNAME-ssh.azurehdinsight.net`。
+1. 從網際網路連線到叢集時，會將一個公用 IP 指派給負載平衡器，以使用完整功能變數名稱（FQDN） `CLUSTERNAME.azurehdinsight.net` 。
+1. 第二個公用 IP 位址僅用於 SSH 的功能變數名稱 `CLUSTERNAME-ssh.azurehdinsight.net` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066873"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>適用於 Windows 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 磁碟加密會利用 BitLocker 在執行 Windows 的 Azure 虛擬機器上提供完整的磁碟加密。  此解決方案與 Azure Key Vault 整合，可讓您管理金鑰保存庫訂用帳戶中的磁碟加密金鑰與祕密。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如需必要條件的完整清單，請參閱[適用于 Windows vm 的 Azure 磁碟加密](../windows/disk-encryption-overview.md)，特別是下列各節：
 
-- [支援的 Vm 和作業系統](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [支援的 VM 與作業系統](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [網路需求](../windows/disk-encryption-overview.md#networking-requirements)
 - [群組原則需求](../windows/disk-encryption-overview.md#group-policy-requirements)
 
@@ -40,7 +40,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 - 2.2 版-不使用 Azure Active Directory （AAD）屬性的較新建議架構。
 - v1.1-需要 Azure Active Directory （AAD）屬性的舊版架構。 
 
-若要選取目標架構， `typeHandlerVersion`屬性必須設定為等於您要使用的架構版本。
+若要選取目標架構， `typeHandlerVersion` 屬性必須設定為等於您要使用的架構版本。
 
 ### <a name="schema-v22-no-aad-recommended"></a>架構2.2：無 AAD （建議）
 
@@ -74,7 +74,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="schema-v11-with-aad"></a>架構 v1.1：使用 AAD 
 
-1.1 架構需要`aadClientID` ，而且不`aadClientSecret`建議`AADClientCertificate`針對新的 vm 使用或和。
+1.1 架構需要 `aadClientID` ，而且 `aadClientSecret` `AADClientCertificate` 不建議針對新的 vm 使用或和。
 
 使用 `aadClientSecret`：
 
@@ -139,14 +139,14 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.Security | 字串 |
 | type | AzureDiskEncryption | 字串 |
 | typeHandlerVersion | 2.2、1。1 | 字串 |
 | （1.1 架構）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （1.1 架構）AADClientSecret | password | 字串 |
+| （1.1 架構）AADClientSecret | 密碼 | 字串 |
 | （1.1 架構）AADClientCertificate | thumbprint | 字串 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
 | （選擇性-預設的 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
@@ -164,7 +164,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 如需以架構 v1.1 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)。
 
 >[!NOTE]
-> 此外， `VolumeType`如果將參數設定為 All，只有在資料磁片格式正確時，才會將其加密。 
+> 此外，如果將 `VolumeType` 參數設定為 All，只有在資料磁片格式正確時，才會將其加密。 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
@@ -174,7 +174,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家聯繫。 
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 
 
 或者，您可以提出 Azure 支援事件。 移至[Azure 支援](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 

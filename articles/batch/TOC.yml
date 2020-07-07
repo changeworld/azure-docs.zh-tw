@@ -133,7 +133,7 @@
           href: batch-custom-images.md
         - name: 在虛擬網路中建立集區
           href: batch-virtual-network.md
-        - name: 建立具公用 IP 位址的集區
+        - name: 使用公用 IP 位址建立集區
           href: create-pool-public-ip.md
         - name: 建立不具公用 IP 位址的集區
           href: batch-pool-no-public-ip-address.md
@@ -272,13 +272,13 @@
     - name: Batch 意見反應
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: 批次的 Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 部落格
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Azure 上的 HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定價計算機

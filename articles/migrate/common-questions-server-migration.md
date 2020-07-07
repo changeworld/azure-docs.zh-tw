@@ -4,10 +4,10 @@ description: 取得有關使用 Azure Migrate 伺服器遷移來遷移電腦的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744333"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見的問題
@@ -21,13 +21,13 @@ ms.locfileid: "82744333"
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>哪些地理位置支援以 Azure Migrate 進行遷移？
 
-審查適用于[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府](migrate-support-matrix.md#supported-geographies-azure-government)雲端的支援地理位置。
+請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>無代理程式 VMware 複寫如何運作？
 
 適用于 VMware 的無代理程式複寫方法會使用 VMware 快照集和 VMware 變更封鎖追蹤（CBT）。
 
-其程序如下：
+程序如下︰
 
 1. 當您啟動複寫時，會排定初始複寫迴圈。 在初始迴圈中，會採用 VM 的快照集。 快照集會用來複寫 Vm Vmdk （磁片）。 
 2. 在初始複寫週期完成後，會定期排程差異複寫週期。
@@ -57,11 +57,11 @@ ms.locfileid: "82744333"
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>我可以對 Azure Gen 2 進行無代理程式的 UEFI Vm 遷移嗎？
 
-不需要。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
+不會。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>我可以在遷移時將 Vm 釘選到 Azure 可用性區域嗎？
 
-不需要。 Azure 可用性區域不支援 Azure Migrate 遷移。
+不會。 Azure 可用性區域不支援 Azure Migrate 遷移。
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Azure Migrate 在複寫期間使用哪種傳輸通訊協定？
 
@@ -73,7 +73,7 @@ Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 TLS 加密。
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>客戶可以將其 Vm 遷移至非受控磁片嗎？
 
-不需要。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
+不會。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>我可以使用無代理程式遷移一次複寫多少部 Vm？
 
@@ -83,9 +83,9 @@ Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 TLS 加密。
 
 您可以使用 New-netqospolicy 進行節流。 例如：
 
-要在 New-netqospolicy 中使用的 AppNamePrefix 是 "GatewayWindowsService"。 您可以在 Azure Migrate 設備上建立原則，藉由建立如下所示的原則來節流設備的複寫流量：
+要在 New-netqospolicy 中使用的 AppNamePrefix 是 "GatewayWindowsService.exe"。 您可以在 Azure Migrate 設備上建立原則，藉由建立如下所示的原則來節流設備的複寫流量：
  
-New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService"-ThrottleRateActionBitsPerSecond 1MB
+New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>我可以將已複寫的 Vm 遷移至 Azure 嗎？ 
 

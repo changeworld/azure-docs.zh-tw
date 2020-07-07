@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80152637"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>針對預覽環境進行診斷和疑難排解
@@ -92,7 +92,7 @@ ms.locfileid: "80152637"
 請確定名稱和值符合下列規則︰
 
 * 時間戳記屬性名稱區分大小寫。
-* 來自事件來源的時間戳記屬性值為 JSON 字串，其格式`yyyy-MM-ddTHH:mm:ss.FFFFFFFK`為。 此類型字串的其中一個範例為 `“2008-04-12T12:53Z”`。
+* 來自事件來源的時間戳記屬性值為 JSON 字串，其格式為 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` 。 此類型字串的其中一個範例為 `“2008-04-12T12:53Z”`。
 
 若要確保您已擷取時間戳記屬性名稱且正常運作，最簡單方式是使用時間序列深入解析預覽總管。 在時間序列深入解析預覽總管中，當您輸入時間戳記屬性名稱之後，使用圖表選取一段時間。 以滑鼠右鍵按一下選取範圍，然後選取 [探索事件]**** 選項。 第一個資料行標頭就是您的時間戳記屬性名稱。 它的字組 `Timestamp` 旁邊應該有 `($ts)`，而非：
 

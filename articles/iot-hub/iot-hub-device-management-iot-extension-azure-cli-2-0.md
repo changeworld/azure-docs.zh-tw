@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
 ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239650"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>使用適用於 Azure CLI 的 IoT 擴充功能來管理 Azure IoT 中樞裝置
@@ -29,7 +29,7 @@ ms.locfileid: "80239650"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理選項          | 工作  |
+| 管理選項          | Task  |
 |----------------------------|-----------|
 | 直接方法             | 使裝置執行動作，例如啟動或停止傳送訊息，或是將裝置重新開機。                                        |
 | 對應項的所需屬性    | 讓裝置進入特定狀態，例如將 LED 設定為綠色，或將遙測傳送間隔設定為 30 分鐘。         |
@@ -51,7 +51,7 @@ ms.locfileid: "80239650"
 
 ## <a name="what-you-need"></a>您需要什麼
 
-* 完成[Raspberry Pi 線上](iot-hub-raspberry-pi-web-simulator-get-started.md)模擬器教學課程或其中一個裝置教學課程;例如，[使用 Node.js Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 這些專案涵蓋下列需求：
+* 完成 [Raspberry Pi 線上模擬器](iot-hub-raspberry-pi-web-simulator-get-started.md)教學課程，或其中一個裝置教學課程；例如，[Raspberry Pi with node.js](iot-hub-raspberry-pi-kit-node-get-started.md)。 這些專案涵蓋下列需求：
 
   - 有效的 Azure 訂用帳戶。
   - 位於您訂用帳戶中的 Azure IoT 中樞。
@@ -61,7 +61,7 @@ ms.locfileid: "80239650"
 
 * [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az –version` 進行驗證。
+* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az –version` 進行驗證。
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80285107"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我們正在將 Azure Marketplace 的虛擬機器（VM）映射移至受控磁片儲存體
@@ -38,11 +38,11 @@ VM 映射的使用者將不會遇到中斷的情況。
 
 ### <a name="do-i-need-to-take-any-action"></a>我需要採取任何動作嗎？
 
-否。 發行者或取用者不需要採取任何動作。
+不會。 發行者或取用者不需要採取任何動作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>我是否必須在將系統移至受控磁片儲存體之後，以不同的方式來更新我的系統以呼叫雲端入口網站 Api？
 
-否。 您現有的 API 呼叫將會繼續作用。
+不會。 您現有的 API 呼叫將會繼續作用。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>我的所有 VM 映射會同時移至受控磁片嗎？
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239865"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射的總覽
@@ -45,7 +45,7 @@ az vm image list --publisher RedHat --all
 
 Azure 中的 VM 映射是依發行者、供應專案、SKU 和版本進行組織。 「發行者:供應項目:SKU:版本」的組合便是映像 URN，並能唯一識別要使用的映像。
 
-例如， `RedHat:RHEL:8-LVM:8.1.20200318`指的是 RHEL 8.1 LVM 分割的映射，建置於2020年3月18日。
+例如， `RedHat:RHEL:8-LVM:8.1.20200318` 指的是 RHEL 8.1 LVM 分割的映射，建置於2020年3月18日。
 
 如需如何建立 RHEL 8.1 VM 的範例，請參閱這裡。
 
@@ -57,7 +57,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1
 
 Azure REST API 允許針對版本使用「最新」的「名字」，而不是特定版本。 使用「最新」會為指定的發行者、供應專案和 SKU 布建最新的可用映射。
 
-例如， `RedHat:RHEL:8-LVM:latest`指的是最新的 RHEL 8 系列 LVM-可用的資料分割映射。
+例如， `RedHat:RHEL:8-LVM:latest` 指的是最新的 RHEL 8 系列 LVM-可用的資料分割映射。
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
@@ -71,7 +71,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 針對 RHEL 6.x 映射，映射類型如下表所示。
 
-|發行者 | 產品 | SKU 值 | 版本 | 詳細資料
+|發行者 | 供應項目 | SKU 值 | 版本 | 詳細資料
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | 次要版本（例如，6.9） | RHEL 次要版本的串連值和發佈的日期（例如，6.9.2018010506） | 所有標準的 RHEL 6.x 映射都會遵循此慣例。
 |RedHat | rhel-byos | rhel-raw69 | RHEL 次要版本的串連值和發佈的日期（例如，6.9.20181023） | 此映射是 RHEL 6.9 BYOS 映射。
@@ -80,12 +80,12 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 ## <a name="rhel-7-image-types"></a>RHEL 7 映射類型
 
-RHEL 7.x 映射有幾種不同的映射類型。 下表顯示我們所提供的不同影像集。 若要查看完整清單，請使用 Azure CLI 命令`az vm image list --publisher redhat --all`。
+RHEL 7.x 映射有幾種不同的映射類型。 下表顯示我們所提供的不同影像集。 若要查看完整清單，請使用 Azure CLI 命令 `az vm image list --publisher redhat --all` 。
 
 >[!NOTE]
 > 除非另有指示，否則所有映射都是 LVM 分割並聯機到一般 RHEL 存放庫。 也就是說，存放庫不是擴充更新支援（EUS），也不是適用于 SAP 的更新服務（E4S）。 接下來，我們只是為了發佈 LVM 分割的映射，而是開啟以提供有關此決策的意見反應。 如需有關適用于 SAP 的擴充更新支援和更新服務的詳細資訊，請參閱[Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)。
 
-|發行者 | 產品 | SKU 值 | 版本 | 詳細資料
+|發行者 | 供應項目 | SKU 值 | 版本 | 詳細資料
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 次要版本（例如，7.6） | RHEL 次要版本的串連值和發佈的日期（例如，7.6.2019102813） | 2019年4月之前發佈的映射會附加至標準 RHEL 存放庫。 2019年4月之後發佈的映射會附加至 Red Hat 的 EUS 存放庫，以允許特定次要版本的版本鎖定。 需要一般存放庫的客戶應該使用 SKU 值中包含 7-LVM 或7個原始的映射（詳細資料請遵循）。 RHEL 7.7 和更新版本的映射為 LVM 資料分割。 此類別中的所有其他影像都是原始資料分割。
 |RedHat | RHEL | 7-RAW | RHEL 次要版本的串連值和發佈的日期（例如，7.6.2019102813） | 這些映射是未經處理的資料分割（例如，未新增任何邏輯磁片區）。
@@ -102,7 +102,7 @@ RHEL 7.x 映射有幾種不同的映射類型。 下表顯示我們所提供的�
 
 RHEL 8 映射類型的詳細資料如下。
 
-|發行者 | 產品 | SKU 值 | 版本 | 詳細資料
+|發行者 | 供應項目 | SKU 值 | 版本 | 詳細資料
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL 次要版本的串連值和發佈的日期（例如，8.0.20191023） | 這些映射是連接到標準 Red Hat 存放庫的 RHEL 8 LVM 資料分割映射。
 |RedHat | RHEL | 8-gen2 | RHEL 次要版本的串連值和發佈的日期（例如，8.0.20191024） | 這些映射是連接到標準 Red Hat 存放庫的 Hyper-v 第2版 RHEL 8 LVM 資料分割映射。 如需 Azure 中第2代 Vm 的詳細資訊，請參閱[azure 上第2代 vm 的支援](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)。
@@ -129,7 +129,7 @@ RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-在此情況下`RedHat:RHEL:7.6:7.6.2019102813` ，預設會附加至 EUS 存放庫。 SKU 值為7.4。 預設`RedHat:RHEL:7-LVM:7.6.2019062414`會將和附加至非 EUS 存放庫。 SKU 值為 7-LVM。
+在此情況下， `RedHat:RHEL:7.6:7.6.2019102813` 預設會附加至 EUS 存放庫。 SKU 值為7.4。 `RedHat:RHEL:7-LVM:7.6.2019062414`預設會將和附加至非 EUS 存放庫。 SKU 值為 7-LVM。
 
 若要使用一般（非 EUS）存放庫，請使用 SKU 中未包含次要版本號碼的映射。
 
@@ -146,8 +146,8 @@ RedHat:RHEL:7.6:7.6.2019102813
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 預設會 EUS 4 月2019和更新版本所發行的映射。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 預設會 EUS 2019 年6月發佈的映射。 |
-RHEL 7。6      |RedHat： RHEL：7.6：7.6.2019052206 | 預設會 EUS 已發佈的映射2019和更新版本。 |
-RHEL 8。0      |N/A                            | Red Hat 不提供任何 EUS。                               |
+RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 預設會 EUS 已發佈的映射2019和更新版本。 |
+RHEL 8。0      |不適用                            | Red Hat 不提供任何 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服務
 

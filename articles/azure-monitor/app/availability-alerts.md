@@ -7,10 +7,10 @@ ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382874"
 ---
 # <a name="availability-alerts"></a>可用性警示
@@ -69,9 +69,9 @@ ms.locfileid: "81382874"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-專屬的[疑難排解文章](troubleshoot-availability.md)。
+專用的[疑難排解文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [多重步驟 Web 測試](availability-multistep.md)
-* [Url ping web 測試](monitor-web-app-availability.md)
+* [URL ping Web 測試](monitor-web-app-availability.md)

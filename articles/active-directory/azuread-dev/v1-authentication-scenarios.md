@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154724"
 ---
 # <a name="what-is-authentication"></a>什麼是驗證？
@@ -58,20 +58,20 @@ ms.locfileid: "80154724"
 * 需要安全存取資源的應用程式
 * 扮演資源角色的應用程式
 
-### <a name="how-each-flow-emits-tokens-and-codes"></a>每個流程如何發出權杖和代碼
+### <a name="how-each-flow-emits-tokens-and-codes"></a>每個流程如何發出權杖和授權碼
 
-視用戶端的建立方式而定，它可以使用 Azure AD 所支援的一或多個驗證流程。 這些流程可能會產生各種權杖（id_tokens、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供總覽：
+視用戶端的建立方式而定，它可以使用 Azure AD 所支援的一或多個驗證流程。 這些流程可能會產生各種權杖 (id_tokens、重新整理權杖、存取權杖) 以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供概觀：
 
-|Flow | 具備 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
+|Flow | 需要 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授權碼流程](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[隱含流程](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[混合式 OIDC 流程](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[重新整理權杖兌換](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | 重新整理權杖 | x | x | x| |
 |[代理者流程](v1-oauth2-on-behalf-of-flow.md) | 存取權杖| x| x| x| |
-|[用戶端認證](v1-oauth2-client-creds-grant-flow.md) | | | x （僅限應用程式）| | |
+|[用戶端認證](v1-oauth2-client-creds-grant-flow.md) | | | x (僅限應用程式)| | |
 
-透過隱含模式發行的權杖有長度限制，因為透過 URL 傳遞回瀏覽器（其中`response_mode`是`query`或`fragment`）。  有些瀏覽器對於可以放在瀏覽器列中的 URL 大小有限制，而且太長時也會失敗。  因此，這些權杖不具有`groups`或`wids`宣告。 
+透過隱含模式發出的權杖具有長度限制，因為其會透過 URL 傳遞回瀏覽器 (其中 `response_mode` 是 `query` 或 `fragment`)。  有些瀏覽器對於可放在瀏覽器列中的 URL 大小有所限制，而太長時會失敗。  因此，這些權杖沒有 `groups` 或 `wids` 宣告。 
 
 現在，您已具備基本概念的概觀，請繼續往下閱讀即可了解身分識別應用程式模型與 API、Azure AD 中佈建的運作方式，以及 Azure AD 所支援之常見案例的相關詳細資訊連結。
 
@@ -122,7 +122,7 @@ Azure AD 所簽發的安全性權杖 (存取權杖和識別碼權杖) 包含宣�
 | 宣告 | 描述 |
 | --- | --- |
 | 應用程式識別碼 | 識別使用權杖的應用程式。 |
-| 適用對象 | 識別權杖針對的收件者資源。 |
+| 對象 | 識別權杖針對的收件者資源。 |
 | 應用程式驗證內容類別參考 | 指出如何驗證用戶端 (公用用戶端與機密用戶端的比較)。 |
 | 驗證時刻 | 記錄驗證發生的日期和時間。 |
 | 驗證方法 | 指出如何驗證權杖的主體 (密碼、憑證等)。 |
@@ -130,9 +130,9 @@ Azure AD 所簽發的安全性權杖 (存取權杖和識別碼權杖) 包含宣�
 | 群組 | 包含使用者所屬的 Azure AD 群組的物件識別碼。 |
 | 身分識別提供者 | 記錄驗證權杖主體的身分識別提供者。 |
 | 發出時間 | 記錄核發權杖的時間，通常用於權杖有效期限。 |
-| 簽發者 | 識別發出權杖的 STS，以及 Azure AD 租用戶。 |
+| Issuer | 識別發出權杖的 STS，以及 Azure AD 租用戶。 |
 | 姓氏 | 提供 Azure AD 中設定的使用者姓氏。 |
-| Name | 提供人類看得懂的值，用以識別權杖的主體。 |
+| 名稱 | 提供人類看得懂的值，用以識別權杖的主體。 |
 | 物件識別碼 | 包含主體在 Azure AD 中不可變的唯一識別碼。 |
 | 角色 | 包含已授與使用者的 Azure AD 應用程式角色的易記名稱。 |
 | 影響範圍 | 指出授與用戶端應用程式的權限。 |

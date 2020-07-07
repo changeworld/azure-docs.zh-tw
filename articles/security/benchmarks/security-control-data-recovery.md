@@ -8,17 +8,17 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408573"
 ---
 # <a name="security-control-data-recovery"></a>安全性控制：資料復原
 
 確保所有系統資料、設定和秘密都會定期自動備份。
 
-## <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動備份
+## <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -52,7 +52,7 @@ ms.locfileid: "81408573"
 
 - [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
+## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -62,7 +62,7 @@ ms.locfileid: "81408573"
 
 啟用 Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。  如果 Azure 儲存體用來儲存備份，請啟用虛刪除，以在 blob 或 blob 快照集遭到刪除時儲存並復原您的資料。 
 
-- [瞭解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 - [如何在 Key Vault 中啟用虛刪除和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

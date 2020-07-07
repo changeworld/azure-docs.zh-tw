@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277051"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同銷售國家/地區和地區代碼
@@ -34,11 +34,11 @@ ms.locfileid: "80277051"
 | 美屬薩摩亞                      | AS        |
 | 安道爾                             | AD        |
 | 安哥拉                              | AO        |
-| 南極大陸                          | AQ        |
+| 南極洲                          | AQ        |
 | 安地卡及巴布達                 | AG        |
 | 阿根廷                           | AR        |
 | 亞美尼亞                             | AM        |
-| 阿路巴                               | AW        |
+| 荷屬阿魯巴                               | AW        |
 | 澳大利亞                           | AU        |
 | 奧地利                             | AT        |
 | 亞塞拜然                          | AZ        |
@@ -58,8 +58,8 @@ ms.locfileid: "80277051"
 | 波札那                            | BW        |
 | 布威島                       | BV        |
 | 巴西                              | BR        |
-| 英屬印度洋領土      | IO        |
-| 英屬維爾京群島              | VG        |
+| 英屬印度洋領地      | IO        |
+| 英屬維京群島              | VG        |
 | 汶萊                              | BN        |
 | 保加利亞                            | BG        |
 | 布吉納法索                        | BF        |
@@ -75,17 +75,17 @@ ms.locfileid: "80277051"
 | 智利                               | CL        |
 | 中國                               | CN        |
 | 聖誕島                    | CX        |
-| 可可斯群島             | CC        |
+| 科克斯 (基靈) 群島             | CC        |
 | 哥倫比亞                            | CO        |
 | 葛摩                             | KM        |
-| 剛果共和國                               | CG        |
-| 剛果民主共和國 (DRC)                         | CD        |
-| 柯克群島                        | CK        |
+| 剛果                               | CG        |
+| 剛果民主共和國                         | CD        |
+| 庫克群島                        | CK        |
 | 哥斯大黎加                          | CR        |
 | 象牙海岸                       | CI        |
 | 克羅埃西亞                             | HR        |
 | 古巴                                | CU        |
-| 古拉果                             | 順        |
+| 古拉果                             | CW        |
 | 賽浦路斯                              | CY        |
 | 丹麥                             | DK        |
 | 吉布地                            | DJ        |
@@ -105,7 +105,7 @@ ms.locfileid: "80277051"
 | 法國                              | FR        |
 | 法屬圭亞那                       | GF        |
 | 法屬玻里尼西亞                    | PF        |
-| 法屬南半球領土         | TF        |
+| 法屬南部屬地         | TF        |
 | 加彭                               | GA        |
 | 甘比亞                              | GM        |
 | 喬治亞                             | GE        |
@@ -115,13 +115,13 @@ ms.locfileid: "80277051"
 | 希臘                              | GR        |
 | 格陵蘭                           | GL        |
 | 格瑞那達                             | GD        |
-| 哥德普洛                          | GP        |
+| 瓜地洛普                          | GP        |
 | 關島                                | GU        |
 | 瓜地馬拉                           | GT        |
 | 根息                            | GG        |
 | 幾內亞                              | GN        |
 | 幾內亞比索                       | GW        |
-| 蓋亞納                              | GY        |
+| 蓋亞那                              | GY        |
 | 海地                               | HT        |
 | 赫德島及麥當勞群島   | HM        |
 | 宏都拉斯                            | HN        |
@@ -129,11 +129,11 @@ ms.locfileid: "80277051"
 | 匈牙利                             | HU        |
 | 冰島                             | IS        |
 | 印度                               | IN        |
-| 印尼                           | 識別碼        |
+| 印尼                           | ID        |
 | 伊朗                                | IR        |
 | 伊拉克                                | IQ        |
 | 愛爾蘭                             | IE        |
-| 曼城島                         | IM        |
+| 曼島                         | IM        |
 | 以色列                              | IL        |
 | 義大利                               | IT        |
 | 牙買加                             | JM        |
@@ -143,7 +143,7 @@ ms.locfileid: "80277051"
 | 哈薩克                          | KZ        |
 | 肯亞                               | KE        |
 | 吉里巴斯                            | KI        |
-| 韓國（南部）                       | KR        |
+| 南韓                       | KR        |
 | 科威特                              | KW        |
 | 吉爾吉斯                          | KG        |
 | 寮國                                | LA        |
@@ -173,7 +173,7 @@ ms.locfileid: "80277051"
 | 摩納哥                              | MC        |
 | 蒙古                            | MN        |
 | 蒙特內哥羅                          | ME        |
-| 蒙特色拉特島                          | MS        |
+| 蒙哲臘                          | MS        |
 | 摩洛哥                             | MA        |
 | 莫三比克                          | MZ        |
 | 緬甸                             | MM        |
@@ -181,15 +181,15 @@ ms.locfileid: "80277051"
 | 諾魯                               | NR        |
 | 尼泊爾                               | NP        |
 | 荷蘭                         | NL        |
-| 新喀里多尼亞群島                       | NC        |
+| 新喀里多尼亞                       | NC        |
 | 紐西蘭                         | NZ        |
 | 尼加拉瓜                           | NI        |
 | 尼日                               | NE        |
 | 奈及利亞                             | NG        |
-| 紐威島                                | NU        |
+| 紐埃島                                | NU        |
 | 諾福克島                      | NF        |
 | 北韓                         | KP        |
-| 北馬里安納群島            | MP        |
+| 北馬利安納群島            | MP        |
 | 北馬其頓                     | MK        |
 | 挪威                              | 否        |
 | 阿曼                                | OM        |
@@ -213,10 +213,10 @@ ms.locfileid: "80277051"
 | 聖巴瑟米                    | BL        |
 | 聖克里斯多福及尼維斯               | KN        |
 | 聖露西亞                         | LC        |
-| 聖馬丁                        | MF        |
+| 法屬聖馬丁                        | MF        |
 | 聖匹島           | 下午        |
 | 聖文森及格瑞那丁    | VC        |
-| 薩摩亞獨立國                               | WS        |
+| 薩摩亞                               | WS        |
 | 聖馬利諾                          | SM        |
 | 聖多美普林西比               | ST        |
 | 沙烏地阿拉伯                        | SA        |
@@ -263,7 +263,7 @@ ms.locfileid: "80277051"
 | 美國                       | US        |
 | 烏拉圭                             | UY        |
 | 美國外島               | UM        |
-| 美屬維爾京群島                 | VI        |
+| 美式英文維京群島                 | VI        |
 | 烏茲別克                          | UZ        |
 | 萬那杜                             | VU        |
 | 梵蒂岡                        | VA        |

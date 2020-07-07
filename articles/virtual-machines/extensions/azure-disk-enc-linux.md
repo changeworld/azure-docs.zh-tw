@@ -14,26 +14,26 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066923"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>適用於 Linux 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 磁碟加密會使用 Linux 中的 dm-crypt 子系統在[選取的 Azure Linux 發行版本](https://aka.ms/adelinux)上提供完整的磁碟加密。  此解決方案會與 Azure Key Vault 整合，以管理磁碟加密金鑰和祕密。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如需必要條件的完整清單，請參閱[適用于 Linux vm 的 Azure 磁碟加密](../linux/disk-encryption-overview.md)，特別是下列各節：
 
-- [支援的 Vm 和作業系統](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [支援的 VM 與作業系統](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [其他 VM 需求](../linux/disk-encryption-overview.md#additional-vm-requirements)
 - [網路需求](../linux/disk-encryption-overview.md#networking-requirements)
-- [加密金鑰儲存需求](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
+- [加密金鑰儲存體需求](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -41,7 +41,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 - v1.1-不使用 Azure Active Directory （AAD）屬性的較新建議架構。
 - v 0.1-需要 Azure Active Directory （AAD）屬性的舊版架構。 
 
-若要選取目標架構， `typeHandlerVersion`屬性必須設定為等於您要使用的架構版本。
+若要選取目標架構， `typeHandlerVersion` 屬性必須設定為等於您要使用的架構版本。
 
 ### <a name="schema-v11-no-aad-recommended"></a>架構 v1.1：無 AAD （建議）
 
@@ -76,7 +76,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="schema-v01-with-aad"></a>架構 v 0.1：使用 AAD 
 
-0.1 架構需要`AADClientID`和`AADClientSecret`或。 `AADClientCertificate`
+0.1 架構需要 `AADClientID` 和 `AADClientSecret` 或 `AADClientCertificate` 。
 
 使用 `AADClientSecret`：
 
@@ -141,16 +141,16 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.Security | 字串 |
 | type | AzureDiskEncryptionForLinux | 字串 |
 | typeHandlerVersion | 1.1、0。1 | int |
 | （0.1 架構）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （0.1 架構）AADClientSecret | password | 字串 |
+| （0.1 架構）AADClientSecret | 密碼 | 字串 |
 | （0.1 架構）AADClientCertificate | thumbprint | 字串 |
-| 選擇性（0.1 架構）通行 | password | 字串 |
+| 選擇性（0.1 架構）通行 | 密碼 | 字串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
 | （選擇性-預設的 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
@@ -168,12 +168,12 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 如需以架構 v 0.1 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)。
 
 >[!WARNING]
-> - 如果您先前已使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。
-> - 加密 Linux OS 磁片區時，VM 應視為無法使用。 我們強烈建議您在加密進行時避免 SSH 登入，以避免在加密程式期間封鎖需要存取的任何已開啟檔案的問題。 若要檢查進度，請使用[AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell Cmdlet 或[vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI 命令。 對於 30GB OS 磁碟區，此過程可能需要幾個小時，再加上額外的時間來進行加密資料磁碟區。 除非使用加密格式所有選項，否則資料磁碟區加密時間將與資料磁碟區的大小和數量成正比。 
+> - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。
+> - 在加密 Linux OS 磁碟區時，請將 VM 視為無法使用。 強烈建議您在加密進行當下避免進行 SSH 登入，以免發生問題而封鎖加密過程中需要存取的任何已開啟檔案。 若要檢查進度，請使用[AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell Cmdlet 或[vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI 命令。 對於 30GB OS 磁碟區，此過程可能需要幾個小時，再加上額外的時間來進行加密資料磁碟區。 除非使用加密格式所有選項，否則資料磁碟區加密時間將與資料磁碟區的大小和數量成正比。 
 > - 只有資料磁碟區支援在 Linux VM 上停用加密。 如果 OS 磁碟區已加密，則不支援在資料或 OS 磁碟區上停用加密。 
 
 >[!NOTE]
-> 此外， `VolumeType`如果將參數設定為 All，只有在資料磁片已正確掛接時，才會將其加密。
+> 此外，如果將 `VolumeType` 參數設定為 All，只有在資料磁片已正確掛接時，才會將其加密。
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
@@ -183,7 +183,7 @@ Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家聯繫。 
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 
 
 或者，您可以提出 Azure 支援事件。 移至[Azure 支援](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 

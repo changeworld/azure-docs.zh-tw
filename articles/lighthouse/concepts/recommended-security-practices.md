@@ -4,10 +4,10 @@ description: 使用 Azure 委派的資源管理時，請務必考慮安全性和
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246903"
 ---
 # <a name="recommended-security-practices"></a>建議的安全性作法
@@ -25,7 +25,7 @@ ms.locfileid: "80246903"
 為了簡化管理，建議您針對管理客戶資源所需的每個角色，使用 Azure AD 的使用者群組。 這能讓您視需要將個別使用者新增至群組，是或從該群組中移除使用者，而不是直接將權限指派給該使用者。
 
 > [!IMPORTANT]
-> 為了加入 Azure AD 群組的許可權，**群組類型**必須是**安全性**，而不是**Office 365**。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要新增 Azure AD 群組的許可權，[群組類型] 必須是 [安全性]，而不是 [Office 365]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 建立權限結構時，請務必遵循最低權限原則來讓使用者只具備完成其工作所需的權限，以協助減少發生意外錯誤的機會。
 

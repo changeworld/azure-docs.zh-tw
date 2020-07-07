@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159178"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT explorer
@@ -24,12 +24,12 @@ Azure IoT explorer 是一種圖形化工具，可與您的 IoT 隨插即用預�
 - 安裝和設定 Azure IoT explorer 工具。
 - 使用此工具來與您的裝置互動並加以測試。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Azure IoT explorer 工具，您需要：
 
 - Azure IoT 中樞。 有許多方法可將 IoT 中樞新增至您的 Azure 訂用帳戶，例如[使用 Azure CLI 建立 iot 中樞](../iot-hub/iot-hub-create-using-cli.md)。 您需要 IoT 中樞連接字串，才能執行 Azure IoT explorer 工具。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 在 IoT 中樞註冊的裝置。 您可以使用下列 Azure CLI 命令來註冊裝置。 請務必以您的`{YourIoTHubName}`值`{YourDeviceID}`取代和預留位置：
+- 在 IoT 中樞內註冊的裝置。 您可以使用下列 Azure CLI 命令來註冊裝置。 請務必以您的 `{YourIoTHubName}` 值取代和 `{YourDeviceID}` 預留位置：
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -73,7 +73,7 @@ IoT 隨插即用裝置的模型定義會儲存在公用儲存機制、公司存�
 
 - 選取 [**新增**] 以向您的中樞註冊新的裝置。 然後輸入 [裝置識別碼]。 使用預設設定來自動產生驗證金鑰，並啟用與中樞的連線。
 - 選取裝置，然後選取 [**刪除**] 以刪除裝置身分識別。 完成此動作之前，請先檢查裝置詳細資料，以確定您正在刪除正確的裝置身分識別。
-- 依`capabilityID`和`interfaceID`查詢。 新增您`capabilityID`的或`interfaceID`做為參數，以查詢您的裝置。
+- 依 `capabilityID` 和查詢 `interfaceID` 。 新增您的 `capabilityID` 或 `interfaceID` 做為參數，以查詢您的裝置。
 
 ## <a name="interact-with-a-device"></a>與裝置互動
 
@@ -89,7 +89,7 @@ IoT 隨插即用裝置的模型定義會儲存在公用儲存機制、公司存�
 - 您可以在 [**直接方法**] 索引標籤上呼叫裝置上的[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 - 您可以在 [**雲端到裝置訊息**] 索引標籤上傳送[雲端到裝置訊息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
 
-### <a name="digital-twin"></a>數位對應項
+### <a name="digital-twin"></a>數位分身
 
 您可以使用此工具來查看裝置的數位對應項實例。 針對 IoT 隨插即用裝置，與裝置功能模型相關聯的所有介面都會顯示在此工具的這一節中。 選取介面，以展開其對應的[IoT 隨插即用基本](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)專案。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393334"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>做為事件方格來源 Azure IoT 中樞
@@ -153,13 +153,13 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 | subject | 字串 | 發行者定義事件主體的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| data | 物件 | IoT 中樞事件資料。  |
+| data | 物件 (object) | IoT 中樞事件資料。  |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 對於所有 IoT 中樞事件，資料物件都會包含下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | hubName | 字串 | 已建立或刪除裝置的 IoT 中樞名稱。 |
 | deviceId | 字串 | 裝置的唯一識別碼。 此區分大小寫的字串最長為 128 個字元，並支援 ASCII 7 位元英數字元和下列特殊字元：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
@@ -168,15 +168,15 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 對於**裝置連線**和**裝置中斷連線** IoT 中樞事件，資料物件會包含下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | moduleId | 字串 | 模組的唯一識別碼。 針對模組裝置才會輸出此欄位。 此區分大小寫的字串最長為 128 個字元，並支援 ASCII 7 位元英數字元和下列特殊字元：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
-| deviceConnectionStateEventInfo | 物件 | 裝置連線狀態事件資訊
+| deviceConnectionStateEventInfo | 物件 (object) | 裝置連線狀態事件資訊
 | sequenceNumber | 字串 | 一個號碼，有助於指出裝置連線或裝置中斷連線事件的順序。 最新的事件會有高於前一個事件的序號。 此號碼的變動有可能超過 1，但只會增加不會減少。 請參閱[如何使用序號](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
 針對**裝置遙測**IoT 中樞事件，資料物件會包含[IoT 中樞訊息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的裝置到雲端訊息，而且具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | body | 字串 | 來自裝置的訊息內容。 |
 | properties | 字串 | 應用程式屬性為可新增至訊息的使用者定義字串。 這些欄位為選擇性。 |
@@ -186,7 +186,7 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 | 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
-| twin | 物件 | 裝置對應項的相關資訊，這是應用程式裝置中繼資料的雲端標記法。 | 
+| twin | 物件 (object) | 裝置對應項的相關資訊，這是應用程式裝置中繼資料的雲端標記法。 | 
 | deviceID | 字串 | 裝置對應項的唯一識別碼。 | 
 | etag | 字串 | 可確保裝置對應項的更新具有一致性的驗證程式。 對每個裝對應項而言，每個 etag 保證都是唯一的。 |  
 | deviceEtag| 字串 | 可確保裝置登錄的更新具有一致性的驗證程式。 對每個裝置登錄而言，每個 deviceEtag 保證都是唯一的。 |
@@ -200,8 +200,8 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 | primaryThumbprint | 字串 | x509 憑證的主要指紋。 |
 | secondaryThumbprint | 字串 | x509 憑證的次要指紋。 | 
 | version | integer | 每次更新裝置對應項時，整數就會遞增 1。 |
-| desired | 物件 | 只能由應用程式後端寫入，並可由裝置讀取的屬性部分。 | 
-| reported | 物件 | 只能由裝置寫入，並可由應用程式後端讀取的屬性部分。 |
+| desired | 物件 (object) | 只能由應用程式後端寫入，並可由裝置讀取的屬性部分。 | 
+| reported | 物件 (object) | 只能由裝置寫入，並可由應用程式後端讀取的屬性部分。 |
 | lastUpdated | 字串 | 上次更新裝置對應項屬性的 ISO8601 時間戳記。 | 
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明

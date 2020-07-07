@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921563"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -280,27 +280,27 @@ kubectl apply -f podIdentityAndBinding.yaml
 接下來，您要部署 Pod。 下列程式碼是部署 YAML 檔案，其會使用上一個步驟中的 Pod 身分識別繫結。 將此檔案儲存為 *podBindingDeployment.yaml*。
 
 ```yml
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-secrets-store-inline
-    labels:
+  name: nginx-secrets-store-inline
+  labels:
     aadpodidbinding: azure-pod-identity-binding-selector
 spec:
-    containers:
+  containers:
     - name: nginx
-        image: nginx
-        volumeMounts:
+      image: nginx
+      volumeMounts:
         - name: secrets-store-inline
-        mountPath: "/mnt/secrets-store"
-        readOnly: true
-    volumes:
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
     - name: secrets-store-inline
-        csi:
+      csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-            secretProviderClass: azure-kvname
+          secretProviderClass: azure-kvname
 ```
 
 執行下列命令，以部署您的 Pod：
@@ -343,4 +343,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 若要協助確保金鑰保存庫可以復原，請參閱：
 > [!div class="nextstepaction"]
-> [開啟虛刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [開啟虛刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157969"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自訂 Azure IoT Central UI
@@ -49,7 +49,7 @@ ms.locfileid: "80157969"
 
 ### <a name="browser-colors"></a>瀏覽器色彩
 
-您可以變更頁首的色彩，以及用於 accenting 按鈕和其他反白顯示的色彩。 使用格式`##ff6347`的六個字元十六進位色彩值。 如需**十六進位值**色彩標記法的詳細資訊，請參閱[HTML 色彩](https://www.w3schools.com/html/html_colors.asp)。
+您可以變更頁首的色彩，以及用於 accenting 按鈕和其他反白顯示的色彩。 使用格式的六個字元十六進位色彩值 `##ff6347` 。 如需**十六進位值**色彩標記法的詳細資訊，請參閱[HTML 色彩](https://www.w3schools.com/html/html_colors.asp)。
 
 > [!NOTE]
 > 您一律可以還原為 [**自訂您的應用程式**] 頁面上的預設選項。

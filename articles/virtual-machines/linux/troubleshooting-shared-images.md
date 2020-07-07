@@ -1,5 +1,5 @@
 ---
-title: 針對 Azure 中的共用映射問題進行疑難排解
+title: 針對 Azure 中的共用映像問題進行疑難排解
 description: 了解如何針對共用映像資源庫的問題進行疑難排解。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -10,10 +10,10 @@ ms.date: 05/04/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 2c9776d41584900598133ef6d361b96f0b892094
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790944"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>針對共用映像資源庫進行疑難排解

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783743"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常見問題和解決方案
@@ -75,7 +75,7 @@ IoT Edge 代理程式沒有存取模組映射的許可權。
 
 **選項1：在容器引擎設定中設定 DNS 伺服器**
 
-在 [容器引擎設定] 中，為您的環境指定 DNS 伺服器，這會套用至引擎啟動的所有容器模組。 建立名為`daemon.json`的檔案，並指定要使用的 DNS 伺服器。 例如：
+在 [容器引擎設定] 中，為您的環境指定 DNS 伺服器，這會套用至引擎啟動的所有容器模組。 建立名為的檔案， `daemon.json` 並指定要使用的 DNS 伺服器。 例如：
 
 ```json
 {
@@ -85,14 +85,14 @@ IoT Edge 代理程式沒有存取模組映射的許可權。
 
 上述範例會將 DNS 伺服器設定為可公開存取的 DNS 服務。 如果 edge 裝置無法從其環境存取此 IP，請將它取代為可存取的 DNS 伺服器位址。
 
-放`daemon.json`在您平臺的正確位置：
+放 `daemon.json` 在您平臺的正確位置：
 
 | 平台 | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | 具有 Windows 容器的 windows 主機 | `C:\ProgramData\iotedge-moby\config` |
 
-如果位置已經包含`daemon.json`檔案，請在其中新增**dns**金鑰並儲存檔案。
+如果位置已經包含檔案 `daemon.json` ，請在其中新增**dns**金鑰並儲存檔案。
 
 重新開機容器引擎，更新才會生效。
 
@@ -149,7 +149,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 如果 IoT Edge 裝置做為閘道裝置運作，則您需要尋找並停止使用埠443、5671或8883的進程。 埠443的錯誤通常表示另一個進程是 web 伺服器。
 
-如果您不需要使用 IoT Edge 裝置作為閘道，則可以從 edgeHub 的模組建立選項中移除埠系結。 您可以在 Azure 入口網站中或直接在 deployment. json 檔案中變更 [建立] 選項。
+如果您不需要使用 IoT Edge 裝置作為閘道，則可以從 edgeHub 的模組建立選項中移除埠系結。 您可以在 [Azure 入口網站中，或直接在檔案 deployment.js中變更 [建立] 選項。
 
 在 Azure 入口網站中：
 
@@ -165,11 +165,11 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 6. 儲存您的變更並建立部署。
 
-在 deployment. json 檔案中：
+在 [deployment.js檔案：
 
-1. 開啟您套用到 IoT Edge 裝置的部署 json 檔案。
+1. 開啟您已套用至 IoT Edge 裝置的 deployment.js檔案。
 
-2. 在 [ `edgeHub` edgeAgent 所需屬性] 區段中尋找設定：
+2. 在 `edgeHub` [edgeAgent 所需屬性] 區段中尋找設定：
 
    ```json
    "edgeHub": {
@@ -183,7 +183,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
    }
    ```
 
-3. 移除`createOptions`行，並在`image`行尾的後面加上尾端逗號：
+3. 移除 `createOptions` 行，並在行尾的後面加上尾端逗號 `image` ：
 
    ```json
    "edgeHub": {
@@ -222,7 +222,7 @@ IoT Edge 執行階段只能支援少於 64 個字元的主機名稱。 實體機
    ![設定虛擬機器的 DNS 名稱](./media/troubleshoot/configure-dns.png)
 
 3. 提供 **DNS 名稱標籤**的值，並選取 [儲存]****。
-4. 複製新的 DNS 名稱，其格式** \<應為\>DNSnamelabel。\<vmlocation\>. cloudapp.azure.com**。
+4. 複製新的 DNS 名稱，其格式應為.。 ** \<DNSnamelabel\> \<vmlocation\>cloudapp.azure.com**。
 5. 在虛擬機器中，使用下列命令以您的 DNS 名稱設定 IoT Edge 執行階段：
 
    * 在 Linux 上：
@@ -241,7 +241,7 @@ IoT Edge 執行階段只能支援少於 64 個字元的主機名稱。 實體機
 
 **看到的行為：**
 
-在 Windows 上使用`Get-WinEvent`時，您會取得 EventLogException。
+在 Windows 上使用時，您會取得 EventLogException `Get-WinEvent` 。
 
 **根本原因：**
 
@@ -276,7 +276,7 @@ IoT Edge 中樞（屬於 IoT Edge 執行時間的一部分）預設會針對效�
 
 在 Azure 入口網站中：
 
-在您的 IoT 中樞中，選取您的 IoT Edge 裝置，然後從 [裝置詳細資料] 頁面選取 [**設定模組** > **執行時間設定**]。 針對稱為*OptimizeForPerformance*的 IoT Edge 中樞模組建立環境變數，並將其設定為*false*。
+在您的 IoT 中樞中，選取您的 IoT Edge 裝置，然後從 [裝置詳細資料] 頁面選取 [**設定模組**  >  **執行時間設定**]。 針對稱為*OptimizeForPerformance*的 IoT Edge 中樞模組建立環境變數，並將其設定為*false*。
 
 ![將 OptimizeForPerformance 設定為 false](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -300,7 +300,7 @@ IoT Edge 中樞（屬於 IoT Edge 執行時間的一部分）預設會針對效�
 
 **看到的行為：**
 
-自訂 IoT Edge 模組無法傳送訊息至 IoT Edge 中樞，發生 404 `Module not found`錯誤。 IoT Edge 精靈會將下列訊息輸出至記錄：
+自訂 IoT Edge 模組無法傳送訊息至 IoT Edge 中樞，發生 404 `Module not found` 錯誤。 IoT Edge 精靈會將下列訊息輸出至記錄：
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -314,7 +314,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 從版本1.0.7，所有模組進程都有權連接。 如需詳細資訊，請參閱[1.0.7 release 變更記錄](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)。
 
-如果無法升級至1.0.7，請完成下列步驟。 請確定自訂 IoT Edge 模組一律使用相同的處理序識別碼將訊息傳送給 edgeHub。 例如，請確定您的`ENTRYPOINT` Docker 檔案`CMD`中的不是命令。 此`CMD`命令會導致模組的一個處理序識別碼，以及一個執行主要程式的 bash 命令的另一個處理序識別碼， `ENTRYPOINT`但會導致單一處理序識別碼。
+如果無法升級至1.0.7，請完成下列步驟。 請確定自訂 IoT Edge 模組一律使用相同的處理序識別碼將訊息傳送給 edgeHub。 例如，請確定您的 `ENTRYPOINT` Docker 檔案中的不是 `CMD` 命令。 此 `CMD` 命令會導致模組的一個處理序識別碼，以及一個執行主要程式的 bash 命令的另一個處理序識別碼，但會 `ENTRYPOINT` 導致單一處理序識別碼。
 
 ## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge 模組部署成功，然後從裝置中消失
 
@@ -330,7 +330,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 每個裝置只會使用一種類型的部署機制，也就是自動部署或個別裝置部署。 如果您有多個以裝置為目標的自動部署，您可以變更 [優先順序] 或 [目標] 描述，以確保正確的部署適用于指定的裝置。 您也可以更新裝置對應項，使其不再符合自動部署的目標描述。
 
-如需詳細資訊，請參閱[瞭解單一裝置或大規模的 IoT Edge 自動部署](module-deployment-monitoring.md)。
+如需詳細資訊，請參閱[了解單一裝置或大規模的 IoT Edge 自動部署](module-deployment-monitoring.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

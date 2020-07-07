@@ -10,10 +10,10 @@ ms.date: 05/04/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 62f136eb1c2684bfd307a05ccbb4836739da6f3a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82789448"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
@@ -27,7 +27,7 @@ ms.locfileid: "82789448"
 
 ## <a name="create-a-vm-using-azure-cli"></a>使用 Azure CLI 建立 VM
 
-使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要`az account show --query "tenantId"` ，您可以使用來取得租使用者識別碼。
+使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要，您可以使用 `az account show --query "tenantId"` 來取得租使用者識別碼。
 
 ```azurecli-interactive
 az account clear

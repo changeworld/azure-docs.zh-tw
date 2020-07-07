@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394250"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自訂 Azure Active Directory 自助式密碼重設的使用者體驗
@@ -56,8 +56,8 @@ ms.locfileid: "81394250"
 
 如果您的組織不想要通知系統管理員有關密碼重設要求，可以使用下列設定選項：
 
-* 自訂技術服務人員連結，以提供可讓使用者取得協助的 Web URL 或 mailto︰位址。 此選項位於 [**密碼重設** > **Customization** > 自**定義]、[技術支援電子郵件或 URL**] 下方。
-* 為所有使用者啟用自助式密碼重設。 此選項位於 [**密碼重設** > ]**屬性**底下。 如果您不想讓使用者重設其自己的密碼，可以將存取範圍設定為空群組。 *我們不建議您選擇此選項。*
+* 自訂技術服務人員連結，以提供可讓使用者取得協助的 Web URL 或 mailto︰位址。 此選項位於 [**密碼重設**  >  **自**  >  **定義]、[技術支援電子郵件或 URL**] 下方。
+* 為所有使用者啟用自助式密碼重設。 此選項位於 [**密碼重設**]  >  **屬性**底下。 如果您不想讓使用者重設其自己的密碼，可以將存取範圍設定為空群組。 *我們不建議您選擇此選項。*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>自訂登入頁面和存取面板
 
@@ -67,12 +67,12 @@ ms.locfileid: "81394250"
 
 * 在使用者輸入其使用者名稱之後
 * 如果使用者存取自訂的 URL，則會透過下列方式：
-   * 將`whr`參數傳遞至密碼重設頁面，例如`https://login.microsoftonline.com/?whr=contoso.com`
-   * 將`username`參數傳遞至密碼重設頁面，例如`https://login.microsoftonline.com/?username=admin@contoso.com`
+   * 將參數傳遞 `whr` 至密碼重設頁面，例如`https://login.microsoftonline.com/?whr=contoso.com`
+   * 將參數傳遞 `username` 至密碼重設頁面，例如`https://login.microsoftonline.com/?username=admin@contoso.com`
 
 ### <a name="directory-name"></a>目錄名稱
 
-若要讓使用者更容易瞭解，您可以在入口網站和自動化通訊中變更組織名稱。 若要變更 Azure 入口網站中的 [目錄名稱] 屬性，請流覽至**Azure Active Directory** > **屬性**]。 這個易記的組織名稱選項最能在自動化的電子郵件中看到，如下列範例所示：
+若要讓使用者更容易瞭解，您可以在入口網站和自動化通訊中變更組織名稱。 若要變更 Azure 入口網站中的 [目錄名稱] 屬性，請流覽至**Azure Active Directory**  >  **屬性**]。 這個易記的組織名稱選項最能在自動化的電子郵件中看到，如下列範例所示：
 
 * 電子郵件中的易記名稱，例如「*Microsoft 代表 CONTOSO 示範*」
 * 電子郵件中的主旨行，例如「*CONTOSO 示範帳戶電子郵件驗證碼*」
@@ -81,7 +81,7 @@ ms.locfileid: "81394250"
 
 如果您針對使用者登入事件使用 Active Directory 同盟服務（AD FS），您可以使用[新增登入頁面描述](/windows-server/identity/ad-fs/operations/add-sign-in-page-description)文章中的指導方針，將連結新增至登入頁面。
 
-為使用者提供頁面的連結，讓他們輸入 SSPR 工作流程，例如*https://passwordreset.microsoftonline.com*。 若要新增 AD FS 登入頁面的連結，請在您的 AD FS 伺服器上使用下列命令：
+為使用者提供頁面的連結，讓他們輸入 SSPR 工作流程，例如 *https://passwordreset.microsoftonline.com* 。 若要新增 AD FS 登入頁面的連結，請在您的 AD FS 伺服器上使用下列命令：
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"

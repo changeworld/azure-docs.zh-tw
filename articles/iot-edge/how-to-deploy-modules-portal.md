@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133928"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>從 Azure 入口網站部署 Azure IoT Edge 模組
@@ -22,9 +22,9 @@ ms.locfileid: "82133928"
 
 本文說明 Azure 入口網站如何引導您建立部署資訊清單，並且將部署推送到 IoT Edge 裝置。 如需根據其共用標記來建立以多個裝置為目標的部署的詳細資訊，請參閱[大規模部署和監視 IoT Edge 模組](how-to-deploy-at-scale.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶中的[IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
+* Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安裝 IoT Edge 執行階段的 [IoT Edge 裝置](how-to-register-device.md#register-in-the-azure-portal)。
 
 ## <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
@@ -43,7 +43,7 @@ Azure 入口網站有一個精靈，可以引導您建立部署資訊清單，�
 1. 在頁面的 [ **IoT Edge 模組**] 區段中，選取 [**新增**]。
 1. 從下拉式功能表中查看模組的類型：
 
-   * **IoT Edge 模組**-您提供模組名稱和容器映射 URI。 例如，範例 SimulatedTemperatureSensor 模組的映射 URI 是`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 如果模組映射儲存在私人容器登錄中，請在此頁面上新增認證以存取該映射。
+   * **IoT Edge 模組**-您提供模組名稱和容器映射 URI。 例如，範例 SimulatedTemperatureSensor 模組的映射 URI 是 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` 。 如果模組映射儲存在私人容器登錄中，請在此頁面上新增認證以存取該映射。
    * **Marketplace 模組**-裝載于 Azure Marketplace 中的模組。 某些 marketplace 模組需要額外的設定，因此請參閱[Azure Marketplace IoT Edge 模組](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)] 清單中的模組詳細資料。
    * **Azure 串流分析模組**-從 azure 串流分析工作負載產生的模組。
 
@@ -53,7 +53,7 @@ Azure 入口網站有一個精靈，可以引導您建立部署資訊清單，�
 
 ### <a name="specify-routes"></a>指定路由
 
-在 [路由]**** 索引標籤上，請定義要用來在模組與 IoT 中樞之間傳遞訊息的方式。 訊息會使用名稱/值組來構成。 根據預設，路由稱為**route** ，並定義為**從/messages/\*到 $upstream**，這表示任何模組的任何訊息輸出都會傳送到您的 IoT 中樞。  
+在 [路由] 索引標籤上，請定義要用來在模組與 IoT 中樞之間傳遞訊息的方式。 訊息會使用名稱/值組來構成。 根據預設，路由稱為**route** ，並定義為**從/messages/ \* 到 $upstream**，這表示任何模組的任何訊息輸出都會傳送到您的 IoT 中樞。  
 
 使用宣告[路由](module-composition.md#declare-routes)中的資訊來新增或更新路由，然後選取 **[下一步：檢查 + 建立**] 繼續進行嚮導的下一個步驟。
 

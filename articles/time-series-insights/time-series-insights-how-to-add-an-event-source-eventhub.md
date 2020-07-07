@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407465"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>新增事件中樞事件來源到您的時間序列深入解析環境
@@ -25,7 +25,7 @@ ms.locfileid: "81407465"
 > [!NOTE]
 > 本文中所述的步驟適用于時間序列深入解析 GA 和時間序列深入解析預覽環境。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 建立時間序列深入解析環境，如[建立 Azure 時間序列深入解析環境](./time-series-insights-update-create-environment.md)中所述。
 - 建立事件中樞。 閱讀[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "81407465"
 
 1. 在 [取用者群組]**** 頁面上，在 [名稱]**** 中輸入新的唯一值。  在時間序列深入解析環境中建立新的事件來源時，使用此相同名稱。
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 ## <a name="add-a-new-event-source"></a>新增事件來源
 
@@ -62,7 +62,7 @@ ms.locfileid: "81407465"
 
    [![在 [事件來源] 下，選取 [加入] 按鈕](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. 輸入此時間序列深入解析環境唯一的 [**事件來源名稱**] 值，例如`Contoso-TSI-GA-Event-Hub-ES`。
+1. 輸入此時間序列深入解析環境唯一的 [**事件來源名稱**] 值，例如 `Contoso-TSI-GA-Event-Hub-ES` 。
 
 1. 在 [來源]**** 中，選取 [事件中樞]****。
 
@@ -107,7 +107,7 @@ ms.locfileid: "81407465"
 
 1. 新增您新增至事件中樞的專用時間序列深入解析取用者群組名稱。
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
    建立事件來源之後，時間序列深入解析會自動開始將資料串流處理至您的環境。
 

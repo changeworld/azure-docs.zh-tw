@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393167"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
@@ -30,7 +30,7 @@ ms.locfileid: "81393167"
 
    ![搜尋](./media/subscribe-through-portal/search.png)
 
-1. 選取 [+ 事件訂用帳戶]****。
+1. 選取 [+ 事件訂用帳戶]。
 
    ![新增訂用帳戶](./media/subscribe-through-portal/add-subscription.png)
 
@@ -67,5 +67,5 @@ ms.locfileid: "81393167"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
+* 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

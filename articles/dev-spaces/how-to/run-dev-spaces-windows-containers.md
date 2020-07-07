@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 瞭解如何在具有 Windows 容器的現有叢集上執行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，Windows 容器
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240493"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 與 Windows 容器互動
@@ -54,14 +54,14 @@ kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 
 在 AKS 叢集上執行您的 Windows 服務，並確認它處於*執行中*狀態。 本文使用[範例應用程式][sample-application]來示範在您的叢集上執行的 Windows 和 Linux 服務。
 
-從 GitHub 複製範例應用程式，並流覽至`dev-spaces/samples/existingWindowsBackend/mywebapi-windows`目錄：
+從 GitHub 複製範例應用程式，並流覽至 `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` 目錄：
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-範例應用程式會使用[Helm 3][helm-installed]來執行叢集上的 Windows 服務。 流覽至`charts`目錄，並使用 Helm 執行 Windows 服務：
+範例應用程式會使用[Helm 3][helm-installed]來執行叢集上的 Windows 服務。 流覽至 `charts` 目錄，並使用 Helm 執行 Windows 服務：
 
 ```console
 cd charts/
@@ -71,7 +71,7 @@ helm install windows-service . --namespace dev
 
 上述命令會使用 Helm 在*dev*命名空間中執行您的 Windows 服務。 如果您沒有名為*dev*的命名空間，則會建立它。
 
-使用`kubectl get pods`命令來確認您的 Windows 服務正在叢集中執行。 
+使用命令來確認您的 Windows 服務正在叢集中執行 `kubectl get pods` 。 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -91,9 +91,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>更新適用于 Dev Spaces 的 Windows 服務
 
-當您使用已在執行的容器在現有命名空間上啟用 Dev Spaces 時，根據預設，Dev Spaces 會嘗試並檢測在該命名空間中執行的任何新容器。 開發人員空間也會嘗試並檢測為已在命名空間中執行的服務所建立的任何新容器。 若要避免 Dev Spaces 檢測在您的命名空間中執行的容器，請將*無 proxy*標`deployment.yaml`頭新增至。
+當您使用已在執行的容器在現有命名空間上啟用 Dev Spaces 時，根據預設，Dev Spaces 會嘗試並檢測在該命名空間中執行的任何新容器。 開發人員空間也會嘗試並檢測為已在命名空間中執行的服務所建立的任何新容器。 若要避免 Dev Spaces 檢測在您的命名空間中執行的容器，請將*無 proxy*標頭新增至 `deployment.yaml` 。
 
-將`azds.io/no-proxy: "true"`新增至`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml`檔案：
+將新增 `azds.io/no-proxy: "true"` 至檔案 `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` ：
 
 ```yaml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-使用`helm list`列出 Windows 服務的部署：
+使用 `helm list` 列出 Windows 服務的部署：
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-在上述範例中，您的部署名稱是*windows 服務*。 使用`helm upgrade`新的設定更新您的 Windows 服務：
+在上述範例中，您的部署名稱是*windows 服務*。 使用新的設定更新您的 Windows 服務 `helm upgrade` ：
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-由於您已更新`deployment.yaml`您的，因此 Dev Spaces 不會嘗試並檢測您的服務。
+由於您已更新您 `deployment.yaml` 的，因此 Dev Spaces 不會嘗試並檢測您的服務。
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 執行您的 Linux 應用程式
 
-流覽至`webfrontend`目錄，並使用`azds prep`和`azds up`命令在叢集上執行您的 Linux 應用程式。
+流覽至 `webfrontend` 目錄，並使用 `azds prep` 和命令在叢集 `azds up` 上執行您的 Linux 應用程式。
 
 ```console
 cd ../../webfrontend-linux/
@@ -161,7 +161,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-您可以藉由開啟公用 URL （顯示在 azds up 命令的輸出中），查看執行中的服務。 在此範例中，公用 URL 為 `http://dev.webfrontend.abcdef0123.eus.azds.io/`  。 在瀏覽器中流覽至服務，然後按一下頂端的 [*關於*]。 確認您看到來自*mywebapi*服務的訊息，其中包含容器所使用的 Windows 版本。
+您可以藉由開啟公用 URL （顯示在 azds up 命令的輸出中），查看執行中的服務。 在此範例中，公用 URL 為 `http://dev.webfrontend.abcdef0123.eus.azds.io/`。 在瀏覽器中流覽至服務，然後按一下頂端的 [*關於*]。 確認您看到來自*mywebapi*服務的訊息，其中包含容器所使用的 Windows 版本。
 
 ![顯示來自 mywebapi 之 Windows 版本的範例應用程式](../media/run-dev-spaces-windows-containers/sample-app.png)
 

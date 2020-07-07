@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408349"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全性控制：記錄和監視
@@ -36,25 +36,25 @@ ms.locfileid: "81408349"
 |--|--|--|
 | 2.2 | 6.5、6。6 | 客戶 |
 
-透過 Azure 監視器內嵌記錄，以匯總端點裝置、網路資源和其他安全性系統所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並將 Azure 儲存體帳戶用於長期/封存儲存體。
+透過 Azure 監視器內嵌記錄，以匯總端點裝置、網路資源和其他安全性系統所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用 Azure 儲存體帳戶進行長期/封存儲存。
 
-或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商 SIEM。 
+或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。 
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
 - [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
 
 - [如何使用 Azure 監視器收集 Azure 虛擬機器內部主機記錄檔](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
 
-- [如何開始使用 Azure 監視器和協力廠商 SIEM 整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+- [如何開始使用 Azure 監視器和第三方 SIEM 整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-## <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的審核記錄
+## <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 2.3 | 6.2、6。3 | 客戶 |
 
-啟用 Azure 資源的診斷設定，以存取 audit、security 和診斷記錄。 活動記錄（可自動取得）包含事件來源、日期、使用者、時間戳記、來源位址、目的地位址，以及其他實用的元素。
+啟用 Azure 資源的診斷設定，以存取 audit、security 和診斷記錄。 活動記錄 (自動提供) 包含事件來源、日期、使用者、時間戳記、來源位址、目的地位址，以及其他有用的項目。
 
 - [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
 
@@ -72,19 +72,19 @@ ms.locfileid: "81408349"
 
 - [瞭解 Azure 資訊安全中心資料收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)
 
-## <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留
+## <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 2.5 | 6.4 | 客戶 |
 
-在 Azure 監視器中，根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 針對長期/封存儲存體使用 Azure 儲存體帳戶。
+在 Azure 監視器中，根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 使用 Azure 儲存體帳戶進行長期/封存儲存。
 
 - [變更 Log Analytics 中的資料保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 - [如何設定 Azure 儲存體客戶紀錄的保留原則](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
-## <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
+## <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -92,11 +92,11 @@ ms.locfileid: "81408349"
 
 分析和監視記錄中的異常行為，並定期查看結果。 使用 Azure 監視器的 Log Analytics 工作區來審查記錄，並對記錄資料執行查詢。
 
-或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商 SIEM。 
+或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。 
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-- [瞭解 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [了解 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
 
 - [如何在 Azure 監視器中執行自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
 
@@ -110,13 +110,13 @@ ms.locfileid: "81408349"
 
 或者，您可以啟用和麵板上的資料來 Azure Sentinel。
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
 - [如何管理 Azure 資訊安全中心中的警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
 
 - [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-## <a name="28-centralize-anti-malware-logging"></a>2.8：集中反惡意程式碼記錄
+## <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -138,7 +138,7 @@ ms.locfileid: "81408349"
 
 根據您的組織需求，從 Azure Marketplace 針對 DNS 記錄解決方案來執行協力廠商解決方案。  
 
-## <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列審核記錄
+## <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|

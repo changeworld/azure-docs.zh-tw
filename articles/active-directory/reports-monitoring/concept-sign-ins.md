@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246512"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
@@ -30,14 +30,14 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
-    - **Audit logs** - [audit logs](concept-audit-logs.md)提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
+    - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
 - **安全性** 
     - 有**風險**的登入-有風險的登[入](concept-risky-sign-ins.md)是指不是使用者帳戶合法擁有者的人登入嘗試的指標。
     - **標示有風險的使用者**-有[風險的使用者](concept-user-at-risk.md)是可能遭盜用之使用者帳戶的指標。
 
 本文提供登入報告的總覽。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
  
 **狀態**-您關心的登入狀態：
 
-- 成功
+- Success
 
 - 失敗
 
@@ -132,7 +132,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 州/省
 
-- 國家/區域
+- 國家/地區
 
 
 **資源**-用來登入的服務名稱。
@@ -146,14 +146,14 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 ![用戶端應用程式篩選器](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|新式驗證|描述|
+|名稱|新式驗證|描述|
 |---|:-:|---|
 |已驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
 |發現| |供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。|
 |Exchange ActiveSync| |此篩選會顯示已嘗試 EAS 通訊協定的所有登入嘗試。|
 |瀏覽器|![勾選](./media/concept-sign-ins/check.png)|使用網頁瀏覽器顯示使用者的所有登入嘗試|
 |Exchange ActiveSync| | 顯示使用者在使用 Exchange ActiceSync 連線至 Exchange Online 時，使用用戶端應用程式進行的所有登入嘗試|
-|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服務| |Outlook、Outlook for Mac 和協力廠商應用程式所使用的程式設計介面。|
 |IMAP4| |使用 IMAP 抓取電子郵件的舊版郵件用戶端。|
 |透過 HTTP 的 MAPI| |由 Outlook 2010 和更新版本使用。|
@@ -231,14 +231,14 @@ Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 按一下項目，即可取得有關登入作業的更多詳細資料：
 
 - 使用者識別碼
-- User
+- 使用者
 - 使用者名稱
 - 應用程式識別碼
 - Application
-- Client
+- 用戶端
 - 位置
 - IP 位址
-- Date
+- 日期
 - 需要 MFA
 - 登入狀態
 

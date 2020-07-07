@@ -11,15 +11,15 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128866"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>依支援的帳戶類型（signInAudience）的驗證差異
 
-向開發人員的 Microsoft 身分識別平臺註冊應用程式時，系統會要求您選取應用程式支援的帳戶類型。 在應用程式物件和資訊清單中，這個`signInAudience`屬性是。
+向開發人員的 Microsoft 身分識別平臺註冊應用程式時，系統會要求您選取應用程式支援的帳戶類型。 在應用程式物件和資訊清單中，這個屬性是 `signInAudience` 。
 
 選項包括：
 
@@ -27,7 +27,7 @@ ms.locfileid: "80128866"
 - *AzureADMultipleOrgs*：任何組織目錄（多租使用者）中的帳戶
 - *AzureADandPersonalMicrosoftAccount*：任何組織目錄（多租使用者）和個人 Microsoft 帳戶（例如 Skype、Xbox 和 Outlook.com）中的帳戶
 
-針對已註冊的應用程式，您可以在應用程式的 [**驗證**] 區段中找到支援的帳戶類型的值。 您也可以在**資訊清單**中`signInAudience`的屬性下找到它。
+針對已註冊的應用程式，您可以在應用程式的 [**驗證**] 區段中找到支援的帳戶類型的值。 您也可以在 `signInAudience` **資訊清單**中的屬性下找到它。
 
 您為此屬性選取的值會影響其他應用程式物件屬性。 因此，如果您變更此屬性，則可能需要先變更其他屬性。
 
@@ -35,14 +35,14 @@ ms.locfileid: "80128866"
 
 | 屬性 | `AzureADMyOrg` | `AzureADMultipleOrgs` | `AzureADandPersonalMicrosoftAccount` 和 `PersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
-| 應用程式識別碼 URI`identifierURIs`（）  | 在租使用者中必須是唯一的 <br><br> 支援 urn://配置 <br><br> 不支援萬用字元 <br><br> 支援查詢字串和片段 <br><br> 長度上限為255個字元 <br><br> IdentifierURIs 數目沒有限制 *  | 必須是全域唯一的 <br><br> 支援 urn://配置 <br><br> 不支援萬用字元 <br><br> 支援查詢字串和片段 <br><br> 長度上限為255個字元 <br><br> IdentifierURIs 數目沒有限制 * | 必須是全域唯一的 <br><br> 不支援 urn://配置 <br><br> 不支援萬用字元、片段和查詢字串 <br><br> 長度上限為120個字元 <br><br> 最大值為 50 identifierURIs |
-| 憑證（`keyCredentials`） | 對稱簽署金鑰 | 對稱簽署金鑰 | 加密和非對稱簽署金鑰 | 
-| 用戶端密碼`passwordCredentials`（） | 無限制 * | 無限制 * | 如果已啟用 liveSDK：最多2個用戶端密碼 | 
-| 重新導向 Uri`replyURLs`（） | 如需詳細資訊，請參閱重新[導向 URI/回復 URL 限制和限制](reply-url.md)。 | | | 
-| API 許可權（`requiredResourceAccess`） | 無限制 * | 無限制 * | 每個允許的資源最多30個許可權（例如 Microsoft Graph） | 
-| 此 API 定義的範圍（`oauth2Permissions`） | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * |  最大範圍名稱長度為40個字元 <br><br> 已定義最多100個範圍 | 
-| 授權的用戶端`preautorizedApplications`應用程式（） | 無限制 * | 無限制 * | 總計上限為500 <br><br> 最多已定義100個用戶端應用程式 <br><br> 每個用戶端最多定義30個範圍 | 
-| appRoles | 支援 <br> 無限制 * | 支援 <br> 無限制 * | 不受支援 | 
+| 應用程式識別碼 URI （ `identifierURIs` ）  | 在租使用者中必須是唯一的 <br><br> 支援 urn://配置 <br><br> 不支援萬用字元 <br><br> 支援查詢字串和片段 <br><br> 長度上限為255個字元 <br><br> IdentifierURIs 數目沒有限制 *  | 必須是全域唯一的 <br><br> 支援 urn://配置 <br><br> 不支援萬用字元 <br><br> 支援查詢字串和片段 <br><br> 長度上限為255個字元 <br><br> IdentifierURIs 數目沒有限制 * | 必須是全域唯一的 <br><br> 不支援 urn://配置 <br><br> 不支援萬用字元、片段和查詢字串 <br><br> 長度上限為120個字元 <br><br> 最大值為 50 identifierURIs |
+| 憑證（ `keyCredentials` ） | 對稱簽署金鑰 | 對稱簽署金鑰 | 加密和非對稱簽署金鑰 | 
+| 用戶端密碼（ `passwordCredentials` ） | 無限制 * | 無限制 * | 如果已啟用 liveSDK：最多2個用戶端密碼 | 
+| 重新導向 Uri （ `replyURLs` ） | 如需詳細資訊，請參閱重新[導向 URI/回復 URL 限制和限制](reply-url.md)。 | | | 
+| API 許可權（ `requiredResourceAccess` ） | 無限制 * | 無限制 * | 每個允許的資源最多30個許可權（例如 Microsoft Graph） | 
+| 此 API 定義的範圍（ `oauth2Permissions` ） | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * |  最大範圍名稱長度為40個字元 <br><br> 已定義最多100個範圍 | 
+| 授權的用戶端應用程式（ `preautorizedApplications` ） | 無限制 * | 無限制 * | 總計上限為500 <br><br> 最多已定義100個用戶端應用程式 <br><br> 每個用戶端最多定義30個範圍 | 
+| appRoles | 支援 <br> 無限制 * | 支援 <br> 無限制 * | 不支援 | 
 | 登出 URL | http://localhost允許 <br><br> 長度上限為255個字元 | http://localhost允許 <br><br> 長度上限為255個字元 | <br><br> https://localhost允許， http://localhost MSA 失敗 <br><br> 長度上限為255個字元 <br><br> 不允許 HTTP 配置 <br><br> 不支援萬用字元 | 
 
 * 應用程式物件的所有集合屬性有大約1000個專案的全域限制
@@ -50,4 +50,4 @@ ms.locfileid: "80128866"
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解[應用程式註冊](app-objects-and-service-principals.md)
-- 瞭解[應用程式資訊清單](reference-app-manifest.md)
+- 了解[應用程式資訊清單](reference-app-manifest.md)

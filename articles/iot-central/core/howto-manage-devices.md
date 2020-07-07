@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157937"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中管理裝置
@@ -51,7 +51,7 @@ ms.locfileid: "80157937"
 
 1. 將**模擬****切換為開啟**或**關閉**。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
 
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 
 1. 此裝置現在會出現在此範本的裝置清單中。 選取裝置以查看包含裝置所有視圖的 [裝置詳細資料] 頁面。
 
@@ -71,7 +71,7 @@ ms.locfileid: "80157937"
     > [!NOTE]
     > 如果您還沒有裝置範本，您可以在 [**所有裝置**] 底下匯入裝置，並在沒有範本的情況下進行註冊。 匯入裝置之後，您就可以將它們遷移至範本。
 
-1. 選取 [匯入]  。
+1. 選取 [匯入]。
 
     ![匯入動作](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "80157937"
 
 1. 將屬性修改為您所需的值。 您可以一次修改多個屬性，並同時更新所有內容。
 
-1. 選擇 [儲存]  。 如果您已儲存可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態會回到 [已**同步**處理]。 如果您已儲存雲端屬性，則會更新此值。
+1. 選擇 [儲存]。 如果您已儲存可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態會回到 [已**同步**處理]。 如果您已儲存雲端屬性，則會更新此值。
 
 
 ## <a name="next-steps"></a>後續步驟
