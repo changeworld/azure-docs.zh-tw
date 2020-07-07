@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8e37d443d75dccae8704bc1ff7856e1d24131766
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652707"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>使用 MSAL.NET 的 Xamarin Android 系統瀏覽器考慮
@@ -45,7 +45,7 @@ ms.locfileid: "82652707"
 | 裝置 | 瀏覽器     |  結果  | 
 | ------------- |:-------------:|:-----:|
 | Huawei/一 + | Chrome\* | 通過|
-| Huawei/一 + | 下邊\* | 通過|
+| Huawei/一 + | Edge\* | 通過|
 | Huawei/一 + | Firefox\* | 通過|
 | Huawei/一 + | 美麗\* | 通過|
 | 一個 + | Ecosia\* | 通過|
@@ -64,10 +64,10 @@ ms.locfileid: "82652707"
 
 ## <a name="known-issues"></a>已知問題
 
-如果使用者未在裝置上啟用瀏覽器，MSAL.NET 將會擲回`AndroidActivityNotFound`例外狀況。  
+如果使用者未在裝置上啟用瀏覽器，MSAL.NET 將會擲回 `AndroidActivityNotFound` 例外狀況。  
   - **緩和**：要求使用者在其裝置上啟用瀏覽器。 建議支援自訂索引標籤的瀏覽器。
 
-如果驗證失敗（例如，如果使用 DuckDuckGo 啟動驗證），MSAL.NET 將會傳回`AuthenticationCanceled MsalClientException`。 
+如果驗證失敗（例如，如果使用 DuckDuckGo 啟動驗證），MSAL.NET 將會傳回 `AuthenticationCanceled MsalClientException` 。 
   - **根本問題**：不在裝置上啟用支援自訂索引標籤的瀏覽器。 以瀏覽器啟動的驗證無法完成驗證。 
   - **緩和**：要求使用者在其裝置上啟用瀏覽器。 建議支援自訂索引標籤的瀏覽器。
 

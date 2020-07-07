@@ -10,10 +10,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100629"
 ---
 # <a name="create-a-snapshot"></a>建立快照集
@@ -33,7 +33,7 @@ ms.locfileid: "82100629"
 6. 選取 Azure 資料中心的 [位置]****。  
 7. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
 8. 選取用來儲存快照集的 [帳戶類型]****。 除非需要將快照集存放在高效能磁碟上，否則選取 [Standard_HDD]****。
-9. 選取 [建立]  。
+9. 選取 [建立]。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 

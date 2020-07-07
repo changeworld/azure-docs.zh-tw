@@ -6,14 +6,14 @@ ms.author: jushiman
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 03/27/2018
+ms.date: 06/25/2020
 ms.custom: avverma
-ms.openlocfilehash: 759ebb58afcceade8d52305c6a6a41a782ed4df6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 1db108adfe1a3af562a046160856a38daf990885
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702006"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374894"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 自動調整虛擬機器擴展集
 此指令碼會建立執行 Windows Server 2016 的虛擬機器擴展集，並在 CPU 負載變更時，使用主機型計量來進行自動調整。

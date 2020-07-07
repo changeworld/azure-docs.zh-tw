@@ -1,20 +1,16 @@
 ---
 title: 使用 Azure 入口網站和主題/訂用帳戶來更新庫存
 description: 在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 .NET 新增和使用篩選規則
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 01/21/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 321417813346e7d5c92876c22516c627aff5ab12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300744"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341700"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教學課程：使用 Azure 入口網站和主題/訂用帳戶來更新庫存
 

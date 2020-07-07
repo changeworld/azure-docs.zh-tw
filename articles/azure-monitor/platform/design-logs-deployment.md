@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82165683"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計您的 Azure 監視器記錄部署
@@ -45,16 +45,16 @@ Log Analytics 工作區提供：
 * 非集中**式：每**個小組都有自己的工作區在自己的資源群組中建立並管理，而且每個資源會隔離記錄資料。 在此案例中，工作區可以保持安全，而且存取控制與資源存取一致，但很難以跨記錄相互關聯。 需要廣泛查看許多資源的使用者無法以有意義的方式來分析資料。
 * **混合**式：安全性審查合規性需求會進一步使這種情況變得複雜，因為許多組織會平行執行兩種部署模型。 這通常會導致複雜、昂貴且難以維護的設定，以及記錄涵蓋範圍中的間距。
 
-使用 Log Analytics 代理程式收集資料時，您必須瞭解下列各項，才能規劃代理程式部署：
+使用 Log Analytics 代理程式來收集資料時，您必須了解下列事項才能規劃代理程式的部署：
 
-* 若要從 Windows 代理程式收集資料，您可以[設定每個代理程式向一或多個工作區報告](../../azure-monitor/platform/agent-windows.md)，即使它向 System Center Operations Manager 管理群組報告也一樣。 Windows 代理程式最多可以報告四個工作區。
-* Linux 代理程式不支援多路連接，而且只能向單一工作區報告。
+* 若要從 Windows 代理程式收集資料，您可以[將每個代理程式設定為向一或多個工作區報告](../../azure-monitor/platform/agent-windows.md)，即使其同時會向 System Center Operations Manager 管理群組報告也沒關係。 Windows 代理程式最多可以向四個工作區報告。
+* Linux 代理程式不支援多重主目錄，只能向單一工作區報告。
 
 如果您使用 System Center Operations Manager 2012 R2 或更新版本：
 
-* 每個 Operations Manager 管理群組只能[連接到一個工作區](../platform/om-agents.md)。 
-* 向管理群組報告的 Linux 電腦必須設定為直接向 Log Analytics 工作區報告。 如果您的 Linux 電腦已直接回報至工作區，而您想要使用 Operations Manager 來監視它們，請遵循下列步驟向[Operations Manager 管理群組報告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。 
-* 您可以在 Windows 電腦上安裝 Log Analytics Windows 代理程式，並將它報告至與工作區整合的 Operations Manager，以及不同的工作區。
+* 每個 Operations Manager 管理群組[只能連線到一個工作區](../platform/om-agents.md)。 
+* 向管理群組報告的 Linux 電腦必須設定為直接向 Log Analytics 工作區報告。 如果您的 Linux 電腦已直接向工作區報告，而您想要使用 Operations Manager 來監視這些電腦，請遵循這些步驟來[向 Operations Manager 管理群組報告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。 
+* 您可以在 Windows 電腦上安裝 Log Analytics Windows 代理程式，並讓其同時向已與工作區整合的 Operations Manager 以及不同工作區報告。
 
 ## <a name="access-control-overview"></a>存取控制概觀
 
@@ -114,7 +114,7 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 
     這是在2019年3月之前建立之所有工作區的預設設定。
 
-* **使用資源或工作區許可權**：此控制模式允許細微的 RBAC。 使用者可以藉由指派 Azure `read`許可權，將存取權授與他們可以查看的資源相關聯的資料。 
+* **使用資源或工作區許可權**：此控制模式允許細微的 RBAC。 使用者可以藉由指派 Azure 許可權，將存取權授與他們可以查看的資源相關聯的資料 `read` 。 
 
     當使用者存取工作區內容模式中的工作區時，會套用工作區許可權。 當使用者存取資源內容模式中的工作區時，只會驗證資源許可權，而且會忽略工作區許可權。 將使用者從工作區許可權中移除，並允許辨識其資源許可權，以啟用 RBAC。
 
@@ -129,7 +129,7 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 
 Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 預設的 [攝取速率] 閾值會設定為每個工作區**6 GB/分鐘**。 這是估計值，因為根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此限制不適用於從代理程式或[資料收集器 API](data-collector-api.md)傳送的資料。
 
-如果您以較高的速率將資料傳送至單一工作區，則會卸載某些資料，並每隔6小時將事件傳送至工作區中的*作業資料表，* 而臨界值會繼續超過閾值。 如果您的內嵌磁片區持續超過速率限制，或您希望很快就會到達，您可以傳送電子郵件至LAIngestionRate@microsoft.com或開啟支援要求，以要求增加您的工作區。
+如果您以較高的速率將資料傳送至單一工作區，則會卸載某些資料，並每隔6小時將事件傳送至工作區中的*作業資料表，* 而臨界值會繼續超過閾值。 如果您的內嵌磁片區持續超過速率限制，或您希望很快就會到達，您可以傳送電子郵件至 LAIngestionRate@microsoft.com 或開啟支援要求，以要求增加您的工作區。
  
 若要在您的工作區中收到這類事件的通知，請使用下列查詢建立[記錄警示規則](alerts-log.md)，並以大於的結果數目為零的警示邏輯基底。
 

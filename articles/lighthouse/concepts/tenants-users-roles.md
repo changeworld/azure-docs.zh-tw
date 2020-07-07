@@ -4,10 +4,10 @@ description: 了解 Azure Active Directory 租用戶、使用者和角色的概�
 ms.date: 04/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144925"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租用戶、角色和使用者
@@ -43,7 +43,7 @@ Azure 委派的資源管理目前支援所有[內建角色](../../role-based-acc
 - 請確定需要[在 Azure 入口網站檢視 [我的客戶] 頁面](../how-to/view-manage-customers.md)的任何使用者都具有[讀取者](../../role-based-access-control/built-in-roles.md#reader)角色 (或包含讀取者存取權的其他內建角色)。
 
 > [!IMPORTANT]
-> 為了加入 Azure AD 群組的許可權，**群組類型**必須是**安全性**，而不是**Office 365**。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要新增 Azure AD 群組的許可權，[群組類型] 必須是 [安全性]，而不是 [Office 365]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

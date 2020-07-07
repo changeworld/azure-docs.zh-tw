@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248593"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS (而非儲存體帳戶金鑰) 將工作流程提交到 Microsoft Genomics 
 
-本文示範如何使用包含[共用存取簽章（SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)的 config.xml 檔案（而非儲存體帳戶金鑰），將工作流程提交至 Microsoft Genomics 服務。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
+本文示範如何使用包含[共用存取簽章（SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)的 config.txt 檔案（而非儲存體帳戶金鑰），將工作流程提交至 Microsoft Genomics 服務。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
 
 本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用提供的範例資料成功地提交工作流程，則您已準備好繼續進行本文。 
 

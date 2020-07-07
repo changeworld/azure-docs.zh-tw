@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: cli
-ms.date: 03/27/2018
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7f80515a0a441f910a2133a36d62a09062c3840f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c2c1ea09d10ee177a722a56f6825db0f37da7e9b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699786"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374659"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 建立虛擬機器擴展集
 此指令碼會建立具有 Ubuntu 作業系統和相關網路資源 (包括負載平衡器) 的 Azure 虛擬機器擴展集。 執行指令碼之後，您可以透過 SSH 存取 VM 執行個體。

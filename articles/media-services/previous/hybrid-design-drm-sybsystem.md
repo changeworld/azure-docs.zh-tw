@@ -16,17 +16,17 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159398"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計 
 
 本主題討論使用 Azure 媒體服務的 DRM 子系統混合式設計。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 媒體服務提供下列三個 DRM 系統支援：
 
@@ -93,7 +93,7 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 ## <a name="scenarios-and-samples"></a>案例與範例
 
-根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰**-**資產傳遞原則**設定組合（最後一個資料行中所述的範例會遵循資料表）：
+根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰** - **資產傳遞原則**設定組合（最後一個資料行中所述的範例會遵循資料表）：
 
 |**內容裝載與來源**|**DRM 加密**|**DRM 授權傳遞**|**設定內容金鑰**|**設定資產傳遞原則**|**範例**|
 |---|---|---|---|---|---|

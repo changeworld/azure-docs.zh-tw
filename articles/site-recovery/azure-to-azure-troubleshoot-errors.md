@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738111"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>針對 Azure 至 Azure VM 複寫錯誤進行疑難排解
@@ -63,7 +63,7 @@ Site Recovery configuration failed.
 - 如果您是在中斷連線的環境，請遵循您組織的標準 Windows 更新程序來取得憑證。
 - 如果 VM 上不存在所需的憑證，對於 Site Recovery 進行的呼叫將而於安全性因素而失敗。
 
-若要確認問題已解決，請從您`login.microsoftonline.com` VM 中的瀏覽器移至。
+若要確認問題已解決，請 `login.microsoftonline.com` 從您 VM 中的瀏覽器移至。
 
 如需詳細資訊，請參閱[設定信任的根目錄和不允許的憑證](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn265983(v=ws.11))。
 
@@ -73,7 +73,7 @@ Site Recovery configuration failed.
 
 因為 SUSE Linux 使用符號連結（或符號連結）來維護憑證清單，請遵循下列步驟：
 
-1. 以**根**使用者身分登入。 雜湊符號（`#`）是預設的命令提示字元。
+1. 以**根**使用者身分登入。 雜湊符號（ `#` ）是預設的命令提示字元。
 
 1. 若要變更目錄，請執行下列命令：
 
@@ -222,7 +222,7 @@ Azure Site Recovery 需要存取 Office 365 IP 範圍以進行驗證。
 
 #### <a name="fix-the-problem"></a>修正問題
 
-1. 行動服務代理程式會從 Windows 和`/etc/environment` Linux 上的 IE 偵測 proxy 設定。
+1. 行動服務代理程式會從 Windows 和 Linux 上的 IE 偵測 proxy 設定 `/etc/environment` 。
 1. 如果您只想要為行動服務設定 proxy，則可以在_proxyinfo.conf_中提供 proxy 詳細資料，其位於：
 
    - **Linux**：`/usr/local/InMage/config/`
@@ -278,14 +278,14 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 #### <a name="to-protect-the-disks"></a>保護磁片
 
-1. 移至 [複寫的**專案** > ] [_VM 名稱_ > ] [**磁片**]。
+1. 移至 [複寫的**專案**] [  >  _VM 名稱_] [  >  **磁片**]。
 1. 選取未受保護的磁片，然後選取 [**啟用**複寫]：
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="在 VM 磁片上啟用複寫。":::
 
 #### <a name="to-dismiss-the-warning"></a>若要關閉警告
 
-1. 移至 [已複寫的**專案** > ]_VM 名稱_。
+1. 移至 [已複寫的**專案**]  >  _VM 名稱_。
 1. 在 [**總覽**] 區段中選取警告，然後選取 **[確定]**。
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="關閉新的磁片警告。":::
@@ -300,19 +300,19 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 > 如果您不進行清除：
 >
 > - 當您透過復原服務保存庫來啟用複寫時，將不會列出虛擬機器。
-> - 如果您嘗試使用「**虛擬機器** > **設定** > 」嚴重損壞**修復**來保護 VM，此作業將會失敗，並顯示「**因為 VM 上現有的過時資源連結而無法啟用**」的訊息複寫。
+> - 如果您嘗試使用「**虛擬機器**設定」嚴重損壞修復來保護 VM  >  **Settings**  >  ** **，此作業將會失敗，並顯示「**因為 VM 上現有的過時資源連結而無法啟用**」的訊息複寫。
 
 ### <a name="fix-the-problem"></a>修正問題
 
 > [!NOTE]
 > Site Recovery 在執行這些步驟時，不會刪除來源虛擬機器或以任何方式影響它。
 
-1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，必須刪除名為`MoveDemo`之 VM 上的資源鎖定：
+1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，必須刪除名為之 VM 上的資源鎖定 `MoveDemo` ：
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
 
 1. 下載腳本以[移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
-1. 執行腳本_Cleanup-stale-asr-config-Azure-VM_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
+1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
 1. 如果系統提示您輸入 Azure 認證，請提供它們。 然後驗證腳本是否執行，而不會發生任何失敗。
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>未在具有過時資源的 VM 上啟用複寫（錯誤碼150226）
@@ -332,12 +332,12 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 > [!NOTE]
 > Site Recovery 在執行這些步驟時，不會刪除來源虛擬機器或以任何方式影響它。
 
-1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，必須刪除名為`MoveDemo`之 VM 上的資源鎖定：
+1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，必須刪除名為之 VM 上的資源鎖定 `MoveDemo` ：
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
 
 1. 下載腳本以[移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
-1. 執行腳本_Cleanup-stale-asr-config-Azure-VM_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
+1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
 1. 如果系統提示您輸入 Azure 認證，請提供它們。 然後驗證腳本是否執行，而不會發生任何失敗。
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>無法在啟用複寫作業中選取 VM 或資源群組
@@ -346,7 +346,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的位置。 如果不是，當您嘗試套用保護時，將無法找到虛擬機器或資源群組。
 
-因應措施是，您可以從 VM 啟用複寫，而不是復原服務保存庫。 移至**來源 VM** > 的 [**屬性** > ] [嚴重損壞**修復**] 並啟用複寫。
+因應措施是，您可以從 VM 啟用複寫，而不是復原服務保存庫。 移至**來源 VM**的 [屬性] [嚴重損壞  >  **Properties**  >  **修復**] 並啟用複寫。
 
 ### <a name="issue-2-the-resource-group-isnt-part-of-the-selected-subscription"></a>問題2：資源群組不屬於所選訂用帳戶
 
@@ -363,14 +363,14 @@ Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的
 ### <a name="fix-the-problem"></a>修正問題
 
 > [!NOTE]
-> 使用本節所述的`AzureRM.Resources`腳本之前，請務必先更新模組。 Site Recovery 在執行這些步驟時，不會刪除來源虛擬機器或以任何方式影響它。
+> `AzureRM.Resources`使用本節所述的腳本之前，請務必先更新模組。 Site Recovery 在執行這些步驟時，不會刪除來源虛擬機器或以任何方式影響它。
 
-1. 從 VM 或 VM 資源群組中移除鎖定（如果有的話）。 例如，在下圖中，必須刪除名為`MoveDemo`之 VM 上的資源鎖定：
+1. 從 VM 或 VM 資源群組中移除鎖定（如果有的話）。 例如，在下圖中，必須刪除名為之 VM 上的資源鎖定 `MoveDemo` ：
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
 
 1. 下載腳本以[移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
-1. 執行腳本_Cleanup-stale-asr-config-Azure-VM_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
+1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶**識別碼**、 **vm 資源群組**和**VM 名稱**作為參數。
 1. 如果系統提示您輸入 Azure 認證，請提供它們。 然後驗證腳本是否執行，而不會發生任何失敗。
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>無法選取要保護的 VM
@@ -381,7 +381,7 @@ Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的
 
 ### <a name="fix-the-problem"></a>修正問題
 
-移至 [**虛擬機器** > ] [**設定** > ] [**擴充**功能]，並檢查處于 [失敗] 狀態的任何延伸模組 請卸載任何失敗的延伸模組，然後再試一次來保護虛擬機器。
+移至 [**虛擬機器**] [設定] [擴充功能]  >  **Settings**  >  **Extensions** ，並檢查處于 [失敗] 狀態的任何延伸模組 請卸載任何失敗的延伸模組，然後再試一次來保護虛擬機器。
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>VM 布建狀態無效（錯誤碼150019）
 
@@ -408,7 +408,7 @@ Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題2：您先前已保護 VM，然後停用複寫
 
-停用 VM 的複寫不會刪除網路對應。 必須從已保護 VM 的復原服務保存庫中刪除對應。 選取復原**服務保存庫**，然後移至 [**管理** > **Azure 虛擬機器** > 的**Site Recovery 基礎結構** > ]**網路對應**。
+停用 VM 的複寫不會刪除網路對應。 必須從已保護 VM 的復原服務保存庫中刪除對應。 選取復原**服務保存庫**，然後移至 [**管理**  >  **Site Recovery Infrastructure**  >  **Azure 虛擬機器的**Site Recovery 基礎結構]  >  **網路對應**。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="刪除網路對應。":::
 
@@ -459,7 +459,7 @@ Protection couldn't be enabled for the virtual machine as it has <DiskName> with
 
 ### <a name="possible-causes"></a>可能的原因
 
-Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_）可能會指定實際的裝置名稱`root` ，而不是和`resume`參數的通用唯一識別碼（UUID）值。 Site Recovery 需要 Uuid，因為裝置名稱可能會變更。 重新開機時，VM 在容錯移轉時可能不會有相同的名稱，因而產生問題。
+Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_）可能會指定實際的裝置名稱，而不是和參數的通用唯一識別碼（UUID）值 `root` `resume` 。 Site Recovery 需要 Uuid，因為裝置名稱可能會變更。 重新開機時，VM 在容錯移轉時可能不會有相同的名稱，因而產生問題。
 
 下列範例是來自 GRUB 檔案的線條，其中出現裝置名稱，而不是所需的 Uuid：
 
@@ -475,7 +475,7 @@ Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 
 
 將每個裝置名稱取代為對應的 UUID：
 
-1. 執行命令`blkid <device name>`來尋找裝置的 UUID。 例如：
+1. 執行命令來尋找裝置的 UUID `blkid <device name>` 。 例如：
 
    ```shell
    blkid /dev/sda1
@@ -484,7 +484,7 @@ Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. 將裝置名稱取代為其 UUID，格式`root=UUID=<UUID>`為和。 `resume=UUID=<UUID>` 例如，在取代之後，來自 _/boot/grub/menu.lst_的程式列看起來會像下面這一行：
+1. 將裝置名稱取代為其 UUID，格式為 `root=UUID=<UUID>` 和 `resume=UUID=<UUID>` 。 例如，在取代之後，來自 _/boot/grub/menu.lst_的程式列看起來會像下面這一行：
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -494,7 +494,7 @@ Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 
 
 ### <a name="possible-cause"></a>可能的原因
 
-GRUB 設定檔案（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_）可能包含參數`rd.lvm.lv`或。 `rd_LVM_LV` 這些參數會識別在開機時要探索的邏輯磁片區管理員（LVM）裝置。 如果這些 LVM 裝置不存在，受保護的系統本身將無法開機，且會停滯在開機程式中。 容錯移轉 VM 也會看到相同的問題。 以下提供一些範例：
+GRUB 設定檔案（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_）可能包含參數 `rd.lvm.lv` 或 `rd_LVM_LV` 。 這些參數會識別在開機時要探索的邏輯磁片區管理員（LVM）裝置。 如果這些 LVM 裝置不存在，受保護的系統本身將無法開機，且會停滯在開機程式中。 容錯移轉 VM 也會看到相同的問題。 以下提供一些範例：
 
 - File： _/boot/grub2/grub.cfg_ on RHEL7：
 
@@ -508,7 +508,7 @@ GRUB 設定檔案（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/gru
 
   `kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet`
 
-在每個範例中，GRUB 都必須偵測具有名稱`root`和`swap`磁片區群組`rootvg`的兩部 LVM 裝置。
+在每個範例中，GRUB 都必須偵測具有名稱和磁片區群組的兩部 LVM 裝置 `root` `swap` `rootvg` 。
 
 ### <a name="fix-the-problem"></a>修正問題
 

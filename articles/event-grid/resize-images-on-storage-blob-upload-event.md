@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e46aa28d770cf561df40a0f4b40ef39a70e35687
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560529"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367932"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -62,7 +62,11 @@ ms.locfileid: "84560529"
 
 如果您先前未在訂用帳戶中註冊事件方格資源提供者，請務必註冊。
 
-```azurecli-interactive
+```bash
+az provider register --namespace Microsoft.EventGrid
+```
+
+```powershell
 az provider register --namespace Microsoft.EventGrid
 ```
 
@@ -72,22 +76,43 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
 
 1. 設定一個變數，用以保存您在上一個教學課程中建立的資源群組名稱。
 
-    ```azurecli-interactive
+    ```bash
     resourceGroupName="myResourceGroup"
     ```
-2. 設定一個變數，用以保存您要建立的資源位置。 
 
-    ```azurecli-interactive
+    ```powershell
+    $resourceGroupName="myResourceGroup"
+    ```
+
+1. 設定一個變數，用以保存您要建立的資源位置。 
+
+    ```bash
     location="eastus"
-    ```    
-3. 針對 Azure Functions 所需新儲存體帳戶的名稱來設定變數。
-    ```azurecli-interactive
+    ```
+
+    ```powershell
+    $location="eastus"
+    ```
+
+1. 針對 Azure Functions 所需新儲存體帳戶的名稱來設定變數。
+
+    ```bash
     functionstorage="<name of the storage account to be used by the function>"
     ```
-4. 建立 Azure 函式的儲存體帳戶。
 
-    ```azurecli-interactive
+    ```powershell
+    $functionstorage="<name of the storage account to be used by the function>"
+    ```
+
+1. 建立 Azure 函式的儲存體帳戶。
+
+    ```bash
     az storage account create --name $functionstorage --location $location \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
+    ```
+
+    ```powershell
+    az storage account create --name $functionstorage --location $location `
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -99,14 +124,25 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
 
 1. 指定要建立的函式應用程式名稱。
 
-    ```azurecli-interactive
+    ```bash
     functionapp="<name of the function app>"
     ```
-2. 建立 Azure 函式。
 
-    ```azurecli-interactive
+    ```powershell
+    $functionapp="<name of the function app>"
+    ```
+
+1. 建立 Azure 函式。
+
+    ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
       --resource-group $resourceGroupName --consumption-plan-location $location \
+      --functions-version 2
+    ```
+
+    ```powershell
+    az functionapp create --name $functionapp --storage-account $functionstorage `
+      --resource-group $resourceGroupName --consumption-plan-location $location `
       --functions-version 2
     ```
 
@@ -118,7 +154,7 @@ Azure Functions 需要一般的儲存體帳戶。 除了您在上一個教學課
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-```azurecli-interactive
+```bash
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -127,9 +163,18 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
+```powershell
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
+  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-```azurecli-interactive
+```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -140,6 +185,20 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
   AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
   AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
+  -n $blobStorageAccount --query [0].value --output tsv)
+
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
+  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
   AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
@@ -155,9 +214,15 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 
 範例 C# 大小調整函式可從 [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) 取得。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令，將此程式碼專案部署至函式應用程式。
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```
+
+```powershell
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
@@ -165,11 +230,18 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 範例 Node.js 大小調整函式可從 [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) 取得。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令，將此函式程式碼專案部署至函式應用程式。
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
+
+```powershell
+az functionapp deployment source config --name $functionapp `
+  --resource-group $resourceGroupName --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
+```
+
 ---
 
 影像大小調整函式是由從 Event Grid 服務傳送給它的 HTTP 要求所觸發。 您可藉由建立事件訂閱，告訴 Event Grid 您想要在您函式的 URL 取得這些通知。 在此教學課程中，您會訂閱 Blob 建立的事件。
@@ -220,7 +292,7 @@ az functionapp deployment source config --name $functionapp \
 
 1. 切換至 [篩選條件] 索引標籤，並執行下列動作：
     1. 選取 [啟用主旨篩選] 選項。
-    2. 針對 [主旨開頭]，輸入下列值： **/blobServices/default/containers/images/blobs/** 。
+    1. 針對 [主旨開頭]，輸入下列值： **/blobServices/default/containers/images/blobs/** 。
 
         ![指定事件訂閱的篩選條件](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 

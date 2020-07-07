@@ -8,10 +8,10 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063183"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全性內容條件約束 
@@ -37,7 +37,7 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 
 ## <a name="examine-an-object-for-security-context-constraints"></a>檢查物件是否有安全性內容條件約束
 
-若要檢查特定的 SCC， `oc get`請`oc describe`使用、 `oc edit`或。  例如，若要檢查**受限制**的 SCC，請使用下列命令：
+若要檢查特定的 SCC，請使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要檢查**受限制**的 SCC，請使用下列命令：
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101547"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
@@ -26,7 +26,7 @@ ms.locfileid: "82101547"
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>從 Azure Marketplace 部署 Windows 10 映像 
 若要進行 PowerShell、CLI 和 Azure Resource Manager 範本的部署，您可以找到具有下列 PublisherName、供應項目和 SKU 的 Windows 10 映像。
 
-| OS  |      PublisherName      |  產品 | SKU |
+| OS  |      PublisherName      |  供應項目 | SKU |
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
@@ -49,7 +49,7 @@ if($adminAccount.Disabled)
     $adminAccount.Put()
 }
 ```
-如需詳細資訊： 
+其他資訊： 
 * [如何將 VHD 上傳至 Azure](upload-generalized-managed.md)
 * [如何準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)
 

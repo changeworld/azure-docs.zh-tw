@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652684"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>搭配 MSAL.NET 使用通用 Windows 平臺的考慮
 使用通用 Windows 平臺（UWP）搭配 MSAL.NET 的應用程式開發人員應該考慮本文所提供的概念。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork 屬性
-在 Windows 執行階段（WinRT）平臺上， `PublicClientApplication`具有布林值屬性`UseCorporateNetwork`。 此屬性可讓 Windows 8.1 應用程式和 UWP 應用程式受益于整合式 Windows 驗證（IWA）（如果使用者已登入具有同盟 Azure Active Directory （Azure AD）租使用者的帳戶）。 已登入作業系統的使用者也可以使用單一登入（SSO）。 當您設定`UseCorporateNetwork`屬性時，MSAL.NET 會使用 web 驗證訊息代理程式（WAB）。
+在 Windows 執行階段（WinRT）平臺上， `PublicClientApplication` 具有布林值屬性 `UseCorporateNetwork` 。 此屬性可讓 Windows 8.1 應用程式和 UWP 應用程式受益于整合式 Windows 驗證（IWA）（如果使用者已登入具有同盟 Azure Active Directory （Azure AD）租使用者的帳戶）。 已登入作業系統的使用者也可以使用單一登入（SSO）。 當您設定 `UseCorporateNetwork` 屬性時，MSAL.NET 會使用 web 驗證訊息代理程式（WAB）。
 
 > [!IMPORTANT]
-> 將`UseCorporateNetwork`屬性設定為 true 時，會假設應用程式開發人員已在應用程式中啟用 IWA。 若要啟用 IWA：
-> - 在 UWP 應用程式的`Package.appxmanifest`[**功能**] 索引標籤上，啟用下列功能：
+> 將 `UseCorporateNetwork` 屬性設定為 true 時，會假設應用程式開發人員已在應用程式中啟用 IWA。 若要啟用 IWA：
+> - 在 UWP 應用程式的 `Package.appxmanifest` [**功能**] 索引標籤上，啟用下列功能：
 >   - **企業驗證**
 >   - **私人網路 (用戶端和伺服器)**
 >   - **共用使用者憑證**

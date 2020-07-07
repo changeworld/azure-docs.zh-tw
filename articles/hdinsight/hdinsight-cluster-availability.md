@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691141"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 監視叢集可用性
@@ -23,7 +23,7 @@ HDInsight 叢集包含 Apache Ambari，可快速概覽和預先定義的警示�
 
 ## <a name="dashboard"></a>儀表板
 
-您可以在 Azure 入口網站的 HDInsight 總覽的 [叢集**儀表板**] 區段中選取 [ **Ambari 首頁**] 連結，以存取 Ambari 儀表板，如下所示。 或者，您也可以透過在瀏覽器`https://CLUSTERNAME.azurehdinsight.net`中流覽至，其中 CLUSTERNAME 是您的叢集名稱來進行存取。
+您可以在 Azure 入口網站的 HDInsight 總覽的 [叢集**儀表板**] 區段中選取 [ **Ambari 首頁**] 連結，以存取 Ambari 儀表板，如下所示。 或者，您也可以透過 `https://CLUSTERNAME.azurehdinsight.net` 在瀏覽器中流覽至，其中 CLUSTERNAME 是您的叢集名稱來進行存取。
 
 ![HDInsight 資源入口網站視圖](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -80,7 +80,7 @@ Ambari 提供許多與可用性相關的預先定義警示，包括：
 
 ![Ambari 管理通知動作](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-隨即會開啟用於管理警示通知的對話方塊。 **+** 選取對話方塊底部的，並填寫必要的欄位，以提供 Ambari 的電子郵件伺服器詳細資料，以便傳送電子郵件。
+隨即會開啟用於管理警示通知的對話方塊。 選取 **+** 對話方塊底部的，並填寫必要的欄位，以提供 Ambari 的電子郵件伺服器詳細資料，以便傳送電子郵件。
 
 > [!TIP]
 > 設定 Ambari 電子郵件通知，是在管理許多 HDInsight 叢集時，可以在一個位置接收警示的好方法。

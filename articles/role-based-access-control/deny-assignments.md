@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733766"
 ---
 # <a name="understand-azure-deny-assignments"></a>瞭解 Azure 拒絕指派
@@ -65,7 +65,7 @@ ms.locfileid: "82733766"
 > | `Scope` | 否 | String | 一個字串， 指定拒絕指派要套用的範圍。 |
 > | `DoNotApplyToChildScopes` | 否 | Boolean | 指定拒絕指派是否要套用到子範圍。 預設值為 false。 |
 > | `Principals[i].Id` | 是 | String[] | 要套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 設定為空 GUID `00000000-0000-0000-0000-000000000000` 以代表所有主體。 |
-> | `Principals[i].Type` | 否 | String[] | 由主體 [i]. Id 所代表的物件類型陣列。設定為`SystemDefined`以代表所有主體。 |
+> | `Principals[i].Type` | 否 | String[] | 由主體 [i]. Id 所代表的物件類型陣列。設定為 `SystemDefined` 以代表所有主體。 |
 > | `ExcludePrincipals[i].Id` | 否 | String[] | 不套用拒絕指派的 Azure AD 主體物件識別碼 (使用者、群組、服務主體或受控識別) 陣列。 |
 > | `ExcludePrincipals[i].Type` | 否 | String[] | 由 ExcludePrincipals[i].Id 代表的物件類型陣列。 |
 > | `IsSystemProtected` | 否 | Boolean | 指定此拒絕指派是否由 Azure 建立且無法編輯或刪除。 目前，所有拒絕指派都受系統保護。 |
@@ -82,7 +82,7 @@ Principals              : {
                           }
 ```
 
-所有主體都可以與`ExcludePrincipals`結合，以拒絕某些使用者以外的所有主體。 所有主體都具有下列條件約束：
+所有主體都可以與結合 `ExcludePrincipals` ，以拒絕某些使用者以外的所有主體。 所有主體都具有下列條件約束：
 
 - 只能在 `Principals` 中使用，而無法在 `ExcludePrincipals` 中使用。
 - `Principals[i].Type` 必須設為 `SystemDefined`。

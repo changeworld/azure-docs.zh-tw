@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: fe8e4c1b08f96e5f6b2fc7649f7a4361616b7c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311309"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>將您的資料從 IoT Azure 資訊安全中心連線到 Azure Sentinel （預覽）
@@ -30,13 +30,13 @@ ms.locfileid: "81311309"
 在本指南中，您將瞭解如何將 IoT 資料的 Azure 資訊安全中心連線至 Azure Sentinel。
 
 > [!div class="checklist"]
-> * 先決條件
+> * 必要條件
 > * 連線設定
 > * Log Analytics 警示視圖
 
 從 IoT 的 Azure 資訊安全中心連接警示，並直接將它們串流至 Azure Sentinel。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須具有工作區**讀取**和**寫入**許可權。
 - 您必須在相關 IoT 中樞上**啟用** **IoT 的 Azure 資訊安全中心**。
@@ -52,7 +52,7 @@ ms.locfileid: "81311309"
 1. 在右窗格的底部，按一下 [**開啟連接器] 頁面**。
 1. 按一下每個 IoT 中樞訂用帳戶旁邊的 **[連線]**，您要將警示和裝置警示串流至 Azure Sentinel。
     - 如果未在該中樞上啟用 IoT 的 Azure 資訊安全中心，您會看到啟用警告訊息。 按一下 [**啟用**] 連結，以啟動並啟用服務。
-1. 您可以決定是否要讓來自 IoT Azure 資訊安全中心的警示在 Azure Sentinel 中自動產生事件。 在 [**建立事件**] 底下，選取 [**啟用**] 以啟用規則，自動從產生的警示建立事件。  您可以在 [**分析** > ] [作用**中規則]** 底下變更或編輯此規則。
+1. 您可以決定是否要讓來自 IoT Azure 資訊安全中心的警示在 Azure Sentinel 中自動產生事件。 在 [**建立事件**] 底下，選取 [**啟用**] 以啟用規則，自動從產生的警示建立事件。  您可以在 [分析] [作用**Analytics**  >  **Active**中規則] 底下變更或編輯此規則。
 
 > [!NOTE]
 >進行連線變更之後，可能需要10秒以上的時間來重新整理中樞清單。
@@ -61,7 +61,7 @@ ms.locfileid: "81311309"
 
 若要在 Log Analytics 中使用相關的架構來顯示 IoT 警示的 Azure 資訊安全中心：
 
-1. 開啟 **[記錄** > **] SecurityInsights** > **SecurityAlert**，或搜尋**SecurityAlert**。
+1. 開啟 [**記錄**]  >  **SecurityInsights**  >  **SecurityAlert**，或搜尋**SecurityAlert**。
 1. 使用下列 kql 篩選器篩選，僅查看 IoT 產生警示的 Azure 資訊安全中心：
 
 ```kusto

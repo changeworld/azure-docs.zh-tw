@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058161"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>針對儲存體資源刪除錯誤進行疑難排解
@@ -43,7 +43,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
 ### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>案例 1：刪除 Blob - 識別連接的 VM
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [中樞] 功能表中，選取 [所有資源]****。 移至儲存體帳戶，在 [Blob 服務]**** 下方選取 [容器]****，然後瀏覽到要刪除的 Blob。
+2. 在 [中樞] 功能表中，選取 [所有資源]。 移至儲存體帳戶，在 [Blob 服務]**** 下方選取 [容器]****，然後瀏覽到要刪除的 Blob。
 3. 如果 Blob 的 [租用狀態]**** 為 [已租用]****，請以滑鼠右鍵按一下並選取 [編輯中繼資料]****，以開啟 Blob 中繼資料窗格。 
 
     ![入口網站的螢幕擷取畫面，其中醒目提示儲存體帳戶 Blob 及按一下滑鼠右鍵並選取 [編輯中繼資料]](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
@@ -60,7 +60,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
 ### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>案例 2：刪除容器 - 識別連接 VM 之容器內的所有 Blob
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [中樞] 功能表中，選取 [所有資源]****。 移至儲存體帳戶，在 [ **Blob 服務**] 下選取 [**容器**]，然後尋找要刪除的容器。
+2. 在 [中樞] 功能表中，選取 [所有資源]。 移至儲存體帳戶，在 [ **Blob 服務**] 下選取 [**容器**]，然後尋找要刪除的容器。
 3. 按一下開啟容器，容器內的 Blob 清單將會出現。 在清單中識別 Blob 類型 = **分頁 Blob** 且租用狀態 = **已租用**的所有 Blob。 遵循案例 1 以辨識分別與這些 Blob 相關聯的 VM。
 
     ![入口網站的螢幕擷取畫面，反白顯示儲存體帳戶 Blob、[租用狀態] 和 [已租用]](./media/troubleshoot-vhds/utd-disks-sm.png)
@@ -69,7 +69,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>案例 3：刪除儲存體帳戶 - 識別儲存體帳戶內已連接 VM 的所有 Blob
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [中樞] 功能表中，選取 [所有資源]****。 移至儲存體帳戶，在 [Blob 服務]**** 下方選取 [Blob]****。
+2. 在 [中樞] 功能表中，選取 [所有資源]。 移至儲存體帳戶，在 [Blob 服務]**** 下方選取 [Blob]****。
 3. 在 [容器]**** 窗格中，識別所有 [租用狀態]**** 為 [已租用]**** 的容器，然後遵循[案例 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) 來處理每個**已租用**的容器。
 4. 遵循[步驟 2](#step-2-delete-vm-to-detach-os-disk) 和[步驟 3](#step-3-detach-data-disk-from-the-vm) 來刪除連接 **OSDisk** 的 VM 及中斷連結 **DataDisk**。 
 
@@ -97,7 +97,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
      ![開啟儲存體「Blob 中繼資料」窗格的入口網站螢幕擷取畫面](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. 選取 [儲存]  。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
+9. 選取 [儲存]。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

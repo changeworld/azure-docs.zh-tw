@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75433667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856490"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教學課程：使用 .NET Core 應用程式中的動態設定
 
@@ -100,23 +100,33 @@ class Program
 
 1. 設定名為 **ConnectionString** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 如果您使用 Windows 命令提示字元，請執行下列命令，然後重新啟動命令提示字元以讓變更生效：
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果您使用 Windows PowerShell，請執行下列命令：
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     如果您使用 macOS 或 Linux，請執行下列命令：
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. 執行下列命令來建置主控台應用程式：
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. 建置成功完成後，請執行下列命令以於本機執行應用程式：
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![快速入門應用程式啟動本機](./media/quickstarts/dotnet-core-app-run.png)
 

@@ -3,18 +3,18 @@ title: ISO 27001 ASE/SQL 工作負載藍圖範例控制項
 description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例對於 Azure 原則和 RBAC 的控制項對應。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: bc370170374654bf8bc9ae9ed3f1b545f4db8cba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6311d5090c884c70bded7fcf754bc968a5b47b32
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75920707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918601"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應
 
 下列文章將詳細說明 Azure 藍圖 ISO 27001 ASE/SQL 工作負載藍圖範例與 ISO 27001 控制項的對應情形。 如需控制項的詳細資訊，請參閱 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
-以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
+以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md) \(英文\)。
@@ -28,7 +28,7 @@ ms.locfileid: "75920707"
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 資訊分類
 
-Azure 的 [SQL 弱點評量服務](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)可協助您探索資料庫中所儲存的敏感性資料，並納入該資料的分類建議。 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以稽核在修復 SQL 弱點評量掃描期間所識別出的弱點。
+Azure 的 [SQL 弱點評量服務](/azure/sql-database/sql-vulnerability-assessment)可協助您探索資料庫中所儲存的敏感性資料，並納入該資料的分類建議。 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以稽核在修復 SQL 弱點評量掃描期間所識別出的弱點。
 
 - \[預覽\]：監視 Azure 資訊安全中心內的 SQL 弱點評定結果
 

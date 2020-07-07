@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82136476"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager 資源群組和資源刪除
@@ -77,7 +77,7 @@ az group delete --name ExampleResourceGroup
 
 1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源群組。
 
-1. 選取 [刪除資源群組]  。
+1. 選取 [刪除資源群組]。
 
    ![刪除資源群組](./media/delete-resource-group/delete-group.png)
 
@@ -111,7 +111,7 @@ az resource delete \
 
 1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源。
 
-1. 選取 [刪除]  。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
+1. 選取 [刪除] 。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
    ![刪除資源](./media/delete-resource-group/delete-resource.png)
 

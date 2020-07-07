@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72385649"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將當地語系化的推播通知傳送至 iOS
@@ -73,7 +73,7 @@ ms.locfileid: "72385649"
 
 如需範本的詳細資訊，請參閱[範本](notification-hubs-templates-cross-platform-push-messages.md)一文。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 完成[將通知推送至特定的 iOS 裝置](notification-hubs-ios-xplat-segmented-apns-push-notification.md)教學課程並具備該教學課程中的程式碼，因為本教學課程是以該程式碼為基礎。
 * Visual Studio 2019 是選擇性的。
@@ -82,7 +82,7 @@ ms.locfileid: "72385649"
 
 在本節中，您會修改在[使用通知中樞傳送即時新聞]主題中所建立的即時新聞應用程式，以使用範本來傳送當地語系化的即時新聞。
 
-在您`MainStoryboard_iPhone.storyboard`的中，新增具有三種語言的分段控制：英文、法文和普通話。
+在您的中 `MainStoryboard_iPhone.storyboard` ，新增具有三種語言的分段控制：英文、法文和普通話。
 
 ![建立 iOS UI 分鏡腳本][13]
 
@@ -92,7 +92,7 @@ ms.locfileid: "72385649"
 
 ## <a name="build-the-ios-app"></a>建置 iOS 應用程式
 
-1. 在您`Notification.h`的中， `retrieveLocale`新增方法，並修改 store 和訂閱者法，如下列程式碼所示：
+1. 在您的中 `Notification.h` ，新增 `retrieveLocale` 方法，並修改 store 和訂閱者法，如下列程式碼所示：
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;

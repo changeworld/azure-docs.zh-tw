@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311453"
 ---
 # <a name="security-module"></a>安全性模組
@@ -42,7 +42,7 @@ ms.locfileid: "81311453"
 
 請參閱[建立安全性模組](quickstart-create-security-twin.md)對應項和[設定安全性代理](how-to-agent-configuration.md)程式，以瞭解如何建立、自訂和設定對應項。 請參閱[瞭解模組 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) ，以深入瞭解模組 twins 在 IoT 中樞中的概念。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [IoT 的 Azure 資訊安全中心總覽](overview.md)
 - [部署安全性代理程式](how-to-deploy-agent.md)

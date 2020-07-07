@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159978"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure Web 應用程式的應用程式效能常見問題集
@@ -46,8 +46,8 @@ ms.locfileid: "82159978"
 
 若要檢視您的 Web 應用程式事件記錄：
 
-1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
-2. 在功能表中，選取 [**偵錯主控台** > **CMD**]。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
+2. 在功能表中，選取 [**偵錯主控台**  >  **CMD**]。
 3. 選取 **LogFiles** 資料夾。
 4. 若要檢視事件記錄，請選取 **eventlog.xml** 旁邊的鉛筆圖示。
 5. 若要下載記錄，請執行 PowerShell Cmdlet `Save-AzureWebSiteLog -Name webappname`。
@@ -56,10 +56,10 @@ ms.locfileid: "82159978"
 
 若要擷取 Web 應用程式的使用者模式記憶體傾印：
 
-1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
 2. 選取 [處理序總管]**** 功能表。
 3. 以滑鼠右鍵按一下 **w3wp.exe** 處理序或您的 WebJob 處理序。
-4. 選取 [**下載記憶體傾印** > ]**完整**傾印。
+4. 選取 [**下載記憶體傾印**]  >  **完整**傾印。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>如何檢視 Web 應用程式的處理序層級資訊？
 
@@ -69,7 +69,7 @@ ms.locfileid: "82159978"
     1. 開啟 Web 應用程式的 [處理序總管]****。
     2. 若要查看詳細資料，請選取 **w3wp.exe** 處理序。
 *   在 Kudu 主控台中：
-    1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+    1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
     2. 選取 [處理序總管]**** 功能表。
     3. 針對 **w3wp.exe** 處理序，選取 [屬性]****。
 
@@ -101,9 +101,9 @@ ms.locfileid: "82159978"
 若要開啟失敗的要求追蹤：
 
 1. 在 Azure 入口網站中，移至您的 Web 應用程式。
-3. 選取 [**所有設定** > ] [**診斷記錄**]。
+3. 選取 [**所有設定**] [  >  **診斷記錄**]。
 4. 針對 [失敗的要求追蹤]****，選取 [開啟]****。
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 6. 在 Web 應用程式刀鋒視窗上，選取 [工具]****。
 7. 選取 [Visual Studio Online]****。
 8. 如果設定不是 [開啟]****，請選取 [開啟]****。
@@ -142,8 +142,8 @@ ms.locfileid: "82159978"
     </tracing>
     ```
 13. 若要下載失敗的要求追蹤，在[入口網站](https://portal.azure.com)中，移至您的網站。
-15. 選取 [**工具** > ] [**Kudu** > ] [**Go**]。
-18. 在功能表中，選取 [**偵錯主控台** > **CMD**]。
+15. 選取 [**工具**] [Kudu] [  >  **Kudu**  >  **Go**]。
+18. 在功能表中，選取 [**偵錯主控台**  >  **CMD**]。
 19. 選取 **LogFiles** 資料夾，然後選取名稱開頭為 **W3SVC** 的資料夾。
 20. 若要查看 XML 檔案，請選取鉛筆圖示。
 
@@ -174,7 +174,7 @@ Kestrel 1.0.2 版已經修正這個問題。 此版本隨附於 ASP.NET Core 1.0
 
 如果您使用 App Service 的本機快取功能，App Service 執行個體之「記錄檔」和「資料」資料夾的資料夾結構會受到影響。 使用本機快取時，會在儲存體的「記錄檔」和「資料」資料夾中建立子資料夾。 子資料夾會使用「唯一識別碼」+ 時間戳記的命名模式。 每個子資料夾都對應到將要用來執行或已用來執行 Web 應用程式的 VM 執行個體。
 
-若要判斷您是否使用本機快取，請檢查您 App Service 的 [**應用程式設定**] 索引標籤。如果使用本機快取，應用程式設定`WEBSITE_LOCAL_CACHE_OPTION`會設定為。 `Always`
+若要判斷您是否使用本機快取，請檢查您 App Service 的 [**應用程式設定**] 索引標籤。如果使用本機快取，應用程式設定 `WEBSITE_LOCAL_CACHE_OPTION` 會設定為 `Always` 。
 
 如果您不是使用本機快取，但是也遇到此問題，請提交支援要求。
 

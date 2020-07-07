@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 9e8798ea1c03ebf4c0d08adfbf5a0ee0755164a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137802"
 ---
 # <a name="multiclass-decision-forest-module"></a>多元決策樹系模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組來根據*決策樹*系演算法建立機器學習模型。 決策樹系是一個集團模型，它會快速建立一系列決策樹，同時從標記的資料中學習。
 
@@ -91,4 +91,4 @@ Azure Machine Learning 中的決策樹系分類器是由決策樹的集團所組
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

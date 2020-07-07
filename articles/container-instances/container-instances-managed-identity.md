@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure 容器實例中啟用可向其他 Azure 服�
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115715"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何搭配 Azure 容器執行個體使用受控識別
@@ -121,7 +121,7 @@ resourceID=$(az identity show \
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>在容器群組上啟用使用者指派的身分識別
 
-執行下列[az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)命令，以根據 Microsoft 的`azure-cli`映射建立容器實例。 這個範例會提供單一容器群組，您可以用互動方式執行 Azure CLI 來存取其他 Azure 服務。 在本節中，只會使用基底作業系統。 如需在容器中使用 Azure CLI 的範例，請參閱在[容器群組上啟用系統指派](#enable-system-assigned-identity-on-a-container-group)的身分識別。 
+執行下列[az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)命令，以根據 Microsoft 的映射建立容器實例 `azure-cli` 。 這個範例會提供單一容器群組，您可以用互動方式執行 Azure CLI 來存取其他 Azure 服務。 在本節中，只會使用基底作業系統。 如需在容器中使用 Azure CLI 的範例，請參閱在[容器群組上啟用系統指派](#enable-system-assigned-identity-on-a-container-group)的身分識別。 
 
 `--assign-identity` 參數會將使用者指派的受控識別傳遞給群組。 長時間執行的命令會讓容器保持執行。 這個範例會使用用來建立金鑰保存庫的相同資源群組，但您可以指定不同的資源群組。
 
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-現在，使用存取權杖向 key vault 進行驗證並讀取秘密。 請務必以您的金鑰保存庫名稱取代 URL （*HTTPs：\//mykeyvault.vault.azure.net/...*）：
+現在，使用存取權杖向 key vault 進行驗證並讀取秘密。 請務必以您的金鑰保存庫名稱取代 URL （*HTTPs： \/ /mykeyvault.vault.azure.net/...*）：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -206,7 +206,7 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>在容器群組上啟用系統指派的身分識別
 
-執行下列[az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)命令，以根據 Microsoft 的`azure-cli`映射建立容器實例。 這個範例會提供單一容器群組，您可以用互動方式執行 Azure CLI 來存取其他 Azure 服務。 
+執行下列[az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)命令，以根據 Microsoft 的映射建立容器實例 `azure-cli` 。 這個範例會提供單一容器群組，您可以用互動方式執行 Azure CLI 來存取其他 Azure 服務。 
 
 不含任何其他值的 `--assign-identity` 參數可在群組上啟用系統指派的受控識別。 身分識別的範圍是容器群組的資源群組。 長時間執行的命令會讓容器保持執行。 這個範例會使用用來建立金鑰保存庫的相同資源群組（位於身分識別的範圍內）。
 
@@ -298,7 +298,7 @@ az keyvault secret show \
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>使用 Resource Manager 範本來啟用受控識別
 
-若要使用 [Resource Manager 範本](container-instances-multi-container-group.md)在容器群組中啟用受控識別，請使用 `ContainerGroupIdentity` 物件來設定 `Microsoft.ContainerInstance/containerGroups` 物件的 `identity` 屬性。 下列程式碼片段顯示針對不同案例設定的 `identity` 屬性。 請參閱 [Resource Manager 範本參考](/azure/templates/microsoft.containerinstance/containergroups)。 指定最小`apiVersion`值`2018-10-01`。
+若要使用 [Resource Manager 範本](container-instances-multi-container-group.md)在容器群組中啟用受控識別，請使用 `ContainerGroupIdentity` 物件來設定 `Microsoft.ContainerInstance/containerGroups` 物件的 `identity` 屬性。 下列程式碼片段顯示針對不同案例設定的 `identity` 屬性。 請參閱 [Resource Manager 範本參考](/azure/templates/microsoft.containerinstance/containergroups)。 指定最小 `apiVersion` 值 `2018-10-01` 。
 
 ### <a name="user-assigned-identity"></a>使用者指派的身分識別
 
@@ -346,7 +346,7 @@ az keyvault secret show \
 ## <a name="enable-managed-identity-using-yaml-file"></a>使用 YAML 檔案來啟用受控識別
 
 若要在使用 [YAML 檔案](container-instances-multi-container-yaml.md)來部署的容器群組中啟用受控識別，請包含下列 YAML。
-指定最小`apiVersion`值`2018-10-01`。
+指定最小 `apiVersion` 值 `2018-10-01` 。
 
 ### <a name="user-assigned-identity"></a>使用者指派的身分識別
 
@@ -392,6 +392,6 @@ identity:
 > * 將身分識別存取權授與 Azure 金鑰保存庫
 > * 使用受控識別從執行中的容器存取金鑰保存庫
 
-* 深入了解 [Azure 資源的受控識別](/azure/active-directory/managed-identities-azure-resources/)。
+* 深入瞭解[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/)識別。
 
 * 請參閱使用受控識別從 Azure 容器實例存取金鑰保存庫的[Azure GO SDK 範例](https://medium.com/@samkreter/c98911206328)。

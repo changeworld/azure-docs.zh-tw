@@ -8,17 +8,17 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82692275"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>適用於Azure NetApp Files 的效能基準測試建議
 
 本文針對使用 Azure NetApp Files 的磁片區效能和計量，提供基準測試的測試建議。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要瞭解 Azure NetApp Files 磁片區的效能特性，您可以使用開放原始碼工具[FIO](https://github.com/axboe/fio)來執行一系列的基準測試，以模擬各種不同的工作負載。 FIO 可以安裝在 Linux 和 Windows 作業系統上。  這是取得磁片區的 IOPS 和輸送量快速快照集的絕佳工具。
 

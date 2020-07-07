@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494526"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 叢集已知問題
@@ -32,7 +32,7 @@ ms.locfileid: "73494526"
 
         yarn application –list
 
-    如果使用 Livy 互動式工作階段啟動工作時沒有明確指定名稱，則預設作業名稱會是 Livy。 針對[Jupyter Notebook](https://jupyter.org/)啟動的 Livy 會話，作業名稱的開頭為`remotesparkmagics_*`。
+    如果使用 Livy 互動式工作階段啟動工作時沒有明確指定名稱，則預設作業名稱會是 Livy。 針對[Jupyter Notebook](https://jupyter.org/)啟動的 Livy 會話，作業名稱的開頭為 `remotesparkmagics_*` 。
 
 3. 執行下列命令以刪除這些作業。
 
@@ -81,7 +81,7 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>載入大型 Notebook 時發生錯誤
 
-當您載入的筆記本**`Error loading notebook`** 大小較大時，您可能會看到錯誤。  
+**`Error loading notebook`** 當您載入的筆記本大小較大時，您可能會看到錯誤。  
 
 **緩解**
 
@@ -91,7 +91,7 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 若要防止日後再發生此錯誤，您必須遵循一些最佳作法：
 
-* 務必讓 Notebook 保持小型規模。 會傳回到 Jupyter 的任何 Spark 作業輸出皆會保存在 Notebook 中。  一般來說，Jupyter 的最佳做法是避免`.collect()`在大型 RDD 或資料框架上執行;相反地，如果您想要查看 RDD 的內容，請考慮執行`.take()`或`.sample()` ，讓您的輸出不會變得太大。
+* 務必讓 Notebook 保持小型規模。 會傳回到 Jupyter 的任何 Spark 作業輸出皆會保存在 Notebook 中。  一般來說，Jupyter 的最佳做法是避免 `.collect()` 在大型 RDD 或資料框架上執行。相反地，如果您想要查看 RDD 的內容，請考慮執行 `.take()` 或， `.sample()` 讓您的輸出不會變得太大。
 * 此外，當您儲存 Notebook 時，請清除所有輸出儲存格以減少大小。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook 的初始啟動比預期耗時

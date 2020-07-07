@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77619292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855009"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入門：將功能旗標新增至 .NET Framework 應用程式
 
@@ -105,11 +105,15 @@ ms.locfileid: "77619292"
 
 1. 將名為 **ConnectionString** 的環境變數設定為應用程式組態存放區的連接字串。 如果您使用 Windows 命令提示字元，請執行下列命令：
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果您使用 Windows PowerShell，請執行下列命令：
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. 重新啟動 Visual Studio，以讓變更生效。 
 

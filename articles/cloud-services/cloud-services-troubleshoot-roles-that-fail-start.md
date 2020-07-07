@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122737"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>對無法啟動的雲端服務角色進行疑難排解
@@ -69,7 +69,7 @@ ms.locfileid: "71122737"
 7. 輸入 `IPconfig`。
 8. 記下 IPV4 位址值。
 9. 開啟 Internet Explorer。
-10. 輸入 Web 應用程式的位址和名稱。 例如： `http://<IPV4 Address>/default.aspx` 。
+10. 輸入 Web 應用程式的位址和名稱。 例如：`http://<IPV4 Address>/default.aspx`。
 
 瀏覽至網站現在會傳回更明確的錯誤訊息：
 

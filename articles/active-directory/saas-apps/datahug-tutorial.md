@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9271d8b5657769ce70c46b5e428d995ddc642608
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cf2ef4211cab0dd778295c71a39a32305d074765
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158456"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>教學課程：Azure Active Directory 與 Datahug 整合
 
@@ -117,7 +117,7 @@ Datahug 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，輸入 URL：`https://apps.datahug.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Datahug 用戶端支援小組](https://datahug.com/about/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Datahug 用戶端支援小組](https://www.sap.com/corporate/en/company/office-locations.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 [同盟中繼資料 XML]  ，並儲存在您的電腦上。
 
@@ -147,7 +147,7 @@ Datahug 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-datahug-single-sign-on"></a>設定 Datahug 單一登入
 
-若要在 **Datahug** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Datahug 支援小組](https://datahug.com/about/contact-us/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Datahug** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Datahug 支援小組](https://www.sap.com/corporate/en/company/office-locations.html)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 

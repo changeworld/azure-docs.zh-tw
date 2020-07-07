@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 68480f5b3b52d2347369f878802c71672213940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146869"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Salesforce 複製資料以及複製資料至 Salesforce
@@ -32,7 +32,7 @@ ms.locfileid: "82146869"
 
 下列活動支援此 Salesforce 連接器：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Salesforce 複製到任何支援的接收資料存放區。 您也可以從任何支援的來源資料存放區將資料複製到 Salesforce。 如需複製活動所支援作為來源或接收器的資料存放區清單，請參閱支援的[資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
@@ -42,9 +42,9 @@ ms.locfileid: "82146869"
 - Salesforce Developer、Professional、Enterprise 或 Unlimited 版本。
 - 從 Salesforce 生產環境、沙箱、自訂網域複製資料，以及將資料複製到這些位置。
 
-Salesforce 連接器建置於 Salesforce REST/大量 API 之上（連接器會自動選擇一個），以獲得更好的效能。 根據預設，連接器會使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)從 salesforce 複製資料，並使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)將資料複製到 salesforce。 您也可以透過連結服務中的[ `apiVersion`屬性](#linked-service-properties)，明確設定用來讀取/寫入資料的 API 版本。
+Salesforce 連接器建置於 Salesforce REST/大量 API 之上（連接器會自動選擇一個），以獲得更好的效能。 根據預設，連接器會使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)從 salesforce 複製資料，並使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)將資料複製到 salesforce。 您也可以透過連結服務中的[ `apiVersion` 屬性](#linked-service-properties)，明確設定用來讀取/寫入資料的 API 版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 必須在 Salesforce 中啟用 API 權限。 如需詳細資訊，請參閱[在 Salesforce 中透過權限集啟用 API 存取權](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)。
 
@@ -72,10 +72,10 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 | type |type 屬性必須設為 **Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 執行個體的 URL。 <br> - 預設為 `"https://login.salesforce.com"`. <br> - 若要從沙箱複製資料，請指定 `"https://test.salesforce.com"`。 <br> - 若要從自訂網域複製資料，舉例來說，請指定 `"https://[domain].my.salesforce.com"`。 |否 |
 | username |指定使用者帳戶的使用者名稱。 |是 |
-| password |指定使用者帳戶的密碼。<br/><br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
+| 密碼 |指定使用者帳戶的密碼。<br/><br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | securityToken |指定使用者帳戶的安全性權杖。 <br/><br/>若要整體了解安全性權杖，請參閱[安全性和 API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)。 只有當您將 Integration Runtime 的 IP 新增至 Salesforce 上的[信任 ip 地址清單](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)時，才能略過安全性權杖。 使用 Azure IR 時，請參閱[Azure Integration Runtime 的 IP 位址](azure-integration-runtime-ip-addresses.md)。<br/><br/>如需如何取得和重設安全性權杖的指示，請參閱[取得安全性權杖](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |否 |
-| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如`48.0`。 根據預設，連接器會使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)從 salesforce 複製資料，並使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)將資料複製到 salesforce。 | 否 |
-| connectVia | 要用來連接到資料存放區的[整合運行](concepts-integration-runtime.md)時間。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 如果來源連結服務沒有整合執行階段，則對於來源而言為「否」；對於接收而言為「是」 |
+| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如 `48.0` 。 根據預設，連接器會使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)從 salesforce 複製資料，並使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)將資料複製到 salesforce。 | 否 |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 如果來源連結服務沒有整合執行階段，則對於來源而言為「否」；對於接收而言為「是」 |
 
 >[!IMPORTANT]
 >當您將資料複製到 Salesforce 時，無法使用預設的 Azure 整合執行階段執行複製。 換句話說，如果您的來源連結服務沒有指定的整合執行階段，請在您的 Salesforce 執行個體附近位置明確[建立 Azure 整合執行階段](create-azure-integration-runtime.md#create-azure-ir)。 與 Salesforce 連結服務建立關聯，如下列範例所示。
@@ -156,7 +156,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 ![Data Factory Salesforce 連線的 API 名稱](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -189,7 +189,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 ### <a name="salesforce-as-a-source-type"></a>Salesforce 作為來源類型
 
-若要從 Salesforce 複製資料，請將複製活動中的來源類型設定為 **SalesforceSource**。 複製活動的 [來源]**** 區段支援下列屬性。
+若要從 Salesforce 複製資料，請將複製活動中的來源類型設定為 **SalesforceSource**。 複製活動的 [來源] 區段支援下列屬性。
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -202,7 +202,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 ![Data Factory Salesforce 連線的 API 名稱清單](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -239,7 +239,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 ### <a name="salesforce-as-a-sink-type"></a>Salesforce 作為接收類型
 
-若要將資料複製到 Salesforce，請將複製活動中的接收器類型設定為 **SalesforceSink**。 複製活動的 [接收]**** 區段支援下列屬性。
+若要將資料複製到 Salesforce，請將複製活動中的接收器類型設定為 **SalesforceSink**。 複製活動的 [接收] 區段支援下列屬性。
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -298,7 +298,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 從 Salesforce 複製資料時，您可以使用 SOQL 查詢或 SQL 查詢。 請注意，這兩個查詢具有不同的語法和功能支援，不可混用。 建議您使用 Salesforce 原生支援的 SOQL 查詢。 下表列出主要差異：
 
-| 語法 | SOQL 模式 | SQL 模式 |
+| Syntax | SOQL 模式 | SQL 模式 |
 |:--- |:--- |:--- |
 | 資料行選擇 | 需要列舉要在查詢中複製的欄位，例如`SELECT field1, filed2 FROM objectname` | 支援 `SELECT *` (資料行選取除外)。 |
 | 引號 | 欄位/物件名稱不能加上引號。 | 欄位/物件名稱可以加上引號，例如 `SELECT "id" FROM "Account"` |
@@ -324,29 +324,29 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 | Salesforce 資料類型 | Data Factory 過渡期資料類型 |
 |:--- |:--- |
-| 自動編號 |字串 |
-| 核取方塊 |布林值 |
+| 自動編號 |String |
+| 核取方塊 |Boolean |
 | 貨幣 |Decimal |
-| Date |Datetime |
+| 日期 |Datetime |
 | 日期/時間 |Datetime |
-| 電子郵件 |字串 |
-| Id |字串 |
-| 查閱關聯性 |字串 |
-| 複選挑選清單 |字串 |
-| 數字 |Decimal |
+| 電子郵件 |String |
+| Id |String |
+| 查閱關聯性 |String |
+| 複選挑選清單 |String |
+| Number |Decimal |
 | 百分比 |Decimal |
-| 電話 |字串 |
-| 挑選清單 |字串 |
-| Text |字串 |
-| 文字區域 |字串 |
-| 文字區域 (完整) |字串 |
-| 文字區域 (豐富) |字串 |
-| 文字 (加密) |字串 |
-| URL |字串 |
+| 電話 |String |
+| 挑選清單 |String |
+| Text |String |
+| 文字區域 |String |
+| 文字區域 (完整) |String |
+| 文字區域 (豐富) |String |
+| 文字 (加密) |String |
+| URL |String |
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

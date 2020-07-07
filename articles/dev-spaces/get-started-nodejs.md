@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 Node.js 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854971"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio Code 和 Node.js
 
@@ -234,11 +234,11 @@ Azure 開發人員空間不只讓程式碼中在 Kubernetes 中執行 - 還可�
 
 在伺服器端程式碼檔案中設定中斷點，例如在 [`server.js` 第 13 行](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) 上的 `app.get('/api'...` 內設定。 
 
-    ```javascript
-    app.get('/api', function (req, res) {
-        res.send('Hello from webfrontend');
-    });
-    ```
+```javascript
+app.get('/api', function (req, res) {
+    res.send('Hello from webfrontend');
+});
+```
 
 重新整理瀏覽器頁面，或按 [再說一次]  按鈕，而且您應叫用中斷點，才能逐步執行程式碼。
 

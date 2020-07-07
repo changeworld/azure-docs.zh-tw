@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82120778"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在已啟用 Python 3 的 Linux Azure 虛擬機器系統中使用 VM 擴充功能的問題
@@ -28,24 +28,24 @@ ms.locfileid: "82120778"
 >
 > 在生產環境中安裝**Python** 2.x 之前，請考慮 Python 2.x 長期支援的問題，特別是他們接收安全性更新的能力。 如產品（包括部分擴充功能）更新為**python 3.8**支援，您應該停止使用 python 2.x。
 
-某些 Linux 發行版本已轉換成 Python 3.8，並已`/usr/bin/python`完全移除 python 的舊版進入點。 這項轉換會影響特定虛擬機器（VM）延伸模組的預設自動部署，並具有下列條件：
+某些 Linux 發行版本已轉換成 Python 3.8，並已完全移除 Python 的舊版進入 `/usr/bin/python` 點。 這項轉換會影響特定虛擬機器（VM）延伸模組的預設自動部署，並具有下列條件：
 
 - 仍轉換成 Python 3.x 支援的延伸模組
-- 使用舊版`/usr/bin/python`進入點的擴充功能
+- 使用舊版進入點的擴充功能 `/usr/bin/python`
 
-轉換成**Python** 3.x 的 Linux 散發使用者必須先確定舊版`/usr/bin/python`進入點存在，然後再嘗試將這些擴充功能部署至其 vm。 否則，延伸模組部署可能會失敗。 
+轉換成**Python** 3.x 的 Linux 散發使用者必須先確定舊版進入 `/usr/bin/python` 點存在，然後再嘗試將這些擴充功能部署至其 vm。 否則，延伸模組部署可能會失敗。 
 
 - 受背書的 Linux 發行版本受到影響，包括**Ubuntu Server 20.04 LTS**和**UBUNTU Pro 20.04 LTS**。
 
 - 受影響的 VM 擴充功能包括**Azure 磁碟加密**、 **Log Analytics**、 **VM 存取**（用於密碼重設）和**來賓診斷**（用於其他效能計數器）。
 
-就地升級（例如從**Ubuntu 18.04 LTS**升級至**ubuntu 20.04 LTS**）應保留`/usr/bin/python`符號，並保持不受影響。
+就地升級（例如從**Ubuntu 18.04 LTS**升級至**ubuntu 20.04 LTS**）應保留 `/usr/bin/python` 符號，並保持不受影響。
 
 ## <a name="resolution"></a>解決方案
 
 在先前于摘要中所述的已知受影響案例中部署擴充功能之前，請先考慮下列一般建議：
 
-1.  部署擴充功能之前，請使用`/usr/bin/python` Linux 散發廠商提供的方法來恢復符號連結。
+1.  部署擴充功能之前，請 `/usr/bin/python` 使用 Linux 散發廠商提供的方法來恢復符號連結。
 
     - 例如，針對**Python 2.7**，請使用：`sudo apt update && sudo apt install python-is-python2`
 

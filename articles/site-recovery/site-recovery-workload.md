@@ -4,17 +4,17 @@ description: 描述可以透過 Azure Site Recovery 服務使用災害復原來�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062829"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>關於內部部署應用程式的災害復原
 
 本文說明內部部署工作負載和應用程式，您可以使用[Azure Site Recovery](site-recovery-overview.md)服務來保護損毀修復。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 組織需要商務持續性和嚴重損壞修復（BCDR）策略，讓工作負載和資料保持安全，並可在規劃和非計畫的停機期間使用。 而且也可以復原到正常運作的情況。
 
@@ -38,7 +38,7 @@ Site Recovery 可協助您實作應用程式層級的保護和復原，如下所
 
 Site Recovery 可複寫在支援的機器上執行的任何應用程式。 我們與產品小組合作，為下表中指定的應用程式進行額外的測試。
 
-| **[工作負載]** |**將 Azure VM 複寫至 Azure** |**將 Hyper-V VM 複寫至次要網站** | **將 Hyper-V VM 複寫至 Azure** | **將 VMware VM 複寫到次要網站** | **將 VMware VM 複寫到 Azure** |
+| **工作負載** |**將 Azure VM 複寫至 Azure** |**將 Hyper-V VM 複寫至次要網站** | **將 Hyper-V VM 複寫至 Azure** | **將 VMware VM 複寫到次要網站** | **將 VMware VM 複寫到 Azure** |
 | --- | --- | --- | --- | --- |---|
 | Active Directory、DNS |是 |是 |是 |是 |是|
 | Web 應用程式 (IIS、SQL) |是 |是 |是 |是 |是|

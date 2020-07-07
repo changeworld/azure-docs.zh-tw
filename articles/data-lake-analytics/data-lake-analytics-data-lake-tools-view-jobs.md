@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309942"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>使用適用於 Azure Data Lake Analytics 的作業瀏覽器和作業檢視
@@ -19,7 +19,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
 
 依預設，Azure Data Lake Analytics 服務會封存作業 30 天。 您可以藉由設定自訂的到期原則，從 Azure 入口網站設定有效期限。 期限到期後，您將無法存取作業資訊。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 請參閱[適用於 Visual Studio 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)。
 
 ## <a name="open-the-job-browser"></a>開啟作業瀏覽器

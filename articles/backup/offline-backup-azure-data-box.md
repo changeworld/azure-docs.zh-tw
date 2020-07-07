@@ -4,13 +4,13 @@ description: 瞭解如何使用 Azure 資料箱，從 MARS 代理程式離線將
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160950"
 ---
-# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱 Azure 備份離線備份
+# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱進行 Azure 備份離線備份
 
 您可以使用[Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-overview)，將您的大型初始 MICROSOFT AZURE 復原服務（MARS）備份從離線（不使用網路）植入復原服務保存庫。 此程式會節省時間和網路頻寬，而這種情況會在透過高延遲的網路上線移動大量備份資料時使用。 這項增強功能目前為預覽狀態。 以 Azure 資料箱為基礎的離線備份可提供兩個不同的優點，而不[是根據 Azure 匯入/匯出服務進行離線備份](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)：
 
@@ -25,7 +25,7 @@ ms.locfileid: "82160950"
 
 下列 Windows Sku 支援使用 Azure 資料箱從 MARS 代理程式植入資料的處理常式。
 
-| **OS**                                 | **SKU**                                                      |
+| **作業系統**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **工作站**                        |                                                              |
 | Windows 10 64 位元                     | 企業版、專業版、家用版                                       |
@@ -51,12 +51,12 @@ ms.locfileid: "82160950"
 | >7.2 TB 和 <= 80 TB * *                                      | [Azure 資料箱（100 TB）](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
 * 典型的壓縮速率會因10% 到20% 而有所不同。 <br>
-* * 如果您預期單一 MARS 伺服器有超過 80 TB 的初始備份資料，請洽詢[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+* * 如果您預期單一 MARS 伺服器有超過 80 TB 的初始備份資料，請洽詢 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 >[!IMPORTANT]
 >單一伺服器的初始備份資料必須包含在單一 Azure 資料箱實例或 Azure 資料箱磁片中，而且不能在相同或不同 Sku 的多個裝置之間共用。 但是 Azure 資料箱裝置可以包含來自多部伺服器的初始備份。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 訂用帳戶和必要許可權
 
@@ -124,7 +124,7 @@ Azure PowerShell 也可以使用 msi 檔案來安裝。 若要移除它，請使
 
 1. 請務必卸載任何先前安裝的 MARS 代理程式。
 1. 從[這個網站](https://aka.ms/azurebackup_agent)下載最新的 MARS 代理程式。
-1. 執行*marsagentinstaller.exe*，並*只*執行將[代理程式安裝](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
+1. 執行*MARSAgentInstaller.exe*，並*只*執行將[代理程式安裝](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
 
    > [!NOTE]
    > 復原服務保存庫必須與 Azure 資料箱作業位於相同的訂用帳戶中。
@@ -153,8 +153,8 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 若要確保您可以使用 NFS 通訊協定，將您的資料箱裝置掛接為本機系統：
 
 1. 在安裝 MARS 代理程式的 Windows 伺服器上，啟用 [NFS] 功能的用戶端。 指定替代來源*WIM： D： \Sources\Install.wim： 4*。
-1. 將 PSExec 從<https://download.sysinternals.com/files/PSTools.zip>下載到已安裝 MARS 代理程式的伺服器。
-1. 開啟提升許可權的命令提示字元，然後執行下列命令，並將包含*PSExec*的目錄當做目前目錄。
+1. 將 PSExec 從下載 <https://download.sysinternals.com/files/PSTools.zip> 到已安裝 MARS 代理程式的伺服器。
+1. 開啟提升許可權的命令提示字元，然後使用包含*PSExec.exe*做為目前的目錄的目錄執行下列命令。
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -195,7 +195,7 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 
     ![提取訂用帳戶識別碼資料箱作業](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步]  。
+1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步]。
 
     ![選取資料箱訂單](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -212,9 +212,9 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
     >
     >![Azure 資料箱磁片的根目錄](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >例如，如果磁片的路徑`\\mydomain\myserver\disk1\`是，而*disk1*包含名為*PageBlob*的目錄，則您在 MARS 代理程式的 [wizard] 頁面上`\\mydomain\myserver\disk1\`輸入的路徑是。
+    >例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` ，而*disk1*包含名為*PageBlob*的目錄，則您在 MARS 代理程式的 [wizard] 頁面上輸入的路徑是 `\\mydomain\myserver\disk1\` 。
     >
-    >如果您[設定 Azure 資料箱 100-TB 裝置](#set-up-azure-data-box-devices)，請輸入`\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`作為裝置的網路路徑。
+    >如果您[設定 Azure 資料箱 100-TB 裝置](#set-up-azure-data-box-devices)，請輸入 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 作為裝置的網路路徑。
 
 1. 選取 [**下一步**]，然後在下一個頁面上選取 **[完成]** ，以使用 Azure 資料箱來儲存備份和保留原則，並設定離線備份。
 
@@ -269,7 +269,7 @@ Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建�
 
 1. 在安裝路徑中開啟**Temp**資料夾。 預設的暫存資料夾路徑是*C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*。尋找*CBUICurr*檔案，然後開啟檔案。
 
-1. 在*CBUICurr*檔案中，流覽至最後一行，並查看問題是否與此錯誤訊息中的相同： `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`。
+1. 在*CBUICurr*檔案中，流覽至最後一行，並查看問題是否與此錯誤訊息中的相同： `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` 。
 
 ### <a name="workaround"></a>因應措施
 
@@ -281,10 +281,10 @@ Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建�
 
 #### <a name="step-2"></a>步驟 2
 
-如果沒有其他伺服器已設定離線植入，而且沒有其他伺服器相依于`AzureOfflineBackup_<Azure User Id>`該應用程式，請刪除此應用程式。 選取**Azure 入口網站** > **Azure Active Directory** > **應用程式註冊**。
+如果沒有其他伺服器已設定離線植入，而且沒有其他伺服器相依于該 `AzureOfflineBackup_<Azure User Id>` 應用程式，請刪除此應用程式。 選取**Azure 入口網站**  >  **Azure Active Directory**  >  **應用程式註冊**。
 
 >[!NOTE]
-> 檢查`AzureOfflineBackup_<Azure User Id>`應用程式是否未設定任何其他離線植入，而且如果沒有其他伺服器相依于此應用程式。 移至 [**公開金鑰**] 區段底下的 [**設定** > ] [**金鑰**]。 不應新增任何其他公開金鑰。 如需參考，請參閱下列螢幕擷取畫面。
+> 檢查應用程式是否未 `AzureOfflineBackup_<Azure User Id>` 設定任何其他離線植入，而且如果沒有其他伺服器相依于此應用程式。 移至**Settings**  >  [**公開金鑰**] 區段底下的 [設定] [**金鑰**]。 不應新增任何其他公開金鑰。 如需參考，請參閱下列螢幕擷取畫面。
 >
 >![公開金鑰](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -292,25 +292,25 @@ Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建�
 
 從您嘗試設定離線備份的伺服器，執行下列動作。
 
-1. 移至 [**管理電腦憑證應用程式** > ] [**個人**] 索引標籤，然後尋找`CB_AzureADCertforOfflineSeeding_<ResourceId>`名稱為的憑證。
+1. 移至 [**管理電腦憑證應用程式**  >  ] [**個人**] 索引標籤，然後尋找名稱為的憑證 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
 
 2. 選取憑證，以滑鼠右鍵按一下 [**所有**工作]，然後選取 [**匯出**但不使用 .cer 格式的私密金鑰]。
 
-3. 移至步驟2中所述的 Azure 離線備份應用程式。 選取 [**設定** > ] [**金鑰** > ]**[上傳公開金鑰**]。 上傳您在上一個步驟中匯出的憑證。
+3. 移至步驟2中所述的 Azure 離線備份應用程式。 選取 [**設定**]  >  [**金鑰**]  >  **[上傳公開金鑰**]。 上傳您在上一個步驟中匯出的憑證。
 
     ![上傳公開金鑰](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. 在伺服器中，于 [執行] 視窗中輸入**regedit**來開啟登錄。
 
-5. 前往 registry *Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows server\ Azure Backup\Config\CloudBackupProvider.* 以滑鼠右鍵按一下 [ **CloudBackupProvider**]，並新增名稱`AzureADAppCertThumbprint_<Azure User Id>`為的新字串值。
+5. 前往 registry *Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows server\ Azure Backup\Config\CloudBackupProvider.* 以滑鼠右鍵按一下 [ **CloudBackupProvider**]，並新增名稱為的新字串值 `AzureADAppCertThumbprint_<Azure User Id>` 。
 
     >[!NOTE]
     > 若要取得 Azure 使用者識別碼，請執行下列其中一項動作：
     >
-    >- 從 Azure 連線的 PowerShell，執行`Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"`命令。
-    > - 移至名稱為`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *CurrentUserId*的登錄路徑。
+    >- 從 Azure 連線的 PowerShell，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
+    > - 移至名稱為 CurrentUserId 的登錄路徑 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` 。 *CurrentUserId*
 
-6. 以滑鼠右鍵按一下上一個步驟中新增的字串，然後選取 [**修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]  。
+6. 以滑鼠右鍵按一下上一個步驟中新增的字串，然後選取 [**修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]。
 
 7. 若要取得指紋的值，請按兩下憑證。 選取 [**詳細資料**] 索引標籤，然後向下滾動，直到您看到 [指紋] 欄位為止。 選取 [**指紋**]，然後複製值。
 
@@ -318,4 +318,4 @@ Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建�
 
 ## <a name="questions"></a>問題
 
-如有任何疑問或您遇到任何問題，請洽詢[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+如有任何疑問或您遇到任何問題，請洽詢 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
