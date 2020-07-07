@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419369"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504860"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入門：使用 .NET SDK 建立資料處理站和管線
 
@@ -47,9 +47,9 @@ ms.locfileid: "81419369"
 
 從*操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體*中的小節，遵循其中的指示以執行下列工作：
 
-1. 在[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中，建立代表您要在本教學課程中建立之 .NET 應用程式的應用程式。 針對登入 URL，您可以提供虛擬 URL，如文章中所示 (`https://contoso.org/exampleapp`)。
-2. 在[取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)中，取得**應用程式識別碼**和**租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
-3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
+1. 在[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中，建立代表您要在本教學課程中建立之 .NET 應用程式的應用程式。 針對登入 URL，您可以提供虛擬 URL，如文章中所示 (`https://contoso.org/exampleapp`)。
+2. 在[取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，取得**應用程式識別碼**和**租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
+3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
 4. 在[指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，將應用程式指派給訂用帳戶層級的**參與者**角色，讓應用程式可以在訂用帳戶中建立資料處理站。
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案

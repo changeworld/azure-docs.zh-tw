@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4edee73e13c0490810706a0f7a028b54f37b287b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f3660956a3e66fc9a632eace378feb8873bceaf8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093062"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>教學課程：Azure Active Directory 與 RedVector 整合
 
@@ -107,7 +107,7 @@ ms.locfileid: "67093062"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://sso2.redvector.com/adfs/<Companyname>`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<Companyname>.redvector.com/saml2`
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://sso2.redvector.com/saml2`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [RedVector 客戶支援小組](mailto:sso@redvector.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

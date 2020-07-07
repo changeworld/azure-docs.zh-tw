@@ -6,10 +6,10 @@ author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 05/04/2020
 ms.openlocfilehash: 892b59b3d3e980abfcdb9cd692c2598ceb1284ad
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780924"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>每個資源群組的資源不限於800實例
@@ -76,7 +76,7 @@ ms.locfileid: "82780924"
 
 * 排程-根據預設，限制為800實例。 這項限制可以透過聯絡支援人員來增加。
 
-## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * 服務
 
@@ -85,7 +85,7 @@ ms.locfileid: "82780924"
 * clusters
 * 命名空間
 
-## <a name="microsoftexperimentation"></a>Microsoft 實驗
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 * experimentWorkspaces
 

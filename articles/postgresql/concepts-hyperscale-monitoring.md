@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580648"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>監視和微調適用於 PostgreSQL 的 Azure 資料庫-超大規模資料庫（Citus）
@@ -28,11 +28,11 @@ ms.locfileid: "82580648"
 
 這些計量適用于超大規模資料庫（Citus）節點：
 
-|計量|計量顯示名稱|單位|描述|
+|Metric|計量顯示名稱|單位|描述|
 |---|---|---|---|
-|active_connections|作用中的連線|計數|伺服器的使用中連線數量。|
+|active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
-|功耗|IOPS|計數|請參閱[IOPS 定義](../virtual-machines/linux/premium-storage-performance.md#iops)和[超大規模資料庫輸送量](concepts-hyperscale-configuration-options.md)|
+|iops|IOPS|Count|請參閱[IOPS 定義](../virtual-machines/linux/premium-storage-performance.md#iops)和[超大規模資料庫輸送量](concepts-hyperscale-configuration-options.md)|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|

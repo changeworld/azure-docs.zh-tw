@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780431"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>叢集建立因 Azure HDInsight 中的 InvalidNetworkConfigurationErrorCode 而失敗
 
 本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
 
-如果您看到錯誤碼`InvalidNetworkConfigurationErrorCode`說明「虛擬網路設定與 HDInsight 需求不相容」，通常表示叢集的[虛擬網路](../hdinsight-plan-virtual-network-deployment.md)設定有問題。 根據其餘的錯誤描述，遵循下列各節來解決您的問題。
+如果您看到錯誤碼 `InvalidNetworkConfigurationErrorCode` 說明「虛擬網路設定與 HDInsight 需求不相容」，通常表示叢集的[虛擬網路](../hdinsight-plan-virtual-network-deployment.md)設定有問題。 根據其餘的錯誤描述，遵循下列各節來解決您的問題。
 
 ## <a name="hostname-resolution-failed"></a>「主機名稱解析失敗」
 
@@ -32,11 +32,11 @@ ms.locfileid: "82780431"
 
 ### <a name="resolution"></a>解決方案
 
-1. 透過 Ssh 連線到屬於叢集一部分的 VM，然後執行命令`hostname -f`。 這會傳回主機的完整功能變數名稱（ `<host_fqdn>`在下列指示中稱為）。
+1. 透過 Ssh 連線到屬於叢集一部分的 VM，然後執行命令 `hostname -f` 。 這會傳回主機的完整功能變數名稱（ `<host_fqdn>` 在下列指示中稱為）。
 
-1. 然後，執行命令`nslookup <host_fqdn>` （例如`nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令會將名稱解析成 IP 位址，則表示您的 DNS 伺服器正常運作。 在此情況下，請向 HDInsight 提出支援案例，我們將會調查您的問題。 在您的支援案例中，請包含您所執行的疑難排解步驟。 這可協助我們更快解決問題。
+1. 然後，執行命令 `nslookup <host_fqdn>` （例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net` ）。 如果此命令會將名稱解析成 IP 位址，則表示您的 DNS 伺服器正常運作。 在此情況下，請向 HDInsight 提出支援案例，我們將會調查您的問題。 在您的支援案例中，請包含您所執行的疑難排解步驟。 這可協助我們更快解決問題。
 
-1. 如果上述命令未傳回 IP 位址，則執行`nslookup <host_fqdn> 168.63.129.16` （例如`nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能夠解析 IP，則表示您的 DNS 伺服器不會將查詢轉送到 Azure 的 DNS，或者它不是與叢集相同的虛擬網路中的 VM。
+1. 如果上述命令未傳回 IP 位址，則執行（例如 `nslookup <host_fqdn> 168.63.129.16` `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16` ）。 如果此命令能夠解析 IP，則表示您的 DNS 伺服器不會將查詢轉送到 Azure 的 DNS，或者它不是與叢集相同的虛擬網路中的 VM。
 
 1. 如果您沒有可作為叢集虛擬網路中自訂 DNS 伺服器的 Azure VM，則需要先新增此功能。 在虛擬網路中建立 VM，其會設定為 DNS 轉寄站。
 
@@ -89,7 +89,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 驗證168.63.129.16 是否在自訂 DNS 鏈中。 虛擬網路內的 DNS 可以將要求轉送到 Azure 內的遞迴解析程式，以解析該虛擬網路內的主機名稱。 如需詳細資訊，請參閱[虛擬網路中的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 存取 Azure 的遞迴解析程式是透過所提供的虛擬 IP 168.63.129.16。
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -141,8 +141,8 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
+* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

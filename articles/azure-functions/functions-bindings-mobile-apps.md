@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559588"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>適用於 Azure Functions 的 Mobile Apps 繫結 
@@ -132,16 +132,16 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---configuration"></a>輸入 - 組態
 
-下表說明您在*函數 json*檔案和`MobileTable`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `MobileTable` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 | **type**| n/a | 必須設定為 "mobileTable"|
-| **方向**| n/a |必須設定為 "in"|
+| **direction**| n/a |必須設定為 "in"|
 | **name**| n/a | 函式簽章中的輸入參數名稱。|
 |**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
-| **id**| **Id** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
-|**connection**|**建立**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
+| **id**| **識別碼** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
+|**connection**|**[連接]**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKey**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -290,12 +290,12 @@ public static object Run(
 
 ## <a name="output---configuration"></a>輸出 - 設定
 
-下表說明您在*函數 json*檔案和`MobileTable`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `MobileTable` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 | **type**| n/a | 必須設定為 "mobileTable"|
-| **方向**| n/a |必須設定為 "out"|
+| **direction**| n/a |必須設定為 "out"|
 | **name**| n/a | 函式簽章中的輸出參數名稱。|
 |**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
 |**connection**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。

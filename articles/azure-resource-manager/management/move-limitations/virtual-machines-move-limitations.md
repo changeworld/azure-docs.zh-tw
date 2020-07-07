@@ -4,10 +4,10 @@ description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群�
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744644"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
@@ -37,9 +37,9 @@ ms.locfileid: "82744644"
 2. 若要移動以 Azure 備份設定的虛擬機器，請執行下列步驟：
 
    1. 尋找虛擬機器的位置。
-   2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
+   2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
    3. 在 [Azure 入口網站中，勾選 [**顯示隱藏的類型**]。
-   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式`AzureBackup_<name of your VM that you're trying to move>_###########`的資源。
+   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
 

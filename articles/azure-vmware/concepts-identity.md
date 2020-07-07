@@ -4,10 +4,10 @@ description: 瞭解 Azure VMware 解決方案（AVS）的身分識別和存取�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740950"
 ---
 # <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware 解決方案（AVS）身分識別概念
@@ -29,10 +29,10 @@ VCenter 中的許可權是透過 CloudAdmin 群組來提供。 該群組可以�
 |  憑證            |  --  |        --       |  Microsoft 會進行憑證管理。  |
 |  內容庫         | CloudAdmin 使用者具有在內容庫中建立和使用檔案的許可權。    |         已啟用 SSO。         |  Microsoft 會將內容庫中的檔案散發至 ESXi 主機。  |
 |  資料中心              |  --  |        --          |  Microsoft 會執行所有的資料中心作業。  |
-|  資料存放區               | 資料存放區. AllocateSpace、資料存放區. 流覽、資料存放區. DeleteFile、資料存放區. FileManagement、資料存放區 UpdateVirtualMachineMetadata     |    --    |   -- |
+|  資料存放區               | 資料存放區. AllocateSpace、資料存放區. 流覽、Datastore.Config、資料存放區 DeleteFile、資料存放區 FileManagement、資料存放區 UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX 代理程式管理員       |  --  |         --       |  Microsoft 會執行所有作業。  |
 |  資料夾                  |  CloudAdmin 使用者擁有所有資料夾許可權。     |  --  |  --  |
-|  全域                  |  CancelTask、global. GlobalTag、global.asa、global. LogEvent、global. ManageCustomFields、Global. ServiceManagers、global. SetCustomField、global. SystemTag         |                  |    |
+|  全球                  |  CancelTask、global. GlobalTag、global、LogEvent、global. ManageCustomFields、Global. ServiceManagers、Global. SetCustomField、Global.SystemTag         |                  |    |
 |  主機                    |  Hbr. HbrManagement      |        --          |  Microsoft 會執行所有其他的主機操作。  |
 |  InventoryService        |  InventoryService。標記      |        --          |  --  |
 |  網路                 |  Network.Assign    |                  |  Microsoft 會執行所有其他網路作業。  |
@@ -40,7 +40,7 @@ VCenter 中的許可權是透過 CloudAdmin 群組來提供。 該群組可以�
 |  設定檔驅動的儲存體  |  --  |        --       |  Microsoft 會執行所有的設定檔作業。  |
 |  資源                |  CloudAdmin 使用者擁有所有資源許可權。        |      --       | --   |
 |  排程的工作          |  CloudAdmin 使用者具有所有 ScheduleTask 許可權。   |   --   | -- |
-|  課程                |  會話. GlobalMessage、會話. ValidateSession      |   --   |  Microsoft 會執行所有其他會話作業。  |
+|  工作階段                |  會話. GlobalMessage、會話. ValidateSession      |   --   |  Microsoft 會執行所有其他會話作業。  |
 |  儲存體視圖           |  StorageViews。 View   |        --          |  Microsoft 會執行所有其他儲存體查看作業（設定服務）。  |
 |  工作                   |  --  |  --   |  Microsoft 會管理管理工作的延伸模組。  |
 |  vApp                    |  CloudAdmin 使用者具有所有 vApp 許可權。  |  --  |  --  |

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562333"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark 方針
@@ -22,7 +22,7 @@ ms.locfileid: "82562333"
 
 | 選項 | 文件 |
 |---|---|
-| VSCode | [使用 Spark & Hive 工具進行 Visual Studio Code](../hdinsight-for-vscode.md) |
+| VSCode | [使用 Spark & Hive Tools for Visual Studio Code](../hdinsight-for-vscode.md) |
 | Jupyter Notebook | [教學課程：在 Azure HDInsight 中的 Apache Spark 叢集上載入資料和執行查詢](./apache-spark-load-data-run-query.md) |
 | IntelliJ | [教學課程：使用 Azure Toolkit for IntelliJ 建立適用于 HDInsight 叢集的 Apache Spark 應用程式](./apache-spark-intellij-tool-plugin.md) |
 | IntelliJ | [教學課程：使用 IntelliJ 為 HDInsight 中的 Apache Spark 建立 Scala Maven 應用程式](./apache-spark-create-standalone-application.md) |
@@ -69,4 +69,4 @@ ms.locfileid: "82562333"
 ## <a name="next-steps"></a>後續步驟
 
 * [設定 Apache Spark 設定](apache-spark-settings.md)
-* [將 HDInsight 中的 Apache Spark 作業優化](apache-spark-perf.md)
+* [將 HDInsight 中的 Apache Spark 作業最佳化](apache-spark-perf.md)

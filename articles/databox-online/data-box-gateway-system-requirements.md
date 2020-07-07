@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562435"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料箱閘道系統需求
@@ -34,7 +34,7 @@ ms.locfileid: "82562435"
 | 虛擬處理器 (核心)   | 最少 4 個 |
 | 記憶體  | 最少 8 GB|
 | 可用性|單一節點|
-| 磁碟| 作業系統磁碟：250 GB <br> 資料磁碟：最少 2 TB，精簡佈建且必須以 SSD 支援|
+| 磁碟| OS 磁碟：250 GB <br> 資料磁碟：最少 2 TB、精簡佈建且必須以 SSD 為後盾|
 | 網路介面|1 或多個虛擬網路介面|
 
 
@@ -48,7 +48,7 @@ ms.locfileid: "82562435"
 
 ## <a name="supported-virtualization-platforms-for-device"></a>裝置的受支援虛擬化平台
 
-| **作業系統/平台**  |**版本**   |**注意事項**  |
+| **作業系統/平台**  |**版本**   |**備註**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支援 VMware 工具。         |
@@ -93,7 +93,7 @@ ms.locfileid: "82562435"
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 * [部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)
 

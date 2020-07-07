@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561022"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge 的持續整合與持續部署
@@ -25,10 +25,10 @@ ms.locfileid: "82561022"
 
 * **Azure IoT Edge 組建模組映射**會取得您的 IoT Edge 解決方案程式碼，並建立容器映射。
 * **Azure IoT Edge-推送模組映射**會將模組映射推送至您指定的容器登錄。
-* **Azure IoT Edge-產生部署資訊清單**會接受 deployment. template json 檔案和變數，然後產生最後的 IoT Edge 部署資訊清單檔案。
+* **Azure IoT Edge-產生部署資訊清單**會在檔案和變數上使用 deployment.template.js，然後產生最終的 IoT Edge 部署資訊清單檔案。
 * **Azure IoT Edge 部署至 IoT Edge 裝置**有助於建立單一/多個 IoT Edge 裝置的 IoT Edge 部署。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav) \(英文\)。
 * 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](how-to-visual-studio-develop-csharp-module.md)中的步驟。
@@ -54,7 +54,7 @@ ms.locfileid: "82561022"
 >
 >如需詳細資訊，請參閱[建立建置管線](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline) \(英文\)。
 
-1. 登入您的 Azure DevOps 組織（**HTTPs：\//dev.azure.com/{your 組織}/**），然後開啟包含您 IoT Edge 解決方案存放庫的專案。
+1. 登入您的 Azure DevOps 組織（**HTTPs： \/ /dev.azure.com/{your 組織}/**），然後開啟包含您 IoT Edge 解決方案存放庫的專案。
 
    針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。 該存放庫包含 **IoTEdgeSolution**，其中包含名為 **filtermodule** 的模組的程式碼。
 
@@ -84,7 +84,7 @@ ms.locfileid: "82561022"
 
      ![設定組建代理程式集區](./media/how-to-ci-cd/configure-env.png)
 
-5. 您的管線已預先設定名為**代理程式作業 1** 的作業。 **+** 選取加號（），將三個工作新增至作業： **Azure IoT Edge**兩次、**複製**檔案一次，並**發行組建**成品一次。 (將滑鼠暫留在每個工作的名稱上以顯示 [新增]**** 按鈕)。
+5. 您的管線已預先設定名為**代理程式作業 1** 的作業。 選取加號（ **+** ），將三個工作新增至作業： **Azure IoT Edge**兩次、**複製**檔案一次，並**發行組建**成品一次。 (將滑鼠暫留在每個工作的名稱上以顯示 [新增]**** 按鈕)。
 
    ![新增 Azure IoT Edge 工作](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -96,23 +96,23 @@ ms.locfileid: "82561022"
 
    * **顯示名稱**：接受預設的**Azure IoT Edge 組建模組映射**。
    * **動作**：接受預設的**組建模組映射**。
-   * **. template. json**檔案：選取省略號（**...**），然後流覽至包含您 IoT Edge 解決方案的存放庫中的**deployment. template. json**檔案。
+   * **在檔案上.template.js**：選取省略號（**...**），然後流覽至存放庫中包含 IoT Edge 解決方案的**deployment.template.js** 。
    * **預設平臺**：根據您的目標 IoT Edge 裝置，為您的模組選取適當的平臺。
-   * **輸出變數**：輸出變數包含參考名稱，可讓您用來設定將產生部署 json 檔案的檔案路徑。 將參考名稱設定為易記的名稱，例如 **edge**。
+   * **輸出變數**：輸出變數包含參考名稱，您可以用來設定要在其中產生 deployment.js檔案的檔案路徑。 將參考名稱設定為易記的名稱，例如 **edge**。
 
 
-   這些設定會使用檔案中`module.json`定義的映射存放庫和標籤來命名及標記模組映射。 **組建模組映射**也有助於將變數取代為您在檔案中`module.json`定義的確切值。 在 Visual Studio 或 Visual Studio Code 中，您會在檔案中指定實際`.env`的值。 在 Azure Pipelines 中，您可以在 [**管線變數**] 索引標籤上設定值。請選取 [**變數**] 索引標籤，並依照下列方式設定名稱和值：
+   這些設定會使用檔案中定義的映射存放庫和標籤 `module.json` 來命名及標記模組映射。 **組建模組映射**也有助於將變數取代為您在檔案中定義的確切值 `module.json` 。 在 Visual Studio 或 Visual Studio Code 中，您會在檔案中指定實際的值 `.env` 。 在 Azure Pipelines 中，您可以在 [**管線變數**] 索引標籤上設定值。請選取 [**變數**] 索引標籤，並依照下列方式設定名稱和值：
 
     * **ACR_ADDRESS**：您的 Azure Container Registry 位址。 
 
-    如果您的專案中有其他變數，您可以在此索引標籤上指定名稱和值。**組建模組映射**只會辨識`${VARIABLE}`格式為的變數。 請確定您在檔案中`**/module.json`使用此格式。
+    如果您的專案中有其他變數，您可以在此索引標籤上指定名稱和值。**組建模組映射**只會辨識格式為的變數 `${VARIABLE}` 。 請確定您在檔案中使用此格式 `**/module.json` 。
     
 7. 選取第二個 [Azure IoT Edge]**** 工作來編輯它。 此工作會將所有模組映像推送到您選取的容器登錄。
 
    * **顯示名稱**：當動作欄位變更時，顯示名稱會自動更新。
    * **動作**：使用下拉式清單來選取 [**推送模組映射**]。
    * **容器登錄類型**：選取您用來儲存模組映射的容器登錄類型。 表單會根據您所選擇的登錄類型而變更。 如果您選擇 [Azure Container Registry]****，請使用下拉式清單來選取 Azure 訂用帳戶和容器登錄的名稱。 如果您選擇 [泛型容器登錄]****，請選取 [新增]**** 以建立登錄服務連線。
-   * **. template. json**檔案：選取省略號（**...**），然後流覽至包含您 IoT Edge 解決方案的存放庫中的**deployment. template. json**檔案。
+   * **在檔案上.template.js**：選取省略號（**...**），然後流覽至存放庫中包含 IoT Edge 解決方案的**deployment.template.js** 。
    * **預設平臺**：選取與您的組建模組映射相同的平臺。
 
    如果您有多個容器登錄可裝載您的模組映像，您需要複製此工作、選取不同的容器登錄，然後使用進階設定中的 [略過模組]****，略過不適用於此特定登錄的映像。
@@ -120,13 +120,13 @@ ms.locfileid: "82561022"
 8. 選取 [**複製**檔案] 工作來編輯它。 使用此工作可將檔案複製到成品臨時目錄。
 
    * **顯示名稱**：將檔案複製到： Drop folder。
-   * **內容**：將兩行放在這個區段`deployment.template.json`中`**/module.json`，和。 這兩種類型的檔案是用來產生 IoT Edge 部署資訊清單的輸入。 需要複製到成品執行資料夾，並針對發行管線發行。
-   * **目的檔案夾**：放入變數`$(Build.ArtifactStagingDirectory)`。 請參閱[組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)以瞭解描述。
+   * **內容**：將兩行放在這個區段中， `deployment.template.json` 和 `**/module.json` 。 這兩種類型的檔案是用來產生 IoT Edge 部署資訊清單的輸入。 需要複製到成品執行資料夾，並針對發行管線發行。
+   * **目的檔案夾**：放入變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱[組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)以瞭解描述。
 
 9. 選取 [發行組建成品]**** 工作來編輯它。 提供工作的成品臨時目錄路徑，以便將路徑發佈至發行管線。
 
    * **顯示名稱**： Publish 成品： drop。
-   * **要發行的路徑**：放入`$(Build.ArtifactStagingDirectory)`變數。 請參閱[組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)以瞭解描述。
+   * **要發行的路徑**：放入變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱[組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)以瞭解描述。
    * 成品**名稱**： drop。
    * 成品**發佈位置**： Azure Pipelines。
 
@@ -172,7 +172,7 @@ ms.locfileid: "82561022"
 
 8. 在**開發**階段中，您應該會看到預設的**代理程式作業**。 您可以設定有關代理程式作業的詳細資料，但部署工作並不會區分平台，因此您可以使用 [代理程式集區]**** 中的 [裝載的 VS2017]**** 或 [裝載的 Ubuntu 1604]**** (或您自己管理的任何其他代理程式)。
 
-9. 選取加號（**+**）以加入兩個工作。 搜尋並新增**Azure IoT Edge**兩次。
+9. 選取加號（ **+** ）以加入兩個工作。 搜尋並新增**Azure IoT Edge**兩次。
 
     ![為 dev 新增工作](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -180,17 +180,17 @@ ms.locfileid: "82561022"
 
     * **顯示名稱**：當動作欄位變更時，顯示名稱會自動更新。
     * **動作**：使用下拉式清單來選取 [**產生部署資訊清單**]。 變更動作值時，系統也會更新工作顯示名稱以使其相符。
-    * **. template. json**檔案：放置路徑`$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`。 路徑是從組建管線發行。
+    * **在檔案上.template.js**：放置路徑 `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` 。 路徑是從組建管線發行。
     * **預設平臺**：建立模組映射時，請選擇相同的值。
-    * **輸出路徑**：放置路徑`$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`。 此路徑是最後的 IoT Edge 部署資訊清單檔案。
+    * **輸出路徑**：放置路徑 `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` 。 此路徑是最後的 IoT Edge 部署資訊清單檔案。
 
-    這些設定可協助取代檔案中`deployment.template.json`的模組映射 url。 **產生部署資訊清單**也有助於將變數取代為您在檔案中`deployment.template.json`定義的確切值。 在 VS/VS Code 中，您會在檔案中指定實際`.env`的值。 在 Azure Pipelines 中，您可以設定 [發行管線變數] 索引標籤中的值。移至 [變數] 索引標籤，並依照下列方式設定名稱和值。
+    這些設定可協助取代檔案中的模組映射 Url `deployment.template.json` 。 **產生部署資訊清單**也有助於將變數取代為您在檔案中定義的確切值 `deployment.template.json` 。 在 VS/VS Code 中，您會在檔案中指定實際的值 `.env` 。 在 Azure Pipelines 中，您可以設定 [發行管線變數] 索引標籤中的值。移至 [變數] 索引標籤，並依照下列方式設定名稱和值。
 
     * **ACR_ADDRESS**：您的 Azure Container Registry 位址。
     * **ACR_PASSWORD**：您的 Azure Container Registry 密碼。
     * **ACR_USER**：您的 Azure Container Registry 使用者名稱。
 
-    如果您的專案中有其他變數，您可以在此索引標籤中指定名稱和值。[**產生部署資訊清單**] 只能辨識 [類別] `${VARIABLE}`中的變數，請確定您在檔案中`*.template.json`使用此功能。
+    如果您的專案中有其他變數，您可以在此索引標籤中指定名稱和值。[**產生部署資訊清單**] 只能辨識 [類別] 中的變數 `${VARIABLE}` ，請確定您在檔案中使用此功能 `*.template.json` 。
 
     ![設定發行管線的變數](./media/how-to-ci-cd/configure-variables.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "82561022"
     * **選擇單一/多個裝置**：選擇您要將發行管線部署到一個或多個裝置。
       * 如果部署到單一裝置，請輸入 **IoT Edge 裝置識別碼**。
       * 如果要部署到多個裝置，請指定裝置**目標條件**。 [目標條件] 是一個篩選器，以符合 IoT 中樞中的一組 IoT Edge 裝置。 如果您想使用裝置標記作為條件，您必須使用 IoT 中樞裝置對應項更新對應的裝置標記。 在進階設定中更新 [IoT Edge 部署識別碼]**** 和 [IoT Edge 部署優先順序]****。 如需為多個裝置建立部署的詳細資訊，請參閱[了解 IoT Edge 自動部署](module-deployment-monitoring.md)。
-    * 展開 [高級設定]，選取 [ **IoT Edge 部署識別碼**] `$(System.TeamProject)-$(Release.EnvironmentName)`，放入變數。 這會將專案和發行名稱對應至您的 IoT Edge 部署識別碼。
+    * 展開 [高級設定]，選取 [ **IoT Edge 部署識別碼**]，放入變數 `$(System.TeamProject)-$(Release.EnvironmentName)` 。 這會將專案和發行名稱對應至您的 IoT Edge 部署識別碼。
 
 12. 選取 [儲存]**** 以將變更儲存至新的發行管線。 從功能表中選取 [管線]**** 以返回管線檢視。
 

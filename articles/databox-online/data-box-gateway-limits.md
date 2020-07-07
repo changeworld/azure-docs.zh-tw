@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: d160b0ead1ceb8c41bede20cb389a360d24258f9
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561381"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure 資料箱閘道限制
@@ -29,9 +29,9 @@ ms.locfileid: "82561381"
 
 | 描述 | 值 |
 |---|---|
-|不需要。 (每個裝置的檔案) |1 億 <br> 針對每個要新增的25000000檔案（最大限制為100000000），您應該新增 2 TB 的磁碟空間、8 GB 的 RAM，以及4個 CPU 核心。 |
-|不需要。 (每個裝置的共用) |24 |
-|不需要。 每個 Azure 儲存體容器的共用 |1 |
+|不會。 (每個裝置的檔案) |1 億 <br> 針對每個要新增的25000000檔案（最大限制為100000000），您應該新增 2 TB 的磁碟空間、8 GB 的 RAM，以及4個 CPU 核心。 |
+|不會。 (每個裝置的共用) |24 |
+|不會。 每個 Azure 儲存體容器的共用 |1 |
 |寫入至共用的檔案大小上限|針對 2 TB 的虛擬裝置，檔案大小上限為 500 GB。 <br> 檔案大小上限會以上述比例隨著資料磁碟大小增加，直到達到上限 5 TB 為止。 |
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制

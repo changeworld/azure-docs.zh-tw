@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744712"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace 中的共同銷售州和省代碼
@@ -75,7 +75,7 @@ ms.locfileid: "82744712"
 | District of Columbia                | 美國-DC     |
 | 美屬薩摩亞                      | 美國-AS     |
 | 關島                                | 美國-GU     |
-| 北馬里安納群島            | 美國-MP     |
+| 北馬利安納群島            | 美國-MP     |
 | 波多黎各                         | 美國-PR     |
 | 美國本土外小島嶼 | 美國-UM    |
 | 美屬維京群島                 | US-VI    |

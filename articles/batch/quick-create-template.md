@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262679"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959818"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Batch 帳戶
 
@@ -33,8 +33,8 @@ ms.locfileid: "85262679"
 
 範本中定義了兩個 Azure 資源：
 
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：建立儲存體帳戶。
-- [Microsoft.Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts)：建立 Batch 帳戶。
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：建立儲存體帳戶。
+- [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts)：建立 Batch 帳戶。
 
 ### <a name="deploy-the-template"></a>部署範本
 

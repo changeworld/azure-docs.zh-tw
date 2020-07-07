@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790842"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升級獨立叢集的組態 
@@ -17,9 +17,9 @@ ms.locfileid: "82790842"
 對於現代化系統來說，升級能力攸關產品是否能長期成功。 Azure Service Fabric 叢集是您擁有的資源。 本文說明如何升級獨立 Service Fabric 叢集的組態設定。
 
 ## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>在 ClusterConfig.json 檔案中自訂叢集設定
-獨立叢集是透過*clusterconfig.x509.multimachine.json*來設定。 若要深入了解不同的設定，請參閱[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。
+獨立叢集是透過*ClusterConfig.js*檔案來設定。 若要深入了解不同的設定，請參閱[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。
 
-您可以在`fabricSettings` *clusterconfig.x509.multimachine.json*的叢集[屬性](./service-fabric-cluster-manifest.md#cluster-properties)區段下的區段中新增、更新或移除設定。 
+您可以 `fabricSettings` 在*ClusterConfig.js*的 [叢集[屬性](./service-fabric-cluster-manifest.md#cluster-properties)] 區段底下的區段中新增、更新或移除設定。 
 
 例如，下列 JSON 會將新設定 *MaxDiskQuotaInMB* 新增至 `fabricSettings` 底下的 [Diagnostics]** 區段：
 

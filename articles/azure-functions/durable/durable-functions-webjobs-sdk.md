@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733408"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 Webjob 的形式執行 Durable Functions
@@ -17,23 +17,23 @@ ms.locfileid: "82733408"
 
 [Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 擴充功能是以 [WebJobs SDK](../../app-service/webjobs-sdk-how-to.md) 為基礎所建置的。 Webjob SDK 中的作業主機是 Azure Functions 中的執行時間。 如果您需要在 Azure Functions 中控制不可行的行為，您可以自行使用 Webjob SDK 來開發及執行 Durable Functions。
 
-在2.x 版的 Webjob SDK 中，主機是的`IHost`執行，而在2.x 版中，您使用`JobHost`物件。
+在2.x 版的 Webjob SDK 中，主機是的執行 `IHost` ，而在2.x 版中，您使用 `JobHost` 物件。
 
-您可以在 Webjob SDK 2.x 版中取得連結 Durable Functions 範例：下載或複製[Durable Functions 存放庫](https://github.com/azure/azure-functions-durable-extension/)，並簽出*v1*分支並移至*\\範例 webjobssdk\\連結*資料夾。
+您可以在 Webjob SDK 2.x 版中取得連結 Durable Functions 範例：下載或複製[Durable Functions 存放庫](https://github.com/azure/azure-functions-durable-extension/)，並簽出*v1*分支並移至*範例 \\ webjobssdk \\ 連結*資料夾。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉 WebJobs SDK、Azure Functions 的C# 類別庫開發和 Durable Functions 等項目的基本概念。 如果您需要這些主題的簡介，請參閱下列資源：
 
 * [開始使用 WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
-* [使用 Visual Studio 建立第一個函式](../functions-create-your-first-function-visual-studio.md)
+* [使用 Visual Studio 建立第一個函數](../functions-create-your-first-function-visual-studio.md)
 * [長期函式](durable-functions-sequence.md)
 
 若要完成本文中的步驟：
 
-* 使用**Azure 開發**工作負載[安裝 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) 。
+* 透過 **Azure 開發**工作負載[安裝 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)。
 
-  如果您已經有 Visual Studio，但沒有該工作負載，請選取 [**工具** > ] [**取得工具和功能**] 來新增工作負載。
+  如果您已經有 Visual Studio，但沒有該工作負載，請選取 [**工具**] [  >  **取得工具和功能**] 來新增工作負載。
 
   (您可以改為使用 [Visual Studio Code](https://code.visualstudio.com/)，但某些指示是 Visual Studio 特有的。)
 
@@ -47,9 +47,9 @@ ms.locfileid: "82733408"
 
 若要以 Webjob 的形式執行 Durable Functions，您必須先建立主控台應用程式。 WebJobs SDK 專案只是安裝了適當 NuGet 套件的主控台應用程式專案。
 
-在 [Visual Studio**新增專案**] 對話方塊中，選取 [ **Windows 傳統桌面** > **主控台應用程式（.NET Framework）**]。 在專案檔中，`TargetFrameworkVersion` 應該是 `v4.6.1`。
+在 [Visual Studio**新增專案**] 對話方塊中，選取 [ **Windows 傳統桌面**  >  **主控台應用程式（.NET Framework）**]。 在專案檔中，`TargetFrameworkVersion` 應該是 `v4.6.1`。
 
-Visual Studio 也有 WebJob 專案範本，您可以藉由選取 [**雲端** > ]**[Azure WebJob （.NET Framework）**] 來使用它。 此範本會安裝許多套件，但您可能不需要其中的某些套件。
+Visual Studio 也有 WebJob 專案範本，您可以藉由選取 [**雲端**]  >  **[Azure WebJob （.NET Framework）**] 來使用它。 此範本會安裝許多套件，但您可能不需要其中的某些套件。
 
 ## <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
-您也需要記錄提供者。 下列命令會安裝 Azure 應用程式 Insights 提供者和`ConfigurationManager`。 `ConfigurationManager` 可讓您從應用程式設定中取得 Application Insights 檢測金鑰。
+您也需要記錄提供者。 下列命令會安裝 Azure 應用程式 Insights 提供者和 `ConfigurationManager` 。 `ConfigurationManager` 可讓您從應用程式設定中取得 Application Insights 檢測金鑰。
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 Webjob 內容中的 Durable Functions 與 Azure Functions 內容中的 Durable Functions 有些不同。 當您撰寫程式碼時，請務必留意差異。
 
@@ -157,7 +157,7 @@ public static async Task CronJob(
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-範例專案中的協調流程用戶端函式會啟動協調器函式，然後進入每 2 `GetStatusAsync`秒呼叫一次的迴圈：
+範例專案中的協調流程用戶端函式會啟動協調器函式，然後進入 `GetStatusAsync` 每2秒呼叫一次的迴圈：
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -202,11 +202,11 @@ while (true)
 
 1. 建立 Web 應用程式和儲存體帳戶。
 
-1. 在 web 應用程式中，將儲存體連接字串儲存在名為`AzureWebJobsStorage`的應用程式設定中。
+1. 在 web 應用程式中，將儲存體連接字串儲存在名為的應用程式設定中 `AzureWebJobsStorage` 。
 
 1. 建立 Application Insights 資源，並對其使用**一般**應用程式類型。
 
-1. 將檢測金鑰儲存在名為`APPINSIGHTS_INSTRUMENTATIONKEY`的應用程式設定中。
+1. 將檢測金鑰儲存在名為的應用程式設定中 `APPINSIGHTS_INSTRUMENTATIONKEY` 。
 
 1. 部署為 WebJob。
 
@@ -216,7 +216,7 @@ while (true)
 
 所引進的主要變更是使用 .NET Core，而不是 .NET Framework。 若要建立 Webjob SDK 3.x 專案，指示相同，但有下列例外狀況：
 
-1. 建立 .NET Core 主控台應用程式。 在 [Visual Studio**新增專案**] 對話方塊中，選取 [ **.net core** > **主控台應用程式（.net core）**]。 專案檔會將 `TargetFramework` 指定為 `netcoreapp2.x`。
+1. 建立 .NET Core 主控台應用程式。 在 [Visual Studio**新增專案**] 對話方塊中，選取 [ **.net core**  >  **主控台應用程式（.net core）**]。 專案檔會將 `TargetFramework` 指定為 `netcoreapp2.x`。
 
 1. 選擇下列套件的發行版本 Webjob SDK 3.x：
 
@@ -224,7 +224,7 @@ while (true)
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. 使用 .NET Core 設定架構，將儲存體連接字串和 Application Insights 檢測金鑰放在*appsettings json*檔案中。 以下是範例：
+1. 使用 .NET Core 設定架構，在檔案的*appsettings.js*中設定儲存體連接字串和 Application Insights 檢測金鑰。 以下是範例：
 
     ```json
         {
@@ -233,7 +233,7 @@ while (true)
         }
     ```
 
-1. 變更`Main`方法程式碼以執行此動作。 以下是範例：
+1. 變更 `Main` 方法程式碼以執行此動作。 以下是範例：
 
    ```cs
    static void Main(string[] args)

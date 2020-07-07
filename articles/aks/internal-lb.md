@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790604"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>搭配 Azure Kubernetes Service (AKS) 使用內部負載平衡器
@@ -17,15 +17,15 @@ ms.locfileid: "82790604"
 若要限制存取您在 Azure Kubernetes Service (AKS) 中的應用程式，您可以建立內部負載平衡器來使用。 內部負載平衡器讓 Kubernetes 服務僅供在與 Kubernetes 叢集相同之虛擬網路中執行的應用程式存取。 本文說明如何透過 Azure Kubernetes Service (AKS) 來建立和使用內部負載平衡器。
 
 > [!NOTE]
-> Azure Load Balancer 有兩種 SKU -「基本」** 和「標準」**。 根據預設，當您建立 AKS 叢集時，會使用標準 SKU。  建立類型為 LoadBalancer 的服務時，您會得到與布建叢集時相同的 LB 類型。 如需詳細資訊，請參閱 [Azure 負載平衡器 SKU 比較][azure-lb-comparison]。
+> Azure Load Balancer 有兩種 SKU -「基本」和「標準」。 根據預設，您建立 AKS 叢集時，會使用「標準」SKU。  建立類型為 LoadBalancer 的服務時，您會得到與布建叢集時相同的 LB 類型。 如需詳細資訊，請參閱 [Azure 負載平衡器 SKU 比較][azure-lb-comparison]。
 
 ## <a name="before-you-begin"></a>開始之前
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-如果您使用現有的子網或資源群組，則 AKS 叢集服務主體需要管理網路資源的許可權。 一般來說，請將「*網路參與者*」角色指派給委派資源上的服務主體。 您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。 如需許可權的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
+如果您使用現有的子網或資源群組，則 AKS 叢集服務主體需要管理網路資源的許可權。 一般來說，請將「網路參與者」角色指派給委派資源上的服務主體。 您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。 如需權限的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>建立內部負載平衡器
 
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 系統會在節點資源群組中建立 Azure 負載平衡器，並聯機到與 AKS 叢集相同的虛擬網路。
 
-當您檢視服務詳細資料時，內部負載平衡器的 IP 位址會顯示在 EXTERNAL-IP** 資料行中。 在此內容中，*外部*與負載平衡器的外部介面相關，而不是接收公用的外部 IP 位址。 IP 位址可能需要一或兩分鐘的時間，才能從* \<擱置狀態\> *變更為實際的內部 IP 位址，如下列範例所示：
+當您檢視服務詳細資料時，內部負載平衡器的 IP 位址會顯示在 EXTERNAL-IP** 資料行中。 在此內容中，*外部*與負載平衡器的外部介面相關，而不是接收公用的外部 IP 位址。 IP 位址可能需要一或兩分鐘的時間，才能從變更 *\<pending\>* 為實際的內部 IP 位址，如下列範例所示：
 
 ```
 $ kubectl get service internal-app

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561870"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge 和 Azure 資料箱閘道1905版本資訊
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下列版本資訊會針對 Azure Data Box Edge 和 Azure 資料箱閘道的1905版本，識別重大的未解決問題和已解決的問題。
 
@@ -31,7 +31,7 @@ ms.locfileid: "82561870"
 > [!NOTE]
 > 更新1905只能套用至執行軟體 GA 版本的 Data Box Edge 裝置。
 
-## <a name="whats-new"></a>新功能
+## <a name="whats-new"></a>最新消息
 
 - 現場可程式化網**關陣列（FPGA）記錄改進**-在此版本中，我們已建立與 FPGA 相關的記錄和警示增強功能。 如果您使用 FPGA 的 Edge 計算功能，這就是 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](azure-stack-edge-deploy-configure-compute-advanced.md)。
 

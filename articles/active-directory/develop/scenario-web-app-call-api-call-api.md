@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559870"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web Api 的 web 應用程式：呼叫 Web API
@@ -28,7 +28,7 @@ ms.locfileid: "82559870"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下是的動作簡化的程式碼`HomeController`。 此程式碼會取得權杖以呼叫 Microsoft Graph。 已新增程式碼，以示範如何呼叫 Microsoft Graph 做為 REST API。 Appsettings 中提供了 Microsoft Graph API 的 URL，並會讀取名為`webOptions`的變數：
+以下是的動作簡化的程式碼 `HomeController` 。 此程式碼會取得權杖以呼叫 Microsoft Graph。 已新增程式碼，以示範如何呼叫 Microsoft Graph 做為 REST API。 appsettings.js的檔案中會提供 Microsoft Graph API 的 URL，並在名為的變數中讀取 `webOptions` ：
 
 ```json
 {
@@ -117,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移動至生產環境](scenario-web-app-call-api-production.md)
+> [移至生產環境](scenario-web-app-call-api-production.md)

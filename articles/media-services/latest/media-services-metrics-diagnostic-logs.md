@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559537"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
 
-[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 Azure 監視器所收集的所有資料都符合下列兩種基本類型的其中一種：計量和記錄。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以使用[計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)將計量資料視覺化並加以分析。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)、將其匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
+[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 Azure 監視器所收集的所有資料均符合下列兩個基本類型之一：計量和記錄。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以使用[計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)將計量資料視覺化並加以分析。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)、將其匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
 
 如需詳細的總覽，請參閱[Azure 監視器計量](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "82559537"
 |---|---|---|
 |Requests|Requests|提供串流端點所服務的 HTTP 要求總數。|
 |輸出|輸出|每個串流端點的輸出位元組總計（每分鐘）。|
-|SuccessE2ELatency|成功的端對端延遲|當送出回應的最後一個位元組時，從串流端點收到要求的持續時間。|
+|SuccessE2ELatency|成功端對端延遲|當送出回應的最後一個位元組時，從串流端點收到要求的持續時間。|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>為什麼要使用計量？
 

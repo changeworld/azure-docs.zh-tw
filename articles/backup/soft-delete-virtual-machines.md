@@ -4,10 +4,10 @@ description: 瞭解虛刪除虛擬機器如何讓備份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82765769"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虛擬機器的虛刪除
@@ -61,7 +61,7 @@ Vm 的虛刪除可保護 Vm 的備份不會遭到意外刪除。 即使在刪除
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>使用 Azure PowerShell 的 Vm 虛刪除
 
 > [!IMPORTANT]
-> 使用 Azure PS 進行虛刪除所需的 Az. Azurerm.recoveryservices 版本是 min 2.2.0。 使用```Install-Module -Name Az.RecoveryServices -Force```來取得最新版本。
+> 使用 Azure PS 進行虛刪除所需的 Az. Azurerm.recoveryservices 版本是 min 2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 來取得最新版本。
 
 如上 Azure 入口網站所述，使用 Azure PowerShell 時，步驟的順序也相同。
 

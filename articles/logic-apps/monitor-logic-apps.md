@@ -7,20 +7,20 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731997"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>監視執行狀態、查看觸發程式歷程記錄，以及設定 Azure Logic Apps 的警示
 
-[建立並執行邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)之後，您可以檢查邏輯應用程式的執行狀態、[執行歷程記錄](#review-runs-history)、[觸發記錄](#review-trigger-history)和效能。 若要取得失敗或其他可能問題的通知，請設定[警示](#add-azure-alerts)。 例如，您可以建立警示來偵測「一小時有五個以上的執行失敗時」。
+[建立並執行邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)之後，您可以檢查邏輯應用程式的執行狀態、[執行歷程記錄](#review-runs-history)、[觸發記錄](#review-trigger-history)和效能。 若要取得有關失敗或其他可能問題的通知，請設定[警示](#add-azure-alerts)。 例如，您可以建立警示來偵測「一小時有五個以上的執行失敗時」。
 
 如需即時事件監控和更豐富的偵錯工具，請使用[Azure 監視器記錄](../azure-monitor/overview.md)來設定邏輯應用程式的診斷記錄。 此 Azure 服務可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 接著，您可以尋找並查看事件，例如觸發程式事件、執行事件和動作事件。 藉由將此資訊儲存在[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)中，您可以建立[記錄查詢](../azure-monitor/log-query/log-query-overview.md)，協助您尋找及分析此資訊。 您也可以將此診斷資料與其他 Azure 服務搭配使用，例如 Azure 儲存體和 Azure 事件中樞。 如需詳細資訊，請參閱[使用 Azure 監視器監視邏輯應用程式](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 > [!NOTE]
-> 如果您的邏輯應用程式在已建立以使用[內部存取端點](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中執行，您只能*從虛擬網路內部*查看並存取邏輯應用程式執行歷程記錄的輸入和輸出。 請確定您在私人端點和您想要存取其執行歷程記錄的電腦之間具有網路連線能力。 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或位於連線到 ISE 虛擬網路的虛擬網路內部，例如透過對等互連或虛擬私人網路。 如需詳細資訊，請參閱[ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
+> 如果您的邏輯應用程式在已建立以使用[內部存取端點](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中執行，您只能*從虛擬網路內部*查看並存取邏輯應用程式執行歷程記錄的輸入和輸出。 請確定您在私人端點和您想要存取其執行歷程記錄的電腦之間具有網路連線能力。 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或位於連線到 ISE 虛擬網路的虛擬網路內部，例如透過對等互連或虛擬私人網路。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
 <a name="review-runs-history"></a>
 
@@ -28,9 +28,9 @@ ms.locfileid: "82731997"
 
 每次引發專案或事件的觸發程式時，Logic Apps 引擎都會針對每個專案或事件建立並執行個別的工作流程實例。 根據預設，每個工作流程實例會以平行方式執行，因此在開始執行之前，工作流程都不需要等待。 您可以檢查在執行期間發生的狀況，包括工作流程中每個步驟的狀態，以及每個步驟的輸入和輸出。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，尋找並開啟邏輯應用程式設計工具中的邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，尋找並開啟邏輯應用程式。
 
-   若要尋找您的邏輯應用程式，請在主要 Azure 搜尋`logic apps`方塊中輸入，然後選取 [ **Logic Apps**]。
+   若要尋找您的邏輯應用程式，請在主要 Azure 搜尋方塊中輸入 `logic apps` ，然後選取 [ **Logic Apps**]。
 
    ![尋找並選取 [Logic Apps] 服務](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -49,8 +49,8 @@ ms.locfileid: "82731997"
    | 狀態 | 描述 |
    |--------|-------------|
    | **已取消** | 工作流程正在執行，但收到取消要求 |
-   | **Failed** | 至少有一個動作失敗，且未設定工作流程中的後續動作來處理失敗 |
-   | **正在執行** | 工作流程目前正在執行中。 <p>此狀態也會顯示在節流的工作流程中，或因為目前的定價方案。 如需詳細資訊，請參閱[定價頁面上的動作限制](https://azure.microsoft.com/pricing/details/logic-apps/)。 如果您設定[診斷記錄](../logic-apps/monitor-logic-apps.md)，您可以取得任何發生之節流事件的相關資訊。 |
+   | **已失敗** | 至少有一個動作失敗，且未設定工作流程中的後續動作來處理失敗 |
+   | **執行中** | 工作流程目前正在執行中。 <p>此狀態也會顯示在節流的工作流程中，或因為目前的定價方案。 如需詳細資訊，請參閱[定價頁面上的動作限制](https://azure.microsoft.com/pricing/details/logic-apps/)。 如果您設定[診斷記錄](../logic-apps/monitor-logic-apps.md)，您可以取得任何發生之節流事件的相關資訊。 |
    | **已成功** | 所有動作都已成功。 <p>**注意**：如果特定動作中發生任何失敗，則工作流程中的後續動作會處理該失敗。 |
    | **等候** | 工作流程尚未啟動或暫停（例如，因為先前仍在執行的工作流程）。 |
    |||
@@ -94,9 +94,9 @@ ms.locfileid: "82731997"
 
 每個邏輯應用程式的執行都會以觸發程式為開頭。 觸發歷程記錄會列出您的邏輯應用程式所做的所有觸發程式嘗試，以及每個觸發程式嘗試的輸入和輸出的相關資訊。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，尋找並開啟邏輯應用程式設計工具中的邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，尋找並開啟邏輯應用程式。
 
-   若要尋找您的邏輯應用程式，請在主要 Azure 搜尋`logic apps`方塊中輸入，然後選取 [ **Logic Apps**]。
+   若要尋找您的邏輯應用程式，請在主要 Azure 搜尋方塊中輸入 `logic apps` ，然後選取 [ **Logic Apps**]。
 
    ![尋找並選取 [Logic Apps] 服務](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -118,8 +118,8 @@ ms.locfileid: "82731997"
 
    | 狀態 | 描述 |
    |--------|-------------|
-   | **Failed** | 發生錯誤。 若要檢閱失敗的觸發程序所產生的任何錯誤訊息，請選取該觸發程序嘗試並選擇 [輸出]****。 例如，您可能會發現無效的輸入。 |
-   | **略** | 觸發程序檢查了端點，但不找到任何資料。 |
+   | **已失敗** | 發生錯誤。 若要檢閱失敗的觸發程序所產生的任何錯誤訊息，請選取該觸發程序嘗試並選擇 [輸出]****。 例如，您可能會發現無效的輸入。 |
+   | **已略過** | 觸發程序檢查了端點，但不找到任何資料。 |
    | **已成功** | 觸發程序檢查了端點，並找到可用的資料。 通常，「已引發」狀態也會隨著這個狀態一起出現。 如果沒有，則觸發程序定義可能有條件或 `SplitOn` 命令不符合要求。 <p>此狀態可以套用至手動觸發程序、循環觸發程序或輪詢觸發程序。 觸發程序可以順利執行，但執行本身在動作產生未處理的錯誤時可能會失敗。 |
    |||
 
@@ -140,7 +140,7 @@ ms.locfileid: "82731997"
 
 若要根據特定計量或邏輯應用程式超過閾值來取得警示，請[在 Azure 監視器中設定警示](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的計量](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 若要在不使用[Azure 監視器](../log-analytics/log-analytics-overview.md)的情況下設定警示，請遵循下列步驟。
 
-1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**警示** > ] [**新增警示規則**]。
+1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**警示**] [  >  **新增警示規則**]。
 
    ![新增邏輯應用程式的警示](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -162,7 +162,7 @@ ms.locfileid: "82731997"
 
    1. 針對 [**匯總類型**]，選取 [**計數**]。
 
-   1. 在 [**臨界值**] `1`中，輸入。
+   1. 在 [**臨界值**] 中，輸入 `1` 。
 
    1. 在 [**條件預覽**] 底下，確認您的條件是否正確。
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569078"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge 系統需求
@@ -82,7 +82,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 | URL 模式                      | 元件或功能                     |   
 |----------------------------------|---------------------------------------------|
-| HTTPs：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器登錄 (必要)               |
+| HTTPs： \/ /mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器登錄 (必要)               |
 | https://\*.azurecr.io                     | 個人和協力廠商容器登錄 (選擇性) | 
 | https://\*.azure-devices.net              | IoT 中樞存取權 (必要)                             | 
 
@@ -94,9 +94,9 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 | URL 模式                      | 元件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| HTTPs：\//mcr.microsoft.com<br></br>HTTPs://\*. cdn.mscr.com | Microsoft 容器登錄 (必要)               |
-| HTTPs://\*. azure-devices.us              | IoT 中樞存取權 (必要)           |
-| HTTPs://\*. azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
+| HTTPs： \/ /mcr.microsoft.com<br></br>HTTPs:// \* . cdn.mscr.com | Microsoft 容器登錄 (必要)               |
+| HTTPs:// \* . azure-devices.us              | IoT 中樞存取權 (必要)           |
+| HTTPs:// \* . azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
 
 ## <a name="internet-bandwidth"></a>網際網路頻寬
 
@@ -133,6 +133,6 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 最後，請確定您在資料集上驗證您的解決方案，並在生產環境中部署之前，先量化 Azure Stack 邊緣的效能。
 
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
-- [部署您的 Azure Stack 邊緣](azure-stack-edge-deploy-prep.md)
+- [部署您的 Azure Stack Edge](azure-stack-edge-deploy-prep.md)

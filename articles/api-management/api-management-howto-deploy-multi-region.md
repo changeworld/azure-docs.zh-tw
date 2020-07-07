@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790474"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何將 Azure API 管理服務執行個體部署到多個 Azure 區域
@@ -102,8 +102,8 @@ API 管理會根據[最低延遲](../traffic-manager/traffic-manager-routing-met
 
 1. 建立您自己的[Azure 流量管理員](https://azure.microsoft.com/services/traffic-manager/)。
 1. 如果您使用的是自訂網域，請[將其用於流量管理員](../traffic-manager/traffic-manager-point-internet-domain.md)，而不是 API 管理服務。
-1. [在流量管理員中設定 API 管理區域端點](../traffic-manager/traffic-manager-manage-endpoints.md)。 例如`https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net`，區域端點會遵循的 URL 模式。
-1. [在流量管理員中設定 API 管理區域狀態端點](../traffic-manager/traffic-manager-monitoring.md)。 例如`https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`，地區狀態端點會遵循的 URL 模式。
+1. [在流量管理員中設定 API 管理區域端點](../traffic-manager/traffic-manager-manage-endpoints.md)。 例如，區域端點會遵循的 URL 模式 `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net` 。
+1. [在流量管理員中設定 API 管理區域狀態端點](../traffic-manager/traffic-manager-monitoring.md)。 例如，地區狀態端點會遵循的 URL 模式 `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef` 。
 1. 指定流量管理員的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
 [create an api management service instance]: get-started-create-service-instance.md

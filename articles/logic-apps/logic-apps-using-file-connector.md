@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580644"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
@@ -25,7 +25,7 @@ ms.locfileid: "82580644"
 
 本文說明如何如此範例案例所述來連線到內部部署檔案系統：將已上傳至 Dropbox 的檔案複製到檔案共用，然後傳送電子郵件。 若要安全地連線並存取內部部署系統，邏輯應用程式可使用[內部部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如需連接器特定的技術資訊，請參閱[檔案系統連接器參考](/connectors/filesystem/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "82580644"
 * Logic Apps 支援的任何電子郵件提供者 (例如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 對於其他提供者，請[檢閱這裡的連接器清單](https://docs.microsoft.com/connectors/)。 此邏輯應用程式會使用 Office 365 Outlook 帳戶。 如果您使用另一個電子郵件帳戶，則整體步驟相同，但您的 UI 可能稍有不同。
 
   > [!IMPORTANT]
-  > 如果您想要使用 Gmail 連接器，只有 G Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)用來搭配您的 Gmail 連接器進行驗證。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 針對此範例，您需要空白的邏輯應用程式。
 
@@ -70,15 +70,15 @@ ms.locfileid: "82580644"
 
    | 屬性 | 必要 | 值 | 描述 |
    | -------- | -------- | ----- | ----------- |
-   | **連線名稱** | 是 | <*連接名稱*> | 您想要的連線名稱 |
-   | **根資料夾** | 是 | <*根資料夾-名稱*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
+   | **連接名稱** | 是 | <*連接名稱*> | 您想要的連線名稱 |
+   | **根資料夾** | 是 | <*根資料夾-名稱*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如：`\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
    | **驗證類型** | 否 | <*驗證類型*> | 您的檔案系統所使用的驗證類型： **Windows** |
-   | **使用者名稱** | 是 | <*domain* >網域<*username*使用者\\名稱> <p>-或- <p><*本機*>\\電腦<使用者*名稱*> | 您的檔系統資料夾所在之電腦的使用者名稱。 <p>如果您的檔系統資料夾位於與內部部署資料閘道相同的電腦上，您可以使用 <*本機電腦*>\\<的使用者*名稱*>。 |
+   | **使用者名稱** | 是 | <*domain* > \\ 網域 <使用者*名稱*> <p>-或- <p><*本機* > \\ 電腦 <使用者*名稱*> | 您的檔系統資料夾所在之電腦的使用者名稱。 <p>如果您的檔系統資料夾位於與內部部署資料閘道相同的電腦上，您可以使用 <*本機電腦的*使用者 > \\ < *名稱*>。 |
    | **密碼** | 是 | <*您的密碼*> | 您的檔案系統所在電腦的密碼 |
-   | **gateway** | 是 | <*已安裝-閘道-名稱*> | 先前所安裝閘道的名稱 |
+   | **關機** | 是 | <*已安裝-閘道-名稱*> | 先前所安裝閘道的名稱 |
    |||||
 
-1. 完成之後，請選擇 [建立]****。
+1. 完成之後，請選擇 [建立]。
 
    Logic Apps 會設定並測試連線，以確定連線運作正常。 如果已正確設定連線，就會針對您先前選取的動作顯示選項。
 
