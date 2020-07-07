@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: d360ac5a57fe72b092a6694721905c066527bba3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086448"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 入口網站從 VHD 建立 VM
@@ -67,7 +67,7 @@ ms.locfileid: "82086448"
 8. 在 [網路]**** 頁面上，您可以讓入口網站建立所有的新資源，或選取現有的 [虛擬網路]**** 和 [網路安全性群組]****。 入口網站一律會為新 VM 建立新的網路介面和公用 IP 位址。 
 9. 在 [管理]**** 頁面上，對監視選項進行任何變更。
 10. 在 [客體組態]**** 頁面上，視需要新增任何擴充功能。
-11. 當您完成時，選取 [檢閱 + 建立]****。 
+11. 當您完成時，選取 [檢閱 + 建立]。 
 12. 如果 VM 組態通過驗證，請選取 [建立]**** 開始部署。
 
 

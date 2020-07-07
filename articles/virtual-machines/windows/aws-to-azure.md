@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084510"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>將 Windows VM 從 Amazon Web Services (AWS) 移至 Azure 虛擬機器
@@ -31,7 +31,7 @@ ms.locfileid: "82084510"
 
  
 - **特製化 VHD** - 特製化的 VHD 會從原始的 VM 維護使用者帳戶、應用程式和其他狀態資料。 如果您想要使用 VHD 現狀建立新的 VM，請確定完成下列步驟。  
-    * [準備要上傳至 Azure 的 WINDOWS VHD](prepare-for-upload-vhd-image.md)。 **不要**使用 Sysprep 一般化 VM。 
+    * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md). **不要**使用 Sysprep 一般化 VM。 
     * 移除任何 VM 上 (也就是 VMware 工具) 已安裝的來賓虛擬化工具和代理程式。 
     * 確認已透過 DHCP 設定 VM 提取其 IP 位址和 DNS 設定。 這可確保伺服器在啟動時取得 VNet 內的 IP 位址。  
 
@@ -40,7 +40,7 @@ ms.locfileid: "82084510"
 
 將 EC2 執行個體匯出至 Amazon S3 貯體中的 VHD。 請依照 Amazon 文件文章[使用虛擬機器匯入/匯出將執行個體匯出為虛擬機器](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)中的步驟，並執行 [create-instance-export-task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) 命令，將 EC2 執行個體匯出到 VHD 檔案。 
 
-已匯出的 VHD 檔案會儲存在您指定的 Amazon S3 貯體中。 匯出 VHD 的基本語法如下，只需以您的資訊取代括弧中\<的預留位置文字>。
+已匯出的 VHD 檔案會儲存在您指定的 Amazon S3 貯體中。 匯出 VHD 的基本語法如下，只要以您的資訊取代 \<brackets> 中的預留位置文字。
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

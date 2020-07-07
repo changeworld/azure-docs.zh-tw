@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131028"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虛擬 TPM 建立及布建模擬的 IoT Edge 裝置
@@ -31,7 +31,7 @@ DPS 支援在個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明
 > [!TIP]
 > 本文說明如何在虛擬裝置上使用 TPM 證明來測試自動布建，但大部分的功能也適用于使用實體 TPM 硬體時。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Windows 開發機器。 本文使用 Windows 10。
 * 使用中的 IoT 中樞。
@@ -100,9 +100,9 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容
 
 1. 此時，IoT 核心版裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 一旦您的裝置準備就緒，請再次以系統管理員身分執行 PowerShell。
 
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。 使用`-Dps`旗標來使用裝置布建服務，而不是手動布建。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。 使用 `-Dps` 旗標來使用裝置布建服務，而不是手動布建。
 
-   將`{scope_id}`和`{registration_id}`的預留位置值取代為您稍早收集的資料。
+   將和的預留位置值取代為 `{scope_id}` `{registration_id}` 您稍早收集的資料。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

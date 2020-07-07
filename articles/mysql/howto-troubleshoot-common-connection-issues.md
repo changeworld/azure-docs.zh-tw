@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100884"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫的連線問題進行疑難排解
@@ -48,7 +48,7 @@ ms.locfileid: "82100884"
 
 * 伺服器防火牆設定：確定已將適用於 MySQL 的 Azure 資料庫伺服器防火牆設為允許來自用戶端的連線，包括 proxy 伺服器和閘道。
 * 用戶端防火牆設定：用戶端上的防火牆必須允許連接到您的資料庫伺服器。 也必須允許您無法連到的伺服器 IP 位址和連接埠，在某些防火牆中，還要允許應用程式名稱，例如 MySQL。
-* 使用者錯誤：您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱* \@* 中遺漏的 servername 尾碼。
+* 使用者錯誤：您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的* \@ servername*尾碼。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解決永久性連線問題的步驟
 

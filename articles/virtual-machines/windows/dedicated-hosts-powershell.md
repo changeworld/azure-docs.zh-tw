@@ -9,17 +9,17 @@ ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082844"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 將 Vm 部署到專用主機
 
-本文會引導您瞭解如何建立 Azure[專用主機](dedicated-hosts.md)來裝載您的虛擬機器（vm）。 
+本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
-請確定您已安裝 Azure PowerShell 2.8.0 或更新版本，且已使用`Connect-AzAccount`登入 Azure 帳戶。 
+請確定您已安裝 Azure PowerShell 2.8.0 或更新版本，且已使用登入 Azure 帳戶 `Connect-AzAccount` 。 
 
 ## <a name="limitations"></a>限制
 
@@ -32,9 +32,9 @@ ms.locfileid: "82082844"
 - 跨越多個可用性區域。 在此情況下，您必須在想要使用的每個區域中都有一個主機群組。
 - 跨越多個對應至實體機架的容錯網域。 
  
-不論是哪一種情況，您都必須提供主機群組的容錯網域計數。 如果您不想要跨越群組中的容錯網域，請使用容錯網域計數1。 
+不論是哪一種情況，您都必須為主機群組提供容錯網域計數。 如果您不想在您的群組中跨越容錯網域，請使用容錯網域計數 1。 
 
-您也可以決定使用可用性區域和容錯網域。 這個範例會在區域1中建立具有2個容錯網域的主機群組。 
+您也可以決定同時使用可用性區域和容錯網域。 這個範例會在區域1中建立具有2個容錯網域的主機群組。 
 
 
 ```azurepowershell-interactive
@@ -52,9 +52,9 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>建立主機
 
-現在讓我們在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會捕捉支援的 VM 系列，以及專用主機的硬體世代。
+現在，讓我們在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會擷取支援的 VM 系列，以及專用主機的硬體世代。
 
-如需主機 Sku 和定價的詳細資訊，請參閱[Azure 專用主機定價](https://aka.ms/ADHPricing)。
+如需主機 SKU 和定價的詳細資訊，請參閱 [Azure 專用主機定價](https://aka.ms/ADHPricing)。
 
 如果您為主機群組設定容錯網域計數，系統會要求您指定主機的容錯網域。 在此範例中，我們會將主機的容錯網域設定為1。
 
@@ -73,7 +73,7 @@ $dHost = New-AzHost `
 
 在專用主機上建立虛擬機器。 
 
-如果您在建立主機群組時指定了可用性區域，則在建立虛擬機器時，您必須使用相同的區域。 在此範例中，因為我們的主機群組位於區域1，所以我們需要在區域1中建立 VM。  
+如果您在建立主機群組時指定了可用性區域，則必須在建立虛擬機器時使用相同的區域。 在此範例中，因為我們的主機群組位於區域1，所以我們需要在區域1中建立 VM。  
 
 
 ```azurepowershell-interactive
@@ -90,11 +90,11 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> 如果您在沒有足夠資源的主機上建立虛擬機器，虛擬機器將會以失敗狀態建立。 
+> 如果您在沒有足夠資源的主機上建立虛擬機器，虛擬機器將會以「失敗」狀態建立。 
 
 ## <a name="check-the-status-of-the-host"></a>檢查主機的狀態
 
-您可以使用[GetAzHost](/powershell/module/az.compute/get-azhost)搭配`-InstanceView`參數，檢查主機健全狀況狀態，以及您仍然可以部署到主機的虛擬機器數目。
+您可以使用[GetAzHost](/powershell/module/az.compute/get-azhost)搭配參數，檢查主機健全狀況狀態，以及您仍然可以部署到主機的虛擬機器數目 `-InstanceView` 。
 
 ```azurepowershell-interactive
 Get-AzHost `
@@ -213,9 +213,9 @@ Start-AzVM `
 
 ## <a name="clean-up"></a>清除
 
-即使沒有部署虛擬機器，仍會向您收取專用主機的費用。 您應該刪除目前未使用的任何主機來節省成本。  
+即使您沒有部署虛擬機器，仍會向您收取專用主機的費用。 您應該刪除目前未使用的任何主機以節省成本。  
 
-只有在沒有任何較長的虛擬機器使用時，您才能刪除主機。 使用[update-azvm](/powershell/module/az.compute/remove-azvm)刪除 vm。
+只有當不再有任何虛擬機器使用主機時，才能刪除主機。 使用[update-azvm](/powershell/module/az.compute/remove-azvm)刪除 vm。
 
 ```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
@@ -233,7 +233,7 @@ Remove-AzHost -ResourceGroupName $rgName -Name myHost
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-您也可以使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)，在單一命令中刪除整個資源群組。 這會刪除群組中建立的所有資源，包括所有 Vm、主機和主機群組。
+您也可以使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)，在單一命令中刪除整個資源群組。 這麼做會刪除群組中建立的所有資源，包括所有 VM、主機和主機群組。
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -242,6 +242,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>後續步驟
 
-- [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，它會使用區域和容錯網域來取得區域中的最大復原。
+- [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。
 
 - 您也可以使用[Azure 入口網站](dedicated-hosts-portal.md)部署專用主機。

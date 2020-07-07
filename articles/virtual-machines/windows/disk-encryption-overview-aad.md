@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 025d02ccdf38e72682cf67cc07a8b2edd549e599
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82081569"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD 的 Azure 磁碟加密（上一個版本）
@@ -45,9 +45,9 @@ ms.locfileid: "82081569"
 
 -  已加入網域的虛擬機器上具有自訂群組策略的 BitLocker 原則必須包含下列設定：設定[BitLocker 修復資訊的使用者儲存體-> 允許256位的修復金鑰](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 當 BitLocker 的自訂群組原則設定不相容時，Azure 磁碟加密將會失敗。 在沒有正確原則設定的電腦上，您可能必須套用新的原則、強制新的原則進行更新 (gpupdate.exe /force)，然後重新啟動。  
 
-## <a name="encryption-key-storage-requirements"></a>加密金鑰儲存需求  
+## <a name="encryption-key-storage-requirements"></a>加密金鑰儲存體需求  
 
-Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁片加密金鑰和密碼。 您的金鑰保存庫和 Vm 必須位於相同的 Azure 區域和訂用帳戶中。
+Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁碟加密金鑰與祕密。 您的金鑰保存庫和 VM 位於相同的 Azure 區域和訂閱中。
 
 如需詳細資訊，請參閱[使用 Azure AD 為 Azure 磁碟加密建立和設定金鑰保存庫（舊版）](disk-encryption-key-vault-aad.md)。
  
@@ -55,5 +55,5 @@ Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁片加密金鑰和
 
 - [使用 Azure AD 建立和設定 Azure 磁碟加密的金鑰保存庫（舊版）](disk-encryption-key-vault-aad.md)
 - [在 Windows Vm 上使用 Azure AD 啟用 Azure 磁碟加密（舊版）](disk-encryption-windows-aad.md)
-- [Azure 磁碟加密必要條件 CLI 腳本](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure 磁碟加密必要條件 PowerShell 腳本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [Azure 磁碟加密的必要 CLI 指令碼](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure 磁碟加密的必要 PowerShell 指令碼](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

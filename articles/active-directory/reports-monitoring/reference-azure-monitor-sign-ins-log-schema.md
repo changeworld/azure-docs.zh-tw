@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129207"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解讀 Azure 監視器中的 Azure AD 登入記錄架構
@@ -145,7 +145,7 @@ ms.locfileid: "82129207"
 
 | 欄位名稱 | 描述 |
 |------------|-------------|
-| 時間 | 日期和時間 (UTC)。 |
+| Time | 日期和時間 (UTC)。 |
 | ResourceId | 此值未對應，您可以放心地略過此欄位。  |
 | OperationName | 針對登入，這個值一律是 *Sign-in activity*。 |
 | OperationVersion | 用戶端要求的 REST API 版本。 |
@@ -154,17 +154,17 @@ ms.locfileid: "82129207"
 | ResultType | 登入作業的結果可以是 *Success* 或 *Failure*。 | 
 | ResultSignature | 包含登入作業的錯誤碼 (如果有)。 |
 | ResultDescription | 提供登入作業的錯誤描述。 |
-| riskDetail | riskDetail | 在有風險的使用者、登入或風險偵測的特定狀態之後提供「原因」。 可能的值為： `none`、 `adminGeneratedTemporaryPassword`、 `userPerformedSecuredPasswordChange`、 `userPerformedSecuredPasswordReset`、 `adminConfirmedSigninSafe` `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy` `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised`、、、、、 `unknownFutureValue`。 值`none`表示使用者未執行任何動作，或目前未登入。 <br>**注意：** 此屬性的詳細資料需要 Azure AD Premium P2 授權。 其他授權則會傳回`hidden`值。 |
-| riskEventTypes | riskEventTypes | 與登入相關聯的風險偵測類型。 可能的值為： `unlikelyTravel`、 `anonymizedIPAddress`、 `maliciousIPAddress`、 `unfamiliarFeatures` `malwareInfectedIPAddress` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence` `generic`、、、、、和`unknownFutureValue`。 |
-| riskLevelAggregated | riskLevel | 匯總的風險層級。 可能的值為： `none`、 `low`、 `medium`、 `high`、 `hidden`和`unknownFutureValue`。 值`hidden`表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回`hidden`所有其他客戶。 |
-| riskLevelDuringSignIn | riskLevel | 登入期間的風險層級。 可能的值為： `none`、 `low`、 `medium`、 `high`、 `hidden`和`unknownFutureValue`。 值`hidden`表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回`hidden`所有其他客戶。 |
-| riskState | riskState | 報告有風險的使用者、登入或風險偵測的狀態。 可能的值為： `none`、 `confirmedSafe`、 `remediated`、 `dismissed`、 `atRisk`、 `confirmedCompromised`、 `unknownFutureValue`。 |
+| riskDetail | riskDetail | 在有風險的使用者、登入或風險偵測的特定狀態之後提供「原因」。 可能的值為： `none` 、 `adminGeneratedTemporaryPassword` 、 `userPerformedSecuredPasswordChange` 、 `userPerformedSecuredPasswordReset` 、 `adminConfirmedSigninSafe` `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy` `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised` `unknownFutureValue` 、、、、、。 值 `none` 表示使用者未執行任何動作，或目前未登入。 <br>**注意：** 此屬性的詳細資料需要 Azure AD Premium P2 授權。 其他授權則會傳回值 `hidden` 。 |
+| riskEventTypes | riskEventTypes | 與登入相關聯的風險偵測類型。 可能的值為：、、、、、、、、 `unlikelyTravel` `anonymizedIPAddress` `maliciousIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence` `generic` 和 `unknownFutureValue` 。 |
+| riskLevelAggregated | riskLevel | 匯總的風險層級。 可能的值為： `none` 、 `low` 、 `medium` 、 `high` 、 `hidden` 和 `unknownFutureValue` 。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回所有其他客戶 `hidden` 。 |
+| riskLevelDuringSignIn | riskLevel | 登入期間的風險層級。 可能的值為： `none` 、 `low` 、 `medium` 、 `high` 、 `hidden` 和 `unknownFutureValue` 。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回所有其他客戶 `hidden` 。 |
+| riskState | riskState | 報告有風險的使用者、登入或風險偵測的狀態。 可能的值為： `none` 、 `confirmedSafe` 、 `remediated` 、 `dismissed` 、 `atRisk` 、 `confirmedCompromised` 、 `unknownFutureValue` 。 |
 | DurationMs |  此值未對應，您可以放心地略過此欄位。 |
 | CallerIpAddress | 發出要求之用戶端的 IP 位址。 | 
 | CorrelationId | 用戶端傳遞的選擇性 GUID。 此值能協助將用戶端作業和伺服器端作業相互關聯，當您在追蹤跨服務的記錄時它會很有用。 |
 | 身分識別 | 當您發出要求時，來自出示之權杖的身分識別。 它可以是使用者帳戶、系統帳戶或服務主體。 |
 | 層級 | 提供訊息的類型。 針對稽核，它一律是 *Informational*。 |
-| 位置 | 提供登入活動的位置。 |
+| Location | 提供登入活動的位置。 |
 | 屬性 | 列出與登入相關聯的所有屬性。如需詳細資訊，請參閱[MICROSOFT GRAPH API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 此結構描述使用與登入資源相同的屬性名稱，以提高可讀性。
 
 ## <a name="next-steps"></a>後續步驟

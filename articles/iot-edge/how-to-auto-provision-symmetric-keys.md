@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131018"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰證明建立和布建 IoT Edge 裝置
@@ -28,7 +28,7 @@ Azure IoT Edge 裝置可以使用裝置布建[服務](../iot-dps/index.yml)來�
 
 對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用[TPM](../iot-dps/concepts-tpm-attestation.md)或[x.509 憑證](../iot-dps/concepts-security.md#x509-certificates)的裝置證明較安全，而且應該用於更嚴格的安全性需求。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Active IoT 中樞
 * 實體或虛擬裝置
@@ -43,7 +43,7 @@ Azure IoT Edge 裝置可以使用裝置布建[服務](../iot-dps/index.yml)來�
 
 必須定義唯一的註冊識別碼以識別每個裝置。 您可以使用 MAC 位址、序號或裝置的任何唯一資訊。
 
-在此範例中，我們使用 MAC 位址和序號的組合，而此序號會形成註冊識別碼的下列字串`sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`：。
+在此範例中，我們使用 MAC 位址和序號的組合，而此序號會形成註冊識別碼的下列字串： `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6` 。
 
 為您的裝置建立唯一的註冊識別碼。 有效字元為小寫英數字元與破折號 ('-')。
 
@@ -96,7 +96,7 @@ Azure IoT Edge 裝置可以使用裝置布建[服務](../iot-dps/index.yml)來�
 
    1. 確定 [**啟用專案**] 已設定為 [**啟用**]。
 
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 請務必複製註冊的**主要金鑰**值，以在安裝 IoT Edge 執行時間時使用，或者，如果您要建立裝置金鑰以與群組註冊搭配使用。
 
@@ -169,7 +169,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容
 
 請遵循裝置架構的指示。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
 
-[在 Linux 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-linux.md)
+[在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
 
 對稱金鑰布建的設定檔中的區段看起來像這樣：
 
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-將`<SCOPE_ID>`、 `<REGISTRATION_ID>`和`<SYMMETRIC_KEY>`的預留位置值取代為您稍早收集的資料。 請確定布建 **：** 行沒有前面的空白字元，且嵌套的專案會以兩個空格縮排。
+將、和的預留位置值取代為 `<SCOPE_ID>` `<REGISTRATION_ID>` 您稍 `<SYMMETRIC_KEY>` 早收集的資料。 請確定布建 **：** 行沒有前面的空白字元，且嵌套的專案會以兩個空格縮排。
 
 ### <a name="windows-device"></a>Windows 裝置
 
@@ -204,9 +204,9 @@ provisioning:
 
 1. 此時，IoT 核心版裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 一旦您的裝置準備就緒，請再次以系統管理員身分執行 PowerShell。
 
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用`-Dps`旗標來使用自動布建，否則命令會預設為使用 Windows 容器進行手動布建。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用 `-Dps` 旗標來使用自動布建，否則命令會預設為使用 Windows 容器進行手動布建。
 
-   將`{scope_id}`、 `{registration_id}`和`{symmetric_key}`的預留位置值取代為您稍早收集的資料。
+   將、和的預留位置值取代為 `{scope_id}` `{registration_id}` 您稍 `{symmetric_key}` 早收集的資料。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

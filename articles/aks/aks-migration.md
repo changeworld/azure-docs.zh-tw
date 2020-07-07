@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129091"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>遷移至 Azure Kubernetes Service （AKS）
@@ -53,7 +53,7 @@ AKS 是受控服務，以較低的管理額外負荷提供獨特的功能。 由
 
 由[虛擬機器可用性設定組](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets)支援的 AKS 叢集缺少許多這些功能的支援。
 
-下列範例會建立 AKS 叢集，其中包含虛擬機器擴展集所支援的單一節點集區。 它會使用標準負載平衡器。 它也會在叢集的節點集區上啟用叢集自動調整程式，並設定最少*1*個和最多*3*個節點：
+下列範例會建立 AKS 叢集，其中包含虛擬機器擴展集所支援的單一節點集區。 它會使用標準負載平衡器。 範例中也會啟用叢集節點集區上的叢集自動調整程式，並設定最少 1 個、最多 3 個節點：
 
 ```azurecli-interactive
 # First create a resource group
@@ -94,7 +94,7 @@ az aks create \
 
 如果您的應用程式無法處理停機時間，您將需要遵循高可用性遷移案例的最佳作法。  複雜商務持續性規劃、嚴重損壞修復和最大化執行時間的最佳作法已超出本檔的範圍。  若要深入瞭解，請參閱[Azure Kubernetes Service （AKS）中的商務持續性和嚴重損壞修復的最佳作法](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)。
 
-對於複雜的應用程式，您的遷移作業通常會進行一段時間，而非全部一次完成。 這表示新舊環境可能需要透過網路進行通訊。 先前使用`ClusterIP`服務進行通訊的應用程式可能需要公開為類型`LoadBalancer` ，並適當地加以保護。
+對於複雜的應用程式，您的遷移作業通常會進行一段時間，而非全部一次完成。 這表示新舊環境可能需要透過網路進行通訊。 先前使用服務進行通訊的應用程式 `ClusterIP` 可能需要公開為類型 `LoadBalancer` ，並適當地加以保護。
 
 若要完成遷移，您需要將用戶端指向在 AKS 上執行的新服務。 我們建議您將 DNS 更新為指向位於 AKS 叢集前方的 Load Balancer，以重新導向流量。
 
@@ -131,7 +131,7 @@ az aks create \
 * 將您的即時流量指向新的 AKS 叢集。
 * 中斷舊叢集的連線。
 
-如果您想要從空的共用開始，並複製來源資料，您可以使用[`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest)命令來遷移資料。
+如果您想要從空的共用開始，並複製來源資料，您可以使用 [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) 命令來遷移資料。
 
 
 #### <a name="migrating-persistent-volumes"></a>遷移持續性磁片區
@@ -158,7 +158,7 @@ az aks create \
 
 ### <a name="deployment-of-your-cluster-configuration"></a>部署叢集設定
 
-建議您使用現有的持續整合（CI）和持續傳遞（CD）管線，將已知良好的設定部署至 AKS。 您可以使用 Azure Pipelines 來[建立應用程式，並將其部署至 AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 複製現有的部署工作，並確定`kubeconfig`指向新的 AKS 叢集。
+建議您使用現有的持續整合（CI）和持續傳遞（CD）管線，將已知良好的設定部署至 AKS。 您可以使用 Azure Pipelines 來[建立應用程式，並將其部署至 AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 複製現有的部署工作，並確定 `kubeconfig` 指向新的 AKS 叢集。
 
 如果無法這麼做，請從現有的 Kubernetes 叢集中匯出資源定義，然後將它們套用至 AKS。 您可以使用 `kubectl` 匯出物件。
 

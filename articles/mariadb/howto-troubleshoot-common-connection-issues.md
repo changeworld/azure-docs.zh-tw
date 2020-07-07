@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101445"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫的連線問題進行疑難排解
@@ -47,7 +47,7 @@ ms.locfileid: "82101445"
 
 * 防火牆設定：「適用於 MariaDB 的 Azure 資料庫」伺服器或用戶端防火牆目前封鎖連線。
 * 用戶端的網路重新設定：新增了新的 IP 位址或 Proxy 伺服器。
-* 使用者錯誤：例如，您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中* \@* 遺漏的 servername 尾碼。
+* 使用者錯誤：例如，您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的* \@ servername*尾碼。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解決永久性連線問題的步驟
 

@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083269"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
@@ -21,8 +21,8 @@ ms.locfileid: "82083269"
 ![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 如需 azure 資源庫中的 windows 10 專業版和 windows 10 專業版 N 映射，請參閱[如何在 azure 上部署 windows 10 （含](windows-desktop-multitenant-hosting-deployment.md)
->![多組織使用者共用許可權 Pro）的詳細資料，Azure 入口網站](./media/client-images/windows-client-pro-images.png) 
+> 如需 azure 資源庫中的 windows 10 專業版和 windows 10 專業版 N 映射，請參閱[如何在 azure 上部署 windows 10 （含](windows-desktop-multitenant-hosting-deployment.md)多組織使用者共用許可權 
+> ![ Pro）的詳細資料，Azure 入口網站](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>訂用帳戶資格

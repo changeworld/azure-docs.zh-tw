@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083417"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
@@ -28,7 +28,7 @@ ms.locfileid: "82083417"
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>暫時將 pagefile.sys 移到 C 磁碟機
 1. 連接至虛擬機器。 
-2. 使用滑鼠右鍵按一下 [開始]**** 功能表，然後選取 [系統]****。
+2. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]。
 3. 在左側功能表中，選取 [進階系統設定] ****。
 4. 在 [效能]**** 區段中，選取 [設定]****。
 5. 選取 [進階] **** 索引標籤。
@@ -54,7 +54,7 @@ ms.locfileid: "82083417"
 5. 在 [虛擬記憶體]**** 區段中，選取 [變更]****。
 6. 選取作業系統磁碟機 **C**，然後依序按一下 [沒有分頁檔]**** 和 [設定]****。
 7. 選取暫存磁碟機 **T**，然後依序按一下 [系統管理大小]**** 和 [設定]****。
-8. 按一下 [套用]  。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
+8. 按一下 [套用] 。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
 9. 重新啟動虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟

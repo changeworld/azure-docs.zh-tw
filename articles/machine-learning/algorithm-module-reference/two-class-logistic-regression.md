@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137615"
 ---
 # <a name="two-class-logistic-regression-module"></a>雙類別羅吉斯回歸模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 您可以使用此模組來建立羅吉斯回歸模型，以用來預測兩個（而且只有兩個）結果。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "82137615"
   
     -   相較之下，L2 regularization 是不是疏鬆的資料。  
   
-     這個演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果<code>x = L1</code>和<code>y = L2</code>，則<code>ax + by = c</code>會定義正規化詞彙的線性範圍。  
+     這個演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果 <code>x = L1</code> 和 <code>y = L2</code> ，則會 <code>ax + by = c</code> 定義正規化詞彙的線性範圍。  
   
     > [!NOTE]
     >  想要深入瞭解 L1 和 L2 正規化嗎？ 下列文章會討論 L1 和 L2 正規化的差異，以及它們如何影響模型的調整，並提供用於羅吉斯回歸和類神經網路模型的程式碼範例： [Machine Learning 的 l1 和 L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)  
@@ -97,4 +97,4 @@ ms.locfileid: "82137615"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

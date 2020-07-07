@@ -4,10 +4,10 @@ description: 說明如何使用 Visual Studio 中的 Azure 資源群組部署專
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084646"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>整合 ARM 範本與 Azure Pipelines
@@ -16,7 +16,7 @@ Visual Studio 提供 Azure 資源群組專案來建立 Azure Resource Manager �
 
 有兩種方式可以使用 Azure Pipelines 部署範本：
 
-* **新增執行 Azure PowerShell 腳本的**工作。 此選項的優點是在整個開發生命週期中提供一致性，因為您使用的是 Visual Studio 專案（Deploy-azureresourcegroup.ps1）中所包含的相同腳本。 腳本會將專案中的成品分階段至 Resource Manager 可以存取的儲存體帳戶。 成品是專案中的專案，例如連結的範本、腳本和應用程式二進位檔。 然後，腳本會部署範本。
+* **新增執行 Azure PowerShell 腳本的**工作。 此選項的優點是在整個開發生命週期中提供一致性，因為您使用的是 Visual Studio 專案（Deploy-AzureResourceGroup.ps1）中所包含的相同腳本。 腳本會將專案中的成品分階段至 Resource Manager 可以存取的儲存體帳戶。 成品是專案中的專案，例如連結的範本、腳本和應用程式二進位檔。 然後，腳本會部署範本。
 
 * **新增工作以複製和部署**工作。 此選項提供專案腳本的便利替代方案。 您可以在管線中設定兩個工作。 一個工作階段：成品和另一個工作會部署範本。
 
@@ -72,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-當您將工作設定為`AzurePowerShell@3`時，管線會使用來自 AzureRM 模組的命令來驗證連接。 根據預設，Visual Studio 專案中的 PowerShell 腳本會使用 AzureRM 模組。 如果您已將腳本更新為使用[Az 模組](/powershell/azure/new-azureps-module-az)，請將工作設定為`AzurePowerShell@4`。
+當您將工作設定為時 `AzurePowerShell@3` ，管線會使用來自 AzureRM 模組的命令來驗證連接。 根據預設，Visual Studio 專案中的 PowerShell 腳本會使用 AzureRM 模組。 如果您已將腳本更新為使用[Az 模組](/powershell/azure/new-azureps-module-az)，請將工作設定為 `AzurePowerShell@4` 。
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-針對`azureSubscription`，請提供您所建立之服務連線的名稱。
+針對 `azureSubscription` ，請提供您所建立之服務連線的名稱。
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-針對`scriptPath`，請提供從管線檔案到您腳本的相對路徑。 您可以查看您的存放庫，以查看路徑。
+針對 `scriptPath` ，請提供從管線檔案到您腳本的相對路徑。 您可以查看您的存放庫，以查看路徑。
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -122,7 +122,7 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
    ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
    ![儲存管線](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
@@ -154,13 +154,13 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
     sasTokenTimeOutInMinutes: '240'
 ```
 
-此工作有數個部分可針對您的環境進行修訂。 `SourcePath`表示成品相對於管線檔案的位置。 在此範例中，檔案存在於名為`AzureResourceGroup1`的資料夾中，其為專案的名稱。
+此工作有數個部分可針對您的環境進行修訂。 `SourcePath`表示成品相對於管線檔案的位置。 在此範例中，檔案存在於名為的資料夾中， `AzureResourceGroup1` 其為專案的名稱。
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-針對`azureSubscription`，請提供您所建立之服務連線的名稱。
+針對 `azureSubscription` ，請提供您所建立之服務連線的名稱。
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -194,7 +194,7 @@ ContainerName: '<container-name>'
 
 此工作有數個部分可針對您的環境進行修訂。
 
-- `deploymentScope`：從選項中選取部署的範圍： `Management Group`、 `Subscription`和。 `Resource Group` 在本逐步解說中使用**資源群組**。 若要深入了解範圍，請參閱[部署範圍](deploy-rest.md#deployment-scope)。
+- `deploymentScope`：從選項中選取部署的範圍： `Management Group` 、 `Subscription` 和 `Resource Group` 。 在本逐步解說中使用**資源群組**。 若要深入了解範圍，請參閱[部署範圍](deploy-rest.md#deployment-scope)。
 
 - `ConnectedServiceName`：提供您所建立之服務連線的名稱。
 
@@ -204,14 +204,14 @@ ContainerName: '<container-name>'
 
 - `subscriptionName`：提供目標訂用帳戶識別碼。 此屬性僅適用于資源群組部署範圍和訂用帳戶部署範圍。
 
-- `resourceGroupName`和`location`：提供您想要部署之資源群組的名稱和位置。 此工作會建立資源群組（如果不存在）。
+- `resourceGroupName`和 `location` ：提供您想要部署之資源群組的名稱和位置。 此工作會建立資源群組（如果不存在）。
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-部署工作會連結至名為`WebSite.json`的範本和名為網站. parameters 的參數檔案。 使用範本和參數檔案的名稱。
+部署工作會連結至名為的範本 `WebSite.json` ，以及名為 WebSite.parameters.js的參數檔案。 使用範本和參數檔案的名稱。
 
 現在，您已瞭解如何建立工作，讓我們逐步完成編輯管線的步驟。
 
@@ -249,7 +249,7 @@ ContainerName: '<container-name>'
         deploymentMode: 'Incremental'
    ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 1. 提供認可的訊息，並直接認可到**master**。
 

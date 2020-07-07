@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086567"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
@@ -52,7 +52,7 @@ ms.locfileid: "82086567"
 
 | 角色 | 管理權限 | 資料存取權限 | 說明 |
 | --- | --- | --- | --- |
-| 未指派角色 |無 |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
+| 未指派角色 |None |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
 | 擁有者 |全部 |全部 |擁有者角色是超級使用者。 此角色可管理所有事項，且具有資料的完整存取權。 |
 | 讀取者 |唯讀 |由 ACL 控管 |讀取者角色可以檢視有關帳戶管理的所有事項，例如哪個使用者被指派給哪個角色。 讀取者角色無法進行任何變更。 |
 | 參與者 |除了新增和移除角色以外的一切 |由 ACL 控管 |參與者角色可以管理帳戶的某些層面，例如部署以及警示建立和管理。 參與者無法新增或移除角色。 |
@@ -74,7 +74,7 @@ Data Lake Storage Gen1 是 Hadoop 分散式檔案系統 (HDFS) 之類的階層�
 
 ![防火牆設定和 IP 存取](./media/data-lake-store-security-overview/firewall-ip-access.png "防火牆設定和 IP 位址")
 
-Azure 虛擬網路（VNet）支援 Data Lake Gen 1 的服務標記。 服務標記代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。 如需詳細資訊，請參閱[Azure 服務標記總覽](../virtual-network/service-tags-overview.md)。
+Azure 虛擬網路（VNet）支援 Data Lake Gen 1 的服務標記。 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需詳細資訊，請參閱[Azure 服務標記總覽](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>資料保護
 
@@ -111,13 +111,13 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需搭配 Data Lake Storage Gen1 使用診斷記錄的詳細資訊，請參閱[存取 Data Lake Storage Gen1 的診斷記錄](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 企業客戶要求安全且容易使用的資料分析雲端平台。 Data Lake Storage Gen1 的設計目的是要透過藉由 Azure Active Directory 整合的身分識別管理和驗證、以 ACL 為基礎的授權、網路隔離、傳輸中和待用資料加密以及稽核，來協助滿足這些需求。
 
 如果您想要在 Data Lake Storage Gen1 中看到新功能，請在 [Data Lake Storage Gen1 UserVoice 論壇](https://feedback.azure.com/forums/327234-data-lake)將您的意見反應傳給我們。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

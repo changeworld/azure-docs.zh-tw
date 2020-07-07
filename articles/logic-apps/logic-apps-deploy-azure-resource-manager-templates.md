@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
 ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086431"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>部署 Azure Logic Apps 的 Azure Resource Manager 範本
@@ -129,4 +129,4 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [監視邏輯應用程式](../logic-apps/monitor-logic-apps.md)
+> [監視 Logic Apps](../logic-apps/monitor-logic-apps.md)

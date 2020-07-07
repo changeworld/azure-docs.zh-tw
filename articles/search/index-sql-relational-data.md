@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117564"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立關聯式 SQL 資料的模型以進行匯入和編制索引
@@ -84,7 +84,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
     GO
     ```
 
-2. 建立由父資料表（`SELECT * from dbo.Hotels$`）中所有欄位組成的視圖，並加入新的*會議室*欄位，其中包含了巢狀查詢的輸出。 的**FOR JSON AUTO**子句會`SELECT * from dbo.Rooms$`將輸出結構為 json。 
+2. 建立由父資料表（）中所有欄位組成的視圖 `SELECT * from dbo.Hotels$` ，並加入新的*會議室*欄位，其中包含了巢狀查詢的輸出。 的**FOR JSON AUTO**子句會 `SELECT * from dbo.Rooms$` 將輸出結構為 json。 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -100,7 +100,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 
    ![HotelRooms 視圖](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms 視圖")
 
-1. 執行`SELECT * FROM dbo.HotelRooms`以取得資料列集。 此查詢會傳回50個數據列（每個飯店一個），並將相關聯的會議室資訊當做 JSON 集合。 
+1. 執行 `SELECT * FROM dbo.HotelRooms` 以取得資料列集。 此查詢會傳回50個數據列（每個飯店一個），並將相關聯的會議室資訊當做 JSON 集合。 
 
    ![HotelRooms view 的資料列集](media/index-sql-relational-data/hotelrooms-rowset.png "HotelRooms view 的資料列集")
 

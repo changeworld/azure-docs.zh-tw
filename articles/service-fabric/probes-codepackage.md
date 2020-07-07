@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137581"
 ---
 # <a name="liveness-probe"></a>活動探查
@@ -40,15 +40,15 @@ ms.locfileid: "82137581"
 
 * `OK`：已在**successThreshold**中設定的值的探查成功。
 
-* `Error`：在容器重新開機之前，探查**failureCount** ==  **failureThreshold**。
+* `Error`：在**failureCount**  ==   容器重新開機之前，探查 failureCount**failureThreshold**。
 
 * `Warning`: 
-    * 探查失敗並**failureCount** < **failureThreshold**。 此健康情況報告會持續，直到**failureCount**達到**failureThreshold**或**successThreshold**中設定的值為止。
+    * 探查失敗並**failureCount**  <  **failureThreshold**。 此健康情況報告會持續，直到**failureCount**達到**failureThreshold**或**successThreshold**中設定的值為止。
     * 在失敗後成功時，會保留警告，但更新會連續成功。
 
 ## <a name="specifying-a-liveness-probe"></a>指定活動探查
 
-您可以在**ServiceManifestImport**下的 ApplicationManifest 中指定探查。
+您可以在 [ **ServiceManifestImport**] 下的 [ApplicationManifest.xml] 檔案中指定探查。
 
 探查可以是下列任何一項：
 

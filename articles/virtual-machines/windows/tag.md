@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100561"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>如何在 Azure 中標記 Windows 虛擬機器
@@ -56,7 +56,7 @@ ms.locfileid: "82100561"
     Environment   Production
 ```
 
-第三個命令會將額外的標記新增至 *$tags*變數。 請注意，使用**+=** 將新的索引鍵/值組附加至 *$tags*清單。
+第三個命令會將額外的標記新增至 *$tags*變數。 請注意，使用將 **+=** 新的索引鍵/值組附加至 *$tags*清單。
 
         PS C:\> $tags += @{Location="MyLocation"}
 

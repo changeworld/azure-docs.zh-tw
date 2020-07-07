@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133786"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
@@ -23,7 +23,7 @@ Azure 儲存體平臺是適用于新式資料儲存案例的 Microsoft 雲端儲
 - **加密.** 所有寫入至 Azure 儲存體帳戶的資料都會由服務加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
 - **可調整.** Azure 儲存體設計為可大幅調整，以符合現今應用程式的資料儲存和效能需求。
 - **受控.** Azure 會為您處理硬體維護、更新和重大問題。
-- **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 提供各種語言的 Azure 儲存體用戶端程式庫，包括 .NET、JAVA、node.js、Python、PHP、Ruby、Go 等，以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
+- **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 提供各種語言的 Azure 儲存體用戶端程式庫，包括 .NET、JAVA、Node.js、Python、PHP、Ruby、Go 等，以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
 
 ## <a name="core-storage-services"></a>核心儲存體服務
 
@@ -123,7 +123,7 @@ Azure 儲存體的每個要求都必須獲得授權。 Azure 儲存體支援下�
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-Azure 儲存體加密可保護您的資料，以符合您組織的安全性和合規性承諾。 Azure 儲存體會在保存到儲存體帳戶之前自動加密所有資料，並在抓取之前將其解密。 加密、解密和金鑰管理程式對使用者而言是透明的。 客戶也可以選擇使用 Azure Key Vault 來管理自己的金鑰。 如需詳細資訊，請參閱待用[資料的加密 Azure 儲存體](storage-service-encryption.md)。
+Azure 儲存體加密可保護您的資料，以符合您組織的安全性和合規性承諾。 Azure 儲存體會在保存到儲存體帳戶之前自動加密所有資料，並在抓取之前將其解密。 加密、解密和金鑰管理程式對使用者而言是透明的。 客戶也可以選擇使用 Azure Key Vault 來管理自己的金鑰。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體加密](storage-service-encryption.md)。
 
 ### <a name="client-side-encryption"></a>用戶端加密
 
@@ -150,7 +150,7 @@ Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資�
 - [Azure 儲存體 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [適用于 .NET 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [適用于 JAVA/Android 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [適用于 node.js 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [適用于 Node.js的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [適用于 Python 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-python)
 - [適用于 PHP 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-php)
 - [適用于 Ruby 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-ruby)

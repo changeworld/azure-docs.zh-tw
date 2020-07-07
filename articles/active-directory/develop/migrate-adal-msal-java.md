@@ -15,10 +15,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128012"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>適用于 JAVA 的 MSAL 遷移指南的 ADAL
@@ -43,13 +43,13 @@ MSAL for JAVA 是我們建議您搭配 Microsoft 身分識別平臺使用的驗�
 
 ADAL4J 會取得資源的權杖，而 MSAL for JAVA 會取得範圍的權杖。 JAVA 類別的一些 MSAL 需要範圍參數。 這個參數是宣告所需許可權和所要求資源的字串清單。 請參閱[Microsoft Graph 的範圍](https://docs.microsoft.com/graph/permissions-reference)，以查看範例範圍。
 
-您可以將`/.default`範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點（ADAL）遷移至 Microsoft 身分識別平臺端點（MSAL）。 例如，針對的資源值`https://graph.microsoft.com`，對等的範圍值為。 `https://graph.microsoft.com/.default`  如果資源不是在 URL 表單中，而是表單`XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`的資源識別碼，您仍然可以使用範圍值做為`XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點（ADAL）遷移至 Microsoft 身分識別平臺端點（MSAL）。 例如，針對的資源值 `https://graph.microsoft.com` ，對等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 表單中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值做為 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
 
 如需不同類型範圍的詳細資訊，請參閱[Microsoft 身分識別平臺中的許可權和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)和[接受 V1.0 權杖的 Web API 範圍一](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)文。
 
 ## <a name="core-classes"></a>核心類別
 
-在 ADAL4J 中， `AuthenticationContext`類別代表安全性權杖服務（STS）或授權伺服器（透過授權單位）的連接。 不過，MSAL for JAVA 是針對用戶端應用程式所設計。 它提供兩個不同的`PublicClientApplication`類別`ConfidentialClientApplication` ：和以代表用戶端應用程式。  後者`ConfidentialClientApplication`代表的應用程式是設計用來安全地維護秘密，例如背景工作應用程式的應用程式識別碼。
+在 ADAL4J 中， `AuthenticationContext` 類別代表安全性權杖服務（STS）或授權伺服器（透過授權單位）的連接。 不過，MSAL for JAVA 是針對用戶端應用程式所設計。 它提供兩個不同的類別： `PublicClientApplication` 和 `ConfidentialClientApplication` 以代表用戶端應用程式。  後者 `ConfidentialClientApplication` 代表的應用程式是設計用來安全地維護秘密，例如背景工作應用程式的應用程式識別碼。
 
 下表顯示 ADAL4J 函式如何對應至 JAVA 函數的新 MSAL：
 
@@ -69,7 +69,7 @@ ADAL4J 會取得資源的權杖，而 MSAL for JAVA 會取得範圍的權杖。 
 
 ADAL4J 操作的使用者。 雖然使用者代表單一的人或軟體代理程式，但在 Microsoft 身分識別系統中可能會有一或多個帳戶。 例如，使用者可能會有數個 Azure AD、Azure AD B2C 或 Microsoft 個人帳戶。
 
-MSAL for JAVA 會透過`IAccount`介面來定義帳戶的概念。 這是 ADAL4J 的重大變更，但這是一個很好的方式，因為它會獲得相同的使用者可以擁有數個帳戶的事實，甚至是在不同的 Azure AD 目錄中。 MSAL for JAVA 會在來賓案例中提供更好的資訊，因為提供了主帳戶資訊。
+MSAL for JAVA 會透過介面來定義帳戶的概念 `IAccount` 。 這是 ADAL4J 的重大變更，但這是一個很好的方式，因為它會獲得相同的使用者可以擁有數個帳戶的事實，甚至是在不同的 Azure AD 目錄中。 MSAL for JAVA 會在來賓案例中提供更好的資訊，因為提供了主帳戶資訊。
 
 ## <a name="cache-persistence"></a>快取持續性
 
@@ -78,21 +78,21 @@ MSAL for JAVA 會新增[權杖](msal-acquire-cache-tokens.md)快取，藉由自�
 
 ## <a name="common-authority"></a>一般授權
 
-在 v1.0 中，如果您使用`https://login.microsoftonline.com/common`授權單位，使用者可以使用任何 AZURE ACTIVE DIRECTORY （AAD）帳戶（適用于任何組織）登入。
+在 v1.0 中，如果您使用 `https://login.microsoftonline.com/common` 授權單位，使用者可以使用任何 Azure Active Directory （AAD）帳戶（適用于任何組織）登入。
 
-如果您使用 v2.0 `https://login.microsoftonline.com/common`中的授權單位，使用者可以使用任何 AAD 組織或甚至是 Microsoft 個人帳戶（MSA）登入。 在 MSAL for JAVA 中，如果您想要將登入限制為任何 AAD 帳戶，您必須`https://login.microsoftonline.com/organizations`使用授權單位（這與使用 ADAL4J 的行為相同）。 若要指定授權單位，請`authority`在建立`PublicClientApplication`類別時，在[PublicClientApplication](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html)方法中設定參數。
+如果您使用 v2.0 `https://login.microsoftonline.com/common` 中的授權單位，使用者可以使用任何 AAD 組織或甚至是 Microsoft 個人帳戶（MSA）登入。 在 MSAL for JAVA 中，如果您想要將登入限制為任何 AAD 帳戶，您必須使用 `https://login.microsoftonline.com/organizations` 授權單位（這與使用 ADAL4J 的行為相同）。 若要指定授權單位，請在 `authority` 建立類別時，在[PublicClientApplication](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html)方法中設定參數 `PublicClientApplication` 。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 權杖
 
 v1.0 端點 (由 ADAL 使用) 只會發出 v1.0 權杖。
 
-V2.0 端點（由 MSAL 使用）可以發出 v1.0 和 v2.0 權杖。 Web API 的應用程式資訊清單屬性，可讓開發人員選擇接受哪個版本的權杖。 請`accessTokenAcceptedVersion`參閱[應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)參考檔中的。
+V2.0 端點（由 MSAL 使用）可以發出 v1.0 和 v2.0 權杖。 Web API 的應用程式資訊清單屬性，可讓開發人員選擇接受哪個版本的權杖。 請參閱 `accessTokenAcceptedVersion` [應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)參考檔中的。
 
 如需 v1.0 和 v2.0 權杖的詳細資訊，請參閱[Azure Active Directory 存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
 
 ## <a name="adal-to-msal-migration"></a>MSAL 至 ADAL 的移轉
 
-在 ADAL4J 中，已公開重新整理權杖--允許開發人員加以快取。 然後，他們會`AcquireTokenByRefreshToken()`使用來啟用一些解決方案，例如，在使用者不再連線時，會代表使用者重新整理儀表板的長時間執行服務。
+在 ADAL4J 中，已公開重新整理權杖--允許開發人員加以快取。 然後，他們會使用 `AcquireTokenByRefreshToken()` 來啟用一些解決方案，例如，在使用者不再連線時，會代表使用者重新整理儀表板的長時間執行服務。
 
 基於安全考慮，MSAL for JAVA 不會公開重新整理權杖。 相反地，MSAL 會為您處理重新整理權杖。
 

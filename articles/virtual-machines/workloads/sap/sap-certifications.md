@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
 ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084816"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>於 Microsoft Azure 上執行的 SAP 認證和設定
@@ -54,7 +54,7 @@ Microsoft Azure 已獲認證可用於下列 SAP 產品，因此具備 Microsoft 
 | --- | --- | --- | --- |
 | SAP Business Suite 軟體 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server；Oracle (僅限 Windows 及 Oracle Linux)、DB2、SAP ASE |A5 至 A11、D11 至 D14、DS11 至 DS14、DS11_v2 至 DS15_v2、GS1 至 GS5、D2s_v3 至 D64s_v3、D2as_v4 至 D64as_v4、E2s_v3 至 E64s_v3、E2as_v4 至 E64as_v4、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、M416s_v2、M416ms_v2 |
 | SAP Business All-in-One | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server；Oracle (僅限 Windows 及 Oracle Linux)、DB2、SAP ASE |A5 至 A11、D11 至 D14、DS11 至 DS14、DS11_v2 至 DS15_v2、GS1 至 GS5、D2s_v3 至 D64s_v3、D2as_v4 至 D64as_v4、E2s_v3 至 E64s_v3、E2as_v4 至 E64as_v4、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、M416s_v2、M416ms_v2 |
-| SAP BusinessObjects BI | Windows |N/A |A5 至 A11、D11 至 D14、DS11 至 DS14、DS11_v2 至 DS15_v2、GS1 至 GS5、D2s_v3 至 D64s_v3、D2as_v4 至 D64as_v4、E2s_v3 至 E64s_v3、E2as_v4 至 E64as_v4、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、M416s_v2、M416ms_v2 |
+| SAP BusinessObjects BI | Windows |不適用 |A5 至 A11、D11 至 D14、DS11 至 DS14、DS11_v2 至 DS15_v2、GS1 至 GS5、D2s_v3 至 D64s_v3、D2as_v4 至 D64as_v4、E2s_v3 至 E64s_v3、E2as_v4 至 E64as_v4、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、M416s_v2、M416ms_v2 |
 | SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server；Oracle (僅限 Windows 及 Oracle Linux)、DB2、SAP ASE |A5 至 A11、D11 至 D14、DS11 至 DS14、DS11_v2 至 DS15_v2、GS1 至 GS5、D2s_v3 至 D64s_v3、D2as_v4 至 D64as_v4、E2s_v3 至 E64s_v3、E2as_v4 至 E64as_v4、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、M416s_v2、M416ms_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure 上支援的其他 SAP 工作負載

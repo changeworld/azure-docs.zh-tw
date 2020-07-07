@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115528"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在具有 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 EDIFACT 訊息
@@ -81,7 +81,7 @@ ms.locfileid: "82115528"
 > EDIFACT 連接器僅支援 UTF-8 字元。
 > 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
 
-1. 在 [新增]**** 之下，選取 [接收設定]****。
+1. 在 [新增] 之下，選取 [接收設定]。
 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
 
    [接收設定]**** 分成下列各區段：識別碼、通知、結構描述、控制編號、驗證和內部設定。
@@ -155,7 +155,7 @@ ms.locfileid: "82115528"
 
 您可以設定此合約如何識別及處理您透過此合約傳送給夥伴的外寄訊息。
 
-1.  在 [新增]**** 之下，選取 [傳送設定]****。
+1.  在 [新增] 之下，選取 [傳送設定]。
 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
 
     [傳送設定]**** 分成下列各區段：識別碼、通知、結構描述、信封、字元集和分隔符號、控制編號以及驗證。
@@ -254,7 +254,7 @@ ms.locfileid: "82115528"
 如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/edifact/)。
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[適用于 ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
+> 針對[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的邏輯應用程式，此連接器其 ISE 標籤版本使用 [ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

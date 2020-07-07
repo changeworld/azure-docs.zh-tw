@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082113"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
@@ -39,7 +39,7 @@ ms.locfileid: "82082113"
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| 屬性名稱 | User | 註解 |
+| 屬性名稱 | 使用者 | 註解 |
 | --- |:---:| --- |
 | accountEnabled |X |定義是否啟用帳戶。 |
 | cn |X | |
@@ -52,7 +52,7 @@ ms.locfileid: "82082113"
 | userPrincipalName |X |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | assistant |X |X | | |
@@ -175,7 +175,7 @@ ms.locfileid: "82082113"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | authOrig |X |X |X | |
@@ -257,7 +257,7 @@ ms.locfileid: "82082113"
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>小組與商務用 Skype Online
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -305,7 +305,7 @@ ms.locfileid: "82082113"
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X |一般名稱或別名。 最常見的前置詞是 [mail] 值。 |
@@ -320,7 +320,7 @@ ms.locfileid: "82082113"
 | userPrincipalName |X | | |這個 UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="intune"></a>Intune
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -338,7 +338,7 @@ ms.locfileid: "82082113"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -377,7 +377,7 @@ ms.locfileid: "82082113"
 
 此群組是一組屬性，是未使用 Azure AD 目錄來支援 Office 365、Dynamics 或 Intune 時所能使用的屬性。 它包含一小組的核心屬性。 請注意，對於某些協力廠商應用程式的單一登入或布建除了此處所述的屬性之外，還需要設定屬性的同步處理。 應用程式需求將在每個應用程式的[SaaS 應用程式教學](../saas-apps/tutorial-list.md)課程中加以說明。
 
-| 屬性名稱 | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X | |
@@ -413,7 +413,7 @@ ms.locfileid: "82082113"
 
 下列「使用者」 **** 屬性是您已選取的其他應用程式以外的屬性。  
 
-| 屬性名稱 | User | 註解 |
+| 屬性名稱 | 使用者 | 註解 |
 | --- |:---:| --- |
 | domainFQDN |X |也稱為 dnsDomainName。 例如 contoso.com。 |
 | domainNetBios |X |也稱為 netBiosName。 例如 CONTOSO。 |
@@ -422,7 +422,7 @@ ms.locfileid: "82082113"
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合回寫
 當您選擇啟用「Exchange 混合」 **** 時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
 
-| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | 連絡人 | 群組 | 註解 |
+| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | 使用者 | Contact | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |衍生自 Azure AD 中的 cloudAnchor。 這個屬性是 Exchange 2016 和 Windows Server 2016 AD 中的新屬性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |線上封存：可讓客戶封存郵件。 |
@@ -466,7 +466,7 @@ ms.locfileid: "82082113"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>備忘錄
+## <a name="notes"></a>備忘稿
 * 使用「替代識別碼」時，內部部署屬性 userPrincipalName 會與 Azure AD 屬性 onPremisesUserPrincipalName 進行同步處理。 「替代識別碼」屬性 (例如 mail) 會與 Azure AD 屬性 userPrincipalName 進行同步處理。
 * 在上面的清單中，物件類型 **User** 也適用於物件類型 **iNetOrgPerson**。
 
