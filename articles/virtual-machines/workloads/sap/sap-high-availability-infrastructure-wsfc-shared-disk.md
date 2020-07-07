@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594809"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構
@@ -164,7 +164,7 @@ ms.locfileid: "82594809"
 
 本文說明使用*叢集共用的磁碟*作為叢集 SAP ASCS 執行個體的選項，針對在 Windows 容錯移轉叢集上安裝及設定高可用性 SAP 系統，準備 Azure 基礎結構的步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在開始安裝之前，請檢閱這篇文章：
 
@@ -179,7 +179,7 @@ Azure Resource Manager 中的三層式範本也支援高可用性案例。 例�
 
 * [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
 * [使用 Azure 受控磁碟的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
+* [自訂映像](https://github.com/Azure/azure-quickstart-templates/)
 * [使用受控磁碟的自訂映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md) \(英文\)
 
 若要準備架構範本 1 的基礎結構：
@@ -194,9 +194,9 @@ _**圖 1：** 設定 SAP 高可用性 Azure Resource Manager 參數_
   範本會建立：
 
   * **虛擬機器**：
-    * SAP 應用程式伺服器虛擬機器︰\<SAPSystemSID\>-di-\<Number\>
-    * ASCS/SCS 叢集虛擬機器︰\<SAPSystemSID\>-ascs-\<Number\>
-    * DBMS 叢集：\<SAPSystemSID\>-db-\<Number\>
+    * SAP 應用程式伺服器虛擬機器： \<SAPSystemSID\> -di-\<Number\>
+    * ASCS/SCS 叢集虛擬機器： \<SAPSystemSID\> -ASCS-\<Number\>
+    * DBMS 叢集： \<SAPSystemSID\> -db-\<Number\>
 
   * **所有虛擬機器的網路卡，包含關聯的 IP 位址**：
     * \<SAPSystemSID\>-nic-di-\<Number\>
@@ -206,16 +206,16 @@ _**圖 1：** 設定 SAP 高可用性 Azure Resource Manager 參數_
   * **Azure 儲存體帳戶（僅限非受控磁片）**：
 
   * 下列項目的**可用性群組**：
-    * SAP 應用程式伺服器虛擬機器︰\<SAPSystemSID\>-avset-di
-    * SAP ASCS/SCS 叢集虛擬機器︰\<SAPSystemSID\>-avset-ascs
-    * DBMS 叢集虛擬機器︰\<SAPSystemSID\>-avset-db
+    * SAP 應用程式伺服器虛擬機器： \<SAPSystemSID\> -a v-di
+    * SAP ASCS/SCS 叢集虛擬機器： \<SAPSystemSID\> -a v-ASCS
+    * DBMS 叢集虛擬機器： \<SAPSystemSID\> -a v-db
 
   * **Azure 內部負載平衡器**：
-    * 包含 ASCS/SCS 執行個體的所有連接埠與 IP 位址 \<SAPSystemSID\>-lb-ascs
-    * 包含 SQL Server DBMS 的所有連接埠與 IP 位址 \<SAPSystemSID\>-lb-db
+    * 包含 ASCS/SCS 實例的所有埠和 IP 位址 \<SAPSystemSID\> -lb-ASCS
+    * 包含 SQL Server DBMS 和 IP 位址的所有埠 \<SAPSystemSID\> -lb-db
 
-  * **網路安全性群組**： \<SAPSystemSID\>-nsg-ascs-0  
-    * 包含向 \<SAPSystemSID\>-ascs-0 虛擬機器開放的外部遠端桌面通訊協定 (RDP) 連接埠
+  * **網路安全性群組**： \<SAPSystemSID\> -nsg-ascs-0  
+    * 使用開放外部遠端桌面通訊協定（RDP）埠 \<SAPSystemSID\> ascs-0 虛擬機器
 
 > [!NOTE]
 > 網路卡的所有 IP 位址和 Azure 內部負載平衡器依預設為動態。 將其變更為靜態 IP 位址。 本文稍後會描述做法。
@@ -254,7 +254,7 @@ _**圖 1：** 設定 SAP 高可用性 Azure Resource Manager 參數_
 ## <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> 用於測試和示範的 SAP 執行個體僅限部署雲端
 您可以在僅限雲端部署模型中部署您的高可用性 SAP 系統。 這種部署主要對於示範和測試的使用案例相當有用。 但不適用於生產環境使用案例。
 
-- 在 Azure 入口網站中，在 [參數]**** 窗格的 [NEWOREXISTINGSUBNET]**** 方塊中，選取 [新增]****。 將 [SUBNETID]**** 欄位保留空白。
+- 在 Azure 入口網站中，在 [參數]**** 窗格的 [NEWOREXISTINGSUBNET]**** 方塊中，選取 [新增]****。 將 [SUBNETID] 欄位保留空白。
 
   SAP Azure Resource Manager 範本將會自動建立 Azure 虛擬網路和子網路。
 
@@ -272,13 +272,13 @@ _**圖 1：** 設定 SAP 高可用性 Azure Resource Manager 參數_
 
 * [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/) \(英文\)  
 * [使用受控磁碟的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md) \(英文\)  
-* [自訂映射](https://github.com/Azure/azure-quickstart-templates/)
+* [自訂映像](https://github.com/Azure/azure-quickstart-templates/)
 * [使用受控磁碟的自訂映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md) \(英文\)
 
 
 ## <a name="prepare-the-infrastructure-for-architectural-template-3"></a>準備架構範本 3 的基礎結構
 
-您可以準備基礎結構，並將 SAP 設定為多 SID。 例如，您可以將額外的 SAP ASCS/SCS 執行個體新增至現有的** 叢集組態以建立 SAP 多 SID 組態。 如需詳細資訊，請參閱[為現有的叢集組態設定額外的 SAP ASCS/SCS 執行個體以在 Azure Resource Manager 中建立 SAP 多 SID 組態][sap-ha-multi-sid-guide]。
+您可以準備基礎結構，並將 SAP 設定為多 SID。 例如，您可以將額外的 SAP ASCS/SCS 執行個體新增至現有的叢集組態以建立 SAP 多 SID 組態。 如需詳細資訊，請參閱[為現有的叢集組態設定額外的 SAP ASCS/SCS 執行個體以在 Azure Resource Manager 中建立 SAP 多 SID 組態][sap-ha-multi-sid-guide]。
 
 如果您想要建立新的多 SID 叢集，可以使用多 SID [GitHub 上的快速入門範本](https://github.com/Azure/azure-quickstart-templates)。
 
@@ -290,7 +290,7 @@ _**圖 1：** 設定 SAP 高可用性 Azure Resource Manager 參數_
 
 下列各節有更多關於您必須在範本中提供之範本和參數的詳細資料。
 
-### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a>ASCS/SCS 範本
+### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a> ASCS/SCS 範本
 
 ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 ASCS/SCS 執行個體的 Windows Server 容錯移轉叢集。
 
@@ -300,12 +300,12 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 - **堆疊類型**：選取 SAP 系統的堆疊類型。 根據堆疊類型而定，Azure Load Balancer 每個 SAP 系統會有一個 (ABAP 或僅 Java) 或兩個 (ABAP + Java) 私人 IP 位址。
 - **OS 類型**：選取虛擬機器的作業系統。
 - **SAP 系統計數**：選取您想要安裝在此叢集中的 SAP 系統數目。
-- **系統可用性**選取 [HA]****。
+- **系統可用性**：選取 **HA**。
 - **管理員使用者名稱和管理員密碼**：建立可用來登入電腦的新使用者。
-- **新的或現有的子網路**︰設定是否要建立新的虛擬網路和子網路，或是使用現有的子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [**現有**]。
-- **子網路識別碼**：如果您想要將 VM 部署至現有 VNet，而 VNet 中已定義應指派 VM 的子網路，請提供該特定子網路的識別碼。 識別碼通常看起來像這樣︰
+- **新的或現有的子網路**︰設定是否要建立新的虛擬網路和子網路，或是使用現有的子網路。 如果您已經有連接到內部部署網路的虛擬網路，請選取**現有**虛擬網路。
+- **子網識別碼**：如果您想要將 vm 部署至現有的 VNet，其中已定義應指派 VM 的子網，請命名該特定子網的識別碼。 識別碼通常看起來像這樣︰
 
-  /subscriptions/\<訂用帳戶識別碼\>/resourceGroups/\<資源群組名稱\>/providers/Microsoft.Network/virtualNetworks/\<虛擬網路名稱\>/subnets/\<子網路名稱\>
+  /subscriptions/ \<subscription id\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name\> /subnets/\<subnet name\>
 
 範本會部署一個 Azure Load Balancer 執行個體，可支援多個 SAP 系統：
 
@@ -319,8 +319,8 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 #### <a name="sap-ascsscs-ports"></a><a name="0f3ee255-b31e-4b8a-a95a-d9ed6200468b"></a> SAP ASCS/SCS 連接埠
 下列清單包含所有的負載平衡規則 (其中 x 是 SAP 系統的數目，例如 1、2、3...)︰
 - 每個 SAP 系統的 Windows 特定連接埠︰445、5985
-- ASCS 連接埠 (執行個體數目 x0)︰32x0、36x0、39x0、81x0、5x013、5x014、5x016
-- SCS 連接埠 (執行個體數目 x1)︰32x1、33x1、39x1、81x1、5x113、5x114、5x116
+- ASCS 連接埠 (執行個體數目 x0)：32x0、36x0、39x0、81x0,、5x013、5x014、5x016
+- SCS 連接埠 (執行個體數目 x1)：32x1、33x1、39x1、81x1、5x113、5x114、5x116
 - Linux 上的 ASCS ERS 連接埠 (執行個體數目 x2)︰33x2、5x213、5x214、5x216
 - Linux 上的 SCS ERS 連接埠 (執行個體數目 x3)︰33x3、5x313、5x314、5x316
 
@@ -328,7 +328,7 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 - ASCS/SCS 內部負載平衡器探查連接埠︰620x0
 - ERS 內部負載平衡器探查連接埠 (僅 Linux)︰621x2
 
-### <a name="database-template"></a><a name="database-template"></a>資料庫範本
+### <a name="database-template"></a><a name="database-template"></a> 資料庫範本
 
 資料庫範本會部署一個或兩個虛擬機器，可讓您用來安裝一個 SAP 系統的關聯式資料庫管理系統 (RDBMS)。 例如，如果您部署五個 SAP 系統的 ASCS/SCS 範本，您需要部署此範本五次。
 
@@ -341,9 +341,9 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
   * **HANA**負載平衡器會負載平衡連接埠 35015 和 35017。 請務必以執行個體數目 **50** 安裝 SAP HANA。
   負載平衡器會使用探查連接埠 62550。
 - **SAP 系統大小**：設定新系統所提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
-- **系統可用性**選取 [HA]****。
+- **系統可用性**：選取 **HA**。
 - **管理員使用者名稱和管理員密碼**：建立可用來登入電腦的新使用者。
-- **子網路識別碼**：輸入您在部署 ASCS/SCS 範本期間使用的子網路識別碼，或做為 ASCS/SCS 範本部署的一部分建立之子網路識別碼。
+- **子網識別碼**：輸入您在部署 ASCS/scs 範本期間使用的子網識別碼，或在 ASCS/scs 範本部署過程中建立之子網的識別碼。
 
 ### <a name="application-servers-template"></a><a name="application-servers-template"></a> 應用程式伺服器範本
 
@@ -354,9 +354,9 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
   -  **SAP 系統識別碼**：輸入您想要安裝之 SAP 系統的 SAP 系統識別碼。 該識別碼會作為所部署之資源的前置詞。
   -  **Os 類型**：選取虛擬機器的作業系統。
   -  **SAP 系統大小**：新系統所提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
-  -  **系統可用性**選取 [HA]****。
+  -  **系統可用性**：選取 **HA**。
   -  **管理員使用者名稱和管理員密碼**：建立可用來登入電腦的新使用者。
-  -  **子網路識別碼**：輸入您在部署 ASCS/SCS 範本期間使用的子網路識別碼，或做為 ASCS/SCS 範本部署的一部分建立之子網路識別碼。
+  -  **子網識別碼**：輸入您在部署 ASCS/scs 範本期間使用的子網識別碼，或在 ASCS/scs 範本部署過程中建立之子網的識別碼。
 
 
 ## <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure 虛擬網路
@@ -367,7 +367,7 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 >
 >
 
-## <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>DNS IP 位址
+## <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> DNS IP 位址
 
 若要設定所需的 DNS IP 位址，請完成下列步驟：
 
@@ -393,7 +393,7 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 | 第一部 DNS 伺服器 |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | 第二部 DNS 伺服器 |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-## <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>SAP ASCS/SCS 叢集實例和 DBMS 叢集實例的主機名稱和靜態 IP 位址
+## <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> SAP ASCS/SCS 叢集執行個體及 DBMS 叢集執行個體的主機名稱和靜態 IP 位址
 
 對於內部部署，您需要下列保留的主機名稱和 IP 位址：
 
@@ -403,15 +403,15 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 | SAP ASCS/SCS 執行個體虛擬主機名稱 |pr1-ascs-sap |10.0.0.43 |
 | SAP DBMS 第二個叢集虛擬主機名稱 (叢集管理) |pr1-dbms-vir |10.0.0.32 |
 
-當您建立叢集時，請建立虛擬主機名稱 pr1-ascs-vir 和 pr1-dbms-vir，以及管理叢集本身的相關 IP 位址。 如需如何執行這項操作的詳細資訊，請參閱[在叢集組態中收集叢集節點][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config]。
+當您建立叢集時，請建立虛擬主機名稱 pr1-ascs-vir 和 pr1-dbms-vir，以及管理叢集本身的相關 IP 位址。 如需如何執行此操作的詳細資訊，請參閱[在叢集組態中收集叢集節點][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config]。
 
-您可以在 DNS 伺服器上手動建立其他兩個虛擬主機名稱，pr1-ascs-sap 和 pr1-dbms-sap，以及相關的 IP 位址。 叢集 SAP ASCS/SCS 執行個體和叢集 DBMS 執行個體使用這些資源。 如需如何執行這項操作的詳細資訊，請參閱[建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱][sap-ha-guide-9.1.1]。
+您可以在 DNS 伺服器上手動建立其他兩個虛擬主機名稱，pr1-ascs-sap 和 pr1-dbms-sap，以及相關的 IP 位址。 叢集 SAP ASCS/SCS 執行個體和叢集 DBMS 執行個體使用這些資源。 如需如何執行此操作的詳細資訊，請參閱[建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱][sap-ha-guide-9.1.1]。
 
 ## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> 設定 SAP 虛擬機器的靜態 IP 位址
 部署要在叢集中使用的虛擬機器之後，您需要設定所有虛擬機器的靜態 IP 位址。 在 Azure 虛擬網路組態中執行此動作，而非在客體作業系統中執行此動作。
 
-1. 在 [Azure 入口網站中，選取 [**資源群組** > ] [**網路卡** > **設定** > ] [**IP 位址**]。
-2. 在 [IP 位址]**** 窗格的 [指派]**** 下，選取 [靜態]****。 在 [IP 位址]**** 方塊中，輸入您要使用的 IP 位址。
+1. 在 Azure 入口網站中選取 [資源群組] > [網路卡] > [設定] > [IP 位址]。
+2. 在 [IP 位址]**** 窗格的 [指派]**** 下，選取 [靜態]****。 在 [IP 位址] 方塊中，輸入您要使用的 IP 位址。
 
    > [!NOTE]
    > 如果您變更網路卡的 IP 位址，您就必須重新啟動 Azure 虛擬機器，才能套用變更。  
@@ -437,7 +437,7 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 | DBMS 執行個體的第一個叢集節點 |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
 | DBMS 執行個體的第二個叢集節點 |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
-## <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>為 Azure 內部負載平衡器設定靜態 IP 位址
+## <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> 為 Azure 內部負載平衡器設定靜態 IP 位址
 
 SAP Azure Resource Manager 範本會建立用於 SAP ASCS/SCS 執行個體叢集和用於 DBMS 叢集的 Azure 內部負載平衡器。
 
@@ -449,7 +449,7 @@ SAP Azure Resource Manager 範本會建立用於 SAP ASCS/SCS 執行個體叢集
 
 若要為 Azure 內部負載平衡器設定靜態 IP 位址：
 
-1. 初始部署會將內部負載平衡器的 IP 位址設定為 [動態]****。 在 Azure 入口網站 [IP 位址]**** 窗格的 [指派]**** 下，選取 [靜態]****。
+1. 初始部署會將內部負載平衡器的 IP 位址設定為 [動態]。 在 Azure 入口網站 [IP 位址]**** 窗格的 [指派]**** 下，選取 [靜態]****。
 2. 請將「內部負載平衡器」**pr1-lb-ascs** 的 IP 位址設定為 SAP ASCS/SCS 執行個體的虛擬主機名稱 IP 位址。
 3. 請將「內部負載平衡器」**pr1-lb-dbms** 的 IP 位址設定為 DBMS 執行個體的虛擬主機名稱 IP 位址。
 
@@ -480,16 +480,16 @@ SAP Azure Resource Manager 範本會建立所需的連接埠：
 | 服務/負載平衡規則名稱 | 預設連接埠號碼 | (執行個體號碼為 00 的 ASCS 執行個體) (ERS 為 10) 的具體連接埠 |
 | --- | --- | --- |
 | 排入佇列伺服器/ *lbrule3200* |32\<InstanceNumber\> |3200 |
-| ABAP 訊息伺服器 / *lbrule3600* |36\<InstanceNumber\> |3600 |
-| 內部 ABAP 訊息 / *lbrule3900* |39\<InstanceNumber\> |3900 |
+| ABAP 訊息伺服器/ *lbrule3600* |36\<InstanceNumber\> |3600 |
+| 內部 ABAP 訊息/ *lbrule3900* |39\<InstanceNumber\> |3900 |
 | 訊息伺服器 HTTP/ *Lbrule8100* |81\<InstanceNumber\> |8100 |
-| SAP 啟動服務 ASCS HTTP / *Lbrule50013* |5\<InstanceNumber\>13 |50013 |
+| SAP 啟動服務 ASCS HTTP/ *Lbrule50013* |5\<InstanceNumber\>13 |50013 |
 | SAP 啟動服務 ASCS HTTPS/ *Lbrule50014* |5\<InstanceNumber\>14 |50014 |
-| 加入佇列複寫 / *Lbrule50016* |5\<InstanceNumber\>16 |50016 |
+| 排入佇列複寫/ *Lbrule50016* |5\<InstanceNumber\>16 |50016 |
 | SAP 啟動服務 ERS HTTP *Lbrule51013* |5\<InstanceNumber\>13 |51013 |
 | SAP 啟動服務 ERS HTTP *Lbrule51014* |5\<InstanceNumber\>14 |51014 |
 | Windows 遠端管理 (WinRM) *Lbrule5985* | |5985 |
-| 檔案共用 *Lbrule445* | |445 |
+| 檔案共用*Lbrule445* | |445 |
 
 **表 1：** SAP NetWeaver ABAP ASCS 執行個體的連接埠號碼
 
@@ -497,17 +497,17 @@ SAP Azure Resource Manager 範本會建立所需的連接埠：
 
 | 服務/負載平衡規則名稱 | 預設連接埠號碼 | (執行個體號碼為 01 的 SCS 執行個體) (ERS 為 11) 的具體連接埠 |
 | --- | --- | --- |
-| 加入佇列伺服器 / *lbrule3201* |32\<InstanceNumber\> |3201 |
+| 排入佇列伺服器/ *lbrule3201* |32\<InstanceNumber\> |3201 |
 | 閘道伺服器/ *lbrule3301* |33\<InstanceNumber\> |3301 |
-| Java 訊息伺服器 / *lbrule3900* |39\<InstanceNumber\> |3901 |
+| JAVA 訊息伺服器/ *lbrule3900* |39\<InstanceNumber\> |3901 |
 | 訊息伺服器 HTTP/ *Lbrule8101* |81\<InstanceNumber\> |8101 |
-| SAP 啟動服務 SCS HTTP / *Lbrule50113* |5\<InstanceNumber\>13 |50113 |
+| SAP 啟動服務 SCS HTTP/ *Lbrule50113* |5\<InstanceNumber\>13 |50113 |
 | SAP 啟動服務 SCS HTTPS/ *Lbrule50114* |5\<InstanceNumber\>14 |50114 |
-| 加入佇列複寫 / *Lbrule50116* |5\<InstanceNumber\>16 |50116 |
+| 排入佇列複寫/ *Lbrule50116* |5\<InstanceNumber\>16 |50116 |
 | SAP 啟動服務 ERS HTTP *Lbrule51113* |5\<InstanceNumber\>13 |51113 |
 | SAP 啟動服務 ERS HTTP *Lbrule51114* |5\<InstanceNumber\>14 |51114 |
 | WinRM *Lbrule5985* | |5985 |
-| 檔案共用 *Lbrule445* | |445 |
+| 檔案共用*Lbrule445* | |445 |
 
 **表 2：** SAP NetWeaver Java SCS 執行個體的連接埠號碼
 
@@ -517,11 +517,11 @@ _**圖5：** Azure 內部負載平衡器的預設 ASCS/SCS 負載平衡規則_
 
 將負載平衡器 pr1-lb-dbms 的 IP 位址設定為 DBMS 執行個體之虛擬主機名稱的 IP 位址。
 
-### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>變更 Azure 內部負載平衡器的 ASCS/SCS 預設負載平衡規則
+### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 變更 Azure 內部負載平衡器的 ASCS/SCS 預設負載平衡規則
 
 如果您想要將其他號碼用於 SAP ASCS 或 SCS 執行個體，您就必須從預設值變更其連接埠的名稱和值。
 
-1. 在 [Azure 入口網站中，選取 >  ** \<[SID\>-lb-ascs 負載平衡器**] [**負載平衡規則**]。
+1. 在 [Azure 入口網站中，選取 [ ** \<SID\> -ascs**] [負載平衡器] [負載  >  **平衡規則**]。
 2. 針對屬於 SAP ASCS 或 SCS 執行個體的所有負載平衡規則，變更下列值：
 
    * 名稱
@@ -550,7 +550,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 若要在 SAP ASCS/SCS 執行個體的兩個叢集節點上新增登錄項目，首先，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上新增這些 Windows 登錄項目︰
 
-| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveTime` |
 | 變數類型 |REG_DWORD (十進位) |
@@ -561,7 +561,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 然後，在 SAP ASCS/SCS 的兩個 Windows 叢集節點上都新增下列 Windows 登錄項目：
 
-| 路徑 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 變數名稱 |`KeepAliveInterval` |
 | 變數類型 |REG_DWORD (十進位) |
@@ -643,7 +643,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
    _**圖17：** 輸入第二個叢集節點主機名稱_
 
    > [!IMPORTANT]
-   > 請確定*沒有*選取 [新增適合的儲存裝置到叢集]**** 核取方塊。  
+   > 請確定*未*選取 [**新增適合的儲存裝置到**叢集] 核取方塊。  
    >
    >
 
@@ -665,7 +665,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 - 建立檔案共用。
 - 在容錯移轉叢集管理員中設定檔案共用見證仲裁。
 
-#### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>建立檔案共用
+#### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> 建立檔案共用
 
 1. 選取檔案共用見證，而不是仲裁磁碟。 SIOS DataKeeper 支援此選項。
 
@@ -686,7 +686,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
    請確定權限能夠為叢集名稱物件 (在我們的範例中為 pr1-ascs-vir$) 變更共用中的資料。
 
-3. 若要將叢集名稱物件新增至清單中，請選取 [新增]****。 變更篩選，以檢查電腦物件，除了圖 22 所示的項目以外。
+3. 若要將叢集名稱物件新增至清單中，請選取 [新增]。 變更篩選，以檢查電腦物件，除了圖 22 所示的項目以外。
 
    ![圖 21：變更物件類型以包含電腦][sap-ha-guide-figure-3020]
 
@@ -698,7 +698,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 4. 輸入叢集名稱物件，如圖 21 所示。 由於已經建立記錄，因此您可以變更權限，如圖 20 所示。
 
-5. 選取共用的 [安全性]**** 索引標籤，然後為叢集名稱物件設定更詳細的權限。
+5. 選取共用的 [安全性] 索引標籤，然後為叢集名稱物件設定更詳細的權限。
 
    ![圖 23：為叢集名稱物件設定檔案共用仲裁上的安全性屬性][sap-ha-guide-figure-3022]
 
@@ -718,19 +718,19 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
    _**圖25：** 您可以選擇的仲裁設定_
 
-3. 在 [選取仲裁見證]**** 頁面上，選取 [設定檔案共用見證]****。
+3. 在 [選取仲裁見證] 頁面上，選取 [設定檔案共用見證]。
 
    ![圖 26︰選取檔案共用見證][sap-ha-guide-figure-3025]
 
    _**圖 26︰** 選取檔案共用見證_
 
-4. 輸入檔案共用的 UNC 路徑 (在我們的範例中為 \\domcontr-0\FSW)。 若要查看您可進行變更的清單，選取 [下一步]****。
+4. 輸入檔案共用的 UNC 路徑 (在我們的範例中為 \\domcontr-0\FSW)。 若要查看您可進行變更的清單，選取 [下一步]。
 
    ![圖 27：定義見證共用的檔案共用位置][sap-ha-guide-figure-3026]
 
    _**圖27：** 定義見證共用的檔案共用位置_
 
-5. 選取您要的變更，然後選取 [下一步]****。 您必須成功重新設定叢集組態，如圖 28 中所示：  
+5. 選取您要的變更，然後選取 [下一步]。 您必須成功重新設定叢集組態，如圖 28 中所示：  
 
    ![圖 28：確認您已重新設定叢集][sap-ha-guide-figure-3027]
 
@@ -744,7 +744,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 這些設定已與客戶進行測試，並提供很好的折衷方案。 它們具有足夠的彈性，但也提供在 SAP 軟體的真實錯誤條件或節點或 VM 失敗中夠快的容錯移轉。
 
-### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>針對 SAP ASCS/SCS 叢集共用磁片安裝 SIOS DataKeeper Cluster Edition
+### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> 為 SAP ASCS/SCS 叢集共用磁碟安裝 SIOS DataKeeper Cluster Edition
 
 您現在在 Azure 中有運作中的 Windows Server 容錯移轉叢集組態。 若要安裝 SAP ASCS/SCS 執行個體，您需要有一個共用磁碟資源。 您無法在 Azure 中建立所需的共用磁碟資源。 SIOS DataKeeper Cluster Edition 是一種可用來建立共用磁碟資源的協力廠商解決方案。
 
@@ -826,7 +826,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
 在兩個節點上都安裝 SIOS DataKeeper 之後，開始設定組態。 組態的目標是要在連接至每個虛擬機器的額外磁碟之間進行同步資料複寫。
 
-1. 啟動 DataKeeper 管理與組態工具，然後選取 [連線伺服器]****。
+1. 啟動 DataKeeper 管理與組態工具，然後選取 [連線伺服器]。
 
    ![圖 36：SIOS DataKeeper 管理和組態工具][sap-ha-guide-figure-3036]
 
@@ -870,7 +870,7 @@ Azure Load Balancer 具有內部負載平衡器，會在連線閒置一段時間
 
    _**圖 42︰** 定義複寫詳細資料_
 
-8. 定義是否應該向 Windows Server 容錯移轉叢集的叢集組態指出複寫作業所複寫的磁碟區是共用磁碟。 就 SAP ASCS/SCS 組態而言，選取 [是]**** ，如此 Windows 叢集才會將複寫的磁碟區視為可用來作為叢集磁碟區的共用磁碟。
+8. 定義是否應該向 Windows Server 容錯移轉叢集的叢集組態指出複寫作業所複寫的磁碟區是共用磁碟。 就 SAP ASCS/SCS 組態而言，選取 [是] ，如此 Windows 叢集才會將複寫的磁碟區視為可用來作為叢集磁碟區的共用磁碟。
 
    ![圖 43：選取 [是] 以將複寫的磁碟區設定為叢集磁碟區][sap-ha-guide-figure-3043]
 

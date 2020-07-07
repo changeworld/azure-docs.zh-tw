@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594724"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
@@ -45,7 +45,7 @@ Linux 自訂指令碼擴充功能有兩個：
 您可以利用擴充功能來使用 Azure Blob 儲存體認證，以存取 Azure Blob 儲存體。 或者，指令碼可以位於任何位置，前提是 VM 可以路由傳送至該端點，例如 GitHub、內部檔案伺服器等。
 
 ### <a name="internet-connectivity"></a>網際網路連線
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)適用的 Azure NSG 服務標記進行存取。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -106,7 +106,7 @@ Linux 自訂指令碼擴充功能有兩個：
 ```
 
 >[!NOTE]
-> Microsoft.managedidentity 屬性**不得**與 StorageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 ### <a name="property-values"></a>屬性值
 
@@ -117,13 +117,13 @@ Linux 自訂指令碼擴充功能有兩個：
 | type | CustomScript | 字串 |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (例如) | python MyPythonScript.py \<my-param1> | 字串 |
-| 指令碼 (script) | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字串 |
+| commandToExecute (例如) | python MyPythonScript.py\<my-param1> | 字串 |
+| 指令碼 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字串 |
 | skipDos2Unix (範例) | false | boolean |
 | timestamp (範例) | 123456789 | 32 位元整數 |
 | storageAccountName (例如) | examplestorageacct | 字串 |
 | storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字串 |
-| Microsoft.managedidentity （例如） | {} 或 {"clientId"： "31b403aa-c364-4240-a7ff-d85fb6cd7232"} 或 {"objectId"： "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | json 物件 |
+| managedIdentity (例如) | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON 物件 |
 
 ### <a name="property-value-details"></a>屬性值詳細資料
 * `apiVersion`：您可以使用[資源總管](https://resources.azure.com/)或從 Azure CLI 使用下列命令，找到最新的 apiVersion`az provider list -o json`
@@ -134,9 +134,9 @@ Linux 自訂指令碼擴充功能有兩個：
 * `fileUris`：(選擇性，字串陣列) 要下載之檔案的 URL。
 * `storageAccountName`：(選用，字串) 儲存體帳戶的名稱。 如果您指定儲存體證明資料，則所有 `fileUris` 都必須是 Azure Blob 的 URL。
 * `storageAccountKey`：(選用，字串) 儲存體帳戶的存取金鑰
-* `managedIdentity`：（選擇性，json 物件）用來下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-  * `clientId`：（選擇性，字串）受控識別的用戶端識別碼
-  * `objectId`：（選擇性，字串）受控識別的物件識別碼
+* `managedIdentity`：(選用，JSON 物件) 用來下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  * `clientId`：(選用，字串) 受控識別的用戶端識別碼
+  * `objectId`：(選用，字串) 受控識別的物件識別碼
 
 
 下列值可以在公開或受保護的設定中設定，擴充功能將會拒絕任何同時在公開和受保護的設定中設定下列值的組態。
@@ -208,15 +208,15 @@ CustomScript 會使用下列演算法來執行指令碼。
  1. 將解碼 (並選擇性地解壓縮) 的值寫入至磁碟 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 執行指令碼。
 
-####  <a name="property-managedidentity"></a>屬性： Microsoft.managedidentity
+####  <a name="property-managedidentity"></a>屬性：managedIdentity
 > [!NOTE]
-> 此屬性**必須**在 [受保護的設定] 中指定。
+> **必須**在受保護的設定中，才能指定此屬性。
 
-CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它可讓 CustomScript 存取 Azure 儲存體私人 blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
+CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
-若要使用這項功能，使用者必須將[系統指派](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)的身分識別新增至應執行 CUSTOMSCRIPT 的 VM 或 VMSS，並將[Azure 儲存體容器或 blob 的存取權授與受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用這項功能，使用者必須將[系統指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
-若要在目標 VM/VMSS 上使用系統指派的身分識別，請將 "microsoft.managedidentity" 欄位設定為空的 json 物件。 
+若要在目標 VM/VMSS 上使用系統指派的身分識別，請將 [managedidentity] 欄位設定為空的 JSON 物件。 
 
 > 範例：
 >
@@ -228,7 +228,7 @@ CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下�
 > }
 > ```
 
-若要在目標 VM/VMSS 上使用使用者指派的身分識別，請使用用戶端識別碼或受控識別的物件識別碼來設定 "microsoft.managedidentity" 欄位。
+若要在目標 VM/VMSS 上使用使用者指派的身分識別，請使用用戶端識別碼或受控識別的物件識別碼來設定 [managedidentity] 欄位。
 
 > 範例：
 >
@@ -248,7 +248,7 @@ CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下�
 > ```
 
 > [!NOTE]
-> Microsoft.managedidentity 屬性**不得**與 StorageAccountName 或 storageAccountKey 屬性一起使用
+> managedIdentity 屬性**不得**與 storageAccountName 或 storageAccountKey 屬性一起使用
 
 ## <a name="template-deployment"></a>範本部署
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行自訂指令碼擴充功能。 在 [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux) 可以找到包含自訂指令碼擴充功能的範例範本。
@@ -448,7 +448,7 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 * 擴充功能下載檔案及其結果。
 * 正在執行的命令和結果。
 
-您也可以使用 Azure CLI，抓取自訂腳本擴充功能的執行狀態，包括當做傳遞`commandToExecute`的實際引數：
+您也可以使用 Azure CLI，抓取自訂腳本擴充功能的執行狀態，包括當做傳遞的實際引數 `commandToExecute` ：
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM

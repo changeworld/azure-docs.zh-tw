@@ -4,10 +4,10 @@ description: 了解 Azure Service Fabric 的核心概念和主要領域。 提�
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791845"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
@@ -17,15 +17,15 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 [Service Fabric 術語](service-fabric-technical-overview.md)、[應用程式模型](service-fabric-application-model.md)及[支援的程式設計模型](service-fabric-choose-framework.md)提供更多概念和描述，但這裡提供基本概念。
 
 ### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>設計階段：服務類型、服務封裝和資訊清單、應用程式類型、應用程式封裝和資訊清單
-服務類型是指派給服務的程式碼封裝、資料封裝及組態封裝的名稱/版本。 這會在 ServiceManifest 中定義。 服務類型是由可執行程式碼和服務設定（在執行時間載入），以及服務所使用的靜態資料所組成。
+服務類型是指派給服務的程式碼封裝、資料封裝及組態封裝的名稱/版本。 這會在 ServiceManifest.xml 檔案中定義。 服務類型是由可執行程式碼和服務設定（在執行時間載入），以及服務所使用的靜態資料所組成。
 
 服務封裝是一個磁碟目錄，其中包含服務類型的 ServiceManifest.xml 檔案，此檔案會參考服務類型的程式碼、靜態資料及組態封裝。 例如，服務套件可能會參考構成資料庫服務的程式碼、靜態資料和組態封裝。
 
-應用程式類型是指派給服務類型集合的名稱/版本。 這會在 ApplicationManifest 中定義。
+應用程式類型是指派給服務類型集合的名稱/版本。 這會在 ApplicationManifest.xml 檔案中定義。
 
 ![Service Fabric 應用程式類型和服務類型][cluster-imagestore-apptypes]
 
-應用程式封裝是一個磁碟目錄，其中包含應用程式類型的 ApplicationManifest 檔案，該檔案會參考組成應用程式類型之每個服務類型的服務封裝。 例如，電子郵件應用程式類型的應用程式封裝可能包含指向佇列服務封裝、前端服務封裝、資料庫服務封裝的參考。  
+應用程式封裝是一個磁碟目錄，其中包含應用程式類型的 ApplicationManifest.xml 檔案，該檔案會參考組成應用程式類型之每個服務類型的服務封裝。 例如，電子郵件應用程式類型的應用程式封裝可能包含指向佇列服務封裝、前端服務封裝、資料庫服務封裝的參考。  
 
 應用程式封裝目錄中的檔案會複製到 Service Fabric 叢集的映像存放區。 您可以接著從這個應用程式類型建立一個具名應用程式，然後在叢集內執行該應用程式。 建立名為的應用程式之後，您可以從應用程式類型的其中一個服務類型建立名為的服務。 
 
@@ -143,7 +143,7 @@ Service Fabric 提供安裝套件，可讓您在內部部署環境或任何雲�
 
 Service Fabric 叢集是由您所擁有，但由 Microsoft 部分管理的資源。 Microsoft 負責修補基礎 OS，以及在叢集上執行網狀架構升級。 您可以設定您的叢集 (當 Microsoft 發行新版本時) 接收自動網狀架構升級，或選擇選取您需要的受支援網狀架構版本。 您可透過 Azure 入口網站或 Resource Manager，設定網狀架構和組態升級。 如需詳細資訊，請參閱[升級 Service Fabric 叢集](service-fabric-cluster-upgrade.md)。 
 
-獨立叢集是由您完全擁有的資源。 由您負責修補基礎 OS 和起始網狀架構升級。 如果您的叢集可以連接[https://www.microsoft.com/download](https://www.microsoft.com/download)到，您可以將叢集設定為自動下載並布建新的 Service Fabric 執行時間套件。 接著您即會起始升級。 如果您的叢集無法[https://www.microsoft.com/download](https://www.microsoft.com/download)存取，您可以從連線到網際網路的電腦手動下載新的執行時間套件，然後起始升級。 如需詳細資訊，請參閱[升級獨立 Service Fabric 叢集](service-fabric-cluster-upgrade-windows-server.md)。
+獨立叢集是由您完全擁有的資源。 由您負責修補基礎 OS 和起始網狀架構升級。 如果您的叢集可以連接到 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以將叢集設定為自動下載並布建新的 Service Fabric 執行時間套件。 接著您即會起始升級。 如果您的叢集無法存取 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以從連線到網際網路的電腦手動下載新的執行時間套件，然後起始升級。 如需詳細資訊，請參閱[升級獨立 Service Fabric 叢集](service-fabric-cluster-upgrade-windows-server.md)。
 
 ## <a name="health-monitoring"></a>健康狀況監視
 Service Fabric 引入了[健康狀態模型](service-fabric-health-introduction.md)，主要用於在特定實體 (例如叢集節點和服務複本) 上標示狀況不良的叢集和應用程式條件。 健康狀態模型使用健康狀態報告程式 (系統元件及看門狗)。 目標為輕易迅速的診斷並修復問題。 服務撰寫者必須預先考量健康狀態以及如何[設計健康狀態報告](service-fabric-report-health.md#design-health-reporting)等相關層面。 任何可能會影響到健康狀態的條件都需加以回報，尤其是如果它有助標示出接近根目錄的問題。 一旦在生產階段大規模啟動並執行服務，健康狀態資訊將可有效減少偵錯和調查工作所需的時間和心力。

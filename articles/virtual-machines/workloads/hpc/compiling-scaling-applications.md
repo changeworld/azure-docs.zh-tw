@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594792"
 ---
 # <a name="scaling-hpc-applications"></a>調整 HPC 應用程式
@@ -33,11 +33,11 @@ AMD 優化 C/c + + 編譯器（AOCC）編譯器系統提供高階的先進優化
 
 ### <a name="clang"></a>Clang
 
-Clang 是 C、c + + 和以目標為 C 的編譯器，處理前置處理、剖析、優化、程式碼產生、元件和連結。 Clang 支援`-march=znver1`旗標，以針對以 AMD Zen 為基礎的 x86 架構，啟用最佳程式碼產生和微調。
+Clang 是 C、c + + 和以目標為 C 的編譯器，處理前置處理、剖析、優化、程式碼產生、元件和連結。 Clang 支援旗標， `-march=znver1` 以針對以 AMD Zen 為基礎的 x86 架構，啟用最佳程式碼產生和微調。
 
 ### <a name="flang"></a>FLANG
 
-FLANG 編譯器是 AOCC suite 的最近新增（2018年4月），目前處於發行前版本，供開發人員下載和測試。 根據 Fortran 2008，AMD 擴充了 GitHub 版本的 FLANG （https://github.com/flang-compiler/flang)。 FLANG 編譯器支援所有的 Clang 編譯器選項，以及額外數目的 FLANG 特定編譯器選項。
+FLANG 編譯器是 AOCC suite 的最近新增（2018年4月），目前處於發行前版本，供開發人員下載和測試。 根據 Fortran 2008，AMD 擴充了 GitHub 版本的 FLANG （ https://github.com/flang-compiler/flang) 。 FLANG 編譯器支援所有的 Clang 編譯器選項，以及額外數目的 FLANG 特定編譯器選項。
 
 ### <a name="dragonegg"></a>DragonEgg
 

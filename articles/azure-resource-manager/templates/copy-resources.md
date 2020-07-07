@@ -4,10 +4,10 @@ description: 使用 Azure Resource Manager 範本中的複製作業和陣列，�
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583394"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
@@ -18,7 +18,7 @@ ms.locfileid: "82583394"
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 Copy 元素具有下列一般格式：
 
@@ -189,7 +189,7 @@ mode 屬性也接受**平行**，這是預設值。
 
 ## <a name="depend-on-resources-in-a-loop"></a>依迴圈中的資源而定
 
-您可以透過使用 `dependsOn` 元素，讓某個資源在另一個資源之後才部署。 若要部署相依於迴圈中資源集合的資源時，請在 dependsOn 元素中提供複製迴圈的名稱。 下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 不會顯示完整的虛擬機器定義。 請注意，copy 元素的名稱設定為`storagecopy` ，而虛擬機器的 dependsOn 元素也設定為`storagecopy`。
+您可以透過使用 `dependsOn` 元素，讓某個資源在另一個資源之後才部署。 若要部署相依於迴圈中資源集合的資源時，請在 dependsOn 元素中提供複製迴圈的名稱。 下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 不會顯示完整的虛擬機器定義。 請注意，copy 元素的名稱設定為 `storagecopy` ，而虛擬機器的 dependsOn 元素也設定為 `storagecopy` 。
 
 ```json
 {

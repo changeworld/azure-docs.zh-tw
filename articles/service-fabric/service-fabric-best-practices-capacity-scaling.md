@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791862"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
@@ -48,7 +48,7 @@ ms.locfileid: "82791862"
 
 垂直調整虛擬機器擴展集是一種破壞性操作。 相反地，請使用所需的 SKU 加入新的擴展集，以水準方式調整您的叢集。 然後，將您的服務遷移至您所需的 SKU，以完成安全的垂直調整作業。 變更虛擬機器擴展集資源 SKU 是一種破壞性作業，因為它會重新安裝您的主機，這會移除所有本機保存的狀態。
 
-您的叢集會使用 Service Fabric[節點屬性和放置條件約束](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints)來決定要裝載應用程式服務的位置。 當您垂直調整主要節點類型時，請為提供相同的`"nodeTypeRef"`屬性值。 您可以在虛擬機器擴展集的 Service Fabric 延伸模組中找到這些值。 
+您的叢集會使用 Service Fabric[節點屬性和放置條件約束](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints)來決定要裝載應用程式服務的位置。 當您垂直調整主要節點類型時，請為提供相同的屬性值 `"nodeTypeRef"` 。 您可以在虛擬機器擴展集的 Service Fabric 延伸模組中找到這些值。 
 
 Resource Manager 範本的下列程式碼片段顯示您將宣告的屬性。 對於您要調整的新布建擴展集，其值相同，而且僅支援做為叢集的暫時具狀態服務。
 
@@ -59,18 +59,18 @@ Resource Manager 範本的下列程式碼片段顯示您將宣告的屬性。 �
 ```
 
 > [!NOTE]
-> 請不要讓叢集執行的多個擴展集使用相同`nodeTypeRef`的屬性值超過所需的大小，以完成成功的垂直調整作業。
+> 請不要讓叢集執行的多個擴展集使用相同的 `nodeTypeRef` 屬性值超過所需的大小，以完成成功的垂直調整作業。
 >
 > 在您嘗試變更生產環境之前，請一律先驗證測試環境中的作業。 根據預設，Service Fabric 叢集系統服務只有目標主要節點類型的放置條件約束。
 
 在宣告節點屬性和放置條件約束後，請逐一對各個 VM 執行個體執行下列步驟。 這可讓系統服務（以及您的具狀態服務）在您要移除的 VM 實例上正常關閉，因為您會在其他位置建立新複本。
 
-1. 從 PowerShell，以`Disable-ServiceFabricNode`意圖`RemoveNode`執行，以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
+1. 從 PowerShell， `Disable-ServiceFabricNode` 以意圖執行， `RemoveNode` 以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
 2. 執行 `Get-ServiceFabricNode` 以確保節點已轉換為停用狀態。 如果沒有，請等到節點停用。 這可能需要幾個小時的時間才能執行每個節點。 請等到節點已轉換為停用狀態後，再繼續操作。
 3. 將 Vm 的數目減少為該節點類型的其中一個。 此時將會移除最高的 VM 執行個體。
 4. 視需要重複步驟1到3，但永遠不會相應縮小主要節點類型中的實例數目，而不是可靠性層級所保證的大小。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 5. 一旦所有 Vm 都消失（以「向下」表示），fabric：/System/InfrastructureService/[node name] 就會顯示錯誤狀態。 然後，您可以更新叢集資源來移除節點類型。 您可以使用 ARM 範本部署，或透過[Azure resource manager](https://resources.azure.com)來編輯叢集資源。 這會啟動叢集升級，這會移除處於錯誤狀態的 fabric：/System/InfrastructureService/[node type] 服務。
- 6. 在這之後，您可以選擇性地刪除 VMScaleSet，但您仍會看到 Service Fabric Explorer view 中的節點為「關閉」。 最後一個步驟是使用`Remove-ServiceFabricNodeState`命令來清除它們。
+ 6. 在這之後，您可以選擇性地刪除 VMScaleSet，但您仍會看到 Service Fabric Explorer view 中的節點為「關閉」。 最後一個步驟是使用命令來清除它們 `Remove-ServiceFabricNodeState` 。
 
 ## <a name="horizontal-scaling"></a>水平調整
 
@@ -81,7 +81,7 @@ Resource Manager 範本的下列程式碼片段顯示您將宣告的屬性。 �
 
 ### <a name="scaling-out"></a>相應放大
 
-藉由增加特定虛擬機器擴展集的實例計數，以相應放大 Service Fabric 叢集。 您可以使用來以程式設計`AzureClient`方式向外延展，並使用所需擴展集的識別碼來增加容量。
+藉由增加特定虛擬機器擴展集的實例計數，以相應放大 Service Fabric 叢集。 您可以使用來以程式設計方式向外延展 `AzureClient` ，並使用所需擴展集的識別碼來增加容量。
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -108,7 +108,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 若要手動相應縮小，請遵循下列步驟︰
 
-1. 從 PowerShell，以`Disable-ServiceFabricNode`意圖`RemoveNode`執行，以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
+1. 從 PowerShell， `Disable-ServiceFabricNode` 以意圖執行， `RemoveNode` 以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
 2. 執行 `Get-ServiceFabricNode` 以確保節點已轉換為停用狀態。 如果沒有，請等到節點停用。 這可能需要幾個小時的時間才能執行每個節點。 請等到節點已轉換為停用狀態後，再繼續操作。
 3. 將 Vm 的數目減少為該節點類型的其中一個。 此時將會移除最高的 VM 執行個體。
 4. 視需要重複步驟1到3，直到您布建所需的容量為止。 請勿將主要節點類型的實例數目相應縮小為小於可靠性層級所保證的大小。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
@@ -140,7 +140,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-使用您在先前的程式碼中使用`FabricClient`的相同`client`實例（在此案例中為）`instanceIdString`和節點實例（在此案例中為）來停用和移除節點：
+使用 `FabricClient` `client` 您在先前的程式碼中使用的相同實例（在此案例中為）和節點實例（ `instanceIdString` 在此案例中為）來停用和移除節點：
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -213,7 +213,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-另一個資源位於`nodeTypes` [ServiceFabric/叢集資源](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中： 
+另一個資源位於 `nodeTypes` [ServiceFabric/叢集資源](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中： 
 
 ```json
 "nodeTypes": [

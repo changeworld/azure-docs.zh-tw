@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796599"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI，從受控映射遷移至映射版本
@@ -36,15 +36,15 @@ ms.locfileid: "82796599"
 
 ## <a name="create-an-image-definition"></a>建立映像定義
 
-由於受控映射一律是一般化的映射，因此您將使用`--os-state generalized`來為一般化映射建立映射定義。
+由於受控映射一律是一般化的映射，因此您將使用 `--os-state generalized` 來為一般化映射建立映射定義。
 
-影像定義名稱可以由大寫或小寫字母、數位、點、虛線和句號組成。 
+映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-如需您可以為映射定義指定之值的詳細資訊，請參閱[影像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
 
-使用[az sig image 定義 create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映射定義。
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
-在此範例中，映射定義名為*myImageDefinition*，而適用于[通用](./linux/shared-image-galleries.md#generalized-and-specialized-images)Linux OS 映射。 若要使用 Windows 作業系統來建立映射的定義，請`--os-type Windows`使用。 
+在此範例中，映射定義名為*myImageDefinition*，而適用于[通用](./linux/shared-image-galleries.md#generalized-and-specialized-images)Linux OS 映射。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -62,7 +62,7 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>建立映射版本
+## <a name="create-the-image-version"></a>建立映像版本
 
 使用[az image 圖庫 create-image 版本](/cli/azure/sig/image-version#az-sig-image-version-create)來建立版本。 您必須傳入受控映像的識別碼，以作為建立映像版本的基準。 您可以使用[az image list](/cli/azure/image?view#az-image-list)來取得影像的識別碼。 
 
@@ -70,11 +70,11 @@ az sig image-definition create \
 az image list --query "[].[name, id]" -o tsv
 ```
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*。*MinorVersion*。*修補程式*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此範例中，我們的映射版本為*1.0.0* ，而我們將在*美國中南部*區域建立1個複本，並在*美國東部 2*區域中使用區域多餘的儲存體來建立1個複本。 選擇要複寫的目的地區域時，請記住，您也必須將*來源*區域納入做為複寫的目標。
 
-在`--managed-image`參數中傳遞受控映射的識別碼。
+在參數中傳遞受控映射的識別碼 `--managed-image` 。
 
 
 ```azurecli-interactive 
@@ -90,9 +90,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 您必須等候映射版本完全完成建立和複寫，才能使用相同的受控映射來建立另一個映射版本。
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增`--storage-account-type standard_zrs` ，以將所有映射版本複本儲存在[區域冗余儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中。
+> 您也可以在建立映射版本時新增，以將所有映射版本複本儲存在[區域冗余儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中 `--storage-account-type standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>後續步驟

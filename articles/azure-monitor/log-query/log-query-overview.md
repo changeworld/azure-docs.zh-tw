@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82591647"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
@@ -76,7 +76,7 @@ on $left.timestamp == $right.TimeGenerated
 
 
 ## <a name="what-is-log-analytics"></a>什麼是 Log Analytics？
-Log Analytics 是 Azure 入口網站中用來撰寫記錄查詢和以互動方式分析其結果的主要工具。 即使記錄查詢是用於 Azure 監視器中的其他地方，您通常還是先使用 Log Analytics 撰寫並測試查詢。
+Log Analytics 是 Azure 入口網站中的主要工具，可用於撰寫記錄查詢並以互動方式分析其結果。 即使記錄查詢是用於 Azure 監視器中的其他地方，您通常還是先使用 Log Analytics 撰寫並測試查詢。
 
 您可以從 Azure 入口網站中的數個位置啟動 Log Analytics。 可供 Log Analytics 使用的資料範圍取決於您啟動它的方式。 如需詳細資訊，請參閱[查詢範圍](scope.md)。
 

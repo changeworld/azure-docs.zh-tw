@@ -4,10 +4,10 @@ description: 在 Azure Resource Manager 範本中使用複製作業，以在從�
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583420"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM 範本中的輸出反復專案
@@ -16,7 +16,7 @@ ms.locfileid: "82583420"
 
 您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和[變數](copy-variables.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 Copy 元素具有下列一般格式：
 

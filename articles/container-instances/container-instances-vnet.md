@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
 ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583648"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>將容器執行個體部署至 Azure 虛擬網路
 
-[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)為您的 azure 和內部部署資源提供安全的私用網路。 透過將容器群組部署至 Azure 虛擬網路，您的容器可在虛擬網路中安全地與其他資源通訊。
+[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)會為 Azure 資源和內部部署資源提供安全的私人網路。 透過將容器群組部署至 Azure 虛擬網路，您的容器可在虛擬網路中安全地與其他資源通訊。
 
 本文說明如何使用 Azure CLI 中的[az container create][az-container-create]命令，將容器群組部署至新的虛擬網路或現有的虛擬網路。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "82583648"
 
 ### <a name="example"></a>範例
 
-下列[az container create][az-container-create]命令會指定新的虛擬網路和子網的設定。 提供在虛擬網路中的容器群組部署[可供使用](container-instances-region-availability.md#availability---virtual-network-deployment)的區域中所建立的資源組名。 此命令會部署公用 Microsoft [aci-helloworld][aci-helloworld]容器，其會執行小型 node.js web 伺服器以提供靜態網頁。 在下一節中，您會對同一個子網路部署第二個容器群組，並測試兩個容器執行個體之間的通訊。
+下列[az container create][az-container-create]命令會指定新的虛擬網路和子網的設定。 提供在虛擬網路中的容器群組部署[可供使用](container-instances-region-availability.md#availability---virtual-network-deployment)的區域中所建立的資源組名。 此命令會部署公用的 Microsoft [aci-helloworld][aci-helloworld]容器，以執行小型的 Node.js web 伺服器來提供靜態網頁。 在下一節中，您會對同一個子網路部署第二個容器群組，並測試兩個容器執行個體之間的通訊。
 
 ```azurecli
 az container create \
@@ -201,7 +201,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 這項功能目前需要數個額外的命令來刪除您稍早建立的網路資源。 如果您使用了本文前幾節的範例命令來建立虛擬網路及子網路，您可以使用下列指令碼來刪除這些網路資源。 此腳本假設您的資源群組包含具有單一網路設定檔的單一虛擬網路。
 
-在執行指令碼之前，請將變數 `RES_GROUP` 設定為包含應刪除虛擬網路及子網路的資源群組名稱。 如果您未使用稍早建議的`aci-vnet`名稱，請更新虛擬網路的名稱。 此指令碼會針對 Bash 殼層加以格式化。 如果您慣用其他殼層，例如 PowerShell 或是命令提示字元，您需要相應調整變數指派及存取子。
+在執行指令碼之前，請將變數 `RES_GROUP` 設定為包含應刪除虛擬網路及子網路的資源群組名稱。 如果您未使用稍早建議的名稱，請更新虛擬網路的名稱 `aci-vnet` 。 此指令碼會針對 Bash 殼層加以格式化。 如果您慣用其他殼層，例如 PowerShell 或是命令提示字元，您需要相應調整變數指派及存取子。
 
 > [!WARNING]
 > 此指令碼會刪除資源！ 它會刪除虛擬網路及內含的所有子網路。 在執行此指令碼之前，請先確認您已不再需要虛擬網路中的「任何」** 資源，包括內含的任何子網路。 一旦您刪除後，**這些資源就無法復原**。

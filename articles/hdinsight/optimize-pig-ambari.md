@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 469019eb1e90654d1953156337593d5de99b46c0
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796677"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 優化 Apache Pig
@@ -81,12 +81,12 @@ Pig 會在作業執行期間產生暫存檔。 壓縮暫存檔會提升在磁碟
 
 ## <a name="tune-reducers"></a>微調歸納器
 
-歸納器的數目是根據 `pig.exec.reducers.bytes.per.reducer` 參數計算而得。 該參數指定每個歸納器處理的位元組數目，預設為 1 GB。 若要限制歸納器數目上限，請設定`pig.exec.reducers.max`屬性，預設為999。
+歸納器的數目是根據 `pig.exec.reducers.bytes.per.reducer` 參數計算而得。 該參數指定每個歸納器處理的位元組數目，預設為 1 GB。 若要限制歸納器數目上限，請設定 `pig.exec.reducers.max` 屬性，預設為999。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [優化叢集](./hdinsight-changing-configs-via-ambari.md)
-* [將 Apache HBase 優化](./optimize-hbase-ambari.md)
-* [優化 Apache Hive](./optimize-hive-ambari.md)
+* [將叢集最佳化](./hdinsight-changing-configs-via-ambari.md)
+* [將 Apache HBase 最佳化](./optimize-hbase-ambari.md)
+* [將 Apache Hive 最佳化](./optimize-hive-ambari.md)

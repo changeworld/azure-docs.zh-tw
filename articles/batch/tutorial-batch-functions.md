@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117160"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963847"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教學課程：使用 Azure Functions 觸發 Batch 作業
 
@@ -55,7 +55,7 @@ ms.locfileid: "82117160"
 這裡您將建立 Blob 容器，可儲存 OCR Batch 作業的輸入和輸出檔案。
 
 1. 使用您的 Azure 認證登入儲存體總管。
-1. 遵循[建立 Blob 容器](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)中的步驟，使用連結至 Batch 帳戶的儲存體帳戶，建立兩個 Blob 容器 (一個用於輸入檔，一個用於輸出檔案)。
+1. 遵循[建立 Blob 容器](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)中的步驟，使用連結至 Batch 帳戶的儲存體帳戶，建立兩個 Blob 容器 (一個用於輸入檔，一個用於輸出檔案)。
 
 在此範例中，輸入容器的名稱為 `input`，它是沒有 OCR 的所有文件最初上傳處理的位置。 輸出容器的名稱為 `output`，它是 Batch 作業利用 OCR 寫入已處理文件的位置。  
     * 在此範例中，我們將輸入容器稱為 `input`，輸出容器稱為 `output`。  
@@ -68,7 +68,7 @@ ms.locfileid: "82117160"
 
 在本節中，您將建立每當檔案上傳至輸入容器時，就會觸發 OCR Batch 作業的 Azure 函式。
 
-1. 請依照[建立由 Azure Blob 儲存體所觸發的函式](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function)中的步驟建立函式。
+1. 請依照[建立由 Azure Blob 儲存體所觸發的函式](../azure-functions/functions-create-storage-blob-triggered-function.md)中的步驟建立函式。
     1. 當系統提示您使用儲存體帳戶，請使用您連結至 Batch 帳戶的同一儲存體帳戶。
     1. 針對**執行階段堆疊**，選擇 .NET。 我們將以 C# 撰寫函式以便運用 Batch .NET SDK。
 1. 由 Blob 觸發的函式建立之後，使用 [函式] 中 GitHub 的 [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) 和 [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj)。
@@ -111,4 +111,4 @@ ms.locfileid: "82117160"
 
 * 如需更多使用 .NET API 來排程和處理 Batch 工作負載的範例，請參閱 [GitHub 上的範例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)。 
 
-* 若要查看更多您可以用來執行 Batch 工作負載的 Azure Functions 觸發程序，請參閱 [Azure Functions 文件](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)。
+* 若要查看更多您可以用來執行 Batch 工作負載的 Azure Functions 觸發程序，請參閱 [Azure Functions 文件](../azure-functions/functions-triggers-bindings.md)。

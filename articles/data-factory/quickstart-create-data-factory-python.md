@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: b3216277c2d6d341f9123957e3fc1a3210376213
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3a40ff7fbf021833ff382ad2288eb263378c96c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559534"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512603"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入門：使用 Python 建立資料處理站和管線
 
@@ -44,7 +44,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 * [Azure 儲存體總管](https://storageexplorer.com/) (選擇性)。
 
-* [Azure Active Directory 中的應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 記下這些值，以便在後續步驟中使用到：**應用程式識別碼**、**驗證金鑰**和**租用戶識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」  角色。
+* [Azure Active Directory 中的應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 記下這些值，以便在後續步驟中使用到：**應用程式識別碼**、**驗證金鑰**和**租用戶識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」  角色。
 
 ## <a name="create-and-upload-an-input-file"></a>建立及上傳輸入檔案
 

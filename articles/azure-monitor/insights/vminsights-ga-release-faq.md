@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
 ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82581374"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>適用於 VM 的 Azure 監視器正式推出（GA）的常見問題
@@ -44,17 +44,17 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果我安裝 VMInsights 解決方案，我應該如何處理 [我的工作區] 中的效能計數器？
 
-先前的方法，讓適用於 VM 的 Azure 監視器在您的工作區中使用效能計數器。 目前的版本會將這項資料儲存在`InsightsMetrics`名為的資料表中。 如果您不再需要使用這些效能計數器，您可以選擇在工作區中將它們停用。 
+先前的方法，讓適用於 VM 的 Azure 監視器在您的工作區中使用效能計數器。 目前的版本會將這項資料儲存在名為的資料表中 `InsightsMetrics` 。 如果您不再需要使用這些效能計數器，您可以選擇在工作區中將它們停用。 
 
 >[!NOTE]
->如果您的警示規則會參考`Perf`資料表中的這些計數器，您必須更新它們，以參考資料表中所儲存的`InsightsMetrics`新資料。 請參閱我們的檔，以取得您可以用來參考此資料表的範例記錄查詢。
+>如果您的警示規則會參考資料表中的這些計數器 `Perf` ，您必須更新它們，以參考資料表中所儲存的新資料 `InsightsMetrics` 。 請參閱我們的檔，以取得您可以用來參考此資料表的範例記錄查詢。
 >
 
-如果您決定讓效能計數器保持啟用狀態，系統就會向您收取資料內嵌的費用，並`Perf`根據 [Log Analytics 定價 [（https://azure.microsoft.com/pricing/details/monitor/)] 儲存在資料表中。
+如果您決定讓效能計數器保持啟用狀態，系統就會向您收取資料內嵌的費用，並 `Perf` 根據 [Log Analytics 定價 [（] 儲存在資料表中 https://azure.microsoft.com/pricing/details/monitor/) 。
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>這種變更會如何影響我的警示規則？
 
-如果您已建立[記錄警示](../platform/alerts-unified-log.md)，以查詢`Perf`已在工作區中啟用之效能計數器的資料表，您應該更新這些規則，改為`InsightsMetrics`參考資料表。 本指南也適用于`ServiceMapComputer_CL`使用和`ServiceMapProcess_CL`的任何記錄搜尋規則，因為這些資料集會移`VMComputer`到`VMProcess`和資料表。
+如果您已建立[記錄警示](../platform/alerts-unified-log.md)，以查詢已 `Perf` 在工作區中啟用之效能計數器的資料表，您應該更新這些規則，改為 `InsightsMetrics` 參考資料表。 本指南也適用于使用和的任何記錄搜尋規則 `ServiceMapComputer_CL` `ServiceMapProcess_CL` ，因為這些資料集會移到 `VMComputer` 和 `VMProcess` 資料表。
 
 我們將更新此常見問題和我們的檔，以包含我們所收集之資料集的範例記錄搜尋警示規則。
 
@@ -62,31 +62,31 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 計費仍然是以資料內嵌為基礎，並保留在您的 Log Analytics 工作區中。
 
-我們所收集的機器層級效能資料是相同的，其大小與我們儲存在`Perf`資料表中的資料相似，而且成本約為相同的金額。
+我們所收集的機器層級效能資料是相同的，其大小與我們儲存在資料表中的資料相似， `Perf` 而且成本約為相同的金額。
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>如果我只想要使用服務對應，該怎麼做？
 
 沒問題。 您會在觀看即將進行之更新的適用於 VM 的 Azure 監視器時，看到 Azure 入口網站中的提示。 發行後，您會收到要求您更新至新版本的提示。 如果您只想要使用[Maps](vminsights-maps.md)功能，可以選擇不要升級並繼續使用適用於 VM 的 Azure 監視器中的 Maps 功能，以及從您的工作區或儀表板磚存取的服務對應解決方案。
 
-如果您選擇在工作區中手動啟用效能計數器，則可以在從 Azure 監視器查看的一些效能圖表中看到資料。 發行新的解決方案之後，我們會更新效能圖表來查詢儲存在`InsightsMetrics`資料表中的資料。 如果您想要在這些圖表中查看來自該資料表的資料，您將需要升級至新版的適用於 VM 的 Azure 監視器。
+如果您選擇在工作區中手動啟用效能計數器，則可以在從 Azure 監視器查看的一些效能圖表中看到資料。 發行新的解決方案之後，我們會更新效能圖表來查詢儲存在資料表中的資料 `InsightsMetrics` 。 如果您想要在這些圖表中查看來自該資料表的資料，您將需要升級至新版的適用於 VM 的 Azure 監視器。
 
-將資料移出`ServiceMapComputer_CL`和`ServiceMapProcess_CL`的變更會同時影響服務對應和適用於 VM 的 Azure 監視器，因此您仍然需要規劃這項更新。
+將資料移出和的 `ServiceMapComputer_CL` 變更 `ServiceMapProcess_CL` 會同時影響服務對應和適用於 VM 的 Azure 監視器，因此您仍然需要規劃這項更新。
 
-如果您選擇不升級至**VMInsights**解決方案，我們會繼續提供舊版的效能活頁簿，以參考`Perf`資料表中的資料。  
+如果您選擇不升級至**VMInsights**解決方案，我們會繼續提供舊版的效能活頁簿，以參考資料表中的資料 `Perf` 。  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>服務對應資料集是否也會儲存在 InsightsMetrics 中？
 
-如果您同時使用這兩種方案，資料集會不會重複。 這兩個供應專案都會共用將儲存在中`VMComputer`的資料集（先前`VMProcess`為 ServiceMapComputer_CL）、（ `VMConnection`之前稱為`VMBoundPort` ServiceMapProcess_CL）、和資料表，以儲存我們所收集的對應資料集。  
+如果您同時使用這兩種方案，資料集會不會重複。 這兩個供應專案都會共用將儲存在中的資料集 `VMComputer` （先前為 ServiceMapComputer_CL）、 `VMProcess` （之前稱為 ServiceMapProcess_CL）、 `VMConnection` 和 `VMBoundPort` 資料表，以儲存我們所收集的對應資料集。  
 
-`InsightsMetrics`資料表會儲存我們所收集的 VM、進程和服務資料集，而且只有在您使用適用於 VM 的 AZURE 監視器和 VM Insights 解決方案時，才會填入。 服務對應解決方案不會收集或或儲存資料表中的`InsightsMetrics`資料。
+`InsightsMetrics`資料表會儲存我們所收集的 VM、進程和服務資料集，而且只有在您使用適用於 VM 的 Azure 監視器和 VM Insights 解決方案時，才會填入。 服務對應解決方案不會收集或或儲存資料表中的資料 `InsightsMetrics` 。
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>如果我的工作區中有服務對應和 VMInsights 解決方案，是否要向我收取雙重費用？
 
-否，這兩個方案會共用我們儲存在中的對應`VMComputer`資料集（先前為`VMProcess` ServiceMapComputer_CL）、（之前`VMConnection`稱為 ServiceMapProcess_CL `VMBoundPort`）、和。 如果您的工作區中有這兩個解決方案，則不會對此資料有雙重費用。
+否，這兩個方案會共用我們儲存在中的對應資料集 `VMComputer` （先前為 ServiceMapComputer_CL）、（之前稱為 `VMProcess` ServiceMapProcess_CL）、 `VMConnection` 和 `VMBoundPort` 。 如果您的工作區中有這兩個解決方案，則不會對此資料有雙重費用。
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>如果我移除服務對應或 VMInsights 解決方案，將會移除我的資料嗎？
 
-否，這兩個方案會共用我們儲存在中的對應`VMComputer`資料集（先前為`VMProcess` ServiceMapComputer_CL）、（之前`VMConnection`稱為 ServiceMapProcess_CL `VMBoundPort`）、和。 如果您移除其中一個解決方案，這些資料集會發現仍有使用該資料的解決方案，而且它會保留在 Log Analytics 工作區中。 您必須從工作區中移除這兩個解決方案，才能將資料從其中移除。
+否，這兩個方案會共用我們儲存在中的對應資料集 `VMComputer` （先前為 ServiceMapComputer_CL）、（之前稱為 `VMProcess` ServiceMapProcess_CL）、 `VMConnection` 和 `VMBoundPort` 。 如果您移除其中一個解決方案，這些資料集會發現仍有使用該資料的解決方案，而且它會保留在 Log Analytics 工作區中。 您必須從工作區中移除這兩個解決方案，才能將資料從其中移除。
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>健全狀況功能處於有限的公開預覽狀態
 
@@ -100,15 +100,15 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 使用健全狀況功能的現有客戶將可繼續存取它，但不會提供給新客戶。  
 
-若要存取此功能，您可以將下列功能旗`feature.vmhealth=true`標新增至 Azure 入口網站[https://portal.azure.com](https://portal.azure.com)URL。 範例`https://portal.azure.com/?feature.vmhealth=true`。
+若要存取此功能，您可以將下列功能旗標新增 `feature.vmhealth=true` 至 AZURE 入口網站 URL [https://portal.azure.com](https://portal.azure.com) 。 範例 `https://portal.azure.com/?feature.vmhealth=true` 。
 
-您也可以使用這個簡短的 url，這會自動設定功能旗[https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)標：。
+您也可以使用這個簡短的 url，這會自動設定功能旗標： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview) 。
 
 身為現有的客戶，您可以繼續在連線到現有工作區設定的 Vm 上使用健康狀態功能。  
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>我現在使用 VM 健全狀況搭配一個環境，並想要將它部署到新的環境
 
-如果您是使用健康情況功能的現有客戶，而且想要將它用於新的推出，請洽詢我們vminsights@microsoft.com以要求指示。
+如果您是使用健康情況功能的現有客戶，而且想要將它用於新的推出，請洽詢我們 vminsights@microsoft.com 以要求指示。
 
 ## <a name="next-steps"></a>後續步驟
 

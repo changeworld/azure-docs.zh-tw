@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796781"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>使用 CLI 從一般化映射版本建立 VM
@@ -32,7 +32,7 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>建立 VM
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 若要使用最新版本的映射，請`--image`將設定為映射定義的識別碼。 
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 若要使用最新版本的映射，請將設定 `--image` 為映射定義的識別碼。 
 
 視需要取代此範例中的資源名稱。 
 
@@ -54,7 +54,7 @@ az vm create\
    --generate-ssh-keys
 ```
 
-您也可以使用`--image`參數的映射版本識別碼來使用特定版本。 例如，若要使用 image *1.0.0*版的型`--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`別：。
+您也可以使用參數的映射版本識別碼來使用特定版本 `--image` 。 例如，若要使用 image *1.0.0*版的型別： `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796365"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Hive
@@ -82,7 +82,7 @@ Apache ORC 和 Snappy 均可達到高效能。 不過，Hive 預設的歸納器�
 
 1. 若要啟用平行查詢執行，請瀏覽至 Hive [設定]**** 索引標籤，並搜尋 `hive.exec.parallel` 屬性。 預設值為 false。 將值變更為 true，然後按下 **Enter** 儲存值。
 
-1. 若要限制平行執行的作業數目，請修改`hive.exec.parallel.thread.number`屬性。 預設值為 8。
+1. 若要限制平行執行的作業數目，請修改 `hive.exec.parallel.thread.number` 屬性。 預設值為 8。
 
     ![Apache Hive exec 平行顯示](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
 
@@ -100,7 +100,7 @@ Hive 會逐列處理資料。 向量化會指示 Hive 處理 1,024 列的資料�
 
 Hive 預設會遵循一組規則，找出一個最佳的查詢執行計畫。 以成本為基礎的優化（CBO）會評估多個計畫來執行查詢。 並將成本指派給每個方案，然後決定執行查詢的最便宜計畫。
 
-若要啟用 CBO，請流覽至 [ **Hive** > **Configs** > **設定**]，並尋找 [**啟用以成本為基礎的優化**工具]，然後將切換按鈕切換為 [**開啟**]
+若要啟用 CBO，請流覽至 [ **Hive**  >  **Configs**  >  **設定**]，並尋找 [啟用以成本為基礎的優化工具]，然後將切換按鈕切換為 **[****開啟**]
 
 ![以 HDInsight 成本為基礎的優化工具](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -132,12 +132,12 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 可用的壓縮類型包括：
 
-| [格式] | 工具 | 演算法 | 副檔名 | 可分割？ |
+| 格式 | 工具 | 演算法 | 副檔名 | 可分割？ |
 | --- | --- | --- | --- | --- |
 | Gzip | Gzip | DEFLATE | `.gz` | 否 |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | 是 |
 | LZO | `Lzop` | LZO | `.lzo` | 是，如果已編製索引 |
-| Snappy | N/A | Snappy | Snappy | 否 |
+| Snappy | 不適用 | Snappy | Snappy | 否 |
 
 一般的規則是，壓縮方法可分割很重要，否則將會建立少數對應程式。 如果輸入資料為文字，`bzip2` 是最佳選擇。 若為˙ ORC 格式，Snappy 是最快的壓縮選項。
 
@@ -152,13 +152,13 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 1. 若要新增自訂設定：
 
-    a. 流覽至**Hive 配置** > **Configs** > **Advanced** > **自訂 Hive-site**。
+    a. 流覽至**Hive 配置**  >  **Configs**  >  **Advanced**  >  **自訂 Hive-site**。
 
     b. 選取 [自訂 hive 網站] 窗格底部的 [**新增屬性 ...** ]。
 
     c. 在 [新增屬性] 視窗中，輸入 `mapred.map.output.compression.codec` 做為索引鍵，並輸入 `org.apache.hadoop.io.compress.SnappyCodec` 做為值。
 
-    d. 選取 [新增]  。
+    d. 選取 [新增]。
 
     ![' Apache Hive 自訂屬性新增 '](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -246,6 +246,6 @@ Hive 的預設聯結類型是*隨機聯結*。 在 Hive 中，特殊對應程式
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [將 Azure HDInsight 中的 Apache Hive 查詢最佳化](./hdinsight-hadoop-optimize-hive-query.md)
-* [優化叢集](./optimize-hive-ambari.md)
-* [將 Apache HBase 優化](./optimize-hbase-ambari.md)
-* [將 Apache Pig 優化](./optimize-pig-ambari.md)
+* [將叢集最佳化](./optimize-hive-ambari.md)
+* [將 Apache HBase 最佳化](./optimize-hbase-ambari.md)
+* [將 Apache Pig 最佳化](./optimize-pig-ambari.md)

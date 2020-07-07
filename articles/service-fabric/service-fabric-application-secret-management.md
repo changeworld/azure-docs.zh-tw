@@ -4,10 +4,10 @@ description: 了解如何保護 Service Fabric 應用程式中的祕密值 (無�
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583244"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>在 Service Fabric 應用程式中管理已加密的祕密
@@ -45,7 +45,7 @@ ms.locfileid: "82583244"
 </CodePackage>
 ```
 
-您也應該在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將**SecretsCertificate**元素新增至**ApplicationManifest** ，並包含所需的憑證指紋。
+您也應該在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將**SecretsCertificate**元素新增至**ApplicationManifest.xml** ，並包含所需的憑證指紋。
 
 ```xml
 <ApplicationManifest … >

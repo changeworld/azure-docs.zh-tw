@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: f53a6b63c744b0e3e41f7ad22270cd842da57674
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796573"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 在 Azure 中的 VM 建立映射版本
@@ -35,13 +35,13 @@ ms.locfileid: "82796573"
 
 ## <a name="get-information-about-the-vm"></a>取得 VM 的相關資訊
 
-您可以使用[az vm list](/cli/azure/vm#az-vm-list)來查看可用的 vm 清單。 
+您可以使用 [az vm list](/cli/azure/vm#az-vm-list)查看可用的 VM 清單。 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-一旦您知道 VM 名稱及其所在的資源群組，請使用[az vm get-view](/cli/azure/vm#az-vm-get-instance-view)取得 VM 的識別碼。 
+當您知道 VM 名稱及其所在的資源群組後，請使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view)來取得 VM 的識別碼。 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -50,17 +50,17 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 ## <a name="create-an-image-definition"></a>建立映像定義
 
-映射定義會建立影像的邏輯群組。 它們可用來管理在其中建立之映射版本的相關資訊。 
+映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 
 
-影像定義名稱可以由大寫或小寫字母、數位、點、虛線和句號組成。 
+映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-請確定您的映射定義是正確的類型。 如果您已一般化 VM （使用適用于 Windows 的 Sysprep，或 waagent-取消布建 Linux），則應該使用`--os-state generalized`來建立一般化映射定義。 如果您想要在不移除現有使用者帳戶的情況下使用 VM，請使用`--os-state specialized`建立特製化映射定義。
+請確定您的映像定義是正確的類型。 如果您已一般化 VM (使用適用於 Windows 的 Sysprep，或適用於 Linux 的 waagent -deprovision)，則應該使用 `--os-state generalized` 建立一般化映像定義。 如果您想要在不移除現有使用者帳戶的情況下使用 VM，請使用 `--os-state specialized` 建立特製化映像定義。
 
-如需您可以為映射定義指定之值的詳細資訊，請參閱[影像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
 
-使用[az sig image 定義 create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映射定義。
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
-在此範例中，映射定義名為*myImageDefinition*，適用于[特定](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映射。 若要使用 Windows 作業系統來建立映射的定義，請`--os-type Windows`使用。 
+在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -75,15 +75,15 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>建立映射版本
+## <a name="create-the-image-version"></a>建立映像版本
 
-使用[az image 圖庫建立](/cli/azure/sig/image-version#az-sig-image-version-create)映射版本，從虛擬機器建立映射版本。  
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)，從 VM 建立映像版本。  
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*。*MinorVersion*。*修補程式*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，我們的映射版本為*1.0.0* ，而我們將在*美國中西部*區域中建立2個複本，在*美國中南部*區域使用1個複本，而在*美國東部 2*區域中建立1個複本，並使用區域多餘的儲存體。 複寫區域必須包含來源 VM 所在的區域。
+在此範例中，我們的映像版本是 1.0.0，而我們將使用區域備援儲存體，在「美國中西部」區域中建立 2 個複本、在「美國中南部」區域中建立 1 個複本，以及在「美國東部 2」區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
 
-將此範例`--managed-image`中的值取代為上一個步驟中 VM 的識別碼。
+將此範例中 `--managed-image` 的值取代為上一個步驟中的 VM 識別碼。
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -97,9 +97,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 您必須等候映射版本完全完成建立和複寫，才能使用相同的受控映射來建立另一個映射版本。
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增`--storage-account-type  premium_lrs` `--storage-account-type  standard_zrs` ，將您的映射儲存在 Premiun 儲存體中，其方式是新增或[區域多餘的儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
 >
 
 ## <a name="next-steps"></a>後續步驟

@@ -10,10 +10,10 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796768"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的特製化映射版本建立 VM
@@ -34,11 +34,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-使用[az vm create](/cli/azure/vm#az-vm-create)來建立 VM，其使用--特製化參數來指出映射是特製化映射。 
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM，並使用 --specialized 參數來指出映像是特製化映像。 
 
-使用的映射定義識別碼`--image` ，從可用的最新映射版本建立 VM。 您也可以藉由提供的映射版本識別碼，從特定版本建立 VM `--image`。 
+使用 `--image` 的映像定義識別碼，從可用的最新映像版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立 VM。 
 
-在此範例中，我們會從最新版本的*myImageDefinition*映射建立 VM。
+在此範例中，我們會從最新版本的 myImageDefinition 映像建立 VM。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -54,9 +54,9 @@ az vm create --resource-group myResourceGroup \
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
-- [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共用映像庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共用映像庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 

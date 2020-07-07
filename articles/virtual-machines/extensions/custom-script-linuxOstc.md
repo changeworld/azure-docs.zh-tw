@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594707"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
@@ -58,7 +58,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](../../virtual-network/security-overview.md#service-tags)適用的 Azure NSG 服務標記進行存取。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](../../virtual-network/security-overview.md#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -125,7 +125,7 @@ Linux 自訂指令碼擴充功能有兩個：
 | type | CustomScriptForLinux | 字串 |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (例如) | python MyPythonScript.py \<my-param1\> | 字串 |
+| commandToExecute (例如) | python MyPythonScript.py\<my-param1\> | 字串 |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (例如) | examplestorageacct | 字串 |
 | storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字串 |

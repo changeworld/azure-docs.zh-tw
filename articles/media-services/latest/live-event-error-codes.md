@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
 ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791046"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒體服務即時事件錯誤代碼

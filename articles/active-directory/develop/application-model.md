@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82584307"
 ---
 # <a name="application-model"></a>應用程式模型
@@ -76,11 +76,11 @@ Microsoft 身分識別平臺：
 
 ## <a name="next-steps"></a>後續步驟
 
-其他涵蓋驗證和授權基本概念的主題：
+如需涵蓋驗證和授權基本概念的其他主題：
 
-* 若要瞭解 Microsoft 身分識別平臺中驗證和授權的基本概念，請參閱[驗證與授權](authentication-vs-authorization.md)。
-* 請參閱[安全性權杖](security-tokens.md)，以瞭解如何在驗證和授權中使用存取權杖、重新整理權杖和識別碼權杖。
-* 請參閱[應用程式登入流程](app-sign-in-flow.md)，以瞭解 Microsoft 身分識別平臺中 web、桌面和行動應用程式的登入流程。
+* 若要了解 Microsoft 身分識別平台中驗證和授權的基本概念，請參閱[驗證與授權](authentication-vs-authorization.md)。
+* 若要了解存取權杖、重新整理權杖和識別碼權杖如何用於驗證和授權，請參閱[安全性權杖](security-tokens.md)。
+* 若要了解 Microsoft 身分識別平台中 Web、傳統型和行動應用程式的登入流程，請參閱[應用程式登入流程](app-sign-in-flow.md)。
 
 若要深入瞭解應用程式模型：
 

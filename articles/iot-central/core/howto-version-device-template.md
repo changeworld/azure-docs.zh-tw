@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583664"
 ---
 # <a name="create-a-new-device-template-version"></a>建立新的裝置範本版本
@@ -30,7 +30,7 @@ ms.locfileid: "82583664"
 
 ## <a name="versioning-rules"></a>版本控制規則
 
-本節將摘要說明適用于裝置範本的版本控制規則。 DCMs 和介面都有版本號碼。 下列程式碼片段顯示環境感應器裝置的 DCM。 DCM 有兩個介面： **DeviceInformation**和**EnvironmentalSensor**。 您可以在`@id`欄位結尾查看版本號碼。 若要在 IoT Central UI 中查看這項資訊，請選取 [裝置範本編輯器] 中的 [**查看身分識別**]。
+本節將摘要說明適用于裝置範本的版本控制規則。 DCMs 和介面都有版本號碼。 下列程式碼片段顯示環境感應器裝置的 DCM。 DCM 有兩個介面： **DeviceInformation**和**EnvironmentalSensor**。 您可以在欄位結尾查看版本號碼 `@id` 。 若要在 IoT Central UI 中查看這項資訊，請選取 [裝置範本編輯器] 中的 [**查看身分識別**]。
 
 ```json
 {
@@ -92,7 +92,7 @@ ms.locfileid: "82583664"
 1. 選取您想要自訂的裝置範本。
 1. 選擇 [**自訂**] 索引標籤。
 1. 您的裝置功能模型中所定義的所有功能都列在此處。 您可以編輯、儲存和使用所有這些欄位，而不需要為您的裝置範本版本。 如果您想要編輯的欄位是唯讀的，您必須將裝置範本的版本設為 [變更]。 選取您想要編輯的欄位，並輸入任何新的值。
-1. 按一下 [檔案]  。 現在，這些值會覆寫一開始儲存在您裝置範本中的任何專案，並在應用程式中使用。
+1. 按一下 [檔案] 。 現在，這些值會覆寫一開始儲存在您裝置範本中的任何專案，並在應用程式中使用。
 
 ## <a name="version-a-device-template"></a>版本裝置範本
 
@@ -105,7 +105,7 @@ ms.locfileid: "82583664"
 1. 移至 [**裝置範本**] 頁面。
 1. 選取您要嘗試版本的裝置範本。
 1. 按一下頁面頂端的 [**版本**] 按鈕，並為範本指定新的名稱。 IoT Central 建議您可以編輯的新名稱。
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 1. 現在您的裝置範本處於草稿模式。 您可以看到您的介面仍處於鎖定狀態。 版本您想要修改的任何介面。
 
 ## <a name="version-an-interface"></a>版本介面
@@ -118,7 +118,7 @@ ms.locfileid: "82583664"
 1. 選取您在草稿模式中的裝置範本。
 1. 選取您想要進行版本與編輯之已發行模式中的介面。
 1. 按一下 [介面] 頁面頂端的 [**版本**] 按鈕。
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 1. 現在您的介面處於草稿模式。 您可以在介面中新增或編輯功能，而不會中斷現有的自訂和視圖。
 
 ## <a name="migrate-a-device-across-versions"></a>跨版本遷移裝置

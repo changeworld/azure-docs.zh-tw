@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592055"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
@@ -80,7 +80,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
     使用下列步驟來重新平衡使用 Storm UI 的拓撲。
 
-    1. 在`https://CLUSTERNAME.azurehdinsight.net/stormui`您的網頁瀏覽器中`CLUSTERNAME`開啟，其中是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
+    1. `https://CLUSTERNAME.azurehdinsight.net/stormui`在您的網頁瀏覽器中開啟，其中 `CLUSTERNAME` 是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
 
     1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 輸入重新平衡作業執行前的延遲。
 
@@ -94,7 +94,7 @@ Microsoft 提供下列公用程式來調整叢集：
      storm rebalance TOPOLOGYNAME
     ```
 
-    您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，下列程式碼會將`mytopology`拓撲重新設為5個背景工作進程，3個執行程式用於藍 spout 元件，以及10個執行程式用於黃色螺栓元件。
+    您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，下列程式碼會將 `mytopology` 拓撲重新設為5個背景工作進程，3個執行程式用於藍 spout 元件，以及10個執行程式用於黃色螺栓元件。
 
     ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -119,14 +119,14 @@ Microsoft 提供下列公用程式來調整叢集：
 
 若要查看擱置和執行中作業的清單，您可以使用 YARN **RESOURCE MANAGER UI**，請遵循下列步驟：
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 中，選取您的叢集。  叢集會在新的入口網站頁面中開啟。
-2. 從主要視圖中，流覽至 [叢集**儀表板** > ]**Ambari home**。 輸入您的叢集認證。
+1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  叢集會在新的入口網站分頁中開啟。
+2. 從主要視圖中，流覽至 [叢集**儀表板**]  >  **Ambari home**。 輸入您的叢集認證。
 3. 從 Ambari UI 中，選取左側功能表上的 [服務] 清單中的 [ **YARN** ]。  
 4. 從 [YARN] 頁面選取 [**快速連結**]，並將滑鼠停留在使用中的前端節點上，然後選取 [ **Resource Manager UI**]。
 
     ![Apache Ambari 快速連結 Resource Manager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-您可以使用`https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`直接存取 Resource Manager UI。
+您可以使用直接存取 Resource Manager UI `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 。
 
 您會看到作業及其目前狀態的清單。 在螢幕擷取畫面中，目前有一項作業正在執行：
 
@@ -148,7 +148,7 @@ yarn application -kill "application_1499348398273_0003"
 
 當您相應減少叢集時，HDInsight 會使用 Apache Ambari 管理介面來先解除委任額外的背景工作節點。 節點會將其 HDFS 區塊複寫至其他線上背景工作角色節點。 之後，HDInsight 會安全地向下調整叢集規模。 HDFS 會在調整作業期間進入安全模式。 在調整完成後，HDFS 應會出現。 不過，在某些情況下，在調整作業期間，HDFS 會停滯在安全模式中，因為複寫中的檔案區塊。
 
-根據預設，HDFS 會`dfs.replication`設定為1，以控制每個檔案區塊可用的複本數目。 檔案區塊的每個複本都儲存在叢集的不同節點上。
+根據預設，HDFS 會 `dfs.replication` 設定為1，以控制每個檔案區塊可用的複本數目。 檔案區塊的每個複本都儲存在叢集的不同節點上。
 
 當預期的區塊複本數目無法使用時，HDFS 會進入安全模式，而 Ambari 會產生警示。 HDFS 可進入安全模式進行調整作業。 如果未偵測到所需的節點數目來進行複寫，叢集可能會卡在安全模式中。
 
@@ -187,7 +187,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 如果 Hive 有遺留暫存檔案，則可以先手動清除那些檔案再相應減少，以避開安全模式。
 
-1. 查看`hive.exec.scratchdir` configuration 屬性，檢查哪個位置正在用於 Hive 暫存檔案。 此參數設定于內`/etc/hive/conf/hive-site.xml`：
+1. 查看 configuration 屬性，檢查哪個位置正在用於 Hive 暫存檔案 `hive.exec.scratchdir` 。 此參數設定于內 `/etc/hive/conf/hive-site.xml` ：
 
     ```xml
     <property>
@@ -198,7 +198,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 1. 停止 Hive 服務，並確定所有查詢和作業皆已完成。
 
-1. 列出上方找到的臨時目錄內容， `hdfs://mycluster/tmp/hive/`以查看它是否包含任何檔案：
+1. 列出上方找到的臨時目錄內容， `hdfs://mycluster/tmp/hive/` 以查看它是否包含任何檔案：
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive

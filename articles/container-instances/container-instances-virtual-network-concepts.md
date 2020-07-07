@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
 ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82584398"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虛擬網路案例和資源
 
-[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)為您的 azure 和內部部署資源提供安全的私用網路。 透過將容器群組部署至 Azure 虛擬網路，您的容器可在虛擬網路中安全地與其他資源通訊。 
+[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)會為 Azure 資源和內部部署資源提供安全的私人網路。 透過將容器群組部署至 Azure 虛擬網路，您的容器可在虛擬網路中安全地與其他資源通訊。 
 
 本文提供有關虛擬網路案例、限制和資源的背景資訊。 如需使用 Azure CLI 的部署範例，請參閱[將容器實例部署至 Azure 虛擬網路](container-instances-vnet.md)。
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
 ms.openlocfilehash: f8e8e1672f754e843a3bd1c75d496599d31e5f11
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82584010"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>調整超大規模資料庫（Citus）伺服器群組
@@ -42,7 +42,7 @@ SELECT rebalance_table_shards('distributed_table_name');
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>增加或減少節點上的虛擬核心
 
 > [!NOTE]
-> 此功能目前為預覽狀態。 若要針對伺服器群組中的節點要求變更虛擬核心，請[洽詢 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+> 這項功能目前為預覽狀態。 若要針對伺服器群組中的節點要求變更虛擬核心，請[洽詢 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 除了新增節點之外，您還可以增加現有節點的功能。 向上和向下調整計算容量，對於效能實驗以及對流量需求的短期或長期變更都很有用。
 

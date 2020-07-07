@@ -10,19 +10,19 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: efce2eb33bb95a3dc13cec4cbe0ea89d1a2c3452
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796742"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>使用一般化映射建立 VM 
 
 從儲存在共用映射資源庫中的一般化映射建立 VM。 如果想要使用特製化映射建立 VM，請參閱[從特製化映射建立 vm](vm-specialized-image-version-powershell.md)。
 
-一旦有了一般化映射版本，您就可以建立一或多個新的 Vm。 使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 
+一旦有了一般化映射版本，您就可以建立一或多個新的 Vm。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 
 
-在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本`Set-AzVMSourceImage -Id`。 例如，若要使用 image *1.0.0*版的型`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`別：。 
+在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本 `Set-AzVMSourceImage -Id` 。 例如，若要使用 image *1.0.0*版的型別： `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。 
 
 請注意，使用特定映射版本表示自動化可能會失敗，因為該特定映射版本無法使用，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
 
@@ -149,9 +149,9 @@ New-AzVM `
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
-- [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共用映像庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共用映像庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 如需共用映像資源庫的詳細資訊，請參閱[概觀](./windows/shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](./windows/troubleshooting-shared-images.md)。

@@ -18,17 +18,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592004"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
 > 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果沒有帳戶，您可以透過 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)，在幾分鐘內建立一個免費試用帳戶。
@@ -83,7 +83,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 1. 在左導覽窗格中，按一下 [瀏覽] ****。
 2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要建立新通知中樞的協助，您可以參閱[Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)課程。
-3. 選取 [設定]  。
+3. 選取 [設定]。
 4. 按一下 [存取原則] ****。 您會看到兩個共用和完整存取連接字串。
 
 ![Azure 入口網站 - 通知中樞](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -154,7 +154,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** - 標籤識別碼。 若未提供標籤，通知會傳送至所有用戶端。
 - **Payload** - 訊息的 XML 承載。
-- **TargetName**  -  `toast`適用于快顯通知的 TargetName。 `token` 代表磚通知。
+- **TargetName**  -  TargetName `toast`用於快顯通知。 `token` 代表磚通知。
 - **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)文件的＜HTTP 標頭元素＞**** 一節。
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。

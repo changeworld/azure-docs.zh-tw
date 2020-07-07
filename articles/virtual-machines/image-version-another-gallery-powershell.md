@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796924"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>從另一個資源庫複製映射
@@ -39,7 +39,7 @@ ms.locfileid: "82796924"
 
 使用[get-azresource](/powershell/module/az.resources/get-azresource) Cmdlet，列出現有資源庫、映射定義和映射版本的相關資訊。
 
-結果的格式`gallery\image definition\image version`為。
+結果的格式為 `gallery\image definition\image version` 。
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-一旦擁有所需的所有資訊，您就可以使用[new-azgalleryimageversion](/powershell/module/az.compute/get-azgalleryimageversion)取得來源映射版本的識別碼。 在此範例中，我們會取得`1.0.0` `myGallery` `myResourceGroup`資源群組中來源庫`myImageDefinition`內的定義映射版本。
+一旦擁有所需的所有資訊，您就可以使用[new-azgalleryimageversion](/powershell/module/az.compute/get-azgalleryimageversion)取得來源映射版本的識別碼。 在此範例中，我們會取得 `1.0.0` `myImageDefinition` `myGallery` 資源群組中來源庫內的定義映射版本 `myResourceGroup` 。
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -121,11 +121,11 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-the-image-version"></a>建立映射版本
+## <a name="create-the-image-version"></a>建立映像版本
 
-使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須在`--managed-image`參數中傳入來源映射的識別碼，以在目的地資源庫中建立映射版本。 
+使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須在參數中傳入來源映射的識別碼，以在 `--managed-image` 目的地資源庫中建立映射版本。 
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*。*MinorVersion*。*修補程式*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此範例中，[*美國西部*] 位置的 [ *myDestinationRG* ] 資源群組中的目的地資源庫名為*myDestinationGallery*。 我們的映射版本為*1.0.0* ，我們將在*美國中南部*區域建立1個複本，並在*美國西部*區域中建立2個複本。 
 
@@ -154,9 +154,9 @@ $job.State
 ```
 
 > [!NOTE]
-> 您必須等候映射版本完全完成建立和複寫，才能使用相同的受控映射來建立另一個映射版本。
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增`-StorageAccountType Premium_LRS` `-StorageAccountType Standard_ZRS` ，將您的映射儲存在 Premiun 儲存體中，其方式是新增或[區域多餘的儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `-StorageAccountType Premium_LRS`，將映像儲存在「進階」儲存體，或新增 `-StorageAccountType Standard_ZRS`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
 >
 
 

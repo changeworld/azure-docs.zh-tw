@@ -4,10 +4,10 @@ description: 瞭解 Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791369"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana
@@ -93,7 +93,7 @@ Azure 備份現在會針對 Azure VM 中的 SQL server 和 Azure VM 工作負載
 ## <a name="soft-delete-for-sql-server-in-vm-using-azure-powershell"></a>使用 Azure PowerShell 在 VM 中進行 SQL server 的虛刪除
 
 >[!NOTE]
->使用 Azure PowerShell 進行虛刪除所需的 Az. Azurerm.recoveryservices 版本是最低2.2.0。 使用`Install-Module -Name Az.RecoveryServices -Force`來取得最新版本。
+>使用 Azure PowerShell 進行虛刪除所需的 Az. Azurerm.recoveryservices 版本是最低2.2.0。 使用 `Install-Module -Name Az.RecoveryServices -Force` 來取得最新版本。
 
 使用 Azure PowerShell 的步驟順序與上面所述的 Azure 入口網站相同。
 
