@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415031"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google AdWords 複製資料
@@ -29,7 +29,7 @@ ms.locfileid: "81415031"
 
 下列活動支援此 Google AdWords 連接器：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 
@@ -61,7 +61,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，可在透過 TLS 連線時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才可以設定這個屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
 | useSystemTrustStore | 指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 預設值為 false。  | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -132,14 +132,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ### <a name="google-adwords-as-source"></a>以 Google AdWords 作為來源
 
-若要從 Google AdWords 複製資料，請將複製活動中的來源類型設定為 **GoogleAdWordsSource**。 複製活動的 [**來源**] 區段支援下列屬性：
+若要從 Google AdWords 複製資料，請將複製活動中的來源類型設定為 **GoogleAdWordsSource**。 複製活動的 **source** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 **GoogleAdWordsSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -173,7 +173,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

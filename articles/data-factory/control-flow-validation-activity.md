@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417924"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory 中的驗證活動
@@ -62,12 +62,12 @@ ms.locfileid: "81417924"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | 「驗證」活動的名稱 | String | 是 |
+NAME | 「驗證」活動的名稱 | String | 是 |
 type | 必須設定為 [**驗證**]。 | String | 是 |
 資料集 | 活動會封鎖執行，直到其驗證此資料集參考存在，而且符合指定的準則，或已達到 timeout 為止。 提供的資料集應該支援 "MinimumSize" 或 "ChildItems" 屬性。 | 資料集參考 | 是 |
-timeout | 指定活動執行的逾時。 如果未指定任何值，預設值為7天（"7.00：00： 00"）。 格式為 d. hh： mm： ss | 字串 | 否 |
+timeout | 指定活動執行的逾時。 如果未指定任何值，預設值為7天（"7.00：00： 00"）。 格式為 d. hh： mm： ss | String | 否 |
 sleep | 驗證嘗試之間的延遲（以秒為單位）。 如果未指定任何值，預設值為10秒。 | 整數 | 否 |
-childItems | 檢查資料夾是否有子專案。 可以設定為-true：驗證資料夾是否存在，以及它是否有專案。 封鎖，直到至少有一個專案出現在資料夾中，或到達 timeout 值為止。-false：驗證資料夾是否存在，以及它是否為空白。 封鎖，直到資料夾是空的或到達 timeout 值為止。 如果未指定任何值，活動將會封鎖，直到資料夾存在或達到 timeout 為止。 | 布林值 | 否 |
+childItems | 檢查資料夾是否有子專案。 可以設定為-true：驗證資料夾是否存在，以及它是否有專案。 封鎖，直到至少有一個專案出現在資料夾中，或到達 timeout 值為止。-false：驗證資料夾是否存在，以及它是否為空白。 封鎖，直到資料夾是空的或到達 timeout 值為止。 如果未指定任何值，活動將會封鎖，直到資料夾存在或達到 timeout 為止。 | Boolean | 否 |
 minimumSize | 檔案大小下限（以位元組為單位）。 如果未指定任何值，預設值為0個位元組 | 整數 | 否 |
 
 
@@ -79,5 +79,5 @@ minimumSize | 檔案大小下限（以位元組為單位）。 如果未指定�
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)
 - [Until 活動](control-flow-until-activity.md)

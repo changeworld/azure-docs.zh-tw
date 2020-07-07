@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Resource Manager 在 Azure 中設定安全
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458295"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立 Service Fabric 叢集 
@@ -26,7 +26,7 @@ ms.locfileid: "81458295"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 在本文中使用 Service Fabric RM Powershell 或 Azure CLI 模組來部署叢集：
 
 * [Azure PowerShell 4.1 和更新版本][azure-powershell]
@@ -63,7 +63,7 @@ az account set --subscription $subscriptionId
 下列命令可以建立 Windows 或 Linux 叢集，您需要指定適用的作業系統。 PowerShell/CLI 命令也會在指定的 CertificateOutputFolder** 中輸出憑證，但是請確定已建立憑證資料夾。 此命令也需要其他參數如 VM SKU。
 
 > [!NOTE]
-> 下列 PowerShell 命令僅適用于 Azure PowerShell `Az`模組。 若要檢查目前版本的 Azure Resource Manager PowerShell 版本，請執行下列 PowerShell 命令 "Get-help Az"。 遵循[此連結](/powershell/azure/install-Az-ps)即可升級 Azure Resource Manager PowerShell 版本。 
+> 下列 PowerShell 命令僅適用于 Azure PowerShell `Az` 模組。 若要檢查目前版本的 Azure Resource Manager PowerShell 版本，請執行下列 PowerShell 命令 "Get-help Az"。 遵循[此連結](/powershell/azure/install-Az-ps)即可升級 Azure Resource Manager PowerShell 版本。 
 >
 >
 

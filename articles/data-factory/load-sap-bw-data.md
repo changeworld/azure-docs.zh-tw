@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415845"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business 倉儲複製資料
@@ -26,7 +26,7 @@ ms.locfileid: "81415845"
 > [!TIP]
 > 如需從 SAP BW 複製資料的一般資訊（包括 SAP BW 開放式中樞整合和差異抽取流程），請參閱[使用 Azure Data Factory，透過 Open hub 從 SAP Business 倉儲複製資料](connector-sap-business-warehouse-open-hub.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - **Azure Data Factory**：如果您沒有，請遵循步驟來[建立資料](quickstart-create-data-factory-portal.md#create-a-data-factory)處理站。
 
@@ -69,7 +69,7 @@ ms.locfileid: "81415845"
 
    3. 選取 [**測試連接**] 以驗證設定，然後選取 **[完成]**。
 
-   4. 隨即建立新的連接。 選取 [下一步]  。
+   4. 隨即建立新的連接。 選取 [下一步]。
 
 5. 在 [**選取開啟中樞目的地**] 頁面上，流覽 SAP BW 中可用的開放中樞目的地。 選取要從中複製資料的 OHD，然後選取 **[下一步]**。
 
@@ -77,20 +77,20 @@ ms.locfileid: "81415845"
 
 6. 指定篩選準則（如果您需要的話）。 如果您的 OHD 只包含具有單一要求識別碼之單一資料傳輸程式（DTP）執行的資料，或者您確定您的 DTP 已完成，而您想要複製資料，請清除 [**排除最後一個要求**] 核取方塊。
 
-   若要深入瞭解這些設定，請參閱本文的[SAP BW 開啟中樞目的地](#sap-bw-open-hub-destination-configurations)設定一節。 選取 [**驗證**] 以再次檢查將傳回的資料。 然後選取 [下一步]  。
+   若要深入瞭解這些設定，請參閱本文的[SAP BW 開啟中樞目的地](#sap-bw-open-hub-destination-configurations)設定一節。 選取 [**驗證**] 以再次檢查將傳回的資料。 然後選取 [下一步]。
 
    ![設定 SAP BW 開啟中樞篩選器](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. 在 [**目的地資料存放區**] 頁面上，選取 [ **+ 建立新的連接** > **] Azure Data Lake Storage Gen2** > **繼續**]。
+7. 在 [**目的地資料存放區**] 頁面上，選取 [ **+ 建立新的連接**]  >  **Azure Data Lake Storage Gen2**  >  **繼續**]。
 
 8. 在 [**指定 Azure Data Lake Storage 連接**] 頁面上，依照下列步驟來建立連線。
 
    ![建立 ADLS Gen2 連結服務頁面](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. 從 [**名稱**] 下拉式清單中選取支援 Data Lake Storage Gen2 的帳戶。
-   2. 選取 [完成]**** 以建立連線。 然後選取 [下一步]  。
+   2. 選取 [完成]**** 以建立連線。 然後選取 [下一步]。
 
-9. 在 [**選擇輸出檔案或資料夾**] 頁面上，輸入**copyfromopenhub**作為輸出檔案夾名稱。 然後選取 [下一步]  。
+9. 在 [**選擇輸出檔案或資料夾**] 頁面上，輸入**copyfromopenhub**作為輸出檔案夾名稱。 然後選取 [下一步]。
 
    ![選擇輸出檔案夾頁面](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "81415845"
 
     ![指定接收格式頁面](media/load-sap-bw-data/specify-sink-format.png)
 
-11. 在 [**設定**] 頁面上，展開 [**效能設定**]。 針對 [**複製平行**處理原則的程度] （例如5）輸入值，以平行方式從 SAP BW 載入。 然後選取 [下一步]  。
+11. 在 [**設定**] 頁面上，展開 [**效能設定**]。 針對 [**複製平行**處理原則的程度] （例如5）輸入值，以平行方式從 SAP BW 載入。 然後選取 [下一步]。
 
     ![設定複製設定](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. 在 [摘要]  頁面上，檢閱設定。 然後選取 [下一步]  。
+12. 在 [摘要]  頁面上，檢閱設定。 然後選取 [下一步]。
 
 13. 在 [**部署**] 頁面上，選取 [**監視**] 來監視管線。
 
@@ -112,7 +112,7 @@ ms.locfileid: "81415845"
 
     ![管線監視視圖](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. 若要查看與管線執行相關聯的活動執行，請選取 [**動作**] 資料行中的 [**查看活動執行**]。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線-執行] 視圖，請選取頂端的 [**管線**] 連結。 選取 [重新整理]**** 可重新整理清單。
+15. 若要查看與管線執行相關聯的活動執行，請選取 [**動作**] 資料行中的 [**查看活動執行**]。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線-執行] 視圖，請選取頂端的 [**管線**] 連結。 選取 [重新整理] 即可重新整理清單。
 
     ![活動監視畫面](media/load-sap-bw-data/activity-monitoring.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "81415845"
 
    - **HighWatermarkBlobDirectory**：指定容器下的資料夾路徑來儲存高水位線值。
 
-   - **HighWatermarkBlobName**：指定用`requestIdCache.txt`來儲存高水位線值的 blob 名稱，例如。 在 Blob 儲存體中，移至 HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName 的對應路徑，例如*container/path/requestIdCache。* 建立具有內容0的 blob。
+   - **HighWatermarkBlobName**：指定用來儲存高水位線值的 blob 名稱，例如 `requestIdCache.txt` 。 在 Blob 儲存體中，移至 HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName 的對應路徑，例如*container/path/requestIdCache.txt*。 建立具有內容0的 blob。
 
       ![Blob 內容](media/load-sap-bw-data/blob.png)
 
@@ -192,9 +192,9 @@ ms.locfileid: "81415845"
 
       3. 新增 [**建立 blob** ] 動作。 針對 [**資料夾路徑**] 和 [ **Blob 名稱**]，使用您先前在*HighWatermarkBlobContainer + HighWatermarkBlobDirectory*和*HighWatermarkBlobName*中設定的相同值。
 
-      4. 選取 [儲存]  。 然後，複製**HTTP POST URL**的值，以在 Data Factory 管線中使用。
+      4. 選取 [儲存]。 然後，複製**HTTP POST URL**的值，以在 Data Factory 管線中使用。
 
-4. 提供 Data Factory 管線參數之後，**請選取** > **[檢查] [完成]** 以叫用執行來驗證設定。 或者，選取 [**發行**] 以發行所有變更，然後選取 [**新增觸發**程式] 來執行執行。
+4. 提供 Data Factory 管線參數之後，**請選取**  >  **[檢查] [完成]** 以叫用執行來驗證設定。 或者，選取 [**發行**] 以發行所有變更，然後選取 [**新增觸發**程式] 來執行執行。
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW 開啟中樞目的地設定
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415372"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure Cosmos DB （SQL API）中的資料
@@ -37,7 +37,7 @@ ms.locfileid: "81415372"
 
 此 Azure Cosmos DB （SQL API）連接器支援下列活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [對應資料流程](concepts-data-flow-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
@@ -152,7 +152,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 若要從 Azure Cosmos DB (SQL API) 複製資料，請將複製活動中的**來源**類型設定為 **DocumentDbCollectionSource**。 
 
-複製活動的 [**來源**] 區段支援下列屬性：
+複製活動的 [來源] 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -204,14 +204,14 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 若要將資料複製到 Azure Cosmos DB (SQL API)，請將複製活動中的**接收**類型設定為 **DocumentDbCollectionSink**。 
 
-複製活動的 [**來源**] 區段支援下列屬性：
+複製活動的 [來源] 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的**type**屬性必須設定為**CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何將資料寫入至 Azure Cosmos DB。 允許的值：**insert** 和 **upsert**。<br/><br/>如果存在具有相同識別碼的文件，**upsert** 的行為會用來取代文件；否則會插入文字。<br /><br />**注意**：如果未在原始文件中或藉由資料行對應來指定識別碼，則 Data Factory 會自動產生文件的識別碼。 這表示您必須確定，為了讓 **upsert** 如預期般運作，您的文件具有識別碼。 |否<br />(預設值為 **insert**) |
 | writeBatchSize | Data Factory 會使用 [Azure Cosmos DB 大量執行程式庫](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)將資料寫入 Cosmos DB 中。 **WriteBatchSize**屬性會控制 ADF 提供給程式庫的檔案大小。 您可以嘗試增加 **writeBatchSize** 值來改善效能，而如果您的文件大小很大，請嘗試增加此值 - 請參閱以下祕訣。 |否<br />（預設值為**10000**） |
-| disableMetricsCollection | Data Factory 會收集諸如 Cosmos DB ru 的計量，以取得複製效能優化和建議。 如果您擔心此行為，請指定`true`將它關閉。 | 否 (預設值為 `false`) |
+| disableMetricsCollection | Data Factory 會收集諸如 Cosmos DB ru 的計量，以取得複製效能優化和建議。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
 >[!TIP]
 >若要依預設匯入 JSON 檔，請參閱匯[入或匯出 json 檔](#import-and-export-json-documents)一節。若要從表格式資料複製，請參閱[從關係資料庫移轉至 Cosmos DB](#migrate-from-relational-database-to-cosmos-db)。
@@ -265,7 +265,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 [來源] 轉換的 [**來源選項**] 索引標籤中提供 Azure Cosmos DB 特定的設定。 
 
-**包含系統資料行：** 如果為 true ```id```， ```_ts```、和其他系統資料行將會包含在 CosmosDB 的資料流程中繼資料中。 更新集合時，請務必包含此資訊，以便您可以抓取現有的資料列識別碼。
+**包含系統資料行：** 如果為 true， ```id``` 、 ```_ts``` 和其他系統資料行將會包含在 CosmosDB 的資料流程中繼資料中。 更新集合時，請務必包含此資訊，以便您可以抓取現有的資料列識別碼。
 
 **頁面大小：** 查詢結果每頁的檔數目。 預設值為 "-1"，使用最多1000的服務動態頁面。
 
@@ -289,13 +289,13 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 [接收] 轉換的 [**設定**] 索引標籤中提供 Azure Cosmos DB 特定的設定。
 
-**更新方法：** 決定您的資料庫目的地所允許的作業。 預設值是只允許插入。 若要更新、upsert 或刪除資料列，必須使用 alter-row 轉換來標記這些動作的資料列。 對於更新、更新插入和刪除，必須設定索引鍵資料行，以決定要改變哪一個資料列。
+**Update 方法：** 決定您的資料庫目的地所允許的作業。 預設僅允許插入。 若要更新、upsert 或刪除資料列，必須使用 alter-row 轉換來標記這些動作的資料列。 對於更新、更新插入和刪除，必須設定索引鍵資料行，以決定要改變哪一個資料列。
 
 **集合動作：** 判斷是否要在寫入之前重新建立目的地集合。
 * 無：不會對集合執行任何動作。
 * 重新建立：將會卸載並重新建立集合
 
-**批次大小**：控制要在每個值區中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會在快取資料時降低記憶體例外狀況的風險。
+**批次大小**：控制要在每個值區中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會導致在快取資料時發生記憶體例外狀況的風險。
 
 **分割區索引鍵：** 輸入代表集合之分割區索引鍵的字串。 範例：```/movies/title```
 
@@ -305,7 +305,7 @@ Azure Cosmos DB （SQL API）資料集支援下列屬性：
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="import-and-export-json-documents"></a>匯入和匯出 JSON 檔
 

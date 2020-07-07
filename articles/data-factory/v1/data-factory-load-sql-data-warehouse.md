@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419301"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>使用 Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲
@@ -29,7 +29,7 @@ ms.locfileid: "81419301"
 現在，使用 Azure SQL 資料倉儲比之前使用 **Azure Data Factory** 還要簡單。  Azure Data Factory 是一個完全受控的雲端架構資料整合服務，可用來將現有系統的資料填入 SQL 資料倉儲，並節省評估 SQL 資料倉儲及建置分析解決方案的寶貴時間。 以下是使用 Azure Data Factory 將資料載入至 Azure SQL 資料倉儲的主要優點：
 
 * **容易設定**：不需要編寫指令碼的 5 步驟直覺式精靈。
-* **豐富的資料存放區支援**︰一組豐富內部部署和雲端架構資料存放區的內部支援。
+* **豐富的資料存放區支援**：一組豐富的內部部署和雲端式資料存放區的內建支援。
 * **安全並符合標準**：資料是透過 HTTPS 或 ExpressRoute 傳輸，並且具有全域服務可確保資料絕不會離開地理界限
 * **PolyBase 的無與倫比使用效能** – 使用 Polybase 是將資料移至 Azure SQL 資料倉儲的最有效方式。 您可以使用預備 Blob 功能來達到所有類型之資料存放區 (除了 Azure Blob 儲存體之外) 的高載入速度，而 Polybase 預設支援這項作業。
 
@@ -44,7 +44,7 @@ ms.locfileid: "81419301"
 >
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * Azure Blob 儲存體︰這項實驗使用 Azure Blob 儲存體 (GRS) 來儲存 TPC-H 測試資料集。  如果您沒有 Azure 儲存體帳戶，請參閱[如何建立儲存體帳戶](../../storage/common/storage-account-create.md)。
 * [TPC-H](http://www.tpc.org/tpch/) 資料︰我們將使用 TPC-H 作為測試資料集。  若要這麼做，您必須使用 TPC-H 工具組中的 `dbgen`，以協助您產生資料集。  您可以從 [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) 下載 `dbgen` 的原始程式碼並自行進行編譯，或者從 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools) 下載編譯過的二進位檔。  使用下列命令執行 dbgen.exe，以針對分散到 10 個檔案的 `lineitem` 資料表產生 1 TB 一般檔案：
 
@@ -119,12 +119,12 @@ ms.locfileid: "81419301"
        Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **data factory 名稱 "LoadIntoSQLDWDataFactory" 無法使用**，請變更 data factory 的名稱（例如 yournameLoadIntoSQLDWDataFactory），然後嘗試重新建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
    2. 選取您的 Azure **訂用帳戶**。
    3. 針對資源群組，請執行下列其中一個步驟︰
-      1. 選取 [使用現有的]**** 以選取現有的資源群組。
-      2. 選取 [建立新的]**** 以輸入資源群組的名稱。
-   4. 選取 Data Factory 的 [位置]****。
-   5. 選取刀鋒視窗底部的 [釘選到儀表板]**** 核取方塊。  
-   6. 按一下頁面底部的 [新增]  。
-4. 建立完成後，您會看到 [ **Data Factory** ] 分頁，如下圖所示：
+      1. 選取 [使用現有的] 以選取現有的資源群組。
+      2. 選取 [建立新的] 以輸入資源群組的名稱。
+   4. 選取 Data Factory 的 [位置]。
+   5. 選取刀鋒視窗底部的 [釘選到儀表板] 核取方塊。  
+   6. 按一下 [建立]。
+4. 建立完成之後，您會看到 [Data Factory] 刀鋒視窗，如下圖所示：
 
    ![Data Factory 首頁](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. 在 Data Factory 首頁，按一下 [資料複製]**** 圖格以啟動 [複製精靈]****。
@@ -137,11 +137,11 @@ ms.locfileid: "81419301"
 ## <a name="step-1-configure-data-loading-schedule"></a>步驟 1︰設定資料載入排程
 第一個步驟是設定資料載入排程。  
 
-在 [屬性] **** 頁面︰
+在 [屬性]  頁面︰
 
 1. 輸入 **CopyFromBlobToAzureSqlDataWarehouse** 作為 [工作名稱]****
 2. 選取 [立即執行一次]**** 選項。   
-3. 按 [下一步]  。  
+3. 按 [下一步] 。  
 
     ![複製精靈 - 屬性頁面](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "81419301"
 
 ## <a name="step-4-performance-settings"></a>步驟 4：效能設定
 
-預設會核取 [允許 Polybase]****。  按 [下一步]  。
+預設會核取 [允許 Polybase]****。  按 [下一步] 。
 
 ![複製精靈 - 結構描述對應頁面](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

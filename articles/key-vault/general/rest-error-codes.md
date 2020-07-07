@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432056"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 錯誤代碼
@@ -55,11 +55,11 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token 缺少與其相關聯的正確資源。 
 
-從 Azure OAUTH 端點要求存取權杖時，必須要有稱為「資源」的參數。 此值對權杖提供者而言很重要，因為它會將權杖的範圍限定于其預期用途。 **所有**用來存取 Key Vault 之權杖的資源都是*HTTPs\/：/vault.keyvault.net* （不含尾端斜線）。
+從 Azure OAUTH 端點要求存取權杖時，必須要有稱為「資源」的參數。 此值對權杖提供者而言很重要，因為它會將權杖的範圍限定于其預期用途。 **所有**用來存取 Key Vault 之權杖的資源都是*HTTPs： \/ /vault.keyvault.net* （不含尾端斜線）。
 
 ### <a name="the-token-is-expired"></a>權杖已過期
 
-權杖是以 base64 編碼，而且這些值可以在網站（例如[http://jwt.calebb.net](http://jwt.calebb.net)）上解碼。 以下是已解碼的上述權杖：
+權杖是以 base64 編碼，而且這些值可以在網站（例如）上解碼 [http://jwt.calebb.net](http://jwt.calebb.net) 。 以下是已解碼的上述權杖：
 
 ```
     {
@@ -89,7 +89,7 @@ Content-Length: 31
 
 我們可以在此權杖中看到許多重要的部分：
 
-- aud （物件）： token 的資源。 請注意，這<https://vault.azure.net>是。 對於未明確符合此值的任何資源（例如圖形），此權杖將無法運作。
+- aud （物件）： token 的資源。 請注意，這是 <https://vault.azure.net> 。 對於未明確符合此值的任何資源（例如圖形），此權杖將無法運作。
 - iat （發行于）：發出權杖時，自 epoch 啟動後的滴答數。
 - nbf （不早于）：此權杖生效時，自 epoch 啟動後的滴答數。
 - exp （到期）：此權杖到期後，epoch 啟動後的滴答數。
@@ -100,7 +100,7 @@ Content-Length: 31
 
 ### <a name="troubleshooting-401"></a>疑難排解401
 
-在對金鑰保存庫提出要求之前，應該從權杖產生的點調查401s。 通常會使用程式碼來要求權杖。 一旦收到權杖，就會傳遞至 Key Vault 要求。 如果程式碼在本機執行，您可以使用 Fiddler 來捕捉對的要求/回應`https://login.microsoftonline.com`。 要求看起來像這樣：
+在對金鑰保存庫提出要求之前，應該從權杖產生的點調查401s。 通常會使用程式碼來要求權杖。 一旦收到權杖，就會傳遞至 Key Vault 要求。 如果程式碼在本機執行，您可以使用 Fiddler 來捕捉對的要求/回應 `https://login.microsoftonline.com` 。 要求看起來像這樣：
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

@@ -7,10 +7,10 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81532576"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
@@ -29,7 +29,7 @@ ms.locfileid: "81532576"
 
     ![選取您的應用程式。](media/app-service-continuous-deployment/select-your-app.png)
 
-3. 選取 [**部署中心** > ] [**FTP** > **儀表板**]。
+3. 選取 [**部署中心**] [  >  **FTP**  >  **儀表板**]。
 
     ![開啟 FTP 儀表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -42,11 +42,11 @@ ms.locfileid: "81532576"
 建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]****，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
 
 > [!NOTE]
-> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，會 requirers 下列格式的使用者名稱： 
+> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，需要下列格式的使用者名稱： 
 >
 >`<app-name>\<user-name>`
 >
-> 由於使用者層級的認證會連結至使用者，而不是特定的資源，因此使用者名稱必須採用此格式，才能將登入動作導向至正確的應用程式端點。
+> 由於使用者層級認證會連結至使用者，而不是特定資源，因此使用者名稱必須採用此格式，才能將登入動作導向至正確的應用程式端點。
 >
 
 ## <a name="deploy-files-to-azure"></a>將檔案部署至 Azure
@@ -69,7 +69,7 @@ ms.locfileid: "81532576"
 
 為了加強安全性，您應該只允許透過 TLS/SSL 的 FTP。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
 
-在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中，從左側導覽**中選取** > **[設定] [一般設定**]。
+在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中，從左側導覽**中選取**  >  **[設定] [一般設定**]。
 
 若要停用未加密的 FTP，請選取 [僅在**FTP 狀態**中**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [**停用**]。 完成時，按一下 [儲存]****。 如果**只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定**] 分頁，以強制執行 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
 

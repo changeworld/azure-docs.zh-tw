@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461696"
 ---
 # <a name="securing-paas-deployments"></a>保護 PaaS 部署
@@ -104,8 +104,8 @@ Microsoft [安全性開發週期](https://www.microsoft.com/en-us/sdl)指定小�
 | 竄改 | 完整性 | 驗證 TLS/SSL 憑證。 |
 | 否認性 | 不可否認性 | 啟用 Azure [監視和診斷](/azure/architecture/best-practices/monitoring)。 |
 | 資訊洩漏 | 保密 | 使用[服務憑證](/rest/api/appservice/certificates)將待用的敏感性資料加密。 |
-| Denial of service (拒絕服務) | 可用性 | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 |
-| 提高權限 | 授權 | 使用[具特殊權限身分識別管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
+| 拒絕服務 | 可用性 | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 |
+| 權限提高 | 授權 | 使用[具特殊權限身分識別管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
 
 ## <a name="develop-on-azure-app-service"></a>在 Azure App Service 上開發
 [Azure App Service](/azure/app-service/overview) 是一個 PaaS 供應項目，可讓您為任何平台或裝置建立 Web 與行動應用程式，以及連線到雲端或內部部署環境中任何位置的資料。 App Service 包含先前以 Azure 網站和 Azure 行動服務形式個別提供的 Web 和行動功能。 此外，它也包含可用來自動執行商務程序及裝載雲端 API 的新功能。 App Service 會以單一整合式服務形式，為 Web、行動及整合案例提供一組豐富的功能。
@@ -145,7 +145,7 @@ Web 應用程式已逐漸成為利用常見已知弱點的惡意攻擊目標。 
 Application Insights 具有廣泛的工具，能與它所收集的資料進行互動。 Application Insights 會將其資料儲存在一般存放庫中。 它可以利用共用功能，例如警示、儀表板，以及使用 Kusto 查詢語言的深入分析。
 
 ## <a name="perform-security-penetration-testing"></a>執行安全性滲透測試
-驗證安全性防禦與測試任何其他功能一樣重要。 讓[滲透測試](pen-testing.md)成為組建和部署程式的標準部分。 針對已部署的應用程式排程週期性安全性測試和弱點掃描，並監視開啟的埠、端點和攻擊。
+驗證安全性防禦與測試任何其他功能一樣重要。 讓[滲透測試](pen-testing.md)成為組建和部署程式的標準部分。 在已部署應用程式上排程定期安全性測試和弱點掃描，並監視開啟連接埠、端點和攻擊。
 
 模糊測試是一種方法，可將格式不正確的輸入資料提供給剖析和取用此資料的程式介面（進入點），藉此尋找程式失敗（程式碼錯誤）。 [Microsoft 安全性風險偵測](https://www.microsoft.com/en-us/security-risk-detection/)是一種雲端式工具，可讓您在將其部署至 Azure 之前，先尋找軟體中的錯誤和其他安全性弱點。 此工具的設計是為了在您部署軟體之前攔截弱點，因此您不需要修補錯誤、處理損毀，或在軟體發行後回應攻擊。
 

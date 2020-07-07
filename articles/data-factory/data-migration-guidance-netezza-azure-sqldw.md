@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416447"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure Data Factory 將資料從內部部署 Netezza 伺服器遷移至 Azure 
@@ -24,14 +24,14 @@ ms.locfileid: "81416447"
 
 Azure Data Factory 提供高效能、強大且符合成本效益的機制，將內部部署 Netezza 伺服器的資料大規模遷移至您的 Azure 儲存體帳戶或 Azure SQL 資料倉儲資料庫。 
 
-本文提供資料工程師和開發人員的下列資訊：
+本文為資料工程師和開發人員提供下列資訊：
 
 > [!div class="checklist"]
 > * 效能 
-> * 複製復原能力
+> * 複本恢復功能
 > * 網路安全性
 > * 高階解決方案架構 
-> * 實施最佳做法  
+> * 實作最佳做法  
 
 ## <a name="performance"></a>效能
 
@@ -49,7 +49,7 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 
 如需詳細資訊，請參閱[複製活動效能和擴充性指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
 
-## <a name="resilience"></a>復原能力
+## <a name="resilience"></a>恢復功能
 
 在單一複製活動執行中，Azure Data Factory 具有內建的重試機制，它可讓它處理資料存放區或基礎網路中特定層級的暫時性失敗。
 
@@ -57,7 +57,7 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 
 ## <a name="network-security"></a>網路安全性 
 
-根據預設，Azure Data Factory 會使用透過超文字安全傳輸通訊協定（HTTPS）的加密連線，將資料從內部部署 Netezza 伺服器傳送至 Azure 儲存體帳戶或 Azure SQL 資料倉儲資料庫。 HTTPS 提供傳輸中的資料加密，並防止竊聽和攔截式攻擊。
+根據預設，Azure Data Factory 會使用透過超文字安全傳輸通訊協定（HTTPS）的加密連線，將資料從內部部署 Netezza 伺服器傳送至 Azure 儲存體帳戶或 Azure SQL 資料倉儲資料庫。 HTTPS 會提供傳輸中的資料加密，並可防止竊聽和中間人攻擊。
 
 或者，如果您不想透過公用網際網路傳送資料，您可以透過 Azure Express Route 透過私人對等互連連結傳輸資料，以協助達到更高的安全性。 
 
@@ -115,15 +115,15 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
    
    - 您也可以使用[服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication)或[SQL 驗證](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)。
 
-- 當您未使用 Azure 資源的受控識別時，強烈建議您將[認證儲存在 Azure Key Vault 中](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便在不需要修改 Azure Data Factory 連結服務的情況下，更輕鬆地集中管理和旋轉金鑰。 這也是[CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)的其中一個最佳作法。 
+- 當您未使用 Azure 資源的受控識別時，強烈建議您將[認證儲存在 Azure Key Vault 中](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便在不需要修改 Azure Data Factory 連結服務的情況下，更輕鬆地集中管理和旋轉金鑰。 這也是其中一個 [CI/CD 的最佳做法](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)。 
 
 ### <a name="migrate-initial-snapshot-data"></a>遷移初始快照集資料 
 
 針對小型資料表（也就是，磁片區小於 100 GB 或可在兩個小時內遷移至 Azure 的資料表），您可以讓每個複製作業在每個資料表中載入資料。 如需更大的輸送量，您可以執行多個 Azure Data Factory 複製作業，以同時載入個別的資料表。 
 
-在每個複製作業中，若要依分割區執行平行查詢和複製資料，您也可以使用[ `parallelCopies`屬性設定](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)搭配下列其中一個資料分割選項，達到某種程度的平行處理原則：
+在每個複製作業中，若要依分割區執行平行查詢和複製資料，您也可以使用[ `parallelCopies` 屬性設定](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)搭配下列其中一個資料分割選項，達到某種程度的平行處理原則：
 
-- 為了協助達成更高的效率，我們鼓勵您從資料配量開始。  請確定`parallelCopies`設定中的值小於您在 Netezza 伺服器上資料表中的資料配量分割區總數。  
+- 為了協助達成更高的效率，我們鼓勵您從資料配量開始。  請確定設定中的值 `parallelCopies` 小於您在 Netezza 伺服器上資料表中的資料配量分割區總數。  
 
 - 如果每個資料配量分割區的數量仍然很大（例如 10 GB 或更大），建議您切換到動態範圍分割區。 此選項可讓您更有彈性地依資料分割資料行、上限和下限來定義資料分割的數目和每個分割區的磁片區數量。
 
@@ -151,13 +151,13 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 
 最佳做法是使用具代表性的範例資料集來進行效能證明（POC），讓您可以針對每個複製活動判斷適當的分割區大小。 我們建議您在兩個小時內，將每個分割區載入至 Azure。  
 
-若要複製資料表，請從具有單一自我裝載 IR 機器的單一複製活動開始。 根據資料表中`parallelCopies`的資料配量分割區數目，逐漸增加設定。 根據複製作業所產生的輸送量，查看是否可在兩個小時內將整個資料表載入至 Azure。 
+若要複製資料表，請從具有單一自我裝載 IR 機器的單一複製活動開始。 `parallelCopies`根據資料表中的資料配量分割區數目，逐漸增加設定。 根據複製作業所產生的輸送量，查看是否可在兩個小時內將整個資料表載入至 Azure。 
 
 如果在兩個小時內無法將其載入至 Azure，而且自我裝載 IR 節點和資料存放區的容量未完全使用，則會逐漸增加並行複製活動的數目，直到達到您的網路限制或資料存放區的頻寬限制為止。 
 
 在自我裝載的 IR 機器上持續監視 CPU 和記憶體使用量，並準備好在您看到 CPU 和記憶體完全使用時，相應增加機器或相應放大至多部電腦。 
 
-當您遇到節流錯誤（如 Azure Data Factory 複製活動所回報）時，請減少 Azure Data Factory `parallelCopies`中的並行或設定，或考慮增加網路和資料存放區的每秒 i/o 作業數（IOPS）限制。 
+當您遇到節流錯誤（如 Azure Data Factory 複製活動所回報）時，請減少 Azure Data Factory 中的並行或 `parallelCopies` 設定，或考慮增加網路和資料存放區的每秒 i/o 作業數（IOPS）限制。 
 
 
 ### <a name="estimate-your-pricing"></a>預估您的定價 
@@ -174,7 +174,7 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 
 - 50-TB 磁片區會分割成500個磁碟分割，且每個複製活動會移動一個分割區。
 
-- 每個複製活動都會針對四部機器設定一個自我裝載 IR，並達到每秒 20 mb 的輸送量（MBps）。 （在複製活動內`parallelCopies` ，會設定為4，而每個從資料表載入資料的執行緒都會達到 5 MBps 的輸送量）。
+- 每個複製活動都會針對四部機器設定一個自我裝載 IR，並達到每秒 20 mb 的輸送量（MBps）。 （在複製活動內， `parallelCopies` 會設定為4，而每個從資料表載入資料的執行緒都會達到 5 MBps 的輸送量）。
 
 - ForEach concurrency 已設定為3，而匯總輸送量為 60 MBps。
 
@@ -185,9 +185,9 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 ![定價表](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> 上表所示的價格是假設的。 您的實際定價取決於您環境中的實際輸送量。 不包含 Windows 機器的價格（已安裝自我裝載 IR）。 
+> 上表所示的價格是假設的。 實際定價取決於環境中的實際輸送量。 不包含 Windows 機器的價格（已安裝自我裝載 IR）。 
 
-### <a name="additional-references"></a>其他參考資料
+### <a name="additional-references"></a>其他參考
 
 如需詳細資訊，請參閱下列文章和指南：
 
@@ -197,11 +197,11 @@ Azure Data Factory 提供無伺服器架構，允許各種層級的平行處理�
 - [Azure Blob 儲存體連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Azure SQL 資料倉儲連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [複製活動效能微調指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [複製活動效能調整指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) (機器翻譯)
 - [建立和設定自我裝載整合執行階段](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [自我裝載整合執行時間 HA 和擴充性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [自我裝載整合執行階段 HA 及可擴縮性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability) (機器翻譯)
+- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations) (機器翻譯)
+- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) (機器翻譯)
 - [以累加方式從一個資料表複製資料](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
 - [以累加方式從多個資料表複製資料](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
 - [Azure Data Factory 定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)

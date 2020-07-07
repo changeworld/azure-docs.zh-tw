@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536421"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 檔案服務延展性和效能目標
@@ -77,7 +77,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 | 系統設定 |  |
 |-|-|
 | CPU | 具有 64 MiB L3 快取的 64 個虛擬核心 |
-| 記憶體 | 128 GB |
+| Memory | 128 GB |
 | 磁碟 | 具有電池供電式快取記憶體 RAID 10 的 SAS 磁碟 |
 | 網路 | 1 Gbps 的網路 |
 | 工作負載 | 一般用途檔案伺服器|
@@ -110,7 +110,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 - 物件輸送量的消長大致上會與伺服器上的同步群組數目成正比。 在伺服器上將資料分割到多個同步群組時，會產生較佳的輸送量，但仍受限於伺服器和網路。
 - 物件輸送量與每秒 MiB 輸送量成反比。 檔案較小時，在每秒處理的物件數方面會呈現較高的輸送量，但每秒的 MiB 輸送量則會降低。 相反地，若檔案較大，每秒處理的物件數將會降低，但每秒的 MiB 輸送量則會提高。 每秒的 MiB 輸送量會受限於 Azure 檔案擴展目標。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [規劃 Azure 檔案服務部署](storage-files-planning.md)
+- [規劃 Azure 檔案部署](storage-files-planning.md)
 - [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

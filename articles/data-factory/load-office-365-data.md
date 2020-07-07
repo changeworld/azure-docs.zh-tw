@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415803"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Office 365 載入資料
@@ -26,26 +26,26 @@ ms.locfileid: "81415803"
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表上，選取 [**建立資源** > **分析** > ]**Data Factory**： 
+1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]： 
    
    ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. 在 [新增資料處理站]**** 頁面中，為下圖所示的欄位提供值：
+2. 在 [新增資料處理站] 頁面中，為下圖所示的欄位提供值：
       
    ![新增資料處理站頁面](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **名稱**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「資料處理站名稱*LoadFromOffice365Demo*無法使用」錯誤，請為資料處理站輸入不同的名稱。 例如，您可以使用_**yourname**_**LoadFromOffice365Demo**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
-    * **訂用帳戶**：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
-    * **資源群組**：從下拉式清單中選取現有資源群組，或選取 [新建]**** 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：選取 [V2]****。
+    * **Name**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「資料處理站名稱*LoadFromOffice365Demo*無法使用」錯誤，請為資料處理站輸入不同的名稱。 例如，您可以使用_**yourname**_**LoadFromOffice365Demo**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    * 訂用帳戶：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
+    * **資源群組**：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：選取 [V2]。
     * **位置**：選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區可位於其他位置和區域。 這些資料存放區包含 Azure Data Lake Store、Azure 儲存體、Azure SQL Database 等等。
 
-3. 選取 [建立]  。
-4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory]**** 首頁：
+3. 選取 [建立]。
+4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory] 首頁：
    
    ![Data Factory 首頁](./media/load-office-365-data/data-factory-home-page.png)
 
-5. 選取 [編寫與監視]**** 圖格，以在另一個索引標籤中啟動資料整合應用程式。
+5. 選取 [編寫與監視] 圖格，以在另一個索引標籤中啟動資料整合應用程式。
 
 ## <a name="create-a-pipeline"></a>建立管線
 
@@ -79,7 +79,7 @@ ms.locfileid: "81415803"
 
     ![設定 Office 365 資料集資料表](./media/load-office-365-data/edit-dataset.png)
 
-8. 現在回到 [**管線** > **來源]** 索引標籤，繼續設定 Office 365 資料解壓縮的其他屬性。  使用者範圍和使用者範圍篩選器是選擇性的述詞，您可以定義這些述詞來限制要從 Office 365 解壓縮的資料。 如需如何設定這些設定，請參閱[Office 365 資料集屬性](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)一節。
+8. 現在回到 [**管線**  >  **來源]** 索引標籤，繼續設定 Office 365 資料解壓縮的其他屬性。  使用者範圍和使用者範圍篩選器是選擇性的述詞，您可以定義這些述詞來限制要從 Office 365 解壓縮的資料。 如需如何設定這些設定，請參閱[Office 365 資料集屬性](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)一節。
 
 9. 您必須選擇其中一個日期篩選準則，並提供 [開始時間] 和 [結束時間] 值。
 
@@ -97,7 +97,7 @@ ms.locfileid: "81415803"
 
 4. 在 [屬性] 視窗的 [一般]**** 索引標籤上，於 [名稱] 中輸入 "OutputBlobDataset"。
 
-5. 移至屬性視窗的 [**連接]** 索引標籤。 在 [連結服務] 文字方塊旁，選取 [+ 新增]****。
+5. 移至屬性視窗的 [**連接]** 索引標籤。 在 [連結服務] 文字方塊旁，選取 [ **+ 新增**]。
 
 6. 在 [新增連結服務] 視窗中，輸入 "AzureStorageLinkedService" 作為名稱，從驗證方法的下拉式清單中選取 [服務主體]，填入服務端點、租使用者、服務主體識別碼和服務主體金鑰，然後選取 [儲存] 以部署連結服務。  如需了解如何設定「Azure Blob 儲存體」的服務主體驗證，請參閱[這裡](connector-azure-blob-storage.md#service-principal-authentication)。
 
@@ -106,7 +106,7 @@ ms.locfileid: "81415803"
 
 ## <a name="validate-the-pipeline"></a>驗證管線
 
-若要驗證管線，請從工具列中選取 [驗證]  。
+若要驗證管線，請從工具列中選取 [驗證]。
 
 您也可以按一下右上方的 [程式碼]，以查看與管線相關聯的 JSON 程式碼。
 
@@ -118,11 +118,11 @@ ms.locfileid: "81415803"
 
 ## <a name="trigger-the-pipeline-manually"></a>手動觸發管線
 
-選取工具列上的 [新增觸發程序]****，然後選取 [立即觸發]****。 在 [管線執行] 頁面上，選取 [完成]****。 
+選取工具列上的 [新增觸發程序]****，然後選取 [立即觸發]****。 在 [管線執行] 頁面上，選取 **[完成]**。 
 
 ## <a name="monitor-the-pipeline"></a>監視管線
 
-移至左側的 [監視]  索引標籤。 您會看到手動觸發程序所觸發的管線執行。 您可以使用 [**動作**] 欄中的連結來查看活動詳細資料，以及重新執行管線。
+移至左側的 [監視] 索引標籤。 您會看到手動觸發程序所觸發的管線執行。 您可以使用 [**動作**] 欄中的連結來查看活動詳細資料，以及重新執行管線。
 
 ![監視管線](./media/load-office-365-data/pipeline-status.png) 
 
@@ -132,8 +132,8 @@ ms.locfileid: "81415803"
 
 如果這是您第一次要求此內容的資料（其中一個資料表正在存取的組合、哪個目的地帳戶是要載入的資料，以及哪些使用者識別正在進行資料存取要求），您將會看到複製活動狀態為 [**進行中**]，而且只有當您按一下 [動作] 底下的 [詳細資料] 連結時，您才會看到狀態為**RequesetingConsent**。  資料存取核准者群組的成員必須先在 Privileged Access Management 中核准該要求，資料擷取才能繼續。
 
-_要求同意時的狀態：_
-![活動執行詳細資料-要求同意](./media/load-office-365-data/activity-details-request-consent.png) 
+_要求同意的狀態：_ 
+ ![活動執行詳細資料-要求同意](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _擷取資料時的狀態：_
 

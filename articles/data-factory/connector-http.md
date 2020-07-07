@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416948"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HTTP 端點複製資料 | Microsoft Docs
@@ -38,7 +38,7 @@ ms.locfileid: "81416948"
 
 下列活動支援此 HTTP 連接器：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 HTTP 來源複製到任何支援的接收資料存放區。 如需複製活動作為來源和接收端支援的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
@@ -52,7 +52,7 @@ ms.locfileid: "81416948"
 > [!TIP]
 > 若要在 Data Factory 中設定 HTTP 連接器之前，測試擷取資料的 HTTP 要求，請先了解 API 規格中的標頭和本文需求。 您可以使用 Postman 或網頁瀏覽器之類的工具進行驗證。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "81416948"
 | url | Web 伺服器的基底 URL。 | 是 |
 | enableServerCertificateValidation | 指定當您連接到 HTTP 端點時，是否要啟用伺服器 TLS/SSL 憑證驗證。 如果 HTTPS 伺服器使用自我簽署的憑證，請將此屬性設定為 **false**。 | 否<br /> （預設值為**true**） |
 | authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱此表格後面幾節。 | 是 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，則會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，則會使用預設的 Azure Integration Runtime。 |否 |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 驗證
 
@@ -81,7 +81,7 @@ ms.locfileid: "81416948"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | userName | 用來存取 HTTP 端點的使用者名稱。 | 是 |
-| password | 使用者 (**userName** 值) 的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 使用者 (**userName** 值) 的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
 
 **範例**
 
@@ -115,13 +115,13 @@ ms.locfileid: "81416948"
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 編碼的憑證資料。 | 指定 **embeddedCertData** 或 **certThumbprint**。 |
 | certThumbprint | 憑證指紋已安裝在自我裝載整合執行階段機器的憑證存放區上。 只有當 **connectVia** 屬性中已指定自我裝載整合執行階段時才適用。 | 指定 **embeddedCertData** 或 **certThumbprint**。 |
-| password | 與憑證相關聯的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 否 |
+| 密碼 | 與憑證相關聯的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 否 |
 
 如果您使用 **certThumbprint** 進行驗證，且憑證已安裝在本機電腦的個人存放區中，請將讀取權限授予自我裝載整合執行階段︰
 
 1. 開啟 Microsoft Management Console (MMC)。 新增目標為 [本機電腦]**** 的 [憑證]**** 嵌入式管理單元。
-2. 展開 [**憑證** > ] [**個人**]，然後選取 [**憑證**]。
-3. 以滑鼠右鍵按一下 [個人] 存放區中的憑證，然後選取 [**所有** > 工作] [**管理私密金鑰**]。
+2. 展開 [**憑證**] [  >  **個人**]，然後選取 [**憑證**]。
+3. 以滑鼠右鍵按一下 [個人] 存放區中的憑證，然後選取 [**所有**工作] [  >  **管理私密金鑰**]。
 3. 在 [安全性]**** 索引標籤上，新增使用憑證讀取存取全執行整合執行階段主機服務 (DIAHostService) 的使用者帳戶。
 
 **範例1：使用 certThumbprint**
@@ -174,17 +174,17 @@ ms.locfileid: "81416948"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性支援以格式為基礎之`location`資料集的設定下的 HTTP：
+下列屬性支援以格式為基礎之 `location` 資料集的設定下的 HTTP：
 
 | 屬性    | 描述                                                  | 必要 |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | 資料集`location`內的類型屬性必須設定為**HttpServerLocation**。 | 是      |
-| relativeUrl | 包含資料之資源的相對 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service][relative URL specified in dataset]`。   | 否       |
+| type        | `location`資料集內的類型屬性必須設定為**HttpServerLocation**。 | 是      |
+| relativeUrl | 包含資料之資源的相對 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service][relative URL specified in dataset]` 。   | 否       |
 
 > [!NOTE]
 > 支援的 HTTP 要求承載大小是大約 500 KB。 如果您希望傳遞至 Web 端點的承載大小大於 500 KB，請考慮將承載分批處理成較小的區塊。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -220,18 +220,18 @@ ms.locfileid: "81416948"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性在以格式為基礎之`storeSettings`複製來源的設定下支援 HTTP：
+下列屬性在 `storeSettings` 以格式為基礎之複製來源的設定下支援 HTTP：
 
 | 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | 底下的 type 屬性`storeSettings`必須設定為**HttpReadSettings**。 | 是      |
+| type                     | 底下的 type 屬性 `storeSettings` 必須設定為**HttpReadSettings**。 | 是      |
 | requestMethod            | HTTP 方法。 <br>允許的值為 **Get** (預設值) 和 **Post**。 | 否       |
 | addtionalHeaders         | 其他 HTTP 要求標頭。                             | 否       |
 | requestBody              | HTTP 要求的主體。                               | 否       |
 | httpRequestTimeout           | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 預設值為 **00:01:40**。 | 否       |
-| maxConcurrentConnections | 連接到儲存體存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否       |
+| maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有想要限制對資料存放區的並行連線數目時，才須指定此項。 | 否       |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -274,12 +274,12 @@ ms.locfileid: "81416948"
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="legacy-models"></a>舊版模型
 
 >[!NOTE]
->下列模型仍然受支援，以提供回溯相容性。 建議您使用上述各節中所提及的新模型，然後 ADF 撰寫 UI 已切換為產生新的模型。
+>下列模型仍依原狀支援，以提供回溯相容性。 建議您往後使用以上各節所述的新模型，而製作 UI 的 ADF 已切換為產生新模型。
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 

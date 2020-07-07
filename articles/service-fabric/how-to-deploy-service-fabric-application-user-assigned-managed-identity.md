@@ -4,10 +4,10 @@ description: 本文說明如何使用使用者指派的受控識別來部署 Ser
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415633"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>以使用者指派的受控識別部署 Service Fabric 應用程式
@@ -18,7 +18,7 @@ ms.locfileid: "81415633"
 > 
 > 未部署為 Azure 資源的應用程式**不能**有受控識別。 
 >
-> API 版本`"2019-06-01-preview"`支援使用受控識別進行 Service Fabric 應用程式部署。 您也可以針對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。
+> API 版本支援使用受控識別進行 Service Fabric 應用程式部署 `"2019-06-01-preview"` 。 您也可以針對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。
 >
 
 ## <a name="user-assigned-identity"></a>使用者指派的身分識別
@@ -62,7 +62,7 @@ ms.locfileid: "81415633"
 
 ### <a name="application-package"></a>應用程式套件
 
-1. 針對 Azure Resource Manager 範本的`managedIdentities`區段中定義的每個識別，在 [ `<ManagedIdentity>` **主體**] 區段下的應用程式資訊清單中新增標記。 `Name`屬性必須符合`managedIdentities`區段中定義`name`的屬性。
+1. 針對 Azure Resource Manager 範本的區段中定義的每個識別 `managedIdentities` ，在 `<ManagedIdentity>` [**主體**] 區段下的應用程式資訊清單中新增標記。 `Name`屬性必須符合 `name` 區段中定義的屬性 `managedIdentities` 。
 
     **ApplicationManifest.xml**
 
@@ -74,7 +74,7 @@ ms.locfileid: "81415633"
       </Principals>
     ```
 
-2. 在 [ **ServiceManifestImport** ] 區段中，為使用受控識別的服務新增**IdentityBindingPolicy** 。 此原則會將`AdminUser`身分識別對應至稍後需要新增至服務資訊清單的服務特定身分識別名稱。
+2. 在 [ **ServiceManifestImport** ] 區段中，為使用受控識別的服務新增**IdentityBindingPolicy** 。 此原則會將身分 `AdminUser` 識別對應至稍後需要新增至服務資訊清單的服務特定身分識別名稱。
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ ms.locfileid: "81415633"
       </ServiceManifestImport>
     ```
 
-3. 更新服務資訊清單，以在**資源**區段內新增**microsoft.managedidentity** ，其名稱符合應用`ServiceIdentityRef`程式指令`IdentityBindingPolicy`清單中的：
+3. 更新服務資訊清單，以在**資源**區段內新增**microsoft.managedidentity** ，其名稱符合 `ServiceIdentityRef` `IdentityBindingPolicy` 應用程式資訊清單中的：
 
     **ServiceManifest.xml**
 

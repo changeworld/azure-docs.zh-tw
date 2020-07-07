@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417185"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 中的 ForEach 活動
@@ -23,7 +23,7 @@ ms.locfileid: "81417185"
 
 ForEach 活動定義管線中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 本文稍後將說明這些屬性。 項目屬性為集合，而集合中的每個項目則使用 `@item()` 表示，如下列語法所示：  
 
 ```json
@@ -72,10 +72,10 @@ ForEach 活動定義管線中重複的控制流程。 此活動用來逐一查�
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | for-each 活動的名稱。 | String | 是
+NAME | for-each 活動的名稱。 | String | 是
 type | 必須設定為 **ForEach** | String | 是
-isSequential | 指定應該循序或以平行方式執行迴圈。  以平行方式可一次執行最多 20 個迴圈反覆項目。 例如，如果您的 ForEach 活動會反覆查詢 10 個不同來源和接收資料集的複製活動，且 **isSequential** 設為 False，則所有複本會都執行一次。 預設值是 False。 <br/><br/> 如果 isSequential 設定為 False，請確認有正確的設定可執行多個可執行檔。 否則，應謹慎使用這個屬性，以避免引發寫入衝突。 如需詳細資訊，請參閱[平行執行](#parallel-execution)一節。 | 布林值 | 否。 預設值是 False。
-batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 設定為 false 時)。 這是最高的並行限制，但每個活動不一定會以這個數位執行 | 整數 (最大值 50) | 否。 預設值為 20。
+isSequential | 指定應該循序或以平行方式執行迴圈。  以平行方式可一次執行最多 20 個迴圈反覆項目。 例如，如果您的 ForEach 活動會反覆查詢 10 個不同來源和接收資料集的複製活動，且 **isSequential** 設為 False，則所有複本會都執行一次。 預設值是 False。 <br/><br/> 如果 isSequential 設定為 False，請確認有正確的設定可執行多個可執行檔。 否則，應謹慎使用這個屬性，以避免引發寫入衝突。 如需詳細資訊，請參閱[平行執行](#parallel-execution)一節。 | Boolean | 否。 預設值是 False。
+batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 設定為 false 時)。 這是最高的並行限制，但每個活動不一定會以這個數位執行 | 整數 (最大值 50) | 不會。 預設值為 20。
 項目 | 傳回要反覆查詢之 JSON 陣列的運算式。 | 運算式 (傳回 JSON 陣列) | 是
 活動 | 要執行的活動。 | 活動清單 | 是
 
@@ -495,4 +495,4 @@ batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 
 - [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)

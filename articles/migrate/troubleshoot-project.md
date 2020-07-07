@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535395"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate 專案疑難排解
@@ -19,11 +19,11 @@ ms.locfileid: "81535395"
 
 ## <a name="how-to-add-new-project"></a>如何新增專案？
 
-您可以在訂用帳戶中有多個 Azure Migrate 專案。 [瞭解如何](how-to-add-tool-first-time.md)第一次建立專案，或[加入其他](create-manage-projects.md#create-additional-projects)專案。
+您的訂用帳戶中可以有多個 Azure Migrate 專案。 [瞭解如何](how-to-add-tool-first-time.md)第一次建立專案，或[加入其他](create-manage-projects.md#create-additional-projects)專案。
 
 ## <a name="what-azure-permissions-are-needed"></a>需要哪些 Azure 許可權？
 
-您需要訂用帳戶中的「參與者」或「擁有者」許可權，才能建立 Azure Migrate 專案。
+您必須有訂用帳戶中的「參與者」或「擁有者」權限，才能建立 Azure Migrate 專案。
 
 ## <a name="cant-find-a-project"></a>找不到專案
 
@@ -36,7 +36,7 @@ ms.locfileid: "81535395"
 
 ## <a name="what-are-vm-limits"></a>什麼是 VM 限制？
 
-您最多可以在單一專案中評估35000個 VMware Vm 或最多35000個 Hyper-v Vm。 專案可以包含 VMware Vm 和 Hyper-v Vm，最多可達評量限制。
+您最多可以在單一專案中評估35000個 VMware Vm 或最多35000個 Hyper-v Vm。 一個專案可以包含 VMware VM 和 Hyper-V VM，數目上限為評量限制。
 
 ## <a name="can-i-upgrade-old-project"></a>我可以升級舊的專案嗎？
 

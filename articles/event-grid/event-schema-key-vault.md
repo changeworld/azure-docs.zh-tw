@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458244"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>做為事件方格來源 Azure Key Vault
@@ -67,7 +67,7 @@ Azure Key Vault 帳戶會產生下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | ---------- | ----------- |---|
 | id | 字串 | 觸發此事件之物件的識別碼 |
 | vaultName | 字串 | 觸發此事件的物件金鑰保存庫名稱 |
@@ -91,7 +91,7 @@ Azure Key Vault 帳戶會產生下列事件種類：
 * 若要深入瞭解 Key Vault 與 Event Grid 整合，請參閱[使用 Azure 事件方格監視 Key Vault （預覽）](../key-vault/general/event-grid-overview.md)。
 * 如需 Key Vault 與 Event Grid 整合的教學課程，請參閱[使用 Azure 事件方格接收和回應金鑰保存庫通知（預覽）](../key-vault/general/event-grid-tutorial.md)。
 * 若要取得 Key Vault 和 Azure 自動化的其他指引，請參閱：
-    - [何謂 Azure Key Vault？](../key-vault/general/overview.md)
+    - [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
     - [使用 Azure 事件方格監視 Key Vault (預覽)](../key-vault/general/event-grid-overview.md)
     - [使用 Azure 事件方格來接收和回應金鑰保存庫通知 (預覽)](../key-vault/general/event-grid-tutorial.md)
     - [Azure 自動化概觀](../automation/index.yml)

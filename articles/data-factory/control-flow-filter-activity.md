@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417214"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory 中的篩選活動
@@ -39,10 +39,10 @@ ms.locfileid: "81417214"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | `Filter` 活動的名稱。 | String | 是
+NAME | `Filter` 活動的名稱。 | String | 是
 type | 必須設定為**篩選**。 | String | 是
-condition (條件) | 要用來篩選輸入的條件。 | 運算是 | 是
-項目 | 應套用篩選條件的輸入陣列。 | 運算是 | 是
+condition (條件) | 要用來篩選輸入的條件。 | 運算式 | 是
+項目 | 應套用篩選條件的輸入陣列。 | 運算式 | 是
 
 ## <a name="example"></a>範例
 
@@ -120,5 +120,5 @@ condition (條件) | 要用來篩選輸入的條件。 | 運算是 | 是
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)
 - [Until 活動](control-flow-until-activity.md)

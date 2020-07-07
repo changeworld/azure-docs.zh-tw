@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417124"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>使用 Azure Data Factory 將資料從內部部署 Hadoop 叢集遷移至 Azure 儲存體 
@@ -32,10 +32,10 @@ Data Factory 提供兩種基本方法，可將資料從內部部署 HDFS 遷移�
 本文提供兩種方法的下列資訊：
 > [!div class="checklist"]
 > * 效能 
-> * 複製復原能力
+> * 複本恢復功能
 > * 網路安全性
 > * 高階解決方案架構 
-> * 實施最佳做法  
+> * 實作最佳做法  
 
 ## <a name="performance"></a>效能
 
@@ -51,9 +51,9 @@ Data Factory 原生整合執行時間模式也允許不同層級的平行處理�
 
 如需詳細資訊，請參閱[複製活動效能指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
 
-## <a name="resilience"></a>復原能力
+## <a name="resilience"></a>恢復功能
 
-在 Data Factory DistCp 模式中，您可以使用不同的 DistCp 命令列參數（ `-i`例如，忽略失敗，或`-update`在原始程式檔和目的地檔案大小差異時寫入資料），以進行不同的彈性層級。
+在 Data Factory DistCp 模式中，您可以使用不同的 DistCp 命令列參數（例如， `-i` 忽略失敗，或在 `-update` 原始程式檔和目的地檔案大小差異時寫入資料），以進行不同的彈性層級。
 
 在 Data Factory 的原生整合執行時間模式中，在單一複製活動執行中，Data Factory 有內建的重試機制。 它可以處理資料存放區或基礎網路中特定層級的暫時性失敗。 
 
@@ -61,7 +61,7 @@ Data Factory 原生整合執行時間模式也允許不同層級的平行處理�
 
 ## <a name="network-security"></a>網路安全性 
 
-根據預設，Data Factory 會使用透過 HTTPS 通訊協定的加密連線，將資料從內部部署 HDFS 傳輸至 Blob 儲存體或 Azure Data Lake Storage Gen2。 HTTPS 提供傳輸中的資料加密，並防止竊聽和攔截式攻擊。 
+根據預設，Data Factory 會使用透過 HTTPS 通訊協定的加密連線，將資料從內部部署 HDFS 傳輸至 Blob 儲存體或 Azure Data Lake Storage Gen2。 HTTPS 會提供傳輸中的資料加密，並可防止竊聽和中間人攻擊。 
 
 或者，如果您不想透過公用網際網路傳送資料，為了更高的安全性，您可以透過 ExpressRoute 透過私人對等互連連結傳輸資料。 
 
@@ -87,11 +87,11 @@ Data Factory 原生整合執行時間模式也允許不同層級的平行處理�
 - 您也可以將最多四個 VM 節點與單一的自我裝載整合執行時間產生關聯，以相應放大。 針對自我裝載整合執行時間執行的單一複製作業會自動分割盤案集，並使用所有 VM 節點來平行複製檔案。 為了達到高可用性，我們建議您從兩個 VM 節點開始，以避免在資料移轉期間發生單一失敗點的情況。
 - 當您使用此架構時，可以使用初始快照集資料移轉和差異資料移轉。
 
-## <a name="implementation-best-practices"></a>實施最佳做法
+## <a name="implementation-best-practices"></a>實作最佳做法
 
 我們建議您在執行資料移轉時，遵循這些最佳作法。
 
-### <a name="authentication-and-credential-management"></a>驗證和認證管理 
+### <a name="authentication-and-credential-management"></a>驗證及認證管理 
 
 - 若要向 HDFS 驗證，您可以使用[Windows （Kerberos）或匿名](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)。 
 - 支援多個驗證類型來連接到 Azure Blob 儲存體。  我們強烈建議使用[適用于 Azure 資源的受控](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)識別。 受控識別建置於自動受管理的 Data Factory 身分識別 Azure Active Directory （Azure AD）中，可讓您設定管線，而不需要在連結服務定義中提供認證。 或者，您可以使用[服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共用存取](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)簽章或[儲存體帳戶金鑰](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)，向 Blob 儲存體進行驗證。 
@@ -108,9 +108,9 @@ Data Factory 原生整合執行時間模式也允許不同層級的平行處理�
 
 ### <a name="delta-data-migration"></a>差異資料移轉 
 
-在 Data Factory DistCp 模式中，您可以使用 DistCp 命令列參數`-update`，在原始程式檔和目的地檔案大小差異時寫入資料，以進行差異資料移轉。
+在 Data Factory DistCp 模式中，您可以使用 DistCp 命令列參數 `-update` ，在原始程式檔和目的地檔案大小差異時寫入資料，以進行差異資料移轉。
 
-在 Data Factory 原生整合模式中，從 HDFS 識別新的或已變更檔案的最高效能方法是使用時間分割的命名慣例。 當 HDFS 中的資料已使用檔案或資料夾名稱中的時間配量資訊進行時間分割時（例如， */yyyy/mm/dd/file.csv*），您的管線可以輕鬆地識別要以累加方式複製哪些檔案和資料夾。
+在 Data Factory 原生整合模式中，從 HDFS 識別新的或已變更檔案的最高效能方法是使用時間分割的命名慣例。 當 HDFS 中的資料以檔案或資料夾名稱中的時間配量資訊進行時間分割時（例如， */yyyy/mm/dd/file.csv*），您的管線可以輕鬆地識別要以累加方式複製哪些檔案和資料夾。
 
 或者，如果您在 HDFS 中的資料未進行時間分割，Data Factory 可以使用其**LastModifiedDate**值來識別新的或已變更的檔案。 Data Factory 會掃描 HDFS 中的所有檔案，並只複製新的和更新的檔案，這些檔案的上次修改時間戳記大於一個設定的值。 
 
@@ -136,21 +136,21 @@ Data Factory 原生整合執行時間模式也允許不同層級的平行處理�
 ![顯示定價計算的資料表](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
 
 > [!NOTE]
-> 這是假設性的定價範例。 您的實際定價取決於您環境中的實際輸送量。
+> 這是假設的定價範例。 實際定價取決於環境中的實際輸送量。
 > 不包含 Azure Windows VM 的價格（已安裝自我裝載整合執行時間）。
 
-### <a name="additional-references"></a>其他參考資料
+### <a name="additional-references"></a>其他參考
 
 - [HDFS 連接器](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
 - [Azure Blob 儲存體連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [複製活動效能微調指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [複製活動效能調整指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) (機器翻譯)
 - [建立和設定自我裝載整合執行階段](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [自我裝載整合執行時間高可用性和擴充性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations) (機器翻譯)
+- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) (機器翻譯)
 - [根據時間分割的檔案名，以累加方式複製檔案](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [根據 LastModifiedDate 複製新的和已變更的檔案](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [根據 LastModifiedDate 複製新增和變更的檔案](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool) (機器翻譯)
 - [Data Factory 定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>後續步驟

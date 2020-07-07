@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415284"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>在 Azure Data Factory 中執行管線活動
@@ -66,11 +66,11 @@ ms.locfileid: "81415284"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | 執行管線活動的名稱。 | String | 是
+NAME | 執行管線活動的名稱。 | String | 是
 type | 必須設為：**ExecutePipeline**。 | String | 是
 管線 | 此管線叫用之相依管線的管線參考。 管線參考物件有兩個屬性：**referenceName** 和 **type**。 referenceName 屬性指定參考管線的名稱。 type 屬性必須設為 PipelineReference。 | PipelineReference | 是
 參數 | 要傳遞至叫用之管線的參數 | 將參數名稱對應到引數值的 JSON 物件 | 否
-waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 預設值為 false。 | 布林值 | 否
+waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 預設值為 false。 | Boolean | 否
 
 ## <a name="sample"></a>範例
 此案例有兩個管線：
@@ -262,4 +262,4 @@ waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)

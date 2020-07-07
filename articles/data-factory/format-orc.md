@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417720"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory 中的 ORC 格式
@@ -31,7 +31,7 @@ ms.locfileid: "81417720"
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的類型屬性必須設定為**Orc**。 | 是      |
-| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下`location`都有自己的位置類型和支援的屬性。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
+| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
 
 以下是 Azure Blob 儲存體上的 ORC 資料集範例：
 
@@ -68,35 +68,35 @@ ms.locfileid: "81417720"
 
 ### <a name="orc-as-source"></a>ORC 作為來源
 
-複製活動*** \* \* ***的 [來源] 區段支援下列屬性。
+複製活動的 [ *** \* 來源 \* *** ] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的類型屬性必須設定為**OrcSource**。 | 是      |
-| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下`storeSettings`都有自己支援的讀取設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
+| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
 ### <a name="orc-as-sink"></a>ORC 作為接收
 
-複製活動*** \* \* ***的 [接收] 區段支援下列屬性。
+複製活動的 [ *** \* 接收 \* *** ] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的類型屬性必須設定為**OrcSink**。 | 是      |
-| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下`storeSettings`都有它自己的支援寫入設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
+| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下都有它自己的支援寫入設定 `storeSettings` 。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
 ## <a name="using-self-hosted-integration-runtime"></a>使用自我裝載的 Integration Runtime
 
 > [!IMPORTANT]
 > 針對由自我裝載 Integration Runtime （例如在內部部署和雲端資料存放區之間）提供的複製，如果您不是依預設複製 ORC**檔案，則**需要在 IR 機器上安裝**64 位 JRE 8 （JAVA Runtime Environment）或 OpenJDK**和**Microsoft Visual C++ 2010**可轉散發套件。 請參閱下列段落，其中包含更多詳細資料。
 
-針對在自我裝載 IR 上搭配 ORC 檔案序列化/還原序列化來執行的複製，ADF 會找出 JAVA 執行時間*`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* ，方法是先檢查登錄是否有 JRE，如果*`JAVA_HOME`* 找不到，則接著檢查系統變數是否有 OpenJDK。
+針對在自我裝載 IR 上搭配 ORC 檔案序列化/還原序列化來執行的複製，ADF 會找出 JAVA 執行時間，方法是先檢查登錄 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 是否有 JRE，如果找不到，則接著檢查系統變數 *`JAVA_HOME`* 是否有 OpenJDK。
 
 - **若要使用 JRE**：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
 - **若要使用 OpenJDK**：從 IR 版本3.13 開始支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
 - **若要安裝 Visual C++ 2010 可**轉散發套件： Visual C++ 2010 可轉散發套件不會隨自我裝載 IR 安裝一起安裝。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=14632)找到該程式。
 
 > [!TIP]
-> 如果您使用自我裝載的 Integration Runtime 將資料複製到 ORC 格式，並遇到錯誤指出「叫用 java 時發生錯誤，訊息： **OutOfMemoryError： java 堆積空間**」，您可以在裝載自我裝載 IR 的電腦中新增`_JAVA_OPTIONS`環境變數，以調整 JVM 的最小/最大堆積大小以加強這類複本，然後重新執行管線。
+> 如果您使用自我裝載的 Integration Runtime 將資料複製到 ORC 格式，並遇到錯誤指出「叫用 java 時發生錯誤，訊息： **OutOfMemoryError： java 堆積空間**」，您可以 `_JAVA_OPTIONS` 在裝載自我裝載 IR 的電腦中新增環境變數，以調整 JVM 的最小/最大堆積大小以加強這類複本，然後重新執行管線。
 
 ![在自我裝載 IR 上設定 JVM 堆積大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -104,6 +104,6 @@ ms.locfileid: "81417720"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [複製活動總覽](copy-activity-overview.md)
+- [複製活動概觀](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [GetMetadata 活動](control-flow-get-metadata-activity.md)

@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430548"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>使用私人連結保護連結服務 
 
 在本文中，您將瞭解如何使用私人端點來保護 Synapse 中的連結服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂**用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立[免費的 azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**：您可以使用 Azure Data Lake Gen 2 做為*源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md)以取得建立步驟。 請確定儲存體帳戶具有 Synapse Studio IP 篩選來進行存取，且您只允許**選取的網路**存取儲存體帳戶。 [Blade**防火牆] 和 [虛擬網路**] 底下的設定看起來應該如下圖所示。
@@ -49,7 +49,7 @@ ms.locfileid: "81430548"
 1. 選取 [受控私人端點] 底下的 [ **+ 新增**]。
 1. 從清單中選取 [Azure Data Lake Storage Gen2] 磚，然後選取 [**繼續**]。
 1. 輸入您在上面建立的儲存體帳戶名稱。
-1. 選取 [**建立**]
+1. 選取 [建立] 
 1. 在等候幾秒鐘之後，您應該會看到建立的私用連結需要核准。
 
 ## <a name="approval-of-a-private-link"></a>私人連結的核准
@@ -62,7 +62,7 @@ ms.locfileid: "81430548"
 ## <a name="check-the-connection-works"></a>檢查連接是否正常運作
 1. 移至 [**管理**] 索引標籤，然後選取您所建立的連結服務。
 1. 請確定**互動式撰寫**作用中。
-1. 選取 [測試連線]****。 您應該會看到連接成功。
+1. 選取 [測試連線]。 您應該會看到連接成功。
 
 您現在已在 Synapse 與您的連結服務之間建立安全且私人的連接！
 

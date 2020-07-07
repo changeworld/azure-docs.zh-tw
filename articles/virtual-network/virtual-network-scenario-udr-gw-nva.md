@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455357"
 ---
 # <a name="virtual-appliance-scenario"></a>虛擬設備的案例
@@ -150,7 +150,7 @@ AZF2 代表包含下列規則的 Azure 虛擬設備︰
 ## <a name="network-security-groups-nsgs"></a>網路安全性群組 (NSG)
 這個案例中不會使用 NSG。 不過，您可以將 NSG 套用到每個子網路來限制流量的出入。 例如，您可以將下列 NSG 規則套用至外部 FW 子網路。
 
-**傳入**
+**進入**
 
 * 允許所有來自網際網路的 TCP 流量流向子網路任何 VM 的連接埠 80。
 * 拒絕來自網際網路的所有其他流量。

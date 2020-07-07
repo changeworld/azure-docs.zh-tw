@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415675"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>設定新 Service Fabric 叢集的受控識別支援
@@ -36,7 +36,7 @@ ms.locfileid: "81415675"
 ]
 ```
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>錯誤
 
 如果部署因此訊息而失敗，則表示叢集不在所需的 Service Fabric 版本上（支援的最低執行時間為 6.5 CU2）：
 

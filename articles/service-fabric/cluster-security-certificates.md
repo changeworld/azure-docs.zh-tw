@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429664"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X.509 Service Fabric 叢集中以憑證為基礎的驗證
@@ -106,8 +106,8 @@ Service Fabric 叢集的安全性設定會描述下列層面：
 ```
 宣告會分別參考伺服器和叢集身分識別;請注意，以 CN 為基礎的宣告在叢集資訊清單中有自己的區段，與標準的「安全性」不同。 在這兩個宣告中，「名稱」代表憑證的辨別主體一般名稱，而「值」欄位則代表預期的簽發者，如下所示：
 
-- 在第一個案例中，宣告表示伺服器憑證之辨別主旨的一般名稱元素應該與字串 "servicefabric" 相符，這會是。空白的 [值] 欄位表示在驗證伺服器憑證的節點/電腦上，憑證鏈的根目錄是受信任的。在 Windows 上，這表示憑證可以連結到安裝在「信任的根 CA」存放區中的任何憑證;
-- 在第二個案例中，如果憑證的一般名稱符合字串 "servicefabric"，*且*憑證的直接發行者指紋符合 [值] 欄位中以逗號分隔的其中一個專案，則宣告會指出憑證的展示者會被視為叢集中的對等節點。 （此規則類型的堆疊稱為「具有簽發者釘選的一般名稱」）。
+- 在第一個案例中，宣告會指出伺服器憑證之辨別主旨的一般名稱元素應符合字串 "server.demo.system. servicefabric. azure-int";空白的 [值] 欄位表示在驗證伺服器憑證的節點/電腦上，憑證鏈的根目錄是受信任的。在 Windows 上，這表示憑證可以連結到安裝在「信任的根 CA」存放區中的任何憑證;
+- 在第二個案例中，如果憑證的一般名稱符合 "cluster.demo.system. servicefabric" 字串，*且*憑證的直接發行者指紋符合 [值] 欄位中的其中一個逗號分隔專案，則宣告會指出憑證的展示者會被視為叢集中的對等節點。 （此規則類型的堆疊稱為「具有簽發者釘選的一般名稱」）。
 
 不論是哪一種情況，都會建立憑證的鏈，而且預期不會發生錯誤;也就是說，撤銷錯誤、部分鏈或時間-不正確信任錯誤會被視為嚴重的，而且憑證驗證會失敗。 釘選簽發者會導致將「不受信任的根」狀態視為非嚴重錯誤;儘管有外觀，這是更嚴格的驗證形式，因為它可讓叢集擁有者將已授權/接受的簽發者限制為自己的 PKI。
 
@@ -156,7 +156,7 @@ Service Fabric 叢集的安全性設定會描述下列層面：
     </NodeType>
   </NodeTypes>
 ```
-' ClusterCertificate ' 元素會示範完整的架構，包括選擇性參數（' X509FindValueSecondary '）或具有適當預設值的（' X509StoreName '）;其他宣告則顯示縮寫格式。 上述叢集憑證宣告指出類型 ' nt1vm ' 之節點的安全性設定已使用憑證 ' cc71 ' 進行初始化。1984 ' 作為主要，而 ' 49e2.。19d6 ' 憑證作為次要複本;這兩個憑證都應該在 LocalMachine\'my ' 憑證存放區（或 Linux 對等路徑， *var/lib/sfcerts*）中找到。
+' ClusterCertificate ' 元素會示範完整的架構，包括選擇性參數（' X509FindValueSecondary '）或具有適當預設值的（' X509StoreName '）;其他宣告則顯示縮寫格式。 上述叢集憑證宣告指出類型 ' nt1vm ' 之節點的安全性設定已使用憑證 ' cc71 ' 進行初始化。1984 ' 作為主要，而 ' 49e2.。19d6 ' 憑證作為次要複本;這兩個憑證都應該在 LocalMachine \' my ' 憑證存放區（或 Linux 對等路徑， *var/lib/sfcerts*）中找到。
 
 #### <a name="common-name-based-certificate-presentation-declarations"></a>以名稱為基礎的一般憑證呈現宣告
 節點類型憑證也可以依主體一般名稱宣告，如下所示：
@@ -210,7 +210,7 @@ Service Fabric 叢集的安全性設定會描述下列層面：
   * AcceptExpiredPinnedClusterCertificate-在以指紋為基礎的憑證驗證一節中討論過;允許接受已過期的自我簽署叢集憑證。 
   * CertificateExpirySafetyMargin-間隔（以分鐘為單位），在憑證的 NotAfter 時間戳記之前，以及在這段期間內，憑證會被視為到期的風險。 Service Fabric 監視叢集憑證，並定期發出健全狀況報告的剩餘可用性。 在「安全」間隔內，這些健康情況報告會提高為「警告」狀態。 預設值是 30 天。
   * CertificateHealthReportingInterval-控制與叢集憑證的剩餘時間有效性有關的健康情況報告頻率。 每個間隔只會發出一次報表。 此值以秒為單位表示，預設值為8小時。
-  * EnforcePrevalidationOnSecurityChanges-布林值，控制偵測安全性設定的變更時，叢集升級的行為。 如果設定為 ' true '，叢集升級會嘗試確保至少其中一個符合任何展示規則的憑證可以通過對應的驗證規則。 預先驗證會先執行，然後才會將新的設定套用至任何節點，但只會在起始升級時裝載叢集管理員服務主要複本的節點上執行。 在撰寫本文時，此設定的預設值為 ' false '，且會針對新的 Azure Service Fabric 叢集設定為 ' true '，且執行時間版本從7.1 開始。
+  * EnforcePrevalidationOnSecurityChanges-布林值，控制偵測安全性設定的變更時，叢集升級的行為。 如果設定為 'true'，叢集升級會嘗試確保至少其中一個符合任何展示規則的憑證可以通過對應的驗證規則。 預先驗證會先執行，然後才會將新的設定套用至任何節點，但只會在起始升級時裝載叢集管理員服務主要複本的節點上執行。 在撰寫本文時，此設定的預設值為 ' false '，且會針對新的 Azure Service Fabric 叢集設定為 ' true '，且執行時間版本從7.1 開始。
  
 ### <a name="end-to-end-scenario-examples"></a>端對端案例（範例）
 我們探討了簡報規則、驗證規則和調整旗標，但這兩者如何共同運作？ 在本節中，我們將逐步解說兩個端對端範例，示範如何利用安全性設定來進行安全的叢集升級。 請注意，這不是 Service Fabric 的適當憑證管理的完整長篇大論，請參閱該主題的相關文章。

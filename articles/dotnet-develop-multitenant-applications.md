@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81481842"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租用戶應用程式
@@ -46,7 +46,7 @@ ms.locfileid: "81481842"
 
 Azure 有多項功能可讓您處理在設計多租用戶系統時遇到的重大問題。
 
-**實施**
+**隔離**
 
 * 依主機標頭區隔網站租使用者（不論是否有 TLS 通訊）
 * 依查詢參數區隔網站租用戶
@@ -54,7 +54,7 @@ Azure 有多項功能可讓您處理在設計多租用戶系統時遇到的重�
   * 通常會在應用程式後端處理資料的背景工作角色。
   * 通常作為應用程式前端的 Web 角色。
 
-**儲存體**
+**Storage**
 
 資料管理（例如 Azure SQL Database 或 Azure 儲存體服務，例如表格服務，可提供儲存大量非結構化資料和 Blob 服務的服務，以提供儲存大量非結構化文字或二進位資料（例如影片、音訊和影像）的服務。
 

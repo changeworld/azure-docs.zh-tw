@@ -4,10 +4,10 @@ description: 瞭解以代理程式為基礎的 VMWare 遷移的 Azure Migrate �
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535208"
 ---
 # <a name="replication-appliance"></a>複寫設備
@@ -15,7 +15,7 @@ ms.locfileid: "81535208"
 本文說明使用以代理程式為基礎的遷移，將 VMware Vm、實體機器和私人/公用雲端 Vm 遷移至 Azure 時， [Azure Migrate：伺服器遷移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具所使用的複寫設備。 
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 當您設定以代理程式為基礎的 VMware Vm 或實體伺服器的遷移時，會部署複寫應用裝置。 它會部署為單一內部部署機器，以作為 VMware VM 或實體伺服器。 它會執行：
 
@@ -26,7 +26,7 @@ ms.locfileid: "81535208"
 
 ## <a name="appliance-deployment"></a>設備部署
 
-**用途** | **詳細資料**
+**用於** | **詳細資料**
 --- |  ---
 **以 VMware VM 代理程式為基礎的遷移** | 您可以從 Azure Migrate 中樞下載 OVA 範本，並匯入至 vCenter Server 以建立設備 VM。
 **以實體機器代理程式為基礎的遷移** | 如果您沒有 VMware 基礎結構，或如果您無法使用 OVA 範本建立 VMware VM，請從 Azure Migrate 中樞下載軟體安裝程式，然後執行它來設定設備機器。
@@ -51,7 +51,7 @@ RAM | 16 GB
 可用磁碟空間 (保留磁碟) | 600 GB
 **軟體設定** |
 作業系統 | Windows Server 2016 或 Windows Server 2012 R2
-授權 | 設備隨附 Windows Server 2016 評估授權，其有效期為180天。<br/><br/> 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
+授權 | 設備隨附 Windows Server 2016 評估授權，其有效期為180天。<br/><br/> 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
 作業系統地區設定 | 英文 (en-us)
 TLS | 應啟用 TLS 1.2。
 .NET Framework | 應該在電腦上安裝 .NET Framework 4.6 或更新版本（啟用強式密碼編譯）。
@@ -88,7 +88,7 @@ MySQL 必須安裝在複寫設備機器上。 您可以使用其中一種方法�
 https:\//management.azure.com | 用於複寫管理作業和協調
 *.services.visualstudio.com | 用於遙測目的 (此為選擇性項目)
 time.windows.com | 用於檢查系統時間與通用時間之間的時間同步處理。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs：\//login.live.com <br/> HTTPs：\//graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs：\//www.live.com <br/> HTTPs：\//www.microsoft.com  | 設備安裝程式需要存取這些 Url。 其可供 Azure Active Directory 用於管理存取控制和身分識別
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs： \/ /login.live.com <br/> HTTPs： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs： \/ /www.live.com <br/> HTTPs： \/ /www.microsoft.com  | 設備安裝程式需要存取這些 Url。 其可供 Azure Active Directory 用於管理存取控制和身分識別
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 以完成 MySQL 下載。 在幾個區域中，下載可能會重新導向至 CDN URL。 請確定如果有需要，也允許 CDN URL。
 
 
@@ -105,12 +105,12 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 https:\//management.usgovcloudapi.net | 用於複寫管理作業和協調
 *.services.visualstudio.com | 用於遙測目的 (此為選擇性項目)
 time.nist.gov | 用於檢查系統時間與通用時間之間的時間同步處理。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs：\//login.live.com <br/> HTTPs：\//graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs：\//www.live.com <br/> HTTPs：\//www.microsoft.com  | 具有 OVA 的設備設定需要存取這些 Url。 它們用於 Azure Active Directory 的存取控制和身分識別管理。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs： \/ /login.live.com <br/> HTTPs： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs： \/ /www.live.com <br/> HTTPs： \/ /www.microsoft.com  | 具有 OVA 的設備設定需要存取這些 Url。 它們用於 Azure Active Directory 的存取控制和身分識別管理。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 以完成 MySQL 下載。 在幾個區域中，下載可能會重新導向至 CDN URL。 請確定如果有需要，也允許 CDN URL。
 
-## <a name="port-access"></a>埠存取
+## <a name="port-access"></a>連接埠存取
 
-**裝置** | **建立**
+**裝置** | **[連接]**
 --- | ---
 VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署複寫設備（設定伺服器）進行通訊，以進行複寫管理。<br/><br/> VM 會透過輸入連接埠 HTTPS 9443 將複寫資料傳送至處理伺服器 (在設定伺服器電腦上執行)。 您可以修改此連接埠。
 複寫設備 | 複寫設備會透過埠 HTTPS 443 輸出來協調與 Azure 的複寫。

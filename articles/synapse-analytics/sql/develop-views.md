@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428650"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>使用 Synapse SQL 的 t-sql views
@@ -79,7 +79,7 @@ Synapse SQL 中的 Views 只會儲存為中繼資料。 因此，無法使用下
 
 ## <a name="next-steps"></a>後續步驟
 
-如需更多開發秘訣，請參閱[SYNAPSE SQL 開發總覽](develop-overview.md)。
+如需更多開發秘訣，請參閱 [Synapse SQL 開發概觀](develop-overview.md)。
 
 
 

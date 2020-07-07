@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417873"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
@@ -59,17 +59,17 @@ Webhook 活動可以透過您的自訂程式碼來控制管線的執行。 使�
 **type** | 必須設定為 "WebHook"。 | String | 是 |
 **方法** | 目標端點的 REST API 方法。 | 字串。 支援的類型為 "POST"。 | 是 |
 **url** | 目標端點和路徑。 | 字串或具有字串之**resultType**值的運算式。 | 是 |
-**標題** | 傳送至要求的標頭。 以下範例會設定要求的語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字串或具有字串之**resultType**值的運算式。 | 是。 需要`Content-Type`標頭`"headers":{ "Content-Type":"application/json"}` ，例如。 |
+**標題** | 傳送至要求的標頭。 以下範例會設定要求的語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` 。 | 字串或具有字串之**resultType**值的運算式。 | 是。 `Content-Type`需要標頭 `"headers":{ "Content-Type":"application/json"}` ，例如。 |
 **body** | 代表傳送至端點的承載。 | 有效的 JSON，**或值為 JSON 的運算式**。 如需要求裝載的架構，請參閱[要求裝載架構](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)。 | 是 |
 **authentication** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或具有字串之**resultType**值的運算式。 | 否 |
-**timeout** | 活動等候**callBackUri**指定之回呼的時間長度。 預設值為10分鐘（"00:10:00"）。 值具有 TimeSpan 格式*d*。*hh*：*mm*：*ss*。 | 字串 | 否 |
-**回撥時報告狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | 布林值 | 否 |
+**timeout** | 活動等候**callBackUri**指定之回呼的時間長度。 預設值為10分鐘（"00:10:00"）。 值具有 TimeSpan 格式*d*。*hh*：*mm*：*ss*。 | String | 否 |
+**回撥時報告狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | Boolean | 否 |
 
 ## <a name="authentication"></a>驗證
 
 Webhook 活動支援下列驗證類型。
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
 如果不需要驗證，請不要包含**驗證**屬性。
 
@@ -149,5 +149,5 @@ Data Factory 會在傳送至 URL 端點的主體中傳遞額外的屬性**callBa
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)
 - [Until 活動](control-flow-until-activity.md)

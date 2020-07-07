@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457972"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
@@ -41,7 +41,7 @@ ms.locfileid: "81457972"
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
 
-1. 在 Key Vault 中，選取 [**存取原則** > ] [**新增存取原則**]。
+1. 在 Key Vault 中，選取 [**存取原則**] [  >  **新增存取原則**]。
 
    ![已反白顯示存取原則和新增存取原則的 Key Vault 螢幕擷取畫面](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81457972"
 
    ![存取原則總覽](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 選取 [儲存]  。
+3. 選取 [儲存]。
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -61,15 +61,15 @@ ms.locfileid: "81457972"
 
    ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示資料加密選項](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 選取 [儲存]  。
+3. 選取 [儲存]。
 
 4. 若要確保所有檔案（包括暫存檔案）都已完全加密，請重新開機伺服器。
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>針對還原或複本伺服器使用資料加密
 
-使用儲存在 Key Vault 中的客戶管理金鑰加密適用於 PostgreSQL 的 Azure 資料庫單一伺服器之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
+在「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
 
-1. 在您的伺服器上，選取 **[總覽] [** > **還原**]。
+1. 在您的伺服器上，選取 **[總覽] [**  >  **還原**]。
 
    ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示總覽和還原](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "81457972"
 
    ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，反白顯示狀態為無法存取](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. 若要讓伺服器可供存取，請重新驗證已還原伺服器上的金鑰。 選取 [**資料加密** > 重新**驗證金鑰**]。
+3. 若要讓伺服器可供存取，請重新驗證已還原伺服器上的金鑰。 選取 [**資料加密**重新  >  **驗證金鑰**]。
 
    > [!NOTE]
    > 第一次重新驗證的嘗試將會失敗，因為必須將金鑰保存庫的存取權提供給新伺服器的服務主體。 若要產生服務主體，請選取 [重新**驗證金鑰**]，這將會顯示錯誤，但會產生服務主體。 之後，請參閱本文稍早的[步驟](#set-the-right-permissions-for-key-operations)。

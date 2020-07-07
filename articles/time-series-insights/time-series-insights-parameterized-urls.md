@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417003"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>使用參數化 URL 共用自訂檢視
@@ -29,7 +29,7 @@ ms.locfileid: "81417003"
 
 ## <a name="environment-id"></a>環境識別碼
 
-`environmentId=<guid>` 參數可指定目標環境識別碼。 它是資料存取 FQDN 的元件，您可以在 [環境] 的右上角 [Azure 入口網站] 中找到它。 它是在之前`env.timeseries.azure.com`的所有專案。
+`environmentId=<guid>` 參數可指定目標環境識別碼。 它是資料存取 FQDN 的元件，您可以在 [環境] 的右上角 [Azure 入口網站] 中找到它。 它是在之前的所有專案 `env.timeseries.azure.com` 。
 
 範例環境識別碼參數為 `?environmentId=10000000-0000-0000-0000-100000000108`。
 
@@ -49,7 +49,7 @@ ms.locfileid: "81417003"
 
 ### <a name="relative-time-values"></a>相對時間值
 
-針對相對時間值，請使用`relativeMillis=<value>`，其中*value 的值*是從 API 收到的最近時間戳記中的 JavaScript 毫秒。
+針對相對時間值，請使用 `relativeMillis=<value>` ，其中*value 的值*是從 API 收到的最近時間戳記中的 JavaScript 毫秒。
 
 例如，`&relativeMillis=3600000` 可顯示最近 60 分鐘的資料。
 
@@ -77,19 +77,19 @@ ms.locfileid: "81417003"
 | **useSum** | `true` | 選擇性參數，指定針對量值使用 sum。 |
 
 > [!NOTE]
-> 如果`Events`是選取的**useSum**量值，則預設會選取 [計數]。  
-> 如果`Events`未選取，則預設會選取 [平均]。 |
+> 如果 `Events` 是選取的**useSum**量值，則預設會選取 [計數]。  
+> 如果 `Events` 未選取，則預設會選取 [平均]。 |
 
-* 索引`multiChartStack=<true/false>`鍵/值組會啟用圖表中的堆疊。
-* 索引`multiChartSameScale=<true/false>`鍵/值組可讓您在選擇性參數內的不同詞彙之間進行相同的 Y 軸縮放比例。  
-* 可`timeBucketUnit=<Unit>&timeBucketSize=<integer>`讓您調整間隔滑杆，以提供更精細或更平滑的圖表匯總視圖。  
+* 索引 `multiChartStack=<true/false>` 鍵/值組會啟用圖表中的堆疊。
+* 索引 `multiChartSameScale=<true/false>` 鍵/值組可讓您在選擇性參數內的不同詞彙之間進行相同的 Y 軸縮放比例。  
+* 可 `timeBucketUnit=<Unit>&timeBucketSize=<integer>` 讓您調整間隔滑杆，以提供更精細或更平滑的圖表匯總視圖。  
 * `timezoneOffset=<integer>`參數可讓您設定要在中視為 UTC 位移的圖表時區。
 
 | 配對（s） | 描述 |
 | --- | --- |
-| `multiChartStack=false` | `true`預設為啟用，因此傳遞`false`至堆疊。 |
-| `multiChartStack=false&multiChartSameScale=true` | 必須啟用堆疊，才能在不同時段使用相同的 Y 軸刻度。  `false`預設為，因此傳遞`true`會啟用這項功能。 |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 單位 = `days`、 `hours`、 `minutes`、 `seconds`、 `milliseconds`。  單位一律大寫。 </br> 藉由傳遞所需的**timeBucketSize**整數來定義單位數。  |
+| `multiChartStack=false` | `true`預設為啟用，因此傳遞 `false` 至堆疊。 |
+| `multiChartStack=false&multiChartSameScale=true` | 必須啟用堆疊，才能在不同時段使用相同的 Y 軸刻度。  預設為 `false` ，因此傳遞會 `true` 啟用這項功能。 |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 單位 = `days` 、 `hours` 、 `minutes` 、 `seconds` 、 `milliseconds` 。  單位一律大寫。 </br> 藉由傳遞所需的**timeBucketSize**整數來定義單位數。  |
 | `timezoneOffset=-<integer>` | 整數一律以毫秒為單位。 |
 
 > [!NOTE]

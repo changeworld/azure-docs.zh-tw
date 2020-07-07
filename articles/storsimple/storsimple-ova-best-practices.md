@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460642"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array 的最佳作法
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -121,7 +121,7 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 確定虛擬陣列位於它自己的 Active Directory 組織單位 (OU) 中。
 * 確定虛擬陣列沒有套用群組原則物件 (GPO)。 您可以禁止繼承，以確保虛擬陣列 (子節點) 不會自動繼承父節點的任何 GPO。 如需詳細資訊，請移至 [禁止繼承](https://technet.microsoft.com/library/cc731076.aspx)。
 
-### <a name="networking"></a>網路功能
+### <a name="networking"></a>網路
 虛擬陣列的網路組態是透過本機 Web UI 來設定。 虛擬網路介面則是透過虛擬陣列佈建所在的 Hypervisor 來啟用。 使用 [網路設定](storsimple-virtual-array-deploy3-fs-setup.md) 頁面可設定虛擬網路介面的 IP 位址、子網路和閘道。  您也可以為裝置設定主要和次要 DNS 伺服器、時間設定和選用的 Proxy 設定。 大部分網路組態都是一次性設定。 在部署虛擬陣列之前，請檢閱 [StorSimple 網路需求](storsimple-ova-system-requirements.md#networking-requirements) 。
 
 在部署虛擬陣列時，建議您遵循下列最佳作法︰
@@ -287,6 +287,6 @@ StorSimple Virtual Array 可以自動將資料從本機層提升到 Microsoft Az
 * 從負載平衡的觀點來看，如果部署多個虛擬陣列，建議您將這些陣列分散到不同的 Hypervisor 主機。
 * 分散式檔案系統命名空間中可以部署多個虛擬陣列 (設定為檔案伺服器或 iSCSI 伺服器時)。 如需詳細步驟，請移至 [使用混合式雲端儲存體的分散式檔案系統命名空間解決方案部署指南](https://www.microsoft.com/download/details.aspx?id=45507)。 分散式檔案系統複寫目前不建議用於虛擬陣列。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 了解如何透過 StorSimple Manager 服務 [管理 StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md) 。
 

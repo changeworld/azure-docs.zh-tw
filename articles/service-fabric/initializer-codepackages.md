@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430626"
 ---
 # <a name="initializer-codepackages"></a>初始設定式 Codepackage
@@ -52,7 +52,7 @@ ms.locfileid: "81430626"
 >
 > 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-下列 ServiceManifest 是以先前所述的 ServiceManifest 程式碼片段為基礎。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是代表容器的 codepackage。 啟用時，會先執行*InitCodePackage0* 。 它會將訊息記錄到檔案並結束。 接下來，會執行*InitCodePackage1* ，這也會將訊息記錄到檔案並結束。 最後， *WorkloadCodePackage*會開始執行。 它也會將訊息記錄到檔案中，將檔案的內容輸出到**stdout** ，然後永遠進行 ping。
+下列 ServiceManifest.xml 是以先前所述的 ServiceManifest 程式碼片段為基礎。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是代表容器的 codepackage。 啟用時，會先執行*InitCodePackage0* 。 它會將訊息記錄到檔案並結束。 接下來，會執行*InitCodePackage1* ，這也會將訊息記錄到檔案並結束。 最後， *WorkloadCodePackage*會開始執行。 它也會將訊息記錄到檔案中，將檔案的內容輸出到**stdout** ，然後永遠進行 ping。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ ms.locfileid: "81430626"
 </ServiceManifest>
 ```
 
-下列 ApplicationManifest 描述以上述的 ServiceManifest 為基礎的應用程式。 請注意，它會為所有容器指定相同的**磁片**區掛接，亦即**C:\WorkspaceOnHost**會裝載在所有三個容器的**C:\WorkspaceOnContainer**上。 最後的結果是所有容器都會依照啟動的順序寫入相同的記錄檔。
+下列 ApplicationManifest.xml 會根據上面討論的 ServiceManifest.xml 來描述應用程式。 請注意，它會為所有容器指定相同的**磁片**區掛接，亦即**C:\WorkspaceOnHost**會裝載在所有三個容器的**C:\WorkspaceOnContainer**上。 最後的結果是所有容器都會依照啟動的順序寫入相同的記錄檔。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ ms.locfileid: "81430626"
   </DefaultServices>
 </ApplicationManifest>
 ```
-成功啟用 ServicePackage 之後， **C:\WorkspaceOnHost\log.txt**的內容應如下所示。
+成功啟用 ServicePackage 之後， **C:\WorkspaceOnHost\log.txt**的內容應該如下所示。
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt

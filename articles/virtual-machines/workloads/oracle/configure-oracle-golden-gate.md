@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683724"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上實作 Oracle Golden Gate 
@@ -416,7 +416,7 @@ SQL> EXIT;
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 啟動 PuTTY。 在 [**類別目錄**] 窗格**中，選取** > [連線**SSH** > **驗證**]。在 [**驗證的私密金鑰**檔] 方塊中，流覽至您稍早產生的金鑰。
+6. 啟動 PuTTY。 在 [**類別目錄**] 窗格中 **，選取 [** 連線  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔] 方塊中，流覽至您稍早產生的金鑰。
 
    ![[設定私密金鑰] 頁面上的螢幕擷取畫面](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -439,11 +439,11 @@ SQL> EXIT;
    $ ./runInstaller
    ```
 
-2. 選取 'Oracle GoldenGate for Oracle Database 12c'。 然後選取 [下一步]**** 以繼續操作。
+2. 選取 'Oracle GoldenGate for Oracle Database 12c'。 然後選取 **[下一步]** 以繼續。
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步]  以繼續進行操作。
+3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續進行操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_02.png)
 
