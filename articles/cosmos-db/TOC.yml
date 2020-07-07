@@ -1005,7 +1005,7 @@
               href: performance-tips-async-java.md
             - name: 同步處理 Java SDK v2
               href: performance-tips-java.md
-            - name: 非同步 Java SDK v2
+            - name: 疑難排解 - 非同步 Java SDK v2
               href: troubleshoot-java-async-sdk.md
         - name: 效能測試 - 範例應用程式
           href: performance-testing.md

@@ -17,6 +17,9 @@
     - name: 執行您的第一個查詢 - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: ./first-query-powershell.md
+    - name: 執行您的第一個查詢 - .NET
+      displayName: 'core, auth, dotnet'
+      href: ./first-query-dotnet.md
     - name: 執行您的第一個查詢 - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
@@ -26,6 +29,9 @@
     - name: 執行您的第一個查詢 - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 執行您的第一個查詢 - REST
+      displayName: 'armclient, postman'
+      href: ./first-query-rest-api.md
     - name: 建立共用查詢 - Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md

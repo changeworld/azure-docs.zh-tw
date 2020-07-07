@@ -230,6 +230,8 @@
               href: sql/data-loading-best-practices.md
             - name: 資料行存放區壓縮
               href: sql/data-load-columnstore-compression.md
+            - name: 資料載入概觀
+              href: sql/load-data-overview.md
         - name: 部署
           items:
             - name: 概觀
@@ -362,8 +364,10 @@
       items:
         - name: 管線執行
           href: monitoring/how-to-monitor-pipeline-runs.md
-        - name: Spark 應用程式
+        - name: Apache Spark 應用程式
           href: monitoring/how-to-monitor-spark-applications.md
+        - name: Apache Spark 應用程式詳細資料
+          href: monitoring/apache-spark-applications.md
         - name: Synapse SQL
           items:
             - name: 監視 Gen2 快取

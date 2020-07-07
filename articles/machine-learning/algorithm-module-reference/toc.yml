@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: 隱含狄利克雷分佈
       href: latent-dirichlet-allocation.md
+    - name: 計分 Vowpal Wabbit 模型
+      href: score-vowpal-wabbit-model.md
+    - name: 定型 Vowpal Wabbit 模型
+      href: train-vowpal-wabbit-model.md
 - name: 電腦視覺
   items:
     - name: 套用映像轉換

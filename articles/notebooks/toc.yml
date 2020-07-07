@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: 使用自訂環境
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: 匯出專案
+      href: quickstart-export-jupyter-notebook-project.md
 - name: 教學課程
   items:
     - name: 建立及執行筆記本

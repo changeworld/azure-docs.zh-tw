@@ -58,6 +58,8 @@
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 大量還原使用者
           href: users-bulk-restore.md
+        - name: 撤銷使用者的存取權
+          href: users-revoke-access.md
         - name: 關閉非受控目錄中的帳戶
           href: users-close-account.md
         - name: 新增 B2B 使用者

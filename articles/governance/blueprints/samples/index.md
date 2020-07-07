@@ -1,14 +1,13 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 0ed5af98644f116622aa44a2503161ce2fd6225b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729994"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832316"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -23,6 +22,7 @@ ms.locfileid: "84729994"
 | [加拿大聯邦 PBMM](./canada-federal-pbmm/index.md) | 提供符合加拿大聯邦受保護分類 B、中度完整性、中度可用性之保護機制 (PBMM)。 |
 | [CIS Microsoft Azure 基礎基準測試](./cis-azure-1-1-0.md)| 提供一組原則，以協助您遵循 CIS Microsoft Azure 基礎的基準測試建議。 |
 | [DoD 影響等級 4](./dod-impact-level-4/index.md) | 提供一組原則，以協助符合 DoD 影響等級 4 的規範。 |
+| [DoD 影響等級 5](./dod-impact-level-5/index.md) | 提供一組原則，以協助符合 DoD 影響等級 5 的規範。 |
 | [FedRAMP 適中等級](./fedramp-m/index.md) | 提供一組原則，以協助符合 FedRAMP 適中等級的規範。 |
 | [FedRAMP 高等級](./fedramp-h/index.md) | 提供一組原則，以協助符合 FedRAMP 高等級的規範。 |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | 提供一組原則，以協助符合 HIPAA HITRUST。 |
@@ -32,6 +32,7 @@ ms.locfileid: "84729994"
 | [ISO 27001 App Service 環境/SQL Database 工作負載](./iso27001-ase-sql-workload/index.md) | 提供 [ISO 27001 共用服務](./iso27001-shared/index.md)藍圖範例的其他基礎結構。 |
 | [媒體](./media/index.md) | 提供一組原則，以協助符合 Media MPAA。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | 提供成立條件以符合 NIST SP 800-53 R4。 |
+| [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | 提供成立條件以符合 NIST SP 800-171 R2。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一組原則以協助符合 PCI-DSS v3.2.1 規範。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 協助達成 SWIFT CSP-CSCF v2020 中的合規性。 |
 | [UK OFFICIAL 與 UK NHS Governance](./ukofficial/index.md) | 提供一組符合規範的基礎結構模式和原則防護措施，可協助您取得 UK OFFICIAL 與 UK NHS 證明。 |

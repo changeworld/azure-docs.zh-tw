@@ -43,8 +43,8 @@
       items:
         - name: 建立 Azure 支援要求
           href: supportability/how-to-create-azure-support-request.md
-        - name: 針對支援要求上傳檔案
-          href: supportability/how-to-use-file-uploader.md
+        - name: 管理 Azure 支援要求
+          href: supportability/how-to-manage-azure-support-request.md
         - name: 要求增加配額
           items:
             - name: 增加計算 vCPU 限制

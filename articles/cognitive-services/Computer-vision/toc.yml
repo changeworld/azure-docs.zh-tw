@@ -49,7 +49,7 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: 擷取文字 (電腦視覺 - 讀取 API)
+        - name: 擷取文字 (讀取 API)
           items:
             - name: C#
               href: QuickStarts/CSharp-hand-text.md
@@ -59,7 +59,7 @@
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
-        - name: 擷取列印的文字 (OCR)
+        - name: 擷取文字 (OCR API)
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
@@ -105,7 +105,7 @@
       href: concept-detecting-color-schemes.md
     - name: 智慧型裁切縮圖
       href: concept-generating-thumbnails.md
-    - name: 文字辨識
+    - name: 光學字元辨識 (OCR)
       href: concept-recognizing-text.md
     - name: 成人內容偵測
       href: concept-detecting-adult-content.md

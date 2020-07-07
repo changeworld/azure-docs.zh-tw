@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: 範例和指引
           items:
+            - name: 查詢範例
+              href: log-query/saved-queries.md
             - name: 記錄查詢範例
               href: log-query/examples.md
             - name: 智慧分析範例
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: 使用應用程式資料的儀表板
               href: learn/tutorial-app-dashboards.md
+            - name: 升級 Log Analytics 儀表板
+              href: log-query/dashboard-upgrade.md
         - name: 將資料傳送到 Grafana
           href: platform/grafana-plugin.md
     - name: 自訂資料收集與分析
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: 版本資訊
+          items:
+            - name: Web 應用程式擴充功能
+              href: app/web-app-extension-release-notes.md
         - name: 資料模型
           items:
             - name: 概觀

@@ -7,10 +7,14 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立服務 - 入口網站
-      href: quickstart-create-data-migration-service-portal.md
-    - name: 在混合模式中建立服務 - 入口網站
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: 建立服務
+      items:
+        - name: 入口網站
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM 範本
+          href: create-dms-resource-manager-template.md
+        - name: 在混合模式中 (入口網站)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: 概念
   items:
     - name: 必要條件

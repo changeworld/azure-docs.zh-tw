@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: 執行命令 (exec)
           href: container-instances-exec.md
+        - name: 執行設定容器 (初始)
+          href: container-instances-init-container.md
         - name: 使用受控識別 (預覽)
           href: container-instances-managed-identity.md
         - name: 使用 GPU 資源 (預覽)

@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: 重新設定具狀態服務
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Reliable Services 生命週期 - C#'
+            - name: Reliable Services 生命週期 - C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services 生命週期 - Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: 裝載模型
           href: service-fabric-hosting-model.md
+        - name: 裝載啟用和停用生命週期進階主題
+          href: service-fabric-hosting-lifecycle.md
         - name: 應用程式安全性
           href: service-fabric-application-and-service-security.md
         - name: 服務狀態
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux 容器應用程式
           href: service-fabric-get-started-containers-linux.md
-        - name: 'Windows 中的 C# Reliable Services 應用程式'
+        - name: Windows 中的 C# Reliable Services 應用程式
           href: service-fabric-reliable-services-quick-start.md
         - name: Linux 中的 Java Reliable Services 應用程式
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'Linux 中的 C# Reliable Services 應用程式'
+        - name: Linux 中的 C# Reliable Services 應用程式
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'Windows 中的 C# Reliable Actors 應用程式'
+        - name: Windows 中的 C# Reliable Actors 應用程式
           href: service-fabric-reliable-actors-get-started.md
         - name: Linux 中的 Java Reliable Actors 應用程式
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: 與 Reliable Services 通訊
                   href: service-fabric-reliable-services-communication.md
-                - name: '服務遠端處理 - C#'
+                - name: 服務遠端處理 - C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: 服務遠端處理 - Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: '安全通訊 - C#'
+                - name: 安全通訊 - C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: 安全通訊 - Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: 開始使用 VS Code
               href: service-fabric-get-started-vs-code.md
-            - name: '使用 VS Code 開發 C# Service Fabric 應用程式'
+            - name: 使用 VS Code 開發 C# Service Fabric 應用程式
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: 使用 VS Code 開發 Java Service Fabric 應用程式
               href: service-fabric-develop-java-applications-with-vs-code.md

@@ -99,6 +99,10 @@
     - name: 使用來賓設定稽核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: 安全性
+      items:
+        - name: Azure 安全性效能評定的安全性基準
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作指南
   items:
     - name: 適用於 VS Code 的Azure 原則擴充功能

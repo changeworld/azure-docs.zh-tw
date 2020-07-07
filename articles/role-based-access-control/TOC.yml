@@ -101,6 +101,8 @@
       href: elevate-access-global-admin.md
     - name: 傳統系統管理員
       href: classic-administrators.md
+    - name: 將訂用帳戶轉移至不同的目錄 (預覽)
+      href: transfer-subscription.md
     - name: 疑難排解
       href: troubleshooting.md
 - name: 參考

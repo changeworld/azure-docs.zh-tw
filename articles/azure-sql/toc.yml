@@ -208,14 +208,14 @@
       items:
         - name: 什麼是 SQL Database？
           href: database/sql-database-paas-overview.md
+        - name: 新功能
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: 單一資料庫
           href: database/single-database-overview.md
         - name: 彈性集區
           href: database/elastic-pool-overview.md
         - name: 邏輯 SQL 伺服器
           href: database/logical-servers.md
-        - name: 版本資訊
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: 服務層
           items:
             - name: 無伺服器
@@ -654,13 +654,13 @@
       items:
         - name: 什麼是 SQL 受控執行個體？
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: 新功能
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: 執行個體集區
           href: managed-instance/instance-pools-overview.md
         - name: 常見問題集
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: 版本資訊
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: 快速入門
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -883,92 +883,99 @@
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: 文件變更
+            - name: 新功能
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: 快速入門
           items:
-            - name: 建立 SQL VM - 入口網站
+            - name: 建立 SQL VM
+              items: null
+            - name: 入口網站
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: 建立 SQL VM - PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM 範本
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
-            - name: 最佳作法
-              items:
-                - name: 效能最佳做法
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: 安全性考量
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: 應用程式模式
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 商務持續性
               items:
-                - name: 高可用性選項
+                - name: 概觀
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: Always On 可用性群組
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: 備份與還原
                   href: virtual-machines/windows/backup-restore.md
-                - name: 適用於 SQL Server 2014 的自動備份
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: 適用於 SQL Server 2016+ 的自動備份
-                  href: virtual-machines/windows/automated-backup.md
+                - name: 備份的 Azure 儲存體
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Always On 可用性群組
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: 容錯移轉叢集執行個體
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: 最佳作法
+              items:
+                - name: 效能
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: 安全性
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: 叢集組態
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: 應用程式模式
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 管理性
               items:
                 - name: 專用主機
                   href: virtual-machines/windows/dedicated-host.md
-                - name: 透過 Azure 入口網站
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: 擴充 SQL 2008 和 R2 的支援
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: 連接到 VM
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: 設定儲存體
+        - name: 操作指南
+          items:
+            - name: 連線到 SQL Server VM
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: 建立 SQL Server VM
+              items:
+                - name: 使用入口網站
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: 使用 Azure PowerShell
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: 管理
+              items:
+                - name: 透過 Azure 入口網站
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: 授權模式
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: 版本
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: 儲存體
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Azure Key Vault 整合
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: 使用 SQL VM RP 進行註冊
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: 單一 VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: 大量註冊多個 VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
                 - name: 將管理工作自動化
                   items:
                     - name: 使用 SQL Server IaaS 代理程式擴充
                       href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                     - name: 自動修補
                       href: virtual-machines/windows/automated-patching.md
-                    - name: 設定 Azure Key Vault 整合
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
-        - name: 操作指南
-          items:
-            - name: 建立 SQL VM
-              items:
-                - name: 使用入口網站
-                  href: virtual-machines/windows/create-sql-vm-portal.md
-                - name: 使用 Azure PowerShell
-                  href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: 使用 SQL VM RP 進行註冊
-              displayName: 'resource provider, registration'
-              items:
-                - name: 單一 VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: 大量註冊多個 VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-            - name: 管理
-              items:
-                - name: 授權模型
-                  displayName: 'ahb, ahub, payg, change, modify, update'
-                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: 版本
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-edition.md
-                - name: 版本
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-version.md
-                - name: 備份和還原的 Azure 儲存體
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: 遷移
               items:
                 - name: SQL Server 資料庫到 VM
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: 虛擬機器到新區域
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: 設定高可用性
+            - name: 業務持續性
               items:
+                - name: 備份與還原
+                  items:
+                    - name: 自動備份 (SQL 2016+)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: 自動備份 (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性群組
                   items:
                     - name: Azure SQL VM CLI
@@ -989,12 +996,30 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: 負載平衡器 - Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: 容錯移轉叢集執行個體
+                - name: 容錯移轉叢集執行個體 (FCI)
                   items:
-                    - name: 使用儲存空間直接存取
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: 使用進階檔案共用
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: 準備 VM 以進行 FCI
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: 透過下列建立 FCI
+                      items:
+                        - name: Azure 共用磁碟 (SQL2019+)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: 儲存空間直接存取 (Win2016+)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: 進階檔案共用 (Win2012+)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: 分散式網路名稱 (DNN)
+                      items:
+                        - name: 建立 FCI 的 DNN
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: 與 DNN 的功能互通性
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                        - name: FCI DNN 與 SQL Server 功能
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: 設定連線能力
+                  items:
+                    - name: 虛擬網路名稱 (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: 參考
           items:
             - name: Azure PowerShell

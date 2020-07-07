@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: 快速入門
   items:
-    - name: 檢視您的企業應用程式
+    - name: 檢視您的應用程式
       href: view-applications-portal.md
-    - name: 從資源庫新增雲端應用程式
+    - name: 新增應用程式
       href: add-application-portal.md
+    - name: 設定應用程式
+      href: add-application-portal-configure.md
+    - name: 設定單一登入
+      href: add-application-portal-setup-sso.md
+    - name: 刪除應用程式
+      href: delete-application-portal.md
 - name: 教學課程
   items:
     - name: 整合式資源庫應用程式 (例如 ServiceNow、Salesforce、Dropbox)

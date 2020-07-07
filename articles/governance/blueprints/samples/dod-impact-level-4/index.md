@@ -1,18 +1,20 @@
 ---
 title: DoD 影響等級 4 藍圖範例概觀
 description: DoD 影響等級 4 範例的概觀。 此藍圖範例可協助客戶評定特定 DoD 影響等級 4 控制項。
-ms.date: 03/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 3b032e1a26c4fb5e97b1c7ab4fff65bc1b046f21
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
-ms.translationtype: HT
+ms.openlocfilehash: 1c06cd738b9a63cb7a3ec14ef48bb8ae7c6dd6cb
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517247"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800387"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響等級 4 藍圖範例的概觀。
 
 美國國防部影響等級 4 (DoD IL4) 藍圖範例提供使用 [Azure 原則](../../../policy/overview.md)的治理防護措施，協助您評定特定的 DoD 影響等級 4 控制項。 此藍圖可協助客戶針對任何必須實作 DoD 影響等級 4 控制項的已部署 Azure 架構，部署一組核心原則。 如需關於哪些 Azure 雲端和服務符合 DoD 影響等級 4 授權的最新資訊，請參閱[符合 FedRAMP 和 DoD CC SRG 稽核範圍的 Azure 服務](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)。
+
+> [!NOTE]
+> Azure Government 提供了此藍圖範例。
 
 ## <a name="control-mapping"></a>控制項對應
 
