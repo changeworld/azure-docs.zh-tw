@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429755"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地儲存 Web 應用程式的祕密應用程式設定
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文說明如何安全地儲存 Azure 應用程式的秘密應用程式組態設定。
 
-傳統上，所有的 web 應用程式設定都是儲存在 Web.config 之類的設定檔中。這種作法會導致將密碼設定（例如雲端認證）簽入到公用原始檔控制系統（例如 GitHub）。 同時，也可能會因為變更原始程式碼和重新設定開發設定所需的額外負荷，而難以遵循安全性最佳作法。
+傳統上，所有的 web 應用程式設定都儲存在設定檔中，例如 Web.config。這種作法會導致將密碼設定（例如雲端認證）簽入到公用原始檔控制系統（例如 GitHub）。 同時，也可能會因為變更原始程式碼和重新設定開發設定所需的額外負荷，而難以遵循安全性最佳作法。
 
 為了確保開發程式安全，會建立工具和架構程式庫，以最少或完全不變更原始程式碼的方式，安全地儲存應用程式秘密設定。
 
@@ -151,7 +151,7 @@ ms.locfileid: "81429755"
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. 在 web.config 中定義 Key Vault 的 configuration builder。將此區段放在*appSettings*區段前面。 如果您的金鑰保存庫是公用 Azure，請將 *vaultName* 取代為金鑰保存庫名稱；如果您使用 Sovereign 雲端，則取代為 URI。
+2. 在 Web.config 中定義 Key Vault 的 configuration builder。將此區段放在*appSettings*區段前面。 如果您的金鑰保存庫是公用 Azure，請將 *vaultName* 取代為金鑰保存庫名稱；如果您使用 Sovereign 雲端，則取代為 URI。
 
     ```xml
     <configSections>

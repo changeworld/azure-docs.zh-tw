@@ -1,6 +1,6 @@
 ---
 title: 快速入門：建立適用于 JAVA 的 CI/CD 管線-Azure DevOps Starter
-description: DevOps Starter 可以讓您輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動應用程式。
+description: DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -14,15 +14,15 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 1afd9361149fbcaaf88a9cc10c62953d703f8204
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232661"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 設定 JAVA 應用程式的 CI/CD 管線
 
-在本快速入門中，您將使用簡化的 Azure DevOps 入門體驗，在 Azure Pipelines 中為您的 JAVA 應用程式設定持續整合（CI）和持續傳遞（CD）管線。 您可以使用 Azure DevOps Starter 來設定開發、部署和監視應用程式所需的所有專案。 
+在本快速入門中，您將使用簡化的 Azure DevOps 入門體驗，在 Azure Pipelines 中為您的 JAVA 應用程式設定持續整合（CI）和持續傳遞（CD）管線。 您可以使用 Azure DevOps 入門版來設定您在開發、部署及監控應用程式時所需的一切。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,21 +31,21 @@ ms.locfileid: "82232661"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Starter 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
+DevOps 入門版會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps 入門版也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。
+1. 在搜尋方塊中，鍵入並選取 **DevOps 入門版**。 按一下 [新增] 以建立新項目。
 
-    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入門版儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>選取應用程式範例和 Azure 服務
 
 1. 選取 Java 應用程式範例。 Java 範例包含數種應用程式架構的選擇。
 
-1. 預設範例架構為 Spring。 保留預設設定，然後選取 [下一步]****。  適用於容器的 Web 應用程式是預設的部署目標。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
+1. 預設範例架構為 Spring。 保留預設設定，然後選取 [下一步]。  適用於容器的 Web 應用程式是預設的部署目標。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
 
-2. 保留預設的服務，然後選取 [下一步]****。
+2. 保留預設的服務，然後選取 [下一步]。
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>設定 Azure DevOps 與 Azure 訂用帳戶 
 
@@ -56,7 +56,7 @@ DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立�
    1. 選取 Azure 訂用帳戶和位置、選擇應用程式名稱，然後選取 [完成]****。  
    幾分鐘後，[DevOps 入門儀表板] 就會顯示在 Azure 入口網站中。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
    
-2. 選取 [瀏覽]**** 以檢視執行中應用程式。
+2. 選取 [瀏覽]以檢視執行中應用程式。
    
    ![在 Azure 入口網站中檢視應用程式儀表板](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
@@ -64,7 +64,7 @@ DevOps Starter 會自動設定 CI 組建和發行觸發程式。  您現在已�
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>認可程式碼變更並執行 CI/CD
 
-DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
+DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
 1. 在 DevOps 入門儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
@@ -75,16 +75,16 @@ DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 1. 選取 [編輯]****，然後進行部分文字的變更。
     例如，變更其中一個 div 標籤的部分文字。
 
-1. 選取 [認可]****，然後儲存您的變更。
+1. 選取 [認可]，然後儲存您的變更。
 
-1. 在您的瀏覽器中，移至 DevOps 入門儀表板。   
+1. 在瀏覽器中，移至 DevOps 入門版儀表板。   
 您現在應該會看到正在進行中的建置。 您剛才所做的變更會透過 CI/CD 管線自動建置及部署。
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 
- 在上一個步驟中，DevOps Starter 已自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉組建和發行管線。
+ 在上一個步驟中，DevOps 入門版已自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉組建和發行管線。
 
-1. 在 DevOps 入門儀表板頂端，選取 [**組建管線**]。 此連結會開啟瀏覽器索引標籤和新專案的建置管線。
+1. 在 DevOps 入門版儀表板頂端選取 [建置管線]。 此連結會開啟瀏覽器索引標籤和新專案的建置管線。
 
 1. 指向 [**狀態**] 欄位，然後選取省略號（...）。此動作會開啟功能表，您可以在其中啟動數個活動，例如將新的組建排入佇列、暫停組建，以及編輯組建管線。
 
@@ -124,7 +124,7 @@ DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要 Azure App Service 和其他相關的資源時，可將其刪除。 使用 DevOps 入門儀表板上的 [**刪除**] 功能。
+當您不再需要 Azure App Service 和其他相關的資源時，可將其刪除。 請使用 DevOps 入門版儀表板的 [刪除] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 

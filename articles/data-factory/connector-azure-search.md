@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418230"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 認知搜尋索引
@@ -52,7 +52,7 @@ ms.locfileid: "81418230"
 > [!IMPORTANT]
 > 將資料從雲端資料存放區複製到搜尋索引時，在 Azure 認知搜尋連結服務中，您需要在 connactVia 中參考明確區域的 Azure Integration Runtime。 將 [區域] 設定為搜尋服務所在的位置。 請參閱 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 以深入了解。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -85,7 +85,7 @@ ms.locfileid: "81418230"
 | type | 資料集的類型屬性必須設定為：**AzureSearchIndex** | 是 |
 | IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | 是 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -110,7 +110,7 @@ ms.locfileid: "81418230"
 
 ### <a name="azure-cognitive-search-as-sink"></a>Azure 認知搜尋作為接收
 
-若要將資料複製到「Azure 認知搜尋」，請將複製活動中的來源類型設定為**AzureSearchIndexSink**。 複製活動的 [**接收**] 區段支援下列屬性：
+若要將資料複製到「Azure 認知搜尋」，請將複製活動中的來源類型設定為**AzureSearchIndexSink**。 複製活動的 **sink** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -133,7 +133,7 @@ AzureSearchSink (藉由使用 AzureSearch SDK) 提供下列兩種更新插入行
 
 Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 1 到 1,000 個動作。 一個動作可指示一份文件來執行上傳/合併作業。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -171,11 +171,11 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 | Azure 認知搜尋資料類型 | Azure 認知搜尋接收中支援 |
 | ---------------------- | ------------------------------ |
-| 字串 | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| 布林值 | Y |
+| Boolean | Y |
 | DataTimeOffset | Y |
 | 字串陣列 | N |
 | GeographyPoint | N |

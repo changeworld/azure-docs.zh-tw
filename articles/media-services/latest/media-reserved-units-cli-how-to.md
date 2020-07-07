@@ -15,10 +15,10 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582280"
 ---
 # <a name="scaling-media-processing"></a>調整媒體處理
@@ -67,11 +67,11 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 系統會根據您帳戶中布建媒體保留單元的分鐘數向您收費。 這會與您的帳戶中是否有任何執行中的作業無關。 如需詳細說明，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。   
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 [分析影片](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [配額和限制](limits-quotas-constraints.md)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

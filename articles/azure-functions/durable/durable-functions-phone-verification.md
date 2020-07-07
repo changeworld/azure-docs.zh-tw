@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335752"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>長期函式中的人為互動 - 電話驗證範例
@@ -45,7 +45,7 @@ ms.locfileid: "80335752"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的， `CurrentUtcDateTime`因為屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的每次重新執行時傳回相同的值。 這個行為非常重要，可確保每次`winner`重複呼叫的結果都相同`Task.WhenAny`。
+> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的 `CurrentUtcDateTime` ，因為屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的每次重新執行時傳回相同的值。 這個行為非常重要，可確保 `winner` 每次重複呼叫的結果都相同 `Task.WhenAny` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,7 @@ ms.locfileid: "80335752"
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的， `currentUtcDateTime`因為屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的每次重新執行時傳回相同的值。 這個行為非常重要，可確保每次`winner`重複呼叫的結果都相同`context.df.Task.any`。
+> 起初可能不明顯，不過這個協調器函式完全具有決定性。 這是決定性的 `currentUtcDateTime` ，因為屬性是用來計算計時器到期時間，而且它會在協調器程式碼中的每次重新執行時傳回相同的值。 這個行為非常重要，可確保 `winner` 每次重複呼叫的結果都相同 `context.df.Task.any` 。
 
 ---
 
@@ -83,7 +83,7 @@ ms.locfileid: "80335752"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> 您將需要安裝`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 封裝，才能執行範例程式碼。
+> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 封裝，才能執行範例程式碼。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -120,7 +120,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 
 協調器函式會接收提供的電話號碼，並且立即傳送 SMS 訊息給該電話號碼，訊息包含隨機產生的 4 位數驗證碼&mdash;，例如 2168**。 此函式接著會在 90 秒的時間內等候回應。
 
-若要使用程式碼回復，您可以在另一個函式內使用[ `RaiseEventAsync` （.net）或`raiseEvent` （JavaScript）](durable-functions-instance-management.md) ，或叫用上述202回應中所參考的`{eventName}` **sendEventUrl** HTTP POST webhook，將取代`SmsChallengeResponse`為事件的名稱：
+若要使用程式碼回復，您可以在另一個函式內使用[ `RaiseEventAsync` （.net）或 `raiseEvent` （JavaScript）](durable-functions-instance-management.md) ，或叫用上述202回應中所參考的**sendEventUrl** HTTP POST webhook，將取代 `{eventName}` 為事件的名稱 `SmsChallengeResponse` ：
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -156,7 +156,7 @@ Content-Length: 145
 
 ## <a name="next-steps"></a>後續步驟
 
-這個範例已示範 Durable Functions 的一些先進功能，特別`WaitForExternalEvent`是和`CreateTimer` api。 您已經看到這些功能如何與 `Task.WaitAny` 結合，以實作可靠的逾時系統，對於與真人的互動通常相當有用。 藉由閱讀一系列深入探討特定主題的文章，您可以深入了解如何使用長期函式。
+這個範例已示範 Durable Functions 的一些先進功能，特別是 `WaitForExternalEvent` 和 `CreateTimer` api。 您已經看到這些功能如何與 `Task.WaitAny` 結合，以實作可靠的逾時系統，對於與真人的互動通常相當有用。 藉由閱讀一系列深入探討特定主題的文章，您可以深入了解如何使用長期函式。
 
 > [!div class="nextstepaction"]
 > [系列中第一篇文章](durable-functions-bindings.md)

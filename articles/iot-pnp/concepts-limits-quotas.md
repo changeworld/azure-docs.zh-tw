@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518177"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT 隨插即用預覽限制、配額和節流
@@ -29,7 +29,7 @@ ms.locfileid: "80518177"
 | 每個裝置可以註冊的 DCMs 數目上限 | 1 ||
 | 介面/DCM 檔案的大小上限 | 512 KB ||
 | 介面名稱的大小上限 | 256個字元 ||
-| 屬性名稱的大小上限  | 64個位元組，深度7個層級（而第一個層級`$iotin`是保留給） | 允許的字元： a-z、a-z、0-9 （不是第一個字元）和底線。 |
+| 屬性名稱的大小上限  | 64個位元組，深度7個層級（而第一個層級是保留給 `$iotin` ） | 允許的字元： a-z、a-z、0-9 （不是第一個字元）和底線。 |
 | 屬性值的大小上限 | 512 個位元組 ||
 | 命令名稱的大小上限 | 100個位元組 ||
 | 裝置對應項大小 | 與[IoT 中樞限制](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)相同 ||

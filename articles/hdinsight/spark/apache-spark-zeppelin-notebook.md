@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195089"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
@@ -22,7 +22,7 @@ HDInsight Spark 叢集包含[Apache Zeppelin](https://zeppelin.apache.org/)筆�
 ## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
-* 您叢集主要儲存體的 URI 配置。 配置`wasb://`適用于 Azure Blob 儲存體、 `abfs://` Azure Data Lake Storage Gen2 或`adl://` Azure Data Lake Storage Gen1。 如果已啟用 Blob 儲存體的安全傳輸，則 URI 會是`wasbs://`。  如需詳細資訊，請參閱[Azure 儲存體中需要安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* 您叢集主要儲存體的 URI 配置。 配置 `wasb://` 適用于 Azure Blob 儲存體、 `abfs://` Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果已啟用 Blob 儲存體的安全傳輸，則 URI 會是 `wasbs://` 。  如需詳細資訊，請參閱[Azure 儲存體中需要安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>啟動 Apache Zeppelin Notebook
 
@@ -33,7 +33,7 @@ HDInsight Spark 叢集包含[Apache Zeppelin](https://zeppelin.apache.org/)筆�
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 建立新的 Notebook。 從標頭窗格中，流覽至 [**筆記本** > ] [**建立新便箋**]。
+2. 建立新的 Notebook。 從標頭窗格中，流覽至 [**筆記本**] [  >  **建立新便箋**]。
 
     ![建立新的 Zeppelin Notebook](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "建立新的 Zeppelin Notebook")
 
@@ -43,7 +43,7 @@ HDInsight Spark 叢集包含[Apache Zeppelin](https://zeppelin.apache.org/)筆�
 
     ![Zeppelin Notebook 狀態](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin Notebook 狀態")
 
-4. 將範例資料載入暫存資料表。 當您在 HDInsight 中建立 Spark 叢集時，會將範例資料`hvac.csv`檔案複製到底下的相關聯儲存體帳戶`\HdiSamples\SensorSampleData\hvac`。
+4. 將範例資料載入暫存資料表。 當您在 HDInsight 中建立 Spark 叢集時，會將範例資料檔案 `hvac.csv` 複製到底下的相關聯儲存體帳戶 `\HdiSamples\SensorSampleData\hvac` 。
 
     將以下程式碼片段貼入新 Notebook 中預設建立的空白段落。
 
@@ -80,7 +80,7 @@ HDInsight Spark 叢集包含[Apache Zeppelin](https://zeppelin.apache.org/)筆�
     > [!NOTE]  
     > 所有 HDInsight 版本的 Zeppelin Notebook 中都不支援 %spark2 解譯器，而 HDInsight 4.0 以後的版本不支援 %sh 解譯器。
 
-5. 您現在可以在`hvac`資料表上執行 Spark SQL 語句。 將以下查詢貼入新段落。 查詢會抓取建築物識別碼。 此外，每個建築物在指定日期的目標和實際溫度之間的差異。 按下 **SHIFT + ENTER**。
+5. 您現在可以在資料表上執行 Spark SQL 語句 `hvac` 。 將以下查詢貼入新段落。 查詢會抓取建築物識別碼。 此外，每個建築物在指定日期的目標和實際溫度之間的差異。 按下 **SHIFT + ENTER**。
 
     ```sql
     %sql
@@ -93,7 +93,7 @@ HDInsight Spark 叢集包含[Apache Zeppelin](https://zeppelin.apache.org/)筆�
 
     ![使用 notebook1 執行 Spark SQL 語句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用 notebook1 執行 Spark SQL 語句")
 
-7. 您也可以在查詢中使用變數來執行 Spark SQL 陳述式。 下一個程式碼片段示範如何在查詢中， `Temp`使用您想要查詢的可能值來定義變數。 當您第一次執行查詢時，下拉式清單會自動填入您指定的變數值。
+7. 您也可以在查詢中使用變數來執行 Spark SQL 陳述式。 下一個程式碼片段示範如何 `Temp` 在查詢中，使用您想要查詢的可能值來定義變數。 當您第一次執行查詢時，下拉式清單會自動填入您指定的變數值。
 
     ```sql
     %sql  
@@ -125,7 +125,7 @@ HDInsight 上 Apache Spark 叢集中的 Zeppelin 筆記本可以使用不包含�
 
     ![變更解譯器設定1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "變更解譯器設定1")
 
-3. 流覽至 [ `livy.spark.jars.packages`索引鍵]，並以格式`group:id:version`設定其值。 因此，如果您想要使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件，您必須將金鑰值設為 `com.databricks:spark-csv_2.10:1.4.0`。
+3. 流覽至 [索引鍵] `livy.spark.jars.packages` ，並以格式設定其值 `group:id:version` 。 因此，如果您想要使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件，您必須將金鑰值設為 `com.databricks:spark-csv_2.10:1.4.0`。
 
     ![變更解譯器 settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "變更解譯器 settings2")
 
@@ -151,20 +151,20 @@ Zeppelin Notebook 會儲存到叢集前端節點。 因此，如果您刪除叢�
 
 此動作會將筆記本以 JSON 檔案的形式儲存在您的下載位置。
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>用於`Shiro`設定企業安全性套件（ESP）叢集中 Zeppelin 解譯器的存取權
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>用於 `Shiro` 設定企業安全性套件（ESP）叢集中 Zeppelin 解譯器的存取權
 
-如先前所`%sh`述，從 HDInsight 4.0 開始不支援解譯器。 此外，由於`%sh`解譯器引進了潛在的安全性問題，例如使用 shell 命令存取 keytabs，因此它也已從 HDINSIGHT 3.6 ESP 叢集移除。 這表示`%sh`在預設情況下，按一下 [**建立新便箋**] 或 [解譯器] UI 時，就無法使用解譯器。
+如先前所述， `%sh` 從 HDInsight 4.0 開始不支援解譯器。 此外，由於 `%sh` 解譯器引進了潛在的安全性問題，例如使用 shell 命令存取 keytabs，因此它也已從 HDInsight 3.6 ESP 叢集移除。 這表示 `%sh` 在預設情況下，按一下 [**建立新便箋**] 或 [解譯器] UI 時，就無法使用解譯器。
 
-具有特殊許可權的網域使用者`Shiro.ini`可以使用檔案來控制解譯器 UI 的存取權。 只有這些使用者可以建立新`%sh`的解譯器，並設定每`%sh`個新解譯器的許可權。 若要使用`shiro.ini`檔案控制存取權，請使用下列步驟：
+具有特殊許可權的網域使用者可以使用檔案 `Shiro.ini` 來控制解譯器 UI 的存取權。 只有這些使用者可以建立新的 `%sh` 解譯器，並設定每個新解譯器的許可權 `%sh` 。 若要使用檔案控制存取權 `shiro.ini` ，請使用下列步驟：
 
-1. 使用現有的網域組名來定義新的角色。 在下列範例中， `adminGroupName`是 AAD 中的特殊許可權使用者群組。 請勿在組名中使用特殊字元或空格。 後面`=`的字元會授與此角色的許可權。 `*`表示群組具有完整許可權。
+1. 使用現有的網域組名來定義新的角色。 在下列範例中， `adminGroupName` 是 AAD 中的特殊許可權使用者群組。 請勿在組名中使用特殊字元或空格。 後面的字元會 `=` 授與此角色的許可權。 `*`表示群組具有完整許可權。
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. 新增新角色以存取 Zeppelin 解譯器。 在下列範例中，中的所有`adminGroupName`使用者都會獲得 Zeppelin 解譯器的存取權，而且可以建立新的解譯器。 您可以將多個角色放在中`roles[]`的括弧之間，並以逗號分隔。 然後，具有必要許可權的使用者可以存取 Zeppelin 解譯器。
+2. 新增新角色以存取 Zeppelin 解譯器。 在下列範例中，中的所有使用者 `adminGroupName` 都會獲得 Zeppelin 解譯器的存取權，而且可以建立新的解譯器。 您可以將多個角色放在中的括弧之間，並以 `roles[]` 逗號分隔。 然後，具有必要許可權的使用者可以存取 Zeppelin 解譯器。
 
     ```
     [urls]
@@ -191,9 +191,9 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 ### <a name="validate-service"></a>驗證服務
 
-若要從 Ambari 驗證服務，請流覽`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`至，其中 CLUSTERNAME 是您的叢集名稱。
+若要從 Ambari 驗證服務，請流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` 其中 CLUSTERNAME 是您的叢集名稱。
 
-若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令`sudo su zeppelin`將使用者切換至 zeppelin。 狀態命令：
+若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令將使用者切換至 zeppelin `sudo su zeppelin` 。 狀態命令：
 
 |Command |描述 |
 |---|---|
@@ -203,20 +203,20 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 ### <a name="log-locations"></a>記錄檔位置
 
-|Service |Path |
+|服務 |路徑 |
 |---|---|
 |zeppelin-伺服器|/usr/hdp/current/zeppelin-server/|
 |伺服器記錄|/var/log/zeppelin|
-|設定解譯器`Shiro`、、網站 .xml、log4j|/usr/hdp/current/zeppelin-server/conf 或/etc/zeppelin/conf|
+|設定解譯器、 `Shiro` 、site.xml、log4j|/usr/hdp/current/zeppelin-server/conf 或/etc/zeppelin/conf|
 |PID 目錄|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>啟用偵錯記錄
 
-1. 導覽至`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` ，其中 CLUSTERNAME 是您的叢集名稱。
+1. 導覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` ，其中 CLUSTERNAME 是您的叢集名稱。
 
-1. 流覽至**CONFIGS** > [**zeppelin-log4j-properties** > ]**log4j_properties_content**。
+1. 流覽至 **[**  >  **zeppelin-log4j-properties**]  >  **log4j_properties_content**。
 
-1. 將`log4j.appender.dailyfile.Threshold = INFO`修改`log4j.appender.dailyfile.Threshold = DEBUG`為。
+1. `log4j.appender.dailyfile.Threshold = INFO`將修改為 `log4j.appender.dailyfile.Threshold = DEBUG` 。
 
 1. 加入 `log4j.logger.org.apache.zeppelin.realm=DEBUG`。
 

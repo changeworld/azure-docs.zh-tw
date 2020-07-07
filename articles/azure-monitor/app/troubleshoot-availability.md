@@ -7,10 +7,10 @@ ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
 ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233953"
 ---
 # <a name="troubleshooting"></a>疑難排解
@@ -85,7 +85,7 @@ ms.locfileid: "82233953"
 
 ### <a name="can-i-call-code-from-my-web-test"></a>可以從我的 Web 測試呼叫程式碼嗎？
 
-否。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
+不會。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>「Web 測試」和「可用性測試」之間有任何差異嗎？

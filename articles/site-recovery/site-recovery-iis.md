@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478281"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>設定多層式 IIS 型 Web 應用程式的災害復原
@@ -26,7 +26,7 @@ ms.locfileid: "80478281"
 
 本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 來保護以 Internet Information Services (IIS) 為基礎的 Web 應用程式。 本文涵蓋將三層式 IIS 型 Web 應用程式複寫至 Azure 的最佳做法、如何進行災害復原演練，以及如何將應用程式容錯移轉至 Azure。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -69,7 +69,7 @@ Azure|NA|是
 
 若要開始將所有 IIS Web 伺服陣列虛擬機器複寫至 Azure，請遵循[在 Site Recovery 中測試容錯移轉到 Azure](site-recovery-test-failover-to-azure.md)中的指引。
 
-如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定** > ] [**目標 IP**]。
+如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定**] [  >  **目標 IP**]。
 
 ![顯示如何在 Site Recovery 計算和網路窗格中設定目標 IP 的螢幕擷取畫面](./media/site-recovery-active-directory/dns-target-ip.png)
 

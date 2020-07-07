@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80436927"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>將內部部署 Apache Hadoop 叢集遷移至 Azure HDInsight
@@ -25,7 +25,7 @@ ms.locfileid: "80436927"
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
-HDInsight 叢集可以使用 Azure 儲存體中的 Blob 容器作為預設檔案系統或其他檔案系統。目前支援將標準層儲存體帳戶用於 HDInsight 叢集。 不支援頂級層。 預設 Blob 容器會儲存叢集特定資訊，例如作業歷程記錄和記錄。不支援共用一個 blob 容器做為多個叢集的預設檔案系統。
+HDInsight 叢集可以使用 Azure 儲存體中的 Blob 容器作為預設檔案系統或其他檔案系統。目前支援將標準層儲存體帳戶用於 HDInsight 叢集。 不支援頂級層。 預設 Blob 容器會儲存叢集特定資訊，例如作業歷程記錄和記錄。不支援多個叢集共用一個 Blob 容器作為預設檔案系統。
 
 建立程序中定義的儲存體帳戶及其各自的金鑰會儲存在叢集節點的 `%HADOOP_HOME%/conf/core-site.xml` 中。 您也可以在 Ambari UI 中，從 HDFS 組態中的 [自訂核心網站] 區段下加以存取。 依預設會為儲存體帳戶金鑰加密，並在金鑰傳至 Hadoop 精靈之前使用自訂解密指令碼將金鑰解密。 包括 Hive、MapReduce、Hadoop 串流和 Pig 在內的各項作業，可夾帶儲存體帳戶的說明和中繼資料。
 
@@ -41,7 +41,7 @@ Azure 儲存體可以進行異地複寫。 雖然異地複寫可提供地理位�
 
 [標準儲存體帳戶的擴充性目標](../../storage/common/scalability-targets-standard-account.md)會列出 Azure 儲存體帳戶目前的限制。 如果應用程式的需求超出單一儲存體帳戶的延展性目標，您可以建置使用多個儲存體帳戶的應用程式，並將資料物件分割到這些儲存體帳戶中。
 
-[Azure 儲存體分析](../../storage/storage-analytics.md) 提供所有儲存體服務的計量，而且可以設定 Azure 入口網站收集要透過圖表視覺化的計量。 您可以建立警示，以在儲存體資源計量達到閾值時獲得通知。
+[Azure 儲存體分析](../../storage/storage-analytics.md)  提供所有儲存體服務的計量，並可設定 Azure 入口網站收集要透過圖表視覺化的計量。 您可以建立警示，以在儲存體資源計量達到閾值時獲得通知。
 
 Azure 儲存體提供[blob 物件](../../storage/blobs/storage-blob-soft-delete.md)的虛刪除，以在應用程式或其他儲存體帳戶使用者意外修改或刪除資料時協助復原。
 
@@ -94,11 +94,11 @@ Azure Data Lake Storage Gen2 是最新的儲存體供應專案。 它統合了�
 
 ADLS Gen 2 以 [Azure Blob 儲存體](../../storage/blobs/storage-blobs-introduction.md)作為建置基礎，可讓您使用檔案系統和物件儲存體範例來處理資料。  [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 的功能 (例如檔案系統語意、檔案層級安全性和級別) 結合了  [Azure Blob 儲存體](../../storage/blobs/storage-blobs-introduction.md)的低成本、分層式儲存體、高可用性/災害復原功能及大型 SDK/工具生態系統。 在 Data Lake Storage Gen2 中，所有物件儲存體的品質都維持不變，另外還增加了經過分析工作負載最佳化的檔案系統介面優點。
 
-Data Lake Storage Gen2 的基本功能是將 [階層式命名空間](../../storage/data-lake-storage/namespace.md) 新增至 Blob 儲存體服務，這會將物件/檔案組織成目錄階層，以進行高效能資料存取。階層式結構可讓重新命名或刪除目錄之類的作業成為目錄中單一不可部分完成的中繼資料作業，而不是列舉及處理共用目錄名稱前置詞的所有物件。
+Data Lake Storage Gen2 的基本功能是將 [階層式命名空間](../../storage/data-lake-storage/namespace.md)新增   至 Blob 儲存體服務，這會將物件/檔案組織成目錄階層，以進行高效能資料存取。階層式結構可讓重新命名或刪除目錄之類的作業成為目錄中單一不可部分完成的中繼資料作業，而不是列舉及處理共用目錄名稱前置詞的所有物件。
 
 以往雲端式分析必須在效能、管理及安全性方面妥協。 Azure Data Lake Storage (ADLS) Gen2 的主要功能如下：
 
-- **Hadoop 相容存取**：Azure Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用  [Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一樣。 新的 [ABFS 驅動程式](../../storage/data-lake-storage/abfs-driver.md) 可在包含在 [Azure HDInsight](../index.yml)中的所有 Apache Hadoop 環境中使用。 此驅動程式可讓您存取儲存在 Data Lake Storage Gen2 中的資料。
+- **Hadoop 相容存取**：Azure Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用  [Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一樣。 新的 [ABFS 驅動程式](../../storage/data-lake-storage/abfs-driver.md)   可在包含在 [Azure HDInsight](../index.yml)中的所有 Apache Hadoop 環境中使用。 此驅動程式可讓您存取儲存在 Data Lake Storage Gen2 中的資料。
 
 - **POSIX 權限的超集合**：Data Lake Gen2 的安全性模型可完全支援 ACL 和 POSIX 權限，以及一些 Data Lake Storage Gen2 特有的額外細微姓。 這些設定可透過系統管理工具或 Hive 和 Spark 這類架構來配置。
 
@@ -109,8 +109,8 @@ Data Lake Storage Gen2 的基本功能是將 [階層式命名空間](../../stor
 - **已最佳化的驅動程式**：Azure Blob Filesystem 驅動程式 (ABFS) 已特別針對巨量資料分析 [完成最佳化](../../storage/data-lake-storage/abfs-driver.md) 。 對應的 REST API 會透過 dfs 端點 dfs.core.windows.net 呈現。
 
 您可以使用下列其中一種格式來存取儲存在 ADLS Gen2 中的資料：
-- `abfs:///`︰存取叢集的預設 Data Lake Storage。
-- `abfs://file_system@account_name.dfs.core.windows.net`：與非預設 Data Lake Storage 進行通訊時使用。
+- `abfs:///`:存取叢集的預設 Data Lake Storage。
+- `abfs://file_system@account_name.dfs.core.windows.net`:與非預設 Data Lake Storage 進行通訊時使用。
 
 如需詳細資訊，請參閱下列文章：
 
@@ -185,7 +185,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 以「讀取 + 列出」權限建立 SAS 權杖時，使用該 SAS 權杖存取 Blob 容器的使用者將無法「寫入和刪除」資料。 使用該 SAS 權杖存取 Blob 容器的使用者若嘗試寫入或刪除作業，將會收到類似於 `"This request is not authorized to perform this operation"` 的訊息。
 
-2. 以 `READ + LIST + WRITE` 權限 (僅限制 `DELETE`) 產生 SAS 權杖時，會先將 `hadoop fs -put` 之類的命令寫入至 `\_COPYING\_` 檔案，然後嘗試將該檔案重新命名。 此 HDFS 作業對應於 WASB 的 `copy+delete`。 由於未`DELETE`提供許可權，因此 "put" 將會失敗。 `\_COPYING\_` 作業是一項 Hadoop 功能，用以提供某種程度的並行存取控制。 目前沒有任何方法可以只限制「刪除」作業，而不會影響「寫入」操作。
+2. 以 `READ + LIST + WRITE` 權限 (僅限制 `DELETE`) 產生 SAS 權杖時，會先將 `hadoop fs -put` 之類的命令寫入至 `\_COPYING\_` 檔案，然後嘗試將該檔案重新命名。 此 HDFS 作業對應於 WASB 的 `copy+delete`。 由於未 `DELETE` 提供許可權，因此 "put" 將會失敗。 `\_COPYING\_` 作業是一項 Hadoop 功能，用以提供某種程度的並行存取控制。 目前沒有任何方法可以只限制「刪除」作業，而不會影響「寫入」操作。
 
 3. 可惜的是，hadoop 認證提供者和解密金鑰提供者（ShellDecryptionKeyProvider）目前無法使用 SAS 權杖，因此目前無法保護它的可見度。
 

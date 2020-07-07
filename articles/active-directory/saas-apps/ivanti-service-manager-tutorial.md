@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45903bfc54f2c685abea0a8e2924274a21e07b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32bccdf538b637b7706824b4cf5499bed63af9dc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157965"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>教學課程：Azure Active Directory 與 Ivanti Service Manager (ISM) 整合
 
@@ -109,11 +109,11 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
     
-    | |
-    |--|
-    | `https://<customer>.saasit.com/` |
-    | `https://<customer>.saasiteu.com/` |
-    | `https://<customer>.saasitau.com/` |
+    ```http
+    https://<customer>.saasit.com/
+    https://<customer>.saasiteu.com/
+    https://<customer>.saasitau.com/
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 

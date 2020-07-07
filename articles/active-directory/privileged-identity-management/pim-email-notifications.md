@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232303"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的電子郵件通知
@@ -31,10 +31,10 @@ Privileged Identity Management （PIM）可讓您知道 Azure Active Directory �
 
 Azure AD 和 Azure 資源角色的 Privileged Identity Management 傳送的電子郵件都具有下列寄件者電子郵件地址：
 
-- 電子郵件地址： **azure-\@noreply microsoft.com**
+- 電子郵件地址： **azure-noreply \@ microsoft.com**
 - 顯示名稱：Microsoft Azure
 
-這些電子郵件的主旨行中包含 **PIM** 前置詞。 範例如下：
+這些電子郵件的主旨行中包含 **PIM** 前置詞。 以下是範例：
 
 - PIM： Alain Charon 已永久指派「備份讀取者」角色
 
@@ -48,7 +48,7 @@ Privileged Identity Management 會在 Azure AD 角色發生下列事件時傳送
 
 收到 Azure AD 角色的這些電子郵件的對象取決於您的角色、事件和通知設定：
 
-| User | 角色啟用正在等待核准 | 角色啟用要求已完成 | RDP 已啟用 |
+| 使用者 | 角色啟用正在等待核准 | 角色啟用要求已完成 | RDP 已啟用 |
 | --- | --- | --- | --- |
 | 特殊權限角色管理員</br>(已啟用/合格) | 是</br>(唯有未指定任何明確核准者時) | 是* | 是 |
 | 安全性系統管理員</br>(已啟用/合格) | 否 | 是* | 是 |

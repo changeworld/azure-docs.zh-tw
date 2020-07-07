@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192411"
 ---
 # <a name="operating-system-upgrade"></a>作業系統升級
@@ -94,9 +94,9 @@ modinfo fnic
 #### <a name="execution-steps"></a>執行步驟
 
 
-*   執行`multipath -ll`命令。
+*   執行 `multipath -ll` 命令。
 *   取得其大小大約是50G 的 LUN 識別碼，或使用命令：`fdisk -l | grep mapper`
-*   以`/etc/default/grub_installdevice`行`/dev/mapper/<LUN ID>`更新檔案。 範例：/dev/mapper/3600a09803830372f483f495242534a56
+*   `/etc/default/grub_installdevice`以行更新檔案 `/dev/mapper/<LUN ID>` 。 範例：/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN 識別碼會因伺服器而異。
 
@@ -115,11 +115,11 @@ lsmod | grep -i edac
 blacklist sb_edac
 blacklist edac_core
 ```
-需要重新開機才能進行變更。 執行`lsmod`命令，並確認輸出中沒有模組存在。
+需要重新開機才能進行變更。 執行 `lsmod` 命令，並確認輸出中沒有模組存在。
 
 
 ### <a name="kernel-parameters"></a>核心參數
-   請確定`transparent_hugepage`已套用、 `numa_balancing`、 `processor.max_cstate` `ignore_ce`和`intel_idle.max_cstate`的正確設定。
+   請確定 `transparent_hugepage` 已套用、、和的正確設定 `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` 。
 
 * intel_idle。 max_cstate = 1
 * 處理器。 max_cstate = 1
@@ -130,7 +130,7 @@ blacklist edac_core
 
 #### <a name="execution-steps"></a>執行步驟
 
-* 將這些參數新增至`GRB_CMDLINE_LINUX`檔案中的行`/etc/default/grub`
+* 將這些參數新增至檔案 `GRB_CMDLINE_LINUX` 中的行`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81533984"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家/地區雲端環境中使用 MSAL
@@ -29,12 +29,12 @@ ms.locfileid: "81533984"
 包含全域雲端，Azure Active Directory （Azure AD）會部署在下列國家/地區雲端中：  
 
 - Azure Government
-- Azure China 21Vianet
-- Azure Germany
+- Azure 中國 21Vianet
+- Azure 德國
 
 本指南示範如何登入公司和學校帳戶、取得存取權杖，以及在[Azure Government 雲端](https://azure.microsoft.com/global-infrastructure/government/)環境中呼叫 Microsoft Graph API。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您符合這些必要條件。
 
@@ -66,7 +66,7 @@ ms.locfileid: "81533984"
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-若要啟用適用于主權雲端的 MSAL 應用程式：
+若要啟用主權雲端的 MSAL.js 應用程式：
 
 ### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
@@ -76,14 +76,14 @@ ms.locfileid: "81533984"
 
 1. 如果您的帳戶可讓您存取多個租使用者，請在右上角選取您的帳戶，然後將您的入口網站會話設定為所需的 Azure AD 租使用者。
 1. 前往適用于開發人員的 Microsoft 身分識別平臺上的 [[應用程式註冊](https://aka.ms/ra/ff)] 頁面。
-1. [註冊應用程式]  頁面出現時，輸入您應用程式的名稱。
-1. 在 [**支援的帳戶類型**] 底下，選取 [**任何組織目錄中的帳戶**]。
+1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+1. 在 [支援的帳戶類型] 下，選取 [任何組織目錄中的帳戶]。
 1. 在 [重新**導向 URI** ] 區段中，選取**web**平臺，並根據您的 Web 服務器將值設定為應用程式的 URL。 如需如何在 Visual Studio 和 Node 中設定和取得重新導向 URL 的指示，請參閱下一節。
-1. 選取 [註冊]  。
+1. 選取 [註冊]。
 1. 在應用程式 [概觀]**** 頁面上，記下 [應用程式 (用戶端) 識別碼]**** 值。
-1. 本教學課程會要求您啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]  。
-1. 在 [進階設定]  的 [隱含授與]  底下，選取 [識別碼權杖]  和 [存取權杖]  核取方塊。 識別碼權杖和存取權杖都是必要的，因為此應用程式需要登入使用者並呼叫 API。
-1. 選取 [儲存]  。
+1. 本教學課程會要求您啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
+1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 識別碼權杖和存取權杖都是必要的，因為此應用程式需要登入使用者並呼叫 API。
+1. 選取 [儲存]。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步驟2：設定您的 web 伺服器或專案
 
@@ -123,9 +123,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 在該程式碼中：
 
 - `Enter_the_Application_Id_here`是您註冊的應用程式的**應用程式（用戶端）識別碼**值。
-- `Enter_the_Tenant_Info_Here`設定為下列其中一個選項：
+- `Enter_the_Tenant_Info_Here` 設定為下列其中一個選項：
     - 如果您的應用程式支援**此組織目錄中的帳戶**，請將此值取代為租使用者識別碼或租使用者名稱（例如，contoso.microsoft.com）。
-    - 如果您的應用程式支援**任何組織目錄中的帳戶**，請`organizations`將此值取代為。
+    - 如果您的應用程式支援**任何組織目錄中的帳戶**，請將此值取代為 `organizations` 。
 
     若要尋找所有國家雲端的驗證端點，請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 
@@ -184,7 +184,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-適用于 iOS 和 macOS 的 MSAL 可以用來取得國家雲端中的權杖，但在建立`MSALPublicClientApplication`時需要額外的設定。
+適用于 iOS 和 macOS 的 MSAL 可以用來取得國家雲端中的權杖，但在建立時需要額外的設定 `MSALPublicClientApplication` 。
 
 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式（在美國政府），您可以撰寫：
 
@@ -207,7 +207,7 @@ MSALPublicClientApplication *application =
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-適用于 iOS 和 macOS 的 MSAL 可以用來取得國家雲端中的權杖，但在建立`MSALPublicClientApplication`時需要額外的設定。
+適用于 iOS 和 macOS 的 MSAL 可以用來取得國家雲端中的權杖，但在建立時需要額外的設定 `MSALPublicClientApplication` 。
 
 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式（在美國政府），您可以撰寫：
 

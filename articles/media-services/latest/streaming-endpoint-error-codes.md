@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582691"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>串流端點（原點）錯誤 
@@ -50,7 +50,7 @@ ms.locfileid: "80582691"
 
 ## <a name="404-not-found"></a>404 找不到
 
-作業嘗試在已經不存在的資源上執行。 例如，資源可能已經被刪除。
+作業嘗試在已經不存在的資源上執行。 例如，資源可能已經遭到刪除。
 
 |錯誤碼|十六進位值 |錯誤描述|
 |---|---|---|
@@ -68,7 +68,7 @@ ms.locfileid: "80582691"
 
 ## <a name="409-conflict"></a>409 衝突
 
-在`PUT`或`POST`作業上為資源提供的識別碼已由現有的資源所使用。 請為資源使用另一個識別碼來解決此問題。
+在或作業上為資源提供的識別碼已 `PUT` `POST` 由現有的資源所使用。 請為資源使用另一個識別碼來解決此問題。
 
 |錯誤碼|十六進位值 |錯誤描述|
 |---|---|---|
@@ -198,7 +198,7 @@ ms.locfileid: "80582691"
 
 請參閱 [Azure 媒體服務社群](media-services-community.md)文章，以了解詢問問題、提供意見反應及取得媒體服務相關更新的不同方式。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [編碼錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 - [Azure 媒體服務概念](concepts-overview.md)

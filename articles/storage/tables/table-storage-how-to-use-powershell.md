@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545958"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 資料表儲存體作業 
@@ -31,16 +31,16 @@ Azure 資料表儲存體是 NoSQL 資料存放區，您可以用來儲存和查�
 
 本做法文章示範如何在新的資源群組中建立新的 Azure 儲存體帳戶，以便在完成時輕鬆地將它移除。 如果您想要使用現有的儲存體帳戶，則可以改為那麼做。
 
-這些範例需要 Az PowerShell 模組`Az.Storage (1.1.0 or greater)`和`Az.Resources (1.2.0 or greater)`。 在 PowerShell 視窗中，執行 `Get-Module -ListAvailable Az*` 以尋找版本。 如果未顯示任何項目，或者您必須升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+這些範例需要 Az PowerShell 模組 `Az.Storage (1.1.0 or greater)` 和 `Az.Resources (1.2.0 or greater)` 。 在 PowerShell 視窗中，執行 `Get-Module -ListAvailable Az*` 以尋找版本。 如果未顯示任何項目，或者您必須升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 使用 PowerShell 中的 Azure 功能需要您安裝 `Az` 模組。 目前的`AzTable`版本與舊版的 AzureRM 模組不相容。
+> 使用 PowerShell 中的 Azure 功能需要您安裝 `Az` 模組。 目前的版本與 `AzTable` 舊版的 AzureRM 模組不相容。
 > 如有需要，請遵循安裝[Az 模組的最新安裝指示](/powershell/azure/install-az-ps)。
 
 安裝或更新 Azure PowerShell 之後，您必須安裝模組**AzTable**，其中包含用來管理實體的命令。 若要安裝此模組，請以系統管理員身分執行 PowerShell，並使用 **Install-Module** 命令。
 
 > [!IMPORTANT]
-> 針對模組名稱相容性原因，我們仍會在 PowerShell 資源庫的舊名稱`AzureRmStorageTables`下發布這個相同的模組。 本檔只會參考新名稱。
+> 針對模組名稱相容性原因，我們仍會在 PowerShell 資源庫的舊名稱下發布這個相同的模組 `AzureRmStorageTables` 。 本檔只會參考新名稱。
 
 ```powershell
 Install-Module AzTable

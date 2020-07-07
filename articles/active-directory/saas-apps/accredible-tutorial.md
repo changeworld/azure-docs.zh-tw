@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7681a60bc5da8d3cae53642096fd2290e63b8f76
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73154154"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>教學課程：Azure Active Directory 與 Accredible 整合
 
@@ -108,11 +108,10 @@ ms.locfileid: "73154154"
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    |  `https://api.accredible.com/sp/admin/accredible` |
-    | `https://api.accredible.com/sp/user/accredible` |
-    | |
+    ```http
+    https://api.accredible.com/sp/admin/accredible
+    https://api.accredible.com/sp/user/accredible
+    ```
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 

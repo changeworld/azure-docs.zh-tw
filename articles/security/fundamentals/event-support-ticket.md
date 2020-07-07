@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548596"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何記錄安全性事件支援票證
@@ -32,7 +32,7 @@ ms.locfileid: "80548596"
 
     i. 問題和/或弱點是什麼？
 
-    ii. 如有弱點，請提供 CVE （mitre.org）或已填寫的 CVSS3 v3 計算機（https://www.first.org/cvss/calculator/3.0)。
+    ii. 如有弱點，請提供 CVE （mitre.org）或已填寫的 CVSS3 v3 計算機（ https://www.first.org/cvss/calculator/3.0) 。
 
     iii. 有任何解決方式或緩解功能嗎？ 如果有，則請提供補救步驟。
 

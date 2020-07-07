@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473942"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 儲存體的效能和延展性檢查清單
@@ -33,11 +33,11 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 | &nbsp; |延展性目標 |[您的應用程式是否會在單一 blob 的擴充性目標內保持不動？](#bandwidth-and-operations-per-blob) |
 | &nbsp; |資料分割 |[您的命名慣例設計能因應更好的負載平衡嗎？](#partitioning) |
 | &nbsp; |網路功能 |[用戶端裝置是否有足夠高的頻寬和足夠低的延遲，以達到所需的效能？](#throughput) |
-| &nbsp; |網路功能 |[用戶端裝置是否有高品質網路連結？](#link-quality) |
-| &nbsp; |網路功能 |[用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
+| &nbsp; |網路 |[用戶端裝置是否有高品質網路連結？](#link-quality) |
+| &nbsp; |網路 |[用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
 | &nbsp; |直接用戶端存取 |[您是否使用共用存取簽章 (SAS) 和跨原始資源共用 (CORS) 來啟用 Azure 儲存體的直接存取？](#sas-and-cors) |
-| &nbsp; |Caching |[您的應用程式快取經常存取且極少變更的資料嗎？](#reading-data) |
-| &nbsp; |Caching |[您的應用程式是否會藉由在用戶端上快取更新，然後在較大的集合中上傳來進行批次處理](#uploading-data-in-batches) |
+| &nbsp; |快取 |[您的應用程式快取經常存取且極少變更的資料嗎？](#reading-data) |
+| &nbsp; |快取 |[您的應用程式是否會藉由在用戶端上快取更新，然後在較大的集合中上傳來進行批次處理](#uploading-data-in-batches) |
 | &nbsp; |.NET 組態 |[您使用 .NET Core 2.1 或更新版本來獲得最佳效能嗎？](#use-net-core) |
 | &nbsp; |.NET 組態 |[您是否已設定用戶端使用足夠數量的並行連線？](#increase-default-connection-limit) |
 | &nbsp; |.NET 組態 |[針對 .NET 應用程式，您是否已設定 .NET 使用足夠數量的執行緒？](#increase-minimum-number-of-threads) |
@@ -115,7 +115,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
   
 - 如需 Azure 儲存體中使用之資料分割配置的詳細資訊，請參閱[Azure 儲存體：具有強式一致性的高可用性雲端儲存體服務](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 應用程式的實體網路限制可能會對效能產生重大影響。 下列各節說明使用者可能會遇到的部分限制。  
 
@@ -151,7 +151,7 @@ Blob 儲存體會使用以範圍為基礎的資料分割配置來進行調整和
   
 SAS 和 CORS 都可協助您避免 Web 應用程式上不必要的負載。  
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>快取
 
 快取在效能方面扮演著重要的角色。 下列各節將討論快取的最佳作法。
 
@@ -242,7 +242,7 @@ Azure 儲存體提供一些解決方案，可讓您在儲存體帳戶內、在�
 
 ### <a name="use-azcopy"></a>使用 AzCopy
 
-AzCopy 命令列公用程式是一個簡單且有效率的選項，可讓您在儲存體帳戶之間大量傳送 blob。 AzCopy 已針對此案例進行優化，並可達到高傳輸率。 AzCopy 第10版會`Put Block From URL`使用作業，在儲存體帳戶之間複製 blob 資料。 如需詳細資訊，請參閱[使用 AzCopy V10 將資料複製或移動到 Azure 儲存體](/azure/storage/common/storage-use-azcopy-v10)。  
+AzCopy 命令列公用程式是一個簡單且有效率的選項，可讓您在儲存體帳戶之間大量傳送 blob。 AzCopy 已針對此案例進行優化，並可達到高傳輸率。 AzCopy 第10版會使用作業 `Put Block From URL` ，在儲存體帳戶之間複製 blob 資料。 如需詳細資訊，請參閱[使用 AzCopy V10 將資料複製或移動到 Azure 儲存體](/azure/storage/common/storage-use-azcopy-v10)。  
 
 ### <a name="use-azure-data-box"></a>使用 Azure 資料箱
 

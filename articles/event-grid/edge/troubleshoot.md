@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100147"
 ---
 # <a name="common-issues"></a>常見的問題
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * 如果它的模組對模組通訊，請確定您是在埠**4438**上進行呼叫，而模組的名稱符合部署的專案。 
 
-  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是**https://eventgridmodule:4438**。 請確定大小寫與埠號碼正確。
+  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是 **https://eventgridmodule:4438** 。 請確定大小寫與埠號碼正確。
     
 * 如果是來自非 IoT 模組，請確定在部署期間，事件格線埠會對應到主機電腦，例如
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * 如果它的模組對模組通訊，請確定您是在埠**5888**上進行呼叫，而模組的名稱符合部署的專案。 
 
-  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是**http://eventgridmodule:5888**。 請確定大小寫與埠號碼正確。
+  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是 **http://eventgridmodule:5888** 。 請確定大小寫與埠號碼正確。
     
 * 如果是來自非 IoT 模組，請確定在部署期間，事件格線埠會對應到主機電腦，例如
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 根據預設，事件方格模組已設定為使用 IoT Edge 安全性守護程式發行的憑證來驗證用戶端。 請確定用戶端轉譯的憑證是此鏈的根項目。
 
-**IoTSecurity**中[https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge)的 IoTSecurity 類別示範如何從 IoT Edge 安全性守護程式抓取憑證，並使用它來設定傳出的呼叫。
+中的**IoTSecurity**類別示範 [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) 如何從 IoT Edge 安全性守護程式抓取憑證，並使用它來設定傳出的呼叫。
 
 如果是非生產環境，您可以選擇關閉用戶端驗證。 如需如何執行此動作的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
 
@@ -108,4 +108,4 @@ sudo docker logs eventgridmodule
 
 ## <a name="next-steps"></a>後續步驟
 
-在 IoT Edge 的上使用事件方格回報任何問題、建議[https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)，網址為。
+在 IoT Edge 的上使用事件方格回報任何問題、建議，網址為 [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) 。
