@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79527821"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫安全性
@@ -23,7 +23,7 @@ ms.locfileid: "79527821"
 適用於 MariaDB 的 Azure 資料庫透過傳輸層安全性將傳輸中的資料加密來保護您的資料。 預設會強制執行加密（SSL/TLS）。
 
 ### <a name="at-rest"></a>待用
-適用於 MariaDB 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 包含備份在內的資料會在磁片上進行加密，但執行查詢時所建立的暫存檔案除外。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
+適用於 MariaDB 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 資料 (包含備份) 會在磁碟上加密，但不包括執行查詢時所建立的暫存檔案。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
 
 
 ## <a name="network-security"></a>網路安全性

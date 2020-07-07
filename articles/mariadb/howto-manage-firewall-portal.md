@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8be8e948595cfb93049c0d6c93f421e4902e771d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530660"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則
@@ -36,7 +36,7 @@ ms.locfileid: "79530660"
 
    ![Azure 入口網站 - 防火牆規則](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
-5. 按一下工具列上的 [儲存]****，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
+5. 按一下工具列上的 [儲存]，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
 
    ![Azure 入口網站 - 按一下 [儲存]](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
@@ -49,10 +49,10 @@ ms.locfileid: "79530660"
 
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>在 Azure 入口網站中管理現有的防火牆規則
 重複步驟來管理防火牆規則。
-* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 **[儲存]**，儲存變更。
-* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 **[儲存]**，儲存變更。
-* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 **[儲存]**，儲存變更。
-* 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 **[儲存]**，儲存變更。
+* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 [儲存]  儲存變更。
+* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 [儲存]  儲存變更。
+* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 [儲存]  儲存變更。
+* 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 [儲存]  儲存變更。
 
 ## <a name="next-steps"></a>後續步驟
  - 同樣地，您可以使用 Azure CLI 編寫腳本，以[建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-cli.md)。

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530133"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的先進威脅防護
@@ -26,7 +26,7 @@ ms.locfileid: "79530133"
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
+1. 啟動 Azure 入口網站，網址為 [https://portal.azure.com](https://portal.azure.com) 。
 2. 流覽至您想要保護之適用於 MariaDB 的 Azure 資料庫伺服器的 [設定] 頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
@@ -62,5 +62,5 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需價格的詳細資訊，請參閱[適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)  

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502280"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在動作項目服務中實作服務層級功能
@@ -172,7 +172,7 @@ public class Program
 2. 在完成先前的升級之後，將動作項目用戶端升級。
    此步驟可確保動作項目 Proxy 使用遠端 V2_1 堆疊。
 
-3. 這是選擇性步驟。 變更前一個屬性以移除 V1 接聽程式。
+3. 此為選用步驟。 變更前一個屬性以移除 V1 接聽程式。
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
@@ -205,7 +205,7 @@ public class Program
 2. 在完成先前的升級之後，將動作項目用戶端升級。
    此步驟可確保動作項目 Proxy 使用遠端 V2 堆疊。
 
-3. 這是選擇性步驟。 變更前一個屬性以移除 V1 接聽程式。
+3. 此為選用步驟。 變更前一個屬性以移除 V1 接聽程式。
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]

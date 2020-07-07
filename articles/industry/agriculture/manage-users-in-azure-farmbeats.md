@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502059"
 ---
 # <a name="manage-users"></a>管理使用者
 
 Azure FarmBeats 包含屬於 Azure Active Directory （Azure AD）實例之人員的使用者管理。 您可以將使用者新增至 Azure FarmBeats 實例，以存取 Api、查看產生的對應，以及從伺服器陣列存取感應器遙測。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 需要安裝 Azure FarmBeats。 如需詳細資訊，請參閱[安裝 Azure FarmBeats](install-azure-farmbeats.md)。
 - 您想要在 Azure FarmBeats 實例中新增或移除之使用者的電子郵件識別碼。
@@ -54,7 +54,7 @@ Azure FarmBeats 支援兩種類型的使用者角色：
 
 1. 登入加速器，然後選取 [**設定**] 圖示。
 2. 選取 [**存取控制**]。
-3. 選取 [刪除]  。
+3. 選取 [刪除] 。
 
    使用者已從系統中刪除。 您會收到下列確認訊息：
 
@@ -69,7 +69,7 @@ Azure FarmBeats 支援兩種類型的使用者角色：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在右上方選取您的帳戶，然後切換至與 FarmBeats 相關聯的 Azure AD 租使用者。
-3. 選取 [ **Azure Active Directory** > **使用者**]。
+3. 選取 [Azure Active Directory]  >  [使用者]。
 
     隨即顯示 Azure AD 使用者清單。
 
@@ -78,7 +78,7 @@ Azure FarmBeats 支援兩種類型的使用者角色：
     ![[所有使用者] 窗格](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
 5. 選取新使用者的名稱，然後完成該使用者的必要欄位。
-6. 選取 [建立]  。
+6. 選取 [建立]。
 
 如需管理 Azure AD 使用者的詳細資訊，請參閱[在 Azure AD 中新增或刪除使用者](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)。
 

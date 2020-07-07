@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79503123"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>設定 Azure 到 Azure 嚴重損壞修復的行動服務 Proxy 設定
@@ -51,8 +51,8 @@ Proxy 是允許/禁止端點之網路連線的網路閘道。 Proxy 通常是用
 在此情況下，客戶會在行動服務設定檔 Proxyinfo.conf 中提供自訂的應用程式 proxy 設定。 此方法可讓客戶僅針對行動服務提供 proxy，或針對電腦上其餘應用程式的 proxy （或沒有 proxy），為 Azure Site Recovery 行動服務提供不同的 proxy。
 
 ## <a name="proxy-template"></a>Proxy 範本
-Proxyinfo.conf 包含下列範本 [proxy] Address =http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage .com，Login.，net.tcp. core.。 BypassList 不支援萬用字元，例如 ' *. windows.net '，但讓 windows.net 的效果足以略過。 
+Proxyinfo.conf 包含下列範本 [proxy] Address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage .com，login.，net.tcp. core.。 BypassList 不支援萬用字元，例如 ' *. windows.net '，但讓 windows.net 的效果足以略過。 
 
 ## <a name="next-steps"></a>後續步驟：
-- 閱讀複寫 Azure Vm 的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
+- 閱讀複寫 Azure VM 的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
 - 透過[複寫 Azure VM](site-recovery-azure-to-azure.md) 來部署災害復原。
