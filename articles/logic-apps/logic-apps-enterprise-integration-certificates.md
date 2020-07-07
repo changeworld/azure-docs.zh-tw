@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450135"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用憑證來改善 B2B 訊息的安全性
@@ -42,13 +42,13 @@ ms.locfileid: "81450135"
 
    ![選擇 [憑證]](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-3. 在 [憑證]**** 之下，選擇 [新增]****。 在 [新增憑證]**** 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]****。
+3. 在 [憑證]**** 之下，選擇 [新增]****。 在 [新增憑證]**** 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]。
 
    | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*憑證名稱*> | 您的憑證名稱，在本例中為 "publicCert" | 
    | **憑證類型** | 公用 | 您的憑證類型 |
-   | **憑證** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 |
+   | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 |
    ||||
 
    ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -81,16 +81,16 @@ ms.locfileid: "81450135"
 
    ![選擇 [憑證] 圖格](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-5. 在 [憑證]**** 之下，選擇 [新增]****。 在 [新增憑證]**** 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]****。
+5. 在 [憑證]**** 之下，選擇 [新增]****。 在 [新增憑證]**** 之下，提供憑證的以下詳細資料。 完成時，選擇 [確定]。
 
    | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*憑證名稱*> | 您的憑證名稱，在本例中為 "privateCert" | 
    | **憑證類型** | Private | 您的憑證類型 |
-   | **憑證** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
+   | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
    | **資源群組** | <*整合-帳戶-資源群組*> | 整合帳戶的資源群組，在本例中為 "MyResourceGroup" | 
-   | **Key Vault** | <*金鑰-保存庫-名稱*> | Azure 金鑰保存庫的名稱 |
-   | **索引鍵名稱** | <*索引鍵名稱*> | 金鑰名稱 |
+   | **金鑰保存庫** | <*金鑰-保存庫-名稱*> | Azure 金鑰保存庫的名稱 |
+   | **機碼名稱** | <*索引鍵名稱*> | 金鑰名稱 |
    ||||
 
    ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

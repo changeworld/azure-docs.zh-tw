@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80410492"
 ---
 # <a name="about-point-to-site-vpn"></a>關於點對站 VPN
 
 點對站 (P2S) VPN 閘道連線可讓您建立從個別用戶端電腦到您的虛擬網路的安全連線。 P2S 連線的建立方式是從用戶端電腦開始。 此解決方案適合於想要從遠端位置 (例如從住家或會議) 連線到 Azure VNet 的遠距工作者。 當您只有少數用戶端必須連線至 VNet 時，P2S VPN 也是很實用的解決方案 (而不是 S2S VPN)。 本文適用於資源管理員部署模型。
 
-## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪種通訊協定？
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用何種通訊協定？
 
 店對站 VPN 可以使用下列其中一個通訊協定：
 

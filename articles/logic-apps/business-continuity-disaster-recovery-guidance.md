@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437707"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps 的商務持續性和嚴重損壞修復
@@ -234,7 +234,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 * 適用于伺服器、服務或系統端狀態的邏輯應用程式會使用伺服器、服務或系統端上的屬性值或設定。
 
-  例如，以查詢為基礎的觸發程式，它會從資料庫讀取資料列時`isRead` ，必須有設定為`FALSE`的資料行。 每次觸發程式讀取資料`isRead`列時，邏輯應用程式會將資料行從`FALSE`變更為，藉`TRUE`以更新該資料列。
+  例如，以查詢為基礎的觸發程式，它會從資料庫讀取資料列時，必須有 `isRead` 設定為的資料行 `FALSE` 。 每次觸發程式讀取資料列時，邏輯應用程式會將資料行從變更為，藉以更新該資料 `isRead` 列 `FALSE` `TRUE` 。
 
   這種伺服器端方法的運作方式類似于具有佇列語義的服務匯流排佇列或主題，而當邏輯應用程式處理訊息時，觸發程式可以讀取和鎖定訊息。 當邏輯應用程式完成處理時，觸發程式會從佇列或主題中刪除訊息。
 
@@ -341,7 +341,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 * 如果您想要將此資料與 Azure Log Analytics 搭配使用，您可以設定邏輯應用程式的**診斷設定**，並將資料傳送至多個 Log analytics 工作區，以將資料提供給主要和次要位置。 如需詳細資訊，請參閱[設定 Azure 監視器記錄和收集 Azure Logic Apps 的診斷資料](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
-* 如果您想要將資料傳送至 Azure 儲存體或 Azure 事件中樞，可以藉由設定異地複寫，讓主要和次要位置的資料都可供使用。 如需詳細資訊，請參閱這些文章：<p>
+* 如果您想要將資料傳送至 Azure 儲存體或 Azure 事件中樞，可以藉由設定異地複寫，讓主要和次要位置的資料都可供使用。 如需詳細資訊，請參閱下列文章：<p>
 
   * [Azure Blob 儲存體嚴重損壞修復和帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure 事件中樞異地嚴重損壞修復](../event-hubs/event-hubs-geo-dr.md)

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431029"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
@@ -80,8 +80,8 @@ trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_
 要壓縮一個資料列群組所需的最大記憶體大約是
 
 - 72 MB +
-- \#資料\* \#列\*資料行8個位元組 +
-- \#資料\* \#列\*簡短字串-資料行32個位元組 +
+- \#資料列資料行 \* \# \* 8 個位元組 +
+- \#資料 \* \# 列簡短字串-資料行 \* 32 個位元組 +
 - \#長字串資料行 \* 壓縮字典 16 MB
 
 短字串資料行使用 < = 32 個位元組的字串資料類型和長字串資料行使用 > 32 個位元組的字串資料類型。

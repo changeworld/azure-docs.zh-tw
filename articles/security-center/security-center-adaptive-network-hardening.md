@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
 ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80385073"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的彈性網路強化
@@ -39,7 +39,7 @@ ms.locfileid: "80385073"
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看彈性網路強化警示和規則
 
-1. 在資訊安全中心中，選取 [**網路** -> ] [彈性**網路強化**]。 網路 Vm 會列在三個不同的索引標籤底下：
+1. 在資訊安全中心中，選取 [**網路**] [彈性  ->  **網路強化**]。 網路 Vm 會列在三個不同的索引標籤底下：
    * **狀況不良的資源**：目前有執行彈性網路強化演算法所觸發之建議和警示的 vm。 
    * **狀況良好的資源**：不含警示和建議的 vm。
    * 未**掃描的資源**：由於下列其中一個原因，而無法執行調適型網路強化演算法的 vm：

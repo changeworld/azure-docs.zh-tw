@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fc4ec916e71f2fcfd3b411420879d42b2fa90f18
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126088"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563846"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例 - SQL (Core) API
 
@@ -22,7 +22,7 @@ ms.locfileid: "85126088"
 > [!NOTE]
 > 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請定期檢查是否有 `Az.CosmosDB` 的更新。
 
-| | |
+|Task | 描述 |
 |---|---|
 |[建立帳戶、資料庫和容器](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos DB 帳戶、資料庫和容器。 |
 |[使用大型分割區索引鍵建立容器](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用大型分割區索引鍵建立容器。 |

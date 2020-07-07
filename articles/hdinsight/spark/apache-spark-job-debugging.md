@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 75f8c1f77a372d3b9b9e9a5582927f24b99fe9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190209"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>對 Azure HDInsight 上執行的 Apache Spark 作業進行偵錯
@@ -34,7 +34,7 @@ ms.locfileid: "82190209"
     ![Azure 入口網站啟動 YARN UI](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 若要啟動 Ambari UI，請選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI 中，流覽至 [ **YARN** > ] [**快速連結**]，> 作用中的 Resource Manager > **Resource Manager] UI**。
+   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 若要啟動 Ambari UI，請選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI 中，流覽至 [ **YARN**]  >  [**快速連結**]，> 作用中的 Resource Manager > **Resource Manager] UI**。
 
 2. 由於您是使用 Jupyter 筆記本來啟動 Spark 作業，因此應用程式的名稱為**remotesparkmagics** （所有從筆記本啟動的應用程式名稱）。 針對 [應用程式名稱] 選取 [應用程式識別碼]，以取得作業的詳細資訊。 此動作會啟動應用程式視圖。
 
@@ -98,13 +98,13 @@ ms.locfileid: "82190209"
     ![Azure 入口網站啟動 Spark 歷程記錄伺服器](./media/apache-spark-job-debugging/launch-spark-history-server.png "啟動 Spark 歷程記錄 Server1")
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 Spark 歷程記錄伺服器 UI。 若要啟動 Ambari UI，請從 [總覽] 分頁，選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI，流覽至**Spark2** > **快速連結** > **Spark2 歷程記錄伺服器 UI**。
+   > 或者，您也可以從 Ambari UI 啟動 Spark 歷程記錄伺服器 UI。 若要啟動 Ambari UI，請從 [總覽] 分頁，選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI，流覽至**Spark2**  >  **快速連結**  >  **Spark2 歷程記錄伺服器 UI**。
 
 2. 您會看到所有已完成應用程式列出。 選取應用程式識別碼以向下切入至應用程式，以取得詳細資訊。
 
     ![Spark 歷程記錄伺服器已完成的應用程式](./media/apache-spark-job-debugging/view-completed-applications.png "啟動 Spark 歷程記錄 Server2")
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)
 * [使用擴充的 Spark 歷程記錄伺服器進行 Apache Spark 作業偵錯](apache-azure-spark-history-server.md)

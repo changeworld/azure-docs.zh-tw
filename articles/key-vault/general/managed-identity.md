@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432121"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供受控識別的 Key Vault 驗證
@@ -26,9 +26,9 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
-若要完成本指南，您必須擁有下列資源。 
+若要完成本指南，您必須具備下列資源。 
 
 - 一個金鑰保存庫。 您可以使用現有的金鑰保存庫，或依照下列其中一個快速入門中的步驟建立新的金鑰保存庫：
    - [使用 Azure CLI 建立金鑰保存庫](../secrets/quick-create-cli.md)
@@ -46,11 +46,11 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 若要在入口網站中設定受控身分識別，您需要先像平常一樣建立應用程式，然後再啟用此功能。 
 
-1. 如果您使用函式應用程式，請瀏覽至 [平台功能]****。 若使用類型的應用程式，請在左側導覽列中向下捲動到 [設定]****。 
+1. 如果您使用函式應用程式，請瀏覽至 [平台功能]。 若使用類型的應用程式，請在左側導覽列中向下捲動到 [設定]。 
 
 1. 選取 [受控身分識別]****。 
 
-1. 在 [系統指派]**** 索引標籤內，將 [狀態]**** 切換為 [開啟]****。 按一下 **[儲存]** 。 
+1. 在 [系統指派] 索引標籤內，將 [狀態] 切換為 [開啟]。 按一下 [檔案] 。 
 
     ![](../media/managed-identity-system-assigned.png)
 
@@ -77,7 +77,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-記下`PrincipalId`，這將在下一節中需要。
+記 `PrincipalId` 下，這將在下一節中需要。
 
 ```json
 {

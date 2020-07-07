@@ -7,19 +7,19 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72750431"
 ---
-# <a name="legal-notices"></a>法律聲明
+# <a name="legal-notices"></a>法律注意事項
 
 Microsoft 和任何參與者可根據 [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode)，授與您此存放庫中 Microsoft 文件和其他內容的授權，以及根據 [MIT License](https://opensource.org/licenses/MIT)，授與您存放庫中任何程式碼的授權。
 
-Microsoft、Windows、Microsoft Azure 以及 (或) 文件中所參考的其他 Microsoft 產品和服務可能是 Microsoft 在美國及 (或) 其他國家/地區的商標或註冊商標。
-本專案的授權並未授與您使用任何 Microsoft 名稱、標誌或商標的權利。
-您可以在[https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)找到 Microsoft 的一般商標指導方針。
+文件中所參考的 Microsoft、Windows、Microsoft Azure 及 (或) 其他 Microsoft 產品和服務可能是 Microsoft 在美國及 (或) 其他國家/地區的商標或註冊商標。
+此專案授權並未授與您使用任何 Microsoft 名稱、標誌或商標的權利。
+您可以在找到 Microsoft 的一般商標指導方針 [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) 。
 
 如需隱私權資訊，請參閱[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 

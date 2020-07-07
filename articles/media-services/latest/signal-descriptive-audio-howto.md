@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392185"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>信號描述性音訊曲目
@@ -48,7 +48,7 @@ ms.locfileid: "72392185"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-如果您需要將所建立之輸入資產的名稱傳遞給其他方法，請務必在從`Name` `CreateInputAssetAsync`傳回的資產物件上使用屬性，例如 inputAsset.Name。 
+如果您需要將所建立之輸入資產的名稱傳遞給其他方法，請務必在 `Name` 從傳回的資產物件上使用屬性 `CreateInputAssetAsync` ，例如 inputAsset.Name。 
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>建立輸出資產以儲存編碼作業的結果
 
@@ -56,9 +56,9 @@ ms.locfileid: "72392185"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-如果您需要將所建立之輸出資產的名稱傳遞給其他方法，請務必在從`Name` `CreateIOutputAssetAsync`傳回的資產物件上使用屬性，例如 outputAsset.Name。 
+如果您需要將所建立之輸出資產的名稱傳遞給其他方法，請務必在 `Name` 從傳回的資產物件上使用屬性 `CreateIOutputAssetAsync` ，例如 outputAsset.Name。 
 
-在本文的案例中，請將`outputAsset.Name`值傳遞給`SubmitJobAsync`和`UploadAudioIntoOutputAsset`函數。
+在本文的案例中，請將 `outputAsset.Name` 值傳遞給 `SubmitJobAsync` 和 `UploadAudioIntoOutputAsset` 函數。
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>建立轉換和作業，以將上傳的檔案編碼
 
@@ -127,7 +127,7 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-以下是呼叫`UpoadAudioIntoOutputAsset`函式的範例：
+以下是呼叫函式的範例 `UpoadAudioIntoOutputAsset` ：
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
@@ -142,7 +142,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 1. 在容器中，尋找 [ism] 檔案，然後按一下 [**編輯 blob** ] （在右側視窗中）。 
 1. 藉由新增包含描述性音訊的已上傳僅限音訊（AAC 編解碼器）的相關資訊來編輯. ism 檔案，並在完成時按下 [**儲存**]。
 
-    若要表示描述的音訊播放軌，您需要將「協助工具」和「角色」參數新增至 ism 檔案。 您需負責正確設定這些參數，才能將以音訊描述形式傳送曲目訊號。 例如，將和`<param name="accessibility" value="description" />` `<param name="role" value="alternate" />`新增至 ism 檔案中的特定音訊播放軌，如下列範例所示。
+    若要表示描述的音訊播放軌，您需要將「協助工具」和「角色」參數新增至 ism 檔案。 您需負責正確設定這些參數，才能將以音訊描述形式傳送曲目訊號。 例如，將 `<param name="accessibility" value="description" />` 和新增 `<param name="role" value="alternate" />` 至 ism 檔案中的特定音訊播放軌，如下列範例所示。
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207151"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 連線到 Azure Kubernetes Service (AKS) 叢集節點以進行維護或疑難排解
@@ -149,7 +149,7 @@ aks-nodepool1-79590246-0  10.240.0.4
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. 終端機會話連線到容器之後，請使用`apt-get`下列程式來安裝 SSH 用戶端：
+1. 終端機會話連線到容器之後，請使用下列程式來安裝 SSH 用戶端 `apt-get` ：
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -163,7 +163,7 @@ aks-nodepool1-79590246-0  10.240.0.4
     kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
-1. 返回您容器的終端機會話，並更新已複製`id_rsa`之私人 SSH 金鑰的許可權，讓它成為使用者唯讀：
+1. 返回您容器的終端機會話，並更新 `id_rsa` 已複製之私人 SSH 金鑰的許可權，讓它成為使用者唯讀：
 
     ```console
     chmod 0600 id_rsa

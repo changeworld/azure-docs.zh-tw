@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422541"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure 虛擬機器客體作業系統防火牆設定不正確
 
 本文介紹如何修正 Azure 虛擬機器上設定錯誤的客體作業系統防火牆。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 1.  虛擬機器 (VM) 的 [歡迎使用] 畫面顯示已完全載入虛擬機器。
 
@@ -35,7 +35,7 @@ ms.locfileid: "80422541"
 
 若客體系統防火牆設計不正確，可能會封鎖部分前往 VM 的網路流量，或是將所有類型的流量全數擋下。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在按照下列步驟進行之前，請先擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 

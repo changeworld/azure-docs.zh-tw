@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792207"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 認知搜尋中的平行存取
@@ -216,6 +216,6 @@ ms.locfileid: "72792207"
 
 ## <a name="see-also"></a>另請參閱
 
-[一般 HTTP 要求和回應標頭](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[一般 HTTP 要求和回應標頭](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+[HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
 [索引作業（REST API）](https://docs.microsoft.com/rest/api/searchservice/index-operations)

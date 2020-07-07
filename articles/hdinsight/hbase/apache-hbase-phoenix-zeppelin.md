@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392237"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zeppelin 在 Apache HBase 上執行 Apache Phoenix 查詢 Azure HDInsight
@@ -23,7 +23,7 @@ Apache Zeppelin 是開放原始碼的 web 型筆記本，可讓您使用互動�
 
 HDInsight 使用者可以使用 Apache Zeppelin 來查詢 Phoenix 資料表。 Apache Zeppelin 與 HDInsight 叢集整合，而且不需要額外的步驟就能使用它。 只要使用 JDBC 解譯器建立 Zeppelin 筆記本，並開始撰寫 Phoenix SQL 查詢
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 HDInsight 上的 Apache HBase 叢集。 請參閱[開始使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)。
 

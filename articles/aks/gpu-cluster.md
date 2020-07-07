@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383985"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
@@ -36,7 +36,7 @@ ms.locfileid: "80383985"
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立單一節點大小`Standard_NC6`的叢集：
+現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立單一節點大小的叢集 `Standard_NC6` ：
 
 ```azurecli-interactive
 az aks create \
@@ -222,7 +222,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>檢視已啟用 GPU 的工作負載狀態和輸出
 
-使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [*完成*] 資料行顯示*1/1*時，表示作業已成功完成。 使用`kubetctl --watch` *Ctrl + C*結束命令：
+使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [*完成*] 資料行顯示*1/1*時，表示作業已成功完成。 `kubetctl --watch`使用*Ctrl + C*結束命令：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

@@ -4,10 +4,10 @@ description: 本文說明如何使用適用于容器的 Azure 監視器來停止
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196435"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>如何停止監視您的 Azure 和 Red Hat OpenShift v4 叢集
@@ -39,13 +39,13 @@ ms.locfileid: "82196435"
 
     `helm delete azmon-containers-release-1`
 
-    這會從叢集移除發行。 您可以執行下列`helm list`命令來確認：
+    這會從叢集移除發行。 您可以 `helm list` 執行下列命令來確認：
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-可能需要幾分鐘的時間才能完成設定變更。 由於 Helm 會在您刪除發行之後追蹤，因此您可以使用`helm rollback`來審核叢集的歷程記錄，甚至將版本的取消刪除。
+可能需要幾分鐘的時間才能完成設定變更。 由於 Helm 會在您刪除發行之後追蹤，因此您可以使用來審核叢集的歷程記錄，甚至將版本的取消刪除 `helm rollback` 。
 
 ## <a name="next-steps"></a>後續步驟
 

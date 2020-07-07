@@ -4,15 +4,15 @@ description: Azure 備份的相容性供應專案摘要
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80423115"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure 備份合規性供應專案
 
-為了協助組織符合控管個人資料收集和使用的國家、地區和業界特定需求，Microsoft Azure & Azure 備份提供一組完整的認證和證明。
+為協助組織符合控管個人資料收集和使用的國家、區域和業界特定需求的標準，Microsoft Azure 與 Azure 備份提供一套完整的認證和證明。
 
 您可以在下方找到 Azure 備份的相容性供應專案，以確保您的服務在使用 Azure 備份服務時受到管制。
 
@@ -35,7 +35,7 @@ ms.locfileid: "80423115"
 * [FedRAMP](https://docs.microsoft.com/microsoft-365/compliance/offering-fedramp)
 * [FIPS 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)
 
-## <a name="industry"></a>業界
+## <a name="industry"></a>產業
 
 * [HIPAA](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
 * [HITRUST](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)

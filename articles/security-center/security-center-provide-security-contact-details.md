@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
 ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204095"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 資訊安全中心提供安全性連絡人詳細資料
@@ -57,14 +57,14 @@ Azure 資訊安全中心會建議您為您的 Azure 訂用帳戶提供安全性�
 
 1. 若要將安全性連絡人資訊套用至您的訂用帳戶，請選取 [**儲存**]。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [在 Azure 資訊安全中心中設定安全性原則](tutorial-security-policy.md)-瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 * [管理 Azure 資訊安全中心中的安全性建議](security-center-recommendations.md)--瞭解建議如何協助保護您的 Azure 資源。
 * [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)--瞭解如何監視 Azure 資源的健康情況。
 * [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md)--瞭解如何管理和回應安全性警示。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) -- 了解如何監視合作夥伴解決方案的健全狀況。
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)--瞭解如何監視合作夥伴解決方案的健康狀態。
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

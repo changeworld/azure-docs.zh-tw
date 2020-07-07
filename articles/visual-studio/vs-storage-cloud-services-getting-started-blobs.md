@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72298802"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概觀
-本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些範例均以 C\#撰寫，並使用[適用于 .Net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些範例均以 C 撰寫 \# ，並使用[適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量非結構化資料的服務，全球任何地方都可透過 HTTP 或 HTTPS 來存取這些資料。 單一 Blob 可以是任何大小。 Blob 可以是影像、音訊和視訊檔、原始資料及文件檔案。
 

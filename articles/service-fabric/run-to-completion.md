@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431289"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
@@ -22,7 +22,7 @@ ms.locfileid: "81431289"
 > 使用[Reliable Services][reliable-services-link]程式設計模型所撰寫的服務目前不支援 RunToCompletion 的語義。
  
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion 的語義和規格
-匯[入 ServiceManifest][application-and-service-manifests-link]時，可以將 RunToCompletion 的語義指定為**ExecutionPolicy** 。 所有組成 ServiceManifest 的 Codepackage 都會繼承指定的原則。 下列 ApplicationManifest 程式碼片段提供範例。
+匯[入 ServiceManifest][application-and-service-manifests-link]時，可以將 RunToCompletion 的語義指定為**ExecutionPolicy** 。 所有組成 ServiceManifest 的 Codepackage 都會繼承指定的原則。 下列 ApplicationManifest.xml 程式碼片段提供範例。
 
 ```xml
 <ServiceManifestImport>
@@ -47,7 +47,7 @@ ms.locfileid: "81431289"
 >
 > 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-下列 ServiceManifest 描述由兩個代表容器的 Codepackage 所組成的 ServicePackage。 *RunToCompletionCodePackage1*只會將訊息記錄到**stdout**並結束。 *RunToCompletionCodePackage2*會 ping 回送位址一段時間，然後結束代碼為**0**、 **1**或**2**。
+下列 ServiceManifest.xml 描述由兩個 Codepackage 組成的 ServicePackage，代表容器。 *RunToCompletionCodePackage1*只會將訊息記錄到**stdout**並結束。 *RunToCompletionCodePackage2*會 ping 回送位址一段時間，然後結束代碼為**0**、 **1**或**2**。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ ms.locfileid: "81431289"
 </ServiceManifest>
 ```
 
-下列 ApplicationManifest 描述以上述的 ServiceManifest 為基礎的應用程式。 它會使用**OnFailure**的重新開機原則指定*WindowsRunToCompletionServicePackage*的**RunToCompletion** **ExecutionPolicy** 。 啟用*WindowsRunToCompletionServicePackage*時，將會啟動其構成 codepackage。 *RunToCompletionCodePackage1*應該在第一次啟用時成功結束。 不過， *RunToCompletionCodePackage2*可能會失敗 **（非零的結束代碼）**，在這種情況下，它會在**OnFailure**重新開機原則之後重新開機。
+下列 ApplicationManifest.xml 會根據上面討論的 ServiceManifest.xml 來描述應用程式。 它會使用**OnFailure**的重新開機原則指定*WindowsRunToCompletionServicePackage*的**RunToCompletion** **ExecutionPolicy** 。 啟用*WindowsRunToCompletionServicePackage*時，將會啟動其構成 codepackage。 *RunToCompletionCodePackage1*應該在第一次啟用時成功結束。 不過， *RunToCompletionCodePackage2*可能會失敗 **（非零的結束代碼）**，在這種情況下，它會在**OnFailure**重新開機原則之後重新開機。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

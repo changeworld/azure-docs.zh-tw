@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208052"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
@@ -43,7 +43,7 @@ ms.locfileid: "82208052"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。 您也可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
+如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。 您也可以使用系統指派的受控識別來取得權限，取代服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
 當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 若要處理相應放大事件或叢集升級，您也需要可在指派的子網中使用的其他 IP 位址。 如果您使用 Windows Server 容器，此額外的位址空間特別重要，因為這些節點集區需要升級才能套用最新的安全性修補程式。 如需 Windows Server 節點的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
@@ -126,7 +126,7 @@ Web 應用程式防火牆 (WAF) 會藉由篩選傳入流量來提供額外一層
 
 網路原則是一種 Kubernetes 功能，可讓您控制 Pod 之間的流量。 您可以根據指派的標籤、命名空間或流量連接埠等設定，選擇允許或拒絕流量。 使用網路原則提供了一種雲端原生方法來控制流量的流程。 由於 Pod 是在 AKS 叢集內以動態方式建立的，因此可以自動套用所需的網路原則。 請勿使用 Azure 網路安全性群組來控制 pod-to-pod 流量，請使用網路原則。
 
-若要使用網路原則，必須在建立 AKS 叢集時啟用該功能。 您無法在現有的 AKS 叢集上啟用網路原則。 事先規劃以確保在叢集上啟用網路原則，並可以視需要使用它們。 網路原則只應用於 AKS 中以 Linux 為基礎的節點和 pod。
+若要使用網路原則，必須在建立 AKS 叢集時啟用該功能。 您無法在現有的 AKS 叢集上啟用網路原則。 事先規劃以確保在叢集上啟用網路原則，並可以視需要使用它們。 網路原則只應用於 AKS 中的 Linux 型節點和 Pod。
 
 使用 YAML 資訊清單將網路原則建立為 Kubernetes 資源。 原則會套用至已定義的 Pod，然後輸入或輸出規則可定義流量的流動方式。 下列範例將網路原則套用至已套用 *app: backend* 標籤的 Pod。 然後，輸入規則僅允許來自具有 *app: frontend* 標籤的 Pod 的流量：
 

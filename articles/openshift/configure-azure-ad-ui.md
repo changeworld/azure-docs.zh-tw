@@ -6,25 +6,25 @@ ms.topic: article
 ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
-keywords: aro、openshift、az aro、red hat、cli
+keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205309"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證（入口網站）
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 版2.0.75 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.75 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
 建立叢集的**OAuth 回呼 URL** ，並記下它。 請務必以您的資源群組名稱取代**aro-rg** ，並以您的叢集名稱取代**aro-cluster** 。
 
 > [!NOTE]
-> OAuth `AAD`回呼 URL 中的區段應符合您稍後將會設定的 oauth 身分識別提供者名稱。
+> `AAD`Oauth 回呼 URL 中的區段應符合您稍後將會設定的 oauth 身分識別提供者名稱。
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -58,7 +58,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 * 變更 Azure AD 在權杖中傳回之特定宣告的行為。
 * 新增和存取應用程式的自訂宣告。
 
-我們會將 OpenShift 設定為使用`email`宣告，並藉由`upn`將新增`upn`為 Azure Active Directory 所傳回之識別碼權杖的一部分，來切換回以設定慣用的使用者名稱。
+我們會將 OpenShift 設定為使用宣告 `email` ，並藉 `upn` 由將新增 `upn` 為 Azure Active Directory 所傳回之識別碼權杖的一部分，來切換回以設定慣用的使用者名稱。
 
 流覽至 **[權杖設定（預覽）** ]，然後按一下 [**新增選擇性**宣告]。 選取 [**識別碼**]，然後檢查**電子郵件**和**upn**宣告。
 
@@ -72,7 +72,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 ## <a name="configure-openshift-openid-authentication"></a>設定 OpenShift OpenID 驗證
 
-取出`kubeadmin`認證。 執行下列命令來尋找`kubeadmin`使用者的密碼。
+取出 `kubeadmin` 認證。 執行以下命令來尋找 `kubeadmin` 使用者的密碼。
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-下列範例輸出顯示密碼將在中`kubeadminPassword`。
+以下範例輸出顯示密碼將位於 `kubeadminPassword` 中。
 
 ```json
 {
@@ -89,7 +89,7 @@ az aro list-credentials \
 }
 ```
 
-您可以執行下列命令來尋找叢集主控台 URL，如下所示：`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+您可以執行以下命令來尋找叢集主控台 URL，如下所示：`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \
@@ -98,14 +98,14 @@ az aro list-credentials \
     --query "consoleProfile.url" -o tsv
 ```
 
-在瀏覽器中啟動主控台 URL，並使用`kubeadmin`認證登入。
+在瀏覽器中啟動主控台 URL，並使用 `kubeadmin` 認證登入。
 
 流覽至 [系統**管理**]，按一下 [叢集設定]，然後選取 [**全域****設定**] 索引標籤。滾動以選取 [ **OAuth**]。
 
 在 [**識別提供者**] 下向下選取 [**新增**]，然後選取 **[OpenID connect]**。
 ![從 [識別提供者] 下拉式清單中選取 [OpenID Connect]](media/aro4-oauth-idpdrop.png)
 
-將名稱填入**AAD**、**用戶端識別碼**作為 [**應用程式識別碼**] 和 [**用戶端密碼**]。 **簽發者 URL**的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。 以您稍早取得的租使用者識別碼取代預留位置。
+將名稱填入**AAD**、**用戶端識別碼**作為 [**應用程式識別碼**] 和 [**用戶端密碼**]。 **簽發者 URL**的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 以您稍早取得的租使用者識別碼取代預留位置。
 
 ![填寫 OAuth 詳細資料](media/aro4-oauth-idp-1.png)
 

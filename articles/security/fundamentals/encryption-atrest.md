@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454674"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 資料靜態加密
@@ -59,7 +59,7 @@ Microsoft 致力於為所有雲端服務提供靜態加密選項，並給予客�
 
 如先前所述，靜態加密的目的，是使用祕密加密金鑰將保存在磁碟上的資料進行加密。 若要達到這個目標，就必須提供安全的金鑰建立、儲存、存取控制，以及加密金鑰管理。 儘管細節可能有所差異，但 Azure 服務「待用加密」實作可以下圖所示的術語來加以說明。
 
-![元件](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
+![單元](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
 ### <a name="azure-key-vault"></a>Azure 金鑰保存庫
 
@@ -111,13 +111,13 @@ Azure 中支援的加密模型分成兩個主要群組：先前所述的「用�
 
 用戶端加密模型是指由服務或呼叫應用程式在資源提供者或 Azure 外部執行的加密。 加密可由 Azure 中的服務應用程式或客戶資料中心內執行的應用程式執行。 在任一案例中，利用此加密模型時，Azure 資源提供者無需以任何方式解密的能力或具有加密金鑰的存取權，即可接收加密的 blob 資料。 在此模型中，金鑰管理是由呼叫服務/應用程式所完成，且對 Azure 服務不透明。
 
-![Client](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
+![用戶端](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
 ### <a name="server-side-encryption-model"></a>伺服器端加密模型
 
 伺服器端加密模型是指 Azure 服務所執行的加密。 在這個模型中，資源提供者會執行加密和解密作業。 例如，Azure 儲存體可能會在純文字作業中接收資料，並在內部執行加密和解密。 資源提供者可能會使用由 Microsoft 或客戶管理的加密金鑰，根據提供的設定而定。
 
-![Server (伺服器)](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
+![伺服器](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
 
 ### <a name="server-side-encryption-key-management-models"></a>伺服器端加密金鑰管理模型
 
@@ -266,13 +266,13 @@ Azure SQL Database 目前支援針對由 Microsoft 管理之服務端和用戶�
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
 | Azure Machine Learning Studio    | 是                | 預覽，RSA 2048 位元 | -               |
-| 內容仲裁                | 是                | 是                | -                  |
+| 內容仲裁者                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
 | 個人化工具                     | 是                | 是                | -                  |
 | QnA Maker                        | 是                | 是                | -                  |
 | 語音服務                  | 是                | 是                | -                  |
-| 翻譯文字                  | 是                | 是                | -                  |
+| 翻譯工具文字                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 預覽，RSA 2048 位元 | -                  |
 | **分析**                    |                    |                    |                    |
 | Azure 串流分析           | 是                | N/A\*            | -                  |
@@ -335,7 +335,7 @@ Azure SQL Database 目前支援針對由 Microsoft 管理之服務端和用戶�
 | **安全性**                     |                    |                    |                    |
 | IoT 的 Azure 資訊安全中心    | 是                | 是                | -                  |
 | Azure Sentinel                   | 是                | 是                | -                  |
-| **儲存體**                      |                    |                    |                    |
+| **Storage**                      |                    |                    |                    |
 | Blob 儲存體                     | 是                | 是，RSA 2048 位元  | 是                |
 | Premium Blob 儲存體             | 是                | 是，RSA 2048 位元  | 是                |
 | 磁碟儲存體                     | 是                | 是                | -                  |

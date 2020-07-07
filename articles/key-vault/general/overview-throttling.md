@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432082"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 節流指導方針
@@ -41,7 +41,7 @@ Key Vault 最初是以[Azure Key Vault 服務限制](service-limits.md)中指定
 
 | 保存庫名稱 | 保存庫區域 | 物件類型（秘密、金鑰或 Cert） | 作業（秒） * | 索引鍵類型 | 金鑰長度或曲線 | HSM 金鑰？| 需要穩定狀態 RPS | 需要尖峰 RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Key | 簽署 | EC | P-256 | 否 | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | 機碼 | 簽署 | EC | P-256 | 否 | 200 | 1000 |
 
 \*如需可能值的完整清單，請參閱[Azure Key Vault 作業](/rest/api/keyvault/key-operations)。
 
@@ -96,7 +96,7 @@ SecretClientOptions options = new SecretClientOptions()
 
 此時，您應該不會收到 HTTP 429 回應碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 如需在 Microsoft Cloud 上進行節流處理的詳細資訊，請參閱[節流模式](https://docs.microsoft.com/azure/architecture/patterns/throttling) \(英文\)。
 

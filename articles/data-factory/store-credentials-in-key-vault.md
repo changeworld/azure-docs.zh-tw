@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451681"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中儲存認證
@@ -25,7 +25,7 @@ ms.locfileid: "81451681"
 
 目前，自訂活動以外的所有活動類型都支援這項功能。 特別針對連接器設定，查看[每個連接器主題](copy-activity-overview.md#supported-data-stores-and-formats)中的＜連結服務屬性＞一節以取得詳細資訊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此功能依賴 data factory 受控識別。 瞭解其如何從[data factory 的受控識別](data-factory-service-identity.md)運作，並確定您的 data factory 具有相關聯的資料處理站。
 
@@ -49,7 +49,7 @@ ms.locfileid: "81451681"
 
 **使用編寫 UI：**
 
-選取 [**連接** -> ] [**連結服務** -> ] [**新增**]。 在 [新增連結服務] 中，搜尋並選取 [Azure Key Vault]：
+選取 [**連接**] [  ->  **連結服務**] [  ->  **新增**]。 在 [新增連結服務] 中，搜尋並選取 [Azure Key Vault]：
 
 ![搜尋 Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 

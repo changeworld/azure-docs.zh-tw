@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ce7b4dab18954d26b411948a6a436b16317f4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6c8955eb62ca413460a45b8cddf46c43bcd80af
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158274"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>教學課程：Azure Active Directory 與 EmpCenter 整合
 
@@ -108,10 +108,10 @@ EmpCenter 與 Azure AD 整合提供下列優點：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
     
-    | |
-    |--|
-    | `https://<subdomain>.EmpCenter.com/<instancename>` |
-    | `https://<subdomain>.workforcehosting.com/<instancename>` |
+    ```https
+    https://<subdomain>.EmpCenter.com/<instancename>
+    https://<subdomain>.workforcehosting.com/<instancename>
+    ```
 
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [EmpCenter 用戶端支援小組](https://www.workforcesoftware.com/services/customer-support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
