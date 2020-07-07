@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546197"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理程式和 IoT Edge 中樞模組對應項的屬性
@@ -23,7 +23,7 @@ IoT Edge 代理程式和 IoT Edge 中樞是構成 IoT Edge 執行階段的兩個
 
 模組對應項包括：
 
-* **所需的屬性**。 解決方案後端可以設定所需的屬性，而模組可以讀取它們。 此模組也可以接收所需屬性中變更的通知。 所需屬性會與報告屬性一起使用，以同步處理模組設定或狀況。
+* **所需屬性**。 解決方案後端可以設定所需的屬性，而模組可以讀取它們。 此模組也可以接收所需屬性中變更的通知。 所需的屬性會搭配報告屬性使用，以便同步處理模組的設定或條件。
 
 * **報告屬性**。 模組可以設定報告屬性，而解決方案後端可以讀取和查詢它們。 報告屬性會與所需屬性搭配使用，以同步處理模組設定或狀況。
 
@@ -53,8 +53,8 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 | modules.{moduleId}.version | 使用者定義的字串，表示此模組的版本。 | 是 |
 | modules.{moduleId}.type | 必須為「docker」 | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
-| modules.{moduleId}.restartPolicy | {「永不\| 」」在失敗時 " \| " 發生狀況不良\| "" always "} | 是 |
-| 模組.{moduleId}. imagePullPolicy | {"建立中" \| "never"} | 否 |
+| modules.{moduleId}.restartPolicy | {「永不 \| 」「發生失敗」的 \| 狀況不良 " \| " always "} | 是 |
+| 模組.{moduleId}. imagePullPolicy | {「建立 \| 中」「永不」} | 否 |
 | 模組.{moduleId}. env | 要傳遞至模組的環境變數清單。 採用格式`"<name>": {"value": "<value>"}` | 否 |
 | modules.{moduleId}.settings.image | 模組映像的 URI。 | 是 |
 | modules.{moduleId}.settings.createOptions | stringified JSON，包含模組容器的建立選項。 [Docker 建立選項](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |

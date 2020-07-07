@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
 ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585861"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
@@ -31,7 +31,7 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 |資源類型  |支援的維度 |多資源警示| 可用的計量|
 |---------|---------|-----|----------|
 |Microsoft.ApiManagement/service | 是| 否 | [API 管理](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
-|AppPlatform/春季 |否| 是|
+|Microsoft.AppPlatform/Spring |否| 是|
 |Microsoft.Automation/automationAccounts | 是| 否 | [自動化帳戶](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
 |Microsoft.Batch/batchAccounts | N/A| 否 | [批次帳戶](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
 |Microsoft.Cache/Redis|是| 否 |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
@@ -42,33 +42,33 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 |Microsoft.classicstorage/storageAccounts/mmxclassic/tableServices|否|是| |
 |Microsoft.CognitiveServices/accounts| N/A | 否 | [認知服務](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines |是 | 是 | [虛擬機器](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |N/A | 是 |[虛擬機器擴展集](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets |不適用 | 是 |[虛擬機器擴展集](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | 是| 否 | [容器群組](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft.ContainerService/managedClusters | 是 | 否 | [受控叢集](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
-|DataBoxEdge/dataBoxEdgeDevices | 是 | 是 | |
+|Microsoft.DataBoxEdge/dataBoxEdgeDevices | 是 | 是 | |
 |Microsoft.DataFactory/datafactories| 是| 否 | [資料處理站 V1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories |是 | 否 |[資料處理站 (V2)](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
-|DataShare/accounts |否| 是|
+|Microsoft.DataShare/accounts |否| 是|
 |Microsoft.DBforMySQL/servers |N/A| 否 |[適用於 MySQL 的 DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/servers |N/A | 否 | [適用於 PostgreSQL 的 DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.Devices/IotHubs | N/A | 否 |[IoT 中樞計量](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
 |Microsoft.Devices/provisioningServices| 是 | 否 |[DPS 計量](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
-|EventGrid/網域|否|是| |
-|Microsoft.EventGrid/topics |是 | 否 |[事件方格主題](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
+|Microsoft.EventGrid/domains|否|是| |
+|Microsoft.EventGrid/topics |是 | 否 |「事件方格主題」|
 |Microsoft.EventHub/clusters |是| 否 |[事件中樞叢集](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
 |Microsoft.EventHub/namespaces |是| 否 |[事件中樞](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/vaults| 否 |否 |[庫](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows |N/A | 否 |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces|是| 否 | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft.NetApp/netAppAccounts/capacityPools |是| 否 | [Azure NetApp 容量集區](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft NetApp/netAppAccounts/capacityPools/磁片區 |是| 否 | [Azure NetApp 磁片區](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft.NetApp/netAppAccounts/capacityPools/volumes |是| 否 | [Azure NetApp 磁片區](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways|N/A| 否 |  |
 |Microsoft.Network/dnsZones | N/A| 否 | [DNS 區域](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N/A | 否 |[快速路由線路](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | N/A | 否 |[ExpressRoute 線路](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/loadBalancers (僅適用於標準 SKU)| 是| 否 | [負載平衡器](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft 網路/natGateways|否|是|
 |Microsoft 網路/privateEndpoints|否|是|
-|Microsoft 網路/privateLinkServices|否|是|
+|Microsoft.Network/privateLinkServices|否|是|
 |Microsoft.Network/publicipaddresses |N/A | 否 |[公用 IP 位址](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.Network/trafficManagerProfiles | 是 | 否 | [流量管理員設定檔](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.OperationalInsights/workspaces| 是 | 否 | [Log Analytics 工作區](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|

@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382948"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何使用自訂轉換進行編碼-Azure CLI
@@ -42,9 +42,9 @@ ms.locfileid: "80382948"
 
 下列範例會定義新轉換的要求主體。 我們會定義一組我們想要在使用此轉換時產生的輸出。
 
-在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用`{Label}`或`{Bitrate}`宏，此範例會顯示前者。
+在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用 `{Label}` 或 `{Bitrate}` 宏，此範例會顯示前者。
 
-我們要將此轉換儲存在檔案中。 在此範例中，我們將檔案`customPreset.json`命名為。
+我們要將此轉換儲存在檔案中。 在此範例中，我們將檔案命名為 `customPreset.json` 。
 
 ```json
 {
@@ -126,7 +126,7 @@ ms.locfileid: "80382948"
 
 ## <a name="create-a-new-transform"></a>建立新的轉換  
 
-在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 下列`show`命令會傳回`customTransformName`轉換（如果存在的話）：
+在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 下列 `show` 命令 `customTransformName` 會傳回轉換（如果存在的話）：
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
@@ -140,6 +140,6 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱[快速入門：串流影片檔-Azure CLI](stream-files-cli-quickstart.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [Azure CLI](/cli/azure/ams)

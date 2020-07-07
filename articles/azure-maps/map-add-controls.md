@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334571"
 ---
 # <a name="add-controls-to-a-map"></a>將控制項新增至對應
@@ -104,10 +104,10 @@ map.controls.add([
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="導覽控制選項" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>導覽控制選項</a>。
+請參閱 CodePen 上 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>導覽控制選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
-如果您想要建立自訂的導覽控制項，請建立從`atlas.Control`類別擴充的類別，或建立 HTML 專案，並將其放在地圖 div 上方。 讓這個 UI 控制項呼叫 maps `setCamera`函式來移動地圖。 
+如果您想要建立自訂的導覽控制項，請建立從類別擴充的類別， `atlas.Control` 或建立 HTML 專案，並將其放在地圖 div 上方。 讓這個 UI 控制項呼叫 maps 函式 `setCamera` 來移動地圖。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -140,5 +140,5 @@ map.controls.add([
 > [新增多邊形圖層](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [新增氣泡圖層](map-add-bubble-layer.md)
+> [新增泡泡圖層](map-add-bubble-layer.md)
 

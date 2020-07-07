@@ -5,17 +5,17 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80421342"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 備份伺服器將 Exchange Server 備份至 Azure
 
 本文說明如何設定 Microsoft Azure 備份伺服器 (MABS)，以將 Microsoft Exchange Server 備份至 Azure。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定已[安裝並備妥](backup-azure-microsoft-azure-backup.md) Azure 備份伺服器。
 
@@ -47,17 +47,17 @@ ms.locfileid: "80421342"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按 [下一步]  。
+6. 按一下 [下一步] 。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
     選取此選項之後，將會在 MABS 上執行備份一致性檢查，以避免在 Exchange server 上執行**eseutil**命令所產生的 i/o 流量。
 
    > [!NOTE]
-   > 若要使用此選項，您必須將 Ese 和 Eseutil.exe 檔案複製到 MABS 伺服器上的 C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin 目錄。 否則會觸發下列錯誤：  
+   > 若要使用此選項，您必須將 Ese.dll 和 Eseutil.exe 檔案複製到 MABS 伺服器上的 C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin 目錄。 否則會觸發下列錯誤：  
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按 [下一步]  。
+8. 按一下 [下一步] 。
 9. 選取用於 [複製備份]**** 的資料庫，然後按 [下一步]****。
 
    > [!NOTE]
@@ -86,7 +86,7 @@ ms.locfileid: "80421342"
 
     ![指定線上保留期原則](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 確認設定，然後按一下 [建立群組] ****。
-19. 按一下 **關閉**。
+19. 按一下 [關閉] 。
 
 ## <a name="recover-the-exchange-database"></a>復原 Exchange 資料庫
 

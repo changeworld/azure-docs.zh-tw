@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331258"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
@@ -28,9 +28,9 @@ Azure Active Directory (Azure AD) Connect 可讓您的使用者使用相同的�
 
 如果您已熟悉 Azure AD 身分識別模型，而想要深入了解特定的方法，請參閱適當的連結：
 
-* 使用[無縫單一登入 (SSO)](how-to-connect-sso.md) 進行[密碼雜湊同步處理](#password-hash-synchronization)
-* 使用[無縫單一登入 (SSO)](how-to-connect-sso.md) 進行[傳遞驗證](how-to-connect-pta.md)
-* [同盟 SSO (搭配 Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [密碼雜湊同步處理](#password-hash-synchronization)與[無縫單一登入 (SSO)](how-to-connect-sso.md)
+* [傳遞驗證](how-to-connect-pta.md)與[無縫單一登入 (SSO)](how-to-connect-sso.md)
+* [同盟的 SSO (搭配 Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 * [與 PingFederate 同盟](#federation-with-pingfederate)
 
 > [!NOTE] 

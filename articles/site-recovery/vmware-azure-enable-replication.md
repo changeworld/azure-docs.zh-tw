@@ -7,17 +7,17 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584136"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
 本文說明如何啟用將內部部署 VMware 虛擬機器（VM）複寫至 Azure 的方式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您的系統符合下列準則：
 
@@ -49,7 +49,7 @@ ms.locfileid: "80584136"
 
 在您執行本節中的步驟之前，請先參閱下列資訊：
 
-- Azure Site Recovery 現在會將所有新的複寫直接複寫到受控磁片。 進程伺服器會將複寫記錄寫入目的地區域中的快取儲存體帳戶。 這些記錄是用來在具有命名慣例的`asrseeddisk`複本受控磁片中建立復原點。
+- Azure Site Recovery 現在會將所有新的複寫直接複寫到受控磁片。 進程伺服器會將複寫記錄寫入目的地區域中的快取儲存體帳戶。 這些記錄是用來在具有命名慣例的複本受控磁片中建立復原點 `asrseeddisk` 。
 - 從[azurerm.recoveryservices 模組版本 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview)開始，可以取得將複寫到受控磁片的 PowerShell 支援。
 - 在容錯移轉時，您選取的復原點會用來建立目標受控磁片。
 - 先前設定以複寫至目標儲存體帳戶的 Vm 不會受到影響。
@@ -57,7 +57,7 @@ ms.locfileid: "80584136"
 
 若要啟用複寫，請遵循下列步驟：
 
-1. 移至**步驟2：複寫應用程式** > **來源**。 第一次啟用複寫之後，請選取保存庫中的 [ **+** 複寫]，以啟用其他虛擬機器的複寫。
+1. 移至**步驟2：複寫應用程式**  >  **來源**。 第一次啟用複寫之後，請選取保存庫中的 [ **+** 複寫]，以啟用其他虛擬機器的複寫。
 1. 在 [來源]**** 頁面 > [來源]**** 中，選取組態伺服器。
 1. 針對 [**電腦類型**]，選取 [**虛擬機器**] 或 [**實體機器**]。
 1. 在 [vCenter/vSphere Hypervisor]**** 中，選取管理 vSphere 主機的 vCenter 伺服器，或選取主機。 如果您要複寫實體電腦，此設定並不相關。
@@ -75,16 +75,16 @@ ms.locfileid: "80584136"
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="啟用複寫目標視窗":::
 
-1. 針對 [**虛擬** > 機]，選取 [**虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可啟用複寫的虛擬機器。 然後選取 [確定]  。 如果您看不到或未選取任何特定的虛擬機器，請參閱[Azure 入口網站不會列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication)來解決問題。
+1. 針對 [**虛擬**機]，選取 [  >  **虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可啟用複寫的虛擬機器。 然後選取 [確定]。 如果您看不到或未選取任何特定的虛擬機器，請參閱[Azure 入口網站不會列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication)來解決問題。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="啟用複寫選取虛擬機器視窗":::
 
-1. 針對 [**屬性** > ] [**設定屬性**]，選取進程伺服器用來在 VM 上自動安裝 Site Recovery 行動服務的帳戶。 此外，請根據您的資料變換模式，選擇要用於複寫的目標受控磁片類型。
-1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不進行複寫，請清除您不想要複寫之任何磁片的 [**包含**] 核取方塊。 然後選取 [確定]  。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
+1. 針對 [**屬性**] [  >  **設定屬性**]，選取進程伺服器用來在 VM 上自動安裝 Site Recovery 行動服務的帳戶。 此外，請根據您的資料變換模式，選擇要用於複寫的目標受控磁片類型。
+1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不進行複寫，請清除您不想要複寫之任何磁片的 [**包含**] 核取方塊。 然後選取 [確定]。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="啟用複寫設定屬性視窗":::
 
-1. 從 [複寫**設定** > ] [設定複寫**設定**] 中，確認已選取正確的複寫原則。 您可以在 [**設定** > ] [**複製** > 策略] [_原則_ > ] [**編輯設定**] 中修改複寫原則設定。 套用至原則的變更也適用于複寫和新的虛擬機器。
+1. 從 [複寫**設定**] [設定複寫  >  **設定**] 中，確認已選取正確的複寫原則。 您可以在 [**設定**] [複寫原則] [原則] [  >  **Replication policies**  >  _policy name_  >  **編輯設定**] 中修改複寫原則設定。 套用至原則的變更也適用于複寫和新的虛擬機器。
 1. 如果您想要將虛擬機器收集到複寫群組，請啟用 [**多部 VM 一致性**]。 指定群組的名稱，然後選取 **[確定]**。
 
    > [!NOTE]
@@ -93,15 +93,15 @@ ms.locfileid: "80584136"
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="啟用複寫視窗":::
 
-1. 選取 [**啟用**複寫]。 您可以在 [**設定** > ] [**作業** > ]**Site Recovery 作業**追蹤 [**啟用保護**] 作業的進度。 執行「**完成保護**」工作之後，虛擬機器即準備好進行容錯移轉。
+1. 選取 [啟用複寫]。 您可以在 [**設定**] [ **Enable Protection**  >  **作業**]  >  **Site Recovery 作業**追蹤 [啟用保護] 作業的進度。 執行「**完成保護**」工作之後，虛擬機器即準備好進行容錯移轉。
 
 ## <a name="view-and-manage-vm-properties"></a>檢視及管理 VM 屬性
 
 接下來，請確認來源虛擬機器的屬性。 請記住，Azure VM 名稱應該符合 [Azure 虛擬機器需求](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
-1. 移至 [**設定** > ] [複寫的**專案**]，然後選取虛擬機器。 [**基本**資料] 頁面會顯示 VM 設定和狀態的相關資訊。
+1. 移至 [**設定**]  >  [複寫的**專案**]，然後選取虛擬機器。 [**基本**資料] 頁面會顯示 VM 設定和狀態的相關資訊。
 1. 在 [屬性]**** 中，您可以檢視 VM 的複寫和容錯移轉資訊。
-1. 在 [**計算和網路** > ] [**計算屬性**] 中，您可以變更多個 VM 屬性。
+1. 在 [**計算和網路**] [  >  **計算屬性**] 中，您可以變更多個 VM 屬性。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[計算和網路屬性] 視窗":::
 

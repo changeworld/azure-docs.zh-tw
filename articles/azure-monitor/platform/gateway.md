@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298343"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 閘道將電腦連線，而不需要網際網路存取
@@ -68,8 +68,8 @@ Log Analytics 閘道會將資料從代理程式直接傳輸到服務。 它不�
 
 Log Analytics 閘道提供下列語言版本：
 
-- 中文 (簡體)
-- 中文 (繁體)
+- 簡體中文
+- 繁體中文
 - 捷克文
 - 荷蘭文
 - 英文
@@ -97,8 +97,8 @@ Log Analytics 閘道僅支援傳輸層安全性（TLS）1.0、1.1 和1.2。  它
 
 |閘道 |支援的代理程式（近似）|  
 |--------|----------------------------------|  
-|CPU： Intel （r）處理器 E5- \@ 2660 V3 2.6 GHz 2 核心<br> 記憶體： 4 GB<br> 網路頻寬： 1 Gbps| 600|  
-|CPU： Intel （r）處理器 E5- \@ 2660 V3 2.6 GHz 4 核心<br> 記憶體： 8 GB<br> 網路頻寬： 1 Gbps| 1000|  
+|CPU： Intel （r）處理器 E5-2660 v3 \@ 2.6 GHz 2 核心<br> 記憶體： 4 GB<br> 網路頻寬： 1 Gbps| 600|  
+|CPU： Intel （r）處理器 E5-2660 v3 \@ 2.6 GHz 4 核心<br> 記憶體： 8 GB<br> 網路頻寬： 1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>下載 Log Analytics 閘道
 
@@ -117,7 +117,7 @@ Log Analytics 閘道僅支援傳輸層安全性（TLS）1.0、1.1 和1.2。  它
 或 
 
 1. 在您的工作區刀鋒視窗中，於 [設定] **** 下選取 [進階設定]****。
-1. 前往 [連線的**來源** > ] [**Windows 伺服器**]，然後選取 [**下載 Log Analytics 閘道**]。
+1. 前往 [連線的**來源**] [  >  **Windows 伺服器**]，然後選取 [**下載 Log Analytics 閘道**]。
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>使用安裝程式安裝 Log Analytics 閘道
 
@@ -141,7 +141,7 @@ Log Analytics 閘道僅支援傳輸層安全性（TLS）1.0、1.1 和1.2。  它
    ![閘道 proxy 設定的螢幕擷取畫面](./media/gateway/gateway-wizard02.png)
 
 1. 如果您未啟用 Microsoft Update，[Microsoft Update] 頁面隨即出現，您可以選擇啟用它。 進行選取，然後選取 **[下一步]**。 否則，請繼續下一個步驟。
-1. 在 [**目的地資料夾**] 頁面上，保留預設資料夾 C:\Program files\oms gateway gateway，或輸入您要安裝閘道的位置。 然後選取 [下一步]  。
+1. 在 [**目的地資料夾**] 頁面上，保留預設資料夾 C:\Program files\oms gateway gateway，或輸入您要安裝閘道的位置。 然後選取 [下一步]。
 1. 在 [**準備安裝**] 頁面上，選取 [**安裝**]。 如果 [使用者帳戶控制] 要求安裝的許可權，請選取 **[是]**。
 1. 安裝完成之後，請選取 **[完成]**。 若要確認服務是否正在執行，請開啟 services.msc 嵌入式管理單元，並確認服務清單**中已顯示**[ **OMS 閘道**]，且其狀態為 [執行中]。
 
@@ -153,7 +153,7 @@ Log Analytics 閘道僅支援傳輸層安全性（TLS）1.0、1.1 和1.2。  它
  
 下表將重點放在安裝程式所支援的參數。
 
-|參數| 備忘錄|
+|參數| 備忘稿|
 |----------|------| 
 |PORTNUMBER | 要接聽之閘道的 TCP 通訊埠編號 |
 |PROXY | Proxy 伺服器的 IP 位址 |
@@ -248,7 +248,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果您的 Operations Manager 管理群組第一次向 Log Analytics 工作區註冊，您將不會在 Operations 主控台中看到指定管理群組之 proxy 設定的選項。 只有在已向服務註冊管理群組時，才能使用此選項。  
 
-若要設定整合，請在執行 Operations 主控台的系統上，以及在管理群組中的所有管理伺服器上，使用 Netsh 更新系統 proxy 設定。 請遵循下列步驟：
+若要設定整合，請在執行 Operations 主控台的系統上，以及在管理群組中的所有管理伺服器上，使用 Netsh 更新系統 proxy 設定。 遵循下列步驟：
 
 1. 開啟提升許可權的命令提示字元：
 
@@ -260,17 +260,17 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-完成與 Log Analytics 的整合之後，請執行來移除變更`netsh winhttp reset proxy`。 然後，在 Operations 主控台中，使用 [**設定 proxy 伺服器**] 選項來指定 Log Analytics 閘道伺服器。 
+完成與 Log Analytics 的整合之後，請執行來移除變更 `netsh winhttp reset proxy` 。 然後，在 Operations 主控台中，使用 [**設定 proxy 伺服器**] 選項來指定 Log Analytics 閘道伺服器。 
 
 1. 在 Operations Manager 主控台的 [ **Operations Management Suite**] 底下，**選取 [** 連線]，然後選取 [**設定 Proxy 伺服器**]。
 
    ![Operations Manager 的螢幕擷取畫面，其中顯示 [設定 Proxy 伺服器] 選項](./media/gateway/scom01.png)
 
-1. 選取 [**使用 proxy 伺服器來存取 Operations Management Suite** ]，然後輸入 Log Analytics 閘道伺服器的 IP 位址或負載平衡器的虛擬 ip 位址。 請小心以前置`http://`詞開頭。
+1. 選取 [**使用 proxy 伺服器來存取 Operations Management Suite** ]，然後輸入 Log Analytics 閘道伺服器的 IP 位址或負載平衡器的虛擬 ip 位址。 請小心以前置詞開頭 `http://` 。
 
    ![Operations Manager 的螢幕擷取畫面，其中顯示 proxy 伺服器位址](./media/gateway/scom02.png)
 
-1. 選取 [完成]  。 Operations Manager 管理群組現在已設定為透過閘道伺服器來與 Log Analytics 服務進行通訊。
+1. 選取 [完成]。 Operations Manager 管理群組現在已設定為透過閘道伺服器來與 Log Analytics 服務進行通訊。
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>設定 Operations Manager，其中特定代理程式使用 proxy 伺服器
 
@@ -285,10 +285,10 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 1. 開啟 Operations Manager 主控台，然後選取 [撰寫]**** 工作區。  
 1. 在 [撰寫] 工作區中選取 [規則]****。 
 1. 在 [Operations Manager] 工具列上，選取 [**範圍**] 按鈕。 如果此按鈕無法使用，請確定您已在 [**監視**中] 窗格中選取物件，而不是資料夾。 [範圍管理組件物件]**** 對話方塊會顯示一般會作為目標之類別、群組或物件的清單。 
-1. 在 [**尋找**] 欄位中，輸入**健全狀況服務**並從清單中選取。 選取 [確定]  。  
+1. 在 [**尋找**] 欄位中，輸入**健全狀況服務**並從清單中選取。 選取 [確定]。  
 1. 搜尋 [ **Advisor Proxy 設定規則**]。 
 1. 在 [Operations Manager] 工具列上，選取 [**覆寫**]，然後指向 [覆**寫類別的特定物件：健全狀況服務的覆**]，然後從清單中選取物件。  或建立自訂群組，其中包含您想要套用此覆寫之伺服器的健全狀況服務物件。 然後將覆寫套用至您的自訂群組。
-1. 在 [覆**寫**內容] 對話方塊的 [ **WebProxyAddress** ] 參數旁邊的 [覆**寫**] 資料行中，新增核取記號。  在 [覆**寫值**] 欄位中，輸入 Log Analytics 閘道伺服器的 URL。 請小心以前置`http://`詞開頭。  
+1. 在 [覆**寫**內容] 對話方塊的 [ **WebProxyAddress** ] 參數旁邊的 [覆**寫**] 資料行中，新增核取記號。  在 [覆**寫值**] 欄位中，輸入 Log Analytics 閘道伺服器的 URL。 請小心以前置詞開頭 `http://` 。  
 
     >[!NOTE]
     > 您不需要啟用此規則。 在以 Microsoft System center Advisor 監視伺服器群組為目標的 Microsoft System Center Advisor 安全參考覆寫管理元件中，它已自動使用覆寫進行管理。
@@ -327,9 +327,9 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 步驟3中的錯誤表示模組未匯入。 當 PowerShell 找不到模組時，可能會發生此錯誤。 您可以在 OMS 閘道安裝路徑中找到此模組： *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*。
 
-| **Cmdlet** | **參數** | **說明** | **範例** |
+| **Cmdlet** | **參數** | **描述** | **範例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |Key |取得服務的組態 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |機碼 |取得服務的組態 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |索引鍵 (必要) <br> 值 |變更服務的組態 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |取得轉送 (上游) Proxy 的位址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |位址<br> 使用者名稱<br> 密碼（安全字串） |設定轉送 (上游) Proxy 的位址 (與認證) |1. 設定轉送 proxy 和認證：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 設定不需要驗證的轉送 proxy：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除轉送 proxy 設定：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -350,7 +350,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 下表顯示 Log Analytics 閘道記錄事件的事件識別碼和描述。
 
-| **識別碼** | **說明** |
+| **識別碼** | **描述** |
 | --- | --- |
 | 400 |沒有特定識別碼的任何應用程式錯誤。 |
 | 401 |錯誤組態。 例如，listenPort = "text"，而不是整數。 |

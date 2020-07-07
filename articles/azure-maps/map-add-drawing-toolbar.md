@@ -1,5 +1,5 @@
 ---
-title: 將繪圖工具欄新增至地圖 |Microsoft Azure 對應
+title: 將繪圖工具列新增至地圖 | Microsoft Azure 地圖服務
 description: 如何使用 Azure 地圖服務 Web SDK 將繪製工具列新增至地圖
 author: philmea
 ms.author: philmea
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334491"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>將繪圖工具工具列新增至地圖
@@ -38,7 +38,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="新增繪製工具列" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 [畫筆<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>新增繪圖] 工具列</a>。
+請參閱 CodePen 上 Azure 地圖服務（）的 [畫筆<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>新增繪圖] 工具列</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -62,13 +62,13 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="新增多邊形繪圖工具" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的「畫筆<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>新增多邊形繪製工具</a>」。
+請參閱 CodePen 上 Azure 地圖服務（）的「畫筆<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>新增多邊形繪製工具</a>」 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>變更繪圖轉譯樣式
 
-您可以使用`drawingManager.getLayers()`函式，然後在個別圖層上設定選項，藉以自訂繪製圖形的樣式。 編輯圖形時，針對座標顯示的拖曳控點是 HTML 標籤。 將 HTML 標籤選項傳遞至 [繪圖管理員] 的`dragHandleStyle`和`secondaryDragHandleStyle`選項，即可自訂拖曳控點的樣式。  
+您可以使用函式 `drawingManager.getLayers()` ，然後在個別圖層上設定選項，藉以自訂繪製圖形的樣式。 編輯圖形時，針對座標顯示的拖曳控點是 HTML 標籤。 將 HTML 標籤選項傳遞至 [繪圖管理員] 的和選項，即可自訂拖曳控點的樣式 `dragHandleStyle` `secondaryDragHandleStyle` 。  
 
 下列程式碼會從 [繪圖管理員] 取得轉譯圖層，並修改其選項以變更繪圖的轉譯樣式。 在此情況下，點將會以藍色標記圖示呈現。 線條會是紅色和四個圖元寬。 多邊形會有綠色填滿色彩和橙色外框。 接著，它會將拖曳控點的樣式變更為正方形圖示。 
 
@@ -122,13 +122,13 @@ drawingManager.setOptions({
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="變更繪圖轉譯樣式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>變更繪圖轉譯樣式</a>。
+請參閱 CodePen 上 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>變更繪圖轉譯樣式</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 [繪圖工具] 模組的其他功能：
+了解如何使用繪圖工具模組的其他功能：
 
 > [!div class="nextstepaction"]
 > [取得圖形資料](map-get-shape-data.md)

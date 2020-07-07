@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334402"
 ---
 # <a name="get-shape-data"></a>取得圖形資料
@@ -36,13 +36,13 @@ function getDrawnShapes() {
 
 <br/>
 
-<iframe height="686" title="取得圖形資料" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的以 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>取得圖形資料</a>的畫筆。
+<iframe height="686" title="取得圖形資料" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>請參閱 CodePen 上的以 Azure 地圖服務（）<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>取得圖形資料</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 [繪圖工具] 模組的其他功能：
+了解如何使用繪圖工具模組的其他功能：
 
 > [!div class="nextstepaction"]
 > [回應繪圖事件](drawing-tools-events.md)

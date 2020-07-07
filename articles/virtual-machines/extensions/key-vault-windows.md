@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8e014e7a1c564377582e4503218c4129619daa91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80410740"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
-Key Vault 的 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體來說，此擴充功能會監視儲存在金鑰保存庫中觀察之憑證的清單，並在偵測到變更之後，擷取並安裝對應的憑證。 本文件詳述適用於 Windows 的金鑰保存庫 VM 擴充功能所支援的平台、組態和部署選項。 
+金鑰保存庫 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體來說，此擴充功能會監視儲存在金鑰保存庫中觀察之憑證的清單，並在偵測到變更之後，擷取並安裝對應的憑證。 本文件詳述適用於 Windows 的金鑰保存庫 VM 擴充功能所支援的平台、組態和部署選項。 
 
 ### <a name="operating-system"></a>作業系統
 
@@ -30,11 +30,11 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 ### <a name="supported-certificate-content-types"></a>支援的憑證內容類型
 
 - PKCS #12
-- .PEM
+- PEM
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，其所有設定都會被視為公開資訊。 延伸模組需要受監視的憑證清單、輪詢頻率和目的地憑證存放區。 明確說來：  
+下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，其所有設定都會被視為公開資訊。 延伸模組需要受監視的憑證清單、輪詢頻率和目的地憑證存放區。 具體來說：  
 
 ```json
     {
@@ -65,13 +65,13 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 ```
 
 > [!NOTE]
-> 您觀察到的憑證 Url 格式`https://myVaultName.vault.azure.net/secrets/myCertName`應為。
+> 您觀察到的憑證 URL 格式應該是 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 這是因為`/secrets`路徑不會傳回完整憑證（包括私密金鑰） `/certificates` 。 如需憑證的詳細資訊，請參閱： [Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | 字串 |
@@ -87,9 +87,9 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 擴充功能可以部署到個別的 Vm 或虛擬機器擴展集。 結構描述與組態對於這兩種範本類型都是通用的。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 此擴充功能可以部署到個別的 VM 或虛擬機器擴展集。 結構描述與組態對於這兩種範本類型都是通用的。 
 
-虛擬機器擴充功能的 JSON 設定必須嵌套在範本的虛擬機器資源片段中，特別`"resources": []`是虛擬機器範本的物件，以及在 [物件] 下`"virtualMachineProfile":"extensionProfile":{"extensions" :[]`的虛擬機器擴展集案例。
+虛擬機器擴充功能的 JSON 組態必須在內嵌在範本的虛擬機器資源片段，具體來說，就是虛擬機器範本的 `"resources": []` 物件，而若是虛擬機器擴展集，則會在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 物件下。
 
 ```json
     {
@@ -166,7 +166,7 @@ Azure PowerShell 可以用來將金鑰保存庫 VM 擴充功能部署到現有�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
+Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
  
 * 若要在 VM 上部署擴充功能：
     
@@ -221,4 +221,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

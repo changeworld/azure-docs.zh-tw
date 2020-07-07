@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335240"
 ---
-# <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務地圖控制項
+# <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
 地圖控制項用戶端 JavaScript 程式庫可讓您將地圖和內嵌 Azure 地圖服務功能轉譯到 web 或行動應用程式中。
 
@@ -27,7 +27,7 @@ ms.locfileid: "80335240"
 
 2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項的其中一個：
 
-    * 藉由在 HTML 檔案的`<head>`元素中新增 JavaScript 和樣式表單的參考，使用 AZURE 地圖服務 Web SDK 的全域裝載 CDN 版本：
+    * 藉由在 HTML 檔案的元素中新增 JavaScript 和樣式表單的參考，使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本 `<head>` ：
 
         ```HTML
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
@@ -75,7 +75,7 @@ ms.locfileid: "80335240"
     </body>
    ```
 
-5. 若要初始化地圖控制項，請在 html 主體中定義新的腳本標記。 `id`建立`Map`類別的實例時， `<div>`傳入對應`HTMLElement`或的（例如`document.getElementById('myMap')`，）作為第一個參數。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (AAD) 認證來使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)驗證地圖。 
+5. 若要初始化地圖控制項，請在 html 主體中定義新的腳本標記。 `id` `<div>` 建立類別的實例時，傳入對應或的（例如 `HTMLElement` ， `document.getElementById('myMap')` ）作為第一個參數 `Map` 。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (AAD) 認證來使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)驗證地圖。 
 
    如果您需要建立帳戶或尋找您的金鑰，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示進行。 
 
@@ -183,7 +183,7 @@ ms.locfileid: "80335240"
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 
-Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域`atlas`命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文（"fr-fr"），並將地區視圖設為「自動」：
+Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文（"fr-fr"），並將地區視圖設為「自動」：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -207,7 +207,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> 使用 Web SDK，可以使用不同的語言和區域設定，在相同的頁面上載入多個對應實例。 此外，您可以在使用`setStyle`對應的函式載入對應之後，更新這些設定。 
+> 使用 Web SDK，可以使用不同的語言和區域設定，在相同的頁面上載入多個對應實例。 此外，您可以在使用對應的函式載入對應之後，更新這些設定 `setStyle` 。 
 
 以下是語言設為 "fr-fr" 且地區視圖設為 "Auto" 的 Azure 地圖服務範例。
 
@@ -219,7 +219,7 @@ map = new atlas.Map('myMap', {
 
 Azure 地圖服務 Web SDK 支援 Azure Government 雲端。 所有用來存取 Azure 地圖服務 Web SDK 的 JavaScript 和 CSS Url 都會保持不變。 您必須完成下列工作，才能連接到 Azure 地圖服務平臺的 Azure Government cloud 版本。
 
-使用互動式地圖控制項時，請在建立`Map`類別的實例之前，加入下列程式程式碼。 
+使用互動式地圖控制項時，請在建立類別的實例之前，加入下列程式程式碼 `Map` 。 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -227,13 +227,13 @@ atlas.setDomain('atlas.azure.us');
 
 驗證對應和服務時，請務必使用來自 Azure Government 雲端平臺的 Azure 地圖服務驗證詳細資料。
 
-使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立`SearchURL`類別的實例，並將該網域指向 Azure Government 雲端。
+使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立類別的實例 `SearchURL` ，並將該網域指向 Azure Government 雲端。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為`atlas.azure.us`。 例如，如果使用搜尋 API 服務，請將 URL 網域從`https://atlas.microsoft.com/search/`變更為。 `https://atlas.azure.us/search/`
+如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為 `atlas.azure.us` 。 例如，如果使用搜尋 API 服務，請將 URL 網域從變更 `https://atlas.microsoft.com/search/` 為 `https://atlas.azure.us/search/` 。
 
 ## <a name="next-steps"></a>後續步驟
 

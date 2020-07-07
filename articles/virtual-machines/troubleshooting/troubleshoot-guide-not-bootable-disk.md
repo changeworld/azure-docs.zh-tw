@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80300975"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>開機錯誤–這不是可開機的磁片
 
 本文提供的步驟可解決 Azure 虛擬機器（VM）中的磁片無法啟動的問題。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來觀看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示了「這不是可開機的磁片」訊息的提示。 請插入可開機的軟碟，然後按任意鍵再試一次 ...」。
 
@@ -41,35 +41,35 @@ ms.locfileid: "80300975"
 
 ### <a name="process-overview"></a>程序概觀
 
-1. 建立和存取修復 VM。
+1. 建立及存取修復 VM。
 2. 將分割區狀態設定為作用中。
 3. 修正磁碟分割。
 4. **建議**：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合。
 5. 重建原始 VM。
 
    > [!NOTE]
-   > 當遇到此開機錯誤時，虛擬作業系統無法運作。 您將會在離線模式中進行疑難排解，以解決此問題。
+   > 當遇到此開機錯誤時，虛擬作業系統無法運作。 您將在離線模式下進行疑難排解，以解決此問題。
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用[VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟1-3 來準備修復 VM。
-2. 使用遠端桌面連線連接到修復 VM。
+1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟 1-3 準備修復 VM。
+2. 使用遠端桌面連線連線至修復 VM。
 
 ### <a name="set-partition-status-to-active"></a>將分割區狀態設定為作用中
 
 第1代 Vm 應先確認保存 BCD 存放區的 OS 分割區已標示為使用*中。* 如果您有第2代 VM，請直接跳到[修正磁碟分割](#fix-the-disk-partition)，因為在之後的世代中，*狀態*旗標已被取代。
 
 1. 開啟提升許可權的命令提示字元 *（cmd.exe）*。
-2. 輸入*diskpart*以啟動 diskpart 工具。
+2. 輸入 *diskpart* 以啟動 DISKPART 工具。
 3. 輸入*list disk*以列出系統上的磁片，並識別連結的 OS VHD。
-4. 一旦連接的 OS VHD，請輸入*sel disk #* 以選取磁片。  請參閱 [圖 2]，其中 Disk 1 是連接的 OS VHD。
+4. 找到連結的 OS VHD 之後，請輸入 *sel disk #* 以選取磁碟。  請參閱 [圖 2]，其中 Disk 1 是連接的 OS VHD。
 
    圖 2
 
    ![[圖 2] 顯示的是 * DISKPART * 視窗，其中顯示資料表中顯示的清單磁片命令、磁片0和磁片1的輸出。  同時顯示 [sel disk 1] 命令的輸出，磁片1是選取的磁片](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. 選取磁片後，請輸入 [*清單磁碟分割*]，列出所選磁片的磁碟分割。
-6. 一旦識別開機磁碟分割，請輸入*sel partition #* 以選取磁碟分割。  通常開機磁碟分割的大小大約是 350 MB。  請參閱 [圖 3]，其中磁碟分割1是開機磁碟分割。
+5. 選取磁碟之後，請輸入 *list partition* 以列出所選擇磁碟的磁碟分割。
+6. 識別出開機磁碟分割之後，請輸入 *sel partition #* 以選取該磁碟分割。  通常開機磁碟分割的大小大約是 350 MB。  請參閱 [圖 3]，其中磁碟分割1是開機磁碟分割。
 
    圖 3
 
@@ -92,22 +92,22 @@ ms.locfileid: "80300975"
 
    ![[圖 6] 顯示 [資料分割 1] 設定為 * [作用中：是] 時，包含 * detail partition * 命令輸出的 diskpart 視窗](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. 輸入*exit*關閉 DISKPART 工具並儲存您的設定變更。
+10. 輸入 *exit* 以關閉 DISKPART 工具，並儲存您的設定變更。
 
 ### <a name="fix-the-disk-partition"></a>修正磁碟分割
 
-1. 開啟提升許可權的命令提示字元（cmd.exe）。
+1. 開啟提升權限的命令提示字元 (cmd.exe)。
 2. 使用下列命令在磁片上執行*CHKDSK*並修正錯誤：
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   新增 '/f ' 命令選項將會修正磁片上的任何錯誤。 請務必將取代<DRIVE LETTER>為附加的 OS VHD 的字母。
+   新增 '/f ' 命令選項將會修正磁片上的任何錯誤。 請務必將取代為 <DRIVE LETTER> 附加的 OS VHD 的字母。
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建議：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合
 
 若要啟用記憶體傾印收集和序列主控台，請執行下列腳本：
 
-1. 開啟提升許可權的命令提示字元會話（以系統管理員身分執行）。
+1. 開啟提升權限的命令提示字元工作階段 (以系統管理員身分執行)。
 2. 執行下列命令：
 
    啟用序列主控台
@@ -122,7 +122,7 @@ ms.locfileid: "80300975"
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>啟用 OS 轉儲的建議設定
 
-**載入中斷的 OS 磁片**：
+**載入中斷的作業系統磁碟**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -142,10 +142,10 @@ ms.locfileid: "80300975"
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**卸載中斷的 OS 磁片：**
+**卸載中斷的 OS 磁碟：**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用[Vm 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)來重新組裝 vm。
+使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新組裝 VM。

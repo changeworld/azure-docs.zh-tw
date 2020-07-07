@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546709"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service 的安全性建議
@@ -20,13 +20,13 @@ ms.locfileid: "80546709"
 
 ## <a name="general"></a>一般
 
-| 建議 | 評價 |
+| 建議 | 註解 |
 |-|-|----|
 | 隨時掌握最新資訊 | 使用支援的平臺、程式設計語言、通訊協定和架構的最新版本。 |
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
 
-| 建議 | 評價 |
+| 建議 | 註解 |
 |-|----|
 | 停用匿名存取 | 除非您需要支援匿名要求，否則請停用匿名存取。 如需 Azure App Service 驗證選項的詳細資訊，請參閱[Azure App Service 中的驗證和授權](overview-authentication-authorization.md)。|
 | 需要驗證 | 盡可能使用 App Service authentication 模組，而不是撰寫程式碼來處理驗證和授權。 請參閱[Azure App Service 中的驗證和授權](overview-authentication-authorization.md)。 |
@@ -35,7 +35,7 @@ ms.locfileid: "80546709"
 
 ## <a name="data-protection"></a>資料保護
 
-| 建議 | 評價 |
+| 建議 | 註解 |
 |-|-|
 | 將 HTTP 重新導向至 HTTPs | 根據預設，用戶端可以使用 HTTP 或 HTTPS 連線到 web 應用程式。 我們建議將 HTTP 重新導向至 HTTPs，因為 HTTPS 會使用 SSL/TLS 通訊協定來提供安全連線，這兩者都已加密和驗證。 |
 | 加密對 Azure 資源的通訊 | 當您的應用程式連線至 Azure 資源（例如[SQL Database](https://azure.microsoft.com/services/sql-database/)或[Azure 儲存體](/azure/storage/)）時，連線會保留在 Azure 中。 由於連線會通過 Azure 中的共用網路，因此您應該一律加密所有通訊。 |
@@ -45,7 +45,7 @@ ms.locfileid: "80546709"
 
 ## <a name="networking"></a>網路功能
 
-| 建議 | 評價 |
+| 建議 | 註解 |
 |-|-|
 | 使用靜態 IP 限制 | Windows 上的 Azure App Service 可讓您定義允許存取應用程式的 IP 位址清單。 允許清單可以包含個別 IP 位址，或以子網路遮罩所定義的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure App Service 靜態 IP 限制](app-service-ip-restrictions.md)。  |
 | 使用隔離的定價層 | 除了隔離的定價層之外，所有層都會在 Azure App Service 的共用網路基礎結構上執行您的應用程式。 隔離層會在專用的[App Service 環境](environment/intro.md)內執行應用程式，以提供完整的網路隔離。 App Service 環境就會在您擁有的 [Azure 虛擬網路](/azure/virtual-network/)執行個體中執行。|
@@ -54,10 +54,10 @@ ms.locfileid: "80546709"
 
 ## <a name="monitoring"></a>監視
 
-| 建議 | 評價 |
+| 建議 | 註解 |
 |-|-|
 |使用 Azure 資訊安全中心標準層 | [Azure 資訊安全中心](../security-center/security-center-app-services.md)原本就與 Azure App Service 整合。 它可以執行評估並提供安全性建議。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-請洽詢您的應用程式提供者，以查看是否有額外的安全性需求。 如需有關開發安全應用程式的詳細資訊，請參閱[保護開發檔](../security/fundamentals/abstract-develop-secure-apps.md)。
+請洽詢您的應用程式提供者，以查看是否有額外的安全性需求。 如需開發安全應用程式的詳細資訊，請參閱[安全開發文件](../security/fundamentals/abstract-develop-secure-apps.md)。

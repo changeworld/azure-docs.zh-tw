@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80396412"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
@@ -24,7 +24,7 @@ ms.locfileid: "80396412"
 >
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定符合使用 Microsoft Azure 備份保護工作負載的所有 [必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 。 這些先決條件包含下列各項：
 
@@ -62,7 +62,7 @@ ms.locfileid: "80396412"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按 [下一步]  。
+6. 按一下 [下一步] 。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
     選取此選項之後，將會在 DPM 服務器上執行備份一致性檢查，以避免在 Exchange server 上執行**eseutil**命令所產生的 i/o 流量。
@@ -72,7 +72,7 @@ ms.locfileid: "80396412"
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按 [下一步]  。
+8. 按一下 [下一步] 。
 9. 選取用於 [複製備份]**** 的資料庫，然後按 [下一步]****。
 
    > [!NOTE]
@@ -101,7 +101,7 @@ ms.locfileid: "80396412"
 
     ![指定線上保留期原則](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 確認設定，然後按一下 [建立群組] ****。
-19. 按一下 **關閉**。
+19. 按一下 [關閉] 。
 
 ## <a name="recover-the-exchange-database"></a>復原 Exchange 資料庫
 

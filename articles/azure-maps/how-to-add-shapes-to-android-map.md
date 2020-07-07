@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335598"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 
 本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上轉譯圖形。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80335598"
 
 您可以使用**線條圖層**，在地圖中新增線條，請遵循下列步驟，在地圖上加入線條。
 
-1. 編輯**res > layout > activity_main .xml** ，使其看起來如下所示：
+1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ ms.locfileid: "80335598"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您`MainActivity.java`類別的**onCreate （）** 方法中。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -78,7 +78,7 @@ ms.locfileid: "80335598"
     
     上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會建立**Point**物件的清單。 **LineString**是從點清單建立，並加入至資料來源。 **線條圖層**會呈現包裝在地圖上資料來源中的線條物件。 然後會建立線條圖層，並將資料來源加入其中。
 
-    新增上述程式碼片段之後，您`MainActivity.java`的看起來應該如下所示：
+    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -185,7 +185,7 @@ ms.locfileid: "80335598"
 
 **多邊形圖層**可讓您將多邊形的區域轉譯為地圖。 請遵循下列步驟，在地圖上加入多邊形。
 
-1. 編輯**res > layout > activity_main .xml** ，使其看起來如下所示：
+1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ ms.locfileid: "80335598"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您`MainActivity.java`類別的**onCreate （）** 方法中。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,7 +240,7 @@ ms.locfileid: "80335598"
 
     上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後會從**Point**物件清單建立**多邊形**物件，並將它加入至資料來源。 **多邊形圖層**會呈現地圖上資料來源中包裝的資料。 接著，它會建立多邊形圖層來轉譯多邊形區域，並將資料來源加入其中。 **線條圖層**會呈現包裝在資料來源中的線條物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
 
-    新增上述程式碼片段之後，您`MainActivity.java`的看起來應該如下所示：
+    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
 
     ```Java
     package com.example.myapplication;

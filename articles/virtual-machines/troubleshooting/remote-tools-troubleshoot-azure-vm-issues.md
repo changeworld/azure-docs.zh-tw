@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422612"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用遠端工具對 Azure VM 問題進行疑難排解
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* 此命令必須在相同虛擬網路中的電腦上執行。
->* DIP 或 HostName 可以用來取代\<computer>。
+>* 可以使用 DIP 或主機名稱取代 \<computer>。
 >* -s 參數可確保使用系統帳戶 (系統管理員權限) 來叫用命令。
 >* PsExec 會使用 TCP 連接埠 135 和 445。 因此，您必須在防火牆上開啟這兩個埠。
 
@@ -214,7 +214,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 從相同虛擬網路上的另一個 VM，開啟 [登錄編輯程式] （regedit.exe）。
 
-2. 選取 [檔案 **] [連線網路登入]**。 **File**  > 
+2. 選取**File**  >  **[檔案] [連線網路登入]**。
 
    ![登錄編輯程式](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
@@ -239,7 +239,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 2. 以滑鼠右鍵按一下 [服務 (本機)\]****。
 
-3. 選取 [連線到另一部電腦]****。
+3. 選取 [連線到另一部電腦]。
 
    ![遠端服務](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 

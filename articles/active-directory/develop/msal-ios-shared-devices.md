@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550249"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
@@ -45,7 +45,7 @@ ms.locfileid: "80550249"
 
 1. [**僅限公開預覽期間所需**]具有[雲端裝置管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的使用者必須啟動[Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)，並將其裝置加入組織。
 
-    若要在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory** > **角色和系統管理員** > **雲端裝置管理員**
+    若要在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置管理員**
 
 下列各節可協助您更新應用程式，以支援共用裝置模式。
 
@@ -90,9 +90,9 @@ ms.locfileid: "80550249"
 
 偵測共用裝置模式對您的應用程式很重要。 在共用裝置上使用應用程式時，許多應用程式都需要變更使用者體驗（UX）。 例如，您的應用程式可能會有「註冊」功能，這不適合第一線的背景工作角色，因為他們可能已經有帳戶。 如果您的應用程式是共用的裝置模式，您可能也會想要為其處理資料增加額外的安全性。
 
-使用中`getDeviceInformationWithParameters:completionBlock:`的 API `MSALPublicClientApplication`來判斷應用程式是否在共用裝置模式的裝置上執行。
+使用 `getDeviceInformationWithParameters:completionBlock:` 中的 API `MSALPublicClientApplication` 來判斷應用程式是否在共用裝置模式的裝置上執行。
 
-下列程式碼片段顯示使用`getDeviceInformationWithParameters:completionBlock:` API 的範例。
+下列程式碼片段顯示使用 API 的範例 `getDeviceInformationWithParameters:completionBlock:` 。
 
 #### <a name="swift"></a>Swift
 
@@ -128,7 +128,7 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 
 支援共用裝置模式的另一個重要部分，是判斷裝置上的使用者狀態，並在使用者已變更或裝置上沒有任何使用者時清除應用程式資料。 您必須負責確保資料不會洩漏給另一位使用者。
 
-您可以使用`getCurrentAccountWithParameters:completionBlock:` API 來查詢裝置上目前已登入的帳戶。
+您可以使用 `getCurrentAccountWithParameters:completionBlock:` API 來查詢裝置上目前已登入的帳戶。
 
 #### <a name="swift"></a>Swift
 
@@ -159,7 +159,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 
 ### <a name="globally-sign-in-a-user"></a>全域登入使用者
 
-當裝置設定為共用裝置時，您的應用程式可以呼叫`acquireTokenWithParameters:completionBlock:` API 來登入帳戶。 當第一個應用程式登入帳戶之後，裝置上的所有合格應用程式都可全域使用此帳戶。
+當裝置設定為共用裝置時，您的應用程式可以呼叫 `acquireTokenWithParameters:completionBlock:` API 來登入帳戶。 當第一個應用程式登入帳戶之後，裝置上的所有合格應用程式都可全域使用此帳戶。
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -180,7 +180,7 @@ parameters.loginHint = self.loginHintTextField.text;
 > [!NOTE]
 > 只有在公開預覽期間，才需要執行下列步驟。
 
-在此公開預覽版本中，[適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)只會清除應用程式的狀態。 它不會清除 Safari 瀏覽器上的狀態。 建議您手動清除瀏覽器會話，以確保不會留下任何使用者狀態的追蹤。 您可以使用如下所`signoutFromBrowser`示的選擇性屬性來清除任何 cookie。 這會導致瀏覽器在裝置上短暫啟動。
+在此公開預覽版本中，[適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)只會清除應用程式的狀態。 它不會清除 Safari 瀏覽器上的狀態。 建議您手動清除瀏覽器會話，以確保不會留下任何使用者狀態的追蹤。 您可以使用如下 `signoutFromBrowser` 所示的選擇性屬性來清除任何 cookie。 這會導致瀏覽器在裝置上短暫啟動。
 
 #### <a name="swift"></a>Swift
 

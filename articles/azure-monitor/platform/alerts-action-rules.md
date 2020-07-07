@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80618980"
 ---
 # <a name="action-rules-preview"></a>動作規則（預覽）
@@ -102,7 +102,7 @@ ms.locfileid: "80618980"
 ### <a name="action-rule-details"></a>動作規則詳細資料
 
 最後，設定動作規則的下列詳細資料：
-* Name
+* 名稱
 * 儲存它的資源群組
 * 描述 
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293460"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure Front 中的後端和後端集區
@@ -43,7 +43,7 @@ Front 後端指的是應用程式的主機名稱或公用 IP，可以服務用�
 
 由 Front 門轉寄至後端的要求，包括後端用來抓取目標資源的主機標頭欄位。 此欄位的值通常來自後端 URI，並且具有主機和連接埠。
 
-例如，針對`www.contoso.com`提出的要求將會有主機標頭 www.contoso.com。 如果您使用 Azure 入口網站設定後端，此欄位的預設值會是後端的主機名稱。 如果您的後端已 contoso-westus.azurewebsites.net，則在 Azure 入口網站中，後端主機標頭的自動填入值會是 contoso-westus.azurewebsites.net。 不過，如果您使用 Azure Resource Manager 範本或其他方法，但未明確設定此欄位，則 Front 門會將傳入的主機名稱傳送為主機標頭的值。 如果是針對 www\.contoso.com 提出要求，而且您的後端是 contoso-westus.azurewebsites.net，其標頭欄位為空白，則 Front 門板會將主機標\.頭設定為 www contoso.com。
+例如，針對提出的要求 `www.contoso.com` 將會有主機標頭 www.contoso.com。 如果您使用 Azure 入口網站設定後端，此欄位的預設值會是後端的主機名稱。 如果您的後端已 contoso-westus.azurewebsites.net，則在 Azure 入口網站中，後端主機標頭的自動填入值會是 contoso-westus.azurewebsites.net。 不過，如果您使用 Azure Resource Manager 範本或其他方法，但未明確設定此欄位，則 Front 門會將傳入的主機名稱傳送為主機標頭的值。 如果是針對 www contoso.com 提出要求 \. ，而且您的後端是 contoso-westus.azurewebsites.net，其標頭欄位為空白，則 Front 門板會將主機標頭設定為 www \. contoso.com。
 
 大部分的應用程式後端（Azure Web Apps、Blob 儲存體和雲端服務）都需要主機標頭符合後端的網域。 不過，路由至後端的前端主機將會使用不同的主機名稱，例如 www.contoso.net。
 
@@ -67,7 +67,7 @@ Front 中的後端集區是指接收其應用程式類似流量的一組後端�
 ### <a name="health-probes"></a>健康狀態探查
 Front 門板會將定期 HTTP/HTTPS 探查要求傳送至您所設定的每個後端。 探查要求會判斷每個後端的鄰近性和健康狀態，以對您的終端使用者要求進行負載平衡。 後端集區的健康情況探查設定會定義我們如何輪詢應用程式後端的健康狀態。 下列設定適用于負載平衡設定：
 
-- **路徑**：用於後端集區中所有後端的探查要求的 URL。 例如，如果您的其中一個後端是 contoso-westus.azurewebsites.net，且路徑設定為/probe/test.aspx，而 Front 門板環境（假設通訊協定設定為 HTTP）會將健康情況探查要求傳送至 HTTP\://contoso-westus.azurewebsites.net/probe/test.aspx。
+- **路徑**：用於後端集區中所有後端的探查要求的 URL。 例如，如果您的其中一個後端是 contoso-westus.azurewebsites.net，且路徑設定為/probe/test.aspx，而 Front 門板環境（假設通訊協定設定為 HTTP）會將健康情況探查要求傳送至 HTTP \: //contoso-westus.azurewebsites.net/probe/test.aspx。
 
 - **通訊協定**：定義是否要使用 HTTP 或 HTTPS 通訊協定，將健康情況探查要求從 Front 門傳送到您的後端。
 

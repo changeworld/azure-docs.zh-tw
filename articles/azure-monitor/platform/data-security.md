@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333349"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
@@ -56,7 +56,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 
 下表列出一些可用的解決方案，並提供它們所收集的資料類型範例。
 
-| **解決方法** | **資料類型** |
+| **方案** | **資料類型** |
 | --- | --- |
 | 容量和效能 |效能資料和中繼資料 |
 | 更新管理 |中繼資料和狀態資料 |
@@ -66,7 +66,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 
 下表顯示資料類型範例：
 
-| **資料類型** | **欄位** |
+| **Data type** | **欄位** |
 | --- | --- |
 | 警示 |警示名稱、警示描述、BaseManagedEntityId、問題識別碼、IsMonitorAlert、RuleId、ResolutionState、優先順序、嚴重性、分類、擁有者、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
 | 設定 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |

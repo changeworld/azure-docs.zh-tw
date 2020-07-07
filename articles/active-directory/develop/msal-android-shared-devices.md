@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550262"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
@@ -35,8 +35,8 @@ ms.locfileid: "80550262"
 
 若要建立共用裝置模式應用程式，開發人員和雲端裝置管理員會共同作業：
 
-- 開發人員撰寫單一帳戶應用程式（共用裝置模式中不支援多帳戶應用程式）、新增`"shared_device_mode_supported": true`至應用程式的設定，以及撰寫程式碼來處理像是共用裝置登出之類的專案。
-- 裝置系統管理員會藉由安裝驗證器應用程式來準備要共用的裝置，並使用驗證器應用程式將裝置設定為共用模式。 只有[雲端裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的使用者可以使用[驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory** > **角色和系統管理員** > **雲端裝置管理員**。
+- 開發人員撰寫單一帳戶應用程式（共用裝置模式中不支援多帳戶應用程式）、新增 `"shared_device_mode_supported": true` 至應用程式的設定，以及撰寫程式碼來處理像是共用裝置登出之類的專案。
+- 裝置系統管理員會藉由安裝驗證器應用程式來準備要共用的裝置，並使用驗證器應用程式將裝置設定為共用模式。 只有[雲端裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的使用者可以使用[驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置管理員**。
 
  本文主要著重于開發人員應該考慮的事項。
 
@@ -55,7 +55,7 @@ ms.locfileid: "80550262"
 
 您的應用程式可以建立為支援在個人裝置和共用裝置上執行。 如果您的應用程式目前支援多個帳戶，而您想要支援共用裝置模式，請新增單一帳戶模式的支援。
 
-您可能也會想要讓您的應用程式根據其執行所在的裝置類型來變更其行為。 使用`ISingleAccountPublicClientApplication.isSharedDevice()`來判斷何時以單一帳戶模式執行。
+您可能也會想要讓您的應用程式根據其執行所在的裝置類型來變更其行為。 使用 `ISingleAccountPublicClientApplication.isSharedDevice()` 來判斷何時以單一帳戶模式執行。
 
 有兩個不同的介面，代表您的應用程式所在的裝置類型。 當您從 MSAL 的應用程式 factory 要求應用程式實例時，會自動提供正確的應用程式物件。
 
@@ -63,7 +63,7 @@ ms.locfileid: "80550262"
 
 ![公用用戶端應用程式繼承模型](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-當您取得`PublicClientApplication`物件時，您必須進行型別檢查並轉換成適當的介面。 下列程式碼會檢查是否有多個帳戶模式或單一帳戶模式，並適當地轉換應用程式物件：
+當您取得物件時，您必須進行型別檢查並轉換成適當的介面 `PublicClientApplication` 。 下列程式碼會檢查是否有多個帳戶模式或單一帳戶模式，並適當地轉換應用程式物件：
 
 ```java
 private IPublicClientApplication mApplication;
@@ -84,8 +84,8 @@ private IPublicClientApplication mApplication;
 |  | 共用模式裝置  | 個人裝置 |
 |---------|---------|---------|
 | **帳戶**     | 單一帳戶 | 多個帳戶 |
-| **登入** | 全域 | 全域 |
-| **登出** | 全域 | 每個應用程式都可以控制登出應用程式的本機或應用程式系列。 |
+| **登入** | 全球 | 全球 |
+| **登出** | 全球 | 每個應用程式都可以控制登出應用程式的本機或應用程式系列。 |
 | **支援的帳戶類型** | 僅限工作帳戶 | 支援個人和公司帳戶  |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>為什麼您可能只想要支援單一帳戶模式

@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476902"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>整合 ILB App Service Environment 與 Azure 應用程式閘道 #
@@ -33,14 +33,14 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 * 將應用程式設定為採用自訂網域名稱。
 * 編輯指向應用程式閘道的公用 DNS 主機名稱。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 為了整合應用程式閘道與 ILB App Service Environment，您需要：
 
 * ILB App Service Environment。
 * 在 ILB App Service Environment 中執行的應用程式。
 * 可在網際網路路由傳送的網域名稱，以便搭配 ILB App Service Environment 中的應用程式使用。
-* ILB App Service Environment 使用的 ILB 位址。 這項資訊位於 App Service 環境入口網站的 [**設定** > ] [**IP 位址**] 底下：
+* ILB App Service Environment 使用的 ILB 位址。 這項資訊位於 App Service 環境入口網站的 [**設定**] [  >  **IP 位址**] 底下：
 
     ![ILB App Service Environment 所使用之 IP 位址清單的範例][9]
     
@@ -56,7 +56,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
 ## <a name="configuration-steps"></a>組態步驟 ##
 
-1. 在 Azure 入口網站中，移至 [**新增** > ] [**網路** > ] [**應用程式閘道**]。
+1. 在 Azure 入口網站中，移至 [**新增**] [網路] [  >  **Network**  >  **應用程式閘道**]。
 
 2. 在 [基本資料]**** 區域中：
 
@@ -68,7 +68,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
    d. 於 [資源群組]**** 中建立或選取資源群組。
 
-   e. 於 [位置]**** 中選取 App Service Environment 虛擬網路的位置。
+   e。 於 [位置]**** 中選取 App Service Environment 虛擬網路的位置。
 
    ![新應用程式閘道的建立基本概念][2]
 
@@ -82,7 +82,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
    d. 於 [公用 IP 位址]**** 中選取公用 IP 位址。 如果您沒有公用 IP 位址，請立即建立一個。
 
-   e. 於 [通訊協定]**** 中選取 [HTTP]**** 或 [HTTPS]****。 如果您要設定為 HTTPS，則需要提供 PFX 憑證。
+   e。 於 [通訊協定]**** 中選取 [HTTP]**** 或 [HTTPS]****。 如果您要設定為 HTTPS，則需要提供 PFX 憑證。
 
    f. 對於 [Web 應用程式防火牆]****，您可以啟用防火牆，並視需要將它設定為 [偵測]**** 或 [預防]****。
 

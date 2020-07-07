@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334208"
 ---
-# <a name="connect-to-a-wfs-service"></a>連接到工作流程服務
+# <a name="connect-to-a-wfs-service"></a>連接到 WFS 服務
 
-Web 功能服務（工作流程）是一種 web 服務，可用於查詢具有標準 API （由開放地理空間協會（OGC）所定義）的空間資料。 空間`WfsClient` IO 模組中的類別可讓開發人員連接至工作流程服務，並查詢服務中的資料。
+Web 功能服務（工作流程）是一種 web 服務，可用於查詢具有標準 API （由開放地理空間協會（OGC）所定義）的空間資料。 `WfsClient`空間 IO 模組中的類別可讓開發人員連接至工作流程服務，並查詢服務中的資料。
 
-`WfsClient`類別支援下列功能：
+類別支援下列功能 `WfsClient` ：
 
-- 支援的版本`1.0.0`： `1.1.0`、和`2.0.0`
-- 支援的篩選運算子：二進位比較、邏輯、數學、值和`bbox`。
-- 要求只會使用`HTTP GET`進行。
+- 支援的版本： `1.0.0` 、 `1.1.0` 和`2.0.0`
+- 支援的篩選運算子：二進位比較、邏輯、數學、值和 `bbox` 。
+- 要求只會使用進行 `HTTP GET` 。
 - 支援的作業：
 
     | | |
@@ -34,18 +34,18 @@ Web 功能服務（工作流程）是一種 web 服務，可用於查詢具有�
 
 ## <a name="using-the-wfs-client"></a>使用工作流程用戶端
 
-空間`atlas.io.ogc.WfsClient` IO 模組中的類別可讓您輕鬆地查詢工作流程服務，並將回應轉換成 GeoJSON 物件。 然後，這個 GeoJSON 物件就可以用於其他對應用途。
+`atlas.io.ogc.WfsClient`空間 IO 模組中的類別可讓您輕鬆地查詢工作流程服務，並將回應轉換成 GeoJSON 物件。 然後，這個 GeoJSON 物件就可以用於其他對應用途。
 
 下列程式碼會查詢工作流程服務，並將傳回的功能呈現在地圖上。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='簡單的工作流程範例' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>Simple 工作流程範例</a>。
+<iframe height='700' scrolling='no' title='簡單的工作流程範例' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>SIMPLE 工作流程範例</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 ## <a name="supported-filters"></a>支援的篩選器
 
-工作流程標準的規格會使用 OGC 篩選器。 工作流程用戶端支援下列篩選準則，假設所呼叫的服務也支援這些篩選器。 自訂篩選字串可以傳遞至`CustomFilter`類別。
+工作流程標準的規格會使用 OGC 篩選器。 工作流程用戶端支援下列篩選準則，假設所呼叫的服務也支援這些篩選器。 自訂篩選字串可以傳遞至 `CustomFilter` 類別。
 
 **邏輯運算子**
 
@@ -82,7 +82,7 @@ Web 功能服務（工作流程）是一種 web 服務，可用於查詢具有�
 
 <br/>
 
-<iframe height='500' scrolling='no' title= '工作流程篩選範例' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen<a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>工作流程篩選器範例</a>。
+<iframe height='500' scrolling='no' title= '工作流程篩選範例' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen<a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>工作流程篩選器範例</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>工作流程 service explorer
@@ -91,10 +91,10 @@ Web 功能服務（工作流程）是一種 web 服務，可用於查詢具有�
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= '工作流程 service explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>工作流程服務瀏覽器</a>。
+<iframe height='700' style='width: 100%;' scrolling='no' title= '工作流程 service explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>工作流程服務瀏覽器</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
-若要存取裝載于未啟用 CORS 之端點上的工作流程服務，可以將已啟用 CORS 的 proxy `proxyService`服務傳遞至工作流程用戶端的選項，如下所示。 
+若要存取裝載于未啟用 CORS 之端點上的工作流程服務，可以將已啟用 CORS 的 proxy 服務傳遞至 `proxyService` 工作流程用戶端的選項，如下所示。 
 
 ```JavaScript
 //Create the WFS client to access the service and use the proxy service settings

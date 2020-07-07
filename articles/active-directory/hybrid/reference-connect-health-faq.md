@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331085"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
@@ -35,7 +35,7 @@ ms.locfileid: "80331085"
 
 下表列出各角色與支援的作業系統版本。
 
-|[角色]| 作業系統/版本|
+|角色| 作業系統/版本|
 |--|--|
 |Active Directory Federation Services (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | 版本 1.0.9125 或更高版本|
@@ -66,7 +66,7 @@ ms.locfileid: "80331085"
 
 德國雲端不支援 Azure AD Connect Health，但[同步處理錯誤報告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
-| 角色 | 特性 | 德國雲端中支援 |
+| 角色 | 功能 | 德國雲端中支援 |
 | ------ | --------------- | --- |
 | 適用於同步處理的 Connect Health | 監視/見解/警示/分析 | 否 |
 |  | 同步處理錯誤報告 | 是 |
@@ -96,7 +96,7 @@ ms.locfileid: "80331085"
 
 **問：在安裝 Azure AD Connect Health 代理程式期間，我是否需要重新啟動我的伺服器？**
 
-不可以。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
+不會。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
 
 例如，在 Windows Server 2008 R2 上安裝 .NET 4.5 Framework 需要重新啟動伺服器。
 
@@ -107,13 +107,13 @@ ms.locfileid: "80331085"
 
 如果需要在代理程式註冊期間設定 Proxy，您可能需要預先修改 Internet Explorer 的 Proxy 設定。
 
-1. 開啟 internet Explorer > [**設定** > ] [**網際網路選項** > **Connections** > ] [連線] [**LAN 設定**]。
+1. 開啟 internet Explorer > [**設定**] [  >  **網際網路選項**] [連線] [  >  **Connections**  >  **LAN 設定**]。
 2. 選取 [**在您的區域網路使用 Proxy 伺服器**]。
 3. 如果您有不同的 HTTP 和 HTTPS/安全 proxy 埠，請選取 [ **Advanced** ]。
 
 **問：連線到 HTTP Proxy 時，Azure AD Connect Health 是否支援基本驗證？**
 
-不可以。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
+不會。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
 
 **問：我需要開放哪些防火牆連接埠，Azure AD Connect Health 代理程式才能運作？**
 

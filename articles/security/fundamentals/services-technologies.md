@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80549196"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
@@ -70,19 +70,19 @@ ms.locfileid: "80549196"
 | [Azure&nbsp;角色&nbsp;型&nbsp;存取控制](/azure/active-directory/role-based-access-control-configure)|存取控制功能，旨在根據使用者在其組織內的角色，只允許他們存取必須存取的資源。  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|雲端式驗證存放庫，可支援多租用戶、雲端式目錄，以及 Azure 內的多項身分識別管理服務。  |
 | [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|身分識別管理服務，可控制客戶在使用以 Azure 為基礎的應用程式時如何註冊、登入及管理其設定檔。   |
-| [Azure Active Directory Domain Services](/azure/active-directory-domain-services/overview)| Active Directory Domain Services 的雲端式受控版本。 |
+| [Azure Active Directory 網域服務](/azure/active-directory-domain-services/overview)| Active Directory Domain Services 的雲端式受控版本。 |
 | [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)| 安全性佈建，其在允許存取受保護的資訊前，採用數種不同形式的驗證。 |
 
 ## <a name="backup-and-disaster-recovery"></a>備份和災害復原
 |服務|描述|
 |------|--------|
-| [Azure&nbsp;備份](/azure/backup/backup-introduction-to-azure-backup)| 以 Azure 為基礎的服務，用來備份和還原 Azure 雲端中的資料。 |
-| [Azure&nbsp;Site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|一項線上服務，可將實體和虛擬機器 (VM) 上執行的工作負載從主要網站複寫到次要位置，以便在失敗後復原服務。 |
+| [Azure &nbsp; 備份](/azure/backup/backup-introduction-to-azure-backup)| 以 Azure 為基礎的服務，用來備份和還原 Azure 雲端中的資料。 |
+| [Azure &nbsp; Site &nbsp; Recovery](/azure/site-recovery/site-recovery-overview)|一項線上服務，可將實體和虛擬機器 (VM) 上執行的工作負載從主要網站複寫到次要位置，以便在失敗後復原服務。 |
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 |服務|描述|
 |------|--------|
-| [網路&nbsp;安全&nbsp;組](/azure/virtual-network/virtual-networks-nsg)| 以網路為基礎的存取控制功能，其使用 5-tuple 來允許或拒絕決策。  |
+| [網路 &nbsp; 安全 &nbsp; 組](/azure/virtual-network/virtual-networks-nsg)| 以網路為基礎的存取控制功能，其使用 5-tuple 來允許或拒絕決策。  |
 | [Azure VPN 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 作為 VPN 端點使用的網路裝置，可允許跨單位存取 Azure 虛擬網路。  |
 | [Azure 應用程式閘道](/azure/application-gateway/application-gateway-introduction)|進階 Web 應用程式負載平衡器，可根據 URL 路由傳送並執行 SSL 卸載。 |
 |[Web 應用程式防火牆](/azure/frontdoor/waf-overview)（WAF）|「應用程式閘道」的一項功能，可集中保護您的 Web 應用程式，防止常見惡意探索和弱點危害|

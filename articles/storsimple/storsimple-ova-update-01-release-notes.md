@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80397872"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 和 0.1 版本資訊
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。 (Microsoft Azure StorSimple Virtual Array 也稱為 StorSimple 內部部署虛擬裝置或 StorSimple 虛擬裝置。) 
 
 版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 部署 StorSimple 虛擬裝置之前，請仔細檢閱版本資訊中所含的資訊。
@@ -54,7 +54,7 @@ Update 0.1 包含下列的錯誤修復和改善。
 ## <a name="issues-fixed-in-the-update-01"></a>Update 0.1 中修正的問題
 下表提供本版已修正問題的摘要。
 
-| 否。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |VMDK |過去在某些 VMware 版本中，OS 磁碟視為疏鬆，從而導致警示並會中斷正常作業。 本版已修正這個問題。 |
 | 2 |iSCSI 伺服器 |在上個版本中，使用者需要為 StorSimple 虛擬裝置每個已啟用的網路介面指定閘道器。 本版已變更這種行為，所以使用者必須為所有已啟用的網路介面設定至少一個閘道器。 |
@@ -65,7 +65,7 @@ Update 0.1 包含下列的錯誤修復和改善。
 ## <a name="known-issues-in-the-update-01"></a>Update 0.1 的已知問題
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。 **此版本中所述的問題版本會以星號標示。這份清單中幾乎所有的問題都已從 GA 版本的 StorSimple Virtual Array 中繼續執行。**
 
-| 否。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行此作業可能會導致裝置之本機層中的所有資料遺失。 | |
@@ -82,6 +82,6 @@ Update 0.1 包含下列的錯誤修復和改善。
 | **十三.** |iSCSI 伺服器 |顯示在 iSCSI 磁碟區的 [使用的儲存體] 在 StorSimple Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器* |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 在 StorSimple Virtual Array 上[安裝更新](storsimple-ova-install-update-01.md)。
 

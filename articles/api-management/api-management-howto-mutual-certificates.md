@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80347097"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何在 Azure API 管理中使用用戶端憑證驗證來保護後端服務
@@ -26,7 +26,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 如需使用 API 管理 REST API 來管理憑證的詳細資訊，請參閱 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 憑證實體</a>。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>先決條件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 3. 按一下 [+新增]**** 按鈕。
     ![新增用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. 瀏覽憑證，並提供其識別碼和密碼。
-5. 按一下 [建立]  。
+5. 按一下 [建立]。
 
 > [!NOTE]
 > 憑證必須是 **.pfx** 格式。 可接受自我簽署憑證。
@@ -86,7 +86,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 ## <a name="self-signed-certificates"></a>自我簽署憑證
 
-如果您使用自我簽署憑證，則需要停用信任鏈結驗證，API 管理才能與後端系統通訊。 否則將會傳回 500 錯誤碼。 若要進行此設定，您可以[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)使用（適用于新的後[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)端）或（適用于現有的後端） `-SkipCertificateChainValidation` PowerShell Cmdlet `True`，並將參數設為。
+如果您使用自我簽署憑證，則需要停用信任鏈結驗證，API 管理才能與後端系統通訊。 否則將會傳回 500 錯誤碼。 若要進行此設定，您可以使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) （適用于現有的後端） PowerShell Cmdlet，並將 `-SkipCertificateChainValidation` 參數設為 `True` 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

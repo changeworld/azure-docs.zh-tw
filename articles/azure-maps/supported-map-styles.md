@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334029"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure 地圖服務支援的地圖樣式
@@ -34,12 +34,12 @@ ms.locfileid: "80334029"
 [**空白**] 和 [ **blank_accessible**地圖樣式] 提供了空白畫布，可在其上將資料視覺化。 即使未顯示基底地圖， **blank_accessible**樣式仍會繼續提供具有地圖位置詳細資料的螢幕閱讀程式更新。
 
 > [!Note]
-> 在 web SDK 中，您可以藉由設定地圖 DIV 元素的 CSS `background-color`樣式來變更地圖的背景色彩。
+> 在 web SDK 中，您可以藉由設定地圖 DIV 元素的 CSS 樣式來變更地圖的背景色彩 `background-color` 。
 
 **適用 API：**
 * Web SDK 地圖控制項
 
-## <a name="satellite"></a>衛星 
+## <a name="satellite"></a>satellite 
 **衛星**樣式是衛星和空拍影像的結合。
 
 ![附屬磚地圖樣式](./media/supported-map-styles/satellite.png)

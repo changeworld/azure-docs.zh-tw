@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335157"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>檢視 Azure 地圖服務 API 使用計量
@@ -42,7 +42,7 @@ ms.locfileid: "80335157"
 
       ![Azure 地圖服務使用計量窗格](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 接下來，您可以按一下 [過去 24 小時 (自動)]**** 來選取「時間範圍」**。 根據預設，時間範圍會設定為 24 小時。 按一下之後，您會看到所有可選取的時間範圍。 在同一個下拉式功能表中，您也可以選取 [時間細微性]**，並選擇以 [當地]** 或 [GMT]** 顯示時間。 按一下 [套用]  。
+5. 接下來，您可以按一下 [過去 24 小時 (自動)]**** 來選取「時間範圍」**。 根據預設，時間範圍會設定為 24 小時。 按一下之後，您會看到所有可選取的時間範圍。 在同一個下拉式功能表中，您也可以選取 [時間細微性]**，並選擇以 [當地]** 或 [GMT]** 顯示時間。 按一下 [套用] 。
 
     ![Azure 地圖服務計量時間範圍](media/how-to-view-api-usage/time-range.png)
 

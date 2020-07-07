@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 3a6162bb381f4e54114e3cabbf138f5b1c6aaae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373024"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
@@ -19,7 +19,7 @@ ms.locfileid: "80373024"
 
 ## <a name="backups"></a>備份
 
-適用於 MySQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 視支援的最大儲存體大小而定，我們會採用完整和差異備份（4 TB 的儲存體伺服器）或快照集備份（最多 16 TB 的儲存體伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以[選擇性地將它](howto-restore-server-portal.md#set-backup-configuration)設定為最多35天。 所有備份皆會使用 AES 256 位元加密進行加密。
+適用於 MySQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 根據支援的儲存體大小上限，我們採用完整和差異備份 (4 TB 儲存體伺服器上限) 或快照集備份 (最多 16 TB 儲存體伺服器上限)。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以[選擇性地將它](howto-restore-server-portal.md#set-backup-configuration)設定為最多35天。 所有備份皆會使用 AES 256 位元加密進行加密。
 
 這些備份檔案不是由使用者公開，而且無法匯出。 這些備份只能用於適用於 MySQL 的 Azure 資料庫中的還原作業。 您可以使用[mysqldump](concepts-migrate-dump-restore.md)來複製資料庫。
 

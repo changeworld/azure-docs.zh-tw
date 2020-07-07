@@ -9,10 +9,10 @@ ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
 ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80529530"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Azure IoT 裝置製造商的安全性作法
@@ -95,7 +95,7 @@ TPM 的缺點：
 請考慮下列變數，以及每一個變數對整體製造程式的影響。 
 
 #### <a name="where-the-certificate-root-of-trust-comes-from"></a>信任的憑證根來自何處
-管理公開金鑰基礎結構（PKI）可能會很昂貴且複雜。  特別是如果您的公司沒有任何管理 PKI 的經驗。 您的選項如下：
+管理公開金鑰基礎結構（PKI）可能會很昂貴且複雜。  特別是如果您的公司沒有任何管理 PKI 的經驗。 選項包括：
 - 使用協力廠商 PKI。 您可以向協力廠商憑證廠商購買中繼簽署憑證。 或者，您可以使用私人憑證授權單位單位（CA）。 
 - 使用自我管理的 PKI。 您可以維護自己的 PKI 系統，並產生您自己的憑證。
 - 使用[Azure Sphere](https://azure.microsoft.com/services/azure-sphere/)的安全性服務。 此選項只適用于 Azure Sphere 裝置。 

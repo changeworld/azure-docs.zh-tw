@@ -1,6 +1,6 @@
 ---
 title: 建立 ASE v1
-description: App service 環境 v1 的建立流程描述。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: App service 環境 v1 的建立流程描述。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: ccompy
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477788"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何建立 App Service 環境 v1 
@@ -20,7 +20,7 @@ ms.locfileid: "80477788"
 > 這篇文章是關於 App Service 環境 v1。 有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入了解新版本，請從 [App Service 環境簡介](intro.md)開始。
 > 
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供多租用戶戳記中不提供的增強式設定功能。 ASE 功能基本上會將 Azure App Service 部署到客戶的虛擬網路中。 若要更深入了解 App Service Environment 所提供的功能，請閱讀[什麼是 App Service Environment][WhatisASE] 文件。
 
 ### <a name="before-you-create-your-ase"></a>建立 ASE 之前

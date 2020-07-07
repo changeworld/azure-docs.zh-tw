@@ -4,10 +4,10 @@ description: 了解如何將現有應用程式封裝為來賓可執行檔，使�
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80520494"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔封裝和部署至 Service Fabric
@@ -22,7 +22,7 @@ ms.locfileid: "80520494"
 
 Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執行檔部署至 Service Fabric 叢集。
 
-1.  > 選擇 **[** 檔案] [新增] [**專案**]，然後建立 Service Fabric 應用程式。
+1. 選擇 **[** 檔案] [新增] [  >  **專案**]，然後建立 Service Fabric 應用程式。
 2. 選擇 [來賓執行檔]**** 做為服務範本。
 3. 按一下 **[流覽]** 以選取包含您可執行檔的資料夾，並填入其餘參數以建立服務。
    * 程式*代碼封裝行為*。 可設定為將資料夾的所有內容複製到 Visual Studio 專案，這在執行檔沒有變更時很有用。 如果您預期會變更可執行檔，並想要以動態方式取得新組建，則可以選擇改為連結到資料夾。 在 Visual Studio 中建立應用程式專案時，您可以使用連結的資料夾。 這會從專案內連結到來源位置，讓您可以在來源目的地更新來賓執行檔。 在組建時使這些更新會成為應用程式套件的一部分。
@@ -178,7 +178,7 @@ SetupEntryPoint 元素用來指定任何應在服務的程式碼啟動前執行�
 
 服務資訊清單檔中的 `EntryPoint` 元素用來指定如何啟動服務。
 
-`ExeHost` 元素指定應用來啟動服務的可執行檔 (和引數)。 您可以選擇性地將 `IsExternalExecutable="true"` 屬性新增至 `ExeHost`，表示此程式為程式碼套件之外的外部可執行檔。 例如： `<ExeHost IsExternalExecutable="true">` 。
+`ExeHost` 元素指定應用來啟動服務的可執行檔 (和引數)。 您可以選擇性地將 `IsExternalExecutable="true"` 屬性新增至 `ExeHost`，表示此程式為程式碼套件之外的外部可執行檔。 例如：`<ExeHost IsExternalExecutable="true">`。
 
 * `Program` 指定應啟動服務的執行檔名稱。
 * `Arguments` 指定應傳遞至可執行檔的引數。 這可以是具有引數的參數清單。
@@ -286,7 +286,7 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> 如果封裝很大或有許多檔案，請在將它複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。 您可以在[這裡](service-fabric-deploy-remove-applications.md#upload-the-application-package)進一步了解。
+> 如果封裝很大或有許多檔案，請在將它複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。 您可以在[這裡](service-fabric-deploy-remove-applications.md#upload-the-application-package)深入了解.
 >
 
 Service Fabric 服務可以各種「組態」部署。 例如，它可部署為單一或多個執行個體，也可以 Service Fabric 叢集的每個節點上有一個服務執行個體的方式部署。

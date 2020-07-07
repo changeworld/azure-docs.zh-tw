@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334300"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用繪圖工具模組
@@ -23,7 +23,7 @@ Azure 地圖服務 Web SDK 提供*繪圖工具模組*。 此模組可讓您輕�
 
 1. 建立新的 HTML 檔案，並[照常執行對應](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
 2. 載入 [Azure 地圖服務繪圖工具] 模組。 您可以透過下列兩種方式的其中一種來載入它：
-    - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 在檔案的`<head>`元素中新增 JAVASCRIPT 和 CSS 樣式表單的參考：
+    - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 在檔案的元素中新增 JavaScript 和 CSS 樣式表單的參考 `<head>` ：
 
         ```html
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
@@ -34,7 +34,7 @@ Azure 地圖服務 Web SDK 提供*繪圖工具模組*。 此模組可讓您輕�
     
         > **npm 安裝 azure-maps-繪圖-工具**
     
-        然後，在檔案的`<head>`元素中新增 JAVASCRIPT 和 CSS 樣式表單的參考：
+        然後，在檔案的元素中新增 JavaScript 和 CSS 樣式表單的參考 `<head>` ：
 
          ```html
         <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
@@ -43,7 +43,7 @@ Azure 地圖服務 Web SDK 提供*繪圖工具模組*。 此模組可讓您輕�
 
 ## <a name="use-the-drawing-manager-directly"></a>直接使用繪圖管理員
 
-在應用程式中載入「繪圖工具」模組之後，您就可以使用「[繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)」來啟用繪製和編輯功能。 您可以指定 [繪製管理員] 的選項，同時具現化或`drawingManager.setOptions()`使用函數。
+在應用程式中載入「繪圖工具」模組之後，您就可以使用「[繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)」來啟用繪製和編輯功能。 您可以指定 [繪製管理員] 的選項，同時具現化或使用 `drawingManager.setOptions()` 函數。
 
 ### <a name="set-the-drawing-mode"></a>設定繪製模式
 
@@ -61,7 +61,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="繪製多邊形" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上的以 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>繪製多邊形</a>的畫筆。
+請參閱 CodePen 上的以 Azure 地圖服務（）<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>繪製多邊形</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -73,7 +73,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 * `freehand `-當滑鼠或觸控拖曳至地圖上時，會加入座標。 
 * `hybrid`-在按一下或拖曳滑鼠或觸控時，會加入座標。
 
-下列程式碼會啟用多邊形繪製模式，並設定繪圖管理員應遵守的繪圖互動類型`freehand`。 
+下列程式碼會啟用多邊形繪製模式，並設定繪圖管理員應遵守的繪圖互動類型 `freehand` 。 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -88,23 +88,23 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自由繪圖" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱<a href='https://codepen.io'>CodePen</a>上的畫筆<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>自由繪圖</a>，方法<a href='https://codepen.io/azuremaps'>@azuremaps</a>是 Azure 地圖服務（）。
+請參閱 CodePen 上的畫筆<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>自由繪圖</a>，方法是 Azure 地圖服務（ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ### <a name="customizing-drawing-options"></a>自訂繪圖選項
 
-先前的範例示範如何在具現化繪圖管理員時自訂繪製選項。 您也可以使用`drawingManager.setOptions()`函數來設定 [繪圖管理員] 選項。 以下工具可讓您使用 setOptions 函式來測試繪圖管理員所有選項的自訂。
+先前的範例示範如何在具現化繪圖管理員時自訂繪製選項。 您也可以使用函數來設定 [繪圖管理員] 選項 `drawingManager.setOptions()` 。 以下工具可讓您使用 setOptions 函式來測試繪圖管理員所有選項的自訂。
 
 <br/>
 
-<iframe height="685" title="自訂繪圖管理員" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的以 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>取得圖形資料</a>的畫筆。
+<iframe height="685" title="自訂繪圖管理員" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>請參閱 CodePen 上的以 Azure 地圖服務（）<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>取得圖形資料</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 [繪圖工具] 模組的其他功能：
+了解如何使用繪圖工具模組的其他功能：
 
 > [!div class="nextstepaction"]
 > [新增繪圖工具列](map-add-drawing-toolbar.md)

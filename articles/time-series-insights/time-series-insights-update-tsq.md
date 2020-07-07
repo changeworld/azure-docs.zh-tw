@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: 23094ec71dac5780def10e16b90de0b818ef3c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80284886"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的資料查詢
@@ -38,7 +38,7 @@ Azure 時間序列深入解析可透過公用 surface Api，對儲存在環境�
 ## <a name="environment-apis"></a>環境 API
 
 * [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get)：傳回呼叫者有權存取的環境清單。
-* [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)：傳回事件時間戳記`$ts`上事件計數的分佈。 此 API 會傳回細分為時間間隔的事件計數（如果有的話），以協助判斷環境中是否有任何事件。
+* [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)：傳回事件時間戳記上事件計數的分佈 `$ts` 。 此 API 會傳回細分為時間間隔的事件計數（如果有的話），以協助判斷環境中是否有任何事件。
 * [取得事件架構 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)：傳回指定搜尋範圍的事件架構中繼資料。 此 API 可協助擷取指定搜尋範圍的結構描述中可用的所有中繼資料和屬性。
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>時間序列模型查詢 (TSM-Q) API

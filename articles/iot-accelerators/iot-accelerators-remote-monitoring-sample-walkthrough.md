@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546304"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>遠端監視解決方案加速器概觀
@@ -138,7 +138,7 @@ ASA 作業從連線裝置將遙測資料傳送到 Time Series Insights 進行儲
 
 解決方案加速器部署使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) 作為 OpenID Connect 提供者。 Azure Active Directory 會儲存使用者資訊，並提供憑證來驗證 JWT 權杖簽章。
 
-## <a name="presentation"></a>展示
+## <a name="presentation"></a>簡報
 
 解決方案在邏輯架構的展示部分中包含下列元件：
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582682"
 ---
 # <a name="streaming-locators"></a>串流定位器
@@ -26,7 +26,7 @@ ms.locfileid: "80582682"
 
 建立**串流定位器**時，您必須指定**資產**名稱和**串流原則**名稱。 如需詳細資訊，請參閱下列主題：
 
-* [資產](assets-concept.md)
+* [Assets](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
 
@@ -98,9 +98,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-* [資產](assets-concept.md)
+* [Assets](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
 * [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)

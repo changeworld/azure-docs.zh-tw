@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335383"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的流量資料
 
 「流量資料」和「事件資料」是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩種類型的流量資料。 事件資料包含像是結構、後端和事故等專案的點和行式資料。 流量資料會顯示有關道路流量的計量。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先[建立 Azure 帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才可以在地圖上顯示流量。 然後，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)並載入對應。
 
 ## <a name="incidents-traffic-data"></a>事件流量資料 
 
-您必須匯入下列程式庫，才能呼叫`setTraffic`和`incidents`：
+您必須匯入下列程式庫，才能呼叫 `setTraffic` 和 `incidents` ：
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- 下列程式碼片段說明如何在地圖上顯示流量資料。 我們會將布林值傳遞給`incidents`方法，並將其傳遞給`setTraffic`方法。 
+ 下列程式碼片段說明如何在地圖上顯示流量資料。 我們會將布林值傳遞給 `incidents` 方法，並將其傳遞給 `setTraffic` 方法。 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>流量流量資料
 
-首先，您必須匯入下列程式庫以呼叫`setTraffic`和`flow`：
+首先，您必須匯入下列程式庫以呼叫 `setTraffic` 和 `flow` ：
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-使用下列程式碼片段來設定流量資料。 與上一節中的程式碼類似，我們會將`flow`方法的傳回值傳遞給`setTraffic`方法。 有四個可以傳遞至`flow`的值，而每個值都會觸發`flow`以傳回個別的值。 然後，的傳回`flow`值會當做引數傳遞至`setTraffic`。 請參閱下表中的這四個值：
+使用下列程式碼片段來設定流量資料。 與上一節中的程式碼類似，我們會將方法的傳回值傳遞 `flow` 給 `setTraffic` 方法。 有四個可以傳遞至的值 `flow` ，而每個值都會觸發 `flow` 以傳回個別的值。 然後，的 `flow` 傳回值會當做引數傳遞至 `setTraffic` 。 請參閱下表中的這四個值：
 
 | | |
 | :-- | :-- |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 若要取得特定功能的事件，您可以使用下列程式碼。 當您按一下某項功能時，程式碼邏輯會檢查事件，並建立事件的相關訊息。 畫面底部會顯示訊息，其中包含詳細資料。
 
-1. 首先，您必須編輯**res > layout > activity_main .xml**，使其看起來如下所示。 您可以使用您`mapcontrol_centerLat`想`mapcontrol_centerLng`要的`mapcontrol_zoom`值來取代、和。 回想一下，縮放層級是介於0和22之間的值。 在縮放層級0，整個世界都適合單一磚。
+1. 首先，您必須編輯**res > layout > activity_main.xml**，使其看起來如下所示。 您可以使用您想要的值來取代 `mapcontrol_centerLat` 、 `mapcontrol_centerLng` 和 `mapcontrol_zoom` 。 回想一下，縮放層級是介於0和22之間的值。 在縮放層級0，整個世界都適合單一磚。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +221,7 @@ protected void onCreate(Bundle savedInstanceState) {
    }
    ```
 
-3. 在您的應用程式中納入上述程式碼之後，您將能夠按一下功能，並查看流量事件的詳細資料。 根據您在**activity_main .xml**檔案中使用的緯度、經度和縮放層級值，您會看到類似下圖的結果：
+3. 在您的應用程式中納入上述程式碼之後，您將能夠按一下功能，並查看流量事件的詳細資料。 根據您在**activity_main.xml**檔案中使用的緯度、經度和縮放層級值，您會看到類似下圖的結果：
 
    <center>
 

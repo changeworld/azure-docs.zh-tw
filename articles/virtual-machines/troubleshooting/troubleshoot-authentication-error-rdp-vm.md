@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420823"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
 本文可協助您針對使用「遠端桌面通訊協定」(RDP) 連線來連線至 Azure 虛擬機器 (VM) 時發生的驗證錯誤進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您擷取一個顯示「歡迎」畫面並指出作業系統正在執行的 Azure VM 螢幕擷取畫面。 不過，當您嘗試使用「遠端桌面連線」來連線到該 VM 時，收到下列其中一個錯誤訊息。
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 與 VM 之間的通訊良好，但 DC 狀況未良好到足以開啟 RDP 工作階段，則您可以嘗試重新啟動 DC。
 
-如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要執行此動作，請依照下列步驟執行：
+如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請執行下列步驟：
 
 1. 使用下列內容來建立名為 Unjoin.ps1 的指令碼，然後在 Azure 入口網站上將該指令碼部署為「自訂指令碼延伸模組」：
 

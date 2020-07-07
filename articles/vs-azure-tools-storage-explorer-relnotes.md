@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351066"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 儲存體總管版本資訊
@@ -120,7 +120,7 @@ ms.locfileid: "80351066"
 * [1.7.0 版](#version-170)
 * [1.6.2 版](#version-162)
 * [1.6.1 版](#version-161)
-* [1.6.0 版](#version-160)
+* [版本1.6。0](#version-160)
 * [1.5.0 版](#version-150)
 * [1.4.4 版](#version-144)
 * [1.4.3 版](#version-143)
@@ -129,7 +129,7 @@ ms.locfileid: "80351066"
 * [1.3.0 版](#version-130)
 * [版本 1.2.0](#version-120)
 * [1.1.0 版](#version-110)
-* [1.0.0 版](#version-100)
+* [1\.0.0 版](#version-100)
 * [0.9.6 版](#version-096)
 * [0.9.5 版](#version-095)
 * [0.9.4 和 0.9.3 版](#version-094-and-093)
@@ -1194,15 +1194,15 @@ ms.locfileid: "80351066"
     ```
 
 
-## <a name="version-100"></a>1.0.0 版
+## <a name="version-100"></a>1\.0.0 版
 04/16/2018
 
 ### <a name="new"></a>新增
 * 增強式驗證，可讓儲存體總管使用與 Visual Studio 2017 相同的帳戶存放區。 若要使用這項功能，您必須重新登入您的帳戶，並重新設定已篩選的訂用帳戶。
 * 對於 AAD 所支援的 Azure Stack 帳戶，如果已啟用 [目標 Azure Stack]，則儲存體總管現在會擷取 Azure Stack 訂用帳戶。 您不再需要建立自訂登入環境。
 * 已新增數個捷徑，以便進行更快速的導覽。 這些包括切換各種面板並在編輯器之間移動。 如需詳細資訊，請參閱 [檢視] 功能表。
-* GitHub 上現在提供儲存體總管意見反應。 按一下左下方的 [意見反應] 按鈕或前往，即可觸達[https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)我們的問題頁面。 請隨意提出建議、回報問題、詢問問題，或留下任何其他形式的意見反應。
-* 如果您遇到 TLS/SSL 憑證問題，而且找不到有問題的憑證，您現在可以從命令列使用`--ignore-certificate-errors`旗標啟動儲存體總管。 使用此旗標啟動時，儲存體總管將會忽略 TLS/SSL 憑證錯誤。
+* GitHub 上現在提供儲存體總管意見反應。 按一下左下方的 [意見反應] 按鈕或前往，即可觸達我們的問題頁面 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 。 請隨意提出建議、回報問題、詢問問題，或留下任何其他形式的意見反應。
+* 如果您遇到 TLS/SSL 憑證問題，而且找不到有問題的憑證，您現在可以從命令列使用旗標啟動儲存體總管 `--ignore-certificate-errors` 。 使用此旗標啟動時，儲存體總管將會忽略 TLS/SSL 憑證錯誤。
 * Blob 和檔案項目的內容功能表中現在有 [下載] 選項。
 * 已改善協助工具和畫面讀取器支援。 如果您需依賴協助工具功能，請參閱[協助工具文件](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)以取得詳細資訊。
 * 儲存體總管現在使用 Electron 1.8.3
@@ -1403,7 +1403,7 @@ ms.locfileid: "80351066"
 
 ### <a name="new"></a>新增
 * Azure Cosmos DB 預覽支援：
-    * [線上文件](./cosmos-db/storage-explorer.md)
+    * [線上檔](./cosmos-db/storage-explorer.md)
     * 建立資料庫和集合
     * 操作資料
     * 查詢、建立或刪除文件
@@ -1459,7 +1459,7 @@ ms.locfileid: "80351066"
 10/20/2017
 ### <a name="new"></a>新增
 * Azure Cosmos DB 預覽支援：
-    * [線上文件](./cosmos-db/storage-explorer.md)
+    * [線上檔](./cosmos-db/storage-explorer.md)
     * 建立資料庫和集合
     * 操作資料
     * 查詢、建立或刪除文件
@@ -1627,7 +1627,7 @@ ms.locfileid: "80351066"
 * 現已能登入以 Azure Active Directory (AAD) 為基礎的 Azure Stack 帳戶。
 * 現已能將大小超過 32MB 的封存檔案上傳至進階儲存體帳戶
 * 改善協助工具支援
-* 您現在可以前往 [編輯-&gt; ssl 憑證-&gt;匯入憑證]，新增信任的 Base-64 編碼的 x.509 TLS/ssl 憑證。
+* 您現在可以前往 [編輯- &gt; Ssl 憑證-匯入憑證]，新增信任的 Base-64 編碼的 X.509 TLS/ssl 憑證。 &gt;
 
 #### <a name="fixes"></a>修正
 
@@ -1756,7 +1756,7 @@ ms.locfileid: "80351066"
 * 同時上傳超過 3 個 Blob 或檔案群組可能會造成錯誤
 * 搜尋功能在處理超過大約 50,000 個節點的搜尋作業之後，可能會影響效能或造成未處理的例外狀況
 
-10/03/2016
+2016 年 10 月 3 日
 ### <a name="version-085"></a>0.8.5 版
 
 #### <a name="new"></a>新增

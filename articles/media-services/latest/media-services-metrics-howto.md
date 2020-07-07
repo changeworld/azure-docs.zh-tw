@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382931"
 ---
 # <a name="monitor-media-services-metrics"></a>監視媒體服務計量
@@ -26,7 +26,7 @@ ms.locfileid: "80382931"
 
 Azure 監視器提供數種與計量互動的方式，包括在入口網站中繪製圖表、透過 REST API 存取它們，或使用 Azure CLI 來查詢它們。 本文說明如何使用 Azure 入口網站圖表和 Azure CLI 監視計量。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)
 - 審查[監視器媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)
@@ -40,7 +40,7 @@ Azure 監視器提供數種與計量互動的方式，包括在入口網站中�
     [**選取資源**] 視窗會出現在右側，並顯示您可以使用的資源清單。 在此情況下，您會看到：
 
     * &lt;媒體服務帳戶名稱&gt;
-    * &lt;媒體服務帳戶名稱&gt;/&lt;串流端點名稱&gt;
+    * &lt;媒體服務帳戶名稱 &gt; / &lt; 串流端點名稱&gt;
     * &lt;儲存體帳戶名稱&gt;
 
     選取資源，**然後按 [** 套用]。 如需支援的資源和計量的詳細資訊，請參閱[監視媒體服務計量](media-services-metrics-diagnostic-logs.md)。
@@ -57,7 +57,7 @@ Azure 監視器提供數種與計量互動的方式，包括在入口網站中�
 
 ## <a name="view-metrics-with-azure-cli"></a>使用 Azure CLI 來查看計量
 
-若要使用 Azure CLI 取得「輸出」計量，您可以執行下列`az monitor metrics`命令：
+若要使用 Azure CLI 取得「輸出」計量，您可以執行下列 `az monitor metrics` 命令：
 
 ```azurecli-interactive
 az monitor metrics list --resource \
@@ -67,7 +67,7 @@ az monitor metrics list --resource \
 
 若要取得其他計量，請將您感興趣的度量名稱替換為「輸出」。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
 * [使用 Azure 監視器建立、查看及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。

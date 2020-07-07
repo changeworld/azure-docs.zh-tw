@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546253"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>調整 Azure 認知搜尋中的容量
@@ -28,7 +28,7 @@ ms.locfileid: "80546253"
 |||
 |-|-|
 |*資料分割* | 為讀寫作業 (例如，在重建或重新整理索引時) 提供索引儲存體和 I/O。 每個資料分割都有總計索引的共用。 如果您配置三個分割區，則您的索引會分為三分之二。 |
-|*複本* | 搜尋服務的執行個體，主要用來讓查詢作業達到負載平衡。 每個複本都是一個索引複本。 如果您配置三個複本，則會有三個索引複本可用於服務查詢要求。|
+|*複本數* | 搜尋服務的執行個體，主要用來讓查詢作業達到負載平衡。 每個複本都是一個索引複本。 如果您配置三個複本，則會有三個索引複本可用於服務查詢要求。|
 
 ## <a name="when-to-add-nodes"></a>新增節點的時機
 
@@ -86,10 +86,10 @@ ms.locfileid: "80546253"
 | **1 個複本** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 個複本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 個複本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 個複本** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 個複本** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 個複本** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 個複本** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **4 個複本** |4 SU |8 SU |12 SU |16 SU |24 SU |不適用 |
+| **5 個複本** |5 SU |10 SU |15 SU |20 SU |30 SU |不適用 |
+| **6 個複本** |6 SU |12 SU |18 SU |24 SU |36 SU |不適用 |
+| **12 個複本** |12 SU |24 SU |36 SU |不適用 |不適用 |不適用 |
 
 SU、定價和容量會在 Azure 網站上詳細說明。 如需詳細資訊，請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/search/)。
 

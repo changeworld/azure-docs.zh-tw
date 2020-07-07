@@ -8,15 +8,15 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478316"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本立 ASE
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -38,7 +38,7 @@ ASE 可以使用 Azure 入口網站或 Azure Resource Manager 範本來建立。
 
 2. 建立 ILB ASE 之後，會上傳符合 ILB ASE 網域的 TLS/SSL 憑證。
 
-3. 已上傳的 TLS/SSL 憑證會指派給 ILB ASE 作為其「預設」 TLS/SSL 憑證。  當 ILB ASE 上的應用程式使用指派給 ASE 的一般根域（例如`https://someapp.mycustomrootdomain.com`）時，會將此憑證用於 TLS/SSL 流量。
+3. 已上傳的 TLS/SSL 憑證會指派給 ILB ASE 作為其「預設」 TLS/SSL 憑證。  當 ILB ASE 上的應用程式使用指派給 ASE 的一般根域（例如）時，會將此憑證用於 TLS/SSL 流量 `https://someapp.mycustomrootdomain.com` 。
 
 
 ## <a name="create-the-ase"></a>建立 ASE
@@ -62,7 +62,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 建立 ASE 約需一小時。 然後在入口網站中，ASE 會顯示在觸發部署之訂用帳戶的 ASE 清單中。
 
 ## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>上傳和設定「預設」 TLS/SSL 憑證
-TLS/SSL 憑證必須與 ASE 相關聯，做為用來建立應用程式之 TLS 連線的「預設」 TLS/SSL 憑證。 如果 ASE 的預設 DNS 尾碼是*internal-contoso.com*，則連接到`https://some-random-app.internal-contoso.com`需要對 **. INTERNAL-CONTOSO.COM*有效的 TLS/SSL 憑證。 
+TLS/SSL 憑證必須與 ASE 相關聯，做為用來建立應用程式之 TLS 連線的「預設」 TLS/SSL 憑證。 如果 ASE 的預設 DNS 尾碼是*internal-contoso.com*，則連接到 `https://some-random-app.internal-contoso.com` 需要對 **. internal-contoso.com*有效的 TLS/SSL 憑證。 
 
 使用內部憑證授權單位單位、向外部簽發者購買憑證，或使用自我簽署憑證，取得有效的 TLS/SSL 憑證。 無論 TLS/SSL 憑證的來源為何，都必須正確設定下列憑證屬性：
 
@@ -105,7 +105,7 @@ azuredeploy.parameters.json** 檔案中有以下參數︰
 * pfxBlobString**：.pfx 檔案的 based64 編碼字串表示法。 使用稍早的程式碼片段，複製 "exportedcert.pfx.b64" 中的字串。 貼上字串作為 pfxBlobString** 屬性的值。
 * **: The  used to secure the .pfx file.
 * *certificateThumbprint*：憑證的指紋。 如果您從 Powershell 擷取此值 (例如先前程式碼片段中的 $certificate.Thumbprint **)，可以直接使用該值。 如果您從 Windows 憑證對話方塊中複製此值，請記得去除多餘的空格。 *CertificateThumbprint*看起來應該像 AF3143EB61D43F6727842115BB7F17BBCECAECAE。
-* *certificateName*：您自己選擇的易記字串識別碼，用來識別憑證。 此名稱會用來做為代表 TLS/SSL 憑證之*Microsoft Web/* certificate 實體的唯一 Resource Manager 識別碼的一部分。 名稱的結尾*必須*是下列尾碼： \_yourASENameHere_InternalLoadBalancingASE。 Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
+* *certificateName*：您自己選擇的易記字串識別碼，用來識別憑證。 此名稱會用來做為代表 TLS/SSL 憑證之*Microsoft Web/* certificate 實體的唯一 Resource Manager 識別碼的一部分。 名稱的結尾*必須*是下列尾碼： \_ yourASENameHere_InternalLoadBalancingASE。 Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
 
 以下是 azuredeploy.parameters.json ** 的縮簡範例︰
 
@@ -136,7 +136,7 @@ azuredeploy.parameters.json** 檔案中有以下參數︰
 }
 ```
 
-填入*azuredeploy.parameters.json」* 檔案之後，請使用 PowerShell 程式碼片段來設定預設的 TLS/SSL 憑證。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
+填入*azuredeploy.parameters.js*檔案之後，請使用 PowerShell 程式碼片段設定預設的 TLS/SSL 憑證。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,7 +147,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 每個 ASE 前端套用變更大約需要 40 分鐘。 例如，有一個預設大小的 ASE 使用兩個前端，則範本將需要大約一小時 20 分鐘的時間才能完成。 執行範本時，無法調整 ASE。  
 
-範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 系統會使用預設的 TLS/SSL 憑證來保護連接。 使用應用程式名稱加上預設主機名稱的組合來定址 ILB ASE 上的應用程式時，會使用預設的 TLS/SSL 憑證。 例如， `https://mycustomapp.internal-contoso.com`會針對 **. internal-contoso.com*使用預設的 TLS/SSL 憑證。
+範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 系統會使用預設的 TLS/SSL 憑證來保護連接。 使用應用程式名稱加上預設主機名稱的組合來定址 ILB ASE 上的應用程式時，會使用預設的 TLS/SSL 憑證。 例如，會 `https://mycustomapp.internal-contoso.com` 針對 **. internal-contoso.com*使用預設的 TLS/SSL 憑證。
 
 不過，就如同在公用多租用戶服務上執行的應用程式，開發人員可以為個別的應用程式設定自訂主機名稱。 他們也可以針對個別應用程式設定唯一的 SNI TLS/SSL 憑證系結。
 

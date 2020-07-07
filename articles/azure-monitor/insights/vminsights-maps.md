@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283849"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用適用於 VM 的 Azure 監視器的對應功能來瞭解應用程式元件
@@ -87,7 +87,7 @@ ms.locfileid: "80283849"
 
 若要直接從 VM 存取適用於 VM 的 Azure 監視器：
 
-1. 在 Azure 入口網站中，選取 [虛擬機器]****。 
+1. 在 Azure 入口網站中，選取 [虛擬機器]。 
 2. 從清單中選擇 VM。 在 [**監視**] 區段中，選擇 [**深入**解析]。  
 3. 選取 [對應]**** 索引標籤。
 
@@ -101,7 +101,7 @@ ms.locfileid: "80283849"
 
 若要直接從虛擬機器擴展集存取適用於 VM 的 Azure 監視器：
 
-1. 在 [Azure 入口網站中，選取 [**虛擬機器擴展集**]。
+1. 在 Azure 入口網站中，選取 [虛擬機器擴展集]。
 2. 從清單中選擇 VM。 然後在 [**監視**] 區段中，選擇 [**深入**解析]。  
 3. 選取 [對應]**** 索引標籤。
 
@@ -114,13 +114,13 @@ ms.locfileid: "80283849"
 ![直接 VM 對應概觀](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->您也可以從虛擬機器擴展集的 [**實例**] 視圖，存取特定實例的對應。 在 [**設定**] 區段中，移至 [**實例** > **深入**解析]。
+>您也可以從虛擬機器擴展集的 [**實例**] 視圖，存取特定實例的對應。 在 [**設定**] 區段中，移至 [**實例**  >  **深入**解析]。
 
 ## <a name="view-a-map-from-azure-monitor"></a>從 Azure 監視器視圖地圖
 
 在 Azure 監視器中，地圖功能會提供 Vm 及其相依性的全域觀點。 若要存取 Azure 監視器中的對應功能：
 
-1. 在 [Azure 入口網站中，選取 [**監視**]。 
+1. 在 Azure 入口網站中，選取 [監視]。 
 2. 在 [**深入**解析] 區段中，選擇 [**虛擬機器**]。
 3. 選取 [對應]**** 索引標籤。
 

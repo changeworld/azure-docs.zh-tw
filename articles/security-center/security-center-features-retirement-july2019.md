@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583227"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>淘汰資訊安全中心功能（2019年7月）
@@ -53,7 +53,7 @@ ms.locfileid: "80583227"
 
 我們鼓勵您使用 Azure Log Analytics 的原生功能來查看您工作區上的值得注意事件。
 
-如果您已在資訊安全中心中建立自訂值得注意的事件，則可加以存取。 在 Log Analytics 中，移至 [**選取工作區** > ] [**已儲存的搜尋**]。 您的資料不會遺失或修改。 您也可以從 Log Analytics 中的相同畫面取得原生值得注意的事件。
+如果您已在資訊安全中心中建立自訂值得注意的事件，則可加以存取。 在 Log Analytics 中，移至 [**選取工作區**] [  >  **已儲存的搜尋**]。 您的資料不會遺失或修改。 您也可以從 Log Analytics 中的相同畫面取得原生值得注意的事件。
 
 ![工作區儲存的搜尋][3]
 

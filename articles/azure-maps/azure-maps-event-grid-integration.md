@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335724"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件格線回應 Azure 地圖服務事件 
@@ -81,8 +81,8 @@ Event Grid 使用[事件訂閱](https://docs.microsoft.com/azure/event-grid/conc
 處理 Azure 地圖服務地理柵欄事件的應用程式應該遵循幾個建議做法：
 
 * 設定多個訂閱以將事件路由至相同的事件處理常式。 請務必不要假設事件是來自特定來源。 請一律檢查訊息主題，以確保訊息來自您預期的來源。
-* 使用回應`X-Correlation-id`標頭中的欄位，來瞭解您的物件相關資訊是否為最新狀態。 訊息的抵達可能會不按順序或有延遲。
-* 當呼叫地理柵欄 API 中的 GET 或 POST 要求，並將 mode 參數設為`EnterAndExit`時，就會針對地理柵欄中的每個幾何（其狀態已從先前的地理柵欄 API 呼叫變更）產生 Enter 或 Exit 事件。
+* 使用 `X-Correlation-id` 回應標頭中的欄位，來瞭解您的物件相關資訊是否為最新狀態。 訊息的抵達可能會不按順序或有延遲。
+* 當呼叫地理柵欄 API 中的 GET 或 POST 要求，並將 mode 參數設為時 `EnterAndExit` ，就會針對地理柵欄中的每個幾何（其狀態已從先前的地理柵欄 API 呼叫變更）產生 Enter 或 Exit 事件。
 
 ## <a name="next-steps"></a>後續步驟
 

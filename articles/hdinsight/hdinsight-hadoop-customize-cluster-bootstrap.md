@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
 ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80529355"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 叢集
@@ -46,16 +46,16 @@ ms.locfileid: "80529355"
 
 如需在建立期間于 HDInsight 叢集上安裝其他元件的相關資訊，請參閱[使用腳本動作自訂 hdinsight 叢集（Linux）](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* 如果使用 PowerShell，您將需要[Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/overview) \(部分機器翻譯\)。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
 下列 PowerShell 程式碼會自訂 [Apache Hive](https://hive.apache.org/) 組態：
 
 > [!IMPORTANT]  
-> 參數`Spark2Defaults`可能需要與[AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)搭配使用。 您可以將空值傳遞給參數，如下列程式碼範例所示。
+> 參數 `Spark2Defaults` 可能需要與[AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)搭配使用。 您可以將空值傳遞給參數，如下列程式碼範例所示。
 
 ```powershell
 # hive-site.xml configuration
@@ -85,8 +85,8 @@ New-AzHDInsightCluster `
 
 **若要確認變更：**
 
-1. 導覽至`https://CLUSTERNAME.azurehdinsight.net/` ， `CLUSTERNAME`其中是您的叢集名稱。
-1. 在左側功能表中，流覽至 [ **Hive 配置** > **Configs** > ] [**Advanced**]。
+1. 導覽至， `https://CLUSTERNAME.azurehdinsight.net/` 其中 `CLUSTERNAME` 是您的叢集名稱。
+1. 在左側功能表中，流覽至 [ **Hive 配置**] [  >  **Configs**  >  **Advanced**]。
 1. 展開 [ **Advanced hive-site**]。
 1. 找出**中繼存放區**，並確認此值為**90 年代**。
 
@@ -138,7 +138,7 @@ Resource Manager 範本中，您可以使用啟動程序︰
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md)提供如何使用其他自訂選項建立 HDInsight 叢集的指示。
 * [開發 HDInsight 的腳本動作腳本](hdinsight-hadoop-script-actions-linux.md)
@@ -147,7 +147,7 @@ Resource Manager 範本中，您可以使用啟動程序︰
 
 ## <a name="appendix-powershell-sample"></a>附錄：PowerShell 範例
 
-此 PowerShell 腳本會建立 HDInsight 叢集，並自訂 Hive 設定。 請務必輸入、 `$nameToken` `$httpPassword`和`$sshPassword`的值。
+此 PowerShell 腳本會建立 HDInsight 叢集，並自訂 Hive 設定。 請務必輸入 `$nameToken` 、和的值 `$httpPassword` `$sshPassword` 。
 
 ```powershell
 ####################################

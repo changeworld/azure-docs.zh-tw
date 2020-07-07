@@ -9,37 +9,37 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334289"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>從開放地理空間協會（OGC）新增地圖圖層
 
-`atlas.layer.OgcMapLayer`類別可以重迭地圖上的 Web 地圖服務（WMS）影像和 web 地圖底圖服務（WMTS）影像。 WMS 是 OGC 所開發的標準通訊協定，可透過網際網路提供 georeferenced 對應影像。 影像 georeferencing 是將影像與地理位置產生關聯的程式。 WMTS 也是 OGC 所開發的標準通訊協定。 其設計目的是要提供預先轉譯和 georeferenced 的地圖底圖。
+`atlas.layer.OgcMapLayer`類別可以重迭地圖上的 Web 地圖服務（WMS）影像和 Web 地圖底圖服務（WMTS）影像。 WMS 是 OGC 所開發的標準通訊協定，可透過網際網路提供 georeferenced 對應影像。 影像 georeferencing 是將影像與地理位置產生關聯的程式。 WMTS 也是 OGC 所開發的標準通訊協定。 其設計目的是要提供預先轉譯和 georeferenced 的地圖底圖。
 
-下列各節概述`OgcMapLayer`類別支援的 web 地圖服務功能。
+下列各節概述類別支援的 web 地圖服務功能 `OgcMapLayer` 。
 
 **Web 地圖服務（WMS）**
 
-- 支援的版本`1.0.0`： `1.1.0`、 `1.1.1`、和`1.3.0`
-- 服務必須支援`EPSG:3857`投影系統，或處理 reprojections。
-- GetFeatureInfo 需要服務支援`EPSG:4326`或處理 reprojections。 
+- 支援的版本： `1.0.0` 、 `1.1.0` 、 `1.1.1` 和`1.3.0`
+- 服務必須支援 `EPSG:3857` 投影系統，或處理 reprojections。
+- GetFeatureInfo 需要服務支援 `EPSG:4326` 或處理 reprojections。 
 - 支援的作業：
 
     | | |
     | :-- | :-- |
     | GetCapabilities | 使用支援的功能來抓取服務的相關中繼資料 |
     | GetMap | 抓取指定區域的地圖影像 |
-    | GetFeatureInfo | 抓取`feature_info`，其中包含功能的相關基礎資料。 |
+    | GetFeatureInfo | 抓取 `feature_info` ，其中包含功能的相關基礎資料。 |
 
 **Web 地圖磚服務（WMTS）**
 
 - 支援的版本：`1.0.0`
-- 磚必須是方形，因此`TileWidth == TileHeight`。
-- 支援 CRS： `EPSG:3857`或`GoogleMapsCompatible` 
-- TileMatrix 識別碼必須是對應至地圖上縮放層級的整數值。 在 azure 地圖上，縮放層級是介於和`"0"` `"22"`之間的值。 因此， `"0"`支援，但`"00"`不支援。
+- 磚必須是方形，因此 `TileWidth == TileHeight` 。
+- 支援 CRS： `EPSG:3857` 或`GoogleMapsCompatible` 
+- TileMatrix 識別碼必須是對應至地圖上縮放層級的整數值。 在 azure 地圖上，縮放層級是介於和之間的值 `"0"` `"22"` 。 因此， `"0"` 支援，但 `"00"` 不支援。
 - 支援的作業：
 
     | | |
@@ -55,7 +55,7 @@ ms.locfileid: "80334289"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 對應圖層範例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地圖圖層範例</a>。
+<iframe height='700' scrolling='no' title='OGC 對應圖層範例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地圖圖層範例</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC 地圖圖層選項
@@ -64,7 +64,7 @@ ms.locfileid: "80334289"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地圖圖層選項' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地圖圖層選項</a>。
+<iframe height='700' scrolling='no' title='OGC 地圖圖層選項' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地圖圖層選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web 地圖服務瀏覽器
@@ -73,7 +73,7 @@ ms.locfileid: "80334289"
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 地圖服務瀏覽器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 地圖服務瀏覽器</a>。
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 地圖服務瀏覽器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上 Azure 地圖服務（）的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 地圖服務瀏覽器</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 您也可以指定要使用 proxy 服務的對應設定。 Proxy 服務可讓您載入未啟用 CORS 的網域上所裝載的資源。
@@ -91,7 +91,7 @@ ms.locfileid: "80334289"
 請參閱下列文章，其中包含您可以新增至對應的程式碼範例：
 
 > [!div class="nextstepaction"]
-> [連接到工作流程服務](spatial-io-connect-wfs-service.md)
+> [連接到 WFS 服務](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
 > [利用核心作業](spatial-io-core-operations.md)

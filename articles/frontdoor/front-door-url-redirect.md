@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295466"
 ---
 # <a name="url-redirect"></a>URL 重新導向
@@ -40,13 +40,13 @@ ms.locfileid: "80295466"
 - **Match 要求**：此選項會保留連入要求所使用的通訊協定。 因此，HTTP 要求會保持 HTTP，而 HTTPS 要求會保留 HTTPS 後重新導向。
 
 ## <a name="destination-host"></a>目的地主機
-在設定重新導向路由的過程中，您也可以變更重新導向要求的主機名稱或網域。 您可以設定此欄位來變更重新導向 URL 中的主機名稱，或保留傳入要求中的主機名稱。 因此，使用此欄位，您可以將傳送至的`https://www.contoso.com/*`所有`https://www.fabrikam.com/*`要求重新導向至。
+在設定重新導向路由的過程中，您也可以變更重新導向要求的主機名稱或網域。 您可以設定此欄位來變更重新導向 URL 中的主機名稱，或保留傳入要求中的主機名稱。 因此，使用此欄位，您可以將傳送至的所有要求重新導向 `https://www.contoso.com/*` 至 `https://www.fabrikam.com/*` 。
 
 ## <a name="destination-path"></a>目的地路徑
-如果您想要將 URL 的路徑區段取代為重新導向的一部分，您可以使用新的路徑值來設定此欄位。 否則，您可以選擇保留路徑值做為重新導向的一部分。 因此，使用此欄位，您可以將傳送至`https://www.contoso.com/\*`的所有要求`https://www.contoso.com/redirected-site`重新導向至。
+如果您想要將 URL 的路徑區段取代為重新導向的一部分，您可以使用新的路徑值來設定此欄位。 否則，您可以選擇保留路徑值做為重新導向的一部分。 因此，使用此欄位，您可以將傳送至的所有要求重新導向 `https://www.contoso.com/\*` 至 `https://www.contoso.com/redirected-site` 。
 
 ## <a name="query-string-parameters"></a>查詢字串參數
-您也可以取代重新導向 URL 中的查詢字串參數。 為了取代傳入要求 URL 中的任何常設查詢字串，請將此欄位設定為 [取代]，然後設定適當的值。 否則，您可以將欄位設定為 [保留]，以保留原始的查詢字串集。 例如，使用此欄位，您可以將傳送至`https://www.contoso.com/foo/bar`的所有流量重新導向`https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`至。 
+您也可以取代重新導向 URL 中的查詢字串參數。 為了取代傳入要求 URL 中的任何常設查詢字串，請將此欄位設定為 [取代]，然後設定適當的值。 否則，您可以將欄位設定為 [保留]，以保留原始的查詢字串集。 例如，使用此欄位，您可以將傳送至的所有流量重新導向 `https://www.contoso.com/foo/bar` 至 `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` 。 
 
 ## <a name="destination-fragment"></a>目的地片段
 目的地片段是 URL 的部分，在 ' # ' 之後，瀏覽器通常會用來在頁面上的特定區段上進行放置。 您可以設定此欄位，以將片段新增至重新導向 URL。

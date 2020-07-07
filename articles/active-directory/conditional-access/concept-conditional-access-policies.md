@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295314"
 ---
 # <a name="building-a-conditional-access-policy"></a>建立條件式存取原則
@@ -26,7 +26,7 @@ ms.locfileid: "80295314"
 
 ![條件式存取（信號 + 決策 + 強制 = 原則）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-## <a name="assignments"></a>指派
+## <a name="assignments"></a>作業
 
 指派部分會控制條件式存取原則的人員、目標和位置。
 
@@ -85,7 +85,7 @@ ms.locfileid: "80295314"
 - 需要多重要素驗證（Azure 多重要素驗證）
 - 需要裝置標記為相容（Intune）
 - 需要已加入混合式 Azure AD 的裝置
-- 需要經過核准的用戶端應用程式
+- 需要已核准的用戶端應用程式
 - 需要應用程式保護原則
 
 系統管理員可以選擇使用下列選項來要求其中一個先前的控制項或所有選取的控制項。 多個控制項的預設值是 [全部要求]。
@@ -115,7 +115,7 @@ ms.locfileid: "80295314"
 條件式存取原則至少必須包含下列各項才能強制執行：
 
 - 原則的**名稱**。
-- **指派**
+- **任務**
    - 要套用原則的**使用者和/或群組**。
    - 要套用原則的**雲端應用程式或動作**。
 - **存取控制**

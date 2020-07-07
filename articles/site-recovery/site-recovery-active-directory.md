@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546508"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>設定 Active Directory 和 DNS 的災害復原
@@ -22,7 +22,7 @@ ms.locfileid: "80546508"
 
 本文說明如何建立 Active Directory 的災害復原解決方案。 其中包括先決條件，以及容錯移轉指示。 開始之前，您應該先熟悉 Active Directory 與 Site Recovery。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 如果您要複寫至 Azure，請[準備 Azure 資源](tutorial-prepare-azure.md)，包括訂用帳戶、Azure 虛擬網路、儲存體帳戶和復原服務保存庫。
 - 請參閱所有元件的[支援需求](site-recovery-support-matrix-to-azure.md)。
@@ -104,11 +104,11 @@ ms.locfileid: "80546508"
 
 從 Windows Server 2012 開始，[Active Directory Domain Services (AD DS) 已內建額外保護措施](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 這些保護措施有助於保護虛擬網域控制站，以避免基礎的虛擬機器平臺支援**GenerationID**時，針對更新序號（USN）復原。 Azure 支援 **VM-GenerationID**。 因此，在 Azure 虛擬機器上執行 Windows Server 2012 或更新版本的網域控制站，具有額外的保護措施。
 
-當 **VM-GenerationID** 重設時，AD DS 資料庫的 **InvocationID** 值也會重設。 此外，也會捨棄相對識別碼（RID）集區，並`SYSVOL`將資料夾標示為非授權。 如需詳細資訊，請參閱[Active Directory Domain Services 虛擬化簡介](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全地虛擬化分散式檔案系統複寫（DFSR）](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671)。
+當 **VM-GenerationID** 重設時，AD DS 資料庫的 **InvocationID** 值也會重設。 此外，也會捨棄相對識別碼（RID）集區，並 `SYSVOL` 將資料夾標示為非授權。 如需詳細資訊，請參閱[Active Directory Domain Services 虛擬化簡介](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全地虛擬化分散式檔案系統複寫（DFSR）](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671)。
 
 容錯移轉至 Azure 可能會導致 **VM-GenerationID** 重設。 重設 **VM-GenerationID** 後，在網域控制站虛擬機器於 Azure 中啟動時將會執行額外的保護措施。 這可能會導致無法登入網域控制站虛擬機器的明顯延遲。
 
-此網域控制站只會用於測試容錯移轉，因此不需要虛擬化保護措施。 若要確保網域控制站虛擬機器的**VM GenerationID**值不會變更，您可以在內部部署網域控制站中， `DWORD`將下列值變更為**4** ：
+此網域控制站只會用於測試容錯移轉，因此不需要虛擬化保護措施。 若要確保網域控制站虛擬機器的**VM GenerationID**值不會變更，您可以 `DWORD` 在內部部署網域控制站中，將下列值變更為**4** ：
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -124,7 +124,7 @@ ms.locfileid: "80546508"
 
   :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="調用識別碼變更":::
 
-- `SYSVOL`資料夾和`NETLOGON`共用無法使用。
+- `SYSVOL`資料夾和 `NETLOGON` 共用無法使用。
 
   :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL 資料夾共用":::
 
@@ -139,7 +139,7 @@ ms.locfileid: "80546508"
 > [!IMPORTANT]
 > 本節所述的部分組態不是標準或預設的網域控制站組態。 如果您不想對生產網域控制站進行這些變更，您可以建立 Site Recovery 測試容錯移轉專用的網域控制站。 您只需對此專用的網域控制站進行變更即可。
 
-1. 在命令提示字元中，執行下列命令來檢查`SYSVOL`資料夾和`NETLOGON`資料夾是否共用：
+1. 在命令提示字元中，執行下列命令來檢查 `SYSVOL` 資料夾和 `NETLOGON` 資料夾是否共用：
 
     `NET SHARE`
 
@@ -165,13 +165,13 @@ ms.locfileid: "80546508"
 
       您也可以使用 PowerShell 函式。 如需詳細資訊，請參閱 [DFSR-SYSVOL 授權/非權威還原 PowerShell 函式](/archive/blogs/thbouche/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions)。
 
-1. 將內部部署網域控制站中的下列登錄機碼設為 **0**，以略過初始同步需求。 如果`DWORD`不存在，您可以在 [**參數**] 節點下建立它。
+1. 將內部部署網域控制站中的下列登錄機碼設為 **0**，以略過初始同步需求。 如果 `DWORD` 不存在，您可以在 [**參數**] 節點下建立它。
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
    如需詳細資訊，請參閱[疑難排解 DNS 事件識別碼 4013：DNS 伺服器無法載入 AD 整合的 DNS 區域](https://support.microsoft.com/kb/2001093)。
 
-1. 停用讓通用類別目錄伺服器可用來驗證使用者登入的需求。 若要這麼做，請在內部部署網域控制站中，將下列登錄機碼設為 **1**。 如果`DWORD`不存在，您可以在**Lsa**節點下建立它。
+1. 停用讓通用類別目錄伺服器可用來驗證使用者登入的需求。 若要這麼做，請在內部部署網域控制站中，將下列登錄機碼設為 **1**。 如果 `DWORD` 不存在，您可以在**Lsa**節點下建立它。
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
@@ -181,7 +181,7 @@ ms.locfileid: "80546508"
 
 如果您在相同的 VM 上執行網域控制站和 DNS，您可以略過此程序。
 
-如果 DNS 與網域控制站不在相同的 VM 上，您必須為測試容錯移轉建立 DNS VM。 您可以使用全新的 DNS 伺服器，並建立所有的必要區域。 例如，如果您的 Active Directory 網域是`contoso.com`，您可以使用名稱`contoso.com`來建立 DNS 區域。 DNS 中對應至 Active Directory 的項目必須更新，如下所示：
+如果 DNS 與網域控制站不在相同的 VM 上，您必須為測試容錯移轉建立 DNS VM。 您可以使用全新的 DNS 伺服器，並建立所有的必要區域。 例如，如果您的 Active Directory 網域是 `contoso.com` ，您可以使用名稱來建立 DNS 區域 `contoso.com` 。 DNS 中對應至 Active Directory 的項目必須更新，如下所示：
 
 1. 確定在復原計劃中的任何其他虛擬機器啟動之前，下列設定均已完成：
 

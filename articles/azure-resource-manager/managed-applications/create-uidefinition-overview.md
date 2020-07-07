@@ -1,20 +1,20 @@
 ---
-title: CreateUiDefinition 入口網站窗格的 json 檔案
+title: 入口網站窗格的檔案 CreateUiDefinition.js
 description: 描述如何建立 Azure 入口網站的使用者介面定義。 定義 Azure 受控應用程式時使用。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294900"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>適用於 Azure 受控應用程式建立體驗的 CreateUiDefinition
 
-本檔介紹**createUiDefinition**的核心概念，此檔案 Azure 入口網站在建立受控應用程式時用來定義使用者介面。
+本檔介紹在建立受控應用程式時，Azure 入口網站用來定義使用者介面之檔案**createUiDefinition.js**的核心概念。
 
 範本如下所示
 
@@ -35,10 +35,10 @@ ms.locfileid: "80294900"
 CreateUiDefinition 一律會包含三個屬性︰ 
 
 * handler (處理常式)
-* 版本
+* version
 * 參數
 
-處理常式應該一律是`Microsoft.Azure.CreateUIDef`，而最新支援的版本`0.1.2-preview`是。
+處理常式應該一律是 `Microsoft.Azure.CreateUIDef` ，而最新支援的版本是 `0.1.2-preview` 。
 
 parameters 屬性的結構描述取決於指定的處理常式和版本之組合。 針對受控應用程式，支援的屬性為 `basics`、`steps` 和 `outputs`。 basics 和 steps屬性包含要在 Azure 入口網站中顯示的[元素](create-uidefinition-elements.md) - 如同文字方塊和下拉式清單。 outputs 屬性可用來將指定元素的輸出值對應至 Azure Resource Manager 部署範本的參數。
 
@@ -85,7 +85,7 @@ Azure 入口網站會使用 `outputs` 屬性，將 `basics` 和 `steps` 的屬�
         ...
 ```  
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 CreateUiDefinition 提供函式來處理[元素的輸入](create-uidefinition-functions.md)和輸出，以及條件之類的功能。 這些函式在 Azure Resource Manager 範本函式的語法和功能上都很類似。
 

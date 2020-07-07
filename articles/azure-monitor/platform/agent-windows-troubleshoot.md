@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333511"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何針對 Log Analytics Windows 代理程式的問題進行疑難排解 
@@ -20,7 +20,7 @@ ms.locfileid: "80333511"
 
 * 具有頂級支援權益的客戶可以透過[頂級支援](https://premier.microsoft.com/)開啟支援要求。
 * 具有 Azure 支援合約的客戶可以在 [Azure 入口網站](https://manage.windowsazure.com/?getsupport=true)開啟支援要求。
-* 請流覽 Log Analytics 意見反應頁面，以查看已提交[https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)的想法和 bug，或提出新的問題。 
+* 請流覽 Log Analytics 意見反應頁面，以查看已提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的問題。 
 
 ## <a name="important-troubleshooting-sources"></a>重要疑難排解來源
 
@@ -38,13 +38,13 @@ ms.locfileid: "80333511"
 |*.oms.opinsights.azure.com |連接埠 443 |輸出|是 |  
 |*.blob.core.windows.net |連接埠 443 |輸出|是 |  
 
-如需 Azure Government 所需的防火牆資訊，請參閱[Azure Government 管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色來連線至自動化服務並向其註冊，以便在您的環境中使用 runbook 或管理解決方案，它必須能夠存取[設定混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的埠號碼和 url。 
+如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
 
 有數種方式可供您確認代理程式是否成功與 Azure 監視器通訊。
 
 - 在工作區中啟用[Azure Log Analytics 代理程式健全狀況評](../insights/solution-agenthealth.md)量。 從 [代理程式健全狀況] 儀表板中，查看 [**沒有回應的代理程式計數**] 資料行，以快速查看是否已列出代理程式。  
 
-- 執行下列查詢，以確認代理程式正在傳送心跳至其設定報告的工作區。 以`<ComputerName>`電腦的實際名稱取代。
+- 執行下列查詢，以確認代理程式正在傳送心跳至其設定報告的工作區。 `<ComputerName>`以電腦的實際名稱取代。
 
     ```
     Heartbeat 
@@ -58,7 +58,7 @@ ms.locfileid: "80333511"
 
     ![TestCloudConnection 工具執行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- 依**事件來源** - *健全狀況服務模組*]、[ *HealthService*] 和 [*服務連接器*] 篩選*Operations Manager*事件記錄檔，並依**事件層級***警告*和*錯誤*篩選，以確認它是否已寫入下表中的事件。 如果是，請檢查每個可能事件所包含的解決步驟。
+- 依**事件來源**健全狀況服務模組]、[HealthService] 和 [服務連接器] 篩選*Operations Manager*事件記錄檔，  -  *Health Service Modules*並依**事件層級***警告*和*錯誤*篩選，以確認它是否已寫入下表中的事件。 *HealthService* *Service Connector* 如果是，請檢查每個可能事件所包含的解決步驟。
 
     |事件識別碼 |來源 |描述 |解決方案 |
     |---------|-------|------------|-----------|
@@ -68,7 +68,7 @@ ms.locfileid: "80333511"
     |2127 |健全狀況服務模組 |傳送資料失敗時發生錯誤代碼 |如果只在一天內定期發生，它可能只是可以忽略的隨機異常。 監視以瞭解其發生頻率。 如果經常發生這種情況，請先檢查您的網路設定和 proxy 設定。 如果描述包含 HTTP 錯誤碼404，而且是第一次代理程式嘗試將資料傳送至服務，則會包含具有內部404錯誤碼的500錯誤。 404表示找不到，這表示新工作區的儲存區域仍在布建中。 下次重試時，資料將會如預期般成功寫入工作區。 HTTP 錯誤403可能表示許可權或認證問題。 403錯誤包含更多的資訊，以協助對問題進行疑難排解。|
     |4000 |服務連接器 |DNS 名稱解析失敗 |電腦無法解析將資料傳送至服務時所使用的網際網路位址。 這可能是您電腦上的 DNS 解析程式設定、不正確的 proxy 設定，或可能是提供者的暫時性 DNS 問題。 如果定期發生，可能是因為暫時性的網路相關問題所造成。|
     |4001 |服務連接器 |連接至服務失敗。 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
-    |4002 |服務連接器 |服務傳回 HTTP 狀態碼 403 以回應查詢。 請洽詢服務系統管理員以取得服務的健全狀況。 稍後將重試查詢。 |此錯誤是在代理程式的初始註冊階段所撰寫，您會看到類似下列的 URL： *Https://\<workspaceID>. oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*。 錯誤碼403表示禁止，而且可能是因為輸入錯誤的工作區識別碼或金鑰，或是電腦上的資料和時間不正確所造成。 如果時間為自目前時間起的 + /-15 分鐘，則上架失敗。 若要修正此錯誤，請更新 Windows 電腦的日期和/或時區。|
+    |4002 |服務連接器 |服務傳回 HTTP 狀態碼 403 以回應查詢。 請洽詢服務系統管理員以取得服務的健全狀況。 稍後將重試查詢。 |此錯誤是在代理程式的初始註冊階段所撰寫，您會看到類似下列的 URL： *HTTPs:// \<workspaceID> . oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*。 錯誤碼403表示禁止，而且可能是因為輸入錯誤的工作區識別碼或金鑰，或是電腦上的資料和時間不正確所造成。 如果時間為自目前時間起的 + /-15 分鐘，則上架失敗。 若要修正此錯誤，請更新 Windows 電腦的日期和/或時區。|
 
 ## <a name="data-collection-issues"></a>資料收集問題
 
@@ -91,7 +91,7 @@ Heartbeat
 
 如果查詢傳回結果，則您需要判斷是否不會收集特定資料類型，並將其轉送至服務。 這可能是因為代理程式未收到來自服務的更新設定，或其他導致代理程式無法正常運作的徵兆所致。 請執行下列步驟以進一步進行疑難排解。
 
-1. 在電腦上開啟提升許可權的命令提示字元，然後輸入`net stop healthservice && net start healthservice`來重新開機 agent 服務。
+1. 在電腦上開啟提升許可權的命令提示字元，然後輸入來重新開機 agent 服務 `net stop healthservice && net start healthservice` 。
 2. 開啟*Operations Manager*事件記錄檔，並從 [**事件來源** *HealthService*] 搜尋**事件識別碼** *7023、7024、7025、7028*和*1210* 。  這些事件表示代理程式已成功接收來自 Azure 監視器的設定，且正在主動監視電腦。 事件識別碼1210的事件描述也會指定代理程式上監視範圍內所包含的所有解決方案和深入解析的最後一行。  
 
     ![事件識別碼1210描述](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)

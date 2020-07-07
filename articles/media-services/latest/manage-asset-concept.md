@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582205"
 ---
 # <a name="manage-assets"></a>管理資產
@@ -45,7 +45,7 @@ ms.locfileid: "80582205"
 
 1. 使用媒體服務 v3 API 建立新的「輸入」資產。 這項作業會在與您媒體服務帳戶相關聯的儲存體帳戶中建立容器。 此 API 會傳回容器名稱 (例如 `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`)。
 
-    如果您已經有想要與資產相關聯的 blob 容器，您可以在建立資產時指定容器名稱。 媒體服務目前僅支援根目錄中的 Blob 容器，且檔案名稱中不能有路徑。 如此一來，檔案名稱為 "input.mp4" 的容器可運作。 不過，具有 "影片/輸入/輸入檔案名稱" 檔案名的容器將無法使用。
+    如果您已經有想要與資產相關聯的 blob 容器，您可以在建立資產時指定容器名稱。 媒體服務目前僅支援根目錄中的 Blob 容器，且檔案名稱中不能有路徑。 如此一來，檔案名稱為 "input.mp4" 的容器可運作。 不過，具有 "影片/輸入/input.mp4" 檔案名的容器將無法使用。
 
     您可以使用 Azure CLI，直接上傳至訂用帳戶中任何您有權存取的儲存體帳戶和容器。
 
@@ -58,7 +58,7 @@ ms.locfileid: "80582205"
 
     您可以使用媒體服務 API 來[列出資產容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
 
-    **AssetContainerSas. listContainerSas**接受您[ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)設定`expiryTime`的 ListContainerSasInput 參數。 時間應設定為 < 24 小時。
+    **AssetContainerSas. listContainerSas**接受您設定的[ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)參數 `expiryTime` 。 時間應設定為 < 24 小時。
 
     [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)會傳回多個 SAS url，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶有兩個金鑰，因為它有助於容錯移轉和無縫輪替儲存體帳戶金鑰。 第一個 SAS URL 代表第一個儲存體帳戶金鑰，第二個 SAS URL 代表第二個金鑰。
 3. 使用 Azure 儲存體 Api 或 Sdk （例如[儲存體 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）將檔案上傳到資產容器中。
@@ -100,7 +100,7 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 
 * [從本機檔案建立作業輸入](job-input-from-local-file-how-to.md)
 * [從 HTTPS URL 建立工作輸入](job-input-from-http-how-to.md)
@@ -129,7 +129,7 @@ curl -X PUT \
 
 如需詳細資訊，請參閱：
 
-[教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片](stream-files-tutorial-with-api.md)
+[教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 
 ## <a name="download-results-of-a-job-from-an-output-asset"></a>從輸出資產下載作業的結果
 

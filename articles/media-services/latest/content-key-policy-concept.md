@@ -13,10 +13,10 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585999"
 ---
 # <a name="content-key-policies"></a>內容金鑰原則
@@ -47,7 +47,7 @@ ms.locfileid: "80585999"
 
 ## <a name="example"></a>範例
 
-若要取得金鑰，請使用`GetPolicyPropertiesWithSecretsAsync`，如[從現有原則取得簽署金鑰](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets)範例中所示。
+若要取得金鑰，請使用 `GetPolicyPropertiesWithSecretsAsync` ，如[從現有原則取得簽署金鑰](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets)範例中所示。
 
 ## <a name="filtering-ordering-paging"></a>篩選、排序、分頁
 
@@ -55,7 +55,7 @@ ms.locfileid: "80585999"
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* `Datetime`類型的內容金鑰原則屬性一律為 UTC 格式。
+* 類型的內容金鑰原則屬性 `Datetime` 一律為 UTC 格式。
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80520748"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
@@ -23,11 +23,11 @@ ms.locfileid: "80520748"
 * 具有 Azure 支援合約的客戶可以在 [Azure 入口網站](https://manage.windowsazure.com/?getsupport=true)開啟支援要求。
 * 使用 [OMI 疑難排解指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)來診斷 OMI 問題。
 * 提出[GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 請流覽 Log Analytics 意見反應頁面，以查看已提交[https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)的想法和 bug，或提出新的問題。  
+* 請流覽 Log Analytics 意見反應頁面，以查看已提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的問題。  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要記錄位置和記錄收集器工具
 
- 檔案 | Path
+ 檔案 | 路徑
  ---- | -----
  Log Analytics Linux 代理程式記錄檔 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理程式組態記錄檔 | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -153,7 +153,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * Azure 監視器和 Azure 自動化服務端點不在您的資料中心的白名單中 
 
 ### <a name="resolution"></a>解決方案
-1. 使用下列命令搭配已啟用的選項`-v` ，以重新上架與適用于 Linux 的 Log Analytics 代理程式 Azure 監視器。 它可讓代理程式透過 proxy 連接到 Azure 監視器的詳細資訊輸出。 
+1. 使用下列命令搭配已啟用的選項，以重新上架與適用于 Linux 的 Log Analytics 代理程式 Azure 監視器 `-v` 。 它可讓代理程式透過 proxy 連接到 Azure 監視器的詳細資訊輸出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 檢閱[更新 Proxy 設定](agent-manage.md#update-proxy-settings)一節以驗證您是否已正確設定代理程式透過 Proxy 伺服器通訊。    
@@ -302,7 +302,7 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 
 ### <a name="resolution"></a>解決方案
 1. 安裝所有相依性，例如 auditd 套件。
-2. 檢查下列檔案是否存在，以確認上架至 Azure 監視器是否成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。  如果不成功，請使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
+2. 檢查下列檔案是否存在，以確認上架至 Azure 監視器是否成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。  如果不成功，請使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
 4. 如果使用 Proxy，請查看上述的 Proxy 疑難排解步驟。
 5. 在某些 Azure 發佈系統中，omid OMI 伺服器精靈未在虛擬機器重新啟動後隨之啟動。 這會導致您看不到 Audit、ChangeTracking 或 UpdateManagement 解決方案相關資料。 因應措施是執行 `sudo /opt/omi/bin/service_control restart` 來手動啟動 omi 伺服器。
 6. OMI 套件手動升級為較新版本後，必須手動加以重新啟動，Log Analytics 代理程式才能繼續運作。 在 OMI 伺服器未於升級後自動啟動的某些散發套件中，此為必要步驟。 請執行 `sudo /opt/omi/bin/service_control restart` 來重新啟動 OMI。
@@ -371,7 +371,7 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 * 在某些情況下，Log Analytics Linux 代理程式組態代理程式可能無法與入口網站組態服務進行通訊，以致未套用最新的組態。
   1. 執行 `dpkg --list omsconfig` 或 `rpm -qi omsconfig` 來確認 `omsconfig` 代理程式已安裝。  若未安裝，請重新安裝最新版的 Log Analytics Linux 代理程式。
 
-  2. 執行下列命令`omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`，確認代理程式可以與 Azure 監視器通訊。 此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
+  2. 執行 `omsconfig` 下列命令，確認代理程式可以與 Azure 監視器通訊 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 。 此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
 
 ## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>問題︰您沒有看到任何自訂記錄資料 
 
@@ -385,12 +385,12 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 * 已在 Log Analytics Linux 代理程式 1.1.0-217 版中修正的已知競爭條件問題
 
 ### <a name="resolution"></a>解決方案
-1. 檢查下列檔案是否存在，以確認上架至 Azure 監視器成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。 如果不成功，則：  
+1. 檢查下列檔案是否存在，以確認上架至 Azure 監視器成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。 如果不成功，則：  
 
   1. 使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
   2. 在 Azure 入口網站的 [進階設定]**** 之下，確定已啟用 [將下列組態套用至我的 Linux 伺服器]**** 設定。  
 
-2. 執行下列命令`omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`，確認代理程式可以與 Azure 監視器通訊。  此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
+2. 執行 `omsconfig` 下列命令，確認代理程式可以與 Azure 監視器通訊 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 。  此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
 
 **背景：** Log Analytics Linux 代理程式使用者不會以特殊權限使用者 `root` 身分執行，而會以 `omsagent` 使用者身分執行。 在大部分情況下，必須將明確的權限授與給這位使用者，才能讀取特定檔案。 若要授與權限給 `omsagent` 使用者，請執行下列命令︰
 
@@ -405,7 +405,7 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-或者
+Or
 
 ```
 sudo sh ./onboard_agent.sh --purge

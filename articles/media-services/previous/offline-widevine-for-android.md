@@ -16,10 +16,10 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294342"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>適用於 Android 的離線 Widevine 串流  
@@ -29,7 +29,7 @@ ms.locfileid: "80294342"
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 除了保護線上串流的內容之外，媒體內容訂用帳戶與租賃服務能提供可在未連線到網際網路時使用的可下載內容。 在和網路中斷連線的飛行途中，您可能需要先將內容下載至手機或平板電腦，以在飛航模式中播放。 您可能會想要下載內容的其他案例如下：
 
@@ -169,7 +169,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 我要如何針對部分用戶端/使用者傳遞持續性授權 (已啟用離線)，並針對其他用戶端/使用者傳遞非持續性授權 (已停用離線)？ 我是否必須複製內容並使用個別的內容金鑰？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 您不需要複製內容。 您可以只使用單一的內容複本和單一 ContentKeyAuthorizationPolicy，但有兩個不同的 ContentKeyAuthorizationPolicyOption：
 
 1. IContentKeyAuthorizationPolicyOption 1：使用持續性授權，以及包含 license_type = "Persistent" 這類宣告的 ContentKeyAuthorizationPolicyRestriction 1
@@ -183,7 +183,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 如需 Widevine 安全性等級，在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)檔中，它會定義三個不同的安全性層級。 然而，[關於 Widevine 授權範本的 Azure 媒體服務文件](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)則將安全性層級分成五個不同的層級。 這兩組不同的安全性層級之間有什麼關聯和對應？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 
 在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)中，它會定義下列三個安全性層級：
 
@@ -211,7 +211,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 為什麼內容的下載時間這麼久？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 
 有兩種方式可提升下載速度：
 
@@ -224,6 +224,6 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 本文已討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。  文中也回答一些和離線串流受 Widevine 保護的內容相關的常見問題。

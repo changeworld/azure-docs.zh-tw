@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478699"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure 地圖服務行動服務中的資料結構
@@ -23,7 +23,7 @@ ms.locfileid: "80478699"
 
 行動服務資料會依支援的 metro 區域分組。 Metro 區域不會遵循城市界限。 Metro 區域可以包含多個城市、密集填入的城市和周圍城市。 事實上，一個國家/地區可以是一個 metro 面積。 
 
-`metroID`是 metro 區域的識別碼，可以用來呼叫「[取得 metro 區域資訊」 API](https://aka.ms/AzureMapsMobilityMetroAreaInfo)。 使用 Azure 地圖服務的「取得 Metro」 API 來要求運輸類型、運輸機關、作用中警示，以及所選 Metro 的其他詳細資料。 您也可以要求支援的 metro 區域和 metroIDs。 Metro 區域識別碼可能會變更。
+`metroID`是 metro 區域的識別碼，可以用來呼叫「[取得 Metro 區域資訊」 API](https://aka.ms/AzureMapsMobilityMetroAreaInfo)。 使用 Azure 地圖服務的「取得 Metro」 API 來要求運輸類型、運輸機關、作用中警示，以及所選 Metro 的其他詳細資料。 您也可以要求支援的 metro 區域和 metroIDs。 Metro 區域識別碼可能會變更。
 
 **metroID：** 522**名稱：** 西雅圖-Tacoma-Bellevue
 
