@@ -1,14 +1,14 @@
 ---
 title: 模式：原則定義中的 Count 運算子
 description: 此 Azure 原則模式提供如何在原則定義中使用 Count 預算子的範例。
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 88c2d1083a92732ac56ca4d6da7087cc4220d9a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 807890b7fb08d790deff6e0be9e08ad91c4ec44d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170376"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565754"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure 原則模式：Count 運算子
 

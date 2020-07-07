@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418060"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 複製資料
@@ -28,13 +28,13 @@ ms.locfileid: "81418060"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Business Warehouse (BW) 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含詳細的簡介、comparsion 和指引。
+>若要了解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 的 SAP 資料整合技術白皮書](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中提供詳細的簡介、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
 此 SAP 商務倉儲連接器支援下列活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 SAP Business Warehouse 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
@@ -45,7 +45,7 @@ ms.locfileid: "81418060"
 - 使用 MDX 查詢從 **InfoCube 和 QueryCube** (包括 BEx 查詢) 複製資料。
 - 使用基本驗證來複製資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用這個 SAP Business Warehouse 連接器，您必須：
 
@@ -74,10 +74,10 @@ ms.locfileid: "81418060"
 | systemNumber | SAP BW 系統的系統編號。<br/>允許的值：以字串表示的二位數十進位數字。 | 是 |
 | clientId | SAP W 系統中用戶端的用戶端識別碼。<br/>允許的值：以字串表示的三位數十進位數字。 | 是 |
 | userName | 能夠存取 SAP 伺服器的使用者名稱。 | 是 |
-| password | 使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -108,7 +108,7 @@ ms.locfileid: "81418060"
 
 若要從 SAP BW 複製資料，請將資料集的 type 屬性設定為**SapBwCube**。 針對 RelationalTable 類型的 SAP BW 資料集，不支援任何類型特定的屬性。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -125,7 +125,7 @@ ms.locfileid: "81418060"
 }
 ```
 
-如果您使用`RelationalTable`的是具類型的資料集，則仍會受到支援，但建議您在未來使用新的 dataset。
+如果您使用 `RelationalTable` 具型別資料集，雖然仍照現狀支援，但建議您往後使用新的版本。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -140,7 +140,7 @@ ms.locfileid: "81418060"
 | type | 複製活動來源的類型屬性必須設定為： **SapBwSource** | 是 |
 | 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | 是 |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -172,7 +172,7 @@ ms.locfileid: "81418060"
 ]
 ```
 
-如果您使用`RelationalSource`的是具類型的來源，則仍會受到支援，但建議您在未來使用新的來源。
+如果您使用 `RelationalSource` 具型別來源，雖然仍照現狀支援，但建議您往後使用新的版本。
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW 的資料類型對應
 
@@ -182,31 +182,31 @@ ms.locfileid: "81418060"
 |:--- |:--- |
 | ACCP | Int |
 | CHAR | String |
-| CLNT | 字串 |
+| CLNT | String |
 | CURR | Decimal |
-| CUKY | 字串 |
+| CUKY | String |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | 字串 |
-| LCHR | 字串 |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | 字串 |
-| 單位 | 字串 |
-| DATS | 字串 |
-| NUMC | 字串 |
-| TIMS | 字串 |
+| STRING | String |
+| 單位 | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

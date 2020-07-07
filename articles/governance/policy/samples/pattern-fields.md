@@ -1,14 +1,14 @@
 ---
 title: 模式：原則定義中的欄位屬性
 description: 此 Azure 原則模式提供如何在原則定義中使用欄位屬性的範例。
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: e65767dd9cbe7b2192c21f779643289e5a7fc45e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87c550e5fb3ef0efbf219efc738a69071d2e89ba
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170256"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565708"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure 原則模式：欄位屬性
 

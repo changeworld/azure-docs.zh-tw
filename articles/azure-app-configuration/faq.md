@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348779"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
@@ -103,11 +103,11 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 免費層中的設定存放區每天限制為1000個要求。 當要求速率超過每小時20000個要求時，標準層中的設定存放區可能會遇到暫時節流。
 
-當存放區達到其限制時，會針對所有提出的要求傳回 HTTP 狀態碼429，直到時間週期到期為止。 回應`retry-after-ms`中的標頭會提供建議的等候時間（以毫秒為單位），然後再重試要求。
+當存放區達到其限制時，會針對所有提出的要求傳回 HTTP 狀態碼429，直到時間週期到期為止。 `retry-after-ms`回應中的標頭會提供建議的等候時間（以毫秒為單位），然後再重試要求。
 
 如果您的應用程式經常遇到 HTTP 狀態碼429回應，請考慮將它重新設計，以減少提出的要求數目。 如需詳細資訊，請參閱[減少對應用程式組態提出的要求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 原因為何？
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 為什麼？
 
 在這些情況下，您會收到 HTTP 狀態碼429回應：
 

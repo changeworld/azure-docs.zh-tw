@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71162154"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 傳統 VM 架構的工作流程 
@@ -39,7 +39,7 @@ ms.locfileid: "71162154"
 
 **C**。 主機代理程式位於主機 OS 上，並且負責設定來賓 OS 和與來賓代理程式（WindowsAzureGuestAgent）通訊，以便將角色更新為預定目標狀態，並使用來賓代理程式進行檢查。 如果主機代理程式未收到10分鐘的回應時間，主機代理程式就會重新開機客體作業系統。
 
-**C2**。 WaAppAgent 負責安裝、設定和更新 WindowsAzureGuestAgent。
+**C2**。 WaAppAgent 負責安裝、設定和更新 WindowsAzureGuestAgent.exe。
 
 **D.**  WindowsAzureGuestAgent 負責下列各項：
 
@@ -69,11 +69,11 @@ ms.locfileid: "71162154"
 
 **我**。 Waworkerhost.exe 是一般背景工作角色的標準主機進程。 此主機進程會裝載所有角色的 Dll 和進入點程式碼，例如 OnStart 並執行。
 
-**J**。 WaWebHost 是 web 角色的標準主機進程，如果它們設定為使用 SDK 1.2 相容的可裝載 Web 核心（HWC）。 角色可以藉由從服務定義（.）中移除元素來啟用 HWC 模式。 在此模式中，所有服務的程式碼和 Dll 都會從 WaWebHost 進程執行。 不會使用 IIS （w3wp.exe），而且 IIS 管理員中也不會設定任何 AppPools，因為 IIS 裝載于 WaWebHost 內。
+**J**。 WaWebHost 是 web 角色的標準主機進程，如果它們設定為使用 SDK 1.2 相容的可裝載 Web 核心（HWC）。 角色可以藉由從服務定義（.）中移除元素來啟用 HWC 模式。 在此模式中，所有服務的程式碼和 Dll 都會從 WaWebHost 進程執行。 不會使用 IIS （w3wp.exe），而且 IIS 管理員中不會設定任何 AppPools，因為 IIS 是裝載在 WaWebHost.exe 內。
 
 **K**。 Waiishost.exe 是使用完整 IIS 之 web 角色的角色進入點代碼的主機進程。 此程式會載入第一個使用**RoleEntryPoint**類別的 DLL，並從這個類別執行程式碼（OnStart、Run、OnStop）。 在此進程中，會引發在 RoleEntryPoint 類別中建立的任何**RoleEnvironment**事件（例如 StatusCheck 和已變更）。
 
-**L**。 W3WP.EXE 是標準的 IIS 背景工作進程，如果角色已設定為使用完整 IIS，則會使用此程式。 這會執行從 Iisconfigurator 找到設定的 AppPool。 此處建立的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）都會在此程式中引發。 請注意，如果您在這兩個處理常式中訂閱事件，RoleEnvironment 事件將會同時在這兩個位置（Waiishost.exe 和 w3wp.exe）中引發。
+**L**。 W3WP.EXE 是標準的 IIS 背景工作進程，如果角色已設定為使用完整 IIS，則會使用此程式。 這會執行從 Iisconfigurator 找到設定的 AppPool。 此處建立的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）都會在此程式中引發。 請注意，如果您在這兩個處理常式中訂閱事件，RoleEnvironment 事件將會在兩個位置（Waiishost.exe 和 w3wp.exe）中引發。
 
 ## <a name="workflow-processes"></a>工作流程處理
 
@@ -84,10 +84,10 @@ ms.locfileid: "71162154"
 5. WindowsAzureGuestAgent 會設定虛擬作業系統（防火牆、Acl、LocalStorage 等）、將新的 XML 設定檔案複製到 c:\Config，然後啟動 Wahostbootstrapper.exe 程式。
 6. 針對完整的 IIS web 角色，Wahostbootstrapper.exe 會啟動 Iisconfigurator 找到，並告訴它從 IIS 刪除 web 角色的任何現有 AppPools。
 7. Wahostbootstrapper.exe 會從 E:\RoleModel.xml 讀取**啟動**工作，並開始執行啟動工作。 Wahostbootstrapper.exe 會等到所有簡單啟動工作都完成，並傳回「成功」訊息為止。
-8. 針對完整的 IIS web 角色，Wahostbootstrapper.exe 會告知 Iisconfigurator 找到設定 IIS AppPool 並將網站指向， `E:\Sitesroot\<index>`其中`<index>`是針對服務所定義之`<Sites>`專案數目的以零為起始的索引。
+8. 針對完整的 IIS web 角色，Wahostbootstrapper.exe 會告知 Iisconfigurator 找到設定 IIS AppPool 並將網站指向 `E:\Sitesroot\<index>` ，其中 `<index>` 是針對服務所定義之專案數目的以零為起始的索引 `<Sites>` 。
 9. Wahostbootstrapper.exe 會根據角色類型來啟動主機進程：
-    1. 背景**工作角色**： waworkerhost.exe 已啟動。 Wahostbootstrapper.exe 會執行 OnStart （）方法。 傳回之後，Wahostbootstrapper.exe 會開始執行 Run （）方法，然後將該角色同時標示為就緒，並將其放入負載平衡器迴圈中（如果已定義 InputEndpoints）。 WaHostBootsrapper 接著會進入檢查角色狀態的迴圈。
-    1. **SDK 1.2 HWC Web 角色**： WaWebHost 已啟動。 Wahostbootstrapper.exe 會執行 OnStart （）方法。 傳回之後，Wahostbootstrapper.exe 會開始執行 Run （）方法，然後將該角色同時標示為就緒，並將其放入負載平衡器迴圈中。 WaWebHost 會發出準備要求（GET/do. rd_runtime_init）。 所有的 web 要求都會傳送至 WaWebHost。 WaHostBootsrapper 接著會進入檢查角色狀態的迴圈。
+    1. 背景**工作角色**： WaWorkerHost.exe 已啟動。 Wahostbootstrapper.exe 會執行 OnStart （）方法。 傳回之後，Wahostbootstrapper.exe 會開始執行 Run （）方法，然後將該角色同時標示為就緒，並將其放入負載平衡器迴圈中（如果已定義 InputEndpoints）。 WaHostBootsrapper 接著會進入檢查角色狀態的迴圈。
+    1. **SDK 1.2 HWC Web 角色**： WaWebHost 已啟動。 Wahostbootstrapper.exe 會執行 OnStart （）方法。 傳回之後，Wahostbootstrapper.exe 會開始執行 Run （）方法，然後將該角色同時標示為就緒，並將其放入負載平衡器迴圈中。 WaWebHost 會發出準備要求（GET/do. rd_runtime_init）。 所有的 web 要求都會傳送至 WaWebHost.exe。 WaHostBootsrapper 接著會進入檢查角色狀態的迴圈。
     1. **完整的 IIS Web 角色**： aIISHost 已啟動。 Wahostbootstrapper.exe 會執行 OnStart （）方法。 傳回之後，它會開始執行 Run （）方法，然後將該角色同時標示為就緒，並將其放入負載平衡器迴圈中。 WaHostBootsrapper 接著會進入檢查角色狀態的迴圈。
 10. 對完整 IIS web 角色的傳入 web 要求會觸發 IIS 來啟動 W3WP.EXE 程式並提供要求，就像在內部部署 IIS 環境中所做的一樣。
 
@@ -120,7 +120,7 @@ ms.locfileid: "71162154"
 
 `C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
-**Windows 事件記錄檔**
+**Windows 事件記錄**
 
 `D:\Windows\System32\Winevt\Logs`
  

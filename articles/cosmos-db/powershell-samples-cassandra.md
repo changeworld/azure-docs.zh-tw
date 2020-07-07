@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2efc652c936e7949147bf77ccc1548308734a467
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: fec25bb3043942605895491952d963ee20ac4078
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260673"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563898"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例- Cassandra API
 
@@ -20,7 +20,7 @@ ms.locfileid: "85260673"
 > [!NOTE]
 > 這些範例會使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 Cmdlet。 請定期檢查是否有 `Az.CosmosDB` 的更新。
 
-| | |
+|Task | 描述 |
 |---|---|
 |[建立帳戶、keyspace 和資料表](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶、keyspace 和資料表。 |
 |[列出或取得 keyspace 或資料表](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得 keyspace 或資料表。 |

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189278"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>在 Azure HDInsight 上使用 Spark 的資料科學概觀
@@ -35,7 +35,7 @@ ms.locfileid: "82189278"
 這些 Notebook 是在 Jupyter Notebook 伺服器的 pySpark 核心中執行。
 
 - [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供如何利用數個不同的演算法來執行資料瀏覽、模型化和評分的相關資訊。
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含Notebook #1 中的主題，以及使用超參數微調和交叉驗證的模型開發。
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含 notebook #1 ，和使用超參數微調與交叉驗證的模型開發主題。
 - [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：示範如何在 HDInsight 叢集上使用 Python 將儲存的模型實際運作。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 Notebook
@@ -65,7 +65,7 @@ ms.locfileid: "82189278"
 
 如需 Spark 2.0 模型和評分的模型耗用量實際運作的相關指引，請參閱[有關耗用量的 Spark 1.6 文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)，以取得概述所需步驟的範例。 若要在 Spark 2.0 上使用此範例，請使用[這個](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)檔案來取代 Python 程式碼檔案。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 下列程序與 Spark 1.6 相關。 對於 Spark 2.0 版本，請使用先前說明和連結的 Notebook。
 
@@ -141,11 +141,11 @@ ms.locfileid: "82189278"
 | tip_class |小費類別 (0：$0、1：$0-5、2：$6-10、3：$11-20、4：> $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>從 Spark 叢集的 Jupyter Notebook 中執行程式碼
-您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，並按一下該項目以進入您的叢集管理頁面。 若要開啟與 Spark 叢集相關聯的筆記本，請按一下 [叢集**儀表板** -> ]**Jupyter Notebook**。
+您可以從 Azure 入口網站啟動 Jupyter Notebook。 在儀表板上尋找 Spark 叢集，並按一下該項目以進入您的叢集管理頁面。 若要開啟與 Spark 叢集相關聯的筆記本，請按一下 [叢集**儀表板**]  ->  **Jupyter Notebook**。
 
 ![叢集儀表板](./media/spark-overview/spark-jupyter-on-portal.png)
 
-您也可以流覽至***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** 以存取 Jupyter 筆記本。 以您的叢集名稱來取代此 URL 內的 CLUSTERNAME 部分。 您需要有系統管理員帳戶的密碼才能存取 Notebook。
+您也可以流覽至 ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** 以存取 Jupyter 筆記本。 以您的叢集名稱來取代此 URL 內的 CLUSTERNAME 部分。 您需要有系統管理員帳戶的密碼才能存取 Notebook。
 
 ![瀏覽 Jupyter Notebooks](./media/spark-overview/spark-jupyter-notebook.png)
 
@@ -164,7 +164,7 @@ ms.locfileid: "82189278"
 
 * 按一下 Notebook，查看程式碼。
 * 按 **SHIFT-ENTER** 執行每個儲存格。
-* 按一下 [**儲存格** -> ] [**執行**] 執行整個筆記本。
+* 按一下 [**儲存格**] [執行] 執行整個筆記本  ->  ** **。
 * 使用查詢的自動視覺效果。
 
 > [!TIP]
@@ -181,5 +181,5 @@ ms.locfileid: "82189278"
 
 **模型耗用量︰** 若要瞭解如何評分本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置機器學習服務模型](spark-model-consumption.md)。
 
-**交叉驗證和超參數**清除：請參閱使用[Spark 的先進資料探索和](spark-advanced-data-exploration-modeling.md)模型化，以瞭解如何使用交叉驗證和超參數掃描來訓練模型
+**交叉驗證和超參數掃掠**：如需如何使用交叉驗證和超參數掃掠來將模型定型的相關資訊，請參閱[使用 Spark 執行進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)
 

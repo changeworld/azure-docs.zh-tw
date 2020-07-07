@@ -1,24 +1,21 @@
 ---
-title: 在 Azure 入口網站中建立知識存放區 (預覽)
+title: 在 Azure 入口網站中建立知識存放區
 titleSuffix: Azure Cognitive Search
-description: 使用「匯入資料」精靈建立用來保存擴充內容的知識存放區。 連線至知識存放區以進行其他應用程式的分析，或將擴充的內容傳送到下游程序。 此功能目前為公開預覽狀態。
+description: 使用「匯入資料」精靈建立用來保存擴充內容的知識存放區。 連線至知識存放區以進行其他應用程式的分析，或將擴充的內容傳送到下游程序。
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 06ddb50173299bbb99518921d1589d2f15b0aa88
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/30/2020
+ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488676"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565304"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋知識存放區
-
-> [!IMPORTANT] 
-> 知識存放區目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱[補充使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 知識存放區是 Azure 認知搜尋的一個功能，可保存內容處理管線的輸出，以進行後續的分析或其他下游處理。 
 
@@ -32,7 +29,7 @@ ms.locfileid: "84488676"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
-+ Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 + 具有 [Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/)的 Azure 儲存體帳戶。
 

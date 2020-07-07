@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 227230f2d6f46fae27e2cec69d99390f5054c7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366256"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
@@ -40,7 +40,7 @@ ms.locfileid: "80366256"
 裝置 | 讀取裝置的所有屬性<br>管理擁有之裝置的所有屬性<br> | 沒有權限<br>刪除擁有的裝置<br>
 目錄 | 讀取所有公司資訊<br>讀取所有網域<br>讀取所有夥伴合約 | 讀取顯示名稱和已驗證的網域
 角色和範圍 | 讀取所有系統管理角色和成員資格<br>讀取系統管理單元的所有屬性和成員資格 | 沒有權限 
-訂閱 | 讀取所有訂用帳戶<br>啟用服務方案成員 | 沒有權限
+訂用帳戶 | 讀取所有訂用帳戶<br>啟用服務方案成員 | 沒有權限
 原則 | 讀取原則的所有屬性<br>管理擁有之原則的所有屬性 | 沒有權限
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>限制成員使用者的預設權限
@@ -75,14 +75,14 @@ ms.locfileid: "80366256"
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft 目錄/應用程式/物件/更新 | 在 Azure Active Directory 中更新 applications.audience 屬性。 |
-| microsoft 目錄/應用程式/驗證/更新 | 在 Azure Active Directory 中更新 applications.authentication 屬性。 |
-| microsoft 目錄/應用程式/基本/更新 | 更新 Azure Active Directory 中 Applications 的基本屬性。 |
-| microsoft 目錄/應用程式/認證/更新 | 在 Azure Active Directory 中更新 applications.credentials 屬性。 |
-| microsoft 目錄/應用程式/刪除 | 刪除 Azure Active Directory 中的應用程式。 |
-| microsoft 目錄/應用程式/擁有者/更新 | 更新 Azure Active Directory 中的 applications.owners 屬性。 |
-| microsoft 目錄/應用程式/許可權/更新 | 在 Azure Active Directory 中更新 applications.permissions 屬性。 |
-| microsoft 目錄/應用程式/原則/更新 | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
+| microsoft.directory/applications/audience/update | 在 Azure Active Directory 中更新 applications.audience 屬性。 |
+| microsoft.directory/applications/authentication/update | 在 Azure Active Directory 中更新 applications.authentication 屬性。 |
+| microsoft.directory/applications/basic/update | 更新 Azure Active Directory 中 Applications 的基本屬性。 |
+| microsoft.directory/applications/credentials/update | 在 Azure Active Directory 中更新 applications.credentials 屬性。 |
+| microsoft.directory/applications/delete | 刪除 Azure Active Directory 中的應用程式。 |
+| microsoft.directory/applications/owners/update | 更新 Azure Active Directory 中的 applications.owners 屬性。 |
+| microsoft.directory/applications/permissions/update | 在 Azure Active Directory 中更新 applications.permissions 屬性。 |
+| microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
 | microsoft 目錄/應用程式/還原 | 還原 Azure Active Directory 中的 applications。 |
 
 #### <a name="owned-enterprise-applications"></a>擁有的企業應用程式
@@ -90,43 +90,43 @@ ms.locfileid: "80366256"
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft 目錄/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft 目錄/原則/基本/更新 | 更新 Azure Active Directory 中 policies 的基本屬性。 |
-| microsoft 目錄/原則/刪除 | 刪除 Azure Active Directory 中的原則。 |
-| microsoft 目錄/原則/擁有者/更新 | 更新 Azure Active Directory 中的 policies.owners 屬性。 |
-| microsoft directory/servicePrincipals/Serviceprincipals.approleassignedto/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignedTo 屬性。 |
-| microsoft directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 屬性。 |
-| microsoft 目錄/servicePrincipals/物件/更新 | 更新 Azure Active Directory 中的 servicePrincipals.audience 屬性。 |
-| microsoft 目錄/servicePrincipals/驗證/更新 | 更新 Azure Active Directory 中的 servicePrincipals.authentication 屬性。 |
-| microsoft 目錄/servicePrincipals/基本/更新 | 更新 Azure Active Directory 中 servicePrincipals 的基本屬性。 |
-| microsoft 目錄/servicePrincipals/認證/更新 | 更新 Azure Active Directory 中的 servicePrincipals.credentials 屬性。 |
-| microsoft 目錄/servicePrincipals/delete | 刪除 Azure Active Directory 中的 servicePrincipals。 |
-| microsoft 目錄/servicePrincipals/擁有者/更新 | 更新 Azure Active Directory 中的 servicePrincipals.owners 屬性。 |
-| microsoft 目錄/servicePrincipals/許可權/更新 | 更新 Azure Active Directory 中的 servicePrincipals.permissions 屬性。 |
-| microsoft 目錄/servicePrincipals/原則/更新 | 更新 Azure Active Directory 中的 servicePrincipals.policies 屬性。 |
-| microsoft 目錄/Signinreports 所包含/allProperties/read | 讀取 Azure Active Directory 中的 signInReports 所包含的所有屬性 (包括特殊權限的屬性)。 |
+| microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
+| microsoft.directory/policies/basic/update | 更新 Azure Active Directory 中 policies 的基本屬性。 |
+| microsoft.directory/policies/delete | 刪除 Azure Active Directory 中的原則。 |
+| microsoft.directory/policies/owners/update | 更新 Azure Active Directory 中的 policies.owners 屬性。 |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignedTo 屬性。 |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 屬性。 |
+| microsoft.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 屬性。 |
+| microsoft.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 屬性。 |
+| microsoft.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本屬性。 |
+| microsoft.directory/servicePrincipals/credentials/update | 更新 Azure Active Directory 中的 servicePrincipals.credentials 屬性。 |
+| microsoft.directory/servicePrincipals/delete | 刪除 Azure Active Directory 中的 servicePrincipals。 |
+| microsoft.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 屬性。 |
+| microsoft.directory/servicePrincipals/permissions/update | 更新 Azure Active Directory 中的 servicePrincipals.permissions 屬性。 |
+| microsoft.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 屬性。 |
+| microsoft.directory/signInReports/allProperties/read | 讀取 Azure Active Directory 中的 signInReports 所包含的所有屬性 (包括特殊權限的屬性)。 |
 
 #### <a name="owned-devices"></a>擁有的裝置
 使用者可以在擁有的裝置上執行下列動作。
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft 目錄/裝置/Devices.bitlockerrecoverykeys/讀取 | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
-| microsoft 目錄/裝置/停用 | 停用 Azure Active Directory 中的 devices。 |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
+| microsoft.directory/devices/disable | 停用 Azure Active Directory 中的 devices。 |
 
 #### <a name="owned-groups"></a>擁有的群組
 使用者可以在擁有的群組上執行下列動作。
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft 目錄/群組/appRoleAssignments/更新 | 更新 Azure Active Directory 中的 groups.appRoleAssignments 屬性。 |
-| microsoft 目錄/群組/基本/更新 | 更新 Azure Active Directory 中 groups 的基本屬性。 |
-| microsoft 目錄/群組/刪除 | 刪除 Azure Active Directory 中的 groups。 |
+| microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 屬性。 |
+| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中 groups 的基本屬性。 |
+| microsoft.directory/groups/delete | 刪除 Azure Active Directory 中的 groups。 |
 | microsoft 目錄/群組/Groups.dynamicmembershiprule/更新 | 更新 Azure Active Directory 中的 groups.dynamicMembershipRule 屬性。 |
-| microsoft 目錄/群組/成員/更新 | 更新 Azure Active Directory 中的 groups.members 屬性。 |
-| microsoft。目錄/群組/擁有者/更新 | 更新 Azure Active Directory 中的 groups.owners 屬性。 |
-| microsoft. 目錄/群組/還原 | 還原 Azure Active Directory 中的 groups。 |
-| microsoft 目錄/群組/設定/更新 | 更新 Azure Active Directory 中的 groups.settings 屬性。 |
+| microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 屬性。 |
+| microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 屬性。 |
+| microsoft.directory/groups/restore | 還原 Azure Active Directory 中的 groups。 |
+| microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 屬性。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202391"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
@@ -65,7 +65,7 @@ ms.locfileid: "82202391"
 
     ![Azure Active Directory 按鈕][1]
 
-1. 選取 [**企業應用程式** > ] [**所有應用程式**]。
+1. 選取 [**企業應用程式**] [  >  **所有應用程式**]。
 
     ![企業應用程式視窗][2]
     
@@ -101,9 +101,9 @@ ms.locfileid: "82202391"
 
     ![E Sales Manager Remix 網域及 URL 單一登入資訊](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. 在 [登入 URL]**** 方塊中，以下列格式輸入 URL︰*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*。
+    a. 在 [登入**url** ] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> /esales-pc*。
 
-    b. 在 [識別碼]**** 方塊中，以下列格式輸入 URL︰*https://\<Server-Based-URL>/\<sub-domain>/*。
+    b. 在 [**識別碼**] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> / *。
 
     c. 記下**識別碼**的值，您稍後會在本教學課程中使用。
     
@@ -120,7 +120,7 @@ ms.locfileid: "82202391"
 
     [編輯屬性]**** 視窗隨即開啟。
 
-1. 複製 [命名空間]**** 和 [名稱]**** 的值。 在模式* \<命名空間中產生>\</Name>* 的值，並加以儲存以供稍後在本教學課程中使用。
+1. 複製 [命名空間]**** 和 [名稱]**** 的值。 在模式中產生值 *\<Namespace>/\<Name>* ，並加以儲存以供稍後在本教學課程中使用。
 
     ![編輯屬性視窗](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "82202391"
 
 1. 在 [快速參考]**** 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
     ![[儲存] 按鈕](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "82202391"
 
     ![到系統管理功能表命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 在左窗格中，選取 [**系統設定** > ] [**與外部系統合作**]。
+1. 在左窗格中，選取 [**系統設定**] [  >  **與外部系統合作**]。
 
     ![系統設定以及與外部系統合作連結](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -166,12 +166,12 @@ ms.locfileid: "82202391"
 
     f. 在 [識別提供者登入 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的 SAML 單一登入服務 URL。
 
-    g. 在 [識別提供者登出 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
+    如 在 [識別提供者登出 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
 
     h. 選取 [設定完成]****。
 
 > [!TIP]
-> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在 [ **Active Directory** > **企業應用程式**] 區段中新增應用程式之後，請選取 [**單一登入**] 索引標籤，然後在底部的 [設定 **] 區段中存取內嵌的檔**。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
+> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在 [ **Active Directory**  >  **企業應用程式**] 區段中新增應用程式之後，請選取 [**單一登入**] 索引標籤，然後在底部的 [ **Configuration**設定] 區段中存取內嵌的檔。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
@@ -184,7 +184,7 @@ ms.locfileid: "82202391"
 
     ![Azure Active Directory 連結](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. 若要顯示目前使用者的清單，請選取 [**使用者和群組** > ] [**所有使用者**]。
+1. 若要顯示目前使用者的清單，請選取 [**使用者和群組**] [  >  **所有使用者**]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -204,7 +204,7 @@ ms.locfileid: "82202391"
 
     c. 選取 [**顯示密碼**] 核取方塊，然後記下 [**密碼**] 方塊中顯示的值。
 
-    d. 選取 [建立]  。
+    d. 選取 [建立]。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>建立 E Sales Manager Remix 測試使用者
 
@@ -214,7 +214,7 @@ ms.locfileid: "82202391"
 
     ![E Sales Manager Remix 設定](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 選取**您公司的** > **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
+1. 選取**您公司的**  >  **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
 
     ![已註冊員工索引標籤](./media/esalesmanagerremix-tutorial/user1.png)
 

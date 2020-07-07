@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190396"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>使用入口網站建立鄰近放置群組
 
 若要盡可能接近 Vm，達到最低可能的延遲，您應該將它們部署在[鄰近放置群組](co-location.md#proximity-placement-groups)內。
 
-鄰近放置群組是一種邏輯群組，用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組適用于需要低延遲的工作負載。
+鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 
 > [!NOTE]
 > 鄰近放置群組不能搭配專用主機使用。
@@ -31,7 +31,7 @@ ms.locfileid: "82190396"
 1. 在搜尋中輸入**鄰近位置群組**。
 1. 在搜尋結果中的 [**服務**] 底下，選取 [**鄰近放置群組**]。
 1. 在 [**鄰近放置群組**] 頁面中，選取 [**新增**]。
-1. 在 [基本]**** 索引標籤中的 [專案詳細資料]**** 底下，確認已選取正確的訂用帳戶。
+1. 在 [基本]  索引標籤中的 [專案詳細資料]  底下，確認已選取正確的訂用帳戶。
 1. 在 [**資源群組**] 中，選取 **[新建] 以建立**新的群組，或從下拉式選單選取已存在的空白資源群組。 
 1. 在 [**區域**] 中，選取您想要建立鄰近放置群組的位置。
 1. 在 [**鄰近位置組名**] 中輸入名稱，然後選取 [**審核 + 建立**]。

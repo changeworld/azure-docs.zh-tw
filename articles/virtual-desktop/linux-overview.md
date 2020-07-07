@@ -9,10 +9,10 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422421"
 ---
 # <a name="linux-support"></a>Linux 支援
@@ -23,7 +23,7 @@ ms.locfileid: "80422421"
 
 下列合作夥伴已核准適用于 Linux 裝置的 Windows 虛擬桌面用戶端。
 
-|合作夥伴|合作夥伴檔|合作夥伴支援|
+|Partner|合作夥伴檔|合作夥伴支援|
 |:------|:--------------------|:--------------|
 |![IGEL 標誌](./media/partners/igel.png)|[IGEL 用戶端檔](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL 支援](https://www.igel.com/support/)|
 
@@ -34,7 +34,7 @@ ms.locfileid: "80422421"
 > [!NOTE]
 > SDK 目前正在開發中。 我們將會更新本檔，其中包含已正式推出 SDK 時的存取指示。
 
-### <a name="supported-linux-distributions"></a>支援的 Linux 發行版本
+### <a name="supported-linux-distributions"></a>支援的 Linux 散發套件
 
 SDK 與大部分以 Ubuntu 18.04 或更新版本為基礎的作業系統相容。 如果您有不同的 Linux 散發套件，我們可以與您合作，以瞭解如何以最佳方式支援您的需求。
 

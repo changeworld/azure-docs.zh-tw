@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261438"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559024"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 為 Azure 儲存體中的 JSON Blob 編製索引
 
@@ -112,13 +112,13 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
   ![Postman 要求 URL 和標頭](media/search-get-started-postman/postman-url.png "Postman 要求 URL 和標頭")
 
-URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 用於使用 JSON 陣列的公開推出 api-version 為 `2019-05-06`。
+URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 用於使用 JSON 陣列的公開推出 api-version 為 `2020-06-30`。
 
 ## <a name="3---create-a-data-source"></a>3 - 建立資料來源
 
 [建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 會建立一個 Azure 認知搜尋物件，以指定要編製索引的資料。
 
-1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/datasources?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。 
+1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/datasources?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。 
 
 1. 將下列 JSON 複製到要求本文中。
 
@@ -161,7 +161,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
     
 第二個呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
 
-1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/indexes?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。
+1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
 1. 將下列 JSON 複製到要求本文中。
 
@@ -236,7 +236,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 索引子會連線至資料來源、將資料匯入至目標搜尋索引，並選擇性地提供排程將資料重新整理自動化。 REST API 為[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexers?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。
+1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexers?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
 1. 將下列 JSON 複製到要求本文中。
 
@@ -281,7 +281,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 1. 將動詞變更為 **GET**。
 
-1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`。 使用您的搜尋服務名稱來取代 `[service name]`。
+1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
 1. 傳送要求。 這是未指定的全文檢索搜尋查詢，會傳回所有在索引中標記為可擷取的欄位，以及文件計數。 回應看起來應如下所示：
 
@@ -313,7 +313,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
             . . . 
     ```
 
-1. 新增 `$select` 查詢參數，以將結果限定為較少的欄位：`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`。  此查詢有 100 份相符的文件，但根據預設，Azure 認知搜尋只會傳回結果中的 50 份。
+1. 新增 `$select` 查詢參數，以將結果限定為較少的欄位：`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`。  此查詢有 100 份相符的文件，但根據預設，Azure 認知搜尋只會傳回結果中的 50 份。
 
    ![參數化查詢](media/search-semi-structured-data/lastquery.png "參數化查詢")
 
@@ -333,7 +333,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 您可以使用入口網站來刪除索引、索引子和資料來源。 或者，使用 **DELETE** 並提供每個物件的 URL。 下列命令會刪除索引子。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 成功刪除時會傳回狀態碼 204。

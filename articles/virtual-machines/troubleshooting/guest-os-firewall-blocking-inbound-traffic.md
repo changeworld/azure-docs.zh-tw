@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422547"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 客體 OS 防火牆封鎖輸入流量
 
 本文說明如何解決客體作業系統防火牆封鎖輸入流量時發生的遠端桌面入口網站 (RDP) 問題。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您無法使用 RDP 連線來連線到 Azure 虛擬機器 (VM)。 從 [開機診斷] -> [螢幕擷取畫面] 中，顯示作業系統已在 [歡迎] 畫面 (Ctrl+Alt+Del) 完全載入。
 
@@ -41,7 +41,7 @@ ms.locfileid: "80422547"
 
 ![防火牆設定](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在按照下列步驟進行之前，請先擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱 [擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "80422547"
 
 #### <a name="mitigation-1"></a>緩解措施 1
 
-1.  如果 Azure 代理程式已安裝且在 vm 上正常運作，您可以使用 [vm] 功能表上 [**支援與疑難排解** > ] [**重設密碼**] 底下的 [僅重設設定] 選項。
+1.  如果 Azure 代理程式已安裝且在 vm 上正常運作，您可以使用 [vm] 功能表上 [支援與**疑難排解**] [  >  **重設密碼**] 底下的 [僅重設設定] 選項。
 
 2.  執行此復原選項時會執行下列動作：
 

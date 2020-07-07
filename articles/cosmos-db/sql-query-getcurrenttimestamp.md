@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b816c63da56025fe6e9cbaece2cde5dcd01585d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71351004"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp （Azure Cosmos DB）
  傳回自00:00:00 年 1970 1 月1日星期四以來經過的毫秒數。 
   
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentTimestamp ()  

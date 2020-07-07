@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193389"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上設定開發環境
@@ -22,7 +22,7 @@ ms.locfileid: "82193389"
 
 您可以建置 Azure Service Fabric 應用程式，以使用 Mac OS X 在 Linux 叢集上執行。本文件涵蓋如何設定您的 Mac 進行開發。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM。
@@ -48,7 +48,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     
     >[!NOTE]
     >
-    >建議您直接在 Docker 中修改背景程式，因為 daemon. json 檔案的位置可能會因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
+    >建議您直接在 Docker 中修改背景程式，因為檔案上 daemon.js的位置會因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
     >
 
     >[!TIP]
@@ -76,7 +76,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     >例如，新增 `RUN apt-get install nodejs -y` 將允許以客體可執行檔形式支援 `nodejs` 應用程式。
     
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特別修訂，請造訪[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定版本，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
 
 3. 若要從 `Dockerfile` 建置可重複使用的映像，請開啟終端機並 `cd` 到直接保留的 `Dockerfile`，然後執行：
 
@@ -166,7 +166,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
     ```
 
     > [!IMPORTANT]
-    > 目前的`brew cask install java`版本可能會安裝較新版本的 JDK。
+    > 目前的版本 `brew cask install java` 可能會安裝較新版本的 JDK。
     > 請務必安裝 JDK 8。
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>在 Mac 上從終端機部署應用程式

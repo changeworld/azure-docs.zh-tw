@@ -4,10 +4,10 @@ description: 本文章會逐步解說使用 Visual Studio 部署 Service Fabric 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195862"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 進行 Service Fabric 應用程式升級的教學課程

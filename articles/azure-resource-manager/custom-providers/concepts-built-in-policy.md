@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190124"
 ---
 # <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>使用 Azure 原則部署自訂提供者的關聯
@@ -29,7 +29,7 @@ Azure 原則可以用來部署關聯，以將資源與自訂提供者產生關�
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署關聯內建原則 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 如果自訂提供者需要原則範圍的許可權才能執行動作，則在不授與許可權的情況下，關聯資源的原則部署不會運作。
 
 ### <a name="policy-assignment"></a>原則指派

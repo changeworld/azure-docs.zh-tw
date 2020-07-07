@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398224"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器合作夥伴取得感應器資料
@@ -46,7 +46,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 2. **如果您使用的是 FarmBeats version 1.2.7 或更新版本，請略過步驟 a、b 和 c，然後移至步驟3。** 您可以選取 FarmBeats UI 右上角的 [**設定**] 圖示來檢查 FarmBeats 版本。
 
-      a.  前往**Azure Active Directory** > **應用程式註冊**
+      a.  前往**Azure Active Directory**  >  **應用程式註冊**
 
       b. 選取在 FarmBeats 部署過程中建立的**應用程式註冊**。 它的名稱會與您的 FarmBeats datahub 相同。
 
@@ -74,7 +74,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
     ```
 
-7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從**Azure Active Directory** > 的 **[總覽**] 頁面取得。
+7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
 
     ```azurepowershell-interactive 
 
@@ -114,7 +114,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 - **節點**：一或多個感應器所連接的裝置。
 - **閘道**：一或多個節點所連接的裝置。
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**裝置**]。
   [**裝置**] 頁面會顯示裝置類型、型號、狀態、其放置所在的伺服器陣列，以及中繼資料的上次更新日期。 根據預設，[伺服器陣列] 資料行會設定為*Null*。 您可以選擇將裝置指派給伺服器陣列。 如需詳細資訊，請參閱[指派裝置](#assign-devices)。
@@ -124,7 +124,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ### <a name="view-sensors"></a>觀看感應器
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**感應器**]。
   [**感應器**] 頁面會顯示感應器類型、其所連線的伺服器陣列、[父裝置]、[埠名稱]、[埠類型] 和 [上次更新] 狀態的詳細資料。
@@ -153,7 +153,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ### <a name="visualize-sensor-data"></a>將感應器資料視覺化
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**伺服器**陣列] 以查看 [**伺服器**陣列] 頁面。
 2. 選取您要查看其感應器資料的**伺服器**陣列。
@@ -163,7 +163,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ## <a name="delete-a-sensor"></a>刪除感應器
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表選取 [**感應器**] 以查看 [**感應器**] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [**刪除**]。
@@ -174,7 +174,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ## <a name="delete-devices"></a>刪除裝置
 
-請遵循下列步驟：
+遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**裝置**] 以查看 [**裝置**] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [**刪除**]。

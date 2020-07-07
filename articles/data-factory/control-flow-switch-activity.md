@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418000"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory 中的切換活動
@@ -69,7 +69,7 @@ Switch 活動所提供的功能與 switch 語句在程式設計語言中所提�
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | 切換活動的名稱。 | String | 是
+NAME | 切換活動的名稱。 | String | 是
 type | 必須設定為*切換** | String | 是
 expression | 必須評估為字串值的運算式 | 結果類型為 string 的運算式 | 是
 案例 | 一組案例，其中包含值，以及當值符合運算式評估時要執行的一組活動。 必須至少提供一個案例。 最大限制為25個案例。 | Case 物件的陣列 | 是
@@ -82,7 +82,7 @@ defaultActivities | 未滿足運算式評估時所執行的一組活動。 | 活
 > [!NOTE]
 > 本節提供 JSON 定義和 PowerShell 命令範例，以供執行管線。 針對使用 Azure PowerShell 和 JSON 定義來建立 Data Factory 管線，如需包含逐步指示的逐步解說，請參閱[教學課程：使用 Azure PowerShell 來建立資料處理站](quickstart-create-data-factory-powershell.md)。
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>具有切換活動的管線（Adfv2QuickStartPipeline）
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>具有切換活動的管線（Adfv2QuickStartPipeline.json）
 
 ```json
 {
@@ -338,4 +338,4 @@ $result.Error -join "`r`n"
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
 ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80397814"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array Update 0.3 版本資訊
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
 版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 部署 StorSimple Virtual Array 之前，請仔細檢閱版本資訊中所含的資訊。
@@ -40,7 +40,7 @@ Update 0.3 主要是錯誤修正組建。 在此版本中，已修正數個在�
 ## <a name="issues-fixed-in-the-update-03"></a>Update 0.3 中修正的問題
 下表提供本版已修正問題的摘要。
 
-| 否。 | 功能 | 問題 |
+| 不會。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |備份 |在舊版中發生無法完成檔案共用備份的問題。 如果發生此問題，備份作業將會失敗並在 StorSimple Manager 服務引發重大警示來通知使用者。 這個問題不會影響共用上的資料或對該資料的存取。 此版本已找出根本原因並加以修正。 <br></br>  此修正無法溯及既往地套用到已發生此問題的共用。 發生此問題的客戶應該先套用 Update 0.3，然後連絡「Microsoft 支援服務」來執行完整的系統備份，以修正此問題。 客戶也可以不連絡「Microsoft 支援服務」，而是針對受影響的共用，從狀況良好備份還原到新的共用。 |
 | 2 |iSCSI |在舊版中發生將資料複製到 StorSimple Virtual Array 上的磁碟區時磁碟區會消失的問題。 此版本已經修正這個問題。 <br></br>  這些修正只有在新建立的磁碟區上才會生效。 這些修正無法溯及既往地套用到已發生此問題的磁碟區。 建議客戶透過 Azure 傳統入口網站讓受影響磁碟區上線、備份這些磁碟區，然後將這些磁碟區還原到新的磁碟區。 |
@@ -48,7 +48,7 @@ Update 0.3 主要是錯誤修正組建。 在此版本中，已修正數個在�
 ## <a name="known-issues-in-the-update-03"></a>Update 0.3 中的已知問題
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。 
 
-| 否。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -65,10 +65,10 @@ Update 0.3 主要是錯誤修正組建。 在此版本中，已修正數個在�
 | **十三.** |iSCSI 伺服器 |顯示在 iSCSI 磁碟區的 [使用的儲存體] 在 StorSimple Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
 | **14.** |檔案伺服器 |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 [安裝 Update 0.3](storsimple-ova-install-update-01.md) 。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至： 
 
 * [StorSimple Virtual Array Update 0.1 和 0.2 版本資訊](storsimple-ova-update-01-release-notes.md)

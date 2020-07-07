@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203228"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 相容快取
@@ -39,7 +39,7 @@ ms.locfileid: "82203228"
 > [!div class="checklist"]
 > * 在 API 管理中新增外部快取
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -74,7 +74,7 @@ ms.locfileid: "82203228"
 3. 按一下 [+新增]**** 按鈕。
 4. 在 [快取執行個體]**** 下拉式欄位中選取您的快取。
 5. 選取 [**預設**]，或在 [**使用來源**] 下拉式欄位中指定所需的區域。
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案] 。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>新增裝載於目前 Azure 訂用帳戶或整體 Azure 外的 Azure Redis 快取
 
@@ -84,7 +84,7 @@ ms.locfileid: "82203228"
 4. 在 [快取執行個體]**** 下拉式欄位中選取 [自訂]****。
 5. 選取 [**預設**]，或在 [**使用來源**] 下拉式欄位中指定所需的區域。
 6. 在 [連接字串]**** 欄位中提供您的「Azure Redis 快取」連接字串。
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案] 。
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>將 Redis 快取新增至自我裝載的閘道
 
@@ -94,7 +94,7 @@ ms.locfileid: "82203228"
 4. 在 [快取執行個體]**** 下拉式欄位中選取 [自訂]****。
 5. 在 [**使用來源**] 下拉式欄位中指定所需的自我裝載閘道位置或**預設值**。
 6. 在 [連接字串]**** 欄位中提供您的 Redis 快取連接字串。
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案] 。
 
 ## <a name="use-the-external-cache"></a>使用外部快取
 

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203670"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift 資源
@@ -34,7 +34,7 @@ ms.locfileid: "82203670"
 
 Azure Red Hat OpenShift REST API 支援下列計算節點大小：
 
-|Size|vCPU|RAM|
+|大小|vCPU|RAM|
 |-|-|-|
 |標準 D4s v3 系列|4|16 GB|
 |標準 D8s v3 系列|8|32 GB|
@@ -54,7 +54,7 @@ Azure Red Hat OpenShift REST API 支援下列計算節點大小：
 
 Azure Red Hat OpenShift REST API 支援下列主要/基礎結構節點大小：
 
-|Size|vCPU|RAM|
+|大小|vCPU|RAM|
 |-|-|-|
 |標準 D4s v3 系列|4|16 GB|
 |標準 D8s v3 系列|8|32 GB|

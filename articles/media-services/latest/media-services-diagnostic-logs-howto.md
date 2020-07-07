@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382914"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>監視媒體服務診斷記錄
@@ -55,7 +55,7 @@ ms.locfileid: "80382914"
 
 ## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>使用 Azure CLI 將資料路由至儲存體帳戶
 
-若要在儲存體帳戶中啟用診斷記錄的儲存體，您可以執行下列`az monitor diagnostic-settings` Azure CLI 命令：
+若要在儲存體帳戶中啟用診斷記錄的儲存體，您可以執行下列 `az monitor diagnostic-settings` Azure CLI 命令：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -96,7 +96,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
  您現在可以檢視已儲存在儲存體帳戶中的 JSON 事件。
 
-### <a name="examples-of-pt1hjson"></a>PT1H 的範例
+### <a name="examples-of-pt1hjson"></a>PT1H.js的範例
 
 #### <a name="clear-key-delivery-log"></a>清除金鑰傳遞記錄
 
@@ -178,7 +178,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
 * [Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192675"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>在 HDInsight 中搭配 Apache Hadoop 使用 Apache Ambari Hive 檢視
@@ -21,15 +21,15 @@ ms.locfileid: "82192675"
 
 了解如何使用 Apache Ambari Hive 檢視執行 Hive 查詢。 Hive 檢視可讓您從網頁瀏覽器編寫、最佳化及執行 Hive 查詢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
 ## <a name="run-a-hive-query"></a>執行 HIVE 查詢
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 中，選取您的叢集。  如需相關指示，請參閱[列出和顯示](../hdinsight-administer-use-portal-linux.md#showClusters)叢集。 叢集會在新的入口網站視圖中開啟。
+1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  如需相關指示，請參閱[列出和顯示](../hdinsight-administer-use-portal-linux.md#showClusters)叢集。 叢集會在新的入口網站視圖中開啟。
 
-1. 從叢集**儀表板**中，選取 [ **Ambari views**]。 出現驗證的提示時，請使用您在建立叢集時提供的叢集登入 (預設為 `admin`) 帳戶名稱和密碼。 您也可以在流覽`https://CLUSTERNAME.azurehdinsight.net/#/main/views`器中流覽至`CLUSTERNAME` ，其中是您的叢集名稱。
+1. 從叢集**儀表板**中，選取 [ **Ambari views**]。 出現驗證的提示時，請使用您在建立叢集時提供的叢集登入 (預設為 `admin`) 帳戶名稱和密碼。 您也可以 `https://CLUSTERNAME.azurehdinsight.net/#/main/views` 在瀏覽器中流覽至，其中 `CLUSTERNAME` 是您的叢集名稱。
 
 1. 從檢視清單中，選取 [Hive 檢視]____。
 
@@ -119,7 +119,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 >
 > 如果您刪除該叢集，但保留儲存體，您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)或 Data Lake 儲存體總管 (從 [Azure 入口網站](https://portal.azure.com)) 之類的公用程式來擷取查詢。
 
-## <a name="user-defined-functions"></a>使用者定義的函式
+## <a name="user-defined-functions"></a>使用者自訂函數
 
 您可以透過使用者定義函式 (UDF) 來擴充 Hive 。 使用 UDF 在 HiveQL 中實作不易模型化的功能或邏輯。
 

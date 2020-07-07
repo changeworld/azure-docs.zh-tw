@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80396615"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的範例查詢（2019年8月架構更新）
@@ -107,7 +107,7 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 因為我們不會在 NSG 中散佈資料，所以**FlowCount_d**只是：
 
-**AllowedInFlows_d** + **DeniedInFlows_d**DeniedInFlows_d + **AllowedOutFlows_d**AllowedOutFlows_d + **DeniedOutFlows_d**
+**AllowedInFlows_d**  + **DeniedInFlows_d**  + **AllowedOutFlows_d**  + **DeniedOutFlows_d**
 
 只有四個欄位中的其中一個不是零。 其他三個欄位則為零。 欄位會填入，以指出在其中捕捉到流程的 NIC 中的狀態和計數。
 
@@ -122,5 +122,5 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要取得常見問題的解答，請參閱[流量分析常見問題集](traffic-analytics-faq.md)。
+- 若要取得常見問題的解答，請參閱使用[分析常見問題](traffic-analytics-faq.md)。
 - 若要查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)。

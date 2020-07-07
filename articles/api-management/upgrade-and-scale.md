@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 6edb639cacc48e8b59c458bcf0ac9c9c5e07b030
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203554"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升級和調整 Azure API 管理執行個體的規模  
@@ -29,7 +29,7 @@ ms.locfileid: "82203554"
 >[!NOTE]
 >[定價詳細資料](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)一文顯示每一層單位容量的大約數字。 若要取得更精確的數字，則需要查看 API 的實際情節。 請參閱 [Azure API 管理執行個體的容量](api-management-capacity.md)一文。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要依照本文中的步驟進行，您必須：
 
@@ -67,14 +67,14 @@ ms.locfileid: "82203554"
 2. 從功能表中選取 [**位置**]。
 3. 按一下含有您要調整之位置的資料列。
 4. 指定新的**單位**數目-請使用滑杆或輸入數位。
-5. 按一下 [套用]  。
+5. 按一下 [套用] 。
 
 ## <a name="change-your-api-management-service-tier"></a>變更您的 API 管理服務層級
 
 1. 在[Azure 入口網站](https://portal.azure.com/)中，流覽至您的 API 管理服務。
 2. 按一下功能表中的 [**定價層**]。
 3. 從下拉式清單中選取所需的服務層級。 在變更之後，使用滑杆來指定 API 管理服務的規模。
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ## <a name="downtime-during-scaling-up-and-down"></a>相應增加和減少期間的停機時間
 如果您要從開發人員層級進行調整，則會有停機時間。 否則，就不會有停機時間。 

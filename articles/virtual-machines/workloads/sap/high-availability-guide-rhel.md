@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351095"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
@@ -84,21 +84,21 @@ ms.locfileid: "80351095"
 
 ![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-rhel/ha-rhel.png)
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 下列清單顯示 (A)SCS 和 ERS 負載平衡器的組態。
+SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用 [tandard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 下列清單顯示 (A)SCS 和 ERS 負載平衡器的組態。
 
 ### <a name="ascs"></a>(A)SCS
 
 * 前端組態
   * IP 位址 10.0.0.7
 * 探查連接埠
-  * 埠 620<strong>&lt;nr&gt;</strong>
+  * 連接埠 620<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
-  * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
-  * 如果使用基本 Load Balancer，請建立下列埠的負載平衡規則
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
+  * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
+  * 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -108,12 +108,12 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料�
 * 前端組態
   * IP 位址 10.0.0.8
 * 探查連接埠
-  * 埠 621<strong>&lt;nr&gt;</strong>
+  * 連接埠 621<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
-  * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
-  * 如果使用基本 Load Balancer，請建立下列埠的負載平衡規則
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
+  * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
+  * 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -150,11 +150,11 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    1. 管理員使用者名稱、管理員密碼或 SSH 金鑰  
       隨即會建立新的使用者，以用來登入電腦。
    1. 子網路識別碼  
-   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/**&lt;訂&gt;** 用帳戶識別碼/resourceGroups/**&lt;資源組名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;虛擬網路名稱&gt;**/subnets/**&lt;子網名稱&gt; **
+   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/訂用帳戶** &lt; &gt; 識別碼**/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
-您必須先為此叢集建立虛擬機器。 之後，您可以建立負載平衡器，並使用後端集區中的虛擬機器。
+您必須先為此叢集建立虛擬機器。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。
 
 1. 建立資源群組
 1. 建立虛擬網路
@@ -168,7 +168,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    選取稍早建立的「可用性設定組」  
 1. 將至少一個資料磁碟新增至兩部虛擬機器  
    資料磁碟用於 /usr/sap/`<SAPSID`> 目錄
-1. 建立負載平衡器（內部、標準）：  
+1. 建立負載平衡器 (內部、標準)：  
    1. 建立前端 IP 位址
       1. 針對 ASCS 是 IP 位址 10.0.0.7
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
@@ -182,7 +182,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
       1. 輸入新後端集區的名稱 (例如 **nw1-backend**)
       1. 按一下 [新增虛擬機器]。
       1. 選取 [虛擬機器]。
-      1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
+      1. 選取 (A)SCS 叢集的虛擬機器及其 IP 位址。
       1. 按一下 [新增]
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
@@ -197,12 +197,12 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱（例如**nw1-lb-ascs**）
          1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查（例如**nw1-ascs-前端**、 **nw1-後端**和**nw1-ascs-hp**）
-         1. 選取**HA 埠**
+         1. 選取 [HA 連接埠]
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
          1. Click OK
          * 重複上述步驟以建立 ERS 的負載平衡規則（例如**nw1-lb-ERS**）
-1. 或者，如果您的案例需要基本負載平衡器（內部），請遵循下列步驟：  
+1. 或者，若案例需要基本負載平衡器 (內部)，請遵循這些步驟：  
    1. 建立前端 IP 位址
       1. 針對 ASCS 是 IP 位址 10.0.0.7
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
@@ -231,7 +231,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱 (例如 **nw1-lb-3200**)
          1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **nw1-ascs-frontend**)
-         1. 保留通訊協定 [TCP]****，輸入連接埠 **3200**
+         1. 保留通訊協定 [TCP]，輸入連接埠 **3200**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
          1. Click OK
@@ -241,10 +241,10 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
          * 重複上述步驟來為 ASCS ERS 設定連接埠 33**02**、5**02**13、5**02**14、5**02**16 和 TCP
 
 > [!Note]
-> 當沒有公用 IP 位址的 Vm 放在內部（沒有公用 IP 位址）標準 Azure 負載平衡器的後端集區中時，除非執行額外設定以允許路由傳送至公用端點，否則將不會有輸出網際網路連線能力。 如需如何達到輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure Vm 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康情況探查失敗。 將參數**net.tcp. tcp_timestamps**設定為**0**。 如需詳細資訊，請參閱[Load Balancer 健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱 [Load Balancer 健康狀態探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>建立 Pacemaker 叢集
 
@@ -252,7 +252,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>準備進行 SAP NetWeaver 安裝
 
-下列專案前面會加上 **[A]** -適用于所有節點、 **[1]** -僅適用于節點1或 **[2]** -僅適用于節點2。
+下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
 1. **[A]** 設定主機名稱解析
 
@@ -518,7 +518,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
 1. **[1]** 建立 SAP 叢集資源
 
-  如果使用佇列伺服器1架構（ENSA1），請定義資源，如下所示：
+  若使用加入佇列伺服器 1 架構 (ENSA1)，請按照下列方式來定義資源：
 
    <pre><code>sudo pcs property set maintenance-mode=true
    
@@ -544,7 +544,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    sudo pcs property set maintenance-mode=false
    </code></pre>
 
-   SAP 引進了對佇列伺服器2的支援，包括複寫（從 SAP NW 7.52 開始）。 從 ABAP Platform 1809 開始，預設會安裝排入佇列的伺服器2。 請參閱適用于排入佇列伺服器2支援的 SAP 附注[2630416](https://launchpad.support.sap.com/#/notes/2630416) 。
+   SAP 在 SAP NW 7.52 中引進了加入佇列伺服器 2 的支援 (包括複寫)。 從 ABAP 平台 1809 開始，根據預設會安裝加入佇列伺服器 2。 如需加入佇列伺服器 2 的支援，請參閱 SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
    如果使用佇列伺服器2架構（[ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），請安裝資源代理程式 resource-agents-sap-4.1.1 12-01.2.2. el7. x86_64 或更新版本，並定義資源，如下所示：
 
 <pre><code>sudo pcs property set maintenance-mode=true
@@ -708,7 +708,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
 ## <a name="install-database"></a>安裝資料庫
 
-在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需有關如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱. For a list of supported databases, see [SAP Note 1928533][1928533] [Red Hat Enterprise Linux 上 azure vm 上 SAP Hana 的高可用性][sap-hana-ha]。
+在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需有關如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱[Red Hat Enterprise Linux 上 Azure vm 上 SAP Hana 的高可用性][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] 。
 
 1. 執行 SAP 資料庫執行個體安裝
 
@@ -742,7 +742,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
    將 SAP HANA 安全存放區更新為指向 SAP HANA 系統複寫設定的虛擬名稱。
 
-   執行下列命令來將項目列出為 \<sapsid>adm
+   執行下列命令，以將專案列出為 \<sapsid> adm
 
    <pre><code>hdbuserstore List
    </code></pre>
@@ -895,7 +895,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   如果您只終止訊息伺服器一次，則會由`sapstart`重新開機。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
+   若只終止訊息伺服器一次，則其將會由 `sapstart` 重新啟動。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
@@ -981,7 +981,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
    </code></pre>
 
-   如果您只執行一次命令， `sapstart`將會重新開機進程。 如果您經常執行它， `sapstart`就不會重新開機進程，而且資源會處於停止狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
+   若只執行命令一次，則 `sapstart` 將會重新啟動處理序。 若執行該項目的次數足夠，則 `sapstart` 將不會重新啟動處理序，且資源將會處於已停止的狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
    </code></pre>
@@ -1043,9 +1043,9 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 
 ## <a name="next-steps"></a>後續步驟
 
-* [RHEL for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [適用於具備多個 SID SAP 應用程式 RHEL 上 Azure VM 中 SAP NW HA 的指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
 * 若要瞭解如何建立高可用性，並規劃 Azure （大型實例）上 SAP Hana 的嚴重損壞修復，請參閱[azure 上的 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性，並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]
