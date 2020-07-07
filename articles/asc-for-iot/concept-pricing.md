@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311570"
 ---
 # <a name="pricing-and-associated-costs"></a>定價和相關成本
@@ -50,7 +50,7 @@ IoT 的 Azure 資訊安全中心有相關聯的成本，而這不是直接定價
 
 1. 在 [**安全性**] 底下，按一下 **[總覽**]。
 
-1. 按一下 [設定]  。
+1. 按一下 [設定]。
 
 下表提供每個選項的相關費用和含意的摘要。
 
@@ -73,7 +73,7 @@ IoT 的 Azure 資訊安全中心有相關聯的成本，而這不是直接定價
 | | [警示](concept-security-alerts.md)和[建議](concept-recommendations.md)調查的詳細資料無法使用 |
 |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - 存取未經處理的[安全性資料](how-to-security-data-access.md)
 - [調查裝置](how-to-investigate-device.md)

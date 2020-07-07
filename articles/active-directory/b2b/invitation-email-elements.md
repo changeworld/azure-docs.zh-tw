@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407181"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 共同作業邀請電子郵件的元素 - Azure Active Directory
@@ -36,11 +36,11 @@ ms.locfileid: "81407181"
 
 電子郵件的主旨會遵循此模式：
 
-&lt;使用者&gt;名稱邀請您存取其組織內的應用程式。
+&lt;&gt;使用者名稱邀請您存取其組織內的應用程式。
 
 ### <a name="from-address"></a>寄件者地址
 
-針對「寄件者地址」，我們使用類似 LinkedIn 的模式。 此模式應該可以清楚指出，雖然電子郵件來自于invites@microsoft.com另一個組織，但邀請來自其他組織。 格式 <invites@microsoft.com>為：代表&lt;tenantname&gt; <invites@microsoft.com>的 microsoft 邀請或 microsoft 邀請。 
+針對「寄件者地址」，我們使用類似 LinkedIn 的模式。 此模式應該可以清楚指出，雖然電子郵件來自于 invites@microsoft.com 另一個組織，但邀請來自其他組織。 格式為：代表 tenantname 的 Microsoft 邀請  <invites@microsoft.com> 或 microsoft 邀請 &lt; &gt;  <invites@microsoft.com> 。 
 
 ### <a name="reply-to"></a>回覆地址
 

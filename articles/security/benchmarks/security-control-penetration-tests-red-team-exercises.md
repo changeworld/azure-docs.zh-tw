@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fe9c672e53ea0f46328320daf75f65fd77f5db29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408285"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>安全性控制：滲透測試和 Red Team 練習
@@ -22,7 +22,7 @@ ms.locfileid: "81408285"
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
-| 11.1 | 20.1、20.2、20.3、20.4、20.5、20.6、20.7、20。8 | Shared |
+| 11.1 | 20.1、20.2、20.3、20.4、20.5、20.6、20.7、20。8 | 共用 |
 
 請遵循 Microsoft Engagement 規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的 Red 小組和即時網站滲透測試策略和執行。
 

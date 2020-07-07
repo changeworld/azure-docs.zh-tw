@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414930"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
@@ -24,7 +24,7 @@ ms.locfileid: "81414930"
 此文章透過詳細範例說明及示範 Azure Data Factory 的定價模型。
 
 > [!NOTE]
-> 下列範例中使用的價格是假設性的，並不是用來表示實際的定價。
+> 下列範例中使用的價格為假設，並非表示實際定價。
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>每小時將資料從 AWS S3 複製到 Azure Blob 儲存體
 
@@ -155,7 +155,7 @@ ms.locfileid: "81414930"
 | 建立管線 | 3 個讀取/寫入實體 (1 個用於建立管線，2 個用於資料集參考) |
 | 取得管線 | 1 個讀取/寫入實體 |
 | 執行管線 | 2 個活動執行 (1 個用於觸發程序執行，1 個用於活動執行) |
-| 資料流程假設：執行時間 = 10 分鐘 + 10 最小 TTL | 一般\*計算的10個16核心，TTL 為10 |
+| 資料流程假設：執行時間 = 10 分鐘 + 10 最小 TTL | 一般計算的10個 \* 16 核心，TTL 為10 |
 | 監視管線假設：僅發生 1 次執行 | 2 個重試的監視執行記錄 (1 個用於管線執行，1 個用於活動執行) |
 
 **總案例定價： $1.4631**
@@ -163,7 +163,7 @@ ms.locfileid: "81414930"
 - Data Factory 作業 = **$0.0001**
   - 讀取/寫入 = 10\*00001 = $0.0001 [1 讀取/寫入 = $0.50/50000 = 0.00001]
   - 監視 = 2\*000005 = $0.00001 [1 監視 = $0.25/50000 = 0.000005]
-- 管線協調&amp;流程執行 = **$1.463**
+- 管線協調流程 &amp; 執行 = **$1.463**
   - 活動執行 = 001\*2 = 0.002 [1 執行 = $1/1000 = 0.001]
   - 資料流程活動 = $1.461 已按比例計費20分鐘（執行時間為10分鐘，TTL 為10分鐘）。 Azure Integration Runtime 上的 $ 0.274/小時具有16個核心的一般計算
 

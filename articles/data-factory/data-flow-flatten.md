@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81413683"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>在對應資料流程中壓平合併轉換
@@ -66,9 +66,9 @@ ms.locfileid: "81413683"
 
 ### <a name="no-unroll-root-with-string-array"></a>沒有具有字串陣列的展開根目錄
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根目錄 | 投影 |
 | --------- | ----------- | ---------- |
-| 貨物。客戶 | 無 | 名稱 <br> 客戶 = 商品。客戶 |
+| 貨物。客戶 | None | NAME <br> 客戶 = 商品。客戶 |
 
 #### <a name="output"></a>輸出
 
@@ -84,9 +84,9 @@ ms.locfileid: "81413683"
 
 ### <a name="no-unroll-root-with-complex-array"></a>沒有具有複雜陣列的展開根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根目錄 | 投影 |
 | --------- | ----------- | ---------- |
-| 貨品。 orderItems 的貨物。 | 無 | 名稱 <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
+| 貨品。 orderItems 的貨物。 | None | NAME <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
 
 #### <a name="output"></a>輸出
 
@@ -105,9 +105,9 @@ ms.locfileid: "81413683"
 
 ### <a name="same-root-as-unroll-array"></a>與展開陣列相同的根
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根目錄 | 投影 |
 | --------- | ----------- | ---------- |
-| 貨物。訂單 | 貨物。訂單 | 名稱 <br> 貨品。 orderItems。 <br> 貨物。客戶 <br> location |
+| 貨物。訂單 | 貨物。訂單 | NAME <br> 貨品。 orderItems。 <br> 貨物。客戶 <br> location |
 
 #### <a name="output"></a>輸出
 
@@ -121,9 +121,9 @@ ms.locfileid: "81413683"
 
 ### <a name="unroll-root-with-complex-array"></a>具有複雜陣列的展開根目錄
 
-| 展開者 | 展開根目錄 | 投射 |
+| 展開者 | 展開根目錄 | 投影 |
 | --------- | ----------- | ---------- |
-| 貨品。 orderItem 的貨物。 | 貨物。訂單 |名稱 <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
+| 貨品。 orderItem 的貨物。 | 貨物。訂單 |NAME <br> [訂單] = [貨物]。 orders <br> [orderItems] = [貨品]。 <br> itemQty = 貨品 orderItems. itemQty <br> 位置 = 位置 |
 
 #### <a name="output"></a>輸出
 

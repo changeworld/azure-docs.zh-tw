@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394393"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>適用于 Visual Studio Code 的 Azure 串流分析工具中的 IntelliSense
@@ -21,9 +21,9 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 
 ## <a name="intellisense-features"></a>Intellisense 功能
 
-適用于 VS Code 的串流分析工具中的 IntelliSense 功能是由語言服務提供技術支援。 語言服務會分析您的原始程式碼，並根據語言語義提供智慧型程式碼完成。 如果語言服務知道可能的完成，IntelliSense 建議會在您輸入時彈出。 如果您繼續輸入，則會篩選成員清單（例如變數和方法），只包含包含您所輸入之字元的成員。 當您按下`Tab`或`Enter`鍵時，IntelliSense 會插入您選取的成員。
+適用于 VS Code 的串流分析工具中的 IntelliSense 功能是由語言服務提供技術支援。 語言服務會分析您的原始程式碼，並根據語言語義提供智慧型程式碼完成。 如果語言服務知道可能的完成，IntelliSense 建議會在您輸入時彈出。 如果您繼續輸入，則會篩選成員清單（例如變數和方法），只包含包含您所輸入之字元的成員。 當您按下 `Tab` 或 `Enter` 鍵時，IntelliSense 會插入您選取的成員。
 
-您可以輸入觸發程式字元（例如點字元`.`），在任何編輯器視窗中觸發 IntelliSense。
+您可以輸入觸發程式字元（例如點字元），在任何編輯器視窗中觸發 IntelliSense `.` 。
 
 ![intellisense 自動完成](./media/vs-code-intellisense/auto-completion.gif)
 
@@ -37,7 +37,7 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 |       |         |       |
 | ----- | ------- | ----- |
 | 關鍵字 | `keyword`
-| 函式 | `build-in function`, `user defined function`  |
+| 函數 | `build-in function`, `user defined function`  |
 | 資料集名稱| `input`, `output`, `intermediate result set`|
 | 資料集資料行名稱|`input`, `intermediate result set`|
 |

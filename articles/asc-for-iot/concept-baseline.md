@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311648"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>IoT 基準和自訂檢查的 Azure 資訊安全中心
@@ -64,7 +64,7 @@ ms.locfileid: "81311648"
 
 ## <a name="baseline-custom-check-properties"></a>基準自訂檢查屬性
 
-| Name| 狀態 | 有效值| 預設值| 描述 |
+| 名稱| 狀態 | 有效值| 預設值| 描述 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|必要： true |有效值：**布林**值 |預設值： **false** |傳送高優先順序訊息之前的最大時間間隔。|
 |baselineCustomChecksFilePath |必要： true|有效值： **String**、 **null** |預設值： **null** |基準 xml 設定的完整路徑|

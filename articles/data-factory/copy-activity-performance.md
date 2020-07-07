@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414165"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>複製活動效能和擴充性指南
@@ -42,7 +42,7 @@ ms.locfileid: "81414165"
 
 ## <a name="copy-performance-and-scalability-achievable-using-adf"></a>使用 ADF 可達到複製效能和擴充性
 
-ADF 提供無伺服器架構，允許不同層級的平行處理原則，讓開發人員能夠建立管線來充分利用您的網路頻寬，以及儲存 IOPS 和頻寬，以最大化您環境的資料移動輸送量。  這表示您可以藉由測量來來源資料存放區、目的地資料存放區，以及來源與目的地之間的網路頻寬所提供的最小輸送量來估計您可達到的輸送量。  下表根據您環境的資料大小和頻寬限制來計算複製持續時間。 
+ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，允許開發人員建置管線來充分利用網路頻寬以及儲存體 IOPS 和頻寬來最大化環境的資料移動輸送量。  這表示您可以藉由測量來來源資料存放區、目的地資料存放區，以及來源與目的地之間的網路頻寬所提供的最小輸送量來估計您可達到的輸送量。  下表根據您環境的資料大小和頻寬限制來計算複製持續時間。 
 
 | 資料大小/ <br/> bandwidth | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
@@ -59,8 +59,8 @@ ADF 複製可在不同層級進行調整：
 
 ![ADF 複製的縮放方式](media/copy-activity-performance/adf-copy-scalability.png)
 
-- ADF 控制流程可以平行啟動多個複製活動，例如，[針對每個迴圈](control-flow-for-each-activity.md)使用。
-- 單一複製活動可以利用可調整的計算資源：使用 Azure Integration Runtime 時，您可以用無伺服器的方式為每個複製活動指定[最多 256 diu](#data-integration-units) ;使用自我裝載的 Integration Runtime 時，您可以手動相應增加機器或相應放大至多部電腦（[最多4個節點](create-self-hosted-integration-runtime.md#high-availability-and-scalability)），而單一複製活動會在所有節點上分割其檔案集。
+- ADF 控制流程可以平行方式啟動多個複製活動，例如使用 [For Each 迴圈](control-flow-for-each-activity.md)。
+- 單一複製活動可利用可調整的計算資源：使用 Azure Integration Runtime 時，您可以無伺服器的方式為每個複製活動指定[最多 256 個 DIU](#data-integration-units)；使用自我裝載整合執行階段時，您可手動擴大機器或擴增至多部機器 ([最多 4 個節點](create-self-hosted-integration-runtime.md#high-availability-and-scalability))，且單一複製活動會將其檔案集分割至所有節點。
 - 單一複製活動會[以平行方式](#parallel-copy)使用多個執行緒讀取和寫入資料存放區。
 
 ## <a name="performance-tuning-steps"></a>效能微調步驟
@@ -120,7 +120,7 @@ Azure Data Factory 提供下列效能優化功能：
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動總覽](copy-activity-overview.md)
+- [複製活動概觀](copy-activity-overview.md)
 - [針對複製活動效能進行疑難排解](copy-activity-performance-troubleshooting.md)
 - [複製活動效能優化功能](copy-activity-performance-features.md)
 - [使用 Azure Data Factory 將資料從您的 data lake 或資料倉儲遷移至 Azure](data-migration-guidance-overview.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408628"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>將已啟用 Azure 磁碟加密的虛擬機器複寫至另一個 Azure 區域
@@ -19,7 +19,7 @@ ms.locfileid: "81408628"
 本文說明如何將已啟用 Azure 磁碟加密（ADE）的 Azure Vm 複寫到另一個 Azure 區域。
 
 >[!NOTE]
-> Site Recovery 目前支援 ADE，而在執行 Windows 作業系統的 Vm 上則不會有 Azure Active Directory （AAD）。 針對 Linux 作業系統，我們只支援不含 AAD 的 ADE。 此外，對於執行 ADE 1.1 （不含 AAD）的機器，Vm 必須使用受控磁片。 不支援具有非受控磁片的 Vm。 如果您從 ADE 0.1 （含 AAD）切換到1.1，您必須在啟用1.1 之後，停用複寫並啟用 VM 的複寫。
+> 對於執行 Windows 作業系統的 VM，Site Recovery 目前支援 ADE (無論是否具有 Azure Active Directory (AAD))。 對於 Linux 作業系統，我們僅支援不具 AAD 的 ADE。 此外，機器若執行 ADE 1.1 (不具 AAD)，則 VM 必須使用受控磁碟。 使用非受控磁碟的 VM 不受支援。 如果您從 ADE 0.1 (具有 AAD) 切換至 1.1，則必須在啟用 1.1 後停用 VM 的複寫，然後再啟用複寫。
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>必要的使用者權限
@@ -42,7 +42,7 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
 
 若要管理許可權，請移至入口網站中的金鑰保存庫資源。 為使用者新增必要的許可權。 下列範例示範如何對來源區域中的金鑰保存庫*ContosoWeb2Keyvault*啟用許可權。
 
-1. 前往**Home** > **Keyvaults** > **ContosoWeb2KeyVault > 存取原則**。
+1. 前往**Home**  >  **Keyvaults**  >  **ContosoWeb2KeyVault > 存取原則**。
 
    ![金鑰保存庫許可權視窗](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -60,9 +60,9 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>使用 PowerShell 腳本將磁片加密金鑰複製到 DR 區域
 
 1. [開啟 "CopyKeys" 原始腳本程式碼](https://aka.ms/ade-asr-copy-keys-code)。
-2. 將腳本複製到檔案中，並將它命名為**Copy-keys**。
+2. 將腳本複製到檔案中，並將它命名為**Copy-keys.ps1**。
 3. 開啟 Windows PowerShell 應用程式，然後移至您儲存檔案的資料夾。
-4. 執行 Copy-keys。
+4. 執行 Copy-keys.ps1。
 5. 提供 Azure 認證來登入。
 6. 選取您 VM 的 **Azure 訂用帳戶**。
 7. 等待資源群組載入，然後選取 Vm 的**資源群組**。
@@ -86,7 +86,7 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
     - **來源訂用帳戶**：來源虛擬機器所屬的訂用帳戶。 它可以是與您的復原服務保存庫位於相同 Azure Active Directory 租使用者中的任何訂用帳戶。
     - **資源群組**：來源虛擬機器所屬的資源群組。 在下一個步驟中，會列出所選資源群組中的所有 Vm 以提供保護。
 
-3. 在**虛擬機器** > **選取 [虛擬機器**] 中，選取您要複寫的每個 VM。 您只能選取可以啟用複寫的機器。 然後選取 **[確定]**。
+3. 在**虛擬機器**  >  **選取 [虛擬機器**] 中，選取您要複寫的每個 VM。 您只能選取可以啟用複寫的機器。 然後選取 [確定]。
 
 4. 在 [**設定**] 中，您可以設定下列目標網站設定。
 
@@ -118,7 +118,7 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
    - 針對 [**目標磁片加密金鑰保存庫**]，從訂用帳戶的目標位置中的金鑰保存庫清單選取目標磁片加密金鑰保存庫。
    - 針對 [**目標金鑰加密金鑰保存庫**]，從訂用帳戶的目標位置中的金鑰保存庫清單選取目標金鑰加密金鑰保存庫。
 
-3. 選取 [**建立目標資源** > ] [**啟用**複寫]。
+3. 選取 [**建立目標資源**] [  >  **啟用**複寫]。
 4. 在 Vm 啟用複寫之後，您可以在 [複寫的**專案**] 底下檢查 vm 的健全狀態。
 
 >[!NOTE]
@@ -129,7 +129,7 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
   - 您已在 VM 上啟用 Site Recovery 複寫。 稍後，您已在來源 VM 上啟用磁片加密。
   - 您已在 VM 上啟用 Site Recovery 複寫。 稍後，您已變更來源 VM 上的磁片加密金鑰或金鑰加密金鑰。
 
-您可以使用[腳本](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script)將加密金鑰複製到目的地區域，然後在 [復原**服務保存庫** > ] [複寫的*專案* > ]**屬性** > [**計算與網路**] 中更新目標加密設定。
+您可以使用[腳本](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script)將加密金鑰複製到目的地區域，然後在 [復原**服務保存庫**] [複寫的  >  *專案*]  >  **屬性**[  >  **計算與網路**] 中更新目標加密設定。
 
 ![[更新 ADE 設定] 對話方塊視窗](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -141,7 +141,7 @@ Azure Site Recovery 至少需要來源區域金鑰保存庫的讀取權限，以
 **修正方式：** 不論您是否為訂用帳戶管理員，請務必擁有金鑰保存庫的「取得」許可權。
 
 1. 前往來源區域金鑰保存庫，在此範例中為 "ContososourceKeyvault" >**存取原則** 
-2. 在 [**選取主體**] 底下，新增您的使用者dradmin@contoso.com名稱，例如： ""
+2. 在 [**選取主體**] 底下，新增您的使用者名稱，例如： " dradmin@contoso.com "
 3. 在 [**金鑰許可權**] 下選取 [取得] 
 4. 在 [**秘密許可權**] 下選取 [取得] 
 5. 儲存存取原則
@@ -153,7 +153,7 @@ Azure Site Recovery 至少需要來源區域金鑰保存庫的讀取權限，以
 
 [目標金鑰保存庫](#required-user-permissions)上所需的許可權
 
-**修正方式：** 移至**Home** > **Keyvaults** > **ContosotargetKeyvault** > **Access 原則**並新增適當的許可權。
+**修正方式：** 移至**Home**  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **Access 原則**並新增適當的許可權。
 
 ## <a name="next-steps"></a>後續步驟
 

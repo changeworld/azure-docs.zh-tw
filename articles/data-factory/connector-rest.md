@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415035"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料
@@ -43,7 +43,7 @@ ms.locfileid: "81415035"
 > [!TIP]
 > 若要在 Data Factory 中設定 REST 連接器之前，測試擷取資料的要求，請先了解 API 規格中的標頭和本文需求。 您可以使用 Postman 或網頁瀏覽器之類的工具進行驗證。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "81415035"
 | url | REST 服務的基底 URL。 | 是 |
 | enableServerCertificateValidation | 連接到端點時，是否要驗證服務器端的 TLS/SSL 憑證。 | 否<br /> （預設值為**true**） |
 | authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，此屬性會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，此屬性會使用預設的 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本驗證
 
@@ -72,7 +72,7 @@ ms.locfileid: "81415035"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | userName | 用來存取 REST 端點的使用者名稱。 | 是 |
-| password | 使用者 (**userName** 值) 的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 使用者 (**userName** 值) 的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
 
 **範例**
 
@@ -174,11 +174,11 @@ ms.locfileid: "81415035"
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設定為 [RestResource]****。 | 是 |
-| relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
+| relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service]/[relative URL specified in dataset]` 。 | 否 |
 
-如果您是在`requestMethod`資料`additionalHeaders`集`requestBody`內`paginationRules`設定、和，則仍會受到支援，但建議您在未來使用活動來源中的新模型。
+如果您是 `requestMethod` `additionalHeaders` `requestBody` 在資料集內設定、和，則仍會受到 `paginationRules` 支援，但建議您在未來使用活動來源中的新模型。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -205,7 +205,7 @@ ms.locfileid: "81415035"
 
 ### <a name="rest-as-source"></a>REST 作為來源
 
-複製活動的 [**來源**] 區段支援下列屬性：
+複製活動的 **source** 區段支援下列屬性：
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
@@ -218,7 +218,7 @@ ms.locfileid: "81415035"
 | requestInterval | 傳送下一個頁面要求之前的等候時間。 預設值為 [00:00:01]**** |  否 |
 
 >[!NOTE]
->REST 連接器會忽略中指定的`additionalHeaders`任何「接受」標頭。 由於 REST 連接器僅支援 JSON 中的回應，因此它會自動產生的`Accept: application/json`標頭。
+>REST 連接器會忽略中指定的任何「接受」標頭 `additionalHeaders` 。 由於 REST 連接器僅支援 JSON 中的回應，因此它會自動產生的標頭 `Accept: application/json` 。
 
 **範例1：使用 Get 方法搭配分頁**
 
@@ -322,7 +322,7 @@ ms.locfileid: "81415035"
 | Headers.*response_header* 或 Headers['response_header'] | 使用者定義的 "response_header" 會參考目前 HTTP 回應中的一個標頭名稱，其值會用來發出下一個要求。 |
 | JSONPath 運算式會以 "$" 開頭 (代表回應本文的根) | 回應本文應只包含一個 JSON 物件。 JSONPath 運算式應會傳回單一基本值，而這會用來發出下一個要求。 |
 
-**範例：**
+**範例︰**
 
 Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下個頁面的 URL 會在 ***paging.next*** 中指出：
 
@@ -356,7 +356,7 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 }
 ```
 
-對應的 REST 複製活動來源設定特別`paginationRules`如下所示：
+對應的 REST 複製活動來源設定特別如下所示 `paginationRules` ：
 
 ```json
 "typeProperties": {
@@ -400,10 +400,10 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 2. 建立目的地連線的新連接。  
     ![新增 Gen2 連接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
-3. 選取 [**使用此範本**]。
+3. 選取 [使用此範本]。
     ![使用此範本](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 您會看到建立的管線，如下列範例所示： ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 您會看到建立的管線，如下列範例所示： ![ 管線](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. 選取 [ **Web**活動]。 在 [**設定**] 中，指定對應的**URL**、**方法**、**標頭**和**主體**，以從您要從中複製資料之服務的登入 API 取得 OAuth 持有人權杖。 範本中的預留位置會展示 Azure Active Directory （AAD） OAuth 的範例。 注意 AAD 驗證原本就由 REST 連接器支援，以下是 OAuth 流程的範例。 
 
@@ -411,8 +411,8 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
     |:--- |:--- |:--- |
     | URL |指定要從中取出 OAuth 持有人權杖的 url。 例如，在範例中，它是https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | 方法 | HTTP 方法。 允許的值為**Post**和**Get**。 | 
-    | headers | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
-    | body | HTTP 要求的主體。 | 
+    | 標頭 | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
+    | 主體 | HTTP 要求的主體。 | 
 
     ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
@@ -425,10 +425,10 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 
    ![複製來源驗證](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. 選取 [ **Debug**]，輸入**參數**，然後選取 **[完成]**。
+7. 選取 [偵錯]，輸入 [參數]，然後選取 [完成]。
    ![管線執行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. 當管線執行成功完成時，您會看到類似下列範例的結果： ![管線執行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 當管線執行成功完成時，您會看到類似下列範例的結果： ![ 管線執行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
 9. 按一下 [**動作**] 資料行中 WebActivity 的 [輸出] 圖示，您會看到服務所傳回的 access_token。
 

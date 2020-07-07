@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: 71b1b57cb2a9fa442dc3cef3bf34077040cff58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410931"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factory 白皮書 
@@ -25,7 +25,7 @@ ms.locfileid: "81410931"
 
 白皮書可讓您以更深入的層面探索 Azure Data Factory。 本文提供 Azure Data Factory 的可用白皮書清單。
 
-| **白皮書** | **說明** |
+| **白皮書** | **描述** |
 | --- | --- |
 |[Azure Data Factory-雲端中的資料整合](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-data-integration-in-the-cloud/Azure_Data_Factory_Data_Integration_in_the_Cloud.pdf) | 本檔說明 Azure Data Factory 如何讓您建立現代化的資料倉儲、啟用先進的分析以驅動智慧型 SaaS 應用程式，並將您的 SQL Server 整合服務套件提升至 Azure。|
 |[使用 Azure Data Factory 從內部部署關聯式資料倉儲將資料移轉至 Azure](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/) | 本檔說明使用 Azure Data Factory 將數十 TB 資料從現有內部部署關聯式資料倉儲（例如，Netezza、Oracle、Teradata、SQL server）遷移至 Azure （例如 Blob 儲存體或 Azure Data Lake Storage）的複雜性。 這些挑戰和最佳作法會以彈性、效能、擴充性、管理和安全性說明，以透過 Azure Data Factory 來進行 Azure 的大規模資料內嵌旅程。 |

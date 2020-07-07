@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382787"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
@@ -37,7 +37,7 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 >[!NOTE]
 >播放先前的影片「<a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">使用 Azure IoT 解決方案加速器開始使用時間序列深入解析」。</a>
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在使用時間序列深入解析總管之前，您必須先：
 
@@ -71,14 +71,14 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
       - 述**詞：使用**述詞，使用下表所列的一組運算元來快速篩選事件。 如果您選取或按一下來進行搜尋，述詞會根據該搜尋自動進行更新。 支援的運算元類型包括：
 
-         |作業  |支援的類型  |備忘錄  |
+         |操作  |支援的類型  |備忘稿  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**、 **DateTime**、 **TimeSpan**       |         |
          |**=**, **!=**,**<>**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **Null**        |         |
          |**在**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **Null**        |  所有運算元都應該是相同的類型，或為**Null**常數。        |
-         |**HAS**     | **字串**        |  右側只允許常數位串常值。 不允許空字串和**Null** 。       |
+         |**HAS**     | **String**        |  右側只允許常數位串常值。 不允許空字串和**Null** 。       |
 
-      - **查詢範例**
+      - **範例查詢**
 
          [![範例 GA 查詢](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 

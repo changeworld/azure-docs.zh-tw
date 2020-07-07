@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408371"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全性控制：清查和資產管理
@@ -24,15 +24,15 @@ ms.locfileid: "81408371"
 |--|--|--|
 | 6.1 | 1.1、1.2、1.3、1.4、9.1、12。1 | 客戶 |
 
-使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路、埠及通訊協定等）。  請確定您的租使用者中有適當（讀取）許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
+使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路、埠及通訊協定等）。  確保您的租用戶中有適當的 (讀取) 權限，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
 
-雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
+雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
 - [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-- [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [瞭解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "81408371"
 
 將標籤套用至 Azure 資源，提供中繼資料以邏輯方式將其組織成分類法。
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -50,13 +50,13 @@ ms.locfileid: "81408371"
 |--|--|--|
 | 6.3 | 1.6 | 客戶 |
 
-使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產。 定期協調清查，並確保未經授權的資源會及時從訂用帳戶中刪除。
+使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂用帳戶](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
 - [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 ## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
@@ -66,7 +66,7 @@ ms.locfileid: "81408371"
 
 根據我們的組織需求，建立已核准 Azure 資源的清查和適用于計算資源的已核准軟體。
 
-## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
+## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -74,7 +74,7 @@ ms.locfileid: "81408371"
 
 請使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
 
-使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。  請確定已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。  確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -90,7 +90,7 @@ ms.locfileid: "81408371"
 
 - [如何啟用 Azure 虛擬機器清查](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
-## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未核准的 Azure 資源和軟體應用程式
+## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -148,7 +148,7 @@ ms.locfileid: "81408371"
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
-## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
+## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行指令碼的能力
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -160,7 +160,7 @@ ms.locfileid: "81408371"
 
 - [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
+## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|

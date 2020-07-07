@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414333"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用啟用 Azure 的 dtexec 公用程式來執行 SQL Server Integration Services 套件
@@ -32,11 +32,11 @@ AzureDTExec 會以 Data Factory 管線中的執行 SSIS 套件活動來執行您
 
 AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生管線的 Azure Active Directory （Azure AD）應用程式。 您也可以將它設定為存取檔案系統、檔案共用，或 Azure 檔案儲存體儲存封裝的位置。 根據您為其叫用選項提供的值，AzureDTExec 會產生並執行唯一 Data Factory 管線，並在其中執行 SSIS 套件活動。 以相同的選項值叫用 AzureDTExec 時，會重新叫用現有的管線。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要使用 AzureDTExec，請下載並安裝最新版本的 SSMS，也就是18.3 版或更新版本。 請從[此網站](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)下載。
 
 ## <a name="configure-the-azuredtexec-utility"></a>設定 AzureDTExec 公用程式
-在您的本機電腦上安裝 SSMS 也會安裝 AzureDTExec。 若要設定其設定，請使用 [以**系統管理員身分執行**] 選項來啟動 SSMS。 然後選取 [**工具** > ] [**遷移至 azure** > ] [**設定啟用 azure 的 DTExec**]。
+在您的本機電腦上安裝 SSMS 也會安裝 AzureDTExec。 若要設定其設定，請使用 [以**系統管理員身分執行**] 選項來啟動 SSMS。 然後選取 [**工具**] [  >  **遷移至 azure**] [  >  **設定啟用 azure 的 DTExec**]。
 
 ![設定啟用 Azure 的 dtexec 功能表](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -70,7 +70,7 @@ AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生
 ## <a name="invoke-the-azuredtexec-utility"></a>叫用 AzureDTExec 公用程式
 您可以在命令列提示字元中叫用 AzureDTExec，並針對使用案例中的特定選項提供相關的值。
 
-公用程式是安裝在`{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`。 您可以將其路徑新增至「路徑」環境變數，以便從任何地方叫用它。
+公用程式是安裝在 `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` 。 您可以將其路徑新增至「路徑」環境變數，以便從任何地方叫用它。
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,9 +86,9 @@ AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生
 
 - **/F [ile]**：載入儲存在檔案系統、檔案共用或 Azure 檔案儲存體中的封裝。 作為此選項的值，您可以在 [檔案系統]、[檔案共用] 或 [Azure 檔案儲存體] 中，指定封裝檔案的 UNC 路徑，其副檔名為 .dtsx。 如果指定的 UNC 路徑包含任何空格，請在整個路徑前後加上引號。
 - **/Conf [igFile]**：指定要從中解壓縮值的設定檔。 使用此選項，您可以針對封裝設定與設計階段所指定不同的執行時間設定。 您可以將不同的設定儲存在 XML 設定檔中，然後在封裝執行之前載入它們。 如需詳細資訊，請參閱[SSIS 封裝](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)設定。 若要指定此選項的值，請在檔案系統、檔案共用或 Azure 檔案儲存體的設定檔案中使用 UNC 路徑，其副檔名為 Ssistutorial.dtsconfig。 如果指定的 UNC 路徑包含任何空格，請在整個路徑前後加上引號。
-- **/Conn [ection]**：指定封裝中現有連接管理員的連接字串。 使用此選項，您可以針對封裝中現有的連線管理員，設定與設計階段所指定不同的執行時間連接字串。 指定此選項的值，如下所示`connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`：。
-- **/Set**：覆寫封裝中參數、變數、屬性、容器、記錄提供者、Foreach 列舉值或連接的設定。 可以多次指定這個選項。 指定此選項的值，如下所示`property_path;value`：。 例如， `\package.variables[counter].Value;1`會將`counter`變數的值覆寫為1。 您可以使用 [**套件**設定] wizard 來尋找、複製和貼上您的`property_path`封裝中要覆寫其值之專案的值。 如需詳細資訊，請參閱[Package Configuration wizard](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)。
-- **/De [crypt]**：設定以**EncryptAllWithPassword**/**EncryptSensitiveWithPassword**保護等級設定之套件的解密密碼。
+- **/Conn [ection]**：指定封裝中現有連接管理員的連接字串。 使用此選項，您可以針對封裝中現有的連線管理員，設定與設計階段所指定不同的執行時間連接字串。 指定此選項的值，如下所示： `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` 。
+- **/Set**：覆寫封裝中參數、變數、屬性、容器、記錄提供者、Foreach 列舉值或連接的設定。 可以多次指定這個選項。 指定此選項的值，如下所示： `property_path;value` 。 例如，會 `\package.variables[counter].Value;1` 將變數的值覆寫 `counter` 為1。 您可以使用 [**套件**設定] wizard 來尋找、複製和貼上您的 `property_path` 封裝中要覆寫其值之專案的值。 如需詳細資訊，請參閱[Package Configuration wizard](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)。
+- **/De [crypt]**：設定以**EncryptAllWithPassword** / **EncryptSensitiveWithPassword**保護等級設定之套件的解密密碼。
 
 > [!NOTE]
 > 以新值叫用 AzureDTExec 的選項會產生新的管線，但選項 **/De [腳本]** 除外。

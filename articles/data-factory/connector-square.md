@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410321"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure Data Factory (預覽) 從 Square 複製資料
@@ -31,7 +31,7 @@ ms.locfileid: "81410321"
 
 下列活動支援此方形連接器：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 
@@ -55,12 +55,12 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 主機 | Square 執行個體的 URL。 (亦即 mystore.mysquare.com)  | 是 |
 | clientId | 與您 Square 應用程式相關聯的用戶端識別碼。  | 是 |
 | clientSecret | 與您 Square 應用程式相關聯的用戶端祕密。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| redirectUri | Square 應用程式儀表板中指派的重新導向 URL。 （亦即 HTTP：\//localhost：2500）  | 是 |
+| redirectUri | Square 應用程式儀表板中指派的重新導向 URL。 （亦即 HTTP： \/ /localhost：2500）  | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
 | usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -114,14 +114,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ### <a name="square-as-source"></a>Square 即來源
 
-若要從 Square 複製資料，請將複製活動中的來源類型設定為 **SquareSource**。 複製活動的 [**來源**] 區段支援下列屬性：
+若要從 Square 複製資料，請將複製活動中的來源類型設定為 **SquareSource**。 複製活動的 **source** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為：**SquareSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Business"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -155,7 +155,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

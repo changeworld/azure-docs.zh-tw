@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81380680"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>瞭解 Azure 時間序列深入解析中的資料保留
@@ -90,7 +90,7 @@ ms.locfileid: "81380680"
 
 [![事件中樞訊息保留。](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-如果事件來源（`timeStampPropertyName`）上未設定任何屬性，時間序列深入解析預設為以 X 軸到達事件中樞的時間戳記。 如果`timeStampPropertyName`設定為其他專案，環境會在剖析事件時，尋找`timeStampPropertyName`資料封包中所設定的。
+如果事件來源（）上未設定任何屬性 `timeStampPropertyName` ，時間序列深入解析預設為以 X 軸到達事件中樞的時間戳記。 如果 `timeStampPropertyName` 設定為其他專案，環境會在剖析事件時，尋找 `timeStampPropertyName` 資料封包中所設定的。
 
 瞭解[如何調整您的時間序列深入解析環境](time-series-insights-how-to-scale-your-environment.md)，以調整您的環境以容納額外的容量或增加保留的長度。
 

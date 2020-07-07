@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631778"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何驗證傳輸到虛擬網路的 VPN 輸送量
@@ -123,27 +123,27 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 ## <a name="test-vms-running-windows"></a>測試執行 Windows 的 Vm
 
-### <a name="load-latteexe-onto-the-vms"></a>將 Latte 載入至 Vm
+### <a name="load-latteexe-onto-the-vms"></a>將 Latte.exe 載入至 Vm
 
-下載最新版本的[Latte](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+下載最新版本的[Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-請考慮將 Latte 放在不同的資料夾中，例如`c:\tools`
+請考慮將 Latte.exe 放在不同的資料夾中，例如`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>允許 Latte 通過 Windows 防火牆
+### <a name="allow-latteexe-through-the-windows-firewall"></a>允許 Latte.exe 通過 Windows 防火牆
 
-在接收者上，于 Windows 防火牆上建立允許規則，以允許 Latte 流量抵達。 最簡單的方式是依名稱允許整個 Latte 程式，而不是允許特定的 TCP 埠輸入。
+在接收者上，于 Windows 防火牆上建立允許規則，以允許 Latte.exe 流量抵達。 最簡單的方式是依名稱允許整個 Latte.exe 程式，而不是允許特定的 TCP 埠輸入。
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>允許 Latte 通過 Windows 防火牆，如下所示
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>允許 Latte.exe 通過 Windows 防火牆，如下所示
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-例如，如果您將 latte 複製到 "c:\tools" 資料夾，這會是命令
+例如，如果您將 latte.exe 複製到 "c:\tools" 資料夾，這會是命令
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>執行延遲測試
 
-在接收者上啟動 latte （從 CMD 執行，而不是從 PowerShell）：
+在接收者上啟動 latte.exe （從 CMD 執行，而不是從 PowerShell）：
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -155,7 +155,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-在寄件者上啟動 latte （從 CMD 執行，而不是從 PowerShell）
+在寄件者上啟動 latte.exe （從 CMD 執行，而不是從 PowerShell）
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -225,7 +225,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 即使以先前步驟評估的整體輸送量（iPERF/NTTTCP/等等）都不錯，當您使用 Windows Explorer 或透過 RDP 會話拖放時，您可能會遇到檔案較慢的問題。 此問題一般是因為下列一個或多個因素造成︰
 
-* 如 Windows 檔案總管與 RDP 的檔案應用程式，並未在複製檔案時使用多執行緒。 為了提升效能，請使用如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 等多執行緒的檔案複製應用程式，以 16 或 32 條執行緒複製檔案。 若要在 Richcopy 中變更檔案複製的執行緒數目，請按一下 [**動作** > ] [**複製選項** > ] [檔案**複製**]。
+* 如 Windows 檔案總管與 RDP 的檔案應用程式，並未在複製檔案時使用多執行緒。 為了提升效能，請使用如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) 等多執行緒的檔案複製應用程式，以 16 或 32 條執行緒複製檔案。 若要在 Richcopy 中變更檔案複製的執行緒數目，請按一下 [**動作**] [  >  **複製選項**] [檔案  >  **複製**]。
 
    ![檔案複製變慢的問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -253,7 +253,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 * WinMTR
 * TCPTraceroute
-* `ping`和`psping` （這些工具可以提供 RTT 的良好估計，但不能用於所有情況）。
+* `ping`和 `psping` （這些工具可以提供 RTT 的良好估計，但不能用於所有情況）。
 
 ![檢查延遲](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

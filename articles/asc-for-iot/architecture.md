@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4cc7d1982555f058a4ea23f7d8a6fdc2d83e484d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311758"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>適用於 IoT 的 Azure 資訊安全中心架構
@@ -64,7 +64,7 @@ IoT 建議和警示的 Azure 資訊安全中心（分析管線輸出）會寫入
 在本文中，您已瞭解 IoT 解決方案 Azure 資訊安全中心的基本架構和工作流程。 若要深入瞭解必要條件、如何開始使用，以及如何在 IoT 中樞中啟用您的安全性解決方案，請參閱下列文章：
 
 - [服務必要條件](service-prerequisites.md)
-- [開始使用](getting-started.md)
+- [快速入門](getting-started.md)
 - [設定您的解決方案](quickstart-configure-your-solution.md)
 - [在 IoT 中樞中啟用安全性](quickstart-onboard-iot-hub.md)
 - [IoT 的 Azure 資訊安全中心常見問題](resources-frequently-asked-questions.md)

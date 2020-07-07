@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81409778"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>針對 VMware Vm/實體伺服器設定大規模的嚴重損壞修復
@@ -64,7 +64,7 @@ ms.locfileid: "81409778"
 5. 分析[報告建議](site-recovery-vmware-deployment-planner-analyze-report.md)和[成本估計](site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 >[!NOTE]
-> 根據預設，此工具設定為分析並產生最多1000個 Vm 的報告。 您可以藉由增加 Asrdeploymentplanner.exe.config 中的 Maxvmssupported 為機碼值來變更此限制。
+> 根據預設，此工具設定為分析並產生最多1000個 Vm 的報告。 您可以藉由增加 ASRDeploymentPlanner.exe.config 檔案中的 Maxvmssupported 為機碼值來變更此限制。
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>規劃目標（Azure）需求和容量
 
@@ -127,7 +127,7 @@ ms.locfileid: "81409778"
  
 設定伺服器容量會受到複寫的機器數目影響，而不是依資料變換率。 若要找出您是否需要額外的設定伺服器，請使用這些定義的 VM 限制。
 
-**使用率** | **記憶體** | **快取磁片** | **已複寫電腦限制**
+**CPU** | **記憶體** | **快取磁片** | **已複寫電腦限制**
  --- | --- | --- | ---
 8 個 vCPU<br> 2個通訊端 * 4 核心 @ 2.5 Ghz | 16 GB | 600 GB | 最多550部機器<br> 假設每部機器各有三個 100 GB 的磁片。
 
@@ -153,7 +153,7 @@ ms.locfileid: "81409778"
 - 我們建議您新增具有最高規格的伺服器。 
 
 
-**使用率** | **記憶體** | **快取磁片** | **變換率**
+**CPU** | **記憶體** | **快取磁片** | **變換率**
  --- | --- | --- | --- 
 12 個 vCPU<br> 2個通訊端 * 6 核心 @ 2.5 Ghz | 24 GB | 1 GB | 一天最多 2 TB
 

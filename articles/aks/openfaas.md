@@ -7,17 +7,17 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631462"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
 [OpenFaaS][open-faas]是一種架構，可讓您透過使用容器來建立無伺服器函式。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 為了要完成本文中的步驟，您需要下列項目。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80631462"
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>新增 OpenFaaS helm 圖表存放庫
 
-移至[https://shell.azure.com](https://shell.azure.com)以在您的瀏覽器中開啟 Azure Cloud Shell。
+移至 [https://shell.azure.com](https://shell.azure.com)，以在瀏覽器中開啟 Azure Cloud Shell。
 
 OpenFaaS 會維護它自己的 helm 圖，以隨時掌握最新的變更。
 
@@ -58,7 +58,7 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-您可以使用`echo $PASSWORD`取得密碼的值。
+您可以使用取得密碼的值 `echo $PASSWORD` 。
 
 Helm 圖表會使用我們在此處建立的密碼來啟用 OpenFaaS 閘道上的基本驗證，這是透過雲端 LoadBalancer 向網際網路公開。
 
@@ -108,7 +108,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系統會提示您登入。 若要提取您的密碼`echo $PASSWORD`，請輸入。
+若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系統會提示您登入。 若要提取您的密碼，請輸入 `echo $PASSWORD` 。
 
 ![OpenFaaS 使用者介面](media/container-service-serverless/openfaas.png)
 
@@ -118,7 +118,7 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 brew install faas-cli
 ```
 
-設定`$OPENFAAS_URL`為上方找到的公用 IP。
+設定 `$OPENFAAS_URL` 為上方找到的公用 IP。
 
 使用 Azure CLI 登入：
 

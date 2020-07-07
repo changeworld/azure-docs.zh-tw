@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410860"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
@@ -30,7 +30,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>使用單一全域 HDInsight 服務標記
 
-開始搭配 HDInsight 叢集使用服務標籤的最簡單方式，就是將全域標記`HDInsight`新增至 NSG 規則。
+開始搭配 HDInsight 叢集使用服務標籤的最簡單方式，就是將全域標記新增 `HDInsight` 至 NSG 規則。
 
 1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 中，選取您的網路安全性群組。
 
@@ -54,7 +54,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 如果您的叢集位於本表所列的區域中，您只需要將單一地區服務標籤新增至您的 NSG。
 
-| Country | 區域 | 服務標記 |
+| 國家/地區 | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 | &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
@@ -73,7 +73,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 | 日本 | 日本西部 | JapanWest |
 | 法國 | 法國中部| FranceCentral |
 | 英國 | 英國南部 | UKSouth |
-| Azure Government | USDoD 中部 | USDoDCentral |
+| Azure Government | US DoD 中部 | USDoDCentral |
 | &nbsp; | 美國政府德克薩斯州 | USGovTexas |
 | &nbsp; | UsDoD 東部 | USDoDEast |
 | &nbsp; | 美國政府亞利桑那州 | USGovArizona |
@@ -86,15 +86,15 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 #### <a name="group-1"></a>群組 1
 
-如果您的叢集是在下表的其中一個區域中建立，請允許服務標記`HDInsight.WestUS`和`HDInsight.EastUS`。 此外，也列出了區域服務標記。 本節中的區域需要三個服務標記。
+如果您的叢集是在下表的其中一個區域中建立，請允許服務標記 `HDInsight.WestUS` 和 `HDInsight.EastUS` 。 此外，也列出了區域服務標記。 本節中的區域需要三個服務標記。
 
-例如，如果您的`East US 2`叢集是在區域中建立，您必須將下列服務標籤新增至您的網路安全性群組：
+例如，如果您的叢集是在區域中建立 `East US 2` ，您必須將下列服務標籤新增至您的網路安全性群組：
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | 區域 | 服務標記 |
+| 國家/地區 | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 美國 | 美國東部 2 | EastUS2 |
 | &nbsp; | 美國中部 | CentralUS |
@@ -111,15 +111,15 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 #### <a name="group-2"></a>群組 2
 
-*中國北部*和*中國東部*區域中的叢集需要允許兩個服務標記： `HDInsight.ChinaNorth`和`HDInsight.ChinaEast`。
+*中國北部*和*中國東部*區域中的叢集需要允許兩個服務標記： `HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast` 。
 
 #### <a name="group-3"></a>群組 3
 
-*US Gov 愛荷華州*和*US Gov 維吉尼亞州*區域中的叢集需要允許兩個服務標記： `HDInsight.USGovIowa`和`HDInsight.USGovVirginia`。
+*US Gov 愛荷華州*和*US Gov 維吉尼亞州*區域中的叢集需要允許兩個服務標記： `HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia` 。
 
 #### <a name="group-4"></a>群組 4
 
-*德國中部*和*德國東北部*區域中的叢集需要允許兩個服務標記： `HDInsight.GermanyCentral`和。 `HDInsight.GermanyNortheast`
+*德國中部*和*德國東北部*區域中的叢集需要允許兩個服務標記： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNortheast` 。
 
 ## <a name="next-steps"></a>後續步驟
 

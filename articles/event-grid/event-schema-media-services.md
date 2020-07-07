@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: spelluru
 ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394328"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>做為事件方格來源 Azure 媒體服務
@@ -47,7 +47,7 @@ ms.locfileid: "81394328"
 
 每項**作業**的層級會高於**JobOutput**，因此作業輸出事件會在對應的作業內引發。 
 
-中`JobFinished` `JobCanceled`的錯誤訊息會`JobError`輸出每個作業輸出的匯總結果–全部完成時。 不過，作業輸出事件會在每個工作完成時引發。 例如，如果您有編碼輸出，接著是影片分析輸出，您會在最後一個 JobFinished 事件引發後，以匯總資料的形式引發兩個事件，做為作業輸出事件。
+中的錯誤訊息 `JobFinished` `JobCanceled` `JobError` 會輸出每個作業輸出的匯總結果–全部完成時。 不過，作業輸出事件會在每個工作完成時引發。 例如，如果您有編碼輸出，接著是影片分析輸出，您會在最後一個 JobFinished 事件引發後，以匯總資料的形式引發兩個事件，做為作業輸出事件。
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
@@ -134,7 +134,7 @@ ms.locfileid: "81394328"
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | previousState | 字串 | 工作在該事件之前的狀態。 |
-| State | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
+| state | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
 
 工作狀態可以是以下其中一個值：*已排入佇列*、*已排程*、*處理中*、*已完成*、*錯誤*、*已取消*、*取消中*
 
@@ -606,7 +606,7 @@ ms.locfileid: "81394328"
 | discontinuityCount | integer | 在過去 20 秒所觀察到的中斷次數。 |
 | nonIncreasingCount | integer | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
 | unexpectedBitrate | bool | 在過去 20 秒內，預期和實際的位元速率差異是否超過允許的限制。 只有在「incomingBitrate >= 2* 位元速率」或「incomingBitrate <= 位元速率/2」或「IncomingBitrate = 0」時，才會是 true。 |
-| State | 字串 | 即時事件的狀態。 |
+| state | 字串 | 即時事件的狀態。 |
 | healthy | bool | 根據計數和旗標來指出內嵌是否狀況良好。 如果 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false，則健康情況為 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -659,7 +659,7 @@ ms.locfileid: "81394328"
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 例如，"Microsoft.Media.JobStateChange"。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 | 媒體服務事件資料。 |
+| data | 物件 (object) | 媒體服務事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
@@ -671,4 +671,4 @@ ms.locfileid: "81394328"
 
 - [包含媒體服務事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒體服務事件的定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [即時活動錯誤碼](../media-services/latest/live-event-error-codes.md)
+- [實況活動錯誤碼](../media-services/latest/live-event-error-codes.md)

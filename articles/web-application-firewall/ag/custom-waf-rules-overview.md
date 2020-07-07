@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383820"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 應用程式閘道上的 Web 應用程式防火牆 v2 自訂規則
@@ -37,7 +37,7 @@ Azure 應用程式閘道 Web 應用程式防火牆（WAF） v2 隨附預先設�
 
 使用自訂規則可讓您輕鬆地允許和封鎖流量。 例如，您可以封鎖來自某個 IP 位址範圍的所有流量。 如果要求來自特定的瀏覽器，您可以建立另一個規則來允許流量。
 
-若要允許某個專案，請`-Action`確定參數已設為 [**允許**]。 若要封鎖某個專案，請`-Action`確定參數已設定為 [**封鎖**]。
+若要允許某個專案，請確定 `-Action` 參數已設為 [**允許**]。 若要封鎖某個專案，請確定 `-Action` 參數已設定為 [**封鎖**]。
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-先前`$BlockRule`的會對應至 Azure Resource Manager 中的下列自訂規則：
+先前的會 `$BlockRule` 對應至 Azure Resource Manager 中的下列自訂規則：
 
 ```json
 "customRules": [
@@ -161,10 +161,10 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 - Block –封鎖以*SecDefaultAction* （偵測/預防模式）為基礎的交易。 就像「允許」動作，一旦評估要求並將其加入至封鎖清單之後，就會停止評估並封鎖要求。 任何符合相同條件的要求都不會進行評估，而且只會被封鎖。 
 - Log –可讓規則寫入至記錄檔，但可讓其餘規則執行評估。 其他自訂規則會依優先順序評估，後面接著受管理規則。
 
-## <a name="geomatch-custom-rules-preview"></a>Geomatch 自訂規則（預覽）
+## <a name="geomatch-custom-rules-preview"></a>地區比對自訂規則 (預覽)
 
 自訂規則可讓您建立量身打造的規則，以符合您應用程式和安全性原則的確切需求。 您可以依國家/地區限制對 web 應用程式的存取。 如需詳細資訊，請參閱[Geomatch 自訂規則（預覽）](geomatch-custom-rules.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解自訂規則之後，請[建立您自己的自訂規則](create-custom-waf-rules.md)。
+瞭解自訂規則之後，[建立您自己的自訂規則](create-custom-waf-rules.md)。

@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408521"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全性控制：身分識別和存取控制
@@ -30,7 +30,7 @@ Azure AD 具有必須明確指派且可供查詢的內建角色。 使用 Azure 
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-## <a name="32-change-default-passwords-where-applicable"></a>3.2：變更預設密碼（若適用）
+## <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -50,7 +50,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 - [深入瞭解 Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
-## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：搭配 Azure Active Directory 使用單一登入（SSO）
+## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -70,9 +70,9 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 - [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [如何監視 Azure 資訊安全中心內的身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
-## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦（特殊許可權存取工作站）進行所有系統管理工作
+## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -80,7 +80,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 使用已設定 MFA 的 Paw （特殊許可權存取工作站）來登入和設定 Azure 資源。
 
-- [瞭解特殊許可權存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -92,9 +92,9 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別標示有風險活動 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
-- [如何在 Azure 資訊安全中心中監視使用者的身分識別和存取活動](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
@@ -104,7 +104,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 使用名為「位置」的條件式存取，只允許來自 IP 位址範圍或國家/地區之特定邏輯群組的存取權。
 
-- [如何在 Azure 中設定命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
 ## <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -112,21 +112,21 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.9 | 16.1、16.2、16.4、16.5、16。6 | 客戶 |
 
-使用 Azure Active Directory （AAD）做為中央驗證和授權系統。 AAD 會針對待用和傳輸中的資料使用強式加密來保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
+使用 Azure Active Directory （AAD）做為中央驗證和授權系統。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
 
-- [如何建立和設定 AAD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期審查並協調使用者存取
+## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 3.10 | 16.9、16.10 | 客戶 |
 
-Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確保只有適當的使用者可以繼續進行存取。 
+Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
 - [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
-- [如何使用 Azure 身分識別存取評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
 ## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
@@ -136,25 +136,25 @@ Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以�
 
 您可以存取 Azure AD 登入活動、Audit 和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。
 
-若要簡化此程式，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。
+若要簡化此流程，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將稽核記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-## <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
+## <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 3.12 | 16.13 | 客戶 |
 
-使用 Azure AD 風險和身分識別保護功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可以將資料內嵌到 Azure Sentinel，以進行進一步的調查。
+使用 Azure AD 風險和身分識別保護功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何觀看 Azure AD 有風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：提供 Microsoft 在支援案例期間存取相關的客戶資料
+## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|

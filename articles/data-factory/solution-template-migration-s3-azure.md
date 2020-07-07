@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414767"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>將資料從 Amazon S3 遷移至 Azure Data Lake Storage Gen2
@@ -29,7 +29,7 @@ ms.locfileid: "81414767"
 
 ## <a name="about-the-solution-templates"></a>關於解決方案範本
 
-當遷移超過 10 TB 的資料時，建議使用資料分割。 若要分割資料，請利用 [前置詞] 設定來依名稱篩選 Amazon S3 上的資料夾和檔案，然後每個 ADF 複製作業一次只能複製一個分割區。 您可以同時執行多個 ADF 複製工作，以獲得更好的輸送量。
+當遷移超過 10 TB 的資料時，建議使用資料分割。 若要分割資料，請利用 [前置詞] 設定來依名稱篩選 Amazon S3 上的資料夾和檔案，然後每個 ADF 複製作業一次只能複製一個分割區。 您可同時執行多個 ADF 複製作業，以達到更佳的輸送量。
 
 資料移轉通常需要一次性的歷程記錄資料移轉，並定期將變更從 AWS S3 同步處理到 Azure。 以下有兩個範本，其中一個範本涵蓋一次歷程記錄資料移轉，另一個範本涵蓋將變更從 AWS S3 同步處理至 Azure。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81414767"
 此範本包含五個活動：
 - **Lookup**會抓取尚未複製到外部控制資料表 Azure Data Lake Storage Gen2 的資料分割。 資料表名稱是*s3_partition_control_table* ，而從資料表載入資料的查詢是 *"SELECT PARTITIONPREFIX From s3_partition_control_table WHERE SuccessOrFailure = 0"*。
 - **ForEach**會從*查閱*活動取得分割區清單，並將每個資料分割逐一查看至*TriggerCopy*活動。 您可以將*batchCount*設定為同時執行多個 ADF 複製作業。 我們已在此範本中設定2。
-- **ExecutePipeline**會執行*CopyFolderPartitionFromS3*管線。 建立另一個管線讓每個複製作業複製分割區的原因，是因為它可讓您輕鬆地重新執行失敗的複製作業，以便再次從 AWS S3 重載該特定的分割區。 載入其他分割區的所有其他複製作業都不會受到影響。
+- **ExecutePipeline**會執行*CopyFolderPartitionFromS3*管線。 建立另一個管線讓每個複製作業複製分割區的原因，是因為它可讓您輕鬆地重新執行失敗的複製作業，以便再次從 AWS S3 重載該特定的分割區。 所有其他正在載入其他分割的複製作業都不會受到影響。
 - [**複製**] 會將每個磁碟分割從 AWS S3 複製到 Azure Data Lake Storage Gen2。
 - **SqlServerStoredProcedure**會更新在控制資料表中複製每個資料分割的狀態。
 
@@ -50,12 +50,12 @@ ms.locfileid: "81414767"
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>用於範本，只將變更的檔案從 Amazon S3 複製到 Azure Data Lake Storage Gen2
 
-此範本（*範本名稱：將差異資料從 AWS S3 複製到 Azure Data Lake Storage Gen2*）會使用每個檔案的 LastModifiedTime，將新的或更新的檔案從 AWS S3 複製到 Azure。 請注意，如果您的檔案或資料夾已經以時間間隔資訊分割，做為 AWS S3 上檔案或資料夾名稱的一部分（例如/yyyy/mm/dd/file.csv），您可以移至本[教學](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)課程，以取得更具效能的方法來累加式載入新檔案。 此範本假設您已在 Azure SQL Database 的外部控制資料表中撰寫資料分割清單。 因此，它會使用*查閱*活動來抓取外部控制資料表中的分割區清單、逐一查看每個資料分割，並讓每個 ADF 複製作業一次複製一個分割區。 當每個複製作業開始從 AWS S3 複製檔案時，它會依賴 LastModifiedTime 屬性來識別並複製新的或更新的檔案。 完成任何複製作業之後，它會使用*預存*程式活動來更新控制資料表中每個資料分割的複製狀態。
+此範本（*範本名稱：將差異資料從 AWS S3 複製到 Azure Data Lake Storage Gen2*）會使用每個檔案的 LastModifiedTime，將新的或更新的檔案從 AWS S3 複製到 Azure。 請注意，如果您的檔案或資料夾已在 AWS S3 的檔案或資料夾名稱中，以時間間隔資訊進行分割（例如，/yyyy/mm/dd/file.csv），您可以移至本[教學](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)課程，以取得更具效能的方法來累加載入新檔案。 此範本假設您已在 Azure SQL Database 的外部控制資料表中撰寫資料分割清單。 因此，它會使用*查閱*活動來抓取外部控制資料表中的分割區清單、逐一查看每個資料分割，並讓每個 ADF 複製作業一次複製一個分割區。 當每個複製作業開始從 AWS S3 複製檔案時，它會依賴 LastModifiedTime 屬性來識別並複製新的或更新的檔案。 完成任何複製作業之後，它會使用*預存*程式活動來更新控制資料表中每個資料分割的複製狀態。
 
 此範本包含七個活動：
 - **Lookup**會從外部控制資料表中抓取資料分割。 資料表名稱是*s3_partition_delta_control_table* ，而從資料表載入資料的查詢是 *"select distinct PartitionPrefix from s3_partition_delta_control_table"*。
 - **ForEach**會從*查閱*活動取得分割區清單，並將每個資料分割逐一查看至*TriggerDeltaCopy*活動。 您可以將*batchCount*設定為同時執行多個 ADF 複製作業。 我們已在此範本中設定2。
-- **ExecutePipeline**會執行*DeltaCopyFolderPartitionFromS3*管線。 建立另一個管線讓每個複製作業複製分割區的原因，是因為它可讓您輕鬆地重新執行失敗的複製作業，以便再次從 AWS S3 重載該特定的分割區。 載入其他分割區的所有其他複製作業都不會受到影響。
+- **ExecutePipeline**會執行*DeltaCopyFolderPartitionFromS3*管線。 建立另一個管線讓每個複製作業複製分割區的原因，是因為它可讓您輕鬆地重新執行失敗的複製作業，以便再次從 AWS S3 重載該特定的分割區。 所有其他正在載入其他分割的複製作業都不會受到影響。
 - **Lookup**會從外部控制資料表中抓取上次複製作業執行時間，以便透過 LastModifiedTime 來識別新的或更新的檔案。 資料表名稱是*s3_partition_delta_control_table* ，而從資料表載入資料的查詢是 *"Select max （JobRunTime） as LastModifiedTime From s3_partition_delta_control_table where PartitionPrefix = ' @ {pipeline （）. parameters. prefixStr} ' 和 SuccessOrFailure = 1"*。
 - **複製**只會將每個磁碟分割的新檔案或變更的檔案從 AWS S3 複製到 Azure Data Lake Storage Gen2。 *ModifiedDatetimeStart*的屬性會設定為上次複製作業執行時間。 *ModifiedDatetimeEnd*的屬性會設定為目前的複製作業執行時間。 請注意，時間會套用至 UTC 時區。
 - **SqlServerStoredProcedure**會更新複製每個資料分割的狀態，並在控制資料表成功時複製執行時間。 SuccessOrFailure 的資料行設定為1。
@@ -111,7 +111,7 @@ ms.locfileid: "81414767"
 
     ![建立新的連線](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. 選取 [**使用此範本**]。
+4. 選取 [使用此範本]。
 
     ![使用此範本](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
@@ -119,9 +119,9 @@ ms.locfileid: "81414767"
 
     ![檢閱管線](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. 選取 [ **Debug**]，輸入**參數**，然後選取 **[完成]**。
+6. 選取 [偵錯]，輸入 [參數]，然後選取 [完成]。
 
-    ![按一下 [Debug] * *](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![按一下 [偵錯]****](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. 您會看到類似下列範例的結果：
 
@@ -174,7 +174,7 @@ ms.locfileid: "81414767"
 
     ![建立新的連線](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. 選取 [**使用此範本**]。
+4. 選取 [使用此範本]。
 
     ![使用此範本](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
@@ -182,9 +182,9 @@ ms.locfileid: "81414767"
 
     ![檢閱管線](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. 選取 [ **Debug**]，輸入**參數**，然後選取 **[完成]**。
+6. 選取 [偵錯]，輸入 [參數]，然後選取 [完成]。
 
-    ![按一下 [Debug] * *](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    ![按一下 [偵錯]****](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
 7. 您會看到類似下列範例的結果：
 
