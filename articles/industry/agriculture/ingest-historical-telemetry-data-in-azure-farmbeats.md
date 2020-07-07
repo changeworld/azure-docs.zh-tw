@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613263"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
@@ -27,13 +27,13 @@ ms.locfileid: "82613263"
 
 您必須啟用 Azure FarmBeats 實例的合作夥伴整合。 此步驟會建立可存取您的 Azure FarmBeats 實例作為裝置合作夥伴的用戶端，並提供後續步驟中所需的下列值：
 
-- API 端點：這是 Datahub URL，例如 HTTPs://\<Datahub>. azurewebsites.net
+- API 端點：這是 Datahub URL，例如 HTTPs:// \<datahub> . azurewebsites.net
 - 租用戶識別碼
 - 用戶端識別碼
 - 用戶端密碼
 - EventHub 連接字串
 
-請遵循下列步驟：
+遵循下列步驟：
 
 > [!NOTE]
 > 您必須是系統管理員，才能執行下列步驟。
@@ -42,7 +42,7 @@ ms.locfileid: "82613263"
 
 2. **如果您使用的是 FarmBeats version 1.2.7 或更新版本，請略過步驟 a、b 和 c，然後移至步驟3。** 您可以選取 FarmBeats UI 右上角的 [**設定**] 圖示來檢查 FarmBeats 版本。
 
-      a.  前往**Azure Active Directory** > **應用程式註冊**
+      a.  前往**Azure Active Directory**  >  **應用程式註冊**
 
       b. 選取在 FarmBeats 部署過程中建立的**應用程式註冊**。 它的名稱會與您的 FarmBeats datahub 相同。
 
@@ -70,7 +70,7 @@ ms.locfileid: "82613263"
 
     ```
 
-7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從**Azure Active Directory** > 的 **[總覽**] 頁面取得。
+7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
 
     ```azurepowershell-interactive 
 
@@ -91,56 +91,56 @@ ms.locfileid: "82613263"
  > 身為合作夥伴，您只能存取讀取、建立和更新中繼資料;**[刪除] 選項僅限於合作夥伴。**
 
 - /**Devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
-- /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
+- /**Device**：Device 會對應至存在於伺服器陣列上的實體裝置。
 - /**SensorModel**： SensorModel 對應于感應器的中繼資料，例如製造商、感應器類型，也就是類比或數位，以及感應器測量，例如環境溫度和壓力。
-- /**感應器**：感應器會對應到記錄值的實體感應器。 感應器通常會連接到裝置識別碼為的裝置。
+- /**Sensor**：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 
 
 |        DeviceModel   |  建議   |
 | ------- | -------             |
-|     類型（節點、閘道）        |          裝置節點或閘道的類型      |
+|     Type (Node、Gateway)        |          裝置節點或閘道的類型      |
 |          製造商            |         製造商的名稱    |
-|  ProductCode                    |  裝置產品代碼或型號名稱或數位。 例如，EnviroMonitor # 6800。  |
-|            連接埠          |     埠名稱和類型，也就是數位或類比。
-|     名稱                 |  用來識別資源的名稱。 例如，模型名稱或產品名稱。
-      描述     | 提供模型的有意義描述。
-|    屬性          |    製造商提供的其他屬性。   |
+|  ProductCode                    |  裝置產品代碼，或是型號名稱或號碼。 例如，EnviroMonitor#6800。  |
+|            連接埠          |     連接埠名稱和類型 (數位或類比)。
+|     名稱                 |  用於識別資源的名稱。 例如，型號名稱或產品名稱。
+      描述     | 提供有意義的型號描述。
+|    屬性          |    製造商的其他屬性。   |
 |    **裝置**             |                      |
-|   DeviceModelId     |     相關聯裝置型號的識別碼。  |
+|   DeviceModelId     |     相關裝置型號的識別碼。  |
 |  HardwareId          | 裝置的唯一識別碼，例如 MAC 位址。
-|  ReportingInterval        |   報告間隔（以秒為單位）。
-|  Location            |  裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。
-|ParentDeviceId       |    此裝置所連接之父裝置的識別碼。 例如，連接到閘道的節點。 節點已 parentDeviceId 為閘道。  |
+|  ReportingInterval        |   報告間隔 (秒)。
+|  Location            |  裝置緯度 (-90 到 +90)、經度 (-180 到 180) 和高度 (公尺)。
+|ParentDeviceId       |    此裝置所連線父裝置的識別碼。 例如，連接到閘道的節點。 節點已 parentDeviceId 為閘道。  |
 |    名稱            | 用來識別資源的名稱。 裝置合作夥伴必須傳送與合作夥伴端上的裝置名稱一致的名稱。 如果合作夥伴裝置名稱是 [使用者定義]，則相同的使用者定義名稱應傳播至 FarmBeats。|
 |     描述       |      提供有意義的描述。 |
-|     屬性    |  製造商提供的其他屬性。
+|     屬性    |  製造商的其他屬性。
 |     **SensorModel**        |          |
-|       類型（類比、數位）          |      感應器的類型，不論是類比或數位。       |
+|       Type (Analog、Digital)          |      感應器的類型，不論是類比或數位。       |
 |          製造商            |       感應器的製造商。     |
-|     ProductCode| 產品代碼或型號名稱或數位。 例如，RS-CO2-N01。 |
-|       SensorMeasures > 名稱       | 感應器量值的名稱。 僅支援小寫。 如需不同深度的測量，請指定深度。 例如，soil_moisture_15cm。 此名稱必須與遙測資料一致。  |
-|          SensorMeasures > DataType       |遙測資料類型。 目前支援 double。|
-|    SensorMeasures > 類型    |感應器遙測資料的測量類型。 系統定義的類型為 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、壓力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要新增更多，請參閱/ExtendedType API。|
-|        SensorMeasures > 單位              | 感應器遙測資料的單位。 系統定義的單位為 NoUnit、攝氏、華氏、開氏、Rankine、Pascal、水星、PSI、毫米、釐米、量表、英寸、英尺、英里、公里、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、度數、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、升、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour，以及新增更多應用|
+|     ProductCode| 產品代碼，或型號名稱或號碼。 例如，RS-CO2-N01。 |
+|       SensorMeasures > Name       | 感應器量值的名稱。 僅支援小寫。 如需不同深度的度量，請指定深度。 例如，soil_moisture_15cm。 此名稱必須與遙測資料一致。  |
+|          SensorMeasures > DataType       |遙測資料類型。 目前支援 Double。|
+|    SensorMeasures > Type    |感應器遙測資料的度量類型。 系統定義的類型為 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、壓力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要新增更多，請參閱 /ExtendedType API。|
+|        SensorMeasures > Unit              | 感應器遙測資料的單位。 系統定義的單位為 NoUnit、攝氏、華氏、開氏、Rankine、Pascal、水星、PSI、毫米、釐米、量表、英寸、英尺、英里、公里、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、度數、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、升、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour，以及新增更多應用|
 |    SensorMeasures > AggregationType    |  值可以是 none、average、maximum、下限或 StandardDeviation。  |
-|          名稱            | 用來識別資源的名稱。 例如，模型名稱或產品名稱。  |
-|    描述        | 提供模型的有意義描述。|
-|   屬性       |  製造商提供的其他屬性。|
-|    **感應器**      |          |
-| HardwareId          |   製造商所設定之感應器的唯一識別碼。|
-|  SensorModelId     |    相關聯感應器型號的識別碼。|
-| Location          |  感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。|
-|   埠 > 名稱        |  裝置上感應器連線的埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。|
-|    裝置識別碼  |    感應器所連接之裝置的識別碼。 |
-| 名稱            |   用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
+|          名稱            | 用來識別資源的名稱。 例如，型號名稱或產品名稱。  |
+|    描述        | 提供有意義的型號描述。|
+|   屬性       |  製造商的其他屬性。|
+|    **Sensor**      |          |
+| HardwareId          |   製造商所設定感應器的唯一識別碼。|
+|  SensorModelId     |    相關感應器型號的識別碼。|
+| Location          |  感應器緯度 (-90 到 +90)、經度 (-180 到 180) 和高度 (公尺)。|
+|   Port > Name        |  感應器所連線裝置上的連接埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。|
+|    DeviceID  |    感應器所連線裝置的識別碼。 |
+| 名稱            |   用於識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
 |    描述      | 提供有意義的描述。|
-|    屬性        |製造商提供的其他屬性。|
+|    屬性        |製造商的其他屬性。|
 
 如需物件的詳細資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ### <a name="api-request-to-create-metadata"></a>建立中繼資料的 API 要求
 
-若要提出 API 要求，請將 HTTP （POST）方法、API 服務的 URL，以及用來查詢、提交資料至、建立或刪除要求的資源的 URI 結合在一起。 然後，您可以新增一或多個 HTTP 要求標頭。 API 服務的 URL 是 API 端點，也就是 Datahub URL （HTTPs://\<yourdatahub>. azurewebsites.net）。
+若要提出 API 要求，請將 HTTP （POST）方法、API 服務的 URL，以及用來查詢、提交資料至、建立或刪除要求的資源的 URI 結合在一起。 然後，您可以新增一或多個 HTTP 要求標頭。 API 服務的 URL 是 API 端點，也就是 Datahub URL （HTTPs:// \<yourdatahub> . azurewebsites.net）。
 
 ### <a name="authentication"></a>驗證
 
@@ -322,7 +322,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 ```
 
 > [!NOTE]
-> Api 會針對每個建立的實例傳回唯一的識別碼。 您必須保留識別碼，才能傳送對應的遙測訊息。
+> 這些 API 會傳回所建立每個執行個體的唯一識別碼。 您必須保留識別碼，才能傳送對應的遙測訊息。
 
 ### <a name="send-telemetry"></a>傳送遙測
 
@@ -330,7 +330,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 
 ### <a name="create-a-telemetry-client"></a>建立遙測用戶端
 
-您必須將遙測傳送至 Azure 事件中樞以進行處理。 Azure 事件中樞是一種服務，可讓您從連線的裝置和應用程式內嵌即時資料（遙測）。 若要將遙測資料傳送至 FarmBeats，請建立用戶端，將訊息傳送至 FarmBeats 中的事件中樞。 如需有關傳送遙測的詳細資訊，請參閱[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
+您必須將遙測傳送至 Azure 事件中樞以進行處理。 Azure 事件中樞是一項服務，可從連線的裝置和應用程式擷取即時資料 (遙測)。 若要將遙測資料傳送至 FarmBeats，請建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 如需有關傳送遙測的詳細資訊，請參閱[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>以用戶端的身分傳送遙測訊息
 
@@ -423,11 +423,11 @@ write_client.stop()
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法查看遙測資料
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法檢視遙測資料
 
-**徵兆**：已部署裝置或感應器，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或查看 FarmBeats 上的遙測資料。
+**徵兆**：裝置或感應器已部署，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或檢視 FarmBeats 上的遙測資料。
 
-矯正**措施：**
+**矯正措施**：
 
 1. 請確定您已完成適當的合作夥伴註冊-您可以前往 datahub swagger，流覽至/Partner API、執行 Get 並檢查是否已註冊夥伴，以檢查此項。 如果沒有，請遵循[這裡的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)來新增合作夥伴。
 

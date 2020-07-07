@@ -1,14 +1,14 @@
 ---
 title: 模式：原則定義中的值運算子
 description: 此 Azure 原則模式提供如何在原則定義中使用值預算子的範例。
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170146"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565670"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure 原則模式：值運算子
 

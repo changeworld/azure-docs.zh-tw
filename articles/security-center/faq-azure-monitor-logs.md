@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612821"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>已使用 Azure 監視器記錄之客戶的常見問題<a name="existingloganalyticscust"></a>
@@ -34,7 +34,7 @@ ms.locfileid: "82612821"
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>資訊安全中心是否會在我現有的 Log Analytics 工作區上安裝解決方案？ 這會對計費造成什麼影響？
 當資訊安全中心發現已經有虛擬機器連線到您建立的工作區時，資訊安全中心會根據您的定價層啟用此工作區上的解決方案。 這些解決方案會透過[方案目標設定](../operations-management-suite/operations-management-suite-solution-targeting.md)，只套用至相關的 Azure 虛擬機器，所以收費不會改變。
 
-- **免費層** – 資訊安全中心在工作區安裝 SecurityCenterFree 解決方案。 免費層不會向您收費。
+- **免費層** – 資訊安全中心在工作區安裝 SecurityCenterFree 解決方案。 免費層不需付費。
 - **標準層** – 資訊安全中心在工作區安裝 'Security' 解決方案。
 
    ![預設工作區的解決方案](./media/security-center-platform-migration-faq/solutions.png)

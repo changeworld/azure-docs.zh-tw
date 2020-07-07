@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82625318"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>從 Azure 儲存體在 Linux 上的 App Service 中提供內容
@@ -20,7 +20,7 @@ ms.locfileid: "82625318"
 
 本指南說明如何將 Azure 儲存體附加至 Linux 上的 App Service。 優點包括安全內容、內容可攜性、持續儲存、存取多個應用程式，以及多個傳輸方法。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 或更新版本)。
 - 現有的[Linux 上的 App Service 應用程式](https://docs.microsoft.com/azure/app-service/containers/)。
@@ -45,7 +45,7 @@ ms.locfileid: "82625318"
 
 建立[Azure 儲存體帳戶、檔案共用和目錄](#prerequisites)之後，您現在可以使用 Azure 儲存體來設定您的應用程式。
 
-若要將儲存體帳戶掛接到 App Service 應用程式中的目錄，請使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 在此範例中會使用 AzureFiles。 [掛接路徑] 設定會對應至您想要從 Azure 儲存體掛接的資料夾。 將它設定為 '/' 會裝載整個 Azure 儲存體。
+若要將儲存體帳戶掛接到 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 在此範例中會使用 AzureFiles。 [掛接路徑] 設定會對應至您想要從 Azure 儲存體掛接的資料夾。 將它設定為 '/' 會裝載整個 Azure 儲存體。
 
 
 > [!CAUTION]
@@ -68,9 +68,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-azure-storage-in-docker-compose"></a>在 Docker Compose 中使用 Azure 儲存體
 
-Azure 儲存體可以透過使用自訂識別碼的多容器應用程式來裝載。若要查看自訂識別碼名稱，請[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)執行。
+Azure 儲存體可以透過使用自訂識別碼的多容器應用程式來裝載。若要查看自訂識別碼名稱，請執行 [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) 。
 
-在您的*docker-compose.dev.debug.yml. yml*檔案中， `volumes`將選項`custom-id`對應至。 例如：
+在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應至 `custom-id` 。 例如：
 
 ```yaml
 wordpress:

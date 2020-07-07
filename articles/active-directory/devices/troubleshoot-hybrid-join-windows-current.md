@@ -1,5 +1,5 @@
 ---
-title: 針對混合式 Azure Active Directory 已加入裝置進行疑難排解
+title: 針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解
 description: 針對已加入混合式 Azure Active Directory 的 Windows 10 和 Windows Server 2016 裝置進行疑難排解。
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611308"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>針對混合式 Azure Active Directory 已加入裝置進行疑難排解
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解
 
 本文內容適用于執行 Windows 10 或 Windows Server 2016 的裝置。
 
@@ -132,7 +132,7 @@ WamDefaultAuthority: organizations
 
 使用事件檢視器記錄來找出聯結失敗的階段和錯誤碼。
 
-1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務** > ] [記錄] [**Microsoft** > **Windows** > **使用者裝置註冊**] 底下
+1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務**] [記錄] [  >  **Microsoft**  >  **Windows**  >  **使用者裝置註冊**] 底下
 2. 尋找具有下列介於到304、305、307的事件。
 
 ![失敗記錄事件](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ WamDefaultAuthority: organizations
    - 在裝置所屬的 AD 樹系中，必須有有效的 SCP 物件，指向 Azure AD 中已驗證的功能變數名稱。
    - 如需詳細資訊，請參閱[設定服務連接點](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)一節。
 - 無法連線至探索端點並從中提取探索中繼資料。
-   - 裝置應該能夠存取`https://enterpriseregistration.windows.net`系統內容中的，以探索註冊和授權端點。
+   - 裝置應該能夠存取 `https://enterpriseregistration.windows.net` 系統內容中的，以探索註冊和授權端點。
    - 如果內部部署環境需要輸出 proxy，IT 系統管理員必須確定裝置的電腦帳戶能夠探索並以無訊息方式向輸出 proxy 進行驗證。
 - 無法連線到使用者領域端點，並執行領域探索。 （僅限 Windows 10 1809 版和更新版本）
-   - 裝置應該能夠存取`https://login.microsoftonline.com`系統內容中的，以執行已驗證網域的領域探索，並決定網欄位型別（受管理/同盟）。
+   - 裝置應該能夠存取 `https://login.microsoftonline.com` 系統內容中的，以執行已驗證網域的領域探索，並決定網欄位型別（受管理/同盟）。
    - 如果內部部署環境需要輸出 proxy，IT 管理員必須確定裝置上的系統內容能夠探索並以無訊息方式向輸出 proxy 進行驗證。
 
 **一般錯誤代碼：**
@@ -172,7 +172,7 @@ WamDefaultAuthority: organizations
    - 解決方式：若要進一步調查，請尋找下面的將。
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** （0x801c001f/-2145648609）
    - 原因：執行探索時發生作業超時。
-   - 解決方式：確定`https://enterpriseregistration.windows.net`可以在系統內容中存取。 如需詳細資訊，請參閱[網路連線需求](hybrid-azuread-join-managed-domains.md#prerequisites)一節。
+   - 解決方式：確定 `https://enterpriseregistration.windows.net` 可以在系統內容中存取。 如需詳細資訊，請參閱[網路連線需求](hybrid-azuread-join-managed-domains.md#prerequisites)一節。
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** （0x801c0021/-2145648611）
    - 原因：一般領域探索失敗。 無法從 STS 判斷網欄位型別（受管理/同盟）。
    - 解決方式：若要進一步調查，請尋找下面的將。
@@ -207,7 +207,7 @@ WamDefaultAuthority: organizations
 
 使用事件檢視器記錄來找出聯結失敗的階段和 errorcode。
 
-1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務** > ] [記錄] [**Microsoft** > **Windows** > **使用者裝置註冊**] 底下
+1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務**] [記錄] [  >  **Microsoft**  >  **Windows**  >  **使用者裝置註冊**] 底下
 2. 使用下列介於到201尋找事件
 
 ![失敗記錄事件](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ WamDefaultAuthority: organizations
 
 使用事件檢視器記錄檔來找出錯誤碼、將碼、伺服器錯誤碼和伺服器錯誤訊息。
 
-1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務** > ] [記錄] [**Microsoft** > **Windows** > **使用者裝置註冊**] 底下
+1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務**] [記錄] [  >  **Microsoft**  >  **Windows**  >  **使用者裝置註冊**] 底下
 2. 尋找具有下列 eventID 305 的事件
 
 ![失敗記錄事件](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** （0xcaa82ee2/-894947614）
    - 原因：一般網路超時。
-   - 解決方式：確定`https://login.microsoftonline.com`可以在系統內容中存取。 確保內部部署身分識別提供者可在系統內容中存取。 如需詳細資訊，請參閱[網路連接需求](hybrid-azuread-join-managed-domains.md#prerequisites)。
+   - 解決方式：確定 `https://login.microsoftonline.com` 可以在系統內容中存取。 確保內部部署身分識別提供者可在系統內容中存取。 如需詳細資訊，請參閱[網路連接需求](hybrid-azuread-join-managed-domains.md#prerequisites)。
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** （0xcaa82efe/-894947586）
    - 原因：與驗證端點的連接已中止。
    - 解決方式：在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。
@@ -281,8 +281,8 @@ WamDefaultAuthority: organizations
    - 原因：傳輸層安全性（TLS）（先前稱為安全通訊端層（SSL））無法驗證服務器所傳送的憑證。
    - 解決方式：檢查用戶端時間誤差。 請在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** （0xcaa82efd/-894947587）
-   - 原因：嘗試連接`https://login.microsoftonline.com`失敗。
-   - 解決方式：檢查與`https://login.microsoftonline.com`的網路連接。
+   - 原因：嘗試連接 `https://login.microsoftonline.com` 失敗。
+   - 解決方式：檢查與的網路連接 `https://login.microsoftonline.com` 。
 
 ##### <a name="other-errors"></a>其他錯誤
 
@@ -327,7 +327,7 @@ WamDefaultAuthority: organizations
 
 使用事件檢視器記錄來找出聯結失敗的階段和 errorcode。
 
-1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務** > ] [記錄] [**Microsoft** > **Windows** > **使用者裝置註冊**] 底下
+1. 在 [事件檢視器] 中開啟**使用者裝置註冊**事件記錄檔。 位於 [**應用程式及服務**] [記錄] [  >  **Microsoft**  >  **Windows**  >  **使用者裝置註冊**] 底下
 2. 使用下列介於到204尋找事件
 
 ![失敗記錄事件](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ WamDefaultAuthority: organizations
 
 - **WININET_E_TIMEOUT** （0x80072ee2/-2147012894）
    - 原因：一般網路時間已在 DRS 嘗試註冊裝置
-   - 解決方式：檢查的`https://enterpriseregistration.windows.net`網路連線能力。
+   - 解決方式：檢查的網路連線能力 `https://enterpriseregistration.windows.net` 。
 - **WININET_E_NAME_NOT_RESOLVED** （0x80072ee7/-2147012889）
    - 原因：無法解析伺服器名稱或位址。
-   - 解決方式：檢查的`https://enterpriseregistration.windows.net`網路連線能力。 確保主機名稱的 DNS 解析在 n/w 和裝置上是正確的。
+   - 解決方式：檢查的網路連線能力 `https://enterpriseregistration.windows.net` 。 確保主機名稱的 DNS 解析在 n/w 和裝置上是正確的。
 - **WININET_E_CONNECTION_ABORTED** （0x80072efe/-2147012866）
    - 原因：與伺服器的連接已異常終止。
    - 解決方式：在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。
@@ -381,15 +381,15 @@ WamDefaultAuthority: organizations
 
 | 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方案 |
 | --- | --- | --- | --- |
-| DirectoryError | AADSTS90002：找<UUID>不到租使用者。 如果沒有作用中的租使用者訂用帳戶，可能會發生此錯誤。 請洽詢您的訂用帳戶管理員。 | SCP 物件中的租使用者識別碼不正確 | 請確定已使用正確的 Azure AD 租使用者識別碼和作用中的訂用帳戶來設定 SCP 物件，並出現在租使用者中。 |
+| DirectoryError | AADSTS90002： <UUID> 找不到租使用者。 如果沒有作用中的租使用者訂用帳戶，可能會發生此錯誤。 請洽詢您的訂用帳戶管理員。 | SCP 物件中的租使用者識別碼不正確 | 請確定已使用正確的 Azure AD 租使用者識別碼和作用中的訂用帳戶來設定 SCP 物件，並出現在租使用者中。 |
 | DirectoryError | 找不到指定之識別碼的裝置物件。 | 同步聯結的預期錯誤。 裝置物件尚未從 AD 同步至 Azure AD | 等待 Azure AD Connect 同步完成，並在同步完成後的下一次聯結嘗試解決問題 |
 | AuthenticationError | 目的電腦 SID 的驗證 | Azure AD 裝置上的憑證與同步聯結期間用來簽署 blob 的憑證不相符。 此錯誤通常表示同步尚未完成。 |  等待 Azure AD Connect 同步完成，並在同步完成後的下一次聯結嘗試解決問題 |
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步驟5：收集記錄和連絡人 Microsoft 支援服務
 
-從下載檔案 Auth .zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+從 Auth.zip 下載檔案[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. 解壓縮檔案，並將包含的檔案**start-auth**和**stop-auth**重新命名為**start-auth .cmd**和**stop-auth。**
+1. 解壓縮檔案，並將包含的檔案重新命名**start-auth.txt**並**stop-auth.txt**到**start-auth**和**stop-auth**。
 1. 從提高許可權的命令提示字元中，執行**start-auth。**
 1. 使用 [切換帳戶] 切換至具有問題使用者的其他會話。
 1. 重現問題。

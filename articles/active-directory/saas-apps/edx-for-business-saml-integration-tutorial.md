@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17ffa9330da4fec0cfa3260f9bb99fbaffc24f6
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: f396b42e7221863c386ce43cc7350cdbdc338f53
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466318"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608704"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 edX for Business SAML Integration 整合
 
@@ -95,9 +95,9 @@ ms.locfileid: "84466318"
 
 1. 除了上述屬性之外，edX for Business SAML Integration 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
-    | 名稱 | |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | country | | user.country  |
+    | 名稱 | 來源屬性|
+    | ---------------| --------- |
+    | country | user.country  |
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 

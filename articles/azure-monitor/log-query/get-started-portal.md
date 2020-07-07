@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80055499"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798250"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教學課程：開始使用 Log Analytics 查詢
 
@@ -37,6 +37,7 @@ ms.locfileid: "80055499"
 如果您要使用 Azure 監視器收集至少一項 Azure 資源的記錄資料，您也可以使用自己的環境。 若要開啟 Log Analytics 工作區，請在 Azure 監視器的左側導覽中選取 [記錄]  。 
 
 ## <a name="understand-the-schema"></a>了解結構描述
+ 
 *結構描述*是分組於邏輯類別下的資料表集合。 示範結構描述有數個來自監視解決方案的類別。 例如，LogManagement  類別包含 Windows 和 Syslog 事件、效能資料與代理程式活動訊號。
 
 結構描述資料表會出現在 Log Analytics 工作區的 [資料表]  索引標籤上。 這些資料表包含資料行，並且分別以其資料行名稱旁的圖示顯示資料類型。 例如，**事件**資料表包含文字資料行 (例如 **Computer**) 和數值資料行 (例如 **EventCategory**)。
@@ -50,6 +51,7 @@ Log Analytics 會在**查詢編輯器**中以新的空白查詢開啟。
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>撰寫查詢
+
 Azure 監視器記錄查詢會使用 Kusto 查詢語言的版本。 查詢可以透過資料表名稱或 [search](/azure/kusto/query/searchoperator) 命令開始進行。 
 
 下列查詢會從**事件**資料表中擷取所有記錄：
@@ -156,6 +158,7 @@ Event
 您也可以使用 [render](/azure/kusto/query/renderoperator) 運算子對查詢本身設定慣用檢視。
 
 ## <a name="pin-results-to-a-dashboard"></a>將結果釘選到儀表板
+
 若要將結果資料表或圖表從 Log Analytics 釘選到共用的 Azure 儀表板，請選取頂端列上的 [釘選到儀表板]  。 
 
 ![釘選到儀表板](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Event
 - 具有許多不同類別的圖表，會自動將較少填入的類別分組到單一的**其他**資料箱中。
 
 ## <a name="save-load-or-export-queries"></a>儲存、載入或匯出查詢
+
 建立查詢之後，您可以儲存查詢或結果，或將其與其他人共用。 
 
 ### <a name="save-queries"></a>儲存查詢
+
 若要儲存查詢：
 
 1. 選取頂端列上的 [儲存]  。

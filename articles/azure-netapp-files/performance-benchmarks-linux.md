@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614586"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>適用于 Linux 的 Azure NetApp Files 效能基準測試
@@ -47,31 +47,31 @@ ms.locfileid: "82614586"
 
 ## <a name="linux-scale-up"></a>Linux 相應增加  
 
-Linux 5.3 核心啟用適用于 NFS 的單一用戶端向外延展`nconnect`網路-。 本節中的圖形會顯示使用 NFSv3 之用戶端掛接選項的驗證測試結果。 此功能適用于 SUSE （從 SLES12SP4 開始）和 Ubuntu （從19.10 版開始）。 這在概念上類似于 SMB 多重通道和 Oracle Direct NFS。
+Linux 5.3 核心啟用適用于 NFS 的單一用戶端向外延展網路- `nconnect` 。 本節中的圖形會顯示使用 NFSv3 之用戶端掛接選項的驗證測試結果。 此功能適用于 SUSE （從 SLES12SP4 開始）和 Ubuntu （從19.10 版開始）。 這在概念上類似于 SMB 多重通道和 Oracle Direct NFS。
 
-圖形會比較`nconnect`與非連接的已掛接磁片區的優點。 在圖形中，FIO 會從美國西部 2 Azure 區域中的單一 D32s_v3 實例產生工作負載。
+圖形會比較 `nconnect` 與非連接的已掛接磁片區的優點。 在圖形中，FIO 會從美國西部 2 Azure 區域中的單一 D32s_v3 實例產生工作負載。
 
 ### <a name="linux-read-throughput"></a>Linux 讀取輸送量  
 
-下圖顯示 ~ 3500 MiB/s 讀取的連續讀取`nconnect`，大約是 2.3 x 非。`nconnect`
+下圖顯示 ~ 3500 MiB/s 讀取的連續讀取 `nconnect` ，大約是 2.3 x 非 `nconnect` 。
 
 ![Linux 讀取輸送量](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
 ### <a name="linux-write-throughput"></a>Linux 寫入輸送量  
 
-下圖顯示順序寫入。 它們表示`nconnect`對順序寫入沒有顯著的好處。 1500 MiB/s 大約是連續寫入磁片區的上限和 D32s_v3 實例輸出限制。
+下圖顯示順序寫入。 它們表示 `nconnect` 對順序寫入沒有顯著的好處。 1500 MiB/s 大約是連續寫入磁片區的上限和 D32s_v3 實例輸出限制。
 
 ![Linux 寫入輸送量](../media/azure-netapp-files/performance-benchmarks-linux-write-throughput.png)  
 
 ### <a name="linux-read-iops"></a>Linux 讀取 IOPS  
 
-下圖顯示 ~ 200000 讀取 IOPS 的隨機讀取`nconnect`，大約3倍非。`nconnect`
+下圖顯示 ~ 200000 讀取 IOPS 的隨機讀取 `nconnect` ，大約3倍非 `nconnect` 。
 
 ![Linux 讀取 IOPS](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Linux 寫入 IOPS  
 
-下圖顯示的是 ~ 135000 寫入 IOPS 的隨機寫入`nconnect`，大約3倍非`nconnect`。
+下圖顯示的是 ~ 135000 寫入 IOPS 的隨機寫入 `nconnect` ，大約3倍非 `nconnect` 。
 
 ![Linux 寫入 IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

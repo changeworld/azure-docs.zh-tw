@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612260"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>複製或備份 Azure 串流分析作業
@@ -39,7 +39,7 @@ ms.locfileid: "82612260"
 
     ![在 Visual Studio Code 中匯出 ASA 作業](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. 若要使用其他名稱將作業發佈到另一個區域或備份，請選取 [**從您**的訂用帳戶選取\*]，以在查詢編輯器（. script.asaql）中發佈，並遵循指示進行。
+3. 若要使用其他名稱將作業發佈到另一個區域或備份，請選取 [**從您**的訂用帳戶選取]，以在查詢編輯器（ \* . script.asaql）中發佈，並遵循指示進行。
 
     ![在 Visual Studio Code 中發佈至 Azure](./media/quick-create-vs-code/submit-job.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "82612260"
 
 1. 遵循將已[部署的 Azure 串流分析作業匯出至專案指示](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)。
 
-2. \*在 [查詢編輯器] 中開啟 script.asaql 檔案，在腳本編輯器中選取 [**提交至 Azure** ]，然後遵循指示，使用新名稱將作業發佈到另一個區域或備份。
+2. 在 \* [查詢編輯器] 中開啟 script.asaql 檔案，在腳本編輯器中選取 [**提交至 Azure** ]，然後遵循指示，使用新名稱將作業發佈到另一個區域或備份。
 
 ## <a name="next-steps"></a>後續步驟
 

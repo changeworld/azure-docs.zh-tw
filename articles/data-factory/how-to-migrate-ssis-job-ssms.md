@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627580"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL Server Agent 作業遷移至 ADF
@@ -31,15 +31,15 @@ ms.locfileid: "82627580"
     > 僅支援檔案系統的封裝位置。
 - 使用適用的作業步驟將適用的作業遷移至對應的 ADF 資源，如下所示：
 
-|SQL 代理程式工作物件  |ADF 資源  |備忘錄|
+|SQL 代理程式工作物件  |ADF 資源  |備忘稿|
 |---------|---------|---------|
-|SQL 代理程式作業|管線     |將會*為\<作業名稱>產生*管線的名稱。 <br> <br> 內建代理程式作業不適用： <li> SSIS 伺服器維護作業 <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
-|SSIS 作業步驟|執行 SSIS 套件活動|<li> 活動的名稱會是\<> 的步驟名稱。 <li> 作業步驟中使用的 Proxy 帳戶將會遷移為此活動的 Windows 驗證。 <li> 在作業步驟中定義的 [*使用32位運行*時間] 以外的*執行選項*，將會在遷移時遭到忽略。 <li> 在作業步驟中定義的*驗證*將會在遷移時遭到忽略。|
-|schedule      |排程觸發程序        |排程*名稱>會產生\<* 排程觸發程式的名稱。 <br> <br> 在 [SQL 代理程式作業排程] 中的下列選項會在遷移中被忽略： <li> 第二層間隔。 <li> *當 SQL Server Agent 啟動時自動啟動* <li> *只要 CPU 閒置就啟動* <li> *工作日*和*週末*<time zone> <br> 以下是將 SQL Agent 作業排程遷移至 ADF 排程觸發程式後的差異： <li> ADF 排程觸發程式後續執行與上一次觸發執行的執行狀態無關。 <li> ADF 排程觸發週期設定與 SQL 代理程式作業中的每日頻率不同。|
+|SQL 代理程式作業|管線     |管線的名稱將會*針對 \<job name> 產生*。 <br> <br> 內建代理程式作業不適用： <li> SSIS 伺服器維護作業 <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|SSIS 作業步驟|執行 SSIS 套件活動|<li> 活動的名稱會是 \<step name> 。 <li> 作業步驟中使用的 Proxy 帳戶將會遷移為此活動的 Windows 驗證。 <li> 在作業步驟中定義的 [*使用32位運行*時間] 以外的*執行選項*，將會在遷移時遭到忽略。 <li> 在作業步驟中定義的*驗證*將會在遷移時遭到忽略。|
+|schedule      |排程觸發程序        |將*為產生 \<schedule name> *排程觸發程式的名稱。 <br> <br> 在 [SQL 代理程式作業排程] 中的下列選項會在遷移中被忽略： <li> 第二層間隔。 <li> *當 SQL Server Agent 啟動時自動啟動* <li> *只要 CPU 閒置就啟動* <li> *工作日*和*週末*<time zone> <br> 以下是將 SQL Agent 作業排程遷移至 ADF 排程觸發程式後的差異： <li> ADF 排程觸發程式後續執行與上一次觸發執行的執行狀態無關。 <li> ADF 排程觸發週期設定與 SQL 代理程式作業中的每日頻率不同。|
 
 - 在本機輸出檔案夾中產生 Azure Resource Manager （ARM）範本，並直接或稍後手動部署至 data factory。 如需 ADF Resource Manager 範本的詳細資訊，請參閱[DataFactory 資源類型](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文所述的功能需要18.5 或更高版本的 SQL Server Management Studio。 若要取得最新版的 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
 
@@ -57,8 +57,8 @@ ms.locfileid: "82627580"
     1. 更新源資料夾路徑。 有效的路徑為資料夾路徑或封裝的父資料夾路徑。
     1. 更新目的地資料夾路徑。 預設為預設儲存體帳戶的相對路徑（在步驟1中選取）。
     1. 透過**刪除對應**刪除選取的對應。
-![步驟 2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![步驟 2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![步驟 2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ 步驟 2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. 選取適用的作業來進行遷移，並設定對應的已*執行 SSIS 套件活動*的設定。
 

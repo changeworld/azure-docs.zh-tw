@@ -1,14 +1,14 @@
 ---
 title: 模式：使用方案來群組原則定義
 description: 此 Azure 原則模式提供如何將原則定義群組到方案中的範例
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41c2b0cf3b8f677cdc408e85088c3ca6c2049d6b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 065e7632d76feccdd6d2d5a411ba7cdf50aeaf68
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170246"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565691"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure 原則模式：群組原則定義
 

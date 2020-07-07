@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612328"
 ---
-# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理交易夥伴協定
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理交易夥伴協議
 
-[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*協定*可透過定義要在交換企業對企業（B2B）訊息時使用的特定產業標準通訊協定，協助組織和企業彼此緊密通訊。 協定提供了常見的優點，例如：
+[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)  
+ *協定*可透過定義要在交換企業對企業（B2B）訊息時使用的特定產業標準通訊協定，協助組織和企業彼此緊密通訊。 協定提供了常見的優點，例如：
 
 * 讓組織能夠使用已知的格式來交換資訊。
 * 提升執行 B2B 交易時的效率。
@@ -28,7 +28,7 @@ ms.locfileid: "82612328"
 
 若要建立交換 RosettaNet 訊息的協定，請參閱[Exchange rosettanet 訊息](../logic-apps/logic-apps-enterprise-integration-rosettanet.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "82612328"
 
 * 至少有兩個您已在整合帳戶中建立的[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。 合約需要主機夥伴和來賓夥伴。 這兩個夥伴都必須使用與您想要建立的合約相同的「商務身分識別」辨識符號，例如 AS2、X12 或 EDIFACT。
 
-* 選擇性：您要在其中使用合約的邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 若只要建立整合帳戶和 B2B 構件，您就不需要邏輯應用程式。 不過，在邏輯應用程式可以使用整合帳戶中的 B2B 成品之前，您必須先將整合帳戶連結至邏輯應用程式。 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 選擇性：您要在其中使用合約的邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 若只要建立整合帳戶和 B2B 構件，您就不需要邏輯應用程式。 不過，在邏輯應用程式可以使用整合帳戶中的 B2B 成品之前，您必須先將整合帳戶連結至邏輯應用程式。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-agreements"></a>建立合約
 

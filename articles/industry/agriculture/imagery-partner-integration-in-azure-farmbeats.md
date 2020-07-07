@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613280"
 ---
 # <a name="imagery-partner-integration"></a>影像合作夥伴整合
@@ -39,15 +39,15 @@ FarmBeats 提供下列功能：
 
 ## <a name="api-development"></a>API 開發
 
-這些 Api 包含 Swagger 技術檔。 如需 Api 和對應要求或回應的相關資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+這些 API 包含 Swagger 技術文件。 如需 Api 和對應要求或回應的相關資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ## <a name="authentication"></a>驗證
 
-FarmBeats 會使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。 Azure App Service 提供內建的驗證和授權支援。 
+FarmBeats 會使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。  Azure App Service 提供內建驗證和授權支援。 
 
 如需 Azure AD 的詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
 
-FarmBeats Datahub 會使用持有人驗證，其需要下列認證：
+FarmBeats Datahub 使用持有人驗證，其需要下列認證：
 
 - 用戶端識別碼
 - 用戶端密碼
@@ -87,13 +87,13 @@ access_token = token_response.get('access_token')
 
 ## <a name="http-request-headers"></a>HTTP 要求標頭
 
-以下是您對 FarmBeats Datahub 進行 API 呼叫時，需要指定的最常見要求標頭。
+以下是對 FarmBeats Datahub 進行 API 呼叫時所需指定的最常見要求標頭。
 
-**頁首** | **描述及範例**
+**標頭** | **描述及範例**
 --- | ---
-Content-Type  | 要求格式（Content-type： application/<format>）。 針對 FarmBeats Datahub Api，格式為 JSON。 Content-Type: application/json
-授權 | 指定進行 API 呼叫所需的存取權杖。 授權：持有人 <存取權杖>
-Accept  | 回應格式。 針對 FarmBeats Datahub Api，格式為 JSON。 Accept： application/json
+Content-Type  | 要求格式 (Content-Type: application/<format>)。 FarmBeats Datahub API 的格式為 JSON。 Content-Type: application/json
+授權 | 指定進行 API 呼叫所需的存取權杖。 授權：Bearer <Access-Token>
+Accept  | 回應格式。 FarmBeats Datahub API 的格式為 JSON。 Accept: application/json
 
 
 ## <a name="api-requests"></a>API 要求
@@ -105,7 +105,7 @@ Accept  | 回應格式。 針對 FarmBeats Datahub Api，格式為 JSON。 Accep
 - 資源 URI （用來查詢、提交資料、更新或刪除）。
 - 一或多個 HTTP 要求標頭。
 
-（選擇性）您可以在 GET 呼叫上包含查詢參數來篩選、限制的大小，以及排序回應中的資料。
+您可選擇性地在 GET 呼叫上包含查詢參數來篩選回應中的資料、限制其大小及進行排序。
 
 下列範例要求是取得裝置的清單：
 
@@ -115,9 +115,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-大部分的 GET、POST 和 PUT 呼叫都需要 JSON 要求主體。
+大多數 GET、POST 和 PUT 呼叫都需要 JSON 要求本文。
 
-下列範例要求是建立裝置。 此範例的輸入 JSON 具有要求主體。
+下列範例要求是為了建立裝置 此範例的輸入 JSON 具有要求主體。
 
 
 ```bash
@@ -130,7 +130,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>資料格式
 
-JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字標記法。 如需詳細資訊，請參閱[JSON 組織](https://JSON.org)。
+JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字表示。 如需詳細資訊，請參閱[JSON 組織](https://JSON.org)。
 
 ## <a name="ingest-imagery-into-farmbeats"></a>將影像內嵌至 FarmBeats
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ca4d30786953504218ef09c7c591ff2f46f524
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765233"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604959"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Kisi Physical Security 整合
 
@@ -91,7 +91,7 @@ ms.locfileid: "84765233"
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]****，然後執行下列步驟：
 
-    在 [登入 URL]**** 文字方塊中，以下列模式輸入 URL︰`https://identity.kms.kisi.io/organizations/sign_in?domain=<DOMAIN>`
+    在 [登入 URL]**** 文字方塊中，以下列模式輸入 URL︰`https://web.kisi.io/organizations/sign_in?domain=<DOMAIN>`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Kisi Physical Security 客戶支援小組](mailto:support@getkisi.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -102,11 +102,11 @@ ms.locfileid: "84765233"
 
 1. 除了上述屬性外，Kisi Physical Security 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
-    | 名稱 |  |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | 名字 | | user.givenname |
-    | 姓氏 | | user.surname |
-    | 電子郵件 | | user.mail |
+    | 名稱 | 來源屬性|
+    | ---------------| --------- |
+    | 名字 | user.givenname |
+    | 姓氏 | user.surname |
+    | 電子郵件 | user.userprincipalname |
 
 1. 在 [以 SAML 設定單一登入]**** 頁面的 [SAML 簽署憑證]**** 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]****，並將資料儲存在您的電腦上。
 

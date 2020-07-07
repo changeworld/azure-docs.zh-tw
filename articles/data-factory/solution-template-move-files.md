@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
 ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628158"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure Data Factory 移動檔案
@@ -60,7 +60,7 @@ ms.locfileid: "82628158"
 
     ![顯示管線](media/solution-template-move-files/move-files4.png)
 
-5. 選取 [ **Debug**]，輸入**參數**，然後選取 **[完成]**。   參數是您想要從中移動檔案的資料夾路徑，以及您要將檔案移至其中的資料夾路徑。 
+5. 選取 [偵錯]，輸入 [參數]，然後選取 [完成]。   參數是您想要從中移動檔案的資料夾路徑，以及您要將檔案移至其中的資料夾路徑。 
 
     ![執行管道](media/solution-template-move-files/move-files5.png)
 

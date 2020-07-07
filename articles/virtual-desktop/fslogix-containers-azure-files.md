@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611971"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 設定檔容器和 Azure 檔案
 
-Windows 虛擬桌面服務會建議 FSLogix 設定檔容器做為使用者設定檔解決方案。 FSLogix 是設計用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 它會將完整的使用者設定檔儲存在單一容器中。 登入時，此容器會使用原生支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。 本文說明如何在 Windows 虛擬桌面中搭配 Azure 檔案儲存體函式使用的 FSLogix 設定檔容器。
+Windows 虛擬桌面服務會建議 FSLogix 設定檔容器做為使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 其會將完整的使用者設定檔儲存在單一容器中。 登入時，此容器會使用原生支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。 本文說明如何在 Windows 虛擬桌面中搭配 Azure 檔案儲存體函式使用的 FSLogix 設定檔容器。
 
 >[!NOTE]
 >如果您要尋找 Azure 上不同 FSLogix 設定檔容器儲存體選項的比較資料，請參閱[FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。
@@ -47,7 +47,7 @@ UPD 和 RUP 是遠端桌面工作階段主機（RDSH）和虛擬硬碟（VHD）�
 
 下表顯示先前的使用者設定檔技術的優點與限制。
 
-| 技術 | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |備忘錄|
+| 技術 | 新式設定 | Win32 設定 | OS 設定 | 使用者資料 | 伺服器 SKU 上支援 | Azure 上的後端儲存體 | 內部部署的後端儲存體 | 版本支援 | 後續登入時間 |備忘稿|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **使用者設定檔磁片（UPD）** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
 | **漫遊使用者設定檔（RUP），維護模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |

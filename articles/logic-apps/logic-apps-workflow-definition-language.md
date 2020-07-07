@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611410"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps 中工作流程定義語言的架構參考指南
@@ -43,7 +43,7 @@ ms.locfileid: "82611410"
 | `contentVersion` | 否 | 您的工作流程定義版本號碼，預設為 "1.0.0.0"。 若要在部署工作流程時協助識別及確認正確的定義，請指定要使用的值。 |
 | `outputs` | 否 | 要從工作流程執行傳回的輸出定義。 如需詳細資訊，請參閱[輸出](#outputs)。 <p><p>輸出上限：10 |
 | `parameters` | 否 | 一或多個參數的定義，會傳遞要在邏輯應用程式執行時間使用的值。 如需詳細資訊，請參閱[參數](#parameters)。 <p><p>參數上限：50 |
-| `staticResults` | 否 | 動作所傳回的一或多個靜態結果的定義，會在這些動作上啟用靜態結果時做為模擬輸出。 在每個動作定義中`runtimeConfiguration.staticResult.name` ，屬性會參考內`staticResults`的對應定義。 如需詳細資訊，請參閱[靜態結果](#static-results)。 |
+| `staticResults` | 否 | 動作所傳回的一或多個靜態結果的定義，會在這些動作上啟用靜態結果時做為模擬輸出。 在每個動作定義中， `runtimeConfiguration.staticResult.name` 屬性會參考內的對應定義 `staticResults` 。 如需詳細資訊，請參閱[靜態結果](#static-results)。 |
 | `triggers` | 否 | 一或多個觸發程序的定義，此觸發程序可具現化您的工作流程。 您可以定義多個觸發程序，但只能利用工作流程定義語言，而不會透過 Logic Apps 設計工具呈現。 如需詳細資訊，請參閱[觸發程式和動作](#triggers-actions)。 <p><p>觸發程序上限：10 |
 ||||
 
@@ -57,7 +57,7 @@ ms.locfileid: "82611410"
 
 ## <a name="parameters"></a>參數
 
-部署生命週期通常會有不同的環境來進行開發、測試、預備和生產。 將邏輯應用程式部署到不同的環境時，您可能會想要根據您的部署需求，使用不同的值，例如連接字串。 或者，您可能會有想要在不硬式編碼或經常變更的情況下，于整個邏輯應用程式中重複使用的值。 在工作流程定義的`parameters`區段中，您可以定義或編輯邏輯應用程式在執行時間所使用之值的參數。 您必須先定義這些參數，才能在您的工作流程定義中的其他位置參考這些參數。
+部署生命週期通常會有不同的環境來進行開發、測試、預備和生產。 將邏輯應用程式部署到不同的環境時，您可能會想要根據您的部署需求，使用不同的值，例如連接字串。 或者，您可能會有想要在不硬式編碼或經常變更的情況下，于整個邏輯應用程式中重複使用的值。 在工作流程定義的 `parameters` 區段中，您可以定義或編輯邏輯應用程式在執行時間所使用之值的參數。 您必須先定義這些參數，才能在您的工作流程定義中的其他位置參考這些參數。
 
 以下是參數定義的一般結構︰
 
@@ -77,7 +77,7 @@ ms.locfileid: "82611410"
 | 屬性 | 必要 | 類型 | 說明 |
 |-----------|----------|------|-------------|
 | <*參數-名稱*> | 是 | String | 您想要定義之參數的名稱 |
-| <*參數類型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：對於所有密碼、金鑰和秘密，請使用`securestring`或`secureobject`類型，因為`GET`作業不會傳回這些類型。 如需保護參數的詳細資訊，請參閱[動作和輸入參數的安全性建議](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 參數的類型 |
+| <*參數類型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：對於所有密碼、金鑰和秘密，請使用 `securestring` 或 `secureobject` 類型，因為作業 `GET` 不會傳回這些類型。 如需保護參數的詳細資訊，請參閱[動作和輸入參數的安全性建議](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 參數的類型 |
 | <*預設-參數-值*> | 是 | 與 `type` 相同 | 當工作流程具現化時，若未指定任何值時，所要使用的預設參數值。 `defaultValue`屬性是必要的，讓邏輯應用程式設計工具可以正確地顯示參數，但您可以指定空值。 |
 | <*陣列-允許-參數-值*> | 否 | Array | 具有參數可接受值的陣列 |
 | <*參數-描述*> | 否 | JSON 物件 | 任何其他參數詳細資料，例如參數的描述 |
@@ -89,7 +89,7 @@ ms.locfileid: "82611410"
 
 ## <a name="static-results"></a>靜態結果
 
-在`staticResults`屬性中，定義動作的 mock `outputs` ，以及`status`當動作的靜態結果設定開啟時，此動作會傳回。 在動作的定義中， `runtimeConfiguration.staticResult.name`屬性會參考內`staticResults`靜態結果定義的名稱。 瞭解如何藉[由設定靜態結果，以模擬資料來測試邏輯應用程式](../logic-apps/test-logic-apps-mock-data-static-results.md)。
+在 `staticResults` 屬性中，定義動作的 mock `outputs` ，以及 `status` 當動作的靜態結果設定開啟時，此動作會傳回。 在動作的定義中， `runtimeConfiguration.staticResult.name` 屬性會參考內靜態結果定義的名稱 `staticResults` 。 瞭解如何藉[由設定靜態結果，以模擬資料來測試邏輯應用程式](../logic-apps/test-logic-apps-mock-data-static-results.md)。
 
 ```json
 "definition": {
@@ -114,14 +114,14 @@ ms.locfileid: "82611410"
 
 | 屬性 | 必要 | 類型 | 說明 |
 |-----------|----------|------|-------------|
-| <*靜態-結果定義-名稱*> | 是 | String | 動作定義可以透過`runtimeConfiguration.staticResult`物件參考的靜態結果定義名稱。 如需詳細資訊，請參閱[執行階段組態設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>您可以使用任何您想要的唯一名稱。 根據預設，這個唯一名稱會附加一個數位，視需要遞增。 |
-| <*輸出-屬性和值-傳回*> | 是 | 不定 | 這些屬性的需求會根據不同的條件而有所不同。 例如，當`status`為時， `Succeeded` `outputs`屬性會包含由動作以模擬輸出傳回的屬性和值。 `status`如果`Failed`為， `outputs`則屬性會包含`errors`屬性，這是具有一或多個含有錯誤資訊之`message`錯誤物件的陣列。 |
+| <*靜態-結果定義-名稱*> | 是 | String | 動作定義可以透過物件參考的靜態結果定義名稱 `runtimeConfiguration.staticResult` 。 如需詳細資訊，請參閱[執行階段組態設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>您可以使用任何您想要的唯一名稱。 根據預設，這個唯一名稱會附加一個數位，視需要遞增。 |
+| <*輸出-屬性和值-傳回*> | 是 | 不定 | 這些屬性的需求會根據不同的條件而有所不同。 例如，當為時 `status` `Succeeded` ，屬性會 `outputs` 包含由動作以模擬輸出傳回的屬性和值。 如果 `status` 為 `Failed` ，則 `outputs` 屬性會包含 `errors` 屬性，這是具有一或多個含有錯誤資訊之錯誤物件的陣列 `message` 。 |
 | <*標頭-值*> | 否 | JSON | 動作傳回的任何標頭值 |
 | <*狀態-代碼-已傳回*> | 是 | String | 動作所傳回的狀態碼 |
-| <*動作-狀態*> | 是 | String | 動作的狀態，例如`Succeeded`或`Failed` |
+| <*動作-狀態*> | 是 | String | 動作的狀態，例如 `Succeeded` 或`Failed` |
 |||||
 
-例如，在此 HTTP 動作定義中， `runtimeConfiguration.staticResult.name`屬性會在`HTTP0`定義動作`staticResults`之模擬輸出的屬性中參考。 `runtimeConfiguration.staticResult.staticResultOptions`屬性會指定靜態結果設定位於`Enabled` HTTP 動作上。
+例如，在此 HTTP 動作定義中， `runtimeConfiguration.staticResult.name` 屬性會在 `HTTP0` 定義動作之模擬輸出的屬性中參考 `staticResults` 。 `runtimeConfiguration.staticResult.staticResultOptions`屬性會指定靜態結果設定位於 `Enabled` HTTP 動作上。
 
 ```json
 "actions": {
@@ -142,7 +142,7 @@ ms.locfileid: "82611410"
 },
 ```
 
-HTTP 動作會傳回內部`HTTP0` `staticResults`定義中的輸出。 在此範例中，針對狀態碼，mock 輸出為`OK`。 若為標頭值，則模擬`"Content-Type": "application/JSON"`輸出為。 針對動作的狀態，模擬輸出為`Succeeded`。
+HTTP 動作會傳回內部定義中的輸出 `HTTP0` `staticResults` 。 在此範例中，針對狀態碼，mock 輸出為 `OK` 。 若為標頭值，則模擬輸出為 `"Content-Type": "application/JSON"` 。 針對動作的狀態，模擬輸出為 `Succeeded` 。
 
 ```json
 "definition": {
@@ -279,14 +279,14 @@ HTTP 動作會傳回內部`HTTP0` `staticResults`定義中的輸出。 在此範
 |-----------|----------|------|-------------|
 | <*索引鍵名稱*> | 是 | String | 輸出傳回值的索引鍵名稱 |
 | <*金鑰類型*> | 是 | int、float、string、securestring、bool、array、JSON 物件 | 輸出傳回值的類型 |
-| <*索引鍵/值*> | 是 | 與 <*的索引鍵類型*相同> | 輸出傳回值 |
+| <*key-value*> | 是 | 與 <*的索引鍵類型*相同> | 輸出傳回值 |
 |||||
 
 若要從工作流程執行取得輸出，請在 Azure 入口網站中檢查邏輯應用程式的執行歷程記錄和詳細資料，或使用[工作流程 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 您也可以將輸出傳遞至外部系統 (例如 PowerBI)，以便建立儀表板。
 
 <a name="operators"></a>
 
-## <a name="operators"></a>操作員
+## <a name="operators"></a>運算子
 
 在[運算式](#expressions)和[函式](#functions)中，運算子會執行特定工作，例如參考屬性或陣列中的值。
 
@@ -300,7 +300,7 @@ HTTP 動作會傳回內部`HTTP0` `staticResults`定義中的輸出。 在此範
 
 <a name="functions"></a>
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 某些運算式會從執行工作流程定義開始時可能尚未存在的執行時間動作中取得其值。 若要在運算式中參考或使用這些值，您可以使用工作流程定義語言所提供的[*函式*](../logic-apps/workflow-definition-language-functions-reference.md)。
 

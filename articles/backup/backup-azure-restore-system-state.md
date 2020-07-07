@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610780"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
@@ -69,22 +69,22 @@ ms.locfileid: "82610780"
 
 這些步驟中所使用的術語包含：
 
-* ** – 用來進行備份且目前無法使用的的原始電腦。
-* ** – 復原資料時的目標電腦。
+* *來源電腦*–從中取得備份並目前無法使用的原始電腦。
+*  – 復原資料時的目標電腦。
 * *範例*保存庫–*來源電腦*和*目的電腦*註冊所在的復原服務保存庫。 <br/>
 
 > [!NOTE]
 > 從某個電腦擷取的備份無法還原到執行舊版作業系統的電腦上。 例如，從 Windows Server 2016 電腦擷取的備份便無法還原到 Windows Server 2012 R2。 不過，反過來則可行。 您可以使用 Windows Server 2012 R2 的備份來還原 Windows Server 2016。
 >
 
-1. 在「目標電腦」** 上開啟 [Microsoft Azure 備份]**** 嵌入式管理單元。
-2. 確定「目標電腦」** 和「來源電腦」** 均已註冊到相同的復原服務保存庫。
+1. 在*目的電腦*上開啟 [ **Microsoft Azure 備份**] 嵌入式管理單元。
+2. 確定*目的機器*和*來源電腦*已註冊到相同的復原服務保存庫。
 3. 按一下 [復原資料] **** 初始化工作流程。
 4. 選取 [其他伺服器] ****
 
     ![其他伺服器](./media/backup-azure-restore-system-state/anotherserver.png)
 
-5. 提供與「範例保存庫」 ** 相對應的保存庫認證檔。 如果保存庫認證檔無效 (或已過期)，請從 Azure 入口網站中的「範例保存庫」** 下載新的保存庫認證檔。 一旦提供保存庫認證檔，即會顯示與保存庫認證檔相關聯的復原服務保存庫。
+5. 提供與「範例保存庫」 ** 相對應的保存庫認證檔。 如果保存庫認證檔無效（或已過期），請從 Azure 入口網站中的*範例*保存庫下載新的保存庫認證檔。 一旦提供保存庫認證檔，即會顯示與保存庫認證檔相關聯的復原服務保存庫。
 
 6. 在 [選取備份伺服器]** 窗格上，從顯示的電腦清單選取 [來源電腦]。
 7. 在 [選取復原模式] 窗格上，選擇 [系統狀態]****，然後按 [下一步]****。

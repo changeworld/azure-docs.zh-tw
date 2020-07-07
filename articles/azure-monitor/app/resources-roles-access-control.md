@@ -4,10 +4,10 @@ description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628224"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
@@ -53,7 +53,7 @@ ms.locfileid: "82628224"
 
 ![Azure 入口網站中存取控制按鈕的螢幕擷取畫面](./media/resources-roles-access-control/0001-access-control.png)
 
-選取 [新增角色指派]****
+選取 [**新增角色指派**]
 
 ![此螢幕擷取畫面顯示以紅色醒目提示新增按鈕的存取控制功能表](./media/resources-roles-access-control/0002-add.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "82628224"
 
 我們可連結至相關聯的官方參考文件 (如果有的話)。
 
-| [角色] | 在資源群組中 |
+| 角色 | 在資源群組中 |
 | --- | --- |
 | [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以變更任何項目，包括使用者存取。 |
 | [參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以編輯任何項目，包括所有資源。 |

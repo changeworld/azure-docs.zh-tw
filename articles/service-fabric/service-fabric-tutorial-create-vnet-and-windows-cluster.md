@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 PowerShell，將 W
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756047"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611657"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教學課程：將執行 Windows 的 Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -73,8 +73,8 @@ ms.locfileid: "80756047"
 * 受保護的憑證 (可在範本參數中設定)。
 * 啟用[反向 Proxy](service-fabric-reverseproxy.md)。
 * 啟用 [DNS 服務](service-fabric-dnsservice.md)。
-* 銅級[持久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (可在範本參數中設定)。
-* 銀級[可靠性層級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (可在範本參數中設定)。
+* 銅級[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (可在範本參數中設定)。
+* 銀級[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (可在範本參數中設定)。
 * 用戶端連線端點：19000 (可在範本參數中設定)。
 * HTTP 閘道端點：19080 (可在範本參數中設定)。
 

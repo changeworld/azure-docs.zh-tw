@@ -2,7 +2,7 @@
 title: Azure PowerShell 指令碼範例
 description: 使用 Azure PowerShell 指令碼範例協助您建立及管理 Azure SQL Database 和 Azure SQL 受控執行個體資源。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718541"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987282"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>用於 Azure SQL Database 和 Azure SQL 受控執行個體的 Azure PowerShell 範例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您使用 Azure PowerSh
 
 下表包含適用於 Azure SQL Database 之範例 Azure PowerShell 指令碼的連結。
 
-| |  |
+|連結|描述|
 |---|---|
 |**建立並設定單一資料庫和彈性集區**||
 | [建立單一資料庫並設定伺服器層級防火牆規則](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 指令碼會建立單一資料庫，並設定伺服器層級 IP 防火牆規則。 |
@@ -64,7 +64,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您使用 Azure PowerSh
 
 下表包含適用於 Azure SQL 受控執行個體的範例 Azure PowerShell 指令碼連結。
 
-| |  |
+|連結|描述|
 |---|---|
 |**建立及設定受控執行個體**||
 | [建立和管理受控執行個體](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 指令碼說明如何使用 Azure PowerShell 建立和管理受控執行個體。 |
