@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508119"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>具有受控識別的 Azure 受控應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "82508119"
 您的應用程式可以授與兩種類型的身分識別：
 
 - **系統指派的身分識別**會繫結至您的應用程式，如果您的應用程式已刪除，則會被刪除。 應用程式只能有一個系統指派的身分識別。
-- **使用者指派**的身分識別是一種獨立的 Azure 資源，可指派給您的應用程式。 應用程式可以有多個使用者指派的身分識別。
+- **使用者指派的身分識別**是一項獨立 Azure 資源，可指派給您的應用程式。 應用程式可以有多個使用者指派的身分識別。
 
 ## <a name="how-to-use-managed-identity"></a>如何使用受控識別
 
@@ -46,11 +46,11 @@ ms.locfileid: "82508119"
 }
 ```
 
-建立受控應用程式時，有兩種常見的方式可使用身分**識別**： [CreateUIDefinition](./create-uidefinition-overview.md)和[Azure Resource Manager 範本](../templates/template-syntax.md)。 針對簡單的單一建立案例，應該使用 CreateUIDefinition 來啟用受控識別，因為它提供更豐富的體驗。 不過，在處理需要自動化或多個受控應用程式部署的先進或複雜系統時，可以使用範本。
+有兩種常見的方式可使用身分**識別**來建立受控應用程式： [CreateUIDefinition.js](./create-uidefinition-overview.md) ，以及[Azure Resource Manager 範本](../templates/template-syntax.md)。 針對簡單的單一建立案例，應該使用 CreateUIDefinition 來啟用受控識別，因為它提供更豐富的體驗。 不過，在處理需要自動化或多個受控應用程式部署的先進或複雜系統時，可以使用範本。
 
 ### <a name="using-createuidefinition"></a>使用 CreateUIDefinition
 
-受控應用程式可以透過[CreateUIDefinition](./create-uidefinition-overview.md)來設定受控識別。 在 [[輸出] 區段](./create-uidefinition-overview.md#outputs)中， `managedIdentity`索引鍵可以用來覆寫受控應用程式範本的 identity 屬性。 範例鈴會在受控應用程式上啟用**系統指派**的身分識別。 您可以使用 CreateUIDefinition 元素來要求取用者輸入，以形成更複雜的身分識別物件。 這些輸入可用於以**使用者指派**的身分識別來建立受控應用程式。
+受控應用程式可以透過[上的CreateUIDefinition.js](./create-uidefinition-overview.md)來設定受控識別。 在 [[輸出] 區段](./create-uidefinition-overview.md#outputs)中，索引鍵 `managedIdentity` 可以用來覆寫受控應用程式範本的 identity 屬性。 範例鈴會在受控應用程式上啟用**系統指派**的身分識別。 您可以使用 CreateUIDefinition 元素來要求取用者輸入，以形成更複雜的身分識別物件。 這些輸入可用於以**使用者指派**的身分識別來建立受控應用程式。
 
 ```json
 "outputs": {
@@ -260,13 +260,13 @@ CreateUIDefinition 支援內建的[受控識別控制項](./microsoft-managedide
 }
 ```
 
-這個 CreateUIDefinition 會產生包含兩個欄位的建立使用者體驗。 第一個欄位可讓使用者輸入要連結至受控應用程式部署之資源的 Azure 資源識別碼。 第二個是讓取用者輸入**使用者指派**的身分識別 AZURE 資源識別碼，其可存取已連結的 azure 資源。 產生的體驗看起來會像這樣：
+此 CreateUIDefinition.js的會產生具有兩個欄位的建立使用者體驗。 第一個欄位可讓使用者輸入要連結至受控應用程式部署之資源的 Azure 資源識別碼。 第二個是讓取用者輸入**使用者指派**的身分識別 AZURE 資源識別碼，其可存取已連結的 azure 資源。 產生的體驗看起來會像這樣：
 
 ![具有兩個輸入的範例 CreateUIDefinition：網路介面資源識別碼和使用者指派的身分識別資源識別碼](./media/publish-managed-identity/network-interface-cuid.png)
 
 ### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>使用連結的資源撰寫 mainTemplate
 
-除了更新 CreateUIDefinition，主要範本也需要更新，以接受已連結資源識別碼中傳遞的。 您可以藉由新增新的參數，更新主要範本以接受新的輸出。 因為`managedIdentity`輸出會覆寫所產生 Managed 應用程式範本上的值，所以它不會傳遞至主要範本，而且不應該包含在 parameters 區段中。
+除了更新 CreateUIDefinition，主要範本也需要更新，以接受已連結資源識別碼中傳遞的。 您可以藉由新增新的參數，更新主要範本以接受新的輸出。 因為 `managedIdentity` 輸出會覆寫所產生 Managed 應用程式範本上的值，所以它不會傳遞至主要範本，而且不應該包含在 parameters 區段中。
 
 範例主要範本，會將網路設定檔設定為 CreateUIDefinition 所提供的現有網路介面。
 
@@ -310,7 +310,7 @@ CreateUIDefinition 支援內建的[受控識別控制項](./microsoft-managedide
 
 ## <a name="accessing-the-managed-identity-token"></a>存取受控識別權杖
 
-受控應用程式的權杖現在可以透過來自發行者租使用者`listTokens`的 api 來存取。 範例要求可能如下所示：
+受控應用程式的權杖現在可以透過 `listTokens` 來自發行者租使用者的 api 來存取。 範例要求可能如下所示：
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -327,8 +327,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 參數 | 必要 | 描述
 ---|---|---
-authorizationAudience | *不* | 目標資源的應用程式識別碼 URI。 它也是已`aud`發行權杖的（物件）宣告。 預設值為 "https://management.azure.com/"
-userAssignedIdentities | *不* | 要為其取得權杖的使用者指派受控識別清單。 如果未指定， `listTokens`將會傳回系統指派之受控識別的權杖。
+authorizationAudience | *不* | 目標資源的應用程式識別碼 URI。 它也是已 `aud` 發行權杖的（物件）宣告。 預設值為 " https://management.azure.com/ "
+userAssignedIdentities | *不* | 要為其取得權杖的使用者指派受控識別清單。 如果未指定， `listTokens` 將會傳回系統指派之受控識別的權杖。
 
 
 範例回應可能如下所示：
@@ -352,15 +352,15 @@ Content-Type: application/json
 }
 ```
 
-回應會包含`value`屬性下的權杖陣列：
+回應會包含屬性下的權杖陣列 `value` ：
 
-參數 | 說明
+參數 | 描述
 ---|---
-access_token | 要求的存取權杖。
+access_token | 所要求的存取權杖。
 expires_in | 存取權杖生效的秒數。
 expires_on | 存取權杖到期的時間範圍。 這會表示為 epoch 的秒數。
 not_before | 存取權杖生效時的 timespan。 這會表示為 epoch 的秒數。
-authorizationAudience | 存取`aud`權杖要求的（物件）。 這與`listTokens`要求中所提供的相同。
+authorizationAudience | `aud`存取權杖要求的（物件）。 這與要求中所提供的相同 `listTokens` 。
 resourceId | 已發行權杖的 Azure 資源識別碼。 這可能是受控應用程式識別碼或使用者指派的身分識別識別碼。
 token_type | 語彙基元的類型。
 

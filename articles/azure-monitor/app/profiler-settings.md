@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188921"
 ---
 # <a name="configure-application-insights-profiler"></a>設定 Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>已更新 Profiler 代理程式
-觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL，並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
+觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL，並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` 。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
 
 如果您是在 VM 或雲端服務上執行分析工具，您必須安裝 Windows Azure 診斷（WAD）延伸模組版本16.0.4 版或更新版本。 您可以藉由登入您的 VM 並查看此目錄，來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
 
@@ -78,7 +78,7 @@ CPU % | Profiler 執行時所使用的 CPU 百分比。
 
 如果您的 Web 應用程式已經有連入流量，或您只想要以手動方式產生流量，請略過本節，並繼續執行步驟 2。
 
-1. 在 Application Insights 入口網站中，選取 [**設定** > **效能測試**]。 
+1. 在 Application Insights 入口網站中，選取 [**設定**  >  **效能測試**]。 
 
 1. 若要啟動新的效能測試，請選取 [新增]**** 按鈕。
 

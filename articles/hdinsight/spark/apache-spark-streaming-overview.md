@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195140"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 串流概觀
 
-[Apache Spark](https://spark.apache.org/)串流會在 HDInsight Spark 叢集上提供資料流程處理。 保證任何輸入事件只會處理一次，即使發生節點失敗也是一樣。 Spark 串流是長時間執行的作業，會接收來自各種來源的輸入資料，包括 Azure 事件中樞。 同時： Azure IoT 中樞、Apache Kafka、Apache Flume、Twitter、 `ZeroMQ`原始 TCP 通訊端，或來自監視 APACHE Hadoop YARN 檔案系統。 不同于僅事件驅動的程式，Spark 串流會將輸入資料批次到時間視窗。 例如，2秒的配量，然後使用對應、減少、聯結和解壓縮作業來轉換每個批次的資料。 Spark 串流會接著將已轉換的資料寫出至檔案系統、資料庫、儀表板及主控台。
+[Apache Spark](https://spark.apache.org/)串流會在 HDInsight Spark 叢集上提供資料流程處理。 保證任何輸入事件只會處理一次，即使發生節點失敗也是一樣。 Spark 串流是長時間執行的作業，會接收來自各種來源的輸入資料，包括 Azure 事件中樞。 同時： Azure IoT 中樞、Apache Kafka、Apache Flume、Twitter、 `ZeroMQ` 原始 TCP 通訊端，或來自監視 Apache HADOOP YARN 檔案系統。 不同于僅事件驅動的程式，Spark 串流會將輸入資料批次到時間視窗。 例如，2秒的配量，然後使用對應、減少、聯結和解壓縮作業來轉換每個批次的資料。 Spark 串流會接著將已轉換的資料寫出至檔案系統、資料庫、儀表板及主控台。
 
 ![使用 HDInsight 和 Spark 串流處理資料流](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark 串流應用程式必須等候一小部分來收集每個`micro-batch`事件，然後再將該批次傳送至進行處理。 相較之下，事件驅動的應用程式會立即處理每個事件。 而 Spark 串流通常會延遲幾秒鐘。 微批次方法的優點是可更有效率的處理資料和更簡易的彙總運算。
+Spark 串流應用程式必須等候一小部分來收集每個 `micro-batch` 事件，然後再將該批次傳送至進行處理。 相較之下，事件驅動的應用程式會立即處理每個事件。 而 Spark 串流通常會延遲幾秒鐘。 微批次方法的優點是可更有效率的處理資料和更簡易的彙總運算。
 
 ## <a name="introducing-the-dstream"></a>DStream 簡介
 
@@ -167,7 +167,7 @@ SELECT * FROM demo_numbers
 
 ## <a name="sliding-windows"></a>滑動時間範圍
 
-若要在一段時間內執行 DStream 上的匯總計算，例如，若要取得過去兩秒的平均溫度，請`sliding window`使用 Spark 串流所包含的作業。 滑動時間範圍具有持續時間 (時間範圍長度) 及間隔，系統會在該期間內對該時間範圍的內容進行評估 (滑動間隔)。
+若要在一段時間內執行 DStream 上的匯總計算，例如，若要取得過去兩秒的平均溫度，請使用 `sliding window` Spark 串流所包含的作業。 滑動時間範圍具有持續時間 (時間範圍長度) 及間隔，系統會在該期間內對該時間範圍的內容進行評估 (滑動間隔)。
 
 滑動時間範圍可以重疊，例如，您可以定義一個長度為 2 秒且每秒滑動一次的時間範圍。 此動作表示每次進行匯總計算時，此視窗會包含上一個視窗最後一秒的資料。 以及接下來一秒的任何新資料。
 

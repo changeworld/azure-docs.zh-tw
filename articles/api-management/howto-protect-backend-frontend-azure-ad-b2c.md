@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202871"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>使用 OAuth 2.0、Azure Active Directory B2C 和 Azure API 管理來保護 SPA 後端
@@ -31,7 +31,7 @@ ms.locfileid: "82202871"
 
 為了深層防禦，我們接著會使用 EasyAuth 在後端 API 內再次驗證權杖。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要依照本文中的步驟進行，您必須有：
 * Azure （StorageV2）一般用途 V2 儲存體帳戶，用來裝載前端 JS 單一頁面應用程式
 * Azure API 管理實例 
@@ -68,7 +68,7 @@ ms.locfileid: "82202871"
    * 選擇性API 管理開發人員入口網站（除非您是在取用層中執行 Azure API 管理，稍後會詳細說明此案例）。
 1. 設定所有3個應用程式的 WebApp/Web API，並將 [允許隱含流程] 設為 [是] （僅適用于前端用戶端）。
 1. 現在設定 [應用程式識別碼 URI]，選擇唯一且與所建立之服務相關的內容。
-1. 現在使用回復 url 的預留位置https://localhost，例如，我們稍後會更新這些 url。
+1. 現在使用回復 url 的預留位置 https://localhost ，例如，我們稍後會更新這些 url。
 1. 按一下 [建立]，然後針對上述三個應用程式重複步驟2-5，記錄 AppID URI、名稱和應用程式識別碼，以供之後用於所有三個應用程式。
 1. 從應用程式清單開啟 [API 管理開發人員入口網站] 應用程式，並選取 [*金鑰*] 索引標籤（在 [一般] 下），然後按一下 [產生金鑰] 以產生驗證金鑰
 1. 按一下 [儲存] 後，將金鑰記錄在安全的位置以供稍後使用-請注意，這個位置是您唯一可以查看並複製此金鑰的機會。
@@ -148,12 +148,12 @@ ms.locfileid: "82202871"
 5. 切換回 [HttpTrigger1] 索引標籤，按一下 [取得函數 URL]，然後複製顯示的 URL。
 
    > [!NOTE]
-   > 您剛建立的系結只會告訴函式對您剛才複製的 URL 回應匿名 HTTP GET 要求。 （`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`）現在我們有可調整的無伺服器 HTTPs API，它能夠傳回非常簡單的裝載。
+   > 您剛建立的系結只會告訴函式對您剛才複製的 URL 回應匿名 HTTP GET 要求。 （ `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ）現在我們有可調整的無伺服器 HTTPS API，它能夠傳回非常簡單的裝載。
    > 您現在可以使用上述 URL，從網頁瀏覽器測試呼叫此 API，您也可以去除 URL 的？ code = secret 部分，並證明 Azure Functions 會傳回401錯誤。
 
 ## <a name="configure-and-secure-the-function-api"></a>設定和保護函數 API
 1. 必須設定函數應用程式中的兩個額外區域（驗證和網路限制）。
-1. 首先，我們要設定驗證/授權，因此按一下函式應用程式的名稱（在&lt;Z&gt;函式圖示旁），以顯示 [總覽] 頁面。
+1. 首先，我們要設定驗證/授權，因此按一下函式應用程式的名稱（在 Z 函 &lt; 式 &gt; 圖示旁），以顯示 [總覽] 頁面。
 1. 接下來，選取 [平臺功能] 索引標籤，然後選取 [驗證/授權]。
 1. 開啟 App Service 驗證功能。
 1. 在 [驗證提供者] 底下選擇 [Azure Active Directory]，然後從 [管理模式] 交換器選擇 [Advanced]。
@@ -257,12 +257,12 @@ ms.locfileid: "82202871"
 1. 開啟 [Azure AD B2C] 分頁，然後流覽至開發人員入口網站的應用程式註冊
 1. 當您稍早在 API 管理中設定驗證碼授與的 redirect_uri 時，請將 [回復 URL] 輸入設為您記下的專案。
 
-   現在已在上啟用 OAuth 2.0 使用者授權`Echo API`，開發人員主控台會先取得使用者的存取權杖，然後再呼叫 API。
+   現在已在上啟用 OAuth 2.0 使用者授權 `Echo API` ，開發人員主控台會先取得使用者的存取權杖，然後再呼叫 API。
 
-1. 在開發人員入口網站中`Echo API` ，流覽至下的任何作業，然後選取 [**試試看**] 以帶您前往開發人員主控台。
+1. `Echo API`在開發人員入口網站中，流覽至下的任何作業，然後選取 [**試試看**] 以帶您前往開發人員主控台。
 1. 請注意 [**授權**] 區段中的新專案，其對應于您剛新增的授權伺服器。
 1. 從 [授權] 下拉式清單中選取 [**授權碼**]，系統就會提示您登入 Azure AD 租使用者。 如果您已經使用帳戶登入，則可能不會提示您。
-1. 成功登入之後，會將`Authorization: Bearer`標頭新增至要求，並使用來自 Azure AD B2C 以 Base64 編碼的存取權杖。 
+1. 成功登入之後，會將 `Authorization: Bearer` 標頭新增至要求，並使用來自 Azure AD B2C 以 Base64 編碼的存取權杖。 
 1. 選取 [**傳送**]，您就可以成功呼叫 API。
 
    > [!NOTE]
@@ -283,7 +283,7 @@ ms.locfileid: "82202871"
 ## <a name="build-the-javascript-spa-to-consume-the-api"></a>建立 JavaScript SPA 以使用 API
 1. 在 [Azure 入口網站中開啟 [儲存體帳戶] 分頁 
 1. 選取您建立的帳戶，然後從 [設定] 區段中選取 [靜態網站] 分頁（如果您沒有看到 [靜態網站] 選項，請檢查您是否已建立 V2 帳戶）。
-1. 將 [靜態 web 主控] 功能設定為 [已啟用]，並將 [索引檔案名稱] 設定為 [.html]，然後按一下 [儲存]。
+1. 將 [靜態 web 主控] 功能設定為 [已啟用]，並將 [索引檔案名稱] 設定為 [index.html]，然後按一下 [儲存]。
 1. 記下主要端點的內容，因為此位置是前端網站的主控位置。 
 
    > [!NOTE]
@@ -291,7 +291,7 @@ ms.locfileid: "82202871"
 
 ## <a name="upload-the-js-spa-sample"></a>上傳 JS SPA 範例
 1. 仍在 [儲存體帳戶] 分頁中，從 [Blob 服務] 區段選取 [Blob] 分頁，然後按一下右側窗格中的 [$web] 容器。
-1. 將下列程式碼儲存到您電腦本機上的檔案做為 index .html，然後將檔案索引 .html 上傳至 $web 容器。
+1. 將下列程式碼儲存到您電腦本機上的檔案，如 index.html，然後將檔案 index.html 上傳至 $web 容器。
 
    ```html
    <!doctype html>
@@ -415,7 +415,7 @@ ms.locfileid: "82202871"
 
 ## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>設定適用于 Azure AD B2C 的 JS SPA
 1. 現在我們知道所有專案的所在位置：我們可以使用適當的 API 管理 API 位址和正確的 Azure AD B2C 應用程式/用戶端識別碼來設定 SPA
-1. 回到 [Azure 入口網站儲存體] 分頁，然後按一下 [.html]，再選擇 [編輯 Blob] 
+1. 回到 [Azure 入口網站儲存體] 分頁，然後按一下 index.html]，再選擇 [編輯 Blob] 
 1. 更新驗證詳細資料，以符合您稍早在 B2C 中註冊的前端應用程式，請注意，' b2cScopes ' 值適用于 API 後端。
 1. 在 API 作業的 [API 管理] 測試窗格中，可以找到 [webApi 金鑰] 和 [api url]。
 1. 建立 APIM 訂用帳戶金鑰，方法是將 API 管理的標題改回 [API 管理] 分頁，選取 [訂用帳戶]，然後按一下 [新增訂閱]，然後儲存記錄。 按一下所建立資料列旁的省略號（...），即可顯示金鑰，讓您可以複製主要金鑰。

@@ -5,15 +5,15 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137700"
 ---
 # <a name="alerts-on-activity-log"></a>活動記錄警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 活動記錄警示是當符合警示中指定之條件的新[活動記錄事件](activity-log-schema.md)發生時啟動的警示。 根據[Azure 活動記錄](platform-logs-overview.md)中記錄的事件順序和數量，將會引發警示規則。 活動記錄警示規則是 Azure 資源，因此可以使用 Azure Resource Manager 範本來建立。 也可以在 Azure 入口網站中將它們建立、更新或刪除。 本文介紹活動記錄警示背後的概念。 如需建立或使用活動記錄警示規則的詳細資訊，請參閱[建立和管理活動記錄警示](alerts-activity-log.md)。
 
@@ -61,4 +61,4 @@ ms.locfileid: "82137700"
 - 取得[警示的總覽](alerts-overview.md)。
 - 深入了解[建立和修改活動記錄警示](alerts-activity-log.md)。
 - 檢查[活動記錄警示 webhook 架構](activity-log-alerts-webhook.md)。
-- 瞭解[服務健康狀態通知](service-notifications.md)。
+- 深入了解[服務健康狀態通知](service-notifications.md)。

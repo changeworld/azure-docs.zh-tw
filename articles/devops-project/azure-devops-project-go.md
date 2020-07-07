@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 Azure DevOps Starter 建立 Go 程式設計語言的 CI/CD 管線
-description: DevOps Starter 可以讓您輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在 Azure 服務上啟動 Go 程式設計語言 Web 應用程式。
+description: DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在 Azure 服務上啟動 Go 程式設計語言 Web 應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233120"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用于 Go 的 CI/CD 管線
@@ -28,13 +28,13 @@ ms.locfileid: "82233120"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Starter 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
+DevOps 入門版會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps 入門版也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。
+1. 在搜尋方塊中，鍵入並選取 **DevOps 入門版**。 按一下 [新增] 以建立新項目。
 
-    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入門版儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-app-and-azure-service"></a>選取應用程式範例和 Azure 服務
 
@@ -74,49 +74,49 @@ DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 
-DevOps Starter 會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 若要讓您自己熟悉 Azure DevOps 建置和發行管線，請執行下列作業：
+DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 若要讓您自己熟悉 Azure DevOps 建置和發行管線，請執行下列作業：
 
-1. 移至 DevOps 入門儀表板。
+1. 移至 DevOps 入門版儀表板。
 
 1. 從頂端選取 [建置管線]  。 瀏覽器索引標籤會顯示新專案的建置管線。
 
-1. 指向 [**狀態**] 欄位，然後選取省略號（...）。功能表會顯示數個選項，例如將新的組建排入佇列、暫停組建，以及編輯組建管線。
+1. 指向 [狀態] 欄位，然後選取省略符號 (...)。功能表會顯示數個選項，例如將新建置排入佇列、暫停建置和編輯建置管線。
 
-1. 選取 [編輯]  。
+1. 選取 [編輯]。
 
 1. 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源、還原相依性，以及發佈用來進行部署的輸出。
 
 1. 在建置管線的頂端，選取建置管線名稱。
 
-1. 將組建管線的名稱變更為更具描述性的名稱，選取 [**儲存 & 佇列**]，然後選取 [**儲存**]。
+1. 將建置管線的名稱變更成較具描述性的名稱，並選取 [儲存並排入佇列]，然後選取 [儲存]。
 
-1. 在建置管線名稱下，選取 [記錄]****。 此窗格會顯示近期建置變更的稽核線索。 Azure DevOps 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
+1. 在建置管線名稱下，選取 [記錄]。 此窗格會顯示近期建置變更的稽核線索。 Azure DevOps 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 
-1. 選取 [**觸發**程式]。 DevOps Starter 會自動建立 CI 觸發程式，且每次對存放庫的認可都會啟動新的組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
+1. 選取 [觸發程序]。 DevOps 入門版已自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
-1. 選取 [保留期]****。 根據案例，您可以指定原則來保留或移除特定數目的組建。
+1. 選取 [保留期]。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
-1. 選取 [建置及發行]****，然後選取 [版本]****。  DevOps Starter 會建立發行管線來管理 Azure 的部署。
+1. 選取 [建置及發行]，然後選取 [版本]。  DevOps 入門版會建立發行管線來管理對 Azure 的部署。
 
-1. 選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]****。 發行管線中包含 [管線]**，它會定義發行程序。
+1. 選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]。 發行管線中包含 [管線]，它會定義發行程序。
 
-1. 在 [成品]**** 下，選取 [置放]****。 您先前檢查的建置管線會產生用於成品的輸出。 
+1. 在 [成品] 下，選取 [置放]。 您先前檢查的建置管線會產生用於成品的輸出。 
 
-1. 在 [置放]**** 圖示的右側，選取 [持續部署觸發程序]****。 這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
+1. 在 [置放] 圖示的右側，選取 [持續部署觸發程序]。 這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
 
 1. 從左側選取 [工作]****。 工作是您部署程序所執行的活動。 在此範例中，會建立一個工作來部署到 Azure App Service。
 
-1. 從右側選取 [檢視版本]****，以顯示版本的歷程記錄。
+1. 從右側選取 [檢視版本]，以顯示版本的歷程記錄。
 
-1. 選取發行旁邊的省略符號 (...)，然後選取 [開啟]****。 您可以瀏覽數個功能表，例如版本摘要、相關聯的工作項目及測試。
+1. 選取發行旁邊的省略符號 (...)，然後選取 [開啟]。 您可以瀏覽數個功能表，例如版本摘要、相關聯的工作項目及測試。
 
-1. 選取 [認可]****。 此檢視會顯示與此部署相關聯的程式碼認可。 
+1. 選取 [認可]。 此檢視會顯示與此部署相關聯的程式碼認可。 
 
-1. 選取 [**記錄**]。 記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
+1. 選取 [記錄]。 記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果不再需要，您可以刪除在此快速入門中建立的 Azure App Service 執行個體和相關資源。 若要這麼做，請使用 DevOps 入門儀表板上的 [**刪除**] 功能。
+如果不再需要，您可以刪除在此快速入門中建立的 Azure App Service 執行個體和相關資源。 若要這樣做，請使用 DevOps 入門版儀表板的 [刪除] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 

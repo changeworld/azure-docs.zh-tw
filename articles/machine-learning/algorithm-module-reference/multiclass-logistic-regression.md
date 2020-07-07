@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137768"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多元羅吉斯回歸模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 您可以使用此模組來建立羅吉斯回歸模型，以用來預測多個值。
 
@@ -48,7 +48,7 @@ Azure Machine Learning 也會提供[兩個類別的羅吉斯回歸](./two-class-
 
     正規化是一種防止過度學習的方法，penalizing 具有極端係數值的模型。 正規化的運作方式是將與係數值相關聯的負面影響加入假設的錯誤中。 具有極端係數值的精確模型會懲罰更多，但具有較保守值的較不精確模型會懲罰較少。
 
-     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，使用高維度資料時，這是很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  這個演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果`x = L1`和`y = L2`， `ax + by = c`則會定義正規化詞彙的線性範圍。
+     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，使用高維度資料時，這是很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  這個演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果 `x = L1` 和，則 `y = L2` 會 `ax + by = c` 定義正規化詞彙的線性範圍。
 
      L1 和 L2 詞彙的不同線性組合已設計成羅吉斯回歸模型，例如[彈性網路正規化](https://wikipedia.org/wiki/Elastic_net_regularization)。
 
@@ -74,4 +74,4 @@ Azure Machine Learning 也會提供[兩個類別的羅吉斯回歸](./two-class-
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

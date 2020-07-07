@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203160"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
 當您布[建自我裝載的 AZURE API 管理閘道](self-hosted-gateway-overview.md)時，它不會指派主機名稱，且必須由其 IP 位址參考。 本文說明如何將現有的自訂 DNS 名稱（也稱為主機名稱）對應到自我裝載的閘道。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -41,7 +41,7 @@ ms.locfileid: "82203160"
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>將自訂網域憑證新增至您的 API 管理服務
 
 1. 從 [**安全性**] 底下選取 [**憑證**]。
-2. 選取 [ **+ 新增**]。
+2. 選取 [+ 新增] 。
 3. 在 [**識別碼**] 欄位中輸入 [憑證的資源名稱]。
 4. 選取包含憑證的檔案（。PFX），方法是選取 [**憑證**] 欄位或其旁邊的資料夾圖示。
 5. 在 [**密碼**] 欄位中輸入憑證的密碼。
@@ -52,7 +52,7 @@ ms.locfileid: "82203160"
 1. 從 [**設定**] 底下選取**閘道**。
 2. 選取您想要為其設定功能變數名稱的自我裝載閘道。
 3. 選取 [**設定**] 底下的 [**主機名稱**]。
-4. 選取 [+ 新增]****
+4. 選取 [+ 新增]
 5. 在 [**名稱**] 欄位中輸入主機名稱的資源名稱。
 6. 在 [**主機名稱**] 欄位中輸入功能變數名稱。
 7. 從 [**憑證**] 下拉式清單中選取憑證。

@@ -4,10 +4,10 @@ description: 瞭解如何使用 REST API 來管理和監視 Azure 備份備份�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184906"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>使用 REST API 管理 Azure 檔案共用備份
@@ -56,7 +56,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 名稱  | 類型  |  描述
 --- | --- | ----
-200 確定 |  JobResource  | [確定]
+200 確定 |  JobResource  | 確定
 
 #### <a name="response-example"></a>回應範例
 
@@ -172,7 +172,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01
 ```
 
-### <a name="response-body"></a>Response body
+### <a name="response-body"></a>回應本文
 
 ```json
 {

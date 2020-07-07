@@ -8,15 +8,15 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509664"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>預存程序、觸發程序和使用者定義函式
 
-Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 在 Azure Cosmos DB 中使用 SQL API 時，您可以在 JavaScript 語言中撰寫**預存程式**、**觸發**程式和**使用者定義函數（udf）** 。 您可以使用 JavaScript 寫入在資料庫引擎內執行的邏輯。 您可以透過使用 [Azure 入口網站](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md)，或 [Cosmos DB SQL API 用戶端 SDK](how-to-use-stored-procedures-triggers-udfs.md)，來建立與執行觸發程序、預存程序及 UDF。
+Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 在 Azure Cosmos DB 中使用 SQL API 時，您可以在 JavaScript 語言中撰寫**預存程式**、**觸發**程式和**使用者定義函數（udf）** 。 您可以使用 JavaScript 寫入在資料庫引擎內執行的邏輯。 您可以使用[Azure 入口網站](https://portal.azure.com/)、 [Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) ，或[Cosmos DB 的 SQL API 用戶端 sdk](how-to-use-stored-procedures-triggers-udfs.md)，來建立及執行觸發程式、預存程式和 udf。
 
 ## <a name="benefits-of-using-server-side-programming"></a>使用伺服器端程式設計的好處
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 在 Az
 > [!TIP]
 > 預存程式最適合寫入繁重的作業，而且需要跨分割區索引鍵值的交易。 在決定是否要使用預存程式時，請盡可能優化封裝最大的寫入量。 一般而言，預存程式不是執行大量讀取或查詢作業時最有效率的方法，因此使用預存程式來批次處理大量讀取以傳回用戶端，並不會產生所需的權益。 為了達到最佳效能，您應該在用戶端上使用 Cosmos SDK 來執行這些大量讀取作業。 
 
-## <a name="transactions"></a>異動
+## <a name="transactions"></a>交易
 
 一般資料庫中的交易可以定義為以單一工作邏輯單位執行的一連串作業。 每個交易都提供 **ACID 屬性保證**。 ACID**是一個知名**的縮寫，代表： tomicity、 **C**onsistency、 **I**solation 和**D**耐用性。 
 
@@ -66,7 +66,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 在 Az
 預存程序和觸發程序一律會在 Azure Cosmos 容器的主要複本上執行。 此功能確保從預存程序讀取的資料有[強式一致性](consistency-levels-tradeoffs.md)。 使用「使用者定義函數」的查詢可以在主要或任何次要複本上執行。 預存程序和觸發程序的目的是支援交易式寫入 – 而唯讀邏輯最適合做為應用程式端邏輯，而使用 [Azure Cosmos DB SQL API Sdk](sql-api-dotnet-samples.md) 查詢可幫助您將資料庫輸送量達成飽和。 
 
 > [!TIP]
-> 在預存程式或觸發程式內執行的查詢可能不會看到相同腳本交易所做之專案的變更。 此語句同時適用于 SQL 查詢（例如`getContent().getCollection.queryDocuments()`），以及整合式語言查詢（例如）。 `getContext().getCollection().filter()`
+> 在預存程式或觸發程式內執行的查詢可能不會看到相同腳本交易所做之專案的變更。 此語句同時適用于 SQL 查詢（例如 `getContent().getCollection.queryDocuments()` ），以及整合式語言查詢（例如） `getContext().getCollection().filter()` 。
 
 ## <a name="bounded-execution"></a>界限執行
 
@@ -91,7 +91,7 @@ Azure Cosmos DB 提供的觸發程序可透過在 Azure Cosmos 項目上執行�
 > [!NOTE]
 > 已註冊的觸發程式不會在其對應的作業（建立/刪除/取代/更新）發生時自動執行。 您必須在執行這些作業時明確發出呼叫。 若要深入瞭解，請參閱[如何執行觸發](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)程式一文。
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>使用者定義的函式
+## <a name="user-defined-functions"></a><a id="udfs"></a>使用者自訂函數
 
 [使用者定義函數](sql-query-udfs.md)（udf）可用來擴充 SQL API 查詢語言語法，並輕鬆地執行自訂商務邏輯。 只能在查詢內呼叫它們。 UDF 無法存取內容物件，只能做為計算用途的 JavaScript。 因此，UDF 可以在次要複本上執行。 如需範例，請參閱[如何撰寫使用者定義函數](how-to-write-stored-procedures-triggers-udfs.md#udfs)文章。
 

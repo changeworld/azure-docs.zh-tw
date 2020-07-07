@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515465"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>驗證適用於 PostgreSQL 的 Azure 資料庫的資料加密
@@ -23,7 +23,7 @@ ms.locfileid: "82515465"
 
 1. 如果您想要驗證客戶的金鑰是否用於加密，請遵循下列步驟：
 
-    * 在 [Azure 入口網站中，流覽至**Azure Key Vault** -> **金鑰**
+    * 在 [Azure 入口網站中，流覽至**Azure Key Vault**  ->  **金鑰**
     * 選取用於伺服器加密的金鑰。
     * 將**啟用**的金鑰狀態設定為 [**否**]。
   

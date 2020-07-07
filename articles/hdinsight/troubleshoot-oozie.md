@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205257"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
@@ -44,7 +44,7 @@ ms.locfileid: "82205257"
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002：不允許 Oozie 模擬&lt;使用者&gt;
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002：不允許 Oozie 模擬 &lt; 使用者&gt;
 
 ### <a name="issue"></a>問題
 
@@ -58,7 +58,7 @@ ms.locfileid: "82205257"
 
 ### <a name="resolution"></a>解決方案
 
-Oozie 可以模擬群組中的**`users`** 使用者。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不是**`users`** 群組的成員，請使用下列命令將使用者新增至群組：
+Oozie 可以模擬群組中的使用者 **`users`** 。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不是群組的成員 **`users`** ，請使用下列命令將使用者新增至群組：
 
     sudo adduser USERNAME users
 
@@ -85,7 +85,7 @@ Sqoop 無法載入存取資料庫時所需的資料庫驅動程式。
 
 例如，針對[使用 Hadoop Oozie 工作流程](hdinsight-use-oozie-linux-mac.md)的作業範例，您會使用下列步驟：
 
-1. `mssql-jdbc-7.0.0.jre8.jar`將檔案複製到 **/tutorials/useoozie**目錄：
+1. 將檔案複製 `mssql-jdbc-7.0.0.jre8.jar` 到 **/tutorials/useoozie**目錄：
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
@@ -101,8 +101,8 @@ Sqoop 無法載入存取資料庫時所需的資料庫驅動程式。
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

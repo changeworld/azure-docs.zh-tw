@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187240"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>HDInsight 中的 Azure Data Lake Storage Gen1 總覽
@@ -55,7 +55,7 @@ Data Lake Storage Gen1 的資料容器基本上是資料夾與檔案。 您可�
 
 Data Lake Storage Gen1 會使用 Azure Active Directory 進行驗證，並使用存取控制清單 (ACL) 來管理對資料的存取。
 
-| **功能** | **說明** |
+| **功能** | **描述** |
 | --- | --- |
 | 驗證 |Data Lake Storage Gen1 整合了 Azure Active Directory (Azure AD)，可對 Data Lake Storage Gen1 中儲存的所有資料進行身分識別與存取管理。 由於整合的結果，Data Lake Storage Gen1 受惠於所有的 Azure AD 功能。 這些功能包括：多重要素驗證、條件式存取，以及角色型存取控制。 此外，應用程式使用方式監視、安全性監視和警示等。 Data Lake Storage Gen1 支援 OAuth 2.0 通訊協定以便在 REST 介面中進行驗證。 請參閱[使用 Azure Active Directory 在 Azure Data Lake Storage Gen1 內驗證](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | 存取控制 |Data Lake Storage Gen1 透過支援 WebHDFS 通訊協定所公開的 POSIX 樣式權限，以提供存取控制。 ACL 可在根資料夾、子資料夾和個別檔案上啟用。 如需 ACL 如何在 Data Lake Storage Gen1 的環境中運作的詳細資訊，請參閱 [Data Lake Storage Gen1 中的存取控制](../data-lake-store/data-lake-store-access-control.md)。 |
@@ -73,7 +73,7 @@ Data Lake Storage Gen1 與 Hadoop 環境中的大部分開放原始碼元件相�
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage Gen1 檔案系統 (adl://)
 
-在 Hadoop 環境中，您可以透過新的檔案系統（AzureDataLakeFilesystem （adl://））存取 Data Lake Storage Gen1。 使用`adl://`的應用程式和服務效能，可以透過 WebHDFS 中目前無法使用的方式來優化。 如此一來，您就可以使用建議的 adl://，彈性地取得最佳效能。 或是繼續直接使用 WebHDFS API 來維護現有的程式碼。 Azure HDInsight 充分利用 AzureDataLakeFilesystem 來提供 Data Lake Storage Gen1 最佳效能。
+在 Hadoop 環境中，您可以透過新的檔案系統（AzureDataLakeFilesystem （adl://））存取 Data Lake Storage Gen1。 使用的應用程式和服務效能， `adl://` 可以透過 WebHDFS 中目前無法使用的方式來優化。 如此一來，您就可以使用建議的 adl://，彈性地取得最佳效能。 或是繼續直接使用 WebHDFS API 來維護現有的程式碼。 Azure HDInsight 充分利用 AzureDataLakeFilesystem 來提供 Data Lake Storage Gen1 最佳效能。
 
 使用下列 URI，在 Data Lake Storage Gen1 中存取您的資料：
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184209"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 處理並分析 JSON 文件
@@ -146,7 +146,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 ![Apache Hive json 查詢結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-UDF 會使用 Hive 中的[橫向視圖](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)語法，藉由將\_UDT 函數套用到原始資料表的每個資料列，讓 json 元組建立虛擬資料表。 `json_tuple` 複雜 JSON 會重複使用**橫向檢視**，因此變得難以使用。 此外， **JSON_TUPLE**無法處理 nested json。
+`json_tuple`UDF 會使用 Hive 中的[橫向視圖](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)語法，藉由將 \_ UDT 函數套用到原始資料表的每個資料列，讓 json 元組建立虛擬資料表。 複雜 JSON 會重複使用**橫向檢視**，因此變得難以使用。 此外， **JSON_TUPLE**無法處理 nested json。
 
 ### <a name="use-a-custom-serde"></a>使用自訂 SerDe
 

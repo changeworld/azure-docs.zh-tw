@@ -8,10 +8,10 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82182747"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>衝突類型和解決原則
@@ -35,7 +35,7 @@ Azure Cosmos DB 提供彈性的原則導向機制來解決寫入衝突。 您可
   如果兩個或更多項目在插入或取代作業時發生衝突，則包含衝突解決路徑最高值的項目會成為「優先」項目。 如果多個項目的衝突解決路徑值都相同，則由系統決定「優先」項目。 所有區域保證都會彙整出單一優先項目，且認可項目的版本最後都會相同。 如果涉及刪除衝突，則刪除的版本一律優先於插入或取代衝突。 不論衝突解決路徑的值為何，都會發生這個結果。
 
   > [!NOTE]
-  > [上次寫入 Wins] 是預設的衝突解決原則， `_ts`並使用下列 api 的時間戳記： SQL、MongoDB、Cassandra、Gremlin 和 Table。 自訂數值屬性僅適用于 SQL API。
+  > [上次寫入 Wins] 是預設的衝突解決原則，並使用下列 Api 的時間戳記 `_ts` ： SQL、MongoDB、Cassandra、Gremlin 和 Table。 自訂數值屬性僅適用于 SQL API。
 
   若要深入了解，請參閱[使用 LWW 衝突解決原則的範例](how-to-manage-conflicts.md)。
 

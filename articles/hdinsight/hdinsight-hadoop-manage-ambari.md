@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232848"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 叢集
@@ -29,7 +29,7 @@ Apache Ambari 可簡化 Apache Hadoop 叢集的管理和監視。 藉由提供�
 
 ## <a name="connectivity"></a>連線能力
 
-Ambari Web UI 可在您的 HDInsight 叢集上使用`https://CLUSTERNAME.azurehdinsight.net`，其中`CLUSTERNAME`是您的叢集名稱。
+Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azurehdinsight.net` ，其中 `CLUSTERNAME` 是您的叢集名稱。
 
 > [!IMPORTANT]  
 > 連線到 HDInsight 上的 Ambari 需要 HTTPS。 當系統提示要驗證時，請使用您在叢集建立時所提供的系統管理帳戶名稱和密碼。 如果系統不會提示您輸入認證，請檢查您的網路設定，以確認用戶端與 Azure HDInsight 叢集之間沒有連線問題。
@@ -68,9 +68,9 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用`https://CLUSTERNAME.azurehd
 下列清單包含 Ambari 常用的警示狀態︰
 
 * **確定**
-* **Warning**
+* **警告**
 * **成**
-* **未知**
+* **UNKNOWN**
 
 [確定]**** 以外的警示會導致頁面頂端出現 [# 個警示]**** 項目，以顯示警示數目。 選取此項目會顯示警示及其狀態。
 
@@ -161,7 +161,7 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用`https://CLUSTERNAME.azurehd
     |開啟維護模式|抑制主機的警示。 如果您要執行會產生警示的動作，則應該啟用此模式。 例如，停止和啟動服務。|
     |關閉維護模式|將主機恢復正常警示。|
     |Stop|停止主機上的 DataNode 或 NodeManagers。|
-    |啟動|在主機上啟動 DataNode 或 NodeManagers。|
+    |開始|在主機上啟動 DataNode 或 NodeManagers。|
     |重新啟動|在主機上停止並啟動 DataNode 或 NodeManagers。|
     |解除委任|從叢集中移除主機。 **請勿在 HDInsight 叢集上使用此動作。**|
     |重新委任|將先前已解除委任的主機新增至叢集。 **請勿在 HDInsight 叢集上使用此動作。**|

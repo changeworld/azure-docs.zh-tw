@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure CLI 來管理和監視由 Azure 備份備�
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 06e1f29874085c3943a5207f36eff313dc670e88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184107"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 檔案共用備份
@@ -18,7 +18,7 @@ Azure CLI 提供管理 Azure 資源的命令列體驗。 這是建立自訂自�
 
 若要在本機安裝和使用 CLI，您必須執行 Azure CLI 版2.0.18 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已透過[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)來備份 Azure 檔案共用。 如果您沒有帳戶，請參閱[使用 CLI 來備份 Azure 檔案共用](backup-afs-cli.md)，以設定檔案共用的備份。 在本文中，您會使用下列資源：
 

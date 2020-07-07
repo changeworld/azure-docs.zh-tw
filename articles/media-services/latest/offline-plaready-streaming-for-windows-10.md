@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
 ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160234"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>適用于 Windows 10 的離線 PlayReady 串流（含媒體服務 v3）
@@ -31,7 +31,7 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 > [!NOTE]
 > 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本節提供一些離線模式播放的背景資訊，尤其是開發該技術的原因：
 

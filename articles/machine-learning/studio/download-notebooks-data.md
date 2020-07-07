@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208460"
 ---
 # <a name="download-notebookspreview-data"></a>下載筆記本（預覽）資料
@@ -25,9 +25,9 @@ ms.locfileid: "82208460"
     ![流覽至 [筆記本] 索引標籤！](./media/download-notebooks/notebooks-list.png)
 
 1. 選取您想要下載的筆記本。 它會在 Jupyter 中開啟。
-    ![選取一次](./media/download-notebooks/select-notebook.png)下載多個筆記本的筆記本不受支援。
+    ![選取一 ](./media/download-notebooks/select-notebook.png) 次下載多個筆記本的筆記本不受支援。
 
-1. 移至**Files** -> [檔案] [**下載為**]，然後選取 [格式] 選項。
+1. 移至 **[** 檔案] [  ->  **下載為**]，然後選取 [格式] 選項。
     ![筆記本下載選項](./media/download-notebooks/download-options.PNG)
 
 1. 選取選項之後，就會開始下載筆記本檔案。 略過出現的任何500或502錯誤，它們將不會影響您的下載。

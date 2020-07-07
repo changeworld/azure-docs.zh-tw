@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193117"
 ---
 # <a name="security-control-network-security"></a>安全性控制：網路安全性
@@ -44,15 +44,15 @@ ms.locfileid: "82193117"
 |--|--|--|
 | 1.2 | 9.3、12.2、12。8 | 客戶 |
 
-使用 Azure 資訊安全中心並遵循網路保護建議，協助保護您在 Azure 中的網路資源。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用「分析」來提供 Azure 雲端中流量的深入解析。 流量分析的一些優點是能夠將網路活動視覺化，並識別作用點、識別安全性威脅、瞭解流量模式，以及找出網路錯誤配置。
+使用 Azure 資訊安全中心並遵循網路保護建議，協助保護您在 Azure 中的網路資源。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用「分析」來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 - [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
-- [如何啟用和使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
 
 - [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
 
-## <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 web 應用程式
+## <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -62,7 +62,7 @@ ms.locfileid: "82193117"
 
 - [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
-## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
+## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -80,7 +80,7 @@ ms.locfileid: "82193117"
 
 - [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-- [瞭解 Azure 資訊安全中心整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
 
 - [瞭解 Azure 資訊安全中心的彈性網路強化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
@@ -96,13 +96,13 @@ ms.locfileid: "82193117"
 
 - [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
-## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統（IDS/IPS）
+## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 1.6 | 12.6、12。7 | 客戶 |
 
-從支援具有承載檢查功能之 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。  如果基於承載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。 以 Azure 防火牆威脅情報為基礎的篩選可以警示和拒絕進出已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
+從支援具有承載檢查功能之 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。  如果基於酬載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。 Azure 防火牆威脅情報型篩選可以警示並拒絕傳向和來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
 
 在您組織的每個網路界限上部署您選擇的防火牆解決方案，以偵測及/或拒絕惡意流量。
 
@@ -112,7 +112,7 @@ ms.locfileid: "82193117"
 
 - [如何使用 Azure 防火牆設定警示](https://docs.microsoft.com/azure/firewall/threat-intel)
 
-## <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 應用程式的流量
+## <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
@@ -132,7 +132,7 @@ ms.locfileid: "82193117"
 |--|--|--|
 | 1.8 | 1.5 | 客戶 |
 
-使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，ApiManagement），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。
+使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
 您也可以使用應用程式安全性群組來協助簡化複雜的安全性設定。 應用程式安全性群組可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並定義以這些群組為基礎的網路安全性原則。
 
@@ -156,19 +156,19 @@ ms.locfileid: "82193117"
 
 - [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
 
-## <a name="110-document-traffic-configuration-rules"></a>1.10：檔流量設定規則
+## <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 1.10 | 11.2 | 客戶 |
 
-使用標籤來 Nsg 和與網路安全性和流量相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和（或）持續時間（等）。
+使用標籤來 Nsg 和與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
 
 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 - [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
@@ -182,7 +182,7 @@ ms.locfileid: "82193117"
 
 使用 Azure 活動記錄來監視資源設定，並偵測 Azure 資源的變更。 在 Azure 監視器中建立警示，以在重大資源的變更發生時觸發。
 
-- [如何查看和取出 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
 - [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 

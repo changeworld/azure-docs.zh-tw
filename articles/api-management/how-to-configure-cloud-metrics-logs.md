@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205127"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>設定 Azure API 管理自我裝載閘道的雲端計量和記錄
@@ -28,11 +28,11 @@ ms.locfileid: "82205127"
 ## <a name="metrics"></a>計量
 根據預設，自我裝載閘道會透過[Azure 監視器](https://azure.microsoft.com/services/monitor/)發出許多計量，與[雲端中](api-management-howto-use-azure-monitor.md)的受控閘道相同。 
 
-在閘道部署的 ConfigMap 中，您`telemetry.metrics.cloud`可以使用金鑰來啟用或停用此功能。 以下是可用設定的明細：
+在 `telemetry.metrics.cloud` 閘道部署的 ConfigMap 中，您可以使用金鑰來啟用或停用此功能。 以下是可用設定的明細：
 
 | 欄位  | 預設 | 描述 |
 | ------------- | ------------- | ------------- |
-| 遙測資料。雲端  | `true` | 透過 Azure 監視器啟用記錄。 值可以是`true`、 `false`。 |
+| 遙測資料。雲端  | `true` | 透過 Azure 監視器啟用記錄。 值可以是 `true` 、 `false` 。 |
 
 
 以下是範例設定：
@@ -49,7 +49,7 @@ ms.locfileid: "82205127"
 
 自我裝載閘道目前會透過 Azure 監視器發出下列計量：
 
-| 計量  | 描述 |
+| Metric  | 描述 |
 | ------------- | ------------- |
 | Requests  | 期間內的 API 要求數目 |
 | 閘道要求的持續時間 | 從閘道收到要求直到傳入完整回應時的毫秒數 |

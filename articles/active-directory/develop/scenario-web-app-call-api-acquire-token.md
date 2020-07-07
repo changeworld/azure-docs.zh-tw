@@ -12,22 +12,22 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181727"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web 應用程式：取得應用程式的權杖
 
 您已建立用戶端應用程式物件。 現在，您將使用它來取得權杖，以呼叫 Web API。 在 ASP.NET 或 ASP.NET Core 中，呼叫 Web API 是在控制器中完成：
 
-- 使用權杖快取取得 Web API 的權杖。 若要取得此權杖，請呼叫 MSAL `AcquireTokenSilent`方法（或在 Microsoft. Identity. Web 中為對等）。
+- 使用權杖快取取得 Web API 的權杖。 若要取得此權杖，請呼叫 MSAL `AcquireTokenSilent` 方法（或在 Microsoft. Identity. Web 中為對等）。
 - 呼叫受保護的 API，並將存取權杖當做參數傳遞給它。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-控制器方法會受到強制驗證使用者`[Authorize]`使用 web 應用程式的屬性所保護。 以下是呼叫 Microsoft Graph 的程式碼：
+控制器方法會受到 `[Authorize]` 強制驗證使用者使用 web 應用程式的屬性所保護。 以下是呼叫 Microsoft Graph 的程式碼：
 
 ```csharp
 [Authorize]
@@ -45,9 +45,9 @@ public class HomeController : Controller
 }
 ```
 
-此`ITokenAcquisition`服務是由使用相依性插入的 ASP.NET 插入。
+此 `ITokenAcquisition` 服務是由使用相依性插入的 ASP.NET 插入。
 
-以下是的動作簡化的程式碼`HomeController`，它會取得要呼叫 Microsoft Graph 的權杖：
+以下是的動作簡化的程式碼 `HomeController` ，它會取得要呼叫 Microsoft Graph 的權杖：
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -76,15 +76,15 @@ public async Task<IActionResult> Profile()
 
 ASP.NET 的程式碼類似于 ASP.NET Core 顯示的程式碼：
 
-- 由 [授權] 屬性保護的控制器動作，會解壓縮控制器`ClaimsPrincipal`成員的租使用者識別碼和使用者識別碼。 （ASP.NET 會`HttpContext.User`使用）。
-- 它會建立一個 MSAL.NET `IConfidentialClientApplication`物件。
-- 最後，它會呼叫`AcquireTokenSilent`機密用戶端應用程式的方法。
+- 由 [授權] 屬性保護的控制器動作，會解壓縮控制器成員的租使用者識別碼和使用者識別碼 `ClaimsPrincipal` 。 （ASP.NET 會使用 `HttpContext.User` ）。
+- 它會建立一個 MSAL.NET `IConfidentialClientApplication` 物件。
+- 最後，它會呼叫 `AcquireTokenSilent` 機密用戶端應用程式的方法。
 
 # <a name="java"></a>[Java](#tab/java)
 
 在 JAVA 範例中，呼叫 API 的程式碼位於[AuthPageController. JAVA # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)的 getUsersFromGraph 方法中。
 
-方法會嘗試呼叫`getAuthResultBySilentFlow`。 如果使用者需要同意更多範圍，程式碼會處理`MsalInteractionRequiredException`物件以挑戰使用者。
+方法會嘗試呼叫 `getAuthResultBySilentFlow` 。 如果使用者需要同意更多範圍，程式碼會處理 `MsalInteractionRequiredException` 物件以挑戰使用者。
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

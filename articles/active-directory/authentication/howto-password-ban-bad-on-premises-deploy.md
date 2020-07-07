@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82143213"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>規劃和部署內部部署 Azure Active Directory 密碼保護
@@ -140,8 +140,8 @@ Microsoft Azure AD Connect Agent 更新程式服務會與 Azure AD 密碼保護 
 
 內部部署 Azure AD 密碼保護部署有兩個必要的安裝程式：
 
-* Azure AD 密碼保護 DC 代理程式（*AzureADPasswordProtectionDCAgentSetup .msi*）
-* Azure AD 密碼保護 proxy （*azureadpasswordprotectionproxysetup.msi .exe*）
+* Azure AD 密碼保護 DC 代理程式（*AzureADPasswordProtectionDCAgentSetup.msi*）
+* Azure AD 密碼保護 proxy （*AzureADPasswordProtectionProxySetup.exe*）
 
 從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57071)下載這兩個安裝程式。
 
@@ -160,7 +160,7 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
 
 若要安裝 Azure AD 密碼保護 proxy 服務，請完成下列步驟：
 
-1. 若要安裝 Azure AD 密碼保護 proxy 服務，請執行`AzureADPasswordProtectionProxySetup.exe`軟體安裝程式。
+1. 若要安裝 Azure AD 密碼保護 proxy 服務，請執行 `AzureADPasswordProtectionProxySetup.exe` 軟體安裝程式。
 
     軟體安裝不需要重新開機，而且可能會使用標準 MSI 程式來自動化，如下列範例所示：
     
@@ -169,13 +169,13 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
     ```
     
     > [!NOTE]
-    > 在安裝`AzureADPasswordProtectionProxySetup.exe`套件之前，必須先執行 Windows 防火牆服務，以避免發生安裝錯誤。
+    > 在安裝套件之前，必須先執行 Windows 防火牆服務 `AzureADPasswordProtectionProxySetup.exe` ，以避免發生安裝錯誤。
     >
     > 如果 Windows 防火牆設定為不執行，因應措施是在安裝期間暫時啟用並執行防火牆服務。 在安裝後，proxy 軟體對 Windows 防火牆沒有特定的相依性。
     >
     > 如果您使用的是協力廠商防火牆，仍然必須將其設定為符合部署需求。 其中包括允許對埠135和 proxy RPC 伺服器埠的輸入存取。 如需詳細資訊，請參閱上一節的[部署需求](#deployment-requirements)。
 
-1. Azure AD 密碼保護 proxy 套裝軟體含新的 PowerShell 模組`AzureADPasswordProtection`。 下列步驟會從這個 PowerShell 模組執行各種 Cmdlet。
+1. Azure AD 密碼保護 proxy 套裝軟體含新的 PowerShell 模組 `AzureADPasswordProtection` 。 下列步驟會從這個 PowerShell 模組執行各種 Cmdlet。
 
     若要使用此模組，請以系統管理員身分開啟 PowerShell 視窗，並匯入新的模組，如下所示：
     
@@ -191,13 +191,13 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
 
     結果應該會顯示 [*正在*執行] 的**狀態**。
 
-1. Proxy 服務正在電腦上執行，但沒有認證可與 Azure AD 通訊。 使用`Register-AzureADPasswordProtectionProxy` Cmdlet 向 Azure AD 註冊 Azure AD 密碼保護 proxy 伺服器。
+1. Proxy 服務正在電腦上執行，但沒有認證可與 Azure AD 通訊。 使用 Cmdlet 向 Azure AD 註冊 Azure AD 密碼保護 proxy 伺服器 `Register-AzureADPasswordProtectionProxy` 。
 
     此 Cmdlet 需要您 Azure 租使用者的全域管理員認證。 您也需要內部部署 Active Directory 樹系根域中的網域系統管理員許可權。 此 Cmdlet 也必須使用具有本機系統管理員許可權的帳戶來執行：
 
     在此命令成功針對 Azure AD 密碼保護 proxy 服務執行一次之後，額外的調用會成功，但不需要。
 
-    此`Register-AzureADPasswordProtectionProxy` Cmdlet 支援下列三種驗證模式。 前兩個模式支援 Azure 多重要素驗證，但第三個模式則否。
+    此 `Register-AzureADPasswordProtectionProxy` Cmdlet 支援下列三種驗證模式。 前兩個模式支援 Azure 多重要素驗證，但第三個模式則否。
 
     > [!TIP]
     > 第一次針對特定的 Azure 租使用者執行此 Cmdlet 時，可能會有明顯的延遲。 除非回報失敗，否則請不要擔心這種延遲。
@@ -239,14 +239,14 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
 
     只有在服務的存留期內，才需要註冊 Azure AD 密碼保護 proxy 服務。 之後，Azure AD 密碼保護 proxy 服務就會自動執行任何其他必要的維護。
 
-1. 現在向內部部署 Active Directory 樹系註冊，並提供必要的認證，以便使用`Register-AzureADPasswordProtectionForest` PowerShell Cmdlet 與 Azure 進行通訊。
+1. 現在向內部部署 Active Directory 樹系註冊，並提供必要的認證，以便使用 PowerShell Cmdlet 與 Azure 進行通訊 `Register-AzureADPasswordProtectionForest` 。
 
     > [!NOTE]
     > 如果您的環境中已安裝多個 Azure AD 的密碼保護 proxy 伺服器，則您用來註冊樹系的 proxy 伺服器並不重要。
 
     此 Cmdlet 需要您 Azure 租使用者的全域管理員認證。 您也必須使用具有本機系統管理員許可權的帳戶來執行此 Cmdlet。 它也需要內部部署 Active Directory 企業系統管理員許可權。 此步驟會針對每一樹系執行一次。
 
-    此`Register-AzureADPasswordProtectionForest` Cmdlet 支援下列三種驗證模式。 前兩個模式支援 Azure 多重要素驗證，但第三個模式則否。
+    此 `Register-AzureADPasswordProtectionForest` Cmdlet 支援下列三種驗證模式。 前兩個模式支援 Azure 多重要素驗證，但第三個模式則否。
 
     > [!TIP]
     > 第一次針對特定的 Azure 租使用者執行此 Cmdlet 時，可能會有明顯的延遲。 除非回報失敗，否則請不要擔心這種延遲。
@@ -286,15 +286,15 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
 
        只有當目前登入的使用者也是根域的 Active Directory 網域系統管理員時，這些範例才會成功。 如果不是這種情況，您可以透過 *-ForestCredential*參數提供替代網域認證。
 
-    只有在樹系的存留期內，才需要註冊 Active Directory 樹系。 之後，樹系中的 Azure AD 密碼保護 DC 代理程式就會自動執行任何其他必要的維護。 成功`Register-AzureADPasswordProtectionForest`執行樹系的程式之後，Cmdlet 的其他調用會成功，但不需要。
+    只有在樹系的存留期內，才需要註冊 Active Directory 樹系。 之後，樹系中的 Azure AD 密碼保護 DC 代理程式就會自動執行任何其他必要的維護。 `Register-AzureADPasswordProtectionForest`成功執行樹系的程式之後，Cmdlet 的其他調用會成功，但不需要。
     
-    若`Register-AzureADPasswordProtectionForest`要成功，Azure AD 密碼保護 proxy 伺服器的網域中，至少必須有一個執行 Windows Server 2012 或更新版本的 DC。 在此步驟之前，不需要在任何網域控制站上安裝 Azure AD 密碼保護 DC 代理程式軟體。
+    `Register-AzureADPasswordProtectionForest`若要成功，Azure AD 密碼保護 proxy 伺服器的網域中，至少必須有一個執行 Windows Server 2012 或更新版本的 DC。 在此步驟之前，不需要在任何網域控制站上安裝 Azure AD 密碼保護 DC 代理程式軟體。
 
 ### <a name="configure-the-proxy-service-to-communicate-through-an-http-proxy"></a>設定 proxy 服務以透過 HTTP proxy 進行通訊
 
 如果您的環境需要使用特定的 HTTP proxy 來與 Azure 通訊，請使用下列步驟來設定 Azure AD 密碼保護服務。
 
-在`%ProgramFiles%\Azure AD Password Protection Proxy\Service`資料夾中建立*register-azureadpasswordprotectionproxy* 。 包含下列內容：
+在資料夾中建立*AzureADPasswordProtectionProxy.exe.config*檔案 `%ProgramFiles%\Azure AD Password Protection Proxy\Service` 。 包含下列內容：
 
    ```xml
    <configuration>
@@ -320,11 +320,11 @@ Azure AD 的密碼保護 proxy 服務通常位於內部部署 AD DS 環境中的
    </configuration>
    ```
 
-在這兩種情況`http://yourhttpproxy.com:8080`下，請將取代為您特定 HTTP proxy 伺服器的位址和埠。
+在這兩種情況下，請 `http://yourhttpproxy.com:8080` 將取代為您特定 HTTP proxy 伺服器的位址和埠。
 
 如果您的 HTTP proxy 已設定為使用授權原則，您必須授與裝載 proxy 服務之電腦的 Active Directory 電腦帳戶的存取權，以進行密碼保護。
 
-建議您在建立或更新*register-azureadpasswordprotectionproxy*之後，停止並重新啟動 Azure AD 的密碼保護 proxy 服務。
+建議您在建立或更新*AzureADPasswordProtectionProxy.exe.config*檔案之後，停止並重新啟動 Azure AD 密碼保護 proxy 服務。
 
 Proxy 服務不支援使用特定認證來連接 HTTP proxy。
 
@@ -332,7 +332,7 @@ Proxy 服務不支援使用特定認證來連接 HTTP proxy。
 
 Azure AD 密碼保護 DC 代理程式軟體會使用 RPC over TCP 來與 proxy 服務進行通訊。 根據預設，Azure AD 的密碼保護 proxy 服務會在任何可用的動態 RPC 端點上進行接聽。 您可以根據環境中的網路拓朴或防火牆需求，將服務設定為在特定 TCP 通訊埠上接聽。
 
-<a id="static" /></a>若要將服務設定為在靜態埠下執行，請`Set-AzureADPasswordProtectionProxyConfiguration`使用 Cmdlet，如下所示：
+<a id="static" /></a>若要將服務設定為在靜態埠下執行，請使用 Cmdlet，如下所示 `Set-AzureADPasswordProtectionProxyConfiguration` ：
 
 ```powershell
 Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
@@ -352,7 +352,7 @@ Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
 
 Azure AD 的密碼保護 proxy 服務在埠設定變更之後，需要手動重新開機。 在進行這些設定變更之後，您不需要重新開機網域控制站上的 Azure AD 密碼保護 DC 代理程式服務。
 
-若要查詢服務的目前設定，請使用`Get-AzureADPasswordProtectionProxyConfiguration` Cmdlet，如下列範例所示
+若要查詢服務的目前設定，請使用 Cmdlet， `Get-AzureADPasswordProtectionProxyConfiguration` 如下列範例所示
 
 ```powershell
 Get-AzureADPasswordProtectionProxyConfiguration | fl
@@ -368,7 +368,7 @@ StaticPort  : 0
 
 ## <a name="install-the-dc-agent-service"></a>安裝 DC 代理程式服務
 
-若要安裝 Azure AD 密碼保護 DC 代理程式服務，請`AzureADPasswordProtectionDCAgentSetup.msi`執行封裝。
+若要安裝 Azure AD 密碼保護 DC 代理程式服務，請執行 `AzureADPasswordProtectionDCAgentSetup.msi` 封裝。
 
 您可以使用標準 MSI 程式將軟體安裝自動化，如下列範例所示：
 
@@ -376,7 +376,7 @@ StaticPort  : 0
 msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart
 ```
 
-如果`/norestart`您想要讓安裝程式自動重新開機電腦，則可以省略旗標。
+`/norestart`如果您想要讓安裝程式自動重新開機電腦，則可以省略旗標。
 
 軟體安裝或卸載需要重新開機。 這項需求是因為密碼篩選 Dll 只會在重新開機時載入或卸載。
 
@@ -389,29 +389,29 @@ msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart
 
 ## <a name="upgrading-the-proxy-service"></a>升級 proxy 服務
 
-Azure AD 密碼保護 proxy 服務支援自動升級。 自動升級會使用 Microsoft Azure AD Connect Agent 更新程式服務，這會與 proxy 服務並存安裝。 預設會開啟自動升級，而且可能會使用`Set-AzureADPasswordProtectionProxyConfiguration` Cmdlet 來啟用或停用。
+Azure AD 密碼保護 proxy 服務支援自動升級。 自動升級會使用 Microsoft Azure AD Connect Agent 更新程式服務，這會與 proxy 服務並存安裝。 預設會開啟自動升級，而且可能會使用 Cmdlet 來啟用或停用 `Set-AzureADPasswordProtectionProxyConfiguration` 。
 
-您可以使用`Get-AzureADPasswordProtectionProxyConfiguration` Cmdlet 來查詢目前的設定。 我們建議您一律啟用自動升級設定。
+您可以使用 Cmdlet 來查詢目前的設定 `Get-AzureADPasswordProtectionProxyConfiguration` 。 我們建議您一律啟用自動升級設定。
 
-`Get-AzureADPasswordProtectionProxy` Cmdlet 可用來查詢樹系中所有目前已安裝之 Azure AD 密碼保護 proxy 伺服器的軟體版本。
+`Get-AzureADPasswordProtectionProxy`Cmdlet 可用來查詢樹系中所有目前已安裝之 Azure AD 密碼保護 proxy 伺服器的軟體版本。
 
 ### <a name="manual-upgrade-process"></a>手動升級程式
 
-手動升級是藉由執行最新版的`AzureADPasswordProtectionProxySetup.exe`軟體安裝程式來完成。 您可以從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57071)取得軟體的最新版本。
+手動升級是藉由執行最新版的 `AzureADPasswordProtectionProxySetup.exe` 軟體安裝程式來完成。 您可以從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57071)取得軟體的最新版本。
 
-不需要卸載目前版本的 Azure AD 密碼保護 proxy 服務-安裝程式會執行就地升級。 升級 proxy 服務時，不需要重新開機。 軟體升級可能會使用標準 MSI 程式自動化，例如`AzureADPasswordProtectionProxySetup.exe /quiet`。
+不需要卸載目前版本的 Azure AD 密碼保護 proxy 服務-安裝程式會執行就地升級。 升級 proxy 服務時，不需要重新開機。 軟體升級可能會使用標準 MSI 程式自動化，例如 `AzureADPasswordProtectionProxySetup.exe /quiet` 。
 
 ## <a name="upgrading-the-dc-agent"></a>升級 DC 代理程式
 
-當有較新版本的 Azure AD 密碼保護 DC 代理程式軟體可供使用時，會執行`AzureADPasswordProtectionDCAgentSetup.msi`軟體套件的最新版本來完成升級。 您可以從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57071)取得軟體的最新版本。
+當有較新版本的 Azure AD 密碼保護 DC 代理程式軟體可供使用時，會執行軟體套件的最新版本來完成升級 `AzureADPasswordProtectionDCAgentSetup.msi` 。 您可以從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57071)取得軟體的最新版本。
 
 不需要卸載目前版本的 DC 代理程式軟體-安裝程式會執行就地升級。 升級 DC 代理程式軟體時，一律需要重新開機-這項需求是由核心 Windows 行為所造成。
 
-軟體升級可能會使用標準 MSI 程式自動化，例如`msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
+軟體升級可能會使用標準 MSI 程式自動化，例如 `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart` 。
 
-如果您想要`/norestart`讓安裝程式自動重新開機電腦，您可以省略旗標。
+`/norestart`如果您想要讓安裝程式自動重新開機電腦，您可以省略旗標。
 
-`Get-AzureADPasswordProtectionDCAgent` Cmdlet 可用來查詢樹系中所有目前已安裝之 Azure AD 密碼保護 DC 代理程式的軟體版本。
+`Get-AzureADPasswordProtectionDCAgent`Cmdlet 可用來查詢樹系中所有目前已安裝之 Azure AD 密碼保護 DC 代理程式的軟體版本。
 
 ## <a name="next-steps"></a>後續步驟
 

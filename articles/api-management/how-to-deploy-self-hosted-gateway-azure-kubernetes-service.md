@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205114"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes Service
 
 本文提供將 Azure API 管理的自我裝載閘道元件部署至[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)的步驟。 若要將自我裝載閘道部署到 Kubernetes 叢集，請參閱這[份檔](how-to-deploy-self-hosted-gateway-kubernetes.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 - [建立 Azure Kubernetes 叢集](../aks/kubernetes-walkthrough-portal.md)
@@ -36,8 +36,8 @@ ms.locfileid: "82205114"
 5. 請確定已在 [**部署腳本**] 底下選取 [ **Kubernetes** ]。
 6. 選取 [**部署**] 旁**的<閘道-名稱> yml**檔案連結以下載檔案。
 7. 視需要調整 yml 檔案中的埠對應和容器名稱。
-8. 視您的案例而定，您可能需要變更[服務類型](https://docs.microsoft.com/azure/aks/concepts-network#services)。 預設值是 `NodePort`。
-9. 選取位於 [**部署**] 文字方塊右邊的`kubectl` **複製**圖示，將命令儲存到剪貼簿。
+8. 視您的案例而定，您可能需要變更[服務類型](https://docs.microsoft.com/azure/aks/concepts-network#services)。 預設值為 `NodePort`。
+9. 選取位於 [**部署**] 文字方塊右邊的**複製**圖示，將 `kubectl` 命令儲存到剪貼簿。
 10. 將命令貼到 [終端機] （或命令）視窗。 請注意，此命令會預期所下載的環境檔案會出現在目前的目錄中。
 ```console
     kubectl apply -f <gateway-name>.yaml
@@ -58,7 +58,7 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 14. 回到 [Azure 入口網站]，並確認您剛才部署的 [閘道] 節點回報 [狀況良好] 狀態。
 
 > [!TIP]
-> 使用<code>kubectl logs <gateway-pod-name></code>命令來查看自我裝載閘道記錄的快照集。
+> 使用 <code>kubectl logs <gateway-pod-name></code> 命令來查看自我裝載閘道記錄的快照集。
 
 ## <a name="next-steps"></a>後續步驟
 

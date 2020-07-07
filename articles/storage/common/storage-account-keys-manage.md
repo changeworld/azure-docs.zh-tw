@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176614"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理儲存體帳戶存取金鑰
@@ -42,7 +42,7 @@ Microsoft 建議您使用 Azure Key Vault 來管理您的存取金鑰，並定�
 
 若要使用 PowerShell 取出您的帳戶存取金鑰，請呼叫[AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey)命令。
 
-下列範例會抓取第一個索引鍵。 若要取出第二個索引`Value[1]`鍵， `Value[0]`請使用，而不是。 請記得以您自己的值取代括弧中的預留位置值。
+下列範例會抓取第一個索引鍵。 若要取出第二個索引鍵，請使用， `Value[1]` 而不是 `Value[0]` 。 請記得以您自己的值取代括弧中的預留位置值。
 
 ```powershell
 $storageAccountKey = `
@@ -108,7 +108,7 @@ Microsoft 建議您定期輪替存取金鑰，以協助保護您的儲存體帳�
     ```
 
 1. 更新程式碼中的連接字串，以參考新的主要存取金鑰。
-1. 以同樣的方式重新產生次要存取金鑰。 若要重新產生次要金鑰， `key2`請使用做為索引鍵`key1`名稱，而不是。
+1. 以同樣的方式重新產生次要存取金鑰。 若要重新產生次要金鑰，請使用 `key2` 做為索引鍵名稱，而不是 `key1` 。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,7 +125,7 @@ Microsoft 建議您定期輪替存取金鑰，以協助保護您的儲存體帳�
     ```
 
 1. 更新程式碼中的連接字串，以參考新的主要存取金鑰。
-1. 以同樣的方式重新產生次要存取金鑰。 若要重新產生次要金鑰， `key2`請使用做為索引鍵`key1`名稱，而不是。
+1. 以同樣的方式重新產生次要存取金鑰。 若要重新產生次要金鑰，請使用 `key2` 做為索引鍵名稱，而不是 `key1` 。
 
 ---
 

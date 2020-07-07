@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204945"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速回應安全身分識別
@@ -34,11 +34,11 @@ ms.locfileid: "82204945"
 - 利用雲端智慧。
 - 啟用終端使用者自助服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本指南假設您已在 Azure AD 中建立了您的雲端或混合式身分識別。 如需選擇身分識別類型的說明，請參閱文章：為[您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../hybrid/choose-ad-authn.md) 
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 安全身分識別基礎結構有許多層面，但此檢查清單著重于安全且安全的身分識別基礎結構，讓使用者可以從遠端工作。 保護您的身分識別只是安全性案例的一部分，您也應該考慮保護資料、應用程式和裝置。
 
@@ -57,7 +57,7 @@ ms.locfileid: "82204945"
 | [啟用密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)處理（如果使用混合式身分識別） | 提供驗證的冗余和改善安全性（包括智慧型鎖定、IP 鎖定，以及探索洩露認證的功能）。 |
 | [啟用 ADFS 智慧型鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)（如果適用） | 保護您的使用者不會遇到惡意活動的外部網路帳戶鎖定。 |
 | [啟用 Azure Active Directory 智慧鎖定](../authentication/howto-password-smart-lockout.md)（如果使用受控識別） | 智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法來取得的不良執行者。 |
-| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業，以協助降低您的介面區並降低此風險。 |
+| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業以協助減少介面區並降低此風險。 |
 | [將支援的 SaaS 應用程式從資源庫整合到 Azure AD 並啟用單一登入](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 利用改良的使用者體驗（SSO），從遠端安全地提供公司 SaaS 應用程式的存取權 |
 | [自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建（如果適用） | 在使用者需要存取的雲端（SaaS）應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動布建還包括維護和移除使用者身分識別，做為狀態或角色的變更，進而提高組織的安全性。 |
 | [啟用安全的混合式存取：使用現有的應用程式傳遞控制器和網路保護繼承應用程式](../manage-apps/secure-hybrid-access.md)（如果適用） | 藉由將您的內部部署和雲端舊版驗證應用程式連接至現有的應用程式傳遞控制器或網路，以發佈和保護它們的 Azure AD。 |
@@ -84,7 +84,7 @@ ms.locfileid: "82204945"
 | [啟用密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)處理（如果使用混合式身分識別） | 提供驗證的冗余和改善安全性（包括智慧型鎖定、IP 鎖定，以及探索洩露認證的功能）。 |
 | [啟用 ADFS 智慧型鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)（如果適用） | 保護您的使用者不會遇到惡意活動的外部網路帳戶鎖定。 |
 | [啟用 Azure Active Directory 智慧鎖定](../authentication/howto-password-smart-lockout.md)（如果使用受控識別） | 智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法來取得的不良執行者。 |
-| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業，以協助降低您的介面區並降低此風險。 |
+| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業以協助減少介面區並降低此風險。 |
 | [使用應用程式 Proxy 啟用內部部署繼承應用程式的遠端存取](../manage-apps/application-proxy-add-on-premises-application.md) | 啟用 Azure AD 應用程式 Proxy，並與繼承應用程式整合，讓使用者使用其 Azure AD 帳戶來登入，以安全地存取內部部署應用程式。 |
 | [啟用安全的混合式存取：使用現有的應用程式傳遞控制器和網路保護繼承應用程式](../manage-apps/secure-hybrid-access.md)（如果適用）。 | 藉由將您的內部部署和雲端舊版驗證應用程式連接至現有的應用程式傳遞控制器或網路，以發佈和保護它們的 Azure AD。 |
 | [將支援的 SaaS 應用程式從資源庫整合到 Azure AD 並啟用單一登入](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 利用改良的使用者體驗（SSO），從遠端安全地提供公司 SaaS 應用程式的存取權。 |
@@ -116,7 +116,7 @@ ms.locfileid: "82204945"
 | [啟用密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)處理（如果使用混合式身分識別） | 提供驗證的冗余和改善安全性（包括智慧型鎖定、IP 鎖定，以及探索洩露認證的功能）。 |
 | [啟用 ADFS 智慧型鎖定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)（如果適用） | 保護您的使用者不會遇到惡意活動的外部網路帳戶鎖定。 |
 | [啟用 Azure Active Directory 智慧鎖定](../authentication/howto-password-smart-lockout.md)（如果使用受控識別） | 智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法來取得的不良執行者。 |
-| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業，以協助降低您的介面區並降低此風險。 |
+| [停用應用程式的使用者同意](../manage-apps/configure-user-consent.md) | 系統管理員同意工作流程可讓系統管理員以安全的方式，授與需要系統管理員核准的應用程式存取權，讓使用者不會公開公司資料。 Microsoft 建議停用未來的使用者同意作業以協助減少介面區並降低此風險。 |
 | [使用應用程式 Proxy 啟用內部部署繼承應用程式的遠端存取](../manage-apps/application-proxy-add-on-premises-application.md) | 啟用 Azure AD 應用程式 Proxy，並與繼承應用程式整合，讓使用者使用其 Azure AD 帳戶來登入，以安全地存取內部部署應用程式。 |
 | [啟用安全的混合式存取：使用現有的應用程式傳遞控制器和網路保護繼承應用程式](../manage-apps/secure-hybrid-access.md)（如果適用）。 | 藉由將您的內部部署和雲端舊版驗證應用程式連接至現有的應用程式傳遞控制器或網路，以發佈和保護它們的 Azure AD。 |
 | [將支援的 SaaS 應用程式從資源庫整合到 Azure AD 並啟用單一登入](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 利用改良的使用者體驗（SSO），從遠端安全地提供公司 SaaS 應用程式的存取權。 |

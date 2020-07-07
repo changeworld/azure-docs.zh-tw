@@ -1,5 +1,5 @@
 ---
-title: Hortonworks 與 Azure HDInsight 版本相關聯的版本資訊
+title: 與 Azure HDInsight 版本相關聯的 Hortonworks 版本資訊
 description: 瞭解 Azure HDInsight 中的 Apache Hadoop 元件和版本。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: aa20e048db2b68d8f953b06745570759de5f2e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190566"
 ---
 # <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>與 HDInsight 版本相關聯的 Hortonworks 版本資訊

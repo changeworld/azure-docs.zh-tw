@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515439"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份和還原-超大規模資料庫（Citus）
@@ -49,7 +49,7 @@ ms.locfileid: "82515439"
 > [!IMPORTANT]
 > 您必須開啟支援要求，以執行超大規模資料庫（Citus）叢集的時間點還原。
 
-### <a name="post-restore-tasks"></a>Post-restore tasks
+### <a name="post-restore-tasks"></a>還原後工作
 
 從任一復原機制還原之後，您應該執行下列動作，讓您的使用者和應用程式備份並執行：
 

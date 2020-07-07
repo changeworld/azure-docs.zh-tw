@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 60fb95e47831363353e553d8e55c56e812127bfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186181"
 ---
 # <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Office 365、Dynamics 365、Power Apps 和 Power BI 的供應專案發佈指南
@@ -24,7 +24,7 @@ AppSource 有付費、清單和試用版供應專案，而呼叫動作可*立即
 
 如需發佈程式的連結，以及每個供應專案類型的指導方針，請參閱下表：
 
-| Products    | 發佈指引  |
+| 產品    | 發佈指引  |
 | :------------------- | :-------------------|
 | Office 365 | 檢閱[發佈程序和指導方針](/office/dev/store/submit-to-appsource-via-partner-center)。 |
 | Dynamics 365 Business Central | 若要在合作夥伴中心發佈供應專案，請參閱[建立新的 Dynamics 365 Business Central 供應](./partner-center-portal/create-new-business-central-offer.md)專案。 |
@@ -37,6 +37,6 @@ AppSource 有付費、清單和試用版供應專案，而呼叫動作可*立即
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請瞭解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell)。
+了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
 
 若要建立新的供應專案或完成現有的供應專案，請移至[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)。

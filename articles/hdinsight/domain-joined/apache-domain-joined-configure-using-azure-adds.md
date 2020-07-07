@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 2b4756990162817087b0904a764b97526c3545d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186646"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中使用 Azure Active Directory Domain Services 的企業安全性套件設定
@@ -43,7 +43,7 @@ ms.locfileid: "82186646"
 
 當您啟用安全 LDAP 時，請將功能變數名稱放在 [主體名稱] 中。 和憑證中的主體替代名稱。 如果您的功能變數名稱為*contoso100.onmicrosoft.com*，請確定您的憑證主體名稱和主體別名中有正確的名稱。 如需詳細資訊，請參閱[針對 Azure AD DS 受控網域設定安全的 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
 
-下列範例會建立自我簽署憑證。 功能變數名稱*contoso100.onmicrosoft.com*同時`Subject`為（主體名稱）和`DnsName` （主體替代名稱）。
+下列範例會建立自我簽署憑證。 功能變數名稱*contoso100.onmicrosoft.com*同時為 `Subject` （主體名稱）和 `DnsName` （主體替代名稱）。
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ HDInsight 企業安全性套件需要特定的網域服務作業，例如建立 
 
 ![Azure Active Directory Domain Services 存取控制](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-指派**HDInsight 網域服務參與者**角色可確保此身分識別具有適當（`on behalf of`）的存取權，可執行 Azure AD DS 網域上的網域服務作業。 這些作業包括建立和刪除 Ou。
+指派**HDInsight 網域服務參與者**角色可確保此身分識別具有適當（ `on behalf of` ）的存取權，可執行 Azure AD DS 網域上的網域服務作業。 這些作業包括建立和刪除 Ou。
 
 將角色授與受控識別之後，Azure AD DS 系統管理員就會管理使用它的人員。 首先，系統管理員在入口網站中選取受控識別。 然後選取 **[總覽**] 底下的**存取控制（IAM）** 。 系統管理員會將**受控識別操作員**角色指派給想要建立 ESP 叢集的使用者或群組。
 
@@ -93,7 +93,7 @@ HDInsight 企業安全性套件需要特定的網域服務作業，例如建立 
 
 將 Azure AD DS 執行個體和 HDInsight 叢集放在相同的 Azure 虛擬網路中比較容易。 如果您打算使用不同的虛擬網路，您必須將這些虛擬網路對等互連，讓 HDInsight Vm 可以看見網域控制站。 如需詳細資訊，請參閱[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)。
 
-對等互連虛擬網路之後，請將 HDInsight 虛擬網路設定為使用自訂 DNS 伺服器。 然後輸入 Azure AD DS 私人 Ip 做為 DNS 伺服器位址。 當兩個虛擬網路都使用相同的 DNS 伺服器時，您的自訂功能變數名稱會解析為正確的 IP，並可從 HDInsight 連線。 例如，如果您的功能變數名稱為`contoso.com`，則在此步驟之後， `ping contoso.com`應該會解析為正確的 Azure AD DS IP。
+對等互連虛擬網路之後，請將 HDInsight 虛擬網路設定為使用自訂 DNS 伺服器。 然後輸入 Azure AD DS 私人 Ip 做為 DNS 伺服器位址。 當兩個虛擬網路都使用相同的 DNS 伺服器時，您的自訂功能變數名稱會解析為正確的 IP，並可從 HDInsight 連線。 例如，如果您的功能變數名稱為 `contoso.com` ，則在此步驟之後， `ping contoso.com` 應該會解析為正確的 AZURE AD DS IP。
 
 ![設定對等互連虛擬網路的自訂 DNS 伺服器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
@@ -124,7 +124,7 @@ HDInsight 企業安全性套件需要特定的網域服務作業，例如建立 
 
 * 叢集**存取群組**：您要同步其使用者並具有叢集存取權的安全性群組，應可在 Azure AD DS 中取得。 例如，HiveUsers 群組。 如需詳細資訊，請參閱[在 Azure Active Directory 中建立群組和新增使用者](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* **LDAPS URL**：例如`ldaps://contoso.com:636`。
+* **LDAPS URL**：例如 `ldaps://contoso.com:636` 。
 
 當您建立新的叢集時，可以從 [**使用者指派的受控識別**] 下拉式清單中選擇您所建立的受控識別。
 

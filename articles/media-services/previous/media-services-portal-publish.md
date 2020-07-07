@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176816"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 入口網站中發佈內容  
@@ -70,10 +70,10 @@ ms.locfileid: "82176816"
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用入口網站發佈資產
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定** > ] [**資產**]。 選取您要發佈的資產。
-3. 選取 [發佈]**** 按鈕。
+2. 選取 [**設定**] [  >  **資產**]。 選取您要發佈的資產。
+3. 選取 [發佈] 按鈕。
 4. 選取定位器類型。
-5. 選取 [新增]  。
+5. 選取 [新增]。
    
     ![發佈影片](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

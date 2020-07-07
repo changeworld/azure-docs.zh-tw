@@ -7,19 +7,19 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169563"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service （AKS）上進行開發
 
-[Helm][helm] 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 Helm 類似於 *APT* 和 *Yum* 等 Linux 套件管理工具，可用於管理 Kubernetes 圖表 (即預先設定的 Kubernetes 資源套件)。
+[Helm][helm]是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 類似于 Linux 套件管理員（例如*APT*和*Yum*），Helm 是用來管理 Kubernetes 圖表，這是預先設定之 Kubernetes 資源的套件。
 
 本文說明如何使用 Helm 來封裝和執行 AKS 上的應用程式。 如需使用 Helm 安裝現有應用程式的詳細資訊，請參閱[在 AKS 中使用 Helm 安裝現有的應用程式][helm-existing]。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>下載範例應用程式
 
-本快速入門會使用[Azure Dev Spaces 範例存放庫中的範例 node.js 應用程式][example-nodejs]。 從 GitHub 複製應用程式，並流覽至`dev-spaces/samples/nodejs/getting-started/webfrontend`該目錄。
+本快速入門會使用[Azure Dev Spaces 範例存放庫中的範例 Node.js 應用程式][example-nodejs]。 從 GitHub 複製應用程式，並流覽至該 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目錄。
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -138,7 +138,7 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>建立 Helm 圖
 
-使用`helm create`命令產生您的 Helm 圖表。
+使用命令產生您的 Helm 圖表 `helm create` 。
 
 ```console
 helm create webfrontend
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-在`appVersion` `v1` *webfrontend/Chart. yaml*中更新至。 例如
+`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如
 
 ```yml
 apiVersion: v2
@@ -181,7 +181,7 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>執行 Helm 圖表
 
-使用命令`helm install` ，使用您的 Helm 圖表來安裝應用程式。
+使用 `helm install` 命令，使用您的 Helm 圖表來安裝應用程式。
 
 ```console
 helm install webfrontend webfrontend/
@@ -198,7 +198,7 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-在瀏覽器中使用流覽至應用程式的負載平衡器`<EXTERNAL-IP>` ，以查看範例應用程式。
+在瀏覽器中使用流覽至應用程式的負載平衡器， `<EXTERNAL-IP>` 以查看範例應用程式。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 

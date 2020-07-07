@@ -4,15 +4,15 @@ description: 本文摘要說明當您使用 Microsoft Azure 備份 Server （MAB
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193270"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
-您可以使用[Azure 備份服務](backup-overview.md)來備份內部部署機器和工作負載，以及 Azure 虛擬機器（vm）。 本文摘要說明使用 Microsoft Azure 備份 Server （MABS）或 System Center Data Protection Manager （DPM）和 Azure 備份來備份機器的支援設定和限制。
+您可使用 [Azure 備份服務](backup-overview.md)來備份內部部署機器與工作負載，以及 Azure 虛擬機器 (VM)。 本文摘要說明使用 Microsoft Azure 備份 Server （MABS）或 System Center Data Protection Manager （DPM）和 Azure 備份來備份機器的支援設定和限制。
 
 ## <a name="about-dpmmabs"></a>關於 DPM/MABS
 
@@ -43,7 +43,7 @@ DPM 和 MABS 皆提供備份多種不同應用程式和伺服器與用戶端作�
 1. 在 DPM 伺服器/MABS 上安裝 Microsoft Azure 復原服務 (MARS) 代理程式。
 1. MARS 代理程式會使用 Azure 備份，將 DPM/MABS 磁片備份至 Azure 中的備份復原服務保存庫。
 
-如需詳細資訊：
+其他資訊：
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - 請參閱 MARS 代理程式[支援的內容](backup-support-matrix-mars-agent.md)。
@@ -76,15 +76,15 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 **內部部署 DPM** | 實體伺服器/Hyper-v VM： System Center 2012 SP1 或更新版本。<br/><br/> VMware VM： System Center 2012 R2 （含 Update 5 或更新版本）。
 
 >[!NOTE]
->Windows Server Core 或 Microsoft Hyper-v Server 不支援安裝 Azure 備份伺服器。
+>不支援在 Windows Server Core 或 Microsoft Hyper-v Server 上安裝 Azure 備份伺服器。
 
 ## <a name="management-support"></a>管理支援
 
 **問題** | **詳細資料**
 --- | ---
 **安裝** | 在單一用途的電腦上安裝 DPM/MABS。<br/><br/> 請勿在網域控制站、安裝應用程式伺服器角色的電腦、執行 Microsoft Exchange System Center Operations Manager Server 的電腦上，或在叢集節點上安裝 DPM/MABS。<br/><br/> [檢查所有 DPM 系統需求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)。
-**Domain** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
-**儲存體** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體（MB）。 MBS 不適用於 MABS v1。
+**網域** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
+**Storage** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體（MB）。 MBS 不適用於 MABS v1。
 **MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [深入了解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您將必須加以還原。
 
@@ -133,7 +133,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 透過 Microsoft 對等互連，請選取下列服務/區域和相關的「社區」值：
 
-- Azure Active Directory （12076:5060）
+- Azure Active Directory (12076:5060)
 - Microsoft Azure 區域（根據復原服務保存庫的位置）
 - Azure 儲存體（根據您的復原服務保存庫的位置）
 
@@ -157,7 +157,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 備份至 DPM/MABS 的資料會儲存在本機磁片儲存體上。
 
-**儲存體** | **詳細資料**
+**Storage** | **詳細資料**
 --- | ---
 **MBS** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體（MB）。 MBS 不適用於 MABS v1。
 **Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中管理。 可用於 DPM/MABS 存放集區的磁片數目會受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份儲存集區總數。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。

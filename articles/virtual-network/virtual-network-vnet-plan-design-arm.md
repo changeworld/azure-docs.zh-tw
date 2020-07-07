@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186011"
 ---
 # <a name="plan-virtual-networks"></a>規劃虛擬網路
@@ -35,7 +35,7 @@ ms.locfileid: "82186011"
 - 您是否有資料存留、主權、合規性或復原等需求？ 如果是，選擇能符合這些需求的區域很重要。 如需詳細資訊，請參閱 [Azure 的地理區](https://azure.microsoft.com/global-infrastructure/geographies/)。
 - 針對您部署資源的 Azure 區域，相同區域內的 Azure 可用性區域之間是否有復原需求？ 您可以將虛擬機器 (VM) 等資源部署到相同虛擬網路內的不同可用性區域。 不過，並非所有的 Azure 區域都支援可用性區域。 若要深入了解可用性區域和支援此功能的區域，請參閱[可用性區域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-## <a name="subscriptions"></a>訂閱
+## <a name="subscriptions"></a>訂用帳戶
 
 您可以在每個訂用帳戶內，部署[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)之內的多個虛擬網路。 例如，有些組織針對不同部門會有不同的訂用帳戶。 如需訂用帳戶的詳細資訊和相關考量，請參閱[訂用帳戶治理](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "82186011"
 - 如果您打算將一些 Azure 服務資源部署到虛擬網路中，它們可能需要 (或會建立) 自己的子網路，因此必須要有足夠的未配置空間以供它們進行。 若要判斷 Azure 服務是否會建立自己的子網路，請參閱針對每個[可部署到虛擬網路的 Azure 服務](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的資訊。 例如，如果您使用 Azure VPN 閘道將虛擬網路連線到內部部署網路，該虛擬網路針對閘道必須有專用的子網路。 深入了解[閘道子網路](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。
 - 根據預設，Azure 會在虛擬網路中的所有子網路之間路由傳送網路流量。 您可以覆寫 Azure 的預設路由，以避免 Azure 在子網路之間進行路由傳送，或透過網路虛擬設備路由傳送子網路之間的流量。 如果您需要相同虛擬網路中資源間的流量流經網路虛擬設備 (NVA)，請將資源部署到不同的子網路。 深入了解[安全性](#security)。
 - 您可以將針對 Azure 資源 (例如 Azure 儲存體帳戶或 Azure SQL 資料庫) 的存取，限制為具備虛擬網路服務端點的特定子網路。 此外，您可以拒絕來自網際網路的資源存取。 您可以建立多個子網路，並只針對某些子網路啟用某個服務端點。 深入了解[服務端點](virtual-network-service-endpoints-overview.md)，以及您可以針對它們啟用的 Azure 資源。
-- 您可以將零或一個網路安全性群組關聯至虛擬網路中的每個子網路。 您可以將相同或不同的網路安全性群組關聯至每個子網路。 每個網路安全性群組都包含規則，能允許或拒絕進出來源與目的地的流量。 深入瞭解[網路安全性群組](#traffic-filtering)。
+- 您可以將零或一個網路安全性群組關聯至虛擬網路中的每個子網路。 您可以將相同或不同的網路安全性群組關聯至每個子網路。 每個網路安全性群組都包含規則，能允許或拒絕進出來源與目的地的流量。 深入了解[網路安全性群組](#traffic-filtering)。
 
 ## <a name="security"></a>安全性
 

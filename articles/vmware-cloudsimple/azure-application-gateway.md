@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185688"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>在 CloudSimple 私用雲端環境中搭配 VMware 虛擬機器使用 Azure 應用程式閘道
@@ -71,7 +71,7 @@ ms.locfileid: "82185688"
 
 1. 在您的訂用帳戶和資源群組中建立虛擬網路。
 2. 在您的虛擬網路內建立子網（用來作為專用子網）。
-3. 建立標準應用程式閘道（可選擇啟用 WAF）：從 Azure 入口網站首頁，按一下頁面左上方的 [**資源** > ] [**網路** > ] [**應用程式閘道**]。 選取標準 SKU 和大小，並提供 Azure 訂用帳戶、資源群組和位置資訊。 如有需要，請為此應用程式閘道建立新的公用 IP，並提供有關應用程式閘道的虛擬網路和專用子網的詳細資料。
+3. 建立標準應用程式閘道（可選擇啟用 WAF）：從 Azure 入口網站首頁，按一下**Resource**  >  **Networking**  >  頁面左上方的 [資源] [網路] [**應用程式閘道**]。 選取標準 SKU 和大小，並提供 Azure 訂用帳戶、資源群組和位置資訊。 如有需要，請為此應用程式閘道建立新的公用 IP，並提供有關應用程式閘道的虛擬網路和專用子網的詳細資料。
 4. 新增具有虛擬機器的後端集區，並將它新增至您的應用程式閘道。
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. 在私人雲端中建立和設定 web 伺服器 VM 集區

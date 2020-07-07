@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186436"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
@@ -44,7 +44,7 @@ ms.locfileid: "82186436"
 1. 提供 VM 名稱，例如**MyTelegrafVM**。  
 1. 讓磁碟類型保持為 **SSD**。 然後提供使用者**名稱**，例如**azureuser**。 
 1. 針對 [**驗證類型**]，選取 [**密碼**]。 然後輸入密碼，以便稍後用來透過 SSH 連線到此 VM。 
-1. 選擇**建立新的資源群組**。 然後提供名稱，例如**myResourceGroup**。 選擇您的**位置**。 然後選取 [確定]  。 
+1. 選擇**建立新的資源群組**。 然後提供名稱，例如**myResourceGroup**。 選擇您的**位置**。 然後選取 [確定]。 
 
     ![建立 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "82186436"
 
     ![虛擬機器大小 Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在 [**網路** > **網路安全性群組** > ] 的 [**設定**] 頁面上，**選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH （22）**]。 保留其餘的預設值，然後選取 [確定]****。 
+1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  ，**選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH （22）**]。 保留其餘的預設值，然後選取 [確定]****。 
 
 1. 在 [摘要] 頁面上選取 [建立]****，以開始進行 VM 部署。 
 

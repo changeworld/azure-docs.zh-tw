@@ -12,10 +12,10 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181642"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>呼叫 web Api 的 web 應用程式：在全域登出時從權杖快取中移除帳戶
@@ -26,7 +26,7 @@ ms.locfileid: "82181642"
 
 ## <a name="intercept-the-callback-after-single-sign-out"></a>在單一登出後攔截回呼
 
-若要清除與已登出之帳戶相關聯的權杖快取專案，您的應用程式可以`logout`攔截 after 事件。 Web apps 會在權杖快取中儲存每個使用者的存取權杖。 藉由攔截回呼`logout`後的，您的 web 應用程式就可以從快取中移除使用者。
+若要清除與已登出之帳戶相關聯的權杖快取專案，您的應用程式可以攔截 after `logout` 事件。 Web apps 會在權杖快取中儲存每個使用者的存取權杖。 藉由攔截回呼後的 `logout` ，您的 web 應用程式就可以從快取中移除使用者。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 

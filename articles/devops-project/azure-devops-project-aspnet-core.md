@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 Azure DevOps Starter 建立適用于 .NET 的 CI/CD 管線
-description: Azure DevOps Starter 可以讓您輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動 .NET 應用程式。
+description: Azure DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動 .NET 應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
 services: azure-devops-project
@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233292"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用于 .NET 的 CI/CD 管線
@@ -30,13 +30,13 @@ ms.locfileid: "82233292"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-DevOps Starter 會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Starter 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
+DevOps Starter 會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps 入門版也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
 1. 登入 [Microsoft Azure 入口網站](https://portal.azure.com)。
 
-1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。 
+1. 在搜尋方塊中，鍵入並選取 **DevOps 入門版**。 按一下 [新增] 以建立新項目。 
 
-    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入門版儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>選取應用程式範例和 Azure 服務
 
@@ -84,7 +84,7 @@ DevOps Starter 已在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 
 在上一個步驟中，Azure DevOps Starter 會自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉 Azure DevOps 建置和發行管線。
 
-1. 在 DevOps 入門儀表板頂端，選取 [**組建管線**]。 此連結會開啟瀏覽器索引標籤和新專案的 Azure DevOps 建置管線。
+1. 在 DevOps 入門版儀表板頂端選取 [建置管線]。 此連結會開啟瀏覽器索引標籤和新專案的 Azure DevOps 建置管線。
 
 1. 選取省略符號 (...)。此動作會開啟功能表，您可以用它來啟動數個活動，例如將新的建置排入佇列、暫停建置，以及編輯建置管線。
 
@@ -106,7 +106,7 @@ DevOps Starter 已在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
 1. 選取 [建置及發行]  ，然後選取 [版本]  。  
-DevOps Starter 會建立發行管線來管理 Azure 的部署。
+DevOps 入門版會建立發行管線來管理對 Azure 的部署。
 
 1.  從左側選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]  。 發行管線中包含管線，用來定義發行程序。  
 
@@ -126,7 +126,7 @@ DevOps Starter 會建立發行管線來管理 Azure 的部署。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要所建立的 Azure App Service 和其他相關資源時，可將其刪除。 使用 DevOps 入門儀表板上的 [**刪除**] 功能。
+當您不再需要所建立的 Azure App Service 和其他相關資源時，可將其刪除。 請使用 DevOps 入門版儀表板的 [刪除] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 

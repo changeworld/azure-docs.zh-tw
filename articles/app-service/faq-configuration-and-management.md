@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159995"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
@@ -63,7 +63,7 @@ ms.locfileid: "82159995"
 2. 在 [應用程式設定]**** 底下，新增以下設定：
     * 索引鍵 = WEBSITE_TIME_ZONE
     * 值 = 您想要的時區**
-3. 選取 [儲存]  。
+3. 選取 [儲存]。
 
 針對在 Windows 上執行的應用程式服務，請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 [**時區**] 資料行以取得接受的值。 針對在 Linux 上執行的應用程式服務，將[TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)設定為時區值。 以下是一個 TZ 資料庫名稱：北美洲/Adak 的範例。
 
@@ -125,7 +125,7 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 
 若要檢閱 WebJob 記錄：
 
-1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
 2. 選取 WebJob。
 3. 選取 [切換輸出]**** 按鈕。
 4. 若要下載輸出檔案，請選取 [下載]**** 連結。
@@ -141,13 +141,13 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何? 新增 URL 重寫規則？
 
-若要新增 URL 重寫規則，請使用**wwwroot**資料夾中的相關設定專案來建立 web.config 檔案。 如需詳細資訊，請參閱[Azure App Services：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要新增 URL 重寫規則，請在**wwwroot**資料夾中建立具有相關設定專案的 web.config 檔案。 如需詳細資訊，請參閱[Azure App Services：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制 App Service 的輸入流量？
 

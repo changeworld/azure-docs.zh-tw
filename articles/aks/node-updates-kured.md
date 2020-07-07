@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208069"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中將安全性和核心更新套用至 Linux 節點
@@ -27,7 +27,7 @@ ms.locfileid: "82208069"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="understand-the-aks-node-update-experience"></a>了解 AKS 節點更新體驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "82208069"
 
 某些安全性更新 (例如核心更新) 需要重新啟動節點，才能完成此程序。 需要重新開機的 Linux 節點會建立名為 */var/run/reboot-required*的檔案。 此重新啟動程序不會自動執行。
 
-您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 在`kured`中，會部署[DaemonSet][DaemonSet] ，在叢集中的每個 Linux 節點上執行 pod。 DaemonSet 中的這些 pod 會監看是否有 */var/run/reboot-required*檔案，然後起始重新開機節點的程式。
+您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 在中 `kured` ，會部署[DaemonSet][DaemonSet] ，在叢集中的每個 Linux 節點上執行 pod。 DaemonSet 中的這些 pod 會監看是否有 */var/run/reboot-required*檔案，然後起始重新開機節點的程式。
 
 ### <a name="node-upgrades"></a>節點升級
 
@@ -52,7 +52,7 @@ AKS 中有一個額外的程序可讓您的「升級」** 叢集。 升級通常
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>在 AKS 叢集中部署 Kured
 
-若要部署`kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用來`kured`部署 DaemonSet。
+若要部署 `kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用來部署 DaemonSet `kured` 。
 
 ```console
 # Add the stable Helm repository
@@ -101,7 +101,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>後續步驟
 
-本文詳細說明如何使用`kured`在安全性更新程式中自動重新開機 Linux 節點。 若要升級至最新版的 Kubernetes，您可以[升級 AKS 叢集][aks-upgrade]。
+本文詳細說明如何使用 `kured` 在安全性更新程式中自動重新開機 Linux 節點。 若要升級至最新版的 Kubernetes，您可以[升級 AKS 叢集][aks-upgrade]。
 
 如需使用 Windows Server 節點的 AKS 叢集，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 

@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146335"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用傾印和還原來移轉 PostgreSQL 資料庫
 您可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 將 PostgreSQL 資料庫擷取到傾印檔案，並使用 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 從 pg_dump 所建立的封存檔案還原 PostgreSQL 資料庫。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要逐步執行本作法指南，您需要︰
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)，而且防火牆規則要允許存取其中的資料庫。
 - 安裝 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 命令列公用程式
@@ -42,7 +42,7 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 包括 --no-owner 參數會導致在還原期間建立的所有物件都由使用 --username 指定的使用者所擁有。 如需詳細資訊，請參閱 [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) 上的官方 PostgreSQL 文件。
 
 > [!NOTE]
-> 如果您的于 postgresql 伺服器需要 TLS/SSL 連線（在適用於 PostgreSQL 的 Azure 資料庫伺服器中預設為開啟），請設定`PGSSLMODE=require`環境變數，讓 pg_restore 工具與 tls 連接。 如果沒有 TLS，可能會讀取錯誤`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> 如果您的于 postgresql 伺服器需要 TLS/SSL 連線（在適用於 PostgreSQL 的 Azure 資料庫伺服器中預設為開啟），請設定環境變數， `PGSSLMODE=require` 讓 pg_restore 工具與 tls 連接。 如果沒有 TLS，可能會讀取錯誤`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
 > 在 Windows 命令列中，執行命令 `SET PGSSLMODE=require`，然後再執行 pg_restore 命令。 在 Linux 或 Bash中，執行命令 `export PGSSLMODE=require`，然後再執行 pg_restore 命令。
 >
@@ -72,7 +72,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 根據預設，這應已完成，但請開啟傾印檔案，確認 Create Index 陳述式位在插入的資料之後。 若非如此，請將 Create Index 陳述式移至插入的資料之後。
 
-- 使用交換器-Fc 和-j *#* 進行還原，以平行處理還原。 *#* 這是目標伺服器上的核心數目。 您也可以嘗試*#* 將設為目標伺服器核心數目的兩倍，以查看影響。 例如：
+- 使用交換器-Fc 和-j 進行還原 *#* ，以平行處理還原。 *#* 這是目標伺服器上的核心數目。 您也可以嘗試 *#* 將設為目標伺服器核心數目的兩倍，以查看影響。 例如：
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

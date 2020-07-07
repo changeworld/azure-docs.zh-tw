@@ -6,13 +6,13 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208018"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性（AKS）
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性 (AKS)
 
 所有 Azure 服務都會設定資源和功能的預設限制和配額。 某些虛擬機器（VM） Sku 也會受到限制，可供使用。
 

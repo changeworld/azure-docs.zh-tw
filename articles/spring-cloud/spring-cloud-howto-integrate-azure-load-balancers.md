@@ -7,13 +7,13 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7022c4587b425168fc5bd2182ed65c281633aabf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82177077"
 ---
-# <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>整合 Azure 春季雲端與 Azure 負載平衡解決方案
+# <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
 
 Azure 春季雲端支援 Azure 上的微服務。  增加企業可能需要多個資料中心，並管理 Azure 春季雲端的多個實例。
 
@@ -23,7 +23,7 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 2.  整合 Azure 春季雲端與 Azure App 閘道
 3.  整合 Azure 春季雲端與 Azure Front
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 春季雲端：[如何建立 azure 春季雲端服務](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
 * Azure 流量管理員：[如何建立流量管理員](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
@@ -38,9 +38,9 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 在流量管理員中新增端點：
 1.  將 [**類型**] 指定為 [*外部端點*]。
 1.  輸入每個 Azure 春季雲端公用端點的完整功能變數名稱（FQDN）。
-1. 按一下 [確定]  。
+1. 按一下 [確定]。
 
-    ![流量管理員 1](media/spring-cloud-load-balancers/traffic-manager-1.png) ![流量管理員2](media/spring-cloud-load-balancers/traffic-manager-2.png)
+    ![流量管理員 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ 流量管理員2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 
 ### <a name="configure-custom-domain"></a>設定自訂網域
 若要完成設定：

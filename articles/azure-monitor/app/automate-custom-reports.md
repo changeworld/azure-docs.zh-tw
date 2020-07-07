@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161431"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
@@ -91,11 +91,11 @@ availabilityResults
 
    ![「函式設定」螢幕擷取畫面](./media/automate-custom-reports/scheduled-digest.png)
 
-6. 選取您的**函數應用程式** > **平臺功能** > **設定。**
+6. 選取您的**函數應用程式**  >  **平臺功能**設定  >  ** **。
 
     ![「Azure 函數應用程式」設定螢幕擷取畫面](./media/automate-custom-reports/config.png)
 
-7. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [儲存]  。
+7. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [儲存]。
 
      ![函式整合介面螢幕擷取畫面](./media/automate-custom-reports/app-settings.png)
     
@@ -136,7 +136,7 @@ availabilityResults
 
      ![[Settings] \(設定\) 下的 [API Keys] \(API 金鑰\) 螢幕擷取畫面](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. 這會啟動 SendGrid 的網站。 選取 [**設定** > ] [**API 金鑰**]。
+3. 這會啟動 SendGrid 的網站。 選取 [**設定**] [  >  **API 金鑰**]。
 
      ![建立並檢視 API 金鑰應用程式螢幕擷取畫面](./media/automate-custom-reports/function-app-15.png)
 

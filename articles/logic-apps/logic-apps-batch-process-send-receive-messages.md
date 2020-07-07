@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144346"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中傳送、接收及批次處理訊息
@@ -29,7 +29,7 @@ ms.locfileid: "82144346"
 
 請務必讓批次接收者和批次傳送者共用相同的 Azure 訂用帳戶和** Azure 區域。 如果未共用，您就無法在建立批次傳送者時選取批次接收者，原因是兩者並無法看到彼此。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[開始使用免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 或者，請[註冊隨用隨付訂用帳戶](https://azure.microsoft.com/pricing/purchase-options/)。
@@ -37,9 +37,9 @@ ms.locfileid: "82144346"
 * 電子郵件帳戶與任何 [Azure Logic Apps 所支援的電子郵件提供者](../connectors/apis-list.md)
 
   > [!IMPORTANT]
-  > 如果您想要使用 Gmail 連接器，只有 G Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)用來搭配您的 Gmail 連接器進行驗證。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 若要使用 Visual Studio 而非 Azure 入口網站，請務必[設定 Visual Studio 以便使用 Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "82144346"
    | **發行準則** | 僅適用於 [內嵌]**** 批次模式，可選取在處理每個批次之前要先符合的準則： <p>- 以**訊息計數為基礎**：根據批次所收集的訊息數目來釋放批次。 <br>- 以**大小為基礎**：根據該批次收集之所有訊息的總大小（以位元組為單位）來釋放批次。 <br>- **排程**：根據週期排程釋放批次，這會指定間隔和頻率。 在進階選項中，您也可以選取時區並提供開始日期和時間。 <br>- **全選**：使用所有指定的準則。 | 
    | **訊息計數** | 要在批次中收集的訊息數目，例如 10 則訊息。 批次的限制為 8,000 則訊息。 | 
    | **批次大小** | 要在批次中收集的大小總計 (以位元組為單)，例如 10 MB。 批次的大小限制為 80 MB。 | 
-   | **排程** | 批次發行之間的間隔和頻率，例如 10 分鐘。 最小週期是 60 秒或 1 分鐘。 小數的分鐘會無條件進位至 1 分鐘。 若要指定時區或開始日期和時間，請選擇 [顯示進階選項]****。 | 
+   | **[排程]** | 批次發行之間的間隔和頻率，例如 10 分鐘。 最小週期是 60 秒或 1 分鐘。 小數的分鐘會無條件進位至 1 分鐘。 若要指定時區或開始日期和時間，請選擇 [顯示進階選項]****。 | 
    ||| 
 
    > [!NOTE]
@@ -196,7 +196,7 @@ ms.locfileid: "82144346"
    
    1. 在 [分割名稱]**** 方塊內按一下，動態內容清單隨即顯示。 
 
-   2. 在動態內容清單中，選擇 [運算式]****。
+   2. 在動態內容清單中，選擇 [運算式]。
    
    3. 輸入運算式 `rand(1,6)`，然後選擇 [確定]****。
 

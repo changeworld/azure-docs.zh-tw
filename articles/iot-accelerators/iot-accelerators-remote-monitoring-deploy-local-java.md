@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187206"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本機部署遠端監視解決方案加速器 - IntelliJ
@@ -23,11 +23,11 @@ ms.locfileid: "82187206"
 
 如果您想要在本機電腦上執行 Docker 中的遠端監視解決方案加速器，請參閱[本機部署遠端監視解決方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
-如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>電腦設定
 
@@ -98,7 +98,7 @@ Node.js v8 是腳本用來建立 Azure 資源之電腦 CLI 的必要條件。 �
    此腳本也會將一組環境變數新增至您的本機電腦。 每個變數名稱都有**電腦**的前置詞。 這些環境變數提供的詳細資料可讓遠端監視從 Azure Key Vault 資源讀取其設定值。
 
    > [!TIP]
-   > 當腳本完成時，它會將環境變數儲存至名** \<為主資料夾\>\\的檔案。\\\<電腦的\>解決方案名稱. env**。 您可以將它們用於未來的解決方案加速器部署。 請注意，當您執行**docker 撰寫**時，在本機電腦上設定的任何環境變數都會覆寫**services\\\\scripts 本機\\env**檔案中的值。
+   > 當腳本完成時，它會將環境變數儲存至名為** \<your home folder\> \\ \\ \<solution name\> 的檔案。** 您可以將它們用於未來的解決方案加速器部署。 請注意，當您執行**docker 撰寫**時，在本機電腦上設定的任何環境變數都會覆寫**services \\ scripts \\ 本機 \\ env**檔案中的值。
 
 1. 關閉您的命令列環境。
 
@@ -109,7 +109,7 @@ Node.js v8 是腳本用來建立 Azure 資源之電腦 CLI 的必要條件。 �
 * **PCS_AAD_APPID**： Azure Active Directory （Azure AD）應用程式識別碼。
 * **PCS_AAD_APPSECRET**： Azure AD 應用程式密碼。
 
-將從此 Key Vault 資源讀取設定值。 這些環境變數可以儲存在您的** \< \> \\主資料夾中。電腦\\\<解決方案名稱\>.** 部署中的 env 檔案。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
+將從此 Key Vault 資源讀取設定值。 這些環境變數可以儲存在部署的** \<your home folder\> \\ . \\ \<solution name\> env**檔案中。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
 
 微服務所需的部分設定會儲存在初始部署所建立 Key Vault 的實例中。 金鑰保存庫中的對應變數應視需要修改。
 
@@ -159,11 +159,11 @@ Node.js v8 是腳本用來建立 Azure 資源之電腦 CLI 的必要條件。 �
 
 #### <a name="create-run-configurations"></a>建立執行設定
 
-1. 選取 [**執行** > **編輯**設定]。
-1. 選取 [**新增** > 設定**sbt**工作]。
+1. 選取 [**執行**  >  **編輯**設定]。
+1. 選取 [**新增**設定  >  **sbt**工作]。
 1. 輸入 [**名稱**]，然後將 [工作]**輸入為 [** **執行**]。
 1. 根據您想要執行的服務來選取**工作目錄**。
-1. 選取 [套用 **] [確定]** 以儲存您的選擇。 **Apply**  > 
+1. 選取**Apply**  >  **[套用] [確定]** 以儲存您的選擇。
 1. 建立下列 web 服務的執行設定：
     * WebService (services\config)
     * WebService (services\device-telemetry)
@@ -176,9 +176,9 @@ Node.js v8 是腳本用來建立 Azure 資源之電腦 CLI 的必要條件。 �
 
 #### <a name="create-a-compound-configuration"></a>建立複合設定
 
-1. 若要同時執行所有服務，請選取 [**新增** > 設定] [**複合**]。
+1. 若要同時執行所有服務，請選取 [**新增**設定] [  >  **複合**]。
 1. 輸入 [**名稱**]，然後選取 [**新增 sbt**工作]。
-1. 選取 [套用 **] [確定]** 以儲存您的選擇。 **Apply**  > 
+1. 選取**Apply**  >  **[套用] [確定]** 以儲存您的選擇。
 
 例如，下圖顯示如何將所有 sbt 工作新增至單一設定：
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-當 [**啟動**] 命令完成時，您的瀏覽器會在位址`http://localhost:3000/dashboard`顯示頁面。 此頁面上的錯誤一如預期。 若要在不發生錯誤的情況下查看應用程式，請完成下列步驟。
+當 [**啟動**] 命令完成時，您的瀏覽器會在位址顯示頁面 `http://localhost:3000/dashboard` 。 此頁面上的錯誤一如預期。 若要在不發生錯誤的情況下查看應用程式，請完成下列步驟。
 
 ### <a name="configure-and-run-nginx"></a>設定和執行 Nginx
 
@@ -226,7 +226,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 
-若要存取遠端監視解決方案儀表板，請`http://localhost:9000`在瀏覽器中移至。
+若要存取遠端監視解決方案儀表板，請 `http://localhost:9000` 在瀏覽器中移至。
 
 ## <a name="clean-up"></a>清除
 

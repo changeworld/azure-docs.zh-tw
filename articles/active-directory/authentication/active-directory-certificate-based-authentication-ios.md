@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144074"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上的 Azure Active Directory 憑證式驗證
@@ -73,7 +73,7 @@ ms.locfileid: "82144074"
 
 ## <a name="use-modern-authentication-with-office-apps"></a>搭配 Office 應用程式使用新式驗證
 
-某些已啟用新式驗證的 Office 應用`prompt=login`程式會在其要求中傳送至 Azure AD。 根據預設，Azure AD `prompt=login`會將對 ADFS 的要求轉譯`wauth=usernamepassworduri`為（要求 Adfs 進行 U/P 驗證）和`wfresh=0` （要求 adfs 忽略 SSO 狀態並進行全新驗證）。 如果您想要為這些應用程式啟用以憑證為基礎的驗證，請修改預設的 Azure AD 行為。
+某些已啟用新式驗證的 Office 應用程式會 `prompt=login` 在其要求中傳送至 Azure AD。 根據預設，Azure AD 會 `prompt=login` 將對 ADFS 的要求轉譯為 `wauth=usernamepassworduri` （要求 Adfs 進行 U/P 驗證）和 `wfresh=0` （要求 adfs 忽略 SSO 狀態並進行全新驗證）。 如果您想要為這些應用程式啟用以憑證為基礎的驗證，請修改預設的 Azure AD 行為。
 
 若要更新預設行為，請將同盟網域設定中的 [*PromptLoginBehavior*] 設定為 [*停用*]。 您可以使用[set-msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作，如下列範例所示：
 

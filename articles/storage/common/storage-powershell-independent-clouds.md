@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176204"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 在 Azure 獨立雲端中管理儲存體
@@ -60,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表顯示針對德國雲端傳回的位置。
 
-|Location | 顯示名稱 |
+|位置 | 顯示名稱 |
 |----|----|
 | `germanycentral` | 德國中部|
 | `germanynortheast` | 德國東北部 |

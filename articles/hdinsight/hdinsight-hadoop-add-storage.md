@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192479"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>將其他儲存體帳戶新增至 HDInsight
 
-瞭解如何使用腳本動作，將其他 Azure 儲存體*帳戶*新增至 HDInsight。 本檔中的步驟會將儲存體*帳戶*新增至現有的 HDInsight 叢集。 本文適用于儲存體*帳戶*（非預設叢集儲存體帳戶），而不是[`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md)其他儲存體（例如和[`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md)）。
+瞭解如何使用腳本動作，將其他 Azure 儲存體*帳戶*新增至 HDInsight。 本檔中的步驟會將儲存體*帳戶*新增至現有的 HDInsight 叢集。 本文適用于儲存體*帳戶*（非預設叢集儲存體帳戶），而不是其他儲存體（例如 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) 和） [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
 
 > [!IMPORTANT]  
 > 本檔中的資訊是關於在叢集建立之後，將其他儲存體帳戶新增至叢集。 如需在叢集建立期間新增儲存體帳戶的資訊，請參閱[使用 Apache Hadoop、Apache Spark、Apache Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 儲存體帳戶名稱和金鑰。 請參閱[管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)。
@@ -53,21 +53,21 @@ ms.locfileid: "82192479"
 |---|---|
 |Bash 指令碼 URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |節點類型|Head|
-|參數|`ACCOUNTNAME``ACCOUNTKEY` `-p`|
+|參數|`ACCOUNTNAME``ACCOUNTKEY` `-p` （選擇性）|
 
 * `ACCOUNTNAME`這是要新增至 HDInsight 叢集的儲存體帳戶名稱。
-* `ACCOUNTKEY`是的存取金鑰`ACCOUNTNAME`。
-* `-p` 是選擇性的。 如果指定，金鑰不會加密，而且會以純文字的形式儲存在 core-site.xml 中。
+* `ACCOUNTKEY`是的存取金鑰 `ACCOUNTNAME` 。
+* `-p` 是選擇性的。 如果指定，金鑰不會加密，而且會以純文字的形式儲存在 core-site.xml 檔案中。
 
 ## <a name="verification"></a>驗證
 
-在 Azure 入口網站中查看 HDInsight 叢集時，選取 [__屬性__] 底下的 [__儲存體帳戶__] 專案，並不會顯示透過此腳本動作新增的儲存體帳戶。 Azure PowerShell 和 Azure CLI 不會顯示其他儲存體帳戶。 因為此腳本只會修改叢集的`core-site.xml`設定，所以不會顯示儲存資訊。 使用 Azure 管理 Api 來抓取叢集資訊時，不會使用此資訊。
+在 Azure 入口網站中查看 HDInsight 叢集時，選取 [__屬性__] 底下的 [__儲存體帳戶__] 專案，並不會顯示透過此腳本動作新增的儲存體帳戶。 Azure PowerShell 和 Azure CLI 不會顯示其他儲存體帳戶。 因為此腳本只會修改叢集的設定，所以不會顯示儲存資訊 `core-site.xml` 。 使用 Azure 管理 Api 來抓取叢集資訊時，不會使用此資訊。
 
 若要確認額外的儲存體，請使用下列其中一種方法：
 
 ### <a name="powershell"></a>PowerShell
 
-腳本會傳回與指定叢集相關聯的儲存體帳戶名稱。 將`CLUSTERNAME`取代為實際的叢集名稱，然後執行腳本。
+腳本會傳回與指定叢集相關聯的儲存體帳戶名稱。 `CLUSTERNAME`將取代為實際的叢集名稱，然後執行腳本。
 
 ```powershell
 # Update values
@@ -97,9 +97,9 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 流覽至**HDFS** > **Configs** > [自訂] [**Advanced** > **Custom]-site**。
+1. 流覽至**HDFS**[自訂] [  >  **Configs**  >  **Advanced**  >  **Custom]-site**。
 
-1. 觀察開頭為`fs.azure.account.key`的索引鍵。 帳戶名稱會是金鑰的一部分，如下列範例影像所示：
+1. 觀察開頭為的索引鍵 `fs.azure.account.key` 。 帳戶名稱會是金鑰的一部分，如下列範例影像所示：
 
    ![透過 Apache Ambari 進行驗證](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
@@ -107,7 +107,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 流覽至**HDFS** > **Configs** > [自訂] [**Advanced** > **Custom]-site**。
+1. 流覽至**HDFS**[自訂] [  >  **Configs**  >  **Advanced**  >  **Custom]-site**。
 
 1. 移除下列機碼：
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`

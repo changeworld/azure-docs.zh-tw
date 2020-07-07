@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188152"
 ---
 # <a name="configure-apache-spark-settings"></a>設定 Apache Spark 設定
@@ -85,7 +85,7 @@ Apache Ambari Web UI 隨即出現，其中包含金鑰叢集資源使用計量�
 
 Spark 作業會使用背景工作角色資源 (尤其是記憶體)，因此，調整背景工作角色節點「執行程式」的 Spark 設定值，是很常見的動作。
 
-為了微調 Spark 設定以改善應用程式需求而常會調整的三個主要參數為 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 執行程式是針對 Spark 應用程式啟動的程序。 執行程式會在背景工作角色節點上執行，並負責處理應用程式的工作。 背景工作節點的數目和背景工作節點大小會決定執行程式的數目，以及執行程式的大小。 這些值會儲存在`spark-defaults.conf`叢集前端節點上的。  您可以在 Ambari web UI 中選取 [**自訂 spark-預設**]，以在執行中的叢集中編輯這些值。  在您進行變更後，UI 會提示您**重新啟動**所有受影響的服務。
+為了微調 Spark 設定以改善應用程式需求而常會調整的三個主要參數為 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 執行程式是針對 Spark 應用程式啟動的程序。 執行程式會在背景工作角色節點上執行，並負責處理應用程式的工作。 背景工作節點的數目和背景工作節點大小會決定執行程式的數目，以及執行程式的大小。 這些值會儲存在叢集前端 `spark-defaults.conf` 節點上的。  您可以在 Ambari web UI 中選取 [**自訂 spark-預設**]，以在執行中的叢集中編輯這些值。  在您進行變更後，UI 會提示您**重新啟動**所有受影響的服務。
 
 > [!NOTE]  
 > 這三個設定參數可以在叢集層級設定 (適用於在叢集執行的所有應用程式)，也可以對個別的應用程式指定。
@@ -96,13 +96,13 @@ Spark 執行程式所使用之資源的另一個相關資訊來源是 Spark 應�
 
 或者，您可以使用 Ambari REST API，以程式設計方式驗證 HDInsight 和 Spark 叢集設定。  您可以在 [GitHub 上的 Apache Ambari API 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)取得詳細資訊。
 
-根據您的 Spark 叢集工作負載，您可能會判定非預設 Spark 設定可提供最佳化程度較高的 Spark 作業執行。  使用範例工作負載進行基準測試，以驗證任何非預設的叢集設定。  您可以考慮調整某些通用參數：
+根據您的 Spark 叢集工作負載，您可能會判定非預設 Spark 設定可提供最佳化程度較高的 Spark 作業執行。  使用範例工作負載進行基準測試，以驗證任何非預設叢集設定。  您可以考慮調整某些通用參數：
 
 |參數 |描述|
 |---|---|
-|--num-執行次數|設定執行次數。|
-|--執行程式-核心|設定每個執行程式的核心數目。 建議您使用中型執行程式，因為其他程序也會耗用部分的可用記憶體。|
-|--執行程式-記憶體|控制 Apache Hadoop YARN 上每個執行程式的記憶體大小（堆積大小），而您必須保留一些記憶體以執行額外負荷。|
+|--num-executors|設定執行次數。|
+|--executor-cores|設定每個執行程式的核心數目。 建議您使用中型執行程式，因為其他程序也會耗用部分的可用記憶體。|
+|--executor-memory|控制 Apache Hadoop YARN 上每個執行程式的記憶體大小（堆積大小），而您必須保留一些記憶體以執行額外負荷。|
 
 下列範例說明兩個使用不同設定值的背景工作角色節點：
 

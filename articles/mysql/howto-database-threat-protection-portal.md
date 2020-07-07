@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509256"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure SQL 資料庫進階威脅防護
@@ -27,7 +27,7 @@ ms.locfileid: "82509256"
 > 如果適用於 MySQL 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
+1. 啟動 Azure 入口網站，網址為 [https://portal.azure.com](https://portal.azure.com) 。
 2. 瀏覽至所要保護的 適用於 MySQL 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
@@ -63,5 +63,5 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 MySQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/mysql/)  

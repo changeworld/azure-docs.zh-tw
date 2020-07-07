@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195480"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>透過 JDBC 驅動程式在 HDInsight 中查詢 Apache Hive
@@ -23,7 +23,7 @@ ms.locfileid: "82195480"
 
 如需有關 Hive JDBC 介面的詳細資訊，請參閱 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight Hadoop 叢集。 若要建立，請參閱[開始使用 Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)。 確定服務 HiveServer2 正在執行。
 * [JAVA 開發人員套件（JDK）第11版](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)或更高版本。
@@ -65,7 +65,7 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
 1. 建立目錄，以包含要從您的叢集複製的特定檔案。
 
-2. 在下列腳本中，將`sshuser`取代為叢集的 SSH 使用者帳戶名稱。  將 `CLUSTERNAME` 取代為 HDInsight 叢集名稱。  從命令列，將您的工作目錄變更為在前一個步驟中建立的目錄，然後輸入下列命令以從 HDInsight 叢集複製檔案：
+2. 在下列腳本中，將取代為叢集 `sshuser` 的 SSH 使用者帳戶名稱。  將 `CLUSTERNAME` 取代為 HDInsight 叢集名稱。  從命令列，將您的工作目錄變更為在前一個步驟中建立的目錄，然後輸入下列命令以從 HDInsight 叢集複製檔案：
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -94,7 +94,7 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
    選取 **[確定]** 以儲存這些設定。
 
-6. 在 SQuirreL SQL 視窗的左側選取 [別名]****。 然後選取**+** 圖示以建立連接別名。
+6. 在 SQuirreL SQL 視窗的左側選取 [別名]****。 然後選取 **+** 圖示以建立連接別名。
 
     ![[SQuirreL SQL 加入新別名] 對話方塊](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
@@ -129,7 +129,7 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
 ## <a name="connect-from-an-example-java-application"></a>從範例 Java 應用程式連接
 
-如需在[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)HDInsight 上使用 JAVA 用戶端來查詢 Hive 的範例，請前往。 遵循儲存機制中的指示建置和執行範例。
+如需在 HDInsight 上使用 JAVA 用戶端來查詢 Hive 的範例，請前往 [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) 。 遵循儲存機制中的指示建置和執行範例。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -147,7 +147,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **解決**方式：若要修正此錯誤，請使用下列步驟：
 
-1. 結束 SQuirreL，然後移至您的系統上安裝 SQuirreL 的目錄，也許`C:\Program Files\squirrel-sql-4.0.0\lib`是。 在 SquirreL 目錄的 `lib` 目錄下，使用從 HDInsight 叢集下載的版本來取代現有的 commons-codec.jar。
+1. 結束 SQuirreL，然後移至您的系統上安裝 SQuirreL 的目錄，也許是 `C:\Program Files\squirrel-sql-4.0.0\lib` 。 在 SquirreL 目錄的 `lib` 目錄下，使用從 HDInsight 叢集下載的版本來取代現有的 commons-codec.jar。
 
 1. 重新啟動 SQuirreL。 連接到 HDInsight 上的 Hive 時應該不會再出現此錯誤。
 
@@ -169,4 +169,4 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 * [使用 Power Query 將 Excel 連線到 Apache Hadoop](apache-hadoop-connect-excel-power-query.md)。
 * [搭配 HDInsight 使用 Apache Hive](hdinsight-use-hive.md)
 * [搭配 HDInsight 使用 Apache Pig](../use-pig.md)
-* [搭配 HDInsight 使用 MapReduce 作業](hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)

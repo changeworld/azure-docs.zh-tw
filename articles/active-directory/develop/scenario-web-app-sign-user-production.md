@@ -12,10 +12,10 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181625"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>登入使用者的 Web 應用程式：移至生產環境
@@ -64,7 +64,7 @@ Microsoft. Identity. Web NuGet 套件會處理最常見的 SameSite 問題。
 - 多個組織
 - 公司或學校帳戶，或個人 Microsoft 帳戶
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- 國家/地區雲端
+- 國家雲端
 
 ## <a name="sample-code-java-web-app"></a>範例程式碼： JAVA web 應用程式
 
