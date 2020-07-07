@@ -1,21 +1,25 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ab717e4246112152b9a497c51d2a630bc48dfd1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709347"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313777"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
 此頁面是 Azure 原則內建原則定義的索引。
 
 Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+
+## <a name="api-for-fhir"></a>API for FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
 
 ## <a name="api-management"></a>API 管理
 
