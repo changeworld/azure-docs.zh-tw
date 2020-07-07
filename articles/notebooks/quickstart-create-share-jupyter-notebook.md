@@ -4,14 +4,16 @@ description: 在 Azure Notebooks 預覽上快速建立和執行 Jupyter Notebook
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561083"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832095"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中建立和共用 Notebook
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在本快速入門中，您會在 Azure Notebooks 上建立和執行 Jupyter Notebook，並與他人共用該 Notebook。 Jupyter 可讓您輕鬆地將 Markdown 文字、可執行檔程式碼、持續性資料、圖形和視覺效果合併在一個可共用的畫布上 (也就是 Notebook)。 Azure Notebooks 是免費的裝載服務，無需任何安裝程序，就能用來在雲端中開發和執行 Jupyter Notebooks。
 
@@ -19,8 +21,6 @@ ms.locfileid: "84561083"
 無。
 
 ## <a name="create-a-new-project-and-notebook"></a>建立新的專案和 Notebook
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. 移至 [Azure Notebooks 網站 (https://notebooks.azure.com)](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 

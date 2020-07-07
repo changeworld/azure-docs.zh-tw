@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830344"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>使用重新導向 URI 搭配適用於 iOS 和 macOS 的 Microsoft 驗證程式庫
 
@@ -40,10 +40,12 @@ Microsoft 驗證程式庫 (MSAL) 要求以特定格式向 Azure AD 應用程式�
 
 假設在 Azure 入口網站中進行下列應用程式註冊：
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* 用戶端識別碼： `ABCDE-12345` （這是單一用戶端識別碼）
+* RedirectUris： `msauth.com.contoso.app1://auth` 、 `msauth.com.contoso.app2://auth` 、`msauth.com.contoso.app3://auth`
 
-App1 使用重新導向 `msauth.com.contoso.app1://auth` App2 使用 `msauth.com.contoso.app2://auth` App3 使用 `msauth.com.contoso.app1://auth`
+App1 使用 [重新導向] `msauth.com.contoso.app1://auth` \
+App2 使用 `msauth.com.contoso.app2://auth` . \
+App3 會使用 `msauth.com.contoso.app1://auth` 。
 
 ### <a name="migrating-from-adal-to-msal"></a>從 ADAL 遷移至 MSAL
 
@@ -70,7 +72,6 @@ App1 使用重新導向 `msauth.com.contoso.app1://auth` App2 使用 `msauth.com
         </dict>
     </array>
     ```
-    
 
 MSAL 會驗證您的重新導向 URI 是否正確註冊，如果為否，則會傳回錯誤。
     

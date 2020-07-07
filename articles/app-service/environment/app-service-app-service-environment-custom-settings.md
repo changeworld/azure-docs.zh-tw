@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057574"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833497"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service 環境的自訂組態設定
 ## <a name="overview"></a>概觀
@@ -24,23 +24,25 @@ ms.locfileid: "80057574"
 
 下列縮寫的 Resource Manager 範本程式碼片段顯示 **clusterSettings** 屬性︰
 
-    "resources": [
-    {
-       "apiVersion": "2015-08-01",
-       "type": "Microsoft.Web/hostingEnvironments",
-       "name": ...,
-       "location": ...,
-       "properties": {
-          "clusterSettings": [
-             {
-                 "name": "nameOfCustomSetting",
-                 "value": "valueOfCustomSetting"
-             }
-          ],
-          "workerPools": [ ...],
-          etc...
-       }
+```json
+"resources": [
+{
+    "apiVersion": "2015-08-01",
+    "type": "Microsoft.Web/hostingEnvironments",
+    "name": ...,
+    "location": ...,
+    "properties": {
+        "clusterSettings": [
+            {
+                "name": "nameOfCustomSetting",
+                "value": "valueOfCustomSetting"
+            }
+        ],
+        "workerPools": [ ...],
+        etc...
     }
+}
+```
 
 **clusterSettings** 屬性可以包含在 Resource Manager 範本中，以更新 App Service 環境。
 
@@ -61,13 +63,15 @@ ms.locfileid: "80057574"
 
 App Service 環境會以黑箱系統的方式運作，您看不到內部元件或系統內的通訊。 若要達到更高的輸送量，內部元件之間預設不會啟用加密。 系統是安全的，因為流量完全無法存取，而無法進行監視或存取。 如果您有需要從端對端完整加密資料路徑的合規性需求，可以透過 clusterSetting 達成此需求。  
 
-        "clusterSettings": [
-            {
-                "name": "InternalEncryption",
-                "value": "1"
-            }
-        ],
- 
+```json
+"clusterSettings": [
+    {
+        "name": "InternalEncryption",
+        "value": "1"
+    }
+],
+```
+
 啟用 InternalEncryption clusterSetting 之後，可能會對系統效能造成影響。 當您進行變更以啟用 InternalEncryption 時，您的 ASE 將會處於不穩定的狀態，直到變更完全傳播為止。 視您的 ASE 中有多少執行個體而定，變更的完整傳播可能需要幾小時才能完成。 強烈建議您不要在使用中的 ASE 上啟用此功能。 如果您需要在主動使用的 ASE 上啟用此功能，強烈建議您將流量轉向備份環境，直到作業完成為止。 
 
 ## <a name="disable-tls-10-and-tls-11"></a>停用 TLS 1.0 和 TLS 1.1
@@ -76,29 +80,31 @@ App Service 環境會以黑箱系統的方式運作，您看不到內部元件�
 
 如果您想要停用 ASE 中所有應用程式的所有輸入 TLS 1.0 和 TLS 1.1 流量，您可以設定下列 **clusterSettings** 項目：
 
-        "clusterSettings": [
-            {
-                "name": "DisableTls1.0",
-                "value": "1"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "DisableTls1.0",
+        "value": "1"
+    }
+],
+```
 
 設定的名稱指出 1.0，但若已設定，它會同時停用 TLS 1.0 與 TLS 1.1。
 
 ## <a name="change-tls-cipher-suite-order"></a>變更 TLS 加密套件順序
 來自客戶的另一個問題是，他們是否可以修改由其伺服器交涉的加密的清單，而這可透過修改 **clusterSettings** 來達成，如下所示。 您可以從[此 MSDN 文章](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)擷取可用加密套件的清單。
 
-        "clusterSettings": [
-            {
-                "name": "FrontEndSSLCipherSuiteOrder",
-                "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "FrontEndSSLCipherSuiteOrder",
+        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+    }
+],
+```
 
 > [!WARNING]
 > 如果對安全通道無法了解的加密套件設定了不正確的值，對您的伺服器的所有 TLS 通訊可能會停止運作。 在這種情況下，您必須從 **clusterSettings** 移除 FrontEndSSLCipherSuiteOrder 項目，並提交更新的 Resource Manager 範本以還原回預設的加密套件設定。  請謹慎使用這項功能。
-> 
-> 
 
 ## <a name="get-started"></a>開始使用
 Azure 快速入門 Resource Manager 範本網站包含具有 [建立 App Service 環境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定義的範本。

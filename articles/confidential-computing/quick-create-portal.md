@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 49824b324df044ae2883ab6844dd321be27cbcbf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3cf772fb10ee41887d76976b30e9bebaba51a2f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82150353"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830463"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中部署 Azure 機密運算 VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "82150353"
 如果您想要使用自訂組態來部署機密運算虛擬機器，建議您使用本教學課程。 否則，我們建議您遵循 [Microsoft 商業市集的機密運算虛擬機器部署步驟](quick-create-marketplace.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)再開始。
 
@@ -34,22 +34,22 @@ ms.locfileid: "82150353"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在頂端選取 [建立資源]  。
+1. 在頂端選取 [建立資源]。
 
-1. 在 [Marketplace]  窗格中，選取左側的 [計算]  。
+1. 在 [Marketplace] 窗格中，選取左側的 [計算]。
 
-1. 尋找並選取 [虛擬機器]  。
+1. 尋找並選取 [虛擬機器]。
 
     ![部署 VM](media/quick-create-portal/compute-virtual-machine.png)
 
-1. 在虛擬機器登陸頁面上，選取 [建立]  。
+1. 在虛擬機器登陸頁面上，選取 [建立]。
 
 
 ## <a name="configure-a-confidential-computing-virtual-machine"></a>設定機密運算虛擬機器
 
-1. 在 [基本]  索引標籤中，選取您的 [訂用帳戶]  和 [資源群組]  。
+1. 在 [基本] 索引標籤中，選取您的 [訂用帳戶] 和 [資源群組]。
 
-1. 針對 [虛擬機器名稱]  ，輸入新 VM 的名稱。
+1. 針對 [虛擬機器名稱]，輸入新 VM 的名稱。
 
 1. 輸入或選取下列值：
 
@@ -62,7 +62,7 @@ ms.locfileid: "82150353"
 
     * **選擇影像**：在本教學課程中，請選取 Ubuntu 18.04 LTS。 您也可以選取 Windows Server 2019、Windows Server 2016 或 Ubuntu 16.04 LTS。 如果您選擇這麼做，本教學課程會據此將您重新導向。
     
-    * **切換 Gen 2 的映像**：機密運算虛擬機器只會在 [Gen 2](../virtual-machines/linux/generation-2.md) 映像上執行。 確保您選取的映像是 Gen 2 映像。 按一下您要在其上設定虛擬機器的 [進階]  索引標籤。 向下捲動，直到您找到標示為「VM 世代」的區段為止。 選取 [Gen 2]，然後回到 [基本資料]  索引標籤。
+    * **切換 Gen 2 的映像**：機密運算虛擬機器只會在 [Gen 2](../virtual-machines/linux/generation-2.md) 映像上執行。 確保您選取的映像是 Gen 2 映像。 按一下您要在其上設定虛擬機器的 [進階] 索引標籤。 向下捲動，直到您找到標示為「VM 世代」的區段為止。 選取 [Gen 2]，然後回到 [基本資料] 索引標籤。
     
 
         ![進階索引標籤](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -70,9 +70,9 @@ ms.locfileid: "82150353"
 
         ![VM 世代](media/quick-create-portal/gen2-virtual-machine.png)
 
-    * **返回基本設定**：使用頂端的導覽，回到 [基本資料]  索引標籤。
+    * **返回基本設定**：使用頂端的導覽，回到 [基本資料] 索引標籤。
 
-1. 選擇 [變更大小]  ，以在大小選取器中選擇具有機密運算功能的虛擬機器。 在 [虛擬機器大小] 選取器中，按一下 [清除所有篩選條件]  。 選擇 [新增篩選條件]  ，針對篩選類型選取 [系列]  ，然後只選取 [機密運算]  。
+1. 選擇 [變更大小]，以在大小選取器中選擇具有機密運算功能的虛擬機器。 在 [虛擬機器大小] 選取器中，按一下 [清除所有篩選條件]。 選擇 [新增篩選條件]，針對篩選類型選取 [系列]，然後只選取 [機密運算]。
 
     ![DCsv2 系列 VM](media/quick-create-portal/dcsv2-virtual-machines.png)
 
@@ -81,10 +81,10 @@ ms.locfileid: "82150353"
 
 1. 填寫下列資訊︰
 
-   * **驗證類型**：如果您要建立 Linux VM，請選取 [SSH 公開金鑰]  。 
+   * **驗證類型**：如果您要建立 Linux VM，請選取 [SSH 公開金鑰]。 
 
         > [!NOTE]
-         > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+        > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
     * **使用者名稱**：輸入 VM 的系統管理員名稱。
 
@@ -92,15 +92,15 @@ ms.locfileid: "82150353"
     
     * **密碼**：如果適用的話，請輸入您的密碼進行驗證。
 
-    * **公用輸入連接埠**：選擇 [允許選取的連接埠]  ，然後選取 [選取公用輸入連接埠]  清單中的 [SSH (22)]  和 [HTTP (80)]  。 如果您要部署 Windows VM，請選取 [HTTP (80)]  和 [RDP (3389)]  。 在本快速入門中，必須執行此步驟，才能連線至 VM 並完成 Open Enclave SDK 設定。 
+    * **公用輸入連接埠**：選擇 [允許選取的連接埠]，然後選取 [選取公用輸入連接埠] 清單中的 [SSH (22)] 和 [HTTP (80)]。 如果您要部署 Windows VM，請選取 [HTTP (80)] 和 [RDP (3389)]。 在本快速入門中，必須執行此步驟，才能連線至 VM 並完成 Open Enclave SDK 設定。 
 
      ![輸入連接埠](media/quick-create-portal/inbound-port-virtual-machine.png)
 
 
-1. 在 [磁碟]  索引標籤中進行變更。
+1. 在 [磁碟] 索引標籤中進行變更。
 
-   * 如果您選擇 **DC1s_v2**、**DC2s_v2**、**DC4s_V2** 虛擬機器，請選擇 [標準 SSD]  或 [進階 SSD]  磁碟類型。 
-   * 如果您選擇 **DC8_v2** 虛擬機器，請選擇 [標準 SSD]  作為您的磁碟類型。
+   * 如果您選擇 **DC1s_v2**、**DC2s_v2**、**DC4s_V2** 虛擬機器，請選擇 [標準 SSD] 或 [進階 SSD]磁碟類型。 
+   * 如果您選擇 **DC8_v2** 虛擬機器，請選擇 [標準 SSD] 作為您的磁碟類型。
 
 1. 對下列索引標籤中的設定進行您想要的任何變更，或保留預設設定。
 
@@ -109,9 +109,9 @@ ms.locfileid: "82150353"
     * **客體設定**
     * **Tags** (標籤)
 
-1. 選取 [檢閱 + 建立]  。
+1. 選取 [檢閱 + 建立]。
 
-1. 在 [檢閱 + 建立]  窗格中，選取 [建立]  。
+1. 在 [檢閱 + 建立] 窗格中，選取 [建立]。
 
 > [!NOTE]
 > 如果您已部署 Linux VM，請繼續下一節並繼續進行本教學課程。 如果您已部署 Windows VM，請[遵循這些步驟來連線到您的 Windows VM](../virtual-machines/windows/connect-logon.md)，然後 [在 Windows 上安裝 OE SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)。
@@ -127,8 +127,7 @@ ssh azureadmin@40.55.55.555
 
 您可以在 Azure 入口網站中虛擬機器的 [概觀] 區段下，尋找 VM 的公用 IP 位址。
 
-[!div class="mx-imgBorder"]
-![Azure 入口網站中的 IP 位址](media/quick-create-portal/public-ip-virtual-machine.png)
+:::image type="content" source="media/quick-create-portal/public-ip-virtual-machine.png" alt-text="Azure 入口網站中的 IP 位址":::
 
 如果您是在 Windows 上執行且沒有 BASH 殼層，請安裝 SSH 用戶端，例如 PuTTY。
 
@@ -138,12 +137,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 [PuTTY 組態] 畫面上，輸入您 VM 的公用 IP 位址。
 
-1. 選取 [開啟]  ，並在提示時輸入您的使用者名稱和密碼。
+1. 選取 [開啟]，並在提示時輸入您的使用者名稱和密碼。
 
 如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是]  以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]  。 如果您不信任此主機，請選取 [取消]  以放棄連線。
+> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消] 以放棄連線。
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安裝 Open Enclave SDK (OE SDK) <a id="Install"></a>
 
@@ -194,7 +193,7 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 
 
-請選取虛擬機器的資源群組，然後選取 [刪除]  。 確認要完成資源刪除作業的資源群組名稱。
+請選取虛擬機器的資源群組，然後選取 [刪除]。 確認要完成資源刪除作業的資源群組名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

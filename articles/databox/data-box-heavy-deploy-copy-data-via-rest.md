@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80297217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849415"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
@@ -92,7 +92,7 @@ ms.locfileid: "80297217"
 
 1. 登入 Azure 入口網站。
 2. 移至您的資料箱訂單，並巡覽至 [一般] > [裝置詳細資料]  。
-3. 在 [裝置認證]  下方，移至 [裝置的 API 存取]  。 按一下 [下載]  。 此動作會下載 **\<您的訂單號碼>.cer** 憑證檔案。 **儲存**這個檔案。 您會將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
+3. 在 [裝置認證]  下方，移至 [裝置的 API 存取]  。 按一下 [下載]  。 此動作會下載 **\<your order name>.cer** 憑證檔案。 **儲存**這個檔案。 您會將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
 
     ![在 Azure 入口網站下載憑證](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -197,16 +197,19 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 使用您的帳戶金鑰來取代 `<key>`。 若要取得帳戶金鑰，在 Azure 入口網站中，移至您的儲存體帳戶。 移至 [設定] > [存取金鑰]  、選取金鑰，並將它貼到 AzCopy 命令中。
 
@@ -221,16 +224,21 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 如果您只想複製目的地中不存在的來源資源，請在 AzCopy 命令中同時指定 `--exclude-older` 和 `--exclude-newer` (Linux) 或 `/XO` 和 `/XN` (Windows) 參數。 AzCopy 只會上傳已更新的資料 (根據其時間戳記)。
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 如果在連線或複製作業期間發生任何錯誤，請參閱[針對資料箱 Blob 儲存體問題進行疑難排解](data-box-troubleshoot-rest.md)。
 

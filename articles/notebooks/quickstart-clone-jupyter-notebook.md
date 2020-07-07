@@ -3,14 +3,16 @@ title: 使用 Azure Notebooks 預覽從 GitHub 複製 Jupyter Notebook
 description: 從 GitHub 存放庫中快速複製 Jupyter 筆記本，並在您的 Azure Notebooks 帳戶中執行。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064592"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833081"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中複製 Notebook
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在本快速入門中，您會將儲存在 GitHub 中的 Jupyter Notebook 複製到 Azure Notebooks 帳戶。 
 
@@ -22,8 +24,6 @@ GitHub 存放庫提供 Jupyter Notebook 的儲存體和版本控制。 共同作
 無。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>複製 Azure 認知服務筆記本
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 

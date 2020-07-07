@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856531"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -310,11 +310,16 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
 1. 若要使用 .NET Core CLI 來建置應用程式，請在命令殼層中執行下列命令：
 
+```console
         dotnet build
+```
 
 1. 建置成功完成後，請執行下列命令以在本機執行 Web 應用程式：
 
+```console
         dotnet run
+```
+
 1. 開啟瀏覽器視窗，然後移至 `dotnet run` 輸出中所顯示的 URL。
 
     ![在本機啟動快速入門應用程式](./media/quickstarts/aspnet-core-app-launch-local-before.png)

@@ -11,6 +11,7 @@
         - name: Azure 入口網站
           href: alerts-activity-log-service-notifications-portal.md
         - name: ARM 範本
+          displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:

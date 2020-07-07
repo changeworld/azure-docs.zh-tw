@@ -7,12 +7,12 @@ ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 38efc86d1bdc185f39d3ea502a64d0f3cf7edcc0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 1befd0cc85044097a64b5988e6f763ce89ca3ec9
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849717"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>建立 Cloudyn 的支援要求
 
@@ -38,7 +38,7 @@ ms.locfileid: "80408255"
 
 如果您想要針對成本管理建立帳單支援票證，請在 [問題類型]  下方，選取 [Azure 成本管理]  。
 
-若要查看已歸檔事件的狀態，請參閱[所有支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests)。
+若要查看已歸檔事件的狀態，請參閱[所有支援要求](../../azure-portal/supportability/how-to-manage-azure-support-request.md#view-support-requests)。
 
 如果您是沒有 Azure 帳戶的舊版 Cloudyn 使用者，您可以在 https://support.microsoft.com/oas/default.aspx?prid=16451 上開啟支援要求。
 

@@ -62,6 +62,10 @@
       href: ethereum-logic-app.md
     - name: 監視 Azure 區塊鏈服務
       href: monitor-azure-blockchain-service.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blockchain/blockchain
 - name: 資源
   items:
     - name: Azure 區塊鏈開發套件

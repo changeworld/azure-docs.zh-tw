@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 025b2b66ffd6d9f62de6bf6debf7d4067cd52ab4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 18afd9faf21e5de4831d54d0870b64e79d29cb0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261234"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833294"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob
 
@@ -71,9 +71,9 @@ ms.locfileid: "85261234"
         }
     }
     ```
-    
+
     如有需要，您可以將自己的姓名放在 `author` 欄位中。
-   
+
 ### <a name="install-the-package"></a>安裝套件
 
 若您仍在 *blob-quickstart-v12* 目錄中，請使用 `npm install` 命令安裝適用於 JavaScript 套件的 Azure Blob 儲存體用戶端程式庫。 此命令會讀取 *package.json* 檔案，並安裝適用於 JavaScript 套件的 Azure Blob 儲存體用戶端程式庫 v12，以及它所相依的所有程式庫。
@@ -95,12 +95,12 @@ npm install
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
     const uuidv1 = require('uuid/v1');
-    
+
     async function main() {
         console.log('Azure Blob storage v12 - JavaScript quickstart sample');
         // Quick start code goes here
     }
-    
+
     main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
     ```
 
@@ -309,7 +309,7 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文件](/azure/javascript/)
+> [Azure for JavaScript 文件](/azure/developer/javascript/)
 
 * 若要深入了解，請參閱[適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
 * 若要查看 Blob 儲存體範例應用程式，請繼續執行 [Azure Blob 儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
