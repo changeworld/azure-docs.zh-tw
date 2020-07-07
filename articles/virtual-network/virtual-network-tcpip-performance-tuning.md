@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297775"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>適用于 Azure Vm 的 TCP/IP 效能微調
@@ -60,7 +60,7 @@ ms.locfileid: "68297775"
 
 一般來說，您可以藉由增加 MTU 來建立更有效率的網路。 傳輸的每個封包都有新增至原始封包的標頭資訊。 當片段建立更多封包時，會有更多的標頭額外負荷，讓網路的效率更低。
 
-範例如下。 Ethernet 標頭大小為14個位元組，加上4個位元組的框架檢查順序，以確保框架的一致性。 如果傳送 1 2000 位元組封包，網路上會新增18個位元組的 Ethernet 額外負荷。 如果封包分成1500位元組封包和500位元組封包，則每個封包都會有18個位元組的 Ethernet 標頭，總共36個位元組。
+以下是範例。 Ethernet 標頭大小為14個位元組，加上4個位元組的框架檢查順序，以確保框架的一致性。 如果傳送 1 2000 位元組封包，網路上會新增18個位元組的 Ethernet 額外負荷。 如果封包分成1500位元組封包和500位元組封包，則每個封包都會有18個位元組的 Ethernet 標頭，總共36個位元組。
 
 請記住，增加 MTU 並不一定會建立更有效率的網路。 如果應用程式只傳送500位元組封包，則不論 MTU 是1500位元組或9000位元組，都將會有相同的標頭額外負荷。 只有當網路使用的封包大小受到 MTU 的影響時，才會變得更有效率。
 
@@ -127,7 +127,7 @@ PMTUD 程式沒有效率，而且會影響網路效能。 傳送封包超過網�
 
 | | | | |
 |-|-|-|-|
-|**路由**|**Distance**|**單向時間**|**RTT**|
+|**路由**|**距離**|**單向時間**|**RTT**|
 |紐約至三藩市|4148公里|21毫秒|42毫秒|
 |紐約到倫敦|5585公里|28毫秒|56毫秒|
 |紐約至悉尼|15993公里|80毫秒|160毫秒|
@@ -201,29 +201,29 @@ TCP 視窗調整是一種技術，可動態增加 TCP 視窗大小，以允許�
 
 #### <a name="support-for-tcp-window-scaling"></a>TCP 視窗調整的支援
 
-Windows 可以針對不同的連線類型設定不同的縮放比例。 （連接的類別包括資料中心、網際網路等等）。您可以使用`Get-NetTCPConnection` PowerShell 命令來查看視窗調整連線類型：
+Windows 可以針對不同的連線類型設定不同的縮放比例。 （連接的類別包括資料中心、網際網路等等）。您可以使用 `Get-NetTCPConnection` PowerShell 命令來查看視窗調整連線類型：
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-您可以使用`Get-NetTCPSetting` PowerShell 命令來查看每個類別的值：
+您可以使用 `Get-NetTCPSetting` PowerShell 命令來查看每個類別的值：
 
 ```powershell
 Get-NetTCPSetting
 ```
 
-您可以使用`Set-NetTCPSetting` PowerShell 命令，在 Windows 中設定初始 tcp 視窗大小和 tcp 調整因數。 如需詳細資訊，請參閱[NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps)。
+您可以使用 PowerShell 命令，在 Windows 中設定初始 TCP 視窗大小和 TCP 調整因數 `Set-NetTCPSetting` 。 如需詳細資訊，請參閱[NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps)。
 
 ```powershell
 Set-NetTCPSetting
 ```
 
-以下是的有效 TCP 設定`AutoTuningLevel`：
+以下是的有效 TCP 設定 `AutoTuningLevel` ：
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**調整因數**|**縮放乘數**|**計算視窗<br/>大小上限的公式**|
+|**AutoTuningLevel**|**調整因數**|**縮放乘數**|**<br/>計算視窗大小上限的公式**|
 |停用|None|None|視窗大小|
 |Restricted|4|2 ^ 4|視窗大小 * （2 ^ 4）|
 |高度限制|2|2 ^ 2|視窗大小 * （2 ^ 2）|
@@ -359,7 +359,7 @@ NTttcp 是用來測試 Linux 或 Windows VM 之 TCP 效能的工具。 您可以
 
 您可以使用稱為 iPerf 的工具來測試不同 VM 類型、加速網路等的效能。 iPerf 也可在 Linux 和 Windows 上取得。 iPerf 可以使用 TCP 或 UDP 來測試整體網路輸送量。 iPerf TCP 輸送量測試會受到本文中討論的因素（例如延遲和 RTT）所影響。 因此，如果您只想要測試最大輸送量，UDP 可能會產生較好的結果。
 
-如需詳細資訊，請參閱這些文章：
+如需詳細資訊，請參閱下列文章：
 
 - [針對 Expressroute 網路效能進行疑難排解](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 

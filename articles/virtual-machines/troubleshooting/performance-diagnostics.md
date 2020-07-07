@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080607"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虛擬機器的效能診斷
@@ -37,10 +37,10 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [`*`]，7.3，7.6，7.5 （Oracle-資料庫-Ee 13.8 marketplace 映射），CentOS 6.5 [`*`]，7.6，RHEL 7.2，7.5，8.0 [`*`]，Ubuntu 14.04，16.04，18.04，Debian 8，9，10 [`*`]，SLES 12 SP4 [`*`]
+Oracle Linux Server 6.10 [ `*` ]，7.3，7.6，7.5 （Oracle-資料庫-Ee 13.8 marketplace 映射），CentOS 6.5 [ `*` ]，7.6，RHEL 7.2，7.5，8.0 [ `*` ]，Ubuntu 14.04，16.04，18.04，Debian 8，9，10 [ `*` ]，SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] 請參閱[已知問題](how-to-use-perfinsights-linux.md#known-issues)
+>[ `*` ] 請參閱[已知問題](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在您的 VM 上安裝並執行效能診斷
 
@@ -86,7 +86,7 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
     包括效能分析中的所有檢查，並擷取網路追蹤和 SMB 計數器。 使用此案例可針對 Azure 檔案服務效能進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] 只有在 Windows 上才支援這些分析案例。
+>[ `*` ] 只有在 Windows 上才支援這些分析案例。
 
 ![[效能診斷] 刀鋒視窗中的 [執行診斷] 窗格螢幕擷取畫面](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 分析完成之後，會將下列項目上傳至 Azure 資料表，以及指定儲存體帳戶中的二進位大型物件 (BLOB) 容器：
 
 * 關於執行的所有見解及相關資訊
-* Windows 上的輸出壓縮（.zip）檔案（名為**PerformanceDiagnostics_yyyy-mm-dd_hh-mm-ss-fff** ），以及包含記錄檔之 Linux 上的 tar 球檔案（名為**PerformanceDiagnostics_yyyy-mm-dd_hh-mm-ss-fff. gz** ）
+* 在 Windows 上的輸出壓縮（.zip）檔案（名為**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ）和包含記錄檔的 Linux 上的 tar 球檔案（名為**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff. gz** ）
 * HTML 報告
 
 上傳之後，Azure 入口網站中會列出新的診斷報告。
@@ -201,4 +201,4 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 檢閱效能診斷見解和報告之後，如果您仍無法判斷問題的原因並需要更多協助，您可以開啟與 Microsoft 客戶支援的支援票證。
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。

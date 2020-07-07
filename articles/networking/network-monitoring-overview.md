@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67672185"
 ---
 # <a name="network-monitoring-solutions"></a>網路監視解決方案 
@@ -73,7 +73,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 如需詳細資訊，請參閱下列文章：
 
 * [設定 ExpressRoute 的網路效能監控](../expressroute/how-to-npm.md)
-* [Blog 文章](https://aka.ms/NPMExRmonitorGA)
+* [部落格文章](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -89,7 +89,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 如需詳細資訊，請參閱下列文章：
 
 * [設定網路效能監控來監視服務端點](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [Blog 文章](https://aka.ms/svcendptmonitor)
+* [部落格文章](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>流量分析
 流量分析是一項雲端式解決方案，可顯示雲端網路上的使用者和應用程式活動。 系統會分析 NSG 流量記錄，讓您深入了解：

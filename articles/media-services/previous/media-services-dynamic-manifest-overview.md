@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015857"
 ---
 # <a name="filters-and-dynamic-manifests"></a>篩選器與動態資訊清單
@@ -31,7 +31,7 @@ ms.locfileid: "69015857"
 
 本主題探討使用篩選器會對您客戶有幫助的常見案例，並提供主題連結以示範如何以程式設計方式建立篩選器。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 當您將內容傳遞給客戶時 (串流即時事件或點播視訊)，您的目標是要在不同的網路條件下將高品質的視訊傳遞給各種裝置。 若要達成此目標，請執行下列動作：
 
 * 將您的資料流編碼成多位元速率 ([彈性位元速率](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) 視訊串流 (這會處理品質與網路條件)，並 
@@ -98,7 +98,7 @@ ms.locfileid: "69015857"
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>篩選器
+### <a name="filters"></a><a id="filters"></a>篩選條件
 資產篩選器有兩種： 
 
 * 全域篩選器 (可以套用到 Azure 媒體服務帳戶中所有的資產，擁有帳戶的存留期間) 和 

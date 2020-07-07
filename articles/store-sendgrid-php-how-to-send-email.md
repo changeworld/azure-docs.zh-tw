@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67870919"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何透過 PHP 使用 SendGrid 電子郵件服務
@@ -37,7 +37,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 * 轉寄客戶查詢
 * 透過電子郵件從您的應用程式傳送通知
 
-如需詳細資訊， [https://sendgrid.com][https://sendgrid.com]請參閱。
+如需詳細資訊，請參閱 [https://sendgrid.com][https://sendgrid.com]。
 
 ## <a name="create-a-sendgrid-account"></a>建立 SendGrid 帳戶
 

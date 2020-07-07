@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109322"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>判斷混合式身分識別生命週期採用策略
@@ -36,7 +36,7 @@ ms.locfileid: "67109322"
 
 複雜 IT 企業中的帳戶包含數百個參數來定義授權，這些詳細資料可由佈建系統控制。 使用您從授權來源從提供的資料，可以識別新的使用者。 存取要求核准功能會啟始處理程序來核准 (或拒絕) 佈建資源給他們。
 
-| 生命週期管理階段 | 內部部署 | 雲端 | 混合式 |
+| 生命週期管理階段 | 內部部署 | Cloud | 混合 |
 | --- | --- | --- | --- |
 | 帳戶管理和佈建 |您可以利用 Active Directory ® 網域服務 (AD DS) 伺服器角色，建立可擴充、安全且容易管理的基礎結構來管理使用者與資源，並支援 Microsoft® Exchange Server 等具有目錄功能的應用程式。 <br><br> [您可以透過身分識別管理員在 AD DS 中佈建群組](https://technet.microsoft.com/library/ff686261.aspx) <br>[您可以在 AD DS 中布建使用者](https://technet.microsoft.com/library/ff686263.aspx) <br><br>  基於安全性考量，系統管理員可以使用存取控制來管理使用者對共用資源的存取權。 在 Active Directory 中，存取控制的管理方式是在物件層級設定物件的不同存取層級 (或權限)，例如完全控制、寫入、讀取或沒有存取權。 Active Directory 中的存取控制定義不同的使用者如何使用 Active Directory 物件。 根據預設，Active Directory 中的物件權限會設定為最安全的設定。 |您必須為每一個會存取 Microsoft 雲端服務的使用者建立帳戶。 您也可以變更使用者帳戶，或在已不需要時將它們刪除。 根據預設，使用者沒有系統管理員權限，但是您可以選擇性地指派給他們。 <br><br>  Azure Active Directory 的其中一項主要功能是管理對資源的存取權。 這些資源可以是目錄的一部分，例如透過目錄中的角色或目錄外部的資源 (例如 SaaS 應用程式、Azure 服務以及 SharePoint 網站或內部部署資源) 管理物件的權限。 <br><br>  Azure Active Directory 的存取管理解決方案以安全性群組為核心。 資源擁有者 (或目錄的系統管理員) 可以指派群組，對所擁有的資源提供特定的存取權限。 群組的成員會取得存取權，而資源擁有者可以將管理群組成員清單的權限委派給其他人 – 例如部門經理或服務台系統管理員<br> <br> ＜在 Azure AD 中管理群組＞一節中提供有關透過群組來管理存取權的詳細資訊。 |透過同步處理與同盟將 Active Directory 身分識別延伸至雲端 |
 

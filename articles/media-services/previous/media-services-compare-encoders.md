@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016646"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較  
@@ -44,7 +44,7 @@ ms.locfileid: "69016646"
 |多重音訊語言曲目|限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每個編碼器所使用的計費計量表
-| 媒體處理器名稱 | 適用的價格 | 注意 |
+| 媒體處理器名稱 | 適用的價格 | 備忘稿 |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |在 ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
 | **媒體編碼器高階工作流程** |PREMIUM ENCODER |在 PREMIUM ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |

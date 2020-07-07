@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637214"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>如何在 Java 中透過 Twilio 使用語音和簡訊功能
@@ -28,7 +28,7 @@ Twilio 是一種電話語音 Web 服務 API，能夠讓您使用現有的 Web �
 **Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio SMS** 可以讓您的應用程式撰寫和接收 SMS 訊息。 **Twilio Client** 可以讓您的應用程式在現有網際網路連線 (包括行動連線) 中啟用語音通訊。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定價和特別供應項目
-[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 若要註冊此供應專案或取得詳細資訊，請造訪[https://ahoy.twilio.com/azure][special_offer]。
+[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 若要註冊此供應專案或取得詳細資訊，請造訪 [https://ahoy.twilio.com/azure][special_offer] 。
 
 ## <a name="concepts"></a><a id="Concepts"></a>概念
 Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。 用戶端程式庫有多種語言版本，相關清單請參閱 [Twilio API 程式庫][twilio_libraries]。
@@ -36,21 +36,21 @@ Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。
 Twilio API 的兩大重點是 Twilio 動詞和 Twilio 標記語言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
-API 會使用 Twilio 動詞;例如，「 ** &lt;假設&gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。
+API 會使用 Twilio 動詞;例如，「 ** &lt; 假設 &gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。
 
 以下是 Twilio 動詞清單。
 
-* 撥號：將呼叫者連接到其他電話。 ** &lt; &gt; **
-* 收集：收集電話鍵盤上輸入的數位。 ** &lt; &gt; **
-* 掛斷：結束呼叫。 ** &lt; &gt; **
-* Play：播放音訊檔案。 ** &lt; &gt; **
-* Queue：將加入至呼叫端的佇列。 ** &lt; &gt; **
-* Pause：以無訊息模式等候指定的秒數。 ** &lt; &gt; **
-* 記錄：錄製來電者的語音，並傳回包含錄製之檔案的 URL。 ** &lt; &gt; **
-* **重新導向&gt;：將呼叫或 SMS 的控制權轉移至不同 URL 的&lt; **TwiML。
-* 拒絕：拒絕傳入電話給您的 Twilio 號碼，而不計費。 ** &lt; &gt; **
-* 假設：將在呼叫上進行的文字轉換成語音。 ** &lt; &gt; **
-* Sms：傳送 sms 訊息。 ** &lt; &gt; **
+* ** &lt; 撥號 &gt; **：將呼叫者連接到其他電話。
+* ** &lt; 收集 &gt; **：收集電話鍵盤上輸入的數位。
+* ** &lt; 掛斷 &gt; **：結束呼叫。
+* ** &lt; Play &gt; **：播放音訊檔案。
+* ** &lt; Queue &gt; **：將加入至呼叫端的佇列。
+* ** &lt; Pause &gt; **：以無訊息模式等候指定的秒數。
+* ** &lt; 記錄 &gt; **：錄製來電者的語音，並傳回包含錄製之檔案的 URL。
+* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權轉移至不同 URL 的 TwiML。
+* ** &lt; 拒絕 &gt; **：拒絕傳入電話給您的 Twilio 號碼，而不計費。
+* ** &lt; 假設 &gt; **：將在呼叫上進行的文字轉換成語音。
+* ** &lt; Sms &gt; **：傳送 sms 訊息。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如何處理來電或簡訊。
@@ -74,8 +74,8 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 註冊 Twilio 帳戶時，您會收到帳戶識別碼和驗證權杖。 兩者皆為呼叫 Twilio API 所需。 為了防止未經授權存取您的帳戶，您妥善保管驗證權杖。 在 [Twilio 主控台][twilio_console]的 **ACCOUNT SID** 和 **AUTH TOKEN** 欄位中，分別可檢視您的帳戶識別碼和驗證權杖。
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>建立 Java 應用程式
-1. 取得 Twilio JAR 並將它加到您的 Java 組建路徑和 WAR 部署組件。 在[https://github.com/twilio/twilio-java][twilio_java]中，您可以下載 GitHub 來源並建立您自己的 jar，或下載預先建立的 jar （不論是否有相依性）。
-2. 確定 JDK 的 **cacerts** 金鑰存放區包含 MD5 指紋為 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF 且 SHA1 指紋為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A) 的 Equifax 安全憑證授權單位憑證。 這是[https://api.twilio.com][twilio_api_service]服務的憑證授權單位單位（CA）憑證，會在您使用 Twilio api 時呼叫。 如需關於確定 JDK 的 **cacerts** 金鑰存放區包含正確 CA 憑證的詳細資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
+1. 取得 Twilio JAR 並將它加到您的 Java 組建路徑和 WAR 部署組件。 在 [https://github.com/twilio/twilio-java][twilio_java] 中，您可以下載 GitHub 來源並建立您自己的 jar，或下載預先建立的 jar （不論是否有相依性）。
+2. 確定 JDK 的 **cacerts** 金鑰存放區包含 MD5 指紋為 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF 且 SHA1 指紋為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A) 的 Equifax 安全憑證授權單位憑證。 這是服務的憑證授權單位單位（CA）憑證 [https://api.twilio.com][twilio_api_service] ，會在您使用 Twilio api 時呼叫。 如需關於確定 JDK 的 **cacerts** 金鑰存放區包含正確 CA 憑證的詳細資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
 
 [如何從 Azure 中的 Java 應用程式使用 Twilio 撥打電話][howto_phonecall_java]中提供使用 Java 版 Twilio 用戶端程式庫的詳細指示。
 
@@ -156,7 +156,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 若想進一步了解傳入 **Message.creator** 方法中的參數，請參閱 [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]。
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>作法：從您自己的網站提供 TwiML 回應
-當您的應用程式呼叫 Twilio API 時 (例如透過 **CallCreator.create** 方法)，Twilio 將傳送您的要求到應該傳送 TwiML 回應的 URL。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url]。 (雖然 TwiML 是針對供 Web 服務使用而設計，但您可以在瀏覽器中檢視 TwiML。 例如，按一下[https://twimlets.com/message][twimlet_message_url]以查看空** &lt;的回應&gt; **元素。另一個範例是， [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world]按一下以查看包含「 ** &lt;假設&gt; ** 」元素的** &lt;回應&gt; **元素）。
+當您的應用程式呼叫 Twilio API 時 (例如透過 **CallCreator.create** 方法)，Twilio 將傳送您的要求到應該傳送 TwiML 回應的 URL。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是針對供 Web 服務使用而設計，但您可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 可查看空白的** &lt; &gt; 回應**專案; 另一個範例是，按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] 以查看包含 contains ** &lt; &gt; **元素的** &lt; response &gt; **元素。）
 
 除了依賴 Twilio 提供的 URL，您也可以建立自己的 URL 網站來傳回 HTTP 回應。 您可以使用任何語言建立會傳回 HTTP 回應的網站；本主題假設您將該 URL 裝載在 JSP 頁面中。
 

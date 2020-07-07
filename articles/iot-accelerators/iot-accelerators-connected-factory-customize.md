@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080493"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自訂連線處理站解決方案顯示 OPC UA 伺服器資料的方式
@@ -71,7 +71,7 @@ ms.locfileid: "67080493"
 
 ## <a name="deploy-the-changes"></a>部署變更
 
-當您完成對**contosotopologydescription.json**檔案的變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
+當您完成對檔案的**ContosoTopologyDescription.js**變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
 
 **azure-iot-connected-factory** 存放庫包含一個 **build.ps1** PowerShell 指令碼，可用於重新建置並部署解決方案。
 

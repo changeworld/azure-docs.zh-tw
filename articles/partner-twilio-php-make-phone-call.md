@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637315"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>如何在 Azure 上的 PHP 應用程式中使用 Twilio 撥打電話
@@ -26,7 +26,7 @@ ms.locfileid: "69637315"
 
 您必須執行下列動作才能使用本主題中的程式碼：
 
-1. 從您的 [Twilio 主控台][twilio_console]取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請評估的[https://www.twilio.com/pricing][twilio_pricing]定價。 您可以在[https://www.twilio.com/try-twilio][try_twilio]註冊試用帳戶。
+1. 從您的 [Twilio 主控台][twilio_console]取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請評估的定價 [https://www.twilio.com/pricing][twilio_pricing] 。 您可以在註冊試用帳戶 [https://www.twilio.com/try-twilio][try_twilio] 。
 2. 取得 [適用於 PHP 的 Twilio 程式庫](https://github.com/twilio/twilio-php) ，或以 PEAR 封裝的形式進行安裝。 如需詳細資訊，請參閱 [讀我檔案](https://github.com/twilio/twilio-php/blob/master/README.md)。
 3. 安裝 Azure SDK for PHP。 
 <!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
@@ -100,7 +100,7 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-除了撥打電話以外，**makecall.php** 也會顯示某些通話中繼資料，如以下影像中所示。 如需呼叫中繼資料的詳細資訊[https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties]，請參閱。
+除了撥打電話以外，**makecall.php** 也會顯示某些通話中繼資料，如以下影像中所示。 如需呼叫中繼資料的詳細資訊，請參閱 [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties] 。
 
 ![Azure Call Response Using Twilio and PHP][twilio_php_response]
 
@@ -111,10 +111,10 @@ echo "URI resource: " . $call->uri . "<br />";
 此程式可說明在 Azure 上的 PHP 中使用 Twilio 的基本功能。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如：
 
 * 除了使用 Web 表單以外，您也可以使用 Azure 儲存體 Blob 或 SQL Database 來儲存電話號碼和通話文字。 如需在 PHP 中使用 Azure 儲存體 Blob 的相關資訊，請參閱[搭配使用 Azure 儲存體與 PHP 應用程式][howto_blob_storage_php]。 如需在 PHP 中使用 SQL Database 的相關資訊，請參閱[搭配使用 SQL Database 與 PHP 應用程式][howto_sql_azure_php]。
-* **makecall.php** 程式碼會使用 Twilio 提供的 URL ([https://twimlets.com/message][twimlet_message_url]) 來提供 Twilio 標記語言 (TwiML) 回應，以告知 Twilio 應如何執行通話。 例如，傳回的 TwiML 可能會包含 `<Say>` 動詞，而產生要傳達給受話方的文字。 除了使用 Twilio 提供的 URL 以外，您也可以建置自己的服務來回應 Twilio 的要求；如需詳細資訊，請參閱[如何在 PHP 中透過 Twilio 使用語音和簡訊功能][howto_twilio_voice_sms_php]。 [https://www.twilio.com/docs/api/twiml][twiml]如需 TwiML 的詳細資訊，請參閱，如需`<Say>`和其他 Twilio 動詞的詳細資訊，請[https://www.twilio.com/docs/api/twiml/say][twilio_say]參閱。
-* 閱讀 Twilio 安全性方針，網址[https://www.twilio.com/docs/security][twilio_docs_security]為。
+* **makecall.php** 程式碼會使用 Twilio 提供的 URL ([https://twimlets.com/message][twimlet_message_url]) 來提供 Twilio 標記語言 (TwiML) 回應，以告知 Twilio 應如何執行通話。 例如，傳回的 TwiML 可能會包含 `<Say>` 動詞，而產生要傳達給受話方的文字。 除了使用 Twilio 提供的 URL 以外，您也可以建置自己的服務來回應 Twilio 的要求；如需詳細資訊，請參閱[如何在 PHP 中透過 Twilio 使用語音和簡訊功能][howto_twilio_voice_sms_php]。 如需 TwiML 的詳細資訊 [https://www.twilio.com/docs/api/twiml][twiml] ，請參閱，如 `<Say>` 需和其他 Twilio 動詞的詳細資訊，請參閱 [https://www.twilio.com/docs/api/twiml/say][twilio_say] 。
+* 閱讀 Twilio 安全性方針，網址為 [https://www.twilio.com/docs/security][twilio_docs_security] 。
 
-如需 Twilio 的詳細資訊， [https://www.twilio.com/docs][twilio_docs]請參閱。
+如需 Twilio 的詳細資訊，請參閱 [https://www.twilio.com/docs][twilio_docs] 。
 
 ## <a name="see-also"></a>另請參閱
 * [如何在 PHP 中透過 Twilio 使用語音和簡訊功能](partner-twilio-php-how-to-use-voice-sms.md)

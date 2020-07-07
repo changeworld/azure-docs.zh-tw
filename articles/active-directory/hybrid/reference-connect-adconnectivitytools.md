@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66473797"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 參考
@@ -310,7 +310,8 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 如果使用者未使用 AD 網站/登入 DC 所提供的 DNS 服務，他們可能會想要略過檢查埠53。
-使用者仍然必須能夠解析. ldap. _tcp。\<forestfqdn\> ，以便 Active Directory 連接器設定成功。
+使用者仍然必須能夠解析. ldap. _tcp。\<forestfqdn\>
+Active Directory 連接器設定才會成功。
 
 ```yml
 Type: SwitchParameter

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69901775"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>管理多個儲存體帳戶間的媒體服務資產  
@@ -42,7 +42,7 @@ ms.locfileid: "69901775"
 
 其他考量：
 
-媒體服務在建立串流內容的 Url 時，會使用**IAssetFile.Name**屬性的值（例如，HTTP：//{wamsaccount .origin.mediaservices.windows.net}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 Name 屬性的值不能有[下列任何百分比編碼保留字元：](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
+媒體服務在建立串流內容的 Url 時，會使用**IAssetFile.Name**屬性的值（例如，HTTP：//{wamsaccount .origin.mediaservices.windows.net}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 Name 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
 
 ## <a name="to-attach-storage-accounts"></a>附加儲存體帳戶  
 

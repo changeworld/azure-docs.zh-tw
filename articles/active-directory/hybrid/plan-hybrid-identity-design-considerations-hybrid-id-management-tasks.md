@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109375"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>規劃混合式身分識別生命週期
@@ -61,7 +61,7 @@ ms.locfileid: "67109375"
 ## <a name="synchronization-management"></a>同步處理管理
 身分識別管理員的目標之一，是要能夠啟用所有身分識別提供者，並保持其同步處理狀態。 您可以根據授權的主要身分識別提供者，保持資料的同步處理狀態。 在混合式身分識別案例中，您可以透過同步處理的管理模型，在內部部署伺服器中管理所有的使用者和裝置身分識別，並將帳戶同步處理至雲端 (和選擇性地同步處理密碼)。 使用者在內部部署中輸入的密碼與雲端相同，且在登入時，身分識別解決方案會驗證密碼。 此模型會使用目錄同步處理工具。
 
-![目錄同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)處理若要適當設計混合式身分識別解決方案的同步處理，請確定已回答下列問題：
+![目錄同步處理 ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 若要適當設計混合式身分識別解決方案的同步處理，請確定已回答下列問題：
 *    適用于混合式身分識別解決方案的同步處理解決方案有哪些？
 *    有哪些可用的單一登入功能？
 *    B2B 和 B2C 之間的身分識別同盟選項有哪些？

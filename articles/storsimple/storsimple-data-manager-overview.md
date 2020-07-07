@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876110"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 資料管理員解決方案概觀
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft Azure StorSimple 使用雲端儲存體作為內部部署解決方案的擴充功能，並且會跨內部部署儲存體和雲端自動將資料分層。 資料儲存在雲端時會採用已啟用重複資料刪除功能的壓縮格式，以獲得最大效率並降低成本。 當資料以 StorSimple 格式儲存時，無法立即供您要使用的其他雲端應用程式取用。
 

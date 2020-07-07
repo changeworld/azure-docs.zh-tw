@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016578"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼  
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
-[如何使用媒體編碼器標準搭配 .net](media-services-dotnet-generate-thumbnail-with-mes.md)
-產生縮圖[媒體服務編碼總覽](media-services-encode-asset.md)
+[如何使用媒體編碼器標準搭配 .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ 產生縮圖[媒體服務編碼總覽](media-services-encode-asset.md)
 

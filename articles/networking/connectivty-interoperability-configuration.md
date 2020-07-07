@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68335938"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -49,7 +49,7 @@ ms.locfileid: "68335938"
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![5]][5]
+[![第]][5]
 
 下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 （Cisco ASR1000 路由器會在測試設定中用來做為 CE 路由器）。當平行設定站對站 VPN 和 ExpressRoute 線路以將內部部署網路連線到 Azure 時，Azure 預設會優先使用 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
@@ -156,7 +156,7 @@ ms.locfileid: "68335938"
 
 下圖顯示第二個 ExpressRoute 線路和中樞 VNet 之間的連線設定：
 
-[![7]][7]
+[![utf-7]][7]
 
 ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 1 連線至遠端 Vnet：
 

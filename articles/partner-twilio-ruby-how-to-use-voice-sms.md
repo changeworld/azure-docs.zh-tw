@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637207"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何在 Ruby 中透過 Twilio 使用語音和簡訊功能
@@ -28,7 +28,7 @@ Twilio 是一種電話語音 Web 服務 API，能夠讓您使用現有的 Web �
 **Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio SMS** 可以讓您的應用程式撰寫和接收 SMS 訊息。 **Twilio Client** 可以讓您的應用程式在現有網際網路連線 (包括行動連線) 中啟用語音通訊。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定價和特別供應項目
-[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 若要註冊此供應專案或取得詳細資訊，請造訪[https://ahoy.twilio.com/azure][special_offer]。  
+[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 若要註冊此供應專案或取得詳細資訊，請造訪 [https://ahoy.twilio.com/azure][special_offer] 。  
 
 ## <a name="concepts"></a><a id="Concepts"></a>概念
 Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。 用戶端程式庫有多種語言版本，相關清單請參閱 [Twilio API 程式庫][twilio_libraries]。
@@ -46,20 +46,20 @@ TwiML 是一組以 XML 為基礎的指令，可指示 Twilio 如何處理來電�
 所有 TwiML 文件皆會以 `<Response>` 作為其根元素。 您可以由此處使用 Twilio 動詞定義應用程式的行為。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 動詞
-Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如，「 ** &lt;假設&gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。 
+Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如，「 ** &lt; 假設 &gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。 
 
 以下是 Twilio 動詞清單。
 
-* 撥號：將呼叫者連接到其他電話。 ** &lt; &gt; **
-* 收集：收集電話鍵盤上輸入的數位。 ** &lt; &gt; **
-* 掛斷：結束呼叫。 ** &lt; &gt; **
-* Play：播放音訊檔案。 ** &lt; &gt; **
-* Pause：以無訊息模式等候指定的秒數。 ** &lt; &gt; **
-* 記錄：錄製來電者的語音，並傳回包含錄製之檔案的 URL。 ** &lt; &gt; **
-* **重新導向&gt;：將呼叫或 SMS 的控制權轉移至不同 URL 的&lt; **TwiML。
-* 拒絕：拒絕 Twilio 號碼的來電而不計費** &lt; &gt; **
-* 假設：將在呼叫上進行的文字轉換成語音。 ** &lt; &gt; **
-* Sms：傳送 sms 訊息。 ** &lt; &gt; **
+* ** &lt; 撥號 &gt; **：將呼叫者連接到其他電話。
+* ** &lt; 收集 &gt; **：收集電話鍵盤上輸入的數位。
+* ** &lt; 掛斷 &gt; **：結束呼叫。
+* ** &lt; Play &gt; **：播放音訊檔案。
+* ** &lt; Pause &gt; **：以無訊息模式等候指定的秒數。
+* ** &lt; 記錄 &gt; **：錄製來電者的語音，並傳回包含錄製之檔案的 URL。
+* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權轉移至不同 URL 的 TwiML。
+* ** &lt; 拒絕 &gt; **：拒絕 Twilio 號碼的來電而不計費
+* ** &lt; 假設 &gt; **：將在呼叫上進行的文字轉換成語音。
+* ** &lt; Sms &gt; **：傳送 sms 訊息。
 
 如需 Twilio 動詞、屬性和 TwiML 的詳細資訊，請參閱 [TwiML][twiml]。 如需 Twilio API 的詳細資訊，請參閱 [Twilio API][twilio_api]。
 

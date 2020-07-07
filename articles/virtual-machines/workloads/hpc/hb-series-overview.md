@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67707767"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虛擬機器總覽
@@ -46,7 +46,7 @@ VM 本身並不知道 pNUMA 0 並未提供給它。 VM 瞭解 pNUMA 1-15 as Vnum
 | 核心                            | 60（SMT 已停用）                |
 | CPU                              | AMD EPYC 7551 *                   |
 | CPU 頻率（非 AVX）          | ~ 2.55 GHz （單一 + 所有核心）   |
-| 記憶體                           | 4 GB/核心（240總計）            |
+| Memory                           | 4 GB/核心（240總計）            |
 | 本機磁碟                       | 700 GB NVMe                      |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 * * |
 | 網路                          | 50 Gb 乙太網路（40 Gb 可用） Azure second Gen SmartNIC * * * |

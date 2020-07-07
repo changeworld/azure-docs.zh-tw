@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67707786"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB-系列和 HC 系列 VM 的已知問題
@@ -53,7 +53,7 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ![命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-1.png)
 
-使用`numactl -H`將會顯示記憶體緩衝處理的 NUMAnode （可能全部）。 在 Linux 中，使用者可以用三種方式清除快取，以將緩衝或快取的記憶體傳回「免費」。 您必須是 root 或具有 sudo 許可權。
+使用 `numactl -H` 將會顯示記憶體緩衝處理的 NUMAnode （可能全部）。 在 Linux 中，使用者可以用三種方式清除快取，以將緩衝或快取的記憶體傳回「免費」。 您必須是 root 或具有 sudo 許可權。
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]

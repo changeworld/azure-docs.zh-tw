@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67659498"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure 應用程式閘道資源健康狀態總覽
 
-[Azure 資源健康狀態](../service-health/resource-health-overview.md)可協助您在 Azure 問題影響您的資源時進行診斷並取得支援。 它會通知您資源的目前及過去的健康狀態。 並提供可協助您減輕問題的技術支援。
+[Azure 資源健康狀態](../service-health/resource-health-overview.md) 可協助您在 Azure 問題影響您的資源時進行診斷並取得支援。 它會通知您資源的目前及過去的健康狀態。 並提供可協助您減輕問題的技術支援。
 
 針對應用程式閘道，資源健康狀態會依賴閘道發出的信號來評估其狀況是否良好。 如果閘道狀況不良，資源健康狀態會分析其他資訊，以判斷問題的來源。 它也會識別 Microsoft 所採取的動作，或您可以做什麼來修正問題。
 

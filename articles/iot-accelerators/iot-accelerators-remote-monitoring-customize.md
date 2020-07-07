@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68608014"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自訂遠端監視解決方案加速器
@@ -73,7 +73,7 @@ ms.locfileid: "68608014"
     npm start
     ```
 
-1. 上一個命令會在本機的 HTTP：\//localhost： 3000/儀表板上執行 UI。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
+1. 上一個命令會在本機的 HTTP： \/ /localhost： 3000/儀表板上執行 UI。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
 
 ## <a name="customize-the-layout"></a>自訂版面配置
 
@@ -502,7 +502,7 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 * [在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗](iot-accelerators-remote-monitoring-customize-flyout.md)
 * [在遠端監視解決方案加速器 Web UI 中的儀表板上新增自訂面板](iot-accelerators-remote-monitoring-customize-panel.md)
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+如需關於遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 如需關於自訂遠端監視解決方案微服務的詳細資訊，請參閱[自訂和重新部署微服務](iot-accelerators-microservices-example.md)。
 <!-- Next tutorials in the sequence -->
