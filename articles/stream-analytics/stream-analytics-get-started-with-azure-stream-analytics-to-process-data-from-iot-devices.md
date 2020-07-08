@@ -5,20 +5,20 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426252"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043422"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 串流分析處理即時 IoT 資料流程
 
 在本文中，您將瞭解如何建立串流處理邏輯，以從物聯網（IoT）裝置收集資料。 您可以使用真實世界的物聯網（IoT）使用案例來示範如何快速且經濟地建立您的解決方案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 建立免費的[Azure 訂](https://azure.microsoft.com/pricing/free-trial/)用帳戶。
 * 從[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下載範例查詢和資料檔案。
@@ -57,10 +57,10 @@ Contoso 是一家工業自動化空間的公司，他們已完全自動化其製
 ## <a name="create-an-azure-stream-analytics-query"></a>建立 Azure 串流分析查詢
 建立作業之後的下一個步驟是撰寫查詢。 您可以針對範例資料測試查詢，而不需要將輸入或輸出連接至您的作業。
 
-從 GitHub 下載[helloworldasa-inputstream.json 檔名-InputStream。](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
-) 然後，在 Azure 入口網站中流覽至您的 Azure 串流分析作業。
+從 GitHub 下載的[HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) 。 然後，在 Azure 入口網站中流覽至您的 Azure 串流分析作業。
 
-從左側功能表中選取 [**作業拓撲**] 底下的 [**查詢**]。 然後選取 **[上傳範例輸入**]。 `HelloWorldASA-InputStream.json`上傳檔案，然後選取 **[確定]**。
+從左側功能表中選取 [**作業拓撲**] 底下的 [**查詢**]。 然後選取 **[上傳範例輸入**]。 上傳檔案 `HelloWorldASA-InputStream.json` ，然後選取 **[確定]**。
 
 ![串流分析儀表板查詢圖格](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 

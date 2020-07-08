@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603493"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042912"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的補救建議
 
@@ -74,12 +74,12 @@ ms.locfileid: "77603493"
 
 |建議|公開|
 |---|---|
-|應該啟用 SQL server 上的審核|此動作會在這些伺服器及其資料庫上啟用 SQL 審核。 <br>**注意**： <ul><li>針對所選 SQL server 的每個區域，該區域中的所有伺服器都會建立並共用用來儲存 audit 記錄檔的儲存體帳戶。</li><li>若要確保適當的審核，請不要刪除或重新命名資源群組或儲存體帳戶。</li></ul>|
-|應在 SQL 受控執行個體上啟用進階資料安全性|此動作會在選取的 SQL 受控實例上啟用 SQL Advanced Data Security （ADS）。 <br>**注意**： <ul><li>針對所選 SQL 受控實例的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li> 廣告的費用為每個 SQL 受控實例 $15。</li></ul>|
-|SQL 受控執行個體上應啟用弱點評定|此動作會在選取的 SQL 受控實例上啟用 SQL 弱點評估。 <br>**注意**：<ul><li>SQL 弱點評定是 SQL Advanced Data Security （ADS）套件的一部分。 如果尚未啟用 ADS，則會自動在受控實例上啟用。</li><li>針對所選 SQL 受控實例的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li>廣告的費用為每個 SQL server $15。</li></ul>||
-|應在您的 SQL server 上啟用 Advanced Data Security|此動作會在這些選取的伺服器和其資料庫上啟用 Advanced Data Security （ADS）。 <br>**注意**：<ul><li>針對所選 SQL server 的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有伺服器共用。 <</li><li>廣告的費用為每個 SQL server $15。</li></ul>||
-|應在您的 SQL server 上啟用弱點評估|此動作會在這些選取的伺服器及其資料庫上啟用 SQL 弱點評估。 <br>**注意**：<ul><li>SQL 弱點評定是 SQL Advanced Data Security （ADS）套件的一部分。 如果尚未啟用廣告，則會在 SQL server 上自動啟用。</li><li>針對所選 SQL server 的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li>廣告的費用為每個 SQL server $15。</li></ul>||
-|應該啟用 SQL 資料庫上的透明資料加密|此動作會在選取的資料庫上啟用 SQL Database 透明資料加密（TDE）。 <br>**注意**：根據預設，將會使用服務管理的 TDE 金鑰。
+|應該啟用 SQL Database 上的審核|此動作會在這些伺服器及其資料庫上啟用 SQL 審核。 <br>**注意**： <ul><li>針對所選 SQL Database 的每個區域，將會建立用於儲存 audit 記錄的儲存體帳戶，並由該區域中的所有伺服器共用。</li><li>若要確保適當的審核，請不要刪除或重新命名資源群組或儲存體帳戶。</li></ul>|
+|應在 SQL 受控執行個體上啟用進階資料安全性|此動作會在選取的 SQL 受控實例上啟用 SQL Advanced Data Security （ADS）。 <br>**注意**： <ul><li>針對所選 SQL 受控執行個體的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li> ADS 的費用為每個 SQL 受控執行個體 $15。</li></ul>|
+|應在 SQL 受控執行個體上啟用弱點評定|此動作會在選取的 SQL 受控執行個體上啟用 SQL 弱點評估。 <br>**注意**：<ul><li>SQL 弱點評定是 SQL Advanced Data Security （ADS）套件的一部分。 如果尚未啟用 ADS，則會自動在受控實例上啟用。</li><li>針對所選 SQL 受控執行個體的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li>廣告的收費為每 SQL Database $15。</li></ul>||
+|應在您的 SQL Database 上啟用 Advanced Data Security|此動作會在這些選取的伺服器和其資料庫上啟用 Advanced Data Security （ADS）。 <br>**注意**：<ul><li>針對所選 SQL Database 的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有伺服器共用。 <</li><li>廣告的收費為每 SQL Database $15。</li></ul>||
+|應在您的 SQL Database 上啟用弱點評估|此動作會在這些選取的伺服器及其資料庫上啟用 SQL 弱點評估。 <br>**注意**：<ul><li>SQL 弱點評定是 SQL Advanced Data Security （ADS）套件的一部分。 如果尚未啟用廣告，則會自動在 SQL Database 上啟用。</li><li>針對所選 SQL Database 的每個區域和資源群組，將會建立用於儲存掃描結果的儲存體帳戶，並由該區域中的所有實例共用。</li><li>廣告的收費為每 SQL Database $15。</li></ul>||
+|應該啟用 SQL Database 上的透明資料加密|此動作會在選取的資料庫上啟用 SQL Database 透明資料加密（TDE）。 <br>**注意**：根據預設，將會使用服務管理的 TDE 金鑰。
 |應啟用儲存體帳戶的安全傳輸|此動作會將您的儲存體帳戶安全性更新為只允許安全連線的要求。 （HTTPS）。 <br>**注意**：<ul><li>任何使用 HTTP 的要求都會遭到拒絕。</li><li>當您使用 Azure 檔案服務時，不加密的連線將會失敗，包括使用 SMB 2.1 的案例、沒有加密的 SMB 3.0，以及 Linux SMB 用戶端的某些類別。 深入了解。</li></ul>|
 |Web 應用程式應只可經由 HTTPS 存取|此動作會將所選資源上的所有流量從 HTTP 重新導向到 HTTPS。 <br>**注意**：<ul><li>沒有 SSL 憑證的 HTTPS 端點會顯示在瀏覽器中，並出現「隱私權錯誤」。 因此，具有自訂網域的使用者必須確認他們已設定 SSL 憑證。</li><li>請確定用來保護 app service 的封包和 web 應用程式防火牆，允許 HTTPS 會話轉送。</li></ul>|
 |函式應用程式應只可經由 HTTPS 存取|此動作會將所選資源上的所有流量從 HTTP 重新導向到 HTTPS。 <br>**注意**：<ul><li>沒有 SSL 憑證的 HTTPS 端點會顯示在瀏覽器中，並出現「隱私權錯誤」。 因此，具有自訂網域的使用者必須確認他們已設定 SSL 憑證。</li><li>請確定用來保護 app service 的封包和 web 應用程式防火牆，允許 HTTPS 會話轉送。</li></ul>|
@@ -99,4 +99,4 @@ ms.locfileid: "77603493"
 在本檔中，您已瞭解如何修復資訊安全中心中的建議。 若要深入瞭解資訊安全中心，請參閱下列主題：
 
 * [在 Azure 資訊安全中心中設定安全性原則](tutorial-security-policy.md)-瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
+* [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)-瞭解如何監視 Azure 資源的健康情況。

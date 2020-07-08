@@ -3,12 +3,12 @@ title: Azure 原則的概觀
 description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環境中用來建立、指派和管理原則定義。
 ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944656"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044187"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -82,7 +82,7 @@ Azure 原則在下列兩個資源提供者中有數個權限，一般稱之為�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure 原則所涵蓋的資源
 
-Azure 原則會評估 Azure 中的所有資源。 某些資源提供者 (例如[來賓設定](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md) 和 [Azure Key Vault](../../key-vault/key-vault-overview.md)) 會有更深入的管理設定和物件整合。 若要深入了解，請參閱[資源提供者模式](./concepts/definition-structure.md)。
+Azure 原則會評估 Azure 中的所有資源。 某些資源提供者 (例如[來賓設定](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md) 和 [Azure Key Vault](../../key-vault/general/overview.md)) 會有更深入的管理設定和物件整合。 若要深入了解，請參閱[資源提供者模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理原則的建議
 

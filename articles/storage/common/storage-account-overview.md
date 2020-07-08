@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371543"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043628"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -32,7 +32,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - Blob (所有類型：區塊、附加、分頁)
 - Data Lake Gen2
-- 檔案
+- 檔案儲存體
 - 磁碟
 - 佇列
 - 資料表
@@ -49,7 +49,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 一般用途 v1 儲存體帳戶提供所有 Azure 儲存體服務的存取權，但可能沒有最新功能或每 gb 的最低定價。 一般用途 v1 儲存體帳戶支援這些 Azure 儲存體服務：
 
 - Blobs (所有類型)
-- 檔案
+- 檔案儲存體
 - 磁碟
 - 佇列
 - 資料表
@@ -98,7 +98,7 @@ BlockBlobStorage 儲存體帳戶可提供高階效能層來儲存區塊 blob 和
 
 ### <a name="filestorage-storage-accounts"></a>FileStorage 儲存體帳戶
 
-FileStorage 儲存體帳戶可提供 Azure 檔案共用的 premium 效能層級。 如需詳細資訊，請參閱[Azure 檔案儲存體擴充性和效能目標](../files/storage-files-scale-targets.md)。
+FileStorage 儲存體帳戶可提供 Azure 檔案共用的 premium 效能層級。 如需詳細資訊，請參閱 [Azure 檔案儲存體可擴縮性和效能目標](../files/storage-files-scale-targets.md)。
 
 ## <a name="access-tiers-for-block-blob-data"></a>區塊 blob 資料的存取層
 
@@ -184,6 +184,8 @@ AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 
 ## <a name="storage-account-billing"></a>儲存體帳戶計費
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

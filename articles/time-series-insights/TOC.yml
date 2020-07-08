@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure 時間序列深入解析預覽
       items:
-        - name: 規劃您的環境
-          href: time-series-insights-update-plan.md
-        - name: 資料儲存體與輸入
-          href: time-series-insights-update-storage-ingress.md
         - name: 使用案例
           href: time-series-insights-update-use-cases.md
+        - name: 規劃您的環境
+          href: time-series-insights-update-plan.md
+        - name: 擷取概觀
+          href: concepts-ingestion-overview.md
+        - name: 支援的資料類型
+          href: concepts-supported-data-types.md
+        - name: 串流擷取事件來源
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON 簡維和逸出規則
+          href: concepts-json-flattening-escaping-rules.md
+        - name: 串流輸入輸送量限制
+          href: concepts-streaming-throughput-limitations.md
+        - name: 儲存體
+          href: concepts-storage.md
         - name: 時間序列模型
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: 時間序列查詢
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: 在總管中將資料視覺化 (預覽)
           href: time-series-insights-update-explorer.md
         - name: 開發

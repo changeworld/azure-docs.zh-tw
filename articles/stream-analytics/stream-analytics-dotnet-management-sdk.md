@@ -5,15 +5,15 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835490"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043439"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理 .NET SDK：透過適用於 .NET 的 Azure 串流分析 API 來設定及執行分析作業
 了解如何使用管理 .NET SDK，透過適用於 .NET 的串流分析 API 來設定及執行分析作業。 設定專案，建立輸入與輸出來源、轉換，以及開始和停止工作。 對於您的分析工作，您可以從 Blob 儲存體或從事件中樞串流資料。
@@ -212,7 +212,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
 ## <a name="create-a-stream-analytics-output-target"></a>建立資料流分析輸出目標
 建立輸出目標與建立串流分析的輸入來源非常類似。 和輸入來源一樣，輸出目標會繫結至特定工作。 若要在不同的工作中使用相同的輸出目標，您必須重新呼叫此方法，並指定不同的工作名稱。
 
-下列程式碼會建立輸出目標 (Azure SQL 資料庫)。 您可以自訂輸出目標的資料類型和/或序列化類型。
+下列程式碼會建立輸出目標（Azure SQL Database）。 您可以自訂輸出目標的資料類型和/或序列化類型。
 
    ```csharp
    // Create an output

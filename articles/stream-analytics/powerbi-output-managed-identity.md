@@ -4,14 +4,14 @@ description: 本文說明如何使用受控識別來驗證您的 Azure 串流分
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261409"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044238"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI
 
@@ -19,7 +19,7 @@ ms.locfileid: "81261409"
 
 本文說明如何透過 Azure 入口網站以及透過 Azure Resource Manager 部署，為串流分析作業的 Power BI 輸出啟用受控識別。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 使用此功能需要下列各項：
 
@@ -172,7 +172,7 @@ Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動
 
 ### <a name="use-the-power-bi-powershell-cmdlets"></a>使用 Power BI PowerShell Cmdlet
 
-1. 安裝 Power BI `MicrosoftPowerBIMgmt`的 PowerShell Cmdlet。
+1. 安裝 Power BI 的 `MicrosoftPowerBIMgmt` PowerShell Cmdlet。
 
    > [!Important]
    > 請確定您使用的是1.0.821 或更新版本的 Cmdlet。
