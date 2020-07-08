@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253529"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356469"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>針對未與 Azure Active Directory 同步的物件進行疑難排解
 
@@ -64,7 +64,7 @@ ms.locfileid: "79253529"
 
 請先啟動 [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md)，再開始進行這些步驟。
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開始進行疑難排解的地方。 此索引標籤顯示最新作業的結果。 
 
 ![Synchronization Service Manager 的螢幕擷取畫面，其中顯示選取的 [作業] 索引標籤](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -151,7 +151,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
 
 ![[預覽] 頁面的螢幕擷取畫面，其中顯示匯入屬性流程](./media/tshoot-connect-object-not-syncing/previewresult.png)
 
-### <a name="log"></a>Log
+### <a name="log"></a>記錄檔
 在 [預覽]**** 按鈕旁邊，選取 [記錄]**** 按鈕來開啟 [記錄]**** 頁面。 您可以在此查看密碼同步狀態和歷程記錄。 如需詳細資訊，請參閱[使用 Azure AD Connect 同步針對密碼雜湊同步處理進行疑難排解](tshoot-connect-password-hash-synchronization.md)。
 
 ## <a name="metaverse-object-properties"></a>Metaverse 物件屬性

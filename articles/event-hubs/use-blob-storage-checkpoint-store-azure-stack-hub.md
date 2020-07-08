@@ -1,19 +1,14 @@
 ---
 title: 使用 Blob 儲存體作為 Azure Stack 中樞上的檢查點存放區（預覽）
 description: 本文說明如何使用 Blob 儲存體做為 Azure Stack Hub （預覽）事件中樞中的檢查點存放區。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322372"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>在 Azure Stack Hub 上使用 Blob 儲存體作為檢查點存放區事件中樞（預覽）
 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上執行的功能，您將需要使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您是[在 Azure Stack Hub 2002 版上執行事件中樞](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Python 中的範例錯誤訊息
-針對 Python，會將的`azure.core.exceptions.HttpResponseError`錯誤傳遞給的錯誤處理`on_error(partition_context, error)`程式`EventHubConsumerClient.receive()`。 但是，方法`receive()`不會引發例外狀況。 `print(error)`會列印下列例外狀況資訊：
+針對 Python，會將的錯誤傳遞給的 `azure.core.exceptions.HttpResponseError` 錯誤處理 `on_error(partition_context, error)` 程式 `EventHubConsumerClient.receive()` 。 但是，方法 `receive()` 不會引發例外狀況。 `print(error)`會列印下列例外狀況資訊：
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

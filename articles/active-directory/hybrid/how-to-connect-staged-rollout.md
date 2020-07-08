@@ -5,21 +5,21 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/12/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357846"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
-藉由使用分段推出方法，您可從同盟驗證移轉至雲端驗證。 本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
+藉由使用分段推出的方法，您可以避免轉換整個網域。  這可讓您選擇性地測試具有雲端驗證功能的使用者群組，例如 Azure 多重要素驗證（MFA）、條件式存取、洩漏認證的身分識別保護、身分識別管理等。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
     
 -  您目前正在使用內部部署 Multi-Factor Authentication 伺服器。 
 -  您正在使用智慧卡進行驗證。 
@@ -38,8 +38,8 @@ ms.locfileid: "83644160"
 -   您擁有具有同盟網域的 Azure Active Directory (Azure AD) 租用戶。
 
 -   您決定移至這兩個選項的其中之一：
-    - **選項 A**  -  「密碼雜湊同步處理 (同步)」 + 「無縫單一登入 (SSO)」
-    - **選項 B**  - 「傳遞驗證」 + 「無縫 SSO」
+    - **選項 A**  - *密碼雜湊同步處理（同步處理）*  + *無縫單一登入（SSO）*。  如需詳細資訊，請參閱[什麼是密碼雜湊同步](whatis-phs.md)處理和[什麼是無縫 SSO](how-to-connect-sso.md)
+    - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱[什麼是傳遞驗證](how-to-connect-pta.md)  
     
     雖然「無縫 SSO」為選擇，但我們建議將其啟用，以為正在公司網路內部執行已加入網域電腦的使用者提供無訊息登入體驗。
 
@@ -76,12 +76,12 @@ ms.locfileid: "83644160"
     - 「不支援」動態群組進行分段推出。
     - 群組內的連絡人物件會禁止新增群組。
 
-- 您仍然需要使用 Azure AD Connect 或 PowerShell 來進行從同盟到雲端驗證最後的完全移轉。 分段推出不會將網域從同盟切換至受控。
+- 您仍然需要使用 Azure AD Connect 或 PowerShell 來進行從同盟到雲端驗證最後的完全移轉。 分段推出不會將網域從同盟切換至受控。  如需有關網域切換的詳細資訊，請參閱[從同盟遷移至密碼雜湊同步](plan-migrate-adfs-password-hash-sync.md)[處理和從同盟遷移至傳遞驗證](plan-migrate-adfs-pass-through-authentication.md)
+
+
 
 - 在第一次新增安全性群組以進行分段推出時，會限制為 200 位使用者，以避免 UX 逾時。新增群組後，即可視需要將更多使用者直接新增至群組。
 
->[!NOTE]
-> 因為租用戶端點不會傳送登入提示，因此不支援進行分段推出。  SAML 應用程式使用租用戶端點，且不支援分段推出。
 
 ## <a name="get-started-with-staged-rollout"></a>開始使用分段推出
 

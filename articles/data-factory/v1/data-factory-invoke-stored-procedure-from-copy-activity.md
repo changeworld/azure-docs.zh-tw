@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74924090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320976"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>從 Azure Data Factory 中的複製活動叫用預存程序
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "74924090"
 下列範例示範如何從 Data Factory 管線 (複製活動) 叫用 SQL Server 資料庫中的預存程序：  
 
 ## <a name="output-dataset-json"></a>輸出資料集 JSON
-在輸出資料集 JSON 中，將 **type** 設定為：**SqlServerTable**。 請將它設定為 **AzureSqlTable**，以與 Azure SQL 資料庫搭配使用。 **tableName** 屬性的值必須與預存程序第一個參數的名稱相符。  
+在輸出資料集 JSON 中，將 **type** 設定為：**SqlServerTable**。 將它設定為**AzureSqlTable** ，以與 Azure SQL Database 搭配使用。 **tableName** 屬性的值必須與預存程序第一個參數的名稱相符。  
 
 ```json
 {

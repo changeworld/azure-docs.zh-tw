@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357557"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>變更 ADSync 服務帳戶密碼
 如果您變更 ADSync 服務帳戶密碼，同步處理服務將無法正確啟動，直到您放棄加密金鑰並重新初始化 ADSync 服務帳戶密碼為止。 
@@ -122,6 +122,6 @@ Azure AD Connect，做為同步處理服務的一部分，會使用加密金鑰�
 ## <a name="next-steps"></a>後續步驟
 **概觀主題**
 
-* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)
 
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

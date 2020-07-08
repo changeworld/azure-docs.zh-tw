@@ -7,24 +7,27 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 05/31/2019
+ms.topic: conceptual
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 626bc12b01428b90de1cbafe28bd7493e7ed1743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356639"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>從 Azure Active Directory 的同盟移轉至傳遞驗證
 
 本文說明如何將組織的網域從 Active Directory 同盟服務 (AD FS) 移轉至傳遞驗證。
 
 > [!NOTE]
-> 變更您的驗證方法需要規劃、測試和可能的停機時間。 [分段推出](how-to-connect-staged-rollout.md)提供了一種替代方式，可以使用傳遞驗證來測試同盟，並逐漸從同盟遷移至雲端驗證。
+> 變更您的驗證方法需要規劃及測試，而且可能造成停機。 [分段推出](how-to-connect-staged-rollout.md)提供了一種替代方式，可以使用傳遞驗證來測試同盟，並逐漸從同盟遷移至雲端驗證。
+> 
+> 如果您打算使用分段推出，請記得在完成剪下後關閉分段推出功能。  如需詳細資訊，請參閱[使用分段推出遷移至雲端驗證](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>移轉至傳遞驗證的必要條件
 
@@ -72,7 +75,7 @@ ms.locfileid: "79528637"
 
 #### <a name="verify-how-federation-was-configured"></a>確認同盟的設定方式
 
-1. 在 Azure AD Connect 伺服器上，開啟 Azure AD Connect。 選取 [設定]  。
+1. 在 Azure AD Connect 伺服器上，開啟 Azure AD Connect。 選取 [設定] 。
 2. 在 [其他工作]**** 頁面上選取 [檢視目前的設定]****，然後選取 [下一步]****。<br />
  
    ![此螢幕擷取畫面顯示 [其他工作] 頁面上的 [檢視目前的設定] 選項](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
@@ -97,7 +100,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 請確認可能已為您的同盟設計和部署文件自訂的任何設定。 具體來說，請尋找 **PreferredAuthenticationProtocol**、**SupportsMfa** 和 **PromptLoginBehavior** 中的自訂。
 
-如需詳細資訊，請參閱這些文章：
+如需詳細資訊，請參閱下列文章：
 
 * [AD FS prompt=login 參數支援](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
@@ -157,7 +160,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如需詳細資訊，請參閱[設定已加入混合式 Azure AD 的裝置](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)。
 
-#### <a name="branding"></a>商標
+#### <a name="branding"></a>Branding
 
 如果您的組織[自訂了 ADFS 登入頁面](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以顯示更多有關組織的資訊，請考慮以類似的方式[自訂 Azure AD 登入頁面](https://docs.microsoft.com/azure/active-directory/customize-branding)。
 
@@ -223,7 +226,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 
 若要讓裝置使用無縫 SSO，必須使用 Active Directory 中的群組原則，將 Azure AD URL 新增至使用者的內部網路區域設定。
 
-根據預設，網頁瀏覽器會自動從 URL 計算正確的區域 (網際網路或內部網路)。 例如， **HTTP\/\/： contoso/** 會對應到內部網路區域，而**HTTP\/\/： intranet.contoso.com**會對應到網際網路區域（因為 URL 包含句點）。 您必須明確地將 URL 新增至瀏覽器的內部網路區域，瀏覽器才會將 Kerberos 票證傳送給雲端端點 (例如 Azure AD URL)。
+根據預設，網頁瀏覽器會自動從 URL 計算正確的區域 (網際網路或內部網路)。 例如， **HTTP： \/ \/ contoso/** 會對應到內部網路區域，而**HTTP： \/ \/ intranet.contoso.com**會對應到網際網路區域（因為 URL 包含句點）。 您必須明確地將 URL 新增至瀏覽器的內部網路區域，瀏覽器才會將 Kerberos 票證傳送給雲端端點 (例如 Azure AD URL)。
 
 請完成向您的裝置[推行](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)必要變更的步驟。
 
@@ -269,7 +272,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 
 接著， 部署額外的驗證方法：
 
-1. 在 Azure 入口網站中，移至**Azure Active Directory** > **Azure AD Connect**，然後選取 [**傳遞驗證**]。
+1. 在 Azure 入口網站中，移至**Azure Active Directory**  >  **Azure AD Connect**，然後選取 [**傳遞驗證**]。
 2. 在 [傳遞驗證]**** 頁面上，選取 [下載]**** 按鈕。
 3. 在 [下載代理程式]**** 頁面上，選取 [接受條款並下載]****。
 
@@ -331,7 +334,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 
 接著，部署額外的驗證代理程式：
 
-1. 在 Azure 入口網站中，移至**Azure Active Directory** > **Azure AD Connect**，然後選取 [**傳遞驗證**]。
+1. 在 Azure 入口網站中，移至**Azure Active Directory**  >  **Azure AD Connect**，然後選取 [**傳遞驗證**]。
 2. 在 [傳遞驗證]**** 頁面上，選取 [下載]**** 按鈕。 
 3. 在 [下載代理程式]**** 頁面上，選取 [接受條款並下載]****。
  
@@ -359,7 +362,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. 在 Azure AD 入口網站中，選取 [ **Azure Active Directory** > **Azure AD Connect**]。
+3. 在 Azure AD 入口網站中，選取 [ **Azure Active Directory**  >  **Azure AD Connect**]。
 4. 在您轉換所有同盟網域之後，請確認下列設定：
    * [同盟]**** 設為 [停用]****。
    * [無縫單一登入]**** 設為 [啟用]****。
@@ -378,7 +381,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 若要測試傳遞驗證：
 
 1. 以 InPrivate 模式開啟 Internet Explorer，使無縫 SSO 不會將您自動登入。
-2. 移至 Office 365 登入頁面（[https://portal.office.com](https://portal.office.com/)）。
+2. 移至 Office 365 登入頁面（ [https://portal.office.com](https://portal.office.com/) ）。
 3. 輸入使用者 UPN，然後選取 [下一步]****。 請務必輸入從內部部署 Active Directory 執行個體同步，且先前已使用同盟驗證的混合式使用者 UPN。 您輸入使用者名稱和密碼的頁面顯示如下：
 
    ![此螢幕擷取畫面顯示您輸入使用者名稱的登入頁面](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)

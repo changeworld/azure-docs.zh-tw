@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af0f68ca9520c1715463212da80aaabed48f8269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338219"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
@@ -103,13 +103,13 @@ Azure AD 權利管理利用[Azure AD 的企業對企業（B2B）](../b2b/what-is
 
 - 請確定網站層級設定啟用 [來賓存取] （與先前所列相同的選項選取專案）。 如需詳細資訊，請參閱[開啟或關閉網站的外部共用](https://docs.microsoft.com/sharepoint/change-external-sharing-site)。
 
-### <a name="review-your-office-365-group-sharing-settings"></a>檢查您的 Office 365 群組共用設定
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>檢查您的 Microsoft 365 群組共用設定
 
-- 如果您想要在外部使用者的存取套件中包含 Office 365 群組，請確定 [**讓使用者將新的來賓**新增到組織] 已設定為 [**開啟**]，以允許來賓存取。 如需詳細資訊，請參閱[管理對 Office 365 群組的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)。
+- 如果您想要在外部使用者的存取套件中包含 Microsoft 365 群組，請確定 [**讓使用者將新的來賓**新增到組織] 已設定為 [**開啟**]，以允許來賓存取。 如需詳細資訊，請參閱[管理對 Microsoft 365 群組的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)。
 
-- 如果您想要讓外部使用者能夠存取 SharePoint Online 網站和與 Office 365 群組相關聯的資源，請確定您開啟的是 SharePoint Online 外部共用。 如需詳細資訊，請參閱[開啟或關閉外部共用](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
+- 如果您想要讓外部使用者能夠存取 SharePoint Online 網站和與 Microsoft 365 群組相關聯的資源，請確定您開啟 SharePoint Online 外部共用。 如需詳細資訊，請參閱[開啟或關閉外部共用](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
-- 如需如何在 PowerShell 中的目錄層級設定 Office 365 群組來賓原則的相關資訊，請參閱[範例：在目錄層級為群組設定來賓原則](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
+- 如需如何在 PowerShell 中為目錄層級的 Microsoft 365 群組設定來賓原則的詳細資訊，請參閱[範例：在目錄層級為群組設定來賓原則](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
 
 ### <a name="review-your-teams-sharing-settings"></a>審查小組共用設定
 
@@ -125,7 +125,7 @@ Azure AD 權利管理利用[Azure AD 的企業對企業（B2B）](../b2b/what-is
 
 1. 在左側功能表的 [**權利管理**] 區段中，按一下 [**設定**]。
 
-1. 按一下 **[編輯]**。
+1. 按一下 **[編輯]** 。
 
     ![管理外部使用者生命週期的設定](./media/entitlement-management-external-users/settings-external-users.png)
 
@@ -143,7 +143,7 @@ Azure AD 權利管理利用[Azure AD 的企業對企業（B2B）](../b2b/what-is
 
 1. 如果您想要移除此目錄中的來賓使用者帳戶，您可以設定移除之前的天數。 如果您想要在來賓使用者帳戶失去對任何存取套件的最後一次指派時將其移除，請設定 [**從這個目錄移除外部使用者到0之前的天數**]。 **0**
 
-1. 按一下 [檔案]  。
+1. 按一下 [檔案] 。
 
 ## <a name="next-steps"></a>後續步驟
 

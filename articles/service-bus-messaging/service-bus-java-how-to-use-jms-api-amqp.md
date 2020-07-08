@@ -1,25 +1,15 @@
 ---
 title: 使用 AMQP 搭配 JAVA Message Service API & Azure 服務匯流排
 description: 如何搭配 Azure 服務匯流排和 Advanced Message Queuing Protodol (AMQP) 1.0 使用 Java Message Service (JMS)。
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-editor: spelluru
-ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: Java
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ccea6175d0baec56b609538d15c32892bb2edff0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341736"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>搭配 Azure 服務匯流排和 AMQP 1.0 使用 JAVA 訊息服務（JMS）
 本文說明如何使用常用的 JAVA 訊息服務（JMS） API 標準，從 JAVA 應用程式使用 Azure 服務匯流排訊息功能（佇列和發佈/訂閱主題）。 其中有一個[隨附文章](service-bus-amqp-dotnet.md)，說明如何使用 AZURE 服務匯流排 .net API 來執行相同的動作。 您可以同時使用這兩個指南了解使用 AMQP 1.0 的跨平台訊息。
@@ -29,7 +19,7 @@ ms.locfileid: "77371263"
 Azure 服務匯流排中支援 AMQP 1.0，表示您可以使用有效率的二進位通訊協定，從某個範圍的平臺使用佇列和發佈/訂閱代理訊息功能。 此外，您還可以建置使用混合語言、架構及作業系統所建置之元件所組成的應用程式。
 
 ## <a name="get-started-with-service-bus"></a>開始使用服務匯流排
-本指南假設您已經有一個服務匯流排命名空間，其中包含名`basicqueue`為的佇列。 如果沒有，您可以使用[Azure 入口網站](https://portal.azure.com)[建立命名空間和佇列](service-bus-create-namespace-portal.md)。 如需有關如何建立服務匯流排命名空間和佇列的相關詳細資訊，請參閱[開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)。
+本指南假設您已經有一個服務匯流排命名空間，其中包含名為的佇列 `basicqueue` 。 如果沒有，您可以使用[Azure 入口網站](https://portal.azure.com)[建立命名空間和佇列](service-bus-create-namespace-portal.md)。 如需有關如何建立服務匯流排命名空間和佇列的相關詳細資訊，請參閱[開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)。
 
 > [!NOTE]
 > 分割的佇列和主題也支援 AMQP。 如需詳細資訊，請參閱[分割傳訊實體](service-bus-partitioning.md)及[服務匯流排分割佇列和主題的 AMQP 1.0 支援](service-bus-partitioned-queues-and-topics-amqp-overview.md)。
@@ -37,7 +27,7 @@ Azure 服務匯流排中支援 AMQP 1.0，表示您可以使用有效率的二�
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>下載 AMQP 1.0 JMS 用戶端程式庫
-如需有關下載最新版 Apache Qpid JMS AMQP 1.0 用戶端程式庫之位置的詳細資訊[https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)，請造訪。
+如需有關下載最新版 Apache Qpid JMS AMQP 1.0 用戶端程式庫之位置的詳細資訊，請造訪 [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) 。
 
 您使用服務匯流排建立和執行 JMS 應用程式時，必須從 Apache Qpid JMS AMQP 1.0 散發封裝將下列 4 個 JAR 檔加入 Java CLASSPATH：
 
@@ -376,7 +366,7 @@ JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動�
 | createTemporaryQueue        | 透過管理 API/工具/入口網站建立佇列，且 *AutoDeleteOnIdle* 設為到期時間 |
 | receiveNoWait               | 使用服務匯流排 SDK 所提供的 receive （）方法，並指定非常低或零的超時 |
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 本作法指南說明如何以常用的 JMS API 和 AMQP 1.0 從 Java 使用服務匯流排代理訊息功能 (佇列和發佈/訂閱主題)。
 
 您也可以使用包括 .NET、C、Python 和 PHP 在內的其他語言所撰寫的 Service Bus AMQP 1.0。 使用這些不同的語言撰寫的元件可使用服務匯流排中的 AMQP 1.0 支援確實完整交換訊息。

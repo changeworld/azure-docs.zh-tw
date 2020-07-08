@@ -9,26 +9,26 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357387"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
 本主題描述 Azure AD Connect 同步（同步處理引擎）中的內建排程器。
 
 此功能是隨組建 1.1.105.0 (於 2016 年 2 月發行) 一起導入。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目錄中發生的變更。 有兩個排程器程序，一個用於密碼同步處理，另一個用於物件/屬性同步處理以及維護工作。 本主題包含後者。
 
 在舊版中，物件和屬性的排程器是在同步處理引擎的外部。 它使用 Windows 工作排程器或個別的 Windows 服務來觸發同步處理程序。 排程器已隨 1.1 版內建於同步處理引擎中，並且允許進行一些自訂。 新的預設同步處理頻率為 30 分鐘。
@@ -109,7 +109,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 您可能因為有一個必須立即同步處理的緊急變更，而需要手動執行循環。 
 
-如果您需要手動執行同步處理迴圈，請從 PowerShell 執行`Start-ADSyncSyncCycle -PolicyType Delta`。
+如果您需要手動執行同步處理迴圈，請從 PowerShell 執行 `Start-ADSyncSyncCycle -PolicyType Delta` 。
 
 若要起始完整同步處理循環，請從 PowerShell 提示字元執行 `Start-ADSyncSyncCycle -PolicyType Initial` 。   
 

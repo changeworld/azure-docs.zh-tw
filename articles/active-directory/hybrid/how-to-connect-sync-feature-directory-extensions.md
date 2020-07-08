@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357455"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
 您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 這些屬性可以透過[擴充](https://docs.microsoft.com/graph/extensibility-overview
@@ -60,14 +60,14 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
 請確定您選取 [**所有應用程式**] 以查看此應用程式。
 
-屬性的前面會加**上\_副檔名 {ApplicationId\_}**。 ApplicationId 具有 Azure AD 租使用者中所有屬性的相同值。 本主題中的所有其他案例都需要此值。
+屬性的前面會加上**副檔名 \_ {ApplicationId \_ }**。 ApplicationId 具有 Azure AD 租使用者中所有屬性的相同值。 本主題中的所有其他案例都需要此值。
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 來查看屬性
 
 這些屬性現在可透過 Microsoft Graph API 使用[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#)來取得。
 
 >[!NOTE]
-> 在 Microsoft Graph API 中，您必須要求要傳回的屬性。 明確地選取屬性，如下所`https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`示：。
+> 在 Microsoft Graph API 中，您必須要求要傳回的屬性。 明確地選取屬性，如下所示： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` 。
 >
 > 如需詳細資訊，請參閱 [Microsoft Graph：使用查詢參數](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)。
 

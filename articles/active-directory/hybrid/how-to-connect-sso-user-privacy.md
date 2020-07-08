@@ -11,23 +11,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60242112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357829"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>使用者隱私權與 Azure AD 無縫單一登入
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 
 Azure AD 無縫 SSO 會建立下列記錄類型，其中可以包含個人資料： 
@@ -69,5 +69,5 @@ Foreach ($file in $Files) {
 ## <a name="next-steps"></a>後續步驟
 
 * [在信任中心檢閱 Microsoft 隱私權原則](https://www.microsoft.com/trustcenter)
-  - [**疑難排解**](tshoot-connect-sso.md)-瞭解如何解決此功能的常見問題。
-  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -用於提出新的功能要求。
+  - [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。
+  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用於提出新的功能要求。

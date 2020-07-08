@@ -1,26 +1,14 @@
 ---
 title: Azure 服務匯流排診斷記錄 |Microsoft Docs
 description: 本文概述可用於 Azure 服務匯流排的所有操作和診斷記錄。
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337537"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>啟用服務匯流排的診斷記錄
 
@@ -74,7 +62,7 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 
 下列管理作業會在操作記錄中加以捕捉： 
 
-| 影響範圍 | 作業|
+| 影響範圍 | 操作|
 |-------| -------- |
 | 命名空間 | <ul> <li> 建立命名空間</li> <li> 更新命名空間 </li> <li> 刪除命名空間 </li> <li> 更新命名空間 Win2k3 sharedaccess 原則 </li> </ul> | 
 | 佇列 | <ul> <li> 建立佇列</li> <li> 更新佇列</li> <li> 刪除佇列 </li> <li> AutoDelete 刪除佇列 </li> </ul> | 
@@ -109,7 +97,7 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 
     ![[診斷設定] 窗格](./media/service-bus-diagnostic-logs/image3.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 新的設定會在大約10分鐘內生效。 記錄會顯示在 [**診斷記錄**] 窗格中設定的封存目標中。
 

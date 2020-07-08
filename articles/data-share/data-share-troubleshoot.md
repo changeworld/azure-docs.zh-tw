@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322035"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>針對 Azure 資料共用中的常見問題進行疑難排解 
 
@@ -32,7 +32,7 @@ ms.locfileid: "76964221"
     1. 選取您想要用來建立 Azure 資料共用資源的訂用帳戶
     1. 按一下 [資源提供者]****
     1. 搜尋**DataShare**
-    1. 按一下 [註冊]  
+    1. 按一下 [註冊] 
 
     您必須擁有 [Azure 參與者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成這些步驟。 
 
@@ -62,9 +62,9 @@ ms.locfileid: "76964221"
 
 ## <a name="troubleshooting-sql-based-sharing"></a>針對以 SQL 為基礎的共用進行疑難排解
 
-「SQL database 中不存在使用者 x」
+「使用者 x 不存在於 SQL Database 中」
 
-如果您從以 SQL 為基礎的來源新增資料集時收到此錯誤，可能是因為您未在 SQL Server 上建立 Azure 資料共用受控識別的使用者。  若要解決此問題，請執行下列腳本：
+如果您從以 SQL 為基礎的來源新增資料集時收到此錯誤，可能是因為您未在 SQL Database 中建立 Azure 資料共用受控識別的使用者。  若要解決此問題，請執行下列腳本：
 
 ```sql
     create user "<share_acct_name>" from external provider; 

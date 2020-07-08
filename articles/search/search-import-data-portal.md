@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 入口網站將資料匯入搜尋索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何在 Azure 入口網站中使用匯入資料精靈，以從 Cosmos DB、Blob 儲存體、表格儲存體、SQL Database 和 Azure VM 上的 SQL Server 對 Azure 資料進行編目。
+description: 瞭解如何使用 Azure 入口網站中的 [匯入資料] wizard，從 Cosmos DB、Blob 儲存體、資料表儲存體、SQL Database、SQL 受控執行個體和 Azure Vm 上的 SQL Server 編目 Azure 資料。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321376"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 認知搜尋的匯入資料嚮導
 
@@ -61,11 +61,11 @@ ms.locfileid: "75460692"
 
 在執行 wizard 之前，您應該先建立這個單一資料表或視圖，而且它必須包含內容。 基於明顯的理由，在空的資料來源上執行「匯**入資料**」 wizard 沒有意義。
 
-|  選項 | 描述 |
+|  選取項目 | 描述 |
 | ---------- | ----------- |
 | **現有的資料來源** |如果您已經在搜尋服務中定義索引子，您可能會有可以重複使用的現有資料來源定義。 在 Azure 認知搜尋中，資料來源物件只會由索引子使用。 您可以用程式設計方式或透過 [匯**入資料**] wizard 來建立資料來源物件，並視需要加以重複使用。|
 | **範例**| Azure 認知搜尋提供兩個內建的範例資料來源，用於教學課程和快速入門： Cosmos DB 上的房地產 SQL database 和飯店資料庫。 如需以飯店範例為基礎的逐步解說，請參閱 Azure 入口網站快速入門[中的建立索引](search-get-started-portal.md)。 |
-| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |您可以在頁面上或透過 ADO.NET 連接字串指定服務名稱、具有讀取權限的資料庫使用者認證以及資料庫名稱。 選擇連接字串選項以檢視或自訂屬性。 <br/><br/>提供資料列集的資料表或檢視必須在頁面上指定。 連線成功後會出現此選項，並透過下拉式清單供您選取。|
+| [**Azure SQL Database 或 SQL 受控執行個體**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |您可以在頁面上或透過 ADO.NET 連接字串指定服務名稱、具有讀取權限的資料庫使用者認證以及資料庫名稱。 選擇連接字串選項以檢視或自訂屬性。 <br/><br/>提供資料列集的資料表或檢視必須在頁面上指定。 連線成功後會出現此選項，並透過下拉式清單供您選取。|
 | **Azure VM 上的 SQL Server** |指定完整服務名稱、使用者識別碼與密碼以及資料庫作為連接字串。 若要使用此資料來源，您必須先前就已在本機存放區中安裝用來加密連線的憑證。 如需指示，請參閱[Azure 認知搜尋的 SQL VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)連線。 <br/><br/>提供資料列集的資料表或檢視必須在頁面上指定。 連線成功後會出現此選項，並透過下拉式清單供您選取。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|需求包括帳戶、資料庫和集合。 集合中的所有文件將會包含在索引中。 您可以定義要壓平合併或篩選資料列集的查詢，或將查詢保留空白。 在此 wizard 中不需要查詢。|
 | [**Azure Blob 儲存體**](search-howto-indexing-azure-blob-storage.md) |需求包括儲存體帳戶和容器。 如果 Blob 名稱為了分組而遵循虛擬命名慣例，您可以指定名稱的虛擬目錄部分做為容器下的資料夾 (選擇性)。 如需詳細資訊，請參閱[為 Blob 儲存體編製索引](search-howto-indexing-azure-blob-storage.md)。 |
@@ -75,7 +75,7 @@ ms.locfileid: "75460692"
 
 在幕後，嚮導會建立、設定和叫用下列物件。 在嚮導執行之後，您可以在入口網站頁面中找到其輸出。 服務的 [總覽] 頁面包含索引、索引子、資料來源和技能集的清單。 您可以在入口網站中以完整 JSON 來查看索引定義。 針對其他定義，您可以使用[REST API](https://docs.microsoft.com/rest/api/searchservice/)來取得特定物件。
 
-| Object | 描述 | 
+| Object | Description | 
 |--------|-------------|
 | [資料來源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 將連接資訊保存到來源資料，包括認證。 資料來源物件是以獨佔方式使用於索引子。 | 
 | [索引](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用於全文檢索搜尋和其他查詢的實體資料結構。 | 
@@ -93,7 +93,7 @@ ms.locfileid: "75460692"
 
    ![入口網站中的匯入資料命令](./media/search-import-data-portal/import-data-cmd2.png "啟動匯入資料精靈")
 
-您也可以從其他 Azure 服務啟動匯**入資料**，包括 Azure Cosmos DB、Azure SQL Database 和 Azure Blob 儲存體。 在 [服務總覽] 頁面的左側導覽窗格中，尋找 [**新增 Azure 認知搜尋**]。
+您也可以從其他 Azure 服務啟動匯**入資料**，包括 Azure Cosmos DB、AZURE SQL DATABASE、SQL 受控執行個體和 Azure Blob 儲存體。 在 [服務總覽] 頁面的左側導覽窗格中，尋找 [**新增 Azure 認知搜尋**]。
 
 <a name="index-definition"></a>
 
@@ -105,7 +105,7 @@ Wizard 會產生不完整的索引，其中會填入從輸入資料來源取得�
 
 1. 資料類型是否適用于傳入資料？ Azure 認知搜尋支援[entity data model （EDM）資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 針對 Azure SQL 資料，有對應的對應[圖表](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping)會配置對等的值。 如需更多背景，請參閱[欄位對應和轉換](search-indexer-field-mappings.md)。
 
-1. 您有一個可作為*金鑰*的欄位嗎？ 此欄位必須是 Edm 字串，而且必須唯一識別檔。 對於關聯式資料，它可能會對應到主鍵。 對於 blob，它可能是`metadata-storage-path`。 如果欄位值包含空格或連字號，您必須在 [建立索引子]**** 步驟的 [進階選項]**** 底下設定 [Base-64 編碼金鑰]**** 選項，以隱藏這些字元的驗證檢查。
+1. 您有一個可作為*金鑰*的欄位嗎？ 此欄位必須是 Edm 字串，而且必須唯一識別檔。 對於關聯式資料，它可能會對應到主鍵。 對於 blob，它可能是 `metadata-storage-path` 。 如果欄位值包含空格或連字號，您必須在 [建立索引子]**** 步驟的 [進階選項]**** 底下設定 [Base-64 編碼金鑰]**** 選項，以隱藏這些字元的驗證檢查。
 
 1. 設定屬性，以決定該欄位在索引中的使用方式。 
 

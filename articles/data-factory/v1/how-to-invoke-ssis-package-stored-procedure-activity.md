@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322121"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure Data Factory 使用預存程序活動叫用 SSIS 套件
 本文描述如何使用預存程序活動從 Azure Data Factory 管線叫用 SSIS 封裝。 
@@ -26,10 +26,10 @@ ms.locfileid: "75438793"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[使用預存程序活動來叫用 SSIS 套件](../how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-這篇文章中的逐步解說會使用裝載 SSIS 目錄的 Azure SQL 資料庫。 您也可以使用 Azure SQL Database 受控執行個體。
+本文中的逐步解說使用 Azure SQL Database。 您也可以使用 Azure SQL 受控執行個體。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>建立 Azure-SSIS 整合執行階段
 如果您未依照[教學課程：部署 SSIS 套件](../tutorial-create-azure-ssis-runtime-portal.md)中的逐步指示進行，請建立 Azure SSIS 整合執行階段。 您無法使用第 1 版的 Data Factory 來建立 Azure-SSIS 整合執行階段。 
@@ -82,7 +82,7 @@ ms.locfileid: "75438793"
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為**參與者**或**擁有者**角色，或是 Azure 訂用帳戶的**管理員**。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務
-建立連結服務，將主控 SSIS 目錄的 Azure SQL 資料庫連結到資料處理站。 資料處理站使用此連結服務中的資訊連線到 SSISDB 資料庫，並執行預存程序來執行 SSIS 套件。 
+建立連結服務，將裝載 SSIS 目錄的 Azure SQL Database 中的資料庫連結到您的 data factory。 資料處理站使用此連結服務中的資訊連線到 SSISDB 資料庫，並執行預存程序來執行 SSIS 套件。 
 
 1. 使用下列內容，在 **C:\ADF\RunSSISPackage** 資料夾中建立名為 **AzureSqlDatabaseLinkedService.json** 的 JSON 檔案： 
 
@@ -190,7 +190,7 @@ ms.locfileid: "75438793"
 
     您可以繼續執行此 Cmdlet 直到您看到配量處於**就緒**狀態或**失敗**狀態。 
 
-    您可以依據 Azure SQL Server 中的 SSISDB 資料庫執行下列查詢，確認已執行套件。 
+    您可以對伺服器中的 SSISDB 資料庫執行下列查詢，以確認已執行封裝。 
 
     ```sql
     select * from catalog.executions

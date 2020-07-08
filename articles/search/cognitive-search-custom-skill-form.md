@@ -6,20 +6,20 @@ manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321301"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>範例：建立表單辨識器自訂技能
 
 在此 Azure 認知搜尋技能集範例中，您將瞭解如何使用 c # 和 Visual Studio 來建立表單辨識器自訂技能。 表單辨識器會分析檔，並解壓縮索引鍵/值組和資料表資料。 藉由將表單辨識器包裝到[自訂技能介面](cognitive-search-custom-skill-interface.md)中，您可以將此功能新增為端對端擴充管線中的一個步驟。 接著，管線就可以載入檔並進行其他轉換。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任何版本)。
 - 至少有五種相同類型的表單。 您可以使用本指南所提供的範例資料。
@@ -43,9 +43,9 @@ ms.locfileid: "82791998"
 * `FORMS_RECOGNIZER_RETRY_DELAY`，其值設定為1000。 這個值是程式重試查詢之前，所要等待的時間（以毫秒為單位）。
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS`，其值設定為100。 這個值是程式在嘗試取得成功回應時，會查詢服務的次數。
 
-接下來，開啟_AnalyzeForm.cs_ ，並`fieldMappings`尋找參考*欄位對應 json*檔案的變數。 這個檔案（以及參考它的變數）會定義您想要從表單中解壓縮的索引鍵清單，以及每個索引鍵的自訂標籤。 例如， `{ "Address:", "address" }, { "Invoice For:", "recipient" }`的值表示腳本只會儲存所偵測到之`Address:`和`Invoice For:`欄位的值，而且會分別以`"address"`和`"recipient"`標記這些值。
+接下來，開啟_AnalyzeForm.cs_ ，並尋找 `fieldMappings` 參考檔案*field-mappings.js*的變數。 這個檔案（以及參考它的變數）會定義您想要從表單中解壓縮的索引鍵清單，以及每個索引鍵的自訂標籤。 例如，的值 `{ "Address:", "address" }, { "Invoice For:", "recipient" }` 表示腳本只會儲存所偵測到之和欄位的值 `Address:` `Invoice For:` ，而且會分別以和標記這些值 `"address"` `"recipient"` 。
 
-最後，請記`contentType`下變數。 此腳本會在 URL 所參考的遠端檔上執行指定的表單辨識器模型，因此內容`application/json`類型為。 如果您想要在 HTTP 要求中包含其位元組資料流程來分析本機檔案，您必須將變更`contentType`為適用于您檔案的適當[MIME 類型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)。
+最後，請記下 `contentType` 變數。 此腳本會在 URL 所參考的遠端檔上執行指定的表單辨識器模型，因此內容類型為 `application/json` 。 如果您想要在 HTTP 要求中包含其位元組資料流程來分析本機檔案，您必須將變更 `contentType` 為適用于您檔案的適當[MIME 類型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)。
 
 ## <a name="test-the-function-from-visual-studio"></a>從 Visual Studio 測試函式
 
@@ -77,12 +77,12 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-在這裡，您將需要提供與您用來定型之表單類型相同的表單 URL。 基於測試目的，您可以使用其中一種訓練表單。 如果您已遵循捲曲的快速入門，您的表單就會位於 Azure blob 儲存體帳戶中。 開啟 Azure 儲存體總管、尋找表單檔案、在該檔案上按一下滑鼠右鍵，然後選取 [**取得共用存取**簽章]。 下一個對話方塊視窗將提供 URL 和 SAS 權杖。 請分別在要求主體`"formUrl"`的`"formSasToken"`和欄位中輸入這些字串。
+在這裡，您將需要提供與您用來定型之表單類型相同的表單 URL。 基於測試目的，您可以使用其中一種訓練表單。 如果您已遵循捲曲的快速入門，您的表單就會位於 Azure blob 儲存體帳戶中。 開啟 Azure 儲存體總管、尋找表單檔案、在該檔案上按一下滑鼠右鍵，然後選取 [**取得共用存取**簽章]。 下一個對話方塊視窗將提供 URL 和 SAS 權杖。 `"formUrl"`請分別在要求主體的和欄位中輸入這些字串 `"formSasToken"` 。
 
 > [!div class="mx-imgBorder"]
 > ![Azure 儲存體 explorer;已選取 pdf 檔](media/cognitive-search-skill-form/form-sas.png)
 
-如果您想要分析不在 Azure blob 儲存體中的遠端檔，請在`"formUrl"`欄位中貼上其 URL， `"formSasToken"`並將此欄位保留空白。
+如果您想要分析不在 Azure blob 儲存體中的遠端檔，請在欄位中貼上其 URL， `"formUrl"` 並將此 `"formSasToken"` 欄位保留空白。
 
 > [!NOTE]
 > 在技能集中整合技能時，會由認知搜尋提供 URL 和權杖。
@@ -111,15 +111,15 @@ POST https://localhost:7071/api/analyze-form
 
 當您對函式行為感到滿意時，就可以發行它。
 
-1. 在 Visual Studio 的**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**發佈**]。 選擇 [**建立新** > **發行**]。
+1. 在 Visual Studio 的**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**發佈**]。 選擇 [**建立新**  >  **發行**]。
 1. 如果您尚未將 Visual Studio 連線到您的 Azure 帳戶，請選取 [新增帳戶...]****。
-1. 遵循螢幕上的提示進行。 為您的 app service、Azure 訂用帳戶、資源群組、主控方案和您想要使用的儲存體帳戶指定唯一的名稱。 您可以建立新的資源群組、新的主控方案和新的儲存體帳戶（如果您還沒有的話）。 當您完成時，請選取 [**建立**]。
+1. 遵循螢幕上的提示進行。 為您的 app service、Azure 訂用帳戶、資源群組、主控方案和您想要使用的儲存體帳戶指定唯一的名稱。 您可以建立新的資源群組、新的主控方案和新的儲存體帳戶（如果您還沒有的話）。 完成之後，選取 [建立]。
 1. 部署完成之後，請注意網站 URL。 此 URL 是您在 Azure 中的函數應用程式的位址。 將它儲存到暫存位置。
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [資源群組]，然後尋找`AnalyzeForm`您發佈的函式。 在 [管理]**** 區段下，應該會看到主機金鑰。 複製*預設*的主機金鑰，並將它儲存到暫存位置。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [資源群組]，然後尋找 `AnalyzeForm` 您發佈的函式。 在 [管理]**** 區段下，應該會看到主機金鑰。 複製*預設*的主機金鑰，並將它儲存到暫存位置。
 
 ## <a name="connect-to-your-pipeline"></a>連線到您的管線
 
-若要在認知搜尋管線中使用此技能，您必須將技能定義新增至您的技能集。 下列 JSON 區塊是範例技能定義（您應該更新輸入和輸出以反映您的特定案例和技能集環境）。 將`AzureFunctionEndpointUrl`取代為您的函式 URL `AzureFunctionDefaultHostKey` ，並將取代為您的主機金鑰。
+若要在認知搜尋管線中使用此技能，您必須將技能定義新增至您的技能集。 下列 JSON 區塊是範例技能定義（您應該更新輸入和輸出以反映您的特定案例和技能集環境）。 將取代為您的函式 `AzureFunctionEndpointUrl` URL，並 `AzureFunctionDefaultHostKey` 將取代為您的主機金鑰。
 
 ```json
 { 

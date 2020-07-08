@@ -1,25 +1,15 @@
 ---
 title: 開始使用 Azure 服務匯流排主題和訂用帳戶 | Microsoft Docs
 description: 撰寫使用服務匯流排傳訊主題和訂用帳戶的 C# .NET Core 主控台應用程式。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
-ms.author: aschhab
-ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74560104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337511"
 ---
 # <a name="get-started-with-service-bus-topics"></a>開始使用服務匯流排主題
 
@@ -30,7 +20,7 @@ ms.locfileid: "74560104"
 1. 撰寫 .NET Core 主控台應用程式，以將一組訊息傳送到主題。
 2. 撰寫 .NET Core 主控台應用程式，以從訂用帳戶接收這些訊息。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題訂用](service-bus-quickstart-topics-subscriptions-portal.md)帳戶中的步驟來執行下列工作：
@@ -75,7 +65,7 @@ ms.locfileid: "74560104"
     static ITopicClient topicClient;
     ``` 
 
-3. 將`Main()`方法取代為下列**非同步** `Main`方法，使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
+3. 將 `Main()` 方法取代為下列**非同步** `Main` 方法，使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -210,7 +200,7 @@ ms.locfileid: "74560104"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 將`Main()`方法取代為下列**非同步** `Main`方法。 它會呼叫`RegisterOnMessageHandlerAndReceiveMessages()`您將在下一個步驟中新增的方法。 
+3. 將方法取代為 `Main()` 下列**非同步** `Main` 方法。 它會呼叫 `RegisterOnMessageHandlerAndReceiveMessages()` 您將在下一個步驟中新增的方法。 
 
     ```csharp
     public static async Task Main(string[] args)

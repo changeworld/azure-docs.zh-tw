@@ -1,19 +1,14 @@
 ---
 title: Azure 服務匯流排 - 自動更新傳訊單位
 description: 本文說明如何使用 Azure 自動化 Runbook 來自動更新服務匯流排命名空間的傳訊單位。
-services: service-bus-messaging
-ms.service: service-bus-messaging
-documentationcenter: ''
-author: spelluru
 ms.topic: how-to
-ms.date: 05/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 5ece7beaea709c9b1e52cf2130484663da0aa4ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341497"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自動更新 Azure 服務匯流排命名空間的傳訊單位 
 本文會說明如何根據資源 (CPU 或記憶體) 使用量，自動更新服務匯流排命名空間的[傳訊單位](service-bus-premium-messaging.md)。 
@@ -75,10 +70,10 @@ ms.locfileid: "83663096"
         if ($schemaId -eq "AzureMonitorMetricAlert") {
 
             # Get the resource group name from the alert context
-            $resourceGroupName = $AlertContext.resourceGroupName
+            $resourceGroupName = $WebhookBody.resourceGroupName
             
             # Get the namespace name from the alert context
-            $namespaceName = $AlertContext.resourceName
+            $namespaceName = $WebhookBody.resourceName
         }
     }
     

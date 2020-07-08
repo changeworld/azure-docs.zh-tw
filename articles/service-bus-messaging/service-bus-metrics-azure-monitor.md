@@ -1,20 +1,14 @@
 ---
 title: Azure 監視器中的 Azure 服務匯流排計量 | Microsoft Docs
 description: 本文說明如何使用 Azure 監視器來監視服務匯流排實體 (佇列、主題和訂閱)。
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: aschhab
-ms.openlocfilehash: f2f3c8113fb89a41b1a22567b4e5ca0085353689
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340285"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 服務匯流排計量
 

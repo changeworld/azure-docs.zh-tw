@@ -1,24 +1,14 @@
 ---
 title: 什麼是 Azure 轉送？ | Microsoft Docs
 description: 本文概述 Azure 轉送服務，此服務可讓您開發雲端應用程式來取用公司網路中所執行的內部部署服務，而不需要開啟防火牆連線或對網路基礎結構進行侵入式變更。
-services: service-bus-relay
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: spelluru
-ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211628"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322653"
 ---
 # <a name="what-is-azure-relay"></a>什麼是 Azure 轉送？
 Azure 轉送服務可讓您在公用雲端中安全地公開公司網路中所執行的服務。 您不需要開啟防火牆上的連線，也不需要對公司網路基礎結構進行侵入式變更，就能做到這一點。 
@@ -40,7 +30,7 @@ Azure 轉送不同於網路層級的整合技術，例如 VPN。 Azure 轉送可
 4. 轉送服務接著會透過用戶端專用的雙向通訊端，將資料「轉送」** 至內部部署服務。 用戶端不需要直接連線到內部部署服務。 它不需要知道服務的所在位置。 而且，內部部署服務也不需要在防火牆上開啟任何輸入連接埠。
 
 
-## <a name="features"></a>功能 
+## <a name="features"></a>特性 
 Azure 轉送有兩項功能︰
 
 - [混合](#hybrid-connections)式連線-使用開放式標準 web 通訊端來啟用多平臺案例。

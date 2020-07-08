@@ -1,20 +1,14 @@
 ---
 title: 建立分割的 Azure 服務匯流排佇列和主題 | Microsoft Docs
 description: 說明如何使用多個訊息代理程式分割服務匯流排佇列和主題。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
-ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339641"
 ---
 # <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
@@ -31,13 +25,15 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 當用戶端想要從分割的佇列接收訊息，或從訂用帳戶傳送到分割的主題時，服務匯流排會查詢訊息的所有分割區，然後將從任何訊息存放區取得的第一個訊息傳回給接收者。 服務匯流排會快取其他訊息，然後在它收到其他接收要求時將其傳回。 接收的用戶端並不知道分割。分割佇列或主題的用戶端對向行為 (例如讀取、完成、延遲、無效化、預先擷取) 和一般實體的行為相同。
 
+非資料分割實體上的查看作業一律會傳回最舊的訊息，但不會傳回資料分割實體上的。 相反地，它會傳回其中一個資料分割中的最舊訊息，而其中的訊息代理程式會先回應。 並不保證傳回的訊息在所有分割區中都是最舊的。 
+
 傳送訊息給分割的佇列或主題，或從該處接收訊息時，不需要額外成本。
 
 ## <a name="enable-partitioning"></a>啟用分割
 
 若要搭配 Azure 服務匯流排使用分割的佇列和主題，請使用 Azure SDK 2.2 版或更新版本，或在您的 HTTP 要求中指定 `api-version=2013-10` 或更新版本。
 
-### <a name="standard"></a>Standard
+### <a name="standard"></a>標準
 
 在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會建立實體的16個複本（16個數據分割），每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 如果要查看分割佇列或主題的大小上限，您可以在 [Azure 入口網站][Azure portal]上，在該實體的 [概觀]**** 刀鋒視窗中檢視其項目。
 

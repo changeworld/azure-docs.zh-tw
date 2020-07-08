@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60384695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356656"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步處理服務陰影屬性
 大部分屬性是以它們在內部部署 Active Directory 中的相同方式，在 Azure AD 中表示。 但是某些屬性有一些特殊處理，而且在 Azure AD 中的屬性值可能不同於 Azure AD Connect 同步處理。
@@ -58,7 +58,7 @@ userPrincipalName 屬性是您使用 PowerShell 時看到的值。
 | 內部部署 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在此情況下，已移除**smtp\@： abbie. spencer fabrikam.com** ，因為該網域尚未經過驗證。 但是 Exchange 也新增了**SIP： abbie.\@spencer fabrikamonline.com**。 Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
+在此情況下，已移除**smtp： abbie. spencer \@ fabrikam.com** ，因為該網域尚未經過驗證。 但是 Exchange 也新增了**SIP： abbie. spencer \@ fabrikamonline.com**。 Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
 
 proxyAddresses 的此邏輯稱為 **ProxyCalc**。 ProxyCalc 在使用者每次變更時叫用，其時機為︰
 
@@ -75,5 +75,5 @@ ProxyCalc 可能需要一些時間來處理使用者的變更，並且與 Azure 
 有重複的屬性值時，也會使用陰影屬性。 如需詳細資訊，請參閱[重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="see-also"></a>另請參閱
-* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
-* [整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+* [Azure AD Connect 同步處理](how-to-connect-sync-whatis.md)
+* [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

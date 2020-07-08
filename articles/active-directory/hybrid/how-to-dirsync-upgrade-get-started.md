@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60348525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356792"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect︰從 DirSync 升級
 Azure AD Connect 是 DirSync 的後續產品。 您會在本主題中了解可從 DirSync 升級的方式。 這些步驟不適用於從另一個版本的 Azure AD Connect 或從 Azure AD Sync 升級。
@@ -101,7 +101,7 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
      ![分析已完成，準備好從 DirSync 升級](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * 如果您使用完整的 SQL Server for DirSync 功能，您會看到這個頁面：  
      ![分析已完成，準備好從 DirSync 升級](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
-     系統會顯示有關 DirSync 所使用之現有 SQL Server 資料庫伺服器的資訊。 如果需要，請進行適當的調整。 按一下 [下一步] **** 繼續安裝。
+     系統會顯示有關 DirSync 所使用之現有 SQL Server 資料庫伺服器的資訊。 如果需要，請進行適當的調整。 按一下 [下一步]  以繼續安裝。
    * 如果您有超過 5 萬個物件，您會看到這個畫面：  
      ![分析已完成，準備好從 DirSync 升級](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      若要繼續進行就地升級，請按一下訊息旁的核取方塊：繼續在此電腦上升級 DirSync。****
@@ -160,9 +160,9 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
    * 用來連接到 SQL Server 的服務帳戶 (如果您的 SQL Server 資料庫位於遠端，則這個帳戶必須是網域服務帳戶)。
      您可以在這個畫面上看到下列選項：  
      ![輸入您的 Azure AD 認證](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. 按 [下一步]  。
+7. 按 [下一步] 。
 8. 在 [準備好設定]**** 頁面上，保持核取 [設定一完成，即開始同步處理程序]****。 伺服器現在處於[預備模式](how-to-connect-sync-staging-server.md)，讓變更不會匯出至 Azure AD。
-9. 按一下 [Install]  。
+9. 按一下 [安裝]。
 10. 安裝完成之後，請先登出 Windows 再重新登入，才能使用 Synchronization Service Manager、同步化規則編輯器，或嘗試任何其他組態變更。
 
 > [!NOTE]

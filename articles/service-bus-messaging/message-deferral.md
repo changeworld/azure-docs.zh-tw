@@ -1,24 +1,14 @@
 ---
 title: Azure 服務匯流排訊息延遲
 description: 本文說明如何延遲傳遞 Azure 服務匯流排訊息。 訊息會保留於佇列或訂用帳戶中，但會將它擱置於一旁。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341224"
 ---
 # <a name="message-deferral"></a>訊息延遲
 

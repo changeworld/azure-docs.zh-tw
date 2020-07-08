@@ -1,18 +1,16 @@
 ---
 title: 將 Azure 服務匯流排與 Azure Private Link 服務整合
 description: 了解如何整合 Azure 服務匯流排與 Azure Private Link 服務
-services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
-ms.date: 03/13/2020
-ms.service: service-bus-messaging
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340435"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>將 Azure 服務匯流排與 Azure Private Link 整合
 
@@ -66,7 +64,7 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 
     ![新增私人端點按鈕](./media/private-link-service/private-link-service-3.png)
 7. 在 [基本] 頁面上，遵循下列步驟： 
-    1. 選取想要在其中建立私人端點的 **Azure 訂用帳戶**。 
+    1. 選取您要在其中建立私人端點的 **Azure 訂閱**。 
     2. 選取私人端點資源的**資源群組**。
     3. 輸入私人端點的**名稱**。 
     5. 選取私人端點的**區域**。 私人端點必須與虛擬網路位於相同區域，但可與將要連線的目的地私人連結資源位於不同區域。 
@@ -84,14 +82,14 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
             ![建立私人端點 - [資源] 頁面](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. 如果選取 [依資源識別碼或別名連線至 Azure 資源]，請遵循下列步驟：
         1. 輸入**資源識別碼**或**別名**。 其可以是某人與您共用的資源識別碼或別名。 取得資源識別碼最簡單方式是瀏覽至 Azure 入口網站中的服務匯流排命名空間，然後複製 URI 從 `/subscriptions/` 開始的部分。 如需範例，請參閱下圖。 
-        2. 針對 [目標子資源]，請輸入**命名空間**。 其為私人端點可存取的子資源類型。 
+        2. 針對 [目標子資源]，請輸入**命名空間**。 其為您的私人端點可以存取的子資源類型。 
         3. (選擇性) 輸入**要求訊息**。 資源擁有者會在管理私人端點連線時看見此訊息。 
         4. 然後，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
 
             ![建立私人端點 - 使用資源識別碼連線](./media/private-link-service/connect-resource-id.png)
 9. 在 [設定] 頁面上，您會選取在虛擬網路中要部署私人端點的子網路。 
-    1. 選取一個**虛擬網路**。 下拉式清單只會列出目前所選訂用帳戶與位置中的虛擬網路。 
-    2. 選取所選虛擬網路中的一個**子網路**。 
+    1. 選取**虛擬網路**。 下拉式清單只會列出目前所選訂閱與位置中的虛擬網路。 
+    2. 選取您所選虛擬網路中的**子網路**。 
     3. 完成時，選取 [下一步:標記 >] 按鈕 (位於頁面底部)。 
 
         ![建立私人端點 - [設定] 頁面](./media/private-link-service/create-private-endpoint-configuration-page.png)
@@ -184,16 +182,16 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 1. 在搜尋列中，鍵入 [服務匯流排]。
 1. 選取想要管理的**命名空間**。
 1. 選取 [網路] 索引標籤。
-5. 根據想要執行的作業 (核准、拒絕或移除)，移至下列適當的章節。 
+5. 根據您想要執行的作業 (核准、拒絕或移除)，移至下列適當的小節。 
 
 ### <a name="approve-a-private-endpoint-connection"></a>核准私人端點連線
 
-1. 如果有任何暫止的連線，則會在佈建狀態中看到以 [暫止] 列出的連線。 
-2. 選取想要核准的**私人端點**
+1. 如果有任何暫止的連線，您會在佈建狀態中看到以 [擱置] 列出的連線。 
+2. 選取您想要核准的**私人端點**
 3. 選取 [核准] 按鈕。
 
     ![核准私人端點](./media/private-link-service/private-endpoint-approve.png)
-4. 在 [核准連線] 頁面上，輸入選擇性的**註解**，然後選取 [是]。 如果選取 [否]，則不會發生任何事。 
+4. 在 [核准連線] 頁面上，輸入選擇性的**註解**，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 
     ![核准連線頁面](./media/private-link-service/approve-connection-page.png)
 5. 您應該會看見清單中連線的狀態變更為 [已核准]。 
@@ -205,7 +203,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 1. 如果想拒絕任何私人端點連線 (不論是暫止要求還是稍早核准的現有連線)，請選取端點連線，然後按一下 [拒絕] 按鈕。
 
     ![[拒絕] 按鈕](./media/private-link-service/private-endpoint-reject.png)
-2. 在 [拒絕連線] 頁面上，輸入選擇性的註解，然後選取 [是]。 如果選取 [否]，則不會發生任何事。 
+2. 在 [拒絕連線] 頁面上，輸入選擇性的註解，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 
     ![[拒絕連線] 頁面](./media/private-link-service/reject-connection-page.png)
 3. 您應該會看見清單中連線的狀態變更為 [已拒絕]。 
@@ -231,7 +229,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 在 [網路] 索引標籤中： 
 
-1. 指定 [虛擬網路] 和 [子網路]。 您必須選取已在其上部署私人端點的虛擬網路。
+1. 指定 [虛擬網路] 和 [子網路]。 您必須選取您已在其上方部署私人端點的虛擬網路。
 2. 指定**公用 IP** 資源。
 3. 針對 [NIC 網路安全性群組]，選取 [無]。
 4. 針對 [負載平衡]，選取 [否]。

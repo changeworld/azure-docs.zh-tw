@@ -1,23 +1,14 @@
 ---
 title: Azure 服務匯流排主題篩選 | Microsoft Docs
 description: 本文說明「訂閱者」如何藉由指定篩選器來定義想要從主題接收的訊息。
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339971"
 ---
 # <a name="topic-filters-and-actions"></a>主題篩選和動作
 
@@ -35,11 +26,11 @@ ms.locfileid: "83125752"
 
     - **ContentType**
      - **標籤**
-     - **MessageId**
+     - **Id**
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **自**
+     - **若要**
      - 任何使用者定義的屬性。 
      
      當抵達訊息的某個屬性值等於在相互關聯篩選中指定的值時，代表一個相符項目。 字串運算式的比較會區分大小寫。 指定多個比對屬性時，篩選會將它們結合為邏輯 AND 條件，表示所有條件必須相符才算是篩選出相符項目。
@@ -64,7 +55,7 @@ ms.locfileid: "83125752"
 
 
 > [!NOTE]
-> 目前 Azure 入口網站不會讓您指定訂閱的篩選規則。 您可以使用任何支援的 Sdk 或 Azure Resource Manager 範本來定義訂用帳戶規則。 
+> 因為 Azure 入口網站現在支援服務匯流排 Explorer 功能，所以可以從入口網站建立或編輯訂用帳戶篩選器。 
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列範例： 

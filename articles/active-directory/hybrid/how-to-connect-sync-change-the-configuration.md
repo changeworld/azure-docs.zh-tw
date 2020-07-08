@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357863"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何變更預設組態
 本文的目的在於逐步解說如何對 Azure Active Directory (Azure AD) Connect 同步處理中的預設組態進行變更。其中提供一些常見案例的步驟。 具備此知識，您應該能夠根據自己的商務規則對自己的組態進行簡單的變更。
@@ -243,7 +243,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
  5. 按一下 [確定] 來進行儲存。
 ![在內部部署 AD 連接器結構描述中新增來源屬性](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>步驟 3：將 UserType 新增至 Azure AD 連接器結構描述
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>步驟3：將 UserType 屬性新增至 Azure AD 連接器架構
 根據預設，系統不會在 Azure AD Connect 空間中匯入 UserType 屬性。 若要在所匯入屬性的清單中新增 UserType 屬性︰
 
  1. 移至 Synchronization Service Manager 中的 [連接器] 索引標籤。
@@ -340,7 +340,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 1. 在 [內部部署 AD 連接器] 上執行 [完整匯入]：
 
-   1. 移至 Synchronization Service Manager 中的 [作業] 索引標籤。
+   1. 移至 Synchronization Service Manager 中的 [連接器] 索引標籤。
    2. 以滑鼠右鍵按一下 [內部部署 AD 連接器]，然後選取 [執行]。
    3. 在彈出的對話方塊中選取 [完整匯入]，然後按一下 [確定]。
    4. 請等候作業完成。

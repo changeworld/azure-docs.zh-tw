@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321400"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用 Data Factory 和 Batch 來處理大型資料集
 > [!NOTE]
@@ -38,8 +38,8 @@ ms.locfileid: "83684412"
 
  如果您不熟悉 Batch，下列文章將可協助您了解本文所述解決方案的架構/實作：   
 
-* [Batch 的基本概念](../../batch/batch-technical-overview.md)
-* [Batch 功能概觀](../../batch/batch-api-basics.md)
+* [Batch 的基本概念](../../azure-sql/database/sql-database-paas-overview.md)
+* [Batch 功能概觀](../../batch/batch-service-workflow-features.md)
 
 (選擇性) 若要深入了解 Batch，請參閱 [Batch 文件](https://docs.microsoft.com/azure/batch/)。
 
@@ -578,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 針對 **batchUri** JSON 屬性，輸入 Batch URI。
 
       > [!IMPORTANT]
-      > [Batch 帳戶] 刀鋒視窗中的 URL 格式如下：\<accountname\>.\<region\>.batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > **Batch 帳戶**分頁的 URL 採用下列格式： \<accountname\> . \<region\> 。batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -793,9 +793,9 @@ test custom activity Microsoft test custom activity Microsoft
 
    * 管線中只有一個活動，且其類型為 **DotNetActivity**。
    * **AssemblyName** 已設定為 DLL **MyDotNetActivity.dll** 的名稱。
-   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。 在您的程式碼中，它基本上是 \<namespace\>.\<classname\>。
+   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。 基本上是如此 \<namespace\> 。\<classname\> 在您的程式碼中。
    * **PackageLinkedService** 已設為 **StorageLinkedService**，這會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您針對輸入/輸出檔案和自訂活動 zip 檔案使用不同的儲存體帳戶，就必須建立另一個儲存體已連結服務。 本文假設您使用相同的儲存體帳戶。
-   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為 \<containerforthezip\>/\<nameofthezip.zip\>。
+   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為 \<containerforthezip\> / \<nameofthezip.zip\> 。
    * 自訂活動會採用 **InputDataset** 做為輸入和 **OutputDataset** 做為輸出。
    * 自訂活動的 **linkedServiceName** 屬性會指向 **AzureBatchLinkedService**，這可讓 Data Factory 知道自訂活動必須在 Batch 上執行。
    * **並行** 設定很重要。 如果您使用預設值 1，則即使 Batch 集區中有兩個以上的計算節點，系統仍會逐一處理配量。 因此，您將無法利用 Batch 的平行處理功能。 如果您將 **concurrency** 設定為更大的值 (例如 2)，即表示可以同時處理兩個配量 (對應至 Batch 中的兩個工作)。 在此情況下，會同時運用 Batch 集區中的兩個 VM。 請適當地設定 concurrency 屬性。
@@ -925,7 +925,7 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
    >
 1. 自訂活動不會使用來自您套件的 **app.config** 檔案。 因此，如果您的程式碼會從組態檔讀取任何連接字串，在執行階段就會無法運作。 使用 Batch 時，最佳做法是將所有祕密都存放在 Azure Key Vault 中。 然後使用憑證型服務主體來保護 Key Vault，再將憑證散發至 Batch 集區。 .NET 自訂活動將可在執行階段從 Key Vault 存取祕密。 這個一般解決方案可以擴展至任何類型的祕密，而不僅限於連接字串。
 
-    有一個較簡單的因應措施，但並非最佳做法。 您可以建立一個具有連接字串設定的 SQL Database 已連結服務。 接著，建立一個使用該已連結服務的資料集，然後將資料集以虛擬輸入資料集的形式鏈結至自訂 .NET 活動。 接著，您便可以在自訂活動程式碼中存取連結服務的連接字串。 這樣應該可以在執行階段正常運作。  
+    有一個較簡單的因應措施，但並非最佳做法。 您可以使用連接字串設定來建立 SQL Database 連結服務。 接著，建立一個使用該已連結服務的資料集，然後將資料集以虛擬輸入資料集的形式鏈結至自訂 .NET 活動。 接著，您便可以在自訂活動程式碼中存取連結服務的連接字串。 這樣應該可以在執行階段正常運作。  
 
 #### <a name="extend-the-sample"></a>擴充範例
 您可以延伸這個範例來深入了解 Data Factory 和 Batch 功能。 例如，若要處理不同時間範圍的配量，請執行下列步驟：
@@ -972,8 +972,8 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
   * [在 Data Factory 管線中使用自訂活動](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Batch 的基本概念](../../batch/batch-technical-overview.md)
-  * [Batch 功能概觀](../../batch/batch-api-basics.md)
+  * [Batch 的基本概念](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Batch 功能的總覽](../../batch/batch-service-workflow-features.md)）
   * [在 Azure 入口網站中建立和管理 Batch 帳戶](../../batch/batch-account-create-portal.md)
   * [開始使用適用於 .NET 的 Batch 用戶端程式庫](../../batch/quick-run-dotnet.md)
 

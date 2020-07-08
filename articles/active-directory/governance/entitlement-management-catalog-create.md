@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffa6f2fbdcde41d81e268779c3a0586bd8310792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339574"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立和管理資原始目錄
 
@@ -53,11 +53,11 @@ ms.locfileid: "80437563"
 
 ### <a name="creating-a-catalog-programmatically"></a>以程式設計方式建立目錄
 
-您也可以使用 Microsoft Graph 建立目錄。  具有具有委派`EntitlementManagement.ReadWrite.All`許可權之應用程式的適當角色中的使用者，可以呼叫 API 來[建立 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 建立目錄。  具有具有委派許可權之應用程式的適當角色中的使用者， `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來[建立 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
 
 ## <a name="add-resources-to-a-catalog"></a>將資源新增至目錄
 
-若要在存取封裝中包含資源，資源必須存在於目錄中。 您可以新增的資源類型包括 [群組]、[應用程式] 和 [SharePoint Online 網站]。 這些群組可以是雲端建立的 Office 365 群組或雲端建立的 Azure AD 安全性群組。 應用程式可以 Azure AD 企業應用程式，包括 SaaS 應用程式和您自己的應用程式（與 Azure AD 聯盟）。 網站可以是 SharePoint Online 網站或 SharePoint Online 網站集合。
+若要在存取封裝中包含資源，資源必須存在於目錄中。 您可以新增的資源類型包括 [群組]、[應用程式] 和 [SharePoint Online 網站]。 這些群組可以是雲端建立的 Microsoft 365 群組或雲端建立的 Azure AD 安全性群組。 應用程式可以 Azure AD 企業應用程式，包括 SaaS 應用程式和您自己的應用程式（與 Azure AD 聯盟）。 網站可以是 SharePoint Online 網站或 SharePoint Online 網站集合。
 
 **先決條件角色：** 請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
@@ -83,7 +83,7 @@ ms.locfileid: "80437563"
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以程式設計方式將資源新增至目錄
 
-您也可以使用 Microsoft Graph 將資源新增至目錄。  適當角色中的使用者或目錄和資源擁有者，以及具有委派`EntitlementManagement.ReadWrite.All`許可權的應用程式，都可以呼叫 API 來[建立 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 將資源新增至目錄。  適當角色中的使用者或目錄和資源擁有者，以及具有委派許可權的應用程式， `EntitlementManagement.ReadWrite.All` 都可以呼叫 API 來[建立 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-resources-from-a-catalog"></a>從目錄中移除資源
 
@@ -137,7 +137,7 @@ ms.locfileid: "80437563"
 
     ![編輯目錄設定](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 按一下 [檔案]  。
+1. 按一下 [檔案] 。
 
 ## <a name="delete-a-catalog"></a>刪除目錄
 
@@ -155,7 +155,7 @@ ms.locfileid: "80437563"
 
 ### <a name="deleting-a-catalog-programmatically"></a>以程式設計方式刪除目錄
 
-您也可以使用 Microsoft Graph 刪除目錄。  具有具有委派`EntitlementManagement.ReadWrite.All`許可權之應用程式的適當角色中的使用者，可以呼叫 API 來[刪除 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 刪除目錄。  具有具有委派許可權之應用程式的適當角色中的使用者， `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來[刪除 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322054"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -24,6 +24,7 @@ ms.locfileid: "79265502"
 Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的存取權。 Azure 資料共用服務接著會使用此受控識別，來讀取和寫入快照式共用的資料，以及建立就地共用的符號連結。 
 
 若要共用或接收來自 Azure 資料存放區的資料，使用者至少需要下列許可權。 以 SQL 為基礎的共用需要其他許可權。
+
 * 寫入 Azure 資料存放區的許可權。 通常，此許可權存在於**參與者**角色中。
 * 在 Azure 資料存放區中建立角色指派的許可權。 一般而言，建立角色指派的許可權會存在於**擁有**者角色、使用者存取系統管理員角色，或已指派 Microsoft 授權/角色指派/寫入權限的自訂角色中。 如果資料共用資源的受控識別已授與 Azure 資料存放區的存取權，則不需要此許可權。 請參閱下表中的必要角色。
 
@@ -39,7 +40,7 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 |Azure 資料總管叢集 | 參與者 | 參與者
 |
 
-對於以 SQL 為基礎的共用，必須從 SQL 資料庫中的外部提供者，使用與 Azure 資料共用資源相同的名稱來建立 SQL 使用者。 以下是 SQL 使用者所需的許可權摘要。
+對於以 SQL 為基礎的共用，必須從 Azure SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 以下是 SQL 使用者所需的許可權摘要。
 
 | |  |  |
 |---|---|---|
@@ -48,8 +49,8 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 |Azure Synapse Analytics (先前為 SQL DW) | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |
 
+### <a name="data-provider"></a>資料提供者
 
-### <a name="data-provider"></a>資料提供者 
 若要在 Azure 資料共用中新增資料集，必須將來源 Azure 資料存放區的存取權授與提供者資料共用資源的受控識別。 例如，在儲存體帳戶的案例中，會將儲存體 Blob 資料讀取者角色授與資料共用資源的受控識別。 
 
 當使用者透過 Azure 入口網站新增資料集，而且使用者擁有適當的許可權時，Azure 資料共用服務就會自動完成這項作業。 例如，使用者是 Azure 資料存放區的擁有者，或是已指派 Microsoft 授權/角色指派/寫入權限的自訂角色的成員。 
@@ -59,13 +60,13 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 若要為資料共用資源的受控識別建立角色指派，請遵循下列步驟：
 
 1. 流覽至 Azure 資料存放區。
-1. 選取 **[存取控制（IAM）**]。
-1. 選取 [新增角色指派]****。
+1. 選取 [存取控制 (IAM)]。
+1. 選取 [**新增角色指派**]。
 1. 在 [*角色*] 下的 [角色指派] 資料表中選取角色（例如，針對 [儲存體帳戶]，選取 [*儲存體 Blob 資料讀取器*]）。
 1. 在 [*選取*] 底下，輸入您的 Azure 資料共用資源名稱。
-1. 按一下 *[儲存]* 。
+1. 按一下 [檔案] 。
 
-針對以 SQL 為基礎的來源，除了上述步驟以外，您必須從 SQL 資料庫中的外部提供者，使用與 Azure 資料共用資源相同的名稱來建立 SQL 使用者。 此使用者必須被授與*db_datareader*許可權。 您可以在[共用您的資料](share-your-data.md)教學課程中，找到範例腳本以及 SQL 架構共用的其他必要條件。 
+針對以 SQL 為基礎的來源，除了上述步驟以外，您必須從 SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 此使用者必須被授與*db_datareader*許可權。 您可以在[共用您的資料](share-your-data.md)教學課程中，找到範例腳本以及 SQL 架構共用的其他必要條件。 
 
 ### <a name="data-consumer"></a>資料取用者
 若要接收資料，取用者資料共用資源的受控識別必須被授與目標 Azure 資料存放區的存取權。 例如，在儲存體帳戶的案例中，會將儲存體 Blob 資料參與者角色授與資料共用資源的受控識別。 
@@ -77,13 +78,13 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 若要手動為資料共用資源的受控識別建立角色指派，請遵循下列步驟：
 
 1. 流覽至 Azure 資料存放區。
-1. 選取 **[存取控制（IAM）**]。
-1. 選取 [新增角色指派]****。
+1. 選取 [存取控制 (IAM)]。
+1. 選取 [**新增角色指派**]。
 1. 在 [*角色*] 下的 [角色指派] 資料表中選取角色（例如，針對 [儲存體帳戶]，選取 [*儲存體 Blob 資料讀取器*]）。
 1. 在 [*選取*] 底下，輸入您的 Azure 資料共用資源名稱。
-1. 按一下 *[儲存]* 。
+1. 按一下 [檔案] 。
 
-針對以 SQL 為基礎的目標，除了上述步驟，您必須從 SQL 資料庫中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 此使用者必須被授與*db_datareader、db_datawriter db_ddladmin*許可權。 您可以在[接受和接收資料](subscribe-to-data-share.md)教學課程中找到範例腳本以及 SQL 架構共用的其他必要條件。 
+針對以 SQL 為基礎的目標，除了上述步驟以外，您必須從 SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 此使用者必須被授與*db_datareader、db_datawriter db_ddladmin*許可權。 您可以在[接受和接收資料](subscribe-to-data-share.md)教學課程中找到範例腳本以及 SQL 架構共用的其他必要條件。 
 
 如果您使用 REST Api 共用資料，則需要手動建立這些角色指派。 
 
@@ -97,7 +98,7 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 1. 選取您要用於 Azure 資料共用的訂用帳戶。
 1. 按一下 [**資源提供者**]。
 1. 搜尋 DataShare。
-1. 按一下 [註冊]  。
+1. 按一下 [註冊] 。
 
 ## <a name="next-steps"></a>後續步驟
 

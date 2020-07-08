@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356401"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -70,13 +70,13 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 ![使用了 Microsoft 帳戶](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>無法連線 MFA 端點
-如果無法連線到端點**https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域系統管理員已啟用 MFA，就會出現此錯誤。
+如果無法連線到端點 **https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域系統管理員已啟用 MFA，就會出現此錯誤。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * 如果您看到此錯誤，請確認是否已將 **secure.aadcdn.microsoftonline-p.com** 端點新增到 Proxy。
 
 ### <a name="the-password-cannot-be-verified"></a>無法驗證密碼
-如果安裝精靈成功連接到 Azure AD，但無法驗證密碼本身，您會看到此錯誤： ![密碼不正確。](./media/tshoot-connect-connectivity/badpassword.png)
+如果安裝精靈成功連接到 Azure AD，但無法驗證密碼本身，您會看到此錯誤： ![ 密碼不正確。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * 密碼是暫時密碼，而且必須變更嗎？ 實際上是正確的密碼嗎？ 嘗試登入 `https://login.microsoftonline.com` (在 Azure AD Connect 伺服器以外的另一部電腦上)，並確認該帳戶是否可使用。
 

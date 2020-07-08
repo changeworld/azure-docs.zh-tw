@@ -1,24 +1,14 @@
 ---
 title: 使用 .NET 從 Azure 事件中樞傳送和接收事件（舊）
 description: 本文提供逐步解說，說明如何建立 .NET Core 應用程式，以使用 EventHubs 的舊封裝來傳送/接收 Azure 事件中樞的事件。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: bd8476c89fea94a9d1b4a101841c11137d4dd5be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320783"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core （EventHubs）將事件傳送至或接收來自 Azure 事件中樞的事件
 本快速入門說明如何使用**EventHubs** .net Core 程式庫，將事件傳送至事件中樞，並接收事件。
@@ -26,7 +16,7 @@ ms.locfileid: "82025164"
 > [!WARNING]
 > 本快速入門會使用舊的**EventHubs**套件。 如需使用最新**EventHubs**程式庫的快速入門，請參閱[使用 EventHubs 程式庫傳送和接收事件](get-started-dotnet-standard-send-v2.md)。 若要將您的應用程式從使用舊的程式庫移至新的程式庫，請參閱[從 EventHubs 遷移至 Azure EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
@@ -51,7 +41,7 @@ ms.locfileid: "82025164"
 
 ### <a name="add-the-event-hubs-nuget-package"></a>新增事件中樞 NuGet 封裝
 
-依照下列[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)步驟，將 .net Core 程式庫 NuGet 套件新增至您的專案： 
+依照 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 下列步驟，將 .Net Core 程式庫 NuGet 套件新增至您的專案： 
 
 1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
 2. 按一下 [瀏覽]**** 索引標籤，然後搜尋「Microsoft.Azure.EventHubs」並選取 [Microsoft.Azure.EventHubs]**** 套件。 按一下 [安裝] **** 完成安裝作業，然後關閉此對話方塊。
@@ -201,7 +191,7 @@ ms.locfileid: "82025164"
 ## <a name="receive-events"></a>接收事件
 本節說明如何撰寫 .NET Core 主控台應用程式，以使用[事件處理器主機](event-hubs-event-processor-host.md)從事件中樞接收訊息。 [事件處理器主機](event-hubs-event-processor-host.md)是一個 .NET 類別，透過管理持續檢查點以及來自事件中樞的平行接收，簡化來自事件中樞之事件的接收作業。 使用事件處理器主機，可讓您將事件分割到多個接收者，即使裝載於不同的節點時也是一樣。 此範例說明單一接收者如何使用事件處理器主機。
 > [!NOTE]
-> 您可以從[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)下載本快速入門作為範例，並將`EventHubConnectionString`和`EventHubName`、 `StorageAccountName`、 `StorageAccountKey`和`StorageContainerName`字串取代為您的事件中樞值，然後加以執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
+> 您可以從[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)下載本快速入門作為範例， `EventHubConnectionString` 並將和 `EventHubName` 、 `StorageAccountName` 、和 `StorageAccountKey` 字串取代 `StorageContainerName` 為您的事件中樞值，然後加以執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 

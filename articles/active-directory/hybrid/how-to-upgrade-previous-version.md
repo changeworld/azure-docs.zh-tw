@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60347647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356622"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
 本主題說明各種可用於將 Azure Active Directory (Azure AD) Connect 安裝升級到最新版本的方法。 我們建議您讓自己的 Azure AD Connect 保持在最新版本。 當您進行大幅組態變更時，也會使用[變換移轉](#swing-migration)一節中的步驟。
@@ -104,7 +104,7 @@ ms.locfileid: "60347647"
 
 在某些情況下，您可能不想在升級之後立即進行這些覆寫。 例如，您有很多個同步處理的物件，而且想要讓這些同步處理步驟在下班之後執行。 移除這些覆寫：
 
-1. 在升級期間，**清除** [在設定完成時開始同步處理程序]**** 選項。 這會停用同步處理排程器，並且避免在移除覆寫之前自動開始同步處理週期。
+1. 在升級期間，**取消**核取 [設定**完成時啟動同步處理**程式] 選項。 這會停用同步處理排程器，並且避免在移除覆寫之前自動開始同步處理週期。
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 

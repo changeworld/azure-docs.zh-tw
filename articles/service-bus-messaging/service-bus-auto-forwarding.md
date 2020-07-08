@@ -1,25 +1,14 @@
 ---
 title: 自動轉送 Azure 服務匯流排訊息實體
 description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶連結至另一個佇列或主題。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 28c3e8985f12163e871fa4de5fb6cc92d68110b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76761044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337741"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
 

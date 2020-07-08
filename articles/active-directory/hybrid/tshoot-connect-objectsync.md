@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356197"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步所執行的物件同步處理進行疑難排解
 本文提供使用疑難排解工作，針對物件同步處理問題進行疑難排解的步驟。 若要查看疑難排解如何在 Azure Active Directory (Azure AD) Connect 中運作，請觀賞[這段短片](https://aka.ms/AADCTSVideo)。
@@ -43,7 +43,7 @@ ms.locfileid: "81407008"
 疑難排解工作需要下列輸入參數：
 1.  **物件辨別名稱** – 這是需要疑難排解之物件的辨別名稱
 2.  **AD 連接器名稱** – 這是上述物件所在之 AD 樹系的名稱。
-3.  Azure AD 租使用者全域管理員![認證全域管理員認證](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Azure AD 租使用者全域管理員認證 ![ 全域管理員認證](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解疑難排解工作的結果
 疑難排解工作會執行下列檢查：

@@ -7,18 +7,18 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4782213b38ad9e265cc66c3073dc5f357c50561
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321644"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
-使用 Azure 防禦時，您可以使用網路安全性群組（Nsg）。 如需詳細資訊，請參閱[安全性群組](../virtual-network/security-overview.md)。 
+使用 Azure 防禦時，您可以使用網路安全性群組（Nsg）。 如需詳細資訊，請參閱[安全性群組](../virtual-network/security-overview.md)。
 
-![架構](./media/bastion-nsg/nsg-architecture.png)
+:::image type="content" source="./media/bastion-nsg/figure-1.png" alt-text="NSG":::
 
 在此圖表中：
 

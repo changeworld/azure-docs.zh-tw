@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78298338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356877"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>身分識別同步處理和重複屬性恢復功能
 重複屬性復原是 Azure Active Directory 中的一項功能，可在執行 Microsoft 的其中一個同步處理工具時，消除**UserPrincipalName**和 SMTP **ProxyAddress**衝突所造成的摩擦。
@@ -40,7 +40,7 @@ ms.locfileid: "78298338"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複屬性恢復功能的行為
 Azure Active Directory 並不是完全無法佈建或更新具有重複屬性的物件，而是會「隔離」違反唯一性條件約束的重複屬性。 如果佈建時需要此屬性 (例如 UserPrincipalName)，則服務會指派預留位置值。 這些暫存值的格式為  
-_** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain>. onmicrosoft.com。 \< **_
+_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_。
 
 屬性復原程式只會處理 UPN 和 SMTP **ProxyAddress**值。
 
@@ -101,7 +101,7 @@ _** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain>. onmicrosoft.com。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
-或者
+Or
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
@@ -116,7 +116,7 @@ _** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain>. onmicrosoft.com。
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>以有限的數量或全部
-1. **MaxResults \<Int>** 可以用來將查詢限制為特定數目的值。
+1. **MaxResults \<Int>** 可用來將查詢的值數量限制為特定數目。
 2. **All** 可用於確保在有大量錯誤的情況下擷取所有的結果。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
@@ -147,9 +147,9 @@ ProxyAddress 衝突的電子郵件通知範例如下所示︰
 1. 具有特定屬性組態的物件會繼續收到匯出錯誤，而不是將重複屬性隔離。  
    例如：
    
-    a. 在 AD 中建立新的使用者，其 UPN**為\@Joe contoso.com**和 ProxyAddress **smtp：\@joe contoso.com**
+    a. 在 AD 中建立新的使用者，其 UPN 為**Joe \@ Contoso.com**和 ProxyAddress **smtp： joe \@ contoso.com**
    
-    b. 此物件的屬性與現有的群組相衝突，其中 ProxyAddress 是**SMTP： Joe\@contoso.com**。
+    b. 此物件的屬性與現有的群組相衝突，其中 ProxyAddress 是**SMTP： Joe \@ contoso.com**。
    
     c. 匯出時，會擲回「ProxyAddress 衝突」**** 錯誤，而不是將衝突屬性隔離。 此作業會在每個後續的同步處理週期中重試，就如同在啟用恢復功能之前一樣。
 2. 如果在內部部署上建立兩個具有相同 SMTP 位址的群組，則會在第一次嘗試時佈建失敗並發生標準的重複 **ProxyAddress** 錯誤。 不過，重複值會在下一個同步處理週期時被適當隔離。
@@ -159,23 +159,23 @@ ProxyAddress 衝突的電子郵件通知範例如下所示︰
 1. UPN 衝突集中兩個物件的詳細錯誤訊息是相同的。 這表示它們都已變更 / 隔離 UPN，當事實上只有其中一個變更了資料。
 2. UPN 衝突的詳細錯誤訊息會對已變更/隔離其 UPN 的使用者，顯示錯誤的 displayName。 例如：
    
-    a. **使用者 A**會先與**UPN =\@使用者 contoso.com**進行同步處理。
+    a. **使用者 A**會先與**UPN = 使用者 \@ contoso.com**進行同步處理。
    
-    b. **使用者 B**會在下一次使用**UPN =\@user contoso.com**嘗試進行同步處理。
+    b. **使用者 B**會在下一次使用**UPN = user \@ contoso.com**嘗試進行同步處理。
    
-    c. **使用者 B**UPN 會變更為**User1234\@Contoso.onmicrosoft.com** ，**而\@使用者 contoso.com**會新增至**造成 dirsyncprovisioningerrors**。
+    c. **使用者 B**UPN 會變更為**User1234 \@ contoso.onmicrosoft.com** ，而**使用者 \@ contoso.com**會新增至**造成 dirsyncprovisioningerrors**。
    
-    d. **使用者 b**的錯誤訊息應該表示**使用者 A**已將**\@使用者 contoso.com**為 UPN，但它會顯示**使用者 B 自己的**displayName。
+    d. **使用者 b**的錯誤訊息應該表示**使用者 A**已將**使用者 \@ contoso.com**為 UPN，但它會顯示**使用者 B 自己的**displayName。
 
 **身分識別同步處理錯誤報告**：
 
 「如何解決此問題的步驟」** 的連結不正確：  
     ![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "作用中使用者")  
 
-它應該指向[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
+它應該指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) 。
 
-## <a name="see-also"></a>請參閱
-* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+## <a name="see-also"></a>另請參閱
+* [Azure AD Connect 同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 * [在 Office 365 中識別目錄同步處理錯誤](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

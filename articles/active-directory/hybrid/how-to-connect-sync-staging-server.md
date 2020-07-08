@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356945"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：預備伺服器和嚴重損壞修復
 利用預備模式中的伺服器，您可以在啟用伺服器之前變更組態並預覽變更。 它也可以讓您執行完整的匯入和完整的同步處理，以在生產環境中進行這些變更之前，確認所有變更皆如預期。
@@ -50,7 +50,7 @@ ms.locfileid: "79261017"
 若要套用此方法，請遵循下列步驟：
 
 1. [準備](#prepare)
-2. [設定](#configuration)
+2. [Configuration](#configuration)
 3. [匯入和同步處理](#import-and-synchronize)
 4. [Verify](#verify)
 5. [切換作用中的伺服器](#switch-active-server)
@@ -60,7 +60,7 @@ ms.locfileid: "79261017"
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 登出/登入，並從 [開始] 功能表中選取 [同步處理服務] ****。
 
-#### <a name="configuration"></a>設定
+#### <a name="configuration"></a>組態
 如果您已對主要伺服器進行變更，並想要將組態與預備伺服器進行比較，則請使用 [Azure AD Connect 組態文件產生器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
 #### <a name="import-and-synchronize"></a>匯入和同步處理
@@ -71,7 +71,7 @@ ms.locfileid: "79261017"
 
 您現在已預備匯出變更至 Azure AD 和內部部署 AD (如果您正在使用 Exchange 混合部署)。 接下來的步驟可讓您在實際開始匯出至目錄之前，檢查將要變更的項目。
 
-#### <a name="verify"></a>Verify
+#### <a name="verify"></a>確認
 1. 啟動 CMD 命令提示字元並移至 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 執行：`csexport "Name of Connector" %temp%\export.xml /f:x` 連接器名稱可以在同步處理服務中找到。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
 3. 執行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 您在 %temp% 中有名稱為 export.csv 的檔案，可在 Microsoft Excel 中加以檢查。 此檔案包含即將匯出的所有變更。
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>後續步驟
 **概觀主題**  
 
-* [Azure AD Connect 同步處理：了解及自訂同步處理](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)  
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)  
