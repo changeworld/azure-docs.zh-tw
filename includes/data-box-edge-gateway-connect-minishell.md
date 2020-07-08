@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174441"
 ---
 視用戶端的作業系統而定，遠端連線至裝置的程式會不同。
@@ -28,7 +28,7 @@ ms.locfileid: "67174441"
 
     $ip = "<device_ip>"
 
-    將`<device_ip>`取代為您裝置的 IP 位址。
+    將取代 `<device_ip>` 為您裝置的 IP 位址。
 
 4. 若要將裝置的 IP 位址新增至用戶端的信任主機清單，請輸入下列命令：
 
@@ -59,7 +59,7 @@ ms.locfileid: "67174441"
 在您要用來連接的 Linux 用戶端上：
 
 - 從 GitHub[安裝最新的 PowerShell Core For Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) ，以取得 SSH 遠端功能。 
-- [只安裝來自`gss-ntlmssp` NTLM 模組的套件](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 若是 Ubuntu 用戶端，請使用下列命令：
+- [只安裝 `gss-ntlmssp` 來自 NTLM 模組的套件](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 若是 Ubuntu 用戶端，請使用下列命令：
     - `sudo apt-get install gss-ntlmssp`
 
 如需詳細資訊，請移至透過[SSH 的 PowerShell 遠端](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。

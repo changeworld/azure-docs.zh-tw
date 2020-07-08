@@ -10,6 +10,7 @@ ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339275"
@@ -48,6 +49,6 @@ Azure 資料箱的閘道解決方案可讓您透過網路將資料傳送至 Azur
 
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 在 Azure 入口網站中部署 [Azure 資料箱閘道](data-box-gateway-deploy-prep.md)。
