@@ -4,15 +4,15 @@ description: 如何要求增加 Azure 入口網站中 VM 系列的 vCPU 配額�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117160"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準配額：依 VM 系列增加限制
 
@@ -26,7 +26,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 * 第一層是所有 VM 系列中的*總區域個 vcpu 限制*。
 * 第二層是*每個 VM 的系列個 vcpu 限制*，例如 Dv3 系列個 vcpu。
 
-每當您部署新的點 VM 時，該 VM 系列的新的和現有 vCPU 使用量總計不得超過該特定 VM 系列的已核准 vCPU 配額。 此外，在所有 VM 系列上部署的新和現有個 vcpu 的總數不應超過訂用帳戶的核准區域 vCPU 配額總計。 如果超過上述任一配額，則不允許 VM 部署。
+每當您部署新的點 VM 時，所有點 VM 實例的新的和現有的 vCPU 使用量，都不得超過已核准的點 vCPU 配額限制。 如果超過了位置配額，則不允許點 VM 部署。
 
 您可以使用 Azure 入口網站，為 VM 系列要求增加 vCPU 配額限制。 VM 系列配額的增加會自動增加相同數量的總區域 vCPU 限制。
 
@@ -45,15 +45,15 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 > [!NOTE]
 > 您也可以透過單一支援案例，要求增加多個區域的配額限制。 如需詳細資訊，請參閱步驟8。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 功能表上，選取 [說明 **+ 支援**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)功能表上，選取 [説明 + 支援]。
 
-   ![[說明 + 支援] 連結](./media/resource-manager-core-quotas-request/help-plus-support.png)
+   ![[説明 + 支援] 連結](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 在 [說明 **+ 支援**] 中，選取 [**新增支援要求**]。
+1. 在 [說明 + 支援] 中，選取 [新增支援要求]。
 
     ![建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [問題類型]****，選取 [服務與訂用帳戶限制 (配額)]****。
+1. 針對 [**問題類型**]，選取 **[服務和訂用帳戶限制（配額）**]。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -67,7 +67,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 1. 選取 **[下一步]：** 用來開啟**問題詳細資料**的解決方案。 選取 [**提供詳細資料**] 以輸入其他資訊。
 
-   ![[提供詳細資料] 連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
+   ![「提供詳細資料」連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
 1. 在 [**配額詳細資料**] 中，執行下列步驟：
 

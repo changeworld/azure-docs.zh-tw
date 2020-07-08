@@ -3,38 +3,43 @@ title: 使用 Azure 映射產生器建立 Windows VM （預覽）
 description: 使用 Azure 映射產生器來建立 Windows VM。
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119183"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>預覽：使用 Azure 映射產生器建立 Windows VM
 
 本文說明如何使用 Azure VM 映射產生器來建立自訂的 Windows 映像。 本文[中的範例會使用自](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize)定義映射：
 - PowerShell （ScriptUri）-下載並執行[powershell 腳本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
 - Windows 重新開機-重新開機 VM。
-- PowerShell （內嵌）-執行特定的命令。 在此範例中，它會使用`mkdir c:\\buildActions`在 VM 上建立目錄。
-- File-從 GitHub 將檔案複製到 VM。 這個範例會[index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)將 index.md `c:\buildArtifacts\index.html`複製到 VM 上的。
+- PowerShell （內嵌）-執行特定的命令。 在此範例中，它會使用在 VM 上建立目錄 `mkdir c:\\buildActions` 。
+- File-從 GitHub 將檔案複製到 VM。 這個範例會將[index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)複製到 `c:\buildArtifacts\index.html` VM 上的。
+- buildTimeoutInMinutes-增加組建時間以允許執行較長的組建，預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
+- vmProfile-指定 vmSize 和網路屬性
+- osDiskSizeGB-您可以增加影像的大小
+- 身分識別-提供可供 Azure 映射產生器在組建期間使用的身分識別
 
-您也可以指定`buildTimeoutInMinutes`。 預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
 
-我們將使用範例. json 範本來設定映射。 我們所使用的. json 檔案位於這裡： [helloImageTemplateWin。](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json) 
+您也可以指定 `buildTimeoutInMinutes` 。 預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
+
+我們將會使用樣本 .json 範本來設定映像。 我們使用的 json 檔案位於： [helloImageTemplateWin.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
 
 
 > [!IMPORTANT]
-> Azure 映射產生器目前為公開預覽版。
+> Azure Image Builder 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-## <a name="register-the-features"></a>註冊功能
+## <a name="register-the-features"></a>註冊各項功能
 
-若要在預覽期間使用 Azure 映射產生器，您必須註冊新功能。
+若要在預覽期間使用 Azure Image Builder，您必須註冊新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -46,25 +51,28 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-檢查您的註冊。
+檢查註冊。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果沒有顯示 [已註冊]，請執行下列動作：
+如果沒有顯示已註冊，請執行下列動作：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
+
 ## <a name="set-variables"></a>設定變數
 
-我們會重複使用一些資訊，因此我們將建立一些變數來儲存該資訊。
+由於我們會重複使用某些資訊，因此我們將建立一些變數來儲存這些資訊。
 
 
 ```azurecli-interactive
@@ -80,7 +88,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-建立訂用帳戶識別碼的變數。 您可以使用`az account show | grep id`來取得。
+為訂用帳戶識別碼建立變數。 您可以使用 `az account show | grep id` 取得此項目。
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -93,18 +101,41 @@ subscriptionID=<Your subscription ID>
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>設定資源群組的許可權
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並在資源群組上設定權限
+影像產生器將會使用提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，將影像插入資源群組中。 在此範例中，您將建立 Azure 角色定義，其中具有要執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
 
-提供映射產生器的「參與者」許可權，以在資源群組中建立映射。 如果沒有這麼做，映射組建將會失敗。 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>建立使用者指派的受控識別並授與許可權 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-`--assignee`值是映射產生器服務的應用程式註冊識別碼。 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>下載映射設定範本範例
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-您可以在終端機中使用像`vi`是的文字編輯器來修改此範例。
+您可以在終端機中使用像是的文字編輯器來修改此範例 `vi` 。
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> 針對來源映射，您必須一律[指定版本](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)，而不能使用`latest`。
-> 如果您新增或變更將映射散發至其中的資源群組，您必須在資源群組上[設定許可權](#set-permissions-on-the-resource-group)。
+> 針對來源映射，您必須一律[指定版本](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)，而不能使用 `latest` 。
+> 如果您新增或變更將映射散發至其中的資源群組，您必須在資源群組上[設定許可權](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)。
  
 ## <a name="create-the-image"></a>建立映像
 
@@ -145,7 +177,7 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-完成時，這會將成功訊息傳回至主控台，並`Image Builder Configuration Template`在中建立。 `$imageResourceGroup` 如果您啟用「顯示隱藏的類型」，您可以在 [Azure 入口網站] 的資源群組中看到此資源。
+完成時，這會將成功訊息傳回至主控台，並 `Image Builder Configuration Template` 在中建立 `$imageResourceGroup` 。 如果您啟用「顯示隱藏的類型」，您可以在 [Azure 入口網站] 的資源群組中看到此資源。
 
 在背景中，映射產生器也會在您的訂用帳戶中建立預備資源群組。 此資源群組用於映射組建。 它的格式如下：`IT_<DestinationResourceGroup>_<TemplateName>`
 
@@ -181,7 +213,7 @@ az resource invoke-action \
 
 ## <a name="create-the-vm"></a>建立 VM
 
-使用您建立的映射建立 VM。 將* \<password>* 取代為您在 VM 上`aibuser`的密碼。
+使用您建立的映射建立 VM。 將取代 *\<password>* 為您自己 `aibuser` 在 VM 上的密碼。
 
 ```azurecli-interactive
 az vm create \
@@ -193,9 +225,9 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>驗證自訂
+## <a name="verify-the-customization"></a>確認自訂
 
-使用您在建立 VM 時所設定的使用者名稱和密碼，建立 VM 的遠端桌面連線。 在 VM 中，開啟命令提示字元，然後輸入：
+使用您在建立 VM 時所設定的使用者名稱與密碼，建立與該 VM 的遠端桌面連線。 在 VM 中，開啟命令提示字元並輸入：
 
 ```console
 dir c:\
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>刪除角色指派、角色定義和使用者身分識別。
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>刪除映射資源群組

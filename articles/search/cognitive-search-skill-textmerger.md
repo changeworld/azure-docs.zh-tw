@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982011"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文字合併認知技能
 
@@ -29,10 +29,10 @@ Microsoft.Skills.Text.MergeSkill
 
 這些參數會區分大小寫。
 
-| 參數名稱     | 說明 |
+| 參數名稱     | 描述 |
 |--------------------|-------------|
-| insertPreTag  | 要在每次插入之前包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
-| insertPostTag | 要在每次插入之後包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPreTag`    | 要在每次插入之前包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPostTag`   | 要在每次插入之後包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
 
 
 ##  <a name="sample-input"></a>範例輸入
@@ -108,18 +108,22 @@ Microsoft.Skills.Text.MergeSkill
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -140,7 +144,7 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126156"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>對應資料流程中的組建運算式
 
@@ -58,7 +58,7 @@ Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式�
 
 選取 **[** 重新整理]，以針對您的來源即時取樣來更新運算式的結果。
 
-![重新整理按鈕](media/data-flow/exp5.png "運算式資料預覽")
+![[重新整理] 按鈕](media/data-flow/exp5.png "運算式資料預覽")
 
 ## <a name="string-interpolation"></a>字串插補
 
@@ -76,24 +76,20 @@ Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式�
 
 使用單行和多行批註語法，將批註新增至您的運算式。
 
-![單行和多行批註語法](media/data-flow/comments.png "評價")
-
 下列範例是有效的批註：
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 如果您將批註放在運算式的頂端，它會出現在 [轉換] 文字方塊中，以記錄轉換運算式。
 
-![轉換文字方塊中的批註](media/data-flow/comments2.png "評價")
+![轉換文字方塊中的批註](media/data-flow/comments2.png "註解")
 
 ## <a name="regular-expressions"></a>規則運算式
 
-許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將\\反斜線（）解讀為 escape 字元序列。 當您在正則運算式中使用反斜線時，請以倒引號（\`）括住整個 RegEx，或使用雙反斜線。
+許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將反斜線（ \\ ）解讀為 escape 字元序列。 當您在正則運算式中使用反斜線時，請以倒引號（）括住整個 RegEx， \` 或使用雙反斜線。
 
 使用倒引號的範例：
 
@@ -124,15 +120,19 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="convert-to-dates-or-timestamps"></a>轉換成日期或時間戳記
 
-若要在時間戳記輸出中包含字串常值，請```toString()```將轉換包裝在中。
+若要在時間戳記輸出中包含字串常值，請將轉換包裝在中 ```toString()``` 。
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-若要將毫秒從 epoch 轉換成日期或時間戳記`toTimestamp(<number of milliseconds>)`，請使用。 如果時間是以秒為單位，則乘以1000。
+若要將毫秒從 epoch 轉換成日期或時間戳記，請使用 `toTimestamp(<number of milliseconds>)` 。 如果時間是以秒為單位，則乘以1000。
 
 ```toTimestamp(1574127407*1000l)```
 
 前一個運算式結尾的尾端 "l" 表示轉換成 long 類型做為內嵌語法。
+
+## <a name="find-time-from-epoch-or-unix-time"></a>從 epoch 或 Unix 時間尋找時間
+
+toLong （currentTimestamp （）-toTimestamp （' 1970-01-01 00：00： 00.000 '，' yyyy-MM-dd HH： MM： ss。SSS '）） * 1000l
 
 ## <a name="next-steps"></a>後續步驟
 

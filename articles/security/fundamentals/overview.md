@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125663"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>總覽
@@ -60,7 +60,7 @@ Azure 的基礎結構設計涵蓋設備與應用程式，可同時裝載數以�
 
 內建功能會組織成六個功能區域：作業、應用程式、儲存體、網路功能、計算和身分識別。 如需 Azure 平臺中提供之功能的其他詳細資料，請流覽下列六個區域中的摘要資訊。
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 本節提供關於安全性作業中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="security-and-audit-dashboard"></a>安全性和稽核儀表板
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![ExpressRoute](./media/overview/azure-security-fig1.png)
 
-透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 CRM Online。 從任意點對任意點 (IP VPN) 網路、點對點乙太網路，或在共置設施上透過連線提供者的虛擬交叉連接，都可以進行連線。
+透過 ExpressRoute，您可以建立與 Microsoft 雲端服務的連線，例如 Microsoft Azure、Microsoft 365 和 CRM Online。 從任意點對任意點 (IP VPN) 網路、點對點乙太網路，或在共置設施上透過連線提供者的虛擬交叉連接，都可以進行連線。
 
 ExpressRoute 連接不會經過公用網際網路，因此可視為比 VPN 型解決方案更安全。 相較於一般網際網路連線，這可讓 ExpressRoute 連線提供更可靠、更快速、延遲更短和更安全的連線。
 
@@ -308,7 +308,7 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 
 Azure 金鑰保存庫 (AKV) 服務是設計來改善這些金鑰在安全且高度可用位置的安全性和管理。 SQL Server 連接器讓 SQL Server 可以從 Azure Key Vault 使用這些金鑰。
 
-如果您使用內部部署機器執行 SQL Server，則可遵循一些步驟來從內部部署 SQL Server 機器存取 Azure Key Vault。 但是對於 Azure VM 中的 SQL Server，您可以使用 Azure Key Vault 整合功能來節省時間。 使用一些 Azure PowerShell Cmdlet 來啟用這項功能，您可以自動化 SQL VM 存取您的金鑰保存庫所需的組態。
+如果您使用內部部署機器執行 SQL Server，您可以遵循下列步驟，從內部部署 SQL Server 實例存取 Azure Key Vault。 但是對於 Azure VM 中的 SQL Server，您可以使用 Azure Key Vault 整合功能來節省時間。 使用一些 Azure PowerShell Cmdlet 來啟用這項功能，您可以自動化 SQL VM 存取您的金鑰保存庫所需的組態。
 
 ### <a name="vm-disk-encryption"></a>VM 磁碟加密
 [Azure 磁碟加密](../azure-security-disk-encryption-overview.md)是一項新功能，可協助您加密 Windows 和 Linux IaaS 虛擬機器磁片。 它運用 Windows 的業界標準 BitLocker 功能和 Linux 的 DM-Crypt 功能，為 OS 和資料磁碟提供磁碟區加密。 此解決方案會與 Azure Key Vault 整合，以協助您控制及管理 Key Vault 訂用帳戶中的磁碟加密金鑰與密碼。 此解決方案也可確保虛擬機器磁碟上的所有待用資料都會在您的 Azure 儲存體中加密。

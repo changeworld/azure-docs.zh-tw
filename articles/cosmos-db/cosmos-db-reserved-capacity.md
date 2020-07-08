@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77505962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118928"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中獲得最低的保留容量費用
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。  
 
-2. 選取 [**所有服務** > ] [**保留** > ] [**新增**]。
+2. 選取 [**所有服務**] [保留] [  >  **Reservations**  >  **新增**]。
 
 3. 在 [**購買保留**] 窗格中，選擇 [ **Azure Cosmos DB**]。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
 
 以下是建議的範例：
 
-![保留容量建議](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
+:::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png" alt-text="保留容量建議":::
 
 這項建議可購買 30000 RU/秒的保留，表示在3年期的保留期間，30000 RU/秒的保留大小將可達到最大的節約。 在此情況下，會根據過去30天的 Azure Cosmos DB 使用量來計算建議。 如果此客戶預期過去30天的 Azure Cosmos DB 使用量代表未來的使用方式，則購買 30000 RU/秒的保留可將成本最大化。
 
@@ -60,15 +60,15 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。  
 
-2. 選取 [**所有服務** > ] [**保留** > ] [**新增**]。  
+2. 選取 [**所有服務**] [保留] [  >  **Reservations**  >  **新增**]。  
 
 3. 在 [**購買保留**] 窗格中，選擇 [ **Azure Cosmos DB**購買新的保留。  
 
 4. 請填寫必填欄位，如下表中所述：
 
-   ![填寫保留容量表單](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="填寫保留容量表單":::
 
-   |欄位  |描述  |
+   |欄位  |說明  |
    |---------|---------|
    |影響範圍   |   控制多少訂用帳戶可以使用與保留容量相關聯的計費權益選項。 它也會控制保留容量套用至特定訂用帳戶的方式。 <br/><br/>  如果您選取 [共用]****，保留容量折扣會套用至計費內容內任何訂用帳戶中執行的 Azure Cosmos DB 執行個體。 計費內容取是以您註冊 Azure 的方式為基礎。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 對於隨用隨付客戶，共用範圍是由帳戶管理員所建立的隨用隨付費率的所有個別訂閱。  <br/><br/>  如果您選取 [單一訂用帳戶]****，保留容量折扣會套用至所選訂用帳戶中的 Azure Cosmos DB 執行個體。 <br/><br/> 如果您選取 [**單一資源群組**]，保留折扣會套用至所選訂用帳戶中的 Azure Cosmos DB 實例，以及該訂用帳戶內選取的資源群組。 <br/><br/> 您可以在購買保留容量之後變更保留範圍。  |
    |訂用帳戶  |   用來支付 Azure Cosmos DB 保留容量費用的訂用帳戶。 所選訂用帳戶的付款條件會用於收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-AZR-0017P-Ms-azr-0148p）：若為企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 <br/><br/> 使用隨用隨付費率的個別訂用帳戶（供應專案號碼： MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）：對於使用隨用隨付費率的個別訂用帳戶，費用會依訂用帳戶的信用卡或發票付款方法計費。    |
@@ -82,7 +82,7 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
 
 6. 在 [**購買保留**] 窗格中，檢查保留的折扣和價格。 此保留容量價格適用於其輸送量針對所有區域而佈建的 Azure Cosmos DB 資源。  
 
-   ![保留容量摘要](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="保留容量摘要":::
 
 7. 選取 [**審查 + 購買**]，然後**立即購買**。 購買成功時，您會看到下列頁面：
 
@@ -92,7 +92,7 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

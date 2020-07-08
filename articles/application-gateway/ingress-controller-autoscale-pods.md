@@ -4,21 +4,21 @@ description: 本文提供如何使用應用程式閘道計量和 Azure Kubernete
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125458"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>使用應用程式閘道計量（搶鮮版（Beta））自動調整您的 AKS pod
 
 隨著連入流量的增加，根據需求擴充應用程式會變得很重要。
 
-在下列教學課程中，我們會說明如何使用應用程式閘道的`AvgRequestCountPerHealthyHost`度量來相應增加您的應用程式。 `AvgRequestCountPerHealthyHost`測量傳送至特定後端集區的平均要求和後端 HTTP 設定組合。
+在下列教學課程中，我們會說明如何使用應用程式閘道的 `AvgRequestCountPerHealthyHost` 度量來相應增加您的應用程式。 `AvgRequestCountPerHealthyHost`測量傳送至特定後端集區的平均要求和後端 HTTP 設定組合。
 
 我們將使用下列兩個元件：
 
@@ -27,7 +27,7 @@ ms.locfileid: "80239439"
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>設定 Azure Kubernetes 公制介面卡
 
-1. 我們會先建立 Azure AAD 服務主體，並將`Monitoring Reader`存取權指派給應用程式閘道的資源群組。 
+1. 我們會先建立 Azure AAD 服務主體，並將 `Monitoring Reader` 存取權指派給應用程式閘道的資源群組。 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -35,11 +35,11 @@ ms.locfileid: "80239439"
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. 現在，我們將[`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)使用上面建立的 AAD 服務主體來部署。
+1. 現在，我們將 [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) 使用上面建立的 AAD 服務主體來部署。
 
     ```bash
     kubectl create namespace custom-metrics
-    # use values from service principle created above to create secret
+    # use values from service principal created above to create secret
     kubectl create secret generic azure-k8s-metrics-adapter -n custom-metrics \
         --from-literal=azure-tenant-id=<tenantid> \
         --from-literal=azure-client-id=<clientid> \
@@ -47,7 +47,7 @@ ms.locfileid: "80239439"
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. 我們將建立名`ExternalMetric` `appgw-request-count-metric`為的資源。 此資源會指示計量介面卡公開`AvgRequestCountPerHealthyHost`資源群組中`myApplicationGateway` `myResourceGroup`資源的計量。 您可以使用`filter`欄位，將特定後端集區和後端 HTTP 設定的目標設為應用程式閘道。
+1. 我們將建立名為的 `ExternalMetric` 資源 `appgw-request-count-metric` 。 此資源會指示計量介面卡公開 `AvgRequestCountPerHealthyHost` `myApplicationGateway` 資源群組中資源的計量 `myResourceGroup` 。 您可以使用 `filter` 欄位，將特定後端集區和後端 HTTP 設定的目標設為應用程式閘道。
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -92,9 +92,9 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>使用新度量來相應增加部署
 
-一旦可以透過計量伺服器公開`appgw-request-count-metric` ，我們就可以開始使用[`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)來相應增加目標部署。
+一旦可以透過計量伺服器公開 `appgw-request-count-metric` ，我們就可以開始使用 [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) 來相應增加目標部署。
 
-在下列範例中，我們將以範例部署`aspnet`為目標。 當每個 Pod > 200 `appgw-request-count-metric`時，我們會相應`10`增加 Pod，最多可達 Pod。
+在下列範例中，我們將以範例部署為目標 `aspnet` 。 當 `appgw-request-count-metric` 每個 Pod > 200 時，我們會相應增加 Pod，最多可達 Pod `10` 。
 
 取代您的目標部署名稱，並套用下列自動調整設定：
 ```yaml

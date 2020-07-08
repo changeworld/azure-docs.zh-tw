@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a862bbb1f574e4adab2f7d8e59a1abe8e5a5fa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7aed942058a922fc8da504fe14c5ad8e0bed59a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73608835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078588"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立存取套件的存取權審查
 
 若要降低過時存取的風險，您應該啟用 Azure AD 權利管理中，對存取套件具有作用中指派的使用者進行定期審查。 當您建立新的存取封裝或編輯現有的存取套件時，可以啟用審核。 本文說明如何啟用存取套件的存取權審查。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要啟用存取套件的審查，您必須符合建立存取套件的必要條件：
 - Azure AD Premium P2

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112917"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不
 
 下圖顯示三個主要實體分割區都在美國西部的 Azure Cosmos 容器，會備份到美國西部的遠端 Azure Blob 儲存體帳戶，然後再複寫到美國東部：
 
-![GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>可用來管理自有備份的選項
 

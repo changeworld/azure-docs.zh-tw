@@ -1,19 +1,20 @@
 ---
-title: 管理驗證 |Microsoft Azure 對應
+title: 管理驗證
+titleSuffix: Azure Maps
 description: 使用 Azure 入口網站來管理 Microsoft Azure 對應中的驗證。
 author: philmea
 ms.author: philmea
-ms.date: 01/29/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: dfe73971f29ea362fdd0ddd654e705b622ab1866
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 174606b4b070b69aba94f438a3f7177f0d5897f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981707"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>管理 Azure 地圖服務中的驗證
 
@@ -25,97 +26,65 @@ ms.locfileid: "80335534"
 
 您可以在 Azure 入口網站中查看驗證詳細資料。 在您的帳戶中，選取 [**設定**] 功能表上的 [**驗證**]。
 
-![驗證詳細資料](./media/how-to-manage-authentication/how-to-view-auth.png)
+> [!div class="mx-imgBorder"]
+> ![驗證詳細資料](./media/how-to-manage-authentication/how-to-view-auth.png)
 
+## <a name="discover-category-and-scenario"></a>探索類別和案例
 
-## <a name="register-and-configure-an-azure-ad-app"></a>註冊並設定 Azure AD 應用程式
+視應用程式的需求而定，有特定的路徑來保護應用程式。 Azure AD 會定義類別，以支援各種不同的驗證流程。 請參閱[應用程式類別](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories)，以瞭解應用程式適合的類別。
 
-1. 在 [Azure 入口網站] 的 [Azure 服務] 清單中，選取 [ **Azure Active Directory** > **應用程式註冊** > **新增註冊**]。  
+> [!NOTE]
+> 即使您使用共用金鑰驗證，瞭解類別和案例也可協助您保護應用程式的安全。
 
-    ![應用程式註冊](./media/how-to-manage-authentication/app-registration.png)
+## <a name="determine-authentication-and-authorization"></a>判斷驗證和授權
 
-1. 如果您已註冊您的應用程式，請繼續進行下一個步驟。 如果您尚未註冊您的應用程式，請輸入**名稱**，選擇**支援帳戶類型**，然後選取 [**註冊**]。  
+下表概述 Azure 地圖服務中的常見驗證和授權案例。 下表提供每個案例所提供的保護類型比較。
 
-    ![應用程式註冊詳細資料](./media/how-to-manage-authentication/app-create.png)
+> [!IMPORTANT]
+> Microsoft 建議使用生產應用程式的角色型存取控制（RBAC），來執行 Azure Active Directory （Azure AD）。
 
-1. 若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後在 [**應用程式註冊**] 底下，選取 [ **API 許可權** > ] [**新增許可權**]。 在 [**我的組織使用的 api**] 底下，搜尋並選取 [ **Azure 地圖服務**]。
+| 狀況                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
+| ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
+| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | N/A           | 中             | 高               |
+| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中             |
+| [具有互動式單一登入的 Web 單一頁面應用程式](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 中             |
+| [具有非互動式登入的 Web 單一頁面應用程式](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 中             |
+| [具有互動式單一登入的 Web 應用程式](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | 中             |
+| [IoT 裝置/輸入限制裝置](./how-to-secure-device-code.md)                     | Azure AD       | 高          | 中             | 中             |
 
-    ![新增應用程式 API 許可權](./media/how-to-manage-authentication/app-permissions.png)
+資料表中的連結會帶您前往每個案例的詳細設定資訊。
 
-1. 選取 [**存取 Azure 地圖服務**] 旁的核取方塊，然後選取 [**新增許可權**]。
-
-    ![選取應用程式 API 許可權](./media/how-to-manage-authentication/select-app-permissions.png)
-
-1. 視您的驗證方法而定，完成下列其中一個步驟。 
-
-    * 如果您的應用程式使用 Azure 地圖服務 Web SDK 的使用者權杖驗證，請啟用`oauth2AllowImplicitFlow`。 若要啟用它，請在應用程式註冊的 [**資訊清單**] 區段中，將設定`oauth2AllowImplicitFlow`為 true。 
-    
-       ![應用程式資訊清單](./media/how-to-manage-authentication/app-manifest.png)
-
-    * 如果您的應用程式使用伺服器或應用程式驗證，請在您的應用程式註冊頁面上，移至 [憑證] [ **& 密碼**]。 然後，藉由選取 [**新增用戶端密碼**] 來上傳公開金鑰憑證或建立密碼。 
-    
-       ![建立用戶端密碼](./media/how-to-manage-authentication/app-keys.png)
-
-        如果您建立密碼，則在您選取 [**新增**] 之後，請複製並安全地儲存密碼。 您將使用此密碼從 Azure AD 取得權杖。
-
-       ![新增用戶端密碼](./media/how-to-manage-authentication/add-key.png)
-
-
-## <a name="grant-role-based-access-control-to-azure-maps"></a>將以角色為基礎的存取控制授與 Azure 地圖服務
-
-將 Azure 地圖服務帳戶與您的 Azure AD 租使用者建立關聯之後，您就可以授與存取控制。 您可以藉由將使用者、群組或應用程式指派給一或多個 Azure 地圖服務存取控制角色，來授與*角色型存取控制*（RBAC）。 
-
-1. 移至您的**Azure 地圖服務帳戶**。 選取 **[存取控制（IAM）** > **角色指派**]。
-
-    ![授與 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
-
-1. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取 **[Azure 地圖服務日期讀取器（預覽）**]。 在 [存取權指派對象為]**** 底下，選取 [Azure AD 使用者、群組或服務主體]****。 選取使用者或應用程式。 然後選取 [儲存]  。
-
-    ![新增角色指派](./media/how-to-manage-authentication/add-role-assignment.png)
-
-## <a name="view-available-azure-maps-rbac-roles"></a>檢視可用的 Azure 地圖服務 RBAC 角色
+## <a name="view-role-definitions"></a>查看角色定義
 
 若要查看可用於 Azure 地圖服務的 RBAC 角色，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
 
-![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
+> [!div class="mx-imgBorder"]
+> ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-
-## <a name="view-azure-maps-rbac"></a>Azure 地圖服務 RBAC 的觀點
-
-RBAC 提供更細微的存取控制。
+## <a name="view-role-assignments"></a>檢視角色指派
 
 若要查看已授與 Azure 地圖服務之 RBAC 的使用者和應用程式，請移至**存取控制（IAM）**。 在該處選取 [**角色指派**]，然後依**Azure 地圖服務**篩選。
 
-![查看已授與 RBAC 的使用者和應用程式](./media/how-to-manage-authentication/how-to-view-amrbac.png)
-
+> [!div class="mx-imgBorder"]
+> ![查看已授與 RBAC 的使用者和應用程式](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>要求 Azure 地圖服務的權杖
 
-註冊應用程式並將它與 Azure 地圖服務產生關聯之後，您就可以要求存取權杖。
+從 Azure AD token 端點要求權杖。 在您的 Azure AD 要求中，請使用下列詳細資料：
 
-如果您的應用程式使用 Azure 地圖服務 Web SDK 的使用者權杖驗證，請使用 Azure 地圖服務用戶端識別碼和 Azure AD 應用程式識別碼來設定您的 HTML 網頁。
+| Azure 環境      | Azure AD token 端點             | Azure 資源識別碼              |
+| ---------------------- | ----------------------------------- | ------------------------------ |
+| Azure 公用雲端     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
+| Azure Government 雲端 | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-如果您的應用程式使用伺服器或應用程式驗證，請從 Azure AD token 端點`https://login.microsoftonline.com`要求權杖。 在您的要求中，使用下列詳細資料： 
-
-* Azure AD 資源識別碼`https://atlas.microsoft.com/`
-* Azure 地圖服務用戶端識別碼
-* Azure AD 應用程式識別碼
-* Azure AD 應用程式註冊密碼或憑證
-
-| Azure 環境   | Azure AD token 端點 | Azure 資源識別碼 |
-| --------------------|-------------------------|-------------------|
-| Azure 公用雲端        | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
-| Azure Government 雲端   | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` | 
-
-如需從 Azure AD 針對使用者和服務主體要求存取權杖的詳細資訊，請參閱[Azure AD 的驗證案例](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
-
+如需從 Azure AD 針對使用者和服務主體要求存取權杖的詳細資訊，請參閱[Azure AD 的驗證案例](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)和在[案例](./how-to-manage-authentication.md#determine-authentication-and-authorization)的表格中查看特定案例。
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱[Azure AD 和 Azure 地圖服務 WEB SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
 
 尋找 Azure 地圖服務帳戶的 API 使用計量：
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [檢視使用計量](how-to-view-api-usage.md)
 
 探索示範如何將 Azure AD 與 Azure 地圖服務整合的範例：

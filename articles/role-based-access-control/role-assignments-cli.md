@@ -8,24 +8,24 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 95ec9a25f97154d8e2d0e2e5b5f9cd29cf7a9c31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983320"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 Azure CLI 指派角色。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -34,9 +34,9 @@ ms.locfileid: "82735771"
 
 ## <a name="get-object-ids"></a>取得物件識別碼
 
-若要新增或移除角色指派，您可能需要指定物件的唯一識別碼。 識別碼的格式為： `11111111-1111-1111-1111-111111111111`。 您可以使用 Azure 入口網站或 Azure CLI 取得識別碼。
+若要新增或移除角色指派，您可能需要指定物件的唯一識別碼。 識別碼的格式如下：`11111111-1111-1111-1111-111111111111`。 您可以使用 Azure 入口網站或 Azure CLI 取得識別碼。
 
-### <a name="user"></a>User
+### <a name="user"></a>使用者
 
 若要取得 Azure AD 使用者的物件識別碼，您可以使用[az AD user show](/cli/azure/ad/user#az-ad-user-show)。
 
@@ -52,9 +52,9 @@ az ad user show --id "{email}" --query objectId --output tsv
 az ad group show --group "{name}" --query objectId --output tsv
 ```
 
-### <a name="application"></a>應用程式
+### <a name="application"></a>Application
 
-若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[az AD sp list](/cli/azure/ad/sp#az-ad-sp-list)。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
+若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[az AD sp list](/cli/azure/ad/sp#az-ad-sp-list)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
 
 ```azurecli
 az ad sp list --display-name "{name}" --query [].objectId --output tsv
@@ -69,10 +69,10 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 若要在資源群組範圍中新增使用者的角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-下列範例會將「*虛擬機器參與者*」角色指派給*醫藥-sales*資源群組範圍中的*\@patlong contoso.com*使用者：
+下列範例會將「*虛擬機器參與者*」角色指派給*醫藥-sales*資源群組範圍中的*patlong \@ contoso.com*使用者：
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -94,10 +94,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 若要使用唯一角色識別碼（而非角色名稱）新增角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。
 
 ```azurecli
-az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@patlong contoso.com*使用者。 若要取得唯一角色識別碼，您可以使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)或參閱[Azure 內建角色](built-in-roles.md)。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*patlong \@ contoso.com*使用者。 若要取得唯一角色識別碼，您可以使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)或參閱[Azure 內建角色](built-in-roles.md)。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -108,7 +108,7 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 若要新增群組的角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。 如需如何取得群組物件識別碼的詳細資訊，請參閱[取得物件](#get-object-ids)識別碼。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 下列範例會將*讀取*者角色指派給訂用帳戶範圍中識別碼為22222222-2222-2222-2222-222222222222 的*王 mack」小組*群組。
@@ -132,7 +132,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 若要新增應用程式的角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。 如需如何取得應用程式物件識別碼的詳細資訊，請參閱[取得物件](#get-object-ids)識別碼。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup}
 ```
 
 下列範例會將「*虛擬機器參與者*」角色指派給*醫藥-sales*資源群組範圍中物件識別碼為44444444-4444-4444-4444-444444444444 的應用程式。
@@ -146,10 +146,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 若要在訂用帳戶範圍新增使用者的角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。 若要取得訂用帳戶識別碼，您可以在 Azure 入口網站的 [**訂閱**] 分頁上找到它，或者您可以使用[az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --subscription {subscriptionNameOrId}
 ```
 
-下列範例會將「*讀取*者」角色指派給訂用帳戶範圍中的*annm\@example.com*使用者。
+下列範例會將「*讀取*者」角色指派給訂用帳戶範圍中的*annm \@ example.com*使用者。
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -160,23 +160,23 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 若要在管理群組範圍新增使用者的角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)。 若要取得管理群組識別碼，您可以在 [**管理群組**] 分頁的 [Azure 入口網站中找到，也可以使用[az 帳戶管理-群組清單](/cli/azure/account/management-group#az-account-management-group-list)。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
-下列範例會將「*帳單讀者*」角色指派給管理群組範圍的*alain\@example.com*使用者。
+下列範例會將「*帳單讀者*」角色指派給管理群組範圍的*alain \@ example.com*使用者。
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-### <a name="new-service-principal"></a>新增服務主體
+### <a name="new-service-principal"></a>新的服務主體
 
-如果您建立新的服務主體，並立即嘗試將角色指派給該服務主體，在某些情況下，該角色指派可能會失敗。 例如，如果您使用腳本來建立新的受控識別，然後嘗試將角色指派給該服務主體，則角色指派可能會失敗。 此失敗的原因可能是複寫延遲。 服務主體會建立在一個區域中;不過，角色指派可能會發生在另一個尚未複寫服務主體的區域中。 若要解決這種情況，您應該在建立角色指派時指定主體類型。
+如果您建立新的服務主體，並立即嘗試將角色指派給該服務主體，在某些情況下，該角色指派可能會失敗。 例如，如果您使用腳本來建立新的受控識別，然後嘗試將角色指派給該服務主體，則角色指派可能會失敗。 此失敗的原因可能是複寫延遲。 服務主體建立在某個區域中；不過，角色指派可能發生在另一個尚未複寫服務主體的區域中。 若要解決這種情況，您應該在建立角色指派時指定主體類型。
 
-若要新增角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)，指定的`--assignee-object-id`值，然後將設定`--assignee-principal-type`為`ServicePrincipal`。
+若要新增角色指派，請使用[az role 指派 create](/cli/azure/role/assignment#az-role-assignment-create)，指定的值 `--assignee-object-id` ，然後將設定 `--assignee-principal-type` 為 `ServicePrincipal` 。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --assignee-principal-type {assigneePrincipalType} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 下列範例會將「*虛擬機器參與者*」角色指派給*醫藥-sales*資源群組範圍內的*msi 測試*受控識別：
@@ -190,10 +190,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 在 Azure RBAC 中，若要移除存取權，您可以使用[az role 指派 delete](/cli/azure/role/assignment#az-role-assignment-delete)來移除角色指派：
 
 ```azurecli
-az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
+az role assignment delete --assignee {assignee} --role {roleNameOrId} --resource-group {resourceGroup}
 ```
 
-下列範例會從*醫藥-sales*資源群組上的*\@Patlong Contoso.com*使用者移除「*虛擬機器參與者*」角色指派：
+下列範例會從*醫藥-sales*資源群組上的*patlong \@ Contoso.com*使用者移除「*虛擬機器參與者*」角色指派：
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
@@ -205,7 +205,7 @@ az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-下列範例會從管理群組範圍的*alain\@example.com*使用者移除「*帳單讀者*」角色。 若要取得管理群組的識別碼，您可以使用[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list)。
+下列範例會從管理群組範圍的*alain \@ example.com*使用者移除「*帳單讀者*」角色。 若要取得管理群組的識別碼，您可以使用[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list)。
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

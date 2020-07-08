@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116293"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 為地理空間資料編制索引
 
@@ -34,13 +34,13 @@ ms.locfileid: "82839195"
 
 以下說明如何在 Azure 入口網站的**資料總管**中設定**地理空間**設定：
 
-![設定地理空間設定](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="設定地理空間設定":::
 
-您也可以在 .NET `geospatialConfig` SDK 中修改，以調整**地理空間**設定：
+您也可以 `geospatialConfig` 在 .NET SDK 中修改，以調整**地理空間**設定：
 
-如果未指定，則`geospatialConfig`會預設為 geography 資料類型。 當您修改時`geospatialConfig`，容器中所有現有的地理空間資料都將會重新建立索引。
+如果未指定，則 `geospatialConfig` 會預設為 geography 資料類型。 當您修改時 `geospatialConfig` ，容器中所有現有的地理空間資料都將會重新建立索引。
 
-以下是藉由設定`geometry` `geospatialConfig`屬性和新增**boundingBox**，將地理空間資料類型修改為的範例：
+以下是藉 `geometry` 由設定 `geospatialConfig` 屬性和新增**boundingBox**，將地理空間資料類型修改為的範例：
 
 ```csharp
     //Retrieve the container's details
@@ -107,7 +107,7 @@ ms.locfileid: "82839195"
 
 ## <a name="geometry-data-indexing-examples"></a>幾何資料索引編制範例
 
-使用**geometry**資料類型時，與 geography 資料類型類似，您必須指定要編制索引的相關路徑和類型。 此外，您也必須在索引編制`boundingBox`原則中指定，以指出要為該特定路徑編制索引的所需區域。 每個地理空間路徑都`boundingBox`需要自己的。
+使用**geometry**資料類型時，與 geography 資料類型類似，您必須指定要編制索引的相關路徑和類型。 此外，您也必須在 `boundingBox` 索引編制原則中指定，以指出要為該特定路徑編制索引的所需區域。 每個地理空間路徑都需要自己的 `boundingBox` 。
 
 周框方塊包含下列屬性：
 
@@ -120,7 +120,7 @@ ms.locfileid: "82839195"
 
 建立包含所有（或大部分）資料的周框方塊。 只有在完全位於周框方塊內的物件上計算的作業，才能夠利用空間索引。 使周框方塊大於必要會對查詢效能造成負面影響。
 
-以下是索引編制原則的範例，其會將**幾何**資料與`geometry` **geospatialConfig**設定為：
+以下是索引編制原則的範例，其會將**幾何**資料與**geospatialConfig**設定為 `geometry` ：
 
 ```json
  {
@@ -159,7 +159,7 @@ ms.locfileid: "82839195"
 上述的編制索引原則具有 x 座標的**boundingBox** （-10，10），而 y 座標則為（-20，20）。 具有上述索引編制原則的容器將會為完全在此區域內的所有點、多邊形、MultiPolygons 和 Linestring 編制索引。
 
 > [!NOTE]
-> 如果您嘗試將具有**boundingBox**的索引編制原則加入至`geography`資料類型的容器中，則會失敗。 在新增**boundingBox**之前，您**geospatialConfig**應該將`geometry`容器的 geospatialConfig 修改為。 您可以在選取容器的地理空間資料類型之前或之後，新增資料並修改索引編制原則的其餘部分（例如路徑和類型）。
+> 如果您嘗試將具有**boundingBox**的索引編制原則加入至 `geography` 資料類型的容器中，則會失敗。 在**geospatialConfig** `geometry` 新增**boundingBox**之前，您應該將容器的 geospatialConfig 修改為。 您可以在選取容器的地理空間資料類型之前或之後，新增資料並修改索引編制原則的其餘部分（例如路徑和類型）。
 
 ## <a name="next-steps"></a>後續步驟
 

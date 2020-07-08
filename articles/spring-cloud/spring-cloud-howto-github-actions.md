@@ -6,18 +6,18 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e17fa3e99de9f429fa279ba2e5413b60e9084de8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125697"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>具有 GitHub 動作的 Azure 春季雲端 CI/CD
 
 GitHub 動作支援自動化軟體發展生命週期工作流程。 透過 Azure 春季雲端的 GitHub 動作，您可以在存放庫中建立工作流程，以建立、測試、封裝、發行和部署至 Azure。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 這個範例需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="set-up-github-repository-and-authenticate"></a>設定 GitHub 存放庫並進行驗證
@@ -45,7 +45,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
  ![加入新的秘密](./media/github-actions/actions1.png)
 
-將秘密名稱設為`AZURE_CREDENTIALS` ，並將其值設定為您在*設定 GitHub 存放庫和驗證*標題底下找到的 JSON 字串。
+將秘密名稱設為 `AZURE_CREDENTIALS` ，並將其值設定為您在*設定 GitHub 存放庫和驗證*標題底下找到的 JSON 字串。
 
  ![設定秘密資料](./media/github-actions/actions2.png)
 
@@ -63,7 +63,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 工作流程是使用下列選項來定義。
 
 ### <a name="prepare-for-deployment-with-azure-cli"></a>準備使用 Azure CLI 進行部署
-命令`az spring-cloud app create`目前不具等冪性。  我們建議您在現有的 Azure 春季雲端應用程式和實例上進行此工作流程。
+命令 `az spring-cloud app create` 目前不具等冪性。  我們建議您在現有的 Azure 春季雲端應用程式和實例上進行此工作流程。
 
 使用下列 Azure CLI 命令進行準備：
 ```
@@ -75,7 +75,7 @@ az spring-cloud app create --name account-service
 ```
 
 ### <a name="deploy-with-azure-cli-directly"></a>使用 Azure CLI 直接部署
-`.github/workflow/main.yml`在存放庫中建立檔案：
+在存放 `.github/workflow/main.yml` 庫中建立檔案：
 
 ```
 name: AzureSpringCloud
@@ -99,7 +99,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -118,10 +118,10 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>使用 Azure CLI 動作部署
-Az `run`命令會使用最新版本的 Azure CLI。 如果有重大變更，您也可以搭配使用特定版本的 Azure CLI 與 Azure/CLI `action`。 
+Az `run` 命令會使用最新版本的 Azure CLI。 如果有重大變更，您也可以搭配使用特定版本的 Azure CLI 與 Azure/CLI `action` 。 
 
 > [!Note] 
-> 此命令將會在新容器中執行， `env`因此將無法運作，而且跨動作檔案存取可能會有額外的限制。
+> 此命令將會在新容器中執行，因此 `env` 將無法運作，而且跨動作檔案存取可能會有額外的限制。
 
 在存放庫中建立 github/workflow/yml 檔案：
 ```
@@ -142,7 +142,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -163,7 +163,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>使用 Maven 外掛程式部署
-另一個選項是使用[Maven 外掛程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven)來部署 Jar 和更新應用程式設定。 此命令`mvn azure-spring-cloud:deploy`具有等冪性，並且會視需要自動建立應用程式。 您不需要事先建立對應的應用程式。
+另一個選項是使用[Maven 外掛程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven)來部署 Jar 和更新應用程式設定。 此命令 `mvn azure-spring-cloud:deploy` 具有等冪性，並且會視需要自動建立應用程式。 您不需要事先建立對應的應用程式。
 
 ```
 name: AzureSpringCloud
@@ -183,7 +183,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login
@@ -198,7 +198,7 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>執行工作流程
-在**Actions**您推送`.github/workflow/main.yml`至 github 之後，應該會自動啟用 github 動作。 當您推送新的認可時，將會觸發此動作。 如果您在瀏覽器中建立這個檔案，您的動作應該已經執行。
+在您推送至 GitHub 之後，應該會自動啟用 GitHub**動作** `.github/workflow/main.yml` 。 當您推送新的認可時，將會觸發此動作。 如果您在瀏覽器中建立這個檔案，您的動作應該已經執行。
 
 若要確認已啟用此動作，請按一下 [GitHub 存放庫] 頁面上的 [**動作**] 索引標籤：
 
@@ -211,4 +211,4 @@ jobs:
 ## <a name="next-steps"></a>後續步驟
 * [適用于春季雲端 GitHub 動作的 Key Vault](./spring-cloud-github-actions-key-vault.md)
 * [Azure Active Directory 服務主體](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
-* [適用于 Azure 的 GitHub 動作](https://github.com/Azure/actions/)
+* [適用於 Azure 的 GitHub Actions](https://github.com/Azure/actions/)

@@ -3,12 +3,12 @@ title: 開始使用 Advisor
 description: 開始使用 Advisor。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117857"
 ---
 # <a name="get-started-with-azure-advisor"></a>開始使用 Advisor
 
@@ -27,7 +27,7 @@ ms.locfileid: "79259626"
 
 1. Advisor 儀表板會顯示所有選取之訂用帳戶的建議摘要。  您可以使用訂用帳戶篩選下拉式清單，選擇您想要顯示建議的訂用帳戶。
 
-1. 若要取得特定類別的建議，請按一下下列其中一個索引標籤：[高可用性]****、[安全性]****、[效能]**** 或 [成本]****。 
+1. 若要取得特定類別的建議，請按一下其中一個索引標籤： [**可靠性**]、[**安全性**]、[**效能**] 或 [**成本**]。 
 
    ![Azure 建議程式儀表板](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ Advisor 可讓您下載建議摘要。  您可以將建議下載為 PDF 檔案�
 若要深入了解 Advisor，請參閱︰
 
 - [Azure 建議程式簡介](advisor-overview.md)
-- [Advisor 高可用性建議](advisor-high-availability-recommendations.md)
+- [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 - [Advisor 安全性建議](advisor-security-recommendations.md)
 - [建議程式效能建議](advisor-performance-recommendations.md)
-- [Advisor 成本建議](advisor-performance-recommendations.md)
+- [Advisor 成本建議](advisor-cost-recommendations.md)
+- [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)

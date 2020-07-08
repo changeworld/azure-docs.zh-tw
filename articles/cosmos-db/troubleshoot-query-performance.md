@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117908"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "83714554"
 
 當您將 Azure Cosmos DB 中的查詢最佳化時，第一個步驟一律是[取得查詢的查詢計量](profile-sql-api-query.md)。 這些計量也可透過 Azure 入口網站取得。 在資料總管中執行查詢後，您就可以在 [結果] 索引標籤旁看到查詢計量：
 
-[ ![取得查詢計量](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="取得查詢計量" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 取得查詢計量之後，請將**擷取的文件計數**與查詢的**輸出文件計數**進行比較。 使用此比較來識別本文中要檢查的相關章節。
 

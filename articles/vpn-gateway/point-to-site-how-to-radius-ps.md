@@ -4,15 +4,15 @@ description: 使用 P2S 和 RADIUS 驗證，將 Windows 和 Mac OS X 用戶端�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987168"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 驗證設定 VNet 的點對站連線：PowerShell
 
@@ -109,7 +109,7 @@ RADIUS 伺服器可位於內部部署環境或 Azure VNet 中。 在驗證期間
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a>建立資源群組、VNet 和公用 IP 位址
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a> 建立資源群組、VNet 和公用 IP 位址
 
 下列步驟會建立一個資源群組，並在此資源群組中建立具有三個子網路的虛擬網路。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。
 
@@ -143,7 +143,7 @@ RADIUS 伺服器可位於內部部署環境或 Azure VNet 中。 在驗證期間
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a>設定 RADIUS 伺服器
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a> 設定 RADIUS 伺服器
 
 在建立和設定虛擬網路閘道之前，應正確設定 RADIUS 伺服器以供驗證。
 
@@ -153,12 +153,12 @@ RADIUS 伺服器可位於內部部署環境或 Azure VNet 中。 在驗證期間
 
 [網路原則伺服器 (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) 一文提供有關設定 Windows RADIUS 伺服器 (NPS) 以便進行 AD 網域驗證的指引。
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a>建立 VPN 閘道
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> 建立 VPN 閘道
 
 設定和建立 VNet 的 VPN 閘道。
 
 * -GatewayType 必須是 'Vpn'，而 -VpnType 必須是 'RouteBased'。
-* 視您選取的 [閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 而定，VPN 閘道最多可能需要45分鐘的時間才能完成。
+* 視您選取的 [閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)而定，VPN 閘道最多可能需要45分鐘的時間才能完成   。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a>新增 RADIUS 伺服器和用戶端位址集區
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> 新增 RADIUS 伺服器和用戶端位址集區
  
 * 可以依名稱或依 IP 位址指定 -RadiusServer。 如果您指定名稱且伺服器位於內部部署環境，則 VPN 閘道可能無法解析此名稱。 如果是這樣，最好是指定伺服器的 IP 位址。 
 * -RadiusSecret 應符合 RADIUS 伺服器的設定。
@@ -223,7 +223,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a>下載 vpn 用戶端設定套件並設定 vpn 用戶端
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> 下載 vpn 用戶端設定套件並設定 vpn 用戶端
 
 VPN 用戶端組態可讓裝置透過 P2S 連線來連線至 VNet。若要產生 VPN 用戶端組態套件及設定 VPN 用戶端，請參閱[建立 VPN 用戶端組態以便進行 RADIUS 驗證](point-to-site-vpn-client-configuration-radius.md)。
 
@@ -274,6 +274,6 @@ VPN 用戶端組態可讓裝置透過 P2S 連線來連線至 VNet。若要產生
 
 [!INCLUDE [Point-to-Site RADIUS FAQ](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/azure-vm-network-overview.md)。

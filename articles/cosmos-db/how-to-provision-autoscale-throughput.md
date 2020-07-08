@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118724"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的資料庫或容器上佈建自動調整輸送量
 
@@ -26,7 +26,7 @@ ms.locfileid: "83663396"
 
 1. 選取 [新增容器]。 輸入資料庫的名稱、容器和分割區索引鍵。 在 [輸送量] 下，選取 [自動調整] 選項，然後設定資料庫或容器可調整的[最大輸送量 (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)。
 
-   ![建立容器並設定自動調整佈建輸送量](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="建立容器並設定自動調整佈建輸送量":::
 
 1. 選取 [確定]。
 
@@ -45,7 +45,7 @@ ms.locfileid: "83663396"
 
 1. 在 [調整] 下，依序選取 [自動調整] 選項和 [儲存]。
 
-   ![在現有的容器上啟用自動調整](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="在現有的容器上啟用自動調整":::
 
 > [!NOTE]
 > 當在現有的資料庫或容器上啟用自動調整時，最大 RU/秒的起始值是由系統根據您目前手動佈建輸送量設定和儲存體來決定。 作業完成之後，即可視需要變更最大 RU/秒。 [深入了解。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

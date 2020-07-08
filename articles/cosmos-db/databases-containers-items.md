@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114753"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用資料庫、容器和專案
 
@@ -20,7 +20,7 @@ ms.locfileid: "82161685"
 
 下圖顯示 Azure Cosmos DB 帳戶中不同實體的階層：
 
-![Azure Cosmos 帳戶項目](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帳戶項目" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos 資料庫
 
@@ -37,12 +37,12 @@ ms.locfileid: "82161685"
 
 您可以使用 Azure Cosmos Api 與 Azure Cosmos 資料庫互動，如下表所述：
 
-| 作業 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-|列舉所有資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
-|讀取資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
-|建立新的資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
-|更新資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | 是 | NA | NA |
+|列舉所有資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | Yes | NA | NA |
+|讀取資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | Yes | NA | NA |
+|建立新的資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | Yes | NA | NA |
+|更新資料庫| 是 | 是 | 是 (資料庫會對應至 keyspace) | Yes | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos 容器
@@ -74,10 +74,10 @@ Azure Cosmos 容器專門用於 API 特定的實體，如下表所示：
 
 | Azure Cosmos 實體 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 容器 | 容器 | Table | 集合 | 圖形 | Table |
+|Azure Cosmos 容器 | 容器 | Table | 集合 | 圖形 | 資料表 |
 
 > [!NOTE]
-> 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平臺的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上進行遙測和動作的混淆/衝突。
+> 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平台的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上發生遙測和動作的混淆/衝突。
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的屬性
 
@@ -87,9 +87,9 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_掉 | 系統產生的 | 容器的唯一識別碼 | 是 | 否 | 否 | 否 | 否 |
 |\_etag | 系統產生的 | 適用於開放式並行存取控制的實體標記 | 是 | 否 | 否 | 否 | 否 |
-|\_ts | 系統產生的 | 容器的上次更新日期時間戳記 | 是 | 否 | 否 | 否 | 否 |
+|\_終端 | 系統產生的 | 容器的上次更新日期時間戳記 | 是 | 否 | 否 | 否 | 否 |
 |\_供電 | 系統產生的 | 容器的可定址 URI | 是 | 否 | 否 | 否 | 否 |
-|id | 使用者可設定 | 使用者定義的容器唯一名稱 | 是 | 是 | 是 | 是 | 是 |
+|id | 使用者可設定 | 使用者定義的容器唯一名稱 | Yes | Yes | Yes | Yes | Yes |
 |indexingPolicy | 使用者可設定 | 提供變更索引路徑、索引類型和索引模式的功能 | 是 | 否 | 否 | 否 | 是 |
 |timeToLive | 使用者可設定 | 提供在設定的時間週期後，自動從容器中刪除專案的功能。 如需詳細資訊，請參閱生存[時間](time-to-live.md)。 | 是 | 否 | 否 | 否 | 是 |
 |changeFeedPolicy | 使用者可設定 | 用來讀取容器中對項目所做的變更。 如需詳細資訊，請參閱[變更](change-feed.md)摘要。 | 是 | 否 | 否 | 否 | 是 |
@@ -99,17 +99,17 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 
 當您使用任何 Azure Cosmos Api 時，Azure Cosmos 容器支援下列作業：
 
-| 作業 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 列舉資料庫中的容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 讀取容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 建立新容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 更新容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 刪除容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 列舉資料庫中的容器 | Yes | 是 | 是 | 是 | NA | NA |
+| 讀取容器 | Yes | 是 | 是 | 是 | NA | NA |
+| 建立新容器 | Yes | 是 | 是 | 是 | NA | NA |
+| 更新容器 | Yes | 是 | 是 | 是 | NA | NA |
+| 刪除容器 | Yes | 是 | 是 | 是 | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos 項目
 
-根據您使用的 API 而定，Azure Cosmos 專案可以代表集合中的檔、資料表中的資料列，或是圖形中的節點或邊緣。 下表顯示 API 特定實體與 Azure Cosmos 專案的對應：
+Azure Cosmos 項目可根據所使用的 API，分別代表集合中的文件、資料表中的資料列，或圖形中的節點或邊緣。 下表顯示 API 特定實體與 Azure Cosmos 專案的對應：
 
 | Cosmos 實體 | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- |
@@ -123,21 +123,21 @@ Azure Cosmos 容器具有一組系統定義的屬性。 根據您使用的 API �
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_掉 | 系統產生的 | 專案的唯一識別碼 | 是 | 否 | 否 | 否 | 否 |
 |\_etag | 系統產生的 | 適用於開放式並行存取控制的實體標記 | 是 | 否 | 否 | 否 | 否 |
-|\_ts | 系統產生的 | 上次更新專案的時間戳記 | 是 | 否 | 否 | 否 | 否 |
+|\_終端 | 系統產生的 | 上次更新專案的時間戳記 | 是 | 否 | 否 | 否 | 否 |
 |\_供電 | 系統產生的 | 項目的可定址 URI | 是 | 否 | 否 | 否 | 否 |
-|id | 之前或之後 | 邏輯分割區中使用者定義的唯一名稱。 | 是 | 是 | 是 | 是 | 是 |
-|任意使用者定義的屬性 | 使用者定義 | 以 API 原生標記法表示的使用者定義屬性（包括 JSON、BSON 和 CQL） | 是 | 是 | 是 | 是 | 是 |
+|id | 之前或之後 | 邏輯分割區中使用者定義的唯一名稱。 | Yes | Yes | Yes | Yes | Yes |
+|任意使用者定義的屬性 | 使用者定義 | 以 API 原生標記法表示的使用者定義屬性（包括 JSON、BSON 和 CQL） | Yes | Yes | Yes | Yes | Yes |
 
 > [!NOTE]
-> `id`屬性的唯一性只會在每個邏輯分割區內強制執行。 多個檔可以具有具有`id`不同分割區索引鍵值的相同屬性。
+> 屬性的唯一性 `id` 只會在每個邏輯分割區內強制執行。 多個檔可以具有 `id` 具有不同分割區索引鍵值的相同屬性。
 
 ### <a name="operations-on-items"></a>項目上的作業
 
 Azure Cosmos 專案支援下列作業。 您可以使用任何 Azure Cosmos Api 來執行作業。
 
-| 作業 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 適用於 MongoDB 的 Azure Cosmos DB API | Gremlin API | 資料表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 插入、取代、刪除、更新插入、讀取 | 否 | 是 | 是 | 是 | 是 | 是 |
+| 插入、取代、刪除、更新插入、讀取 | 否 | 是 | Yes | Yes | Yes | 是 |
 
 ## <a name="next-steps"></a>後續步驟
 

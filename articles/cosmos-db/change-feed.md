@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119370"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中變更摘要
 
@@ -67,7 +67,7 @@ _etag 格式是作為內部之用，因為該格式可以隨時變更，請別�
 
 容器內每個邏輯分割區索引鍵都可使用變更摘要，因此可以配送給一或多個取用者以進行平行處理，如下圖所示。
 
-![Azure Cosmos DB 變更摘要的分散式處理](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Azure Cosmos DB 變更摘要的分散式處理" border="false":::
 
 ## <a name="features-of-change-feed"></a>變更摘要的功能
 

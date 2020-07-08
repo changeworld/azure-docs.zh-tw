@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bcce08285c7412644de22f19ddd9d821ad3adea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77666747"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124386"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
 本文示範如何使用 HTTP 資料收集器 API 將記錄資料從 REST API 用戶端傳送給 Azure 監視器。  內容說明如何將您指令碼或應用程式所收集的資料格式化、將其包含在要求中，以及讓 Azure 監視器授權該要求。  提供的範例適用於 PowerShell、C# 及 Python。
@@ -42,14 +42,14 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 | 內容類型 |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI 參數
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作區的唯一識別碼。 |
 | 資源 |API 資源名稱︰/api/logs。 |
 | API 版本 |要使用於這個要求的 API 版本。 目前是 2016-04-01。 |
 
 ### <a name="request-headers"></a>要求標頭
-| 頁首 | 描述 |
+| Header | 描述 |
 |:--- |:--- |
 | 授權 |授權簽章。 本文稍後會說明如何建立 HMAC-SHA256 標頭。 |
 | Log-Type |指定正在提交的資料記錄類型。 只能包含字母、數位和底線（_），且不得超過100個字元。 |
@@ -92,7 +92,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 後續各節中的範例有範例程式碼可協助您建立授權標頭。
 
-## <a name="request-body"></a>要求本文
+## <a name="request-body"></a>Request body
 訊息的主體必須採用 JSON。 它必須包含具有下列格式之屬性名稱和值配對的一或多筆記錄。 屬性名稱只能包含字母、數位和底線（_）。
 
 ```json
@@ -134,10 +134,10 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 | 屬性資料類型 | 後置詞 |
 |:--- |:--- |
-| 字串 |_s |
-| 布林值 |_b |
+| String |_s |
+| Boolean |_b |
 | Double |_d |
-| Date/time |_t |
+| 日期/時間 |_t |
 | GUID （儲存為字串） |_g |
 
 Azure 監視器用於每個屬性的資料類型取決於新記錄的記錄類型是否已經存在。
@@ -225,7 +225,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 $LogType = "MyRecordType"
 
 # You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
-$TimeStampField = "DateValue"
+$TimeStampField = ""
 
 
 # Create two records with the same set of properties to create
@@ -467,7 +467,7 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="alternatives-and-considerations"></a>替代方案和考慮
 雖然資料收集器 API 應涵蓋將自由格式資料收集到 Azure 記錄的大部分需求，但有一些實例可能需要有替代方法，才能克服 API 的某些限制。 您所有的選項如下所示，主要考慮包括：
 
-| 替代函式 | 描述 | 最適用于 |
+| 替代函式 | Description | 最適用於 |
 |---|---|---|
 | [自訂事件](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： Application Insights 中以原生 SDK 為基礎的內嵌 | Application Insights，通常會透過應用程式內的 SDK 進行檢測，讓您能夠透過自訂事件傳送自訂資料。 | <ul><li> 在您的應用程式中產生的資料，但 SDK 不會透過其中一個預設資料類型（要求、相依性、例外狀況等等）來拾取。</li><li> 最常與中的其他應用程式資料相互關聯的資料 Application Insights </li></ul> |
 | Azure 監視器記錄中的資料收集器 API | Azure 監視器記錄檔中的資料收集器 API 是完全開放式的資料內嵌方式。 您可以在這裡傳送 JSON 物件格式的任何資料。 一旦傳送之後，就會進行處理，並在記錄檔中使用，以與記錄檔中的其他資料或其他 Application Insights 資料相互關聯。 <br/><br/> 將資料以檔案形式上傳至 Azure Blob blob 相當容易，因為這些檔案會在其中進行處理，並上傳至 Log Analytics。 如需這類管線的範例執行，請參閱[這](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)篇文章。 | <ul><li> 不一定會在 Application Insights 內所檢測的應用程式中產生的資料。</li><li> 範例包括查閱和事實資料表、參考資料、預先匯總統計資料等等。 </li><li> 適用于將針對其他 Azure 監視器資料（Application Insights、其他記錄資料類型、資訊安全中心 Azure 監視器、容器/Vm 等）交叉參考的資料。 </li></ul> |

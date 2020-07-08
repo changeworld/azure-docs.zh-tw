@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119489"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>適用於 Azure Cosmos DB 的 Synapse Link：近即時分析的使用案例
 
@@ -34,7 +34,7 @@ ms.locfileid: "83744668"
 
 下列架構顯示在供應鏈分析中利用 Azure Cosmos DB 做為雲端原生操作資料庫和 Synapse Link 的強大功能：
 
-![供應鏈分析中適用於 Azure Cosmos DB 的 Azure Synapse Link ](./media/synapse-link-use-cases/supply-chain-analytics.png)
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="供應鏈分析中 Azure Cosmos DB 的 Azure Synapse 連結" border="false":::
 
 根據先前的架構，您可以使用 適用於 Azure Cosmos DB 的 Synapse Link 來達成下列使用案例：
 
@@ -70,7 +70,7 @@ ms.locfileid: "83744668"
 
 現在的零售商會建置安全且可調整的電子商務解決方案，以滿足客戶與業務的需求。 這些電子商務解決方案需要透過自訂的產品和供應項目與客戶互動、快速且安全地處理交易，並專注於履行和客戶服務。 Azure Cosmos DB 以及適用於 Azure Cosmos DB 的最新 Synapse Link 可讓零售商即時為客戶產生個人化建議。 其使用低延遲可調整的一致性設定來取得立即的深入解析，如下列架構所示：
 
-![即時個人化中適用於 Azure Cosmos DB 的 Azure Synapse Link](./media/synapse-link-use-cases/real-time-personalization.png)
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="即時個人化中適用於 Azure Cosmos DB 的 Azure Synapse Link" border="false":::
 
 適用於 Azure Cosmos DB 的 Synapse Analytics 使用案例：
 
@@ -82,7 +82,7 @@ ms.locfileid: "83744668"
 
 以下是 IoT 預測性維護中適用於 Azure Cosmos DB 的 Azure Synapse Link 的雲端原生 HTAP 功能的架構：
 
-![IoT 預測性維護中適用於 Azure Cosmos DB 的 Azure Synapse Link](./media/synapse-link-use-cases/iot-predictive-maintenance.png)
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IoT 預測性維護中適用於 Azure Cosmos DB 的 Azure Synapse Link" border="false" :::
 
 適用於 Azure Cosmos DB 的 Synapse Analytics 使用案例：
 
@@ -104,7 +104,7 @@ ms.locfileid: "83744668"
 
 Azure Synapse Link 可讓 Azure Cosmos DB 不只支援交易工作負載，也能對歷史操作資料執行近即時分析工作負載。 不需要 ETL，且保證會與交易工作負載效能隔離。
 
-下圖顯示使用 Azure Cosmos DB 的工作負載模式：![適用於 Azure Cosmos DB 的 Azure Synapse Link 工作負載模式](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
+下圖顯示使用 Azure Cosmos DB 的工作負載模式：:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="適用於 Azure Cosmos DB 的 Azure Synapse Link 工作負載模式" border="false":::
 
 我們以一家營運橫跨全球 20 個國家/地區的電子商務公司 CompanyXYZ 為範例，說明選擇 Azure Cosmos DB 作為單一即時資料庫，同時滿足庫存管理平台的交易和分析需求的優點。
 

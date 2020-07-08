@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73888940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114260"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>常見的 Azure Cosmos DB 使用案例
 本文提供數個常見的 Azure Cosmos DB 使用案例概觀。  本文中的建議可作為使用 Cosmos DB 來開發應用程式時的起點。   
@@ -42,7 +42,7 @@ Azure Cosmos DB 是一種全域分散式、多模型資料庫，廣泛用於各�
 ## <a name="iot-and-telematics"></a>IoT 和遠距通訊
 IoT 使用案例在如何內嵌、處理和儲存資料方面通常共用一些模式。  首先，這些系統需要內嵌於各種地區設定的裝置感應器中暴增的資料量。 接著，這些系統會處理並分析資料流資料，以衍生即時的資訊分析。 然後將資料封存到冷儲存體，進行批次分析。 Microsoft Azure 提供適用于 IoT 使用案例的豐富服務，包括 Azure Cosmos DB、Azure 事件中樞、Azure 串流分析、Azure 通知中樞、Azure Machine Learning、Azure HDInsight 和 Power BI。 
 
-![Azure Cosmos DB IoT 參考架構](./media/use-cases/iot.png)
+:::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT 參考架構" border="false":::
 
 Azure 事件中樞可以擷取暴增的資料量，因為它提供高輸送量資料擷取和低延遲。 您可以將需要處理以取得即時資訊分析的內嵌資料，使用漏斗方式倒入 Azure 串流分析以進行即時分析。 您可以將資料載入 Azure Cosmos DB 以進行臨機操作查詢。 將資料載入 Azure Cosmos DB 之後，這些資料便可供查詢。 此外，可以在變更摘要上讀取新的資料以及現有資料的變更。 變更摘要是持續性的只附加記錄，會依照順序來儲存 Cosmos 容器的變更。 Azure Cosmos DB 中的全部資料或資料變更可用來在即時分析中作為參考資料。 此外，您還可以將 Azure Cosmos DB 資料連線到 HDInsight 來進行 Pig、Hive 或 Map/Reduce 作業，以進一步精簡和處理資料。  接著，系統會將精簡過的資料載入回 Azure Cosmos DB 以供報告使用。   
 
@@ -57,11 +57,11 @@ Azure Cosmos DB 廣泛用於 Microsoft 自己的電子商務平台，這些平�
 
 請細想汽車零件供應商產品目錄的範例。 除了所有零件共用的通用屬性外，每個零件還可能會有自己的屬性。 此外，用於特定零件的屬性可能在明年推出新的模型時變更。 Azure Cosmos DB 支援彈性結構描述和階層式資料，因此很適合用來儲存產品目錄資料。
 
-![Azure Cosmos DB 零售目錄參考架構](./media/use-cases/product-catalog.png)
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB 零售目錄參考架構" border="false":::
 
 Azure Cosmos DB 通常用於事件來源，以其[變更摘要](change-feed.md)功能推動事件取向架構。 變更摘要讓下游微服務能夠確實累加讀取和插入對 Azure Cosmos DB 進行的更新 (例如訂單事件)。 這項功能可以用來提供持續性事件存放區，以作為許多微服務 (可以實作為[無伺服器 Azure Functions](https://azure.com/serverless)) 之間狀態變更事件和訂單處理工作流程的訊息代理程式。
 
-![Azure Cosmos DB 訂購管線參考架構](./media/use-cases/event-sourcing.png)
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB 訂購管線參考架構" border="false":::
 
 此外，儲存在 Azure Cosmos DB 中的資料還可以與 HDInsight 整合，以透過 Apache Spark 作業進行巨量資料分析。 如需有關適用於 Azure Cosmos DB 的 Spark Connector 詳細資訊，請參閱 [使用 Cosmos DB 和 HDInsight 執行 Spark 作業](spark-connector.md)。
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 已獲得 [The Walking Dead: No Man's Land](https://azure.micros
 * 透過彈性的結構描述更加輕易地實作社交功能，包括遊戲中的交談訊息、玩家的公會成員資格、已完成的挑戰、得分排行榜和社交關係圖。
 * 由於 Azure Cosmos DB 是作為一個受控平台即服務 (PaaS)，因此只需最基本的設定和管理工作，就能快速重覆作業而能縮短上市時間。
 
-![Azure Cosmos DB 遊戲參考架構](./media/use-cases/gaming.png)
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB 遊戲參考架構" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Web 與行動應用程式
 Azure Cosmos DB 常用於 Web 與行動應用程式，而且適合用於建立社交互動模型、與第三方服務整合及建置豐富的個人化體驗。 Cosmos DB SDK 可用來建置使用熱門 [Xamarin 架構](mobile-apps-with-xamarin.md)的豐富 iOS 和 Android 應用程式。  
@@ -88,14 +88,14 @@ Azure Cosmos DB 常用於 Web 與行動應用程式，而且適合用於建立�
 
 許多社交應用程式是以全球的規模運作，而且可能出現無法預期的使用模式。 調整資料存放區的彈性十分重要，因為應用程式層會進行調整以符合使用需求。  您可以透過在 Cosmos DB 帳戶下新增其他資料分割區來相應放大。  此外，您也可以跨多個區域建立其他 Cosmos DB 帳戶。 如需了解 Cosmos DB 服務區域可用性，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
 
-![Azure Cosmos DB Web 應用程式參考架構](./media/use-cases/apps-with-global-reach.png)
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB Web 應用程式參考架構" border="false":::
 
 ### <a name="personalization"></a>個人化
 現今，現代應用程式具備複雜的檢視和體驗。 這些是通常是動態的，根據使用者喜好設定或情緒和品牌需求量身訂做。 因此，應用程式必須要能夠有效地擷取個人化設定，以快速呈現 UI 項目和體驗。 
 
 JSON (Cosmos DB 所支援的格式) 是一種呈現 UI 配置資料的有效格式，因為它不只輕量，還可由 JavaScript 輕鬆解譯。 Cosmos DB 提供可微調的一致性層級，可允許快速讀取及低延遲寫入。 因此，將 UI 配置資料 (包括個人化設定) 以 JSON 文件形式儲存在 Cosmos DB 中，是跨不同線路取得這項資料的有效方法。
 
-![Azure Cosmos DB Web 應用程式參考架構](./media/use-cases/personalization.png)
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB Web 應用程式參考架構" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

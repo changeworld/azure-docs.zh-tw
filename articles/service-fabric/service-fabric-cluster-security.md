@@ -4,12 +4,12 @@ description: 深入了解 Azure Service Fabric 叢集的安全性情節，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080679"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 
@@ -33,13 +33,18 @@ Azure Service Fabric 叢集是您擁有的資源。 保護叢集是您的責任�
 
 Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X.509 伺服器憑證。 在本文結尾處，您可以看到這些憑證是什麼，以及如何取得或建立這些憑證的快速概觀。
 
-建立叢集時，可在 Azure 入口網站中，使用 Azure Resource Manager 範本或使用獨立 JSON 範本設定憑證安全性。 Service Fabric SDK 的預設行為是部署和安裝到期日最晚的憑證；傳統行為允許定義主要和次要憑證，以允許手動起始憑證變換，但不建議用於新的功能。 即將要使用的主要憑證有最晚的到期日，應該不同於您為[用戶端對節點安全性](#client-to-node-security)設定的系統管理用戶端憑證和唯讀用戶端憑證。
+建立叢集時，可在 Azure 入口網站中，使用 Azure Resource Manager 範本或使用獨立 JSON 範本設定憑證安全性。 Service Fabric SDK 的預設行為是部署憑證，並將其安裝到未來到期日的最新狀態;傳統行為允許定義主要和次要憑證，以允許手動起始的變換，而且不建議用於新功能。 即將要使用的主要憑證有最晚的到期日，應該不同於您為[用戶端對節點安全性](#client-to-node-security)設定的系統管理用戶端憑證和唯讀用戶端憑證。
 
 若要了解如何在適用於 Azure 的叢集中設定憑證安全性，請參閱[使用 Azure Resource Manager 範本來設定叢集](service-fabric-cluster-creation-via-arm.md)。
 
 若要了解如何在適用於獨立 Windows Server 叢集的叢集中設定憑證安全性，請參閱[使用 X.509 憑證來保護 Windows 上的獨立叢集](service-fabric-windows-cluster-x509-security.md)。
 
 ### <a name="node-to-node-windows-security"></a>節點對節點 Windows 安全性
+
+> [!NOTE]
+> Windows 驗證是以 Kerberos 為基礎。 不支援 NTLM 作為驗證類型。
+>
+> 請盡可能針對 Service Fabric 叢集使用 x.509 憑證驗證。
 
 若要了解如何設定適用於獨立 Windows Server 叢集的憑證安全性，請參閱[使用 Windows 安全性保護 Windows 上的獨立叢集](service-fabric-windows-cluster-windows-security.md)。
 
@@ -49,7 +54,7 @@ Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X
 
 ![用戶端對節點通訊的圖表][Client-to-Node]
 
-在 Azure 上執行的叢集或在 Windows 上執行的獨立叢集可以使用[憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
+在 Azure 上執行的叢集和在 Windows 上執行的獨立叢集兩者都可以使用[憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx)或[windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)，不過建議您盡可能使用 x.509 憑證驗證。
 
 ### <a name="client-to-node-certificate-security"></a>用戶端對節點憑證安全性
 
@@ -113,7 +118,7 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 需考量的其他事項：
 
-* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是**CN** （針對*一般名稱*）;例如， **CN = www\.contoso.com**。
+* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是**CN** （針對*一般名稱*）;例如， **CN = www \. contoso.com**。
 * [主體]**** 欄位可以是空白。
 * 如果選擇性 [主體別名]**** 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些是以**DNS 名稱**值的形式輸入。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
 * 憑證的 [**預定目的**] 欄位的值應該包含適當的值，例如**伺服器驗證**或**用戶端驗證**。

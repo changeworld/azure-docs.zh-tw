@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106567"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -47,9 +47,9 @@ ms.locfileid: "83758940"
 **支援的部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝指令碼部署為 VMware VM 或實體機器。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以在 vCenter Server 上探索最多 10,000 個 VMware VM。<br/> 設備可以連線到單一 vCenter Server。
-**OVA 範本** | 從入口網站或從 https://aka.ms/migrate/appliance/vmware 下載。<br/><br/> 下載大小為 11.2 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
-**PowerShell 指令碼** | 指令碼[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
+**OVA 範本** | 從入口網站或從 https://aka.ms/migrate/appliance/vmware 下載。<br/><br/> 下載大小為 10.9 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
+**PowerShell 指令碼** | 請參閱這[篇文章](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware)。<br/><br/> 
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。
 **VMware 需求** | 如果您將設備部署為 VMware VM，則必須將其部署在執行 5.5 版或更新版本的 ESXi 主機上。<br/><br/> 執行 5.5、6.0、6.5 或 6.7 的 vCenter Server。
 **VDDK (無代理程式移轉)** | 如果您將設備部署為 VMware VM，而且您正在執行無代理程式移轉，則必須在設備 VM 上安裝 VMware vSphere VDDK。
 **雜湊值 OVA** | [驗證](tutorial-assess-vmware.md#verify-security) OVA 範本雜湊值。
@@ -68,8 +68,8 @@ ms.locfileid: "83758940"
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以探索最多 5000 部 Hyper-V VM。<br/> 設備最多可以連線到 300 部 Hyper-V 主機。
 **VHD 範本** | 包含 VHD 的 ZIP 資料夾。 從入口網站或從 https://aka.ms/migrate/appliance/hyperv 下載。<br/><br/> 下載大小為 10 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
-**PowerShell 指令碼** | 指令碼[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**軟體/硬體***   |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您以 Hyper-V VM 的身分執行設備，則在 Hyper-V 主機上需要足夠的資源來配置 16 GB RAM、8 個 vCPU，大約 80 GB 的儲存空間，以及適用於設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
+**PowerShell 指令碼** | 請參閱這[篇文章](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v)。<br/><br/> 
+**軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您以 Hyper-V VM 的身分執行設備，則在 Hyper-V 主機上需要足夠的資源來配置 16 GB RAM、8 個 vCPU，大約 80 GB 的儲存空間，以及適用於設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
 **Hyper-V 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
 **雜湊值 VHD** | [驗證](tutorial-assess-hyper-v.md#verify-security) VHD 範本雜湊值。
 **雜湊值 PowerShell 指令碼** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
@@ -83,9 +83,9 @@ ms.locfileid: "83758940"
 **設備元件** | 設備具有下列元件： <br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 Web 應用程式。 在評估要移轉至 Azure 的機器時會使用。<br/> - **探索代理程式**：代理程式會收集機器設定資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **評定代理程式**：代理程式會收集效能資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **自動更新服務**：更新設備元件 (每隔 24 小時執行一次)。
 **支援的部署** | 使用 PowerShell 安裝指令碼，部署為專用的實體機器或 VM。 您可以從入口網站下載此指令碼。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
-**探索限制** | 設備可以探索最多 250 部實體伺服器。
-**PowerShell 指令碼** | 從入口網站下載 ZIP 資料夾中的指令碼 (AzureMigrateInstaller.ps1)。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
-**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/> 不支援在使用 Windows Server 2019 的電腦上執行設備。
+**探索限制** | 設備可以探索最多1000部實體伺服器。
+**PowerShell 指令碼** | 從入口網站下載 ZIP 資料夾中的指令碼 (AzureMigrateInstaller.ps1)。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 63.1 MB。
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/> 不支援在使用 Windows Server 2019 的電腦上執行設備。
 **雜湊值** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
 ## <a name="url-access"></a>URL 存取
@@ -206,11 +206,77 @@ CPU 使用率 | cpu.usage.average | 建議的 VM 大小/成本
 NIC 讀取輸送量 (MB 每秒) | net.received.average | VM 大小的計算
 NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
+
+### <a name="installed-apps-metadata"></a>已安裝的應用程式中繼資料
+
+應用程式探索會收集已安裝的應用程式和作業系統資料。
+
+#### <a name="windows-vm-apps-data"></a>Windows VM 應用程式資料
+
+以下是設備從每個啟用應用程式探索的 VM 所收集的已安裝應用程式資料。 此資料會傳送至 Azure。
+
+**Data** | **登錄位置** | **索引鍵**
+--- | --- | ---
+應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows VM 功能資料
+
+以下是設備從每個啟用應用程式探索的 VM 所收集的功能資料。 此資料會傳送至 Azure。
+
+**Data**  | **PowerShell Cmdlet** | **屬性**
+--- | --- | ---
+Name  | Get-help  | Name
+特徵類型 | Get-help  | FeatureType
+父系  | Get-help  | 父系
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 中繼資料
+
+以下是設備從執行 Microsoft SQL server 以啟用應用程式探索的 Vm 所收集的 SQL server 中繼資料。 此資料會傳送至 Azure。
+
+**Data**  | **登錄位置**  | **索引鍵**
+--- | --- | ---
+Name  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
+Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
+版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows VM 作業系統資料
+
+以下是設備收集每個已啟用應用程式探索之 VM 的作業系統資料。 此資料會傳送至 Azure。
+
+資料  | WMI 類別  | WMI 類別屬性
+--- | --- | ---
+Name  | Win32_operatingsystem  | Caption
+版本  | Win32_operatingsystem  | 版本
+架構  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux VM 應用程式資料
+
+以下是設備從每個啟用應用程式探索的 VM 所收集的已安裝應用程式資料。 根據 VM 的作業系統，系統會執行一或多個命令。 此資料會傳送至 Azure。
+
+資料  | Command
+--- | --- 
+Name | rpm、dpkg-查詢、貼齊
+版本 | rpm、dpkg-查詢、貼齊
+提供者 | rpm、dpkg-查詢、貼齊
+
+#### <a name="linux-vm-operating-system-data"></a>Linux VM 作業系統資料
+
+以下是設備收集每個已啟用應用程式探索之 VM 的作業系統資料。 此資料會傳送至 Azure。
+
+**Data**  | **命令** 
+--- | --- | ---
+Name <br/> version | 從下列一個或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+架構 | uname
+
+
 ### <a name="app-dependencies-metadata"></a>應用程式相依性中繼資料
 
 無代理程式相依性分析會收集連線和處理序資料。
 
-#### <a name="connection-data"></a>連線資料
+#### <a name="windows-vm-app-dependencies-data"></a>Windows VM 應用程式相依性資料
 
 以下是設備針對無代理程式相依性分析從每個 VM 收集到的連線資料。 此資料會傳送至 Azure。
 
@@ -224,7 +290,7 @@ TCP 連線狀態 | netstat
 處理序識別碼 | netstat
 使用中連線的數目 | netstat
 
-#### <a name="process-data"></a>處理資料
+
 以下是設備針對無代理程式相依性分析從每個 VM 收集到的處理序資料。 此資料會傳送至 Azure。
 
 **Data** | **WMI 類別** | **WMI 類別屬性**
@@ -233,7 +299,7 @@ TCP 連線狀態 | netstat
 處理序引數 | Win32_Process | CommandLine
 應用程式名稱 | Win32_Process | ExecutablePath 屬性的 VersionInfo.ProductName 參數
 
-#### <a name="linux-vm-data"></a>Linux VM 資料
+#### <a name="linux-vm-app-dependencies-data"></a>Linux VM 應用程式相依性資料
 
 以下是設備針對無代理程式相依性分析從每個 Linux VM 收集到的連線和處理序資料。 此資料會傳送至 Azure。
 
@@ -358,7 +424,7 @@ NIC MAC 位址 | ip addr show $nic \| grep ether  \| awk '{print $2}'
 
 **Data** | **WMI 類別** | **WMI 類別屬性**
 --- | --- | ---
-CPU 使用率 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+CPU 使用量 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
 記憶體使用量 | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
 NIC 計數 | Win32_PerfFormattedData_Tcpip_NetworkInterface | 取得網路裝置計數。
 每個 NIC 收到的資料 | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec

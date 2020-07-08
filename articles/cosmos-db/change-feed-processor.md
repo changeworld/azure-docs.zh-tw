@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119404"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
 
@@ -35,7 +35,7 @@ ms.locfileid: "83655314"
 
 為了進一步了解變更摘要處理器的這四個元素是如何一起運作的，我們來看看下圖中的範例。 受監視的容器會儲存文件，並使用「City」來作為分割區索引鍵。 我們看到資料分割索引鍵值散發在包含項目的範圍中。 有兩個主控件執行個體，而變更摘要處理器會將不同範圍的資料分割索引鍵值指派給每個執行個體，以將計算散發最大化。 每個範圍會以平行方式讀取，而且其進度會與租用容器中的其他範圍各自維護。
 
-![變更摘要處理器範例](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="變更摘要處理器範例" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>實作變更摘要處理器
 

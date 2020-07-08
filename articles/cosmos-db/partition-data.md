@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112773"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料分割和水平調整
 
@@ -19,11 +19,11 @@ ms.locfileid: "82234197"
 
 ## <a name="logical-partitions"></a>邏輯分割區
 
-邏輯分割區是由具有相同分割區索引鍵的一組專案所組成。 例如，在包含食物營養相關資料的容器中，所有專案都包含一個`foodGroup`屬性。 您可以使用`foodGroup`做為容器的分割區索引鍵。 具有特定值`foodGroup`的專案群組，例如`Beef Products`、`Baked Products`和`Sausages and Luncheon Meats`，會形成不同的邏輯分割區。 刪除基礎資料時，您不需要擔心刪除邏輯分割區。
+邏輯分割區是由具有相同分割區索引鍵的一組專案所組成。 例如，在包含食物營養相關資料的容器中，所有專案都包含一個 `foodGroup` 屬性。 您可以使用 `foodGroup` 做為容器的分割區索引鍵。 具有特定值的專案群組 `foodGroup` ，例如 `Beef Products` 、 `Baked Products` 和 `Sausages and Luncheon Meats` ，會形成不同的邏輯分割區。 刪除基礎資料時，您不需要擔心刪除邏輯分割區。
 
 邏輯分割區也會定義資料庫交易的範圍。 您可以使用[具有快照集隔離的交易](database-transactions-optimistic-concurrency.md)來更新邏輯分割區內的專案。 將新的專案新增至容器時，系統會以透明的方式建立新的邏輯分割區。
 
-您的容器中的邏輯分割區數目沒有限制。 每個邏輯分割區最多可以儲存 20 gb 的資料。 良好的資料分割索引鍵選擇有範圍廣泛的可能值。 例如，在所有專案都包含`foodGroup`屬性的容器中， `Beef Products`邏輯分割區內的資料可能會成長到 20 gb。 [選取](partitioning-overview.md#choose-partitionkey)具有各種可能值的分割區索引鍵，可確保容器能夠進行調整。
+您的容器中的邏輯分割區數目沒有限制。 每個邏輯分割區最多可以儲存 20 gb 的資料。 良好的資料分割索引鍵選擇有範圍廣泛的可能值。 例如，在所有專案都包含屬性的容器中 `foodGroup` ，邏輯分割區內的資料 `Beef Products` 可能會成長到 20 gb。 [選取](partitioning-overview.md#choose-partitionkey)具有各種可能值的分割區索引鍵，可確保容器能夠進行調整。
 
 ## <a name="physical-partitions"></a>實體分割區
 
@@ -40,11 +40,11 @@ Cosmos 容器中的實體分割區數目取決於下列各項：
 
 在 Azure 入口網站的 [**計量**] 分頁的 [儲存體] 區段中，您可以看到容器的實體分割**區**：
 
-[![查看實體](./media/partition-data/view-partitions-zoomed-out.png)分割區的數目](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="查看實體分割區的數目" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
-在此範例容器中，我們已`/foodGroup`選擇做為分割區索引鍵，這三個矩形分別代表一個實體分割區。 在映射中，資料**分割索引鍵範圍**與實體分割區相同。 選取的實體磁碟分割包含三個邏輯`Beef Products`分割`Vegetable and Vegetable Products`區： `Soups, Sauces, and Gravies`、和。
+在此範例容器中，我們已選擇 `/foodGroup` 做為分割區索引鍵，這三個矩形分別代表一個實體分割區。 在映射中，資料**分割索引鍵範圍**與實體分割區相同。 選取的實體磁碟分割包含三個邏輯分割區： `Beef Products` 、 `Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies` 。
 
-如果我們布建每秒18000個要求單位（RU/秒）的輸送量，則這三個實體分割區中的每一個都可以利用1/3 的總布建輸送量。 在選取的實體分割區中，邏輯分割`Beef Products`區`Vegetable and Vegetable Products`索引鍵`Soups, Sauces, and Gravies`和可以共同使用實體分割區的6000布建 RU/秒。 由於布建的輸送量會平均分配給您容器的實體分割區，因此請務必選擇[正確的邏輯分割](partitioning-overview.md#choose-partitionkey)區索引鍵，以平均分配輸送量耗用量的分割區索引鍵。 如果您選擇的分割區索引鍵會將輸送量耗用量平均分散到邏輯分割區，您將可確保跨實體分割區的輸送量耗用量已達到平衡。
+如果我們布建每秒18000個要求單位（RU/秒）的輸送量，則這三個實體分割區中的每一個都可以利用1/3 的總布建輸送量。 在選取的實體分割區中，邏輯分割區索引鍵 `Beef Products` `Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies` 可以共同使用實體分割區的6000布建 RU/秒。 由於布建的輸送量會平均分配給您容器的實體分割區，因此請務必選擇[正確的邏輯分割](partitioning-overview.md#choose-partitionkey)區索引鍵，以平均分配輸送量耗用量的分割區索引鍵。 如果您選擇的分割區索引鍵會將輸送量耗用量平均分散到邏輯分割區，您將可確保跨實體分割區的輸送量耗用量已達到平衡。
 
 ## <a name="replica-sets"></a>複本集
 
@@ -54,7 +54,7 @@ Cosmos 容器中的實體分割區數目取決於下列各項：
 
 下圖顯示如何將邏輯分割區對應至全域散發的實體分割區：
 
-![示範 Azure Cosmos DB 資料分割的影像](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="示範 Azure Cosmos DB 資料分割的影像" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

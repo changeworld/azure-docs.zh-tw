@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/28/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d259c6e2a6ac9ced5f9a1c29d4aec08010f4dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077793"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 權利管理的常見案例
 
 有數種方式可讓您為組織設定權利管理。 不過，如果您剛開始使用，瞭解系統管理員、目錄擁有者、存取封裝管理員、核准者和要求者的常見案例，會很有説明。
 
-## <a name="delegate"></a>委派
+## <a name="delegate"></a>代理人
 
 ### <a name="administrator-delegate-management-of-resources"></a>系統管理員：委派資源的管理
 
@@ -61,7 +61,7 @@ ms.locfileid: "78190546"
 
 1. [登入我的存取權入口網站](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. 尋找存取套件
-1. [要求存取權](entitlement-management-request-access.md#request-an-access-package)
+1. [要求存取](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>核准者：核准對資源的要求
 
@@ -94,7 +94,7 @@ ms.locfileid: "78190546"
 
 1. 尋找您從連絡人收到的存取套件連結
 1. [登入我的存取權入口網站](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [要求存取權](entitlement-management-request-access.md#request-an-access-package)
+1. [要求存取](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>核准者：核准對資源的要求
 
@@ -154,7 +154,7 @@ ms.locfileid: "78190546"
 
 ## <a name="programmatic-administration"></a>以程式設計方式管理
 
-您也可以使用 Microsoft Graph 來管理存取封裝、目錄、原則、要求和指派。  具有具有委派`EntitlementManagement.ReadWrite.All`許可權之應用程式的適當角色中的使用者，可以呼叫[權利管理 API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 來管理存取封裝、目錄、原則、要求和指派。  具有具有委派許可權之應用程式的適當角色中的使用者， `EntitlementManagement.ReadWrite.All` 可以呼叫[權利管理 API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>後續步驟
 

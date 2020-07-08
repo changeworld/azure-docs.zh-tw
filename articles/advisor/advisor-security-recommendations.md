@@ -3,12 +3,12 @@ title: 利用 Azure Advisor 讓資源變得更安全
 description: 使用 Azure 建議程式協助改善 Azure 部署的安全性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113852"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>利用 Azure Advisor 讓資源變得更安全
 
@@ -30,8 +30,8 @@ Azure Advisor 可針對所有的 Azure 資源提供一致的合併建議檢視�
 * [Advisor 簡介](advisor-overview.md)
 * [開始使用 Advisor](advisor-get-started.md)
 * [Advisor 成本建議](advisor-cost-recommendations.md)
-* [建議程式效能建議](advisor-performance-recommendations.md)
-* [Advisor 高可用性建議](advisor-high-availability-recommendations.md)
+* [Advisor 效能建議](advisor-performance-recommendations.md)
+* [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
-
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
  

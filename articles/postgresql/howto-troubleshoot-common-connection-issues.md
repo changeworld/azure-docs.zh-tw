@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c0011889e59470d94e650a19c6713074155c63fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106546"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>針對適用於 PostgreSQL 的 Azure 資料庫的連接問題進行疑難排解-單一伺服器
 
@@ -48,8 +48,9 @@ ms.locfileid: "82562214"
 
 * 伺服器防火牆設定：確定已將適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆設為允許來自用戶端的連線，包括 proxy 伺服器和閘道。
 * 用戶端防火牆設定：用戶端上的防火牆必須允許連接到您的資料庫伺服器。 也必須允許您無法連到的伺服器 IP 位址和連接埠，在某些防火牆中，還要允許應用程式名稱，例如 PostgreSQL。
-* 使用者錯誤：您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱* \@* 中遺漏的 servername 尾碼。
+* 使用者錯誤：您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的* \@ servername*尾碼。
 * 如果您看到錯誤_伺服器未設定為允許 ipv6_連線，請注意基本層不支援 VNet 服務端點。 您必須從嘗試連接到基本伺服器的子網移除 Microsoft Sql 端點。
+* 如果您在_SSL 支援未在錯誤中編譯時看到連線錯誤 sslmode 值 "* * *" 無效_，這表示您的于 postgresql 用戶端不支援 SSL。 最可能的是，用戶端 libpq 尚未使用 "--with-openssl" 旗標進行編譯。 請嘗試連接具有 SSL 支援的于 postgresql 用戶端。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解決永久性連線問題的步驟
 

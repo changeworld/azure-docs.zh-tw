@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976994"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -58,7 +58,7 @@ ms.locfileid: "82838641"
   |||
 
   > [!IMPORTANT]
-  > 如果您想要使用 Gmail 連接器，只有 G Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)用來搭配您的 Gmail 連接器進行驗證。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 <a name="integration-service-environment"></a>
 
@@ -94,10 +94,10 @@ Logic Apps 提供內建的觸發程式和動作，讓您可以建立以排程為
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API 圖示][schedule-icon]<br>**排程**][schedule-doc] | -在指定的週期執行邏輯應用程式，範圍從基本到先進的排程，以及[**週期**觸發][schedule-recurrence-doc]程式。 <p>-執行需要以[**滑動視窗**觸發][schedule-sliding-window-doc]程式處理連續區塊中資料的邏輯應用程式。 <p>-使用[ **Delay**動作][schedule-delay-doc]暫停邏輯應用程式的指定持續時間。 <p>-暫停您的邏輯應用程式，直到指定的日期和時間具有 [ [**延遲到**] 動作為止][schedule-delay-until-doc]。 | [![API 圖示][batch-icon]<br>**批次**][batch-doc] | - 透過 [批次訊息]**** 觸發程序，分批處理訊息。 <p>- 透過 [將訊息傳送至批次]**** 動作，呼叫具有現有批次觸發程序的邏輯應用程式。 |
-| [![API 圖示][http-icon]<br>**HTTP**][http-doc] | 使用 HTTP 的觸發程式和動作呼叫 HTTP 或 HTTPS 端點。 其他 HTTP 內建觸發程式和動作包括[HTTP + Swagger][http-swagger-doc]和[HTTP + Webhook][http-webhook-doc]。 | [![API 圖示][http-request-icon]<br>**要求**][http-request-doc] | - 透過 [要求]**** 觸發程序，讓邏輯應用程式得以從其他應用程式或服務呼叫、在 Event Grid 資源事件上觸發，或在 Azure 資訊安全中心警示的回應上觸發。 <p>- 透過 [回應]**** 動作，將回應傳送到應用程式或服務。 |
-| [![Api 圖示][azure-api-management-icon]<br>**Azure api <br>管理**][azure-api-management-doc] | 呼叫透過 Azure API 管理控管和發佈的自有 API 所定義的觸發程序和動作。 | [![API 圖示][azure-app-services-icon]<br>**Azure App <br>服務**][azure-app-services-doc] | 呼叫 API Apps 或 Web Apps (裝載於 Azure App Service)。 如果包含 Swagger，這些應用程式所定義的動作與觸發程序看起來像是任何其他第一級觸發程序和動作。|
-| [![API 圖示][azure-logic-apps-icon]<br>**Azure 邏輯<br>應用程式**][nested-logic-app-doc] | 呼叫以**要求**觸發程式開頭的其他邏輯應用程式。 |
+| [![API 圖示 ][schedule-icon]<br> **排程**][schedule-doc] | -在指定的週期執行邏輯應用程式，範圍從基本到先進的排程，以及[**週期**觸發][schedule-recurrence-doc]程式。 <p>-執行需要以[**滑動視窗**觸發][schedule-sliding-window-doc]程式處理連續區塊中資料的邏輯應用程式。 <p>-使用[ **Delay**動作][schedule-delay-doc]暫停邏輯應用程式的指定持續時間。 <p>-暫停您的邏輯應用程式，直到指定的日期和時間具有 [ [**延遲到**] 動作為止][schedule-delay-until-doc]。 | [![API 圖示 ][batch-icon]<br> **批次**][batch-doc] | - 透過 [批次訊息]**** 觸發程序，分批處理訊息。 <p>- 透過 [將訊息傳送至批次]**** 動作，呼叫具有現有批次觸發程序的邏輯應用程式。 |
+| [![API 圖示 ][http-icon]<br> **HTTP**][http-doc] | 使用 HTTP 的觸發程序和動作呼叫 HTTP 或 HTTPS 端點。 其他 HTTP 內建觸發程式和動作包括[HTTP + Swagger][http-swagger-doc]和[HTTP + Webhook][http-webhook-doc]。 | [![API 圖示 ][http-request-icon]<br> **要求**][http-request-doc] | - 透過 [要求]**** 觸發程序，讓邏輯應用程式得以從其他應用程式或服務呼叫、在 Event Grid 資源事件上觸發，或在 Azure 資訊安全中心警示的回應上觸發。 <p>- 透過 [回應]**** 動作，將回應傳送到應用程式或服務。 |
+| [![API 圖示 ][azure-api-management-icon]<br> **Azure api <br> 管理**][azure-api-management-doc] | 呼叫透過 Azure API 管理控管和發佈的自有 API 所定義的觸發程序和動作。 | [![API 圖示 ][azure-app-services-icon]<br> **Azure App <br> 服務**][azure-app-services-doc] | 呼叫 API Apps 或 Web Apps (裝載於 Azure App Service)。 如果包含 Swagger，這些應用程式所定義的動作與觸發程序看起來像是任何其他第一級觸發程序和動作。|
+| [![API 圖示 ][azure-logic-apps-icon]<br> **Azure 邏輯 <br> 應用程式**][nested-logic-app-doc] | 呼叫以**要求**觸發程式開頭的其他邏輯應用程式。 |
 |||||
 
 ### <a name="run-code-from-logic-apps"></a>從邏輯應用程式執行程式碼
@@ -106,7 +106,7 @@ Logic Apps 提供在邏輯應用程式的工作流程中執行自己的程式碼
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API 圖示][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | 呼叫 Azure 函式，以從邏輯應用程式執行自訂程式碼片段 (C# 或 Node.js)。 | [![API 圖示][inline-code-icon]<br>**內嵌程式碼**][azure-functions-doc] | 從您的邏輯應用程式新增和執行 JavaScript 程式碼片段。 |
+| [![API 圖示 ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | 呼叫 Azure 函式，以從邏輯應用程式執行自訂程式碼片段 (C# 或 Node.js)。 | [![API 圖示 ][inline-code-icon]<br> **內嵌程式碼**][inline-code-doc] | 從您的邏輯應用程式新增和執行 JavaScript 程式碼片段。 |
 |||||
 
 ### <a name="control-workflow"></a>控制工作流程
@@ -115,9 +115,9 @@ Logic Apps 提供內建動作，以在邏輯應用程式的工作流程中結構
 
 |   |   |   |   |
 |---|---|---|---|
-| [![內建圖示][condition-icon]<br>**條件**][condition-doc] | 根據條件為 true 或 false，評估條件並執行不同的動作。 | [![內][for-each-icon]<br>**建圖示**][for-each-doc] | 對陣列中的每個項目執行相同的動作。 |
-| [![內建圖示][scope-icon]<br>**範圍**][scope-doc] | 將動作分成數個「範圍」**，這些範圍會在範圍中的動作執行完成後取得自己的狀態。 | [![內建圖示][switch-icon]<br>**切換**][switch-doc] | 將動作分成數個「案例」**，這些案例會獲派唯一值 (預設案例除外)。 僅執行其指派值符合運算式、物件或語彙基元結果的案例。 如果沒有相符項目存在，請執行預設案例。 |
-| [![內建圖示][terminate-icon]<br>**終止**][terminate-doc] | 停止正在執行的邏輯應用程式工作流程。 | [![內建圖示][until-icon]<br>**到**][until-doc] | 重複動作，直到符合指定的條件或某些狀態已改變為止。 |
+| [![內建圖示 ][condition-icon]<br> **條件**][condition-doc] | 根據條件為 true 或 false，評估條件並執行不同的動作。 | [![內 ][for-each-icon]<br> **For each**建圖示][for-each-doc] | 對陣列中的每個項目執行相同的動作。 |
+| [![內建圖示 ][scope-icon]<br> **範圍**][scope-doc] | 將動作分成數個「範圍」**，這些範圍會在範圍中的動作執行完成後取得自己的狀態。 | [![內建圖示 ][switch-icon]<br> **切換**][switch-doc] | 將動作分成數個「案例」**，這些案例會獲派唯一值 (預設案例除外)。 僅執行其指派值符合運算式、物件或語彙基元結果的案例。 如果沒有相符項目存在，請執行預設案例。 |
+| [![內建圖示 ][terminate-icon]<br> **終止**][terminate-doc] | 停止正在執行的邏輯應用程式工作流程。 | [![內建圖示 ][until-icon]<br> **到**][until-doc] | 重複動作，直到符合指定的條件或某些狀態已改變為止。 |
 |||||
 
 ### <a name="manage-or-manipulate-data"></a>管理或操作資料
@@ -126,9 +126,9 @@ Logic Apps 提供使用資料輸出和其格式的內建動作：
 
 |   |   |
 |---|---|
-| [![內建圖示][data-operations-icon]<br>**資料作業**][data-operations-doc] | 執行資料相關作業： <p>- **撰寫**：從多個輸入與各種類型建立單一輸出。 <br>- **建立 CSV 資料表**：從 JSON 物件陣列建立以逗號分隔 (CSV) 的資料表。 <br>- **建立 HTML 資料表**：從 JSON 物件陣列建立 HTML 資料表。 <br>- **篩選陣列**：從符合您準則的另一個陣列建立陣列。 <br>- **加入**：從陣列中的所有項目建立字串，並使用指定的分隔符號來分隔這些項目。 <br>- **剖析 JSON**：在 json 內容中，從屬性和其值建立易記的權杖，以便您可以在工作流程中使用這些屬性。 <br>- **選取**：轉換另一個陣列中的項目或值，並將這些項目對應至指定的屬性，以建立 JSON 物件陣列。 |
+| [![內建圖示 ][data-operations-icon]<br> **資料作業**][data-operations-doc] | 執行資料相關作業： <p>- **撰寫**：從多個輸入與各種類型建立單一輸出。 <br>- **建立 CSV 資料表**：從 JSON 物件陣列建立以逗號分隔 (CSV) 的資料表。 <br>- **建立 HTML 資料表**：從 JSON 物件陣列建立 HTML 資料表。 <br>- **篩選陣列**：從符合您準則的另一個陣列建立陣列。 <br>- **加入**：從陣列中的所有項目建立字串，並使用指定的分隔符號來分隔這些項目。 <br>- **剖析 JSON**：在 json 內容中，從屬性和其值建立易記的權杖，以便您可以在工作流程中使用這些屬性。 <br>- **選取**：轉換另一個陣列中的項目或值，並將這些項目對應至指定的屬性，以建立 JSON 物件陣列。 |
 | ![內建圖示][date-time-icon]<br>**日期時間** | 執行時間戳記相關作業： <p>- **新增至時間**：將指定的單位數新增至時間戳記。 <br>- **轉換時區**：將時間戳記從來源時區轉換為目標時區。 <br>- **目前時間**：傳回目前的時間戳記作為字串。 <br>- **取得未來時間**：傳回目前時間戳記加上指定時間單位的結果。 <br>- **取得過去時間**：傳回目前時間戳記減去指定時間單位的結果。 <br>- **從時間減去**：從時間戳記減去時間單位數字。 |
-| [![內建圖示][variables-icon]<br>**變數**][variables-doc] | 執行變數相關作業： <p>- **附加到陣列變數**：插入一個值，作為變數所儲存陣列中的最後一個項目。 <br>- **附加到字串變數**：插入一個值，作為變數所儲存字串中的最後一個字元。 <br>- **遞減變數**：依常數值遞減變數。 <br>- **遞增變數**：依常數值遞增變數。 <br>- **初始化變數**：建立變數，並宣告其資料類型和初始值。 <br>- **設定變數**：將不同的值指派給現有的變數。 |
+| [![內建圖示 ][variables-icon]<br> **變數**][variables-doc] | 執行變數相關作業： <p>- **附加到陣列變數**：插入一個值，作為變數所儲存陣列中的最後一個項目。 <br>- **附加到字串變數**：插入一個值，作為變數所儲存字串中的最後一個字元。 <br>- **遞減變數**：依常數值遞減變數。 <br>- **遞增變數**：依常數值遞增變數。 <br>- **初始化變數**：建立變數，並宣告其資料類型和初始值。 <br>- **設定變數**：將不同的值指派給現有的變數。 |
 |  |  |
 
 <a name="managed-api-connectors"></a>
@@ -139,13 +139,13 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API 圖示][azure-service-bus-icon]<br>**Azure 服務匯流排**][azure-service-bus-doc] | 利用 Logic Apps 中最常用的連接器，管理非同步訊息、工作階段和主題訂用帳戶。 | [![API 圖示][sql-server-icon]<br>**SQL Server**][sql-server-doc] | 連接到您的 SQL Server 內部部署或雲端中的 Azure SQL Database，讓您可以記錄管理、執行預存程式或執行查詢。 |
-| [![API 圖示][azure-blob-storage-icon]<br>**Azure Blob<br>儲存體**][azure-blob-storage-doc] | 連接到您的儲存體帳戶，以便建立和管理 blob 內容。 | [![API 圖示][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | 連接到您的 Office 365 電子郵件帳戶，以便建立和管理電子郵件、工作、行事曆事件和會議、連絡人、要求等等。 |
-| [![API 圖示][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | 使用 SSH 連接到您可以從網際網路存取的 SFTP 伺服器，以便使用您的檔案和資料夾。 | [![API 圖示][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | 連接到 SharePoint Online，讓您可以管理檔案、附件、資料夾等等。 | 
-| [![API 圖示][dynamics-365-icon]<br>**Dynamics 365<br> **][dynamics-365-doc] | 連接到您的 Dynamics 365 帳戶，以便建立和記錄管理、專案等等。 | [![API 圖示][azure-queues-icon]<br>**Azure <br>佇列**][azure-queues-doc] | 連接到您的 Azure 儲存體帳戶，以便建立和管理佇列和訊息 |
-| [![API 圖示][ftp-icon]<br>**FTP**][ftp-doc] | 連接到您可以從網際網路存取的 FTP 伺服器，以便使用您的檔案和資料夾。 | [![API 圖示][file-system-icon]<br>**檔<br>系統**][file-system-doc] | 連接到您的內部部署檔案共用，以便建立和管理檔案。 |
-| [![API 圖示][azure-event-hubs-icon]<br>**Azure 事件中樞**][azure-event-hubs-doc] | 透過事件中樞取用和發佈事件。 例如，透過事件中樞從邏輯應用程式取得輸出，然後將輸出傳送給即時分析提供者。 | [![API 圖示][azure-event-grid-icon]<br>**Azure 事件**<br>**方格**][azure-event-grid-doc] | 當 Azure 資源或第三方資源變更時，監視 Event Grid 所發佈的事件。 |
-| [![API 圖示][salesforce-icon]<br>**Salesforce**][salesforce-doc] | 連接到您的 Salesforce 帳戶，以便建立和記錄管理、作業、物件等專案。 | [![API 圖示][twitter-icon]<br>**Twitter**][twitter-doc] | 連接到您的 Twitter 帳戶，以便管理推文、關注者、時程表等。 將您的推文儲存到 SQL、Excel 或 SharePoint。 |
+| [![API 圖示 ][azure-service-bus-icon]<br> **Azure 服務匯流排**][azure-service-bus-doc] | 利用 Logic Apps 中最常用的連接器，管理非同步訊息、工作階段和主題訂用帳戶。 | [![API 圖示 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 連接到您的 SQL Server 內部部署或雲端中的 Azure SQL Database，讓您可以記錄管理、執行預存程式或執行查詢。 |
+| [![API 圖示 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc] | 連接到您的儲存體帳戶，以便建立和管理 blob 內容。 | [![API 圖示 ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | 連接到您的 Office 365 電子郵件帳戶，以便建立和管理電子郵件、工作、行事曆事件和會議、連絡人、要求等等。 |
+| [![API 圖示 ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | 使用 SSH 連接到您可以從網際網路存取的 SFTP 伺服器，以便使用您的檔案和資料夾。 | [![API 圖示 ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | 連接到 SharePoint Online，讓您可以管理檔案、附件、資料夾等等。 | 
+| [![API 圖示 ][dynamics-365-icon]<br> **Dynamics 365 <br> **][dynamics-365-doc] | 連接到您的 Dynamics 365 帳戶，以便建立和記錄管理、專案等等。 | [![API 圖示 ][azure-queues-icon]<br> **Azure <br> 佇列**][azure-queues-doc] | 連接到您的 Azure 儲存體帳戶，以便建立和管理佇列和訊息 |
+| [![API 圖示 ][ftp-icon]<br> **FTP**][ftp-doc] | 連接到您可以從網際網路存取的 FTP 伺服器，以便使用您的檔案和資料夾。 | [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] | 連接到您的內部部署檔案共用，以便建立和管理檔案。 |
+| [![API 圖示 ][azure-event-hubs-icon]<br> **Azure 事件中樞**][azure-event-hubs-doc] | 透過事件中樞取用和發佈事件。 例如，透過事件中樞從邏輯應用程式取得輸出，然後將輸出傳送給即時分析提供者。 | [![API 圖示 ][azure-event-grid-icon]<br> **Azure 事件** <br> **方格**][azure-event-grid-doc] | 當 Azure 資源或第三方資源變更時，監視 Event Grid 所發佈的事件。 |
+| [![API 圖示 ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | 連接到您的 Salesforce 帳戶，以便建立和記錄管理、作業、物件等專案。 | [![API 圖示 ][twitter-icon]<br> **Twitter**][twitter-doc] | 連接到您的 Twitter 帳戶，以便管理推文、關注者、時程表等。 將您的推文儲存到 SQL、Excel 或 SharePoint。 |
 |||||
 
 <a name="on-premises-connectors"></a>
@@ -156,8 +156,8 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-| [![API 圖示][biztalk-server-icon]<br>**BizTalk** <br> **Server**][biztalk-server-doc] | [![API 圖示][file-system-icon]<br>**檔<br>系統**][file-system-doc] | [![API 圖示][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API 圖示][ibm-informix-icon]<br>**IBM** <br> **Informix**][ibm-informix-doc] | [![API 圖示][mysql-icon]<br>**MySQL**][mysql-doc] |
-| [![API 圖示][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc] | [![API 圖示][postgre-sql-icon]<br>**于 postgresql**][postgre-sql-doc] | [![API 圖示][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc] | [![API 圖示][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API 圖示][teradata-icon]<br>**Teradata**][teradata-doc] |
+| [![API 圖示 ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc] | [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] | [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API 圖示 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![API 圖示 ][mysql-icon]<br> **MySQL**][mysql-doc] |
+| [![API 圖示 ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![API 圖示 ][postgre-sql-icon]<br> **于 postgresql**][postgre-sql-doc] | [![API 圖示 ][sharepoint-server-icon]<br> **SharePoint <br> Server**][sharepoint-server-doc] | [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API 圖示 ][teradata-icon]<br> **Teradata**][teradata-doc] |
 |||||
 
 <a name="integration-account-connectors"></a>
@@ -168,9 +168,9 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API 圖示][as2-icon]<br>**AS2 <br>解碼**][as2-doc] | [![API 圖示][as2-icon]<br>**AS2 <br>編碼**][as2-doc] | [![API 圖示][edifact-icon]<br>**EDIFACT <br>解碼**][edifact-decode-doc] | [![API 圖示][edifact-icon]<br>**EDIFACT <br>編碼**][edifact-encode-doc] |
-| [![API 圖示][flat-file-decode-icon]<br>一般檔案** <br>解碼**][flat-file-decode-doc] | [![API 圖示][flat-file-encode-icon]<br>一般檔案** <br>編碼**][flat-file-encode-doc] | [![API 圖示][integration-account-icon]<br>**整合<br>帳戶**][integration-account-doc] | [![API 圖示][liquid-icon]<br>**液體** <br>**轉換**][json-liquid-transform-doc] |
-| [![API 圖示][x12-icon]<br>**X12 <br>解碼**][x12-decode-doc] | [![API 圖示][x12-icon]<br>**X12 <br>編碼**][x12-encode-doc] | [![API 圖示][xml-transform-icon]<br>**XML** <br>**轉換**][xml-transform-doc] | [![API 圖示][xml-validate-icon]<br>**XML <br>驗證**][xml-validate-doc] |  
+| [![API 圖示 ][as2-icon]<br> **AS2 <br> 解碼**][as2-doc] | [![API 圖示 ][as2-icon]<br> **AS2 <br> 編碼**][as2-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 解碼**][edifact-decode-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 編碼**][edifact-encode-doc] |
+| [![API 圖示一般檔案 ][flat-file-decode-icon]<br> ** <br> 解碼**][flat-file-decode-doc] | [![API 圖示一般檔案 ][flat-file-encode-icon]<br> ** <br> 編碼**][flat-file-encode-doc] | [![API 圖示 ][integration-account-icon]<br> **整合 <br> 帳戶**][integration-account-doc] | [![API 圖示 ][liquid-icon]<br> **液體** <br> **轉換**][json-liquid-transform-doc] |
+| [![API 圖示 ][x12-icon]<br> **X12 <br> 解碼**][x12-decode-doc] | [![API 圖示 ][x12-icon]<br> **X12 <br> 編碼**][x12-encode-doc] | [![API 圖示 ][xml-transform-icon]<br> **XML** <br> **轉換**][xml-transform-doc] | [![API 圖示 ][xml-validate-icon]<br> **XML <br> 驗證**][xml-validate-doc] |  
 |||||
 
 <a name="enterprise-connectors"></a>
@@ -181,7 +181,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 |   |   |   |
 |---|---|---|
-| [![API 圖示][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API 圖示][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API 圖示][sap-icon]<br>**SAP**][sap-connector-doc] |
+| [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc] |
 ||||
 
 <a name="ise-connectors"></a>
@@ -192,11 +192,11 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-[![API 圖示][as2-icon]<br>**AS2**][as2-doc] | [![API 圖示][azure-automation-icon]<br>**Azure <br>自動化**][azure-automation-doc] | [![API 圖示][azure-blob-storage-icon]<br>**Azure Blob<br>儲存體**][azure-blob-storage-doc] | [![API 圖示][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API 圖示][azure-event-hubs-icon]<br>**Azure 事件<br>中樞**][azure-event-hubs-doc] |
-[![API 圖示][azure-event-grid-icon]<br>**Azure 事件<br>方格**][azure-event-grid-doc] | [![API 圖示][azure-file-storage-icon]<br>**Azure 檔案<br>儲存體**][azure-file-storage-doc] | [![API 圖示][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc] | [![API 圖示][azure-monitor-logs-icon]<br>**Azure 監視器<br>記錄**][azure-monitor-logs-doc] | [![API 圖示][azure-service-bus-icon]<br>**Azure 服務<br>匯流排**][azure-service-bus-doc] |
-| [![API 圖示][azure-sql-data-warehouse-icon]<br>**Azure SQL 資料<br>倉儲**][azure-sql-data-warehouse-doc] | [![API 圖示][azure-table-storage-icon]<br>**Azure 資料表<br>儲存體**][azure-table-storage-doc] | [![API 圖示][azure-queues-icon]<br>**Azure <br>佇列**][azure-queues-doc] | [![API 圖示][edifact-icon]<br>**EDIFACT**][edifact-doc] | [![API 圖示][file-system-icon]<br>**檔<br>系統**][file-system-doc] |
-| [![API 圖示][ftp-icon]<br>**FTP**][ftp-doc] | [![API 圖示][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API 圖示][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API 圖示][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API 圖示][sap-icon]<br>**SAP**][sap-connector-doc] |
-| [![API 圖示][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API 圖示][smtp-icon]<br>**SMTP**][smtp-doc] | [![API 圖示][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API 圖示][x12-icon]<br>**X12**][x12-doc] |
+[![API 圖示 ][as2-icon]<br> **AS2**][as2-doc] | [![API 圖示 ][azure-automation-icon]<br> **Azure <br> 自動化**][azure-automation-doc] | [![API 圖示 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc] | [![API 圖示 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API 圖示 ][azure-event-hubs-icon]<br> **Azure 事件 <br> 中樞**][azure-event-hubs-doc] |
+[![API 圖示 ][azure-event-grid-icon]<br> **Azure 事件 <br> 方格**][azure-event-grid-doc] | [![API 圖示 ][azure-file-storage-icon]<br> **Azure 檔案 <br> 儲存體**][azure-file-storage-doc] | [![API 圖示 ][azure-key-vault-icon]<br> **Azure Key <br> Vault**][azure-key-vault-doc] | [![API 圖示 ][azure-monitor-logs-icon]<br> **Azure 監視器 <br> 記錄**][azure-monitor-logs-doc] | [![API 圖示 ][azure-service-bus-icon]<br> **Azure 服務 <br> 匯流排**][azure-service-bus-doc] |
+| [![API 圖示 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 資料 <br> 倉儲**][azure-sql-data-warehouse-doc] | [![API 圖示 ][azure-table-storage-icon]<br> **Azure 資料表 <br> 儲存體**][azure-table-storage-doc] | [![API 圖示 ][azure-queues-icon]<br> **Azure <br> 佇列**][azure-queues-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] |
+| [![API 圖示 ][ftp-icon]<br> **FTP**][ftp-doc] | [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc] |
+| [![API 圖示 ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | [![API 圖示 ][smtp-icon]<br> **SMTP**][smtp-doc] | [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API 圖示 ][x12-icon]<br> **X12**][x12-doc] |
 ||||||
 
 如需詳細資訊，請參閱下列主題：
@@ -243,6 +243,12 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 > 在 ISE 中建立的自訂連接器無法與內部部署資料閘道搭配使用。 不過，這些連接器可以直接存取連線到裝載 ISE 之 Azure 虛擬網路的內部部署資料來源。 因此，ISE 中的邏輯應用程式在與這些資源通訊時，很可能不需要資料閘道。
 >
 > 如需有關建立 Ise 的詳細資訊，請參閱[從 Azure Logic Apps 連接到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>封鎖建立連接
+
+如果您的組織不允許使用其在 Azure Logic Apps 中的連接器來連線至特定資源，您可以使用[Azure 原則](../governance/policy/overview.md)封鎖在邏輯應用程式工作流程中為特定連接器[建立這些](../logic-apps/block-connections-connectors.md)連線的功能。 如需詳細資訊，請參閱[Azure Logic Apps 中的封鎖特定連接器所建立的連接](../logic-apps/block-connections-connectors.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -388,6 +394,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [http-response-doc]: ./connectors-native-reqres.md "回應來自邏輯應用程式的 HTTP 要求"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "從邏輯應用程式呼叫 REST 端點"
 [http-webhook-doc]: ./connectors-native-webhook.md "等候來自 HTTP 或 HTTPS 端點的特定事件"
+[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md "從邏輯應用程式新增和執行 JavaScript 程式碼片段"
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "整合邏輯應用程式與巢狀工作流程"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "透過查詢動作選取和篩選陣列"
 [schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "根據排程執行邏輯應用程式"
@@ -475,4 +482,3 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "編碼使用 X12 通訊協定的訊息"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "轉換 XML 訊息"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "驗證 XML 訊息"
-

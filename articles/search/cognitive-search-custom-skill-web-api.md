@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74484120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982113"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的自訂 Web API 技能
 
@@ -36,12 +36,12 @@ Microsoft.Skills.Custom.WebApiSkill
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| uri | 要將_JSON_承載傳送至其中的 WEB API URI。 僅允許 **https** URI 配置 |
-| httpMethod | 傳送承載時使用的方法。 允許的方法為 `PUT` 和 `POST` |
-| httpHeaders | 機碼值組的集合，其中機碼代表標頭名稱，而值代表將與承載一起傳送至 Web API 的標頭值。 下列標頭禁止加入此集合：`Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
-| timeout | (選擇性) 指定時，表示進行 API 呼叫的 http 用戶端逾時。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 例如，`PT60S` 為 60 秒。 如果沒有設定，則選擇的預設值為 30 秒。 [超時] 可以設定為最大值230秒，最小值為1秒。 |
-| batchSize | (選擇性) 指出每個 API 呼叫將傳送多少「資料記錄」(請參閱下面的 _JSON_ 承載結構)。 如果未設定，則選擇的預設值為 1000。 我們建議您使用此參數在編製索引的輸送量和 API 負載之間達到適當的取捨 |
-| degreeOfParallelism | 選擇性指定時，表示索引子將會平行地對您提供的端點進行的呼叫次數。 如果您的端點在要求負載過高的情況下失敗，您可以減少這個值，如果您的端點能夠接受更多要求，而且您想要增加索引子的效能，則會引發此值。  如果未設定，則會使用預設值5。 DegreeOfParallelism 可以設定為最大值10，最小值為1。 |
+| `uri` | 要將_JSON_承載傳送至其中的 WEB API URI。 僅允許 **https** URI 配置 |
+| `httpMethod` | 傳送承載時使用的方法。 允許的方法為 `PUT` 和 `POST` |
+| `httpHeaders` | 機碼值組的集合，其中機碼代表標頭名稱，而值代表將與承載一起傳送至 Web API 的標頭值。 下列標頭禁止加入此集合：`Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
+| `timeout` | (選擇性) 指定時，表示進行 API 呼叫的 http 用戶端逾時。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 例如，`PT60S` 為 60 秒。 如果沒有設定，則選擇的預設值為 30 秒。 [超時] 可以設定為最大值230秒，最小值為1秒。 |
+| `batchSize` | (選擇性) 指出每個 API 呼叫將傳送多少「資料記錄」(請參閱下面的 _JSON_ 承載結構)。 如果未設定，則選擇的預設值為 1000。 我們建議您使用此參數在編製索引的輸送量和 API 負載之間達到適當的取捨 |
+| `degreeOfParallelism` | 選擇性指定時，表示索引子將會平行地對您提供的端點進行的呼叫次數。 如果您的端點在要求負載過高的情況下失敗，您可以減少這個值，如果您的端點能夠接受更多要求，而且您想要增加索引子的效能，則會引發此值。  如果未設定，則會使用預設值5。 `degreeOfParallelism`可以設定為最大值10，最小值為1。 |
 
 ## <a name="skill-inputs"></a>技能輸入
 
@@ -137,7 +137,7 @@ Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="sample-output-json-structure"></a>範例輸出 JSON 結構
 
-「輸出」對應于從您的 Web API 傳回的回應。 Web API 應該只會傳回_JSON_承載（藉由查看`Content-Type`回應標頭來驗證），而且應符合下列條件約束：
+「輸出」對應于從您的 Web API 傳回的回應。 Web API 應該只會傳回_JSON_承載（藉由查看 `Content-Type` 回應標頭來驗證），而且應符合下列條件約束：
 
 * 應該有一個名為 `values` 的最上層實體，它應該是物件陣列。
 * 陣列中的物件數目應該與傳送至 Web API 的物件數目相同。

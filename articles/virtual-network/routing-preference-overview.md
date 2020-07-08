@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193357"
 ---
 # <a name="what-is-routing-preference-preview"></a>什麼是路由喜好設定 (預覽)？
 
@@ -88,7 +88,7 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 
 使用公用 IP 進行網際網路輸出的路由喜好設定支援適用於下列區域的服務 - 北歐、西歐、法國南部、英國南部、美國東部、美國中北部、美國中南部、美國西部、美國中西部、東南亞、德國中西部、瑞士西部、日本東部和日本西部。
 
-儲存體帳戶的路由喜好設定支援適用於下列 Azure 區域：法國南部、美國中北部和美國中西部。
+儲存體帳戶的路由喜好設定支援適用于下列 Azure 區域：法國南部、美國中北部、美國中西部、日本東部、日本西部、德國中西部和瑞士西部。
 ## <a name="limitations"></a>限制
 
 * 路由喜好設定僅與公用 IP 位址的標準 SKU 相容。 不支援公用 IP 位址的基本 SKU。

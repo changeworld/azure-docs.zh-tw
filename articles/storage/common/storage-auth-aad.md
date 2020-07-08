@@ -85,7 +85,7 @@ Azure 入口網站指出當您流覽至容器或佇列時，所使用的授權�
 
 Azure CLI 和 PowerShell 支援使用 Azure AD 認證進行登入。 登入之後，您的會話會在這些認證下執行。 若要深入瞭解，請參閱[使用 Azure AD 認證來執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用適用于 Azure 資源的 Azure Active Directory 和受控識別，授權對 blob 和佇列的存取](storage-auth-aad-msi.md)
 - [使用應用程式中的 Azure Active Directory 進行授權，以存取 blob 和佇列](storage-auth-aad-app.md)

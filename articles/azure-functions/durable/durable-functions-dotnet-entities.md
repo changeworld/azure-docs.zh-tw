@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fdf298357370415c1b3af95dd9ed22ad8539786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125475"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 中的持久性實體開發人員指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "79278125"
  
 ## <a name="defining-entity-classes"></a>定義實體類別
 
-下列`Counter`範例是實體的實值，它會儲存 integer 類型的單一值，並提供四個作業`Add`： `Reset` `Get`、和`Delete`。
+下列範例是 `Counter` 實體的實值，它會儲存 integer 類型的單一值，並提供四個作業 `Add` ： `Reset` 、 `Get` 和 `Delete` 。
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -67,10 +67,10 @@ public class Counter
 }
 ```
 
-`Run`函式包含使用以類別為基礎的語法時所需的樣板。 它必須是*靜態*的 Azure 函式。 它會針對實體所處理的每個作業訊息執行一次。 當`DispatchAsync<T>`呼叫且實體尚未存在於記憶體中時，它會建立類型`T`的物件，並從儲存體中找到的最後一個持續性 JSON 填入其欄位（如果有的話）。 然後，它會叫用具有相符名稱的方法。
+函 `Run` 式包含使用以類別為基礎的語法時所需的樣板。 它必須是*靜態*的 Azure 函式。 它會針對實體所處理的每個作業訊息執行一次。 當 `DispatchAsync<T>` 呼叫且實體尚未存在於記憶體中時，它會建立類型的物件 `T` ，並從儲存體中找到的最後一個持續性 JSON 填入其欄位（如果有的話）。 然後，它會叫用具有相符名稱的方法。
 
 > [!NOTE]
-> 以類別為基礎之實體的狀態會在實體處理作業之前**隱含建立**，而且可以藉由呼叫`Entity.Current.DeleteState()`在作業中**明確地刪除**。
+> 以類別為基礎之實體的狀態會在實體處理作業之前**隱含建立**，而且可以藉由呼叫在作業中**明確地刪除** `Entity.Current.DeleteState()` 。
 
 ### <a name="class-requirements"></a>類別需求
  
@@ -82,14 +82,14 @@ public class Counter
 此外，任何要當做作業叫用的方法，都必須滿足額外的需求：
 
 - 作業最多隻能有一個引數，而且不能有任何多載或泛型型別引數。
-- 使用介面從協調流程呼叫的作業必須傳回`Task`或。 `Task<T>`
+- 使用介面從協調流程呼叫的作業必須傳回 `Task` 或 `Task<T>` 。
 - 引數和傳回值必須是可序列化的值或物件。
 
 ### <a name="what-can-operations-do"></a>作業可以做什麼？
 
 所有實體作業都可以讀取和更新實體狀態，而對狀態的變更會自動儲存到儲存體。 此外，作業也可以在所有 Azure Functions 通用的一般限制內執行外部 i/o 或其他計算。
 
-作業也可以存取內容所提供的`Entity.Current`功能：
+作業也可以存取內容所提供的功能 `Entity.Current` ：
 
 * `EntityName`：目前正在執行之實體的名稱。
 * `EntityKey`：目前正在執行之實體的索引鍵。
@@ -103,9 +103,9 @@ public class Counter
 ```csharp
     public void Add(int amount) 
     {
-        if (this.Value < 100 && this.Value + amount > 100)
+        if (this.Value < 100 && this.Value + amount >= 100)
         {
-            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId)
+            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId);
         }
         this.Value += amount;      
     }
@@ -153,7 +153,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> 所傳回的物件`ReadEntityStateAsync`只是本機複本，也就是來自某個較早時間點的實體狀態快照集。 特別是，它可能已過時，而修改此物件不會影響實際實體。 
+> 所傳回的物件 `ReadEntityStateAsync` 只是本機複本，也就是來自某個較早時間點的實體狀態快照集。 特別是，它可能已過時，而修改此物件不會影響實際實體。 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>範例：協調流程第一個信號，然後呼叫實體
 
@@ -203,7 +203,7 @@ public class Counter : ICounter
 
 ### <a name="example-client-signals-entity-through-interface"></a>範例：用戶端透過介面的信號實體
 
-用戶端程式代碼`SignalEntityAsync<TEntityInterface>`可以使用，將信號傳送給`TEntityInterface`實作為的實體。 例如：
+用戶端程式代碼可以使用 `SignalEntityAsync<TEntityInterface>` ，將信號傳送給實作為的實體 `TEntityInterface` 。 例如：
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -218,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-在此範例中， `proxy`參數是動態產生的`ICounter`實例，它會在內部將呼叫轉譯`Delete`為信號。
+在此範例中， `proxy` 參數是動態產生的實例 `ICounter` ，它會在內部將呼叫轉譯為 `Delete` 信號。
 
 > [!NOTE]
-> `SignalEntityAsync` Api 只能用於單向作業。 即使作業傳回`Task<T>`， `T`參數的值一律會是 null 或`default`，而不是實際的結果。
-例如，發出`Get`作業並不合理，因為不會傳回任何值。 相反`ReadStateAsync`地，用戶端可以使用來直接存取計數器狀態，或是啟動會呼叫`Get`作業的協調器函式。 
+> Api 只能用於 `SignalEntityAsync` 單向作業。 即使作業傳回 `Task<T>` ，參數的值 `T` 一律會是 null 或，而不是 `default` 實際的結果。
+例如，發出作業並不合理 `Get` ，因為不會傳回任何值。 相反地，用戶端可以使用 `ReadStateAsync` 來直接存取計數器狀態，或是啟動會呼叫作業的協調器函式 `Get` 。 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>範例：協調流程第一個信號，然後透過 proxy 呼叫實體
 
-若要從協調流程內呼叫或發出實體的`CreateEntityProxy`信號，可以搭配介面類別型使用，以產生實體的 proxy。 此 proxy 可接著用來呼叫或信號作業：
+若要從協調流程內呼叫或發出實體的信號， `CreateEntityProxy` 可以搭配介面類別型使用，以產生實體的 proxy。 此 proxy 可接著用來呼叫或信號作業：
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -246,7 +246,7 @@ public static async Task<int> Run(
 }
 ```
 
-任何傳回的作業`void`會隱含地發出信號，以及傳回`Task`或`Task<T>`的任何作業都會被呼叫。 只要使用`SignalEntity<IInterfaceType>`方法，就可以變更此預設行為，以及信號作業會傳回工作。
+任何傳回的作業會隱含地 `void` 發出信號，以及傳回或的任何作業 `Task` 都會被 `Task<T>` 呼叫。 只要使用方法，就可以變更此預設行為，以及信號作業會傳回工作 `SignalEntity<IInterfaceType>` 。
 
 ### <a name="shorter-option-for-specifying-the-target"></a>指定目標的較短選項
 
@@ -257,7 +257,7 @@ context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-如果只指定實體索引鍵，而且在執行時間找不到唯一的執行`InvalidOperationException` ，則會擲回。 
+如果只指定實體索引鍵，而且在執行時間找不到唯一的執行， `InvalidOperationException` 則會擲回。 
 
 ### <a name="restrictions-on-entity-interfaces"></a>實體介面的限制
 
@@ -267,12 +267,12 @@ context.SignalEntity<ICounter>("myCounter", ...);
 * 實體介面必須僅定義方法。
 * 實體介面不能包含泛型參數。
 * 實體介面方法不能有一個以上的參數。
-* 實體介面方法必須傳回`void`、 `Task`或`Task<T>` 
+* 實體介面方法必須傳回 `void` 、 `Task` 或`Task<T>` 
 
-如果違反其中任何一項規則，當`InvalidOperationException`介面當做`SignalEntity`或`CreateProxy`的型別引數使用時，就會在執行時間擲回。 例外狀況訊息會說明哪一個規則已中斷。
+如果違反其中任何一項規則， `InvalidOperationException` 當介面當做或的型別引數使用時，就會在執行時間擲回 `SignalEntity` `CreateProxy` 。 例外狀況訊息會說明哪一個規則已中斷。
 
 > [!NOTE]
-> 傳回的介面`void`方法只能有信號（單向），不能呼叫（雙向）。 傳回`Task`或`Task<T>`的介面方法可以是呼叫或信號。 如果呼叫，則會傳回作業的結果，或重新擲回作業所擲出的例外狀況。 不過，當發出信號時，它們不會從作業傳回實際的結果或例外狀況，而只會傳回預設值。
+> 傳回的介面方法 `void` 只能有信號（單向），不能呼叫（雙向）。 傳回或的介面方法 `Task` `Task<T>` 可以是呼叫或信號。 如果呼叫，則會傳回作業的結果，或重新擲回作業所擲出的例外狀況。 不過，當發出信號時，它們不會從作業傳回實際的結果或例外狀況，而只會傳回預設值。
 
 ## <a name="entity-serialization"></a>實體序列化
 
@@ -310,10 +310,10 @@ public class User
 ### <a name="serialization-attributes"></a>序列化屬性
 
 在上述範例中，我們選擇包含數個屬性，讓基礎序列化更為可見：
-- 我們使用`[JsonObject(MemberSerialization.OptIn)]`來標注類別，以提醒我們類別必須是可序列化的，而且只會保存明確標示為 JSON 屬性的成員。
--  我們會將要保存的欄位加`[JsonProperty("name")]`上批註，以提醒我們欄位是保存實體狀態的一部分，並指定要在 JSON 標記法中使用的屬性名稱。
+- 我們使用來標注類別， `[JsonObject(MemberSerialization.OptIn)]` 以提醒我們類別必須是可序列化的，而且只會保存明確標示為 JSON 屬性的成員。
+-  我們會將要保存的欄位加上批註， `[JsonProperty("name")]` 以提醒我們欄位是保存實體狀態的一部分，並指定要在 JSON 標記法中使用的屬性名稱。
 
-不過，這些屬性並不是必要的;只要使用 Json.NET，就可以使用其他慣例或屬性。 例如，其中一個可以使用`[DataContract]`屬性，或完全沒有屬性：
+不過，這些屬性並不是必要的;只要使用 Json.NET，就可以使用其他慣例或屬性。 例如，其中一個可以使用 `[DataContract]` 屬性，或完全沒有屬性：
 
 ```csharp
 [DataContract]
@@ -331,11 +331,11 @@ public class Counter
 }
 ```
 
-根據預設，類別的名稱*不*會儲存為 JSON 標記法的一部分：也就是說，我們會使用`TypeNameHandling.None`做為預設設定。 您可以使用`JsonObject`或`JsonProperty`屬性來覆寫這個預設行為。
+根據預設，類別的名稱*不*會儲存為 JSON 標記法的一部分：也就是說，我們會使用 `TypeNameHandling.None` 做為預設設定。 您可以使用或屬性來覆寫這個預設行為 `JsonObject` `JsonProperty` 。
 
 ### <a name="making-changes-to-class-definitions"></a>對類別定義進行變更
 
-在執行應用程式之後對類別定義進行變更時，必須特別小心，因為儲存的 JSON 物件可能不再符合新的類別定義。 儘管如此，只要一個人瞭解所使用的還原序列化程式`JsonConvert.PopulateObject`，通常就可以正確地處理資料格式的變更。
+在執行應用程式之後對類別定義進行變更時，必須特別小心，因為儲存的 JSON 物件可能不再符合新的類別定義。 儘管如此，只要一個人瞭解所使用的還原序列化程式，通常就可以正確地處理資料格式的變更 `JsonConvert.PopulateObject` 。
 
 例如，以下是一些變更和其效果的範例：
 
@@ -345,7 +345,7 @@ public class Counter
 1. 如果屬性的類型已變更，因此無法再從已儲存的 JSON 還原序列化，則會擲回例外狀況。
 1. 如果屬性的類型已變更，但仍可從已儲存的 JSON 還原序列化，則會這麼做。
 
-有許多選項可用於自訂 Json.NET 的行為。 例如，若要在儲存的 JSON 包含不存在於類別中的欄位時強制例外，請指定屬性`JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`。 您也可以撰寫可讀取以任意格式儲存 JSON 之還原序列化的自訂程式碼。
+有許多選項可用於自訂 Json.NET 的行為。 例如，若要在儲存的 JSON 包含不存在於類別中的欄位時強制例外，請指定屬性 `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)` 。 您也可以撰寫可讀取以任意格式儲存 JSON 之還原序列化的自訂程式碼。
 
 ## <a name="entity-construction"></a>實體結構
 
@@ -353,7 +353,7 @@ public class Counter
 
 ### <a name="custom-initialization-on-first-access"></a>第一次存取時的自訂初始化
 
-有時候，我們必須先執行一些特殊的初始化作業，才能將作業分派至從未存取過的實體，或已被刪除。 若要指定此行為，可以在之前新增條件`DispatchAsync`：
+有時候，我們必須先執行一些特殊的初始化作業，才能將作業分派至從未存取過的實體，或已被刪除。 若要指定此行為，可以在之前新增條件 `DispatchAsync` ：
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -482,7 +482,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="the-entity-context-object"></a>實體內容物件
 
-實體特有的功能可以透過類型`IDurableEntityContext`的內容物件來存取。 這個內容物件可做為實體函式的參數，以及透過非同步區域屬性`Entity.Current`來提供。
+實體特有的功能可以透過類型的內容物件來存取 `IDurableEntityContext` 。 這個內容物件可做為實體函式的參數，以及透過非同步區域屬性來提供 `Entity.Current` 。
 
 下列成員提供目前作業的相關資訊，並可讓我們指定傳回值。 
 
@@ -500,7 +500,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 * `SetState(arg)`：建立或更新實體的狀態。
 * `DeleteState()`：刪除實體的狀態（如果有的話）。 
 
-如果傳回的狀態`GetState`是物件，則應用程式代碼可以直接修改它。 不需要在結尾再次呼叫`SetState` （但也不會有任何傷害）。 如果`GetState<TState>`多次呼叫，則必須使用相同的類型。
+如果傳回的狀態 `GetState` 是物件，則應用程式代碼可以直接修改它。 不需要 `SetState` 在結尾再次呼叫（但也不會有任何傷害）。 如果多次 `GetState<TState>` 呼叫，則必須使用相同的類型。
 
 最後，使用下列成員來通知其他實體，或啟動新的協調流程：
 

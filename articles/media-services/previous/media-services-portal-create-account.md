@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3839efecc1f5c645e8365ca6441731868412371e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976841"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>使用 Azure 入口網站建立媒體服務帳戶
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳戶。 您可以使用自己的帳戶，來存取讓您在 Azure 中儲存、加密、編碼、管理和串流播放媒體內容的媒體服務。 當您建立媒體服務帳戶時，也會建立相關聯的儲存體帳戶 (或使用現有儲存體帳戶)。 如果您刪除媒體服務帳戶，並不會刪除相關儲存體帳戶中的 Blob。
-
-您的主要儲存體帳戶可以是一般用途 v1 或一般用途 v2。 目前，Azure 入口網站只允許挑選 v1，但是您可以在使用 API 或 Powershell 建立帳戶時新增 v2。 如需儲存體類型的詳細資訊，請參閱[關於 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
 
 媒體服務帳戶和所有相關聯的儲存體帳戶必須位於相同的 Azure 訂用帳戶中。 強烈建議使用與媒體服務帳戶位於相同位置的儲存體帳戶，以避免產生額外的延遲和資料輸出費用。
 
@@ -37,21 +35,21 @@ Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳
 > [!NOTE]
 > 如需不同區域中 Azure 媒體服務功能可用性的資訊，請參閱[跨資料中心的 AMS 功能可用性](scenarios-and-availability.md#availability)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 
 ## <a name="create-an-ams-account"></a>建立 AMS 帳戶
 
 本節中的步驟示範如何建立 AMS 帳戶。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下 [ **+ 建立資源** > **媒體** > ]**媒體服務**。
+2. 按一下 [ **+ 建立資源**  >  **媒體**]  >  **媒體服務**。
 3. 在 [建立媒體服務帳戶] **** 中輸入必要的值。
 
    1. 在 [帳戶名稱] **** 中，輸入新 AMS 帳戶的名稱。 媒體服務帳戶名稱為全部小寫且不含空格的字母或數字，且長度是 3 到 24 個字元。
    2. 在訂用帳戶中，從您可存取的不同 Azure 訂用帳戶中進行選取。
-   3. 在 [資源群組] **** 中，選取新的或現有資源。  資源群組是共用生命週期、權限及原則的資源集合。 [在這裡](../../azure-resource-manager/management/overview.md#resource-groups)深入瞭解。
+   3. 在 [資源群組] **** 中，選取新的或現有資源。  資源群組是共用生命週期、權限及原則的資源集合。 [在此](../../azure-resource-manager/management/overview.md#resource-groups)深入了解。
    4. 在 [**位置**] 中，選取將用來儲存媒體服務帳戶之媒體和元資料記錄的地理區域。 此區域將用於處理和串流媒體。 只有可用的媒體服務區域才會出現在下拉式清單方塊中。 
    5. 在 [儲存體帳戶] **** 中，選取儲存體帳戶以從媒體服務帳戶提供媒體內容的 Blob 儲存體。 您可以選取與媒體服務帳戶相同地理區域中的現有儲存體帳戶，也可以建立儲存體帳戶。 新的儲存體帳戶會建立於相同的區域中。 儲存體帳戶名稱的規則會與媒體服務帳戶相同。
       
@@ -62,7 +60,7 @@ Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳
     成功建立帳戶後，隨即載入概觀頁面。 在串流端點資料表中，此帳戶將具有 [已停止]**** 狀態的預設串流端點。 
 
     >[!NOTE]
-    >建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
+    >建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。 
    
 ## <a name="to-manage-your-ams-account"></a>管理 AMS 帳戶
 

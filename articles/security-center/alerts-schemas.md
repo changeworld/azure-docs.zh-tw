@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126207"
 ---
 # <a name="security-alerts-schemas"></a>安全性警示架構
 
@@ -140,17 +140,17 @@ Azure 資訊安全中心會在 Azure 活動記錄中，以事件的形式產生�
 
 ### <a name="the-data-model-of-the-schema"></a>架構的資料模型
 
-|欄位|描述|
+|欄位|說明|
 |----|----|
 |**通道**|常數，"Operation"|
 |**correlationId**|Azure 資訊安全中心警示識別碼|
-|**描述**|警示的描述|
+|**description**|警示的描述|
 |**eventDataId**|請參閱 correlationId|
 |**eventName**|[值] 和 [localizedValue] 子欄位包含警示顯示名稱|
 |**類別**|Value 和 localizedValue 子欄位是常數-「安全性」|
 |**eventTimestamp**|產生警示的 UTC 時間戳記|
 |**id**|完整的警示識別碼|
-|**二級**|常數，"資訊"|
+|**等級**|常數，"資訊"|
 |**operationId**|請參閱 correlationId|
 |**operationName**|[值] 欄位是常數-「Microsoft. 安全性/位置/警示/啟動/動作」，而當地語系化的值將會是「啟動警示」（可能會與使用者的地區設定一致）|
 |**resourceGroupName**|將包含資源組名|
@@ -160,7 +160,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中，以事件的形式產生�
 |**status**|Value 和 localizedValue 子欄位是常數-"Active"|
 |**子狀態**|Value 和 localizedValue 子欄位是空的|
 |**submissionTimestamp**|事件提交至活動記錄的 UTC 時間戳記|
-|**訂閱**|遭盜用資源的訂用帳戶識別碼|
+|**subscriptionId**|遭盜用資源的訂用帳戶識別碼|
 |**properties**|與警示相關之其他屬性的 JSON 包。 這些可能會從一個警示變更為另一個，但是下欄欄位會出現在 [所有警示] 中：<br>-嚴重性：攻擊的嚴重性<br>-compromisedEntity：遭盜用的資源名稱<br>-remediationSteps：要採取的補救步驟陣列<br>-意圖：警示的終止鏈意圖。 [意圖資料表](alerts-reference.md#intentions)中記載了可能的意圖|
 |**relatedEvents**|常數-空陣列|
 |||
@@ -171,7 +171,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中，以事件的形式產生�
 
 ### <a name="ms-graph-api"></a>[MS 圖形 API](#tab/schema-graphapi)
 
-Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一的可程式性模型，讓您用來存取 Office 365、Windows 10 和 Enterprise Mobility + Security 中的大量資料。 在 Microsoft Graph 中使用豐富的資料，為與數百萬名使用者互動的組織和取用者建立應用程式。
+Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一的可程式性模型，讓您用來存取 Microsoft 365、Windows 10 和 Enterprise Mobility + Security 中的大量資料。 在 Microsoft Graph 中使用豐富的資料，為與數百萬名使用者互動的組織和取用者建立應用程式。
 
 [Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)中提供了傳送至 MS Graph 之安全性警示的架構和 JSON 標記法。
 

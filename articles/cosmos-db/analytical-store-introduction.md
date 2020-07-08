@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116021"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 
@@ -44,7 +44,7 @@ Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性�
 
 例如，如果您的操作表格採用下列格式：
 
-![範例操作表格](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="範例操作表格" border="false":::
 
 資料列存放區會在磁片上以序列化格式 (每一列) 保存上述資料。 此格式可加速交易讀取、寫入和操作查詢，例如「傳回 Product1 的相關資訊」。 不過，當資料集擴增，且如果您想要對資料執行複雜的分析查詢，則可能會所費不貲。 例如，如果您想要取得「在不同的業務單位和月份，名為「設備」類別中的產品銷售趨勢」，則必須執行複雜查詢。 在此資料集上進行大量掃描，則佈建的輸送量可能會所費不貲，且也可能會影響驅動您即時應用程式和服務的交易工作負載效能。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性�
 
 下圖顯示 Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區：
 
-![Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作負載的低耦合效能
 

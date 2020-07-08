@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1cd80fee51565f2a2c1afa38ed883c10f51a5ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113683"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>瞭解 NoSQL 和關係資料庫之間的差異
 
@@ -29,7 +29,7 @@ ms.locfileid: "75896619"
 
 如果您的交易式磁片區達到極端層級（例如，每秒數千筆交易），您應該考慮分散式 NoSQL 資料庫。 請考慮 Azure Cosmos DB 以取得最高效率、簡化維護，以及降低擁有權總成本。
 
-![後端](./media/relational-or-nosql/backend-scaled.png)
+:::image type="content" source="./media/relational-or-nosql/backend-scaled.png" alt-text="後臺" border="false":::
 
 ## <a name="hierarchical-data"></a>階層式資料
 
@@ -39,7 +39,7 @@ ms.locfileid: "75896619"
 
 面向[物件設計](https://en.wikipedia.org/wiki/Object-oriented_design)的出現，以及將它與關聯式模型結合時所發生的[阻抗不相符](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch)，也會針對特定使用案例強調關係資料庫中的反模式。 如此一來，就會產生隱藏的維護成本，但通常是相當重要的。 雖然[ORM 方法](https://en.wikipedia.org/wiki/Object-relational_mapping)已經進化成可減輕這種情況，但檔導向資料庫的結合程度也優於物件導向的方法。 使用這種方法時，開發人員不會被迫認可到 ORM 驅動程式，或定制語言特定的[OO 資料庫引擎](https://en.wikipedia.org/wiki/Object_database)。 如果您的資料包含許多父子式關聯性和階層的深度層級，您可能會想要考慮使用 NoSQL 檔資料庫，例如[AZURE COSMOS DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)。
 
-![OrderDetails](./media/relational-or-nosql/order-orderdetails.jpg)
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
 ## <a name="complex-networks-and-relationships"></a>複雜的網路和關聯性
 
@@ -49,7 +49,7 @@ ms.locfileid: "75896619"
 
 如果您要在資料庫中維護複雜的關聯性網路，您可能會想要考慮使用圖表資料庫（例如[Azure Cosmos DB GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) ）來管理這項資料。
 
-![圖形](./media/relational-or-nosql/graph.png)
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Graph":::
 
 Azure Cosmos DB 是多模型資料庫服務，可為所有主要的 NoSQL 模型類型提供 API 投射;資料行系列、檔、圖形和索引鍵/值。 [Gremlin （圖形）](https://docs.microsoft.com/azure/cosmos-db/gremlin-support)和 SQL （核心）檔 API 層完全互通。 這對於在可程式性層級的不同模型之間切換有一些好處。 圖形存放區可以查詢複雜的網路周遊，以及在相同存放區中模型化為檔記錄的交易。
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 是多模型資料庫服務，可為所有主要的 NoSQL 模型
 
 查看第一項挑戰，NoSQL 資料庫中的規則通常是反正規化的，如先前所述，在分散式系統中產生更有效率的讀取。 不過，這種方法有一些設計上的挑戰。 讓我們來看看與一個類別和多個標記相關的產品範例：
 
-![聯結](./media/relational-or-nosql/many-joins.png)
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="聯結":::
 
 NoSQL 檔資料庫中的最佳作法方法是直接在「產品檔」中反正規化類別名稱和標記名稱。 不過，為了讓類別、標記和產品保持同步，協助這項作業的設計選項已增加維護複雜度，因為資料會複製到產品中的多筆記錄，而不是「一對多」關聯性中的簡單更新，而是用來抓取資料的聯結。 
 

@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解為 Azure 備份建立私用端點的程式，以及使用私用端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007852"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124250"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私用端點
 
@@ -16,14 +16,16 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
 
 本文將協助您瞭解為 Azure 備份建立私用端點的程式，以及使用私用端點來協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 只能為新的復原服務保存庫建立私人端點（不會有任何專案註冊到保存庫）。 因此，在您嘗試保護保存庫的任何專案之前，必須先建立私人端點。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限為12。
 - 一旦建立保存庫的私用端點，將會鎖定保存庫。 它無法從網路存取（用於備份和還原），除了包含保存庫私用端點的網路之外。 如果移除保存庫的所有私人端點，則會從所有網路存取保存庫。
+- 用於備份的私人端點連線在您的子網中總共使用11個私人 Ip。 在某些 Azure 區域中，此數目可能會更高（最多15個）。 因此，我們建議您在嘗試建立私人端點以進行備份時，有足夠的可用私人 Ip。
 - 雖然「復原服務」保存庫是由（兩者） Azure 備份和 Azure Site Recovery 使用，但本文只討論使用私人端點進行 Azure 備份。
 - Azure Active Directory 目前不支援私用端點。 因此，在 Azure Vm 中執行資料庫的備份並使用 MARS 代理程式進行備份時，必須允許從受保護的網路對 Azure Active Directory 所需的 Ip 和 Fqdn 進行輸出存取。 您也可以使用 NSG 標籤和 Azure 防火牆標記，以允許 Azure AD 的存取權（如適用）。
 - 私人端點不支援具有網路原則的虛擬網路。 您必須先停用網路原則，才能繼續進行。
+- 如果您在5月 1 2020 日前註冊，則必須使用訂用帳戶重新註冊復原服務資源提供者。 若要重新註冊提供者，請移至您在 Azure 入口網站中的訂用帳戶，流覽至左側導覽列上的 [**資源提供者**]，然後選取 [ **azurerm.recoveryservices** ]，再按一下 [**重新註冊**]。
 
 ## <a name="recommended-and-supported-scenarios"></a>建議和支援的案例
 
@@ -40,9 +42,6 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
 
 >[!IMPORTANT]
 > 強烈建議您依照本檔中所述的相同順序來遵循步驟。 若未這麼做，可能會導致保存庫轉譯為不相容，因此無法使用私用端點，並要求您以新的保存庫重新開機該進程。
-
->[!NOTE]
-> 目前無法使用 Azure 入口網站體驗的特定元素。 請參閱這類案例中的替代體驗，直到您區域的完整可用性為止。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -89,7 +88,7 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
     - `privatelink.blob.core.windows.net`
     - `privatelink.queue.core.windows.net`
 
-    | **Zone**                           | **服務** | **訂用帳戶和資源群組（RG）詳細資料**                  |
+    | **區域**                           | **服務** | **訂用帳戶和資源群組（RG）詳細資料**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
     | `privatelink.blob.core.windows.net`  | Blob        | **訂**用帳戶：與**需要建立私**用端點的位置相同：您可以是 VNET 的 rg 或私人端點的 rg |
     | `privatelink.queue.core.windows.net` | 佇列       | **Rg**： VNET 或私人端點的 rg |
@@ -104,13 +103,13 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
 
 如果您想要在 Azure 中建立個別的私人 DNS 區域，您可以使用建立必要 DNS 區域所用的相同步驟來執行相同動作。 命名和訂用帳戶詳細資料會在下面共用：
 
-| **Zone**                                                     | **服務** | **訂用帳戶和資源群組詳細資料**                  |
+| **區域**                                                     | **服務** | **訂用帳戶和資源群組詳細資料**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注意**：這裡的*地理*位置是指地區代碼。 例如， *wcus*和*ne*分別適用于美國中西部和北歐。 | Backup       | **訂**用**帳戶：與需要建立私人**端點的位置相同：訂用帳戶內的任何 rg |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注意**：這裡的*地理*位置是指地區代碼。 例如， *wcus*和*ne*分別適用于美國中西部和北歐。 | 備份      | **訂**用**帳戶：與需要建立私人**端點的位置相同：訂用帳戶內的任何 rg |
 
 請參閱[這份清單](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)中的區功能變數代碼。
 
-針對國家地區中的 URL 命名慣例：
+針對國家地區的 URL 命名慣例：
 
 - [中國](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [德國](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
@@ -344,7 +343,7 @@ armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/
 
 建立下列 JSON 檔案，並在區段結尾使用 PowerShell 命令來建立角色：
 
-PrivateEndpointContributorRoleDef json
+PrivateEndpointContributorRoleDef.js于
 
 ```json
 {
@@ -362,7 +361,7 @@ PrivateEndpointContributorRoleDef json
 }
 ```
 
-NetworkInterfaceReaderRoleDef json
+NetworkInterfaceReaderRoleDef.js于
 
 ```json
 {
@@ -380,7 +379,7 @@ NetworkInterfaceReaderRoleDef json
 }
 ```
 
-PrivateEndpointSubnetContributorRoleDef json
+PrivateEndpointSubnetContributorRoleDef.js于
 
 ```json
 {
@@ -496,9 +495,9 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 您需要建立三個私人 DNS 區域，並將其連結至您的虛擬網路。
 
-| **Zone**                                                     | **服務** |
+| **區域**                                                     | **服務** |
 | ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | Backup       |
+| `privatelink.<geo>.backup.windowsazure.com`      | 備份      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
 | `privatelink.queue.core.windows.net`                           | 佇列       |
 

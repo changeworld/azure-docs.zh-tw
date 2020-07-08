@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130393"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時的問題進行疑難排解
 
@@ -25,6 +25,7 @@ ms.locfileid: "82562078"
   >一個儲存體帳戶中的所有檔案共用只能在一個復原服務保存庫之下加以保護。 您可以使用[此腳本](scripts/backup-powershell-script-find-recovery-services-vault.md)來尋找您的儲存體帳戶註冊所在的復原服務保存庫。
 
 - 請確定檔案共用不存在於任何不受支援的儲存體帳戶中。 您可以參閱 Azure 檔案[共用備份的支援矩陣](azure-file-share-support-matrix.md)，以尋找支援的儲存體帳戶。
+- 請確定儲存體帳戶名稱和資源組名的合併長度在新的儲存體帳戶時不會超過84個字元，如果是傳統儲存體帳戶則為77個字元。 
 - 檢查儲存體帳戶的防火牆設定，確定已啟用 [允許信任的 Microsoft 服務存取儲存體帳戶] 選項。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>入口網站中的錯誤指出儲存體帳戶探索失敗
@@ -50,7 +51,7 @@ ms.locfileid: "82562078"
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>解除保護檔案共用後無法刪除復原服務保存庫
 
-在 Azure 入口網站中，開啟您的保存**庫** > **備份基礎結構** > **儲存體帳戶**，然後按一下 [**取消註冊**]，從復原服務保存庫中移除儲存體帳戶。
+在 Azure 入口網站中，開啟您的保存**庫**  >  **備份基礎結構**  >  **儲存體帳戶**，然後按一下 [**取消註冊**]，從復原服務保存庫中移除儲存體帳戶。
 
 >[!NOTE]
 >復原服務保存庫只有在取消註冊所有已登錄至保存庫的儲存體帳戶之後，才能予以刪除。
@@ -276,6 +277,45 @@ ms.locfileid: "82562078"
 錯誤訊息：另一個作業正在選取的專案上進行。
 
 等候另一個進行中的作業完成，然後稍後再試一次。
+
+從檔案： troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>一般虛刪除相關錯誤
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState-此還原點無法使用，因為與此點關聯的快照集位於已虛刪除狀態的檔案共用中
+
+錯誤碼： UserErrorRestoreAFSInSoftDeleteState
+
+錯誤訊息：此還原點無法使用，因為與此點關聯的快照集位於已虛刪除狀態的檔案共用中。
+
+當檔案共用處於虛刪除狀態時，您無法執行還原作業。 從檔案入口網站或使用取消[刪除腳本](scripts/backup-powershell-script-undelete-file-share.md)取消刪除檔案共用，然後嘗試還原。
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState 列出的還原點無法使用，因為包含還原點快照集的相關聯檔案共用已永久刪除
+
+錯誤碼： UserErrorRestoreAFSInDeleteState
+
+錯誤訊息：列出的還原點無法使用，因為包含還原點快照集的相關聯檔案共用已永久刪除。
+
+檢查備份的檔案共用是否已刪除。 如果它處於「虛刪除」狀態，請檢查虛刪除保留期限是否已超過且未復原。 在上述任一情況下，您將會永久遺失所有快照集，而且將無法復原資料。
+
+>[!NOTE]
+> 建議您不要刪除已備份的檔案共用，或如果它處於虛刪除狀態，請在虛刪除保留期限結束之前取消刪除，以避免遺失所有還原點。
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-備份失敗，因為 Azure 檔案共用處於虛刪除狀態
+
+錯誤碼： UserErrorBackupAFSInSoftDeleteState
+
+錯誤訊息：備份失敗，因為 Azure 檔案共用處於虛刪除狀態
+
+從檔案**入口網站**刪除檔案共用，或使用取消[刪除腳本](scripts/backup-powershell-script-undelete-file-share.md)來繼續備份，並防止永久刪除資料。
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState-備份失敗，因為相關聯的 Azure 檔案共用已永久刪除
+
+錯誤碼： UserErrorBackupAFSInDeleteState
+
+錯誤訊息：備份失敗，因為相關聯的 Azure 檔案共用已永久刪除
+
+檢查是否已永久刪除備份的檔案共用。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱[停止保護 Azure 檔案共用](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>後續步驟
 

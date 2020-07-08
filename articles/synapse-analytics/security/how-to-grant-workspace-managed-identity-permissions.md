@@ -4,15 +4,16 @@ description: 說明如何在 Azure Synapse 工作區中設定受控識別許可�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193459"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別（預覽）
 
@@ -73,13 +74,13 @@ ms.locfileid: "82983290"
 
 #### <a name="step-3-navigate-to-access-control"></a>步驟3：流覽至存取控制
 
-選取 **[存取控制（IAM）**]。
+選取 [存取控制 (IAM)]。
 
 ![存取控制（IAM）](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-8.png)
 
 #### <a name="step-4-add-a-new-role-assignment"></a>步驟4：加入新的角色指派
 
-選取 [ **+ 新增**]。
+選取 [+ 新增] 。
 
 ![加入新的角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 

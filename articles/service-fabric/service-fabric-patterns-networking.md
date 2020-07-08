@@ -3,12 +3,12 @@ title: Azure Service Fabric 的網路模式
 description: 描述 Service Fabric 常見的網路功能模式，以及如何使用 Azure 網路功能建立叢集。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106629"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 網路功能模式
 您可以將 Azure Service Fabric 叢集與其他的 Azure 網路功能整合起來。 本文說明如何建立使用下列功能的叢集︰
@@ -171,7 +171,7 @@ DnsSettings              : {
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-如需其他範例，請參閱[非 Service Fabric 專屬的範例](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)。
+如需其他範例，請參閱[非 Service Fabric 專屬的範例](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet)。
 
 
 <a id="staticpublicip"></a>

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117220"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -28,13 +28,7 @@ ms.locfileid: "83648815"
 
 ## <a name="matrix-of-networking-features"></a>網路功能的矩陣
 
-|                |[取用方案](functions-scale.md#consumption-plan)|[進階方案](functions-scale.md#premium-plan)|[App Service 計劃](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[輸入 IP 限制和私人網站存取](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
-|[虛擬網路整合](#virtual-network-integration)|❌否|✅是 (區域性)|✅是 (區域性和閘道)|✅是|
-|[虛擬網路觸發程序 (非 HTTP)](#virtual-network-triggers-non-http)|❌否| ✅是 |✅是|✅是|
-|[混合式連線](#hybrid-connections) (僅限 Windows)|❌否|✅是|✅是|✅是|
-|[輸出 IP 限制](#outbound-ip-restrictions)|❌否| ✅是|✅是|✅是|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>輸入 IP 限制
 
@@ -139,6 +133,12 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 輸出 IP 限制適用於高階方案、App Service 方案或 App Service 環境。 您可以為部署 App Service 環境的虛擬網路設定輸出限制。
 
 當您將高階方案或 App Service 方案中的函式應用程式與虛擬網路整合時，應用程式預設仍可對網際網路進行輸出呼叫。 您可藉由新增應用程式設定 `WEBSITE_VNET_ROUTE_ALL=1`，強制將所有輸出流量傳送到您的虛擬網路，在其中可使用網路安全性群組規則來限制流量。
+
+## <a name="automation"></a>自動化
+下列 Api 可讓您以程式設計方式管理區域虛擬網路整合：
+
++ **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
++ **ARM 範本**：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱[此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

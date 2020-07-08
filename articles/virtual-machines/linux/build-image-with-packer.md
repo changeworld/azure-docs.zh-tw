@@ -8,24 +8,24 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106011"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何在 Azure 中使用 Packer 來建立 Linux 虛擬機器映像
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Linux 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的散發套件和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/)，在 Azure 中定義並建置自訂映像。
 
 > [!NOTE]
-> Azure 現在有一個服務，也就是 Azure 映射產生器（預覽），用來定義和建立您自己的自訂映射。 Azure 映射產生器是以 Packer 為基礎，因此您甚至可以搭配使用現有的 Packer shell 布建程式腳本。 若要開始使用 Azure 影像產生器，請參閱[使用 Azure 映射產生器建立 LINUX VM](image-builder.md)。
+> Azure 現在有一個服務，也就是 Azure Image Builder (預覽)，用來定義和建立您自己的自訂映像。 Azure Image Builder 建置在 Packer 上，因此您甚至可以搭配使用現有的 Packer 殼層佈建指令碼。 若要開始使用 Azure 影像產生器，請參閱[使用 Azure 映射產生器建立 LINUX VM](image-builder.md)。
 
 
 ## <a name="create-azure-resource-group"></a>建立 Azure 資源群組
 建置程序進行期間，Packer 會在建置來源 VM 時建立暫存的 Azure 資源。 若要擷取該來源 VM 以作為映像，您必須定義資源群組。 Packer 建置程序所產生的輸出會儲存在此資源群組中。
 
-使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -67,12 +67,12 @@ az account show --query "{ subscription_id: id }"
 
 | 參數                           | 取得位置 |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | `az ad sp` 建立命令所產生之輸出的第一行 - appId** |
-| *client_secret*                     | `az ad sp` 建立命令所產生之輸出的第二行 - password** |
-| *tenant_id*                         | `az ad sp` 建立命令所產生之輸出的第三行 - tenant** |
+| client_id                         | `az ad sp` 建立命令所產生之輸出的第一行 - appId** |
+| client_secret                     | `az ad sp` 建立命令所產生之輸出的第二行 - password** |
+| tenant_id                         | `az ad sp` 建立命令所產生之輸出的第三行 - tenant** |
 | *subscription_id*                   | `az account show` 命令所產生的輸出 |
-| managed_image_resource_group_name** | 您在第一個步驟中建立的資源群組名稱 |
-| managed_image_name**                | 所建立之受控磁碟映像的名稱 |
+| managed_image_resource_group_name | 您在第一個步驟中建立的資源群組名稱 |
+| managed_image_name                | 所建立之受控磁碟映像的名稱 |
 
 
 ```json
@@ -124,7 +124,7 @@ az account show --query "{ subscription_id: id }"
 
 
 ## <a name="build-packer-image"></a>建置 Packer 映像
-如果您尚未在本機電腦上安裝 Packer，請[遵循 Packer 安裝指示](https://www.packer.io/docs/install/index.html)。
+如果您尚未在本機電腦上安裝 Packer，請[遵循 Packer 安裝指示](https://www.packer.io/docs/install)。
 
 請指定 Packer 範本檔案來建置映像，如下所示：
 
@@ -228,4 +228,4 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>後續步驟
-您也可以使用現有的 Packer 布建程式腳本搭配[Azure 映射](image-builder.md)產生器。
+您也可以使用現有的 Packer 佈建指令碼與 [Azure Image Builder](image-builder.md) 搭配使用。

@@ -2,13 +2,13 @@
 title: 建立參數檔案
 description: 建立在 Azure Resource Manager 範本部署期間傳入值的參數檔案
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117500"
 ---
 # <a name="create-resource-manager-parameter-file"></a>建立 Resource Manager 參數檔案
 
@@ -182,12 +182,18 @@ ms.locfileid: "83873070"
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>使用參數檔案部署範本
+
+請參閱：
+
+- [使用 ARM 範本和 Azure CLI 部署資源](./deploy-powershell.md#pass-parameter-values)
+- [使用 ARM 範本和 Azure PowerShell 部署資源](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>檔案名稱
 
 為參數檔案命名的一般慣例是將 **.parameters** 新增至範本名稱。 例如，如果您的範本名稱為 **azuredeploy.json**，則會將您的參數檔案命名為 **azuredeploy.parameters.json**。 此命名慣例可協助您查看範本和參數之間的關係。
 
 若要部署到不同的環境，請建立一個以上的參數檔案。 為參數檔案命名時，新增一種方式來識別其使用方式。 例如，使用 **azuredeploy.parameters-dev.json** 和 **azuredeploy.parameters-prod.json**。
-
 
 ## <a name="parameter-precedence"></a>參數優先順序
 
@@ -198,6 +204,7 @@ ms.locfileid: "83873070"
 ## <a name="parameter-name-conflicts"></a>參數名稱衝突
 
 如果您範本所含的參數名稱與 PowerShell 命令中的其中一個參數一樣，PowerShell 會以加上後置 **FromTemplate** 的方式呈現您範本中的參數。 例如，範本中名為 **ResourceGroupName** 的參數會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。 您可以使用未用於部署命令的參數名稱來避免這種混淆。
+
 
 ## <a name="next-steps"></a>後續步驟
 

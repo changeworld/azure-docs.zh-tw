@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85105929"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -20,8 +20,10 @@ Azure 監視器會將[記錄](data-platform-logs.md)資料儲存在 log Analytic
 本文說明如何記錄管理的存取權，以及管理包含它們的工作區，包括如何授與存取權： 
 
 * 使用工作區許可權的工作區。
-* 需要使用 Azure 角色型存取控制（RBAC）從特定資源存取記錄資料的使用者。
+* 需要使用 Azure 角色型存取控制（RBAC）從特定資源存取記錄資料的使用者，也稱為[資源內容](design-logs-deployment.md#access-mode)
 * 需要使用 Azure RBAC 存取工作區中特定資料表之記錄資料的使用者。
+
+若要瞭解有關 RBAC 和存取策略的記錄概念，請參閱[設計您的 Azure 監視器記錄部署](design-logs-deployment.md)
 
 ## <a name="configure-access-control-mode"></a>設定存取控制模式
 
@@ -61,10 +63,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-值為時`False` ，表示工作區是使用工作區內容存取模式來設定。  值為時`True` ，表示工作區是以資源內容存取模式來設定。
+值為 `False` 時，表示工作區是使用工作區內容存取模式來設定。  值為 `True` 時，表示工作區是以資源內容存取模式來設定。
 
 > [!NOTE]
-> 如果傳回的工作區沒有布林值，而且是空的，這也會符合`False`值的結果。
+> 如果傳回的工作區沒有布林值，而且是空的，這也會符合值的結果 `False` 。
 >
 
 使用下列腳本，將特定工作區的存取控制模式設定為資源內容許可權：
@@ -104,7 +106,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |注意 |
+|動作 |所需的 Azure 權限 |備註 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -132,7 +134,7 @@ Azure 有兩個內建的 Log Analytics 工作區角色：
 
 Log Analytics 讀者角色包含下列 Azure 動作：
 
-| 類型    | 權限 | 描述 |
+| 類型    | 權限 | Description |
 | ------- | ---------- | ----------- |
 | 動作 | `*/read`   | 檢視所有 Azure 資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | 動作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 已淘汰，不需要將它們指派給使用者。 |
@@ -160,7 +162,7 @@ Log Analytics 讀者角色包含下列 Azure 動作：
 
 Log Analytics 參與者角色包含下列 Azure 動作：
 
-| 權限 | 描述 |
+| 權限 | Description |
 | ---------- | ----------- |
 | `*/read`     | 檢視所有資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | `Microsoft.Automation/automationAccounts/*` | 建立及設定 Azure 自動化帳戶的能力，包括新增和編輯 Runbook |
@@ -168,7 +170,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | 檢視儲存體帳戶金鑰。 需具備此權限，才能設定 Log Analytics 以讀取 Azure Blob 儲存體帳戶中的記錄 |
 | `Microsoft.Insights/alertRules/*` | 新增、更新和移除警示規則 |
 | `Microsoft.Insights/diagnosticSettings/*` | 在 Azure 資源上新增、更新和移除診斷設定 |
-| `Microsoft.OperationalInsights/*` | 新增、更新和移除 Log Analytics 工作區的設定。 若要編輯工作區的 [高級`Microsoft.OperationalInsights/workspaces/write`設定]，請按使用者需求。 |
+| `Microsoft.OperationalInsights/*` | 新增、更新和移除 Log Analytics 工作區的設定。 若要編輯工作區的 [高級設定]，請按使用者需求 `Microsoft.OperationalInsights/workspaces/write` 。 |
 | `Microsoft.OperationsManagement/*` | 新增及移除管理解決方案 |
 | `Microsoft.Resources/deployments/*` | 建立及刪除部署。 需具備此權限，才能新增及移除解決方案、工作區和自動化帳戶 |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | 建立及刪除部署。 需具備此權限，才能新增及移除解決方案、工作區和自動化帳戶 |
@@ -187,12 +189,12 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 當使用者使用資源內容存取來查詢工作區中的記錄時，他們會在資源上擁有下列許可權：
 
-| 權限 | 描述 |
+| 權限 | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>範例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能夠查看資源的所有記錄資料。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能夠設定診斷設定，以允許此資源的記錄檔。 |
 
-`/read`許可權通常是從包含_ \*/read 或_ _\*_ 許可權（例如內建[讀取器](../../role-based-access-control/built-in-roles.md#reader)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色）的角色授與。 包含特定動作或專屬內建角色的自訂角色可能不包含此許可權。
+`/read`許可權通常是從包含_ \* /read 或_ _\*_ 許可權（例如內建[讀取器](../../role-based-access-control/built-in-roles.md#reader)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色）的角色授與。 包含特定動作或專屬內建角色的自訂角色可能不包含此許可權。
 
 如果您想要為不同的資料表建立不同的存取控制，請參閱以下[的定義每個資料表的存取控制](#table-level-rbac)。
 
@@ -202,23 +204,23 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
     * 將工作區存取控制模式設定為**使用工作區或資源許可權**
 
-    * 授與`*/read`使用者`Microsoft.Insights/logs/*/read`或其資源的許可權。 如果已在工作區上將「 [Log Analytics 讀者](../../role-based-access-control/built-in-roles.md#reader)」角色指派給他們，就已足夠。
+    * 授 `*/read` 與使用者或 `Microsoft.Insights/logs/*/read` 其資源的許可權。 如果已在工作區上將「 [Log Analytics 讀者](../../role-based-access-control/built-in-roles.md#reader)」角色指派給他們，就已足夠。
 
 2. 若要授與使用者從其資源存取記錄資料的許可權，並設定其資源以將記錄傳送至工作區，請執行下列動作：
 
     * 將工作區存取控制模式設定為**使用工作區或資源許可權**
 
-    * 授與使用者工作區的下列許可權： `Microsoft.OperationalInsights/workspaces/read`和`Microsoft.OperationalInsights/workspaces/sharedKeys/action`。 有了這些許可權，使用者就無法執行任何工作區層級的查詢。 它們只能列舉工作區，並使用它做為診斷設定或代理程式設定的目的地。
+    * 授與使用者工作區的下列許可權： `Microsoft.OperationalInsights/workspaces/read` 和 `Microsoft.OperationalInsights/workspaces/sharedKeys/action` 。 有了這些許可權，使用者就無法執行任何工作區層級的查詢。 它們只能列舉工作區，並使用它做為診斷設定或代理程式設定的目的地。
 
-    * 授與使用者對其資源的下列許可權`Microsoft.Insights/logs/*/read` ： `Microsoft.Insights/diagnosticSettings/write`和。 如果已指派[Log Analytics 參與者](../../role-based-access-control/built-in-roles.md#contributor)角色、指派讀取者角色或授`*/read`與此資源的許可權，就已足夠。
+    * 授與使用者對其資源的下列許可權： `Microsoft.Insights/logs/*/read` 和 `Microsoft.Insights/diagnosticSettings/write` 。 如果已指派[Log Analytics 參與者](../../role-based-access-control/built-in-roles.md#contributor)角色、指派讀取者角色或授與 `*/read` 此資源的許可權，就已足夠。
 
 3. 若要授與使用者從其資源存取記錄資料的許可權，而不能讀取安全性事件和傳送資料，請執行下列動作：
 
     * 將工作區存取控制模式設定為**使用工作區或資源許可權**
 
-    * 授與使用者對其資源的下列許可權`Microsoft.Insights/logs/*/read`：。
+    * 授與使用者對其資源的下列許可權： `Microsoft.Insights/logs/*/read` 。
 
-    * 新增下列請以 nonaction，以禁止使用者讀取 SecurityEvent 類型： `Microsoft.Insights/logs/SecurityEvent/read`。 請以 nonaction 應該與提供讀取權限的動作（`Microsoft.Insights/logs/*/read`）位於相同的自訂角色中。 如果使用者從另一個已指派給此資源或訂用帳戶或資源群組的角色繼承讀取動作，他們就能夠讀取所有記錄類型。 如果它們是繼承`*/read`的（例如，具有讀取器或參與者角色），這也會是 true。
+    * 新增下列請以 nonaction，以禁止使用者讀取 SecurityEvent 類型： `Microsoft.Insights/logs/SecurityEvent/read` 。 請以 nonaction 應該與提供讀取權限的動作（）位於相同的自訂角色中 `Microsoft.Insights/logs/*/read` 。 如果使用者從另一個已指派給此資源或訂用帳戶或資源群組的角色繼承讀取動作，他們就能夠讀取所有記錄類型。 如果它們是繼承的 `*/read` （例如，具有讀取器或參與者角色），這也會是 true。
 
 4. 若要授與使用者從其資源存取記錄資料的許可權，並讀取所有 Azure AD 登入，並從工作區讀取更新管理解決方案記錄資料，請執行下列動作：
 
@@ -235,7 +237,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`–必須能夠使用更新管理解決方案
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`–必須能夠使用更新管理解決方案
 
-    * 授與使用者對其資源的下列許可權`*/read`：、指派給讀取者角色， `Microsoft.Insights/logs/*/read`或。 
+    * 授與使用者對其資源的下列許可權： `*/read` 、指派給讀取者角色，或 `Microsoft.Insights/logs/*/read` 。 
 
 ## <a name="table-level-rbac"></a>資料表層級 RBAC
 
@@ -268,6 +270,18 @@ Log Analytics 參與者角色包含下列 Azure 動作：
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
+上述範例會定義允許之資料表的白名單。 這個範例會顯示使用者可以存取所有資料表但_SecurityAlert_資料表時的黑名單定義：
+
+```
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
+"notActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read"
+],
+```
 
 ### <a name="custom-logs"></a>自訂的記錄
 
@@ -288,9 +302,9 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 ### <a name="considerations"></a>考量
 
-* 如果使用者被授與具有 [ _ \*/read_ ] 動作之標準讀取者或參與者角色的全域讀取權限，則會覆寫每個資料表的存取控制，並為其提供所有記錄資料的存取權。
+* 如果使用者被授與具有 [ _ \* /read_ ] 動作之標準讀取者或參與者角色的全域讀取權限，則會覆寫每個資料表的存取控制，並為其提供所有記錄資料的存取權。
 * 如果使用者被授與每個資料表的存取權，但沒有其他許可權，他們就能夠從 API 存取記錄資料，而不是從 Azure 入口網站。 若要提供 Azure 入口網站的存取權，請使用 Log Analytics 讀取器作為其基底角色。
-* 不論任何其他許可權設定為何，訂用帳戶的系統管理員都可以存取所有資料類型。
+* 不論任何其他許可權設定為何，訂用帳戶的系統管理員和擁有者都可以存取所有資料類型。
 * 工作區擁有者會被視為每個資料表存取控制的任何其他使用者。
 * 建議您將角色指派給安全性群組，而不是個別使用者，以減少指派的數目。 這也可協助您使用現有的群組管理工具來設定和驗證存取權。
 

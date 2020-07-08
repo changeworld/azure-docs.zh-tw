@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85129512"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架構，例如，任意維度的深度神經網路或迴旋。 您可以使用複雜的結構來改善影像、視訊或音訊等的資料學習。
 
@@ -452,7 +450,7 @@ output Digit [10] from Hid3 all;
 + 關鍵字 `convolve` 指出名為 `Conv1` 和 `Conv2` 的層為迴旋層。 這些層宣告的後面分別會加上一份迴旋屬性清單。
 + 網路具有第三個隱藏層 `Hid3`，與第二個隱藏層 `Conv2` 完全相連。
 + 輸出層 `Digit` 僅連線到第三個隱藏層 `Hid3`。 關鍵字 `all` 指出輸出層與 `Hid3` 完全相連。
-+ 卷放的 arity 為3：元`InputShape`組、 `KernelShape` `Stride`、和`Sharing`的長度。
++ 卷放的 arity 為3：元組、、和的 `InputShape` 長度 `KernelShape` `Stride` `Sharing` 。
 + 每個核心的加權數目是 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`。 或 `26 * 50 = 1300`。
 + 您可以用下列方式計算每個隱藏層中的節點數：
 

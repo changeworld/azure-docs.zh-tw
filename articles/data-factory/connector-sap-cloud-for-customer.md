@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987559"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Cloud for Customer (C4C) 複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -124,6 +124,7 @@ ms.locfileid: "81418043"
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**SapCloudForCustomerSource**  | 是 |
 | 查詢 | 指定自訂 OData 查詢來讀取資料。 | 否 |
+| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為**00:30:00** （30分鐘）。 | 否 |
 
 取得特定日之資料的範例查詢：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -163,7 +164,7 @@ ms.locfileid: "81418043"
 
 若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動的 **sink** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**SapCloudForCustomerSink**  | 是 |
 | writeBehavior | 作業的寫入行為。 可能是 “Insert”、“Update”。 | 否。 預設值為 “Insert”。 |

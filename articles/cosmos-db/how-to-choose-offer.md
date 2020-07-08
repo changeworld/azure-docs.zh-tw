@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116803"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在標準 (手動) 和自動調整佈建輸送量之間進行選擇 
 
@@ -61,7 +61,7 @@ Azure Cosmos DB 支援兩種佈建輸送量類型或供應項目：標準 (手�
 
 使用自動調整時，請使用 Azure 監視器來查看佈建的自動調整最大 RU/秒 (**自動調整最大輸送量**)，以及系統目前調整到的 RU/秒 (**佈建輸送量**)。 以下是使用自動調整的變動或無法預測工作負載範例。 請注意，當沒有任何流量時，系統會將 RU/秒調整為最小值 (在本案例中為 5000 RU/秒)，也就是最大 RU/秒 (在本案例中為 50,000 RU/秒) 的 10%。 
 
-![使用自動調整的工作負載範例](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="使用自動調整的工作負載範例":::
 
 > [!NOTE]
 > 當使用標準 (手動) 佈建輸送量時，**佈建輸送量**計量會參考身為使用者所設定的內容。 當使用自動調整輸送量時，此計量會參考系統目前調整到的 RU/秒。

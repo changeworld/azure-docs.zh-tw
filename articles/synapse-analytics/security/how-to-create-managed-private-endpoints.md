@@ -4,15 +4,16 @@ description: 本文將告訴您如何從 Azure Synapse 工作區，為您的資�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193884"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>為您的資料來源建立受控私用端點（預覽）
 
@@ -30,12 +31,12 @@ ms.locfileid: "82983222"
 
 ## <a name="step-3-select-the-data-source-type"></a>步驟3：選取資料來源類型
 
-選取 [資料來源類型]。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 [繼續]  。
+選取 [資料來源類型]。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 [繼續]。
 ![選取目標資料來源類型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步驟4：輸入資料來源的相關資訊
 
-在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 [**名稱**]。 提供**Azure 訂**用帳戶和**儲存體帳戶名稱**。 選取 [建立]  。
+在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 [**名稱**]。 提供**Azure 訂**用帳戶和**儲存體帳戶名稱**。 選取 [建立]。
 ![輸入目標資料來源詳細資料](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步驟5：確認已成功建立您的受控私人端點

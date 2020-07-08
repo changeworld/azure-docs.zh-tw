@@ -11,22 +11,30 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: b0f01f5f044fd096704683fe67d2068e4ab4c3f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982164"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure 媒體服務 v3 檔更新
 
->將此 URL 複製並貼`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us`到您的 RSS 摘要讀取器，以取得有關何時要重新流覽此頁面以取得更新的通知。
+>將 URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` 複製並貼到 RSS 摘要閱讀程式中，以獲知何時該重新造訪此頁面來取得最新消息。
 
 本文討論最新的媒體服務 v3 檔更新。
 
+## <a name="june-2020"></a>2020 年 6 月
+
+* 即時影片分析的預覽已公開 IoT Edge。 如需 IoT Edge 檔的[即時影片分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/)，請參閱詳細資料。
+* 新的快速入門：
+
+    * [使用入口網站上傳、編碼和串流內容](manage-assets-quickstart.md)
+    * [使用入口網站加密內容](encrypt-content-quickstart.md)
+
 ## <a name="april-2020"></a>2020 年 4 月
 
-* Azure 媒體播放機檔已遷移至[Azure 檔](../azure-media-player/azure-media-player-overview.md)。
+* Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azure-media-player-overview.md)。
 * 已新增[開放廣播 Studio （OBS）](live-events-obs-quickstart.md)快速入門的即時串流。 它會示範如何使用 Azure 入口網站和 OBS 來建立媒體服務的即時串流。
 
 ## <a name="march-2020"></a>2020 年 3 月

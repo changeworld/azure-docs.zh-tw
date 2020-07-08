@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124046"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
 本文說明資料安全性與加密的最佳作法。
@@ -119,9 +119,9 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 
 您想要控制及保護於公司外部共用的電子郵件、文件及敏感性資料。 [Azure 資訊保護](/azure/information-protection/)為雲端式解決方案，可協助組織將其文件及電子郵件分類、加註標籤及進行保護。 定義規則和條件的系統管理員可自動完成此動作，使用者也可以手動方式完成，或在使用者取得建議的情況下組合完成。
 
-不論資料儲存位置或共同對象為何，隨時都可識別分類。 標籤包括視覺標記，例如頁首、頁尾或浮水印。 中繼資料會以純文字新增至檔案和電子郵件標頭。 純文字可確保其他服務 (例如防止資料遺失的解決方案) 可以識別分類並採取適當動作。
+不論資料儲存位置或共同對象為何，隨時都可識別分類。 標籤包括視覺標記，例如頁首、頁尾或浮水印。 中繼資料會以純文字加入檔案和電子郵件頁首。 純文字可確保其他服務 (例如防止資料遺失的解決方案) 可以識別分類並採取適當動作。
 
-此保護技術使用 Azure Rights Management (Azure RMS)。 此技術與其他 Microsoft 雲端服務和應用程式 (例如 Office 365 和 Azure Active Directory) 整合。 此保護技術使用加密、身分識別和授權原則。 透過 Azure RMS 套用的保護，不論位置是組織內部或外部、網路、檔案伺服器或應用程式，都可持續保護文件和電子郵件。
+此保護技術使用 Azure Rights Management (Azure RMS)。 這項技術與其他 Microsoft 雲端服務和應用程式整合，例如 Microsoft 365 和 Azure Active Directory。 這項保護技術使用加密、身分識別和授權原則。 透過 Azure RMS 套用的保護，不論位置是組織內部或外部、網路、檔案伺服器或應用程式，都可持續保護文件和電子郵件。
 
 此資訊保護解決方案可讓您控制您的資料，即使資料與其他人共用也是如此。 您也可以將 Azure RMS 與您自己的特定業務應用程式和軟體廠商提供的資訊保護解決方案結合使用，不論這些應用程式和解決方案是在內部部署或雲端中。
 

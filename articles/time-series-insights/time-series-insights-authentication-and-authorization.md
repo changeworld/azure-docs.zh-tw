@@ -4,29 +4,24 @@ description: 本文說明如何為呼叫 Azure Time Series Insights API 的自�
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+ms.author: shresha
+manager: dpalled
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099233"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
 本文件描述如何使用新的 Azure Active Directory 刀鋒視窗，在 Azure Active Directory 中註冊應用程式。 在 Azure Active Directory 中註冊的應用程式，可讓使用者針對與時間序列見解環境建立關聯的 Azure 時間序列見解 API 進行驗證並獲授權使用。
-
-> [!IMPORTANT]
-> Azure 時間序列見解支援下列兩種驗證程式庫：
-> * 最新的 [Microsoft 驗證程式庫 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * The [Azure Active Directory 驗證程式庫 (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>服務主體
 
@@ -81,9 +76,9 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 ### <a name="client-app-initialization"></a>用戶端應用程式初始化
 
-* 開發人員可使用 [Microsoft 驗證程式庫 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) 或 [Azure Active Directory 驗證程式庫 (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) 以透過 Azure 時間序列見解進行驗證。
+* 開發人員可以使用 [Microsoft 驗證程式庫（MSAL）來驗證 Azure 時間序列深入解析。
 
-* 例如，若要使用 ADAL 進行驗證：
+* 若要使用 ADAL 進行驗證：
 
    1. 使用 Azure Active Directory 應用程式註冊區段中的 [應用程式識別碼] 和 [用戶端祕密] (應用程式金鑰)，以代表應用程式取得權杖。
 
@@ -93,7 +88,10 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
    1. 當應用程式呼叫 Time Series Insights API 時，此權杖即可傳入 `Authorization` 標頭。
 
-* 或者，開發人員可選擇使用 MSAL 進行驗證。 請閱讀[移轉至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) 的相關資訊，並參閱[使用 C# 管理 Azure 時間序列見解環境的 GA 參考資料](time-series-insights-manage-reference-data-csharp.md)一文以深入了解。
+> [!IMPORTANT]
+> 如果您使用[Azure Active Directory Authentication Library （ADAL）](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) ，請參閱[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)。
+
+    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
 
 ## <a name="common-headers-and-parameters"></a>一般標頭和參數
 
@@ -113,13 +111,13 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 必要的要求標頭如下所述。
 
-| 必要的要求標頭 | 描述 |
+| 必要的要求標頭 | Description |
 | --- | --- |
 | 授權 | 若要透過時間序列見解進行驗證，則必須在**授權**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 |
 
 > [!IMPORTANT]
 > 此權杖必須確切核發給 `https://api.timeseries.azure.com/` 資源 (也稱為權杖的「對象」)。
-> * 因此， [Postman](https://www.getpostman.com/) **AuthURL** 將會是：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> * 因此， [Postman](https://www.getpostman.com/) **AuthURL** 將會是：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/` 有效，但 `https://api.timeseries.azure.com` 無效。
 
 選擇性的要求標頭如下所述。
@@ -161,10 +159,10 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需呼叫 GA 時間序列見解 API 的範例程式碼，請參閱[使用 C# 查詢資料](./time-series-insights-query-data-csharp.md)。
+* 如需呼叫 GA 時間序列見解 API 的範例程式碼，請參閱[使用 C# 查詢資料](./time-series-insights-query-data-csharp.md)。
 
-- 如需預覽時間序列見解 API 的程式碼範例，請參閱[使用 C# 查詢預覽資料](./time-series-insights-update-query-data-csharp.md)。
+* 如需預覽時間序列見解 API 的程式碼範例，請參閱[使用 C# 查詢預覽資料](./time-series-insights-update-query-data-csharp.md)。
 
-- 如需 API 參考資訊，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
+* 如需 API 參考資訊，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 
-- 了解如何[建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
+* 了解如何[建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。

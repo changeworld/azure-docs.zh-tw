@@ -2,21 +2,21 @@
 title: 使用 Azure 事件方格中的 Azure AD 來保護 WebHook 傳遞
 description: 說明如何使用 Azure 事件方格將事件傳遞至受 Azure Active Directory 保護的 HTTPS 端點
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: babanisa
-ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.author: femila
+ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126071"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>將事件發佈至 Azure Active Directory 受保護的端點
 
-本文說明如何利用 Azure Active Directory 來保護您的事件訂用帳戶與 webhook 端點之間的連線。 如需 Azure AD 應用程式和服務主體的總覽，請參閱[Microsoft 身分識別平臺（v2.0）總覽](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+本文說明如何利用 Azure Active Directory 來保護您的事件訂用帳戶與 webhook 端點之間的連線。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
 本文使用 Azure 入口網站進行示範，不過也可以使用 CLI、PowerShell 或 Sdk 來啟用此功能。
 
@@ -24,19 +24,19 @@ ms.locfileid: "82900463"
 
 ## <a name="create-an-azure-ad-application"></a>建立 Azure AD 應用程式
 
-從為受保護的端點建立 Azure AD 應用程式開始。 請參閱＜https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview＞。
-    - 將受保護的 API 設定為可由背景程式應用程式呼叫。
+從為受保護的端點建立 Azure AD 應用程式開始。 請參閱＜ https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview ＞。
+    - 將受保護 API 設定為可由精靈應用程式呼叫。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>啟用事件方格以使用您的 Azure AD 應用程式
 
 請使用下列 PowerShell 腳本，在您的 Azure AD 應用程式中建立角色和服務主體。 您將需要 Azure AD 應用程式中的租使用者識別碼和物件識別碼：
 
    > [!NOTE]
-   > 您必須是[Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此腳本。
+   > 您必須是 [Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此指令碼。
     
 1. 修改 PowerShell 腳本的 $myTenantId，以使用您的 Azure AD 租使用者識別碼。
 1. 修改 PowerShell 腳本的 $myAzureADApplicationObjectId，以使用您 Azure AD 應用程式的物件識別碼
-1. 執行修改過的腳本。
+1. 執行修改過的指令碼。
 
 ```PowerShell
 # This is your Tenant Id. 

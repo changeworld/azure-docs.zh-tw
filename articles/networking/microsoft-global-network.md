@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125816"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全域網路
 
@@ -38,7 +38,7 @@ Microsoft 擁有並操作世界上最大的骨幹網路之一。 這種全球和
 
 例如，如果倫敦的使用者嘗試存取東京中的服務，則網際網路流量會進入倫敦的一個邊緣，透過法國、歐洲和印度之間的交易-阿拉伯路徑，再到日本託管服務的國家/地區進行 Microsoft WAN。 回應流量是對稱的。 這有時稱為「[冷刷」路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)，這表示流量會盡可能在 Microsoft 網路上保留。  
   
-那麼，在使用 Microsoft 服務時，這是否表示所有的流量？ 是，資料中心之間的任何流量，在 Microsoft Azure 或 Microsoft 服務（例如虛擬機器、Office 365、XBox、SQL Db、儲存體和虛擬網路）之間，會在全球網路內路由傳送，並永遠不會透過公用網際網路，以確保最佳效能和完整性。  
+那麼，在使用 Microsoft 服務時，這是否表示所有的流量？ 是，資料中心之間的任何流量，在 Microsoft Azure 或 Microsoft 服務（例如虛擬機器、Microsoft 365、XBox、SQL Db、儲存體和虛擬網路）之間，會在全球網路中路由傳送，而且永遠不會透過公用網際網路，以確保最佳的效能和完整性。  
  
 大規模投資在 metro、地面和潛水艇路徑間的光纖容量和多樣性，對於我們而言，維持一致和高服務層級，同時激發雲端和線上服務的極端成長，是非常重要的。 我們的全球網路最近新增的功能是我們的[MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)潛水艇纜線、業界的第一個開放線系統（OLS），透過海底、Bilbao、西班牙和佛吉尼亞海灘、弗吉尼亞州、美國，以及紐約、美國與都柏林、愛爾蘭和[新的亞太地區（NCP）](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system)之間的[AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) ，美國的東京、日本及上海。 
  

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113597"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>全域調整佈建的輸送量 
 
 在 Azure Cosmos DB 中，布建的輸送量會以每秒要求單位數（RU/秒或複數形式 RUs）來表示。 RU 會根據您的 Cosmos 容器來衡量讀取與寫入作業的成本，如下圖所示：
 
-![要求單位](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="要求單位" border="false":::
 
 您可以在 Cosmos 容器或 Cosmos 資料庫上佈建 RU。 在容器上布建的 ru 僅適用于在該容器上執行的作業。 佈建於資料庫上的 RU 會在該資料庫內的所有容器之間共用 (但任何具有以獨佔方式指派之 RU 的容器除外)。
 

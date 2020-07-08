@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85105996"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 在預先設定的 Azure 虛擬機器 (VM) 中使用 Visual Studio，是從零開始到建立已啟動並執行中之開發環境的快速簡單方式。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) 中提供具有各種不同 Visual Studio 設定的系統映像。
@@ -104,7 +104,7 @@ Visual Studio 會依循 Azure 中的「自備授權」模型。 如同專用硬�
 > [!NOTE]
 > 您仍會產生一些儲存映像的成本，但與為每個需要 VM 的小組成員從頭開始重建 VM 的額外成本相比，該增加成本可能微不足道。 例如，建立並儲存一個可供整個小組重複使用的 127 GB 映像，一個月只需幾塊錢。 不過，與每個員工投資在建置及驗證適當設定的開發環境以供其個人使用的時數相比，這些成本就顯得微不足道。
 
-此外，您的開發工作或技術可能需要更大的規模，例如各種開發設定和多個機器設定。 您可以使用 Azure DevTest Labs 來建立「配方」，以自動建構您的「最佳映像」。 您也可以使用 DevTest Labs 來管理您小組執行中 VM 的原則。 [使用適用於開發人員的 Azure DevTest Labs](/azure/devtest-lab/devtest-lab-developer-lab) \(機器翻譯\) 是可供您了解 DevTest Labs 的最佳來源。
+此外，您的開發工作或技術可能需要更大的規模，例如各種開發設定和多個機器設定。 您可以使用 Azure DevTest Labs 來建立「配方」，以自動建構您的「最佳映像」。 您也可以使用 DevTest Labs 來管理您小組執行中 VM 的原則。 [使用適用於開發人員的 Azure DevTest Labs](../../devtest-labs/devtest-lab-developer-lab.md) \(機器翻譯\) 是可供您了解 DevTest Labs 的最佳來源。
 
 ## <a name="next-steps"></a>後續步驟
 既然您已了解預先設定的 Visual Studio 映像，下一步就是建立新的 VM：

@@ -4,18 +4,18 @@ description: 在 Azure Resource Graph 中進行 Advisor 資料的查詢
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117829"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>在 Resource Graph Explorer 中查詢 Advisor 資料（Azure Resource Graph）
 
 Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.com/features/resource-graph/)。 這會為許多適用于 Advisor 建議的大規模客戶案例奠定基礎。 幾種情況下不可能進行規模調整，而且現在可以使用 Resource Graph 來達成：
 * 提供在 Azure 入口網站中，為您的所有訂閱執行複雜查詢的功能
-* 依類別目錄類型（例如高可用性、效能）和影響類型（高、中、低）摘要的建議
+* 依類別目錄類型（例如可靠性、效能）和影響類型（高、中、低）摘要的建議
 * 針對特定建議類型的所有建議
 * 依建議分類的受影響資源計數
 
@@ -38,7 +38,8 @@ Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.c
 * [Azure 建議程式簡介](advisor-overview.md)
 * [開始使用 Advisor](advisor-get-started.md)
 * [Advisor 成本建議](advisor-cost-recommendations.md)
-* [建議程式效能建議](advisor-performance-recommendations.md)
+* [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
+* [Advisor 效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
 * [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

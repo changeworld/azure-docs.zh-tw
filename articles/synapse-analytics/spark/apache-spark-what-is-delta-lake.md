@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193374"
 ---
 # <a name="what-is-delta-lake"></a>什麼是 Delta Lake？
 
@@ -22,7 +22,7 @@ Azure Synapse 分析與 Linux Foundation Delta Lake 相容。 Delta Lake 是一�
 
 ## <a name="key-features"></a>主要功能
 
-| 功能 | 描述 |
+| 功能 | 說明 |
 | --- | --- |
 | **ACID 交易** | 資料 lake 通常會透過多個進程和管線來填入，其中有些是透過讀取同時寫入資料。 在 Delta Lake 和新增交易之前，資料工程師必須經歷手動錯誤的程式，以確保資料完整性。 Delta Lake 將熟悉的 ACID 交易帶入資料 lake。 它提供可序列化能力，這是最強層級的隔離等級。 [深入瞭解 Delta Lake：解壓縮交易記錄](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html)檔。|
 | **可調整的元資料處理** | 在 big data 中，即使中繼資料本身也可以是「big data」。 Delta Lake 會將中繼資料視為資料，利用 Spark 的分散式處理能力來處理其所有的中繼資料。 因此，Delta Lake 可以輕鬆地處理具有數十億個數據分割和檔案的 pb 規模資料表。 |

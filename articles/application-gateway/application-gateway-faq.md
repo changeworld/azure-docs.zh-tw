@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981960"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -72,7 +73,13 @@ Azure 應用程式閘道以服務形式提供應用程式傳遞控制器 (ADC)�
 
 「保持連線逾時」控制應用程式閘道在重複使用或關閉持續連線之前，以多少時間來等待用戶端傳送另一個 HTTP 要求。 「TCP 閒置逾時」控制在沒有活動的情況下，TCP 連線保持開啟的時間長度。 
 
-在應用程式閘道 v1 SKU 中，「保持連線逾時」是 120 秒，而在 v2 SKU 中是 75 秒。 在應用程式閘道 v1 和 v2 SKU 的前端虛擬 IP (VIP) 上，「TCP 閒置逾時」都預設為 4 分鐘。 您無法變更這些值。
+在應用程式閘道 v1 SKU 中，「保持連線逾時」是 120 秒，而在 v2 SKU 中是 75 秒。 在應用程式閘道 v1 和 v2 SKU 的前端虛擬 IP (VIP) 上，「TCP 閒置逾時」都預設為 4 分鐘。 您可以將 v1 和 v2 應用程式閘道上的 TCP 閒置超時值設定為4分鐘到30分鐘之間的任何時間。 對於 v1 和 v2 應用程式閘道，您必須流覽至應用程式閘道的公用 IP，並變更入口網站上公用 IP 的 [設定] 分頁底下的 TCP 閒置超時。 您可以藉由執行下列命令，透過 PowerShell 設定公用 IP 的 TCP 閒置超時值： 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在應用程式閘道的存留期內，IP 或 DNS 名稱是否會變更？
 
@@ -211,7 +218,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>自訂探查的 [主機] 欄位代表什麼？
 
-當您在應用程式閘道上已設定多網站時，[主機] 欄位指定探查送往的名稱。 否則，請使用 '127.0.0.1'。 此值與虛擬機器主機名稱不同。 格式為\<通訊協定\>://\<主機\>:\<連接埠\>\<路徑\>。
+當您在應用程式閘道上已設定多網站時，[主機] 欄位指定探查送往的名稱。 否則，請使用 '127.0.0.1'。 此值與虛擬機器主機名稱不同。 其格式為 \<protocol\> ：// \<host\> ： \<port\> \<path\> 。
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>我可以只允許少數幾個來源 IP 位址存取應用程式閘道嗎？
 
@@ -337,11 +344,31 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內部公開一組 Pod。 為了對外公開同樣的服務，已定義一項 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 資源，可提供負載平衡、TLS 終止和以名稱為基礎的虛擬裝載。
 為了滿足此 `Ingress` 資源，需要輸入控制器，以接聽 `Ingress` 資源的任何變更，並設定負載平衡器原則。
 
-應用程式閘道輸入控制器允許 [Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)作為 [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) (也稱為 AKS 叢集) 的輸入。
+應用程式閘道輸入控制器（AGIC）可讓[Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)當做[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) （也稱為 AKS 叢集）的輸入使用。
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>單一輸入控制器執行個體可以管理多個應用程式閘道嗎？
 
 目前，一個輸入控制器執行個體只能與一個應用程式閘道相關聯。
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>為什麼我的 AKS 叢集搭配 kubenet 無法使用 AGIC？
+
+AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，但因為沒有 AGIC 的許可權，所以可能無法執行此動作。 如果 AGIC 無法建立路由表與應用程式閘道子網的關聯，AGIC 記錄中將會有錯誤指出，在此情況下，您必須手動將 AKS 叢集所建立的路由表與應用程式閘道的子網建立關聯。 如需詳細資訊，請參閱[這裡](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)的指示。
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>我可以在不同的虛擬網路中連接我的 AKS 叢集和應用程式閘道嗎？ 
+
+是的，只要虛擬網路對等互連，而且沒有重迭的位址空間。 如果您是使用 kubenet 執行 AKS，請務必將 AKS 產生的路由表與應用程式閘道子網建立關聯。 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>AGIC 附加元件不支援哪些功能？ 
+
+請查看透過 Helm 部署的 AGIC 與在[這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>何時應該使用附加元件與 Helm 部署？ 
+
+請參閱這裡透過 Helm 部署的 AGIC 與在[這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異，特別是記載由 Helm 部署的 AGIC 所支援之案例的資料表，而不是 AKS 附加元件。 一般來說，透過 Helm 進行部署，可讓您在正式發行之前，先測試搶鮮版（Beta）功能和發行候選版本。 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>我可以控制要將哪個版本的 AGIC 與附加元件一起部署？
+
+否，AGIC 附加元件是受控服務，這表示 Microsoft 會自動將附加元件更新為最新的穩定版本。 
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 
@@ -411,8 +438,6 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 
 僅限私人 IP 存取的 NSG 設定範例：![僅限私人 IP 存取的應用程式閘道 V2 NSG 設定](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 Cookie 是否支援 SameSite 屬性？
-是，[Chromium 瀏覽器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)強制規定不含 SameSite 屬性的 HTTP Cookie 視同 SameSite=Lax。 這表示在協力廠商環境下，瀏覽器不會傳送應用程式閘道親和性 Cookie。 為了支援這種情況，除了現有的 *ApplicationGatewayAffinity* Cookie，應用程式閘道還會插入另一個名為 *ApplicationGatewayAffinityCORS* 的 Cookie。  這些 Cookie 很類似，但 *ApplicationGatewayAffinityCORS* Cookie 多增加兩個屬性：*SameSite=None; Secure*。 即使是跨原始來源要求，這些屬性仍然會維護黏性工作階段。 如需詳細資訊，請參閱[以 Cookie 為基礎的親和性](configuration-overview.md#cookie-based-affinity)一節。
 
 ## <a name="next-steps"></a>後續步驟
 

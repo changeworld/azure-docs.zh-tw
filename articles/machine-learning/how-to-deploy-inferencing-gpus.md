@@ -5,17 +5,18 @@ description: 本文會教您如何使用 Azure Machine Learning 將已啟用 GPU
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.custom: tracking-python
+ms.openlocfilehash: c115b641ca5c22ebe227af5349d7ef133e198b44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78398342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976739"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 部署深度學習模型以進行推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +34,7 @@ ms.locfileid: "78398342"
 > [!NOTE]
 > 本文中的資訊是[以如何部署至 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)一文中的資訊為基礎。 本文一般會涵蓋部署至 AKS，本文涵蓋 GPU 特定部署。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
@@ -52,7 +53,7 @@ ms.locfileid: "78398342"
 若要連接到現有的工作區，請使用下列程式碼：
 
 > [!IMPORTANT]
-> 此程式碼片段需要將工作區設定儲存在目前目錄或其父系。 如需建立工作區的詳細資訊，請參閱[建立和管理 Azure Machine Learning 工作區](how-to-manage-workspace.md)。   如需將設定儲存至檔案的詳細資訊，請參閱[建立工作區設定檔](how-to-configure-environment.md#workspace)。
+> 此程式碼片段預期工作區組態會儲存在目前目錄或其父系目錄中。 如需建立工作區的詳細資訊，請參閱[建立和管理 Azure Machine Learning 工作區](how-to-manage-workspace.md)。   如需將組態儲存至檔案的詳細資訊，請參閱[建立工作區組態檔](how-to-configure-environment.md#workspace)。
 
 ```python
 from azureml.core import Workspace
@@ -135,11 +136,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-這個檔案的名稱`score.py`為。 如需有關輸入腳本的詳細資訊，請參閱[如何和部署位置](how-to-deploy-and-where.md)。
+這個檔案的名稱為 `score.py` 。 如需有關輸入腳本的詳細資訊，請參閱[如何和部署位置](how-to-deploy-and-where.md)。
 
 ## <a name="define-the-conda-environment"></a>定義 conda 環境
 
-Conda 環境檔案會指定服務的相依性。 它包含模型和專案腳本所需的相依性。 請注意，您必須以 pip 相依性的形式來表示版本 >= 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。 下列 YAML 會定義 Tensorflow 模型的環境。 它會`tensorflow-gpu`指定，它會使用此部署中使用的 GPU：
+Conda 環境檔案會指定服務的相依性。 它包含模型和專案腳本所需的相依性。 請注意，您必須以 pip 相依性的形式來表示版本 >= 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。 下列 YAML 會定義 Tensorflow 模型的環境。 它 `tensorflow-gpu` 會指定，它會使用此部署中使用的 GPU：
 
 ```yaml
 name: project_environment
@@ -157,7 +158,7 @@ channels:
 - conda-forge
 ```
 
-在此範例中，檔案會另存`myenv.yml`為。
+在此範例中，檔案會另存為 `myenv.yml` 。
 
 ## <a name="define-the-deployment-configuration"></a>定義部署設定
 
@@ -212,9 +213,6 @@ aks_service = Model.deploy(ws,
 aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
-
-> [!NOTE]
-> 如果`InferenceConfig`物件具有`enable_gpu=True`，則`deployment_target`參數必須參考提供 GPU 的叢集。 否則，部署作業將會失敗。
 
 如需詳細資訊，請參閱[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的參考檔。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2851968b102bdcbae95a81352439f39f5837020b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119302"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性層級與 Azure Cosmos DB API
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 為熱門資料庫提供與有線通訊協定相容的 Api 原�
 
 下表說明使用 Cassandra API 時，原生 Cassandra 一致性層級如何對應至 Azure Cosmos DB 的一致性層級：  
 
-[![Cassandra 一致性模型對應](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" alt-text="Cassandra 一致性模型對應" lightbox="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" :::
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>MongoDB 與 Azure Cosmos DB 一致性層級之間的對應
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 為熱門資料庫提供與有線通訊協定相容的 Api 原�
 
 下表說明使用適用于 MongoDB 的 Azure Cosmos DB API 時，原生 MongoDB 寫入/讀取考慮如何對應至 Azure Cosmos 一致性層級：
 
-[![MongoDB 一致性模型對應](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB 一致性模型對應" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

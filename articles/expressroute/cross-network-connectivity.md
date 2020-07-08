@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 646482472caf6aded9142f33fb6bd879938998d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124948"
 ---
 # <a name="cross-network-connectivity"></a>跨網路連線能力
 
@@ -20,25 +20,25 @@ Fabrikam Inc. 在美國東部具有大型實體據點和 Azure 部署。 Fabrika
 
 Fabrikam Inc. 取得 Contoso 公司。在合併之後，Fabrikam 想要互連網路。 下圖說明這個案例：
 
- [![1]][1]
+![應用程式案例](./media/cross-network-connectivity/premergerscenario.png)
 
 上圖中間的虛線箭號表示所需的網路互連。 具體而言，需要的交叉連線類型有三種：1） Fabrikam 和 Contoso Vnet cross connect、2）跨地區內部部署和 Vnet 交叉連線（也就是將 Fabrikam 內部部署網路連接到 Contoso VNet，並將 Contoso 內部部署網路連接到 Fabrikam VNet），以及3） Fabrikam 和 Contoso 內部部署網路交叉連接。 
 
 下表顯示在合併之前，Contoso 公司 ExpressRoute 的私用對等互連路由表。
 
-[![2]][2]
+![合併前的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
 
-下表顯示在合併之前，Contoso 訂用帳戶中 VM 的有效路由。 根據資料表，VNet 上的 VM 會感知 VNet 位址空間和 Contoso 內部部署網路（與預設值分開）。 
+下表顯示在合併之前，Contoso 訂用帳戶中 VM 的有效路由。 根據資料表，VNet 上的 VM 會感知 VNet 位址空間和 Contoso 內部部署網路（與預設值分開）。
 
-[![4]][4]
+![合併前的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-premerger.png)
 
 下表顯示在合併之前，Fabrikam Inc. 的 ExpressRoute 之私用對等互連的路由表。
 
-[![3]][3]
+![合併前的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
 
 下表顯示 Fabrikam 訂用帳戶中的 VM 在合併之前的有效路由。 根據資料表，VNet 上的 VM 會感知 VNet 位址空間和 Fabrikam 內部部署網路（與預設值分開）。
 
-[![5]][5]
+![合併前的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
 
 在本文中，我們將逐步解說，並討論如何使用下列 Azure 網路功能來達成所需的交叉連接：
 
@@ -54,15 +54,15 @@ Fabrikam Inc. 取得 Contoso 公司。在合併之後，Fabrikam 想要互連網
 
 下圖顯示設定全域 VNet 對等互連之後的網路架構。
 
-[![6]][6]
+![VNet 對等互連之後的架構](./media/cross-network-connectivity/vnet-peering.png )
 
 下表顯示 Contoso 訂用帳戶 VM 已知的路由。 請注意資料表的最後一個專案。 此專案是跨連接虛擬網路的結果。
 
-[![7]][7]
+![在 VNet 對等互連之後的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-peering.png)
 
 下表顯示 Fabrikam 訂用帳戶 VM 已知的路由。 請注意資料表的最後一個專案。 此專案是跨連接虛擬網路的結果。
 
-[![8]][8]
+![在 VNet 對等互連之後的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
 
 VNet 對等互連直接連結兩個虛擬網路（請參閱上述兩個表格中沒有*vnetglobalpeering 路由*專案的下一個躍點）
 
@@ -74,23 +74,23 @@ VNet 對等互連直接連結兩個虛擬網路（請參閱上述兩個表格中
 
 下圖顯示設定虛擬網路的 ExpressRoute 交叉連線之後的網路架構。
 
-[![9]][9]
+![ExpressRoutes 跨連接之後的架構](./media/cross-network-connectivity/exr-x-connect.png)
 
 下表顯示 Contoso 公司 ExpressRoute 的私用對等互連路由表（在透過 ExpressRoute 將虛擬網路與內部部署網路交叉連接之後）。 查看路由表有屬於這兩個虛擬網路的路由。
 
-[![10]][10]
+![跨連接 ExR 和 Vnet 後的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
 
 下表顯示在透過 ExpressRoute 將虛擬網路與內部部署網路交叉連線之後，Fabrikam Inc. 的 ExpressRoute 之私用對等互連的路由表。 查看路由表有屬於這兩個虛擬網路的路由。
 
-[![英寸]][11]
+![跨連接 ExR 和 Vnet 後的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
 
 下表顯示 Contoso 訂用帳戶 VM 已知的路由。 請注意資料表的*虛擬網路閘道*專案。 VM 會看到兩個內部部署網路的路由。
 
-[![12]][12]
+![跨連接 ExR 和 Vnet 後的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
 
 下表顯示 Fabrikam 訂用帳戶 VM 已知的路由。 請注意資料表的*虛擬網路閘道*專案。 VM 會看到兩個內部部署網路的路由。
 
-[![十三]][13]
+![跨連接 ExR 和 Vnet 後的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
 
 >[!NOTE]
 >在 Fabrikam 和/或 Contoso 訂用帳戶中，您也可以將輪輻 Vnet 至個別的中樞 VNet （本文的架構圖表中不會說明中樞和輪輻設計）。 中樞 VNet 閘道與 ExpressRoute 之間的交叉連線也會允許「東部」和「西部」中樞與輪輻之間的通訊。
@@ -102,39 +102,21 @@ ExpressRoute Global 觸及會在連線到不同 ExpressRoute 線路的內部部�
 
 下圖顯示設定全球範圍後的網路架構。
 
-[![14]][14]
+![設定全球範圍後的架構](./media/cross-network-connectivity/globalreach.png)
 
 下表顯示 Contoso 公司 ExpressRoute 的私用對等互連路由表（在設定全球範圍之後）。 查看路由表有屬於內部部署網路的路由。 
 
-[![15]][15]
+![全球抵達後的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-gr.png)
 
 下表顯示在設定全球範圍之後，Fabrikam Inc. 的 ExpressRoute 私人對等互連的路由表。 查看路由表有屬於內部部署網路的路由。
 
-[![1600]][16]
+![在全球到達後的 Fabrikam ExpressRoute 路由表]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 VNet 和 VNet 對等互連的任何進一步問題，請參閱[虛擬網路常見問題][VNet-FAQ]。 如需 ExpressRoute 和虛擬網路連線能力的任何進一步問題，請參閱[EXPRESSROUTE 常見問題][ER-FAQ]。
 
 全球範圍會依國家/地區在國家/地區推出。 若要查看全球範圍是否適用于您想要的國家/地區，請參閱[ExpressRoute 全球][Global Reach]觸達。
-
-<!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "應用程式案例"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "合併前的 Contoso ExpressRoute 路由表"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "合併前的 Fabrikam ExpressRoute 路由表"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "合併前的 Contoso VM 路由"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "在合併前的 Fabrikam VM 路由"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "VNet 對等互連之後的架構"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "在 VNet 對等互連之後的 Contoso VM 路由"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "在 VNet 對等互連之後的 Fabrikam VM 路由"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "ExpressRoutes 交叉連線之後的架構"
-[ ]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "跨連接 ExR 和 vnet 後的10個 Contoso ExpressRoute 路由表"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "交叉連接 ExR 和 vnet 後的 Fabrikam ExpressRoute 路由表"
-[ ]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "在交叉連線 ExR 和 vnet 之後的12個 Contoso VM 路由"
-[ ]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "交叉連接 ExR 和 vnet 後的13個 Fabrikam VM 路由"
-設定 "全球範圍之後的" [14]: ./media/cross-network-connectivity/globalreach.png個架構
-全球[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png位的 "Contoso ExpressRoute 路由表"
-全球達到[16 個]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Fabrikam ExpressRoute 路由表"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

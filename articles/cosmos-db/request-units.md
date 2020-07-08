@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378b442c80758c4a5dca02b33f92ba3823f33ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113646"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的要求單位
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 下圖顯示 RU 的高階概念：
 
-![資料庫作業會取用要求單位](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="資料庫作業會取用要求單位" border="false":::
 
 為了管理和規劃容量，Azure Cosmos DB 會確保指定資料集上指定資料庫作業的 RU 數目具有決定性。 您可以檢查回應標頭來追蹤任何資料庫作業所取用的 RU 數目。 當您瞭解[影響 RU 費用的因素](request-units.md#request-unit-considerations)，以及應用程式的輸送量需求時，您可以將應用程式的成本有效率地執行。
 
@@ -67,7 +67,7 @@ Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解如何[在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)。
-* 深入瞭解[邏輯](partition-data.md)分割區。
+* 深入了解[邏輯分割區](partition-data.md)。
 * 深入了解如何[全域調整佈建的輸送量](scaling-throughput.md)。
 * 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
 * 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。
