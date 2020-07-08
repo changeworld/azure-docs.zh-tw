@@ -1,21 +1,14 @@
 ---
 title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/02/2019
-ms.author: shvija
-ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320578"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -97,11 +90,29 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 2. 記下 [非授權回答] 區段中的名稱，其採用下列其中一種格式： 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到我的命名空間的相關資訊？
+首先，在命名空間上啟用[IP 篩選](event-hubs-ip-filtering.md)。 
+
+然後，遵循[啟用診斷記錄](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的指示，啟用[事件中樞虛擬網路線上活動](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到拒絕連線的 IP 位址。
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka 整合
 

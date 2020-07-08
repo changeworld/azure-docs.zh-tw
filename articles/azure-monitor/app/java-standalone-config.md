@@ -3,12 +3,12 @@ title: 隨時隨地監視 JAVA 應用程式-Azure 監視器 Application Insights
 description: 無程式碼應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，而不需要檢測應用程式。 使用分散式追蹤和應用程式對應，找出問題 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319681"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器的 JAVA 獨立代理程式 Application Insights
 
@@ -33,14 +33,14 @@ ms.locfileid: "82509205"
 
 ## <a name="configuration-file-path"></a>設定檔案路徑
 
-根據預設，Application Insights JAVA 3.0 Preview 會預期要將設定檔命名`ApplicationInsights.json`為，而且必須與位於相同的目錄中`applicationinsights-agent-3.0.0-PREVIEW.4.jar`。
+根據預設，Application Insights JAVA 3.0 Preview 會預期要將設定檔命名為 `ApplicationInsights.json` ，而且必須與位於相同的目錄中 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 。
 
 您可以使用下列其中一種方式來指定您自己的設定檔路徑
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境變數，或
 * `applicationinsights.configurationFile`JAVA 系統屬性
 
-如果您指定相對路徑，它會相對於所在的目錄`applicationinsights-agent-3.0.0-PREVIEW.4.jar`來解析。
+如果您指定相對路徑，它會相對於所在的目錄來解析 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 。
 
 ## <a name="connection-string"></a>連接字串
 
@@ -48,7 +48,7 @@ ms.locfileid: "82509205"
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights 連接字串":::
 
-您也可以使用環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`來設定連接字串。
+您也可以使用環境變數來設定連接字串 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。
 
 ## <a name="cloud-role-name"></a>雲端角色名稱
 
@@ -68,7 +68,7 @@ ms.locfileid: "82509205"
 
 如果未設定雲端角色名稱，Application Insights 資源的名稱將會用來標示應用程式對應上的元件。
 
-您也可以使用環境變數`APPLICATIONINSIGHTS_ROLE_NAME`來設定雲端角色名稱。
+您也可以使用環境變數來設定雲端角色名稱 `APPLICATIONINSIGHTS_ROLE_NAME` 。
 
 ## <a name="cloud-role-instance"></a>雲端角色執行個體
 
@@ -86,13 +86,13 @@ ms.locfileid: "82509205"
 }
 ```
 
-您也可以使用環境變數`APPLICATIONINSIGHTS_ROLE_INSTANCE`來設定雲端角色實例。
+您也可以使用環境變數來設定雲端角色實例 `APPLICATIONINSIGHTS_ROLE_INSTANCE` 。
 
 ## <a name="application-log-capture"></a>應用程式記錄檔捕獲
 
 Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util 來捕獲應用程式記錄。
 
-根據預設，它會捕獲在`WARN`層級或以上執行的所有記錄。
+根據預設，它會捕獲在 `WARN` 層級或以上執行的所有記錄。
 
 如果您想要變更此閾值：
 
@@ -110,7 +110,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-這些是您可以`threshold`在檔案中`ApplicationInsights.json`指定的有效值，以及這些值如何對應至不同記錄架構的記錄層級：
+這些是 `threshold` 您可以在檔案中指定的有效值 `ApplicationInsights.json` ，以及這些值如何對應至不同記錄架構的記錄層級：
 
 | `threshold`  | Log4j  | Logback | 7 月     |
 |--------------|--------|---------|---------|
@@ -237,7 +237,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 
 這有助於找出和診斷 Application Insights 本身的問題。
 
-根據預設，它會使用層級`warn`來記錄與此設定相對應的主控台：
+根據預設，它會使用層級來記錄與 `warn` 此設定相對應的主控台：
 
 ```json
 {
@@ -252,7 +252,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-有效的層`OFF`級`ERROR`為`WARN`、 `INFO`、 `DEBUG`、、 `TRACE`和。
+有效的層級為 `OFF` 、 `ERROR` 、 `WARN` 、 `INFO` 、 `DEBUG` 和 `TRACE` 。
 
 如果您想要記錄到檔案，而不是記錄至主控台：
 
@@ -271,4 +271,4 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-使用檔案記錄時，一旦檔案到達`maxSizeMB`之後，它就會變換，只保留最近完成的記錄檔，以及目前的記錄檔。
+使用檔案記錄時，一旦檔案到達之後， `maxSizeMB` 它就會變換，只保留最近完成的記錄檔，以及目前的記錄檔。

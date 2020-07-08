@@ -1,24 +1,14 @@
 ---
 title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 06/23/2020
+ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320701"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -56,7 +46,7 @@ ms.locfileid: "82628652"
 事件中樞可讓您透過發佈者 ** 原則更精確地控制事件發佈者。 發佈者原則是為了協助大量獨立事件發佈者而設計的執行階段功能。 有了發佈者原則，當每位發佈者使用下列機制將事件發佈到事件中樞時，都能使用自己的唯一識別碼：
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 您不需要事先建立發佈者名稱，不過這些名稱必須符合發佈事件時使用的 SAS 權杖，以確保發佈者身分識別是獨立的。 使用發行者原則時，**PartitionKey** 值會設為發行者名稱。 為了正常運作，這些值必須相符。
@@ -85,12 +75,13 @@ ms.locfileid: "82628652"
 
 每一取用者群組的一個分割區上最多可以有 5 個並行讀取器；不過，**建議在每一取用者群組的一個分割區上只有一個作用中的接收器**。 在單一分割區內，每個讀取器都會接收所有訊息。 如果相同分割區上有多個讀取器，則您會需要處理重複的訊息。 您需要在程式碼中處理此狀況，但這可能不容易。 不過，在某些情況下這是有效的方法。
 
+Azure Sdk 所提供的某些用戶端是智慧型取用者代理程式，可自動管理詳細資料，以確保每個分割區都有單一讀取器，且會讀取事件中樞的所有磁碟分割。 這可讓您的程式碼專注于處理從事件中樞讀取的事件，以忽略分割區的許多詳細資料。 如需詳細資訊，請參閱[連接到資料分割](#connect-to-a-partition)。
 
-以下是取用者群組 URI 慣例的範例：
+下列範例顯示取用者群組 URI 慣例：
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 下圖顯示事件中樞串流處理架構︰
@@ -122,7 +113,12 @@ ms.locfileid: "82628652"
 
 #### <a name="connect-to-a-partition"></a>連接資料分割
 
-連線至資料分割時，常見的做法是使用租用機制來協調讀取器至特定資料分割的連線。 如此一來，取用者群組中的每個資料分割便可能只會有一個作用中的讀取器。 使用 .NET 用戶端的 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 類別可以簡化檢查點檢查、租用和管理讀取器。 事件處理器主機是智慧型取用者代理程式。
+連接到資料分割時，常見的做法是使用租用機制來協調讀取器連接到特定的分割區。 如此一來，取用者群組中的每個資料分割都有可能只有一個作用中的讀取器。 藉由使用事件中樞 Sdk 內的用戶端來簡化檢查點檢查、租用和管理讀取器的工作，其作用是智慧型取用者代理程式。 它們是：
+
+- 適用于 .NET 的[EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
+- 適用于 JAVA 的[EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- 適用于 Python 的[EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
+- JavaScript/TypeScript 的[EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>讀取事件
 
@@ -131,7 +127,7 @@ ms.locfileid: "82628652"
 事件資料︰
 * Offset
 * 序號
-* body
+* 主體
 * 使用者屬性
 * 系統屬性
 
@@ -142,13 +138,11 @@ ms.locfileid: "82628652"
 如需事件中樞的詳細資訊，請造訪下列連結：
 
 - 開始使用事件中心
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [.NET](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
     - [JavaScript](get-started-java-send-v2.md)
 * [事件中樞程式設計指南](event-hubs-programming-guide.md)
 * [事件中樞的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中樞常見問題集](event-hubs-faq.md)
-* [事件中樞範例][]
-
-[事件中樞範例]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [事件中樞範例](event-hubs-samples.md)

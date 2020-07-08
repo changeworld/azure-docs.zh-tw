@@ -1,22 +1,14 @@
 ---
 title: 使用適用於 Apache Kafka 的 Akka Streams - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Akka streams 串流連線至 Azure 事件中樞的資訊。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320202"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>使用 Akka Streams 搭配適用於 Apache Kafka 的事件中樞
 本教學課程說明如何將 Akka streams 串流連線至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 Kafka 的 Azure 事件中樞支援[Apache Kafka 1.0 版。](https://kafka.apache.org/10/documentation.html)
@@ -51,7 +43,7 @@ ms.locfileid: "80632847"
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 
-現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽`akka`至子資料夾：
+現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽至 `akka` 子資料夾：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -93,7 +85,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-生產者會開始將事件傳送至事件中樞的主題`test`，並將事件列印到 stdout。
+生產者會開始將事件傳送至事件中樞的主題 `test` ，並將事件列印到 stdout。
 
 ## <a name="run-akka-streams-consumer"></a>執行 Akka Streams 取用者
 
@@ -133,7 +125,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-如果事件中樞有事件（例如，如果您的生產者也正在執行），則取用者會開始接收來自主題`test`的事件。 
+如果事件中樞有事件（例如，如果您的生產者也正在執行），則取用者會開始接收來自主題的事件 `test` 。 
 
 如需有關 Akka Streams 的詳細資訊，請參閱 [Akka Streams Kafka 指南](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) \(英文\)。
 

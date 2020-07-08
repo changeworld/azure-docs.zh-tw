@@ -1,20 +1,14 @@
 ---
 title: 將 Apache Flink 用於 Apache Kafka - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Apache Flink 連線到 Azure 事件中樞的資訊
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320133"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>使用 Apache Flink 搭配適用於 Apache Kafka 的 Azure 事件中樞
 本教學課程說明如何將 Apache Flink 連線至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 Azure 事件中樞支援[Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
@@ -51,7 +45,7 @@ ms.locfileid: "80632817"
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 
-現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽`flink`至子資料夾：
+現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽至 `flink` 子資料夾：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -87,7 +81,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-生產者現在會開始將事件傳送至事件中樞的主題`test` ，並將事件列印到 stdout。
+生產者現在會開始將事件傳送至事件中樞的主題 `test` ，並將事件列印到 stdout。
 
 ## <a name="run-flink-consumer"></a>執行 Flink 取用者
 
@@ -118,7 +112,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-如果事件中樞有事件（例如，如果您的生產者也正在執行），則取用者現在會開始接收來自主題`test`的事件。
+如果事件中樞有事件（例如，如果您的生產者也正在執行），則取用者現在會開始接收來自主題的事件 `test` 。
 
 如需有關將 Flink 連線至 Kafka 的詳細資訊，請參閱 [Flink 的 Kafka 連接器指南](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) \(英文\)。
 
@@ -129,5 +123,5 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 - [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
 - [整合 Kafka Connect 與事件中樞](event-hubs-kafka-connect-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
-- [將 Akka 串流連線到事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [將 Akka streams 串流連線至事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
 - [適用于 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

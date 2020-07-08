@@ -3,16 +3,16 @@ title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application In
 description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319698"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
-JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程式碼，只要進行幾項設定變更，就可以啟用 JAVA 代理程式。
+監視 Java 無程式碼應用程式的重點在於簡單明瞭：不需進行任何程式碼變更，只要進行數個設定變更，就能啟用該 Java 代理程式。
 
  JAVA 代理程式適用于任何環境，並可讓您監視所有的 JAVA 應用程式。 換句話說，不論您是在內部部署的 Vm 上執行 JAVA 應用程式，在 AKS 中，在 Windows 上，Linux-您將它命名為，JAVA 3.0 代理程式會監視您的應用程式。
 
@@ -24,13 +24,13 @@ JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程�
 
 **1. 下載代理程式**
 
-下載[applicationinsights-agent-3.0.0-preview. 4 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
+下載[applicationinsights-agent-3.0.0-preview. 5 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 **2. 將 JVM 指向代理程式**
 
-將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar`新增至應用程式的 JVM 引數
+將新增 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` 至應用程式的 JVM 引數
 
-一般 JVM 引數`-Xmx512m`包括`-XX:+UseG1GC`和。 因此，如果您知道要將這些新增到何處，您就已經知道要將它加入何處。
+一般 JVM 引數包括 `-Xmx512m` 和 `-XX:+UseG1GC` 。 因此，如果您知道要將這些新增到何處，您就已經知道要將它加入何處。
 
 如需設定應用程式 JVM 引數的其他協助，請參閱[3.0 Preview：更新 JVM 引數的秘訣](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
 
@@ -44,7 +44,7 @@ JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-或者，藉由建立名為`ApplicationInsights.json`的設定檔，並將它放在`applicationinsights-agent-3.0.0-PREVIEW.4.jar`與相同的目錄中，並包含下列內容：
+或者，藉由建立名為的設定檔 `ApplicationInsights.json` ，並將它放在與相同的目錄中 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` ，並包含下列內容：
 
 ```json
 {
@@ -68,7 +68,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ## <a name="configuration-options"></a>設定選項
 
-`ApplicationInsights.json`在檔案中，您可以另外設定：
+在檔案中 `ApplicationInsights.json` ，您可以另外設定：
 
 * 雲端角色名稱
 * 雲端角色執行個體
@@ -132,7 +132,7 @@ Application Insights JAVA 3.0 已在接聽傳送至 Application Insights JAVA SD
 
 ## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>使用 Application Insights JAVA SDK 2.x 傳送自訂遙測
 
-將`applicationinsights-core-2.6.0.jar`新增至您的應用程式（Application Insights JAVA 3.0 支援所有2.x 版本，但如果您有選擇，則值得使用最新版本）：
+將新增 `applicationinsights-core-2.6.0.jar` 至您的應用程式（Application Insights JAVA 3.0 支援所有2.x 版本，但如果您有選擇，則值得使用最新版本）：
 
 ```xml
   <dependency>

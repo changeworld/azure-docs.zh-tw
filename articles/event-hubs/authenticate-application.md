@@ -1,22 +1,17 @@
 ---
 title: 驗證應用程式以存取 Azure 事件中樞資源
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 事件中樞資源
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318176"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證應用程式，以存取事件中樞資源
-Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是`https://eventhubs.azure.net/` （針對 Kafka 用戶端，要求權杖的資源是`https://<namespace>.servicebus.windows.net`）。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
+Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/` （針對 Kafka 用戶端，要求權杖的資源是 `https://<namespace>.servicebus.windows.net` ）。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
 
 將角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶層級、資源群組、事件中樞命名空間，或其底下的任何資源。 Azure AD 安全性可以將角色指派給使用者、群組、應用程式服務主體或[Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 
 
@@ -41,7 +36,7 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 > [!NOTE]
 > 下面所述的步驟會將角色指派給事件中樞命名空間下的事件中樞，但是您可以遵循相同的步驟，指派範圍限於任何事件中樞資源的角色。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的事件中樞命名空間。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽到您的事件中樞命名空間。
 2. 在 [**總覽**] 頁面上，選取您要為其指派角色的事件中樞。
 
     ![選取您的事件中樞](./media/authenticate-application/select-event-hub.png)

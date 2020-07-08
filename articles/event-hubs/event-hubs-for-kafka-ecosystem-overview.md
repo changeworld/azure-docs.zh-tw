@@ -1,21 +1,14 @@
 ---
 title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/12/2020
-ms.author: shvija
-ms.openlocfilehash: 91e2d70bab8c1be4b3e5b400ce21122eccb1e9eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320523"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供的 Kafka 端點可讓您現有的 Kafka 型應用程式使用，作為執行您本身的 Kafka 叢集以外的另一項選擇。 事件中樞支援 [Apache Kafka 通訊協定 1.0 和更新版本](https://kafka.apache.org/documentation/)，並且可與您現有的 Kafka 應用程式搭配使用，包括 MirrorMaker。  
@@ -34,7 +27,7 @@ ms.locfileid: "80811371"
 | --- | --- |
 | 叢集 | 命名空間 |
 | 主題 | 事件中樞 |
-| 資料分割 | 資料分割|
+| 分割區 | 分割區|
 | 取用者群組 | 取用者群組 |
 | Offset | Offset|
 

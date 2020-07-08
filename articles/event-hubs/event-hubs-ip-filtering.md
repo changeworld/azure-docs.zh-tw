@@ -1,22 +1,14 @@
 ---
 title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: spelluru
-ms.openlocfilehash: 2d67ad70ccdf4ce1f88401806700f38bd1d3c11d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320417"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>設定 Azure 事件中樞命名空間的 IP 防火牆規則
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。

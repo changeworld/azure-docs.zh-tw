@@ -1,19 +1,14 @@
 ---
 title: 在 Azure 事件中樞以動態方式將分割區新增至事件中樞
 description: 本文說明如何在 Azure 事件中樞以動態方式將分割區新增至事件中樞。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 0fc1a29aa34be8e692a92c7c1cfb73b5c22b037d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317942"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>在 Azure 事件中樞以動態方式將分割區新增至事件中樞 (Apache Kafka 主題)
 事件中樞透過分割取用者模式來提供訊息串流，每位取用者只會讀取訊息串流的特定子集 (即資料分割)。 此模式能水平擴充事件處理規模，並提供佇列和主題缺少的其他串流導向功能。 資料分割是經過排序且保存在事件中樞內的事件序列。 當較新的事件送達時，系統會將其新增至序列的結尾。 如需關於分割區的一般詳細資訊，請參閱[分割區](event-hubs-scalability.md#partitions)

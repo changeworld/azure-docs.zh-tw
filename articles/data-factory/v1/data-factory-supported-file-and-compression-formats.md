@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318759"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>了解 Azure Data Factory 所支援的檔案和壓縮格式
 *此主題適用於下列連接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[檔案系統](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 與 [SFTP](data-factory-sftp-connector.md)。*
@@ -35,17 +35,17 @@ Azure Data Factory 支援下列檔案格式類型：
 ## <a name="text-format"></a>文字格式
 如果您想要從文字檔讀取或寫入至文字檔，請將資料集之 `format` 區段中的 `type` 屬性設定成 **TextFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [TextFormat 範例](#textformat-example)一節。
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元。 例如，指定 "\u0001"，這代表「標題開頭」(SOH)。 |只允許一個字元。 **預設**值為**逗號（'，'）**。 <br/><br/>若要使用 Unicode 字元，請參考 [Unicode 字元 (英文)](https://en.wikipedia.org/wiki/List_of_Unicode_characters) 以取得其對應的代碼。 |否 |
-| rowDelimiter |用來分隔檔案中資料列的字元。 |只允許一個字元。 **預設**值是讀取時的下列任何值： **["\r\n"，"\r"，"\n"]** 和 **"\r\n** " （寫入時）。 |否 |
-| escapeChar |用來逸出輸入檔內容中資料行分隔符號的特殊字元。 <br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如："Hello, world")，您可以定義 ‘$’ 做為逸出字元，並在來源中使用字串 "Hello$, world"。 |否 |
-| quoteChar |用來為字串值加上引號的字元。 系統會將引號字元內資料行和資料列分隔符號視為字串值的一部分。 這個屬性同時適用於輸入和輸出資料集。<br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如：<Hello, world>)，您可以定義 " (雙引號) 做為引用字元，並在來源中使用字串 "Hello, world"。 |否 |
-| nullValue |用來代表 Null 值的一或多個字元。 |一或多個字元。 **預設**值為 **"\n" 和 "Null"** （讀取時）及 **"\n"** （寫入時）。 |否 |
-| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱[Encoding.encodingname 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |否 |
-| firstRowAsHeader |指定是否將第一個資料列視為標頭。 對於輸入資料集，Data Factory 會讀取第一個資料列做為標頭。 對於輸出資料集，Data Factory 會寫入第一個資料列做為標頭。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>FALSE (預設值)</b> |否 |
+| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元。 例如，指定 "\u0001"，這代表「標題開頭」(SOH)。 |只允許一個字元。 **預設**值為**逗號（'，'）**。 <br/><br/>若要使用 Unicode 字元，請參考 [Unicode 字元 (英文)](https://en.wikipedia.org/wiki/List_of_Unicode_characters) 以取得其對應的代碼。 |No |
+| rowDelimiter |用來分隔檔案中資料列的字元。 |只允許一個字元。 **預設**值是讀取時的下列任何值： **["\r\n"，"\r"，"\n"]** 和 **"\r\n** " （寫入時）。 |No |
+| escapeChar |用來逸出輸入檔內容中資料行分隔符號的特殊字元。 <br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如："Hello, world")，您可以定義 ‘$’ 做為逸出字元，並在來源中使用字串 "Hello$, world"。 |No |
+| quoteChar |用來為字串值加上引號的字元。 系統會將引號字元內資料行和資料列分隔符號視為字串值的一部分。 這個屬性同時適用於輸入和輸出資料集。<br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如：<Hello, world>)，您可以定義 " (雙引號) 做為引用字元，並在來源中使用字串 "Hello, world"。 |No |
+| nullValue |用來代表 Null 值的一或多個字元。 |一或多個字元。 **預設**值為 **"\n" 和 "Null"** （讀取時）及 **"\n"** （寫入時）。 |No |
+| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱[Encoding.encodingname 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |No |
+| firstRowAsHeader |指定是否將第一個資料列視為標頭。 對於輸入資料集，Data Factory 會讀取第一個資料列做為標頭。 對於輸出資料集，Data Factory 會寫入第一個資料列做為標頭。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>FALSE (預設值)</b> |No |
 | skipLineCount |表示從輸入檔讀取資料時要略過的資料列數目。 如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整數 |否 |
-| treatEmptyAsNull |指定從輸入檔讀取資料時是否將 Null 或空字串視為 Null 值。 |**True （預設值）**<br/>False |否 |
+| treatEmptyAsNull |指定從輸入檔讀取資料時是否將 Null 或空字串視為 Null 值。 |**True （預設值）**<br/>False |No |
 
 ### <a name="textformat-example"></a>TextFormat 範例
 在以下的資料集 JSON 定義中，已指定一些選擇性屬性。
@@ -87,11 +87,11 @@ Azure Data Factory 支援下列檔案格式類型：
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
-| jsonNodeReference | 如果您想要逐一查看陣列欄位內相同模式的物件並擷取資料，請指定該陣列的 JSON 路徑。 從 JSON 檔案複製資料時，才支援這個屬性。 | 否 |
-| jsonPathDefinition | 指定 JSON 路徑運算式，以自訂資料行名稱來對應每個資料行 (開頭為小寫)。 從 JSON 檔案複製資料時，才支援這個屬性，您可以從物件或陣列中擷取資料。 <br/><br/> 如果是根物件下的欄位，請從根 $ 開始，如果是 `jsonNodeReference` 屬性所選陣列內的欄位，請從陣列元素開始。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。 | 否 |
-| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱： [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 屬性。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |否 |
-| nestingSeparator |用來分隔巢狀層級的字元。 預設值為 '.' (點)。 |否 |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |No |
+| jsonNodeReference | 如果您想要逐一查看陣列欄位內相同模式的物件並擷取資料，請指定該陣列的 JSON 路徑。 從 JSON 檔案複製資料時，才支援這個屬性。 | No |
+| jsonPathDefinition | 指定 JSON 路徑運算式，以自訂資料行名稱來對應每個資料行 (開頭為小寫)。 從 JSON 檔案複製資料時，才支援這個屬性，您可以從物件或陣列中擷取資料。 <br/><br/> 如果是根物件下的欄位，請從根 $ 開始，如果是 `jsonNodeReference` 屬性所選陣列內的欄位，請從陣列元素開始。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。 | No |
+| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱： [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 屬性。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |No |
+| nestingSeparator |用來分隔巢狀層級的字元。 預設值為 '.' (點)。 |No |
 
 ### <a name="json-file-patterns"></a>JSON 檔案模式
 
@@ -219,7 +219,7 @@ Azure Data Factory 支援下列檔案格式類型：
 ```
 而且想要使用下列格式，將它複製到 Azure SQL 資料表，請同時從物件和陣列擷取資料︰
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| 識別碼 | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -349,7 +349,7 @@ Azure Data Factory 支援下列檔案格式類型：
 
 如果您在 SQL Database 中有下列資料表︰
 
-| id | order_date | order_price | order_by |
+| 識別碼 | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -497,17 +497,17 @@ Azure Data Factory 支援下列檔案格式類型：
 
 當您在輸入資料集 JSON 中指定 `compression` 屬性時，管線可以從來源讀取壓縮的資料，當您在輸出資料集 JSON 中指定屬性，複製活動可以將壓縮的資料寫入到目的地。 以下是一些範例案例：
 
-* 從 Azure blob 讀取 GZIP 壓縮資料，將其解壓縮，並將結果資料寫入到 Azure SQL 資料庫。 您會將輸入 Azure Blob 資料集`compression` `type`的 JSON 屬性定義為 GZIP。
-* 從來自內部部署檔案系統之純文字檔案讀取資料、使用 GZip 格式加以壓縮並將壓縮的資料寫入到 Azure blob。 您可以使用「GZip」的`compression` `type` JSON 屬性來定義輸出 Azure Blob 資料集。
-* 從 FTP 伺服器讀取.zip 檔、將它解壓縮以取得其中的檔案，並將這些檔案放入 Azure Data Lake Store。 您可以使用 JSON 屬性將`compression` `type`輸入 FTP 資料集定義為 ZipDeflate。
-* 從 Azure blob 讀取 GZIP 壓縮資料，將其解壓縮、使用 BZIP2 將其壓縮，並將結果資料寫入到 Azure blob。 在此情況下， `compression` `type`您會將設定為 GZIP 的輸入 Azure Blob 資料`compression` `type`集，以及設定為 BZIP2 的輸出資料集定義為。   
+* 從 Azure blob 讀取 GZIP 壓縮資料，將其解壓縮，並將結果資料寫入 Azure SQL Database。 您會將輸入 Azure Blob 資料集的 `compression` `type` JSON 屬性定義為 GZIP。
+* 從來自內部部署檔案系統之純文字檔案讀取資料、使用 GZip 格式加以壓縮並將壓縮的資料寫入到 Azure blob。 您可以使用「GZip」的 JSON 屬性來定義輸出 Azure Blob 資料集 `compression` `type` 。
+* 從 FTP 伺服器讀取.zip 檔、將它解壓縮以取得其中的檔案，並將這些檔案放入 Azure Data Lake Store。 您可以使用 JSON 屬性將輸入 FTP 資料集定義 `compression` `type` 為 ZipDeflate。
+* 從 Azure blob 讀取 GZIP 壓縮資料，將其解壓縮、使用 BZIP2 將其壓縮，並將結果資料寫入到 Azure blob。 在此情況下，您會將設定為 GZIP 的輸入 Azure Blob 資料集 `compression` `type` ，以及 `compression` 設定為 BZIP2 的輸出資料集定義為 `type` 。   
 
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 所支援的檔案型資料存放區，請參閱下列文章：
 
 - [Azure Blob 儲存體](data-factory-azure-blob-connector.md)
-- [Azure Data Lake 存放區](data-factory-azure-datalake-connector.md)
+- [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
 - [FTP](data-factory-ftp-connector.md)
 - [HDFS](data-factory-hdfs-connector.md)
 - [檔案系統](data-factory-onprem-file-system-connector.md)

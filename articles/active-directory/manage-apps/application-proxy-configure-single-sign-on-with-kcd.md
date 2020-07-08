@@ -3,25 +3,25 @@ title: 使用應用程式 Proxy 進行單一登入 | Microsoft Docs
 description: 涵蓋如何使用 Azure AD 應用程式 Proxy 提供單一登入。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317535"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
 
@@ -43,7 +43,7 @@ ms.locfileid: "82583132"
 7. 「連接器」會使用從 AD 接收的 Kerberos 權杖，將原始要求傳送至應用程式伺服器。
 8. 應用程式會傳送回應至「連接器」，然後再傳回至「應用程式 Proxy」服務，最後再傳回給使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 開始使用 IWA 應用程式的單一登入之前，請確定您的環境已完成下列設定和組態︰
 
 * 您的應用程式 (例如 SharePoint Web 應用程式) 已設為使用「整合式 Windows 驗證」。 如需詳細資訊，請參閱[啟用 Kerberos 驗證的支援](https://technet.microsoft.com/library/dd759186.aspx)，或針對 sharepoint，請參閱[規劃 sharepoint 2013 中的 kerberos 驗證](https://technet.microsoft.com/library/ee806870.aspx)。
@@ -55,20 +55,20 @@ ms.locfileid: "82583132"
 根據您的「應用程式 Proxy 連接器」和應用程式伺服器是否位於相同的網域，Active Directory 組態會有所不同。
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>連接器和應用程式伺服器位於相同網域
-1. 在 Active Directory 中，移至 [**工具** > ] [**使用者和電腦**]。
+1. 在 Active Directory 中，移至 [**工具**] [  >  **使用者和電腦**]。
 2. 選取正在執行連接器的伺服器。
-3. 以滑鼠右鍵按一下並選取 [**屬性** > ] [**委派**]。
-4. 選取 [信任這台電腦，但只委派指定的服務]****。 
-5. 選取 [**使用任何驗證通訊協定**]。
+3. 以滑鼠右鍵按一下並選取 [**屬性**] [  >  **委派**]。
+4. 選取 [信任這台電腦，但只委派指定的服務]。 
+5. 選取 [使用任何驗證通訊協定]。
 6. 在 [這個帳戶可以呈送委派認證的服務]**** 下方，新增應用程式伺服器的 SPN 身分識別值。 這可讓「應用程式 Proxy 連接器」針對清單中所定義的應用程式，在 AD 中模擬使用者。
 
    ![[連接器 SVR 屬性] 視窗螢幕擷取畫面](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>連接器和應用程式伺服器位於不同網域
 1. 如需跨網域使用 KCD 的先決條件清單，請參閱 [跨網域的 Kerberos 限制委派](https://technet.microsoft.com/library/hh831477.aspx)。
-2. 使用 web `principalsallowedtodelegateto`應用程式的服務帳戶（電腦或私人網路域使用者帳戶）的屬性，從應用程式 Proxy （連接器）啟用 Kerberos 驗證委派。 應用程式伺服器是在的內容中執行`webserviceaccount` ，而委派伺服器則`connectorcomputeraccount`是。 在的網域中執行下列命令（在網域控制站上執行 Windows Server 2012 R2 或更新版本） `webserviceaccount`。 針對這兩個帳戶使用一般名稱（非 UPN）。
+2. 使用 `principalsallowedtodelegateto` web 應用程式的服務帳戶（電腦或私人網路域使用者帳戶）的屬性，從應用程式 Proxy （連接器）啟用 Kerberos 驗證委派。 應用程式伺服器是在的內容中執行 `webserviceaccount` ，而委派伺服器則是 `connectorcomputeraccount` 。 在的網域中執行下列命令（在網域控制站上執行 Windows Server 2012 R2 或更新版本） `webserviceaccount` 。 針對這兩個帳戶使用一般名稱（非 UPN）。
 
-   如果`webserviceaccount`是電腦帳戶，請使用下列命令：
+   如果 `webserviceaccount` 是電腦帳戶，請使用下列命令：
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -78,7 +78,7 @@ ms.locfileid: "82583132"
    Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
    ```
 
-   如果`webserviceaccount`是使用者帳戶，請使用下列命令：
+   如果 `webserviceaccount` 是使用者帳戶，請使用下列命令：
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -93,7 +93,7 @@ ms.locfileid: "82583132"
 2. 應用程式出現於企業應用程式清單後，將其選取並按一下 [單一登入]****。
 3. 將單一登入模式設定為 [整合式 Windows 驗證]****。  
 4. 輸入應用程式伺服器的 [內部應用程式 SPN]****。 在此範例中，已發佈應用程式的 SPN 為 http/www.contoso.com。 此 SPN 必須在連接器可以呈送委派認證的服務清單中。 
-5. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]****。 如需詳細資訊，請參閱[使用不同的內部部署和雲端身分識別](#working-with-different-on-premises-and-cloud-identities)
+5. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]。 如需詳細資訊，請參閱[使用不同的內部部署和雲端](#working-with-different-on-premises-and-cloud-identities)身分識別
 
    ![進階應用程式組態](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -118,8 +118,6 @@ Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端�
     REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
     net stop WAPCSvc & net start WAPCSvc
     ```
-
-如需有關 Kerberos 的詳細資訊，請參閱[有關 Kerberos 限制委派 (KCD) 您想要知道的一切](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)。
 
 非 Windows 應用程式通常會使用使用者名稱或 SAM 帳戶名稱，而不是網域的電子郵件地址。 如果這種情況適用於您的應用程式，就必須設定指定的登入身分識別欄位，將您的雲端身分識別連線到您的應用程式身分識別。 
 
@@ -159,5 +157,3 @@ Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端�
 * [如何設定應用程式 Proxy 應用程式以使用 Kerberos 限制委派](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [使用應用程式 Proxy 疑難排解您遇到的問題](application-proxy-troubleshoot.md)
 
-
-如需最新消息，請查閱 [應用程式 Proxy 部落格](https://blogs.technet.com/b/applicationproxyblog/)

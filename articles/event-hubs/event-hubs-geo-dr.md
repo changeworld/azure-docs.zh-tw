@@ -1,24 +1,14 @@
 ---
 title: 異地災害復原 - Azure 事件中樞 | Microsoft Docs
 description: 如何使用地理區域，在 Azure 事件中樞中進行容錯移轉並執行災害復原
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320541"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中樞 - 異地災害復原 
 當整個 Azure 區域或資料中心 (如果未使用[可用性區域](../availability-zones/az-overview.md)) 遇到停機時，最重要的是資料處理作業能夠繼續在不同的區域或資料中心運作。 因此，「地理災害復原」和「異地複寫」對於任何企業而言都是重要的功能。 Azure 事件中樞支援命名空間層級的地理災害復原和異地複寫。 

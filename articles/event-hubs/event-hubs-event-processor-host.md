@@ -1,25 +1,14 @@
 ---
 title: 使用事件處理器主機接收事件 - Azure 事件中樞 | Microsoft Docs
 description: 本文將說明 Azure 事件中樞內的事件處理器主機；此主機可簡化檢查點、租用和平行事件讀取的管理。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/10/2020
-ms.author: shvija
-ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320633"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
@@ -118,7 +107,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體帳戶來追蹤，此帳戶就是為了追蹤而提供。 您可以將追蹤視覺化為簡單的資料表，如下所示。 您可以藉由在提供的儲存體帳戶下檢查 blob，來查看實際的實作：
 
-| **取用者群組名稱** | **資料分割識別碼** | **主機名稱 (擁有者)** | **取得租用 (或擁有權) 的時間** | **分割區中的位移 (檢查點)** |
+| **取用者群組名稱** | **分割區識別碼** | **主機名稱 (擁有者)** | **取得租用 (或擁有權) 的時間** | **分割區中的位移 (檢查點)** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
@@ -206,7 +195,7 @@ Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有�
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [事件中樞程式設計指南](event-hubs-programming-guide.md)
 * [事件中樞的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中樞常見問題集](event-hubs-faq.md)

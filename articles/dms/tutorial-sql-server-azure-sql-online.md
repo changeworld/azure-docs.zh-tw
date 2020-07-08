@@ -1,7 +1,7 @@
 ---
 title: 教學課程：將 SQL Server online 遷移到 SQL 單一資料庫
 titleSuffix: Azure Database Migration Service
-description: 了解如何使用 Azure 資料庫移轉服務，執行從內部部署 SQL Server 至 Azure SQL Database 中單一資料庫或集區資料庫的線上移轉。
+description: 瞭解如何使用 Azure 資料庫移轉服務，從 SQL Server 執行線上遷移至 Azure SQL Database。
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: bc7355dd7e01a30d47e0ca238b8996aab9b4e6b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e923a09eeb15d05a32e99a1e9a46e36b72552736
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318465"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教學課程：使用 DMS 將 SQL Server 遷移至 Azure SQL Database online 中的單一資料庫或集區資料庫
 
-您可以使用 Azure 資料庫移轉服務，在最短的停止運作時間內將資料庫從內部部署 SQL Server 執行個體移轉至 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 **Adventureworks2012** 資料庫遷移到 Azure SQL Database 中的單一資料庫或集區資料庫。
+您可以使用 Azure 資料庫移轉服務，以最短的停機時間將資料庫從 SQL Server 實例遷移至[Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) 。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 **Adventureworks2012** 資料庫遷移到 Azure SQL Database 中的單一資料庫或集區資料庫。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -71,7 +71,7 @@ ms.locfileid: "80298976"
 - 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server，其預設會通過 TCP 連接埠 1433。
 - 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 - 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-- 針對 Azure SQL Database 伺服器建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
+- 建立 Azure SQL Database 的伺服器層級[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
 - 確定用來連線至來源 SQL Server 執行個體的認證具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 權限。
 - 請確定用來連接目標 Azure SQL Database 實例的認證，具有目標 Azure SQL Database 實例的 CONTROL DATABASE 許可權。
 - 來源 SQL Server 版本必須是 SQL Server 2005 或更新版本。 若要確認您的 SQL Server 執行個體正在執行的版本，請參閱[如何判斷 SQL Server 及其元件的版本、版次及更新層級](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)一文。
@@ -127,7 +127,7 @@ ms.locfileid: "80298976"
 
 ## <a name="assess-your-on-premises-database"></a>評估您的內部部署資料庫
 
-將資料從內部部署 SQL Server 執行個體遷移到 Azure SQL Database 中的單一資料庫或集區資料庫之前，您必須評估 SQL Server 資料庫是否有任何可能會阻礙移轉的問題。 使用資料移轉小幫手 v3.3 或更新版本，依照[執行 SQL Server 移轉評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所描述的步驟，完成內部部署資料庫評估。
+在您可以將資料從 SQL Server 實例遷移到 Azure SQL Database 之前，您需要針對可能會阻止遷移的任何封鎖問題，評估 SQL Server 資料庫。 使用資料移轉小幫手 v3.3 或更新版本，依照[執行 SQL Server 移轉評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所描述的步驟，完成內部部署資料庫評估。
 
 若要評估內部部署資料庫，請執行下列步驟：
 
@@ -155,7 +155,7 @@ ms.locfileid: "80298976"
     對於 Azure SQL Database 中的單一資料庫或集區資料庫，評估會識別部署至單一資料庫或集區資料庫時的功能同位問題和移轉阻礙問題。
 
     - **SQL Server 功能**同位類別提供一組完整的建議、Azure 中可用的替代方法，以及可協助您在遷移專案中規劃工作的緩和步驟。
-    - **相容性問題**類別則識別反映出相容性問題的部分支援或不支援功能，這些相容性問題可能會阻礙將內部部署 SQL Server 資料庫移轉到 Azure SQL Database。 同時也提供協助您解決這些問題的建議。
+    - [**相容性問題**] 分類會識別部分支援或不支援的功能，以反映可能封鎖將 SQL Server 資料庫移轉至 Azure SQL Database 的相容性問題。 同時也提供協助您解決這些問題的建議。
 
 6. 選取特定的選項，檢閱評估結果是否有阻礙移轉的問題和功能同位問題。
 
@@ -164,7 +164,7 @@ ms.locfileid: "80298976"
 當您滿意評估結果，且認為選取的資料庫也適合遷移至 Azure SQL Database 中的單一資料庫或集區資料庫之後，請使用 DMA 將結構描述遷移至 Azure SQL Database。
 
 > [!NOTE]
-> 在 DMA 中建立移轉專案之前，請務必先確認您已依照必要條件中的說明佈建 Azure SQL 資料庫。 基於本教學課程的目的，Azure SQL Database 的名稱會假設為 **AdventureWorksAzure**，但您可以命名為不同的名稱。
+> 在 DMA 中建立遷移專案之前，請確定您已如必要條件中所述，在 Azure 中布建 SQL database。 基於本教學課程的目的，Azure SQL Database 的名稱會假設為 **AdventureWorksAzure**，但您可以命名為不同的名稱。
 
 > [!IMPORTANT]
 > 如果您使用 SSIS，DMA 目前不支援來源 SSISDB 的移轉，但您可以將 SSIS 專案/套件重新部署到 Azure SQL Database 所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
@@ -179,7 +179,7 @@ ms.locfileid: "80298976"
 
     ![建立 Data Migration Assistant 專案](media/tutorial-sql-server-to-azure-sql-online/dma-create-project.png)
 
-4. 選取 [Create] \(建立\)**** 以建立專案。
+4. 選取 [Create] \(建立\) 以建立專案。
 5. 在 DMA 中，為您的 SQL Server 指定來源連線詳細資料，選取 [連線]****，然後選取 [AdventureWorks2012]**** 資料庫。
 
     ![Data Migration Assistant 來源連線詳細資料](media/tutorial-sql-server-to-azure-sql-online/dma-source-connect.png)
@@ -212,7 +212,7 @@ ms.locfileid: "80298976"
 
     ![顯示資源提供者](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)
 
@@ -265,7 +265,7 @@ ms.locfileid: "80298976"
     > [!NOTE]
     > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 
 7. 選取 [建立及執行活動]****，以建立專案並執行移轉活動。
 
@@ -291,7 +291,7 @@ ms.locfileid: "80298976"
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
-1. 選取 [儲存]****，然後在 [移轉目標詳細資料]**** 畫面上指定目標 Azure SQL Database 伺服器的連線詳細資料，此伺服器是使用 DMA 將 **AdventureWorks2012** 結構描述部署到的預先佈建 Azure SQL Database。
+1. 選取 [**儲存**]，然後在 [**遷移目標詳細資料**] 畫面上，指定目標 Azure SQL Database 的連線詳細資料，也就是使用 DMA 部署**AdventureWorks2012**架構的預先布建 Azure SQL Database。
 
     ![選取目標](media/tutorial-sql-server-to-azure-sql-online/dms-select-target3.png)
 

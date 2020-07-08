@@ -1,24 +1,14 @@
 ---
 title: Azure 事件中樞-使用不同通訊協定的交換事件
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
-services: event-hubs
-documentationcenter: ''
-author: femila
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: femila
-ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320599"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同通訊協定的取用者和產生者之間交換事件：AMQP、Kafka 及 HTTPS
 Azure 事件中樞支援三種適用於取用者和產生者的通訊協定：AMQP、Kafka 及 HTTPS。 這些通訊協定中的每一個都有自己用來表示訊息的方式，因此自然會浮現下列問題：如果應用程式使用某種通訊協定來將事件傳送到事件中樞，並使用不同的通訊協定來取用它們，則事件的各種組件和值在送達取用者時看起來如何？ 本文將討論適用於產生者和取用者的最佳做法，以確保取用應用程式能夠正確解譯事件內的值。

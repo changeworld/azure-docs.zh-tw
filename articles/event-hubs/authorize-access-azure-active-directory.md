@@ -1,39 +1,34 @@
 ---
 title: 透過 Azure Active Directory 授與存取權
 description: 本文提供使用 Azure Active Directory 授權存取事件中樞資源的相關資訊。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317970"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權事件中樞資源的存取權
 Azure 事件中樞支援使用 Azure Active Directory （Azure AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="overview"></a>總覽
-當安全性主體（使用者或應用程式）嘗試存取事件中樞資源時，要求必須獲得授權。 有了 Azure AD，對資源的存取是兩個步驟的程式。 
+當安全性主體（使用者或應用程式）嘗試存取事件中樞資源時，要求必須獲得授權。 使用 Azure AD，對資源的存取是兩個步驟的程序。 
 
- 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是`https://eventhubs.azure.net/`。 針對 Kafka 用戶端，用來要求權杖的資源`https://<namespace>.servicebus.windows.net`是。
+ 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/` 。 針對 Kafka 用戶端，用來要求權杖的資源是 `https://<namespace>.servicebus.windows.net` 。
  1. 接下來，權杖會當做要求的一部分傳遞給事件中樞服務，以授權存取指定的資源。
 
-驗證步驟要求應用程式要求在執行時間包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對事件中樞服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 事件中樞資源的存取權](authenticate-managed-identity.md)。 
+驗證步驟要求應用程式要求在執行階段包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對事件中樞服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 事件中樞資源的存取權](authenticate-managed-identity.md)。 
 
-授權步驟需要將一個或多個 RBAC 角色指派給安全性主體。 Azure 事件中樞提供 RBAC 角色，其中包含事件中樞資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 如需 RBAC 角色的詳細資訊，請參閱[Azure 事件中樞的內建 RBAC 角色](#built-in-rbac-roles-for-azure-event-hubs)。 
+授權步驟需要將一或多個 RBAC 角色指派給安全性主體。 Azure 事件中樞提供 RBAC 角色，其中包含事件中樞資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 如需 RBAC 角色的詳細資訊，請參閱[Azure 事件中樞的內建 RBAC 角色](#built-in-rbac-roles-for-azure-event-hubs)。 
 
 向事件中樞提出要求的原生應用程式和 web 應用程式也可以使用 Azure AD 進行授權。 若要瞭解如何要求存取權杖，並使用它來授權事件中樞資源的要求，請參閱[使用應用程式的 Azure AD 來驗證對 Azure 事件中樞的存取權](authenticate-application.md)。 
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>指派存取權限的 RBAC 角色
 Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 事件中樞定義一組內建的 RBAC 角色，其中包含用來存取事件中樞資料的常用許可權集，而且您也可以定義自訂角色來存取資料。
 
-當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶層級、資源群組、事件中樞命名空間，或其底下的任何資源。 Azure AD 的安全性主體可能是使用者、應用程式服務主體或[Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
+當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶層級、資源群組、事件中樞命名空間，或其底下的任何資源。 Azure AD 安全性主體可以是使用者或應用程式服務主體，或是 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Azure 事件中樞的內建 RBAC 角色
 Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事件中樞資料的存取：

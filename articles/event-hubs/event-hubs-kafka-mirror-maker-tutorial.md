@@ -1,20 +1,14 @@
 ---
 title: 使用 Apache Kafka MirrorMaker - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用 Kafka MirrorMaker 為「Azure 事件中樞」中的 Kafka 叢集建立鏡像的資訊。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320185"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>使用 Kafka MirrorMaker 搭配適用於 Apache Kafka 的事件中樞
 
@@ -39,7 +33,7 @@ ms.locfileid: "80632774"
 
 Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 用戶端) 連線到 Azure 事件中樞。 幾乎不需要變更 Kafka 應用程式，您就可以連線到 Azure 事件中樞，並享受 Azure 生態系統的優點。 事件中樞目前支援 Kafka 1.0 版和更新版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，請確定您具有下列項目︰
 
@@ -59,7 +53,7 @@ Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 
-現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽`mirror-maker`至子資料夾：
+現在您已有事件中樞的連接字串，請複製 Kafka 存放庫的 Azure 事件中樞，然後流覽至 `mirror-maker` 子資料夾：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -132,5 +126,5 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 - [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
 - [整合 Kafka Connect 與事件中樞](event-hubs-kafka-connect-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
-- [將 Akka 串流連線到事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [將 Akka streams 串流連線至事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
 - [適用于 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

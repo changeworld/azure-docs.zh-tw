@@ -3,24 +3,24 @@ title: 我的應用程式清單中有未預期的應用程式 | Microsoft Docs
 description: 如何檢視租用戶中的所有應用程式，並了解應用程式如何出現在 [企業應用程式] 下的 [所有應用程式] 清單中。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65781100"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317461"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>我的應用程式清單中有未預期的應用程式
 
@@ -32,13 +32,13 @@ ms.locfileid: "65781100"
 
 1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5.  按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5.  按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
 6.  按一下使用 [所有應用程式清單]**** 頂端的 [篩選]**** 控制項。
 
@@ -66,7 +66,7 @@ ms.locfileid: "65781100"
 
 5. 當您使用 [V2.0 應用程式註冊入口網站](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)建立自訂開發的應用程式來新增應用程式註冊時
 
-6. 當您新增您使用 Visual Studio 的 [ASP.net 驗證方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[已連線服務](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)所開發的應用程式時
+6. 當您新增您使用 Visual Studio 的 [ASP.net 驗證方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[已連線服務](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)所開發的應用程式時
 
 7. 當您使用 [Azure AD PowerShell 模組](/powershell/azure/install-adv2?view=azureadps-2.0)建立服務主體物件時
 
@@ -92,15 +92,15 @@ ms.locfileid: "65781100"
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要刪除的應用程式。
 
@@ -112,11 +112,11 @@ ms.locfileid: "65781100"
 
 若要**停用整個目錄中的所有未來使用者同意作業**，請遵循下列步驟：
 
-1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
+1.  開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
 
-2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 

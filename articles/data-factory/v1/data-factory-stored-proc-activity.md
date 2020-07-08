@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319079"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 預存程序活動
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -29,13 +29,13 @@ ms.locfileid: "74931636"
 > * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 > [!NOTE]
 > 本文適用於 Azure Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您在 Data Factory [管線](data-factory-create-pipelines.md)中使用資料轉換活動，以轉換和處理您的原始資料以進行預測和深入了解。 預存程序活動是 Data Factory 支援的其中一個轉換活動。 本文是以[資料轉換活動](data-factory-data-transformation-activities.md)一文為基礎，提供 Data Factory 中資料轉換及所支援轉換活動的一般概觀。
 
 您可以使用「預存程序活動」來叫用您企業或 Azure 虛擬機器 (VM) 中的下列其中一個資料存放區：
@@ -49,7 +49,7 @@ ms.locfileid: "74931636"
 >
 > 從 Azure SQL Database、SQL Server 或「Azure SQL 資料倉儲」複製資料時，您可以使用 **sqlReaderStoredProcedureName** 屬性在複製活動中設定 **SqlSource**，以叫用預存程序從來源資料庫讀取資料。 如需詳細資訊，請參閱下列連接器文章：[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
-下列逐步解說會在管線中使用預存程序活動，來叫用 Azure SQL 資料庫中的預存程序。
+下列逐步解說會使用管線中的預存程式活動來叫用 Azure SQL Database 中的預存程式。
 
 ## <a name="walkthrough"></a>逐步介紹
 ### <a name="sample-table-and-stored-procedure"></a>範例資料表與預存程序
@@ -84,10 +84,10 @@ ms.locfileid: "74931636"
     ```
 
    > [!IMPORTANT]
-   > 參數 (在此範例中是 DateTime) 的**名稱**和**大小寫**必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請**\@** 確定使用做為參數的前置詞。
+   > 參數 (在此範例中是 DateTime) 的**名稱**和**大小寫**必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請確定 **\@** 使用做為參數的前置詞。
 
 ### <a name="create-a-data-factory"></a>建立 Data Factory
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下左側功能表上的 [新增]****、[資料 + 分析]****，再按一下 [Data Factory]****。
 
     ![新增 Data Factory](media/data-factory-stored-proc-activity/new-data-factory.png)
@@ -95,10 +95,10 @@ ms.locfileid: "74931636"
 
    ![新增 Data Factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. 選取您的 **Azure 訂用帳戶**。
-5. 針對**資源群組**，請執行下列其中一個步驟︰
+5. 針對 [**資源群組**]，請執行下列其中一個步驟：
    1. 按一下 [新建]**** 並輸入資源群組的名稱。
    2. 按一下 [使用現有的]**** 並選取現有的資源群組。
-6. 選取 data factory 的 [**位置**]。
+6. 選取 Data Factory 的 [位置]  。
 7. 選取 [釘選到儀表板]****，讓您下一次登入時可以在儀表板上看到 Data Factory。
 8. 按一下 [新增 Data Factory]**** 刀鋒視窗上的 [建立]****。
 9. 您會看到 Data Factory 建立在 Azure 入口網站的 [儀表板]**** 中。 在 Data Factory 成功建立後，您會看到 Data Factory 頁面，顯示 Data Factory 的內容。
@@ -106,7 +106,7 @@ ms.locfileid: "74931636"
    ![Data Factory 首頁](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>建立 Azure SQL 連結服務
-建立 Data Factory 之後，您需建立 Azure SQL 已連結服務，將包含 sampletable 資料表和 usp_sample 預存程序的 Azure SQL 資料庫連結到 Data Factory。
+建立資料處理站之後，您會建立 Azure SQL 連結服務，將 Azure SQL Database 中的資料庫（其中包含 sampletable 資料表和 usp_sample 預存程式）連結至您的 data factory。
 
 1. 在 **SProcDF** 的 [Data Factory]**** 刀鋒視窗上，按一下 [製作和部署]**** 來啟動 Data Factory 編輯器。
 2. 在命令列上按一下 [新增資料儲存區]****，然後選擇 [Azure SQL Database]****。 您應該會在編輯器中看到用來建立 Azure SQL 連結服務的 JSON 指令碼。
@@ -114,7 +114,7 @@ ms.locfileid: "74931636"
    ![新增資料存放區](media/data-factory-stored-proc-activity/new-data-store.png)
 3. 在 JSON 指令碼中，進行下列變更：
 
-   1. 以 Azure SQL Database 伺服器的名稱取代 `<servername>`。
+   1. 將取代 `<servername>` 為您的伺服器名稱。
    2. 以建立資料表和預存程序的資料庫取代 `<databasename>`。
    3. 以具有資料庫存取權的使用者帳戶取代 `<username@servername>`。
    4. 以使用者帳戶的密碼取代 `<password>`。
@@ -201,13 +201,13 @@ ms.locfileid: "74931636"
 1. 按一下 **X** 以關閉 [Data Factory 編輯器] 刀鋒視窗、瀏覽回 [Data Factory] 刀鋒視窗，然後按一下 [圖表]****。
 
     ![圖表圖格](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. 在**圖表視圖**中，您會看到管線的總覽，以及本教學課程中使用的資料集。
+2. 在 [圖表檢視] 中，您會看到管線的概觀，以及在本教學課程中使用的資料集。
 
     ![圖表圖格](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. 在 [圖表檢視] 中，按兩下 `sprocsampleout` 資料集。 您會看到就緒狀態的配量。 由於配量是針對 JSON 的開始時間和結束時間之間的每一個小時所產生，因此，應該會有 5 個配量。
 
     ![圖表圖格](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. 當配量處於**就緒**狀態時，請對 Azure SQL 資料庫執行 `select * from sampletable` 查詢，以驗證預存程序已將資料插入資料表。
+4. 當配量處於**就緒**狀態時，對 `select * from sampletable` 資料庫執行查詢，以驗證預存程式已將資料插入資料表。
 
    ![輸出資料](./media/data-factory-stored-proc-activity/output.png)
 
@@ -303,15 +303,15 @@ ms.locfileid: "74931636"
 
 下表說明這些 JSON 屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME | 活動的名稱 |是 |
 | description |說明活動用途的文字 |否 |
-| type | 必須設定為：**SqlServerStoredProcedure** | 是 |
-| 輸入 | 選擇性。 如果您有指定輸入資料集，它必須可供使用 (「就緒」狀態)，預存程序活動才能執行。 在預存程序中輸入資料集無法做為參數取用。 它只會用來在啟動預存程序活動之前檢查相依性。 |否 |
-| 輸出 | 您必須指定預存程序活動的輸出資料集。 輸出資料集會指定預存程序活動的 **排程** (每小時、每週、每月等)。 <br/><br/>輸出資料集必須使用參考了想在其中執行預存程序之 Azure SQL Database、Azure SQL 資料倉儲或 SQL Server Database 的 **連結服務** 。 <br/><br/>輸出資料集可以用來傳遞預存程序結果，以供管線中的另一個活動 ([鏈結活動](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) 進行後續處理。 不過，Data Factory 不會自動將預存程序的輸出寫入至此資料集。 它是會寫入至輸出資料集所指向之 SQL 資料表的預存程序。 <br/><br/>在某些情況下，輸出資料集可以是 **虛擬資料集**，只會用來指定用於執行預存程序活動的排程。 |是 |
-| storedProcedureName |指定 Azure SQL 資料庫、「Azure SQL 資料倉儲」或 SQL Server 資料庫中預存程序 (由輸出資料表所使用的已連結服務代表) 的名稱。 |是 |
-| storedProcedureParameters |指定預存程序參數的值。 如果您要為參數傳遞 null，請使用語法："param1": null (全部小寫)。 請參閱下列範例以了解如何使用這個屬性。 |否 |
+| type | 必須設定為：**SqlServerStoredProcedure** | Yes |
+| 輸入 | 選擇性。 如果您有指定輸入資料集，它必須可供使用 (「就緒」狀態)，預存程序活動才能執行。 在預存程序中輸入資料集無法做為參數取用。 它只會用來在啟動預存程序活動之前檢查相依性。 |No |
+| 輸出 | 您必須指定預存程序活動的輸出資料集。 輸出資料集會指定預存程序活動的 **排程** (每小時、每週、每月等)。 <br/><br/>輸出資料集必須使用參考了想在其中執行預存程序之 Azure SQL Database、Azure SQL 資料倉儲或 SQL Server Database 的 **連結服務** 。 <br/><br/>輸出資料集可以用來傳遞預存程序結果，以供管線中的另一個活動 ([鏈結活動](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) 進行後續處理。 不過，Data Factory 不會自動將預存程序的輸出寫入至此資料集。 它是會寫入至輸出資料集所指向之 SQL 資料表的預存程序。 <br/><br/>在某些情況下，輸出資料集可以是 **虛擬資料集**，只會用來指定用於執行預存程序活動的排程。 |Yes |
+| storedProcedureName |以輸出資料表所使用的連結服務所代表的 Azure SQL Database、Azure SQL 資料倉儲或 SQL Server，指定預存程式的名稱。 |Yes |
+| storedProcedureParameters |指定預存程序參數的值。 如果您要為參數傳遞 null，請使用語法："param1": null (全部小寫)。 請參閱下列範例以了解如何使用這個屬性。 |No |
 
 ## <a name="passing-a-static-value"></a>傳遞靜態值
 現在我們來考量在包含稱為「文件範例」的靜態值的資料表中，新增另一個名為「案例」的資料行。

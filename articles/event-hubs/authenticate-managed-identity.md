@@ -1,20 +1,14 @@
 ---
 title: 使用 Azure Active Directory 驗證受控識別
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證受控識別，以存取 Azure 事件中樞資源
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 4e9bfb9c4649732ac5afc80dfb0a522ff9f333be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318091"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用在 Azure 虛擬機器（Vm）、函式應用程式、虛擬機器擴展集及其他服務中執行的應用程式 Azure AD 認證，來授權事件中樞資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -65,7 +59,7 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 4.  在 [**新增角色指派**] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊來指派角色的服務身分識別。
     
     ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  選取 [儲存]  。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別具有事件中樞資料擁有者。
+5.  選取 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別具有事件中樞資料擁有者。
     
     ![指派給角色的身分識別](./media/authenticate-managed-identity/role-assigned.png)
 

@@ -1,19 +1,14 @@
 ---
 title: 使用共用存取簽章來驗證 Azure 事件中樞的存取權
 description: 本文說明如何使用共用存取簽章來驗證事件中樞資源的存取權。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318040"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共用存取簽章（SAS）驗證事件中樞資源的存取權
 共用存取簽章（SAS）可讓您更精確地控制授與具有共用存取簽章之用戶端的存取類型。 以下是您可以在 SAS 中設定的一些控制項： 
@@ -63,13 +58,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 權杖會包含非雜湊值，因此接收者可以用相同的參數重新計算雜湊，驗證簽發者擁有有效的簽署金鑰。
 
-資源 URI 是宣告其存取權之服務匯流排資源的完整 URI。 <namespace>例如，HTTP://.<entityPath> servicebus.windows.net/或， `sb://<namespace>.servicebus.windows.net/<entityPath>;`也就是`http://contoso.servicebus.windows.net/eventhubs/eh1`。
+資源 URI 是宣告其存取權之服務匯流排資源的完整 URI。 例如，HTTP:// <namespace> . servicebus.windows.net/ <entityPath> 或，也 `sb://<namespace>.servicebus.windows.net/<entityPath>;` 就是 `http://contoso.servicebus.windows.net/eventhubs/eh1` 。
 
 URI 必須是百分比編碼。
 
 用於簽署的共用存取授權規則必須設定於此 URI 或其中一個階層式上層所指定的實體。 例如，先前範例中的 `http://contoso.servicebus.windows.net/eventhubs/eh1` 或 `http://contoso.servicebus.windows.net`。
 
-SAS 權杖適用于前面加上簽章字串中<resourceURI>使用的所有資源。
+SAS 權杖適用于前面加上 <resourceURI> 簽章字串中使用的所有資源。
 
 > [!NOTE]
 > 您會使用共用存取原則來產生事件中樞的存取權杖。 如需詳細資訊，請參閱[共用存取授權原則](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74923876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318870"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>將來源資料集資料行對應至目的地資料集資料行
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "74923876"
 > 下列範例是針對 Azure SQL 和 Azure Blob，但是也適用於任何支援矩形資料集的資料存放區。 請調整範例中的資料集和已連結服務定義，以指向相關資料來源中的資料。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>範例 1 – 從 Azure SQL 到 Azure Blob 的資料行對應
-在此範例中，輸入資料表有一個結構，且指向 Azure SQL 資料庫中的 SQL 資料表。
+在此範例中，輸入資料表具有結構，且指向 Azure SQL Database 中的 SQL 資料表。
 
 ```json
 {
