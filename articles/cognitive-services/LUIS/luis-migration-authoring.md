@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374863"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055455"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -25,7 +25,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 ## <a name="what-is-migration"></a>什麼是遷移？
 
-「遷移」是將撰寫驗證從電子郵件帳戶變更為 Azure 資源的程式。 您的帳戶將會在您遷移之後連結至 Azure 訂用帳戶和 Azure 撰寫資源。 *所有 LUIS 使用者（擁有者或共同作業者）最終都必須進行遷移。* 
+「遷移」是將撰寫驗證從電子郵件帳戶變更為 Azure 資源的程式。 您的帳戶將會在您遷移之後連結至 Azure 訂用帳戶和 Azure 撰寫資源。 *所有 LUIS 使用者（擁有者或共同作業者）最終都必須進行遷移。*
 
 必須從 LUIS 入口網站進行遷移。 例如，如果您使用 LUIS CLI 建立撰寫金鑰，您將需要在 LUIS 入口網站中完成遷移程式。 您仍然可以在遷移之後 greenfield 應用程式，但這些會新增至 Azure 資源層級，而不是應用層級。
 
@@ -81,7 +81,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 3. 如果您的任何應用程式有共同作業者，系統就會提示您傳送電子郵件給他們，讓他們知道遷移的相關資訊。 這是選擇性步驟。
 
    針對每個共同作業者和應用程式，預設的電子郵件應用程式會以輕量格式的電子郵件開啟。 您可以在傳送電子郵件前先進行編輯。 電子郵件範本包含正確的應用程式識別碼和應用程式名稱。
-   
+
    ```html
    Dear Sir/Madam,
 
@@ -89,10 +89,10 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
    App Id: <app-ID-omitted>
    App name: Human Resources
-      
+
    Thank you
    ```
-   
+
    > [!Note]
    > 將帳戶遷移至 Azure 之後，共同作業者就無法再使用您的應用程式。
 
@@ -162,7 +162,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
  > [!div class="mx-imgBorder"]
  > ![訂用帳戶和撰寫資源的方塊](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-您不需要知道撰寫資源的金鑰，即可在 LUIS 入口網站中繼續編輯您的應用程式。 
+您不需要知道撰寫資源的金鑰，即可在 LUIS 入口網站中繼續編輯您的應用程式。
 
 如果您想要以程式設計方式編輯應用程式，您將需要撰寫金鑰值。 這些值會顯示在 LUIS 入口網站的 [**管理**  >  **Azure 資源**] 頁面上。 您也可以在 [資源**金鑰**] 頁面上的 [Azure 入口網站中找到它們。 您也可以建立更多撰寫資源，並從相同的頁面加以指派。
 
@@ -244,7 +244,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 ![針對共同作業者顯示遷移失敗的錯誤](./media/migrate-authoring-key/migration-failed-for-collab-2.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 請參閱[撰寫和執行時間金鑰的相關概念](luis-concept-keys.md)。 
+* 請參閱[撰寫和執行時間金鑰的相關概念](luis-how-to-azure-subscription.md)。
 * 回顧如何[指派金鑰](luis-how-to-azure-subscription.md)和[加入參與者](luis-how-to-collaborate.md)。

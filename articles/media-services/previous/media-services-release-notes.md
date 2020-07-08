@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836391"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057291"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -191,12 +191,14 @@ Azure Media Redactor 正式運作：此媒體處理器會透過將所選個人�
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>2016 年 2 月版本
 Media Services SDK for .NET (3.5.3) 的最新版本包含 Google Widevine 相關錯誤的修正。 AssetDeliveryPolicy 無法重複用於多個以 Widevine 加密的資產。 在此錯誤修正中，已將下列屬性新增至 SDK：WidevineBaseLicenseAcquisitionUrl。
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>2016 年 1 月版本
 編碼保留單元已重新命名，以避免與編碼器名稱混淆。
@@ -323,7 +325,9 @@ Azure SDK 小組已發佈新版的 [Azure SDK for PHP](https://github.com/Azure/
 
 此版本中將預設 Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization.TokenRestrictionTemplate 建構函式標示為過時。 新的建構函式會接受 TokenType 做為引數。
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>2014 年 12 月版本

@@ -3,12 +3,12 @@ title: 限制-LUIS
 description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的已知限制。 LUIS 有數個限制區域。 模型限制會控制 LUIS 中的意圖、實體和功能。 以金鑰類型為基礎的配額限制。 鍵盤組合可控制 LUIS 網站。
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976977"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055336"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的[鍵盤組合](#keyboard-controls)。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -68,7 +68,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 
 ## <a name="resource-usage-and-limits"></a>資源使用量和限制
 
-語言理解具有不同的資源、一個用於撰寫的類型，以及一個查詢預測端點的類型。 若要深入了解金鑰類型之間的差異，請參閱 [LUIS 中的撰寫與查詢預測端點金鑰](luis-concept-keys.md)。
+語言理解具有不同的資源、一個用於撰寫的類型，以及一個查詢預測端點的類型。 若要深入了解金鑰類型之間的差異，請參閱 [LUIS 中的撰寫與查詢預測端點金鑰](luis-how-to-azure-subscription.md)。
 
 <a name="key-limits"></a>
 
@@ -106,7 +106,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 
 ## <a name="keyboard-controls"></a>鍵盤控制項
 
-|鍵盤輸入 | 描述 |
+|鍵盤輸入 | Description |
 |--|--|
 |Ctrl+E|在語句清單上的權杖和實體之間切換|
 

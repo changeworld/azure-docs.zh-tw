@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4a9639343827ebc5bb17a6d62d9b65d0b561e932
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595127"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056781"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版中的路由
 
-Azure 靜態 Web Apps 中的路由會定義靜態內容和 API 的後端路由規則及授權行為。 這些規則會定義為 _routes.json_ 檔案中的規則陣列。
+Azure 靜態 Web Apps 中的路由會定義靜態內容和 Api<sup>1</sup>的後端路由規則和授權行為。 這些規則會定義為 _routes.json_ 檔案中的規則陣列。
 
 - _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄。
 - 規則會依其在 `routes` 陣列中出現的順序來執行。
@@ -26,7 +26,9 @@ Azure 靜態 Web Apps 中的路由會定義靜態內容和 API 的後端路由�
 
 路由的主題與驗證和授權概念明顯重疊。 請務必閱讀[驗證和授權](authentication-authorization.md)指南以及這篇文章。
 
-## <a name="location"></a>Location
+如需詳細資訊，請參閱[範例路由](#example-route-file)檔案。
+
+## <a name="location"></a>位置
 
 _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄。 如果您的 Web 應用程式包含從特定資料夾將建置的檔案複製到組建成品資料夾的組建步驟，則 _routes.json_ 檔案必須存在於該特定資料夾中。
 
@@ -46,8 +48,8 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 | 規則內容  | 必要 | 預設值 | 註解                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | 是      | n/a          | 呼叫者所要求的路由模式。<ul><li>路由路徑結尾處支援[萬用字元](#wildcards)。 例如，路由 _admin/\*_ 符合 _admin_ 路徑下的任何路由。<li>路由的預設檔案是 _index.html_。</ul>|
-| `serve`        | 否       | n/a          | 定義從要求傳回的檔案或路徑。 檔案路徑和名稱可與所要求的路徑不同。 如果定義了 `serve` 值，則會使用要求的路徑。 |
-| `allowedRoles` | 否       | 匿名     | 角色名稱的陣列。 <ul><li>有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>內建角色 `anonymous` 適用於所有未經驗證的使用者。<li>內建角色 `authenticated` 適用於任何已登入的使用者。<li>使用者必須至少屬於一個角色。<li>角色會以 _OR_ 為基礎進行比對。 如果使用者是在任何列出的角色中，則會授與存取權。<li>個別使用者會透過[邀請](authentication-authorization.md)，與角色相關聯。</ul> |
+| `serve`        | No       | n/a          | 定義從要求傳回的檔案或路徑。 檔案路徑和名稱可與所要求的路徑不同。 如果 `serve` 未定義值，則會使用要求的路徑。 不支援 Querystring 參數;`serve`值必須指向實際檔案。  |
+| `allowedRoles` | No       | 匿名     | 角色名稱的陣列。 <ul><li>有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>內建角色 `anonymous` 適用於所有未經驗證的使用者。<li>內建角色 `authenticated` 適用於任何已登入的使用者。<li>使用者必須至少屬於一個角色。<li>角色會以 _OR_ 為基礎進行比對。 如果使用者是在任何列出的角色中，則會授與存取權。<li>個別使用者會透過[邀請](authentication-authorization.md)，與角色相關聯。</ul> |
 | `statusCode`   | 否       | 200           | 要求的 [HTTP 狀態碼](https://wikipedia.org/wiki/List_of_HTTP_status_codes)回應。 |
 
 ## <a name="securing-routes-with-roles"></a>使用角色保護路由
@@ -150,6 +152,9 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 
 使用者可能會遇到一些可能導致錯誤的不同情況。 使用 `platformErrorOverrides` 陣列，您可以提供自訂的體驗，以回應這些錯誤。 請參閱[範例路由檔案](#example-route-file)，以在 _routes.json_ 檔案中放置陣列。
 
+> [!NOTE]
+> 一旦要求使其進入平臺覆寫層級，就不會再次執行路由規則。
+
 下表列出可用的平台錯誤覆寫：
 
 | 錯誤類型  | HTTP 狀態碼 | 描述 |
@@ -161,6 +166,53 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 | `Unauthorized_MissingRoles` | 401 | 使用者不是所需角色的成員。 |
 | `Unauthorized_TooManyUsers` | 401 | 網站已達到使用者的數目上限，且伺服器正限制進一步新增。 會向用戶端公開此錯誤，因為您可以產生的[邀請](authentication-authorization.md)數目沒有限制，且有些使用者可能永遠不接受其邀請。|
 | `Unauthorized_Unknown` | 401 | 嘗試驗證使用者時發生未知的問題。 此錯誤的其中一個原因，可能是使用者並未授與同意給應用程式，因而無法辨識使用者。|
+
+## <a name="custom-mime-types"></a>自訂 mime 類型
+
+`mimeTypes`清單與陣列位於相同層級的物件 `routes` ，可讓您將[MIME 類型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)與副檔名產生關聯。
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+在上述範例中，具有副檔名的所有檔案 `.custom` 都會以 `text/html` MIME 類型提供。
+
+當您使用 MIME 類型時，下列考慮很重要：
+
+- 金鑰不可為 null 或空白，或超過50個字元
+- 值不可以是 null 或空白，或超過1000個字元
+
+## <a name="default-headers"></a>預設標頭
+
+`defaultHeaders`清單與陣列位於相同層級的物件 `routes` ，可讓您新增、修改或移除[回應標頭](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
+
+提供標頭的值，可以加入或修改標頭。 提供空值，會移除對用戶端提供的標頭。
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+在上述範例中， `content-security-policy` 會加入新的標頭、 `cache-control` 修改伺服器預設值，並 `x-dns-prefectch-control` 移除標頭。
+
+當您使用標頭時，下列考慮很重要：
+
+- 索引鍵不可以是 null 或空白。
+- Null 或空白值會移除標頭，而不是處理。
+- 索引鍵或值不能超過8000個字元。
+- 定義的標頭會由所有要求提供服務。
+- _routes.js_中所定義的標頭僅適用于靜態內容。 您可以在函式的程式碼中自訂 API 端點的回應標頭。
 
 ## <a name="example-route-file"></a>範例路由檔案
 
@@ -214,33 +266,47 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
     },
     {
       "errorType": "Unauthenticated",
+      "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 下列範例說明當要求符合規則時，會發生什麼事。
 
-|要求...  | 結果... |
-|---------|---------|---------|
+| 要求... | 結果... |
+|--|--|--|
 | _/profile_ | 已驗證的使用者會提供 _/profile/index.html_ 檔案。 未驗證的使用者已重新導向至 _/login_。 |
-| _/admin/reports_ | _administrators_角色中的已驗證使用者，會提供 _/admin/reports/index.html_ 檔案。 不在 _administrators_ 角色中的已驗證使用者，會提供 401 錯誤<sup>1</sup>。 未驗證的使用者已重新導向至 _/login_。 |
+| _/admin/reports_ | _administrators_角色中的已驗證使用者，會提供 _/admin/reports/index.html_ 檔案。 不在系統_管理員_角色中的已驗證使用者會提供401錯誤<sup>2</sup>。 未驗證的使用者已重新導向至 _/login_。 |
 | _/api/admin_ | 來自 _administrators_ 角色中已驗證使用者的要求會傳送至 API。 不在 _administrators_ 角色中的已驗證使用者和未驗證的使用者，會提供 401 錯誤。 |
-| _/customers/contoso_ | 屬於 _administrators_ 或 _customers\_contoso_ 角色的已驗證使用者，會提供 _/customers/contoso/index.html_ 檔案<sup>1</sup>。 不在 _administrators_ 或 _customers\_contoso_ 角色中的已驗證使用者，會提供 401 錯誤。 未驗證的使用者已重新導向至 _/login_。 |
-| _/login_     | 未經驗證的使用者會受到向 GitHub 驗證的查問。 |
-| _/.auth/login/twitter_     | 已停用 Twitter 的授權。 伺服器回應 404 錯誤。 |
-| _/logout_     | 使用者已登出任何驗證提供者。 |
+| _/customers/contoso_ | 屬於系統_管理員_或_客戶 \_ contoso_角色的已驗證使用者，會提供 _/customers/contoso/index.html_檔案<sup>2</sup>。 不在 _administrators_ 或 _customers\_contoso_ 角色中的已驗證使用者，會提供 401 錯誤。 未驗證的使用者已重新導向至 _/login_。 |
+| _/login_ | 未經驗證的使用者會受到向 GitHub 驗證的查問。 |
+| _/.auth/login/twitter_ | 已停用 Twitter 的授權。 伺服器回應 404 錯誤。 |
+| _/logout_ | 使用者已登出任何驗證提供者。 |
 | _/calendar/2020/01_ | 瀏覽器會提供 _/calendar.html_ 檔案。 |
 | _/specials_ | 瀏覽器將重新導向至 _/deals_。 |
-| _/unknown-folder_     | 提供 _/custom-404.html_ 檔案。 |
+| _/unknown-folder_ | 提供 _/custom-404.html_ 檔案。 |
+| 副檔名為的檔案 `.custom` | 是以 `text/html` MIME 類型提供 |
 
-<sup>1</sup> 您可以在 `platformErrorOverrides` 陣列中定義 `Unauthorized_MissingRoles` 規則，以提供自訂錯誤網頁。
+- 所有回應都包含 `content-security-policy` 具有值的標頭 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
+
+<sup>1</sup> API 函式的路由規則僅支援[使用角色的](#securing-routes-with-roles)重新[導向](#redirects)和保護路由。
+
+<sup>2</sup>您可以藉由在陣列中定義規則，提供自訂錯誤頁面 `Unauthorized_MissingRoles` `platformErrorOverrides` 。
 
 ## <a name="restrictions"></a>限制
 
 - _routes.json_ 檔案不能超過 100 KB
 - _routes.json_ 檔案支援最多 50 個不同的角色
+
+如需一般限制和限制，請參閱[配額一文](quotas.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
-ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a51a67200ec411f0f9362bc92bf7926f221b1f2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250994"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056798"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>搭配進階編碼器使用多個輸入檔案和元件屬性
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 在某些情況下，您可能需要在使用「媒體編碼器高階工作流程」 **** 媒體處理器提交工作時，自訂元件屬性、指定剪輯清單 XML 內容，或傳送多個輸入檔案。 部份範例如下：
 
 * 在每個輸入視訊的執行階段在視訊上覆疊文字並設定文字值 (例如，目前的日期)。
@@ -271,7 +271,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>範例 1：在視訊頂端覆疊影像
 
-### <a name="presentation"></a>展示
+### <a name="presentation"></a>簡報
 請設想視訊編碼時要在輸入視訊上覆疊標誌影像的範例。 在此範例中，輸入視訊的名稱為 "Microsoft_HoloLens_Possibilities_816p24.mp4"，而標誌的名稱為 "logo.png"。 您應執行下列步驟：
 
 * 使用工作流程檔案建立工作流程資產 (參閱下列範例)。
@@ -366,7 +366,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 您必須設定輸出檔案的名稱。 按一下 [檔案輸出] **** 元件，然後編輯檔案的運算式︰
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4`
 
 ![檔案輸出名稱](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 
@@ -466,7 +466,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 * 編碼的資產將會包含多種語言的曲目，而這些曲目應該可在 Azure 媒體播放器中加以選取。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [介紹 Azure 媒體服務中的 Premium 編碼](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [如何在 Azure 媒體服務中使用 Premium 編碼](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [使用 Azure 媒體服務編碼隨選內容](media-services-encode-asset.md#media-encoder-premium-workflow)

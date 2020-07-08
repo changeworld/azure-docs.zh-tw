@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 687f2a80b362ca559d054b81d464daf2f6f85c09
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340601"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055608"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何藉由審查端點語句來改善 LUIS 應用程式
 
-針對正確的預測來審查端點語句的程式稱為[主動式學習](luis-concept-review-endpoint-utterances.md)。 主動式學習會捕捉端點查詢，並選取不確定的使用者端點語句。 您可以檢查這些語句來選取意圖，並標記這些讀取世界語句的實體。 在您的範例語句中接受這些變更，然後進行定型和發佈。 然後，LUIS 會更準確地識別語句。
+針對正確的預測來審查端點語句的程式稱為[主動式學習](luis-concept-review-endpoint-utterances.md)。 主動式學習會捕捉端點查詢，並選取不確定的使用者端點語句。 您可以複習這些語句來選取意圖，並標記這些真實世界語句的實體。 在您的範例語句中接受這些變更，然後進行定型和發佈。 然後，LUIS 會更準確地識別語句。
 
 ## <a name="enable-active-learning"></a>啟用主動式學習
 

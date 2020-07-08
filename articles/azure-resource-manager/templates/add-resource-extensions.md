@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: b3c4110c8761b3e8daf324d65ac7fa1dcbcdf61f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023492"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055037"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用擴充功能提供部署後的設定
 
@@ -20,13 +20,13 @@ ms.locfileid: "77023492"
 
 現有的擴充功能有：
 
-- [Microsoft。計算/virtualMachines/延伸模組](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft.Compute virtualMachineScaleSets/extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions) \(英文\)
-- [Microsoft.HDInsight clusters/extensions](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters) \(英文\)
-- [Microsoft.Sql servers/databases/extensions](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) \(英文\) 
-- [Microsoft.Web/sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions) \(英文\)
+- [Microsoft。計算/virtualMachines/延伸模組](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft.Compute virtualMachineScaleSets/extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions) \(英文\)
+- [Microsoft.HDInsight clusters/extensions](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters) \(英文\)
+- [Microsoft.Sql servers/databases/extensions](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) \(英文\) 
+- [Microsoft.Web/sites/siteextensions](/azure/templates/microsoft.web/2016-08-01/sites/siteextensions) \(英文\)
 
-若要了解可用的擴充功能，請瀏覽至[範本參考](https://docs.microsoft.com/azure/templates/) \(英文\)。 在 [依標題篩選]**** 中，輸入**擴充功能**。
+若要了解可用的擴充功能，請瀏覽至[範本參考](/azure/templates/) \(英文\)。 在 [依標題篩選]**** 中，輸入**擴充功能**。
 
 若要了解如何使用這些擴充功能，請參閱：
 

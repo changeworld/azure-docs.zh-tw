@@ -6,12 +6,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: f4d5a0036ba44f7e0054db7ce820b91b0de629b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 63182eb382e96f47c1c90dc5d212e064d0945ba7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648965"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056041"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>使用 Azure CLI 建立受控應用程式定義
 
@@ -33,10 +33,10 @@ ms.locfileid: "75648965"
 
 | Command | 注意 |
 |---|---|
-| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | 建立受控應用程式定義。 提供內含所需檔案的套件。 |
+| [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | 建立受控應用程式定義。 提供內含所需檔案的套件。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需受控應用程式的簡介，請參閱 [Azure 受控應用程式概觀](../overview.md)。
-* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。

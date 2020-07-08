@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站、Azure Resource Manager 範本和 Azure 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744273"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056254"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure 監視器中建立、檢視及管理活動記錄警示  
 
@@ -200,6 +200,11 @@ ms.locfileid: "83744273"
 }
 ```
 舉例來說，上述 JSON 範例可儲存為 sampleActivityLogAlert.json，以供本逐步解說之用，並可透過使用 [Azure 入口網站中的 Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md) 進行部署。
+
+  > [!NOTE]
+  > 
+  > 請注意，最高層級的活動記錄警示可以定義為 [訂用帳戶]。
+  > 這表示沒有任何選項可以在幾個訂用帳戶上定義警示，因此定義應該是每個訂閱的警示。
 
 以下欄位是您可在條件欄位的 Azure Resource Manager 範本中使用的選項：請注意，「資源健康狀態」、「Advisor」和「服務健康狀態」具有其特殊欄位適用的額外屬性欄位。 
 1. resourceId：在應產生警示的活動記錄事件中受影響資源的資源識別碼。

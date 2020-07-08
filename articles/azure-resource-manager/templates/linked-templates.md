@@ -2,13 +2,13 @@
 title: 連結部署的範本
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 06/26/2020
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609301"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056679"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -16,7 +16,7 @@ ms.locfileid: "82609301"
 
 若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 針對先進的案例，連結的範本可讓您將解決方案細分為目標群組件。 在其他案例中，您可以輕鬆地重複使用這些範本。
 
-如需教學課程，請參閱[建立連結的 Azure Resource Manager 範本](template-tutorial-create-linked-templates.md)。
+如需教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
 > 針對連結或巢狀的範本，您只能使用[累加](deployment-modes.md)部署模式。
@@ -34,9 +34,9 @@ ms.locfileid: "82609301"
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,13 +63,13 @@ ms.locfileid: "82609301"
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -96,7 +96,7 @@ ms.locfileid: "82609301"
 
 使用嵌套範本時，您可以指定是否要在父範本或嵌套範本的範圍內評估範本運算式。 範圍會決定如何解析參數、變數和函式（例如[resourceGroup](template-functions-resource.md#resourcegroup)和[訂](template-functions-resource.md#subscription)用帳戶）。
 
-您可以透過`expressionEvaluationOptions`屬性設定範圍。 根據預設， `expressionEvaluationOptions`屬性會設定為`outer`，這表示它會使用父範本範圍。 將值設定為`inner` ，會在嵌套的範本範圍內評估運算式。
+您可以透過屬性設定範圍 `expressionEvaluationOptions` 。 根據預設， `expressionEvaluationOptions` 屬性會設定為 `outer` ，這表示它會使用父範本範圍。 將值設定為 `inner` ，會在嵌套的範本範圍內評估運算式。
 
 ```json
 {
@@ -110,7 +110,7 @@ ms.locfileid: "82609301"
   ...
 ```
 
-下列範本會示範如何根據範圍來解析範本運算式。 它包含名為`exampleVar`的變數，同時定義于父範本和嵌套範本中。 它會傳回變數的值。
+下列範本會示範如何根據範圍來解析範本運算式。 它包含名為 `exampleVar` 的變數，同時定義于父範本和嵌套範本中。 它會傳回變數的值。
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "82609301"
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ ms.locfileid: "82609301"
 }
 ```
 
-的值會`exampleVar`根據中`scope` `expressionEvaluationOptions`的屬性值而變更。 下表顯示這兩個範圍的結果。
+的值會 `exampleVar` 根據中的屬性值而變更 `scope` `expressionEvaluationOptions` 。 下表顯示這兩個範圍的結果。
 
 | `expressionEvaluationOptions` `scope` | 輸出 |
 | ----- | ------ |
 | inner | 從嵌套的範本 |
 | 外部（或預設值） | 從父範本 |
 
-下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner`因為它會動態建立金鑰保存庫識別碼（ `adminPassword.reference.keyVault`請參閱外部範本`parameters`中的），並將它當做參數傳遞給嵌套的範本。
+下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner` 因為它會動態建立金鑰保存庫識別碼（請參閱 `adminPassword.reference.keyVault` 外部範本中的 `parameters` ），並將它當做參數傳遞給嵌套的範本。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ ms.locfileid: "82609301"
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,7 +277,7 @@ ms.locfileid: "82609301"
 
 > [!NOTE]
 >
-> 當 [範圍] 設定`outer`為時，您無法`reference`在已部署于嵌套範本之資源的嵌套範本的 [輸出] 區段中使用函式。 若要傳回已部署之資源在嵌套範本中的值，請`inner`使用範圍，或將您的嵌套範本轉換為連結的範本。
+> 當 [範圍] 設定為時 `outer` ，您無法在 `reference` 已部署于嵌套範本之資源的嵌套範本的 [輸出] 區段中使用函式。 若要傳回已部署之資源在嵌套範本中的值，請使用 `inner` 範圍，或將您的嵌套範本轉換為連結的範本。
 
 ## <a name="linked-template"></a>連結的範本
 
@@ -308,13 +308,11 @@ ms.locfileid: "82609301"
 }
 ```
 
-參考連結的範本時，的值`uri`不能是本機檔案，也不能是只能在區域網路上使用的檔案。 您必須提供可下載為**HTTP**或**HTTPs**的 URI 值。 
+參考連結的範本時，的值 `uri` 不能是本機檔案，也不能是只能在區域網路上使用的檔案。 您必須提供可下載為**HTTP**或**HTTPs**的 URI 值。
 
 > [!NOTE]
 >
-> 您可以使用最終解析成使用**HTTP**或**HTTPs**的參數來參考範本，例如使用參數，如下所`_artifactsLocation`示：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
-
-
+> 您可以使用最終解析成使用**HTTP**或**HTTPs**的參數來參考範本，例如使用參數，如下所 `_artifactsLocation` 示：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Resource Manager 必須能夠存取範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。
 
@@ -358,7 +356,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
@@ -369,7 +367,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ## <a name="contentversion"></a>contentVersion
 
-您不需要提供`contentVersion` `templateLink`或`parametersLink`屬性的屬性。 如果您未提供`contentVersion`，則會部署目前版本的範本。 如果您提供內容版本值，它必須符合所連結範本中的版本；否則，部署會因為錯誤而失敗。
+您不需要提供 `contentVersion` `templateLink` 或屬性的屬性 `parametersLink` 。 如果您未提供 `contentVersion` ，則會部署目前版本的範本。 如果您提供內容版本值，它必須符合所連結範本中的版本；否則，部署會因為錯誤而失敗。
 
 ## <a name="using-variables-to-link-templates"></a>使用變數來連結範本
 
@@ -393,7 +391,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 }
 ```
 
-最後，您會在`uri` `templateLink`屬性的屬性中使用變數。
+最後，您會在屬性的屬性中使用變數 `uri` `templateLink` 。
 
 ```json
 "templateLink": {
@@ -425,7 +423,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -461,7 +459,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +477,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +510,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +541,11 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 }
 ```
 
-若要在部署負載平衡器時，使用上述範本中的公用 IP 位址，請連結至範本，並宣告`Microsoft.Resources/deployments`資源的相依性。 負載平衡器上的公用 IP 位址會設定為從連結的範本傳回的輸出值。
+若要在部署負載平衡器時，使用上述範本中的公用 IP 位址，請連結至範本，並宣告資源的相依性 `Microsoft.Resources/deployments` 。 負載平衡器上的公用 IP 位址會設定為從連結的範本傳回的輸出值。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +618,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +656,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +723,7 @@ done
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -787,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 下列範例顯示連結範本的一般用途。
 
-|主要的範本  |連結的範本 |描述  |
+|主要的範本  |連結的範本 |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
 |[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |
@@ -795,7 +793,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要完成教學課程，請參閱[建立連結的 Azure Resource Manager 範本](template-tutorial-create-linked-templates.md)。
+* 若要完成教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
 * 若要了解如何定義您資源的部署順序，請參閱 [定義 Azure Resource Manager 範本中的相依性](define-resource-dependency.md)。
 * 若要了解如何定義一個資源，但建立它的多個執行個體，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
 * 如需在儲存體帳戶中設定範本並產生 SAS Token 的步驟，請參閱[使用 Resource Manager 範本與 Azure PowerShell 部署資源](deploy-powershell.md)或 [Deploy resources with Resource Manager templates and Azure CLI (使用 Resource Manager 範本和 Azure CLI 部署資源)](deploy-cli.md)。

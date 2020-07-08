@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756477"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054724"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 JAVA 和 Eclipse 建立您的第一個函式 
 
@@ -37,14 +37,10 @@ ms.locfileid: "80756477"
 
 ## <a name="create-a-functions-project"></a>建立 Functions 專案
 
-1. 在 Eclipse 中，選取 **[檔案**] 功能表，然後選取 [**新增-&gt; Maven 專案**]。 
+1. 在 Eclipse 中，選取 **[檔案**] 功能表，然後選取 [**新增- &gt; Maven 專案**]。 
 1. 接受 [新增 Maven 專案]**** 對話方塊中的預設值，然後選取 [下一步]****。
-1. 選取 [新增原型]**** 並新增 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 的項目。
-    - 原型群組識別碼：com.microsoft.azure
-    - 原型構件識別碼：azure-functions-archetype
-    - 版本：檢查並使用[中央存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![中的最新版本 Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. 按一下 **[確定]**，然後按 **[下一步]**。  請務必填入所有欄位`resourceGroup`的值，包括、 `appName`和`appRegion` （請使用**fabrikam-function-20170920120101928**以外的其他 appName），最後**完成**。
+1. 尋找並選取 [ [azure 函數-原型](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)]，然後按 **[下一步]**。
+1. 請務必填入所有欄位的值 `resourceGroup` ，包括、 `appName` 和 `appRegion` （請使用**fabrikam-function-20170920120101928**以外的其他 appName），最後**完成**。
     ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven 會以 _artifactId_ 名稱在新的資料夾中建立專案檔。 專案中產生的程式碼是 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)的簡單函式，此函式會回應觸發 HTTP 要求的本文。

@@ -6,12 +6,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a2687e9c943df8454ff42a17f44866dcdb7f4730
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648935"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055880"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>使用 PowerShell 為服務類別目錄部署受控應用程式
 
@@ -33,10 +33,10 @@ ms.locfileid: "75648935"
 
 | Command | 注意 |
 |---|---|
-| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | 建立受控應用程式。 提供範本的定義識別碼和參數。 |
+| [New-AzManagedApplication](/powershell/module/az.resources/new-azmanagedapplication) | 建立受控應用程式。 提供範本的定義識別碼和參數。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需受控應用程式的簡介，請參閱 [Azure 受控應用程式概觀](../overview.md)。
-* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/get-started-azureps)。

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344385"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055625"
 ---
 # <a name="add-contributors-to-your-app"></a>將參與者新增至您的應用程式
 
@@ -97,6 +97,6 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解[如何使用版本](luis-how-to-manage-versions.md)來控制您的應用程式生命週期。
-* 瞭解這些概念，包括該資源的[撰寫資源](luis-concept-keys.md#authoring-key)和[參與者](luis-concept-keys.md#contributions-from-other-authors)。
+* 瞭解這些概念，包括該資源的[撰寫資源](luis-how-to-azure-subscription.md#authoring-key)和[參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors)。
 * 瞭解[如何建立](luis-how-to-azure-subscription.md)撰寫和執行時間資源
 * 遷移至新的[撰寫資源](luis-migration-authoring.md)

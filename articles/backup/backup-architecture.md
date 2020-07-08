@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273614"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055251"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -63,9 +63,9 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 
 **備份類型** | **詳細資料** | **使用量**
 --- | --- | ---
-**寫** | 完整備份包含整個資料來源。 所需的網路頻寬比差異或增量備份更多。 | 用於初始備份。
+**完整** | 完整備份包含整個資料來源。 所需的網路頻寬比差異或增量備份更多。 | 用於初始備份。
 **差異** |  差異備份會儲存自從初始完整備份之後所變更的區塊。 會使用較少的網路和儲存空間，而且不會保留未變更資料的重複複本。<br/><br/> 效率不佳，因為會傳送並儲存在之後的備份之間未變更的資料區塊。 | Azure 備份並未使用。
-**增強** | 增量備份只會儲存自從上次備份之後變更的資料區塊。 儲存體和網路效率較高。 <br/><br/> 使用增量備份時，不需要以完整備份來補充。 | 供 DPM/MABS 用於磁碟備份，並且用於所有備份至 Azure 的作業。 不用於 SQL Server 備份。
+**增量** | 增量備份只會儲存自從上次備份之後變更的資料區塊。 儲存體和網路效率較高。 <br/><br/> 使用增量備份時，不需要以完整備份來補充。 | 供 DPM/MABS 用於磁碟備份，並且用於所有備份至 Azure 的作業。 不用於 SQL Server 備份。
 
 ## <a name="sql-server-backup-types"></a>SQL Server 備份類型
 
@@ -95,8 +95,8 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 **功能** | **直接備份檔案和資料夾（使用 MARS 代理程式）** | **Azure VM 備份** | **具有 DPM/MABS 的機器或應用程式**
 --- | --- | --- | ---
 備份至保存庫 | ![是][green] | ![是][green] | ![是][green]
-備份至 DPM/MABS 磁片，到 Azure | | | ![是][green]
-壓縮要備份的傳輸資料 | ![是][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![是][green]
+備份至 DPM/MABS 磁片，到 Azure | | | ![Yes][green]
+壓縮要備份的傳輸資料 | ![Yes][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![Yes][green]
 執行增量備份 |![是][green] |![是][green] |![是][green]
 備份已刪除重複資料的磁碟 | | | ![部分][yellow]<br/><br/> 僅用於內部部署的 DPM/MABS 伺服器。
 
@@ -105,9 +105,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 ## <a name="backup-policy-essentials"></a>備份原則基本資訊
 
 - 每個保存庫都會建立備份原則。
-- 您可以針對下列工作負載的備份建立備份原則
-  - Azure VM
-  - Azure VM 中的 SQL
+- 您可以針對下列工作負載的備份建立備份原則： azure vm、Azure Vm 中的 SQL、azure Vm 和 Azure 檔案共用中的 SAP Hana。 使用 MARS 代理程式的檔案和資料夾備份原則是在 MARS 主控台中指定。
   - Azure 檔案共用
 - 您可以將一個原則指派給多項資源。 Azure VM 備份原則可用來保護許多 Azure VM。
 - 原則是由兩個元件所組成
@@ -115,9 +113,12 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
   - 保留期：每個備份應保留的時間長度。
 - 排程可以定義為「每日」或「每週」的特定時間點。
 - 您可以定義「每日」、「每週」、「每月」、「每年」備份點的保留期。
-- 「每週」是指於當週的特定一天備份，「每月」代表於當月的特定一天備份，而「每年」是指於當年的特定一天備份。
-- 「每月」、「每年」備份點的保留期也稱為 "LongTermRetention"。
-- 建立保存庫時，也會建立名為 "DefaultPolicy" 的 Azure VM 備份原則，並可用於備份 Azure Vm。
+  - 「每週」指的是一周的某一天的備份
+  - 「每月」指的是當月某一天的備份
+  - 「每年」指的是一年中某一天的備份
+- 「每月」、「每年」備份點的保留期稱為長期保留（LTR）
+- 建立保存庫時，也會建立 "DefaultPolicy"，並可用來備份資源。
+- 對備份原則的保留期間所做的任何變更，將會追溯到除了新的復原點之外。
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>架構：內建的 Azure VM 備份
 
@@ -214,7 +215,7 @@ Azure VM 會使用磁碟來儲存其作業系統、應用程式和資料。 每�
 
 - 請參閱支援對照表，以[瞭解支援的功能和備份案例的限制](backup-support-matrix.md)。
 - 針對下列其中一個案例設定備份：
-  - [備份 Azure vm](backup-azure-arm-vms-prepare.md)。
+  - [備份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - [直接備份 Windows 機器](tutorial-backup-windows-server-to-azure.md)，而不使用備份伺服器。
   - [設定 MABS](backup-azure-microsoft-azure-backup.md) 以備份至 Azure，然後將工作負載備份至 MABS。
   - [設定 DPM](backup-azure-dpm-introduction.md) 以備份至 Azure，然後將工作負載備份至 DPM。

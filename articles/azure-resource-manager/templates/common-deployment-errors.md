@@ -3,31 +3,31 @@ title: 針對一般部署錯誤進行疑難排解
 description: 說明如何解決使用 Azure Resource Manager 將資源部署至 Azure 時的常見錯誤。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460376"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055659"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
 本文說明一些常見的 Azure 部署錯誤，並且提供解決錯誤的資訊。 如果您找不到部署錯誤的錯誤碼，請參閱[尋找錯誤碼](#find-error-code)。
 
-如果您要尋找有關錯誤碼的資訊，但本文並未提供該資訊，請讓我們知道。 在此頁面底部，您可以留下意見反應。 意見反應會與 GitHub 問題一併追蹤。
+如果您要尋找錯誤碼相關資訊，但本文並未提供該資訊，請讓我們知道。 您可在此頁面底部留下意見反應。 意見反應會與 GitHub 問題一併追蹤。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>錯誤碼
 
-| 錯誤碼 | 緩和措施 | 更多資訊 |
+| 錯誤碼 | 降低 | 更多資訊 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循儲存體帳戶的命名限制。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 檢查可用儲存體帳戶屬性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | 叢集或區域沒有可用的資源或無法支援所要求的 VM 大小。 稍後重試要求，或要求不同的 VM 大小。 | [Linux 的佈建和配置問題](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows 的佈建和配置問題](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md)以及[配置失敗疑難排解](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | 叢集或區域沒有可用的資源或無法支援所要求的 VM 大小。 稍後重試要求，或要求不同的 VM 大小。 | [Linux 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)以及[配置失敗疑難排解](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等候並行作業完成。 | |
-| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當所需的資源提供者未註冊時，您可能會收到這個錯誤。 | [Azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
+| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當所需的資源提供者未註冊時，您可能會收到這個錯誤。 | [以 Azure 角色為基礎的存取控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
 | BadRequest | 您傳送的部署值不符合資源管理員的預期。 請查看內部狀態訊息，以取得疑難排解的說明。 | [範本參考](/azure/templates/)和[支援位置](resource-location.md) |
 | 衝突 | 您要求的作業在資源的目前狀態下不允許。 例如，只有在建立 VM 時或解除配置 VM 之後，才可調整磁碟大小。 | |
 | DeploymentActiveAndUneditable | 等候此資源群組的並行部署完成。 | |
@@ -62,8 +62,8 @@ ms.locfileid: "79460376"
 | OperationNotAllowed | 部署嘗試進行超過訂用帳戶、資源群組或區域配額的作業。 可能的話，請修改您的部署，以維持在配額內。 否則，請考慮要求變更您的配額。 | [解析配額](error-resource-quota.md) |
 | ParentResourceNotFound | 請確定父代資源在建立子系資源之前即已存在。 | [解析父代資源](error-parent-resource.md) |
 | PasswordTooLong | 您可能選取了字元過多的密碼，或將密碼值轉換為安全字串，然後才將它當做參數傳遞。 如果範本包含**安全字串**參數，則不需要將值轉換為安全字串。 提供密碼值作為文字。 |  |
-| PrivateIPAddressInReservedRange | 指定的 IP 位址包含 Azure 所需的位址範圍。 變更 IP 位址以避免保留的範圍。 | [IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | 指定的 IP 位址在子網路範圍之外。 變更 IP 位址，使其落在子網路範圍內。 | [IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | 指定的 IP 位址包含 Azure 所需的位址範圍。 變更 IP 位址以避免保留的範圍。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | 指定的 IP 位址在子網路範圍之外。 變更 IP 位址，使其落在子網路範圍內。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | 某些屬性無法在已部署的資源上變更。 更新資源時，將您的變更限制為允許的屬性。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | 您的訂用帳戶包含的資源原則會防止您在部署期間嘗試執行的動作。 尋找封鎖動作的原則。 可能的話，請變更您的部署，以符合原則的限制。 | [解析原則](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名稱的資源名稱。 | [唯一的資源名稱](error-reserved-resource-name.md) |
@@ -114,7 +114,7 @@ ms.locfileid: "79460376"
 若要使用 Azure CLI 查看部署錯誤的代碼和訊息，請使用：
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 在入口網站中選取通知。
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 使用下列命令檢查部署作業︰
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 使用下列命令檢查要求內容︰
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 使用下列命令檢查回應內容︰
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -223,7 +223,7 @@ az deployment group operation list \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "storageName": {

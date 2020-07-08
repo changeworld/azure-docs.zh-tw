@@ -3,18 +3,19 @@ title: 如何使用撰寫和執行時間金鑰-LUIS
 description: 當您第一次使用 Language Understanding （LUIS）時，您不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560421"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055761"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
 撰寫和查詢預測執行時間資源可為您的 LUIS 應用程式和預測端點提供驗證。
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -23,7 +24,7 @@ ms.locfileid: "85560421"
 
 LUIS 允許三種類型的 Azure 資源和一個非 Azure 資源：
 
-|機碼|目的|認知服務`kind`|認知服務`type`|
+|答案|目的|認知服務`kind`|認知服務`type`|
 |--|--|--|--|
 |撰寫金鑰|使用撰寫、訓練、發行和測試來存取和管理應用程式的資料。 如果您想要以程式設計方式撰寫 LUIS 應用程式，請建立 LUIS 撰寫金鑰。<br><br>金鑰的目的 `LUIS.Authoring` 是要讓您能夠：<br>* 以程式設計方式管理 Language Understanding 應用程式和模型，包括定型和發佈<br> * 將人員指派給「[參與者」角色](#contributions-from-other-authors)，以控制撰寫資源的許可權。|`LUIS.Authoring`|`Cognitive Services`|
 |查詢預測金鑰| 查詢預測端點要求。 在您的用戶端應用程式要求預測超過起始資源所提供的1000要求之前，請先建立 LUIS 預測金鑰。 |`LUIS`|`Cognitive Services`|
@@ -38,7 +39,7 @@ Azure 資源建立程式完成時，請在 LUIS 入口網站中[將金鑰指派]
 
 Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
-若要轉移資源的擁有權，ou 可以是：
+若要轉移資源的擁有權，您可以：
 * 轉移訂用帳戶的[擁有權](../../cost-management-billing/manage/billing-subscription-transfer.md)
 * 將 LUIS 應用程式匯出為檔案，然後將應用程式匯入至不同的訂用帳戶。 您可以從 LUIS 入口網站的 [**我的應用程式**] 頁面取得匯出。
 
@@ -71,6 +72,8 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 從 [**金鑰**] 頁面上的 Azure 入口網站重新產生 Azure 金鑰。
 
 
+<a name="securing-the-endpoint"></a>
+
 ## <a name="app-ownership-access-and-security"></a>應用程式擁有權、存取和安全性
 
 應用程式是由其 Azure 資源所定義，由擁有者的訂用帳戶決定。
@@ -99,7 +102,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 擁有者和所有參與者都有權撰寫應用程式。
 
-|撰寫存取權包括|注意|
+|撰寫存取權包括|備註|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -158,11 +161,10 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 1. 當您完成資源選取程式時，請[建立新的應用程式](luis-how-to-start-new-app.md#create-new-app-in-luis)。
 
 
-## <a name="create-azure-resources"></a>建立 Azure 資源
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中建立資源
 
@@ -226,7 +228,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
     ![要求 Azure Resource Manager 權杖和接收 Azure Resource Manager 權杖](./media/luis-manage-keys/get-arm-token.png)
 
-1. 使用權杖，從您的使用者帳戶可存取的[GET LUIS azure 帳戶 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)，跨訂用帳戶要求 LUIS 執行時間資源。
+1. 使用權杖，從您的使用者帳戶可存取的[GET LUIS Azure 帳戶 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)，跨訂用帳戶要求 LUIS 執行時間資源。
 
     此 POST API 需要下列設定︰
 
@@ -237,15 +239,15 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
     此 API 會傳回您 LUIS 訂用帳戶的 JSON 物件陣列，其中包含訂用帳戶識別碼、資源群組和資源名稱 (傳回作為帳戶名稱)。 請在此陣列中找出要指派給 LUIS 應用程式的 LUIS 資源項目。
 
-1. 使用[將 LUIS Azure 帳戶指派給應用程式](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API，將權杖指派給 LUIS 資源。
+1. 使用[指派 LUIS Azure 帳戶給應用程式](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515)API，將權杖指派給 LUIS 資源。
 
     此 POST API 需要下列設定︰
 
     |類型|設定|值|
     |--|--|--|
-    |頁首|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
-    |頁首|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
-    |頁首|`Content-type`|`application/json`|
+    |Header|`Authorization`|`Authorization` 的值為 `Bearer {token}`。 請注意，權杖值的開頭必須加上 `Bearer` 一字和空格。|
+    |Header|`Ocp-Apim-Subscription-Key`|您的撰寫金鑰。|
+    |Header|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 應用程式識別碼。
     |主體||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 

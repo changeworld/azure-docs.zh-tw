@@ -4,18 +4,18 @@ description: 本文包含 Language Understanding (LUIS) 常見問題集的解答
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343528"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054826"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding 常見問題集 (FAQ)
 
 本文包含 Language Understanding (LUIS) 常見問題集的解答。
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新功能
 
 [深入瞭解](whats-new.md)Language Understanding 的新功能（LUIS）。
 
@@ -43,7 +43,7 @@ ms.locfileid: "84343528"
 請參閱 [Bing 拼字檢查 API V7](luis-tutorial-bing-spellcheck.md) 教學課程。 LUIS 會強制執行 Bing 拼字檢查 API V7 所公開的限制。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>如何以程式設計方式編輯 LUIS 應用程式？
-若要以程式設計方式編輯 LUIS 應用程式，請使用[撰寫 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 如需如何呼叫撰寫 API 的範例，請參閱[呼叫 LUIS 撰寫 API](./get-started-get-model-rest-apis.md)和[使用 Node.js 以程式設計方式建置 LUIS 應用程式](./luis-tutorial-node-import-utterances-csv.md)。 撰寫 API 需要您使用[撰寫金鑰](luis-concept-keys.md#azure-resources-for-luis)，而非端點金鑰。 以程式設計撰寫允許每個月有最多 1,000,000 次呼叫，而且每秒五次交易。 如需與 LUIS 搭配使用之金鑰的詳細資訊，請參閱[管理金鑰](./luis-concept-keys.md)。
+若要以程式設計方式編輯 LUIS 應用程式，請使用[撰寫 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 如需如何呼叫撰寫 API 的範例，請參閱[呼叫 LUIS 撰寫 API](./get-started-get-model-rest-apis.md)和[使用 Node.js 以程式設計方式建置 LUIS 應用程式](./luis-tutorial-node-import-utterances-csv.md)。 撰寫 API 需要您使用[撰寫金鑰](luis-how-to-azure-subscription.md#azure-resources-for-luis)，而非端點金鑰。 以程式設計撰寫允許每個月有最多 1,000,000 次呼叫，而且每秒五次交易。 如需與 LUIS 搭配使用之金鑰的詳細資訊，請參閱[管理金鑰](./luis-how-to-azure-subscription.md)。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>提供規則運算式比對的模式功能位置為何？
 先前的**模式功能**目前已淘汱，並取代為**[模式](luis-concept-patterns.md)**。
@@ -123,7 +123,7 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 LUIS 會根據[文化特性 (Culture)](luis-language-support.md#tokenization) 將語句[權杖化](luis-glossary.md#token)。 原始值和權杖化值可供[資料擷取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何建立和指派 LUIS 端點金鑰？
-Azure 中針對[服務](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)層級[建立端點金鑰](luis-how-to-azure-subscription.md)。 在 [ **[Azure 資源](luis-how-to-azure-subscription.md)**] 頁面上[指派金鑰](luis-how-to-azure-subscription.md)。 此動作沒有任何對應的 API。 您接著必須將 HTTP 要求變更為端點，以[使用新端點金鑰](luis-concept-keys.md)。
+Azure 中針對[服務](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)層級[建立端點金鑰](luis-how-to-azure-subscription.md)。 在 [ **[Azure 資源](luis-how-to-azure-subscription.md)**] 頁面上[指派金鑰](luis-how-to-azure-subscription.md)。 此動作沒有任何對應的 API。 您接著必須將 HTTP 要求變更為端點，以[使用新端點金鑰](luis-how-to-azure-subscription.md)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解譯 LUIS 分數？
 您的系統應該使用最高分數意圖，而不論其值為何。 例如，低於 0.5 (小於 50%) 的分數不一定表示 LUIS 具有低的信賴度。 提供更多訓練資料有助於提高最可能意圖的[分數](luis-concept-prediction-score.md)。
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>LUIS 應用程式昨天還可以運作，但現在我收到 403 錯誤。 我未變更應用程式。 如何修正問題？
-請遵循這些[指示](#how-do-i-create-and-assign-a-luis-endpoint-key)來建立 LUIS 端點金鑰，並將它指派給應用程式。 接著，您必須將用戶端應用程式的 HTTP 要求變更為端點，以[使用新的端點金鑰](luis-concept-keys.md)。 如果您在不同的區域中建立了新的資源，也請變更 HTTP 用戶端要求的區域。
+請遵循這些[指示](#how-do-i-create-and-assign-a-luis-endpoint-key)來建立 LUIS 端點金鑰，並將它指派給應用程式。 接著，您必須將用戶端應用程式的 HTTP 要求變更為端點，以[使用新的端點金鑰](luis-how-to-azure-subscription.md)。 如果您在不同的區域中建立了新的資源，也請變更 HTTP 用戶端要求的區域。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>如何保護 LUIS 端點？
-請參閱[保護端點](luis-concept-keys.md#securing-the-endpoint)。
+請參閱[保護端點](luis-how-to-azure-subscription.md#securing-the-endpoint)。
 
 ## <a name="working-within-luis-limits"></a>在 LUIS 限制內運作
 
@@ -206,7 +206,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>如何知道我需要哪個金鑰、可在何處取得，以及如何運用它？
 
-請參閱[LUIS 中的撰寫與查詢預測端點金鑰](luis-concept-keys.md)，以瞭解撰寫金鑰和預測執行時間金鑰之間的差異。
+請參閱[LUIS 中的撰寫與查詢預測端點金鑰](luis-how-to-azure-subscription.md)，以瞭解撰寫金鑰和預測執行時間金鑰之間的差異。
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到了有關超出配額的錯誤。 如何修正問題？
 
@@ -216,7 +216,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 若要深入瞭解，請參閱修正 HTTP 狀態碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) 。
 
-### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我建立了撰寫金鑰，但它並未顯示在 LUIS 入口網站中。 發生什麼情形？
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我建立了撰寫金鑰，但它並未顯示在 LUIS 入口網站中。 發生什麼事？
 
 在[遷移至撰寫金鑰體驗](luis-migration-authoring.md)之後，可在 LUIS 入口網站中取得撰寫金鑰。
 

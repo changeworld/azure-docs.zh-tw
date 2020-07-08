@@ -3,12 +3,12 @@ title: 詞彙-LUIS
 description: 此詞彙說明使用 LUIS API Service 時可能遇到的字詞。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681611"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056373"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
 Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能會遇到的詞彙。
@@ -38,11 +38,11 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 
 ### <a name="authoring-key"></a>撰寫金鑰
 
-[撰寫金鑰](luis-concept-keys.md)是用來撰寫應用程式。 不用於生產環境層級的端點查詢。 如需詳細資訊，請參閱[金鑰限制](luis-limits.md#key-limits)。
+[撰寫金鑰](luis-how-to-azure-subscription.md)是用來撰寫應用程式。 不用於生產環境層級的端點查詢。 如需詳細資訊，請參閱[金鑰限制](luis-limits.md#key-limits)。
 
 ### <a name="authoring-resource"></a>撰寫資源
 
-您的 LUIS[撰寫資源](luis-concept-keys.md#azure-resources-for-luis)是透過 Azure 提供的可管理專案。 資源是您對 Azure 服務的相關撰寫、訓練和發佈功能的存取權。 資源包括您存取相關聯的 Azure 服務所需的驗證、授權和安全性資訊。
+您的 LUIS[撰寫資源](luis-how-to-azure-subscription.md#azure-resources-for-luis)是透過 Azure 提供的可管理專案。 資源是您對 Azure 服務的相關撰寫、訓練和發佈功能的存取權。 資源包括您存取相關聯的 Azure 服務所需的驗證、授權和安全性資訊。
 
 撰寫資源具有 Azure 的「種類」 `LUIS-Authoring` 。
 
@@ -234,7 +234,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 ### <a name="prediction-key"></a>預測金鑰
 
-[預測金鑰](luis-concept-keys.md)（之前稱為「訂用帳戶金鑰」）是與您在 Azure 中建立的 LUIS 服務相關聯的金鑰，可授權您使用預測端點。
+[預測金鑰](luis-how-to-azure-subscription.md)（之前稱為「訂用帳戶金鑰」）是與您在 Azure 中建立的 LUIS 服務相關聯的金鑰，可授權您使用預測端點。
 
 這個金鑰不是編寫金鑰。 如果您有預測端點金鑰，則應該將它用於任何端點要求，而不是撰寫金鑰。 您可以在 LUIS 網站中 Azure 資源頁面底部的端點 URL 內，查看您目前的預測金鑰。 這是訂用帳戶金鑰名稱/值組的值。
 
@@ -285,7 +285,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 |--|--|
 |小型| 一小部分，8盎司|
 |中| 標準，12盎司|
-|大型| 大、16盎司|
+|大| 大、16盎司|
 |Xtra 大型| 最大的一個，24盎司|
 
 當輸入中出現任何同義字時，此模型會傳回實體的正規化值。
@@ -300,7 +300,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 請參閱[變更預先建置 datetimeV2 實體的時區](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-## <a name="token"></a>權杖
+## <a name="token"></a>Token
 [Token](luis-language-support.md#tokenization)是 LUIS 可以辨識之文字的最小單位。 這在不同的語言之間有些微。
 
 若為**英文**，則 token 為字母和數位的連續範圍（不含空格或標點符號）。 空格不是 token。

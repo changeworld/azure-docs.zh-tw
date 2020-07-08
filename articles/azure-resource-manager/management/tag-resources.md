@@ -2,13 +2,13 @@
 title: 標記邏輯組織的資源、資源群組和訂用帳戶
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 07/01/2020
+ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056917"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記來組織您的 Azure 資源和管理階層
 
@@ -17,7 +17,9 @@ ms.locfileid: "82864482"
 如需如何執行標記策略的建議，請參閱[資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。
 
 > [!IMPORTANT]
-> 標記名稱不區分大小寫。 標記值會區分大小寫。
+> 作業的標記名稱不區分大小寫。 具有標記名稱的標記（不論大小寫為何）都會更新或抓取。 不過，資源提供者可能會保留您為標記名稱提供的大小寫。 您會在成本報告中看到大小寫。
+> 
+> 標記值會區分大小寫。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -31,7 +33,7 @@ ms.locfileid: "82864482"
 
 ### <a name="apply-tags"></a>套用標記
 
-Azure PowerShell 提供兩個命令來套用標記- [AzTag](/powershell/module/az.resources/new-aztag)和[AzTag](/powershell/module/az.resources/update-aztag)。 您必須具有 Az .Resources 模組1.12.0 或更新版本。 您可以使用來檢查您`Get-Module Az.Resources`的版本。 您可以安裝該模組，或[安裝 Azure PowerShell](/powershell/azure/install-az-ps)的3.6.1 或更新版本。
+Azure PowerShell 提供兩個命令來套用標記- [AzTag](/powershell/module/az.resources/new-aztag)和[AzTag](/powershell/module/az.resources/update-aztag)。 您必須具有 Az .Resources 模組1.12.0 或更新版本。 您可以使用來檢查您的版本 `Get-Module Az.Resources` 。 您可以安裝該模組，或[安裝 Azure PowerShell](/powershell/azure/install-az-ps)的3.6.1 或更新版本。
 
 **AzTag**會取代資源、資源群組或訂用帳戶上的所有標記。 呼叫命令時，傳入您想要標記之實體的資源識別碼。
 
@@ -263,7 +265,7 @@ az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-目前，Azure CLI 不支援將標記套用至訂閱。
+Azure CLI 目前沒有將標記套用至訂閱的命令。 不過，您可以使用 CLI 來部署將標籤套用至訂用帳戶的 ARM 範本。 請參閱[將標記套用至資源群組或](#apply-tags-to-resource-groups-or-subscriptions)訂用帳戶。
 
 ### <a name="list-tags"></a>列出標籤
 
@@ -326,7 +328,7 @@ IFS=$origIFS
 
 ### <a name="apply-values"></a>套用值
 
-下列範例會部署具有三個標記的儲存體帳戶。 其中兩個標記（`Dept`和`Environment`）會設定為常值。 一個標記（`LastDeployed`）會設定為預設為目前日期的參數。
+下列範例會部署具有三個標記的儲存體帳戶。 其中兩個標記（ `Dept` 和 `Environment` ）會設定為常值。 一個標記（ `LastDeployed` ）會設定為預設為目前日期的參數。
 
 ```json
 {
@@ -436,7 +438,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-from-resource-group"></a>從資源群組套用標記
 
-若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用`tags[tag-name]`語法，而不是`tags.tag-name`語法，因為在點標記法中無法正確剖析某些字元。
+若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
 
 ```json
 {
@@ -523,6 +525,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+如需訂用帳戶部署的詳細資訊，請參閱在訂用帳戶[層級建立資源群組和資源](../templates/deploy-to-subscription.md)。
+
 下列範本會從物件將標籤新增至資源群組或訂用帳戶。
 
 ```json
@@ -574,7 +578,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 您可以使用標籤將您的計費資料分組。 例如，如果您針對不同組織執行多個 VM，請使用標籤依成本中心將使用量分組。 您也可以使用標籤來根據執行階段環境將成本分類。例如，在生產環境中執行之 VM 的計費使用量。
 
-您可以透過 [Azure 資源使用狀況和 RateCard API](../../billing/billing-usage-rate-card-overview.md) 或使用狀況逗號分隔值 (CSV) 檔案，擷取關於標記的資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../billing/billing-download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]****。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤]**** 資料行中。
+您可以透過 [Azure 資源使用狀況和 RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md) 或使用狀況逗號分隔值 (CSV) 檔案，擷取關於標記的資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]****。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤]**** 資料行中。
 
 若為 REST API 作業，請參閱 [Azure 計費 REST API 參考](/rest/api/billing/)。
 
@@ -583,17 +587,15 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 標籤具有下列限制：
 
 * 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。
-* 管理群組目前不支援標記。
 * 每個資源、資源群組和訂用帳戶最多可以有50個標記名稱/值配對。 如果您需要套用的標記超過允許的最大數目，請使用標記值的 JSON 字串。 JSON 字串可以包含許多套用至單一標記名稱的值。 資源群組或訂用帳戶可以包含多個具有50標記名稱/值組的資源。
 * 標記名稱上限為 512 個字元，且標記值上限為 256 字元。 儲存體帳戶的標記名稱上限為 128 個字元，且標記值上限為 256 個字元。
-* 一般化 Vm 不支援標記。
 * 標記無法套用到類似雲服務的傳統資源。
 * 標記名稱不得包含這些字元：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
    > 目前，Azure DNS 區域和流量管理員服務也不允許在標記中使用空格。
    >
-   > Azure Front 門板不支援`#`在標記名稱中使用。
+   > Azure Front 門板不支援 `#` 在標記名稱中使用。
 
 ## <a name="next-steps"></a>後續步驟
 

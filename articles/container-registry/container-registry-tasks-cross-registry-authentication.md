@@ -2,13 +2,13 @@
 title: 從 ACR 工作進行跨登錄驗證
 description: 使用 Azure 資源的受控識別來設定 Azure Container Registry 工作 (ACR 工作)，以存取另一個私人 Azure 容器登錄
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842483"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057345"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>在 ACR 工作中使用 Azure 受控識別進行跨登錄驗證 
 
@@ -44,6 +44,7 @@ ms.locfileid: "76842483"
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 在目前的目錄中，執行 [az acr build][az-acr-build] 命令，以建置基礎映像並將其推送至基礎登錄。 實際上，組織中的另一個小組或程序可能會維護基礎登錄。
     
 ```azurecli
@@ -85,6 +86,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取權限授與基礎登錄
+
+在本節中，授與要從基礎登錄提取的受控識別權限，mybaseregistry。
+
+使用 [az acr show][az-acr-show] 命令來取得基礎登錄的資源識別碼，並將其儲存在變數中：
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+請使用 [az role assignment create][az-role-assignment-create] 命令，將身分識別的 `acrpull` 角色指派給基礎登錄。 此角色只有從登錄提取映像的權限。
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+繼續[將目標登錄認證新增至](#add-target-registry-credentials-to-task)工作。
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>選項 2：使用系統指派的身分識別來建立工作
 
 本節中的步驟可建立工作，並啟用系統指派的身分識別。 如果您想要改為啟用使用者指派的身分識別，請參閱[選項 1：使用使用者指派的身分識別來建立工作](#option-1-create-task-with-user-assigned-identity)。 
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取權限授與基礎登錄
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取權限授與基礎登錄
 
 在本節中，授與要從基礎登錄提取的受控識別權限，mybaseregistry。
 

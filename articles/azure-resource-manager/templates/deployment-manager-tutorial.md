@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75470283"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056883"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教學課程：使用 Azure 部署管理員搭配 Resource Manager 範本 (公開預覽)
 
@@ -40,7 +40,7 @@ ms.locfileid: "75470283"
 
 其他資源：
 
-* [Azure 部署管理員 REST API 參考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [Azure 部署管理員 REST API 參考](/rest/api/deploymentmanager/)。
 * [教學課程：在 Azure 部署管理員中使用健康情況檢查](./deployment-manager-tutorial-health-check.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
@@ -52,7 +52,7 @@ ms.locfileid: "75470283"
 若要完成本文，您需要：
 
 * 開發 [Azure Resource Manager 範本](overview.md)的某些體驗。
-* Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 * 部署管理員 Cmdlet。 若要安裝這些發行前版本的 Cmdlet，您需要最新版的 PowerShellGet。 若要取得最新版本，請參閱[安裝 PowerShellGet](/powershell/scripting/gallery/installing-psget)。 安裝 PowerShellGet 之後，請關閉 PowerShell 視窗。 開啟已提升權限的新 PowerShell 視窗，然後使用下列命令：
 
     ```powershell

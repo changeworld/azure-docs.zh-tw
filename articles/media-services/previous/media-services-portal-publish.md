@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b258b0b5dba902e94e8d221e0d8f0292fdec9f67
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176816"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057393"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 入口網站中發佈內容  
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "82176816"
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 > [!NOTE]
 > 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
@@ -42,19 +42,19 @@ ms.locfileid: "82176816"
 
 若要建立 HLS 資料流 URL，請在 URL 加上 (format=m3u8-aapl)**：
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 若要建置串流 URL 以播放 Smooth Streaming 資產，請使用下列 URL 格式：
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
 若要建置 MPEG-DASH 串流 URL，請將 (format=mpd-time-csf)** 附加至 URL：
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 共用存取簽章 URL 具有下列格式︰
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 如需詳細資訊，請參閱[傳遞內容概觀](media-services-deliver-content-overview.md)。
 

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248342"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055506"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure 資源
 
@@ -63,7 +63,7 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 ## <a name="delete-resources"></a>刪除資源
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱[開啟資源](#open-resources)。
-2. 選取 [刪除]  。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
+2. 選取 [刪除] 。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
     ![刪除 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
 3. 輸入資源的名稱以確認刪除，然後選取 [**刪除**]。
@@ -73,7 +73,7 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 ## <a name="move-resources"></a>移動資源
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱[開啟資源](#open-resources)。
-2. 選取 [移動]****。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
+2. 選取 [移動]。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
 
     ![移動 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
 3. 選取 [**移至另一個資源群組**] 或 [**移至另一個訂**用帳戶，視您的需求而定
@@ -97,7 +97,7 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 標記可協助您以邏輯方式組織資源群組和資源。 
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱[開啟資源](#open-resources)。
-2. 選取 [標記]****。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
+2. 選取 [標記]。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
 
     ![標記 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
 3. 指定標記屬性，然後選取 [**儲存**]。
@@ -120,5 +120,5 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 
 - 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
 - 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](/azure/azure-resource-manager/)課程。
+- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
 - 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。

@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: 批次測試
           href: luis-concept-batch-test.md
-    - name: 撰寫和執行階段金鑰
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: 資料管理
       items:
         - name: 更改資料

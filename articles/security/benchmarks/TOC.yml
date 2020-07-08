@@ -41,10 +41,14 @@
       href: ../../automation/security-baseline.md
     - name: Azure Cache for Redis 安全性基準
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure 原則安全性基準
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: 備份安全性基準
       href: ../../backup/security-baseline.md
     - name: 批次安全性基準
       href: ../../batch/security-baseline.md
+    - name: 認知服務安全性基準
+      href: ../../cognitive-services/security-baseline.md
     - name: 容器執行個體安全性基準
       href: ../../container-instances/security-baseline.md
     - name: 容器登錄安全性基準
@@ -53,7 +57,7 @@
       href: ../../cosmos-db/security-baseline.md
     - name: 客戶加密箱安全性基準
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Databox 安全性基準
+    - name: 資料箱安全性基準
       href: ../../databox/security-baseline.md
     - name: 資料總管安全性基準
       href: /azure/data-explorer/security-baseline
@@ -87,3 +91,5 @@
       href: ../../stream-analytics/security-baseline.md
     - name: 批次安全性基準
       href: ../../storage/common/security-baseline.md
+    - name: Synapse Analytics 安全性基準
+      href: ../../synapse-analytics/security-baseline.md

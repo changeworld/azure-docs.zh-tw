@@ -1,5 +1,5 @@
 ---
-title: 在 Application Insights 中，針對機器學習管線進行調試和疑難排解
+title: 監視 &收集管線記錄檔
 titleSuffix: Azure Machine Learning
 description: 將記錄新增至定型和批次計分管線，並在 Application Insights 中查看記錄的結果。
 services: machine-learning
@@ -7,25 +7,24 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982356"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055710"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>在 Application Insights 中，針對機器學習管線進行調試和疑難排解
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在警示和偵錯工具的 Application Insights 中收集機器學習管線記錄檔
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 [OpenCensus](https://opencensus.io/quickstart/python/) python 程式庫可以用來將記錄路由至您的腳本中的 Application Insights。 在同一個位置匯總管線執行的記錄，可讓您建立查詢並診斷問題。 使用 Application Insights 可讓您追蹤一段時間的記錄，並比較執行之間的管線記錄。
 
 讓您的登入一次，將會提供例外狀況和錯誤訊息的歷程記錄。 因為 Application Insights 與 Azure 警示整合，您也可以根據 Application Insights 查詢來建立警示。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 遵循步驟來建立[Azure Machine Learning](./how-to-manage-workspace.md)工作區，並[建立您的第一個管線](./how-to-create-your-first-pipeline.md)
 * [設定開發環境](./how-to-configure-environment.md)以安裝 Azure Machine Learning SDK。
@@ -39,7 +38,7 @@ ms.locfileid: "80982356"
 
 本節是從 Azure Machine Learning 管線使用 OpenCensus 的特定簡介。 如需詳細的教學課程，請參閱[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-將 PythonScriptStep 新增至您的 Azure ML 管線。 使用 opencensus-ext-azure 上的相依性來設定您的[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 。 設定`APPLICATIONINSIGHTS_CONNECTION_STRING`環境變數。
+將 PythonScriptStep 新增至您的 Azure ML 管線。 使用 opencensus-ext-azure 上的相依性來設定您的[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 。 設定 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境變數。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -142,7 +141,7 @@ logger.info("I will be sent to Application Insights with Custom Dimensions", cus
 
 OpenCensus AzureLogHandler 是用來將 Python 記錄路由至 Application Insights。 因此，您應該考慮 Python 記錄的細節。 當記錄器建立時，它會有預設的記錄層級，而且會顯示大於或等於該層級的記錄。 使用 Python 記錄功能的良好參考是記錄操作[手冊](https://docs.python.org/3/howto/logging-cookbook.html)。
 
-OpenCensus `APPLICATIONINSIGHTS_CONNECTION_STRING`程式庫需要環境變數。 我們建議您設定此環境變數，而不是將它當做管線參數傳遞，以避免傳遞純文字連接字串。
+`APPLICATIONINSIGHTS_CONNECTION_STRING`OpenCensus 程式庫需要環境變數。 我們建議您設定此環境變數，而不是將它當做管線參數傳遞，以避免傳遞純文字連接字串。
 
 ## <a name="querying-logs-in-application-insights"></a>查詢 Application Insights 中的記錄
 

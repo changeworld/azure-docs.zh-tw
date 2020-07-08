@@ -3,12 +3,12 @@ title: 跨訂用帳戶與資源群組部署資源
 description: 示範如何在部署期間將目標放在多個 Azure 訂用帳戶和資源群組。
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 34de1d9df53d61d849ffbb81a57b468020bc3b65
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650634"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057376"
 ---
 # <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>跨訂用帳戶與資源群組部署 Azure 資源
 
@@ -25,7 +25,7 @@ Resource Manager 可讓您在單一部署中部署到一個以上的資源群組
 
 如未指定訂用帳戶識別碼或資源群組，則會使用父代範本中的訂用帳戶及資源群組。 執行部署之前，所有資源群組都必須存在。
 
-部署範本的帳戶必須具有可部署到指定訂用帳戶識別碼的權限。 如果指定的訂用帳戶在不同的 Azure Active Directory 租用戶中，您必須[從另一個目錄中新增來賓使用者](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
+部署範本的帳戶必須具有可部署到指定訂用帳戶識別碼的權限。 如果指定的訂用帳戶在不同的 Azure Active Directory 租用戶中，您必須[從另一個目錄中新增來賓使用者](../../active-directory/b2b/what-is-b2b.md)。
 
 下列範例會部署兩個儲存體帳戶。 第一個儲存體帳戶會部署到部署作業中指定的資源群組。 第二個儲存體帳戶會部署到 `secondResourceGroup` 和 `secondSubscriptionID` 參數指定的資源群組：
 

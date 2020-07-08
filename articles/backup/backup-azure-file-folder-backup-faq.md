@@ -3,14 +3,14 @@ title: 備份檔案和資料夾-常見的問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254745"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056169"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>備份檔案和資料夾的相關常見問題
+# <a name="common-questions-about-backing-up-files-and-folders"></a>有關備份檔案和資料夾的常見問題
 
 本文會回答在[Azure 備份](backup-overview.md)服務中使用 MICROSOFT AZURE 復原服務（MARS）代理程式來備份檔案和資料夾的常見問題為數眾多。
 
@@ -112,9 +112,9 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 1. 在提高許可權的命令提示字元中執行此命令，以停止備份引擎：
 
     ```Net stop obengine```
-2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，並將名稱為的磁片卸載， `"CBSSBVol_<ID>"`格式為。
+2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，並將名稱為的磁片卸載，格式為 `"CBSSBVol_<ID>"` 。
 3. 根據預設，暫存檔案夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-4. 將整個`\Scratch`資料夾複製到具有足夠空間的其他磁片磁碟機。 請確定已複製內容，而不是移動。
+4. 將整個 `\Scratch` 資料夾複製到具有足夠空間的其他磁片磁碟機。 請確定已複製內容，而不是移動。
 5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
 
     | 登錄路徑 | 登錄金鑰 | 值 |
@@ -159,7 +159,8 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 
 ### <a name="manage"></a>管理
 
-**如果我忘記複雜密碼，可以復原嗎？**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>如果我忘記複雜密碼，可以復原嗎？
+
 Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密還原期間的備份資料。 請參閱下列案例，以瞭解處理遺失複雜密碼的選項：
 
 | 原始電腦 <br> *（執行備份的來源機器）* | 複雜密碼 | 可用的選項 |
@@ -177,14 +178,18 @@ Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密�
   * *不同*的複雜密碼，您將無法還原已備份的資料。
 * 如果您的原始電腦已損毀（導致無法透過 MARS 主控台重新產生複雜密碼），但您可以還原或存取 MARS 代理程式所使用的原始暫存檔案夾，則您可能可以還原（如果忘記密碼）。 如需更多協助，請聯絡客戶支援。
 
-**如果我遺失原始電腦（備份的位置），如何? 復原？**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果我遺失原始電腦（備份的位置），如何? 復原？
 
 如果您的原始電腦具有相同的複雜密碼（在註冊期間提供），則可以將備份的資料還原至其他電腦。 請參閱下列案例，以瞭解您的還原選項。
 
 | 原始電腦 | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 未能拿下 |可用 |您可以在另一部電腦上安裝並註冊 MARS 代理程式，其具有在您註冊原始電腦時所提供的相同複雜密碼。 選擇 [復原**選項** > ] [**另一個位置**] 執行還原。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| 未能拿下 |可用 |您可以在另一部電腦上安裝並註冊 MARS 代理程式，其具有在您註冊原始電腦時所提供的相同複雜密碼。 選擇 [復原**選項**] [  >  **另一個位置**] 執行還原。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的備份作業已失敗或長時間未執行。 我已超過保留期限。 我可以繼續進行還原嗎？
+
+Azure 備份會保留最後一個復原點（即使超過保留期限），做為安全措施。 一旦備份繼續且新的復原點變成可用，將會根據指定的保留期移除較舊的復原點。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果我取消進行中的還原作業，會發生什麼事？
 

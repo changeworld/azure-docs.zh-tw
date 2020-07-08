@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2796a2be5c779124db4dd7f1137ebbff4094705d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69901775"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056696"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>管理多個儲存體帳戶間的媒體服務資產  
 
@@ -27,7 +27,7 @@ ms.locfileid: "69901775"
 * 在多個儲存體帳戶之間平衡您資產的負載。
 * 調整媒體服務進行大量的內容處理 (因為目前單一儲存體帳戶的最大上限為 500 TB)。 
 
-本文章示範如何使用 [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](/powershell/module/az.media)，將多個儲存體帳戶附加到媒體服務帳戶。 同時也會示範如何在使用媒體服務 SDK 建立資產時，指定不同的儲存體帳戶。 
+本文示範如何使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[PowerShell](/powershell/module/az.media)，將多個儲存體帳戶附加至媒體服務帳戶。 同時也會示範如何在使用媒體服務 SDK 建立資產時，指定不同的儲存體帳戶。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,21 +46,23 @@ ms.locfileid: "69901775"
 
 ## <a name="to-attach-storage-accounts"></a>附加儲存體帳戶  
 
-若要將儲存體帳戶附加到 AMS 帳戶，請使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[Powershell](/powershell/module/az.media)，如下列範例所示：
+若要將儲存體帳戶附加到 AMS 帳戶，請使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[PowerShell](/powershell/module/az.media)，如下列範例所示：
 
-    $regionName = "West US"
-    $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
-    $resourceGroupName = "SkyMedia-USWest-App"
-    $mediaAccountName = "sky"
-    $storageAccount1Name = "skystorage1"
-    $storageAccount2Name = "skystorage2"
-    $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
-    $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
-    $storageAccounts = @($storageAccount1, $storageAccount2)
+```azurepowershell
+$regionName = "West US"
+$subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
+$resourceGroupName = "SkyMedia-USWest-App"
+$mediaAccountName = "sky"
+$storageAccount1Name = "skystorage1"
+$storageAccount2Name = "skystorage2"
+$storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
+$storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
+$storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+$storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+$storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+```
 
 ### <a name="support-for-cool-storage"></a>非經常性儲存空間的支援
 

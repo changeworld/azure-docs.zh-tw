@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156101"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055234"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>開發適用于雲端一致性的 ARM 範本
 
@@ -51,7 +51,7 @@ Azure Resource Manager 中引入的新範本函式，不能立即提供主權雲
 
 Azure Resource Manager 功能一律先引入全球 Azure。 您可以使用下列 PowerShell 指令碼確認 Azure Stack 是否可以使用新引入的範本函式：
 
-1. 複製 GitHub 存放庫： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)。
+1. 複製 GitHub 存放庫： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) 。
 
 1. 一旦您有存放庫的本機複製品，請使用 PowerShell 連線至目的地的 Azure Resource Manager。
 
@@ -133,7 +133,7 @@ Azure Resource Manager 在執行階段評估主要範本，然後擷取並評估
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -301,7 +301,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -342,7 +342,7 @@ API 設定檔版本的作用為依據 Azure 和 Azure Stack 通用資源類型�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -384,7 +384,7 @@ API 設定檔不是範本中的必要項目。 即使您新增項目，它也只
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -574,7 +574,7 @@ Get-AzureRmVMSize -Location "West Europe"
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>請確認 Azure Stack 中可以使用 VM 延伸模組
 
-雲端一致性的另一項考量，是使用[虛擬機器延伸模組](../../virtual-machines/windows/extensions-features.md)在 VM 內設定資源。 不是所有的 VM 延伸模組都可供 Azure Stack 使用。 範本可以指定 VM 延伸模組專用的資源，在範本內建立相依性和條件。
+雲端一致性的另一項考量，是使用[虛擬機器延伸模組](../../virtual-machines/extensions/features-windows.md)在 VM 內設定資源。 不是所有的 VM 延伸模組都可供 Azure Stack 使用。 範本可以指定 VM 延伸模組專用的資源，在範本內建立相依性和條件。
 
 例如，如果您想要設定執行 Microsoft SQL Server 的 VM，則 VM 延伸模組可以將 SQL Server 設定為範本部署的一部分。 請考慮，如果部署範本包含的應用程式伺服器，也設定在執行 SQL Server 的 VM 上建立資料庫，會發生什麼情況。 除了也為應用程式伺服器使用 VM 延伸模組之外，您可以在成功傳回的 SQL Server VM 延伸模組資源上設定應用程式伺服器的相依性。 這個方法可確保已設定執行 SQL Server 的 VM 時，並能在應用程式伺服器接獲指示建立資料庫時供其使用。
 

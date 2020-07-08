@@ -6,12 +6,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 09fe1455f0dba57fd23aeeb66acb1f99fc2513d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b605d63db09b81bfe73eca8f4abd7a38d2325004
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648985"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056016"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>使用 PowerShell 建立受控應用程式定義
 
@@ -32,10 +32,10 @@ ms.locfileid: "75648985"
 
 | Command | 注意 |
 |---|---|
-| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | 建立受控應用程式定義。 提供內含所需檔案的套件。 |
+| [New-AzManagedApplicationDefinition](/powershell/module/az.resources/new-azmanagedapplicationdefinition) | 建立受控應用程式定義。 提供內含所需檔案的套件。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需受控應用程式的簡介，請參閱 [Azure 受控應用程式概觀](../overview.md)。
-* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/get-started-azureps)。

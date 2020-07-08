@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598006"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056583"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務（MARS）代理程式進行疑難排解
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 錯誤 | 可能的原因 | 建議動作
 --- | --- | ---
 由於發生內部服務錯誤「未在服務戳記中布建資源」，導致目前的操作失敗。 請在一段時間之後重試此操作。 （識別碼：230006） | 受保護的伺服器已重新命名。 | <li> 將伺服器重新命名為已向保存庫註冊的原始名稱。 <br> <li> 以新名稱將伺服器重新註冊到保存庫。
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>因為另一個作業正在進行中，所以無法啟動作業
+
+如果您注意到**MARS 主控台**作業歷程記錄中的警告訊息，表示「  >  **Job history**工作無法在另一個作業正在進行時啟動」，這可能是因為工作排程器所觸發的工作重複實例所造成。
+
+![因為另一個作業正在進行中，所以無法啟動作業](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+若要解決此問題：
+
+1. 在 [執行] 視窗中輸入*taskschd.msc* ，以啟動工作排程器嵌入式管理單元
+1. 在左窗格中，流覽至 [**工作排程器程式庫**] [  ->  **Microsoft**  ->  **onlinebackup.kek**]。
+1. 針對此文件庫中的每個工作，按兩下工作以開啟 [屬性]，然後執行下列步驟：
+    1. 切換到 [設定]  索引標籤。
+
+         ![[設定] 索引標籤](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. 如果工作已在執行中，請變更的選項，則會**套用下列規則**。 選擇 [**不要啟動新的實例**]。
+
+         ![將規則變更為不啟動新的實例](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>針對還原問題進行疑難排解
 
