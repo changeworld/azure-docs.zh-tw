@@ -4,15 +4,14 @@ description: 本文提供將 Cisco ASA 裝置連線到 Azure VPN 閘道的範例
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986100"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>範例組態：Cisco ASA 裝置 (IKEv2/無 BGP)
 本文提供將 Cisco Adaptive Security Appliance (ASA) 裝置連線到 Azure VPN 閘道的範例設定。 此範例適用於執行 IKEv2 且不含邊界閘道協定 (BGP) 的 Cisco ASA 裝置。 
@@ -27,7 +26,7 @@ ms.locfileid: "75778077"
 | 測試的型號           | ASA 5505                          |
 | 測試的版本         | 9.2                               |
 | IKE 版本            | IKEv2                             |
-| BGP                    | 否                                |
+| BGP                    | No                                |
 | Azure VPN 閘道類型 | 路由式 VPN 閘道           |
 |                        |                                   |
 

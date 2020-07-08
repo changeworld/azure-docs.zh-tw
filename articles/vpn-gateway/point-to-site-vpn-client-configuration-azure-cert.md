@@ -5,15 +5,14 @@ description: 建立和安裝 Windows、Linux、Linux (strongSwan) 及 Mac OS X V
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d917bc1d52cc2a43e87affcc9c5e3c2ab533da07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984878"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>建立和安裝適用於原生 Azure 憑證驗證 P2S 組態的 VPN 用戶端組態檔
 
@@ -78,7 +77,7 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 設定檔會提供原生 Window
 
  您必須在將會連線到 Azure 的每部 Mac 上，手動設定原生 IKEv2 VPN 用戶端。 Azure 不提供用於原生 Azure 憑證驗證的 mobileconfig 檔案。 **Generic** 包含您進行設定所需的所有資訊。 如果未出現下載的 Generic 資料夾，則可能是未將 IKEv2 選為通道型別。 請注意，VPN 閘道基本 SKU 不支援 IKEv2。 一旦選取 IKEv2 後，重新產生 zip 檔案以擷取 Generic 資料夾。<br>Generic 資料夾包含下列檔案：
 
-* **Vpnsettings.xml**，其中包含重要的設定，例如伺服器位址和通道類型。 
+* **VpnSettings.xml**，其中包含重要的設定，例如伺服器位址和通道類型。 
 * **VpnServerRoot .cer**，其中包含在 P2S 連線設定期間驗證 Azure VPN 閘道所需的根憑證。
 
 使用下列步驟，在 Mac 上設定用於憑證驗證的原生 VPN 用戶端。 您必須在將會連線到 Azure 的每部 Mac 上，完成下列步驟：
@@ -96,7 +95,7 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 設定檔會提供原生 Window
 
    [介面]**** 值是 [VPN]，[VPN 類型]**** 值則是 [IKEv2]。 在 [服務名稱]**** 欄位中指定設定檔名稱，然後按一下 [建立]**** 以建立 VPN 用戶端連線設定檔。
 
-   ![網路](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. 從 **Generic** 資料夾的 **VpnSettings.xml** 檔案複製 **VpnServer** 標記值。 將此值貼到設定檔的 [伺服器位址]**** 和 [遠端識別碼]**** 欄位。
 
    ![伺服器資訊](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -143,7 +142,7 @@ VPN 用戶端組態檔包含在 ZIP 檔案內。 設定檔會提供原生 Window
 2. 選取 [**設定**]，然後選取 [**網路**]。
 
    ![編輯連線](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. 按一下**+** 按鈕以建立新的連接。
+3. 按一下 **+** 按鈕以建立新的連接。
 
    ![新增連線](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. 從功能表中選取 [ **IPsec/IKEv2 （strongSwan）** ]，然後按兩下。 您可以在此步驟中命名您的連接。

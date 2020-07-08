@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768126"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Log Analytics 工作區
@@ -51,13 +50,13 @@ ms.locfileid: "81768126"
 > [!WARNING]
 > 下列範本會建立 Log Analytics 工作區，並設定資料收集。 這可能會變更您的帳單設定。 請參閱[使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md)，以瞭解 Log Analytics 工作區中所收集資料的計費，然後再將它套用至您的 Azure 環境。
 
-針對容量保留，您可以藉由指定 SKU `CapacityReservation`和屬性`capacityReservationLevel`的值（以 GB 為單位），為內嵌資料定義選取的容量保留。 下列清單詳細說明設定時支援的值和行為。
+針對容量保留，您可以藉由指定 SKU `CapacityReservation` 和屬性的值（以 GB 為單位），為內嵌資料定義選取的容量保留 `capacityReservationLevel` 。 下列清單詳細說明設定時支援的值和行為。
 
 - 設定保留限制之後，您就無法在31天內變更為不同的 SKU。
 
 - 設定保留值後，您只能在31天內增加。
 
-- 您只能將的值`capacityReservationLevel`設定為100的倍數，最大值為50000。
+- 您只能將的值設定為 `capacityReservationLevel` 100 的倍數，最大值為50000。
 
 - 如果您增加保留層級，則會重設計時器，而且您無法在此更新中變更另31天。  
 
@@ -153,9 +152,9 @@ ms.locfileid: "81768126"
    >* "name"： "CapacityReservation"，
    >* "capacityReservationLevel"：100
 
-2. 編輯範本以符合您的需求。 請考慮建立[Resource Manager 參數](../../azure-resource-manager/templates/parameter-files.md)檔案，而不是以內嵌值傳遞參數。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。 
+2. 編輯範本以符合您的需求。 請考慮建立 [Resource Manager 參數檔案](../../azure-resource-manager/templates/parameter-files.md)，而不是以內嵌值傳遞參數。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。 
 
-3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json****。
+3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json。
 
 4. 您已準備好部署此範本。 您可以使用 PowerShell 或命令列來建立工作區，並將工作區名稱和位置指定為命令的一部分。 在所有 Azure 訂用帳戶中，工作區名稱必須是全域唯一的。
 

@@ -5,15 +5,14 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987117"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -292,7 +291,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>步驟 7 - 建立及設定 TestVNet5
 
-在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 若要在訂閱之間`az account list --all`切換，請使用來列出您的帳戶可用的`az account set --subscription <subscriptionID>`訂閱，然後使用切換至您想要使用的訂用帳戶。
+在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 若要在訂閱之間切換 `az account list --all` ，請使用來列出您的帳戶可用的訂閱，然後使用 `az account set --subscription <subscriptionID>` 切換至您想要使用的訂用帳戶。
 
 1. 確定您已連線到訂用帳戶 5，然後建立資源群組。
 
@@ -331,7 +330,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>步驟 8 - 建立連線
 
-此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 若要在訂閱之間`az account list --all`切換，請使用來列出您的帳戶可用的`az account set --subscription <subscriptionID>`訂閱，然後使用切換至您想要使用的訂用帳戶。
+此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 若要在訂閱之間切換 `az account list --all` ，請使用來列出您的帳戶可用的訂閱，然後使用 `az account set --subscription <subscriptionID>` 切換至您想要使用的訂用帳戶。
 
 1. **[訂用帳戶 1]** 登入並連線到訂用帳戶 1。 執行下列命令，從輸出中取得閘道的名稱和識別碼︰
 

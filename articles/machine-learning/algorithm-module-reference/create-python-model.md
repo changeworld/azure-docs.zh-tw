@@ -8,24 +8,23 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984882"
 ---
 # <a name="create-python-model-module"></a>建立 Python 模型模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 瞭解如何使用 [建立 Python 模型] 模組，從 Python 腳本建立未訓練的模型。 您可以根據 Azure Machine Learning 設計工具環境中 Python 套件所包含的任何學習模組來建立模型的基礎。 
 
 建立模型之後，您可以使用 [[定型模型](train-model.md)] 將資料集上的模型定型，如同 Azure Machine Learning 中的任何其他學習模組。 定型的模型可以傳遞至[評分模型](score-model.md)，以進行預測。 然後您可以儲存已定型的模型，並將評分工作流程發佈為 web 服務。
 
 > [!WARNING]
-> 目前無法傳遞 Python 模型的評分結果來[評估模型](evaluate-model.md)。 如果您需要評估模型，您可以撰寫自訂 Python 腳本，並使用 [[執行 Python 腳本](execute-python-script.md)] 模組來執行它。  
+> 目前，您無法將此模組連接到**微調模型超參數**模組，或傳遞 Python 模型的評分結果來[評估模型](evaluate-model.md)。 如果您需要微調超參數或評估模型，您可以使用 [[執行 Python 腳本](execute-python-script.md)模組] 來撰寫自訂的 Python 腳本。
 
 
 ## <a name="configure-the-module"></a>設定模組
@@ -133,4 +132,4 @@ ms.locfileid: "82189849"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

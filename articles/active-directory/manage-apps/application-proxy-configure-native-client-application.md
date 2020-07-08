@@ -3,25 +3,24 @@ title: 發佈原生用戶端應用程式 - Azure AD | Microsoft Docs
 description: 涵蓋如何讓原生用戶端應用程式與 Azure AD 應用程式 Proxy 連接器通訊，為內部部署的應用程式提供安全的遠端存取。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764803"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何讓原生用戶端應用程式與 Proxy 應用程式互動
 
@@ -113,10 +112,10 @@ if (authResult != null)
 
 | 必要資訊 | 如何在 Azure AD 入口網站中尋找 |
 | --- | --- |
-| \<租用戶識別碼> | **Azure Active Directory**  >  **屬性**  >  **目錄識別碼** |
-| \<原生應用程式的應用程式識別碼> | **應用程式註冊**  >  *您的原生應用程式*  >  **概觀**  >  **應用程式識別碼** |
-| \<範圍> | **應用程式註冊**  >  *您的原生應用程式*  >  **API 權限** > 按一下 [權限 API] (user_impersonation) > 具有標題 **user_impersonation** 的面板隨即顯示在右側。 > 範圍是編輯方塊中的 URL。
-| \<Proxy 應用程式 URL> | API 的外部 URL 和路徑
+| \<Tenant ID> | **Azure Active Directory**  >  **屬性**  >  **目錄識別碼** |
+| \<App ID of the Native app> | **應用程式註冊**  >  *您的原生應用程式*  >  **概觀**  >  **應用程式識別碼** |
+| \<Scope> | **應用程式註冊**  >  *您的原生應用程式*  >  **API 權限** > 按一下 [權限 API] (user_impersonation) > 具有標題 **user_impersonation** 的面板隨即顯示在右側。 > 範圍是編輯方塊中的 URL。
+| \<Proxy App Url> | API 的外部 URL 和路徑
 
 使用這些參數編輯 MSAL 程式碼之後，您的使用者就可以驗證原生用戶端應用程式，即使他們位於公司網路外部也可以。
 

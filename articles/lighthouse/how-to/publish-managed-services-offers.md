@@ -2,13 +2,12 @@
 title: 將受控服務供應專案發佈至 Azure Marketplace
 description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure 委派的資源管理。
 ms.date: 05/04/2020
-ms.topic: conceptual
-ms.openlocfilehash: 04da33d0232371f4175a935bf1e35925376babbc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 214a71faca59072660f1e1f413cb107d8e8f6fc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920903"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
@@ -18,7 +17,7 @@ ms.locfileid: "82788734"
 
 您必須[在合作夥伴中心](../../marketplace/partner-center-portal/create-account.md)擁有有效的帳戶，才能建立及發佈供應專案。 如果您還沒有帳戶，[註冊](https://aka.ms/joinmarketplace)程式會引導您完成在合作夥伴中心建立帳戶，並在商業 Marketplace 方案中註冊的步驟。
 
-根據[受控服務提供認證需求](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有[銀級或金級雲端平臺專長認證等級](https://docs.microsoft.com/partner-center/learn-about-competencies)，或為[Azure 專家的 MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
+根據[受控服務提供認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有[銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies)，或為[Azure 專家的 MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
 
 您的 Microsoft 合作夥伴網路 (MPN) 識別碼將會與您發佈的供應項目[自動關聯](../../billing/billing-partner-admin-link-started.md) \(部分機器翻譯\)，以追蹤您對客戶參與整體的影響。
 
@@ -29,7 +28,7 @@ ms.locfileid: "82788734"
 
 如需如何建立供應專案的詳細指示，包括您必須提供的所有資訊和資產，請參閱[建立受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)專案。
 
-若要瞭解一般發佈程式，請參閱[Azure Marketplace 和 AppSource 發佈指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)，尤其是[受控服務](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)一節。
+若要瞭解一般發佈程式，請參閱[Azure Marketplace 和 AppSource 發佈指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](/legal/marketplace/certification-policies)，尤其是[受控服務](/legal/marketplace/certification-policies#700-managed-services)一節。
 
 一旦客戶加入您的供應專案，他們就能夠委派一或多個訂用帳戶或資源群組，然後將其[上架以進行 Azure 委派的資源管理](#the-customer-onboarding-process)。
 
@@ -40,14 +39,14 @@ ms.locfileid: "82788734"
 
 完成所有區段之後，下一步是將供應項目發佈至 Azure Marketplace。 選取 [發行]**** 按鈕來起始供應項目上線程序。 如需此程式的詳細資訊，請參閱[這裡](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
 
-您可以隨時[發佈供應項目的更新版本](../..//marketplace/partner-center-portal/update-existing-offer.md)。 例如，您可能會想要將新的角色定義新增至先前發佈的供應項目。 當您這麼做時，已新增供應項目的客戶會在 Azure 入口網站的 [[服務提供者****](view-manage-service-providers.md)] 頁面中看到一個圖示，讓他們知道有可用的更新。 每個客戶都可以[檢閱變更](view-manage-service-providers.md#update-service-provider-offers)，並決定是否要更新為新的版本。 
+您可以隨時[發佈供應項目的更新版本](../..//marketplace/partner-center-portal/update-existing-offer.md)。 例如，您可能會想要將新的角色定義新增至先前發佈的供應項目。 當您這麼做時，已新增供應項目的客戶會在 Azure 入口網站的 [[服務提供者](view-manage-service-providers.md)] 頁面中看到一個圖示，讓他們知道有可用的更新。 每位客戶都可以[檢查變更](view-manage-service-providers.md#update-service-provider-offers)，並決定是否要更新為新的版本。 
 
 ## <a name="the-customer-onboarding-process"></a>客戶上線程序
 
 客戶新增您的供應項目之後，他們將能夠[委派一個或多個特定訂用帳戶或資源群組](view-manage-service-providers.md#delegate-resources)，然後讓這些項目上線，以進行 Azure 委派的資源管理。 如果客戶已接受供應項目，但未委派任何資源，則他們會在 Azure 入口網站中[**服務提供者**](view-manage-service-providers.md)頁面上的 [提供者供應項目]**** 區段頂端看到一個備註。
 
 > [!IMPORTANT]
-> 委派必須由客戶租使用者中的非來賓帳戶完成，其中具有所要上架之訂用帳戶的[擁有者內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)（或包含正在上架的資源群組）。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]****，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
+> 委派必須由客戶租使用者中的非來賓帳戶完成，其中具有所要上架之訂用帳戶的[擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner)（或包含正在上架的資源群組）。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
 一旦客戶委派了訂用帳戶（或訂用帳戶內的一或多個資源群組）， **ManagedServices**資源提供者就會註冊該訂用帳戶，而您租使用者中的使用者將能夠根據您供應專案中的授權存取委派的資源。
 
@@ -55,4 +54,4 @@ ms.locfileid: "82788734"
 
 - 瞭解[商業 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。
-- 前往 Azure 入口網站中的 [我的客戶]****，以[檢視及管理客戶](view-manage-customers.md)。
+- 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](view-manage-customers.md)。

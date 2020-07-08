@@ -1,21 +1,13 @@
 ---
 title: Azure 服務匯流排訊息-佇列、主題和訂用帳戶
 description: 本文提供 Azure 服務匯流排訊息實體（佇列、主題和訂閱）的總覽。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: aschhab
-ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 7d6dbbd0a8cf5699c2cdca34ebeca6773c1fbf6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337216"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服務匯流排佇列、主題和訂用帳戶
 

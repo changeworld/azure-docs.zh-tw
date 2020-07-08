@@ -1,19 +1,14 @@
 ---
 title: 授與 Azure 事件中樞的存取權
 description: 本文提供有關授權存取 Azure 事件中樞資源的不同選項的資訊。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85323170"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>授與 Azure 事件中樞的存取權
 每次您發佈或使用事件中樞的事件/資料時，您的用戶端都會嘗試存取事件中樞資源。 每個對安全資源的要求都必須經過授權，服務才能確保用戶端具有發佈/取用資料的必要許可權。 

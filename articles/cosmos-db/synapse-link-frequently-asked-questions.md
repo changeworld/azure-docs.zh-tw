@@ -6,12 +6,11 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921192"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -29,6 +28,9 @@ ms.locfileid: "83596467"
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>我可以在多區域帳戶的設定中只為特定區域啟用 Synapse Link，而不要所有區域都啟用嗎？
 在預覽版本中，為多區域帳戶啟用 Synapse Link 時，會在所有區域中建立分析存放區。 基礎資料已針對交易存放區中的輸送量和交易一致性進行最佳化。
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>是否支援針對已啟用 Synapse 連結的帳戶進行備份和還原？
+在預覽中，不支援針對已啟用 Synapse 連結的資料庫帳戶進行容器的備份和還原。 如果您有需要備份和還原功能的生產工作負載，我們建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>我可以替我的 Azure Cosmos 帳戶停用 Synapse Link 功能嗎？
 目前，在帳戶層級啟用 Synapse Link 功能之後，您就無法將其停用。  如果您想要關閉此功能，必須刪除並重新建立新的 Azure Cosmos 帳戶。
@@ -107,7 +109,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 |Synapse SQL 無伺服器    | 讀取、檢視 (有限的預覽)  |
 |已佈建的 Synapse SQL   |  無法使用 |
 
-### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Synapse Spark 資料表與我的 Synapse SQL 無伺服器資料表同步處理的方式，與其和 Azure Data Lake 同步處理的方式相同嗎？
+### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Synapse Spark 資料表與我的 Synapse SQL 無伺服器資料表同步處理的方式，與使用 Azure Data Lake 時相同嗎？
 目前沒有此功能。
 
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>我可以從分析存放區進行 Spark 結構化串流嗎？
@@ -118,11 +120,11 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>在 Synapse Studio 中，我要如何辨識是否已連線到已啟用分析存放區的 Azure Cosmos DB 容器？
 已啟用分析存放區的 Azure Cosmos DB 容器會有下列圖示：
 
-![啟用分析存放區的 Azure Cosmos DB 容器圖示](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="啟用分析存放區的 Azure Cosmos DB 容器圖示":::
 
 交易存放區容器將會以下列圖示表示：
 
-![啟用交易存放區的 Azure Cosmos DB 容器圖示](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用交易存放區的 Azure Cosmos DB 容器圖示":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>如何從 Synapse Studio 傳遞 Azure Cosmos DB 認證？
 目前 Azure Cosmos DB 認證是在建立連結服務時由具有 Azure Cosmos DB 資料庫存取權的使用者傳遞。 其他能存取工作區的使用者也會具有該工作區的存取權。

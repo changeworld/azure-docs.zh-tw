@@ -3,24 +3,23 @@ title: 使用主領域探索來設定登入自動加速
 description: 瞭解如何為同盟使用者的 Azure Active Directory 驗證設定主領域探索原則，包括自動加速和網域提示。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763579"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
@@ -81,8 +80,8 @@ ms.locfileid: "82690496"
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>用於自動加速的主領域探索原則
 某些應用程式未沒有相關機制可設定它們所發出的驗證要求。 在這種情況下，就無法使用網域提示來控制自動加速。 您可以透過原則設定自動加速來達成相同的行為。  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>為繼承應用程式啟用直接驗證
-應用程式驗證使用者的最佳做法是使用 Azure Active Directory 程式庫和互動式登入。 程式庫會負責同盟使用者流程。  有時寫入繼承應用程式並非為了要了解同盟。 應用程式不會執行主領域探索，也不會與正確的同盟端點互動以驗證使用者。 您也可選擇使用 HRD 原則啟用會提交使用者名稱/密碼認證的特定繼承應用程式，以直接透過 Azure Active Directory 進行驗證。 您必須啟用密碼雜湊同步。 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>針對繼承應用程式啟用同盟使用者的直接 ROPC 驗證
+應用程式驗證使用者的最佳做法是使用 Azure Active Directory 程式庫和互動式登入。 程式庫會負責同盟使用者流程。  有時候是繼承應用程式，特別是使用 ROPC 授與、將使用者名稱和密碼直接提交給 Azure AD，而不是為了瞭解同盟而撰寫的。 應用程式不會執行主領域探索，也不會與正確的同盟端點互動以驗證使用者。 如果您選擇，您可以使用 HRD 原則來啟用特定的繼承應用程式，以使用 ROPC 授與來提交使用者名稱/密碼認證，以直接使用 Azure Active Directory 進行驗證。 您必須啟用密碼雜湊同步。 
 
 > [!IMPORTANT]
 > 只要在您已啟用密碼雜湊同步，且您知道即使有內部部署 IdP 實作的任何原則，也可驗證該應用程式時，才能啟用直接驗證。 如果您基於任何原因而關閉密碼雜湊同步，或關閉 AD Connect 的目錄同步作業，則您應移除此原則，以避免使用者透過過時的密碼雜湊進行直接驗證。
@@ -110,7 +109,7 @@ ms.locfileid: "82690496"
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```
@@ -150,7 +149,7 @@ ms.locfileid: "82690496"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 

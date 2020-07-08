@@ -10,10 +10,9 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81767021"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解序列化程式
@@ -65,7 +64,7 @@ END_NAMESPACE(WeatherStation);
 
 利用 **序列化程式** 程式庫建立的模型支援下列資料類型：
 
-| 類型 | 描述 |
+| 類型 | Description |
 | --- | --- |
 | double |雙精確度浮點數 |
 | int |32 位元整數 |
@@ -316,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-在此情況下，我們去除了**DECLARE\_STRUCT**宏，而只是使用模型化語言的簡單型別來定義我們案例中的資料項目。
+在此情況下，我們去除了**DECLARE \_ STRUCT**宏，而只是使用模型化語言的簡單型別來定義我們案例中的資料項目。
 
 現在請忽略**時間**事件。 除此之外，以下是輸入**溫度**的程式碼：
 
@@ -538,7 +537,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 如果您要使用**序列化程式**程式庫，您可以在 azure-c-共用公用程式程式庫中找到值得注意的 SDK 的重要部分。
 
-如果您已從 GitHub 複製了 Azure-iot-sdk-c 存放庫併發出`git submodule update --init`命令，則您會在這裡找到這個共用公用程式程式庫：
+如果您已從 GitHub 複製了 Azure-iot-sdk-c 存放庫併發出 `git submodule update --init` 命令，則您會在這裡找到這個共用公用程式程式庫：
 
 ```C
 .\\c-utility
@@ -556,9 +555,9 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
   ![Visual Studio 解決方案 maco_utils_h_generator 的螢幕擷取畫面](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-此方案中的程式會產生 **macro\_utils.h** 檔案。 SDK 中包含預設的\_宏 utils 檔案。 這個解決方案可讓您修改部分參數，然後根據這些參數重新建立標頭檔。
+此方案中的程式會產生 **macro\_utils.h** 檔案。 \_SDK 中包含預設的宏 utils 檔案。 這個解決方案可讓您修改部分參數，然後根據這些參數重新建立標頭檔。
 
-要考慮的兩個重要參數是**nArithmetic**和**nMacroParameters**，這些是在宏\_utils.tt 中找到的這兩行中所定義：
+要考慮的兩個重要參數是**nArithmetic**和**nMacroParameters**，這些是在宏 utils.tt 中找到的這兩行中所定義 \_ ：
 
 ```C
 <#int nArithmetic=1024;#>
@@ -654,7 +653,7 @@ serializer_init(NULL);
 
 此動作必須正好在呼叫 **IoTHubClient\_CreateFromConnectionString** 之前執行。
 
-同樣地，當您使用完程式庫時，最後一次的呼叫就是**序列化程式\_deinit 能**：
+同樣地，當您使用完程式庫時，最後一次的呼叫就是**序列化程式 \_ deinit 能**：
 
 ```C
 serializer_deinit();

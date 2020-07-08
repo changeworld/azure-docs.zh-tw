@@ -6,16 +6,15 @@ keywords: 我的最愛，入口網站
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764123"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>新增、移除和重新排列我的最愛
 
@@ -23,7 +22,7 @@ ms.locfileid: "76310810"
 
 ## <a name="add-a-favorite"></a>新增我的最愛
 
-[我的最愛 **]** 底下所列的專案會從 [**所有服務**] 中選取。 將滑鼠停留在服務名稱上，以顯示與服務相關的資訊和資源。 服務名稱旁邊的![實心星形圖示](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png)填滿星形圖示表示該專案出現在 [我的最愛 **]** 清單中。 選取星號圖示，將服務新增至 [我的最愛 **]** 清單。
+[我的最愛 **]** 底下所列的專案會從 [**所有服務**] 中選取。 將滑鼠停留在服務名稱上，以顯示與服務相關的資訊和資源。 服務名稱旁邊的實心星形圖示 ![ 填滿星形圖示 ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) 表示該專案出現在 [我的最愛 **]** 清單中。 選取星號圖示，將服務新增至 [我的最愛 **]** 清單。
 
 ### <a name="add-cost-management--billing-to-favorites"></a>將成本管理 + 帳單新增至我的最愛
 

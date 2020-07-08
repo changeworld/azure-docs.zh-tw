@@ -4,15 +4,14 @@ description: 使用 Resource Manager 和 Azure 入口網站建立 VNet 間的 VP
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78674173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985562"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -75,7 +74,7 @@ ms.locfileid: "78674173"
 
 - **虛擬網路設定**
     - **名稱**： VNet1
-    - **位址空間**： 10.1.0.0/16
+    - **位址空間**：10.1.0.0/16
     - **訂**用帳戶：選取您要使用的訂用帳戶。
     - **資源群組**： TestRG1
     - **位置**：美國東部
@@ -92,7 +91,7 @@ ms.locfileid: "78674173"
     - **VPN 類型**：選取 [路由型]****。
     - **SKU**：選取您想要使用的閘道 SKU。
     - **公用 IP 位址名稱**： VNet1GWpip
-    - **建立**
+    - **[連接]**
        - **名稱**： VNet1toVNet4
        - **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -117,7 +116,7 @@ ms.locfileid: "78674173"
     - **VPN 類型**：選取 [路由型]****。
     - **SKU**：選取您想要使用的閘道 SKU。
     - **公用 IP 位址名稱**： VNet4GWpip
-    - **建立** 
+    - **[連接]** 
        - **名稱**： VNet4toVNet1
        - **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -143,7 +142,7 @@ ms.locfileid: "78674173"
 ## <a name="configure-the-vnet1-gateway-connection"></a>設定 VNet1 閘道連線
 當 VNet1 和 VNet4 的虛擬網路閘道完成時，您可以建立虛擬網路閘道連線。 在本節中，您要建立從 VNet1 到 VNet4 的連線。 這些步驟只適用於相同的訂用帳戶中的 VNet。 如果您的 Vnet 位於不同的訂用帳戶中，您必須使用[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)來進行連線。 不過，如果 Vnet 位於相同訂用帳戶中的不同資源群組，您可以使用入口網站將它們連線。
 
-1. 在 Azure 入口網站中，選取 [所有資源]****，在搜尋方塊中輸入「虛擬網路閘道」**，然後瀏覽至您 VNet 的虛擬網路閘道。 例如， **VNet1GW**。 選取閘道以開啟 [**虛擬網路閘道**] 頁面。 在 [設定]**** 下，選取 [連線]****。
+1. 在 Azure 入口網站中，選取 [所有資源]****，在搜尋方塊中輸入「虛擬網路閘道」**，然後瀏覽至您 VNet 的虛擬網路閘道。 例如， **VNet1GW**。 選取閘道以開啟 [**虛擬網路閘道**] 頁面。 在 [設定]  下，選取 [連線]  。
 
    ![連接頁面](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "連接頁面")
 2. 選取 [ **+ 新增**] 以開啟 [**新增連接**] 頁面。

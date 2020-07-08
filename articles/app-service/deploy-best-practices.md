@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770671"
 ---
 # <a name="deployment-best-practices"></a>部署最佳作法
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-在您的腳本中，使用`az login --service-principal`來登入，並提供主體的資訊。 接著，您可以`az webapp config container set`使用來設定容器名稱、標記、登錄 URL 和登錄密碼。 以下是一些實用的連結，可讓您用來建立容器 CI 進程。
+在您的腳本中，使用來登入 `az login --service-principal` ，並提供主體的資訊。 接著，您可以使用 `az webapp config container set` 來設定容器名稱、標記、登錄 URL 和登錄密碼。 以下是一些實用的連結，可讓您用來建立容器 CI 進程。
 
 - [如何在 Circle CI 上登入 Azure CLI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -127,15 +126,15 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="java"></a>Java
 
-使用 Kudu [zipdeploy/](deploy-zip.md) API 來部署 JAR 應用程式，以及[WARDEPLOY/](deploy-zip.md#deploy-war-file)用於 WAR 應用程式。 如果您使用 Jenkins，您可以直接在部署階段中使用這些 Api。 如需詳細資訊，請參閱 [本篇文章](../jenkins/execute-cli-jenkins-pipeline.md)。
+使用 Kudu [zipdeploy/](deploy-zip.md) API 來部署 JAR 應用程式，以及[WARDEPLOY/](deploy-zip.md#deploy-war-file)用於 WAR 應用程式。 如果您使用 Jenkins，您可以直接在部署階段中使用這些 Api。 如需詳細資訊，請參閱[這篇文章](../jenkins/execute-cli-jenkins-pipeline.md)。
 
 ### <a name="node"></a>節點
 
-根據預設，Kudu 會執行節點應用程式（`npm install`）的組建步驟。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式`SCM_DO_BUILD_DURING_DEPLOYMENT`設定，其值為`false`。
+根據預設，Kudu 會執行節點應用程式（）的組建步驟 `npm install` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
 
 ### <a name="net"></a>.NET 
 
-根據預設，Kudu 會執行 .NET 應用程式（`dotnet build`）的組建步驟。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式`SCM_DO_BUILD_DURING_DEPLOYMENT`設定，其值為`false`。
+根據預設，Kudu 會執行 .NET 應用程式（）的組建步驟 `dotnet build` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
 
 ## <a name="other-deployment-considerations"></a>其他部署考慮
 
@@ -156,4 +155,4 @@ Azure App Service 的內容儲存在 Azure 儲存體中，並且會持久顯示�
 - 選擇 [**最佳做法**] 首頁磚。
 - 按一下 [**可用性 & 效能**] 或 [最佳設定的**最佳做法**]，以查看應用程式目前的狀態，以瞭解這些最佳作法。
 
-您也可以使用此連結，為您的資源直接開啟 App Service 診斷`https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`：。
+您也可以使用此連結，為您的資源直接開啟 App Service 診斷： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` 。

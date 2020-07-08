@@ -6,20 +6,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: e7351e2f39c7e4eed84f4a47e3eeb2214a062a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322963"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>使用自訂 Ambari DB 設定 HDInsight 叢集
 
 Apache Ambari 可簡化 Apache Hadoop 叢集的管理和監視。 Ambari 提供便於使用的 web UI 和 REST API。 Ambari 包含在 HDInsight 叢集上，可用來監視叢集並進行設定變更。
 
-在一般叢集建立中（如在[hdinsight 中設定](hdinsight-hadoop-provision-linux-clusters.md)叢集之類的其他文章中所述），Ambari 會部署在由 hdinsight 管理且無法供使用者存取的[S0 Azure SQL 資料庫](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier)中。
+在一般叢集建立中（如在[hdinsight 中設定](hdinsight-hadoop-provision-linux-clusters.md)叢集之類的其他文章中所述），Ambari 會部署在由 hdinsight 管理且無法供使用者存取的[S0 Azure SQL Database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) 。
 
 自訂 Ambari DB 功能可讓您在管理的外部資料庫中部署新的叢集，並設定 Ambari。 部署是使用 Azure Resource Manager 範本來完成。 這項功能有下列優點：
 
@@ -38,24 +37,25 @@ Apache Ambari 可簡化 Apache Hadoop 叢集的管理和監視。 Ambari 提供�
 
 自訂 Ambari DB 具有下列其他需求：
 
+- 資料庫的名稱不能包含連字號或空格
 - 您必須擁有現有的 Azure SQL DB 伺服器和資料庫。
 - 您為 Ambari 安裝程式提供的資料庫必須是空的。 預設的 dbo 架構中應該沒有任何資料表。
 - 用來連接到資料庫的使用者應該具有資料庫的 SELECT、CREATE TABLE 和 INSERT 許可權。
-- 在您將裝載 Ambari 的 Azure SQL server 上，開啟 [[允許存取 azure 服務](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps)] 選項。
-- 必須在 SQL Server 中允許來自 HDInsight 服務的管理 IP 位址。 如需必須新增至 SQL server 防火牆的 IP 位址清單，請參閱[HDInsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
+- 在您將裝載 Ambari 的伺服器上，開啟選項以[允許存取 Azure 服務](../azure-sql/database/vnet-service-endpoint-rule-overview.md#azure-portal-steps)。
+- 必須在防火牆規則中允許來自 HDInsight 服務的管理 IP 位址。 如需必須新增至伺服器層級防火牆規則的 IP 位址清單，請參閱[HDInsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
 
 當您在外部資料庫中裝載 Apache Ambari DB 時，請記住下列幾點：
 
 - 您必須負責保留 Ambari 的 Azure SQL DB 額外成本。
-- 定期備份您的自訂 Ambari DB。 Azure SQL Database 會自動產生備份，但備份保留時間框架會有所不同。 如需詳細資訊，請參閱[了解自動 SQL Database 備份](../sql-database/sql-database-automated-backups.md)。
+- 定期備份您的自訂 Ambari DB。 Azure SQL Database 會自動產生備份，但備份保留時間框架會有所不同。 如需詳細資訊，請參閱[了解自動 SQL Database 備份](../azure-sql/database/automated-backups-overview.md)。
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>使用自訂 Ambari DB 部署叢集
 
 若要建立使用您自己的外部 Ambari 資料庫的 HDInsight 叢集，請使用[自訂 AMBARI DB 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)。
 
-編輯中的參數`azuredeploy.parameters.json` ，以指定您的新叢集和將保留 Ambari 之資料庫的相關資訊。
+編輯中的參數 `azuredeploy.parameters.json` ，以指定您的新叢集和將保留 Ambari 之資料庫的相關資訊。
 
-您可以使用 Azure CLI 開始部署。 將`<RESOURCEGROUPNAME>`取代為您要在其中部署叢集的資源群組。
+您可以使用 Azure CLI 開始部署。 將取代為 `<RESOURCEGROUPNAME>` 您要在其中部署叢集的資源群組。
 
 ```azurecli
 az group deployment create --name HDInsightAmbariDBDeployment \

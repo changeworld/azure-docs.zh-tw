@@ -6,12 +6,11 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391837"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -117,7 +116,7 @@ Azure Cosmos 項目可根據所使用的 API，分別代表集合中的文件、
 
 ## <a name="per-request-limits"></a>每個要求的限制
 
-Azure Cosmos DB 支援針對容器、項目及資料庫等資源執行 [CRUD 和查詢作業](https://docs.microsoft.com/rest/api/cosmos-db/)。 其也支援針對容器中具有相同分割區索引鍵的多個項目執行[交易式批次要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)。
+Azure Cosmos DB 支援針對容器、項目及資料庫等資源執行 [CRUD 和查詢作業](/rest/api/cosmos-db/)。 其也支援針對容器中具有相同分割區索引鍵的多個項目執行[交易式批次要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)。
 
 | 資源 | 預設限制 |
 | --- | --- |

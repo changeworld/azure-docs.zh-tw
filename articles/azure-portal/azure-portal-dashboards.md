@@ -8,17 +8,16 @@ manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764004"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 入口網站中建立和共用儀表板
 
@@ -58,7 +57,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 若要將磚新增至儀表板，請遵循下列步驟：
 
-1. 從![頁面標](./media/azure-portal-dashboards/dashboard-edit-icon.png)頭選取 [編輯] 圖示**編輯**。
+1. ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) 從頁面標頭選取 [編輯] 圖示**編輯**。
 
     ![[儀表板] 反白顯示編輯的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-edit.png)
 
@@ -79,7 +78,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 若要變更磚的大小或重新排列儀表板上的磚，請遵循下列步驟：
 
-1. 從![頁面標](./media/azure-portal-dashboards/dashboard-edit-icon.png)頭選取 [編輯] 圖示**編輯**。
+1. ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) 從頁面標頭選取 [編輯] 圖示**編輯**。
 
 1. 選取磚右上角的內容功能表。 然後，選擇磚大小。 支援任何大小的磚也會在右下角包含「控制碼」，讓您將磚拖曳至您想要的大小。
 
@@ -106,7 +105,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 儀表板上的資料會自動顯示過去24小時的活動。 若只要顯示此磚的不同時間範圍，請遵循下列步驟：
 
-1. 從內容功能表中選取 [**自訂磚資料**]，或從磚的左上角選取![篩選圖示](./media/azure-portal-dashboards/dashboard-filter.png)篩選。
+1. 從內容功能表中選取 [**自訂磚資料**]，或 ![ ](./media/azure-portal-dashboards/dashboard-filter.png) 從磚的左上角選取篩選圖示篩選。
 
     ![磚內容功能表的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -118,7 +117,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 1. 選擇要顯示的時間細微性。 您可以從一分鐘的增量顯示為一個月。
 
-1. 選取 [套用]  。
+1. 選取 [套用]。
 
 ## <a name="delete-a-tile"></a>刪除磚
 
@@ -126,7 +125,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 * 選取磚右上角的內容功能表，然後選取 [**從儀表板移除**]。 或者，
 
-* 選取![[編輯](./media/azure-portal-dashboards/dashboard-edit-icon.png) ] 圖示 [**編輯**] 以進入自訂模式。 將滑鼠停留在磚的右上角，然後選取 [ ![刪除] 圖示](./media/azure-portal-dashboards/dashboard-delete-icon.png)刪除圖示，從儀表板移除磚。
+* 選取 [ ![ 編輯] 圖示 [ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **編輯**] 以進入自訂模式。 將滑鼠停留在磚的右上角，然後選取 [ ![ 刪除] 圖示 ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 刪除圖示，從儀表板移除磚。
 
    ![顯示如何從儀表板移除磚的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -136,7 +135,7 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 1. 請確定 [儀表板] 視圖顯示您要複製的儀表板。
 
-1. 在頁首中，選取![[複製圖示](./media/azure-portal-dashboards/dashboard-clone.png) **複製**]。
+1. 在頁首中，選取 [複製 ![ 圖示 ](./media/azure-portal-dashboards/dashboard-clone.png) **複製**]。
 
 1. 儀表板的複本，名為 [**複製***儀表板名稱*] 會在編輯模式中開啟。 請使用本文中的先前步驟來重新命名及自訂儀表板。
 
@@ -170,9 +169,9 @@ Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的�
 
 1. 從儀表板名稱旁邊的清單中，選取您想要刪除的儀表板。
 
-1. 從![頁面標](./media/azure-portal-dashboards/dashboard-delete-icon.png)頭中選取 [刪除] 圖示**刪除**。
+1. ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 從頁面標頭中選取 [刪除] 圖示**刪除**。
 
-1. 若是私人儀表板，請在確認對話方塊上選取 **[確定]** 以移除儀表板。 針對共用的儀表板，請在 [確認] 對話方塊中選取核取方塊，以確認其他人將不再看到已發佈的儀表板。 然後選取 **[確定]**。
+1. 若是私人儀表板，請在確認對話方塊上選取 **[確定]** 以移除儀表板。 針對共用的儀表板，請在 [確認] 對話方塊中選取核取方塊，以確認其他人將不再看到已發佈的儀表板。 然後選取 [確定]。
 
     ![刪除確認的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 

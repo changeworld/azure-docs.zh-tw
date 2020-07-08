@@ -5,12 +5,11 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921825"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
 
@@ -26,7 +25,7 @@ ms.locfileid: "83834589"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) (機器翻譯)。
+> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) (機器翻譯)。
 >
 > 如需生產環境就緒叢集必要條件的詳細資訊，請參閱[生產整備檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist) (機器翻譯)。
 
@@ -51,7 +50,7 @@ ms.locfileid: "83834589"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 論壇
 
-[StackOverflow 上 Service Fabric 標籤][stackoverflow]和 [MSDN 上 Service Fabric 論壇][msdn-forum] 最適合用來詢問關於平台如何運作以及如何使用它來完成特定工作的問題。
+[StackOverflow 上的 Service Fabric 標籤][stackoverflow]和 [MSDN 上的 Service Fabric 論壇][msdn-forum]最適合用來詢問關於平台如何運作以及您如何使用它來完成特定工作的問題。
 
 ### <a name="azure-feedback-forum"></a>Azure 意見反應論壇
 
@@ -72,3 +71,4 @@ ms.locfileid: "83834589"
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

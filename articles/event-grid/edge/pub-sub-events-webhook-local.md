@@ -10,11 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710859"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教學課程：在本機發佈、訂閱事件
 
@@ -23,7 +22,7 @@ ms.locfileid: "79280998"
 > [!NOTE]
 > 若要瞭解 Azure 事件方格主題和訂用帳戶，請參閱[事件方格概念](concepts.md)。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -118,7 +117,7 @@ ms.locfileid: "79280998"
 
 身為事件的發行者，您必須建立事件方格主題。 在 Azure Event Grid 中，主題是指發行者可以將事件傳送至其中的端點。
 
-1. 使用下列內容建立主題. json。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 topic.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         {
@@ -129,7 +128,7 @@ ms.locfileid: "79280998"
         }
     ```
 
-1. 執行下列命令來建立事件方格主題。 確認您看到 HTTP 狀態碼為`200 OK`。
+1. 執行下列命令來建立事件方格主題。 確認您看到 HTTP 狀態碼為 `200 OK` 。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +162,7 @@ ms.locfileid: "79280998"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 建立具有下列內容的訂用帳戶. json。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)
+1. 使用下列內容，在上建立 subscription.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)
 
     ```json
         {
@@ -180,7 +179,7 @@ ms.locfileid: "79280998"
 
     >[!NOTE]
     > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure 訂閱者範例。
-2. 執行下列命令來建立主題的訂用帳戶。 確認您看到 HTTP 狀態碼為`200 OK`。
+2. 執行下列命令來建立主題的訂用帳戶。 確認您看到 HTTP 狀態碼為 `200 OK` 。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +211,7 @@ ms.locfileid: "79280998"
 
 ## <a name="publish-an-event"></a>發佈事件
 
-1. 建立包含下列內容的事件 json。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 event.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         [

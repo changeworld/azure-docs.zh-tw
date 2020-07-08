@@ -3,16 +3,15 @@ title: 擴充 Linux VM 上的虛擬硬碟
 description: 瞭解如何使用 Azure CLI 擴充 Linux VM 上的虛擬硬碟。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659733"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 擴充 Linux VM 上的虛擬硬碟
 
@@ -28,7 +27,7 @@ ms.locfileid: "78945176"
 
 在下列範例中，以您自己的值取代範例參數名稱，例如 *myResourceGroup* 和 *myVM*。
 
-1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會解除配置名為 myResourceGroup** 資源群組中名為 myVM** 的 VM：
+1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會將名為*myResourceGroup*的資源群組中名為*myVM*的 VM 解除配置：
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -133,7 +132,7 @@ ms.locfileid: "78945176"
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. 若要確認資料磁片已調整大小， `df -h`請使用。 下列範例輸出顯示資料磁碟機 */dev/sdc1* 現在是 200 GB：
+1. 若要確認資料磁片已調整大小，請使用 `df -h` 。 下列範例輸出顯示資料磁碟機 */dev/sdc1* 現在是 200 GB：
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

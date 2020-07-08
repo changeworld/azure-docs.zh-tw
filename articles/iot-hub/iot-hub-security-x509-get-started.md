@@ -10,17 +10,16 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759644"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
 
 本教學課程說明使用*X.509 憑證驗證*來保護 Azure IoT 中樞所需的步驟。 為了說明，我們使用開放原始碼工具 OpenSSL，在您的 Windows 電腦本機上建立憑證。 建議您僅將本教學課程用於測試目的。 針對生產環境，您應該向根憑證授權單位 (CA) 購買憑證**。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程需要您準備下列資源：
 
@@ -47,7 +46,7 @@ ms.locfileid: "81759644"
 
 這些步驟示範如何透過入口網站將新的「憑證授權單位」新增至您的 IoT 中樞。
 
-1. 在 [Azure 入口網站中，流覽至您的 IoT 中樞，然後選取 [**設定** > ] 中樞的 [**憑證**]。
+1. 在 [Azure 入口網站中，流覽至您的 IoT 中樞，然後選取 [**設定**]  >  中樞的 [**憑證**]。
 
 1. 選取 **[新增]** 以新增憑證。
 
@@ -73,7 +72,7 @@ ms.locfileid: "81759644"
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>建立 IoT 中樞的 X.509 裝置
 
-1. 在 [Azure 入口網站中，流覽至您的 IoT 中樞，然後**選取** > [流覽] [**iot 裝置**]。
+1. 在 [Azure 入口網站中，流覽至您的 IoT 中樞，然後**選取 [** 流覽] [  >  **iot 裝置**]。
 
 1. 選取 [**新增**] 來新增裝置。
 
@@ -87,7 +86,7 @@ ms.locfileid: "81759644"
 
 接下來，我們將示範如何建立 C# 應用程式來模擬為您 IoT 中樞註冊的 X.509 裝置。 我們會將氣溫和溼度值從模擬裝置傳送至您的中樞。 在本教學課程中，我們只會建立裝置應用程式。 它會保留給讀者作為練習建立 IoT 中樞服務應用程式，將回應傳送給此模擬裝置所傳送的事件。 C# 應用程式假設您已依照[管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟操作。
 
-1. 開啟 Visual Studio，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）** ] 專案範本。 選取 [下一步]  。
+1. 開啟 Visual Studio，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）** ] 專案範本。 選取 [下一步]。
 
 1. 在 [**設定您的新專案**] 中，將專案命名為*SimulateX509Device*，然後選取 [**建立**]。
 
@@ -95,13 +94,13 @@ ms.locfileid: "81759644"
 
 1. 在方案總管中，以滑鼠右鍵按一下**SimulateX509Device**專案，然後選取 [**管理 NuGet 套件**]。
 
-1. 在**NuGet 套件管理員**中，選取 **[流覽]** 並搜尋並選擇 [ **Microsoft. Azure. 用戶端**]。 選取 [安裝]  。
+1. 在**NuGet 套件管理員**中，選取 **[流覽]** 並搜尋並選擇 [ **Microsoft. Azure. 用戶端**]。 選取 [安裝]。
 
    ![在 Visual Studio 中新增裝置 SDK NuGet 套件](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-    此步驟會下載及安裝 Azure IoT 裝置 SDK NuGet 套件及其相依專案，並新增對它的參考。
+    此步驟會下載和安裝 Azure IoT 裝置 SDK NuGet 套件及其相依性，並新增其參考。
 
-1. 在 Program.cs 檔案`using`的頂端新增下列語句： **Program.cs**
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp
         using Microsoft.Azure.Devices.Client;
@@ -181,7 +180,7 @@ ms.locfileid: "81759644"
 
    1. 流覽至包含您方案的資料夾，然後流覽至 [方案] 資料夾內的*bin/Debug*路徑。
 
-   1. 從命令提示字元執行應用程式**SimulateX509Device** 。
+   1. 從命令提示字元執行應用程式**SimulateX509Device.exe** 。
 
    您應該會看到裝置成功連線至中樞並傳送事件。
 

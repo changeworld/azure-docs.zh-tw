@@ -3,23 +3,22 @@ title: 使用 Azure AD 應用程式 Proxy 設定應用程式的單一登入 | Mi
 description: 在 Azure 入口網站中使用 Azure AD 應用程式 Proxy，為您已發佈的內部部署應用程式啟動單一登入。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764769"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用應用程式 Proxy 進行單一登入的密碼保存庫
 
@@ -31,12 +30,12 @@ Azure Active Directory 應用程式 Proxy 可發佈內部部署應用程式，�
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>為應用程式設定密碼儲存庫存
 
-1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-1. 選取 [ **Azure Active Directory** > **企業應用程式** > ] [**所有應用程式**]。
+1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取 [ **Azure Active Directory**  >  **企業應用程式**] [  >  **所有應用程式**]。
 1. 從清單中選取您要設定 SSO 的應用程式。  
 1. 選取 [應用程式 Proxy]****。 
 1. 將 [**預先驗證類型**] 變更為 [**通過**]，然後選取 [**儲存**]。 稍後您可以再次切換回**Azure Active Directory**類型！ 
-1. 選取 [**單一登入**]。
+1. 選取 [單一登入]****。
 
    ![從應用程式的 [總覽] 頁面選取 [單一登入]](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
@@ -45,13 +44,13 @@ Azure Active Directory 應用程式 Proxy 可發佈內部部署應用程式，�
 
    ![選擇密碼型登入並輸入您的 URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 選取 [應用程式 Proxy]****。 
 1. 將 [**預先驗證] 類型**變更為**Azure Active Directory** ，然後選取 [**儲存**]。 
 1. 選取 [**使用者和群組**]。
 1. 選取 [**新增使用者**]，將使用者指派給應用程式。 
 1. 如果您想要預先定義使用者的認證，請核取使用者名稱前面的方塊，然後選取 [**更新認證**]。
-1. 選取 [ **Azure Active Directory** > ]**應用程式註冊** > [**所有應用程式**]。
+1. 選取 [ **Azure Active Directory**]  >  **應用程式註冊**[  >  **所有應用程式**]。
 1. 從清單中，選取您使用密碼 SSO 設定的應用程式。
 1. 選取 [建立品牌]****。 
 1. 使用密碼 SSO 頁面中的 [登入**url** ] 來更新**首頁 url** ，然後選取 [**儲存**]。  

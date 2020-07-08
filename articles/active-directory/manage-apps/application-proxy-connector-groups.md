@@ -2,8 +2,8 @@
 title: 透過連接器群組在不同的網路上發佈應用程式-Azure AD
 description: 涵蓋如何建立和管理「Azure AD 應用程式 Proxy」中的連接器群組。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764718"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用連接器群組在個別的網路和位置上發佈應用程式
 
@@ -32,7 +31,7 @@ ms.locfileid: "74275572"
 > [!TIP]
 > 如果您有大規模的應用程式 Proxy 部署，請勿將任何應用程式指派給預設連接器群組。 如此一來，新的連接器便不會收到任何即時流量，除非您將新連接器指派給作用中的連接器群組。 此設定也可以將連接器移回預設群組的方式，藉此讓連接器進入閒置模式，如此您便可以在不影響使用者的情況下執行維護。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要將連接器組成群組，您必須確定 [已安裝多個連接器](application-proxy-add-on-premises-application.md)。 當您安裝新的連接器時，它會自動加入「預設」 **** 連接器群組。
 
@@ -41,19 +40,19 @@ ms.locfileid: "74275572"
 使用以下步驟建立您所要的連接器群組，數量不拘。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 [ **Azure Active Directory** > **企業應用** > **程式] [應用程式 proxy**]。
+1. 選取 [ **Azure Active Directory**  >  **企業應用**程式] [  >  **應用程式 proxy**]。
 1. 選取 [新增連接器群組]****。 [新增連接器群組] 刀鋒視窗隨即出現。
 
    ![顯示選取新連接器群組的畫面](./media/application-proxy-connector-groups/new-group.png)
 
 1. 指定新連接器群組的名稱，然後使用下拉式功能表來選取哪些連接器屬於此群組。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>將應用程式指派給您的連接器群組
 
 已透過應用程式 Proxy 發佈的每個應用程式均按照這些步驟處理。 您可以在首次發佈應用程式時，將應用程式指派給連接器群組，也可以隨時使用這些步驟變更指派。
 
-1. 從您目錄的管理儀表板中，選取 [**企業應用程式** > ] [**所有應用**程式] > 您想要指派給連接器群組的應用程式 >**應用程式 Proxy**。
+1. 從您目錄的管理儀表板中，選取 [**企業應用程式**]  >  [**所有應用**程式] > 您想要指派給連接器群組的應用程式 >**應用程式 Proxy**。
 1. 使用 [連接器群組] **** 下拉式功能表來選取應用程式所要使用的群組。
 1. 按一下 [儲存] **** 以套用變更。
 
@@ -128,5 +127,5 @@ ms.locfileid: "74275572"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+* [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
 * [啟用單一登入](what-is-single-sign-on.md)

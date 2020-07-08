@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021376"
 ---
 # <a name="color-materials"></a>色彩材質
 
@@ -22,7 +21,7 @@ ms.locfileid: "80681073"
 
 這些屬性通用於所有材質：
 
-* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或*頂點色彩*。 如果已啟用材質的*透明度*，Alpha 色板會用來調整不透明度，其`1`意義完全不透明且`0`意義完全透明。 預設為白色。
+* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或* :::no-loc text="vertex"::: 色彩*。 如果已啟用材質的*透明度*，Alpha 色板會用來調整不透明度，其 `1` 意義完全不透明且 `0` 意義完全透明。 預設為白色。
 
   > [!NOTE]
   > 因為色彩材質不會反映環境，所以完全透明的色彩材質會變成不可見。 這對於[.pbr 材質](pbr-materials.md)而言是不同的。
@@ -33,15 +32,15 @@ ms.locfileid: "80681073"
 
 * **textureCoordinateScale**和**textureCoordinateOffset：** 尺規會乘以 UV 材質座標，而位移會加入其中。 可以用來延展和轉換材質。 預設尺規為（1，1），而 offset 為（0，0）。
 
-* **useVertexColor：** 如果網格包含頂點色彩，而且已啟用此選項，則網格的頂點色彩會乘至*albedoColor*和*albedoMap*。 預設會停用頂點色彩。
+* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，而且已啟用此選項，則網格 :::no-loc text="vertex"::: 色彩會乘以*albedoColor*和*albedoMap*。 預設會停用*useVertexColor* 。
 
-* **isDoubleSided：** 如果 sidedness 設定為 true，則會轉譯具有此材質的三角形，即使相機正在查看其背景表面也一樣。 預設會停用此選項。 另請參閱[單側](single-sided-rendering.md)轉譯。
+* **isDoubleSided：** 如果 sidedness 設定為 true，則會轉譯具有此材質的三角形，即使相機正在查看其背景表面也一樣。 預設會停用此選項。 另請參閱[ :::no-loc text="Single-sided"::: 呈現](single-sided-rendering.md)。
 
 ## <a name="color-material-properties"></a>色彩材質屬性
 
 下列屬性專屬於色彩材質：
 
-* **vertexMix：** 和`0` `1`之間的這個值會指定[網格](../../concepts/meshes.md)中的頂點色彩對最終色彩的高度。 在預設值為1時，頂點色彩會與 albedo 色彩完全相乘。 值為0時，會完全忽略頂點色彩。
+* **vertexMix：** 和之間的這個值會 `0` `1` 指定 :::no-loc text="vertex"::: [網格](../../concepts/meshes.md)中的色彩對最終色彩的高度。 預設值為 1 :::no-loc text="vertex"::: 時，色彩會完全乘以 albedo 色彩。 值為0時， :::no-loc text="vertex"::: 會完全忽略色彩。
 
 * **transparencyMode：** 與[.pbr 材質](pbr-materials.md)相反，色彩材質會區分不同的透明度模式：
 
@@ -55,4 +54,4 @@ ms.locfileid: "80681073"
 
 * [PBR 材質](pbr-materials.md)
 * [紋理](../../concepts/textures.md)
-* [網狀](../../concepts/meshes.md)
+* [網格](../../concepts/meshes.md)

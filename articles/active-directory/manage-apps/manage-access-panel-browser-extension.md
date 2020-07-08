@@ -3,25 +3,23 @@ title: 針對適用于 IE 的 Azure 存取面板擴充功能進行疑難排解 |
 description: 如何使用群組原則針對我的 app 入口網站部署 Internet Explorer 附加元件。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 16abfbeacd972ee8b0ab55f09945e687c95f0093
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67723915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763256"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>疑難排解 Internet Explorer 的存取面板延伸模組
 
@@ -40,7 +38,7 @@ ms.locfileid: "67723915"
 
 1. [選取此連結以下載診斷工具。](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. 開啟檔案，並將內容解壓縮至您的電腦。
-1. 若要執行此工具，請以滑鼠右鍵按一下名為*accesspanelextensiondiagnostictool 檔案*的檔案，然後選取 [**以** > **Microsoft Windows 為基礎的腳本主機**開啟]。
+1. 若要執行此工具，請以滑鼠右鍵按一下名為*AccessPanelExtensionDiagnosticTool.js*的檔案，然後選取 [**以**  >  **Microsoft Windows 為基礎的腳本主機**開啟]。
 
     ![[開啟檔案] > [Microsoft Windows Based Script Host]](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 

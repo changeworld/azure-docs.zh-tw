@@ -5,12 +5,11 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022175"
 ---
 # <a name="late-stage-reprojection"></a>延遲階段重新投影
 
@@ -24,7 +23,7 @@ ms.locfileid: "80680982"
 
 ## <a name="choose-lsr-mode-in-unity"></a>選擇 Unity 中的 LSR 模式
 
-在 Unity 編輯器中，移至 [檔案] *> [組建設定*]。 選取左下方的 [*玩家設定*]，然後勾選 [ *PLAYER] > XR 設定] > [虛擬實境 sdk] > [Windows Mixed Reality* ]，不論是否已核取 [**啟用深度緩衝區共用**]：
+在 Unity 編輯器中，移至 *:::no-loc text="File > Build Settings":::* 。 選取 *:::no-loc text="Player Settings":::* 左下方的，然後勾選 [ *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* 是否 **:::no-loc text="Enable Depth Buffer Sharing":::** 已核取]：
 
 ![深度緩衝區共用啟用旗標](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,9 +43,9 @@ ms.locfileid: "80680982"
 
 ### <a name="configure-planar-lsr-in-unity"></a>在 Unity 中設定平面 LSR
 
-平面參數是從所謂的*焦點*衍生而來，您必須提供每個畫面格`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`。 如需詳細資訊，請參閱[Unity 焦點點 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果您未設定焦點點，則會為您選擇一個回溯。 不過，自動回退通常會導致較佳的結果。
+平面參數是從所謂的*焦點*衍生而來，您必須提供每個畫面格 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 。 如需詳細資訊，請參閱[Unity 焦點點 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果您未設定焦點點，則會為您選擇一個回溯。 不過，自動回退通常會導致較佳的結果。
 
-您可以自行計算焦點，但根據遠端轉譯主機所計算的工作點可能會有意義。 呼叫`RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint`以取得該。 系統會要求您提供用來表示焦點的座標框架。 在大部分的情況下，您只想要從`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr`這裡提供結果。
+您可以自行計算焦點，但根據遠端轉譯主機所計算的工作點可能會有意義。 呼叫 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` 以取得該。 系統會要求您提供用來表示焦點的座標框架。 在大部分的情況下，您只想要從這裡提供結果 `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` 。
 
 通常用戶端和主機都會呈現另一端不知道的內容，例如用戶端上的 UI 元素。 因此，將遠端焦點點結合到本機計算的區域可能是合理的。
 

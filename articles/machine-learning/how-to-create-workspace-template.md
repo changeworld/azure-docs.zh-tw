@@ -5,17 +5,16 @@ description: 了解如何使用 Azure Resource Manager 範本建立新的 Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392656"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -65,7 +64,7 @@ ms.locfileid: "83681539"
 > [!TIP]
 > 雖然與本文件建立關聯的範本會建立新 Azure Container Registry，但您也可建立新的工作區，而不需要建立容器登錄。 當執行需要容器登錄的作業時，將會建立一個。 例如，定型或部署模型。
 >
-> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。
+> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。 不過，您使用的容器登錄必須啟用系統__管理員帳戶__。 如需啟用系統管理員帳戶的相關資訊，請參閱系統[管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

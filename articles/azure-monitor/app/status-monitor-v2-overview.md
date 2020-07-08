@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770955"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>為內部部署伺服器部署 Azure 監視器 Application Insights 代理程式
@@ -22,11 +21,11 @@ Application Insights 代理程式（先前稱為狀態監視器 V2）是發佈�
 遙測會傳送至 Azure 入口網站，您可以在其中[監視](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)您的應用程式。
 
 > [!NOTE]
-> 此模組目前僅支援以 IIS 裝載之 .NET web 應用程式的無程式碼檢測。 使用 SDK 來檢測 ASP.NET Core、JAVA 和 node.js 應用程式。
+> 此模組目前僅支援以 IIS 裝載之 .NET web 應用程式的無程式碼檢測。 使用 SDK 來檢測 ASP.NET Core、JAVA 和 Node.js 應用程式。
 
 ## <a name="powershell-gallery"></a>PowerShell 資源庫
 
-Application Insights 代理程式位於此處： https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
+Application Insights 代理程式位於此處： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
 
 ![PowerShell 資源庫](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,7 +53,7 @@ Application Insights 代理程式位於此處： https://www.powershellgallery.c
 
 - Application Insights 代理程式是否支援 proxy 安裝？
 
-  *是*。 有多種方式可以下載 Application Insights 代理程式。 如果您的電腦可存取網際網路，您可以使用`-Proxy`參數上架到 PowerShell 資源庫。
+  *是*。 有多種方式可以下載 Application Insights 代理程式。 如果您的電腦可存取網際網路，您可以使用參數上架到 PowerShell 資源庫 `-Proxy` 。
 您也可以手動下載模組，並將它安裝在您的電腦上，或直接使用它。
 每個選項都會在[詳細指示](status-monitor-v2-detailed-instructions.md)中加以說明。
 

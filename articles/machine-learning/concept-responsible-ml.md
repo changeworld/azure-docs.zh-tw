@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920358"
 ---
 # <a name="responsible-machine-learning-ml"></a>可靠的機器學習服務 (ML)
 
@@ -36,7 +35,7 @@ ms.locfileid: "83595007"
 
 ## <a name="interpret-and-explain-model-behavior"></a>解讀和說明模型行為
 
-難以解釋或黑箱系統可能會造成問題，因為這會讓專案關係人 (例如系統開發人員、主管、使用者和商務決策者) 難以了解系統做出特定決策的原因。 相較於其他 AI 系統，有些 AI 系統較易於說明，有時也會在具有較高準確度的系統與更易於說明的系統之間進行取捨。
+難以解釋或不透明的系統可能會造成問題，因為它讓專案關係人（例如系統開發人員、主管、使用者和商務決策者）難以瞭解系統做出特定決策的原因。 相較於其他 AI 系統，有些 AI 系統較易於說明，有時也會在具有較高準確度的系統與更易於說明的系統之間進行取捨。
 
 若要建置可解譯的 AI 系統，請使用 [InterpretML](https://github.com/interpretml/interpret)，這是由 Microsoft 所建置的開放原始碼套件。 [InterpretML 可以在 Azure Machine Learning 中使用](how-to-machine-learning-interpretability.md)，用來[解讀和說明您的機器學習模型](how-to-machine-learning-interpretability-aml.md)，包括[自動化機器學習模型](how-to-machine-learning-interpretability-automl.md)。
 
@@ -61,11 +60,14 @@ AI 系統中的不公平性可能會導致下列非預期的結果：
 
 實作差異隱私系統十分困難。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) 是開放原始碼專案，其中包含用來建立全域差異隱私系統的不同元件。 若要深入了解差異隱私權和 WhiteNoise 專案，請參閱 [使用差異隱私權和 WhiteNoise 來保留資料隱私權](./concept-differential-privacy.md)一文。
 
+> [!NOTE]
+> 請注意，我們會重新命名此工具組，並會在接下來的幾周內引進新的名稱。 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>使用資料表記錄機器學習生命週期
 
 在機器學習流程中記錄正確的資訊，是在每個階段做出可靠決策的關鍵。 資料表是一種方法，可記錄機器學習生命週期中使用和建立的機器學習資產。
 
-模型通常會被視為「黑箱」，而且通常只會有少量的相關資訊。 由於機器學習系統變得越來越普遍，並廣泛地用於決策，因此使用資料表可進一步開發更多可靠的機器學習系統。
+模型通常會被視為「不透明的方塊」，而且經常會有一些相關資訊。 由於機器學習系統變得越來越普遍，並廣泛地用於決策，因此使用資料表可進一步開發更多可靠的機器學習系統。
 
 建議您記錄為一些模型資訊，以作為資料表的一部分內容：
 
@@ -80,4 +82,5 @@ AI 系統中的不公平性可能會導致下列非預期的結果：
 
 ## <a name="additional-resources"></a>其他資源
 
+- 使用 homomorphic 加密來[部署加密的推斷 web 服務](how-to-homomorphic-encryption-seal.md)。
 - 深入了解機器學習系統文件的 [有關 ML](https://www.partnershiponai.org/about-ml/) 指導方針集 。

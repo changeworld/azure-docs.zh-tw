@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321491"
 ---
 # <a name="network-security-groups"></a>網路安全性群組
 <a name="network-security-groups"></a>
 
 您可以使用 Azure 網路安全性群組來篩選進出 Azure 虛擬網路中 Azure 資源的網路流量。 網路安全性群組包含[安全性規則](#security-rules)，可允許或拒絕來自數種 Azure 資源類型的輸入網路流量或輸出網路流量。 您可以為每個規則指定來源和目的地、連接埠及通訊協定。
+
 本文說明網路安全性群組規則的屬性、套用的[預設安全性規則](#default-security-rules)，以及您可以修改的規則內容，以建立增強的[安全性規則](#augmented-security-rules)。
 
 ## <a name="security-rules"></a><a name="security-rules"></a>安全性規則
@@ -34,9 +34,9 @@ ms.locfileid: "81269868"
 |---------|---------|
 |Name|網路安全性群組中的唯一名稱。|
 |優先順序 | 100 和 4096 之間的數字。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。|
-|來源或目的地| 任何或個別的 IP 位址、無類別網域間路由 (CIDR) 區塊 (例如 10.0.0.0/24)、[服務標籤](service-tags-overview.md)或[應用程式安全性群組](#application-security-groups)。 當您指定 Azure 資源的位址時，可以指定指派給資源的私人 IP 位址。 在 Azure 針對輸入流量將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出流量將私人 IP 位址轉譯為公用 IP 位址之前，網路安全性群組會進行處理。 深入了解 Azure [IP 位址](virtual-network-ip-addresses-overview-arm.md)。 指定範圍、服務標籤或應用程式安全性群組，可讓您建立較少的安全性規則。 在規則中指定多個個別 IP 位址和範圍（您無法指定多個服務標籤或應用程式群組）的功能稱為增強型[安全性規則](#augmented-security-rules)。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立的網路安全性群組中指定多個 IP 位址與 IP 位址範圍。 深入瞭解[Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
+|來源或目的地| 任何或個別的 IP 位址、無類別網域間路由 (CIDR) 區塊 (例如 10.0.0.0/24)、服務標籤或應用程式安全性群組。 當您指定 Azure 資源的位址時，可以指定指派給資源的私人 IP 位址。 在 Azure 針對輸入流量將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出流量將私人 IP 位址轉譯為公用 IP 位址之前，網路安全性群組會進行處理。 . 指定範圍、服務標籤或應用程式安全性群組，可讓您建立較少的安全性規則。 在規則中指定多個個別 IP 位址和範圍（您無法指定多個服務標籤或應用程式群組）的功能稱為增強型[安全性規則](#augmented-security-rules)。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立的網路安全性群組中指定多個 IP 位址與 IP 位址範圍。|
 |通訊協定     | TCP、UDP、ICMP 或 Any。|
-|方向| 規則是否套用至輸入或輸出流量。|
+|Direction| 規則是否套用至輸入或輸出流量。|
 |連接埠範圍     |您可以指定個別連接埠或連接埠範圍。 例如，您可以指定 80 或 10000-10005。 指定範圍可讓您建立較少的安全性規則。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立之網路安全性群組的相同安全性規則中指定多個連接埠與連接埠範圍。   |
 |動作     | 允許或拒絕        |
 
@@ -53,19 +53,19 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取權|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|Allow|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|允許|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取權|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|Allow|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|允許|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取權|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒絕|
 
@@ -73,19 +73,19 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | Allow |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | 允許 |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | Allow |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | 允許 |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒絕 |
 
@@ -99,7 +99,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 #### <a name="service-tags"></a>服務標籤
 
-服務標記代表來自指定 Azure 服務的一組 IP 位址首碼。 它有助於將網路安全性規則頻繁更新的複雜度降到最低。
+服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 它有助於將網路安全性規則頻繁更新的複雜度降到最低。
 
 如需詳細資訊，請參閱[Azure 服務標記](service-tags-overview.md)。 如需如何使用儲存體服務標籤來限制網路存取的範例，請參閱[限制對 PaaS 資源的網路存取](tutorial-restrict-network-access-to-resources.md)。
 
@@ -148,7 +148,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 > 網路安全性群組會與子網或部署在傳統部署模型中的虛擬機器和雲端服務相關聯，以及 Resource Manager 部署模型中的子網或網路介面。 若要深入了解 Azure 部署模型，請參閱[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 > [!TIP]
-> 除非您有特殊原因要這麼做，否則我們建議您讓網路安全性群組與子網路或網路介面的其中一個建立關聯，而非同時與這兩者建立關聯。 因為如果與子網路相關聯的網路安全性群組中，以及與網路介面相關聯的網路安全性群組中都存在規則，則這兩個規則可能會發生衝突，您可能會遇到需要進行疑難排解的非預期通訊問題。
+> 除非您有特定的原因，否則建議您將網路安全性群組與子網或網路介面建立關聯，但不能同時與兩者相關聯。 因為如果與子網路相關聯的網路安全性群組中，以及與網路介面相關聯的網路安全性群組中都存在規則，則這兩個規則可能會發生衝突，您可能會遇到需要進行疑難排解的非預期通訊問題。
 
 ## <a name="azure-platform-considerations"></a>Azure 平台的考量
 

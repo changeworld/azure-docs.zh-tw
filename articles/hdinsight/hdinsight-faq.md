@@ -9,12 +9,11 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022209"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題集
 
@@ -44,11 +43,19 @@ ms.locfileid: "82780839"
 
 請參閱[Azure HDInsight 叢集中的資源類型](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)。
 
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>建立大型 HDInsight 叢集的最佳作法有哪些？
+
+1. 建議使用[自訂 AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)來設定 HDInsight 叢集，以改善叢集擴充性。
+2. 使用[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)建立 HDInsight 叢集，以利用 Azure Data Lake Storage Gen2 的更高頻寬和其他效能特性。
+3. 前端節點應該夠大，以容納在這些節點上執行的多個主要服務。
+4. 某些特定的工作負載（例如互動式查詢）也需要較大的 Zookeeper 節點。 請考慮至少8個核心 Vm。
+5. 在 Hive 和 Spark 的情況下，請使用[外部 Hive 中繼存放區](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)。
+
 ## <a name="individual-components"></a>個別元件
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>我可以在叢集上安裝其他元件嗎？
 
-可以。 若要安裝其他元件或自訂叢集設定，請使用：
+是。 若要安裝其他元件或自訂叢集設定，請使用：
 
 - 在建立期間或之後的腳本。 腳本是透過[腳本動作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)叫用。 [腳本動作] 是您可以從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用的設定選項。 此設定選項可以從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用。
 
@@ -68,7 +75,7 @@ ms.locfileid: "82780839"
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>如何? 變更 Ambari 中的時區嗎？
 
-1. 開啟位於`https://CLUSTERNAME.azurehdinsight.net`的 AMBARI Web UI，其中 CLUSTERNAME 是您的叢集名稱。
+1. 開啟位於的 Ambari Web UI `https://CLUSTERNAME.azurehdinsight.net` ，其中 CLUSTERNAME 是您的叢集名稱。
 2. 在右上角，選取 [管理] |設置。 
 
    ![Ambari 設定](media/hdinsight-faq/ambari-settings.png)
@@ -79,9 +86,9 @@ ms.locfileid: "82780839"
 
 ## <a name="metastore"></a>Metastore
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>如何從現有的中繼存放區遷移至 Azure SQL Server？ 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>如何從現有的中繼存放區遷移至 Azure SQL Database？ 
 
-若要從 SQL Server 遷移至 Azure SQL Server，請參閱[教學課程：使用 DMS，將 SQL Server 遷移到 Azure SQL Database 離線中的單一資料庫或](../dms/tutorial-sql-server-to-azure-sql.md)集區資料庫。
+若要從 SQL Server 遷移至 Azure SQL Database，請參閱[教學課程：使用 DMS，將 SQL Server 遷移到 Azure SQL Database 離線中的單一資料庫或](../dms/tutorial-sql-server-to-azure-sql.md)集區資料庫。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>刪除叢集時，Hive 中繼存放區是否刪除？
 
@@ -133,7 +140,7 @@ Hive 中繼存放區用來儲存 Hive 伺服器所使用之資料來源的中繼
 
 - 邊緣節點：您可以將另一個邊緣節點新增至叢集，如在[HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點](hdinsight-apps-use-edge-node.md)中所述。
 
-- 獨立節點 .. 您可以將獨立虛擬機器新增到相同的子網，並使用私用端點從該虛擬機器存取叢集`https://<CLUSTERNAME>-int.azurehdinsight.net`。 如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
+- 獨立節點 .. 您可以將獨立虛擬機器新增到相同的子網，並使用私用端點從該虛擬機器存取叢集 `https://<CLUSTERNAME>-int.azurehdinsight.net` 。 如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
 
 ### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>我應該將資料儲存在邊緣節點的本機磁片上嗎？
 
@@ -170,7 +177,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
+建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -180,11 +187,11 @@ ktutil: q
 
 針對審核需求，Microsoft 建議啟用 Azure 監視器記錄，如[使用 Azure 監視器記錄來監視 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)叢集中所述。
 
-### <a name="can-i-disable-clamscan-on-my-cluster"></a>我可以在`Clamscan`叢集上停用嗎？
+### <a name="can-i-disable-clamscan-on-my-cluster"></a>我可以在叢集上停用 `Clamscan` 嗎？
 
-`Clamscan`是在 HDInsight 叢集上執行並由 Azure 安全性（azsecd）用來保護您的叢集免于遭受病毒攻擊的防毒軟體。 Microsoft 強烈建議使用者避免對預設`Clamscan`設定進行任何變更。
+`Clamscan`是在 HDInsight 叢集上執行並由 Azure 安全性（azsecd）用來保護您的叢集免于遭受病毒攻擊的防毒軟體。 Microsoft 強烈建議使用者避免對預設設定進行任何變更 `Clamscan` 。
 
-此程式不會干擾或採取任何迴圈，而不是其他進程。 它一律會產生其他進程。 只有在系統`Clamscan`閒置時，才看得到 CPU 尖峰。  
+此程式不會干擾或採取任何迴圈，而不是其他進程。 它一律會產生其他進程。 `Clamscan`只有在系統閒置時，才看得到 CPU 尖峰。  
 
 在您必須控制排程的案例中，您可以使用下列步驟：
 
@@ -203,7 +210,7 @@ LLAP 是基於安全性考慮（Apache Ranger）而啟用，而不是效能。 �
 
 ### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>如何在建立 ESP 叢集之後新增其他 AAD 群組？
 有兩種方式可達成此目標： 1-您可以重新建立叢集，並在叢集建立時新增額外的群組。 如果您在 AAD-DS 中使用範圍同步處理，請確定群組 B 已包含在限域的同步處理中。
-2-將群組新增為先前用來建立 ESP 叢集之群組的嵌套子群組。 例如，如果您已建立具有群組`A`的 ESP 叢集，您稍後可以在 [新增群組`B` ] 做為的`A`嵌套子群組，然後在大約一小時後自動同步處理並在叢集中使用。 
+2-將群組新增為先前用來建立 ESP 叢集之群組的嵌套子群組。 例如，如果您已建立具有群組的 ESP 叢集 `A` ，您稍後可以在 [新增群組] `B` 做為的嵌套子群組，然後在 `A` 大約一小時後自動同步處理並在叢集中使用。 
 
 ## <a name="storage"></a>儲存體
 
@@ -241,20 +248,20 @@ done
 ```
  
 > [!NOTE]
-> 檔案*檔案名 .txt*會擁有 blob 容器中檔案的絕對路徑。
+> 檔案*filenames.txt*將會擁有 blob 容器中檔案的絕對路徑。
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>是否有任何適用于儲存體的 Ranger 外掛程式？
 
 目前，blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2 不存在任何 Ranger 外掛程式。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage。 您至少可以使用 HDFS 工具，以手動方式在檔案系統層級設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集會使用叢集層級的 Azure Active Directory 來執行一些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務來查詢 Data Lake Storage Gen2 中的資料嗎？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>我可以在叢集上增加 HDFS 儲存體，而不需要增加背景工作節點的磁片大小嗎？
 
-不需要。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
+否。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
 
 ## <a name="edge-nodes"></a>邊緣節點
 
@@ -276,14 +283,14 @@ done
 
 您可以使用下列 REST 端點，以 JSON 格式提取必要的資訊。 使用基本驗證標頭來提出要求。
 
-- `Tez Query View`： *HTTPs：\//\<cluster name>. azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`： *HTTPs：\//\<cluster name>. azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- `Tez Query View`： *HTTPs： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`： *HTTPs： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何? 使用 Azure Active Directory 使用者從 HDI 叢集取出設定詳細資料嗎？
 
 若要與您的 AAD 使用者協商適當的驗證權杖，請使用下列格式來完成閘道：
 
-* HTTPs://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* HTTPs:// `<cluster dnsname>` . azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>如何? 使用 Ambari Restful API 來監視 YARN 效能嗎？
 

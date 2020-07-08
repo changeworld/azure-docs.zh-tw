@@ -1,16 +1,15 @@
 ---
 title: 使用系統健康情況報表進行疑難排解
 description: 描述針對 Azure Service Fabric 元件及其使用量所傳送的健康狀態報告，以便對叢集或應用程式問題進行疑難排解
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392568"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系統健康狀態報告進行疑難排解
 Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系統健康情況報告。 [健康狀態資料存放區](service-fabric-health-introduction.md#health-store) 會根據系統報告來建立和刪除實體。 它也會將這些實體組織為階層以擷取實體的互動。
@@ -639,30 +638,30 @@ HealthEvents          :
 
 屬性和文字會指出已停滯的 API。 針對不同已停滯 API 所採取的後續步驟皆不相同。 *IStatefulServiceReplica*或*IStatelessServiceInstance*上的任何 API 通常都是服務程式代碼中的錯誤。 下一節將說明這些如何轉譯為[Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
 
-- **IStatefulServiceReplica**：此警告表示呼叫`CreateServiceInstanceListeners`、 `ICommunicationListener.OpenAsync`或時，如果遭到覆寫， `OnOpenAsync`則會停滯。
+- **IStatefulServiceReplica**：此警告表示呼叫、或時，如果遭到覆 `CreateServiceInstanceListeners` `ICommunicationListener.OpenAsync` 寫， `OnOpenAsync` 則會停滯。
 
 - **IStatefulServiceReplica.Close** 和 **IStatefulServiceReplica.Abort**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 也可能是那個 `ICommunicationListener.CloseAsync`，或者覆寫的 `OnCloseAsync` 是否已停滯。
 
 - **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 在此案例中，最佳解決方案是重新開機複本。
 
-- **IStatefulServiceReplica. ChangeRole （P）**：最常見的情況是服務尚未從`RunAsync`傳回工作。
+- **IStatefulServiceReplica. ChangeRole （P）**：最常見的情況是服務尚未從傳回工作 `RunAsync` 。
 
 可能會停滯的其他 API 呼叫會在**位於 ireplicator**介面上。 例如：
 
 - **IReplicator.CatchupReplicaSet**：此警告表示下列其中一種情況。 啟動的複本數不足。 若要了解是否為這種情況，請查看分割區中複本的複本狀態或 System.FM 健康情況報告，以進行停滯重新設定。 或者複本未認可作業。 PowerShell Cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用來判斷所有複本的進度。 問題出在其 `LastAppliedReplicationSequenceNumber` 值位於主要複本之 `CommittedSequenceNumber` 值後面的複本。
 
-- **位於 ireplicator. ireplicator.buildreplica （\<遠端 ReplicaId>）**：此警告表示組建程式發生問題。 如需詳細資訊，請參閱[複本生命週期](service-fabric-concepts-replica-lifecycle.md)。 可能是因為複寫器位址的設定不正確而造成。 如需詳細資訊，請參閱[設定具狀態可靠服務](service-fabric-reliable-services-configuration.md)和[在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)。 也可能是遠端節點上的問題。
+- **IReplicator.BuildReplica(\<Remote ReplicaId>)**：此警告表示在建置程序發生問題。 如需詳細資訊，請參閱[複本生命週期](service-fabric-concepts-replica-lifecycle.md)。 可能是因為複寫器位址的設定不正確而造成。 如需詳細資訊，請參閱[設定具狀態可靠服務](service-fabric-reliable-services-configuration.md)和[在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)。 也可能是遠端節點上的問題。
 
 ### <a name="replicator-system-health-reports"></a>複寫器系統健康情況報告
-**複寫佇列已滿：**
+複寫**佇列已滿：** 
 當複寫佇列已滿時，**系統**會報告警告。 在主要資料庫上，複寫佇列通常會因為一或多個次要複本太慢認可作業而排滿。 在次要複本上，這通常是因為服務緩慢而無法套用作業所造成。 當佇列有空間時，警告就會被清除。
 
 * **SourceId**：System.Replicator
 * **屬性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，視複本角色而定。
 * **後續步驟**：如果報表是在主要複本上，檢查叢集中節點之間的連線。 如果所有連線狀況良好，可能是至少一個具有高磁碟延遲時間的緩慢次要複本要套用作業。 如果報表是在次要複本上，請先檢查節點上的磁碟使用量和效能。 然後檢查從緩慢節點到主要複本的傳出連線。
 
-**RemoteReplicatorConnectionStatus：**
-主要複本上的**system.web**會在與次要（遠端）複寫器的連接狀況不良時回報警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
+**RemoteReplicatorConnectionStatus：** 
+當與次要（遠端）複寫器的連接狀況不良時，主要複本上的**system.web**會回報警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
 
 * **SourceId**：System.Replicator
 * **Property**：**RemoteReplicatorConnectionStatus**。

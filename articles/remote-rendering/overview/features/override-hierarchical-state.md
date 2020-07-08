@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021325"
 ---
 # <a name="hierarchical-state-override"></a>階層式狀態覆寫
 
@@ -27,23 +26,23 @@ ms.locfileid: "83758974"
 
 可以覆寫的一組固定狀態為：
 
-* **Hidden**：場景圖形中的個別網格會隱藏或顯示。
-* **濃淡色彩**：轉譯的物件可以使用其個別濃淡色彩和色調權重，以彩色色調轉譯。 下圖顯示滾輪邊緣的濃淡色彩。
+* **`Hidden`**：場景圖形中的個別網格會隱藏或顯示。
+* **`Tint color`**：轉譯的物件可以使用其個別色彩色彩和色調粗細，以彩色色彩呈現。 下圖顯示滾輪邊緣的濃淡色彩。
   
   ![濃淡色彩](./media/color-tint.png)
 
-* **透視**：幾何會以半透明的方式轉譯；例如用來顯示內部組件。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
+* **`See-through`**：幾何會以半透明的方式呈現，例如，用來顯示物件的內部部分。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
 
   ![透視](./media/see-through.png)
 
   > [!IMPORTANT]
   > 只有在使用 *TileBasedComposition* [轉譯模式](../../concepts/rendering-modes.md) 時，才可使用透視效果。
 
-* **已選取**：幾何會以[選取範圍外框](outlines.md)轉譯。
+* **`Selected`**：幾何會以[選取範圍外框](outlines.md)來呈現。
 
   ![選取範圍外框](./media/selection-outline.png)
 
-* **DisableCollision**：幾何不受[空間查詢](spatial-queries.md)的限制。 **隱藏**旗標不會關閉衝突，因此通常會一起設定這兩個旗標。
+* **`DisableCollision`**： Geometry 不會受到[空間查詢](spatial-queries.md)的豁免。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
 
 ## <a name="hierarchical-overrides"></a>階層式覆寫
 
@@ -87,7 +86,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>濃淡色彩
 
-濃淡色彩覆寫比較特殊，因為其同時具有開啟/關閉/繼承狀態和濃淡色彩屬性。 濃淡色彩的 Alpha 部分會定義色調效果的權重：如果設為 0.0，則不會顯示濃淡色彩；如果設定為 1.0，則會以純濃淡色彩轉譯物件。 若為介於中間的值，最終色彩會與濃淡色彩混合。 您可以變更每個畫面的濃淡色彩，以完成色彩動畫。
+覆 `tint color` 寫有點特殊，因為有開啟/關閉/繼承狀態和淡色色彩屬性。 濃淡色彩的 Alpha 部分會定義色調效果的權重：如果設為 0.0，則不會顯示濃淡色彩；如果設定為 1.0，則會以純濃淡色彩轉譯物件。 若為介於中間的值，最終色彩會與濃淡色彩混合。 您可以變更每個畫面的濃淡色彩，以完成色彩動畫。
 
 ## <a name="performance-considerations"></a>效能考量
 

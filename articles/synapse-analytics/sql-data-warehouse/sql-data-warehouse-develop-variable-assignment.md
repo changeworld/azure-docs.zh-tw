@@ -6,17 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213324"
 ---
 # <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中指派變數
 
@@ -24,7 +23,7 @@ ms.locfileid: "80633413"
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 設定變數
 
-SQL 集區中的`DECLARE`變數是使用語句或`SET`語句來設定。 使用 DECLARE 初始化變數是在 SQL 集區中設定變數值的其中一個最具彈性的方式。
+SQL 集區中的變數是使用 `DECLARE` 語句或語句來設定 `SET` 。 使用 DECLARE 初始化變數是在 SQL 集區中設定變數值的其中一個最具彈性的方式。
 
 ```sql
 DECLARE @v  int = 0

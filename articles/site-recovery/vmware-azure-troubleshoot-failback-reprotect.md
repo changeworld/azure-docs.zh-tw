@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75498099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84309946"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>針對從 Azure 至內部部署環境的容錯回復進行疑難排解
 
@@ -69,7 +68,7 @@ ms.locfileid: "75498099"
 
 ### <a name="error-code-78093"></a>錯誤碼 78093
 
-**VM 未執行，處於停止回應狀態或無法存取。**
+**VM 不在執行中、沒有回應或無法存取。**
 
 若要解決此問題：
 

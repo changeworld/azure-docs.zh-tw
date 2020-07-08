@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392347"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中資料表 API 的常見問題集
 
@@ -45,10 +44,10 @@ ms.locfileid: "83836221"
 
   | REST 方法 | REST 端點/查詢選項 | 文件 URL | 說明 |
   | ------------| ------------- | ---------- | ----------- |
-  | GET、PUT | `/?restype=service@comp=properties`| [設定資料表服務屬性](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)和[取得資料表服務屬性](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | 此端點可用來設定 CORS 規則、儲存體分析組態以及記錄設定。 CORS 目前不受支援，而且分析和記錄在 Azure Cosmos DB 和 Azure 儲存體資料表中的處理方式不同 |
-  | OPTIONS | `/<table-resource-name>` | [事前 CORS 資料表要求](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | 這是 CORS 的一部分，但目前不受 Azure Cosmos DB 支援。 |
-  | GET | `/?restype=service@comp=stats` | [取得資料表服務統計資料](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | 提供主要與次要資料庫之間的資料複寫速度有多快的資訊。 因為複寫是寫入的一部分，因此這不是 Cosmos DB 中的必須作業。 |
-  | GET、PUT | `/mytable?comp=acl` | [取得資料表 ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) 和[設定資料表 ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | 這會取得並設定用來管理共用存取簽章 (SAS) 的預存存取原則。 雖然 SAS 有受到支援，但其設定和管理方式並不相同。 |
+  | GET、PUT | `/?restype=service@comp=properties`| [設定資料表服務屬性](/rest/api/storageservices/set-table-service-properties)和[取得資料表服務屬性](/rest/api/storageservices/get-table-service-properties) | 此端點可用來設定 CORS 規則、儲存體分析組態以及記錄設定。 CORS 目前不受支援，而且分析和記錄在 Azure Cosmos DB 和 Azure 儲存體資料表中的處理方式不同 |
+  | OPTIONS | `/<table-resource-name>` | [事前 CORS 資料表要求](/rest/api/storageservices/preflight-table-request) | 這是 CORS 的一部分，但目前不受 Azure Cosmos DB 支援。 |
+  | GET | `/?restype=service@comp=stats` | [取得資料表服務統計資料](/rest/api/storageservices/get-table-service-stats) | 提供主要與次要資料庫之間的資料複寫速度有多快的資訊。 因為複寫是寫入的一部分，因此這不是 Cosmos DB 中的必須作業。 |
+  | GET、PUT | `/mytable?comp=acl` | [取得資料表 ACL](/rest/api/storageservices/get-table-acl) 和[設定資料表 ACL](/rest/api/storageservices/set-table-acl) | 這會取得並設定用來管理共用存取簽章 (SAS) 的預存存取原則。 雖然 SAS 有受到支援，但其設定和管理方式並不相同。 |
 
 * Azure Cosmos DB 資料表 API 只支援 JSON 格式，而不支援 ATOM。
 

@@ -3,21 +3,20 @@ title: 使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 titleSuffix: Azure
 description: 使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
-ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710842"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 
-提交對等互連要求之前，您應該先使用下列步驟，將您的 ASN 與 Azure 訂用帳戶建立關聯。
+身為網際網路服務提供者或網際網路交換提供者，您應該先使用下列步驟，將您的 ASN 與 Azure 訂用帳戶建立關聯。
 
 如果您想要的話，可以使用 [PowerShell](howto-subscription-association-powershell.md) 完成本指南。
 
@@ -55,8 +54,7 @@ ms.locfileid: "83683971"
     > ![註冊已完成](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>建立 PeerAsn
-身為「網際網路服務提供者」或「網際網路交換服務提供者」，您可以建立新的 PeerAsn 資源，將自治號碼 (ASN) 與 Azure 訂用帳戶建立關聯。 您可以藉由導覽至[[將 PeerASN 建立關聯] 頁面](https://go.microsoft.com/fwlink/?linkid=2129592)，為需要建立關聯的每個 ASN，將多個 ASN 與訂用帳戶建立關聯。
-
+身為網際網路服務提供者或網際網路交換提供者，您可以建立新的 PeerAsn 資源，以將自發系統編號（ASN）與 Azure 訂用帳戶[建立關聯](https://go.microsoft.com/fwlink/?linkid=2129592)。 您可以為需要關聯的每個 ASN 建立**PeerAsn** ，藉此建立多個 asn 與訂用帳戶的關聯。
 
 1. 在 [將對等 ASN 建立關聯] 頁面的 [基本] 索引標籤下方，填寫欄位，如下所示。
 
