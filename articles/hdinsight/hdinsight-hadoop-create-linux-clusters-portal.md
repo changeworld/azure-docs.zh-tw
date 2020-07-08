@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083367"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站在 HDInsight 中建立 Linux 型叢集
 
@@ -93,7 +94,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 從 [**安全性 + 網路**] 索引標籤中，提供下列資訊：
 
-|屬性 |說明 |
+|屬性 |描述 |
 |---|---|
 |企業安全性套件|選擇性：選取要使用**企業安全性套件**的核取方塊。 如需詳細資訊，請參閱[使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)叢集。|
 |TLS|選擇性：從下拉式清單中選取 [TLS 版本]。 如需詳細資訊，請參閱[傳輸層安全性](./transport-layer-security.md)。|
@@ -110,7 +111,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 從 [設定 **+ 定價**] 索引標籤中，提供下列資訊：
 
-|屬性 |說明 |
+|屬性 |描述 |
 |---|---|
 |+ 新增應用程式|選擇性：選取您想要的任何應用程式。 Microsoft、獨立軟體廠商 (ISV) 或您可以開發這些應用程式。 如需詳細資訊，請參閱[在叢集建立期間安裝應用程式](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)。|
 |節點大小|選擇性：選取不同大小的節點。|

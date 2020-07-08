@@ -1,5 +1,5 @@
 ---
-title: 教學課程：將 SQL Server online 遷移至 SQL 受控實例
+title: 教學課程：將 SQL Server online 遷移至 SQL 受控執行個體
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務，從 SQL Server 執行線上遷移至 Azure SQL 受控執行個體。
 services: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084217"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 在線上將 SQL Server 遷移至 Azure SQL 受控執行個體
 
@@ -77,11 +78,11 @@ ms.locfileid: "84187943"
 * 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 * 如果您是在來源資料庫前面使用防火牆設備，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取用於移轉的來源資料庫，以及透過 SMB 連接埠 445 存取檔案。
 * 遵循在[Azure 入口網站中建立 sql 受控執行個體一](https://aka.ms/sqldbmi)文中的詳細資料，建立 SQL 受控執行個體。
-* 確定用來連線來源 SQL Server 和目標受控執行個體的登入是 sysadmin 伺服器角色的成員。
+* 確定用來連接來源 SQL Server 和目標 SQL 受控執行個體的登入是系統管理員（sysadmin）伺服器角色的成員。
 * 提供 SMB 網路共用，其中包含您所有資料庫的完整資料庫備份檔案及後續交易記錄備份檔案，而 Azure 資料庫移轉服務會使用這些檔案來進行資料庫移轉。
 * 確認執行來源 SQL Server 執行個體的服務帳戶在您所建立的網路共用上具有寫入權限，而且來源伺服器的電腦帳戶對相同的共用具備讀取/寫入存取權。
 * 記下在您先前建立的網路共用上具有完整控制權限的 Windows 使用者 (和密碼)。 Azure 資料庫移轉服務會模擬使用者認證，以便將備份檔案上傳到 Azure 儲存體容器以進行還原作業。
-* 建立 Azure Active Directory 應用程式識別碼，以產生應用程式識別碼金鑰，讓 Azure 資料庫移轉服務可用它來連線至目標 Azure Database 受控執行個體和 Azure 儲存體容器。 如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
+* 建立 Azure Active Directory 應用程式識別碼，以產生應用程式識別碼金鑰，讓 Azure 資料庫移轉服務用來連線至目標 Azure 資料庫受控執行個體並 Azure 儲存體容器。 如需詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
 
   > [!NOTE]
   > Azure 資料庫移轉服務需要訂用帳戶的「參與者」權限，以取得指定的應用程式識別碼。 或者，您可以建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定權限。 如需使用自訂角色的逐步指引，請參閱[SQL Server 至 SQL 受控執行個體線上遷移的自訂角色](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)一文。
@@ -263,8 +264,8 @@ ms.locfileid: "84187943"
 
     ![完全移轉完成](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 如需示範如何使用 T-sql RESTORE 命令將資料庫移轉至受控實例的教學課程，請參閱[使用還原命令將備份還原至受控實例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
-* 如需受控實例的相關資訊，請參閱[受控實例是什麼](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
-* 如需將應用程式連線至受控實例的相關資訊，請參閱連線[應用程式](../azure-sql/managed-instance/connect-application-instance.md)。
+* 如需示範如何使用 T-sql RESTORE 命令將資料庫移轉至 SQL 受控執行個體的教學課程，請參閱[使用 restore 命令將備份還原至 sql 受控執行個體](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+* 如需 SQL 受控執行個體的詳細資訊，請參閱[什麼是 sql 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
+* 如需將應用程式連接到 SQL 受控執行個體的詳細資訊，請參閱[連接應用程式](../azure-sql/managed-instance/connect-application-instance.md)。

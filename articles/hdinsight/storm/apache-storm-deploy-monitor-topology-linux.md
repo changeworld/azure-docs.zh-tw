@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085730"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>部署和管理 HDInsight 上的 Apache Storm 拓撲
 
@@ -265,7 +266,7 @@ REST API 的要求必須使用*基本驗證*，因此您必須使用 HDInsight �
 
 從 REST API 傳回的資訊可能只可在叢集中使用。 例如，針對[Apache ZooKeeper](https://zookeeper.apache.org/)伺服器傳回的完整功能變數名稱（FQDN）無法從網際網路存取。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解如何[使用 Apache Maven 開發 Java 型拓撲](apache-storm-develop-java-topology.md)。
 

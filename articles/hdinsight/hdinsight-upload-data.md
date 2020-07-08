@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085866"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上傳 Apache Hadoop 作業的資料
 
 HDInsight 透過 Azure 儲存體提供 Hadoop 分散式檔案系統（HDFS），並 Azure Data Lake Storage。 此儲存體包括 Gen1 和 Gen2。 Azure 儲存體和 Data Lake Storage Gen1 和 Gen2 是設計為 HDFS 延伸模組。 它們可讓 Hadoop 環境中的完整元件集直接在它管理的資料上運作。 Azure 儲存體、Data Lake Storage Gen1 和 Gen2 是不同的檔案系統。 系統會針對資料的儲存和計算的資料進行優化。 如需使用 Azure 儲存體之優點的詳細資訊，請參閱搭配[HDInsight 使用 Azure 儲存體](hdinsight-hadoop-use-blob-storage.md)。 另請參閱搭配[Hdinsight 使用 Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md)，並搭配[hdinsight 使用 Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始進行之前，請注意下列需求：
 
@@ -62,11 +62,11 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 因為 HDInsight 的預設檔案系統是 Azure 儲存體，所以/example/data/data.txt 實際上是在 Azure 儲存體中。 您也可以用下列語法來參考此檔案：
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
 或
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 如需使用檔案的其他 Hadoop 命令清單，請參閱[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
@@ -77,7 +77,7 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 其他還有數個應用程式也會提供可搭配 Azure 儲存體使用的圖形化介面。 以下資料表提供數個這類應用程式的清單：
 
-| Client | Linux | OS X | Windows |
+| 用戶端 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure 儲存體總管](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
@@ -98,7 +98,7 @@ Azure Data Factory 服務是一種完全受控的服務，可用於撰寫資料�
 
 |儲存體類型|文件|
 |----|----|
-|Azure Blob 儲存體|[使用 Azure Data Factory 在 Azure Blob 儲存體之間複製資料](../data-factory/connector-azure-blob-storage.md)|
+|Azure Blob 儲存體|[使用 Azure Data Factory 將資料複製到 Azure Blob 儲存體或從該處複製資料](../data-factory/connector-azure-blob-storage.md)|
 |Azure Data Lake Storage Gen1|[使用 Azure Data Factory 從 Azure Data Lake Storage Gen1 來回複製資料](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen2 中](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
@@ -121,7 +121,7 @@ Azure 儲存體也可以使用 Azure SDK，透過下列程式設計語言進行�
 
 如需安裝 Azure SDK 的詳細資訊，請參閱 [Azure 下載](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已瞭解如何將資料匯入 HDInsight，請閱讀下列文章以瞭解分析：
 

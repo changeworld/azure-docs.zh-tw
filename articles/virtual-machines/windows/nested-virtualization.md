@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: cf12e1c5c4f220aca7a1d1125581f41b1f0ada91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297846"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083503"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中啟用巢狀虛擬化
 
@@ -181,6 +181,3 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 在客體虛擬機器中，開啟瀏覽器，然後瀏覽至網頁。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>設定客體虛擬機器的內部網路連線
-
-如需如何啟用客體 VM 與 Azure VM 之間透明連線的指示，請參閱[此文件](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)。

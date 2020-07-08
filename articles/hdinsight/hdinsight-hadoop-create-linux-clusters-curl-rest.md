@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239927"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083333"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
 
@@ -345,7 +345,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已成功建立 HDInsight 叢集，請使用下列各項來瞭解如何使用您的叢集。
 

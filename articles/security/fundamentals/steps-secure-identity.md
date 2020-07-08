@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7e8e12c3e10243e2e8adb23527683813f33a75a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757886"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084370"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -114,9 +115,9 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 ### <a name="restrict-user-consent-operations"></a>限制使用者同意作業
 
-請務必了解各種 [Azure AD 應用程式同意體驗](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)、[權限和同意的類型](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)，以及其對組織安全性狀態的影響。 根據預設，Azure AD 中的所有使用者都可以授與應用程式，以利用 Microsoft 身分識別平台來存取組織的資料。 雖然允許使用者自行同意確實可以讓使用者輕鬆地取得與 Microsoft 365、Azure 及其他服務整合的實用應用程式，但如果沒有小心地使用和監視，這麼做也可能代表風險。
+請務必了解各種 [Azure AD 應用程式同意體驗](../../active-directory/develop/application-consent-experience.md)、[權限和同意的類型](../../active-directory/develop/v2-permissions-and-consent.md)，以及其對組織安全性狀態的影響。 根據預設，Azure AD 中的所有使用者都可以授與應用程式，以利用 Microsoft 身分識別平台來存取組織的資料。 雖然允許使用者自行同意確實可以讓使用者輕鬆地取得與 Microsoft 365、Azure 及其他服務整合的實用應用程式，但如果沒有小心地使用和監視，這麼做也可能代表風險。
 
-Microsoft 建議[停用未來的使用者同意作業](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)以協助減少介面區並降低此風險。 停用使用者同意功能時，先前所授與的同意仍然會有效，但未來所有的同意作業都必須由系統管理員執行。 使用者可以透過整合式[管理員同意要求工作流程](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)或透過您自己的支援流程來要求管理員同意。 停用終端使用者同意之前，請使用我們的[建議](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests)在組織中規劃這項變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者授與同意](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)，以確定尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可在所有案例中供所有使用者使用，請使用[應用程式指派](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)和條件式存取，以限制使用者對[特定應用程式](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的存取。
+Microsoft 建議限制使用者同意，以協助降低您的介面區並降低此風險。 您也可以使用[應用程式同意原則（預覽）](../../active-directory/manage-apps/configure-user-consent.md) ，將終端使用者同意限制為僅限已驗證的發行者，以及您所選取的許可權。 若使用者同意受到限制，則仍會接受先前的同意授與，但所有未來的同意作業都必須由系統管理員執行。 在受限制的情況下，使用者可以透過整合式[管理員同意要求工作流程](../../active-directory/manage-apps/configure-admin-consent-workflow.md)或您自己的支援流程來要求系統管理員同意。 在限制使用者同意之前，請使用我們的[建議](../../active-directory/manage-apps/manage-consent-requests.md)，在您的組織中規劃這項變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者授與同意](../../active-directory/develop/v2-admin-consent.md)，以確定尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可在所有案例中供所有使用者使用，請使用[應用程式指派](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和條件式存取，以限制使用者對[特定應用程式](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的存取。
 
 請確定使用者可以要求管理員核准其使用新的應用程式，以減少使用者摩擦、將支援量降到最低，以及防止使用者使用非 Azure AD 認證來註冊應用程式。 一旦您規範同意作業，管理員就應該定期稽核應用程式和已同意的權限。
 

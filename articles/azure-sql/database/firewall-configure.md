@@ -1,6 +1,6 @@
 ---
 title: IP 防火牆規則
-description: 在 Azure SQL Database 或 Azure Synapse Analytics 防火牆中設定資料庫的伺服器層級 IP 防火牆規則。 管理單一或集區資料庫的存取和設定資料庫層級 IP 防火牆規則。
+description: 在 Azure SQL Database 或 Azure Synapse Analytics 防火牆中設定資料庫的伺服器層級 IP 防火牆規則。 管理 SQL Database 的存取和設定資料庫層級 IP 防火牆規則。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976807"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085084"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -267,7 +267,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
   - 向您的網際網路服務提供者要求指派給存取伺服器之用戶端電腦的 IP 位址範圍。 將該 IP 位址範圍新增為 IP 防火牆規則。
   - 改為取得用戶端電腦的靜態 IP 位址。 將 IP 位址新增為 IP 防火牆規則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 確認您的公司網路環境允許 Azure 資料中心所使用的計算 IP 位址範圍（包括 SQL 範圍）進行輸入通訊。 您可能必須將這些 IP 位址新增至允許清單。 請參閱[Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。  
 - 如需有關建立伺服器層級 IP 防火牆規則的快速入門，請參閱[在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。

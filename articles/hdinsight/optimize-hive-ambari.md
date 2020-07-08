@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084353"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Hive
 
@@ -134,10 +134,10 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 | 格式 | 工具 | 演算法 | 副檔名 | 可分割？ |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | 否 |
+| Gzip | Gzip | DEFLATE | `.gz` | No |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | 是 |
 | LZO | `Lzop` | LZO | `.lzo` | 是，如果已編製索引 |
-| Snappy | 不適用 | Snappy | Snappy | 否 |
+| Snappy | N/A | Snappy | Snappy | No |
 
 一般的規則是，壓縮方法可分割很重要，否則將會建立少數對應程式。 如果輸入資料為文字，`bzip2` 是最佳選擇。 若為˙ ORC 格式，Snappy 是最快的壓縮選項。
 

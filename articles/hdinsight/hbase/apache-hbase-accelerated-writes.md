@@ -5,13 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de32f2a3a45a883f9da860b159eaa7f7b9368518
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76764603"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085424"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>適用於 Apache HBase 的 Azure HDInsight 加速寫入
 
@@ -59,7 +60,7 @@ disable 'mytable'
 
 如果您的 namenode 在相應減少之後進入安全模式，請使用 hdfs 命令來重新複寫不受複寫的區塊，並從安全模式取得 hdfs。 此重新複寫可讓您順利重新開機 HBase。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 「[先行寫入記錄」功能](https://hbase.apache.org/book.html#wal)的官方 Apache HBase 檔
 * 若要升級 HDInsight Apache HBase 叢集以使用加速寫入，請參閱將[Apache hbase 叢集遷移至新版本](apache-hbase-migrate-new-version.md)。

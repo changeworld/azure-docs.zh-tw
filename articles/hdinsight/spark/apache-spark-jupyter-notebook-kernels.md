@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 6c222ab15ba2ad2d06667b8549f4fb3e7cc8d216
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037931"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084710"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 叢集上的 Jupyter Notebook 核心
 
@@ -124,7 +125,7 @@ SELECT * FROM hivesampletable
 
 將 Notebook 儲存到儲存體帳戶的方式與 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 相容。 如果您透過 SSH 連線到叢集，您可以使用檔案管理命令：
 
-| Command | 說明 |
+| Command | 描述 |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # 列出根目錄的所有內容–從首頁 Jupyter 可看到此目錄中的所有專案 |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # 下載 HdiNotebooks 資料夾的內容|

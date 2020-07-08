@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085186"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上管理 Apache Spark 叢集的資源
 
@@ -34,7 +34,7 @@ ms.locfileid: "75932098"
     ![啟動 YARN UI](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至 [ **YARN** > ] [**快速連結** > ] [**Active** > **Resource Manager UI**]。
+   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至 [ **YARN**] [  >  **快速連結**] [  >  **Active**  >  **Resource Manager UI**]。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>針對 Spark 應用程式進行叢集最佳化
 
@@ -44,7 +44,7 @@ ms.locfileid: "75932098"
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 變更參數
 
-1. 從 Ambari UI 中，流覽至**Spark2** > **Configs** > **的 [自訂 Spark2-預設值**]。
+1. 從 Ambari UI 中，流覽至**Spark2**  >  **Configs**  >  **的 [自訂 Spark2-預設值**]。
 
     ![使用 Ambari 自訂設定參數](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自訂設定參數")
 
@@ -62,8 +62,10 @@ ms.locfileid: "75932098"
 
 下列程式碼片段說明如何變更在 Jupyter 中執行之應用程式的設定。
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 組態參數必須以 JSON 字串傳遞，且必須在 magic 之後的下一行，如範例資料行中所示。
 
@@ -71,25 +73,29 @@ ms.locfileid: "75932098"
 
 下列命令是如何針對使用 `spark-submit`提交的批次應用程式變更組態參數的範例。
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>使用 cURL 變更已提交應用程式的參數
 
 下列命令是一個範例，說明如何為使用 cURL 提交的批次應用程式變更設定參數。
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>在 Spark Thrift 伺服器上變更這些參數
 
 Spark Thrift 伺服器提供對 Spark 叢集的 JDBC/ODBC 存取，並且用來服務 Spark SQL 查詢。 如 Power BI、Tableau 等等的工具，請使用 ODBC 通訊協定與 Spark Thrift 伺服器通訊，以 spark 應用程式的形式執行 Spark SQL 查詢。 建立 Spark 叢集時，會啟動 Spark Thrift 伺服器的兩個執行個體，每個前端節點上一個執行個體。 每個 Spark Thrift 伺服器會顯示為 YARN UI 中的 Spark 應用程式。
 
-Spark Thrift 伺服器會使用 Spark 動態執行程式配置， `spark.executor.instances`因此不會使用。 而是 Spark Thrift 伺服器會使用 `spark.dynamicAllocation.maxExecutors` 和 `spark.dynamicAllocation.minExecutors` 來指定執行程式計數。 設定參數`spark.executor.cores`和`spark.executor.memory`可用來修改執行程式的大小。 您可以變更這些參數，如下列步驟所示：
+Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.executor.instances` 不會使用。 而是 Spark Thrift 伺服器會使用 `spark.dynamicAllocation.maxExecutors` 和 `spark.dynamicAllocation.minExecutors` 來指定執行程式計數。 設定參數 `spark.executor.cores` 和 `spark.executor.memory` 可用來修改執行程式的大小。 您可以變更這些參數，如下列步驟所示：
 
-* 展開 [ **Advanced spark2-thrift-sparkconf** ] 類別以更新參數`spark.dynamicAllocation.maxExecutors`、和`spark.dynamicAllocation.minExecutors`。
+* 展開 [ **Advanced spark2-thrift-sparkconf** ] 類別以更新參數 `spark.dynamicAllocation.maxExecutors` 、和 `spark.dynamicAllocation.minExecutors` 。
 
     ![設定 Spark Thrift 伺服器](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "設定 Spark Thrift 伺服器")
 
-* 展開 [**自訂 spark2-thrift-sparkconf** ] 分類，以`spark.executor.cores`更新參數`spark.executor.memory`、和。
+* 展開 [**自訂 spark2-thrift-sparkconf** ] 分類，以更新參數 `spark.executor.cores` 、和 `spark.executor.memory` 。
 
     ![設定 Spark thrift 伺服器參數](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "設定 Spark thrift 伺服器參數")
 
@@ -97,7 +103,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置， `spark.executo
 
 「Spark Thrift 伺服器」驅動程式記憶體是設定為前端節點 RAM 大小的 25%，其中假設前端節點的 RAM 大小總計大於 14 GB。 您可以使用 Ambari UI 來變更驅動程式記憶體設定，如以下螢幕擷取畫面所示：
 
-從 Ambari UI，流覽至**Spark2** > **Configs** > 的 [**Advanced Spark2-env**]。 然後提供**spark_thrift_cmd_opts**的值。
+從 Ambari UI，流覽至**Spark2**的 [  >  **Configs**  >  **Advanced Spark2-env**]。 然後提供**spark_thrift_cmd_opts**的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 叢集資源
 
@@ -140,7 +146,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置， `spark.executo
 
     ![終止 App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "終止 App2")
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [追蹤和偵錯在 HDInsight 中的 Apache Spark 叢集上執行的作業](apache-spark-job-debugging.md)
 

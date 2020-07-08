@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919459"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084322"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>遠端桌面服務未在 Azure VM 上啟動
 
@@ -46,7 +47,9 @@ ms.locfileid: "77919459"
 
     您也可以使用序列存取主控台功能執行下列查詢來尋找這些錯誤： 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>原因
  
@@ -178,22 +181,37 @@ ms.locfileid: "77919459"
 
 1. 如果此服務的啟動帳戶變更，就會發生此錯誤。 將此項變更為預設值： 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. 啟動服務：
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. 嘗試使用遠端桌面來連線至 VM。
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService 服務當機或停止回應
 1. 如果服務狀態停滯在**起始**或**停止**，請嘗試停止服務： 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. 將服務隔離在其自己的 'svchost' 容器上：
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. 啟動服務：
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. 如果服務仍然無法啟動，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="repair-the-vm-offline"></a>修復離線的 VM

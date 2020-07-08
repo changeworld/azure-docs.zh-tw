@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265853"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084285"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到內部部署 Oracle 或複製其中的資料
 
@@ -41,7 +41,7 @@ ms.locfileid: "79265853"
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源。 若要深入了解資料管理閘道，請參閱[資料管理閘道](data-factory-data-management-gateway.md)。 如需有關如何在資料管線中設定閘道以移動資料的逐步指示，請參閱[將資料從內部部署環境移到雲端](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -101,10 +101,10 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |**Type**屬性必須設定為**OnPremisesOracle**。 |是 |
-| driverType | 指定要用來從 Oracle 複製資料或將資料複製到 Oracle 資料庫的驅動程式。 允許的值為 **Microsoft** 和 **ODP** (預設值)。 如需驅動程式詳細資料，請參閱[支援的版本和安裝](#supported-versions-and-installation)。 | 否 |
-| connectionString | 針對 **connectionString** 屬性指定連線到 Oracle 資料庫執行個體所需的資訊。 | 是 |
-| gatewayName | 用來連線內部部署 Oracle 伺服器的閘道名稱。 |是 |
+| type |**Type**屬性必須設定為**OnPremisesOracle**。 |Yes |
+| driverType | 指定要用來從 Oracle 複製資料或將資料複製到 Oracle 資料庫的驅動程式。 允許的值為 **Microsoft** 和 **ODP** (預設值)。 如需驅動程式詳細資料，請參閱[支援的版本和安裝](#supported-versions-and-installation)。 | No |
+| connectionString | 針對 **connectionString** 屬性指定連線到 Oracle 資料庫執行個體所需的資訊。 | Yes |
+| gatewayName | 用來連線內部部署 Oracle 伺服器的閘道名稱。 |Yes |
 
 **範例︰使用 Microsoft 驅動程式**
 
@@ -169,20 +169,20 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 在複製活動中，如果來源為 **OracleSource** 類型，則 **typeProperties** 區段有下列可用屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如："select \* from **MyTable**"。 <br/><br/>如果未指定，則會執行此 SQL 陳述式："select \* from **MyTable**" |否<br />(如果已指定 **dataset** 的 **tableName**) |
+| oracleReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如："select \* from **MyTable**"。 <br/><br/>如果未指定，則會執行此 SQL 陳述式："select \* from **MyTable**" |No<br />(如果已指定 **dataset** 的 **tableName**) |
 
 ### <a name="oraclesink"></a>管線
 
 **OracleSink** 支援下列屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |**時間範圍**<br/><br/> 範例：00:30:00 (30 分鐘) |否 |
 | writeBatchSize |當緩衝區大小達到 **writeBatchSize** 值時，將資料插入 SQL 資料表中。 |整數 (資料列數目) |否 (預設值：100) |
-| sqlWriterCleanupScript |指定要讓複製活動執行的查詢，以便清除特定配量的資料。 |查詢陳述式。 |否 |
-| sliceIdentifierColumnName |指定複製活動的資料行名稱，以填入自動產生的配量識別碼。 **sliceIdentifierColumnName** 值用於在重新執行時清除特定配量的資料。 |資料類型為 **binary(32)** 之資料行的資料行名稱。 |否 |
+| sqlWriterCleanupScript |指定要讓複製活動執行的查詢，以便清除特定配量的資料。 |查詢陳述式。 |No |
+| sliceIdentifierColumnName |指定複製活動的資料行名稱，以填入自動產生的配量識別碼。 **sliceIdentifierColumnName** 值用於在重新執行時清除特定配量的資料。 |資料類型為 **binary(32)** 之資料行的資料行名稱。 |No |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>將資料複製到 Oracle 資料庫以及複製其中資料的 JSON 範例
 
@@ -418,7 +418,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 }
 ```
 
-**Azure blob 輸入資料集**
+**Azure Blob 輸入資料集**
 
 每小時從新的 Blob 挑選資料 (**頻率**：**小時**，**間隔**：**1**)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月和日部分。 檔案名稱會使用開始時間的小時部分。 **external**: **true** 設定會通知 Data Factory 服務：這是 Data Factory 外部的資料表而且不是由 Data Factory 中的活動所產生。
 
@@ -556,33 +556,39 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 **錯誤訊息**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **可能的原因**
 
 * 未安裝 .NET Framework Data Provider for Oracle。
 * .NET Framework Data Provider for Oracle 已安裝於 .NET Framework 2.0，而且在 .NET Framework 4.0 資料夾中找不到。
 
-**解決方法**
+**解決方案**
 
 * 如果您尚未安裝 .NET Provider for Oracle，請 [安裝它](https://www.oracle.com/technetwork/topics/dotnet/downloads/) ，然後重試此案例。
 * 如果即使在安裝提供者之後，您仍會看到錯誤訊息，請完成下列步驟：
     1. 從資料夾 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 開啟 .NET 2.0 的電腦組態檔。
-    2. 搜尋 **Oracle Data Provider for .NET**。 如下列範例**system.data** > 所示，您應該能夠找到如 [**DbProviderFactories**] 底下的專案：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* 將此專案複製到下列 .NET 4.0 資料夾中的 machine.config 檔案： <系統磁片\>： \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然後，將版本變更為 x.x.。
+    2. 搜尋 **Oracle Data Provider for .NET**。 如下列範例所示，您應該能夠找到如 [ **system.data**  >  **DbProviderFactories**] 底下的專案：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* 將此專案複製到下列 .NET 4.0 資料夾中的 machine.config 檔案： <系統磁片 \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然後，將版本變更為 x.x.。
 * 執行 **gacutil /i [provider path]**，在全域組件快取 (GAC) 中安裝 <ODP.NET 安裝路徑\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 
 ### <a name="problem-2-datetime-formatting"></a>問題 2︰日期/時間格式
 
 **錯誤訊息**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
-**解決方法**
+**解決方案**
 
 您可能需要根據 Oracle 資料庫中的日期設定來調整查詢字串。 範例 (使用 **to_date** 函式) 如下：
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle 的類型對應

@@ -6,17 +6,17 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023968"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085883"
 ---
-# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集遷移至較新的版本
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集遷移至更新的版本
 
 若要利用最新的 HDInsight 功能，建議您將 HDInsight 叢集定期遷移至最新版本。 HDInsight 不支援就地升級，其中現有的叢集會升級至較新的元件版本。 您必須使用所需的元件和平臺版本來建立新的叢集，然後將您的應用程式遷移以使用新的叢集。 請遵循下列指導方針來遷移 HDInsight 叢集版本。
 
@@ -51,9 +51,9 @@ ms.locfileid: "77023968"
 
 ## <a name="backup-and-restore"></a>備份與還原
 
-如需資料庫備份和還原的詳細資訊，請參閱[使用自動資料庫備份來復原 AZURE SQL 資料庫](../sql-database/sql-database-recovery-using-backups.md)。
+如需資料庫備份和還原的詳細資訊，請參閱[使用自動資料庫備份來復原 Azure SQL Database 中的資料庫](../azure-sql/database/recovery-using-backups.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [了解如何建立 Linux 型 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)
 * [使用 SSH 連線到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)

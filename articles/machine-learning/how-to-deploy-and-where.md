@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083074"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -545,6 +545,10 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
+> [!NOTE]
+> * ACI 僅適用于大小 <1GB 的小型模型。 
+> * 我們建議使用單一節點 AKS 來進行較大型模型的開發測試。
+
 ### <a name="define-your-deployment-configuration"></a>定義您的部署設定
 
 在部署模型之前，您必須先定義部署設定。 *部署設定適用于將裝載 web 服務的計算目標。* 例如，當您在本機部署模型時，您必須指定服務接受要求的埠。 部署設定不屬於您的輸入腳本。 它是用來定義將裝載模型和專案腳本之計算目標的特性。
@@ -604,13 +608,13 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | Description | 最終狀態？
+| Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
 | 正在 | 服務正在進行部署。 | No |
 | 狀況不良 | 服務已部署，但目前無法連線。  | No |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | No |
-| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | Yes |
-| Healthy | 服務狀況良好，且端點可供使用。 | Yes |
+| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
+| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>計算實例 web 服務（開發/測試）
 
@@ -1223,7 +1227,7 @@ def run(request):
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
 * [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
-* [使用部署為 web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
+* [使用部署為 Web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)
 * [建立模型部署的事件警示和觸發程式](how-to-use-event-grid.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085441"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 處理並分析 JSON 文件
 
@@ -156,7 +156,7 @@ SerDe 是剖析巢狀 JSON 文件的最佳選擇。 它可讓您定義的 JSON �
 
 您選擇的 Hive 中的 JSON 運算子類型取決於您的案例。 使用簡單的 JSON 檔和一個要查閱的欄位，選擇 Hive UDF **get_json_object**。 如果您有多個要查閱的索引鍵，則可以使用**json_tuple**。 若是嵌套的檔，請使用**JSON SerDe**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需其他相關文章，請參閱：
 

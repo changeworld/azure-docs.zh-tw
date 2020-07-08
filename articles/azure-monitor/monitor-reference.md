@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945370"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085492"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -32,7 +32,7 @@ ms.locfileid: "84945370"
 [適用於資源群組的 Azure 監視器 (預覽)](insights/resource-group-insights.md) |  將個別資源碰到的任何問題加以分級與診斷，同時就資源群組整體的健康狀態與效能提供內容。 |
 | [適用於儲存體的 Azure 監視器](insights/storage-insights-overview.md) | 藉由提供 Azure 儲存體服務效能、容量和可用性的統一檢視，讓您能夠全面監視 Azure 儲存體帳戶。 |
 | [適用於 VM 的 Azure 監視器](insights/vminsights-overview.md) | 會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
-| [適用於 Key Vault 的 Azure 監視器 (預覽)](insights/key-vaults-insights-overview.md) | 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。 |
+| [適用於 Key Vault 的 Azure 監視器 (預覽)](insights/key-vaults-insights-overview.md) | 藉由提供 Key Vault 要求、效能、失敗和延遲的統一觀點，提供金鑰保存庫的全面監視。 |
 | [適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)](insights/redis-cache-insights-overview.md) |  提供整體效能、失敗、容量、作業健康情況的統一、互動檢視。 |
 
 
@@ -141,27 +141,27 @@ ms.locfileid: "84945370"
 |私人連結 | 否 | 否 | 否 |  |
 |Project Spool Communication Platform | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
-|Redis 快取 | Yes | 是 | [是](insights/redis-cache-insights-overview.md) | |
+|Redis 快取 | 是 | 是 | [是](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | 否 | 否 | No |  |
 |Resource Manager | 否 | 否 | 否 |  |
 |Retail Search – Bing 提供 | 否 | 否 | 否 |  |
-|搜尋 | Yes | Yes | 否 |  |
+|搜尋 | 是 | 是 | 否 |  |
 |服務匯流排 | 是 | 是 | 否 |  |
 |Service Fabric | No | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
 |註冊入口網站 | 否 | 否 | No |  |
-|Site Recovery | 否 | Yes | 否 |  |
+|Site Recovery | 否 | 是 | 否 |  |
 |Spring Cloud Service | 否 | 否 | 否 |  |
-|SQL 資料倉儲 | Yes | Yes | 否 |  |
+|SQL 資料倉儲 | 是 | 是 | 否 |  |
 |SQL Database | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |Stack | 否 | 否 | 否 |  |
-|儲存體 | Yes | 否 | [是](insights/storage-insights-overview.md) |  |
+|儲存體 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |儲存體快取 | 否 | 否 | No |  |
 |儲存體同步服務 | 否 | 否 | 否 |  |
-|串流分析 | Yes | Yes | 否 |  |
+|串流分析 | 是 | 是 | 否 |  |
 |時間序列深入解析 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
-|流量管理員 | Yes | Yes | 否 |  |
+|流量管理員 | 是 | 是 | 否 |  |
 |通用列印 | 否 | 否 | 否 |  |
 |虛擬機器擴展集 | 否 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
 |虛擬機器 | 是 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
@@ -184,7 +184,7 @@ ms.locfileid: "84945370"
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 建立診斷設定，以將記錄檔傳送至 Azure 監視器。 請參閱[將記錄資料傳送至儲存體、事件中樞或 Intune 中的記錄分析 (預覽)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
 | 網路  | [網路效能監控](insights/network-performance-monitor.md) - 監視服務和應用程式端點的網路連線能力和效能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析來自 Azure 應用程式閘道的記錄和計量。<br>[流量分析](/azure/network-watcher/traffic-analytics) - 分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解 Azure 雲端中的流量。 |
 | [Office 365](insights/solution-office-365.md) | 監視您的 Office 365 環境。 已透過 Azure Sentinel 提供改善上線體驗的更新版本。 |
-| [SQL Analytics](insights/azure-sql.md) | 跨多個訂用帳戶大規模監視 Azure SQL 資料庫、彈性集區、受控執行個體的效能。 |
+| [SQL Analytics](insights/azure-sql.md) | 跨多個訂用帳戶大規模監視 Azure SQL 資料庫和 SQL 受控實例的效能。 |
 | [Surface Hub](insights/surface-hubs.md) | 追蹤 Surface Hub 裝置的健康情況和使用情況。 |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 藉由將管理群組連線至 Azure 監視器，從 Operations Manager 代理程式收集資料。 請參閱[將 Operations Manager 連線至 Azure 監視器](platform/om-agents.md)。<br> 使用 [Operations Manager 評量](insights/scom-assessment.md)解決方案，評估 System Center Operations Manager 管理群組的風險和健康情況。 |
 | [Microsoft Teams Rooms](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams Rooms 裝置的整合端對端管理。 |

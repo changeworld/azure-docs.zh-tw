@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495755"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083945"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>透過一個 Azure Data Lake Storage 帳戶使用多個 HDInsight 叢集
 
@@ -44,7 +44,7 @@ Data Lake Storage 支援無限制的儲存體，使其不僅適合裝載大量�
 - **服務主體**是與帳戶相關聯的 Azure Active Directory (AAD) 服務主體。
 - **FINGRP** 是 AAD 中建立的使用者群組，內含來自財務組織的使用者。
 
-如需有關如何建立 AAD 應用程式 (這也會建立服務主體) 的指示，請參閱[建立 AAD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 如需有關如何在 AAD 中建立使用者群組的指示，請參閱[在 Azure Active Directory 中管理群組](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+如需有關如何建立 AAD 應用程式 (這也會建立服務主體) 的指示，請參閱[建立 AAD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 如需有關如何在 AAD 中建立使用者群組的指示，請參閱[在 Azure Active Directory 中管理群組](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 需要考慮的一些重要事項。
 
@@ -79,7 +79,9 @@ Data Lake Storage 支援無限制的儲存體，使其不僅適合裝載大量�
 
 已知這些設定會影響 [YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) 中記錄的一個特定 HDInsight 使用案例。 作業提交會失敗，錯誤訊息如下︰
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 如先前連結的 YARN JIRA 中所述，將公用資源當地語系化時，當地語系化人員會在遠端檔案系統上檢查所有要求之資源的權限，確保它們確實已公開。 任何不符合該條件的 LocalResource 都會遭到拒絕以進行當地語系化。 權限檢查包括「其他人」的檔案讀取權限。 在 Azure Data Lake 上裝載 HDInsight 叢集時，此案例不會有現成的作用，因為 Azure Data Lake 會拒絕根資料夾層級的「其他」存取權。
 
@@ -87,7 +89,7 @@ Data Lake Storage 支援無限制的儲存體，使其不僅適合裝載大量�
 
 透過階層設定**其他人**的讀取和執行權限，例如在**/**、**/clusters** 和 **/clusters/finance**，如上表所示。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [快速入門：在 HDInsight 中設定叢集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 - [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)

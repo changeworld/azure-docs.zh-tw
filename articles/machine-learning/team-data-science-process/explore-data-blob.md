@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685961"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085696"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 Pandas 瀏覽 Azure blob 儲存體中的資料
 
@@ -50,7 +51,7 @@ ms.locfileid: "81685961"
     blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
     blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
     t2=time.time()
-    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
     ```
 
 1. 從下載的檔案中，將資料讀取至 Pandas 資料框架。

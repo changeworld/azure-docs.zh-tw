@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907477"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083981"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>從內建端點讀取裝置對雲端訊息
 
@@ -57,7 +57,7 @@ IoT 中樞會公開您後端服務的 **messages/events** 內建端點，以讀�
 | 主機名稱 | abcd1234namespace.servicebus.windows.net |
 | 命名空間 | abcd1234namespace |
 
-然後，您可以使用具有 **ServiceConnect** 權限的任何共用存取原則，連接至指定的事件中樞。
+接著，您可以從下拉式選單中選擇任何共用存取原則，如上方螢幕擷取畫面所示。 它只會顯示具有**ServiceConnect**許可權的原則，以連線到指定的事件中樞。
 
 您可以用來連線到內建事件中樞相容端點 (由 IoT 中樞公開) 的 SDK 包括：
 

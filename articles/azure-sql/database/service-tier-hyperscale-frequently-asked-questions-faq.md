@@ -11,11 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d5faa08b0b493ac9b7fc03cd15c4747c3e602f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038069"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084319"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大規模資料庫常見問題
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,11 +43,11 @@ ms.locfileid: "84038069"
 | | 資源類型 | 一般用途 |  超大規模資料庫 | 業務關鍵 |
 |:---:|:---:|:---:|:---:|:---:|
 | **適用對象** |全部|提供以預算為導向且平衡的計算與儲存體選項。|大部分的商業工作負載。 自動調整儲存體大小，最高可達 100 TB，快速垂直和水準計算縮放，快速資料庫還原。|具有高交易率和低 IO 延遲的 OLTP 應用程式。 為失敗提供最高的復原能力，並使用多個同步更新的複本快速容錯移轉。|
-|  **資源類型** ||單一資料庫/彈性集區/受控執行個體 | 單一資料庫 | 單一資料庫/彈性集區/受控執行個體 |
-| **計算大小**|單一資料庫/彈性集區 * | 1 到 80 個虛擬核心 | 1 到 80 個虛擬核心* | 1 到 80 個虛擬核心 |
+|  **資源類型** ||SQL Database/SQL 受控執行個體 | 單一資料庫 | SQL Database/SQL 受控執行個體 |
+| **計算大小**|SQL Database * | 1 到 80 個虛擬核心 | 1 到 80 個虛擬核心* | 1 到 80 個虛擬核心 |
 | |SQL 受控執行個體 | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 | N/A | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 |
 | **儲存類型** | 全部 |進階遠端儲存體 (每個執行個體) | 與本機 SSD 快取分離的儲存體 (每個執行個體) | 超快速本機 SSD 儲存體 (每個執行個體) |
-| **儲存體大小** | 單一資料庫/彈性集區 *| 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
+| **儲存體大小** | SQL Database *| 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
 | | SQL 受控執行個體  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | 單一資料庫 | 每個虛擬核心 500 IOPS，且 IOPS 上限為 7000 | 超大規模資料庫是多層式架構，在多個層級進行快取。 有效的 IOPS 將視工作負載而定。 | 5000 IOPS，IOPS 上限為 200,000|
 | | SQL 受控執行個體 | 視檔案大小而定 | N/A | 1375 IOPS/vCore |
@@ -389,6 +390,6 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 從交易在主要複本上認可的時間開始，到它在次要上可見時的資料延遲取決於目前的記錄產生速率。 一般資料延遲是以低毫秒為單位。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需超大規模資料庫服務層級的詳細資訊，請參閱[超大規模資料庫服務層級](service-tier-hyperscale.md)。

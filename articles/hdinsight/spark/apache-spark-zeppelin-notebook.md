@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195089"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084523"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
@@ -141,7 +141,9 @@ HDInsight 上 Apache Spark 叢集中的 Zeppelin 筆記本可以使用不包含�
 
     c. 串連三個值，其中以冒號分隔 (**:**)。
 
-        com.databricks:spark-csv_2.10:1.4.0
+    ```
+    com.databricks:spark-csv_2.10:1.4.0
+    ```
 
 ## <a name="where-are-the-zeppelin-notebooks-saved"></a>Zeppelin Notebook 儲存在哪裡？
 

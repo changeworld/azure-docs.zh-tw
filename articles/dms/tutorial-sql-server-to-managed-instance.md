@@ -1,5 +1,5 @@
 ---
-title: 教學課程：將 SQL Server 遷移至 SQL 受控實例
+title: 教學課程：將 SQL Server 遷移至 SQL 受控執行個體
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務從 SQL Server 遷移至 Azure SQL 受控執行個體。
 services: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 36efd3e90731e7659f023ad99df1eb9cb3c0198f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f20b9236631057449a337e4e161b7468f995e306
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085524"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教學課程：使用 DMS 將 SQL Server 遷移至 Azure SQL 受控執行個體離線
 
@@ -60,7 +61,7 @@ ms.locfileid: "84247439"
 - 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，您可以啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
 - 如果您是在來源資料庫前面使用防火牆設備，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取用於移轉的來源資料庫，以及透過 SMB 連接埠 445 存取檔案。
 - 遵循在[Azure 入口網站中建立 sql 受控執行個體一](https://aka.ms/sqldbmi)文中的詳細資料，建立 SQL 受控執行個體。
-- 確定用來連線來源 SQL Server 和目標受控執行個體的登入是 sysadmin 伺服器角色的成員。
+- 確定用來連接來源 SQL Server 和目標 SQL 受控執行個體的登入是系統管理員（sysadmin）伺服器角色的成員。
 
     >[!NOTE]
     >根據預設，Azure 資料庫移轉服務僅支援遷移 SQL 登入。 不過，您可以藉由下列方式啟用遷移 Windows 登入的功能：
@@ -112,7 +113,7 @@ ms.locfileid: "84247439"
 
     如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
-    如需其他詳細資訊，請參閱[了解使用 Azure 資料庫移轉服務進行 Azure SQL DB 受控執行個體移轉的網路拓樸](https://aka.ms/dmsnetworkformi)一文。
+    如需其他詳細資訊，請參閱[使用 Azure 資料庫移轉服務的 AZURE SQL 受控執行個體遷移的網路拓朴](https://aka.ms/dmsnetworkformi)一文。
 
 6. 選取定價層。
 
@@ -244,6 +245,6 @@ ms.locfileid: "84247439"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需示範如何使用 T-sql RESTORE 命令將資料庫移轉至受控實例的教學課程，請參閱[使用還原命令將備份還原至受控實例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
-- 如需受控實例的相關資訊，請參閱[受控實例是什麼](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
-- 如需將應用程式連線至受控實例的相關資訊，請參閱連線[應用程式](../azure-sql/managed-instance/connect-application-instance.md)。
+- 如需示範如何使用 T-sql RESTORE 命令將資料庫移轉至 SQL 受控執行個體的教學課程，請參閱[使用 restore 命令將備份還原至 sql 受控執行個體](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+- 如需 SQL 受控執行個體的詳細資訊，請參閱[什麼是 sql 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
+- 如需將應用程式連接到 SQL 受控執行個體的詳細資訊，請參閱[連接應用程式](../azure-sql/managed-instance/connect-application-instance.md)。

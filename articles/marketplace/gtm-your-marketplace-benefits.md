@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market 服務 - 您的商業市集權益 |Azure Marketplace
+title: 進入市場服務-您的商業 marketplace 權益，Azure Marketplace
 description: Go-To-Market 服務 - 本節描述了發行者可以使用的 Microsoft 資源。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: article
+ms.date: 07/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800507"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085679"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -26,7 +26,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 此方案會建立正向的意見反應循環：每個業務成長階段的權益都是為了讓您邁入下一個階段而設計，讓您利用商業市集作為平台，將業務拓展至 Microsoft 的客戶，配合 Microsoft 擅長領域及 Microsoft 的通路。 
 
-您的權益會視供應項目是[上市、試用或交易](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)而有所不同。
+您的權益會視供應項目是[上市、試用或交易](determine-your-listing-type.md#choose-a-publishing-option)而有所不同。
 
 當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。 
 
@@ -41,7 +41,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 開始使用的步驟很簡單：
 
 1. 在 Microsoft AppSource 或 Azure Marketplace 中發佈供應項目。
-2. 前往合作夥伴中心[儀表板](https://partner.microsoft.com/dashboard/directory)，選取 [Marketplace Rewards] 頁面上的 [銷售與行銷權益] 索引標籤，以查看您的權益清單。
+2. 移至合作夥伴中心[儀表板](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)，在左側導覽功能表中開啟 [**商業 Marketplace** ]，選取 [ **Marketplace**報酬]，然後選取 [**銷售與行銷權益**] 索引標籤，以查看您的權益清單。
 3. 若要啟用銷售和行銷權益，您必須先指派公司行銷連絡人。 此連絡人會收到您作用中 Marketplace Rewards 的後續相關通知。
 4. 若要新增或更新您的行銷連絡人資訊，請移至 Marketplace Rewards 頁面上 [銷售和行銷權益] 索引標籤的頂端，然後選取 [新增]、[更新] 或 [變更]。  接下來，執行下列作業：
 
@@ -55,7 +55,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 1. 在雲端解決方案和混合式解決方案的售前、設計、部署及應用程式開發階段，都可以使用您的技術權益來請求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
 2. 當您解鎖這些權益時，我們會透過電子郵件分享如何利用 Azure 贊助權益。
 
->[!Note]
+>[!NOTE]
 >如果您的供應項目已上線超過四周，而您未收到訊息，請查看合作夥伴中心，檢查誰是所述供應項目的擁有者。 對方應已收到通知和後續步驟。 <br> <br> 如果您無法判斷擁有者，或擁有者已離開貴公司，您可以在[說明及支援](https://aka.ms/marketplacepublishersupport)提出支援票證。
 
 隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有上市項目都會收到基本等級的最佳化建議和推廣，屬於資源和最佳做法自助電子郵件的一環。
@@ -74,7 +74,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 將 Azure Marketplace 或 Microsoft AppSource 中可供交易的供應項目上市時，隨著您的開單銷售交易或售出的基座透過商業市集逐漸成長，您可以取得額外的權益。 
 
->[!Note]
+>[!NOTE]
 >基座銷售閾值僅適用於 Microsoft 365 應用程式 (具有 Microsoft Teams、Office、Outlook 或 SharePoint 整合功能的 SaaS 應用程式)，而且必須在 2020 年 6 月 30 日將權益使用完畢。
 
 這些權益是專為支援行銷、銷售和技術活動而設計，可協助您獲得更多訪客、接收更多潛在客戶，並且轉換更多業務。
@@ -101,16 +101,16 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 ### <a name="cancellation-policy"></a>取消原則
 
-[上市和試用版](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)發行者可以選擇加入或退出各項供應項目發佈的活動。 合作夥伴隨時都可以退出任何業務開發項目。 
+[上市和試用版](determine-your-listing-type.md)發行者可以選擇加入或退出各項供應項目發佈的活動。 合作夥伴隨時都可以退出任何業務開發項目。 
 
 對於出現已下行為的發行者，Microsoft 將保留撤銷及終止 Marketplace Rewards 權益的權利： 
 
-* 使用其市集清單參與不合法的活動。
-* 從商業市集中退市。 
-* 使用其供應項目展示違反著作權或商標法則的行銷或其他內容。
-* 違反 [Azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括 (但不限於) 使用 Azure 贊助資金進行內部作業或挖掘比特幣。
+* 使用其 marketplace 清單參與不合法的活動。
+* 會從商業 marketplace 中取消列出。 
+* 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
+* 違反[azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）使用 azure 贊助資金來進行自己的內部作業或比特幣的發掘。
 
-### <a name="offer-availability"></a>供應項目可用性
+### <a name="offer-availability"></a>供應專案可用性
 
 這項供應項目是以英文進行，適用於具有 Azure Marketplace 或 Microsoft AppSource 上線供應項目的所有合作夥伴。
 
@@ -123,5 +123,3 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 請檢閱[可供您使用的自助服務資源 ](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)(英文)。
 
 註冊 [Microsoft AppSource 和 Azure Marketplace 社群論壇](https://aka.ms/MarketplaceCommunity)，深入瞭解相關主題或加入討論。
-
----

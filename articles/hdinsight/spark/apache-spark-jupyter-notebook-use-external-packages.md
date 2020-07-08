@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74561712"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084676"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 叢集中搭配 Jupyter Notebook 使用外部封裝
 
@@ -37,7 +37,7 @@ ms.locfileid: "74561712"
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>搭配 Jupyter Notebook 使用外部套件
 
-1. 導覽至`https://CLUSTERNAME.azurehdinsight.net/jupyter` ， `CLUSTERNAME`其中是您 Spark 叢集的名稱。
+1. 導覽至， `https://CLUSTERNAME.azurehdinsight.net/jupyter` 其中 `CLUSTERNAME` 是您 Spark 叢集的名稱。
 
 1. 建立新的 Notebook。 選取 [**新增**]，然後選取 [ **Spark**]。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74561712"
 
     ![提供 Notebook 的名稱](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "提供 Notebook 的名稱")
 
-1. 您將使用`%%configure`魔術來設定筆記本使用外部套件。 在使用外部套件的 Notebook 中，確定您在第一個程式碼單元中呼叫 `%%configure` magic。 這可確保將核心設定為在啟動工作階段之前即使用此套件。
+1. 您將使用 `%%configure` 魔術來設定筆記本使用外部套件。 在使用外部套件的 Notebook 中，確定您在第一個程式碼單元中呼叫 `%%configure` magic。 這可確保將核心設定為在啟動工作階段之前即使用此套件。
 
     >[!IMPORTANT]  
     >如果您忘記在第一個單元中設定核心，您可以搭配 `-f` 參數使用 `%%configure`，但這會重新啟動工作階段，而所有進度都將遺失。
@@ -67,27 +67,35 @@ ms.locfileid: "74561712"
 
     c. 串連三個值，其中以冒號分隔 (**:**)。
 
-        com.databricks:spark-csv_2.11:1.5.0
+    ```scala
+    com.databricks:spark-csv_2.11:1.5.0
+    ```
 
 1. 以 `%%configure` magic 執行程式碼單元。 這會將基礎 Livy 工作階段設定為使用您提供的套件。 在 Notebook 的後續單元中，您現在已可以使用套件，如以下所示。
 
-        val df = spark.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = spark.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
     針對 HDInsight 3.4 和以下，您應該使用下列程式碼片段。
 
-        val df = sqlContext.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = sqlContext.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
 1. 接著，您可以執行程式碼片段 (如以下所示) 以檢視來自您在上一個步驟中所建立之資料框架的資料。
 
-        df.show()
+    ```scala
+    df.show()
    
-        df.select("Time").count()
+    df.select("Time").count()
+    ```
 
 ## <a name="see-also"></a><a name="seealso"></a>另請參閱
 

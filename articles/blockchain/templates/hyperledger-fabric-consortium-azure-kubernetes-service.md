@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger Fabric 聯盟網路
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209703"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085794"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -19,6 +19,18 @@ ms.locfileid: "85209703"
 
 - 取得 Hyperledger 網狀架構的實用知識，以及構成 Hyperledger Fabric 區塊鏈網路建立區塊的各種元件。
 - 瞭解如何在適用于生產案例的 Azure Kubernetes Service 上部署和設定 Hyperledger 網狀架構聯盟。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>選擇 Azure 區塊鏈解決方案
+
+選擇使用解決方案範本之前，請先將您的案例與可用 Azure 區塊鏈選項的常見使用案例進行比較。
+
+選項 | 服務模型 | 一般使用案例
+-------|---------------|-----------------
+解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用[Microsoft Q&支援的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。
+[Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈 Service Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈 Service。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用[Microsoft Q&支援的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric 聯盟架構
 
@@ -429,6 +441,6 @@ kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
 
-- [Microsoft Q&Azure 區塊鏈 Service 的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
+- [Microsoft Q&問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
 - [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

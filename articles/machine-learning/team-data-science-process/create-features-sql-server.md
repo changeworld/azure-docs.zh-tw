@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721739"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085305"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 對 SQL Server 中的資料建立功能
 本文件說明如何針對儲存在 Azure 上的 SQL Server VM 中資料產生特徵，以協助演算法更有效率地從資料學習。 若要完成這項工作，您可以使用 SQL 或程式設計語言 (例如 Python)。 以下示範這兩種方法。
@@ -48,15 +49,19 @@ ms.locfileid: "76721739"
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>以計數作為基礎的功能產生
 本文件示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些新功能接著可以與原始資料表聯結（使用主鍵資料行），以便將計數功能與原始資料加在一起。
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+```
 
 ### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>分類收納功能產生
 下列範例將示範如何藉由分類收納 (使用五個分類收納組) 可改用來做為功能的數值資料行，來產生分類收納功能：
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>從單一資料行衍生功能
@@ -77,16 +82,18 @@ ms.locfileid: "76721739"
 
 您可以使用將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 一次也可以呼叫 REST 端點，例如 Bing Maps API （請參閱 `https://msdn.microsoft.com/library/ff701710.aspx` 以取得區域/區域資訊）。
 
-    select
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 這些以位置為基礎的功能可進一步用來產生其他計數功能，如先前所述。
 
@@ -106,14 +113,18 @@ ms.locfileid: "76721739"
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 
-    #Set up the SQL Azure connection
-    import pyodbc
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 Python 中的[Pandas 程式庫](https://pandas.pydata.org/)提供一組豐富的資料結構和資料分析工具，可用於 python 程式設計的資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 現在您可以利用 [使用 Panda 建立 Azure blob 儲存體資料功能](create-features-blob.md)主題中說明的方式來使用 Pandas 資料框架。
 

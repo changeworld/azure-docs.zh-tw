@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807806"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083775"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Common Data Model （CDM）中繼資料系統可讓資料和其意義輕鬆地跨應用程式和商務進程共用。 若要深入瞭解，請參閱[Common Data Model](https://docs.microsoft.com/common-data-model/)總覽。
 
-在 Azure Data Factory 中，使用者可以使用對應的資料流程，在儲存于[Azure Data Lake 存放區 Gen2](connector-azure-data-lake-storage.md) （ADLS Gen2）中的 CDM 實體之間進行轉換。
+在 Azure Data Factory 中，使用者可以使用對應的資料流程，在儲存于[Azure Data Lake 存放區 Gen2](connector-azure-data-lake-storage.md) （ADLS Gen2）中的 CDM 實體之間進行轉換。 選擇 model.json 和資訊清單樣式 CDM 來源，並寫入 CDM 資訊清單檔案。
 
 > [!NOTE]
 > 適用于 ADF 資料流程的 Common Data Model （CDM）格式連接器目前以公開預覽形式提供。
@@ -28,14 +28,17 @@ Common Data Model （CDM）中繼資料系統可讓資料和其意義輕鬆地�
 
 Common Data Model 是以[內嵌資料集](data-flow-source.md#inline-datasets)的形式提供，可將資料流程當做來源和接收來進行對應。
 
+> [!NOTE]
+> 撰寫 CDM 的實體時，您必須已定義現有的 CDM 實體定義（中繼資料架構）。 ADF 資料流程接收會讀取該 CDM 實體檔案，並將架構匯入至您的接收以進列欄位對應。
+
 ### <a name="source-properties"></a>來源屬性
 
 下表列出 CDM 來源所支援的屬性。 您可以在 [**來源選項**] 索引標籤中編輯這些屬性。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是`cdm` | 是 | `cdm` | format |
-| 元資料格式 | 資料的實體參考所在位置。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [model.js開啟]。 | Yes | `'manifest'` 或 `'model'` | manifestType |
+| 元資料格式 | 資料的實體參考所在位置。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [model.js開啟]。 | 是 | `'manifest'` 或 `'model'` | manifestType |
 | 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
 | 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | String | folderPath |
 | 資訊清單檔案：實體路徑 | 根資料夾中實體的資料夾路徑 | 不可以 | String | entityPath |
@@ -51,8 +54,16 @@ Common Data Model 是以[內嵌資料集](data-flow-source.md#inline-datasets)�
 
 #### <a name="import-schema"></a>匯入架構
 
-CDM 僅以內嵌資料集的形式提供，而且根據預設，沒有相關聯的架構。 若要取得資料行中繼資料，按一下 [**預測**] 索引標籤中的 [匯**入架構**] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構，[資料流程](concepts-data-flow-debug-mode.md)的「資料流程」（debug）會話必須為作用中。
+CDM 僅以內嵌資料集的形式提供，而且根據預設，沒有相關聯的架構。 若要取得資料行中繼資料，按一下 [**預測**] 索引標籤中的 [匯**入架構**] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構，[資料流程](concepts-data-flow-debug-mode.md)的「資料流程」（debug）會話必須是作用中的，而且您必須具有指向的現有 CDM 實體定義檔。
 
+> [!NOTE]
+>  在源自 Power BI 或 Power Platform 資料流程的來源類型上使用 model.js時，您可能會遇到來自來源轉換的「主體路徑為 null 或空白」錯誤。 這可能是因為在檔案的 model.js中，分割區位置路徑的格式問題。 若要修正此問題，請遵循下列步驟： 
+
+1. 在文字編輯器中開啟檔案上的 model.js
+2. 尋找磁碟分割。Location 屬性 
+3. 將 "blob.core.windows.net" 變更為 "dfs.core.windows.net"
+4. 將 URL 中的任何 "% 2F" 編碼修正為 "/"
+ 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 來源資料流腳本範例
 
@@ -82,7 +93,7 @@ source(output(
 
 下表列出 CDM 接收所支援的屬性。 您可以在 [**設定**] 索引標籤中編輯這些屬性。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是`cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
