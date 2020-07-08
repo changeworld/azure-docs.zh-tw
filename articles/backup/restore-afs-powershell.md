@@ -4,10 +4,9 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務和 Power
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201968"
 ---
 # <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 還原 Azure 檔案儲存體
@@ -125,7 +124,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ### <a name="restore-multiple-files"></a>還原多個檔案
 
-在下列腳本中，我們正嘗試還原*FileSharePage .png*和*mytestfile.dll*檔案。
+在下列腳本中，我們正嘗試還原*FileSharePage.png*和*MyTestFile.txt*檔案。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

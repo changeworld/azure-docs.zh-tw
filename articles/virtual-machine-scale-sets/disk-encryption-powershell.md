@@ -10,10 +10,9 @@ ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a20abec6ab9925408dd769c5238186af9b7c3d1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83195894"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 在虛擬機器擴展集中加密作業系統和連結的資料磁片
@@ -104,10 +103,10 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 > [!NOTE]
->  磁片加密-keyvault 參數值的語法是完整的識別碼字串：</br>
-/subscriptions/[訂用帳戶識別碼-guid]/resourceGroups/[資源群組-名稱]/providers/Microsoft.KeyVault/vaults/[KeyVault-name]</br></br>
-> 金鑰加密金鑰參數值的語法是 KEK 的完整 URI，如下所示：</br>
-HTTPs：//[keyvault-name].. t a t/keys/[kekname]/[kek-唯一識別碼]
+>  disk-encryption-keyvault 參數值的語法是完整的識別碼字串：</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> key-encryption-key 參數值的語法是 KEK 的完整 URI，如下所示：</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ## <a name="check-encryption-progress"></a>檢查加密程序
 
@@ -150,4 +149,4 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 ## <a name="next-steps"></a>後續步驟
 
 - 在本文中，您使用 Azure PowerShell 來加密虛擬機器擴展集。 您也可以使用[Azure CLI](disk-encryption-cli.md)或[Azure Resource Manager 範本](disk-encryption-azure-resource-manager.md)。
-- 如果您想要在布建其他延伸模組之後套用 Azure 磁碟加密，您可以使用[擴充功能排序](virtual-machine-scale-sets-extension-sequencing.md)。
+- 如果您想要在佈建其他擴充功能之後套用 Azure 磁碟加密，則可以使用[擴充功能排序](virtual-machine-scale-sets-extension-sequencing.md)。

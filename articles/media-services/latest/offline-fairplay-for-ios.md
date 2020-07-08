@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197178"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>使用媒體服務 v3 進行 iOS 的離線 FairPlay 串流
@@ -46,7 +45,7 @@ ms.locfileid: "83197178"
 > [!NOTE]
 > 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在 iOS 10+ 裝置上實作適用於 FairPlay 的離線 DRM 之前：
 

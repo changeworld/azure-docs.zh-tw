@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201123"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
@@ -44,7 +43,7 @@ ms.locfileid: "83201123"
 ## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
 1. 在 Visual Studio 中，選取 [**工具**] [  >  **nuget 套件管理員**] [  >  **nuget 管理員主控台**]。
-2. 在 [**套件管理員主控台**] 視窗中，使用 `Install-Package` 命令來新增下列 NuGet 套件。 例如 `Install-Package Microsoft.Azure.Management.Media`。
+2. 在 [**套件管理員主控台**] 視窗中，使用 `Install-Package` 命令來新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
 
 |Package|描述|
 |---|---|
@@ -56,19 +55,19 @@ ms.locfileid: "83201123"
 
 ## <a name="create-and-configure-the-app-settings-file"></a>建立和設定應用程式佈建檔案
 
-### <a name="create-appsettingsjson"></a>建立 appsettings
+### <a name="create-appsettingsjson"></a>建立 appsettings.js
 
 1. Go go**一般**  >  **文字檔**。
-1. 將它命名為 "appsettings"。
+1. 將它命名為 "appsettings.json"。
 1. 將 json 檔案的 [複製到輸出目錄] 屬性設定為 [更新時才複製] （如此一來，應用程式就能夠在發行時存取它）。
 
-### <a name="set-values-in-appsettingsjson"></a>在 appsettings 中設定值
+### <a name="set-values-in-appsettingsjson"></a>設定 appsettings.js中的值
 
-執行 `az ams account sp create` 命令，如[存取 api](access-api-cli-how-to.md)中所述。 此命令會傳回您應該複製到 "appsettings" 中的 json。
+執行 `az ams account sp create` 命令，如[存取 api](access-api-cli-how-to.md)中所述。 命令會傳回您應該複製到「appsettings.js開啟」的 json。
  
 ## <a name="add-configuration-file"></a>新增組態檔
 
-為了方便起見，請新增負責從 "appsettings" 讀取值的設定檔。
+為了方便起見，請新增負責讀取 "appsettings.json" 值的設定檔。
 
 1. 將新的 .cs 類別加入至您的專案。 請命名為 `ConfigWrapper`。 
 1. 將下列程式碼貼入此檔案（此範例假設您的命名空間為 `ConsoleApp1` ）。
@@ -241,7 +240,7 @@ namespace ConsoleApp1
 - [使用媒體服務建立篩選 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [搭配使用 Azure Functions v2 與媒體服務 v3 的進階影片隨選範例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 如需更多程式碼範例，請參閱[.NET SDK 範例](https://github.com/Azure-Samples/media-services-v3-dotnet)存放庫。

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201111"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure 監視器查詢中的 app() 運算式
@@ -20,7 +19,7 @@ ms.locfileid: "83201111"
 > [!IMPORTANT]
 > 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)，則不會使用應用程式（）運算式，因為記錄資料儲存在 log Analytics 工作區中。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 `app(`*標識*`)`
 
@@ -29,7 +28,7 @@ ms.locfileid: "83201111"
 
 - 識別碼**：使用下表中的其中一個格式來識別應用程式。
 
-| 識別碼 | 說明 | 範例
+| 識別碼 | 描述 | 範例
 |:---|:---|:---|
 | 資源名稱 | 人類看得懂的應用程式名稱（也稱為「元件名稱」） | app("fabrikamapp") |
 | 完整名稱 | 使用下列形式的應用程式完整名稱："subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
@@ -37,7 +36,7 @@ ms.locfileid: "83201111"
 | Azure 資源識別碼 | Azure 資源的識別碼 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>附註
+## <a name="notes"></a>備註
 
 * 您必須有應用程式的讀取權限。
 * 以應用程式名稱來識別應用程式時，會假設該名稱在所有可存取的訂用帳戶中是唯一的。 如果您有多個應用程式具有該指定名稱，查詢將會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。

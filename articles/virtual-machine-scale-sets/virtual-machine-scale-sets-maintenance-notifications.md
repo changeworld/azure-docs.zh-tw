@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200093"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的計劃性維護通知
@@ -75,7 +74,7 @@ ms.locfileid: "83200093"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在左側功能表中，選取 [所有服務]****，然後選取 [虛擬機器擴展集]****。
 3. 在 [虛擬機器擴展集]**** 底下，選取 [編輯資料行]**** 以開啟可用的資料行清單。
-4. 在 [可用的資料行]**** 區段中，選取 [自助維護]****，然後將其移至 [選取的資料行]**** 清單。 選取 [套用]  。  
+4. 在 [可用的資料行]**** 區段中，選取 [自助維護]****，然後將其移至 [選取的資料行]**** 清單。 選取 [套用]。  
 
     若要讓 [自助維護]**** 項目變得更容易被找到，您可以將 [可用的資料行]**** 區段中的下拉式清單從 [全部]**** 變更為 [屬性]****。
 
@@ -83,8 +82,8 @@ ms.locfileid: "83200093"
 
 | 值 | 說明 |
 |-------|-------------|
-| 是 | 虛擬機器擴展集中至少有一個 VM 處於自助服務時段內。 您可以在此自助服務期間隨時開始維護。 | 
-| 否 | 受影響之虛擬機器擴展集中沒有任何 VM 處於自助服務時段內。 | 
+| Yes | 虛擬機器擴展集中至少有一個 VM 處於自助服務時段內。 您可以在此自助服務期間隨時開始維護。 | 
+| No | 受影響之虛擬機器擴展集中沒有任何 VM 處於自助服務時段內。 | 
 | - | 您的虛擬機器擴展集不在這一波計劃性維護中。| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>入口網站中的通知和警示

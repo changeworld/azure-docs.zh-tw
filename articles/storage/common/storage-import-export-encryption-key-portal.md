@@ -9,21 +9,20 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83195244"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在匯入/匯出服務的 Azure Key Vault 中使用客戶管理的金鑰
 
 Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 BitLocker 金鑰。 根據預設，BitLocker 金鑰會使用 Microsoft 管理的金鑰進行加密。 若要進一步控制加密金鑰，您也可以提供客戶管理的金鑰。
 
-客戶管理的金鑰必須建立並儲存在 Azure Key Vault 中。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)
+客戶管理的金鑰必須建立並儲存在 Azure Key Vault 中。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)
 
 本文說明如何在[Azure 入口網站](https://portal.azure.com/)中使用客戶管理的金鑰搭配匯入/匯出服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
@@ -64,7 +63,7 @@ Azure 匯入/匯出會保護用來透過加密金鑰鎖定磁片磁碟機的 Bit
 
     ![選取或建立 Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. 您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 接受所有其他預設值。 選取 [檢閱 + 建立]  。
+6. 您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 接受所有其他預設值。 選取 [檢閱 + 建立]****。
 
     ![建立新的 Azure Key Vault](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 

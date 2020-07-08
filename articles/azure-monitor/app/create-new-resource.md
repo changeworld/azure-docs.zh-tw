@@ -4,10 +4,9 @@ description: 針對新的即時應用程式手動設定 Application Insights 監
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200679"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
@@ -103,9 +102,9 @@ TenantId           : {subid}
  az extension add -n application-insights
 ```
 
-如果您未執行 `az extension add` 命令，您會看到一則錯誤訊息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+如果您未執行 `az extension add` 命令，將會看到錯誤訊息，指出： `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
-現在您可以執行下列程式來建立您的 Application Insights 資源：
+現在您可以執行下列程式碼來建立您的 Application Insights 資源：
 
 ```azurecli
 az monitor app-insights component create --app

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83199019"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍
@@ -35,7 +34,7 @@ ms.locfileid: "83199019"
 | Application Insights 應用程式 | Application Insights 應用程式中的所有記錄。 | 從 Application Insights 的 **[總覽**] 頁面選取 [**分析**]。 | 只能將範圍變更為另一個 Application Insights 應用程式。 |
 | 資源群組 | 資源群組中所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [資源群組] 功能表中選取 [**記錄**]。 | 無法變更範圍。|
 | 訂用帳戶 | 訂用帳戶中的所有資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。 | 從 [訂用帳戶] 功能表中選取 [**記錄**]。   | 無法變更範圍。 |
-| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 從 [資源] 功能表中選取 [**記錄**]。<br>OR<br>從 [ **Azure 監視器**] 功能表中選取 [**記錄**]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
+| 其他 Azure 資源 | 資源所建立的記錄。 可能包含來自多個 Log Analytics 工作區的資料。  | 從 [資源] 功能表中選取 [**記錄**]。<br>或者<br>從 [ **Azure 監視器**] 功能表中選取 [**記錄**]，然後選取新的範圍。 | 只能將範圍變更為相同的資源類型。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>範圍限定于資源的限制
 
@@ -68,7 +67,7 @@ Log Analytics 會在使用特定數目的區域時發出警告或錯誤，協助
 ## <a name="time-range"></a>時間範圍
 時間範圍會根據建立記錄時，指定針對查詢評估的一組記錄。 這是由工作區或應用程式中每一筆記錄的標準屬性所定義，如下表所指定。
 
-| Location | 屬性 |
+| 位置 | 屬性 |
 |:---|:---|
 | Log Analytics 工作區          | TimeGenerated |
 | Application Insights 應用程式 | timestamp     |

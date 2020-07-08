@@ -7,16 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
 ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196278"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure 監視器記錄的結構
 使用[記錄查詢](log-query-overview.md)快速取得資料見解的能力，是 Azure 監視器的強大功能。 若要建立有效率且有用的查詢，您應該瞭解一些基本概念，例如您想要的資料位於何處，以及其結構化方式。 本文提供您開始使用所需的基本概念。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 監視器記錄檔中的資料會儲存在 Log Analytics 工作區或 Application Insights 應用程式中。 這兩種技術都是由 Azure 所提供技術支援[資料總管](/azure/data-explorer/)表示它們會運用其強大的資料引擎和查詢語言。
 
 > [!IMPORTANT]
@@ -59,7 +58,7 @@ union withsource = table *
 
 不同于 Log Analytics 工作區，Application Insights 應用程式有一組固定的資料表。 您無法將其他資料來源設定為寫入應用程式，因此不能建立其他資料表。 
 
-| Table | 說明 | 
+| 資料表 | 描述 | 
 |:---|:---|
 | availabilityResults | 可用性測試中的摘要資料。 |
 | browserTimings      | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。 |
@@ -79,7 +78,7 @@ union withsource = table *
 ## <a name="standard-properties"></a>標準屬性
 雖然 Azure 監視器記錄中的每個資料表都有自己的架構，但有所有資料表共用的標準屬性。 如需每個內容的詳細資訊，請參閱[Azure 監視器記錄中的標準屬性](../platform/log-standard-properties.md)。
 
-| Log Analytics 工作區 | Application Insights 應用程式 | 說明 |
+| Log Analytics 工作區 | Application Insights 應用程式 | 描述 |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | 建立記錄的日期和時間。 |
 | 類型          | itemType   | 從中抓取記錄的資料表名稱。 |

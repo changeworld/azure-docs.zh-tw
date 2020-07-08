@@ -4,10 +4,9 @@ description: 本文說明如何在 Azure Service Fabric 中使用中央秘密存
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197773"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中央秘密存放區 
@@ -73,7 +72,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 請遵循下列步驟，在您的 Service Fabric 應用程式中使用密碼。
 
-1. 使用下列程式碼片段，在**設定 .xml**檔案中新增區段。 請注意，此值的格式為 { `secretname:version` }。
+1. 使用下列程式碼片段，在**settings.xml**檔案中新增區段。 請注意，此值的格式為 { `secretname:version` }。
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +80,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
      </Section>
    ```
 
-1. 匯入**ApplicationManifest**中的區段。
+1. 匯入**ApplicationManifest.xml**中的區段。
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -99,7 +98,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
 1. 將秘密掛接至容器。 若要讓容器內的秘密可供使用，唯一需要的變更是 `specify` 中的掛接點 `<ConfigPackage>` 。
-下列程式碼片段是修改過的**ApplicationManifest。**  
+下列程式碼片段是修改過的**ApplicationManifest.xml**。  
 
    ```xml
    <ServiceManifestImport>
@@ -117,7 +116,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
    ```
    您容器內的掛接點下會提供密碼。
 
-1. 您可以藉由指定，將秘密系結至進程環境變數 `Type='SecretsStoreRef` 。 下列程式碼片段是如何將版本系結 `supersecret` `ver1` 至 `MySuperSecret` **ServiceManifest**中環境變數的範例。
+1. 您可以藉由指定，將秘密系結至進程環境變數 `Type='SecretsStoreRef` 。 下列程式碼片段是如何 `supersecret` `ver1` `MySuperSecret` 在**ServiceManifest.xml**中將版本系結至環境變數的範例。
 
    ```xml
    <EnvironmentVariables>

@@ -10,13 +10,12 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197026"
 ---
-# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的自動實例修復
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的執行個體自動修復
 
 針對 Azure 虛擬機器擴展集啟用自動實例修復，可以藉由維護一組狀況良好的實例，協助達到應用程式的高可用性。 如果擴展集中的實例發現[應用程式健康情況延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)所回報的狀況不良，則此功能會藉由刪除狀況不良的實例並建立新的實例來加以取代，以自動執行實例修復。
 

@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124783"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
@@ -29,7 +28,7 @@ ms.locfileid: "83124783"
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 
-若本文中未提及您的 Azure 問題，請前往 [MSDN 及 Stack Overflow 上的 Azure 論壇](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇上張貼您的問題，或將問題貼到 Twitter 上的 @AzureSupport。 此外，您也可以在 [Azure 支援](https://azure.microsoft.com/support/options/)網站上選取 [取得支援]，來提出 Azure 支援要求。
+若本文中未提及您的 Azure 問題，請造訪[MSDN 上的 azure 論壇和 Stack Overflow](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇上張貼您的問題，或將問題貼到 Twitter 上的 @AzureSupport。 此外，您也可以在 [Azure 支援](https://azure.microsoft.com/support/options/)網站上選取 [取得支援]，來提出 Azure 支援要求。
 
 在您的慣用區域提供您的慣用 VM 類型之前，我們會建議遇到部署問題的客戶考慮採用下表中的指引作為暫時的因應措施。 
 

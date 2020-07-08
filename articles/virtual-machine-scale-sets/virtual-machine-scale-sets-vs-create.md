@@ -10,10 +10,9 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124358"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 建立虛擬機器擴展集
@@ -24,7 +23,7 @@ ms.locfileid: "83124358"
 
 Azure 資源群組部署是一種方式，可在單一部署作業中將一組相關的 Azure 資源群組在一起並加以發佈。 如需詳細資訊，請參閱[透過 Visual Studio 建立和部署 Azure 資源群組](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始在 Visual Studio 中部署虛擬機器擴展集，您需要下列必要條件：
 
@@ -36,7 +35,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
 ## <a name="create-a-project"></a>建立專案<a name="creating-a-project"></a> 
 
-1. 開啟 Visual Studio，然後選取 [建立新專案]  。
+1. 開啟 Visual Studio，然後選取 [建立新專案]。
 
 1. 在 [**建立新專案**] 中，選擇 [c # 的**Azure 資源群組**]，然後選取 **[下一步]**。
 
@@ -44,7 +43,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
     ![命名並建立您的專案](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
-1. 從範本清單中，選擇 [ **Windows 虛擬機器擴展集**] 或 [ **Linux 虛擬機器擴展集**] 範本。 選取 [確定]  。
+1. 從範本清單中，選擇 [ **Windows 虛擬機器擴展集**] 或 [ **Linux 虛擬機器擴展集**] 範本。 選取 [確定]。
 
    ![選取虛擬機器範本](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
@@ -78,7 +77,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
     ![編輯部署參數](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. 在 [**部署至資源群組**] 中，選取 [**部署**]。 動作會執行**deploy-azureresourcegroup.ps1**腳本。 [輸出]**** 視窗會顯示部署進度。
+1. 在 [**部署至資源群組**] 中，選取 [**部署**]。 動作會執行**Deploy-AzureResourceGroup.ps1**腳本。 [輸出]**** 視窗會顯示部署進度。
 
    ![輸出顯示結果](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
@@ -86,7 +85,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
 選取 [ **view**  >  **Cloud Explorer** ] 以查看新的虛擬機器擴展集。 如有必要，請使用 [**全部**重新整理]。
 
-![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
+![雲端總管](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 
 **Cloud Explorer**可讓您在開發應用程式時，在 Visual Studio 中管理 Azure 資源。 您也可以在 [Azure 入口網站](https://portal.azure.com)和 [Azure 資源總管 (英文)](https://resources.azure.com/) 中檢視虛擬機器擴展集。
 

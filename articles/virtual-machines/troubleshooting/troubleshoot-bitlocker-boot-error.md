@@ -14,10 +14,9 @@ ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
 ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201337"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
@@ -41,7 +40,7 @@ ms.locfileid: "83201337"
 
 如果 VM 無法找到 BitLocker 復原金鑰 (BEK) 檔案來將已加密的磁碟解密，就可能發生此問題。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決此問題，請先將 VM 停止並解除配置，再加以重新啟動。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
 
@@ -284,7 +283,7 @@ ms.locfileid: "83201337"
 
 **參數範例**
 
-| 參數  | 值範例  |評價   |
+| 參數  | 值範例  |註解   |
 |---|---|---|
 |  $keyVaultName | myKeyVault2112852926  | 金鑰保存庫的名稱，用來儲存金鑰 |
 |$kekName   |mykey   | 用來加密 VM 的金鑰名稱|

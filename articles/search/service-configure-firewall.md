@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125571"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>設定 Azure 認知搜尋的 IP 防火牆
@@ -39,7 +38,7 @@ Azure 入口網站提供以 CIDR 格式指定 IP 位址和 IP 位址範圍的能
 
 入口網站會自動偵測您的用戶端 IP 位址。 它可能是您電腦或網路閘道的用戶端 IP 位址。 將您的工作負載帶到生產環境之前，請務必移除此 IP 位址。
 
-若要將目前的 IP 新增至 Ip 清單，請選取 [**新增您的用戶端 IP 位址**]。 然後選取 [儲存]  。
+若要將目前的 IP 新增至 Ip 清單，請選取 [**新增您的用戶端 IP 位址**]。 接著，選取 [儲存]。
 
 ![螢幕擷取畫面，顯示如何設定 IP 防火牆設定，以允許目前的 IP](./media/service-configure-firewall/enable-current-ip.png)
 

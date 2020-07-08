@@ -11,10 +11,9 @@ ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125157"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>搭配 Azure 虛擬機器擴展集使用自訂相應縮小原則
@@ -23,7 +22,7 @@ ms.locfileid: "83125157"
 
 相應縮小原則功能可讓使用者藉由三個相應縮小設定來設定虛擬機器的相應縮小順序： 
 
-1. Default
+1. 預設
 2. NewestVM
 3. OldestVM
 

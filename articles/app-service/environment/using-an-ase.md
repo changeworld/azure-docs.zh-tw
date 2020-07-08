@@ -8,10 +8,9 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125803"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
@@ -62,7 +61,7 @@ App Service 環境（ASE）是在客戶的 Azure 虛擬網路實例的子網中 
 
     f. 選取 [執行時間堆疊]。
 
-    g. 選取 [Linux]**** 或 [Windows]****。 
+    如 選取 [Linux] 或 [Windows]。 
 
     h. 在 [**區域**] 下拉式清單中選取您的 ASE。 
 
@@ -169,7 +168,7 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
 
 您可以將 ASE 與 Azure 監視器整合，以將 ASE 的相關記錄傳送到 Azure 儲存體、Azure 事件中樞或 Log Analytics。 今天會記錄下列專案：
 
-| 實際 | 訊息 |
+| 情況 | 訊息 |
 |---------|----------|
 | ASE 狀況不良 | 因為虛擬網路設定無效，指定的 ASE 狀況不良。 如果狀況不良狀態繼續，ASE 將會暫停。 請確定已遵循此處定義的指導方針： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 子網幾乎空間不足 | 指定的 ASE 位於幾乎空間不足的子網中。 有 {0} 剩餘的位址。 一旦這些位址耗盡之後，ASE 就無法調整。  |
@@ -209,7 +208,7 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
 
 如果您有多個 Ase，您可能會想要在其他人之前先升級某些 Ase。 在 ASE **HostingEnvironment Resource Manager**物件中，您可以設定**upgradePreference**的值。 您可以使用範本、ARMClient 或來設定**upgradePreference**設定 https://resources.azure.com 。 三種可能的值如下：
 
-- **無**： Azure 不會在特定的批次中升級您的 ASE。 這是預設值。
+- **無**： Azure 不會在特定的批次中升級您的 ASE。 此值為預設。
 - **早期**：您的 ASE 將會在 App Service 升級的前半部升級。
 - **晚期**：您的 ASE 將會在 App Service 升級的下半年升級。
 
@@ -218,7 +217,7 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
 1. 請移至 resources.azure.com，並使用您的 Azure 帳戶登入。
 1. 前往訂用帳戶的資源訂用帳戶 \/ \[ 名稱 \] \/ resourceGroups \/ \[ 資源組名 \] \/ 提供者 \/ Microsoft. Web \/ hostingEnvironments \/ \[ ASE 名稱 \] 。
 1. 選取頂端的 [**讀取/寫入**]。
-1. 選取 [編輯]  。
+1. 選取 [編輯]。
 1. 將 [ **upgradePreference** ] 設定為您想要的三個值中的哪一個。
 1. 選取 [**修補**]。
 
@@ -250,7 +249,7 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
 
     ![ASE 刪除][3]
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
