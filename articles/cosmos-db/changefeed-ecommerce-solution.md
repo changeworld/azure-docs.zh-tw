@@ -4,15 +4,15 @@ description: 本文說明零售公司如何使用變更摘要來瞭解使用者�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263002"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分析
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 ## <a name="solution-components"></a>方案元件
 下圖顯示此解決方案中的相關資料流程和元件：
 
-![投影片](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="投影片" border="false":::
  
 1. **資料產生：** 資料模擬器可用來產生代表事件的零售資料，例如，使用者檢視某個項目、將某項目新增至其購物車，及購買某項目等。 您可以使用資料產生器來產生大量的範例資料。 產生的範例資料包含下列格式的文件：
    
@@ -53,7 +53,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 7. **Power BI：** Power BI 可以視覺方式呈現 Azure 串流分析所傳送的資料。 您可以建置儀表板，以即時查看計量的變化。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Microsoft .NET Framework 4.7.1 或更新版本
 
@@ -139,7 +139,7 @@ Azure 事件中樞會接收事件資料，並加以儲存、處理然後轉送�
 
 2. 從左側的功能表中選取 [共用存取原則]****。  
 
-3. 選取 [ **RootManageSharedAccessKey**]。 將 [[連接字串 – 主要金鑰]]**** 複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將其標示為 [事件中樞命名空間]**** 連接字串。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
+3. 選取 [RootManageSharedAccessKey]。 將 [[連接字串 – 主要金鑰]]**** 複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將其標示為 [事件中樞命名空間]**** 連接字串。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>設定用來讀取變更摘要的 Azure 函式
 
@@ -169,7 +169,7 @@ Azure 事件中樞會接收事件資料，並加以儲存、處理然後轉送�
 
 3. 新增**集合**和**資料庫**名稱。 (這些名稱應該是 **changefeedlabcollection** 和 **changefeedlabdatabase**，除非您選擇以不同方式命名。)
 
-   ![更新連接字串](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="更新連接字串":::
  
 4. 儲存所有已編輯的檔案所做的變更。  
 
@@ -179,7 +179,7 @@ Azure 事件中樞會接收事件資料，並加以儲存、處理然後轉送�
 
 7. 如果您流覽至 [ [Azure 入口網站](https://portal.azure.com/)]，然後移至資源群組內的 [Cosmos DB] 帳戶，則在 [**資料總管**] 中，您會看到亂數據匯入**changefeedlabcollection**中。
  
-   ![在入口網站中產生的資料](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="在入口網站中產生的資料":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>設定串流分析作業
 
@@ -189,7 +189,7 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 2. 選取 [輸入]****，如下所示。  
 
-   ![建立輸入](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="建立輸入":::
 
 3. 選取 [+ 新增串流輸入]****。 然後，從下拉式功能表中選取 [事件中樞]****。  
 
@@ -208,7 +208,7 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 5. 瀏覽回串流分析作業頁面，並選取 [輸出]****。  
 
-6. 選取 [ **+ 新增**]。 然後，從下拉式功能表中選取 [Power BI]****。  
+6. 選取 [+ 新增] 。 然後，從下拉式功能表中選取 [Power BI]****。  
 
 7. 若要建立新的 Power BI 輸出並以視覺方式呈現平均價格，請執行下列動作：
 
@@ -221,7 +221,7 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 8. 接著，返回 **streamjob1** 並選取 [編輯查詢]****。
 
-   ![Edit query](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="編輯查詢":::
  
 9. 將下列查詢貼到查詢視窗中。 **AVERAGE PRICE** 查詢會對使用者所檢視的所有項目計算平均價格、對新增至使用者購物車的所有項目計算平均價格，以及對使用者所購買的所有項目計算平均價格。 此計量可協助電子商務公司決定商品的售價，以及應投資於哪些商品。 例如，如果檢視項目的平均價格遠高於購買項目的平均價格，公司即可選擇將售價較低的項目新增至商品目錄中。
 
@@ -314,7 +314,7 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
    範例儀表板使用了這些圖表後，呈現如下：
 
-   ![視覺效果](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="項":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>選擇性：電子商務網站的視覺化
 
@@ -322,19 +322,19 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
 1. 流覽回到 [ [Azure 入口網站](https://portal.azure.com/)]，然後移至您的**Cosmos DB 帳戶**，**資料總管**。  
 
-   在 [ **changefeedlabdatabase** - **products** ] 和 [**類別**] 底下新增兩個集合，並具有固定儲存容量。
+   在 [ **changefeedlabdatabase**products] 和 [類別] 底下新增兩個集合  -  **products** ，並具有固定儲存容量。 **categories**
 
    在 **changefeedlabdatabase** 下新增名為 **topItems**、分割區索引鍵為 **/Item** 的另一個集合。
 
 2. 選取 **topItems** 集合，然後在 [調整與設定]**** 下將 [存留時間]**** 設定為 **30 秒**，讓 topItems 每 30 秒更新一次。
 
-   ![存留時間](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="存留時間":::
 
-3. 若要在 **topItems** 集合中填入購買率最高的項目，請瀏覽回 **streamjob1**，並新增一個 [輸出]****。 選取 [Cosmos DB]****。
+3. 若要在 **topItems** 集合中填入購買率最高的項目，請瀏覽回 **streamjob1**，並新增一個 [輸出]****。 選取 [Cosmos DB]。
 
 4. 填寫必要欄位，如下圖所示。
 
-   ![Cosmos 輸出](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos 輸出":::
  
 5. 如果您在先前的實驗室步驟中新增了選擇性的 TOP 5 查詢，請繼續進行步驟 5a。 否則，請繼續進行步驟 5b。
 

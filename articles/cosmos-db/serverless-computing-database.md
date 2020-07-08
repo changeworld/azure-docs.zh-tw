@@ -3,15 +3,15 @@ title: 具有 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用以建立事件驅動無伺服器計算的應用程式。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263255"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 與 Azure Functions 可讓您以下列方式整合資料庫與�
 
 下圖逐一說明這三個整合： 
 
-![Azure Cosmos DB 和 Azure Functions 如何整合](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何整合" border="false":::
 
 Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結可用於下列組合：
 
@@ -61,7 +61,7 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 下圖顯示此觸發程序在 Azure 入口網站中撰寫的程式碼。
 
-![在 Azure 入口網站中建立 Cosmos DB 的 Azure Functions 觸發程式](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="在 Azure 入口網站中建立 Cosmos DB 的 Azure Functions 觸發程式":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務使用案例 - 計時器觸發程序和輸入繫結
 
@@ -75,13 +75,13 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 下列映像顯示此案例之 Azure 入口網站中的程式碼。
 
-![財務案例之計時器觸發程序的 Index.js 檔案](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="財務案例之計時器觸發程序的 Index.js 檔案":::
 
-![財務案例之計時器觸發程序的 Run.csx 檔案](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="財務案例之計時器觸發程序的 Run.csx 檔案":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>遊戲使用案例-適用于 Cosmos DB 的 Azure Functions 觸發程式和輸出系結 
 
-在遊戲中建立新的使用者時，您可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜尋可能知道的其他使用者。 然後，您可以將結果寫入 [Azure Cosmos DB SQL 資料庫] 以方便擷取。
+在遊戲中建立新的使用者時，您可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜尋可能知道的其他使用者。 然後，您可以將結果寫入[Azure Cosmos DB 或 SQL database]() ，以便進行輕鬆的抓取。
 
 **執行：** 針對 Cosmos DB 使用 Azure Functions 觸發程式和輸出系結
 

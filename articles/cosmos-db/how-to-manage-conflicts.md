@@ -1,17 +1,17 @@
 ---
 title: 管理 Azure Cosmos DB 中的區域之間的衝突
 description: 瞭解如何藉由建立最後寫入者為准或自訂衝突解決原則，管理 Azure Cosmos DB 中的衝突
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 12/03/2019
-ms.author: mjbrown
-ms.openlocfilehash: 8f109bef1c7ebb3ac77c58357ad3cb6064e8afb3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.topic: how-to
+ms.date: 06/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ebc5ea6e39b3c4c5f7451c60fef976f6a12b1312
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261523"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理衝突解決原則
 
@@ -53,9 +53,27 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/async)
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionLWWAsync)]
+
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionLWWSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-lww-javav2"></a>JAVA V2 Sdk
+
+# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+
+[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -65,7 +83,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-# <a name="java-sync-sdk"></a>[JAVA 同步 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+
+[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -221,9 +241,27 @@ await container.Scripts.CreateStoredProcedureAsync(
 ```
 ---
 
-### <a name="java-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/async)
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionSprocAsync)]
+
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionSprocSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav2"></a>JAVA V2 Sdk
+
+# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+
+[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -233,9 +271,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-建立容器之後，您必須建立 `resolver` 預存程序。
+# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
 
-# <a name="java-sync-sdk"></a>[JAVA 同步 SDK](#tab/sync)
+[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -318,9 +356,27 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="create-custom-conflict-resolution-policy-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/async)
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionCustomAsync)]
+
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionCustomSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-javav2"></a>JAVA V2 Sdk
+
+# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+
+[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -330,7 +386,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-# <a name="java-sync-sdk"></a>[JAVA 同步 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+
+[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -403,9 +461,11 @@ while (conflictFeed.HasMoreResults)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="read-from-conflict-feed-java"></a>Java SDK
+### <a name="java-v2-sdks"></a><a id="read-from-conflict-feed-javav2"></a>JAVA V2 Sdk
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/async)
+# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+
+[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -414,7 +474,9 @@ for (Conflict conflict : response.getResults()) {
     /* Do something with conflict */
 }
 ```
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+
+[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();

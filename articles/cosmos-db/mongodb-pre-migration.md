@@ -4,15 +4,15 @@ description: 此文件概述從 MongoDB 到 Cosmos DB 的資料移轉必要條�
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 01/09/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263053"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 
@@ -79,7 +79,10 @@ ms.locfileid: "83647286"
 同樣地，資料分割容量會自動新增容量，並視情況重新平衡資料。 如需為您的資料選擇正確分割區的詳細資料和建議，請參閱[選擇分割區索引鍵一文](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)。 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>為資料編製索引
-根據預設，Azure Cosmos DB 會針對插入的所有資料提供自動編制索引。 Azure Cosmos DB 提供的編制索引功能包括新增複合式索引、唯一索引和存留時間 (TTL) 索引。 索引管理介面對應至 `createIndex()` 命令。 深入了解[適用於 MongoDB 的 Azure Cosmos DB API 中的索引編製](mongodb-indexing.md)。
+
+Azure Cosmos DB 適用于 MongoDB 的 API 伺服器版本3.6 只會自動為欄位編制索引 `_id` 。 此欄位無法卸載。 它會自動強制執行 `_id` 每個分區索引鍵的欄位唯一性。 若要為其他欄位編制索引，請套用 MongoDB 索引管理命令。 此預設索引編制原則與 Azure Cosmos DB SQL API 不同，預設會為所有欄位編制索引。
+
+Azure Cosmos DB 所提供的編制索引功能包括新增複合索引、唯一索引和存留時間（TTL）索引。 索引管理介面對應至 `createIndex()` 命令。 若要深入瞭解，請參閱[在 Azure Cosmos DB 的 MONGODB API 中編制索引](mongodb-indexing.md)一文。
 
 [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) 會自動移轉具有唯一索引的 MongoDB 集合。 不過，必須先建立唯一索引，然後再進行移轉。 當您的集合中已經有資料時，Azure Cosmos DB 不支援建立唯一索引。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)。
 

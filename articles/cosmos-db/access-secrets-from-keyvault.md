@@ -6,15 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262662"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保護 Azure Cosmos 金鑰 
 
@@ -35,13 +35,13 @@ ms.locfileid: "80618762"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。  
 2. 選取 [建立資源] > [安全性] > [Key Vault]****。  
-3. 在 [建立金鑰保存庫]  區段上提供下列資訊：  
+3. 在 [建立金鑰保存庫] 區段上提供下列資訊：  
    * **名稱：** 提供 Key Vault 的唯一名稱。  
    * **訂用帳戶：** 選擇要使用的訂用帳戶。  
    * 在 [**資源群組**] 下，選擇 [**建立新**的]，然後輸入資源組名。  
    * 在 [位置] 下拉式功能表中選擇位置。  
    * 將其他的選項保留預設值。  
-4. 提供上述資訊之後，請選取 [建立]  。  
+4. 提供上述資訊之後，請選取 [建立]。  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>在 Key Vault 新增 Azure Cosmos DB 存取金鑰。
 1. 瀏覽至您在上一個步驟中建立的 Key Vault，然後開啟 [祕密]**** 索引標籤。  
@@ -51,7 +51,7 @@ ms.locfileid: "80618762"
    * 為祕密提供 [名稱]****
    * 在 [值]**** 欄位中提供 Cosmos DB 帳戶的連接字串。 然後選取 [建立]****。
 
-   ![建立祕密](./media/access-secrets-from-keyvault/create-a-secret.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="建立密碼":::
 
 4. 建立好祕密之後，請將其開啟，並複製具有下列格式的祕密識別碼。 您會在下一節用到這個識別碼。 
 
@@ -70,11 +70,11 @@ ms.locfileid: "80618762"
 
 5. 應用程式部署完成後。 從 Azure 入口網站瀏覽至所部署的 Web 應用程式，然後開啟此應用程式的 [受控服務識別]****。  
 
-   ![受控服務識別](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="受控服務識別":::
 
 如果您立即執行應用程式，則會看到下列錯誤，原因是您還未在 Key Vault 中對此應用程式提供任何權限。
 
-![已部署但沒有存取權的應用程式](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="已部署但沒有存取權的應用程式":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>註冊應用程式，並對其授與 Key Vault 讀取權限
 
@@ -84,11 +84,11 @@ ms.locfileid: "80618762"
 
 2. 開啟 [存取原則]****，選取 [+新增]**** 以尋找您所部署的 Web 應用程式，選取權限，然後選取 [確定]****。  
 
-   ![新增存取原則](./media/access-secrets-from-keyvault/add-access-policy.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="新增存取原則":::
 
 現在，如果您執行應用程式，便可從 Key Vault 讀取祕密。
 
-![已部署且有存取權的應用程式](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="已部署且有存取權的應用程式":::
  
 同樣地，您可以新增使用者來存取 Key Vault。 您需要選取 [存取原則]**** 將自己新增至 Key Vault，然後授與要從 Visual studio 執行應用程式所需的所有權限。 此應用程式從桌面執行時，會擷取您的身分識別。
 

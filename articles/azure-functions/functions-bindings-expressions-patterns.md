@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261064"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
@@ -37,7 +37,8 @@ ms.locfileid: "79277644"
 
 在本機執行函式時，應用程式設定值來自 local.settings.json** 檔案。
 
-請注意，觸發程序和繫結的 `connection` 屬性是特殊案例，且會自動將值解析為應用程式設定，不含百分比符號。 
+> [!NOTE]
+> `connection`觸發程式和系結的屬性是特殊案例，會自動將值解析為應用程式設定，而不含百分比符號。 
 
 下列範例是使用應用程式設定 `%input-queue-name%` 來定義要觸發之佇列的 Azure 佇列儲存體觸發程序。
 

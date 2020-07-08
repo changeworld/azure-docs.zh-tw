@@ -3,15 +3,15 @@ title: 針對 Azure Cosmos 帳戶設定以虛擬網路為基礎的存取
 description: 本文件將說明設定 Azure Cosmos DB 虛擬網路服務端點所需的步驟。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/26/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a061676714c35b4e8868ce3df9c71be05297ba99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261659"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>設定從虛擬網路 (VNet) 存取
 
@@ -42,17 +42,17 @@ ms.locfileid: "80366238"
 
 1. 選取您要從中新增 Azure 虛擬網路的**訂用帳戶**。 選取要提供 Azure Cosmos DB 帳戶存取權的 Azure **虛擬網路**和**子網路**。 接下來，選取 [啟用]**** 以啟用具有 "Microsoft.AzureCosmosDB" 服務端點的選定網路。 完成時，請選取 [**新增**]。
 
-   ![選取虛擬網路和子網路](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="選取虛擬網路和子網路":::
 
 1. 在 Azure Cosmos DB 帳戶啟用從虛擬網路的存取後，它將只會允許來自這個選定子網路的流量。 您所新增的虛擬網路和子網路應會如下列螢幕擷取畫面所示：
 
-   ![已成功設定虛擬網路和子網路](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="已成功設定虛擬網路和子網路":::
 
 > [!NOTE]
 > 若要啟用虛擬網路服務端點，您必須具備下列訂用帳戶權限：
 >   * 虛擬網路的訂用帳戶：網路參與者
 >   * Azure Cosmos DB 帳戶的訂用帳戶：DocumentDB 帳戶參與者
->   * 如果您的虛擬網路和 Azure Cosmos DB 帳戶位於不同的訂用帳戶中，請確定具有虛擬網路的訂閱`Microsoft.DocumentDB`也已註冊資源提供者。 若要註冊資源提供者，請參閱[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)一文。
+>   * 如果您的虛擬網路和 Azure Cosmos DB 帳戶位於不同的訂用帳戶中，請確定具有虛擬網路的訂閱也已 `Microsoft.DocumentDB` 註冊資源提供者。 若要註冊資源提供者，請參閱[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)一文。
 
 以下是向資源提供者註冊訂用帳戶的指示。
 
@@ -66,7 +66,7 @@ ms.locfileid: "80366238"
 
 1. 提供建立新虛擬網路所需的詳細資料，然後選取 [建立]****。 這會建立已啟用 "Microsoft.AzureCosmosDB" 服務端點的子網路。
 
-   ![選取虛擬網路與新虛擬網路的子網路](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="選取虛擬網路與新虛擬網路的子網路":::
 
 如果您的 Azure Cosmos DB 帳戶由其他 Azure 服務（例如 Azure 認知搜尋）使用，或是從串流分析或 Power BI 存取，則您可以選取 [**接受來自全球 Azure 資料中心內的**連線] 來允許存取。
 
@@ -80,7 +80,7 @@ ms.locfileid: "80366238"
 
 1. 若要移除虛擬網路或子網路規則，請選取該虛擬網路或子網路旁的 […]****，然後選取 [移除]****。
 
-   ![移除虛擬網路](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="移除虛擬網路":::
 
 1. 選取 [儲存]**** 以套用變更。
 
@@ -202,7 +202,7 @@ az cosmosdb create \
 
 ### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>將 Cosmos 帳戶獨立連線並設定為後端子網
 
-此範例的目的是要說明如何將 Azure Cosmos 帳戶連線到現有的新虛擬網路，其中子網尚未針對服務端點進行設定。 這項作業是使用`--ignore-missing-vnet-service-endpoint`參數來完成。 這可讓 Cosmos 帳戶的設定在虛擬網路的子網的設定完成之前，不會發生錯誤。 子網路設定完成後，便可透過已設定的子網路存取 Cosmos 帳戶。
+此範例的目的是要說明如何將 Azure Cosmos 帳戶連線到現有的新虛擬網路，其中子網尚未針對服務端點進行設定。 這項作業是使用參數來完成 `--ignore-missing-vnet-service-endpoint` 。 這可讓 Cosmos 帳戶的設定在虛擬網路的子網的設定完成之前，不會發生錯誤。 子網路設定完成後，便可透過已設定的子網路存取 Cosmos 帳戶。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>使用 direct 模式時的埠範圍
+
+當您透過直接模式連線使用服務端點搭配 Azure Cosmos 帳戶時，您必須確定 TCP 埠範圍從10000到20000已開啟。
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>從 IP 防火牆規則移轉至虛擬網路 ACL
 

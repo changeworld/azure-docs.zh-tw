@@ -6,23 +6,23 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70241250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260486"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 連線至 Azure Cosmos DB Cassandra API
 
 本文是從 Spark 進行 Azure Cosmos DB Cassandra API 整合的一系列文章之一。 這些文章涵蓋連線能力、資料定義語言 (DDL) 作業、基本的資料操作語言 (DML) 作業，以及從 Spark 進行進階 Azure Cosmos DB Cassandra API 整合。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * [布建 Azure Cosmos DB Cassandra API 帳戶。](create-cassandra-dotnet.md#create-a-database-account)
 
-* 布建您的 Spark 環境選擇 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |其他]。
+* 布建您的 Spark 環境選擇 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |其他]。
 
 ## <a name="dependencies-for-connectivity"></a>連線能力的相依項目
 * **適用於 Cassandra 的 Spark 連接器：** Spark 連接器用來連線到 Azure Cosmos DB Cassandra API。  請找出位於 [Maven 中心]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)且與 Spark 環境的 Spark 和 Scala 版本相容的連接器版本，並加以使用。
@@ -122,5 +122,5 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 * [讀取作業](cassandra-spark-read-ops.md)
 * [作業](cassandra-spark-upsert-ops.md)
 * [刪除作業](cassandra-spark-delete-ops.md)
-* [匯總作業](cassandra-spark-aggregation-ops.md)
+* [彙總作業](cassandra-spark-aggregation-ops.md)
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)

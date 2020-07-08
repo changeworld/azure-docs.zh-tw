@@ -3,20 +3,20 @@ title: Azure Cosmos DB 大量執行程式程式庫概觀
 description: 在 Azure Cosmos DB 中透過大量執行程式程式庫所提供的大量匯入和大量更新 API，來執行大量作業。
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260605"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 大量執行程式程式庫概觀
  
-Azure Cosmos DB 是一種快速且具有彈性的全域分散式資料庫服務，其彈性相應放大的設計可支援： 
+Azure Cosmos DB 是一種快速且具有彈性的全域分散式資料庫服務，其彈性擴增的設計可支援： 
 
 * 大型讀取和寫入輸送量 (每秒百萬個作業)。  
 * 儲存大量 (數百 TB 或更多) 且可預測延遲毫秒數的交易和作業資料。  
@@ -42,7 +42,7 @@ Azure Cosmos DB 是一種快速且具有彈性的全域分散式資料庫服務�
 
 當以實體批次觸發匯入或更新文件的大量作業時，這些資料一開始會隨機打散到與 Azure Cosmos DB 分割區索引鍵範圍對應的貯體。 在與分割區索引鍵範圍對應的每個貯體中，資料會細分為小型批次，而每個小型批次都會作為可在伺服器端上認可的承載。 大量執行程式程式庫針對不論是在分割區索引鍵範圍內還是跨分割區索引鍵範圍，並行執行這些迷你批次，都提供內建的最佳化。 下圖說明大量執行程式如何將資料批次處理到不同的分割區索引鍵：  
 
-![大量執行程式架構](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="大量執行程式架構" :::
 
 大量執行程式程式庫可確保最常利用配置給集合的輸送量。 它會為每個 Azure Cosmos DB 分割區索引鍵範圍使用  [AIMD 樣式的壅塞控制機制](https://tools.ietf.org/html/rfc5681)，以有效率地處理速率限制和逾時。 
 

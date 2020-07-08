@@ -2,20 +2,20 @@
 title: 使用 Spark 讀取 Cassandra API 資料表資料
 titleSufix: Azure Cosmos DB
 description: 本文描述如何從 Azure Cosmos DB 中的 Cassandra API 資料表讀取資料。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257409"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 從 Azure Cosmos DB Cassandra API 資料表中讀取資料
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>套用篩選
 
-目前不支援述詞下推，下面的範例反映用戶端篩選。 
+您可以將述詞向下推送至資料庫，以允許更佳的優化 Spark 查詢。 述詞是傳回 true 或 false 之查詢的條件，通常位於 WHERE 子句中。 述詞下推會篩選資料庫查詢中的資料，減少從資料庫中抓取的專案數，並改善查詢效能。 根據預設，Spark 資料集 API 會將有效的 WHERE 子句自動推送至資料庫。 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+實體計畫的 PushedFilters 區段包含 GreaterThan 向下推篩選。 
+
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="資料分割":::
 
 ## <a name="rdd-api"></a>RDD API
 
@@ -142,6 +146,6 @@ select * from books_vw where book_pub_year > 1891
  
  * [作業](cassandra-spark-upsert-ops.md)
  * [刪除作業](cassandra-spark-delete-ops.md)
- * [匯總作業](cassandra-spark-aggregation-ops.md)
+ * [彙總作業](cassandra-spark-aggregation-ops.md)
  * [資料表複製作業](cassandra-spark-table-copy-ops.md)
 

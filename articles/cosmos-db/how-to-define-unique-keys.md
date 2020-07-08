@@ -3,15 +3,16 @@ title: 定義 Azure Cosmos 容器的唯一索引鍵
 description: 瞭解如何使用 Azure 入口網站、PowerShell、.Net、JAVA 和各種其他 Sdk 來定義 Azure Cosmos 容器的唯一索引鍵。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261540"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>定義 Azure Cosmos 容器的唯一索引鍵
 
@@ -33,7 +34,7 @@ ms.locfileid: "82871016"
 
 1. 如有需要，可按一下 [+ 新增唯一索引鍵]**** 來新增更多唯一索引鍵項目
 
-    ![Azure 入口網站中唯一索引鍵條件限制項目的螢幕擷取畫面](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure 入口網站中唯一索引鍵條件限制項目的螢幕擷取畫面":::
 
 ## <a name="use-powershell"></a>使用 PowerShell
 

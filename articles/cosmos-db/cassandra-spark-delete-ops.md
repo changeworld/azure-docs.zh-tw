@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f15ad8c1edfa64268ec699c8195a7831d98482b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260537"
 ---
 # <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>從 Spark 刪除 Azure Cosmos DB Cassandra API 資料表中的資料
 
@@ -116,7 +116,7 @@ spark
   .show
 ```
 
-**輸出**
+**輸出：**
 
 ```
 == Physical Plan ==
@@ -199,7 +199,7 @@ spark
   .show
 ```
 
-**輸出**
+**輸出：**
 
 ```
 == Physical Plan ==
@@ -278,7 +278,7 @@ println("==================")
 println("3) After")
 sc.cassandraTable("books_ks", "books").collect.foreach(println)
 ```
-**輸出**
+**輸出：**
 
 ```
 ==================
@@ -331,7 +331,7 @@ println("3) After")
 sc.cassandraTable("books_ks", "books").take(4).foreach(println)
 ```
 
-**輸出**
+**輸出：**
 
 ```
 ==================
@@ -360,5 +360,5 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 若要執行彙總及資料複製作業，請參閱 -
  
-* [匯總作業](cassandra-spark-aggregation-ops.md)
+* [彙總作業](cassandra-spark-aggregation-ops.md)
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)

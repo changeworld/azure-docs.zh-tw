@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中使用 JavaScript 查詢 API 撰寫預存程式和
 description: 了解如何使用 JavaScript 查詢 API 在 Azure Cosmos DB 中撰寫預存程序和觸發程序
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262849"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查詢 API 在 Azure Cosmos DB 中撰寫預存程序和觸發程序
 

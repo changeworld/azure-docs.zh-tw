@@ -4,15 +4,15 @@ description: 本檔提供從 MongoDB 到 Azure Cosmos DB 的 Mongo DB APi 的遷
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263087"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用適用于 MongoDB 的 Azure Cosmos DB API 時的遷移後優化步驟
 
@@ -35,7 +35,7 @@ ms.locfileid: "80063598"
 2. 從[Azure 入口網站](https://www.portal.azure.com/)的左窗格中，開啟 [**所有資源**] 功能表，並尋找您已遷移資料的 Azure Cosmos DB 帳戶。
 3. 開啟 [**連接字串**] 分頁。 右窗格中有您成功連接到您的帳戶所需的所有資訊。
 4. 使用應用程式設定中的連線資訊（或其他相關位置），在您的應用程式中反映 Azure Cosmos DB 的 MongoDB API 連線。
-![連接字串](./media/mongodb-post-migration/connection-string.png)
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="連接字串":::
 
 如需詳細資訊，請參閱將[MongoDB 應用程式連接到 Azure Cosmos DB](connect-mongodb-account.md)頁面。
 

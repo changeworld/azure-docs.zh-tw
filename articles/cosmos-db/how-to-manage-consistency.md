@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中管理一致性
 description: 瞭解如何使用 Azure 入口網站、.NET SDK、JAVA SDK 和各種其他 Sdk，在 Azure Cosmos DB 中設定和管理一致性層級
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/24/2020
-ms.author: mjbrown
-ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.topic: how-to
+ms.date: 06/10/2020
+ms.author: anfeldma
+ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261557"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
 
@@ -27,7 +27,7 @@ ms.locfileid: "82870086"
 
 若要檢視或修改預設一致性層級，請登入 Azure 入口網站。 尋找您的 Azure Cosmos 帳戶，然後開啟 [預設一致性]**** 窗格。 選取要作為新預設值的一致性層級，然後選取 [儲存]****。 Azure 入口網站也會提供不同一致性層級 (含音符) 的視覺效果。 
 
-![Azure 入口網站中的一致性功能表](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure 入口網站中的一致性功能表":::
 
 # <a name="cli"></a>[CLI](#tab/cli)
 
@@ -92,9 +92,27 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/javaasync)
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
+
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>JAVA V2 Sdk
+
+# <a name="async"></a>[非同步](#tab/api-async)
+
+Async JAVA V2 SDK （Maven .com. azure：： azure-cosmosdb）
 
 ```java
 // Override consistency at the client level
@@ -108,7 +126,9 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="java-sync-sdk"></a>[JAVA 同步 SDK](#tab/javasync)
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+同步處理 JAVA V2 SDK （Maven .com. azure：： azure-documentdb）
 
 ```java
 // Override consistency at the client level
@@ -173,9 +193,27 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[JAVA Async SDK](#tab/javaasync)
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
+
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>JAVA V2 Sdk
+
+# <a name="async"></a>[非同步](#tab/api-async)
+
+Async JAVA V2 SDK （Maven .com. azure：： azure-cosmosdb）
 
 ```java
 // Get session token from response
@@ -197,7 +235,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="java-sync-sdk"></a>[JAVA 同步 SDK](#tab/javasync)
+# <a name="sync"></a>[同步](#tab/api-sync)
+
+同步處理 JAVA V2 SDK （Maven .com. azure：： azure-documentdb）
 
 ```java
 // Get session token from response
@@ -240,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [**計量**] 窗格，然後選取 [**一致性**] 索引標籤。**根據您的工作負載（請參閱 PBS）** 查看名為 [強式一致讀取] 機率的圖表。
 
-![Azure 入口網站中的 PBS 圖形](./media/how-to-manage-consistency/pbs-metric.png)
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 入口網站中的 PBS 圖形":::
 
 ## <a name="next-steps"></a>後續步驟
 

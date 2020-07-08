@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中尋找要求單位 (RU) 費用
 description: 了解如何尋找對 Azure Cosmos 容器執行的任何作業所產生的要求單位 (RU) 費用。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: e5420b9b765fffcf7b4ccd6775d05795b1b13871
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261829"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中尋找要求單位費用
 
@@ -37,7 +37,7 @@ ms.locfileid: "82872239"
 
 1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
 
-![Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面":::
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
@@ -149,7 +149,7 @@ while (query.hasMoreResults()) {
 }
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 node.js 應用程式](create-sql-api-nodejs.md)。 
+如需詳細資訊，請參閱[快速入門：使用 Azure Cosmos DB 的 SQL API 帳戶來建立 Node.js 應用程式](create-sql-api-nodejs.md)。 
 
 ### <a name="use-the-python-sdk"></a>使用 Python SDK
 
@@ -181,13 +181,13 @@ RU 費用可用名為 `getLastRequestStatistics` 的自訂[資料庫命令](http
 
 1. 前往 [資料總管]**** 窗格，然後選取您要處理的容器。
 
-1. 選取 [新增查詢]  。
+1. 選取 [新增查詢]。
 
 1. 輸入有效的查詢，然後選取 [執行查詢]****。
 
 1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
 
-![Azure 入口網站之中 MongoDB 查詢要求費用的螢幕擷取畫面](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 入口網站之中 MongoDB 查詢要求費用的螢幕擷取畫面":::
 
 ### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驅動程式
 
@@ -231,7 +231,7 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-如需詳細資訊，請參閱[快速入門：將現有的 MongoDB node.js web 應用程式遷移至 Azure Cosmos DB](create-mongodb-nodejs.md)。
+如需詳細資訊，請參閱[快速入門：將現有的 MongoDB Node.js web 應用程式遷移至 Azure Cosmos DB](create-mongodb-nodejs.md)。
 
 ## <a name="cassandra-api"></a>Cassandra API
 

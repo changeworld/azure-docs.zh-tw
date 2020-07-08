@@ -2,16 +2,16 @@
 title: 如何在 Azure Cosmos DB 中監視作業的伺服器端延遲
 description: 瞭解如何在 Azure Cosmos DB 帳戶或容器中監視作業的伺服器延遲。 Azure Cosmos DB 帳戶的擁有者可以瞭解 Azure Cosmos 帳戶的伺服器端延遲問題。
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 0f1e6d07afb3b7b4d26081bc9e34ac257b280d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5be2365fb5850c3f45b320d66c114fb791b22c3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262696"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何監視 Azure Cosmos DB 容器或帳戶中作業的伺服器端延遲
 
@@ -31,25 +31,25 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖來監視您的帳戶並
 
 1. 從左側導覽列選取 [**監視**]，然後選取 [**計量**]。
 
-   ![Azure 監視器中的 [計量] 窗格](./media/monitor-server-side-latency/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-1. 從 [**計量**] 窗格 >**選取資源**> 選擇所需的**訂**用帳戶和**資源群組**。 針對 [**資源類型**]，選取 [ **Azure Cosmos DB 帳戶**] **，選擇其中**一個現有的 Azure Cosmos 帳戶，然後選取 [套用]。
+1. 從 [計量] 窗格 > **選取資源** > 選擇必要的**訂用帳戶**和**資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
    
-   ![選擇要用來查看計量的 Azure Cosmos DB 帳戶](./media/monitor-server-side-latency/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="選擇要用來查看計量的 Azure Cosmos DB 帳戶":::
 
-1. 接下來，從可用計量清單中選取 [**伺服器端延遲**] 度量。 若要深入瞭解此清單中所有可用的計量，請參閱[依類別](monitor-cosmos-db-reference.md)區分的計量一文。 在此範例中，讓我們選取 [**伺服器端延遲**] 和 [**平均**] 做為匯總值。 除了這些詳細資料之外，您也可以選取度量的**時間範圍**和**時間細微性**。 在 [最大值] 中，您可以查看過去30天的計量。  套用篩選之後，就會根據您的篩選器來顯示圖表。 您可以看到所選期間內每分鐘的伺服器端延遲。  
+1. 接下來，從可用計量清單中選取 [**伺服器端延遲**] 度量。 若要深入了解此清單中所有可用的計量，請參閱[依類別區分的計量](monitor-cosmos-db-reference.md)一文。 在此範例中，讓我們選取 [**伺服器端延遲**] 和 [**平均**] 做為匯總值。 除了這些詳細資料之外，您也可以選取計量的 [時間範圍] 和 [時間細微性]。 在 [最大值] 中，您可以檢視過去 30 天的計量。  套用篩選之後，圖表就會根據您的篩選條件來顯示。 您可以看到所選期間內每分鐘的伺服器端延遲。  
 
-   ![從 [Azure 入口網站中選擇伺服器端的延遲標準](./media/monitor-server-side-latency/server-side-latency-metric.png)
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="從 [Azure 入口網站中選擇伺服器端的延遲標準":::
 
 ## <a name="filters-for-server-side-latency"></a>伺服器端延遲的篩選
 
 您也可以篩選計量，並取得特定**CollectionName**、 **ConnectionMode**、 **DatabaseName**、 **OperationType**、 **Region**和**PublicAPIType**所顯示的圖表。 
 
-若要篩選計量，請選取 [**新增篩選**] 並選擇必要的屬性（例如**PublicAPIType** ），然後選取 [ **sql**] 值。 為**OperationType**新增另一個篩選準則。 然後圖表會顯示所選期間內不同作業的伺服器端延遲。 不會記錄透過預存程式執行的作業，因此它們無法在 OperationType 度量下提供。
+若要篩選計量，請選取 [**新增篩選**] 並選擇必要的屬性（例如**PublicAPIType** ），然後選取 [ **sql**] 值。 為**OperationType**新增另一個篩選準則。 然後圖表會顯示所選期間內不同作業的伺服器端延遲。 透過預存程序執行的作業並不會記錄，因此其無法在 OperationType 計量下提供。
 
 下圖顯示每個作業的**伺服器端延遲**計量：
 
-![伺服器端延遲計量的篩選](./media/monitor-server-side-latency/server-side-latency-filters.png)
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="伺服器端延遲計量的篩選":::
 
 您也可以使用 [套用**分割**] 選項將計量分組。  
 

@@ -3,15 +3,15 @@ title: 設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 description: 了解如何啟用適用於 Azure Cosmos 帳戶的 Synapse Link、建立已啟用分析存放區的容器、將 Azure Cosmos 資料庫連線至 Synapse 工作區，並執行查詢。
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262033"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -40,11 +40,11 @@ ms.locfileid: "83676011"
 
 1. 從功能清單中選取 [Synapse Link]。
 
-   ![尋找 Synapse Link 預覽功能](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="尋找 Synapse Link 預覽功能":::
 
 1. 接下來，系統會提示您啟用帳戶的 Synapse Link。 選取 [啟用]。
 
-   ![啟用 Synapse Link 功能](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="啟用 Synapse Link 功能":::
 
 1. 您的帳戶現在已啟用，可使用 Synapse Link。 接下來，請參閱如何建立已啟用分析存放區的容器，以自動開始將操作資料從交易存放區複寫到分析存放區。
 
@@ -67,7 +67,7 @@ ms.locfileid: "83676011"
 
 1. 選取 [新增容器]，然後輸入資料庫的名稱、容器、分割區索引鍵和輸送量詳細資料。 開啟 [分析存放區] 選項。 啟用分析存放區之後，其會建立一個容器，並將 `AnalyicalTTL` 屬性設為預設值 -1 (無限保留期)。 此分析存放區會保留記錄的所有歷程記錄版本。
 
-   ![開啟 Azure Cosmos 容器的分析存放區](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="開啟 Azure Cosmos 容器的分析存放區":::
 
 1. 如果您先前未在此帳戶上啟用 Synapse Link，系統會提示您這麼做，因為在建立已啟用分析存放區的容器時，這是必要條件。 若出現提示，請選取 [啟用 Synapse Link]。
 
@@ -195,7 +195,7 @@ container.replace(containerProperties).block();
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> 開始使用 Azure Synpase 連結 - 範例
 
-您可以在 [Github](https://aka.ms/cosmosdb-synapselink-samples) 上找到開始使用 Azure Synapse 連結的範例。 這些會展示 IoT 和零售案例的端對端解決方案。
+您可以在[GitHub](https://aka.ms/cosmosdb-synapselink-samples)上找到開始使用 Azure Synapse 連結的範例。 這些會展示 IoT 和零售案例的端對端解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 

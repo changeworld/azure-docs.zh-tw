@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260843"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>啟用 Azure Active Directory 中的合併安全性資訊註冊
 
@@ -48,6 +48,9 @@ ms.locfileid: "83798256"
 ## <a name="conditional-access-policies-for-combined-registration"></a>合併註冊的條件式存取原則
 
 在條件式存取原則中，您現在可以透過使用者動作來對使用者註冊 Azure Multi-Factor Authentication 和自助式密碼重設的時間及方式進行保護。 此功能適用於已啟用[合併註冊功能](../authentication/concept-registration-mfa-sspr-combined.md)的組織。 當組織想要使用者從中央位置 (例如 HR 上線期間的信任網路位置) 註冊 Azure Multi-Factor Authentication 和 SSPR 時，即可在該組織啟用此功能。
+
+> [!NOTE]
+> 只有在使用者存取合併的註冊頁面時，才會套用此原則。 當使用者存取其他應用程式時，此原則不會強制執行 MFA 註冊。 您可以使用 Azure Identity Protection 來建立 MFA 註冊原則[-設定 Mfa 原則](../identity-protection/howto-identity-protection-configure-mfa-policy.md)。
 
 如需更多有關以條件式存取建立信任位置的資訊，請參閱 [Azure Active Directory 條件式存取中的位置條件是什麼？](../conditional-access/location-condition.md#named-locations)一文
 

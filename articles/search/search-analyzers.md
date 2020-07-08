@@ -7,38 +7,38 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/20/2020
+ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891237"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262152"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 認知搜尋中的文字處理分析器
 
-「分析器」** 是[全文搜尋引擎](search-lucene-query-architecture.md)的元件，負責查詢字串和已編製索引文件中的文字處理。 視案例而定，不同的分析器會以不同的方式處理文字。 語言分析器會使用語言規則來處理文字，以便改善搜尋品質，而其他分析器則會執行更基本的工作，例如將字元轉換為小寫。 
+「分析器」** 是[全文搜尋引擎](search-lucene-query-architecture.md)的元件，負責查詢字串和已編製索引文件中的文字處理。 文字處理（也稱為詞法分析）是轉型的，透過下列動作修改字串：
 
-下列影片區段會快速地向前轉至解說文字處理在 Azure 認知搜尋中的運作方式。
++ 移除不必要的字組（停用字詞）和標點符號
++ 將片語和斷詞的單字分割成元件部分
++ 小寫任何大寫的單字
++ 將單字縮減成基本的根表單以符合儲存效率，因此不論是否有時態，都可以找到相符專案
+
+分析會套用至標示為「可搜尋」的 `Edm.String` 欄位，這表示全文檢索搜尋。 對於具有這種設定的欄位，會在建立權杖時于編制索引期間進行分析，然後在查詢執行期間，于分析查詢和引擎掃描相符的權杖時，再次進行分析。 當相同的分析器同時用於編制索引和查詢，但您可以根據您的需求，針對每個工作負載個別設定分析器，就比較有可能發生比對。
+
+不是全文檢索搜尋的查詢類型（例如正則運算式或模糊搜尋）不會經過查詢端的分析階段。 相反地，剖析器會使用您提供的模式做為相符項的基礎，將這些字串直接傳送至搜尋引擎。 一般而言，這些查詢表單需要使用整個字串標記來進行模式比對。 若要在編制索引期間取得整個詞彙權杖，您可能需要[自訂分析器](index-add-custom-analyzers.md)。 如需分析查詢字詞之時機和原因的詳細資訊，請參閱[Azure 認知搜尋中的全文檢索搜尋](search-lucene-query-architecture.md)。
+
+如需更多有關詞法分析的背景資訊，請收聽下列影片剪輯以取得簡短說明。
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 
-
-語言分析器是最常使用的，而且預設語言分析器會指派給 Azure 認知搜尋索引中的每個可搜尋欄位。 在文字分析期間的典型語言轉換如下：
-
-+ 會移除非必要字組 (停用字詞) 和標點符號。
-+ 片語和有連字號的字組會被細分為組件。
-+ 大寫字組會被改為小寫。
-+ 字組會縮減為根表單，如此不論時態就可以找到相符項目。
-
-語言分析器會將文字輸入轉換為基本表單或根表單，如此可以有效率地儲存和檢索資訊。 在編製索引期間、索引建立之時、以及讀取索引進行搜尋的時候，皆會進行轉換。 若兩方作業均使用相同的分析器，更有可能獲得想要的搜尋結果。
-
 ## <a name="default-analyzer"></a>預設分析器  
 
-Azure 認知搜尋會使用[Apache Lucene 標準分析器（標準 Lucene）](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)做為預設值，將文字分成「 [Unicode 文字分割](https://unicode.org/reports/tr29/)」規則後面的元素。 此外，標準分析器會將所有字元轉換為它們的小寫形式。 已編製索引的文件和搜尋字詞在編製索引和查詢處理期間都會執行分析。  
+在「Azure 認知搜尋」查詢中，會在標示為 [可搜尋] 的所有字串欄位上自動叫用分析器。 
 
-它會自動用於每個可搜尋的欄位。 您可以逐欄覆寫預設值。 替代分析器可以是[語言分析器](index-add-language-analyzers.md)、[自訂分析器](index-add-custom-analyzers.md)，或[可用分析器清單](index-add-custom-analyzers.md#AnalyzerTable)中預先定義的分析器。
+根據預設，Azure 認知搜尋會使用[Apache Lucene 標準分析器（標準 Lucene）](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，將文字分成「 [Unicode 文字分割](https://unicode.org/reports/tr29/)」規則後面的元素。 此外，標準分析器會將所有字元轉換為它們的小寫形式。 已編製索引的文件和搜尋字詞在編製索引和查詢處理期間都會執行分析。  
 
+您可以逐欄覆寫預設值。 替代分析器可以是[語言](index-add-language-analyzers.md)處理常式、[自訂分析器](index-add-custom-analyzers.md)，或[可用分析器清單](index-add-custom-analyzers.md#AnalyzerTable)中預先定義的分析器。
 
 ## <a name="types-of-analyzers"></a>分析器類型
 
@@ -46,7 +46,7 @@ Azure 認知搜尋會使用[Apache Lucene 標準分析器（標準 Lucene）](ht
 
 | 類別 | 描述 |
 |----------|-------------|
-| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值。 不需要任何規格或設定。 這個一般用途的分析器對於大部分的語言和情節都能順利執行。|
+| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值。 不需要任何規格或設定。 這個一般用途分析器適用于許多語言和案例。|
 | 預先定義的分析器 | 作為預計要依現狀使用的成品提供。 <br/>共有兩種類型：特製化和語言。 使它們成為「預先定義」的條件是依名稱參考，無須設定或自訂。 <br/><br/>[特製化 (語言無從驗證) 分析器](index-add-custom-analyzers.md#AnalyzerTable)適用於文字輸入需要特殊處理或最少處理時。 非語言預先定義的分析器包含 **Asciifolding**、**金鑰**、**模式**、**簡單**、**停止**、**空白**。<br/><br/>[語言分析器](index-add-language-analyzers.md)適用於當您需要為個別語言提供豐富的語言支援時。 Azure 認知搜尋支援 35 Lucene 語言分析器和 50 Microsoft 自然語言處理分析器。 |
 |[自訂分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 意指結合現有元素的使用者定義組態，包括一個權杖化工具 (必要) 和選擇性篩選條件 (Char 或權杖)。|
 
@@ -54,33 +54,55 @@ Azure 認知搜尋會使用[Apache Lucene 標準分析器（標準 Lucene）](ht
 
 ## <a name="how-to-specify-analyzers"></a>如何指定分析器
 
-1. (僅限於自訂分析器) 在索引定義中建立具名的 **analyzer** 區段。 如需詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)以及[新增自訂分析器](index-add-custom-analyzers.md)。
+設定分析器是選擇性的。 一般來說，請嘗試先使用預設的標準 Lucene 分析器來查看其執行方式。 如果查詢無法傳回預期的結果，切換至不同的分析器通常是正確的解決方案。
 
-2. 在索引的[欄位定義](https://docs.microsoft.com/rest/api/searchservice/create-index)上，將欄位的 **analyzer** 屬性設為目標分析器的名稱 (例如 `"analyzer" = "keyword"`)。 有效值包括預先定義的分析器名稱、語言分析器名稱，或者也會定義於索引結構描述中的自訂分析器名稱。 計劃在服務中建立索引之前，在索引定義階段指派分析器。
-
-3. （選擇性）您可以使用**indexAnalyzer**和**searchAnalyzer**欄位參數，設定不同的分析器來編制索引和查詢，而不是一個**analyzer**屬性。 如果其中一個活動需要其他活動所不需的特定轉換，您會使用不同的分析器進行資料準備和擷取。
-
-> [!NOTE]
-> 在索引時間與欄位的查詢期間，不可能使用不同的[語言分析器](index-add-language-analyzers.md)。 這項功能會保留給[自訂分析器](index-add-custom-analyzers.md)。 基於這個理由，如果您嘗試將**searchAnalyzer**或**indexAnalyzer**屬性設定為語言分析器的名稱，REST API 將會傳回錯誤回應。 您必須改用**analyzer**屬性。
-
-不允許將 **analyzer** 或 **indexAnalyzer** 指派給已實際建立的欄位。 如果上述任何一項不清楚，請檢閱下表中的明細，以了解哪些動作需要重建和原因。
+1. 在[索引](https://docs.microsoft.com/rest/api/searchservice/create-index)中建立欄位定義時，請將**分析器**屬性設定為下列其中一項：[預先定義的分析器](index-add-custom-analyzers.md#AnalyzerTable)（例如 `keyword` ）、[語言分析器](index-add-language-analyzers.md)（例如 `en.microsoft` ）或自訂分析器（定義于相同的索引架構中）。  
  
- | 狀況 | 影響 | 步驟 |
- |----------|--------|-------|
- | 新增欄位 | 最低限度 | 若在結構描述中尚未具有欄位，則由於在索引中尚未實際存有欄位，因此不會執行欄位修訂。 您可以使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)將新欄位新增至現有索引，以及使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 來填入資料。|
- | 將 **analyzer** 或 **indexAnalyzer** 新增至現有已編製索引的欄位。 | [重構](search-howto-reindex.md) | 該欄位的反向索引必須從頭重新編製，且必須重新編製這些欄位的內容索引。 <br/> <br/>針對正在開發中的索引，[刪除](https://docs.microsoft.com/rest/api/searchservice/delete-index)和[建立](https://docs.microsoft.com/rest/api/searchservice/create-index)索引以挑選新的欄位定義。 <br/> <br/>對於生產環境中的索引，您可建立新欄位以提供修改過的定義，然後開始使用它取代舊的定義，藉此延遲重建。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)來合併新欄位，以及使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 來填入資料。 稍後，您可以清除索引以移除過時的欄位，當作規劃索引服務的一部分。 |
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+   ```
+
+   如果您使用[語言分析器](index-add-language-analyzers.md)，就必須使用**analyzer**屬性來指定它。 **SearchAnalyzer**和**indexAnalyzer**屬性不支援語言分析器。
+
+1. 或者，設定**indexAnalyzer**和**searchAnalyzer** ，以改變每個工作負載的分析器。 這些屬性會一起設定，並取代**分析器**屬性，這必須是 null。 如果其中一個活動需要另一個不需要的特定轉換，您可能會使用不同的分析器來進行資料準備和抓取。
+
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": null,
+      "indexAnalyzer": "keyword",
+      "searchAnalyzer": "whitespace"
+    },
+   ```
+
+1. 僅針對自訂分析器，在索引的 **[分析器]** 區段中建立專案，然後將您的自訂分析器指派給每一個前兩個步驟的欄位定義。 如需詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)以及[新增自訂分析器](index-add-custom-analyzers.md)。
 
 ## <a name="when-to-add-analyzers"></a>新增分析器的時機
 
 新增並指派分析器的最佳時機是在有效開發期間內，當卸除並重建索引為例行工作時。
 
-隨著索引定義強化起來，您可以將新的分析結構附加到索引，但如果您想要避免錯誤，則必須將 **allowIndexDowntime** 旗標傳遞至[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)：
+因為分析器是用來 token 化詞彙，所以您應該在建立欄位時指派分析器。 事實上，不允許將**分析器**或**indexAnalyzer**指派給已實際建立的欄位（雖然您可以隨時變更**searchAnalyzer**屬性，而不會影響到索引）。
+
+若要變更現有欄位的分析器，您必須[完全重建索引](search-howto-reindex.md)（您無法重建個別的欄位）。 針對生產環境中的索引，您可以使用新的分析器指派來建立新的欄位來延遲重建，並開始使用它來取代舊的。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)來合併新欄位，以及使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 來填入資料。 稍後，您可以清除索引以移除過時的欄位，當作規劃索引服務的一部分。
+
+若要將新欄位加入至現有的索引，請呼叫[Update index](https://docs.microsoft.com/rest/api/searchservice/update-index)來新增欄位，並使用[mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)來填入它。
+
+若要將自訂分析器新增至現有的索引，請在 [[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)] 中傳遞**allowIndexDowntime**旗標（如果您想要避免此錯誤）：
 
 *「不允許索引更新，因為它會造成停機。若要將新的分析器、token 化工具、權杖篩選器或字元篩選器新增至現有的索引，請將索引更新要求中的 ' allowIndexDowntime ' 查詢參數設定為 ' true '。請注意，此作業會讓您的索引離線至少幾秒鐘，導致您的索引編制和查詢要求失敗。索引的效能和寫入可用性可能會在索引更新後的幾分鐘內受到影響，或較長的索引。」*
-
-將分析器指派給欄位時也是如此。 分析器是欄位定義不可或缺的部分，因此您只可以在建立欄位時加以新增。 如果您想要將分析器新增到現有欄位，則必須[卸除並重建](search-howto-reindex.md)索引，或新增具有您所要分析器的新欄位。
-
-如上所述，例外狀況是 **searchAnalyzer** 變體。 在指定分析器的三種方式 (**analyzer**、**indexAnalyzer**、**searchAnalyzer**) 中，只有 **searchAnalyzer** 屬性可在現有欄位上變更。
 
 ## <a name="recommendations-for-working-with-analyzers"></a>使用分析器的建議
 
@@ -88,7 +110,7 @@ Azure 認知搜尋會使用[Apache Lucene 標準分析器（標準 Lucene）](ht
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>一個用於讀寫的分析器，除非您有特定的需求
 
-Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過其他**indexAnalyzer**和**searchAnalyzer**欄位參數進行搜尋。 如果未指定，以 **analyzer** 屬性設定的分析器可用於編製索引和搜尋。 若未指定 `analyzer`，就會使用標準 Lucene 分析器。
+Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過其他**indexAnalyzer**和**searchAnalyzer**欄位屬性進行搜尋。 如果未指定，以 **analyzer** 屬性設定的分析器可用於編製索引和搜尋。 如果未指定**分析器**，則會使用預設的標準 Lucene 分析器。
 
 一般規則是使用索引和查詢的相同分析器，除非特定需求另有指示。 請務必徹底測試。 當搜尋和索引時的文字處理不同，會有查詢字詞和索引字詞不符的風險，因為搜尋和索引分析器的設定不一致。
 
@@ -290,7 +312,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 ### <a name="assign-a-language-analyzer"></a>指派語言分析器
 
-在欄位定義上，會指定任何以非設定方式使用的分析器。 不需要建立分析器結構。 
+在欄位定義上，會指定任何以非設定方式使用的分析器。 在索引的 **[分析器]** 區段中，不需要建立專案。 
 
 這個範例會將 Microsoft 英文和法文分析器指派給描述欄位。 這是取自較大飯店索引定義的程式碼片段，在[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)範例的 hotels.cs 檔案中使用飯店類別建立。
 

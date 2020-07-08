@@ -4,22 +4,22 @@ description: 了解如何在 Azure Cosmos DB 適用於 MongoDB 的 API 中使用
 author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 11/16/2019
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: srchi
-ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 2028a8048830587195271675997bf4c880a3fae1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260758"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 適用於 MongoDB 的 API 中的變更資料流
 
 Azure Cosmos DB 適用於 MongoDB 的 API 中的[變更摘要](change-feed.md)支援，是透過使用變更資料流 API 來提供。 透過使用變更資料流 API，您的應用程式可以取得對集合或單一分區中項目所做的變更。 您稍後可以根據結果採取進一步動作。 系統會依對集合中項目所做變更的修改時間加以擷取，且會針對每個分區索引鍵保證排序次序。
 
-[!NOTE]
-若要使用變更資料流，請使用 Azure Cosmos DB 適用於 MongoDB 的 API 的 3.6 版或更新版本。 如果您針對較舊版本執行變更資料流範例，可能會看見 `Unrecognized pipeline stage name: $changeStream` 錯誤。
+> [!NOTE]
+> 若要使用變更資料流，請使用 Azure Cosmos DB 適用於 MongoDB 的 API 的 3.6 版或更新版本。 如果您針對較舊版本執行變更資料流範例，可能會看見 `Unrecognized pipeline stage name: $changeStream` 錯誤。
 
 ## <a name="current-limitations"></a>目前的限制
 
@@ -61,6 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
+
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
@@ -81,6 +82,52 @@ while (enumerator.MoveNext()){
 
 enumerator.Dispose();
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+下列範例顯示如何在 JAVA 中使用變更資料流程功能，如需完整範例，請參閱此[GitHub](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-changestream/blob/master/mongostream/src/main/java/com/azure/cosmos/mongostream/App.java)存放庫。 這個範例也會示範如何使用 `resumeAfter` 方法來搜尋上次讀取的所有變更。 
+
+```java
+Bson match = Aggregates.match(Filters.in("operationType", asList("update", "replace", "insert")));
+
+// Pick the field you are most interested in
+Bson project = Aggregates.project(fields(include("_id", "ns", "documentKey", "fullDocument")));
+
+// This variable is for second example
+BsonDocument resumeToken = null;
+
+// Now time to build the pipeline
+List<Bson> pipeline = Arrays.asList(match, project);
+
+//#1 Simple example to seek changes
+
+// Create cursor with update_lookup
+MongoChangeStreamCursor<ChangeStreamDocument<org.bson.Document>> cursor = collection.watch(pipeline)
+        .fullDocument(FullDocument.UPDATE_LOOKUP).cursor();
+
+Document document = new Document("name", "doc-in-step-1-" + Math.random());
+collection.insertOne(document);
+
+while (cursor.hasNext()) {
+    // There you go, we got the change document.
+    ChangeStreamDocument<Document> csDoc = cursor.next();
+
+    // Let is pick the token which will help us resuming
+    // You can save this token in any persistent storage and retrieve it later
+    resumeToken = csDoc.getResumeToken();
+    //Printing the token
+    System.out.println(resumeToken);
+    
+    //Printing the document.
+    System.out.println(csDoc.getFullDocument());
+    //This break is intentional but in real project feel free to remove it.
+    break;
+}
+
+cursor.close();
+
+```
+---
 
 ## <a name="changes-within-a-single-shard"></a>單一分區中的變更
 

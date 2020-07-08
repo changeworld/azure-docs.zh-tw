@@ -3,15 +3,15 @@ title: 如何在 .NET SDK 中轉換會話權杖格式-Azure Cosmos DB
 description: 瞭解如何轉換會話權杖格式，以確保不同 .NET SDK 版本之間的相容性
 author: vinhms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 377d8e3e923d6a8fa3b1722cee6451a696ce2490
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261574"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中轉換會話權杖格式
 
@@ -26,8 +26,8 @@ ms.locfileid: "82796898"
 ## <a name="session-token-formats"></a>會話權杖格式
 
 有兩種會話權杖格式：**簡單**和**向量**。  這兩種格式無法互換，因此，傳遞至具有不同版本的用戶端應用程式時，應該轉換格式。
-- **簡單**會話權杖格式是由 .Net SDK V1 （Microsoft. Azure DocumentDB-1.x 版）所使用。
-- **向量**會話 token 格式是由 .Net SDK V2 （Microsoft. Azure DocumentDB-2.x 版）所使用。
+- **簡單**會話權杖格式是由 .Net SDK V1 （Microsoft.Azure.DocumentDB-版本1.x）所使用。
+- **向量**會話 token 格式是由 .Net SDK V2 （Microsoft.Azure.DocumentDB-2.x 版）所使用。
 
 ### <a name="simple-session-token"></a>簡單會話權杖
 

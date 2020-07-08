@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260826"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
 一旦您已部署記錄轉寄站（在步驟1中），並設定您的安全性解決方案以將 CEF 訊息傳送給它（在步驟2中），請遵循這些指示來驗證您的安全性解決方案與 Azure Sentinel 之間的連線能力。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須在記錄轉寄站電腦上擁有較高的許可權（sudo）。
 
 - 您必須在記錄轉寄站機器上安裝 Python。<br>
-使用`python –version`命令來進行檢查。
+使用 `python –version` 命令來進行檢查。
 
 ## <a name="how-to-validate-connectivity"></a>如何驗證連線能力
 
@@ -76,7 +76,7 @@ ms.locfileid: "81731823"
 
     - 設定檔：`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. 檢查 syslog daemon 是否正在接收埠514上的資料
@@ -137,5 +137,5 @@ ms.locfileid: "81731823"
 在本檔中，您已瞭解如何將 CEF 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 

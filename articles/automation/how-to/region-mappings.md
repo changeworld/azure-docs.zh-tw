@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/23/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: d594d5a9dd263817023d2b5987c03aa50828191c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261183"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>已連結 Log Analytics 工作區的支援區域
 
@@ -30,23 +30,25 @@ ms.locfileid: "84191850"
 |**美國**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestCentralUS|WestCentralUS|
 |**加拿大**||
 |CanadaCentral|CanadaCentral|
 |**亞太地區**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
+|ChinaEast2<sup>2</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**歐洲**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|USGovArizona<sup>2</sup>|USGovArizona|
 
 <sup>1</sup> Log Analytics 工作區與自動化帳戶的 EastUS 對應不是確切的區域對區域對應，但卻是正確的對應。
 
-<sup>2</sup> 由於容量限制，當您建立新資源時，無法使用區域。 這包括自動化帳戶和 Log Analytics 工作區。 不過，區域中預先存在的連結資源應該會繼續運作。
+<sup>2</sup>在此區域中，僅支援更新管理，而且目前無法使用變更追蹤和清查之類的其他功能。
 
 ## <a name="unlink-a-workspace"></a>取消連結工作區
 

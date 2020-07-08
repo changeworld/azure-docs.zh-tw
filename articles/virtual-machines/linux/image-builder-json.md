@@ -1,19 +1,19 @@
 ---
 title: 建立 Azure Image Builder 範本 (預覽)
 description: 了解如何建立範本以搭配 Azure Image Builder 使用。
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263308"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -29,7 +29,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您可以增加 OS 磁碟 (Win 和 Linux) 的大小，這是選擇性動作，值為 0 表示保留與來源映像相同的大小。 
+根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片（Win 和 Linux）的大小，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
 
 ```json
  {
@@ -521,7 +521,7 @@ az resource show \
  
 Distribute 屬性：
 - **type** – managedImage 
-- **imageId** – 目的地映像的資源識別碼，格式應為：/subscriptions/\<subscriptionId>/resourceGroups/\<destinationResourceGroupName>/providers/Microsoft.Compute/images/\<imageName>
+- **imageId** –目的地映射的資源識別碼，應為格式：/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
 - **location**- 受控映像的位置。  
 - **runOutputName**– 用於識別散發的唯一名稱。  
 - **artifactTags** - 選擇性使用者指定的索引鍵/值組標記。
@@ -561,7 +561,7 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 共用映像庫的 Distribute 屬性：
 
 - **type** - sharedImage  
-- **galleryImageId** – 共用映像庫的識別碼。 格式為：/subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>。
+- **galleryImageId** – 共用映像庫的識別碼。 格式為：/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> 。
 - **runOutputName**– 用於識別散發的唯一名稱。  
 - **artifactTags** - 選擇性使用者指定的索引鍵/值組標記。
 - **replicationRegions** - 用於複寫的區域陣列。 其中一個區域必須是映像庫部署所在的區域。

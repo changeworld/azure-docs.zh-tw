@@ -3,15 +3,15 @@ title: 限制使用者只能使用 Azure Cosmos DB 存取資料作業
 description: 瞭解如何使用 Azure Cosmos DB 來限制資料作業的存取
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261217"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>限制使用者只能存取資料作業
 
@@ -19,7 +19,9 @@ ms.locfileid: "74980370"
 - 與 Azure 入口網站互動時，使用您的 Azure Active Directory 身分識別，
 - 在發出來自 Api 和 Sdk 的呼叫時，使用 Azure Cosmos DB[金鑰](secure-access-to-data.md#master-keys)或[資源權杖](secure-access-to-data.md#resource-tokens)。
 
-每個驗證方法都會提供不同作業集的存取權，但有![一些重迭：每個驗證類型的作業分割](./media/how-to-restrict-user-data/operations.png)
+每個驗證方法都會提供不同作業集的存取權，但有一些重迭：
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="每個驗證類型的作業分割" border="false":::
 
 在某些情況下，您可能會想要限制組織中的某些使用者只能執行資料作業（也就是 CRUD 要求和查詢）。 這種情況通常適用于不需要建立或刪除資源的開發人員，或變更其所處理之容器的布建輸送量。
 
@@ -36,7 +38,7 @@ ms.locfileid: "74980370"
 - `$MySubscriptionId`-訂用帳戶識別碼，其中包含您想要限制許可權的 Azure Cosmos 帳戶。 例如： `e5c8766a-eeb0-40e8-af56-0eb142ebf78e` 。
 - `$MyResourceGroupName`-包含 Azure Cosmos 帳戶的資源群組。 例如： `myresourcegroup` 。
 - `$MyAzureCosmosDBAccountName`-您的 Azure Cosmos 帳戶名稱。 例如： `mycosmosdbsaccount` 。
-- `$MyUserName`-您想要username@domain限制存取權之使用者的登入（）。 例如： `cosmosdbuser@contoso.com` 。
+- `$MyUserName`- username@domain 您想要限制存取權之使用者的登入（）。 例如： `cosmosdbuser@contoso.com` 。
 
 ## <a name="select-your-azure-subscription"></a>選取您的 Azure 訂用帳戶
 
@@ -49,9 +51,9 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>建立自訂 Azure Active Directory 角色
 
-下列腳本會建立具有 Azure Cosmos 帳戶「僅金鑰」存取權的 Azure Active Directory 角色指派。 角色是[以適用于 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)和[Azure Cosmos DB 的細微動作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)為基礎。 這些角色和動作是`Microsoft.DocumentDB` Azure Active Directory 命名空間的一部分。
+下列腳本會建立具有 Azure Cosmos 帳戶「僅金鑰」存取權的 Azure Active Directory 角色指派。 角色是[以適用于 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)和[Azure Cosmos DB 的細微動作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)為基礎。 這些角色和動作是 `Microsoft.DocumentDB` Azure Active Directory 命名空間的一部分。
 
-1. 首先，使用下列內容建立名`AzureCosmosKeyOnlyAccess.json`為的 JSON 檔：
+1. 首先，使用下列內容建立名為的 JSON 檔 `AzureCosmosKeyOnlyAccess.json` ：
 
     ```
     {

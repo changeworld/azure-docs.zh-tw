@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260518"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 建立/插入資料至 Azure Cosmos DB Cassandra API
  
@@ -141,6 +141,6 @@ select * from books;
 * [讀取作業](cassandra-spark-read-ops.md)
 * [作業](cassandra-spark-upsert-ops.md)
 * [刪除作業](cassandra-spark-delete-ops.md)
-* [匯總作業](cassandra-spark-aggregation-ops.md)
+* [彙總作業](cassandra-spark-aggregation-ops.md)
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)
 

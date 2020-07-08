@@ -3,15 +3,15 @@ title: 從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
 description: 瞭解如何使用變更摘要處理器程式庫將您的應用程式遷移至 Azure Cosmos DB SDK V3
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261404"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
 
@@ -21,10 +21,10 @@ ms.locfileid: "77588878"
 
 .NET V3 SDK 有數個重大變更，以下是遷移應用程式的主要步驟：
 
-1. 將`DocumentCollectionInfo`實例轉換成`Container`受監視和租用容器的參考。
-1. 使用`WithProcessorOptions`的自訂應該更新為使用`WithLeaseConfiguration`和`WithPollInterval`作為間隔、 `WithStartTime` [開始時間](how-to-configure-change-feed-start-time.md)，以及`WithMaxItems`定義最大專案計數。
-1. 設定 [ `processorName`開啟`GetChangeFeedProcessorBuilder` ] 以符合上`ChangeFeedProcessorOptions.LeasePrefix`所設定的值， `string.Empty`或使用其他方式。
-1. 這些變更不再以形式傳遞`IReadOnlyList<Document>`，而是您需要定義的`IReadOnlyCollection<T>`其中`T`一個類型，不會再有基底專案類別。
+1. 將 `DocumentCollectionInfo` 實例轉換成 `Container` 受監視和租用容器的參考。
+1. 使用的自訂 `WithProcessorOptions` 應該更新為使用 `WithLeaseConfiguration` 和 `WithPollInterval` 作為間隔、 `WithStartTime` [開始時間](how-to-configure-change-feed-start-time.md)，以及 `WithMaxItems` 定義最大專案計數。
+1. 設定 [ `processorName` 開啟] `GetChangeFeedProcessorBuilder` 以符合上所設定的值 `ChangeFeedProcessorOptions.LeasePrefix` ，或使用 `string.Empty` 其他方式。
+1. 這些變更不再以形式傳遞 `IReadOnlyList<Document>` ，而是 `IReadOnlyCollection<T>` 您需要定義的其中一個 `T` 類型，不會再有基底專案類別。
 1. 若要處理變更，您不再需要執行，而是必須[定義委派](change-feed-processor.md#implementing-the-change-feed-processor)。 委派可以是靜態函式，或者，如果您需要維護跨執行的狀態，您可以建立自己的類別，並將實例方法當做委派傳遞。
 
 例如，如果用來建立變更摘要處理器的原始程式碼看起來如下：

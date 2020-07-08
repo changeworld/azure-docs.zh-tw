@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos DB 容量規劃來預估成本
 description: Azure Cosmos DB 容量規劃工具可讓您預估所需的輸送量（RU/秒）和工作負載的成本。 本文說明如何使用新版本的容量規劃工具來估計所需的輸送量和成本。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68707626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261846"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>使用 Azure Cosmos DB 容量規劃來估計 RU/秒
 
@@ -21,7 +21,7 @@ ms.locfileid: "68707626"
 
 容量規劃可用於兩種模式。
 
-|**Mode**  |**說明**  |
+|**Mode**  |**描述**  |
 |---------|---------|
 |基本|提供快速、高階的 RU/秒和成本預估。 此模式會假設索引編制原則、一致性和其他參數的預設 Azure Cosmos DB 設定。 <br/><br/>當您正在評估可能要在 Azure Cosmos DB 上執行的工作負載時，請使用基本模式來進行快速的高階評估。|
 |進階|提供更詳細的 RU/秒和成本預估，並能夠微調其他設定—編制索引原則、一致性層級，以及影響成本和輸送量的其他參數。 <br/><br/>當您針對新專案估計 RU/秒，或想要更詳細的評估時，請使用 [advanced] 模式。 |
@@ -30,7 +30,7 @@ ms.locfileid: "68707626"
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>使用基本模式估計布建的輸送量和成本
 若要使用基本模式取得工作負載的快速估計，請流覽至[容量規劃](https://cosmos.azure.com/capacitycalculator/)工具。 根據您的工作負載，輸入下列參數： 
 
-|**輸入**  |**說明**  |
+|**輸入**  |**描述**  |
 |---------|---------|
 |區域數目|所有 Azure 區域皆可使用 Azure Cosmos DB。 選取您的工作負載所需的區域數目。 您可以將任意數目的區域與您的 Cosmos 帳戶建立關聯。 如需詳細資訊，請參閱 Azure Cosmos DB 中的[全域散發](distribute-data-globally.md)。|
 |多重區域寫入|如果您啟用[多區域寫入](distribute-data-globally.md#key-benefits-of-global-distribution)，您的應用程式可以讀取和寫入任何 Azure 區域。 如果您停用多區域寫入，您的應用程式可以將資料寫入至單一區域。 <br/><br/> 如果預期在不同區域中需要低延遲寫入的主動-主動工作負載，請啟用多重區域寫入。 例如，IOT 工作負載會將資料寫入位於不同區域中大量磁片區的資料庫。 <br/><br/> 多重區域寫入可保證99.999% 的讀取和寫入可用性。 相較于單一寫入區域，多重區域寫入會需要更多的輸送量。 若要深入瞭解，請參閱[單一和多個寫入區域的 ru 有何不同一](optimize-cost-regions.md)文。|
@@ -41,7 +41,7 @@ ms.locfileid: "68707626"
 
 填入所需的詳細資料之後，選取 [**計算**]。 [**成本預估**] 索引標籤會顯示儲存體和布建輸送量的總成本。 您可以展開此索引標籤中的 [**顯示詳細資料**] 連結，以取得讀取和寫入要求所需的輸送量明細。 每次您變更任何欄位的值時，請選取 [**計算**] 以重新計算預估成本。 
 
-![容量規劃基本模式](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="容量規劃基本模式":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>使用 advanced 模式估計布建的輸送量和成本
 
@@ -49,7 +49,7 @@ ms.locfileid: "68707626"
 
 登入之後，您可以看到與 [基本] 模式中的欄位相較之下的其他欄位。 根據您的工作負載輸入其他參數。 
 
-|**輸入**  |**說明**  |
+|**輸入**  |**描述**  |
 |---------|---------|
 |API|Azure Cosmos DB 是多模型和多 API 服務。 針對新的工作負載，請選取 [SQL （核心） API]。 |
 |區域數目|所有 Azure 區域皆可使用 Azure Cosmos DB。 選取您的工作負載所需的區域數目。 您可以將任意數目的區域與您的 Cosmos 帳戶建立關聯。 如需詳細資訊，請參閱 Azure Cosmos DB 中的[全域散發](distribute-data-globally.md)。|
@@ -62,7 +62,7 @@ ms.locfileid: "68707626"
 
 您也可以使用 [**儲存估價**] 按鈕來下載包含目前估計值的 CSV 檔案。 
 
-![容量規劃工具先進模式](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="容量規劃工具先進模式":::
 
 Azure Cosmos DB 容量規劃工具中所顯示的價格是根據輸送量和儲存體的公開價格費率來預估。 所有價格均以美元顯示。 請參閱[Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以查看依區域的所有費率。  
 
@@ -70,7 +70,7 @@ Azure Cosmos DB 容量規劃工具中所顯示的價格是根據輸送量和儲�
 
 Azure Cosmos 容量計算機會假設點讀取（依識別碼和資料分割索引鍵值的單一專案讀取，例如檔）和寫入工作負載。 若要估計查詢所需的輸送量，請在 Cosmos 容器中的代表性資料集上執行查詢，並[取得 RU 費用](find-request-unit-charge.md)。 將 RU 費用乘以您預期每秒執行的查詢數目，以取得所需的 RU/秒總數。 
 
-例如，如果您的工作負載需要查詢（ ``SELECT * FROM c WHERE c.id = 'Alice'``每秒執行100次），而查詢的 RU 費用是 10 ru，則您將需要 100 query/sec * 10 RU/查詢 = 1000 RU/秒，才能處理這些要求。 將這些 RU/秒新增至工作負載中發生的任何讀取或寫入所需的 RU/秒。
+例如，如果您的工作負載需要查詢（ ``SELECT * FROM c WHERE c.id = 'Alice'`` 每秒執行100次），而查詢的 RU 費用是 10 ru，則您將需要 100 query/sec * 10 RU/查詢 = 1000 RU/秒，才能處理這些要求。 將這些 RU/秒新增至工作負載中發生的任何讀取或寫入所需的 RU/秒。
 
 ## <a name="next-steps"></a>後續步驟
 

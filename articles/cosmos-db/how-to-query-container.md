@@ -3,15 +3,15 @@ title: 查詢 Azure Cosmos DB 中的容器
 description: 瞭解如何使用分割中和跨分割區查詢來查詢 Azure Cosmos DB 中的容器
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261251"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查詢 Azure Cosmos 容器
 
@@ -21,13 +21,13 @@ ms.locfileid: "80131403"
 
 當您從容器查詢資料時，如果查詢已指定分割區索引鍵篩選，Azure Cosmos DB 會自動將查詢優化。 它會將查詢路由至對應到篩選中所指定之分割區索引鍵值的[實體](partition-data.md#physical-partitions)分割區。
 
-例如，請考慮下列使用等號比較篩選準則的`DeviceId`查詢。 如果我們在資料分割所在`DeviceId`的容器上執行此查詢，此查詢將會篩選成單一實體分割區。
+例如，請考慮下列使用等號比較篩選準則的查詢 `DeviceId` 。 如果我們在資料分割所在的容器上執行此查詢 `DeviceId` ，此查詢將會篩選成單一實體分割區。
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-如同先前的範例，此查詢也會篩選到單一資料分割。 在上`Location`新增額外的篩選並不會變更它：
+如同先前的範例，此查詢也會篩選到單一資料分割。 在上新增額外的篩選 `Location` 並不會變更它：
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
@@ -41,7 +41,7 @@ ms.locfileid: "80131403"
 
 ## <a name="cross-partition-query"></a>跨分割區查詢
 
-下列查詢沒有資料分割索引鍵（`DeviceId`）的篩選。 因此，它必須針對每個分割區的索引執行的所有實體分割區展開傳送：
+下列查詢沒有資料分割索引鍵（）的篩選 `DeviceId` 。 因此，它必須針對每個分割區的索引執行的所有實體分割區展開傳送：
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
@@ -57,7 +57,7 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 
 若要管理平行執行查詢，您可以調整下列參數︰
 
-- **MaxConcurrency**：設定與容器分割區的同時網路連線數目上限。 如果您將此屬性設定`-1`為，SDK 就會管理平行處理原則的程度。 如果 `MaxConcurrency`設定為`0`，則會有一個連至容器分割區的單一網路連線。
+- **MaxConcurrency**：設定與容器分割區的同時網路連線數目上限。 如果您將此屬性設定為，SDK 就會管理平行處理原則的 `-1` 程度。 如果  `MaxConcurrency` 設定為 `0` ，則會有一個連至容器分割區的單一網路連線。
 
 - **MaxBufferedItemCount**：權衡取捨查詢延遲性和用戶端記憶體使用量。 如果省略此選項或將其設定為 -1，則 SDK 會管理在平行查詢執行期間緩衝處理的項目數。
 
@@ -83,7 +83,7 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 
 ### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>跨分割區查詢（範圍僅限於幾個實體磁碟分割）
 
-如果遞送驅動程式知道所有套件收件者都存留在某個特定的公寓 complexes 內，他們就不需要對每一個人進行驅動。 雖然駕駛至少數的公寓 complexes 仍然需要更多工作，而不只是造訪單一大樓，但遞送驅動程式仍然節省大量的時間和投入量。 如果查詢在其篩選中具有`IN`關鍵字的分割區索引鍵，則只會檢查相關實體分割區的資料索引。
+如果遞送驅動程式知道所有套件收件者都存留在某個特定的公寓 complexes 內，他們就不需要對每一個人進行驅動。 雖然駕駛至少數的公寓 complexes 仍然需要更多工作，而不只是造訪單一大樓，但遞送驅動程式仍然節省大量的時間和投入量。 如果查詢在其篩選中具有關鍵詞的分割區 `IN` 索引鍵，則只會檢查相關實體分割區的資料索引。
 
 ## <a name="avoiding-cross-partition-queries"></a>避免跨分割區查詢
 

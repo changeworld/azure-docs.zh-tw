@@ -3,15 +3,15 @@ title: 設定 Azure Cosmos 帳戶的 Azure Private Link
 description: 了解如何使用虛擬網路中的私人 IP 位址來設定 Azure Private Link，以存取 Azure Cosmos 帳戶。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/14/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261625"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
 
@@ -31,7 +31,7 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
 
 1. 從設定清單選取 [私人端點連線]，然後選取 [私人端點]：
 
-   ![在 Azure 入口網站中建立私人端點的選項](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="在 Azure 入口網站中建立私人端點的選項":::
 
 1. 在 [建立私人端點 - 基本] 窗格中，輸入或選取下列詳細資料：
 
@@ -94,7 +94,7 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
 1. 搜尋稍早建立的私人端點。 在本案例中，這是 **cdbPrivateEndpoint3**。
 1. 選取 [概觀] 索引標籤，以查看 DNS 設定和 IP 位址。
 
-![Azure 入口網站中的私人 IP 位址](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure 入口網站中的私人 IP 位址":::
 
 為每個私人端點建立多個 IP 位址：
 
@@ -407,7 +407,7 @@ $deploymentOutput
 
 成功部署範本之後，您可看到類似下圖所示的輸出。 如果正確設定私人端點，則 `provisioningState` 值會是 `Succeeded`。
 
-![Resource Manager 範本的部署輸出](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Resource Manager 範本的部署輸出":::
 
 部署範本之後，即會在子網路內保留私人 IP 位址。 Azure Cosmos 帳戶其防火牆規則已設定為只接受來自私人端點的連線。
 
@@ -618,13 +618,19 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * 如果您未設定任何防火牆規則，則根據預設，所有流量都可存取 Azure Cosmos 帳戶。
 
-* 如果您設定公用流量或服務端點並建立私人端點，則不同類型之傳入流量會由對應類型的防火牆規則所授權。
+* 如果您設定公用流量或服務端點並建立私人端點，則不同類型之傳入流量會由對應類型的防火牆規則所授權。 如果已在同時設定服務端點的子網中設定私用端點：
+  * 由私人端點對應之資料庫帳戶的流量會透過私用端點路由傳送，
+  * 來自子網的其他資料庫帳戶的流量會透過服務端點來路由傳送。
 
-* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私人端點之後，就會對整個網路開放該帳戶。
+* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用] （請參閱下一節），否則將會開啟整個網路的帳戶。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>在帳戶建立期間封鎖公用網路存取
 
 如上一節所述，除非已設定特定防火牆規則，否則新增私人端點會使 Azure Cosmos 帳戶只能透過私人端點存取。 這表示在建立 Azure Cosmos 帳戶之後到新增私人端點之前，都可從公用流量連線到該帳戶。 為確保即使在建立私人端點之前也會停用公用網路存取，您可在帳戶建立期間將 `publicNetworkAccess` 旗標設定為 `Disabled`。 如需說明如何使用此旗標的範例，請參閱[此 Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)。
+
+## <a name="port-range-when-using-direct-mode"></a>使用 direct 模式時的埠範圍
+
+當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠（0-65535）。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>新增或移除區域時更新私人端點
 
@@ -640,7 +646,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 當對 Azure Cosmos 帳戶使用 Private Link 時，適用下列限制：
 
-* 當透過直接模式連線對 Azure Cosmos 帳戶使用 Private Link 時，只能使用 TCP 通訊協定。 目前不支援 HTTP 通訊協定。
+* 單一 Azure Cosmos 帳戶上不能有超過200個私人端點。
+
+* 當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您只能使用 TCP 通訊協定。 目前不支援 HTTP 通訊協定。
 
 * 當針對 MongoDB 帳戶使用 Azure Cosmos DB 的 API 時，只有伺服器 3.6 版上的帳戶 (也就是使用 `*.mongo.cosmos.azure.com` 格式端點的帳戶) 支援私人端點。 伺服器 3.2 版上的帳戶 (也就是使用 `*.documents.azure.com` 格式端點的帳戶) 不支援 Private Link。 若要使用 Private Link，您應該將舊版帳戶移轉到新版本。
 

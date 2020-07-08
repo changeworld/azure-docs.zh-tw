@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261387"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -39,6 +39,25 @@ ms.locfileid: "83849037"
 > 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>什麼是 Log Analytics 代理程式？
+
+若要監視安全性弱點和威脅，Azure 資訊安全中心取決於[Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)程式-這是 Azure 監視器服務所使用的相同代理程式。 
+
+代理程式有時稱為「Microsoft Monitoring Agent」（或「MMA」）。 
+
+代理程式會從連線的電腦收集各種安全性相關的設定詳細資料和事件記錄，然後將資料複製到您的 Log Analytics 工作區，以供進一步分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
+
+請確定您的電腦正在執行代理程式的其中一個支援作業系統，如下列頁面所述：
+
+* [適用于 Windows 的 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [適用于 Linux 的 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+深入瞭解[Log Analytics 代理程式所收集的資料](security-center-enable-data-collection.md)。
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>要自動佈建 Log Analytics 代理程式安裝的 VM 需符合哪些麼條件？
@@ -65,6 +84,14 @@ ms.locfileid: "83849037"
 - 位於日本的 VM，工作區位置為日本
 - 位於中國的 VM，工作區位置為中國
 - 位於澳大利亞的 VM，工作區位置為澳大利亞
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics 代理程式會收集哪些資料？
+
+如需代理程式所監視之應用程式和服務的完整清單，請參閱[Azure 監視器監視的專案](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)。
+
+> [!IMPORTANT]
+> 請注意，對於某些服務（例如 Azure 防火牆），如果您已啟用記錄功能，並選擇要記錄的多對話資源（例如，將記錄檔設定為*詳細*資訊），您可能會看到對 log Analytics 工作區儲存體需求的重大影響。 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>我可以刪除資訊安全中心所建立的預設工作區嗎？
@@ -201,9 +228,17 @@ ms.locfileid: "83849037"
 
 ## <a name="how-do-i-disable-data-collection"></a>我要如何停用資料收集？
 
-預設會關閉自動佈建。 您可以在安全性原則中關閉這項設定，隨時停用資源的自動佈建。 強烈建議進行自動佈建，以便取得安全性警示，以及系統更新、作業系統弱點和端點保護的建議。
+強烈建議進行自動佈建，以便取得安全性警示，以及系統更新、作業系統弱點和端點保護的建議。 預設會停用自動布建。
 
-若要停用資料收集，請[登入 Azure 入口網站](https://portal.azure.com)，選取 [瀏覽]，選取 [資訊安全中心]，然後選取 [選取原則]。 選取您想要停用自動佈建的訂用帳戶。 當您選取訂用帳戶時，[安全性原則 - 資料收集] 隨即開啟。 在 [自動佈建] 之下，選取 [關閉]。
+如果您已啟用它，但現在想要將它停用：
+
+1. 從[[Azure 入口網站](https://portal.azure.com)開啟**資訊安全中心**，然後選取 [**安全性原則**]。
+
+1. 選取您想要停用自動布建的訂用帳戶。
+
+    **安全性原則-[資料收集**] 隨即開啟。
+
+1. 在 [自動佈建] 之下，選取 [關閉]。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>我要如何啟用資料收集？
@@ -233,9 +268,6 @@ ms.locfileid: "83849037"
 代理程式只耗用少量的系統資源，對效能的影響應該很小。 如需有關效能影響和代理程式與擴充的詳細資訊，請參閱[規劃和操作指南](security-center-planning-and-operations-guide.md#data-collection-and-storage)。
 
 
-## <a name="where-is-my-data-stored"></a>我的資料會儲存在何處？
-
-從這個代理程式收集的資料會儲存在與您的訂用帳戶相關聯的現有 Log Analytics 工作區或新的工作區中。 如需詳細資訊，請參閱[資料安全性](security-center-data-security.md)。
 
 
 <!--Image references-->

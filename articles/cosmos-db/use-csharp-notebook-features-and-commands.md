@@ -3,15 +3,16 @@ title: 使用 Azure Cosmos DB C# 筆記本 (預覽) 中的內建筆記本命令�
 description: 了解如何使用內建的命令和功能，使用 Azure Cosmos DB 的內建 C# 筆記本進行一般作業。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263410"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>使用 Azure Cosmos DB C# 筆記本 (預覽) 中的內建筆記本命令和功能
 
@@ -114,14 +115,14 @@ for (int i = 0; i < 5; i++) {
 
 例如，在 *GetingStarted_Csharp.ipynb* 範例中，我們可以列印出結果 ``telemetryEvents`` 的變數。 如需完整範例，請參閱 [GettingStarted_Csharp.ipynb 筆記本](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb)。 
 
-![Csharp 查詢儲存格](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp 查詢儲存格":::
 
-![nteract 資料總管](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract 資料總管":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>使用內建的字典檢視器
 您可以使用內建的字典檢視器來檢視變數。 在儲存格中，將您想要視覺化的變數放在最後一行，當儲存格執行時就會自動顯示該變數。
 
-![內建的字典檢視器](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="內建的字典檢視器":::
 
 ## <a name="upload-json-items-to-a-container"></a>將 JSON 項目上傳至容器
 您可以使用 ``%%upload`` 魔術命令，將 JSON 檔案中的資料上傳至指定的 Azure Cosmos 容器。 請使用下列命令來上傳項目：
@@ -159,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>重設筆記本工作區
 若要將筆記本工作區重設為預設設定，請在命令列上選取 [重設工作區]。 這會移除任何已安裝的自訂套件，並重新啟動 Jupyter 伺服器。 您的筆記本、檔案和 Azure Cosmos 資源將不受影響。  
 
-![重設筆記本工作區](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重設筆記本工作區":::
 
 ## <a name="next-steps"></a>後續步驟
 

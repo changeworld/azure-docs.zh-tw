@@ -3,15 +3,15 @@ title: 如何使用採用 Azure Cosmos DB 的 Azure Kubernetes
 description: 了解如何在使用 Azure Cosmos DB 的 Azure 上執行 Kubernetes 叢集的啟動程序 (預覽)
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70093735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262628"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何使用採用 Azure Cosmos DB 的 Azure Kubernetes (預覽)
 
@@ -25,9 +25,9 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
 若要深入了解 Azure Cosmos DB 中的 etcd API，請參閱[概觀](etcd-api-introduction.md)一文。 本文會示範如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在採用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 的 Azure 上執行 Kubernetes 叢集的啟動程序，而不是使用本機安裝和設定的 etcd。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-1. 安裝最新版的[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
+1. 安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
 
 1. 安裝[最新版的](https://github.com/Azure/aks-engine/releases) Azure Kubernetes 引擎。 您可以從 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)頁面取得不同作業系統的安裝指示。 您只需要已連結檔之**安裝 AKS 引擎**一節中的步驟。下載之後，請將 zip 檔案解壓縮。
 

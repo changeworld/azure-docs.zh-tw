@@ -3,15 +3,15 @@ title: 將 Apache Spark 連線至 Azure Cosmos DB
 description: 了解可讓您將 Apache Spark 連線到 Azure Cosmos DB 的 Azure Cosmos DB Spark 連接器。
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: edfaf50b701f64b12f9cf5fcc9ab8d2c6d241d0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81482184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262220"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 至 Azure Cosmos DB 連接器來加速巨量資料分析
 
@@ -223,7 +223,7 @@ df
 
 | Spark | Scala | 最新版本 |
 |---|---|---|
-| 2.4.0 | 2.11 | [cosmosdb-spark_2. 4.0 _ 2.11 _ 1.4。0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)
+| 2.4.0 | 2.11 | [azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)
 | 2.3.0 | 2.11 | [azure-cosmosdb-spark_2. 3.0 _ 2.11 _ 1.3。3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
 | 2.2.0 | 2.11 | [azure-cosmosdb-spark_2 2.0 _ 2.11 _ 1.1。1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
 | 2.1.0 | 2.11 | [azure-cosmosdb-spark_2. 1.0 _ 2.11 _ 1.2。2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
@@ -233,12 +233,12 @@ df
 遵循 Azure Databricks 指南 >[使用 Azure Cosmos DB Spark 連接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)中的指導方針，使用您的 Databricks 工作區建立程式庫
 
 > [!NOTE]
-> 請注意，[**使用 Azure Cosmos DB Spark 連接器**] 頁面目前不是最新狀態。 您可以從中的 maven 下載 uber jar， https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)並安裝此 jar/程式庫，而不是將六個不同的 jar 下載成六個不同的程式庫。
+> 請注意，[**使用 Azure Cosmos DB Spark 連接器**] 頁面目前不是最新狀態。 您可以從中的 maven 下載 uber jar， https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) 並安裝此 jar/程式庫，而不是將六個不同的 jar 下載成六個不同的程式庫。
 > 
 
 ### <a name="using-spark-cli"></a>使用 spark-cli
 
-若要使用 spark cli （ `spark-shell`也就是、 `pyspark`、 `spark-submit`）來處理連接器，您可以使用`--packages`參數搭配連接器的[maven 座標](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11)。
+若要使用 spark cli （也就是、、）來處理 `spark-shell` 連接器 `pyspark` `spark-submit` ，您可以使用 `--packages` 參數搭配連接器的[maven 座標](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11)。
 
 ```sh
 spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0"
@@ -247,7 +247,7 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ### <a name="using-jupyter-notebooks"></a>使用 Jupyter 筆記本
 
-如果您是在 HDInsight 中使用 Jupyter 筆記本，您可以使用 spark- `%%configure`魔術資料格來指定連接器的 maven 座標。
+如果您是在 HDInsight 中使用 Jupyter 筆記本，您可以使用 spark-魔術資料 `%%configure` 格來指定連接器的 maven 座標。
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -259,11 +259,11 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 }
 ```
 
-> 請注意，包含`spark.jars.excludes`是為了移除連接器、Apache Spark 和 Livy 之間的潛在衝突。
+> 請注意，包含 `spark.jars.excludes` 是為了移除連接器、Apache Spark 和 Livy 之間的潛在衝突。
 
 ### <a name="build-the-connector"></a>建立連接器
 
-目前，此連接器專案會`maven`使用它來建立沒有相依性的，您可以執行：
+目前，此連接器專案會使用它 `maven` 來建立沒有相依性的，您可以執行：
 
 ```sh
 mvn clean package
@@ -273,15 +273,15 @@ mvn clean package
 
 [Cosmos DB Spark GitHub 存放庫](https://github.com/Azure/azure-cosmosdb-spark)包含下列可供您嘗試的範例筆記本和腳本。
 
-* **Spark 和 Cosmos DB （西雅圖）** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)的即時航班效能：使用 HDInsight Jupyter 筆記本服務將 spark 連線到 Cosmos DB，以展示 spark SQL、GraphFrames，以及使用 ML 管線預測航班延遲。
-* **具有 Apache Spark 和 Azure Cosmos DB 變更摘要的 Twitter 來源**： [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **使用 Apache Spark 來查詢 Cosmos DB 圖形**： [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
-* 使用`azure-cosmosdb-spark`**[將 Azure Databricks 連接到 Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** 。  這裡連結的也是 Azure Databricks 版本的[即時航班效能筆記本](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)。
+* **Spark 和 Cosmos DB （西雅圖） ipynb html 的即時航班效能** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [ ](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)：使用 HDInsight Jupyter 筆記本服務將 spark 連線到 Cosmos DB，以展示 spark SQL、GraphFrames，以及使用 ML 管線預測航班延遲。
+* **具有 Apache Spark 和 Azure Cosmos DB 變更摘要的 Twitter 來源**： [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **使用 Apache Spark 來查詢 Cosmos DB 圖形**： [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* 使用**[將 Azure Databricks 連接到 Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** `azure-cosmosdb-spark` 。  這裡連結的也是 Azure Databricks 版本的[即時航班效能筆記本](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)。
 * **[具有 Azure Cosmos DB 和 HDInsight 的 Lambda 架構（Apache Spark）](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**：您可以使用 Cosmos DB 和 Spark，降低維護 big data 管線的操作額外負荷。
 
 ## <a name="more-information"></a>相關資訊
 
-`azure-cosmosdb-spark` [Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki)中有更多資訊，包括：
+Wiki 中有更多資訊， `azure-cosmosdb-spark` [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki)包括：
 
 * [Azure Cosmos DB Spark 連接器使用者指南](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
 * [匯總範例](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)

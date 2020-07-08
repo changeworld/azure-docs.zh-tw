@@ -4,14 +4,14 @@ description: 了解如何連線至 GitHub，並將筆記本從 GitHub 存放庫�
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262883"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>將筆記本從 GitHub 存放庫匯入 Azure Cosmos DB
 
@@ -29,7 +29,7 @@ ms.locfileid: "83690404"
 
 1. 隨即開啟索引標籤，您可以從中選擇僅連線到**公用存放庫**，或連線到**公用和私人存放庫**。  選擇所需的選項後，請選取 [授與存取權]。 Azure Cosmos DB 需要授權，才能存取您 GitHub 帳戶中的存放庫。
 
-   ![授與 Azure Cosmos DB 存取 GitHub 存放庫的權限](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="授與 Azure Cosmos DB 存取 GitHub 存放庫的權限":::
 
 1. 系統會將您重新導向至「github.com」網頁，您可以在此確認授權。 選取 [授權 AzureCosmosDBNotebooks] 按鈕，並在提示中輸入您的 GitHub 帳戶密碼。
 
@@ -37,7 +37,7 @@ ms.locfileid: "83690404"
 
 1. 選取所需的存放庫之後，項目會從 [取消釘選的存放庫] 區段移至 [釘選的存放庫] 區段。 如有需要，您也可以選擇該存放庫的特定分支來匯入筆記本。
 
-   ![選擇存放庫和分支](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="選擇存放庫和分支":::
 
 1. 選取 [確定]，以完成匯入作業。 在您存放庫的所選取分支中，所有可用的筆記本會匯入您的 Azure Cosmos 帳戶。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83690404"
 
 在一般 GitHub 流程中，系統通常會在認可變更後將變更推送至遠端。 不過，在這種情況下，認可選項的目的是將您的更新「暫存、認可和推送」至 GitHub。
 
-![編輯筆記本和認可 GitHub 的變更](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="編輯筆記本和認可 GitHub 的變更":::
 
 ## <a name="next-steps"></a>後續步驟
 

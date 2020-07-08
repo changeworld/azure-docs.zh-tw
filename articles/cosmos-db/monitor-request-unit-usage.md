@@ -2,16 +2,16 @@
 title: 在 Azure Cosmos DB 中監視作業的輸送量使用量
 description: 瞭解如何在 Azure Cosmos DB 中監視作業的輸送量或要求單位使用量。 Azure Cosmos DB 帳戶的擁有者可以瞭解哪些作業會採用更多的要求單位。
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: 4ea195dfbf9eddbf10680196c9c75646b45380ae
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260741"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中監視作業的輸送量或要求單位使用量
 
@@ -38,15 +38,15 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖來監視您的帳戶並
 
 1. 從左側導覽列選取 [**監視**]，然後選取 [**計量**]。
 
-   ![Azure 監視器中的 [計量] 窗格](./media/monitor-request-unit-usage/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-1. 從 [**計量**] 窗格 >**選取資源**> 選擇所需的**訂**用帳戶和**資源群組**。 針對 [**資源類型**]，選取 [ **Azure Cosmos DB 帳戶**] **，選擇其中**一個現有的 Azure Cosmos 帳戶，然後選取 [套用]。
+1. 從 [計量] 窗格 > **選取資源** > 選擇必要的**訂用帳戶**和**資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
 
-   ![選擇要用來查看計量的 Azure Cosmos DB 帳戶](./media/monitor-request-unit-usage/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="選擇要用來查看計量的 Azure Cosmos DB 帳戶":::
 
-1. 接下來，從可用計量清單中選取 [**要求單位總數**] 度量。 若要深入瞭解此清單中所有可用的計量，請參閱[依類別](monitor-cosmos-db-reference.md)區分的計量一文。 在此範例中，讓我們選取 [**要求單位總數**] 和 [**平均**] 做為匯總值。 除了這些詳細資料之外，您也可以選取度量的**時間範圍**和**時間細微性**。 在 [最大值] 中，您可以查看過去30天的計量。  套用篩選之後，就會根據您的篩選器來顯示圖表。 您可以看到所選期間內每分鐘耗用的平均要求單位數。  
+1. 接下來，從可用計量清單中選取 [**要求單位總數**] 度量。 若要深入了解此清單中所有可用的計量，請參閱[依類別區分的計量](monitor-cosmos-db-reference.md)一文。 在此範例中，讓我們選取 [**要求單位總數**] 和 [**平均**] 做為匯總值。 除了這些詳細資料之外，您也可以選取計量的 [時間範圍] 和 [時間細微性]。 在 [最大值] 中，您可以檢視過去 30 天的計量。  套用篩選之後，圖表就會根據您的篩選條件來顯示。 您可以看到所選期間內每分鐘耗用的平均要求單位數。  
 
-   ![從 Azure 入口網站選擇度量](./media/monitor-request-unit-usage/request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="從 Azure 入口網站選擇計量":::
 
 ## <a name="filters-for-request-unit-usage"></a>要求單位使用量的篩選器
 
@@ -54,11 +54,11 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖來監視您的帳戶並
 
 若要依總計（總和）或平均取得每項作業的要求單位使用方式，請選取 [套用**分割**]，然後選擇 [作業**類型**] 和篩選值，如下圖所示：
 
-   ![在 Azure 監視器中 Cosmos DB 作業要求單位](./media/monitor-request-unit-usage/request-unit-usage-operations.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="在 Azure 監視器中 Cosmos DB 作業要求單位":::
 
 如果您想要依集合查看要求單位的使用量，請選取 [套用**分割**]，然後選擇集合名稱作為篩選準則。 您會看到類似下列的交談，並在儀表板內選擇集合。 然後，您可以選取特定的集合名稱以查看更多詳細資料：
 
-   ![Azure 監視器中的集合所有作業的 Cosmos DB 要求單位](./media/monitor-request-unit-usage/request-unit-usage-collection.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure 監視器中的集合所有作業的 Cosmos DB 要求單位":::
 
 ## <a name="next-steps"></a>後續步驟
 

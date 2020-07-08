@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中撰寫預存程式、觸發程式和 Udf
 description: 了解如何在 Azure Cosmos DB 中定義預存程序、觸發程序和使用者定義函式
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262866"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式
 
@@ -52,21 +52,42 @@ var helloWorldStoredProc = {
 
 預存程序也包含用來設定描述的參數，此為布林值。 當此參數設定為 true 時，若沒有描述，則預存程序將會擲回例外狀況。 否則，預存程序的其餘部分會繼續執行。
 
-下列範例預存程式會採用新的 Azure Cosmos 專案做為輸入，將其插入 Azure Cosmos 容器中，並傳回新建立之專案的識別碼。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
+下列範例預存程式會採用新的 Azure Cosmos 專案陣列做為輸入，將其插入 Azure Cosmos 容器中，並傳回所插入專案的計數。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
@@ -262,7 +283,7 @@ function async_sample() {
 
 Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 預先觸發程序會在修改資料庫項目之前執行，而後續觸發程序則在修改資料庫項目執行之後執行。
 
-### <a name="pre-triggers"></a><a id="pre-triggers"></a>預先觸發程序
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>預先觸發程式
 
 下列範例說明如何使用預先觸發程序對要建立的 Azure Cosmos 項目驗證屬性。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例，為新增的項目加上時間戳記屬性 (如果還沒有的話)。
 
@@ -291,7 +312,7 @@ function validateToDoItemTimestamp() {
 
 如需如何註冊及呼叫預先觸發程序的範例，請參閱[預先觸發程序](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[後續觸發程序](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
-### <a name="post-triggers"></a><a id="post-triggers"></a>後續觸發程序
+### <a name="post-triggers"></a><a id="post-triggers"></a>後置觸發程式
 
 下列範例說明後續觸發程序。 此觸發程序會查詢中繼資料項目，並使用新建項目的詳細資料加以更新。
 
@@ -366,7 +387,7 @@ function tax(income) {
 
 ## <a name="logging"></a>記錄 
 
-使用預存程式、觸發程式或使用者定義函數時，您可以使用`console.log()`命令來記錄這些步驟。 當設定為 true 時`EnableScriptLogging` ，此命令會將字串集中在進行偵錯工具，如下列範例所示：
+使用預存程式、觸發程式或使用者定義函數時，您可以使用命令來記錄這些步驟 `console.log()` 。 當設定為 true 時，此命令會將字串集中在進行偵錯工具， `EnableScriptLogging` 如下列範例所示：
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

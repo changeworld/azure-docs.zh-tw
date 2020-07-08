@@ -3,21 +3,21 @@ title: 為 Cosmos DB 建立多個獨立的 Azure Functions 觸發程式
 description: 了解如何設定多個獨立的「Azure Functions 的 Cosmos DB 觸發程序」，以建立事件驅動的架構。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261591"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
 
 本文說明如何將多個「Azure Functions 的 Cosmos DB 觸發程序」設定為以平行方式運作並獨立回應變更。
 
-![以無伺服器事件為基礎的 Functions，使用 Azure Functions 的 Cosmos DB 觸發程序，並共用一個租用容器](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="以無伺服器事件為基礎的 Functions，使用 Azure Functions 的 Cosmos DB 觸發程序，並共用一個租用容器" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>以事件為基礎的架構需求
 

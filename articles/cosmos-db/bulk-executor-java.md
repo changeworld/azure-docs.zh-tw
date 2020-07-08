@@ -5,24 +5,24 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260588"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>在 Azure Cosmos DB 資料上使用大量執行程式 Java 程式庫執行大量作業
 
 本教學課程提供有關使用 Azure Cosmos DB 的大量執行程式 JAVA 程式庫來匯入和更新 Azure Cosmos DB 檔的指示。 若要深入了解大量執行程式程式庫，以及它如何協助您利用大量輸送量與儲存體，請參閱[大量執行程式程式庫概觀](bulk-executor-overview.md)一文。 在本教學課程中，您會建立 JAVA 應用程式，以產生隨機檔，並將其大量匯入至 Azure Cosmos 容器。 匯入之後，您會大量更新文件的某些屬性。 
 
-目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 JAVA 程式庫。 若要了解如何搭配 Gremlin API 使用大量執行程式 .Net 程式庫，請參閱[在 Azure Cosmos DB Gremlin API 中執行大量作業](bulk-executor-graph-dotnet.md)。
+目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 JAVA 程式庫。 若要了解如何搭配 Gremlin API 使用大量執行程式 .Net 程式庫，請參閱[在 Azure Cosmos DB Gremlin API 中執行大量作業](bulk-executor-graph-dotnet.md)。 所描述的大量執行程式程式庫僅適用于[Azure Cosmos DB java 同步 SDK v2](sql-api-sdk-java.md) ，而且它是 java 大量支援目前的建議解決方案。 這目前不適用於3.x、4.x 或其他較高版本的 SDK。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
@@ -118,8 +118,8 @@ ms.locfileid: "80985638"
    |int getNumberOfDocumentsImported()  |   在提供給大量匯入 API 呼叫的文件中，成功匯入的文件總數。      |
    |double getTotalRequestUnitsConsumed()   |  大量匯入 API 呼叫取用的要求單位 (RU) 總數。       |
    |Duration getTotalTimeTaken()   |    大量匯入 API 呼叫完成執行的時間總計。     |
-   |列出\<例外狀況> getErrors （） |  如果提供給大量匯入 API 呼叫的批次中有部分文件無法插入，則會取得錯誤清單。       |
-   |列出\<物件> getBadInputDocuments （）  |    格式錯誤而未成功匯入大量匯入 API 呼叫的文件清單。 使用者應該修正傳回的文件，然後再次嘗試匯入。 格式錯誤的文件包含其識別碼值不是字串 (Null 或任何其他視為無效的資料類型) 的文件。     |
+   |List\<Exception> getErrors() |  如果提供給大量匯入 API 呼叫的批次中有部分文件無法插入，則會取得錯誤清單。       |
+   |List\<Object> getBadInputDocuments()  |    格式錯誤而未成功匯入大量匯入 API 呼叫的文件清單。 使用者應該修正傳回的文件，然後再次嘗試匯入。 格式錯誤的文件包含其識別碼值不是字串 (Null 或任何其他視為無效的資料類型) 的文件。     |
 
 5. 大量匯入應用程式已備妥之後，請使用 'mvn clean package' 命令從來源建置命令列工具。 此命令會在目標資料夾中產生 jar 檔案：  
 
@@ -182,7 +182,7 @@ ms.locfileid: "80985638"
    |int getNumberOfDocumentsUpdated()  |   在提供給大量更新 API 呼叫的文件中，成功更新的文件總數。      |
    |double getTotalRequestUnitsConsumed() |  大量更新 API 呼叫取用的要求單位 (RU) 總數。       |
    |Duration getTotalTimeTaken()  |   大量更新 API 呼叫完成執行的時間總計。      |
-   |列出\<例外狀況> getErrors （）   |       如果提供給大量更新 API 呼叫的批次中有部分文件無法插入，則會取得錯誤清單。      |
+   |List\<Exception> getErrors()   |       如果提供給大量更新 API 呼叫的批次中有部分文件無法插入，則會取得錯誤清單。      |
 
 3. 大量更新應用程式已備妥之後，請使用 'mvn clean package' 命令從來源建置命令列工具。 此命令會在目標資料夾中產生 jar 檔案：  
 

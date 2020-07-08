@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos DB 總管來管理資料
 description: Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 Azure Cosmos DB 中儲存的資料。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261880"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 總管處理資料 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
    選擇您想要用來開啟帳戶的存取權類型，然後按一下 [開啟]****。 當您開啟總管之後，體驗會與您在 Azure 入口網站中使用 [資料總管] 索引標籤的體驗相同。   
 
-   ![開啟 Azure Cosmos DB 總管](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="開啟 Azure Cosmos DB explorer":::
 
 ## <a name="known-issues"></a>已知問題
 

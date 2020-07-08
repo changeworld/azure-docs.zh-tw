@@ -5,15 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261761"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的資料分割圖表
 
@@ -21,7 +21,7 @@ Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平
 
 如果容器預期會儲存 20 GB 以上的大小，或者您想要配置超過每秒10000個要求單位（ru），**則需要進行分割**。 [Azure Cosmos DB 分割機制](partition-data.md)中的相同一般原則，適用于下面所述的一些圖形特定的優化。
 
-![圖表資料分割。](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="圖表資料分割。" border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>圖表分割機制
 
@@ -29,11 +29,11 @@ Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平
 
 - **頂點和邊緣會儲存為 JSON 文件**。
 
-- **端點需要資料分割索引鍵**。 此索引鍵會決定頂點將透過雜湊演算法儲存在哪個資料分割中。 資料分割索引鍵屬性名稱是在建立新容器時定義的，其格式為`/partitioning-key-name`：。
+- **端點需要資料分割索引鍵**。 此索引鍵會決定頂點將透過雜湊演算法儲存在哪個資料分割中。 資料分割索引鍵屬性名稱是在建立新容器時定義的，其格式為： `/partitioning-key-name` 。
 
-- **邊緣將會連同其來源頂點一起儲存**。 換句話說，對每個頂點而言，其分割區金鑰將會定義其本身及其外傳邊緣的儲存位置。 在圖表查詢中使用`out()`基數時，會進行這項優化以避免跨分割區查詢。
+- **邊緣將會連同其來源頂點一起儲存**。 換句話說，對每個頂點而言，其分割區金鑰將會定義其本身及其外傳邊緣的儲存位置。 在圖表查詢中使用基數時，會進行這項優化以避免跨分割區查詢 `out()` 。
 
-- **邊緣包含其指向之頂點的參考**。 所有邊緣都會與其指向之頂點的分割區索引鍵和識別碼一起儲存。 這種計算會`out()`使所有方向的查詢一律是已設定範圍的資料分割查詢，而不是盲人跨資料分割查詢。 
+- **邊緣包含其指向之頂點的參考**。 所有邊緣都會與其指向之頂點的分割區索引鍵和識別碼一起儲存。 這種計算會使所有 `out()` 方向的查詢一律是已設定範圍的資料分割查詢，而不是盲人跨資料分割查詢。 
 
 - **圖形查詢必須指定資料分割索引鍵**。 若要在 Azure Cosmos DB 中充分利用水平資料分割，則應在選取單一端點時盡可能指定資料分割索引鍵。 以下是在資料分割的圖表中選取一或多個頂點的查詢：
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平
 
 - **在查詢頂點時務必要指定資料分割索引鍵值**。 從已知資料分割取得頂點，是可達到效能的方法。 所有後續的相鄰作業一律會設為分割區的範圍，因為邊緣包含其目標頂點的參考識別碼和資料分割索引鍵。
 
-- **查詢邊緣時應盡可能使用外傳方向**。 如前所述，邊緣會連同其外傳方向的來源頂點一起儲存。 依此模式為原則設計資料和查詢時，將可盡量降低進行跨資料分割查詢的可能性。 相反地， `in()`查詢一律會是昂貴的展開傳送查詢。
+- **查詢邊緣時應盡可能使用外傳方向**。 如前所述，邊緣會連同其外傳方向的來源頂點一起儲存。 依此模式為原則設計資料和查詢時，將可盡量降低進行跨資料分割查詢的可能性。 相反地， `in()` 查詢一律會是昂貴的展開傳送查詢。
 
 - **選擇分割區索引鍵，以將資料平均分散到多個磁碟分割**。 此決策高度仰賴解決方案的資料模型。 請閱讀 [Azure Cosmos DB 中的資料分割和調整](partition-data.md)，以深入了解如何建立適當的資料分割索引鍵。
 

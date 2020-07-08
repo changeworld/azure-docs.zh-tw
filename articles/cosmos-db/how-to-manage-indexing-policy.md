@@ -3,15 +3,16 @@ title: 管理 Azure Cosmos DB 中的索引編製原則
 description: 瞭解如何管理索引編制原則、包含或排除索引中的屬性、如何使用不同的 Azure Cosmos DB Sdk 定義索引編制
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261506"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -42,7 +43,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此編制索引原則等同于以下的設定，其會```kind```以```dataType```手動方式```precision```將、和設為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
+此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
 
 ```json
     {
@@ -96,7 +97,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此編制索引原則等同于以下的設定，其會```kind```以```dataType```手動方式```precision```將、和設為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
+此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
 
 ```json
     {
@@ -175,7 +176,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 除了包含或排除個別屬性的路徑以外，您也可以指定複合式索引。 如果您要為多個屬性執行具有 `ORDER BY` 子句的查詢，則必須要有這些屬性的[複合式索引](index-policy.md#composite-indexes)。 此外，對於具有篩選的查詢，以及在不同屬性上具有 ORDER BY 子句的查詢，複合索引將有效能上的好處。
 
 > [!NOTE]
-> 複合路徑具有隱含`/?`的，因為只有該路徑上的純量值會編制索引。 複合`/*`路徑中不支援萬用字元。 您不應該`/?`在`/*`複合路徑中指定或。
+> 複合路徑具有隱含的 `/?` ，因為只有該路徑上的純量值會編制索引。 `/*`複合路徑中不支援萬用字元。 您不應該 `/?` `/*` 在複合路徑中指定或。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>針對 (name asc, age desc) 定義的複合式索引：
 
@@ -323,7 +324,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="no-indexing"></a>無索引編製
 
-此原則將會關閉索引編制。 如果`indexingMode`設定為`none`，您就無法在容器上設定 TTL。
+此原則將會關閉索引編制。 如果 `indexingMode` 設定為 `none` ，您就無法在容器上設定 TTL。
 
 ```json
     {
@@ -361,7 +362,7 @@ Azure Cosmos 容器會將其索引編製原則儲存為 JSON 文件，並可從 
 
 1. 當您完成時，按一下 [儲存]****。
 
-![使用 Azure 入口網站管理索引編製](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="使用 Azure 入口網站管理編制索引":::
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
@@ -375,7 +376,7 @@ Azure Cosmos 容器會將其索引編製原則儲存為 JSON 文件，並可從 
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-`DocumentCollection` [.Net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的物件會公開`IndexingPolicy`屬性，可讓您變更`IndexingMode`和新增或移除`IncludedPaths`和。 `ExcludedPaths`
+`DocumentCollection` [.Net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的物件 `IndexingPolicy` 會公開屬性，可讓您變更 `IndexingMode` 和新增或移除 `IncludedPaths` 和 `ExcludedPaths` 。
 
 ```csharp
 // Retrieve the container's details
@@ -405,7 +406,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-來自`ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的物件（請參閱[本快速入門](create-sql-api-dotnet.md)中有關其使用方式`IndexingPolicy`的資訊）會公開一個`IndexingMode`屬性，讓您`IncludedPaths`變更`ExcludedPaths`和新增或移除和。
+`ContainerProperties`來自[.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的物件（請參閱[本快速入門](create-sql-api-dotnet.md)中有關其使用方式的資訊）會公開一個 `IndexingPolicy` 屬性，讓您變更 `IndexingMode` 和新增或移除 `IncludedPaths` 和 `ExcludedPaths` 。
 
 ```csharp
 // Retrieve the container's details
@@ -429,7 +430,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-若要追蹤索引轉換進度，請傳遞`RequestOptions`將`PopulateQuotaInfo`屬性設定為`true`的物件，然後從`x-ms-documentdb-collection-index-transformation-progress`回應標頭取出值。
+若要追蹤索引轉換進度，請傳遞 `RequestOptions` 將 `PopulateQuotaInfo` 屬性設定為的物件 `true` ，然後從 `x-ms-documentdb-collection-index-transformation-progress` 回應標頭取出值。
 
 ```csharp
 // retrieve the container's details

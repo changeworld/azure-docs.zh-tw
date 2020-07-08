@@ -3,16 +3,16 @@ title: 如何從備份還原 Azure Cosmos DB 資料
 description: 本文將說明如何從備份還原 Azure Cosmos DB 資料、如何連絡 Azure 支援人員來還原資料，以及還原資料後應採取的步驟。
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261727"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中從備份還原資料 
 
@@ -43,7 +43,7 @@ ms.locfileid: "70240770"
 
 下列螢幕擷取畫面說明如何使用 Azure 入口網站，為要還原資料的容器 (集合/圖表/資料表) 建立支援要求。 提供其他詳細資料，例如資料類型、還原目的和資料遭到刪除的時間，以協助我們優先處理此要求。
 
-![使用 Azure 入口網站建立備份支援要求](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="使用 Azure 入口網站建立備份支援要求":::
 
 ## <a name="post-restore-actions"></a>還原後的動作
 
