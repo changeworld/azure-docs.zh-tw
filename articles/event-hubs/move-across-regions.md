@@ -1,20 +1,14 @@
 ---
 title: 將 Azure 事件中樞命名空間移至另一個區域 |Microsoft Docs
 description: 本文說明如何將 Azure 事件中樞命名空間從目前的區域移至另一個區域。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312955"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>將 Azure 事件中樞命名空間移至另一個區域
 在許多情況下，您會想要將現有的事件中樞命名空間移至另一個區域。 例如，您可能會想要使用相同的設定來建立命名空間來進行測試。 您可能也會想要在其他區域中建立次要命名空間，做為嚴重損壞[修復計畫](event-hubs-geo-dr.md#setup-and-failover-flow)的一部分。
@@ -22,10 +16,10 @@ ms.locfileid: "82690478"
 > [!NOTE]
 > 本文說明如何匯出現有事件中樞命名空間的 Azure Resource Manager 範本，然後使用範本，在另一個區域中建立具有相同設定的命名空間。 不過，此進程不會移動尚未處理的事件。 您必須先處理原始命名空間中的事件，然後再刪除它。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 確定目的地區域中支援您的帳戶所使用的服務和功能。
-- 針對預覽功能，請確定您的訂用帳戶已列入目的地區域的允許清單中。
+- 確定目的地區域中支援您帳戶所使用的服務和功能。
+- 對於預覽功能，確定您的訂用帳戶已列入目標區域的白名單中。
 - 如果您已為命名空間中的事件中樞啟用**capture 功能**，請在移動事件中樞命名空間之前，先移動[Azure 儲存體或 Azure Data Lake 存放區 gen 2](../storage/common/storage-account-move.md)或[Azure Data Lake 存放區 gen 1](../data-lake-store/data-lake-store-migration-cross-region.md)帳戶。 您也可以遵循這篇文章中所述的步驟，將包含儲存體和事件中樞命名空間的資源群組移至另一個區域。 
 - 如果事件中樞命名空間位於**事件中樞**叢集中，請在執行本文中的步驟之前，先在**目的地區域**中[建立專用的](event-hubs-dedicated-cluster-create-portal.md)叢集。 您也可以使用[GitHub 上的快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)來建立事件中樞叢集。 在範本中，移除 JSON 的命名空間部分，只建立叢集。 
 
@@ -36,7 +30,7 @@ ms.locfileid: "82690478"
 
 2. 選取 [**所有資源**]，然後選取您的事件中樞命名空間。
 
-3. 選取 >**設定** > ] [**匯出範本**]。
+3. 選取 >**設定**] [  >  **匯出範本**]。
 
 4. 在 [**匯出範本**] 頁面中選擇 [**下載**]。
 
@@ -54,15 +48,15 @@ ms.locfileid: "82690478"
 
 1. 在 [Azure 入口網站中，選取 [**建立資源**]。
 
-2. 在 [搜尋 Marketplace]**** 中，輸入**範本部署**，然後按 **ENTER**。
+2. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
 
 3. 選取 [**範本部署**]。
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
-5. 選取 [在編輯器中組建您自己的範本]****。
+5. **在編輯器中選取 [建立您自己的範本**]。
 
-6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載的**範本. json**檔案。
+6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載的檔案**template.js** 。
 
 7. 選取 [**儲存**] 以儲存範本。 
 
@@ -85,7 +79,7 @@ ms.locfileid: "82690478"
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. 如果命名空間中的事件中樞使用儲存體帳戶來捕捉事件，請指定資源組名和 [儲存體帳戶] `StorageAccounts_<original storage account name>_external`作為 [欄位]。 
+        3. 如果命名空間中的事件中樞使用儲存體帳戶來捕捉事件，請指定資源組名和 [儲存體帳戶] 作為 [ `StorageAccounts_<original storage account name>_external` 欄位]。 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>
@@ -111,8 +105,8 @@ ms.locfileid: "82690478"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure 事件中樞命名空間從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
+在本教學課程中，您已將 Azure 事件中樞命名空間從一個區域移至另一個區域，並清除來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移動到另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

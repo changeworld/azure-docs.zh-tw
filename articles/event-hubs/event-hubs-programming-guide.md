@@ -1,20 +1,14 @@
 ---
 title: .NET 程式設計指南-Azure 事件中樞（舊版） |Microsoft Docs
 description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中樞」撰寫程式碼的資訊。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-ms.service: event-hubs
-ms.custom: seodec18
 ms.topic: article
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314549"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞的 .NET 程式設計指南（EventHubs 套件的舊版）
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](event-hubs-what-is-event-hubs.md)。
@@ -117,7 +111,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 若要啟動事件處理，請具現化[EventProcessorHost][]，並為事件中樞提供適當的參數。 例如：
 
 > [!NOTE]
-> EventProcessorHost 及其相關類別會在**EventHubs**中提供。 依照本文中的指示[，或在](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)[[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)] 視窗中發出下列命令，將套件新增至您的 Visual Studio`Install-Package Microsoft.Azure.EventHubs.Processor`專案：。
+> EventProcessorHost 及其相關類別會在**EventHubs**中提供。 依照本文中的指示[，或在](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)[[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)] 視窗中發出下列命令，將套件新增至您的 Visual Studio 專案： `Install-Package Microsoft.Azure.EventHubs.Processor` 。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(
@@ -155,7 +149,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 若要深入了解事件中樞案例，請造訪下列連結：
 
-* [事件中樞 API 總覽](event-hubs-api-overview.md)
+* [事件中樞 API 概觀](event-hubs-api-overview.md)
 * [什麼是事件中樞](event-hubs-what-is-event-hubs.md)
 * [事件中樞的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件處理器主機 API 參考](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)

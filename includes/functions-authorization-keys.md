@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298594"
 ---
 Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的困難度。 除非 HTTP 觸發程序函數的 HTTP 存取層級設定為 `anonymous`，否則要求必須在要求中包含 API 存取金鑰。 
+
+雖然金鑰會提供預設的安全性機制，但您可能會想要考慮其他選項來保護生產環境中的 HTTP 端點。 例如，在公用應用程式中散發共用密碼通常不是很好的作法。 如果從公用用戶端呼叫您的函式，您可能會想要考慮執行另一個 secrity 機制。 若要深入了解，請參閱[在生產環境中保護 HTTP 端點](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)。
+
+當您更新函式金鑰值時，您必須手動將更新的金鑰值重新發佈至呼叫函式的所有用戶端。  
 
 #### <a name="authorization-scopes-function-level"></a>授權範圍 (函式層級)
 

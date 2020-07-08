@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263590"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB 圖形帳戶的區域端點
 Azure Cosmos DB 圖形資料庫是[全域散發的](distribute-data-globally.md)，因此應用程式可以使用多個讀取端點。 需要在多個位置具有寫入存取權的應用程式應該啟用[多重主機](how-to-multi-master.md)功能。
@@ -43,7 +43,7 @@ TinkerPop Gremlin 用戶端是設計來與單一伺服器搭配使用。 應用�
 
 若要取得 Azure Cosmos DB 圖形帳戶的區域清單，最簡單的方式是從 Azure 入口網站中的 [概觀] 刀鋒視窗取得。 這適用於不經常變更區域的應用程式，或是可以透過應用程式設定來更新清單的應用程式。
 
-![從入口網站擷取 Cosmos DB 圖形帳戶的區域](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="從入口網站擷取 Cosmos DB 圖形帳戶的區域":::
 
 以下範例示範存取區域 Gremlin 端點的一般準則。 應用程式應考慮要傳送流量至該區域的區域數目，以及要具現化的相對應 Gremlin 用戶端數目。
 

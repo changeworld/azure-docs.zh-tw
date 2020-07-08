@@ -1,18 +1,18 @@
 ---
 title: 將數百 TB 的資料遷移至 Azure Cosmos DB
 description: 本檔說明如何將數百 tb 的資料移轉到 Cosmos DB
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.author: bharathb
-ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72880209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263539"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>將數百 TB 的資料遷移至 Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ Azure Cosmos DB 的遷移策略根據 API 選擇和資料大小而有所不同�
 下圖說明使用此自訂工具的遷移程式。 此工具會在一組虛擬機器上執行，而且每個虛擬機器都會查詢 Azure Cosmos DB 中的追蹤集合，以取得其中一個來源資料分割區的租用。 完成這項作業之後，工具會讀取來源資料分割區，並使用大量執行程式程式庫內嵌到 Azure Cosmos DB。 接下來，追蹤集合會更新，以記錄資料內嵌的進度和遇到的任何錯誤。 處理資料分割之後，此工具會嘗試查詢下一個可用的來源分割區。 它會繼續處理下一個來源分割區，直到所有資料都遷移為止。 此工具的原始程式碼可在[這裡](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)取得。  
 
  
-![遷移工具設定](./media/migrate-cosmosdb-data/migrationsetup.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="遷移工具設定" border="false":::
  
 
  
@@ -145,7 +145,7 @@ Azure Cosmos DB 的遷移策略根據 API 選擇和資料大小而有所不同�
 ## <a name="contact-the-azure-cosmos-db-team"></a>聯絡 Azure Cosmos DB 小組
 雖然您可以遵循本指南來成功地將大型資料集遷移至 Azure Cosmos DB，但對於大規模的遷移，建議您 Azure Cosmos DB 的產品小組，以驗證資料模型化和一般架構審查。 根據您的資料集和工作負載，產品小組也可以建議適用于您的其他效能和成本優化。 若要與 Azure Cosmos DB 小組尋求大規模遷移的協助，您可以在「一般諮詢」問題類型和「大型（TB +）遷移」問題子類型底下開啟支援票證，如下所示。
 
-![遷移支援主題](./media/migrate-cosmosdb-data/supporttopic.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="遷移支援主題":::
 
 
 ## <a name="next-steps"></a>後續步驟

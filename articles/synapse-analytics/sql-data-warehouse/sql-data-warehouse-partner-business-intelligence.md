@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85299325"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商業智慧合作夥伴
 
@@ -44,6 +44,6 @@ ms.locfileid: "83698885"
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>後續步驟
-若要深入了解我們的一些其他合作夥伴，請參閱[資料整合合作夥伴](sql-data-warehouse-partner-data-integration.md)和[資料管理合作夥伴](sql-data-warehouse-partner-data-management.md)。
+若要深入瞭解我們的一些其他合作夥伴，請參閱[資料整合合作夥伴](sql-data-warehouse-partner-data-integration.md)、[資料管理合作夥伴](sql-data-warehouse-partner-data-management.md)和[Machine Learning 和 AI 合作夥伴](sql-data-warehouse-partner-machine-learning-ai.md)。
 
  

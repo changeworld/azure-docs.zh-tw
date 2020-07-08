@@ -1,19 +1,14 @@
 ---
 title: 適用于事件中樞的 Apache Kafka 開發人員指南
 description: 本文提供文章的連結，說明如何將您的 Kafka 應用程式與 Azure 事件中樞整合。
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 03/31/2020
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314235"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>適用于 Azure 事件中樞的 Apache Kafka 開發人員指南
 本文提供文章的連結，說明如何將您的 Apache Kafka 應用程式與 Azure 事件中樞整合。 
@@ -27,7 +22,7 @@ ms.locfileid: "81729633"
 ### <a name="quickstarts-in-github"></a>GitHub 中的快速入門
 請參閱**azure kafka**存放庫中的下列快速入門： 
 
-| 用戶端語言/架構 | 描述 | 
+| 用戶端語言/架構 | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>本快速入門將示範如何使用 .NET Core 2.0，以 c # 撰寫的範例生產者和取用者來建立和連接到事件中樞 Kafka 端點。</p><p>這個範例是以[Confluent 的 Apache Kafka .net 用戶端](https://github.com/confluentinc/confluent-kafka-dotnet)為基礎，已修改以用於 Kafka 的事件中樞。</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | 本快速入門將示範如何使用以 JAVA 撰寫的範例生產者和取用者，建立並連接到事件中樞 Kafka 端點。 |
@@ -53,7 +48,7 @@ ms.locfileid: "81729633"
 | [[連接]](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | 本檔將逐步引導您整合 Kafka Connect 與 Azure 事件中樞並部署基本的 FileStreamSource 和 FileStreamSink 連接器。 雖然這些連接器並非用於生產環境，但它們會示範端對端的 Kafka Connect 案例，其中 Azure 事件中樞 masquerades 為 Kafka 訊息代理程式。| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | 本檔將逐步引導您透過 Filebeat 的 Kafka 輸出來整合 Filebeat 和事件中樞。 | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | 本教學課程將示範如何將 Apache Flink 連線至已啟用 Kafka 的事件中樞，而不需要變更您的通訊協定用戶端或執行您自己的叢集。 | 
-| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | 本檔將逐步引導您使用 Fluentd 的`out_kafka`輸出外掛程式來整合 Fluentd 和事件中樞。 |
+| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | 本檔將逐步引導您使用 `out_kafka` Fluentd 的輸出外掛程式來整合 Fluentd 和事件中樞。 |
 | [Interop](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | 本教學課程會示範如何使用不同的通訊協定，在取用者與生產者之間交換事件。 |
 | [Logstash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | 本教學課程將逐步引導您使用 Logstash Kafka 輸入/輸出外掛程式，將 Logstash 與已啟用 Kafka 的事件中樞整合。 | 
 | [MirrorMaker](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | 本教學課程說明事件中樞和 Kafka MirrorMaker 如何藉由鏡像事件中樞服務中的 Kafka 輸入資料流程，將現有的 Kafka 管線整合到 Azure 中。 |
@@ -68,13 +63,13 @@ ms.locfileid: "81729633"
 ## <a name="how-to-guides"></a>操作指南
 請參閱檔中的下列操作指南：
 
-| 發行項 | 描述 | 
+| 文章 | 說明 | 
 | ------- | ----------- | 
 | [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md) | 示範如何使用 Kafka MirrorMaker，在事件中樞內鏡像 Kafka 訊息代理程式。 |
 | [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md) | 逐步引導您將 Spark 應用程式連接到事件中樞進行即時串流。 |
 | [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md) | 說明如何將 Apache Flink 連線至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 |
 | [整合 Apache Kafka Connect 與事件中樞（預覽）](event-hubs-kafka-connect-tutorial.md) | 逐步引導您整合 Kafka Connect 與事件中樞，以及部署基本的 FileStreamSource 和 FileStreamSink 連接器。 |
-| [將 Akka 串流連線到事件中樞](event-hubs-kafka-akka-streams-tutorial.md) | 說明如何將 Akka streams 串流連線至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 |
+| [將 Akka streams 串流連線至事件中樞](event-hubs-kafka-akka-streams-tutorial.md) | 說明如何將 Akka streams 串流連線至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 |
 | [使用適用于 Apache Kafka 的彈簧開機 Starter 搭配 Azure 事件中樞](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | 示範如何設定以「春季開機初始化運算式」建立的 JAVA 型春季雲端串流系結器，以搭配 Azure 事件中樞使用 Apache Kafka。 |
 
 ## <a name="next-steps"></a>後續步驟

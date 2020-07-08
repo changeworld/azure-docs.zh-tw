@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263556"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
 
@@ -27,7 +27,7 @@ Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源
 - **Azure Cosmos DB 帳戶** - 具有相關聯 DNS 的最上層實體 (例如 `contoso.gremlin.cosmos.azure.com`)。
   - **Azure Cosmos DB 資料庫**
     - **使用者**
-      - [權限]****
+      - **權限**
         - **權杖** - 權限物件屬性，代表允許或拒絕的動作。
 
 資源權杖使用下列格式：`"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`。 此字串對用戶端而言是不透明的，而且應該在不修改或解譯的情況下使用。

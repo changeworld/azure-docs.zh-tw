@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ead0041e26b5dff5cfd81b6fa02b7efff6e6e9d1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296316"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 串流分析中的查詢平行化作業
 本文會示範如何利用 Azure 串流分析中的平行化作業。 您可以了解如何透過設定輸入資料分割並調整分析查詢定義來調整串流分析工作。
@@ -279,7 +279,7 @@ Power BI 輸出目前不支援資料分割。 因此，此情節不是窘迫平�
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) \(英文\) 支援以平行方式寫入 (稱為繼承資料分割)，但預設並不會啟用。 不過，啟用繼承資料分割加上完全平行查詢，可能並不足以達成更高的輸送量。 SQL 寫入輸送量會大幅取決於您的 SQL Azure Database 設定和資料表結構描述。 [SQL 輸出效能](./stream-analytics-sql-output-perf.md)一文具有可將寫入輸送量最大化之參數的詳細資料。 如 [Azure 串流分析輸出至 Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) 一文中所述，此解決方案在超過 8 個分割區之後，並不會以完全平行管線的形式進行線性調整，且可能需要在 SQL 輸出之前重新分割 (請參閱 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) \(英文\))。 需要進階 SKU 以維持高 IO 速率，以及由每隔幾分鐘便會發生的記錄備份所帶來的額外負荷。
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) \(英文\) 支援以平行方式寫入 (稱為繼承資料分割)，但預設並不會啟用。 不過，啟用繼承資料分割加上完全平行查詢，可能並不足以達成更高的輸送量。 SQL write 輸送量會大幅依賴您的資料庫設定和資料表架構。 [SQL 輸出效能](./stream-analytics-sql-output-perf.md)一文具有可將寫入輸送量最大化之參數的詳細資料。 如 [Azure 串流分析輸出至 Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) 一文中所述，此解決方案在超過 8 個分割區之後，並不會以完全平行管線的形式進行線性調整，且可能需要在 SQL 輸出之前重新分割 (請參閱 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) \(英文\))。 需要進階 SKU 以維持高 IO 速率，以及由每隔幾分鐘便會發生的記錄備份所帶來的額外負荷。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |擷取速率 (每秒事件數) | 串流處理單位 | 輸出資源  |
@@ -290,7 +290,7 @@ Power BI 輸出目前不支援資料分割。 因此，此情節不是窘迫平�
 
 來自串流分析的 [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) \(英文\) 輸出已經更新為使用[相容性層級 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) 底下的原生整合。 與相容性層級 1.1 (其為新作業的預設合規性層級) 相比，1.2 能提供明顯更高的輸送量並減少 RU 耗用量。 該解決方案會使用在 /deviceId 上分割的 CosmosDB 容器，而其餘的解決方案也會以相同方式設定。
 
-所有[大規模串流 Azure 範例](https://github.com/Azure-Samples/streaming-at-scale) \(英文\) 都會使用以負載模擬測試用戶端作為輸入的事件中樞。 每個輸入事件都是 1KB 的 JSON 文件，其可以輕鬆地將所設定的擷取速率轉譯為輸送量速率 (1MB/s、5MB/s 及 10MB/s)。 事件會模擬 IoT 裝置針對最多 1K 個裝置傳送下列 JSON 資料 (以縮短的形式)：
+所有[大規模的串流處理 Azure 範例](https://github.com/Azure-Samples/streaming-at-scale)都會使用事件中樞作為輸入，並藉由負載模擬測試用戶端來送出。 每個輸入事件都是 1KB 的 JSON 文件，其可以輕鬆地將所設定的擷取速率轉譯為輸送量速率 (1MB/s、5MB/s 及 10MB/s)。 事件會模擬 IoT 裝置針對最多 1K 個裝置傳送下列 JSON 資料 (以縮短的形式)：
 
 ```
 {

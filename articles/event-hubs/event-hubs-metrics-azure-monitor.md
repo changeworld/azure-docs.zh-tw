@@ -1,26 +1,14 @@
 ---
 title: Azure 監視器中的計量 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用「Azure 監視」來監視「Azure 事件中樞」的資訊
-services: event-hubs
-documentationcenter: .NET
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 09/18/2019
-ms.author: shvija
-ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314596"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
 
@@ -41,7 +29,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ![檢視成功計量][1]
 
-您也可以直接透過命名空間來存取計量。 若要這麼做，請選取您的命名空間，然後按一下 [**計量**]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後按一下 [計量]****。
+您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後按一下 [計量]****。
 
 針對支援維度的計量，您必須使用所需的維度值來進行篩選，如以下範例所示：
 
@@ -62,52 +50,52 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 計算資料和管理作業要求的數目。
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-| 傳入的要求  | 在指定的期間內，向「Azure 事件中樞」服務提出的要求數目。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName |
-| 成功的要求    | 在指定的期間內，向「Azure 事件中樞」服務提出的成功要求數目。 <br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName |
-| 伺服器錯誤  | 在指定的期間內，因「Azure 事件中樞」服務發生錯誤而未處理的要求數目。 <br/><br/>單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName |
-|使用者錯誤 |在指定的期間內，因使用者錯誤而未處理的要求數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|超過配額錯誤 |超出可用配額的要求數目。 如需有關「事件中樞」配額的詳細資訊，請參閱[這篇文章](event-hubs-quotas.md)。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+| 傳入的要求  | 在指定的期間內，向「Azure 事件中樞」服務提出的要求數目。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
+| 成功的要求    | 在指定的期間內，向「Azure 事件中樞」服務提出的成功要求數目。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
+| 伺服器錯誤  | 在指定的期間內，因「Azure 事件中樞」服務發生錯誤而未處理的要求數目。 <br/><br/>單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
+|使用者錯誤 |在指定的期間內，因使用者錯誤而未處理的要求數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|超過配額錯誤 |超出可用配額的要求數目。 如需有關「事件中樞」配額的詳細資訊，請參閱[這篇文章](event-hubs-quotas.md)。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="throughput-metrics"></a>輸送量計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|節流要求 |因為超出輸送量單位使用量而節流的要求數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|節流的要求 |因為超出輸送量單位使用量而節流的要求數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="message-metrics"></a>訊息計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|傳入訊息 |在指定的期間內，傳送到「事件中樞」的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|外送訊息 |在指定的期間內，從「事件中樞」擷取的事件或訊息數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|傳入訊息 |在指定的期間內，傳送到「事件中樞」的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|外送訊息 |在指定的期間內，從「事件中樞」擷取的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |傳入位元組 |在指定的期間內，傳送到「Azure 事件中樞」服務的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|傳出位元組數 |在指定的期間內，從「Azure 事件中樞」服務擷取的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|傳出的位元組 |在指定的期間內，從「Azure 事件中樞」服務擷取的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="connection-metrics"></a>連接計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|ActiveConnections |命名空間及實體上的作用中連線數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已開啟連接 |已開啟的連線數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|連接已關閉 |已關閉的連線數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveConnections |命名空間及實體上的作用中連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|已開啟的連線 |已開啟的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|已關閉的連線 |已關閉的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>事件中樞擷取計量
 
 當您針對事件中樞啟用「擷取」功能時，即可監視「事件中樞」的「擷取」計量。 下列計量說明當您啟用「擷取」時可以監視的項目。
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|Capture 待處理專案 |尚未擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已捕獲的訊息 |在指定的期間內，擷取到所選目的地的訊息或事件數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已捕獲的位元組 |在指定的期間內，擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|擷取待辦項目 |尚未擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|已擷取的訊息 |在指定的期間內，擷取到所選目的地的訊息或事件數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|已擷取的位元組 |在指定的期間內，擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="metrics-dimensions"></a>計量維度
 
 「Azure 事件中樞」針對「Azure 監視器」中的計量支援下列維度。 將維度新增至計量為選擇性。 如果不新增維度，則會在命名空間層級指定計量。 
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |EntityName| 「事件中樞」可在命名空間底下支援事件中樞實體。|
 

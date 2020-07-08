@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298509"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -27,11 +27,11 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-在此範例中， `<RESOURCE_GROUP>`請將取代為您`<PLAN_NAME>`的資源群組，並以您方案的名稱（在資源群組中是唯一的）。 指定[支援`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)的。 若要建立支援 Linux 的 Premium 方案，請包含`--is-linux`選項。
+在此範例中，請將取代為 `<RESOURCE_GROUP>` 您的資源群組，並 `<PLAN_NAME>` 以您方案的名稱（在資源群組中是唯一的）。 指定[支援 `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)的。 若要建立支援 Linux 的 Premium 方案，請包含 `--is-linux` 選項。
 
 建立計畫之後，您可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)來建立函數應用程式。 在入口網站中，會同時建立方案和應用程式。 如需完整 Azure CLI 腳本的範例，請參閱[在 Premium 方案中建立函數應用程式](scripts/functions-cli-create-premium-plan.md)。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 下列功能可供部署至 Premium 方案的函數應用程式使用。
 
@@ -61,11 +61,13 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="rapid-elastic-scale"></a>快速彈性調整
 
-系統會使用與取用方案相同的快速調整邏輯，為您的應用程式自動新增額外的計算實例。  若要深入瞭解調整如何運作，請參閱[函數級別和裝載](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
+系統會使用與取用方案相同的快速調整邏輯，為您的應用程式自動新增額外的計算實例。 相同 App Service 方案中的應用程式會根據個別應用程式的需求，彼此獨立地進行調整。 不過，相同 App Service 方案中的函式應用程式會共用 VM 資源，以協助降低成本（可能的話）。 與 VM 相關聯的應用程式數目取決於每個應用程式的使用量和 VM 的大小。
+
+若要深入瞭解調整如何運作，請參閱[函數級別和裝載](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
 ### <a name="longer-run-duration"></a>較長的執行持續時間
 
-取用方案中的 Azure Functions 僅限10分鐘的時間執行一次。  在 Premium 方案中，回合持續時間預設為30分鐘，以防止執行失控。 不過，您可以[修改 host. json](./functions-host-json.md#functiontimeout)設定，讓 Premium 方案應用程式不受限制（保證60分鐘）。
+取用方案中的 Azure Functions 僅限10分鐘的時間執行一次。  在 Premium 方案中，回合持續時間預設為30分鐘，以防止執行失控。 不過，您可以[修改設定上的 host.js](./functions-host-json.md#functiontimeout) ，讓 Premium 方案應用程式不受限制（保證60分鐘）。
 
 ## <a name="plan-and-sku-settings"></a>方案和 SKU 設定
 
@@ -88,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 建立或調整您的方案時，您可以選擇三種實例大小。  系統會向您收取每秒耗用的核心和記憶體總數。  您的應用程式可以視需要自動相應放大至多個實例。  
 
-|SKU|核心|記憶體|儲存體|
+|SKU|核心|Memory|儲存體|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7 GB|250GB|
@@ -97,7 +99,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 ### <a name="memory-utilization-considerations"></a>記憶體使用量考慮
 在具有更多記憶體的電腦上執行，並不一定表示您的函式應用程式會使用所有可用的記憶體。
 
-例如，JavaScript 函數應用程式受限於 node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請新增具有`languageWorkers:node:arguments`值的`--max-old-space-size=<max memory in MB>`應用程式設定。
+例如，JavaScript 函式應用程式受限於 Node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請新增 `languageWorkers:node:arguments` 具有值的應用程式設定 `--max-old-space-size=<max memory in MB>` 。
 
 ## <a name="region-max-scale-out"></a>區域最大 Scale Out
 

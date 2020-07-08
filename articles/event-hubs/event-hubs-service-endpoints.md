@@ -1,22 +1,14 @@
 ---
 title: 虛擬網路服務端點 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Microsoft EventHub 服務端點新增至虛擬網路的資訊。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 11/26/2019
-ms.author: shvija
-ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315435"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>將虛擬網路服務端點搭配 Azure 事件中樞使用
 
@@ -24,7 +16,7 @@ ms.locfileid: "81390276"
 
 一旦設定為系結到至少一個虛擬網路子網服務端點，個別的事件中樞命名空間就不會再接受來自虛擬網路中任何來自于授權子網的流量。 從虛擬網路的角度來看，將事件中樞命名空間繫結至服務端點，會設定從虛擬網路子網路到傳訊服務的隔離式網路通道。 
 
-最終這會在繫結至子網路的工作負載與各自的事件中樞命名空間之間，建立私人且隔離的關係，儘管傳訊服務端點顯示的網路位址位於公用 IP 範圍中。 這種行為有例外。 啟用服務端點時，根據預設，會啟用`denyall`與虛擬網路相關聯的[IP 防火牆](event-hubs-ip-filtering.md)中的規則。 您可以在 IP 防火牆中新增特定的 IP 位址，以啟用事件中樞公用端點的存取權。 
+最終這會在繫結至子網路的工作負載與各自的事件中樞命名空間之間，建立私人且隔離的關係，儘管傳訊服務端點顯示的網路位址位於公用 IP 範圍中。 這種行為有例外。 啟用服務端點時，根據預設，會啟用 `denyall` 與虛擬網路相關聯的[IP 防火牆](event-hubs-ip-filtering.md)中的規則。 您可以在 IP 防火牆中新增特定的 IP 位址，以啟用事件中樞公用端點的存取權。 
 
 >[!WARNING]
 > 實作「虛擬網路」整合可防止其他 Azure 服務與「事件中樞」進行互動。
@@ -32,13 +24,13 @@ ms.locfileid: "81390276"
 > 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 監視器（診斷設定）
+> - Azure 監視器 (診斷設定)
 > - Azure 串流分析
 > - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
 >
-> 下列 Microsoft 服務必須位於虛擬網路上
+> 虛擬網路上必須有下列 Microsoft 服務
 > - Azure Web Apps
 > - Azure Functions
 
@@ -65,10 +57,10 @@ ms.locfileid: "81390276"
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
 本節說明如何使用 Azure 入口網站來新增虛擬網路服務端點。 若要限制存取，您需要整合此事件中樞命名空間的虛擬網路服務端點。
 
-1. 流覽至您在[Azure 入口網站](https://portal.azure.com)中的**事件中樞命名空間**。
-2. 在左側功能表上，選取 [**網路**] 選項。 如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連線。 此設定相當於接受 0.0.0.0/0 IP 位址範圍的規則。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的**事件中樞命名空間**。
+2. 在左側功能表上，選取 [網路] 選項。 如果您選取 [所有網路] 選項，事件中樞便會接受來自任何 IP 位址的連線。 此設定等同於接受 0.0.0.0/0 IP 位址範圍的規則。 
 
-    ![[防火牆-所有網路] 選項已選取](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要 restrct 特定網路的存取權，請選取頁面頂端的 [**選取的網路**] 選項。
 2. 在頁面的 [**虛擬網路**] 區段中，選取 [+ 新增現有的虛擬網路] * * *。 如果您想要建立新的 VNet，請選取 [ **+ 建立新的虛擬網路**]。 
 
@@ -83,7 +75,7 @@ ms.locfileid: "81390276"
 
     > [!NOTE]
     > 如果您無法啟用服務端點，您可以使用 Resource Manager 範本來忽略遺失的虛擬網路服務端點。 在入口網站上無法使用這項功能。
-6. 選取工具列上的 [**儲存**] 來儲存設定。 等候幾分鐘的時間，確認才會顯示在入口網站通知上。
+6. 選取工具列上的 [儲存] 來儲存設定。 等候幾分鐘的時間，讓入口網站通知上顯示確認訊息。
 
     ![儲存網路](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
@@ -99,7 +91,7 @@ ms.locfileid: "81390276"
 * **virtualNetworkingSubnetId**：虛擬網路子網路的完整 Resource Manager 路徑，例如，`/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 適用於虛擬網路的預設子網路。
 
 > [!NOTE]
-> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"**。
+> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
 > 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
 > 
 > 從
@@ -211,7 +203,7 @@ ms.locfileid: "81390276"
   }
 ```
 
-若要部署範本，請依照 [Azure Resource Manager][lnk-deploy] 適用的指示執行。
+若要部署範本，請依照適用於 [Azure Resource Manager][lnk-deploy] 的指示執行。
 
 ## <a name="next-steps"></a>後續步驟
 

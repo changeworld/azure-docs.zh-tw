@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中佈建資料庫輸送量
 description: 了解如何使用 Azure 入口網站、CLI、PowerShell 及各種其他 SDK，在 Azure Cosmos DB 中的資料庫層級佈建輸送量。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263634"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中佈建資料庫的標準 (手動) 輸送量
 
@@ -32,7 +32,7 @@ ms.locfileid: "83655317"
    * 輸入輸送量 (例如 1000 RU)。
    * 選取 [確定]。
 
-    ![[新增資料庫] 對話方塊的螢幕擷取畫面](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="[新增資料庫] 對話方塊的螢幕擷取畫面":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 佈建輸送量
 

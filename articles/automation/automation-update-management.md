@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316395"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -29,7 +29,7 @@ ms.locfileid: "83847323"
 [Azure Resource Manager 範本](automation-update-management-deploy-template.md)可用來協助您將更新管理部署到新的或現有的自動化帳戶及訂用帳戶中的 Log Analytics 工作區。
 
 > [!NOTE]
-> 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。 
+> 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
 
 ## <a name="about-update-management"></a>關於更新管理
 
@@ -68,21 +68,22 @@ ms.locfileid: "83847323"
 在 Azure 自動化中，會由 Runbook 安裝更新。 您無法檢視這些 Runbook，而其也不需要任何設定。 更新部署在建立後便會建立排程，以在指定的時間為所包含的機器啟動主要更新 Runbook。 主要 Runbook 會在每個代理程式上啟動子 Runbook，以安裝必要的更新。
 
 到了更新部署中指定的日期和時間時，目標機器就會以平行方式執行部署。 在安裝之前，系統會先執行掃描，以確認仍然需要更新。 針對 WSUS 用戶端電腦，若 WSUS 中並未核准更新，則更新部署會失敗。
+
 不支援讓一部機器在多個 Log Analytics 工作區 (亦稱為多重主目錄) 註冊更新管理。
 
 ## <a name="clients"></a>用戶端
 
 ### <a name="supported-client-types"></a>支援的用戶端類型
 
-下表列出支援更新評量的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的相關資訊，請參閱[部署 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)和[部署 Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md)。
+下表列出更新評估和修補支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的相關資訊，請參閱[部署 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)和[部署 Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 只有在自動化帳戶和 Log Analytics 工作區[對應表](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings) \(部分機器翻譯\) 中列出的特定區域，才支援 Linux 機器的更新評量。 
 
 |作業系統  |注意  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理僅支援此作業系統的評量。 不支援修補，因為 Windows Server 2008 R2 不支援[混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。 |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理支援此作業系統的評量和修補。 Windows Server 2008 R2 支援[混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理程式需要存取更新存放庫。 分類型修補需要 `yum`，才能傳回 CentOS 在其 RTM 版本中沒有的安全性資料。 如需 CentOS 上分類型修補的詳細資訊，請參閱 [Linux 上的更新分類](automation-view-update-assessments.md#linux-2)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理程式需要存取更新存放庫。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理程式需要存取更新存放庫。        |
@@ -103,7 +104,7 @@ ms.locfileid: "83847323"
 
 ### <a name="client-requirements"></a>用戶端需求
 
-下列資訊描述作業系統特有的用戶端需求。 如需其他指導方針，請參閱[網路規劃](#ports)。
+下列資訊描述作業系統特有的用戶端需求。 如需其他指導方針，請參閱[網路規劃](#ports)。 若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="windows"></a>Windows
 
@@ -165,10 +166,10 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 下表描述更新管理所支援的連線來源：
 
-| 連線的來源 | 支援 | 描述 |
+| 連線的來源 | 支援 | Description |
 | --- | --- | --- |
-| Windows 代理程式 |是 |更新管理會從 Windows 代理程式收集系統更新的相關資訊，然後開始安裝必要更新。 |
-| Linux 代理程式 |是 |更新管理會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上開始安裝必要更新。 |
+| Windows 代理程式 |Yes |更新管理會從 Windows 代理程式收集系統更新的相關資訊，然後開始安裝必要更新。 |
+| Linux 代理程式 |Yes |更新管理會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上開始安裝必要更新。 |
 | Operations Manager 管理群組 |是 |「更新管理」會從所連線之管理群組中的代理程式收集系統更新的相關資訊。<br/><br/>Operations Manager 代理程式不需要直接連線到 Azure 監視器記錄。 資料會從管理群組轉送至 Log Analytics 工作區。 |
 
 ### <a name="collection-frequency"></a>收集頻率
@@ -187,10 +188,10 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 |Azure 公用  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *.azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 
@@ -224,13 +225,20 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |重大更新和安全性更新     | 特定問題或特定產品的安全性相關問題的更新，         |
 |其他更新     | 本質上不重要或非安全性更新的所有其他更新。        |
 
+>[!NOTE]
+>只有在支援的 Azure 公用雲端區域中使用時，才可以使用適用于 Linux 機器的更新分類。 使用下列國家雲端區域中的更新管理時：
+>* Azure 美國政府
+>* 中國的世紀
+>
+> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的發行版本所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) （開放弱點和評估語言）檔案。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
+
 針對 Linux，更新管理可以區分雲端中的重大更新和安全性更新，同時基於雲端中的資料擴充顯示評量資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-目前沒有支援的方法可以在 CentOS 上啟用原生分類資料可用性。 目前，只會為可能已自行啟用此功能的客戶提供最佳技術支援。 
+目前沒有支援的方法可以在 CentOS 上啟用原生分類資料可用性。 目前，只會為可能已自行啟用此功能的客戶提供最佳技術支援。
 
 若要將 Red Hat Enterprise 版本 6 上的更新分類，您必須安裝 yum-security 外掛程式。 在 Red Hat Enterprise Linux 7 上，此外掛程式已經是 yum 本身的一部分，因此不需要安裝任何項目。 如需詳細資訊，請參閱下列 Red Hat [知識文章](https://access.redhat.com/solutions/10021) \(英文\)。
 

@@ -1,25 +1,14 @@
 ---
 title: Azure 轉送連接埠設定 | Microsoft Docs
 description: 本文包含一個表格，說明 Azure 轉送的埠值所需的設定。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 532e3c297c42ea16b1f462a01699fc2fd71c6cce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314276"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 轉送連接埠設定
 
@@ -31,23 +20,23 @@ ms.locfileid: "83211758"
 
 ## <a name="wcf-relays"></a>WCF 轉送
   
-|繫結|傳輸安全性|連接埠|  
+|繫結|傳輸安全性|Port|  
 |-------------|------------------------|----------|  
-|[BasicHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (用戶端)|是|HTTPS| 
-|" |否|HTTP|  
+|[BasicHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (用戶端)|Yes|HTTPS| 
+|" |No|HTTP|  
 |[BasicHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (服務)|之前或之後|9351/HTTP|  
-|[NetEventRelayBinding 類別](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (用戶端)|是|9351/HTTPS|  
-|" |否|9350/HTTP|  
+|[NetEventRelayBinding 類別](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (用戶端)|Yes|9351/HTTPS|  
+|" |No|9350/HTTP|  
 |[NetEventRelayBinding 類別](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (服務)|之前或之後|9351/HTTP|  
 |[NetTcpRelayBinding 類別](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (用戶端/服務)|之前或之後|5671/9352/HTTP (如果使用混合式則為 9352/9353)|  
-|[NetOnewayRelayBinding 類別](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (用戶端)|是|9351/HTTPS|  
-|" |否|9350/HTTP|  
+|[NetOnewayRelayBinding 類別](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (用戶端)|Yes|9351/HTTPS|  
+|" |No|9350/HTTP|  
 |[NetOnewayRelayBinding 類別](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (服務)|之前或之後|9351/HTTP|  
-|[WebHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (用戶端)|是|HTTPS|  
-|" |否|HTTP|  
+|[WebHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (用戶端)|Yes|HTTPS|  
+|" |No|HTTP|  
 |[WebHttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (服務)|之前或之後|9351/HTTP|  
-|[WS2007HttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (用戶端)|是|HTTPS|  
-|" |否|HTTP|  
+|[WS2007HttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (用戶端)|Yes|HTTPS|  
+|" |No|HTTP|  
 |[WS2007HttpRelayBinding 類別](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (服務)|之前或之後|9351/HTTP|
 
 ## <a name="next-steps"></a>後續步驟

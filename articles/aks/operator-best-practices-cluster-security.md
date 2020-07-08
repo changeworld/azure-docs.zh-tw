@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中管理�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298016"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中叢集安全性和升級的最佳做法
 
@@ -173,7 +173,7 @@ chmod-prevented           0/1       Error     0          7s
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>定期更新至最新版的 Kubernetes
 
-**最佳做法指導方針**：為了持續取得最新功能和錯誤 (bug) 修正，請定期將 AKS 叢集中的 Kubernetes 升級至最新版本。
+**最佳做法指引**-若要保持最新功能和錯誤修正，請定期升級 AKS 叢集中的 Kubernetes 版本。
 
 Kubernetes 發行新功能的步調，比大部分傳統的基礎結構平台還快。 Kubernetes 更新包含新功能和錯誤 (bug) 或安全性修正。 新功能通常會會經過「Alpha 版本」**，接著「搶鮮版 (Beta)」**，然後才會成為「穩定版本」**，並提供給大眾和建議生產環境使用。 此發行週期應可讓您更新 Kubernetes，而不會定期發生中斷性變更，或調整部署和範本。
 

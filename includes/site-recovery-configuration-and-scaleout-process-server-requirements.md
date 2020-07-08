@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85292192"
 ---
 **設定和處理伺服器需求**
 
@@ -52,14 +52,12 @@ NIC 類型 | VMXNET3 （如果設定伺服器是 VMware VM）
  |
 **網際網路存取**（伺服器需要直接或透過 proxy 存取下列 url）：|
 \*.backup.windowsazure.com | 用於所複寫資料的轉送和協調
-\*.store.core.windows.net | 用於所複寫資料的轉送和協調
-\*.blob.core.windows.net | 用於存取儲存體帳戶來儲存複寫的資料
+\*.blob.core.windows.net | 用來存取儲存已複寫資料的儲存體帳戶。 您可以提供快取儲存體帳戶的特定 URL。
 \*.hypervrecoverymanager.windowsazure.com | 用於複寫管理作業和協調
-https:\//management.azure.com | 用於複寫管理作業和協調 
-*.services.visualstudio.com | 用於遙測用途（選擇性）
+https:\//login.microsoftonline.com | 用於複寫管理作業和協調 
 time.nist.gov | 用來檢查系統與通用時間之間的時間同步處理
 time.windows.com | 用來檢查系統與通用時間之間的時間同步處理
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> HTTPs：\//login.live.com </li><li> HTTPs：\//graph.windows.net </li><li> https:\//login.windows.net </li><li> HTTPs：\//www.live.com </li><li> HTTPs：\//www.microsoft.com </li></ul> | OVF 安裝程式需要存取這些 Url。 它們是用於 Azure Active Directory 的存取控制和身分識別管理。
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> HTTPs： \/ /login.live.com </li><li> HTTPs： \/ /graph.windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com （選擇性） </li><li> HTTPs： \/ /www.live.com </li><li> HTTPs： \/ /www.microsoft.com </li></ul> | OVF 安裝程式需要存取這些額外的 Url。 它們是用於 Azure Active Directory 的存取控制和身分識別管理。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 以完成 MySQL 下載。 </br> 在幾個區域中，下載可能會重新導向至 CDN URL。 必要時，請確定 CDN URL 也會列入允許清單。
 |
 
@@ -76,7 +74,7 @@ MySQL | 應該安裝 MySQL。 您可以手動安裝，或者 Site Recovery 可�
 下表彙總組態伺服器的容量需求。 如果您要複寫多個 VMware Vm，請參閱[容量規劃考慮](../articles/site-recovery/site-recovery-plan-capacity-vmware.md)，並執行[Azure Site Recovery 部署規劃工具工具](../articles/site-recovery/site-recovery-deployment-planner.md)。
 
 
-**使用率** | **記憶體** | **快取磁片** | **資料變更率** | **複寫的機器**
+**CPU** | **記憶體** | **快取磁片** | **資料變更率** | **複寫的機器**
 --- | --- | --- | --- | ---
 8 個 vCPU<br/><br/> 2 個插槽 * 4 個核心 \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 或更少 | < 100 部機器
 12 個 vCPU<br/><br/> 2 個插槽 * 6 個核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 部機器

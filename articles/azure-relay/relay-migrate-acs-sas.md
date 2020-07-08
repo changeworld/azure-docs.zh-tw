@@ -1,24 +1,14 @@
 ---
 title: Azure 轉送-遷移至共用存取簽章授權
 description: 說明如何使用 Azure Active Directory 存取控制服務，將 Azure 轉送應用程式遷移至共用存取簽章授權。
-services: service-bus-relay
-documentationcenter: ''
-author: clemensv
-manager: timlt
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314312"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 轉送-從 Azure Active Directory 存取控制服務遷移至共用存取簽章授權
 

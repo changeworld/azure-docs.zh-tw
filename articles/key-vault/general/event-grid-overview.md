@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296333"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>使用 Azure 事件方格監視 Key Vault (預覽)
 
-Key Vault 與事件方格的整合目前為預覽狀態。 它可讓使用者在金鑰保存庫中儲存的祕密狀態變更時收到通知。 狀態變更定義為即將到期的祕密 (在到期日 30 天內)、已過期的祕密，或有新版本可用的祕密。 支援全部三種祕密類型 (金鑰、憑證和祕密) 的通知。
+Key Vault 與事件方格的整合目前為預覽狀態。 它可讓使用者在金鑰保存庫中儲存的祕密狀態變更時收到通知。 狀態變更會定義為即將到期的秘密（到期前30天）、已過期的密碼，或有新版本可用的密碼。 支援全部三種祕密類型 (金鑰、憑證和祕密) 的通知。
 
 應用程式可以使用新式無伺服器架構對這些事件做出回應，不需要複雜的程式碼或昂貴且效率不彰的輪詢服務。 透過 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)，將事件推送給事件處理常式，例如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)，甚至推送到您自己的Webhook，而且只有使用時，才須支付相關費用。 如需價格的資訊，請參閱[事件格線價格](https://azure.microsoft.com/pricing/details/event-grid/)。
 
@@ -42,7 +42,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Key Vault 概觀](overview.md))
+- [Azure Key Vault 總覽](overview.md)
 - [Azure 事件方格概觀](../../event-grid/overview.md)
 - 如何：[將 Key Vault 事件路由至自動化 Runbook （預覽）](event-grid-tutorial.md)。
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)

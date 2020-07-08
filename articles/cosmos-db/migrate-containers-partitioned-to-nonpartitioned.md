@@ -3,15 +3,15 @@ title: 將非資料分割的 Azure Cosmos 容器遷移至已分割的容器
 description: 瞭解如何將所有現有的非資料分割容器遷移至已分割的容器。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263478"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>將非資料分割的容器遷移至分割的容器
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 支援建立不含分割區索引鍵的容器。 目前，您可
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>使用系統定義的分割區索引鍵來遷移容器
 
-為了支援遷移，Azure Cosmos DB 在所有沒有分割區索引鍵的`/_partitionkey`容器上，提供名為的系統定義資料分割索引鍵。 遷移容器之後，您就無法變更分割區索引鍵定義。 例如，遷移至資料分割容器的容器定義如下所示：
+為了支援遷移，Azure Cosmos DB `/_partitionkey` 在所有沒有分割區索引鍵的容器上，提供名為的系統定義資料分割索引鍵。 遷移容器之後，您就無法變更分割區索引鍵定義。 例如，遷移至資料分割容器的容器定義如下所示：
 
 ```json
 {
@@ -38,7 +38,7 @@ Azure Cosmos DB 支援建立不含分割區索引鍵的容器。 目前，您可
 }
 ```
 
-遷移容器之後，您可以藉由擴展`_partitionKey`屬性和檔的其他屬性來建立檔。 `_partitionKey`屬性代表檔的資料分割索引鍵。
+遷移容器之後，您可以藉由擴展 `_partitionKey` 屬性和檔的其他屬性來建立檔。 `_partitionKey`屬性代表檔的資料分割索引鍵。
 
 選擇正確的分割區索引鍵，對於使用已布建的輸送量而言非常重要。 如需詳細資訊，請參閱[如何選擇分割區索引鍵一](partitioning-overview.md)文。
 
@@ -95,7 +95,7 @@ ItemResponse<DeviceInformationItem> readResponse =
                       
 ## <a name="migrate-the-documents"></a>遷移檔
 
-使用資料分割索引鍵屬性增強容器定義時，不會自動遷移容器內的檔。 這表示系統分割區索引鍵`/_partitionKey`屬性路徑不會自動新增至現有的檔。 若要重新分割現有的檔，您必須閱讀不含分割區索引鍵的檔，並以檔`_partitionKey`中的屬性重寫它們。
+使用資料分割索引鍵屬性增強容器定義時，不會自動遷移容器內的檔。 這表示系統分割區索引鍵屬性 `/_partitionKey` 路徑不會自動新增至現有的檔。 若要重新分割現有的檔，您必須閱讀不含分割區索引鍵的檔，並以檔中的屬性重寫它們 `_partitionKey` 。
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>存取沒有分割區索引鍵的檔
 
@@ -122,9 +122,9 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 **使用 V3 SDK 查詢不含分割區索引鍵的專案計數，可能需要較高的輸送量耗用量**
 
-如果您從 V3 SDK 針對使用 V2 SDK 所插入的專案進行查詢，或使用 V3 SDK 搭配`PartitionKey.None`參數插入的專案，則如果 FeedOptions 中提供`PartitionKey.None`參數，則 count 查詢可能會耗用更多 RU/秒。 如果沒有使用分割區索引鍵`PartitionKey.None`來插入其他專案，我們建議您不要提供參數。
+如果您從 V3 SDK 針對使用 V2 SDK 所插入的專案進行查詢，或使用 V3 SDK 搭配參數插入的專案 `PartitionKey.None` ，則如果 `PartitionKey.None` FeedOptions 中提供參數，則 count 查詢可能會耗用更多 RU/秒。 `PartitionKey.None`如果沒有使用分割區索引鍵來插入其他專案，我們建議您不要提供參數。
 
-如果使用不同的分割區索引鍵值來插入新的專案，在中`FeedOptions`傳遞適當的金鑰來查詢這類專案計數將不會有任何問題。 使用分割區索引鍵插入新檔之後，如果您只需要查詢檔計數而沒有分割區索引鍵值，則該查詢可能會再次產生與一般資料分割集合類似的 RU/秒。
+如果使用不同的分割區索引鍵值來插入新的專案，在中傳遞適當的金鑰來查詢這類專案計數 `FeedOptions` 將不會有任何問題。 使用分割區索引鍵插入新檔之後，如果您只需要查詢檔計數而沒有分割區索引鍵值，則該查詢可能會再次產生與一般資料分割集合類似的 RU/秒。
 
 ## <a name="next-steps"></a>後續步驟
 

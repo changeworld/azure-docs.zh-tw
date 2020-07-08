@@ -1,25 +1,14 @@
 ---
 title: Azure Windows Communication Foundation （WCF）轉送混合式內部部署/雲端應用程式（.NET） |Microsoft Docs
 description: 了解如何使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314409"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 
@@ -41,7 +30,7 @@ ms.locfileid: "83211589"
 > * 將 web 應用程式部署至 Azure。
 > * 在 Azure 上執行應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -86,15 +75,15 @@ ms.locfileid: "83211589"
 
 首先，您將建置模擬的內部部署產品目錄系統。  此專案是 Visual Studio 主控台應用程式，會使用 [Azure 服務匯流排 NuGet 套件](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)來納入服務匯流排程式庫和組態設定。 <a name="create-the-project"></a>
 
-1. 以系統管理員身分啟動 Microsoft Visual Studio。 若要這樣做，請以滑鼠右鍵按一下 Visual Studio 程式圖示，然後選取 [以系統管理員身分執行]****。
-1. 在 Visual Studio 中，選取 [建立新專案]****。
+1. 以系統管理員身分啟動 Microsoft Visual Studio。 若要這樣做，請以滑鼠右鍵按一下 Visual Studio 程式圖示，然後選取 [以系統管理員身分執行]。
+1. 在 Visual Studio 中，選取 [建立新專案]。
 1. 在 [**建立新專案**] 中，選取 c # 的**主控台應用程式（.NET Framework）** ，然後選取 **[下一步]**。
 1. 將專案命名為*ProductsServer* ，然後選取 [**建立**]。
 
    ![設定您的新專案][11]
 
 1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsServer**專案，然後選取 [**管理 NuGet 套件**]。
-1. 選取 [瀏覽]****，然後搜尋並選擇 **WindowsAzure.ServiceBus**。 選取 [安裝]**** 並接受使用條款。
+1. 選取 [瀏覽]，然後搜尋並選擇 **WindowsAzure.ServiceBus**。 選取 [安裝] 並接受使用條款。
 
    ![選取 NuGet 套件][13]
 
@@ -197,7 +186,7 @@ ms.locfileid: "83211589"
     }
     ```
 
-1. 在 [方案總管]**** 中按兩下 **App.config**，以在 Visual Studio 編輯器中開啟該檔案。 在元素的底部 `<system.ServiceModel>` ，但仍在內 `<system.ServiceModel>` ，新增下列 XML 程式碼。 請務必以 `yourServiceNamespace` 您的命名空間名稱取代，並以 `yourKey` 您先前從入口網站中抓取的 SAS 金鑰取代：
+1. 在 [方案總管] 中按兩下 **App.config**，以在 Visual Studio 編輯器中開啟該檔案。 在元素的底部 `<system.ServiceModel>` ，但仍在內 `<system.ServiceModel>` ，新增下列 XML 程式碼。 請務必以 `yourServiceNamespace` 您的命名空間名稱取代，並以 `yourKey` 您先前從入口網站中抓取的 SAS 金鑰取代：
 
     ```xml
     <system.serviceModel>
@@ -224,7 +213,7 @@ ms.locfileid: "83211589"
     > [!NOTE]
     > 造成的錯誤 `transportClientEndpointBehavior` 只是警告，不是此範例的封鎖問題。
 
-1. 仍然在*app.config*的元素中，將 `<appSettings>` 連接字串值取代為您先前從入口網站取得的連接字串。
+1. 仍然在*App.config*的元素中 `<appSettings>` ，將連接字串值取代為您先前從入口網站取得的連接字串。
 
     ```xml
     <appSettings>
@@ -243,7 +232,7 @@ ms.locfileid: "83211589"
 ### <a name="create-the-project"></a>建立專案
 
 1. 確定 Visual Studio 是以系統管理員身分執行。
-1. 在 Visual Studio 中，選取 [建立新專案]****。
+1. 在 Visual Studio 中，選取 [建立新專案]。
 1. 在 [**建立新專案**] 中，選取 c # 的**ASP.NET Web 應用程式（.NET Framework）** ，然後選取 **[下一步]**。
 1. 將專案命名為*ProductsPortal* ，然後選取 [**建立**]。
 1. 在 [**建立新的 ASP.NET Web 應用程式**] 中選擇 [ **MVC** ]，然後選取 [**驗證**] 底下的 [**變更**
@@ -453,7 +442,7 @@ ms.locfileid: "83211589"
 <a name="set-productsportal-as-web-app"></a>在雲端中執行應用程式之前，您必須確定**ProductsPortal**是以 web 應用程式的形式從 Visual Studio 中啟動。
 
 1. 在 Visual Studio 中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**屬性**]。
-1. 選取 [Web]  。 在 [**起始動作**] 下，選擇 [**開始 URL**]。 輸入您先前部署之 web 應用程式的 URL，在此範例中為 `https://productsportal20190906122808.azurewebsites.net/` 。
+1. 選取 [Web]。 在 [**起始動作**] 下，選擇 [**開始 URL**]。 輸入您先前部署之 web 應用程式的 URL，在此範例中為 `https://productsportal20190906122808.azurewebsites.net/` 。
 
     ![起始 URL][27]
 

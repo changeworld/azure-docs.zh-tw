@@ -1,23 +1,14 @@
 ---
 title: 平衡多個實例之間的分割區負載-Azure 事件中樞 |Microsoft Docs
 description: 描述如何使用事件處理器和 Azure 事件中樞 SDK，在應用程式的多個實例之間平衡分割區負載。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314994"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>平衡應用程式多個實例之間的分割區負載
 若要調整您的事件處理應用程式，您可以執行應用程式的多個實例，並讓它在負載之間取得平衡。 在較舊的版本中， [EventProcessorHost](event-hubs-event-processor-host.md)允許您在接收時，平衡程式的多個實例與檢查點事件之間的負載。 在較新的版本（5.0）中， **EventProcessorClient** （.Net 和 JAVA）或**EventHubConsumerClient** （Python 和 JavaScript）可讓您執行相同的動作。 使用事件可讓開發模型變得更簡單。 您可以藉由註冊事件處理常式來訂閱您感興趣的事件。
@@ -44,7 +35,7 @@ ms.locfileid: "82628856"
 
 ## <a name="event-processor-or-consumer-client"></a>事件處理器或取用者用戶端
 
-您不需要建立自己的解決方案，就能滿足這些需求。 Azure 事件中樞 Sdk 會提供這種功能。 在 .NET 或 JAVA Sdk 中，您可以使用事件處理器用戶端（EventProcessorClient），在 Python 和 JAVA 腳本 Sdk 中，您可以使用 EventHubConsumerClient。 在舊版的 SDK 中，它是支援這些功能的事件處理器主機（EventProcessorHost）。
+您不需要建立自己的解決方案，就能滿足這些需求。 Azure 事件中樞 Sdk 會提供這種功能。 在 .NET 或 JAVA Sdk 中，您可以使用事件處理器用戶端（EventProcessorClient），在 Python 和 JavaScript Sdk 中，您可以使用 EventHubConsumerClient。 在舊版的 SDK 中，它是支援這些功能的事件處理器主機（EventProcessorHost）。
 
 在大部分的生產環境案例中，我們建議您使用事件處理器用戶端來讀取和處理事件。 處理器用戶端的目的是提供健全的經驗，讓您以高效能且容錯的方式處理事件中樞所有分割區的事件，同時提供方法來檢查其進度。 事件處理器用戶端也能夠在指定事件中樞的取用者群組內容中，以合作方式運作。 當實例可供使用或無法供群組使用時，用戶端會自動管理工作的散發和平衡。
 
@@ -54,7 +45,7 @@ ms.locfileid: "82628856"
 
 藉由新增或更新檢查點存放區中的專案，為每個事件處理器提供唯一識別碼，並宣告資料分割的擁有權。 所有事件處理器實例會定期與此存放區進行通訊，以更新其本身的處理狀態，並瞭解其他作用中的實例。 然後，此資料會用來平衡使用中處理器之間的負載。 新的實例可以加入處理集區，以相應增加規模。 當實例因失敗或相應減少而停止時，分割區擁有權會正常地傳輸到其他使用中的處理器。
 
-「檢查點存放區」中的資料分割擁有權記錄會追蹤事件中樞的命名空間、事件中樞名稱、取用者群組、事件處理器識別碼（也稱為擁有者）、資料分割識別碼和上次修改時間。
+檢查點存放區中的資料分割擁有權記錄會追蹤事件中樞的命名空間、事件中樞名稱、取用者群組、事件處理器識別碼（也稱為擁有者）、資料分割識別碼和上次修改時間。
 
 
 
@@ -92,7 +83,7 @@ ms.locfileid: "82628856"
 
 ## <a name="thread-safety-and-processor-instances"></a>執行緒安全性和處理器執行個體
 
-根據預設，事件處理器或取用者都是安全線程，並以同步方式運作。 當事件抵達分割區時，會呼叫處理事件的函式。 後續的訊息和此函式的呼叫會在幕後進行，因為訊息提取會繼續在其他執行緒的背景中執行。 此執行緒安全性不需要安全執行緒集合，並可大幅提升效能。
+根據預設，會針對指定的資料分割，順序呼叫處理事件的函式。 後續事件，並從相同的分割區佇列呼叫此函式，因為事件抽取會繼續在其他執行緒的背景中執行。 請注意，來自不同分割區的事件可以同時處理，而且跨分割區存取的任何共用狀態都必須同步。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列快速入門：

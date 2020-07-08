@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316071"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者
 
-Azure Cache for Redis 提供工作階段狀態提供者，可讓您用來將記憶體內部工作階段狀態儲存在 Azure Cache for Redis 中，而不是 SQL Server 資料庫中。 若要使用快取工作階段狀態提供者，請先設定快取，再使用「Azure Cache for Redis 工作階段狀態 NuGet 套件」設定 ASP.NET 應用程式的快取。
+Azure Cache for Redis 提供工作階段狀態提供者，可讓您用來將記憶體內部工作階段狀態儲存在 Azure Cache for Redis 中，而不是 SQL Server 資料庫中。 若要使用快取工作階段狀態提供者，請先設定快取，再使用「Azure Cache for Redis 工作階段狀態 NuGet 套件」設定 ASP.NET 應用程式的快取。 如需 ASP.NET Core 應用程式，請參閱[ASP.NET Core 中的會話和狀態管理](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)。
 
 在實際的雲端應用程式中，避免儲存使用者工作階段某種形式的狀態通常並非理想做法，但某些方法會比其他方法更加影響效能和延展性。 如果您需要儲存狀態，最好的方法是將狀態的數量控制得較低，並將其儲存在 Cookie 中。 如果此方法不可行，次佳的方法是使用 ASP.NET 工作階段狀態搭配提供者，進行分散式的記憶體中快取。 從效能和延展性的觀點來看，最差的解決方法是使用資料庫備份的工作階段狀態提供者。 本主題提供使用 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者的指引。 如需其他工作階段狀態選項的相關資訊，請參閱 [ASP.NET 工作階段狀態選項](#aspnet-session-state-options)。
 
@@ -94,7 +94,7 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 * **operationTimeoutInMilliseconds** – 此設定可讓您覆寫 StackExchange.Redis 用戶端中的 syncTimeout 設定。 若未指定，將會使用預設的 syncTimeout 設定為 1000。 如需詳細資訊，請參閱 [StackExchange.Redis 設定模型](https://go.microsoft.com/fwlink/?LinkId=398705)(英文)。
 * **redisSerializerType** - 此設定可讓您為傳送到 Redis 的工作階段內容指定自訂序列化。 指定的類型必須實作 `Microsoft.Web.Redis.ISerializer` 且必須宣告公用無參數建構函式。 預設會使用 `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter`。
 
-如需這些屬性的相關詳細資訊，請參閱 [發佈 Redis 的 ASP.NET 工作階段狀態提供者](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)(英文) 上的原始部落格文章公告。
+如需這些屬性的相關詳細資訊，請參閱 [發佈 Redis 的 ASP.NET 工作階段狀態提供者](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)(英文) 上的原始部落格文章公告。
 
 別忘記備註您 web.config 中的標準 InProc 工作階段狀態提供者區段。
 

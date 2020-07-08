@@ -1,23 +1,14 @@
 ---
 title: Azure 事件中樞 Resource Manager 例外狀況 |Microsoft Docs
 description: Azure Resource Manager 和建議的動作所呈現的 Azure 事件中樞例外狀況清單。
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/08/2019
-ms.author: spelluru
-ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74936083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312520"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中樞 Resource Manager 例外狀況
 本文列出使用 Azure Resource Manager 的範本或直接呼叫來與 Azure 事件中樞互動時所產生的例外狀況。

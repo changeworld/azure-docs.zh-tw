@@ -1,24 +1,14 @@
 ---
 title: Azure 事件中樞-例外狀況
 description: 本文提供 Azure 事件中樞傳訊例外狀況和建議的動作清單。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314618"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>事件中樞訊息例外狀況-.NET
 本節列出 .NET Framework Api 所產生的 .NET 例外狀況。 

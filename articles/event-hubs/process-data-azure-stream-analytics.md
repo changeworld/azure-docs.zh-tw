@@ -1,19 +1,14 @@
 ---
 title: 使用串流分析從事件中樞 Azure 處理資料 |Microsoft Docs
 description: 本文說明如何使用 Azure 串流分析工作處理來自 Azure 事件中樞的資料。
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 07/09/2019
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69991937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312898"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>使用 Azure 串流分析處理來自事件中樞的資料 
 Azure 串流分析服務可讓您輕鬆地從 Azure 事件中樞內嵌、處理和分析串流資料，並提供強大的深入解析來驅動即時動作。 此整合可讓您快速建立熱路徑分析管線。 您可以使用 Azure 入口網站將傳入的資料視覺化，並撰寫串流分析的查詢。 準備好您的查詢之後，只要按幾下滑鼠就可以將它移到生產環境中。 
@@ -49,7 +44,7 @@ Azure 串流分析服務可讓您輕鬆地從 Azure 事件中樞內嵌、處理�
     - 您可以預覽資料表格式或原始格式的傳入資料。 
     - 如果顯示的資料不是最新的，**請選取 [** 重新整理] 以查看最新的事件。 
 
-        以下是**資料表格式**的資料範例： ![產生資料表格式](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        以下是**資料表格式**的資料範例： ![ 產生資料表格式](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         以下是**原始格式**的資料範例： 
 

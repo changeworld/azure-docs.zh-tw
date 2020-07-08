@@ -1,24 +1,14 @@
 ---
 title: 可用性和一致性 - Azure 事件中樞 | Microsoft Docs
 description: 如何使用分割區，以便透過 Azure 事件中樞提供最大數量的可用性和一致性。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/27/2020
-ms.author: shvija
-ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315772"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
@@ -49,7 +39,7 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 針對需要最長運作時間的使用案例，建議使用此模型。
 
 ## <a name="consistency"></a>一致性
-在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在此情況下，您可以在事件上設定分割區索引鍵，或使用`PartitionSender`物件（如果您使用的是舊的 Microsoft. Azure 訊息程式庫），只將事件傳送到特定的分割區。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 如果您使用**EventHubs**程式庫並取得詳細資訊，請參閱將[程式碼從 PartitionSender 遷移至 EventHubProducerClient，以將事件發行至分割](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)區。
+在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在此情況下，您可以在事件上設定分割區索引鍵，或使用 `PartitionSender` 物件（如果您使用的是舊的 Microsoft. Azure 訊息程式庫），只將事件傳送到特定的分割區。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 如果您使用**EventHubs**程式庫並取得詳細資訊，請參閱將[程式碼從 PartitionSender 遷移至 EventHubProducerClient，以將事件發行至分割](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)區。
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs （5.0.0 或更新版本）](#tab/latest)
 

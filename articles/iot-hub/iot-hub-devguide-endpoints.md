@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314041"
 ---
 # <a name="reference---iot-hub-endpoints"></a>參考 - IoT 中樞端點
 
@@ -38,23 +38,21 @@ Azure IoT 中樞是一項多租用戶服務，可將其功能公開給各種動�
 
 * **裝置身分識別管理**。 每個 IoT 中樞都會公開一組 HTTPS REST 端點，用來管理裝置身分識別 (建立、擷取、更新和刪除)。 [裝置](iot-hub-devguide-identity-registry.md)身分識別用於裝置驗證和存取控制。
 
-* **裝置對應項管理**。 每個 IoT 中樞都會公開一組面向服務的 HTTPS REST 端點，用來查詢和更新[裝置對應項](iot-hub-devguide-device-twins.md) (更新標籤和屬性)。
+* **裝置對應項管理**。 每個 IoT 中樞都會公開一組面向服務的 HTTPS REST 端點，用來查詢和更新[裝置對應項](iot-hub-devguide-device-twins.md) (更新標籤和屬性)。 
 
 * **作業管理**。 每個 IoT 中樞都會公開一組面向服務的 HTTPS REST 端點，用來查詢和管理[作業](iot-hub-devguide-jobs.md)。
 
-* **裝置端點**。 針對身分識別登錄中的每個裝置，IoT 中樞會公開一組端點：
+* **裝置端點**。 針對身分識別登錄中的每個裝置，IoT 中樞會公開一組端點。 除非另有注明，否則這些端點會使用[MQTT v 3.1.1](https://mqtt.org/)、HTTPS 1.1 和[AMQP 1.0](https://www.amqp.org/)通訊協定來公開。 埠443上的[websocket](https://tools.ietf.org/html/rfc6455)也提供 AMQP 和 MQTT。
 
   * *傳送裝置到雲端的訊息*。 裝置會使用這個端點來[傳送裝置到雲端的訊息](iot-hub-devguide-messages-d2c.md)。
 
-  * 接收雲端到裝置的訊息**。 裝置會使用此端點來接收目標[雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。
+  * *接收雲端到裝置訊息*。 裝置會使用此端點來接收目標[雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。
 
   * *起始檔案上傳*。 裝置會使用此端點來接收來自 IoT 中樞的 Azure 儲存體 SAS URI，以[上傳](iot-hub-devguide-file-upload.md)檔案。
 
-  * *擷取和更新裝置對應項的屬性*。 裝置使用此端點來存取其[裝置對應項](iot-hub-devguide-device-twins.md)的屬性。
+  * *擷取和更新裝置對應項的屬性*。 裝置使用此端點來存取其[裝置對應項](iot-hub-devguide-device-twins.md)的屬性。 不支援 HTTPS。
 
-  * *接收直接方法要求*。 裝置使用此端點來接聽[直接方法](iot-hub-devguide-direct-methods.md)的要求。
-
-    公開這些端點時，是使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 及 [AMQP 1.0](https://www.amqp.org/) 通訊協定來公開。 埠443上的[websocket](https://tools.ietf.org/html/rfc6455)也提供 AMQP 和 MQTT。
+  * *接收直接方法要求*。 裝置使用此端點來接聽[直接方法](iot-hub-devguide-direct-methods.md)的要求。 不支援 HTTPS。
 
 * **服務端點**。 每個 IoT 中樞都會公開一組端點，供您的解決方案後端用來與您的裝置通訊。 有一個例外狀況，這些端點只會使用[AMQP](https://www.amqp.org/)和 AMQP over websocket 通訊協定來公開。 直接方法調用端點會透過 HTTPS 通訊協定來公開。
   
@@ -85,14 +83,9 @@ IoT 中樞目前支援下列 Azure 服務做為額外的端點︰
 
 如需您可以新增的端點數目限制，請參閱[配額和節流](iot-hub-devguide-quotas-throttling.md)。
 
-您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的健全狀況狀態。 我們建議使用與路由訊息延遲相關的[IoT 中樞計量](iot-hub-metrics.md)，在端點健康狀態為 [無作用] 或 [狀況不良] 時識別和偵測錯誤，因為當端點處於其中一種狀態時，我們預期會有更高的延遲。
+## <a name="endpoint-health"></a>端點健全狀況
 
-|健康情況狀態|描述|
-|---|---|
-|healthy|端點會如預期般接受訊息。|
-|isapi|端點不會如預期般接受訊息，IoT 中樞會重試將資料傳送到此端點。 當 IoT 中樞已建立最終一致的健全狀況狀態時，狀態不良的端點就會更新為狀況良好。|
-|未知|IoT 中樞尚未與端點建立連接。 未將任何訊息傳遞至此端點或從中拒絕。|
-|損|在 IoT 中樞重試傳送 retrial 期間的訊息之後，端點不接受訊息。|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>現場閘道器
 

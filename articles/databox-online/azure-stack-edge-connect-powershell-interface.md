@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ee69015b52024ba4edaaa414a0d9dda753510b3e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85313193"
 ---
 # <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge 裝置
 
@@ -71,7 +71,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 如果您的裝置上已設定計算角色，您也可以透過 PowerShell 介面取得計算記錄。
 
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Get-AzureDataBoxEdgeComputeRoleLogs`來取得裝置的計算記錄。
+2. 使用 `Get-AzureDataBoxEdgeComputeRoleLogs` 來取得裝置的計算記錄。
 
     下列範例顯示此 Cmdlet 的使用方式：
 
@@ -86,7 +86,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>監視和疑難排解計算模組
 
-[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/azure-stack-edge-monitor-troubleshoot-compute.md)]
 
 ## <a name="exit-the-remote-session"></a>結束遠端會話
 

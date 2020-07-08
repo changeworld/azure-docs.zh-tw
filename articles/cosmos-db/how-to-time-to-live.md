@@ -3,15 +3,15 @@ title: 設定和管理 Azure Cosmos DB 中的存留時間
 description: 瞭解如何設定和管理容器中的存留時間和 Azure Cosmos DB 中的專案
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263617"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
 
@@ -29,12 +29,12 @@ ms.locfileid: "83124120"
 
 4. 選取現有容器，加以展開並修改下列值：
 
-   * 開啟 [規模與設定]**** 視窗。
+   * 開啟 [規模與設定] 視窗。
    * 在 [設定]**** 底下，尋找 [存留時間]****。
-   * 選取 [開啟 (無預設值)]****，或選取 [開啟]**** 並設定 TTL 值
-   * 按一下 **[儲存]**，儲存變更。
+   * 選取 [開啟 (無預設值)]，或選取 [開啟] 並設定 TTL 值
+   * 按一下 [儲存]  儲存變更。
 
-   ![在 Azure 入口網站中設定存留時間](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="在 Azure 入口網站中設定存留時間":::
 
 * 當 DefaultTimeToLive 為 null 時，存留時間會關閉
 * 當 DefaultTimeToLive 為 -1 時，存留時間會開啟 (無預設值)
@@ -53,7 +53,7 @@ ms.locfileid: "83124120"
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK V2 （Microsoft. Azure DocumentDB）
+.NET SDK V2 （Microsoft.Azure.DocumentDB）
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -86,7 +86,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 CosmosAsyncContainer container;
@@ -119,7 +119,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK V2 （Microsoft. Azure DocumentDB）
+.NET SDK V2 （Microsoft.Azure.DocumentDB）
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -152,7 +152,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 CosmosAsyncContainer container;
@@ -213,10 +213,10 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 4. 選取現有容器，加以展開並修改下列值：
 
-   * 開啟 [規模與設定]**** 視窗。
+   * 開啟 [規模與設定] 視窗。
    * 在 [設定]**** 底下，尋找 [存留時間]****。
    * 選取 **[開啟（無預設）** ]，或選取 [**開啟**] 並設定 TTL 值。 
-   * 按一下 **[儲存]**，儲存變更。
+   * 按一下 [儲存]  儲存變更。
 
 5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]****。 
 
@@ -272,7 +272,7 @@ const itemDefinition = {
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -353,7 +353,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK V2 （Microsoft. Azure DocumentDB）
+.NET SDK V2 （Microsoft.Azure.DocumentDB）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -385,7 +385,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -427,7 +427,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK V2 （Microsoft. Azure DocumentDB）
+.NET SDK V2 （Microsoft.Azure.DocumentDB）
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -460,7 +460,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -502,7 +502,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK V2 （Microsoft. Azure DocumentDB）
+.NET SDK V2 （Microsoft.Azure.DocumentDB）
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -529,7 +529,7 @@ await client.GetContainer("database", "container").ReplaceContainerAsync(contain
 
 # <a name="java-sdk-v4"></a>[JAVA SDK V4](#tab/javav4)
 
-JAVA SDK V4 （Maven com）。 azure：： azure-cosmos）
+Java SDK V4 (Maven com.azure::azure-cosmos)
 
 ```java
 CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");

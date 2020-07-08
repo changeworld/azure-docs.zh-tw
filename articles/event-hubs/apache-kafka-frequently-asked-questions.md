@@ -1,23 +1,14 @@
 ---
 title: 常見問題-適用于 Apache Kafka 的 Azure 事件中樞
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 066024f657e011aac1449106ec32689f145c5534
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314186"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>常見問題-適用于 Apache Kafka 的事件中樞 
 本文提供一些關於遷移至 Apache Kafka 事件中樞常見問題的解答。
@@ -39,7 +30,7 @@ ms.locfileid: "81606739"
 
 - 它們是由的。  您可以透過 Kafka 取用者群組 Api 來管理 Kafka 群組。
 - 他們可以在事件中樞服務中儲存位移。
-- 在有效的位移索引鍵/值存放區中，會使用它們做為索引鍵。 針對一組唯一的`group.id`和`topic-partition`，我們會在 Azure 儲存體（3倍複寫）中儲存位移。 事件中樞使用者不會因為儲存 Kafka 位移而產生額外的儲存成本。 位移會透過 Kafka 取用者群組 Api 來 manipulable，但不會直接顯示或 manipulable 事件中樞使用者的位移儲存體*帳戶*。  
+- 在有效的位移索引鍵/值存放區中，會使用它們做為索引鍵。 針對一組唯一的 `group.id` 和 `topic-partition` ，我們會在 Azure 儲存體（3倍複寫）中儲存位移。 事件中樞使用者不會因為儲存 Kafka 位移而產生額外的儲存成本。 位移會透過 Kafka 取用者群組 Api 來 manipulable，但不會直接顯示或 manipulable 事件中樞使用者的位移儲存體*帳戶*。  
 - 它們會跨越命名空間。 針對多個主題的多個應用程式使用相同的 Kafka 組名，表示每當只有單一應用程式需要重新平衡時，就會重新平衡所有應用程式及其 Kafka 用戶端。  明智地選擇您的組名。
 - 它們完全有別于事件中樞取用者群組。 您**不**需要使用 ' $Default '，也不需要擔心干擾 AMQP 工作負載的 Kafka 用戶端。
 - 它們無法在 Azure 入口網站中看到。 取用者群組資訊可透過 Kafka Api 存取。
@@ -50,5 +41,5 @@ ms.locfileid: "81606739"
 - [適用于事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
 - [適用于事件中樞的 Apache Kafka 遷移指南](apache-kafka-migration-guide.md)
 - [適用于事件中樞的 Apache Kafka 疑難排解指南](apache-kafka-troubleshooting-guide.md)
-- [建議的設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [建議設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
 
