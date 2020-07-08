@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: peterpfr
 ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80999029"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教學課程：使用裝置群組來分析裝置遙測
@@ -27,7 +26,7 @@ ms.locfileid: "80999029"
 > * 建立裝置群組
 > * 使用裝置群組來分析裝置遙測
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-simulated-device.md) (英文) 的快速入門，以便建立要使用的 **MXChip IoT DevKit** 裝置範本。
 
@@ -47,7 +46,7 @@ ms.locfileid: "80999029"
 
 1. 選擇左窗格中的 [**裝置群組**]。
 
-1. 選取**+**：
+1. 選取 **+** ：
 
     ![新增裝置群組](media/tutorial-use-device-groups/image1.png)
 
@@ -60,7 +59,7 @@ ms.locfileid: "80999029"
     > [!TIP]
     > 裝置群組是動態查詢。 您每次檢視裝置清單時所看到的裝置可能會不同。 清單內容取決於哪些裝置目前符合查詢準則。
 
-1. 選擇 [儲存]  。
+1. 選擇 [儲存]。
 
 > [!NOTE]
 > 針對 Azure IoT Edge 裝置，請選取 [Azure IoT Edge 範本] 來建立裝置群組。

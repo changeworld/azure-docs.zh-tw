@@ -13,10 +13,9 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881072"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>如何：針對 iOS 和 macOS TLS/SSL 問題的 MSAL 進行疑難排解
@@ -27,7 +26,7 @@ ms.locfileid: "80881072"
 
 **錯誤-1200**：「發生 SSL 錯誤，無法建立與伺服器的安全連線。」
 
-此錯誤表示連接不安全。 當憑證無效時，就會發生此錯誤。 如需詳細資訊，包括哪些伺服器對 TLS 檢查失敗，請參閱`NSURLErrorFailingURLErrorKey`錯誤物件`userInfo`字典中的。
+此錯誤表示連接不安全。 當憑證無效時，就會發生此錯誤。 如需詳細資訊，包括哪些伺服器對 TLS 檢查失敗，請參閱 `NSURLErrorFailingURLErrorKey` `userInfo` 錯誤物件字典中的。
 
 此錯誤來自 Apple 的網路程式庫。 NSURL 錯誤碼的完整清單位於 macOS 和 iOS Sdk 的 NSURLError 中。 如需有關此錯誤的詳細資訊，請參閱[URL 載入系統錯誤碼](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)。
 

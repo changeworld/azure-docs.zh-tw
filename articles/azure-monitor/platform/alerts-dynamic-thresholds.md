@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261069"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure 監視器中具有動態閾值的計量警示
@@ -127,7 +126,7 @@ ms.locfileid: "81261069"
 
 8. 計量圖表會顯示以最近資料為基礎的計算臨界值。
 
-9. 按一下 [完成]  。
+9. 按一下 [完成] 。
 
 10. 填寫 [警示詳細資料]****，例如 [警示規則名稱]****、[描述]**** 及 [嚴重性]****。
 
@@ -162,7 +161,7 @@ ms.locfileid: "81261069"
 
 8. 計量圖表會顯示以最近資料為基礎的計算臨界值。
 
-9. 按一下 [完成]  。
+9. 按一下 [完成] 。
 
 10. 填寫 [警示詳細資料]****，例如 [警示規則名稱]****、[描述]**** 及 [嚴重性]****。
 

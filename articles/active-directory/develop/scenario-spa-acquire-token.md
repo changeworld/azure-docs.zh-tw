@@ -12,15 +12,14 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882313"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>單一頁面應用程式：取得權杖以呼叫 API
 
-使用 MSAL 來取得 Api 的權杖的模式，是先使用`acquireTokenSilent`方法來嘗試無訊息權杖要求。 呼叫這個方法時，程式庫會先檢查瀏覽器儲存體中的快取，以查看有效的權杖是否存在，並將其傳回。 當快取中沒有有效的權杖時，它會將無訊息 token 要求傳送至隱藏的 iframe Azure Active Directory （Azure AD）。 此方法也可讓程式庫更新權杖。 如需 Azure AD 中的單一登入會話和權杖存留期值的詳細資訊，請參閱[權杖存留期](active-directory-configurable-token-lifetimes.md)。
+使用 MSAL.js 來取得 Api 之權杖的模式，是先使用方法來嘗試無訊息權杖要求 `acquireTokenSilent` 。 呼叫這個方法時，程式庫會先檢查瀏覽器儲存體中的快取，以查看有效的權杖是否存在，並將其傳回。 當快取中沒有有效的權杖時，它會將無訊息 token 要求傳送至隱藏的 iframe Azure Active Directory （Azure AD）。 此方法也可讓程式庫更新權杖。 如需 Azure AD 中的單一登入會話和權杖存留期值的詳細資訊，請參閱[權杖存留期](active-directory-configurable-token-lifetimes.md)。
 
 Azure AD 的無訊息 token 要求可能會因為 Azure AD 會話或密碼變更過期之類的原因而失敗。 在這種情況下，您可以叫用其中一個互動式方法（這會提示使用者）取得權杖：
 
@@ -70,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 MSAL 角度包裝函式會提供 HTTP 攔截器，這會自動以無訊息方式取得存取權杖，並將其附加至 Api 的 HTTP 要求。
 
-您可以在 [ `protectedResourceMap`設定] 選項中指定 api 的範圍。 `MsalInterceptor`會在自動取得權杖時要求這些範圍。
+您可以在 [設定] 選項中指定 Api 的範圍 `protectedResourceMap` 。 `MsalInterceptor`會在自動取得權杖時要求這些範圍。
 
 ```javascript
 // app.module.ts
@@ -126,7 +125,7 @@ ngOnDestroy() {
  }
 ```
 
-或者，您可以使用 MSAL core 程式庫中所述的取得權杖方法來明確取得權杖。
+或者，您可以使用核心 MSAL.js 程式庫中所述的取得權杖方法來明確取得權杖。
 
 ---
 
@@ -168,7 +167,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 - 變更 Azure AD 在權杖中傳回之特定宣告的行為。
 - 新增和存取應用程式的自訂宣告。
 
-若要在中`IdToken`要求選擇性宣告，您可以將 stringified 宣告物件傳送`claimsRequest`至`AuthenticationParameters.ts`類別的欄位。
+若要在中要求選擇性宣告 `IdToken` ，您可以將 stringified 宣告物件傳送至 `claimsRequest` 類別的欄位 `AuthenticationParameters.ts` 。
 
 ```javascript
 "optionalClaims":

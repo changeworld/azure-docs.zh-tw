@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881243"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上設定 SSO
@@ -78,7 +77,7 @@ App3 重新導向 URI： `msauth.com.contoso.mytestapp3://auth`
 
 請參閱 Apple 的[新增功能](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)文章，以啟用 keychain 共用。 重要的是，您決定要呼叫 keychain 的內容，並將該功能新增至所有將包含在 SSO 中的應用程式。
 
-當您正確設定權利時，您會在專案目錄中`entitlements.plist`看到一個檔案，其中包含如下列範例所示的內容：
+當您正確設定權利時，您會 `entitlements.plist` 在專案目錄中看到一個檔案，其中包含如下列範例所示的內容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -106,7 +105,7 @@ App3 重新導向 URI： `msauth.com.contoso.mytestapp3://auth`
 
 ## <a name="configure-the-application-object"></a>設定應用程式物件
 
-一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請`MSALPublicClientApplication`使用您的 keychain 存取群組進行設定，如下列範例所示：
+一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請 `MSALPublicClientApplication` 使用您的 keychain 存取群組進行設定，如下列範例所示：
 
 Objective-C：
 
@@ -137,7 +136,7 @@ do {
 > 如果您的應用程式依賴權杖來執行背景工作，這就特別影響力。
 > 共用 keychain 表示當您的應用程式使用 Microsoft 身分識別 SDK 移除作業時，您必須非常小心。
 
-這樣就完成了！ Microsoft 身分識別 SDK 現在將會在您所有的應用程式之間共用認證。 帳戶清單也會在應用程式實例之間共用。
+就這麼簡單！ Microsoft 身分識別 SDK 現在將會在您所有的應用程式之間共用認證。 帳戶清單也會在應用程式實例之間共用。
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>透過 iOS 上的驗證代理程式進行 SSO
 
@@ -145,7 +144,7 @@ MSAL 可支援 Microsoft Authenticator 的代理驗證。 Microsoft Authenticato
 
 下列步驟說明如何使用您應用程式的驗證代理人來啟用 SSO：
 
-1. 在應用程式的資訊中，為應用程式註冊 broker 相容的重新導向 URI 格式。 plist。 Broker 相容的重新導向 URI 格式`msauth.<app.bundle.id>://auth`為。 以您應用程式的套件組合識別碼取代 '<app.bundle.id>' '。 例如：
+1. 在應用程式的資訊中，為應用程式註冊 broker 相容的重新導向 URI 格式。 plist。 Broker 相容的重新導向 URI 格式為 `msauth.<app.bundle.id>://auth` 。 以您應用程式的套件組合識別碼取代 '<app.bundle.id>' '。 例如：
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +153,7 @@ MSAL 可支援 Microsoft Authenticator 的代理驗證。 Microsoft Authenticato
     </array>
     ```
 
-1. 將下列配置新增至您應用程式的資訊。 `LSApplicationQueriesSchemes`plist：
+1. 將下列配置新增至您應用程式的資訊。 plist `LSApplicationQueriesSchemes` ：
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,7 +163,7 @@ MSAL 可支援 Microsoft Authenticator 的代理驗證。 Microsoft Authenticato
     </array>
     ```
 
-1. 將下列內容新增至`AppDelegate.m`您的檔案以處理回呼：
+1. 將下列內容新增至您的檔案 `AppDelegate.m` 以處理回呼：
 
     Objective-C：
     
@@ -183,7 +182,7 @@ MSAL 可支援 Microsoft Authenticator 的代理驗證。 Microsoft Authenticato
     }
     ```
     
-**如果您使用的是 Xcode 11**，則應該改為將 MSAL `SceneDelegate`回呼放入檔案中。
+**如果您使用的是 Xcode 11**，則應該改為將 MSAL 回呼放入檔案中 `SceneDelegate` 。
 如果您同時支援 UISceneDelegate 和 UIApplicationDelegate 以便與舊版 iOS 相容，則必須將 MSAL 回呼放入這兩個檔案。
 
 Objective-C：

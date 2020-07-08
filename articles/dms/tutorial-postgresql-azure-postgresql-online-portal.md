@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
 ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114009"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站，使用 DMS 將于 postgresql 遷移至 Azure DB for 于 postgresql online
@@ -165,11 +164,11 @@ ms.locfileid: "81114009"
 
    ![顯示入口網站訂用帳戶](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
 
-2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]****。
+2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]。
 
     ![顯示資源提供者](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
 
@@ -228,7 +227,7 @@ ms.locfileid: "81114009"
 
     ![新增來源詳細資料畫面](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
-2. 選取 [儲存]  。
+2. 選取 [儲存]。
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 

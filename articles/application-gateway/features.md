@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80810242"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 應用程式閘道功能
@@ -24,7 +23,7 @@ ms.locfileid: "80810242"
 
 - [安全通訊端層 (SSL/TLS) 終止](#secure-sockets-layer-ssltls-termination)
 - [自動調整](#autoscaling)
-- [區域冗余](#zone-redundancy)
+- [區域備援](#zone-redundancy)
 - [靜態 VIP](#static-vip)
 - [Web 應用程式防火牆](#web-application-firewall)
 - [AKS 的輸入控制器](#ingress-controller-for-aks)
@@ -153,7 +152,7 @@ Application Gateway 支援在要求及回應封包於用戶端與後端應用程
 
 下表顯示每個應用程式閘道 v1 執行個體，在啟用 SSL 卸載時的平均效能輸送量：
 
-| 平均後端頁面回應大小 | 小型 | 中 | 大型 |
+| 平均後端頁面回應大小 | 小 | 中 | 大 |
 | --- | --- | --- | --- |
 | 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |

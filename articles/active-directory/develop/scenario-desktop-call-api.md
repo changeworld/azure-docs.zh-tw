@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882959"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web Api 的桌面應用程式：呼叫 Web API
@@ -64,7 +63,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>針對 iOS 和 macOS 呼叫 MSAL 中的 Web API
 
-取得權杖的方法會傳回`MSALResult`物件。 `MSALResult`公開可`accessToken`用於呼叫 Web API 的屬性。 在您進行呼叫以存取受保護的 Web API 之前，請先將存取權杖新增至 HTTP 授權標頭。
+用來取得權杖的方法會傳回 `MSALResult` 物件。 `MSALResult`公開 `accessToken` 可用於呼叫 Web API 的屬性。 在您進行呼叫以存取受保護的 Web API 之前，請先將存取權杖新增至 HTTP 授權標頭。
 
 Objective-C：
 
@@ -94,7 +93,7 @@ task.resume()
 
 ## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>呼叫數個 Api：累加同意和條件式存取
 
-若要為相同的使用者呼叫數個 Api，在您取得第一個 API 的權杖之後`AcquireTokenSilent`，請呼叫。 您會在大部分的時間內，以無訊息方式取得其他 Api 的權杖。
+若要為相同的使用者呼叫數個 Api，在您取得第一個 API 的權杖之後，請呼叫 `AcquireTokenSilent` 。 您會在大部分的時間內，以無訊息方式取得其他 Api 的權杖。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -104,9 +103,9 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-下列情況需要互動：
+下列情況時需要互動：
 
-- 使用者同意第一個 API，但現在需要同意更多的範圍。 這種同意稱為「累加式同意」。
+- 使用者已同意第一個 API，但現在需要同意更多範圍。 這種同意稱為「累加式同意」。
 - 第一個 API 不需要多重要素驗證，但下一個則會執行。
 
 ```csharp
@@ -130,4 +129,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移動至生產環境](scenario-desktop-production.md)
+> [移至生產環境](scenario-desktop-production.md)

@@ -14,10 +14,9 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80982577"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式（預覽）
@@ -40,7 +39,7 @@ ms.locfileid: "80982577"
 - 為所有支援 Apple 的「企業單一登入」功能的應用程式提供 Azure AD 帳戶的 SSO。
 - 會在 Microsoft Authenticator 中自動傳遞，並可由任何行動裝置管理（MDM）解決方案啟用。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 若要使用適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式：
 

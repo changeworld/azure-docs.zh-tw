@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884863"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>針對 Azure 至 Azure VM 網路連線問題進行疑難排解
@@ -20,7 +19,7 @@ ms.locfileid: "80884863"
 
 | URL | 詳細資料 |
 |---|---|
-| `*.blob.core.windows.net` | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 Vm 的所有快取儲存體帳戶，您可以使用特定儲存體帳戶 Url 的允許清單。 例如，和`cache1.blob.core.windows.net` `cache2.blob.core.windows.net` ，而不`*.blob.core.windows.net`是。 |
+| `*.blob.core.windows.net` | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 Vm 的所有快取儲存體帳戶，您可以使用特定儲存體帳戶 Url 的允許清單。 例如， `cache1.blob.core.windows.net` 和， `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net` 。 |
 | `login.microsoftonline.com` | 需要此項目方可進行 Site Recovery 服務 URL 的授權和驗證。 |
 | `*.hypervrecoverymanager.windowsazure.com` | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。 如果您的防火牆 proxy 支援 ip，您可以使用對應的_SITE RECOVERY IP_ 。 |
 | `*.servicebus.windows.net` | 需要此項目方可從 VM 寫入 Site Recovery 監視和診斷資料。 如果您的防火牆 proxy 支援 ip，您可以使用對應的_Site Recovery 監視 IP_ 。 |
@@ -51,7 +50,7 @@ ms.locfileid: "80884863"
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2：Site Recovery 設定失敗 (151196)
 
 > [!NOTE]
-> 如果 Vm 位於**標準**內部負載平衡器後方，則根據預設，它無法存取 Office 365 ip，例如`login.microsoftonline.com`。 將它變更為 [**基本**內部負載平衡器類型] 或 [建立輸出存取]，如[使用 Azure CLI 在 Standard Load Balancer 中設定負載平衡和輸出規則](/azure/load-balancer/configure-load-balancer-outbound-cli)一文所述。
+> 如果 Vm 位於**標準**內部負載平衡器後方，則根據預設，它無法存取 Office 365 ip，例如 `login.microsoftonline.com` 。 將它變更為 [**基本**內部負載平衡器類型] 或 [建立輸出存取]，如[使用 Azure CLI 在 Standard Load Balancer 中設定負載平衡和輸出規則](/azure/load-balancer/configure-load-balancer-outbound-cli)一文所述。
 
 #### <a name="possible-cause"></a>可能的原因
 
@@ -124,7 +123,7 @@ ms.locfileid: "80884863"
 
 #### <a name="resolution"></a>解決方案
 
-1. 行動服務代理程式會從 Windows 和`/etc/environment` Linux 上的 IE 偵測 proxy 設定。
+1. 行動服務代理程式會從 Windows 和 Linux 上的 IE 偵測 proxy 設定 `/etc/environment` 。
 1. 如果您只想要為 Azure Site Recovery 行動服務設定 proxy，您可以在_proxyinfo.conf_中提供 proxy 詳細資料，其位於：
 
    - **Linux**：`/usr/local/InMage/config/`

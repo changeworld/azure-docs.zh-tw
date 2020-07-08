@@ -4,10 +4,9 @@ description: Azure Service Fabric 可讓您針對在容器內部或外部執行�
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115135"
 ---
 # <a name="resource-governance"></a>資源管理
@@ -23,7 +22,7 @@ Service Fabric 可依[服務套件](service-fabric-application-model.md)支援�
 
 * *CPU* (計量名稱 `servicefabric:/_CpuCores`)：主機上提供的邏輯核心。 所有節點上的所有核心加權都相同。
 
-* *記憶體*（計量名稱`servicefabric:/_MemoryInMB`）：記憶體是以 mb 表示，而且會對應至機器上可用的實體記憶體。
+* *記憶體*（計量名稱 `servicefabric:/_MemoryInMB` ）：記憶體是以 mb 表示，而且會對應至機器上可用的實體記憶體。
 
 針對這兩個計量，[叢集資源管理員](service-fabric-cluster-resource-manager-cluster-description.md)會追蹤叢集總容量、叢集中每個節點上的負載，以及叢集中剩餘的資源數。 這兩個計量相當於其他任何使用者或自訂計量。 所有現有的功能都可以搭配這些計量使用：
 
@@ -135,7 +134,7 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
   </ServiceManifestImport>
 ```
 
-在此範例中，稱為 **ServicePackageA** 的服務套件在其所在的節點上獲得一個核心。 此服務套件包含兩個程式碼套件（**CodeA1**和**CodeA2**），並同時`CpuShares`指定參數。 CpuShares 的比例 512:256 會將核心在這兩個程式碼套件做分配。
+在此範例中，稱為 **ServicePackageA** 的服務套件在其所在的節點上獲得一個核心。 此服務套件包含兩個程式碼套件（**CodeA1**和**CodeA2**），並同時指定 `CpuShares` 參數。 CpuShares 的比例 512:256 會將核心在這兩個程式碼套件做分配。
 
 因此，在此範例中，CodeA1 會獲得 2/3 的核心，CodeA2 則獲得 1/3 的核心 (並具有同樣的彈性保證保留)。 如果未針對程式碼套件指定 CpuShares，Service Fabric 就會在它們之間平均分配核心。
 
@@ -206,7 +205,7 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 
 其他備註：
 
-* 資源限制強制僅適用于`servicefabric:/_CpuCores`和`servicefabric:/_MemoryInMB`資源計量
+* 資源限制強制僅適用于 `servicefabric:/_CpuCores` 和 `servicefabric:/_MemoryInMB` 資源計量
 * 只有在資源計量的節點容量可供 Service Fabric （透過自動偵測機制），或透過手動指定節點容量（如[啟用資源管理](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)的叢集設定一節中所述）的使用者，才可以強制執行資源限制。如果未設定節點容量，就無法使用資源限制強制功能，因為 Service Fabric 無法知道要為使用者服務保留多少資源。如果 "EnforceUserServiceMetricCapacities" 為 true，但未設定節點容量，Service Fabric 將會發出健康情況警告。
 
 ## <a name="other-resources-for-containers"></a>容器的其他資源

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: alzam
 ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886580"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 閘道點對站進行遠端工作
@@ -36,7 +35,7 @@ Azure 點對站解決方案是以雲端為基礎，可以快速布建，以滿�
 
 在此案例中，遠端使用者只需要存取 Azure 中的資源。
 
-![點對站](./media/working-remotely-support/scenario1.png "實例 1")
+![點對站](./media/working-remotely-support/scenario1.png "案例 1")
 
 概括而言，需要執行下列步驟，才能讓使用者安全地連線到 Azure 資源：
 

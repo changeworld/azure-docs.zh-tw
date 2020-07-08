@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881574"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
@@ -43,30 +42,30 @@ ms.locfileid: "80881574"
 
 1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。 或者，登入國家雲端的選擇 Azure 入口網站。
 1. 如果您的帳戶可讓您存取多個租使用者，請在右上角選取您的帳戶。 然後，將您的入口網站會話設定為所需的 Azure Active Directory （Azure AD）租使用者。
-1. 在左窗格中選取 [ **Azure Active Directory** ] 服務，然後選取 [**應用程式註冊** > **新增註冊**]。
+1. 在左窗格中選取 [ **Azure Active Directory** ] 服務，然後選取 [**應用程式註冊**  >  **新增註冊**]。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
-   1. 在 [名稱]**** 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**AspNetCore-WebApp**。
-   1. 針對 [重新**導向 URI**]，新增應用程式類型和 URI 目的地，以在成功驗證後接受傳回的權杖回應。 例如，輸入**https://localhost:44321**。 接著，選取 [註冊] ****。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**AspNetCore-WebApp**。
+   1. 針對 [重新**導向 URI**]，新增應用程式類型和 URI 目的地，以在成功驗證後接受傳回的權杖回應。 例如，輸入 **https://localhost:44321** 。 然後選取 [**註冊**]。
 1. 選取 [驗證]  功能表，然後新增下列資訊：
-   1. 針對 [**回復 URL**] **https://localhost:44321/signin-oidc** ，新增類型為 [ **Web**]。
-   1. 在 [ **Advanced settings** ] 區段中，將 [ **https://localhost:44321/signout-oidc****登出 URL** ] 設定為。
+   1. 針對 [**回復 URL**]，新增類型為 [ **https://localhost:44321/signin-oidc** **Web**]。
+   1. 在 [進階設定] 區段中，將 [登出 URL] 設定為 **https://localhost:44321/signout-oidc** 。
    1. 在 [隱含授與]**** 底下，選取 [識別碼權杖]****。
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
-   1. 在 [名稱]**** 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**MailApp-openidconnect-v2**。
-   1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後**https://localhost:44326/** 輸入下列重新導向 URI：。
-1. 選取 [註冊]  以建立應用程式。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**MailApp-openidconnect-v2**。
+   1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **https://localhost:44326/** 。
+1. 選取 [註冊] 以建立應用程式。
 1. 選取 [**驗證**] 功能表。
-1. 在 [**高級設定** | ] [**隱含授**與] 區段中，選取 [**識別碼權杖**]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)，才能登入使用者。
-1. 選取 [儲存]  。
+1. 在 [**高級設定**] [  |  **隱含授**與] 區段中，選取 [**識別碼權杖**]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)，才能登入使用者。
+1. 選取 [儲存]。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -82,30 +81,30 @@ ms.locfileid: "80881574"
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-  然後選取 [**儲存**]。
+  然後選取 [儲存]。
 
 1. 從功能表中選取 [**憑證 & 密碼**]。
 1. 在 [**用戶端密碼**] 區段中，選取 [**新增用戶端密碼**]，然後：
 
    1. 輸入 [金鑰描述]。
    1. 選取**1 年**的金鑰持續時間。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
    1. 當金鑰值出現時，請複製它以供稍後查看。 此值將不會再次顯示，也不會透過任何其他方式來抓取。
 
 # <a name="python"></a>[Python](#tab/python)
 
 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-   1. 在 [名稱]**** 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**python-webapp**。
+   1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**python-webapp**。
    1. 將**支援的帳戶類型**變更為**任何組織目錄中的帳戶和個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）**。
-   1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後**http://localhost:5000/getAToken**輸入下列重新導向 URI：。
-1. 選取 [註冊]  以建立應用程式。
-1. 在應用程式的 [概觀]  頁面上，尋找 [應用程式 (用戶端) 識別碼]  值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
+   1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **http://localhost:5000/getAToken** 。
+1. 選取 [註冊] 以建立應用程式。
+1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
 1. 在左側功能表上，選取 [**憑證 & 密碼**]。
 1. 在 [**用戶端密碼**] 區段中，選取 [**新增用戶端密碼**]，然後：
 
    1. 輸入 [金鑰描述]。
    1. 選取 [1 年]  作為 [金鑰持續時間]。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
    1. 當金鑰值出現時，複製它。 稍後您將會用到此資訊。
 ---
 
@@ -117,7 +116,7 @@ ms.locfileid: "80881574"
 > - MyOrg （僅限此組織目錄中的帳戶）
 > - AnyOrg （任何組織目錄中的帳戶）
 >
-> 您可以建立應用程式，以使用其個人 Microsoft 帳戶（例如 Skype、Xbox 或 Outlook.com）來登入使用者。 首先，建立多租使用者應用程式。 支援的帳戶類型是任何組織目錄中的帳戶。 然後，從 Azure 入口網站`signInAudience`變更應用程式資訊清單中的屬性。 如需詳細資訊，請參閱 ASP.NET Core 教學課程中的[步驟 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 您可以將此步驟一般化為任何語言的 web 應用程式。
+> 您可以建立應用程式，以使用其個人 Microsoft 帳戶（例如 Skype、Xbox 或 Outlook.com）來登入使用者。 首先，建立多租使用者應用程式。 支援的帳戶類型是任何組織目錄中的帳戶。 然後， `signInAudience` 從 Azure 入口網站變更應用程式資訊清單中的屬性。 如需詳細資訊，請參閱 ASP.NET Core 教學課程中的[步驟 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 您可以將此步驟一般化為任何語言的 web 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

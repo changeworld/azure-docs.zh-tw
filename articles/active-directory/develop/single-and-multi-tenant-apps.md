@@ -14,10 +14,9 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881360"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory 中的租用戶
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 會將例如使用者和應用程式的物件�
 
 在 Azure 入口網站中，您可以藉由如下所示設定對象，將您的應用程式設為單一租用戶或多租用戶。
 
-| 適用對象 | 單一/多租用戶 | 誰可以登入 | 
+| 對象 | 單一/多租用戶 | 誰可以登入 | 
 |----------|--------| ---------|
 | 只有這個目錄中的帳戶 | 單一租用戶 | 您目錄中的所有使用者和來賓帳戶都可以使用您的應用程式或 API。<br>若您的目標對象是組織內部的人員，請使用此選項。** |
 | 任何 Azure AD 目錄中的帳戶 | 多租用戶 | 所有使用者及來賓只要具備 Microsoft 提供的公司或學校帳戶，都能使用您的應用程式或 API。 這包括使用 Office 365 的學校及公司。<br>若您的目標對象是商務界或教育界的客戶，請使用此選項。** |

@@ -4,10 +4,9 @@ description: 了解如何在本機 Linux 開發電腦上監視和診斷 Service 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991325"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本機 Linux 機器開發設定中的服務
@@ -24,7 +23,7 @@ ms.locfileid: "80991325"
 
 ## <a name="debugging-service-fabric-java-applications"></a>針對 Service Fabric Java 應用程式進行偵錯
 
-對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於`java.util.logging`是 JRE 的預設選項，它也會用於 GitHub 中的程式[代碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
+對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於 `java.util.logging` 是 JRE 的預設選項，它也會用於 GitHub 中的程式[代碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
 
 您可以使用 java.util.logging 將應用程式記錄重新導向至記憶體、輸出串流、主控台檔案或通訊端。 對於其中每個選項，架構中已經提供預設處理常式。 您可以建立 `app.properties` 檔案來設定應用程式的檔案處理常式，將所有記錄重新導向至本機檔案。
 

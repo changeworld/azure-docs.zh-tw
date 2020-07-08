@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113333"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報告（預覽）
@@ -30,7 +29,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
-    - **Audit logs** - [audit logs](concept-audit-logs.md)提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
+    - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
     - 布建**記錄**-提供有關 Azure AD 布建服務所布建之使用者、群組和角色的系統活動。 
 
 - **安全性** 
@@ -39,7 +38,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 本主題提供布建報告的總覽。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 * 安全性系統管理員、安全性讀取者、報告讀取者、應用程式系統管理員和雲端應用程式系統管理員角色中的使用者
@@ -94,7 +93,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設的 [] 視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- Date
+- 日期
 - 狀態
 - 動作
 
@@ -119,7 +118,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 [狀態]**** 篩選條件可讓您選取︰
 
 - 全部
-- 成功
+- Success
 - 失敗
 - 已略過
 
@@ -172,7 +171,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改過的屬性
 
-- [摘要]
+- 摘要
 
 
 ![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
@@ -204,11 +203,11 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改後的屬性**會顯示舊值和新值。 在沒有舊值的情況下，[舊值] 資料行是空白的。 
 
 
-### <a name="summary"></a>[摘要]
+### <a name="summary"></a>摘要
 
 [**摘要**] 索引標籤可讓您大致瞭解來源和目標系統中物件的發生狀況和識別碼。 
 
-## <a name="what-you-should-know"></a>您應該知道的事項
+## <a name="what-you-should-know"></a>您應該知道的事情
 
 - 如果您有 premium edition 和7天的免費版本，Azure 入口網站會將報告的布建資料儲存30天。
 

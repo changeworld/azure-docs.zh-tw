@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259916"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>適用于 Azure CDN 之標準規則引擎中的比對條件
@@ -58,11 +57,11 @@ Equals，不等於 | 2.0、1.1、1.0、0.9、全部
 
 Cookie 名稱 | 運算子 | Cookie 值 | 大小寫轉換
 ------------|----------|--------------|---------------
-字串 | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
+String | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
 
 #### <a name="key-information"></a>重要資訊
 
-- 當您指定 cookie 名稱時，不能\*使用萬用字元值（包括星號（））;您必須使用確切的 cookie 名稱。
+- 當您指定 cookie 名稱時，不能使用萬用字元值（包括星號（ \* ））; 您必須使用確切的 cookie 名稱。
 - 針對此比對條件的每個實例，您只能指定一個 cookie 名稱。
 - Cookie 名稱比較不區分大小寫。
 - 若要指定多個 cookie 值，請在每個 cookie 值之間使用單一空格。 
@@ -77,7 +76,7 @@ Cookie 名稱 | 運算子 | Cookie 值 | 大小寫轉換
 
 引數名稱 | 運算子 | 引數值 | 大小寫轉換
 --------------|----------|----------------|---------------
-字串 | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
+String | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
 
 ### <a name="query-string"></a>查詢字串
 
@@ -114,13 +113,13 @@ IP 相符 | IP 位址（以空格分隔）
   - **IPv4 範例**： *5.5.5.64/26*會比對透過5.5.5.127 從位址5.5.5.64 抵達的任何要求。
   - **IPv6 範例**： *1:2:3:/48*符合從位址1:2:3:0:0:0:0:0 抵達1：2：3： ffff： ffff： ffff： ffff： ffff 的任何要求。
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
 根據要求主體中出現的特定文字來識別要求。
 
 #### <a name="required-fields"></a>必要的欄位
 
-運算子 | 要求本文 | 大小寫轉換
+運算子 | Request body | 大小寫轉換
 ---------|--------------|---------------
 [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
 
@@ -132,7 +131,7 @@ IP 相符 | IP 位址（以空格分隔）
 
 標頭名稱 | 運算子 | 標頭值 | 大小寫轉換
 ------------|----------|--------------|---------------
-字串 | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
+String | [標準操作員清單](#standard-operator-list) | String、Int | 無任何轉換，大小為大寫，到小寫
 
 ### <a name="request-method"></a>要求方法
 
@@ -170,7 +169,7 @@ Equals，不等於 | HTTP、HTTPS
 
 #### <a name="key-information"></a>重要資訊
 
-- 當您使用此規則條件時，請務必包含通訊協定資訊。 例如： *https://www.\<yourdomain\>.com*。
+- 當您使用此規則條件時，請務必包含通訊協定資訊。 例如： * https://www 。 \<yourdomain\>com*。
 
 ### <a name="url-file-extension"></a>URL 副檔名
 
@@ -221,7 +220,7 @@ Equals，不等於 | HTTP、HTTPS
 對於接受標準運算子清單值的規則，下列運算子是有效的：
 
 - 任意
-- Equals 
+- 等於 
 - 包含 
 - 開頭是 
 - 結束於 

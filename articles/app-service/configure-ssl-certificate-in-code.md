@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811689"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure App Service 的程式碼中使用 TLS/SSL 憑證
@@ -29,7 +28,7 @@ ms.locfileid: "80811689"
 
 ## <a name="find-the-thumbprint"></a>尋找指紋
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在<a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>中，從左側功能表中選取 [**應用程式服務**]  >  **\<app-name>** 。
 
 從應用程式的左側導覽中，選取 [ **TLS/SSL 設定**]，然後選取 [**私密金鑰憑證（.pfx）** ] 或 **[公開金鑰憑證（.cer）**]。
 
@@ -39,13 +38,13 @@ ms.locfileid: "80811689"
 
 ## <a name="make-the-certificate-accessible"></a>讓憑證可供存取
 
-若要存取應用程式程式碼中的憑證，請在`WEBSITE_LOAD_CERTIFICATES` <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將其指紋新增至應用程式設定：
+若要存取應用程式程式碼中的憑證，請 `WEBSITE_LOAD_CERTIFICATES` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將其指紋新增至應用程式設定：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-若要讓所有憑證都可供存取，請`*`將值設定為。
+若要讓所有憑證都可供存取，請將值設定為 `*` 。
 
 ## <a name="load-certificate-in-windows-apps"></a>在 Windows 應用程式中載入憑證
 
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-若要瞭解如何從 node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
+若要瞭解如何從 Node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
 
 ## <a name="load-certificate-from-file"></a>從檔案載入憑證
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-若要瞭解如何從 node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
+若要瞭解如何從 Node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
 
 ## <a name="more-resources"></a>其他資源
 

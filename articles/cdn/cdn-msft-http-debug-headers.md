@@ -15,18 +15,17 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260406"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>來自 Microsoft 的 Azure CDN 的 Debug HTTP 標頭
-「偵錯工具回應標`X-Cache`頭」（）提供詳細資料，說明內容的服務來源 CDN 堆疊層。 此標頭專屬於 Microsoft 的 Azure CDN 所特有。
+「偵錯工具回應標頭」（ `X-Cache` ）提供詳細資料，說明內容的服務來源 CDN 堆疊層。 此標頭專屬於 Microsoft 的 Azure CDN 所特有。
 
 ### <a name="response-header-format"></a>回應標頭格式
 
-頁首 | 描述
+Header | Description
 -------|------------
 X 快取： TCP_HIT | 從 CDN 邊緣快取提供內容時，會傳回此標頭。 
 X 快取： TCP_REMOTE_HIT | 從 CDN 區域快取（原始盾牌層）提供內容時，會傳回此標頭

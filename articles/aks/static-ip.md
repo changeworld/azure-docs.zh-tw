@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886733"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態公用 IP 位址和 DNS 標籤
@@ -22,9 +21,9 @@ ms.locfileid: "80886733"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-本文說明如何搭配使用*標準*sku IP 與*標準*sku 負載平衡器。 如需詳細資訊，請參閱[Azure 中的 IP 位址類型和配置方法][ip-sku]。
+本文說明如何搭配使用*標準*sku IP 與*標準*sku 負載平衡器。 如需詳細資訊，請參閱 [Azure 中的 IP 位址類型及配置方法][ip-sku]。
 
 ## <a name="create-a-static-ip-address"></a>建立靜態 IP 位址
 
@@ -74,7 +73,7 @@ az role assignment create \
 
 或者，您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-若要建立具有靜態公用 IP 位址的*LoadBalancer*服務，請將`loadBalancerIP`靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為*myResourceGroup*的資源群組。 提供您自己的資源組名。
+若要建立具有靜態公用 IP 位址的*LoadBalancer*服務，請將 `loadBalancerIP` 靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為*myResourceGroup*的資源群組。 提供您自己的資源組名。
 
 ```yaml
 apiVersion: v1
@@ -100,9 +99,9 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>將 DNS 標籤套用至服務
 
-如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋`service.beta.kubernetes.io/azure-dns-label-name`來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
+如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
 
-接著，Azure 會自動將預設子網`<location>.cloudapp.azure.com` （其中 location 是您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如：
+接著，Azure 會自動將預設子網（ `<location>.cloudapp.azure.com` 其中 location 是您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如：
 
 ```yaml
 apiVersion: v1

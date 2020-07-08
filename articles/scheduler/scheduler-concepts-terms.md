@@ -10,24 +10,23 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878386"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 排程器中的概念、術語及實體
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
 >
-> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
+> Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
 ## <a name="entity-hierarchy"></a>實體階層
 
 Azure 排程器 REST API 會公開並使用這些主要實體或資源：
 
-| 單位 | 描述 |
+| 單位 | 說明 |
 |--------|-------------|
 | **工作 (Job)** | 定義單一週期性動作，以及簡單或複雜的執行策略。 動作可能包括 HTTP、儲存體佇列、服務匯流排佇列或服務匯流排主題要求。 | 
 | **工作集合** | 包含作業群組，並維護集合中作業所共用的設定、配額及節流。 身為 Azure 訂用帳戶擁有者，您可以建立作業集合，並根據作業的使用方式或應用程式界限將作業群組在一起。 作業集合具有下列屬性： <p>- 受限於一個區域。 <br>- 可讓您強制執行配額，以限制集合中所有作業的使用方式。 <br>- 配額包含 MaxJobs 和 MaxRecurrence。 | 
@@ -82,15 +81,15 @@ Azure 排程器支援多個作業類型：
 
 作業也包含系統提供的資料，例如已排定的下一次作業執行時間。 作業的程式碼定義是採用 JavaScript 物件標記法 (JSON) 格式的物件，其中包含以下元素：
 
-| 元素 | 必要 | 描述 | 
+| 元素 | 必要 | Description | 
 |---------|----------|-------------| 
-| [**時間**](#start-time) | 否 | 包含時區位移的作業開始時間，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**即席**](#action) | 是 | 主要動作的詳細資料，其中可包括 **errorAction** 物件 | 
-| [**errorAction**](#error-action) | 否 | 次要動作 (在主要動作失敗時執行) 的詳細資料 |
-| [**定期**](#recurrence) | 否 | 週期性作業的詳細資料，例如頻率和間隔 | 
-| [**retryPolicy**](#retry-policy) | 否 | 重試動作的頻率詳細資料 | 
-| [**狀態**](#state) | 是 | 作業目前狀態的詳細資料 |
-| [**狀態**](#status) | 是 | 作業目前狀態的詳細資料，而狀態會由服務控制 |
+| [**時間**](#start-time) | No | 包含時區位移的作業開始時間，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**即席**](#action) | Yes | 主要動作的詳細資料，其中可包括 **errorAction** 物件 | 
+| [**errorAction**](#error-action) | No | 次要動作 (在主要動作失敗時執行) 的詳細資料 |
+| [**定期**](#recurrence) | No | 週期性作業的詳細資料，例如頻率和間隔 | 
+| [**retryPolicy**](#retry-policy) | No | 重試動作的頻率詳細資料 | 
+| [**狀態**](#state) | Yes | 作業目前狀態的詳細資料 |
+| [**狀態**](#status) | Yes | 作業目前狀態的詳細資料，而狀態會由服務控制 |
 ||||
 
 以下範例說明 HTTP 動作的完整作業定義，其中包含更完整的元素詳細資料，將在後面幾節中加以描述： 
@@ -246,18 +245,18 @@ Azure 排程器支援多個作業類型：
 },
 ```
 
-| 屬性 | 必要 | 值 | 描述 | 
+| 屬性 | 必要 | 值 | 說明 | 
 |----------|----------|-------|-------------| 
 | **frequency** | 在使用 **recurrence** 時是必要的 | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 發生次數之間的時間單位 | 
-| **interval** | 否 | 1 到 1000 (含) | 正整數，根據 **frequency** 來決定每次發生作業的間隔時間單位數 | 
-| **任務** | 否 | 不定 | 更複雜且進階的排程詳細資料。 請參考 **hours**、**minutes**、**weekDays**、**months** 和 **monthDays** | 
-| **多少** | 否 | 1 到 24 | 包含小時標記的陣列，表示要執行作業的時間 | 
-| **細節** | 否 | 0到59 | 包含分鐘標記的陣列，表示要執行作業的時間 | 
-| **months** | 否 | 1 到 12 | 包含月份的陣列，表示要執行作業的時間 | 
-| **monthDays** | 否 | 不定 | 包含月份中某幾天的陣列，表示要執行作業的時間 | 
-| **周** | 否 | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | 包含一週中某幾天的陣列，表示要執行作業的時間 | 
-| **計數** | 否 | <*無*> | 循環次數。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
-| **endTime** | 否 | <*無*> | 停止循環的日期和時間。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
+| **期間** | No | 1 到 1000 (含) | 正整數，根據 **frequency** 來決定每次發生作業的間隔時間單位數 | 
+| **任務** | No | 不定 | 更複雜且進階的排程詳細資料。 請參考 **hours**、**minutes**、**weekDays**、**months** 和 **monthDays** | 
+| **多少** | No | 1 到 24 | 包含小時標記的陣列，表示要執行作業的時間 | 
+| **細節** | No | 0到59 | 包含分鐘標記的陣列，表示要執行作業的時間 | 
+| **months** | No | 1 到 12 | 包含月份的陣列，表示要執行作業的時間 | 
+| **monthDays** | No | 不定 | 包含月份中某幾天的陣列，表示要執行作業的時間 | 
+| **周** | No | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | 包含一週中某幾天的陣列，表示要執行作業的時間 | 
+| **計數** | No | <*無*> | 循環次數。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
+| **endTime** | No | <*無*> | 停止循環的日期和時間。 預設為無限制地重複。 您無法同時使用 **count** 和 **endTime**，但會接受先完成的規則。 | 
 ||||
 
 如需有關這些元素的詳細資訊，請參閱[建置複雜的排程和進階週期](../scheduler/scheduler-advanced-complexity.md)。
@@ -276,18 +275,18 @@ Azure 排程器支援多個作業類型：
 },
 ```
 
-| 屬性 | 必要 | 值 | 描述 | 
+| 屬性 | 必要 | 值 | 說明 | 
 |----------|----------|-------|-------------| 
-| **retryType** | 是 | **固定**、**無** | 決定要指定重試原則 (**固定**) 或不要指定重試原則 (**無**)。 | 
-| **retryInterval** | 否 | PT30S | 指定重試嘗試之間的間隔和頻率，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)。 最小值為 15 秒，而最大值為 18 個月。 | 
-| **retryCount** | 否 | 4 | 指定嘗試重試的次數。 最大值為 20。 | 
+| **retryType** | Yes | **固定**、**無** | 決定要指定重試原則 (**固定**) 或不要指定重試原則 (**無**)。 | 
+| **retryInterval** | No | PT30S | 指定重試嘗試之間的間隔和頻率，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)。 最小值為 15 秒，而最大值為 18 個月。 | 
+| **retryCount** | No | 4 | 指定嘗試重試的次數。 最大值為 20。 | 
 ||||
 
 如需詳細資訊，請參閱[高可用性和可靠性](../scheduler/scheduler-high-availability-reliability.md)。
 
 <a name="status"></a>
 
-## <a name="state"></a>State
+## <a name="state"></a>state
 
 作業的狀態可能是 **Enabled (已啟用)**、**Disabled (已停用)**、**Completed (已完成)** 或 **Faulted (發生錯誤)**，例如： 
 

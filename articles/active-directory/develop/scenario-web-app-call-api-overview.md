@@ -12,17 +12,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881718"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>案例：呼叫 web Api 的 web 應用程式
 
 瞭解如何建立 web 應用程式，以將使用者登入 Microsoft 身分識別平臺，然後代表已登入的使用者呼叫 web Api。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -31,7 +30,7 @@ ms.locfileid: "80881718"
 > [!div class="nextstepaction"]
 > [登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 您會將驗證新增至 web 應用程式，讓它可以將使用者登入，並代表登入的使用者呼叫 Web API。
 
@@ -40,7 +39,7 @@ ms.locfileid: "80881718"
 呼叫 web Api 的 web 應用程式是機密用戶端應用程式。
 這就是為什麼他們會使用 Azure Active Directory （Azure AD）來註冊密碼（應用程式密碼或憑證）。 此密碼會在呼叫 Azure AD 時傳入，以取得權杖。
 
-## <a name="specifics"></a>瞭解
+## <a name="specifics"></a>特性
 
 > [!NOTE]
 > 將登入新增至 web 應用程式，是關於保護 web 應用程式本身。 這項保護是藉由使用*中介軟體*程式庫來達成，而不是 Microsoft 驗證程式庫（MSAL）。 上述案例是[登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)，涵蓋該主題。

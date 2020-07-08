@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884676"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft 身分識別平臺驗證通訊協定
@@ -35,5 +34,5 @@ Microsoft 身分識別平臺支援數個最常用的驗證和授權通訊協定�
 
 ## <a name="see-also"></a>另請參閱
 
-* [Microsoft 身分識別平臺總覽](v2-overview.md)
+* [Microsoft 身分識別平台概觀](v2-overview.md)
 * [Active Directory 程式碼範例](sample-v2-code.md)

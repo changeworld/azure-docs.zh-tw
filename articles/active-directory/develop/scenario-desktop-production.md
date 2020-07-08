@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882874"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>呼叫 web Api 的桌面應用程式：移至生產環境
@@ -31,14 +30,14 @@ ms.locfileid: "80882874"
 > [!NOTE]
 > 獲得數項資源的同意，適用于 Microsoft 身分識別平臺，但不適用於 Azure Active Directory （Azure AD） B2C。 Azure AD B2C 僅支援管理員同意，而非使用者同意。
 
-您無法使用 Microsoft 身分識別平臺（v2.0）端點一次取得數個資源的權杖。 `scopes`參數只能包含單一資源的範圍。 您可以使用`extraScopesToConsent`參數，確保使用者已預先同意至數個資源。
+您無法使用 Microsoft 身分識別平臺（v2.0）端點一次取得數個資源的權杖。 `scopes`參數只能包含單一資源的範圍。 您可以使用參數，確保使用者已預先同意至數個資源 `extraScopesToConsent` 。
 
 例如，您可能有兩個具有兩個範圍的資源：
 
-- `https://mytenant.onmicrosoft.com/customerapi`使用範圍`customer.read`和`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`使用範圍`vendor.read`和`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`使用範圍 `customer.read` 和`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`使用範圍 `vendor.read` 和`vendor.write`
 
-在此範例中，請`.WithAdditionalPromptToConsent`使用具有`extraScopesToConsent`參數的修飾詞。
+在此範例中，請使用 `.WithAdditionalPromptToConsent` 具有參數的修飾詞 `extraScopesToConsent` 。
 
 例如：
 
@@ -63,7 +62,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL
+### <a name="in-msal-for-ios-and-macos"></a>在適用於 iOS 和 macOS 的 MSAL 中
 
 Objective-C：
 
@@ -95,7 +94,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 此呼叫會取得第一個 Web API 的存取權杖。
 
-當您需要呼叫第二個 Web API 時，請`AcquireTokenSilent`呼叫 API。
+當您需要呼叫第二個 Web API 時，請呼叫 `AcquireTokenSilent` API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

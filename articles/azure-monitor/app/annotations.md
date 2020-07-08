@@ -4,10 +4,9 @@ description: 在 Application Insights 中對計量瀏覽器新增部署或建置
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010699"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 中度量圖表上的註解
@@ -63,7 +62,7 @@ ms.locfileid: "81010699"
    
 1. 在 [發行範本] 視窗的 [**變數**] 索引標籤上 **，選取 [新增]** 以建立新 API 金鑰的變數定義。
 
-1. 在 [**名稱**] `ApiKey`下輸入，然後在 [**值**] 下，貼上您從 [ **api 存取**] 索引標籤複製的 api 金鑰。
+1. 在 [**名稱**] 下輸入 `ApiKey` ，然後在 [**值**] 下，貼上您從 [ **api 存取**] 索引標籤複製的 api 金鑰。
    
    ![在 [Azure DevOps 變數] 索引標籤中，選取 [新增]，將變數命名為 ApiKey，並將 API 金鑰貼入 [值] 底下。](./media/annotations/7-paste-api-key.png)
    
@@ -94,11 +93,11 @@ ms.locfileid: "81010699"
 ## <a name="create-custom-annotations-from-powershell"></a>從 PowerShell 建立自訂註解
 您可以使用來自 GitHub 的[CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell 腳本，從任何您喜歡的進程建立批註，而不需要使用 Azure DevOps。 
 
-1. 建立[CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)的本機複本。
+1. 建立[CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)的本機複本。
    
 1. 使用上述程式中的步驟來取得您的 Application Insights 識別碼，並從您的 Application Insights **Api 存取**索引標籤建立 API 金鑰。
    
-1. 使用下列程式碼呼叫 PowerShell 腳本，並以您的值取代以角括弧括住的預留位置。 是`-releaseProperties`選擇性的。 
+1. 使用下列程式碼呼叫 PowerShell 腳本，並以您的值取代以角括弧括住的預留位置。 `-releaseProperties`是選擇性的。 
    
    ```powershell
    

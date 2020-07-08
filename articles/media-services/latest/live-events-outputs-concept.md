@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010574"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件和即時輸出
@@ -30,7 +29,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-events"></a>即時活動
 
-[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)負責內嵌和處理即時視訊摘要。 當您建立即時事件時，系統會建立主要和次要輸入端點，讓您用來從遠端編碼器傳送即時信號。 遠端即時編碼器會使用[RTMP](https://www.adobe.com/devnet/rtmp.html)或[Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) （分散式）輸入通訊協定，將發佈摘要傳送至該輸入端點。 對於 RTMP 內嵌通訊協定，內容可以用純文字（`rtmp://`）傳送，或在網路上安全地加密（`rtmps://`）。 針對 Smooth Streaming 內嵌通訊協定，支援的 URL 配置為 `http://` 或 `https://`。  
+[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)負責內嵌和處理即時視訊摘要。 當您建立即時事件時，系統會建立主要和次要輸入端點，讓您用來從遠端編碼器傳送即時信號。 遠端即時編碼器會使用[RTMP](https://www.adobe.com/devnet/rtmp.html)或[Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) （分散式）輸入通訊協定，將發佈摘要傳送至該輸入端點。 對於 RTMP 內嵌通訊協定，內容可以用純文字（）傳送， `rtmp://` 或在網路上安全地加密（ `rtmps://` ）。 針對 Smooth Streaming 內嵌通訊協定，支援的 URL 配置為 `http://` 或 `https://`。  
 
 ## <a name="live-event-types"></a>實況活動類型
 
@@ -49,7 +48,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 您可以使用 H.264/AVC 或 H.265/HEVC 視訊轉碼器以及 AAC (AAC-LC、HE-AACv1 或 HE-AACv2) 音訊轉碼器，以高達 4K 的解析度和每秒 60 個畫面的畫面播放速率傳送發佈摘要。 如需詳細資訊，請參閱[即時事件種類比較](live-event-types-comparison.md)。
 
 > [!NOTE]
-> 當您長時間執行多個事件，且您已投資內部部署編碼器時，使用傳遞方法是進行即時串流的最經濟實惠方式。 請參閱 [價格](https://azure.microsoft.com/pricing/details/media-services/) 詳細資料。
+> 當您長時間執行多個事件，且您已投資內部部署編碼器時，使用傳遞方法是進行即時串流的最經濟實惠方式。 請參閱[定價](https://azure.microsoft.com/pricing/details/media-services/)詳細資料。
 >
 
 請參閱 [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).中的 .NET 程式碼範例。
@@ -87,7 +86,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 ### <a name="naming-rules"></a>命名規則
 
 * Live event name 的最大值為32個字元。
-* 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
+* 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
 
 另請參閱[串流端點命名慣例](streaming-endpoint-concept.md#naming-convention)。
 
@@ -116,13 +115,13 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
     > [!NOTE]
     > 在 Azure 入口網站中，虛名 URL 會命名為「*持續輸入 URL*」。
 
-    若要在 API 中指定此模式， `vanityUrl`請`true`在建立時將設定為`false`（預設值為）。 您也必須在建立時，傳遞您自己`LiveEventInput.accessToken`的存取權杖（）。 您可以指定權杖值，以避免在 URL 中使用隨機 token。 存取權杖必須是有效的 GUID 字串（包含或不含連字號）。 一旦設定模式，就無法更新。
+    若要在 API 中指定此模式，請在建立時將設定 `vanityUrl` 為 `true` （預設值為 `false` ）。 您也必須在建立時，傳遞您自己的存取權杖（ `LiveEventInput.accessToken` ）。 您可以指定權杖值，以避免在 URL 中使用隨機 token。 存取權杖必須是有效的 GUID 字串（包含或不含連字號）。 一旦設定模式，就無法更新。
 
     存取權杖在您的資料中心內必須是唯一的。 如果您的應用程式需要使用虛名 URL，建議一律為您的存取權杖建立新的 GUID 實例（而不是重複使用任何現有的 GUID）。
 
-    使用下列 Api 來啟用虛名 URL，並將存取權杖設定為有效的 GUID （例如， `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`）。  
+    使用下列 Api 來啟用虛名 URL，並將存取權杖設定為有效的 GUID （例如， `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ）。  
 
-    |Language|啟用虛名 URL|設定存取權杖|
+    |語言|啟用虛名 URL|設定存取權杖|
     |---|---|---|
     |REST|[屬性。 vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--虛名-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|

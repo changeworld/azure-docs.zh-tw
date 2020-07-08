@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114494"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>什麼是 Microsoft Azure 中的傳統警示？
@@ -94,5 +93,5 @@ Webhook 可啟用自動化和修復，例如使用：
 * [透過 Azure 入口網站設定活動記錄警示](activity-log-alerts.md)
 * [透過 Resource Manager 設定活動記錄警示](alerts-activity-log.md)
 * 檢閱[活動記錄警示 webhook 結構描述](activity-log-alerts-webhook.md)
-* 深入了解[動作群組](action-groups.md)
+* 深入瞭解[動作群組](action-groups.md)
 * 設定[較新的警示](alerts-metric.md)

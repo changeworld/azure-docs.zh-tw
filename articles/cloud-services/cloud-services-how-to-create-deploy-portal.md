@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811333"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何建立和部署雲端服務
@@ -59,7 +58,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
     ![發佈您的雲端服務](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 在新的 [雲端服務]**** 窗格中，輸入 [DNS 名稱]**** 的值。
 4. 建立新的**資源群組**，或選取現有的一個。
-5. 選取 [**位置**]。
+5. 選取 [位置] 。
 6. 按一下 **[封裝]**。 這會開啟 [上傳套件]**** 窗格。 填寫必要欄位。 如果您的任一個角色包含單一執行個體，請確定核取 [即使一個或多個角色包含單一執行個體，也要部署] **** 。
 7. 請確定已選取 [開始部署] **** 。
 8. 按一下 [確定]**** 以關閉 [上傳套件]**** 窗格。
@@ -88,7 +87,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 
 ## <a name="next-steps"></a>後續步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
-* 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
+* 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
 * 設定[TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
 

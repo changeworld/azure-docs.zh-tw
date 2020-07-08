@@ -4,10 +4,9 @@ description: 了解如何為 Service Fabric 叢集建立 Resource Manager 範本
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985366"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>建立 Service Fabric 叢集 Resource Manager 範本
@@ -30,7 +29,7 @@ ms.locfileid: "80985366"
 > 針對國家雲 (Azure Government、Azure 中國、Azure 德國)，您也應將下列 `fabricSettings` 新增至您的範本：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>新增憑證
-您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 在 Resource Manager 範本參數檔案（*azuredeploy.parameters.json」*）中新增這些金鑰保存庫參數和值。
+您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 在 Resource Manager 範本參數檔案（*azuredeploy.parameters.js*）中新增這些金鑰保存庫參數和值。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>將所有憑證都新增到虛擬機器擴展集 osProfile
 安裝在叢集中的每個憑證都必須在擴展集資源（Microsoft. Compute/virtualMachineScaleSets）的**osProfile**區段中設定。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
@@ -132,7 +131,7 @@ ms.locfileid: "80985366"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>新增 Azure AD 設定以針對用戶端存取使用 Azure AD
 
-您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 在 Resource Manager 範本參數檔案（*azuredeploy.parameters.json」*）中加入這些 Azure AD 的參數和值。 
+您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值加入 Resource Manager 範本參數檔案中（*azuredeploy.parameters.js于*）。 
 
 > [!NOTE]
 > 在 Linux 上，必須在建立叢集之前，先建立 Azure AD 的租使用者和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。

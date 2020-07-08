@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
 ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991649"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric 應用程式設計最佳做法
@@ -57,9 +56,9 @@ ms.locfileid: "80991649"
 
 ## <a name="how-to-work-with-reliable-services"></a>如何使用 Reliable Services
 Service Fabric Reliable Services 可讓您輕鬆地建立無狀態和具狀態服務。 如需詳細資訊，請參閱[Reliable Services 簡介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)。
-- 請一律接受無狀態和具`RunAsync()`狀態服務之方法中的`ChangeRole()` [取消權杖](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps)，以及具狀態服務的方法。 如果您沒有這麼做，Service Fabric 不知道您的服務是否可以關閉。 例如，如果您不接受解除標記，可能會有更長的應用程式升級時間。
+- 請一律接受無狀態和具狀態服務之方法中的[取消權杖](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) `RunAsync()` ，以及具 `ChangeRole()` 狀態服務的方法。 如果您沒有這麼做，Service Fabric 不知道您的服務是否可以關閉。 例如，如果您不接受解除標記，可能會有更長的應用程式升級時間。
 -    及時開啟和關閉[通訊](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)接聽程式，並接受解除標記。
--    絕對不要將同步處理常式代碼與非同步程式碼混合。 例如，請勿在您`.GetAwaiter().GetResult()`的 async 呼叫中使用。 透過呼叫堆疊以非同步*方式*使用。
+-    絕對不要將同步處理常式代碼與非同步程式碼混合。 例如，請勿 `.GetAwaiter().GetResult()` 在您的 async 呼叫中使用。 透過呼叫堆疊以非同步*方式*使用。
 
 ## <a name="how-to-work-with-reliable-actors"></a>如何使用 Reliable Actors
 Service Fabric Reliable Actors 可讓您輕鬆地建立具狀態的虛擬執行者。 如需詳細資訊，請參閱[Reliable Actors 簡介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)。
@@ -70,14 +69,14 @@ Service Fabric Reliable Actors 可讓您輕鬆地建立具狀態的虛擬執行�
 - 由於動作專案是以[回合為基礎](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)，因此最適合當做獨立物件使用。 請勿建立多動作專案、同步方法呼叫的圖形（每個都有可能會變成個別的網路呼叫），或建立迴圈動作專案要求。 這些會大幅影響效能和規模。
 - 請勿將同步處理常式代碼與非同步程式碼混合。 一致地使用 async 來避免發生效能問題。
 - 不要在動作專案中進行長時間執行的呼叫。 長時間執行的呼叫將會封鎖對相同動作專案的其他呼叫，因為回合型並行。
-- 如果您使用[Service Fabric 遠端處理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting)來與其他服務通訊，而且您要建立`ServiceProxyFactory`，請在動作專案[-服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using)層級建立 factory，而*不*是在動作專案層級。
+- 如果您使用[Service Fabric 遠端處理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting)來與其他服務通訊，而且您要建立 `ServiceProxyFactory` ，請在動作專案[-服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using)層級建立 factory，而*不*是在動作專案層級。
 
 
 ## <a name="application-diagnostics"></a>應用程式診斷
 深入瞭解如何在服務呼叫中新增[應用程式記錄](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)。 這可協助您診斷服務彼此呼叫的案例。 例如，當呼叫 B 呼叫 C 呼叫 D 時，呼叫可能會在任何地方失敗。 如果您沒有足夠的記錄，則很難診斷失敗。 如果服務因為呼叫磁片區而記錄太多，請務必至少記錄錯誤和警告。
 
 ## <a name="iot-and-messaging-applications"></a>IoT 和訊息應用程式
-當您從[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)讀取訊息時，請使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)。 ServiceFabricProcessor 會與 Service Fabric Reliable Services 整合，以維護從事件中樞分割區讀取的狀態，並透過`IEventProcessor::ProcessEventsAsync()`方法將新訊息推送至您的服務。
+當您從[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)讀取訊息時，請使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)。 ServiceFabricProcessor 會與 Service Fabric Reliable Services 整合，以維護從事件中樞分割區讀取的狀態，並透過方法將新訊息推送至您的服務 `IEventProcessor::ProcessEventsAsync()` 。
 
 
 ## <a name="design-guidance-on-azure"></a>Azure 上的設計指導方針

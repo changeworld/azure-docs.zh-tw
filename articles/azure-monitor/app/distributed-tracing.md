@@ -7,10 +7,9 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892252"
 ---
 # <a name="what-is-distributed-tracing"></a>什麼是分散式追蹤？
@@ -31,7 +30,7 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](https://doc
 
 ## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>透過自動檢測或 Sdk 啟用 via Application Insights
 
-適用于 .NET、.NET Core、JAVA、node.js 和 JavaScript 的 Application Insights 代理程式和（或） Sdk 全都以原生方式支援分散式追蹤。 以下可取得安裝和設定每個 Application Insights SDK 的指示：
+適用于 .NET、.NET Core、JAVA、Node.js 和 JavaScript 的 Application Insights 代理程式和（或） Sdk 全都以原生方式支援分散式追蹤。 以下可取得安裝和設定每個 Application Insights SDK 的指示：
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)

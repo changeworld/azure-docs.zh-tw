@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881260"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
@@ -44,7 +43,7 @@ Azure Active Directory (Azure AD) 支援 SAML 2.0 Web 瀏覽器單一登出設�
 * `Version` - 將此元素的值設定為 **2.0**。 這是必要的值。
 * `IssueInstant` - 這是具有國際標準時間 (UTC) 值和[來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx) 的 `DateTime` 字串。 Azure AD 會預期此類型的值，但不會強制。
 
-### <a name="issuer"></a>簽發者
+### <a name="issuer"></a>Issuer
 `LogoutRequest` 中的 `Issuer` 元素必須完全符合 Azure AD 中雲端服務的其中一個 **ServicePrincipalNames**。 一般而言，這會設定為應用程式註冊期間指定的 **應用程式識別碼 URI** 。
 
 ### <a name="nameid"></a>NameID
@@ -65,10 +64,10 @@ Azure AD 會傳送 `LogoutResponse` 以回應 `LogoutRequest` 元素。 下列�
 ### <a name="logoutresponse"></a>LogoutResponse
 Azure AD 會設定 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會將 `InResponseTo` 元素設定為導出回應的 `LogoutRequest` 的 `ID` 屬性值。
 
-### <a name="issuer"></a>簽發者
-Azure AD 會將此值`https://login.microsoftonline.com/<TenantIdGUID>/`設定\<為，其中 TenantIdGUID> 是 Azure AD 租使用者的租使用者識別碼。
+### <a name="issuer"></a>Issuer
+Azure AD 會將此值設為 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中，\<TenantIdGUID> 是 Azure AD 租用戶的租用戶識別碼。
 
 若要評估 `Issuer` 元素的值，請使用應用程式註冊期間提供的 **應用程式識別碼 URI** 的值。
 
 ### <a name="status"></a>狀態
-Azure AD 使用`Status`元素`StatusCode`中的專案，來表示登出成功或失敗。當登出嘗試失敗時， `StatusCode`元素也可以包含自訂錯誤訊息。
+Azure AD 使用 `StatusCode` 元素中的專案 `Status` ，來表示登出成功或失敗。當登出嘗試失敗時， `StatusCode` 元素也可以包含自訂錯誤訊息。

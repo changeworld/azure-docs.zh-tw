@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114314"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解移轉工具的運作方式
@@ -93,7 +92,7 @@ AnonymousThrottlingError、SASThrottlingError 和 ThrottlingError 上的傳統�
 - 觀察到的寫入延遲
 - 服務可用性
 - 儲存體容量
-- 節流要求
+- 節流的要求
 - 要求總數
 
 平均每秒要求數、一致性層級、每分鐘取用的最大 RUPM、每秒最大 ru、觀察到的讀取延遲、觀察到的寫入延遲、儲存容量目前無法在[新系統](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)中使用。
@@ -115,18 +114,18 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | Microsoft.DBforMySQL/servers | compute_consumption_percent，compute_limit |
 | Microsoft.DBforPostgreSQL/servers | compute_consumption_percent，compute_limit |
 | Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
-| Microsoft .SQL/伺服器/資料庫 | service_level_objective、storage_limit、storage_used、節流、dtu_consumption_percent、storage_used |
+| Microsoft.SQL/servers/databases | service_level_objective、storage_limit、storage_used、節流、dtu_consumption_percent、storage_used |
 | Microsoft Web/hostingEnvironments/multirolepools | averagememoryworkingset |
 | Microsoft Web/hostingEnvironments/workerpools | bytesreceived、HTTPqueuelength |
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>如何建立對等的新警示規則和動作群組
 
-遷移工具會將您的傳統警示規則轉換為對等的新警示規則和動作群組。 對於大部分傳統的警示規則而言，對等的新警示規則會在相同的計量上具有`windowSize`相同`aggregationType`的屬性，例如和。 不過，有一些傳統警示規則是針對在新系統中具有不同、對等計量的度量。 除非在下一節中指定，否則下列原則適用于傳統警示的遷移：
+遷移工具會將您的傳統警示規則轉換為對等的新警示規則和動作群組。 對於大部分傳統的警示規則而言，對等的新警示規則會在相同的計量上具有相同的屬性，例如 `windowSize` 和 `aggregationType` 。 不過，有一些傳統警示規則是針對在新系統中具有不同、對等計量的度量。 除非在下一節中指定，否則下列原則適用于傳統警示的遷移：
 
-- **頻率**：定義傳統或新的警示規則檢查條件的頻率。 傳統`frequency`警示規則中的不是由使用者設定，而且對於其為1分鐘的 Application Insights 元件除外，所有資源類型的一律為5分鐘。因此，對等規則的頻率也會分別設定為5分鐘和1分鐘。
-- **匯總類型**：定義度量在感對的時間範圍內的匯總方式。 在`aggregationType`傳統警示和大部分計量的新警示之間，也是相同的。 在某些情況下，由於傳統警示和新警示之間的計量不同，因此`aggregationType`會使用`primary Aggregation Type`對等的或針對度量所定義的。
+- **頻率**：定義傳統或新的警示規則檢查條件的頻率。 `frequency`傳統警示規則中的不是由使用者設定，而且對於其為1分鐘的 Application Insights 元件除外，所有資源類型的一律為5分鐘。因此，對等規則的頻率也會分別設定為5分鐘和1分鐘。
+- **匯總類型**：定義度量在感對的時間範圍內的匯總方式。 在 `aggregationType` 傳統警示和大部分計量的新警示之間，也是相同的。 在某些情況下，由於傳統警示和新警示之間的計量不同，因此 `aggregationType` `primary Aggregation Type` 會使用對等的或針對度量所定義的。
 - **單位**：要在其上建立警示之度量的屬性。 某些對等的計量有不同的單位。 臨界值會視需要適當地調整。 例如，如果原始計量的秒數為單位，但對等的新計量以毫秒為單位，則原始閾值會乘以1000，以確保相同的行為。
-- **視窗大小**：定義用於匯總計量資料以與臨界值比較的視窗。 針對標準`windowSize`值（例如5分鐘、15mins、30mins、1hour、3hours、6小時、12小時、1天），對等的新警示規則不會進行任何變更。 若為其他值，則`windowSize`會選擇要使用的最接近。 對於大部分的客戶而言，這種變更不會有任何影響。 對於少數的客戶而言，可能需要調整閾值，才能取得完全相同的行為。
+- **視窗大小**：定義用於匯總計量資料以與臨界值比較的視窗。 針對標準 `windowSize` 值（例如5分鐘、15mins、30mins、1hour、3hours、6小時、12小時、1天），對等的新警示規則不會進行任何變更。 若為其他值，則 `windowSize` 會選擇要使用的最接近。 對於大部分的客戶而言，這種變更不會有任何影響。 對於少數的客戶而言，可能需要調整閾值，才能取得完全相同的行為。
 
 在下列各節中，我們會詳細說明在新系統中具有不同、對等度量的計量。 傳統和新警示規則維持不變的任何計量都不會列出。 您可以在[這裡](metrics-supported.md)找到新系統中支援的計量清單。
 
@@ -134,7 +133,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 
 對於儲存體帳戶服務（例如 blob、資料表、檔案和佇列），下列計量會對應至對等的計量，如下所示：
 
-| 傳統警示中的計量 | 新警示中的對等度量 | 評價|
+| 傳統警示中的計量 | 新警示中的對等度量 | 註解|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| 維度為 "ResponseType" = "AuthorizationError" 和 "Authentication" = "Anonymous" 的交易度量| |
 | AnonymousClientOtherError | 維度為 "ResponseType" = "ClientOtherError" 和 "Authentication" = "Anonymous" 的交易度量 | |
@@ -146,12 +145,12 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | AuthorizationError | 維度為 "ResponseType" = "AuthorizationError" 的交易度量 | |
 | AverageE2ELatency | SuccessE2ELatency | |
 | AverageServerLatency | SuccessServerLatency | |
-| Capacity | BlobCapacity | 使用`aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
+| Capacity | BlobCapacity | 使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
 | ClientOtherError | 維度為 "ResponseType" = "ClientOtherError" 的交易度量  | |
 | ClientTimeoutError | 維度為 "ResponseType" = "ClientTimeOutError" 的交易度量 | |
-| ContainerCount | ContainerCount | 使用`aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
+| ContainerCount | ContainerCount | 使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
 | NetworkError | 維度為 "ResponseType" = "NetworkError" 的交易度量 | |
-| ObjectCount | BlobCount| 使用`aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
+| ObjectCount | BlobCount| 使用 `aggregationType` ' average '，而不是 ' last '。 度量僅適用于 Blob 服務 |
 | SASAuthorizationError | 維度為 "ResponseType" = "AuthorizationError" 和 "Authentication" = "SAS" 的交易度量 | |
 | SASClientOtherError | 維度為 "ResponseType" = "ClientOtherError" 和 "Authentication" = "SAS" 的交易度量 | |
 | SASClientTimeOutError | 維度為 "ResponseType" = "ClientTimeOutError" 和 "Authentication" = "SAS" 的交易度量 | |
@@ -162,21 +161,21 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | ServerOtherError | 維度為 "ResponseType" = "ServerOtherError" 的交易度量 | |
 | ServerTimeOutError | 維度為 "ResponseType" = "ServerTimeOutError" 的交易度量  | |
 | 成功 | 維度為 "ResponseType" = "Success" 的交易度量 | |
-| TotalBillableRequests| 異動 | |
+| TotalBillableRequests| 交易 | |
 | TotalEgress | 輸出 | |
 | TotalIngress | 輸入 | |
-| TotalRequests | 異動 | |
+| TotalRequests | 交易 | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft insights/元件
 
 針對 Application Insights，對等的計量如下所示：
 
-| 傳統警示中的計量 | 新警示中的對等度量 | 評價|
+| 傳統警示中的計量 | 新警示中的對等度量 | 註解|
 |--------------------------|---------------------------------|---------|
 | availabilityMetric。值 | availabilityResults/availabilityPercentage|   |
 | Durationmetric.value。值 | availabilityResults/duration| 將原始閾值乘以1000，表示傳統計量的單位為秒，而新的計量則以毫秒為單位。  |
-| basicExceptionBrowser。計數 | exceptions/browser|  請`aggregationType`使用 ' count '，而非 ' sum '。 |
-| basicExceptionServer。計數 | exceptions/server| 請`aggregationType`使用 ' count '，而非 ' sum '。  |
+| basicExceptionBrowser。計數 | exceptions/browser|  請使用 `aggregationType` ' count '，而非 ' sum '。 |
+| basicExceptionServer。計數 | exceptions/server| 請使用 `aggregationType` ' count '，而非 ' sum '。  |
 | clientPerformance. clientProcess. value | browserTimings/processingDuration| 將原始閾值乘以1000，表示傳統計量的單位為秒，而新的計量則以毫秒為單位。  |
 | clientPerformance. networkConnection. value | browserTimings/networkDuration|  將原始閾值乘以1000，表示傳統計量的單位為秒，而新的計量則以毫秒為單位。 |
 | clientPerformance. receiveRequest. value | browserTimings/receiveDuration| 將原始閾值乘以1000，表示傳統計量的單位為秒，而新的計量則以毫秒為單位。  |
@@ -194,14 +193,14 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | performanceCounter. requests_per_sec 值 | performanceCounters/requestsPerSecond|   |
 | 要求。持續時間 | requests/duration| 將原始閾值乘以1000，表示傳統計量的單位為秒，而新的計量則以毫秒為單位。  |
 | 要求。速率 | 要求/速率|   |
-| requestFailed。計數 | requests/failed| 請`aggregationType`使用 ' count '，而非 ' sum '。   |
-| view. count | pageViews/count| 請`aggregationType`使用 ' count '，而非 ' sum '。   |
+| requestFailed。計數 | requests/failed| 請使用 `aggregationType` ' count '，而非 ' sum '。   |
+| view. count | pageViews/count| 請使用 `aggregationType` ' count '，而非 ' sum '。   |
 
 ### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 針對 Cosmos DB，對等的計量如下所示：
 
-| 傳統警示中的計量 | 新警示中的對等度量 | 評價|
+| 傳統警示中的計量 | 新警示中的對等度量 | 註解|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | 資料大小 | DataUsage| |
@@ -212,7 +211,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | Mongo 刪除要求費用 | 具有維度 "CommandName" = "delete" 的 MongoRequestCharge||
 | Mongo 刪除要求率 | 具有維度 "CommandName" = "delete" 的 MongoRequestsCount||
 | Mongo 插入要求費用 | 具有維度 "CommandName" = "insert" 的 MongoRequestCharge||
-| Mongo 插入要求速率 | 具有維度 "CommandName" = "insert" 的 MongoRequestsCount||
+| Mongo 插入要求率 | 具有維度 "CommandName" = "insert" 的 MongoRequestsCount||
 | Mongo 查詢要求費用 | 具有維度 "CommandName" = "find" 的 MongoRequestCharge||
 | Mongo 查詢要求率 | 具有維度 "CommandName" = "find" 的 MongoRequestsCount||
 | Mongo 更新要求費用 | 具有維度 "CommandName" = "update" 的 MongoRequestCharge||
@@ -245,8 +244,8 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 - */read
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
-- Microsoft Insights/metricAlerts/*
-- Microsoft.alertsmanagement/smartDetectorAlertRules/*
+- Microsoft.Insights/metricAlerts/*
+- Microsoft.AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
 > 除了擁有上述許可權之外，您的訂用帳戶還應該向 Microsoft.alertsmanagement 資源提供者註冊。 這是在 Application Insights 上成功遷移失敗異常警示的必要參數。 
@@ -273,4 +272,4 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 ## <a name="next-steps"></a>後續步驟
 
 - [如何使用移轉工具](alerts-using-migration-tool.md)
-- [移轉準備工作](alerts-prepare-migration.md)
+- [準備移轉](alerts-prepare-migration.md)

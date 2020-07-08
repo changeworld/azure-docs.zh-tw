@@ -12,10 +12,9 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991564"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 HTTP 來源的資料
@@ -50,14 +49,14 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 下表說明 HTTP 連結服務專屬的 JSON 元素：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type | **類型**屬性必須設定為 **Http**。 | 是 |
+| type | **類型**屬性必須設定為 **Http**。 | Yes |
 | url | Web 伺服器的基底 URL。 | 是 |
-| authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱本文後續幾節。 | 是 |
-| enableServerCertificateValidation | 指定如果來源是 HTTPS web 伺服器，是否要啟用伺服器 TLS/SSL 憑證驗證。 當 HTTPS 伺服器使用自我簽署的憑證時，請將此屬性設定為 **false**。 | 否<br /> （預設值為**true**） |
+| authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱本文後續幾節。 | Yes |
+| enableServerCertificateValidation | 指定如果來源是 HTTPS web 伺服器，是否要啟用伺服器 TLS/SSL 憑證驗證。 當 HTTPS 伺服器使用自我簽署的憑證時，請將此屬性設定為 **false**。 | No<br /> （預設值為**true**） |
 | gatewayName | 用來連線至內部部署 HTTP 來源的「資料管理閘道」執行個體名稱。 | 如果要從內部部署 HTTP 來源複製資料，則為是。 |
-| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或藉由使用 **ClickOnce** 對話方塊設定驗證資訊時，便會自動產生此值。 | 否<br /> (當您從內部部署 HTTP 伺服器複製資料時才適用) |
+| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或藉由使用 **ClickOnce** 對話方塊設定驗證資訊時，便會自動產生此值。 | No<br /> (當您從內部部署 HTTP 伺服器複製資料時才適用) |
 
 如需如何設定內部部署 HTTP 連接器資料來源認證的詳細資訊，請參閱[使用資料管理閘道在內部部署來源和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -65,10 +64,10 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 將 **authenticationType** 設定為**基本**、**摘要**或 **Windows**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| userName | 用來存取 HTTP 端點的使用者名稱。 | 是 |
-| password | 使用者 (**username**) 的密碼。 | 是 |
+| userName | 用來存取 HTTP 端點的使用者名稱。 | Yes |
+| 密碼 | 使用者 (**username**) 的密碼。 | Yes |
 
 **範例︰使用基本、摘要或 Windows 驗證**
 
@@ -93,17 +92,17 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 若要使用基本驗證，請將 **authenticationType** 設定為 **ClientCertificate**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | embeddedCertData | PFX 檔案二進位資料的 Base64 編碼內容。 | 請指定**embeddedCertData**或**certThumbprint** |
 | certThumbprint | 憑證指紋已安裝在您閘道器電腦的憑證存放區上。 當您從內部部署 HTTP 來源複製資料時才適用。 | 請指定**embeddedCertData**或**certThumbprint** |
-| password | 與憑證相關聯的密碼。 | 否 |
+| 密碼 | 與憑證相關聯的密碼。 | No |
 
 如果您使用 **certThumbprint** 進行驗證且憑證已安裝在本機電腦的個人存放區中，請授與讀取權限給閘道服務︰
 
 1. 開啟 Microsoft Management Console (MMC)。 新增目標為 [本機電腦]**** 的 [憑證]**** 嵌入式管理單元。
-2. 展開 [**憑證** > ] [**個人**]，然後選取 [**憑證**]。
-3. 以滑鼠右鍵按一下 [個人] 存放區中的憑證，然後選取 [**所有** >工作] [**管理私密金鑰**]。
+2. 展開 [**憑證**] [  >  **個人**]，然後選取 [**憑證**]。
+3. 以滑鼠右鍵按一下 [個人] 存放區中的憑證，然後選取 [**所有**工作] [  > **管理私密金鑰**]。
 3. 在 [安全性]**** 索引標籤上，新增資料管理閘道主機服務使用憑證讀取存取執行所在的使用者帳戶。  
 
 **範例︰使用用戶端憑證**
@@ -157,15 +156,15 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 不同類型資料集的 **typeProperties** 區段不同。 **typeProperties** 區段可提供資料存放區中的資料位置資訊。 類型為 **Http** 的資料集中，其 **typeProperties** 區段有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的**類型**必須設定為 **Http**。 | 是 |
-| relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)。 範例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | 否 |
-| requestMethod | HTTP 方法。 允許的值為 **GET** 和 **POST**。 | 否 <br />(預設值為 **GET**) |
-| additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
+| type | 資料集的**類型**必須設定為 **Http**。 | Yes |
+| relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)。 範例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | No |
+| requestMethod | HTTP 方法。 允許的值為 **GET** 和 **POST**。 | No <br />(預設值為 **GET**) |
+| additionalHeaders | 其他 HTTP 要求標頭。 | No |
 | requestBody | HTTP 要求的主體。 | 否 |
-| format | 如果您想要「從 HTTP 端點依現狀擷取資料」** 而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
-| compression | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 如果您想要「從 HTTP 端點依現狀擷取資料」** 而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |No |
+| compression | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |No |
 
 **範例︰使用 GET (預設值) 方法**
 
@@ -220,9 +219,9 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 目前，當複製活動中的來源類型為 **HttpSource** 時，支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 逾時會取得回應，而非逾時讀取回應資料。 | 否<br />（預設值： **00:01:40**） |
+| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 逾時會取得回應，而非逾時讀取回應資料。 | No<br />（預設值： **00:01:40**） |
 
 ## <a name="supported-file-and-compression-formats"></a>支援的檔案和壓縮格式
 

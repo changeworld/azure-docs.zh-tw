@@ -1,7 +1,7 @@
 ---
 title: 準備行動應用程式-針對生產環境呼叫 web Api |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建立會呼叫 web Api 的行動應用程式。 （準備適用于生產環境的應用程式）。
+description: 了解如何建置會呼叫 Web API 的行動應用程式。 （準備適用于生產環境的應用程式）。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,10 +14,9 @@ ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882534"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>準備用於生產的行動應用程式

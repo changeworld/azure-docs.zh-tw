@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811166"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>整合內部 VNET 中的 API 管理與應用程式閘道
@@ -35,7 +34,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -87,7 +86,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 > 如果您使用 Azure AD 或第三方驗證，請啟用應用程式閘道中的 [cookie 型工作階段同質性](../application-gateway/features.md#session-affinity)功能。
 
 > [!WARNING]
-> 若要防止應用程式閘道 WAF 在開發人員入口網站中中斷下載 OpenAPI 規格，您必須停用防火牆規則`942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
+> 若要防止應用程式閘道 WAF 在開發人員入口網站中中斷下載 OpenAPI 規格，您必須停用防火牆規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` 。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>建立資源管理員的資源群組
 
@@ -220,7 +219,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> 若要設定舊版開發人員入口網站連線，您`-HostnameType DeveloperPortal`需要`-HostnameType Portal`將取代為。
+> 若要設定舊版開發人員入口網站連線，您需要將取代 `-HostnameType DeveloperPortal` 為 `-HostnameType Portal` 。
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>建立前端組態的公用 IP 位址
 
@@ -280,7 +279,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>步驟 6
 
-建立 API 管理服務 `ContosoApi` Proxy 網域端點的自訂探查。 `/status-0123456789abcdef` 路徑是裝載於所有 API 管理服務上的預設健全狀況端點。 設定`api.contoso.net`為自訂探查主機名稱，以使用 TLS/SSL 憑證來保護它。
+建立 API 管理服務 `ContosoApi` Proxy 網域端點的自訂探查。 `/status-0123456789abcdef` 路徑是裝載於所有 API 管理服務上的預設健全狀況端點。 設定 `api.contoso.net` 為自訂探查主機名稱，以使用 TLS/SSL 憑證來保護它。
 
 > [!NOTE]
 > 主機名稱 `contosoapi.azure-api.net` 則是名為 `contosoapi` 的服務在公用 Azure 中建立時所設定的預設 Proxy 主機名稱。

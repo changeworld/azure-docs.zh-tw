@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
 ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80887192"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>適用于 Android 與媒體服務 v3 的離線 Widevine 串流
@@ -42,7 +41,7 @@ ms.locfileid: "80887192"
 > [!NOTE]
 > 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 在 Android 裝置上實作適用於 Widevine 的離線 DRM 之前，您應該先：
 
@@ -161,6 +160,6 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 本文已討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。  文中也回答一些和離線串流受 Widevine 保護的內容相關的常見問題。

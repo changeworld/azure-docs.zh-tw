@@ -1,7 +1,7 @@
 ---
 title: 設定受保護的 Web API 應用程式 |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建立受保護的 Web API，並設定應用程式的程式碼。
+description: 了解如何建立受保護的 Web API，並設定應用程式的程式碼。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882466"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保護的 Web API：程式碼設定
@@ -134,7 +133,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>權杖驗證
 
-在先前的程式碼片段中，Microsoft.aspnetcore.authentication.jwtbearer 中介軟體（例如 web 應用程式中的 OpenID Connect 中介軟體）會根據的值`TokenValidationParameters`來驗證權杖。 權杖會視需要解密，宣告會解壓縮，並驗證簽章。 然後中介軟體會藉由檢查此資料來驗證權杖：
+在先前的程式碼片段中，Microsoft.aspnetcore.authentication.jwtbearer 中介軟體（例如 web 應用程式中的 OpenID Connect 中介軟體）會根據的值來驗證權杖 `TokenValidationParameters` 。 權杖會視需要解密，宣告會解壓縮，並驗證簽章。 然後中介軟體會藉由檢查此資料來驗證權杖：
 
 - 物件：權杖是以 Web API 為目標。
 - Sub：它是針對允許呼叫 Web API 的應用程式發出的。
@@ -150,7 +149,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 下表描述驗證程式：
 
-| 驗證器 | 描述 |
+| 驗證程式 | Description |
 |---------|---------|
 | **ValidateAudience** | 確保權杖適用于為您驗證權杖的應用程式。 |
 | **ValidateIssuer** | 確保權杖是由信任的 STS 所發行，這表示它是來自您信任的人。 |

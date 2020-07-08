@@ -12,17 +12,16 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885169"
 ---
 # <a name="scenario-single-page-application"></a>案例：單一頁面應用程式
 
 瞭解您所需的一切，以建立單一頁面應用程式（SPA）。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -33,9 +32,9 @@ ms.locfileid: "80885169"
 > [!div class="nextstepaction"]
 > [快速入門：單一頁面應用程式](./quickstart-v2-javascript.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-許多新式 web 應用程式都是以用戶端單一頁面應用程式的形式建立。 開發人員可以使用 JavaScript 或 SPA 架構（例如，角度、Vue 和回應 .js）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，並具有與傳統伺服器端 web 應用程式不同的驗證特性。 
+許多新式 web 應用程式都是以用戶端單一頁面應用程式的形式建立。 開發人員可以使用 JavaScript 或 SPA 架構（例如，角度、Vue.js 和 React.js）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，並具有與傳統伺服器端 web 應用程式不同的驗證特性。 
 
 Microsoft 身分識別平臺可讓單一頁面應用程式登入使用者並取得權杖，以使用[OAuth 2.0 隱含流程](./v2-oauth2-implicit-grant-flow.md)來存取後端服務或 web api。 隱含流程可讓應用程式取得識別碼權杖，以代表已驗證的使用者，也會存取呼叫受保護 Api 所需的權杖。
 
@@ -43,7 +42,7 @@ Microsoft 身分識別平臺可讓單一頁面應用程式登入使用者並取�
 
 此驗證流程不包括使用跨平臺 JavaScript 架構的應用程式案例，例如 Electron 和回應原生。 它們需要進一步的功能來與原生平臺互動。
 
-## <a name="specifics"></a>瞭解
+## <a name="specifics"></a>特性
 
 若要為您的應用程式啟用此案例，您需要：
 

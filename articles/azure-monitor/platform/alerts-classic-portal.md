@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114589"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
@@ -34,7 +33,7 @@ ms.locfileid: "81114589"
 
 6. 如果您想要讓系統管理員和共同管理員在警示引發時收到電子郵件通知，請選取 [電子郵件的擁有者...] ****。
 
-7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以分號分隔多個電子郵件，格式如下： *email\@contoso .com;\@email2 contoso.com*
+7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以分號分隔多個電子郵件，格式如下： *email \@ contoso .com; email2 \@ contoso.com*
 
 8. 如果您想在警示引發時呼叫 Webhook，在 [Webhook] **** 欄位中放入有效的 URI。
 
@@ -88,7 +87,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 此節示範如何使用 PowerShell 命令建立、檢視及管理傳統計量警示。文章中的範例說明針對傳統計量警示使用 Azure 監視器 Cmdlet 的方式。
 
-1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝和設定 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
+1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
 
 2. 首先，登入您的 Azure 訂用帳戶。
 

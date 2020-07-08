@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885526"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
@@ -46,7 +45,7 @@ ms.locfileid: "80885526"
 
 ## <a name="use-the-development-support-tools"></a>使用開發支援工具
 
-| 工具  | 描述  |
+| 工具  | 說明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 貼上識別碼或存取權杖以將宣告名稱和值解碼。 |
 | [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)| 此工具可讓您針對 Microsoft Graph API 提出要求並查看回應。 |
@@ -57,7 +56,7 @@ Stack Overflow 是適用於開發相關問題的慣用管道。 開發人員社�
 
 若無法透過搜尋找到問題的解答，請將新問題提交至 Stack Overflow。 在提出問題時使用下列其中一個標記，以協助社群更快速地識別和回答您的問題：
 
-|元件/區域  | 標記 |
+|元件/區域  | Tags |
 |---------|---------|
 | ADAL 程式庫 | [adal](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 程式庫     | [msal](https://stackoverflow.com/questions/tagged/msal) |

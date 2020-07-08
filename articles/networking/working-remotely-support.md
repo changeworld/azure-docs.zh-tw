@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80982849"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 網路服務從遠端工作
@@ -80,7 +79,7 @@ Azure 也有一組豐富的 eco 系統合作夥伴。 我們的合作夥伴在 A
 
 下列文章將討論如何使用不同的 Azure 網路功能來調整使用者，以進行遠端工作：
 
-| **篇** | **說明** |
+| **篇** | **描述** |
 | --- | --- |
 | [如何讓使用者從遠端工作](../vpn-gateway/work-remotely-support.md) | 查看可用的選項來設定使用者的遠端存取，或為您的組織提供額外的容量來補充其現有解決方案。|
 | [要努力滿足家庭需求的工作嗎？以下是 Azure 虛擬 WAN 可提供協助的地方](../virtual-wan/work-remotely-support.md) | 使用 Azure 虛擬 WAN 來解決組織的遠端連線需求。|

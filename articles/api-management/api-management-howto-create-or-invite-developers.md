@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260967"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理使用者帳戶
@@ -25,7 +24,7 @@ ms.locfileid: "81260967"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 完成本文中的工作：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 
@@ -36,13 +35,13 @@ ms.locfileid: "81260967"
 若要新增使用者，請遵循本節中的步驟：
 
 1. 選取畫面左側的 [使用者]**** 索引標籤。
-2. 按下 [ **+ 新增**]。
+2. 按 [+新增]。
 3. 輸入使用者的適當資訊。
-4. 按 [新增] ****。
+4. 按 [**新增**]。
 
     ![新增使用者](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-依預設，新建立的開發人員帳戶為 [作用中]****，且與 [開發人員]**** 群組相關聯。 處於「作用中」 **** 狀態的開發人員帳戶可用來存取擁有訂用帳戶的所有 API。 若要將新建立的開發人員與其他群組建立關聯，請參閱 [如何將群組與開發人員建立關聯][How to associate groups with developers]。
+根據預設，新建立的開發人員帳戶會處於作用中**狀態**，並與**開發人員**群組相關聯。 處於「作用中 **」狀態的**開發人員帳戶可用來存取其訂閱的所有 api。 若要將新建立的開發人員與其他群組建立關聯，請參閱 [如何將群組與開發人員建立關聯][How to associate groups with developers]。
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>邀請開發人員
 若要邀請開發人員，請遵循本節中的步驟：

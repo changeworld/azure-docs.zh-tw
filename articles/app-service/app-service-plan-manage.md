@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811722"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 建立管理 App Service 方案
@@ -24,11 +23,11 @@ ms.locfileid: "80811722"
 
 您可建立空白的 App Service 方案，或是在應用程式建立期間建立方案。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]****。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**建立資源**]。
 
    ![在 Azure 入口網站中建立資源。][createResource] 
 
-1. 選取 [**新增** > **Web 應用程式**] 或其他類型的 app service 應用程式。
+1. 選取 [**新增**  >  **Web 應用程式**] 或其他類型的 app service 應用程式。
 
    ![在 Azure 入口網站中建立應用程式。][createWebApp] 
 

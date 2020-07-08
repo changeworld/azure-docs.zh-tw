@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253708"
 ---
 # <a name="how-caching-works"></a>快取的運作方式
@@ -69,7 +68,7 @@ ms.locfileid: "81253708"
 
 Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取持續時間和快取共用。
 
-**Cache-Control：**
+**Cache-控制項：**
 - 在 HTTP 1.1 中導入，讓 web 發行者能更充分掌控其內容，並處理 `Expires` 標頭的限制。
 - 如果已同時定義 `Expires` 標頭和 `Cache-Control`，則覆寫前者。
 - 使用於來自用戶端對 CDN POP 的 HTTP 要求時，依預設所有 Azure CDN 設定檔都會忽略 `Cache-Control`。
@@ -126,8 +125,8 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 
 |    | Microsoft：一般 Web 傳遞 | Verizon：一般 Web 傳遞 | Verizon：DSA | Akamai：一般 Web 傳遞 | Akamai：DSA | Akamai：大型檔案下載 | Akamai：一般或 VOD 媒體串流處理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **接受來源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
-| **CDN 快取持續時間** | 2 天 |7 天 | 無 | 7 天 | 無 | 1 日 | 1 年 |
+| **接受來源**       | Yes    | 是   | 否   | 是    | 否   | 是   | Yes    |
+| **CDN 快取持續時間** | 2 天 |7 天 | None | 7 天 | None | 1 日 | 1 年 |
 
 **接受來源**：指定如果支援的快取指示詞標頭存在於原始伺服器的 HTTP 回應中，是否要加以接受。
 

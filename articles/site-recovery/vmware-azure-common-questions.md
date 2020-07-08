@@ -4,10 +4,9 @@ description: 使用 Azure Site Recovery，取得內部部署 VMware Vm 到 Azure
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259505"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
@@ -282,7 +281,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>哪裡可以下載保存庫註冊金鑰？
 
-在復原服務保存庫中，選取**Site Recovery 基礎結構** > ] [**管理**] 中的 [設定**伺服器**]。 然後，在 [**伺服器**] 中，選取 [**下載註冊金鑰**] 以下載保存庫認證檔案。
+在復原服務保存庫中，選取**Site Recovery 基礎結構**] [管理] 中的 [設定**伺服器**]  >  ** **。 然後，在 [**伺服器**] 中，選取 [**下載註冊金鑰**] 以下載保存庫認證檔案。
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用單一設定伺服器來保護多個 vCenter 實例？
 

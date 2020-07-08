@@ -12,17 +12,16 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881480"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>案例：登入使用者的 Web 應用程式
 
 瞭解您所需的一切，以建立使用 Microsoft 身分識別平臺來登入使用者的 web 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -58,7 +57,7 @@ ms.locfileid: "80881480"
 
 ---
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 您可以將驗證新增至 web 應用程式，讓它可以登入使用者。 新增驗證可讓您的 web 應用程式存取有限的設定檔資訊，以自訂使用者的體驗。 
 
@@ -71,7 +70,7 @@ Web apps 會在網頁瀏覽器中驗證使用者。 在此案例中，web 應用
 > [!NOTE]
 > 將登入新增至 web 應用程式時，是關於保護 web 應用程式和驗證使用者權杖，這是**中介軟體**程式庫的功能。 在 .NET 中，此案例尚未需要 Microsoft 驗證程式庫（MSAL），這是關於取得權杖以呼叫受保護的 Api。 當 web 應用程式需要呼叫 web Api 時，會在後續的案例中引進驗證程式庫。
 
-## <a name="specifics"></a>瞭解
+## <a name="specifics"></a>特性
 
 - 在應用程式註冊期間，您必須提供一或多個（如果您將應用程式部署至數個位置）回復 Uri。 在某些情況下（ASP.NET 和 ASP.NET Core），您必須啟用 ID 權杖。 最後，您會想要設定登出 URI，讓您的應用程式對登出使用者做出回應。
 - 在應用程式的程式碼中，您必須提供 web 應用程式委派登入的許可權。 您可能想要自訂權杖驗證（尤其是在合作夥伴案例中）。

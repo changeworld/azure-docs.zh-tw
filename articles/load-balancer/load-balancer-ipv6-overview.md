@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981846"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概觀
@@ -40,7 +39,7 @@ ms.locfileid: "80981846"
 
 部署之後，已啟用 IPv4 或 IPv6 的網際網路用戶端可以與網際網路面向的 Azure Load Balancer 公用 IPv4 或 IPv6 位址 (或主機名稱) 進行通訊。 負載平衡器會使用網路位址轉譯 (NAT) 將 IPv6 封包傳送至 VM 的私人 IPv6 位址。 IPv6 網際網路用戶端無法與 VM 的 IPv6 位址直接通訊。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 透過 Azure Resource Manager部署的原生 IPv6 支援提供︰
 

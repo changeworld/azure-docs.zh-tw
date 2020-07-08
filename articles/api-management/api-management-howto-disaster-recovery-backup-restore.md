@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
 ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260984"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
@@ -68,7 +67,7 @@ ms.locfileid: "81260984"
 4. 輸入應用程式的名稱。
 5. 針對應用程式類型，選取 [原生]****。
 6. 輸入 [重新導向 URI]**** 的預留位置 URL，例如 `http://resources`，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
-7. 按一下 [建立]  。
+7. 按一下 [建立]。
 
 ### <a name="add-an-application"></a>新增應用程式
 
@@ -115,7 +114,7 @@ namespace GetTokenResourceManagerRequests
 
 請使用下列指示來取代 `{tenant id}`、`{application id}` 和 `{redirect uri}`：
 
-1. 使用您所建立 Azure Active Directory 應用程式的租用戶識別碼來取代 `{tenant id}`。 您可以按一下 [**應用程式註冊** -> **端點**] 來存取識別碼。
+1. 使用您所建立 Azure Active Directory 應用程式的租用戶識別碼來取代 `{tenant id}`。 您可以按一下 [**應用程式註冊**端點] 來存取識別碼  ->  ** **。
 
     ![端點][api-management-endpoint]
 
@@ -124,7 +123,7 @@ namespace GetTokenResourceManagerRequests
 
     指定值之後，程式碼範例應該會傳回類似以下範例的權杖：
 
-    ![權杖][api-management-arm-token]
+    ![Token][api-management-arm-token]
 
     > [!NOTE]
     > 權杖可能會在一段時間之後過期。 再次執行程式碼範例即可產生新的權杖。
@@ -229,8 +228,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 -   [複寫 Azure API 管理帳戶 (英文)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用 Logic Apps 將 API 管理備份與還原自動化](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps) \(英文\)
--   [Azure API 管理：備份和還原](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    設定_Stuart 所詳述的方法不符合官方指導方針，但很有趣。_
+-   [AZURE API 管理：備份和還原設定](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) 
+    _Stuart 所詳述的方法不符合官方指引，但很有趣。_
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

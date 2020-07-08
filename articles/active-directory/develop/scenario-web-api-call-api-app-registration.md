@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 048f7d41bd9d106121859e6b1fc013258067af9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885118"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>呼叫 web Api 的 Web API：應用程式註冊
@@ -28,7 +27,7 @@ ms.locfileid: "80885118"
 
 ## <a name="api-permissions"></a>API 權限
 
-Web apps 會代表收到持有人權杖的使用者呼叫 Api。 Web apps 需要要求委派的許可權。 如需詳細資訊，請參閱[新增存取 Web api 的許可權](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+Web apps 會代表收到持有人權杖的使用者呼叫 Api。 Web apps 需要要求委派的許可權。 如需詳細資訊，請參閱[新增存取 Web API 的許可權](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811407"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何設定雲端服務
@@ -46,7 +45,7 @@ ms.locfileid: "80811407"
 
 ## <a name="monitoring"></a>監視
 
-您可以將警示新增至雲端服務。 按一下 [**設定** > ] [**警示規則** > ] [**新增警示**]。
+您可以將警示新增至雲端服務。 按一下 [**設定**] [  >  **警示規則**] [  >  **新增警示**]。
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +61,7 @@ ms.locfileid: "80811407"
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>從計量圖格設定監視
 
-您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量磚，而不是使用 [**設定** > ] [**警示規則**]。
+**Settings**  >  您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量磚，而不是使用 [設定] [**警示規則**]。
 
 ![雲端服務監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -101,7 +100,7 @@ ms.locfileid: "80811407"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
-* 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
+* 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
 * 設定[TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
 

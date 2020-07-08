@@ -1,5 +1,5 @@
 ---
-title: 為指定的 API 選取許可權
+title: 為指定 API 選取權限
 description: 了解權限要求如何針對您正在開發之應用程式的用戶端及資源應用程式運作
 services: active-directory
 author: rwike77
@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80883885"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何為指定的 API 選取權限 

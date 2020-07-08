@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253504"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>來自 Verizon 的 Azure CDN Premium 規則引擎條件運算式
@@ -20,13 +19,13 @@ ms.locfileid: "81253504"
 
 規則的第一個部分是條件運算式。
 
-條件運算式 | 描述
+條件運算式 | Description
 -----------------------|-------------
 IF | IF 運算式永遠是規則中第一個陳述式的一部分。 像所有其他條件運算式一樣，此 IF 陳述式必須與符合項目相關聯。 如果未定義任何其他條件運算式，這項比對會決定在將一組功能套用至要求之前必須符合的條件。
 AND IF | AND IF 運算式只能在下列類型的條件運算式之後新增︰IF、AND IF。 它表示針對初始 IF 陳述式有必須符合的另一個條件。
 ELSE IF| ELSE IF 運算式會指定其他條件，必須在此 ELSE IF 陳述式特定的一組功能發生之前符合。 有 ELSE IF 陳述式表示前一個陳述式的結尾。 可以放在 ELSE IF 陳述式之後的條件運算式是另一個 ELSE IF 陳述式。 這表示 ELSE IF 陳述式只能用來指定必須符合的單一其他條件。
 
-**範例**： ![CDN 比對條件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**範例**： ![ CDN 比對條件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
    > 後一項規則可能會覆寫前一項規則所指定的動作。

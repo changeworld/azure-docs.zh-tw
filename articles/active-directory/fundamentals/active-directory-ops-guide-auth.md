@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876287"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 驗證管理操作參考指南
@@ -31,7 +30,7 @@ ms.locfileid: "80876287"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| 工作 | 擁有者 |
+| Task | 擁有者 |
 | :- | :- |
 | 管理 Azure AD 中單一登入（SSO）設定的生命週期 | IAM 作業小組 |
 | 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構團隊 |
@@ -128,7 +127,7 @@ Microsoft 也建議您洽詢應用程式擁有者，以瞭解使用模式（如�
 您可以使用下列其中一種方法，在 Azure AD 中導入裝置身分識別並加以管理，藉此達成此目標：
 
 - 組織可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理裝置及強制執行合規性政策、證明裝置健康情況，並根據裝置是否符合規範設定條件式存取原則。 Microsoft Intune 可以管理 iOS 裝置、Mac 桌面（透過 JAMF 整合）、Windows 桌面（原生使用適用于 Windows 10 的行動裝置管理，以及與 Microsoft 端點 Configuration Manager 的共同管理）和 Android 行動裝置。
-- [混合式 Azure AD join](../devices/hybrid-azuread-join-managed-domains.md)可讓您在具有 Active Directory 已加入網域的電腦裝置的環境中，使用群組原則或 Microsoft 端點 Configuration Manager 進行管理。 組織可以透過 PHS 或 PTA 使用無縫 SSO 部署受管理的環境。 讓您的裝置 Azure AD 透過 SSO 在雲端和內部部署資源中提高使用者生產力，同時使用 [條件式存取](../conditional-access/overview.md) 來保護對雲端和內部部署資源的存取。
+- [混合式 Azure AD join](../devices/hybrid-azuread-join-managed-domains.md)可讓您在具有 Active Directory 已加入網域的電腦裝置的環境中，使用群組原則或 Microsoft 端點 Configuration Manager 進行管理。 組織可以透過 PHS 或 PTA 使用無縫 SSO 部署受管理的環境。 讓您的裝置 Azure AD 透過 SSO 在雲端和內部部署資源中提高使用者生產力，同時使用條件式存取來保護對雲端和內部部署資源的存取 [Conditional Access](../conditional-access/overview.md)   。
 
 如果您有未在雲端註冊的已加入網域 Windows 裝置，或是已在雲端中註冊但沒有條件式存取原則的已加入網域 windows 裝置，則您應該註冊未註冊的裝置，並在任何一種情況下，在條件式存取原則中[使用混合式 Azure AD join 做為控制項](../conditional-access/require-managed-devices.md)。
 
@@ -140,7 +139,7 @@ Microsoft 也建議您洽詢應用程式擁有者，以瞭解使用模式（如�
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>建議閱讀的裝置信任存取原則
 
-- [如何：規劃混合式 Azure Active Directory 聯結執行](../devices/hybrid-azuread-join-plan.md)
+- [How To:規劃混合式 Azure Active Directory Join 實作](../devices/hybrid-azuread-join-plan.md)
 - [身分識別與裝置存取設定](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello 企業版
@@ -199,7 +198,7 @@ Microsoft 也建議您洽詢應用程式擁有者，以瞭解使用模式（如�
 在 Azure AD 中使用[已命名的位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)時，您可以為組織中的受信任 IP 位址範圍加上標籤。 Azure AD 使用具名位置來：
 
 - 避免風險事件中的誤報。 從信任的網路位置登入，會降低使用者的登入風險。
-- 設定以[位置為基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
+- 設定[位置型條件式存取](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
 
 ![具名位置](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -296,7 +295,7 @@ Microsoft Intune 應用程式管理（MAM）可讓您將資料保護控制項（
 
 以下是您可能想要對 Microsoft 雲端服務進行的許可權的應用程式清單：
 
-- 具有應用程式或委派\*的應用程式。ReadWrite 許可權
+- 具有應用程式或委派的應用程式 \* 。ReadWrite 許可權
 - 具有委派許可權的應用程式可以代表使用者讀取、傳送或管理電子郵件
 - 使用下列許可權授與的應用程式：
 

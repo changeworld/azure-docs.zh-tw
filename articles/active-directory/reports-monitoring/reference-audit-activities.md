@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80891504"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 稽核活動參考
@@ -256,17 +255,17 @@ Azure AD 中的報告架構包含下列元件：
 |目錄管理|取得租用戶資訊|
 |目錄管理|取得租用戶允許的功能|
 |目錄管理|取得 tenantDomains|
-|Key|取得租用戶的類型|
-|Key|驗證是否已啟用 B2C 功能|
-|Key|驗證是否已啟用功能|
-|Key|將夥伴新增至公司|
-|Key|新增未驗證的網域|
-|Key|新增已驗證的網域|
-|Key|建立公司|
-|Key|建立公司設定|
-|Key|刪除公司設定|
-|Key|將夥伴降級|
-|Key|已刪除的目錄|
+|答案|取得租用戶的類型|
+|答案|驗證是否已啟用 B2C 功能|
+|答案|驗證是否已啟用功能|
+|答案|將夥伴新增至公司|
+|答案|新增未驗證的網域|
+|答案|新增已驗證的網域|
+|答案|建立公司|
+|答案|建立公司設定|
+|答案|刪除公司設定|
+|答案|將夥伴降級|
+|答案|已刪除的目錄|
 |其他|永久刪除的目錄|
 |其他|排程刪除的目錄|
 |資源|將公司升級為夥伴|
@@ -469,7 +468,7 @@ Azure AD 中的報告架構包含下列元件：
 |使用者管理|ActivationCanceled|
 |使用者管理|ActivationRequested|
 |使用者管理|將合格成員新增至角色|
-|使用者管理|將成員新增至角色|
+|使用者管理|將成員新增到角色|
 |使用者管理|將角色指派新增至角色定義|
 |使用者管理|從範本新增角色|
 |使用者管理|將範圍成員新增至角色|
@@ -505,7 +504,7 @@ Azure AD 中的報告架構包含下列元件：
 |稽核類別|活動|
 |---|---|
 |目錄管理|提高權限|
-|目錄管理|已移除|
+|目錄管理|移除|
 |目錄管理|角色設定變更|
 |其他|ScanAlertsNow|
 |其他|註冊|
@@ -562,7 +561,7 @@ Azure AD 中的報告架構包含下列元件：
 |PIM|DismissAlert|
 |PIM|提高權限|
 |PIM|ReactivateAlert|
-|PIM|已移除|
+|PIM|移除|
 |PIM|RemovedOutsidePIM|
 |PIM|要求停止檢閱|
 |PIM|角色設定變更|

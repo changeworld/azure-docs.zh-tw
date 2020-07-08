@@ -13,10 +13,9 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991002"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 Web API：程式碼設定
@@ -73,7 +72,7 @@ AddAccountToCacheFromJwt （）方法必須：
 
 ### <a name="instantiate-a-confidential-client-application"></a>具現化機密用戶端應用程式
 
-此流程僅適用于機密用戶端流程，因此受保護的 Web API 會透過`WithClientSecret`或`WithCertificate`方法，將用戶端認證（用戶端密碼或憑證）提供給[ConfidentialClientApplicationBuilder 類別](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+此流程僅適用于機密用戶端流程，因此受保護的 Web API 會透過或方法，將用戶端認證（用戶端密碼或憑證）提供給[ConfidentialClientApplicationBuilder 類別](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) `WithClientSecret` `WithCertificate` 。
 
 ![IConfidentialClientApplication 方法的清單](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -98,7 +97,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>如何呼叫代理者
 
-您可以在`IConfidentialClientApplication`介面上呼叫[AcquireTokenOnBehalf 方法](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)，以進行代理者（OBO）呼叫。
+您可以在介面上呼叫[AcquireTokenOnBehalf 方法](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)，以進行代理者（OBO）呼叫 `IConfidentialClientApplication` 。
 
 `UserAssertion`類別是從本身用戶端的 Web API 所收到的持有人權杖所建立。 有[兩種構造](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)函式：
 * 一個使用 JSON Web 權杖（JWT）持有人權杖
@@ -106,7 +105,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ![UserAssertion 屬性和方法](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-實際上，OBO 流程通常用來取得下游 API 的權杖，並將它儲存在 MSAL.NET 使用者權杖快取中。 您可以這樣做，讓 Web API 的其他部分稍後可以在的[覆寫](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)上``AcquireTokenOnSilent``呼叫，以呼叫下游 api。 此呼叫具有重新整理權杖的效果（如有需要）。
+實際上，OBO 流程通常用來取得下游 API 的權杖，並將它儲存在 MSAL.NET 使用者權杖快取中。 您可以這樣做，讓 Web API 的其他部分稍後可以在的[覆寫](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)上呼叫 ``AcquireTokenOnSilent`` ，以呼叫下游 api。 此呼叫具有重新整理權杖的效果（如有需要）。
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -145,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
-下列程式碼會在 Web API 中使用`SecurityContextHolder`春季安全性架構，以取得已驗證的持有人權杖。 接著，它會使用 MSAL JAVA 程式庫，透過`acquireToken`呼叫來取得下游 API 的權杖`OnBehalfOfParameters`。 MSAL 會快取權杖，讓後續對 API 的呼叫可以`acquireTokenSilently`使用來取得緩存的權杖。
+下列程式碼會在 Web API 中使用春季安全性架構 `SecurityContextHolder` ，以取得已驗證的持有人權杖。 接著，它會使用 MSAL JAVA 程式庫，透過呼叫來取得下游 API 的權杖 `acquireToken` `OnBehalfOfParameters` 。 MSAL 會快取權杖，讓後續對 API 的呼叫可以使用 `acquireTokenSilently` 來取得緩存的權杖。
 
 ```Java
 @Component
@@ -214,11 +213,11 @@ class MsalAuthHelper {
 
 代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
-Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖。 如需使用此 API 的範例，請參閱[GitHub 上的 microsoft 驗證-適用于 python 的測試程式碼](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另請參閱此相同存放庫中的[問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)討論，以取得略過中介層應用程式需求的方法。
+Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 如需使用此 API 的範例，請參閱[GitHub 上的 microsoft 驗證-適用于 python 的測試程式碼](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另請參閱此相同存放庫中的[問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)討論，以取得略過中介層應用程式需求的方法。
 
 ---
 
-您也可以在[node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)中查看 OBO 流程執行的範例。
+您也可以在[Node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)中查看 OBO 流程執行的範例。
 
 ## <a name="protocol"></a>通訊協定
 

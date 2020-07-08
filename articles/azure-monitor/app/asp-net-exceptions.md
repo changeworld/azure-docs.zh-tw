@@ -4,10 +4,9 @@ description: 擷取從 ASP.NET 應用程式與所要求遙測的例外狀況。
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892337"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 在 Web 應用程式中診斷例外狀況
@@ -157,7 +156,7 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
 ## <a name="browser-exceptions"></a>瀏覽器例外狀況
 大部分的瀏覽器例外狀況都會報告。
 
-如果您的網頁包含來自內容傳遞網路或其他網域的腳本檔案，請確定您的腳本標記```crossorigin="anonymous"```具有屬性，而且伺服器會傳送[CORS 標頭](https://enable-cors.org/)。 這可讓您從這些資源取得未處理 JavaScript 例外狀況的堆疊追蹤和詳細資料。
+如果您的網頁包含來自內容傳遞網路或其他網域的腳本檔案，請確定您的腳本標記具有屬性 ```crossorigin="anonymous"``` ，而且伺服器會傳送[CORS 標頭](https://enable-cors.org/)。 這可讓您從這些資源取得未處理 JavaScript 例外狀況的堆疊追蹤和詳細資料。
 
 ## <a name="reuse-your-telemetry-client"></a>重複使用您的遙測用戶端
 
@@ -255,7 +254,7 @@ public class GoodController : ApiController
     ...
 ```
 
-[範例](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[抽樣](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 註冊 `AiHandleErrorAttribute` 做為 Global.asax.cs 中的全域篩選器：
@@ -270,7 +269,7 @@ public class GoodController : ApiController
      ...
 ```
 
-[範例](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[抽樣](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4、MVC5
 註冊 AiHandleErrorAttribute 做為 FilterConfig.cs 中的全域篩選器：
@@ -286,7 +285,7 @@ public class GoodController : ApiController
     }
 ```
 
-[範例](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[抽樣](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Web API
 從 Application Insights Web SDK 2.6 版 (beta3 和更新版本) 開始，Application Insights 會自動針對 WebAPI 2+ 收集在控制器方法中擲回的未處理例外狀況。 如果您先前已新增自訂處理常式來追蹤此類例外狀況 (如下列範例中所述)，您可以將其移除，以避免重複追蹤例外狀況。
@@ -354,7 +353,7 @@ public class GoodController : ApiController
     }
 ```
 
-[範例](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[抽樣](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Web API 2.x
 新增 IExceptionLogger 的實作：
@@ -409,7 +408,7 @@ public class GoodController : ApiController
      }
 ```
 
-[範例](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[抽樣](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 做為替代方案，您可以：
 
@@ -479,7 +478,7 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[範例](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[抽樣](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>例外狀況效能計數器
 如果您已在伺服器上[安裝 Application Insights代理程式](../../azure-monitor/app/monitor-performance-live-website-now.md)，您便可取得由 .NET 測量的例外狀況比率圖表。 這包括已處理和未處理的 .NET 例外狀況。

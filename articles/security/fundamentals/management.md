@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981302"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
@@ -138,7 +137,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ## <a name="client-configuration"></a>用戶端組態
 針對強化後的工作站，我們有三種主要組態建議。 這三者之間最大的差異在於成本、可用性和存取性，但它們提供的所有選項都有類似的安全性設定檔。 下表扼要分析其各自的優點與風險。 (請注意，「公司電腦」指的是將為所有網域使用者 (不論角色為何) 部署的標準桌面電腦組態)。
 
-| 設定 | 優點 | 缺點 |
+| 組態 | 優點 | 缺點 |
 | --- | --- | --- |
 | 獨立的強化後工作站 |受到嚴格控制的工作站 |專用桌上型電腦的成本較高 |
 | - | 降低應用程式入侵風險 |增加管理工作 |
@@ -171,10 +170,10 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ## <a name="best-practices"></a>最佳作法
 當您管理 Azure 中的應用程式和資料時，請考慮下列額外的方針。
 
-### <a name="dos-and-donts"></a>建議事項和避免事項
+### <a name="dos-and-donts"></a>可行與禁止事項
 請勿因為工作站已封鎖起來，就認為不需要滿足其他常見的安全性需求。 因為系統管理員帳戶通常擁有提高權限的存取層級，因此潛在風險會提高。 下表顯示風險和其替代安全作法的範例。
 
-| 不要做的事 | 要做的事 |
+| 禁止事項 | 要做的事 |
 | --- | --- |
 | 不要傳送電子郵件給系統管理員存取或其他秘密（例如，TLS/SSL 或管理憑證） |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
 | - | 主動管理您的管理憑證生命週期。 |
@@ -206,7 +205,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 使用強化後的工作站組態來管理 Azure 雲端服務、虛擬機器和應用程式，可協助您避免遠端管理重要 IT 基礎結構所產生的眾多風險和威脅。 Azure 和 Windows 皆可提供相關機制供您保護和控制通訊、驗證和用戶端行為。
 
 ## <a name="next-steps"></a>後續步驟

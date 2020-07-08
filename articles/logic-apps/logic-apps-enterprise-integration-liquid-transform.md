@@ -9,23 +9,22 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879168"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的 Liquid 範本執行進階的 JSON 轉換
 
-您可以透過原生資料作業動作 (例如**撰寫**或**剖析 JSON**)，在邏輯應用程式中進行基本 JSON 轉換。 若要執行進階的 JSON 轉換，您可以使用 [Liquid](https://shopify.github.io/liquid/) 建立範本或對應，Liquid 是適用於可變動 Web 應用程式的開放原始碼範本語言。 液體範本會定義如何轉換 JSON 輸出，並支援更複雜的 JSON 轉換，例如反復專案、控制流程、變數等等。
+您可以透過原生資料作業動作 (例如**撰寫**或**剖析 JSON**)，在邏輯應用程式中進行基本 JSON 轉換。 若要執行進階的 JSON 轉換，您可以使用 [Liquid](https://shopify.github.io/liquid/) 建立範本或對應，Liquid 是適用於可變動 Web 應用程式的開放原始碼範本語言。 Liquid 範本可定義轉換 JSON 輸出的方式，並可支援更複雜的 JSON 轉換，例如反覆項目、控制流程、變數等等。
 
 您必須先定義具有液體範本的 JSON 與 JSON 對應，並將該對應儲存在您的整合帳戶中，才可以在邏輯應用程式中執行液體轉換。 本文會示範如何建立及使用此 Liquid 範本或對應。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 基本[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
@@ -57,7 +56,7 @@ ms.locfileid: "80879168"
    }
    ```
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的 [Azure 搜尋服務] 方塊`integration accounts`中，輸入，然後選取 [**整合帳戶**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的 [Azure 搜尋服務] 方塊中，輸入 `integration accounts` ，然後選取 [**整合帳戶**]。
 
    ![尋找「整合帳戶」](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -86,7 +85,7 @@ ms.locfileid: "80879168"
 
 1. 在邏輯應用程式設計工具中，將[要求觸發程序](../connectors/connectors-native-reqres.md#add-request)新增至邏輯應用程式。
 
-1. 在觸發程序下方，選擇 [新增步驟]****。 在搜尋方塊中，輸入`liquid`做為您的篩選準則，然後選取此動作：將**JSON 轉換為 json-液體**
+1. 在觸發程序下方，選擇 [新增步驟]。 在搜尋方塊中，輸入 `liquid` 做為您的篩選準則，然後選取此動作：將**JSON 轉換為 Json-液體**
 
    ![尋找並選取 Liquid 動作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

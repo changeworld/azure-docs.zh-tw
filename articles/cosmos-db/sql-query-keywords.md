@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261562"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
@@ -19,7 +18,7 @@ ms.locfileid: "81261562"
 
 ## <a name="between"></a>BETWEEN
 
-您可以使用`BETWEEN`關鍵字，根據字串或數值的範圍來表示查詢。 例如，下列查詢會傳回第一個子系的成績為1-5 （含）的所有專案。
+您可以使用 `BETWEEN` 關鍵字，根據字串或數值的範圍來表示查詢。 例如，下列查詢會傳回第一個子系的成績為1-5 （含）的所有專案。
 
 ```sql
     SELECT *
@@ -27,17 +26,17 @@ ms.locfileid: "81261562"
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-您也可以在`BETWEEN` `SELECT`子句中使用關鍵字，如下列範例所示。
+您也可以在子句中使用 `BETWEEN` 關鍵字 `SELECT` ，如下列範例所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-在 SQL API 中，與 ANSI SQL 不同的是，您可以針對混合類型的屬性工作表示範圍查詢。 例如， `grade`可能是像`5`在某些專案中的數位，以及如`grade4`其他的字串。 在這些情況下，如同在 JavaScript 中，兩個不同類型之間的比較`Undefined`會產生，因此會略過專案。
+在 SQL API 中，與 ANSI SQL 不同的是，您可以針對混合類型的屬性工作表示範圍查詢。 例如， `grade` 可能是像 `5` 在某些專案中的數位，以及如其他的字串 `grade4` 。 在這些情況下，如同在 JavaScript 中，兩個不同類型之間的比較會產生 `Undefined` ，因此會略過專案。
 
 > [!TIP]
-> 如需更快速的查詢執行時間，請建立索引編制原則，針對`BETWEEN`子句所篩選的任何數值屬性或路徑，使用範圍索引類型。
+> 如需更快速的查詢執行時間，請建立索引編制原則，針對子句所篩選的任何數值屬性或路徑，使用範圍索引類型 `BETWEEN` 。
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -103,7 +102,7 @@ FROM f
 ]
 ```
 
-不支援具有匯總系統函數和子查詢的`DISTINCT`查詢。 例如，不支援下列查詢：
+不支援具有彙總系統函式的查詢，以及具有 `DISTINCT` 的子查詢。 例如，不支援下列查詢：
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -111,7 +110,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-使用 IN 關鍵字來檢查指定的值是否符合清單中的任何值。 例如，下列查詢會傳回為`id` `WakefieldFamily`或`AndersenFamily`的所有家族專案。
+使用 IN 關鍵字來檢查指定的值是否符合清單中的任何值。 例如，下列查詢會傳回為或的所有家族專案 `id` `WakefieldFamily` `AndersenFamily` 。
 
 ```sql
     SELECT *
@@ -129,11 +128,11 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 SQL API 支援[反覆運算 JSON 陣列](sql-query-object-array.md#Iteration)，並透過從來源的 in 關鍵字新增結構。
 
-如果您在篩選中包含分割區`IN`索引鍵，您的查詢將會自動篩選成隻有相關的資料分割。
+如果您在篩選中包含分割區索引鍵 `IN` ，您的查詢將會自動篩選成隻有相關的資料分割。
 
 ## <a name="top"></a>頂端
 
-TOP 關鍵字會以未定義`N`的順序傳回第一個查詢結果數目。 最佳做法是使用 TOP 搭配`ORDER BY`子句，將結果限制為第一個`N`排序值的數目。 結合這兩個子句是可預測的唯一方式，指出最常影響的資料列。
+TOP 關鍵字會 `N` 以未定義的順序傳回第一個查詢結果數目。 最佳做法是使用 TOP 搭配 `ORDER BY` 子句，將結果限制為第一個 `N` 排序值的數目。 結合這兩個子句是可預測的唯一方式，指出最常影響的資料列。
 
 您可以使用 TOP 搭配常數值，如下列範例所示，或搭配使用參數化查詢的變數值。
 
@@ -166,6 +165,6 @@ TOP 關鍵字會以未定義`N`的順序傳回第一個查詢結果數目。 最
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [聯結](sql-query-join.md)
 - [子查詢](sql-query-subquery.md)

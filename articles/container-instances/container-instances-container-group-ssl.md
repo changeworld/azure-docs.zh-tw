@@ -4,10 +4,9 @@ description: 在側車容器中執行 Nginx，為在 Azure 容器實例中執行
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80984601"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>啟用側車容器中的 TLS 端點
@@ -46,19 +45,19 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-您現在應該會在目錄中看到三個檔案：憑證要求`ssl.csr`（）、私密金鑰（`ssl.key`），以及自我簽署憑證（`ssl.crt`）。 您在`ssl.key`稍後`ssl.crt`的步驟中會使用和。
+您現在應該會在目錄中看到三個檔案：憑證要求（ `ssl.csr` ）、私密金鑰（ `ssl.key` ），以及自我簽署憑證（ `ssl.crt` ）。 您 `ssl.key` `ssl.crt` 在稍後的步驟中會使用和。
 
 ## <a name="configure-nginx-to-use-tls"></a>將 Nginx 設定為使用 TLS
 
 ### <a name="create-nginx-configuration-file"></a>建立 Nginx 設定檔
 
-在本節中，您會建立 Nginx 的設定檔，以使用 TLS。 首先，將下列文字複製到名為`nginx.conf`的新檔案中。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code 在您的工作目錄中建立檔案：
+在本節中，您會建立 Nginx 的設定檔，以使用 TLS。 首先，將下列文字複製到名為的新檔案中 `nginx.conf` 。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code，在工作目錄中建立檔案：
 
 ```console
 code nginx.conf
 ```
 
-在`location`中，請務必為`proxy_pass`您的應用程式設定正確的埠。 在此範例中，我們會為`aci-helloworld`容器設定埠80。
+在中 `location` ，請務必為 `proxy_pass` 您的應用程式設定正確的埠。 在此範例中，我們會為容器設定埠 80 `aci-helloworld` 。
 
 ```console
 # nginx Configuration File
@@ -138,13 +137,13 @@ cat ssl.key | base64 > base64-ssl.key
 
 ### <a name="create-yaml-file"></a>建立 YAML 檔案
 
-將下列 YAML 複製到名為`deploy-aci.yaml`的新檔案中。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code 在您的工作目錄中建立檔案：
+將下列 YAML 複製到名為的新檔案中 `deploy-aci.yaml` 。 在 Azure Cloud Shell 中，您可以使用 Visual Studio Code，在工作目錄中建立檔案：
 
 ```console
 code deploy-aci.yaml
 ```
 
-輸入以`secret`base64 編碼的檔案內容，其中有指示。 例如， `cat`每個 base64 編碼的檔案都會看到其內容。 在部署期間，這些檔案會新增至容器群組中的[秘密磁片](container-instances-volume-secret.md)區。 在此範例中，秘密磁片區會掛接至 Nginx 容器。
+輸入以 base64 編碼的檔案內容，其中有指示 `secret` 。 例如， `cat` 每個 base64 編碼的檔案都會看到其內容。 在部署期間，這些檔案會新增至容器群組中的[秘密磁片](container-instances-volume-secret.md)區。 在此範例中，秘密磁片區會掛接至 Nginx 容器。
 
 ```YAML
 api-version: 2018-10-01
@@ -193,7 +192,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>部署容器群組
 
-使用[az group create](/cli/azure/group#az-group-create)命令來建立資源群組：
+使用 [az group create](/cli/azure/group#az-group-create) 命令，建立資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -207,7 +206,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>檢視部署狀態
 
-若要檢視部署的狀態，請使用下列 [az container show](/cli/azure/container#az-container-show) 命令：
+若要檢視部署狀態，請使用下列 [az container show](/cli/azure/container#az-container-show) 命令：
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table
@@ -223,7 +222,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-tls-connection"></a>確認 TLS 連線
 
-使用您的瀏覽器流覽至容器群組的公用 IP 位址。 這個範例中所顯示的 IP 位址`52.157.22.76`是，因此 URL 是**https://52.157.22.76**。 因為 Nginx 伺服器設定，所以您必須使用 HTTPS 來查看執行中的應用程式。 嘗試透過 HTTP 連接會失敗。
+使用您的瀏覽器流覽至容器群組的公用 IP 位址。 這個範例中所顯示的 IP 位址是 `52.157.22.76` ，因此 URL 是 **https://52.157.22.76** 。 因為 Nginx 伺服器設定，所以您必須使用 HTTPS 來查看執行中的應用程式。 嘗試透過 HTTP 連接會失敗。
 
 ![顯示在 Azure 容器執行個體中執行之應用程式的瀏覽器螢幕擷取畫面](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 

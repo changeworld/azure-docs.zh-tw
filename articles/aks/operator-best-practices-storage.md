@@ -6,10 +6,9 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80877893"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
@@ -34,9 +33,9 @@ ms.locfileid: "80877893"
 
 | 使用案例 | 磁碟區外掛程式 | 單次讀取/寫入 | 多次唯讀 | 多次讀取/寫入 | Windows Server 容器支援 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| 共用設定       | Azure 檔案   | 是 | 是 | 是 | 是 |
+| 共用設定       | Azure 檔案   | Yes | Yes | Yes | Yes |
 | 結構化應用程式資料        | Azure 磁碟   | 是 | 否  | 否  | 是 |
-| 非結構化資料、檔案系統作業 | [BlobFuse][blobfuse] | 是 | 是 | 是 | 否 |
+| 非結構化資料、檔案系統作業 | [BlobFuse][blobfuse] | Yes | Yes | 是 | 否 |
 
 AKS 中針對磁碟區所提供的兩個主要儲存體類型，是由 Azure 磁碟或 Azure 檔案所支援。 為了提升安全性，這兩種儲存體預設都會使用 Azure 儲存體服務加密 (SSE) 來對待用資料進行加密。 目前磁碟無法在 AKS 節點層級使用 Azure 磁碟加密進行加密。
 

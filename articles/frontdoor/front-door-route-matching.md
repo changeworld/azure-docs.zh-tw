@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878590"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 比對要求與路由規則的方式
@@ -29,7 +28,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 下列屬性可判斷連入要求與路由規則 (或左邊) 是否相符：
 
 * **HTTP 通訊協定** (HTTP/HTTPS)
-* **主機**（例如，www\.foo.com、 \*. bar.com）
+* **主機**（例如，www \. foo.com、 \* . bar.com）
 * **路徑** (例如 /\*、/users/\*、/file.gif)
 
 這些屬性是從內部展開，因此通訊協定/主機/路徑的每個組合都是可能的相符項目集合。
@@ -48,23 +47,23 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明此程序，讓我們看看 Front Door 路由 (僅左邊) 的範例設定：
 
-| 路由規則 | 前端主機 | Path |
+| 路由規則 | 前端主機 | 路徑 |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
-| C | www\.fabrikam.com、foo.adventure-works.com  | /\*、/images/\* |
+| C | www \. fabrikam.com、foo.adventure-works.com  | /\*、/images/\* |
 
 如果已將下列連入要求傳送到 Front Door，則會由上而下來比對下列路由規則：
 
 | 連入前端主機 | 相符的路由規則 |
 |---------------------|---------------|
 | foo.contoso.com | A、B |
-| www\.fabrikam.com | C |
+| www \. fabrikam.com | C |
 | images.fabrikam.com | 錯誤 400：不正確的要求 |
 | foo.adventure-works.com | C |
 | contoso.com | 錯誤 400：不正確的要求 |
-| www\.adventure-works.com | 錯誤 400：不正確的要求 |
-| www\.northwindtraders.com | 錯誤 400：不正確的要求 |
+| www \. adventure-works.com | 錯誤 400：不正確的要求 |
+| www \. northwindtraders.com | 錯誤 400：不正確的要求 |
 
 ### <a name="path-matching"></a>路徑比對
 在判斷特定前端主機並將可能的路由規則篩選到只剩該前端主機的路由之後，Front Door 接著會根據要求路徑來篩選路由規則。 我們會使用和前端主機類似的邏輯：
@@ -78,7 +77,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明，讓我們看看另一組範例：
 
-| 路由規則 | 前端主機    | Path     |
+| 路由規則 | 前端主機    | 路徑     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -93,26 +92,26 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 | 連入要求    | 相符的路由 |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/ab          | C             |
-| www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | B             |
-| www\.contoso.com/abc/        | E             |
-| www\.contoso.com/abc/d       | F             |
-| www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/abc/defzzz  | F             |
-| www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | B             |
-| www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| www \. contoso.com/            | A             |
+| www \. contoso.com/a           | B             |
+| www \. contoso.com/ab          | C             |
+| www \. contoso.com/abc         | D             |
+| www \. contoso.com/abzzz       | B             |
+| www \. contoso.com/abc/        | E             |
+| www \. contoso.com/abc/d       | F             |
+| www \. contoso.com/abc/def     | G             |
+| www \. contoso.com/abc/defzzz  | F             |
+| www \. contoso.com/abc/def/ghi | F             |
+| www \. contoso.com/path        | B             |
+| www \. contoso.com/path/       | H             |
+| www \. contoso.com/path/zzz    | B             |
 
 >[!WARNING]
 > </br> 如果使用全面涵蓋路由路徑 (`/*`) 的完全相符前端主機找不到任何路由規則，則任何路由規則都不會有相符項目。
 >
 > 範例設定：
 >
-> | 路由 | 主機             | Path    |
+> | 路由 | 主機             | 路徑    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >

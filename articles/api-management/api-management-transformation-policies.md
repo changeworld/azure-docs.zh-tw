@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260899"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
@@ -69,17 +68,17 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|json-to-xml|根元素。|是|
+|json-to-xml|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|Name|描述|必要|預設值|
+|Name|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律套用轉換。<br />-   content-type-json - 只有當回應中的 Content-type 標頭指出 JSON 存在時才轉換。|是|N/A|
-|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
-|剖析日期|設定為 `false` 時，只會在轉換期間複製日期值|否|true|
+|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|No|true|
+|剖析日期|設定為 `false` 時，只會在轉換期間複製日期值|No|true|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -113,17 +112,17 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|xml-to-json|根元素。|是|
+|xml-to-json|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|Name|描述|必要|預設值|
+|Name|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |kind|此屬性必須設為下列其中一個值。<br /><br /> -   javascript-friendly - 轉換後的 JSON 有 JavaScript 開發人員熟悉的格式。<br />-   direct -  | 轉換後的 JSON 可反映原始 XML 文件的結構。|是|N/A|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律轉換。<br />-   content-type-xml - 只有當回應中的 Content-type 標頭指出 XML 存在時才轉換。|是|N/A|
-|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
+|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|No|true|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -149,13 +148,13 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|find-and-replace|根元素。|是|
+|find-and-replace|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|Name|描述|必要|預設值|
+|Name|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |從|要搜尋的字串。|是|N/A|
 |to|取代字串。 指定零長度的取代字串可移除搜尋字串。|是|N/A|
@@ -187,9 +186,9 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|redirect-content-urls|根元素。|是|
+|redirect-content-urls|根元素。|Yes|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -260,16 +259,16 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|set-backend-service|根元素。|是|
+|set-backend-service|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|Name|描述|必要|預設值|
+|Name|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|base-url|新的後端服務基底 URL。|必須有`base-url`或`backend-id`其中之一。|N/A|
-|backend-id|要傳送至的後端識別碼。 （後端實體是透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理）。|必須有`base-url`或`backend-id`其中之一。|N/A|
+|base-url|新的後端服務基底 URL。|`base-url`必須有或其中之一 `backend-id` 。|N/A|
+|backend-id|要傳送至的後端識別碼。 （後端實體是透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理）。|`base-url`必須有或其中之一 `backend-id` 。|N/A|
 |sf-partition-key|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 用於從名稱解析服務解析特定資料分割。|否|N/A|
 |sf-replica-type|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 控制要求應移至資料分割的主要或次要複本。 |否|N/A|
 |sf-resolve-condition|僅適用於後端為 Service Fabric 服務時。 識別新的解析是否必須重複呼叫 Service Fabric 後端的條件。|否|N/A|
@@ -396,15 +395,15 @@ ms.locfileid: "81260899"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|set-body|根元素。 包含本文文字或會傳回本文的運算式。|是|
+|set-body|根元素。 包含本文文字或會傳回本文的運算式。|Yes|
 
 ### <a name="properties"></a>屬性
 
-|Name|描述|必要|預設值|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|template|用來變更設定本文原則將在其中執行的範本化模式。 目前唯一支援的值為：<br /><br />- liquid - 設定本文原則將會使用 Liquid 範本化引擎 |否||
+|template|用來變更設定本文原則將在其中執行的範本化模式。 目前唯一支援的值為：<br /><br />- liquid - 設定本文原則將會使用 Liquid 範本化引擎 |No||
 
 為了存取要求與回應的相關資訊，Liquid 範本可以繫結至具有下列屬性的內容物件： <br />
 <pre>context.
@@ -510,17 +509,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|set-header|根元素。|是|
-|value|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|否|
+|set-header|根元素。|Yes|
+|value|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|No|
 
 ### <a name="properties"></a>屬性
 
-|Name|描述|必要|預設值|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|exists-action|指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有標頭的值。<br />-   skip - 不取代現有的標頭值。<br />-   append - 將值附加至現有標頭值之後。<br />-   delete - 移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。|否|override|
-|名稱|指定要設定之標頭的名稱。|是|N/A|
+|exists-action|指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有標頭的值。<br />-   skip - 不取代現有的標頭值。<br />-   append - 將值附加至現有標頭值之後。<br />-   delete - 移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。|No|override|
+|NAME|指定要設定之標頭的名稱。|是|N/A|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -565,17 +564,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|set-query-parameter|根元素。|是|
-|value|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|是|
+|set-query-parameter|根元素。|Yes|
+|value|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|Yes|
 
 ### <a name="properties"></a>屬性
 
-|Name|描述|必要|預設值|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|exists-action|指定當已指定查詢參數時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有參數的值。<br />-   skip - 不取代現有的查詢參數值。<br />-   append - 將值附加至現有查詢參數值之後。<br />-   delete - 移除要求中的查詢參數。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定查詢參數 (列出多次)；只有列出的值才會設定在結果中。|否|override|
-|名稱|指定要設定之查詢參數的名稱。|是|N/A|
+|exists-action|指定當已指定查詢參數時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有參數的值。<br />-   skip - 不取代現有的查詢參數值。<br />-   append - 將值附加至現有查詢參數值之後。<br />-   delete - 移除要求中的查詢參數。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定查詢參數 (列出多次)；只有列出的值才會設定在結果中。|No|override|
+|NAME|指定要設定之查詢參數的名稱。|是|N/A|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -644,16 +643,16 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|rewrite-uri|根元素。|是|
+|rewrite-uri|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|屬性|描述|必要|預設值|
+|屬性|說明|必要|預設|
 |---------------|-----------------|--------------|-------------|
 |template|含有任何查詢字串參數的實際 Web 服務 URL。 使用運算式時，整個值必須是運算式。|是|N/A|
-|copy-unmatched-params|指定當連入要求中查詢參數不存在於原始 URL 範本時，是否要將它新增到由重寫範本所定義的 URL|否|true|
+|copy-unmatched-params|指定當連入要求中查詢參數不存在於原始 URL 範本時，是否要將它新增到由重寫範本所定義的 URL|No|true|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -713,11 +712,11 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|xsl-transform|根元素。|是|
-|參數 (parameter)|用於定義轉換中使用的變數|否|
-|xsl:stylesheet|根樣式表元素。 遵循 [XSLT 規格](https://www.w3.org/TR/xslt)標準定義的所有的元素和屬性|是|
+|xsl-transform|根元素。|Yes|
+|參數 (parameter)|用於定義轉換中使用的變數|No|
+|xsl:stylesheet|根樣式表元素。 遵循 [XSLT 規格](https://www.w3.org/TR/xslt)標準定義的所有的元素和屬性|Yes|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。

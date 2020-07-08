@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 8cb7d86bd419563363779c499962c81f0c59e3b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881871"
 ---
 # <a name="a-web-app-that-calls-web-apis-app-registration"></a>呼叫 web Api 的 web 應用程式：應用程式註冊
@@ -33,4 +32,4 @@ Web apps 代表已登入的使用者呼叫 Api。 若要這麼做，他們必須
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [呼叫 web Api 的 web 應用程式：程式碼設定](scenario-web-app-call-api-app-configuration.md)
+> [呼叫 Web API 的 Web 應用程式：程式碼設定](scenario-web-app-call-api-app-configuration.md)

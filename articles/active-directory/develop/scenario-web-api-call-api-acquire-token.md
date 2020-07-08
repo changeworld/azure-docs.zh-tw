@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885135"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 Web API：取得應用程式的權杖
@@ -48,9 +47,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`類似于[呼叫 Web api 的 Web API 案例：應用程式](scenario-web-api-call-api-app-configuration.md)設定。 `BuildConfidentialClient()`以`IConfidentialClientApplication`僅包含一個帳戶資訊的快取具現化。 此帳戶是由`GetAccountIdentifier`方法提供。
+`BuildConfidentialClient()`類似于[呼叫 Web api 的 Web API 案例：應用程式](scenario-web-api-call-api-app-configuration.md)設定。 `BuildConfidentialClient()``IConfidentialClientApplication`以僅包含一個帳戶資訊的快取具現化。 此帳戶是由方法提供 `GetAccountIdentifier` 。
 
-`GetAccountIdentifier`方法會使用與使用者身分識別相關聯的宣告，其 WEB API 收到 JSON web TOKEN （JWT）：
+`GetAccountIdentifier`方法會使用與使用者身分識別相關聯的宣告，其 Web API 收到 JSON Web Token （JWT）：
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -91,7 +90,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖。 尚未提供使用 MSAL Python 來示範此流程的範例。
+Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 尚未提供使用 MSAL Python 來示範此流程的範例。
 
 ---
 

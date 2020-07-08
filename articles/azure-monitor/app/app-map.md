@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989522"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
@@ -39,7 +38,7 @@ ms.locfileid: "80989522"
 
 按一下任何元件，即可查看相關深入資訊，並前往該元件的效能和失敗分級體驗。
 
-![飛出視窗](media/app-map/application-map-002.png)
+![Flyout](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>調查失敗
 
@@ -112,7 +111,7 @@ namespace CustomInitializer.Telemetry
 
 **ASP.NET apps：將初始化運算式載入到使用中的 TelemetryConfiguration**
 
-在 ApplicationInsights 中：
+在 ApplicationInsights.config：
 
 ```xml
     <ApplicationInsights>
@@ -138,11 +137,11 @@ ASP.NET Web 應用程式的替代方法是在程式碼中具現化初始化運�
 ```
 
 > [!NOTE]
-> 使用`ApplicationInsights.config`或 using `TelemetryConfiguration.Active`加入初始化運算式對 ASP.NET Core 應用程式而言是不正確。 
+> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 新增初始設定式不適用於 ASP.NET Core 應用程式。 
 
 **ASP.NET Core 應用程式：將初始化運算式載入至 TelemetryConfiguration**
 
-針對[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)應用程式，加入新`TelemetryInitializer`的是藉由將它新增至相依性插入容器來完成，如下所示。 這會在您`ConfigureServices` `Startup.cs`的類別的方法中完成。
+針對 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 應用程式，加入新的 `TelemetryInitializer` 是藉由將其新增至相依性插入容器來完成，如下所示。 這會在 `Startup.cs` 類別的 `ConfigureServices` 方法中完成。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -169,11 +168,11 @@ ASP.NET Web 應用程式的替代方法是在程式碼中具現化初始化運�
 }
 ```
 
-您也可以使用環境變數```APPLICATIONINSIGHTS_ROLE_NAME```來設定雲端角色名稱。
+您也可以使用環境變數來設定雲端角色名稱 ```APPLICATIONINSIGHTS_ROLE_NAME``` 。
 
 **Java SDK**
 
-如果您使用的是 SDK，從 Application Insights JAVA SDK 2.5.0 開始，您可以藉由新增`<RoleName>`至您`ApplicationInsights.xml`的檔案來指定雲端角色名稱，例如
+如果您使用的是 SDK，從 Application Insights JAVA SDK 2.5.0 開始，您可以藉由新增至您的檔案來指定雲端角色名稱 `<RoleName>` `ApplicationInsights.xml` ，例如
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -229,7 +228,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![應用程式對應螢幕擷取畫面](media/app-map/cloud-rolename.png)
 
-在 [應用程式對應] 中，每個綠色方塊中的名稱都是此特定分散式應用程式不同層面的 [雲端角色名稱] 值。 因此，在此應用程式中，其`Authentication`角色`acmefrontend`包含`Inventory Management`：、 `Payment Processing Worker Role`、、a。 
+在 [應用程式對應] 中，每個綠色方塊中的名稱都是此特定分散式應用程式不同層面的 [雲端角色名稱] 值。 因此，在此應用程式中，其角色包含： `Authentication` 、 `acmefrontend` 、 `Inventory Management` 、a `Payment Processing Worker Role` 。 
 
 在此應用程式的案例中，每個雲端角色名稱也代表不同的唯一 Application Insights 資源，以及自己的檢測金鑰。 因為此應用程式的擁有者可以存取這四個不同的 Application Insights 資源，所以應用程式對應能夠將基礎關聯性的對應結合在一起。
 
@@ -263,7 +262,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 2. 請將所有元件都升級為最新的 SDK 版本。
 
-3. 如果您是將 C# 搭配 Azure Functions 使用，請升級至 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
+3. 如果您使用的是 c # 的 Azure Functions，請升級至[函數 V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
 
 4. 確認已正確設定[雲端角色名稱](#set-cloud-role-name)。
 

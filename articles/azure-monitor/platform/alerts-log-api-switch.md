@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114357"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切換記錄警示的 API 喜好設定
@@ -50,7 +49,7 @@ ms.locfileid: "81114357"
 從[舊版 Log Analytics 警示 API](api-alerts.md) 移轉警示規則的程序，不包含以任何方式變更您的警示定義、查詢或設定。 您的警示規則和監視不會受到影響，而且在切換期間或之後，警示將不會停止或停用。 唯一的變更為：
 
 - 變更 API 的喜好設定，以及透過新的 API 存取您的規則。
-- 已修改的警示規則資源 URI，其中包含用於[舊版 Log Analytics 警示 API](api-alerts.md)的識別碼，而不是此結構`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`中的警示規則名稱。 警示規則的顯示名稱會維持不變。
+- 已修改的警示規則資源 URI，其中包含用於[舊版 Log Analytics 警示 API](api-alerts.md)的識別碼，而不是此結構中的警示規則名稱 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` 。 警示規則的顯示名稱會維持不變。
 
 任何自願切換至新的 [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，並停止使用[舊版 Log Analytics 警示 API](api-alerts.md) 的客戶，都可在下列 API 執行 PUT 呼叫，以切換所有與特定 Log Analytics 工作區相關聯的警示規則，而達到此目的。
 

@@ -13,10 +13,9 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80992040"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 FTP 伺服器移動資料
@@ -62,18 +61,18 @@ ms.locfileid: "80992040"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 FTP 連結服務專屬的 JSON 元素說明。
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
-| type |設定為 FtpServer。 |是 |&nbsp; |
+| 類型 |設定為 FtpServer。 |Yes |&nbsp; |
 | 主機 |指定 FTP 伺服器的名稱或 IP 位址。 |是 |&nbsp; |
-| authenticationType |指定驗證類型。 |是 |基本或匿名 |
+| authenticationType |指定驗證類型。 |Yes |基本或匿名 |
 | username |指定擁有 FTP 伺服器存取權限的使用者。 |否 |&nbsp; |
-| password |指定使用者 (使用者名稱) 的密碼。 |否 |&nbsp; |
-| encryptedCredential |指定用來存取 FTP 伺服器的加密認證。 |否 |&nbsp; |
-| gatewayName |指定資料管理閘道中連結至內部部署 FTP 伺服器的閘道器名稱。 |否 |&nbsp; |
-| 連接埠 |指定 FTP 伺服器所接聽的連接埠 |否 |21 |
-| enableSsl |指定是否使用透過 SSL/TLS 的 FTP 通道。 |否 |true |
-| enableServerCertificateValidation |指定當您使用透過 SSL/TLS 的 FTP 通道時，是否要啟用伺服器 TLS/SSL 憑證驗證。 |否 |true |
+| 密碼 |指定使用者 (使用者名稱) 的密碼。 |No |&nbsp; |
+| encryptedCredential |指定用來存取 FTP 伺服器的加密認證。 |No |&nbsp; |
+| gatewayName |指定資料管理閘道中連結至內部部署 FTP 伺服器的閘道器名稱。 |No |&nbsp; |
+| 連接埠 |指定 FTP 伺服器所接聽的連接埠 |No |21 |
+| enableSsl |指定是否使用透過 SSL/TLS 的 FTP 通道。 |No |true |
+| enableServerCertificateValidation |指定是否在使用透過 TLS/SSL 的 FTP 通道時啟用伺服器 TLS/SSL 憑證驗證。 |No |true |
 
 >[!NOTE]
 >FTP 連接器支援以未加密或明確的 SSL/TLS 加密方式存取 FTP 伺服器；它不支援隱含的 SSL/TLS 加密。
@@ -152,15 +151,15 @@ ms.locfileid: "80992040"
 
 不同類型資料集的 **typeProperties** 區段不同。 它提供資料集類型的特定資訊。 FileShare**** 類型資料集的 typeProperties **** 區段有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| folderPath |資料夾的子路徑。 使用逸出字元 ‘ \ ’ 當做字串中的特殊字元。 如需範例，請參閱「範例連結服務和資料集定義」。<br/><br/>您可以結合此屬性與 partitionBy ****，讓資料夾路徑以配量開始和結束日期時間為基礎。 |是 |
-| fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName****，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |否 |
-| fileFilter |指定要用來在 folderPath ****(而不是所有檔案) 中選取檔案子集的篩選器。<br/><br/>允許的值為︰`*` (多個字元) 和 `?` (單一字元)。<br/><br/>範例 1：`"fileFilter": "*.log"`<br/>範例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter **** 適用於輸入 FileShare 資料集。 這個屬性不支援 Hadoop 分散式檔案系統 (HDFS)。 |否 |
+| folderPath |資料夾的子路徑。 使用逸出字元 ‘ \ ’ 當做字串中的特殊字元。 如需範例，請參閱「範例連結服務和資料集定義」。<br/><br/>您可以結合此屬性與 partitionBy ****，讓資料夾路徑以配量開始和結束日期時間為基礎。 |Yes |
+| fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName****，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| fileFilter |指定要用來在 folderPath ****(而不是所有檔案) 中選取檔案子集的篩選器。<br/><br/>允許的值為︰`*` (多個字元) 和 `?` (單一字元)。<br/><br/>範例 1：`"fileFilter": "*.log"`<br/>範例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter **** 適用於輸入 FileShare 資料集。 這個屬性不支援 Hadoop 分散式檔案系統 (HDFS)。 |No |
 | partitionedBy |用來指定時間序列資料的動態 folderPath**** 和 filename****。 例如，您可以指定每小時資料參數化的 **folderPath**。 |否 |
-| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、 [Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |否 |
-| compression | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 和 ZipDeflate****，而支援的層級為：最佳**** 和最快****。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
-| useBinaryTransfer |指定是否使用二進位傳輸模式。 值對二進位模式為真 (為預設值)，對 ASCII 為則為假。 只有在相關聯的連結服務類型的類型為 FtpServer 時，才可以使用這個屬性。 |否 |
+| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、 [Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |No |
+| compression | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 和 ZipDeflate****，而支援的層級為：最佳**** 和最快****。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |No |
+| useBinaryTransfer |指定是否使用二進位傳輸模式。 值對二進位模式為真 (為預設值)，對 ASCII 為則為假。 只有在相關聯的連結服務類型的類型為 FtpServer 時，才可以使用這個屬性。 |No |
 
 > [!NOTE]
 > 無法同時使用 fileName**** 和 fileFilter****。
@@ -205,7 +204,7 @@ ms.locfileid: "80992040"
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 遞迴 |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True/False (預設值為 False) |否 |
+| 遞迴 |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True/False (預設值為 False) |No |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 範例：將資料從 FTP 伺服器複製到 Azure Blob
 此範例示範如何將資料從 FTP 伺服器複製至 Azure Blob 儲存體。 不過，您可以使用資料處理站中的複製活動，把資料直接複製到 [支援的資料存放區及格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中所述的任何接收器。

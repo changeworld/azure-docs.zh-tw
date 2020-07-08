@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010302"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
@@ -33,16 +32,16 @@ ms.locfileid: "81010302"
 * [概觀](#overview)
 * [活動記錄檔](#activity-log)
 * [存取控制（IAM）](#access-control-iam)
-* [標記](#tags)
+* [Tags](#tags) (標籤)
 * [診斷並解決問題](#diagnose-and-solve-problems)
 * [設定](#settings)
     * [存取金鑰](#access-keys)
     * [Advanced 設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-    * [調整](#scale)
+    * [縮放比例](#scale)
     * [叢集大小](#cluster-size)
     * [資料持續性](#redis-data-persistence)
-    * [排程更新](#schedule-updates)
+    * [更新排程](#schedule-updates)
     * [異地複寫](#geo-replication)
     * [虛擬網路](#virtual-network)
     * [防火牆](#firewall)
@@ -58,7 +57,7 @@ ms.locfileid: "81010302"
     * [警示規則](#alert-rules)
     * [診斷](#diagnostics)
 * 支援和疑難排解設定
-    * [資源健康狀態](#resource-health)
+    * [資源健康情況](#resource-health)
     * [新增支援要求](#new-support-request)
 
 
@@ -91,10 +90,10 @@ ms.locfileid: "81010302"
 * [存取金鑰](#access-keys)
 * [Advanced 設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-* [調整](#scale)
+* [縮放比例](#scale)
 * [叢集大小](#cluster-size)
 * [資料持續性](#redis-data-persistence)
-* [排程更新](#schedule-updates)
+* [更新排程](#schedule-updates)
 * [異地複寫](#geo-replication)
 * [虛擬網路](#virtual-network)
 * [防火牆](#firewall)
@@ -356,7 +355,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 ![支援 + 疑難排解](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [資源健康狀態](#resource-health)
+* [資源健康情況](#resource-health)
 * [新增支援要求](#new-support-request)
 
 ### <a name="resource-health"></a>資源健康情況
@@ -394,7 +393,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 | `maxmemory-samples` |3 |為了節省記憶體，LRU 和最小 TTL 演算法是近似的演算法而不是精確的演算法。 依預設 Redis 將檢查三個金鑰，並挑選最近較少使用的金鑰。 |
 | `lua-time-limit` |5,000 |Lua 指令碼的最大執行時間 (以毫秒為單位)。 如果已到達最大執行時間，Redis 會記錄指令碼在最大允許的時間之後仍在執行中，並開始回覆查詢發生錯誤。 |
 | `lua-event-limit` |500 |指令碼事件佇列的大小上限。 |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |用戶端輸出緩衝區限制可用來強制中斷基於某些原因而無法足夠快地從伺服器讀取資料之用戶端的連線 (常見的原因是 Pub/Sub 用戶端使用訊息的速度無法與發佈者產生這些訊息的速度一樣快)。 如需詳細資訊， [https://redis.io/topics/clients](https://redis.io/topics/clients)請參閱。 |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |用戶端輸出緩衝區限制可用來強制中斷基於某些原因而無法足夠快地從伺服器讀取資料之用戶端的連線 (常見的原因是 Pub/Sub 用戶端使用訊息的速度無法與發佈者產生這些訊息的速度一樣快)。 如需詳細資訊，請參閱 [https://redis.io/topics/clients](https://redis.io/topics/clients)。 |
 
 <a name="databases"></a>
 <sup>1</sup>每個「Azure Redis 快取」定價層的 `databases` 限制皆不相同，在建立快取建立時即可設定此限制。 如果快取建立期間未指定 `databases` 設定，則預設值為 16。
@@ -439,7 +438,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
   * P4 (53 GB - 530 GB) - 最多 40,000 個連接
 
 > [!NOTE]
-> 每個快取大小都可允許以某個數目為「上限」** 的連線數，而每個連到 Redis 的連線則都有相關的額外負荷。 因 TLS/SSL 加密而產生的 CPU 與記憶體使用量即是這類額外負荷的其中一例。 所指定快取大小的連線數上限是假設快取負載情況為輕度。 如果來自連線額外負荷的負載「加上」** 來自用戶端作業的負載超過系統的容量，則即使您尚未超出目前快取大小的連線限制，快取也會發生容量問題。
+> 每個快取大小都可允許以某個數目為「上限」的連線數，而每個連到 Redis 的連線則都有相關的額外負荷。 因 TLS/SSL 加密而產生的 CPU 與記憶體使用量即是這類額外負荷的其中一例。 所指定快取大小的連線數上限是假設快取負載情況為輕度。 如果來自連線額外負荷的負載「加上」來自用戶端作業的負載超過系統的容量，則即使您尚未超出目前快取大小的連線限制，快取也會發生容量問題。
 >
 >
 
@@ -461,14 +460,14 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 >
 
-如需 Redis 命令的詳細資訊， [https://redis.io/commands](https://redis.io/commands)請參閱。
+如需 Redis 命令的詳細資訊，請參閱 [https://redis.io/commands](https://redis.io/commands) 。
 
 ## <a name="redis-console"></a>Redis 主控台
 您可以使用 [Redis 主控台]**** \(所有快取層的 Azure 入口網站中的都有提供此功能\) 對「Azure Redis 快取」執行個體安全地發出命令。
 
 > [!IMPORTANT]
 > - Redis 主控台不使用 [VNET](cache-how-to-premium-vnet.md)。 如果您的快取是 VNET 的一部分，只有在 VNET 中的用戶端可以存取快取。 由於 Redis 主控台在您的本機瀏覽器 (位於 VNET 之外) 中執行，因此無法連接到您的快取。
-> - 「Azure Redis 快取」並未支援所有 Redis 命令。 如需針對「Azure Redis 快取」停用的 Redis 命令清單，請參閱先前的 [Azure Redis 快取中不支援的 Redis 命令](#redis-commands-not-supported-in-azure-cache-for-redis)一節。 如需 Redis 命令的詳細資訊， [https://redis.io/commands](https://redis.io/commands)請參閱。
+> - 「Azure Redis 快取」並未支援所有 Redis 命令。 如需針對「Azure Redis 快取」停用的 Redis 命令清單，請參閱先前的 [Azure Redis 快取中不支援的 Redis 命令](#redis-commands-not-supported-in-azure-cache-for-redis)一節。 如需 Redis 命令的詳細資訊，請參閱 [https://redis.io/commands](https://redis.io/commands) 。
 >
 >
 

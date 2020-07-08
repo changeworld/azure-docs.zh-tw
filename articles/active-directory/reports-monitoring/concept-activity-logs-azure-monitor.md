@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261018"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD Azure 監視器中的活動記錄
@@ -48,7 +47,7 @@ ms.locfileid: "81261018"
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用此功能，您必須要有：
 
@@ -115,7 +114,7 @@ ms.locfileid: "81261018"
 | :--                | ---             | ---            | ---                        | --:                          |
 | 審核和登入 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
 | 稽核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
-| 登入           | 100,000         | 15,000,000     | 450000000                |  $847.28                     |
+| 登入           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
 
 

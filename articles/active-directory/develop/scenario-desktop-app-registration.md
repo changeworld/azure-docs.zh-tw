@@ -12,10 +12,9 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885152"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>呼叫 web Api 的桌面應用程式：應用程式註冊
@@ -40,10 +39,10 @@ ms.locfileid: "80885152"
 
 桌面應用程式中所使用的重新導向 Uri 取決於您想要使用的流程。
 
-- 如果您使用互動式驗證或裝置程式碼流程， `https://login.microsoftonline.com/common/oauth2/nativeclient`請使用。 若要完成這項設定，請在應用程式的 [**驗證**] 區段中選取對應的 URL。
+- 如果您使用互動式驗證或裝置程式碼流程，請使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 。 若要完成這項設定，請在應用程式的 [**驗證**] 區段中選取對應的 URL。
   
   > [!IMPORTANT]
-  > 目前，MSAL.NET 會在 Windows 上執行的桌面應用程式中，預設使用另`urn:ietf:wg:oauth:2.0:oob`一個重新導向 URI （）。 在未來，我們會想要變更此預設值，因此建議您使用`https://login.microsoftonline.com/common/oauth2/nativeclient`。
+  > 目前，MSAL.NET 會在 Windows 上執行的桌面應用程式中，預設使用另一個重新導向 URI （ `urn:ietf:wg:oauth:2.0:oob` ）。 在未來，我們會想要變更此預設值，因此建議您使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 。
 
 - 如果您為 macOS 建立原生目標 C 或 Swift 應用程式，請根據應用程式的套件組合識別碼，以下列格式註冊重新導向 URI： msauth. <your.app.bundle.id>：//auth. 以應用程式的套件組合識別碼取代 <your.app.bundle.id>。
 - 如果您的應用程式只使用整合式 Windows 驗證或使用者名稱和密碼，您就不需要為應用程式註冊重新導向 URI。 這些流程會執行 Microsoft 身分識別平臺 v2.0 端點的往返。 您的應用程式不會在任何特定的 URI 上回呼。

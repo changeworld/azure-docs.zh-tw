@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811361"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 入口網站中管理雲端服務
@@ -122,7 +121,7 @@ ms.locfileid: "80811361"
 ## <a name="next-steps"></a>後續步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
-* 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
+* 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * 設定[TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
 
 

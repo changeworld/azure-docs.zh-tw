@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114414"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備邏輯應用程式和 Runbook 以便移轉傳統警示規則
@@ -24,13 +23,13 @@ ms.locfileid: "81114414"
 
 ## <a name="api-changes"></a>API 變更
 
-建立和管理傳統警示規則（`microsoft.insights/alertrules`）的 api 與建立和管理新計量警示（`microsoft.insights/metricalerts`）的 api 不同。 如果您目前以程式設計方式建立和管理傳統警示規則，請更新部署腳本以使用新的 Api。
+建立和管理傳統警示規則（）的 Api 與 `microsoft.insights/alertrules` 建立和管理新計量警示（）的 api 不同 `microsoft.insights/metricalerts` 。 如果您目前以程式設計方式建立和管理傳統警示規則，請更新部署腳本以使用新的 Api。
 
 下表是傳統和新警示的程式設計介面參考：
 
 |         |傳統警示  |新的計量警示 |
 |---------|---------|---------|
-|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor 計量警示](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager 範本 | [針對傳統警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[針對新的計量警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|

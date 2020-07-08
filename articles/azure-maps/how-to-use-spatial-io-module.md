@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804634"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure 地圖服務空間 IO 模組
@@ -37,7 +36,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 > [!WARNING]
 > 只使用來自您信任來源的資料和服務，特別是從另一個網域參考它時。 空間 IO 模組會採取步驟來將風險降至最低，不過，最安全的方法就是不允許任何 danagerous 的資料從您的應用程式開始。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您可以使用空間 IO 模組之前，您必須先[建立 Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps)，並[取得帳戶的主要訂](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)用帳戶金鑰。
 
@@ -45,7 +44,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 
 您可以使用下列兩個選項的其中一個來載入 Azure 地圖服務空間 IO 模組：
 
-* Azure 地圖服務空間 IO 模組的全域託管 Azure CDN。 在此選項中，您會在 HTML 檔案的`<head>`元素中加入 JavaScript 的參考。
+* Azure 地圖服務空間 IO 模組的全域託管 Azure CDN。 在此選項中，您會在 HTML 檔案的元素中加入 JavaScript 的參考 `<head>` 。
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
@@ -57,7 +56,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
     npm install azure-maps-spatial-io
     ```
 
-    然後，在 HTML 檔案的`<head>`元素中新增 JavaScript 的參考：
+    然後，在 HTML 檔案的元素中新增 JavaScript 的參考 `<head>` ：
 
     ```html
     <script src="node_modules/azure-maps-spatial-io/dist/atlas-spatial.min.js"></script>
@@ -121,19 +120,19 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
     </html>
     ```
 
-2. 載入 Azure 地圖服務空間 IO 模組。 針對此練習，請使用適用于 Azure 地圖服務空間 IO 模組的 CDN。 將下列參考新增至 HTML `<head>`檔案的元素：
+2. 載入 Azure 地圖服務空間 IO 模組。 針對此練習，請使用適用于 Azure 地圖服務空間 IO 模組的 CDN。 將下列參考新增至 HTML 檔案的 `<head>` 元素：
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. 初始化`datasource`，並將資料來源加入至對應。 初始化`layer`，並將資料來源加入至地圖圖層。 然後，呈現資料來源和圖層。 在下一個步驟中向下移動以查看完整的程式碼之前，請先考慮放入資料來源和分層程式碼片段的最佳位置。 回想一下，在以程式設計方式操作對應之前，我們應該等到地圖資源準備就緒。
+3. 初始化 `datasource` ，並將資料來源加入至對應。 初始化 `layer` ，並將資料來源加入至地圖圖層。 然後，呈現資料來源和圖層。 在下一個步驟中向下移動以查看完整的程式碼之前，請先考慮放入資料來源和分層程式碼片段的最佳位置。 回想一下，在以程式設計方式操作對應之前，我們應該等到地圖資源準備就緒。
 
     ```javascript
     var datasource, layer;
     ```
 
-    和
+    及
 
     ```javascript
     //Create a data source and add it to the map.
@@ -222,7 +221,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
     </html>
     ```
 
-5. 請記得將`<Your Azure Maps Key>`取代為您的主要金鑰。 開啟您的 HTML 檔案，您會看到類似下圖的結果：
+5. 請記得將取代為 `<Your Azure Maps Key>` 您的主要金鑰。 開啟您的 HTML 檔案，您會看到類似下圖的結果：
 
     <center>
 
@@ -235,7 +234,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 我們在此示範的功能只是空間 IO 模組中眾多可用功能的其中之一。 閱讀下列指南，以瞭解如何使用空間 IO 模組中的其他功能：
 
 > [!div class="nextstepaction"]
-> [新增簡單的資料層](spatial-io-add-simple-data-layer.md)
+> [新增簡單的資料圖層](spatial-io-add-simple-data-layer.md)
 
 > [!div class="nextstepaction"]
 > [讀取和寫入空間資料](spatial-io-read-write-spatial-data.md)
@@ -244,7 +243,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 > [新增 OGC 地圖圖層](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [連接到工作流程服務](spatial-io-connect-wfs-service.md)
+> [連接到 WFS 服務](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
 > [利用核心作業](spatial-io-core-operations.md)

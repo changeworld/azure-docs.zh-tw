@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: danlep
 ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892388"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>具有 Azure 監視器記錄的容器群組和實例記錄
@@ -24,7 +23,7 @@ Log Analytics 工作區提供集中的位置，不僅可以儲存和查詢來自
 > [!NOTE]
 > 目前，您只能將來自 Linux 容器執行個體的事件資料傳送至 Log Analytics。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要在您的容器執行個體中啟用記錄，您必須具備下列項目：
 
@@ -39,10 +38,10 @@ Azure 容器執行個體必須具備將資料傳送至 Log Analytics 工作區�
 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
 1. 在 [**設定**] 底下，選取 [ **Advanced Settings** ]
-1. 選取**已連線的來源** > **Windows 伺服器**（或**Linux 伺服器**--兩者的識別碼和金鑰都相同）
+1. 選取**已連線的來源**  >  **Windows 伺服器**（或**Linux 伺服器**--兩者的識別碼和金鑰都相同）
 1. 記下：
    * **工作區識別碼**
-   * **PRIMARY KEY**
+   * **主要金鑰**
 
 ## <a name="create-container-group"></a>建立容器群組
 
@@ -153,7 +152,7 @@ ContainerInstanceLog_CL
 
 如需關於在 Azure 監視器記錄中查詢記錄和設定警示的詳細資訊，請參閱：
 
-* [了解 Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-search.md)
+* [瞭解 Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-search.md)
 * [Azure 監視器中的整合警示](../azure-monitor/platform/alerts-overview.md)
 
 
