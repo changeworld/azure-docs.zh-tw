@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/30/2020
-ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: d956a9c93280ac22c4707f22c0769853f0f36c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84015143"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
@@ -38,7 +37,7 @@ HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺
 
 * 您無法與其他叢集共用預設中繼存放區。
 
-* 預設中繼存放區會使用基本的 Azure SQL DB，它具有五個 DTU (資料庫交易單位) 限制。
+* 預設中繼存放區會使用基本 Azure SQL Database，其具有五個 DTU （資料庫交易單位）限制。
 此預設中繼存放區通常用於相對簡單的工作負載。 不需要多個叢集，且不需要保留超過叢集生命週期的中繼資料的工作負載。
 
 * 對於生產工作負載，我們建議您遷移至外部中繼存放區。 如需詳細資訊，請參閱下一節。
@@ -53,7 +52,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 自訂中繼存放區可讓您將多個叢集與叢集類型連結至該中繼存放區。 例如，單一中繼存放區可以在 HDInsight 中的互動式查詢、Hive 和 Spark 叢集之間共用。
 
-* 您需要根據您選擇的效能層級支付中繼存放區 (Azure SQL DB) 的成本。
+* 根據您選擇的效能層級，您需支付中繼存放區（Azure SQL Database）成本的費用。
 
 * 您可以視需要相應增加中繼存放區。
 
@@ -63,9 +62,9 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>建立和設定自訂中繼存放區的 Azure SQL Database
 
-在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱[快速入門：在 AZURE SQL DB 中建立單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
+在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱[快速入門：在 Azure SQL Database 中建立單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
 
-建立叢集時，HDInsight 服務必須連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [**設定伺服器防火牆**]，在 Azure 入口網站中啟用此選項。 然後，在 [**拒絕公用網路存取**] 底下選取 [**否**]，然後在 [**允許 Azure 服務和資源存取此伺服器**以取得 Azure SQL Database 伺服器或資料庫 **]** 底下。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+建立叢集時，HDInsight 服務必須連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [**設定伺服器防火牆**]，在 Azure 入口網站中啟用此選項。 然後在 [**拒絕公用網路存取**] 底下選取 **[** **否**]，然後在 [**允許 Azure 服務和資源存取此伺服器**以進行 Azure SQL Database] 底下。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 不支援 SQL 存放區的私用端點。
 
@@ -87,7 +86,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 如果您想要讓多個 HDInsight 叢集存取不同的資料，請針對每個叢集上的中繼存放區使用不同資料庫。 如果您在多個 HDInsight 叢集間共用中繼存放區，則表示這些叢集會使用相同的中繼資料和基礎使用者資料檔案。
 
-* 定期備份您的自訂中繼存放區。 Azure SQL Database 會自動產生備份，但備份保留時間範圍有所不同。 如需詳細資訊，請參閱[了解自動 SQL Database 備份](../sql-database/sql-database-automated-backups.md)。
+* 定期備份您的自訂中繼存放區。 Azure SQL Database 會自動產生備份，但備份保留時間範圍有所不同。 如需詳細資訊，請參閱[了解自動 SQL Database 備份](../azure-sql/database/automated-backups-overview.md)。
 
 * 在相同的區域中找出您的中繼存放區和 HDInsight 叢集。 此設定會提供最高效能和最低的網路輸出費用。
 
@@ -97,9 +96,9 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 如果您在多個叢集間共用中繼存放區，請確定所有叢集都是相同的 HDInsight 版本。 不同的 Hive 版本會使用不同的中繼存放區資料庫結構描述。 例如，您無法在 Hive 2.1 和 Hive 3.1 版本的叢集間共用中繼存放區。
 
-* 在 HDInsight 4.0 中，Spark 和 Hive 會使用獨立目錄來存取 SparkSQL 或 Hive 資料表。 Spark 所建立的資料表存在於 Spark 目錄中。 Hive 所建立的資料表存在於 Hive 目錄中。 此行為不同于 HDInsight 3.6，其中 Hive 和 Spark 共用通用目錄。 HDInsight 4.0 中的 hive 和 Spark 整合依賴 Hive 倉儲連接器（HWC）。 HWC 可做為 Spark 與 Hive 之間的橋樑。 [瞭解 Hive 倉儲連接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
+* 在 HDInsight 4.0 中，Spark 和 Hive 會使用獨立的目錄來存取 SparkSQL 或 Hive 資料表。 Spark 所建立的資料表會存放在 Spark 目錄中。 Hive 所建立的資料表會存放在 Hive 目錄中。 此行為不同於 Hive 和 Spark 會共用相同目錄的 HDInsight 3.6。 HDInsight 4.0 中的 Hive 和 Spark 整合須仰賴 Hive Warehouse Connector (HWC)。 HWC 是 Spark 與 Hive 之間的連絡管道。 [瞭解 Hive 倉儲連接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 
-* 在 HDInsight 4.0 中，如果您想要共用 Hive 和 Spark 之間的中繼存放區，您可以將屬性中繼存放區變更為 Spark 叢集中的 Hive。 您可以在 [Ambari] [Advanced spark2]-[hive-覆寫] 中找到這個屬性。 請務必瞭解，中繼存放區的共用僅適用于外部 hive 資料表，如果您有內部/受控 hive 資料表或 ACID 資料表，這將無法運作。  
+* 在 HDInsight 4.0 中，如果您想要在 Hive 與 Spark 之間共用中繼存放區，您可以將 metastore.catalog.default 屬性變更為 Spark 叢集中的登錄區。 您可以在 Ambari 進階 spark2-hive-site-override 中找到此屬性。 請務必了解，中繼存放區的共用僅適用於外部登錄區資料表，如果您具有內部/受控登錄區資料表或 ACID 資料表，則無法共用。  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie 中繼存放區
 

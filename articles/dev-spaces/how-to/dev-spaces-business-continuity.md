@@ -8,12 +8,11 @@ ms.topic: conceptual
 description: 瞭解如何使用 Azure Dev Spaces 和 Azure Kubernetes Services 來供應商務持續性，並為嚴重損壞修復做準備
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996919"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Space 的商務持續性和災害復原
 
@@ -26,14 +25,6 @@ Azure Dev Spaces 是 Azure Kubernetes Service (AKS) 的功能之一。 您應留
 在不同區域的 AKS 叢集上啟用 Dev Spaces，可讓您在某個 Azure 區域失敗後能立即繼續使用 Dev Spaces。
 
 如需 AKS 多重區域部署的詳細資訊，請參閱[多重區域部署規劃](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
-
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>透過 Azure 入口網站啟用 Dev Spaces
-
-在 [Azure 入口網站中，選取每個叢集設定底下的 [ **Dev Spaces** ] 功能表項目。 然後選擇 [啟用 Dev Spaces] 和 [儲存] 選項。
-
-![透過 Azure 入口網站啟用 Dev Spaces](../media/common/enable-dev-spaces.jpg)
-
-對每個叢集重複此程序。
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>透過 Azure CLI 啟用 Dev Spaces
 

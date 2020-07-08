@@ -10,12 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019889"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure Machine Learning 和 Azure Data Factory 來建立預測管線
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -125,15 +124,15 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 }
 ```
 
-| 屬性          | 描述                              | 必要 |
+| 屬性          | 說明                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
 | NAME              | 管線中的活動名稱     | 是      |
 | description       | 說明活動用途的文字。  | 否       |
 | type              | 針對 Data Lake Analytics 的 U-SQL 活動，活動類型為**AzureMLBatchExecution**。 | 是      |
-| linkedServiceName | 將服務連結至 Azure Machine Learning 連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
-| webServiceInputs  | 對應 Azure Machine Learning Web 服務輸入之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸入參數。 值是指定輸入 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
-| webServiceOutputs | 對應 Azure Machine Learning Web 服務輸出之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸出參數。 值是指定輸出 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
-| globalParameters  | 要傳遞給 Azure Machine Learning Studio （傳統）批次執行服務端點的索引鍵/值組。 索引鍵必須符合已發佈的 Azure Machine Learning Studio （傳統） web 服務中定義的 web 服務參數名稱。 值會在 Azure Machine Learning Studio （傳統）批次執行要求的 GlobalParameters 屬性中傳遞 | 否       |
+| linkedServiceName | 將服務連結至 Azure Machine Learning 連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | Yes      |
+| webServiceInputs  | 對應 Azure Machine Learning Web 服務輸入之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸入參數。 值是指定輸入 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | No       |
+| webServiceOutputs | 對應 Azure Machine Learning Web 服務輸出之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸出參數。 值是指定輸出 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | No       |
+| globalParameters  | 要傳遞給 Azure Machine Learning Studio （傳統）批次執行服務端點的索引鍵/值組。 索引鍵必須符合已發佈的 Azure Machine Learning Studio （傳統） web 服務中定義的 web 服務參數名稱。 值會在 Azure Machine Learning Studio （傳統）批次執行要求的 GlobalParameters 屬性中傳遞 | No       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>案例 1：使用 Web 服務輸入/輸出 (參考 Azure Blob 儲存體中的資料) 的實驗
 
@@ -192,7 +191,7 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>案例 2：使用讀取器/寫入器模組參考各種儲存體資料的實驗
 建立 Azure Machine Learning Studio （傳統）實驗時的另一個常見案例是使用「匯入資料」和「輸出資料」模組。 「匯入資料」模組是用來將資料載入實驗，而「輸出資料」模組則是用於儲存您的實驗資料。 如需「匯入資料」和「輸出資料」模組的詳細資料，請參閱 MSDN 文件庫上的[匯入資料](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[輸出資料](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
 
-使用「匯入資料」和「輸出資料」模組時，較好的做法是針對這些模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，您可以透過使用 Azure SQL Database：XXX.database.windows.net 的「匯入資料」模組，建立實驗。 部署 Web 服務之後，您需要啟用 Web 服務的取用者，藉此指定另一個稱為 `YYY.database.windows.net` 的 Azure SQL Server。 您可以使用 Web 服務參數來設定此值。
+使用「匯入資料」和「輸出資料」模組時，較好的做法是針對這些模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，您可以透過使用 Azure SQL Database：XXX.database.windows.net 的「匯入資料」模組，建立實驗。 部署 web 服務之後，您想要讓 web 服務的取用者指定另一個名為的邏輯 SQL server `YYY.database.windows.net` 。 您可以使用 Web 服務參數來設定此值。
 
 > [!NOTE]
 > Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個案例中，您已瞭解如何為 Azure Machine Learning Studio （傳統） Web 服務指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至「匯入資料」/「輸出資料」模組的屬性。
@@ -228,4 +227,4 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [預存程式活動](transform-data-using-stored-procedure.md)
+* [預存程序活動](transform-data-using-stored-procedure.md)

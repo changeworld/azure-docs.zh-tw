@@ -12,12 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020127"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -42,14 +41,14 @@ ms.locfileid: "79265723"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 的必要條件
 在逐步解說中，您會將 Azure Batch 當作計算資源使用來執行自訂 .NET 活動。 **Azure Batch** 是一項平台服務，可用於在雲端有效地執行大規模的平行和高效能運算 (HPC) 應用程式。 Azure Batch 會排程要在受管理**的虛擬機器集合**上執行的計算密集型工作，而且可以自動調整計算資源，以符合您的作業需求。 請參閱 [Azure Batch 基本知識][batch-technical-overview]文章，以取得 Azure Batch 服務的詳細概觀。
 
-在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下為其步驟：
+在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下是步驟：
 
 1. 使用[Azure 入口網站](https://portal.azure.com)建立**Azure Batch 帳戶**。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
@@ -63,7 +62,7 @@ ms.locfileid: "79265723"
    3. 按一下 [集區] **** 圖格。
    4. 在 [集區] **** 刀鋒視窗中，按一下工具列上的 [新增] 按鈕以新增集區。
       1. 輸入集區的識別碼 (集區識別碼)。 請注意 **集區的識別碼**；您在建立 Data Factory 解決方案時需要它。
-      2. 指定作業系統系列設定的 **Windows Server 2012 R2** 。
+      2. 指定**Windows Server 2012 R2**作為 [作業系統系列] 設定。
       3. 選取 **節點定價層**。
       4. 輸入 **2** 做為 [目標專用]**** 設定的值。
       5. 輸入 **2** 做為 [每個節點的工作上限]**** 設定的值。
@@ -89,10 +88,10 @@ public IDictionary<string, string> Execute(
 
 此方法會採用四個參數：
 
-- **linkedservices.json 和 datasets.json**。 這個屬性是活動之輸入/輸出資料集所參考的資料存放區連結服務的可列舉清單。
+- **linkedServices**。 這個屬性是活動之輸入/輸出資料集所參考的資料存放區連結服務的可列舉清單。
 - **資料集**。 這個屬性是活動之輸入/輸出資料集的可列舉清單。 您可以使用這個參數取得輸入和輸出資料集定義的位置和結構描述。
 - **活動**。 這個屬性表示目前的活動。 它可以用來存取與自訂活動相關聯的延伸屬性。 如需詳細資訊，請參閱[存取延伸屬性](#access-extended-properties)。
-- **記錄器**。 此物件可讓您撰寫會呈現為管線的使用者記錄檔的偵錯註解。
+- **logger**。 此物件可讓您撰寫會呈現為管線的使用者記錄檔的偵錯註解。
 
 此方法會傳回未來可用來將自訂活動鏈結在一起的字典。 尚未實作這項功能，因此會從方法傳回空的字典。
 
@@ -100,15 +99,15 @@ public IDictionary<string, string> Execute(
 1. 建立 **.NET 類別庫** 專案。
    <ol type="a">
      <li>啟動 Visual Studio。</li>
-     <li>按一下 [檔案]<b></b>，指向 [新增]<b></b>，然後按一下 [專案]<b></b>。</li>
-     <li>展開 [<b>範本</b>]，然後選取 [ <b>Visual c #</b>]。 在此逐步解說中，您使用 C# 中，但您可以使用任何 .NET 語言來開發自訂活動。</li>
-     <li>從右邊的專案類型清單中選取 [類別庫]<b></b>。 在 Visual Studio 中，選擇 [<b>類別庫（.NET Framework）</b> ] </li>
-     <li>針對 [名稱]<b></b> 輸入 <b>MyDotNetActivity</b>。</li>
+     <li>按一下 [檔案]，指向 [新增]，然後按一下 [專案]。</li>
+     <li>展開 [範本]，然後選取 [Visual C#]。 在此逐步解說中，您使用 C# 中，但您可以使用任何 .NET 語言來開發自訂活動。</li>
+     <li>從右邊的專案類型清單中選取 [類別庫]。 在 Visual Studio 中，選擇 [<b>類別庫（.NET Framework）</b> ] </li>
+     <li>針對 [名稱] 輸入 <b>MyDotNetActivity</b>。</li>
      <li>針對 [<b>位置</b>] 選取 [ <b>C:\ADFGetStarted</b> ]。</li>
-     <li>按一下 [確定]<b></b> 建立專案。</li>
+     <li>按一下 [確定]  以建立專案。</li>
    </ol>
 
-2. 按一下 [**工具**]，指向 [ **NuGet 套件管理員**]，然後按一下 [**套件管理員主控台**]。
+2. 按一下 [**工具**]，指向 [**NuGet 封裝管理員**]，然後按一下 [**封裝管理員主控台**]。
 
 3. 在 [套件管理員主控台] 中，執行下列命令以匯入**microsoft.azure.management.datafactories**。
 
@@ -148,7 +147,7 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. 將 **namespace** 的名稱變更為 **MyDotNetActivityNS**。
+6. 將**命名空間**的名稱變更為**mydotnetactivityns.mydotnetactivity**。
 
     ```csharp
     namespace MyDotNetActivityNS
@@ -372,7 +371,7 @@ public IDictionary<string, string> Execute(
     > 將 .NET Framework 4.5.2 版設定為您專案的目標架構：在專案上按一下滑鼠右鍵，然後按一下 [屬性]**** 來設定目標架構。 Data Factory 不支援針對 .NET Framework 4.5.2 版之後的版本編譯的自訂活動。
 
 11. 啟動**Windows Explorer**，並根據組建類型流覽至**bin\debug**或**bin\release**資料夾。
-12. 建立 zip 檔案 **MyDotNetActivity.zip**，檔案中包含 \<專案資料夾\>\bin\Debug 資料夾中的所有二進位檔。 新增 **MyDotNetActivity.pdb** 檔案，讓您可以取得額外的詳細資訊，例如如果有失敗時，原始程式碼中引起問題的程式碼行號。
+12. 建立 zip 檔案**MyDotNetActivity.zip** ，其中包含 \bin\Debug 資料夾中的所有二進位檔 \<project folder\> 。 新增 **MyDotNetActivity.pdb** 檔案，讓您可以取得額外的詳細資訊，例如如果有失敗時，原始程式碼中引起問題的程式碼行號。
 
     > [!IMPORTANT]
     > 自訂活動之 zip 檔案中的所有檔案都必須位於 **最上層** 且不包含任何子資料夾。
@@ -414,7 +413,7 @@ test custom activity Microsoft test custom activity Microsoft
 > [!NOTE]
 > 建立 **file.txt** 並上傳到 Blob 容器 (如果您尚未完成)。 請參閱上一節中的指示。
 
-### <a name="step-1-create-the-data-factory"></a>步驟 1：建立 Data Factory
+### <a name="step-1-create-the-data-factory"></a>步驟 1:建立 Data Factory
 1. 登入 Azure 入口網站之後，執行下列步驟：
    1. 在左功能表中，按一下 [建立資源]****。
    2. 按一下 [新增]**** 刀鋒視窗中的 [資料 + 分析]****。
@@ -432,7 +431,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     ![Data Factory 刀鋒視窗](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>步驟 2：建立連結服務
+### <a name="step-2-create-linked-services"></a>步驟 2:建立連結的服務
 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 在此步驟中，您會將 Azure 儲存體帳戶和 Azure Batch 帳戶連結到 Data Factory。
 
 #### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
@@ -555,7 +554,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    請記得輸入資料夾中的所有檔案都是包含上述開始時間之配量的一部分。 處理此配量時，自訂活動會掃描每個檔案，並利用搜尋詞彙 (“Microsoft”) 的出現次數在輸出檔案中產生資料行。 如果輸入資料夾中有三個檔案，每小時配量的輸出檔中會有三行： 2016-11-16-00.txt .txt、2016-11-16：01：00： 00 .txt 等等。
+    請記得輸入資料夾中的所有檔案都是包含上述開始時間之配量的一部分。 處理此配量時，自訂活動會掃描每個檔案，並利用搜尋詞彙 (“Microsoft”) 的出現次數在輸出檔案中產生資料行。 如果輸入資料夾中有三個檔案，每小時配量的輸出檔中會有三行： 2016-11-16-00.txt、2016-11-16:01:00:00.txt 等等。
 3. 若要部署 **OutputDataset**，按一下命令列上的 [部署]****。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>建立並執行使用自訂活動的管線
@@ -611,7 +610,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    * **Concurrency** 設定為 **2**，因此 Azure Batch 集區中會有 2 部 VM 以平行方式處理 2 個配量。
    * activities 區段中有一個活動，它的類型是： **DotNetActivity**。
-   * **AssemblyName**會設定為 dll 的名稱： **MyDotnetActivity**。
+   * **AssemblyName**設定為 DLL 的名稱： **MyDotnetActivity.dll**。
    * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。
    * **PackageLinkedService** 設定為 **AzureStorageLinkedService**，它會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您將不同的 Azure 儲存體帳戶用於輸入/輸出檔案和自訂活動 zip 檔案，您可以建立另一個 Azure 儲存體連結服務。 本文假設您使用相同的 Azure 儲存體帳戶。
    * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為：containerforthezip/nameofthezip.zip。
@@ -671,7 +670,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為：**adf-poolna
 
 ![Data Factory & Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
 
-## <a name="troubleshoot-failures"></a>疑難排解失敗
+## <a name="troubleshoot-failures"></a>針對失敗進行疑難排解
 疑難排解包含一些基本技術：
 
 1. 如果您看到下列錯誤，您可能正在使用經常性/非經常性 Blob 儲存體，而非使用一般用途的 Azure Blob 儲存體。 將 zip 檔案上傳至**一般用途的 Azure 儲存體帳戶**。
@@ -686,7 +685,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為：**adf-poolna
     ```
 
    如果名稱相符，請確認所有二進位檔皆位於 zip 檔案的 **根資料夾** 中。 也就是說，當您開啟 zip 檔案，您應該會在根資料夾中看到所有檔案，而非在任何子資料夾中看到。
-3. 如果輸入配量未設定為 [**就緒**]，請確認輸入資料夾結構正確，而且輸入資料夾中有 **.txt** 。
+3. 如果輸入配量未設定為 [**就緒**]，請確認輸入資料夾結構正確，且**file.txt**存在於輸入資料夾中。
 3. 在自訂活動的 **Execute** 方法中，使用可協助您針對問題進行疑難排解的 **IActivityLogger** 物件記錄資訊。 記錄的訊息會顯示在使用者記錄檔 (一或多個名為 user-0.log、user-1.log、user-2.log 等的檔案) 中。
 
    在 [OutputDataset]**** 刀鋒視窗中，按一下配量，以查看該配量的 [資料配量]**** 刀鋒視窗。 您會看到該配量的 [活動執行]****。 您會看到一個為該配量執行的活動。 如果您按一下命令列中的 [執行]，您可以為相同的配量啟動另一個活動執行。
@@ -696,7 +695,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為：**adf-poolna
    在記錄檔清單中，按一下 [user-0.log] **IActivityLogger.Write**方法的結果。 在右窗格中的是使用 **IActivityLogger.Write** 方法的結果。 如果您沒有看到所有訊息，請檢查您是否有更多的記錄檔，名為： user_1 .log，user_2 .log 等等。否則，程式碼可能會在最後一筆記錄的訊息之後失敗。
 
    此外，檢查 **system-0.log** 是否有任何系統錯誤訊息和例外狀況。
-4. 在 zip 檔案中包含 **PDB** 檔案，錯誤詳細資料才會在錯誤發生時包含**呼叫堆疊**等資訊。
+4. 在 zip 檔案中包含**PDB**檔案，如此一來，錯誤詳細資料就會包含錯誤發生時的**呼叫堆疊**等資訊。
 5. 自訂活動之 zip 檔案中的所有檔案都必須位於 **最上層** 且不包含任何子資料夾。
 6. 確認 **assemblyName** (MyDotNetActivity.dll)、**entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService** (應指向包含 zip 檔案的**一般用途** Azure blob 儲存體) 都設為正確的值。
 7. 如果您修正錯誤，並想要重新處理配量，請以滑鼠右鍵按一下 [OutputDataset]**** 刀鋒視窗中的配量，然後按一下 [執行]****。
@@ -1031,7 +1030,7 @@ GitHub 上的 [Azure Data Factory - 本機環境](https://github.com/gbrueckl/Az
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

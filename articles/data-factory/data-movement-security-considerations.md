@@ -10,13 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019974"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>在 Azure Data Factory 中資料移動的安全性考量
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -36,7 +35,7 @@ Azure Data Factory 除了用於雲端資料存放區的連結服務認證 (會�
 
 Data Factory 已通過下列各項規範的認證：
 
-| **[CSA STAR Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
+| **[CSA STAR 認證](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
 | **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
@@ -111,7 +110,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件和�
 ### <a name="on-premises-data-store-credentials"></a>內部部署資料存放區認證
 認證可以儲存在 data factory 中，或[由 data factory](store-credentials-in-key-vault.md)在執行時間從 Azure Key Vault 加以參考。 如果將認證儲存在 data factory 中，它一律會以加密方式儲存在自我裝載整合執行時間上。 
  
-- **在本機儲存認證**。 如果您直接使用**set-azdatafactoryv2linkedservice**指令，搭配 JSON 中的連接字串和認證內嵌，則會將連結的服務加密並儲存在自我裝載整合執行時間上。  在此情況下，認證會透過 azure 後端服務流動，這是非常安全的自我裝載整合機器，其最後會進行加密和儲存。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。
+- **在本機儲存認證**。 如果您直接使用**set-azdatafactoryv2linkedservice**指令，搭配 JSON 中的連接字串和認證內嵌，則會將連結的服務加密並儲存在自我裝載整合執行時間上。  在此情況下，認證會透過 Azure 後端服務流動，這是非常安全的自我裝載整合機器，其最後會進行加密和儲存。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。
 
 - **將認證儲存在 Azure Key Vault 中**。 您也可以在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中儲存資料存放區的認證。 Data Factory 會在活動執行期間擷取認證。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。
 
@@ -155,6 +154,12 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>IP 位址的防火牆設定和允許清單設定
 
+> [!NOTE] 
+> 您可能必須根據個別資料來源的需求，在公司防火牆層級管理埠或設定網域的允許清單。 此表格僅使用 Azure SQL Database、Azure SQL 資料倉儲和 Azure Data Lake Store 作為範例。
+
+> [!NOTE] 
+> 如需透過 Azure Data Factory 的資料存取策略詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)。
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>內部部署/私人網路的防火牆需求    
 在企業中，公司防火牆會在組織的中央路由器上執行。 Windows 防火牆則是在安裝自我裝載整合執行階段的本機電腦上以精靈的形式執行。 
 
@@ -167,7 +172,7 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 下表提供 Windows 防火牆的輸入連接埠需求：
 
-| 輸入連接埠 | 描述                              |
+| 輸入連接埠 | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060（TCP）    | PowerShell 加密 Cmdlet (如[在 Azure Data Factory 中加密內部部署資料存放區的認證](encrypt-credentials-self-hosted-integration-runtime.md)中所述) 和認證管理員應用程式皆需要此連接埠，以便為自我裝載整合執行階段的內部部署資料存放區安全地設定認證。 |
 
@@ -178,9 +183,9 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 下列雲端資料存放區會要求您允許自我裝載整合執行時間電腦的 IP 位址。 根據預設，部分資料存放區可能不需要允許清單。 
 
-- [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure Data Lake 存放區](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 

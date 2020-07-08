@@ -7,12 +7,11 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014531"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>建立應用程式閘道的 Web 應用程式防火牆原則
 
@@ -51,25 +50,25 @@ ms.locfileid: "80886920"
 
    > [!NOTE]
    > 如果您將原則指派給已有原則的應用程式閘道（或接聽程式），則會覆寫原始原則，並將其取代為新的原則。
-4. 選取 [檢閱 + 建立]****，然後選取 [建立]****。
+4. 選取 [檢閱 + 建立]  ，然後選取 [建立]  。
 
    ![WAF 原則基本概念](../media/create-waf-policy-ag/waf-policy-basics.png)
 
 ## <a name="configure-waf-rules-optional"></a>設定 WAF 規則（選擇性）
 
-當您建立 WAF 原則時，預設會處於*偵測*模式。 在偵測模式中，WAF 不會封鎖任何要求。 相反地，相符的 WAF 規則會記錄在 WAF 記錄中。 若要查看作用中的 WAF，您可以將模式設定變更為 [*預防*]。 在預防模式中，您選取的 CRS 規則集內所定義的比對規則會被封鎖及/或記錄在 WAF 記錄中。
+當您建立 WAF 原則時，預設會處於*偵測*模式。 在 [偵測]  模式中，WAF 不會封鎖任何要求。 相反地，相符的 WAF 規則會記錄在 WAF 記錄中。 若要查看作用中的 WAF，您可以將模式設定變更為 [*預防*]。 在預防模式中，您選取的 CRS 規則集內所定義的比對規則會被封鎖及/或記錄在 WAF 記錄中。
 
 ## <a name="managed-rules"></a>受控規則
 
 預設會啟用 Azure 管理的 OWASP 規則。 若要停用規則群組中的個別規則，請展開該規則群組中的規則，選取規則編號前面的核取方塊，然後選取上方索引標籤上的 [**停**用]。
 
-[![受控規則](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
+[![受控規則 ](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>自訂規則
 
 若要建立自訂規則，請選取 [自訂**規則**] 索引標籤底下的 [**新增自訂規則**]這會開啟 [自訂規則設定] 頁面。 下列螢幕擷取畫面顯示設定為在查詢字串包含文字*blockme*時封鎖要求的範例自訂規則。
 
-[![編輯自訂](../media/create-waf-policy-ag/edit-custom-rule.png)規則](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
+[![編輯自訂規則 ](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate-your-waf-config-to-a-waf-policy"></a><a name="migrate"></a>將您的 WAF Config 遷移至 WAF 原則
 
@@ -81,7 +80,7 @@ ms.locfileid: "80886920"
 
 您可以藉由在入口網站中查看 WAF 來判斷您的狀態。 如果 [WAF] 設定是可見的，而且可以從 [應用程式閘道] 視圖中變更，則您的 WAF 會處於 [狀態 1]。
 
-[![WAF](../media/create-waf-policy-ag/waf-configure.png)設定](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
+[![WAF ](../media/create-waf-policy-ag/waf-configure.png) 設定](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 如果您選取 [ **Web 應用程式防火牆**]，它會顯示相關聯的原則，表示 WAF 處於狀態2或狀態3。 導覽至原則之後，如果**只**顯示自訂規則和相關聯的應用程式閘道，則它是僅限自訂規則的原則。
 
@@ -97,9 +96,20 @@ ms.locfileid: "80886920"
 
 只會停用自訂規則的 WAF 原則編輯。 若要編輯任何 WAF 設定，例如停用規則、新增排除專案等等，您必須遷移至新的最上層防火牆原則資源。
 
-若要這麼做，請建立*Web 應用程式防火牆原則*，並將它與您所選擇的應用程式閘道和接聽程式產生關聯。 這個新原則**必須**與目前的 WAF 設定完全相同，這表示每個自訂規則、排除、停用規則等都必須複製到您要建立的新原則中。 一旦有與應用程式閘道相關聯的原則之後，您就可以繼續對 WAF 規則和設定進行變更。 您也可以使用 Azure PowerShell 來執行此動作。 如需詳細資訊，請參閱[建立 WAF 原則與現有應用程式閘道的關聯](associate-waf-policy-existing-gateway.md)。
+若要這麼做，請建立*Web 應用程式防火牆原則*，並將它與您所選擇的應用程式閘道和接聽程式產生關聯。 這個新原則必須與目前的 WAF 設定完全相同，這表示每個自訂規則、排除、停用規則等都必須複製到您要建立的新原則中。 一旦有與應用程式閘道相關聯的原則之後，您就可以繼續對 WAF 規則和設定進行變更。 您也可以使用 Azure PowerShell 來執行此動作。 如需詳細資訊，請參閱[建立 WAF 原則與現有應用程式閘道的關聯](associate-waf-policy-existing-gateway.md)。
 
 （選擇性）您可以使用遷移腳本來遷移至 WAF 原則。 如需詳細資訊，請參閱[使用 Azure PowerShell 遷移 Web 應用程式防火牆原則](migrate-policy.md)。
+
+## <a name="force-mode"></a>強制模式
+
+如果您不想要將所有內容複寫到與目前設定完全相同的原則中，您可以將 WAF 設定為「強制」模式。 執行下列 Azure PowerShell 程式碼，您的 WAF 將會處於強制模式。 然後您可以將任何 WAF 原則關聯至您的 WAF，即使它沒有與您的設定完全相同的設定。 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+然後使用將 WAF 原則關聯至應用程式閘道的步驟 procees。 如需詳細資訊，請參閱[建立 WAF 原則與現有應用程式閘道的關聯。](associate-waf-policy-existing-gateway.md)
 
 ## <a name="next-steps"></a>後續步驟
 

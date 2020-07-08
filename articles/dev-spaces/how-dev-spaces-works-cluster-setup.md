@@ -5,12 +5,11 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 說明如何設定適用於 Azure Dev Spaces 的 Azure Kubernetes Service 叢集
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83995882"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何設定 Azure Dev Spaces 叢集的運作方式
 
@@ -18,7 +17,7 @@ Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應
 
 ## <a name="prepare-your-aks-cluster"></a>準備您的 AKS 叢集
 
-若要準備適用於 Dev Spaces 的 AKS 叢集，請確認您的 AKS 叢集位於 [Azure Dev Spaces 支援的區域][supported-regions]，且目前執行的是 Kubernetes 1.10.3 或更新版本。 若要從 Azure 入口網站啟用叢集上的 Azure Dev Spaces，請瀏覽至您的叢集，然後按一下 [Dev Spaces]，將 [使用 Dev Spaces] 變更為 [是]，並按一下 [儲存]。 您也可以藉由執行 `az aks use-dev-spaces`，從 Azure CLI 啟用 Azure Dev Spaces。
+若要準備適用於 Dev Spaces 的 AKS 叢集，請確認您的 AKS 叢集位於 [Azure Dev Spaces 支援的區域][supported-regions]，且目前執行的是 Kubernetes 1.10.3 或更新版本。 您可以藉由執行，從 Azure CLI 啟用 Azure Dev Spaces `az aks use-dev-spaces` 。
 
 如需為 Dev Spaces 設定 AKS 叢集的範例，請參閱[小組開發快速入門][quickstart-team]。
 

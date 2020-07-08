@@ -12,12 +12,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021512"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務將 SSIS 套件重新部署到 Azure SQL Database
 
@@ -26,7 +25,7 @@ ms.locfileid: "77648524"
 如果您使用 2012 以前的 SSIS 版本，則在將 SSIS 專案/套件重新部署至專案部署模型之前，您必須先使用 Integration Services 專案轉換精靈 (亦可從 SSMS 啟動) 進行轉換。 如需詳細資訊，請參閱[將專案轉換為專案部署模型](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)一文。
 
 > [!NOTE]
-> Azure 資料庫移轉服務（DMS）目前不支援將來源 SSISDB 遷移至 Azure SQL Database 伺服器，但您可以使用下列程式重新部署您的 SSIS 專案/套件。
+> Azure 資料庫移轉服務（DMS）目前不支援將來源 SSISDB 遷移至 Azure SQL Database，但您可以使用下列程式重新部署您的 SSIS 專案/套件。
 
 在本文中，您將學會如何：
 > [!div class="checklist"]
@@ -34,25 +33,25 @@ ms.locfileid: "77648524"
 > * 評估來源 SSIS 專案/套件。
 > * 將 SSIS 專案/套件遷移至 Azure。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您需要：
 
 * SSMS 17.2 版或更新版本。
-* 目標資料庫伺服器的執行個體，以便裝載 SSISDB。 如果您還沒有資料庫，請流覽至 [SQL Server （僅限邏輯伺服器）][表單](https://ms.portal.azure.com/#create/Microsoft.SQLServer)，以使用 Azure 入口網站建立 Azure SQL Database 伺服器（不含資料庫）。
-* SSIS 必須在包含 Azure SSIS Integration Runtime （IR）的 Azure Data Factory （ADF）中布建，且其目的地 SSISDB 是由 Azure SQL Database server 的實例所裝載（如在[Azure Data Factory 中布建 AZURE SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)一文所述）。
+* 目標資料庫伺服器的執行個體，以便裝載 SSISDB。 如果您還沒有，請流覽至 [SQL Server （僅限邏輯伺服器）][表單](https://ms.portal.azure.com/#create/Microsoft.SQLServer)，以使用 Azure 入口網站建立[邏輯 SQL 伺服器](../azure-sql/database/logical-servers.md)（不含資料庫）。
+* SSIS 必須在包含 Azure SSIS Integration Runtime （IR）的 Azure Data Factory （ADF）中布建，且其目的地 SSISDB 是由 SQL Database 所裝載（如在[Azure Data Factory 中布建 AZURE SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)一文所述）。
 
 ## <a name="assess-source-ssis-projectspackages"></a>評估來源 SSIS 專案/套件
 
-雖然來源 SSISDB 的評量尚未整合到資料庫移轉小幫手（DMA）或 Azure 資料庫移轉服務（DMS），但您的 SSIS 專案/套件將會進行評估/驗證，因為它們會重新部署至裝載于 Azure SQL Database 伺服器上的目的地 SSISDB。
+雖然來源 SSISDB 的評量尚未整合到資料庫移轉小幫手（DMA）或 Azure 資料庫移轉服務（DMS），但您的 SSIS 專案/套件將會進行評估/驗證，因為它們會重新部署到由 Azure SQL Database 所裝載的目的地 SSISDB。
 
 ## <a name="migrate-ssis-projectspackages"></a>遷移 SSIS 專案/套件
 
-若要將 SSIS 專案/套件遷移至 Azure SQL Database 伺服器，請執行下列步驟。
+若要將 SSIS 專案/套件遷移至 Azure SQL Database，請執行下列步驟。
 
 1. 開啟 SSMS，然後選取 [選項]**** 來顯示 [連線至伺服器]**** 對話方塊。
 
-2. 在 [**登**入] 索引標籤上，指定連接到將裝載目的地 SSISDB 之 Azure SQL Database 伺服器所需的資訊。
+2. 在 [**登**入] 索引標籤上，指定連接到將裝載目的地 SSISDB 之伺服器所需的資訊。
 
     ![SSIS 的 [登入] 索引標籤](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -78,10 +77,10 @@ ms.locfileid: "77648524"
 
     ![部署精靈的 [選取來源] 頁面](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. 選取 [下一步]  。
+8. 選取 [下一步]。
 9. 在 [選取目的地]**** 頁面上，指定專案的目的端。
 
-    a. 在 [伺服器名稱] 文字方塊中，輸入完整的 Azure SQL Database 伺服器名稱（<server_name>. database.windows.net）。
+    a. 在 [伺服器名稱] 文字方塊中，輸入完整的伺服器名稱（<server_name>. database.windows.net）。
 
     b. 提供驗證資訊，然後選取 [連線]****。
 
@@ -96,7 +95,7 @@ ms.locfileid: "77648524"
 
     ![部署精靈的 [驗證] 頁面](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. 選取 [下一步]  。
+11. 選取 [下一步]。
 
 12. 在 [檢閱]**** 頁面上，檢閱您的部署設定。
 

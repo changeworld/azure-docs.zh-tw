@@ -5,12 +5,11 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996633"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 JAVA 和 Gradle 建立函式並將其發佈至 Azure
 
@@ -19,7 +18,7 @@ ms.locfileid: "81732716"
 > [!NOTE]
 > 如果 Gradle 不是您慣用的開發工具，請參閱我們的類似教學課程，適用于使用[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、 [IntelliJ 概念](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)的 JAVA 開發人員。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Java 開發函式，您必須安裝下列項目：
 
@@ -42,7 +41,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-開啟`build.gradle` ，並將`appName`下一節中的變更為唯一名稱，以避免在部署至 Azure 時發生功能變數名稱衝突。 
+開啟 `build.gradle` ，並將 `appName` 下一節中的變更為唯一名稱，以避免在部署至 Azure 時發生功能變數名稱衝突。 
 
 ```gradle
 azurefunctions {
@@ -60,7 +59,7 @@ azurefunctions {
 在文字編輯器中，從 *src/main/java* 路徑開啟新的 Function.java 檔案，並檢閱所產生的程式碼。 此程式碼是一個 [HTTP 觸發](functions-bindings-http-webhook.md)函式，可回應要求的本文。 
 
 > [!div class="nextstepaction"]
-> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
@@ -93,14 +92,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 預期的輸出如下所示：
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-在本機執行時不需要[函式金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
+> [!NOTE]
+> 如果您將 authLevel 設定為 `FUNCTION` 或 `ADMIN` ，在本機執行時，不需要函式[金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
+
 在終端機中使用 `Ctrl+C` 可停止函式程式碼。
 
 > [!div class="nextstepaction"]
-> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>將函式部署到 Azure
 
@@ -128,10 +129,10 @@ gradle azureFunctionsDeploy
 
 部署也會封裝專案檔案，並使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 將其部署至新的函式應用程式，並已啟用從套件執行模式。
 
-因為我們發佈的 HTTP 觸發程式會使用 `authLevel = AuthorizationLevel.FUNCTION`，所以您必須取得函式金鑰，才能透過 HTTP 呼叫函式端點。 [Azure 入口網站]是取得函式金鑰的最簡單方式。
+範例專案中的 HTTP 觸發程式 authLevel 是 `ANONYMOUS` ，它會略過驗證。 不過，如果您使用或之類的其他 authLevel `FUNCTION` `ADMIN` ，則需要取得函式金鑰以透過 HTTP 呼叫函式端點。 [Azure 入口網站]是取得函式金鑰的最簡單方式。
 
 > [!div class="nextstepaction"]
-> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>取得 HTTP 觸發程序 URL
 
@@ -139,9 +140,9 @@ gradle azureFunctionsDeploy
 
 1. 瀏覽至 [Azure 入口網站 ]、登入，在頁面頂端的 [搜尋]**** 中輸入您函式應用程式的 _appName_，然後按 Enter。
  
-1. 在函式應用程式中，展開 [函式 (唯讀)]****，選擇您的函式，然後選取右上方的 [</> 取得函數 URL]****。 
+1. 在您的函數應用程式中，選取 [函式] **，選擇您**的函式，然後按一下右上方的 [ **</> 取得**函式 Url]。 
 
-    ![從 Azure 入口網站複製函式 URL](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="從 Azure 入口網站複製函式 URL":::
 
 1. 選擇 [預設值 (函式金鑰)]****，然後選取 [複製]****。 
 
@@ -152,17 +153,17 @@ gradle azureFunctionsDeploy
 若要使用 `cURL` 驗證在 Azure 上執行的函式應用程式，請將下列範例中的 URL 取代為您從入口網站複製的 URL。
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
 這會在要求本文中使用 `AzureFunctions`，將 POST 要求傳送至函式端點。 您會看見下列回應。
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [我遇到問題](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>後續步驟
 

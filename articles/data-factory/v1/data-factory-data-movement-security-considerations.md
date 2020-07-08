@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80130828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021495"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - 資料移動的安全性考量
 
@@ -134,7 +133,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 下列各圖說明在使用「資料管理閘道」的情況下，利用 ExpressRoute 和 IPSec VPN (搭配「虛擬網路」)，在內部部署資料庫與 Azure 服務之間移動資料：
 
-**ExpressRoute：**
+**Express Route：**
  
 ![使用 ExpressRoute 搭配閘道](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
@@ -149,7 +148,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 下表提供「公司防火牆」**** 的「輸出連接埠」**** 和網域需求。
 
-| 網域名稱 | 輸出連接埠 | 描述 |
+| 網域名稱 | 輸出連接埠 | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443、80 | 必須提供此資訊，閘道才能連接到 Data Factory 中的資料移動服務 |
 | `*.core.windows.net` | 443 | 當您使用[分段複製](data-factory-copy-activity-performance.md#staged-copy)功能時，可供閘道用來連接到「Azure 儲存體帳戶」。 | 
@@ -162,7 +161,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 下表提供「Windows 防火牆」**** 的「輸入連接埠」**** 需求。
 
-| 輸入連接埠 | 描述 | 
+| 輸入連接埠 | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 必須提供此資訊，認證管理員應用程式才能為閘道上的內部部署資料存放區安全地設定認證。 | 
 
@@ -173,9 +172,9 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 下列雲端資料存放區會要求必須將閘道電腦的 IP 位址加入允許清單。 在這些資料存放區中，有些可能預設不會要求將 IP 位址加入允許清單。 
 
-- [Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure Data Lake 存放區](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 

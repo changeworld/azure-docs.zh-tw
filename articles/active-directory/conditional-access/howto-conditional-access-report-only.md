@@ -4,19 +4,18 @@ description: 在條件式存取中使用僅限報表模式以協助採用
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83994964"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在僅限報表模式中設定條件式存取原則
 
@@ -26,11 +25,11 @@ ms.locfileid: "82690363"
 > 如果您的組織尚未[設定 Azure 監視器與 Azure AD 整合](#set-up-azure-monitor-integration-with-azure-ad)。 您必須先進行此程式，資料才可供審查。
 
 1. 以條件式存取系統管理員、安全性系統管理員或全域管理員身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > **安全性** > **條件式存取**。
-1. 選取 [新增原則]****。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
+1. 選取 [新增原則]。
 1. 視需要設定原則條件和必要的授與控制項。
 1. 在 [**啟用原則**] 底下，將切換為 [**僅限報表**] 模式。
-1. 選取 [儲存]  。
+1. 選取 [儲存]
 
 > [!TIP]
 > 您可以將現有原則的 [**啟用原則**狀態] 從 [**開啟**] 編輯為 [**僅報告**]，但這麼做將會停用原則強制執行。 
@@ -40,7 +39,7 @@ View report-只會產生 Azure AD 登入記錄檔。
 若要針對特定登入來查看僅限報告原則的結果：
 
 1. 以「報表讀者」、「安全性讀取者」、「安全性系統管理員」或「全域管理員」身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > 登**入**。
+1. 流覽至**Azure Active Directory**登  >  **入**。
 1. 選取登入或新增篩選來縮小結果範圍。
 1. 在 [**詳細資料**] 下拉式清單中，選取 [**僅限報告**] 索引標籤，以查看在登入期間評估的原則。
 
@@ -61,7 +60,7 @@ Azure 監視器定價的詳細資訊可在[Azure 監視器定價頁面](https://
 一旦將 Azure AD 記錄與 Azure 監視器整合之後，您就可以使用新的條件式存取深入解析活頁簿來監視條件式存取原則的影響。
 
 1. 以安全性系統管理員或全域管理員身分登入**Azure 入口網站**。
-1. 流覽至**Azure Active Directory** > 活頁**簿**。
+1. 流覽至**Azure Active Directory**活頁  >  **簿**。
 1. 選取 [**條件式存取深入**解析]。
 1. 從 [**條件式存取原則**] 下拉式清單中選取一或多個原則。 預設會選取所有已啟用的原則。
 1. 選取時間範圍（如果時間範圍超過可用的資料集，報表就會顯示所有可用的資料）。 一旦您設定了**條件式存取原則**和**時間範圍**參數，報表就會載入。
@@ -87,6 +86,6 @@ Azure 監視器定價的詳細資訊可在[Azure 監視器定價頁面](https://
 
 ## <a name="next-steps"></a>後續步驟
 
-[條件式存取的一般原則](concept-conditional-access-policy-common.md)
+[條件式存取一般原則](concept-conditional-access-policy-common.md)
 
 如需 Azure AD 活頁簿的詳細資訊，請參閱[如何將 Azure 監視器活頁簿用於 Azure Active Directory 報表](../reports-monitoring/howto-use-azure-monitor-workbooks.md)一文。

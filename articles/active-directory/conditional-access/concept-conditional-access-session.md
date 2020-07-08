@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83993844"
 ---
 # <a name="conditional-access-session"></a>條件式存取：會話
 
@@ -40,7 +39,7 @@ ms.locfileid: "78671895"
 條件式存取應用程式控制可根據存取和工作階段原則，即時監視與控制使用者應用程式存取和工作階段。 Cloud App Security 入口網站內使用存取和工作段原則來進一步細化篩選並設定要對使用者採取的動作。 使用存取和工作階段原則，您可以：
 
 - 防止資料外泄：例如，您可以在未受管理的裝置上封鎖下載、剪下、複製及列印敏感性檔。
-- 在下載時保護：不封鎖下載機密檔，您可以要求將檔加上標籤並受到 Azure 資訊保護保護。 此動作可確保檔受到保護，並在可能有風險的會話中限制使用者存取。
+- 在下載時保護：不封鎖下載機密檔，您可以要求將檔加上標籤並受到 Azure 資訊保護保護。 此動作可確保文件受到保護，並在潛在風險性工作階段中限制使用者的存取。
 - 禁止上傳未標記的檔案：上傳、散佈和使用機密檔案之前，請務必確定該檔案具有適當的標籤和保護。 您可以確保在使用者分類內容之前，會封鎖具有機密內容的未標記檔案，使其無法上傳。
 - 監視使用者會話的相容性：有風險的使用者會在登入應用程式時受到監視，並從會話內記錄其動作。 您可以調查及分析使用者的行為，以了解未來應該在什麼位置及什麼情況下套用工作階段原則。
 - 封鎖存取：您可以根據數個風險因素，以細微的方式封鎖特定應用程式和使用者的存取。 例如，如果使用用戶端憑證作為裝置管理的形式，您可以封鎖它們。
@@ -48,7 +47,7 @@ ms.locfileid: "78671895"
 
 如需詳細資訊，請參閱[部署精選應用程式的條件式存取應用程式控制](/cloud-app-security/proxy-deployment-aad)一文。
 
-## <a name="sign-in-frequency-preview"></a>登入頻率（預覽）
+## <a name="sign-in-frequency"></a>登入頻率
 
 登入頻率會定義在嘗試存取資源時，要求使用者重新登入的時間週期。
 
@@ -66,7 +65,7 @@ ms.locfileid: "78671895"
 
 如需詳細資訊，請參閱[使用條件式存取來設定驗證會話管理](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)一文。
 
-## <a name="persistent-browser-session-preview"></a>持續性瀏覽器會話（預覽）
+## <a name="persistent-browser-session"></a>持續性瀏覽器會話
 
 持續性瀏覽器會話可讓使用者在關閉並重新開啟其瀏覽器視窗之後，保持登入狀態。
 
@@ -74,6 +73,6 @@ ms.locfileid: "78671895"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+- [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
 - [僅限報告模式](concept-conditional-access-report-only.md)

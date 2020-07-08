@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016469"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
@@ -37,8 +36,8 @@ ms.locfileid: "74084745"
 在 Azure 基礎結構即服務（IaaS）虛擬機器（VM）或內部部署環境中 SQL Server。| [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 將次要複本設為主要複本所花費的時間。 | 因為複寫到次要複本是非同步，所以會發生資料遺失的情況。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| [容錯移轉叢集 (Always On FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在節點之間進行故障切換所花費的時間。 | 由於 Always On FCI 會使用共用存放裝置，因此在容錯移轉時，會有相同的儲存體實例視圖。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像（高效能模式）](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
-SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包含彈性集區和 Azure SQL Database 伺服器。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
-使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含 SQL Database 受控實例、彈性集區和 SQL Database 伺服器。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
+SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包含單一資料庫和彈性集區。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
+使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含 SQL Database 的受控實例、彈性集區和單一資料庫。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| 使用 Azure Site Recovery 進行複寫 | RTO 通常少於15分鐘。 若要深入瞭解，請參閱[Site Recovery 所提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 應用程式一致性的一小時，以及5分鐘的損毀一致性。 如果您要尋找較低的 RPO，請使用其他 BCDR 技術。
 
 > [!NOTE]
@@ -71,8 +70,8 @@ Site Recovery 會透過復原計畫的協助，協調整個應用程式的測試
 
 若要瞭解如何設計連線性考慮的應用程式，請參閱下列範例：
 
-* [設計雲端嚴重損壞修復的應用程式](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [彈性集區嚴重損壞修復策略](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [設計雲端嚴重損壞修復的應用程式](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
+* [彈性集區嚴重損壞修復策略](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步驟3：與 Always On、主動式異地複寫和自動容錯移轉群組交互操作
 
@@ -162,6 +161,6 @@ Site Recovery 與應用程式無關。 Site Recovery 可以協助保護部署在
 ## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解[Site Recovery 架構](site-recovery-components.md)。
-* 如需 Azure 中的 SQL Server，請深入瞭解在次要 Azure 區域中復原的[高可用性解決方案](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)。
-* 如 SQL Database，請深入瞭解在次要 Azure 區域中復原的[商務持續性](../sql-database/sql-database-business-continuity.md)和[高可用性](../sql-database/sql-database-high-availability.md)選項。
-* 如需在內部部署 SQL Server 機，請深入瞭解 Azure 虛擬機器中復原的[高可用性選項](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions)。
+* 如需 Azure 中的 SQL Server，請深入瞭解在次要 Azure 區域中復原的[高可用性解決方案](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)。
+* 如 SQL Database，請深入瞭解在次要 Azure 區域中復原的[商務持續性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)和[高可用性](../azure-sql/database/high-availability-sla.md)選項。
+* 如需在內部部署 SQL Server 機，請深入瞭解 Azure 虛擬機器中復原的[高可用性選項](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)。

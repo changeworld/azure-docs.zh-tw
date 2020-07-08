@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bf25c74f0190bc67e7da703e242d5d4bb3e299f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020637"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>設定從 Azure 認知搜尋索引子到 Azure VM 上 SQL Server 的連線
 
@@ -52,7 +51,7 @@ Azure 認知搜尋需要透過公用網際網路連線的所有索引子要求�
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>在 VM 中設定 SQL Server 連線
 在您設定 Azure 認知搜尋所需的加密連線之後，Azure Vm 上 SQL Server 會有額外的設定步驟。 如果您尚未這麼做，則下一個步驟是使用這些文件其中之一來完成設定︰
 
-* 若為 **Resource Manager** VM，請參閱 [使用 Resource Manager 連接到 Azure 上的 SQL Server 虛擬機器](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)。 
+* 若為 **Resource Manager** VM，請參閱 [使用 Resource Manager 連接到 Azure 上的 SQL Server 虛擬機器](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)。 
 * 若為 **傳統** VM，請參閱 [連線到 Azure 上的 SQL Server 虛擬機器](../virtual-machines/windows/classic/sql-connect.md)。
 
 特別是，檢閱每個文章中的「透過網際網路連接」一節。
@@ -73,11 +72,11 @@ Azure 認知搜尋需要透過公用網際網路連線的所有索引子要求�
 IP 位址可能會造成一些挑戰，如果您知道問題和可能的因應措施則可輕易克服。 其餘各節提供與 ACL 中的 IP 位址相關的問題處理建議。
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>限制對 Azure 認知搜尋的存取
-強烈建議您限制對搜尋服務的 ip 位址，以及 ACL 中`AzureCognitiveSearch` [服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 ip 位址範圍的存取，而不是讓您的 SQL Azure vm 開放給所有連線要求。
+強烈建議您限制對搜尋服務的 IP 位址，以及 ACL 中服務標籤的 IP 位址範圍的存取， `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)而不是讓您的 SQL Azure vm 開放給所有連線要求。
 
-您可以藉由 ping 搜尋服務的 FQDN （例如， `<your-search-service-name>.search.windows.net`）來找出 IP 位址。
+您可以藉由 ping 搜尋服務的 FQDN （例如，）來找出 IP 位址 `<your-search-service-name>.search.windows.net` 。
 
-您可以使用[可下載的 JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案或透過`AzureCognitiveSearch`服務標籤[探索 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)，來找出[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 IP 位址範圍。 每週會更新 IP 位址範圍。
+您可以 `AzureCognitiveSearch` 使用[可下載的 JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案或透過服務標籤[探索 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)，來找出[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 IP 位址範圍。 每週會更新 IP 位址範圍。
 
 #### <a name="managing-ip-address-fluctuations"></a>管理 IP 位址的變動
 如果您的搜尋服務只有一個搜尋單位 (也就是有一個複本和一個分割區)，在例行服務重新啟動期間，IP 位址會變更，使用您搜尋服務的 IP 位址讓現有的 ACL 失效。
@@ -89,7 +88,7 @@ IP 位址可能會造成一些挑戰，如果您知道問題和可能的因應�
 第三個可行 (但並不特別安全) 的方法，是針對搜尋服務佈建所在的 Azure 區域，指定 IP 位址範圍。 將公用 IP 位址配置給 Azure 資源的 IP 範圍清單已發佈於 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>包含 Azure 認知搜尋入口網站的 IP 位址
-如果您使用 Azure 入口網站來建立索引子，Azure 認知搜尋入口網站邏輯也需要在建立期間存取您的 SQL Azure VM。 Ping `stamp2.search.ext.azure.com`可找到 Azure 認知搜尋入口網站的 IP 位址。
+如果您使用 Azure 入口網站來建立索引子，Azure 認知搜尋入口網站邏輯也需要在建立期間存取您的 SQL Azure VM。 Ping 可找到 Azure 認知搜尋入口網站的 IP 位址 `stamp2.search.ext.azure.com` 。
 
 ## <a name="next-steps"></a>後續步驟
 使用設定時，您現在可以在 Azure VM 上指定 SQL Server 做為 Azure 認知搜尋索引子的資料來源。 如需詳細資訊，請參閱[使用索引子將 Azure SQL Database 連接到 Azure 認知搜尋](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。

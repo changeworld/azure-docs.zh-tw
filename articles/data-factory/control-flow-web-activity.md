@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84017645"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Web 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,22 +67,22 @@ ms.locfileid: "81417890"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | Web 活動的名稱 | String | 是
+NAME | Web 活動的名稱 | String | 是
 type | 必須設定為 **WebActivity**。 | String | 是
 method | 目標端點的 Rest API 方法。 | 字串。 <br/><br/>支援的類型："GET"、"POST"、"PUT" | 是
-url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。 | 是
+url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。 | Yes
 headers | 傳送至要求的標頭。 例如，若要對要求設定語言和類型︰`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字串 (或含有字串之 resultType 的運算式) | 是，Content-type 標頭是必要的。 `"headers":{ "Content-Type":"application/json"}`
 body | 代表傳送至端點的承載。  | 字串 (或含有字串之 resultType 的運算式)。 <br/><br/>請在[要求乘載結構描述](#request-payload-schema)一節中查看要求乘載的結構描述。 | POST/PUT 方法的必要項。
-驗證 (authentication) | 呼叫端點所使用的驗證方法。 支援的類型為「基本」或 ClientCertificate。 如需詳細資訊，請參閱[驗證](#authentication)一節。 如果不需要驗證，請排除這個屬性。 | 字串 (或含有字串之 resultType 的運算式) | 否
-資料集 | 傳遞至端點的資料集清單。 | 資料集參考的陣列。 可以是空陣列。 | 是
-linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的陣列。 可以是空陣列。 | 是
+驗證 (authentication) | 呼叫端點所使用的驗證方法。 支援的類型為「基本」或 ClientCertificate。 如需詳細資訊，請參閱[驗證](#authentication)一節。 如果不需要驗證，請排除這個屬性。 | 字串 (或含有字串之 resultType 的運算式) | No
+datasets | 傳遞至端點的資料集清單。 | 資料集參考的陣列。 可以是空陣列。 | Yes
+linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的陣列。 可以是空陣列。 | Yes
 
 > [!NOTE]
 > Web 活動叫用的 REST 端點必須傳回 JSON 類型的回應。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。
 
 下表顯示 JSON 內容的需求：
 
-| 值類型 | 要求本文 | Response body |
+| 值類型 | Request body | 回應本文 |
 |---|---|---|
 |JSON 物件 | 支援 | 支援 |
 |JSON 陣列 | 支援 <br/>(目前，JSON 陣列因為錯誤的結果無法運作。 正在執行修正。) | 不支援 |
@@ -95,7 +94,7 @@ linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的
 
 以下是 web 活動中支援的驗證類型。
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
 如果不需要驗證，請勿包含 authentication 屬性。
 
@@ -161,7 +160,7 @@ linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的
 ```
 
 ## <a name="example"></a>範例
-在此範例中，管線中的 Web 活動會呼叫 REST 端點。 它會將 Azure SQL 連結服務和 Azure SQL 資料集傳遞至端點。 REST 端點使用 Azure SQL 連接字串連接到 Azure SQL Server，並傳回 SQL Server 執行個體的名稱。
+在此範例中，管線中的 Web 活動會呼叫 REST 端點。 它會將 Azure SQL 連結服務和 Azure SQL 資料集傳遞至端點。 REST 端點會使用 Azure SQL 連接字串來連接到邏輯 SQL server，並傳回 SQL server 實例的名稱。
 
 ### <a name="pipeline-definition"></a>管線定義
 

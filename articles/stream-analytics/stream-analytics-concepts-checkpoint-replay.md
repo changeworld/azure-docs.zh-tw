@@ -8,12 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020603"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure 串流分析作業中的檢查點和重新執行概念
 本文說明「Azure 串流分析」中的內部檢查點和重新執行概念，以及這些概念對作業復原的影響。 每次「串流分析」作業執行時，都會在內部維護狀態資訊。 該狀態資訊會定期儲存在檢查點中。 在某些情況下，當發生作業失敗或升級時，會使用檢查點資訊來進行作業復原。 在其他情況下，則無法使用檢查點來進行復原，而是必須使用重新執行。
@@ -58,7 +57,7 @@ Microsoft 偶爾會升級在 Azure 服務中執行「串流分析」作業的二
 
 3. 測量從開始時間到產生第一個輸出之間的時間。 此時間大約就是服務升級期間作業會產生的延遲時間。
 
-4. 如果延遲時間太長，請嘗試分割作業，然後增加 SU 數目，以便將負載分散到更多節點。 或者，您也可以考慮縮短查詢中的時間範圍，然後對「串流分析」作業在下游接收器 (例如 Azure SQL 資料庫) 中產生的輸出執行進一步的彙總或其他具狀態處理。
+4. 如果延遲時間太長，請嘗試分割作業，然後增加 SU 數目，以便將負載分散到更多節點。 或者，請考慮減少查詢中的視窗大小，並針對下游接收中串流分析作業所產生的輸出執行進一步匯總或其他具狀態處理（例如，使用 Azure SQL Database）。
 
 若是對升級任務關鍵性作業期間的一般服務穩定性有疑慮，請考慮在配對的 Azure 區域中執行重複的作業。 如需詳細資訊，請參閱[在服務更新期間確保串流分析工作可靠性](stream-analytics-job-reliability.md)。
 

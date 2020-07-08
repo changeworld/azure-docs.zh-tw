@@ -11,11 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019957"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 
@@ -36,8 +35,8 @@ ms.locfileid: "81418944"
 如果您不熟悉 Azure Batch 服務，請參閱下列文章：
 
 * [Azure Batch 基本知識](../batch/batch-technical-overview.md) ，以取得 Azure Batch 服務的概觀。
-* [AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) Cmdlet 可建立 Azure Batch 帳戶（或） [Azure 入口網站](../batch/batch-account-create-portal.md)使用 Azure 入口網站建立 Azure Batch 帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)一文。
-* [New-azbatchpool](/powershell/module/az.batch/New-AzBatchPool) Cmdlet 可建立 Azure Batch 集區。
+* [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) Cmdlet 可建立 Azure Batch 帳戶 (或) [Azure 入口網站](../batch/batch-account-create-portal.md)，以使用 Azure 入口網站建立 Azure Batch 帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)一文。
+* [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) Cmdlet 可建立 Azure Batch 集區。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 已連結的服務
 
@@ -100,18 +99,18 @@ ms.locfileid: "81418944"
 
 下表描述此活動特有的屬性之名稱和描述。
 
-| 屬性              | 描述                              | 必要 |
+| 屬性              | 說明                              | 必要 |
 | :-------------------- | :--------------------------------------- | :------- |
-| 名稱                  | 管線中的活動名稱     | 是      |
+| NAME                  | 管線中的活動名稱     | 是      |
 | description           | 說明活動用途的文字。  | 否       |
 | type                  | 針對自訂活動，活動類型是**自訂**。 | 是      |
-| linkedServiceName     | Azure Batch 的已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  | 是      |
-| 命令               | 要執行的自訂應用程式命令。 如果應用程式已經可以在 Azure Batch 集區節點上使用，則可以略過 resourceLinkedService 和 folderPath。 例如，您可以將命令指定為 `cmd /c dir`，該命令原生受 Windows Batch 集區節點支援。 | 是      |
+| linkedServiceName     | Azure Batch 的已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  | Yes      |
+| 命令               | 要執行的自訂應用程式命令。 如果應用程式已經可以在 Azure Batch 集區節點上使用，則可以略過 resourceLinkedService 和 folderPath。 例如，您可以將命令指定為 `cmd /c dir`，該命令原生受 Windows Batch 集區節點支援。 | Yes      |
 | resourceLinkedService | 對儲存體帳戶 (自訂應用程式儲存所在) 的 Azure 儲存體已連結的服務 | 否 &#42;       |
 | folderPath            | 自訂應用程式及其所有相依項目的資料夾路徑<br/><br/>如果您將相依性儲存在子資料夾中 (也就是 folderPath** 下的階層式資料夾結構)，當您將檔案複製到 Azure Batch 時，目前的資料夾結構會遭到壓平合併。 也就是所有檔案會複製到沒有子資料夾的單一資料夾中。 若要解決這個問題行為，請考慮壓縮檔案並複製壓縮的檔案，然後在所需位置中以自訂程式碼來將其解壓縮。 | 否 &#42;       |
-| referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | 否       |
-| extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | 否       |
-| retentionTimeInDays | 針對自訂活動提交的檔案保留時間。 預設值為30天。 | 否 |
+| referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | No       |
+| extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | No       |
+| retentionTimeInDays | 針對自訂活動提交的檔案保留時間。 預設值為30天。 | No |
 
 &#42; 必須同時指定或同時省略 `resourceLinkedService` 和 `folderPath` 屬性。
 
@@ -301,12 +300,12 @@ Activity Error section:
 如果您想要在下游活動中取用 stdout.txt 的內容，可以在 "\@activity('MyCustomActivity').output.outputs[0]" 運算式中取得 stdout.txt 檔案的路徑。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 在此範例中，會在 path 中`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"`儲存 linkedservices.json 和 datasets.json 的 json、json 和資料集。 您必須視需要個別加以清除。
+> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 在此範例中，上的 activity.js、上的 linkedServices.js和上的 datasets.js會儲存在 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` path 中。 您必須視需要個別加以清除。
 > - 如果已連結的服務使用自我裝載整合執行階段，機密資訊 (例如金鑰或密碼) 就會由自我裝載整合執行階段進行加密，以確保認證會保留在客戶定義的私人網路環境中。 某些機密欄位由您的自訂應用程式以這樣的方式參考時，可能會遺失。 視需要在 extendedProperties 中使用 SecureString，而不是使用已連結的服務參考。
 
 ## <a name="pass-outputs-to-another-activity"></a>將輸出傳遞到其他活動
 
-您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值 （大小限制為 2 MB）。如果您想要使用下游活動`outputs.json`中的內容，您可以使用運算式`@activity('<MyCustomActivity>').output.customOutput`來取得值。
+您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值 （大小限制為 2 MB）。如果您想要使用 `outputs.json` 下游活動中的內容，您可以使用運算式來取得值 `@activity('<MyCustomActivity>').output.customOutput` 。
 
 ## <a name="retrieve-securestring-outputs"></a>擷取 SecureString 輸出
 
@@ -327,7 +326,7 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> 比較 v2 自訂活動和第 1 版 (自訂) DotNet 活動
 
-在 Azure Data Factory 第1版中，您可以藉由建立 .NET 類別庫專案，並使用可實作為`Execute` `IDotNetActivity`介面方法的類別，來執行（自訂） DotNet 活動。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於這項執行，您的第1版 DotNet 活動程式碼必須以 .NET Framework 4.5.2 為目標。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
+在 Azure Data Factory 第1版中，您可以藉由建立 .NET 類別庫專案，並使用可實作為介面方法的類別，來執行（自訂） DotNet 活動 `Execute` `IDotNetActivity` 。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於這項執行，您的第1版 DotNet 活動程式碼必須以 .NET Framework 4.5.2 為目標。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
 
 在 Azure Data Factory V2 自訂活動中，您不需要執行 .NET 介面。 您現在可以在將之編譯為可執行檔的情況下，直接執行命令、指令碼，以及自己的自訂程式碼。 若要設定此實作，您需要一併指定 `Command` 屬性和 `folderPath` 屬性。 自訂活動會將可執行檔及其相依性上傳至 `folderpath`，並為您執行命令。
 
@@ -388,4 +387,4 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
-* [預存程式活動](transform-data-using-stored-procedure.md)
+* [預存程序活動](transform-data-using-stored-procedure.md)

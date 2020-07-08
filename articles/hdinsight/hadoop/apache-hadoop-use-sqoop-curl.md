@@ -7,32 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84013005"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>以捲曲的方式在 HDInsight 中執行 Apache Sqoop 作業
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 叢集上執行 Apache Sqoop 作業。 本文示範如何使用捲曲從 Azure 儲存體匯出資料，並將其匯入 SQL Server 資料庫。 本文是在[HDInsight 中搭配使用 Apache Sqoop 與 Hadoop](./hdinsight-use-sqoop.md)的接續。
+了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 叢集上執行 Apache Sqoop 作業。 本文示範如何使用捲曲從 Azure 儲存體匯出資料，並將其匯入 SQL Server 資料庫。 本文是[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)的接續內容。
 
 本文件使用 Curl 示範如何使用未經處理的 HTTP 要求來與 HDInsight 互動，以便執行、監視和擷取 Sqoop 作業的結果。 要想執行這些作業，就要使用 HDInsight 叢集所提供的 WebHCat REST API (先前稱為 Templeton)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* 完成[設定測試環境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [，從在 HDInsight 中搭配使用 Apache Sqoop 與 Hadoop](./hdinsight-use-sqoop.md)。
+* 透過[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)完成[設定測試環境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-* 用來查詢 Azure SQL Database 的用戶端。 請考慮使用[SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md)或[Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)。
+* 用來查詢 Azure SQL Database 的用戶端。 請考慮使用[SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md)或[Visual Studio Code](../../azure-sql/database/connect-query-vscode.md)。
 
 * [捲曲](https://curl.haxx.se/)。 Curl 是將資料傳送至 HDInsight 叢集或從 HDInsight 叢集傳送資料的工具。
 
 * [jq](https://stedolan.github.io/jq/)。 jq 公用程式用來處理從 REST 要求傳回的 JSON 資料。
 
-* 熟悉 Sqoop。 如需詳細資訊，請參閱[Sqoop 使用者指南](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)。
+* 熟悉 Sqoop。 如需詳細資訊，請參閱 [Sqoop 使用者指南](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)。
 
 ## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>使用 Curl 提交 Apache Sqoop 作業
 
@@ -41,7 +40,7 @@ ms.locfileid: "75767581"
 > [!NOTE]  
 > 在使用 Curl 或與 WebHCat 進行任何其他 REST 通訊時，您必須提供 HDInsight 叢集系統管理員的使用者名稱和密碼來驗證要求。 您也必須在用來將要求傳送至伺服器的統一資源識別項 (URI) 中使用叢集名稱。
 
-對於本節中的命令，請將`USERNAME`取代為要向叢集驗證的使用者，並將`PASSWORD`取代為使用者帳戶的密碼。 將 `CLUSTERNAME` 取代為您的叢集名稱。
+對於本節中的命令，請將取代為要向叢集 `USERNAME` 驗證的使用者，並將取代為 `PASSWORD` 使用者帳戶的密碼。 將 `CLUSTERNAME` 取代為您的叢集名稱。
 
 透過 [基本驗證](https://en.wikipedia.org/wiki/Basic_access_authentication)來保護 REST API 的安全。 您應該一律使用安全 HTTP (HTTPS) 提出要求，確保認證安全地傳送至伺服器。
 
@@ -77,7 +76,7 @@ ms.locfileid: "75767581"
 
     此命令中使用的參數如下：
 
-   * **-d** -因為`-G`未使用，要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
+   * **-d** -因為 `-G` 未使用，要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
 
        * **user.name** - 執行命令的使用者。
 
@@ -91,7 +90,7 @@ ms.locfileid: "75767581"
        {"id":"job_1415651640909_0026"}
        ```
 
-1. 若要檢查工作的狀態，請使用下列命令。 將 `JOBID` 取代為上一個步驟中所傳回的值。 例如，如果傳回值為`{"id":"job_1415651640909_0026"}`，則`JOBID`會是。 `job_1415651640909_0026` `jq`視需要修訂位置。
+1. 若要檢查工作的狀態，請使用下列命令。 將 `JOBID` 取代為上一個步驟中所傳回的值。 例如，如果傳回值為 `{"id":"job_1415651640909_0026"}` ，則會 `JOBID` 是 `job_1415651640909_0026` 。 `jq`視需要修訂位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -104,7 +103,7 @@ ms.locfileid: "75767581"
    > [!NOTE]  
    > 此 Curl 要求會傳回含有工作資訊的 JavaScript Object Notation (JSON) 文件；jq 可用來僅擷取狀態值。
 
-1. 工作狀態變更為 [成功]**** 之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `wasb:///example/data/sqoop/curl`。 此位址會將工作的輸出儲存在 HDInsight `example/data/sqoop/curl`叢集所使用之預設儲存體容器上的目錄中。
+1. 工作狀態變更為 [成功]**** 之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `wasb:///example/data/sqoop/curl`。 此位址會將工作的輸出儲存在 `example/data/sqoop/curl` HDInsight 叢集所使用之預設儲存體容器上的目錄中。
 
     您可以使用 Azure 入口網站存取 stderr 和 stdout Blob。
 

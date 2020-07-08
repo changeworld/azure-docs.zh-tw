@@ -8,12 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74424014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016945"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>瞭解適用于 U-SQL 開發人員的 Apache Spark 程式碼
 
@@ -42,9 +41,9 @@ Spark 是一種向外延展架構，可在 Scala、JAVA、Python、.NET 等中�
 
 U-SQL 腳本會遵循下列處理模式：
 
-1. 資料會從非結構化檔案讀取，使用`EXTRACT`語句、位置或檔案集規格，以及內建或使用者定義的解壓縮和所需的架構，或是來自 U-SQL 資料表（managed 或外部資料表）。 它會以資料列集來表示。
+1. 資料會從非結構化檔案讀取，使用 `EXTRACT` 語句、位置或檔案集規格，以及內建或使用者定義的解壓縮和所需的架構，或是來自 U-SQL 資料表（managed 或外部資料表）。 它會以資料列集來表示。
 2. 資料列集會在多個將 U-SQL 運算式套用至資料列集並產生新資料列集的 U SQL 語句中轉換。
-3. 最後，產生的資料列集會使用指定位置和`OUTPUT`內建或使用者定義的輸出器，或在 U SQL 資料表中的語句，輸出到其中一個檔案。
+3. 最後，產生的資料列集會使用 `OUTPUT` 指定位置和內建或使用者定義的輸出器，或在 U SQL 資料表中的語句，輸出到其中一個檔案。
 
 腳本會以延遲的方式進行評估，這表示每個提取和轉換步驟會組成運算式樹狀架構，並全域評估（資料流程）。
 
@@ -100,7 +99,7 @@ Spark 分別提供自己的 Python 和 R 整合、pySpark 和 SparkR，並提供
 
 ## <a name="transform-typed-values"></a>轉換具類型的值
 
-由於 SQL-DMO 型別系統是以 .NET 型別系統為基礎，而 Spark 有自己的型別系統，這會受到主機語言系結的影響，因此，您必須確定您所操作的類型已關閉，而且針對特定類型，類型範圍、有效位數和/或小數位數可能會稍有不同。 此外，U-SQL 和 Spark 會`null`以不同的方式來處理值。
+由於 SQL-DMO 型別系統是以 .NET 型別系統為基礎，而 Spark 有自己的型別系統，這會受到主機語言系結的影響，因此，您必須確定您所操作的類型已關閉，而且針對特定類型，類型範圍、有效位數和/或小數位數可能會稍有不同。 此外，U-SQL 和 Spark 會 `null` 以不同的方式來處理值。
 
 ### <a name="data-types"></a>資料類型
 
@@ -141,9 +140,9 @@ Spark 分別提供自己的 Python 和 R 整合、pySpark 和 SparkR，並提供
 
 在 Spark 中，Null 表示此值不明。 Spark Null 值與任何值（包括本身）不同。 兩個 Spark Null 值之間或 Null 值與任何其他值之間的比較，會傳回 unknown，因為每個 Null 的值都是未知的。  
 
-此行為不同于 U-SQL，其遵循 c # 語義， `null`其中與任何值不同，但等於其本身。  
+此行為不同于 U-SQL，其遵循 c # 語義，其中 `null` 與任何值不同，但等於其本身。  
 
-因此，即使`SELECT`中`WHERE column_name = NULL` `column_name`有 Null 值，使用的 SparkSQL 語句也會傳回零個數據列，而在 U-SQL 中，它會`column_name`傳回設定為`null`的資料列。 同樣地，即使`SELECT`中`column_name`有非`WHERE column_name != NULL` null 值，使用的 Spark 語句也會傳回零個數據列，而在 U-SQL 中，它會傳回具有非 null 的資料列。 因此，如果您想要使用 U-SQL null 檢查的語義，您應該分別使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其對等的 DSL）。
+因此 `SELECT` `WHERE column_name = NULL` ，即使中有 Null 值，使用的 SparkSQL 語句也會傳回零個數據列 `column_name` ，而在 U-SQL 中，它會傳回設定為的資料列 `column_name` `null` 。 同樣地， `SELECT` `WHERE column_name != NULL` 即使中有非 null 值，使用的 Spark 語句也會傳回零個數據列 `column_name` ，而在 U-SQL 中，它會傳回具有非 null 的資料列。 因此，如果您想要使用 U-SQL null 檢查的語義，您應該分別使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其對等的 DSL）。
 
 ## <a name="transform-u-sql-catalog-objects"></a>轉換 U-SQL 目錄物件
 
@@ -170,33 +169,33 @@ U-SQL 的核心語言會轉換資料列集，並以 SQL 為基礎。 以下是�
 此外，U-SQL 提供各種以 SQL 為基礎的純量運算式，例如
 
 - `OVER`視窗化運算式
-- 各種內建的匯總工具和次序函數（`SUM` `FIRST`等）
-- 其中一些最熟悉的 SQL 純量運算式`CASE`： `LIKE`、、`NOT`（ `IN`） `AND`、 `OR`等。
+- 各種內建的匯總工具和次序函數（等 `SUM` `FIRST` ）
+- 其中一些最熟悉的 SQL 純量運算式： `CASE` 、 `LIKE` 、（ `NOT` ）、等 `IN` `AND` `OR` 。
 
-Spark 會針對大部分的這些運算式提供其 DSL 和 SparkSQL 形式的相等運算式。 某些在 Spark 中原本不支援的運算式，必須使用原生 Spark 運算式和語義相等模式的組合來重寫。 例如， `OUTER UNION`必須轉譯成投影和等位的對等組合。
+Spark 會針對大部分的這些運算式提供其 DSL 和 SparkSQL 形式的相等運算式。 某些在 Spark 中原本不支援的運算式，必須使用原生 Spark 運算式和語義相等模式的組合來重寫。 例如， `OUTER UNION` 必須轉譯成投影和等位的對等組合。
 
 由於 Null 值的不同處理方式，如果要比較的兩個數據行都包含 Null 值，則在 Spark 中的聯結將永遠符合一個資料列，除非新增明確的 Null 檢查。
 
 ## <a name="transform-other-u-sql-concepts"></a>轉換其他的 U-SQL 概念
 
-U-SQL 也提供各種不同的功能和概念，例如針對 SQL Server 資料庫、參數、純量和 lambda 運算式變數、系統變數、 `OPTION`提示的同盟查詢。
+U-SQL 也提供各種不同的功能和概念，例如針對 SQL Server 資料庫、參數、純量和 lambda 運算式變數、系統變數、提示的同盟查詢 `OPTION` 。
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>針對 SQL Server 資料庫/外部資料表的同盟查詢
 
-U-SQL 提供資料來源和外部資料表，以及針對 Azure SQL Database 的直接查詢。 雖然 Spark 不提供相同的物件抽象概念，但它會為可用來查詢 SQL 資料庫的[Azure SQL Database 提供 Spark 連接器](../sql-database/sql-database-spark-connector.md)。
+U-SQL 提供資料來源和外部資料表，以及針對 Azure SQL Database 的直接查詢。 雖然 Spark 不提供相同的物件抽象概念，但它會為可用來查詢 SQL 資料庫的[Azure SQL Database 提供 Spark 連接器](../azure-sql/database/spark-connector.md)。
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL 參數和變數
 
 參數和使用者變數在 Spark 和其裝載語言中具有對等概念。
 
-例如，在 Scala 中，您可以使用`var`關鍵字來定義變數：
+例如，在 Scala 中，您可以使用關鍵字來定義變數 `var` ：
 
 ```
 var x = 2 * 3;
 println(x)
 ```
 
-U-SQL 的系統變數（以開頭的`@@`變數）可以分割成兩個類別：
+U-SQL 的系統變數（以開頭的變數 `@@` ）可以分割成兩個類別：
 
 - 可以設定為特定值的可設定系統變數，以影響腳本行為
 - 查詢系統和作業層級資訊的資訊系統變數
@@ -208,8 +207,8 @@ U-SQL 的系統變數（以開頭的`@@`變數）可以分割成兩個類別：
 [U-SQL] 提供數種語法方式來提供查詢最佳化工具和執行引擎的提示：  
 
 - 設定 U-SQL 系統變數
-- 與`OPTION`資料列集運算式相關聯的子句，用來提供資料或計畫提示
-- 聯結運算式語法中的聯結提示（例如， `BROADCASTLEFT`）
+- `OPTION`與資料列集運算式相關聯的子句，用來提供資料或計畫提示
+- 聯結運算式語法中的聯結提示（例如， `BROADCASTLEFT` ）
 
 Spark 的成本型查詢最佳化工具有它自己的功能，可提供提示並微調查詢效能。 請參閱對應的檔。
 

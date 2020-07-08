@@ -13,7 +13,6 @@ ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860608"
@@ -216,7 +215,7 @@ Hive 查詢會在 [GitHub 存放庫](https://github.com/Azure/Azure-MachineLearn
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 資料表 *\<資料庫名稱\>.\<外部文字檔資料表名稱\>* 具有資料分割，則在步驟 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令會選取資料分割變數做為傳回資料集中的欄位。 將它插入 *\<資料庫名稱\>.\<資料表名稱\>* 會失敗，因為 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 沒有資料分割參數可做為資料表結構描述中的欄位。 在此情況下，您需要明確選取要插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 的欄位，如下所示：
+> 如果 TEXTFILE 資料表 *\<資料庫名稱\>.\<外部文字檔資料表名稱\>* 具有資料分割，則在步驟 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令會選取資料分割變數做為傳回資料集中的欄位。 將它插入 *\<資料庫名稱\>.\<資料表名稱\>* 會失敗，因為 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 沒有資料分割參數可做為資料表結構描述中的欄位。 在此情況下，您需要明確選取要插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 的欄位，如下所示： 將所有資料插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 之後，當您使用下列查詢時，即可安全捨棄 *\<外部文字檔資料表名稱\>* ： 依照此程序執行之後，您應該會有含 ORC 格式之資料的資料表可供使用。 In this case, you need to specifically select the fields to be inserted to <bpt id="p1">*</bpt><ph id="ph1">\&lt;database name\&gt;</ph>.<ph id="ph2">\&lt;ORC table name\&gt;</ph><ept id="p1">*</ept> as follows:
 >
 >
 
@@ -225,8 +224,8 @@ Hive 查詢會在 [GitHub 存放庫](https://github.com/Azure/Azure-MachineLearn
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-將所有資料插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 之後，當您使用下列查詢時，即可安全捨棄 *\<外部文字檔資料表名稱\>* ：
+It is safe to drop the <bpt id="p1">*</bpt><ph id="ph1">\&lt;external text file table name\&gt;</ph><ept id="p1">*</ept> when using the following query after all data has been inserted into <bpt id="p2">*</bpt><ph id="ph2">\&lt;database name\&gt;</ph>.<ph id="ph3">\&lt;ORC table name\&gt;</ph><ept id="p2">*</ept>:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
-依照此程序執行之後，您應該會有含 ORC 格式之資料的資料表可供使用。  
+After following this procedure, you should have a table with data in the ORC format ready to use.  

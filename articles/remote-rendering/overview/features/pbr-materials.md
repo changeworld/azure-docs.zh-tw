@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021308"
 ---
 # <a name="pbr-materials"></a>PBR 材質
 
@@ -26,7 +25,7 @@ ms.locfileid: "80680254"
 
 這些屬性通用於所有材質：
 
-* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或*頂點色彩*。 如果已啟用材質的*透明度*，Alpha 色板會用來調整不透明度，其`1`意義完全不透明且`0`意義完全透明。 預設為白色。
+* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或* :::no-loc text="vertex "::: 色彩*。 如果已啟用材質的*透明度*，Alpha 色板會用來調整不透明度，其 `1` 意義完全不透明且 `0` 意義完全透明。 預設為白色。
 
   > [!NOTE]
   > 當 .PBR 材質完全透明時，像是完美的半透明部分，它仍會反映環境。 像 sun 之類的明亮點仍會顯示在反映中。 這對[色彩材質](color-materials.md)而言是不同的。
@@ -37,9 +36,9 @@ ms.locfileid: "80680254"
 
 * **textureCoordinateScale**和**textureCoordinateOffset：** 尺規會乘以 UV 材質座標，而位移會加入其中。 可以用來延展和轉換材質。 預設尺規為（1，1），而 offset 為（0，0）。
 
-* **useVertexColor：** 如果網格包含頂點色彩，而且已啟用此選項，則網格的頂點色彩會乘至*albedoColor*和*albedoMap*。 預設會停用頂點色彩。
+* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，而且已啟用此選項，則網格 :::no-loc text="vertex"::: 色彩會乘以*albedoColor*和*albedoMap*。 預設會停用*useVertexColor* 。
 
-* **isDoubleSided：** 如果 sidedness 設定為 true，則會轉譯具有此材質的三角形，即使相機正在查看其背景表面也一樣。 對於後端臉部也會正確計算的 .PBR 資料光源。 預設會停用此選項。 另請參閱[單側](single-sided-rendering.md)轉譯。
+* **isDoubleSided：** 如果 sidedness 設定為 true，則會轉譯具有此材質的三角形，即使相機正在查看其背景表面也一樣。 對於後端臉部也會正確計算的 .PBR 資料光源。 預設會停用此選項。 另請參閱[ :::no-loc text="Single-sided"::: 呈現](single-sided-rendering.md)。
 
 ## <a name="pbr-material-properties"></a>.PBR 材質屬性
 
@@ -47,11 +46,11 @@ ms.locfileid: "80680254"
 
 * **baseColor：** 在 .PBR 材質中， *albedo 色彩*稱為「*基底色彩*」。 在 Azure 遠端轉譯中， *albedo color*屬性已經透過一般材質屬性呈現，因此沒有其他的基本色彩屬性。
 
-* **粗糙度**和**roughnessMap：** 粗糙度會定義表面的粗略或平滑程度。 粗略的表面散佈光線的方向遠高於平滑表面，使反射變得模糊，而不是清晰。 值範圍是從`0.0`到。 `1.0` 當`roughness`等於`0.0`時，反射會很銳利。 當`roughness`等於`0.5`時，反射會變得模糊。
+* **粗糙度**和**roughnessMap：** 粗糙度會定義表面的粗略或平滑程度。 粗略的表面散佈光線的方向遠高於平滑表面，使反射變得模糊，而不是清晰。 值範圍是從 `0.0` 到 `1.0` 。 當 `roughness` 等於時 `0.0` ，反射會很銳利。 當 `roughness` 等於時 `0.5` ，反射會變得模糊。
 
   如果同時提供了粗糙度值和粗糙度對應，最後的值會是兩者的乘積。
 
-* **metalness**和**metalnessMap：** 在物理中，此屬性會對應至介面為導電或 dielectric。 「導電材質」具有不同的反射屬性，而且通常會反映不 albedo 的色彩。 在 .PBR 材質中，此屬性會影響表面反映周圍環境的程度。 值的範圍`0.0`從`1.0`到。 當 metalness 為`0.0`時，albedo 色彩會完全可見，而且材質看起來像是塑膠或 ceramics。 當 metalness 為`0.5`時，它看起來像是 [繪製金屬]。 當 metalness 為`1.0`時，表面幾乎完全失去其 albedo 色彩，而且只會反映周圍的環境。 `metalness`例如，如果`1.0`是，而`roughness`是`0.0` ，則表面看起來就像真實世界的鏡像。
+* **metalness**和**metalnessMap：** 在物理中，此屬性會對應至介面為導電或 dielectric。 「導電材質」具有不同的反射屬性，而且通常會反映不 albedo 的色彩。 在 .PBR 材質中，此屬性會影響表面反映周圍環境的程度。 值的範圍從 `0.0` 到 `1.0` 。 當 metalness 為時 `0.0` ，albedo 色彩會完全可見，而且材質看起來像是塑膠或 ceramics。 當 metalness 為時 `0.5` ，它看起來像是 [繪製金屬]。 當 metalness 為時 `1.0` ，表面幾乎完全失去其 albedo 色彩，而且只會反映周圍的環境。 例如，如果 `metalness` 是 `1.0` ，而 `roughness` 是，則 `0.0` 表面看起來就像真實世界的鏡像。
 
   如果同時提供 metalness 值和 metalness 對應，最後的值會是兩者的乘積。
 
@@ -61,7 +60,7 @@ ms.locfileid: "80680254"
 
 * **normalMap：** 若要模擬精細的詳細資料，可以提供[一般對應](https://en.wikipedia.org/wiki/Normal_mapping)。
 
-* **occlusionMap**和**aoScale：** [環境遮蔽](https://en.wikipedia.org/wiki/Ambient_occlusion)藉由將陰影新增至 pixels occluded 區域，讓具有 crevices 的物件看起來更逼真。 遮蔽值的範圍`0.0`從`1.0`到， `0.0`其中表示暗度（pixels occluded） `1.0` ，表示沒有遮蔽。 如果將2D 材質當做遮蔽地圖提供，就會啟用效果，而*aoScale*會作為乘數。
+* **occlusionMap**和**aoScale：** [環境遮蔽](https://en.wikipedia.org/wiki/Ambient_occlusion)藉由將陰影新增至 pixels occluded 區域，讓具有 crevices 的物件看起來更逼真。 遮蔽值的範圍從 `0.0` 到 `1.0` ，其中 `0.0` 表示暗度（pixels occluded）， `1.0` 表示沒有遮蔽。 如果將2D 材質當做遮蔽地圖提供，就會啟用效果，而*aoScale*會作為乘數。
 
   ![遮蔽地圖](./media/boom-box-ao2.gif)
 
@@ -69,7 +68,7 @@ ms.locfileid: "80680254"
 
   透明幾何的呈現成本很高。 如果您只需要介面中的洞（例如，針對樹狀結構的葉），最好改用 Alpha 裁剪。
 
-  ![上](./media/transparency.png)圖中的透明度注意事項、最右邊的球體如何完全透明，但反映仍然可見。
+  ![](./media/transparency.png)上圖中的透明度注意事項、最右邊的球體如何完全透明，但反映仍然可見。
 
   > [!IMPORTANT]
   > 如果在執行時間應該將任何材質從不透明切換為透明，轉譯器就必須使用*TileBasedComposition*轉譯[模式](../../concepts/rendering-modes.md)。 這項限制不適用於轉換為透明材質一開始的材質。
@@ -85,4 +84,4 @@ Azure 遠端轉譯會使用 Torrance 的微 facet BRDF 搭配 GGX NDF、Schlick 
 
 * [色彩材質](color-materials.md)
 * [紋理](../../concepts/textures.md)
-* [網狀](../../concepts/meshes.md)
+* [網格](../../concepts/meshes.md)

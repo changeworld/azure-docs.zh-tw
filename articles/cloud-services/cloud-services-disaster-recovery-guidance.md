@@ -10,12 +10,11 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84015294"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
@@ -47,7 +46,7 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 根據您的應用程式資料來源，您可能需要檢查應用程式資料來源的復原程序。
 
 * 如需 Azure 儲存體資料來源，請參閱[Azure 儲存體冗余](../storage/common/storage-redundancy.md)]，以根據您的應用程式所選的冗余模型來檢查可用的選項。
-* 如需 SQL 資料庫來源，請閱讀 [概觀：雲端商務持續性和 SQL Database 的資料庫災害復原](../sql-database/sql-database-business-continuity.md) ，以根據您針對應用程式所選擇的複寫模型來查看可用的選項。
+* 如需 SQL 資料庫來源，請閱讀 [概觀：雲端商務持續性和 SQL Database 的資料庫災害復原](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) ，以根據您針對應用程式所選擇的複寫模型來查看可用的選項。
 
 
 ## <a name="option-3-wait-for-recovery"></a>選項 3︰等待復原

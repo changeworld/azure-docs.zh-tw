@@ -4,18 +4,17 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016843"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 會自動分析 Web 應用程式的效能，並且可以警告您有關潛在的問題。 您會讀取到此訊息，可能是因為您收到一個我們的智慧型偵測通知。
 
-除了設定您 Application Insights 的應用程式 (在 [ASP.NET](../../azure-monitor/app/asp-net.md) 上、[Java](../../azure-monitor/app/java-get-started.md) 或 [Node.js](../../azure-monitor/app/nodejs.md)，以及在[網頁程式碼](../../azure-monitor/app/javascript.md)中) 以外，這項功能不需要特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
+除了針對[支援的語言](../../azure-monitor/app/platforms.md)設定 Application Insights 的應用程式以外，這項功能不需要進行任何特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>何時會取得智慧型偵測通知？
 
