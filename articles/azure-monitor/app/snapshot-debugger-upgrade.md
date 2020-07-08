@@ -7,10 +7,9 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671387"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>升級快照偵錯工具
@@ -63,4 +62,4 @@ ms.locfileid: "77671387"
 
 ## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>使用 SDK/Nuget 升級快照偵錯工具
 
-如果應用程式使用下列版本的`Microsoft.ApplicationInsights.SnapshotCollector` 1.3.1，則必須將它升級至[較新](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)的版本，才能繼續運作。
+如果應用程式使用下列版本的 `Microsoft.ApplicationInsights.SnapshotCollector` 1.3.1，則必須將它升級至[較新](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)的版本，才能繼續運作。

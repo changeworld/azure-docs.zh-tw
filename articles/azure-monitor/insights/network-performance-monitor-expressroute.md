@@ -7,10 +7,9 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660745"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 監視
@@ -23,7 +22,7 @@ ms.locfileid: "77660745"
 
 ![ExpressRoute 監視](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>設定 
+## <a name="configuration"></a>組態 
 若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
 
 ### <a name="configure-network-security-group-rules"></a>設定網路安全性群組規則 
@@ -57,7 +56,7 @@ ms.locfileid: "77660745"
 3. 如果您要建立此連線的健康情況事件，請選取 [啟用此對等互連的健康狀況監視]****。 
 4. 選擇監視條件。 您可以輸入閾值，以設定健康情況事件產生的自訂閾值。 只要條件值高於為對等互連連線選取的閾值時，就會產生健康情況事件。 
 5. 選取 [新增代理程式]**** 以選擇您要用來監視此對等互連連線的監視代理程式。 請確定您在連線的兩端都新增代理程式。 您在連線到此對等互連的虛擬網路中需要至少一個代理程式。 您也需要至少一個連線到此對等互連的內部部署代理程式。 
-6. 選取 [儲存]**** 以儲存組態。 
+6. 選取 [**儲存**] 以儲存設定。 
 
    ![ExpressRoute 監視組態](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
@@ -109,7 +108,7 @@ ms.locfileid: "77660745"
 
 您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷]**** 頁面上，您可以看到每個觸發診斷訊息的描述。
 
-| 通知代碼 (記錄) | 描述 |
+| 通知代碼 (記錄) | Description |
 | --- | --- |
 | 5501 | 無法周遊通過 ExpressRoute 線路的次要連線 |
 | 5502 | 無法周遊通過 ExpressRoute 線路的主要連線 |

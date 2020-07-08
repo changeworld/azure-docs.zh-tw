@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662173"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的進階彙總
@@ -113,7 +112,7 @@ Heartbeat
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>處理遺失的間隔
-有一個有用的`mvexpand`應用程式，就是需要針對遺漏的 bin 填入中的預設值。例如，假設您想要尋找特定機器的執行時間，方法是探索其心跳。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
+有一個有用的應用程式， `mvexpand` 就是需要針對遺漏的 bin 填入中的預設值。例如，假設您想要尋找特定機器的執行時間，方法是探索其心跳。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
 
 ```Kusto
 Heartbeat
@@ -182,7 +181,7 @@ WindowsFirewall
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期與時間作業](datetime-operations.md)
+- [日期和時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)

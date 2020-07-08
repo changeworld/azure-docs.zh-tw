@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666938"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
@@ -39,19 +38,19 @@ ms.locfileid: "77666938"
 
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | 描述 |
+| 連接的來源 | 支援 | Description |
 |---|---|---|
-| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 是 | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
-| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 是 |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
-| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 儲存體不包含容量和效能資料。|
+| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | Yes | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
+| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
+| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | Yes |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
+| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Azure 儲存體不包含容量和效能資料。|
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Windows 或 Operations Manager 代理程式必須安裝在 Windows Server 2012 或更新版本的 Hyper-V 主機上，而非安裝在虛擬機器上。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 執行下列步驟以將容量和效能解決方案新增至您的工作區。
 
@@ -85,7 +84,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 按一下 [容量和效能] 圖格，即可開啟 [容量和效能] 儀表板。 此儀表板包含下表中的資料行。 每個資料行最多會列出十個符合該資料行中指定範圍和時間範圍之準則的項目。 您可以按一下資料行底部的 [查看全部]****，或按一下資料行標頭，以執行記錄檔搜尋來傳回所有記錄。
 
-- **主機**
+- **主控件**
     - **主機 CPU 使用率** 根據所選時段以圖表顯示主機電腦的 CPU 使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的 CPU 計數器詳細資料。
     - **主機記憶體使用率** 根據所選時段以圖表顯示主機電腦的記憶體使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的記憶體計數器詳細資料。
 - **虛擬機器**

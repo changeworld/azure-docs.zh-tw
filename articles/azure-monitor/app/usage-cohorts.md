@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671081"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 世代
@@ -49,7 +48,7 @@ ms.locfileid: "77671081"
 
     現在，此世代代表在過去 28 天的五個不同日期中，透過任何自訂事件或網頁檢視傳送的所有使用者識別碼。
 
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 
    > [!TIP]
    > 指定您的世代名稱，例如「參與的使用者 (5 天以上)」。 根據您是否要讓有權存取此 Appication Insights 資源的其他人看見此世代，將它儲存到「我的報告」或「共用報告」。

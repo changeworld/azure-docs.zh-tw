@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77624129"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 偵錯 Service Fabric 應用程式
@@ -56,7 +55,7 @@ ms.locfileid: "77624129"
 ### <a name="running-a-script-as-part-of-debugging"></a>在進行調試過程中執行腳本
 在某些情況下，您可能需要在啟動調試過程中執行腳本（例如，不使用預設服務時）。
 
-在 Visual Studio 中，您可以在 [Service Fabric 應用程式專案（. .sfproj）] 的 [**腳本**] 資料夾中新增名為**Start-Service**的檔案。 在本機叢集中建立應用程式之後，將會叫用此腳本。
+在 Visual Studio 中，您可以在 Service Fabric 應用程式專案（. .sfproj）的**Scripts**資料夾中新增名為**Start-Service.ps1**的檔案。 在本機叢集中建立應用程式之後，將會叫用此腳本。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

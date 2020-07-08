@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915024"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>針對傳統儲存體資源刪除錯誤進行疑難排解
@@ -112,9 +111,9 @@ ms.locfileid: "77915024"
 
 ### <a name="to-remove-classic-disks"></a>若要移除傳統磁碟
 在 Azure 入口網站中遵循下列步驟：
-1.  流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1.  瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2.  瀏覽至磁碟 (傳統)。 
-3.  按一下 [磁片] 索引![標籤。入口網站的螢幕擷取畫面，其中已開啟容器 blob [清單] 窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  按一下 [磁片] 索引標籤。 ![開啟容器 blob 「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  選取資料磁碟，然後按一下 [刪除磁碟]。
  ![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
@@ -124,7 +123,7 @@ ms.locfileid: "77915024"
 
 ### <a name="to-remove-classic-images"></a>若要移除傳統磁碟   
 在 Azure 入口網站中遵循下列步驟：
-1.  流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1.  瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2.  瀏覽至作業系統映像 (傳統)。
 3.  刪除映像。
 4.  重試先前失敗的刪除作業。

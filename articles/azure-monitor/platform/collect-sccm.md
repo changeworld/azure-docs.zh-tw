@@ -7,16 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655251"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>將 Configuration Manager 連接到 Azure 監視器
 您可以將您的 Microsoft 端點 Configuration Manager 環境連接到 Azure 監視器，以同步處理裝置集合資料，並在 Azure 監視器和 Azure 自動化中參考這些集合。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本。
 
@@ -47,7 +46,7 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 > 您必須在 Log Analytics 工作區中指定 Configuration Manager 的許可權。 否則，當您在 Configuration Manager 中使用組態精靈時，將會收到錯誤訊息。
 >
 
-1. 在 Azure 入口網站中，按一下左上角的 [所有服務]****。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [ **Log Analytics**]。
+1. 在 Azure 入口網站中，按一下左上角的 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]。
 
 2. 在 Log Analytics 工作區清單中，選取要修改的工作區。
 
@@ -77,16 +76,16 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
    
 3. 在 [一般]**** 畫面上，確認您已完成下列動作而且您有每個項目的詳細資料，然後選取 [下一步]****。
 
-4. 在 Azure 服務精靈的 [Azure 服務]  頁面上：
+4. 在 Azure 服務精靈的 [Azure 服務]頁面上：
 
-    1. 為 Configuration Manager 中的物件指定 [名稱]  。
-    2. 指定選用 [描述]  以協助您識別服務。
+    1. 為 Configuration Manager 中的物件指定 [名稱]。
+    2. 指定選用 [描述] 以協助您識別服務。
     3. 選取 [Azure 服務**OMS 連接器**]。
 
     >[!NOTE]
     >OMS 現在稱為 Log Analytics，這是 Azure 監視器的功能。
 
-5. 選取 [下一步]  ，繼續前往 [Azure 服務精靈] 的 Azure 應用程式內容頁面。
+5. 選取 [下一步]，繼續前往 [Azure 服務精靈] 的 Azure 應用程式內容頁面。
 
 6. 在 [Azure 服務] 嚮導的 [**應用程式**] 頁面上，先從清單中選取 [Azure 環境]，然後按一下 [匯**入**]。
 
@@ -112,7 +111,7 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 9. 檢查 [**確認設定**] 頁面上的選項，然後選取 **[下一步]** 以開始建立和設定連線。
 
-10. 設定完成時，[**完成**] 頁面隨即出現。 選取 [關閉]  。 
+10. 設定完成時，[**完成**] 頁面隨即出現。 選取 [關閉]。 
 
 將 Configuration Manager 連結到 Azure 監視器之後，您就可以新增或移除集合，以及查看連接的屬性。
 
@@ -129,9 +128,9 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 當您完成初始設定以從階層匯入裝置集合之後，每3小時會抓取一次集合資訊，以保持成員資格的最新。 您可以隨時選擇停用此功能。
 
-1. 在 Azure 入口網站中，按一下左上角的 [所有服務]****。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]****。
+1. 在 Azure 入口網站中，按一下左上角的 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 2. 在您的 Log Analytics 工作區清單中，選取 Configuration Manager 用來註冊的工作區。  
-3. 選取 [ **Advanced settings**]。
+3. 選取 [進階設定]。
 4. 依序選取 [電腦群組]**** 和 [SCCM]****。  
 5. 選取 [匯入 Configuration Manager 集合成員資格]****，然後按一下 [儲存]****。  
    

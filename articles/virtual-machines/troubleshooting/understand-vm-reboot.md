@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919408"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系統重新啟動
@@ -47,7 +46,7 @@ Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康�
 若要了解什麼是 Azure 預定進行的維修，以及其對 Linux VM 可用性有何影響，請參閱下列文章。 這些文章提供有關 Azure 背景計劃性維護程序的背景，以及如何排定計劃性維護以進一步降低影響。
 
 - [Azure 中 VM 的計劃性維護](../windows/planned-maintenance.md)
-- [如何在 Azure Vm 上排程預定的維護](../windows/classic/planned-maintenance-schedule.md)
+- [如何在 Azure VM 上排定計劃性維護](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>記憶體保留的更新
 

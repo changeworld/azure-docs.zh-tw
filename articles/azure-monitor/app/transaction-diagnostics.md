@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671132"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
@@ -66,9 +65,9 @@ ms.locfileid: "77671132"
 
 [Application Insights 分析工具](../../azure-monitor/app/profiler.md)或[快照集偵錯工具](snapshot-debugger.md)能協助您從程式碼層級診斷效能和失敗問題。 透過這項體驗，只要按一下按鈕，您就可以查看任何元件的分析工具追蹤或快照集。
 
-如果您無法讓 Profiler 運作，請洽詢**serviceprofilerhelp\@microsoft.com**
+如果您無法讓 Profiler 運作，請洽詢**serviceprofilerhelp \@ microsoft.com**
 
-如果您無法讓快照偵錯工具運作，請洽詢**snapshothelp\@microsoft.com**
+如果您無法讓快照偵錯工具運作，請洽詢**snapshothelp \@ microsoft.com**
 
 ![分析工具整合](media/transaction-diagnostics/profilerTraces.png)
 

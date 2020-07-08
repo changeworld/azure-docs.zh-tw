@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668378"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警示管理方案
@@ -24,14 +23,14 @@ ms.locfileid: "77668378"
 
 警示管理解決方案可協助您分析 Log Analytics 儲存機制中的所有警示。  這些警示可能來自各種來源，包括[由 Log Analytics 所建立](../../azure-monitor/platform/alerts-overview.md)或[從 Nagios 或 Zabbix 匯入](../../azure-monitor/learn/quick-collect-linux-computer.md)的來源。 此解決方案也會從所有[連線的 System Center Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md)匯入警示。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 此解決方案將會使用 Log Analytics 中類型為**警示**的所有記錄，因此您必須執行收集這些記錄所需的所有設定。
 
 - 針對 Log Analytics 警示，[建立警示規則](../../azure-monitor/platform/alerts-overview.md)，以直接在儲存機制中建立警示記錄。
 - 針對 Nagios 和Zabbix 警示，[設定這些伺服器](../../azure-monitor/learn/quick-collect-linux-computer.md)以將警示傳送至 Log Analytics。
 - 針對 System Center Operations Manager 警示，[將 Operations Manager 管理群組連線到 Log Analytics 工作區](../../azure-monitor/platform/om-agents.md)。  在 System Center Operations Manager 中建立的任何警示會匯入至記錄分析。  
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 使用[新增方案](../../azure-monitor/insights/solutions.md)中所述的程序，將警示管理方案新增至您的 Log Analytics 工作區。 不需要進一步的組態。
 
 ## <a name="management-packs"></a>管理組件
@@ -41,15 +40,15 @@ ms.locfileid: "77668378"
 
 如需有關方案管理組件如何更新的詳細資訊，請參閱 [將 Operations Manager 連接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
-## <a name="data-collection"></a>資料集合
+## <a name="data-collection"></a>資料收集
 ### <a name="agents"></a>代理程式
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | 描述 |
+| 連接的來源 | 支援 | Description |
 |:--- |:--- |:--- |
-| [Windows 代理程式](agent-windows.md) | 否 |直接的 Windows 代理程式不會產生警示。  您可以從收集自 Windows 代理程式的事件和效能資料建立 Log Analytics 警示。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 |直接的 Linux 代理程式不會產生警示。  您可以從收集自 Linux 代理程式的事件和效能資料建立 Log Analytics 警示。  您可以從需要 Linux 代理程式的伺服器收集 Nagios 和 Zabbix 警示。 |
-| [System Center Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md) |是 |Operations Manager 代理程式上產生的警示會傳遞至管理群組，然後轉送到 Log Analytics。<br><br>不需要直接從 Operations Manager 代理程式連線到 Log Analytics。 警示資料會從管理群組轉送至 Log Analytics 儲存機制。 |
+| [Windows 代理程式](agent-windows.md) | No |直接的 Windows 代理程式不會產生警示。  您可以從收集自 Windows 代理程式的事件和效能資料建立 Log Analytics 警示。 |
+| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | No |直接的 Linux 代理程式不會產生警示。  您可以從收集自 Linux 代理程式的事件和效能資料建立 Log Analytics 警示。  您可以從需要 Linux 代理程式的伺服器收集 Nagios 和 Zabbix 警示。 |
+| [System Center Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md) |Yes |Operations Manager 代理程式上產生的警示會傳遞至管理群組，然後轉送到 Log Analytics。<br><br>不需要直接從 Operations Manager 代理程式連線到 Log Analytics。 警示資料會從管理群組轉送至 Log Analytics 儲存機制。 |
 
 
 ### <a name="collection-frequency"></a>收集頻率

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658097"
 ---
 # <a name="workbook-resource-parameters"></a>活頁簿資源參數
@@ -61,7 +60,7 @@ ms.locfileid: "77658097"
 > [!NOTE]
 > Azure Resource Graph 尚未在所有雲端中提供。 如果您選擇此方法，請確定您的目標雲端中支援它。
 
-[Azure Resource Graph 檔](https://docs.microsoft.com/azure/governance/resource-graph/overview)
+[Azure Resource Graph 文件](https://docs.microsoft.com/azure/governance/resource-graph/overview)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>建立資源參數（JSON 清單）
 1. 從編輯模式中的空白活頁簿開始。
@@ -81,7 +80,7 @@ ms.locfileid: "77658097"
     ]
     ```
     2. 點擊藍色的 [_更新_] 按鈕。
-6. 選擇性地將`Include only resource types`設定為_Application Insights_
+6. 選擇性地將設定 `Include only resource types` 為_Application Insights_
 7. 從工具列選擇 [儲存] 以建立參數。
 
 ## <a name="referencing-a-resource-parameter"></a>參考資源參數

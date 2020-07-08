@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666632"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure 監視器中的記錄資料擷取時間
@@ -60,7 +59,7 @@ Azure 監視器是一種大規模的資料服務，服務對象為每月需傳�
 將記錄檔記錄內嵌到 Azure 監視器管線（如[_TimeReceived](log-standard-properties.md#_timereceived)屬性中所識別）之後，它們就會寫入暫存儲存體，以確保租使用者隔離，並確保資料不會遺失。 此程序通常會增加 5-15 秒。 某些管理解決方案會實作更繁重的演算法以彙總資料，並在資料流入時獲得見解。 例如，網路效能監控會每 3 分鐘彙總傳入資料，有效地增加 3 分鐘的延遲。 另一個會增加延遲的程序是處理自訂記錄的程序。 在某些情況下，對於代理程式收集自檔案的記錄，此程序可能會增加數分鐘的延遲。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自訂資料類型佈建
-從[自訂記錄](data-sources-custom-logs.md)或[資料收集器 API](data-collector-api.md) 建立新類型的自訂資料時，系統會建立專用的儲存體容器。 這是一次性的額外負荷，僅在第一次出現此資料類型時發生。
+從[自訂記錄](data-sources-custom-logs.md)檔或[資料收集器 API](data-collector-api.md)建立新類型的自訂資料時，系統會建立專用的儲存體容器。 這是一次性的額外負荷，僅在第一次出現此資料類型時發生。
 
 ### <a name="surge-protection"></a>突波保護
 Azure 監視器的首要任務是確保不會遺失客戶資料，因此系統具有內建的資料突波保護。 這包括緩衝區，以確保即使在巨大的負載下，系統會保持正常運作。 在正常負載下，這些控制項增加不到一分鐘，但是在極端的條件下和故障時，它們可能會增加大量時間，同時確保資料安全。
@@ -75,11 +74,11 @@ Azure 監視器的首要任務是確保不會遺失客戶資料，因此系統�
 ## <a name="checking-ingestion-time"></a>檢查擷取時間
 對於不同的資源，在不同的情況下，擷取時間可能不盡相同。 您可以使用記錄查詢來識別您環境的特定行為。 下表指定當記錄建立並傳送至 Azure 監視器時，您可以如何判斷其不同的時間。
 
-| 步驟 | 屬性或函式 | 評價 |
+| 步驟 | 屬性或函式 | 註解 |
 |:---|:---|:---|
 | 在資料來源建立的記錄 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果資料來源未設定此值，則會將它設定為與 _TimeReceived 相同的時間。 |
 | Azure 監視器內嵌端點所收到的記錄 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| 儲存在工作區中且可供查詢的記錄 | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| 儲存在工作區中且可供查詢的記錄 | [ingestion_time （）](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>擷取延遲
 您可以藉由比較[ingestion_time （）](/azure/kusto/query/ingestiontimefunction)函式與_TimeGenerated_屬性的結果，來測量特定記錄的延遲。 這項資料可以搭配各種彙總，用來了解延遲的運作方式。 檢查擷取時間的一些百分位數，取得大量資料的深入解析。 
@@ -95,7 +94,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-先前的百分位數檢查適用于找出延遲的一般趨勢。 若要識別延遲的短期尖峰，使用最大值（`max()`）可能會更有效率。
+先前的百分位數檢查適用于找出延遲的一般趨勢。 若要識別延遲的短期尖峰，使用最大值（ `max()` ）可能會更有效率。
 
 如果您想要在一段時間內向下切入特定電腦的內嵌時間，請使用下列查詢，這也會將圖表中過去一天的資料視覺化： 
 

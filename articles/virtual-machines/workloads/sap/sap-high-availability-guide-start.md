@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25a0ac9ab349cfe8bef8e33d3f533bc5942e6323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77623837"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器高可用性
@@ -224,11 +223,11 @@ ms.locfileid: "77623837"
 
 * ![Linux][Logo_Linux] [使用 SAP ASCS/SCS 執行個體的 SUSE Linux Enterprise Server 叢集架構，為 SAP 高可用性準備 Azure 架構][sap-suse-ascs-ha-setting-ha-nfs]
 
-* ![Linux][Logo_Linux] [使用適用于 sap ASCS/SCS 實例的 SUSE Linux Enterprise Server 叢集架構搭配 azure NetApp files，為 sap 高可用性準備 Azure 基礎結構][sap-suse-ascs-ha-setting-ha-anf]
+* ![Linux ][Logo_Linux] [使用適用于 sap ASCS/SCS 實例的 SUSE Linux Enterprise Server 叢集架構搭配 azure NetApp files，為 sap 高可用性準備 Azure 基礎結構][sap-suse-ascs-ha-setting-ha-anf]
 
-* ![Rhel][Logo_Linux] [準備適用于 SAP ASCS/SCS 高可用性的 Azure 基礎結構-在 RHEL 上設定 GlusterFS][high-availability-guide-rhel-glusterfs]
+* ![RHEL ][Logo_Linux] [準備適用于 SAP ASCS/SCS 高可用性的 Azure 基礎結構-在 RHEL 上設定 GlusterFS][high-availability-guide-rhel-glusterfs]
 
-* ![Rhel][Logo_Linux] [準備適用于 SAP ASCS/SCS 高可用性的 Azure 基礎結構-在 RHEL 上設定 Pacemaker][high-availability-guide-rhel-pacemaker]
+* ![RHEL ][Logo_Linux] [準備適用于 SAP ASCS/SCS 高可用性的 Azure 基礎結構-在 RHEL 上設定 Pacemaker][high-availability-guide-rhel-pacemaker]
 
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure 中的 SAP NetWeaver 高可用性系統安裝
 
@@ -242,9 +241,9 @@ ms.locfileid: "77623837"
 
 * ![Linux][Logo_Linux] [使用 SAP ASCS/SCS 執行個體的 SUSE Linux Enterprise Server 叢集架構，安裝 SAP NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation]
 
-* ![Linux][Logo_Linux] [使用適用于 sap ASCS/SCS 實例與 Azure NetApp Files 的 SUSE Linux Enterprise Server 叢集架構，安裝 sap NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation-anf]
+* ![Linux ][Logo_Linux] [使用適用于 sap ASCS/SCS 實例與 Azure NetApp Files 的 SUSE Linux Enterprise Server 叢集架構，安裝 sap NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![][Logo_Linux] Rhel[在 rhel 上的高可用性設定中安裝 SAP NetWeaver ASCS/SCS][sap-rhel-ascs-ha]
+* ![Rhel ][Logo_Linux] [在 rhel 上的高可用性設定中安裝 SAP NetWeaver ASCS/SCS][sap-rhel-ascs-ha]
 
-* ![Rhel][Logo_Linux] [以 Azure NetApp Files 在 rhel 上安裝高可用性設定中的 SAP NetWeaver ASCS/SCS][sap-rhel-ascs-ha-sap-installation-anf]
+* ![RHEL ][Logo_Linux] [以 Azure NetApp FILES 在 rhel 上安裝高可用性設定中的 SAP NetWeaver ASCS/SCS][sap-rhel-ascs-ha-sap-installation-anf]
 

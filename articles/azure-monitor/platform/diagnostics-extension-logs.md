@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672390"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>將資料從 Azure 診斷延伸模組收集到 Azure 監視器記錄
@@ -29,7 +28,7 @@ Azure 診斷擴充功能會將資料儲存在 Azure 儲存體帳戶中。 若要
 | Service Fabric 運作事件 |Service Fabric 節點 |WADServiceFabricSystemEventTable |
 | Service Fabric Reliable Actor 事件 |Service Fabric 節點 |WADServiceFabricReliableActorEventTable |
 | Service Fabric Reliable Service 事件 |Service Fabric 節點 |WADServiceFabricReliableServiceEventTable |
-| Windows 事件記錄 |Service Fabric 節點 <br> 虛擬機器 <br> Web 角色 <br> 背景工作角色 |WADWindowsEventLogsTable (表格儲存體) |
+| Windows 事件記錄檔 |Service Fabric 節點 <br> 虛擬機器 <br> Web 角色 <br> 背景工作角色 |WADWindowsEventLogsTable (表格儲存體) |
 | Windows ETW 記錄 |Service Fabric 節點 <br> 虛擬機器 <br> Web 角色 <br> 背景工作角色 |WADETWEventTable (表格儲存體) |
 
 ## <a name="data-types-not-supported"></a>不支援的資料類型
@@ -51,7 +50,7 @@ Azure 診斷擴充功能會將資料儲存在 Azure 儲存體帳戶中。 若要
 3. 選取包含要收集之資料的**儲存體帳戶**。
 4. 選取您想要收集的**資料類型**。
 5. [來源] 的值會根據資料類型自動填入。
-6. 按一下 [確定]**** 儲存設定。
+6. 按一下 [確定] 以儲存組態。
 7. 針對其他資料類型重複執行。
 
 大約30分鐘內，您就能夠在 Log Analytics 工作區中看到來自儲存體帳戶的資料。 您只會看到套用組態之後寫入儲存體的資料。 工作區不會從儲存體帳戶讀取預先存在的資料。

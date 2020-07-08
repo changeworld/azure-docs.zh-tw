@@ -7,10 +7,9 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655645"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
@@ -31,23 +30,23 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 | &bull; 例外狀況                   | 是             | 是               | 
 | &bull; 效能計數器         | 是             | 是               |
 | &bull; 相依性                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
 | | | | 
 | **支援的功能**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | Yes               | 
 | &bull; 取樣                     | 是             | 是               | 
-| &bull; 活動訊號                   |                 | 是               | 
+| &bull; 活動訊號                   |                 | Yes               | 
 | | | | 
 | **Correlation**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | 是               | 
-| &bull; EventHub                       |                   | 是               | 
+| &bull; ServiceBus                     |                   | Yes               | 
+| &bull; EventHub                       |                   | Yes               | 
 | | | | 
 | **可設定**                      |                   |                   |           
-| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | 是                   | 
+| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | Yes                   | 
 
 
 ## <a name="performance-counters"></a>效能計數器

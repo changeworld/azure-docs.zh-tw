@@ -4,10 +4,9 @@ description: 在 Application Insights 中搜尋 Log4J 或 Logback 追蹤
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657209"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中探索 Java 追蹤記錄
@@ -18,9 +17,9 @@ ms.locfileid: "77657209"
 
 ## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights JAVA 代理程式
 
-根據預設，Application Insights JAVA 代理程式會自動捕捉在層`WARN`級和更新版本上執行的記錄。
+根據預設，Application Insights JAVA 代理程式會自動捕捉在層級和更新版本上執行的記錄 `WARN` 。
 
-您可以變更使用`AI-Agent.xml`檔案所捕捉到的記錄閾值：
+您可以變更使用檔案所捕捉到的記錄閾值 `AI-Agent.xml` ：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +32,7 @@ ms.locfileid: "77657209"
 </ApplicationInsightsAgent>
 ```
 
-您可以使用檔案來停用`AI-Agent.xml` JAVA 代理程式的記錄捕獲：
+您可以使用檔案來停用 JAVA 代理程式的記錄捕獲 `AI-Agent.xml` ：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

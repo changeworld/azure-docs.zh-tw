@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
 ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659278"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>將 Azure 監視器記錄資料匯入 Power BI
@@ -29,7 +28,7 @@ ms.locfileid: "77659278"
 首先建立[記錄查詢](../log-query/log-query-overview.md)，以傳回您要填入 Power BI 資料集的資料。  您接著可以將該查詢匯出到可以由 Power BI Desktop 使用的 [Power Query (M) 語言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。
 
 1. [在 Log Analytics 中建立記錄查詢](../log-query/get-started-portal.md)，以解壓縮資料集的資料。
-2. 選取 [**匯出** > **Power BI 查詢（M）**]。  這會將查詢匯出至名為**PowerBIQuery**的文字檔。 
+2. 選取**Export**  >  **[匯出 Power BI 查詢（M）**]。  這會將查詢匯出至名為**PowerBIQuery.txt**的文字檔。 
 
     ![匯出記錄搜尋](media/powerbi/export-analytics.png)
 
@@ -39,7 +38,7 @@ ms.locfileid: "77659278"
 Power BI Desktop 是桌面應用程式，可讓您建立可發行至 Power BI 的資料集和報表。  您也可以使用它，利用從 Azure 監視器匯出的 Power Query 語言來建立查詢。 
 
 1. 請安裝 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (如果尚未安裝)，然後開啟該應用程式。
-2. 選取 [**取得資料** > ] [**空白查詢**] 以開啟新的查詢。  然後選取**進階編輯器**，並在查詢中貼上匯出的檔案內容。 按一下 [完成]  。
+2. 選取 [**取得資料**] [  >  **空白查詢**] 以開啟新的查詢。  然後選取**進階編輯器**，並在查詢中貼上匯出的檔案內容。 按一下 [完成] 。
 
     ![Power BI Desktop 查詢](media/powerbi/desktop-new-query.png)
 

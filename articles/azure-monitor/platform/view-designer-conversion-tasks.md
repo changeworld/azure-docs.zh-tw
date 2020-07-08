@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658739"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>將設計工具轉換成活頁簿轉換的一般工作
@@ -32,7 +31,7 @@ View designer 具有內建的預設時間範圍篩選器，不過，在活頁簿
 
  選取 [**新增參數**] 按鈕。
 
-![加入參數](media/view-designer-conversion-tasks/add-parameter.png)
+![新增參數](media/view-designer-conversion-tasks/add-parameter.png)
 
 在 [提要欄位] 功能表的 [**參數名稱**] 文字方塊中，輸入*TimeRange*。 將**參數類型**設定為*時間範圍選擇器*。 選取 [**必要？** ] 核取方塊。
 
@@ -40,7 +39,7 @@ View designer 具有內建的預設時間範圍篩選器，不過，在活頁簿
 
 將參數儲存在側邊欄功能表的左上角。 根據預設，您可以將下拉式清單*保留為 [* 未設定]，或選取預設的**TimeRange**值，例如*24 小時*。 選取 [**完成編輯**]。
 
-在您的參數名稱前後加上大括弧{} ，即可在查詢中使用參數。 如需參數的詳細資訊，請參閱[參數的活頁簿檔](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)。
+在 {} 您的參數名稱前後加上大括弧，即可在查詢中使用參數。 如需參數的詳細資訊，請參閱[參數的活頁簿檔](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)。
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>以 TimeRange 參數更新查詢
 
@@ -50,7 +49,7 @@ View designer 具有內建的預設時間範圍篩選器，不過，在活頁簿
 
 ### <a name="option-2-update-your-log-queries"></a>選項2：更新您的記錄查詢
 
-在您的查詢中新增行`| where TimeGenerated {TimeRange}` ：，如下列範例所示：
+在您的查詢中新增行： `| where TimeGenerated {TimeRange}` ，如下列範例所示：
 
 原始查詢
 ```KQL
@@ -118,7 +117,7 @@ search *
 
 儲存設定並再次執行查詢，以更新您的資料表以包含走勢圖。
 
-產生的方格看起來會像下面這樣![：走勢圖範例](media/view-designer-conversion-tasks/sparkline-example.png)
+產生的方格看起來會像下面這樣：走勢 ![ 圖範例](media/view-designer-conversion-tasks/sparkline-example.png)
 
 ## <a name="advanced-cell-settings"></a>先進的資料格設定
 在 [鏡像視圖設計工具] 中，您可以執行工作，例如變更活頁簿儲存格的大小，或將釘選和外部連結加入至記錄。

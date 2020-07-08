@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665694"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure 監視器記錄檔查詢中的 resource （）運算式
@@ -18,7 +17,7 @@ ms.locfileid: "77665694"
 `resource`運算式是在[範圍為資源](scope.md#query-scope)的 Azure 監視器查詢中使用，以從其他資源中取出資料。 
 
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 `resource(`*標識*`)`
 
@@ -32,7 +31,7 @@ ms.locfileid: "77665694"
 | 資源群組或訂用帳戶 | 包含資源及其包含的所有資源的資料。  | 資源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup） |
 
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>備註
 
 * 您必須具有資源的讀取權限。
 

@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670911"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>針對 Application Insights 中的使用者行為分析工具進行疑難排解
@@ -32,7 +31,7 @@ Application Insights 中的所有遙測事件都有[匿名使用者識別碼](..
 ## <a name="naming-events"></a>命名事件
 **我的應用程式有數千種不同的網頁檢視和自訂事件名稱。難以區別它們，而使用者行為分析工具通常會沒有回應。如何修正這些命名問題？**
 
-整個使用者行為分析工具都會使用網頁檢視和自訂事件名稱。 若要獲得這些工具的價值，就必須適當地為這些事件命名。 目標是在太少的一般名稱（「按下按鈕」）和太多太特定的名稱（[在 HTTP：\//www.contoso.com/index] 上按一下 [編輯] 按鈕）之間的平衡。
+整個使用者行為分析工具都會使用網頁檢視和自訂事件名稱。 若要獲得這些工具的價值，就必須適當地為這些事件命名。 目標是在太少的一般名稱（「按下按鈕」）和太多太特定的名稱（[在 HTTP：/www.contoso.com/index] 上按一下 [編輯] 按鈕）之間的平衡 \/ 。
 
 若要對應用程式所傳送的網頁檢視和自訂事件名稱進行任何變更，您必須變更應用程式的原始程式碼，然後重新部署。 **Application Insights 中的所有遙測資料都會儲存 90 天，且無法加以刪除**，因此您對事件名稱所進行的變更需要 90 天才會完整顯示。 進行名稱變更之後的 90 天內，遙測中的事件名稱會新舊並陳，因此請據以調整查詢，並告知您的小組。
 
@@ -48,6 +47,6 @@ Application Insights 中的所有遙測事件都有[匿名使用者識別碼](..
 
 * [使用者行為分析工具概觀](usage-overview.md)
 
-## <a name="get-help"></a>取得說明
+## <a name="get-help"></a>取得協助
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

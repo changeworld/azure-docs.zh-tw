@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919290"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測臉部和情緒
@@ -27,7 +26,7 @@ ms.locfileid: "77919290"
 > [!NOTE]
 > **Azure 媒體臉部偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **Azure 媒體臉部偵測器** 媒體處理器 (MP) 能讓您透過臉部表情針對對象的參與情形做出計算、追蹤移動，甚至進行量測。 此服務包含兩個功能： 
 

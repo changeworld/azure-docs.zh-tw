@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658705"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>針對活頁簿轉換選項 Azure 監視器視圖設計工具
@@ -20,12 +19,12 @@ ms.locfileid: "77658705"
 
 View designer 具有固定的靜態表示樣式，而活頁簿則可自由地包含及修改資料的呈現方式。 下列影像描繪兩個範例，說明如何在轉換視圖時排列活頁簿。
 
-[Vertical workbook](view-designer-conversion-examples.md#vertical) 
- ![垂直活頁簿垂直](media/view-designer-conversion-options/view-designer-vertical.png)
+[垂直活頁簿](view-designer-conversion-examples.md#vertical) 
+ ![縱座標](media/view-designer-conversion-options/view-designer-vertical.png)
 
-[Tabbed workbook](view-designer-conversion-examples.md#tabbed) 
- ![索引標籤式活頁簿](media/view-designer-conversion-options/distribution-tab.png)
-![資料類型分佈索引標籤資料類型隨時間索引標籤](media/view-designer-conversion-options/over-time-tab.png)
+索引標籤[式活頁簿](view-designer-conversion-examples.md#tabbed) 
+ ![資料類型散發索引標籤 ](media/view-designer-conversion-options/distribution-tab.png)
+ ![ 資料類型隨時間索引標籤](media/view-designer-conversion-options/over-time-tab.png)
 
 ## <a name="tile-conversion"></a>磚轉換
 視圖設計工具使用 [總覽] 磚功能來表示和匯總整體狀態。 這些會以七個磚表示，範圍從數位到圖表。 在活頁簿中，使用者可以建立類似的視覺效果，並將其釘選到類似于原始的總覽磚樣式。 

@@ -4,10 +4,9 @@ description: 自動設定 Azure 診斷管線資料至 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669798"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 設定 Azure 雲端服務的 Application Insights
@@ -125,7 +124,7 @@ ms.locfileid: "77669798"
 ```
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [使用 Application Insights 監視 Azure 雲端服務應用程式](../../azure-monitor/app/cloudservices.md)
 * [將 Azure 診斷傳送至 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [自動化設定警示](powershell-alerts.md)

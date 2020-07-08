@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659249"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 入口網站移至 Azure
@@ -58,7 +57,7 @@ Azure 入口網站存取管理功能，比在 OMS 入口網站中的存取管理
 
 | OMS 入口網站權限 | Azure 角色 |
 |:---|:---|
-| ReadOnly | Log Analytics 讀者 |
+| 唯讀 | Log Analytics 讀者 |
 | 參與者 | Log Analytics 參與者 |
 | 系統管理員 | 擁有者 | 
  

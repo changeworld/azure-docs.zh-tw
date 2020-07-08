@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658263"
 ---
 # <a name="interactive-workbooks"></a>互動式活頁簿
@@ -70,12 +69,12 @@ ms.locfileid: "77658263"
 ![顯示建立互動式體驗的影像使用方格資料列點擊](./media/workbooks-interactive/grid-click-read-mode.png)
 
 ### <a name="exporting-the-contents-of-an-entire-row"></a>匯出整個資料列的內容
-有時候，您可能會想要匯出所選資料列的整個內容，而不只是特定資料行。 在這種情況下， `Field to export`請在上述步驟7.1 中將屬性保留為未設定。 活頁簿會將整個資料列內容以 json 格式匯出至參數。 
+有時候，您可能會想要匯出所選資料列的整個內容，而不只是特定資料行。 在這種情況下，請在 `Field to export` 上述步驟7.1 中將屬性保留為未設定。 活頁簿會將整個資料列內容以 json 格式匯出至參數。 
 
-在參考的 KQL 控制項上，使用`todynamic`函式來剖析 json 並存取個別的資料行。
+在參考的 KQL 控制項上，使用函式 `todynamic` 來剖析 json 並存取個別的資料行。
 
  ## <a name="grid-cell-clicks"></a>方格資料格點擊
-活頁簿可讓作者透過特殊類型的格線資料行轉譯器（ `link renderer`稱為）來新增互動。 連結轉譯器會根據儲存格的內容，將方格資料格轉換成超連結。 活頁簿支援多種類型的連結轉譯器，包括可開啟資源總覽 blade、屬性包檢視器、App Insights 搜尋、使用量、交易追蹤等等的範本轉譯器。
+活頁簿可讓作者透過特殊類型的格線資料行轉譯器（稱為）來新增互動 `link renderer` 。 連結轉譯器會根據儲存格的內容，將方格資料格轉換成超連結。 活頁簿支援多種類型的連結轉譯器，包括可開啟資源總覽 blade、屬性包檢視器、App Insights 搜尋、使用量、交易追蹤等等的範本轉譯器。
 
 ### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>使用方格資料格點按滑鼠來設定互動性
 1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
@@ -90,11 +89,11 @@ ms.locfileid: "77658263"
 5. `Run query`查看結果
 6. 按一下 [資料_行設定_] 以開啟 [設定] 窗格。
 7. 在 [資料_行_] 區段中，設定：
-    1. _範例_-資料行轉譯`Link`器：，View 可`Cell Details`開啟：，連結標籤：`Sample`
-    2. _計數_-資料行轉譯`Bar`器：，色彩`Blue`色板：，最小值：`0`
+    1. _範例_-資料行轉譯器： `Link` ，View 可開啟： `Cell Details` ，連結標籤：`Sample`
+    2. _計數_-資料行轉譯器： `Bar` ，色彩色板： `Blue` ，最小值：`0`
     3. _要求_-資料行轉譯器：`Automatic`
     4. 按一下 [_儲存並關閉_] 以套用變更
-8. 按一下方格中的`Sample`其中一個連結。 這會開啟 [屬性] 窗格，其中包含取樣要求的詳細資料。
+8. 按一下方格中的其中一個 `Sample` 連結。 這會開啟 [屬性] 窗格，其中包含取樣要求的詳細資料。
 
     ![顯示如何使用方格資料格來建立互動式體驗的影像](./media/workbooks-interactive/grid-cell-click-create.png)
 
@@ -116,7 +115,7 @@ ms.locfileid: "77658263"
 活頁簿可讓使用者根據參數值來顯示或消失特定的控制項。 這可讓作者根據使用者輸入或遙測狀態，讓報表看起來不同。 例如，當事情良好時，取用者只會顯示摘要，但在發生錯誤時，會顯示完整的詳細資料。
 
 ### <a name="setting-up-interactivity-using-conditional-visibility"></a>使用條件式可見度設定互動性
-1. 請依照`Setting up interactivity on grid row click`一節中的步驟來設定兩個互動式控制項。
+1. 請依照一節中的步驟 `Setting up interactivity on grid row click` 來設定兩個互動式控制項。
 2. 在頂端加入新的參數：
     1. 名稱：`ShowDetails`
     2. 參數類型：`Drop down`
@@ -127,16 +126,16 @@ ms.locfileid: "77658263"
 3. 將參數值設定為`Yes`
 4. 在含有區域圖的查詢控制項中，按一下 [_高級設定_] 圖示（齒輪圖示）
 5. 檢查設定`Make this item conditionally visible`
-    1. 如果`ShowDetails`參數值`equals`為，則會顯示此專案`Yes`
+    1. 如果 `ShowDetails` 參數值 `equals` 為，則會顯示此專案`Yes`
 6. 按一下 [_完成編輯_] 以認可變更。
 7. 按一下活頁簿工具列上的 [_完成編輯_] 以進入 [讀取] 模式。
-8. 將參數`ShowDetails`的值切換為`No`。 請注意，下圖會消失。
+8. 將參數的值切換 `ShowDetails` 為 `No` 。 請注意，下圖會消失。
 
-下圖顯示的是可見的情況`ShowDetails` ，其中是`Yes`
+下圖顯示的是可見的情況，其中 `ShowDetails` 是`Yes`
 
 ![顯示可顯示圖表之條件式可見度的影像](./media/workbooks-interactive/conditional-visibility.png)
 
-下圖顯示的是隱藏的案例`ShowDetails` ，其中是`No`
+下圖顯示的是隱藏的案例，其中 `ShowDetails` 是`No`
 
 ![顯示隱藏圖表之條件式可見度的影像](./media/workbooks-interactive/conditional-invisible.png)
 

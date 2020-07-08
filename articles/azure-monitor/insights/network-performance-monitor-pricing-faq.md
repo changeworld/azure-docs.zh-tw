@@ -7,10 +7,9 @@ author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654387"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 網路效能監控的定價變更
@@ -109,7 +108,7 @@ ExpressRoute 監控私人對等互連連線時，每個月產生的資料量如�
 
 請參閱連線[監視](https://azure.microsoft.com/pricing/details/network-watcher/)一節，以瞭解監視整個月份端點的成本。 Log Analytics [定價頁面](https://azure.microsoft.com/pricing/details/log-analytics/)的「資料擷取」區段提供資料的費用。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 [Log Analytics 定價常見問題集](https://azure.microsoft.com/pricing/details/log-analytics/)：常見問題集區段包含關於免費層、每個節點定價和其他定價詳細資料。
 

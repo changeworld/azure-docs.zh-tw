@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669041"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
@@ -254,13 +253,13 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 }
 ```
 
-| 元素名稱 | 描述 |
+| 元素名稱 | Description |
 | --- | --- |
 | status |用於度量警示。 針對活動記錄警示，一律設為「啟動」。 |
 | 內容 |事件的內容。 |
 | resourceProviderName |受影響資源的資源提供者。 |
 | conditionType |一律為「事件」。 |
-| 名稱 |警示規則的名稱。 |
+| NAME |警示規則的名稱。 |
 | id |警示的資源識別碼。 |
 | description |建立警示時，會設定警示描述。 |
 | subscriptionId |Azure 訂用帳戶識別碼。 |
@@ -277,7 +276,7 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 | eventDataId |事件的唯一識別碼。 |
 | eventSource |產生事件的 Azure 服務或基礎結構的名稱。 |
 | httpRequest |要求通常包括 “clientRequestId”、“clientIpAddress” 和 HTTP “method” (例如 PUT)。 |
-| 層級 |下列其中一個值：Critical、Error、Warning 和 Informational。 |
+| 等級 |下列其中一個值：Critical、Error、Warning 和 Informational。 |
 | operationId |通常是對應至單一作業的事件之間共用的 GUID。 |
 | operationName |作業名稱。 |
 | properties |事件的屬性。 |

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658025"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure 監視器活頁簿視覺效果
@@ -69,7 +68,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 | `Size` | 控制項的垂直大小 | 小型、中型、大型或完整 |
 | `Color palette` | 要在圖表中使用的色彩色板。 在多重度量或分割模式中略過。 | 藍色、綠色、紅色等等。 |
 | `Legend` | 要用於圖例的彙總函式 | 值的總和或平均值，或最大、最小、第一個、最後一個值 |
-| `Query` | 以圖表視覺效果所預期的格式傳回資料的任何 KQL 查詢 | _要求\|從前（1d）到 now （）步驟1h 的時間戳記要求 = count （）預設 = 0_ |
+| `Query` | 以圖表視覺效果所預期的格式傳回資料的任何 KQL 查詢 | _要求 \| 從前（1d）到 now （）步驟1h 的時間戳記要求 = count （）預設 = 0_ |
 
 ### <a name="adding-a-metric-chart"></a>新增度量圖表
 
@@ -93,7 +92,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 | `Visualization` | 要使用的視覺效果 | 區域、橫條圖、折線圖、散佈圖、方格 |
 | `Split By` | 選擇性地分割維度上的度量 | 依地理類型的交易 |
 | `Size` | 控制項的垂直大小 | 小型、中型或大型 |
-| `Color palette` | 要在圖表中使用的色彩色板。 如果使用`Split by`參數，則忽略 | 藍色、綠色、紅色等等。 |
+| `Color palette` | 要在圖表中使用的色彩色板。 如果 `Split by` 使用參數，則忽略 | 藍色、綠色、紅色等等。 |
 
 ## <a name="grids"></a>方格
 
@@ -114,7 +113,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 
 ![以記錄為基礎之方格查詢的螢幕擷取畫面](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>圖格
+## <a name="tiles"></a>Tiles
 
 磚是在活頁簿中呈現摘要資料非常有用的方式。 下圖顯示磚的常見使用案例-應用層級摘要位於詳細方格的頂端。
 
@@ -138,7 +137,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 7. 按一下 [**磚設定**] 按鈕以開啟 [設定] 窗格
 8. 在 [**磚欄位**] 中，設定：
     * 標題：`name`
-    * Left： `Requests`，轉譯器`Big Number`：，Color 調色板`Green to Red`：，最小值：`0`
+    * Left： `Requests` ，轉譯器： `Big Number` ，Color 調色板： `Green to Red` ，最小值：`0`
     * 靠`appName`
 9. 按一下窗格底部的 [**儲存並關閉**] 按鈕。
 
@@ -182,7 +181,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 8. 在頂端的 [資料_行_] 區段中，設定：
     * _識別碼_-資料行轉譯器：`Hidden`
     * _父識別碼_-資料行轉譯器：`Hidden`
-    * _要求_-資料行轉譯`Bar`器：， `Blue`色彩：，最小值：`0`
+    * _要求_-資料行轉譯器： `Bar` ，色彩： `Blue` ，最小值：`0`
 9. 按一下窗格底部的 [_儲存並關閉_] 按鈕。    
 
 ![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/tree-settings.png)
@@ -243,9 +242,9 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
 10. 在頂端的 [_節點格式_設定] 中，設定：
-    * _最上層內容_-使用資料`Name`行：，資料行轉譯器：`Text`
-    * _置中內容_-使用資料`Calls`行：，資料`Big Number`行轉譯器：，色彩色板：`None`
-    * _底端內容_-使用資料行`Kind`：，資料行轉譯器：`Text`
+    * _最上層內容_-使用資料行：，資料行轉譯器 `Name` ：`Text`
+    * _置中內容_-使用資料行：，資料行轉譯器 `Calls` ： `Big Number` ，色彩色板：`None`
+    * _底端內容_-使用資料行：，資料行轉譯器 `Kind` ：`Text`
 10. 按一下窗格底部的 [_儲存並關閉_] 按鈕。
 
 ![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/graph-settings.png)

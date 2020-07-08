@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658621"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure 監視器視圖設計工具磚轉換
@@ -23,9 +22,9 @@ ms.locfileid: "77658621"
 在活頁簿中重新建立環圈 & 清單磚牽涉到兩個不同的視覺效果。 環圈圖部分有兩個選項。
 從 [開始] 選取 [**加入查詢**]，並將原始查詢從 view designer 貼入資料格中。
 
-**選項1：** 從**視覺效果**下拉式清單中選取![**圓形圖**：圓形圖視覺效果功能表](media/view-designer-conversion-tiles/pie-chart.png)
+**選項1：** 從**視覺效果**下拉式清單中選取**圓形圖**： ![ 圓形圖視覺效果功能表](media/view-designer-conversion-tiles/pie-chart.png)
 
-**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render piechart` **設定依據查詢**]，並將新增至查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [**設定依據查詢**]，並將新增 `| render piechart` 至查詢：
 
  ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 
@@ -75,7 +74,7 @@ search *
  
  ![折線圖功能表](media/view-designer-conversion-tiles/line-visualization.png)
 
-**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render linechart` **設定依據查詢**]，並將新增至查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [**設定依據查詢**]，並將新增 `| render linechart` 至查詢：
 
  ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 
@@ -146,9 +145,9 @@ search *
 
 有兩個選項可將查詢視覺化為橫條圖：
 
-**選項1：** 從 [**視覺效果**] 下拉式清單中![選取 [**橫條圖**]： Barchart 視覺效果](media/view-designer-conversion-tiles/bar-visualization.png)
+**選項1：** 從 [**視覺效果**] 下拉式清單中選取 [**橫條圖**]： ![ Barchart 視覺效果](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render barchart` **設定依據查詢**]，並將新增至查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [**設定依據查詢**]，並將新增 `| render barchart` 至查詢：
 
  ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 

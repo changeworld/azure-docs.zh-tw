@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668225"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何整合一般警示架構與 Logic Apps
@@ -20,7 +19,7 @@ ms.locfileid: "77668225"
 [一般警示架構](https://aka.ms/commonAlertSchemaDocs)會在您所有不同的警示類型之間提供標準化且可擴充的 JSON 架構。 當以程式設計方式運用時，常見的警示架構會是最有用的（透過 webhook、runbook 和邏輯應用程式）。 在本文中，我們會示範如何撰寫單一邏輯應用程式來處理您的所有警示。 相同的原則也適用于其他程式設計方法。 本文中所述的邏輯應用程式會針對「[基本」欄位](alerts-common-schema-definitions.md#essentials)建立妥善定義的變數，同時說明如何處理[警示類型](alerts-common-schema-definitions.md#alert-context)特定的邏輯。
 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 本文假設讀者已熟悉 
 * 設定警示[規則（計量](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)、[記錄](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)、[活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)）
@@ -109,7 +108,7 @@ ms.locfileid: "77668225"
         }
     ```
 
-1. 選取**+** [**新增步驟**]，然後選擇 [**加入動作**]。
+1. 選取 **+** [**新增步驟**]，然後選擇 [**加入動作**]。
 
     ![新增動作](media/action-groups-logic-app/add-action.png "新增動作")
 
@@ -137,6 +136,6 @@ ms.locfileid: "77668225"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解動作群組](../../azure-monitor/platform/action-groups.md)。
+* [深入了解動作群組](../../azure-monitor/platform/action-groups.md)。
 * [深入瞭解常見的警示架構](https://aka.ms/commonAlertSchemaDocs)。
 

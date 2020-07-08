@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663227"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure 監視器中的目標監視解決方案 (預覽版)
@@ -38,7 +37,7 @@ ms.locfileid: "77663227"
  3. 按一下 [新增]**** 以建立新的範圍設定。
  4. 輸入範圍設定的 [名稱]****。
  5. 按一下 [選取電腦群組]****。
- 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 [選取]  。  
+ 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 [選取]。  
  6. 按一下 [確定]**** 以建立範圍設定。 
 
 

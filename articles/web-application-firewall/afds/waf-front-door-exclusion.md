@@ -8,10 +8,9 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925926"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>具有 Front 服務排除清單的 Web 應用程式防火牆（WAF） 
@@ -20,10 +19,10 @@ ms.locfileid: "77925926"
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>使用 Azure 入口網站設定排除清單
 **管理排除**專案可從 WAF 入口網站的 [**受控規則**] 底下存取
 
-![管理排除](../media/waf-front-door-exclusion/exclusion1.png)
-![管理 exclusion_add](../media/waf-front-door-exclusion/exclusion2.png)
+![管理排除 ](../media/waf-front-door-exclusion/exclusion1.png)
+ ![ 管理 exclusion_add](../media/waf-front-door-exclusion/exclusion2.png)
 
- 排除清單範例： ![管理 exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
+ 排除清單範例： ![ 管理 exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
 
 這個範例會排除 [*使用者*標頭] 欄位中的值。 有效的要求可能包含*使用者*欄位，其中包含的字串會觸發 SQL 插入式規則。 在此情況下，您可以排除*user*參數，讓 WAF 規則不會評估欄位中的任何專案。
 

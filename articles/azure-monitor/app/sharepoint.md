@@ -4,10 +4,9 @@ description: 開始使用新的檢測金鑰監視新的應用程式
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671438"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 監視 SharePoint 網站
@@ -39,7 +38,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-將腳本插入您要追蹤&lt;之&gt;每個頁面的/head 標記之前。如果您的網站有主版頁面，您可以將腳本放在該處。 例如，在 ASP.NET MVC 專案中，可放在 View\Shared\_Layout.cshtml 中
+將腳本插入 &lt; &gt; 您要追蹤之每個頁面的/head 標記之前。如果您的網站有主版頁面，您可以將腳本放在該處。 例如，在 ASP.NET MVC 專案中，可放在 View\Shared\_Layout.cshtml 中
 
 指令碼包含檢測金鑰，會將遙測導向您的 Application Insights 資源。
 
@@ -51,7 +50,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ![](./media/sharepoint/03-master.png)
 
-在 </head> 標記之前加入程式碼。 
+將程式碼新增至 </head> 的相片或視訊。 
 
 ![](./media/sharepoint/04-code.png)
 

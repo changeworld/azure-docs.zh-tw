@@ -4,10 +4,9 @@ description: Analytics 查詢可以在 Power BI 中顯示。
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663992"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>從 Application Insights 提供 Power BI
@@ -36,7 +35,7 @@ ms.locfileid: "77663992"
 3. 在 [匯出]**** 功能表上，選擇 [Power BI (M)]****。 儲存文字檔案。
    
     ![Analytics 的螢幕擷取畫面，並已醒目顯示 [匯出] 功能表](./media/export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI Desktop 中，選取 [**取得資料** > ] [**空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
+4. 在 Power BI Desktop 中，選取 [**取得資料**] [  >  **空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
 
     將匯出的 M 語言指令碼貼到進階編輯器。
 
@@ -61,7 +60,7 @@ ms.locfileid: "77663992"
 
    ![Power BI 按鈕的螢幕擷取畫面](./media/export-power-bi/button.png)
 
-3. 在 Power BI Desktop 中，選取 [**取得資料** > ] [**空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
+3. 在 Power BI Desktop 中，選取 [**取得資料**] [  >  **空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
 
    ![Power BI Desktop 的螢幕擷取畫面，並已醒目顯示 [空白查詢] 按鈕](./media/export-power-bi/blankquery.png)
 
@@ -98,8 +97,8 @@ ms.locfileid: "77663992"
 
 1. 建立[API 金鑰](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 更新您從 Analytics 匯出的 Power BI M 指令碼，方法是將 Azure Resource Manager URL 取代為 Application Insights API。
-   * 取代**HTTPs：\//management.azure.com/subscriptions/...**
-   * 使用， **HTTPs：\//api.applicationinsights.io/Beta/apps/...**
+   * 取代**HTTPs： \/ /management.azure.com/subscriptions/...**
+   * 使用， **HTTPs： \/ /api.applicationinsights.io/Beta/apps/...**
 3. 最後，將認證更新為基本，並且使用您的 API 金鑰。
 
 **現有的腳本**
@@ -118,7 +117,7 @@ ms.locfileid: "77663992"
 這個方法會為您建立完整的遙測儀表板。 儀表板中已預先定義初始資料集，但您也可以在資料集中新增更多資料。
 
 ### <a name="get-the-adapter"></a>取得配接器
-1. 登入[Power BI](https://app.powerbi.com/)。
+1. 登入 [Power BI](https://app.powerbi.com/)。
 2. 開啟 [取得資料]**** ![左下角 [取得資料] 圖示的螢幕擷取畫面](./media/export-power-bi/001.png)、[服務]****。
 
     ![「取自 Application Insights 資料來源」的螢幕擷取畫面](./media/export-power-bi/002.png)

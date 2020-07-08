@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658008"
 ---
 # <a name="workbook-time-parameters"></a>活頁簿時間參數
@@ -40,7 +39,7 @@ ms.locfileid: "77658008"
 ## <a name="referencing-a-time-parameter"></a>參考時間參數
 ### <a name="via-bindings"></a>Via 系結
 1. 將查詢控制項加入至活頁簿，然後選取 Application Insights 資源。
-2. 大部分的活頁簿控制項都支援_時間範圍_範圍選取器。 開啟 [_時間範圍_] 下拉式選單，並`{TimeRange}`在底部的 [時間鈴聲響起人數參數] 群組中選取。
+2. 大部分的活頁簿控制項都支援_時間範圍_範圍選取器。 開啟 [_時間範圍_] 下拉式選單，並 `{TimeRange}` 在底部的 [時間鈴聲響起人數參數] 群組中選取。
 3. 這會將時間範圍參數系結至圖表的時間範圍。 範例查詢的時間範圍現在是過去24小時。
 4. 執行查詢以查看結果
 
@@ -49,7 +48,7 @@ ms.locfileid: "77658008"
 ### <a name="in-kql"></a>在 KQL 中
 1. 將查詢控制項加入至活頁簿，然後選取 Application Insights 資源。
 2. 在 KQL 中，使用參數輸入時間範圍篩選準則：`| where timestamp {TimeRange}`
-3. 這會將查詢評估時間展開`| where timestamp > ago(1d)`為，這是參數的時間範圍值。
+3. 這會將查詢評估時間展開為 `| where timestamp > ago(1d)` ，這是參數的時間範圍值。
 4. 執行查詢以查看結果
 
     ![顯示 KQL 中參考之時間範圍的影像](./media/workbooks-time/time-in-code.png)

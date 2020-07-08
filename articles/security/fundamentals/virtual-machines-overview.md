@@ -17,10 +17,9 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657158"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
@@ -57,14 +56,14 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 如需更強大的保護，請考慮使用 [Windows Defender 進階威脅防護](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。 透過使用 Windows Defender ATP，您將能取得：
 
-* [攻擊面縮減](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [受攻擊面縮小](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [新一代的保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [端點保護和回應](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [自動化調查和補救](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
 * [安全分數](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [進階獵狩](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [管理和 API](/windows/security/threat-protection/windows-defender-atp/management-apis)
-* [Microsoft 威脅保護](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+* [Microsoft 威脅防護](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
 深入了解：
 
@@ -79,7 +78,7 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 深入了解：
 
-* [何謂 Azure Key Vault？](/azure/key-vault/key-vault-overview)
+* [什麼是 Azure 金鑰保存庫？](/azure/key-vault/key-vault-overview)
 * [Azure 金鑰保存庫部落格](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虛擬機器磁碟加密
@@ -129,7 +128,7 @@ Azure 虛擬網路是以實體 Azure 網路網狀架構為基礎所建置的邏�
 深入了解：
 
 * [Azure 網路安全性概觀](network-overview.md)
-* [虛擬網路總覽](/azure/virtual-network/virtual-networks-overview)
+* [虛擬網路概觀](/azure/virtual-network/virtual-networks-overview)
 * [企業案例的網路功能與合作關係](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>安全性原則管理和報告
@@ -147,7 +146,7 @@ Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措�
 * [Azure 資訊安全中心常見問題集](/azure/security-center/security-center-faq)
 * [Azure 資訊安全中心規劃和操作](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 
 Azure 虛擬機器經過 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 及其他重要規範計劃認證。 此認證可讓您自己的 Azure 應用程式更容易符合規範要求，並讓您的企業解決廣泛的國內與國際法規要求。
 

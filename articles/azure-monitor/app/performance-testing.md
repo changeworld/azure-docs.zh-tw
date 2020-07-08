@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669857"
 ---
 # <a name="performance-testing"></a>效能測試
@@ -22,7 +21,7 @@ Application Insights 可讓您產生網站的負載測試。 如同[可用性測
 
 為了建立效能測試，您必須先建立 Application Insights 資源。 如果您已建立資源，請繼續進行下一節。
 
-從 [Azure 入口網站中，選取 [**建立資源** > ] [**開發人員工具** > ] [**Application Insights** ]，然後建立 Application Insights 資源。
+從 [Azure 入口網站中，選取 [**建立資源**] [  >  **開發人員工具**] [  >  **Application Insights** ]，然後建立 Application Insights 資源。
 
 ## <a name="configure-performance-testing"></a>設定效能測試
 

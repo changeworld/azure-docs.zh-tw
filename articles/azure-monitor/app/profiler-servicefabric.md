@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671608"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 來分析即時 Azure Service Fabric 應用程式
@@ -26,7 +25,7 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
 
 若要設定環境，請採取下列動作：
 
-1. Profiler 支援 .NET Framework 和 .Net Core。 如果您使用 .NET Framework，請確定您使用的是[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 確認部署的作業系統是`Windows Server 2012 R2`或更新版本就足夠了。 Profiler 支援 .NET Core 2.1 和更新版本的應用程式。
+1. Profiler 支援 .NET Framework 和 .Net Core。 如果您使用 .NET Framework，請確定您使用的是[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 確認部署的作業系統是 `Windows Server 2012 R2` 或更新版本就足夠了。 Profiler 支援 .NET Core 2.1 和更新版本的應用程式。
 
 1. 在部署範本檔案中搜尋 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)擴充功能。
 

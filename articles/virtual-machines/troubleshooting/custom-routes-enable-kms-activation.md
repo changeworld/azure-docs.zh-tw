@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920156"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制通道案例中的 Windows 啟用失敗
@@ -32,7 +31,7 @@ ms.locfileid: "77920156"
 
 Azure Windows VM 需要連接到 Azure KMS 伺服器以進行 Windows 啟用。 若要啟用，啟用要求須來自 Azure 的公用 IP 位址。 在強制通道的案例中，啟用會失敗，因為啟用要求來自內部部署網路，而不是 Azure 的公用 IP 位址。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決此問題，請使用 Azure 自訂路由將啟用流量路由到 Azure KMS 伺服器。
 
@@ -41,9 +40,9 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 |平台| KMS DNS|KMS IP|
 |------|-------|-------|
 |Azure 全域|kms.core.windows.net|23.102.135.246|
-|Azure Germany|kms.core.cloudapi.de|51.4.143.248|
-|Azure US Government|kms.core.usgovcloudapi.net|23.97.0.13|
-|Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
+|Azure 德國|kms.core.cloudapi.de|51.4.143.248|
+|Azure 美國政府|kms.core.usgovcloudapi.net|23.97.0.13|
+|Azure 中國 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
 若要新增自訂的路由，請遵循下列步驟：

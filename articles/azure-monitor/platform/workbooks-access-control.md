@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 20116ab105e4eb12875ba3cb279fb261eb5c70e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658416"
 ---
 # <a name="access-control"></a>存取控制
@@ -24,20 +23,20 @@ ms.locfileid: "77658416"
 
 * 儲存活頁簿所需的存取權
 
-    - 儲存私`("My")`用活頁簿不需要額外的許可權。 所有使用者都可以儲存私人活頁簿，而且只有他們可以看到這些活頁簿。
+    - 儲存私用活頁 `("My")` 簿不需要額外的許可權。 所有使用者都可以儲存私人活頁簿，而且只有他們可以看到這些活頁簿。
     - 儲存共用活頁簿需要資源群組中的寫入權限，才能儲存活頁簿。 這些許可權通常是由「[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)」角色所指定，但也可以透過「活頁*簿參與者*」角色來設定。
     
 ## <a name="standard-roles-with-workbook-related-privileges"></a>具有活頁簿相關許可權的標準角色
 
 [監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)包含標準的/read 許可權，可由監視工具（包括活頁簿）用來讀取資源的資料。
 
-[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)包括各種`/write`用來儲存專案的監視工具所使用的一般`workbooks/write`許可權（包括儲存共用活頁簿的許可權）。
+[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)包括 `/write` 各種用來儲存專案的監視工具所使用的一般許可權（包括 `workbooks/write` 儲存共用活頁簿的許可權）。
 「活頁簿參與者」會將「活頁簿/寫入」許可權新增至物件，以儲存共用的活頁簿。
 使用者不需要特殊許可權，就能儲存只能看到的私人活頁簿。
 
 針對自訂角色型存取控制：
 
-新增`microsoft.insights/workbooks/write`以儲存共用的活頁簿。 如需詳細資訊，請參閱活頁[簿參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色。
+新增 `microsoft.insights/workbooks/write` 以儲存共用的活頁簿。 如需詳細資訊，請參閱活頁[簿參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8df83439d6754440648688ac1cc36ff66556a4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668242"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>瞭解傳統警示規則的自動遷移程式
@@ -56,5 +55,5 @@ ms.locfileid: "77668242"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [移轉準備工作](alerts-prepare-migration.md)
+- [準備移轉](alerts-prepare-migration.md)
 - [了解移轉工具的運作方式](alerts-understand-migration.md)

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665488"
 ---
 # <a name="smart-groups"></a>智慧群組
@@ -27,7 +26,7 @@ ms.locfileid: "77665488"
 
 支援下列智慧群組狀態。
 
-| State | 描述 |
+| State | Description |
 |:---|:---|
 | 新增 | 已經偵測到問題，但尚未檢閱。 |
 | 已認可 | 系統管理員已檢閱智慧群組，並已開始處理。 |

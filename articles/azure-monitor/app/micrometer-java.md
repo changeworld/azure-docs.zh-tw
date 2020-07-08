@@ -6,10 +6,9 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670061"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何搭配 Azure Application Insights Java SDK 使用 Micrometer
@@ -137,7 +136,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
         </dependency>
      ```
 
-2. 將`ApplicationInsights.xml`檔案放在 resources 資料夾中：
+2. 將檔案放 `ApplicationInsights.xml` 在 resources 資料夾中：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

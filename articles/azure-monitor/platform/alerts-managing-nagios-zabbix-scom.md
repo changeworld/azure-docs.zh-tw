@@ -1,21 +1,20 @@
 ---
-title: 在 Azure 監視器中管理來自 System Center Operations Manager、Zabbix 和 Nagios 的警示
-description: 在 Azure 監視器中管理來自 System Center Operations Manager、Zabbix 和 Nagios 的警示
+title: 管理 Azure 監視器中 System Center Operations Manager、Zabbix 和 Nagios 的警示
+description: 管理 Azure 監視器中 System Center Operations Manager、Zabbix 和 Nagios 的警示
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: alerts
 ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667443"
 ---
-# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>在 Azure 監視器中管理來自 System Center Operations Manager、Zabbix 和 Nagios 的警示
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>管理 Azure 監視器中 System Center Operations Manager、Zabbix 和 Nagios 的警示
 
 您現在可以在 [Azure 監視器](https://aka.ms/azure-alerts-overview)中檢視來自 Nagios、Zabbix 和 System Center Operations Manager 的警示。 這些警示來自 Nagios/Zabbix 伺服器或 System Center Operations Manager 整合到 Log Analytics 中。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 Log Analytics 存放庫中具有警示類型的任何記錄，將匯入到 Azure 監視器，所以您必須執行必要組態以收集這些記錄。
 1. 針對**Nagios**和**Zabbix**警示，請[將這些伺服器設定](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)為將[警示傳送](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json)至 Log Analytics。
 1. 如**System Center Operations Manager**警示，請[將您的 Operations Manager 管理群組連接到 Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents)。 在此之後，從 Azure 解決方案市集部署[警示管理](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution)解決方案。 完成後，在 System Center Operations Manager 中建立的任何警示會匯入至記錄分析。

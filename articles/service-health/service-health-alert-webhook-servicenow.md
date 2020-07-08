@@ -4,10 +4,9 @@ description: 取得關於 ServiceNow 執行個體服務健康情況事件的個�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654098"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 透過 ServiceNow 傳送 Azure 服務健康情況警示
@@ -28,7 +27,7 @@ ms.locfileid: "77654098"
 
 1.  為 REST API 新增**名稱**，並將 **API 識別碼**設定為 `azureservicehealth`。
 
-1.  選取 [提交]  。
+1.  選取 [提交]。
 
     ![ServiceNow 中的「REST API 設定」](./media/webhook-alerts/servicenow-restapi-settings.png)
 
@@ -159,7 +158,7 @@ ms.locfileid: "77654098"
 1. 完成後選取 [儲存]**** 以建立警示。
 
 ### <a name="for-an-existing-action-group"></a>現有的動作群組：
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [監視]****。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**監視**]。
 
 1. 在 [設定]**** 區段上，選取 [動作群組]****。
 
@@ -194,5 +193,5 @@ ms.locfileid: "77654098"
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 瞭解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
-- 深入瞭解[動作群組](../azure-monitor/platform/action-groups.md)。
+- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

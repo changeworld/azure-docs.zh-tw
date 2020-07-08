@@ -4,10 +4,9 @@ description: 設定容器映射或存放庫的屬性，使其無法在 Azure con
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659691"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>鎖定 Azure container registry 中的容器映射
@@ -17,7 +16,7 @@ ms.locfileid: "77659691"
 本文要求您在 Azure Cloud Shell 或本機執行 Azure CLI （建議使用使用2.0.55 版或更新版本）。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 本文不適用於鎖定整個登錄，例如，使用 Azure 入口網站中的**設定 > 鎖定**，或`az lock` Azure CLI 中的命令。 鎖定登錄資源並不會讓您無法建立、更新或刪除存放庫中的資料。 鎖定登錄只會影響管理作業，例如新增或刪除複寫，或刪除登錄本身。 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)的詳細資訊。
+> 本文不適用於鎖定整個登錄，例如，使用 Azure 入口網站中的**設定 > 鎖定**，或 `az lock` Azure CLI 中的命令。 鎖定登錄資源並不會讓您無法建立、更新或刪除存放庫中的資料。 鎖定登錄只會影響管理作業，例如新增或刪除複寫，或刪除登錄本身。 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)的詳細資訊。
 
 ## <a name="scenarios"></a>案例
 
@@ -69,7 +68,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>依資訊清單摘要鎖定影像
 
-若要鎖定資訊清單摘要所識別的*myrepo/myimage*影像（以表示的 SHA- `sha256:...`256 雜湊），請執行下列命令。 （若要尋找與一或多個映射標記相關聯的資訊清單摘要，請執行[az acr repository show-資訊清單][az-acr-repository-show-manifests]命令）。
+若要鎖定資訊清單摘要所識別的*myrepo/myimage*影像（以表示的 SHA-256 雜湊 `sha256:...` ），請執行下列命令。 （若要尋找與一或多個映射標記相關聯的資訊清單摘要，請執行[az acr repository show-資訊清單][az-acr-repository-show-manifests]命令）。
 
 ```azurecli
 az acr repository update \

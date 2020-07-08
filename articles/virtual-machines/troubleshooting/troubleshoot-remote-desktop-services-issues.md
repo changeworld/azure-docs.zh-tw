@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919459"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>遠端桌面服務未在 Azure VM 上啟動
@@ -24,7 +23,7 @@ ms.locfileid: "77919459"
 本文說明如何針對在遠端桌面服務 (或 TermService) 未啟動或無法啟動的問題，以及連線到 Azure 虛擬機器 (VM) 的問題進行疑難排解。
 
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您嘗試連線到 VM 時，會遇到下列案例：
 
@@ -57,7 +56,7 @@ ms.locfileid: "77919459"
 - TermService 服務已損毀或沒有回應。 
 - 因為的設定不正確，所以無法啟動 TermService。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要對此問題進行疑難排解，請使用序列主控台。 或者，藉由將 VM 的 OS 磁碟連結至復原 VM，進行[離線修復 VM](#repair-the-vm-offline)。
 

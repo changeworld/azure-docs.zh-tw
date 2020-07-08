@@ -4,10 +4,9 @@ description: 取得關於 PagerDuty 執行個體服務健康情況事件的個�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654064"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 webhook 透過 PagerDuty 傳送 Azure 服務健康狀態警示
@@ -27,7 +26,7 @@ ms.locfileid: "77654064"
 
     a. **整合類型**：Microsoft Azure
 
-    b. **整合名稱**： \<名稱\>
+    b. **整合名稱**：\<Name\>
 
     ![PagerDuty 中的 [整合設定]](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -52,7 +51,7 @@ ms.locfileid: "77654064"
 1. 完成後選取 [儲存]**** 以建立警示。
 
 ### <a name="for-an-existing-action-group"></a>現有的動作群組：
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [監視]****。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**監視**]。
 
 1. 在 [設定]**** 區段上，選取 [動作群組]****。
 
@@ -87,5 +86,5 @@ ms.locfileid: "77654064"
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 瞭解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
-- 深入瞭解[動作群組](../azure-monitor/platform/action-groups.md)。
+- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

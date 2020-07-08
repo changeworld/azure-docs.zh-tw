@@ -12,10 +12,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77648507"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務監視遷移活動
@@ -36,7 +35,7 @@ ms.locfileid: "77648507"
     <tr>
       <th class="x-hidden-focus"><strong>欄位名稱</strong></th>
       <th><strong>欄位子狀態</strong></th>
-      <th><strong>說明</strong></th>
+      <th><strong>描述</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -63,11 +62,11 @@ ms.locfileid: "77648507"
       <td>DMS 管線正在執行中，並且正在執行移轉。</td>
     </tr>
     <tr>
-      <td>[完成]</td>
+      <td>完成</td>
       <td>移轉已完成。</td>
     </tr>
     <tr>
-      <td>Failed</td>
+      <td>失敗</td>
       <td>移轉失敗。 按一下移轉詳細資料以查看移轉錯誤。</td>
     </tr>
     <tr>
@@ -92,7 +91,7 @@ ms.locfileid: "77648507"
       <td>按一下連結以顯示錯誤詳細資料。</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Duration</strong></td>
+      <td rowspan="1" class="duration"><strong>有效期間</strong></td>
       <td>N/A</td>
       <td>從移轉活動初始化到移轉完成或移轉失敗的總時間。</td>
     </tr>

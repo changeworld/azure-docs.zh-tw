@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918201"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因為 VM 開機到安全模式而無法連線到 VM
@@ -24,7 +23,7 @@ ms.locfileid: "77918201"
 此文章說明如何解決因為 VM 設定為開機到安全模式而無法連線到 Azure Windows 虛擬機器 (VM) 的問題進行疑難排解。
 
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您因為 VM 設定為開機到安全模式而無法透過 RDP 連線或其他連線 (例如 HTTP) 連線到 Azure 中的 VM。 當您檢查 Azure 入口網站中[開機診斷](../troubleshooting/boot-diagnostics.md)的螢幕擷取畫面時，您可能會看到該 VM 正常開機，但網路介面無法使用：
 
@@ -35,7 +34,7 @@ ms.locfileid: "77918201"
 在安全模式中，RDP 服務無法使用。 當 VM 開機到安全模式時，只會載入基本系統程式與服務。 這適用於兩個不同版本的安全模式，亦即「安全模式 (基本)」與「安全模式 (含網路功能)」。
 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -52,7 +51,7 @@ ms.locfileid: "77918201"
     若 VM 已設定為開機到安全模式，您將會在 [Windows 開機載入器]**** 區段下看到稱為 [安全開機]**** 的額外旗標。 若您沒有看到 [安全開機]**** 旗標，表示 VM 並非處於安全模式。 此文章不適用於您的案例。
 
     [安全開機]**** 旗標會隨著下列值出現：
-   - 最小
+   - 基本
    - 網路
 
      在這兩個模式中的任一個模式中，RDP 將不會啟動。 因此，修正方式仍然相同。

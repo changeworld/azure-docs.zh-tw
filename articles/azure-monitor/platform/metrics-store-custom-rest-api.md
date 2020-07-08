@@ -8,10 +8,9 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662259"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
@@ -103,11 +102,11 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
 1. 在左側功能表中，選取 [監視]****。 
 
-1. 在 [監視]**** 頁面上，選取 [計量]****。 
+1. 在 [**監視**] 頁面上，選取 [**計量**]。 
 
    ![選取計量](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. 將彙總期間變更為 [過去 30 分鐘]****。  
+1. 將彙總期間變更為 [過去 30 分鐘]。  
 
 1. 在 [資源]**** 下拉式功能表中，選取您發出其計量的資源。  
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
@@ -83,9 +82,9 @@ Heartbeat
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
 |美國    | 19                  |
-|Canada           | 3                   |
+|加拿大           | 3                   |
 |愛爾蘭          | 0                   |
-|United Kingdom   | 0                   |
+|英國   | 0                   |
 |荷蘭      | 2                   |
 
 
@@ -143,7 +142,7 @@ Perf
 若要了解如何搭配 Azure 監視器記錄資料使用 [Kusto 查詢語言](/azure/kusto/query/)，請參閱其他課程：
 
 - [字串作業](string-operations.md)
-- [日期與時間作業](datetime-operations.md)
+- [日期和時間作業](datetime-operations.md)
 - [進階彙總](advanced-aggregations.md)
 - [JSON 與資料結構](json-data-structures.md)
 - [進階查詢撰寫](advanced-query-writing.md)

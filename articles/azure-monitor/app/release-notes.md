@@ -4,17 +4,16 @@ description: Application Insights SDK 的最新更新。
 ms.topic: conceptual
 ms.date: 05/17/2017
 ms.openlocfilehash: fcd20e1d14cebb9a5f5cc8ff2f7ae3f16fa594cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671506"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK 版本資訊 - Application Insights
 以下是 SDK 的詳細版本資訊與更新指示：
 
 
-* .NET Sdk
+* .NET SDK
     - 2.12 版和更新版本： [.Net sdk （包括 ASP.NET、ASP.NET Core 和記錄介面卡）](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
     - 針對較舊版本：
       - [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)

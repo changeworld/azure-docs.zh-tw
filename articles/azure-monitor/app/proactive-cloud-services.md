@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669738"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 診斷與 Azure Application Insights 的整合對 Azure 雲端服務的問題發出警示
@@ -91,7 +90,7 @@ EventLogs
 在 [搜尋查詢]**** 方塊中，貼入您在上一個步驟中備妥的合併查詢。
 
 然後，繼續前往 [閾值]**** 方塊，並將其值設定為 0。 您可能會選擇調整 [期間]**** 和 [頻率]**** 欄位。
-按一下 [完成]  。
+按一下 [完成] 。
 
 ![設定訊號邏輯查詢的螢幕擷取畫面](./media/proactive-cloud-services/003.png)
 
@@ -111,7 +110,7 @@ EventLogs
 
 深入了解自動偵測：
 
-[失敗異常](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[記憶體](../../azure-monitor/app/proactive-potential-memory-leak.md)
-流失[效能異常](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[失敗異常](../../azure-monitor/app/proactive-failure-diagnostics.md) 
+[記憶體流失](../../azure-monitor/app/proactive-potential-memory-leak.md) 
+[效能異常](../../azure-monitor/app/proactive-performance-diagnostics.md)
 

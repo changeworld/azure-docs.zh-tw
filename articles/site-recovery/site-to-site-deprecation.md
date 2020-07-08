@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
 ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661665"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客戶管理的網站（與 VMM）之間淘汰嚴重損壞修復
@@ -57,7 +56,7 @@ ms.locfileid: "77661665"
 
 如果您選擇使用 [Hyper-v 複本] 的選項2，請執行下列步驟：
 
-1. 在 [**受保護的專案** > ] [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+1. 在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
 2. 在 [**停**用複寫] 中，選取 [**移除**]。
 
     這會將複寫的項目從 Azure Site Recovery 移除 (停止計費)。 內部部署虛擬機器上的複寫設定**將不會**遭到清除。 

@@ -4,10 +4,9 @@ description: Azure VM 和 Azure 虛擬機器擴展集的應用程式效能監視
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661323"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器擴展集上部署 Azure 監視器 Application Insights 代理程式
@@ -32,7 +31,7 @@ ms.locfileid: "77661323"
 
     * Application Insights 代理程式會自動收集與 .NET SDK 相同的預設相依性信號。 若要深入瞭解，請參閱相依性[自動收集](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)。
         > [!NOTE]
-        > 目前僅支援 .Net IIS 裝載的應用程式。 使用 SDK 來檢測裝載于 Azure 虛擬機器和虛擬機器擴展集上的 ASP.NET Core、JAVA 和 node.js 應用程式。
+        > 目前僅支援 .Net IIS 裝載的應用程式。 使用 SDK 來檢測裝載于 Azure 虛擬機器和虛擬機器擴展集上的 ASP.NET Core、JAVA 和 Node.js 應用程式。
 
 * 以**程式碼為基礎的**via SDK
 
@@ -168,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 針對在 Azure 虛擬機器和虛擬機器擴展集上執行的 .NET 應用程式，尋找 Application Insights Monitoring Agent 擴充功能的疑難排解秘訣。
 
 > [!NOTE]
-> 只有 Azure 虛擬機器和 Azure 虛擬機器擴展集才支援 .NET Core、JAVA 和 node.js 應用程式，透過手動以 SDK 為基礎的檢測，因此下列步驟不適用於這些案例。
+> 只有 Azure 虛擬機器和 Azure 虛擬機器擴展集上的 .NET Core、JAVA 和 Node.js 應用程式可透過手動以 SDK 為基礎的檢測來支援，因此，下列步驟不適用於這些案例。
 
 延伸模組執行輸出會記錄至下列目錄中的檔案：
 ```Windows

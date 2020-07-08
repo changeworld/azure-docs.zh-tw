@@ -4,10 +4,9 @@ description: 篩選出您不需要監視的事件，以減少遙測流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659912"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
@@ -257,7 +256,7 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-您必須在中`application.properties`建立自己的篩選參數，並利用春季 Boot 的外部化設定架構，將這些參數傳遞至您的自訂篩選器。 
+您必須在中建立自己的篩選參數 `application.properties` ，並利用春季 Boot 的外部化設定架構，將這些參數傳遞至您的自訂篩選器。 
 
 
 ## <a name="troubleshooting"></a>疑難排解

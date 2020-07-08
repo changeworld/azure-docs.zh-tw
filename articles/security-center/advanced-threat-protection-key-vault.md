@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77914801"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 的威脅防護（預覽）
@@ -37,7 +36,7 @@ Azure Key Vault 的先進威脅防護提供一層額外的安全性情報。 此
 
     [![在 Azure 資訊安全中心中啟用或停用 Key Vault 的 advanced 威脅防護](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 
 ## <a name="next-steps"></a>後續步驟

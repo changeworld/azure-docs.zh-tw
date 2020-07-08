@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664774"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中的 VMware 監控（已淘汰）解決方案
@@ -40,10 +39,10 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
    ![syslog 流程](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>設定 syslog 收集
-1. 設定 VSphere 的 syslog 轉送。 如需協助設定 syslog 轉送的詳細資訊，請參閱[設定 ESXi 5.0 和更新版本上的 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 移至 [ **ESXi 主機** > 設定] [**軟體** > ] [**Advanced Settings** > ]**Syslog**。
+1. 設定 VSphere 的 syslog 轉送。 如需協助設定 syslog 轉送的詳細資訊，請參閱[設定 ESXi 5.0 和更新版本上的 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 移至 [ **ESXi 主機**設定] [軟體] [  >  **Software**  >  **Advanced Settings**]  >  **Syslog**。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. 在 [Syslog.global.logHost]** 欄位中，新增您的 Linux 伺服器和連接埠號碼 1514**。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`。
-1. 為 syslog 開啟 ESXi 主機防火牆。 **ESXi 主機** > 設定] [**軟體** > ] [**安全性設定檔** > ]**防火牆****並開啟 [** 內容]。  
+1. 為 syslog 開啟 ESXi 主機防火牆。 **ESXi 主機**  >  設定**軟體**  > **安全性設定檔**  > [**防火牆**] 和 [開啟**屬性**]。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -64,9 +63,9 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. 在 Azure 入口網站中，執行的記錄查詢`VMware_CL`。 當 Azure 監視器收集 syslog 資料時，它會保留 syslog 格式。 在入口網站中，會擷取某些特定欄位，例如 Hostname** 和 ProcessName**。  
+1. 在 Azure 入口網站中，執行的記錄查詢 `VMware_CL` 。 當 Azure 監視器收集 syslog 資料時，它會保留 syslog 格式。 在入口網站中，會擷取某些特定欄位，例如 Hostname** 和 ProcessName**。  
 
-    ![type](./media/vmware/type.png)  
+    ![類型](./media/vmware/type.png)  
 
     如果您的檢視記錄搜尋結果類似上圖，表示您已設定為可使用 VMware 監控解決方案儀表板。  
 
@@ -105,7 +104,7 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 ## <a name="vmware-monitoring-solution-overview"></a>VMware 監控解決方案概觀
 [VMware] 圖格會出現在 Log Analytics 工作區中。 它提供任何失敗的高階檢視。 當您按一下圖格時，會進入儀表板檢視。
 
-![圖格](./media/vmware/tile.png)
+![磚](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>瀏覽儀表板檢視
 在 VMware**** 儀表板檢視中，各刀鋒視窗組織如下︰
@@ -133,16 +132,16 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 
 當您按一下的 ESXi 主機名稱時，可以檢視該 ESXi 主機的資訊。 如果想要限縮事件類型的結果，在搜尋查詢中新增 `“ProcessName_s=EVENT TYPE”`。 您可以在搜尋篩選中選取 **ProcessName**。 這會為您限縮資訊。
 
-![深入探詢](./media/vmware/eventhostdrilldown.png)
+![電鑽](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>尋找高 VM 活動
 在任何 ESXi 主機上皆可以建立及刪除虛擬機器。 能識別 ESXi 主機建立多少個 VM，對系統管理員很有幫助， 進而幫助了解效能和容量規劃。 管理您的環境時，持續追蹤 VM 活動事件極為重要。
 
-![深入探詢](./media/vmware/vmactivities1.png)
+![電鑽](./media/vmware/vmactivities1.png)
 
 如果您想要查看其他 ESXi 主機 VM 建立資料，按一下 ESXi 主機名稱。
 
-![深入探詢](./media/vmware/createvm.png)
+![電鑽](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>一般記錄檔查詢
 這個解決方案包含其他實用的查詢，可協助您管理您的 ESXi 主機，例如高儲存量空間、儲存體延遲、路徑失敗。

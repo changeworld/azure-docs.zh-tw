@@ -7,16 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663249"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure 監視器中的代理程式健全狀況解決方案
 Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代理程式都會直接向 Azure 監視器中的 Log Analytics 工作區報告，或是連線到 Azure 監視器的 System Center Operations Manager 管理群組，而這是沒有回應且正在提交運算元據。  您可以也追蹤已部署的代理程式數目，其散佈地區，並執行其他查詢，以留意 Azure、其他雲端環境或內部部署中部署之代理程式的散佈情形。    
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 部署這個解決方案之前，請確認您目前支援向 Log Analytics 工作區或向與工作區整合之 [Operations Manager 管理群組](../../azure-monitor/platform/om-agents.md)回報的 [Windows 代理程式](../../log-analytics/log-analytics-windows-agent.md)。
 
 ## <a name="solution-components"></a>方案元件
@@ -30,25 +29,25 @@ Azure 中的代理程式健全狀況解決方案可協助您瞭解，所有代�
 
 如需有關方案管理組件如何更新的詳細資訊，請參閱 [將 Operations Manager 連接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 使用[新增解決方案](solutions.md)中所述的程序，將代理程式健全狀況解決方案新增至您的 Log Analytics 工作區。 不需要進一步的組態。
 
 
-## <a name="data-collection"></a>資料集合
+## <a name="data-collection"></a>資料收集
 ### <a name="supported-agents"></a>支援的代理程式
 下表描述此方案支援的連接來源。
 
 | 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | Windows 代理程式 | 是 | 系統會從直接 Windows 代理程式收集活動訊號事件。|
-| System Center Operations Manager 管理群組 | 是 | 系統會每隔60秒向管理群組回報的代理程式收集心跳事件，然後轉送至 Azure 監視器。 不需要從 Operations Manager 代理程式直接連接到 Azure 監視器。 將事件資料從管理群組轉送至 Log Analytics 工作區。|
+| System Center Operations Manager 管理群組 | Yes | 系統會每隔60秒向管理群組回報的代理程式收集心跳事件，然後轉送至 Azure 監視器。 不需要從 Operations Manager 代理程式直接連接到 Azure 監視器。 將事件資料從管理群組轉送至 Log Analytics 工作區。|
 
 ## <a name="using-the-solution"></a>使用解決方案
 當您將解決方案新增至 Log Analytics 工作區時，[代理程式健全狀況]**** 磚會新增至您的儀表板。 此圖格會顯示過去 24 小時內的代理程式總數和沒有回應的代理程式數目。<br><br> ![儀表板上的代理程式健全狀況圖格](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 按一下 [代理程式健全狀況]**** 圖格，以開啟 [代理程式健全狀況]**** 儀表板。  此儀表板包含下表中的資料行。 每個資料行依計數列出前十個事件，這幾個事件符合該資料行中指定時間範圍的準則。 您可以選取每個資料行右下角的 [查看全部] ****，或按一下資料行標頭，以執行記錄搜尋來提供完整清單。
 
-| 資料行 | 描述 |
+| 資料行 | Description |
 |--------|-------------|
 | 不同時間的代理程式計數 | Linux 和 Windows 代理程式為期七天的代理程式計數趨勢。|
 | 沒有回應的代理程式計數 | 在過去 24 小時內尚未傳送活動訊號的代理程式清單。|

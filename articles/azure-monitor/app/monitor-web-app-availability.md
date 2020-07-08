@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670027"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
@@ -23,7 +22,7 @@ ms.locfileid: "77670027"
 
 * [URL Ping 測試](#create-a-url-ping-test)：您可以在 Azure 入口網站中建立的簡單測試。
 * [多步驟 web 測試](availability-multistep.md)：一系列 web 要求的記錄，可以回頭播放以測試更複雜的案例。 多步驟 web 測試會在 Visual Studio Enterprise 中建立，並上傳至入口網站進行執行。
-* [自訂追蹤可用性測試](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試`TrackAvailability()` ，則可以使用方法，將結果傳送至 Application Insights。
+* [自訂追蹤可用性測試](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，則 `TrackAvailability()` 可以使用方法，將結果傳送至 Application Insights。
 
 **您最多可以為每個 Application Insights 資源建立100可用性測試。**
 
@@ -31,7 +30,7 @@ ms.locfileid: "77670027"
 
 為了建立可用性測試，您必須先建立 Application Insights 資源。 如果您已經建立資源，請繼續進行下一節，以[建立 URL Ping 測試](#create-a-url-ping-test)。
 
-從 [Azure 入口網站中，選取 [**建立資源** > ] [**開發人員工具** > ] [**Application Insights** ]，然後[建立 Application Insights 資源](create-new-resource.md)。
+從 [Azure 入口網站中，選取 [**建立資源**] [  >  **開發人員工具**] [  >  **Application Insights** ]，然後[建立 Application Insights 資源](create-new-resource.md)。
 
 ## <a name="create-a-url-ping-test"></a>建立 URL Ping 測試
 
@@ -49,7 +48,7 @@ ms.locfileid: "77670027"
 |**剖析相依要求**| 測試要求的影像、腳本、樣式檔案以及其他屬於受測網頁的檔案。 記錄的回應時間包含取得這些檔案所需的時間。 如果無法在整個測試的超時時間內成功下載任何這些資源，測試就會失敗。 如果未核取這個選項，測試只會要求您指定之 URL 中的檔案。 啟用此選項會產生更嚴格的檢查。 案例的測試可能會失敗，這在手動流覽網站時可能不明顯。
 |**啟用重試**|當測試失敗時，就會在短時間後重試。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 **我們建議您選擇此選項**。 平均來說，大約 80% 失敗會在重試後消失。|
 |**測試頻率**| 設定從每個測試位置執行測試的頻率。 預設頻率為 5 分鐘且有五個測試位置，則您的網站平均每一分鐘會執行測試。|
-|**測試位置**| 這是我們的伺服器將 web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為 5** ，以確保您可以區分網站中的問題與網路問題。 您最多可以選取 16 個位置。
+|**測試位置**| 是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為五個**，以確保您可以區分網站問題與網路問題。 您最多可以選取 16 個位置。
 
 **如果您的 URL 在公用網際網路中看不到，您可以選擇選擇性地開啟防火牆，只允許透過的測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱[IP 位址指南](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)。
 
@@ -60,17 +59,17 @@ ms.locfileid: "77670027"
 
 |設定| 說明
 |----|----|----|
-| **測試超時** |降低此值可收到有關回應變慢的警示。 如果未在這段時間內收到您網站的回應，則測試會視為失敗。 如果已選取 [剖析相依要求] ****，則必須在這段時間內收到所有映像、樣式檔、指令碼和其他相依資源。|
+| **測試逾時** |降低此值可收到有關回應變慢的警示。 如果未在這段時間內收到您網站的回應，則測試會視為失敗。 如果已選取 [剖析相依要求] ，則必須在這段時間內收到所有映像、樣式檔、指令碼和其他相依資源。|
 | **HTTP 回應** | 視為成功的傳回狀態碼。 200 是表示已傳回標準 Web 網頁的代碼。|
-| **內容相符** | 字串，例如「歡迎！」 我們會測試每個回應中的區分大小寫完全相符。 必須是單純字串，不含萬用字元。 別忘了，如果頁面內容變更，則可能需要更新。 **內容相符僅支援英文字元** |
+| **內容比對** | 字串，例如「歡迎！」 我們會測試每個回應中的區分大小寫完全相符。 必須是單純字串，不含萬用字元。 別忘了，如果頁面內容變更，則可能需要更新。 **內容相符僅支援英文字元** |
 
 ### <a name="alerts"></a>警示
 
 |設定| 說明
 |----|----|----|
-|**近乎即時（預覽）** | 我們建議使用近乎即時的警示。 設定此類型的警示會在您的可用性測試建立後完成。  |
+|**近乎即時 (預覽)** | 我們建議使用近乎即時的警示。 您的可用性測試建立後，此類型的警示會設定完成。  |
 |**傳統** | 我們不再建議使用傳統警示來進行新的可用性測試。|
-|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性是測試位置的**警示位置閾值** = （**2），最少五個測試位置。**|
+|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性，就是**警示位置閾值** = **測試位置數目 - 2 (最少五個測試位置)。**|
 
 ## <a name="see-your-availability-test-results"></a>查看可用性測試結果
 
@@ -125,7 +124,7 @@ ms.locfileid: "77670027"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-專屬的[疑難排解文章](troubleshoot-availability.md)。
+專用的[疑難排解文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

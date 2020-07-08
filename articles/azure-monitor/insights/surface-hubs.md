@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662496"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure 監視器監視 Surface Hub 以追蹤其健康情況
@@ -40,7 +39,7 @@ ms.locfileid: "77662496"
 Intune 是一個 Microsoft 產品，可讓您集中管理套用到一或多個裝置的 Log Analytics 工作區組態設定。 請依照下列步驟透過 Intune 設定您的裝置：
 
 1. 登入 Intune。
-2. 流覽至 [**設定** > ] [**連接的來源**]。
+2. 流覽至 [**設定**] [  >  **連接的來源**]。
 3. 以 Surface Hub 範本為基礎建立或編輯原則。
 4. 瀏覽至原則的 Azure Operational Insight 區段，將 Log Analytics 工作區識別碼** 和工作區金鑰** 新增至原則。
 5. 儲存原則。
