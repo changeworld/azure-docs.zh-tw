@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478479"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -66,6 +66,7 @@ ms.locfileid: "84220965"
 * 自訂指令碼擴充功能未原生支援 Proxy 伺服器，但是您可以在指令碼中使用支援 Proxy 伺服器的檔案傳輸工具，例如 *Curl*
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
 * 自訂指令碼擴充功能將會以 LocalSystem 帳戶執行
+* 如果您打算使用*storageAccountName*和*storageAccountKey*屬性，則必須在*protectedSettings*中共置這些屬性。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 

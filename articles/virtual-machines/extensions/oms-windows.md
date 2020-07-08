@@ -12,20 +12,20 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/30/2020
+ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481777"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>適用於 Windows 的 Log Analytics 虛擬機器擴充功能
 
 Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -36,13 +36,14 @@ Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 M
 
 | Log Analytics Windows 代理程式套件組合版本 | Log Analytics Windows VM 延伸模組版本 | 發行日期 | 版本資訊 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure 監視器私人連結範圍來啟用透過私人連結的連線</li><li>新增內嵌節流，以避免在內嵌到工作區時突然意外異常湧入</li><li>新增額外 Azure Government 雲端和區域的支援</li><li>解決 HealthService.exe 損毀的 bug</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>加入 SHA-2 程式碼簽署支援</li><li>改善 VM 延伸模組的安裝和管理</li><li>解決適用于伺服器整合的 Azure Arc 中的 bug</li><li>新增用於客戶支援的內建疑難排解工具</li><li>新增其他 Azure Government 區域的支援</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 將 MaxExpressionDepth 增加至10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 已新增在進行 proxy 連線時停用預設認證的功能（WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 的支援） </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要穩定修正 </li></ul> |
 | 10.19.10006 | n/a | 12月2018 | <ul><li> 次要穩定修正 </li></ul> | 
-| 8.0.11136 | n/a | 2018年9月 |  <ul><li> 已新增偵測 VM 移動上資源識別碼變更的支援 </li><li> 已新增使用非延伸模組安裝時的報告資源識別碼支援 </li></ul>| 
+| 8.0.11136 | n/a | 2018 年 9 月 |  <ul><li> 已新增偵測 VM 移動上資源識別碼變更的支援 </li><li> 已新增使用非延伸模組安裝時的報告資源識別碼支援 </li></ul>| 
 | 8.0.11103 | n/a |  2018 年 4 月 | |
 | 8.0.11081 | 1.0.11081 | 2017年11月 | | 
 | 8.0.11072 | 1.0.11072 | 2017年9月 | |
@@ -85,7 +86,7 @@ Azure 資訊安全中心會自動布建 Log Analytics 代理程式，並將它�
 ```
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 |
+| 名稱 | 值 / 範例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -198,4 +199,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

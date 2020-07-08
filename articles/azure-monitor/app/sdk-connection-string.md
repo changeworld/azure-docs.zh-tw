@@ -6,16 +6,16 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482117"
 ---
 # <a name="connection-strings"></a>連接字串
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 連接字串可讓應用程式深入解析使用者使用單一設定，而不需要多個 proxy 設定。 對於想要將資料傳送到監視服務的內部網路 web 伺服器、主權或混合式雲端環境而言，非常有用。
 
@@ -57,7 +57,7 @@ ms.locfileid: "83125701"
 
 連接字串是由以分號分隔的索引鍵/值組來表示的設定清單所組成：`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>語法
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`（例如：00000000-0000-0000-0000-000000000000） [連接字串] 是**必要**欄位。
 - `Authorization`（例如： ikey）（這是選擇性設定，因為我們目前只支援 ikey 授權）。
@@ -149,7 +149,7 @@ ms.locfileid: "83125701"
 下列 SDK 版本支援連接字串：
 - .NET 和 .NET Core v 2.12。0
 - JAVA 2.5.1 和 JAVA 3。0
-- JAVAscript v 2.3。0
+- JavaScript v 2.3。0
 - NodeJS v 1.5。0
 - Python 1.0.0 版
 
@@ -165,7 +165,7 @@ ms.locfileid: "83125701"
 
 TelemetryConfiguration ConnectionString：https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net 明確設定：
+.NET 明確設定：
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net 設定檔案：
+.NET 設定檔案：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -182,8 +182,16 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore 明確設定：
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
-NetCore config json： 
+NetCore config.js： 
 
 ```json
 {
@@ -212,7 +220,7 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要事項： JAVAscript 不支援使用環境變數。
+重要事項： JavaScript 不支援使用環境變數。
 
 使用程式碼片段：
 

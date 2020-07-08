@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482406"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -52,15 +52,15 @@ ms.locfileid: "83662716"
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 MediusFlow 以支援使用 Azure AD 進行佈建
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>在 MediusFlow 內啟用 Office 365 應用程式
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>在 MediusFlow 內啟動 Microsoft 365 應用程式
 藉由執行下列步驟，開始在 MediusFlow 內啟用 Azure AD 登入和 Azure AD 設定功能的存取權：
 
 #### <a name="user-login"></a>使用者登入
-若要啟用 Office 365/Azure AD 的登入流程，請參閱 [此] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) ) 文章。
+若要讓登入流程 Microsoft 365/Azure AD 請參閱 [this] （ https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章）。
 
 #### <a name="user-transfer-configuration"></a>使用者轉移設定
-若要啟用從 Azure AD 佈建之使用者的設定入口網站，請參閱[此](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)文章。
+若要啟用從 Azure AD 布建之使用者的設定入口網站，請參閱[這](
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)篇文章。
 
 #### <a name="configure-user-provisioning"></a>設定使用者佈建
 
@@ -94,7 +94,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
 
-8. 若要在 MediusFlow 中使用預先定義的角色、公司和其他一般設定來匯入使用者，您必須先加以設定。 首先，按一下 [新增設定] 來新增設定。
+8. 若要在 MediusFlow 中使用預先定義的角色、公司和其他一般設定來匯入使用者，您必須先設定此配置。 首先，按一下 [新增設定] 來新增設定。
 
     ![設定使用者](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
 

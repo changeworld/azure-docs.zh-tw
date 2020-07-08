@@ -1,24 +1,24 @@
 ---
-title: 適用於 Functions 2.x 的 Azure Cosmos DB 繫結
+title: 函數 2. xd 和更新版本的 Azure Cosmos DB 系結
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 觸發程序和繫結。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77605768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482168"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>適用于 Azure Functions 2.x 的 Azure Cosmos DB 觸發程式和系結總覽
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 和更新版本的 Azure Cosmos DB 觸發程式和系結
 
 > [!div class="op_single_selector" title1="選取您要使用的 Azure Functions 執行階段版本： "]
 > * [第 1 版](functions-bindings-cosmosdb.md)
-> * [第 2 版](functions-bindings-cosmosdb-v2.md)
+> * [第2版和更新版本](functions-bindings-cosmosdb-v2.md)
 
-這一組文章說明如何使用 Azure Functions 2.x 中的[Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)系結。 Azure Functions 支援適用於 Azure Cosmos DB 的觸發程序、輸入和輸出繫結。
+這一組文章說明如何使用 Azure Functions 2.x 和更新版本中的[Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)系結。 Azure Functions 支援適用於 Azure Cosmos DB 的觸發程序、輸入和輸出繫結。
 
 | 動作 | 類型 |
 |---------|---------|
@@ -27,9 +27,9 @@ ms.locfileid: "77605768"
 | 儲存 Azure Cosmos DB 檔的變更  |[輸出系結](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> 此參考適用于[Azure Functions 2.x 版](functions-versions.md)。  如需如何在 Functions 1.x 中使用這些繫結的詳細資訊，請參閱[適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結](functions-bindings-cosmosdb.md)。
+> 此參考適用于[Azure Functions 2.x 版和更高版本](functions-versions.md)。  如需如何在 Functions 1.x 中使用這些繫結的詳細資訊，請參閱[適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結](functions-bindings-cosmosdb.md)。
 >
-> 這個繫結最初命名為 DocumentDB。 在 Functions 2.x 版本中，觸發程序、繫結和套件已重新命名為 Cosmos DB。
+> 這個繫結最初命名為 DocumentDB。 在函式2.x 版和更新版本中，觸發程式、系結和封裝都會命名為 Cosmos DB。
 
 ## <a name="supported-apis"></a>支援的 API
 
@@ -37,11 +37,11 @@ ms.locfileid: "77605768"
 
 ## <a name="add-to-your-functions-app"></a>新增至函數應用程式
 
-### <a name="functions-2x-and-higher"></a>函數2.x 和更新版本
+### <a name="functions-2x-and-higher"></a>Functions 2.x 和更新版本
 
 使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，而延伸模組配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝[NuGet 套件]3.x 版 | |
 | C # 腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充]功能搭配 Visual Studio Code。 |

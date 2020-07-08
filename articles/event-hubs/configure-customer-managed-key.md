@@ -1,19 +1,14 @@
 ---
 title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料其餘部分的資訊。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: spelluru
-ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479822"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密待用 Azure 事件中樞資料
 Azure 事件中樞使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 事件中樞依賴 Azure 儲存體來儲存資料，而且根據預設，與 Azure 儲存體一起儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -26,7 +21,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 > [!NOTE]
 > [事件中樞專用的單一租](event-hubs-dedicated-overview.md)使用者叢集支援 BYOK 功能。 無法針對標準事件中樞命名空間啟用此功能。
 
-您可以使用 Azure Key Vault 來管理金鑰，並審核金鑰使用方式。 您可以建立自己的金鑰，並將其儲存在金鑰保存庫中，或者您可以使用 Azure Key Vault Api 來產生金鑰。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](../key-vault/general/overview.md)
+您可以使用 Azure Key Vault 來管理金鑰，並審核金鑰使用方式。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
 
 本文說明如何使用 Azure 入口網站，以客戶管理的金鑰來設定金鑰保存庫。 若要瞭解如何使用 Azure 入口網站建立金鑰保存庫，請參閱[快速入門：使用 Azure 入口網站從 Azure Key Vault 設定和取出秘密](../key-vault/secrets/quick-create-portal.md)。
 
@@ -71,7 +66,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 
 
 ## <a name="rotate-your-encryption-keys"></a>輪替加密金鑰
-您可以使用 Azure 金鑰保存庫迴圈機制來輪替金鑰保存庫中的金鑰。 如需詳細資訊，請參閱[設定金鑰輪替和審核](../key-vault/secrets/key-rotation-log-monitoring.md)。 啟用和到期日期也可以設定為自動執行金鑰輪替。 事件中樞服務會偵測新的金鑰版本，並開始自動使用它們。
+您可以使用 Azure 金鑰保存庫迴圈機制來輪替金鑰保存庫中的金鑰。 啟用和到期日期也可以設定為自動執行金鑰輪替。 事件中樞服務會偵測新的金鑰版本，並開始自動使用它們。
 
 ## <a name="revoke-access-to-keys"></a>撤銷金鑰的存取權
 撤銷加密金鑰的存取權並不會從事件中樞清除資料。 不過，資料無法從事件中樞命名空間存取。 您可以透過存取原則或藉由刪除金鑰來撤銷加密金鑰。 深入瞭解存取原則和保護您的金鑰保存庫，[以安全地存取金鑰保存庫](../key-vault/general/secure-your-key-vault.md)。
@@ -107,10 +102,10 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 | resourceId | Azure Resource Manager 資源識別碼 |
 | keyVault | 金鑰保存庫的完整名稱。 |
 | 索引鍵 | 用來加密事件中樞命名空間的索引鍵名稱。 |
-| 版本 | 所使用的金鑰版本。 |
+| version | 所使用的金鑰版本。 |
 | operation (作業) | 金鑰保存庫中金鑰上執行的作業。 例如，停用/啟用金鑰、換行或解除包裝 |
-| code | 與作業相關聯的程式碼。 範例：錯誤碼404表示找不到索引鍵。 |
-| 訊息 | 與作業相關聯的任何錯誤訊息 |
+| 代碼 | 與作業相關聯的程式碼。 範例：錯誤碼404表示找不到索引鍵。 |
+| message | 與作業相關聯的任何錯誤訊息 |
 
 以下是客戶管理的金鑰的記錄範例：
 
@@ -155,7 +150,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 ### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>建立具有受控服務識別的事件中樞叢集和命名空間
 本節說明如何使用 Azure Resource Manager 範本和 PowerShell，建立具有受控服務識別的 Azure 事件中樞命名空間。 
 
-1. 建立 Azure Resource Manager 範本，以使用受控服務識別建立事件中樞命名空間。 將檔案命名為： **CreateEventHubClusterAndNamespace. json**： 
+1. 建立 Azure Resource Manager 範本，以使用受控服務識別建立事件中樞命名空間。 將檔案命名為： **CreateEventHubClusterAndNamespace.js開啟**： 
 
     ```json
     {
@@ -224,7 +219,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
        }
     }
     ```
-2. 建立名為的範本參數檔案： **CreateEventHubClusterAndNamespaceParams. json**。 
+2. 建立名為的範本參數檔案： **CreateEventHubClusterAndNamespaceParams.json**。 
 
     > [!NOTE]
     > 取代下列值： 
@@ -250,7 +245,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
     }
     
     ```
-3. 執行下列 PowerShell 命令來部署範本，以建立事件中樞命名空間。 然後，取出事件中樞命名空間的識別碼，以供稍後使用。 執行`{MyRG}`命令之前，請將取代為資源群組的名稱。  
+3. 執行下列 PowerShell 命令來部署範本，以建立事件中樞命名空間。 然後，取出事件中樞命名空間的識別碼，以供稍後使用。 執行命令之前，請將取代 `{MyRG}` 為資源群組的名稱。  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -289,7 +284,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 
 在此步驟中，您將使用金鑰保存庫資訊來更新事件中樞命名空間。 
 
-1. 使用下列內容建立名為**CreateEventHubClusterAndNamespace**的 json 檔案： 
+1. 使用下列內容，**在上**建立名為CreateEventHubClusterAndNamespace.js的 JSON 檔案： 
 
     ```json
     {
@@ -361,7 +356,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
     }
     ``` 
 
-2. 建立範本參數檔案： **UpdateEventHubClusterAndNamespaceParams。** 
+2. 建立範本參數檔案： **UpdateEventHubClusterAndNamespaceParams.js開啟**。 
 
     > [!NOTE]
     > 取代下列值： 
@@ -394,7 +389,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
        }
     }
     ```             
-3. 執行下列 PowerShell 命令來部署 Resource Manager 範本。 執行`{MyRG}`命令之前，請將取代為您的資源組名。 
+3. 執行下列 PowerShell 命令來部署 Resource Manager 範本。 執行 `{MyRG}` 命令之前，請將取代為您的資源組名。 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
@@ -423,7 +418,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 - [事件中心概觀](event-hubs-about.md)
-- [Key Vault 概觀](../key-vault/general/overview.md)
+- [Key Vault 總覽](../key-vault/general/overview.md)
 
 
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: edd6403ed3d7607eb96bc7c6a603c3fef8a4f99e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c884e2f5ac43c5df11409621469f13ba892d9191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481607"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
 伺服器層級防火牆規則可用來從指定的 IP 位址或 IP 位址範圍，管理適用於 MySQL 的 Azure 資料庫伺服器的存取權。 
@@ -36,7 +36,7 @@ ms.locfileid: "80063556"
 
    ![Azure 入口網站 - 防火牆規則](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. 按一下工具列上的 [儲存]****，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
+5. 按一下工具列上的 [儲存]，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
 
    ![Azure 入口網站 - 按一下 [儲存]](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
@@ -49,13 +49,13 @@ ms.locfileid: "80063556"
 
 ## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站管理現有的伺服器層級防火牆規則
 重複步驟來管理防火牆規則。
-* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 **[儲存]**，儲存變更。
-* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 **[儲存]**，儲存變更。
-* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 **[儲存]**，儲存變更。
-* 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 **[儲存]**，儲存變更。
+* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 [儲存]  儲存變更。
+* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 [儲存]  儲存變更。
+* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 [儲存]  儲存變更。
+* 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 [儲存]  儲存變更。
 
 
 ## <a name="next-steps"></a>後續步驟
-     Similarly, you can script to [Create and manage Azure Database for MySQL firewall rules using Azure CLI](howto-manage-firewall-using-cli.md).
-     Further secure access to your server by [creating and managing Virtual Network service endpoints and rules using the Azure portal](howto-manage-vnet-using-portal.md).
-        For help in connecting to an Azure     atabase for MySQL server, see [Connection libraries for Azure Database for MySQL](./concepts-connection-libraries.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+- 同樣地，您可以透過指令碼[使用 Azure CLI 建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-cli.md)。
+- 藉由[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-portal.md)，進一步保護您的伺服器存取。
+- 如需連接到適用於 MySQL 的 Azure 資料庫伺服器的說明，請參閱適用於 MySQL 的 Azure 資料庫的連線[程式庫](./concepts-connection-libraries.md)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

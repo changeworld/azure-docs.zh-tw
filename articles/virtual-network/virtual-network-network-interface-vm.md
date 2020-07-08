@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85480128"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>在虛擬機器中新增網路介面或移除網路介面
 
@@ -59,20 +59,20 @@ ms.locfileid: "80060314"
 
 若要將網路介面新增至您的虛擬機器：
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]  。
+1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]。
 
 2. 選取 VM 的名稱。 VM 必須支援您想要新增的網路介面數目。 若要瞭解每個 VM 大小支援多少個網路介面，請參閱 Azure 中適用于[Linux vm](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[Windows vm](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。
 
 3. 在 VM 命令列中，選取 [**停止**]，然後在確認對話方塊中按一下 **[確定]** 。 然後等到 VM 的 [**狀態**] 變成 [**已停止（已解除配置）**] 為止。
 
-4. 從 VM 功能表列中，選擇 [**網路** > ] [連接] [**網路介面**]。 然後在 [**附加現有的網路介面**] 中，選擇您想要連接的網路介面，然後選取 **[確定]**。
+4. 從 VM 功能表列中，選擇 [**網路**] [連接] [  >  **網路介面**]。 然後在 [**附加現有的網路介面**] 中，選擇您想要連接的網路介面，然後選取 **[確定]**。
 
     >[!NOTE]
     >您選取的網路介面無法啟用加速網路，也無法指派 IPv6 位址給它，而且必須與目前連結至 VM 的網路介面存在於相同的虛擬網路中。
 
     如果您沒有現有的網路介面，則必須先建立一個。 若要這樣做，請選取 [建立網路介面]****。 若要深入了解如何建立網路介面的詳細資訊，請參閱[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)。 若要深入了解將網路介面新增至虛擬機器時的其他條件約束，請參閱[條件約束](#constraints)。
 
-5. 從 VM 功能表列中，選擇 [**總覽** > ] [**啟動**] 以重新開機虛擬機器。
+5. 從 VM 功能表列中，選擇 [**總覽**] [  >  **啟動**] 以重新開機虛擬機器。
 
 現在您可以設定 VM 作業系統，以正確地使用多個網路介面。 了解如何設定 [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 或 [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 以供使用多個網路介面。
 
@@ -87,7 +87,7 @@ ms.locfileid: "80060314"
 
 您可以檢視目前連接至 VM 的網路介面，以了解每個網路介面的組態，以及指派給每個網路介面的 IP 位址。 
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]  。
+1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]。
 
     >[!NOTE]
     >使用為您的訂用帳戶指派擁有者、參與者或網路參與者角色的帳戶進行登入。 若要深入了解如何將角色指派給帳戶的詳細資訊，請參閱 [Azure 角色型存取控制的內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
@@ -107,7 +107,7 @@ ms.locfileid: "80060314"
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>從 VM 移除網路介面
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]  。
+1. 請移至[Azure 入口網站](https://portal.azure.com)以尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]。
 
 2. 選取您要用來查看連結網路介面的 VM 名稱。
 
@@ -115,9 +115,9 @@ ms.locfileid: "80060314"
 
 4. 等到 VM 的 [狀態]**** 變成 [已停止 (已取消配置)]**** 為止。
 
-5. 從 VM 功能表列中，選擇 [**網路** > ] [卸**離網路介面**]。
+5. 從 VM 功能表列中，選擇 [**網路**] [卸  >  **離網路介面**]。
 
-6. 在 [卸**離網路介面**] 對話方塊中，選取您想要卸離的網路介面。 然後選取 [確定]  。
+6. 在 [卸**離網路介面**] 對話方塊中，選取您想要卸離的網路介面。 然後選取 [確定]。
 
     >[!NOTE]
     >如果只列出一個網路介面，您就無法將它卸離，因為虛擬機器一律必須至少有一個連接的網路介面。
@@ -151,7 +151,7 @@ ms.locfileid: "80060314"
 
 - 刪除 VM 並不會刪除與其連結的網路介面。 當您刪除 VM 時，就會中斷網路介面與該 VM 的連結。 您可以將這些網路介面新增至不同的 Vm，或將它們刪除。
 
-- 如同 IPv6，您無法在建立虛擬機器之後，將已啟用加速網路的網路介面連結至 VM。 此外，若要利用加速網路，您也必須在 VM 作業系統內完成一些步驟。 深入了解加速網路，以及在 [Windows](create-vm-accelerated-networking-powershell.md) 或 [Linux](create-vm-accelerated-networking-cli.md) 虛擬機器使用時的其他條件約束。
+- 已記載的最佳效能需要加速網路。 在某些情況下，您必須明確啟用[Windows](create-vm-accelerated-networking-powershell.md)或[Linux](create-vm-accelerated-networking-cli.md)虛擬機器的加速網路功能。
 
 ## <a name="next-steps"></a>後續步驟
 

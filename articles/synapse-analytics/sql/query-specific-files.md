@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478411"
 ---
 # <a name="using-file-metadata-in-queries"></a>在查詢中使用檔案中繼資料
 
@@ -22,7 +22,7 @@ SQL 隨選查詢服務可以處理多個檔案和資料夾，如[查詢資料夾
 
 有時可能需要知道哪些檔案或資料夾來源與結果集中特定的資料列相互關聯。
 
-您可以使用函式 `filepath` 和 `filename` 傳回結果集中的檔案名稱和/或路徑。 或是用以根據檔案名稱和/或資料夾路徑來篩選資料。 上述函式會在 [filename 函式](develop-storage-files-overview.md#filename-function)與 [filepath 函式](develop-storage-files-overview.md#filepath-function)等語法區段中說明。 夏文中會提供範例及簡要介紹。
+您可以使用函式 `filepath` 和 `filename` 傳回結果集中的檔案名稱和/或路徑。 或是用以根據檔案名稱和/或資料夾路徑來篩選資料。 上述函式會在 [filename 函式](query-data-storage.md#filename-function)與 [filepath 函式](query-data-storage.md#filepath-function)等語法區段中說明。 夏文中會提供範例及簡要介紹。
 
 ## <a name="prerequisites"></a>Prerequisites
 

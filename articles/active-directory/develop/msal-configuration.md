@@ -7,18 +7,18 @@ author: shoatman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479414"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 驗證程式庫設定檔
 
@@ -34,10 +34,10 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 |-----------|------------|-------------|-------|
 | `client_id` | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式用戶端識別碼 |
 | `redirect_uri`   | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式重新導向 URI |
-| `authorities` | 列出\<授權> | 否 | 您的應用程式所需的授權清單 |
-| `authorization_user_agent` | AuthorizationAgent （列舉） | 否 | 可能的值`DEFAULT`： `BROWSER`、、`WEBVIEW` |
-| `http` | HttpConfiguration | 否 | 設定`HttpUrlConnection` `connect_timeout`和`read_timeout` |
-| `logging` | LoggingConfiguration | 否 | 指定記錄詳細資料的層級。 選擇性設定包括： `pii_enabled`（接受布林值）和`log_level`（採用`ERROR`、 `WARNING`、 `INFO`或`VERBOSE`）。 |
+| `authorities` | 名單\<Authority> | No | 您的應用程式所需的授權清單 |
+| `authorization_user_agent` | AuthorizationAgent （列舉） | No | 可能的值： `DEFAULT` 、 `BROWSER` 、`WEBVIEW` |
+| `http` | HttpConfiguration | No | 設定 `HttpUrlConnection` `connect_timeout` 和`read_timeout` |
+| `logging` | LoggingConfiguration | No | 指定記錄詳細資料的層級。 選擇性設定包括： `pii_enabled` （接受布林值）和 `log_level` （採用 `ERROR` 、 `WARNING` 、 `INFO` 或） `VERBOSE` 。 |
 
 ### <a name="client_id"></a>client_id
 
@@ -49,7 +49,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 ### <a name="authorities"></a>許可權
 
-您已知且受信任的授權單位清單。 除了此處所列的授權單位之外，MSAL 也會查詢 Microsoft，以取得 Microsoft 已知的雲端和授權清單。 在此授權清單中，指定授權單位的類型和任何其他選擇性參數（例如`"audience"`），其應根據您應用程式的註冊，與您的應用程式的物件對齊。 以下是授權清單的範例：
+您已知且受信任的授權單位清單。 除了此處所列的授權單位之外，MSAL 也會查詢 Microsoft，以取得 Microsoft 已知的雲端和授權清單。 在此授權清單中，指定授權單位的類型和任何其他選擇性參數（例如 `"audience"` ），其應根據您應用程式的註冊，與您的應用程式的物件對齊。 以下是授權清單的範例：
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -86,7 +86,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>將 AAD 授權單位 & 物件對應至 Microsoft 身分識別平臺端點
 
-| 類型 | 適用對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 注意 |
+| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 備註 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`這是帳戶所在的租使用者別名。 例如，特定 Azure Active Directory 租使用者或 Microsoft 帳戶系統。 |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有存在於 contoso.com 的帳戶可以取得權杖。 任何已驗證的網域（或租使用者 GUID）都可用來做為租使用者識別碼。 |
@@ -97,23 +97,23 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 > [!NOTE]
 > 無法在 MSAL 中啟用和停用授權驗證。
 > 您可以透過設定或透過中繼資料向 Microsoft 得知，將授權單位稱為「開發人員」。
-> 如果 MSAL 接收到未知授權單位的權杖要求，則`MsalClientException`會產生類型`UnknownAuthority`為的結果。
+> 如果 MSAL 接收到未知授權單位的權杖要求，則會 `MsalClientException` 產生類型為的 `UnknownAuthority` 結果。
 
 #### <a name="authority-properties"></a>授權屬性
 
 | 屬性 | 資料類型  | 必要 | 注意 |
 |-----------|-------------|-----------|--------|
-| `type` | String | 是 | 鏡像應用程式的目標物件或帳戶類型。 可能的值`AAD`：、`B2C` |
-| `audience` | Object | 否 | 只有在 type =`AAD`時才適用。 指定應用程式的目標身分識別。 使用應用程式註冊的值 |
-| `authority_url` | String | 是 | 只有在 type =`B2C`時才需要。 指定您的應用程式應使用的授權單位 URL 或原則  |
-| `default` | boolean | 是 | 當指定`"default":true`一個或多個授權單位時，就需要單一。 |
+| `type` | String | 是 | 鏡像應用程式的目標物件或帳戶類型。 可能的值： `AAD` 、`B2C` |
+| `audience` | Object | No | 只有在 type = 時才適用 `AAD` 。 指定應用程式的目標身分識別。 使用應用程式註冊的值 |
+| `authority_url` | String | 是 | 只有在 type = 時才需要 `B2C` 。 指定您的應用程式應使用的授權單位 URL 或原則  |
+| `default` | boolean | Yes | `"default":true`當指定一個或多個授權單位時，就需要單一。 |
 
 #### <a name="audience-properties"></a>物件屬性
 
 | 屬性 | 資料類型  | 必要 | 注意 |
 |-----------|-------------|------------|-------|
-| `type` | String | 是 | 指定您的應用程式想要設為目標的物件。 可能的值`AzureADandPersonalMicrosoftAccount`： `PersonalMicrosoftAccount`、 `AzureADMultipleOrgs`、、`AzureADMyOrg` |
-| `tenant_id` | String | 是 | 只有在時`"type":"AzureADMyOrg"`才需要。 適用于其他`type`值的選擇性。 這可以是租使用者網域（例如`contoso.com` `72f988bf-86f1-41af-91ab-2d7cd011db46`），或租使用者識別碼（例如） |
+| `type` | String | 是 | 指定您的應用程式想要設為目標的物件。 可能的值： `AzureADandPersonalMicrosoftAccount` 、 `PersonalMicrosoftAccount` 、 `AzureADMultipleOrgs` 、`AzureADMyOrg` |
+| `tenant_id` | String | 是 | 只有在時才需要 `"type":"AzureADMyOrg"` 。 適用于其他 `type` 值的選擇性。 這可以是租使用者網域（例如 `contoso.com` ），或租使用者識別碼（例如 `72f988bf-86f1-41af-91ab-2d7cd011db46` ） |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -126,19 +126,19 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-針對支援多國雲端的用戶端， `true`指定。 然後，Microsoft 身分識別平臺會在授權和權杖兌換期間，自動重新導向至正確的國家/地區雲端。 您可以藉由檢查與相關聯的授權單位，判斷登入帳戶的國家/ `AuthenticationResult`地區雲端。 請注意， `AuthenticationResult`不會針對您要求權杖的資源提供國家雲端特定的端點位址。
+針對支援多國雲端的用戶端，指定 `true` 。 然後，Microsoft 身分識別平臺會在授權和權杖兌換期間，自動重新導向至正確的國家/地區雲端。 您可以藉由檢查與相關聯的授權單位，判斷登入帳戶的國家/地區雲端 `AuthenticationResult` 。 請注意， `AuthenticationResult` 不會針對您要求權杖的資源提供國家雲端特定的端點位址。
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-布林值，指出您是否使用 Microsoft Identity broker 相容的內部 broker 重新導向 URI。 如果您`false`不想要在您的應用程式中使用 broker，請將設定為。
+布林值，指出您是否使用 Microsoft Identity broker 相容的內部 broker 重新導向 URI。 `false`如果您不想要在您的應用程式中使用 broker，請將設定為。
 
-如果您使用已設定為`"MicrosoftPersonalAccount"`之物件的 AAD 授權單位，則不會使用訊息代理程式。
+如果您使用已設定為之物件的 AAD 授權單位 `"MicrosoftPersonalAccount"` ，則不會使用訊息代理程式。
 
 ### <a name="http"></a>http
 
 設定 HTTP 超時的全域設定，例如：
 
-| 屬性 | 資料類型 | 必要 | 注意 |
+| 屬性 | 資料類型 | 必要 | 備註 |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | 否 | 時間（毫秒） |
 | `read_timeout` | int | 否 | 時間（毫秒） |
@@ -147,11 +147,11 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 下列是用於記錄的全域設定：
 
-| 屬性 | 資料類型  | 必要 | 注意 |
+| 屬性 | 資料類型  | 必要 | 備註 |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | 否 | 是否要發出個人資料 |
-| `log_level`   | boolean | 否 | 要輸出的記錄訊息 |
-| `logcat_enabled` | boolean | 否 | 是否除了記錄介面外，輸出至記錄 cat |
+| `pii_enabled`  | boolean | No | 是否要發出個人資料 |
+| `log_level`   | 字串 | No | 要輸出的記錄訊息。 支援的記錄層級包括 `ERROR` 、 `WARNING` 、 `INFO` 和 `VERBOSE` 。 |
+| `logcat_enabled` | boolean | No | 是否除了記錄介面外，輸出至記錄 cat |
 
 ### <a name="account_mode"></a>account_mode
 
@@ -340,8 +340,8 @@ MSAL 隨附的預設 MSAL 設定如下所示。 您可以在[GitHub](https://git
 
 ## <a name="how-to-use-a-configuration-file"></a>如何使用設定檔
 
-1. 建立設定檔。 我們建議您在中`res/raw/auth_config.json`建立自訂設定檔。 但您可以將它放在您想要的任何地方。
-2. 當您建立時，請告訴 MSAL 要在哪裡尋找`PublicClientApplication`您的設定。 例如：
+1. 建立設定檔。 我們建議您在中建立自訂設定檔 `res/raw/auth_config.json` 。 但您可以將它放在您想要的任何地方。
+2. 當您建立時，請告訴 MSAL 要在哪裡尋找您的設定 `PublicClientApplication` 。 例如：
 
    ```java
    //On Worker Thread

@@ -6,18 +6,18 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481828"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料分割
 
 Azure Cosmos DB 使用資料分割來調整資料庫中的個別容器，以符合您應用程式的效能需求。 在資料分割中，容器中的專案會分割成不同的子集，稱為*邏輯*分割區。 邏輯分割區是根據與容器中每個專案相關聯的資料*分割索引鍵*的值來組成。 邏輯分割區中的所有專案都具有相同的資料分割索引鍵值。
 
-例如，容器會保留專案。 每個專案都有`UserID`屬性的唯一值。 如果`UserID`作為容器中專案的分割區索引鍵，而且有1000個唯一`UserID`值，則會為容器建立1000個邏輯分割區。
+例如，容器會保留專案。 每個專案都有屬性的唯一值 `UserID` 。 如果 `UserID` 作為容器中專案的分割區索引鍵，而且有1000個唯一 `UserID` 值，則會為容器建立1000個邏輯分割區。
 
 除了用來決定專案邏輯分割區的分割區索引鍵之外，容器中的每個專案都有一個*專案識別碼*（在邏輯分割區內是唯一的）。 結合資料分割索引鍵和*專案識別碼*會建立專案的*索引*，以唯一識別該專案。
 
@@ -35,6 +35,14 @@ Azure Cosmos DB 使用以雜湊為基礎的資料分割，將邏輯磁碟分割�
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>選擇分割區索引鍵
 
+分割區索引鍵有兩個元件：資料**分割索引鍵路徑**和分割區索引**鍵值**。 例如，假設有一個專案 {"userId"： "Andrew"，"worksFor"： "Microsoft"} 如果您選擇 "userId" 做為分割區索引鍵，以下是兩個數據分割索引鍵元件：
+
+* 資料分割索引鍵路徑（例如： "/userId"）。 資料分割索引鍵路徑接受英數位元和底線（_）字元。 您也可以使用標準路徑標記法（/）來使用嵌套物件。
+
+* 資料分割索引鍵值（例如： "Andrew"）。 資料分割索引鍵值可以是字串或數數值型別。
+
+若要深入瞭解資料分割索引鍵的輸送量、儲存體和長度限制，請參閱[Azure Cosmos DB 服務配額](concepts-limits.md)一文。
+
 選取資料分割索引鍵是 Azure Cosmos DB 中簡單但重要的設計選擇。 一旦您選取資料分割索引鍵，就無法就地變更。 如果您需要變更分割區索引鍵，您應該使用新的所需的分割區索引鍵，將您的資料移至新的容器。
 
 針對**所有**容器，您的資料分割索引鍵應該：
@@ -49,7 +57,7 @@ Azure Cosmos DB 使用以雜湊為基礎的資料分割，將邏輯磁碟分割�
 
 對於大部分的容器而言，在挑選分割區索引鍵時，您只需要考慮上述準則。 不過，對於大型的大量讀取容器，您可能會想要在查詢中選擇經常顯示為篩選的分割區索引鍵。 查詢可以透過在篩選器述詞中包含分割區索引鍵，[有效地路由傳送至相關的實體](how-to-query-container.md#in-partition-query)分割區。
 
-如果大部分的工作負載要求都是查詢，而且大部分的查詢在相同的屬性上都有相等的篩選準則，則此屬性可以是不錯的資料分割索引鍵選擇。 例如，如果您經常執行篩選的查詢`UserID`，然後選取`UserID`做為分割區索引鍵，就會減少[跨分割區查詢](how-to-query-container.md#avoiding-cross-partition-queries)的數目。
+如果大部分的工作負載要求都是查詢，而且大部分的查詢在相同的屬性上都有相等的篩選準則，則此屬性可以是不錯的資料分割索引鍵選擇。 例如，如果您經常執行篩選的查詢 `UserID` ，然後選取 `UserID` 做為分割區索引鍵，就會減少[跨分割區查詢](how-to-query-container.md#avoiding-cross-partition-queries)的數目。
 
 不過，如果您的容器很小，您可能沒有足夠的實體分割區，而需要擔心跨分割區查詢的效能影響。 Azure Cosmos DB 中的大部分小型容器只需要一個或兩個實體分割區。
 

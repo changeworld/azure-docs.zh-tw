@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478394"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -325,6 +325,7 @@ ms.locfileid: "83737498"
 | User | jobtitle | 職稱 |
 | User | employeeid | 員工識別碼 |
 | User | facsimiletelephonenumber | 傳真電話號碼 |
+| 使用者 | assignedroles | 指派給使用者的應用程式角色清單|
 | application, resource, audience | displayname | 顯示名稱 |
 | application, resource, audience | objected | ObjectID |
 | application, resource, audience | tags | 服務主體標籤 |
@@ -384,7 +385,7 @@ ms.locfileid: "83737498"
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允許作為 SAML NameID 資料來源的屬性
 
-|來源|ID|描述|
+|來源|ID|Description|
 |-----|-----|-----|
 | User | mail|電子郵件地址|
 | User | userprincipalname|使用者主體名稱|

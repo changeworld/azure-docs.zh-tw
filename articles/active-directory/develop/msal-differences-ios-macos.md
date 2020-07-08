@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479397"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>適用於 iOS 和 macOS 的 Microsoft Authentication Library 差異
 
@@ -33,7 +33,7 @@ MSAL for macOS 是適用于 iOS 的功能子集。
 
 MSAL for macOS 不支援：
 
-- 不同`ASWebAuthenticationSession`的瀏覽器類型， `SFAuthenticationSession`例如`SFSafariViewController`、、。
+- 不同的瀏覽器類型 `ASWebAuthenticationSession` ，例如、 `SFAuthenticationSession` 、 `SFSafariViewController` 。
 - macOS 不支援透過 Microsoft Authenticator 應用程式進行代理驗證。
 
 相同發行者的應用程式之間的 Keychain 共用，在 macOS 10.14 和更早版本上會受到限制。 使用[存取控制清單](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc)來指定應該共用 keychain 之應用程式的路徑。 使用者可能會看到其他 keychain 提示。
