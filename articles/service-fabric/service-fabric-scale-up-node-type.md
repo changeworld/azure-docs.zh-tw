@@ -3,22 +3,19 @@ title: 擴大 Azure Service Fabric 節點類型
 description: 了解如何透過新增虛擬機器擴展集來調整 Service Fabric 叢集的規模。
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610688"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>擴大 Service Fabric 叢集主要節點類型
 本文說明如何透過增加虛擬機器資源來擴大 Service Fabric 叢集主要節點類型。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
 
 > [!WARNING]
-> 如果叢集健康情況不良，請勿開始變更主要的 NodeType VM SKU。 如果叢集健康情況不良，且您嘗試變更 VM SKU，您只會讓叢集變得更不穩定。
+> 如果叢集狀態狀況不良，請勿嘗試主要節點類型相應增加程式，因為這只會進一步使叢集變得不穩定。
 >
-> 建議您不要變更擴展集/節點類型的 VM SKU，除非它以[銀級耐久性或更高級別](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)執行。 變更 VM SKU 大小是資料破壞性就地基礎結構作業。 如果沒有延遲或監視此變更的能力，作業可能會導致具狀態服務的資料遺失，或者甚至對於無狀態工作負載導致其他未預期作業問題。 這代表會載入您的主要節點類型 (其正在執行具狀態服務網狀架構系統服務) 或任何正在執行具狀態應用程式的節點類型。
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>將節點遷移至新的擴展集
 
 我們現在已準備好開始停用原始擴展集的節點。 隨著這些節點變為停用，系統服務和種子節點會遷移到新擴展集的 VM，因為其也會標示為主要節點類型。
+
+針對相應增加非主要節點類型，在此步驟中，您會修改服務放置條件約束以包含新的虛擬機器擴展集/節點類型，然後將舊的虛擬機器擴展集實例計數減少為零，一次一個節點（以確保節點移除不會影響叢集可靠性）。
 
 ```powershell
 # Disable the nodes in the original scale set.

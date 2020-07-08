@@ -7,19 +7,19 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2adb158032582dff7449c7c0fc7b13419745f36c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 543e3c5d8148632eaca33935cc15e2d2ab1c0cea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611589"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
 Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../../key-vault/key-vault-get-started.md) 和[保護金鑰保存庫](../../key-vault/general/secure-your-key-vault.md)。 
 
 > [!WARNING]
-> - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資訊，請參閱[使用 Azure AD (舊版) 建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。
+> - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資料，請參閱[使用 Azure AD (舊版) 建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。
 
 建立及設定與 Azure 磁碟加密搭配使用的金鑰保存庫，包含下列步驟：
 
@@ -30,7 +30,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 這些步驟將在下列快速入門中說明：
 
 - [使用 Azure CLI 來建立和加密 Linux VM](disk-encryption-cli-quickstart.md)
-- [使用 Azure PowerShell 建立和加密 Linux 虛擬機器](disk-encryption-cli-quickstart.md)
+- [使用 Azure PowerShell 建立和加密 Linux 虛擬機器](disk-encryption-powershell-quickstart.md)
 
 如果想要的話，您也可以產生或匯入金鑰加密金鑰 (KEK)。
 
@@ -45,7 +45,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
-在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂用帳戶。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
+在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂閱。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
 
 ```azurecli-interactive
 az login

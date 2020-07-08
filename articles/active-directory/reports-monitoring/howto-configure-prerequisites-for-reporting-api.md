@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608257"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>存取 Azure Active Directory 報告 API 的必要條件
 
@@ -35,7 +35,7 @@ ms.locfileid: "80991257"
 1. [指派角色](#assign-roles)
 2. [授權需求](#license-requirements)
 3. [註冊應用程式](#register-an-application)
-4. [授與許可權](#grant-permissions)
+4. [授與權限](#grant-permissions)
 5. [收集組態設定](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>指派角色
@@ -85,9 +85,9 @@ ms.locfileid: "80991257"
 
     b. 針對 [**支援的帳戶類型**]，選取 [**僅限此組織中的帳戶**]。
 
-    c. 在 [重新**導向 URL** ] [選取**Web** ] 文字方塊中，輸入`https://localhost`。
+    c. 在 [重新**導向 URL** ] [選取**Web** ] 文字方塊中，輸入 `https://localhost` 。
 
-    d. 選取 [註冊]  。 
+    d. 選取 [註冊]。 
 
 
 ## <a name="grant-permissions"></a>授與權限 
@@ -115,7 +115,7 @@ ms.locfileid: "80991257"
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在 [**必要許可權**] 頁面上，依序選取 [**應用程式許可權**] 和 [**目錄**] 核取方塊**ReadAll**。  選取 [新增權限]  。
+3. 在 [**必要許可權**] 頁面上，依序選取 [**應用程式許可權**] 和 [**目錄**] 核取方塊**ReadAll**。  選取 [新增權限]。
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "80991257"
 
     b. 選取 [2 年後]**** 來作為 [到期]****。
 
-    c. 按一下 [檔案]  。
+    c. 按一下 [檔案] 。
 
     d. 複製金鑰值。
 

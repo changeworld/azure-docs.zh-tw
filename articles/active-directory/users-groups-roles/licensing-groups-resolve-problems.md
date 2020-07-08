@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611283"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>識別及解決 Azure Active Directory 中群組的授權指派問題
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 **問題：** 群組中指定的其中一項產品沒有足夠的可用授權。 您需要為產品購買更多授權，或從其他使用者或群組釋放未使用的授權。
 
-若要查看有多少授權可用，請前往**Azure Active Directory** > **授權** > **所有產品**。
+若要查看有多少授權可用，請前往**Azure Active Directory**  >  **授權**  >  **所有產品**。
 
 若要查看哪些使用者及群組在取用授權，請選取產品。 在 [授權的使用者]**** 底下，您會看到已直接或透過一或多個群組而被指派授權的所有使用者的清單。 在 [授權的群組]**** 底下，您會看到已被指派該產品的所有群組。
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 ## <a name="usage-location-isnt-allowed"></a>不允許使用位置
 
-**問題：** 由於當地法律和法規，無法在所有位置使用某些 Microsoft 服務。 您必須為使用者指定 [使用位置]**** 屬性，才可以將授權指派給使用者。 您可以在 [Azure 入口網站的 [**使用者** > **設定檔** > **設定**] 區段下指定位置。
+**問題：** 由於當地法律和法規，無法在所有位置使用某些 Microsoft 服務。 您必須為使用者指定 [使用位置]**** 屬性，才可以將授權指派給使用者。 您可以在 [Azure 入口網站的 [**使用者**  >  **設定檔**  >  **設定**] 區段下指定位置。
 
 當 Azure AD 嘗試將群組授權指派給不支援其使用位置的使用者時，將會失敗並對該使用者記錄錯誤。
 
@@ -120,7 +120,7 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>Audit 記錄中的 LicenseAssignmentAttributeConcurrencyException
 
 **問題：** 使用者已 LicenseAssignmentAttributeConcurrencyException 審核記錄中的授權指派。
-當以群組為基礎的授權嘗試對使用者處理相同授權的並行授權指派時，此例外狀況會記錄在使用者上。 這通常發生于使用者是多個具有相同指派授權之群組的成員時。 AZure AD 將會重試處理使用者授權，並會解決此問題。 客戶不需要採取任何動作來修正此問題。
+當以群組為基礎的授權嘗試對使用者處理相同授權的並行授權指派時，此例外狀況會記錄在使用者上。 這通常發生于使用者是多個具有相同指派授權之群組的成員時。 Azure AD 將會重試處理使用者授權，並將會解決此問題。 客戶不需要採取任何動作來修正此問題。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>已指派一個以上的產品授權給群組
 

@@ -4,12 +4,12 @@ description: 了解 Azure Service Fabric 叢集的相應縮小、相應放大、
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610195"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>調整 Azure Service Fabric 叢集
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 叢集有可能包含數千個節點。 在建立 Service Fabric 叢集之後，您可以水平調整叢集 (變更節點數目)，或以垂直方式調整 (變更節點的資源)。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -28,7 +28,7 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 - 執行生產工作負載的主要節點類型，應一律具有五個或更多節點。
 - 執行具狀態生產工作負載的非主要節點類型，應一律具有五個或更多節點。
 - 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個或更多節點。
-- 任何具有金級或銀級[持久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)的節點類型，應一律具有五個或更多節點。
+- 任何具有金級或銀級[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的節點類型，應一律具有五個或更多節點。
 - 請勿從節點類型中移除隨機 VM 實例/節點，請一律使用虛擬機器擴展集相應縮小功能。 刪除隨機 VM 執行個體可能會對系統進行負載平衡的能力造成負面影響。
 - 如果使用自動調整規則，請適當設定規則，使系統逐一對節點進行相應縮小 (移除 VM 執行個體)。 一次相應減少超過一個執行個體並不安全。
 
@@ -59,14 +59,10 @@ Azure API 的存在可讓應用程式以程式設計方式使用虛擬機器擴�
 - 優點：軟體和應用程式架構保持不變。
 - 缺點：有限的調整，因為您可以在個別節點上增加的資源有數目上的限制。 停機時間，因為您必須使實體或虛擬機器離線，才能新增或移除資源。
 
-虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。  要將一個節點類型相應增加或相應減少，必須在擴展集中變更虛擬機器執行個體的 SKU。 
-
-> [!WARNING]
-> 建議您不要變更擴展集/節點類型的 VM SKU，除非它以[銀級耐久性或更高級別](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)執行。 變更 VM SKU 大小是資料破壞性就地基礎結構作業。 如果沒有延遲或監視此變更的能力，作業可能會導致具狀態服務的資料遺失，或者甚至對於無狀態工作負載導致其他未預期作業問題。 
->
+虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。  相應增加或減少節點類型牽涉到新增節點類型（包含更新的 VM SKU）和移除舊的節點類型。
 
 在調整 Azure 叢集時，請記住下列指導方針︰
-- 如果相應減少主要節點類型，您絕對不應將其相應減少超過[可靠性層級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)允許的程度。
+- 如果相應減少主要節點類型，您絕對不應將其相應減少超過[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)允許的程度。
 
 將節點類型相應增加或相應減少的程序，會根據它是非主要還是主要節點類型而有所不同。
 
@@ -74,9 +70,9 @@ Azure API 的存在可讓應用程式以程式設計方式使用虛擬機器擴�
 以您所需的資源建立新的節點類型。  更新執行中服務的放置條件約束，以包含新的節點類型。  請漸次 (一次一個) 將舊節點類型執行個體的執行個體計數縮減為零，使叢集的可靠性不受影響。  服務會逐漸遷移至新的節點類型，因為舊節點類型已解除委任。
 
 ### <a name="scaling-the-primary-node-type"></a>調整主要節點類型
-建議您不要變更主要節點類型的 VM SKU。 如果您需要更多叢集容量，建議您新增更多執行個體。 
+使用已更新的 VM SKU 部署新的主要節點類型，然後一次停用一個原始的主要節點類型實例，讓系統服務遷移至新的擴展集。 確認叢集和新節點的狀況良好，然後移除已刪除節點的原始擴展集和節點狀態。
 
-如果此做法不可行，您可以從舊叢集建立新的叢集並[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用的話)。 您不需要還原任何系統服務狀態，它們會在您部署應用程式到新叢集時重新建立。 如果您之前只在叢集上執行無狀態應用程式，那麼您要做的只有部署應用程式到新叢集，不需還原任何東西。 如果您決定採取不支援的做法，並想要變更 VM SKU，請修改虛擬機器擴展集模型定義以反映新的 SKU。 如果您的叢集只有單一節點類型，請確保所有具狀態應用程式會及時回應所有[服務複本生命週期事件](service-fabric-reliable-services-lifecycle.md) (例如當組建中的複本陷入停滯)，且您的服務複本重建期間為少於五分鐘 (針對 Silver 持久性層級)。 
+如果此做法不可行，您可以從舊叢集建立新的叢集並[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用的話)。 您不需要還原任何系統服務狀態，它們會在您部署應用程式到新叢集時重新建立。 如果您之前只在叢集上執行無狀態應用程式，那麼您要做的只有部署應用程式到新叢集，不需還原任何東西。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解[應用程式延展性](service-fabric-concepts-scalability.md)。

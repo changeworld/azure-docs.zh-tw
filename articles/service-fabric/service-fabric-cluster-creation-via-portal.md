@@ -3,12 +3,12 @@ title: 在 Azure 入口網站中建立 Service Fabric 叢集
 description: 了解如何使用 Azure 入口網站和 Azure Key Vault 在 Azure 中建立安全的 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611147"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure 中建立 Service Fabric 叢集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "82792474"
 ## <a name="cluster-security"></a>叢集安全性 
 憑證是在 Service Fabric 中用來提供驗證與加密，以保護叢集和其應用程式的各個層面。 如需如何在 Service Fabric 中使用憑證的詳細資訊，請參閱 [Service Fabric 叢集安全性案例][service-fabric-cluster-security]。
 
-如果這是您第一次為測試工作負載而建立 Service Fabric 叢集或部署叢集，您可以跳到下一節 (**在 Azure 入口網站中建立叢集**)，並讓系統產生執行測試工作負載之叢集所需的憑證。 如果您準備為生產工作負載設定叢集，請繼續閱讀。
+如果這是您第一次建立 service fabric 叢集，或正在部署測試工作負載的叢集，您可以跳到下一節（**在 Azure 入口網站中建立**叢集），並讓系統產生執行測試工作負載的叢集所需的憑證。 如果您準備為生產工作負載設定叢集，請繼續閱讀。
 
 #### <a name="cluster-and-server-certificate-required"></a>叢集和伺服器憑證 (必要)
 需要此憑證來保護叢集安全及防止未經授權存取叢集。 它會透過幾種方式提供叢集安全性：
@@ -42,7 +42,7 @@ ms.locfileid: "82792474"
 
 * 憑證必須包含私密金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 憑證的**主體名稱必須符合**用來存取 Service Fabric 叢集的網域。 若要為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS，這是必要的。 您無法從憑證授權單位單位（CA）取得`.cloudapp.azure.com`網域的 TLS/SSL 憑證。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
+* 憑證的**主體名稱必須符合**用來存取 Service Fabric 叢集的網域。 若要為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS，這是必要的。 您無法從憑證授權單位單位（CA）取得網域的 TLS/SSL 憑證 `.cloudapp.azure.com` 。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
 
 #### <a name="client-authentication-certificates"></a>用戶端驗證憑證
 其他用戶端憑證會驗證系統管理員以執行叢集管理工作。 Service Fabric 有兩個存取層級：[系統管理員]**** 和 [唯讀使用者]****。 您至少應使用一個單一憑證以用於進行系統管理存取。 若要進行其他使用者層級存取，則必須提供個別憑證。 如需存取角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)][service-fabric-cluster-security-roles]。
@@ -78,7 +78,7 @@ ms.locfileid: "82792474"
 
 [**建立 Service Fabric**叢集] 分頁具有下列四個步驟：
 
-### <a name="1-basics"></a>1. 基本概念
+### <a name="1-basics"></a>1.基本概念
 ![建立新資源群組的螢幕擷取畫面。][CreateRG]
 
 您必須在 [基本] 刀鋒視窗中提供您叢集的基本詳細資料。
@@ -107,7 +107,7 @@ ms.locfileid: "82792474"
 2. 主要節點類型的 VM **大小**下限取決於您為叢集選擇的**持久性**層級。 持久性層級的預設值為 Bronze。 如需關於持久性的詳細資訊，請參閱[如何選擇 Service Fabric 叢集持久性][service-fabric-cluster-durability]。
 3. 選取**虛擬機器大小**。 D 系列 VM 擁有 SSD 磁碟機，且強烈建議用於具狀態應用程式。 請勿使用任何只有部分核心或可用磁碟容量少於 10 GB 的 VM SKU。 如需有關選取 VM 大小的說明，請參閱 [Service Fabric 叢集規劃考量文件][service-fabric-cluster-capacity]。
 4.  **單一節點叢集與三個節點叢集**僅供測試使用。 這些節點叢集不支援任何執行中的生產工作負載。
-5. 選擇節點類型的**初始 VM 擴展集容量**。 您稍後可以相應縮小或相應放大節點類型中的 Vm 數目，但在主要節點類型上，生產工作負載的最小值為5。 其他節點類型可以有 1 個 VM 的下限。 叢集的**可靠性**取決於主要節點類型的 VM **數目**下限。  
+5. 選擇節點類型的**初始虛擬機器擴展集容量**。 您稍後可以相應縮小或相應放大節點類型中的 Vm 數目，但在主要節點類型上，生產工作負載的最小值為5。 其他節點類型可以有 1 個 VM 的下限。 叢集的**可靠性**取決於主要節點類型的 VM **數目**下限。  
 6. 設定**自訂端點**。 此欄位可讓您輸入以逗號區隔的連接埠清單，您可以透過 Azure Load Balancer 針對您的應用程式向公用網際網路公開這些連接埠。 例如，如果您計劃對您的叢集部署 Web 應用程式，請在這裡輸入「80」來允許連接埠 80 的流量進入您的叢集。 如需端點的詳細資訊，請參閱[與應用程式通訊][service-fabric-connect-and-communicate-with-services]
 7. **啟用反向 Proxy**。  [Service Fabric 反向 Proxy](service-fabric-reverseproxy.md) 可協助在 Service Fabric 叢集中執行的微服務進行探索，並與其他擁有 http 端點的服務通訊。
 8. 回到 [叢集設定]**** 刀鋒視窗，在 [+ 顯示選用設定]**** 下，設定叢集**診斷**。 預設會在您的叢集上啟用診斷功能，以協助排解疑難問題。 如果您要停用診斷，請將其 [狀態]**** 切換至 [關閉]****。 **不**建議將診斷關閉。 如果您已經建立了 Application Insights 專案，那麼請提供其密鑰，以便將應用程式追蹤透過路由方式傳送至該專案。
@@ -177,7 +177,7 @@ ms.locfileid: "82792474"
 
 您可以在通知功能中看到叢集的建立進度。 （按一下畫面右上方狀態列附近的「鐘」圖示）。如果您在建立叢集時按了 [**釘選到開始面板**]，您會看到將 Service Fabric 的叢集**部署**到**開始**面板。 此程序需要一些時間。 
 
-若要使用 Powershell 或 CLI 在您的叢集上執行管理作業，您需要連接至叢集，請參閱如何[連接至您的叢集](service-fabric-connect-to-secure-cluster.md)，了解更多資訊。
+若要使用 PowerShell 或 CLI 在您的叢集上執行管理作業，您需要連線到您的叢集，深入瞭解如何[連接到您](service-fabric-connect-to-secure-cluster.md)的叢集。
 
 ## <a name="view-your-cluster-status"></a>檢視叢集狀態
 ![[儀表板] 中叢集詳細資料的螢幕擷取畫面。][ClusterDashboard]
@@ -209,7 +209,7 @@ ms.locfileid: "82792474"
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

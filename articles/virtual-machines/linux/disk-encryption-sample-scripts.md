@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610348"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例指令碼 
 
@@ -43,7 +43,7 @@ ms.locfileid: "80585966"
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
 
-|參數|描述|是否為強制？|
+|參數|說明|是否為強制？|
 |------|------|------|
 |$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
 |$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
@@ -290,7 +290,7 @@ ms.locfileid: "80585966"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   至：
+   變更為：
    ```bash
     if [ 1 ]; then
    ```
@@ -320,7 +320,7 @@ ms.locfileid: "80585966"
 
 6. 現在您可以取消佈建 VM，並將 VHD 上傳到 Azure。
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8。1
+### <a name="centos-7-and-rhel-7"></a>CentOS 7 和 RHEL 7
 
 若要在發佈安裝期間設定加密，請執行下列步驟︰
 1. 在分割磁碟時選取 [加密資料]****。
@@ -439,7 +439,7 @@ ms.locfileid: "80585966"
 在下一個步驟中使用 `$secretUrl`，以便[在不使用 KEK 的狀況下連接 OS 磁碟](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁碟加密密碼
-將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) Cmdlet 上傳為秘密。
+將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用 Cmdlet 上傳為秘密 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) 。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

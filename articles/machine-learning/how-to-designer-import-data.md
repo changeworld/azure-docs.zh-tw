@@ -1,23 +1,23 @@
 ---
 title: 匯入資料
 titleSuffix: Azure Machine Learning
-description: 了解如何從各種資料來源將資料匯入 Azure Machine Learning 設計工具。
+description: 瞭解如何將資料從各種資料來源匯入 Azure Machine Learning 設計工具中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610943"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具 (預覽)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具（預覽）
 
 在本文中，您將了解如何在設計工具中匯入自己的資料，以建立自訂解決方案。 有兩種方式可將資料匯入設計工具中： 
 
@@ -89,6 +89,10 @@ ms.locfileid: "83644576"
 ## <a name="data-constraints"></a>資料條件約束
 
 設計工具中模組受限於計算目標的大小。 針對較大資料集，您應該使用較大的 Azure Machine Learning 計算資源。 如需 Azure Machine Learning 計算的詳細資訊，請參閱 [Azure Machine Learning 中的計算目標是什麼？](concept-compute-target.md#azure-machine-learning-compute-managed)
+
+## <a name="access-data-in-a-virtual-network"></a>存取虛擬網路中的資料
+
+如果您的工作區位於虛擬網路中，您必須執行額外的設定步驟，以在設計工具中將資料視覺化。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱[使用私人虛擬網路進行定型 & 推斷期間的網路隔離](how-to-enable-virtual-network.md#machine-learning-studio)。
 
 ## <a name="next-steps"></a>後續步驟
 

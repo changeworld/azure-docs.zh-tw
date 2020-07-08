@@ -4,15 +4,15 @@ description: 在此文章中，您將了解如何在 Azure 防火牆應用程式
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 05/18/2020
+ms.topic: how-to
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610501"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 設定 Azure 防火牆應用程式規則
 
@@ -24,7 +24,7 @@ ms.locfileid: "84015959"
 - 從內部部署到 Azure SQL 受控執行個體或在 VNet 中執行的 SQL IaaS。
 - 從支點對支點到 Azure SQL 受控執行個體或在 VNet 中執行的 SQL IaaS。
 
-只有 [Proxy 模式](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 如果您在預設的重新導向模式下使用 SQL，可以使用 SQL 服務標籤篩選存取，作為[網路規則](overview.md#network-traffic-filtering-rules)的一部分。
+只有 [Proxy 模式](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 如果您在預設的重新導向模式下使用 SQL，可以使用 SQL 服務標籤篩選存取，作為[網路規則](features.md#network-traffic-filtering-rules)的一部分。
 如果您針對 SQL IaaS 流量使用非預設的連接埠，可以在防火牆應用程式規則中設定那些連接埠。
 
 ## <a name="configure-using-azure-cli"></a>使用 Azure CLI 進行設定
@@ -63,4 +63,4 @@ ms.locfileid: "84015959"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解 SQL Proxy 和重新導向模式，請參閱 [Azure SQL Database 連線架構](../azure-sql/database/connectivity-architecture.md)。
+若要瞭解 SQL proxy 和重新導向模式，請參閱[Azure SQL Database 連線架構](../azure-sql/database/connectivity-architecture.md)。

@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608512"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>針對 Azure Active Directory 中的使用者主體名稱變更進行規劃和疑難排解
 
 使用者主要名稱（UPN）是使用者帳戶的網際網路通訊標準屬性。 UPN 是由 UPN 前置詞 (使用者帳戶名稱) 和 UPN 尾碼 (DNS 網域名稱) 所組成。 前置詞會使用 "@" 符號來聯結尾碼。 例如： someone@example.com 。 在目錄樹系的所有安全性主體物件之間，UPN 必須是唯一的。 
 
-> [!NOTE]
-> 對於開發人員，我們建議您使用使用者 objectID 做為不可變的識別碼，而不是 UPN。 如果您的應用程式目前使用 UPN，建議您將 UPN 設定為符合使用者的主要電子郵件地址，以改善他們的體驗。<br> **在混合式環境中，在內部部署目錄和 Azure Active Directory 中，使用者的 UPN 必須相同**。
-
 **本文假設您是使用 UPN 做為使用者識別碼。它會解決 UPN 變更的規劃，以及從 UPN 變更可能產生的問題中復原。**
+
+> [!NOTE]
+> 對於開發人員，建議您使用使用者 objectID 做為不可變的識別碼，而不是 UPN 或電子郵件地址，因為它們的值可能會變更。
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>瞭解 Upn 和 UPN 的變更
 登入頁面通常會在必要值是其 UPN 時，提示使用者輸入其電子郵件地址。 因此，每當使用者的主要電子郵件地址變更時，您都應該務必變更他們的 UPN。
@@ -56,11 +57,11 @@ Bsimon@contoso.com至Britta.Simon@contoso.com
 
     例如，如果某人變更了部門，您可能會變更其網域： 
 
-   * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
-     或者<br>
-    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
+   * 按 Britta.Simon@contoso.com 移至 Britta.Simon@contosolabs.com <br>
+     Or<br>
+    * 按 Britta.Simon@corp.contoso.com 移至 Britta.Simon@labs.contoso.com 
 
-每次更新使用者的主要電子郵件地址時，變更使用者的 UPN。 無論電子郵件變更的原因為何，必須一律更新 UPN 以符合。
+我們建議您在每次更新主要電子郵件地址時，變更使用者的 UPN。
 
 在從 Active Directory 到 Azure AD 的初始同步處理期間，請確定使用者的電子郵件與其 Upn 相同。
 
@@ -77,7 +78,7 @@ username@contoso.com
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> 如果 Active directory 和 Azure Active Directory 中的 Upn 不相符，就會發生問題。 如果您要[變更 Active Directory 中的尾碼](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)，必須確定已[在 Azure AD 上新增和驗證](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)相符的自訂功能變數名稱。 
+> 如果您要[變更 Active Directory 中的尾碼](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)，必須確定已[在 Azure AD 上新增和驗證](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)相符的自訂功能變數名稱。 
 
 ![已驗證網域的螢幕擷取畫面](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -130,10 +131,14 @@ username@labs.contoso.com.
 **已知問題** <br>
 使用者可能會遇到相依于驗證 Azure AD 之應用程式的單一登入問題。
 
+**解決方案** <br>
+這一節所提及的問題已在 Windows 10 5 月2020更新（2004）修正。
+
 **因應措施** <br>
 允許足夠的時間讓 UPN 變更同步處理 Azure AD。 一旦您確認新的 UPN 反映在 Azure AD 入口網站上，請要求使用者選取 [其他使用者] 磚，以使用新的 UPN 登入。 您也可以透過[PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)進行驗證。 使用新的 UPN 登入之後，舊 UPN 的參考可能仍會出現在 [存取公司或學校] Windows 設定上。
 
 ![已驗證網域的螢幕擷取畫面](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
 
@@ -149,6 +154,9 @@ Windows 10 混合式 Azure AD 加入的裝置可能會遇到非預期的重新�
 
 「您的電腦會在一分鐘內自動重新開機。 Windows 遇到問題，需要重新開機。 您應該立即關閉此訊息，並儲存您的工作。
 
+**解決方案** <br>
+這一節所提及的問題已在 Windows 10 5 月2020更新（2004）修正。
+
 **因應措施** 
 
 裝置必須從 Azure AD 退出，然後重新開機。 重新開機之後，裝置會再次自動加入 Azure AD，而使用者必須選取 [其他使用者] 磚，以使用新的 UPN 登入。 若要從 Azure AD 退出裝置，請在命令提示字元中執行下列命令：
@@ -156,6 +164,7 @@ Windows 10 混合式 Azure AD 加入的裝置可能會遇到非預期的重新�
 **dsregcmd.exe/leave**
 
 如果使用中的 Windows Hello 企業版，使用者將需要[重新註冊](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision)。 在 UPN 變更之後，Windows 7 和8.1 裝置不會受到這個問題的影響。
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator 的已知問題和因應措施
 

@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何使用 Azure PowerShell 來部署�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 178daba47acaf8ad161a0634c16b046ec330abb6
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: cbad025a0d0c4d679ea9cdc7557c81b5145798fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610671"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>使用 Azure PowerShell 部署具有多個公用 IP 位址的 Azure 防火牆
 

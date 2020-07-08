@@ -1,22 +1,22 @@
 ---
 title: 了解 Azure IoT 中樞模組對應項 | Microsoft Docs
 description: 開發人員指南 - 使用模組對應項來同步處理 IoT 中樞與裝置之間的狀態和設定資料
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610144"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
-本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞的每個裝置身分識別下，您可以建立最多 20 個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
+本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞中，您可以在每個裝置身分識別下建立最多50個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
 
 在裝置端，IoT 中樞裝置 SDK 可讓您建立會個別向 IoT 中樞建立獨立連線的模組。 這項功能可讓您針對裝置上的不同元件使用不同的命名空間。 例如，您的販賣機具有三個不同的感應器。 每個感應器都由公司中的不同部門控制。 您可以為每個感應器建立一個模組。 如此一來，每個部門只能將作業或直接方法傳送至其所控制的感應器，以避免衝突和使用者錯誤。
 
@@ -45,9 +45,9 @@ ms.locfileid: "78303591"
 
 模組對應項是 JSON 文件，其中含有︰
 
-* **標記**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置上的模組看不到標籤。 標籤是基於查詢用途所設定。
+* **標籤**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置上的模組看不到標籤。 標籤是基於查詢用途所設定。
 
-* **所需的屬性**。 搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組應用程式則可以讀取它們。 模組應用程式也可以接收所需屬性中的變更通知。
+* **所需屬性**。 搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組應用程式則可以讀取它們。 模組應用程式也可以接收所需屬性中的變更通知。
 
 * **報告屬性**。 搭配所需屬性使用，以便同步處理模組的設定或條件。 模組應用程式可以設定報告屬性，而解決方案後端則可以讀取並查詢它們。
 
@@ -191,7 +191,7 @@ ms.locfileid: "78303591"
 
     訊息系統屬性前面會加上 `$` 符號。
 
-  - body
+  - 主體
         
     本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如，
 
@@ -236,39 +236,49 @@ ms.locfileid: "78303591"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* **金鑰**： JSON 物件中的所有金鑰都區分大小寫64個位元組的 utf-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
+* **金鑰**： JSON 物件中的所有金鑰都是以 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
 
 * **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
 
     * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
 
-    * 字串值是以 UTF-8 編碼，而且長度上限為512個位元組。
+    * 字串值是以 UTF-8 編碼，且最大長度可以是 4 KB。
 
-* **深度**：標記、所需和報告屬性中的所有 JSON 物件最多可以有5個深度。 例如，下列物件有效：
+* **深度**：標記、所需屬性和報告屬性中的 JSON 物件深度上限為10。 例如，下列物件是有效的：
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>模組對應項大小
 
-IoT 中樞在的值上強制執行 8 KB 的大小`tags`限制，以及每個`properties/desired`和`properties/reported`的值都有 32 kb 的大小限制。 這些總計是專有的唯讀元素`$etag`，例如、 `$version`和。 `$metadata/$lastUpdated`
+IoT 中樞在的值上強制執行 8 KB 的大小限制 `tags` ，以及每個和的值都有 32 kb 的大小限制 `properties/desired` `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
 
 對應項大小的計算方式如下：
 

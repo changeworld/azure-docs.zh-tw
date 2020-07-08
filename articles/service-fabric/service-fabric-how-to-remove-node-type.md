@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610093"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>如何移除 Service Fabric 節點類型
 此文章說明如何透過將現有的節點類型從叢集移除，來調整 Azure Service Fabric 叢集的規模。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以透過移除節點類型 (虛擬機器擴展集) 與其所有節點，來水平調整叢集規模。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -20,7 +20,7 @@ ms.locfileid: "78969413"
 > 不建議經常使用此方法從生產環境叢集移除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
 
 ## <a name="durability-characteristics"></a>持久性特性
-使用 Remove-azservicefabricnodetype 時，安全性的優先順序高於速度。 節點類型必須是銀級或金級[持久性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)，因為：
+使用 Remove-azservicefabricnodetype 時，安全性的優先順序高於速度。 節點類型必須是銀級或金級[持久性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)，因為：
 - 銅級不提供關於儲存狀態資訊的任何保證。
 - 銀級和金級持久性可以攔截對擴展集的任何變更。
 - 金級也可提供您對擴展集下 Azure 更新的控制。
@@ -122,7 +122,7 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     - 找出用於部署的 Azure Resource Manager 範本。
     - 在 [Service Fabric] 區段中，尋找與節點類型相關的區段。
     - 移除對應于節點類型的區段。
-    - 僅適用于銀級和更高的耐久性叢集，請更新範本中的叢集資源，並設定健康原則以忽略 fabric：/ `applicationDeltaHealthPolicies`系統應用程式`properties`健康狀態，方法是在叢集資源下方新增，如下所示。 下列原則應忽略現有的錯誤，但不允許新的健全狀況錯誤。 
+    - 僅適用于銀級和更高的耐久性叢集，請更新範本中的叢集資源，並設定健康原則以忽略 fabric：/系統應用程式健康狀態，方法是 `applicationDeltaHealthPolicies` 在叢集資源下方新增， `properties` 如下所示。 下列原則應忽略現有的錯誤，但不允許新的健全狀況錯誤。 
  
  
      ```json
@@ -158,9 +158,9 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     },
     ```
 
-    - 部署已修改的 Azure Resource Manager 範本。 * * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下`forceRestart` ，會忽略。 
-    參數`upgradeReplicaSetCheckTimeout`會指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。
-    參數`upgradeTimeout`的值可以縮短為6小時，但應使用最大安全12小時。
+    - 部署已修改的 Azure Resource Manager 範本。 * * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下 `forceRestart` ，會忽略。 
+    參數 `upgradeReplicaSetCheckTimeout` 會指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。
+    參數的值 `upgradeTimeout` 可以縮短為6小時，但應使用最大安全12小時。
 
     然後驗證：
     - 入口網站中的 Service Fabric 資源會顯示 [就緒]。
@@ -175,6 +175,6 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     - 等待部署完成。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解叢集[持久性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。
+- 深入了解叢集[持久性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)。
 - 深入了解[節點類型和虛擬機器擴展集](service-fabric-cluster-nodetypes.md)。
 - 深入了解[調整 Service Fabric 叢集](service-fabric-cluster-scaling.md)。

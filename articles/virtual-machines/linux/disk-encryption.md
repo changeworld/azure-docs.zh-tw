@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a27f37f9c69dcadd1234faf67e23eaaa46d33f7a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a77f40f554e459ad1f28b11969421689cd29b4bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609366"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁碟的伺服器端加密
 
@@ -75,63 +75,18 @@ Azure 受控磁碟會使用[信封加密](../../storage/common/storage-client-si
 
 - 如果您的磁碟已啟用此功能，則無法停用。
     如果您需要解決此問題，必須[將所有資料複製到](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)完全不同且未使用客戶管理的金鑰的受控磁碟。
-- 僅支援大小為 2048 的[「軟式」和「硬式」RSA 金鑰](../../key-vault/keys/about-keys.md)，不支援其他金鑰或大小。
+- 僅支援大小為2048的[軟體和 HSM RSA 金鑰](../../key-vault/keys/about-keys.md)，沒有其他金鑰或大小。
 - 從自訂映像 (使用伺服器端加密和客戶管理的金鑰加密) 建立的磁碟，必須使用相同的客戶管理的金鑰進行加密，而且必須在相同的訂用帳戶中。
 - 從磁碟 (使用伺服器端加密和客戶管理的金鑰加密) 建立的快照集，必須使用相同的客戶管理金鑰進行加密。
 - 與客戶管理金鑰相關的所有資源 (Azure Key Vault、磁碟加密集、VM、磁碟和快照集) 必須位於相同的訂用帳戶和區域中。
 - 使用客戶管理的金鑰加密的磁碟、快照集和映像無法移至另一個訂用帳戶。
-- 如果您使用 Azure 入口網站建立磁碟加密集，則目前無法使用快照集。
 - 使用客戶管理的金鑰加密的受控磁碟，也無法使用 Azure 磁碟加密進行加密。
 - 如需將客戶管理的金鑰與共用映像資源庫搭配使用的詳細資訊，請參閱[預覽：使用客戶管理的金鑰加密映像](../image-version-encryption.md)。
 
 ### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>設定您的 Azure Key Vault 與 DiskEncryptionSet
 
-1. 請確定您已安裝最新的 [Azure CLI](/cli/azure/install-az-cli2) 並使用 [az login](/cli/azure/reference-index) 登入 Azure 帳戶。
-
-1. 建立 Azure Key Vault 執行個體和加密金鑰。
-
-    建立 Key Vault 執行個體時，您必須啟用虛刪除和清除保護。 虛刪除可確保 Key Vault 將已刪除的金鑰保留一段指定的保留期間 (預設為 90 天)。 清除保護可確保已刪除的金鑰在保留期限結束之前，無法永久刪除。 這些設定可防止您因為意外刪除而遺失資料。 使用 Key Vault 來加密受控磁碟時，這些設定是必要的。
-
-    > [!IMPORTANT]
-    > 對區域請勿混用大小寫，如果您這麼做，當您將其他磁碟指派給 Azure 入口網站中的資源時，可能會發生問題。
-
-    ```azurecli
-    subscriptionId=yourSubscriptionID
-    rgName=yourResourceGroupName
-    location=westcentralus
-    keyVaultName=yourKeyVaultName
-    keyName=yourKeyName
-    diskEncryptionSetName=yourDiskEncryptionSetName
-    diskName=yourDiskName
-
-    az account set --subscription $subscriptionId
-
-    az keyvault create -n $keyVaultName -g $rgName -l $location --enable-purge-protection true --enable-soft-delete true
-
-    az keyvault key create --vault-name $keyVaultName -n $keyName --protection software
-    ```
-
-1.    建立 DiskEncryptionSet 的執行個體。 
-    
-        ```azurecli
-        keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
-    
-        keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
-    
-        az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
-        ```
-
-1.    將 DiskEncryptionSet 資源存取權授與金鑰保存庫。 
-
-        > [!NOTE]
-        > Azure 可能需要幾分鐘的時間，才能在您的 Azure Active Directory 中建立 DiskEncryptionSet 的身分識別。 如果您在執行以下命令時收到「找不到 Active Directory 物件」之類的錯誤，請稍候幾分鐘再重試。
-
-        ```azurecli
-        desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
-    
-        az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
-        ```
+[!INCLUDE [virtual-machines-disks-encryption-create-key-vault](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
 #### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映像建立 VM，使用客戶管理的金鑰以加密作業系統和資料磁碟
 
@@ -158,7 +113,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskEncryptionSetName=yourDiskEncryptionSetName
  
-az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId
+az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetName
 ```
 
 #### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映像建立虛擬機器擴展集，使用客戶管理的金鑰以加密作業系統和資料磁碟
@@ -218,11 +173,7 @@ az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url 
 
 #### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>尋找磁碟的伺服器端加密狀態
 
-```azurecli
-
-az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] -o tsv
-
-```
+[!INCLUDE [virtual-machines-disks-encryption-status-cli](../../../includes/virtual-machines-disks-encryption-status-cli.md)]
 
 > [!IMPORTANT]
 > 客戶管理的金鑰須依賴 Azure 資源的受控識別 (Azure Active Directory (Azure AD) 的一項功能)。 當您設定客戶管理的金鑰時，受控識別會在幕後自動指派給您的資源。 如果您之後將訂用帳戶、資源群組或受控磁碟從一個 Azure AD 目錄移至另一個目錄，與受控磁碟相關聯的受控識別不會移轉至新的租用戶，因此，客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱[在 Azure AD 目錄之間移轉訂用帳戶](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。

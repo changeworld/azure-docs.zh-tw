@@ -5,18 +5,18 @@ description: 瞭解如何使用角色型存取控制（RBAC）存取 Azure Machi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609243"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,9 +27,9 @@ ms.locfileid: "79270091"
 
 Azure Machine Learning 工作區是一種 Azure 資源。 就像其他 Azure 資源一樣，建立新的 Azure Machine Learning 工作區時，它會隨附三個預設角色。 您可以將使用者新增至工作區，並將它們指派給這些內建角色的其中一個。
 
-| [角色] | 存取層級 |
+| 角色 | 存取層級 |
 | --- | --- |
-| **讀取者** | 工作區中的唯讀動作。 讀者可以列出及查看工作區中的資產，但無法建立或更新這些資產。 |
+| **讀取者** | 工作區中的唯讀動作。 讀者可以在工作區中列出及查看資產（包括[資料](how-to-access-data.md)存放區認證），但無法建立或更新這些資產。 |
 | **參與者** | 在工作區中查看、建立、編輯或刪除（如果適用）資產。 例如，參與者可以建立實驗、建立或附加計算叢集、提交執行，以及部署 web 服務。 |
 | **擁有者** | 工作區的完整存取權，包括能夠在工作區中查看、建立、編輯或刪除（如果適用）資產。 此外，您可以變更角色指派。 |
 
@@ -59,6 +59,14 @@ az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
+> [!NOTE]
+> Azure Active Directory B2B 的同盟帳戶無法使用 [az ml workspace share] 命令。 請使用 Azure UI 入口網站，而不是命令。
+
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning 作業
+
+Azure Machine Learning 許多作業和工作的內建動作。 如需完整清單，請參閱[Azure 資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+
 ## <a name="create-custom-role"></a>建立自訂角色
 
 如果內建角色不足，您可以建立自訂角色。 自訂角色可能具有該工作區中的讀取、寫入、刪除和計算資源許可權。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。
@@ -87,7 +95,8 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 }
 ```
 
-您可以變更`AssignableScopes`欄位，在訂用帳戶層級、資源群組層級或特定工作區層級設定此自訂角色的範圍。
+> [!TIP]
+> 您可以變更 `AssignableScopes` 欄位，在訂用帳戶層級、資源群組層級或特定工作區層級設定此自訂角色的範圍。
 
 這個自訂角色可以在工作區中執行所有專案，但下列動作除外：
 
@@ -102,7 +111,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 az role definition create --role-definition data_scientist_role.json
 ```
 
-部署之後，此角色會在指定的工作區中變成可用。 現在您可以在 Azure 入口網站中新增和指派此角色。 或者，您可以使用`az ml workspace share` CLI 命令將此角色指派給使用者：
+部署之後，此角色會在指定的工作區中變成可用。 現在您可以在 Azure 入口網站中新增和指派此角色。 或者，您可以使用 CLI 命令將此角色指派給使用者 `az ml workspace share` ：
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -110,15 +119,12 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](/azure/role-based-access-control/custom-roles)。
 
-如需自訂角色可用之作業（動作）的詳細資訊，請參閱[資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
-
-
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure Machine Learning 服務中執行各種動作所需的許可權為何？
 
-下表是 Azure Machine Learning 活動的摘要，以及在最少範圍執行它們所需的許可權。 舉例來說，如果您可以使用工作區範圍（第4欄）來執行活動，則具有該許可權的所有更高範圍也會自動生效。 此資料表中的所有路徑都是的`Microsoft.MachineLearningServices/`**相對路徑**。
+下表是 Azure Machine Learning 活動的摘要，以及在最少範圍執行它們所需的許可權。 舉例來說，如果您可以使用工作區範圍（第4欄）來執行活動，則具有該許可權的所有更高範圍也會自動生效。 此資料表中的所有路徑都是的**相對路徑** `Microsoft.MachineLearningServices/` 。
 
 | 活動 | 訂用帳戶層級範圍 | 資源群組層級範圍 | 工作區層級範圍 |
 |---|---|---|---|
@@ -126,7 +132,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 建立新的計算叢集 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`workspaces/computes/write` |
 | 建立新的筆記本 VM | 不需要 | 擁有者或參與者 | 不可能 |
 | 建立新的計算實例 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`workspaces/computes/write` |
-| 資料平面活動（例如提交執行、存取資料、部署模型或發行管線） | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`workspaces/*/write` <br/> 請注意，您也需要已向工作區註冊的資料存放區，才能讓 MSI 存取您儲存體帳戶中的資料。 |
+| 資料平面活動（例如提交執行、存取資料、部署模型或發行管線） | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`workspaces/*/write` <br/> 您也需要已向工作區註冊的資料存放區，才能讓 MSI 存取您儲存體帳戶中的資料。 |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. 如何? 列出我的訂用帳戶中的所有自訂角色嗎？
@@ -139,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. 如何? 在我的訂用帳戶中尋找角色的角色定義嗎？
 
-在 Azure CLI 中，執行下列命令。 請注意`<role-name>` ，的格式應該與上述命令所傳回的格式相同。
+在 Azure CLI 中，執行下列命令。 `<role-name>`應該使用上述命令所傳回的相同格式。
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -153,13 +159,13 @@ az role definition list -n <role-name> --subscription <sub-id>
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-請注意，您必須具有新角色定義之整個範圍的許可權。 例如，如果這個新角色具有三個訂用帳戶之間的範圍，您就必須擁有這三個訂用帳戶的許可權。 
+您必須擁有新角色定義之整個範圍的許可權。 例如，如果這個新角色具有三個訂用帳戶之間的範圍，您就必須擁有這三個訂用帳戶的許可權。 
 
 > [!NOTE]
 > 角色更新可能需要15分鐘到1小時的時間，才能套用到該範圍內的所有角色指派。
 ### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. 我可以定義防止更新工作區版本的角色嗎？ 
 
-是，您可以定義防止更新工作區版本的角色。 因為工作區更新是在工作區物件上進行的修補呼叫，所以您可以將下列動作放在`"NotActions"` JSON 定義的陣列中： 
+是，您可以定義防止更新工作區版本的角色。 因為工作區更新是在工作區物件上進行的修補呼叫，所以您可以將下列動作放在 `"NotActions"` JSON 定義的陣列中： 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 

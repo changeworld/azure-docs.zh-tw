@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608189"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安裝與使用適用於 Azure Active Directory 的記錄分析檢視
 
@@ -31,7 +31,7 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 * Audit logs： [ [audit logs] 活動報告](concept-audit-logs.md)可讓您存取在租使用者中執行之每項工作的歷程記錄。
 * 登入記錄：透過登[入活動報告](concept-sign-ins.md)，您可以判斷誰執行了 audit 記錄中所報告的工作。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用記錄分析檢視，您需要：
 
@@ -51,8 +51,8 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 
 2. 在進入工作區後，選取 [工作區摘要]****。 您應該會看到下列三個檢視：
 
-    * **Azure AD 帳戶佈建事件**：此檢視會顯示與稽核佈建活動有關的報告，例如佈建的新使用者數目和佈建失敗、更新的使用者數目和更新失敗，以及取消佈建的使用者數目和對應的失敗。    
-    * **登入事件**：此檢視會顯示與監視登入活動相關性最高的報告，例如依應用程式、使用者、裝置顯示的登入，以及追蹤一段時間內登入次數的摘要檢視。
+    * **Azure AD 帳戶佈建事件**：此檢視會顯示與稽核佈建活動有關的報告，例如佈建的新使用者數目和佈建失敗次數、更新的使用者數目和更新失敗次數，以及取消佈建的使用者數目和對應的失敗次數。    
+    * **登入事件**：此檢視會顯示與監視登入活動相關性最高的報告 (例如依應用程式、使用者、裝置區分的登入)，以及追蹤一段時間內登入次數的摘要檢視。
 
 3. 選取其中一個檢視，以跳到個別的報告。 您也可以設定任何報告參數的警示。 例如，我們將設定發生任何登入錯誤時的警示。 為此，請依序選取 [登入事件]**** 檢視、[一段時間的登入錯誤]**** 報告和 [Analytics]****，以開啟詳細資料頁面，內含構成報告的實際查詢。 
 

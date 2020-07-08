@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610212"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
-將 Windows 虛擬機器（VM）從內部部署上傳至 Azure 之前，您必須準備虛擬硬碟（VHD 或 VHDX）。 Azure 支援具有 VHD 檔案格式且具有固定大小磁片的第1代和第2代 Vm。 允許的 VHD 大小上限為 2 TB。
+將 Windows 虛擬機器（VM）從內部部署上傳至 Azure 之前，您必須準備虛擬硬碟（VHD 或 VHDX）。 Azure 支援具有 VHD 檔案格式且具有固定大小磁片的第1代和第2代 Vm。 第1代 VM 上允許的 OS VHD 大小上限為 2 TB。
 
-在第1代 VM 中，您可以將 VHDX 檔案系統轉換為 VHD。 您也可以將動態擴充的磁片轉換成固定大小的磁片。 但您無法變更 VM 的世代。 如需詳細資訊，請參閱[應該在 hyper-v 中建立第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，並[支援 Azure 上的第2代 vm](generation-2.md)。
+您可以將 VHDX 檔案轉換成 VHD、將動態擴充的磁片轉換成固定大小的磁片，但無法變更 VM 的世代。 如需詳細資訊，請參閱[應該在 hyper-v 中建立第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，並[支援 Azure 上的第2代 vm](generation-2.md)。
 
 如需 Azure Vm 支援原則的相關資訊，請參閱[適用于 Azure vm 的 Microsoft 伺服器軟體支援](https://support.microsoft.com/help/2721672/)。
 
@@ -28,6 +28,73 @@ ms.locfileid: "82864380"
 >
 > - 64位版本的 Windows Server 2008 R2 和更新版本的 Windows Server 作業系統。 如需在 Azure 中執行32位作業系統的詳細資訊，請參閱[Azure vm 中的32位作業系統支援](https://support.microsoft.com/help/4021388/)。
 > - 如果將使用任何嚴重損壞修復工具來遷移工作負載，例如 Azure Site Recovery 或 Azure Migrate，則在遷移之前，來賓 OS 上仍需要此程式來準備映射。
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>將虛擬磁片轉換成固定大小的 VHD
+
+使用本節中的其中一種方法，將您的虛擬磁片轉換並調整成 Azure 所需的格式：
+
+1. 執行虛擬磁片轉換或調整大小進程之前，請先備份 VM。
+
+1. 請確定 Windows VHD 在本機伺服器上正常運作。 先解決 VM 本身的任何錯誤，然後嘗試轉換或上傳至 Azure。
+
+1. 將虛擬磁片轉換成固定類型。
+
+1. 調整虛擬磁片大小以符合 Azure 需求：
+
+   1. Azure 中的磁片必須具有與 1 MiB 一致的虛擬大小。 如果您的 VHD 是 1 MiB 的分數，則需要將磁片大小調整為 1 MiB 的倍數。 從上傳的 VHD 建立映射時，屬於 MiB 分數的磁片會造成錯誤。 若要確認這一點，您可以[使用 PowerShell comdlet](/powershell/module/hyper-v/get-vhd)來顯示「大小」，這必須是 Azure 中的 1 MiB 的倍數，而「FileSize」則等於「大小」加上512位元組（適用于 VHD 頁尾）。
+   
+   1. 具有第1代 VM 的 OS VHD 所允許的大小上限為 2048 GiB （2 TiB）、 
+   1. 資料磁片的大小上限為 32767 GiB （32 TiB）。
+
+> [!NOTE]
+> - 如果您在轉換成固定磁片之後準備 Windows OS 磁片，並視需要調整大小，請建立使用該磁片的 VM。 啟動並登入 VM，並繼續進行本文中的各節，以完成準備以進行上傳。  
+> - 如果您要準備資料磁片，您可以在本節中停止，並繼續上傳您的磁片。
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-v 管理員轉換磁片
+
+1. 開啟 Hyper-V 管理員，然後在左側選取您的本機電腦。 在 [電腦] 清單上方的功能表中，選取 [**動作**] [  >  **編輯磁片**]。
+1. 在 [**尋找虛擬硬碟**] 頁面上，選取您的虛擬磁片。
+1. 在 [**選擇動作**] 頁面上，選取 [**轉換**  >  **下一個]**。
+1. 若要從 VHDX 轉換，請選取 [ **VHD**  >  **] [下一步]**。
+1. 若要從動態擴充磁片進行轉換，請選取 [**固定大小**  >  **] [下一步]**。
+1. 找出並選取路徑以儲存新的 VHD 檔案。
+1. 選取 [完成]。
+
+### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 轉換磁片
+
+您可以使用 PowerShell 中的[轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+下列範例會將磁片從 VHDX 轉換為 VHD。 它也會將磁片從動態擴充磁片轉換成固定大小的磁片。
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+在此範例中，將**path**的值取代為您想要轉換之虛擬硬碟的路徑。 以已轉換磁片的新路徑和名稱取代**DestinationPath**的值。
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>從 VMware VMDK 磁碟格式進行轉換
+
+如果您的 Windows VM 映射是[VMDK 檔案格式](https://en.wikipedia.org/wiki/VMDK)，請使用[Microsoft 虛擬機器轉換器](https://www.microsoft.com/download/details.aspx?id=42497)將它轉換成 VHD 格式。 如需詳細資訊，請參閱[如何將 VMWARE VMDK 轉換為 HYPER-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)。
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>使用 Hyper-v 管理員來調整磁片大小
+
+1. 開啟 Hyper-V 管理員，然後在左側選取您的本機電腦。 在 [電腦] 清單上方的功能表中，選取 [**動作**] [  >  **編輯磁片**]。
+1. 在 [**尋找虛擬硬碟**] 頁面上，選取您的虛擬磁片。
+1. 在 [**選擇動作**] 頁面上，選取 [**展開**  >  **下一步]**。
+1. 在 [**尋找虛擬硬碟**] 頁面上，于 [GiB] 中輸入新的大小 >**下一步]**。
+1. 選取 [完成]。
+
+### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 來調整磁片大小
+
+您可以在 PowerShell 中使用重[設大小的 VHD](/powershell/module/hyper-v/resize-vhd) Cmdlet 來調整虛擬磁片的大小。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+下列範例會將磁片從 100.5 MiB 調整為 101 MiB，以符合 Azure 對齊需求。
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+在此範例中，請將**path**的值取代為您想要調整大小之虛擬硬碟的路徑。 將**SizeBytes**的值取代為磁片的新大小（以位元組為單位）。
 
 ## <a name="system-file-checker"></a>系統檔案檢查程式
 
@@ -55,49 +122,6 @@ Windows Resource Protection did not find any integrity violations.
 
 在 SFC 掃描完成之後，請安裝 Windows 更新並重新啟動電腦。
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>將虛擬磁片轉換成固定大小的 VHD
-
-使用本節中的其中一種方法，將您的虛擬磁片轉換為 Azure 所需的格式：
-
-1. 執行虛擬磁片轉換程式之前，請先備份 VM。
-
-1. 請確定 Windows VHD 在本機伺服器上正常運作。 先解決 VM 本身的任何錯誤，然後嘗試轉換或上傳至 Azure。
-
-1. VHD 大小：
-
-   1. Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁片轉換成 VHD 時，您必須確定原始磁片大小在轉換前是 1 MB 的倍數。
-      從上傳的 VHD 建立映射時，mb 的分數會造成錯誤。
-
-   1. 作業系統 VHD 允許的大小上限為 2 TB。
-
-轉換磁片之後，請建立使用該磁片的 VM。 啟動並登入 VM，完成準備以進行上傳。
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-v 管理員轉換磁片
-
-1. 開啟 Hyper-V 管理員，然後在左側選取您的本機電腦。 在 [電腦] 清單上方的功能表中，選取 [**動作** > ] [**編輯磁片**]。
-1. 在 [**尋找虛擬硬碟**] 頁面上，選取您的虛擬磁片。
-1. 在 [**選擇動作**] 頁面上，選取 [**轉換** > **下一個]**。
-1. 若要從 VHDX 轉換，請選取 [ **VHD** > **] [下一步]**。
-1. 若要從動態擴充磁片進行轉換，請選取 [**固定大小** > **] [下一步]**。
-1. 找出並選取路徑以儲存新的 VHD 檔案。
-1. 選取 [完成]  。
-
-### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 轉換磁片
-
-您可以使用 PowerShell 中的[轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。
-
-下列範例會將磁片從 VHDX 轉換為 VHD。 它也會將磁片從動態擴充磁片轉換成固定大小的磁片。
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-在此範例中，將**path**的值取代為您想要轉換之虛擬硬碟的路徑。 以已轉換磁片的新路徑和名稱取代**DestinationPath**的值。
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>從 VMware VMDK 磁碟格式進行轉換
-
-如果您的 Windows VM 映射是[VMDK 檔案格式](https://en.wikipedia.org/wiki/VMDK)，請使用[Microsoft 虛擬機器轉換器](https://www.microsoft.com/download/details.aspx?id=42497)將它轉換成 VHD 格式。 如需詳細資訊，請參閱[如何將 VMWARE VMDK 轉換為 HYPER-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)。
-
 ## <a name="set-windows-configurations-for-azure"></a>設定適用於 Azure 的 Windows 設定
 
 > [!NOTE]
@@ -105,8 +129,8 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 1. 移除路由表中的任何靜態持續性路由：
 
-   - 若要查看路由表，請`route.exe print`執行。
-   - 檢查 [**持續性路由**] 區段。 如果有持續性的路由，請使用`route.exe delete`命令將它移除。
+   - 若要查看路由表，請執行 `route.exe print` 。
+   - 檢查 [**持續性路由**] 區段。 如果有持續性的路由，請使用 `route.exe delete` 命令將它移除。
 
 1. 移除 WinHTTP Proxy：
 
@@ -128,7 +152,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
    diskpart.exe
    ```
 
-   將磁片 SAN 原則設為[`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))：
+   將磁片 SAN 原則設為 [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11)) ：
 
    ```DiskPart
    DISKPART> san policy=onlineall
@@ -174,7 +198,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 請確定已正確設定遠端存取的下列設定：
 
 > [!NOTE]
-> 如果您在執行時收到錯誤訊息`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>`，您可以放心地忽略它。 這表示網域不會透過群組原則物件來設定該設定。
+> 如果您在執行時收到錯誤訊息 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>` ，您可以放心地忽略它。 這表示網域不會透過群組原則物件來設定該設定。
 
 1. 遠端桌面通訊協定 (RDP) 已啟用：
 
@@ -347,7 +371,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    如果存放庫損毀，請參閱[WMI：存放庫損毀](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)。
 
-1. 請確定沒有其他應用程式正在使用埠3389。 在 Azure 中，此連接埠是由 RDP 服務所使用。 若要查看 VM 上所使用的埠，請`netstat.exe -anob`執行：
+1. 請確定沒有其他應用程式正在使用埠3389。 在 Azure 中，此連接埠是由 RDP 服務所使用。 若要查看 VM 上所使用的埠，請執行 `netstat.exe -anob` ：
 
    ```powershell
    netstat.exe -anob
@@ -377,7 +401,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    原則應會列出下列群組：
 
-   - 系統管理員
+   - Administrators
 
    - Backup Operators
 
@@ -436,14 +460,14 @@ Get-Service -Name Netlogon, Netman, TermService |
 |                         |                | KB4103712                                 | KB4103726                                   | KB4103715                           |                                             |                            |                                             |                                             |
 
 > [!NOTE]
-> 為避免在 VM 布建期間意外重新開機，建議您確定所有 Windows Update 安裝都已完成，而且沒有任何更新正在擱置中。 其中一種方法是在執行`sysprep.exe`命令之前，先安裝所有可能的 Windows 更新並重新啟動一次。
+> 為避免在 VM 布建期間意外重新開機，建議您確定所有 Windows Update 安裝都已完成，而且沒有任何更新正在擱置中。 其中一種方法是在執行命令之前，先安裝所有可能的 Windows 更新並重新啟動一次 `sysprep.exe` 。
 
 ### <a name="determine-when-to-use-sysprep"></a>判斷何時要使用 Sysprep
 
-系統準備工具（`sysprep.exe`）是您可以執行以重設 Windows 安裝的程式。
+系統準備工具（ `sysprep.exe` ）是您可以執行以重設 Windows 安裝的程式。
 Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」體驗。
 
-您通常會`sysprep.exe`執行來建立範本，您可以在其中部署數個具有特定設定的其他 vm。 此範本稱為*一般化映射*。
+您通常 `sysprep.exe` 會執行來建立範本，您可以在其中部署數個具有特定設定的其他 vm。 此範本稱為*一般化映射*。
 
 若只要從一個磁片建立一個 VM，您就不需要使用 Sysprep。 相反地，您可以從*特製化映射*建立 VM。 如需有關如何從特製化磁片建立 VM 的詳細資訊，請參閱：
 
@@ -454,19 +478,22 @@ Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」
 
 並非每個安裝在 Windows 電腦上的角色或應用程式都支援一般化映射。 使用此程式之前，請確定 Sysprep 支援電腦的角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
 
+特別是，Sysprep 需要在執行前完整解密磁片磁碟機。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先將它停用。
+
+
 ### <a name="generalize-a-vhd"></a>將 VHD 一般化
 
 >[!NOTE]
-> 在下列步驟`sysprep.exe`中執行之後，請關閉 VM。 請不要將它重新開啟，直到您在 Azure 中建立映射為止。
+> `sysprep.exe`在下列步驟中執行之後，請關閉 VM。 請不要將它重新開啟，直到您在 Azure 中建立映射為止。
 
 1. 登入 Windows VM。
 1. 以系統管理員身分執行 PowerShell 會話。
-1. 將目錄變更為`%windir%\system32\sysprep`。 然後執行 `sysprep.exe`。
+1. 將目錄變更為 `%windir%\system32\sysprep` 。 然後執行 `sysprep.exe`。
 1. 在 [**系統準備工具**] 對話方塊中，選取 [**進入系統全新體驗（OOBE）**]，並確定已選取 [**一般化**] 核取方塊。
 
     ![系統準備工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在  **[關機選項]** 中，選取  **[關機]**。
-1. 選取 [確定]  。
+1. 在 [關機選項] 中選取 [關機]。
+1. 選取 [確定]。
 1. Sysprep 完成時，請關閉 VM。 請勿使用 [**重新開機**] 來關閉 VM。
 
 現在已準備好上傳 VHD。 如需如何從一般化磁片建立 VM 的詳細資訊，請參閱[上傳一般化 VHD 並使用它在 Azure 中建立新的 vm](sa-upload-generalized.md)。

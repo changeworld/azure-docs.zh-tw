@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608206"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 入口網站中尋找活動報告
 
@@ -29,7 +29,7 @@ ms.locfileid: "74008220"
 
 稽核記錄報告會將應用程式活動的多個相關報告結合到單一檢視中，以取得有相關內容可參考的報告。 若要存取稽核記錄報告：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory]**** 刀鋒視窗。
 3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動]**** 區段中選取 [稽核記錄]****。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "74008220"
 - ApplicationManagement
 - 驗證
 - 授權
-- 連絡人
+- Contact
 - 裝置
 - DeviceConfiguration
 - DirectoryManagement
@@ -87,7 +87,7 @@ ms.locfileid: "74008220"
 - PIM
 - 自助式群組管理
 - 自助式密碼管理
-- 使用條款
+- 使用規定
 
 ## <a name="sign-ins-report"></a>登入報告 
 
@@ -95,7 +95,7 @@ ms.locfileid: "74008220"
 
 若要存取登入報告：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory]**** 刀鋒視窗。
 3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動]**** 區段中選取 [Signins]****。 
 
@@ -145,9 +145,9 @@ ms.locfileid: "74008220"
 
 ### <a name="missing-data-in-the-downloaded-activity-logs"></a>已下載的活動記錄中遺漏資料
 
-#### <a name="symptoms"></a>徵兆 
+#### <a name="symptoms"></a>徵狀 
 
-我已下載活動記錄 (稽核或登入)，卻沒看到我所選擇時間的所有記錄。 原因為何？ 
+我已下載活動記錄 (稽核或登入)，卻沒看到我所選擇時間的所有記錄。 為什麼？ 
 
  ![報告](./media/troubleshoot-missing-data-download/01.png)
  
@@ -155,13 +155,13 @@ ms.locfileid: "74008220"
 
 當您下載 Azure 入口網站中的活動記錄時，我們會將縮放比例限制為250000筆記錄（依最新的第一個排序）。 
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您可以利用 [Azure AD 報告 API](concept-reporting-api.md) 在任何指定時間點擷取最多一萬筆記錄。
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure 入口網站中遺漏最近動作的稽核記錄
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 我在 Azure 入口網站中執行某些動作，並預期要在 `Activity logs > Audit Logs` 刀鋒視窗中查看這些動作的稽核記錄，但卻找不到。
 
@@ -171,18 +171,18 @@ ms.locfileid: "74008220"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
-|--------|--------|---------------|---------------|
-| 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
-| 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
+| 報表 | 延遲 (P95) | 延遲 (P99) |
+|--------|---------------|---------------|
+| 目錄稽核 | 2 分鐘 | 5 分鐘 |
+| 登入活動 | 2 分鐘 | 5 分鐘 |
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 等候 15 分鐘到兩小時的時間，確認動作是否出現在記錄中。 如果在兩小時後仍看不到記錄，請[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我們將加以探討。
 
 ### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Azure AD 登入活動記錄中遺漏最近使用者登入的記錄
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 我最近曾登入 Azure 入口網站，而預期應會在 `Activity logs > Sign-ins` 刀鋒視窗中看到這些動作的登入記錄，但卻找不到。
 
@@ -192,20 +192,20 @@ ms.locfileid: "74008220"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
-|--------|--------|---------------|---------------|
-| 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
-| 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
+| 報表 | 延遲 (P95) | 延遲 (P99) |
+|--------|---------------|---------------|
+| 目錄稽核 | 2 分鐘 | 5 分鐘 |
+| 登入活動 | 2 分鐘 | 5 分鐘 |
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 等候 15 分鐘到兩小時的時間，確認動作是否出現在記錄中。 如果在兩小時後仍看不到記錄，請[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我們將加以探討。
 
 ### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>我無法在 Azure 入口網站中檢視超過 30 天的報告資料
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
-我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 原因為何？ 
+我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 為什麼？ 
 
  ![報告](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -213,14 +213,14 @@ ms.locfileid: "74008220"
 
 視您的授權而定，Azure Active Directory 動作會儲存下列期間的活動報告︰
 
-| Report           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| 目錄稽核  | &nbsp; |   7 天     | 30 天             | 30 天             |
-| 登入活動 | &nbsp; | 無法使用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |
+| 報表           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| 目錄稽核  | 7 天        | 30 天             | 30 天             |
+| 登入活動 | 無法使用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |
 
 如需詳細資訊，請參閱 [Azure Active Directory 報告保留原則](reference-reports-data-retention.md)。  
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您有兩個選項可用來保留超過 30 天的資料。 您可以使用 [Azure AD 報告 API](concept-reporting-api.md) 以程式設計方式擷取資料，並將其儲存在資料庫中。 或者，您可以將稽核記錄整合到第三方 SIEM 系統中，例如 Splunk 或 SumoLogic。
 

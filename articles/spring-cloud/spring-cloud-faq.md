@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cdbe0630060c9155187e1f62aba3d7a40ceae98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610467"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -25,28 +25,13 @@ Azure 春季雲端為雲端開發人員提供了平臺即服務（PaaS）。 Azu
 
 Azure 春季雲端藉由整合 Azure 監視器、Application Insights 和 Log Analytics，為開發人員和操作員增強應用程式診斷體驗。
 
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud 提供哪些服務方案？
-
-Azure Spring Cloud 會在預覽期間提供一個服務方案。  春季雲端部署包含16個 vCPU 核心和 32 gb 的記憶體。  部署中每個微服務實例的上限是4個具有 8 GB 記憶體的 vCPU 核心。
-
-資源 | Amount
-------- | -------
-應用程式執行個體 (每個 Spring 應用程式) | 20
-總應用程式執行個體 (每個 Azure Spring Cloud 服務執行個體) | 500
-Azure Spring Cloud 服務執行個體 (每個訂用帳戶在每個區域) | 10
-永續性磁碟區 | 10 x 50 GB
-
-\*_若要提高限制，請開啟[支援票證](https://azure.microsoft.com/support/faq/)。_
-
-如需詳細資訊，請參閱[Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
-
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud 的安全性如何？
 
-安全性和隱私權是 Azure 和 Azure 春季雲端客戶的最高優先順序。 Azure 可透過安全地加密所有資料，協助確保只有客戶可以存取應用程式資料、記錄或設定。 Azure Spring Cloud 中的所有服務執行個體都彼此互相隔離。
+安全性和隱私權是 Azure 和 Azure 春季雲端客戶的最高優先順序。 Azure 可透過安全地加密所有資料，協助確保只有客戶可以存取應用程式資料、記錄或設定。 
 
-Azure 春季雲端提供完整的 TLS/SSL 和憑證管理。
-
-OpenJDK 和 Spring Cloud 執行階段的重大安全性修補，都會盡快套用至 Azure Spring Cloud。
+* Azure 春季雲端中的服務實例會彼此隔離。
+* Azure 春季雲端提供完整的 TLS/SSL 和憑證管理。
+* OpenJDK 和 Spring Cloud 執行階段的重大安全性修補，都會盡快套用至 Azure Spring Cloud。
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季雲端有哪些區域可供使用？
 
@@ -57,9 +42,12 @@ OpenJDK 和 Spring Cloud 執行階段的重大安全性修補，都會盡快套�
 在預覽版本中，Azure 春季雲端具有下列已知限制：
 
 * `spring.application.name`將會被用來建立每個應用程式的應用程式名稱覆寫。
-* `server.port`在 Git 存放庫的設定檔中不允許使用。 將它新增至設定檔，可能會導致您的應用程式無法從其他應用程式或網際網路連線。
+* `server.port`預設為埠80/443。 如果套用任何其他值，則會將它覆寫為80/443。
 * Azure 入口網站和 Azure Resource Manager 範本不支援上傳應用程式套件。 您只能透過 Azure CLI 部署應用程式來上傳應用程式套件。
-* 若要瞭解配額限制，請參閱[Azure 春季雲端供應專案有哪些服務方案？](#what-service-plans-does-azure-spring-cloud-offer)。
+
+### <a name="what-pricing-tiers-are-available"></a>有哪些定價層可供使用？ 
+我應該使用哪一種，以及每一層內的限制為何？
+* Azure 春季雲端提供兩個定價層：基本和標準。 基本層是以開發/測試為目標，並試用 Azure 春季雲端。 標準層已優化，可執行一般用途的生產流量。 如需限制和功能層級的比較，請參閱[Azure 春季雲端定價詳細資料](https://azure.microsoft.com/pricing/details/spring-cloud/)。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供意見反應和回報問題？
 
@@ -73,7 +61,7 @@ OpenJDK 和 Spring Cloud 執行階段的重大安全性修補，都會盡快套�
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud 支援的 Java 執行階段為何？
 
-Azure Spring Cloud 支援 Java 8 和 11。
+Azure Spring Cloud 支援 Java 8 和 11。 請參閱[JAVA 執行時間和作業系統版本](#java-runtime-and-os-versions)
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>我可以在哪裡查看春季雲端應用程式記錄和計量？
 
@@ -87,7 +75,10 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="what-resource-types-does-service-binding-support"></a>服務繫結支援的資源類型為何？
 
-目前支援三項服務： Azure Cosmos DB、適用於 MySQL 的 Azure 資料庫和 Azure Cache for Redis。
+目前支援三個服務：
+* Azure Cosmos DB
+* 適用於 MySQL 的 Azure 資料庫
+* Azure Redis 快取。
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>我可以從應用程式內查看、新增或移動持續性磁片區嗎？
 
@@ -95,7 +86,52 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>當我刪除/移動 Azure 春季雲端服務實例時，其延伸模組資源也會一併刪除/移動？
 
-視擴充資源所屬的資源提供者邏輯而定。 `Microsoft.AppPlatform`實例的擴充功能資源不屬於相同的命名空間，因此行為會根據不同的資源提供者而有所不同。 例如，刪除/移動作業不會串聯至**診斷設定**資源。 如果新的 Azure 春季雲端實例布建時所使用的資源識別碼與已刪除的相同，或先前的 Azure 春季雲端實例已移回，則先前的**診斷設定**資源會繼續擴充。
+這取決於擁有延伸模組資源之資源提供者的邏輯。 實例的擴充功能資源 `Microsoft.AppPlatform` 不屬於相同的命名空間，因此行為會因資源提供者而異。 例如，刪除/移動作業不會串聯至**診斷設定**資源。 如果新的 Azure 春季雲端實例布建時所使用的資源識別碼與已刪除的相同，或先前的 Azure 春季雲端實例已移回，則先前的**診斷設定**資源會繼續擴充。
+
+## <a name="java-runtime-and-os-versions"></a>JAVA 執行時間和作業系統版本
+
+### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季雲端支援哪些版本的 JAVA 執行時間？
+
+Azure 春季雲端支援 JAVA LTS 版本與最新組建（目前為2020年6月），支援 JAVA 8 組建252和 JAVA 11 build 7。 請參閱[安裝適用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+
+### <a name="who-built-these-java-runtimes"></a>誰建立了這些 JAVA 執行時間？
+
+Azul 系統。 適用於 Azure 的 Azul Zulu - 企業版 JDK 組建是免費、多平台、可實際執行的 OpenJDK 散發套件，適用於 Azure 和 Azure Stack，由 Microsoft 與 Azul Systems 提供支援。 其中包含建置及執行 Java SE 應用程式所需的所有元件。
+
+### <a name="how-often-will-java-runtimes-get-updated"></a>JAVA 執行時間的更新頻率為何？
+
+LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需要提供頻外的重大更新和修補程式。 這項支援包括可回移在較新版本的 Java (如 Java 11) 中報告的 Java 7 和 8 安全性更新和錯誤修正。
+
+### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>支援 JAVA 8 和 JAVA 11 LTS 版本的時間長度？
+
+請參閱[適用于 Azure 和 Azure Stack 的 JAVA 長期支援](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+
+* 在2030年12月之前，將支援 JAVA 8 LTS。
+* 在2027年9月之前，將支援 JAVA 11 LTS。
+
+### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>如何下載支援的 JAVA 執行時間以進行本機開發？
+
+請參閱[安裝適用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
+
+### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>舊版 JAVA 執行時間的淘汰原則是什麼？
+
+公開通知會在過去12個月內送出，然後才淘汰任何舊的執行階段版本。 您將會有12個月的時間，可以遷移至較新的版本。
+
+* 當我們將淘汰 JAVA 版本時，訂用帳戶管理員會收到電子郵件通知。
+* 淘汰資訊將會在檔中發佈。
+
+### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>如何在 JAVA 執行時間層級取得問題的支援？
+
+您可以使用 Azure 支援開啟支援票證。  請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+
+### <a name="what-is-the-operation-system-to-run-my-apps"></a>執行我的應用程式的作業系統是什麼？
+
+會使用最新的 Ubuntu LTS 版本，目前的[ubuntu 20.04 LTS （焦點 Fossa）](https://releases.ubuntu.com/focal/)是預設的作業系統。
+
+### <a name="how-often-will-os-security-patches-be-applied"></a>OS 安全性修補程式的套用頻率為何？
+
+適用于 Azure 春季雲端的安全性修補程式將以每月的方式推出至生產環境。
+適用于 Azure 春季雲端的重大安全性修補程式（CVE 分數 >= 9）將會儘快推出。
 
 ## <a name="deployment"></a>部署
 
@@ -104,7 +140,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不可以。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
@@ -112,7 +148,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-不可以。
+否。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移至 Azure 春季雲端的最佳作法為何？
 

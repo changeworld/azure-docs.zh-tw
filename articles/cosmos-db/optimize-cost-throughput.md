@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610722"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 
@@ -57,15 +57,15 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 |----|----|----|
 |SQL API|資料庫|容器|
 |適用於 MongoDB 的 Azure Cosmos DB API|資料庫|集合|
-|Cassandra API|keyspace|Table|
+|Cassandra API|keyspace|資料表|
 |Gremlin API|資料庫帳戶|圖形|
-|資料表 API|資料庫帳戶|Table|
+|資料表 API|資料庫帳戶|資料表|
 
 您可以在不同層級佈建輸送量，以根據工作負載特性獲得最佳成本。 如先前所述，您可以隨時以程式設計方式，對個別容器或集體形式的一組容器增加或減少所佈建的輸送量。 隨著工作負載的變化來彈性調整輸送量，您便只需支付您已設定的輸送量。 如果您的容器或一組容器分散在多個區域，則您對一個容器或一組容器所設定的輸送量，保證可供所有區域使用。
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>透過限制要求的速率來進行最佳化
 
-對於不太受延遲影響的工作負載，您可以佈建少一點輸送量，並讓應用程式在實際輸送量超過所佈建的輸送量時，處理限速工作。 伺服器將事先結束要求`RequestRateTooLarge` （HTTP 狀態碼429），並傳回`x-ms-retry-after-ms`標頭，指出使用者重試要求之前必須等待的時間量（以毫秒為單位）。 
+對於不太受延遲影響的工作負載，您可以佈建少一點輸送量，並讓應用程式在實際輸送量超過所佈建的輸送量時，處理限速工作。 伺服器將事先結束要求 `RequestRateTooLarge` （HTTP 狀態碼429），並傳回 `x-ms-retry-after-ms` 標頭，指出使用者重試要求之前必須等待的時間量（以毫秒為單位）。 
 
 ```html
 HTTP Status 429, 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 原生 SDK (.NET/.NET Core、Java、Node.js 和 Python) 會隱含地攔截這個回應、採用伺服器指定的 retry-after 標頭，然後重試此要求。 除非有多個用戶端同時存取您的帳戶，否則下次重試將會成功。
 
-如果您有多個用戶端以一致的方式在要求速率上累積運作，則預設的重試計數（目前設定為9）可能不足夠。 在這種情況下，用戶端`RequestRateTooLargeException`會擲回具有狀態碼429的給應用程式。 在 ConnectionPolicy 執行個體上設定 `RetryOptions`，即可變更預設重試次數。 根據預設，如果`RequestRateTooLargeException`要求繼續以高於要求速率的方式運作，則在30秒的累計等候時間之後，會傳回具有狀態碼429的。 即使目前的重試計數小於最大重試計數 (預設值 9 或使用者定義的值)，也會發生這種情況。 
+如果您有多個用戶端以一致的方式在要求速率上累積運作，則預設的重試計數（目前設定為9）可能不足夠。 在這種情況下，用戶端會擲回 `RequestRateTooLargeException` 具有狀態碼429的給應用程式。 在 ConnectionPolicy 執行個體上設定 `RetryOptions`，即可變更預設重試次數。 根據預設， `RequestRateTooLargeException` 如果要求繼續以高於要求速率的方式運作，則在30秒的累計等候時間之後，會傳回具有狀態碼429的。 即使目前的重試計數小於最大重試計數 (預設值 9 或使用者定義的值)，也會發生這種情況。 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)設定為3，因此在此情況下，如果要求作業的速率受限於容器的保留輸送量，則要求作業會重試三次，再將例外狀況擲回至應用程式。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)設定為60，因此在此情況下，如果第一個要求超過60秒後的累計重試等候時間（以秒為單位），則會擲回例外狀況。
 
@@ -117,7 +117,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 您可以監視所佈建的 RU 總數、限速要求的數目，以及您已在 Azure 入口網站中取用的 RU 數目。 下圖顯示使用量計量範例：
 
-![在 Azure 入口網站中監視要求單位](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="在 Azure 入口網站中監視要求單位":::
 
 您也可以設定警示，以確認限速要求的數目是否超過特定閾值。 如需詳細資訊，請參閱[如何監視 Azure Cosmos DB](use-metrics.md)一文。 這些警示可以傳送電子郵件給帳戶管理員，或呼叫自訂 HTTP Webhook 或 Azure 函式來自動增加佈建的輸送量。 
 
@@ -155,7 +155,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 1. 如果您在容器和資料庫上明顯過度佈建輸送量，請檢閱已佈建的 RU 與已取用的 RU，然後微調工作負載。  
 
-2. 若要估計您的應用程式所需的保留輸送量，其中一個方法為對照應用程式使用的代表性 Azure Cosmos 容器或資料庫，記錄與執行一般作業相關聯的要求單位 RU 費用，然後估計您預期每秒會執行的作業數目。 此外，請務必測量並包含一般查詢和其使用量。 若要了解如何以程式設計方式或使用入口網站來預估查詢的 RU 費用，請參閱[最佳化查詢成本](online-backup-and-restore.md)。 
+2. 若要估計您的應用程式所需的保留輸送量，其中一個方法為對照應用程式使用的代表性 Azure Cosmos 容器或資料庫，記錄與執行一般作業相關聯的要求單位 RU 費用，然後估計您預期每秒會執行的作業數目。 此外，請務必測量並包含一般查詢和其使用量。 若要了解如何以程式設計方式或使用入口網站來預估查詢的 RU 費用，請參閱[最佳化查詢成本](optimize-cost-queries.md)。 
 
 3. 另一種取得作業的方式及其在 ru 中的成本是藉由啟用 Azure 監視器記錄，讓您能夠細分操作/持續時間和要求費用。 Azure Cosmos DB 會提供每一項作業的要求費用，以便您可以從回應回存每個作業費用，然後用於分析。 
 

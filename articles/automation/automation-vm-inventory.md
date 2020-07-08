@@ -4,14 +4,14 @@ description: 此文章說明如何管理來自 VM 的清查集合。
 services: automation
 ms.subservice: change-inventory-management
 keywords: 清查、自動化、變更、追蹤
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603106"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>從虛擬機器管理清查集合
 
@@ -87,7 +87,7 @@ Azure 自動化變更追蹤和清查提供瀏覽器型使用者介面，可用�
 |輸入路徑     | 要檢查檔案的路徑，例如， **/etc/*.conf**。       |
 |路徑類型     | 要追蹤的項目類型。 值為 [檔案] 和 [目錄]。        |
 |遞迴     | 如果在尋找要追蹤的項目時使用遞迴，則為 True，否則為 False。        |
-|使用 Sudo     | 如果檢查項目時使用 sudo，則為 True，否則為 False。         |
+|使用 sudo     | 如果檢查項目時使用 sudo，則為 True，否則為 False。         |
 |連結     | 此值指出當周遊目錄時，處理符號連結的方式。 可能的值包括： <br> 忽略 - 忽略符號連結，而不包含參考的檔案/目錄<br>追蹤 - 在遞迴期間追蹤符號連結，並且包含參考的檔案/目錄<br>管理 - 遵循符號連結並允許變更所傳回內容的處理方式      |
 
 ## <a name="manage-machine-groups"></a>管理電腦群組
@@ -100,7 +100,7 @@ Azure 自動化變更追蹤和清查提供瀏覽器型使用者介面，可用�
 
 ![在清查頁面上檢視電腦群組](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-從清單中選取電腦群組，就會開啟 [電腦群組] 頁面。 此頁面會顯示電腦群組的相關詳細資料。 這些詳細資料包括用來定義群組的記錄分析查詢。 頁面底部是屬於該群組的電腦分頁清單。
+從清單中選取電腦群組，就會開啟 [電腦群組] 頁面。 此頁面會顯示電腦群組的相關詳細資料。 這些詳細資料包括用來定義群組的 Azure 監視器記錄查詢。 頁面底部是屬於該群組的電腦分頁清單。
 
 ![檢視電腦群組頁面](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Azure 自動化變更追蹤和清查提供瀏覽器型使用者介面，可用�
 將 VM 從變更追蹤和清查管理中移除：
 
 1. 在 Azure 入口網站的左窗格中，選取 [Log Analytics]，然後選取您啟用 VM 的變更追蹤和清查功能時所使用的工作區。
-2. 在 [Log Analytics] 頁面上，開啟 [資源] 功能表。
+2. 在 [ **Log Analytics** ] 頁面上，開啟 [**資源**] 功能表。
 3. 在 [工作區資料來源] 底下，選取 [虛擬機器]。
 4. 在清單中，選取您要中斷連線的 VM。 機器在 [OMS 連線] 欄中，[此工作區] 文字旁邊會出現綠色核取記號。
 
    >[!NOTE]
    >Operations Management Suite (OMS) 現在稱為 Azure 監視器記錄。
-   
+
 5. 在下一個頁面的頂端，按一下 [中斷連線]。
 6. 在確認視窗中，按一下 [是] 以中斷機器與管理的連線。
+
+>[!NOTE]
+>取消註冊後仍會顯示電腦，因為我們會報告過去24小時內清查的所有電腦。 中斷電腦連線之後，您必須等待24小時，才會再列出它們。
 
 ## <a name="next-steps"></a>後續步驟
 

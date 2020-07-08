@@ -3,12 +3,12 @@ title: 指定 Service Fabric 服務端點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610739"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
 ## <a name="overview"></a>總覽
@@ -52,8 +52,6 @@ ms.locfileid: "81417584"
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>範例：指定服務的 HTTP 端點
 以下服務資訊清單在 &lt;Resources&gt; 項目中定義了一個 TCP 端點資源和兩個 HTTP 端點資源。
-
-Service Fabric 會自動將 HTTP 端點處理為 ACL。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,6 +155,8 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
 
 若是 Linux 叢集，**MY** 存放區預設為資料夾 **/var/lib/sfcerts**。
 
+## <a name="port-acling-for-http-endpoints"></a>HTTP 端點的埠執行 acl
+Service Fabric 預設會自動 ACL 指定的 HTTP （S）端點。 如果端點沒有相關聯的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，而且 Service Fabric 設定為使用具有系統管理員許可權的帳戶來執行，則它**不**會執行自動執行 acl。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>在 ServiceManifest.xml 中覆寫端點
 

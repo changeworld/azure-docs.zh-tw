@@ -4,21 +4,21 @@ description: 瞭解如何使用 Azure 防火牆來保護 Windows 虛擬桌面部
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611130"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火牆來保護 Windows 虛擬桌面部署
 
 Windows 虛擬桌面是在 Azure 上執行的桌面和應用程式虛擬化服務。 當終端使用者連線到 Windows 虛擬桌面環境時，其會話會由主機集區執行。 主機集區是 Azure 虛擬機器的集合，會向 Windows 虛擬桌上型電腦註冊為工作階段主機。 這些虛擬機器會在您的虛擬網路中執行，並且受限於虛擬網路安全性控制。 他們需要 Windows 虛擬桌面服務的輸出網際網路存取，才能正常運作，而且可能也需要終端使用者的輸出網際網路存取。 Azure 防火牆可協助您鎖定環境並篩選輸出流量。
 
-[![Windows 虛擬桌面架構](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Windows 虛擬桌面架構 ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 請遵循本文中的指導方針，使用 Azure 防火牆為您的 Windows 虛擬桌面主機集區提供額外的保護。
 

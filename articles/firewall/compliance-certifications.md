@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602715"
 ---
 # <a name="azure-firewall-certifications"></a>Azure 防火牆認證
 
@@ -25,29 +25,31 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 下列 Azure 防火牆認證適用于全域 Azure：
 
 - 23 NYCRR 500
-- AFM 和 DNB （荷蘭）
-- AMF 和 ACPR （法國）
+- AFM 和 DNB (荷蘭)
+- AMF 和 ACPR (法國)
 - APRA （澳大利亞）
 - 阿根廷 PDPA
-- 澳大利亞 IRAP
+- Australia IRAP
 - CDSA
 - CFTC 1.31
 - CSA STAR Attestation
 - CSA STAR Certification
 - CSA STAR 自我評估
-- 加拿大隱私權法則
+- 加拿大隱私權法
 - DPP （英國）
 - 歐盟 ENISA IAF
 - 歐盟示範條款
 - 歐洲銀行機關
-- FCA 和 PRA （英國）
-- FERPA （US）
+- FCA 和 PRA (英國)
+- FERPA (美國)
 - FFIEC （US）
-- FINMA （瑞士）
-- FSA （丹麥）
-- GLBA （US）
+- FINMA (瑞士)
+- FSA (丹麥)
+- GLBA (美國)
 - Germany C5
 - GxP (FDA 21 CFR Part 11)
+- HIPPA
+- 高科技 Act （美國）
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -58,19 +60,19 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 - 日本我的數位 Act
 - K-ISM
 - KNF （波蘭）
-- MA 和 ABS （新加坡）
+- MAS 和 ABS (新加坡)
 - MPAA （US）
-- NBB 和 FSMA （比利時）
+- NBB 和 FSMA (比利時)
 - NEN 7510:2011 （荷蘭）
 - NHS IG Toolkit (英國)
 - 荷蘭 BIR 2012
 - OSFI （加拿大）
 - PCI DSS 層級 1
-- RBI 和 IRDAI （印度）
+- RBI 和 IRDAI (印度)
 - SOC 1 類型2
 - SOC 2 類型2
 - SOC 3
-- SOX （US）
+- SOX (美國)
 - 西班牙 DPA
 - TISAX
 - TruSight
@@ -91,18 +93,20 @@ Azure 防火牆是支付卡產業（PCI）、服務組織控制（SOC）、國�
 - EAR
 - FIPS 140-2
 - FedRAMP High
+- HIPAA
+- 高科技 Act （美國）
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E （US）
+- MARS-E (美國)
 - NERC
 - NIST 網路安全性架構
 - NIST SP 800-171
 - SOC 1 類型2
 - SOC 2 類型2
 - SOC 3
-- SOX （US）
-- 第508節 Vpat
+- SOX (美國)
+- 第 508 號條文 VPAT
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs 的公司防火牆認證
 

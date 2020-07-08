@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611606"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集並分析 Azure 認知搜尋的記錄資料
 
-診斷或作業記錄可讓您深入瞭解 Azure 認知搜尋的詳細作業，並且適用于監視服務和工作負載進程。 就內部而言，記錄會短暫地存在於後端，足以在您提出支援票證時應付調查和分析。 不過，如果您想要讓運算元據具有自我方向，您應該設定診斷設定來指定收集記錄資訊的位置。
+診斷或作業記錄可讓您深入瞭解 Azure 認知搜尋的詳細作業，並且適用于監視服務和工作負載進程。 就內部而言，某些系統資訊存在於後端很短的時間內，如果您提出支援票證，就足以進行調查和分析。 不過，如果您想要讓運算元據具有自我方向，您應該設定診斷設定來指定收集記錄資訊的位置。
 
-設定記錄適用于診斷和保留作業歷程記錄。 啟用記錄功能之後，您可以執行查詢或建立結構化分析的報表。
+您可透過與[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)的整合來啟用診斷記錄。 
 
-下表列舉用來收集和保存資料的選項。
+當您設定診斷記錄時，系統會要求您指定儲存機制。 下表列舉用來收集和保存資料的選項。
 
 | 資源 | 用途 |
 |----------|----------|
@@ -29,15 +29,15 @@ ms.locfileid: "82127821"
 | [使用 Blob 儲存體封存](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 事件和計量會封存到 Blob 容器，並儲存在 JSON 檔案中。 記錄可以很細微（以小時/分鐘為單位），適用于研究特定事件，但不適合用于開放式調查。 使用 JSON 編輯器來查看原始記錄檔或 Power BI，以匯總記錄資料並加以視覺化。|
 | [串流至事件中樞](https://docs.microsoft.com/azure/event-hubs/) | 事件和計量會串流處理到 Azure 事件中樞服務。 請選擇此選項作為非常大型記錄的替代資料收集服務。 |
 
-Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因此您可以在 Azure 訂用帳戶的存留期免費試用。 Application Insights 可供免費註冊和使用，只要應用程式資料大小在特定限制範圍內即可 (如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/monitor/))。
+## <a name="prerequisites"></a>必要條件
 
-## <a name="prerequisites"></a>先決條件
+預先建立資源，讓您可以在設定診斷記錄時選取一或多個資源。
 
-如果您使用 Log Analytics 或 Azure 儲存體，您可以事先建立資源。
++ [建立 log analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [建立 log analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
++ [建立儲存體帳戶](../storage/common/storage-quickstart-create-account.md)
 
-+ [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [建立事件中樞](../event-hubs/event-hubs-create.md)
 
 ## <a name="enable-data-collection"></a>啟用資料收集
 
@@ -91,42 +91,81 @@ Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因�
 
    ![AzureDiagnostics 資料表](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics 資料表")
 
+## <a name="kusto-query-examples"></a>Kusto 查詢範例
+
+如果您已啟用診斷記錄，您可以查詢**AzureDiagnostics** ，以取得在您的服務上執行的作業和時間的清單。 您也可以將活動相互關聯，以調查效能中的變更。
+
+#### <a name="example-list-operations"></a>範例：清單作業 
+
+傳回作業清單和每個作業的計數。
+
+```
+AzureDiagnostics
+| summarize count() by OperationName
+```
+
+#### <a name="example-correlate-operations"></a>範例：相互關聯作業
+
+將查詢要求與索引作業相互關聯，並在一段時間圖表上呈現資料點，以查看作業是否一致。
+
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
+
+## <a name="logged-operations"></a>記錄的作業
+
+Azure 監視器所捕捉的記錄事件包括與索引編制和查詢相關的事件。 Log Analytics 中的**AzureDiagnostics**資料表會收集與查詢和索引相關的運算元據。
+
+| OperationName | Description |
+|---------------|-------------|
+| ServiceStats | 這項作業是用來[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)的例行呼叫，不論是在載入或重新整理時，直接或隱含地用來填入入口網站的 [總覽] 頁面。 |
+| 查詢。搜尋 |  針對索引的查詢要求，請參閱[監視查詢](search-monitor-queries.md)以取得已記錄查詢的相關資訊。|
+| 檢索。索引  | 此作業是[新增、更新或刪除檔](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)的呼叫。 |
+| 索引.生產 | 這是「匯入資料」 wizard 所建立的索引。 |
+| 索引子。建立 | 透過 [匯入資料] wizard 明確或隱含地建立索引子。 |
+| 索引子. Get | 每當執行索引子時，會傳回索引子的名稱。 |
+| 索引子。狀態 | 每當執行索引子時，會傳回索引子的狀態。 |
+| 資料來源. Get | 每當執行索引子時，會傳回資料來源的名稱。|
+| 索引。 Get | 每當執行索引子時，會傳回索引的名稱。 |
+
 ## <a name="log-schema"></a>記錄檔結構描述
 
-包含 Azure 認知搜尋記錄資料的資料結構符合下列架構。 
-
-對於 Blob 儲存體，每個 blob 都有一個名為**記錄**的根物件，其中包含記錄檔物件的陣列。 每個 Blob 都包含在同一小時內發生之所有作業的記錄。
+如果您要建立自訂報表，包含 Azure 認知搜尋記錄資料的資料結構會符合下列架構。 對於 Blob 儲存體，每個 blob 都有一個名為**記錄**的根物件，其中包含記錄檔物件的陣列。 每個 Blob 都包含在同一小時內發生之所有作業的記錄。
 
 下表是資源記錄常見的部分欄位清單。
 
-| 名稱 | 類型 | 範例 | 備忘錄 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
 | timeGenerated |Datetime |"2018-12-07T00:00:43.6872559Z" |作業的時間戳記 |
 | resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的 ResourceId |
 | operationName |字串 |"Query.Search" |作業的名稱 |
-| operationVersion |字串 |"2019-05-06" |使用的 api-version |
+| operationVersion |字串 |"2020-06-30" |使用的 api-version |
 | category |字串 |"OperationLogs" |常數 |
 | resultType |字串 |"Success" |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 結果碼 |
 | durationMS |int |50 |作業的持續時間 (以毫秒為單位) |
-| properties |物件 |請參閱下表 |包含作業特定資料的物件 |
+| properties |物件 (object) |請參閱下表 |包含作業特定資料的物件 |
 
 ### <a name="properties-schema"></a>屬性結構描述
 
 下列屬性專屬於 Azure 認知搜尋。
 
-| 名稱 | 類型 | 範例 | 備忘錄 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
 | Description_s |字串 |"GET /indexes('content')/docs" |作業的端點 |
 | Documents_d |int |42 |處理的文件數目 |
 | IndexName_s |字串 |「測試-索引」 |與作業相關聯的索引名稱 |
-| Query_s |字串 |"？ search = AzureSearch&$count = true&api 版本 = 2019-05-06" |查詢參數 |
+| Query_s |字串 |"？ search = AzureSearch&$count = true&api 版本 = 2020-06-30" |查詢參數 |
 
 ## <a name="metrics-schema"></a>度量結構描述
 
 系統會針對查詢要求捕捉計量，並以一分鐘的間隔進行測量。 每個度量會顯示每分鐘的最小值、最大值和平均值。 如需詳細資訊，請參閱[監視查詢要求](search-monitor-queries.md)。
 
-| 名稱 | 類型 | 範例 | 備忘錄 |
+| 名稱 | 類型 | 範例 | 注意 |
 | --- | --- | --- | --- |
 | resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的資源識別碼 |
 | metricName |字串 |"Latency" |度量的名稱 |

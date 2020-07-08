@@ -1,17 +1,16 @@
 ---
 title: 將 Windows 系統狀態備份至 Azure
 description: 了解如何將 Windows Server 和/或 Windows 電腦的系統狀態備份至 Azure。
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611436"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>在 Resource Manager 部署中備份 Windows 系統狀態
+# <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
 本文說明如何將 Windows Server 的系統狀態備份至 Azure。 它的目的是要引導您瞭解基本概念。
 
@@ -19,53 +18,13 @@ ms.locfileid: "82128180"
 
 如果您沒有 Azure 訂用帳戶，請建立 [免費帳戶](https://azure.microsoft.com/free/) ，以便存取任何 Azure 服務。
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫。
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-若要備份 Windows Server 系統狀態，您必須在要儲存這些資料的區域中建立復原服務保存庫。 您也需要決定儲存體的複寫方式。
-
-### <a name="to-create-a-recovery-services-vault"></a>建立復原服務保存庫
-
-1. 如果您尚未這麼做，請使用您的 Azure 訂用帳戶登入[Azure 入口網站](https://portal.azure.com/)。
-2. 在 [中樞] 功能表上按一下 [所有服務]****，在資源清單中輸入**復原服務**，然後按一下 [復原服務保存庫]****。
-
-    ![建立復原服務保存庫的步驟 1](./media/backup-azure-system-state/open-rs-vault-list.png)
-
-    如果訂用帳戶中有復原服務保存庫，則會列出保存庫。
-3. 在 [復原服務保存庫]**** 功能表上，按一下 [新增]****。
-
-    ![建立復原服務保存庫的步驟 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
-
-    [復原服務保存庫] 刀鋒視窗隨即開啟，並提示您提供 [名稱]****、[訂用帳戶]****、[資源群組]**** 和 [位置]****。
-
-    ![建立復原服務保存庫的步驟 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
-
-4. 在 [名稱] **** 中，輸入易記名稱來識別保存庫。 必須是 Azure 訂用帳戶中唯一的名稱。 輸入包含 2 到 50 個字元的名稱。 該名稱必須以字母開頭，而且只可以包含字母、數字和連字號。
-
-5. 在 [訂用帳戶]**** 區段中，使用下拉式功能表來選擇 Azure 訂用帳戶。 如果您只使用一個訂用帳戶，該訂用帳戶會出現，您可以跳到下一個步驟。 如果您不確定要使用哪個訂用帳戶，請使用預設 (或建議) 的訂用帳戶。 只有在您的組織帳戶與多個 Azure 訂用帳戶相關聯時，才會有多個選擇。
-
-6. 在 [資源群組]**** 區段中︰
-
-    * 如果您想建立新的資源群組，請選取 [新建]****。
-    或者
-    * 選取 [使用現有的]****﹐然後按一下下拉式功能表，以查看可用的資源群組清單。
-
-   如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。
-
-7. 按一下 [位置] **** 以選取保存庫的地理區域。 此選項會決定您的備份資料要傳送到哪個地理區域。
-
-8. 按一下 [復原服務保存庫] 刀鋒視窗底部的 [建立]****。
-
-    建立復原服務保存庫可能需要一些時間。 請監視入口網站右上方區域中的狀態通知。 保存庫一旦建立好，就會出現在 [復原服務保存庫] 的清單中。 在數分鐘之後﹐如果您沒有看到您的保存庫，請按一下 [重新整理]****。
-
-    ![按一下 [重新整理] 按鈕。](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-    一旦在復原服務保存庫清單中看到您的保存庫，您即可開始設定儲存體備援。
-
-### <a name="set-storage-redundancy-for-the-vault"></a>設定保存庫的儲存體備援
+## <a name="set-storage-redundancy-for-the-vault"></a>設定保存庫的儲存體備援
 
 當您建立復原服務保存庫時，務必以您想要的方式設定儲存體備援。
 
-1. 從 [復原服務保存庫]**** 刀鋒視窗，按一下 [新增保存庫]。
+1. 從 [復原服務保存庫] 刀鋒視窗，按一下 [新增保存庫]。
 
     ![從復原服務保存庫清單中選取新的保存庫](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
@@ -127,7 +86,7 @@ ms.locfileid: "82128180"
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保存庫認證會下載至「下載」資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 按一下 **[儲存]** 。 如果您不小心按到 [開啟]****，請讓嘗試開啟保存庫認證的對話方塊失敗。 您無法開啟保存庫認證。 請繼續進行下一個步驟。 保存庫認證位於 [下載] 資料夾中。
+    保存庫認證會下載至「下載」資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 按一下 [檔案] 。 如果您不小心按到 [開啟]****，請讓嘗試開啟保存庫認證的對話方塊失敗。 您無法開啟保存庫認證。 請繼續進行下一個步驟。 保存庫認證位於 [下載] 資料夾中。
 
     ![保存庫認證下載完成](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -193,7 +152,7 @@ ms.locfileid: "82128180"
 
 5. 選取 [系統狀態]****，然後按一下 [確定]****。
 
-6. 按 [下一步]  。
+6. 按 [下一步] 。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 
@@ -222,7 +181,7 @@ ms.locfileid: "82128180"
 
   ![IR 已完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>有疑問嗎？
+## <a name="questions"></a>有問題嗎？
 
 如果您有問題，或希望我們加入任何功能，請 [傳送意見反應給我們](https://feedback.azure.com/forums/258995-azure-backup)。
 

@@ -4,15 +4,15 @@ description: 您可以將 Azure 防火牆整合到具有 Azure Standard Load Bal
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78196689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610620"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>整合 Azure 防火牆與 Azure Standard Load Balancer
 
@@ -77,4 +77,4 @@ ms.locfileid: "78196689"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
+- 瞭解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
