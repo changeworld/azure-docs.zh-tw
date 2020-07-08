@@ -10,12 +10,11 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 14eda137d386146d96b6b9aa54e1ed57021db19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84167293"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
@@ -55,7 +54,7 @@ Azure Key Vault 是可安全儲存及存取祕密的工具。 祕密是指任何
 
 使用下表將有助於瞭解金鑰保存庫可以如何協助達到開發人員和安全性系統管理員的需求。
 
-| [角色] | 問題陳述 | Azure 金鑰保存庫已解決問題 |
+| 角色 | 問題陳述 | Azure 金鑰保存庫已解決問題 |
 | --- | --- | --- |
 | Azure 應用程式的開發人員 |「我想要撰寫使用金鑰進行簽署和加密的 Azure 應用程式。 但我希望這些金鑰是應用程式外部的，讓解決方案適用于地理位置分散的應用程式。 <br/><br/>我希望這些金鑰和密碼會受到保護，但我可以不用自己撰寫程式碼。 我也想要讓我輕鬆地從應用程式使用這些金鑰和密碼，並獲得最佳效能。」 |√ 金鑰會儲存在保存庫中，並且視需要由 URI 叫用。<br/><br/> √ Azure 使用會業界標準演算法、金鑰長度和硬體安全性模組保護金鑰。<br/><br/> √ 金鑰會在與應用程式位於相同 Azure 資料中心的 HSM 中處理。 此方法會比金鑰位於不同位置 (例如內部部署) 提供更高的可靠性並減少延遲。 |
 | 軟體即服務 (SaaS) 的開發人員 |「我不想要責任或潛在的客戶租使用者金鑰和秘密責任。 <br/><br/>我希望客戶擁有及管理他們的金鑰，讓我可以專注于執行我的最佳作法，也就是提供核心軟體功能。」 |√ 客戶可以將他們自己的金鑰匯入 Azure 並加以管理。 當 SaaS 應用程式需要使用客戶的金鑰來執行密碼編譯作業時，Key Vault 會代表應用程式進行這些作業。 應用程式不會看到客戶的金鑰。 |

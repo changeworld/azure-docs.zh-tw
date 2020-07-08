@@ -1,52 +1,43 @@
 ---
-title: 使用 Azure 自動化更新管理的範圍設定
-description: 本文說明當您使用更新管理時，如何使用範圍設定。
+title: 限制 Azure 自動化更新管理部署範圍
+description: 本文說明如何使用範圍設定來限制更新管理部署的範圍。
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84117391"
 ---
-# <a name="work-with-scope-configurations-for-update-management"></a>使用更新管理的範圍設定
+# <a name="limit-update-management-deployment-scope"></a>限制更新管理部署範圍
 
-本文說明在 VM 上啟用[更新管理](automation-update-management.md)功能時，您可以如何使用範圍設定。 
+本文說明如何在使用[更新管理](automation-update-management.md)功能將更新和修補程式部署至您的 vm 時，使用範圍設定。 如需詳細資訊，請參閱[以 Azure 監視器的目標監視解決方案（預覽）](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。 
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="about-scope-configurations"></a>關於範圍設定
 
-在 https://portal.azure.com 登入 Azure 入口網站。
+範圍設定是一或多個已儲存的搜尋（查詢）的群組，用來將更新管理的範圍限制為特定的電腦。 在 Log Analytics 工作區中使用範圍設定，將目標設為要啟用的電腦。 當您新增電腦以從更新管理接收更新時，該電腦也會新增至工作區中已儲存的搜尋。
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>檢查範圍設定
+## <a name="set-the-scope-limit"></a>設定範圍限制
 
-更新管理會使用 Log Analytics 工作區中的範圍設定，來設定要針對此功能啟用的目標電腦。 範圍設定是一筆或多筆已儲存搜尋的群組，用以將此功能的範圍限定於特定電腦。 如要存取範圍設定：
+若要限制更新管理部署的範圍：
 
-1. 在 [相關資源] 底下的自動化帳戶中，選取 [工作區]。 
+1. 在您的自動化帳戶中，選取 [**相關資源**] 底下的 [**連結工作區**]。
 
-2. 選擇 [工作區資料來源] 底下的工作區，然後選取 [範圍設定]。
+2. 按一下 [**移至工作區**]。
 
-3. 如果選取的工作區尚未啟用更新管理功能，則會建立 `MicrosoftDefaultScopeConfig-Updates` 範圍設定。 
+3. 選取 [**工作區資料來源**] 底下的 **[範圍設定（預覽）** ]。
 
-4. 如果選取的工作區已啟用此功能，則不會重新部署，也不會新增範圍設定。 
+4. 選取範圍設定右邊的省略號 `MicrosoftDefaultScopeConfig-Updates` ，然後按一下 [**編輯**]。 
 
-5. 選取任何範圍設定上的省略符號，然後按一下 [編輯]。 
+5. 在編輯窗格中，展開 [**選取電腦群組**]。 電腦群組窗格會顯示用來建立範圍設定的已儲存搜尋。 更新管理所使用的已儲存搜尋是：
 
-6. 在編輯窗格中，選取 [選取電腦群組]。 電腦群組窗格會顯示用來建立範圍設定的已儲存搜尋。
+    |名稱     |類別  |Alias  |
+    |---------|---------|---------|
+    |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
 
-## <a name="view-a-saved-search"></a>檢視已儲存的搜尋
-
-當電腦新增至更新管理時，也會將它新增至工作區中已儲存的搜尋。 已儲存的搜尋是包含目標電腦的查詢。
-
-1. 瀏覽至您的 Log Analytics 工作區，並選取 [一般] 下的 [已儲存的搜尋]。 更新管理所使用的已儲存搜尋是：
-
-|名稱     |類別  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
-
-2. 選取已儲存的搜尋來檢視用於填入群組的查詢。 下圖顯示查詢與其結果：
+6. 選取已儲存的搜尋，以查看並編輯用來填入群組的查詢。 下圖顯示查詢與其結果：
 
     ![已儲存的搜尋](media/automation-scope-configurations-update-management/logsearch.png)
 

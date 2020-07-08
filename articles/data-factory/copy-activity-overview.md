@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187676"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -55,7 +54,7 @@ ms.locfileid: "81414228"
 
 您可以使用「複製活動」在兩個以檔案為基礎的資料存放區之間依原樣複製檔案，在此情況下，資料會有效率地複製，而不會進行任何序列化或還原序列化。 此外，您也可以剖析或產生特定格式的檔案，例如，您可以執行下列動作：
 
-* 從內部部署 SQL Server 資料庫複製資料，並以 Parquet 格式寫入 Azure Data Lake Storage Gen2。
+* 從 SQL Server 資料庫複製資料，並以 Parquet 格式寫入 Azure Data Lake Storage Gen2。
 * 從內部部署檔案系統複製文字（CSV）格式的檔案，並以 Avro 格式寫入 Azure Blob 儲存體。
 * 從內部部署檔案系統複製壓縮檔案、將其即時解壓縮，然後將解壓縮的檔案寫入 Azure Data Lake Storage Gen2。
 * 從 Azure Blob 儲存體複製 Gzip 壓縮文字（CSV）格式的資料，並將其寫入 Azure SQL Database。
@@ -65,7 +64,7 @@ ms.locfileid: "81414228"
 
 啟用複製活動的服務可在[Azure 整合執行時間位置](concepts-integration-runtime.md#integration-runtime-location)所列的區域和地理區域中全域取得。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 請參閱[依區域的產品](https://azure.microsoft.com/regions/#services)，以檢查特定區域中 Data Factory 和資料移動的可用性。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -75,7 +74,7 @@ ms.locfileid: "81414228"
 2. **建立來源和接收的資料集。** 如需設定資訊和支援的屬性，請參閱來源和接收連接器文章的「資料集屬性」章節。
 3. **建立具有複製活動的管線。** 下一節提供範例。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 
 複製活動的下列範本包含完整的支援屬性清單。 請指定適合您案例的屬性。
 
@@ -127,19 +126,19 @@ ms.locfileid: "81414228"
 
 #### <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 描述 | 必要？ |
+| 屬性 | 說明 | 必要項？ |
 |:--- |:--- |:--- |
-| type | 若為複製活動，請將設定為`Copy` | 是 |
-| 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
+| 類型 | 若為複製活動，請將設定為`Copy` | Yes |
+| 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | Yes |
 | 輸出 | 指定您所建立的資料集，以指向接收資料。 複製活動僅支援單一輸出。 | 是 |
-| typeProperties | 指定要設定複製活動的屬性。 | 是 |
-| source | 指定要用來抓取資料的複製來源類型和對應的屬性。<br/>如需詳細資訊，請參閱[支援的資料存放區和格式](#supported-data-stores-and-formats)中所列連接器文章中的「複製活動屬性」一節。 | 是 |
-| 接收 | 指定複製接收類型和用於寫入資料的對應屬性。<br/>如需詳細資訊，請參閱[支援的資料存放區和格式](#supported-data-stores-and-formats)中所列連接器文章中的「複製活動屬性」一節。 | 是 |
-| 轉譯程式 | 指定從來源到接收的明確資料行對應。 當預設複製行為不符合您的需求時，就會套用此屬性。<br/>如需詳細資訊，請參閱[複製活動中的架構對應](copy-activity-schema-and-type-mapping.md)。 | 否 |
-| dataIntegrationUnits | 指定代表[Azure 整合運行](concepts-integration-runtime.md)時間用於資料複製之耗電量的量值。 這些單位先前稱為雲端資料移動單位（DMU）。 <br/>如需詳細資訊，請參閱[資料整合單位](copy-activity-performance-features.md#data-integration-units)。 | 否 |
-| parallelCopies | 指定在從來源讀取資料，並將資料寫入至接收時，複製活動所要使用的平行處理原則。<br/>如需詳細資訊，請參閱[平行複製](copy-activity-performance-features.md#parallel-copy)。 | 否 |
-| 保留 | 指定在資料複製期間是否保留中繼資料/Acl。 <br/>如需詳細資訊，請參閱[保留中繼資料](copy-activity-preserve-metadata.md)。 |否 |
-| enableStaging<br/>stagingSettings | 指定是否要將暫時資料暫存在 Blob 儲存體中，而不是直接將資料從來源複製到接收。<br/>如需實用案例和設定詳細資料的相關資訊，請參閱[分段複製](copy-activity-performance-features.md#staged-copy)。 | 否 |
+| typeProperties | 指定要設定複製活動的屬性。 | Yes |
+| source | 指定要用來抓取資料的複製來源類型和對應的屬性。<br/>如需詳細資訊，請參閱[支援的資料存放區和格式](#supported-data-stores-and-formats)中所列連接器文章中的「複製活動屬性」一節。 | Yes |
+| 接收 | 指定複製接收類型和用於寫入資料的對應屬性。<br/>如需詳細資訊，請參閱[支援的資料存放區和格式](#supported-data-stores-and-formats)中所列連接器文章中的「複製活動屬性」一節。 | Yes |
+| 轉譯程式 | 指定從來源到接收的明確資料行對應。 當預設複製行為不符合您的需求時，就會套用此屬性。<br/>如需詳細資訊，請參閱[複製活動中的架構對應](copy-activity-schema-and-type-mapping.md)。 | No |
+| dataIntegrationUnits | 指定代表[Azure 整合運行](concepts-integration-runtime.md)時間用於資料複製之耗電量的量值。 這些單位先前稱為雲端資料移動單位（DMU）。 <br/>如需詳細資訊，請參閱[資料整合單位](copy-activity-performance-features.md#data-integration-units)。 | No |
+| parallelCopies | 指定在從來源讀取資料，並將資料寫入至接收時，複製活動所要使用的平行處理原則。<br/>如需詳細資訊，請參閱[平行複製](copy-activity-performance-features.md#parallel-copy)。 | No |
+| 保留 | 指定在資料複製期間是否保留中繼資料/Acl。 <br/>如需詳細資訊，請參閱[保留中繼資料](copy-activity-preserve-metadata.md)。 |No |
+| enableStaging<br/>stagingSettings | 指定是否要將暫時資料暫存在 Blob 儲存體中，而不是直接將資料從來源複製到接收。<br/>如需實用案例和設定詳細資料的相關資訊，請參閱[分段複製](copy-activity-performance-features.md#staged-copy)。 | No |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 選擇當您將資料從來源複製到接收時，如何處理不相容的資料列。<br/>如需詳細資訊，請參閱[容錯](copy-activity-fault-tolerance.md)。 | 否 |
 
 ## <a name="monitoring"></a>監視
@@ -196,13 +195,13 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 >[!TIP]
 >這項功能適用于最新的資料集模型。 如果您在 UI 中沒有看到此選項，請嘗試建立新的資料集。
 
-若要以程式設計方式設定`additionalColumns`它，請在複製活動來源中新增屬性：
+若要以程式設計方式設定它，請 `additionalColumns` 在複製活動來源中新增屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列底下的`additionalColumns`每個物件都代表一個額外的資料行。 會`name`定義資料行名稱，而則`value`表示該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`**-保留的變數表示要將來源檔案的相對路徑儲存在 dataset 中指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **運算式**<br>- **靜態值** | 否 |
+| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列底下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，而則 `value` 表示該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`**-保留的變數表示要將來源檔案的相對路徑儲存在 dataset 中指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **運算式**<br>- **靜態值** | No |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -250,4 +249,4 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 - [在相同的 Azure Blob 儲存體帳戶中，將資料從一個位置複製到另一個位置](quickstart-create-data-factory-dot-net.md)
 - [將資料從 Azure Blob 儲存體複製到 Azure SQL Database](tutorial-copy-data-dot-net.md)
-- [將資料從內部部署 SQL Server 資料庫複製到 Azure](tutorial-hybrid-copy-powershell.md)
+- [將資料從 SQL Server 資料庫複製到 Azure](tutorial-hybrid-copy-powershell.md)

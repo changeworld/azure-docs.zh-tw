@@ -8,12 +8,11 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: b9b5d51d0d35284d9854bd048396df84881266d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c562aa462248ffcf7c71ad247e05f0a7de15cdb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76771415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84168041"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>適用於 JAVA 的 Azure Cosmos DB 資料表 API︰版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,8 +25,8 @@ ms.locfileid: "76771415"
 
 |   |   |
 |---|---|
-|**SDK 下載**|[下載選項](https://github.com/azure/azure-storage-java#download) \(英文\)|
-|**API 檔**|[Java API 參考文件](https://azure.github.io/azure-storage-java/)|
+|**SDK 下載**|[下載選項](https://github.com/azure/azure-storage-java#download)|
+|**API 文件**|[Java API 參考文件](https://azure.github.io/azure-storage-java/)|
 |**參與 SDK**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
@@ -36,7 +35,7 @@ ms.locfileid: "76771415"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 公開上市版本
 
 ## <a name="release-and-retirement-dates"></a>發行和停用日期
@@ -51,6 +50,6 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 ## <a name="faq"></a>常見問題集
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。 
 

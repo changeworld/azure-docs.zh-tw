@@ -5,12 +5,11 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84167786"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 還原已刪除的 App Service 應用程式
 
@@ -66,7 +65,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 - **Name**：應用程式的名稱，必須是全域唯一的。
 - **TargetAppServicePlanName**：連結至應用程式的 App Service 方案
 
-根據預設，`Restore-AzDeletedWebApp` 將同時還原您的應用程式設定和內容。 如果您只想還原內容，請使用 `-RestoreContentOnly` 旗標搭配這個 commandlet。
+根據預設， `Restore-AzDeletedWebApp` 會同時還原您的應用程式設定和任何內容。 如果您只想還原內容，請使用 `-RestoreContentOnly` 旗標搭配這個 commandlet。
 
 > [!NOTE]
 > 如果應用程式已裝載於 App Service 環境中，接著從中刪除，則只有在對應的 App Service 環境仍然存在時，才可以還原。

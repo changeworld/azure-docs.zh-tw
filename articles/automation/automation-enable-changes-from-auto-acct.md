@@ -5,12 +5,11 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 13f17ed9d165e368d2e9d9cde694408b600006cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171118"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>自動化帳戶的 [啟用變更追蹤和清查]
 
@@ -37,17 +36,13 @@ ms.locfileid: "83826837"
 
     ![啟用變更追蹤和清查](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>檢查範圍設定
-
-變更追蹤和清查會使用工作區中的範圍設定，來設定要接收變更的目標電腦。 範圍設定是一筆或多筆已儲存搜尋的群組，用以將此功能的範圍限定於特定電腦。 如需詳細資訊，請參閱[使用變更追蹤和清查的範圍設定](automation-scope-configurations-change-tracking.md)。
-
 ## <a name="enable-azure-vms"></a>啟用 Azure VM
 
 1. 從您的自動化帳戶中，選取 [組態管理] 底下的 [清查] 或 [變更追蹤]。
 
 2. 按一下 [+ 加入 Azure VM]，然後從清單中選取一或多個 VM。 無法啟用的虛擬機器會呈現灰色且無法選取。 Azure VM 可以存在於任何區域中，而不論您的自動化帳戶位置為何。 
 
-3. 按一下 [啟用]，以將選取的 VM 新增至此功能的電腦群組儲存搜尋。 如需詳細資訊，請參閱[使用變更追蹤和清查的範圍設定](automation-scope-configurations-change-tracking.md)。
+3. 按一下 [啟用]，以將選取的 VM 新增至此功能的電腦群組儲存搜尋。 如需詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 
     ![啟用 Azure VM](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -73,15 +68,11 @@ ms.locfileid: "83826837"
 
 4. 若要為所有可用的機器與未來的機器啟用此功能，請選取 [在所有可用及未來的機器上啟用]。 此選項會從工作區刪除已儲存的搜尋和範圍設定，並針對向工作區報告的所有 Azure 和非 Azure 機器開啟此功能。 選取時，此動作會永久停用 [管理機器] 按鈕，因為沒留下任何範圍設定。
 
-5. 如有需要，您可以藉由重新新增初始儲存的搜尋，重新新增範圍設定。 如需詳細資訊，請參閱[使用變更追蹤和清查的範圍設定](automation-scope-configurations-change-tracking.md)。
+5. 如有需要，您可以藉由重新新增初始儲存的搜尋，重新新增範圍設定。 如需詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 
 6. 若要針對一或多部機器新增此功能，請選取 [在選取的機器上啟用]，然後按一下想針對此功能啟用之每部機器旁邊的 [新增]。 此工作會針對此功能，將所選取機器的名稱加入至電腦群組儲存的搜尋查詢。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需此功能的詳細資訊，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
-* 如需範圍設定的相關資訊，請參閱[使用變更追蹤和清查的範圍設定](automation-scope-configurations-change-tracking.md)。
-* 若要了解如何使用此功能來識別安裝在環境中的軟體，請參閱[探索您的 VM 上安裝的軟體](automation-tutorial-installed-software.md)。
-* 如果您在啟用此功能時不要將自動化帳戶與 Log Analytics 工作區整合，請參閱[從自動化帳戶取消連結工作區](automation-unlink-workspace-change-tracking.md)。
-* VM 的變更部署完成後，您可以將 VM 移除，如[從變更追蹤和清查中移除 VM](automation-remove-vms-from-change-tracking.md) 所說明。
+* 若要使用此功能，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
 * 若要對此功能的一般問題進行疑難排解，請參閱[對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

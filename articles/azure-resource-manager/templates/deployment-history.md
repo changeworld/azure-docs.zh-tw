@@ -3,17 +3,18 @@ title: 部署歷程記錄
 description: 說明如何使用入口網站、PowerShell、Azure CLI 及 REST API 來檢視 Azure Resource Manager 部署作業。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84117839"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure Resource Manager 來檢視部署歷程記錄
 
-Azure Resource Manager 可讓您檢視部署歷程記錄，並檢查過去部署中的特定作業。 您可以查看已部署的資源，並取得任何錯誤的相關資訊。
+Azure Resource Manager 可讓您查看您的部署歷程記錄。 您可以檢查過去部署中的特定作業，並查看已部署哪些資源。 此歷程記錄包含任何錯誤的相關資訊。
+
+資源群組的部署歷程記錄限制為800個部署。 當您接近限制時，就會自動從歷程記錄中刪除部署。 如需詳細資訊，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
 
 如需解決特定部署錯誤的說明，請參閱 [針對使用 Azure Resource Manager 將資源部署至 Azure 時常見的錯誤進行疑難排解](common-deployment-errors.md)。
 
@@ -117,7 +118,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 1. 在部署的摘要中，選取 [作業詳細資料]。
 
-    ![選取部署作業](./media/deployment-history/get-operation-details.png)
+    ![選取作業詳細資料](./media/deployment-history/get-operation-details.png)
 
 1. 您會看到該部署步驟的詳細資料。 在發生錯誤時，詳細資料會包含錯誤訊息。
 
@@ -210,6 +211,6 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 ## <a name="next-steps"></a>後續步驟
 
 * 如需解決特定部署錯誤的說明，請參閱 [針對使用 Azure Resource Manager 將資源部署至 Azure 時常見的錯誤進行疑難排解](common-deployment-errors.md)。
-* 若要了解如何使用活動記錄來監視其他類型的動作，請參閱[檢視活動記錄以管理 Azure 資源](../management/view-activity-logs.md)。
+* 若要瞭解如何在歷程記錄中管理部署，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
 * 若要在執行之前驗證您的部署，請參閱 [使用 Azure Resource Manager 範本部署資源群組](deploy-powershell.md)。
 

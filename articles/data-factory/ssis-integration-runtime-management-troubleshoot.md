@@ -11,12 +11,11 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84118824"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>針對 Azure Data Factory 中的 SSIS Integration Runtime 管理進行疑難排解
 
@@ -30,27 +29,27 @@ ms.locfileid: "81414704"
 
 如果錯誤碼為 InternalServerError，則服務會發生暫時性問題，您應該稍後再重試此操作。 如果重試沒有説明，請洽詢 Azure Data Factory 支援小組。
 
-否則，三個主要的外部相依性可能會導致錯誤： Azure SQL Database 伺服器或受控實例、自訂安裝腳本，以及虛擬網路設定。
+否則，三個主要的外部相依性可能會導致錯誤： Azure SQL Database 或 Azure SQL 受控執行個體、自訂安裝腳本，以及虛擬網路設定。
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL Database server 或受控實例問題
+## <a name="sql-database-or-sql-managed-instance-issues"></a>SQL Database 或 SQL 受控執行個體問題
 
-如果您要使用 SSIS 目錄資料庫來佈建 SSIS IR，則需要 Azure SQL Database 伺服器或受控執行個體。 SSIS IR 必須要能夠存取 Azure SQL Database 伺服器或受控執行個體。 此外，Azure SQL Database 伺服器或受控執行個體的帳戶也應該要有可建立 SSIS 目錄資料庫 (SSISDB) 的權限。 如果發生錯誤，Data Factory 入口網站中會顯示錯誤碼與詳細的 SQL 例外狀況訊息。 請使用下列清單中的資訊來針對錯誤碼進行疑難排解。
+如果您要使用 SSIS 目錄資料庫布建 SSIS IR，則需要 SQL Database 或 SQL 受控執行個體。 SSIS IR 必須能夠存取 SQL Database 或 SQL 受控執行個體。 此外，SQL Database 或 SQL 受控執行個體的登入帳戶必須擁有建立 SSIS 目錄資料庫（SSISDB）的許可權。 如果發生錯誤，Data Factory 入口網站中會顯示錯誤碼與詳細的 SQL 例外狀況訊息。 請使用下列清單中的資訊來針對錯誤碼進行疑難排解。
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 在佈建新的 SSIS IR 或 IR 正在執行時，您可能會看到此問題。 如果您在 IR 佈建期間遇到此錯誤，便可能會在錯誤訊息中獲得詳細的 SqlException 訊息，其內容會指出下列其中一個問題：
 
-* 網路連線問題。 請檢查 SQL Server 或受控執行個體主機名稱是否可供存取。 也請確認沒有防火牆或網路安全性群組 (NSG) 封鎖 SSIS IR 對伺服器的存取。
+* 網路連線問題。 檢查 SQL Database 或 SQL 受控執行個體的主機名稱是否可存取。 也請確認沒有防火牆或網路安全性群組 (NSG) 封鎖 SSIS IR 對伺服器的存取。
 * SQL 驗證期間登入失敗。 所提供的帳戶無法登入 SQL Server 資料庫。 請確定您提供的使用者帳戶是否正確。
 * Microsoft Azure Active Directory (Azure AD) 驗證 (受控識別) 期間登入失敗。 將中心的受控識別新增至 AAD 群組，並確定受控識別具有目錄資料庫伺服器的存取權限。
 * 連線逾時。 此錯誤一律是由安全性相關設定所造成的。 建議您：
   1. 建立新的 VM。
   1. 如果 IR 位於虛擬網路中，請將 VM 加入相同的 IR Microsoft Azure 虛擬網路。
-  1. 安裝 SSMS，並檢查 Azure SQL Database 伺服器或受控實例狀態。
+  1. 安裝 SSMS，並檢查 SQL Database 或 SQL 受控執行個體狀態。
 
-若為其他問題，請修正詳細 SQL 例外狀況錯誤訊息中所顯示的問題。 如果您仍然遇到問題，請連絡 Azure SQL Database 伺服器或受控執行個體支援小組。
+若為其他問題，請修正詳細 SQL 例外狀況錯誤訊息中所顯示的問題。 如果您仍然遇到問題，請洽詢 SQL Database 或 SQL 受控執行個體支援小組。
 
-如果您在 IR 執行時看到錯誤，則可能是網路安全性群組或防火牆變更而導致 SSIS IR 背景工作角色節點無法存取 Azure SQL Database 伺服器或受控執行個體。 請將 SSIS IR 背景工作角色節點解除封鎖，使其可以存取 Azure SQL Database 伺服器或受控執行個體。
+如果您在 IR 執行時看到錯誤，則網路安全性群組或防火牆變更可能會導致 SSIS IR 背景工作角色節點無法存取 SQL Database 或 SQL 受控執行個體。 解除封鎖 SSIS IR 背景工作節點，讓它可以存取 SQL Database 或 SQL 受控執行個體。
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +64,20 @@ ms.locfileid: "81414704"
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-此錯誤表示 Azure SQL Database 伺服器或受控執行個體已經有 SSISDB，而且正由另一個 IR 使用中。 您必須提供不同的 Azure SQL Database 伺服器或受控執行個體，否則請刪除現有 SSISDB，然後重新啟動新的 IR。
+此錯誤表示 SQL Database 或 SQL 受控執行個體已經有 SSISDB，而且另一個 IR 正在使用它。 您需要提供不同的 SQL Database 或 SQL 受控執行個體，或刪除現有的 SSISDB 並重新啟動新的 IR。
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 此錯誤可能會因為下列其中一個原因而發生：
 
 * 針對 SSIS IR 設定的使用者帳戶沒有可建立資料庫的權限。 您可以對使用者授與建立資料庫的權限。
-* 資料庫建立期間發生逾時，例如執行逾時或 DB 作業逾時。 請稍後再重試作業。 如果重試沒有用，請連絡 Azure SQL Database 伺服器或受控執行個體支援小組。
+* 資料庫建立期間發生逾時，例如執行逾時或 DB 作業逾時。 請稍後再重試作業。 如果重試無法解決問題，請洽詢 SQL Database 或 SQL 受控執行個體支援小組。
 
-若為其他問題，請查看 SQL 例外狀況錯誤訊息，並修正錯誤詳細資料中所述的問題。 如果您仍然遇到問題，請連絡 Azure SQL Database 伺服器或受控執行個體支援小組。
+若為其他問題，請查看 SQL 例外狀況錯誤訊息，並修正錯誤詳細資料中所述的問題。 如果您仍然遇到問題，請洽詢 SQL Database 或 SQL 受控執行個體支援小組。
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-這種錯誤訊息看起來像這樣：「不正確物件名稱」目錄。 catalog_properties '」。在此情況下，您可能已經有名為 SSISDB 的資料庫，但它不是由 SSIS IR 所建立，或者資料庫處於不正確狀態，因為最後一個 SSIS IR 布建發生錯誤。 您可以使用名稱 SSISDB 來卸除現有資料庫，也可以為 IR 設定新的 Azure SQL Database 伺服器或受控執行個體。
+這種錯誤訊息看起來像這樣：「不正確物件名稱」目錄。 catalog_properties '」。在此情況下，您可能已經有名為 SSISDB 的資料庫，但它不是由 SSIS IR 所建立，或者資料庫處於不正確狀態，因為最後一個 SSIS IR 布建發生錯誤。 您可以使用名稱 SSISDB 來卸載現有的資料庫，也可以設定新的 SQL Database 或適用于 IR 的 SQL 受控執行個體。
 
 ## <a name="custom-setup-issues"></a>自訂安裝問題
 
@@ -124,7 +123,7 @@ SSIS IR 會定期更新，因此系統會在 IR 正在執行時檢查自訂設�
 
 ### <a name="forbidden"></a>禁止
 
-這種錯誤可能類似于：「目前的帳戶未啟用 SubnetId。 Microsoft。 Batch 資源提供者未在 VNet 的相同訂用帳戶下註冊。」
+這種錯誤可能類似于：「目前的帳戶未啟用 SubnetId。 Microsoft.Batch 資源提供者未在相同的 VNet 訂用帳戶下註冊。」
 
 這些詳細資料表示 Azure Batch 無法存取您的虛擬網路。 請將 Microsoft.Batch 資源提供者註冊到與虛擬網路相同的訂用帳戶下。
 
@@ -169,7 +168,7 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 
 當您啟動 Azure SSIS IR 時，會有許多原因會發生此錯誤：
 
-| 錯誤訊息 | 解決方法|
+| 錯誤訊息 | 解決方案|
 |:--- |:--- |
 | 提供的靜態公用 IP 位址已在使用中，請為您的 Azure SSIS Integration Runtime 提供兩個未使用的。 | 您應該選取兩個未使用的靜態公用 IP 位址，或移除指定之公用 IP 位址的目前參照，然後重新開機 Azure SSIS IR。 |
 | 提供的靜態公用 IP 位址沒有 DNS 名稱，請為您的 Azure SSIS Integration Runtime 提供 DNS 名稱其中兩個。 | 您可以在 Azure 入口網站中設定公用 IP 位址的 DNS 名稱，如下圖所示。 特定步驟如下：（1）開啟 Azure 入口網站並移至此公用 IP 位址的資源頁面;（2）選取**Configuration**區段並設定 DNS 名稱，然後按一下 [**儲存**] 按鈕;（3）重新開機您的 Azure SSIS IR。 |

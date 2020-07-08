@@ -7,13 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112801"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>對應資料流程中的篩選轉換
 
@@ -21,7 +20,9 @@ ms.locfileid: "81606431"
 
 篩選轉換可讓您根據條件來進行資料列篩選。 輸出資料流程包含符合篩選準則的所有資料列。 篩選器轉換類似于 SQL 中的 WHERE 子句。
 
-## <a name="configuration"></a>設定
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
+
+## <a name="configuration"></a>組態
 
 使用資料流程運算式產生器，為篩選準則輸入運算式。 若要開啟 [運算式產生器]，請按一下藍色方塊。 篩選準則的類型必須是布林值。 如需如何建立運算式的詳細資訊，請參閱[expression builder](concepts-data-flow-expression-builder.md)檔。
 
@@ -40,13 +41,13 @@ ms.locfileid: "81606431"
 
 ### <a name="example"></a>範例
 
-下列範例是一個名為`FilterBefore1960`的篩選器轉換，它會`CleanData`接受傳入的資料流程。 篩選準則是運算式`year <= 1960`。
+下列範例是一個名為的篩選器轉換 `FilterBefore1960` ，它會接受傳入的資料流程 `CleanData` 。 篩選準則是運算式 `year <= 1960` 。
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
 ![篩選轉換](media/data-flow/filter1.png "篩選轉換")
 
-此轉換的資料流程腳本位於下列程式碼片段中：
+此轉換的資料流指令碼位於下列程式碼片段中：
 
 ```
 CleanData

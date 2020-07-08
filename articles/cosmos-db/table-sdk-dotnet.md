@@ -8,12 +8,11 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84168143"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 資料表 .NET API：下載和版本資訊
 
@@ -39,40 +38,40 @@ ms.locfileid: "80984975"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
-* 錯誤修正
+* Bug 修正
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
-* 錯誤修正
+* Bug 修正
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * 已新增多區域寫入支援
 * 已修正 Microsoft.Azure.DocumentDB、Microsoft.OData.Core、Microsoft.OData.Edm、Microsoft.Spatial 上的 NuGet 套件相依性
 
-### <a name="113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * 已修正 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.DocumentDB 上的 NuGet 套件相依性。
 * 設定 JsonConvert.DefaultSettings 時將資料表序列化的錯誤修正。
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * 新增格式錯誤的 ETAG 在「直接模式」中的驗證。
 * 修正閘道模式中 LINQ 的查詢錯誤 (bug)。
 * 同步 API 現在使用 SynchronizationContext 在執行緒集區上執行。
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * 將 TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism 及 TableQueryContinuationTokenLimitInKb 新增至 TableRequestOptions
-* 錯誤修正
+* Bug 修正
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * 公開上市版本
 
-### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0-preview
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0-preview
 
 * 初始預覽版本
 
@@ -80,7 +79,7 @@ ms.locfileid: "80984975"
 
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。
 
-此`Microsoft.Azure.CosmosDB.Table`程式庫目前僅適用于 .NET Framework，而且處於維護模式，即將淘汰。 新的特性和功能和優化只會新增至 .NET Standard 程式庫[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，因此建議您升級至[Cosmos. table. 資料表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
+此連結 `Microsoft.Azure.CosmosDB.Table` 庫目前僅適用于 .NET Framework，而且處於維護模式，即將淘汰。 新的特性和功能和優化只會新增至 .NET Standard 程式庫[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，因此建議您升級至[Cosmos. table. 資料表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
 
 Windowsazure.storage 已淘汰[windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)預覽套件。 WindowsAzure.Storage-PremiumTable SDK 將於 2018 年 11 月 15 日淘汰，屆時不允許使用已停用 SDK 的要求。 
 
@@ -90,7 +89,7 @@ Windowsazure.storage 已淘汰[windowsazure.storage-premiumtable](https://www.nu
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |2019 年 9 月 16 日| |
-| [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020年4月01日 |
+| [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020 年 4 月 1 日 |
 | [2.0.0](#2.0.0) |2018 年 9 月 26 日|2020年3月01日 |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|2019年12月01日 |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|2019年12月01日 |
@@ -122,6 +121,6 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 若要深入了解 Azure Cosmos DB 資料表 API，請參閱 [Azure Cosmos DB 資料表 API 的簡介](table-introduction.md)。 

@@ -6,12 +6,11 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84148339"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
@@ -70,9 +69,9 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
     |應用程式設定    | 值    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 資源的 iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | 適用於您 Application Insights 資源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
 * **ApplicationInsightsProfiler3** WebJob 必須正在執行。 若要檢查 WebJob：
@@ -87,7 +86,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
       ![profiler-webjob-log]
 
-如果您無法找出 Profiler 無法運作的原因，您可以下載記錄檔，並將它傳送給我們的小組以serviceprofilerhelp@microsoft.com取得協助。 
+如果您無法找出 Profiler 無法運作的原因，您可以下載記錄檔，並將它傳送給我們的小組以取得協助 serviceprofilerhelp@microsoft.com 。 
     
 ### <a name="manual-installation"></a>手動安裝
 
@@ -102,9 +101,9 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
     |應用程式設定    | 值    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 資源的 iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | 適用於您 Application Insights 資源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>太多個使用中分析工作階段
 
@@ -114,7 +113,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 如果您要將 Web 應用程式重新部署到已啟用 Profiler 的 Web Apps 資源，您可能會看到下列訊息：
 
-*目錄不是空的\\'\\d\\：\\home\\site wwwroot App_Data 作業 '*
+*目錄不是空的 ' d： \\ home \\ site \\ wwwroot \\ App_Data \\ 作業 '*
 
 如果您從指令碼或從 Azure DevOps 部署管線執行 Web Deploy，就會發生此錯誤。 解決方法是將下列額外的部署參數新增至 Web Deploy 工作：
 
@@ -128,7 +127,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以在[Azure 入口網站](https://portal.azure.com)中開啟 web 應用程式資源。 在 [WebJobs]**** 窗格中，檢查 **ApplicationInsightsProfiler** 的狀態。 如果它並沒有在執行，請開啟 [記錄]**** 以取得詳細資訊。
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>對 Profiler 和 Azure 診斷的問題進行疑難排解
+## <a name="troubleshoot-vms-and-cloud-services"></a>針對 Vm 和雲端服務進行疑難排解
 
 >**已修正 WAD 中隨附于雲端服務的 profiler 中的 bug。** 適用于雲端服務的最新版本 WAD （1.12.2.0）適用于所有最新版本的 App Insights SDK。 雲端服務主機會自動升級 WAD，但不會立即進行。 若要強制升級，您可以重新部署您的服務，或重新開機節點。
 
@@ -141,27 +140,45 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 若要檢查用來設定 Azure 診斷的設定：
 
-1. 登入虛擬機器（VM），然後在此位置開啟記錄檔。 （磁片磁碟機可以是 c：或 d：，而且外掛程式版本可能會不同）。
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    或
+1. 登入虛擬機器（VM），然後在此位置開啟記錄檔。 您的電腦上的外掛程式版本可能較新。
+    
+    針對 Vm：
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    對於雲端服務：
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. 在該檔案中，您可以搜尋 **WadCfg** 字串，以找出傳至 VM 用以設定 Azure 診斷的設定。 您可以確認 Profiler 接收所使用的 iKey 是否正確。
 
-1. 檢查用來啟動 Profiler 的命令列。 用來啟動 Profiler 的引數位於下列檔案中。 （磁片磁碟機可以是 c：或 d：）
+1. 檢查用來啟動 Profiler 的命令列。 用來啟動 Profiler 的引數位於下列檔案中。 （磁片磁碟機可以是 c：或 d：，而且目錄可能會隱藏起來）。
 
+    針對 Vm：
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    針對雲端服務：
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. 確定 Profiler 命令列上的 iKey 正確無誤。 
 
-1. 使用在上述 *config.json* 檔案中找到的路徑，檢查 Profiler 記錄檔。 其中會顯示偵錯資訊，指出 Profiler 所使用的設定。 此外也會顯示來自 Profiler 的狀態和錯誤訊息。  
+1. 使用上述*config.js*檔案中找到的路徑，檢查 Profiler 記錄檔，稱為**BootstrapN**。 其中會顯示偵錯資訊，指出 Profiler 所使用的設定。 此外也會顯示來自 Profiler 的狀態和錯誤訊息。  
+
+    針對 Vm，檔案通常位於此處：
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    對於雲端服務：
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     如果 Profiler 是在您的應用程式接收要求時執行，則會顯示下列訊息：*從 iKey 偵測到活動*。 
 

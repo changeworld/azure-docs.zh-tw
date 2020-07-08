@@ -1,7 +1,7 @@
 ---
 title: 自訂角色：線上 SQL Server 至 SQL 受控實例的遷移
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何使用適用于 SQL Server 的自訂角色，Azure SQL Database 受控實例線上遷移。
+description: 瞭解如何使用自訂角色 SQL Server 至 Azure SQL 受控執行個體線上遷移。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d9f222818726fa81dd28fe70042cbfc51162e27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187458"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL Server SQL Database 受控實例線上遷移的自訂角色
+# <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server 到 Azure SQL 受控執行個體線上遷移的自訂角色
 
 Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互動。 「應用程式識別碼」需要訂用帳戶層級的「參與者」角色（許多公司安全性部門不允許）或建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定許可權。 由於 Azure Active Directory 中有2000個自訂角色的限制，因此您可能會想要將應用程式識別碼特別需要的擁有權限結合成一或兩個自訂角色，然後將特定物件或資源群組（相對於訂用帳戶層級）上的自訂角色授與應用程式識別碼。 如果不考慮自訂角色的數目，您可以依資源類型分割自訂角色，以建立三個自訂角色，如下所述。
 
@@ -30,7 +29,7 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 我們目前建議您至少為應用程式識別碼建立兩個自訂角色，一個在資源層級，另一個在訂用帳戶層級。
 
 > [!NOTE]
-> 最後一次自訂角色需求可能會被移除，因為新的 SQL Database 受控實常式序代碼會部署到 Azure。
+> 最後一個自訂角色需求可能會因為新的 SQL 受控執行個體程式碼部署至 Azure 而被移除。
 
 **應用程式識別碼的自訂角色**。 在*資源*或*資源群組*層級進行 Azure 資料庫移轉服務遷移需要此角色（如需有關應用程式識別碼的詳細資訊，請參閱[使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體一](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)文）。
 
@@ -87,14 +86,14 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 
 建立這些自訂角色之後，您必須將角色指派新增至適當資源或資源群組的使用者和應用程式識別碼：
 
-* 「DMS 角色-應用程式識別碼」角色必須授與將用於遷移的應用程式識別碼，以及儲存體帳戶、Azure 資料庫移轉服務實例和 SQL Database 受控實例資源層級。
+* 「DMS 角色-應用程式識別碼」角色必須授與將用於遷移的應用程式識別碼，以及儲存體帳戶、Azure 資料庫移轉服務實例和 SQL 受控執行個體資源層級。
 * 「DMS 角色-應用程式識別碼-子」角色必須授與「訂用帳戶」層級的「應用程式識別碼」（在資源或資源群組中授與將會失敗）。 這項需求是暫時性的，直到部署程式碼更新為止。
 
 ## <a name="expanded-number-of-roles"></a>擴充的角色數目
 
 如果 Azure Active Directory 中的自訂角色數目不是問題，建議您總共建立三個角色。 您仍然需要「DMS 角色-應用程式識別碼-子」角色，但上述「DMS 角色-應用程式識別碼」角色會依資源類型分割成兩個不同的角色。
 
-**SQL Database 受控實例之應用程式識別碼的自訂角色**
+**適用于 SQL 受控執行個體之應用程式識別碼的自訂角色**
 
 ```json
 {

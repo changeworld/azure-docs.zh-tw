@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84188298"
 ---
 # <a name="data-management-gateway"></a>資料管理閘道
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "80065411"
 
 資料管理閘道是一個用戶端代理程式，您必須在內部部署環境中部署此代理程式，才能在雲端與內部部署資料存放區之間複製資料。 如需 Data Factory 所支援的內部部署資料存放區，請參閱 [支援的資料來源](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 一節。
 
-本文是用來補充 [在內部部署和雲端資料存放區之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文中的逐步解說。 在該逐步解說中，您會建立一個使用閘道將資料從內部部署 SQL Server 資料庫移到 Azure Blob 的管線。 這篇文章提供有關資料管理閘道的詳細深入資訊。
+本文是用來補充 [在內部部署和雲端資料存放區之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文中的逐步解說。 在逐步解說中，您會建立管線，以使用閘道將資料從 SQL Server 資料庫移至 Azure blob。 這篇文章提供有關資料管理閘道的詳細深入資訊。
 
 您可以將多個內部部署機器關聯到閘道以相應放大資料管理閘道。 您可以增加可在節點上同時執行的資料移動作業數目來進行相應增加。 這項功能也適用於具有單一節點的邏輯閘道。 如需得詳細資料，請參閱[在 Azure Data Factory 中調整資料管理閘道](data-factory-data-management-gateway-high-availability-scalability.md)一文。
 
@@ -37,7 +36,7 @@ ms.locfileid: "80065411"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 ### <a name="capabilities-of-data-management-gateway"></a>資料管理閘道功能
 資料管理閘道提供下列功能：
 
@@ -71,7 +70,7 @@ ms.locfileid: "80065411"
 * 您必須**使用閘道**，即使資料存放區位於 **Azure IaaS VM** 上的雲端中。
 
 ## <a name="installation"></a>安裝
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 * 支援的 **作業系統** 版本包括 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。 目前不支援在網域控制站上安裝資料管理閘道。
 * 必須有 .NET Framework 4.5.1 或更新版本。 如果您要在 Windows 7 電腦上安裝閘道，請安裝 .NET Framework 4.5 或更新版本。 如需詳細資訊，請參閱 [.NET Framework 系統需求](https://msdn.microsoft.com/library/8z6watww.aspx) 。
 * 建議的閘道機器「組態」 **** 為至少 2 GHz、4 核心、8 GB RAM 和 80 GB 磁碟。
@@ -103,7 +102,7 @@ ms.locfileid: "80065411"
 10. 在您機器上執行的**資料管理閘道組態管理員**中的 [註冊閘道器]**** 頁面上，執行下列步驟：
     1. 將金鑰貼在文字中。
     2. (選擇性) 按一下 [顯示閘道器金鑰] **** 以查看金鑰文字。
-    3. 按一下 [註冊]  。
+    3. 按一下 [註冊] 。
 
 ### <a name="register-gateway-using-key"></a>使用金鑰註冊閘道
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>如果您尚未在入口網站中建立邏輯閘道
@@ -140,7 +139,7 @@ ms.locfileid: "80065411"
 
 在公司防火牆層級，您需要設定下列網域和輸出連接埠：
 
-| 網域名稱 | 連接埠 | 描述 |
+| 網域名稱 | 連接埠 | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |用於與「資料移動服務」後端進行通訊 |
 | *.core.windows.net |443 |用於使用 Azure Blob 的分段複製 (如果已設定)|
@@ -161,10 +160,10 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 例如，若要 **從內部部署資料存放區複製到 Azure SQL Database 接收器或 Azure SQL 資料倉儲接收器**，執行下列步驟︰
 
 * 針對 Windows 防火牆和公司防火牆，允許埠**1433**上的輸出**TCP**通訊。
-* 設定 Azure SQL 伺服器的防火牆設定，將閘道機器的 IP 位址新增到允許的 IP 位址清單中。
+* 設定邏輯 SQL server 的防火牆設定，以將閘道電腦的 IP 位址新增至允許的 IP 位址清單。
 
 > [!NOTE]
-> 如果您的防火牆不允許使用輸出連接埠 1433，閘道將無法直接存取 Azure SQL。 在此情況下，您可以使用[分段複製](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)來移到 SQL Azure Database/SQL Azure DW。 在此案例中，您只需要 HTTPS (連接埠 443) 即可進行資料移動。
+> 如果您的防火牆不允許使用輸出連接埠 1433，閘道將無法直接存取 Azure SQL。 在此情況下，您可以使用[分段複製](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)來 SQL DATABASE/sql 受控執行個體/SQL Azure DW。 在此案例中，您只需要 HTTPS (連接埠 443) 即可進行資料移動。
 >
 >
 
@@ -180,15 +179,15 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 有三個組態選項：
 
 * **不使用 Proxy**︰閘道不會明確地使用任何 Proxy 來連線到雲端服務。
-* **使用系統 proxy**：閘道會使用 diahost.exe.config 中設定的 proxy 設定和 diawp.exe.config。如果在 diahost.exe.config 和 diawp.exe.config 中未設定 proxy，閘道會直接連線到雲端服務，而不需要透過 proxy。
-* **使用 [自訂 proxy**]：設定 HTTP proxy 設定以用於閘道，而不是使用 diahost.exe.config 和 diawp.exe.config 中的配置。需要位址和埠。 「使用者名稱」和「密碼」則為選擇性，需視您的 Proxy 驗證設定而定。 所有設定都會由閘道的認證憑證予以加密，並儲存在閘道主機機器的本機。
+* **使用系統 proxy**：閘道會使用在 diahost.exe.config 和 diawp.exe.config 中設定的 proxy 設定。如果 diahost.exe.config 和 diawp.exe.config 中未設定 proxy，閘道會直接連線到雲端服務，而不需要透過 proxy。
+* **使用 [自訂 proxy**]：設定要用於閘道的 HTTP proxy 設定，而不是使用 diahost.exe.config 和 diawp.exe.config 中的設定。需要位址和埠。 「使用者名稱」和「密碼」則為選擇性，需視您的 Proxy 驗證設定而定。 所有設定都會由閘道的認證憑證予以加密，並儲存在閘道主機機器的本機。
 
 在您儲存已更新的 Proxy 設定之後，資料管理閘道主機服務會自動重新啟動。
 
 在成功註冊閘道之後，如果您想要檢視或更新 Proxy 設定，請使用「資料管理閘道組態管理員」。
 
 1. 啟動 **資料管理閘道器組態管理員**。
-2. 切換到 [設定] **** 索引標籤。
+2. 切換到 [設定]  索引標籤。
 3. 按一下 [HTTP Proxy]**** 區段中的 [變更]**** 連結，以啟動 [設定 HTTP Proxy]**** 對話方塊。
 4. 按 [下一步] **** 按鈕之後，您會看到一個警告對話方塊，此對話方塊會向您請求權限來儲存 Proxy 設定及重新啟動「閘道主機服務」。
 
@@ -202,10 +201,10 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 >
 
 ### <a name="configure-proxy-server-settings"></a>設定 Proxy 伺服器設定
-如果您針對 HTTP proxy 選取 [**使用系統 proxy** ] 設定，閘道會使用 diahost.exe.config 和 diawp.exe.config 中的 proxy 設定。如果 diahost.exe.config 中未指定 proxy，則閘道會直接連線到雲端服務，而不需要透過 proxy。 下列程序說明如何更新 diahost.exe.config 檔案。
+如果您針對 HTTP proxy 選取 [**使用系統 proxy** ] 設定，閘道會使用 diahost.exe.config 和 diawp.exe.config 中的 proxy 設定。如果 diahost.exe.config 和 diawp.exe.config 中未指定 proxy，閘道會直接連線到雲端服務，而不需要透過 proxy。 下列程序說明如何更新 diahost.exe.config 檔案。
 
-1. 在 [檔案管理器] 中，建立*C：\\\\Program Files\\Microsoft 資料管理 Gateway\\2.0\\共用\\diahost.exe.config*的安全複本，以備份原始檔案。
-2. 以系統管理員身分啟動 notepad.exe，並開啟文字檔*C\\\\\\： Program Files Microsoft 資料管理 Gateway\\2.0\\Shared\\diahost.exe.config*。您會找到 system.net 的預設標記，如下列程式碼所示：
+1. 在 [檔案管理器] 中，建立*C： \\ \\ Program Files \\ Microsoft 資料管理 Gateway \\ 2.0 \\ 共用 \\diahost.exe.config*的安全複本，以備份原始檔案。
+2. 啟動以系統管理員身分執行 Notepad.exe，並開啟文字檔*C： \\ \\ Program Files \\ Microsoft 資料管理 Gateway \\ 2.0 \\ 共用 \\diahost.exe.config*。您會找到 system.net 的預設標記，如下列程式碼所示：
 
     ```
     <system.net>
@@ -231,7 +230,7 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 3. 將組態檔儲存到原始位置中，然後重新啟動「資料管理閘道主機服務」以套用變更。 重新啟動服務：使用 [控制台] 中的 [服務] 小程式，或是從 [資料管理閘道組態管理員]**** > 按一下 [停止服務]**** 按鈕，然後按一下 [啟動服務]****。 如果服務未啟動，可能因為在已編輯的應用程式組態檔中加入了不正確的 XML 標記語法。
 
 > [!IMPORTANT]
-> 請別忘了更新 diahost.exe.config 和 diawp.exe.config 的**兩個**。
+> 別忘了**同時**更新 diahost.exe.config 和 diawp.exe.config。
 
 除了這幾點以外，您也必須確定 Microsoft Azure 包含在公司的允許清單中。 如需有效的 Microsoft Azure IP 位址清單，可從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=41653)下載。
 
@@ -279,7 +278,7 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 
 [適用於單一節點閘道]
 1. 在閘道電腦上啟動 Windows PowerShell。
-2. 切換至*C\\\\： Program Files\\\\Microsoft Integration Runtime 3.0\\PowerShellScript\\ *資料夾。
+2. 切換至*C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *資料夾。
 3. 執行下列命令，將自動更新功能關閉 (停用)。
 
     ```powershell
@@ -292,7 +291,7 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
     ```
    [適用於多節點高度可用且可調整的閘道](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在閘道電腦上啟動 Windows PowerShell。
-2. 切換至*C\\\\： Program Files\\\\Microsoft Integration Runtime 3.0\\PowerShellScript\\ *資料夾。
+2. 切換至*C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *資料夾。
 3. 執行下列命令，將自動更新功能關閉 (停用)。
 
     對於具備高可用性功能的閘道，需要額外的 AuthKey 參數。
@@ -309,7 +308,7 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 安裝閘道後，您可以用下列方式啟動 [資料管理閘道組態管理員]：
 
 1. 在 [搜尋]**** 視窗中，輸入**資料管理閘道**以存取這個公用程式。
-2. 執行資料夾： * \\ \\C： Program Files\\Microsoft 資料管理 Gateway\\2.0\\Shared*中的可執行檔*ConfigManager。*
+2. 在資料夾： *C： \\ \\ Program Files \\ Microsoft 資料管理 Gateway \\ 2.0 \\ Shared*中執行可執行檔*ConfigManager.exe* 。
 
 ### <a name="home-page"></a>首頁
 首頁可讓您執行下列動作︰
@@ -362,16 +361,16 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 
 下表說明 [閘道節點]**** 清單中的資料行：
 
-監視屬性 | 描述
+監視屬性 | 說明
 :------------------ | :----------
-名稱 | 邏輯閘道和閘道相關聯節點的名稱。 節點是安裝了閘道的內部部署 Windows 機器。 若要了解如何在單一邏輯閘道中擁有一個以上的節點 (最多四個節點)，請參閱[資料管理閘道 - 高可用性和延展性](data-factory-data-management-gateway-high-availability-scalability.md)。
+Name | 邏輯閘道和閘道相關聯節點的名稱。 節點是安裝了閘道的內部部署 Windows 機器。 若要了解如何在單一邏輯閘道中擁有一個以上的節點 (最多四個節點)，請參閱[資料管理閘道 - 高可用性和延展性](data-factory-data-management-gateway-high-availability-scalability.md)。
 狀態 | 邏輯閘道和閘道節點的狀態。 範例：線上/離線/有限/等。如需這些狀態的相關資訊，請參閱[閘道狀態](#gateway-status)一節。
 版本 | 顯示邏輯閘道和每個閘道節點的版本。 邏輯閘道的版本取決於群組中大多數節點的版本。 如果邏輯閘道設定中有不同版本的節點，則只有版本號碼和邏輯閘道相同的節點會正常運作。 其他節點會進入受限制模式，並需要加以手動更新 (如果自動更新失敗才需要這麼做)。
 可用的記憶體 | 閘道節點上可用的記憶體。 這個值是近乎即時的快照集。
 CPU 使用率 | 閘道節點的 CPU 使用率。 這個值是近乎即時的快照集。
 網路功能 (輸入/輸出) | 閘道節點的網路使用率。 這個值是近乎即時的快照集。
 並行作業 (執行中/限制) | 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以增加在高階案例中擴充並行作業執行的限制，其中 CPU/記憶體/網路使用量過低，但活動會計時。這項功能也適用于單一節點閘道（即使未啟用擴充性和可用性功能）。
-[角色] | 多節點閘道中的角色有兩種 - 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點 (包括發送器節點本身)。
+角色 | 多節點閘道中的角色有兩種 - 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點 (包括發送器節點本身)。
 
 當閘道中有兩個以上的節點 (相應放大案例) 時，您會在此頁面中看到某些更合理的設定。 如需設定多節點閘道的詳細資料，請參閱[資料管理閘道 - 高可用性和延展性](data-factory-data-management-gateway-high-availability-scalability.md)。
 
@@ -388,7 +387,7 @@ CPU 使用率 | 閘道節點的 CPU 使用率。 這個值是近乎即時的快�
 
 下表提供**邏輯閘道**的可能狀態。 閘道的狀態取決於閘道節點的狀態。
 
-狀態 | 評價
+狀態 | 註解
 :----- | :-------
 需要註冊 | 此邏輯閘道還沒有已註冊的節點
 線上 | 閘道節點已連線
@@ -510,7 +509,7 @@ CPU 使用率 | 閘道節點的 CPU 使用率。 這個值是近乎即時的快�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切換至資料夾： *C：\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*。 執行與區域變數 $Key 相關聯的 RegisterGateway.ps1，如下列命令所示。****** 此指令碼會向您稍早建立的邏輯閘道註冊您機器上安裝的用戶端代理程式。
+1. 在 Azure PowerShell 中，切換至資料夾： *C： \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3.0 \\ PowerShellScript \\ *。 執行與區域變數 $Key 相關聯的 RegisterGateway.ps1，如下列命令所示。****** 此指令碼會向您稍早建立的邏輯閘道註冊您機器上安裝的用戶端代理程式。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -543,4 +542,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 請參閱 [在內部部署和雲端資料存放區之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。 在該逐步解說中，您會建立一個使用閘道將資料從內部部署 SQL Server 資料庫移到 Azure Blob 的管線。
+* 請參閱 [在內部部署和雲端資料存放區之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。 在逐步解說中，您會建立管線，以使用閘道將資料從 SQL Server 資料庫移至 Azure blob。

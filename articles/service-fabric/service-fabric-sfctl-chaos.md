@@ -5,18 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9bc7a5405309e35a36b15f44a1b136b899afbb55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76906175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84119327"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 啟動、停止及報告 chaos 測試服務。
 
 ## <a name="subgroups"></a>子群組
-|子群組|描述|
+|子群組|Description|
 | --- | --- |
 | [任務](service-fabric-sfctl-chaos-schedule.md) | 取得並設定 chaos 排程。 |
 ## <a name="commands"></a>命令
@@ -35,7 +34,7 @@ ms.locfileid: "76906175"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
 | --end-time-utc | 表示要產生 Chaos 報告之時間範圍結束時間的 Windows 檔案時間。 如需詳細資料，請參閱 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) \(機器翻譯\)。 |
@@ -45,7 +44,7 @@ ms.locfileid: "76906175"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -60,13 +59,13 @@ ms.locfileid: "76906175"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -81,9 +80,9 @@ ms.locfileid: "76906175"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --app-type-health-policy-map | 針對特定應用程式類型，含有狀況不良應用程式百分比上限的 JSON 編碼清單。 每個項目都會指定應用程式類型名稱作為索引鍵，並指定一個整數作為值，此整數代表用來評估所指定應用程式類型之應用程式的 MaxPercentUnhealthyApplications 百分比。 <br><br> 對於特定應用程式類型，定義具有最大健康情況不良應用程式百分比的對應。 每個項目都會指定應用程式類型名稱做為一個索引鍵，並指定一個整數的值，表示用來評估指定應用程式類型之應用程式的 MaxPercentUnhealthyApplications 百分比。 應用程式類型的健康狀態原則對應可以在叢集健康狀態評估期間，用來描述特殊的應用程式類型。 對應中包含的應用程式類型是針對在對應中指定的百分比進行評估，不包含在叢集健康原則中定義的全域 MaxPercentUnhealthyApplications。 對應中指定之應用程式類型的應用程式不會針對應用程式的全域集區進行計算。 例如，如果某個類型的某些應用程式非常重要，叢集系統管理員可以針對該應用程式類型將項目新增至對應，並且為它指派 0% 的值 (也就是不容忍任何失敗)。 其他所有應用程式則可以使用設為 20% 的 MaxPercentUnhealthyApplications 來進行評估，以容忍數千個應用程式執行個體發生一些失敗。 只有在叢集資訊清單使用 HealthManager/EnableApplicationTypeHealthEvaluation 的設定項目啟用應用程式類型健康情況評估時，才會使用應用程式類型健康原則對應。 |
+| --app-type-health-policy-map | 針對特定應用程式類型，具有狀況不良應用程式百分比上限的字典（索引鍵/值）專案的 JSON 編碼陣列。 每個字典專案都會將應用程式類型名稱指定為索引鍵，並將代表用來評估指定應用程式類型應用程式之 MaxPercentUnhealthyApplications 百分比的整數表示為值。 <br><br> 對於特定應用程式類型，定義具有最大健康情況不良應用程式百分比的對應。 應用程式類型健全狀況原則對應可以在叢集健康狀態評估期間使用，以描述個別的應用程式類型。 對應中包含的應用程式類型是針對在對應中指定的百分比進行評估，不包含在叢集健康原則中定義的全域 MaxPercentUnhealthyApplications。 對應中指定之應用程式類型的應用程式不會針對應用程式的全域集區進行計算。 例如，如果某些類型的應用程式很重要，叢集系統管理員可以將專案新增至該應用程式類型的對應，並為其指派0% 的值（不容許任何失敗）。 其他所有應用程式則可以使用設為 20% 的 MaxPercentUnhealthyApplications 來進行評估，以容忍數千個應用程式執行個體發生一些失敗。 只有在叢集資訊清單使用 HealthManager/EnableApplicationTypeHealthEvaluation 的設定項目啟用應用程式類型健康情況評估時，才會使用應用程式類型健康原則對應。 <br><br> 範例 JSON 編碼字串： [{ \" 金鑰 \" ： \" Fabric：/投票 \" ， \" 值 \" ： \" 0 \" }] |
 | --chaos-target-filter | 具有兩個字串類型索引鍵的 JSON 編碼字典。 這兩個索引鍵分別是 NodeTypeInclusionList 和 ApplicationInclusionList。 這兩個索引鍵的值都是字串清單。 chaos_target_filter 會針對鎖定的 Chaos 錯誤定義所有篩選，例如，只有特定節點類型或特定應用程式會引發錯誤。 <br><br> 如果未使用 chaos_target_filter，Chaos 會針對所有叢集實體引發錯誤。 如果使用 chaos_target_filter，則 Chaos 只會針對符合 chaos_target_filter 規格的實體引發錯誤。 NodeTypeInclusionList 和 ApplicationInclusionList 只允許集合聯集語意。 您不能指定 NodeTypeInclusionList 和 ApplicationInclusionList 的交集。 例如，您不能指定「只有在此應用程式位於該節點類型上時才對它引發錯誤」。 若 NodeTypeInclusionList 或 ApplicationInclusionList 中包含某個實體，則該實體就不能使用 ChaosTargetFilter 排除。 即使 applicationX 並未出現在 ApplicationInclusionList 中，但在某些混亂反覆項目中也能對 applicationX 引發錯誤，因為它正好位於包括在 NodeTypeInclusionList 中的 nodeTypeY 的節點上。 如果 NodeTypeInclusionList 和 ApplicationInclusionList 都是空白，則會擲回 ArgumentException。 針對這些節點類型的節點，會啟用所有錯誤類型 (重新啟動節點、重新啟動程式碼封裝、移除複本、重新啟動複本、移動主要複本，以及移動次要複本)。 如果某個節點類型 (假設為 NodeTypeX) 未出現在 NodeTypeInclusionList 中，則系統將永遠不會針對 NodeTypeX 的節點啟用節點層級錯誤 (例如 NodeRestart)，但如果 ApplicationInclusionList 中的某個應用程式正好位於 NodeTypeX 的節點上，則仍會針對 NodeTypeX 啟用程式碼套件和複本錯誤。 您最多可在此清單中包含 100 個節點類型名稱，若要增加此數目，則必須針對 MaxNumberOfNodeTypesInChaosEntityFilter 設定進行設定升級。 屬於這些應用程式之服務的所有複本，都適用於由混亂所引發的複本錯誤 (重新啟動複本、移除複本、移動主要複本和移動次要複本)。 只有在程式碼封裝只裝載這些應用程式的複本時，混亂才可以將程式碼封裝重新啟動。 如果某個應用程式未出現在此清單中，系統仍然可能在某些混亂反覆項目中針對它引發錯誤，前提是該應用程式位於某個包含在 NodeTypeInclusionList 中之節點類型的節點上。 不過，如果 applicationX 因位置限制而繫結至 nodeTypeY，且 applicationX 未出現在 ApplicationInclusionList，而且 nodeTypeY 未出現在 NodeTypeInclusionList 中，則系統將永遠不會對 applicationX 引發錯誤。 您最多可在此清單中包含 1000 個應用程式名稱，若要增加此數目，則必須針對 MaxNumberOfApplicationsInChaosEntityFilter 設定進行設定升級。 |
 | --context | (string, string) 類型之索引鍵-值組的 JSON 編碼對應。 此對應可用於記錄混亂執行的相關資訊。 此類組合不能超過 100 個，且每個字串 (索引鍵或值) 最多為 4095 個字元長。 此對應由混亂執行的起始者設定，以選擇性地儲存特定執行的相關內容。 |
 | --disable-move-replica-faults | 停用移動主要錯誤和移動次要錯誤。 |
@@ -99,7 +98,7 @@ ms.locfileid: "76906175"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -114,13 +113,13 @@ ms.locfileid: "76906175"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

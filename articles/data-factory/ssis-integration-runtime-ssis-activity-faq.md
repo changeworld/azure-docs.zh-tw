@@ -11,12 +11,11 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84118104"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>針對 SSIS 整合執行時間中的封裝執行進行疑難排解
 
@@ -38,7 +37,7 @@ ms.locfileid: "81414678"
 * 資料來源或目的地已多載。 檢查您的資料來源或目的地的負載，並查看它是否有足夠的容量。 例如，如果您使用 Azure SQL Database，請考慮在資料庫可能會超時的情況下相應增加。
 * SSIS 整合執行時間與資料來源或目的地之間的網路不穩定，特別是當連接跨區域或介於內部部署與 Azure 之間時。 遵循下列步驟，將重試模式套用到 SSIS 封裝：
   * 請確定您的 SSIS 套件可以在失敗時重新執行，而不會產生副作用（例如資料遺失或資料重複）。
-  * 在 [**一般**] 索引標籤上![設定 [**執行 SSIS 套件**] 活動的 [**重試**] 和 [**重試間隔**]](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * 在 [**一般**] 索引標籤上設定 [**執行 SSIS 套件**] 活動的**重試**和**重試間隔**。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * 若為 ADO.NET 和 OLE DB 來源或目的地元件，請在 SSIS 封裝或 SSIS 活動的 [連線管理員] 中設定**ConnectRetryCount**和**ConnectRetryInterval** 。
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>錯誤訊息：「ADO NET 來源無法取得連接 ' ... '」 在建立與 SQL Server 的連接時，發生「與網路相關或實例特定的錯誤」。 找不到或無法存取伺服器。」
@@ -74,10 +73,10 @@ ms.locfileid: "81414678"
 * 可能的原因和建議的動作：
   * 如果 SSIS 活動正在從檔案系統（封裝檔案或專案檔）執行封裝，則如果無法使用您在 SSIS 活動中提供的封裝存取認證來存取專案、封裝或設定檔案，就會發生此錯誤。
     * 如果您使用的是 Azure 檔案：
-      * 檔案路徑的開頭應為\\ \\ \<儲存體帳戶名稱\>. file.core.windows.net\\\<檔案共用路徑\>
+      * 檔案路徑的開頭應為 \\ \\ \<storage account name\> . file.core.windows.net\\\<file share path\>
       * 網域應為 "Azure"
-      * 使用者名稱應該是\<儲存體帳戶名稱\>
-      * 密碼應該是\<儲存體存取金鑰\>
+      * 使用者名稱應該是\<storage account name\>
+      * 密碼應為\<storage access key\>
     * 如果您使用內部部署檔案，請檢查 VNet、套件存取認證和許可權是否已正確設定，讓您的 Azure SSIS 整合執行時間可以存取您的內部部署檔案共用
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>錯誤訊息：「檔案名 ' ...」在連接中指定的無效」
@@ -95,20 +94,20 @@ ms.locfileid: "81414678"
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>錯誤訊息：「資料庫 ' SSISDB ' 已達到其大小配額」
 
-可能原因是在 Azure SQL 資料庫中建立的 SSISDB 資料庫，或您建立 SSIS 整合執行階段時的受控執行個體已達到其配額。 請嘗試下列動作：
-* 請考慮增加資料庫的 DTU。 您可以在 [Azure SQL Database 伺服器的 SQL Database 資源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到詳細資料。
+可能的原因是在 Azure SQL Database 或 SQL 受控執行個體中建立的 SSISDB 資料庫已達到其配額。 請嘗試下列動作：
+* 請考慮增加資料庫的 DTU。 您可以在[邏輯伺服器的 SQL Database 限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到詳細資料。
 * 檢查您的套件是否會產生許多記錄。 若是如此，您可以設定彈性作業來清除這些記錄。 如需詳細資料，請參閱[使用 Azure 彈性資料庫工作清除 SSISDB 記錄](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)。
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>錯誤訊息：「資料庫的要求限制是 .。。已達到和。」
 
-如果 SSIS 整合執行時間中有許多封裝以平行方式執行，可能會發生此錯誤，因為 SSISDB 已達到其要求限制。 請考慮增加 SSISDB 的 DTC 來解決此問題。 您可以在 [Azure SQL Database 伺服器的 SQL Database 資源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到詳細資料。
+如果 SSIS 整合執行時間中有許多封裝以平行方式執行，可能會發生此錯誤，因為 SSISDB 已達到其要求限制。 請考慮增加 SSISDB 的 DTC 來解決此問題。 您可以在[邏輯伺服器的 SQL Database 限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到詳細資料。
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>錯誤訊息：「SSIS 作業失敗，發生非預期的操作狀態： ...」
 
 錯誤大多是暫時性的問題所造成，因此請嘗試重新執行封裝執行。 遵循下列步驟，將重試模式套用到 SSIS 封裝：
 
 * 請確定您的 SSIS 套件可以在失敗時重新執行，而不會產生副作用（例如資料遺失或資料重複）。
-* 在 [**一般**] 索引標籤上![設定 [**執行 SSIS 套件**] 活動的 [**重試**] 和 [**重試間隔**]](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* 在 [**一般**] 索引標籤上設定 [**執行 SSIS 套件**] 活動的**重試**和**重試間隔**。 ![在 [一般] 索引標籤上設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * 若為 ADO.NET 和 OLE DB 來源或目的地元件，請在 SSIS 封裝或 SSIS 活動的 [連線管理員] 中設定**ConnectRetryCount**和**ConnectRetryInterval** 。
 
 ### <a name="error-message-there-is-no-active-worker"></a>錯誤訊息：「沒有使用中的背景工作角色」。
@@ -157,7 +156,7 @@ ms.locfileid: "81414678"
   * 您可以在[SSMS 報告](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 [SSIS 封裝執行] 活動中指定的記錄檔資料夾中找到執行記錄。
   * vNet 也可以用來存取內部部署資料做為替代方案。 如需更多詳細資料，請參閱將[AZURE SSIS 整合執行時間加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>錯誤訊息：「暫存工作狀態：失敗。 暫存工作錯誤： ErrorCode：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "SSIS 執行程式結束代碼：-1. \ n"，"LogLocation"： ".。。\\SSISTelemetry\\ExecutionLog\\... "，" effectiveIntegrationRuntime "：" ... "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>錯誤訊息：「暫存工作狀態：失敗。 暫存工作錯誤： ErrorCode：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "SSIS 執行程式結束代碼：-1. \ n"，"LogLocation"： "... \\SSISTelemetry \\ ExecutionLog \\ ... "，" effectiveIntegrationRuntime "：" ... "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"
 
 請確定已在自我裝載整合執行時間電腦上安裝 Visual C++ 執行時間。 如需更多詳細資料，請參閱[設定自我裝載 IR 作為 AZURE SSIS IR 在 ADF 中的 proxy](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
@@ -179,7 +178,7 @@ ms.locfileid: "81414678"
   * 若要瞭解如何設定每個節點的節點計數和平行執行上限，請參閱[在 Azure Data Factory 中建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。
 * SSIS 整合執行時間已停止或狀態不良。 若要瞭解如何檢查 SSIS integration runtime 的狀態和錯誤，請參閱[AZURE ssis 整合運行](monitor-integration-runtime.md#azure-ssis-integration-runtime)時間。
 
-我們也建議您在 [**一般**] 索引標籤上設定![超時： [一般] 索引](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)標籤上的 [設定屬性]。
+我們也建議您在 [**一般**] 索引標籤上設定超時： [一般] 索引標籤上的 [ ![ 設定屬性] ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png) 。
 
 ### <a name="poor-performance-in-package-execution"></a>封裝執行的效能不佳
 

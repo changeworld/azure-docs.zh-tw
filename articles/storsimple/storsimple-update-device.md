@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84170081"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新您的 StorSimple 8000 系列裝置
 > [!NOTE]
 > StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](storsimple-8000-move-azure-portal-faq.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀態。 根據更新類型而定，您可以透過 Azure 傳統入口網站或透過 Windows PowerShell 介面，將更新套用到裝置。 本教學課程說明更新類型，以及如何安裝每一種更新類型。
 
 您可以套用兩種類型的裝置更新： 
@@ -84,22 +83,22 @@ StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>步驟 1：連線到序列主控台 <a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>步驟 1：連線到序列主控台 <a name="step1"></a>
 首先，使用 PuTTY 之類的應用程式來存取序列主控台。 下列程序說明如何使用 PuTTY 來連接到序列主控台。
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>步驟 2：進入維護模式 <a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>步驟 2：進入維護模式 <a name="step2"></a>
 連接到主控台之後，請判定是否有需要安裝的更新，然後進入維護模式加以安裝。
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>步驟 3：安裝更新 <a name="step3">
+### <a name="step-3-install-your-updates"></a>步驟 3：安裝更新 <a name="step3"></a>
 接下來，安裝您的更新。
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>步驟 4：結束維護模式 <a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>步驟 4：結束維護模式 <a name="step4"></a>
 最後，結束維護模式。
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

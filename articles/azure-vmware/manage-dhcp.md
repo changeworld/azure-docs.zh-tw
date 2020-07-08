@@ -1,14 +1,13 @@
 ---
 title: 如何管理 DHCP
-description: 本文說明如何管理 Azure VMWare 解決方案（AVS）中的 DHCP
+description: 本文說明如何管理 Azure VMware 解決方案（AVS）中的 DHCP
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ccf28c94e1991681c238f51847fe228313abe29e
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 80791dd2041fb9d6fbc7c67f2d7d7b2d0b6c977e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84148356"
 ---
 # <a name="how-to-manage-dhcp-in-azure-vmware-solution-avs-preview"></a>如何管理 Azure VMWare 解決方案（AVS） Preview 中的 DHCP
 
@@ -56,7 +55,7 @@ NSX-T 提供為您的私人雲端設定 DHCP 的功能。 如果您打算使用 
 
 ## <a name="create-dhcp-relay-service"></a>建立 DHCP 轉送服務
 
-在 [NXT-T] 視窗中，選取 [**網路**] 索引標籤，然後在 [ **IP 管理**] 下選取 [ **DHCP**]。 選取 [**新增伺服器**]。 針對 [**伺服器類型**] 選擇 [DHCP 轉送]，然後輸入轉送伺服器的伺服器名稱和 IP 位址。 選取 [儲存]  來儲存變更。
+在 [NXT-T] 視窗中，選取 [**網路**] 索引標籤，然後在 [ **IP 管理**] 下選取 [ **DHCP**]。 選取 [**新增伺服器**]。 針對 [**伺服器類型**] 選擇 [DHCP 轉送]，然後輸入轉送伺服器的伺服器名稱和 IP 位址。 選取 [儲存] 來儲存變更。
 
 :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="建立 dhcp 轉送伺服器" border="true":::
 

@@ -6,12 +6,11 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171220"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 資料目錄中分析資料源的資料
 
@@ -45,7 +44,7 @@ ms.locfileid: "68950229"
 > 您也可以對資產新增說明文件來描述如何將資料整合到應用程式。 請參閱 [如何記載資料來源](data-catalog-how-to-documentation.md)。
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在註冊資料來源時包含資料設定檔
 

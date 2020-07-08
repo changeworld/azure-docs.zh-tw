@@ -5,12 +5,11 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84118787"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>建立獨立的 Azure 自動化帳戶
 
@@ -31,7 +30,7 @@ ms.locfileid: "83837088"
 若要建立或更新自動化帳戶，以及完成本文中所述的工作，您必須具有下列權限：
 
 * 若要建立自動化帳戶，必須將您的 Azure AD 使用者帳戶加入至角色具有的權限相當於 `Microsoft.Automation` 資源的擁有者角色。 如需詳細資訊，請參閱 [Azure 自動化中的角色型存取控制](automation-role-based-access-control.md)。
-* 在 Azure 入口網站的 [Azure Active Directory] > [管理] > [使用者設定] 下方，如果將 [應用程式註冊] 設為 [是]，則 Azure AD 租用戶中的非管理使用者就能[註冊 Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果將 [應用程式註冊] 設為 [否]，則執行此動作的使用者必須是 Azure AD 中的全域管理員。
+* 在 Azure 入口網站的 [Azure Active Directory] > [管理] > [使用者設定] 下方，如果將 [應用程式註冊] 設為 [是]，則 Azure AD 租用戶中的非管理使用者就能[註冊 Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果**應用程式註冊**設定為 [**否**]，則執行此動作的使用者在 Azure AD 中必須至少有一個應用程式開發人員角色。
 
 若您在加入至訂用帳戶的全域管理員/共同管理員角色之前，並非訂用帳戶 Active Directory 執行個體的成員，系統會將您以來賓身分加入至 Active Directory。 在此案例中，您會在新增自動化帳戶頁面中看到此訊息：`You do not have permissions to create.`
 

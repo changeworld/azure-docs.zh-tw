@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70995106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84142141"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>適用於Azure NetApp Files 的成本模型 
 
@@ -50,6 +49,8 @@ Azure NetApp Files 會依布建的儲存體容量計費。  布建的容量是�
 ## <a name="overage-in-capacity-consumption"></a>容量耗用量的超額部分  
 
 當集區的總使用容量超過其布建的容量時，仍允許資料寫入。  在寬限期（一小時）之後，如果集區的已使用容量仍超過其布建的容量，則集區大小會自動增加1個 TiB，直到布建的容量大於使用的總容量為止。  例如，在上圖中，如果磁片區3持續成長，而實際耗用量達到 1.2 TiB，則在寬限期之後，集區會自動調整為 5 TiB。  結果是布建的集區容量（5 TiB）超過已使用的容量（4.2 TiB）。  
+
+雖然容量集區大小會自動成長以符合磁片區的需求，但不會在磁片區大小減少時自動降低。 如果您想要在磁片區大小減少之後調整容量集區的大小（例如，在資料清除磁片區之後），您需要_手動_減少容量集區大小。
 
 ## <a name="manual-changes-of-the-pool-size"></a>手動變更集區大小  
 

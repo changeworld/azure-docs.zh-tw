@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84119215"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -41,7 +40,7 @@ ms.locfileid: "81617715"
 
 您選取的層級會決定可計費的費率。 下列來自 Azure 入口網站的螢幕擷取畫面顯示可用的層，減去定價（您可以在入口網站和[定價頁面](https://azure.microsoft.com/pricing/details/search/)上找到）。 「**免費**」、「**基本**」和「**標準**」是最常見的層級。
 
-[**免費**] 會為較小的專案建立有限的搜尋服務，包括快速入門和教學課程。 在內部，會在多個訂閱者之間共用複本和分割區。 您無法調整免費服務或執行重要的工作負載。
+[**免費**] 會為較小的專案建立有限的搜尋服務，包括快速入門和教學課程。 就內部而言，複本和分割區會在多個訂閱者之間共用。 您無法調整免費服務或執行重要的工作負載。
 
 [**基本**] 和 [**標準**] 是最常用的可計費層，預設值是 [**標準**]。 透過您控制下的專用資源，您可以部署較大的專案、將效能優化，以及設定容量。
 
@@ -83,7 +82,7 @@ ms.locfileid: "81617715"
 
 針對[AI 擴充](cognitive-search-concept-intro.md)，您應該規劃在適用于隨用隨付處理的 S0 定價層中，[將可計費的 Azure 認知服務資源](cognitive-search-attach-cognitive-services.md)連結至 Azure 認知搜尋所在的相同區域。 附加認知服務並沒有相關聯的固定成本。 您只需要支付所需的處理費用。
 
-| 作業 | 計費影響 |
+| 操作 | 計費影響 |
 |-----------|----------------|
 | 檔破解，文字解壓縮 | 免費 |
 | 檔破解，影像解壓縮 | 根據從您的檔中解壓縮的影像數目來計費。 在[索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)設定中， **imageAction**是用來觸發影像解壓縮的參數。 如果 [ **imageAction** ] 設定為 [無] （預設值），則不會向您收取影像解壓縮的費用。 影像解壓縮的速率會記錄在 Azure 認知搜尋的[定價詳細資料](https://azure.microsoft.com/pricing/details/search/)頁面上。|

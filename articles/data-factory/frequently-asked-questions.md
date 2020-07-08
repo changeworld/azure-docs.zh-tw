@@ -9,12 +9,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81412952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187282"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory 常見問題集
 
@@ -83,11 +82,11 @@ Azure Data Factory 視覺效果工具可啟用反復式開發和調試。 您可
 
 -    支援三個以上的設定/變體 Azure SQL Database 來裝載專案/套件的 SSIS 資料庫（SSISDB）：
 -    具有虛擬網路服務端點的 SQL Database
--    受控執行個體
+-    SQL 受控執行個體
 -    彈性集區
 -    支援在傳統虛擬網路上的 Azure Resource Manager 虛擬網路于未來淘汰，這可讓您將 Azure SSIS 整合執行時間插入/加入至設定為使用虛擬網路服務端點/MI/內部部署資料存取之 SQL Database 的虛擬網路。 如需詳細資訊，請參閱將[AZURE SSIS 整合執行時間加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。
 -    支援 Azure Active Directory （Azure AD）驗證和 SQL 驗證以連線至 SSISDB，允許使用 Azure 資源的 Data Factory 受控識別進行 Azure AD 驗證
--    支援將您自己的內部部署 SQL Server 授權，從 Azure Hybrid Benefit 選項獲得可觀的成本節約
+-    支援讓現有的 SQL Server 授權從 Azure Hybrid Benefit 選項獲得可觀的成本節約
 -    支援 Enterprise Edition 的 Azure SSIS 整合執行時間，可讓您使用 advanced/premium 功能、自訂安裝程式介面來安裝其他元件/延伸模組，以及合作夥伴生態系統。 如需詳細資訊，請參閱[Enterprise Edition、自訂安裝，以及 ADF 中 SSIS 的協力廠商](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)擴充性。 
 -    Data Factory 中的 SSIS 深入整合，可讓您在 Data Factory 管線中叫用/觸發第一級的執行 SSIS 套件活動，並透過 SSMS 加以排程。 如需詳細資訊，請參閱[在 ADF 管線中使用 SSIS 活動現代化和擴充您的 ETL/ELT 工作流程](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)。
 
@@ -109,7 +108,7 @@ Azure Data Factory 視覺效果工具可啟用反復式開發和調試。 您可
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure Data Factory 的最上層概念為何？
 Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或資料處理站)。 Azure Data Factory 是由四個重要元件所組成，這些元件會一起運作，以提供平台讓您撰寫具有資料移動和轉換步驟的資料驅動工作流程。
 
-### <a name="pipelines"></a>管線
+### <a name="pipelines"></a>Pipelines
 資料處理站可以有一或多個管線。 管線是一個執行某個單位工作的活動邏輯群組。 管線中的活動會合作執行一項工作。 例如，管線可能包含一組活動，以從 Azure Blob 內嵌資料，然後對 HDInsight 叢集執行 Hive 查詢來分割資料。 其中的優勢在於，您可使用管線按組別管理活動，而無須個別管理每個活動。 您可將管線中的活動鏈結在一起以循序方式運作，或是以平行方式獨立運作。
 
 ### <a name="data-flows"></a>資料流程
@@ -126,7 +125,7 @@ Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或�
 
 Data Factory 中的連結服務，有兩個用途：
 
-- 用來代表*資料存放區*，其包含 (但不限於) 內部部署 SQL Server 執行個體、Oracle 資料庫執行個體、檔案共用或 Azure Blob 儲存體帳戶。 如需支援的資料存放區清單，請參閱 [Azure Data Factory 中的複製活動](copy-activity-overview.md)。
+- 代表*資料存放區*，其中包括（但不限於） SQL Server 實例、Oracle 資料庫實例、檔案共用或 Azure Blob 儲存體帳戶。 如需支援的資料存放區清單，請參閱 [Azure Data Factory 中的複製活動](copy-activity-overview.md)。
 - 用來代表可裝載活動執行的 *計算資源* 。 例如，HDInsight Hive 活動會在 HDInsight Hadoop 叢集上執行。 如需轉換活動和受支援計算環境的清單，請參閱 [Azure Data Factory 中的資料轉換](transform-data.md)。
 
 ### <a name="triggers"></a>觸發程序

@@ -1,5 +1,5 @@
 ---
-title: 嚴重損壞修復和儲存體帳戶容錯移轉
+title: 災害復原和儲存體帳戶容錯移轉
 titleSuffix: Azure Storage
 description: Azure 儲存體針對異地多餘的儲存體帳戶支援帳戶容錯移轉。 透過帳戶容錯移轉，您可以在主要端點無法使用時，為您的儲存體帳戶起始容錯移轉程序。
 services: storage
@@ -10,14 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84169214"
 ---
-# <a name="disaster-recovery-and-storage-account-failover"></a>嚴重損壞修復和儲存體帳戶容錯移轉
+# <a name="disaster-recovery-and-storage-account-failover"></a>災害復原和儲存體帳戶容錯移轉
 
 Microsoft 致力於確保 Azure 服務皆能持續可用。 不過仍然可能會發生計畫外的服務中斷。 如果您的應用程式需要復原功能，Microsoft 建議使用異地多餘的儲存體，以便將您的資料複製到第二個區域。 此外，客戶應該要建立災害復原計畫來處理區域服務中斷。 災害復原計畫相當重要的一部分，便是準備在主要端點無法使用的情況下容錯移轉到次要端點。
 
@@ -26,8 +25,6 @@ Azure 儲存體針對異地多餘的儲存體帳戶支援帳戶容錯移轉。 �
 帳戶容錯移轉適用于一般用途 v1、一般用途 v2，以及具有 Azure Resource Manager 部署的 Blob 儲存體帳戶類型。 所有公用區域都支援帳戶容錯移轉，但目前無法在主權或國家雲端中使用。
 
 本文說明涉及帳戶容錯移轉的概念和程序，並討論如何準備儲存體帳戶，以在對客戶造成最少影響的前提下進行復原。 若要瞭解如何在 Azure 入口網站或 PowerShell 中起始帳戶容錯移轉，請參閱[起始帳戶容錯移轉](storage-initiate-account-failover.md)。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -104,6 +101,8 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 作為最佳做法，請將應用程式設計成可以使用 [上次同步時間] 來評估預期的資料遺失。 例如，如果您記錄所有寫入作業，則您可以比較最後一次的寫入作業與 [上次同步時間]，來判斷哪些寫入尚未被同步到次要區域。
 
+如需有關檢查 [**上次同步時間**] 屬性的詳細資訊，請參閱[檢查儲存體帳戶的上次同步處理時間屬性](last-sync-time-get.md)。
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>容錯回復到原始主要區域時請小心
 
 在您從主要區域容錯移轉到次要區域之後，您的儲存體帳戶在新的主要區域中會被設定為本地備援。 接著，您可以再次設定此帳戶以進行異地冗余。 當帳戶在容錯移轉之後再次設定為異地冗余時，新的主要區域會立即開始將資料複製到新的次要區域，也就是原始容錯移轉之前的主要區域。 不過，可能需要一些時間，主要複本中的現有資料才會完整複製到新的次要資料庫。
@@ -171,8 +170,9 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 
 在區域因嚴重災害而遺失的極端情況下，Microsoft 可能會起始區域容錯移轉。 在此情況下，您不需要採取任何動作。 在 Microsoft 管理的容錯移轉完成之前，您將無法取得儲存體帳戶的寫入權限。 如果您的儲存體帳戶設定為 GRS 或 RA-切換，您的應用程式可以從次要區域讀取。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-- [使用異地冗余來設計高可用性應用程式](geo-redundant-design.md)
+- [使用異地備援來設計高可用性的應用程式](geo-redundant-design.md)
 - [初始化帳戶容錯移轉](storage-initiate-account-failover.md)
-- [教學課程：建立具有 Blob 儲存體的高可用性應用程式](../blobs/storage-create-geo-redundant-storage.md)
+- [檢查儲存體帳戶的上次同步時間屬性](last-sync-time-get.md)
+- [教學課程：建置採用 Blob 儲存體的高可用性應用程式](../blobs/storage-create-geo-redundant-storage.md)

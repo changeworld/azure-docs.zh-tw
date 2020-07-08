@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84147933"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -74,7 +73,7 @@ ms.locfileid: "83652228"
 如果來源模型偏離原點，則置中很重要，因為在這種情況下，浮點數精確度問題可能會導致轉譯成品。
 
 * `opaqueMaterialDefaultSidedness` - 轉譯引擎會假設不透明材質為雙面。
-如果這不是預期的行為，這個參數應該設定為「SingleSided」。 如需詳細資訊，請參閱[單面轉譯](../../overview/features/single-sided-rendering.md)。
+如果這不是預期的行為，這個參數應該設定為「SingleSided」。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="material-overrides"></a>材質覆寫
 
@@ -90,7 +89,7 @@ ms.locfileid: "83652228"
 如果模型是使用色差補正空間來定義，則這些選項應該設定為 True。
 
 * `gammaToLinearMaterial` - 將材質色彩從色差補正空間轉換成線性空間
-* `gammaToLinearVertex` - 將頂點色彩從色差補正空間轉換成線性空間
+* `gammaToLinearVertex`-將 :::no-loc text="vertex"::: 色彩從 gamma 空間轉換成線性空間
 
 > [!NOTE]
 > 若為 FBX 檔案，這些設定預設會設定為 `true`。 若為所有其他檔案類型，預設值為 `false`。
@@ -127,12 +126,12 @@ ms.locfileid: "83652228"
 
 * `axis` - 覆寫座標系統單位向量。 預設值為 `["+x", "+y", "+z"]`。 理論上，FBX 格式有一個標頭，其中定義了這些向量，且轉換會使用該資訊來轉換場景。 GlTF 格式也會定義固定座標系統。 在實務上，某些資產的標頭中有不正確的資訊，或是以不同的座標系統慣例儲存。 此選項可讓您覆寫要補償的座標系統。 例如：`"axis" : ["+x", "+z", "-y"]` 將會藉由反轉 Y 軸方向來交換 Z 軸和 Y 軸，並保持座標系統慣用手。
 
-### <a name="vertex-format"></a>頂點格式
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::編排
 
-您可以調整網格的頂點格式，以節省記憶體的交易精確度。 較低的磁碟使用量可讓您載入較大的模型，或達到更佳的效能。 不過，視您的資料而定，錯誤的格式可能會大幅影響轉譯品質。
+您可以調整 :::no-loc text="vertex"::: 網格的格式，以節省記憶體的交易精確度。 較低的磁碟使用量可讓您載入較大的模型，或達到更佳的效能。 不過，視您的資料而定，錯誤的格式可能會大幅影響轉譯品質。
 
 > [!CAUTION]
-> 當模型不再符合記憶體，或進行最佳化以獲得最佳效能時，變更頂點格式應該是最後的手段。 變更可以輕鬆引進轉譯成品，其中包括明顯和細微的成品。 除非您知道要查看的內容，否則不應變更預設值。
+> :::no-loc text="vertex":::當模型不再符合記憶體，或優化以獲得最佳效能時，變更格式應該是最後的手段。 變更可以輕鬆引進轉譯成品，其中包括明顯和細微的成品。 除非您知道要查看的內容，否則不應變更預設值。
 
 可能的調整如下：
 
@@ -159,11 +158,11 @@ ms.locfileid: "83652228"
 
 藉由將元件強制設定為 `NONE`，保證輸出網格沒有個別的串流。
 
-#### <a name="component-formats-per-vertex-stream"></a>每個頂點串流的元件格式
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>每個資料流程的元件格式 :::no-loc text="vertex":::
 
 這些格式可供個別元件使用：
 
-| 頂點元件 | 支援的格式 (粗體 = 預設值) |
+| :::no-loc text="Vertex"::: 元件 | 支援的格式 (粗體 = 預設值) |
 |:-----------------|:------------------|
 |position| **32_32_32_FLOAT**、16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**、NONE |
@@ -178,7 +177,7 @@ ms.locfileid: "83652228"
 
 格式的磁碟使用量如下所示：
 
-| [格式] | 描述 | 每個頂點的位元組數 |
+| [格式] | 描述 | 位元組/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|雙元件完整浮點數精確度|8
 |16_16_FLOAT|雙元件半浮點數精確度|4
@@ -197,11 +196,56 @@ ms.locfileid: "83652228"
 
 #### <a name="example"></a>範例
 
-假設您有一個攝影測量模型，其光源會內建到紋理。 轉譯模型所需的就是頂點位置和紋理座標。
+假設您有一個攝影測量模型，其光源會內建到紋理。 呈現模型所需的全部都是 :::no-loc text="vertex"::: 位置和材質座標。
 
-根據預設，轉換器必須假設您可能有時想要在模型上使用 PBR 的資料，以便為您產生 `normal`、`tangent` 和 `binormal` 資料。 因此，每個頂點的記憶體使用量是 `position` (12 個位元組) + `texcoord0` (8 個位元組) + `normal` (4 個位元組) + `tangent` (4 個位元組) + `binormal` (4 個位元組) = 32 個位元組。 此類型的較大模型可以輕鬆地擁有數百萬計的頂點，從而導致模型可能佔用數 GB 的記憶體。 這類大量資料會影響效能，且您甚至可能會用盡記憶體。
+根據預設，轉換器必須假設您可能有時想要在模型上使用 PBR 的資料，以便為您產生 `normal`、`tangent` 和 `binormal` 資料。 因此，每個頂點的記憶體使用量是 `position` (12 個位元組) + `texcoord0` (8 個位元組) + `normal` (4 個位元組) + `tangent` (4 個位元組) + `binormal` (4 個位元組) = 32 個位元組。 這種類型的較大型模型可以輕鬆地產生許多數百萬個 :::no-loc text="vertices"::: 模型，而可能佔用多 gb 的記憶體。 這類大量資料會影響效能，且您甚至可能會用盡記憶體。
 
-知道您永遠不需要模型上的動態光源，且知道所有紋理座標都在 `[0; 1]` 範圍內，您可以將 `normal`、`tangent` 和 `binormal` 設定為 `NONE` 和 `texcoord0` 至半精確度 (`16_16_FLOAT`)，使每個頂點只有 16 個位元組。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
+知道您在模型上永遠不需要動態光源，而且知道所有材質座標都在 `[0; 1]` 範圍內，您可以將、和設定為，並將設為 `normal` `tangent` `binormal` `NONE` `texcoord0` 半精確度（ `16_16_FLOAT` ），因此每個只會產生16個位元組 :::no-loc text="vertex"::: 。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
+
+## <a name="memory-optimizations"></a>記憶體優化
+
+載入內容的記憶體耗用量可能會成為轉譯系統上的瓶頸。 如果記憶體承載變得太大，可能會危害轉譯效能，或導致模型不會全部載入。 這段影片將討論減少記憶體使用量的一些重要策略。
+
+### <a name="instancing"></a>執行個體化
+
+實例是一種概念，其中網格會針對具有不同空間轉換的部分重複使用，而不是每個參考自己唯一幾何的元件。 實例對記憶體使用量有顯著的影響。
+實例的使用案例範例是引擎模型中的螺絲或架構模型中的椅子。
+
+> [!NOTE]
+> 實例可以大幅改善記憶體耗用量（因而載入時間），不過，轉譯效能端的改善並不重要。
+
+轉換服務會在原始檔中標示元件時，遵循實例。 不過，轉換不會對網格資料執行額外的深入分析，以識別可重複使用的元件。 因此，「內容建立工具」和其「匯出管線」是適當實例設定的決定性準則。
+
+測試在轉換期間是否保留實例資訊的簡單方式，就是查看[輸出統計資料](get-information.md#example-info-file)，尤其是 `numMeshPartsInstanced` 成員。 如果的值大於 `numMeshPartsInstanced` 零，則表示網格會在實例之間共用。
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>範例：3ds 中的實例設定 Max
+
+[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max)具有不同的物件複製模式 **`Copy`** ，稱為、和，其 **`Instance`** **`Reference`** 行為與匯出檔案中的實例不同 `.fbx` 。
+
+![以 3ds Max 複製](./media/3dsmax-clone-object.png)
+
+* **`Copy`**：在此模式中，會複製網格，因此不會使用任何實例（ `numMeshPartsInstanced` = 0）。
+* **`Instance`**：這兩個物件會共用相同的網格，因此會使用實例（ `numMeshPartsInstanced` = 1）。
+* **`Reference`**：不同的修飾詞可以套用至幾何，因此，匯出工具會選擇保守的方法，而不會使用實例（ `numMeshPartsInstanced` = 0）。
+
+
+### <a name="depth-based-composition-mode"></a>深度式組合模式
+
+如果記憶體有問題，請使用[深度式組合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)來設定轉譯器。 在此模式中，GPU 承載會分散到多個 Gpu。
+
+### <a name="decrease-vertex-size"></a>減少頂點大小
+
+如[元件格式變更的最佳做法](configure-model-conversion.md#best-practices-for-component-format-changes)一節中所述，調整頂點格式可能會減少記憶體使用量。 不過，此選項應該是最後的手段。
+
+### <a name="texture-sizes"></a>材質大小
+
+視案例的類型而定，材質資料的數量可能會超過用於網格資料的記憶體。 攝影測量模型是候選項目。
+轉換設定不會提供自動相應減少材質的方式。 如有必要，材質調整必須以用戶端前置處理步驟來完成。 不過，轉換步驟會挑選適當的[材質壓縮格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+
+* `BC1`針對不透明色彩材質
+* `BC7`針對具有 Alpha 色板的來源色彩材質
+
+`BC7`相較于，格式具有兩倍的記憶體使用量 `BC1` ，因此請務必確定輸入材質不會不必要地提供 Alpha 色板。
 
 ## <a name="typical-use-cases"></a>一般使用案例
 
@@ -215,7 +259,7 @@ ms.locfileid: "83652228"
 
 * 當您需要移動組件時，通常也表示您需要支援 raycasts 或其他[空間查詢](../../overview/features/spatial-queries.md)，讓您能夠首先挑選這些組件。 另一方面，如果您不想要將物件四處移動，很可能也不需要其參與空間查詢，因此可以關閉 `generateCollisionMesh` 旗標。 此參數對轉換時間、載入時間及執行階段每個畫面更新成本有顯著的影響。
 
-* 如果應用程式未使用[切割平面](../../overview/features/cut-planes.md)，則 `opaqueMaterialDefaultSidedness` 旗標應該關閉。 效能增益通常是 20%-30%。 切割平面仍可以使用，但在深入查看物件的內部組件時並沒有背面，這看似違反直覺的行為。 如需詳細資訊，請參閱[單面轉譯](../../overview/features/single-sided-rendering.md)。
+* 如果應用程式未使用[切割平面](../../overview/features/cut-planes.md)，則 `opaqueMaterialDefaultSidedness` 旗標應該關閉。 效能增益通常是 20%-30%。 切割平面仍可以使用，但在深入查看物件的內部組件時並沒有背面，這看似違反直覺的行為。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="use-case-photogrammetry-models"></a>使用案例：攝影測量模型
 

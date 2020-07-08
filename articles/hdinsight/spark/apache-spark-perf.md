@@ -7,12 +7,11 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: f92a351087670ce0b37921a496eabfa883a3b1fc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780100"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84117954"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>將 HDInsight 中的 Apache Spark 作業最佳化
 
@@ -22,16 +21,16 @@ ms.locfileid: "83780100"
 
 Apache Spark 作業的效能取決於多個因素。 這些效能因素包括：資料的儲存方式、叢集的設定方式，以及處理資料時使用的作業。
 
-您可能面臨的常見挑戰包括因為執行程式大小不當而受限於記憶體、作業長時間執行，以及工作需要笛卡兒運算。
+您可能面臨的常見挑戰包括：因不正確調整的執行程式、長時間執行的作業，以及導致笛卡兒作業的工作所造成的記憶體限制。
 
-另有各種策略可協助您克服這些挑戰，例如快取和允許資料扭曲。
+還有許多優化功能，可協助您克服這些挑戰，例如快取，並允許資料扭曲。
 
-在下列每一篇文章中，您可以找到 Spark 最佳化各種層面的常見挑戰和解決方案。
+在下列每一篇文章中，您可以找到 Spark 優化不同層面的相關資訊。
 
-* [最佳化資料儲存體](optimize-data-storage.md)
-* [最佳化資料處理](optimize-data-processing.md)
-* [最佳化記憶體使用量](optimize-memory-usage.md)
-* [最佳化叢集設定](optimize-cluster-configuration.md)
+* [最佳化 Apache Spark 的資料儲存體](optimize-data-storage.md)
+* [最佳化 Apache Spark 的資料處理](optimize-data-processing.md)
+* [最佳化 Apache Spark 的記憶體使用量](optimize-memory-usage.md)
+* [優化 Apache Spark 的 HDInsight 叢集設定](optimize-cluster-configuration.md)
 
 ## <a name="next-steps"></a>後續步驟
 

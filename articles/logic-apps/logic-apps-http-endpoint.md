@@ -5,13 +5,12 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84170268"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
 
@@ -28,7 +27,7 @@ ms.locfileid: "83005516"
 
 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[快速入門：建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -148,7 +147,7 @@ ms.locfileid: "83005516"
 
 * [透過 GET 參數](#get-parameters)或 URL 參數接受值。
 
-  這些值會以名稱/值組的形式傳遞至端點的 URL。 針對此選項，您必須在要求觸發程式中使用 GET 方法。 在後續動作中，您可以使用運算式中的`triggerOutputs()`函數，將參數值當做觸發程式輸出來取得。
+  這些值會以名稱/值組的形式傳遞至端點的 URL。 針對此選項，您必須在要求觸發程式中使用 GET 方法。 在後續動作中，您可以使用運算式中的函數，將參數值當做觸發程式輸出來取得 `triggerOutputs()` 。
 
 * 透過要求觸發程式中參數的[相對路徑來接受值](#relative-path)。
 
@@ -164,21 +163,21 @@ ms.locfileid: "83005516"
 
 1. 在要求觸發程式底下，新增您想要使用參數值的動作。 在此範例中，請新增 [**回應**] 動作。
 
-   1. 在要求觸發程式下，選取 [**新增步驟** > ] [新增**動作**]。
+   1. 在要求觸發程式下，選取 [**新增步驟] [新增**  >  **動作**]。
    
    1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中，選取 [**回應**] 動作。
 
-1. 若要建立`triggerOutputs()`可抓取參數值的運算式，請遵循下列步驟：
+1. 若要建立可抓取 `triggerOutputs()` 參數值的運算式，請遵循下列步驟：
 
    1. 在回應動作的 [**主體**] 屬性內按一下，以顯示動態內容清單，然後選取 [**運算式**]。
 
-   1. 在 [**運算式**] 方塊中，輸入此運算式`parameter-name` ，並將取代為您的參數名稱，然後選取 **[確定]**。
+   1. 在 [**運算式**] 方塊中，輸入此運算式，並 `parameter-name` 將取代為您的參數名稱，然後選取 **[確定]**。
 
       `triggerOutputs()['queries']['parameter-name']`
 
       ![將 "triggerOutputs （）" 運算式新增至觸發程式](./media/logic-apps-http-endpoint/trigger-outputs-expression.png)
 
-      在**Body**屬性中，運算式會解析為`triggerOutputs()` token。
+      在**Body**屬性中，運算式會解析為 `triggerOutputs()` token。
 
       ![已解析 "triggerOutputs （）" 運算式](./media/logic-apps-http-endpoint/trigger-outputs-expression-token.png)
 
@@ -190,11 +189,11 @@ ms.locfileid: "83005516"
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      例如，假設您想要傳遞名`postalCode`為之參數的值。 **Body**屬性會指定字串， `Postal Code: `其中包含尾端空格，後面接著對應的運算式：
+      例如，假設您想要傳遞名為之參數的值 `postalCode` 。 **Body**屬性會指定字串， `Postal Code: ` 其中包含尾端空格，後面接著對應的運算式：
 
       ![將範例 "triggerOutputs （）" 運算式新增至觸發程式](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. 若要測試可呼叫的端點，請複製要求觸發程式中的回呼 URL，然後將 URL 貼入另一個瀏覽器視窗。 在 URL 中，將問號（`?`）後面的參數名稱和值新增至下列格式的 url，然後按 enter 鍵。
+1. 若要測試可呼叫的端點，請複製要求觸發程式中的回呼 URL，然後將 URL 貼入另一個瀏覽器視窗。 在 URL 中，將問號（）後面的參數名稱和值新增 `?` 至下列格式的 url，然後按 enter 鍵。
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,15 +203,18 @@ ms.locfileid: "83005516"
 
    ![將要求傳送至回呼 URL 的回應](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. 若要將參數名稱和值放在 URL 內的不同位置，請務必使用連字號（`&`）做為前置詞，例如：
+1. 若要將參數名稱和值放在 URL 內的不同位置，請務必使用連字號（）做為 `&` 前置詞，例如：
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   這個範例會以 URL 中不同位置的範例參數名稱和`postalCode=123456`值來顯示回呼 URL：
+   這個範例會以 URL 中不同位置的範例參數名稱和值來顯示回呼 URL `postalCode=123456` ：
 
    * 第1個位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
    * 第2個位置：`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+
+> [!NOTE]
+> 如果您想要在 URI 中包含雜湊或井字型大小（ **#** ），請改為使用此編碼版本：`%25%23`
 
 <a name="relative-path"></a>
 
@@ -222,21 +224,21 @@ ms.locfileid: "83005516"
 
    ![將 [相對路徑] 屬性新增至觸發程式](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. 在 [**相對路徑**] 屬性中，指定您要讓 URL 接受之 JSON 架構中參數的相對路徑，例如`/address/{postalCode}`。
+1. 在 [**相對路徑**] 屬性中，指定您要讓 URL 接受之 JSON 架構中參數的相對路徑，例如 `/address/{postalCode}` 。
 
    ![指定參數的相對路徑](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 1. 在要求觸發程式底下，新增您想要使用參數值的動作。 在此範例中，請新增 [**回應**] 動作。
 
-   1. 在要求觸發程式下，選取 [**新增步驟** > ] [新增**動作**]。
+   1. 在要求觸發程式下，選取 [**新增步驟] [新增**  >  **動作**]。
 
    1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中，選取 [**回應**] 動作。
 
 1. 在 [回應] 動作的 [**主體**] 屬性中，包含代表您在觸發程式相對路徑中指定之參數的 token。
 
-   例如，假設您想要傳迴響應動作`Postal Code: {postalCode}`。
+   例如，假設您想要傳迴響應動作 `Postal Code: {postalCode}` 。
 
-   1. 在 [ **Body** ] 屬性中`Postal Code: ` ，輸入尾端空格。 將游標保持在編輯方塊內部，讓動態內容清單保持開啟。
+   1. 在 [ **Body** ] 屬性中，輸入 `Postal Code: ` 尾端空格。 將游標保持在編輯方塊內部，讓動態內容清單保持開啟。
 
    1. 在動態內容清單中，從 [**收到 HTTP 要求時**] 區段中，選取 [**郵遞區號**] token。
 
@@ -252,15 +254,18 @@ ms.locfileid: "83005516"
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. 若要測試可呼叫的端點，請從要求觸發程式複製更新的回呼 URL，將 URL 貼到另一個`{postalCode}`瀏覽器視窗中`123456`，將 url 中的取代為，然後按 enter 鍵。
+1. 若要測試可呼叫的端點，請從要求觸發程式複製更新的回呼 URL，將 URL 貼到另一個瀏覽器視窗中， `{postalCode}` 將 url 中的取代為 `123456` ，然後按 enter 鍵。
 
    瀏覽器會傳回包含下列文字的回應：`Postal Code: 123456`
 
    ![將要求傳送至回呼 URL 的回應](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
+> [!NOTE]
+> 如果您想要在 URI 中包含雜湊或井字型大小（ **#** ），請改為使用此編碼版本：`%25%23`
+
 ## <a name="call-logic-app-through-endpoint-url"></a>透過端點 URL 呼叫邏輯應用程式
 
-建立端點之後，您可以藉由將 HTTPS `POST`要求傳送至端點的完整 URL 來觸發邏輯應用程式。 邏輯應用程式具有直接存取端點的內建支援。
+建立端點之後，您可以藉由將 HTTPS `POST` 要求傳送至端點的完整 URL 來觸發邏輯應用程式。 邏輯應用程式具有直接存取端點的內建支援。
 
 <a name="generated-tokens"></a>
 
@@ -268,7 +273,7 @@ ms.locfileid: "83005516"
 
 當您在要求觸發程式中提供 JSON 架構時，邏輯應用程式設計工具會針對該架構中的屬性產生權杖。 您接著可以使用這些權杖，透過邏輯應用程式工作流程來傳遞資料。
 
-例如，如果您將更多屬性（例如`"suite"`）新增至 JSON 架構，則這些屬性的權杖可供您在後續步驟中用於邏輯應用程式。 以下是完整 JSON 結構描述︰
+例如，如果您將更多屬性（例如 `"suite"` ）新增至 JSON 架構，則這些屬性的權杖可供您在後續步驟中用於邏輯應用程式。 以下是完整 JSON 結構描述︰
 
 ```json
    {
@@ -302,7 +307,7 @@ ms.locfileid: "83005516"
 
 您可以新增其他可接收要求的邏輯應用程式，以在邏輯應用程式中巢狀處理工作流程。 若要包含這些邏輯應用程式，請遵循下列步驟：
 
-1. 在您要呼叫另一個邏輯應用程式的步驟中，選取 [**新增步驟** > ] [新增**動作**]。
+1. 在您要呼叫另一個邏輯應用程式的步驟中，選取 [**新增步驟] [新增**  >  **動作**]。
 
 1. 在 [選擇動作]**** 底下，選取 [內建]****。 在搜尋方塊中，輸入 `logic apps` 作為篩選條件。 從 [動作] 清單中，選取 **[選擇 Logic Apps 工作流程**]。
 
@@ -316,11 +321,11 @@ ms.locfileid: "83005516"
 
 ## <a name="reference-content-from-an-incoming-request"></a>參考來自傳入要求的內容
 
-如果傳入要求的內容類型為`application/json`，您可以參考傳入要求中的屬性。 否則，會將此內容視為單一的二進位單位，您可以將其傳遞至其他 Api。 若要在邏輯應用程式的工作流程中參考此內容，您必須先轉換該內容。
+如果傳入要求的內容類型為 `application/json` ，您可以參考傳入要求中的屬性。 否則，會將此內容視為單一的二進位單位，您可以將其傳遞至其他 Api。 若要在邏輯應用程式的工作流程中參考此內容，您必須先轉換該內容。
 
-例如，如果您要傳遞具有`application/xml`類型的內容，您可以使用[ `@xpath()`運算式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)來執行 XPath 解壓縮，或使用[ `@json()`運算式](../logic-apps/workflow-definition-language-functions-reference.md#json)將 XML 轉換成 JSON。 深入瞭解如何使用支援的[內容類型](../logic-apps/logic-apps-content-type.md)。
+例如，如果您要傳遞具有類型的內容 `application/xml` ，您可以使用[ `@xpath()` 運算式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)來執行 XPath 解壓縮，或使用[ `@json()` 運算式](../logic-apps/workflow-definition-language-functions-reference.md#json)將 XML 轉換成 JSON。 深入瞭解如何使用支援的[內容類型](../logic-apps/logic-apps-content-type.md)。
 
-若要取得連入要求的輸出，您可以使用[ `@triggerOutputs`運算式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假設您有如下列範例所示的輸出：
+若要取得連入要求的輸出，您可以使用[ `@triggerOutputs` 運算式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假設您有如下列範例所示的輸出：
 
 ```json
 {
@@ -333,7 +338,7 @@ ms.locfileid: "83005516"
 }
 ```
 
-若要明確存取`body`屬性，您可以使用[ `@triggerBody()`運算式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)做為快捷方式。
+若要明確存取 `body` 屬性，您可以使用[ `@triggerBody()` 運算式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)做為快捷方式。
 
 ## <a name="respond-to-requests"></a>回應要求
 
@@ -345,17 +350,17 @@ ms.locfileid: "83005516"
 
 ### <a name="construct-the-response"></a>建構回應
 
-在回應主體中，您可以包含多個標頭和任何類型的內容。 例如，此回應的標頭指定回應的內容類型為`application/json` ，而主體包含`town`和`postalCode`屬性的值（根據本主題中稍早針對要求觸發程式所述的 JSON 架構）。
+在回應主體中，您可以包含多個標頭和任何類型的內容。 例如，此回應的標頭指定回應的內容類型為 `application/json` ，而主體包含 `town` 和屬性的值 `postalCode` （根據本主題中稍早針對要求觸發程式所述的 JSON 架構）。
 
 ![提供 HTTPS 回應動作的回應內容](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 回應具有下列屬性：
 
-| 屬性（顯示） | Property (JSON) | 描述 |
+| 屬性（顯示） | 屬性 (JSON) | 描述 |
 |--------------------|-----------------|-------------|
 | **狀態碼** | `statusCode` | 要在傳入要求的回應中使用的 HTTPS 狀態碼。 此代碼可以是任何以 2xx、4xx 或 5xx 開頭的有效狀態碼。 但是，不允許 3xx 狀態碼。 |
-| **標題** | `headers` | 要包含在回應中的一個或多個標頭 |
-| **人體** | `body` | Body 物件，可以是字串、JSON 物件，甚至是上一個步驟所參考的二進位內容。 |
+| **標頭** | `headers` | 要包含在回應中的一個或多個標頭 |
+| **本文** | `body` | Body 物件，可以是字串、JSON 物件，甚至是上一個步驟所參考的二進位內容。 |
 ||||
 
 若要查看回應動作的 JSON 定義和邏輯應用程式的完整 JSON 定義，請在邏輯應用程式設計工具工具列上選取 [程式**代碼視圖**]。

@@ -7,12 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84141988"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -29,19 +28,19 @@ ms.locfileid: "76261614"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 服務匯流排命名空間和傳訊實體，例如佇列。 這些專案和您的邏輯應用程式都必須使用相同的 Azure 訂用帳戶。 如果您沒有這些項目，請了解如何[建立您的服務匯流排命名空間和佇列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您使用服務匯流排命名空間和訊息實體的邏輯應用程式。 您的邏輯應用程式和服務匯流排必須使用相同的 Azure 訂用帳戶。 若要使用服務匯流排觸發程式啟動您的工作流程，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要在您的工作流程中使用服務匯流排動作，請使用另一個觸發程式來啟動邏輯應用程式，例如「[週期」觸發](../connectors/connectors-native-recurrence.md)程式。
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>檢查權限
+## <a name="check-permissions"></a>請檢查權限
 
 確認您的邏輯應用程式有權可以存取您的服務匯流排命名空間。
 
@@ -114,7 +113,7 @@ ms.locfileid: "76261614"
 
 1. 在您要新增動作的步驟底下，選取 [**新增步驟**]。
 
-   或者，若要在步驟之間新增動作，請將指標移到這些步驟之間的箭號上。 選取顯示的加號（**+**），然後選取 [**新增動作**]。
+   或者，若要在步驟之間新增動作，請將指標移到這些步驟之間的箭號上。 選取顯示的加號（ **+** ），然後選取 [**新增動作**]。
 
 1. 在 [**選擇動作**] 下的 [搜尋] 方塊中，輸入「azure 服務匯流排」作為篩選準則。 從 [動作] 清單中，選取您想要的動作。 
 
@@ -152,11 +151,21 @@ ms.locfileid: "76261614"
 
 1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>依序傳送相互關聯的訊息
+
+當您需要以特定順序傳送相關訊息時，您可以使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用[*順序*群組模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中的[會話](../service-bus-messaging/message-sessions.md)識別碼。
+
+當您建立邏輯應用程式時，您可以**使用服務匯流排會話**範本來選取相互關聯的依序傳遞，以執行連續的群組模式。 如需詳細資訊，請參閱依[序傳送相關訊息](../logic-apps/send-related-messages-sequential-convoy.md)。
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>連接器參考
 
 服務匯流排連接器可以從服務匯流排一次最多省下1500個唯一會話至連接器快取。 如果會話計數超過此限制，則會從快取中移除舊的會話。 如需詳細資訊，請參閱[訊息會話](../service-bus-messaging/message-sessions.md)。
 
-如需觸發程式、動作和限制的其他技術詳細資料（由連接器的 OpenAPI （先前稱為 Swagger）描述所描述），請參閱連接器的[參考頁面](/connectors/servicebus/)。 如需 Azure 服務匯流排訊息的詳細資訊，請參閱[什麼是 Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)？
+如需有關觸發程式、動作和限制的其他技術詳細資料（如連接器的 Swagger 描述所述），請參閱[連接器參考頁面](/connectors/servicebus/)。 如需 Azure 服務匯流排訊息的詳細資訊，請參閱[什麼是 Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)？
 
 ## <a name="next-steps"></a>後續步驟
 

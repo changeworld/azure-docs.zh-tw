@@ -6,12 +6,11 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84141709"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用受控識別連線到適用於 MySQL 的 Azure 資料庫
 
@@ -22,6 +21,9 @@ ms.locfileid: "83663266"
 > * 在資料庫中建立使用者，以代表 VM 使用者指派的身分識別
 > * 使用 VM 身分識別取得存取權杖，並使用其查詢適用於 MySQL 的 Azure 資料庫伺服器
 > * 在 C# 範例應用程式中實作權杖擷取
+
+> [!IMPORTANT]
+> 使用受控識別進行連線僅適用于 MySQL 5.7 和更新版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 
