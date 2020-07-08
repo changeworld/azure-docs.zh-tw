@@ -1,18 +1,14 @@
 ---
 title: 事件方格中自訂主題的災害復原
 description: 本教學課程將逐步說明如何設定您的事件架構，以便在某個區域中的事件方格服務狀況不良時進行復原。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557785"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115075"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>為事件方格中的自訂主題建置您自己的災害復原
 災害復原著重在從應用程式功能的嚴重損失中復原。 本教學課程將逐步說明如何設定您的事件架構，以便在特定區域中的事件方格服務狀況不良時進行復原。

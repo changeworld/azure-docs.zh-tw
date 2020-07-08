@@ -1,19 +1,14 @@
 ---
 title: 快速入門：將自訂事件傳送至 Azure 函式 - 事件方格
 description: 快速入門：使用 Azure 事件方格和 Azure CLI 或入口網站來發佈主題，以及訂閱該事件。 Azure 函式會用於端點。
-services: event-grid
-keywords: ''
-author: femila
-ms.author: femila
-ms.date: 11/15/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557851"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115072"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入門：使用事件方格將自訂事件路由至 Azure 函式
 

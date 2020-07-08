@@ -1,20 +1,20 @@
 ---
 title: 監視虛擬機器變更 - Azure 事件方格和 Logic Apps
 description: 使用 Azure 事件方格和 Logic Apps 來檢查虛擬機器 (VM) 的變更
-services: logic-apps
+services: logic-apps, event-grid
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 10/11/2019
-ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 4edac3237f2eefaa98a6463bb0e720c0d884f0ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144087"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119407"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更
 

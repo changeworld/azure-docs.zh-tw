@@ -4,18 +4,18 @@ description: 了解如何使用 Azure Migrate 準備進行實體伺服器的評�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771269"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113246"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>準備評估實體伺服器並將其移轉至 Azure
 
 本文將說明如何使用 [Azure Migrate](migrate-services-overview.md) 來準備評估內部部署實體伺服器。
 
-[Azure Migrate](migrate-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。 
+[Azure Migrate](./migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。 
 
 本教學課程是一個系列中的第一篇，說明如何使用 Azure Migrate 評估實體伺服器。 在本教學課程中，您會了解如何：
 
@@ -75,11 +75,11 @@ ms.locfileid: "84771269"
     ![Azure AD 權限](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> 這是一個不敏感的預設設定。 [深入了解](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> 這是一個不敏感的預設設定。 [深入了解](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 #### <a name="assign-application-developer-role"></a>指派應用程式開發人員角色
 
-租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 
 ## <a name="prepare-azure-for-physical-server-migration"></a>準備 Azure 以便進行實體伺服器移轉

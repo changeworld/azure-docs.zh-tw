@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106489"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114239"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -130,7 +130,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 2. 在 [選擇匯入類型] 中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]。 然後按一下 [下一步]。
 3. 在 [選擇目的地] 中，保留預設設定。 按 [下一步] 。
 4. 在 [儲存資料夾] 中，保留預設設定。 按 [下一步] 。
-5. 在 [選擇網路] 中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
+5. 在 [選擇網路] 中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
 6. 在 [摘要] 中檢閱設定。 然後按一下 [ **完成**]。
 7. 在 [Hyper-V 管理員] > [虛擬機器] 中，啟動 VM。
 

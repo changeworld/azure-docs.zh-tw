@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77587745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117860"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解您的 Azure 外部服務費用
 外部服務是由 Azure Marketplace 中的第三方軟體廠商發佈。 比方說，SendGrid 是您可以在 Azure 中購買的外部服務，但不是由 Microsoft 所發佈。 有些 Microsoft 產品也會透過 Azure Marketplace 銷售。

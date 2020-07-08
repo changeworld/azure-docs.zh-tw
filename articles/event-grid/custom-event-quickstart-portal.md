@@ -1,20 +1,14 @@
 ---
 title: 快速入門：將自訂事件傳送至 Web 端點 - 事件方格、Azure 入口網站
 description: 快速入門：使用 Azure 事件方格和 Azure 入口網站發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 70f2277e1094a269b18911cc6bf037c4eb5e4731
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907626"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115225"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入門：使用 Azure 入口網站和事件方格，將自訂事件路由傳送至 Web 端點
 
