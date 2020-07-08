@@ -3,12 +3,12 @@ title: 了解部署順序
 description: 瞭解藍圖指派期間部署藍圖構件的預設順序，以及如何自訂部署順序。
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864516"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970615"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 藍圖中的部署順序
 
@@ -28,21 +28,21 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 
 - 訂用帳戶層級**角色指派**成品，依成品名稱排序
 - 訂用帳戶層級**原則指派**成品，依成品名稱排序
-- 訂用帳戶層級 **Azure Resource Manager 範本**成品，依成品名稱排序
+- 依成品名稱排序的訂用帳戶層級**Azure Resource Manager 範本**（ARM 範本）構件
 - **資源群組**成品 (包含子成品)，依預留位置名稱排序
 
 在每個**資源群組**成品中，下列排序順序會適用於要在該資源群組內建立的成品：
 
 - 資源群組子**角色指派**成品，依成品名稱排序
 - 資源群組子**原則指派**成品，依成品名稱排序
-- 資源群組子 **Azure Resource Manager 範本**成品，依成品名稱排序
+- 依成品名稱排序的資源群組子**Azure Resource Manager 範本**（ARM 範本）構件
 
 > [!NOTE]
 > 成品[（）](../reference/blueprint-functions.md#artifacts)的使用會對所參考的成品建立隱含的相依性。
 
 ## <a name="customizing-the-sequencing-order"></a>自訂排序順序
 
-撰寫大型藍圖定義時，可能需要以特定順序建立資源。 此案例最常見的使用模式是當藍圖定義包含數個 Azure Resource Manager 範本時。 Azure 藍圖會藉由允許定義排序次序來處理此模式。
+撰寫大型藍圖定義時，可能需要以特定順序建立資源。 此案例最常見的使用模式是當藍圖定義包含數個 ARM 範本時。 Azure 藍圖會藉由允許定義排序次序來處理此模式。
 
 排序可透過在 JSON 中定義 `dependsOn` 屬性來完成。 藍圖定義、資源群組和成品物件都支援此屬性。 `dependsOn` 為成品名稱字串陣列，代表在其建立前必須建立的特定成品。
 
@@ -51,7 +51,7 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 
 ### <a name="example---ordered-resource-group"></a>範例-已排序的資源群組
 
-此藍圖定義範例`dependsOn`中的資源群組已定義自訂排序次序，其方式是宣告的值以及標準的資源群組。 在此範例中，名為 **assignPolicyTags** 的成品會在 **ordered-rg** 資源群組之前進行處理。
+此藍圖定義範例中的資源群組已定義自訂排序次序，其方式是宣告的值以及 `dependsOn` 標準的資源群組。 在此範例中，名為 **assignPolicyTags** 的成品會在 **ordered-rg** 資源群組之前進行處理。
 **standard-rg** 會根據預設排序順序進行處理。
 
 ```json
@@ -81,7 +81,7 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 
 ### <a name="example---artifact-with-custom-order"></a>範例 - 使用自訂順序的成品
 
-此範例是相依於 Azure Resource Manager 範本的原則成品。 根據預設順序，原則成品會在 Azure Resource Manager 範本之前建立。 這順序可讓原則成品等待建立 Azure Resource Manager 範本。
+此範例是相依于 ARM 範本的原則成品。 根據預設順序，原則成品會在 ARM 範本之前建立。 此順序可讓原則成品等待建立 ARM 範本。
 
 ```json
 {
@@ -100,7 +100,7 @@ Azure 藍圖在處理藍圖定義的指派時，會使用**排序次序**來決�
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>範例-依據資源群組的訂用帳戶層級範本成品
 
-此範例適用于在訂用帳戶層級部署的 Resource Manager 範本，以依賴資源群組。 在預設排序中，訂用帳戶層級成品會在這些資源群組中的任何資源群組和子構件之前建立。 資源群組定義于藍圖定義中，如下所示：
+此範例適用于在訂用帳戶層級部署的 ARM 範本，以相依于資源群組。 在預設排序中，訂用帳戶層級成品會在這些資源群組中的任何資源群組和子構件之前建立。 資源群組定義于藍圖定義中，如下所示：
 
 ```json
 "resourceGroups": {

@@ -5,36 +5,36 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: 99c8d4e7e5263b8a7caf30833a899976d3cc829b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133694"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970989"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
 
 ## <a name="metrics"></a>計量
-適用於 PostgreSQL 的 Azure 資料庫提供多種計量，可讓您深入了解支援 PostgreSQL 伺服器資源的行為。 每個計量都會以一分鐘的頻率發出，而且可保留最多 30 天的歷程記錄。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+適用於 PostgreSQL 的 Azure 資料庫提供多種計量，可讓您深入了解支援 PostgreSQL 伺服器資源的行為。 每個計量都會以一分鐘的頻率發出，且最多可有[93 天的歷程記錄](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 PostgreSQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|描述|
+|計量|計量顯示名稱|單位|Description|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。|
+|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。 （不適用於基本層伺服器）。|
 |storage_percent|儲存體百分比|百分比|使用的儲存體佔伺服器最大值的百分比。|
 |storage_used|已使用儲存體|位元組|使用中的儲存體數量。 此服務所使用的儲存體可能包括資料庫檔案、交易記錄和伺服器記錄。|
 |storage_limit|儲存體限制|位元組|此伺服器的儲存體上限。|
 |serverlog_storage_percent|伺服器記錄儲存體百分比|百分比|使用的伺服器記錄儲存體佔伺服器記錄儲存體上限的百分比。|
 |serverlog_storage_usage|使用的伺服器記錄儲存體|位元組|使用中的伺服器記錄儲存體數量。|
 |serverlog_storage_limit|伺服器記錄儲存體限制|位元組|此伺服器的伺服器記錄儲存體上限。|
-|active_connections|作用中的連線|計數|伺服器的使用中連線數量。|
-|connections_failed|失敗的連線|計數|伺服器的失敗連線數量。|
+|active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
+|connections_failed|失敗的連線|Count|伺服器的失敗連線數量。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
 |backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。|
@@ -74,7 +74,7 @@ ms.locfileid: "82133694"
 如需有關如何建立**服務健康狀態警示**的詳細步驟，請參閱[建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)。
 
 > [!IMPORTANT]
-> 規劃的維護通知目前為預覽狀態
+> 已規劃的維護通知目前在所有區域都可供預覽，美國中西部**除外**
 
 ## <a name="next-steps"></a>後續步驟
 - 如需有關建立計量警示的指引，請參閱[如何設定警示](howto-alert-on-metric.md)。

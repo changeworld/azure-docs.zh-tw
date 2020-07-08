@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834725"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971074"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -73,6 +73,10 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
         This system is now no-hydration compatible. 
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>因虛擬機器上的 [連線] 按鈕變成灰色，而無法對容錯移轉的虛擬機器進行連線/RDP/SSH
+
+如需 RDP 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的檔。
+
+如需 SSH 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的檔。
 
 如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕呈現灰色，而您未透過 Express Route 或網站間 VPN 連線來連線到 Azure，則請：
 

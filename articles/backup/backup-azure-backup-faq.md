@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196274"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970479"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -27,7 +27,7 @@ ms.locfileid: "83196274"
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>保存庫中可以保護多少個資料來源/項目？
 
 在保存庫中，您可以跨所有工作負載 (IaaS VM、SQL、AFS 等) 保護最多 2000 個資料來源/項目。
-例如，如果您在保存庫中已經保護 500 個 VM 和 400 個 Azure 檔案儲存體共用，您只能在其中保護最多 1100 個 SQL 資料庫。
+例如，如果您已在保存庫中保護 500 Vm 和 400 Azure 檔案儲存體共用，您只能在其中保護最多1100個 SQL 資料庫。
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>我可以為每個保存庫建立多少個原則？
 
@@ -47,12 +47,16 @@ ms.locfileid: "83196274"
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
-否。 復原服務保存庫只能在儲存任何備份之前，變更儲存體選項。
+儲存體複寫類型預設會設定為 [異地冗余儲存體（GRS）]。 一旦您設定備份之後，[修改] 選項就會停用，而且無法變更。
+
+![儲存體複寫類型](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+如果您已設定備份，且必須從 GRS 移至 LRS，則請參閱[在設定備份之後，如何從 GRS 變更為 LRS](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>我是否可以針對備份到「復原服務保存庫」的 VM 執行「項目層級還原」(ILR)？
 
 - 由 Azure VM 備份所備份的 Azure VM 支援 Azure VM。 如需詳細資訊，請參閱[文章](backup-azure-restore-files-from-vm.md)
-- 由 Azure 備份伺服器或 System Center DPM 所備份的內部部署 VM 線上復原點不支援 ILR。
+- Azure 備份伺服器或 System Center DPM 所備份之內部部署 Vm 的線上復原點不支援 ILR。
 
 ## <a name="azure-backup-agent"></a>Azure 備份代理程式
 
@@ -116,7 +120,7 @@ Azure VM | 請參閱[AZURE VM 備份的支援矩陣](https://docs.microsoft.com/
 **資料來源** | **詳細資料**
 --- | ---
 磁碟區 |從所要備份之單一磁碟區 VM 備份的資料量。
-SQL Server 資料庫 |所要備份之單一 SQL 資料庫大小的大小。
+SQL Server 資料庫 |要備份之單一資料庫大小的大小。
 SharePoint | 所要備份之 SharePoint 伺服陣列中內容和設定資料庫的總和。
 Exchange |所要備份之 Exchange Server 中所有 Exchange 資料庫的總和。
 BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複本。
@@ -190,7 +194,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 套用新原則後，就會遵循新原則的排程和保留期。
 
-- 如果延長保留期，會標示現有的復原點，以依據新的原則加以保留。
+- 如果延長保留期，則會標示現有的復原點，以根據新的原則加以保留。
 - 如果縮短保留期，則會標示現有的復原點，以便在下次清除作業中剪除然後刪除。
 
 ## <a name="encryption"></a>加密
@@ -208,7 +212,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 Microsoft 不會解密在任何時間點所備份的資料。
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>用來加密備份資料的加密金鑰最小長度是多少？
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用來加密備份資料的加密金鑰長度下限為何？
 
 當您使用 Azure 備份代理程式時，加密金鑰應該至少包含 16 個字元。 在 Azure VM 中，Azure KeyVault 所使用的金鑰長度沒有限制。
 

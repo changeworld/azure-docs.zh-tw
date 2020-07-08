@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638930"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981430"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -45,7 +45,7 @@ Azure HDInsight 這類服務通常會使用 Azure Active Directory 服務主體�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>啟用 Data Lake Storage Gen1 防火牆與 Azure 服務存取權
 
-Data Lake Storage Gen1 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，此功能建議用在外部入侵中的較小攻擊媒介上。 您可以透過**防火牆** > 的 [**啟用防火牆（開啟）** > ] [**允許存取 Azure 服務**] 選項，在 Azure 入口網站中的 Data Lake Storage Gen1 帳戶上啟用防火牆。
+Data Lake Storage Gen1 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，此功能建議用在外部入侵中的較小攻擊媒介上。 您可以透過**防火牆**的 [  >  **啟用防火牆（開啟）**] [  >  **允許存取 Azure 服務**] 選項，在 Azure 入口網站中的 Data Lake Storage Gen1 帳戶上啟用防火牆。
 
 ![Data Lake Storage Gen1 中的防火牆設定](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火牆設定")
 
@@ -126,7 +126,9 @@ AdlCopy 是 Windows 命令列工具，可讓您在兩個 Data Lake Storage Gen1 
 
 Data Lake Storage Gen1 提供詳細的診斷記錄和稽核。 Data Lake Storage Gen1 在 Azure 入口網站的 Data Lake Storage Gen1 帳戶下和 Azure 監視器中提供了一些基本的計量。 Data Lake Storage Gen1 的可用性會顯示在 Azure 入口網站中。 不過，此計量每 7 分鐘會重新整理一次，而且無法透過公開的 API 進行查詢。 若要取得 Data Lake Storage Gen1 帳戶最新的可用性，您必須執行您自己的綜合測試，以驗證可用性。 其他計量資訊，例如總儲存體使用率、讀取/寫入要求及輸入/輸出，可能會持續 24 小時後才重新整理一次。 因此，多個最新計量必須透過 Hadoop 命令列工具或彙總記錄資訊以手動方式計算。 取得最新儲存體使用率最快的方式是從 Hadoop 叢集節點 (例如前端節點) 執行此 HDFS 命令：
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>匯出 Data Lake Storage Gen1 診斷
 
@@ -136,9 +138,9 @@ Data Lake Storage Gen1 提供詳細的診斷記錄和稽核。 Data Lake Storage
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>開啟 HDInsight 中的偵錯層級記錄
 
-如果 Data Lake Storage Gen1 記錄傳送並未開啟，Azure HDInsight 也可透過 log4j 來開啟[Data Lake Storage Gen1 的用戶端記錄](data-lake-store-performance-tuning-mapreduce.md)。 您必須在**Ambari** > **YARN** > **Config** > **Advanced YARN-log4j**configuration 中設定下列屬性：
+如果 Data Lake Storage Gen1 記錄傳送並未開啟，Azure HDInsight 也可透過 log4j 來開啟[Data Lake Storage Gen1 的用戶端記錄](data-lake-store-performance-tuning-mapreduce.md)。 您必須在**Ambari**  >  **YARN**  >  **Config**  >  **Advanced YARN-log4j**configuration 中設定下列屬性：
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
 設定好屬性並重新啟動節點後，Data Lake Storage Gen1 診斷資料就會寫入節點上的 YARN 記錄 (/tmp/\<user\>/yarn.log)，並可監視錯誤或節流 (HTTP 429 錯誤代碼) 等重要的詳細資訊。 這項資訊也可以在 Azure 監視器記錄中監視，或在 Data Lake Storage Gen1 帳戶的 [[診斷](data-lake-store-diagnostic-logs.md)] 分頁中，將記錄傳送至何處。 建議您至少開啟用戶端記錄，或利用 Data Lake Storage Gen1 的記錄傳送選項，來提供作業可見性並且使偵錯更容易進行。
 
@@ -154,11 +156,15 @@ Data Lake Storage Gen1 提供詳細的診斷記錄和稽核。 Data Lake Storage
 
 在 IoT 工作負載中，可能會有大量資料要置入資料存放區，而且範圍橫跨大量產品、裝置、組織和取用者。 請務必為下游取用者預先規劃目錄配置，以利組織、保護和有效率地處理資料。 一般可考慮的範本可能會使用下列配置：
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 例如，為英國境內的飛機引擎置入遙測資料可能如以下結構所示：
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 將日期放在資料夾結構的尾端有很重要的原因。 如果您想要針對使用者/群組鎖定特定區域或內容，那麼您可以輕鬆地透過 POSIX 權限執行此動作。 除此之外，如果必須限定某個安全性群組只能檢視 UK 資料或特定飛機，在個別權限前加入日期結構，對每小時資料夾下的大量資料夾來說是必要的。 另外，前面有日期結構將會使資料夾數目隨著時間呈指數增加。
 
@@ -168,14 +174,18 @@ Data Lake Storage Gen1 提供詳細的診斷記錄和稽核。 Data Lake Storage
 
 有時後，檔案處理會因為資料損毀或未預期的格式而不成功。 在這種情況下，目錄結構可能就需要 **/bad** 資料夾的功用，才能將檔案移至該資料夾並進行進一步檢查。 批次作業可能也會處理這些「不良」** 檔案的報告或通知，以進行手動介入。 請參考下列的範本結構：
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 例如，一間行銷公司每天從他們位於北美洲的客戶接收消費者更新的資料擷取。 而處理前和處理後的資料可能會看起來像以下程式碼片段：
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 對於直接將批次資料處理至 Hive 或傳統 SQL 資料庫的常見案例，則不需要 **/in** 或 **/out** 資料夾，因為輸出已進入 Hive 資料表或外部資料庫的個別資料夾中。 例如，來自客戶的每日擷取會置入個別的資料夾，而 Azure Data Factory、Apache Oozie 或 Apache Airflow 這類服務的協調流程將會觸發每日 Hive 或 Spark 作業來處理資料，並寫入 Hive 資料表。
 

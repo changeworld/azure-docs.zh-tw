@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201715"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981850"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
 多重要素驗證（MFA）是保護組織安全的好方法，但是使用者通常會在必須記住密碼的情況下，使額外的安全性層感到沮喪。 無密碼驗證方法更方便，因為密碼已移除，並以您擁有的內容取代，再加上您所知的東西。
 
-|   | 您擁有的內容 | 您或知道的東西 |
+| 驗證  | 您擁有的內容 | 您或知道的東西 |
 | --- | --- | --- |
 | 無密碼 | Windows 10 裝置、電話或安全性金鑰 | 生物識別或 PIN |
 
@@ -110,13 +110,13 @@ FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證�
 
 下列提供者提供 FIDO2 的安全性金鑰，這些是已知與無密碼體驗相容的不同外型規格。 我們建議您透過聯繫廠商以及 FIDO 聯盟，來評估這些金鑰的安全性屬性。
 
-| 提供者 | 連絡人 |
+| 提供者 | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| TrustKey 解決方案 | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto （Thales 群組） | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc。 | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
@@ -125,7 +125,7 @@ FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證�
 > [!NOTE]
 > 如果您購買並計畫使用 NFC 型安全性金鑰，您需要有支援的 NFC 讀取器來取得安全性金鑰。 NFC 讀取器不是 Azure 需求或限制。 請洽詢廠商以取得您的 NFC 型安全性金鑰，以取得支援的 NFC 讀取器清單。
 
-如果您是廠商，而且想要在這份支援的裝置清單上取得您的[Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)裝置，請聯絡。
+如果您是廠商，而且想要在這份支援的裝置清單上取得您的裝置，請聯絡 [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) 。
 
 ## <a name="what-scenarios-work-with-the-preview"></a>哪些案例適用于預覽版？
 
@@ -147,12 +147,12 @@ FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證�
 |**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>電話（執行 Android 6.0 或更新版本的 iOS 和 Android 裝置）。|Windows 10，版本 1809 或更新版本<br>Azure Active Directory|
 |**Mode**|平台|軟體|硬體|
 |**系統和裝置**|具有內建信賴平臺模組（TPM）的電腦<br>PIN 和生物識別辨識 |電話上的 PIN 和生物識別辨識|FIDO2 與 Microsoft 相容的安全性裝置|
-|**使用者經驗**|使用 PIN 或生物識別辨識（臉部、鳶尾花或指紋）來登入 Windows 裝置。<br>Windows Hello 驗證會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話登入。<br>使用者從他們的電腦或行動電話登入公司或個人帳戶。|使用 FIDO2 安全性裝置（生物識別、PIN 和 NFC）登入<br>使用者可以根據組織控制來存取裝置，並根據 PIN 進行驗證、使用 USB 安全性金鑰和具備 NFC 功能的智慧卡、金鑰或穿戴式裝置等裝置進行生物識別。|
+|**使用者體驗**|使用 PIN 或生物識別辨識（臉部、鳶尾花或指紋）來登入 Windows 裝置。<br>Windows Hello 驗證會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話登入。<br>使用者從他們的電腦或行動電話登入公司或個人帳戶。|使用 FIDO2 安全性裝置（生物識別、PIN 和 NFC）登入<br>使用者可以根據組織控制來存取裝置，並根據 PIN 進行驗證、使用 USB 安全性金鑰和具備 NFC 功能的智慧卡、金鑰或穿戴式裝置等裝置進行生物識別。|
 |**啟用的案例**| Windows 裝置的密碼較少體驗。<br>適用于具有單一登入裝置和應用程式功能的專用工作電腦。|使用行動電話的無密碼位置解決方案。<br>適用于從任何裝置存取 web 上的工作或個人應用程式。|使用生物識別、PIN 和 NFC 之背景工作角色的密碼較少體驗。<br>適用于共用的電腦，且行動電話不是可行的選項（例如技術支援人員、公用 kiosk 或醫院團隊）|
 
 使用下表來選擇哪些方法將支援您的需求和使用者。
 
-|生活|案例|環境|無密碼技術|
+|生活|狀況|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|保護裝置的存取權以進行管理工作|指派的 Windows 10 裝置|Windows Hello 企業版和（或） FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動或非 windows 裝置|無密碼使用 Microsoft Authenticator 應用程式登入|

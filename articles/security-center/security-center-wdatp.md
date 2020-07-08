@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232405"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970802"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>使用 Azure 資訊安全中心的 Microsoft Defender Advanced 威脅防護
 
-Azure 資訊安全中心藉由與[Microsoft Defender Advanced 威脅防護](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp)（ATP）整合，來擴充其雲端工作負載保護平臺供應專案。
-這項變革可讓端點偵測和回應 (EDR) 功能更臻完善。 透過 Microsoft Defender ATP 整合，您可以找出異常狀況。 您也可以偵測及回應 Azure 資訊安全中心監視的伺服器端點上的進階攻擊。
+Azure 資訊安全中心與[Microsoft Defender Advanced 威脅防護（ATP）](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp)整合，以提供完整的端點偵測和回應（EDR）功能。
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>資訊安全中心中的 Microsoft Defender ATP 功能
 
-當您使用 Microsoft Defender ATP 時，您會取得：
+Microsoft Defender ATP 提供：
 
 - **先進的入侵後偵測感應器**：適用于 Windows 伺服器的 MICROSOFT Defender ATP 感應器可收集大量行為信號。
 
@@ -34,22 +33,27 @@ Azure 資訊安全中心藉由與[Microsoft Defender Advanced 威脅防護](http
 
 - **威脅情報**：當 MICROSOFT Defender ATP 識別攻擊者的工具、技術和程式時，會產生警示。 它會使用由 Microsoft 威脅獵人和安全小組提供的資料，利用合作夥伴提供的情報變得更強大。
 
-Azure 資訊安全中心現在提供下列功能：
 
-- **自動**上線： MICROSOFT Defender ATP 感應器會針對上架為 Azure 資訊安全中心的 windows 伺服器自動啟用（執行 windows Server 2019 的系統除外）。
+藉由整合 Defender ATP 與 Azure 資訊安全中心，您也可以受益于下列其他功能：
 
-- **單一玻璃**： Azure 資訊安全中心主控台會顯示 MICROSOFT Defender ATP 警示。
+- **自動**上線：整合會自動為 Azure 資訊安全中心監視的 windows 伺服器啟用 MICROSOFT Defender ATP 感應器（除非它們是執行 windows Server 2019）。
 
-若要進一步調查，請使用 Microsoft Defender ATP。 Microsoft Defender ATP 會提供其他資訊，例如警示進程樹狀結構和事件圖形。 您也可以查看詳細的機器時間軸，其中會顯示最多六個月歷程記錄期間的每項行為。
+- **單一玻璃**： Azure 資訊安全中心主控台會顯示 MICROSOFT Defender ATP 警示。 若要進一步調查，請使用 Microsoft Defender ATP。 Microsoft Defender ATP 會提供其他資訊，例如警示進程樹狀結構和事件圖形。 您也可以查看詳細的機器時間軸，其中會顯示最多六個月歷程記錄期間的每項行為。
 
-![包含警示詳細資訊的 Microsoft Defender ATP 頁面](media/security-center-wdatp/image3.png)
+    ![包含警示詳細資訊的 Microsoft Defender ATP 頁面](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>平台支援
 
-資訊安全中心中的 Microsoft Defender ATP 支援在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上偵測，針對 Azure Vm，您需要標準層訂用帳戶，而非 Azure Vm 則只需要在工作區層級中使用標準層。
+資訊安全中心中的 Microsoft Defender ATP 支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測。 針對 Azure Vm，您需要標準層訂用帳戶，而非 Azure Vm 則只需要在工作區層級中使用標準層。
 
-> [!NOTE]
-> 當您使用 Azure 資訊安全中心來監視伺服器時，系統會自動建立 Microsoft Defender ATP 租使用者，而且 Microsoft Defender ATP 資料預設會儲存在歐洲。 如果您需要將資料移至另一個位置，您必須聯絡 Microsoft 支援服務以重設租使用者。 已針對 Office 365 GCC 客戶停用利用此整合的伺服器端點監視。
+已針對 Office 365 GCC 客戶停用使用這種整合的伺服器端點監視。
+
+## <a name="data-storage-location"></a>資料儲存位置
+
+當您使用 Azure 資訊安全中心來監視伺服器時，系統會自動建立 Microsoft Defender ATP 租使用者。 Microsoft Defender ATP 所收集的資料會儲存在布建期間所識別的租使用者地理位置中。 匿名化表單中的客戶資料也可以儲存在美國中部儲存和處理系統中。 
+
+設定好之後，您便無法變更資料的儲存位置。 如果您需要將資料移至另一個位置，請聯絡 Microsoft 支援服務以重設租使用者。
+
 
 ## <a name="onboarding-servers-to-security-center"></a>讓伺服器在資訊安全中心上線 
 
@@ -66,7 +70,7 @@ Azure 資訊安全中心現在提供下列功能：
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>啟用 Microsoft Defender ATP 整合
 
-若要查看 Microsoft Defender ATP 整合是否已啟用，請選取 [資訊**安全中心** > **定價 & 設定**] > 按一下您的訂用帳戶。
+若要查看 Microsoft Defender ATP 整合是否已啟用，請選取 [資訊**安全中心**  >  **定價 & 設定**] > 按一下您的訂用帳戶。
 您可以在這裡查看目前已啟用的整合內容。
 
   ![已啟用 Microsoft Defender ATP 整合的 Azure 資訊安全中心威脅偵測設定頁面](media/security-center-wdatp/enable-integrations.png)
@@ -81,11 +85,9 @@ Azure 資訊安全中心現在提供下列功能：
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>存取 Microsoft Defender ATP 入口網站
 
-請依照指示[將使用者存取權指派到入口網站](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)。
+1. 請依照指示[將使用者存取權指派到入口網站](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)。
 
-## <a name="set-the-firewall-configuration"></a>設置防火牆設定
-
-如果您的 proxy 或防火牆封鎖了匿名流量，因為 Microsoft Defender ATP 感應器是從系統內容連接，請確定允許匿名流量。 請遵循[啟用 proxy 伺服器中的 Microsoft DEFENDER ATP 服務 url 的存取權](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的指示。
+1. 檢查您是否有封鎖匿名流量的 proxy 或防火牆。 Defender ATP 感應器會從系統內容連接，因此必須允許匿名流量。 若要確保不受妨礙對 Microsoft Defender ATP 入口網站的存取權，請遵循[啟用 proxy 伺服器中的 Microsoft DEFENDER ATP 服務 url 的存取權](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的指示。
 
 ## <a name="test-the-feature"></a>測試功能
 
@@ -105,7 +107,7 @@ Azure 資訊安全中心現在提供下列功能：
 
 1. 如果命令成功，您會在 Azure 資訊安全中心儀表板和 Microsoft Defender ATP 入口網站上看到新的警示。 此警示可能需要幾分鐘才會顯示。
 
-1. 若要在資訊安全中心中查看警示，請前往**安全性警示** > **可疑的 PowerShell 命令列**。
+1. 若要在資訊安全中心中查看警示，請前往**安全性警示**  >  **可疑的 PowerShell 命令列**。
 
 1. 從 [調查] 視窗中，選取 [移至 Microsoft Defender ATP 入口網站] 連結。
 

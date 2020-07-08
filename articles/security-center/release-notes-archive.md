@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860897"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970683"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -29,9 +29,37 @@ ms.locfileid: "83860897"
 - 錯誤修正
 - 已被取代的功能
 
+
+## <a name="january-2020"></a>2020 年 1 月
+
+### <a name="enhanced-secure-score-preview"></a>增強的安全分數 (預覽)
+
+Azure 資訊安全中心的安全分數功能增強版本現已提供預覽。 在此版本中，會將多個建議分組為安全性控制措施，以便更清楚地反映易受攻擊面 (例如，限制對管理連接埠的存取)。
+
+請熟悉預覽階段中的安全分數變更，並決定有助於您進一步保護環境的其他補救。
+
+深入瞭解[增強的安全分數（預覽）](secure-score-security-controls.md)。
+
+
+
 ## <a name="november-2019"></a>2019 年 11 月
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>北美洲區域中公開預覽 Azure Key Vault 的威脅防護
+11月的更新包括：
+ - [北美洲區域中 Azure Key Vault 的威脅防護（預覽）](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Azure 儲存體的威脅防護包括惡意程式碼信譽檢測](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Logic Apps 的工作流程自動化 (預覽)](#workflow-automation-with-logic-apps-preview)
+ - [適用於大量資源的快速修正已正式推出](#quick-fix-for-bulk-resources-generally-available)
+ - [掃描容器映像的弱點 (預覽)](#scan-container-images-for-vulnerabilities-preview)
+ - [其他法規合規性標準 (預覽)](#additional-regulatory-compliance-standards-preview)
+ - [Azure Kubernetes Service 的威脅防護 (預覽)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [虛擬機器弱點評估 (預覽)](#virtual-machine-vulnerability-assessment-preview)
+ - [Azure 虛擬機器上 SQL 伺服器的進階資料安全性 (預覽)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [支援自訂原則 (預覽)](#support-for-custom-policies-preview)
+ - [使用適用於社區及合作夥伴的平台來擴充 Azure 資訊安全中心的涵蓋範圍](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [與建議和警示匯出的進階整合 (預覽)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [從 Windows 管理中心將內部部署伺服器上線到資訊安全中心 (預覽)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>北美洲區域中 Azure Key Vault 的威脅防護（預覽）
 
 Azure Key Vault 是一項重要的服務，可讓您集中管理雲端中的金鑰、秘密、密碼編譯金鑰與原則，藉此保護資料並改善雲端應用程式的效能。 由於 Azure Key Vault 會儲存敏感性和業務關鍵資料，因此對於金鑰保存庫和其中所儲存資料需要最高的安全性。
 
@@ -146,6 +174,11 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 ## <a name="september-2019"></a>2019 年 9 月
 
+9月的更新包括：
+
+ - [使用自適性應用程式控制改進項目來管理規則](#managing-rules-with-adaptive-application-controls-improvements)
+ - [使用 Azure 原則控制容器安全性建議](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>使用自適性應用程式控制改進項目來管理規則
 
 已改善使用自適性應用程式控制來管理虛擬機器規則的體驗。 Azure 資訊安全中心的自適性應用程式控制可協助您控制哪些應用程式可以在您的虛擬機器上執行。 除了規則管理的一般改進之外，還有新的優點可讓您控制在新增規則時，將會保護哪些檔案類型。
@@ -161,6 +194,12 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 
 ## <a name="august-2019"></a>2019 年 8 月
+
+8月的更新包括：
+
+ - [Azure 防火牆的 Just-in-time (JIT) VM 存取](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [單鍵補救以提升您的安全性狀態 (預覽)](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [跨租用戶管理](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Azure 防火牆的 Just-in-time (JIT) VM 存取 
 

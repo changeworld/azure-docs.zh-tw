@@ -3,16 +3,16 @@ title: 如何使用系統指派的受控識別來存取 Azure Cosmos DB 資料
 description: 瞭解如何設定 Azure Active Directory （Azure AD）系統指派的受控識別（受控服務識別），以從 Azure Cosmos DB 存取金鑰。
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641184"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970955"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系統指派的受控識別來存取 Azure Cosmos DB 資料
 
@@ -28,13 +28,13 @@ ms.locfileid: "81641184"
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，開啟 [ **Azure**函式] 窗格，並移至您的函式應用程式。 
 
-1. 開啟 [**平臺功能** > 身分**識別**] 索引標籤： 
+1. 開啟 [**平臺功能**身分  >  **識別**] 索引標籤： 
 
-   ![螢幕擷取畫面，顯示函式應用程式的平臺功能和身分識別選項。](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="螢幕擷取畫面，顯示函式應用程式的平臺功能和身分識別選項。":::
 
 1. 在 [身分**識別**] 索引卷**標上，開啟系統**識別**狀態**，然後選取 [**儲存**]。 [身分**識別**] 窗格看起來應該如下所示：  
 
-   ![螢幕擷取畫面：顯示 [系統識別狀態] 設為 [開啟]。](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="螢幕擷取畫面：顯示 [系統識別狀態] 設為 [開啟]。":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>授與 Azure Cosmos 帳戶的存取權
 
@@ -43,7 +43,7 @@ ms.locfileid: "81641184"
 |內建角色  |描述  |
 |---------|---------|
 |[DocumentDB 帳戶參與者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可以管理 Azure Cosmos DB 帳戶。 允許抓取讀取/寫入金鑰。 |
-|[Cosmos DB 帳戶讀者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以讀取 Azure Cosmos DB 帳戶資料。 允許抓取讀取索引鍵。 |
+|[Cosmos DB 帳戶讀者角色](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以讀取 Azure Cosmos DB 帳戶資料。 允許抓取讀取索引鍵。 |
 
 > [!IMPORTANT]
 > Azure Cosmos DB 中的角色型存取控制支援僅適用于控制平面作業。 資料平面作業會透過主要金鑰或資源權杖來保護。 若要深入瞭解，請參閱[保護對資料的存取](secure-access-to-data.md)一文。
@@ -55,19 +55,19 @@ ms.locfileid: "81641184"
 
 1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [**存取控制（IAM）** ] 窗格，然後按 [**角色指派**] 索引標籤：
 
-   ![顯示 [存取控制] 窗格和 [角色指派] 索引標籤的螢幕擷取畫面。](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="顯示 [存取控制] 窗格和 [角色指派] 索引標籤的螢幕擷取畫面。":::
 
-1. 選取 [ **+ 新增** > ] [**新增角色指派**]。
+1. 選取 [+新增] > [新增角色指派]。
 
 1. [**新增角色指派**] 面板會在右側開啟：
 
-   ![顯示 [新增角色指派] 窗格的螢幕擷取畫面。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="顯示 [新增角色指派] 窗格的螢幕擷取畫面。":::
 
    * **角色**：選取**DocumentDB 帳戶參與者**
    * **指派存取**權：在 [**選取系統指派的受控識別**] 子區段底下，選取 [**函數應用程式**]。
    * **選取**：此窗格會填入您的訂用帳戶中具有**受控系統識別**的所有函數應用程式。 在此情況下，請選取**FishTankTemperatureService**函數應用程式： 
 
-      ![螢幕擷取畫面：顯示已填入範例的 [新增角色指派] 窗格。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="螢幕擷取畫面：顯示已填入範例的 [新增角色指派] 窗格。":::
 
 1. 選取函數應用程式之後，選取 [**儲存**]。
 
@@ -75,12 +75,12 @@ ms.locfileid: "81641184"
 
 現在，我們有一個函式應用程式，其具有系統指派的受控識別，並具有 Azure Cosmos DB 許可權中的**DocumentDB 帳戶參與者**角色。 下列函式應用程式程式碼會取得 Azure Cosmos DB 金鑰、建立 CosmosClient 物件、取得水族箱的溫度，然後將其儲存至 Azure Cosmos DB。
 
-這個範例會使用[列出金鑰 API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys)來存取您的 Azure Cosmos DB 帳戶金鑰。
+這個範例會使用[列出金鑰 API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys)來存取您的 Azure Cosmos DB 帳戶金鑰。
 
 > [!IMPORTANT] 
-> 如果您想要[指派 Cosmos DB 帳戶讀者](#grant-access-to-your-azure-cosmos-account)角色，則必須使用[清單 [唯讀金鑰] API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)。 這只會填入唯讀金鑰。
+> 如果您想要[指派 Cosmos DB 帳戶讀者](#grant-access-to-your-azure-cosmos-account)角色，則必須使用[清單 [唯讀金鑰] API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)。 這只會填入唯讀金鑰。
 
-列出金鑰 API 會傳回`DatabaseAccountListKeysResult`物件。 此類型未在 c # 程式庫中定義。 下列程式碼顯示此類別的執行：  
+列出金鑰 API 會傳回 `DatabaseAccountListKeysResult` 物件。 此類型未在 c # 程式庫中定義。 下列程式碼顯示此類別的執行：  
 
 ```csharp 
 namespace Monitor 
@@ -112,7 +112,7 @@ namespace Monitor
 }
 ```
 
-您將使用[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)程式庫來取得系統指派的受控識別權杖。 若要瞭解取得權杖的其他方式，並瞭解有關程式庫的`Microsoft.Azure.Service.AppAuthentication`詳細資訊，請參閱[服務對服務驗證](../key-vault/general/service-to-service-authentication.md)一文。
+您將使用[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)程式庫來取得系統指派的受控識別權杖。 若要瞭解取得權杖的其他方式，並瞭解有關程式庫的詳細資訊 `Microsoft.Azure.Service.AppAuthentication` ，請參閱[服務對服務驗證](../key-vault/general/service-to-service-authentication.md)一文。
 
 
 ```csharp

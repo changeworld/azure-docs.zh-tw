@@ -1,68 +1,33 @@
 ---
-title: 建立復原服務保存庫
-description: 在本文中，您將瞭解如何建立復原服務保存庫，以儲存備份和復原點。
-ms.reviewer: sogup
+title: 建立和設定復原服務保存庫
+description: 在本文中，您將瞭解如何建立及設定復原服務保存庫，以儲存備份和復原點。
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744949"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970516"
 ---
-# <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
+# <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
 
-復原服務保存庫是一個實體，可儲存一段時間以來建立的備份和復原點。 復原服務保存庫也包含與受保護虛擬機器相關聯的備份原則。
-
-若要建立復原服務保存庫：
-
-1. 在 [Azure 入口網站](https://portal.azure.com/)中登入您的訂用帳戶。
-
-2. 在左側功能表上，選取 [所有服務]  。
-
-    ![選取所有服務](./media/backup-create-rs-vault/click-all-services.png)
-
-3. 在 [所有服務]  對話方塊中，輸入 **Recovery Services**。 資源清單會根據您的輸入進行篩選。 在資源清單中，選取 [復原服務保存庫]  。
-
-    ![輸入並選擇復原服務保存庫](./media/backup-create-rs-vault/all-services.png)
-
-    隨即會在訂用帳戶中出現 [復原服務保存庫] 清單。
-
-4. 在 [復原服務保存庫]  儀表板上，選取 [新增]  。
-
-    ![新增復原服務保存庫](./media/backup-create-rs-vault/add-button-create-vault.png)
-
-    [復原服務保存庫]  對話方塊隨即開啟。 提供 [名稱]  、[訂用帳戶]  、[資源群組]  和 [位置]  的值。
-
-    ![設定復原服務保存庫](./media/backup-create-rs-vault/create-new-vault-dialog.png)
-
-   - **Name**：輸入可識別保存庫的易記名稱。 該名稱必須是 Azure 訂用帳戶中唯一的名稱。 指定的名稱至少要有兩個字元，但不能超過 50 個字元。 名稱開頭必須是字母，且只能包含字母、數字和連字號。
-   - 訂用帳戶  ：選擇要使用的訂用帳戶。 如果您是唯一一個訂用帳戶的成員，就會看到該名稱。 如果您不確定要使用哪個訂用帳戶，請使用預設 (建議) 的訂用帳戶。 只有在您的公司或學校帳戶與多個 Azure 訂用帳戶相關聯時，才會有多個選擇。
-   - **資源群組**：使用現有的資源群組或建立新群組。 若要查看您訂用帳戶中可用的資源群組清單，請選取 [使用現有的]****﹐然後從下拉式清單方塊中選取資源。 若要建立新的資源群組，請選取 [新建]  ，然後輸入名稱。 如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
-   - **位置**：選取保存庫的地理區域。 若要要建立保存庫來保護虛擬機器，則保存庫**必須**與虛擬機器位於相同區域。
-
-      > [!IMPORTANT]
-      > 如果不確定您 VM 的位置，請關閉對話方塊。 移至入口網站中的虛擬機器清單。 如果您在數個區域中有虛擬機器，請在每個區域中建立復原服務保存庫。 請在第一個位置建立保存庫，然後再建立另一個位置的保存庫。 不需要指定用來儲存備份資料的儲存體帳戶。 復原服務保存庫和 Azure 備份服務會自動處理該事宜。
-      >
-      >
-
-5. 當您準備好建立復原服務保存庫時，選取 [建立]  。
-
-    ![建立復原服務保存庫](./media/backup-create-rs-vault/click-create-button.png)
-
-    建立復原服務保存庫可能需要一些時間。 請監視入口網站右上角 [通知]  區域中的狀態通知。 保存庫建立之後，就可以在 [復原服務保存庫] 的清單中看到。 如果您沒有看到保存庫，請選取 [重新整理]  。
-
-     ![重新整理備份保存庫的清單](./media/backup-create-rs-vault/refresh-button.png)
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="set-storage-redundancy"></a>設定儲存體備援
 
 Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體的複寫方式。
 
-1. 從 [復原服務保存庫]**** 刀鋒視窗，按一下 [新增保存庫]。 在 [**設定**] 區段下，按一下 [**屬性**]。
-2. 在 [**屬性**] 的 [**備份**設定] 底下，按一下 [**更新**]。
+> [!NOTE]
+> 您必須先變更復原服務保存庫的**儲存體複寫類型**（本地冗余/異地-多餘），才能在保存庫中設定備份。 一旦您設定備份，[修改] 選項就會停用。
+>
+>- 如果您尚未設定備份，請[遵循下列步驟](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)來審查和修改設定。
+>- 如果您已設定備份，且必須從 GRS 移至 LRS，則請[檢查這些](#how-to-change-from-grs-to-lrs-after-configuring-backup)因應措施。
 
-3. 選取 [儲存體] 複寫類型，然後**按一下 [儲存]**。
+1. 從 [復原服務保存庫] 刀鋒視窗，按一下 [新增保存庫]。 在 [設定] 區段之下，按一下 [屬性]。
+1. 在 [屬性] 的 [備份組態] 之下，按一下 [更新]。
+
+1. 選取儲存體複寫類型，然後按一下 [儲存]。
 
      ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -70,8 +35,8 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
    - 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。
    - 深入瞭解[地理](../storage/common/storage-redundancy-grs.md)和[本機](../storage/common/storage-redundancy-lrs.md)冗余。
 
-> [!NOTE]
-> 您必須先變更復原服務保存庫的**儲存體複寫類型**（本機-多餘/異地），才能在保存庫中進行備份。 一旦您設定備份，[修改] 選項就會停用，而且您無法變更**儲存體複寫類型**。
+>[!NOTE]
+>保存庫的儲存體複寫設定與 Azure 檔案共用備份無關，因為目前的解決方案是以快照集為基礎，而且沒有任何資料傳輸到保存庫。 快照集會儲存在與備份檔案共用相同的儲存體帳戶中。
 
 ## <a name="set-cross-region-restore"></a>設定跨區域還原
 
@@ -90,11 +55,9 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 >- 如需支援的 managed 類型和區域清單，請參閱[支援矩陣](backup-support-matrix.md#cross-region-restore)。
 >- 跨區域還原（CRR）功能現在已在所有 Azure 公用區域中預覽。
 >- CRR 是適用于任何 GRS 保存庫的保存庫層級加入宣告功能（預設為關閉）。
->- 請使用下列命令，將您的訂用帳戶上架此功能：<br>
->  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- 如果您在公開有限預覽期間上架此功能，審核核准電子郵件將會包含定價原則詳細資料。
 >- 加入宣告之後，最多可能需要48小時的時間，才能在次要區域中使用備份專案。
 >- 目前只有備份管理類型才支援 CRR-ARM Azure VM （不支援傳統的 Azure VM）。  當其他管理類型支援 CRR 時，將會**自動**註冊。
+>- 當第一次起始保護時，跨區域還原目前無法還原回 GRS 或 LRS。
 
 ### <a name="configure-cross-region-restore"></a>設定跨區域還原
 
@@ -119,9 +82,56 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 
 我們強烈建議您在保存庫中設定備份之前，先檢查**儲存體複寫類型**和**安全性設定**的預設值。
 
-- **儲存體複寫類型**預設會設定為 [**異地冗余**]。 一旦您設定備份之後，[修改] 選項就會停用。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)來審查和修改設定。
+- **儲存體複寫類型**預設會設定為「**異地多餘**」（GRS）。 一旦您設定備份之後，[修改] 選項就會停用。
+  - 如果您尚未設定備份，請[遵循下列步驟](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)來審查和修改設定。
+  - 如果您已設定備份，且必須從 GRS 移至 LRS，則請[檢查這些](#how-to-change-from-grs-to-lrs-after-configuring-backup)因應措施。
 
-- 預設會在新建立的保存庫上**啟用**虛**刪除**，以防止意外或惡意刪除的備份資料。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)來審查和修改設定。
+- 預設會在新建立的保存庫上**啟用**虛**刪除**，以防止意外或惡意刪除的備份資料。 [請遵循下列步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)來審查和修改設定。
+
+### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>設定備份之後，如何從 GRS 變更為 LRS
+
+在決定從 GRS 移至本地存放裝置（LRS）之前，請檢查符合您案例的低成本和較高資料持久性之間的取捨。 如果您必須從 GRS 移至 LRS，則您有兩個選擇。 它們取決於您的業務需求，以保留備份資料：
+
+- [不需要保留先前備份的資料](#dont-need-to-preserve-previous-backed-up-data)
+- [必須保留先前備份的資料](#must-preserve-previous-backed-up-data)
+
+#### <a name="dont-need-to-preserve-previous-backed-up-data"></a>不需要保留先前備份的資料
+
+若要保護新 LRS 保存庫中的工作負載，您必須在 GRS 保存庫中刪除目前的保護和資料，然後再重新設定備份。
+
+>[!WARNING]
+>下列作業是破壞性的作業，無法復原。 將永久刪除所有與受保護伺服器相關聯的備份資料和備份專案。 繼續進行時請小心。
+
+停止並刪除 GRS 保存庫上目前的保護：
+
+1. 停用 GRS 保存庫屬性中的虛刪除。 請遵循[下列步驟](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal)來停用虛刪除。
+
+1. 停止保護並從現有的 GRS 保存庫刪除備份。 在保存庫的 [儀表板] 功能表中，選取 [**備份專案**]。 此處所列的專案必須移至 LRS 保存庫，並連同其備份資料一併移除。 瞭解如何[刪除雲端中的受保護專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)，以及[刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+
+1. 如果您打算移動 AFS （Azure 檔案共用）、SQL server 或 SAP Hana 伺服器，則也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [**備份基礎結構**]。 瞭解如何[取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、[取消註冊與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及[取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+
+1. 從 GRS 保存庫中移除之後，請繼續在新的 LRS 保存庫中設定工作負載的備份。
+
+#### <a name="must-preserve-previous-backed-up-data"></a>必須保留先前備份的資料
+
+如果您需要將目前受保護的資料保留在 GRS 保存庫中，並繼續保護新的 LRS 保存庫，部分工作負載的選項有限：
+
+- 針對 MARS，您可以[使用 [保留資料] 來停止保護](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup)，並在新的 LRS 保存庫中註冊代理程式。
+
+  - Azure 備份服務會繼續保留 GRS 保存庫的所有現有復原點。
+  - 您必須支付以保留 GRS 保存庫中的復原點。
+  - 您只能針對 GRS 保存庫中未到期的復原點還原已備份的資料。
+  - 必須在 LRS 保存庫上建立資料的新初始複本。
+
+- 針對 Azure VM，您可以[停止保護](backup-azure-manage-vms.md#stop-protecting-a-vm)GRS 保存庫中的 vm 資料，並將 vm 移至另一個資源群組，然後保護 LRS 保存庫中的 vm。 請參閱將 VM 移至另一個資源群組的[指引和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)。
+
+  一次只能在一個保存庫中保護 VM。 不過，新資源群組中的 VM 可以在 LRS 保存庫上受到保護，因為它被視為不同的 VM。
+
+  - Azure 備份服務會保留已在 GRS 保存庫上備份的復原點。
+  - 您必須支付以將復原點保留在 GRS 保存庫中（如需詳細資訊，請參閱[Azure 備份定價](azure-backup-pricing.md)）。
+  - 您將能夠從 GRS 保存庫還原 VM （如有需要）。
+  - 新資源中 VM 的 LRS 保存庫上的第一個備份會是初始複本。
+
 
 ## <a name="next-steps"></a>後續步驟
 

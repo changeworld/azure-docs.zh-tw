@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654464"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970445"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -17,12 +17,13 @@ Azure Resource Graph 查詢語言支援多個運算子與函式。 每個都是�
 本文涵蓋 Resource Graph 支援的語言元件：
 
 - [Resource Graph 資料表](#resource-graph-tables)
+- [Resource Graph 自訂語言元素](#resource-graph-custom-language-elements)
 - [支援的 KQL 語言元素](#supported-kql-language-elements)
 - [逸出字元](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph 資料表
 
-Resource Graph 會針對其所儲存的資料，提供數個有關 Resource Manager 資源類型及其屬性的資料表。 這些資料表可以與 `join` 或 `union` 運算子搭配使用，以取得相關資源類型中的屬性。 以下是 Resource Graph 中可用的資料表清單：
+Resource Graph 會針對它所儲存的資料，提供有關 Azure Resource Manager 資源類型及其屬性的多個資料表。 這些資料表可以與 `join` 或 `union` 運算子搭配使用，以取得相關資源類型中的屬性。 以下是 Resource Graph 中可用的資料表清單：
 
 |Resource Graph 資料表 |描述 |
 |---|---|
@@ -61,6 +62,33 @@ Resources
 
 > [!NOTE]
 > 當使用 `project` 來限制 `join` 結果時，`join` 用來使兩個資料表相關的屬性 (上述範例中的 _subscriptionId_) 必須包含在 `project` 中。
+
+## <a name="resource-graph-custom-language-elements"></a>Resource Graph 自訂語言元素
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共用查詢語法（預覽）
+
+您可以直接在 Resource Graph 查詢中存取[共用查詢](../tutorials/create-share-query.md)，做為預覽功能。 此案例可讓您建立標準查詢做為共用查詢並加以重複使用。 若要在 Resource Graph 查詢內呼叫共用查詢，請使用 `{{shared-query-uri}}` 語法。 共用查詢的 URI 是該查詢的 [**設定**] 頁面上共用查詢的_資源識別碼_。 在此範例中，我們的共用查詢 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
+此 URI 會指向訂用帳戶、資源群組，以及要在另一個查詢中參考之共用查詢的完整名稱。 此查詢與在[教學課程：建立和共用查詢](../tutorials/create-share-query.md)中建立的查詢相同。
+
+> [!NOTE]
+> 您無法將參考共用查詢的查詢儲存為共用查詢。
+
+範例1：僅使用共用查詢
+
+此 Resource Graph 查詢的結果與儲存在共用查詢中的查詢相同。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+範例2：在較大的查詢中包含共用查詢
+
+此查詢會先使用共用查詢，然後使用 `limit` 進一步限制結果。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
 
 ## <a name="supported-kql-language-elements"></a>支援的 KQL 語言元素
 

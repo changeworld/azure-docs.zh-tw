@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723913"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979912"
 ---
 # <a name="check-for-pool-and-node-errors"></a>檢查是否有集區和節點錯誤
 
@@ -24,9 +24,9 @@ ms.locfileid: "83723913"
 
 ### <a name="resize-timeout-or-failure"></a>調整逾時或失敗
 
-在建立新集區或調整現有集區的大小時，您會指定目標節點數目。  建立或調整大小作業會立即完成，但新節點的實際配置或現有節點的移除可能需要數分鐘才能完成。  您可以在[建立](https://docs.microsoft.com/rest/api/batchservice/pool/add)或[調整大小](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API 中指定調整逾時。 如果 Batch 無法在調整大小逾時期間取得目標節點數目，則集區會進入穩定狀態，並回報調整大小錯誤。
+在建立新集區或調整現有集區的大小時，您會指定目標節點數目。  建立或調整大小作業會立即完成，但新節點的實際配置或現有節點的移除可能需要數分鐘才能完成。  您可以在[建立](/rest/api/batchservice/pool/add)或[調整大小](/rest/api/batchservice/pool/resize) API 中指定調整逾時。 如果 Batch 無法在調整大小逾時期間取得目標節點數目，則集區會進入穩定狀態，並回報調整大小錯誤。
 
-最新評估的 [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) 屬性會列出已發生的錯誤。
+最新評估的 [ResizeError](/rest/api/batchservice/pool/get#resizeerror) 屬性會列出已發生的錯誤。
 
 調整大小錯誤的常見原因包括：
 
@@ -34,31 +34,31 @@ ms.locfileid: "83723913"
   - 在一般情況下，預設的逾時 15 分鐘通常即足以進行集區節點的配置或移除。
   - 如果您將配置大量的節點，建議您將調整逾時設為 30 分鐘。 例如，當您要從 Azure Marketplace 映像將大小調整為 1000 個以上的節點，或從自訂 VM 映像調整為 300 個以上的節點。
 - 核心配額不足
-  - Batch 帳戶可配置給所有集區的核心數目有其限制。 達到該配額之後，Batch 就會停止配置節點。 您[可以增加](https://docs.microsoft.com/azure/batch/batch-quota-limit)核心配額，使 Batch 能夠配置更多節點。
-- 當[集區位於虛擬網路中](https://docs.microsoft.com/azure/batch/batch-virtual-network)時，子網路 IP 不足
+  - Batch 帳戶可配置給所有集區的核心數目有其限制。 達到該配額之後，Batch 就會停止配置節點。 您[可以增加](./batch-quota-limit.md)核心配額，使 Batch 能夠配置更多節點。
+- 當[集區位於虛擬網路中](./batch-virtual-network.md)時，子網路 IP 不足
   - 虛擬網路子網路必須有足夠的未指派 IP 位址可配置給每個要求的集區節點。 否則，就會無法建立節點。
-- 當[集區位於虛擬網路中](https://docs.microsoft.com/azure/batch/batch-virtual-network)時，資源不足
+- 當[集區位於虛擬網路中](./batch-virtual-network.md)時，資源不足
   - 您可以在與 Batch 帳戶相同的訂用帳戶中建立資源，例如負載平衡器、公用 IP 和網路安全性群組。 請確認訂用帳戶配額足夠供這些資源使用。
 - 使用自訂 VM 映像的大型集區
   - 使用自訂 VM 映像的大型集區可能需要較長的時間進行配置，因此可能會發生調整逾時。  如需限制和設定的建議，請參閱[使用共用映像庫建立集區](batch-sig-images.md)。
 
 ### <a name="automatic-scaling-failures"></a>自動調整失敗
 
-您也可以設定 Azure Batch，使其自動調整集區中的節點數目。 您必須為[集區的自動調整公式](https://docs.microsoft.com/azure/batch/batch-automatic-scaling)定義參數。 Batch 服務會使用此公式定期評估集區中的節點數目，並設定新的目標數目。 以下是可能偵測到的問題類型：
+您也可以設定 Azure Batch，使其自動調整集區中的節點數目。 您必須為[集區的自動調整公式](./batch-automatic-scaling.md)定義參數。 Batch 服務會使用此公式定期評估集區中的節點數目，並設定新的目標數目。 以下是可能偵測到的問題類型：
 
 - 自動調整評估失敗。
 - 產生的調整大小作業失敗並逾時。
 - 自動調整公式的問題會導致不正確的節點目標值。 調整大小可能會成功或逾時。
 
-您可以使用 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) 屬性取得上次自動調整評估的相關資訊。 此屬性會報告評估時間、值和結果，以及任何效能錯誤。
+您可以使用 [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) 屬性取得上次自動調整評估的相關資訊。 此屬性會報告評估時間、值和結果，以及任何效能錯誤。
 
-[集區調整大小完成事件](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event)會擷取所有評估的相關資訊。
+[集區調整大小完成事件](./batch-pool-resize-complete-event.md)會擷取所有評估的相關資訊。
 
 ### <a name="delete"></a>刪除
 
 當您刪除包含節點的集區時，Batch 會先刪除節點。 然後它會刪除集區物件本身。 刪除這些節點可能需要幾分鐘的時間。
 
-在刪除過程中，Batch 會將[集區狀態](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate)設為**刪除中**。 呼叫端應用程式可以使用 **state** 和 **stateTransitionTime** 屬性來偵測集區刪除作業是否耗費太多時間。
+在刪除過程中，Batch 會將[集區狀態](/rest/api/batchservice/pool/get#poolstate)設為**刪除中**。 呼叫端應用程式可以使用 **state** 和 **stateTransitionTime** 屬性來偵測集區刪除作業是否耗費太多時間。
 
 ## <a name="pool-compute-node-errors"></a>集區計算節點錯誤
 
@@ -131,7 +131,7 @@ Azure Batch 將[節點狀態](/rest/api/batchservice/computenode/get#computenode
 暫存磁碟機的大小取決於 VM 大小。 挑選 VM 大小時的一個考量是要確保暫存磁碟機擁有足夠的空間。
 
 - 在 Azure 入口網站中新增集區時，可以顯示 VM 大小的完整清單，而且有 [資源磁碟大小] 資料行。
-- 描述所有 VM 大小的發行項都有包含 [暫存儲存體] 資料行的資料表；例如[計算最佳化 VM 大小](/azure/virtual-machines/windows/sizes-compute)
+- 描述所有 VM 大小的發行項都有包含 [暫存儲存體] 資料行的資料表；例如[計算最佳化 VM 大小](../virtual-machines/sizes-compute.md)
 
 針對每個工作所寫出的檔案，可以指定每個工作的保留時間，以決定工作檔案在自動清除之前要保留的時間長度。 保留時間可以減少，以降低儲存需求。
 
@@ -140,17 +140,17 @@ Azure Batch 將[節點狀態](/rest/api/batchservice/computenode/get#computenode
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>磁碟已滿時該怎麼辦
 
-判斷磁碟已滿的原因：如果您不確定是什麼佔用了節點上的空間，建議您從遠端移至該節點，並手動調查空間消失的位置。 您也可以使用 [Batch 清單檔案 API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) 檢查 Batch 受管理資料夾中的檔案 (例如，工作輸出)。 請注意，此 API 僅會列出 Batch 受管理目錄中的檔案，而且如果您的工作在其他位置建立了檔案，將不會看到這些檔案。
+判斷磁碟已滿的原因：如果您不確定是什麼佔用了節點上的空間，建議您從遠端移至該節點，並手動調查空間消失的位置。 您也可以使用 [Batch 清單檔案 API](/rest/api/batchservice/file/listfromcomputenode) 檢查 Batch 受管理資料夾中的檔案 (例如，工作輸出)。 請注意，此 API 僅會列出 Batch 受管理目錄中的檔案，而且如果您的工作在其他位置建立了檔案，將不會看到這些檔案。
 
 請確認您需要的任何資料都已經從節點擷取，或者已上傳到長期存放區。 磁碟已滿問題的全部緩解措施包括刪除資料以釋出空間。
 
 ### <a name="recovering-the-node"></a>復原節點
 
-1. 如果您的集區為 [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 集區，可以透過 [Batch 重新製作映像 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)，重新製作節點的映像。這將清理整個磁碟。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) 集區目前不支援重新製作映像。
+1. 如果您的集區為 [C.loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) 集區，可以透過 [Batch 重新製作映像 API](/rest/api/batchservice/computenode/reimage)，重新製作節點的映像。這將清理整個磁碟。 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) 集區目前不支援重新製作映像。
 
-2. 如果您的集區為 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)，可以使用[移除節點 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)，從集區移除節點。 接著，您可以再次擴增集區，將錯誤的節點取代為全新的節點。
+2. 如果您的集區為 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)，可以使用[移除節點 API](/rest/api/batchservice/pool/removenodes)，從集區移除節點。 接著，您可以再次擴增集區，將錯誤的節點取代為全新的節點。
 
-3.  刪除其工作資料仍在節點上的舊的已完成作業或舊的已完成工作。 如需有關在節點上有哪些作業/工作資料的提示，您可以查詢節點上的 [RecentTasks 集合](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)，或[節點上的檔案](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)。 刪除作業將會刪除作業中的所有工作，而刪除作業中的工作將會在節點上的工作目錄中觸發要刪除的資料，因而釋出空間。 釋出足夠的空間之後，請重新啟動節點，其應該會移出 [無法使用] 狀態並重新進入 [閒置] 狀態。
+3.  刪除其工作資料仍在節點上的舊的已完成作業或舊的已完成工作。 如需有關在節點上有哪些作業/工作資料的提示，您可以查詢節點上的 [RecentTasks 集合](/rest/api/batchservice/computenode/get#taskinformation)，或[節點上的檔案](/rest/api/batchservice/file/listfromcomputenode)。 刪除作業將會刪除作業中的所有工作，而刪除作業中的工作將會在節點上的工作目錄中觸發要刪除的資料，因而釋出空間。 釋出足夠的空間之後，請重新啟動節點，其應該會移出 [無法使用] 狀態並重新進入 [閒置] 狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

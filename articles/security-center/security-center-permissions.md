@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106214"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970547"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 資訊安全中心的權限
 
@@ -35,21 +35,20 @@ Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-ac
 > [!NOTE]
 > 安全性角色、安全性讀取者和安全性系統管理員只能在資訊安全中心中存取。 上述安全性角色無法存取 Azure 的其他服務區域，例如儲存體、Web 和行動或物聯網。
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>角色和允許的動作
 
 下表會顯示資訊安全中心的角色和允許的動作。
 
-| [角色] | 編輯安全性原則 | 針對資源套用安全性建議</br> （包含「快速修正！」） | 關閉警示和建議 | 檢視警示和建議 |
-|:--- |:---:|:---:|:---:|:---:|
-| 訂用帳戶擁有者 | ✔ | ✔ | ✔ | ✔ |
-| 訂用帳戶參與者 | -- | ✔ | ✔ | ✔ |
-| 資源群組擁有者 | -- | ✔ | -- | ✔ |
-| 資源群組參與者 | -- | ✔ | -- | ✔ |
-| 讀取者 | -- | -- | -- | ✔ |
-| 安全性系統管理員 | ✔ | -- | ✔ | ✔ |
-| 安全性讀取者 | -- | -- | -- | ✔ |
+|動作|安全性讀取者/ <br> 讀取者 |安全性系統管理員  |資源群組參與者/ <br> 資源群組擁有者  |訂用帳戶參與者  |訂用帳戶擁有者  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|編輯安全性原則|-|✔|-|-|✔|
+|新增/指派計畫（包括）法規合規性標準）|-|-|-|-|✔|
+|變更訂用帳戶定價層|-|✔|-|-|✔|
+|啟用/停用自動布建|-|✔|✔|-|✔|
+|針對資源套用安全性建議</br> （並使用[快速修正！](security-center-remediate-recommendations.md#quick-fix-remediation)）|-|-|✔|✔|✔|
+|關閉警示|-|✔|-|✔|✔|
+|檢視警示和建議|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > 我們建議您指派所需的最寬鬆角色，以便使用者完成其工作。 例如，將「讀取者」角色指派給只需要檢視資源安全性狀態的相關資訊，但不採取行動的使用者，例如套用建議或編輯原則。

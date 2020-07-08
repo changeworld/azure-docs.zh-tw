@@ -1,22 +1,21 @@
 ---
 title: 判斷不符合規範的原因
 description: 如果資源不符合規範，有許多可能的原因。 了解如何找出導致不符合規範的原因。
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684236"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970768"
 ---
 # <a name="determine-causes-of-non-compliance"></a>判斷不符合規範的原因
 
 當 Azure 資源被判斷為不符合原則規則時，了解該資源不符合規則的哪個部分很有幫助。 這也有助於了解何種變更改變了先前符合規範的資源，使其變成不合規範。 有兩種方式可尋找此資訊：
 
-> [!div class="checklist"]
-> - [合規性詳細資料](#compliance-details)
-> - [變更歷程記錄 (預覽)](#change-history)
+- [合規性詳細資料](#compliance-details)
+- [變更歷程記錄 (預覽)](#change-history)
 
 ## <a name="compliance-details"></a>合規性詳細資料
 
@@ -188,9 +187,9 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>變更歷程記錄 (預覽)
+## <a name="change-history-preview"></a><a name="change-history"></a>變更歷程記錄 (預覽)
 
-在新的**公開預覽**版中，過去 14 天的變更歷程記錄適用於所有支援[完整模式刪除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 資源。 變更歷程記錄會提供關於何時偵測到變更的詳細資料，以及每項變更的_視覺化差異_。 新增、移除或更改 Resource Manager 屬性時，就會觸發變更偵測。
+在新的**公開預覽**版中，過去 14 天的變更歷程記錄適用於所有支援[完整模式刪除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 資源。 變更歷程記錄會提供關於何時偵測到變更的詳細資料，以及每項變更的_視覺化差異_。 新增、移除或更改 Azure Resource Manager 的屬性時，就會觸發變更偵測。
 
 1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
 

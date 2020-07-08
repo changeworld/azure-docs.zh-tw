@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 07/06/2020
 ms.author: genli
-ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77920853"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983213"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在離線模式安裝 Azure 虛擬機器代理程式 
 
@@ -37,9 +37,9 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>步驟 1：將 VM 的 OS 磁碟附加至另一個 VM 當做資料磁碟
 
-1. 取得受影響 VM 的 OS 磁片快照集、從快照集建立磁片，然後將磁片連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁片連接至復原 VM，以針對 WINDOWS VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。 若為傳統 VM，請刪除 VM 並保留 OS 磁片，然後將 OS 磁片連結至疑難排解 VM。
+1. 建立受影響 VM 的 OS 磁碟快照集、從快照集建立磁碟，然後將磁碟連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。 若為傳統 VM，請刪除 VM 並保留 OS 磁片，然後將 OS 磁片連結至疑難排解 VM。
 
-2.  連接至疑難排解 VM。 開啟 [**電腦管理** > ] [**磁片管理**]。 確認 OS 磁碟在線上，且已指派磁碟分割的磁碟機代號。
+2.  連接至疑難排解 VM。 開啟 [**電腦管理**] [  >  **磁片管理**]。 確認 OS 磁碟在線上，且已指派磁碟分割的磁碟機代號。
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>步驟 2：修改 OS 磁碟以安裝 Azure VM 代理程式
 
@@ -49,7 +49,7 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
 3.  啟動 [登錄編輯器]**** (regedit.exe)。
 
-4.  選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取** > [檔案] [**載入 Hive**]：
+4.  選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案] [  >  **載入 Hive**]：
 
     ![載入 Hive](./media/install-vm-agent-offline/load-hive.png)
 
@@ -63,14 +63,12 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
     2. 匯出下列登錄：
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  使用疑難排解 VM 上現有的檔案作為 VM 代理程式安裝的儲存機制。 完成下列步驟：
 
     1. 從疑難排解 VM 中，以登錄格式 (.reg) 匯出下列子機碼： 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
           ![匯出登錄子機碼](./media/install-vm-agent-offline/backup-reg.png)
@@ -81,9 +79,8 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
     3. 按兩下每個登錄檔，將登錄檔匯入到儲存機制。
 
-    4. 確認下列三個子機碼已成功匯入到 **BROKENSYSTEM** Hive：
+    4. 確認下列兩個子機碼已成功匯入**BROKENSYSTEM** hive：
         - WindowsAzureGuestAgent
-        - WindowsAzureTelemetryService
         - RdAgent
 
     5. 將目前 VM 代理程式的安裝資料夾複製到連結的作業系統磁碟： 
@@ -94,9 +91,9 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
              ![複製 GuestAgent 資料夾](./media/install-vm-agent-offline/copy-files.png)
 
-9.  選取 [BROKENSYSTEM]****。 從功能表中 **，選取** > **[** 檔案] [卸載 Hive]。
+9.  選取 [BROKENSYSTEM]****。 從功能表中 **，選取**  >  **[** 檔案] [卸載 Hive]。
 
-10.  選取 [BROKENSOFTWARE]****。 從功能表中 **，選取** > **[** 檔案] [卸載 Hive]。
+10.  選取 [BROKENSOFTWARE]****。 從功能表中 **，選取**  >  **[** 檔案] [卸載 Hive]。
 
 11.  卸離 OS 磁片，然後[變更受影響 VM 的 os 磁片](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 若為傳統 VM，請使用已修復的 OS 磁片來建立新的 VM。
 

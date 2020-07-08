@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845541"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971176"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用傾印和還原來將 MySQL 資料庫移轉至適用於 MySQL 的 Azure 資料庫
 本文將說明兩個常見方法，讓您可在適用於 MySQL 的 Azure 資料庫中用來備份和還原資料庫
@@ -67,7 +67,11 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 - [backupfile.sql] 資料庫備份的檔案名稱 
 - [--opt] mysqldump 選項 
 
-例如，若要將 MySQL 伺服器上使用者名稱為 'testuser' 且無密碼之名為 'testdb' 的資料庫備份到 testdb_backup.sql 檔案，請使用下列命令。 此命令會將 `testdb` 資料庫備份至名為 `testdb_backup.sql` 的檔案，其中包含重新建立資料庫所需的所有 SQL 陳述式。 
+例如，若要將 MySQL 伺服器上使用者名稱為 'testuser' 且無密碼之名為 'testdb' 的資料庫備份到 testdb_backup.sql 檔案，請使用下列命令。 此命令會將 `testdb` 資料庫備份至名為 `testdb_backup.sql` 的檔案，其中包含重新建立資料庫所需的所有 SQL 陳述式。 請確定使用者名稱 ' testuser ' 至少具有傾印資料表的 SELECT 許可權、傾印視圖的顯示視圖、傾印觸發程式的觸發程式，以及在未使用--單一交易選項的情況下鎖定資料表。
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,9 +100,10 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 若要準備目標適用於 MySQL 的 Azure 資料庫伺服器，以更快速地載入資料，則必須變更下列伺服器參數和設定。
 - max_allowed_packet – 設定為 1073741824 (也就是 1GB)，以防止因為長資料列而造成任何溢位問題。
 - slow_query_log – 設定為 [關閉]，以關閉慢速查詢記錄。 這將會排除在資料載入期間因慢速查詢記錄而造成的額外負荷。
-- query_store_capture_mode – 將兩個都設定為 NONE，以關閉查詢存放區。 這將會排除查詢存放區取樣活動所造成的額外負荷。
+- query_store_capture_mode –設定為 [無] 以關閉查詢存放區。 這將會排除查詢存放區取樣活動所造成的額外負荷。
 - innodb_buffer_pool_size – 在移轉期間，從入口網站的定價層將伺服器擴大至 32 vCore 記憶體最佳化 SKU，以提高 innodb_buffer_pool_size。 Innodb_buffer_pool_size 只能藉由擴大適用於 MySQL 的 Azure 資料庫伺服器的計算來增加。
-- innodb_write_io_threads & innodb_write_io_threads - 從 Azure 入口網站中的伺服器參數變更為 16，以改善移轉的速度。
+- innodb_io_capacity & innodb_io_capacity_max-從 Azure 入口網站中的伺服器參數變更為9000，以改善遷移速度的 IO 使用率。
+- innodb_write_io_threads & innodb_write_io_threads-從 Azure 入口網站中的伺服器參數變更為4，以改善遷移的速度。
 - 擴大儲存層 – 適用於 MySQL 的 Azure 資料庫伺服器的 IOPS 會隨著儲存層的成長而逐漸增加。 如需更快速的載入速度，您可以增加儲存層以增加佈建的 IOPS。 請記住，儲存體只能擴大，而不能縮小。
 
 完成移轉之後，您可以將伺服器參數和計算層設定還原回其先前的值。 

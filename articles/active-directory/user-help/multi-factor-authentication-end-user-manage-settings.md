@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746755"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983300"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>變更您的雙因素驗證方法和設定
 
@@ -88,7 +88,7 @@ ms.locfileid: "83746755"
 
 1. 從 [其他安全性驗證] 頁面的 [您要如何回應？] 區段中，更新 [驗證電話] (主要行動裝置)和 [辦公室電話] 的電話號碼資訊。
 
-1. 選取 [替代驗證電話] 選項旁的方塊，然後輸入當您無法存取主要裝置時，可以接收文字簡訊或來電的次要電話號碼。
+1. 選取 [**備用驗證電話**] 選項旁的方塊，然後輸入次要電話號碼，如果您無法存取您的主要裝置，就可以接收電話。
 
 1. 選取 [儲存]。
 

@@ -3,12 +3,12 @@ title: 使用 PowerShell 來備份 Azure 檔案共用
 description: 在本文中，您將瞭解如何使用 Azure 備份服務和 PowerShell 來備份 Azure 檔案儲存體檔案共用。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199345"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971023"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>使用 PowerShell 來備份 Azure 檔案共用
 
@@ -60,7 +60,7 @@ ms.locfileid: "83199345"
 5. 在出現的網頁上，系統會提示您輸入您的帳號憑證。
 
     或者，您可以使用 **-Credential**，將您的帳號憑證納入**disconnect-azaccount** Cmdlet 中作為參數。
-   
+
     如果您是代表租使用者工作的 CSP 合作夥伴，請將客戶指定為租使用者。 使用其租使用者識別碼或租使用者主功能變數名稱稱。 例如**Connect-disconnect-azaccount-Tenant "fabrikam.com"**。
 
 6. 將您想要使用的訂用帳戶與帳戶建立關聯，因為一個帳戶可以有數個訂閱：
@@ -95,20 +95,11 @@ ms.locfileid: "83199345"
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. 使用[new-azrecoveryservicesvault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) Cmdlet 來建立保存庫。 為您用於資源群組的保存庫指定相同的位置。
+1. 使用[new-azrecoveryservicesvault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) Cmdlet 來建立保存庫。 為您用於資源群組的保存庫指定相同的位置。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. 指定要用於保存庫儲存體的冗余類型。 您可以使用[本機備援儲存體](../storage/common/storage-redundancy-lrs.md)或[異地備援儲存體](../storage/common/storage-redundancy-grs.md)。
-   
-   下列範例會將**testvault**設定為**異地備援**的[AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) Cmdlet 的 **-BackupStorageRedundancy**選項設定為：
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>在訂用帳戶中檢視保存庫
 
@@ -246,20 +237,22 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+如需有關如何取得儲存體帳戶的檔案共用清單的詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)。
+
 ## <a name="important-notice-backup-item-identification"></a>重要通知：備份專案識別
 
 本節概述 Azure 檔案共用備份中的重要變更，以準備正式推出。
 
-啟用 Azure 檔案共用的備份時，使用者會為客戶提供一個檔案共用名稱作為機構名稱，並建立一個備份專案。 備份專案的名稱是 Azure 備份服務所建立的唯一識別碼。 識別碼通常是使用者易記的名稱。 但是，若要處理虛刪除的案例，其中可刪除檔案共用，而且可以使用相同的名稱建立另一個檔案共用，Azure 檔案共用的唯一識別現在是識別碼。 
+啟用 Azure 檔案共用的備份時，使用者會為客戶提供一個檔案共用名稱作為機構名稱，並建立一個備份專案。 備份專案的名稱是 Azure 備份服務所建立的唯一識別碼。 識別碼通常是使用者易記的名稱。 但是，若要處理虛刪除的案例，其中可刪除檔案共用，而且可以使用相同的名稱建立另一個檔案共用，Azure 檔案共用的唯一識別現在是識別碼。
 
-若要知道每個專案的唯一識別碼，請執行**backup-azrecoveryservicesbackupitem**命令與**backupManagementType**和**WorkloadType**相關的篩選器，以取得所有相關的專案。 然後觀察傳回的 PowerShell 物件/回應中的 [名稱] 欄位。 
+若要知道每個專案的唯一識別碼，請執行**backup-azrecoveryservicesbackupitem**命令與**backupManagementType**和**WorkloadType**相關的篩選器，以取得所有相關的專案。 然後觀察傳回的 PowerShell 物件/回應中的 [名稱] 欄位。
 
 我們建議您列出專案，然後從回應中的 [名稱] 欄位取得其唯一名稱。 使用此值來篩選具有*Name*參數的專案。 否則，請使用*FriendlyName*參數來抓取具有其識別碼的專案。
 
 > [!IMPORTANT]
-> 請確定 PowerShell 已升級為 Azure 檔案共用備份的最小版本（Az. Azurerm.recoveryservices 2.6.0）。 在此版本中， *FriendlyName*篩選器適用于**backup-azrecoveryservicesbackupitem**命令。 
+> 請確定 PowerShell 已升級為 Azure 檔案共用備份的最小版本（Az. Azurerm.recoveryservices 2.6.0）。 在此版本中， *FriendlyName*篩選器適用于**backup-azrecoveryservicesbackupitem**命令。
 >
-> 將 Azure 檔案共用的名稱傳遞給*FriendlyName*參數。 如果您將檔案共用的名稱傳遞給*name*參數，這個版本會擲回警告，將名稱傳遞給*FriendlyName*參數。 
+> 將 Azure 檔案共用的名稱傳遞給*FriendlyName*參數。 如果您將檔案共用的名稱傳遞給*name*參數，這個版本會擲回警告，將名稱傳遞給*FriendlyName*參數。
 >
 > 未安裝最低版本可能會導致現有的腳本失敗。 使用下列命令來安裝 PowerShell 的最低版本：
 >
@@ -295,5 +288,5 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Azure 入口網站中的備份 Azure 檔案儲存體](backup-afs.md)。
-- 請參閱[GitHub 上的範例腳本](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)，以使用 Azure 自動化 runbook 來排程備份。
+* 瞭解[Azure 入口網站中的備份 Azure 檔案儲存體](backup-afs.md)。
+* 請參閱[GitHub 上的範例腳本](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)，以使用 Azure 自動化 runbook 來排程備份。

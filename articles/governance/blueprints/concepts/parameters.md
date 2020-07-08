@@ -3,16 +3,16 @@ title: 使用參數建立動態藍圖
 description: 瞭解靜態和動態參數，以及如何使用它們來建立安全且動態的藍圖。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458483"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970632"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
 
-使用各種成品 (例如，資源群組、Resource Manager 範本、原則或角色指派) 完整定義的藍圖，可以在 Azure 中快速並一致地建立物件。 為了能夠彈性使用這些可重複使用的設計模式與容器，Azure 藍圖支援參數。 參數會在定義與指派期間建立彈性，以變更藍圖所部署成品上的屬性。
+具有各種成品（例如資源群組、Azure Resource Manager 範本（ARM 範本）、原則或角色指派）的完整定義藍圖，可讓您在 Azure 中快速建立和一致地建立物件。 為了能夠彈性使用這些可重複使用的設計模式與容器，Azure 藍圖支援參數。 參數會在定義與指派期間建立彈性，以變更藍圖所部署成品上的屬性。
 
 資源群組成品即為一個簡單的範例。 建立資源群組時，必須提供兩個必要的值：名稱與位置。 將資源群組新增至您的藍圖時，如果參數不存在，您會在每次使用藍圖時定義該名稱和位置。 此種重複導致每次使用藍圖時，就會在相同資源群組中建立成品。 該資源群組內的群組會變成重複且導致衝突。
 
@@ -28,7 +28,7 @@ ms.locfileid: "81458483"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 與 secureObject 參數
 
-雖然 Resource Manager 範本「成品」__ 支援 **secureString** 與 **secureObject** 類型的參數，Azure 藍圖要求每個都要與 Azure Key Vault 連線。 此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此種安全性措施，並在 Resource Manager 範本「成品」__ 中偵測是否包含任何一個安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
+雖然 ARM 範本成品支援**secureString**和**secureObject**類型的參數，但 Azure 藍圖需要每個_專案_都與 Azure Key Vault 連接。 此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此安全性措施，可偵測_ARM 範本成品_中是否包含任何安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
 
 - Key Vault 資源識別碼
 - Key Vault 祕密名稱
@@ -51,7 +51,7 @@ ms.locfileid: "81458483"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在入口網站中設定靜態參數
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
 1. 在頁面左側選取 [藍圖定義]  。
 
@@ -168,7 +168,7 @@ ms.locfileid: "81458483"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在入口網站中設定動態參數
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
 1. 在頁面左側選取 [藍圖定義]  。
 
@@ -180,7 +180,7 @@ ms.locfileid: "81458483"
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>從 REST API 設定動態參數
 
-在指派期間設定**動態參數**，可透過直接輸入值來完成。 提供的值是適當的字串，而不是使用函式[（例如 parameters （））](../reference/blueprint-functions.md#parameters)。 資源群組的成品是使用「範本名稱」與**名稱**和**位置**屬性來定義。 內含成品的所有其他參數都定義在 **parameters** 之下，並具備 **\<name\>** 和 **value** 金鑰組。 如果已針對指派期間未提供的動態參數設定藍圖，指派將會失敗。
+在指派期間設定**動態參數**，可透過直接輸入值來完成。 提供的值是適當的字串，而不是使用函式[（例如 parameters （））](../reference/blueprint-functions.md#parameters)。 資源群組的成品是使用「範本名稱」與**名稱**和**位置**屬性來定義。 內含成品的所有其他參數都定義在**parameters**具有 **\<name\>** 和**值**金鑰組的參數之下。 如果已針對指派期間未提供的動態參數設定藍圖，指派將會失敗。
 
 - REST API URI
 

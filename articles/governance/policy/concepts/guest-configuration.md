@@ -3,16 +3,17 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684286"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971091"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
-除了稽核和[修復](../how-to/remediate-resources.md) Azure 資源外，Azure 原則還可以稽核機器內的設定。 此驗證會由「來賓設定」延伸模組和用戶端執行。 透過用戶端的延伸模組會驗證下列設定：
+Azure 原則可以針對在 Azure 中執行的機器和[Arc 連線的機器](../../../azure-arc/servers/overview.md)，在機器內進行設定。
+此驗證會由「來賓設定」延伸模組和用戶端執行。 透過用戶端的延伸模組會驗證下列設定：
 
 - 作業系統的設定
 - 應用程式設定或目前狀態
@@ -21,13 +22,17 @@ ms.locfileid: "83684286"
 Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 其不會套用設定。 例外狀況是[下面所參照](#applying-configurations-using-guest-configuration)的內建原則。
 
+## <a name="enable-guest-configuration"></a>啟用來賓設定
+
+若要在您的環境中審查電腦的狀態，包括 Azure 和 Arc 連線機器中的機器，請參閱下列詳細資料。
+
 ## <a name="resource-provider"></a>資源提供者
 
 您必須先註冊資源提供者，才能使用「來賓設定」。 如果透過入口網站來指派「來賓設定」原則，則會自動註冊資源提供者。 您可以透過[入口網站](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) 或 [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)手動註冊。
 
-## <a name="extension-and-client"></a>延伸模組和用戶端
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>部署 Azure 虛擬機器的需求
 
-為了稽核機器內的設定，會啟用[虛擬機器擴充功能](../../../virtual-machines/extensions/overview.md)。 延伸模組會下載適用的原則指派及相對應的設定定義。
+若要在電腦內審核設定，會啟用[虛擬機器擴充](../../../virtual-machines/extensions/overview.md)功能，且該電腦必須具有系統管理的身分識別。 延伸模組會下載適用的原則指派及相對應的設定定義。 識別會在電腦讀取和寫入來賓設定服務時用來進行驗證。 Arc 連線的電腦不需要此延伸模組，因為它包含在 Arc 連線的機器代理程式中。
 
 > [!IMPORTANT]
 > 需要「來賓設定」擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要大規模部署擴充功能，請指派下列原則定義： 
@@ -36,18 +41,18 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ### <a name="limits-set-on-the-extension"></a>擴充模組上設定的限制
 
-若要限制擴充功能不會影響在機器內執行的應用程式，「來賓設定」不得超過 5% 的 CPU。 內建和自訂定義都有這項限制。
+若要限制擴充功能不會影響在機器內執行的應用程式，「來賓設定」不得超過 5% 的 CPU。 內建和自訂定義都有這項限制。 Arc 連線機器代理程式中的來賓設定服務也是如此。
 
 ### <a name="validation-tools"></a>驗證工具
 
 在機器內，「來賓設定」會使用本機工具來執行稽核。
 
-下表顯示每個支援的作業系統上所使用的本機工具清單：
+下表顯示每個支援的作業系統上所使用的本機工具清單。 對於內建內容，來賓設定會自動處理載入這些工具。
 
 |作業系統|驗證工具|注意|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 如果機器上沒有 Ruby 和 Python，則「來賓設定」擴充功能會加以安裝。 |
+|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 側載至僅供 Azure 原則使用的資料夾。 不會與 Windows PowerShell DSC 衝突。 PowerShell Core 不會新增至系統路徑。|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 會在預設位置安裝 Chef InSpec 版本2.2.61，並將其新增至系統路徑。 InSpec 套件的相依性（包括 Ruby 和 Python）也會一併安裝。 |
 
 ### <a name="validation-frequency"></a>驗證頻率
 
@@ -65,14 +70,10 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 |Microsoft|Windows Server|2012 和更新版本|
 |Microsoft|Windows 用戶端|Windows 10|
 |OpenLogic|CentOS|7.3 和更新版本|
-|Red Hat|Red Hat Enterprise Linux|7.4 和更新版本|
+|Red Hat|Red Hat Enterprise Linux|7.4-7.8、9.0 和更新版本|
 |Suse|SLES|12 SP3 和更新版本|
 
 只要自訂虛擬機器映像是上表中的其中一個作業系統，「來賓設定」原則就會提供支援。
-
-### <a name="unsupported-client-types"></a>不支援的用戶端類型
-
-不支援任何版本的 Windows Server Nano Server。
 
 ## <a name="guest-configuration-extension-network-requirements"></a>「來賓設定」擴充功能網路需求
 
@@ -87,7 +88,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 
-「來賓設定」所執行的每個稽核都需要兩個原則定義：**DeployIfNotExists** 定義和 **AuditIfNotExists** 定義。
+「來賓設定」所執行的每個稽核都需要兩個原則定義：**DeployIfNotExists** 定義和 **AuditIfNotExists** 定義。 **DeployIfNotExists**原則定義會管理在每部電腦上執行審核的相依性。
 
 **DeployIfNotExists** 原則定義會驗證並修正下列項目：
 
@@ -116,7 +117,7 @@ Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統�
 
 有些參數支援整數值範圍。 例如，[密碼存留期上限] 設定可能會稽核有效的群組原則設定。 「1,70」範圍會確認使用者至少每隔 70 天 (但不能少於一天) 就需要變更其密碼。
 
-如果您使用 Azure Resource Manager 部署範本來指派原則，請使用 parameters 檔案來管理例外狀況。 將檔案簽入至版本控制系統，例如 Git。 檔案變更的相關註解會提供證明，說明為何指派是預期值的例外狀況。
+如果您使用 Azure Resource Manager 範本（ARM 範本）指派原則，請使用參數檔案來管理例外狀況。 將檔案簽入至版本控制系統，例如 Git。 檔案變更的相關註解會提供證明，說明為何指派是預期值的例外狀況。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用「來賓設定」套用設定
 

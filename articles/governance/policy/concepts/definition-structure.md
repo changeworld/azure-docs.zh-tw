@@ -1,30 +1,31 @@
 ---
 title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
-ms.date: 04/03/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746988"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971108"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
 Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條件](#conditions)，以及符合條件時所要採取的效果。 條件會將資源屬性[欄位](#fields)與必要值進行比較。 資源屬性欄位是使用[別名](#aliases)來存取。 資源屬性欄位可以是單一值欄位或是多重值的[陣列](#understanding-the--alias)。 陣列上的條件評估有所不同。
 深入了解[條件](#conditions)。
 
-藉由定義慣例，您可以控制成本以及更輕鬆地管理您的資源。 例如，您可以指定僅允許特定類型的虛擬機器。 或者，您可以要求所有資源都有特定標籤。 原則會由所有子資源繼承。 如果將某個原則套用至資源群組，它會適用於該資源群組中的所有資源。
+藉由定義慣例，您可以控制成本以及更輕鬆地管理您的資源。 例如，您可以指定僅允許特定類型的虛擬機器。 或者，您可以要求資源必須具有特定標記。 子資源會繼承原則指派。 如果原則指派套用至資源群組，則適用于該資源群組中的所有資源。
 
-您可在這裡找到原則定義結構描述：[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+您可在這裡找到原則定義結構描述：[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 使用 JSON 來建立原則定義。 原則定義中包含以下的項目︰
 
-- mode
-- 參數
 - 顯示名稱
 - description
+- mode
+- 中繼資料
+- 參數
 - 原則規則
   - 邏輯評估
   - 效果
@@ -34,7 +35,13 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 ```json
 {
     "properties": {
-        "mode": "all",
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "mode": "Indexed",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,7 +68,22 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 }
 ```
 
-所有 Azure 原則範例都位於 [Azure 原則範例](../samples/index.md)中。
+Azure 原則內建和模式位於 Azure 原則的[範例](../samples/index.md)。
+
+## <a name="display-name-and-description"></a>顯示名稱和描述
+
+您可以使用 **displayName** 和 **description** 來識別原則定義，以及提供其使用時機的內容。 **displayName** 的長度上限為 _128_ 個字元，**description** 的長度上限則為 _512_ 個字元。
+
+> [!NOTE]
+> 在建立或更新原則定義期間，**識別碼**、**類型**和**名稱**是由 JSON 外部的屬性所定義，而且不需要在 JSON 檔案中加以定義。 透過 SDK 擷取原則定義會傳回**識別碼**、**類型**和**名稱**屬性做為 JSON 的一部分，但每個都是與原則定義相關的唯讀資訊。
+
+## <a name="type"></a>類型
+
+雖然無法設定**type**屬性，但 SDK 會傳回三個值，並在入口網站中顯示：
+
+- `Builtin`：這些原則定義由 Microsoft 提供及維護。
+- `Custom`：所有由客戶建立的原則定義都有此值。
+- `Static`：表示具有 Microsoft**擁有權**的[法規合規性](./regulatory-compliance.md)原則定義。 這些原則定義的相容性結果是 Microsoft 基礎結構上的協力廠商審核結果。 在 Azure 入口網站中，此值有時會顯示為 [ **Microsoft 管理**]。 如需詳細資訊，請參閱[雲端中的共同責任](../../../security/fundamentals/shared-responsibility.md)。
 
 ## <a name="mode"></a>[模式]
 
@@ -71,7 +91,7 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 
 ### <a name="resource-manager-modes"></a>Resource Manager 模式
 
-**Mode** 決定原則要評估哪些資源類型。 支援的模式如下：
+**模式**會決定針對原則定義評估的資源類型。 支援的模式如下：
 
 - `all`：評估資源群組、訂用帳戶和所有資源類型
 - `indexed`：只評估支援標記和位置的資源類型
@@ -82,16 +102,30 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 
 建立會強制執行標籤或位置的原則時，應該使用 `indexed`。 雖然並非必要，但它可防止不支援標籤和位置的資源在合規性結果中顯示為不符合規範。 有一個例外，就是**資源群組**和**訂用帳戶**。 原則定義若在資源群組或訂用帳戶上強制執行位置或標籤，就應該將 **mode** 設定為 `all`，並明確地以 `Microsoft.Resources/subscriptions/resourceGroups` 或 `Microsoft.Resources/subscriptions` 類型作為目標。 如需範例，請參閱[模式：標籤 - 範例 #1](../samples/pattern-tags.md)。 如需支援標籤的資源清單，請參閱 [Azure 資源的標籤支援](../../../azure-resource-manager/management/tag-support.md)。
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />資源提供者模式 (預覽)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>資源提供者模式 (預覽)
 
 預覽期間目前支援下列資源提供者模式：
 
-- `Microsoft.ContainerService.Data`，用來管理 [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上的許可控制站規則。 使用此資源提供者模式的原則**必須**使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模型即將_淘汰_。
-- `Microsoft.Kubernetes.Data`，用來在 Azure 上或外部管理 Kubernetes 叢集。 使用此資源提供者模式的原則**必須**使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+- `Microsoft.ContainerService.Data`，用來管理 [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上的許可控制站規則。 使用此資源提供者模式的定義**必須**使用[EnforceRegoPolicy](./effects.md#enforceregopolicy)效果。 此模型即將_淘汰_。
+- `Microsoft.Kubernetes.Data`，用來在 Azure 上或外部管理 Kubernetes 叢集。 使用此資源提供者模式的定義會使用 [ _audit_]、[ _deny_] 和 [ _disabled_] 效果。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果的使用已被_取代_。
 - `Microsoft.KeyVault.Data`，用來管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保存庫和憑證。
 
 > [!NOTE]
 > 資源提供者模式只支援內建原則定義，且在預覽期間不支援計劃。
+
+## <a name="metadata"></a>中繼資料
+
+選擇性的 `metadata` 屬性會儲存原則定義的相關資訊。 客戶可以在中定義適用于其組織的任何屬性和值 `metadata` 。 不過，Azure 原則和內建有一些_常用_的屬性。
+
+### <a name="common-metadata-properties"></a>通用中繼資料屬性
+
+- `version`（字串）：追蹤原則定義內容版本的詳細資料。
+- `category`（字串）：決定要在哪個類別目錄中顯示原則定義 Azure 入口網站。
+- `preview`（布林值）：如果原則定義為_預覽_，則為 True 或 false 旗標。
+- `deprecated`（布林值）：如果原則定義已標示為已被_取代_，則為 True 或 false 旗標。
+
+> [!NOTE]
+> Azure 原則服務會使用 `version`、`preview` 和 `deprecated` 屬性，將變更層級傳達給內建原則定義或計畫和狀態。 `version` 的格式如下：`{Major}.{Minor}.{Patch}`。 特定狀態 (例如 _已淘汰_或_預覽_) 會附加至 `version` 屬性，或在另一個屬性中附加為**布林值**。 如需 Azure 原則版本內建之方式的詳細資訊，請參閱[內建版本](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)設定。
 
 ## <a name="parameters"></a>參數
 
@@ -105,17 +139,11 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 
 參數有下列在原則定義中使用的屬性：
 
-- **名稱**：參數的名稱。 由原則規則中的 `parameters` 部署函式使用。 如需詳細資訊，請參閱[使用參數值](#using-a-parameter-value)。
+- `name`：參數的名稱。 由原則規則中的 `parameters` 部署函式使用。 如需詳細資訊，請參閱[使用參數值](#using-a-parameter-value)。
 - `type`:判斷參數是**字串**、**陣列**、**物件**、**布林值**、**整數**、**浮點**，還是**日期時間**。
 - `metadata`:定義主要由 Azure 入口網站使用的子屬性，以顯示使用者易讀的資訊：
   - `description`:參數用途的說明。 能用來提供可接受值的範例。
   - `displayName`:參數在入口網站中顯示的易記名稱。
-  - `version`:(選擇性) 追蹤有關原則定義內容版本的詳細資料。
-
-    > [!NOTE]
-    > Azure 原則服務會使用 `version`、`preview` 和 `deprecated` 屬性，將變更層級傳達給內建原則定義或計畫和狀態。 `version` 的格式如下：`{Major}.{Minor}.{Patch}`。 特定狀態 (例如 _已淘汰_或_預覽_) 會附加至 `version` 屬性，或在另一個屬性中附加為**布林值**。
-
-  - `category`:(選擇性) 決定要在 Azure 入口網站中的哪一個類別下顯示原則定義。
   - `strongType`:(選擇性) 透過入口網站指派原則定義時會使用。 提供內容感知清單。 如需詳細資訊，請參閱 [strongType](#strongtype)。
   - `assignPermissions`:(選擇性) 設定為 _true_，讓 Azure 入口網站在原則指派期間建立角色指派。 如果您想要在指派範圍之外指派權限，此屬性會很有用。 原則中的每個角色定義 (或計畫中所有原則中的每個角色定義) 都有一個角色指派。 參數值必須是有效的資源或範圍。
 - `defaultValue`:(選擇性) 如果沒有提供值，就在指派中設定參數的值。
@@ -179,14 +207,7 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 如果定義位置為：
 
 - **訂用帳戶** - 只能將原則指派給該訂用帳戶內的資源。
-- **管理群組** - 只能將原則指派給子管理群組與子訂用帳戶內的資源。 如果您打算將原則定義套用至數個訂用帳戶，則位置必須是包含那些訂用帳戶的管理群組。
-
-## <a name="display-name-and-description"></a>顯示名稱和描述
-
-您可以使用 **displayName** 和 **description** 來識別原則定義，以及提供其使用時機的內容。 **displayName** 的長度上限為 _128_ 個字元，**description** 的長度上限則為 _512_ 個字元。
-
-> [!NOTE]
-> 在建立或更新原則定義期間，**識別碼**、**類型**和**名稱**是由 JSON 外部的屬性所定義，而且不需要在 JSON 檔案中加以定義。 透過 SDK 擷取原則定義會傳回**識別碼**、**類型**和**名稱**屬性做為 JSON 的一部分，但每個都是與原則定義相關的唯讀資訊。
+- **管理群組** - 只能將原則指派給子管理群組與子訂用帳戶內的資源。 如果您打算將原則定義套用至數個訂用帳戶，則位置必須是包含訂閱的管理群組。
 
 ## <a name="policy-rule"></a>原則規則
 
@@ -262,7 +283,7 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 使用 **like** 和 **notLike** 條件時，您可以在值中提供 `*` 萬用字元。
 值不應包含多個 `*` 萬用字元。
 
-使用 **match** 和 **notMatch** 條件時，請提供 `#` 來比對數字、`?` 來比對字母、`.` 來比對任何字元，以及任何其他字元來比對該實際字元。 雖然 **match** 和 **notMatch** 會區分大小寫，但評估 _stringValue_ 的所有其他條件都不會區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。
+使用 **match** 和 **notMatch** 條件時，請提供 `#` 來比對數字、`?` 來比對字母、`.` 來比對任何字元，以及任何其他字元來比對該實際字元。 **Match**和**notMatch**會區分大小寫，而所有其他評估_stringValue_的條件則不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。
 
 在 **\[\*\] 別名**陣列欄位值中，陣列中的每個元素都會搭配元素之間的邏輯 **and** 進行個別評估。 如需詳細資訊，請參閱[評估 \[\*\] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
@@ -284,11 +305,11 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 - `tags`
 - `tags['<tagName>']`
   - 此括號語法支援具有連字號、句號或空格等標點符號的標籤名稱。
-  - 其中 **\<tagName\>** 是要接受條件驗證的標籤名稱。
+  - 其中 **\<tagName\>** 是要驗證條件的標記名稱。
   - 範例：`tags['Acct.CostCenter']`，其中 **Acct.CostCenter** 是標籤的名稱。
 - `tags['''<tagName>''']`
   - 此括號語法能透過以雙引號進行逸出，來支援具有單引號的標籤名稱。
-  - 其中 **'\<tagName\>'** 是要接受條件驗證的標籤名稱。
+  - 其中 **' \<tagName\> '** 是要驗證條件的標記名稱。
   - 範例：`tags['''My.Apostrophe.Tag''']`，其中 **'My.Apostrophe.Tag'** 是標籤的名稱。
 - 屬性別名 - 如需清單，請參閱[別名](#aliases)。
 
@@ -411,7 +432,7 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 
 ### <a name="count"></a>Count
 
-計算資源承載中陣列有多少成員符合條件運算式的條件，可以使用 **count** 運算式來構成。 常見的案例是檢查「其中至少一個」、「只有一個」、「全部」或「沒有一個」陣列成員符合條件。 **count** 會評估條件運算式的每個 [\[\*\] 別名](#understanding-the--alias) 陣列成員，並加總 _true_ 結果，然後再與運算式運算子進行比較。 **Count** 運算式最多可以新增 3 次至單一 **policyRule** 定義。
+計算資源承載中陣列有多少成員符合條件運算式的條件，可以使用 **count** 運算式來構成。 常見的案例是檢查「其中至少一個」、「只有一個」、「全部」或「沒有一個」陣列成員符合條件。 **count** 會評估條件運算式的每個 [\[\*\] 別名](#understanding-the--alias) 陣列成員，並加總 _true_ 結果，然後再與運算式運算子進行比較。 **計數**運算式最多可以加上三次至單一**policyRule**定義。
 
 **count** 運算式的結構如下：
 
@@ -430,9 +451,9 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 下列屬性與 **count** 搭配使用：
 
 - **count.field** (必要)：包含陣列的路徑，而且必須是陣列別名。 如果陣列遺漏，則會將運算式評估為 _false_，而不考慮條件運算式。
-- **count.where** (選擇性)：此條件運算式會個別評估 **count.field** 的每個 [\[\*\] 別名](#understanding-the--alias)陣列成員。 如果未提供這個屬性，則路徑為 'field' 的所有陣列成員都會評估為 _true_。 任何[條件](../concepts/definition-structure.md#conditions)都可以在此屬性內使用。
+- **count.where** (選擇性)：此條件運算式會個別評估 **count.field** 的每個 [\[\*\] 別名](#understanding-the--alias)陣列成員。 如果未提供此屬性，則會將路徑為 ' field ' 的所有陣列成員評估為_true_。 任何[條件](../concepts/definition-structure.md#conditions)都可以在此屬性內使用。
   [邏輯運算子](#logical-operators)可以在此屬性內使用，以建立複雜的評估需求。
-- **\<條件\>** (必要)：此值會與符合 **count.where** 條件運算式的項目數進行比較。 應該使用數值[條件](../concepts/definition-structure.md#conditions)。
+- **\<condition\>**（必要）：值會與符合計數的專案數進行比較（ **where**條件運算式）。 應該使用數值[條件](../concepts/definition-structure.md#conditions)。
 
 #### <a name="count-examples"></a>計數範例
 
@@ -582,9 +603,9 @@ Azure 原則支援下列類型的效果：
 > [!NOTE]
 > 在 **deployIfNotExists** 原則定義中，仍可在其範本部署的 `details.deployment.properties.template` 部分內使用這些函式。
 
-下列函式可在原則規則中使用，但與 Azure Resource Manager 範本中的用法不同：
+下列函式可在原則規則中使用，但不同于在 Azure Resource Manager 範本（ARM 範本）中使用：
 
-- `utcNow()` - 不同於 Resource Manager 範本，這可以在 defaultValue 以外使用。
+- `utcNow()`-與 ARM 範本不同的是，這個屬性可以在_defaultValue_以外的地方使用。
   - 以通用 ISO 8601 日期時間格式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' 傳回設定為目前日期和時間的字串
 
 下列函式僅適用於原則規則：
@@ -598,7 +619,7 @@ Azure 原則支援下列類型的效果：
   - `field` 主要是與 **AuditIfNotExists** 和 **DeployIfNotExists** 搭配使用，以參考所評估資源上的欄位。 如需此用法的範例，請參閱 [DeployIfNotExists 範例](effects.md#deployifnotexists-example)。
 - `requestContext().apiVersion`
   - 傳回已觸發原則評估的要求 API 版本 (範例：`2019-09-01`)。
-    這將是用於 PUT/PATCH 要求的 API 版本，而此要求會在建立/更新資源時進行評估。 在對現有資源進行合規性評估時，一律使用最新的 API 版本。
+    此值是在建立/更新資源時，用於放置/修補要求以進行評估的 API 版本。 在對現有資源進行合規性評估時，一律使用最新的 API 版本。
   
 #### <a name="policy-function-example"></a>原則函式範例
 
@@ -713,88 +734,9 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>計畫
-
-計畫可讓您將數個相關的原則定義組成群組來簡化指派和管理，因為您可以將一個群組當作單一項目來使用。 例如，您可以將相關的標籤原則定義組成單一方案。 您可以套用該計畫，而不個別指派每個原則。
-
-> [!NOTE]
-> 一旦指派計畫，就無法更改計畫層級參數。 因此，建議您在定義參數時，設定 **defaultValue**。
-
-下列範例說明如何建立一個處理兩個標籤 (`costCenter` 和 `productName`) 的計畫。 它會使用兩個內建的原則來套用預設標籤值。
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>後續步驟
 
+- 請參閱[計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。
 - 檢閱[了解原則效果](effects.md)。
 - 了解如何[以程式設計方式建立原則](../how-to/programmatically-create.md)。

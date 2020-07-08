@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849088"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980337"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>針對 Microsoft AppSource 建立 Power BI 應用程式
 
 此文章描述如何針對 Microsoft [AppSource](https://appsource.microsoft.com/) 建立並發佈 Power BI 應用程式供應項目。
 
-開始之前，請先[在合作夥伴中心建立商業市集帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) \(部分機器翻譯\) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
+開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) \(部分機器翻譯\) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
@@ -26,7 +26,7 @@ ms.locfileid: "83849088"
 2. 在左側導覽功能表中，選取 [商業市集] > [概觀]。
 3. 在 [概觀] 頁面上，選取 [+ 新增供應項目] > [Power BI 服務應用程式]。
 
-   ![說明左側導覽功能表。](./media/new-offer-pbi-app.png)
+   ![說明左側導覽功能表。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > 發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
@@ -55,10 +55,10 @@ ms.locfileid: "83849088"
 
 其包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應項目為草稿 - [刪除草稿供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) \(部分機器翻譯\)
-- 如果供應項目已上線 - [停止銷售供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
-- 如果供應項目處於預覽階段 - [上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) \(部分機器翻譯\)
-- 如果您尚未完成發行者登出 - [取消發行](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) \(部分機器翻譯\)
+- 如果供應專案為草稿-[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案）
+- 如果供應專案上線，則會[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案）
+- 如果供應專案處於預覽狀態，即[上線](publishing-status.md#publisher-approval)）
+- 如果您尚未完成發行者登出，請[取消發佈](update-existing-offer.md#cancel-publishing)）
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -68,12 +68,12 @@ ms.locfileid: "83849088"
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 合作夥伴中心支援下列 CRM 系統：
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) \(部分機器翻譯\) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) \(部分機器翻譯\) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) \(部分機器翻譯\) 或 [Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) \(部分機器翻譯\) 來儲存潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
+    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md) \(部分機器翻譯\) 或 [Https 端點](commercial-marketplace-lead-management-instructions-https.md) \(部分機器翻譯\) 來儲存潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
 
 2. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 3. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心加以發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 在供應項目上線前對其進行預覽時，您也可以嘗試在預覽環境中自行購買供應項目，藉此測試您的潛在客戶連線。
@@ -81,9 +81,9 @@ ms.locfileid: "83849088"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) \(英文\) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -94,33 +94,16 @@ ms.locfileid: "83849088"
 
 ### <a name="category"></a>類別
 
-選取最少一個，最多三個類別。 這些類別是用來將您的供應項目置於適當的市集搜尋區域，並會顯示在您的供應項目詳細資料頁面上。 在供應項目描述中，說明您的供應項目如何支援這些類別。
+選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-### <a name="industry"></a>業界
+- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
-您也可以選擇性地選取最多兩個產業，以及在每個產業底下選取最多兩個縱向市場。 雖然類別是用來顯示您的供應項目，不過產業和縱向市場則是用於搜尋篩選，且會套用到店面。 如果您的供應項目是以特定的產業和/或縱向市場為目標，請使用供應項目描述來說明您的供應項目是如何支援選取的產業或縱向市場。 如果您的供應項目並非產業特定，請將此區段保留空白。
+請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
-> [!NOTE]
-> 由於我們仍然在持續引進新的產業和縱向市場以改善供應項目探索體驗，某些產業或縱向市場可能尚未在店面上顯示。 以 (*) 標記的產業和縱向市場將會在未來提供。 所有已發佈的供應項目都可以透過關鍵字搜尋來探索。
-<p>&nbsp;
+### <a name="industry"></a>產業
 
-| **產業** | **次產業** |
-| --- | --- |
-| *汽車 | *汽車 |
-| 農業 | *其他 - 未分類者 |
-| 散發 | *批發<br>*包裹和包裝運送 |
-| 教育訓練 | *高等教育<br>* 初等與中等教育 / K-12<br>*圖書館與博物館 |
-| 金融服務 | *銀行與資本市場<br>* 保險 |
-| 政府 | *國防與情報 (先前稱為「國家與公共安全」)<br>* 公眾安全與司法<br>*民選政府 |
-| 醫療保健 (先前稱為「健康情況」) | *健康照護付款方<br>* 提供者<br>*製藥 |
-| 製造與資源 (先前稱為「製造業」) | *化學與農業化學<br>* 離散製造<br>*能源 |
-| 零售與消費性商品 (先前稱為「零售」) | *消費性商品<br>* 零售商 |
-| *媒體與通訊 (先前稱為「媒體與娛樂」) | *媒體與娛樂<br>* 電信業 |
-| 專業服務 | *法律<br>* 合作夥伴專業服務 |
-| *建築與營造 (先前稱為「建築工程」) | *其他 - 未分類者 |
-| *餐旅 | *旅館與休憩<br>* 旅遊與交通<br>*餐廳與飲食服務 |
-| *其他公共事業 | *林業與漁業<br>* 非營利組織 |
-| *房地產 | *其他 - 未分類者 |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>法律
 
@@ -144,6 +127,24 @@ ms.locfileid: "83849088"
 
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：「此應用程式僅適用於 [非英文語言]。」，則供應項目詳細資料不需要為英文。 也可利用不同於供應項目清單中所使用的語言，來提供供應項目內容的有用連結。
+
+以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 標誌
+2. 產品
+3. 類別
+4. 產業
+5. 支援位址（連結）
+6. 使用規定
+7. 隱私權原則
+8. 供應項目名稱
+9. 摘要
+10. Description
+11. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱
 
@@ -199,14 +200,14 @@ ms.locfileid: "83849088"
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
-提供要與您的供應項目搭配使用的標誌和影像。 所有影像都必須是 .png 格式。 模糊影像會被拒絕。
+提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
 >[!NOTE]
->如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
+>如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
 
-#### <a name="store-logos"></a>店面標誌
+#### <a name="store-logos"></a>儲存標誌
 
-以兩種像素大小提供您供應項目標誌的 .png 檔案：
+以兩個圖元大小提供供應專案標誌的 PNG 檔案：
 - **小型** (48 x 48)
 - **大型** (216 x 216)
 
@@ -214,15 +215,15 @@ ms.locfileid: "83849088"
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
-新增至少一個，最多五個螢幕擷取畫面，以顯示供應項目的運作方式。 每個螢幕擷取畫面的大小都必須為 1280 x 720 像素且為 .png 格式。
+新增至少一個，最多五個螢幕擷取畫面，以顯示供應項目的運作方式。 每個的大小都必須為 1280 x 720 像素且為 PNG 格式。
 
 #### <a name="videos-optional"></a>影片 (選擇性)
 
-新增最多五個示範您供應項目的影片。 輸入影片的名稱、其網址，以及影片的縮圖 .png 影像 (大小為 1280 x 720 像素)。
+新增最多五個示範您供應項目的影片。 以 1280 x 720 圖元的大小，輸入影片的名稱、其網址和影片的縮圖 PNG 影像。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市集清單資源
 
-若要深入了解建立供應項目清單，請參閱[供應項目清單最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) \(部分機器翻譯\)。
+若要深入了解建立供應項目清單，請參閱[供應項目清單最佳做法](../gtm-offer-listing-best-practices.md) \(部分機器翻譯\)。
 
 ## <a name="technical-configuration"></a>技術設定
 
@@ -252,4 +253,4 @@ ms.locfileid: "83849088"
 
 若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應項目公開發佈 (或如果為私人供應項目，則發佈到私人對象)，請移至合作夥伴中心，然後選取 [上線]。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心，然後選取 [**上線**]。
