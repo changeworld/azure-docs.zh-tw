@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197050"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>針對 VMware VM 和實體伺服器的複寫問題進行疑難排解
 
@@ -77,7 +76,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
     - 巡覽至受影響複寫機器的 [磁碟] 刀鋒視窗，並複製複本磁碟名稱
     - 巡覽至此複本受控磁碟
     - 您可能會在 [概觀] 刀鋒視窗上看到一個橫幅，其指出已產生 SAS URL。 請按一下此橫幅並取消匯出。 如果看不到橫幅，則請忽略此步驟。
-    - 一旦撤銷 SAS URL，請移至受控磁碟的 [設定] 刀鋒視窗並增加大小，讓 ASR 支援來源磁碟上觀察到的變換率
+    - 一旦撤銷 SAS URL，請移至受控磁片的 [設定] 分頁並增加大小，讓 Azure Site Recovery 在來源磁片上支援觀察到的流失率
 - 如果觀察到的變換為暫時性，請等候幾個小時讓擱置中的資料上傳，以趕上進度並建立復原點。
 - 如果磁碟包含非關鍵性資料，例如暫存記錄、測試資料等，請考慮將此資料移至別處，或從複寫中完全排除此磁碟
 - 如果問題持續發生，請使用 Site Recovery [部署規劃工具](site-recovery-deployment-planner.md#overview)來協助規劃複寫。
@@ -146,6 +145,8 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知問題
 **修正方式**：請參閱知識庫[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4： Linux 伺服器上未啟用應用程式一致性
+**如何修正**：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會由 Azure Site Recovery 行動代理程式用於應用程式一致性。 [以下](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)是啟用它的步驟。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>造成 VSS 相關問題的其他原因：
 
@@ -162,12 +163,12 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>未安裝 VSS 寫入器 - 錯誤 2147221164
 
-修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果未安裝 VSS 提供者服務，則應用程式一致性快照集建立作業會失敗，並出現錯誤識別碼 0x80040154：「類別未登錄」。 </br>
+修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果未安裝 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤識別碼0x80040154 「類別未註冊」。 </br>
 請參閱 [VSS 寫入器安裝疑難排解的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>已停用 VSS 寫入器 - 錯誤　2147943458
 
-**修正方式**：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果已停用 VSS 提供者服務，則應用程式一致性快照集建立作業會失敗，並出現錯誤識別碼「指定的服務已停用，因此無法啟動 (0x80070422)」。 </br>
+修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果停用 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤識別碼「指定的服務已停用且無法啟動（0x80070422）」。 </br>
 
 - 如果已停用 VSS，
     - 請確認 VSS 提供者服務的啟動類型設定為 [自動]。

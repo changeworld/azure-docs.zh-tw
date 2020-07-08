@@ -7,12 +7,11 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe7d6d4e70bc55a6a91d3c1a1b910db4b5469fe6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77067392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197079"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 使用方式
 
@@ -24,7 +23,7 @@ HDInsight 使用 Apache Ambari 進行叢集部署和管理。 Ambari 代理程�
 
 HDInsight 容錯移轉控制器也會負責更新前端節點主機的 IP 位址，指向目前作用中的前端節點。 所有的 Ambari 代理程式都設定為向前端節點主機報告其狀態和心跳。 容錯移轉控制器是在叢集的每個節點上執行的一組服務，如果它們不在執行中，前端節點容錯移轉可能無法正常運作，而且當您嘗試存取 Ambari 伺服器時，將會得到 HTTP 502。
 
-若要檢查哪些前端節點作用中，其中一種方式是透過 ssh 連線到叢集中的其中一個`ping headnodehost`節點，然後執行並比較 IP 與這兩個前端節點的其中一個。
+若要檢查哪些前端節點作用中，其中一種方式是透過 ssh 連線到叢集中的其中一個節點，然後執行 `ping headnodehost` 並比較 IP 與這兩個前端節點的其中一個。
 
 如果容錯移轉控制器服務未執行，前端節點容錯移轉可能無法正常運作，這可能會導致無法執行 Ambari 伺服器。 若要檢查容錯移轉控制器服務是否正在執行，請執行：
 
@@ -56,7 +55,7 @@ ps -ef | grep failover
 
 ## <a name="ambari-database"></a>Ambari 資料庫
 
-HDInsight 會在幕後建立 SQL Azure 資料庫，作為 Ambari 伺服器的資料庫。 預設[服務層級為 S0](../sql-database/sql-database-elastic-pool-scale.md)。
+HDInsight 會在 SQL Database 中建立資料庫，以做為 Ambari 伺服器的資料庫。 預設[服務層級為 S0](../azure-sql/database/elastic-pool-scale.md)。
 
 在建立叢集時，如果背景工作角色節點計數大於16的叢集，S2 就是資料庫服務層級。
 
@@ -73,8 +72,8 @@ HDInsight 會在幕後建立 SQL Azure 資料庫，作為 Ambari 伺服器的資
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

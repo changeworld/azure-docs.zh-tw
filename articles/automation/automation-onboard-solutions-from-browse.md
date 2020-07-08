@@ -5,14 +5,13 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: cb3bbf1a7c2e55d152d26c475369f9ccb6fb7d1e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 6eab9b543bfec90c0c338bdc758d690499f083e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204917"
 ---
-# <a name="enable-update-management-from-azure-portal"></a>從 Azure 入口網站啟用更新管理
+# <a name="enable-update-management-from-the-azure-portal"></a>從 Azure 入口網站啟用更新管理
 
 本文說明如何瀏覽 Azure 入口網站，以啟用 VM 的[更新管理](automation-update-management.md)功能。 若要大規模啟用 Azure VM，您必須使用更新管理來啟用現有的 VM。 
 
@@ -63,9 +62,6 @@ ms.locfileid: "83743974"
 ## <a name="next-steps"></a>後續步驟
 
 * 若要使用 VM 的更新管理，請參閱[管理 Azure VM 的更新和修補程式](automation-tutorial-update-management.md)。
-* 關於範圍設定，請參閱[使用更新管理的範圍設定](automation-scope-configurations-update-management.md)。
-* 如果您不再需要 Log Analytics 工作區，請參閱[在更新管理中取消工作區與自動化帳戶的連結](automation-unlink-workspace-update-management.md)中的指示。
-* 若要從更新管理中刪除 VM，請參閱[從更新管理中移除 VM](automation-remove-vms-from-update-management.md)。
 * 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](troubleshoot/update-management.md)。
 * 若要針對 Windows 更新代理程式的問題進行疑難排解，請參閱[針對 Windows 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues.md)。
 * 若要針對 Linux 更新代理程式的問題進行疑難排解，請參閱[針對 Linux 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues-linux.md)。

@@ -10,15 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220167"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒體服務編碼影片和音訊
 
@@ -60,7 +59,7 @@ ms.locfileid: "80366582"
 * [使用 .NET 從 HTTPS URL 進行編碼](stream-files-dotnet-quickstart.md)
 * [使用 REST 從 HTTPS URL 進行編碼](stream-files-tutorial-with-rest.md)
 * [使用 CLI 從 HTTPS URL 進行編碼](stream-files-cli-quickstart.md)
-* [使用 node.js 從 HTTPS URL 進行編碼](stream-files-nodejs-quickstart.md)
+* [使用 Node.js從 HTTPS URL 進行編碼](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>從本機檔案建立工作輸入
 
@@ -98,7 +97,10 @@ ms.locfileid: "80366582"
 
 - **EncoderNamedPreset. AACGoodQualityAudio**：產生單一的一個檔案，其中只包含 192 kbps 編碼的身歷聲音訊。
 - **EncoderNamedPreset. AdaptiveStreaming** （建議選項）：如需詳細資訊，請參閱[自動產生位元速率階梯](autogen-bitrate-ladder.md)。
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**：公開內容感知編碼的實驗性預設值。 針對任何輸入內容，服務會嘗試自動判斷最佳的層級數目，以及彈性串流傳遞所需的適當位元速率和解析度設定。 基礎演算法會在一段時間後繼續進化。 輸出會包含具有影片和音訊交錯的有案檔案。 如需詳細資訊，請參閱[內容感知編碼的實驗](content-aware-encoding.md)性預設值。
+- **EncoderNamedPreset. ContentAwareEncoding**：公開內容感知編碼的預設值。 針對任何輸入內容，服務會嘗試自動判斷最佳的層級數目，以及彈性串流傳遞所需的適當位元速率和解析度設定。 基礎演算法會在一段時間後繼續進化。 輸出會包含視訊和音訊交錯的 MP4 檔案。 如需詳細資訊，請參閱[內容感知編碼](content-aware-encoding.md)。
+
+  > [!NOTE]
+  > 請務必使用**ContentAwareEncoding** not ContentAwareEncodingExperimental。
 - **EncoderNamedPreset. H264MultipleBitrate1080p**：產生一組八個對齊 GOP 的設定檔案，範圍從 6000 kbps 到 400 kbps，以及身歷聲 AAC 音訊。 解析度起自 1080p，下至 360p。
 - **EncoderNamedPreset. H264MultipleBitrate720p**：產生一組六個對齊 GOP 的設定檔案，範圍從 3400 kbps 到 400 kbps，以及身歷聲 AAC 音訊。 解析度起自 720p，下至 360p。
 - **EncoderNamedPreset. H264MultipleBitrateSD**：產生一組五個對齊 GOP 的設定檔案，範圍從 1600 kbps 到 400 kbps，以及身歷聲 AAC 音訊。 解析度起自 480p，下至 360p。

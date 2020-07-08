@@ -12,12 +12,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195893"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 產品建議
 Azure Data Factory 是許多服務之一，可用來實作解決方案加速器的 Cortana Intelligence 套件。  請參閱 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 頁面以了解這個套件的詳細資料。 在本文中，我們描述 Azure 使用者已經使用 Azure Data Factory 和其他 Cortana Intelligence 元件服務解決與實作的常見使用案例。
@@ -41,7 +40,7 @@ Azure Data Factory 是許多服務之一，可用來實作解決方案加速器�
 ## <a name="solution-overview"></a>方案概觀
 此範例使用案例已被實際的 Azure 使用者透過使用 Azure Data Factory 及其他 Cortana Intelligence 元件服務 (包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)) 來解決並實作。
 
-線上零售商使用 Azure Blob 存放區、內部部署 SQL Server、Azure SQL DB 和關聯式資料市集做為整個工作流程的資料儲存體選項。  Blob 存放區包含客戶資訊、客戶行為資料和產品資訊資料。 產品資訊資料包含 SQL 資料倉儲中的產品品牌資訊和產品目錄預存內部部署。 
+線上零售商會使用 Azure Blob 存放區、內部部署 SQL Server、Azure SQL Database，以及關聯式資料超市做為整個工作流程的資料儲存體選項。  Blob 存放區包含客戶資訊、客戶行為資料和產品資訊資料。 產品資訊資料包含 SQL 資料倉儲中的產品品牌資訊和產品目錄預存內部部署。 
 
 所有資料都會組合並提供給產品建議系統，使用者在網站上瀏覽目錄中的產品時，可根據客戶興趣和動作提供個人化建議。 根據和所有使用者無關的整體網站使用模式，客戶也會看到與其正在查看之產品相關的產品。
 

@@ -3,12 +3,11 @@ title: 在 Azure Migrate 中新增遷移工具
 description: 瞭解如何在 Azure Migrate 中新增遷移工具。
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195814"
 ---
 # <a name="add-migration-tools"></a>新增移轉工具
 
@@ -19,11 +18,11 @@ ms.locfileid: "82901455"
 
 ## <a name="select-a-migration-scenario"></a>選取遷移案例
 
-1. 在 Azure Migrate 專案中，按一下 [概觀]  。
+1. 在 Azure Migrate 專案中，按一下 [概觀]****。
 2. 選取您想要使用的遷移案例：
 
     - 若要將機器和工作負載遷移至 Azure，請選取 [**評估和遷移伺服器**]。
-    - 若要遷移內部部署 SQL 機器，請選取 [**評估和遷移資料庫**]。
+    - 若要遷移內部部署 SQL Server 資料庫，請選取 [**評估和遷移資料庫**]。
     - 若要遷移內部部署 web 應用程式，請選取 [**評估和遷移 web 應用程式**]。
     - 若要在離線模式中將大量內部部署資料移轉至 Azure，請選取 [**訂購資料箱**]。
 

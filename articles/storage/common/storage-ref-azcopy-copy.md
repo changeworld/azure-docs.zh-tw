@@ -8,12 +8,11 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220124"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -63,7 +62,7 @@ azcopy copy [source] [destination] [flags]
 
 使用 OAuth 驗證上傳單一檔案。 如果您尚未登入 AzCopy，請先執行 AzCopy login 命令，然後再執行下列命令。
 
-- azcopy cp "/path/to/file.txt" "HTTPs：//[account]. net/[container]/[path/to/blob]"
+- azcopy cp "/path/to/file.txt" "HTTPs：//[account]. net/[container]/[path/to blob]"
 
 與上述相同，但這次也會計算檔案內容的 MD5 雜湊，並將它儲存為 blob 的 Content-MD5 屬性：
 
@@ -75,7 +74,7 @@ azcopy copy [source] [destination] [flags]
 
 使用 SAS 權杖和管線（僅限區塊 blob）上傳單一檔案：
   
-- 貓 "/path/to/file.txt" |azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]？[SAS] "
+- 貓「/path/to/file.txt」 |azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]？[SAS] "
 
 使用 SAS 權杖上傳整個目錄：
   
@@ -147,25 +146,25 @@ azcopy copy [source] [destination] [flags]
 
 使用存取金鑰和 SAS 權杖，將單一物件從 Amazon Web Services （AWS） S3 複製到 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
   
-- azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/blob]？[SAS] "
+- azcopy cp " https://s3.amazonaws.com/ [bucket]/[object]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/blob]？ [SAS] "
 
 使用存取金鑰和 SAS 權杖，將整個目錄複寫到 AWS S3 的 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/目錄]？[SAS] "--recursive = true
+- azcopy cp " https://s3.amazonaws.com/ [bucket]/[folder]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/目錄]？ [SAS] "--recursive = true
 
-請參閱， https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html以進一步瞭解 [資料夾] 預留位置。
+請參閱， https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html 以進一步瞭解 [資料夾] 預留位置。
 
 使用存取金鑰和 SAS 權杖，將所有值區複製到 Amazon Web Services （AWS）中的 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/" "HTTPs：//[destcontainer]. .net？[SAS] "--recursive = true
+- azcopy cp " https://s3.amazonaws.com/ " "HTTPs：//[destcontainer]. core. net？ [SAS] "--recursive = true
 
 使用存取金鑰和 SAS 權杖，從 Amazon Web Services （AWS）區域將所有 bucket 複製到 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3-[region]. amazonaws .com/" "HTTPs：//[destcontainer]. core. net？[SAS] "--recursive = true
+- azcopy cp " https://s3- [region]. amazonaws .com/" "HTTPs：//[destcontainer]. core. net？ [SAS] "--recursive = true
 
 使用值區名稱中的萬用字元符號（*），複製值區的子集。 如同先前的範例，您將需要存取金鑰和 SAS 權杖。 請務必為 AWS S3 來源設定環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/[bucket * name]/" "HTTPs：//[destcontainer]. core. net？[SAS] "--recursive = true
+- azcopy cp " https://s3.amazonaws.com/ [bucket * name]/" "HTTPs：//[destcontainer]. core. net？ [SAS] "--recursive = true
 
 ## <a name="options"></a>選項
 
@@ -197,7 +196,7 @@ azcopy copy [source] [destination] [flags]
 
 **--exclude-blob 類型**字串可選擇性地指定從容器或帳戶複製 blob 時要排除的 blob 類型（BlockBlob/PageBlob/AppendBlob）。 使用此旗標不適用於將資料從非 azure 服務複製到服務。 一個以上的 blob 應以 '; ' 分隔。
 
-**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
+**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file.pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
 
 **--exclude-模式**字串在複製時排除這些檔案。 此選項支援萬用字元（*）
 
@@ -209,7 +208,7 @@ azcopy copy [source] [destination] [flags]
 
 **--include-屬性**字串（僅限 Windows）包含其屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--include-path**字串只包含複製時的這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。
+**--include-path**字串只包含複製時的這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file.pdf）。
 
 **--include-模式**字串只會在複製時包含這些檔案。 此選項支援萬用字元（*）。 使用 '; ' 來分隔檔案。
 
@@ -225,11 +224,11 @@ azcopy copy [source] [destination] [flags]
 
 **--保留-上次修改時間**         只有當目的地是檔案系統時才可使用。
 
-**--保留-smb-許可權**字串 False 預設為 False。 保留感知資源（Windows 和 Azure 檔案儲存體）之間的 SMB Acl。 針對下載，您也必須使用`--backup`旗標來還原許可權，其中新的擁有者將不會是執行 AzCopy 的使用者。 這個旗標會套用到檔案和資料夾，除非指定了僅限檔案的篩選（例如`include-pattern`）。
+**--保留-smb-許可權**字串 False 預設為 False。 保留感知資源（Windows 和 Azure 檔案儲存體）之間的 SMB Acl。 針對下載，您也必須使用 `--backup` 旗標來還原許可權，其中新的擁有者將不會是執行 AzCopy 的使用者。 這個旗標會套用到檔案和資料夾，除非指定了僅限檔案的篩選（例如 `include-pattern` ）。
 
 **--保留-smb-資訊**字串預設為 False。 會保留 SMB 屬性資訊（上次寫入時間、建立時間、屬性位），並在 SMB 感知資源（Windows 和 Azure 檔案儲存體）之間保存。 只會傳送 Azure 檔案儲存體所支援的屬性位;任何其他專案將會被忽略。 這個旗標會套用到檔案和資料夾，除非指定了僅限檔案的篩選（例如包含模式）。 針對資料夾所傳送的資訊與檔案相同，但不會保留資料夾的上次寫入時間。
 
-**--保留-擁有**者                      只有在下載資料時才`--preserve-smb-permissions`會有效果，而且只有在使用時才會生效。 如果為 true （預設值），則表示檔案擁有者和群組會保留在下載中。 如果此旗標設定為 false， `--preserve-smb-permissions`仍然會保留 acl，但擁有者和群組將會以執行 AzCopy 的使用者為基礎。
+**--保留-擁有**者                      只有在下載資料時才會有效果，而且只有在 `--preserve-smb-permissions` 使用時才會生效。 如果為 true （預設值），則表示檔案擁有者和群組會保留在下載中。 如果此旗標設定為 false， `--preserve-smb-permissions` 仍然會保留 acl，但擁有者和群組將會以執行 AzCopy 的使用者為基礎。
 
 **--put-md5**                            建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-MD5 屬性。 （根據預設，不會建立雜湊）。只有在上傳時才可使用。
 
@@ -249,6 +248,8 @@ azcopy copy [source] [destination] [flags]
 
 **--輸出-** 命令輸出的類型字串格式。 選項包括： text、json。 預設值為「文字」。 （預設值為 "text"）
 
-## <a name="see-also"></a>請參閱
+**--[受信任]-[microsoft 尾碼**] 字串會指定可以傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。
+
+## <a name="see-also"></a>另請參閱
 
 - [azcopy](storage-ref-azcopy.md)

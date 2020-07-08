@@ -5,12 +5,11 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204900"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>從 Azure VM 啟用更新管理
 
@@ -29,7 +28,7 @@ ms.locfileid: "83743952"
 
 在 https://portal.azure.com 登入 Azure 入口網站。
 
-## <a name="enable-update-management"></a>啟用更新管理
+## <a name="enable-the-feature-for-deployment"></a>啟用部署的功能
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中選取 [虛擬機器]，或從首頁搜尋並選取 [虛擬機器]。
 
@@ -43,16 +42,9 @@ ms.locfileid: "83743952"
 
     ![啟用更新管理](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>檢查範圍設定
-
-更新管理會使用工作區中的範圍設定，來設定要啟用此功能的目標電腦。 範圍設定是一筆或多筆已儲存搜尋的群組，用以將此功能的範圍限定於特定電腦。 如需詳細資訊，請參閱[使用更新管理的範圍設定](automation-scope-configurations-update-management.md) (英文)。
-
 ## <a name="next-steps"></a>後續步驟
 
 * 若要使用 VM 的更新管理，請參閱[管理 Azure VM 的更新和修補程式](automation-tutorial-update-management.md)。
-* 關於範圍設定，請參閱[使用更新管理範圍設定](automation-scope-configurations-update-management.md) (英文)。
-* 如果您不再需要 Log Analytics 工作區，請參閱[從更新管理的自動化帳戶取消連結工作區](automation-unlink-workspace-update-management.md)中的指示。
-* 若要從更新管理中刪除 VM，請參閱[從更新管理中移除 VM](automation-remove-vms-from-update-management.md)。
 * 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](troubleshoot/update-management.md)。
 * 若要針對 Windows 更新代理程式的問題進行疑難排解，請參閱[針對 Windows 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues.md)。
 * 若要針對 Linux 更新代理程式的問題進行疑難排解，請參閱[針對 Linux 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues-linux.md)。

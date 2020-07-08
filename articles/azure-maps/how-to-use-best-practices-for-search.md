@@ -8,23 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84264361"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖服務搜尋服務的最佳做法
 
-Azure 地圖服務的[搜尋服務](https://docs.microsoft.com/rest/api/maps/search) \(部分機器翻譯\) 包含可提供各種功能的 API。 例如，搜尋地址 API 可以在特定位置周圍尋找興趣點 (POI) 或資料。 
+Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)包含提供各種功能的 api，可協助開發人員搜尋位址、位置、依名稱或類別的商務清單，以及其他地理資訊。 例如，[模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)可讓使用者搜尋某個位址或感的點（POI）。
 
 此文章說明當您從 Azure 地圖服務的搜尋服務呼叫資料時如何套用完善的做法。 您將學習如何：
 
-* 建置查詢以傳回相關的相符項目。
-* 限制搜尋結果。
-* 了解結果類型之間的差異。
-* 讀取地址搜尋-回應結構。
+* 建立查詢以傳回相關的相符專案
+* 限制搜尋結果
+* 瞭解結果類型之間的差異
+* 讀取位址搜尋-回應結構
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -33,7 +32,7 @@ Azure 地圖服務的[搜尋服務](https://docs.microsoft.com/rest/api/maps/sea
 如需 Azure 地圖服務中驗證的相關資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 > [!TIP]
-> 若要查詢搜尋服務，您可以使用 [Postman 應用程式](https://www.getpostman.com/apps) \(英文\) 來建置 REST 呼叫。 或者，您可以使用任何慣用的 API 開發環境。
+> 若要查詢搜尋服務，您可以使用[Postman 應用程式](https://www.getpostman.com/apps)來建立 REST API 呼叫。 或者，您可以使用任何慣用的 API 開發環境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>對地址進行地理編碼的最佳做法
 
@@ -61,7 +60,7 @@ Azure 地圖服務的[搜尋服務](https://docs.microsoft.com/rest/api/maps/sea
 
 #### <a name="fuzzy-search-parameters"></a>模糊搜尋參數
 
-當您不知道使用者對搜尋查詢的輸入時，建議您使用 Azure 地圖服務的[搜尋模糊 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) \(部分機器翻譯\)。 此 API 會將 POI 搜尋和地理編碼合併為標準的「單行搜尋」： 
+當您不知道使用者對搜尋查詢的輸入時，建議您使用 Azure 地圖服務的[搜尋模糊 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) \(部分機器翻譯\)。 例如，使用者的輸入可以是位址或感利率的類型（POI），例如*購物購物中心*。 此 API 會將 POI 搜尋和地理編碼合併為標準的「單行搜尋」： 
 
 * 即使查詢參數未完全符合使用者想要的資訊，`minFuzzyLevel` 和 `maxFuzzyLevel` 參數也有助於傳回相關的相符項目。 若要將效能最大化並減少不尋常的結果，請將搜尋查詢設定為 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2` 的預設值。 
 
@@ -85,7 +84,7 @@ Azure 地圖服務的[搜尋服務](https://docs.microsoft.com/rest/api/maps/sea
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>針對地理實體類型進行反向地理編碼和篩選
 
-當您在[反向搜尋地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) \(部分機器翻譯\) 中進行反向地理編碼搜尋時，此服務可以傳回適用於行政區的多邊形。 若要將搜尋範圍縮小至特定地理實體類型，請在您的要求中包含 `entityType` 參數。 
+當您在[反向搜尋地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) \(部分機器翻譯\) 中進行反向地理編碼搜尋時，此服務可以傳回適用於行政區的多邊形。 例如，yoi 可能會想要提取城市的區域多邊形。 若要將搜尋範圍縮小至特定地理實體類型，請在您的要求中包含 `entityType` 參數。 
 
 產生的回應會包含地理識別碼及相符的實體類型。 如果您提供一個以上的實體，則端點會傳回「可用的最小實體」。 您可以使用傳回的幾何識別碼，透過[搜尋多邊形服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) \(部分機器翻譯\) 來取得地理位置的幾何。
 

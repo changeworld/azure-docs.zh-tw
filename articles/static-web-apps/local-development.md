@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36d580b7659325d4bf5f13889f774ddaa2ab0702
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259264"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>設定 Azure 靜態 Web Apps 預覽版的本機開發
 
@@ -64,7 +63,7 @@ Azure 靜態 Web Apps 執行個體由兩種不同類型的應用程式所組成�
 
 #### <a name="create-a-repository"></a>建立存放庫
 
-1. 瀏覽至 [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate)，並使用此範本建立名為 **vanilla-api**的新 GitHub 專案。
+1. 請確定您已登入 GitHub，並 [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) 使用此範本，流覽至並建立名為**vanilla 的**新 GitHub 專案。
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub 新增存放庫視窗":::
 

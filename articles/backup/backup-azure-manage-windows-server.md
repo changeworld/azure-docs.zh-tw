@@ -3,16 +3,15 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234602"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
-本文說明如何使用復原服務保存庫的 [概觀]**** 儀表板來監視及管理復原服務保存庫。 當您從清單開啟復原服務保存庫時，所選保存庫的 [概觀]**** 儀表板隨即開啟。 此儀表板會提供有關保存庫的各種詳細資料。 其中有「圖格」** 顯示：重大和警告警示的狀態、進行中和失敗備份作業，以及使用的本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 數量。 如果您將 Azure VM 備份到保存庫，[[備份前置檢查狀態]**** 圖格會顯示任何重大或警告項目](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 下圖是 **Contoso-vault** 的 [概觀]**** 儀表板。 [備份項目]**** 圖格會顯示有九個註冊到保存庫的項目。
+本文說明如何使用復原服務保存庫的 [概觀]**** 儀表板來監視及管理復原服務保存庫。 當您從清單開啟復原服務保存庫時，所選保存庫的 [概觀]**** 儀表板隨即開啟。 此儀表板會提供有關保存庫的各種詳細資料。 其中有*磚*顯示：重大和警告警示的狀態、進行中和失敗的備份作業，以及使用的本機多餘儲存體（LRS）和異地多餘儲存體（GRS）數量。 如果您將 Azure VM 備份到保存庫，[[備份前置檢查狀態]**** 圖格會顯示任何重大或警告項目](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 下圖是 **Contoso-vault** 的 [概觀]**** 儀表板。 [備份項目]**** 圖格會顯示有九個註冊到保存庫的項目。
 
 ![復原服務保存庫儀表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -95,7 +94,7 @@ ms.locfileid: "80131982"
 
 | 警示層級 | 產生警示的事件 |
 | ----------- | ----------- |
-| 重大 | 您會在下列情況中收到重大警示：備份作業失敗、復原作業失敗，以及當您在伺服器停止保護時，但保留資料。|
+| 重要 | 您會在下列情況中收到重大警示：備份作業失敗、復原作業失敗，以及當您在伺服器停止保護時，但保留資料。|
 | 警告 | 您會在以下情況收到警示：備份作業完成，但有警告 (例如，當不到 100 個檔案因為損毀問題而未備份，或是有超過 1,000,000 個檔案成功備份時)。 |
 | 資訊 | 目前沒有使用中的資訊警示。 |
 
@@ -226,7 +225,7 @@ ms.locfileid: "80131982"
 * Azure 儲存體
 * Azure 工作負載
 
-#### <a name="operation"></a>作業
+#### <a name="operation"></a>操作
 
 您可以檢視一項作業或所有作業。 您無法選取兩項或三項作業。 可用的作業如下：
 
@@ -245,7 +244,7 @@ ms.locfileid: "80131982"
 * 所有狀態
 * Completed
 * 進行中
-* Failed
+* 失敗
 * 已取消
 * 已完成，但出現警告
 

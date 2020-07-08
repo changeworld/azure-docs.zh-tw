@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248629"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -39,45 +38,45 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 自動調整會持續監視叢集，並收集下列計量：
 
-|計量|說明|
+|計量|描述|
 |---|---|
 |擱置中的 CPU 總計|開始執行所有擱置中容器時所需的核心總數。|
 |擱置中的記憶體總計|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
-|可用 CPU 總計|作用中背景工作節點上所有未使用核心的總和。|
-|可用記憶體總計|作用中背景工作節點上所有未使用記憶體的總和 (MB)。|
+|可用的 CPU 總計|作用中背景工作節點上所有未使用核心的總和。|
+|可用的記憶體總計|作用中背景工作節點上所有未使用記憶體的總和 (MB)。|
 |每個節點的已使用記憶體|背景工作節點上的負載。 已使用 10 GB 記憶體的背景工作節點會被視為所承受的負載高於已使用 2 GB 記憶體的背景工作節點。|
 |每個節點的應用程式主機數目|背景工作節點上執行的應用程式主機 (AM) 容器數目。 裝載兩個 AM 容器的背景工作節點會被視為比裝載 zero AM 容器的背景工作節點更重要。|
 
 系統每隔 60 秒就會檢查上述計量。 您可以使用任何一種計量來設定叢集的調整作業。
 
-### <a name="load-based-scale-conditions"></a>以負載為基礎的調整規模條件
+### <a name="load-based-scale-conditions"></a>以負載為基礎的調整條件
 
-當偵測到下列情況時，自動調整會發出級別要求：
+當偵測到下列情況時，自動調整將會發出調整要求：
 
-|相應增加|向下調整|
+|相應增加|縮小|
 |---|---|
 |擱置中的 CPU 總計大於可用的 CPU 總計超過3分鐘。|擱置中的 CPU 總計小於可用的 CPU 總計超過 10 分鐘。|
 |暫止的記憶體總計大於可用的記憶體總計超過3分鐘。|擱置中的記憶體總計小於可用的記憶體總計超過 10 分鐘。|
 
 針對相應增加，自動調整會發出相應增加要求，以新增所需的節點數目。 相應增加是根據所需的新背景工作節點數目，以符合目前的 CPU 和記憶體需求。
 
-針對相應減少，自動調整會發出移除特定節點數目的要求。 相應減少是以每個節點的 AM 容器數目為依據。 以及目前的 CPU 和記憶體需求。 服務也會根據目前的作業執行，偵測哪些節點是候選項目。 相應減少作業會先會 add-on 節點，然後將它們從叢集中移除。
+針對相應減少，自動調整會發出移除特定節點數目的要求。 相應減少是以每個節點的 AM 容器數目為依據。 以及目前的 CPU 和記憶體需求。 服務也會根據目前的作業執行狀況，偵測哪些節點是移除的候選項目。 縮小作業會先會將節點解除委任，再將其從叢集中移除。
 
 ### <a name="cluster-compatibility"></a>叢集相容性
 
 > [!Important]
-> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。
+> Azure HDInsight 自動調整功能已於 2019 年 11 月 7 日正式發行，適用於 Spark 和 Hadoop 叢集，並包含功能預覽版本中未提供的改善項目。 如果您在 2019 年 11 月 7 日之前已建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新叢集，並在新叢集上啟用自動調整。
 >
-> 互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。
+> 適用於 Interactive Query (LLAP) 和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用於 Spark、Hadoop、Interactive Query 以及 HBase 叢集。
 
 下表描述與自動調整功能相容的叢集類型和版本。
 
 | 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 3。6 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 4。0 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 3。6 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 4。0 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
 
 \*HBase 叢集只能針對以排程為基礎的調整進行設定，而非以載入為基礎。
 
@@ -182,12 +181,12 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
             "minInstanceCount": 10,
             "maxInstanceCount": 10
           }
-        },
+        }
       ]
     }
   },
   "name": "workernode",
-  "targetInstanceCount": 4,
+  "targetInstanceCount": 4
 }
 ```
 
@@ -210,7 +209,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 在要求承載中使用適當的參數。 下列 json 承載可用來啟用自動調整。 使用承載 `{autoscale: null}` 來停用自動調整。
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 5 } } }
 ```
 
 請參閱上一節關於[啟用以負載為基礎的自動](#load-based-autoscaling)調整，以取得所有裝載參數的完整描述。
@@ -245,11 +244,11 @@ Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動�
 
 ## <a name="other-considerations"></a>其他考量
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考慮相應增加或相應減少作業的延遲
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考量擴大或縮小作業的延遲
 
 調整作業可能需要10到20分鐘的時間才能完成。 設定自訂排程時，請為此延遲進行規劃。 例如，如果您需要在上午9:00 的叢集大小為20，請將排程觸發程式設定為較早的時間，例如 8:30 AM，讓調整作業已完成 9:00 AM。
 
-### <a name="preparation-for-scaling-down"></a>向下調整的準備
+### <a name="preparation-for-scaling-down"></a>縮小的準備
 
 在叢集相應減少程式期間，自動調整會將節點解除委任以符合目標大小。 如果工作是在這些節點上執行，自動調整將會等候，直到作業完成為止。 由於每個背景工作節點也會在 HDFS 中提供角色，因此暫存資料將會移至其餘的節點。 因此，您應該確定其餘節點上有足夠的空間來裝載所有的暫存資料。
 

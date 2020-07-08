@@ -5,15 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/01/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ba54736abe335b53a3b8c6733063efcb34ea29a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259196"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>使用保留容量將 Blob 儲存體的成本最佳化
 
@@ -35,7 +34,7 @@ Azure 儲存體保留容量可以大幅降低區塊 blob 和 Azure Data Lake Sto
 
 Azure 儲存體保留容量適用于單一訂用帳戶或多個訂用帳戶（共用範圍）。 當範圍設定為單一訂用帳戶時，保留折扣僅適用于選取的訂用帳戶。 當範圍設定為多個訂用帳戶時，保留折扣會在客戶帳單內容中的訂用帳戶之間共用。
 
-當您購買 Azure 儲存體保留容量時，您可以針對區塊 blob 和 Azure Data Lake Storage Gen2 資料使用您的保留。 保留會套用至您在購買範圍內的使用量，而且不能限制為訂用帳戶內的特定儲存體帳戶、容器或物件。 無法將保留區分割成多個訂閱。
+當您購買 Azure 儲存體保留容量時，您可以針對區塊 blob 和 Azure Data Lake Storage Gen2 資料使用您的保留。 保留會套用至您在購買範圍內的使用量，而且不能限制為訂用帳戶內的特定儲存體帳戶、容器或物件。
 
 Azure 儲存體保留區僅涵蓋儲存在訂用帳戶或共用資源群組中的資料量。 保留中不包含早期刪除、作業、頻寬和資料傳輸費用。 一旦您購買保留，符合保留屬性的容量費用就會以折扣費率計費，而不是依隨用隨付費率收費。 如需有關 Azure 保留的詳細資訊，請參閱[什麼是 Azure 保留？](/azure/billing/billing-save-compute-costs-reservations)。
 
@@ -78,10 +77,10 @@ Azure 儲存體保留容量適用于標準儲存體帳戶中的資源，包括�
 
     ![顯示如何購買保留容量的螢幕擷取畫面](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |欄位  |描述  |
+   |欄位  |說明  |
    |---------|---------|
    |**範圍**   |  指出有多少訂用帳戶可以使用與保留相關的計費權益。 它也會控制保留容量套用至特定訂用帳戶的方式。 <br/><br/> 如果您選取 [**共用**]，保留折扣會套用至計費內容內任何訂用帳戶中 Azure 儲存體容量。 計費內容取是以您註冊 Azure 的方式為基礎。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 對於隨用隨付客戶，共用範圍包含帳戶管理員所建立之隨用隨付費率的所有個別訂閱。  <br/><br/>  如果您選取 [**單一訂**用帳戶]，保留折扣會套用至所選訂用帳戶中 Azure 儲存體容量。 <br/><br/> 如果您選取 [**單一資源群組**]，保留折扣會套用至所選訂用帳戶中的 Azure 儲存體容量，以及該訂用帳戶內選取的資源群組。 <br/><br/> 購買保留區之後，您可以變更保留範圍。  |
-   |**訂閱帳戶**  | 用來支付 Azure 儲存體保留的訂用帳戶。 所選訂用帳戶的付款條件會用於收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-AZR-0017P-Ms-azr-0148p）：若為企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 <br/><br/> 使用隨用隨付費率的個別訂用帳戶（供應專案號碼： MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）：對於使用隨用隨付費率的個別訂用帳戶，費用會依訂用帳戶的信用卡或發票付款方法計費。    |
+   |**訂用帳戶**  | 用來支付 Azure 儲存體保留的訂用帳戶。 所選訂用帳戶的付款條件會用於收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-AZR-0017P-Ms-azr-0148p）：若為企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 <br/><br/> 使用隨用隨付費率的個別訂用帳戶（供應專案號碼： MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）：對於使用隨用隨付費率的個別訂用帳戶，費用會依訂用帳戶的信用卡或發票付款方法計費。    |
    | **區域** | 保留作用中的區域。 |
    | **存取層** | 保留作用所在的存取層。 選項包括*經常性*存取 *、非*經常性*存取或封存*。 如需存取層的詳細資訊，請參閱[Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)。 |
    | **備援性** | 保留的重複選項。 選項包括*LRS*、 *ZRS*、 *GRS*、*切換*、 *ra-GRS*和*ra-切換*。 如需有關冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](../common/storage-redundancy.md)。 |

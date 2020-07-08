@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 將資料從內部部署複製到 Azure
-description: 這個 PowerShell 指令碼會將資料從內部部署 SQL Server 資料庫複製到另一個「Azure Blob 儲存體」。
+description: 此 PowerShell 腳本會將資料從 SQL Server 資料庫複製到另一個 Azure Blob 儲存體。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,29 +10,28 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75974695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194636"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 來建立資料處理站管線，以將資料從內部部署環境複製到 Azure
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 來建立 data factory 管線，以將資料從 SQL Server 複製到 Azure
 
-這個範例 PowerShell 指令碼會在 Azure Data Factory 中建立管線，以將資料從內部部署 SQL Server 資料庫複製到「Azure Blob 儲存體」。
+此範例 PowerShell 腳本會在 Azure Data Factory 中建立管線，以將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- **SQL Server**。 在此範例中，您會使用內部部署 SQL Server 資料庫作為**來源**資料存放區。
+- **SQL Server**。 在此範例中，您會使用 SQL Server 資料庫做為**源**資料存放區。
 - **Azure 儲存體帳戶**。 在此範例中，您會使用 Azure Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
 - **自我裝載整合運行**時間。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載 MSI 檔案，然後執行它以在您的電腦上安裝自我裝載整合執行階段。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中建立範例資料庫
-1. 在內部部署 SQL Server 資料庫中，使用下列 SQL 指令碼來建立一個名為 **emp** 的資料表：
+1. 在 SQL Server 資料庫中，使用下列 SQL 腳本，建立名為**emp**的資料表：
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +56,7 @@ ms.locfileid: "75974695"
 > [!IMPORTANT]
 > 這個指令碼會建立 JSON 檔案，該檔案定義硬碟上 c:\ 資料夾中的 Data Factory 實體 (已連結的服務、資料集和管線)。
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>清除部署

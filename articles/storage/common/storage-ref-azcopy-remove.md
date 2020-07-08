@@ -8,12 +8,11 @@ ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: ab085b9a41120a9f56c1c2e39a89def8c3893747
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84221074"
 ---
 # <a name="azcopy-remove"></a>azcopy 移除
 
@@ -55,13 +54,13 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/
 移除虛擬目錄中的 blob 子集（例如：只有 jpg 和 pdf 檔案，或如果 blob 名稱是 "exactName"）：
 
 ```azcopy
-azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include="*.jpg;*.pdf;exactName"
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
 移除整個虛擬目錄，但從範圍中排除特定的 blob （例如：以 foo 或結尾為 bar 的每個 blob）：
 
 ```azcopy
-azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude-pattern="foo*;*bar"
 ```
 
 將特定的 blob 和虛擬目錄放在檔案中，藉以移除它們的相對路徑（未進行 URL 編碼）：
@@ -91,7 +90,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-快照**集字串根據預設，如果 blob 有快照集，刪除作業就會失敗。 指定 ' include ' 以移除根 blob 及其所有快照集;或者，指定 ' only ' 只移除快照集，但保留根 blob。
 
-**--exclude-** 移除時，請排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file .pdf。
+**--exclude-** 移除時，請排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file.pdf。
 
 **--排除-模式**字串排除名稱符合模式清單的檔案。 例如： *.jpg;*。pdf; exactName
 
@@ -99,7 +98,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **-h、--** 適用于移除的協助說明
 
-**--include-路徑**字串只包含移除時的這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file .pdf
+**--include-路徑**字串只包含移除時的這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file.pdf
 
 **--include-模式**字串只包含名稱符合模式清單的檔案。 例如： *.jpg;*。pdf; exactName
 
@@ -111,11 +110,11 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|描述|
+|選項|說明|
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
-|--trusted-microsoft-尾碼字串   | 指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
+|--trusted-microsoft-尾碼字串   |指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
 
 ## <a name="see-also"></a>另請參閱
 

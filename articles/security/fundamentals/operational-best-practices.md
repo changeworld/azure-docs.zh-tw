@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204730"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組可在 Azure 中保護您的資料、應用程式和其他資產的操作最佳作法。
@@ -215,8 +214,8 @@ Azure 有兩個 DDoS [服務供應項目](../../virtual-network/ddos-protection-
 **最佳做法**：識別負責監視原則違規的角色，並確保快速地採取正確的補救動作。   
 **詳細資料**：透過[Azure 入口網站](../../governance/policy/how-to/get-compliance-data.md#portal)或經由[命令列](../../governance/policy/how-to/get-compliance-data.md#command-line)，讓指派的角色監視合規性。
 
-**最佳做法**： Azure 原則是組織撰寫之原則的技術標記法。 將所有 Azure 原則對應到組織原則，以減少混淆並提高一致性。   
-**詳細資料**：在[Azure 原則定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或[Azure 原則計畫](../../governance/policy/concepts/definition-structure.md#initiatives)描述中新增組織原則的參考，以在組織的檔或 Azure 原則定義本身中進行檔對應。
+**最佳做法**： Azure 原則是組織撰寫之原則的技術標記法。 將所有 Azure 原則定義對應到組織原則，以減少混淆並提高一致性。   
+**詳細資料**：在[原則定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或[計畫定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata)描述中新增對組織原則的參考，以在組織的檔或 Azure 原則定義本身中進行檔對應。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>監視 Azure AD 風險報告
 大部分的安全性缺口出現於當攻擊者藉由竊取使用者的身分識別來取得環境的存取權時。 探索遭入侵的身分識別並不容易。 Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在名為[風險偵測](../../active-directory/reports-monitoring/concept-risk-events.md)的記錄中。 風險偵測會記錄在 Azure AD 的安全性報告中。 如需詳細資訊，請參閱有[風險的安全性報告上的使用者](../../active-directory/reports-monitoring/concept-user-at-risk.md)和有風險的登[入安全性報告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。

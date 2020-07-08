@@ -2,13 +2,12 @@
 title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259213"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -22,16 +21,27 @@ ms.locfileid: "79257429"
 
 **更新** |  **統一安裝** | **設定伺服器 ova** | **行動服務代理程式** | **站台復原提供者** | **復原服務代理程式**
 --- | --- | --- | --- | --- | ---
+[匯總套件46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [匯總套件45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [匯總套件43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [匯總套件42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [匯總套件41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
-[匯總套件40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 
 [深入瞭解](service-updates-how-to.md)更新安裝與支援。
 
 > [!NOTE]
 > 更新彙總套件44不會顯示在資料表中，因為它不包含 Site Recovery 提供者和代理程式的更新。
+
+## <a name="updates-june-2020"></a>更新（2020年6月）
+
+### <a name="update-rollup-46"></a>更新彙總套件46
+
+[更新彙總套件 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery)提供下列更新：
+
+**更新** | **詳細資料**
+--- | ---
+**提供者和代理程式** | Site Recovery 代理程式和提供者的更新，如匯總中所述。
+**問題修正/改進** | 匯總中詳細說明的一些修正和改善。
 
 ## <a name="updates-march-2020"></a>更新（2020年3月）
 
@@ -90,7 +100,7 @@ Azure 虛擬機器現在支援使用客戶管理的金鑰進行待用加密的 V
 --- | ---
 **UEFI** | Site Recovery 現在透過 UEFI 型開機架構，支援 Azure Vm 的嚴重損壞修復。
 **Linux** | Site Recovery 現在支援使用 Azure 磁碟加密（ADE）執行 Linux 的 Azure Vm。
-**第2代** | 所有第2代 Azure Vm 現在都支援損毀修復。
+**第 2 代** | 所有第2代 Azure Vm 現在都支援損毀修復。
 **區域** | 您現在可以在挪威地區啟用 Azure Vm 的嚴重損壞修復。
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>VMware 至 Azure 災害復原
@@ -106,8 +116,8 @@ Azure 虛擬機器現在支援使用客戶管理的金鑰進行待用加密的 V
 針對 Azure Vm 到次要區域或內部部署 VMware Vm 或實體伺服器至 Azure 的嚴重損壞修復，請注意下列事項：
 
 - 從行動服務延伸模組的版本9.30.5407.1 （適用于 Azure Vm）和行動服務代理程式（適用于 VMware/實體機器），某些電腦作業系統必須執行服務堆疊更新和 SHA-1。 下表顯示詳細資料。
-- 請根據連結的 KB 安裝 update 和 SHA-1。 2019年9月不支援 SHA-1，而且如果未啟用 SHA-1 程式碼簽署，代理程式延伸模組將不會如預期般安裝/升級。
-- 深入瞭解[SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
+- 請根據連結的 KB 安裝 update 和 SHA-1。 2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。
+- 深入了解 [SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
 
 **作業系統** | **Azure VM** | **VMware VM/實體機器**
 --- | --- | ---
@@ -302,7 +312,7 @@ Site Recovery 現在支援將一般用途 v2 儲存體帳戶用於快取儲存�
 
 **功能** | **詳細資料**
 --- | ---
-**受控磁片** | 內部部署 VMware Vm 和實體伺服器的複寫現在直接複寫到 Azure 中的受控磁片。 內部部署資料會傳送至 Azure 中的快取儲存體帳戶，並在目標位置的受控磁片中建立復原點。 這可確保您不需要管理多個目標儲存體帳戶。
+**受控磁碟** | 內部部署 VMware Vm 和實體伺服器的複寫現在直接複寫到 Azure 中的受控磁片。 內部部署資料會傳送至 Azure 中的快取儲存體帳戶，並在目標位置的受控磁片中建立復原點。 這可確保您不需要管理多個目標儲存體帳戶。
 **設定伺服器** | Site Recovery 現在支援具有多個 Nic 的設定伺服器。 在保存庫中註冊設定伺服器之前，請先將其他介面卡新增至設定伺服器 VM。 如果您之後新增，就必須在保存庫中重新註冊伺服器。
 
 
@@ -403,7 +413,7 @@ Site Recovery 現在支援將一般用途 v2 儲存體帳戶用於快取儲存�
 **Linux 支援** |  已針對 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 與 Red Hat 相容核心以及 Unbreakable Enterprise Kernel （UEK）第5版新增支援。
 **LVM** | 已針對 LVM 和 LVM2 磁片區新增支援。<br/><br/> 現在支援磁碟分割和 LVM 磁片區上的/boot 目錄。
 **目錄** | 已針對設定為個別磁碟分割的這些目錄，或不在相同系統磁片上的檔案系統新增了支援：<br/><br/> /（root）、/boot、/usr、/usr/local、/var、/etc。
-**Windows Server 2008** | 新增動態磁碟的支援。
+**Windows Server 2008** | 新增動態磁碟的支援。
 **容錯移轉** | 改善 VMware Vm 的容錯移轉時間，其中 storvsc 和 vsbus 不是開機驅動程式。
 **UEFI 支援** | Azure Vm 不支援開機類型 UEFI。 您現在可以使用 Site Recovery，將內部部署實體伺服器與 UEFI 遷移至 Azure。 Site Recovery 在遷移之前將開機類型轉換成 BIOS，以遷移伺服器。 Site Recovery 先前只支援 Vm 的這種轉換。 支援適用于執行 Windows Server 2012 或更新版本的實體伺服器。
 
@@ -497,7 +507,7 @@ Azure Vm 的嚴重損壞修復會產生 VM 授權成本，以及網路和儲存�
 --- | ---
 **Linux 支援** | 已針對 RedHat Enterprise Linux 6.10、CentOS 6.10 新增支援。<br/><br/> 現在支援使用舊版 BIOS 相容性模式中 GUID 磁碟分割表格（GPT）磁碟分割樣式的 Linux 型 Vm。 如需詳細資訊，請參閱[AZURE VM 常見問題](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)。
 **遷移後 Vm 的嚴重損壞修復** | 支援針對遷移至 Azure 的內部部署 VMware VM，對次要區域啟用嚴重損壞修復，而不需要先卸載 VM 上的行動服務，再啟用複寫。
-**Windows Server 2008** | 支援將執行 Windows Server 2008 R2/2008 64 位和32位的電腦進行遷移。<br/><br/> 僅限遷移（複寫和容錯移轉）。 不支援容錯回復。
+**Windows Server 2008** | 支援將執行 Windows Server 2008 R2/2008 64 位和32位的電腦進行遷移。<br/><br/> 僅限遷移（複寫和容錯移轉）。 不支援容錯回復。
 
 ## <a name="updates-july-2018"></a>更新（2018年7月）
 

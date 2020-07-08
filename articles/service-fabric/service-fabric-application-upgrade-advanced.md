@@ -3,12 +3,11 @@ title: 先進的應用程式升級主題
 description: 本文章涵蓋升級 Service Fabric 應用程式相關的一些進階主題。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263086"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 應用程式升級： Advanced 主題
 
@@ -20,21 +19,21 @@ ms.locfileid: "81414491"
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在無狀態服務方案停機期間中斷連接
 
-針對規劃的無狀態實例停機（例如應用程式/叢集升級或節點停用），連接可能會因為公開的端點在實例關閉後遭到移除，而導致強制連接中斷。
+針對規劃的無狀態實例停機（例如應用程式/叢集升級或節點停用），連接可能會被捨棄，因為在實例關閉後，已移除公開的端點，這會導致強制連接中斷。
 
-若要避免這個問題，請設定*RequestDrain* （預覽）功能，方法是在服務設定中新增*實例關閉延遲持續時間*，以允許在接收來自叢集內其他服務的要求時清空，並使用反向 PROXY 或使用解析 API 搭配通知模型來更新端點。 這可確保在關閉實例之前，會先移除無狀態實例所通告的端點，*然後再*啟動延遲。 此延遲可讓現有的要求在實例實際停機之前正常地清空。 用戶端會在啟動延遲時，透過回呼函式來通知端點變更，使其可以重新解析端點，並避免將新的要求傳送至即將關閉的實例。
+若要避免這種情況，請在服務設定中加入*實例關閉延遲持續時間*，以允許來自叢集內的現有要求清空已公開的端點，以設定*RequestDrain*功能。 這是因為在關閉實例之前，會先移除無狀態實例所通告的端點，*然後再*啟動延遲。 此延遲可讓現有的要求在實例實際停機之前正常地清空。 用戶端會在啟動延遲時，透過回呼函式來通知端點變更，使其可以重新解析端點，並避免將新的要求傳送至即將關閉的實例。 這些要求可能是來自使用[反向 Proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)的用戶端，或使用服務端點解析 api 和通知模型（[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)）來更新端點。
 
 ### <a name="service-configuration"></a>服務設定
 
 有數種方式可以設定服務端的延遲。
 
- * **建立新服務時**，請指定`-InstanceCloseDelayDuration`：
+ * **建立新服務時**，請指定 `-InstanceCloseDelayDuration` ：
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * 在**應用程式資訊清單的 [預設值] 區段中定義服務時**，請指派`InstanceCloseDelayDurationSeconds`屬性：
+ * 在**應用程式資訊清單的 [預設值] 區段中定義服務時**，請指派 `InstanceCloseDelayDurationSeconds` 屬性：
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,10 +41,37 @@ ms.locfileid: "81414491"
           </StatelessService>
     ```
 
- * **更新現有的服務時**，請指定`-InstanceCloseDelayDuration`：
+ * **更新現有的服務時**，請指定 `-InstanceCloseDelayDuration` ：
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **透過 ARM 範本建立或更新現有的服務時**，請指定 `InstanceCloseDelayDuration` 值（支援的最低 API 版本： 2019-11-01-preview）：
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>用戶端組態
@@ -55,7 +81,7 @@ ms.locfileid: "81414491"
 
 ### <a name="optional-upgrade-overrides"></a>選用的升級覆寫
 
-除了設定每個服務的預設延遲持續時間，您也可以使用相同的（`InstanceCloseDelayDurationSec`）選項來覆寫應用程式/叢集升級期間的延遲：
+除了設定每個服務的預設延遲持續時間，您也可以使用相同的（）選項來覆寫應用程式/叢集升級期間的延遲 `InstanceCloseDelayDurationSec` ：
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,15 +89,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-延遲持續時間只適用于叫用的升級實例，否則不會變更個別的服務延遲設定。 例如，您可以使用這個來指定的延遲，以便`0`略過任何預先設定的升級延遲。
+覆寫的延遲持續時間只適用于叫用的升級實例，否則不會變更個別的服務延遲設定。 例如，您可以使用這個來指定的延遲，以便 `0` 略過任何預先設定的升級延遲。
 
 > [!NOTE]
-> 清空要求的設定不會接受來自 Azure 負載平衡器的要求。 如果呼叫服務使用以投訴為基礎的解析，則不接受此設定。
+> * 清空要求的設定將無法防止 Azure 負載平衡器將新的要求傳送至即將清空的端點。
+> * 以抱怨為基礎的解決機制不會導致正常清空要求，因為它會在失敗後觸發服務解析。 如先前所述，您應該改為使用[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)來訂閱端點變更通知。
+> * 當升級為 impactless 時，不會接受這些設定，亦即 當複本不會在升級期間關閉。
 >
 >
 
 > [!NOTE]
-> 當叢集程式碼版本為7.1.XXX 或以上時，可以使用上述的 Get-servicefabricservice Cmdlet，在現有的服務中設定這項功能。
+> 當叢集程式碼版本為7.1.XXX 或以上時，可以使用 Get-servicefabricservice 指令程式或 ARM 範本，在現有的服務中設定這項功能。
 >
 >
 

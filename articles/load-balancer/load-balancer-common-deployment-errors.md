@@ -10,12 +10,11 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84221001"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>針對常見的 Azure Load Balancer 部署錯誤進行疑難排解
 
@@ -28,6 +27,7 @@ ms.locfileid: "83658637"
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| 公用 IP SKU 與 Load Balancer SKU 必須相符。 確保 Load Balancer 與公用 IP SKU 相符。 建議對生產環境工作負載使用標準 SKU。 深入了解 [SKU 的差異](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | 若未指定 SKU 或未使用標準公用 IP 部署 SKU 時，虛擬機器擴展集會預設為 Basic Load Balancer。 在個別執行個體上使用標準公用 IP 重新部署虛擬機器擴展集，確保已選取 Standard Load Balancer，或是從 Azure 入口網站部署虛擬機器擴展集時直接選取 Standard LB。 |
 |MaxAvailabilitySetsInLoadBalancerReached | Load Balancer 的後端集區最多可包含 150 個可用性設定組。 如果您沒有針對後端集區中的 VM 明確定義的可用性設定組，則每個單一 VM 都會進入其本身的可用性設定組。 因此，部署 150 部獨立 VM 表示其會有 150 個可用性設定組，因而達到限制。 您可以部署可用性設定組，並在其中新增額外的 VM 作為因應措施。 |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | 針對基本 Sku 負載平衡器，網路介面和負載平衡器必須位於相同的可用性設定組中。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| 在指定的負載平衡器類型 (內部、公用) 上，不能有一個以上的規則具有相同的後端連接埠，以及相同的虛擬機器擴展集所參考的通訊協定。 更新您的規則，以變更此重複規則的建立。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| 在指定的負載平衡器類型 (內部、公用) 上，不能有一個以上的規則具有相同虛擬機器擴展集所參考的相同後端連接埠和通訊協定。 更新您的規則參數，以變更此重複規則的建立。 |
 |AnotherInternalLoadBalancerExists| 在 Load Balancer 的後端中，您只能有一個內部類型的 Load Balancer 參考相同的 VM/網路介面集。 更新您的部署，確保您只會建立一個相同類型的 Load Balancer。 |

@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220298"
 ---
 # <a name="monitor-iot-edge-deployments"></a>監視 IoT Edge 部署
 
@@ -101,4 +100,4 @@ deployment show-metric 命令接受下列參數︰
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[使用內建的直接方法與 EdgeAgent 通訊](how-to-edgeagent-direct-method.md)。
+瞭解如何[監視模組 twins](how-to-monitor-module-twins.md)，主要是 IoT Edge 代理程式和 IoT Edge 中樞執行時間模組，以取得 IoT Edge 部署的連線和健康狀態。

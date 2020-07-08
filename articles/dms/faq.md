@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196580"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -49,7 +48,7 @@ Azure 資料庫移轉服務是完全受控的服務，其設計目的是要在�
 Azure 資料庫移轉服務是資料庫移轉到大規模 Microsoft Azure 的慣用方法。 如需有關 Azure 資料庫移轉服務與其他 Microsoft 資料庫移轉工具相較之下的詳細資料，以及針對各種案例使用服務的建議，請參閱將[Microsoft 的資料庫移轉工具和服務區分](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)在一起的文章。
 
 **問： Azure 資料庫移轉服務與 Azure Migrate 供應專案有何不同？**
-Azure Migrate 可協助將內部部署虛擬機器遷移至 Azure IaaS。 此服務會評估移轉適用性，以及如何根據效能來調整大小，並估計在 Azure 中執行內部部署機器的成本。 Azure Migrate 可用來將內部部署的 VM 型工作負載隨即移轉到 Azure IaaS VM。 不過，與 Azure 資料庫移轉服務不同的是，Azure Migrate 不是適用于 Azure PaaS 關係資料庫平臺（例如 Azure SQL Database 或 Azure SQL Database 受控執行個體）的特製化資料庫移轉服務供應專案。
+Azure Migrate 可協助將內部部署虛擬機器遷移至 Azure IaaS。 此服務會評估移轉適用性，以及如何根據效能來調整大小，並估計在 Azure 中執行內部部署機器的成本。 Azure Migrate 可用來將內部部署的 VM 型工作負載隨即移轉到 Azure IaaS VM。 不過，不同于 Azure 資料庫移轉服務，Azure Migrate 不是 Azure PaaS 關係資料庫平臺（例如 Azure SQL Database 或 Azure SQL 受控執行個體）的特製化資料庫移轉服務供應專案。
 
 ## <a name="setup"></a>安裝程式
 

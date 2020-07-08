@@ -7,12 +7,11 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75614667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234682"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 隸屬於叢集的機器或 VM 稱為叢集模式。 叢集可擴充至數千個節點。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的服務資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。
@@ -48,9 +47,9 @@ Azure 上的 Service Fabric 叢集是 Azure 資源，使用其他 Azure 資源�
 如需詳細資訊，請參閱 [Azure Service Fabric 節點類型與虛擬機器擴展集](service-fabric-cluster-nodetypes.md)。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM 執行個體加入到 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 後面，與 [公用 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)和 DNS 標籤相關聯。  當您使用* &lt; &gt;clustername*來布建叢集時，DNS 名稱* &lt;為&gt;clustername&lt; 。cloudapp.azure.com&gt;* 是與擴展集前方的負載平衡器相關聯的 DNS 標籤。
+VM 執行個體加入到 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 後面，與 [公用 IP 位址](../virtual-network/public-ip-addresses.md)和 DNS 標籤相關聯。  當您使用* &lt; &gt; clustername*來布建叢集時，DNS 名稱為* &lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*是與擴展集前方的負載平衡器相關聯的 DNS 標籤。
 
-叢集中的 VM 只有[私人 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載平衡器具有相關聯的公用 IP，其 DNS 名稱的格式為* &lt;：&gt;clustername&lt; 。location&gt;. cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主要節點類型具有 DNS 標籤* &lt;clustername&gt;。&lt;cloudapp.azure.com&gt;*，其他節點類型具有 DNS 標籤* &lt;clustername&gt;-&lt;nodetype&gt;。&lt;location&gt;. cloudapp.azure.com*。
+叢集中的 VM 只有[私人 IP 位址](../virtual-network/private-ip-addresses.md)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載平衡器具有相關聯的公用 IP，其 DNS 名稱的格式為： * &lt; clustername &gt; 。 &lt;location &gt; . cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主要節點類型具有 DNS 標籤* &lt; clustername &gt; 。 &lt;&gt;cloudapp.azure.com*，其他節點類型具有 DNS 標籤* &lt; clustername &gt; - &lt; nodetype &gt; 。 &lt;location &gt; . cloudapp.azure.com*。
 
 ### <a name="storage-accounts"></a>儲存體帳戶
 每個叢集節點類型受到 [Azure 儲存體帳戶](/azure/storage/common/storage-introduction)和受控磁碟支援。

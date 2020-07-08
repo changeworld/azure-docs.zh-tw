@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84235555"
 ---
 # <a name="identify-and-diagnose-issues"></a>識別並診斷問題
 
@@ -161,7 +160,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |數字碼|錯誤碼|建議的解決辦法|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|使用者不是 Azure Active Directory 的成員。 遵循 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)的指示新增他們。|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|使用者不是 Active Directory 的成員。 遵循 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)的指示新增他們。|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|工作階段主機未正確聯結至 Active Directory。|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|連線失敗，因為無法使用工作階段主機。 檢查工作階段主機的健康情況。|
 |-2146233088|ConnectionFailedClientDisconnect|如果您經常看到此錯誤，請確定使用者的電腦已連線到網路。|
@@ -172,6 +171,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8|ConnectionBroken|用戶端與閘道或伺服器之間的連線已中斷。 除非是意外發生，否則不需要採取任何動作。|
 |14|UnexpectedNetworkDisconnect|網路連線已中斷。 要求使用者再次連線。|
 |24|ReverseConnectFailed|主機虛擬機器無法直接看到 RD 閘道。 請確定可以解析閘道 IP 位址。|
+|1322|ConnectionFailedNoMappingOfSIDinAD|使用者不是 Active Directory 的成員。 遵循 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)的指示新增他們。|
 
 ## <a name="next-steps"></a>後續步驟
 

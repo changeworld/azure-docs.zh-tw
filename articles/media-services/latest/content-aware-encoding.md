@@ -9,15 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76772134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234888"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用「內容感知編碼」預設來尋找給定解析的最佳位元速率值
 
@@ -55,9 +54,10 @@ Microsoft 的彈性[串流](autogen-bitrate-ladder.md)預設部分解決來源�
 
 您可以建立使用此預設值的轉換，如下所示。 
 
-> [!TIP]
-> 如需使用轉換輸出的教學課程，請參閱[後續步驟](#next-steps)一節。 輸出資產可以媒體服務從像是 HLS 等通訊協定中的串流端點來傳遞（如教學課程所示）。
+如需使用轉換輸出的教學課程，請參閱[後續步驟](#next-steps)一節。 輸出資產可以媒體服務從像是 HLS 等通訊協定中的串流端點來傳遞（如教學課程所示）。
 
+> [!NOTE]
+> 請務必使用**ContentAwareEncoding**預設值 not ContentAwareEncodingExperimental。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -76,12 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> 使用預設`ContentAwareEncoding`值的編碼作業會根據輸出分鐘計費。 
-
+> 使用預設值的編碼作業 `ContentAwareEncoding` 會根據輸出分鐘計費。 
+  
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片](stream-files-tutorial-with-api.md)
+* [教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-REST](stream-files-tutorial-with-rest.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-CLI](stream-files-cli-quickstart.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-.NET](stream-files-dotnet-quickstart.md)
-* [教學課程：根據 URL 編碼遠端檔案並串流影片-node.js](stream-files-nodejs-quickstart.md)
+* [教學課程：根據 URL 編碼遠端檔案和串流影片-Node.js](stream-files-nodejs-quickstart.md)

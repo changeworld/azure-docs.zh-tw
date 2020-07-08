@@ -3,12 +3,11 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，了解如何準備環境，以使用 Microsoft Azure 備份伺服器 (MABS) 來保護及備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247269"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -174,7 +173,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
     ![Azure 備份伺服器 - SQL 檢查](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    如果發生失敗且建議您重新啟動電腦，請依指示進行，然後按一下 [再檢查一次] 。 如果有任何 SQL 設定問題，請依照 SQL 指導方針重新設定 SQL，並使用現有的 SQL 執行個體再試一次安裝/升級 MABS。
+    如果發生失敗且建議您重新啟動電腦，請依指示進行，然後按一下 [再檢查一次] 。 如果有任何 SQL 設定問題，請根據 SQL 方針重新設定 SQL，然後使用現有的 SQL 實例重試安裝/升級 MABS。
 
    **手動設定**
 
@@ -186,9 +185,9 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
     將下列值使用於 SSRS 設定：
     * 服務帳戶：「使用內建帳戶」應為網路服務
-    * Web 服務 URL：「虛擬目錄」應為 ReportServer_\<SQLInstanceName>
-    * 資料庫：DatabaseName 應為 ReportServer$\<SQLInstanceName>
-    * Web 入口網站 URL：「虛擬目錄」應為 Reports_\<SQLInstanceName>
+    * Web 服務 URL： ' 虛擬目錄 ' 應 ReportServer_\<SQLInstanceName>
+    * 資料庫： DatabaseName 應為 ReportServer $\<SQLInstanceName>
+    * 入口網站 URL： ' 虛擬目錄 ' 應 Reports_\<SQLInstanceName>
 
     [深入了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 設定。
 
@@ -311,8 +310,8 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 如果您是使用 ExpressRoute Microsoft 對等互連，請選取下列服務/區域：
 
 * Azure Active Directory (12076:5060)
-* Microsoft Azure 區域 (依據復原服務保存庫的位置)
-* Azure 儲存體 (依據復原服務保存庫的位置)
+* Microsoft Azure 區域（根據復原服務保存庫的位置）
+* Azure 儲存體（根據您的復原服務保存庫的位置）
 
 如需詳細資料，請造訪 [ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
 
@@ -343,7 +342,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
    > [!NOTE]
    >
-   > 請勿在升級 SQL 執行個體時結束，結束會將 SQL 報告執行個體解除安裝，因而使重新升級 MABS 的嘗試失敗。
+   > 當您的 SQL 實例正在升級時，請勿結束，結束將會卸載 SQL reporting 實例，因此嘗試重新升級 MABS 將會失敗。
 
    > [!IMPORTANT]
    >

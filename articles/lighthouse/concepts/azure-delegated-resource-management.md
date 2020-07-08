@@ -1,14 +1,13 @@
 ---
 title: Azure 委派的資源管理
 description: 受控服務供應項目能允許服務提供者在 Azure Marketplace 中向客戶銷售資源管理供應項目。
-ms.date: 04/01/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84219079"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派的資源管理
 
@@ -40,7 +39,7 @@ Azure 委派的資源管理可讓使用者以邏輯方式將資源從某個租�
 3. 在客戶上線之後，授權使用者便可以登入您的服務提供者租用戶，並根據您所定義的存取在指定的客戶範圍執行管理工作。
 
 > [!NOTE]
-> 不支援跨不同雲端的兩個租使用者之間的訂用帳戶委派。
+> 您可以管理位於不同[區域](../../availability-zones/az-overview.md#regions)的委派資源。 不過，不支援跨[國家雲端](../../active-directory/develop/authentication-national-cloud.md)、Azure 公用雲端或跨兩個不同國家/地區雲端的訂用帳戶委派。
 
 ## <a name="support-for-azure-delegated-resource-management"></a>適用於 Azure 委派的資源管理的支援
 

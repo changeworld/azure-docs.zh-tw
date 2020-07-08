@@ -4,12 +4,11 @@ description: 瞭解如何使用 Azure 備份服務來管理和監視 Azure VM �
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248147"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248578"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
 
@@ -31,7 +30,7 @@ ms.locfileid: "79248147"
 若要在保存庫儀表板上查看 Vm：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在 [中樞] 功能表上，選取 **[流覽]**。 在資源清單中輸入 **復原服務**。 當您輸入時，系統會根據您的輸入來篩選清單。 選取 [復原服務保存庫]****。
+2. 在 [中樞] 功能表上，選取 **[流覽]**。 在資源清單中輸入 **復原服務**。 當您輸入時，系統會根據您的輸入來篩選清單。 選取 [復原**服務保存庫**]。
 
     ![建立復原服務保存庫](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
@@ -167,7 +166,7 @@ ms.locfileid: "79248147"
 
 * 如果已刪除或移動為 Azure 備份設定的 Azure Vm，但未停止保護，則排定的備份作業和隨選（臨機操作）備份工作將會失敗，並出現錯誤 UserErrorVmNotFoundV2。 只有針對失敗的隨選備份作業（不會顯示失敗的排程工作），備份預先檢查才會顯示為 [重大]。
 * 這些備份專案會在系統中保持作用中狀態，遵循使用者所設定的備份和保留原則。 這些 Azure Vm 的備份資料將會根據保留原則加以保留。 已過期的復原點（最後一個復原點除外）會根據備份原則中設定的保留範圍來清除。
-* 建議使用者刪除主要資料來源已不存在的備份專案，以避免任何額外的成本，如果已不再需要刪除資源的備份專案/資料，因為最後一個復原點會永久保留，而使用者則依據適用的備份定價收費。
+* 建議使用者刪除主要資料來源已不存在的備份專案，以避免任何額外的成本，如果已不再需要刪除資源的備份專案/資料，因為最後一個復原點會永久保留，而且使用者會根據適用的備份定價收費。
 
 ## <a name="next-steps"></a>後續步驟
 

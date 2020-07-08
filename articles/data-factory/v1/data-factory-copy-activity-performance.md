@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196114"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>複製活動的效能及微調指南
 
@@ -66,7 +65,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
         <td>32 核心 2.20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>記憶體</td>
+        <td>Memory</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -202,15 +201,15 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 目前您還無法使用暫存存放區在兩個內部部署資料存放區之間複製資料。 我們預計此選項很快就會推出。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 在複製活動中設定 **enableStaging** 設定，指定您是否想要讓資料在載入至目的地資料存放區之前，暫存在 Blob 儲存體中。 當您將 **enableStaging** 設定為 TRUE 時，請指定下一份資料表所列出的其他屬性。 如果還未指定，您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務以供暫存使用。
 
 | 屬性 | 描述 | 預設值 | 必要 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |否 |
+| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |No |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體來透過 PolyBase 將資料載入至 SQL 資料倉儲。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
 | **path** |指定要包含分段資料的 Blob 儲存體路徑。 如果未提供路徑，服務會建立容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
-| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |否 |
+| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |No |
 
 以下是具有上表所述屬性的「複製活動」的範例定義︰
 
@@ -366,8 +365,8 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 請密切留意資料集數目，以及要求 Data Factory 同時連線至相同資料存放區的複製活動。 許多並行複製作業可能會導致資料存放區出現瓶頸，並導致效能降低，複製作業內部重試，在某些情況下甚至導致執行失敗。
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>範例案例：從內部部署 SQL Server 複製到 Blob 儲存體
-**案例：** 建置從內部部署 SQL Server 將資料以 CSV 格式複製到 Blob 儲存體的管線。 為了加快複製作業速度，CSV 檔案應該壓縮為 bzip2 格式。
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>範例案例：從 SQL Server 資料庫複製到 Blob 儲存體
+**案例**：建立管線以將資料從 SQL Server 資料庫複製到 CSV 格式的 Blob 儲存體。 為了加快複製作業速度，CSV 檔案應該壓縮為 bzip2 格式。
 
 **測試和分析**：複製活動的輸送量小於 2 MBps，遠低於效能基準。
 
@@ -379,13 +378,13 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 如您所見，資料將會以串流序列的方式處理和移動：SQL Server -> LAN -> 閘道器 -> WAN -> Blob 儲存體。 **整體效能受限於管線的最小輸送量**。
 
-![設計師中](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
+![資料流程](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
 下列一或多個因素可能會造成效能瓶頸：
 
 * **來源**：SQL Server 本身的輸送量偏低，因為負載過重。
 * **資料管理閘道**：
-  * **LAN**：閘道器的位置遠離 SQL Server 電腦，且頻寬連線較低。
+  * **LAN**：閘道的位置遠離 SQL Server 電腦，且頻寬連線較低。
   * **閘道器**：閘道器已達到其負載限制，而無法執行下列作業：
     * **序列化**：將資料流序列化為 CSV 格式時，輸送量偏低。
     * **壓縮**：您選擇了緩慢的壓縮轉碼器 (例如 bzip2，其採用 Core i7，速度為 2.8 MBps)。

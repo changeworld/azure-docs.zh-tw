@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196429"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
@@ -96,13 +95,13 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 
 若要設定 SQL Database 參考資料，您必須先建立**參考資料**的輸入。 下表說明您在建立參考資料輸入及其描述時必須提供的每個屬性。 如需詳細資訊，請參閱[將來自 SQL Database 的參考資料用於 Azure 串流分析作業](sql-reference-data.md)。
 
-您可以使用[Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)做為參考資料輸入。 您必須[在 Azure SQL Database 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動方式進行下列設定來支援。
+您可以使用[AZURE SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)做為參考資料輸入。 您必須[在 SQL 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
 
 |**屬性名稱**|**說明**  |
 |---------|---------|
 |輸入別名|在工作查詢中將用來參考這個輸入的易記名稱。|
 |訂用帳戶|選擇您的訂用帳戶|
-|資料庫|包含參考資料的 Azure SQL Database。 針對 Azure SQL Database 受控執行個體，必須指定埠3342。 例如， *sampleserver、3342、* 。|
+|資料庫|包含參考資料的 Azure SQL Database。 針對 SQL 受控執行個體，必須指定埠3342。 例如，「sampleserver.public.database.windows.net,3342」|
 |使用者名稱|與 Azure SQL Database 相關聯的使用者名稱。|
 |密碼|與 Azure SQL Database 相關聯的密碼。|
 |定期重新整理|此選項可讓您選擇重新整理的頻率。 選擇 [開啟] 可讓您以 DD:HH:MM 指定重新整理的頻率。|

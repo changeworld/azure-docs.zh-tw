@@ -3,12 +3,11 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248901"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -20,7 +19,7 @@ ms.locfileid: "82597940"
 
 如果您仍有備份保存庫，則會自動將其升級為復原服務保存庫。 到了 2017 年11 月，所有備份保存庫都會自動被升級為復原服務保存庫。
 
-復原服務保存庫是以 Azure 的 Azure Resource Manager 模型作為基礎，而備份保存庫則是以 Azure Service Manager 模型為作為基礎。 當您將備份保存庫升級至復原服務保存庫時，備份資料在升級程序期間及升級程序之後都會維持不變。 復原服務保存庫可提供備份保存庫無法使用的功能，例如︰
+復原服務保存庫是以 Azure 的 Azure Resource Manager 模型為基礎，不過備份保存庫是以 Azure Service Manager 模型為基礎。 當您將備份保存庫升級至復原服務保存庫時，備份資料在升級程序期間及升級程序之後都會維持不變。 復原服務保存庫可提供備份保存庫無法使用的功能，例如︰
 
 - **可協助保護備份資料安全的增強功能**︰透過復原服務保存庫，Azure 備份能提供安全性功能來保護雲端備份。 這些安全性功能可確保您能保護您的備份，並安全地將資料復原，即使生產和備份伺服器遭到入侵也一樣。 [深入了解](backup-azure-security-feature.md)
 

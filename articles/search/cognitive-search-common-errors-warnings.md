@@ -8,12 +8,11 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5e18fcc5dc23bdbd9027de62a5bee0fb7d4ceff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84221307"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子錯誤和警告進行疑難排解
 
@@ -35,12 +34,12 @@ ms.locfileid: "83125089"
 | 屬性 | 說明 | 範例 |
 | --- | --- | --- |
 | 索引鍵 | 受錯誤或警告影響之檔的檔識別碼。 | HTTPs： \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| name | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構所產生： [category]。[子類別]。[resourceType]。ResourceName | DocumentExtraction. azureblob myBlobContainerName 擴充. WebApiSkill. mySkillName. SearchIndex. OutputFieldMapping. myOutputFieldName. SearchIndex. MergeOrUpload。 myIndexName |
-| 訊息 | 錯誤或警告的高層級描述。 | 因為 Web Api 要求失敗，所以無法執行技能。 |
+| NAME | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構所產生： [category]。[子類別]。[resourceType]。ResourceName | DocumentExtraction. azureblob myBlobContainerName 擴充. WebApiSkill. mySkillName. SearchIndex. OutputFieldMapping. myOutputFieldName. SearchIndex. MergeOrUpload。 myIndexName |
+| message | 錯誤或警告的高層級描述。 | 因為 Web Api 要求失敗，所以無法執行技能。 |
 | 詳細資料 | 可能有助於診斷問題的任何其他詳細資料，例如執行自訂技能失敗時的 WebApi 回應。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1來源，Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` .。。堆疊追蹤的其餘部分 .。。 |
 | documentationLink | 相關檔的連結，其中包含用來偵測及解決問題的詳細資訊。 此連結通常會指向此頁面上的下列其中一節。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
-<a name="could-not-read-document"/>
+<a name="could-not-read-document"></a>
 
 ## <a name="error-could-not-read-document"></a>錯誤：無法讀取檔
 
@@ -52,7 +51,7 @@ ms.locfileid: "83125089"
 | 來自資料來源之基礎服務的錯誤 | （從 Cosmos DB）`{"Errors":["Request rate is large"]}` | 檢查您的儲存體實例，以確保其狀況良好。 您可能需要調整您的縮放/分割。 |
 | 暫時性問題 | 從伺服器接收結果時發生傳輸層級錯誤。 （提供者： TCP 提供者，錯誤： 0-遠端主機已強制關閉現有的連接 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
 
-<a name="could-not-extract-document-content"/>
+<a name="could-not-extract-document-content"></a>
 
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>錯誤：無法從您的檔解壓縮內容或中繼資料
 具有 Blob 資料來源的索引子無法從檔中解壓縮內容或中繼資料（例如，PDF 檔案）。 發生這種情況的原因可能是：
@@ -64,24 +63,24 @@ ms.locfileid: "83125089"
 | blob 已加密 | 無法處理檔-它可能已加密或密碼保護。 | 您可以使用[blob 設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)略過 blob。 |
 | 暫時性問題 | 「處理 blob 時發生錯誤：要求已中止：要求已取消。」 「檔在處理期間超時。」 | 偶爾會發生非預期的連線問題。 請稍後再試著透過索引子執行檔。 |
 
-<a name="could-not-parse-document"/>
+<a name="could-not-parse-document"></a>
 
 ## <a name="error-could-not-parse-document"></a>錯誤：無法剖析檔
 索引子從資料來源讀取檔，但將檔內容轉換成指定的欄位對應架構時發生問題。 發生這種情況的原因可能是：
 
 | 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
-| 缺少檔索引鍵 | 檔索引鍵不能遺失或空白 | 確保所有檔都具有有效的檔索引鍵 |
+| 缺少檔索引鍵 | 檔索引鍵不能遺失或空白 | 請確定所有檔都有有效的檔索引鍵。 檔索引鍵的判斷方式是將 ' key ' 屬性設定為[索引定義](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body)的一部分。 當特定檔上找不到標示為「金鑰」的屬性時，索引子將會發出此錯誤。 |
 | 檔索引鍵無效 | 檔索引鍵的長度不能超過1024個字元 | 修改檔索引鍵以符合驗證需求。 |
 | 無法將欄位對應套用至欄位 | 無法將對應函數套用 `'functionName'` 至欄位 `'fieldName'` 。 陣列不可以是 null。 參數名稱：位元組 | 再次檢查索引子上定義的[欄位](search-indexer-field-mappings.md)對應，並與失敗檔之指定欄位的資料進行比較。 可能需要修改欄位對應或檔資料。 |
 | 無法讀取域值 | 無法讀取位於索引的資料行值 `'fieldName'` `'fieldIndex'` 。 從伺服器接收結果時發生傳輸層級錯誤。 (提供者: TCP 提供者，錯誤: 0 - 遠端主機已強制關閉一個現存的連線)。 | 這些錯誤通常是因為資料來源的基礎服務發生非預期的連接問題。 請稍後再試著透過索引子執行檔。 |
 
-<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"></a>
 
 ## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>錯誤： `xyz` 因為套用對應函數 ' ' 時發生還原序列化問題，所以無法將輸出欄位 ' ' 對應至搜尋索引 `abc`
 輸出對應可能失敗，因為輸出資料的格式不正確，因為您使用的是對應函數。 例如，在二進位資料上套用 Base64Encode 對應函數會產生此錯誤。 若要解決此問題，請重新執行索引子，但不指定對應函數，或確定對應函數與輸出欄位資料類型相容。 如需詳細資訊，請參閱[輸出欄位對應](cognitive-search-output-field-mapping.md)。
 
-<a name="could-not-execute-skill"/>
+<a name="could-not-execute-skill"></a>
 
 ## <a name="error-could-not-execute-skill"></a>錯誤：無法執行技能
 索引子無法在技能集中執行技能。
@@ -92,19 +91,19 @@ ms.locfileid: "83125089"
 | 潛在的產品 bug | 發生意外錯誤。 | 這表示不明的失敗類別，可能表示有產品錯誤。 請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)以取得協助。 |
 | 技能在執行期間發生錯誤 | （來自合併技能）有一或多個位移值無效，無法剖析。 專案已插入至文字結尾 | 請使用錯誤訊息中的資訊來修正問題。 這種失敗會需要採取動作來解決。 |
 
-<a name="could-not-execute-skill-because-the-web-api-request-failed"/>
+<a name="could-not-execute-skill-because-the-web-api-request-failed"></a>
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>錯誤：因為 Web API 要求失敗，所以無法執行技能
 因為對 Web API 的呼叫失敗，所以技能執行失敗。 當使用自訂技能時，通常會發生這類失敗，在此情況下，您將需要對自訂程式碼進行偵錯工具以解決此問題。 如果不是來自內建技能的失敗，請參閱錯誤訊息，以取得修正問題的協助。
 
 在偵測此問題時，請務必留意此技能的任何[技能輸入警告](#warning-skill-input-was-invalid)。 您的 Web API 端點可能會失敗，因為索引子傳遞了非預期的輸入。
 
-<a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
+<a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>
 
 ## <a name="error-could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>錯誤：因為 Web API 技能回應無效，所以無法執行技能
 技能執行失敗，因為呼叫 Web API 傳回不正確回應。 當使用自訂技能時，通常會發生這類失敗，在此情況下，您將需要對自訂程式碼進行偵錯工具以解決此問題。 如果失敗是來自內建技能，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)以取得協助。
 
-<a name="skill-did-not-execute-within-the-time-limit"/>
+<a name="skill-did-not-execute-within-the-time-limit"></a>
 
 ## <a name="error-skill-did-not-execute-within-the-time-limit"></a>錯誤：技能未在時間限制內執行
 在兩種情況下，您可能會遇到這個錯誤訊息，每個都應該以不同的方式處理。 請依照下列指示，視您為此錯誤傳回的技能而定。
@@ -141,7 +140,7 @@ ms.locfileid: "83125089"
 
 您可以為參數設定的最大值 `timeout` 為230秒。  如果您的自訂技能無法在230秒內一致地執行，您可以考慮減少 `batchSize` 自訂技能的，使其在單一執行中會有較少的檔可處理。  如果您已將設定 `batchSize` 為1，則必須重寫技能，才能在230秒內執行，或將其分割成多個自訂技能，讓任何單一自訂技能的執行時間最多可達230秒。 如需詳細資訊，請參閱[自訂技能檔](cognitive-search-custom-skill-web-api.md)。
 
-<a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
+<a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>
 
 ## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>錯誤：無法 ' `MergeOrUpload` ' |`Delete`搜尋索引的 ' ' 檔
 
@@ -157,7 +156,7 @@ ms.locfileid: "83125089"
 | 基礎計算/網路資源（罕見）中的失敗 | 無法建立連接以更新索引。 發生未知錯誤。 | 設定要依照[排程執行](search-howto-schedule-indexers.md)的索引子，以從失敗狀態中收取。
 | 由於網路問題，在超時期間內，對目標索引所做的索引編制要求並未認可。 | 無法及時建立與搜尋索引的連接。 | 設定要依照[排程執行](search-howto-schedule-indexers.md)的索引子，以從失敗狀態中收取。 此外，如果此錯誤狀況持續發生，請嘗試降低索引子的[批次大小](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)。
 
-<a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
+<a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>
 
 ## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>錯誤：無法為檔編制索引，因為部分檔的資料無效
 
@@ -177,13 +176,13 @@ ms.locfileid: "83125089"
 
 這適用于 SQL 資料表，通常會在索引鍵定義為複合索引鍵時，或在資料表已定義唯一的叢集索引（如同在 SQL 索引中，而不是 Azure 搜尋服務索引）時發生。 主要的原因是在[唯一叢集索引](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情況下，索引鍵屬性已修改為複合主鍵。 在此情況下，請確定您的 SQL 資料表沒有唯一的叢集索引，或者您將索引鍵欄位對應到保證不會有重複值的欄位。
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
+<a name="could-not-process-document-within-indexer-max-run-time"></a>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>錯誤：無法處理索引子執行時間上限中的檔
 
 當索引子無法在允許的執行時間內從資料來源完成處理單一檔時，就會發生這個錯誤。 使用技能集時，[執行時間上限](search-limits-quotas-capacity.md#indexer-limits)較短。 當此錯誤發生時，如果您將 maxFailedItems 設定為0以外的值，則索引子會在未來執行時略過檔，讓索引可以進行。 如果您無法承受略過任何檔，或如果您一直看到此錯誤，請考慮將檔分解成較小的檔，以便在單一索引子執行中進行部分進度。
 
-<a name="could-not-project-document"/>
+<name = "不是專案檔案></a>
 
 ## <a name="error-could-not-project-document"></a>錯誤：無法投影檔
 
@@ -195,7 +194,7 @@ ms.locfileid: "83125089"
 | 無法更新 `'blobUri'` 容器中的投影 blob`'containerName'` |無法將資料寫入傳輸連線：遠端主機已強制關閉現有的連接。 | 這應該是 Azure 儲存體的暫時性失敗，因此應該藉由重新執行索引子來解決。 如果您一直遇到此錯誤，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，以便進一步調查。  |
 | 無法更新 `'projectionRow'` 資料表中的資料列`'tableName'` | 伺服器忙碌中。 | 這應該是 Azure 儲存體的暫時性失敗，因此應該藉由重新執行索引子來解決。 如果您一直遇到此錯誤，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，以便進一步調查。  |
 
-<a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
+<a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>
 
 ## <a name="warning-skill-input-was-invalid"></a>警告：技能輸入無效
 技能的輸入遺漏、錯誤的類型或其他無效。 警告訊息會指出影響：
@@ -232,7 +231,7 @@ ms.locfileid: "83125089"
 | 缺少技能輸入 | 「缺少必要的技能輸入。 名稱： `text` ，來源： `/document/merged_content` "" 遺漏值 `/document/normalized_images/0/imageTags` 。 "  「無法 `0` 在長度陣列中選取」 `/document/pages` `0` 。 | 如果您的所有檔都收到此警告，表示輸入路徑中可能出現錯誤，而且您應該再次檢查路徑中的屬性名稱大小寫、額外或遺失 `*` ，並確定資料來源中的檔提供必要的輸入。 |
 | 技能語言代碼輸入無效 | 技能輸入 `languageCode` 具有下列語言代碼 `X,Y,Z` ，其中至少有一個無效。 | 請參閱[下方](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)的詳細資料 |
 
-<a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
+<a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>警告：技能輸入 ' languageCode ' 具有下列語言代碼 ' X，Y，Z '，其中至少有一個無效。
 不支援傳遞至下游技能選擇性輸入的一個或多個值 `languageCode` 。 如果您將[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)的輸出傳遞給後續技能，而輸出所包含的語言比這些下游技能所支援的更多，就會發生這種情況。
@@ -259,7 +258,7 @@ ms.locfileid: "83125089"
 * [翻譯工具支援的語言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)（適用于[文字 TranslationSkill](cognitive-search-skill-text-translation.md)）
 * [文字 SplitSkill](cognitive-search-skill-textsplit.md)支援的語言：`da, de, en, es, fi, fr, it, ko, pt`
 
-<a name="skill-input-was-truncated"/>
+<a name="skill-input-was-truncated"></a>
 
 ## <a name="warning-skill-input-was-truncated"></a>警告：已截斷技能輸入
 認知技能對於可以一次分析的文字長度有限制。 如果這些技能的文字輸入超過該限制，我們會截斷文字以符合限制，然後在該截斷的文字上執行擴充。 這表示技能會執行，但不是您所有的資料。
@@ -281,12 +280,12 @@ ms.locfileid: "83125089"
 
 如果您想要確保所有文字都經過分析，請考慮使用[分割技能](cognitive-search-skill-textsplit.md)。
 
-<a name="web-api-skill-response-contains-warnings"/>
+<a name="web-api-skill-response-contains-warnings"></a>
 
 ## <a name="warning-web-api-skill-response-contains-warnings"></a>警告： Web API 技能回應包含警告
 索引子可以在技能集中執行技能，但是來自 Web API 要求的回應表示在執行期間出現警告。 請參閱警告以瞭解資料受到影響的方式，以及是否需要採取動作。
 
-<a name="the-current-indexer-configuration-does-not-support-incremental-progress"/>
+<a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>
 
 ## <a name="warning-the-current-indexer-configuration-does-not-support-incremental-progress"></a>警告：目前的索引子設定不支援增量進度
 
@@ -300,20 +299,20 @@ ms.locfileid: "83125089"
 
 如需詳細資訊，請參閱[增量進度和自訂查詢](search-howto-index-cosmosdb.md#IncrementalProgress)。
 
-<a name="some-data-was-lost-during projection-row-x-in-table-y-has-string-property-z-which-was-too-long"/>
+<a name="some-data-was-lost-during projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>
 
 ## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>警告：某些資料在投射期間遺失。 資料表 ' Y ' 中的資料列 ' X ' 有太長的字串屬性 ' Z '。
 
 [表格儲存體服務](https://azure.microsoft.com/services/storage/tables)對於大型[實體屬性](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types)可以有多大的限制。 字串可以有32000個字元或更少。 如果投射字串屬性長度超過32000個字元的資料列，則只會保留前32000個字元。 若要解決此問題，請避免投射字串屬性長度超過32000個字元的資料列。
 
-<a name="truncated-extracted-text-to-x-characters"/>
+<a name="truncated-extracted-text-to-x-characters"></a>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>警告：已將解壓縮的文字截斷成 X 個字元
 索引子會限制可以從任何一份檔中解壓縮多少文字。 此限制取決於定價層：免費層的32000個字元、[基本] 的 [64000]、[標準] 的 [4000000]、[標準 S2 的 8000000] 和 [標準 S3 的 16000000]。 已截斷的文字將不會編制索引。 若要避免這個警告，請嘗試將包含大量文字的檔分解成多個小型的檔。 
 
 如需詳細資訊，請參閱[索引子限制](search-limits-quotas-capacity.md#indexer-limits)。
 
-<a name="could-not-map-output-field-x-to-search-index"/>
+<a name="could-not-map-output-field-x-to-search-index"></a>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>警告：無法將輸出欄位 ' X ' 對應至搜尋索引
 參考不存在/null 資料的輸出欄位對應會產生每份檔的警告，並產生空的索引欄位。 若要解決此問題，請仔細檢查輸出欄位對應來源路徑是否可能出現錯誤，或使用[條件式技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)來設定預設值。 如需詳細資訊，請參閱[輸出欄位對應](cognitive-search-output-field-mapping.md)。
@@ -323,12 +322,12 @@ ms.locfileid: "83125089"
 | 無法重複執行非陣列 | 「無法逐一查看非陣列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` 。」 | 當輸出不是陣列時，就會發生這個錯誤。 如果您認為輸出應該是陣列，請檢查指定的輸出來源欄位路徑是否有錯誤。 例如，您 `*` 的來源功能變數名稱中可能遺漏或多餘的。 這項技能的輸入也可能是 null，因此會產生空的陣列。 在 [[技能輸入無效](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)] 區段中尋找類似的詳細資料。    |
 | 無法 `0` 在非陣列中選取 | 「無法 `0` 在非陣列中選取」 `/document/pages` 。 | 如果技能輸出不會產生陣列，而且輸出來源功能變數名稱具有陣列索引或其路徑，就會發生這種情況 `*` 。 請再次檢查輸出來源功能變數名稱中所提供的路徑，以及指定功能變數名稱的域值。 在 [[技能輸入無效](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)] 區段中尋找類似的詳細資料。  |
 
-<a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
+<a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>警告：資料變更偵測原則已設定為使用索引鍵資料行 ' X '
 [資料變更偵測原則](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)具有其用來偵測變更之資料行的特定需求。 其中一個需求是每次變更來源專案時，就會更新此資料行。 另一個需求是此資料行的新值大於先前的值。 索引鍵資料行無法滿足這項需求，因為每個更新都不會變更。 若要解決此問題，請為變更偵測原則選取不同的資料行。
 
-<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>
 
 ## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>警告：檔文字看起來是 UTF-16 編碼，但遺漏了位元組順序標記
 
@@ -344,7 +343,7 @@ ms.locfileid: "83125089"
 
 若要解決此警告，請判斷此 blob 的文字編碼方式，並新增適當的位元組順序標記。
 
-<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"></a>
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告： Cosmos DB 集合 ' X ' 具有延遲索引編制原則。 某些資料可能會遺失
 

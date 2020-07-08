@@ -7,17 +7,25 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248731"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>適用于 Logic Apps 和流程的 Azure 監視器記錄連接器
 [Azure Logic Apps](/azure/logic-apps/)和[電源自動化](https://ms.flow.microsoft.com)可讓您針對各種服務，使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs 連接器可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式抓取資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
 
 例如，您可以建立邏輯應用程式，以在 Office 365 的電子郵件通知中使用 Azure 監視器記錄資料、在 Azure DevOps 中建立 bug，或張貼時差訊息。  您可以使用簡易排程或從連接的服務中的某個動作觸發工作流程，例如收到郵件或推文時。 
+
+## <a name="connector-limits"></a>連接器限制
+Azure 監視器記錄連接器具有下列限制：
+* 資料大小上限： 16 MB
+* 查詢回應大小上限為 100 MB
+* 記錄的最大數目：500000
+* 最大查詢超時110秒。
+
+視您的資料大小和您使用的查詢而定，連接器可能會達到其限制並失敗。 當您調整觸發週期來執行更頻繁且查詢較少的資料時，可以解決這種情況。 您可以使用匯總資料的查詢，以傳回較少的記錄和資料行。
 
 ## <a name="actions"></a>動作
 下表描述 Azure 監視器 Logs 連接器中包含的動作。 兩者都可讓您對 Log Analytics 工作區或 Application Insights 應用程式執行記錄查詢。 其差異在於傳回資料的方式。

@@ -12,12 +12,11 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263222"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -68,7 +67,9 @@ _有效權限_ 是應用程式向目標資源提出要求時所將具備的權�
 
 ## <a name="openid-connect-scopes"></a>OpenId Connect 範圍
 
-Microsoft 身分識別平臺的 OpenID connect 具有一些定義完善的範圍，不適用於特定的資源`openid`：、 `email`、 `profile`和。 `offline_access` 不支援 `address` 和 `phone` OpenID Connect 範圍。
+Microsoft 身分識別平臺的 OpenID connect 具有一些定義完善的範圍，也裝載于 Microsoft Graph： `openid` 、 `email` 、 `profile` 和 `offline_access` 。 不支援 `address` 和 `phone` OpenID Connect 範圍。
+
+要求 OIDC 範圍和權杖會提供您一個權杖來呼叫[使用者資訊端點](userinfo.md)。
 
 ### <a name="openid"></a>openid
 
@@ -80,16 +81,16 @@ Microsoft 身分識別平臺的 OpenID connect 具有一些定義完善的範圍
 
 ### <a name="profile"></a>profile
 
-`profile` 範圍可以與 `openid` 範圍及任何其他範圍搭配使用。 它會為應用程式提供大量使用者相關資訊的存取權。 它可以存取的資訊包括但不限於使用者的名字、姓氏、慣用的使用者名稱和物件識別碼。 如需特定使用者之 id_tokens 參數中可用的設定檔宣告完整清單，請參閱[ `id_tokens`參考](id-tokens.md)。
+`profile` 範圍可以與 `openid` 範圍及任何其他範圍搭配使用。 它會為應用程式提供大量使用者相關資訊的存取權。 它可以存取的資訊包括但不限於使用者的名字、姓氏、慣用的使用者名稱和物件識別碼。 如需特定使用者之 id_tokens 參數中可用的設定檔宣告完整清單，請參閱[ `id_tokens` 參考](id-tokens.md)。
 
 ### <a name="offline_access"></a>offline_access
 
-範圍可讓您的應用程式代表使用者存取資源，以延長時間。 [ `offline_access` ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) 在同意頁面上，此範圍會顯示為「維持存取您可存取的資料」權限。 當使用者核准`offline_access`範圍時，您的應用程式可以接收來自 Microsoft 身分識別平臺權杖端點的重新整理權杖。 重新整理權杖是長期權杖。 您的應用程式可以在舊存取權杖到期時取得新的存取權杖。
+[ `offline_access` 範圍](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)可讓您的應用程式代表使用者存取資源，以延長時間。 在同意頁面上，此範圍會顯示為「維持存取您可存取的資料」權限。 當使用者核准範圍時 `offline_access` ，您的應用程式可以接收來自 Microsoft 身分識別平臺權杖端點的重新整理權杖。 重新整理權杖是長期權杖。 您的應用程式可以在舊存取權杖到期時取得新的存取權杖。
 
 > [!NOTE]
 > 這個許可權會立即出現在所有同意畫面上，即使不提供重新整理權杖的流程（[隱含流程](v2-oauth2-implicit-grant-flow.md)）也一樣。  這是為了說明用戶端可以在隱含流程中開始的情況，然後移至需要重新整理權杖的程式碼流程。
 
-在 Microsoft 身分識別平臺（對 v2.0 端點提出的要求）上，您的應用程式必須明確`offline_access`要求範圍，才能接收重新整理權杖。 這意謂著當您在 [OAuth 2.0 授權碼流程](active-directory-v2-protocols.md)中兌換授權碼時，您只會從 `/token` 端點收到存取權杖。 存取權杖的有效期短。 存取權杖的有效期通常在一小時內。 屆時，您的應用程式將必須把使用者重新導向回 `/authorize` 端點，以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者可能需要重新輸入其認證或重新同意權限。
+在 Microsoft 身分識別平臺（對 v2.0 端點提出的要求）上，您的應用程式必須明確要求 `offline_access` 範圍，才能接收重新整理權杖。 這意謂著當您在 [OAuth 2.0 授權碼流程](active-directory-v2-protocols.md)中兌換授權碼時，您只會從 `/token` 端點收到存取權杖。 存取權杖的有效期短。 存取權杖的有效期通常在一小時內。 屆時，您的應用程式將必須把使用者重新導向回 `/authorize` 端點，以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者可能需要重新輸入其認證或重新同意權限。
 
 如需如何取得及使用重新整理權杖的詳細資訊，請參閱[Microsoft 身分識別平臺通訊協定參考](active-directory-v2-protocols.md)。
 
@@ -136,7 +137,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 * 使用 `Directory.ReadWrite.All` 將資料寫入組織的目錄
 * 使用 `Groups.Read.All` 讀取組織目錄中的所有群組
 
-雖然取用者使用者可以為應用程式授與這類資料的存取權，但組織使用者會受到限制，而無法授與同一組機密公司資料的存取權。 如果您的應用程式向組織使用者要求存取其中一個許可權，則使用者會收到錯誤訊息，指出他們未獲授權同意您的應用程式許可權。
+雖然取用者使用者可以為應用程式授與這類資料的存取權，但組織使用者會受到限制，而無法授與同一組機密公司資料的存取權。 如果您的應用程式向組織使用者要求這其中一個權限的存取權，使用者將會收到錯誤訊息，指出他們未獲授權而無法對您應用程式的權限表示同意。
 
 如果您的應用程式需要存取組織的受系統管理員限制範圍，您應該同樣使用系統管理員同意端點，直接向公司系統管理員要求權限，接下來將會說明。
 
@@ -157,10 +158,10 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在應用程式註冊入口網站中要求權限
 
-應用程式可在應用程式註冊入口網站中，記錄他們所需的許可權（包括委派和應用程式）。  這可讓您使用`/.default`範圍和 Azure 入口網站的「授與系統管理員同意」選項。  一般來說，最佳做法是確保指定之應用程式靜態定義的許可權，是它將以動態/累加方式要求的許可權超集合。
+應用程式可在應用程式註冊入口網站中，記錄他們所需的許可權（包括委派和應用程式）。  這可讓您使用 `/.default` 範圍和 Azure 入口網站的「授與系統管理員同意」選項。  一般來說，最佳做法是確保指定之應用程式靜態定義的許可權，是它將以動態/累加方式要求的許可權超集合。
 
 > [!NOTE]
->應用程式許可權只能透過使用來要求[`/.default`](#the-default-scope) -因此，如果您的應用程式需要應用程式許可權，請確定它們列在應用程式註冊入口網站中。
+>應用程式許可權只能透過使用來要求 [`/.default`](#the-default-scope) -因此，如果您的應用程式需要應用程式許可權，請確定它們列在應用程式註冊入口網站中。
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>設定應用程式的靜態要求許可權清單
 
@@ -191,18 +192,18 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數        | 狀況        | 說明                                                                                |
+| 參數        | 條件        | 說明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記名稱格式，或與組織一般參考，如範例中所示。 請勿使用「通用」，因為個人帳戶無法提供系統管理員同意，除非在租使用者的內容中。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
-| `client_id` | 必要 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
+| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
-| `state` | 建議 | 包含在要求中的值，也會在權杖回應中傳回。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要        | 定義應用程式所要求的許可權集合。 這可以是靜態（使用[`/.default`](#the-default-scope)）或動態範圍。  這可能包括 OIDC 範圍（`openid`、 `profile`、 `email`）。 如果您需要應用程式許可權，則必須`/.default`使用來要求靜態設定的許可權清單。  |
+| `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
+|`scope`        | 必要        | 定義應用程式所要求的許可權集合。 這可以是靜態（使用 [`/.default`](#the-default-scope) ）或動態範圍。  這可能包括 OIDC 範圍（ `openid` 、 `profile` 、 `email` ）。 如果您需要應用程式許可權，則必須使用 `/.default` 來要求靜態設定的許可權清單。  |
 
 
-此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在`scope`參數中要求的擁有權限。  如果您已使用靜態（`/.default`）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
+此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態（ `/.default` ）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
 
-#### <a name="successful-response"></a>成功的回應
+#### <a name="successful-response"></a>成功回應
 
 如果系統管理員為您的應用程式核准權限，則成功的回應看起來會像這樣︰
 
@@ -210,7 +211,7 @@ https://graph.microsoft.com/mail.send
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 描述 |
+| 參數 | Description |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
@@ -256,16 +257,16 @@ Content-Type: application/json
 
 ## <a name="the-default-scope"></a>/.default 範圍
 
-您可以使用`/.default`範圍，協助將您的應用程式從 v1.0 端點遷移至 Microsoft 身分識別平臺端點。 這是每個應用程式的內建範圍，其參考在應用程式註冊時設定的靜態權限清單。 `scope` 值為 `https://graph.microsoft.com/.default` 在功能上與 v1.0 端點 `resource=https://graph.microsoft.com` 相同 - 也就是說，它會對應用程式已在 Azure 入口網站中註冊的 Microsoft Graph 範圍要求權杖。  它是使用資源 URI + `/.default`來建立的（例如，如果資源 uri 是`https://contosoApp.com`，則要求的範圍會是`https://contosoApp.com/.default`）。  請參閱[尾端斜線的一節](#trailing-slash-and-default)，以瞭解您必須包含第二個斜線才能正確要求權杖的情況。
+您可以使用 `/.default` 範圍，協助將您的應用程式從 v1.0 端點遷移至 Microsoft 身分識別平臺端點。 這是每個應用程式的內建範圍，其參考在應用程式註冊時設定的靜態權限清單。 `scope` 值為 `https://graph.microsoft.com/.default` 在功能上與 v1.0 端點 `resource=https://graph.microsoft.com` 相同 - 也就是說，它會對應用程式已在 Azure 入口網站中註冊的 Microsoft Graph 範圍要求權杖。  它是使用資源 URI + 來建立的 `/.default` （例如，如果資源 uri 是 `https://contosoApp.com` ，則要求的範圍會是 `https://contosoApp.com/.default` ）。  請參閱[尾端斜線的一節](#trailing-slash-and-default)，以瞭解您必須包含第二個斜線才能正確要求權杖的情況。
 
 /.Default 範圍可以用於任何 OAuth 2.0 流程中，但在代理者[流程](v2-oauth2-on-behalf-of-flow.md)和[用戶端認證流程](v2-oauth2-client-creds-grant-flow.md)中都是必要的，而且在使用 v2 系統管理員同意端點來要求應用程式許可權時也是必要的。
 
 > [!NOTE]
-> 用戶端無法在單一`/.default`要求中結合靜態（）和動態同意。 因此，`scope=https://graph.microsoft.com/.default+mail.read` 會因為範圍類型的組合而導致錯誤。
+> 用戶端無法 `/.default` 在單一要求中結合靜態（）和動態同意。 因此，`scope=https://graph.microsoft.com/.default+mail.read` 會因為範圍類型的組合而導致錯誤。
 
 ### <a name="default-and-consent"></a>/.default 與同意
 
-`/.default` 範圍也會對 `prompt=consent` 觸發 v1.0 端點行為。 不論資源為何，它都會要求同意應用程式註冊的所有權限。 如果包含在要求中， `/.default`範圍會傳回一個權杖，其中包含所要求資源的範圍。
+`/.default` 範圍也會對 `prompt=consent` 觸發 v1.0 端點行為。 不論資源為何，它都會要求同意應用程式註冊的所有權限。 如果包含在要求中， `/.default` 範圍會傳回一個權杖，其中包含所要求資源的範圍。
 
 ### <a name="default-when-the-user-has-already-given-consent"></a>使用者已經同意時的 /.default
 
@@ -273,15 +274,15 @@ Content-Type: application/json
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>範例1：使用者或租使用者管理員已授與許可權
 
-在此範例中，使用者（或租使用者系統管理員）已授與用戶端 Microsoft Graph `mail.read`的`user.read`許可權和。 如果用戶端對 `scope=https://graph.microsoft.com/.default` 提出要求，則不論向 Microsoft Graph 註冊權限的用戶端應用程式的內容為何，都不會顯示同意提示。 系統會傳回一個權杖，其中包含 `mail.read` 和 `user.read` 範圍。
+在此範例中，使用者（或租使用者系統管理員）已授與用戶端 Microsoft Graph 的許可權 `mail.read` 和 `user.read` 。 如果用戶端對 `scope=https://graph.microsoft.com/.default` 提出要求，則不論向 Microsoft Graph 註冊權限的用戶端應用程式的內容為何，都不會顯示同意提示。 系統會傳回一個權杖，其中包含 `mail.read` 和 `user.read` 範圍。
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>範例2：使用者未授與用戶端與資源之間的許可權
 
-在此範例中，用戶端與 Microsoft Graph 之間不會有使用者的同意。 用戶端已註冊 `user.read` 和 `contacts.read` 權限，以及 Azure Key Vault 範圍 `https://vault.azure.net/user_impersonation`。 當用戶端向 `scope=https://graph.microsoft.com/.default` 要求權杖時，使用者會看見 `user.read`、`contacts.read` 和 Key Vault `user_impersonation` 範圍的同意畫面。 傳回的權杖只會有`user.read`和`contacts.read`範圍，而且僅適用于 Microsoft Graph。
+在此範例中，用戶端與 Microsoft Graph 之間不會有使用者的同意。 用戶端已註冊 `user.read` 和 `contacts.read` 權限，以及 Azure Key Vault 範圍 `https://vault.azure.net/user_impersonation`。 當用戶端向 `scope=https://graph.microsoft.com/.default` 要求權杖時，使用者會看見 `user.read`、`contacts.read` 和 Key Vault `user_impersonation` 範圍的同意畫面。 傳回的權杖只會有 `user.read` 和 `contacts.read` 範圍，而且僅適用于 Microsoft Graph。
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>範例3：使用者已同意，而且用戶端要求其他範圍
 
-在此範例中，使用者已同意`mail.read`用戶端的。 用戶端已在其註冊中註冊 `contacts.read` 範圍。 當用戶端使用`scope=https://graph.microsoft.com/.default`要求權杖，並要求透過`prompt=consent`進行同意時，使用者會看到應用程式所註冊的所有（而且只有）許可權的同意畫面。 `contacts.read` 將會呈現在同意畫面中，但 `mail.read` 不會。 傳回的權杖會適用於 Microsoft Graph，而且包含 `mail.read` 和 `contacts.read`。
+在此範例中，使用者已同意 `mail.read` 用戶端的。 用戶端已在其註冊中註冊 `contacts.read` 範圍。 當用戶端使用要求權杖， `scope=https://graph.microsoft.com/.default` 並要求透過進行同意時 `prompt=consent` ，使用者會看到應用程式所註冊的所有（而且只有）許可權的同意畫面。 `contacts.read` 將會呈現在同意畫面中，但 `mail.read` 不會。 傳回的權杖會適用於 Microsoft Graph，而且包含 `mail.read` 和 `contacts.read`。
 
 ### <a name="using-the-default-scope-with-the-client"></a>使用 /.default 範圍搭配用戶端
 
@@ -302,9 +303,9 @@ response_type=token            //code or a hybrid flow is also possible here
 
 ### <a name="trailing-slash-and-default"></a>尾端斜線和/.default
 
-某些資源 Uri 有尾端斜線（`https://contoso.com/`相對於`https://contoso.com`），這可能會造成權杖驗證的問題。  這主要發生在要求 Azure 資源管理（`https://management.azure.com/`）的權杖時，在其資源 URI 上具有尾端斜線，並要求在要求權杖時，才會出現這種情況。  因此，當要求`https://management.azure.com/`和使用`/.default`的權杖時，您必須要求`https://management.azure.com//.default` -記下雙斜線！
+某些資源 Uri 有尾端斜線（ `https://contoso.com/` 相對於 `https://contoso.com` ），這可能會造成權杖驗證的問題。  這主要發生在要求 Azure 資源管理（）的權杖時 `https://management.azure.com/` ，在其資源 URI 上具有尾端斜線，並要求在要求權杖時，才會出現這種情況。  因此，當要求和使用的權杖時， `https://management.azure.com/` `/.default` 您必須要求 `https://management.azure.com//.default` -記下雙斜線！
 
-一般-如果您已驗證權杖是否已發行，且 API 會拒絕該權杖接受它，請考慮新增第二個斜線，然後再試一次。 發生這種情況的原因是，登入伺服器會發出權杖，其中的`scope`物件符合參數`/.default`中的 uri，並已從結尾移除。  如果移除尾端斜線，登入伺服器仍然會處理要求，並對資源 URI 進行驗證，即使它們不再相符也一樣-這是非標準的，不應該由您的應用程式依賴。
+一般-如果您已驗證權杖是否已發行，且 API 會拒絕該權杖接受它，請考慮新增第二個斜線，然後再試一次。 發生這種情況的原因是，登入伺服器會發出權杖，其中的物件符合參數中的 Uri， `scope` 並 `/.default` 已從結尾移除。  如果移除尾端斜線，登入伺服器仍然會處理要求，並對資源 URI 進行驗證，即使它們不再相符也一樣-這是非標準的，不應該由您的應用程式依賴。
 
 ## <a name="troubleshooting-permissions-and-consent"></a>針對權限和同意進行疑難排解
 

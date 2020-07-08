@@ -11,21 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194450"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用範本來建立 Azure Data Factory 實體
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 基於資料整合需求使用 Azure Data Factory 時，您可能會發現自己跨不同環境重複使用相同的模式，或在相同的解決方案內反覆地實作相同的工作。 範本可協助您輕鬆地實作和管理這些案例。 Azure Data Factory 中的範本最適用於涉及重複使用和重複時。
 
-假設某個組織在全球各地有 10 個製造工廠。 每個工廠中的記錄都會儲存在不同的內部部署 SQL Server 資料庫中。 該公司想要在雲端中建立單一資料倉儲，以供臨機操作分析之用。 它也想要具有相同的邏輯，但開發、測試和生產環境的組態不同。
+假設某個組織在全球各地有 10 個製造工廠。 來自每個工廠的記錄會儲存在不同的 SQL Server 資料庫中。 該公司想要在雲端中建立單一資料倉儲，以供臨機操作分析之用。 它也想要具有相同的邏輯，但開發、測試和生產環境的組態不同。
 
 在此情況下，必須在相同的環境內重複執行工作，但每個製造工廠的 10 個資料處理站各有不同的值。 實際上，具有**重複**情況。 範本化允許任意使用這個泛形流程 (即在每個資料處理站中具有相同活動的管線)，但會針對每個製造工廠使用不同的參數檔案。
 
@@ -41,14 +40,14 @@ ms.locfileid: "81460727"
 * [教學課程：使用 Azure Resource Manager 範本建立管線以處理資料](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的 Data Factory 範本
-請參考 GitHub 上的下列 Azure 快速入門範本：
+請參閱 GitHub 上的下列 Azure 快速入門範本：
 
 * [建立 Data Factory 以將資料從 Azure Blob 儲存體複製到 Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [在 Azure HDInsight 叢集上使用 Hive 活動建立 Data Factory](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [建立 Data Factory 以將資料從 Salesforce 複製到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [建立 Data factory 以鏈結活動︰將資料從 FTP 伺服器複製到 Azure Blob、叫用隨選 HDInsight 叢集上的 hive 指令碼來轉換資料，並將結果複製到 Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-在 [Azure 快速啟動](https://azure.microsoft.com/documentation/templates/)上自由共用 Azure Data Factory 範本。 開發可透過這個存放庫共用的範本時，請參閱[參與指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)。
+您可以在[Azure 快速入門](https://azure.microsoft.com/documentation/templates/)中免費分享您的 Azure Data Factory 範本。 開發可透過這個存放庫共用的範本時，請參閱[參與指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)。
 
 下列各節提供在 Resource Manager 範本中定義 Data Factory 資源的詳細資料。
 

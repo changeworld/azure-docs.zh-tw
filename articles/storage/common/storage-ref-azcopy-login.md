@@ -8,12 +8,11 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84219957"
 ---
 # <a name="azcopy-login"></a>azcopy 登入
 
@@ -99,9 +98,9 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>選項
 
-|選項|描述|
+|選項|說明|
 |--|--|
-|--aad-端點|要使用的 Azure Active Directory 端點。 公用 Azure 雲端`https://login.microsoftonline.com`的預設（）是正確的。 在國家雲端中進行驗證時，請設定此參數。 請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+|--aad-端點|要使用的 Azure Active Directory 端點。 `https://login.microsoftonline.com`公用 Azure 雲端的預設（）是正確的。 在國家雲端中進行驗證時，請設定此參數。 請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 受控服務識別不需要此旗標。|
 |--應用程式識別碼字串|使用者指派之身分識別的應用程式識別碼。 服務主體驗證所需。|
 |--憑證-路徑字串|SPN 驗證的憑證路徑。 以憑證為基礎的服務主體驗證所需。|
@@ -110,16 +109,17 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 |--identity-用戶端識別碼字串|使用者指派之身分識別的用戶端識別碼。|
 |--identity-物件識別碼字串|使用者指派之身分識別的物件識別碼。|
 |--identity-資源識別碼字串|使用者指派之身分識別的資源識別碼。|
-|--服務-主體|使用憑證或秘密，透過 SPN （服務主體名稱）登入。 用戶端密碼或憑證密碼必須放在適當的環境變數中。 輸入`AzCopy env`以查看環境變數的名稱和描述。|
+|--服務-主體|使用憑證或秘密，透過 SPN （服務主體名稱）登入。 用戶端密碼或憑證密碼必須放在適當的環境變數中。 輸入 `AzCopy env` 以查看環境變數的名稱和描述。|
 |--租使用者識別碼字串| 用於 OAuth 裝置互動式登入的 Azure active directory 租使用者識別碼。|
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|描述|
+|選項|說明|
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--trusted-microsoft-尾碼字串   |指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [azcopy](storage-ref-azcopy.md)

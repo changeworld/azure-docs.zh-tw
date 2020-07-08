@@ -3,12 +3,11 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247949"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份對 SQL Server 資料庫備份進行疑難排解
 
@@ -20,7 +19,7 @@ ms.locfileid: "82183325"
 
 若要設定虛擬機器上 SQL Server 資料庫的保護，您必須在該虛擬機器上安裝**AzureBackupWindowsWorkload**延伸模組。 如果您收到錯誤**UserErrorSQLNoSysadminMembership**，表示您的 SQL Server 實例沒有必要的備份許可權。 若要修正此錯誤，請依照[設定 VM 許可權](backup-azure-sql-database.md#set-vm-permissions)中的步驟進行。
 
-## <a name="troubleshoot-discover-and-configure-issues"></a>針對探索和設定問題進行疑難排解
+## <a name="troubleshoot-discover-and-configure-issues"></a>探索和設定問題的疑難排解
 
 建立和設定復原服務保存庫之後，探索資料庫和設定備份是兩個步驟的程式。<br>
 
@@ -46,13 +45,13 @@ ms.locfileid: "82183325"
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    將`C:\`取代為您的*SystemDrive*字母。
+    將取代 `C:\` 為您的*SystemDrive*字母。
 
 1. 從防毒軟體掃描中排除下列三個在 VM 中執行的處理常式：
 
-    - IaasWLPluginSvc .exe
-    - IaasWorkloadCoordinaorService .exe
-    - TriggerExtensionJob .exe
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
 
 1. SQL 也提供一些關於使用防毒程式的指導方針。 如需詳細資訊，請參閱[這篇文章](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)。
 
@@ -60,7 +59,7 @@ ms.locfileid: "82183325"
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
-| Severity | 描述 | 可能的原因 | 建議的動作 |
+| Severity | Description | 可能的原因 | 建議的動作 |
 |---|---|---|---|
 | 警告 | 此資料庫的目前設定不支援相關聯原則中存在的特定備份類型。 | <li>只有完整資料庫備份作業可以在 master 資料庫上執行。 差異備份或交易記錄備份都不可行。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定，使其支援原則中的所有備份類型。 或者，將目前的原則變更為僅包含支援的備份類型。 否則，在排程備份期間將會略過不支援的備份類型，否則備份作業將會因為隨選備份而失敗。
 
@@ -123,7 +122,7 @@ ms.locfileid: "82183325"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 用於復原的記錄備份包含大量記錄的變更。 根據 SQL 指導方針，其無法用來在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，無法復原大量記錄交易和下一個記錄交易之間的資料。 | 請選擇不同的恢復時間點。 [深入了解](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 用於復原的記錄備份包含大量記錄的變更。 它不能用來根據 SQL 方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，無法復原大量記錄交易和下一個記錄交易之間的資料。 | 請選擇不同的恢復時間點。 [深入了解](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +171,7 @@ ms.locfileid: "82183325"
 在觸發重新註冊作業之前，請先檢查下列一個或多個徵兆：
 
 - 所有作業（例如備份、還原和設定備份）在 VM 上失敗，發生下列其中一個錯誤代碼： **WorkloadExtensionNotReachable**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
-- 如果備份專案的 [**備份狀態**] 區域顯示為 [**無法**連線]，請排除可能會導致相同狀態的所有其他原因：
+- 如果備份項目的 [備份狀態] 區域顯示 [無法連線]，請排除可能會導致相同狀態的所有其他原因：
 
   - 缺少在 VM 上執行備份相關作業的許可權。
   - 關閉 VM，因此無法進行備份。
@@ -182,16 +181,16 @@ ms.locfileid: "82183325"
 
 - 在 Always On 可用性群組的情況下，當您變更備份喜好設定或容錯移轉之後，備份就會開始失敗。
 
-這些徵兆可能因下列一或多個原因而發生：
+這些徵兆可能是因下列一個或多個原因而發生：
 
-- 已從入口網站刪除或卸載擴充功能。
+- 已從入口網站刪除或卸載擴充。
 - 在 [**卸載或變更程式**] 下，已從 VM 上的 [**控制台**] 卸載擴充功能。
-- VM 已透過就地磁片還原還原回來。
-- VM 已關閉一段較長的時間，因此其上的延伸模組設定已過期。
-- 已刪除 VM，並在與已刪除的 VM 相同的資源群組中建立了另一個 VM。
+- VM 已透過就地磁碟還原來還原到原本狀態。
+- VM 已關閉一段較長的時間，因此其中的擴充設定已過期。
+- VM 已刪除，已建立另一個相同名稱的 VM，並且與已刪除的 VM 位於相同資源群組中。
 - 其中一個可用性群組節點未收到完整的備份設定。 當可用性群組註冊至保存庫，或加入新的節點時，就會發生這種情況。
 
-在先前的案例中，我們建議您在 VM 上觸發重新註冊操作。 如需如何在 PowerShell 中執行這項工作的指示，請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup)。
+針對上述情況，我們建議您在 VM 上觸發重新註冊作業。 如需如何在 PowerShell 中執行這項工作的指示，請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup)。
 
 ## <a name="size-limit-for-files"></a>檔案的大小限制
 
@@ -219,7 +218,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 ### <a name="override-the-default-target-restore-file-path"></a>覆寫預設的目標還原檔案路徑
 
-在還原作業期間，您可以將包含資料庫檔案對應的 JSON 檔案放到目標還原路徑，以覆寫目標還原檔案路徑。 `database_name.json`建立檔案，並將它放在位置`C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`。
+在還原作業期間，您可以將包含資料庫檔案對應的 JSON 檔案放到目標還原路徑，以覆寫目標還原檔案路徑。 建立檔案 `database_name.json` ，並將它放在位置 `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` 。
 
 檔案的內容應該採用下列格式：
 
@@ -267,4 +266,4 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 SQL Server Vm Azure 備份的詳細資訊（公開預覽），請參閱[適用于 SQL vm 的 Azure 備份](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)。
+如需 SQL Server Vm Azure 備份的詳細資訊（公開預覽），請參閱[適用于 SQL vm 的 Azure 備份](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup)。

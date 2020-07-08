@@ -4,12 +4,11 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、起始
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248680"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -29,7 +28,7 @@ ms.locfileid: "79248160"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例，`{vaultName}` 為 "testVault" 且 `{vaultresourceGroupName}` 為 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
+POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例， `{vaultName}` 為 "testVault"，而 `{vaultresourceGroupName}` 為 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
@@ -41,7 +40,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |204 沒有內容     |         |  確定，但不會傳回任何內容      |
 |202 已接受     |         |     已接受    |
@@ -104,9 +103,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses"></a><a name="responses-1"></a>回應
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [確定] |
+|200 確定     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
 
 #### <a name="example-responses"></a><a name="example-responses-1"></a>範例回應
 
@@ -180,7 +179,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 若要建立受保護的項目，以下是要求本文的元件。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem 資源屬性         |
 
@@ -208,9 +207,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [確定]       |
+|200 確定     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses"></a>範例回應
@@ -272,11 +271,11 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-這樣即可確認會針對 VM 啟用該保護，並根據原則排程觸發第一個備份。
+這會確認已針對 VM 啟用保護，並根據原則排程觸發第一個備份。
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>針對受保護的 Azure VM 觸發隨選備份
 
-設定 Azure VM 以進行備份之後，即會根據原則排程進行備份。 您可以等候第一個排定的備份，或隨時觸發隨選備份。 隨選備份的保留期與備份原則的保留期不同，且可指定為特定的日期時間。 如果未指定，即會假設為從觸發隨選備份當日起算的 30 天。
+一旦將 Azure VM 設定為進行備份，備份就會根據原則排程進行。 您可以等候第一個排定的備份，或隨時觸發隨選備份。 隨選備份的保留期與備份原則的保留期不同，且可指定為特定的日期時間。 如果未指定，即會假設為從觸發隨選備份當日起算的 30 天。
 
 觸發隨選備份為 *POST* 作業。
 
@@ -294,7 +293,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 屬性         |
 
@@ -319,7 +318,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -439,7 +438,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 204 (NoContent)。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 已接受     |         |     已接受    |

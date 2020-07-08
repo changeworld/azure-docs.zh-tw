@@ -4,12 +4,11 @@ description: 取得計量警示有何用途以及其在 Azure 監視器中如何
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248816"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -34,7 +33,7 @@ Azure 監視器中的計量警示以多維度計量為基礎運作。 這些計�
 
 從警示規則建立後開始，監視器會每隔 1 分鐘執行一次，並查看過去 5 分鐘的計量值，以及檢查這些值的平均是否超過 70。 如果條件符合，也就是說過去 5 分鐘的 CPU 百分比平均超過 70，則警示規則會引發啟動通知。 如果您已在與警示規則相關聯的動作群組中設定電子郵件或 Webhook 動作，您會收到兩者的啟動通知。
 
-當您在一個規則中使用多個條件時，規則會將條件「and」在一起。  也就是說，當警示中的所有條件都評估為 true 時，就會引發警示，並在其中一個條件不再為 true 時解決。 這種警示類型的範例會在「CPU 高於90%」和「佇列長度超過300個專案」時發出警示。 
+當您在一個規則中使用多個條件時，規則會將條件「and」在一起。 也就是說，當警示規則中的所有條件都評估為 true 時，就會引發警示，並在其中一個條件不再為 true 時解決。 此警示規則類型的範例是監視 Azure 虛擬機器，並在「CPU 百分比高於90%」和「佇列長度超過300個專案」時發出警示。
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>具有動態條件類型的警示規則
 
@@ -128,7 +127,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 | 服務 | 公用 Azure | 政府 | 中國 |
 |:--------|:--------|:--------|:--------|
-| 虛擬機器  | **是** | 否 | 否 |
+| 虛擬機器  | **是** | 否 | No |
 | SQL server 資料庫 | **是** | **是** | 否 |
 | SQL server 彈性集區 | **是** | **是** | 否 |
 | Data box edge 裝置 | **是** | **是** | 否 |
@@ -143,7 +142,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 > [!NOTE]
 >
-> 在監視多個資源的計量警示規則中，只允許一個條件。
+> 在監視多個資源的計量警示規則中，只允許一個準則。
 
 ## <a name="typical-latency"></a>一般延遲
 

@@ -4,12 +4,11 @@ description: 尋找有關使用 Azure 備份在 Azure Vm 上備份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248255"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行之 SQL Server 資料庫的常見問題
 
@@ -32,8 +31,8 @@ ms.locfileid: "79247705"
 
 預設會針對所有使用者啟用自動修復功能;不過，如果您退出宣告，請執行下列動作：
 
-- 在 SQL Server 實例的*C:\Program Files\Azure 工作負載 Backup\bin*資料夾中，建立或編輯**extensionsettingsoverrides.json**檔案。
-- 在**extensionsettingsoverrides.json**中，設定 *{"EnableAutoHealer"： false}*。
+- 在 SQL Server 實例的 [ *C:\Program Files\Azure 工作負載 Backup\bin* ] 資料夾中，建立或編輯檔案**上的ExtensionSettingsOverrides.js** 。
+- 在的**ExtensionSettingsOverrides.js**中，設定 *{"EnableAutoHealer"： false}*。
 - 儲存變更並關閉該檔案。
 - 在 SQL Server 實例上，開啟 [工作] [**管理**]，然後重新開機**AzureWLBackupCoordinatorSvc**服務。
 
@@ -41,8 +40,8 @@ ms.locfileid: "79247705"
 
 是。 您可以限制備份原則的執行速率，以儘量降低對 SQL Server 執行個體的影響。 變更設定：
 
-1. 在 SQL Server 實例的 [ *C:\Program Files\Azure 工作負載 Backup\bin* ] 資料夾中，建立*extensionsettingsoverrides.json json*檔案。
-2. 在*extensionsettingsoverrides.json json*檔案中，將**DefaultBackupTasksThreshold**設定變更為較低的值（例如，5）。 <br>
+1. 在 SQL Server 實例上的 [ *C:\Program Files\Azure 工作負載 Backup\bin* ] 資料夾中，建立檔案*上的ExtensionSettingsOverrides.js* 。
+2. 在 [ *ExtensionSettingsOverrides.js*檔案] 中，將 [ **DefaultBackupTasksThreshold** ] 設定變更為較低的值（例如，5）。 <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 DefaultBackupTasksThreshold 的預設值為**20**。
@@ -52,7 +51,7 @@ DefaultBackupTasksThreshold 的預設值為**20**。
  雖然此方法有助於備份應用程式耗用大量資源，但是 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017)是更通用的方法，可指定連入應用程式要求所能使用的 CPU、實體 IO 和記憶體數量限制。
 
 > [!NOTE]
-> 在 UX 中，您仍然可以在任何指定的時間排程多個備份，不過，它們會在按5的滑動視窗中進行處理，如上述範例所示。
+> 在 UX 中，您仍然可以在任何指定的時間排程多個備份，不過，它們會在根據上述範例的滑動視窗中進行處理，例如5。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以從次要複本執行完整備份？
 
@@ -68,9 +67,9 @@ Azure 備份復原服務保存庫可以偵測並保護與保存庫位於相同�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的備份作業是否會建立警示？
 
-否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 入口網站警示的詳細行為記載于[此處](backup-azure-monitoring-built-in-monitor.md)。 不過，如果您有興趣取得成功作業的警示，您可以使用 Azure 監視器來進行[監視](backup-azure-monitoring-use-azuremonitor.md)。
+否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 [這裡](backup-azure-monitoring-built-in-monitor.md)詳載了入口網站警示的行為。 不過，如果您有興趣取得成功作業的警示，您可以使用 Azure 監視器來進行[監視](backup-azure-monitoring-use-azuremonitor.md)。
 
-## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>我可以在 [備份作業] 功能表中看到已排程的備份工作嗎？
+## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>是否可以在 [備份作業] 功能表中看到已排程的備份作業？
 
 [**備份作業**] 功能表只會顯示隨選備份作業。 針對排程工作，使用[Azure 監視器的監視](backup-azure-monitoring-use-azuremonitor.md)。
 
@@ -80,7 +79,7 @@ Azure 備份復原服務保存庫可以偵測並保護與保存庫位於相同�
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果我從 autoprotected 實例中刪除資料庫，備份會發生什麼事？
 
-如果從 autoprotected 實例中卸載資料庫，仍然會嘗試資料庫備份。 這表示已刪除的資料庫會開始顯示為 [**備份專案**] 底下的 [狀況不良]，而且仍然受到保護。
+如果從 autoprotected 實例中卸載資料庫，仍然會嘗試資料庫備份。 這表示已刪除的資料庫會開始在 [備份項目] 下方顯示為狀況不良，且仍受到保護。
 
 停止保護此資料庫的正確方式，是在此資料庫上執行 [**刪除資料**] 的 [**停止備份**]。  
 

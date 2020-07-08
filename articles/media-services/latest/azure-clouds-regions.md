@@ -3,20 +3,20 @@ title: 可使用 Azure 媒體服務 v3 的雲端和區域
 description: 本文會討論可使用 Azure 媒體服務 v3 的 Azure 雲端和區域。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196247"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
 
@@ -32,6 +32,19 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 | [StandardEncoderPreset](encoding-concept.md) | 可用 | 可用 | 可用 | 可用 |
 | [LiveEvents](live-streaming-overview.md) | 可用 | 可用 | 可用 | 可用 |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | 可用 | 可用 | 可用 | 可用 |
+
+## <a name="feature-availability-in-preview"></a>預覽中的功能可用性
+
+[LiveTranscription](live-transcription.md)會在下欄區域內上市：
+
+- 東南亞
+- 西歐
+- 北歐
+- 美國東部
+- 美國中部
+- 美國中南部
+- 美國西部 2
+- 巴西南部
 
 ## <a name="regionsgeographieslocations"></a>區域/地理位置/位置
 
@@ -80,7 +93,7 @@ az account list-locations
 | 驗證 | `https://login.microsoftonline.us/` |
 | 權杖對象 | `https://management.core.usgovcloudapi.net/` |
 
-### <a name="azure-germany"></a>Azure Germany
+### <a name="azure-germany"></a>Azure 德國
 
 | 端點 ||
 | --- | --- |  
@@ -88,7 +101,7 @@ az account list-locations
 | 驗證 | `https://login.microsoftonline.de/` |
 | 權杖對象 | `https://management.core.cloudapi.de/`|
 
-### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+### <a name="azure-china-21vianet"></a>Azure 中國 21Vianet
 
 |端點||
 | --- | --- |
@@ -96,7 +109,7 @@ az account list-locations
 | 驗證 | `https://login.chinacloudapi.cn/` |
 | 權杖對象 |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)

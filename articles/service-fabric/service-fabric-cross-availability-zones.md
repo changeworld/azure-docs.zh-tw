@@ -5,12 +5,11 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259366"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性區域部署 Azure Service Fabric 叢集
 Azure 中的可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 「可用性區域」是一種獨特的實體位置，具備獨立的電源、冷卻和網路功能，可在 Azure 區域內使用。
@@ -140,6 +139,10 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 
 >[!NOTE]
 > 標準範本會參考 NSG，其預設允許所有輸出流量。 輸入流量僅限於 Service Fabric 管理作業所需的埠。 您可以修改 NSG 規則以符合您的需求。
+
+>[!NOTE]
+> 使用標準 SKU SLB 的任何 Service Fabric 叢集都必須確保每個節點類型都有規則允許埠443上的輸出流量。 這是完成叢集設定的必要步驟，而且沒有這類規則的任何部署將會失敗。
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>在虛擬機器擴展集上啟用區域
 若要啟用區域，在虛擬機器擴展集上，您必須在虛擬機器擴展集資源中包含下列三個值。

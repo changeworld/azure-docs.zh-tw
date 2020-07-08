@@ -5,12 +5,11 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259468"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用叢集描述 Service Fabric 叢集 Resource Manager
 Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述叢集的機制：
@@ -83,9 +82,9 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 
 擁有大量升級網域有其優缺點。 較多的升級網域表示升級的每個步驟都更細微，而且會影響較少的節點或服務數目。 較少的服務必須一次移動，而不會對系統產生較少的流失。 這通常是為了改善可靠性，因為在升級期間引進的任何問題會影響較少的服務。 升級網域越多，也表示在其他節點上需要較少的可用緩衝區來處理升級的影響。 
 
-例如，如果您有五個升級網域，每個中的節點會處理大約20% 的流量。 如果您需要關閉升級網域以進行升級，該負載通常需要移到某個位置。 因為您有四個剩餘的升級網域，每個都必須有足夠的空間來容納總流量的5%。 較多的升級網域表示您在叢集中的節點上需要較少的緩衝區。 
+例如，如果您有五個升級網域，每個中的節點會處理大約20% 的流量。 如果您需要關閉升級網域以進行升級，該負載通常需要移到某個位置。 因為您有四個剩餘的升級網域，每個都必須有足夠的空間來容納總流量的25%。 較多的升級網域表示您在叢集中的節點上需要較少的緩衝區。
 
-如果您改用10個升級網域，請考慮。 在此情況下，每個升級網域只會處理總流量的10%。 當升級步驟通過叢集時，每個網域的空間只需要大約1.1% 的總流量。 較多的升級網域通常可讓您以更高的使用率執行節點，因為您需要的保留容量較少。 容錯網域也是如此。  
+如果您改用10個升級網域，請考慮。 在此情況下，每個升級網域只會處理總流量的10%。 當升級步驟通過叢集時，每個網域都必須有足夠的空間，只占總流量的11%。 較多的升級網域通常可讓您以更高的使用率執行節點，因為您需要的保留容量較少。 容錯網域也是如此。  
 
 擁有許多升級網域的缺點是升級通常需要較長的時間。 Service Fabric 會在升級網域完成後的短時間內等候，並在開始升級下一項之前先執行檢查。 這些延遲可讓系統在升級繼續之前偵測由升級帶來的問題。 缺點是可接受的，因為它會防止不良的變更一次影響到太多服務。
 
@@ -247,7 +246,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 ## <a name="configuring-fault-and-upgrade-domains"></a>設定容錯和升級網域
 在 Azure 託管的 Service Fabric 部署中，容錯網域和升級網域會自動定義。 Service Fabric 會從 Azure 中取用環境資訊。
 
-如果您要建立自己的叢集（或想要在開發環境中執行特定拓撲），您可以自行提供容錯網域和升級網域資訊。 在此範例中，我們定義了九個節點的本機開發叢集，其橫跨三個資料中心（每個都有三個機架）。 此叢集也有三個跨三個資料中心的升級網域。 以下是 ClusterManifest 中的設定範例：
+如果您要建立自己的叢集（或想要在開發環境中執行特定拓撲），您可以自行提供容錯網域和升級網域資訊。 在此範例中，我們定義了九個節點的本機開發叢集，其橫跨三個資料中心（每個都有三個機架）。 此叢集也有三個跨三個資料中心的升級網域。 以下是 ClusterManifest.xml 中設定的範例：
 
 ```xml
   <Infrastructure>
@@ -268,7 +267,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
   </Infrastructure>
 ```
 
-這個範例會使用 Clusterconfig.x509.multimachine.json 來進行獨立部署：
+這個範例會使用上的 ClusterConfig.js來進行獨立部署：
 
 ```json
 "nodes": [
@@ -363,7 +362,7 @@ Service Fabric 預期在某些情況下，特定的工作負載可能需要在�
 ### <a name="built-in-node-properties"></a>內建節點屬性
 Service Fabric 會定義一些可以自動使用的預設節點屬性，因此您不需要定義它們。 在每個節點上定義的預設屬性是**NodeType**和**NodeName**。 
 
-例如，您可以將放置條件約束撰寫為`"(NodeType == NodeType03)"`。 **NodeType**是常用的屬性。 這項功能很有用，因為它會對應1:1 與電腦類型。 每個機器類型都對應至傳統多層式架構應用程式中的工作負載類型。
+例如，您可以將放置條件約束撰寫為 `"(NodeType == NodeType03)"` 。 **NodeType**是常用的屬性。 這項功能很有用，因為它會對應1:1 與電腦類型。 每個機器類型都對應至傳統多層式架構應用程式中的工作負載類型。
 
 <center>
 
@@ -375,7 +374,7 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
 
 * 建立特定語句的條件式檢查：
 
-  | 引數 | 語法 |
+  | 引數 | Syntax |
   | --- |:---:|
   | 「等於」 | "==" |
   | 「不等於」 | "!=" |
@@ -386,7 +385,7 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
 
 * 群組和邏輯作業的布林語句：
 
-  | 引數 | 語法 |
+  | 引數 | Syntax |
   | --- |:---:|
   | 「和」 | "&&" |
   | 「或」 | "&#124;&#124;" |
@@ -401,7 +400,7 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
 
 服務只能放置在整體放置條件約束陳述式評估為 "True" 的節點上。 未定義屬性的節點不符合包含屬性的任何放置條件約束。
 
-假設下列節點屬性是針對 ClusterManifest 中的節點類型所定義：
+假設下列節點屬性已針對 ClusterManifest.xml 中的節點類型而定義：
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,10 +412,10 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
     </NodeType>
 ```
 
-下列範例會顯示透過 Clusterconfig.x509.multimachine.json 定義的節點屬性，以供獨立部署或適用于 Azure 託管叢集的範本. json。 
+下列範例顯示針對獨立部署，透過 ClusterConfig.js定義的節點屬性，或適用于 Azure 託管叢集的 Template.js。 
 
 > [!NOTE]
-> 在您的 Azure Resource Manager 範本中，節點類型通常是參數化的。 它看起來會`"[parameters('vmNodeType1Name')]"`像這樣，而不是 NodeType01。
+> 在您的 Azure Resource Manager 範本中，節點類型通常是參數化的。 它看起來會像這樣， `"[parameters('vmNodeType1Name')]"` 而不是 NodeType01。
 >
 
 ```json
@@ -447,7 +446,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-如果 NodeType01 的所有節點都是有效的，您也可以選取具有條件約束`"(NodeType == NodeType01)"`的節點類型。
+如果 NodeType01 的所有節點都是有效的，您也可以選取具有條件約束的節點類型 `"(NodeType == NodeType01)"` 。
 
 服務的放置條件約束可在執行時間以動態方式更新。 如有需要，您可以在叢集中移動服務、新增和移除需求等等。 Service Fabric 可確保即使在進行這些類型的變更時，服務仍會保持運作並可供使用。
 
@@ -505,7 +504,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-您可以看到叢集資訊清單中定義的容量。 以下是 ClusterManifest 的範例：
+您可以看到叢集資訊清單中定義的容量。 以下是 ClusterManifest.xml 的範例：
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +514,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
     </NodeType>
 ```
 
-以下是透過 Clusterconfig.x509.multimachine.json 定義的容量範例，適用于獨立部署或適用于 Azure 託管叢集的範本. json： 
+以下是透過 ClusterConfig.js針對獨立部署或針對 Azure 託管叢集 Template.js上所定義的容量範例： 
 
 ```json
 "nodeTypes": [
@@ -548,7 +547,7 @@ Service Fabric 叢集 Resource Manager 如何讓整體叢集太滿？ 有了動�
 
 針對所有節點，會針對每個計量以全域方式指定緩衝的容量。 您為保留容量挑選的值是您在叢集中擁有的容錯和升級網域數目的功能。 更多容錯和升級網域表示您可以為緩衝處理的容量挑選較低的數位。 如果您有較多網域，則在升級和失敗期間，無法使用的叢集部分當然會比較少。 只有當您也指定了計量的節點容量時，指定緩衝處理的容量才有意義。
 
-以下範例說明如何在 ClusterManifest 中指定已緩衝處理的容量：
+以下範例說明如何在 ClusterManifest.xml 中指定已緩衝處理的容量：
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +556,7 @@ Service Fabric 叢集 Resource Manager 如何讓整體叢集太滿？ 有了動�
         </Section>
 ```
 
-以下範例說明如何透過 Clusterconfig.x509.multimachine.json 為獨立部署或 json （適用于 Azure 託管的叢集）指定緩衝的容量：
+以下範例說明如何針對獨立部署，透過 ClusterConfig.js來指定緩衝處理的容量，或針對 Azure 裝載的叢集 Template.json：
 
 ```json
 "fabricSettings": [

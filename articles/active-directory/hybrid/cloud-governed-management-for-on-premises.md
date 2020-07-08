@@ -9,16 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234100"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何為內部部署工作負載提供雲端控管管理
 
@@ -93,7 +92,7 @@ Azure AD 可以視需要[自動為來賓使用者建立 AD 中的帳戶](https:/
 
 ![Azure AD 演進](media/cloud-governed-management-for-on-premises/image5.png)
 
-若要開始將同盟應用程式遷移至 Azure AD 做為身分識別https://aka.ms/migrateapps提供者，請參閱，其中包含下列連結：
+若要開始將同盟應用程式遷移至 Azure AD 做為身分識別提供者，請參閱 https://aka.ms/migrateapps ，其中包含下列連結：
 
 * 這份白皮書將[您的應用程式遷移至 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)，其中提供遷移的優點，並說明如何在四個明顯概述的階段中規劃遷移：探索、分類、遷移和持續管理。 您將會引導您瞭解如何考慮此程式，並將您的專案細分成容易取用的部分。 此文件全篇都有在過程中可協助您的重要資源連結。
 
@@ -117,4 +116,4 @@ Azure AD 可以視需要[自動為來賓使用者建立 AD 中的帳戶](https:/
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何開始使用此旅程的詳細資訊，請參閱位於的 Azure AD 部署計畫<https://aka.ms/deploymentplans> 。 它們提供如何部署 Azure Active Directory （Azure AD）功能的端對端指引。 每個計畫都會說明成功推出一般 Azure AD 功能所需的商業價值、規劃考慮、設計和操作程式。 當我們透過 Azure AD 新增功能以從雲端管理時，Microsoft 會持續更新部署計畫，以及從客戶部署和其他意見反應中學習到的最佳作法。
+如需如何開始使用此旅程的詳細資訊，請參閱位於的 Azure AD 部署計畫 <https://aka.ms/deploymentplans> 。 它們提供如何部署 Azure Active Directory （Azure AD）功能的端對端指引。 每個計畫都會說明成功推出一般 Azure AD 功能所需的商業價值、規劃考慮、設計和操作程式。 當我們透過 Azure AD 新增功能以從雲端管理時，Microsoft 會持續更新部署計畫，以及從客戶部署和其他意見反應中學習到的最佳作法。

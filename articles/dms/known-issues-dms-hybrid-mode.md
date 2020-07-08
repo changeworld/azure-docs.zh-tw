@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196269"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式的已知問題/遷移限制
 
@@ -24,7 +23,7 @@ ms.locfileid: "77649597"
 
 ## <a name="installer-fails-to-authenticate"></a>安裝程式無法驗證
 
-將憑證上傳至您的 Adapp icons 之後，最多需要幾分鐘的時間，才能向 Azure 進行驗證。 安裝程式會嘗試以一些延遲重試，但傳播延遲可能會比重試更長，而您會看到**FailedToGetAccessTokenException**訊息。 如果已將憑證上傳至正確的 Adapp icons，並在 dmsSettings 中提供正確的 AppId，請嘗試再次執行 [安裝] 命令。
+將憑證上傳至您的 Adapp icons 之後，最多需要幾分鐘的時間，才能向 Azure 進行驗證。 安裝程式會嘗試以一些延遲重試，但傳播延遲可能會比重試更長，而您會看到**FailedToGetAccessTokenException**訊息。 如果已將憑證上傳至正確的 Adapp icons，並在 dmsSettings.js中提供正確的 AppId，請嘗試再次執行 [安裝] 命令。
 
 ## <a name="service-offline-after-successful-installation"></a>成功安裝後的服務「離線」
 
@@ -55,7 +54,7 @@ ms.locfileid: "77649597"
 
 ## <a name="using-your-own-signed-certificate"></a>使用您自己的簽署憑證
 
-動作 GenerateCert 所產生的憑證是自我簽署的憑證，根據您的內部安全性原則可能無法接受。 您可以提供自己的憑證，並在 dmsSettings 中提供指紋，而不是使用此憑證。 必須將此憑證上傳至您的 Adapp icons，並安裝在您要安裝 Azure 資料庫移轉服務混合式背景工作角色的電腦上。 然後，使用私密金鑰將此憑證安裝到本機電腦憑證存放區。
+動作 GenerateCert 所產生的憑證是自我簽署的憑證，根據您的內部安全性原則可能無法接受。 您可以提供自己的憑證，並在 dmsSettings.js中提供指紋，而不是使用此憑證。 必須將此憑證上傳至您的 Adapp icons，並安裝在您要安裝 Azure 資料庫移轉服務混合式背景工作角色的電腦上。 然後，使用私密金鑰將此憑證安裝到本機電腦憑證存放區。
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>以低許可權帳戶執行背景工作角色服務
 
@@ -93,10 +92,10 @@ ms.locfileid: "77649597"
 
 下列各節說明與使用 Azure 資料庫移轉服務混合模式來執行線上遷移相關的特定案例問題。
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>線上遷移至 Azure SQL Database 受控實例
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>線上遷移至 Azure SQL 受控執行個體
 
 **高 CPU 使用率**
 
-**問題**：若要 SQL Database 受控實例的線上遷移，執行混合式背景工作角色的電腦如果有太多備份或備份太大，則會遇到高 CPU 使用量。
+**問題**：若要在線上遷移至 SQL 受控執行個體，執行混合式背景工作角色的電腦如果有太多備份或備份太大，則會遇到高 CPU 使用量。
 
 **緩和**：若要減輕此問題，請使用壓縮的備份、分割遷移，使其使用多個共用，或相應增加執行混合式背景工作角色的電腦。

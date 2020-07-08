@@ -3,12 +3,11 @@ title: 原則指派結構的詳細資料
 description: 描述 Azure 原則用來將原則定義和參數關聯至資源進行評估的原則指派定義。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84205036"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure 原則指派結構
 
@@ -49,7 +48,7 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 }
 ```
 
-所有 Azure 原則範例都位於[Azure 原則的範例](../samples/index.md)。
+所有 Azure 原則範例都位於 [Azure 原則範例](../samples/index.md)中。
 
 ## <a name="display-name-and-description"></a>顯示名稱和描述
 
@@ -61,9 +60,9 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 
 此屬性具有下列值：
 
-|[模式] |JSON 值 |類型 |手動修復 |活動記錄專案 |描述 |
+|[模式] |JSON 值 |類型 |手動修復 |活動記錄專案 |說明 |
 |-|-|-|-|-|-|
-|啟用 |預設值 |字串 |是 |是 |在資源建立或更新期間，會強制執行原則效果。 |
+|已啟用 |預設 |字串 |Yes |是 |在資源建立或更新期間，會強制執行原則效果。 |
 |停用 |DoNotEnforce |字串 |是 |否 | 在資源建立或更新期間不會強制執行原則效果。 |
 
 如果未在原則或計畫定義中指定**enforcementMode** ，則會使用_預設_值。 即使**enforcementMode**設為_DoNotEnforce_，也可以針對[deployIfNotExists](./effects.md#deployifnotexists)原則啟動[補救](../how-to/remediate-resources.md)工作。
@@ -75,7 +74,7 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 ## <a name="policy-definition-id"></a>原則定義識別碼
 
 此欄位必須是原則定義或計畫定義的完整路徑名稱。
-`policyDefinitionId`是字串，而不是陣列。 如果經常同時指派多個原則，建議您改用[計畫](./definition-structure.md#initiatives)。
+`policyDefinitionId`是字串，而不是陣列。 如果經常同時指派多個原則，建議您改用[計畫](./initiative-definition-structure.md)。
 
 ## <a name="parameters"></a>參數
 
@@ -93,12 +92,12 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 }
 ```
 
-在此範例中，先前在原則定義中定義的參數`prefix`是`suffix`和。 此特定原則指派會`prefix`將設定為`suffix` **DeptA**和 **-LC**。 相同的原則定義可重複用於不同部門的一組不同參數，減少原則定義的重複程度和複雜度，同時提供彈性。
+在此範例中，先前在原則定義中定義的參數是 `prefix` 和 `suffix` 。 此特定原則指派會將設定 `prefix` 為**DeptA**和 `suffix` **-LC**。 相同的原則定義可重複用於不同部門的一組不同參數，減少原則定義的重複程度和複雜度，同時提供彈性。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[原則定義結構](./definition-structure.md)。
-- 瞭解如何以程式設計[方式建立原則](../how-to/programmatically-create.md)。
-- 瞭解如何[取得合規性資料](../how-to/get-compliance-data.md)。
-- 瞭解如何[補救不符合規範的資源](../how-to/remediate-resources.md)。
-- 請參閱使用[Azure 管理群組來組織資源](../../management-groups/overview.md)的管理群組。
+- 了解[原則定義結構](./definition-structure.md)。
+- 了解如何[以程式設計方式建立原則](../how-to/programmatically-create.md)。
+- 了解如何[取得合規性資料](../how-to/get-compliance-data.md)。
+- 了解如何[補救不符合規範的資源](../how-to/remediate-resources.md)。
+- 透過[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)來檢閱何謂管理群組。

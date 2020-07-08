@@ -4,12 +4,11 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248221"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -21,7 +20,7 @@ ms.locfileid: "82744571"
 
 但在某些情況下，這項功能並不是必要的。 如果 Azure 復原服務保存庫中有備份專案，甚至虛刪除了它，就無法刪除。 如果需要立即刪除保存庫，這可能會造成問題。 例如：部署作業通常會在同一個工作流程中清除已建立的資源。 部署可以建立保存庫、設定專案的備份、執行測試還原，然後繼續刪除備份專案和保存庫。 如果保存庫刪除失敗，則整個部署可能會失敗。 停用虛刪除是保證立即刪除的唯一方法。
 
-因此，客戶必須謹慎地根據案例，選擇是否要停用特定保存庫的虛刪除。 如需詳細資訊，請參閱虛[刪除文章](backup-azure-security-feature-cloud.md)。
+因此，您必須謹慎地根據案例，選擇是否要停用特定保存庫的虛刪除。 如需詳細資訊，請參閱虛[刪除文章](backup-azure-security-feature-cloud.md)。
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>使用 REST API 提取虛刪除狀態
 
@@ -33,7 +32,7 @@ ms.locfileid: "82744571"
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-GET URI 有`{subscriptionId}`、 `{vaultName}`、 `{vaultresourceGroupName}`參數。 在此範例中`{vaultName}` ，為 "testVault" `{vaultresourceGroupName}` ，而為 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
+GET URI 有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 為 "testVault"，而 `{vaultresourceGroupName}` 為 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -43,9 +42,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 「取得」作業的成功回應如下所示：
 
-|名稱  |類型  |描述  |
+|Name  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
+|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response"></a>範例回應
 
@@ -71,7 +70,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-PATCH URI 有`{subscriptionId}`、 `{vaultName}`、 `{vaultresourceGroupName}`參數。 在此範例中`{vaultName}` ，為 "testVault" `{vaultresourceGroupName}` ，而為 "testVaultRG"。 如果我們將 URI 取代為上述的值，則 URI 看起來會像這樣。
+PATCH URI 有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 為 "testVault"，而 `{vaultresourceGroupName}` 為 "testVaultRG"。 如果我們將 URI 取代為上述的值，則 URI 看起來會像這樣。
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -83,7 +82,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 如需詳細資訊，請參閱[REST API 檔](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|名稱  |必要  |類型  |描述  |
+|名稱  |必要  |類型  |Description  |
 |---------|---------|---------|---------|
 |etag     |         |   String      |  選擇性 eTag       |
 |location     |  true       |String         |   資源位置      |
@@ -107,9 +106,9 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 「修補程式」作業的成功回應如下所示：
 
-|名稱  |類型  |描述  |
+|Name  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
+|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response"></a>範例回應
 

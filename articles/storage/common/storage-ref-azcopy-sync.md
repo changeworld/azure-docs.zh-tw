@@ -8,12 +8,11 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84221066"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
@@ -67,7 +66,7 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 ```
 
 > [!NOTE]
-> 目的地 blob*必須*存在。 用`azcopy copy`來複製目的地中尚未存在的單一檔案。 否則，會發生下列錯誤： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
+> 目的地 blob*必須*存在。 用 `azcopy copy` 來複製目的地中尚未存在的單一檔案。 否則，會發生下列錯誤： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container` 。
 
 與上述相同，但這次也會計算檔案內容的 MD5 雜湊，並將它儲存為 blob 的 Content-MD5 屬性：
 
@@ -142,15 +141,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-** attribute 字串（僅限 Windows）排除其屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
+**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file.pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
 
-**--排除-模式**字串排除名稱符合模式清單的檔案。 例如： \*.jpg;\*.Pdf; exactName
+**--排除-模式**字串排除名稱符合模式清單的檔案。 例如： \* .jpg; \* 。pdf; exactName
 
 **-h、--** 適用于同步處理的協助說明
 
 **--include-屬性**字串（僅限 Windows）只包含屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--include-模式**字串只包含名稱符合模式清單的檔案。 例如： \*.jpg;\*.Pdf; exactName
+**--include-模式**字串只包含名稱符合模式清單的檔案。 例如： \* .jpg; \* 。pdf; exactName
 
 **--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： INFO （所有要求和回應）、警告（回應緩慢）、錯誤（僅限失敗的要求）和無（沒有輸出記錄）。 （預設資訊）。 （預設值為 "INFO"）
 
@@ -160,11 +159,12 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|描述|
+|選項|說明|
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--trusted-microsoft-尾碼字串   |指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [azcopy](storage-ref-azcopy.md)

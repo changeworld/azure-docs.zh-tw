@@ -3,13 +3,12 @@ title: 與 Azure 監視器整合的合作夥伴
 description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合作夥伴進行整合的文件。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248966"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -106,7 +105,8 @@ Grafana 是開放原始碼應用程式，可讓您以視覺化方式檢視時間
 
 ![InfluxData 標誌](./media/partners/Influxdata.png)
 
-InfluxData (InfluxDB 建立者) 提供從頭建立的新式開放原始碼平台，可用來分析 DevOps 與 IoT 應用程式的計量與事件 (時間序列資料)。 不論資料來自人類、感應器或機器，InfluxData 都能讓開發人員更快速、輕鬆地建置下一代監視、分析及 IoT 應用程式，並能更快速提供真正商業價值。 根據三藩市，InfluxData 的客戶超過420，包括 Cisco、eBay、IBM 和 Siemens。
+InfluxData 是 InfluxDB （開放原始碼時間序列資料庫）的建立者。 我們的技術是專為處理 IoT 裝置、應用程式、網路、容器和電腦所產生的大量時間戳記資料而設計的。 我們負責協助開發人員和組織（例如 IBM、簽證、Siemens、Tesla 和 NASA）儲存和分析即時資料，讓他們能夠更快速地建立轉型監視、分析和 IoT 應用程式，並進行調整。 您可以使用 InfluxData 的 Telegraf 代理程式來擴充 Microsoft Azure 監視器的計量和事件集合功能，讓 Microsoft 使用者可以從領先的時間序列資料庫解決方案中獲益，並利用持續成長的開放原始碼貢獻給 Telegraf。
+
 
 [請移至文件。][influxdata-doc]
 
@@ -115,7 +115,7 @@ InfluxData (InfluxDB 建立者) 提供從頭建立的新式開放原始碼平台
 
 ![邏輯監視器標誌](./media/partners/logicmonitor.png)
 
-LogicMonitor&reg;是領先的 SaaS 型效能監控平臺，適用于複雜的 IT 基礎結構。 LogicMonitor 涵蓋了上千種技術，可在基礎結構和應用程式效能上提供更細微的可見度。 LM Cloud 的全面 Azure 監視功能可讓使用者將 Azure 雲端、內部部署和混合式雲端資源的效能相互關聯--全都是從單一平臺。 自動化資源探索、內建監視範本、預先設定的警示閾值，以及可自訂的儀表板，結合起來可以為 IT 提供成功所需的速度、彈性和可見度。
+LogicMonitor &reg; 是領先的 SaaS 型效能監控平臺，適用于複雜的 IT 基礎結構。 LogicMonitor 涵蓋了上千種技術，可在基礎結構和應用程式效能上提供更細微的可見度。 LM Cloud 的全面 Azure 監視功能可讓使用者將 Azure 雲端、內部部署和混合式雲端資源的效能相互關聯--全都是從單一平臺。 自動化資源探索、內建監視範本、預先設定的警示閾值，以及可自訂的儀表板，結合起來可以為 IT 提供成功所需的速度、彈性和可見度。
 
 [請移至文件。][logicmonitor-doc]
 
@@ -267,7 +267,7 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解 Azure 監視器](../../azure-monitor/overview.md)
+- [深入瞭解 Azure 監視器](../../azure-monitor/overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)
 - [將活動記錄串流至非 Microsoft 服務](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 - [將資源記錄串流至非 Microsoft 服務](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)

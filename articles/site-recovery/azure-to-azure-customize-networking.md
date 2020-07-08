@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76292853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84236309"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自訂目標 Azure 虛擬機器的網路設定
 
@@ -28,10 +27,10 @@ ms.locfileid: "76292853"
 您可以在複寫 Azure Vm 時，提供容錯移轉 VM 的下列金鑰資源設定：
 
 - [內部負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-- [公用 IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
+- [公用 IP](../virtual-network/public-ip-addresses.md)
 - 子網和 NIC 的[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 請務必事先規劃您的復原端設定。
 - 事先建立網路資源。 提供它做為輸入，讓 Azure Site Recovery 服務可以接受這些設定，並確保容錯移轉 VM 遵守這些設定。
@@ -49,7 +48,7 @@ ms.locfileid: "76292853"
 
     ![編輯 NIC 設定](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-6. 選取 [確定]  。
+6. 選取 [確定]。
 
 Site Recovery 現在會接受這些設定，並確保容錯移轉上的 VM 會透過對應的 NIC 連線到選取的資源。
 
@@ -77,7 +76,7 @@ Site Recovery 現在會接受這些設定，並確保容錯移轉上的 VM 會�
 - 公用 IP 和目標 VM 的訂用帳戶和區域應相同。
 - 目標 VM 的公用 IP SKU 與內部負載平衡器的 SKU 應相同。
 
-網路安全性群組︰
+網路安全性群組：
 - 「網路安全性群組」和「目標 VM」的訂用帳戶和區域應相同。
 
 

@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195974"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用複製活動來移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -27,7 +26,7 @@ ms.locfileid: "79281882"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的複製活動](../copy-activity-overview.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 在 Azure Data Factory 中，您可以使用「複製活動」在內部部署與雲端資料存放區之間複製資料。 複製資料之後，可以將它進一步轉換及進行分析。 您也可以使用「複製活動」來發佈商業智慧 (BI) 及應用程式使用情況的轉換和分析結果。
 
 ![複製活動的角色](media/data-factory-data-movement-activities/copy-activity.png)
@@ -81,7 +80,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 
 例如，您可以執行下列複製活動：
 
-* 複製內部部署 SQL Server 中的資料，然後以 ORC 格式寫入 Azure Data Lake Store。
+* 複製 SQL Server 資料庫中的資料，並以 ORC 格式寫入 Azure Data Lake 存放區。
 * 從內部部署檔案系統複製文字 (CSV) 格式的檔案，然後以 Avro 格式寫入 Azure Blob 中。
 * 從內部部署檔案系統複製壓縮檔，然後解壓縮到 Azure Data Lake Store。
 * 從 Azure Blob 複製 GZip 壓縮文字 (CSV) 格式的資料，然後寫入 Azure SQL Database 中。
@@ -107,7 +106,7 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 | 巴西 | 巴西南部 | 巴西南部 |
 | 歐洲 | 北歐 | 北歐 |
 | &nbsp; | 西歐 | 西歐 |
-| United Kingdom | 英國西部 | 英國南部 |
+| 英國 | 英國西部 | 英國南部 |
 | &nbsp; | 英國南部 | 英國南部 |
 | 亞太地區 | 東南亞 | 東南亞 |
 | &nbsp; | 東亞 | 東南亞 |
